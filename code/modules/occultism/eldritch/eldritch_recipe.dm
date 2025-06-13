@@ -12,3 +12,10 @@
 
 /datum/crafting_recipe/eldritch_recipe/check_special_learned(mob/user)
 	return id in user.eldritch_get_holder().known_recipe_ids
+
+/datum/crafting_recipe/eldritch_recipe/proc/ui_serialize_recipe()
+	return list(
+		"id" = id,
+		"name" = name,
+		"desc" = desc,
+	)

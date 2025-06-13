@@ -11,43 +11,71 @@ interface EldritchHolderData {
   // is the viewer an admin? enables admin controls
   admin: BooleanLike;
 
-  // all knowledge nodes by id. non-admins won't have hidden ones sent.
-  possibleKnowledge: Record<string, EldritchKnowledge>;
-  // researched knowledge; flat list of ids
+  repositoryKnowledge: Record<string, EldritchKnowledge>;
+  repositoryPassives: Record<string, EldritchPassive>;
+  repositoryAbilities: Record<string, EldritchAbility>;
+  repositoryRecipes: Record<string, EldritchRecipe>;
+
+  unlockedAbilities: string[];
   unlockedKnowledge: string[];
+  unlockedPassives: string[];
+  unlockedRecipes: string[];
 
-  // all passives in holder
-  // * not allowed to admin edit manually; passives must be given via knowledge system
-  passivesUnlocked: Record<string, EldritchPassive>;
-  // passive enable/disable state
-  passivesToggled: Record<string, BooleanLike>;
+  unlockedPatrons: Record<string, EldritchPatron>;
 
-  // all abilities in holder
-  // * not allowed to admin edit manually; abilities must be given via knowledge system
-  abilitiesUnlocked: Record<string, EldritchAbility>;
-  // ability enable/disable state
-  abilitiesToggled: Record<string, BooleanLike>;
+  passiveContexts: Record<string, EldritchPassiveContext>;
+  abilityContexts: Record<string, EldritchAbilityContext>;
 
-  // all patrons selectable in holder
-  patronsUnlocked: Record<string, EldritchPatron>;
-  // active patron by id, if any
-  patronActive: string | null;
+  activePatron: string | null;
 }
 
 interface EldritchKnowledge {
   id: string;
+  name: string;
+  desc: string;
+  category: string;
+  loreAsUnsafeHtml: string | null;
+  iconAsBase64: string | null;
+  secret: BooleanLike;
+  hidden: BooleanLike;
+  reqKnowledgeIds: string[] | null;
+  giveAbilities: EldritchAbility[] | null;
+  givePassives: EldritchPassive[] | null;
+  giveKnowledgeIds: string[] | null;
+  giveRecips: EldritchRecipe[] | null;
 }
 
 interface EldritchPassive {
   id: string;
+  name: string;
+  desc: string;
 }
 
 interface EldritchAbility {
   id: string;
+  name: string;
+  desc: string;
+}
+
+interface EldritchRecipe {
+  id: string;
+  name: string;
+  desc: string;
 }
 
 interface EldritchPatron {
   id: string;
+  name: string;
+  desc: string;
+  loreAsUnsafeHtml: string | null;
+  iconAsBase64: string | null;
+}
+
+interface EldritchPassiveContext {
+  enabled: BooleanLike;
+}
+
+interface EldritchAbilityContext {
 }
 
 export const EldritchHolder = (props, context) => {

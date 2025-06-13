@@ -12,6 +12,13 @@
 /datum/prototype/eldritch_ability/proc/create_ability(datum/eldritch_holder/for_holder)
 	return new ability_type(for_holder)
 
+/datum/prototype/eldritch_ability/proc/ui_serialize_ability()
+	return list(
+		"id" = id,
+		"name" = name,
+		"desc" = desc,
+	)
+
 /datum/ability/eldritch_ability
 	category = "Eldritch"
 
@@ -25,3 +32,7 @@
 /datum/ability/eldritch_ability/New(datum/eldritch_holder/bind_to_holder)
 	if(bind_to_holder)
 		src.eldritch = bind_to_holder
+
+/datum/ability/eldritch_ability/proc/ui_serialize_ability_context()
+	return list()
+	

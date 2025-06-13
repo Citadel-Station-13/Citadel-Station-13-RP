@@ -22,6 +22,13 @@
 	/// requires ticking?
 	var/requires_ticking = FALSE
 
+/datum/prototype/eldritch_passive/proc/ui_serialize_passive()
+	return list(
+		"id" = id,
+		"name" = name,
+		"desc" = desc,
+	)
+
 /datum/prototype/eldritch_passive/proc/create_initial_context(datum/eldritch_holder/holder) as /datum/eldritch_passive_context
 	return context_type ? new context_type : null
 

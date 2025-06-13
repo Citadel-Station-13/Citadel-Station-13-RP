@@ -19,8 +19,10 @@
 	var/category = "???"
 
 	/// cannot be seen or acquired if not there, unless already acquired.
+	/// * overridden by admisn
 	var/secret = FALSE
 	/// never show on UI or make known to the player / client
+	/// * overridden by admisn
 	var/hidden = FALSE
 
 	/// ui icon
@@ -55,3 +57,25 @@
 /datum/prototype/eldritch_knowledge/proc/remove(datum/eldritch_holder/holder)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
+
+/datum/prototype/eldritch_knowledge/proc/ui_serialize_knowledge()
+	var/serialized_icon
+	var/list/serialized_abilities
+	var/list/serialized_passives
+	var/list/serialized_recipes
+	#warn impl
+	return list(
+		"id" = id,
+		"name" = name,
+		"desc" = desc,
+		"category" = category,
+		"loreAsUnsafeHtml" = lore_as_unsafe_html,
+		"iconAsBase64" = serialized_icon,
+		"secret" = secret,
+		"hidden" = hidden,
+		"reqKnowledgeIds" = req_eldritch_knowledge_ids,
+		"giveAbilities" = serialized_abilities,
+		"givePassives" = serialized_passives,
+		"giveRecipes" = serialized_recipes,
+		"giveKnowledgeIds" = give_eldritch_knowledge_ids,
+	)

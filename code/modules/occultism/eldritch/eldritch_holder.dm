@@ -12,84 +12,175 @@
 	/// known, researched knowledges
 	/// * serialized as ids
 	var/list/datum/prototype/eldritch_knowledge/knowledge = list()
-
 	/// passives applied, associated to context
 	/// * context is serialized, but not the passives
-	var/list/datum/prototype/eldritch_passive/applied_passives
+	var/list/datum/prototype/eldritch_passive/passives
 	/// abilities applied, associated to applied ability datum
 	/// * ability state is serialized, but not the abilities
-	var/list/datum/prototype/eldritch_ability/applied_abilities
-
+	var/list/datum/prototype/eldritch_ability/abilities
 	/// known recipe ids
 	/// * not serialized
 	/// * associated to a list of knowledge's if more than one tries to give it
-	var/list/known_recipe_ids
+	var/list/recipe_ids
 
 	/// active patron, if any; null if none
 	/// * serialized as id
 	var/datum/prototype/eldritch_patron/active_patron
 
 /datum/eldritch_holder/proc/on_mob_associate(mob/cultist)
-	for(var/datum/prototype/eldritch_passive/passive as anything in applied_passives)
-		passive.on_mob_associate(cultist, src, applied_passives[passive])
-	for(var/datum/prototype/eldritch_ability/ability as anything in applied_abilities)
-		var/datum/ability/ability_instance = applied_abilities[ability]
+	for(var/datum/prototype/eldritch_passive/passive as anything in passives)
+		passive.on_mob_associate(cultist, src, passives[passive])
+	for(var/datum/prototype/eldritch_ability/ability as anything in abilities)
+		var/datum/ability/ability_instance = abilities[ability]
 		ability_instance.associate(cultist)
 
 /datum/eldritch_holder/proc/on_mob_disassociate(mob/cultist)
-	for(var/datum/prototype/eldritch_passive/passive as anything in applied_passives)
-		passive.on_mob_disassociate(cultist, src, applied_passives[passive])
-	for(var/datum/prototype/eldritch_ability/ability as anything in applied_abilities)
-		var/datum/ability/ability_instance = applied_abilities[ability]
+	for(var/datum/prototype/eldritch_passive/passive as anything in passives)
+		passive.on_mob_disassociate(cultist, src, passives[passive])
+	for(var/datum/prototype/eldritch_ability/ability as anything in abilities)
+		var/datum/ability/ability_instance = abilities[ability]
 		ability_instance.disassociate(cultist)
 
 /datum/eldritch_holder/proc/add_knowledge(datum/prototype/eldritch_knowledge/knowledge)
 	#warn impl
+	ui_push_learned_knowledge()
 
 /datum/eldritch_holder/proc/remove_knowledge(datum/prototype/eldritch_knowledge/knowledge)
 	#warn impl
+	ui_push_learned_knowledge()
 
 /datum/eldritch_holder/proc/has_knowledge(datum/prototype/eldritch_knowledge/knowledge)
-	return knowledge in src.knowledge
+	return (knowledge in src.knowledge)
 
 /datum/eldritch_holder/proc/set_active_patron(datum/prototype/eldritch_patron/patron)
-	#warn tgui update?
+	ui_push_active_patron()
 
 /datum/eldritch_holder/proc/add_passive(datum/prototype/eldritch_passive/passive)
-	#warn tgui update?
+	ui_push_learned_passives()
+	ui_push_passive_contexts()
 
 /datum/eldritch_holder/proc/remove_passive(datum/prototype/eldritch_passive/passive)
-	#warn tgui update?
+	ui_push_learned_passives()
 
 /datum/eldritch_holder/proc/add_ability(datum/prototype/eldritch_ability/ability)
-
-	#warn tgui update?
+	ui_push_learned_abilities()
+	ui_push_ability_contexts()
 
 /datum/eldritch_holder/proc/remove_ability(datum/prototype/eldritch_ability/ability)
+	ui_push_learned_abilities()
 
-	#warn tgui update?
+/datum/eldritch_holder/proc/add_recipe(datum/crafting_recipe/eldritch_recipe/recipe)
+	ui_push_learned_recipes()
+
+/datum/eldritch_holder/proc/remove_recipe(datum/crafting_recipe/eldritch_recipe/recipe)
+	ui_push_learned_recipes()
+
+#warn impl all
 
 /datum/eldritch_holder/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
-	. = ..()
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "modules/occultism/eldritch/EldritchHolder")
+		ui.open()
 
 /datum/eldritch_holder/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
+	if(.)
+		return
+	switch(action)
+
+#warn impl all
 
 /datum/eldritch_holder/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 
 	// TODO: better admin rights check
-	.["admin"] = FALSE
-	if(!check_rights(C = user))
-		return
-	.["admin"] = TRUE
+	var/is_admin = check_rights(show_msg = FALSE, C = user)
+	.["admin"] = is_admin
 
-/datum/eldritch_holder/proc/ui_push_learned_knowledges()
+	#warn impl
+	var/list/serialized_knowledge
+	var/list/serialized_passives
+	var/list/serialized_abilities
+	var/list/serialized_recipes
+
+	.["repositoryKnowledge"] = serialized_knowledge
+	.["repositoryPassives"] = serialized_passives
+	.["repositoryAbilities"] = serialized_abilities
+	.["repositoryRecipes"] = serialized_recipes
+
+	.["unlockedAbilities"] = ui_serialize_learned_abilities()
+	.["unlockedPassives"] = ui_serialize_learned_passives()
+	.["unlockedKnowledge"] = ui_serialize_learned_knowledge()
+	.["unlockedRecipes"] = ui_serialize_learned_recipes()
+	.["unlockedPatrons"] = ui_serialize_learned_patrons()
+
+	.["passiveContexts"] = ui_serialize_passive_contexts()
+	.["abilityContexts"] = ui_serialize_ability_contexts()
+
+	.["activePatron"] = active_patron?.id
+
+/datum/eldritch_holder/proc/ui_push_learned_knowledge()
+	push_ui_data(data = list("unlockedKnowledge" = ui_serialize_learned_knowledge()))
 
 /datum/eldritch_holder/proc/ui_push_learned_passives()
+	push_ui_data(data = list("unlockedPassives" = ui_serialize_learned_passives()))
 
 /datum/eldritch_holder/proc/ui_push_learned_recipes()
+	push_ui_data(data = list("unlockedRecipes" = ui_serialize_learned_recipes()))
 
 /datum/eldritch_holder/proc/ui_push_learned_abilities()
+	push_ui_data(data = list("unlockedAbilities" = ui_serialize_learned_abilities()))
 
-#warn impl all
+/datum/eldritch_holder/proc/ui_push_learned_patrons()
+	push_ui_data(data = list("unlockedPatrons" = ui_serialize_learned_patrons()))
+
+/datum/eldritch_holder/proc/ui_push_active_patron()
+	push_ui_data(data = list("activePatron" = active_patron?.id))
+
+/datum/eldritch_holder/proc/ui_push_ability_contexts()
+	push_ui_data(data = list("abilityContexts" = ui_serialize_ability_contexts()))
+
+/datum/eldritch_holder/proc/ui_push_passive_contexts()
+	push_ui_data(data = list("passiveContexts" = ui_serialize_passive_contexts()))
+
+/datum/eldritch_holder/proc/ui_serialize_learned_knowledge()
+	var/list/serialized = list()
+	for(var/datum/prototype/eldritch_knowledge/learned as anything in knowledge)
+		serialized += learned.id
+	return serialized
+
+/datum/eldritch_holder/proc/ui_serialize_learned_passives()
+	var/list/serialized = list()
+	for(var/datum/prototype/eldritch_passive/learned as anything in passives)
+		serialized += learned.id
+	return serialized
+
+/datum/eldritch_holder/proc/ui_serialize_learned_recipes()
+	var/list/serialized = recipe_ids
+	return serialized
+
+/datum/eldritch_holder/proc/ui_serialize_learned_abilities()
+	var/list/serialized = list()
+	for(var/datum/prototype/eldritch_ability/learned as anything in abilities)
+		serialized += learned.id
+	return serialized
+
+/datum/eldritch_holder/proc/ui_serialize_learned_patrons()
+	var/list/serialized = list()
+	#warn how?
+	return serialized
+
+/datum/eldritch_holder/proc/ui_serialize_ability_contexts()
+	var/list/serialized = list()
+	for(var/datum/prototype/eldritch_ability/ability as anything in abilities)
+		var/datum/eldritch_ability_context/context = abilities[ability]
+		serialized[ability.id] = context.ui_serialize_ability_context()
+	return serialized
+
+/datum/eldritch_holder/proc/ui_serialize_passive_contexts()
+	var/list/serialized = list()
+	for(var/datum/prototype/eldritch_passive/passive as anything in passives)
+		var/datum/eldritch_passive_context/context = passives[passive]
+		serialized[passive.id] = context.ui_serialize_passive_context()
+	return serialized
