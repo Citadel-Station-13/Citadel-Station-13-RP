@@ -826,12 +826,14 @@
 /turf/simulated/floor/carpet/tealcarpet,
 /area/endeavour/hallway/d1fwdmaint)
 "aGm" = (
-/obj/machinery/computer/ship/sensors,
 /obj/machinery/button/remote/blast_door{
 	id = "cockpit_lockdown";
 	name = "Cockpit Lockdown";
 	pixel_y = 6;
 	pixel_x = -38
+	},
+/obj/machinery/computer/shuttle_control/explore/excursion{
+	req_one_access = null
 	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/endeavour/cockpit)
@@ -7818,10 +7820,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
 "fNq" = (
-/obj/machinery/computer/shuttle_control/explore/excursion{
-	dir = 1;
-	req_one_access = null
-	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/endeavour/cockpit)
 "fND" = (
@@ -18059,9 +18057,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1fwdhall)
 "nEb" = (
-/obj/machinery/media/jukebox{
-	icon_state = "superjuke-nopower";
-	state_base = "superjuke"
+/obj/machinery/computer/ship/sensors{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/endeavour/cockpit)
@@ -19252,9 +19249,6 @@
 /obj/machinery/door/airlock/voidcraft/vertical,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
-	},
-/obj/machinery/atmospheric_field_generator/perma{
-	color = "#00000ff"
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/endeavour/general)
@@ -29360,6 +29354,9 @@
 "vYa" = (
 /obj/machinery/power/apc/east_mount,
 /obj/structure/cable/cyan,
+/obj/structure/handrail{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/endeavour/cockpit)
 "vYn" = (
@@ -29622,6 +29619,9 @@
 	},
 /obj/item/gun/projectile/ballistic/shotgun/flare,
 /obj/item/storage/box/flashshells,
+/obj/structure/handrail{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/endeavour/cockpit)
 "wlu" = (
