@@ -133,11 +133,15 @@ GLOBAL_REAL(Configuration, /datum/controller/toml_configuration)
 /datum/controller/toml_configuration/proc/reload()
 	reset()
 	load("config.default/config.toml")
-	load("config/config.toml")
+
+	if(fexists("config/config.toml"))
+		load("config/config.toml")
 
 	reset_whitelist()
 	load_whitelist("config.default/whitelist.toml")
-	load_whitelist("config/whitelist.toml")
+
+	if(fexists("config/whitelist.toml"))
+		load_whitelist("config/whitelist.toml")
 
 /**
  * Resets the configuration.
