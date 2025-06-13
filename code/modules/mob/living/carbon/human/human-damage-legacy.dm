@@ -358,7 +358,7 @@ This function restores all organs.
 	if((damagetype != DAMAGE_TYPE_BRUTE) && (damagetype != DAMAGE_TYPE_BURN))
 		if(damagetype == DAMAGE_TYPE_HALLOSS)
 			if((damage > 25 && prob(20)) || (damage > 50 && prob(60)))
-				if(organ && organ.organ_can_feel_pain() && !isbelly(loc) && !istype(loc, /obj/item/dogborg/sleeper))
+				if(organ && organ.organ_can_feel_pain() && !isbelly(loc) && !istype(loc, /obj/item/robot_builtin/dog_sleeper))
 					emote_nosleep("scream")
 		..(damage, damagetype, def_zone, blocked, soaked)
 		return 1

@@ -3,9 +3,12 @@
 
 //* Init *//
 
-// todo: rework this proc. what happens if it's already there? documentation?? this should probably reset the inventory maybe?
+/**
+ * Initializes, or resets our inventory.
+ */
 /mob/proc/init_inventory()
-	return
+	if(ispath(inventory))
+		inventory = new inventory
 
 //* Carry Weight *//
 

@@ -116,19 +116,12 @@
 		/obj/item/tool/crowbar = null,
 		/obj/item/tool/wirecutters = null,
 		/obj/item/multitool = null,
-		/obj/item/stack/cable_coil/gray = null,
 		/obj/item/duct_tape_roll = null
 		)
 
 	var/list/integrated_tools_by_name
 
 	var/list/integrated_tool_images
-
-	var/list/synths
-
-	var/list/synth_types = list(
-		/datum/matter_synth/wire
-		)
 
 /obj/item/organ/internal/augment/armmounted/shoulder/multiple/Initialize(mapload)
 	. = ..()
@@ -142,12 +135,6 @@
 
 		integrated_tool_images = list()
 
-		if(synth_types)
-			synths = list()
-			for(var/datumpath in synth_types)
-				var/datum/matter_synth/MS = new datumpath
-				synths += MS
-
 		for(var/path in integrated_tools)
 			if(!integrated_tools[path])
 				integrated_tools[path] = new path(src)
@@ -157,22 +144,8 @@
 
 		for(var/tool in integrated_tools)
 			var/obj/item/Tool = integrated_tools[tool]
-			if(istype(Tool, /obj/item/stack))
-				var/obj/item/stack/S = Tool
-				S.synths = synths
-				S.uses_charge = synths.len
 			integrated_tools_by_name[Tool.name] = Tool
 			integrated_tool_images[Tool.name] = image(icon = Tool.icon, icon_state = Tool.icon_state)
-
-/obj/item/organ/internal/augment/armmounted/shoulder/multiple/handle_organ_proc_special()
-	..()
-
-	if(!owner || is_bruised() || !synths)
-		return
-
-	if(prob(20))
-		for(var/datum/matter_synth/MS in synths)
-			MS.add_charge(MS.recharge_rate)
 
 /obj/item/organ/internal/augment/armmounted/shoulder/multiple/augment_action()
 	if(!owner)
@@ -215,9 +188,4 @@
 		/obj/item/surgical/bonegel = null,
 		/obj/item/surgical/FixOVein = null,
 		/obj/item/surgical/bonesetter = null,
-		/obj/item/stack/medical/crude_pack = null
-		)
-
-	synth_types = list(
-		/datum/matter_synth/bandage
 		)
