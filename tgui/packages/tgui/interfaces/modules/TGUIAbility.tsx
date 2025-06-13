@@ -4,7 +4,8 @@
  */
 
 import { BooleanLike } from "../../../common/react";
-import { ModuleData, useModule } from "../../backend";
+import { ModuleData } from "../../backend";
+import { useModule } from '../../experimental/moduleSystem';
 import { Modular } from "../../layouts/Modular";
 
 interface TGUIAbilityProps {

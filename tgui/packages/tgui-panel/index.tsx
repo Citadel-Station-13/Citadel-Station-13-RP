@@ -51,7 +51,7 @@ const store = configureStore({
 const renderApp = createRenderer(() => {
   return (
     <StoreProvider store={store}>
-      <Panel tgui_root={1} />
+      <Panel tguiRoot={1} />
     </StoreProvider>
   );
 });
