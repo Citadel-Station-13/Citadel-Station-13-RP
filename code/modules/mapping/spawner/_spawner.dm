@@ -1,5 +1,4 @@
 /**
- *
  * our only job is to spawn something and then self-delete
  */
 /obj/spawner

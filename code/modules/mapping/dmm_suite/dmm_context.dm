@@ -15,6 +15,9 @@
  * also used to get data out of a /dmm_parsed's load() cycle
  *
  * **do not reuse this between multiple maploads.**
+ *
+ * * created / fed into /dmm_parsed/load()
+ * * created by SSmapping.load_level() in 'virtual' (non-dmm) loadin g mode, where we just allocate a blank level.
  */
 /datum/dmm_context
 	//* state *//
@@ -56,6 +59,8 @@
 	var/loaded_orientation_turn_angle
 
 	/// the dmm_parsed we loaded from
+	///
+	/// * null is allowed, if we either unloaded it or we were never a 'real' dmm load!
 	var/datum/dmm_parsed/loaded_dmm
 
 	//* injected by things in load cycle *//

@@ -96,7 +96,7 @@
  * If the datum being called on is varedited, the call is wrapped via [WrapAdminProcCall][/proc/WrapAdminProcCall]
  */
 /datum/callback/proc/Invoke(...)
-	if(!usr)
+	if(!usr && user)
 		var/datum/weakref/W = user
 		if(W)
 			var/mob/M = W.resolve()

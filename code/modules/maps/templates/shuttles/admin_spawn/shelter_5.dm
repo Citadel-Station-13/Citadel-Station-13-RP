@@ -13,17 +13,9 @@
 	icon_state = "shuttle2"
 	requires_power = 1
 
-// The shuttle's 'shuttle' computer
-/obj/machinery/computer/shuttle_control/explore/escapepod
-	name = "short jump console"
-	shuttle_tag = "Escape Pod"
-
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/escapepod
 	name = "Origin - Escape Pod"
-	base_area = /area/space
-	base_turf = /turf/space
-	landmark_tag = "omship_spawn_escapepod"
 	shuttle_type = /datum/shuttle/autodock/overmap/escapepod
 
 // The 'shuttle'
