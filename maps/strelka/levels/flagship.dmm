@@ -472,6 +472,20 @@
 	},
 /turf/unsimulated/wall,
 /area/space)
+"by" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/belt/medical/emt,
+/obj/item/storage/belt/medical/emt,
+/obj/item/storage/belt/medical/emt,
+/obj/item/storage/belt/medical/emt,
+/obj/item/storage/belt/medical/emt,
+/obj/item/storage/belt/medical/emt,
+/obj/item/melee/baton/slime,
+/obj/item/melee/baton/slime,
+/turf/unsimulated/floor{
+	icon_state = "dark"
+	},
+/area/centcom/specops)
 "bA" = (
 /obj/machinery/r_n_d/circuit_imprinter,
 /obj/effect/floor_decal/industrial/warning{
@@ -6649,24 +6663,6 @@
 /obj/effect/floor_decal/industrial/warning/full,
 /turf/simulated/floor/plating,
 /area/shuttle/specops/general)
-"rU" = (
-/obj/item/clothing/glasses/welding/superior,
-/obj/item/clothing/glasses/welding/superior,
-/obj/item/clothing/glasses/welding/superior,
-/obj/item/clothing/glasses/welding/superior,
-/obj/item/clothing/glasses/welding/superior,
-/obj/structure/table/steel_reinforced,
-/obj/item/clothing/glasses/welding/superior,
-/obj/item/grenade/simple/chemical/metalfoam,
-/obj/item/grenade/simple/chemical/metalfoam,
-/obj/item/grenade/simple/chemical/metalfoam,
-/obj/item/grenade/simple/chemical/metalfoam,
-/obj/item/grenade/simple/chemical/metalfoam,
-/obj/item/grenade/simple/chemical/metalfoam,
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
-/area/centcom/specops)
 "rY" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/centcom/bathroom)
@@ -8472,6 +8468,12 @@
 /obj/structure/filingcabinet/tall,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
+"wD" = (
+/obj/spawner/window/reinforced/full/firelocks{
+	id = "emergency_cockpit"
+	},
+/turf/simulated/floor,
+/area/shuttle/escape)
 "wE" = (
 /obj/structure/window/reinforced/holowindow{
 	dir = 8
@@ -10155,6 +10157,20 @@
 /obj/effect/floor_decal/sign/dock/one,
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_chess)
+"AO" = (
+/obj/structure/table/rack/steel,
+/obj/machinery/door/window/brigdoor{
+	req_access = list(109)
+	},
+/obj/structure/window/phoronreinforced,
+/obj/structure/window/phoronreinforced{
+	dir = 1
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced,
+/area/centcom/command)
 "AQ" = (
 /obj/machinery/door/window/holowindoor{
 	dir = 1;
@@ -11884,6 +11900,18 @@
 	},
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/holodorm/source_basic)
+"Fp" = (
+/obj/item/clothing/glasses/welding/superior,
+/obj/item/clothing/glasses/welding/superior,
+/obj/item/clothing/glasses/welding/superior,
+/obj/item/clothing/glasses/welding/superior,
+/obj/item/clothing/glasses/welding/superior,
+/obj/structure/table/steel_reinforced,
+/obj/item/clothing/glasses/welding/superior,
+/turf/unsimulated/floor{
+	icon_state = "dark"
+	},
+/area/centcom/specops)
 "Fq" = (
 /obj/effect/floor_decal/carpet,
 /obj/effect/floor_decal/carpet{
@@ -15558,9 +15586,6 @@
 	layer = 1
 	},
 /area/centcom/living)
-"OM" = (
-/turf/simulated/floor,
-/area/shuttle/escape)
 "OO" = (
 /obj/effect/floor_decal/rust/steel_decals_rusted2,
 /obj/effect/floor_decal/industrial/warning/dust,
@@ -16531,6 +16556,8 @@
 /obj/item/stack/cable_coil,
 /obj/item/stack/cable_coil,
 /obj/item/stack/cable_coil,
+/obj/item/storage/box/metalfoam,
+/obj/item/storage/box/metalfoam,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -16718,21 +16745,6 @@
 "RQ" = (
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/escape)
-"RR" = (
-/obj/item/grenade/simple/supermatter,
-/obj/structure/table/rack/steel,
-/obj/machinery/door/window/brigdoor{
-	req_access = list(109)
-	},
-/obj/structure/window/phoronreinforced,
-/obj/structure/window/phoronreinforced{
-	dir = 1
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
-/turf/simulated/floor/reinforced,
-/area/centcom/command)
 "RS" = (
 /obj/structure/closet/wardrobe/orange,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -20074,18 +20086,6 @@
 /obj/structure/sign/redcross{
 	pixel_y = 32
 	},
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
-/area/centcom/specops)
-"ZY" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/belt/medical/emt,
-/obj/item/storage/belt/medical/emt,
-/obj/item/storage/belt/medical/emt,
-/obj/item/storage/belt/medical/emt,
-/obj/item/storage/belt/medical/emt,
-/obj/item/storage/belt/medical/emt,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -33584,11 +33584,11 @@ om
 XM
 OB
 UI
-OM
-OM
+wD
+wD
 Uh
-OM
-OM
+wD
+wD
 UI
 OB
 XM
@@ -49048,7 +49048,7 @@ wd
 sz
 yo
 qW
-ZY
+by
 tI
 yo
 yo
@@ -49250,7 +49250,7 @@ yo
 VI
 Ib
 nf
-rU
+Fp
 es
 ba
 bj
@@ -56261,7 +56261,7 @@ ky
 ly
 fR
 fR
-RR
+AO
 fR
 fR
 ly

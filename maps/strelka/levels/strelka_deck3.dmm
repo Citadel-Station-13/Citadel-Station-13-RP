@@ -6048,6 +6048,16 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/cargo)
+"vN" = (
+/obj/structure/table/carbon/reinforced,
+/obj/item/slime_scanner,
+/obj/machinery/light/small/old{
+	dir = 4
+	},
+/obj/item/gun/projectile/energy/taser/xeno,
+/obj/item/melee/baton/slime,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck3/science/xenobio)
 "vO" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -6805,19 +6815,6 @@
 	},
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck3)
-"ya" = (
-/obj/structure/closet/crate,
-/obj/item/grenade/simple/chemical,
-/obj/item/grenade/simple/chemical,
-/obj/item/grenade/simple/chemical,
-/obj/item/assembly/timer,
-/obj/item/assembly/timer,
-/obj/item/assembly/timer,
-/obj/item/assembly/igniter,
-/obj/item/assembly/igniter,
-/obj/item/assembly/igniter,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/strelka/shipbase/deck3/science/secondary)
 "yc" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -7504,39 +7501,6 @@
 	},
 /turf/simulated/floor/tiled/old_cargo/red,
 /area/strelka/shipbase/deck3/cargo/portal)
-"Ao" = (
-/obj/structure/closet/crate{
-	name = "Grenade Crate"
-	},
-/obj/item/grenade/simple/chemical,
-/obj/item/grenade/simple/chemical,
-/obj/item/grenade/simple/chemical,
-/obj/item/grenade/simple/chemical,
-/obj/item/assembly/igniter,
-/obj/item/assembly/igniter,
-/obj/item/assembly/igniter,
-/obj/item/assembly/igniter,
-/obj/item/assembly/timer,
-/obj/item/assembly/timer,
-/obj/item/assembly/timer,
-/obj/item/assembly/timer,
-/obj/structure/extinguisher_cabinet{
-	dir = 4;
-	pixel_x = -30
-	},
-/obj/item/storage/box/syringegun,
-/obj/item/gun/launcher/syringe,
-/obj/structure/closet/crate{
-	name = "Grenade Crate"
-	},
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 8
-	},
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/strelka/shipbase/deck3/medical/main)
 "Aq" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
@@ -9726,16 +9690,6 @@
 /obj/structure/curtain/open,
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck3/science/main)
-"HI" = (
-/obj/structure/table/carbon/reinforced,
-/obj/item/slime_scanner,
-/obj/item/melee/baton/slime/loaded,
-/obj/machinery/light/small/old{
-	dir = 4
-	},
-/obj/item/gun/projectile/energy/taser/xeno,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/strelka/shipbase/deck3/science/xenobio)
 "HJ" = (
 /obj/machinery/mineral/processing_unit_console,
 /turf/simulated/wall/r_wall/prepainted/cargo,
@@ -11608,13 +11562,6 @@
 "Ph" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck3/maintenance/medical)
-"Pi" = (
-/obj/structure/table/carbon/reinforced,
-/obj/item/slime_scanner,
-/obj/item/melee/baton/slime/loaded,
-/obj/item/gun/projectile/energy/taser/xeno,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/strelka/shipbase/deck3/science/xenobio)
 "Pj" = (
 /obj/effect/floor_decal/grass_edge,
 /obj/effect/floor_decal/borderfloor{
@@ -13487,6 +13434,70 @@
 /obj/machinery/portable_atmospherics/hydroponics/soil,
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck3)
+"VO" = (
+/obj/structure/closet/crate{
+	name = "Grenade Crate"
+	},
+/obj/item/assembly/igniter,
+/obj/item/assembly/igniter,
+/obj/item/assembly/igniter,
+/obj/item/assembly/igniter,
+/obj/item/assembly/timer,
+/obj/item/assembly/timer,
+/obj/item/assembly/timer,
+/obj/item/assembly/timer,
+/obj/structure/extinguisher_cabinet{
+	dir = 4;
+	pixel_x = -30
+	},
+/obj/item/storage/box/syringegun,
+/obj/item/gun/launcher/syringe,
+/obj/structure/closet/crate{
+	name = "Grenade Crate"
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/closet/crate{
+	name = "Grenade Crate"
+	},
+/obj/item/grenade/simple/chemical,
+/obj/item/grenade/simple/chemical,
+/obj/item/grenade/simple/chemical,
+/obj/item/grenade/simple/chemical,
+/obj/item/assembly/igniter,
+/obj/item/assembly/igniter,
+/obj/item/assembly/igniter,
+/obj/item/assembly/igniter,
+/obj/item/assembly/timer,
+/obj/item/assembly/timer,
+/obj/item/assembly/timer,
+/obj/item/assembly/timer,
+/obj/structure/extinguisher_cabinet{
+	dir = 4;
+	pixel_x = -30
+	},
+/obj/item/storage/box/syringegun,
+/obj/item/gun/launcher/syringe,
+/obj/structure/closet/crate{
+	name = "Grenade Crate"
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck3/medical/main)
 "VP" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/strelka/shipbase/deck3/medical/surgery)
@@ -13599,6 +13610,31 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science)
+"Wg" = (
+/obj/structure/closet/crate,
+/obj/item/assembly/timer,
+/obj/item/assembly/timer,
+/obj/item/assembly/timer,
+/obj/item/assembly/igniter,
+/obj/item/assembly/igniter,
+/obj/item/assembly/igniter,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/closet/crate,
+/obj/item/grenade/simple/chemical,
+/obj/item/grenade/simple/chemical,
+/obj/item/grenade/simple/chemical,
+/obj/item/assembly/timer,
+/obj/item/assembly/timer,
+/obj/item/assembly/timer,
+/obj/item/assembly/igniter,
+/obj/item/assembly/igniter,
+/obj/item/assembly/igniter,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck3/science/secondary)
 "Wh" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 6
@@ -13778,6 +13814,13 @@
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/strelka/shipbase/deck3/cargo/portal)
+"WH" = (
+/obj/structure/table/carbon/reinforced,
+/obj/item/slime_scanner,
+/obj/item/gun/projectile/energy/taser/xeno,
+/obj/item/melee/baton/slime,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck3/science/xenobio)
 "WJ" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -29664,8 +29707,8 @@ MN
 kV
 uX
 rI
-Pi
-HI
+WH
+vN
 im
 Ki
 BG
@@ -32179,7 +32222,7 @@ Pf
 Vw
 IH
 Mt
-ya
+Wg
 jq
 bP
 Xz
@@ -33324,7 +33367,7 @@ Zc
 Ct
 SG
 vS
-Ao
+VO
 BQ
 IQ
 KS

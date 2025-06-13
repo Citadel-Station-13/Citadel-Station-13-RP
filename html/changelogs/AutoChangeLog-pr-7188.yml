@@ -1,0 +1,4 @@
+author: "timothyteakettle"
+delete-after: True
+changes:
+  - rscadd: "add a way for admins to allow objects to emote"
