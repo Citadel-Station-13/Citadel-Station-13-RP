@@ -210,7 +210,7 @@ export const TGUIProsfabControl = (props: TGUILatheControlProps, context) => {
                     data.designs.categories.sort((c1, c2) => c1.localeCompare(c2)).map((cat) => (
                       <Tabs.Tab key={cat} fluid color="transparent"
                         selected={cat === category}
-                        onClick={() => { setCategory(cat); setSubCategory("") }}>
+                        onClick={() => { setCategory(cat); setSubCategory(""); }}>
                         {cat}
                       </Tabs.Tab>
                     ))
