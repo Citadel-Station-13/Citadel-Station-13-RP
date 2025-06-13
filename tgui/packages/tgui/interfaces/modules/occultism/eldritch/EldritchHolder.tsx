@@ -49,18 +49,21 @@ interface EldritchPassive {
   id: string;
   name: string;
   desc: string;
+  iconAsBase64: string | null;
 }
 
 interface EldritchAbility {
   id: string;
   name: string;
   desc: string;
+  iconAsBase64: string | null;
 }
 
 interface EldritchRecipe {
   id: string;
   name: string;
   desc: string;
+  iconAsBase64: string | null;
 }
 
 interface EldritchPatron {

@@ -14,8 +14,12 @@
 	return id in user.eldritch_get_holder().known_recipe_ids
 
 /datum/crafting_recipe/eldritch_recipe/proc/ui_serialize_recipe()
+	var/serialized_icon
+	#warn impl
+	
 	return list(
 		"id" = id,
 		"name" = name,
 		"desc" = desc,
+		"iconAsBase64" = serialized_icon,
 	)

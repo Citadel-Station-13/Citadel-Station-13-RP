@@ -13,10 +13,13 @@
 	return new ability_type(for_holder)
 
 /datum/prototype/eldritch_ability/proc/ui_serialize_ability()
+	var/serialized_icon
+	#warn impl
 	return list(
 		"id" = id,
 		"name" = name,
 		"desc" = desc,
+		"iconAsBase64" = serialized_icon,
 	)
 
 /datum/ability/eldritch_ability
@@ -35,4 +38,3 @@
 
 /datum/ability/eldritch_ability/proc/ui_serialize_ability_context()
 	return list()
-	

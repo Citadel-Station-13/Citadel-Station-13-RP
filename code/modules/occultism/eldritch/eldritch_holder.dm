@@ -53,29 +53,34 @@
 	return (knowledge in src.knowledge)
 
 /datum/eldritch_holder/proc/set_active_patron(datum/prototype/eldritch_patron/patron)
+	active_patron = patron
 	ui_push_active_patron()
 
 /datum/eldritch_holder/proc/add_passive(datum/prototype/eldritch_passive/passive)
+	#warn impl
 	ui_push_learned_passives()
 	ui_push_passive_contexts()
 
 /datum/eldritch_holder/proc/remove_passive(datum/prototype/eldritch_passive/passive)
+	#warn impl
 	ui_push_learned_passives()
 
 /datum/eldritch_holder/proc/add_ability(datum/prototype/eldritch_ability/ability)
+	#warn impl
 	ui_push_learned_abilities()
 	ui_push_ability_contexts()
 
 /datum/eldritch_holder/proc/remove_ability(datum/prototype/eldritch_ability/ability)
+	#warn impl
 	ui_push_learned_abilities()
 
 /datum/eldritch_holder/proc/add_recipe(datum/crafting_recipe/eldritch_recipe/recipe)
+	#warn impl
 	ui_push_learned_recipes()
 
 /datum/eldritch_holder/proc/remove_recipe(datum/crafting_recipe/eldritch_recipe/recipe)
+	#warn impl
 	ui_push_learned_recipes()
-
-#warn impl all
 
 /datum/eldritch_holder/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -98,11 +103,10 @@
 	var/is_admin = check_rights(show_msg = FALSE, C = user)
 	.["admin"] = is_admin
 
-	#warn impl
-	var/list/serialized_knowledge
-	var/list/serialized_passives
-	var/list/serialized_abilities
-	var/list/serialized_recipes
+	var/list/serialized_knowledge = ui_serialize_repository_knowledge(is_admin)
+	var/list/serialized_passives = ui_serialize_repository_passives(is_admin)
+	var/list/serialized_abilities = ui_serialize_repository_abilities(is_admin)
+	var/list/serialized_recipes = ui_serialize_repository_recipes(is_admin)
 
 	.["repositoryKnowledge"] = serialized_knowledge
 	.["repositoryPassives"] = serialized_passives
@@ -183,4 +187,30 @@
 	for(var/datum/prototype/eldritch_passive/passive as anything in passives)
 		var/datum/eldritch_passive_context/context = passives[passive]
 		serialized[passive.id] = context.ui_serialize_passive_context()
+	return serialized
+
+/datum/eldritch_holder/proc/ui_serialize_repository_knowledge(admin)
+	var/list/serialized = list()
+	for(var/datum/prototype/eldritch_knowledge/knowledge as anything in RSeldritch_knowledge.fetch_subtypes_immutable(/datum/prototype/eldritch_knowledge))
+		if(!admin && (knowledge.hidden || (knowledge.secret && !(knowledge in src.knowledge))))
+			continue
+		serialized[knowledge.id] = knowledge.ui_serialize_knowledge()
+	return serialized
+
+/datum/eldritch_holder/proc/ui_serialize_repository_passives(admin)
+	var/list/serialized = list()
+	for(var/datum/prototype/eldritch_passive/passive as anything in RSeldritch_passive.fetch_subtypes_immutable(/datum/prototype/eldritch_passive))
+		serialized[passive.id] = passive.ui_serialize_passive()
+	return serialized
+
+/datum/eldritch_holder/proc/ui_serialize_repository_abilities(admin)
+	var/list/serialized = list()
+	for(var/datum/prototype/eldritch_ability/ability as anything in RSeldritch_ability.fetch_subtypes_immutable(/datum/prototype/eldritch_ability))
+		serialized[ability.id] = ability.ui_serialize_ability()
+	return serialized
+
+/datum/eldritch_holder/proc/ui_serialize_repository_recipes(admin)
+	var/list/serialized = list()
+	for(var/datum/crafting_recipe/eldritch_recipe/recipe in GLOB.crafting_recipes)
+		serialized[recipe.id] = recipe.ui_serialize_recipe()
 	return serialized

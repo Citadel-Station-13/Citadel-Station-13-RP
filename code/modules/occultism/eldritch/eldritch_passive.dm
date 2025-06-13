@@ -23,10 +23,13 @@
 	var/requires_ticking = FALSE
 
 /datum/prototype/eldritch_passive/proc/ui_serialize_passive()
+	var/serialized_icon
+	#warn impl
 	return list(
 		"id" = id,
 		"name" = name,
 		"desc" = desc,
+		"iconAsBase64" = serialized_icon,
 	)
 
 /datum/prototype/eldritch_passive/proc/create_initial_context(datum/eldritch_holder/holder) as /datum/eldritch_passive_context
