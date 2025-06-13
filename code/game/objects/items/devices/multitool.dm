@@ -86,7 +86,7 @@
 					return CLICKCHAIN_DID_SOMETHING
 				// revive the holosphere shell
 				visible_message(SPAN_NOTICE("[clickchain.performer] successfully reboots [target] using \the [src]."))
-				shell.revive(TRUE, TRUE)
+				shell.revive(TRUE, TRUE, restore_nutrition = FALSE)
 				return CLICKCHAIN_DID_SOMETHING
 	return ..()
 
