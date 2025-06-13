@@ -4193,7 +4193,6 @@
 "ky" = (
 /obj/machinery/lathe/mecha_part_fabricator/pros{
 	dir = 8;
-	part_sets = list("Prosthetics","Prosthetics, Internal");
 	pixel_y = 3;
 	req_access = null
 	},
