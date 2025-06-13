@@ -131,7 +131,7 @@
 				O.mmi = new /obj/item/mmi(O)
 			O.mmi.transfer_identity(src)
 		else if(mind && mind.special_role)
-			O.mind.store_memory("In case you look at this after being borged, the objectives are only here until I find a way to make them not show up for you, as I can't simply delete them without screwing up round-end reporting. --NeoFite")
+			O.mind.legacy_add_html_memory("In case you look at this after being borged, the objectives are only here until I find a way to make them not show up for you, as I can't simply delete them without screwing up round-end reporting. --NeoFite")
 	else
 		transfer_client_to(O)
 

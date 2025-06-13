@@ -17,7 +17,7 @@
 		return "Not from here you can't."
 	. = ..()
 
-/datum/ability/species/sonar/on_trigger(mob/user, toggling)
+/datum/ability/species/sonar/on_trigger_old(mob/user, toggling)
 	. = ..()
 
 	if(SSmapping.level_trait(get_z(owner), ZTRAIT_BLOCK_LEGACY_WALLHACKS))

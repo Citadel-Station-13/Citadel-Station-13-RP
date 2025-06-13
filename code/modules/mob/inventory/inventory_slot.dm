@@ -84,7 +84,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	/// abstract type
 	abstract_type = /datum/inventory_slot
 
-	//* Intrinsics
+	//* Intrinsics *//
 	/// slot name
 	var/name = "unknown"
 	/// id
@@ -96,11 +96,12 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	/// filter flags
 	var/inventory_filter_flags = INV_FILTER_UNKNOWN
 	/// semantic layer
-	///
 	/// * higher = outer, lower = inner
 	/// * outer ones intercept hits/whatnot first
+	/// TODO: impl
 	var/semantic_layer = 0
-	/// display order - higher is upper. a <hr> is applied on 0.
+	/// display order - higher is upper.
+	/// * legacy: a <hr> is applied on 0 for the html strip menu.
 	var/sort_order = 0
 
 	//* HUD *//
@@ -117,7 +118,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	/// hud icon state in hud style
 	var/inventory_hud_icon_state = ""
 
-	//* Grammar
+	//* Grammar *//
 	/// player friendly name
 	var/display_name = "unknown"
 	/// player friendly preposition
@@ -125,7 +126,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	/// is this a "plural" slot?
 	var/display_plural = FALSE
 
-	//* Equip Checks
+	//* Equip Checks *//
 	/// equip checks to use
 	var/slot_equip_checks = NONE
 	/// slot flags required to have if checking
@@ -133,13 +134,13 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	/// slot flags forbidden to have if checking
 	var/slot_flags_forbidden = NONE
 
-	//* Stripping
+	//* Stripping *//
 	/// always show on strip/force equip menu, or only show when full
 	var/always_show_on_strip_menu = TRUE
 	/// default INV_VIEW flags for stripping
 	var/default_strip_inv_view_flags = NONE
 
-	//* Rendering
+	//* Rendering *//
 	/// rendering slot key
 	var/render_key
 	/// rendering plural slot key - only set on base type of plural slots

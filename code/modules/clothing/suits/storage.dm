@@ -1,3 +1,4 @@
+// todo: do we really need /suit/storage???? can we not do this?
 /obj/item/clothing/suit/storage
 	//* Directly passed to storage system. *//
 

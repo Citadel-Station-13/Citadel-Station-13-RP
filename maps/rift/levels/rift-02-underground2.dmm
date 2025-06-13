@@ -11228,7 +11228,7 @@
 	pixel_x = -13
 	},
 /obj/item/reagent_containers/food/drinks/bottle/holywater,
-/obj/item/nullrod{
+/obj/item/nullrod_legacy{
 	pixel_x = -4
 	},
 /obj/machinery/air_alarm{

@@ -7,6 +7,7 @@
 /// cannot be used to do normal melee hits - this INCLUDES user overrides of it!
 #define ITEM_NO_BLUDGEON			(1<<2)
 /// for all things that are technically items but used for various different stuff
+/// TODO: evaluate what this means
 #define ITEM_ABSTRACT			(1<<3)
 /// is this item in a storage datum?
 #define ITEM_IN_STORAGE			(1<<4)
@@ -29,6 +30,8 @@
 /// doesn't encumber while not in hand
 #define ITEM_ENCUMBERS_ONLY_HELD (1<<13)
 // todo: ITEM_SLOWS_WHILE_HELD for slowdown
+
+
 
 DEFINE_BITFIELD(item_flags, list(
 	BITFIELD(ITEM_IN_INVENTORY),
