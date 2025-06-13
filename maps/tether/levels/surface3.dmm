@@ -3360,7 +3360,7 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
 	},
-/obj/machinery/r_n_d/circuit_imprinter{
+/obj/machinery/lathe/r_n_d/circuit_imprinter{
 	dir = 1
 	},
 /obj/item/reagent_containers/glass/beaker/sulphuric,
@@ -12287,7 +12287,7 @@
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
 "hpG" = (
-/obj/machinery/r_n_d/circuit_imprinter{
+/obj/machinery/lathe/r_n_d/circuit_imprinter{
 	dir = 8
 	},
 /obj/item/reagent_containers/glass/beaker/sulphuric,
@@ -15209,7 +15209,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/hop)
 "jed" = (
-/obj/machinery/mecha_part_fabricator{
+/obj/machinery/lathe/mecha_part_fabricator{
 	dir = 8
 	},
 /obj/structure/extinguisher_cabinet{
@@ -17642,7 +17642,7 @@
 /turf/simulated/floor/carpet,
 /area/library)
 "kJm" = (
-/obj/machinery/mecha_part_fabricator/pros{
+/obj/machinery/lathe/mecha_part_fabricator/pros{
 	dir = 1
 	},
 /obj/structure/reagent_dispensers/acid{
@@ -24572,7 +24572,7 @@
 /obj/machinery/requests_console/preset/research{
 	pixel_y = 30
 	},
-/obj/machinery/r_n_d/protolathe{
+/obj/machinery/lathe/r_n_d/protolathe{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_grid,

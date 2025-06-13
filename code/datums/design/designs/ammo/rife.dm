@@ -1,5 +1,6 @@
 /datum/prototype/design/ammo/rifle
 	abstract_type = /datum/prototype/design/ammo/rifle
+	subcategory = "Rifle"
 
 /datum/prototype/design/ammo/rifle/m762mm
 	id = "AmmoRifle762mm"

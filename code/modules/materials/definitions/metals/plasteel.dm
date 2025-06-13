@@ -28,6 +28,8 @@
 	absorption = MATERIAL_RESISTANCE_ABOVE_MODERATE(0.75)
 	nullification = MATERIAL_RESISTANCE_ABOVE_NONE(0.5)
 
+	material_constraints = MATERIAL_CONSTRAINT_RIGID
+
 /datum/prototype/material/plasteel/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(
