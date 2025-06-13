@@ -975,6 +975,7 @@
 #include "code\datums\repositories\unique.dm"
 #include "code\datums\soundbytes\_soundbyte.dm"
 #include "code\datums\soundbytes\announcer.dm"
+#include "code\datums\soundbytes\defs\clicker.dm"
 #include "code\datums\soundbytes\defs\explosion.dm"
 #include "code\datums\soundbytes\defs\sparks.dm"
 #include "code\datums\soundbytes\defs\spray.dm"
