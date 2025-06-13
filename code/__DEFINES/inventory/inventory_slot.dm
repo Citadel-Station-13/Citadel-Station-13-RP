@@ -65,31 +65,26 @@ DEFINE_BITFIELD_NEW(inv_slot_filter, list(
 	BITFIELD_NEW("Hands", INV_FILTER_HANDS),
 ))
 
-
-// rest got converted to typepath ids
-// one day i'll come for you, inhand icons.
-// one day.... mark my words...
-
 /// global list of default slots to use when equipping to appropriate slot
 GLOBAL_LIST_INIT(slot_equipment_priority, meta_slot_equipment_priority())
 
 /proc/meta_slot_equipment_priority()
 	return list(
-		SLOT_ID_BACK,
-		SLOT_ID_WORN_ID,
-		SLOT_ID_UNIFORM,
-		SLOT_ID_SUIT,
-		SLOT_ID_MASK,
-		SLOT_ID_HEAD,
-		SLOT_ID_SHOES,
-		SLOT_ID_GLOVES,
-		SLOT_ID_LEFT_EAR,
-		SLOT_ID_RIGHT_EAR,
-		SLOT_ID_GLASSES,
-		SLOT_ID_BELT,
-		SLOT_ID_SUIT_STORAGE,
+		/datum/inventory_slot/inventory/back::id,
+		/datum/inventory_slot/inventory/id::id,
+		/datum/inventory_slot/inventory/uniform::id,
+		/datum/inventory_slot/inventory/suit::id,
+		/datum/inventory_slot/inventory/mask::id,
+		/datum/inventory_slot/inventory/head::id,
+		/datum/inventory_slot/inventory/shoes::id,
+		/datum/inventory_slot/inventory/gloves::id,
+		/datum/inventory_slot/inventory/ears/left::id,
+		/datum/inventory_slot/inventory/ears/right::id,
+		/datum/inventory_slot/inventory/glasses::id,
+		/datum/inventory_slot/inventory/belt::id,
+		/datum/inventory_slot/inventory/suit_storage::id,
 		/datum/inventory_slot/abstract/attach_as_accessory,
-		SLOT_ID_LEFT_POCKET,
-		SLOT_ID_RIGHT_POCKET
+		/datum/inventory_slot/inventory/pocket/left::id,
+		/datum/inventory_slot/inventory/pocket/right::id,
 	)
 

@@ -1,6 +1,11 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
+/datum/prototype/eldritch_ability/eldritch_escape
+	ability_type = /datum/ability/eldritch_ability/eldritch_escape
+	name = "Planar Disengagement"
+	desc = "Retreat into the Room Without Walls."
+
 /datum/ability/eldritch_ability/eldritch_escape
 	name = "Planar Disengagement"
 	desc = "Ascend from reality and retreat into the Room Without Walls."

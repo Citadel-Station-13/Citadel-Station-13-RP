@@ -2,8 +2,28 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /datum/component/eldritch_rust_shielding
+	/// amount left
+	var/amount = 0
+	/// bound shieldcall
+	var/datum/shieldcall/bound/eldritch_rust_shielding_component/bound_shieldcall
 
 #warn impl
+
+/datum/component/eldritch_rust_shielding/Initialize()
+	. = ..()
+	if(. == COMPONENT_INCOMPATIBLE)
+		return
+	if(!isatom(parent))
+		return COMPONENT_INCOMPATIBLE
+	bound_shieldcall = new(src)
+
+/datum/component/eldritch_rust_shielding/RegisterWithParent()
+	. = ..()
+
+/datum/component/eldritch_rust_shielding/UnregisterFromParent()
+	. = ..()
+
+
 
 /datum/shieldcall/bound/eldritch_rust_shielding_component
 	expected_type = /datum/component/eldritch_rust_shielding
