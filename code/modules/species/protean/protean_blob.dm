@@ -59,6 +59,7 @@
 	var/datum/modifier/healing
 
 	var/list/datum/weakref/previously_held
+	var/datum/protean_blob_recolor/colour_ui //colouring
 
 	player_msg = "In this form, you can move a little faster and your health will regenerate as long as you have metal in you!"
 	holder_type = /obj/item/holder/protoblob
@@ -750,21 +751,14 @@
 
 /mob/living/simple_mob/protean_blob/proc/chameleon_color()
 	set name = "Chameleon Color"
-	set desc = "Allows a protean blob to change or reset its color when worn."
+	set desc = "Allows a protean blob to change or reset its color."
 	set category = "Abilities"
 
-	if(!istype(loc, /obj/item/holder))
-		to_chat(src, "<span class='notice'>You can't do that while not being held or worn.</span>")
-		return
-
-	var/obj/item/holder/H = loc
-	var/color_in = input("Pick a color. Cancelling sets it to default.","Color", H.color) as null|color
-
-	if(color_in)
-		H.color = color_in
+	if(colour_ui)
+		colour_ui.ui_interact(usr)
 	else
-		H.color = initial(H.color)
-	H.update_worn_icon()	//so our overlays update.
+		colour_ui = new(src)
+		colour_ui.ui_interact(usr)
 
 
 /mob/living/simple_mob/protean_blob/make_perspective()
