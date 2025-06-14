@@ -141,6 +141,9 @@
 		return FALSE
 	var/atom/movable/color_target = get_color_target()
 	color_target.add_atom_color(color_to_use)
+	if(isitem(color_target))
+		var/obj/item/CI = color_target
+		CI.update_worn_icon()
 	return TRUE
 
 
@@ -171,6 +174,7 @@
 				color_matrix_last = cm
 
 		var/mutable_appearance/preview = mutable_appearance(color_target.icon, color_target.icon_state, color_target.layer, color_target.plane, color_target.alpha, color_target.appearance_flags)
+		preview.overlays = color_target.overlays.Copy()
 		preview.color = (active_mode == COLORMATE_TINT ? activecolor : cm)
 		temp = ""
 

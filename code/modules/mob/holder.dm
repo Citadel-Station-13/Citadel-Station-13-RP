@@ -13,6 +13,20 @@
 	throw_range = 14
 	throw_force = 10
 	throw_speed = 3
+	item_icons = list(
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_holder.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_holder.dmi',
+		SLOT_ID_HEAD = 'icons/mob/clothing/head.dmi',
+		SLOT_ID_MASK = 'icons/mob/clothing/mask.dmi',
+		SLOT_ID_EYES = 'icons/mob/clothing/eyes.dmi',
+		SLOT_ID_LEFT_EAR = 'icons/mob/clothing/ears.dmi',
+		SLOT_ID_RIGHT_EAR = 'icons/mob/clothing/ears.dmi',
+		SLOT_ID_SUIT = 'icons/mob/clothing/suits.dmi',
+		SLOT_ID_UNIFORM = 'icons/mob/clothing/uniform.dmi',
+		SLOT_ID_GLOVES = 'icons/mob/clothing/hands.dmi',
+		SLOT_ID_BACK = 'icons/mob/clothing/back.dmi',
+		SLOT_ID_SHOES = 'icons/mob/clothing/feet.dmi'
+		)
 	var/static/list/holder_mob_icon_cache = list()
 	var/mob/living/held_mob
 
@@ -80,6 +94,7 @@
 	add_overlay(MA)
 	name = M.name
 	desc = M.desc
+	item_state = held_mob.icon_state
 	update_worn_icon()
 
 /obj/item/holder/contents_resist(mob/escapee)

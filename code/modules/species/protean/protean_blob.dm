@@ -691,6 +691,7 @@
 	if(!ispath(chosen_list[picked]))
 		return
 
+	H.cut_overlays()
 	H.disguise(chosen_list[picked])
 	if(isnull(H.icon_override))
 		H.icon_override = icon_file
