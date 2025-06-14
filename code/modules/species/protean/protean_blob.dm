@@ -645,7 +645,6 @@
 
 	var/obj/item/holder/H = loc
 	var/chosen_list
-	var/icon_file
 	switch(input(src,"What type of clothing would you like to mimic or reset appearance?","Mimic Clothes") as null|anything in list("under", "suit", "hat", "gloves", "shoes", "back", "mask", "glasses", "belt", "ears", "headsets", "reset"))
 		if("reset")
 			H.color = initial(H.color)
@@ -654,47 +653,34 @@
 			return
 		if("under")
 			chosen_list = GLOB.clothing_under
-			icon_file = 'icons/mob/clothing/uniform.dmi'
 		if("suit")
 			chosen_list = GLOB.clothing_suit
-			icon_file = 'icons/mob/clothing/suits.dmi'
 		if("hat")
 			chosen_list = GLOB.clothing_head
-			icon_file = 'icons/mob/clothing/head.dmi'
 		if("gloves")
 			chosen_list = GLOB.clothing_gloves
-			icon_file = 'icons/mob/clothing/hands.dmi'
 		if("shoes")
 			chosen_list = GLOB.clothing_shoes
-			icon_file = 'icons/mob/clothing/feet.dmi'
 		if("back")
 			chosen_list = GLOB.clothing_backpack
-			icon_file = 'icons/mob/clothing/back.dmi'
 		if("mask")
 			chosen_list = GLOB.clothing_mask
-			icon_file = 'icons/mob/clothing/mask.dmi'
 		if("glasses")
 			chosen_list = GLOB.clothing_glasses
-			icon_file = 'icons/mob/clothing/eyes.dmi'
 		if("belt")
 			chosen_list = GLOB.clothing_belt
-			icon_file = 'icons/mob/clothing/belt.dmi'
 		if("ears")
 			chosen_list = GLOB.clothing_ears
-			icon_file = 'icons/mob/clothing/ears.dmi'
 		if("headsets")
 			chosen_list = GLOB.clothing_headsets
-			icon_file = 'icons/mob/clothing/ears.dmi'
+			
 
 	var/picked = input(src,"What clothing would you like to mimic?","Mimic Clothes") as null|anything in chosen_list
-
 	if(!ispath(chosen_list[picked]))
 		return
 
 	H.cut_overlays()
 	H.disguise(chosen_list[picked])
-	if(isnull(H.icon_override))
-		H.icon_override = icon_file
 	H.update_worn_icon()	//so our overlays update.
 
 	if (ismob(H.loc))
