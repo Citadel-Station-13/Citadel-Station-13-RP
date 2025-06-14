@@ -433,7 +433,7 @@
 /obj/machinery/door/blast/regular{
 	dir = 4;
 	id = "portnacelleSDF";
-	width = s
+	
 	},
 /obj/machinery/door/blast/regular/open{
 	id = "SDFantiboarding"
@@ -2101,7 +2101,7 @@
 /obj/machinery/door/blast/regular{
 	dir = 4;
 	id = "starboardnacelleSDF";
-	width = s
+	
 	},
 /obj/machinery/door/blast/regular/open{
 	id = "SDFantiboarding"
@@ -2155,7 +2155,7 @@
 /obj/machinery/door/blast/regular{
 	dir = 4;
 	id = "SDFentry1";
-	width = s
+	
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/sdf)
@@ -3154,7 +3154,7 @@
 /obj/machinery/door/blast/regular{
 	dir = 4;
 	id = "SDFentry1";
-	width = s
+	
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/sdf)
@@ -4246,7 +4246,7 @@
 /obj/machinery/door/blast/regular{
 	dir = 4;
 	id = "SDFentry2";
-	width = s
+	
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/sdf)
@@ -4264,7 +4264,7 @@
 /obj/machinery/door/blast/regular{
 	dir = 4;
 	id = "starboardnacelleSDF";
-	width = s
+	
 	},
 /turf/simulated/floor/maglev{
 	dir = 4
@@ -4690,7 +4690,7 @@
 /obj/machinery/door/blast/regular{
 	dir = 4;
 	id = "starboardnacelleSDF";
-	width = s
+	
 	},
 /obj/machinery/door/blast/regular/open{
 	id = "SDFantiboarding"
@@ -4981,7 +4981,7 @@
 /obj/machinery/door/blast/regular{
 	dir = 4;
 	id = "starboardnacelleSDF";
-	width = s
+	
 	},
 /turf/simulated/floor/maglev{
 	dir = 4
@@ -5335,7 +5335,7 @@
 /obj/machinery/door/blast/regular{
 	dir = 4;
 	id = "SDFbalista";
-	width = s
+	
 	},
 /obj/machinery/door/blast/regular/open{
 	id = "SDFantiboarding"
@@ -5854,7 +5854,7 @@
 /obj/machinery/door/blast/regular{
 	dir = 4;
 	id = "portnacelleSDF";
-	width = s
+	
 	},
 /obj/machinery/door/blast/regular/open{
 	id = "SDFantiboarding"
@@ -9102,7 +9102,7 @@
 /obj/machinery/door/blast/regular{
 	dir = 4;
 	id = "SDFentry2";
-	width = s
+	
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/sdf)
