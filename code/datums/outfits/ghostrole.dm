@@ -100,3 +100,16 @@
 	l_hand = /obj/item/gearbox/lythios_colonist
 	r_pocket = /obj/item/reagent_containers/food/drinks/flask/tajflask/v_gin
 	l_pocket = /obj/item/reagent_containers/food/snacks/taj_pemmican
+
+//SDF
+/datum/outfit/sdf
+	name = "Hadii's Folly SDF"
+	uniform = /obj/item/clothing/under/tajaran/hadiifolly/soldier
+	shoes = /obj/item/clothing/shoes/boots/jackboots
+	l_ear = /obj/item/radio/headset
+	back = /obj/item/storage/backpack/voyager
+	id_slot = SLOT_ID_WORN_ID
+	id_type = /obj/item/card/id/external/id_sdf
+	r_hand = /obj/item/flame/lighter/zippo/taj
+	r_pocket = /obj/item/reagent_containers/food/drinks/flask/tajflask/v_gin
+	l_pocket = /obj/item/reagent_containers/food/snacks/taj_pemmican

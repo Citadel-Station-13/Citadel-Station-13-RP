@@ -401,6 +401,11 @@ STANDARD_ACCESS_DATUM(ACCESS_CENTCOM_ADMIRAL, centcom/admiral, "Admiral")
 #define ACCESS_FACTION_SYNDICATE 150//General Syndicate Access
 STANDARD_ACCESS_DATUM(ACCESS_FACTION_SYNDICATE, faction/syndicate, "Syndicate")
 
+//? SDF
+
+#define ACCESS_FACTION_SDF 155//SDF (for ghost roles)
+STANDARD_ACCESS_DATUM(ACCESS_FACTION_SDF, faction/sdf, "SDF")
+
 //? Pirate
 
 #define ACCESS_FACTION_PIRATE 168//Pirate Crew Access (Blackbeard was born in 1680.)

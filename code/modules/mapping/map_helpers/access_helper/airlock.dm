@@ -707,3 +707,8 @@
 	req_access = list(
 		ACCESS_FACTION_TALON,
 	)
+
+/obj/map_helper/access_helper/airlock/disconnected/sdf
+	req_access = list(
+		ACCESS_FACTION_SDF,
+	)

@@ -151,6 +151,11 @@
 	icon = 'icons/turf/areas_vr.dmi'
 	icon_state = "orawhicir"
 
+/area/sector/miaphus/beach/sdf
+	name = "\improper Away Mission - Nahtrik SDF Outpost 12"
+	icon = 'icons/turf/areas_vr.dmi'
+	icon_state = "orawhicir"
+
 //Some areas for the cave, which are referenced by our init object to seed submaps and ores
 /area/sector/miaphus/cave
 	area_flags = AREA_RAD_SHIELDED

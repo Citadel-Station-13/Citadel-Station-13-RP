@@ -123,3 +123,49 @@
 /turf/simulated/floor/beach/coastwater/Initialize(mapload)
 	. = ..()
 	add_overlay(image("icon"='icons/misc/beach.dmi',"icon_state"="water","layer"=MOB_LAYER+0.1))
+
+//settlement
+
+
+/obj/structure/barricade/miaphus/window
+	name = "Wooden framed window"
+	desc = "A window made with wood."
+	icon = 'icons/obj/structures/miaphus_structure.dmi'
+	icon_state = "woodwindow"
+	opacity = 1
+	density = 1
+	anchored = 1
+	allow_unanchor = 1
+
+/obj/structure/barricade/miaphus/tentleathercorner
+	icon = 'icons/obj/structures/miaphus_structure.dmi'
+	name = "leather tent"
+	icon_state = "leather_corner"
+	opacity = TRUE
+
+/obj/structure/barricade/miaphus/tentleatheredge
+	icon = 'icons/obj/structures/miaphus_structure.dmi'
+	name = "leather tent"
+	icon_state = "leather_edge"
+	opacity = TRUE
+
+/obj/structure/barricade/miaphus/tentclothcorner
+	icon = 'icons/obj/structures/miaphus_structure.dmi'
+	name = "cotton tent"
+	icon_state = "cloth_corner"
+	opacity = TRUE
+
+/obj/structure/barricade/miaphus/tentclothedge
+	icon = 'icons/obj/structures/miaphus_structure.dmi'
+	name = "cotton tent"
+	icon_state = "cloth_edge"
+	opacity = TRUE
+
+/obj/effect/floor_decal/sand
+	name = "desert edge"
+	icon = 'icons/obj/structures/miaphus_structure.dmi'
+	icon_state = "desertedge"
+
+/obj/effect/floor_decal/sand/corner
+	icon = 'icons/obj/structures/miaphus_structure.dmi'
+	icon_state = "desertcorner"

@@ -9,6 +9,9 @@
 		/datum/map_level/sector/miaphus/desert,
 	)
 
+	legacy_assert_shuttle_datums = list(
+		/datum/shuttle/autodock/overmap/miaphus/sdf,)
+
 /datum/map_level/sector/miaphus
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert
 	traits = list(
