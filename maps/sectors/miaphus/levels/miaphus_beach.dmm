@@ -432,8 +432,7 @@
 /obj/effect/floor_decal/industrial/danger,
 /obj/machinery/door/blast/regular{
 	dir = 4;
-	id = "portnacelleSDF";
-	
+	id = "portnacelleSDF"
 	},
 /obj/machinery/door/blast/regular/open{
 	id = "SDFantiboarding"
@@ -2100,8 +2099,7 @@
 /obj/effect/floor_decal/industrial/danger,
 /obj/machinery/door/blast/regular{
 	dir = 4;
-	id = "starboardnacelleSDF";
-	
+	id = "starboardnacelleSDF"
 	},
 /obj/machinery/door/blast/regular/open{
 	id = "SDFantiboarding"
@@ -2154,8 +2152,7 @@
 	},
 /obj/machinery/door/blast/regular{
 	dir = 4;
-	id = "SDFentry1";
-	
+	id = "SDFentry1"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/sdf)
@@ -2326,13 +2323,13 @@
 /area/sector/miaphus/beach/mineshaft)
 "lz" = (
 /obj/spawner/window/reinforced/full/firelocks,
-/obj/map_helper/paint_stripe/sun,
 /obj/machinery/door/blast/regular/open{
 	id = "SDFgeneral"
 	},
 /obj/machinery/door/blast/regular/open{
 	id = "SDFantiboarding"
 	},
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor,
 /area/shuttle/miaphus/sdf)
 "lA" = (
@@ -2483,11 +2480,6 @@
 	name = "dirt"
 	},
 /area/sector/miaphus/beach/mineshaft)
-"mv" = (
-/obj/map_helper/paint_stripe/sun,
-/obj/map_helper/paint_stripe/sun,
-/turf/simulated/wall/r_wall/prepainted,
-/area/shuttle/miaphus/sdf)
 "mx" = (
 /obj/structure/table/wooden_reinforced,
 /turf/simulated/floor/wood/broken,
@@ -3153,8 +3145,7 @@
 	},
 /obj/machinery/door/blast/regular{
 	dir = 4;
-	id = "SDFentry1";
-	
+	id = "SDFentry1"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/sdf)
@@ -4245,8 +4236,7 @@
 	},
 /obj/machinery/door/blast/regular{
 	dir = 4;
-	id = "SDFentry2";
-	
+	id = "SDFentry2"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/sdf)
@@ -4263,8 +4253,7 @@
 "vO" = (
 /obj/machinery/door/blast/regular{
 	dir = 4;
-	id = "starboardnacelleSDF";
-	
+	id = "starboardnacelleSDF"
 	},
 /turf/simulated/floor/maglev{
 	dir = 4
@@ -4689,8 +4678,7 @@
 "yh" = (
 /obj/machinery/door/blast/regular{
 	dir = 4;
-	id = "starboardnacelleSDF";
-	
+	id = "starboardnacelleSDF"
 	},
 /obj/machinery/door/blast/regular/open{
 	id = "SDFantiboarding"
@@ -4818,6 +4806,7 @@
 /obj/machinery/door/blast/regular/open{
 	id = "SDFgeneral"
 	},
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor,
 /area/shuttle/miaphus/sdf)
 "yX" = (
@@ -4980,8 +4969,7 @@
 /obj/effect/floor_decal/industrial/danger,
 /obj/machinery/door/blast/regular{
 	dir = 4;
-	id = "starboardnacelleSDF";
-	
+	id = "starboardnacelleSDF"
 	},
 /turf/simulated/floor/maglev{
 	dir = 4
@@ -5334,8 +5322,7 @@
 /obj/machinery/atmospheric_field_generator/perma,
 /obj/machinery/door/blast/regular{
 	dir = 4;
-	id = "SDFbalista";
-	
+	id = "SDFbalista"
 	},
 /obj/machinery/door/blast/regular/open{
 	id = "SDFantiboarding"
@@ -5402,12 +5389,6 @@
 	},
 /obj/effect/floor_decal/transit/orange,
 /turf/simulated/floor/tiled/techfloor/monogrid,
-/area/shuttle/miaphus/sdf)
-"CE" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 1
-	},
-/turf/simulated/wall/r_wall/prepainted,
 /area/shuttle/miaphus/sdf)
 "CF" = (
 /obj/structure/table/steel,
@@ -5853,8 +5834,7 @@
 	},
 /obj/machinery/door/blast/regular{
 	dir = 4;
-	id = "portnacelleSDF";
-	
+	id = "portnacelleSDF"
 	},
 /obj/machinery/door/blast/regular/open{
 	id = "SDFantiboarding"
@@ -7296,6 +7276,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
 	},
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/wall/r_wall/prepainted,
 /area/shuttle/miaphus/sdf)
 "NI" = (
@@ -7550,13 +7531,13 @@
 /area/shuttle/miaphus/sdf)
 "OQ" = (
 /obj/spawner/window/reinforced/full/firelocks,
-/obj/map_helper/paint_stripe/sun,
 /obj/machinery/door/blast/regular/open{
 	id = "SDFgeneral"
 	},
 /obj/machinery/door/blast/regular/open{
 	id = "SDFantiboarding"
 	},
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/miaphus/sdf)
 "OS" = (
@@ -9101,8 +9082,7 @@
 	},
 /obj/machinery/door/blast/regular{
 	dir = 4;
-	id = "SDFentry2";
-	
+	id = "SDFentry2"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/sdf)
@@ -37505,7 +37485,7 @@ bp
 bp
 bp
 XJ
-XJ
+bL
 nS
 nS
 nS
@@ -37698,15 +37678,15 @@ bp
 bp
 aa
 XJ
-mv
-XJ
+bL
+bL
 Fu
 jL
 KM
 xv
 wU
 Wh
-XJ
+bL
 XJ
 XJ
 aa
@@ -37891,8 +37871,8 @@ aa
 bp
 aa
 XJ
-XJ
-XJ
+bL
+bL
 tV
 wN
 XT
@@ -37901,7 +37881,7 @@ jS
 XT
 oe
 nC
-XJ
+bL
 XJ
 XJ
 aa
@@ -38084,9 +38064,9 @@ aa
 bp
 bp
 XJ
-XJ
-XJ
-XJ
+bL
+bL
+bL
 BJ
 LP
 og
@@ -38095,8 +38075,8 @@ qf
 ij
 QO
 nG
-XJ
-XJ
+bL
+bL
 XJ
 XJ
 bp
@@ -38277,10 +38257,10 @@ bp
 bp
 bp
 XJ
-XJ
-XJ
+bL
+bL
 ck
-XJ
+bL
 DW
 ev
 gy
@@ -38289,9 +38269,9 @@ IN
 mL
 gh
 Ta
-XJ
+bL
 VM
-XJ
+bL
 XJ
 XJ
 bp
@@ -38471,10 +38451,10 @@ bp
 bp
 bp
 XJ
-XJ
+bL
 Us
 Yw
-XJ
+bL
 gx
 ev
 gy
@@ -38483,10 +38463,10 @@ Xq
 mL
 gh
 sp
-XJ
+bL
 ok
 Us
-XJ
+bL
 XJ
 bp
 aa
@@ -38871,7 +38851,7 @@ xp
 mL
 gh
 Bb
-XJ
+bL
 vB
 TL
 mg
@@ -39053,10 +39033,10 @@ aa
 bp
 bp
 XJ
-XJ
+bL
 bL
 mo
-XJ
+bL
 NJ
 Bz
 gy
@@ -39065,10 +39045,10 @@ KI
 mL
 Kr
 LS
-XJ
+bL
 Aq
 bL
-XJ
+bL
 XJ
 bp
 bp
@@ -39250,7 +39230,7 @@ lz
 DJ
 ls
 tm
-XJ
+bL
 BD
 ev
 gy
@@ -39259,7 +39239,7 @@ YW
 mL
 gh
 FB
-XJ
+bL
 Is
 Yo
 mg
@@ -39444,7 +39424,7 @@ XJ
 bL
 Yb
 RI
-XJ
+bL
 PI
 ev
 NZ
@@ -39453,10 +39433,10 @@ iN
 zv
 gh
 PI
-XJ
+bL
 yy
 OU
-XJ
+bL
 XJ
 aa
 aa
@@ -39638,7 +39618,7 @@ XJ
 XJ
 bL
 bL
-XJ
+bL
 cn
 XJ
 XJ
@@ -39647,7 +39627,7 @@ lX
 XJ
 XJ
 cn
-XJ
+bL
 bL
 bL
 XJ
@@ -40219,7 +40199,7 @@ bp
 bp
 XJ
 XJ
-XJ
+bL
 bL
 FY
 bL
@@ -40230,7 +40210,7 @@ XJ
 bL
 kB
 bL
-XJ
+bL
 XJ
 XJ
 bp
@@ -40412,7 +40392,7 @@ bp
 bp
 bp
 aa
-bL
+XJ
 XJ
 cq
 IP
@@ -40425,7 +40405,7 @@ gb
 Mz
 PS
 XJ
-bL
+XJ
 bp
 bp
 bp
@@ -40797,7 +40777,7 @@ XJ
 XJ
 xX
 NI
-XJ
+bL
 XJ
 XJ
 bp
@@ -40817,7 +40797,7 @@ aa
 XJ
 XJ
 RL
-XJ
+bL
 sY
 NI
 XJ
@@ -40988,11 +40968,11 @@ TK
 bq
 aa
 XJ
-XJ
+bL
 sB
 lp
-XJ
-XJ
+bL
+bL
 XJ
 XJ
 XJ
@@ -41011,7 +40991,7 @@ XJ
 XJ
 Gt
 Ev
-XJ
+bL
 rt
 NI
 XJ
@@ -41182,7 +41162,7 @@ TK
 bq
 aa
 XJ
-XJ
+bL
 aZ
 aZ
 aZ
@@ -41205,7 +41185,7 @@ qM
 MV
 YU
 zG
-XJ
+bL
 sY
 NI
 XJ
@@ -41376,7 +41356,7 @@ TK
 bq
 aa
 XJ
-XJ
+bL
 Vi
 aZ
 aZ
@@ -41399,7 +41379,7 @@ qM
 Td
 YU
 FO
-XJ
+bL
 sY
 NI
 XJ
@@ -41576,8 +41556,8 @@ aZ
 nu
 HR
 XJ
-XJ
-XJ
+bL
+bL
 bL
 bL
 bL
@@ -41588,12 +41568,12 @@ XJ
 bL
 bL
 bL
-XJ
-XJ
+bL
+bL
 XJ
 oJ
 TP
-XJ
+bL
 yh
 kw
 XJ
@@ -41771,7 +41751,7 @@ nu
 Pe
 XJ
 bp
-XJ
+bL
 VA
 YU
 Qj
@@ -41782,12 +41762,12 @@ ji
 uB
 YU
 Vs
-XJ
+bL
 aa
 XJ
 Pd
 bL
-XJ
+bL
 xg
 YA
 XJ
@@ -41965,7 +41945,7 @@ nu
 Pe
 XJ
 bp
-XJ
+bL
 Mf
 IS
 kJ
@@ -41976,7 +41956,7 @@ XJ
 Vu
 YU
 Vs
-XJ
+bL
 bp
 XJ
 uN
@@ -42159,7 +42139,7 @@ nu
 nR
 XJ
 bp
-XJ
+bL
 Uj
 kz
 Wr
@@ -42170,7 +42150,7 @@ XJ
 nn
 YU
 Vs
-XJ
+bL
 bp
 XJ
 Gw
@@ -42353,7 +42333,7 @@ NF
 Pe
 XJ
 bp
-XJ
+bL
 rw
 YU
 Ux
@@ -42364,7 +42344,7 @@ XJ
 Sg
 YU
 Vs
-XJ
+bL
 bp
 XJ
 Gw
@@ -42547,7 +42527,7 @@ ki
 Pe
 XJ
 bp
-XJ
+bL
 AD
 YU
 Jx
@@ -42558,7 +42538,7 @@ XJ
 Ca
 YU
 ZF
-XJ
+bL
 bp
 XJ
 Gw
@@ -42752,7 +42732,7 @@ XJ
 XJ
 XJ
 XJ
-XJ
+bL
 aa
 XJ
 Gw
@@ -42945,8 +42925,8 @@ Dn
 Ay
 Ej
 gg
-bL
 XJ
+bL
 aa
 XJ
 cm
@@ -43128,7 +43108,7 @@ RV
 Hp
 nR
 XJ
-XJ
+bL
 XJ
 XJ
 XJ
@@ -43140,8 +43120,8 @@ WA
 rR
 XJ
 XJ
-XJ
-XJ
+bL
+bL
 XJ
 wR
 ZR
@@ -44681,8 +44661,8 @@ bp
 bp
 aa
 XJ
-bL
-bL
+XJ
+XJ
 Xn
 qG
 RU
@@ -44692,7 +44672,7 @@ PF
 Zl
 ZI
 zj
-bL
+XJ
 XJ
 aa
 aa
@@ -44875,8 +44855,8 @@ bp
 XJ
 XJ
 XJ
-bL
-bL
+XJ
+XJ
 Ky
 RO
 BA
@@ -44886,7 +44866,7 @@ eU
 tP
 bU
 zj
-bL
+XJ
 XJ
 XJ
 XJ
@@ -45069,8 +45049,8 @@ aa
 XJ
 XJ
 XJ
-bL
-bL
+XJ
+XJ
 Xn
 Ag
 gr
@@ -45079,8 +45059,8 @@ pR
 Pl
 mR
 Pi
-bL
-bL
+XJ
+XJ
 XJ
 XJ
 XJ
@@ -45263,8 +45243,8 @@ bp
 aa
 XJ
 XJ
-bL
-bL
+XJ
+XJ
 Xn
 ld
 We
@@ -45273,8 +45253,8 @@ gO
 UE
 wq
 IU
-bL
-bL
+XJ
+XJ
 XJ
 XJ
 aa
@@ -45461,10 +45441,10 @@ oI
 kF
 kF
 QP
-CE
-CE
+QP
+QP
 NH
-CE
+QP
 QP
 kF
 kF
@@ -45654,12 +45634,12 @@ aa
 wd
 wd
 Km
-XJ
 bL
 bL
 bL
 bL
-XJ
+bL
+bL
 wd
 wd
 Km
@@ -45848,12 +45828,12 @@ bp
 wd
 wd
 wd
-XJ
 bL
 bL
 bL
 bL
-XJ
+bL
+bL
 wd
 wd
 wd
@@ -46042,12 +46022,12 @@ bp
 wd
 wd
 wd
-XJ
-XJ
-XJ
-XJ
-XJ
-XJ
+bL
+bL
+bL
+bL
+bL
+bL
 wd
 wd
 wd
