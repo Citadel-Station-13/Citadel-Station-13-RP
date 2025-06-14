@@ -271,7 +271,7 @@
 
 /obj/item/clothing/under/tajaran/hadiifolly
 	name = "Hadii's Folly Governement uniform"
-	desc = "Those modest uniform are made out of corporate prison jumpsuits, and the new uniform of members of the haddi's folly authority governement. Those uniform are worn by civilians working in the gouvernement."
+	desc = "Those modest uniform are made out of corporate prison jumpsuits, and the new uniform of members of the haddi's folley authority governement. Those uniform are worn by civilians working in the gouvernement."
 	icon_state = "hadiisgov_uniform"
 	armor_type = /datum/armor/station/padded
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
@@ -280,7 +280,7 @@
 
 /obj/item/clothing/under/tajaran/hadiifolly/soldier
 	name = "Hadii's Folly SDF uniform"
-	desc = "Those modest uniform are made out of corporate prison jumpsuits, and the new uniform of members of the haddi's folly authority governement. Those uniform are worn by soldiers."
+	desc = "Those modest uniform are made out of corporate prison jumpsuits, and the new uniform of members of the haddi's folley authority governement. Those uniform are worn by soldiers."
 	icon_state = "SDFhadiisgov_uniform"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
@@ -288,7 +288,7 @@
 
 /obj/item/clothing/under/tajaran/hadiifolly/officer
 	name = "Hadii's Folly SDF officer uniform"
-	desc = "Those modest uniform are made out of corporate prison jumpsuits, and the new uniform of members of the haddi's folly authority governement. Those uniform are worn by officers."
+	desc = "Those modest uniform are made out of corporate prison jumpsuits, and the new uniform of members of the haddi's folley authority governement. Those uniform are worn by officers."
 	icon_state = "SDFhadiisgovofficer_uniform"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL

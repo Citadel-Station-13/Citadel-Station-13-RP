@@ -1,8 +1,8 @@
 /datum/role/ghostrole/sdf
 	name = "Sector Defense Force Soldier"
 	assigned_role = "SDF Soldier"
-	desc = "You are a Soldier of the Haddi's Folly SDF."
-	spawntext = "You are a soldier tasked to protect Haddi's Folly sector, posted on the Outpost 12, with the SDF 'shining singing knight'.Hunt Pirates, kill xenos, protect the sector. Make sure to read your SOP !"
+	desc = "You are a Soldier of the haddi's folley SDF."
+	spawntext = "You are a soldier tasked to protect haddi's folley sector, posted on the Outpost 12, with the SDF 'shining singing knight'.Hunt Pirates, kill xenos, protect the sector. Make sure to read your SOP !"
 
 	important_info = "Read, the SOP ! You are not antags, have no authority on NT stations."
 

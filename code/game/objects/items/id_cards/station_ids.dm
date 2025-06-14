@@ -803,7 +803,7 @@
 	job_access_type = null
 
 /obj/item/card/id/external/id_sdf
-	name = "Haddi's Folly SDF ID"
-	desc = "An ID issued to members of the system defence force of Haddi's folly."
+	name = "haddi's folley SDF ID"
+	desc = "An ID issued to members of the system defence force of haddi's folley."
 	icon_state = "sdf"
 	access = list(155)
