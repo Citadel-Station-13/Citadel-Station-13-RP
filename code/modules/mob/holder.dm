@@ -9,10 +9,12 @@
 	show_messages = 1
 	origin_tech = null
 	inhand_default_type = INHAND_DEFAULT_ICON_HOLDERS
+	worn_render_flags = WORN_RENDER_SLOT_ALLOW_DEFAULT
 	pixel_y = 8
 	throw_range = 14
 	throw_force = 10
 	throw_speed = 3
+	
 	var/static/list/holder_mob_icon_cache = list()
 	var/mob/living/held_mob
 
@@ -80,6 +82,7 @@
 	add_overlay(MA)
 	name = M.name
 	desc = M.desc
+	item_state = held_mob.icon_state
 	update_worn_icon()
 
 /obj/item/holder/contents_resist(mob/escapee)
