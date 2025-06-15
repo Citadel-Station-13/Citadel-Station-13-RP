@@ -8240,14 +8240,6 @@
 /obj/structure/filingcabinet,
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hop)
-"ggB" = (
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/structure/curtain/open/bed{
-	name = "curtain"
-	},
-/obj/map_helper/paint/palebottlegreen,
-/turf/simulated/floor/plating,
-/area/space)
 "ggC" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -20463,9 +20455,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/lino,
 /area/security/forensics)
-"pwo" = (
-/turf/simulated/wall/r_wall/prepainted/civilian,
-/area/space)
 "pwu" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -21717,6 +21706,10 @@
 	},
 /obj/item/stool/padded,
 /obj/item/bikehorn/rubberducky,
+/obj/machinery/light{
+	dir = 1;
+	pixel_y = 20
+	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
 "qud" = (
@@ -37062,20 +37055,20 @@ xJG
 pRW
 mDp
 mDp
-pwo
-ggB
-ggB
-ggB
-pwo
-pwo
-ggB
-ggB
-ggB
-pwo
-pwo
-ggB
-ggB
-ggB
+lLG
+brs
+brs
+brs
+lLG
+lLG
+brs
+brs
+brs
+lLG
+lLG
+brs
+brs
+brs
 swy
 guu
 bxI
