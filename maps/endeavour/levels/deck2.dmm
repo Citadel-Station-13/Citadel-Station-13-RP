@@ -33324,9 +33324,6 @@
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_a)
-"xRY" = (
-/turf/simulated/floor/airless/ceiling,
-/area/endeavour/command/turrets)
 "xSg" = (
 /obj/structure/table/bench/steel,
 /obj/structure/sign/deck/second{
@@ -37365,9 +37362,9 @@ pRW
 pRW
 pRW
 pRW
-eWn
-klv
-eWn
+pRW
+pRW
+pRW
 pRW
 gYU
 pRW
@@ -37379,9 +37376,9 @@ pRW
 pRW
 pRW
 pRW
-eWn
-klv
-eWn
+pRW
+pRW
+pRW
 pRW
 gYU
 pRW
@@ -37596,7 +37593,7 @@ sUD
 sUD
 sUD
 sUD
-pRW
+kED
 pRW
 pRW
 pRW
@@ -37790,7 +37787,7 @@ sUD
 sUD
 sUD
 sUD
-pRW
+jUt
 pRW
 pRW
 pRW
@@ -37984,7 +37981,7 @@ sUD
 sUD
 sUD
 sUD
-pRW
+kED
 pRW
 pRW
 pRW
@@ -40257,7 +40254,7 @@ pRW
 pRW
 pRW
 pRW
-eWn
+pRW
 jib
 uxS
 kWG
@@ -40451,7 +40448,7 @@ pRW
 pRW
 pRW
 pRW
-klv
+pRW
 jib
 lCp
 kWG
@@ -40645,7 +40642,7 @@ pRW
 pRW
 pRW
 pRW
-eWn
+pRW
 jib
 pPg
 kWG
@@ -41605,9 +41602,9 @@ pRW
 mDp
 pRW
 pRW
-eWn
-klv
-eWn
+fik
+fik
+fik
 jhy
 fik
 fik
@@ -42260,9 +42257,9 @@ mDp
 mDp
 mDp
 xyo
-eWn
-klv
-eWn
+pRW
+pRW
+pRW
 mDp
 mDp
 mDp
@@ -42458,7 +42455,7 @@ rXP
 rXP
 rXP
 rXP
-eWn
+pRW
 mDp
 mDp
 pRW
@@ -42652,7 +42649,7 @@ bQY
 bQY
 sAZ
 rXP
-klv
+pRW
 pRW
 mDp
 pRW
@@ -42846,7 +42843,7 @@ bzj
 bQY
 nTN
 rXP
-eWn
+pRW
 mDp
 mDp
 pRW
@@ -43544,7 +43541,7 @@ mDp
 pRW
 pRW
 pRW
-eWn
+fik
 jib
 tQr
 kWG
@@ -43738,7 +43735,7 @@ mDp
 pRW
 pRW
 pRW
-klv
+fik
 jib
 dqO
 kWG
@@ -43932,7 +43929,7 @@ mDp
 pRW
 pRW
 pRW
-eWn
+fik
 jib
 kWG
 kWG
@@ -46454,7 +46451,7 @@ pRW
 pRW
 pRW
 pRW
-eWn
+fik
 jib
 kWG
 dZX
@@ -46648,7 +46645,7 @@ pRW
 pRW
 pRW
 pRW
-klv
+fik
 jib
 kWG
 tQr
@@ -46842,7 +46839,7 @@ pRW
 pRW
 pRW
 pRW
-eWn
+fik
 jib
 kWG
 tQr
@@ -48976,7 +48973,7 @@ pRW
 pRW
 pRW
 pRW
-eWn
+fik
 jib
 tQr
 kWG
@@ -49170,7 +49167,7 @@ pRW
 pRW
 pRW
 pRW
-klv
+fik
 jib
 jib
 bHt
@@ -49364,7 +49361,7 @@ pRW
 pRW
 pRW
 pRW
-eWn
+fik
 jib
 tQr
 kWG
@@ -50218,7 +50215,7 @@ bQY
 qcD
 qcD
 rXP
-eWn
+pRW
 pRW
 pRW
 pRW
@@ -50412,7 +50409,7 @@ pJM
 bzj
 dPF
 rXP
-klv
+pRW
 pRW
 pRW
 pRW
@@ -50606,7 +50603,7 @@ bQY
 rPK
 bQY
 rXP
-eWn
+pRW
 pRW
 pRW
 pRW
@@ -51303,7 +51300,7 @@ pRW
 pRW
 pRW
 pRW
-eWn
+pRW
 jib
 kWG
 tQr
@@ -51497,7 +51494,7 @@ pRW
 pRW
 pRW
 pRW
-klv
+pRW
 jib
 kWG
 tQr
@@ -51691,7 +51688,7 @@ pRW
 pRW
 pRW
 pRW
-eWn
+pRW
 jib
 kWG
 kWG
@@ -52155,8 +52152,8 @@ oUa
 pJM
 kEt
 rXP
-klv
-eWn
+fik
+fik
 pRW
 pRW
 pRW
@@ -52349,7 +52346,7 @@ bQY
 sAZ
 bQY
 rXP
-eWn
+fik
 pRW
 pRW
 pRW
@@ -52927,9 +52924,9 @@ fik
 fik
 fik
 fik
-eWn
-klv
-eWn
+fik
+fik
+fik
 fik
 pRW
 pRW
@@ -53638,7 +53635,7 @@ pRW
 pRW
 pRW
 pRW
-eWn
+pRW
 jib
 wtJ
 rRr
@@ -53832,7 +53829,7 @@ pRW
 pRW
 pRW
 pRW
-klv
+pRW
 jib
 jib
 bwt
@@ -54026,7 +54023,7 @@ pRW
 pRW
 pRW
 pRW
-eWn
+pRW
 jib
 jUR
 kWG
@@ -54086,7 +54083,7 @@ vzw
 bqq
 rXP
 fik
-eWn
+fik
 pRW
 pRW
 pRW
@@ -54280,7 +54277,7 @@ vzw
 bQY
 rXP
 fik
-klv
+fik
 pRW
 pRW
 pRW
@@ -54474,7 +54471,7 @@ vzw
 qIV
 rXP
 fik
-eWn
+fik
 pRW
 pRW
 pRW
@@ -54613,9 +54610,9 @@ pRW
 pRW
 pRW
 pRW
-eWn
-klv
-eWn
+pRW
+pRW
+pRW
 bfE
 pRW
 jib
@@ -55589,7 +55586,7 @@ pRW
 pRW
 pRW
 pRW
-eWn
+pRW
 jib
 jib
 jib
@@ -55783,7 +55780,7 @@ pRW
 pRW
 pRW
 pRW
-klv
+pRW
 grY
 uZe
 qjz
@@ -55977,7 +55974,7 @@ pRW
 pRW
 pRW
 pRW
-eWn
+pRW
 grY
 qjz
 qjz
@@ -57529,7 +57526,7 @@ pRW
 pRW
 pRW
 pRW
-eWn
+pRW
 grY
 qjz
 ycR
@@ -57723,7 +57720,7 @@ pRW
 pRW
 pRW
 pRW
-klv
+pRW
 grY
 kEg
 qjz
@@ -57917,7 +57914,7 @@ pRW
 pRW
 pRW
 pRW
-eWn
+pRW
 grY
 uZe
 djx
@@ -60052,7 +60049,7 @@ pRW
 pRW
 pRW
 pRW
-eWn
+pRW
 egx
 byq
 ruN
@@ -60246,7 +60243,7 @@ pRW
 pRW
 pRW
 pRW
-klv
+pRW
 egx
 qjz
 ruN
@@ -60440,7 +60437,7 @@ pRW
 pRW
 pRW
 pRW
-eWn
+pRW
 egx
 kEg
 ruN
@@ -64920,7 +64917,7 @@ pRW
 eWn
 klv
 eWn
-xRY
+fik
 tid
 tid
 tid
@@ -64928,7 +64925,7 @@ tid
 tid
 tid
 tid
-xRY
+fik
 eWn
 klv
 eWn
