@@ -2763,7 +2763,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/turf/simulated/wall/r_wall/prepainted,
+/turf/simulated/wall/r_wall/prepainted/medical,
 /area/shuttle/emt/strelka/main)
 "io" = (
 /obj/structure/cable/orange{
@@ -5804,7 +5804,7 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/excursion/strelka)
 "qY" = (
-/turf/simulated/wall/r_wall/prepainted/medical,
+/turf/simulated/wall/r_wall/prepainted/security,
 /area/shuttle/emt/strelka/cockpit)
 "qZ" = (
 /obj/structure/cable/blue{
@@ -7266,7 +7266,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 8
 	},
-/turf/simulated/wall/r_wall/prepainted,
+/turf/simulated/wall/r_wall/prepainted/medical,
 /area/shuttle/emt/strelka/main)
 "vq" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green{
@@ -8949,6 +8949,7 @@
 	dir = 8;
 	id_tag = "expshuttle_docker_pump"
 	},
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/strelka)
 "As" = (
@@ -8989,6 +8990,7 @@
 	dir = 8;
 	id_tag = "expshuttle_docker_pump"
 	},
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/strelka)
 "AB" = (
@@ -11065,12 +11067,6 @@
 "GN" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/computer/ship/sensors,
-/obj/machinery/turretid{
-	control_area = "/area/shuttle/emt/strelka/main";
-	uid = "EMT";
-	req_access = list(19,43,62,67);
-	check_access = 0
-	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/emt/strelka/cockpit)
 "GP" = (
@@ -13793,6 +13789,7 @@
 	dir = 1;
 	id_tag = "emtshuttle_docker_pump"
 	},
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/emt/strelka/main)
 "PP" = (
@@ -14951,6 +14948,7 @@
 	dir = 8;
 	id_tag = "emtshuttle_docker_pump"
 	},
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/emt/strelka/main)
 "TE" = (
@@ -15299,6 +15297,9 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/shield)
+"UG" = (
+/turf/simulated/wall/r_wall/prepainted/security,
+/area/shuttle/emt/strelka/main)
 "UH" = (
 /obj/machinery/light/small/old,
 /obj/structure/closet/walllocker_double/east{
@@ -33336,8 +33337,8 @@ im
 FA
 vo
 FA
-NO
-NO
+uO
+uO
 zf
 KS
 vF
@@ -33523,7 +33524,7 @@ do
 mj
 uA
 uA
-NO
+uO
 eC
 Fy
 re
@@ -33717,7 +33718,7 @@ do
 mj
 mj
 uA
-NO
+uO
 IX
 WU
 Hw
@@ -33911,15 +33912,15 @@ nJ
 do
 mj
 uA
-NO
+uO
 Tj
 Tz
 ZU
 mF
-NO
-NO
-NO
-NO
+uO
+uO
+uO
+uO
 dR
 KS
 Fq
@@ -34105,7 +34106,7 @@ Sx
 do
 mj
 uA
-NO
+UG
 lo
 UV
 Cz
@@ -34113,7 +34114,7 @@ yd
 ZC
 gZ
 NX
-NO
+UG
 dR
 KS
 sa
@@ -34299,7 +34300,7 @@ Sx
 do
 mj
 mj
-uO
+UG
 Vg
 kH
 bv
@@ -34493,15 +34494,15 @@ yj
 nJ
 do
 mj
-uO
-uO
+UG
+UG
 Px
 Cz
 yd
 Zz
 Xn
 QW
-uO
+UG
 CW
 mP
 AZ
@@ -34688,14 +34689,14 @@ Sx
 do
 mj
 jo
-uO
-uO
+UG
+UG
 uu
 Nv
 cn
 oi
 yf
-uO
+UG
 AJ
 KS
 yw
@@ -35077,13 +35078,13 @@ do
 mj
 mj
 uA
-uO
+UG
 Xa
 yd
 jI
 hS
 ja
-uO
+UG
 CY
 Gc
 nd
@@ -35271,13 +35272,13 @@ nJ
 do
 mj
 uA
-uO
-uO
+UG
+UG
 yv
-uO
-uO
-uO
-uO
+UG
+UG
+UG
+UG
 sm
 TZ
 KS
