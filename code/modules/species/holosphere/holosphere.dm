@@ -187,6 +187,6 @@
 	into_box?.Add(/obj/item/fbp_backup_cell)
 
 // hotfix: they're synthetic without synthetic parts, oops!
-/datum/species/proc/get_blood_colour(mob/living/carbon/human/H)
+/datum/species/holosphere/get_blood_colour(mob/living/carbon/human/H)
 	if(H)
 		return blood_color
