@@ -4967,12 +4967,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/map_helper/airlock/sensor/chamber_sensor,
-/obj/machinery/airlock_sensor{
-	id_tag = "civvie_dock";
-	pixel_y = 24;
-	pixel_x = -29
-	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8
@@ -5352,11 +5346,6 @@
 /obj/structure/cable/blue{
 	icon_state = "4-8"
 	},
-/obj/machinery/access_button/airlock_exterior{
-	master_tag = "civvie_dock";
-	pixel_y = -22
-	},
-/obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1)
 "DC" = (

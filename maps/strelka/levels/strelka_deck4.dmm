@@ -5585,6 +5585,10 @@
 /obj/landmark/spawnpoint/job/captain,
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck4/bridge/captain/room)
+"yH" = (
+/mob/living/simple_mob/animal/passive/dog/corgi/Ian,
+/turf/simulated/floor/wood,
+/area/strelka/shipbase/deck4/bridge/hop/room)
 "yL" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -33393,7 +33397,7 @@ jR
 eh
 BN
 pV
-pV
+yH
 pV
 eQ
 VV

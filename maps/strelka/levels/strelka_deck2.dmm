@@ -4990,12 +4990,14 @@
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/engine)
 "oL" = (
-/obj/machinery/fire_alarm/north_mount,
 /obj/effect/floor_decal/rust/mono_rusted3{
 	color = "#B95A00"
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 30
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/shipbase/deck2/explo)
@@ -5595,6 +5597,17 @@
 	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2)
+"qr" = (
+/obj/structure/table/rack/shelf,
+/obj/item/tank/oxygen,
+/obj/item/suit_cooling_unit,
+/obj/item/storage/backpack/parachute,
+/obj/item/tank/jetpack/oxygen,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck2/explo)
 "qs" = (
 /turf/simulated/wall/wood/hardwood{
 	opacity = 0;
@@ -9979,8 +9992,9 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
 	},
-/obj/machinery/computer/ship/navigation/telescreen{
-	pixel_y = 30
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	pixel_y = 25;
+	id_tag = "expshuttle_dock"
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck2/explo)
@@ -10101,6 +10115,7 @@
 /obj/item/radio,
 /obj/item/radio,
 /obj/item/radio,
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/shipbase/deck2/explo)
 "DH" = (
@@ -10365,6 +10380,13 @@
 	},
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck2/bridge/hos)
+"Es" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/mob/living/simple_mob/animal/passive/dog/pug/SirPogsley,
+/turf/simulated/floor/wood/indoors,
+/area/strelka/shipbase/deck2/security)
 "Et" = (
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 4
@@ -11150,6 +11172,15 @@
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/shipbase/deck2/explo)
+"GY" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	id_tag = "emt_dock";
+	pixel_y = -25;
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/strelka/shipbase/deck2/explo/emt)
 "GZ" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 1
@@ -33340,7 +33371,7 @@ FA
 uO
 uO
 zf
-KS
+GY
 vF
 Ol
 hL
@@ -35305,7 +35336,7 @@ Tp
 fQ
 gN
 Si
-YV
+qr
 lJ
 TI
 ZZ
@@ -40137,7 +40168,7 @@ YB
 mL
 CG
 AH
-KF
+Es
 cq
 em
 KF
