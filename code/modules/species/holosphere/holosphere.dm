@@ -132,6 +132,8 @@
 
 	var/heal_nutrition_multiplier = 10 // 10 nutrition per hp healed
 
+	var/last_death_time
+
 /datum/species/holosphere/on_apply(mob/living/carbon/human/H)
 	. = ..()
 	RegisterSignal(H, COMSIG_CARBON_UPDATING_OVERLAY, PROC_REF(handle_hologram_overlays))
@@ -183,3 +185,8 @@
 	into_box?.Add(/obj/item/tool/prybar/red)
 	into_box?.Add(/obj/item/flashlight/flare/survival)
 	into_box?.Add(/obj/item/fbp_backup_cell)
+
+// hotfix: they're synthetic without synthetic parts, oops!
+/datum/species/holosphere/get_blood_colour(mob/living/carbon/human/H)
+	if(H)
+		return blood_color
