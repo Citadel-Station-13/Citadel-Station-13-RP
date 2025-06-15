@@ -3026,9 +3026,6 @@
 "lj" = (
 /turf/simulated/wall/wood/hardwood,
 /area/strelka/shipbase/deck3/cargo)
-"lk" = (
-/turf/simulated/wall/r_wall/prepainted/command,
-/area/space)
 "ll" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -3041,6 +3038,7 @@
 "lm" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/holopad/ship,
 /turf/simulated/floor/wood/broken,
 /area/strelka/shipbase/deck3/bridge/rd)
 "lo" = (
@@ -4016,16 +4014,6 @@
 "ot" = (
 /turf/simulated/open,
 /area/strelka/shipbase/deck3/medical/emtroom)
-"ou" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/holopad,
-/turf/simulated/floor/wood,
-/area/strelka/shipbase/deck3/bridge/md)
 "ov" = (
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -4255,6 +4243,10 @@
 /obj/effect/floor_decal/grass_edge,
 /obj/structure/flora/grass/event/full_grass2,
 /turf/simulated/floor/tiled/asteroid_steel,
+/area/strelka/shipbase/deck3)
+"pk" = (
+/mob/living/simple_mob/animal/passive/bird/european_robin,
+/turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck3)
 "pm" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -4741,8 +4733,9 @@
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck3/bridge/ai)
 "rc" = (
+/obj/structure/grille,
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/strelka/shipbase/deck3/mininghangar)
 "rd" = (
 /obj/structure/flora/grass/event/bright_flowers1,
 /obj/structure/flora/grass/event/full_grass1,
@@ -5996,6 +5989,10 @@
 /obj/machinery/fire_alarm/west_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/cargo/mining)
+"vn" = (
+/mob/living/simple_mob/animal/passive/bird/ringneck_dove,
+/turf/simulated/floor/fey/forest_grass,
+/area/strelka/shipbase/deck3)
 "vq" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -9136,6 +9133,16 @@
 	},
 /turf/simulated/floor/carpet/blue,
 /area/strelka/shipbase/deck3/bridge/md)
+"FD" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/obj/machinery/holopad/ship,
+/turf/simulated/floor/wood/indoors,
+/area/strelka/shipbase/deck3/cargo/reception)
 "FE" = (
 /obj/structure/table/rack/shelf,
 /obj/item/storage/belt/utility,
@@ -9545,6 +9552,10 @@
 /obj/machinery/message_server,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck3/bridge/upload)
+"Hg" = (
+/mob/living/simple_mob/animal/passive/bird/azure_tit,
+/turf/simulated/floor/fey/forest_grass,
+/area/strelka/shipbase/deck3)
 "Hh" = (
 /obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4;
@@ -9729,6 +9740,10 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3/medical/psy)
+"HP" = (
+/obj/structure/grille,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck3/mininghangar)
 "HY" = (
 /obj/spawner/window/low_wall/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
@@ -12731,6 +12746,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/holopad,
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck3/bridge/md)
 "To" = (
@@ -12749,6 +12765,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck3/bridge/upload)
+"Tq" = (
+/mob/living/simple_mob/animal/passive/bird/black_bird,
+/turf/simulated/floor/fey/forest_grass,
+/area/strelka/shipbase/deck3)
 "Tr" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
@@ -14173,6 +14193,16 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science/main)
+"XY" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/holopad/ship,
+/turf/simulated/floor/wood,
+/area/strelka/shipbase/deck3/bridge/md)
 "Ya" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
@@ -26003,10 +26033,10 @@ ae
 rT
 Xb
 rc
-bo
-lk
-bo
-bo
+HP
+mO
+HP
+HP
 BW
 mO
 kR
@@ -26014,7 +26044,7 @@ kR
 kR
 eB
 kR
-rc
+eB
 Xb
 rT
 ae
@@ -26196,7 +26226,7 @@ ae
 rT
 Xb
 SF
-bo
+HP
 GX
 GX
 GX
@@ -28713,7 +28743,7 @@ oX
 As
 OQ
 zP
-hS
+FD
 hS
 pu
 RU
@@ -31443,7 +31473,7 @@ xh
 CQ
 gH
 SD
-uZ
+vn
 KP
 Ur
 Mt
@@ -31826,7 +31856,7 @@ wx
 kd
 uZ
 fL
-uZ
+pk
 gK
 nt
 Yt
@@ -33576,7 +33606,7 @@ IK
 WM
 CQ
 gH
-uZ
+Tq
 vw
 Bb
 lG
@@ -34153,7 +34183,7 @@ HM
 Xh
 hN
 uZ
-uZ
+Hg
 Hs
 gK
 CQ
@@ -36862,7 +36892,7 @@ ae
 io
 io
 TG
-ou
+xA
 eu
 VF
 Dt
@@ -37056,7 +37086,7 @@ ae
 UW
 Ls
 MD
-xA
+XY
 FA
 Zo
 Vo

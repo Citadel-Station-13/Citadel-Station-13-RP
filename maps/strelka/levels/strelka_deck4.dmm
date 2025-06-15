@@ -4767,6 +4767,13 @@
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/shipbase/pointdefense)
+"ub" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/mob/living/simple_mob/animal/passive/cat/kitten,
+/turf/simulated/floor/wood/indoors,
+/area/strelka/shipbase/deck4/bar)
 "ug" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -8677,6 +8684,13 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck4/bridge/captain/room)
+"Nr" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/mob/living/simple_mob/animal/passive/bird/ringneck_dove,
+/turf/simulated/floor/wood/indoors,
+/area/strelka/shipbase/deck4/bar)
 "Nt" = (
 /obj/machinery/computer/ship/navigation,
 /obj/structure/table/carbon/reinforced,
@@ -9120,7 +9134,7 @@
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck4/maintenance/library)
 "PO" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/ship,
 /turf/simulated/floor/carpet/turcarpet,
 /area/strelka/shipbase/deck4/bar)
 "PP" = (
@@ -10243,6 +10257,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/orange{
 	icon_state = "1-8"
+	},
+/mob/living/simple_mob/animal/passive/penguin/baby{
+	name = "Emil"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck4/kitchen/freeze)
@@ -30290,7 +30307,7 @@ dP
 fT
 pT
 ai
-tJ
+ub
 TE
 hH
 JT
@@ -31648,7 +31665,7 @@ Mf
 Mf
 ph
 Zx
-tJ
+Nr
 TE
 uZ
 Et

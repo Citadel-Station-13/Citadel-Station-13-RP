@@ -71,6 +71,7 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc/west_mount,
+/obj/machinery/holopad,
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck2/bridge/ce)
 "ao" = (
@@ -317,7 +318,6 @@
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/maintenance/eva)
 "aW" = (
-/obj/machinery/holopad,
 /obj/machinery/light/small/old{
 	dir = 1
 	},
@@ -9523,6 +9523,7 @@
 /obj/machinery/status_display{
 	pixel_x = -32
 	},
+/obj/machinery/holopad/ship,
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck2/bridge/ce)
 "Cb" = (
@@ -13211,7 +13212,6 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
 	},
-/obj/machinery/holopad,
 /turf/simulated/floor/carpet/oracarpet,
 /area/strelka/shipbase/deck2/bridge/ce)
 "NO" = (
@@ -14269,6 +14269,7 @@
 	dir = 1;
 	pixel_y = 29
 	},
+/obj/machinery/holopad/ship,
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck2/bridge/hos)
 "Rn" = (
@@ -17114,6 +17115,7 @@
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos/storage)
 "Zs" = (
+/obj/machinery/holopad,
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck2/bridge/hos)
 "Zt" = (
