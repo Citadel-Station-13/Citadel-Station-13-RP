@@ -15,7 +15,7 @@
  *
  * TODO: better name
  */
-/proc/merge_double_lazy_assoc_list(list/A, list/B)
+/proc/merge_double_lazy_assoc_list(list/list/A, list/list/B)
 	. = A.Copy()
 	for(var/key in B)
 		if(.[key])
@@ -41,7 +41,7 @@
  *
  * list("A" = list("a", "b", "c", "d"))
  */
-/proc/merge_2_nested_list(list/A, list/B)
+/proc/merge_2_nested_list(list/list/A, list/list/B)
 	. = list()
 	for(var/k1 in A)
 		.[k1] = A[k1].Copy()
