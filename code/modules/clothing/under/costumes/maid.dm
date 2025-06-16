@@ -32,10 +32,11 @@
 /obj/item/clothing/under/fluff/latexmaid
 	name = "latex maid dress"
 	desc = "Squeak! A shiny outfit for cleaning, made by people with dirty minds."
-
 	icon = 'icons/clothing/uniform/costume/maid/maid_latex.dmi'
 	icon_state = "latex"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
