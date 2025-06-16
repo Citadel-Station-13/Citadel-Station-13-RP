@@ -14,6 +14,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/turtlebaggy/cream_fem
 	name = "baggy turtleneck (cream)(female)"
@@ -23,6 +25,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/turtlebaggy/purple
 	name = "baggy turtleneck (purple)"
@@ -31,6 +35,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/turtlebaggy/purple_fem
 	name = "baggy turtleneck (purple)(female)"
@@ -39,6 +45,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/turtlebaggy/red
 	name = "baggy turtleneck (red)"
@@ -47,6 +55,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/turtlebaggy/red_fem
 	name = "baggy turtleneck (red)(female)"
@@ -55,6 +65,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/turtlebaggy/blue
 	name = "baggy turtleneck (blue)"
@@ -63,6 +75,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/turtlebaggy/blue_fem
 	name = "baggy turtleneck (blue)(female)"
@@ -71,6 +85,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/turtlebaggy/green
 	name = "baggy turtleneck (green)"
@@ -79,6 +95,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/turtlebaggy/green_fem
 	name = "baggy turtleneck (green)(female)"
@@ -87,6 +105,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/turtlebaggy/black
 	name = "baggy turtleneck (black)"
@@ -95,6 +115,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/turtlebaggy/black_fem
 	name = "baggy turtleneck (black)(female)"
@@ -103,6 +125,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 //* Turtlenecks *//
 
@@ -114,6 +138,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/rank/psych/turtleneck/sweater
 	desc = "A warm looking sweater and a pair of dark blue slacks."
@@ -123,6 +149,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/laconic
 	name = "laconic field suit"

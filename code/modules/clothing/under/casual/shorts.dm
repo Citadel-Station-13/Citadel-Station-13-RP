@@ -15,6 +15,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI, BODYTYPE_VOX)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/shorts/green
 	name = "green athletic shorts"
@@ -23,6 +25,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI, BODYTYPE_VOX)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/shorts/blue
 	name = "blue athletic shorts"
@@ -31,6 +35,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI, BODYTYPE_VOX)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/shorts/black
 	name = "black athletic shorts"
@@ -39,6 +45,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI, BODYTYPE_VOX)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/shorts/grey
 	name = "grey athletic shorts"
@@ -47,6 +55,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI, BODYTYPE_VOX)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/shorts/white
 	name = "white shorts"
@@ -55,6 +65,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/shorts/white/female
 	name = "white short shorts"
@@ -63,6 +75,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/shorts/khaki
 	name = "khaki shorts"
@@ -72,6 +86,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/shorts/khaki/female
 	name = "khaki short shorts"
@@ -80,6 +96,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/fluff/gnshorts
 	name = "GN shorts"
@@ -89,6 +107,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 //Argh, skirts be below this line -> ------------------------------
 
@@ -101,6 +121,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/skirt/khaki
 	name = "khaki skirt"
@@ -110,6 +132,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI, BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = null
+	inhand_state = null
 
 /obj/item/clothing/under/skirt/blue
 	name = "short blue skirt"
@@ -119,6 +143,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/skirt/red
 	name = "short red skirt"
@@ -128,6 +154,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/skirt/denim
 	name = "short denim skirt"
@@ -137,6 +165,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/skirt/swept
 	name = "swept skirt"
@@ -146,6 +176,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI, BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/skirt/pleated
 	name = "pleated skirt"
@@ -156,6 +188,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/skirt/outfit
 	name = "black skirt"
@@ -166,6 +200,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI, BODYTYPE_TESHARI, BODYTYPE_VOX)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/skirt/outfit/plaid_blue
 	name = "blue plaid skirt"
@@ -175,6 +211,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI, BODYTYPE_TESHARI, BODYTYPE_VOX)
 	worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = null
+	inhand_state = null
 
 /obj/item/clothing/under/skirt/outfit/plaid_red
 	name = "red plaid skirt"
@@ -184,6 +222,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI, BODYTYPE_TESHARI, BODYTYPE_VOX)
 	worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = null
+	inhand_state = null
 
 /obj/item/clothing/under/skirt/outfit/plaid_purple
 	name = "purple plaid skirt"
@@ -193,6 +233,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI, BODYTYPE_TESHARI, BODYTYPE_VOX)
 	worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = null
+	inhand_state = null
 
 /obj/item/clothing/under/skirt/outfit/plaid_green
 	name = "green plaid skirt"
@@ -202,6 +244,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = null
+	inhand_state = null
 
 /obj/item/clothing/under/blackshortsripped
 	name = "ripped black shorts"
@@ -211,6 +255,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/fashionminiskirt
 	name = "fashionable miniskirt"
@@ -220,6 +266,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/bodysuit/blueskirt
 	name = "blue skirt"
@@ -229,6 +277,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/bodysuit/redskirt
 	name = "red skirt"
@@ -238,6 +288,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/blueshortskirt
 	name = "Short Skirt"
@@ -247,6 +299,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/greyskirt_female
 	name = "Grey Skirt"
@@ -256,6 +310,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/croptop
 	name = "crop top"
@@ -265,6 +321,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = null
+	inhand_state = null
 
 /obj/item/clothing/under/croptop/red
 	name = "red crop top"
@@ -274,6 +332,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = null
+	inhand_state = null
 
 /obj/item/clothing/under/croptop/grey
 	name = "grey crop top"
@@ -283,6 +343,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = null
+	inhand_state = null
 
 /obj/item/clothing/under/cuttop
 	name = "grey cut top"
@@ -292,6 +354,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = null
+	inhand_state = null
 
 /obj/item/clothing/under/cuttop/red
 	name = "red cut top"
@@ -301,6 +365,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = null
+	inhand_state = null
 
 //* Jean Shorts *//
 
@@ -312,6 +378,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/shorts/jeans/female
 	name = "jeans short shorts"
@@ -320,6 +388,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/shorts/jeans/classic
 	name = "classic jeans shorts"
@@ -328,6 +398,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/shorts/jeans/classic/female
 	name = "classic jeans short shorts"
@@ -336,6 +408,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/shorts/jeans/mustang
 	name = "mustang jeans shorts"
@@ -344,6 +418,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/shorts/jeans/mustang/female
 	name = "mustang jeans short shorts"
@@ -352,6 +428,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/shorts/jeans/youngfolks
 	name = "young folks jeans shorts"
@@ -360,6 +438,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/shorts/jeans/youngfolks/female
 	name = "young folks jeans short shorts"
@@ -368,6 +448,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/shorts/jeans/black
 	name = "black jeans shorts"
@@ -376,6 +458,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/shorts/jeans/black/female
 	name = "black jeans short shorts"
@@ -384,6 +468,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/shorts/jeans/grey
 	name = "grey jeans shorts"
@@ -392,6 +478,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/shorts/jeans/grey/female
 	name = "grey jeans short shorts"
@@ -400,3 +488,5 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"

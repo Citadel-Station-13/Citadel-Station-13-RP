@@ -18,6 +18,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_VOX)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/vox/vox_robes
 	name = "alien robes"
@@ -27,6 +29,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_VOX)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/vox/simonpants
 	name = "simon pants"
@@ -36,3 +40,5 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_VOX)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"

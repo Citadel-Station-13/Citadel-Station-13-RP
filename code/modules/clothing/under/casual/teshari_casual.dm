@@ -12,6 +12,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/smock/red
 	name = "small red smock"
@@ -43,6 +45,8 @@
 	name = "Undercoat"
 	desc = "A Teshari traditional garb, with a modern twist! Made of micro and nanofibres to make it light and billowy, perfect for going fast and stylishly!"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/undercoat/standard/black_orange
 	name = "black and orange undercoat"

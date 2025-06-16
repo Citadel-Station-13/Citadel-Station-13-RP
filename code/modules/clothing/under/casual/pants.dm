@@ -10,6 +10,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_VOX)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/pants/red
 	name = "red pants"
@@ -19,6 +21,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/pants/black
 	name = "black pants"
@@ -28,6 +32,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/pants/tan
 	name = "tan pants"
@@ -37,6 +43,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_VOX)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/pants/khaki
 	name = "khaki pants"
@@ -46,6 +54,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/pants/camo
 	name = "camo pants"
@@ -55,6 +65,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI, BODYTYPE_VOX)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/pants/chaps
 	name = "sexy brown chaps"
@@ -64,6 +76,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/pants/chaps/black
 	name = "sexy black chaps"
@@ -73,6 +87,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/pants/yogapants
 	name = "yoga pants"
@@ -83,6 +99,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 //* Jeans *//
 
@@ -96,6 +114,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI, BODYTYPE_VOX)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/pants/ripped
 	name = "ripped jeans"
@@ -105,6 +125,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/pants/classicjeans
 	name = "classic jeans"
@@ -114,6 +136,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI, BODYTYPE_VOX)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/pants/classicjeans/ripped
 	name = "ripped classic jeans"
@@ -123,6 +147,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/pants/mustangjeans
 	name = "must hang jeans"
@@ -132,6 +158,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI, BODYTYPE_VOX)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/pants/mustangjeans/ripped
 	name = "ripped must hang jeans"
@@ -141,6 +169,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/pants/blackjeans
 	name = "black jeans"
@@ -150,6 +180,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI, BODYTYPE_VOX)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/pants/blackjeans/ripped
 	name = "ripped black jeans"
@@ -159,6 +191,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/pants/greyjeans
 	name = "grey jeans"
@@ -168,6 +202,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/pants/greyjeans/ripped
 	name = "ripped grey jeans"
@@ -177,6 +213,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/pants/youngfolksjeans
 	name = "young folks jeans"
@@ -186,6 +224,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI, BODYTYPE_VOX)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 //* Track Pants *//
 
@@ -197,6 +237,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/pants/track/blue
 	name = "blue track pants"
@@ -205,6 +247,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/pants/track/green
 	name = "green track pants"
@@ -213,6 +257,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/pants/track/white
 	name = "white track pants"
@@ -221,6 +267,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/pants/track/red
 	name = "red track pants"
@@ -229,6 +277,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 //* Baggy Jeans *//
 
@@ -240,6 +290,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/pants/baggy/classicjeans
 	name = "baggy classic jeans"
@@ -249,6 +301,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/pants/baggy/mustangjeans
 	name = "maggy must hang jeans"
@@ -258,6 +312,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/pants/baggy/blackjeans
 	name = "baggy black jeans"
@@ -267,6 +323,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/pants/baggy/greyjeans
 	name = "baggy grey jeans"
@@ -276,6 +334,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/pants/baggy/youngfolksjeans
 	name = "baggy young folks jeans"
@@ -285,6 +345,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 //* Baggy Pants *//
 
@@ -296,6 +358,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/pants/baggy/red
 	name = "baggy red pants"
@@ -305,6 +369,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/pants/baggy/black
 	name = "baggy black pants"
@@ -314,6 +380,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/pants/baggy/tan
 	name = "baggy tan pants"
@@ -323,6 +391,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/pants/baggy/track
 	name = "baggy track pants"
@@ -332,6 +402,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/pants/baggy/khaki
 	name = "baggy khaki pants"
@@ -341,6 +413,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/pants/baggy/camo
 	name = "baggy camo pants"
@@ -350,6 +424,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_UNATHI_DIGI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 //* Utility Pants *//
 
@@ -361,6 +437,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/pants/utility/orange
 	name = "orange utility pants"
@@ -370,6 +448,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/pants/utility/blue
 	name = "blue utility pants"
@@ -379,6 +459,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/pants/utility/white
 	name = "white utility pants"
@@ -388,6 +470,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/pants/utility/red
 	name = "red utility pants"
@@ -397,3 +481,5 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
