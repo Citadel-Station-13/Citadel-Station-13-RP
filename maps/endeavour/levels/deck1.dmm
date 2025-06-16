@@ -5231,6 +5231,7 @@
 	gl_uid = "exploration";
 	installation = /obj/item/gun/projectile/energy/phasegun;
 	name = "exploration turret";
+	req_one_access = list(19,43,62,67);
 	uid = "exploration"
 	},
 /obj/structure/railing,
@@ -5242,7 +5243,7 @@
 	},
 /obj/effect/floor_decal/industrial/warning/cee,
 /turf/simulated/floor/plating,
-/area/shuttle/excursion/endeavour/general)
+/area/shuttle/excursion/endeavour/cockpit)
 "dWo" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -31815,6 +31816,7 @@
 	gl_uid = "exploration";
 	installation = /obj/item/gun/projectile/energy/phasegun;
 	name = "exploration turret";
+	req_one_access = list(19,43,62,67);
 	uid = "exploration"
 	},
 /obj/structure/railing{
@@ -31830,7 +31832,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/excursion/endeavour/general)
+/area/shuttle/excursion/endeavour/cockpit)
 "xSS" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
