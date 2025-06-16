@@ -12,6 +12,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/kimono_black
 	name = "black kimono"
@@ -21,6 +23,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/kimono_sakura
 	name = "sakura pattern kimono"
@@ -30,6 +34,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/kimono_fancy
 	name = "festival kimono"
@@ -39,6 +45,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/kamishimo
 	name = "kamishimo"
@@ -48,6 +56,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 //Keek's Kimonos
 /obj/item/clothing/under/kimono/red
@@ -57,6 +67,8 @@
 	icon_state = "kimono_red"
 	worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/kimono/orange
 	name = "orange kimono"
@@ -64,6 +76,8 @@
 	icon_state = "kimono_orange"
 	worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/kimono/yellow
 	name = "yellow kimono"
@@ -71,6 +85,8 @@
 	icon_state = "kimono_yellow"
 	worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/kimono/green
 	name = "green kimono"
@@ -78,6 +94,8 @@
 	icon_state = "kimono_green"
 	worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/kimono/blue
 	name = "blue kimono"
@@ -85,6 +103,8 @@
 	icon_state = "kimono_blue"
 	worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/kimono/purple
 	name = "purple kimono"
@@ -92,6 +112,8 @@
 	icon_state = "kimono_purple"
 	worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/kimono/violet
 	name = "violet kimono"
@@ -99,6 +121,8 @@
 	icon_state = "kimono_violet"
 	worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/kimono/pink
 	name = "pink kimono"
@@ -106,6 +130,8 @@
 	icon_state = "kimono_pink"
 	worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/kimono/earth
 	name = "earth kimono"
@@ -113,3 +139,5 @@
 	icon_state = "kimono_earth"
 	worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
