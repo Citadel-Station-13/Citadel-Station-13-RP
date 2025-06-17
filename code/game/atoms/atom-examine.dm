@@ -66,13 +66,7 @@
 		. += SPAN_TINYNOTICE("<a href='byond://winset?command=.statpanel_goto_tab \"Examine\"'>For more information, click here.</a>") //This feels VERY HACKY but eh its PROBABLY fine
 	if(integrity_flags & INTEGRITY_INDESTRUCTIBLE)
 		. += SPAN_NOTICE("It doesn't look like it can be damaged through common means.")
-/*
-	if(custom_materials)
-		var/list/materials_list = list()
-		for(var/datum/prototype/material/current_material as anything in custom_materials)
-			materials_list += "[current_material.name]"
-		. += "<u>It is made out of [english_list(materials_list)]</u>."
-*/
+
 	if(reagents)
 		if(reagents.reagents_holder_flags & TRANSPARENT)
 			. += "It contains:"

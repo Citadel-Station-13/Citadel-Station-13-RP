@@ -263,16 +263,6 @@
 
 	//ID
 	if(wear_id && wear_id.show_examine)
-		/*var/id
-		if(istype(wear_id, /obj/item/pda))
-			var/obj/item/pda/pda = wear_id
-			id = pda.owner
-		else if(istype(wear_id, /obj/item/card/id)) //just in case something other than a PDA/ID card somehow gets in the ID slot :[
-			var/obj/item/card/id/idcard = wear_id
-			id = idcard.registered_name
-		if(id && (id != real_name) && (get_dist(src, usr) <= 1) && prob(10))
-			. += "<span class='warning'>[T.He] [T.is] wearing [icon2html(thing = wear_id, target = user)] \a [wear_id] yet something doesn't seem right...</span>"
-		else*/
 		. += SPAN_INFO("[icon2html(wear_id, user)] [T.He] [T.is] wearing \a [FORMAT_TEXT_LOOKITEM(wear_id)].")
 
 	if(istype(src, /mob/living/carbon/human/dummy))

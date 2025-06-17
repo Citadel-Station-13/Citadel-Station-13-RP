@@ -350,9 +350,6 @@
 /atom/proc/rcd_act(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	return
 
-/atom/proc/melt()
-	return
-
 /atom/proc/add_hiddenprint(mob/living/M)
 	if (isnull(M))
 		return
@@ -791,6 +788,14 @@
 /atom/proc/reset_plane_and_layer()
 	plane = initial(plane)
 	set_base_layer(initial(layer))
+
+//* Reagents *//
+
+/atom/proc/create_reagents(max_vol, starting_flags)
+	if(reagents)
+		QDEL_NULL(reagents)
+	reagents = new /datum/reagent_holder(max_vol, src, starting_flags)
+	return reagents
 
 //* Persistence *//
 
