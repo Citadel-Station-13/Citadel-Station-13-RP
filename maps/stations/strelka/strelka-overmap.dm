@@ -10,7 +10,7 @@
 [b]Notice[/b]: Nanotrasen Vessel, authorized personnel only, heavely refited."}
 
 	icon_state = "ship"
-	vessel_mass = 18500
+	vessel_mass = 10000
 	burn_delay = 2 SECONDS
 	fore_dir = EAST	// Which direction the ship/z-level is facing.  It will move dust particles from that direction when moving.
 	// The waypoints that are avaliable once you are at this Navpoint
