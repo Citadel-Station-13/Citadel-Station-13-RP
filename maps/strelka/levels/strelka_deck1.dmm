@@ -418,6 +418,10 @@
 /obj/structure/railing,
 /turf/simulated/floor/water/indoors,
 /area/strelka/shipbase/deck1/hangardeck)
+"cb" = (
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/turf/simulated/floor/tiled/monodark,
+/area/shuttle/civvie/strelka)
 "cd" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/industrial/warning/dust,
@@ -1034,7 +1038,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/turf/space/basic,
+/turf/simulated/floor/tiled/monodark,
 /area/shuttle/civvie/strelka)
 "fa" = (
 /obj/effect/floor_decal/grass_edge{
@@ -2432,7 +2436,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/techfloor,
+/turf/simulated/floor/tiled/monodark,
 /area/shuttle/civvie/strelka)
 "mv" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -26308,7 +26312,7 @@ pG
 sI
 nN
 gg
-QP
+cb
 kl
 Sf
 IX
