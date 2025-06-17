@@ -2455,19 +2455,16 @@
 /obj/structure/cable/blue{
 	icon_state = "4-8"
 	},
-/obj/machinery/access_button{
-	command = "cycle_int";
-	frequency = 1380;
-	master_tag = "civvie_docker";
-	pixel_x = 5;
-	pixel_y = 25
-	},
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = null
+	},
+/obj/machinery/access_button/airlock_interior{
+	pixel_y = 22;
+	master_tag = "civvie_docker"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/civvie/strelka)
@@ -8818,15 +8815,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 1
 	},
-/obj/machinery/access_button{
-	command = "cycle_ext";
-	frequency = 1380;
-	master_tag = "civvie_docker";
-	pixel_y = -21
-	},
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = null
+	},
+/obj/machinery/access_button/airlock_exterior{
+	pixel_y = -21;
+	master_tag = "civvie_docker"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/civvie/strelka)

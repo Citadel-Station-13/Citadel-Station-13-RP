@@ -966,9 +966,6 @@
 /obj/structure/window/basic{
 	dir = 4
 	},
-/obj/structure/window/basic{
-	dir = 1
-	},
 /obj/machinery/button/remote/driver{
 	id = "enginecore";
 	name = "Second Stage Engine Ejection - Core Ejection";
@@ -1219,6 +1216,10 @@
 "dB" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 10
+	},
+/obj/machinery/camera/network/engineering,
+/obj/structure/window/phoronreinforced{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/engine)
@@ -1741,7 +1742,9 @@
 /obj/structure/window/phoronreinforced/full{
 	icon_state = "phoronwindow0"
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/red,
+/obj/machinery/atmospherics/pipe/simple/visible/red{
+	dir = 6
+	},
 /turf/simulated/floor/reinforced/nitrogen{
 	initial_gas_mix = "n2=82.1472;TEMP=293.15"
 	},
@@ -2411,6 +2414,12 @@
 	},
 /turf/simulated/floor/carpet/patterened/orange,
 /area/strelka/shipbase/deck2/engineering/storage)
+"hc" = (
+/obj/machinery/atmospherics/pipe/simple/visible/red{
+	dir = 4
+	},
+/turf/simulated/wall/r_wall/prepainted,
+/area/strelka/shipbase/deck2/engineering/engine)
 "he" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
@@ -3137,6 +3146,9 @@
 	dir = 10
 	},
 /obj/machinery/camera/network/engineering,
+/obj/structure/window/phoronreinforced{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/engine)
 "jD" = (
@@ -5284,6 +5296,9 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
 	},
+/obj/structure/window/phoronreinforced{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/engine)
 "py" = (
@@ -5634,12 +5649,6 @@
 	},
 /turf/simulated/floor/reinforced/phoron,
 /area/strelka/shipbase/deck2/engineering/atmos)
-"qz" = (
-/obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 6
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/strelka/shipbase/deck2/engineering/engine)
 "qA" = (
 /obj/item/suit_cooling_unit,
 /obj/item/tank/jetpack/carbondioxide,
@@ -6882,10 +6891,6 @@
 	},
 /turf/simulated/floor/carpet/patterened/orange,
 /area/strelka/shipbase/deck2/engineering/storage)
-"ub" = (
-/obj/machinery/portable_atmospherics/canister/phoron,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/strelka/shipbase/deck2/engineering/engine)
 "ud" = (
 /obj/machinery/light,
 /obj/structure/table/woodentable,
@@ -7272,7 +7277,9 @@
 /area/strelka/shipbase/deck2)
 "vh" = (
 /obj/machinery/portable_atmospherics/canister/phoron,
-/obj/machinery/door/window/westleft,
+/obj/structure/window/phoronreinforced{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/engine)
 "vi" = (
@@ -7367,6 +7374,23 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck2/science/tele)
+"vB" = (
+/obj/machinery/door/blast/regular{
+	dir = 2;
+	id = "SupermatterPort";
+	name = "Reactor Blast Door"
+	},
+/obj/structure/grille,
+/obj/structure/window/phoronreinforced/full{
+	icon_state = "phoronwindow0"
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/red{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced/nitrogen{
+	initial_gas_mix = "n2=82.1472;TEMP=293.15"
+	},
+/area/strelka/shipbase/deck2/engineering/engine)
 "vC" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck2/engineering/engine)
@@ -9055,6 +9079,9 @@
 /obj/machinery/light/spot/no_nightshift{
 	dir = 1
 	},
+/obj/structure/window/phoronreinforced{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/engine)
 "AF" = (
@@ -9305,9 +9332,11 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/shield)
 "Bn" = (
-/obj/machinery/atmospherics/pipe/simple/visible/red,
 /obj/machinery/camera/network/engineering{
 	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/red{
+	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/engine)
@@ -9365,6 +9394,13 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/science/anomaly)
+"Bz" = (
+/obj/effect/floor_decal/industrial/warning,
+/obj/structure/window/phoronreinforced{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck2/engineering/engine)
 "BA" = (
 /obj/item/stamp/internalaffairs,
 /obj/item/stamp/denied{
@@ -10169,6 +10205,15 @@
 /obj/item/radio,
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/shipbase/deck2/explo)
+"DF" = (
+/obj/machinery/atmospherics/pipe/manifold/visible/green{
+	dir = 1
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck2/engineering/engine)
 "DH" = (
 /obj/structure/closet/walllocker_double/north,
 /obj/item/pickaxe,
@@ -11879,6 +11924,9 @@
 	},
 /obj/machinery/button/remote/blast_door/strelka/blockade{
 	pixel_y = 30
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/engine)
@@ -13819,12 +13867,6 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck2)
-"PI" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/strelka/shipbase/deck2/engineering/engine)
 "PJ" = (
 /obj/structure/cable/blue{
 	icon_state = "4-8"
@@ -15072,6 +15114,9 @@
 	dir = 6
 	},
 /obj/effect/floor_decal/industrial/warning,
+/obj/structure/window/phoronreinforced{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/engine)
 "TK" = (
@@ -15523,9 +15568,10 @@
 /turf/space/basic,
 /area/space)
 "Vj" = (
-/obj/machinery/camera/network/engineering,
-/obj/effect/floor_decal/industrial/warning{
-	dir = 4
+/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/door/window/westleft,
+/obj/structure/window/phoronreinforced{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/engine)
@@ -29169,7 +29215,7 @@ vq
 vq
 Wz
 vC
-qz
+Dh
 fb
 mR
 lX
@@ -29359,12 +29405,12 @@ Rq
 Wy
 vc
 vC
-zG
+DF
 OY
 Dh
 Hf
-Eg
-Yd
+Dh
+vB
 Cb
 QC
 QC
@@ -29553,12 +29599,12 @@ wz
 wz
 wz
 wz
-zG
+DF
 cC
 Gj
 Dh
-Eg
-vC
+Dh
+hc
 Yd
 Yd
 JT
@@ -29751,7 +29797,7 @@ IZ
 wk
 Gj
 Dh
-dB
+Dh
 Bn
 ON
 dV
@@ -30523,7 +30569,7 @@ Ij
 gb
 VH
 Xf
-or
+Bz
 Fi
 WA
 or
@@ -31300,13 +31346,13 @@ Xs
 Mw
 nz
 Vj
-PI
-PI
-PI
-PI
-PI
-PI
-PI
+Zm
+Cr
+Cr
+rh
+rh
+ya
+lR
 fa
 Vw
 ck
@@ -31494,13 +31540,13 @@ Xs
 op
 nz
 vh
-Zm
-Cr
-Cr
-rh
-rh
-ya
-lR
+fx
+LN
+LN
+HD
+BJ
+Yv
+Db
 fa
 BS
 zU
@@ -31687,14 +31733,14 @@ Xl
 Xs
 OR
 nz
-ub
-fx
-LN
-LN
-HD
-BJ
-Yv
-Db
+fa
+fa
+fa
+fa
+fa
+fa
+fa
+fa
 fa
 rJ
 yb
