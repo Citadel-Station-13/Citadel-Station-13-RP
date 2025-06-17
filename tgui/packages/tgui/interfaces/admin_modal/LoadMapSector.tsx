@@ -5,7 +5,7 @@
 
 import { BooleanLike } from "common/react";
 import { useBackend, useLocalState } from "tgui/backend";
-import { Box, Button, Flex, Input, LabeledList, NumberInput, Section, Stack, Tabs } from "tgui/components";
+import { Box, Button, Dropdown, Flex, Input, LabeledList, NumberInput, Section, Stack, Tabs } from "tgui/components";
 import { Window } from "tgui/layouts";
 import { VSplitTooltipList } from "../../components/VSplitTooltipList";
 import { WorldTypepathDropdown } from "../../components/WorldTypepathDropdown";
@@ -301,6 +301,7 @@ const MapLevelTraits = (props: {
 }, context) => {
   const { act, data, nestedData } = useBackend<ModalData>(context);
   const levelData: ModalLevelData = nestedData[`level-${props.levelIndex}`];
+  const [stagedTraitId, setStagedTraitId] = useLocalState<string | null>(context, 'stagedTrait', null);
 
   return (
     <Box width="100%" height="100%">
@@ -309,11 +310,44 @@ const MapLevelTraits = (props: {
           <LoadingScreen />
         )}
         loaded={(json) => {
-          const mapSystemData: Json_MapSystem = json[JsonMappings.MapSystem];
+          const mapSystemData: Json_MapSystem = json[JsonMappings.MapSystem] as Json_MapSystem;
+          const maybeStagedTraitDesc: string | null = stagedTraitId ? mapSystemData.keyedLevelTraits[stagedTraitId]?.desc : null;
           return (
-            <>
-              Test
-            </>
+            <Stack fill vertical>
+              {levelData.traits.map((traitId) => {
+                const maybeTraitDesc: string | null = traitId ? mapSystemData.keyedLevelTraits[traitId]?.desc : "Unknown trait; is this a legacy trait that is now removed from the code?";
+                return (
+                  <Stack.Item key={traitId}>
+                    <Stack fill>
+                      <Stack.Item grow={1}>
+                        {traitId}
+                      </Stack.Item>
+                      <Stack.Item>
+                        <Button icon="question" tooltip={maybeTraitDesc} />
+                      </Stack.Item>
+                      <Stack.Item>
+                        <Button icon="minus" onClick={() => act('levelDelTrait', { trait: traitId })} />
+                      </Stack.Item>
+                    </Stack>
+                  </Stack.Item>
+                );
+              })}
+              <Stack.Item>
+                <Stack fill>
+                  <Stack.Item grow={1}>
+                    <Dropdown options={Object.keys(mapSystemData.keyedLevelTraits)} selected={stagedTraitId} onSelect={(val) => setStagedTraitId(val)} />
+                  </Stack.Item>
+                  {!!stagedTraitId && (
+                    <Stack.Item>
+                      <Button icon="question" tooltip={maybeStagedTraitDesc} />
+                    </Stack.Item>
+                  )}
+                  <Stack.Item>
+                    <Button icon="plus" onClick={() => act('levelAddTrait', { trait: stagedTraitId })} />
+                  </Stack.Item>
+                </Stack>
+              </Stack.Item>
+            </Stack>
           );
         }}
       />

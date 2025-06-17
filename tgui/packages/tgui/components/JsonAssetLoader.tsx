@@ -4,7 +4,9 @@
  */
 
 import { Component, InfernoNode } from "inferno";
-import { JsonMappings } from "../bindings/json";
+import { JsonMappings, resolveJsonAssetName } from "../bindings/json";
+import { fetchRetry } from "../http";
+import { LoadingScreen } from "./LoadingScreen";
 
 /**
  * Loads JSON assets; can display a different set of contents while not loaded.
@@ -15,14 +17,52 @@ import { JsonMappings } from "../bindings/json";
  */
 export class JsonAssetLoader extends Component<{
   loading?: (waiting: JsonMappings[], finished: JsonMappings[], elapsedMillis: number) => InfernoNode;
-  loaded: (json: Record<JsonMappings, Object>) => InfernoNode;
+  loaded: (json: {[K in JsonMappings]? : Object}) => InfernoNode;
   assets: JsonMappings[];
-}, {}> {
-  constructor(props, context) {
+}, {
+  remaining: number;
+  fetched: {[K in JsonMappings]? : Object};
+}> {
+
+  // not in state; state update will trigger redraw
+  waiting: JsonMappings[];
+  // not in state; state update will trigger redraw
+  finished: JsonMappings[];
+  // start time
+  startTimeMillis: number;
+
+  constructor() {
     super();
+
+    this.waiting = this.props.assets.slice();
+    this.finished = [];
+    this.startTimeMillis = Date.now();
+    this.state = {
+      remaining: this.waiting.length,
+      fetched: {},
+    };
+
+    this.props.assets.forEach((mapping) => {
+      const assetUrl = resolveJsonAssetName(mapping);
+      fetchRetry(assetUrl).then((resp) => this.setState((curr) => {
+        let updatedFetched = { ...curr.fetched };
+        updatedFetched[mapping] = resp.json();
+
+        this.finished.push(mapping);
+        this.waiting = this.waiting.filter((v) => `${v}` !== `${mapping}`);
+
+        return {
+          ...curr,
+          remaining: curr.remaining - 1,
+          fetched: updatedFetched,
+        };
+      }));
+    });
   }
 
   render() {
-
+    return this.waiting.length ? (this.props.loading ? this.props.loading(this.waiting, this.finished, Date.now() - this.startTimeMillis) : (
+      <LoadingScreen />
+    )) : this.props.loaded(this.state?.fetched || {});
   }
 }
