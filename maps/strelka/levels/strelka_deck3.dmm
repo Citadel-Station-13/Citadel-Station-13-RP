@@ -5225,7 +5225,7 @@
 /area/strelka/shipbase/deck3/maintenance/science)
 "sE" = (
 /turf/simulated/floor/reinforced,
-/area/shuttle/belter)
+/area/strelka/shipbase/deck3/mininghangar)
 "sH" = (
 /obj/structure/window/reinforced,
 /obj/structure/curtain/open/black,
