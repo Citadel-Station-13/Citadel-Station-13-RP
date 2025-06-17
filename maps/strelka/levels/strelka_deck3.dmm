@@ -5223,6 +5223,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck3/maintenance/science)
+"sE" = (
+/turf/simulated/floor/reinforced,
+/area/shuttle/belter)
 "sH" = (
 /obj/structure/window/reinforced,
 /obj/structure/curtain/open/black,
@@ -26546,7 +26549,7 @@ Vx
 zt
 tr
 Fo
-Fo
+sE
 Ko
 EP
 EP
@@ -26738,9 +26741,9 @@ Ko
 Fo
 Cx
 Mx
-Mx
 qh
 Fo
+sE
 ZU
 gc
 gc
@@ -26932,9 +26935,9 @@ Ko
 Fo
 jw
 Mx
-Mx
 Hy
 Fo
+sE
 OV
 DW
 yg
@@ -27126,9 +27129,9 @@ UA
 Qc
 Mx
 Mx
-Mx
 LQ
 Fo
+sE
 sa
 Pk
 ny
@@ -27322,7 +27325,7 @@ Fo
 Fo
 Fo
 Fo
-Fo
+sE
 sa
 ud
 ud
@@ -27516,7 +27519,7 @@ Ce
 wO
 Ce
 Ce
-Ce
+sE
 sa
 fG
 fG
