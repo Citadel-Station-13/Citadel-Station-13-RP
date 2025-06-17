@@ -597,12 +597,6 @@
 "bM" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/strelka)
-"bN" = (
-/obj/machinery/atmospherics/component/unary/engine/biggest{
-	dir = 4
-	},
-/turf/space/basic,
-/area/strelka/shipbase/deck2/engineering/nacelle2)
 "bO" = (
 /obj/structure/cable/white{
 	icon_state = "4-8"
@@ -5424,12 +5418,6 @@
 /obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
-"pQ" = (
-/obj/machinery/atmospherics/component/unary/engine/biggest{
-	dir = 4
-	},
-/turf/space/basic,
-/area/strelka/shipbase/deck2/engineering/nacelle)
 "pR" = (
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/wood,
@@ -10301,12 +10289,6 @@
 	},
 /turf/simulated/floor/airless,
 /area/space)
-"DS" = (
-/obj/machinery/atmospherics/component/unary/engine{
-	dir = 4
-	},
-/turf/space/basic,
-/area/strelka/shipbase/deck2/engineering/nacelle2)
 "DT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/universal{
 	dir = 4
@@ -12540,12 +12522,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck2/bridge)
-"Le" = (
-/obj/machinery/atmospherics/component/unary/engine{
-	dir = 4
-	},
-/turf/space/basic,
-/area/strelka/shipbase/deck2/engineering/nacelle)
 "Lf" = (
 /obj/structure/cable/white{
 	icon_state = "4-8"
@@ -28807,12 +28783,12 @@ KT
 KT
 KT
 KT
-gT
-gT
-gT
-gT
-gT
-pQ
+KT
+KT
+KT
+KT
+KT
+KT
 Rj
 vz
 Wy
@@ -28843,12 +28819,12 @@ wZ
 YJ
 Wy
 MY
-ZS
-ZS
-bN
-ZS
-ZS
-ZS
+KT
+KT
+KT
+KT
+KT
+KT
 KT
 KT
 KT
@@ -29002,11 +28978,11 @@ KT
 KT
 KT
 gT
+IE
 gT
 IE
 gT
-gT
-gT
+IE
 Rj
 YJ
 Wy
@@ -29038,11 +29014,11 @@ vz
 Wy
 OG
 ZS
-ZS
-ZS
+QO
 ZS
 QO
 ZS
+QO
 KT
 KT
 KT
@@ -29195,7 +29171,7 @@ KT
 KT
 KT
 xd
-Le
+gT
 gT
 gT
 gT
@@ -29236,7 +29212,7 @@ ZS
 ZS
 ZS
 ZS
-DS
+ZS
 KT
 KT
 KT
