@@ -51,7 +51,7 @@
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	materials_base = list()
-	material_costs = list(
-		"structure" = 4000,
-	)
 	build_path = /obj/item/material/ashtray
+	material_autodetect_tags = list(
+		"structure" = MATERIAL_TAG_BASIC_STRUCTURAL,
+	)
