@@ -5758,7 +5758,7 @@
 	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	pixel_x = 23;
-	id_tag = "strelka_trade_beruang_docking"
+	id_tag = "strelka_north_docking"
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;

@@ -1983,6 +1983,13 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/blast/strelka/blockade,
+/obj/machinery/access_button{
+	command = "cycle_ext";
+	frequency = 1379;
+	master_tag = "solar_dock";
+	name = "exterior access button";
+	pixel_y = 23
+	},
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/shipbase/deck2/maintenance/eva)
 "fQ" = (
@@ -2337,16 +2344,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/engine)
-"gP" = (
-/obj/machinery/access_button{
-	command = "cycle_ext";
-	frequency = 1379;
-	master_tag = "solar_dock";
-	name = "exterior access button";
-	pixel_y = 58
-	},
-/turf/simulated/wall/r_wall/prepainted,
-/area/strelka/shipbase/deck2/maintenance/eva)
 "gQ" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/yellow{
 	dir = 1
@@ -10755,6 +10752,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
+/obj/machinery/drone_fabricator,
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/maintenance/eva)
 "Fq" = (
@@ -29777,7 +29775,7 @@ ip
 bO
 tb
 fP
-gP
+tb
 tb
 tb
 tb
