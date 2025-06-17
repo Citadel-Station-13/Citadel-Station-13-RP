@@ -45,6 +45,12 @@
 	category = DESIGN_CATEGORY_MUNITIONS
 	subcategory = DESIGN_SUBCATEGORY_AMMO
 
+/datum/prototype/design/generated/nt_expedition/generate_name(template)
+	return "Expeditionary weapon prototype ([..()])"
+
+/datum/prototype/design/generated/nt_expedition_ammo/generate_name(template)
+	return "Expeditionary weapon ammo ([..()])"
+
 //* Weapons *//
 
 /**
