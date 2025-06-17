@@ -4372,7 +4372,7 @@
 /area/strelka/shipbase/deck1/pilot_EVA)
 "xC" = (
 /obj/structure/stairs/spawner/north,
-/turf/space/basic,
+/turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1/armory)
 "xF" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,

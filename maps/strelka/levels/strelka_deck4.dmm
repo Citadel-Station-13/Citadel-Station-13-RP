@@ -850,12 +850,6 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
-/obj/machinery/button/remote/airlock{
-	dir = 4;
-	pixel_x = -23;
-	id = "dorm1";
-	specialfunctions = 4
-	},
 /obj/structure/curtain/open/bed,
 /obj/machinery/light_switch{
 	dir = 4;
@@ -1147,12 +1141,6 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
-/obj/machinery/button/remote/airlock{
-	dir = 4;
-	pixel_x = -23;
-	id = "dorm3";
-	specialfunctions = 4
-	},
 /obj/structure/curtain/open/black,
 /obj/machinery/light_switch{
 	dir = 4;
@@ -1429,12 +1417,6 @@
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable/orange{
 	icon_state = "1-2"
-	},
-/obj/machinery/button/remote/airlock{
-	dir = 4;
-	pixel_x = -23;
-	id = "dorm4";
-	specialfunctions = 4
 	},
 /obj/structure/curtain/open/bed,
 /obj/machinery/light_switch{
@@ -2929,12 +2911,6 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
-/obj/machinery/button/remote/airlock{
-	dir = 4;
-	pixel_x = -23;
-	id = "dorm2";
-	specialfunctions = 4
-	},
 /obj/machinery/door/firedoor/glass,
 /obj/structure/curtain/open/bed,
 /obj/machinery/light_switch{
@@ -3704,6 +3680,8 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
+/obj/structure/fans/tiny,
+/obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck4/kitchen)
 "ph" = (
@@ -3837,6 +3815,12 @@
 /obj/structure/closet/walllocker_double/west,
 /obj/structure/cable/orange{
 	icon_state = "1-2"
+	},
+/obj/machinery/button/remote/airlock{
+	dir = 8;
+	pixel_x = 24;
+	id = "dorm2";
+	specialfunctions = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/dormhallway/Dorm/Room3)
@@ -4471,6 +4455,12 @@
 /obj/structure/closet/walllocker_double/west,
 /obj/structure/cable/orange{
 	icon_state = "1-2"
+	},
+/obj/machinery/button/remote/airlock{
+	dir = 8;
+	pixel_x = 24;
+	id = "dorm1";
+	specialfunctions = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/dormhallway/Dorm/Room4)
@@ -7339,6 +7329,12 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
+/obj/machinery/button/remote/airlock{
+	dir = 8;
+	pixel_x = 22;
+	id = "dorm3";
+	specialfunctions = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/dormhallway/Dorm/Room2)
 "HO" = (
@@ -8381,6 +8377,12 @@
 /obj/structure/sink{
 	dir = 4;
 	pixel_x = 11
+	},
+/obj/machinery/button/remote/airlock{
+	dir = 1;
+	pixel_y = -24;
+	id = "toilet-bar";
+	specialfunctions = 4
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck4/bar/back)
@@ -9829,6 +9831,12 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
+/obj/machinery/button/remote/airlock{
+	dir = 8;
+	pixel_x = 21;
+	id = "dorm4";
+	specialfunctions = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/dormhallway/Dorm)
 "TK" = (
@@ -10642,7 +10650,8 @@
 /area/strelka/shipbase/deck4/arrival)
 "Yn" = (
 /obj/machinery/door/airlock{
-	name = "Toilets"
+	name = "Toilets";
+	id_tag = "toilet-bar"
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/asteroid_steel,
