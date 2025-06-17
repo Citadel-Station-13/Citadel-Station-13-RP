@@ -15,12 +15,10 @@
 /// currently being violently shaken
 /// * whatever is shaking the holder sets this, calls reconsider reactions, and disables this again
 /// * should not be set just for movement; this is stuff like shaker shaking, throw impact, etc
-#warn impl / hook
 #define REAGENT_HOLDER_FLAG_BEING_JOSTLED (1<<2)
 /// is considered an open container right now
 /// * this is only the case if we are directly open to the environment. this is **not**
 ///   a 'can we use syringes'; this is a 'is the lid uncapped and someone can see the reagents'.
-#warn impl / hook
 #define REAGENT_HOLDER_FLAG_OPEN_CONTAINER (1<<3)
 
 #warn DEFINE_BITFIELD_NEW, including on /datum/chemical_reaction

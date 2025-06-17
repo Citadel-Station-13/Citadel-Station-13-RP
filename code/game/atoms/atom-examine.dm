@@ -1,3 +1,16 @@
+/**
+ * @params
+ * * examine - examiner args
+ * * examine_for - examining for flags so we don't compute stuff we don't need to
+ * * examine_from - examining from flags to communicate where the examine is coming from
+ *
+ * @return /datum/event_args/examine_output or null to not allow examine.
+ */
+/atom/proc/examine_new(datum/event_args/examine/examine, examine_for)
+	var/datum/event_args/examine_output/output = new
+	output.name = get_examine_name(examine.examiner_atom)
+	output.desc = get_examine_desc(examine.examiner_atom, examine.seer_dist)
+	return output
 
 /atom/proc/get_examine_name(mob/user)
 	. = "\a <b>[src]</b>"
@@ -22,16 +35,6 @@
 /// Generate the full examine string of this atom (including icon for goonchat)
 /atom/proc/get_examine_string(mob/user, thats = FALSE)
 	return "[icon2html(src, user)] [thats? "That's ":""][get_examine_name(user)]"
-
-/**
- * Returns an extended list of examine strings for any contained ID cards.
- *
- * Arguments:
- * * user - The user who is doing the examining.
- */
-/atom/proc/get_id_examine_strings(mob/user)
-	. = list()
-	return
 
 /// Used to insert text after the name but before the description in examine()
 /atom/proc/get_name_chaser(mob/user, list/name_chaser = list())

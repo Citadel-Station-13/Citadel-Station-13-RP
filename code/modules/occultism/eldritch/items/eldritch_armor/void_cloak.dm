@@ -15,6 +15,7 @@
 
 /obj/item/clothing/head/hood/eldritch_armor/void_cloak/proc/set_occluded(state)
 
+#warn examine_new
 #warn examine; cold to the touch
 
 /**
@@ -30,6 +31,7 @@
 /obj/item/clothing/suit/storage/hooded/eldritch_armor/void_cloak/Initialize(mapload)
 	. = ..()
 
+#warn examine_new
 #warn examine; cold to the touch
 
 /obj/item/clothing/suit/storage/hooded/eldritch_armor/void_cloak/proc/set_occluded(state)

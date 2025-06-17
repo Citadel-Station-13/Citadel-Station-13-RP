@@ -188,7 +188,7 @@
 /datum/eldritch_holder/proc/ui_serialize_ability_contexts()
 	var/list/serialized = list()
 	for(var/datum/prototype/eldritch_ability/ability as anything in abilities)
-		var/datum/eldritch_ability_context/context = abilities[ability]
+		var/datum/ability/eldritch_ability/context = abilities[ability]
 		serialized[ability.id] = context.ui_serialize_ability_context()
 	return serialized
 
