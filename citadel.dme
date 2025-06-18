@@ -2667,6 +2667,7 @@
 #include "code\modules\client\verbs\ooc.dm"
 #include "code\modules\client\verbs\system.dm"
 #include "code\modules\client\verbs\view.dm"
+#include "code\modules\client\verbs\view_playtime.dm"
 #include "code\modules\clothing\chameleon.dm"
 #include "code\modules\clothing\clothing-inventory.dm"
 #include "code\modules\clothing\clothing.dm"

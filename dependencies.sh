@@ -25,7 +25,7 @@ export SPACEMAN_DMM_VERSION=suite-1.10
 export PYTHON_VERSION=3.12.0
 
 # MariaDB version
-export MARIADB_VERSION=11.4.4
+export MARIADB_VERSION=11.8.2
 
 # Flyway version
 export FLYWAY_VERSION=11.0.1
