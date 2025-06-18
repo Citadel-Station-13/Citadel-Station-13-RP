@@ -29,7 +29,7 @@ export const ClientPlaytime = (props, context) => {
   let sorted = Object.keys(data.playtime).toSorted((a, b) => itIsntNullDamnit[a] - itIsntNullDamnit[b]);
 
   return (
-    <Window width={400} height={800} title="Playtime Viewer">
+    <Window width={400} height={600} title="Playtime Viewer">
       <Window.Content>
         <Section title="Tracked Playtime" fill>
           <LabeledList>
