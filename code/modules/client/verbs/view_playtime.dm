@@ -9,7 +9,7 @@
 
 	if(TIMER_COOLDOWN_CHECK(src, TIMER_CD_INDEX_CLIENT_VIEW_PLAYTIME))
 		return
-	TIMER_COOLDOWN_START(src, TIMER_CD_INDEX_MOB_VERB_INVERT_SELF, 2 SECONDS)
+	TIMER_COOLDOWN_START(src, TIMER_CD_INDEX_CLIENT_VIEW_PLAYTIME, 2 SECONDS)
 
 	log_game("[key_name(usr)] invoked view_playtime on [key_name(src)].")
 
@@ -42,3 +42,5 @@
 	// TODO: annotate playtime don't just throw raw strings
 	.["playtime"] = owner.persistent.playtime_loaded ? owner.persistent.playtime : null
 
+/datum/client_view_playtime/ui_state()
+	return GLOB.always_state
