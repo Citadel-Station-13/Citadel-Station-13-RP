@@ -32,6 +32,8 @@ DEFINE_BITFIELD(slot_equip_checks, list(
 #define INV_SLOT_STRIP_SIMPLE_LINK			(1<<7)
 /// do not show on strip panel unless it's occupied by an item
 #define INV_SLOT_STRIP_ONLY_REMOVES			(1<<8)
+/// do not show in worn examine
+#define INV_SLOT_NO_WORN_EXAMINE			(1<<9)
 
 DEFINE_BITFIELD(inventory_slot_flags, list(
 	BITFIELD(INV_SLOT_IS_RENDERED),
@@ -43,6 +45,7 @@ DEFINE_BITFIELD(inventory_slot_flags, list(
 	BITFIELD(INV_SLOT_IS_STRIPPABLE),
 	BITFIELD(INV_SLOT_STRIP_SIMPLE_LINK),
 	BITFIELD(INV_SLOT_STRIP_ONLY_REMOVES),
+	BITFIELD_NEW("No Worn Examine", INV_SLOT_NO_WORN_EXAMINE),
 ))
 
 //* /datum/inventory_slot inventory_filter_flags *//

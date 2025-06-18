@@ -3729,6 +3729,7 @@
 #include "code\modules\mob\mob-client.dm"
 #include "code\modules\mob\mob-damage.dm"
 #include "code\modules\mob\mob-defense.dm"
+#include "code\modules\mob\mob-examine.dm"
 #include "code\modules\mob\mob-hands.dm"
 #include "code\modules\mob\mob-iff.dm"
 #include "code\modules\mob\mob-interaction.dm"

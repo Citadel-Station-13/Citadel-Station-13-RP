@@ -6,7 +6,37 @@
  *
  * @return /datum/event_args/examine_output or null to not allow examine.
  */
-/atom/proc/examine_new(datum/event_args/examine/examine, examine_for, examine_from)
+/atom/proc/examine_new(datum/event_args/actor/examine/examine, examine_for, examine_from)
+	return pre_examine(
+		examine,
+		examine_for,
+		examine_from,
+	).run_examine(
+		examine,
+		examine_for,
+		examine_from,
+	)
+
+/**
+ * @params
+ * * examine - examiner args
+ * * examine_for - examining for flags so we don't compute stuff we don't need to
+ * * examine_from - examining from flags to communicate where the examine is coming from
+ *
+ * @return entity to actually examine, or null to not allow examine.
+ */
+/atom/proc/pre_examine(datum/event_args/examine/examine, examine_for, examine_from)
+	return src
+
+/**
+ * @params
+ * * examine - examiner args
+ * * examine_for - examining for flags so we don't compute stuff we don't need to
+ * * examine_from - examining from flags to communicate where the examine is coming from
+ *
+ * @return /datum/event_args/examine_output or null to not allow examine.
+ */
+/atom/proc/run_examine(datum/event_args/examine/examine, examine_for, examine_from)
 	var/datum/event_args/examine_output/output = new
 	output.name = get_examine_name(examine.examiner_atom)
 	output.desc = get_examine_desc(examine.examiner_atom, examine.seer_distance)

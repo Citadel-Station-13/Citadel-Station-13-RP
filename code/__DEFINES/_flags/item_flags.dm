@@ -21,7 +21,7 @@
 /// don't allow help intent attacking
 #define ITEM_CAREFUL_BLUDGEON	(1<<8)
 /// allow easy lathe deconstruction
-#define ITEM_EASY_LA﻿THE_DECONSTRUCT (1<<9)
+#define ITEM_EASY_LATHE_DECONSTRUCT (1<<9)
 /// do not allow lathe deconstruction
 #define ITEM_NO_LATHE_DECONSTRUCT (1<<10)
 /// stack-like handling for ingredients

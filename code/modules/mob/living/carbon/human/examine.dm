@@ -95,11 +95,6 @@
 		if(!(issilicon(user) || isobserver(user))) // Ghosts and borgs are all knowing
 			T = GLOB.gender_datums[PLURAL]
 
-	//! Just in case someone VVs the gender to something strange.
-	//! It'll runtime anyway when it hits usages, better to CRASH() now with a helpful message.
-	if(!T)
-		CRASH("Gender datum was null; key was '[((skip_gear & EXAMINE_SKIPJUMPSUIT) && (skip_body & EXAMINE_SKIPFACE)) ? PLURAL : gender]'")
-
 	var/speciesblurb
 	var/skip_species = FALSE
 

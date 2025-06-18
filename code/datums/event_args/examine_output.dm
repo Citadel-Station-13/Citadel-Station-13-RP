@@ -3,10 +3,15 @@
 
 /datum/event_args/examine_output
 	/// our name
-	/// * in raw html
+	/// * As a raw HTML line
 	var/name
-	/// our desc, as lazy-list of lines
-	/// * in raw html
-	var/list/desc
+	/// our desc
+	/// * As a raw HTML line
+	var/desc
+
+	/// worn
+	/// * For things visible from outside separately, like mech components, someone's clothing, etc
+	/// * As raw HTML lines
+	var/list/worn
 
 #warn impl all
