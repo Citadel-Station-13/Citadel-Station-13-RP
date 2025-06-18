@@ -13,6 +13,7 @@ import { JsonAssetLoader } from "../../components/JsonAssetLoader";
 import { Json_MapSystem, JsonMappings } from "../../bindings/json";
 import { LoadingScreen } from "../../components/LoadingScreen";
 import { DM_TurfSpawnFlags } from "../../bindings/game";
+import { Game_MapLevelAttribute } from "../../bindings/game/Game_MapLevelAttribute";
 
 enum LoadMapSectorStatus {
   Waiting = "waiting",
@@ -337,11 +338,9 @@ const MapLevelTraits = (props: {
                   <Stack.Item grow={1}>
                     <Dropdown options={Object.keys(mapSystemData.keyedLevelTraits)} selected={stagedTraitId} onSelect={(val) => setStagedTraitId(val)} />
                   </Stack.Item>
-                  {!!stagedTraitId && (
-                    <Stack.Item>
-                      <Button icon="question" tooltip={maybeStagedTraitDesc} />
-                    </Stack.Item>
-                  )}
+                  <Stack.Item>
+                    <Button icon="question" color={stagedTraitId ? "" : "transparent"} tooltip={maybeStagedTraitDesc} />
+                  </Stack.Item>
                   <Stack.Item>
                     <Button icon="plus" onClick={() => act('levelAddTrait', { trait: stagedTraitId })} />
                   </Stack.Item>
@@ -360,6 +359,8 @@ const MapLevelAttributes = (props: {
 }, context) => {
   const { act, data, nestedData } = useBackend<ModalData>(context);
   const levelData: ModalLevelData = nestedData[`level-${props.levelIndex}`];
+  const [stagedAttributeId, setStagedAttributeId] = useLocalState<string | null>(context, 'stagedAttribute', null);
+  const [stagedAttributeVal, setStagedAttributeVal] = useLocalState<string | number| null>(context, 'stagedAttributeVal', null);
 
   return (
     <Box width="100%" height="100%">
@@ -369,10 +370,44 @@ const MapLevelAttributes = (props: {
         )}
         loaded={(json) => {
           const mapSystemData: Json_MapSystem = json[JsonMappings.MapSystem];
+          const maybeStagedAttribute: Game_MapLevelAttribute | null = stagedAttributeId && json[stagedAttributeId];
           return (
-            <>
-              Test
-            </>
+            <Stack fill vertical>
+              {levelData.attributes.map((attributeId, value) => {
+                const maybeTraitDesc: string | null = traitId ? mapSystemData.keyedLevelTraits[traitId]?.desc : "Unknown trait; is this a legacy trait that is now removed from the code?";
+                return (
+                  <Stack.Item key={traitId}>
+                    <Stack fill>
+                      <Stack.Item grow={1}>
+                        {traitId}
+                      </Stack.Item>
+                      <Stack.Item>
+                        <Button icon="question" tooltip={maybeTraitDesc} />
+                      </Stack.Item>
+                      <Stack.Item>
+                        <Button icon="minus" onClick={() => act('levelDelTrait', { trait: traitId })} />
+                      </Stack.Item>
+                    </Stack>
+                  </Stack.Item>
+                );
+              })}
+              <Stack.Item>
+                <Stack fill>
+                  <Stack.Item grow={1}>
+                    <Dropdown options={Object.keys(mapSystemData.keyedLevelAttributes)} selected={stagedAttributeId} onSelect={(val) => setStagedTraitId(val)} />
+                  </Stack.Item>
+                  <Stack.Item grow={1}>
+                    T
+                  </Stack.Item>
+                  <Stack.Item>
+                    <Button icon="question" color={stagedTraitId ? "" : "transparent"} tooltip={maybeStagedTraitDesc} />
+                  </Stack.Item>
+                  <Stack.Item>
+                    <Button icon="plus" onClick={() => act('levelAddTrait', { trait: stagedTraitId })} />
+                  </Stack.Item>
+                </Stack>
+              </Stack.Item>
+            </Stack>
           );
         }}
       />

@@ -196,6 +196,10 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 			target_level.set_attribute(params["attribute"], params["value"])
 			update_ui_level_index_data(target_level_index)
 			. = TRUE
+		if("levelDelAttribute")
+			target_level.unset_attribute(params["attribute"])
+			update_ui_level_index_data(target_level_index)
+			. = TRUE
 		if("levelBaseTurf")
 			target_level.base_turf = text2path(params["type"]) || world.turf
 			if(!ispath(target_level.base_turf, /turf))

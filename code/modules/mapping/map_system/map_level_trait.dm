@@ -9,6 +9,14 @@
 	/// allow admin editing
 	var/allow_edit = FALSE
 
+/datum/map_level_trait/proc/ui_serialize()
+	return list(
+		"id" = initial(map_level_attribute_path.id),
+		"desc" = initial(map_level_attribute_path.desc),
+		"allowEdit" = initial(map_level_attribute_path.allow_edit),
+	)
+
+
 /datum/map_level_trait/reserved
 	id = "system-reserved"
 	desc = "Reserved by the maploader. Do not touch."

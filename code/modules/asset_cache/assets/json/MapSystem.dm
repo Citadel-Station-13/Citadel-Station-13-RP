@@ -15,19 +15,10 @@
 
 	var/list/assembled_traits = list()
 	for(var/datum/map_level_trait/map_level_trait_path as anything in subtypesof(/datum/map_level_trait))
-		assembled_traits[initial(map_level_trait_path.id)] = list(
-			"id" = initial(map_level_trait_path.id),
-			"desc" = initial(map_level_trait_path.desc),
-			"allowEdit" = initial(map_level_trait_path.allow_edit),
-		)
+		assembled_traits[initial(map_level_trait_path.id)] = map_level_trait_path.ui_serialize()
 	.["keyedLevelTraits"] = assembled_traits
 
 	var/list/assembled_attributes = list()
 	for(var/datum/map_level_attribute/map_level_attribute_path as anything in subtypesof(/datum/map_level_attribute))
-		assembled_attributes[initial(map_level_attribute_path.id)] = list(
-			"id" = initial(map_level_attribute_path.id),
-			"desc" = initial(map_level_attribute_path.desc),
-			"allowEdit" = initial(map_level_attribute_path.allow_edit),
-			"numeric" = initial(map_level_attribute_path.numeric),
-		)
+		assembled_attributes[initial(map_level_attribute_path.id)] = map_level_attribute_path.ui_serialize()
 	.["keyedLevelAttributes"] = assembled_attributes
