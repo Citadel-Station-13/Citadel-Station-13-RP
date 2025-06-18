@@ -1171,6 +1171,12 @@
 /obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/shipbase/deck1/hangardeck)
+"fR" = (
+/obj/effect/shuttle_landmark/automatic{
+	name = "Dock Starboard Deck 1"
+	},
+/turf/space/basic,
+/area/space)
 "fT" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/machinery/light/small/old,
@@ -5142,10 +5148,6 @@
 /obj/item/gun/projectile/energy/gun,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1/armory2)
-"Cu" = (
-/obj/effect/shuttle_landmark/automatic,
-/turf/space/basic,
-/area/space)
 "Cv" = (
 /obj/structure/cable/white{
 	icon_state = "4-8"
@@ -22586,7 +22588,7 @@ vu
 vu
 vu
 vu
-vu
+fR
 vu
 vS
 bw
@@ -22780,7 +22782,7 @@ vu
 vu
 vu
 vu
-Cu
+vu
 vu
 bH
 EN
