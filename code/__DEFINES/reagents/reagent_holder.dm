@@ -21,4 +21,16 @@
 ///   a 'can we use syringes'; this is a 'is the lid uncapped and someone can see the reagents'.
 #define REAGENT_HOLDER_FLAG_OPEN_CONTAINER (1<<3)
 
-#warn DEFINE_BITFIELD_NEW, including on /datum/chemical_reaction
+DEFINE_BITFIELD_NEW("memory-class", list(
+	/datum/reagent_holder = list(
+		NAMEOF_TYPE(/datum/reagent_holder, reagent_holder_flags),
+	),
+	/datum/chemical_reaction = list(
+		NAMEOF_TYPE(/datum/chemical_reaction, holder_flags_start_require),
+		NAMEOF_TYPE(/datum/chemical_reaction, holder_flags_start_forbid),
+	),
+), list(
+	BITFIELD_NEW("Currently Reacting", REAGENT_HOLDER_FLAG_CURRENTLY_REACTING),
+	BITFIELD_NEW("Being Jostled", REAGENT_HOLDER_FLAG_BEING_JOSTLED),
+	BITFIELD_NEW("Open Container", REAGENT_HOLDER_FLAG_OPEN_CONTAINER),
+))

@@ -19,7 +19,13 @@
 /// general
 #define MEMORY_CLASS_GENERIC (1<<0)
 
-#warn define bitfield memory_class on /datum/memory
+DEFINE_BITFIELD_NEW("memory-class", list(
+	/datum/memory = list(
+		NAMEOF_TYPE(/datum/memory, memory_class),
+	),
+), list(
+	BITFIELD_NEW("Generic", MEMORY_CLASS_GENERIC),
+))
 
 //* memory constants *//
 

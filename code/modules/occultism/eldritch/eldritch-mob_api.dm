@@ -26,4 +26,3 @@
 
 #warn how to do this
 /mob/proc/eldritch_inflict_mindshock(req_power, req_duration)
-

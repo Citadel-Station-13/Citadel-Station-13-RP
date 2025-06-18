@@ -431,7 +431,6 @@
 		)
 	throw_force = 0
 	damage_force = 0
-	show_examine = FALSE
 	owner = null
 	del_for_null_core = FALSE
 	core = null

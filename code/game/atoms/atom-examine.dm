@@ -6,10 +6,10 @@
  *
  * @return /datum/event_args/examine_output or null to not allow examine.
  */
-/atom/proc/examine_new(datum/event_args/examine/examine, examine_for)
+/atom/proc/examine_new(datum/event_args/examine/examine, examine_for, examine_from)
 	var/datum/event_args/examine_output/output = new
 	output.name = get_examine_name(examine.examiner_atom)
-	output.desc = get_examine_desc(examine.examiner_atom, examine.seer_dist)
+	output.desc = get_examine_desc(examine.examiner_atom, examine.seer_distance)
 	return output
 
 /atom/proc/get_examine_name(mob/user)

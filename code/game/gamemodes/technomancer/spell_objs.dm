@@ -10,7 +10,7 @@
 		)
 	throw_force = 0
 	damage_force = 0
-	show_examine = FALSE
+	item_flags = /obj/item/spell::item_flags | ITEM_ABSTRACT
 //	var/mob/living/carbon/human/owner = null
 	var/mob/living/owner = null
 	var/del_for_null_core = TRUE

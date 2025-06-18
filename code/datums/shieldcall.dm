@@ -135,7 +135,23 @@ GLOBAL_LIST_EMPTY(cached_shieldcall_datums)
  * @return SHIELDCALL_FLAG_* flags
  */
 /datum/shieldcall/proc/handle_throw_impact(atom/defending, shieldcall_returns, fake_attack, datum/thrownthing/thrown)
-	return
+	return NONE
+
+//* Electrocute Handling *//
+
+/**
+ * Sent over from the atom.
+ *
+ * @params
+ * * defending - the thing being shocked
+ * * shieldcall_returns - existing returns from other shieldcalls
+ * * fake_attack - just checking!
+ * * electrocute_act_args - indexed list of electrocute_act args
+ *
+ * @return SHIELDCALL_FLAG_TERMINATE or NONE
+ */
+/datum/shieldcall/proc/handle_electrocute(atom/defending, shieldcall_returns, fake_attack, list/electrocute_act_args)
+	return NONE
 
 //* Bound Variant *//
 

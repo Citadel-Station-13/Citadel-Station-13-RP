@@ -38,4 +38,4 @@
 
 	for(var/i in 1 to effective_spread_ticks)
 		var/turf/maybe = locate(our_x + rand(-spread_radius, spread_radius), our_y + rand(-spread_radius, spread_radius), our_z)
-		maybe?.eldritch_rust_spread(effective_spread_probability)
+		maybe?.eldritch_spread_rust(effective_spread_probability)
