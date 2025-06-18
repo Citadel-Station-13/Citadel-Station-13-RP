@@ -107,7 +107,7 @@
  *
  * range, speed defaults to sane defaults if not specified, usually calculated from throw force.
  *
- * @return a datum on success, null on failure.
+* @return a datum on success, null on failure.
  */
 /atom/movable/proc/subsystem_throw(atom/target, range, speed, flags, atom/thrower, datum/callback/on_hit, datum/callback/on_land, force = THROW_FORCE_DEFAULT)
 	SHOULD_CALL_PARENT(TRUE)

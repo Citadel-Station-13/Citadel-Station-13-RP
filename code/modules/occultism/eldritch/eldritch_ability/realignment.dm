@@ -7,6 +7,8 @@
  */
 /datum/prototype/eldritch_ability/patron/blade/realignment
 	ability_type = /datum/ability/eldritch_ability/patron/blade/realignment
+	name = "Realignment"
+	desc = "Shake off pain and incapacitation to fight on."
 
 /datum/ability/eldritch_ability/patron/blade/realignment
 	name = "Realignment"
@@ -16,7 +18,7 @@
 	/// default no cooldown
 	cooldown = 0 SECONDS
 
-	/// 
+	///
 
 
 #warn impl

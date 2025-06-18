@@ -10,6 +10,10 @@
 	/// distance, if set
 	var/seer_distance
 
-	/// the thing actually examining
+	/// the thing doing the examining
 	/// * if remote controlled, this is not the same as [seer_atom]
 	var/atom/movable/examiner_atom
+
+/datum/event_args/examine/New(atom/examiner)
+	src.seer_atom = examiner
+	src.examiner_atom = examiner

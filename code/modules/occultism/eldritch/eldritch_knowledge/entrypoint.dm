@@ -9,12 +9,16 @@
 	category = "Reality"
 
 	give_eldritch_ability_ids = list(
-		/datum/eldritch_ability/eldritch_blast::id,
+		/datum/prototype/eldritch_ability/eldritch_blast::id,
 		// -- Unimplemented --
-		// /datum/eldritch_ability/eldritch_escape::id,
+		// /datum/prototype/eldritch_ability/eldritch_escape::id,
 	)
 
-	give_eldritch_ability_ids = list(
+	give_eldritch_passive_ids = list(
+		/datum/prototype/eldritch_passive/eldritch_awakening_antimagic::id,
+	)
+
+	give_eldritch_recipe_ids = list(
 		// -- Remove once other classes have proper stealth, give to Void only --
 		/datum/crafting_recipe/eldritch_recipe/void_cloak::id,
 	)

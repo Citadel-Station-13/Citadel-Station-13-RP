@@ -2,4 +2,7 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /datum/prototype/eldritch_patron/blade
-
+	id = "blade"
+	name = "The Granite Thorn"
+	desc = "Live by the honorable blade."
+	#warn icon

@@ -1,6 +1,11 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
+/datum/prototype/eldritch_ability/eldritch_blast
+	ability_type = /datum/ability/eldritch_ability/eldritch_blast
+	name = "Eldritch Blast"
+	desc = "Discharge an offensive beam at your enemies."
+
 /datum/ability/eldritch_ability/eldritch_blast
 	name = "Eldritch Blast"
 	desc = "Fire a powerful beam capable of warping reality."
