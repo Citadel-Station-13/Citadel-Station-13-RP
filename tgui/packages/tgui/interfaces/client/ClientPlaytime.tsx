@@ -31,7 +31,7 @@ export const ClientPlaytime = (props, context) => {
   return (
     <Window width={400} height={800} title="Playtime Viewer">
       <Window.Content>
-        <Section title="Tracked Playtime">
+        <Section title="Tracked Playtime" fill>
           <LabeledList>
             {sorted.map((key) => (
               <LabeledList.Item key={key} label={key}>
