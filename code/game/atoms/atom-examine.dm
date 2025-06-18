@@ -6,10 +6,48 @@
  *
  * @return /datum/event_args/examine_output or null to not allow examine.
  */
-/atom/proc/examine_new(datum/event_args/examine/examine, examine_for)
+/atom/proc/examine_new(datum/event_args/examine/examine, examine_for, examine_from)
+	examine = pre_examine(
+		examine,
+		examine_for,
+		examine_from,
+	)
+	if(!examine || !examine.examined)
+		return
+
+	return examine.examined.run_examine(
+		examine,
+		examine_for,
+		examine_from,
+	)
+
+/**
+ * @params
+ * * examine - examiner args
+ * * examine_for - examining for flags so we don't compute stuff we don't need to
+ * * examine_from - examining from flags to communicate where the examine is coming from
+ *
+ * @return /datum/event_args/examine, or null to not allow examine.
+ */
+/atom/proc/pre_examine(datum/event_args/examine/examine, examine_for, examine_from)
+	return examine
+
+/**
+ * @params
+ * * examine - examiner args
+ * * examine_for - examining for flags so we don't compute stuff we don't need to
+ * * examine_from - examining from flags to communicate where the examine is coming from
+ *
+ * @return /datum/event_args/examine_output or null to not allow examine.
+ */
+/atom/proc/run_examine(datum/event_args/examine/examine, examine_for, examine_from)
 	var/datum/event_args/examine_output/output = new
-	output.name = get_examine_name(examine.examiner_atom)
-	output.desc = get_examine_desc(examine.examiner_atom, examine.seer_dist)
+	if(examine_for & EXAMINE_FOR_NAME)
+		output.name = get_examine_name(examine.examiner_atom)
+	if(examine_for & EXAMINE_FOR_DESC)
+		output.desc = get_examine_desc(examine.examiner_atom, examine.seer_distance)
+	if(examine_for & EXAMINE_FOR_RENDER)
+		output.render = new image(src)
 	return output
 
 /atom/proc/get_examine_name(mob/user)
@@ -100,8 +138,9 @@
 	MATERIAL_INVOKE(src, MATERIAL_TRAIT_EXAMINE, on_examine, ., user, dist)
 
 	// todo: this shouldn't be in main examine(), format this crap better too.
+	#warn deal with
 	var/datum/event_args/examine/examining = new /datum/event_args/examine
-	examining.seer_atom = user
+	examining.seer = user
 	examining.seer_distance = dist
 	examining.examiner_atom = user
 	var/list/usage_hints = examine_query_usage_hints(examining)

@@ -1,82 +1,14 @@
 /mob/living/carbon/human/examine(mob/user, dist)
+	#warn deal with
 	var/datum/event_args/examine/examine_args = new(user)
-	examine_args.seer_distance = dist
 
 	var/skip_gear = 0
 	var/skip_body = 0
 
-	if(alpha <= EFFECTIVE_INVIS)
-		return loc.examine(user)
-
 	var/looks_synth = looksSynthetic()
 
-	//exosuits and helmets obscure our view and stuff.
-	if(wear_suit)
-		if(wear_suit.inv_hide_flags & HIDESUITSTORAGE)
-			skip_gear |= EXAMINE_SKIPSUITSTORAGE
-
-		if(wear_suit.inv_hide_flags & HIDEJUMPSUIT)
-			skip_body |= EXAMINE_SKIPARMS | EXAMINE_SKIPLEGS | EXAMINE_SKIPBODY | EXAMINE_SKIPGROIN
-			skip_gear |= EXAMINE_SKIPJUMPSUIT | EXAMINE_SKIPTIE | EXAMINE_SKIPHOLSTER
-
-		else if(wear_suit.inv_hide_flags & HIDETIE)
-			skip_gear |= EXAMINE_SKIPTIE | EXAMINE_SKIPHOLSTER
-
-		else if(wear_suit.inv_hide_flags & HIDEHOLSTER)
-			skip_gear |= EXAMINE_SKIPHOLSTER
-
-		if(wear_suit.inv_hide_flags & HIDESHOES)
-			skip_gear |= EXAMINE_SKIPSHOES
-			skip_body |= EXAMINE_SKIPFEET
-
-		if(wear_suit.inv_hide_flags & HIDEGLOVES)
-			skip_gear |= EXAMINE_SKIPGLOVES
-			skip_body |= EXAMINE_SKIPHANDS
-
-	if(w_uniform)
-		if(w_uniform.body_cover_flags & LEGS)
-			skip_body |= EXAMINE_SKIPLEGS
-		if(w_uniform.body_cover_flags & ARMS)
-			skip_body |= EXAMINE_SKIPARMS
-		if(w_uniform.body_cover_flags & UPPER_TORSO)
-			skip_body |= EXAMINE_SKIPBODY
-		if(w_uniform.body_cover_flags & LOWER_TORSO)
-			skip_body |= EXAMINE_SKIPGROIN
-
-	if(gloves && (gloves.body_cover_flags & HANDS))
-		skip_body |= EXAMINE_SKIPHANDS
-
-	if(shoes && (shoes.body_cover_flags & FEET))
-		skip_body |= EXAMINE_SKIPFEET
-
-	if(head)
-		if(head.inv_hide_flags & HIDEMASK)
-			skip_gear |= EXAMINE_SKIPMASK
-		if(head.inv_hide_flags & HIDEEYES)
-			skip_gear |= EXAMINE_SKIPEYEWEAR
-			skip_body |= EXAMINE_SKIPEYES
-		if(head.inv_hide_flags & HIDEEARS)
-			skip_gear |= EXAMINE_SKIPEARS
-		if(head.inv_hide_flags & HIDEFACE)
-			skip_body |= EXAMINE_SKIPFACE
-
-	if(wear_mask && (wear_mask.inv_hide_flags & HIDEFACE))
-		skip_body |= EXAMINE_SKIPFACE
-
 	//This is what hides what
-	var/list/hidden = list(
-		BP_GROIN  = skip_body & EXAMINE_SKIPGROIN,
-		BP_TORSO  = skip_body & EXAMINE_SKIPBODY,
-		BP_HEAD   = skip_body & EXAMINE_SKIPHEAD,
-		BP_L_ARM  = skip_body & EXAMINE_SKIPARMS,
-		BP_R_ARM  = skip_body & EXAMINE_SKIPARMS,
-		BP_L_HAND = skip_body & EXAMINE_SKIPHANDS,
-		BP_R_HAND = skip_body & EXAMINE_SKIPHANDS,
-		BP_L_FOOT = skip_body & EXAMINE_SKIPFEET,
-		BP_R_FOOT = skip_body & EXAMINE_SKIPFEET,
-		BP_L_LEG  = skip_body & EXAMINE_SKIPLEGS,
-		BP_R_LEG  = skip_body & EXAMINE_SKIPLEGS,
-	)
+	var/list/hidden
 
 	. = list()
 
@@ -94,11 +26,6 @@
 				T = GLOB.gender_datums[PLURAL]// Species with ambiguous_genders will not show their true gender upon examine if the examiner is not also the same species.
 		if(!(issilicon(user) || isobserver(user))) // Ghosts and borgs are all knowing
 			T = GLOB.gender_datums[PLURAL]
-
-	//! Just in case someone VVs the gender to something strange.
-	//! It'll runtime anyway when it hits usages, better to CRASH() now with a helpful message.
-	if(!T)
-		CRASH("Gender datum was null; key was '[((skip_gear & EXAMINE_SKIPJUMPSUIT) && (skip_body & EXAMINE_SKIPFACE)) ? PLURAL : gender]'")
 
 	var/speciesblurb
 	var/skip_species = FALSE

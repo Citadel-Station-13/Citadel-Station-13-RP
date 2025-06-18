@@ -33,7 +33,7 @@
 		effective_turf_probability = 100 - (100 - effective_turf_probability) * (1 / multiplier)
 		effective_turf_radius = min(11, effective_turf_radius + sqrt((multiplier - 1) * 7.5))
 
-	target_turf.eldritch_rust_spread(effective_turf_probability, effective_turf_radius)
+	target_turf.eldritch_spread_rust(effective_turf_probability, effective_turf_radius)
 
 	#warn uhh more shit ig?? spreading to objs, etc
 	if(ismob(target))
@@ -41,6 +41,6 @@
 		var/list/obj/item/exposed
 		for(var/obj/item/item as anything in exposed)
 			if(prob(worn_probability))
-				item.eldritch_rust_inflict(effective_item_rust_amount)
+				item.eldritch_apply_rust(effective_item_rust_amount)
 	else if(isobj(target))
 

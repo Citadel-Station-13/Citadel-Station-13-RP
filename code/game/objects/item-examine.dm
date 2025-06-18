@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
-/obj/item/examine_new(datum/event_args/examine/examine, examine_for)
+/obj/item/run_examine(datum/event_args/examine/examine, examine_for, examine_from)
 	var/datum/event_args/examine_output/output = ..()
 	#warn do TRAIT_ITEM_HIDE_WORN_EXAMINE
 	return output

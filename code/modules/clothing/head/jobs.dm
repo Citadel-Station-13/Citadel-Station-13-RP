@@ -135,7 +135,7 @@
 	icon_state = "dermal"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "", SLOT_ID_LEFT_HAND = "")
 	valid_accessory_slots = null
-	show_examine = FALSE
+	item_flags = /obj/item/clothing/head/helmet::item_flags | ITEM_FLAG_HIDE_WORN_EXAMINE
 	inv_hide_flags = null
 
 /obj/item/clothing/head/det
@@ -146,7 +146,6 @@
 	armor_type = /datum/armor/security/light_formalwear
 	siemens_coefficient = 0.9
 	valid_accessory_slots = null
-	show_examine = FALSE
 
 /obj/item/clothing/head/det/grey
 	icon_state = "detective2"

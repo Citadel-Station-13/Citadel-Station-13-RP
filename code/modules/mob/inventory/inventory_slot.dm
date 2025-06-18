@@ -118,13 +118,17 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	/// hud icon state in hud style
 	var/inventory_hud_icon_state = ""
 
-	//* Grammar *//
+	//* Display *//
 	/// player friendly name
 	var/display_name = "unknown"
 	/// player friendly preposition
 	var/display_preposition = "on"
 	/// is this a "plural" slot?
 	var/display_plural = FALSE
+
+	//* Examine *//
+	/// hide from worn examine if any of the following examine skip flags exist on skip_gear
+	var/legacy_examine_skip_flags
 
 	//* Equip Checks *//
 	/// equip checks to use
@@ -199,6 +203,11 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
  */
 /datum/inventory_slot/proc/strip_obfuscation_check(obj/item/equipped, mob/wearer, mob/user)
 	return default_strip_inv_view_flags
+
+//* Examine *//
+
+/datum/inventory_slot/proc/examinate(mob/wearer, obj/item/in_slot, datum/event_args/examine/examine, examine_for, examine_from)
+	return
 
 //* Rendering *//
 
@@ -281,6 +290,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_HUD_REQUIRES_EXPAND | INV_SLOT_CONSIDERED_WORN
 	inventory_filter_flags = INV_FILTER_EQUIPMENT
 	inventory_hud_rendered = TRUE
+
+/datum/inventory_slot/inventory/examinate(mob/wearer, obj/item/in_slot, datum/event_args/examine/examine, examine_for, examine_from)
+	#warn impl
 
 /datum/inventory_slot/inventory/back
 	name = "back"
@@ -901,6 +913,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	abstract_type = /datum/inventory_slot/restraints
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_STRIPPABLE | INV_SLOT_STRIP_ONLY_REMOVES | INV_SLOT_STRIP_SIMPLE_LINK
 	inventory_filter_flags = INV_FILTER_RESTRAINTS
+
+/datum/inventory_slot/restraints/examinate(mob/wearer, obj/item/in_slot, datum/event_args/examine/examine, examine_for, examine_from)
+	#warn impl
 
 /datum/inventory_slot/restraints/handcuffs
 	name = "handcuffed"
