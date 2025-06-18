@@ -3923,6 +3923,7 @@
 #include "code\modules\mob\living\carbon\human\human-damage-legacy.dm"
 #include "code\modules\mob\living\carbon\human\human-defense-legacy.dm"
 #include "code\modules\mob\living\carbon\human\human-defense.dm"
+#include "code\modules\mob\living\carbon\human\human-examine.dm"
 #include "code\modules\mob\living\carbon\human\human-interaction.dm"
 #include "code\modules\mob\living\carbon\human\human-melee_attack_chain.dm"
 #include "code\modules\mob\living\carbon\human\human.dm"

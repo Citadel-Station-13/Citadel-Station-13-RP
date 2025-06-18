@@ -8,6 +8,9 @@
 	/// our desc
 	/// * As a raw HTML line
 	var/desc
+	/// appearance
+	/// * as something render-able
+	var/render
 
 	/// worn
 	/// * For things visible from outside separately, like mech components, someone's clothing, etc

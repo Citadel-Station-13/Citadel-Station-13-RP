@@ -5,8 +5,12 @@
 #define EXAMINE_FOR_NAME (1<<0)
 /// get short / visual description
 #define EXAMINE_FOR_DESC (1<<1)
+/// get render; usually this is just 'src'
+#define EXAMINE_FOR_RENDER (1<<2)
+/// get worn entries
+#define EXAMINE_FOR_WORN (1<<3)
 /// get everything not currently in the new examine system
-#define EXAMINE_FOR_REST (1<<2)
+#define EXAMINE_FOR_REST (1<<4)
 
 /// examining something on a turf
 #define EXAMINE_FROM_TURF (1<<0)

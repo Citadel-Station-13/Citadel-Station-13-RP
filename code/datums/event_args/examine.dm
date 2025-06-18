@@ -6,14 +6,23 @@
  */
 /datum/event_args/examine
 	/// the thing actually viewing
-	var/atom/movable/seer_atom
+	var/atom/movable/seer
 	/// distance, if set
 	var/seer_distance
 
 	/// the thing doing the examining
 	/// * if remote controlled, this is not the same as [seer_atom]
-	var/atom/movable/examiner_atom
+	var/atom/movable/examiner
 
-/datum/event_args/examine/New(atom/examiner)
-	src.seer_atom = examiner
-	src.examiner_atom = examiner
+	/// the thing being examined
+	var/atom/examined
+
+	var/legacy_examine_skip_body
+	var/legacy_examine_skip_gear
+
+/datum/event_args/examine/New(atom/examined, atom/movable/examiner)
+	src.examined = examined
+	src.examiner = src.sser = examiner
+
+	if(examiner && examined)
+		seer_distance = get_dist(examiner, examined)

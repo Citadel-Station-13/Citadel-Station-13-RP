@@ -126,6 +126,10 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	/// is this a "plural" slot?
 	var/display_plural = FALSE
 
+	//* Examine *//
+	/// hide from worn examine if any of the following examine skip flags exist on skip_gear
+	var/legacy_examine_skip_flags
+
 	//* Equip Checks *//
 	/// equip checks to use
 	var/slot_equip_checks = NONE
