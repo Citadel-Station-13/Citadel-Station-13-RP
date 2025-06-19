@@ -45,13 +45,13 @@ export class WorldTypepathDropdown extends Component<{
 } & BoxProps> {
 
   onUnfocusedClick: () => void;
-  state: { open: boolean, searchString: string | null };
+  state: { open: boolean, searchString: string };
 
   constructor(props) {
     super(props);
     this.state = {
       open: false,
-      searchString: null,
+      searchString: "",
     };
     this.onUnfocusedClick = () => this.setState((prev) => ({ ...prev, open: false }));
   }
@@ -81,21 +81,6 @@ export class WorldTypepathDropdown extends Component<{
       className,
       ...rest
     } = this.props;
-
-    const menuEntries = (
-      <>
-        {!!filter?.areas?.enabled && (
-          <>
-            Test
-          </>
-        )}
-        {!!filter?.turfs?.enabled && (
-          <>
-            Test
-          </>
-        )}
-      </>
-    );
 
     return (
       <Box className="WorldTypepathDropdown" {...rest}>
@@ -159,7 +144,59 @@ export class WorldTypepathDropdown extends Component<{
                       </Stack.Item>
                       <Stack.Item grow={1}>
                         <Flex width="100%" height="100%" direction="column" overflowY="auto">
-                          {menuEntries}
+                          {!!filter?.areas?.enabled && (
+                            <>
+                              {Object.entries(typepathPack.areas)
+                                .filter(([path, descriptor]) => (!descriptor.unique || filter.areas?.allowUnique))
+                                .filter(([path, descriptor]) => (!descriptor.special || filter.areas?.allowSpecial))
+                                .filter(([path, descriptor]) => (
+                                  this.state.searchString.length <= 3 ||
+                                  descriptor.name.indexOf(this.state.searchString) !== -1 ||
+                                  descriptor.path.indexOf(this.state.searchString) !== -1
+                                ))
+                                .map(([path, descriptor]) => (
+                                <Flex.Item key={path}>
+                                  <Stack>
+                                    <Stack.Item>
+                                      {"<A>"}
+                                    </Stack.Item>
+                                    <Stack.Item grow={1}>
+                                      {descriptor.name}
+                                    </Stack.Item>
+                                    <Stack.Item>
+                                      <Button icon="question" tooltip={`Path: ${descriptor.path}`} />
+                                    </Stack.Item>
+                                  </Stack>
+                                </Flex.Item>
+                              ))}
+                            </>
+                          )}
+                          {!!filter?.turfs?.enabled && (
+                            <>
+                              {Object.entries(typepathPack.turfs)
+                                .filter(([path, descriptor]) => (descriptor.spawnFlags & (filter.turfs?.spawnFlags || 0)))
+                                .filter(([path, descriptor]) => (
+                                  this.state.searchString.length <= 3 ||
+                                  descriptor.name.indexOf(this.state.searchString) !== -1 ||
+                                  descriptor.path.indexOf(this.state.searchString) !== -1
+                                ))
+                                .map(([path, descriptor]) => (
+                                <Flex.Item key={path}>
+                                  <Stack>
+                                    <Stack.Item>
+                                      Icon
+                                    </Stack.Item>
+                                    <Stack.Item grow={1}>
+                                      {descriptor.name}
+                                    </Stack.Item>
+                                    <Stack.Item>
+                                      <Button icon="question" tooltip={`Path: ${descriptor.path}`} />
+                                    </Stack.Item>
+                                  </Stack>
+                                </Flex.Item>
+                              ))}
+                            </>
+                          )}
                         </Flex>
                       </Stack.Item>
                     </Stack>
