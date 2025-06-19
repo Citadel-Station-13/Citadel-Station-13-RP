@@ -109,10 +109,7 @@
 	else
 		O = new(src)
 
-	if (M.dna.GetUIState(DNA_UI_GENDER))
-		O.gender = FEMALE
-	else
-		O.gender = MALE
+	O.set_gender(M.dna.GetUIState(DNA_UI_GENDER) ? FEMALE : MALE)
 
 	if (M)
 		if (M.dna)

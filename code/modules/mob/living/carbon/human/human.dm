@@ -791,11 +791,11 @@
 	var/new_gender = alert(usr, "Please select gender.", "Character Generation", "Male", "Female", "Neutral")
 	if (new_gender)
 		if(new_gender == "Male")
-			gender = MALE
+			set_gender(MALE)
 		else if(new_gender == "Female")
-			gender = FEMALE
+			set_gender(FEMALE)
 		else
-			gender = NEUTER
+			set_gender(NEUTER)
 	regenerate_icons()
 	check_dna()
 	var/datum/gender/T = GLOB.gender_datums[get_visible_gender()]
@@ -1633,3 +1633,12 @@
 	if(ab_handler?.process_click(src, A))
 		return
 	..()
+
+//* Gender *//
+
+/**
+ * Setter for identifying gender.
+ */
+/mob/proc/set_identifying_gender(new_gender)
+	src.gender_identifying = new_gender
+	return TRUE

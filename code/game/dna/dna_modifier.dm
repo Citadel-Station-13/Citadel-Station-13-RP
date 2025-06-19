@@ -738,7 +738,7 @@
 					src.connected.occupant.name = buf.dna.real_name
 					if(ishuman(connected.occupant))
 						var/mob/living/carbon/human/H = connected.occupant
-						H.gender = buf.gender
+						H.set_gender(buf.gender)
 						H.descriptors = buf.body_descriptors
 				src.connected.occupant.UpdateAppearance(buf.dna.UI.Copy())
 			else if (buf.types & DNA2_BUF_SE)
@@ -746,7 +746,7 @@
 				src.connected.occupant.dna.UpdateSE()
 				if(ishuman(connected.occupant))
 					var/mob/living/carbon/human/H = connected.occupant
-					H.gender = buf.gender
+					H.set_gender(buf.gender)
 					H.descriptors = buf.body_descriptors
 				domutcheck(src.connected.occupant,src.connected)
 			connected.occupant.afflict_radiation(RAD_MOB_AFFLICT_DNA_MODIFIER_TRANSFER)

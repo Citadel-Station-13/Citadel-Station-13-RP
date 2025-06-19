@@ -33,7 +33,7 @@
 				return 1
 	if(href_list["gender_id"])
 		if(can_change(APPEARANCE_GENDER) && (href_list["gender_id"] in all_genders_define_list))
-			owner.identifying_gender = href_list["gender_id"]
+			owner.set_identifying_gender(href_list["gender_id"])
 			return 1
 	if(href_list["skin_tone"])
 		if(can_change_skin_tone())
