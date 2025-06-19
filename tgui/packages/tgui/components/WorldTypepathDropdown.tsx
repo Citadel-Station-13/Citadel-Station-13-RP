@@ -181,10 +181,10 @@ export class WorldTypepathDropdown extends Component<{
                                   descriptor.path.indexOf(this.state.searchString) !== -1
                                 ))
                                 .map(([path, descriptor]) => (
-                                <Flex.Item key={path}>
+                                <Flex.Item key={path} className="WorldTypepathDropdown__menuItem">
                                   <Stack>
                                     <Stack.Item>
-                                      Icon
+                                      <ByondIconRef iconRef={descriptor.iconRef} iconState={descriptor.iconState} />
                                     </Stack.Item>
                                     <Stack.Item grow={1}>
                                       {descriptor.name}
