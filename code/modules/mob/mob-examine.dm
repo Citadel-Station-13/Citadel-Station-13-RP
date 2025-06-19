@@ -73,4 +73,7 @@
 			if(html)
 				output.worn += html
 
+	if(buckled)
+		LAZYADD(output.visible, "[] [p_They()] []")
+
 	return output

@@ -145,13 +145,6 @@
 	if(buckled)
 		. += SPAN_WARNING("[icon2html(buckled, user)] [T.He] [T.is] buckled to [FORMAT_TEXT_LOOKITEM(buckled)]!")
 
-	//belt
-	if(belt && !(skip_gear & EXAMINE_SKIPGEAR_BELT) && belt.show_examine)
-		if(belt.blood_DNA)
-			. += SPAN_WARNING("[icon2html(belt, user)] [T.He] [T.has] [belt.gender == PLURAL ? "some" : "a"] [(belt.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(belt)] about [T.his] waist!")
-		else
-			. += SPAN_INFO("[icon2html(belt, user)] [T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(belt)] about [T.his] waist.")
-
 	//shoes
 	if(shoes && !(skip_gear & EXAMINE_SKIPGEAR_SHOES) && shoes.show_examine)
 		if(shoes.blood_DNA)
@@ -172,28 +165,6 @@
 			. += SPAN_WARNING("[icon2html(wear_mask, user)] [T.He] [T.has] [wear_mask.gender == PLURAL ? "some" : "a"] [(wear_mask.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(wear_mask)] [descriptor]!")
 		else
 			. += SPAN_INFO("[icon2html(wear_mask, user)] [T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(wear_mask)] [descriptor].")
-
-	//eyes
-	if(glasses && !(skip_gear & EXAMINE_SKIPGEAR_EYEWEAR) && glasses.show_examine)
-		if(glasses.blood_DNA)
-			. += SPAN_WARNING("[icon2html(glasses, user)] [T.He] [T.has] [glasses.gender == PLURAL ? "some" : "a"] [(glasses.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(glasses)] covering [T.his] eyes!")
-		else
-			. += SPAN_INFO("[icon2html(glasses, user)] [T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(glasses)] covering [T.his] eyes.")
-
-	//left ear
-	if(l_ear && !(skip_gear & EXAMINE_SKIPGEAR_EARS) && l_ear.show_examine)
-		. += SPAN_INFO("[icon2html(l_ear, user)] [T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(l_ear)] on [T.his] left ear.")
-
-	//right ear
-	if(r_ear && !(skip_gear & EXAMINE_SKIPGEAR_EARS) && r_ear.show_examine)
-		. += SPAN_INFO("[icon2html(r_ear, user)] [T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(r_ear)] on [T.his] right ear.")
-
-	//ID
-	if(wear_id && wear_id.show_examine)
-		. += SPAN_INFO("[icon2html(wear_id, user)] [T.He] [T.is] wearing \a [FORMAT_TEXT_LOOKITEM(wear_id)].")
-
-	if(istype(src, /mob/living/carbon/human/dummy))
-		. += SPAN_INFO("[T.He] [T.is] strangely life like. You feel uneasy staring at [T.him] for too long.")
 
 	//Jitters
 	if(is_jittery)

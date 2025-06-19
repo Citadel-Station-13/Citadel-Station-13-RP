@@ -22,7 +22,7 @@
 
 /datum/event_args/examine/New(atom/examined, atom/movable/examiner)
 	src.examined = examined
-	src.examiner = src.sser = examiner
+	src.examiner = src.seer = examiner
 
 	if(examiner && examined)
 		seer_distance = get_dist(examiner, examined)
