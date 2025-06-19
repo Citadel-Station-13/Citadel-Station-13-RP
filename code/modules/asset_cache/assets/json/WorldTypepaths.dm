@@ -18,9 +18,10 @@
 			continue
 		if(!initial(turf_path.atom_spawn_flags))
 			continue
-		assembled_turfs[++assembled_turfs.len] = list(
+		var/path = "[turf_path]"
+		assembled_turfs[path] = list(
 			"name" = initial(turf_path.name),
-			"path" = "[turf_path]",
+			"path" = path,
 			"iconRef" = ref(initial(turf_path.icon)),
 			"iconState" = initial(turf_path.icon_state),
 			"spawnFlags" = initial(turf_path.turf_spawn_flags),
@@ -33,9 +34,10 @@
 			continue
 		if(!initial(area_path.atom_spawn_flags))
 			continue
-		assembled_areas[++assembled_areas.len] = list(
+		var/path = "[area_path]"
+		assembled_areas[path] = list(
 			"name" = initial(area_path.name),
-			"path" = "[area_path]",
+			"path" = path,
 			"unique" = initial(area_path.unique),
 			"special" = initial(area_path.special),
 		)

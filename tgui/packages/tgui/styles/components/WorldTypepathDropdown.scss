@@ -1,0 +1,23 @@
+/**
+ * Copyright (c) 2020 Aleksej Komarov
+ * SPDX-License-Identifier: MIT
+ */
+
+@use '../base.scss';
+
+.WorldTypepathDropdown {
+  position: relative;
+}
+
+.WorldTypepathDropdown__menu {
+  position: absolute;
+  overflow-y: auto;
+  z-index: 5;
+  width: base.em(100px);
+  max-height: base.em(200px);
+  overflow-y: scroll;
+  border-radius: 0 0 base.em(2px) base.em(2px);
+  color: #fff;
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.75);
+}

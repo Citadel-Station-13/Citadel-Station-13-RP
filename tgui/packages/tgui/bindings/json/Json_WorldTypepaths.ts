@@ -8,12 +8,11 @@ import { Json_AssetPackBase } from ".";
 import { DM_TurfSpawnFlags } from "../game";
 
 export interface Json_WorldTypepaths extends Json_AssetPackBase {
-  areas: areaDescriptorList;
-  turfs: turfDescriptorList;
+  areas: Record<string, AreaDescriptor>;
+  turfs: Record<string, TurfDescriptor>;
 }
 
-type turfDescriptorList = turfDescriptor[];
-type turfDescriptor = {
+type TurfDescriptor = {
   name: string;
   path: string;
   iconRef: string;
@@ -21,8 +20,7 @@ type turfDescriptor = {
   spawnFlags: DM_TurfSpawnFlags;
 }
 
-type areaDescriptorList = areaDescriptor[];
-type areaDescriptor = {
+type AreaDescriptor = {
   name: string;
   path: string;
   unique: BooleanLike;
