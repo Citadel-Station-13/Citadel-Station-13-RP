@@ -57,7 +57,7 @@
 	else
 		to_chat(user, "Error: Unable to detect compatible printer interface. Are you running NTOSv2 compatible system?")
 
-/datum/proc/initial_data()
+/datum/proc/initial_nano_data()
 	return list()
 
 /datum/proc/update_layout()

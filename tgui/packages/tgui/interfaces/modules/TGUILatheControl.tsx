@@ -6,7 +6,8 @@
  */
 
 import { BooleanLike } from "common/react";
-import { ModuleData, useLocalState, useModule } from "../../backend";
+import { ModuleData, useLocalState } from "../../backend";
+import { useModule } from '../../experimental/moduleSystem';
 import { Box, Button, Collapsible, Dropdown, Input, LabeledList, NoticeBox, NumberInput, ProgressBar, Stack, Table, Tabs } from "../../components";
 import { Section, SectionProps } from "../../components/Section";
 import { Modular } from "../../layouts/Modular";
