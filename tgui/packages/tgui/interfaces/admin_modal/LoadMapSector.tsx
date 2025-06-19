@@ -336,7 +336,11 @@ const MapLevelTraits = (props: {
               <Stack.Item>
                 <Stack fill>
                   <Stack.Item grow={1}>
-                    <Dropdown options={Object.keys(mapSystemData.keyedLevelTraits)} selected={stagedTraitId} onSelect={(val) => setStagedTraitId(val)} />
+                    <Dropdown options={
+                      Object.keys(mapSystemData.keyedLevelTraits)
+                        .filter((k) => !levelData.traits.includes(k))
+                        .filter((k) => mapSystemData.keyedLevelTraits[k]?.allowEdit)
+                    } selected={stagedTraitId} onSelect={(val) => setStagedTraitId(val)} />
                   </Stack.Item>
                   <Stack.Item>
                     <Button icon="question" color={stagedTraitId ? "" : "transparent"} tooltip={maybeStagedTraitDesc} />
@@ -360,7 +364,7 @@ const MapLevelAttributes = (props: {
   const { act, data, nestedData } = useBackend<ModalData>(context);
   const levelData: ModalLevelData = nestedData[`level-${props.levelIndex}`];
   const [stagedAttributeId, setStagedAttributeId] = useLocalState<string | null>(context, 'stagedAttribute', null);
-  const [stagedAttributeVal, setStagedAttributeVal] = useLocalState<string | number| null>(context, 'stagedAttributeVal', null);
+  const [stagedAttributeVal, setStagedAttributeVal] = useLocalState<string | number | null>(context, 'stagedAttributeVal', null);
 
   return (
     <Box width="100%" height="100%">
@@ -369,23 +373,34 @@ const MapLevelAttributes = (props: {
           <LoadingScreen />
         )}
         loaded={(json) => {
-          const mapSystemData: Json_MapSystem = json[JsonMappings.MapSystem];
+          const mapSystemData: Json_MapSystem = json[JsonMappings.MapSystem] as Json_MapSystem;
           const maybeStagedAttribute: Game_MapLevelAttribute | null = stagedAttributeId && json[stagedAttributeId];
           return (
             <Stack fill vertical>
-              {levelData.attributes.map((attributeId, value) => {
-                const maybeTraitDesc: string | null = traitId ? mapSystemData.keyedLevelTraits[traitId]?.desc : "Unknown trait; is this a legacy trait that is now removed from the code?";
+              {Object.entries(levelData.attributes).map((e) => {
+                const attributeId = e[0];
+                const value = e[1];
+                const maybeAttribute: Game_MapLevelAttribute | null = mapSystemData.keyedLevelAttributes[attributeId];
                 return (
-                  <Stack.Item key={traitId}>
+                  <Stack.Item key={attributeId}>
                     <Stack fill>
                       <Stack.Item grow={1}>
-                        {traitId}
+                        {attributeId}
+                      </Stack.Item>
+                      <Stack.Item grow={1}>
+                        {!!maybeAttribute.allowEdit && (
+                          maybeAttribute.numeric ? (
+                            <NumberInput value={value} onChange={(e, val) => act('levelSetAttribute', { attribute: attributeId, value: val })} />
+                          ) : (
+                            <Input value={value} onChange={(e, val) => act('levelSetAttribute', { attribute: attributeId, value: val })} />
+                          )
+                        )}
                       </Stack.Item>
                       <Stack.Item>
-                        <Button icon="question" tooltip={maybeTraitDesc} />
+                        <Button icon="question" tooltip={maybeAttribute?.desc || "Unknown attribute. Was this removed from the game?"} />
                       </Stack.Item>
                       <Stack.Item>
-                        <Button icon="minus" onClick={() => act('levelDelTrait', { trait: traitId })} />
+                        <Button icon="minus" onClick={() => act('levelDelAttribute', { attribute: attributeId })} />
                       </Stack.Item>
                     </Stack>
                   </Stack.Item>
@@ -394,16 +409,26 @@ const MapLevelAttributes = (props: {
               <Stack.Item>
                 <Stack fill>
                   <Stack.Item grow={1}>
-                    <Dropdown options={Object.keys(mapSystemData.keyedLevelAttributes)} selected={stagedAttributeId} onSelect={(val) => setStagedTraitId(val)} />
+                    <Dropdown options={
+                      Object.keys(mapSystemData.keyedLevelAttributes)
+                        .filter((k) => levelData.attributes[k] === null)
+                        .filter((k) => mapSystemData.keyedLevelAttributes[k]?.allowEdit)
+                    } selected={stagedAttributeId} onSelect={(val) => setStagedAttributeId(val)} />
                   </Stack.Item>
                   <Stack.Item grow={1}>
-                    T
+                    {!!maybeStagedAttribute?.allowEdit && (
+                      maybeStagedAttribute.numeric ? (
+                        <NumberInput value={stagedAttributeVal} onChange={(e, val) => setStagedAttributeVal(val)} />
+                      ) : (
+                        <Input value={stagedAttributeVal} onChange={(e, val) => setStagedAttributeVal(val)} />
+                      )
+                    )}
                   </Stack.Item>
                   <Stack.Item>
-                    <Button icon="question" color={stagedTraitId ? "" : "transparent"} tooltip={maybeStagedTraitDesc} />
+                    <Button icon="question" color={stagedAttributeId ? "" : "transparent"} tooltip={maybeStagedAttribute?.desc} />
                   </Stack.Item>
                   <Stack.Item>
-                    <Button icon="plus" onClick={() => act('levelAddTrait', { trait: stagedTraitId })} />
+                    <Button icon="plus" onClick={() => act('levelSetAttribute', { attribute: stagedAttributeId, value: stagedAttributeVal })} />
                   </Stack.Item>
                 </Stack>
               </Stack.Item>
