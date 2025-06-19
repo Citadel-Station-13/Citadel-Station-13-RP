@@ -74,13 +74,6 @@
 		else
 			. += SPAN_INFO("<hr>[icon2html(w_uniform, user)] [T.He] [T.is] wearing \a [FORMAT_TEXT_LOOKITEM(w_uniform)].[tie_msg]")
 
-	//head
-	if(head && !(skip_gear & EXAMINE_SKIPGEAR_HELMET) && head.show_examine)
-		if(head.blood_DNA)
-			. += SPAN_WARNING("[icon2html(head, user)] [T.He] [T.is] wearing [head.gender == PLURAL ? "some" : "a"] [(head.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(head)] on [T.his] head!")
-		else
-			. += SPAN_INFO("[icon2html(head, user)] [T.He] [T.is] wearing \a [FORMAT_TEXT_LOOKITEM(head)] on [T.his] head.")
-
 	//suit/armour
 	if(wear_suit)
 		var/tie_msg
@@ -96,20 +89,6 @@
 			. += SPAN_WARNING("[T.He] [T.is] wearing [icon2html(thing = wear_suit, target = user)] [wear_suit.gender == PLURAL ? "some" : "a"] [(wear_suit.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(wear_suit)][tie_msg]!")
 		else
 			. += SPAN_INFO("[icon2html(wear_suit, user)] [T.He] [T.is] wearing \a [FORMAT_TEXT_LOOKITEM(wear_suit)].[tie_msg]")
-
-		//suit/armour storage
-		if(s_store && !(skip_gear & EXAMINE_SKIPGEAR_SUITSTORAGE) && s_store.show_examine)
-			if(s_store.blood_DNA)
-				. += SPAN_WARNING("[icon2html(s_store, user)] [T.He] [T.is] carrying [s_store.gender == PLURAL ? "some" : "a"] [(s_store.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(s_store)] on [T.his] [FORMAT_TEXT_LOOKITEM(wear_suit)]!")
-			else
-				. += SPAN_INFO("[icon2html(s_store, user)] [T.He] [T.is] carrying \a [FORMAT_TEXT_LOOKITEM(s_store)] on [T.his] [FORMAT_TEXT_LOOKITEM(wear_suit)].")
-
-	//back
-	if(back && !(skip_gear & EXAMINE_SKIPGEAR_BACKPACK) && back.show_examine)
-		if(back.blood_DNA)
-			. += SPAN_WARNING("[icon2html(back, user)] [T.He] [T.has] [back.gender == PLURAL ? "some" : "a"] [(back.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(back)] on [T.his] back.")
-		else
-			. += SPAN_INFO("[icon2html(back, user)] [T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(back)] on [T.his] back.")
 
 	// hands
 	for(var/i in 1 to length(inventory?.held_items))
@@ -141,10 +120,6 @@
 		else
 			. += SPAN_WARNING("[icon2html(handcuffed, user)] [T.He] [T.is] handcuffed!")
 
-	//buckled
-	if(buckled)
-		. += SPAN_WARNING("[icon2html(buckled, user)] [T.He] [T.is] buckled to [FORMAT_TEXT_LOOKITEM(buckled)]!")
-
 	//shoes
 	if(shoes && !(skip_gear & EXAMINE_SKIPGEAR_SHOES) && shoes.show_examine)
 		if(shoes.blood_DNA)
@@ -154,17 +129,6 @@
 
 	else if(feet_blood_DNA && !(skip_body & EXAMINE_SKIPBODY_HANDS))
 		. += SPAN_WARNING("[T.He] [T.has] [(feet_blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained feet!")
-
-	//mask
-	if(wear_mask && !(skip_gear & EXAMINE_SKIPGEAR_MASK) && wear_mask.show_examine)
-		var/descriptor = "on [T.his] face"
-		if(istype(wear_mask, /obj/item/grenade) && check_has_mouth())
-			descriptor = "in [T.his] mouth"
-
-		if(wear_mask.blood_DNA)
-			. += SPAN_WARNING("[icon2html(wear_mask, user)] [T.He] [T.has] [wear_mask.gender == PLURAL ? "some" : "a"] [(wear_mask.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(wear_mask)] [descriptor]!")
-		else
-			. += SPAN_INFO("[icon2html(wear_mask, user)] [T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(wear_mask)] [descriptor].")
 
 	//Jitters
 	if(is_jittery)
@@ -181,9 +145,6 @@
 		var/obj/item/organ/external/o = get_organ(organ)
 		if(o && o.splinted && o.splinted.loc == o)
 			. += SPAN_WARNING("[T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(o.splinted)] on [T.his] [o.name]!")
-
-	if(suiciding)
-		. += SPAN_WARNING("[T.He] appears to have commited suicide...  There is no hope of recovery.")
 
 	//* I hate this. Though it's better than what it was before. -Zandario
 	var/message = FALSE
@@ -247,10 +208,6 @@
 				else
 					to_chat(user, SPAN_DEADSAY("[T.He] [T.has] a pulse!"))
 
-	if(fire_stacks)
-		. += SPAN_WARNING("[T.He] [T.is] soaking wet.")
-	if(on_fire)
-		. += SPAN_DANGER("[T.He] [T.is] on fire!.")
 
 	var/ssd_msg = species.get_ssd(src)
 	if(ssd_msg && (!should_have_organ("brain") || has_brain()) && stat != DEAD)

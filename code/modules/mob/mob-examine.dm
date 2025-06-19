@@ -72,8 +72,14 @@
 			var/html = slot.examinate(src, equipped, examine, examine_for, examine_from)
 			if(html)
 				output.worn += html
+		for(var/obj/item/held_item as anything in inventory?.get_held_items())
+			#warn impl
 
 	if(buckled)
-		LAZYADD(output.visible, "[] [p_They()] []")
+		LAZYADD(output.visible, SPAN_WARNING("ICON [gender_datum_visible.He] [gender_datum_visible.is] buckled to [FORMAT_TEXT_LOOKITEM(buckled)]."))
+	if(fire_stacks)
+		LAZYADD(output.visible, SPAN_WARNING("[gender_datum_visible.He] [gender_datum_visible.is] soaking wet."))
+	if(on_fire)
+		LAZYADD(output.visible, SPAN_DANGER("[gender_datum_visible.He] [gender_datum_visible.is] on fire!."))
 
 	return output

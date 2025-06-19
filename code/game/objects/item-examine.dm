@@ -7,5 +7,6 @@
 			return null
 	var/datum/event_args/examine_output/output = ..()
 
-	#warn do TRAIT_ITEM_HIDE_WORN_EXAMINE
+	#warn how do we do 1. warning on blood stained and 2. examine link?
+	#warn oil-stained? synth blood color check?
 	return output
