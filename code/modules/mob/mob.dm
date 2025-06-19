@@ -10,6 +10,8 @@
 	//* Gender *//
 	/// Our gender datum
 	var/datum/gender/gender_datum
+	/// Our visible gender
+	var/datum/gender/gender_datum_visible
 
 	//* Impairments *//
 	/// active feign_impairment types
@@ -1097,12 +1099,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 //* Gender *//
 
 /**
- * Update gender.
- */
-/mob/proc/update_gender()
-	gender_datum = GLOB.gender_datums[gender] || GLOB.gender_datums[/datum/gender/neuter::key]
-
-/**
  * Setter for gender.
  */
 /mob/set_gender(new_gender)
@@ -1110,6 +1106,19 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	if(!.)
 		return
 	update_gender()
+
+/**
+ * Update gender.
+ */
+/mob/proc/update_gender()
+	gender_datum = GLOB.gender_datums[gender] || GLOB.gender_datums[/datum/gender/neuter::key]
+
+/**
+ * Update gender.
+ */
+/mob/proc/update_visible_gender()
+	var/visible_gender = get_visible_gender()
+	gender_visible_datum = GLOB.gender_datums[visible_gender] || GLOB.gender_datums[/datum/gender/neuter::key]
 
 //? Pixel Offsets
 

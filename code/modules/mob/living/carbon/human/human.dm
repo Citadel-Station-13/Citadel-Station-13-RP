@@ -1,3 +1,7 @@
+/mob/living/carbon/human
+	/// Our identifying gender
+	var/datum/gender/gender_datum_identifying
+
 /**
  * constructor; pass in a specieslike resolver as second argument to set
  *
@@ -7,6 +11,7 @@
 	// todo: rework this entire init sequence, dna/species shouldn't be entirely in conjunction and it's probably dumb to set dna then species
 	// todo: init_dna?? reset_dna??
 	. = ..()
+	update_identifying_gender()
 
 	if(!dna)
 		dna = new /datum/dna(null)
@@ -1641,4 +1646,9 @@
  */
 /mob/proc/set_identifying_gender(new_gender)
 	src.gender_identifying = new_gender
+	update_identifying_gender()
+	return TRUE
+
+/mob/proc/update_identifying_gender()
+	gender_datum_identifying = GLOB.gender_datums[gender_identifying] || GLOB.gender_datums[/datum/gender/neuter::key]
 	return TRUE
