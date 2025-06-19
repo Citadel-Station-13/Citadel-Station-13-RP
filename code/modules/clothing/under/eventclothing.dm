@@ -6,6 +6,8 @@
 	icon_state = "foxmiko"
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 	worn_has_rolldown = UNIFORM_HAS_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 	var/skirt_rolled = 0 //Custom vars for tracking skirt state
 
 //Reduced to a single function. Parting the kimono is now under rolldown.

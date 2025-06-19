@@ -10,6 +10,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/smock/science
 	name = "small research uniform"
@@ -18,6 +20,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/smock/security
 	name = "small security uniform"
@@ -26,6 +30,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/smock/engine
 	name = "small engineering uniform"
@@ -34,6 +40,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/smock/rainbow
 	name = "small rainbow smock"
@@ -42,6 +50,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/smock/cap
 	name = "small command smock"
@@ -50,6 +60,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/smock/blackutilitysmock
 	name = "black utility smock"
@@ -58,6 +70,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/smock/greydress
 	name = "small grey dress"
@@ -66,6 +80,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/smock/blackutility
 	name = "Teshari utility uniform"
@@ -74,6 +90,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/smock/bluegreydress
 	name = "small blue and grey dress"
@@ -82,6 +100,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 //Dresses
 
@@ -92,6 +112,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/dresssmock/science
 	name = "small science dress"
@@ -100,6 +122,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/dresssmock/engine
 	name = "small engineering dress"
@@ -108,6 +132,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/dresssmock/security
 	name = "small security dress"
@@ -116,6 +142,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/dresssmock/medical
 	name = "small medical dress"
@@ -124,6 +152,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 // Worksuits
 /obj/item/clothing/under/teshari/undercoat/standard/worksuit/
@@ -134,6 +164,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/undercoat/standard/worksuit/blackpurple
 	name = "small black and purple worksuit"
@@ -142,6 +174,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/undercoat/standard/worksuit/blackorange
 	name = "small black and orange worksuit"
@@ -150,6 +184,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/undercoat/standard/worksuit/blackblue
 	name = "small black and blue worksuit"
@@ -158,6 +194,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/undercoat/standard/worksuit/blackgreen
 	name = "small black and greeen worksuit"
@@ -166,6 +204,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/undercoat/standard/worksuit/whitered
 	name = "small white and red worksuit"
@@ -174,6 +214,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/undercoat/standard/worksuit/whitepurple
 	name = "small white and purple worksuit"
@@ -182,6 +224,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/undercoat/standard/worksuit/whiteorange
 	name = "small white and orange worksuit"
@@ -190,6 +234,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/undercoat/standard/worksuit/whiteblue
 	name = "small white and blue worksuit"
@@ -198,6 +244,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/undercoat/standard/worksuit/whitegreen
 	name = "small white and green worksuit"
@@ -206,6 +254,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 //Job Undercoats
 /obj/item/clothing/under/teshari/undercoat/jobs/cap
@@ -216,6 +266,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/undercoat/jobs/hop
 	name = "head of personnel undercoat"
@@ -225,6 +277,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/undercoat/jobs/ce
 	name = "chief engineer undercoat"
@@ -234,6 +288,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/undercoat/jobs/hos
 	name = "head of security undercoat"
@@ -243,6 +299,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/undercoat/jobs/rd
 	name = "research director undercoat"
@@ -252,6 +310,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/undercoat/jobs/engineer
 	name = "engineering undercoat"
@@ -261,6 +321,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/undercoat/jobs/atmos
 	name = "atmospherics undercoat"
@@ -270,6 +332,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/undercoat/jobs/cmo
 	name = "chief medical officer undercoat"
@@ -279,6 +343,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/undercoat/jobs/qm
 	name = "quartermaster undercoat"
@@ -288,6 +354,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/undercoat/jobs/cargo
 	name = "cargo undercoat"
@@ -297,6 +365,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/undercoat/jobs/mining
 	name = "mining undercoat"
@@ -306,6 +376,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/undercoat/jobs/medical
 	name = "medical undercoat"
@@ -315,6 +387,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/undercoat/jobs/chemistry
 	name = "chemist undercoat"
@@ -324,6 +398,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/undercoat/jobs/viro
 	name = "virologist undercoat"
@@ -333,6 +409,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/undercoat/jobs/psych
 	name = "psychiatrist undercoat"
@@ -342,6 +420,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/undercoat/jobs/para
 	name = "paramedic undercoat"
@@ -351,6 +431,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/undercoat/jobs/sci
 	name = "scientist undercoat"
@@ -360,6 +442,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/undercoat/jobs/robo
 	name = "roboticist undercoat"
@@ -369,6 +453,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/undercoat/jobs/sec
 	name = "security undercoat"
@@ -378,6 +464,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/undercoat/jobs/service
 	name = "service undercoat"
@@ -387,6 +475,8 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/teshari/undercoat/jobs/iaa
 	name = "internal affairs undercoat"
@@ -396,3 +486,5 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_TESHARI)
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"

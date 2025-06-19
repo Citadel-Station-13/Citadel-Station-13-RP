@@ -8,3 +8,5 @@
 	desc = "You shouldn't be seeing this."
 	armor_type = /datum/armor/station/padded
 	siemens_coefficient = 0.8
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
