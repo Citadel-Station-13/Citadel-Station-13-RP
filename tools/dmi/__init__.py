@@ -428,6 +428,15 @@ class DmiTransformPipeline:
 
         return image
 
+    def for_each_state(self, f):
+        self.dmi.states = [f(s) for s in self.dmi.states]
+        return self
+
+    def for_each_state_pattern(self, pattern: str, f):
+        matcher: re.Pattern = re.compile(pattern)
+        self.dmi.states = [f(s) if matcher.fullmatch(s.name) else s for s in self.dmi.states]
+        return self
+
     def commit(self):
         if self.committed:
             raise Exception("dmi pipeline already committed.")

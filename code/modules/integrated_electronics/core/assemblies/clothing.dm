@@ -112,9 +112,12 @@
 /obj/item/clothing/under/circuitry
 	name = "electronic jumpsuit"
 	desc = "It's a wearable case for electronics.  This one is a black jumpsuit with wiring woven into the fabric."
+	icon = 'icons/clothing/uniform/workwear/circuitry.dmi'
 	icon_state = "circuitry"
-	snowflake_worn_state = "circuitry"
 	EA_Installed = 1
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/circuitry/Initialize(mapload)
 	setup_integrated_circuit(/obj/item/electronic_assembly/clothing)

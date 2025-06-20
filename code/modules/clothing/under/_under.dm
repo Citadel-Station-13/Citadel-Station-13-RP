@@ -12,6 +12,9 @@
 	show_messages = 1
 	blood_sprite_state = "uniformblood"
 	attack_hand_auto_unequip = FALSE
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_ALLOW_DEFAULT
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+
 
 	//! Suit Sensors
 	/// do we have suit sensors?
@@ -27,13 +30,13 @@
 	//? If you are using new rendering, you must NOT use autodetection.
 	//? Read the procs for these in the rendering section to know why.
 	/// if true, we assume *all* bodytypes have rolldown states, and to use the new system.
-	var/worn_has_rolldown = UNIFORM_AUTODETECT_ROLL
+	var/worn_has_rolldown = UNIFORM_HAS_ROLL
 	/// if true, we assume *all* bodytypes have rollsleeve states, and to use the new system.
-	var/worn_has_rollsleeve = UNIFORM_AUTODETECT_ROLL
+	var/worn_has_rollsleeve = UNIFORM_HAS_ROLL
 	/// these bodytypes have rolldown if not autodetecting
-	var/datum/bodytypes/worn_rolldown_bodytypes = BODYTYPES_ALL
+	var/datum/bodytypes/worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	/// these bodytypes have rollsleeve if not autodetecting
-	var/datum/bodytypes/worn_rollsleeve_bodytypes = BODYTYPES_ALL
+	var/datum/bodytypes/worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	/// rolldown status
 	var/worn_rolled_down = UNIFORM_ROLL_NULLED
 	/// rollsleeve status
