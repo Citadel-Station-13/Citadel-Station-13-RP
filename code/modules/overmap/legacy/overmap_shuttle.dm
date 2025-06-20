@@ -68,7 +68,7 @@
 		var/list/waypoints = S.get_waypoints(name)
 		for(var/obj/effect/shuttle_landmark/LZ in waypoints)
 			if(LZ.is_valid(src))
-				res["[waypoints[LZ]] - [LZ.name]"] = LZ
+				res[LZ.name] = LZ
 	return res
 
 /datum/shuttle/autodock/overmap/get_location_name()

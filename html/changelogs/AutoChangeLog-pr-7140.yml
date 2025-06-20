@@ -1,0 +1,4 @@
+author: "VinJackson"
+delete-after: True
+changes:
+  - bugfix: "req_access set to \"null\" on both sliding secure doors. Otherwise, I literally have 0 idea what the other changes are in code or why they're occurring.\n:cl:\n![image](https://github.com/user-attachments/assets/9918f50a-692b-4396-8f5a-ee08c7c90ae1)\n<!-- Both :cl:'s are required for the changelog to work! You can put your name to the right of the first :cl: if you want to overwrite your GitHub username as author ingame. -->\n<!-- You can use multiple of the same prefix (they're only used for the icon ingame) and delete the unneeded ones. Despite some of the tags, changelogs should generally represent how a player might be affected by the changes rather than a summary of the PR's contents. -->"

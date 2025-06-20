@@ -1694,7 +1694,7 @@
 /area/endeavour/hallway/d3fwdmaint)
 "bhw" = (
 /obj/structure/table/hardwoodtable,
-/obj/item/orion_ship,
+/obj/item/toy/plushie,
 /turf/simulated/floor/carpet/bcarpet,
 /area/quartermaster/qm)
 "bhL" = (
@@ -3288,9 +3288,6 @@
 /turf/simulated/wall/prepainted/security,
 /area/hydroponics/garden)
 "cAj" = (
-/obj/effect/floor_decal/spline/fancy{
-	dir = 9
-	},
 /obj/structure/railing{
 	dir = 8
 	},
@@ -5737,16 +5734,6 @@
 /obj/map_helper/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/brig)
-"emg" = (
-/obj/machinery/porta_turret/crescent{
-	density = 1;
-	faction = "neutral"
-	},
-/obj/machinery/shield_diffuser,
-/obj/machinery/shield_diffuser,
-/obj/machinery/shield_diffuser,
-/turf/simulated/floor/airless/ceiling,
-/area/endeavour/command/turrets)
 "emn" = (
 /turf/simulated/floor,
 /area/maintenance/security/port)
@@ -6653,9 +6640,6 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/sleep/Dorm_7)
 "eUA" = (
-/obj/effect/floor_decal/spline/fancy{
-	dir = 9
-	},
 /obj/structure/railing{
 	dir = 8
 	},
@@ -8256,14 +8240,6 @@
 /obj/structure/filingcabinet,
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hop)
-"ggB" = (
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/structure/curtain/open/bed{
-	name = "curtain"
-	},
-/obj/map_helper/paint/palebottlegreen,
-/turf/simulated/floor/plating,
-/area/space)
 "ggC" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -8784,12 +8760,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3afthall)
-"gBR" = (
-/obj/machinery/shield_diffuser,
-/obj/machinery/shield_diffuser,
-/obj/machinery/shield_diffuser,
-/turf/simulated/floor/airless/ceiling,
-/area/endeavour/command/turrets)
 "gBU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/universal{
 	dir = 4
@@ -13654,11 +13624,7 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d3aftmaint)
 "kfD" = (
-/obj/machinery/porta_turret/crescent{
-	density = 1;
-	faction = "neutral"
-	},
-/turf/simulated/floor/airless/ceiling,
+/turf/space/basic,
 /area/endeavour/command/turrets)
 "kfO" = (
 /turf/simulated/floor/wood,
@@ -15441,11 +15407,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/hop)
 "lJE" = (
-/obj/effect/floor_decal/spline/fancy{
-	dir = 1
-	},
-/turf/simulated/floor/water/deep/indoors,
-/area/hydroponics/garden)
+/obj/item/orion_ship,
+/turf/simulated/floor/reinforced,
+/area/quartermaster/miningdock)
 "lKt" = (
 /obj/effect/floor_decal/industrial/outline{
 	color = "#D6DBDB"
@@ -20491,9 +20455,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/lino,
 /area/security/forensics)
-"pwo" = (
-/turf/simulated/wall/r_wall/prepainted/civilian,
-/area/space)
 "pwu" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -20640,15 +20601,6 @@
 "pDS" = (
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
-"pDX" = (
-/obj/machinery/door/firedoor,
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/structure/cable/green{
-	icon_state = "0-4"
-	},
-/obj/map_helper/paint/darkred,
-/turf/simulated/floor/plating,
-/area/security/brig)
 "pEk" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
@@ -20795,7 +20747,6 @@
 /area/hydroponics/garden)
 "pQv" = (
 /obj/machinery/door/firedoor,
-/obj/structure/catwalk,
 /obj/machinery/door/airlock/maintenance/common,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
@@ -21525,12 +21476,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/janitor)
-"qmQ" = (
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/map_helper/paint/beastybrown,
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/plating,
-/area/quartermaster/warehouse)
 "qmZ" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/brown/border,
@@ -21761,6 +21706,10 @@
 	},
 /obj/item/stool/padded,
 /obj/item/bikehorn/rubberducky,
+/obj/machinery/light{
+	dir = 1;
+	pixel_y = 20
+	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
 "qud" = (
@@ -21942,9 +21891,6 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/heads/hop)
 "qBQ" = (
-/obj/effect/floor_decal/spline/fancy{
-	dir = 1
-	},
 /obj/structure/flora/ausbushes/stalkybush,
 /turf/simulated/floor/water/deep/indoors,
 /area/hydroponics/garden)
@@ -26673,9 +26619,6 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/recreation_area)
 "tUQ" = (
-/obj/effect/floor_decal/spline/fancy{
-	dir = 1
-	},
 /obj/structure/flora/ausbushes/fernybush,
 /turf/simulated/floor/water/deep/indoors,
 /area/hydroponics/garden)
@@ -26894,7 +26837,7 @@
 /obj/random/cigarettes,
 /obj/random/maintenance/security,
 /obj/random/coin,
-/obj/item/orion_ship,
+/obj/item/toy/plushie,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d3aftmaint)
 "ubc" = (
@@ -29043,9 +28986,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "vEC" = (
-/obj/effect/floor_decal/spline/fancy{
-	dir = 5
-	},
 /obj/structure/railing{
 	dir = 4
 	},
@@ -31301,6 +31241,10 @@
 "xix" = (
 /turf/simulated/wall/prepainted,
 /area/endeavour/hallway/d3fwdhall)
+"xiA" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/plating,
+/area/space)
 "xiG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -36516,40 +36460,40 @@ mDp
 mDp
 mDp
 pRW
-jYr
-qkI
-jYr
-mDp
-mDp
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
 pRW
 pRW
 pRW
 mDp
+mDp
 pRW
-jYr
-qkI
-jYr
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+mDp
+pRW
+pRW
+pRW
+pRW
 pRW
 pRW
 xJG
@@ -36951,8 +36895,8 @@ sDq
 hPM
 csb
 csb
-gBR
-emg
+csb
+csb
 pRW
 pRW
 pRW
@@ -37103,28 +37047,28 @@ vrt
 eAp
 pRW
 pRW
-jYr
-qkI
-jYr
+pRW
+pRW
+pRW
 pRW
 xJG
 pRW
 mDp
 mDp
-pwo
-ggB
-ggB
-ggB
-pwo
-pwo
-ggB
-ggB
-ggB
-pwo
-pwo
-ggB
-ggB
-ggB
+lLG
+brs
+brs
+brs
+lLG
+lLG
+brs
+brs
+brs
+lLG
+lLG
+brs
+brs
+brs
 swy
 guu
 bxI
@@ -37146,7 +37090,7 @@ hPM
 csb
 csb
 csb
-gBR
+csb
 pRW
 pRW
 pRW
@@ -39807,7 +39751,7 @@ pRW
 pRW
 pRW
 pRW
-jYr
+pRW
 kdY
 kdY
 kdY
@@ -40001,7 +39945,7 @@ pRW
 pRW
 pRW
 pRW
-qkI
+pRW
 kdY
 xEQ
 anU
@@ -40195,7 +40139,7 @@ pRW
 pRW
 pRW
 pRW
-jYr
+pRW
 kdY
 njM
 wpc
@@ -40448,7 +40392,7 @@ eCc
 wyr
 wyr
 wyr
-jYr
+kfD
 pRW
 pRW
 pRW
@@ -40642,7 +40586,7 @@ tqQ
 oWd
 icx
 icx
-qkI
+kfD
 pRW
 pRW
 pRW
@@ -40836,7 +40780,7 @@ bly
 yiF
 icx
 icx
-jYr
+kfD
 pRW
 pRW
 pRW
@@ -42569,7 +42513,7 @@ isE
 ecO
 qHk
 xaH
-pDX
+rMh
 oFB
 lKR
 kDB
@@ -42704,7 +42648,7 @@ pRW
 pRW
 pRW
 pRW
-jYr
+csb
 pRW
 xBj
 gDV
@@ -42898,7 +42842,7 @@ pRW
 pRW
 pRW
 pRW
-kfD
+csb
 pRW
 xBj
 msb
@@ -43092,7 +43036,7 @@ pRW
 pRW
 pRW
 pRW
-jYr
+csb
 pRW
 xBj
 gDV
@@ -43868,14 +43812,14 @@ pRW
 pRW
 pRW
 pRW
-pRW
+xiA
 pRW
 rwh
 iWE
 uRN
 gDV
-gDV
-gDV
+lJE
+lJE
 gDV
 rXr
 bxW
@@ -44062,7 +44006,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+xiA
 pRW
 dGV
 fsN
@@ -45032,7 +44976,7 @@ pRW
 pRW
 pRW
 pRW
-jYr
+csb
 pRW
 nOa
 nJF
@@ -45226,7 +45170,7 @@ pRW
 pRW
 pRW
 pRW
-kfD
+csb
 pRW
 nOa
 oWf
@@ -45420,7 +45364,7 @@ pRW
 pRW
 pRW
 pRW
-jYr
+csb
 pRW
 nOa
 wqT
@@ -47748,7 +47692,7 @@ pRW
 pRW
 pRW
 pRW
-jYr
+csb
 pRW
 noy
 uzS
@@ -47942,7 +47886,7 @@ pRW
 pRW
 pRW
 pRW
-kfD
+csb
 pRW
 noy
 nme
@@ -48136,7 +48080,7 @@ pRW
 pRW
 pRW
 pRW
-jYr
+csb
 pRW
 noy
 sjO
@@ -50289,7 +50233,7 @@ pmo
 hJR
 hJR
 pmo
-qmQ
+ofl
 qwK
 iWF
 jzo
@@ -52050,7 +51994,7 @@ mfy
 mkn
 jYc
 mch
-lJE
+iIc
 tUQ
 iIc
 jJn
@@ -52244,7 +52188,7 @@ aAM
 ciC
 gvm
 mch
-lJE
+iIc
 qBQ
 iIc
 bQp
@@ -53976,7 +53920,7 @@ mDp
 pRW
 pRW
 pRW
-jYr
+csb
 hDR
 lSG
 eyy
@@ -54170,7 +54114,7 @@ pRW
 pRW
 pRW
 pRW
-qkI
+csb
 hDR
 ozQ
 ozQ
@@ -54364,7 +54308,7 @@ pRW
 pRW
 pRW
 pRW
-jYr
+csb
 oiQ
 hLw
 eyy
@@ -57275,7 +57219,7 @@ pRW
 pRW
 pRW
 pRW
-vXk
+jYr
 eAp
 dTV
 pty
@@ -61387,8 +61331,8 @@ pty
 fLE
 dTV
 dTV
-qkI
-jYr
+csb
+csb
 pRW
 mDp
 pRW
@@ -61581,7 +61525,7 @@ dTV
 dTV
 dTV
 pRW
-jYr
+csb
 pRW
 pRW
 mDp

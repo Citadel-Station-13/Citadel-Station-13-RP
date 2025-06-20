@@ -26,6 +26,12 @@
 	name = "Half Gas Mask"
 	path = /obj/item/clothing/mask/gas/half
 	cost = 2
+
+/datum/loadout_entry/mask/warming
+	name = "Warming Face Mask"
+	path = /obj/item/clothing/mask/warmer
+	cost = 2
+
 /datum/loadout_entry/mask/skull
 	name = "Bandana - Skull"
 	path = /obj/item/clothing/mask/bandana/skull

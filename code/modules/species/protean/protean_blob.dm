@@ -11,6 +11,8 @@
 
 	iff_factions = MOB_IFF_FACTION_NEUTRAL
 
+	ui_icons = 'icons/mob/screen1_robot_protoblob.dmi'
+
 	maxHealth = 250
 	health = 250
 	say_list_type = /datum/say_list/protean_blob
@@ -20,6 +22,10 @@
 	response_help = "pats the"
 	response_disarm = "gently pushes aside the"
 	response_harm = "hits the"
+
+	hand_count = 1
+	hand_form = "pseudopods"
+
 
 	harm_intent_damage = 2
 	legacy_melee_damage_lower = 15
@@ -53,6 +59,7 @@
 	var/datum/modifier/healing
 
 	var/list/datum/weakref/previously_held
+	var/datum/protean_blob_recolor/colour_ui //colouring
 
 	player_msg = "In this form, you can move a little faster and your health will regenerate as long as you have metal in you!"
 	holder_type = /obj/item/holder/protoblob
@@ -81,6 +88,11 @@
 	else
 		update_icon()
 
+/mob/living/simple_mob/protean_blob/examine(mob/user, dist)
+	. = ..()
+	for(var/obj/item/I in get_held_items())
+		. += SPAN_INFO("[icon2html(I, user)] It is holding \a [FORMAT_TEXT_LOOKITEM(I)] in a psuedopod.")
+
 /mob/living/simple_mob/protean_blob/Destroy()
 	humanform = null
 	refactory = null
@@ -92,7 +104,7 @@
 
 /mob/living/simple_mob/protean_blob/init_melee_style()
 	. = ..()
-	melee_style.damage_structural_add = 30
+	melee_style.damage_structural_add = 15
 
 /mob/living/simple_mob/protean_blob/init_vore()
 	return //Don't make a random belly, don't waste your time
@@ -205,38 +217,7 @@
 					target.forceMove(vore_selected)
 					to_chat(target,"<span class='warning'>\The [src] quickly engulfs you, [vore_selected.vore_verb]ing you into their [vore_selected.name]!</span>")
 
-/mob/living/simple_mob/protean_blob/attack_target(var/atom/A)
-	if(refactory && istype(A,/obj/item/stack/material))
-		var/obj/item/stack/material/S = A
-		var/substance = S.material.name
-		var/list/edible_materials = list(MAT_STEEL, MAT_SILVER, MAT_GOLD, MAT_URANIUM, MAT_METALHYDROGEN) //Can't eat all materials, just useful ones.
-		var/allowed = FALSE
-		for(var/material in edible_materials)
-			if(material == substance)
-				allowed = TRUE
-		if(!allowed)
-			return
-		if(refactory.add_stored_material(S.material.name,1*S.perunit) && S.use(1))
-			visible_message("<b>[name]</b> gloms over some of \the [S], absorbing it.")
-	else if(isitem(A) && a_intent == "grab")
-		var/obj/item/I = A
-		if(!vore_selected)
-			to_chat(src,"<span class='warning'>You either don't have a belly selected, or don't have a belly!</span>")
-			return FALSE
-		if(is_type_in_list(I,GLOB.item_vore_blacklist) || I.anchored)
-			to_chat(src, "<span class='warning'>You can't eat this.</span>")
-			return
 
-		if(is_type_in_list(I, edible_trash) || adminbus_trash)
-			if(I.hidden_uplink)
-				to_chat(src, "<span class='warning'>You really should not be eating this.</span>")
-				message_admins("[key_name(src)] has attempted to ingest an uplink item. ([src ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>" : "null"])")
-				return
-			visible_message("<b>[name]</b> stretches itself over the [I], engulfing it whole!")
-			I.forceMove(vore_selected)
-			return
-	else
-		return ..()
 
 /mob/living/simple_mob/protean_blob/attackby(var/obj/item/O, var/mob/user)
 	if(refactory && istype(O,/obj/item/stack/material))
@@ -251,6 +232,24 @@
 			return
 		if(refactory.add_stored_material(S.material.name,1*S.perunit) && S.use(1))
 			visible_message("<b>[name]</b> gloms over some of \the [S], absorbing it.")
+	else if(user == src)
+		if(a_intent != "grab")
+			return ..()
+		if(!vore_selected)
+			to_chat(src,"<span class='warning'>You either don't have a belly selected, or don't have a belly!</span>")
+			return FALSE
+		if(is_type_in_list(O,GLOB.item_vore_blacklist) || O.anchored)
+			to_chat(src, "<span class='warning'>You can't eat this.</span>")
+			return
+
+		if(is_type_in_list(O, edible_trash) || adminbus_trash)
+			if(O.hidden_uplink)
+				to_chat(src, "<span class='warning'>You really should not be eating this.</span>")
+				message_admins("[key_name(src)] has attempted to ingest an uplink item. ([src ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>" : "null"])")
+				return
+			visible_message("<b>[name]</b> stretches itself over the [O], engulfing it whole!")
+			O.forceMove(vore_selected)
+			return
 	else
 		return ..()
 
@@ -327,6 +326,10 @@
 	blob.transform = matrix()*size_multiplier
 	blob.size_multiplier = size_multiplier
 	blob.previously_held = inventory?.get_held_items_as_weakrefs()
+
+	var/obj/item/held = get_active_held_item()
+	if(held)
+		blob.put_in_hands(held)
 	//languages!!
 	for(var/datum/prototype/language/L in languages)
 		blob.add_language(L.name)
@@ -486,12 +489,17 @@
 		B.forceMove(src)
 		B.owner = src
 
+	for(var/obj/item/held in blob.get_held_items())
+		put_in_hands_or_drop(held, null, get_turf(src))
+
 	for(var/i in 1 to length(blob.previously_held))
 		var/datum/weakref/ref = blob.previously_held[i]
 		var/obj/item/resolved = ref?.resolve()
 		if(isnull(resolved))
 			continue
-		put_in_hands_or_drop(resolved, specific_index = i)
+		if(resolved.loc != src) //because of blobhands
+			continue
+		put_in_hands_or_drop(resolved)
 
 	if(!isnull(blob.mob_radio))
 		if(!equip_to_slots_if_possible(blob.mob_radio, list(
@@ -512,6 +520,17 @@
 
 /mob/living/simple_mob/protean_blob/say_understands()
 	return humanform?.say_understands(arglist(args)) || ..()
+
+/mob/living/simple_mob/protean_blob/update_inv_hand()
+	cut_overlays()
+	for(var/obj/item/I in get_held_items())
+		if(I)
+			var/mutable_appearance/MA = I.render_mob_appearance(src, SLOT_ID_LEFT_HAND) //lhand because it looks best
+			if(!MA)
+				return
+			MA.pixel_y = -3
+			MA.appearance_flags |= RESET_COLOR
+			add_overlay(MA)
 
 /mob/living/simple_mob/protean_blob/proc/appearanceswitch()
 	set name = "Switch Appearance"
@@ -566,7 +585,7 @@
 
 	visible_message("<span class='warning'>[src] coils itself up like a spring, preparing to leap at [target]!</span>")
 	if(do_after(src, 1 SECOND, target)) //1 second
-		if(buckled || pinned.len)
+		if(buckled) // || pinned.len)
 			return
 
 		var/obj/item/holder/H = new holder_type(get_turf(src))
@@ -626,7 +645,6 @@
 
 	var/obj/item/holder/H = loc
 	var/chosen_list
-	var/icon_file
 	switch(input(src,"What type of clothing would you like to mimic or reset appearance?","Mimic Clothes") as null|anything in list("under", "suit", "hat", "gloves", "shoes", "back", "mask", "glasses", "belt", "ears", "headsets", "reset"))
 		if("reset")
 			H.color = initial(H.color)
@@ -635,46 +653,34 @@
 			return
 		if("under")
 			chosen_list = GLOB.clothing_under
-			icon_file = 'icons/mob/clothing/uniform.dmi'
 		if("suit")
 			chosen_list = GLOB.clothing_suit
-			icon_file = 'icons/mob/clothing/suits.dmi'
 		if("hat")
 			chosen_list = GLOB.clothing_head
-			icon_file = 'icons/mob/clothing/head.dmi'
 		if("gloves")
 			chosen_list = GLOB.clothing_gloves
-			icon_file = 'icons/mob/clothing/hands.dmi'
 		if("shoes")
 			chosen_list = GLOB.clothing_shoes
-			icon_file = 'icons/mob/clothing/feet.dmi'
 		if("back")
 			chosen_list = GLOB.clothing_backpack
-			icon_file = 'icons/mob/clothing/back.dmi'
 		if("mask")
 			chosen_list = GLOB.clothing_mask
-			icon_file = 'icons/mob/clothing/mask.dmi'
 		if("glasses")
 			chosen_list = GLOB.clothing_glasses
-			icon_file = 'icons/mob/clothing/eyes.dmi'
 		if("belt")
 			chosen_list = GLOB.clothing_belt
-			icon_file = 'icons/mob/clothing/belt.dmi'
 		if("ears")
 			chosen_list = GLOB.clothing_ears
-			icon_file = 'icons/mob/clothing/ears.dmi'
 		if("headsets")
 			chosen_list = GLOB.clothing_headsets
-			icon_file = 'icons/mob/clothing/ears.dmi'
+			
 
 	var/picked = input(src,"What clothing would you like to mimic?","Mimic Clothes") as null|anything in chosen_list
-
 	if(!ispath(chosen_list[picked]))
 		return
 
+	H.cut_overlays()
 	H.disguise(chosen_list[picked])
-	if(isnull(H.icon_override))
-		H.icon_override = icon_file
 	H.update_worn_icon()	//so our overlays update.
 
 	if (ismob(H.loc))
@@ -732,21 +738,14 @@
 
 /mob/living/simple_mob/protean_blob/proc/chameleon_color()
 	set name = "Chameleon Color"
-	set desc = "Allows a protean blob to change or reset its color when worn."
+	set desc = "Allows a protean blob to change or reset its color."
 	set category = "Abilities"
 
-	if(!istype(loc, /obj/item/holder))
-		to_chat(src, "<span class='notice'>You can't do that while not being held or worn.</span>")
-		return
-
-	var/obj/item/holder/H = loc
-	var/color_in = input("Pick a color. Cancelling sets it to default.","Color", H.color) as null|color
-
-	if(color_in)
-		H.color = color_in
+	if(colour_ui)
+		colour_ui.ui_interact(usr)
 	else
-		H.color = initial(H.color)
-	H.update_worn_icon()	//so our overlays update.
+		colour_ui = new(src)
+		colour_ui.ui_interact(usr)
 
 
 /mob/living/simple_mob/protean_blob/make_perspective()

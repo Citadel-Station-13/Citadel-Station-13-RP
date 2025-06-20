@@ -424,6 +424,11 @@
 	desc = "This is a tiny well lit decorative christmas tree."
 	icon_state = "plant-xmas"
 
+/obj/structure/flora/pottedplant/hedge
+	name = "potted hedge"
+	desc = "A well maintained hedge."
+	icon_state = "plant-27"
+
 /obj/structure/flora/sif
 	icon = 'icons/obj/flora/sifflora.dmi'
 

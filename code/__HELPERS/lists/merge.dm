@@ -12,8 +12,10 @@
  * if a key isn't a list, it'll be turned into a list when two keys exist
  *
  * originally made for dynamic tool functions
+ *
+ * TODO: better name
  */
-/proc/merge_double_lazy_assoc_list(list/A, list/B)
+/proc/merge_double_lazy_assoc_list(list/list/A, list/list/B)
 	. = A.Copy()
 	for(var/key in B)
 		if(.[key])
@@ -25,3 +27,23 @@
 				.[key] = list(.[key], B[key])
 		else
 			.[key] = B[key]
+
+/**
+ * merges two 2-deep lists, ergo list(key = list(values))
+ * dedupes values
+ *
+ * ## Input
+ *
+ * list("A" = list("a", "b", "c"))
+ * list("A" = list("d"))
+ *
+ * ## Output
+ *
+ * list("A" = list("a", "b", "c", "d"))
+ */
+/proc/merge_2_nested_list(list/list/A, list/list/B)
+	. = list()
+	for(var/k1 in A)
+		.[k1] = A[k1].Copy()
+	for(var/k2 in B)
+		.[k2] += B[k2]

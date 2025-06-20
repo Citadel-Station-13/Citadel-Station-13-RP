@@ -479,6 +479,9 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 
 /obj/machinery/holopad/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
+	if(.)
+		return
+
 	switch(action)
 		// user requesting ai
 		if("ai_request")

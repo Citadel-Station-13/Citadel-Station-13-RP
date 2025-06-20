@@ -9711,13 +9711,6 @@
 	icon_state = "carpet"
 	},
 /area/centcom/command)
-"Et" = (
-/obj/spawner/window/low_wall/firelocks,
-/obj/spawner/window/low_wall/firelocks,
-/turf/unsimulated/floor{
-	name = "plating"
-	},
-/area/centcom/security)
 "Ev" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 10
@@ -10394,7 +10387,6 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
 	name = "Ship Hatch";
 	req_one_access = null
 	},
@@ -10883,7 +10875,6 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
 	name = "Ship Hatch";
 	req_one_access = null
 	},
@@ -47229,7 +47220,7 @@ WK
 WK
 WK
 zm
-Et
+zm
 WK
 wp
 Xd

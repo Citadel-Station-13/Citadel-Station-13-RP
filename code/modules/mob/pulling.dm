@@ -73,6 +73,7 @@
 
 	pulling = AM
 	AM.pulledby = src
+	AM.on_start_pulled_by(src)
 	recursive_glidesize_update()
 
 	//SEND_SIGNAL(src, COMSIG_LIVING_START_PULL, AM)

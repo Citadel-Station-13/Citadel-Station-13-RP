@@ -8885,7 +8885,7 @@
 	pixel_x = -24
 	},
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Surface 1";
+	RCon_tag = "Surface 1 - Main Substation";
 	output_attempt = 0
 	},
 /obj/structure/cable/green{
@@ -10401,7 +10401,6 @@
 	dir = 8
 	},
 /obj/item/flashlight/lamp{
-	on = 0;
 	pixel_x = -4
 	},
 /turf/simulated/floor/tiled/steel,
@@ -11102,7 +11101,7 @@
 	name = "Cell 3 Lock";
 	pixel_x = 7;
 	pixel_y = 30;
-	req_access = list(1,2,4,38)
+	req_one_access = list(1,2,4,38)
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/security/prison/upper)
@@ -13069,7 +13068,7 @@
 /area/storage/tools)
 "irf" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Cargo Substation Bypass"
+	RCon_tag = "Surface 1 - Cargo Substation Bypass"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/cargo)
@@ -13622,7 +13621,7 @@
 	},
 /obj/machinery/door/airlock/security{
 	id_tag = "cell_lock_3";
-	name = "Cell 1";
+	name = "Cell 3";
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/security/department,
@@ -17885,7 +17884,7 @@
 /area/maintenance/evahallway)
 "lie" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Medical";
+	RCon_tag = "Surface 1 - Medical Substation";
 	output_attempt = 0
 	},
 /obj/structure/cable/green,
@@ -21702,7 +21701,7 @@
 /area/hallway/primary/surfaceone)
 "nyE" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Surface 1 Substation Bypass"
+	RCon_tag = "Surface 1 - Main Substation Bypass"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_one)
@@ -21872,7 +21871,7 @@
 	name = "Cell 1 Lock";
 	pixel_x = 7;
 	pixel_y = 30;
-	req_access = list(1,2,4,38)
+	req_one_access = list(1,2,4,38)
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/security/prison/upper)
@@ -23264,9 +23263,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenoarch_storage)
 "ope" = (
-/obj/structure/curtain/black{
-	anchored = 1
-	},
+/obj/structure/curtain/black,
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
 "opn" = (
@@ -25112,9 +25109,7 @@
 "prs" = (
 /obj/structure/bed/pod,
 /obj/item/bedsheet,
-/obj/structure/curtain/black{
-	anchored = 1
-	},
+/obj/structure/curtain/black,
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/surface_south)
 "prz" = (
@@ -26120,7 +26115,7 @@
 	name = "Cell 1 Lock";
 	pixel_x = -24;
 	pixel_y = -8;
-	req_access = list(1,2,4,38)
+	req_one_access = list(1,2,4,38)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 1
@@ -27045,7 +27040,7 @@
 	name = "Cell 2 Lock";
 	pixel_x = 7;
 	pixel_y = 30;
-	req_access = list(1,2,4,38)
+	req_one_access = list(1,2,4,38)
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/security/prison/upper)
@@ -27407,7 +27402,7 @@
 /area/medical/virology)
 "qHS" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Research Southwest Wing Subgrid";
+	RCon_tag = "Surface 1 - Research Southwest Wing Subgrid";
 	cur_coils = 2;
 	output_attempt = 0
 	},
@@ -29381,9 +29376,7 @@
 "rNP" = (
 /obj/structure/bed/pod,
 /obj/item/bedsheet,
-/obj/structure/curtain/black{
-	anchored = 1
-	},
+/obj/structure/curtain/black,
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/surface_north)
 "rNV" = (
@@ -29942,7 +29935,7 @@
 	name = "Cell 2 Lock";
 	pixel_x = -24;
 	pixel_y = -8;
-	req_access = list(1,2,4,38)
+	req_one_access = list(1,2,4,38)
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
@@ -34606,7 +34599,7 @@
 	name = "Cell 3 Lock";
 	pixel_x = -24;
 	pixel_y = -8;
-	req_access = list(1,2,4,38)
+	req_one_access = list(1,2,4,38)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 1
@@ -37537,7 +37530,7 @@
 /area/maintenance/tool_storage)
 "wrP" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Cargo";
+	RCon_tag = "Surface 1 - Cargo Substation";
 	output_attempt = 0
 	},
 /obj/structure/cable/green{
@@ -38461,7 +38454,7 @@
 /area/medical/psych)
 "wTn" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Medical Substation Bypass"
+	RCon_tag = "Surface 1 - Medical Substation Bypass"
 	},
 /turf/simulated/floor,
 /area/maintenance/substation/medical)
@@ -38784,7 +38777,6 @@
 	power_rating = 45000
 	},
 /obj/machinery/air_alarm{
-	pixel_x = 0;
 	pixel_y = -25;
 	dir = 1
 	},
@@ -39346,7 +39338,7 @@
 /area/rift/surfaceeva/airlock/main/secondary)
 "xsI" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Research Southwest Wing Bypass"
+	RCon_tag = "Surface 1 - Research Southwest Wing Subgrid Bypass"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/research/southwest_wing)

@@ -40,7 +40,7 @@
 #define SPECIES_ID_SCORI "scori"
 #define SPECIES_ID_SERGLING "sergling"
 #define SPECIES_ID_SHADEKIN "shadekin"
-#define SPECIES_ID_SHADEKIN_BLACK "blackeyedshadekin"
+#define SPECIES_ID_SHADEKIN_BLACK "shadekin_blackeyed"
 #define SPECIES_ID_SHADOW "shadow"
 #define SPECIES_ID_SKELETON "skeleton"
 #define SPECIES_ID_SKRELL "skrell"

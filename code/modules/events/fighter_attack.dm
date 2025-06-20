@@ -38,5 +38,4 @@
 	// 	bandits_spawn = list(/mob/living/simple_mob/mechanical/mecha/fighter/duke/manned,
 	// 	/mob/living/simple_mob/mechanical/mecha/fighter/baron/manned)
 
-
 #undef	LOC_SPACE

@@ -91,7 +91,7 @@ GLOBAL_LIST_EMPTY(smeses)
 		terminal.connect_to_network()
 	update_icon()
 	if(!should_be_mapped)
-		warning("Non-buildable or Non-magical SMES at [src.x]X [src.y]Y [src.z]Z")
+		CRASH("Non-buildable or Non-magical SMES at: [audit_loc()].")
 
 /obj/machinery/power/smes/Destroy()
 	GLOB.smeses -= src
