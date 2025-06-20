@@ -35,9 +35,19 @@
 /datum/prototype/eldritch_passive/proc/create_initial_context(datum/eldritch_holder/holder) as /datum/eldritch_passive_context
 	return context_type ? new context_type : null
 
+/datum/prototype/eldritch_passive/proc/on_holder_add(datum/eldritch_holder/holder, datum/eldritch_passive_context/context)
+
+/datum/prototype/eldritch_passive/proc/on_holder_remove(datum/eldritch_holder/holder, datum/eldritch_passive_context/context)
+
+/**
+ * * Always called on add, if we start enabled.
+ */
 /datum/prototype/eldritch_passive/proc/on_holder_enable(datum/eldritch_holder/holder, datum/eldritch_passive_context/context)
 	return
 
+/**
+ * * Always called on remove, if were enabled.
+ */
 /datum/prototype/eldritch_passive/proc/on_holder_disable(datum/eldritch_holder/holder, datum/eldritch_passive_context/context)
 	return
 

@@ -19,7 +19,7 @@
 	// TODO: icon
 	// TODO: lore
 
-	req_eldritch_knowledge_ids = list(
+	require_eldritch_knowledge_ids = list(
 		/datum/prototype/eldritch_knowledge/patron/blade/entrypoint::id,
 	)
 
@@ -32,7 +32,7 @@
 	// TODO: icon
 	// TODO: lore
 
-	req_eldritch_knowledge_ids = list(
+	require_eldritch_knowledge_ids = list(
 		/datum/prototype/eldritch_knowledge/patron/blade/entrypoint::id,
 	)
 
@@ -45,7 +45,7 @@
 	// TODO: icon
 	// TODO: lore
 
-	req_eldritch_knowledge_ids = list(
+	require_eldritch_knowledge_ids = list(
 		/datum/prototype/eldritch_knowledge/patron/blade/entrypoint,
 	)
 

@@ -51,15 +51,17 @@
  * @return amount given
  */
 /datum/component/eldritch_rust_shielding/proc/add_rust(amount)
-	#warn impl
+	. = amount
+	src.amount += amount
 
 /**
  * @return amount removed
  */
 /datum/component/eldritch_rust_shielding/proc/remove_rust(amount)
-	#warn impl
+	. = min(amount, src.amount)
+	src.amount -= .
 
-#warn falloff?
+	#warn check falloff
 
 /datum/shieldcall/bound/eldritch_rust_shielding_component
 	expected_type = /datum/component/eldritch_rust_shielding
