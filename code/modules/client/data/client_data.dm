@@ -119,7 +119,6 @@ GLOBAL_LIST_EMPTY(client_data)
 
 /datum/client_data/proc/load_playtime_impl()
 	PRIVATE_PROC(TRUE)
-	ASSERT(!playtime_mutex)
 	if(playtime_mutex)
 		return
 	playtime_mutex = TRUE
