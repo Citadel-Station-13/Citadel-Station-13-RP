@@ -28,5 +28,5 @@
 	icon_state = "pad_active"
 	anchored = TRUE
 	role_type = /datum/role/ghostrole/sdf
-	role_spawns = 5
+	role_spawns = 4
 
