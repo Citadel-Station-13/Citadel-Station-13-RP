@@ -667,8 +667,8 @@ var/list/wrapped_species_by_ref = list()
 
 	var/datum/preferences/pref = character.client.prefs
 
-	character.gender = pref.biological_gender
-	character.identifying_gender = pref.identifying_gender
+	character.set_gender(pref.biological_gender)
+	character.set_identifying_gender(pref.identifying_gender)
 
 	character.r_eyes			= pref.r_eyes
 	character.g_eyes			= pref.g_eyes

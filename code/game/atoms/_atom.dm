@@ -329,6 +329,15 @@
 	. = density
 	density = new_value
 
+/**
+ * Setter for gender.
+ */
+/atom/proc/set_gender(new_gender)
+	gender = new_gender
+	if(gender == new_gender)
+		return TRUE
+	return FALSE
+
 // Called to set the atom's invisibility and usd to add behavior to invisibility changes.
 /atom/proc/set_invisibility(var/new_invisibility)
 	if(invisibility == new_invisibility)

@@ -7,7 +7,7 @@
 #define EXAMINE_FOR_DESC (1<<1)
 /// get render; usually this is just 'src'
 #define EXAMINE_FOR_RENDER (1<<2)
-/// get worn entries
+/// get worn + held entries
 #define EXAMINE_FOR_WORN (1<<3)
 /// get attached entries
 #define EXAMINE_FOR_ATTACHED (1<<4)

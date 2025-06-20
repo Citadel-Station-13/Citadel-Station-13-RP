@@ -46,7 +46,7 @@
 		switch(randomize)
 			if("robot")
 				new_mob = new /mob/living/silicon/robot(M.loc)
-				new_mob.gender = M.gender
+				new_mob.set_gender(M.gender)
 				new_mob.invisibility = 0
 				new_mob.job = "Cyborg"
 				var/mob/living/silicon/robot/Robot = new_mob
@@ -64,13 +64,13 @@
 					H = new_mob
 
 				if(M.gender == MALE)
-					H.gender = MALE
+					H.set_gender(MALE)
 					H.name = pick(GLOB.first_names_male)
 				else if(M.gender == FEMALE)
-					H.gender = FEMALE
+					H.set_gender(FEMALE)
 					H.name = pick(GLOB.first_names_female)
 				else
-					H.gender = NEUTER
+					H.set_gender(NEUTER)
 					H.name = pick(GLOB.first_names_female | GLOB.first_names_male)
 
 				H.name += " [pick(GLOB.last_names)]"

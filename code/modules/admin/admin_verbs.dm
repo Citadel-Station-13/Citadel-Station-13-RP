@@ -948,11 +948,11 @@ var/list/admin_verbs_event_manager = list(
 	var/new_gender = alert(usr, "Please select gender.", "Character Generation", "Male", "Female", "Neuter")
 	if (new_gender)
 		if(new_gender == "Male")
-			M.gender = MALE
+			M.set_gender(MALE)
 		else if (new_gender == "Female")
-			M.gender = FEMALE
+			M.set_gender(FEMALE)
 		else
-			M.gender = NEUTER
+			M.set_gender(NEUTER)
 
 	M.update_hair(FALSE)
 	M.update_icons_body()

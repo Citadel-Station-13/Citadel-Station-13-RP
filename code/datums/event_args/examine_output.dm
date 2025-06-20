@@ -12,9 +12,15 @@
 	/// * as something render-able
 	var/render
 
-	/// worn
+	/// worn descriptors
 	/// * For things visible from outside separately, like mech components, someone's clothing, etc
 	/// * As raw HTML lines
+	/// * Lazy list
 	var/list/worn
+	/// visible descriptors
+	/// * For misc visible things
+	/// * As raw HTML lines
+	/// * Lazy list
+	var/list/visible
 
 #warn impl all

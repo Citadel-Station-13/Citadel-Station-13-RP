@@ -21,7 +21,7 @@
 	if(src.gender == gender)
 		return
 
-	src.gender = gender
+	set_gender(gender)
 	update_icons_body()
 	update_dna()
 	return 1
@@ -30,7 +30,7 @@
 	if(src.identifying_gender == identifying_gender)
 		return
 
-	src.identifying_gender = identifying_gender
+	set_identifying_gender(identifying_gender)
 	return 1
 
 /mob/living/carbon/human/proc/change_hair(var/hair_style)

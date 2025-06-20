@@ -7,6 +7,12 @@
 	/// * Lazy list, see mob_movespeed.dm
 	var/list/actionspeed_modifier_immunities
 
+	//* Gender *//
+	/// Our gender datum
+	var/datum/gender/gender_datum
+	/// Our visible gender
+	var/datum/gender/gender_datum_visible
+
 	//* Impairments *//
 	/// active feign_impairment types
 	/// * lazy list
@@ -69,6 +75,8 @@
 	update_ssd_overlay()
 	// iff factions
 	init_iff()
+	// gender datum
+	update_gender()
 	return ..()
 
 /mob/Destroy()
@@ -1087,6 +1095,30 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 /mob/z_pass_out(atom/movable/AM, dir, turf/new_loc)
 	return TRUE
+
+//* Gender *//
+
+/**
+ * Setter for gender.
+ */
+/mob/set_gender(new_gender)
+	. = ..()
+	if(!.)
+		return
+	update_gender()
+
+/**
+ * Update gender.
+ */
+/mob/proc/update_gender()
+	gender_datum = GLOB.gender_datums[gender] || GLOB.gender_datums[/datum/gender/neuter::key]
+
+/**
+ * Update gender.
+ */
+/mob/proc/update_visible_gender()
+	var/visible_gender = get_visible_gender()
+	gender_visible_datum = GLOB.gender_datums[visible_gender] || GLOB.gender_datums[/datum/gender/neuter::key]
 
 //? Pixel Offsets
 

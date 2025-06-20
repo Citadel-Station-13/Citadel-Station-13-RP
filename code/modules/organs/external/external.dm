@@ -163,27 +163,27 @@
 	if(legacy_examine_skip_flags == "auto")
 		switch(organ_tag)
 			if(BP_GROIN)
-				legacy_examine_skip_flags = EXAMINE_SKIPGROIN
+				legacy_examine_skip_flags = EXAMINE_SKIPBODY_GROIN
 			if(BP_TORSO)
-				legacy_examine_skip_flags = EXAMINE_SKIPBODY
+				legacy_examine_skip_flags = EXAMINE_SKIPBODY_BODY
 			if(BP_HEAD)
-				legacy_examine_skip_flags = EXAMINE_SKIPHEAD
+				legacy_examine_skip_flags = EXAMINE_SKIPBODY_HEAD
 			if(BP_L_ARM)
-				legacy_examine_skip_flags = EXAMINE_SKIPARMS
+				legacy_examine_skip_flags = EXAMINE_SKIPBODY_ARMS
 			if(BP_R_ARM)
-				legacy_examine_skip_flags = EXAMINE_SKIPARMS
+				legacy_examine_skip_flags = EXAMINE_SKIPBODY_ARMS
 			if(BP_L_HAND)
-				legacy_examine_skip_flags = EXAMINE_SKIPHANDS
+				legacy_examine_skip_flags = EXAMINE_SKIPBODY_HANDS
 			if(BP_R_HAND)
-				legacy_examine_skip_flags = EXAMINE_SKIPHANDS
+				legacy_examine_skip_flags = EXAMINE_SKIPBODY_HANDS
 			if(BP_L_FOOT)
-				legacy_examine_skip_flags = EXAMINE_SKIPFEET
+				legacy_examine_skip_flags = EXAMINE_SKIPBODY_FEET
 			if(BP_R_FOOT)
-				legacy_examine_skip_flags = EXAMINE_SKIPFEET
+				legacy_examine_skip_flags = EXAMINE_SKIPBODY_FEET
 			if(BP_L_LEG)
-				legacy_examine_skip_flags = EXAMINE_SKIPLEGS
+				legacy_examine_skip_flags = EXAMINE_SKIPBODY_LEGS
 			if(BP_R_LEG)
-				legacy_examine_skip_flags = EXAMINE_SKIPLEGS
+				legacy_examine_skip_flags = EXAMINE_SKIPBODY_LEGS
 
 /obj/item/organ/external/Destroy()
 

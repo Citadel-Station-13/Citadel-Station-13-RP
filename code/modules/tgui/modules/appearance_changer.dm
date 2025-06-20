@@ -105,7 +105,7 @@
 					return 1
 		if("gender_id")
 			if(can_change(APPEARANCE_GENDER) && (params["gender_id"] in all_genders_define_list))
-				target.identifying_gender = params["gender_id"]
+				target.set_identifying_gender(params["gender_id"])
 				changed_hook(APPEARANCECHANGER_CHANGED_GENDER_ID)
 				return 1
 		if("skin_tone")

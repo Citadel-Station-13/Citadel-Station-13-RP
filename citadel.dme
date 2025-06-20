@@ -2686,6 +2686,7 @@
 #include "code\modules\client\verbs\system.dm"
 #include "code\modules\client\verbs\view.dm"
 #include "code\modules\clothing\chameleon.dm"
+#include "code\modules\clothing\clothing-examine.dm"
 #include "code\modules\clothing\clothing-inventory.dm"
 #include "code\modules\clothing\clothing.dm"
 #include "code\modules\clothing\clothing_accessories.dm"

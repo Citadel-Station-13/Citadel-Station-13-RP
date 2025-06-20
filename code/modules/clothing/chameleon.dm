@@ -25,7 +25,7 @@
 	item_state = copy.item_state
 	set_body_cover_flags(copy.body_cover_flags)
 	inv_hide_flags = copy.inv_hide_flags
-	gender = copy.gender
+	set_gender(copy.gender)
 
 	if(copy.item_icons)
 		item_icons = copy.item_icons.Copy()
