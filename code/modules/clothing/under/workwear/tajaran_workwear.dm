@@ -214,27 +214,36 @@
 /obj/item/clothing/under/tajaran/hadiifolly
 	name = "Hadii's Folly Governement uniform"
 	desc = "Those modest uniform are made out of corporate prison jumpsuits, and the new uniform of members of the haddi's folley authority governement. Those uniform are worn by civilians working in the gouvernement."
-	icon_state = "hadiisgov_uniform"
+	icon = 'icons/clothing/uniform/workwear/tajaran/hadiisgov.dmi'
+	icon_state = "hadiisgov"
 	armor_type = /datum/armor/station/padded
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/tajaran/hadiifolly/soldier
 	name = "Hadii's Folly SDF uniform"
 	desc = "Those modest uniform are made out of corporate prison jumpsuits, and the new uniform of members of the haddi's folley authority governement. Those uniform are worn by soldiers."
-	icon_state = "SDFhadiisgov_uniform"
+	icon = 'icons/clothing/uniform/workwear/tajaran/SDFhadiisgov.dmi'
+	icon_state = "SDFhadiisgov"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 /obj/item/clothing/under/tajaran/hadiifolly/officer
 	name = "Hadii's Folly SDF officer uniform"
 	desc = "Those modest uniform are made out of corporate prison jumpsuits, and the new uniform of members of the haddi's folley authority governement. Those uniform are worn by officers."
-	icon_state = "SDFhadiisgovofficer_uniform"
+	icon = 'icons/clothing/uniform/workwear/tajaran/SDFhadiisgovofficer.dmi'
+	icon_state = "SDFhadiisgovofficer"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
 
 //Check this
 /obj/item/clothing/under/tajaran/dpra
