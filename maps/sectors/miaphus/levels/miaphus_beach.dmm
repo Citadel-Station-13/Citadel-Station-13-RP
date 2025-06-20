@@ -1568,7 +1568,6 @@
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
 	id_tag = "sdf_outpost_dock";
-	req_one_access = list(67);
 	pixel_x = 24
 	},
 /turf/simulated/floor/tiled/steel_dirty,
@@ -7919,7 +7918,8 @@
 /obj/overmap/entity/visitable/ship/landable/miaphus/sdf,
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	pixel_x = -24;
-	id_tag = "sdf_docker2"
+	id_tag = "sdf_docker2";
+	frequency = 1380
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
