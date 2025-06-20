@@ -2763,10 +2763,10 @@
 /obj/structure/closet/secure_closet/guncabinet{
 	req_one_access = null
 	},
-/obj/item/gun/projectile/ballistic/automatic/fal/taj,
 /obj/item/ammo_magazine/a45/uzi,
 /obj/item/ammo_magazine/a45/uzi,
 /obj/item/gun/projectile/ballistic/colt/taj,
+/obj/item/gun/projectile/ballistic/automatic/mini_uzi/taj,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/miaphus/sdf)
 "no" = (
@@ -3692,6 +3692,18 @@
 /turf/simulated/floor/maglev{
 	dir = 4
 	},
+/area/shuttle/miaphus/sdf)
+"sC" = (
+/obj/machinery/light,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/effect/floor_decal/techfloor/orange,
+/mob/living/simple_mob/animal/passive/maint_drone{
+	name = "Spout";
+	desc = "A small, normal-looking drone. Crewman Spout deals with light maintenance. Currently off-duty."
+	},
+/turf/simulated/floor/tiled/techfloor,
 /area/shuttle/miaphus/sdf)
 "sD" = (
 /turf/simulated/floor/water/deep,
@@ -8511,10 +8523,10 @@
 /obj/structure/closet/secure_closet/guncabinet{
 	req_one_access = null
 	},
-/obj/item/gun/projectile/ballistic/automatic/fal/taj,
 /obj/item/ammo_magazine/a45/uzi,
 /obj/item/ammo_magazine/a45/uzi,
 /obj/item/gun/projectile/ballistic/colt/taj,
+/obj/item/gun/projectile/ballistic/automatic/mini_uzi/taj,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/miaphus/sdf)
 "Sl" = (
@@ -9081,10 +9093,10 @@
 /obj/structure/closet/secure_closet/guncabinet{
 	req_one_access = null
 	},
-/obj/item/gun/projectile/ballistic/automatic/fal/taj,
 /obj/item/ammo_magazine/a45/uzi,
 /obj/item/ammo_magazine/a45/uzi,
 /obj/item/gun/projectile/ballistic/colt/taj,
+/obj/item/gun/projectile/ballistic/automatic/mini_uzi/taj,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/miaphus/sdf)
 "Vv" = (
@@ -40524,7 +40536,7 @@ FY
 bL
 bL
 AA
-NO
+sC
 bL
 bL
 kB
