@@ -24,7 +24,7 @@ export const logger = createLogger('backend');
 
 export const backendUpdate = createAction('backend/update');
 export const backendData = createAction('backend/data');
-export const backendModuleData = createAction('backend/modules');
+export const backendModuleData = createAction('backend/nestedData');
 export const backendSetSharedState = createAction('backend/setSharedState');
 export const backendSuspendStart = createAction('backend/suspendStart');
 

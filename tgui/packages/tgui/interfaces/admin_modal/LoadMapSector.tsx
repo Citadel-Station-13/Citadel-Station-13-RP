@@ -95,9 +95,9 @@ export const LoadMapSector = (props, context) => {
                   <Stack.Item key={i}>
                     <Button
                       fluid color="transparent"
-                      selected={currentTab === `level=$[i]`}
-                      onClick={() => setCurrentTab(`level-${i}`)}
-                      content={`Level ${i}`} />
+                      selected={currentTab === `level-${i + 1}`}
+                      onClick={() => setCurrentTab(`level-${i + 1}`)}
+                      content={`Level ${i + 1}`} />
                   </Stack.Item>
                 ))}
                 <Stack.Item grow={1} />

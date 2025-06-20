@@ -14,6 +14,7 @@ import { Button } from "./Button";
 import { Icon } from "./Icon";
 import { ByondIconRef } from "./ByondIconRef";
 import { Flex } from "./Flex";
+import { Input } from "./Input";
 
 /**
  * WARNING: HERE BE DRAGONS
@@ -29,8 +30,8 @@ import { Flex } from "./Flex";
 export class WorldTypepathDropdown extends Component<{
   selectedPath: string;
   onSelectPath: (path: string) => void;
-  color: string;
-  disabled: BooleanLike;
+  color?: string;
+  disabled?: BooleanLike;
   filter?: {
     turfs?: {
       enabled: BooleanLike;
@@ -61,7 +62,7 @@ export class WorldTypepathDropdown extends Component<{
   }
 
   setOpen(open) {
-    this.setState({ open: open });
+    this.setState((old) => ({ ...old, open: open }));
     if (open) {
       setTimeout(() => window.addEventListener('click', this.onUnfocusedClick));
       // todo: maybe focus the search bar?
@@ -69,6 +70,10 @@ export class WorldTypepathDropdown extends Component<{
     else {
       window.removeEventListener('click', this.onUnfocusedClick);
     }
+  }
+
+  setSearchString(val) {
+    this.setState((old) => ({ ...old, searchString: val }));
   }
 
   render() {
@@ -140,7 +145,9 @@ export class WorldTypepathDropdown extends Component<{
                   <Box className="WorldTypepathDropdown__menu">
                     <Stack fill vertical>
                       <Stack.Item>
-                        Search
+                        <Input onChange={(e, val) => this.setSearchString(val)}
+                          value={this.state.searchString}
+                          placeholder="Search path/name substring" />
                       </Stack.Item>
                       <Stack.Item grow={1}>
                         <Flex width="100%" height="100%" direction="column" overflowY="auto">
@@ -155,20 +162,21 @@ export class WorldTypepathDropdown extends Component<{
                                   descriptor.path.indexOf(this.state.searchString) !== -1
                                 ))
                                 .map(([path, descriptor]) => (
-                                <Flex.Item key={path}>
-                                  <Stack>
-                                    <Stack.Item>
-                                      {"<A>"}
-                                    </Stack.Item>
-                                    <Stack.Item grow={1}>
-                                      {descriptor.name}
-                                    </Stack.Item>
-                                    <Stack.Item>
-                                      <Button icon="question" tooltip={`Path: ${descriptor.path}`} />
-                                    </Stack.Item>
-                                  </Stack>
-                                </Flex.Item>
-                              ))}
+                                  <Flex.Item key={path} className="WorldTypepathDropdown__menuItem"
+                                    onClick={() => { onSelectPath(path); setTimeout(() => this.setOpen(false)); }}>
+                                    <Stack>
+                                      <Stack.Item>
+                                        {"<A>"}
+                                      </Stack.Item>
+                                      <Stack.Item grow={1}>
+                                        {descriptor.name}
+                                      </Stack.Item>
+                                      <Stack.Item>
+                                        <Button icon="question" tooltip={`Path: ${descriptor.path}`} />
+                                      </Stack.Item>
+                                    </Stack>
+                                  </Flex.Item>
+                                ))}
                             </>
                           )}
                           {!!filter?.turfs?.enabled && (
@@ -181,20 +189,21 @@ export class WorldTypepathDropdown extends Component<{
                                   descriptor.path.indexOf(this.state.searchString) !== -1
                                 ))
                                 .map(([path, descriptor]) => (
-                                <Flex.Item key={path} className="WorldTypepathDropdown__menuItem">
-                                  <Stack>
-                                    <Stack.Item>
-                                      <ByondIconRef iconRef={descriptor.iconRef} iconState={descriptor.iconState} />
-                                    </Stack.Item>
-                                    <Stack.Item grow={1}>
-                                      {descriptor.name}
-                                    </Stack.Item>
-                                    <Stack.Item>
-                                      <Button icon="question" tooltip={`Path: ${descriptor.path}`} />
-                                    </Stack.Item>
-                                  </Stack>
-                                </Flex.Item>
-                              ))}
+                                  <Flex.Item key={path} className="WorldTypepathDropdown__menuItem"
+                                    onClick={() => { onSelectPath(path); setTimeout(() => this.setOpen(false)); }}>
+                                    <Stack>
+                                      <Stack.Item>
+                                        <ByondIconRef iconRef={descriptor.iconRef} iconState={descriptor.iconState} />
+                                      </Stack.Item>
+                                      <Stack.Item grow={1}>
+                                        {descriptor.name}
+                                      </Stack.Item>
+                                      <Stack.Item>
+                                        <Button icon="question" tooltip={`Path: ${descriptor.path}`} />
+                                      </Stack.Item>
+                                    </Stack>
+                                  </Flex.Item>
+                                ))}
                             </>
                           )}
                         </Flex>
