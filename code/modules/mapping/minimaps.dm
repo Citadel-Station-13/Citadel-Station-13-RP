@@ -1,3 +1,5 @@
+// todo: completely redo
+
 /datum/minimap
 	var/name = "minimap"
 	var/icon/overlay_icon

@@ -147,10 +147,11 @@
  * * deferred_callbacks - if specified, generation callbacks are deferred and added to this list, instead of fired immediately.
  * * context - dmm_context to use
  * * defer_context - defer context initializations/injections
+ * * do_not_init - do not init bounds; this is probably not something you wanna touch.
  *
  * @return null if failed, or /datum/dmm_context context
  */
-/datum/map_template/proc/load(turf/T, centered = FALSE, orientation = SOUTH, list/datum/callback/deferred_callbacks, datum/dmm_context/context, defer_context)
+/datum/map_template/proc/load(turf/T, centered = FALSE, orientation = SOUTH, list/datum/callback/deferred_callbacks, datum/dmm_context/context, defer_context, do_not_init)
 	var/ll_x = T.x
 	var/ll_y = T.y
 	var/ll_z = T.z
@@ -198,7 +199,8 @@
 	if(!defer_context)
 		context.execute_postload()
 
-	init_bounds(loaded_bounds)
+	if(!do_not_init)
+		init_bounds(loaded_bounds)
 
 	// todo: inefficient as shit
 	if(SSmapping.initialized)

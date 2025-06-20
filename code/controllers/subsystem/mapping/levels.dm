@@ -183,6 +183,7 @@
 
 /datum/controller/subsystem/mapping/proc/_allocate_level(datum/map_level/level_or_path = /datum/map_level, rebuild)
 	RETURN_TYPE(/datum/map_level)
+	PRIVATE_PROC(TRUE)
 	if(ispath(level_or_path))
 		level_or_path = new level_or_path
 	ASSERT(istype(level_or_path))
@@ -274,16 +275,19 @@
  * * defer_context - defer executing initialization/generations.
  * * orientation - load orientation override
  * * area_cache - pass in area cache for bundling to dmm_parsed.
+ * * mangling_id - mangle ID passed for preloading_instance
  *
  * @return loaded context, or null on failw
  */
 /datum/controller/subsystem/mapping/proc/load_level(datum/map_level/instance, rebuild, center, crop, list/deferred_callbacks, datum/dmm_context/context, defer_context, orientation, list/area_cache)
+	RETURN_TYPE(/datum/dmm_context)
 	UNTIL(!load_mutex)
 	load_mutex = TRUE
 	. = _load_level(arglist(args))
 	load_mutex = FALSE
 
 /datum/controller/subsystem/mapping/proc/_load_level(datum/map_level/instance, rebuild, center, crop, list/deferred_callbacks, datum/dmm_context/context, defer_context, orientation, list/area_cache)
+	RETURN_TYPE(/datum/dmm_context)
 	PRIVATE_PROC(TRUE)
 
 	// allocate a level for the map
@@ -293,36 +297,53 @@
 
 	// parse map
 	var/map_path = instance.resolve_map_path()
-	if(isfile(map_path))
-	else if(!fexists(map_path))
-		CRASH("fexists() failed on map path [map_path] for instance [instance] ([instance.type])")
-	else
-		map_path = file(map_path)
-	var/datum/dmm_parsed/parsed = parse_map(map_path)
-
-	var/real_x = 1
-	var/real_y = 1
-	var/real_z = instance.z_index
-	var/real_orientation = orientation || instance.orientation
-
-	// todo: check my math
-
-	if(center)
-		real_x = 1 + round((world.maxx - parsed.width) / 2)
-		real_y = 1 + round((world.maxy - parsed.height) / 2)
-
-	if(!crop && ((parsed.width + real_x - 1) > world.maxx || (parsed.height + real_y - 1) > world.maxy))
-		CRASH("tried to load a map that would overrun ):")
-
+	// create maploader context
 	if(isnull(context))
 		context = create_dmm_context()
 	if(isnull(context.mangling_id))
 		context.mangling_id = "level-[instance.mangling_id || instance.id]"
-	context = parsed.load(real_x, real_y, real_z, no_changeturf = TRUE, place_on_top = FALSE, orientation = real_orientation, area_cache = area_cache, context = context)
+	. = context
+	// do we need to load a map file?
+	if(map_path)
+		// load the map file in question
+		if(isfile(map_path))
+		else if(!fexists(map_path))
+			CRASH("fexists() failed on map path [map_path] for instance [instance] ([instance.type])")
+		else
+			map_path = file(map_path)
+		var/datum/dmm_parsed/parsed = parse_map(map_path)
 
-	ASSERT(context.success)
+		var/real_x = 1
+		var/real_y = 1
+		var/real_z = instance.z_index
+		var/real_orientation = orientation || instance.orientation
 
-	var/list/loaded_bounds = context.loaded_bounds
+		// todo: check my math
+
+		if(center)
+			real_x = 1 + round((world.maxx - parsed.width) / 2)
+			real_y = 1 + round((world.maxy - parsed.height) / 2)
+
+		if(!crop && ((parsed.width + real_x - 1) > world.maxx || (parsed.height + real_y - 1) > world.maxy))
+			CRASH("tried to load a map that would overrun ):")
+
+		context = parsed.load(real_x, real_y, real_z, no_changeturf = TRUE, place_on_top = FALSE, orientation = real_orientation, area_cache = area_cache, context = context)
+		ASSERT(context.success)
+	else
+		// no file, we're just instantiating the whole level.
+		context.used = TRUE
+		context.success = TRUE
+		context.loaded_orientation = SOUTH
+		context.loaded_dmm = null
+		context.loaded_bounds = new /list(MAP_BOUNDS)
+		context.loaded_bounds[MAP_MINX] = 1
+		context.loaded_bounds[MAP_MINY] = 1
+		context.loaded_bounds[MAP_MINZ] = instance.z_index
+		context.loaded_bounds[MAP_MAXX] = world.maxx
+		context.loaded_bounds[MAP_MAXY] = world.maxy
+		context.loaded_bounds[MAP_MAXZ] = instance.z_index
+		// todo: we should also set baseturfs and whatnot.
+
 	var/list/datum/callback/generation_callbacks = list()
 	instance.on_loaded_immediate(instance.z_index, generation_callbacks)
 
@@ -335,18 +356,16 @@
 			cb.Invoke()
 
 		if(initialized)
-			SSatoms.init_map_bounds(loaded_bounds)
+			SSatoms.init_map_bounds(context.loaded_bounds)
 
 		instance.on_loaded_finalize(instance.z_index)
 	else
 		deferred_callbacks += generation_callbacks
 
-	. = context
-
 	if(rebuild)
 		rebuild_verticality()
 		rebuild_transitions()
-		rebuild_level_multiz(list(real_z), TRUE, TRUE)
+		rebuild_level_multiz(list(instance.z_index), TRUE, TRUE)
 
 /**
  * destroys a loaded level and frees it for later usage

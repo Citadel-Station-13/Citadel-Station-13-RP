@@ -1,3 +1,5 @@
+// todo: rework a variant of this for our storytelelrs
+
 /obj/item/pinpointer
 	name = "pinpointer"
 	icon = 'icons/obj/device.dmi'
@@ -187,7 +189,7 @@
 
 /obj/item/pinpointer/nukeop
 	var/mode = 0	//Mode 0 locates disk, mode 1 locates the shuttle
-	var/obj/machinery/computer/shuttle_control/multi/syndicate/home = null
+	var/obj/machinery/computer/shuttle_control/syndicate/home = null
 
 /obj/item/pinpointer/nukeop/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()

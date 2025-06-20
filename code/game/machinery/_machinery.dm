@@ -236,7 +236,7 @@
 	panel_open = panel_opened
 	update_appearance()
 
-/obj/machinery/vv_edit_var(var_name, new_value)
+/obj/machinery/vv_edit_var(var_name, new_value, mass_edit, raw_edit)
 	if(var_name == NAMEOF(src, use_power))
 		update_use_power(new_value)
 		return TRUE

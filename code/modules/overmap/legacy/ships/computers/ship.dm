@@ -16,12 +16,12 @@
 /obj/machinery/computer/ship/proc/attempt_hook_up(obj/overmap/entity/visitable/ship/sector)
 	if(!istype(sector))
 		return
-	if(sector.check_ownership(src))
+	if(sector == get_overmap_entity(src))
 		linked = sector
 		return TRUE
 
 /obj/machinery/computer/ship/proc/sync_linked(var/user = null)
-	var/obj/overmap/entity/visitable/ship/sector = get_overmap_sector(z)
+	var/obj/overmap/entity/visitable/ship/sector = get_overmap_entity(z)
 	if(!sector)
 		return
 	. = attempt_hook_up_recursive(sector)

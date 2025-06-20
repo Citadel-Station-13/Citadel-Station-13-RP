@@ -1,20 +1,33 @@
 //* /turf_flags var on /turf
 /// This is used in literally one place, turf.dm, to block ethwereal jaunt.
+//  todo: kill this with fire
 #define NO_JAUNT						(1<<0)
 /// Unused reservation turf
 #define TURF_FLAG_UNUSED_RESERVATION			(1<<2)
 /// queued for planet turf addition
+//  todo: planet rework
 #define TURF_PLANET_QUEUED				(1<<3)
 /// registered to a planet
+//  todo: planet rework
 #define TURF_PLANET_REGISTERED			(1<<4)
 /// queued for ZAS rebuild
 #define TURF_ZONE_REBUILD_QUEUED		(1<<5)
 /// no making dirt overlays or similar overlays on this
+//  todo: rework...?
 #define TURF_SEMANTICALLY_BOTTOMLESS	(1<<6)
 /// considered a volatile-changing area by persistence, which means things like trash and debris won't stay here
+//  todo: rework...?
 #define TURF_FLAG_ERODING				(1<<7)
 /// The slowdown affects a physical person, even if they aren't walking on the tile the turf represents.
 #define TURF_SLOWDOWN_INCLUDE_FLYING	(1<<8)
+/// considered part of a level border;
+/// this should only be set by either
+///
+/// * being a /turf/level_border
+/// * a /datum/component/transition_border
+///
+/// this will fully block shuttles from landing among other things
+#define TURF_FLAG_LEVEL_BORDER          (1<<9)
 
 ///CITMAIN TURF FLAGS - Completely unused
 /*
@@ -37,6 +50,7 @@ DEFINE_BITFIELD(turf_flags, list(
 	BITFIELD(TURF_SEMANTICALLY_BOTTOMLESS),
 	BITFIELD(TURF_FLAG_ERODING),
 	BITFIELD(TURF_SLOWDOWN_INCLUDE_FLYING),
+	BITFIELD(TURF_FLAG_LEVEL_BORDER),
 ))
 
 //* /turf_path_danger var on /turf

@@ -18,11 +18,9 @@
 	var/debug_scans = 0
 	var/scanning = 0
 	var/legacy_zone = 0	// Disable scanning and whatnot.
-	var/obj/machinery/computer/shuttle_control/belter/shuttle_control
 
 /obj/machinery/computer/roguezones/Initialize(mapload)
 	. = ..()
-	shuttle_control = locate(/obj/machinery/computer/shuttle_control/belter)
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/computer/roguezones/LateInitialize()
@@ -55,22 +53,26 @@
 	data["updated"] = world.time - rm_controller.last_scan < 200	// Very recently scanned (20 seconds)
 	data["debug"] = debug
 
-	if(!shuttle_control)
-		data["shuttle_location"] = "Unknown"
-		data["shuttle_at_station"] = 0
-	else if(SSmapping.level_trait(get_z(shuttle_control), ZTRAIT_LEGACY_BELTER_DOCK))
+	var/datum/shuttle_controller/ferry/shuttle_controller = GLOB.legacy_belter_shuttle?.controller
+	var/at_home = shuttle_controller?.is_at_home() || FALSE
+	var/at_away = shuttle_controller?.is_at_away() || FALSE
+
+	if(at_home)
 		data["shuttle_location"] = "Landed"
 		data["shuttle_at_station"] = 1
-	else if(SSmapping.level_trait(get_z(shuttle_control), ZTRAIT_LEGACY_BELTER_TRANSIT))
+	else if(GLOB.legacy_belter_shuttle?.in_transit)
 		data["shuttle_location"] = "In-transit"
 		data["shuttle_at_station"] = 0
-	else if(SSmapping.level_trait(get_z(shuttle_control), ZTRAIT_LEGACY_BELTER_ACTIVE))
+	else if(shuttle_controller?.is_at_away())
 		data["shuttle_location"] = "Belt"
+		data["shuttle_at_station"] = 0
+	else
+		data["shuttle_location"] = "Unknown"
 		data["shuttle_at_station"] = 0
 
 	var/can_scan = 0
 	if(chargePercent >= 100)	// Keep having weird problems with these in one 'if' statement
-		if(shuttle_control && SSmapping.level_trait(get_z(shuttle_control), ZTRAIT_LEGACY_BELTER_DOCK))
+		if(at_home)
 			if(!curZoneOccupied)	// Not sure why.
 				if(!scanning)
 					can_scan = 1
@@ -79,7 +81,7 @@
 	data["scan_ready"] = can_scan
 
 	// Permit emergency recall of the shuttle if its stranded in a zone with just dead people.
-	data["can_recall_shuttle"] = (shuttle_control && SSmapping.level_trait(get_z(shuttle_control), ZTRAIT_LEGACY_BELTER_ACTIVE) && !curZoneOccupied)
+	data["can_recall_shuttle"] = (at_away && !curZoneOccupied)
 
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
@@ -113,18 +115,18 @@
 	sleep(60)
 
 	// Break the shuttle temporarily.
-	shuttle_control.shuttle_tag = null
+	GLOB.legacy_belter_shuttle_controller.register_movement_block(
+		SSshuttle,
+		"zone-rebuild",
+	)
 
 	// Build and get a new zone.
 	var/datum/rogue/zonemaster/ZM_target = rm_controller.prepare_new_zone()
 
-	// Update shuttle destination.
-	var/datum/shuttle/autodock/ferry/S = SSshuttle.shuttles["Belter"]
-	S.landmark_offsite = ZM_target.myshuttle_landmark
-	S.next_location = S.get_location_waypoint(!S.location)
-
 	// Re-enable shuttle.
-	shuttle_control.shuttle_tag = "Belter"
+	GLOB.legacy_belter_shuttle_controller.unregister_movement_block(
+		SSshuttle,
+	)
 
 	// Update rm_previous
 	rm_controller.previous_zone = rm_controller.current_zone
@@ -142,15 +144,14 @@
 	return
 
 /obj/machinery/computer/roguezones/proc/failsafe_shuttle_recall()
-	if(!shuttle_control)
-		return	// Shuttle computer has been destroyed
-	if (!SSmapping.level_trait(shuttle_control.z, ZTRAIT_LEGACY_BELTER_ACTIVE))
+	// if(!shuttle_control)
+		// return	// Shuttle computer has been destroyed
+	if(!GLOB.legacy_belter_shuttle_controller.is_at_away())
 		return	// Usable only when shuttle is away
 	if(rm_controller.current_zone && rm_controller.current_zone.is_occupied())
 		return	// Not usable if shuttle is in occupied zone
 	// Okay do it
-	var/datum/shuttle/autodock/ferry/S = SSshuttle.shuttles["Belter"]
-	S.launch(usr)
+	#warn launch it
 
 /obj/item/circuitboard/roguezones
 	name = T_BOARD("asteroid belt scanning computer")

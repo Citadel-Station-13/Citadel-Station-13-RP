@@ -27,12 +27,6 @@
 	icon_state = "shuttle2"
 	requires_power = 1
 
-// The shuttle's 'shuttle' computer
-/obj/machinery/computer/shuttle_control/explore/curashuttle
-	name = "short jump console"
-	shuttle_tag = "Cura"
-	req_one_access = list()
-
 // The 'shuttle'
 /datum/shuttle/autodock/overmap/curashuttle
 	name = "Cura"
@@ -45,9 +39,6 @@
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/curashuttle
 	name = "CRV Rescue"
-	base_area = /area/space
-	base_turf = /turf/space
-	landmark_tag = "omship_spawn_curashuttle"
 	shuttle_type = /datum/shuttle/autodock/overmap/curashuttle
 
 // The 'ship'

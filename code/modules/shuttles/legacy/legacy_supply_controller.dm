@@ -1,0 +1,36 @@
+GLOBAL_DATUM(legacy_cargo_shuttle_controller, /datum/shuttle_controller/ferry/cargo)
+
+/datum/shuttle_controller/ferry/cargo
+	transit_time_home = 2 MINUTES
+	transit_time_away = 2 MINUTES
+
+/datum/shuttle_controller/ferry/cargo/on_transit_begin(obj/shuttle_dock/dock, datum/shuttle_transit_cycle/cycle, redirected)
+	. = ..()
+	// Set the supply shuttle displays to read out the ETA
+	var/datum/signal/S = new()
+	S.source = src
+	S.data = list("command" = "supply")
+	var/datum/radio_frequency/F = radio_controller.return_frequency(1435)
+	F.post_signal(src, S)
+
+/datum/shuttle_controller/ferry/cargo/on_begin_transit_to_away(datum/shuttle_transit_cycle/cycle, redirected)
+	. = ..()
+	SSsupply.buy()
+
+/datum/shuttle_controller/ferry/cargo/on_end_transit_to_home(datum/shuttle_transit_cycle/cycle, status)
+	. = ..()
+	if(status == SHUTTLE_TRANSIT_STATUS_SUCCESS)
+		SSsupply.sell()
+
+/datum/shuttle_controller/ferry/cargo/proc/legacy_eta_in_minutes()
+	return (transit_time_left() / (1 MINUTES))
+
+/proc/legacy_supply_forbidden_atoms_check(datum/shuttle/shuttle)
+	var/datum/shuttle_controller/ferry/controller = shuttle.controller
+	// allow it if they're not on station; remember station is away.
+	if(istype(controller) && !controller.is_at_away())
+		return FALSE
+	for(var/area/area in shuttle.areas)
+		if(SSsupply.forbidden_atoms_check(area))
+			return TRUE
+	return FALSE

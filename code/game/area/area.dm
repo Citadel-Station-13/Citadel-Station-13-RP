@@ -251,6 +251,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
+#warn refactor changearea
 /**
  * Changes the area of T to A. Do not do this manually.
  * Area is expected to be a non-null instance.
@@ -711,7 +712,7 @@ var/list/ghostteleportlocs = list()
 
 	return 1
 
-//* Atmospherics
+//* Atmospherics *//
 
 /area/proc/register_scrubber(obj/machinery/atmospherics/component/unary/vent_scrubber/instance)
 	LAZYADD(vent_scrubbers, instance)

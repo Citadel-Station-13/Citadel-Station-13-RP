@@ -729,7 +729,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/gecko_sh)
 "qx" = (
-/obj/machinery/computer/shuttle_control/explore/gecko_sh,
+/obj/machinery/computer/shuttle_control,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/gecko_sh_cockpit)
 "qO" = (
