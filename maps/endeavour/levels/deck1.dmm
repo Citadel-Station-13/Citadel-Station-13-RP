@@ -192,6 +192,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/coffee_shop)
+"aid" = (
+/obj/machinery/camera/network/exploration{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/exploration/courser_dock)
 "aiX" = (
 /obj/machinery/door/firedoor/glass{
 	dir = 8
@@ -826,12 +832,14 @@
 /turf/simulated/floor/carpet/tealcarpet,
 /area/endeavour/hallway/d1fwdmaint)
 "aGm" = (
-/obj/machinery/computer/ship/sensors,
 /obj/machinery/button/remote/blast_door{
 	id = "cockpit_lockdown";
 	name = "Cockpit Lockdown";
 	pixel_y = 6;
 	pixel_x = -38
+	},
+/obj/machinery/computer/shuttle_control/explore/excursion{
+	req_one_access = null
 	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/endeavour/cockpit)
@@ -2024,8 +2032,7 @@
 /obj/landmark/spawnpoint/latejoin/station/cryogenics,
 /obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
-	dir = 1;
-	icon_state = "0-8"
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/endeavour/cryo)
@@ -3537,8 +3544,7 @@
 /area/exploration/meeting)
 "cJS" = (
 /obj/structure/cable/green{
-	dir = 1;
-	icon_state = "2-4"
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/reinforced,
 /area/endeavour/exploration/aux_hanger)
@@ -5227,13 +5233,6 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d1fwdmaint)
 "dWa" = (
-/obj/machinery/porta_turret/stationary{
-	gl_uid = "exploration";
-	installation = /obj/item/gun/projectile/energy/phasegun;
-	name = "exploration turret";
-	req_one_access = list(19,43,62,67);
-	uid = "exploration"
-	},
 /obj/structure/railing,
 /obj/structure/railing{
 	dir = 4
@@ -5242,6 +5241,10 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/industrial/warning/cee,
+/obj/machinery/porta_turret/crescent{
+	density = 1;
+	faction = "neutral"
+	},
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/endeavour/cockpit)
 "dWo" = (
@@ -5859,11 +5862,11 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
 "evs" = (
-/obj/structure/cable/green{
-	icon_state = "2-4"
+/obj/machinery/camera/network/exploration{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/hallway/secondary/docking_hallway)
+/area/exploration/excursion_dock)
 "evV" = (
 /obj/machinery/holopad/ship,
 /turf/simulated/floor/tiled,
@@ -7025,6 +7028,9 @@
 	},
 /obj/machinery/light/small,
 /obj/effect/floor_decal/industrial/outline/red,
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
 /turf/simulated/floor,
 /area/shuttle/emt/general)
 "flG" = (
@@ -7818,10 +7824,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
 "fNq" = (
-/obj/machinery/computer/shuttle_control/explore/excursion{
-	dir = 1;
-	req_one_access = null
-	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/endeavour/cockpit)
 "fND" = (
@@ -9289,6 +9291,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/misc_lab)
+"gXv" = (
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/hallway/secondary/docking_hallway)
 "gXC" = (
 /obj/machinery/camera/network/civilian{
 	dir = 4
@@ -10085,9 +10093,6 @@
 /area/hallway/secondary/docking_hallway2)
 "hQk" = (
 /obj/machinery/door/firedoor/glass,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /obj/machinery/door/airlock/voidcraft/vertical{
 	frequency = 1380
 	},
@@ -10291,9 +10296,6 @@
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/entertainment)
 "hXy" = (
-/obj/structure/cable/green{
-	icon_state = "1-8"
-	},
 /obj/machinery/holopad/ship,
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -11327,9 +11329,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 6
 	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /obj/effect/shuttle_landmark/endeavour/deck3/emt,
 /obj/overmap/entity/visitable/ship/landable/emt/endeavour,
 /turf/simulated/floor/tiled/white,
@@ -11488,6 +11487,9 @@
 "iRe" = (
 /obj/machinery/light{
 	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/secondary/docking_hallway)
@@ -14506,8 +14508,7 @@
 	dir = 4
 	},
 /obj/structure/cable/green{
-	dir = 1;
-	icon_state = "2-4"
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled,
 /area/exploration)
@@ -15583,13 +15584,6 @@
 /area/endeavour/hallway/d1fwdhall)
 "lNz" = (
 /obj/effect/floor_decal/industrial/warning/full,
-/obj/machinery/porta_turret/stationary{
-	gl_uid = "exploration";
-	installation = /obj/item/gun/projectile/energy/phasegun;
-	name = "exploration turret";
-	req_one_access = list(19,43,62,67);
-	uid = "exploration"
-	},
 /obj/machinery/light{
 	dir = 4;
 	light_range = 12;
@@ -15601,6 +15595,10 @@
 	},
 /obj/structure/railing{
 	dir = 1
+	},
+/obj/machinery/porta_turret/crescent{
+	density = 1;
+	faction = "neutral"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/excursion/endeavour/cockpit)
@@ -15851,6 +15849,7 @@
 /obj/machinery/meter{
 	name = "holding tank meter"
 	},
+/obj/machinery/camera/network/exploration,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/endeavour/general)
 "lVu" = (
@@ -18059,9 +18058,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1fwdhall)
 "nEb" = (
-/obj/machinery/media/jukebox{
-	icon_state = "superjuke-nopower";
-	state_base = "superjuke"
+/obj/machinery/computer/ship/sensors{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/endeavour/cockpit)
@@ -19253,9 +19251,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
-/obj/machinery/atmospheric_field_generator/perma{
-	color = "#00000ff"
-	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/endeavour/general)
 "ovp" = (
@@ -20042,13 +20037,6 @@
 /area/endeavour/hallway/d1fwdhall)
 "peo" = (
 /obj/effect/floor_decal/industrial/warning/full,
-/obj/machinery/porta_turret/stationary{
-	gl_uid = "exploration";
-	installation = /obj/item/gun/projectile/energy/phasegun;
-	name = "exploration turret";
-	req_one_access = list(19,43,62,67);
-	uid = "exploration"
-	},
 /obj/machinery/light{
 	dir = 4;
 	light_range = 12;
@@ -20059,6 +20047,10 @@
 	dir = 8
 	},
 /obj/structure/railing,
+/obj/machinery/porta_turret/crescent{
+	density = 1;
+	faction = "neutral"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/excursion/endeavour/cockpit)
 "peu" = (
@@ -20532,10 +20524,10 @@
 	charge = 15000;
 	cur_coils = 3
 	},
-/obj/structure/cable/green{
-	icon_state = "0-4"
-	},
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
 /turf/simulated/floor,
 /area/shuttle/emt/general)
 "ptG" = (
@@ -22635,8 +22627,7 @@
 /area/library)
 "raK" = (
 /obj/structure/cable/green{
-	dir = 1;
-	icon_state = "2-4"
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/excursion_dock)
@@ -23369,9 +23360,6 @@
 /area/exploration/pathfinder_office)
 "rEK" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /obj/machinery/light/small{
 	dir = 8
 	},
@@ -24283,18 +24271,16 @@
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 8
 	},
-/obj/machinery/turretid{
-	check_access = 0;
-	control_area = /area/shuttle/excursion/general;
-	gl_uid = "exploration";
-	pixel_y = 27;
-	req_access = null;
-	req_one_access = list(19,43,62,67);
-	uid = "exploration";
-	pixel_x = -32
-	},
 /obj/machinery/fire_alarm/alarms_hidden/west_mount{
 	pixel_y = 40
+	},
+/obj/machinery/turretid/lethal{
+	uid = "exploration";
+	pixel_x = -32;
+	pixel_y = 26;
+	name = "shuttle turret control panel";
+	req_one_access = list(19,43,62,67);
+	req_access = null
 	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/endeavour/cockpit)
@@ -24789,6 +24775,10 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/exploration/excursion_dock)
+"sHT" = (
+/obj/machinery/camera/network/exploration,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/excursion_dock)
 "sIB" = (
@@ -26321,16 +26311,10 @@
 /area/endeavour/hallway/d1aftmaint)
 "tNd" = (
 /obj/structure/cable/green{
-	icon_state = "1-2"
+	icon_state = "1-4"
 	},
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/paleblue/border{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/white,
-/area/shuttle/emt/general)
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/hallway/secondary/docking_hallway)
 "tNi" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -27746,6 +27730,11 @@
 /obj/item/flashlight/lamp/green,
 /turf/simulated/floor/wood,
 /area/bridge/office)
+"uLj" = (
+/obj/machinery/fire_alarm/north_mount,
+/obj/machinery/camera/network/exploration,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/exploration/excursion_dock)
 "uLs" = (
 /obj/machinery/ai_status_display{
 	pixel_x = 32
@@ -28336,6 +28325,15 @@
 /obj/fiftyspawner/glass,
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
+"vgR" = (
+/obj/machinery/door/firedoor,
+/obj/spawner/window/low_wall/reinforced,
+/obj/map_helper/paint/babyblue,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/emt/general)
 "vhq" = (
 /obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
@@ -29360,6 +29358,9 @@
 "vYa" = (
 /obj/machinery/power/apc/east_mount,
 /obj/structure/cable/cyan,
+/obj/structure/handrail{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/endeavour/cockpit)
 "vYn" = (
@@ -29622,6 +29623,9 @@
 	},
 /obj/item/gun/projectile/ballistic/shotgun/flare,
 /obj/item/storage/box/flashshells,
+/obj/structure/handrail{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/endeavour/cockpit)
 "wlu" = (
@@ -29663,6 +29667,9 @@
 	},
 /obj/machinery/door/window/brigdoor/southleft{
 	req_access = null;
+	dir = 1
+	},
+/obj/machinery/camera/network/exploration{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -30120,9 +30127,6 @@
 /obj/machinery/door/airlock/voidcraft/vertical{
 	frequency = 1380
 	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /obj/machinery/access_button{
 	frequency = 1380;
 	master_tag = "emt_shuttle_docker";
@@ -30544,6 +30548,18 @@
 /obj/random/tech_supply,
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
+"xas" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/camera/network/exploration{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/exploration/courser_dock)
 "xat" = (
 /obj/structure/cable/green{
 	icon_state = "1-4"
@@ -31274,6 +31290,15 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
+"xxi" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/hallway/secondary/docking_hallway)
 "xyl" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -31812,13 +31837,6 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/lounge/kitchen_freezer)
 "xSO" = (
-/obj/machinery/porta_turret/stationary{
-	gl_uid = "exploration";
-	installation = /obj/item/gun/projectile/energy/phasegun;
-	name = "exploration turret";
-	req_one_access = list(19,43,62,67);
-	uid = "exploration"
-	},
 /obj/structure/railing{
 	dir = 8
 	},
@@ -31830,6 +31848,10 @@
 	},
 /obj/effect/floor_decal/industrial/warning/cee{
 	dir = 1
+	},
+/obj/machinery/porta_turret/crescent{
+	density = 1;
+	faction = "neutral"
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/endeavour/cockpit)
@@ -35001,16 +35023,16 @@ loH
 bLR
 ikk
 eVc
+xxi
+fPp
+fPp
+fPp
+fPp
+fPp
 iRe
-eVc
-eVc
-eVc
-eVc
-eVc
-iRe
-eVc
-eVc
-eVc
+fPp
+fPp
+tNd
 xLn
 xRj
 xRj
@@ -35195,7 +35217,7 @@ kED
 cxb
 ikk
 eVc
-eVc
+dfS
 qPy
 xSm
 xSm
@@ -35204,7 +35226,7 @@ xSm
 xSm
 xSm
 qPy
-eVc
+dfS
 xLn
 xRj
 xRj
@@ -35389,7 +35411,7 @@ ksA
 jkq
 ikk
 xHM
-eVc
+dfS
 qPy
 pCl
 smi
@@ -35398,7 +35420,7 @@ gIY
 smi
 smi
 qPy
-eVc
+dfS
 xLn
 xRj
 xRj
@@ -35583,7 +35605,7 @@ ksA
 mXH
 ikk
 eVc
-eVc
+dfS
 qPy
 fXR
 plD
@@ -35591,8 +35613,8 @@ mpv
 icG
 eQI
 fll
-qPy
-eVc
+vgR
+gXv
 xLn
 xRj
 xRj
@@ -35749,7 +35771,7 @@ xRj
 ePJ
 dkX
 dkX
-bVq
+uLj
 ihi
 ihi
 qlw
@@ -35777,7 +35799,7 @@ ksA
 mXH
 ikk
 eVc
-eVc
+dfS
 qPy
 qKF
 fpV
@@ -35955,7 +35977,7 @@ cCF
 ihi
 ihi
 ihi
-ihi
+evs
 sQi
 rYG
 rfr
@@ -35971,7 +35993,7 @@ ksA
 eiz
 ikk
 eOe
-eVc
+dfS
 qPy
 jTS
 nLL
@@ -36165,7 +36187,7 @@ ksA
 mXH
 ikk
 lnL
-eVc
+dfS
 qPy
 qPy
 sPS
@@ -36359,12 +36381,12 @@ ksA
 mXH
 ikk
 xHM
-evs
+dfS
 wEr
 iIr
 rEK
 hQk
-tNd
+xIB
 hXy
 ijf
 qPy
@@ -36516,9 +36538,9 @@ dkX
 dkX
 dkX
 dkX
-usG
-utU
-usG
+xRj
+xRj
+xRj
 xRj
 fZu
 xRj
@@ -36938,7 +36960,7 @@ lno
 oiA
 oiA
 xAw
-mXH
+aid
 ikk
 uUK
 dfS
@@ -37495,7 +37517,7 @@ ktx
 aIj
 vgp
 mKR
-ihi
+sHT
 ihi
 lCU
 eEl
@@ -37677,7 +37699,7 @@ xRj
 xRj
 xRj
 xRj
-usG
+xRj
 tvO
 jwy
 xws
@@ -37701,7 +37723,7 @@ dKk
 lCU
 ihi
 iee
-ihi
+evs
 sQi
 rYG
 mXH
@@ -37871,7 +37893,7 @@ xRj
 xRj
 xRj
 xRj
-utU
+xRj
 tvO
 vub
 mfS
@@ -38065,7 +38087,7 @@ xRj
 xRj
 xRj
 xRj
-usG
+xRj
 tvO
 jTN
 jPH
@@ -38259,7 +38281,7 @@ xRj
 xRj
 xRj
 xRj
-ePJ
+xRj
 tvO
 caS
 kaL
@@ -38487,7 +38509,7 @@ oiA
 bHf
 oiA
 oiA
-xAw
+xas
 wne
 tJq
 tat
@@ -41931,7 +41953,7 @@ xRj
 xRj
 xRj
 xRj
-usG
+xRj
 ngf
 yme
 yme
@@ -42125,7 +42147,7 @@ xRj
 xRj
 xRj
 xRj
-utU
+xRj
 ngf
 yme
 yme
@@ -42319,7 +42341,7 @@ xRj
 xRj
 xRj
 xRj
-usG
+xRj
 ngf
 yme
 yme
@@ -47642,7 +47664,7 @@ oHo
 kCB
 lOq
 jJV
-nof
+xRj
 xRj
 xRj
 xRj
@@ -48030,7 +48052,7 @@ oHo
 kCB
 lOq
 jJV
-usG
+xRj
 xRj
 xRj
 xRj
@@ -48224,7 +48246,7 @@ oHo
 gjG
 xwO
 jJV
-utU
+xRj
 xRj
 xRj
 xRj
@@ -48418,7 +48440,7 @@ oHo
 pGN
 kdL
 jJV
-usG
+xRj
 xRj
 xRj
 xRj
@@ -50358,7 +50380,7 @@ iHc
 yaO
 kdL
 jJV
-usG
+xRj
 xRj
 xRj
 xRj
@@ -50552,7 +50574,7 @@ kdL
 kdL
 kdL
 jJV
-utU
+xRj
 xRj
 xRj
 xRj
@@ -50746,7 +50768,7 @@ jJV
 jJV
 jJV
 jJV
-usG
+xRj
 xRj
 xRj
 xRj
@@ -56298,7 +56320,7 @@ xRj
 xRj
 xRj
 xRj
-usG
+xRj
 xZn
 kIZ
 lal
@@ -56492,7 +56514,7 @@ xRj
 xRj
 xRj
 xRj
-utU
+xRj
 xZn
 fKP
 gkR
@@ -56686,7 +56708,7 @@ xRj
 xRj
 xRj
 xRj
-usG
+xRj
 xZn
 gMJ
 gMJ
@@ -58681,7 +58703,7 @@ xtW
 eDP
 sMI
 aJX
-usG
+xRj
 xRj
 xRj
 xRj
@@ -58875,7 +58897,7 @@ qXx
 uPj
 aRu
 aJX
-utU
+xRj
 xRj
 xRj
 xRj
@@ -59069,7 +59091,7 @@ xrv
 tkX
 jUZ
 aJX
-usG
+xRj
 xRj
 xRj
 xRj
@@ -61394,7 +61416,7 @@ oJK
 aJX
 dMa
 aJX
-usG
+xRj
 xRj
 xRj
 xRj
@@ -61588,7 +61610,7 @@ oJK
 aJX
 aJX
 aJX
-utU
+xRj
 xRj
 xRj
 xRj
@@ -61782,7 +61804,7 @@ oJK
 aJX
 aJX
 aJX
-usG
+xRj
 xRj
 xRj
 xRj
