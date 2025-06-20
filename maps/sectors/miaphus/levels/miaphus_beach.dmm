@@ -589,10 +589,12 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/station)
 "ck" = (
-/obj/structure/closet/secure_closet/guncabinet/rifle,
 /obj/item/gun/projectile/ballistic/revolver/mateba/taj,
 /obj/item/ammo_magazine/a357/speedloader,
 /obj/item/ammo_magazine/a357/speedloader,
+/obj/structure/closet/secure_closet/guncabinet{
+	req_one_access = null
+	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/miaphus/sdf)
 "cm" = (
@@ -9142,10 +9144,12 @@
 	},
 /area/sector/miaphus/beach/mineshaft)
 "VM" = (
-/obj/structure/closet/secure_closet/guncabinet/rifle,
 /obj/item/gun/projectile/ballistic/deagle/taj,
 /obj/item/ammo_magazine/a44,
 /obj/item/ammo_magazine/a44,
+/obj/structure/closet/secure_closet/guncabinet{
+	req_one_access = null
+	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/miaphus/sdf)
 "VN" = (
