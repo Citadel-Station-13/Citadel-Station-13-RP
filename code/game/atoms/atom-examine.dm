@@ -43,9 +43,9 @@
 /atom/proc/run_examine(datum/event_args/examine/examine, examine_for, examine_from)
 	var/datum/event_args/examine_output/output = new
 	if(examine_for & EXAMINE_FOR_NAME)
-		output.name = get_examine_name(examine.examiner_atom)
+		output.name = get_examine_name(examine.examiner)
 	if(examine_for & EXAMINE_FOR_DESC)
-		output.desc = get_examine_desc(examine.examiner_atom, examine.seer_distance)
+		output.desc = get_examine_desc(examine.examiner, examine.seer_distance)
 	if(examine_for & EXAMINE_FOR_RENDER)
 		output.render = new image(src)
 	return output

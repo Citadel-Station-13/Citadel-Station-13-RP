@@ -9,8 +9,10 @@
 #define EXAMINE_FOR_RENDER (1<<2)
 /// get worn entries
 #define EXAMINE_FOR_WORN (1<<3)
+/// get attached entries
+#define EXAMINE_FOR_ATTACHED (1<<4)
 /// get everything not currently in the new examine system
-#define EXAMINE_FOR_REST (1<<4)
+#define EXAMINE_FOR_REST (1<<5)
 
 /// examining something on a turf
 #define EXAMINE_FROM_TURF (1<<0)
