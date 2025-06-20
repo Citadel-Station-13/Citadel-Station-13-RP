@@ -36,11 +36,11 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 
-	if(cultist == current)
+	if(cultist == src.cultist)
 		return TRUE
-	if(current)
+	if(src.cultist)
 		disassociate()
-	current = cultist
+	src.cultist = cultist
 	on_mob_associate(cultist)
 	return TRUE
 
@@ -48,10 +48,10 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 
-	if(!current)
+	if(!src.cultist)
 		return TRUE
-	var/mob/old_cultist = current
-	current = null
+	var/mob/old_cultist = src.cultist
+	src.cultist = null
 	on_mob_disassociate(old_cultist)
 	return TRUE
 
@@ -100,10 +100,10 @@
 
 /datum/eldritch_holder/proc/add_passive(datum/prototype/eldritch_passive/passive, datum/prototype/eldritch_knowledge/from_knowledge)
 	#warn impl
-	var/datum/eldritch_passive_context/context
+	var/datum/eldritch_passive_context/context_instance
 	if(!passives[passive])
-		passives[passive] = context = passive.create_initial_context(src)
-		if(context.enabled)
+		passives[passive] = context_instance = passive.create_initial_context(src)
+		if(context_instance.enabled)
 			passive.on_holder_enable(src)
 
 
@@ -115,23 +115,49 @@
 	ui_push_learned_passives()
 
 /datum/eldritch_holder/proc/add_ability(datum/prototype/eldritch_ability/ability, datum/prototype/eldritch_knowledge/from_knowledge)
-	#warn impl
-	ui_push_learned_abilities()
-	ui_push_ability_contexts()
+	var/datum/ability/eldritch_ability/ability_instance
+	var/created_new
+	if(!abilities[ability])
+		abilities[ability] = ability_instance = ability.create_ability(src)
+		created_new = TRUE
+	if(knowledge.id in ability_instance.granted_from_knowledge_ids)
+		return TRUE
+	ability_instance.granted_from_knowledge_ids += knowledge.id
+	if(created_new)
+		if(cultist)
+			ability_instance.associate(cultist)
+		ui_push_learned_abilities()
+		ui_push_ability_contexts()
+	return TRUE
 
 /datum/eldritch_holder/proc/remove_ability(datum/prototype/eldritch_ability/ability, datum/prototype/eldritch_knowledge/from_knowledge)
-	#warn impl
+	var/datum/ability/eldritch_ability/ability_instance
+	if(!abilities[ability])
+		return TRUE
+	if(!(knowledge.id in ability_instance.granted_from_knowledge_ids))
+		return TRUE
+	ability_instance.granted_from_knowledge_ids -= knowledge.id
+	if(length(ability_instance.granted_from_knowledge_ids))
+		return TRUE
+	if(cultist)
+		ability_instance.disassociate(cultist)
+	abilities -= ability
 	ui_push_learned_abilities()
+	return TRUE
 
 /datum/eldritch_holder/proc/add_recipe(datum/crafting_recipe/eldritch_recipe/recipe, datum/prototype/eldritch_knowledge/from_knowledge)
+	var/already_exists = recipe_ids[recipe.id]
 	LAZYADD(recipe_ids[recipe.id], from_knowledge.id)
-	ui_push_learned_recipes()
+	if(!already_exists)
+		ui_push_learned_recipes()
+	return TRUE
 
 /datum/eldritch_holder/proc/remove_recipe(datum/crafting_recipe/eldritch_recipe/recipe, datum/prototype/eldritch_knowledge/from_knowledge)
 	LAZYREMOVE(recipe_ids[recipe.id], from_knowledge.id)
 	if(!length(recipe_ids[recipe.id]))
 		recipe_ids -= recipe.id
-	ui_push_learned_recipes()
+		ui_push_learned_recipes()
+	return TRUE
 
 /datum/eldritch_holder/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)

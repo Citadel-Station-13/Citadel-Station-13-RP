@@ -37,7 +37,7 @@
 	. = min(src.amount, amount)
 	src.amount -= .
 	if(!src.amount)
-		addtimer(CALLBACK(src, check_delete), 0)
+		addtimer(CALLBACK(src, PROC_REF(check_delete)), 0)
 
 /datum/component/eldritch_rust/proc/check_delete()
 	if(!amount)
