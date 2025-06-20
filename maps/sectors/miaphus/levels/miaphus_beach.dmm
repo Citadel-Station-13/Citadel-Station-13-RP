@@ -3726,6 +3726,9 @@
 /obj/effect/floor_decal/corner_steel_grid{
 	dir = 10
 	},
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/miaphus/beach/sdf)
 "sT" = (
@@ -5440,14 +5443,6 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/obj/item/material/knife/tacknife/boot,
-/obj/structure/closet/secure_closet/guncabinet{
-	req_one_access = null
-	},
-/obj/item/gun/projectile/ballistic/automatic/fal/taj,
-/obj/item/ammo_magazine/a45/uzi,
-/obj/item/ammo_magazine/a45/uzi,
-/obj/item/gun/projectile/ballistic/colt/taj,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/miaphus/sdf)
 "Cd" = (
@@ -7034,6 +7029,7 @@
 /obj/effect/floor_decal/corner_steel_grid{
 	dir = 5
 	},
+/obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/miaphus/beach/sdf)
 "KI" = (
@@ -9070,6 +9066,7 @@
 /obj/item/gps,
 /obj/item/handcuffs/cable,
 /obj/item/melee/baton/loaded/mini,
+/obj/item/radio,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/miaphus/sdf)
 "Vu" = (
@@ -42665,7 +42662,7 @@ qe
 bL
 Sg
 YU
-Vs
+YU
 bL
 bp
 XJ
