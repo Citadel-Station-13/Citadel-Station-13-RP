@@ -38,7 +38,7 @@
 	var/creator_name = creator_mind.name
 	log_game("[key_name(created)] possessed a golem shell enslaved to [creator_mind.name]/[creator_mind.key].")
 	log_admin("[key_name(created)] possessed a golem shell enslaved to [creator_mind.name]/[creator_mind.key].")
-	created.mind.store_memory( "Serve [creator_name][creator_mind.current && " (currently [creator_mind.current.name])"], and assist them in completing their goals at any cost.")
+	created.mind.legacy_add_html_memory( "Serve [creator_name][creator_mind.current && " (currently [creator_mind.current.name])"], and assist them in completing their goals at any cost.")
 	to_chat(created, span_boldwarning("Serve [creator_name][creator_mind.current && " (currently [creator_mind.current.name])"], and assist them in completing their goals at any cost."))
 	var/mob/living/carbon/human/H = created
 	var/datum/species/golem/G = H.dna.species

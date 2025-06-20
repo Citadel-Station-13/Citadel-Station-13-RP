@@ -81,10 +81,7 @@
 		C.drop_from_inventory(W)
 
 	var/mob/living/carbon/human/O = new /mob/living/carbon/human( src )
-	if (C.dna.GetUIState(DNA_UI_GENDER))
-		O.gender = FEMALE
-	else
-		O.gender = MALE
+	O.set_gender(C.dna.GetUIState(DNA_UI_GENDER) ? FEMALE : MALE)
 	O.dna = C.dna.Clone()
 	C.dna = null
 	O.real_name = chosen_dna.real_name

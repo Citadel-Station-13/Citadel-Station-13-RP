@@ -9,11 +9,11 @@
  * * EXPENSIVE.
  * * all instant reactions will be immediately ran.
  */
-/datum/reagent_holder/proc/reconsider_reactions()
+/datum/reagent_holder/proc/reconsider_reactions(extra_flags)
 	SHOULD_NOT_SLEEP(TRUE)
 
 	var/list/datum/chemical_reaction/reactions = SSchemistry.immutable_relevant_reactions_for_reagent_ids(reagent_volumes)
-	check_reactions(reactions)
+	check_reactions(reactions, extra_flags)
 
 //* Internal API *//
 
@@ -24,10 +24,10 @@
  *
  * @params
  * * reactions - reactions to recheck; this will not be mutated
+ * * extra_flags - extra holder flags to simulate
  * * safety - safety parameter to prevent instant reactions from infinite looping
- * * instant_only - skip ticked reactions
  */
-/datum/reagent_holder/proc/check_reactions(list/datum/chemical_reaction/reactions, safety)
+/datum/reagent_holder/proc/check_reactions(list/datum/chemical_reaction/reactions, extra_flags, safety)
 	SHOULD_NOT_SLEEP(TRUE)
 	PROTECTED_PROC(TRUE)
 
@@ -43,12 +43,12 @@
 			potentially_ticked += reaction
 			continue
 		// can happen?
-		if(!reaction.can_happen(src))
+		if(!reaction.can_happen(src, extra_flags))
 			continue
 		// stage for react
 		instant_reacting += reaction
 
-	run_instant_reactions(instant_reacting, safety)
+	run_instant_reactions(instant_reacting, extra_flags, safety)
 
 	if(QDELETED(src))
 		return
@@ -255,7 +255,7 @@
  * * this proc reserves the right to not check any pre-conditions like if we're the correct type of container.
  * * this proc will run reactions to completion.
  */
-/datum/reagent_holder/proc/run_instant_reactions(list/datum/chemical_reaction/reactions, safety = 50)
+/datum/reagent_holder/proc/run_instant_reactions(list/datum/chemical_reaction/reactions, extra_flags, safety = 50)
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_NOT_OVERRIDE(TRUE)
 
@@ -336,4 +336,4 @@
 	// now that we're done, re-check relevant reactions that might happen
 	// and process them as needed
 	var/list/datum/chemical_reaction/reactions_to_recheck = SSchemistry.immutable_relevant_reactions_for_reagent_ids(ids_to_recheck)
-	check_reactions(reactions_to_recheck, safety - 1)
+	check_reactions(reactions_to_recheck, extra_flags, safety - 1)

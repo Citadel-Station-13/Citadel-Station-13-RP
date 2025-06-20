@@ -529,7 +529,7 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 	new_character.lastarea = get_area(T)
 
 	if(SSticker.random_players)
-		new_character.gender = pick(MALE, FEMALE)
+		new_character.set_gender(pick(MALE, FEMALE))
 		client.prefs.real_name = random_name(new_character.gender)
 		client.prefs.randomize_appearance_and_body_for(new_character)
 	else

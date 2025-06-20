@@ -26,3 +26,11 @@
 /datum/reagent_holder/proc/get_majority_reagent_id()
 	var/datum/reagent/resolved = get_majority_reagent_datum()
 	return resolved ? resolved.id : null
+
+//* Hook-ish's *//
+
+/**
+ * Will reconsider reactions.
+ */
+/datum/reagent_holder/proc/violently_jostle()
+	reconsider_reactions(REAGENT_HOLDER_FLAG_BEING_JOSTLED)

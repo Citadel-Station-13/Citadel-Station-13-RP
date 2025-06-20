@@ -69,8 +69,8 @@
 
 	character.nickname = pref.nickname
 
-	character.gender = pref.biological_gender
-	character.identifying_gender = pref.identifying_gender
+	character.set_gender(pref.biological_gender)
+	character.set_identifying_gender(pref.identifying_gender)
 	character.age = pref.age
 	character.headshot_url = pref.headshot_url
 	character.fullref_url = pref.full_ref_url

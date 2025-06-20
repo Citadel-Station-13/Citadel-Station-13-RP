@@ -754,25 +754,6 @@
 	armor_type = /datum/armor/centcom/ert/paracausal
 	item_action_name = "Enable Armor Sigils"
 
-	var/anti_magic = FALSE
-	var/blessed = FALSE
-
-/obj/item/clothing/suit/armor/vest/para/attack_self(mob/user, datum/event_args/actor/actor)
-	. = ..()
-	if(.)
-		return
-	if(user.mind.isholy && !anti_magic && !blessed)
-		anti_magic = TRUE
-		blessed = TRUE
-		to_chat(user, "<font color=#4F49AF>You enable the armor's protective sigils.</font>")
-	else
-		anti_magic = FALSE
-		blessed = FALSE
-		to_chat(user, "<font color=#4F49AF>You disable the armor's protective sigils.</font>")
-
-	if(!user.mind.isholy)
-		to_chat(user, "<font color='red'>You can't figure out what these symbols do.</font>")
-
 /obj/item/clothing/suit/armor/para/inquisitor
 	name = "inquisitor's coat"
 	desc = "A flowing, armored coat adorned with occult iconography."

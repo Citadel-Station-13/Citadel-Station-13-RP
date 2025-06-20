@@ -66,7 +66,7 @@
 	/// if we're done sculpting, this should be nulled for consistency
 	var/sculpting_line
 	/// virtual vis contents holder for buffer
-	var/atom/movable/sculpting_render/sculpting_renderer
+	var/atom/movable/render/sculpting_render/sculpting_renderer
 	/// slate dimension y
 	var/slate_dimension_y
 	/// slate dimension x
@@ -523,13 +523,13 @@
 /**
  * rendering object that sits in vis contents while sculpting
  */
-/atom/movable/sculpting_render
+/atom/movable/render/sculpting_render
 	atom_flags = ATOM_ABSTRACT
 	vis_flags = VIS_INHERIT_PLANE | VIS_INHERIT_DIR | VIS_INHERIT_ID
 	layer = FLOAT_LAYER
 	plane = OBJ_PLANE
 	mouse_opacity = MOUSE_OPACITY_ICON
 
-/atom/movable/sculpting_render/Destroy()
+/atom/movable/render/sculpting_render/Destroy()
 	vis_locs.len = 0
 	return ..()
