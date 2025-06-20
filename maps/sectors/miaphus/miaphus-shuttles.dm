@@ -10,7 +10,7 @@
 
 /obj/overmap/entity/visitable/ship/landable/miaphus/sdf
 	name = "SDF Shining singing knight"
-	desc = "A damaged military vessel."
+	desc = "A patrol military vessel."
 	scanner_name = "SDF Shining singing knight"
 	scanner_desc = @{"[i]Registration[/i]: ---
 [i]Class[/i]: Andromeda BS2002
