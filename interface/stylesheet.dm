@@ -74,6 +74,7 @@ em						{font-style: normal;font-weight: bold;}
 .centradio				{color: #5C5C8A;}
 .aiprivradio			{color: #FF00FF;}
 .entradio				{color: #339966;}
+.atcradio				{color: #1008ff;}
 
 .secradio				{color: #A30000;}
 .engradio				{color: #A66300;}
