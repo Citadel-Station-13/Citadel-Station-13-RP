@@ -18,3 +18,5 @@
 
 /datum/component/eldritch_fracturing/UnregisterFromParent()
 	var/atom/atom_parent = parent
+
+#warn vfx, effects

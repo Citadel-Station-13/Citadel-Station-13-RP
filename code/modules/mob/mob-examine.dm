@@ -62,8 +62,6 @@
 
 	#warn impl
 
-	var/datum/gender/using_gender = get_visible_gender()
-
 	if(examine_for & EXAMINE_FOR_WORN)
 		for(var/id in get_inventory_slot_ids())
 			var/datum/inventory_slot/slot = resolve_inventory_slot(id)
@@ -71,15 +69,11 @@
 
 			var/html = slot.examinate(src, equipped, examine, examine_for, examine_from)
 			if(html)
-				output.worn += html
+				output.worn_descriptors += html
 		for(var/obj/item/held_item as anything in inventory?.get_held_items())
 			#warn impl
 
 	if(buckled)
-		LAZYADD(output.visible, SPAN_WARNING("ICON [gender_datum_visible.He] [gender_datum_visible.is] buckled to [FORMAT_TEXT_LOOKITEM(buckled)]."))
-	if(fire_stacks)
-		LAZYADD(output.visible, SPAN_WARNING("[gender_datum_visible.He] [gender_datum_visible.is] soaking wet."))
-	if(on_fire)
-		LAZYADD(output.visible, SPAN_DANGER("[gender_datum_visible.He] [gender_datum_visible.is] on fire!."))
-
+		LAZYADD(output.required_appearances, buckled.appearance)
+		LAZYADD(output.visible_descriptors, SPAN_WARNING("<img src='\ref[buckled.appearance]'> [gender_datum_visible.He] [gender_datum_visible.is] buckled to [FORMAT_TEXT_LOOKITEM(buckled)]."))
 	return output

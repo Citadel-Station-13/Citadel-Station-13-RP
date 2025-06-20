@@ -108,6 +108,10 @@ GLOBAL_LIST_EMPTY(mannequins)
 
 	//* Recipes
 	init_subtypes(/datum/crafting_recipe, GLOB.crafting_recipes)
+	for(var/datum/crafting_recipe/recipe as anything in GLOB.crafting_recipes)
+		if(!recipe.id)
+			continue
+		GLOB.crafting_recipe_lookup[recipe.id] = recipe
 
 	//* Drink Reactions
 	init_subtypes(/datum/chemical_reaction/drinks, GLOB.drink_recipes)

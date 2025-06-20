@@ -1,4 +1,6 @@
 /mob/living/carbon/human
+	/// Our gender identity
+	var/gender_identifying
 	/// Our identifying gender
 	var/datum/gender/gender_datum_identifying
 
@@ -1644,11 +1646,12 @@
 /**
  * Setter for identifying gender.
  */
-/mob/proc/set_identifying_gender(new_gender)
+/mob/living/carbon/human/proc/set_identifying_gender(new_gender)
 	src.gender_identifying = new_gender
+	src.identifying_gender = new_gender
 	update_identifying_gender()
 	return TRUE
 
-/mob/proc/update_identifying_gender()
+/mob/living/carbon/human/proc/update_identifying_gender()
 	gender_datum_identifying = GLOB.gender_datums[gender_identifying] || GLOB.gender_datums[/datum/gender/neuter::key]
 	return TRUE

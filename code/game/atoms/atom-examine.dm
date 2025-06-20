@@ -46,40 +46,27 @@
 /atom/proc/run_examine(datum/event_args/examine/examine, examine_for, examine_from)
 	var/datum/event_args/examine_output/output = new
 	if(examine_for & EXAMINE_FOR_NAME)
-		output.entity_name = get_examine_name(examine.examiner)
+		output.entity_name = get_examine_name(examine, examine_for, examine_from)
 	if(examine_for & EXAMINE_FOR_DESC)
-		output.entity_desc = get_examine_desc(examine.examiner, examine.seer_distance)
+		output.entity_desc = get_examine_desc(examine, examine_for, examine_from)
 	if(examine_for & EXAMINE_FOR_RENDER)
-		var/image/our_image = new(src)
-		output.entity_render = our_image
-		LAZYADD(output.required_appearances, our_image)
+		output.entity_appearance = appearance
+		LAZYADD(output.required_appearances, appearance)
 	return output
 
-/atom/proc/get_examine_name(mob/user)
-	. = "\a <b>[src]</b>"
-	var/list/override = list(gender == PLURAL ? "some" : "a", " ", "[name]")
+/atom/proc/get_examine_name(datum/event_args/examine/examine, examine_for, examine_from)
+	return "[gender == PLURAL ? "some" : "a"][blood_DNA ? " <span class='warning'>blood-stained</span> " : ""][name]"
 
-	var/should_override = FALSE
-
-	if(SEND_SIGNAL(src, COMSIG_ATOM_GET_EXAMINE_NAME, user, override) & COMPONENT_EXNAME_CHANGED)
-		should_override = TRUE
-
-
-	if(blood_DNA && !istype(src, /obj/effect/decal))
-		override[EXAMINE_POSITION_BEFORE] = " blood-stained "
-		should_override = TRUE
-
-	if(should_override)
-		. = override.Join("")
-
-/atom/proc/get_examine_desc(mob/user, dist)
+/atom/proc/get_examine_desc(datum/event_args/examine/examine, examine_for, examine_from)
 	return desc
 
 /// Generate the full examine string of this atom (including icon for goonchat)
+#warn this
 /atom/proc/get_examine_string(mob/user, thats = FALSE)
 	return "[icon2html(src, user)] [thats? "That's ":""][get_examine_name(user)]"
 
 /// Used to insert text after the name but before the description in examine()
+#warn this
 /atom/proc/get_name_chaser(mob/user, list/name_chaser = list())
 	return name_chaser
 
@@ -99,6 +86,7 @@
 // todo: standard controls / ui/ux help
 // todo: examine_more()?
 /atom/proc/examine(mob/user, dist = 1)
+	#warn this shit
 	var/examine_string = get_examine_string(user, thats = TRUE)
 	if(examine_string)
 		. = list("[examine_string].")
@@ -147,7 +135,7 @@
 	var/datum/event_args/examine/examining = new /datum/event_args/examine
 	examining.seer = user
 	examining.seer_distance = dist
-	examining.examiner_atom = user
+	examining.examiner = user
 	var/list/usage_hints = examine_query_usage_hints(examining)
 	if(length(usage_hints))
 		. += "<b>Usage:</b>"

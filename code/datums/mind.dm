@@ -17,7 +17,6 @@
 	var/list/memories_by_key
 
 	//* Roles *//
-	#warn hook
 	/// All associated roles
 	var/list/datum/role/roles
 
@@ -28,6 +27,8 @@
 	var/datum/eldritch_holder/r_holder_eldritch
 
 /datum/mind/Destroy()
+	if(current)
+		disassociate()
 	QDEL_NULL(characteristics)
 	QDEL_LIST_NULL(abilities)
 	return ..()
@@ -36,9 +37,12 @@
  * Removes us from our current mob.
  */
 /datum/mind/proc/disassociate()
+	SHOULD_NOT_SLEEP(TRUE)
+	disassociate()
 
 /datum/mind/proc/disassociate_impl(do_not_ghostize)
 	PRIVATE_PROC(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
 
 	ASSERT(!isnull(current))
 
@@ -68,6 +72,8 @@
  * Puts us on a new mob.
  */
 /datum/mind/proc/associate(mob/character)
+	SHOULD_NOT_SLEEP(TRUE)
+
 	ASSERT(isnull(current))
 	ASSERT(isnull(character.mind))
 
@@ -98,6 +104,8 @@
 		found.transfer_to(character)
 
 /datum/mind/proc/transfer(mob/new_character)
+	SHOULD_NOT_SLEEP(TRUE)
+
 	if(isnull(current))
 		associate(new_character)
 		return

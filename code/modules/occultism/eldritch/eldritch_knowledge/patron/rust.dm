@@ -44,7 +44,7 @@
 		/datum/prototype/eldritch_knowledge/patron/rust/entrypoint::id,
 	)
 
-	give_eldritch_recipe_ids = list(
+	grant_eldritch_recipe_ids = list(
 		/datum/crafting_recipe/eldritch_recipe/rust_flask::id,
 	)
 

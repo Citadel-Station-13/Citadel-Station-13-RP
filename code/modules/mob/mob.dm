@@ -1118,7 +1118,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
  */
 /mob/proc/update_visible_gender()
 	var/visible_gender = get_visible_gender()
-	gender_visible_datum = GLOB.gender_datums[visible_gender] || GLOB.gender_datums[/datum/gender/neuter::key]
+	gender_datum_visible = GLOB.gender_datums[visible_gender] || GLOB.gender_datums[/datum/gender/neuter::key]
 
 //? Pixel Offsets
 
