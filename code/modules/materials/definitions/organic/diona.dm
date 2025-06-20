@@ -18,6 +18,8 @@
 	absorption = MATERIAL_RESISTANCE_HIGH
 	nullification = MATERIAL_RESISTANCE_LOW // they're half-telepaths anyways
 
+	material_constraints = MATERIAL_CONSTRAINT_RIGID
+
 /datum/prototype/material/diona/place_dismantled_product()
 	return
 

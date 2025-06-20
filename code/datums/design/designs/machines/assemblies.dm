@@ -1,6 +1,7 @@
 /datum/prototype/design/machine_assembly
 	abstract_type = /datum/prototype/design/machine_assembly
 	work = 7.5 SECONDS
+	category = "General"
 
 /datum/prototype/design/machine_assembly/cell_chargers
 	id = "MachineAssemblyCellCharger"
