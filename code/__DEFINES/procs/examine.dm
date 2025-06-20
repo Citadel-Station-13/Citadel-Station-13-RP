@@ -6,6 +6,7 @@
 /// get short / visual description
 #define EXAMINE_FOR_DESC (1<<1)
 /// get render; usually this is just 'src'
+/// * Omitting this will not render anything, including on nested examines like clothing / equipment.
 #define EXAMINE_FOR_RENDER (1<<2)
 /// get worn + held entries
 #define EXAMINE_FOR_WORN (1<<3)

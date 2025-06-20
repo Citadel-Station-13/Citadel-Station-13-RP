@@ -1,4 +1,7 @@
 /**
+ * * Examining is **not** stateless. There's various hooks that fire when examines are used,
+ *   including gameplay function hooks.
+ *
  * @params
  * * examine - examiner args
  * * examine_for - examining for flags so we don't compute stuff we don't need to
@@ -43,11 +46,13 @@
 /atom/proc/run_examine(datum/event_args/examine/examine, examine_for, examine_from)
 	var/datum/event_args/examine_output/output = new
 	if(examine_for & EXAMINE_FOR_NAME)
-		output.name = get_examine_name(examine.examiner)
+		output.entity_name = get_examine_name(examine.examiner)
 	if(examine_for & EXAMINE_FOR_DESC)
-		output.desc = get_examine_desc(examine.examiner, examine.seer_distance)
+		output.entity_desc = get_examine_desc(examine.examiner, examine.seer_distance)
 	if(examine_for & EXAMINE_FOR_RENDER)
-		output.render = new image(src)
+		var/image/our_image = new(src)
+		output.entity_render = our_image
+		LAZYADD(output.required_appearances, our_image)
 	return output
 
 /atom/proc/get_examine_name(mob/user)

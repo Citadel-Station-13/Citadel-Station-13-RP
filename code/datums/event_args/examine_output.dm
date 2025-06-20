@@ -4,23 +4,26 @@
 /datum/event_args/examine_output
 	/// our name
 	/// * As a raw HTML line
-	var/name
+	var/entity_name
 	/// our desc
 	/// * As a raw HTML line
-	var/desc
+	var/entity_desc
 	/// appearance
-	/// * as something render-able
-	var/render
+	/// * as raw appearance ref
+	var/appearance/entity_appearance
 
 	/// worn descriptors
 	/// * For things visible from outside separately, like mech components, someone's clothing, etc
 	/// * As raw HTML lines
 	/// * Lazy list
-	var/list/worn
+	var/list/worn_descriptors
 	/// visible descriptors
 	/// * For misc visible things
 	/// * As raw HTML lines
 	/// * Lazy list
-	var/list/visible
+	var/list/visible_descriptors
+
+	/// list of appearances to render to clients for them to be able to view them with native image ref'ing
+	var/list/appearance/required_appearances
 
 #warn impl all
