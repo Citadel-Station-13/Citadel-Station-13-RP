@@ -257,7 +257,8 @@
 		/obj/item/clothing/shoes/boots/winter/security,
 		/obj/item/flashlight/maglight,
 		/obj/item/holowarrant,
-		/obj/item/ticket_printer)
+		/obj/item/ticket_printer,
+	)
 
 /obj/structure/closet/secure_closet/security/Initialize(mapload)
 	if(prob(50))
