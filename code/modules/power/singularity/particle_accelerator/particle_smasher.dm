@@ -49,9 +49,6 @@
 		to_chat(user, "<span class='notice'>\The [src] reads an energy level of [energy].</span>")
 	else if(istype(W, /obj/item/stack/material) && !target)
 		var/obj/item/stack/material/M = W
-		if(M.uses_charge)
-			to_chat(user, "<span class='notice'>You cannot fill \the [src] with a synthesizer!</span>")
-			return
 		if(!user.attempt_insert_item_for_installation(M, src))
 			return
 		target = M
