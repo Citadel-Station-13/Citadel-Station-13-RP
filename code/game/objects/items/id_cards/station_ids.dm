@@ -807,3 +807,4 @@
 	desc = "An ID issued to members of the system defence force of haddi's folley."
 	icon_state = "sdf"
 	access = list(155)
+	job_access_type = null
