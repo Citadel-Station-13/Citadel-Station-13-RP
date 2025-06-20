@@ -52,5 +52,5 @@
 	icon_state = "sec_ticket"
 
 /obj/item/paper/sec_ticket/update_icon()
-		icon = icon
-		icon_state = icon_state
+	icon = icon
+	icon_state = icon_state
