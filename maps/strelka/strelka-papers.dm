@@ -18,3 +18,8 @@
 	name = "Welcome to the Strelka"
 	desc = "Something about the Strelka"
 	info = "Welcome to the NEV Strelka. This ship is one of the oldest of the fleet, predating the Phoron wars by 10 years ! A luxury yacht, turned blockade runner, turned pathclearer, and now turned exploration vessel, but most importantly, more than a workplace, your new home. It should be able to carry out far, like it did to its 17 previous crews."
+
+/obj/item/paper/strelkacommand/engineer
+	name = "Engineer's note"
+	desc = "Something about the engine"
+	info = "CAUTION : This layout is limited. If setting up the emitter, please always be available to monitor the supermatter. Unlike the Endeavour, and the Atlas, you can't leave the emiter active without supervision."

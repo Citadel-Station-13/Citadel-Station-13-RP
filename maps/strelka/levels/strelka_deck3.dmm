@@ -6049,10 +6049,10 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
-/obj/machinery/light/small/old{
+/obj/machinery/vending/medical,
+/obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/vending/medical,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/main)
 "vU" = (
@@ -6415,6 +6415,9 @@
 	},
 /obj/effect/floor_decal/corner/paleblue,
 /obj/machinery/chemical_dispenser/full,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "wY" = (
@@ -6949,6 +6952,7 @@
 /area/strelka/shipbase/deck3/medical/main)
 "yz" = (
 /mob/living/simple_mob/animal/passive/bird/european_robin,
+/obj/structure/table/bench/wooden,
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck3)
 "yA" = (
@@ -10524,14 +10528,14 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
-/obj/machinery/light/small/old{
-	dir = 8
-	},
 /obj/machinery/vitals_monitor,
 /obj/item/radio/intercom/department/medbay{
 	dir = 8;
 	layer = 4;
 	pixel_x = -22
+	},
+/obj/machinery/light{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/main)
@@ -12239,8 +12243,9 @@
 /obj/item/cane,
 /obj/item/clothing/accessory/stethoscope,
 /obj/item/clothing/accessory/stethoscope,
-/obj/machinery/light/small/old{
-	dir = 4
+/obj/machinery/light{
+	dir = 4;
+	light_power = 1.5
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
@@ -12591,6 +12596,9 @@
 	},
 /obj/structure/window/reinforced{
 	dir = 4
+	},
+/obj/machinery/light{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
@@ -13106,9 +13114,6 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 1
 	},
-/obj/machinery/light/small/old{
-	dir = 8
-	},
 /obj/structure/filingcabinet/chestdrawer{
 	name = "Scan Records"
 	},
@@ -13116,6 +13121,9 @@
 	dir = 8;
 	layer = 4;
 	pixel_x = -21
+	},
+/obj/machinery/light{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/main)
@@ -13295,8 +13303,9 @@
 /obj/structure/cable/blue{
 	icon_state = "1-2"
 	},
-/obj/machinery/light/small/old{
-	dir = 4
+/obj/machinery/light{
+	dir = 4;
+	light_power = 1.5
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/main)
@@ -14444,7 +14453,7 @@
 	},
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/spline/fancy/wood,
-/obj/machinery/light/small/old,
+/obj/machinery/light,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/main)
 "Zo" = (
@@ -31621,7 +31630,7 @@ wx
 jT
 fu
 uZ
-WK
+gg
 ZA
 nt
 gH

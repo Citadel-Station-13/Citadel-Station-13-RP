@@ -168,7 +168,7 @@
 /area/strelka/shipbase/deck1/bridge/balista)
 "be" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 1
+	dir = 6
 	},
 /turf/simulated/wall/r_wall/prepainted/civilian,
 /area/shuttle/civvie/strelka)
@@ -1226,6 +1226,13 @@
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck1/fighterbaysec)
+"gj" = (
+/obj/effect/shuttle_landmark/automatic{
+	name = "Dock Starboard Deck 1";
+	docking_controller = "strelka_north_docking"
+	},
+/turf/space/basic,
+/area/space)
 "gk" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/strelka/shipbase/deck1/armory)
@@ -2087,6 +2094,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck1/pilot_EVA)
+"lh" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 10
+	},
+/turf/simulated/wall/r_wall/prepainted/civilian,
+/area/shuttle/civvie/strelka)
 "lj" = (
 /obj/structure/table/carbon/reinforced,
 /obj/item/paper/strelkashuttles,
@@ -2434,6 +2447,10 @@
 /obj/item/gun/projectile/ballistic/fiveseven,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1/armory2)
+"mu" = (
+/obj/machinery/embedded_controller/radio/simple_docking_controller,
+/turf/simulated/wall/r_wall/prepainted,
+/area/strelka/shipbase/deck1/firingrange)
 "mv" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/industrial/warning/dust,
@@ -3281,6 +3298,15 @@
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/carpet/patterened/blue,
 /area/strelka/shipbase/deck1/pilot)
+"rs" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/turf/simulated/wall/r_wall/prepainted/civilian,
+/area/shuttle/civvie/strelka)
 "rw" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -4027,6 +4053,10 @@
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/door/blast/strelka/blockade,
 /obj/machinery/shield_diffuser,
+/obj/machinery/access_button/airlock_exterior{
+	pixel_x = -20;
+	master_tag = "strelka_north_docking"
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
 "vT" = (
@@ -5086,6 +5116,12 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1)
+"Cf" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 9
+	},
+/turf/simulated/wall/r_wall/prepainted/civilian,
+/area/shuttle/civvie/strelka)
 "Ci" = (
 /obj/structure/cable/blue{
 	icon_state = "4-8"
@@ -7003,9 +7039,6 @@
 	pixel_y = -24
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 1
-	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	id_tag = "civvie_docker_pump"
@@ -7733,12 +7766,12 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	pixel_x = -25;
-	id_tag = "civvie_dock"
-	},
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8
+	},
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	pixel_x = -23;
+	id_tag = "civvie_dock"
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1)
@@ -7786,12 +7819,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck1)
-"PY" = (
-/obj/effect/shuttle_landmark/automatic{
-	name = "Dock Starboard Deck 1"
-	},
-/turf/space/basic,
-/area/space)
 "Qa" = (
 /obj/effect/floor_decal/spline/fancy/wood/cee{
 	dir = 4
@@ -22577,7 +22604,7 @@ vu
 vu
 vu
 vu
-PY
+vu
 vu
 vS
 bw
@@ -22771,7 +22798,7 @@ vu
 vu
 vu
 vu
-vu
+gj
 vu
 bH
 FL
@@ -27851,7 +27878,7 @@ rL
 ZW
 Mv
 dT
-be
+rs
 Mf
 be
 he
@@ -28045,9 +28072,9 @@ rL
 ZW
 UM
 UM
-on
+lh
 VU
-on
+Cf
 UM
 UM
 ZW
@@ -29213,7 +29240,7 @@ vK
 vK
 vK
 vK
-vK
+mu
 vK
 cu
 kI

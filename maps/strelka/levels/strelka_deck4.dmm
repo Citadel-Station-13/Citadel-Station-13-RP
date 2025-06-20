@@ -793,13 +793,6 @@
 /obj/machinery/vending/cigarette,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/hallway)
-"dj" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
-/mob/living/simple_mob/animal/passive/bird/ringneck_dove,
-/turf/simulated/floor/wood/indoors,
-/area/strelka/shipbase/deck4/bar)
 "dk" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
@@ -5592,6 +5585,25 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck4/bridge)
+"yA" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/flora/grass/event/yellow_flowers1,
+/obj/structure/railing,
+/obj/structure/window/reinforced,
+/obj/machinery/light/flamp,
+/obj/structure/flora/pottedplant/flower{
+	pixel_y = 18;
+	pixel_x = -2;
+	layer = 5
+	},
+/obj/structure/flora/tree/fey/small_tree/tree4,
+/turf/simulated/floor/event/grass/grass1,
+/area/strelka/shipbase/deck4/bar)
 "yC" = (
 /obj/structure/sign/deck/fourth{
 	pixel_y = 31
@@ -11015,10 +11027,7 @@
 	pixel_x = -2;
 	layer = 3
 	},
-/obj/structure/flora/pottedplant/minitree{
-	pixel_y = 2;
-	layer = 3.1
-	},
+/obj/structure/flora/tree/fey/small_tree/tree1,
 /turf/simulated/floor/event/grass/grass1,
 /area/strelka/shipbase/deck4/bar)
 "ZC" = (
@@ -31756,8 +31765,8 @@ ph
 Mf
 Mf
 ph
-Zx
-dj
+yA
+tJ
 TE
 uZ
 Et
