@@ -1864,6 +1864,7 @@
 /obj/machinery/door/blast/regular/open{
 	id = "SDFantiboardingphase3"
 	},
+/obj/map_helper/access_helper/airlock/disconnected/sdf,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/miaphus/sdf)
 "iS" = (
@@ -1986,6 +1987,7 @@
 	id = "SDFantiboardingphaseengine"
 	},
 /obj/machinery/door/airlock/hatch,
+/obj/map_helper/access_helper/airlock/disconnected/sdf,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/miaphus/sdf)
 "jx" = (
@@ -2332,13 +2334,7 @@
 /obj/machinery/air_alarm/alarms_hidden/north_mount{
 	req_one_access = null
 	},
-/obj/item/storage/single_use/mre/random,
-/obj/item/storage/single_use/mre/random,
-/obj/item/storage/single_use/mre/random,
-/obj/item/storage/single_use/mre/random,
-/obj/item/storage/single_use/mre/random,
-/obj/item/storage/single_use/mre/random,
-/obj/structure/closet/crate,
+/obj/machinery/cryopod/robot/door/gateway,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/miaphus/sdf)
 "ld" = (
@@ -2763,13 +2759,14 @@
 /obj/machinery/air_alarm/alarms_hidden/north_mount{
 	req_one_access = null
 	},
-/obj/item/gun/projectile/ballistic/automatic/k25/taj,
 /obj/item/material/knife/tacknife/boot,
-/obj/item/ammo_magazine/a9_5mm/k25,
-/obj/item/ammo_magazine/a9_5mm/k25,
 /obj/structure/closet/secure_closet/guncabinet{
 	req_one_access = null
 	},
+/obj/item/gun/projectile/ballistic/automatic/fal/taj,
+/obj/item/ammo_magazine/a45/uzi,
+/obj/item/ammo_magazine/a45/uzi,
+/obj/item/gun/projectile/ballistic/colt/taj,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/miaphus/sdf)
 "no" = (
@@ -4231,6 +4228,11 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
+/obj/structure/closet/crate,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/random,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/miaphus/sdf)
 "vv" = (
@@ -5438,13 +5440,14 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/obj/item/gun/projectile/ballistic/automatic/k25/taj,
 /obj/item/material/knife/tacknife/boot,
-/obj/item/ammo_magazine/a9_5mm/k25,
-/obj/item/ammo_magazine/a9_5mm/k25,
 /obj/structure/closet/secure_closet/guncabinet{
 	req_one_access = null
 	},
+/obj/item/gun/projectile/ballistic/automatic/fal/taj,
+/obj/item/ammo_magazine/a45/uzi,
+/obj/item/ammo_magazine/a45/uzi,
+/obj/item/gun/projectile/ballistic/colt/taj,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/miaphus/sdf)
 "Cd" = (
@@ -6197,6 +6200,7 @@
 /area/sector/miaphus/beach/resort/lockermed)
 "FY" = (
 /obj/machinery/door/airlock/maintenance_hatch,
+/obj/map_helper/access_helper/airlock/disconnected/sdf,
 /turf/simulated/floor/tiled/old_cargo,
 /area/shuttle/miaphus/sdf)
 "Gc" = (
@@ -6834,6 +6838,7 @@
 	dir = 4
 	},
 /obj/map_helper/access_helper/airlock/disconnected/sdf,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/miaphus/sdf)
 "JC" = (
@@ -7208,6 +7213,16 @@
 "LJ" = (
 /turf/simulated/floor/wood/broken,
 /area/sector/miaphus/beach/resort/bunk)
+"LK" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/miaphus/sdf)
 "LO" = (
 /obj/machinery/shower{
 	dir = 4;
@@ -8496,13 +8511,14 @@
 /obj/machinery/camera/network{
 	network = list("SDF")
 	},
-/obj/item/gun/projectile/ballistic/automatic/k25/taj,
 /obj/item/material/knife/tacknife/boot,
-/obj/item/ammo_magazine/a9_5mm/k25,
-/obj/item/ammo_magazine/a9_5mm/k25,
 /obj/structure/closet/secure_closet/guncabinet{
 	req_one_access = null
 	},
+/obj/item/gun/projectile/ballistic/automatic/fal/taj,
+/obj/item/ammo_magazine/a45/uzi,
+/obj/item/ammo_magazine/a45/uzi,
+/obj/item/gun/projectile/ballistic/colt/taj,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/miaphus/sdf)
 "Sl" = (
@@ -9064,13 +9080,14 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/obj/item/gun/projectile/ballistic/automatic/k25/taj,
 /obj/item/material/knife/tacknife/boot,
-/obj/item/ammo_magazine/a9_5mm/k25,
-/obj/item/ammo_magazine/a9_5mm/k25,
 /obj/structure/closet/secure_closet/guncabinet{
 	req_one_access = null
 	},
+/obj/item/gun/projectile/ballistic/automatic/fal/taj,
+/obj/item/ammo_magazine/a45/uzi,
+/obj/item/ammo_magazine/a45/uzi,
+/obj/item/gun/projectile/ballistic/colt/taj,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/miaphus/sdf)
 "Vv" = (
@@ -41285,7 +41302,7 @@ bL
 bL
 bL
 bL
-Cz
+LK
 JA
 bL
 bL
@@ -41867,7 +41884,7 @@ bL
 bL
 bL
 bL
-Cz
+LK
 JA
 bL
 bL
