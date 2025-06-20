@@ -18,10 +18,12 @@
 	/// natural falloff per second, as ratio to keep
 	var/falloff_mult = 0.9975
 
-	/// time we last had non-zero amount
-	var/falloff_last_positive
-	/// is timer registered for falling off of something?
-	var/falloff_timer_active = FALSE
+	/// last time falloff ticked
+	var/falloff_last
+	/// last refresh by add_rust; if it's been too long, we qdel self when we're empty.
+	var/falloff_last_refresh
+	/// is timer registered for falling off of something? if so, this is the id
+	var/falloff_timer_id
 
 /datum/component/eldritch_rust_shielding/Initialize(amount)
 	. = ..()
@@ -31,7 +33,8 @@
 		return COMPONENT_INCOMPATIBLE
 	bound_shieldcall = new(src)
 	src.amount = amount
-	#warn falloff?
+	falloff_last = world.time
+	recreate_falloff_timer()
 
 /datum/component/eldritch_rust_shielding/Destroy()
 	QDEL_NULL(bound_shieldcall)
@@ -53,6 +56,7 @@
 /datum/component/eldritch_rust_shielding/proc/add_rust(amount)
 	. = amount
 	src.amount += amount
+	falloff_last_refresh = world.time
 
 /**
  * @return amount removed
@@ -61,7 +65,19 @@
 	. = min(amount, src.amount)
 	src.amount -= .
 
-	#warn check falloff
+/datum/component/eldritch_rust_shielding/proc/recreate_falloff_timer()
+	if(falloff_timer_active)
+		deltimer(falloff_timer_id)
+		falloff_timer_id = null
+	falloff_timer_id = addtimer(CALLBACK(src, PROC_REF(falloff_exec)), 20 SECONDS)
+
+/datum/component/eldritch_rust_shielding/proc/falloff_exec()
+	var/dt = (world.time - falloff_last) * 0.1
+	amount = max(0, amount * falloff_mult ** dt - falloff_flat * dt)
+	falloff_last = world.time
+
+	if(!amount && world.time - falloff_last_refresh > 10 SECONDS)
+		qdel(src)
 
 /datum/shieldcall/bound/eldritch_rust_shielding_component
 	expected_type = /datum/component/eldritch_rust_shielding
@@ -83,4 +99,4 @@
 /datum/shieldcall/bound/eldritch_rust_shielding_component/handle_throw_impact(atom/defending, shieldcall_returns, fake_attack, datum/thrownthing/thrown)
 
 
-#warn impl all
+#warn impl all; falloff_exec before running.

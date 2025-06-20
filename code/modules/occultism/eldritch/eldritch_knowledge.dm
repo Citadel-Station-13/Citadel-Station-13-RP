@@ -87,10 +87,10 @@
 			continue
 		holder.remove_passive(instance, src)
 	for(var/id in grant_eldritch_recipe_ids)
-		var/datum/crafting_recipe/eldritch_recipe/recipe = GLOB.crafting_recipe_lookup[id]
+		var/datum/crafting_recipe/eldritch_recipe/instance = GLOB.crafting_recipe_lookup[id]
 		if(!instance)
 			continue
-		holder.remove_recipe(recipe, src)
+		holder.remove_recipe(instance, src)
 
 /datum/prototype/eldritch_knowledge/proc/ui_serialize_knowledge()
 	var/serialized_icon
@@ -107,9 +107,9 @@
 		"iconAsBase64" = serialized_icon,
 		"secret" = secret,
 		"hidden" = hidden,
-		"reqKnowledgeIds" = req_eldritch_knowledge_ids,
+		"reqKnowledgeIds" = require_eldritch_knowledge_ids,
 		"giveAbilities" = serialized_abilities,
 		"givePassives" = serialized_passives,
 		"giveRecipes" = serialized_recipes,
-		"giveKnowledgeIds" = grant_eldritch_knowledge_ids,
+		"grantKnowledgeIds" = unlock_eldritch_knowledge_ids,
 	)

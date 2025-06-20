@@ -120,9 +120,9 @@
 	if(!abilities[ability])
 		abilities[ability] = ability_instance = ability.create_ability(src)
 		created_new = TRUE
-	if(knowledge.id in ability_instance.granted_from_knowledge_ids)
+	if(from_knowledge.id in ability_instance.granted_from_knowledge_ids)
 		return TRUE
-	ability_instance.granted_from_knowledge_ids += knowledge.id
+	ability_instance.granted_from_knowledge_ids += from_knowledge.id
 	if(created_new)
 		if(cultist)
 			ability_instance.associate(cultist)
@@ -134,9 +134,9 @@
 	var/datum/ability/eldritch_ability/ability_instance
 	if(!abilities[ability])
 		return TRUE
-	if(!(knowledge.id in ability_instance.granted_from_knowledge_ids))
+	if(!(from_knowledge.id in ability_instance.granted_from_knowledge_ids))
 		return TRUE
-	ability_instance.granted_from_knowledge_ids -= knowledge.id
+	ability_instance.granted_from_knowledge_ids -= from_knowledge.id
 	if(length(ability_instance.granted_from_knowledge_ids))
 		return TRUE
 	if(cultist)
