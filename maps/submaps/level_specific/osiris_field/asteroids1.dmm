@@ -1,0 +1,133 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/floor,
+/area/template_noop)
+"b" = (
+/turf/template_noop,
+/area/template_noop)
+"l" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/template_noop)
+
+(1,1,1) = {"
+a
+a
+b
+b
+b
+a
+a
+b
+b
+"}
+(2,1,1) = {"
+a
+a
+l
+l
+a
+a
+a
+a
+b
+"}
+(3,1,1) = {"
+l
+b
+b
+b
+b
+a
+a
+a
+b
+"}
+(4,1,1) = {"
+l
+b
+a
+l
+l
+b
+a
+b
+b
+"}
+(5,1,1) = {"
+l
+a
+a
+a
+l
+l
+b
+l
+b
+"}
+(6,1,1) = {"
+l
+a
+a
+a
+a
+l
+b
+l
+b
+"}
+(7,1,1) = {"
+a
+a
+a
+a
+a
+a
+l
+l
+a
+"}
+(8,1,1) = {"
+a
+a
+a
+a
+a
+a
+b
+a
+a
+"}
+(9,1,1) = {"
+b
+a
+a
+a
+a
+a
+l
+b
+b
+"}
+(10,1,1) = {"
+b
+b
+l
+a
+a
+l
+l
+l
+b
+"}
+(11,1,1) = {"
+b
+b
+b
+b
+b
+b
+b
+b
+a
+"}
