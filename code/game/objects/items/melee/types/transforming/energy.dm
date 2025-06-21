@@ -5,7 +5,7 @@
 	parry_sfx = 'sound/weapons/blade1.ogg'
 
 /obj/item/melee/transforming/energy
-	armor_penetration = 50
+	damage_tier = 5
 	atom_flags = NOCONDUCT | NOBLOODY
 	active_via_overlay = TRUE
 

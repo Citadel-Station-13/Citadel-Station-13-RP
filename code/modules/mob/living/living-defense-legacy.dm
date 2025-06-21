@@ -1,15 +1,5 @@
-/*
-	run_armor_check(a,b)
-	args
-	a:def_zone		- What part is getting hit, if null will check entire body
-	b:attack_flag	- What type of attack, bullet, laser, energy, melee
-	c:armour_pen	- How much armor to ignore.
-	d:absorb_text	- Custom text to send to the player when the armor fully absorbs an attack.
-	e:soften_text	- Similar to absorb_text, custom text to send to the player when some damage is reduced.
+// this file is here for compile order reasons
 
-	Returns
-	A number between 0 and 100, with higher numbers resulting in less damage taken.
-*/
 /mob/living/proc/run_armor_check(var/def_zone = null, var/attack_flag = "melee", var/armour_pen = 0, var/absorb_text = null, var/soften_text = null)
 	if(GLOB.Debug2)
 		log_world("## DEBUG: legacy_mob_armor() was called.")
@@ -41,41 +31,6 @@
 			log_world("## DEBUG: Armor when [src] was attacked was [armor].")
 	return armor
 
-/*
-	//Old armor code here.
-	if(armour_pen >= 100)
-		return 0 //might as well just skip the processing
-
-	var/armor = legacy_mob_armor(def_zone, attack_flag)
-	var/absorb = 0
-
-	//Roll armour
-	if(prob(armor))
-		absorb += 1
-	if(prob(armor))
-		absorb += 1
-
-	//Roll penetration
-	if(prob(armour_pen))
-		absorb -= 1
-	if(prob(armour_pen))
-		absorb -= 1
-
-	if(absorb >= 2)
-		if(absorb_text)
-			show_message("[absorb_text]")
-		else
-			show_message("<span class='warning'>Your armor absorbs the blow!</span>")
-		return 2
-	if(absorb == 1)
-		if(absorb_text)
-			show_message("[soften_text]",4)
-		else
-			show_message("<span class='warning'>Your armor softens the blow!</span>")
-		return 1
-	return 0
-*/
-
 //Certain pieces of armor actually absorb flat amounts of damage from income attacks
 /mob/living/proc/get_armor_soak(var/def_zone = null, var/attack_flag = "melee", var/armour_pen = 0)
 	var/soaked = legacy_mob_soak(def_zone, attack_flag)
@@ -96,20 +51,12 @@
 	. = ..()
 	if(.)
 		return
-	SEND_SIGNAL(src, COMSIG_MOB_LEGACY_ATTACK_HAND_INTERCEPT, user, e_args)
 	var/mob/living/L = user
 	if(!istype(L))
 		return
 	if(istype(L) && L.a_intent != INTENT_HELP)
 		if(ai_holder) // Using disarm, grab, or harm intent is considered a hostile action to the mob's AI.
 			ai_holder.react_to_attack_polaris(L)
-
-/mob/living/rad_act(strength, datum/radiation_wave/wave)
-	. = ..()
-	if(wave)
-		afflict_radiation(strength * RAD_MOB_ACT_COEFFICIENT - RAD_MOB_ACT_PROTECTION_PER_WAVE_SOURCE, TRUE)
-	else
-		afflict_radiation(strength * RAD_MOB_ACT_COEFFICIENT - RAD_MOB_ACT_PROTECTION_PER_WAVE_SOURCE, TRUE)
 
 /mob/living/emp_act(severity)
 	var/list/L = src.get_equipped_items(TRUE, TRUE)
@@ -154,148 +101,64 @@
 
 	apply_damage(damage, damage_type, def_zone, absorb, soaked)
 
-/mob/living/proc/resolve_item_attack(obj/item/I, mob/living/user, var/target_zone)
-	SEND_SIGNAL(src, COMSIG_MOB_LEGACY_RESOLVE_ITEM_ATTACK, I, user, target_zone)
+// 	return 1
 
-	var/shieldcall_results = atom_shieldcall_handle_item_melee(I, new /datum/event_args/actor/clickchain(user), FALSE, NONE)
-	// todo: clickchain should be checked for damage mult
-	if(shieldcall_results & SHIELDCALL_FLAGS_BLOCK_ATTACK)
-		return
+// TODO: return this, but we don't want this on a human-level switch
+// #warn deal wit hthis
+// /mob/living/carbon/human/standard_weapon_hit_effects(obj/item/I, mob/living/user, var/effective_force, var/blocked, var/soaked, var/hit_zone)
+// 	var/obj/item/organ/external/affecting = get_organ(hit_zone)
+// 	if(!affecting)
+// 		return 0
 
-	return target_zone
+// 	// Handle striking to cripple.
+// 	if(user.a_intent == INTENT_DISARM)
+// 		effective_force *= 0.5 //reduced effective damage_force...
+// 		if(!..(I, user, effective_force, blocked, soaked, hit_zone))
+// 			return 0
 
-//Called when the mob is hit with an item in combat. Returns the blocked result
-/mob/living/proc/hit_with_weapon(obj/item/I, mob/living/user, var/effective_force, var/hit_zone)
-	if(ai_holder)
-		ai_holder.react_to_attack_polaris(user)
+// 		//set the dislocate mult less than the effective force mult so that
+// 		//dislocating limbs on disarm is a bit easier than breaking limbs on harm
+// 		attack_joint(affecting, I, effective_force, 0.75, blocked, soaked) //...but can dislocate joints
 
-	var/soaked = get_armor_soak(hit_zone, "melee")
-	var/blocked = run_armor_check(hit_zone, "melee")
-
-	standard_weapon_hit_effects(I, user, effective_force, blocked, soaked, hit_zone)
-
-	if(I.damage_type == DAMAGE_TYPE_BRUTE && prob(33)) // Added blood for whacking non-humans too
-		var/turf/simulated/location = get_turf(src)
-		if(istype(location)) location.add_blood_floor(src)
-
-	return blocked
-
-//returns 0 if the effects failed to apply for some reason, 1 otherwise.
-/mob/living/proc/standard_weapon_hit_effects(obj/item/I, mob/living/user, var/effective_force, var/blocked, var/soaked, var/hit_zone)
-	if(!effective_force || blocked >= 100)
-		return 0
-	//Apply weapon damage
-	var/weapon_sharp = is_sharp(I)
-	var/weapon_edge = has_edge(I)
-
-	if(legacy_mob_soak(hit_zone, "melee",) - (I.armor_penetration/5) > round(effective_force*0.8)) //soaking a hit turns sharp attacks into blunt ones
-		weapon_sharp = 0
-		weapon_edge = 0
-
-	if(prob(max(legacy_mob_armor(hit_zone, "melee") - I.armor_penetration, 0))) //melee armour provides a chance to turn sharp/edge weapon attacks into blunt ones
-		weapon_sharp = 0
-		weapon_edge = 0
-
-	apply_damage(effective_force, I.damage_type, hit_zone, blocked, soaked, sharp=weapon_sharp, edge=weapon_edge, used_weapon=I)
-
-	return 1
-
-//this proc handles being hit by a thrown atom
-/mob/living/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
-	if(istype(AM, /obj))
-		var/obj/O = AM
-		var/dtype = DAMAGE_TYPE_BRUTE
-		if(isitem(AM))
-			var/obj/item/impacting_item = AM
-			dtype = impacting_item.damage_type
-		var/throw_damage = O.throw_force * TT.get_damage_multiplier(src)
-
-		var/miss_chance = 15
-		var/distance = get_dist(TT.initial_turf, loc)
-		miss_chance = max(5 * (distance - 2), 0)
-
-		if (prob(miss_chance))
-			visible_message("<font color=#4F49AF>\The [O] misses [src] narrowly!</font>")
-			return COMPONENT_THROW_HIT_PIERCE | COMPONENT_THROW_HIT_NEVERMIND
-
-		var/force_pierce = FALSE
-		var/no_attack = FALSE
-
-		var/zone
-		if (istype(TT.thrower, /mob/living))
-			zone = check_zone(TT.target_zone)
-		else
-			zone = ran_zone(BP_TORSO,75)	//Hits a random part of the body, geared towards the chest
-
-		if(zone)
-			// perform shieldcall
-			// todo: reconcile all the way down to /atom, or at least a higher level than /human.
-			var/retval
-			for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
-				retval |= shieldcall.handle_throw_impact(src, TT)
-				if(retval & SHIELDCALL_FLAGS_SHOULD_TERMINATE)
-					break
-			if(retval & SHIELDCALL_FLAGS_SHOULD_PROCESS)
-				if(retval & SHIELDCALL_FLAGS_PIERCE_ATTACK)
-					force_pierce = TRUE
-				if(retval & SHIELDCALL_FLAGS_BLOCK_ATTACK)
-					no_attack = TRUE
-
-		if(no_attack)
-			return force_pierce? COMPONENT_THROW_HIT_PIERCE | COMPONENT_THROW_HIT_NEVERMIND : NONE
-
-		src.visible_message("<font color='red'>[src] has been hit by [O].</font>")
-		var/armor = run_armor_check(null, "melee")
-		var/soaked = get_armor_soak(null, "melee")
-
-
-		apply_damage(throw_damage, dtype, null, armor, soaked, is_sharp(O), has_edge(O), O)
-
-		if(ismob(TT.thrower))
-			var/mob/M = TT.thrower
-			// we log only if one party is a player
-			if(!!client || !!M.client)
-				add_attack_logs(M,src,"Hit by thrown [O.name]")
-			if(ai_holder)
-				ai_holder.react_to_attack_polaris(TT.thrower)
-
+// only left in so we have a context of the math behind embeds/pinning
+// /mob/living/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
 		// Begin BS12 momentum-transfer code.
-		var/mass = 1.5
-		if(istype(O, /obj/item))
-			var/obj/item/I = O
-			mass = I.w_class/THROWNOBJ_KNOCKBACK_DIVISOR
-		var/momentum = TT.speed * mass
+		// var/mass = 1.5
+		// if(istype(O, /obj/item))
+		// 	var/obj/item/I = O
+		// 	mass = I.w_class/THROWNOBJ_KNOCKBACK_DIVISOR
+		// var/momentum = TT.speed * mass
 
-		if(TT.initial_turf && momentum >= THROWNOBJ_KNOCKBACK_SPEED)
-			var/dir = get_dir(TT.initial_turf, src)
+		// if(TT.initial_turf && momentum >= THROWNOBJ_KNOCKBACK_SPEED)
+		// 	var/dir = get_dir(TT.initial_turf, src)
 
-			visible_message("<font color='red'>[src] staggers under the impact!</font>","<font color='red'>You stagger under the impact!</font>")
-			src.throw_at_old(get_edge_target_turf(src,dir), 1, momentum)
+		// 	src.throw_at_old(get_edge_target_turf(src,dir), 1, momentum)
 
-			if(!O || !src)
-				return
+		// 	if(!O || !src)
+		// 		return
 
-			if(is_sharp(O)) //Projectile is suitable for pinning.
-				if(soaked >= round(throw_damage*0.8))
-					return
+		// 	if(is_sharp(O)) //Projectile is suitable for pinning.
+		// 		if(soaked >= round(throw_damage*0.8))
+		// 			return
 
+				// TODO: rework embeds
 				//Handles embedding for non-humans and simple_mobs.
-				embed(O)
+				// embed(O)
 
-				var/turf/T = near_wall(dir,2)
+				// var/turf/T = near_wall(dir,2)
 
-				if(T)
-					src.forceMove(T)
-					visible_message("<span class='warning'>[src] is pinned to the wall by [O]!</span>","<span class='warning'>You are pinned to the wall by [O]!</span>")
-					src.anchored = 1
-					src.pinned += O
+				// TODO: rework pinned
+				// if(T)
+				// 	src.forceMove(T)
+				// 	visible_message("<span class='warning'>[src] is pinned to the wall by [O]!</span>","<span class='warning'>You are pinned to the wall by [O]!</span>")
+				// 	src.anchored = 1
+				// 	src.pinned += O
 
-		return force_pierce? COMPONENT_THROW_HIT_PIERCE | COMPONENT_THROW_HIT_NEVERMIND : NONE
 
-/mob/living/proc/embed(var/obj/O, var/def_zone=null)
-	O.loc = src
-	src.embedded += O
-	add_verb(src, /mob/proc/yank_out_object)
+// /mob/living/proc/embed(var/obj/O, var/def_zone=null)
+// 	O.loc = src
+// 	src.embedded += O
+// 	add_verb(src, /mob/proc/yank_out_object)
 
 //This is called when the mob is thrown into a dense turf
 /mob/living/proc/turf_collision(var/turf/T, var/speed)
@@ -448,7 +311,9 @@
 
 // todo: rework
 // Returns a number to determine if something is harder or easier to hit than normal.
-/mob/living/proc/get_evasion()
+/mob/proc/get_evasion()
+	return 0
+/mob/living/get_evasion()
 	var/result = evasion // First we get the 'base' evasion.  Generally this is zero.
 	for(var/datum/modifier/M in modifiers)
 		if(!isnull(M.evasion))
@@ -456,5 +321,5 @@
 	return result
 
 // todo: rework
-/mob/living/proc/get_accuracy_penalty()
+/mob/proc/get_accuracy_penalty()
 	return 0

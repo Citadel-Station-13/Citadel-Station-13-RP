@@ -5,41 +5,39 @@
 	item_state = "slimebaton"
 	slot_flags = SLOT_BELT
 	damage_force = 9
-	lightcolor = "#33CCFF"
+	active_color = "#33CCFF"
 	origin_tech = list(TECH_COMBAT = 2, TECH_BIO = 2)
-	agonyforce = 10	//It's not supposed to be great at stunning human beings.
-	hitcost = 48	//Less zap for less cost
 	description_info = "This baton will stun a slime or other slime-based lifeform for about five seconds, if hit with it while on."
+	charge_cost = /obj/item/cell/device::maxcharge / 10
+	stun_power = 10
 
-/obj/item/melee/baton/slime/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	var/mob/living/L = target
-	if(istype(L) && status) // Is it on?
-		if(L.mob_class & MOB_CLASS_SLIME) // Are they some kind of slime? (Prommies might pass this check someday).
-			if(isslime(L))
-				var/mob/living/simple_mob/slime/S = L
-				S.slimebatoned(user, 5) // Feral and xenobio slimes will react differently to this.
+	var/extra_slime_stun_power = 40
+	var/extra_slime_stun_flags = ELECTROCUTE_ACT_FLAG_SILENT | ELECTROCUTE_ACT_FLAG_DISTRIBUTE
+
+/obj/item/melee/baton/slime/apply_powered_melee_impact(atom/target, mob/attacker, datum/event_args/actor/actor, use_target_zone, efficiency)
+	..()
+	if(istype(target, /mob/living))
+		var/mob/living/living_target = target
+		var/mob/living/carbon/human/maybe_human = target
+		if((living_target.mob_class & MOB_CLASS_SLIME) || (istype(maybe_human) && maybe_human.species?.get_species_id() == SPECIES_ID_PROMETHEAN))
+			if(istype(living_target, /mob/living/simple_mob/slime))
+				var/mob/living/simple_mob/slime/slime_target = living_target
+				slime_target.slimebatoned(attacker, extra_slime_stun_power * 0.1)
 			else
-				L.afflict_paralyze(20 * 5)
+				living_target.electrocute(
+					stun_power = extra_slime_stun_power,
+					source = src,
+					hit_zone = use_target_zone || BP_TORSO,
+					flags = extra_slime_stun_flags,
+				)
 
-		// Now for prommies.
-		if(ishuman(L))
-			var/mob/living/carbon/human/H = L
-			if(H.species && H.species.get_species_id() == SPECIES_ID_PROMETHEAN)
-				var/agony_to_apply = 60 - agonyforce
-				H.apply_damage(agony_to_apply, DAMAGE_TYPE_HALLOSS)
-
-	return ..() // do normal effects too
-
-/obj/item/melee/baton/slime/loaded/Initialize(mapload)
-	bcell = new/obj/item/cell/device(src)
-	update_icon()
-	return ..()
-
+/obj/item/melee/baton/slime/loaded
+	cell_type = /obj/item/cell/device
 
 // Research borg's version
 /obj/item/melee/baton/slime/robot
-	hitcost = 200
-	use_external_power = TRUE
+	charge_cost = 200
+	legacy_use_external_power = TRUE
 
 /datum/firemode/energy/xeno_taser
 	name = "stun"
@@ -83,7 +81,7 @@
 
 /obj/projectile/beam/stun/xeno
 	icon_state = "omni"
-	agony = 4
+	damage_inflict_agony = 4
 	nodamage = TRUE
 
 	legacy_muzzle_type = /obj/effect/projectile/muzzle/laser_omni
@@ -100,12 +98,12 @@
 		if(L.mob_class & MOB_CLASS_SLIME)
 			if(isslime(L))
 				var/mob/living/simple_mob/slime/S = L
-				S.slimebatoned(firer, round(agony/2))
+				S.slimebatoned(firer, round(damage_inflict_agony/2))
 			else
-				L.afflict_paralyze(20 * round(agony/2))
+				L.afflict_paralyze(20 * round(damage_inflict_agony/2))
 
 		if(ishuman(L))
 			var/mob/living/carbon/human/H = L
 			if(H.species && H.species.get_species_id() == SPECIES_ID_PROMETHEAN)
-				if(agony == initial(agony)) // ??????
-					agony = round((14 * agony) - agony) //60-4 = 56, 56 / 4 = 14. Prior was flat 60 - agony of the beam to equate to 60.
+				if(damage_inflict_agony == initial(damage_inflict_agony)) // ??????
+					damage_inflict_agony = round((14 * damage_inflict_agony) - damage_inflict_agony) //60-4 = 56, 56 / 4 = 14. Prior was flat 60 - agony of the beam to equate to 60.

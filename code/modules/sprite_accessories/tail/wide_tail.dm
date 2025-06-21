@@ -27,6 +27,7 @@
 
 /datum/sprite_accessory/tail/wide/largeshark/stripes2
 	name = "Large Shark (striped, underbelly)"
+	id = "large_shark_stripes_underbelly"
 	extra_overlay = "large_shark_underbelly"
 	extra_overlay2 = "large_shark_stripes_underbelly"
 

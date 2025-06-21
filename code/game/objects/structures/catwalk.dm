@@ -69,17 +69,6 @@
 
 	icon_state = "catwalk[connectdir]-[diagonalconnect]"
 
-
-/obj/structure/catwalk/legacy_ex_act(severity)
-	switch(severity)
-		if(1.0)
-			qdel(src)
-		if(2.0)
-			qdel(src)
-		if(3.0)
-			qdel(src)
-	return
-
 /obj/structure/catwalk/attackby(obj/item/C as obj, mob/user as mob)
 	if(istype(C, /obj/item/weldingtool))
 		var/obj/item/weldingtool/WT = C
@@ -134,18 +123,9 @@
 	. = ..()
 	activate()
 
-/obj/effect/catwalk_plated/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
-	attack_generic()
-
-/obj/effect/catwalk_plated/attack_ghost()
-	. = ..()
-	attack_generic()
-
-/obj/effect/catwalk_plated/attack_generic()
-	activate()
-
 /obj/effect/catwalk_plated/proc/activate()
-	if(activated) return
+	if(activated)
+		return
 
 	if(locate(/obj/structure/catwalk) in loc)
 		CRASH("Frame spawner: A catwalk already exists at [audit_loc()]. Please remove the duplicate catwalk.")

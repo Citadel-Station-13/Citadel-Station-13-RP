@@ -3,8 +3,7 @@
 	icon_state = "energy"
 	damage_force = 0
 	damage_type = DAMAGE_TYPE_OXY
-	nodamage = 1
-	armor_penetration = 100
+	nodamage = TRUE
 	var/magic = TRUE
 	var/checks_antimagic = TRUE
 
@@ -29,7 +28,7 @@
 	icon_state = "ion"
 	damage_force = 0
 	damage_type = DAMAGE_TYPE_OXY
-	nodamage = 1
+	nodamage = TRUE
 
 /obj/projectile/magic/resurrection/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
@@ -329,8 +328,9 @@
 	icon_state = "arcane_barrage"
 	damage_force = 20
 	damage_type = DAMAGE_TYPE_BURN
-	nodamage = 0
-	armor_penetration = 0
+	damage_tier = 7
+	damage_flag = ARMOR_ENERGY
+	nodamage = FALSE
 	magic = TRUE
 	impact_sound = 'sound/weapons/barragespellhit.ogg'
 
@@ -578,7 +578,7 @@
 /obj/projectile/magic/spellcard/book/shock
 	damage_force = 0
 	stutter = 5
-	agony = 20
+	damage_inflict_agony = 20
 	stun = 10
 
 /* //Still need help on healing procs.
