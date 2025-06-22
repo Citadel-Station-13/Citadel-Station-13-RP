@@ -5085,6 +5085,12 @@
 /obj/structure/bed/pod,
 /obj/structure/curtain/open/bed,
 /obj/structure/closet/walllocker_double/east,
+/obj/item/clothing/under/tajaran/hadiifolly/soldier,
+/obj/item/clothing/head/utility/marine/tan,
+/obj/item/clothing/head/beret/tajaran{
+	name = "hadiist SDF beret";
+	desc = "A green beret issued to hadiist SDF soldiers. Seems to be surplus gear."
+	},
 /turf/simulated/floor/lino,
 /area/shuttle/miaphus/sdf)
 "Ce" = (
@@ -6248,6 +6254,12 @@
 /obj/structure/bed/pod,
 /obj/structure/curtain/open/bed,
 /obj/structure/closet/walllocker_double/north,
+/obj/item/clothing/under/tajaran/hadiifolly/soldier,
+/obj/item/clothing/head/utility/marine/tan,
+/obj/item/clothing/head/beret/tajaran{
+	name = "hadiist SDF beret";
+	desc = "A green beret issued to hadiist SDF soldiers. Seems to be surplus gear."
+	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/miaphus/sdf)
 "Iu" = (
@@ -6564,6 +6576,13 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/item/clothing/under/tajaran/hadiifolly/officer,
+/obj/item/clothing/under/tajaran/hadiifolly/officer,
+/obj/item/clothing/under/tajaran/hadiifolly/officer,
+/obj/item/clothing/under/tajaran/hadiifolly/soldier,
+/obj/item/clothing/under/tajaran/hadiifolly/soldier,
+/obj/item/clothing/under/tajaran/hadiifolly/soldier,
+/obj/item/clothing/under/tajaran/hadiifolly/soldier,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/miaphus/sdf)
 "KG" = (
@@ -6991,6 +7010,12 @@
 /obj/structure/curtain/open/bed,
 /obj/structure/curtain/open/bed,
 /obj/structure/closet/walllocker_double/south,
+/obj/item/clothing/under/tajaran/hadiifolly/soldier,
+/obj/item/clothing/head/utility/marine/tan,
+/obj/item/clothing/head/beret/tajaran{
+	name = "hadiist SDF beret";
+	desc = "A green beret issued to hadiist SDF soldiers. Seems to be surplus gear."
+	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/miaphus/sdf)
 "Nf" = (
@@ -7896,7 +7921,9 @@
 /area/sector/miaphus/beach/desalinator)
 "So" = (
 /obj/effect/floor_decal/borderfloorblack/shifted,
-/obj/machinery/door/window/brigdoor/westleft,
+/obj/machinery/door/window/brigdoor/westleft{
+	req_access = list(155)
+	},
 /obj/machinery/flasher{
 	pixel_y = 23;
 	id = "sdfflash"
@@ -9068,6 +9095,10 @@
 /obj/random/tank,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/station)
+"Zh" = (
+/obj/machinery/shipsensors,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/miaphus/sdf)
 "Zj" = (
 /obj/machinery/light/small/emergency{
 	dir = 8
@@ -40041,7 +40072,7 @@ bq
 ce
 ce
 aa
-bL
+Zh
 bL
 bL
 bL
