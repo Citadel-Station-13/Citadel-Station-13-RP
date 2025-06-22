@@ -20,20 +20,36 @@
 	if(isliving(examine.examiner))
 		var/mob/living/vr_casted_living = examine.examiner
 		if(vr_casted_living.get_effective_size() - get_effective_size() >= 0.5)
-			LAZYADD(examine.noticed_descriptors, SPAN_NOTICE("They are small enough that you could easily pick them up!"))
+			LAZYADD(output.noticed_descriptors, SPAN_NOTICE("They are small enough that you could easily pick them up!"))
 		if(vr_casted_living.get_effective_size() - get_effective_size() >= 0.75)
-			LAZYADD(examine.noticed_descriptors, SPAN_WARNING("They are small enough that you could easily trample them!"))
+			LAZYADD(output.noticed_descriptors, SPAN_WARNING("They are small enough that you could easily trample them!"))
 	if(nif?.examine_msg)
-		LAZYADD(examine.worn_descriptors, SPAN_NOTICE("[nif.examine_msg]"))
+		LAZYADD(output.worn_descriptors, SPAN_NOTICE("[nif.examine_msg]"))
 	if(revive_ready == REVIVING_NOW || revive_ready == REVIVING_DONE)
 		if(stat == DEAD)
-			LAZYADD(examine.visible_descriptors, SPAN_WARNING("[gender_datum_visible.His] body is twitching subtly."))
+			LAZYADD(output.visible_descriptors, SPAN_WARNING("[gender_datum_visible.His] body is twitching subtly."))
 		else
-			LAZYADD(examine.visible_descriptors, SPAN_WARNING("[gender_datum_visible.He] appears to be in some sort of torpor."))
+			LAZYADD(output.visible_descriptors, SPAN_WARNING("[gender_datum_visible.He] appears to be in some sort of torpor."))
 	if(feral)
-		LAZYADD(examine.visible_descriptors, SPAN_WARNING("[gender_datum_visible.He] has a crazed, wild look in [gender_datum_visible.his] eyes."))
+		LAZYADD(output.visible_descriptors, SPAN_WARNING("[gender_datum_visible.He] has a crazed, wild look in [gender_datum_visible.his] eyes."))
 	if(bitten)
-		LAZYADD(examine.visible_descriptors, SPAN_WARNING("[gender_datum_visible.He] [gender_datum_visible ? "appear" : "appears"] to have two fresh puncture marks on [gender_datum_visible.his] neck."))
+		LAZYADD(output.visible_descriptors, SPAN_WARNING("[gender_datum_visible.He] [gender_datum_visible ? "appear" : "appears"] to have two fresh puncture marks on [gender_datum_visible.his] neck."))
+	if(show_pudge())
+		for(var/obj/belly/belly in vore_organs)
+			var/maybe_belly_text = belly.get_examine_msg()
+			if(maybe_belly_text)
+				LAZYADD(output.visible_descriptors, maybe_belly_text)
 	//! end
+
+	if(client && (client.is_afk() > 10 MINUTES))
+		LAZYADD(output.ooc_descriptors, SPAN_INFO("\[Inactive for [round(client.inactivity / (1 MINUTES), 1)] minutes.\]"))
+	else if(ssd_visible && !client && stat != DEAD)
+		// todo: this logic is meh
+		var/maybe_ssd_message = species.get_ssd(src)
+		if(maybe_ssd_message)
+			LAZYADD(output.ooc_descriptors, SPAN_DEADSAY("[gender_datum_visible.He] [gender_datum_visible.is] [maybe_ssd_message]. [ckey ? "" : "It doesn't look like [gender_datum_visible.he] [gender_datum_visible.is] waking up anytime soon."]"))
+		if(ckey && disconnect_time)
+			LAZYADD(output.ooc_descriptors, SPAN_INFO("\[Disconnected/ghosted [round((REALTIMEOFDAY - disconnect_time) / (1 MINUTES), 1)] minutes ago. \]"))
+
 
 	return output

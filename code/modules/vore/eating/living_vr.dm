@@ -250,20 +250,6 @@
 		B.release_all_contents(include_absorbed, silent)
 
 //
-// Returns examine messages for bellies
-//
-/mob/living/proc/examine_bellies()
-	if(!show_pudge()) //Some clothing or equipment can hide this.
-		return ""
-
-	var/message = ""
-	for (var/belly in vore_organs)
-		var/obj/belly/B = belly
-		message += B.get_examine_msg()
-
-	return message
-
-//
 // Whether or not people can see our belly messages
 //
 /mob/living/proc/show_pudge()
@@ -719,13 +705,6 @@
 	set category = "OOC"
 	set desc = "Switch sharp/fuzzy scaling for current mob."
 	appearance_flags ^= PIXEL_SCALE
-
-#warn deal with
-/mob/living/examine(mob/user, dist)
-	. = ..()
-
-	if(print_flavor_text())
-		. += "\n[print_flavor_text()]"
 
 /mob/living/Topic(href, href_list)	//Can't find any instances of Topic() being overridden by /mob/living in polaris' base code, even though /mob/living/carbon/human's Topic() has a ..() call
 	if(href_list["vore_prefs"])

@@ -14,4 +14,6 @@
 	if(!examine.legacy_examine_no_touch)
 		pass()
 
+	LAZYADD(output.ooc_descriptors, SPAN_BOLDNOTICE(Character Profile: <a href='?src=\ref[src];character_profile=1'>\[View\]</a>))
+
 	return output

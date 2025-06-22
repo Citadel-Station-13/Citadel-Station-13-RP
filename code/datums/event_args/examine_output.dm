@@ -27,13 +27,21 @@
 	/// * As raw HTML lines
 	/// * Lazy list
 	var/list/noticed_descriptors = list()
+	/// interaction descriptors
+	/// * For things like counting their pulse automatically, etc
+	/// * Can contain links, and is considered interactive.
+	/// * As raw HTML lines
+	/// * Lazy list
+	var/list/interacted_descriptors = list()
 	/// analysis descriptors
-	/// * For things like HUD, etc
+	/// * For things like HUD, flavor text, etc
+	/// * Can contain links, and is considered interactive.
 	/// * As raw HTML lines
 	/// * Lazy list
 	var/list/analysis_descriptors = list()
 	/// analysis descriptors
 	/// * For things like character directory, etc
+	/// * Can contain links, and is considered interactive.
 	/// * As raw HTML lines
 	/// * Lazy list
 	var/list/ooc_descriptors = list()

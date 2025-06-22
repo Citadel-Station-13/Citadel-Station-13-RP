@@ -72,10 +72,15 @@
 				output.worn_descriptors += html
 		for(var/obj/item/held_item as anything in inventory?.get_held_items())
 			#warn impl
-			var/encoded = held_item.examine_encode_as_worn(examine, examine_for, examine_from)
+			var/encoded = held_item.examine_encoding_as_worn(examine, examine_for, examine_from)
 
 
 	if(buckled)
 		LAZYADD(output.required_appearances, buckled.appearance)
 		LAZYADD(output.visible_descriptors, SPAN_WARNING("<img src='\ref[buckled.appearance]'> [gender_datum_visible.He] [gender_datum_visible.is] buckled to [FORMAT_TEXT_LOOKITEM(buckled)]."))
+
+	var/maybe_flavor_text = print_flavor_text()
+	if(maybe_flavor_text)
+		LAZYADD(output.ooc_descriptors, maybe_flavor_text)
+
 	return output

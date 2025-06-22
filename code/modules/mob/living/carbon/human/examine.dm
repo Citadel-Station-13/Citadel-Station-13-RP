@@ -120,40 +120,6 @@
 		if(o && o.splinted && o.splinted.loc == o)
 			. += SPAN_WARNING("[T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(o.splinted)] on [T.his] [o.name]!")
 
-	//* I hate this. Though it's better than what it was before. -Zandario
-	var/message = FALSE
-	var/weight_examine = round(weight)
-	if(show_pudge()) //Some clothing or equipment can hide this.
-		var/t_heavy = "heavy"
-		if(gender == MALE)
-			t_heavy = "bulky"
-		else if(gender == FEMALE)
-			t_heavy = "curvy"
-
-		switch(weight_examine)
-			if(0 to 74)
-				message = SPAN_WARNING("[T.He] [T.is] terribly lithe and frail!")
-			if(75 to 99)
-				message = SPAN_INFO("[T.He] [T.has] a very slender frame.")
-			if(100 to 124)
-				message = SPAN_INFO("[T.He] [T.has] a lightweight, athletic build.")
-			if(125 to 174)
-				message = SPAN_INFO("[T.He] [T.has] a healthy, average body.")
-			if(175 to 224)
-				message = SPAN_INFO("[T.He] [T.has] a thick, [t_heavy] physique.")
-			if(225 to 274)
-				message = SPAN_INFO("[T.He] [T.has] a plush, chubby figure.")
-			if(275 to 325)
-				message = SPAN_INFO("[T.He] [T.has] an especially plump body with a round potbelly and large hips.")
-			if(325 to 374)
-				message = SPAN_INFO("[T.He] [T.has] a very fat frame with a bulging potbelly, and very wide hips.")
-			if(375 to 474)
-				message = SPAN_WARNING("[T.He] [T.is] incredibly obese. [T.His] massive potbelly sags over [T.his] waistline while [T.he] would likely require two chairs to sit down comfortably!")
-			else
-				message = SPAN_DANGER("[T.He] [T.is] so morbidly obese, you wonder how [T.he] can even stand, let alone waddle around the station.")
-		. += message
-	//* End of the bs
-
 	// Pulse Checking.
 	if(src.stat)
 		. += SPAN_WARNING("[T.He] [T.is]n't responding to anything around [T.him] and seems to be asleep.")
@@ -167,20 +133,6 @@
 					to_chat(user, SPAN_DEADSAY("[T.He] [T.has] no pulse[src.client ? "" : " and [T.his] soul has departed"]..."))
 				else
 					to_chat(user, SPAN_DEADSAY("[T.He] [T.has] a pulse!"))
-
-
-	var/ssd_msg = species.get_ssd(src)
-	if(ssd_msg && (!should_have_organ("brain") || has_brain()) && stat != DEAD)
-		if(istype(src, /mob/living/carbon/human/dummy)) // mannequins arent asleep
-			return
-		if(!key)
-			. += SPAN_DEADSAY("[T.He] [T.is] [ssd_msg]. It doesn't look like [T.he] [T.is] waking up anytime soon.")
-		else if(!client)
-			. += SPAN_DEADSAY("[T.He] [T.is] [ssd_msg].")
-		if(client && ((client.inactivity / 10) / 60 > 10)) //10 Minutes
-			. += SPAN_INFO("\[Inactive for [round((client.inactivity/10)/60)] minutes\]")
-		else if(disconnect_time)
-			. += SPAN_INFO("\[Disconnected/ghosted [round(((world.realtime - disconnect_time)/10)/60)] minutes ago\]")
 
 	var/list/wound_flavor_text = list()
 	var/list/is_bleeding = list()
@@ -247,59 +199,11 @@
 	if(digitalcamo)
 		. += SPAN_WARNING("[T.He] [T.is] repulsively uncanny!")
 
-	if(hasHUD(user,"security"))
-		var/perpname = name
-		var/criminal = "None"
-
-		if(wear_id)
-			if(istype(wear_id, /obj/item/card/id))
-				var/obj/item/card/id/I = wear_id
-				perpname = I.registered_name
-			else if(istype(wear_id, /obj/item/pda))
-				var/obj/item/pda/P = wear_id
-				perpname = P.owner
-
-		for (var/datum/data/record/R in data_core.security)
-			if(R.fields["name"] == perpname)
-				criminal = R.fields["criminal"]
-
-		. += SPAN_BOLDNOTICE("Criminal status: <a href='?src=\ref[src];criminal=1'>\[[criminal]\]</a>")
-		. += SPAN_BOLDNOTICE("Security records: <a href='?src=\ref[src];secrecord=`'>\[View\]</a>  <a href='?src=\ref[src];secrecordadd=`'>\[Add comment\]</a>")
-
-	if(hasHUD(user,"medical"))
-		var/perpname = name
-		var/medical = "None"
-
-		if(wear_id)
-			if(istype(wear_id, /obj/item/card/id))
-				var/obj/item/card/id/I = wear_id
-				perpname = I.registered_name
-			else if(istype(wear_id, /obj/item/pda))
-				var/obj/item/pda/P = wear_id
-				perpname = P.owner
-
-		for (var/datum/data/record/R in data_core.medical)
-			if (R.fields["name"] == perpname)
-				medical = R.fields["p_stat"]
-
-		. += SPAN_BOLDNOTICE("Physical status: <a href='?src=\ref[src];medical=1'>\[[medical]\]</a>")
-		. += SPAN_BOLDNOTICE("Medical records: <a href='?src=\ref[src];medrecord=`'>\[View\]</a> <a href='?src=\ref[src];medrecordadd=`'>\[Add comment\]</a>")
-
-	if(hasHUD(user,"best"))
-		. += SPAN_BOLDNOTICE("Employment records: <a href='?src=\ref[src];emprecord=`'>\[View\]</a>")
-
-	if(print_flavor_text())
-		. += "[print_flavor_text()]"
-
 	. += applying_pressure
 
 	var/show_descs = show_descriptors_to(user)
 	if(show_descs)
 		. += SPAN_NOTICE("[jointext(show_descs, "\n")]")
-
-	// send signal last so everything else prioritizes above
-	. += SPAN_BOLDNOTICE("Character Profile: <a href='?src=\ref[src];character_profile=1'>\[View\]</a>")
-	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .) //This also handles flavor texts now
 
 //Helper procedure. Called by /mob/living/carbon/human/examine() and /mob/living/carbon/human/Topic() to determine HUD access to security and medical records.
 /proc/hasHUD(mob/M as mob, hudtype)
