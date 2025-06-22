@@ -33,10 +33,10 @@
 
 	var/effective_hud_name = name
 	var/obj/item/in_id_slot = inventory.get_slot_single(/datum/inventory_slot/inventory/id::id)
-	if(istype(maybe_id, /obj/item/card/id))
+	if(istype(in_id_slot, /obj/item/card/id))
 		var/obj/item/card/id/casted_id = in_id_slot
 		effective_hud_name = casted_id.registered_name
-	else if(istype(maybe_id, /obj/item/pda))
+	else if(istype(in_id_slot, /obj/item/pda))
 		var/obj/item/pda/casted_pda = in_id_slot
 		effective_hud_name = casted_pda.owner
 
@@ -45,8 +45,8 @@
 		for(var/datum/data/record/record in data_core.medical)
 			if(record.fields["name"] != effective_hud_name)
 				continue
-			security_status = record.fields["p_stat"]
-		LAZYADD(output.analysis_descriptors, "Physical status: <a href='?src=\ref[src];medical=1'>\[[medical]\]</a>")
+			medical_status = record.fields["p_stat"]
+		LAZYADD(output.analysis_descriptors, "Physical status: <a href='?src=\ref[src];medical=1'>\[[medical_status]\]</a>")
 		LAZYADD(output.analysis_descriptors, "Medical records: <a href='?src=\ref[src];medrecord=`'>\[View\]</a> <a href='?src=\ref[src];medrecordadd=`'>\[Add comment\]</a>")
 
 	if(hasHUD(examine.seer, "security"))
@@ -55,10 +55,10 @@
 			if(record.fields["name"] != effective_hud_name)
 				continue
 			security_status = record.fields["criminal"]
-		LAZYADD(output.analysis_descriptors, "Criminal status: <a href='?src=\ref[src];criminal=1'>\[[criminal]\]</a>")
+		LAZYADD(output.analysis_descriptors, "Criminal status: <a href='?src=\ref[src];criminal=1'>\[[security_status]\]</a>")
 		LAZYADD(output.analysis_descriptors, "Security records: <a href='?src=\ref[src];secrecord=`'>\[View\]</a>  <a href='?src=\ref[src];secrecordadd=`'>\[Add comment\]</a>")
 
-	if(hasHUD(examiner.seer, "best"))
+	if(hasHUD(examine.seer, "best"))
 		LAZYADD(output.analysis_descriptors, SPAN_BOLDNOTICE("Employment records: <a href='?src=\ref[src];emprecord=`'>\[View\]</a>"))
 
 	//! dumb vorestation weight system
@@ -73,25 +73,25 @@
 
 		switch(weight_examine)
 			if(0 to 74)
-				weight_message = SPAN_WARNING("[T.He] [T.is] terribly lithe and frail!")
+				weight_message = SPAN_WARNING("[gender_datum_visible.He] [gender_datum_visible.is] terribly lithe and frail!")
 			if(75 to 99)
-				weight_message = SPAN_INFO("[T.He] [T.has] a very slender frame.")
+				weight_message = SPAN_INFO("[gender_datum_visible.He] [gender_datum_visible.has] a very slender frame.")
 			if(100 to 124)
-				weight_message = SPAN_INFO("[T.He] [T.has] a lightweight, athletic build.")
+				weight_message = SPAN_INFO("[gender_datum_visible.He] [gender_datum_visible.has] a lightweight, athletic build.")
 			if(125 to 174)
-				weight_message = SPAN_INFO("[T.He] [T.has] a healthy, average body.")
+				weight_message = SPAN_INFO("[gender_datum_visible.He] [gender_datum_visible.has] a healthy, average body.")
 			if(175 to 224)
-				weight_message = SPAN_INFO("[T.He] [T.has] a thick, [weight_heavy_verb] physique.")
+				weight_message = SPAN_INFO("[gender_datum_visible.He] [gender_datum_visible.has] a thick, [weight_heavy_verb] physique.")
 			if(225 to 274)
-				weight_message = SPAN_INFO("[T.He] [T.has] a plush, chubby figure.")
+				weight_message = SPAN_INFO("[gender_datum_visible.He] [gender_datum_visible.has] a plush, chubby figure.")
 			if(275 to 325)
-				weight_message = SPAN_INFO("[T.He] [T.has] an especially plump body with a round potbelly and large hips.")
+				weight_message = SPAN_INFO("[gender_datum_visible.He] [gender_datum_visible.has] an especially plump body with a round potbelly and large hips.")
 			if(325 to 374)
-				weight_message = SPAN_INFO("[T.He] [T.has] a very fat frame with a bulging potbelly, and very wide hips.")
+				weight_message = SPAN_INFO("[gender_datum_visible.He] [gender_datum_visible.has] a very fat frame with a bulging potbelly, and very wide hips.")
 			if(375 to 474)
-				weight_message = SPAN_WARNING("[T.He] [T.is] incredibly obese. [T.His] massive potbelly sags over [T.his] waistline while [T.he] would likely require two chairs to sit down comfortably!")
+				weight_message = SPAN_WARNING("[gender_datum_visible.He] [gender_datum_visible.is] incredibly obese. [gender_datum_visible.His] massive potbelly sags over [gender_datum_visible.his] waistline while [gender_datum_visible.he] would likely require two chairs to sit down comfortably!")
 			else
-				weight_message = SPAN_DANGER("[T.He] [T.is] so morbidly obese, you wonder how [T.he] can even stand, let alone waddle around the station.")
+				weight_message = SPAN_DANGER("[gender_datum_visible.He] [gender_datum_visible.is] so morbidly obese, you wonder how [gender_datum_visible.he] can even stand, let alone waddle around the station.")
 
 		if(weight_mes)
 			LAZYADD(output.visible_descriptors, weight_message)
