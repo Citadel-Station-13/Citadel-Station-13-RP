@@ -66,7 +66,7 @@
 	src.amount -= .
 
 /datum/component/eldritch_rust_shielding/proc/recreate_falloff_timer()
-	if(falloff_timer_active)
+	if(falloff_timer_id)
 		deltimer(falloff_timer_id)
 		falloff_timer_id = null
 	falloff_timer_id = addtimer(CALLBACK(src, PROC_REF(falloff_exec)), 20 SECONDS)

@@ -23,8 +23,6 @@
 			LAZYADD(output.noticed_descriptors, SPAN_NOTICE("They are small enough that you could easily pick them up!"))
 		if(vr_casted_living.get_effective_size() - get_effective_size() >= 0.75)
 			LAZYADD(output.noticed_descriptors, SPAN_WARNING("They are small enough that you could easily trample them!"))
-	if(nif?.examine_msg)
-		LAZYADD(output.worn_descriptors, SPAN_NOTICE("[nif.examine_msg]"))
 	if(revive_ready == REVIVING_NOW || revive_ready == REVIVING_DONE)
 		if(stat == DEAD)
 			LAZYADD(output.visible_descriptors, SPAN_WARNING("[gender_datum_visible.His] body is twitching subtly."))

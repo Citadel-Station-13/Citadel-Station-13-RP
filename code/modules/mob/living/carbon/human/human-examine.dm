@@ -12,8 +12,12 @@
 	var/datum/event_args/examine_output/output = ..()
 
 	if(!examine.legacy_examine_no_touch)
+		#warn pulse?
 		pass()
 
-	LAZYADD(output.ooc_descriptors, SPAN_BOLDNOTICE(Character Profile: <a href='?src=\ref[src];character_profile=1'>\[View\]</a>))
+	if(nif?.examine_msg)
+		LAZYADD(output.worn_descriptors, SPAN_NOTICE("[nif.examine_msg]"))
+
+	LAZYADD(output.ooc_descriptors, SPAN_BOLDNOTICE("Character Profile: <a href='?src=\ref[src];character_profile=1'>\[View\]</a>"))
 
 	return output
