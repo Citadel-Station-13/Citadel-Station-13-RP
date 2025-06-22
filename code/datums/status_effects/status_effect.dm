@@ -185,9 +185,6 @@
 		if(NAMEOF(src, duration))
 			rebuild_decay_timer()
 
-/datum/status_effect/proc/on_examine(list/examine_list)
-	return
-
 //? Mob procs
 
 /**

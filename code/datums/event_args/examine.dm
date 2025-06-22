@@ -19,6 +19,7 @@
 
 	var/legacy_examine_skip_body
 	var/legacy_examine_skip_gear
+	var/legacy_examine_no_touch
 
 /datum/event_args/examine/New(atom/examined, atom/movable/examiner)
 	src.examined = examined
@@ -26,3 +27,5 @@
 
 	if(examiner && examined)
 		seer_distance = get_dist(examiner, examined)
+
+// todo: serialize, deserialize, clone

@@ -49,8 +49,6 @@
 		if(DEAD)
 			. += SPAN_DEADSAY("It looks like its system is corrupted and requires a reset.")
 
-	. += attempt_vr(src,"examine_bellies_borg",args)
-
 	if(showvoreprefs && ckey) //ckey so non-controlled mobs don't display it.
 		. += SPAN_BOLDNOTICE("<a href='?src=\ref[src];vore_prefs=1'>\[Mechanical Vore Preferences\]</a>")
 

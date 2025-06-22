@@ -74,22 +74,6 @@
 		else
 			. += SPAN_INFO("<hr>[icon2html(w_uniform, user)] [T.He] [T.is] wearing \a [FORMAT_TEXT_LOOKITEM(w_uniform)].[tie_msg]")
 
-	//suit/armour
-	if(wear_suit)
-		var/tie_msg
-		if(istype(wear_suit,/obj/item/clothing/suit))
-			var/obj/item/clothing/suit/U = wear_suit
-			if(LAZYLEN(U.accessories))
-				var/list/assembled = list()
-				for(var/obj/item/clothing/accessory/A in U.accessories)
-					assembled += FORMAT_TEXT_LOOKITEM(A)
-				tie_msg += SPAN_INFO(" Attached to it is [english_list(assembled)].")
-
-		if(wear_suit.blood_DNA)
-			. += SPAN_WARNING("[T.He] [T.is] wearing [icon2html(thing = wear_suit, target = user)] [wear_suit.gender == PLURAL ? "some" : "a"] [(wear_suit.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(wear_suit)][tie_msg]!")
-		else
-			. += SPAN_INFO("[icon2html(wear_suit, user)] [T.He] [T.is] wearing \a [FORMAT_TEXT_LOOKITEM(wear_suit)].[tie_msg]")
-
 	// hands
 	for(var/i in 1 to length(inventory?.held_items))
 		if(isnull(inventory.held_items[i]))
@@ -130,16 +114,6 @@
 	else if(feet_blood_DNA && !(skip_body & EXAMINE_SKIPBODY_HANDS))
 		. += SPAN_WARNING("[T.He] [T.has] [(feet_blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained feet!")
 
-	//Jitters
-	if(is_jittery)
-		var/effective_jitteriness = get_effective_impairment_power_jitter()
-		if(effective_jitteriness >= 300)
-			. += SPAN_DANGER("[T.He] [T.is] convulsing violently!")
-		else if(effective_jitteriness >= 200)
-			. += SPAN_WARNING("[T.He] [T.is] extremely jittery.")
-		else if(effective_jitteriness >= 100)
-			. += SPAN_WARNING("[T.He] [T.is] twitching ever so slightly.")
-
 	//splints
 	for(var/organ in BP_ALL)
 		var/obj/item/organ/external/o = get_organ(organ)
@@ -179,20 +153,6 @@
 				message = SPAN_DANGER("[T.He] [T.is] so morbidly obese, you wonder how [T.he] can even stand, let alone waddle around the station.")
 		. += message
 	//* End of the bs
-
-	if(attempt_vr(src,"examine_bellies",args))
-		. += attempt_vr(src,"examine_bellies",args)
-	if(attempt_vr(src,"examine_pickup_size",args))
-		. += attempt_vr(src,"examine_pickup_size",args)
-	if(attempt_vr(src,"examine_step_size",args))
-		. += attempt_vr(src,"examine_step_size",args)
-	if(attempt_vr(src,"examine_nif",args))
-		. += attempt_vr(src,"examine_nif",args)
-	if(attempt_vr(src,"examine_chimera",args))
-		. += attempt_vr(src,"examine_chimera",args)
-
-	if(MUTATION_DWARFISM in mutations)
-		. += SPAN_WARNING("[T.He] [T.is] very short!")
 
 	// Pulse Checking.
 	if(src.stat)
@@ -337,17 +297,6 @@
 	if(show_descs)
 		. += SPAN_NOTICE("[jointext(show_descs, "\n")]")
 
-	if(pose)
-		if(!findtext(pose, regex("\[.?!]$"))) // Will be zero if the last character is not a member of [.?!]
-			pose = addtext(pose,".") //Makes sure all emotes end with a period.
-		. += SPAN_INFO("[T.He] [pose]")
-
-	// handle status effects
-	// todo: this should probably be a signal but it's not urgent, this isn't a hot path
-	for(var/id in status_effects)
-		var/datum/status_effect/effect = status_effects[id]
-		effect.on_examine(.)
-
 	// send signal last so everything else prioritizes above
 	. += SPAN_BOLDNOTICE("Character Profile: <a href='?src=\ref[src];character_profile=1'>\[View\]</a>")
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .) //This also handles flavor texts now
@@ -397,61 +346,3 @@
 					return TRUE
 
 	return FALSE
-
-/mob/living/carbon/human/proc/examine_pickup_size(mob/living/H)
-	var/message
-	if(istype(H) && (H.get_effective_size() - src.get_effective_size()) >= 0.50)
-		message = SPAN_NOTICE("They are small enough that you could easily pick them up!")
-		return message
-	return FALSE
-
-/mob/living/carbon/human/proc/examine_step_size(mob/living/H)
-	var/message
-	if(istype(H) && (H.get_effective_size() - src.get_effective_size()) >= 0.75)
-		message = SPAN_WARNING("They are small enough that you could easily trample them!")
-		return message
-	else
-		return FALSE
-
-/mob/living/carbon/human/proc/examine_nif(mob/living/carbon/human/H)
-	if(nif && nif.examine_msg) //If you have one set, anyway.
-		return SPAN_NOTICE("[nif.examine_msg]")
-
-/mob/living/carbon/human/proc/examine_chimera(mob/living/carbon/human/H)
-	var/t_He 	= "It" //capitalised for use at the start of each line.
-	var/t_his 	= "its"
-	var/t_His 	= "Its"
-	var/t_appear 	= "appears"
-	var/t_has 	= "has"
-	switch(identifying_gender) //Gender is their "real" gender. Identifying_gender is their "chosen" gender.
-		if(MALE)
-			t_He 	= "He"
-			t_His 	= "His"
-			t_his 	= "his"
-		if(FEMALE)
-			t_He 	= "She"
-			t_His 	= "Her"
-			t_his 	= "her"
-		if(PLURAL)
-			t_He	= "They"
-			t_His 	= "Their"
-			t_his 	= "their"
-			t_appear 	= "appear"
-			t_has 	= "have"
-		if(NEUTER)
-			t_He 	= "It"
-			t_His 	= "Its"
-			t_his 	= "its"
-		if(HERM)
-			t_He 	= "Shi"
-			t_His 	= "Hir"
-			t_his 	= "hir"
-	if(revive_ready == REVIVING_NOW || revive_ready == REVIVING_DONE)
-		if(stat == DEAD)
-			return "<span class='warning'>[t_His] body is twitching subtly.</span>"
-		else
-			return "<span class='notice'>[t_He] [t_appear] to be in some sort of torpor.</span>"
-	if(feral)
-		return "<span class='warning'>[t_He] [t_has] a crazed, wild look in [t_his] eyes!</span>"
-	if(bitten)
-		return "<span class='notice'>[t_He] [t_appear] to have two fresh puncture marks on [t_his] neck.</span>"

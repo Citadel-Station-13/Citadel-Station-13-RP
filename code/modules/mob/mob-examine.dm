@@ -72,6 +72,8 @@
 				output.worn_descriptors += html
 		for(var/obj/item/held_item as anything in inventory?.get_held_items())
 			#warn impl
+			var/encoded = held_item.examine_encode_as_worn(examine, examine_for, examine_from)
+
 
 	if(buckled)
 		LAZYADD(output.required_appearances, buckled.appearance)

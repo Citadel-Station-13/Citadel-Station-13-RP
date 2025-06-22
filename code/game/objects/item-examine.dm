@@ -12,3 +12,10 @@
 	#warn how do we do 1. warning on blood stained and 2. examine link?
 	#warn oil-stained? synth blood color check?
 	return output
+
+/**
+ * * Also called if held.
+ */
+/obj/item/proc/examine_encoding_as_worn(datum/event_args/examine/examine, examine_for, examine_from)
+	var/datum/event_args/examine_output/output = examine_new(examine, examine_for, examine_from)
+	#warn impl

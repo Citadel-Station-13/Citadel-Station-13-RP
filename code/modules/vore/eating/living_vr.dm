@@ -720,13 +720,12 @@
 	set desc = "Switch sharp/fuzzy scaling for current mob."
 	appearance_flags ^= PIXEL_SCALE
 
+#warn deal with
 /mob/living/examine(mob/user, dist)
 	. = ..()
 
 	if(print_flavor_text())
 		. += "\n[print_flavor_text()]"
-
-	. += attempt_vr(src,"examine_bellies",args)
 
 /mob/living/Topic(href, href_list)	//Can't find any instances of Topic() being overridden by /mob/living in polaris' base code, even though /mob/living/carbon/human's Topic() has a ..() call
 	if(href_list["vore_prefs"])
