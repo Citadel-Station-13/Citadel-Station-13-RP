@@ -17899,9 +17899,6 @@
 /obj/effect/floor_decal/corner/navgold/border,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d4starboardforhall)
-"rcv" = (
-/turf/simulated/wall/r_wall/prepainted/civilian,
-/area/endeavour/hallway/d4fwdmaint)
 "rcy" = (
 /obj/structure/sign/department/eng,
 /turf/simulated/wall/r_wall/prepainted/engineering,
@@ -46130,7 +46127,7 @@ pnG
 lHm
 ecp
 pRO
-rcv
+ddd
 liM
 tNv
 fyQ
@@ -46324,7 +46321,7 @@ kaY
 owo
 kaY
 iJZ
-rcv
+ddd
 npV
 blo
 wHg
@@ -46518,7 +46515,7 @@ owo
 owo
 kaY
 iJZ
-rcv
+ddd
 vag
 blo
 wHg
@@ -46712,7 +46709,7 @@ owo
 dah
 kaY
 iJZ
-rcv
+ddd
 lbB
 blo
 wHg
@@ -46906,7 +46903,7 @@ mcc
 kaY
 iCe
 iJZ
-rcv
+ddd
 oOK
 blo
 uQh
@@ -47100,7 +47097,7 @@ gHm
 kaY
 kaY
 iJZ
-rcv
+ddd
 occ
 wfb
 tit
@@ -47294,7 +47291,7 @@ owo
 pgh
 kaY
 iJZ
-rcv
+ddd
 cXH
 azJ
 kXQ
@@ -47488,7 +47485,7 @@ owo
 owo
 owo
 xPL
-rcv
+ddd
 ddd
 ddd
 hWH
