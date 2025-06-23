@@ -13765,16 +13765,16 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "mNe" = (
-/obj/machinery/door/blast/shutters{
-	dir = 8;
-	id = "kitchen-c";
-	name = "Kitchen Service Shutters"
-	},
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
 /obj/machinery/smartfridge/food,
 /obj/effect/floor_decal/corner_oldtile/white/diagonal,
+/obj/machinery/door/blast/shutters{
+	dir = 8;
+	id = "kitchen-d";
+	name = "Kitchen Shutters"
+	},
 /turf/simulated/wall/prepainted/civilian,
 /area/crew_quarters/kitchen)
 "mOd" = (
@@ -16466,8 +16466,8 @@
 /obj/effect/floor_decal/corner_oldtile/white/diagonal,
 /obj/machinery/door/blast/shutters{
 	dir = 8;
-	id = "kitchen-c";
-	name = "Kitchen shutters"
+	id = "kitchen-d";
+	name = "Kitchen Shutters"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
@@ -20876,22 +20876,18 @@
 	id = "kitchen-c";
 	name = "Kitchen public counter shutters";
 	pixel_x = 28;
-	pixel_y = 10
-	},
-/obj/machinery/button/remote/blast_door{
-	dir = 8;
-	id = "kitchen";
-	name = sssssssss;
-	pixel_x = 28;
-	pixel_y = -10
-	},
-/obj/machinery/light_switch{
-	dir = 8;
-	pixel_x = 28
+	pixel_y = -6
 	},
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 27;
 	pixel_y = 33
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 8;
+	id = "kitchen-d";
+	name = "Kitchen shutters";
+	pixel_x = 28;
+	pixel_y = 6
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
@@ -23052,6 +23048,10 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc/east_mount,
+/obj/machinery/light_switch{
+	name = "light switch ";
+	pixel_y = 26
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "wcd" = (
@@ -23221,6 +23221,12 @@
 	name = "wall mounted space jukebox"
 	},
 /obj/machinery/holopad,
+/obj/machinery/button/remote/blast_door{
+	id = s;
+	name = "AI Core Shutters";
+	pixel_y = 32;
+	pixel_x = -10
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ai)
 "wom" = (
@@ -24696,6 +24702,10 @@
 /obj/machinery/door/airlock/highsecurity{
 	name = "AI Chamber";
 	req_one_access = list()
+	},
+/obj/machinery/door/blast/shutters{
+	id = "AI Core";
+	name = "AI Core Shutters"
 	},
 /turf/simulated/floor/bluegrid,
 /area/ai)
