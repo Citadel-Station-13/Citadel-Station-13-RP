@@ -126,11 +126,6 @@
 			if(length(built))
 				wound_flavor_text["[temp.name]"] = built
 
-
-	var/show_descs = show_descriptors_to(user)
-	if(show_descs)
-		. += SPAN_NOTICE("[jointext(show_descs, "\n")]")
-
 //Helper procedure. Called by /mob/living/carbon/human/examine() and /mob/living/carbon/human/Topic() to determine HUD access to security and medical records.
 /proc/hasHUD(mob/M as mob, hudtype)
 	if(istype(M, /mob/living/carbon/human))

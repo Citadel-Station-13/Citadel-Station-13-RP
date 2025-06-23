@@ -3,6 +3,8 @@
 
 /mob/living/run_examine(datum/event_args/examine/examine, examine_for, examine_from)
 	var/datum/event_args/examine_output/output = ..()
+
+	//* Status Effects & Fire *//
 	if(fire_stacks)
 		LAZYADD(output.visible_descriptors, SPAN_WARNING("[gender_datum_visible.He] [gender_datum_visible.is] soaking wet."))
 	if(on_fire)
@@ -16,6 +18,7 @@
 		else if(effective_jitteriness >= 100)
 			LAZYADD(output.visible_descriptors, "[gender_datum_visible.He] [gender_datum_visible.is] twitching ever so slightly.")
 
+	//* VR Overrides - Legacy, including xenochim, etc *//
 	//! vorestation start
 	if(isliving(examine.examiner))
 		var/mob/living/vr_casted_living = examine.examiner
@@ -39,20 +42,12 @@
 				LAZYADD(output.visible_descriptors, maybe_belly_text)
 	//! end
 
-	if(client && (client.is_afk() > 10 MINUTES))
-		LAZYADD(output.ooc_descriptors, SPAN_INFO("\[Inactive for [round(client.inactivity / (1 MINUTES), 1)] minutes.\]"))
-	else if(ssd_visible && !client && stat != DEAD)
-		// todo: this logic is meh
-		var/maybe_ssd_message = species.get_ssd(src)
-		if(maybe_ssd_message)
-			LAZYADD(output.ooc_descriptors, SPAN_DEADSAY("[gender_datum_visible.He] [gender_datum_visible.is] [maybe_ssd_message]. [ckey ? "" : "It doesn't look like [gender_datum_visible.he] [gender_datum_visible.is] waking up anytime soon."]"))
-		if(ckey && disconnect_time)
-			LAZYADD(output.ooc_descriptors, SPAN_INFO("\[Disconnected/ghosted [round((REALTIMEOFDAY - disconnect_time) / (1 MINUTES), 1)] minutes ago. \]"))
-
+	//* Embeds *//
 	for(var/obj/item/implant in get_visible_implants(0)) // what does the 0 mean?
 		// todo: what about the zone?
 		LAZYADD(output.visible_descriptors, SPAN_DANGER("[src] [gender_datum_visible.has] \a [implant.examine_encoding_as_embed(examine, examine_for, examine_from)] sticking out of [gender_datum_visible.his] flesh!"))
 
+	//* Legacy - Changeling *//
 	if(digitalcamo)
 		LAZYADD(output.visible_descriptors, SPAN_WARNING("[gender_datum_visible.He] [gender_datum_visible.is] repulsively uncanny!"))
 

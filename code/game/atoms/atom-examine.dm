@@ -96,6 +96,20 @@
 	. += get_name_chaser(user)
 	if(desc)
 		. += "<hr>[get_examine_desc(user, dist)]"
+
+	#warn above
+
+	var/datum/event_args/examine/examining = new /datum/event_args/examine
+	examining.seer = user
+	examining.seer_distance = dist
+	examining.examiner = user
+
+	var/datum/event_args/examine_output/output = examine_new(examining, ALL, EXAMINE_FROM_TURF)
+
+	. = list()
+
+	#warn inject output
+
 	if(get_description_info() || get_description_fluff() || length(get_description_interaction(user)))
 		. += SPAN_TINYNOTICE("<a href='byond://winset?command=.statpanel_goto_tab \"Examine\"'>For more information, click here.</a>") //This feels VERY HACKY but eh its PROBABLY fine
 	if(integrity_flags & INTEGRITY_INDESTRUCTIBLE)
@@ -130,12 +144,6 @@
 
 	MATERIAL_INVOKE(src, MATERIAL_TRAIT_EXAMINE, on_examine, ., user, dist)
 
-	// todo: this shouldn't be in main examine(), format this crap better too.
-	#warn deal with
-	var/datum/event_args/examine/examining = new /datum/event_args/examine
-	examining.seer = user
-	examining.seer_distance = dist
-	examining.examiner = user
 	var/list/usage_hints = examine_query_usage_hints(examining)
 	if(length(usage_hints))
 		. += "<b>Usage:</b>"

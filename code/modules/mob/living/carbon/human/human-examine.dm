@@ -31,6 +31,10 @@
 	if(nif?.examine_msg)
 		LAZYADD(output.worn_descriptors, SPAN_NOTICE("[nif.examine_msg]"))
 
+	var/list/descriptors = show_descriptors_to(examine.examiner)
+	if(length(descriptors))
+		LAZYADD(output.visible_descriptors, SPAN_NOTICE(jointext(descriptors, "<br>")))
+
 	LAZYADD(output.ooc_descriptors, SPAN_BOLDNOTICE("Character Profile: <a href='?src=\ref[src];character_profile=1'>\[View\]</a>"))
 
 	return output

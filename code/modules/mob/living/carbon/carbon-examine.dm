@@ -16,6 +16,7 @@
 
 	LAZYINITLIST(output.visible_descriptors)
 
+	//* Organs*//
 	var/list/tagged_organs_or_missing_descriptors = list()
 	var/list/obj/item/organ/external/additional_organs = list()
 
@@ -46,9 +47,22 @@
 
 	#warn above; are organs good now?
 
+	//* Pose *//
 	if(pose)
 		LAZYADD(output.visible_descriptors, SPAN_INFO("[gender_datum_visible.He] [pose]"))
 
+	//* SSD *//
+	if(client && (client.is_afk() > 10 MINUTES))
+		LAZYADD(output.ooc_descriptors, SPAN_INFO("\[Inactive for [round(client.inactivity / (1 MINUTES), 1)] minutes.\]"))
+	else if(ssd_visible && !client && stat != DEAD)
+		// todo: this logic is meh
+		var/maybe_ssd_message = species.get_ssd(src)
+		if(maybe_ssd_message)
+			LAZYADD(output.ooc_descriptors, SPAN_DEADSAY("[gender_datum_visible.He] [gender_datum_visible.is] [maybe_ssd_message]. [ckey ? "" : "It doesn't look like [gender_datum_visible.he] [gender_datum_visible.is] waking up anytime soon."]"))
+		if(ckey && disconnect_time)
+			LAZYADD(output.ooc_descriptors, SPAN_INFO("\[Disconnected/ghosted [round((REALTIMEOFDAY - disconnect_time) / (1 MINUTES), 1)] minutes ago. \]"))
+
+	//* HUD *//
 	var/effective_hud_name = name
 	var/obj/item/in_id_slot = inventory.get_slot_single(/datum/inventory_slot/inventory/id::id)
 	if(istype(in_id_slot, /obj/item/card/id))
@@ -79,6 +93,7 @@
 	if(hasHUD(examine.seer, "best"))
 		LAZYADD(output.analysis_descriptors, SPAN_BOLDNOTICE("Employment records: <a href='?src=\ref[src];emprecord=`'>\[View\]</a>"))
 
+	//* VR Overrides - remove when we can *//
 	//! dumb vorestation weight system
 	if(show_pudge()) //Some clothing or equipment can hide this.
 		var/weight_heavy_verb = "heavy"
@@ -111,7 +126,7 @@
 			else
 				weight_message = SPAN_DANGER("[gender_datum_visible.He] [gender_datum_visible.is] so morbidly obese, you wonder how [gender_datum_visible.he] can even stand, let alone waddle around the station.")
 
-		if(weight_mes)
+		if(weight_message)
 			LAZYADD(output.visible_descriptors, weight_message)
 	//! god i hate it
 
