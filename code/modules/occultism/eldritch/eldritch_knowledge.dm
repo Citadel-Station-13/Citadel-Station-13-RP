@@ -68,7 +68,7 @@
 		holder.add_passive(instance, src)
 	for(var/id in grant_eldritch_recipe_ids)
 		var/datum/crafting_recipe/eldritch_recipe/recipe = GLOB.crafting_recipe_lookup[id]
-		if(!instance)
+		if(!recipe)
 			continue
 		holder.add_recipe(recipe, src)
 
