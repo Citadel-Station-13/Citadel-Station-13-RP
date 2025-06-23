@@ -49,5 +49,11 @@
 		if(ckey && disconnect_time)
 			LAZYADD(output.ooc_descriptors, SPAN_INFO("\[Disconnected/ghosted [round((REALTIMEOFDAY - disconnect_time) / (1 MINUTES), 1)] minutes ago. \]"))
 
+	for(var/obj/item/implant in get_visible_implants(0)) // what does the 0 mean?
+		// todo: what about the zone?
+		LAZYADD(output.visible_descriptors, SPAN_DANGER("[src] [gender_datum_visible.has] \a [implant.examine_encoding_as_embed(examine, examine_for, examine_from)] sticking out of [gender_datum_visible.his] flesh!"))
+
+	if(digitalcamo)
+		LAZYADD(output.visible_descriptors, SPAN_WARNING("[gender_datum_visible.He] [gender_datum_visible.is] repulsively uncanny!"))
 
 	return output

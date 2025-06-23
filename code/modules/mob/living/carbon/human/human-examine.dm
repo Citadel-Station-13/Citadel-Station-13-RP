@@ -15,6 +15,19 @@
 		#warn pulse?
 		pass()
 
+	if(length(blood_DNA) && !(examine.legacy_examine_skip_body & EXAMINE_SKIPBODY_HANDS))
+		var/blood_name = "blood"
+		if(hand_blood_color == SYNTH_BLOOD_COLOUR)
+			blood_name = "oil"
+		var/blood_render = "<font color='[hand_blood_color]'>[blood_name]</font>"
+		LAZYADD(output.visible_descriptors, SPAN_WARNING("[gender_datum_visible.He] [gender_datum_visible.has] [blood_render]-stained hands."))
+	if(length(feet_blood_DNA) && !(examine.legacy_examine_skip_body & EXAMINE_SKIPBODY_FEET))
+		var/blood_name = "blood"
+		if(feet_blood_color == SYNTH_BLOOD_COLOUR)
+			blood_name = "oil"
+		var/blood_render = "<font color='[feet_blood_color]'>[blood_name]</font>"
+		LAZYADD(output.visible_descriptors, SPAN_WARNING("[gender_datum_visible.He] [gender_datum_visible.has] [blood_render]-stained feet."))
+
 	if(nif?.examine_msg)
 		LAZYADD(output.worn_descriptors, SPAN_NOTICE("[nif.examine_msg]"))
 

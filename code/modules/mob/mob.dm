@@ -1295,3 +1295,8 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
  */
 /mob/is_avoiding_ground()
 	return ..() || hovering || flying || (buckled?.buckle_flags & BUCKLING_GROUND_HOIST) || buckled?.is_avoiding_ground()
+
+//* Mob Modals *//
+
+/mob/proc/open_mob_modal(typepath, key, ...)
+	#warn impl

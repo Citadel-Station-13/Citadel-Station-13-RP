@@ -14,6 +14,8 @@
 	if(!examine.legacy_examine_no_touch)
 		#warn pulse
 
+	LAZYINITLIST(output.visible_descriptors)
+
 	var/list/tagged_organs_or_missing_descriptors = list()
 	var/list/obj/item/organ/external/additional_organs = list()
 
@@ -22,9 +24,24 @@
 		tagged_organs_or_missing_descriptors[external_organ_tag] = external_organ_data["descriptor"]
 
 	for(var/obj/item/organ/external/external_organ in organs)
+		if(external_organ.organ_tag in tagged_organs_or_missing_descriptors)
+			tagged_organs_or_missing_descriptors[external_organ.organ_tag] = external_organ
+		else
+			additional_organs += external_organ
 
 	for(var/external_organ_tag in tagged_organs_or_missing_descriptors)
 		var/obj/item/organ/external/organ_or_descriptor = tagged_organs_or_missing_descriptors[external_organ_tag]
+		if(istype(organ_or_descriptor) && (organ_or_descriptor.legacy_examine_skip_flags & examine.legacy_examine_skip_body))
+			continue
+		else if(!istype(organ_or_descriptor) || (organ_or_descriptor.status & ORGAN_DESTROYED))
+			output.visible_descriptors += SPAN_BOLDWARNING("[gender_datum_visible.He] [gender_datum_visible.is] missing [gender_datum_visible.his] [organ_or_descriptor]")
+			continue
+		else if(organ_or_descriptor.is_stump())
+			output.visible_descriptors += SPAN_BOLDWARNING("[gender_datum_visible.He] [gender_datum_visible.has] a stump where [gender_datum_visible.his] [organ_or_descriptor] should be.")
+			continue
+
+		
+
 
 	for(var/obj/item/organ/external/extra_organ in additional_organs)
 

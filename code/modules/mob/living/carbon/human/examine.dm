@@ -45,9 +45,6 @@
 	if(extra_species_text)
 		. += "[extra_species_text]"
 
-	for(var/obj/item/equipped as anything in get_equipped_items())
-		var/item_returns_string = equipped.examine_name_in_slot(examine_args)
-		#warn impl
 
 	//uniform
 	if(w_uniform && !(skip_gear & EXAMINE_SKIPGEAR_JUMPSUIT) && w_uniform.show_examine)
@@ -87,38 +84,12 @@
 		else
 			. += SPAN_INFO("[icon2html(held, user)] [T.He] [T.is] holding \a [FORMAT_TEXT_LOOKITEM(held)] in [T.his] [hand_str].")
 
-	//gloves
-	if(gloves && !(skip_gear & EXAMINE_SKIPGEAR_GLOVES) && gloves.show_examine)
-		if(gloves.blood_DNA)
-			. += SPAN_WARNING("[icon2html(gloves, user)] [T.He] [T.has] [gloves.gender == PLURAL ? "some" : "a"] [(gloves.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(gloves)] on [T.his] hands!")
-		else
-			. += SPAN_INFO("[icon2html(gloves, user)] [T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(gloves)] on [T.his] hands.")
-
-	else if(blood_DNA && !(skip_body & EXAMINE_SKIPBODY_HANDS))
-		. += SPAN_WARNING("[T.He] [T.has] [(hand_blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained hands!")
-
 	//handcuffed?
 	if(handcuffed && handcuffed.show_examine)
 		if(istype(handcuffed, /obj/item/handcuffs/cable))
 			. += SPAN_WARNING("[icon2html(handcuffed, user)] [T.He] [T.is] restrained with cable!")
 		else
 			. += SPAN_WARNING("[icon2html(handcuffed, user)] [T.He] [T.is] handcuffed!")
-
-	//shoes
-	if(shoes && !(skip_gear & EXAMINE_SKIPGEAR_SHOES) && shoes.show_examine)
-		if(shoes.blood_DNA)
-			. += SPAN_WARNING("[icon2html(shoes, user)] [T.He] [T.is] wearing [shoes.gender == PLURAL ? "some" : "a"] [(shoes.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(shoes)] on [T.his] feet!")
-		else
-			. += SPAN_INFO("[icon2html(shoes, user)] [T.He] [T.is] wearing \a [FORMAT_TEXT_LOOKITEM(shoes)] on [T.his] feet.")
-
-	else if(feet_blood_DNA && !(skip_body & EXAMINE_SKIPBODY_HANDS))
-		. += SPAN_WARNING("[T.He] [T.has] [(feet_blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained feet!")
-
-	//splints
-	for(var/organ in BP_ALL)
-		var/obj/item/organ/external/o = get_organ(organ)
-		if(o && o.splinted && o.splinted.loc == o)
-			. += SPAN_WARNING("[T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(o.splinted)] on [T.his] [o.name]!")
 
 	// Pulse Checking.
 	if(src.stat)
@@ -134,30 +105,15 @@
 				else
 					to_chat(user, SPAN_DEADSAY("[T.He] [T.has] a pulse!"))
 
-	var/list/wound_flavor_text = list()
-	var/list/is_bleeding = list()
-	var/applying_pressure = ""
 
-	for(var/organ_tag in species.has_limbs)
-
-		var/list/organ_data = species.has_limbs[organ_tag]
-		var/organ_descriptor = organ_data["descriptor"]
-
-		var/obj/item/organ/external/E = organs_by_name[organ_tag]
-		if(!E)
-			wound_flavor_text["[organ_descriptor]"] = SPAN_BOLDWARNING("[T.He] [T.is] missing [T.his] [organ_descriptor].")
-		else if(E.is_stump())
-			wound_flavor_text["[organ_descriptor]"] = SPAN_BOLDWARNING("[T.He] [T.has] a stump where [T.his] [organ_descriptor] should be.")
-		else
-			continue
+	//splints
+	for(var/organ in BP_ALL)
+		var/obj/item/organ/external/o = get_organ(organ)
+		if(o && o.splinted && o.splinted.loc == o)
+			. += SPAN_WARNING("[T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(o.splinted)] on [T.his] [o.name]!")
 
 	for(var/obj/item/organ/external/temp in organs)
 		if(temp)
-			if((temp.organ_tag in hidden) && hidden[temp.organ_tag])
-				continue //Organ is hidden, don't talk about it
-			if(temp.status & ORGAN_DESTROYED)
-				wound_flavor_text["[temp.name]"] = SPAN_BOLDWARNING("[T.He] [T.is] missing [T.his] [temp.name].")
-				continue
 			var/built = ""
 
 			if(!looks_synth && temp.robotic == ORGAN_ROBOT)
@@ -190,16 +146,6 @@
 			if(length(built))
 				wound_flavor_text["[temp.name]"] = built
 
-	for(var/limb in wound_flavor_text)
-		. += wound_flavor_text[limb]
-	for(var/limb in is_bleeding)
-		. += is_bleeding[limb]
-	for(var/implant in get_visible_implants(0))
-		. += SPAN_DANGER("[src] [T.has] \a [FORMAT_TEXT_LOOKITEM(implant)] sticking out of [T.his] flesh!")
-	if(digitalcamo)
-		. += SPAN_WARNING("[T.He] [T.is] repulsively uncanny!")
-
-	. += applying_pressure
 
 	var/show_descs = show_descriptors_to(user)
 	if(show_descs)
