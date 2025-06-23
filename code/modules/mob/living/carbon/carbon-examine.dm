@@ -39,11 +39,12 @@
 		else if(organ_or_descriptor.is_stump())
 			output.visible_descriptors += SPAN_BOLDWARNING("[gender_datum_visible.He] [gender_datum_visible.has] a stump where [gender_datum_visible.his] [organ_or_descriptor] should be.")
 			continue
-
-		
-
+		output.visible_descriptors += organ_or_descriptor.examine_encoding_as_visible_organ(examine, examine_for, examine_from)
 
 	for(var/obj/item/organ/external/extra_organ in additional_organs)
+		output.visible_descriptors += extra_organ.examine_encoding_as_visible_organ(examine, examine_for, examine_from)
+
+	#warn above; are organs good now?
 
 	if(pose)
 		LAZYADD(output.visible_descriptors, SPAN_INFO("[gender_datum_visible.He] [pose]"))

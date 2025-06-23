@@ -63,6 +63,8 @@
 	#warn impl
 
 	if(examine_for & EXAMINE_FOR_WORN)
+		LAZYINITLIST(output.worn_descriptors)
+		
 		for(var/id in get_inventory_slot_ids())
 			var/datum/inventory_slot/slot = resolve_inventory_slot(id)
 			var/obj/item/equipped = inventory.get_slot_single(id)
@@ -70,10 +72,15 @@
 			var/html = slot.examinate(src, equipped, examine, examine_for, examine_from)
 			if(html)
 				output.worn_descriptors += html
-		for(var/obj/item/held_item as anything in inventory?.get_held_items())
-			#warn impl
-			var/encoded = held_item.examine_encoding_as_worn(examine, examine_for, examine_from)
 
+		for(var/obj/item/held_item as anything in inventory?.get_held_items())
+			var/encoded = held_item.examine_encoding_as_worn(examine, examine_for, examine_from)
+			var/hand_index = held_item.inv_slot_or_index
+			var/hand_str = (hand_index % 2)? "left hand[hand_index > 2? " #[round(hand_index / 2)]" : ""]" : "right hand[hand_index > 2? " #[round(hand_index / 2)]" : ""]"
+			if(encoded)
+				output.worn_descriptors += "[gender_datum_visible.He] [gender_datum_visible.is] \
+				holding [held_item.gender == PLURAL ? "some" : "a"] [held_item.examine_encoding_as_worn(examine, examine_for, examine_from)] \
+				in [gender_datum_visible.his] [hand_str]"
 
 	if(buckled)
 		LAZYADD(output.required_appearances, buckled.appearance)

@@ -71,26 +71,6 @@
 		else
 			. += SPAN_INFO("<hr>[icon2html(w_uniform, user)] [T.He] [T.is] wearing \a [FORMAT_TEXT_LOOKITEM(w_uniform)].[tie_msg]")
 
-	// hands
-	for(var/i in 1 to length(inventory?.held_items))
-		if(isnull(inventory.held_items[i]))
-			continue
-		var/obj/item/held = inventory.held_items[i]
-		if(!held.show_examine)
-			continue
-		var/hand_str = (i % 2)? "left hand[i > 2? " #[round(i / 2)]" : ""]" : "right hand[i > 2? " #[round(i / 2)]" : ""]"
-		if(held.blood_DNA)
-			. += SPAN_WARNING("[icon2html(held, user)] [T.He] [T.is] holding [held.gender == PLURAL ? "some" : "a"] [(held.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(held)] in [T.his] [hand_str]!")
-		else
-			. += SPAN_INFO("[icon2html(held, user)] [T.He] [T.is] holding \a [FORMAT_TEXT_LOOKITEM(held)] in [T.his] [hand_str].")
-
-	//handcuffed?
-	if(handcuffed && handcuffed.show_examine)
-		if(istype(handcuffed, /obj/item/handcuffs/cable))
-			. += SPAN_WARNING("[icon2html(handcuffed, user)] [T.He] [T.is] restrained with cable!")
-		else
-			. += SPAN_WARNING("[icon2html(handcuffed, user)] [T.He] [T.is] handcuffed!")
-
 	// Pulse Checking.
 	if(src.stat)
 		. += SPAN_WARNING("[T.He] [T.is]n't responding to anything around [T.him] and seems to be asleep.")

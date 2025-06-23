@@ -15,7 +15,7 @@
 
 /**
  * * Also called if held.
- * @return html
+ * @return html, rendered as "[they] are [verb] [OUTPUT] [preposition] their [slot]"
  */
 /obj/item/proc/examine_encoding_as_worn(datum/event_args/examine/examine, examine_for, examine_from)
 	var/datum/event_args/examine_output/output = examine_new(examine, examine_for, examine_from)

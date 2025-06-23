@@ -269,11 +269,6 @@
 /obj/item/organ/proc/adjust_germ_level(var/amount)		// Unless you're setting germ level directly to 0, use this proc instead
 	germ_level = clamp(germ_level + amount, 0, INFECTION_LEVEL_MAX)
 
-/obj/item/organ/examine(mob/user, dist)
-	. = ..()
-	if(status & ORGAN_DEAD)
-		. += "<span class='notice'>The decay has set in.</span>"
-
 /obj/item/organ/proc/receive_chem(chemical as obj)
 	return 0
 
