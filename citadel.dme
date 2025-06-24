@@ -2124,6 +2124,7 @@
 #include "code\game\objects\structures\tables\table.dm"
 #include "code\game\objects\structures\tables\update_triggers.dm"
 #include "code\game\objects\systems\_system.dm"
+#include "code\game\objects\systems\adjacency_group.dm"
 #include "code\game\objects\systems\cell_slot.dm"
 #include "code\game\objects\systems\storage\storage-filters.dm"
 #include "code\game\objects\systems\storage\storage-indirection.dm"
