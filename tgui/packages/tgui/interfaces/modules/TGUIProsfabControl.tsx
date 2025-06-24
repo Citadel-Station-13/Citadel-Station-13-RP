@@ -222,13 +222,13 @@ export const TGUIProsfabControl = (props: TGUILatheControlProps, context) => {
               <Section fill title="Subcategories" scrollable>
                 <Tabs vertical>
                   {
-                    data.designs.subcategories[category].sort((c1, c2) => c1.localeCompare(c2)).map((subcat) => (
+                    (Array.isArray(data.designs.subcategories[category])) ? (data.designs.subcategories[category].sort((c1, c2) => c1.localeCompare(c2)).map((subcat) => (
                       <Tabs.Tab key={subcat} fluid color="transparent"
                         selected={subcat === subcategory}
                         onClick={() => subcategory === subcat ? setSubCategory("") : setSubCategory(subcat)}>
                         {subcat}
                       </Tabs.Tab>
-                    ))
+                    ))) : (null)
                   }
                 </Tabs>
               </Section>
