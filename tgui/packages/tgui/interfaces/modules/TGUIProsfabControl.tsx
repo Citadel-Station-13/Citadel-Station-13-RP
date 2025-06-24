@@ -52,7 +52,7 @@ export const TGUIProsfabControl = (props: TGUILatheControlProps, context) => {
   const [subcategory, setSubCategory] = useLocalState<string>(
     context,
     `${data.$ref}-subcategory`,
-    data.designs.subcategories[category].length ? data.designs.subcategories[category][0] : ""
+    ""
   );
 
   const [resourcesSelect, setResourcesSelect] = useLocalState<string>(
