@@ -1,39 +1,72 @@
+/**
+ * * Examining is **not** stateless. There's various hooks that fire when examines are used,
+ *   including gameplay function hooks.
+ *
+ * @params
+ * * examine - examiner args
+ * * examine_for - examining for flags so we don't compute stuff we don't need to
+ * * examine_from - examining from flags to communicate where the examine is coming from
+ *
+ * @return /datum/event_args/examine_output or null to not allow examine.
+ */
+/atom/proc/examine_new(datum/event_args/examine/examine, examine_for, examine_from)
+	examine = pre_examine(
+		examine,
+		examine_for,
+		examine_from,
+	)
+	if(!examine || !examine.examined)
+		return
 
-/atom/proc/get_examine_name(mob/user)
-	. = "\a <b>[src]</b>"
-	var/list/override = list(gender == PLURAL ? "some" : "a", " ", "[name]")
+	return examine.examined.run_examine(
+		examine,
+		examine_for,
+		examine_from,
+	)
 
-	var/should_override = FALSE
+/**
+ * @params
+ * * examine - examiner args
+ * * examine_for - examining for flags so we don't compute stuff we don't need to
+ * * examine_from - examining from flags to communicate where the examine is coming from
+ *
+ * @return /datum/event_args/examine, or null to not allow examine.
+ */
+/atom/proc/pre_examine(datum/event_args/examine/examine, examine_for, examine_from)
+	return examine
 
-	if(SEND_SIGNAL(src, COMSIG_ATOM_GET_EXAMINE_NAME, user, override) & COMPONENT_EXNAME_CHANGED)
-		should_override = TRUE
+/**
+ * @params
+ * * examine - examiner args
+ * * examine_for - examining for flags so we don't compute stuff we don't need to
+ * * examine_from - examining from flags to communicate where the examine is coming from
+ *
+ * @return /datum/event_args/examine_output or null to not allow examine.
+ */
+/atom/proc/run_examine(datum/event_args/examine/examine, examine_for, examine_from)
+	var/datum/event_args/examine_output/output = new
+	if(examine_for & EXAMINE_FOR_NAME)
+		output.entity_name = get_examine_name(examine, examine_for, examine_from)
+	if(examine_for & EXAMINE_FOR_DESC)
+		output.entity_desc = get_examine_desc(examine, examine_for, examine_from)
+	if(examine_for & EXAMINE_FOR_RENDER)
+		output.entity_appearance = appearance
+		LAZYADD(output.required_appearances, appearance)
+	return output
 
+/atom/proc/get_examine_name(datum/event_args/examine/examine, examine_for, examine_from)
+	return "[gender == PLURAL ? "some" : "a"][blood_DNA ? " <span class='warning'>blood-stained</span> " : ""][name]"
 
-	if(blood_DNA && !istype(src, /obj/effect/decal))
-		override[EXAMINE_POSITION_BEFORE] = " blood-stained "
-		should_override = TRUE
-
-	if(should_override)
-		. = override.Join("")
-
-/atom/proc/get_examine_desc(mob/user, dist)
+/atom/proc/get_examine_desc(datum/event_args/examine/examine, examine_for, examine_from)
 	return desc
 
 /// Generate the full examine string of this atom (including icon for goonchat)
+#warn this
 /atom/proc/get_examine_string(mob/user, thats = FALSE)
 	return "[icon2html(src, user)] [thats? "That's ":""][get_examine_name(user)]"
 
-/**
- * Returns an extended list of examine strings for any contained ID cards.
- *
- * Arguments:
- * * user - The user who is doing the examining.
- */
-/atom/proc/get_id_examine_strings(mob/user)
-	. = list()
-	return
-
 /// Used to insert text after the name but before the description in examine()
+#warn this
 /atom/proc/get_name_chaser(mob/user, list/name_chaser = list())
 	return name_chaser
 
@@ -53,6 +86,7 @@
 // todo: standard controls / ui/ux help
 // todo: examine_more()?
 /atom/proc/examine(mob/user, dist = 1)
+	#warn this shit
 	var/examine_string = get_examine_string(user, thats = TRUE)
 	if(examine_string)
 		. = list("[examine_string].")
@@ -62,17 +96,25 @@
 	. += get_name_chaser(user)
 	if(desc)
 		. += "<hr>[get_examine_desc(user, dist)]"
+
+	#warn above
+
+	var/datum/event_args/examine/examining = new /datum/event_args/examine
+	examining.seer = user
+	examining.seer_distance = dist
+	examining.examiner = user
+
+	var/datum/event_args/examine_output/output = examine_new(examining, ALL, EXAMINE_FROM_TURF)
+
+	. = list()
+
+	#warn inject output
+
 	if(get_description_info() || get_description_fluff() || length(get_description_interaction(user)))
 		. += SPAN_TINYNOTICE("<a href='byond://winset?command=.statpanel_goto_tab \"Examine\"'>For more information, click here.</a>") //This feels VERY HACKY but eh its PROBABLY fine
 	if(integrity_flags & INTEGRITY_INDESTRUCTIBLE)
 		. += SPAN_NOTICE("It doesn't look like it can be damaged through common means.")
-/*
-	if(custom_materials)
-		var/list/materials_list = list()
-		for(var/datum/prototype/material/current_material as anything in custom_materials)
-			materials_list += "[current_material.name]"
-		. += "<u>It is made out of [english_list(materials_list)]</u>."
-*/
+
 	if(reagents)
 		if(reagents.reagents_holder_flags & TRANSPARENT)
 			. += "It contains:"
@@ -102,11 +144,6 @@
 
 	MATERIAL_INVOKE(src, MATERIAL_TRAIT_EXAMINE, on_examine, ., user, dist)
 
-	// todo: this shouldn't be in main examine(), format this crap better too.
-	var/datum/event_args/examine/examining = new /datum/event_args/examine
-	examining.seer_atom = user
-	examining.seer_distance = dist
-	examining.examiner_atom = user
 	var/list/usage_hints = examine_query_usage_hints(examining)
 	if(length(usage_hints))
 		. += "<b>Usage:</b>"

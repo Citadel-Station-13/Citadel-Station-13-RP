@@ -11,8 +11,6 @@
 	/// unique id
 	var/id
 
-#warn hook below
-
 /datum/role/proc/on_gain(datum/mind/mind)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)

@@ -122,7 +122,7 @@ GLOBAL_LIST_EMPTY(observer_list)
 			// todo: fixup (get rid of other planes)
 			add_overlay(body.overlays)
 
-		gender = body.gender
+		set_gender(body.gender)
 		if(body.mind && body.mind.name)
 			name = body.mind.name
 		else

@@ -37,6 +37,10 @@
 	COOLDOWN_DECLARE(refresh_cooldown)
 	/// Are byond mouse events beyond the window passed in to the ui
 	var/mouse_hooked = FALSE
+	/// Is this an admin UI?
+	/// * Pushed to config structure of useBackend, allowing for UIs
+	///   to know if they're opened in admin or player context
+	var/admin_control = FALSE
 	/// The Parent UI
 	//? STOP USING THIS. USE MODULES. ~SILICONS
 	var/datum/tgui/parent_ui
@@ -311,6 +315,8 @@
 	json_data["config"] = list(
 		"title" = title,
 		"status" = status,
+		#warn admin control config read on tgui side
+		"admin" = admin_control,
 		"interface" = interface,
 		"refreshing" = refreshing,
 		"window" = list(

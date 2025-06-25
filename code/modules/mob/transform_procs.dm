@@ -116,7 +116,7 @@
 	O.cell.charge = 15000
 
 
-	O.gender = gender
+	O.set_gender(gender)
 	O.invisibility = 0
 
 	if(mind)		//TODO

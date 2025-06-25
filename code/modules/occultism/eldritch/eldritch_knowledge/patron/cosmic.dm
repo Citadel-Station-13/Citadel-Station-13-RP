@@ -5,3 +5,8 @@
 	abstract_type = /datum/prototype/eldritch_knowledge/patron/cosmic
 	category = "The Starborn Beast"
 	#warn icon
+
+/datum/prototype/eldritch_knowledge/patron/cosmic/entrypoint
+	name = "The Starborn Beast"
+	desc = "Go forwards towards the Starborn Beast."
+	// TODO: lore

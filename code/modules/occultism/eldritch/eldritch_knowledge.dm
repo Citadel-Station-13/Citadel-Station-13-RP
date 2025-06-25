@@ -19,18 +19,12 @@
 	var/category = "???"
 
 	/// cannot be seen or acquired if not there, unless already acquired.
+	/// * overridden by admisn
 	var/secret = FALSE
 	/// never show on UI or make known to the player / client
+	/// * overridden by admisn
 	var/hidden = FALSE
 
-	/// position from origin
-	/// * unset = auto position
-	/// * please set this
-	var/ui_pos_x
-	/// position from origin
-	/// * unset = auto position
-	/// * please set this
-	var/ui_pos_y
 	/// ui icon
 	var/ui_icon
 	/// ui icon state
@@ -39,17 +33,22 @@
 	/// unlock recipe ids
 	/// * superceding another id is not supported at this time; please make sure no two
 	///   knowledge nodes can have the same ID.
-	var/list/give_eldritch_recipe_ids
+	var/list/grant_eldritch_recipe_ids
 	/// unlock passive ids
 	/// * superceding another id is not supported at this time; please make sure no two
 	///   knowledge nodes can have the same ID.
-	var/list/give_eldritch_passive_ids
+	var/list/grant_eldritch_passive_ids
 	/// unlock ability ids
 	/// * superceding another id is not supported at this time; please make sure no two
 	///   knowledge nodes can have the same ID.
-	var/list/give_eldritch_ability_ids
+	var/list/grant_eldritch_ability_ids
+
 	/// autounlock other knowledge ids once unlocked
-	var/list/give_eldritch_knowledge_ids
+	/// * will not be removed once this knowledge is removed.
+	var/list/unlock_eldritch_knowledge_ids
+
+	/// required knowledge ids
+	var/list/require_eldritch_knowledge_ids
 
 #warn impl
 
@@ -57,6 +56,60 @@
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 
+	for(var/id in grant_eldritch_ability_ids)
+		var/datum/prototype/eldritch_ability/instance = RSeldritch_ability.fetch_local_or_throw(id)
+		if(!instance)
+			continue
+		holder.add_ability(instance, src)
+	for(var/id in grant_eldritch_passive_ids)
+		var/datum/prototype/eldritch_passive/instance = RSeldritch_passive.fetch_local_or_throw(id)
+		if(!instance)
+			continue
+		holder.add_passive(instance, src)
+	for(var/id in grant_eldritch_recipe_ids)
+		var/datum/crafting_recipe/eldritch_recipe/recipe = GLOB.crafting_recipe_lookup[id]
+		if(!recipe)
+			continue
+		holder.add_recipe(recipe, src)
+
 /datum/prototype/eldritch_knowledge/proc/remove(datum/eldritch_holder/holder)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
+
+	for(var/id in grant_eldritch_ability_ids)
+		var/datum/prototype/eldritch_ability/instance = RSeldritch_ability.fetch_local_or_throw(id)
+		if(!instance)
+			continue
+		holder.remove_ability(instance, src)
+	for(var/id in grant_eldritch_passive_ids)
+		var/datum/prototype/eldritch_passive/instance = RSeldritch_passive.fetch_local_or_throw(id)
+		if(!instance)
+			continue
+		holder.remove_passive(instance, src)
+	for(var/id in grant_eldritch_recipe_ids)
+		var/datum/crafting_recipe/eldritch_recipe/instance = GLOB.crafting_recipe_lookup[id]
+		if(!instance)
+			continue
+		holder.remove_recipe(instance, src)
+
+/datum/prototype/eldritch_knowledge/proc/ui_serialize_knowledge()
+	var/serialized_icon
+	var/list/serialized_abilities
+	var/list/serialized_passives
+	var/list/serialized_recipes
+	#warn impl
+	return list(
+		"id" = id,
+		"name" = name,
+		"desc" = desc,
+		"category" = category,
+		"loreAsUnsafeHtml" = lore_as_unsafe_html,
+		"iconAsBase64" = serialized_icon,
+		"secret" = secret,
+		"hidden" = hidden,
+		"reqKnowledgeIds" = require_eldritch_knowledge_ids,
+		"giveAbilities" = serialized_abilities,
+		"givePassives" = serialized_passives,
+		"giveRecipes" = serialized_recipes,
+		"grantKnowledgeIds" = unlock_eldritch_knowledge_ids,
+	)

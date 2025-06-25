@@ -5,8 +5,11 @@ SUBSYSTEM_DEF(background_tasks)
 	name = "Background Intelligent Task Scheduler"
 
 	wait = 2 SECONDS
+	subsystem_flags = SS_BACKGROUND
+	priority = FIRE_PRIORITY_BACKGROUND_TASKS
 
 	/// tasks running right now
+	/// * from oldest to newest in next fire timing; basically, FIFO-ish
 	var/list/datum/background_task/running = list()
 	/// task instance = next world.time to fire
 	var/list/datum/background_task/yielding = list()
@@ -18,6 +21,7 @@ SUBSYSTEM_DEF(background_tasks)
 	var/finished_count = 0
 
 	/// the world.time start of the oldest task in running
+	/// * basically, the longest a task is currently waiting to run
 	var/lrt_time = 0
 
 /datum/controller/subsystem/background_tasks/Initialize()
@@ -37,7 +41,7 @@ SUBSYSTEM_DEF(background_tasks)
 	var/list/datum/background_task/new_yielding = list()
 	var/alist/new_keyed_tasks = list()
 	for(var/datum/background_task/task in running)
-		new_running += task
+		BINARY_INSERT(task, new_running, /datum/background_task, task, next_run_time, COMPARE_KEY)
 		if(task.key)
 			new_keyed_tasks[task.key] = task
 	for(var/datum/background_task/task in yielding)
@@ -56,29 +60,64 @@ SUBSYSTEM_DEF(background_tasks)
 	else
 		. = ..()
 
+// todo: this would benefit from a hibernation system; background tasks are not always running
 /datum/controller/subsystem/background_tasks/proc/fire(resumed)
 	var/list/datum/background_task/running = src.running
 	var/list/datum/background_task/yielding = src.yielding
-	#warn impl including lrt_time
 	var/tasks_to_run = min(5, running)
-	MC_SPLIT_TICK_INIT(tasks_to_run)
-	for(var/running_idx in 1 to tasks_to_run)
-		MC_SPLIT_TICK
-		var/datum/background_task/to_run = running[running_idx]
+	MC_SPLIT_TICK_INIT(tasks_to_run + 1)
 
+	var/list/datum/background_task/now_running = list()
+	for(var/running_idx in 1 to tasks_to_run)
+		now_running += running[running_idx]
+	for(var/datum/background_task/to_run as anything in now_running)
+		MC_SPLIT_TICK
+		to_run.status = BACKGROUND_TASK_RUNNING
+		var/result = to_run.run(Master.current_ticklimit)
+		var/eject = TRUE
+		switch(result)
+			if(BACKGROUND_TASK_RETVAL_CONTINUE)
+				if(to_run.status != BACKGROUND_TASK_RUNNING)
+					stack_trace("ejecting misbehaving task [to_run] ([to_run.type]) - returned continue but no longer running status")
+			if(BACKGROUND_TASK_RETVAL_YIELD)
+				switch(to_run.status)
+					if(BACKGROUND_TASK_FINISHED)
+						finished_count += 1
+					if(BACKGROUND_TASK_YIELDING)
+						BINARY_INSERT(to_run, yielding, /datum/background_task, to_run, next_run_time, COMPARE_KEY)
+			else
+				stack_trace("ejecting misbehaving task [to_run] ([to_run.type]) - returned invalid retval [result]")
+		if(eject)
+			running -= to_run
+
+	// give us time to do bookkeeping ; never take up the whole tick because we are pretty
+	// aggressive about rescheduling.
+	MC_SPLIT_TICK
 	// check yielding for what needs to go to running
 	var/yielding_idx
 	for(yielding_idx in 1 to length(yielding))
 		if(yielding[yielding_idx].next_run_time <= world.time)
-			running += yielding[yielding_idx]
+			var/datum/background_task/inserting = yielding[yielding_idx]
+			var/datum/background_task/last = running[length(running)]
+			if(last.next_run_time < inserting.next_run_time)
+				running += inserting
+				inserting.status = BACKGROUND_TASK_RUNNING
+			else
+				BINARY_INSERT(inserting, running, /datum/background_task, inserting, next_run_time, COMPARE_KEY)
 		else
 			break
 	yielding.Cut(1, yielding_idx)
 
+	lrt_time = length(running) ? running[1].next_run_time : world.time
+
+	if(length(running))
+		pause()
+
 /datum/controller/subsystem/background_tasks/proc/submit_task(datum/background_task/task)
 	ASSERT(task.status == BACKGROUND_TASK_IDLE)
 	task.status = BACKGROUND_TASK_QUEUED
-	running += task
+	task.next_run_time = world.time
+	BINARY_INSERT(task, running, /datum/background_task, task, next_run_time, COMPARE_KEY)
 
 /**
  * @return ejected task, if one already existed
@@ -88,7 +127,6 @@ SUBSYSTEM_DEF(background_tasks)
 	if(keyed_tasks[key])
 		var/datum/background_task/existing = keyed_tasks[key]
 		. = existing
-		#warn update lrt if needed
 		switch(existing.status)
 			if(BACKGROUND_TASK_QUEUED)
 				running -= existing
@@ -103,6 +141,8 @@ SUBSYSTEM_DEF(background_tasks)
  *   you will burn CPU unnecessarily idle-looping forever!
  */
 /datum/background_task
+	/// name; required
+	var/name = "???"
 	/// status
 	/// * do not manually set, subsystem sets this
 	var/status = BACKGROUND_TASK_IDLE

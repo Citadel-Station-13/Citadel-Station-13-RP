@@ -8,7 +8,7 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 	. = 1
-	#warn impl
+	// TODO: /datum/component/eldritch_focus for worn & held items
 
 /**
  * returns a list of active eldritch_holder's
@@ -26,4 +26,3 @@
 
 #warn how to do this
 /mob/proc/eldritch_inflict_mindshock(req_power, req_duration)
-

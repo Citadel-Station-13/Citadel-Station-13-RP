@@ -14,22 +14,40 @@
 	var/name = "???"
 	/// our interface desc
 	var/desc = "A perk granted by the infinite plane."
-	/// our interface lore blurb; null for none
-	var/lore
 
-	/// our context type, if any
-	var/context_type
+	/// our context type
+	var/context_type = /datum/eldritch_passive_context
 	/// can be toggled on/off
 	var/can_be_toggled = FALSE
 	/// requires ticking?
 	var/requires_ticking = FALSE
 
+/datum/prototype/eldritch_passive/proc/ui_serialize_passive()
+	var/serialized_icon
+	#warn impl
+	return list(
+		"id" = id,
+		"name" = name,
+		"desc" = desc,
+		"iconAsBase64" = serialized_icon,
+	)
+
 /datum/prototype/eldritch_passive/proc/create_initial_context(datum/eldritch_holder/holder) as /datum/eldritch_passive_context
 	return context_type ? new context_type : null
 
+/datum/prototype/eldritch_passive/proc/on_holder_add(datum/eldritch_holder/holder, datum/eldritch_passive_context/context)
+
+/datum/prototype/eldritch_passive/proc/on_holder_remove(datum/eldritch_holder/holder, datum/eldritch_passive_context/context)
+
+/**
+ * * Always called on add, if we start enabled.
+ */
 /datum/prototype/eldritch_passive/proc/on_holder_enable(datum/eldritch_holder/holder, datum/eldritch_passive_context/context)
 	return
 
+/**
+ * * Always called on remove, if were enabled.
+ */
 /datum/prototype/eldritch_passive/proc/on_holder_disable(datum/eldritch_holder/holder, datum/eldritch_passive_context/context)
 	return
 
@@ -39,17 +57,20 @@
 /datum/prototype/eldritch_passive/proc/on_mob_disassociate(mob/cultist, datum/eldritch_holder/holder, datum/eldritch_passive_context/context)
 	return
 
+#warn hook
 /datum/prototype/eldritch_passive/proc/on_mob_tick(mob/cultist, datum/eldritch_holder/holder, datum/eldritch_passive_context/context, dt)
 	return
 
 /datum/prototype/eldritch_passive/proc/get_context_on_holder(datum/eldritch_holder/holder) as /datum/eldritch_passive_context
-	return holder.applied_passives[id] || holder.disabled_passives[id]
+	return holder.passives[id]
 
 /datum/prototype/eldritch_passive/proc/is_in_holder(datum/eldritch_holder/holder) as /datum/eldritch_passive_context
-	return holder.applied_passives[id] || holder.disabled_passives[id]
+	return !!holder.passives[id]
 
 /datum/prototype/eldritch_passive/proc/is_enabled_in_holder(datum/eldritch_holder/holder) as /datum/eldritch_passive_context
-	return holder.applied_passives[id]
+	var/datum/eldritch_passive_context/context = holder.passives[id]
+	return context ? context.enabled : FALSE
 
 /datum/prototype/eldritch_passive/proc/is_disabled_in_holder(datum/eldritch_holder/holder) as /datum/eldritch_passive_context
-	return holder.applied_passives[id]
+	var/datum/eldritch_passive_context/context = holder.passives[id]
+	return context ? !context.enabled : FALSE

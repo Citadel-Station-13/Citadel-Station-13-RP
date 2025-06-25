@@ -89,8 +89,8 @@
 	if(!target_gender)
 		target_gender = O.gender
 
-	M.gender = target_gender
-	M.identifying_gender = target_gender
+	M.set_gender(target_gender)
+	M.set_identifying_gender(target_gender)
 	if(target_gender == FEMALE)
 		M.f_style = "Shaved"
 	M.sync_organ_dna()

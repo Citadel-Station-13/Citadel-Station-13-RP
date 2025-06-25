@@ -1,10 +1,14 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
+/datum/prototype/eldritch_ability/eldritch_blast
+	ability_type = /datum/ability/eldritch_ability/eldritch_blast
+	name = "Eldritch Blast"
+	desc = "Discharge an offensive beam at your enemies."
+
 /datum/ability/eldritch_ability/eldritch_blast
-	name = "eldritch blast"
+	name = "Eldritch Blast"
 	desc = "Fire a powerful beam capable of warping reality."
-	#warn category
 	#warn sprite
 
 	/// hard cooldown set to 3 seconds
@@ -36,7 +40,8 @@
 
 	proj.original_target = clickchain.target
 	proj.def_zone = clickchain.legacy_get_target_zone()
-	SEND_SIGNAL(eldritch, COMSIG_ELDRITCH_HOLDER_FIRE_PROJECTILE, clickchain.performer, proj)
+	if(eldritch)
+		SEND_SIGNAL(eldritch, COMSIG_ELDRITCH_HOLDER_FIRE_PROJECTILE, clickchain.performer, proj)
 	proj.fire(clickchain.resolve_click_angle())
 
 /**

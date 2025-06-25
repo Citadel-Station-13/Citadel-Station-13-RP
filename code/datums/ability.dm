@@ -6,6 +6,10 @@
  * - supports custom tgui
  *
  * used for intrinsic species / antagonist / body abiltiies
+ *
+ * * abilities can have state serialized serialize_state() and deserialize_state() separately
+ *   from the actual ability. this allows for managing ability states without needing to
+ *   store the actual ability and its properties.
  */
 /datum/ability
 	//* Identity *//
@@ -96,6 +100,20 @@
 	if(!isnull(action))
 		QDEL_NULL(action)
 	return ..()
+
+/datum/ability/serialize()
+	. = ..()
+	.["state"] = serialize_state()
+
+/datum/ability/deserialize(list/data)
+	if(date["state"])
+		deserialize_state(data["state"])
+
+/datum/ability/proc/serialize_state()
+	return list()
+
+/datum/ability/proc/deserialize_state(list/state)
+	return
 
 /**
  * generates our action button if it doesn't exist

@@ -5,3 +5,8 @@
 	abstract_type = /datum/prototype/eldritch_knowledge/patron/moon
 	category = "The Crescent"
 	#warn icon
+
+/datum/prototype/eldritch_knowledge/patron/moon/entrypoint
+	name = "The Crescent Moon"
+	desc = "Gaze upon the Crescent Moon."
+	// TODO: lore

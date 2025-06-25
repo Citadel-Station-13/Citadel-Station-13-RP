@@ -17,7 +17,6 @@
 	var/list/memories_by_key
 
 	//* Roles *//
-	#warn hook
 	/// All associated roles
 	var/list/datum/role/roles
 
@@ -28,6 +27,8 @@
 	var/datum/eldritch_holder/r_holder_eldritch
 
 /datum/mind/Destroy()
+	if(current)
+		disassociate()
 	QDEL_NULL(characteristics)
 	QDEL_LIST_NULL(abilities)
 	return ..()
@@ -36,9 +37,12 @@
  * Removes us from our current mob.
  */
 /datum/mind/proc/disassociate()
+	SHOULD_NOT_SLEEP(TRUE)
+	disassociate()
 
 /datum/mind/proc/disassociate_impl(do_not_ghostize)
 	PRIVATE_PROC(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
 
 	ASSERT(!isnull(current))
 
@@ -49,9 +53,10 @@
 	// remove characteristics
 	characteristics?.disassociate_from_mob(current)
 	// remove role holders
-	#warn impl
+	r_holder_eldritch?.on_mob_disassociate(current)
 	// remove roles
-	#warn impl
+	for(var/datum/role/role in roles)
+		role.on_mob_disassociate(src, current)
 	// remove abilities
 	for(var/datum/ability/ability as anything in abilities)
 		ability.disassociate(current)
@@ -67,6 +72,8 @@
  * Puts us on a new mob.
  */
 /datum/mind/proc/associate(mob/character)
+	SHOULD_NOT_SLEEP(TRUE)
+
 	ASSERT(isnull(current))
 	ASSERT(isnull(character.mind))
 
@@ -76,9 +83,10 @@
 	// add characteristics
 	characteristics?.associate_with_mob(character)
 	// add roles
-	#warn impl
+	for(var/datum/role/role in roles)
+		role.on_mob_associate(src, current)
 	// add role holders
-	#warn impl
+	r_holder_eldritch?.on_mob_associate(current)
 	// add abilities
 	for(var/datum/ability/ability as anything in abilities)
 		ability.associate(character)
@@ -96,6 +104,8 @@
 		found.transfer_to(character)
 
 /datum/mind/proc/transfer(mob/new_character)
+	SHOULD_NOT_SLEEP(TRUE)
+
 	if(isnull(current))
 		associate(new_character)
 		return
@@ -215,7 +225,7 @@
  * Removes a memory
  */
 /datum/mind/proc/remove_memory(datum/memory/memory)
-	. = memory in memories
+	. = (memory in memories)
 	if(!.)
 		return
 	memories -= memory
@@ -287,16 +297,40 @@
 //* Roles *//
 
 /datum/mind/proc/add_role(datum/role/role)
+	if(role in roles)
+		return TRUE
+	roles += role
+	role.on_gain(src)
+	if(current)
+		role.on_mob_associate(src, current)
+	return TRUE
 
 /datum/mind/proc/remove_role(datum/role/role)
+	if(!(role in roles))
+		return TRUE
+	roles -= role
+	role.on_lost(src)
+	if(current)
+		role.on_mob_disassociate(src, current)
+	return TRUE
 
 //* Role Holder - Eldritch *//
 
 /datum/mind/proc/create_eldritch_holder()
+	if(r_holder_eldritch)
+		return r_holder_eldritch
+	r_holder_eldritch = new
+	if(current)
+		r_holder_eldritch.on_mob_associate(current)
+	return r_holder_eldritch
 
 /datum/mind/proc/delete_eldritch_holder()
-
-#warn impl all
+	if(!r_holder_eldritch)
+		return TRUE
+	if(current)
+		r_holder_eldritch.on_mob_disassociate(current)
+	QDEL_NULL(r_holder_eldritch)
+	return TRUE
 
 //* UI *//
 

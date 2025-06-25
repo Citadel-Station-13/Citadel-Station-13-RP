@@ -329,6 +329,15 @@
 	. = density
 	density = new_value
 
+/**
+ * Setter for gender.
+ */
+/atom/proc/set_gender(new_gender)
+	gender = new_gender
+	if(gender == new_gender)
+		return TRUE
+	return FALSE
+
 // Called to set the atom's invisibility and usd to add behavior to invisibility changes.
 /atom/proc/set_invisibility(var/new_invisibility)
 	if(invisibility == new_invisibility)
@@ -348,9 +357,6 @@
 	return FALSE
 
 /atom/proc/rcd_act(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
-	return
-
-/atom/proc/melt()
 	return
 
 /atom/proc/add_hiddenprint(mob/living/M)
@@ -791,6 +797,14 @@
 /atom/proc/reset_plane_and_layer()
 	plane = initial(plane)
 	set_base_layer(initial(layer))
+
+//* Reagents *//
+
+/atom/proc/create_reagents(max_vol, starting_flags)
+	if(reagents)
+		QDEL_NULL(reagents)
+	reagents = new /datum/reagent_holder(max_vol, src, starting_flags)
+	return reagents
 
 //* Persistence *//
 

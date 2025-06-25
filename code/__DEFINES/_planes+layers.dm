@@ -239,6 +239,14 @@
 #define WEATHER_PLANE 4
 
 /**
+ *! -- Game Displacement Plane
+ *? Used to do displacement effects on the game world.
+ */
+#warn impl this
+#define DISPLACEMENT_PLANE 5
+	#define DISPLACEMENT_LAYER_ELDRITCH_BLAST -100
+
+/**
  *! -- Lightmask Plane
  *
  * lighting mask plane used for:

@@ -11,7 +11,6 @@
 	plane.alpha = plane.alpha == 255? 0 : 255
 	to_chat(src, SPAN_NOTICE("You now [plane.alpha == 255? "see" : "no longer see"] verticality overlays."))
 
-
 /client/verb/motd()
 	set name = "MOTD"
 	set category = VERB_CATEGORY_OOC

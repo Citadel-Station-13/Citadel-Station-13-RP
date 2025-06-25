@@ -24,8 +24,6 @@
 /obj/effect/eldritch_effect/reality_disturbance/on_attack_hand(datum/event_args/actor/clickchain/e_args)
 	. = ..()
 
-#warn general todo: examine tweaks so other people can't see certain things and/or what someone's looking at
-
 /**
  * Called when a heretic fractures us.
  */
