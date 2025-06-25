@@ -354,7 +354,8 @@
 			r_holder_eldritch.ui_interact(usr)
 
 #warn mind panel from player panel? vv options too?
-/datum/mind/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+/datum/mind/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui, admin_inspect)
+	
 
 #warn impl
 

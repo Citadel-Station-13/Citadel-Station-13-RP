@@ -5,12 +5,12 @@
  * Rapidly realign your body, throwing off pain, stuns, and more.
  * Escalating cooldown as it's used more, but can be used in rapid succession after sufficient pause.
  */
-/datum/prototype/eldritch_ability/patron/blade/realignment
-	ability_type = /datum/ability/eldritch_ability/patron/blade/realignment
+/datum/prototype/eldritch_ability/realignment
+	ability_type = /datum/ability/eldritch_ability/realignment
 	name = "Realignment"
 	desc = "Shake off pain and incapacitation to fight on."
 
-/datum/ability/eldritch_ability/patron/blade/realignment
+/datum/ability/eldritch_ability/realignment
 	name = "Realignment"
 	desc = "Rapidly realign your senses, shaking off pain and incapacitation."
 	#warn sprite
@@ -24,5 +24,5 @@
 #warn impl
 
 
-/datum/ability/eldritch_ability/patron/blade/realignment/proc/give_status_effect_to(mob/target)
+/datum/ability/eldritch_ability/realignment/proc/give_status_effect_to(mob/target)
 	#warn impl

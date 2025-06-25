@@ -12,7 +12,7 @@
 
 GLOBAL_DATUM_INIT(default_state, /datum/ui_state/default, new)
 
-/datum/ui_state/default/can_use_topic(src_object, mob/user)
+/datum/ui_state/default/can_use_topic(datum/src_object, mob/user, datum/tgui/ui)
 	return user.default_can_use_topic(src_object) // Call the individual mob-overridden procs.
 
 /mob/proc/default_can_use_topic(src_object)

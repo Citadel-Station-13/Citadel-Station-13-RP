@@ -15,6 +15,11 @@
 	/// our interface desc
 	var/desc = "A perk granted by the infinite plane."
 
+	/// ui icon
+	var/ui_icon
+	/// ui icon state
+	var/ui_icon_state
+
 	/// our context type
 	var/context_type = /datum/eldritch_passive_context
 	/// can be toggled on/off
@@ -23,8 +28,7 @@
 	var/requires_ticking = FALSE
 
 /datum/prototype/eldritch_passive/proc/ui_serialize_passive()
-	var/serialized_icon
-	#warn impl
+	var/serialized_icon = ui_icon && ui_icon_state ? icon2base64(icon(ui_icon, ui_icon_state)) : null
 	return list(
 		"id" = id,
 		"name" = name,

@@ -6,7 +6,7 @@
 
 GLOBAL_DATUM_INIT(tgui_vorepanel_state, /datum/ui_state/vorepanel_state, new)
 
-/datum/ui_state/vorepanel_state/can_use_topic(src_object, mob/user)
+/datum/ui_state/vorepanel_state/can_use_topic(datum/src_object, mob/user, datum/tgui/ui)
 	if(src_object != user)
 		// Note, in order to allow others to look at others vore panels, change this to
 		// UI_UPDATE

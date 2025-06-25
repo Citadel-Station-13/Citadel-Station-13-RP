@@ -17,8 +17,8 @@
 	return id in user.eldritch_get_holder().recipe_ids
 
 /datum/crafting_recipe/eldritch_recipe/proc/ui_serialize_recipe()
-	var/serialized_icon
-	#warn impl
+	var/image/preview = get_preview_image()
+	var/serialized_icon = preview && preview.icon && preview.icon_state ? icon2base64(icon(preview.icon, preview.icon_state)) : null
 
 	return list(
 		"id" = id,

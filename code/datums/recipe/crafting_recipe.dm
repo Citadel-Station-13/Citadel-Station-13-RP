@@ -35,3 +35,9 @@
 
 /datum/crafting_recipe/proc/check_special_learned(mob/user)
 	return FALSE
+
+/**
+ * Get our cached appearance as an image.
+ */
+/datum/crafting_recipe/proc/get_preview_image()
+	#warn impl

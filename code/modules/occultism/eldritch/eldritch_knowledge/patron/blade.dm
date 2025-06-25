@@ -23,7 +23,9 @@
 		/datum/prototype/eldritch_knowledge/patron/blade/entrypoint::id,
 	)
 
-#warn impl
+	grant_eldritch_passive_ids = list(
+		/datum/prototype/eldritch_passive/eldritch_blast_modifier/eldritch_blast_fracturing_impact::id,
+	)
 
 /datum/prototype/eldritch_knowledge/patron/blade/sword_enhancement
 	name = "Blade Enhancement"
@@ -36,9 +38,12 @@
 		/datum/prototype/eldritch_knowledge/patron/blade/entrypoint::id,
 	)
 
-#warn impl
+	grant_eldritch_passive_ids = list(
+		/datum/prototype/eldritch_passive/eldritch_blade_modifier/bladeskill_cleave::id,
+		/datum/prototype/eldritch_passive/eldritch_blade_modifier/bladeskill_parry::id,
+	)
 
-/datum/prototype/eldritch_knowledge/patron/blade/realignment
+/datum/prototype/eldritch_knowledge/realignment
 	name = "Realignment"
 	desc = "Gains access to Realignment - a powerful combat ability allowing your body to push \
 	on through pain and duress."
@@ -49,4 +54,6 @@
 		/datum/prototype/eldritch_knowledge/patron/blade/entrypoint,
 	)
 
-#warn impl
+	grant_eldritch_ability_ids = list(
+		/datum/prototype/eldritch_ability/realignment::id,
+	)

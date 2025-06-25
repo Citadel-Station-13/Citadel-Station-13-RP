@@ -9,12 +9,16 @@
 	/// ability type to instance
 	var/ability_type = /datum/ability/eldritch_ability
 
+	/// ui icon
+	var/ui_icon
+	/// ui icon state
+	var/ui_icon_state
+
 /datum/prototype/eldritch_ability/proc/create_ability(datum/eldritch_holder/for_holder)
 	return new ability_type(for_holder)
 
 /datum/prototype/eldritch_ability/proc/ui_serialize_ability()
-	var/serialized_icon
-	#warn impl
+	var/serialized_icon = ui_icon && ui_icon_state ? icon2base64(icon(ui_icon, ui_icon_state)) : null
 	return list(
 		"id" = id,
 		"name" = name,

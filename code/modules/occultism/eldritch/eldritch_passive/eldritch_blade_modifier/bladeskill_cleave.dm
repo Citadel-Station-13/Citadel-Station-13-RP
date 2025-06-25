@@ -4,7 +4,13 @@
 /**
  * Most heretic weapons now automatically have some kind of multi-targeting.
  */
-/datum/prototype/eldritch_passive/bladeskill_cleave
+/datum/prototype/eldritch_passive/eldritch_blade_modifier/bladeskill_cleave
 	id = "bladeskill-cleave"
 
 // TODO: impl
+
+/datum/prototype/eldritch_passive/eldritch_blade_modifier/bladeskill_cleave/on_blade_melee_impact(datum/eldritch_holder/source, mob/wielder, obj/item/eldritch_blade/blade, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	. = ..()
+	
+
+#warn impl

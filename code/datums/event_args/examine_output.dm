@@ -50,3 +50,7 @@
 	var/list/appearance/required_appearances = list()
 
 #warn impl all
+
+
+/datum/examine_output/proc/send_required_resources(client/to_client)
+

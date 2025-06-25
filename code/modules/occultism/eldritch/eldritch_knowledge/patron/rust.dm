@@ -14,7 +14,7 @@
 #warn impl
 
 /datum/prototype/eldritch_knowledge/patron/rust/rust_spread
-	name = ""
+	name = "The Corruption Spreads"
 	desc = "Gain the ability to spread rust to things around you, weakening them in the process."
 	// TODO: icon
 	// TODO: lore
@@ -23,8 +23,12 @@
 		/datum/prototype/eldritch_knowledge/patron/rust/entrypoint::id,
 	)
 
+	grant_eldritch_ability_ids = list(
+		/datum/prototype/eldritch_ability/rust_spread::id,
+	)
+
 /datum/prototype/eldritch_knowledge/patron/rust/rust_attack_enhancement
-	name = ""
+	name = "Eroding Strikes"
 	desc = "Your eldritch bolts now corrode the creations of man, and your blade can be used to parry, \
 	spreading a cloud of damaging rust in the process."
 	// TODO: icon
@@ -32,6 +36,12 @@
 
 	require_eldritch_knowledge_ids = list(
 		/datum/prototype/eldritch_knowledge/patron/rust/entrypoint::id,
+	)
+
+	grant_eldritch_passive_ids = list(
+		/datum/prototype/eldritch_passive/eldritch_blast_modifier/eldritch_blast_rusting_impact::id,
+		/datum/prototype/eldritch_passive/eldritch_blast_modifier/eldritch_blast_rusting_traversal::id,
+		/datum/prototype/eldritch_passive/eldritch_blade_modifier/bladeskill_parry/rust_spread::id,
 	)
 
 /datum/prototype/eldritch_knowledge/patron/rust/improvised_weaponry
@@ -59,4 +69,6 @@
 		/datum/prototype/eldritch_knowledge/patron/rust/entrypoint::id,
 	)
 
-#warn impl
+	grant_eldritch_passive_ids = list(
+		/datum/prototype/eldritch_passive/dermal_rust_layer::id,
+	)

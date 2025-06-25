@@ -15,3 +15,4 @@
 	UnregisterSignal(holder, COMSIG_ELDRITCH_HOLDER_BLADE_MELEE_IMPACT)
 
 /datum/prototype/eldritch_passive/eldritch_blade_modifier/proc/on_blade_melee_impact(datum/eldritch_holder/source, mob/wielder, obj/item/eldritch_blade/blade, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	return

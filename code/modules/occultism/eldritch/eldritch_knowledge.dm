@@ -93,7 +93,7 @@
 		holder.remove_recipe(instance, src)
 
 /datum/prototype/eldritch_knowledge/proc/ui_serialize_knowledge()
-	var/serialized_icon
+	var/serialized_icon = ui_icon && ui_icon_state ? icon2base64(icon(ui_icon, ui_icon_state)) : null
 	var/list/serialized_abilities
 	var/list/serialized_passives
 	var/list/serialized_recipes
