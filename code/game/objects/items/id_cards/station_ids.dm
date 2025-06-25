@@ -801,3 +801,9 @@
 	desc = "An ID issued to the non-noble commoners of the New Kingdom of Adhomai. In some regions, adults must legally carry it on their person at all times."
 	icon_state = "nka"
 	job_access_type = null
+
+/obj/item/card/id/external/id_sdf
+	name = "haddi's folley SDF ID"
+	desc = "An ID issued to members of the system defence force of haddi's folley."
+	icon_state = "sdf"
+	access = list(155)

@@ -459,6 +459,27 @@
 /obj/machinery/smartfridge,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck4/hallway)
+"bO" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	dir = 1;
+	id_tag = "strelka_deck1_docking_pump"
+	},
+/obj/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/sensor/chamber_sensor,
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	pixel_x = 23;
+	id_tag = "strelka_deck4_docking"
+	},
+/obj/machinery/airlock_sensor{
+	pixel_x = 33;
+	id_tag = "strelka_trade_beruang_docking_pump"
+	},
+/obj/machinery/airlock_sensor{
+	pixel_x = 33;
+	id_tag = "strelka_deck4_docking_pump"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck4/fitness)
 "bU" = (
 /obj/effect/floor_decal/rust/mono_rusted3{
 	color = "#B95A00"
@@ -843,26 +864,6 @@
 	},
 /turf/simulated/floor/wood/broken,
 /area/strelka/shipbase/deck4/bridge/captain/room)
-"dI" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/cable/orange{
-	icon_state = "1-2"
-	},
-/obj/machinery/button/remote/airlock{
-	dir = 4;
-	pixel_x = -23;
-	id = "dorm1";
-	specialfunctions = 4
-	},
-/obj/structure/curtain/open/bed,
-/obj/machinery/light_switch{
-	dir = 4;
-	pixel_x = 22
-	},
-/turf/simulated/floor/tiled/dark,
-/area/strelka/shipbase/deck4/dormhallway/Dorm/Room4)
 "dJ" = (
 /obj/structure/cable/orange{
 	icon_state = "1-2"
@@ -1139,27 +1140,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/carpet/patterened/red,
 /area/strelka/shipbase/deck4/chapel)
-"eY" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/cable/orange{
-	icon_state = "1-2"
-	},
-/obj/machinery/button/remote/airlock{
-	dir = 4;
-	pixel_x = -23;
-	id = "dorm3";
-	specialfunctions = 4
-	},
-/obj/structure/curtain/open/black,
-/obj/machinery/light_switch{
-	dir = 4;
-	pixel_x = 22
-	},
-/turf/simulated/floor/tiled/dark,
-/area/strelka/shipbase/deck4/dormhallway/Dorm/Room2)
 "fa" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
@@ -1423,26 +1403,6 @@
 /obj/machinery/seed_storage/garden,
 /turf/simulated/floor/glass/reinforced/indoors,
 /area/strelka/shipbase/deck4/hallway/botany)
-"fZ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/cable/orange{
-	icon_state = "1-2"
-	},
-/obj/machinery/button/remote/airlock{
-	dir = 4;
-	pixel_x = -23;
-	id = "dorm4";
-	specialfunctions = 4
-	},
-/obj/structure/curtain/open/bed,
-/obj/machinery/light_switch{
-	dir = 4;
-	pixel_x = 22
-	},
-/turf/simulated/floor/tiled/dark,
-/area/strelka/shipbase/deck4/dormhallway/Dorm)
 "ga" = (
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -1581,6 +1541,21 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/bridge/hop/office)
+"gz" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 6
+	},
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
+/obj/map_helper/airlock/door/int_door,
+/obj/machinery/access_button/airlock_interior{
+	pixel_x = -22;
+	master_tag = "strelka_deck4_docking"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck4/fitness)
 "gC" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/cable/green{
@@ -1659,6 +1634,19 @@
 	},
 /turf/simulated/floor/bmarble,
 /area/strelka/shipbase/deck4/bar)
+"gU" = (
+/obj/machinery/door/blast/strelka/blockade,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
+/obj/map_helper/airlock/door/ext_door,
+/obj/machinery/access_button/airlock_exterior{
+	pixel_x = 21;
+	master_tag = "strelka_north_docking"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck4/fitness)
 "gV" = (
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -2026,6 +2014,14 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck4/bridge)
+"iH" = (
+/obj/machinery/door/airlock{
+	name = "Toilets";
+	id_tag = "toilet-bar"
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/strelka/shipbase/deck4/bar/back)
 "iI" = (
 /obj/structure/flora/pottedplant{
 	pixel_y = 15
@@ -2390,6 +2386,25 @@
 "jW" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck4/kitchen/freeze)
+"ka" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/light/small/old{
+	dir = 8
+	},
+/obj/structure/closet/walllocker_double/west,
+/obj/structure/cable/orange{
+	icon_state = "1-2"
+	},
+/obj/machinery/button/remote/airlock{
+	dir = 8;
+	pixel_x = 24;
+	id = "dorm1";
+	specialfunctions = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/strelka/shipbase/deck4/dormhallway/Dorm/Room4)
 "ke" = (
 /obj/structure/railing,
 /turf/simulated/open,
@@ -2442,13 +2457,6 @@
 /obj/structure/table/bench/steel,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck4/bridge)
-"kp" = (
-/obj/structure/table/bench/wooden,
-/obj/machinery/computer/ship/navigation/telescreen{
-	pixel_x = 31
-	},
-/turf/simulated/floor/wood/indoors,
-/area/strelka/shipbase/deck4/fitness)
 "kr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -2761,6 +2769,20 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/fitness)
+"lA" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/cable/orange{
+	icon_state = "1-2"
+	},
+/obj/structure/curtain/open/bed,
+/obj/machinery/light_switch{
+	dir = 4;
+	pixel_x = 22
+	},
+/turf/simulated/floor/tiled/dark,
+/area/strelka/shipbase/deck4/dormhallway/Dorm/Room4)
 "lB" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck4/fitness)
@@ -2923,26 +2945,6 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/bar)
-"mn" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable/orange{
-	icon_state = "1-2"
-	},
-/obj/machinery/button/remote/airlock{
-	dir = 4;
-	pixel_x = -23;
-	id = "dorm2";
-	specialfunctions = 4
-	},
-/obj/machinery/door/firedoor/glass,
-/obj/structure/curtain/open/bed,
-/obj/machinery/light_switch{
-	dir = 4;
-	pixel_x = 22
-	},
-/turf/simulated/floor/tiled/dark,
-/area/strelka/shipbase/deck4/dormhallway/Dorm/Room3)
 "mq" = (
 /obj/item/clothing/suit/bio_suit/janitor,
 /obj/item/clothing/head/bio_hood/janitor,
@@ -3330,6 +3332,25 @@
 	},
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck4/hallway/botany)
+"nM" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/flora/grass/event/yellow_flowers1,
+/obj/structure/railing,
+/obj/structure/window/reinforced,
+/obj/machinery/light/flamp,
+/obj/structure/flora/pottedplant/flower{
+	pixel_y = 18;
+	pixel_x = -2;
+	layer = 3
+	},
+/obj/structure/flora/tree/fey/small_tree/tree1,
+/turf/simulated/floor/event/grass/grass1,
+/area/strelka/shipbase/deck4/bar)
 "nN" = (
 /obj/structure/window/reinforced/survival_pod{
 	dir = 4
@@ -3426,6 +3447,24 @@
 	},
 /turf/simulated/floor/wood/broken,
 /area/strelka/shipbase/deck4/bar)
+"ok" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/light/small/old{
+	dir = 8
+	},
+/obj/structure/closet/walllocker_double/west,
+/obj/structure/cable/orange{
+	icon_state = "1-2"
+	},
+/obj/machinery/button/remote/airlock{
+	dir = 8;
+	pixel_x = 21;
+	id = "dorm4";
+	specialfunctions = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/strelka/shipbase/deck4/dormhallway/Dorm)
 "ol" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 6
@@ -3693,19 +3732,6 @@
 /obj/structure/curtain/open/black,
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck4/bridge/captain/room)
-"pf" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/map_helper/access_helper/airlock/station/service/kitchen,
-/obj/machinery/door/airlock/civilian{
-	name = "Freezer"
-	},
-/obj/machinery/door/firedoor/glass,
-/obj/structure/cable/orange{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/strelka/shipbase/deck4/kitchen)
 "ph" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck4/bar/back)
@@ -3827,19 +3853,6 @@
 /obj/structure/adherent_pylon,
 /turf/simulated/floor/crystal,
 /area/strelka/shipbase/deck4/adherent)
-"pK" = (
-/obj/effect/floor_decal/rust,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/light/small/old{
-	dir = 8
-	},
-/obj/structure/closet/walllocker_double/west,
-/obj/structure/cable/orange{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/strelka/shipbase/deck4/dormhallway/Dorm/Room3)
 "pL" = (
 /obj/spawner/window/low_wall/firelocks,
 /obj/structure/curtain/black,
@@ -4071,6 +4084,21 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/bar)
+"qR" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/cable/orange{
+	icon_state = "1-2"
+	},
+/obj/structure/curtain/open/black,
+/obj/machinery/light_switch{
+	dir = 4;
+	pixel_x = 22
+	},
+/turf/simulated/floor/tiled/dark,
+/area/strelka/shipbase/deck4/dormhallway/Dorm/Room2)
 "qW" = (
 /obj/structure/table/bench/marble,
 /turf/simulated/floor/carpet/bcarpet,
@@ -4415,6 +4443,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck4/bridge/captain)
+"sn" = (
+/obj/map_helper/airlock/atmos/chamber_pump,
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	dir = 1;
+	id_tag = "strelka_deck1_docking_pump"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck4/fitness)
 "so" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/strelka/shipbase/deck4/dormhallway/pool/sauna/room2)
@@ -4461,19 +4497,6 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/strelka/shipbase/deck4/bar)
-"sF" = (
-/obj/effect/floor_decal/rust,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/light/small/old{
-	dir = 8
-	},
-/obj/structure/closet/walllocker_double/west,
-/obj/structure/cable/orange{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/strelka/shipbase/deck4/dormhallway/Dorm/Room4)
 "sH" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
@@ -4756,10 +4779,6 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/hallway)
-"tY" = (
-/obj/structure/table/bench/wooden,
-/turf/simulated/floor/wood/indoors,
-/area/strelka/shipbase/deck4/fitness)
 "tZ" = (
 /obj/effect/floor_decal/rust/mono_rusted3{
 	color = "#B95A00"
@@ -4801,6 +4820,20 @@
 "uy" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/strelka/shipbase/deck4/dormhallway/Dorm/Room3)
+"uz" = (
+/obj/structure/table/carbon/reinforced,
+/obj/item/pen,
+/obj/item/paper_bin{
+	pixel_x = -3;
+	pixel_y = 7
+	},
+/obj/item/reagent_containers/food/drinks/bottle/holywater,
+/obj/item/storage/fancy/crayons,
+/obj/item/nullrod_legacy{
+	pixel_x = 9
+	},
+/turf/simulated/floor/lino,
+/area/strelka/shipbase/deck4/chapel/morgue)
 "uB" = (
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -4924,6 +4957,25 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck4/bridge)
+"uS" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/flora/grass/event/yellow_flowers1,
+/obj/structure/railing,
+/obj/structure/window/reinforced,
+/obj/machinery/light/flamp,
+/obj/structure/flora/pottedplant/flower{
+	pixel_y = 18;
+	pixel_x = -2;
+	layer = 5
+	},
+/obj/structure/flora/tree/fey/small_tree/tree4,
+/turf/simulated/floor/event/grass/grass1,
+/area/strelka/shipbase/deck4/bar)
 "uU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -5185,6 +5237,12 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck4/hallway)
+"wh" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 10
+	},
+/turf/simulated/wall/r_wall/prepainted,
+/area/strelka/shipbase/deck4/fitness)
 "wj" = (
 /obj/structure/bedsheetbin,
 /obj/structure/table/hardwoodtable,
@@ -6342,6 +6400,25 @@
 	},
 /turf/simulated/floor/bmarble,
 /area/strelka/shipbase/deck4/bar)
+"Cx" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/light/small/old{
+	dir = 8
+	},
+/obj/structure/closet/walllocker_double/west,
+/obj/structure/cable/orange{
+	icon_state = "1-2"
+	},
+/obj/machinery/button/remote/airlock{
+	dir = 8;
+	pixel_x = 24;
+	id = "dorm2";
+	specialfunctions = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/strelka/shipbase/deck4/dormhallway/Dorm/Room3)
 "Cy" = (
 /obj/structure/flora/pottedplant/shoot{
 	pixel_y = 9;
@@ -6459,6 +6536,12 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/library)
+"CZ" = (
+/obj/machinery/atmospherics/pipe/tank/air{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/space)
 "Da" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
@@ -6497,6 +6580,18 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck4/hallway)
+"Dq" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/orange{
+	icon_state = "1-8"
+	},
+/mob/living/simple_mob/animal/passive/penguin/baby{
+	name = "Emil"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck4/kitchen/freeze)
 "Dt" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -6613,6 +6708,13 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/nanite)
+"DP" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/mob/living/simple_mob/animal/passive/cat/kitten,
+/turf/simulated/floor/wood/indoors,
+/area/strelka/shipbase/deck4/bar)
 "DT" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/shuttle/floor/glass,
@@ -6791,6 +6893,15 @@
 /obj/structure/railing,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck4/bridge)
+"EQ" = (
+/obj/machinery/door/blast/strelka/blockade,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
+/obj/map_helper/airlock/door/ext_door,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck4/fitness)
 "ER" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/light/small/old{
@@ -6899,6 +7010,12 @@
 	},
 /turf/simulated/floor/carpet/turcarpet,
 /area/strelka/shipbase/deck4/bar)
+"Fs" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/wall/r_wall/prepainted,
+/area/strelka/shipbase/deck4/fitness)
 "Fu" = (
 /obj/machinery/power/breakerbox/activated{
 	RCon_tag = "Deck 4 Bridge Bypass"
@@ -7169,6 +7286,10 @@
 /obj/landmark/spawnpoint/job/bartender,
 /turf/simulated/floor/lino,
 /area/strelka/shipbase/deck4/bar/back)
+"GT" = (
+/mob/living/simple_mob/animal/passive/dog/corgi/Ian,
+/turf/simulated/floor/wood,
+/area/strelka/shipbase/deck4/bridge/hop/room)
 "GU" = (
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -7328,19 +7449,6 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/bar)
-"HL" = (
-/obj/effect/floor_decal/rust,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/light/small/old{
-	dir = 8
-	},
-/obj/structure/closet/walllocker_double/west,
-/obj/structure/cable/orange{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/strelka/shipbase/deck4/dormhallway/Dorm/Room2)
 "HO" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck4/adherent)
@@ -8377,13 +8485,6 @@
 "Mf" = (
 /turf/simulated/wall/wood/hardwood,
 /area/strelka/shipbase/deck4/bar/back)
-"Mi" = (
-/obj/structure/sink{
-	dir = 4;
-	pixel_x = 11
-	},
-/turf/simulated/floor/tiled/asteroid_steel,
-/area/strelka/shipbase/deck4/bar/back)
 "Ml" = (
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/effect/floor_decal/rust,
@@ -8633,6 +8734,10 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck4/kitchen)
+"Nh" = (
+/obj/machinery/holopad/ship,
+/turf/simulated/floor/carpet/turcarpet,
+/area/strelka/shipbase/deck4/bar)
 "Ni" = (
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/carpet/bcarpet,
@@ -8719,6 +8824,20 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/hallway)
+"NI" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/cable/orange{
+	icon_state = "1-2"
+	},
+/obj/structure/curtain/open/bed,
+/obj/machinery/light_switch{
+	dir = 4;
+	pixel_x = 22
+	},
+/turf/simulated/floor/tiled/dark,
+/area/strelka/shipbase/deck4/dormhallway/Dorm)
 "NM" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/stack/material/cloth{
@@ -8801,6 +8920,20 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/hallway)
+"NW" = (
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = 31
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 1
+	},
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
+/obj/map_helper/airlock/door/int_door,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck4/fitness)
 "NZ" = (
 /obj/structure/table/hardwoodtable,
 /obj/structure/flora/pottedplant/stoutbush{
@@ -9115,10 +9248,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck4/maintenance/library)
-"PO" = (
-/obj/machinery/holopad,
-/turf/simulated/floor/carpet/turcarpet,
-/area/strelka/shipbase/deck4/bar)
 "PP" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck4/maintenance/bridge)
@@ -9211,6 +9340,25 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/hallway)
+"Qm" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/light/small/old{
+	dir = 8
+	},
+/obj/structure/closet/walllocker_double/west,
+/obj/structure/cable/orange{
+	icon_state = "1-2"
+	},
+/obj/machinery/button/remote/airlock{
+	dir = 8;
+	pixel_x = 22;
+	id = "dorm3";
+	specialfunctions = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/strelka/shipbase/deck4/dormhallway/Dorm/Room2)
 "Qp" = (
 /obj/machinery/door/airlock{
 	name = "Room 4";
@@ -9244,11 +9392,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/hallway)
-"Qx" = (
-/obj/spawner/window/low_wall/firelocks,
-/obj/machinery/door/blast/strelka/blockade,
-/turf/simulated/floor/tiled/dark,
-/area/strelka/shipbase/deck4/fitness)
 "Qz" = (
 /obj/machinery/shower{
 	dir = 4
@@ -9395,6 +9538,17 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/hallway)
+"Ru" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/obj/structure/table/bench/wooden,
+/turf/simulated/floor/tiled/dark,
+/area/strelka/shipbase/deck4/fitness)
 "Rv" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 9
@@ -9792,6 +9946,21 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/dormhallway/Dorm/Room4)
+"TC" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/map_helper/access_helper/airlock/station/service/kitchen,
+/obj/machinery/door/airlock/civilian{
+	name = "Freezer"
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/structure/cable/orange{
+	icon_state = "1-2"
+	},
+/obj/structure/fans/tiny,
+/obj/structure/fans/tiny,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck4/kitchen)
 "TD" = (
 /obj/machinery/door/airlock/maintenance_hatch,
 /obj/machinery/door/firedoor/glass,
@@ -9819,18 +9988,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/dormhallway/Dorm/Room2)
-"TH" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/light/small/old{
-	dir = 8
-	},
-/obj/structure/closet/walllocker_double/west,
-/obj/structure/cable/orange{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/strelka/shipbase/deck4/dormhallway/Dorm)
 "TK" = (
 /obj/machinery/holopad,
 /obj/structure/flora/ausbushes/grassybush,
@@ -10006,6 +10163,19 @@
 "UE" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck4/bridge/hop/office)
+"UI" = (
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 11
+	},
+/obj/machinery/button/remote/airlock{
+	dir = 1;
+	pixel_y = -24;
+	id = "toilet-bar";
+	specialfunctions = 4
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/strelka/shipbase/deck4/bar/back)
 "UJ" = (
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/effect/floor_decal/rust,
@@ -10233,15 +10403,6 @@
 /obj/machinery/camera/network/security,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck4/dormhallway/pool)
-"Wq" = (
-/obj/effect/floor_decal/rust,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable/orange{
-	icon_state = "1-8"
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/strelka/shipbase/deck4/kitchen/freeze)
 "Wr" = (
 /obj/structure/railing,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -10268,6 +10429,20 @@
 	},
 /turf/simulated/floor/carpet/turcarpet,
 /area/strelka/shipbase/deck4/library)
+"Wu" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/orange{
+	icon_state = "1-2"
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/structure/curtain/open/bed,
+/obj/machinery/light_switch{
+	dir = 4;
+	pixel_x = 22
+	},
+/turf/simulated/floor/tiled/dark,
+/area/strelka/shipbase/deck4/dormhallway/Dorm/Room3)
 "Wv" = (
 /obj/structure/bed/chair/sofa/brown/right{
 	dir = 8
@@ -10463,20 +10638,6 @@
 	name = "Hollow hardwood"
 	},
 /area/strelka/shipbase/deck4/hallway/botany)
-"XB" = (
-/obj/structure/table/carbon/reinforced,
-/obj/item/pen,
-/obj/item/paper_bin{
-	pixel_x = -3;
-	pixel_y = 7
-	},
-/obj/item/reagent_containers/food/drinks/bottle/holywater,
-/obj/item/storage/fancy/crayons,
-/obj/item/nullrod_legacy{
-	pixel_x = 9
-	},
-/turf/simulated/floor/lino,
-/area/strelka/shipbase/deck4/chapel/morgue)
 "XE" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck4/bar)
@@ -10588,16 +10749,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck4/dormhallway/pool)
-"Yc" = (
-/obj/effect/floor_decal/spline/plain{
-	dir = 1
-	},
-/obj/effect/floor_decal/spline/fancy/wood,
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/strelka/shipbase/deck4/fitness)
 "Yd" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/computer/cryopod/gateway{
@@ -10640,13 +10791,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck4/arrival)
-"Yn" = (
-/obj/machinery/door/airlock{
-	name = "Toilets"
-	},
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/tiled/asteroid_steel,
-/area/strelka/shipbase/deck4/bar/back)
 "Yp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -10886,28 +11030,6 @@
 /obj/item/bedsheet/mime,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/fitness/mime)
-"Zx" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/flora/grass/event/yellow_flowers1,
-/obj/structure/railing,
-/obj/structure/window/reinforced,
-/obj/machinery/light/flamp,
-/obj/structure/flora/pottedplant/flower{
-	pixel_y = 18;
-	pixel_x = -2;
-	layer = 3
-	},
-/obj/structure/flora/pottedplant/minitree{
-	pixel_y = 2;
-	layer = 3.1
-	},
-/turf/simulated/floor/event/grass/grass1,
-/area/strelka/shipbase/deck4/bar)
 "ZC" = (
 /obj/machinery/holopad,
 /obj/effect/floor_decal/spline/fancy/wood/three_quarters,
@@ -25086,7 +25208,7 @@ pP
 qq
 lB
 lB
-jR
+lB
 jR
 jR
 jR
@@ -25278,9 +25400,9 @@ tP
 HH
 Pm
 bw
-tY
-Qx
-jR
+gz
+sn
+EQ
 jR
 jR
 jR
@@ -25472,9 +25594,9 @@ fb
 VK
 bD
 QY
-kp
-Qx
-jR
+NW
+bO
+gU
 jR
 jR
 jR
@@ -25628,9 +25750,9 @@ PH
 BZ
 xF
 Yv
-dI
+lA
 TA
-sF
+ka
 qA
 eg
 tH
@@ -25665,10 +25787,10 @@ LT
 JE
 LO
 jC
-Yc
+Ru
+Fs
 lB
 lB
-jR
 jR
 jR
 jR
@@ -25860,8 +25982,8 @@ RU
 Xs
 ij
 ol
-lB
-jR
+wh
+CZ
 jR
 jR
 jR
@@ -26404,9 +26526,9 @@ wV
 zr
 bn
 Op
-mn
+Wu
 OM
-pK
+Cx
 NN
 eg
 BL
@@ -27180,9 +27302,9 @@ Oz
 NZ
 km
 wm
-eY
+qR
 TG
-HL
+Qm
 fg
 cn
 DX
@@ -27956,9 +28078,9 @@ Su
 QC
 ER
 KP
-fZ
+NI
 SC
-TH
+ok
 Qp
 eg
 iK
@@ -28538,9 +28660,9 @@ LB
 Ng
 VA
 sI
-pf
+TC
 Lj
-Wq
+Dq
 RB
 ca
 jW
@@ -29921,7 +30043,7 @@ Cm
 HF
 wy
 mG
-XB
+uz
 Zs
 Gp
 rD
@@ -30091,7 +30213,7 @@ LB
 lR
 UT
 LB
-Zx
+nM
 tJ
 Zv
 rU
@@ -30286,7 +30408,7 @@ dP
 fT
 pT
 ai
-tJ
+DP
 TE
 hH
 JT
@@ -30678,7 +30800,7 @@ tJ
 TE
 Hm
 Hm
-PO
+Nh
 Hm
 Iy
 Jc
@@ -31643,7 +31765,7 @@ ph
 Mf
 Mf
 ph
-Zx
+uS
 tJ
 TE
 uZ
@@ -32228,7 +32350,7 @@ Bn
 Mf
 ph
 ph
-Yn
+iH
 ph
 PP
 PP
@@ -32422,7 +32544,7 @@ xJ
 Mf
 ph
 Tn
-Mi
+UI
 ph
 XR
 Cj
@@ -33393,7 +33515,7 @@ jR
 eh
 BN
 pV
-pV
+GT
 pV
 eQ
 VV

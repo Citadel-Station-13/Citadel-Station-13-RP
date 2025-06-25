@@ -5734,16 +5734,6 @@
 /obj/map_helper/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/brig)
-"emg" = (
-/obj/machinery/porta_turret/crescent{
-	density = 1;
-	faction = "neutral"
-	},
-/obj/machinery/shield_diffuser,
-/obj/machinery/shield_diffuser,
-/obj/machinery/shield_diffuser,
-/turf/simulated/floor/airless/ceiling,
-/area/endeavour/command/turrets)
 "emn" = (
 /turf/simulated/floor,
 /area/maintenance/security/port)
@@ -8250,14 +8240,6 @@
 /obj/structure/filingcabinet,
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hop)
-"ggB" = (
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/structure/curtain/open/bed{
-	name = "curtain"
-	},
-/obj/map_helper/paint/palebottlegreen,
-/turf/simulated/floor/plating,
-/area/space)
 "ggC" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -8778,12 +8760,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3afthall)
-"gBR" = (
-/obj/machinery/shield_diffuser,
-/obj/machinery/shield_diffuser,
-/obj/machinery/shield_diffuser,
-/turf/simulated/floor/airless/ceiling,
-/area/endeavour/command/turrets)
 "gBU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/universal{
 	dir = 4
@@ -13648,11 +13624,7 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d3aftmaint)
 "kfD" = (
-/obj/machinery/porta_turret/crescent{
-	density = 1;
-	faction = "neutral"
-	},
-/turf/simulated/floor/airless/ceiling,
+/turf/space/basic,
 /area/endeavour/command/turrets)
 "kfO" = (
 /turf/simulated/floor/wood,
@@ -20483,9 +20455,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/lino,
 /area/security/forensics)
-"pwo" = (
-/turf/simulated/wall/r_wall/prepainted/civilian,
-/area/space)
 "pwu" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -21737,6 +21706,10 @@
 	},
 /obj/item/stool/padded,
 /obj/item/bikehorn/rubberducky,
+/obj/machinery/light{
+	dir = 1;
+	pixel_y = 20
+	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
 "qud" = (
@@ -36487,40 +36460,40 @@ mDp
 mDp
 mDp
 pRW
-jYr
-qkI
-jYr
-mDp
-mDp
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
-pRW
 pRW
 pRW
 pRW
 mDp
+mDp
 pRW
-jYr
-qkI
-jYr
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+pRW
+mDp
+pRW
+pRW
+pRW
+pRW
 pRW
 pRW
 xJG
@@ -36922,8 +36895,8 @@ sDq
 hPM
 csb
 csb
-gBR
-emg
+csb
+csb
 pRW
 pRW
 pRW
@@ -37074,28 +37047,28 @@ vrt
 eAp
 pRW
 pRW
-jYr
-qkI
-jYr
+pRW
+pRW
+pRW
 pRW
 xJG
 pRW
 mDp
 mDp
-pwo
-ggB
-ggB
-ggB
-pwo
-pwo
-ggB
-ggB
-ggB
-pwo
-pwo
-ggB
-ggB
-ggB
+lLG
+brs
+brs
+brs
+lLG
+lLG
+brs
+brs
+brs
+lLG
+lLG
+brs
+brs
+brs
 swy
 guu
 bxI
@@ -37117,7 +37090,7 @@ hPM
 csb
 csb
 csb
-gBR
+csb
 pRW
 pRW
 pRW
@@ -39778,7 +39751,7 @@ pRW
 pRW
 pRW
 pRW
-jYr
+pRW
 kdY
 kdY
 kdY
@@ -39972,7 +39945,7 @@ pRW
 pRW
 pRW
 pRW
-qkI
+pRW
 kdY
 xEQ
 anU
@@ -40166,7 +40139,7 @@ pRW
 pRW
 pRW
 pRW
-jYr
+pRW
 kdY
 njM
 wpc
@@ -40419,7 +40392,7 @@ eCc
 wyr
 wyr
 wyr
-jYr
+kfD
 pRW
 pRW
 pRW
@@ -40613,7 +40586,7 @@ tqQ
 oWd
 icx
 icx
-qkI
+kfD
 pRW
 pRW
 pRW
@@ -40807,7 +40780,7 @@ bly
 yiF
 icx
 icx
-jYr
+kfD
 pRW
 pRW
 pRW
@@ -42675,7 +42648,7 @@ pRW
 pRW
 pRW
 pRW
-jYr
+csb
 pRW
 xBj
 gDV
@@ -42869,7 +42842,7 @@ pRW
 pRW
 pRW
 pRW
-kfD
+csb
 pRW
 xBj
 msb
@@ -43063,7 +43036,7 @@ pRW
 pRW
 pRW
 pRW
-jYr
+csb
 pRW
 xBj
 gDV
@@ -45003,7 +44976,7 @@ pRW
 pRW
 pRW
 pRW
-jYr
+csb
 pRW
 nOa
 nJF
@@ -45197,7 +45170,7 @@ pRW
 pRW
 pRW
 pRW
-kfD
+csb
 pRW
 nOa
 oWf
@@ -45391,7 +45364,7 @@ pRW
 pRW
 pRW
 pRW
-jYr
+csb
 pRW
 nOa
 wqT
@@ -47719,7 +47692,7 @@ pRW
 pRW
 pRW
 pRW
-jYr
+csb
 pRW
 noy
 uzS
@@ -47913,7 +47886,7 @@ pRW
 pRW
 pRW
 pRW
-kfD
+csb
 pRW
 noy
 nme
@@ -48107,7 +48080,7 @@ pRW
 pRW
 pRW
 pRW
-jYr
+csb
 pRW
 noy
 sjO
@@ -53947,7 +53920,7 @@ mDp
 pRW
 pRW
 pRW
-jYr
+csb
 hDR
 lSG
 eyy
@@ -54141,7 +54114,7 @@ pRW
 pRW
 pRW
 pRW
-qkI
+csb
 hDR
 ozQ
 ozQ
@@ -54335,7 +54308,7 @@ pRW
 pRW
 pRW
 pRW
-jYr
+csb
 oiQ
 hLw
 eyy
@@ -57246,7 +57219,7 @@ pRW
 pRW
 pRW
 pRW
-vXk
+jYr
 eAp
 dTV
 pty
@@ -61358,8 +61331,8 @@ pty
 fLE
 dTV
 dTV
-qkI
-jYr
+csb
+csb
 pRW
 mDp
 pRW
@@ -61552,7 +61525,7 @@ dTV
 dTV
 dTV
 pRW
-jYr
+csb
 pRW
 pRW
 mDp
