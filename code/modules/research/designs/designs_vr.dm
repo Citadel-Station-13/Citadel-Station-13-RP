@@ -1,50 +1,48 @@
 
 
 /datum/prototype/design/science/weapon/sizegun
-	design_name = "Size gun"
-	id = "RNDDesignSizeGun"
+	id = "sizegun"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_POWER = 2)
 	materials_base = list(MAT_STEEL = 3000, MAT_GLASS = 2000, MAT_URANIUM = 2000)
 	build_path = /obj/item/gun/projectile/energy/sizegun
 
 /datum/prototype/design/science/bluespace_jumpsuit
-	design_name = "Bluespace jumpsuit"
-	id = "RNDDesignBSJumpsuit"
+	id = "bsjumpsuit"
 	req_tech = list(TECH_BLUESPACE = 2, TECH_MATERIAL = 3, TECH_POWER = 2)
 	materials_base = list(MAT_STEEL = 4000, MAT_GLASS = 4000)
 	build_path = /obj/item/clothing/under/bluespace
 
 /datum/prototype/design/science/item/pressureinterlock
 	design_name = "APP pressure interlock"
-	id = "RNDDesignAntigunPressureLock"
+	id = "antiguninterlock"
 	req_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 	materials_base = list(MAT_STEEL = 1000, MAT_GLASS = 250)
 	build_path = /obj/item/pressurelock
 
 /datum/prototype/design/science/weapon/advparticle
 	design_name = "Advanced anti-particle rifle"
-	id = "RNDDesignAntiRifle"
+	id = "antirifle"
 	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 5, TECH_POWER = 3, TECH_MAGNET = 3)
 	materials_base = list(MAT_STEEL = 5000, MAT_GLASS = 1000, MAT_GOLD = 1000, MAT_URANIUM = 750)
 	build_path = /obj/item/gun/projectile/energy/particle/advanced
 
 /datum/prototype/design/science/weapon/particlecannon
 	design_name = "Anti-particle cannon"
-	id = "RNDDesignAntiCannon"
+	id = "anticannon"
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 5, TECH_POWER = 4, TECH_MAGNET = 4)
 	materials_base = list(MAT_STEEL = 10000, MAT_GLASS = 1500, MAT_GOLD = 2000, MAT_URANIUM = 1000, MAT_DIAMOND = 2000)
 	build_path = /obj/item/gun/projectile/energy/particle/cannon
 
 /datum/prototype/design/science/hud/omni
 	design_name = "AR glasses"
-	id = "RNDDesignOmniHud"
+	id = "omnihud"
 	req_tech = list(TECH_MAGNET = 4, TECH_COMBAT = 3, TECH_BIO = 3)
 	materials_base = list(MAT_STEEL = 1000, MAT_GLASS = 1000)
 	build_path = /obj/item/clothing/glasses/omnihud
 
 /datum/prototype/design/science/translocator
 	design_name = "Personal translocator"
-	id = "RNDDesignTransloc"
+	id = "translocator"
 	req_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5, TECH_ILLEGAL = 6)
 	materials_base = list(MAT_STEEL = 4000, MAT_GLASS = 2000, MAT_URANIUM = 4000, MAT_DIAMOND = 2000)
 	build_path = /obj/item/perfect_tele
@@ -53,97 +51,97 @@
 
 /datum/prototype/design/circuit/transhuman_clonepod
 	design_name = "grower pod"
-	id = "RNDDesignClonepod"
+	id = "clonepod"
 	req_tech = list(TECH_DATA = 3, TECH_BIO = 3)
 	build_path = /obj/item/circuitboard/transhuman_clonepod
 
 /datum/prototype/design/circuit/transhuman_synthprinter
 	design_name = "SynthFab 3000"
-	id = "RNDDesignSynthClonePod"
+	id = "robot_clonepod"
 	req_tech = list(TECH_DATA = 3, TECH_ENGINEERING = 3)
 	build_path = /obj/item/circuitboard/transhuman_synthprinter
 
 /datum/prototype/design/circuit/transhuman_resleever
 	design_name = "Resleeving pod"
-	id = "RNDDesignResleever"
+	id = "resleevepod"
 	req_tech = list(TECH_ENGINEERING = 4, TECH_BIO = 4)
 	build_path = /obj/item/circuitboard/transhuman_resleever
 
 /datum/prototype/design/circuit/resleeving_control
 	design_name = "Resleeving control console"
-	id = "RNDDesignResleeverConsole"
+	id = "resleeveconsole"
 	req_tech = list(TECH_DATA = 5)
 	build_path = /obj/item/circuitboard/resleeving_control
 
 /datum/prototype/design/science/weapon/netgun
 	design_name = "\'Retiarius\' capture gun" //cit change
-	id = "RNDDesignNetGun"
+	id = "netgun"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 5, TECH_MAGNET = 3)
 	materials_base = list(MAT_STEEL = 6000, MAT_GLASS = 3000)
 	build_path = /obj/item/gun/projectile/energy/netgun
 
 /datum/prototype/design/circuit/algae_farm
 	design_name = "Algae Oxygen Generator"
-	id = "RNDDesignAlgaeOxygenerator"
+	id = "algaeoxygen"
 	req_tech = list(TECH_ENGINEERING = 3, TECH_BIO = 2)
 	build_path = /obj/item/circuitboard/algae_farm
 
 /datum/prototype/design/circuit/thermoregulator
 	design_name = "thermal regulator"
-	id = "RNDDesignThermalRegulator"
+	id = "thermoregulator"
 	req_tech = list(TECH_ENGINEERING = 4, TECH_POWER = 3)
 	build_path = /obj/item/circuitboard/thermoregulator
 
 /datum/prototype/design/circuit/bomb_tester
 	design_name = "Explosive Effect Simulator"
-	id = "RNDDesignBombTester"
+	id = "bombtester"
 	req_tech = list(TECH_PHORON = 3, TECH_DATA = 2, TECH_MAGNET = 2)
 	build_path = /obj/item/circuitboard/bomb_tester
 
 //////Micro mech stuff
 /datum/prototype/design/circuit/mecha/gopher_main
 	design_name = "'Gopher' central control"
-	id = "RNDDesignGopherMainboard"
+	id = "gophermainboard"
 	build_path = /obj/item/circuitboard/mecha/gopher/main
 
 /datum/prototype/design/circuit/mecha/gopher_peri
 	design_name = "'Gopher' peripherals control"
-	id = "RNDDesignGopherPeriboard"
+	id = "gopherperiboard"
 	build_path = /obj/item/circuitboard/mecha/gopher/peripherals
 
 /datum/prototype/design/circuit/mecha/polecat_main
 	design_name = "'Polecat' central control"
-	id = "RNDDesignPolecatMainboard"
+	id = "polecatmainboard"
 	req_tech = list(TECH_DATA = 4)
 	build_path = /obj/item/circuitboard/mecha/polecat/main
 
 /datum/prototype/design/circuit/mecha/polecat_peri
 	design_name = "'Polecat' peripherals control"
-	id = "RNDDesignPolecatPeriboard"
+	id = "polecatperiboard"
 	req_tech = list(TECH_DATA = 4)
 	build_path = /obj/item/circuitboard/mecha/polecat/peripherals
 
 /datum/prototype/design/circuit/mecha/polecat_targ
 	design_name = "'Polecat' weapon control and targeting"
-	id = "RNDDesignPolecatGunboard"
+	id = "polecatgunboard"
 	req_tech = list(TECH_DATA = 4, TECH_COMBAT = 2)
 	build_path = /obj/item/circuitboard/mecha/polecat/targeting
 
 /datum/prototype/design/circuit/mecha/weasel_main
 	design_name = "'Weasel' central control"
-	id = "RNDDesignWieselMainboard"
+	id = "weaselmainboard"
 	req_tech = list(TECH_DATA = 4)
 	build_path = /obj/item/circuitboard/mecha/weasel/main
 
 /datum/prototype/design/circuit/mecha/weasel_peri
 	design_name = "'Weasel' peripherals control"
-	id = "RNDDesignWieselPeriboard"
+	id = "weaselperiboard"
 	req_tech = list(TECH_DATA = 4)
 	build_path = /obj/item/circuitboard/mecha/weasel/peripherals
 
 /datum/prototype/design/circuit/mecha/weasel_targ
 	design_name = "'Weasel' weapon control and targeting"
-	id = "RNDDesignWieselGunboard"
+	id = "weaselgunboard"
 	req_tech = list(TECH_DATA = 4, TECH_COMBAT = 2)
 	build_path = /obj/item/circuitboard/mecha/weasel/targeting
 
