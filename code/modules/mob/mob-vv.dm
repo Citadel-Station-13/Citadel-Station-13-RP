@@ -12,5 +12,5 @@
 	if(href_list["mob-show-mind-panel"])
 		if(!mind)
 			to_chat(usr, SPAN_WARNING("[src] has no mind."))
-		elsej
+		else
 			mind.ui_interact(usr, admin_inspect = TRUE)
