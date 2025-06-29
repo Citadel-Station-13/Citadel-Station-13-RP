@@ -4,17 +4,17 @@
 	materials_base = list(MAT_STEEL = 50, MAT_GLASS = 50)
 
 /datum/prototype/design/science/hud/health
-	id = "RNDDesignHealthGlasses"
+	id = "healthhud"
 	req_tech = list(TECH_BIO = 2, TECH_MAGNET = 3)
 	build_path = /obj/item/clothing/glasses/hud/health
 
 /datum/prototype/design/science/hud/security
-	id = "RNDDesignSecGlasses"
+	id = "sechud"
 	req_tech = list(TECH_MAGNET = 3, TECH_COMBAT = 2)
 	build_path = /obj/item/clothing/glasses/hud/security
 
 /datum/prototype/design/science/hud/mesons
-	id = "RNDDesignMesonGlasses"
+	id = "mesonscanner"
 	req_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 2)
 	build_path = /obj/item/clothing/glasses/meson
 /*
@@ -34,7 +34,7 @@
 
 /datum/prototype/design/science/hud/omni
 	design_name = "AR glasses"
-	id = "RNDDesignARGlasses"
+	id = "arhud"
 	req_tech = list(TECH_MAGNET = 4, TECH_COMBAT = 3, TECH_BIO = 3)
 	materials_base = list(MAT_STEEL = 1000, MAT_GLASS = 1000)
 	build_path = /obj/item/clothing/glasses/omnihud

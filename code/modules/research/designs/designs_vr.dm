@@ -178,30 +178,30 @@
 
 /datum/prototype/design/science/hardsuit_module/plasma_cutter
 	design_name = "hardsuit module - plasma cutter"
-	id = "RNDDesignHardsuitPlasmaCutter"
+	id = "hardsuit_plasmacutter"
 	build_path = /obj/item/hardsuit_module/device/plasmacutter
 
 /datum/prototype/design/science/hardsuit_module/diamond_drill
 	design_name = "hardsuit module - diamond drill"
-	id = "RNDDesignHardsuitDiamondDrill"
+	id = "hardsuit_diamonddrill"
 	build_path = /obj/item/hardsuit_module/device/drill
 
 /datum/prototype/design/science/hardsuit_module/maneuvering_jets
 	design_name = "hardsuit module - maneuvering jets"
-	id = "RNDDesignHardsuitJetpack"
+	id = "hardsuit_jetpack"
 	build_path = /obj/item/hardsuit_module/maneuvering_jets
 
 /datum/prototype/design/science/hardsuit_module/anomaly_scanner
 	design_name = "hardsuit module - anomaly scanner"
-	id = "RNDDesignHardsuitAnomScanner"
+	id = "hardsuit_anomscanner"
 	build_path = /obj/item/hardsuit_module/device/anomaly_scanner
 
 /datum/prototype/design/science/hardsuit_module/orescanner
 	design_name = "hardsuit module - ore scanner"
-	id = "RNDDesignHardsuitOreScanner"
+	id = "hardsuit_orescanner"
 	build_path = /obj/item/hardsuit_module/device/orescanner
 
 /datum/prototype/design/science/hardsuit_module/orescanneradv
 	design_name = "hardsuit module - adv. ore scanner"
-	id = "RNDDesignHardsuitAdvOreScanner"
+	id = "hardsuit_aorescanner"
 	build_path = /obj/item/hardsuit_module/device/orescanner/advanced

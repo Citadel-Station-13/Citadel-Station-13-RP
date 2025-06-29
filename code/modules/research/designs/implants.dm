@@ -5,17 +5,17 @@
 
 
 /datum/prototype/design/science/implant/chemical
-	id = "RNDDesignChemImplant"
+	id = "chemplant"
 	req_tech = list(TECH_MATERIAL = 2, TECH_BIO = 3)
 	build_path = /obj/item/implantcase/chem
 
 /datum/prototype/design/science/implant/freedom
-	id = "RNDDesignFreedomImplant"
+	id = "freeplant"
 	req_tech = list(TECH_ILLEGAL = 2, TECH_BIO = 3)
 	build_path = /obj/item/implantcase/freedom
 
 /datum/prototype/design/science/implant/sizecontrol
-	id = "RNDDesignSizeImplant"
+	id = "sizeplant"
 	req_tech = list(TECH_MATERIAL = 3, TECH_BIO = 4, TECH_DATA = 4, TECH_ENGINEERING = 3)
 	materials_base = list(MAT_STEEL = 2000, MAT_GLASS = 2000, MAT_SILVER = 3000)
 	build_path = /obj/item/implanter/sizecontrol
