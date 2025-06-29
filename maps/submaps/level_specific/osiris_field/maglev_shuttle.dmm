@@ -1,0 +1,764 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"bc" = (
+/obj/structure/salvageable/server,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"cA" = (
+/obj/structure/closet/crate,
+/obj/random/toolbox,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"cS" = (
+/obj/structure/closet/crate,
+/obj/random/tetheraid,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"cZ" = (
+/obj/structure/salvageable/console_broken_os,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"dx" = (
+/obj/structure/closet/crate,
+/obj/random/tank,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"eV" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/storage/toolbox/mechanical,
+/turf/simulated/floor/tiled/kafel_full/blue,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"fF" = (
+/obj/machinery/door/airlock/glass_external,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"hX" = (
+/obj/structure/table/rack/shelf/steel,
+/turf/simulated/floor/tiled/kafel_full/blue,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"iM" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"jo" = (
+/turf/simulated/wall/prepainted,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"kn" = (
+/obj/structure/shuttle/engine/propulsion{
+	dir = 4
+	},
+/turf/template_noop,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"oS" = (
+/turf/template_noop,
+/area/template_noop)
+"sl" = (
+/turf/simulated/wall/r_wall/prepainted,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"uj" = (
+/turf/simulated/floor/tiled/kafel_full/blue,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"ux" = (
+/obj/machinery/portable_atmospherics/canister/empty/phoron,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"uN" = (
+/obj/structure/closet/crate,
+/obj/random/tool,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"we" = (
+/obj/structure/bed/chair/bay/comfy/black{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"wC" = (
+/obj/structure/salvageable/console_os{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"wI" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"Al" = (
+/obj/structure/table/reinforced,
+/obj/item/flashlight/color/orange,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"Ar" = (
+/turf/simulated/wall/prepainted/command,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"Bf" = (
+/obj/item/stack/material/plasteel,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"Bj" = (
+/turf/simulated/wall/rthull,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"Cl" = (
+/obj/machinery/light/small/emergency{
+	dir = 4
+	},
+/turf/simulated/floor/maglev{
+	dir = 4;
+	outdoors = 1
+	},
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"Da" = (
+/obj/machinery/door/airlock,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"Dc" = (
+/obj/machinery/door/airlock/maintenance/command{
+	name = "Tram Cab";
+	req_one_access = null
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"DP" = (
+/obj/structure/table/reinforced,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"EQ" = (
+/turf/simulated/floor/maglev{
+	dir = 4;
+	outdoors = 1
+	},
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"Fe" = (
+/turf/simulated/floor/tiled/steel_dirty,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"FL" = (
+/obj/structure/closet/crate,
+/obj/random/underdark,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"FP" = (
+/obj/spawner/window/full,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"Gd" = (
+/obj/item/material/shard/shrapnel,
+/turf/simulated/floor/tiled/kafel_full/blue,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"HD" = (
+/obj/structure/closet/crate,
+/obj/random/tank,
+/obj/random/tech_supply,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"Ig" = (
+/obj/structure/bed/chair/bay/comfy/black{
+	dir = 8
+	},
+/obj/spawner/corpse/syndicatesoldier,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"IZ" = (
+/obj/structure/bed/chair/bay/comfy/black{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"Jw" = (
+/obj/structure/salvageable/console_broken_os{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"Jy" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/storage/toolbox/syndicate,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"JG" = (
+/turf/simulated/floor/tiled/techfloor/grid{
+	outdoors = 1
+	},
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"JU" = (
+/obj/structure/salvageable/console_broken_os{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/kafel_full/blue,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"OK" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/template_noop)
+"PA" = (
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"PJ" = (
+/obj/structure/bed/chair/bay/comfy/black{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"Qd" = (
+/obj/machinery/door/blast/regular,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"TN" = (
+/obj/structure/salvageable/console_broken_os{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"Uh" = (
+/obj/item/material/shard/shrapnel,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"UL" = (
+/obj/machinery/door/airlock,
+/turf/simulated/floor/tiled/kafel_full/blue,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"Vj" = (
+/obj/machinery/door/airlock/glass_external,
+/turf/simulated/floor/tiled/kafel_full/blue,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"Vt" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"WN" = (
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"Xb" = (
+/obj/structure/table/rack/shelf/steel,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"Xd" = (
+/obj/structure/bed/chair/bay/comfy/black{
+	dir = 8
+	},
+/obj/spawner/corpse/tajara/dra_soldier,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"Zn" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/storage/toolbox/electrical,
+/turf/simulated/floor/tiled/kafel_full/blue,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+"ZE" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/submap/osiris_field/cargo_shuttle_maglev)
+
+(1,1,1) = {"
+oS
+oS
+oS
+oS
+oS
+oS
+WN
+Uh
+WN
+oS
+oS
+oS
+oS
+oS
+oS
+"}
+(2,1,1) = {"
+oS
+oS
+oS
+oS
+oS
+Uh
+Jw
+Jw
+Jw
+WN
+oS
+oS
+oS
+oS
+oS
+"}
+(3,1,1) = {"
+oS
+oS
+oS
+oS
+PA
+cZ
+PA
+Uh
+uj
+TN
+WN
+oS
+oS
+oS
+oS
+"}
+(4,1,1) = {"
+oS
+oS
+oS
+oS
+Uh
+cZ
+Xd
+PA
+Ig
+JU
+WN
+oS
+oS
+oS
+oS
+"}
+(5,1,1) = {"
+oS
+oS
+oS
+oS
+WN
+PA
+PA
+Uh
+uj
+Gd
+WN
+oS
+oS
+oS
+oS
+"}
+(6,1,1) = {"
+oS
+oS
+oS
+oS
+OK
+Ar
+Ar
+UL
+Ar
+Ar
+Ar
+fF
+jo
+oS
+oS
+"}
+(7,1,1) = {"
+oS
+oS
+jo
+oS
+oS
+OK
+PA
+PA
+uj
+uj
+PA
+PA
+jo
+oS
+oS
+"}
+(8,1,1) = {"
+oS
+jo
+jo
+uj
+jo
+ZE
+ZE
+PA
+PA
+Xb
+jo
+UL
+jo
+jo
+oS
+"}
+(9,1,1) = {"
+oS
+Ar
+PA
+PA
+Ar
+Xb
+ZE
+ZE
+ZE
+hX
+Ar
+PA
+PA
+Ar
+oS
+"}
+(10,1,1) = {"
+oS
+Ar
+PA
+PA
+Ar
+hX
+ZE
+ZE
+PA
+eV
+Ar
+PA
+PA
+Ar
+oS
+"}
+(11,1,1) = {"
+oS
+Ar
+ux
+PA
+Ar
+Zn
+PA
+PA
+PA
+Jy
+Ar
+ux
+ux
+Ar
+oS
+"}
+(12,1,1) = {"
+oS
+jo
+jo
+jo
+jo
+jo
+jo
+Vj
+jo
+jo
+jo
+jo
+jo
+jo
+oS
+"}
+(13,1,1) = {"
+oS
+kn
+kn
+oS
+oS
+oS
+jo
+PA
+jo
+oS
+oS
+oS
+kn
+kn
+oS
+"}
+(14,1,1) = {"
+oS
+oS
+oS
+sl
+sl
+sl
+sl
+Da
+sl
+sl
+sl
+sl
+oS
+oS
+oS
+"}
+(15,1,1) = {"
+oS
+oS
+oS
+sl
+PA
+Cl
+JG
+JG
+JG
+Cl
+PA
+sl
+oS
+oS
+oS
+"}
+(16,1,1) = {"
+oS
+oS
+oS
+Qd
+PA
+Bj
+FP
+FP
+FP
+Bj
+PA
+Qd
+oS
+oS
+oS
+"}
+(17,1,1) = {"
+oS
+oS
+oS
+Qd
+PA
+Bj
+bc
+wC
+DP
+Bj
+PA
+Qd
+oS
+oS
+oS
+"}
+(18,1,1) = {"
+oS
+oS
+oS
+Qd
+PA
+Bj
+iM
+we
+Al
+Bj
+PA
+Qd
+oS
+oS
+oS
+"}
+(19,1,1) = {"
+oS
+oS
+oS
+Qd
+PA
+Bj
+Bj
+Dc
+Bj
+Bj
+PA
+Bf
+oS
+oS
+oS
+"}
+(20,1,1) = {"
+oS
+oS
+oS
+Qd
+PA
+FP
+PJ
+Fe
+Fe
+FP
+PA
+Bf
+oS
+oS
+oS
+"}
+(21,1,1) = {"
+oS
+oS
+oS
+Bf
+PA
+FP
+DP
+IZ
+Fe
+FP
+PA
+Bf
+oS
+oS
+oS
+"}
+(22,1,1) = {"
+oS
+oS
+oS
+Bf
+PA
+Dc
+Fe
+Fe
+Fe
+Dc
+PA
+Qd
+oS
+oS
+oS
+"}
+(23,1,1) = {"
+oS
+oS
+oS
+Bf
+PA
+Bj
+Vt
+Fe
+wI
+Bj
+PA
+Qd
+oS
+oS
+oS
+"}
+(24,1,1) = {"
+oS
+oS
+oS
+Qd
+PA
+Bj
+dx
+FL
+HD
+Bj
+PA
+Qd
+oS
+oS
+oS
+"}
+(25,1,1) = {"
+oS
+oS
+oS
+Qd
+PA
+Bj
+cS
+cA
+uN
+Bj
+PA
+Qd
+oS
+oS
+oS
+"}
+(26,1,1) = {"
+oS
+oS
+oS
+Qd
+PA
+Bj
+FP
+FP
+FP
+Bj
+PA
+Qd
+oS
+oS
+oS
+"}
+(27,1,1) = {"
+oS
+oS
+oS
+sl
+PA
+EQ
+JG
+JG
+JG
+EQ
+PA
+sl
+oS
+oS
+oS
+"}
+(28,1,1) = {"
+oS
+oS
+oS
+sl
+sl
+Qd
+Qd
+Qd
+Qd
+Qd
+sl
+sl
+oS
+oS
+oS
+"}
+(29,1,1) = {"
+oS
+oS
+oS
+oS
+oS
+oS
+oS
+oS
+oS
+oS
+oS
+oS
+oS
+oS
+oS
+"}
+(30,1,1) = {"
+oS
+oS
+oS
+oS
+oS
+oS
+oS
+oS
+oS
+oS
+oS
+oS
+oS
+oS
+oS
+"}
