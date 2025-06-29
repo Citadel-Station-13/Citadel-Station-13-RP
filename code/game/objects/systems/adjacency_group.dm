@@ -90,7 +90,7 @@
 
 			for(var/obj/in_tile in expand_loc)
 				var/datum/object_system/adjacency_group/their_group = in_tile.status_traits?[trait]
-				if(!their_group || their_group == from_node)
+				if(!their_group || their_group == expand_this)
 					continue
 				dirs_connecting |= ONTOP_BIT
 				if(their_group.group)
