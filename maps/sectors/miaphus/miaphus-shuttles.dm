@@ -1,6 +1,6 @@
 //SDF
 /datum/shuttle/autodock/overmap/miaphus/sdf
-	name = "SDF Shining singing knight"
+	name = "SDF Interrupted-The-Speech"
 	warmup_time = 8
 	shuttle_area = list(/area/shuttle/miaphus/sdf)
 	docking_controller_tag = "sdf_docker"
@@ -9,9 +9,9 @@
 	current_location = "sdf_outpost"
 
 /obj/overmap/entity/visitable/ship/landable/miaphus/sdf
-	name = "SDF Shining singing knight"
-	desc = "A damaged military vessel."
-	scanner_name = "SDF Shining singing knight"
+	name = "SDF Interrupted-The-Speech"
+	desc = "A patrol military vessel."
+	scanner_name = "SDF Interrupted-The-Speech"
 	scanner_desc = @{"[i]Registration[/i]: ---
 [i]Class[/i]: Andromeda BS2002
 [i]Transponder[/i]: Transmitting (SDF)
@@ -20,14 +20,14 @@
 	fore_dir = WEST
 	vessel_mass = 8000
 	vessel_size = SHIP_SIZE_LARGE
-	shuttle = "SDF Shining singing knight"
+	shuttle = "SDF Interrupted-The-Speech"
 
 /obj/machinery/computer/shuttle_control/explore/sdf
 	name = "short jump console"
-	shuttle_tag = "SDF Shining singing knight"
+	shuttle_tag = "SDF Interrupted-The-Speech"
 
 /area/shuttle/miaphus/sdf
-	name = "SDF Shining singing knight"
+	name = "SDF Interrupted-The-Speech"
 	requires_power = 1
 	icon_state = "shuttle2"
 	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
