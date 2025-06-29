@@ -39,6 +39,7 @@
 
 /datum/object_system/adjacency_group/proc/queue_rebuild()
 	addtimer(CALLBACK(src, PROC_REF(rebuild_if_needed)), 0)
+	rebuild_queued = TRUE
 
 /datum/object_system/adjacency_group/proc/rebuild_if_needed()
 	if(!rebuild_queued)
@@ -49,7 +50,7 @@
 /datum/object_system/adjacency_group/proc/rebuild()
 	if(group)
 		QDEL_NULL(group)
-	var/datum/adjacency_group/new_group = new
+	var/datum/adjacency_group/new_group = new(key, create_initial_data())
 	new_group.build(src)
 
 /datum/adjacency_group
@@ -60,7 +61,9 @@
 	/// arbitrary data variable you can set to whatever you want
 	var/data
 
-/datum/adjacency_group/New()
+/datum/adjacency_group/New(key)
+	src.key = key
+	src.data = data
 	in_group = list()
 
 /datum/adjacency_group/Destroy()
@@ -79,10 +82,10 @@
 		var/atom/expand_loc = expand_this.parent.loc
 		if(isturf(expand_loc))
 			for(var/dir in GLOB.cardinal)
-				for(var/obj/in_tile in get_step(expand_loc, dir))
-					if(in_tile.status_traits?[trait])
+				for(var/obj/in_cardinal_tile in get_step(expand_loc, dir))
+					if(in_cardinal_tile.status_traits?[trait])
 						dirs_connecting |= dir
-						expanding += in_tile.status_traits[trait]
+						expanding += in_cardinal_tile.status_traits[trait]
 						break
 
 			for(var/obj/in_tile in expand_loc)
