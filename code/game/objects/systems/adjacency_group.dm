@@ -83,7 +83,10 @@
 		if(isturf(expand_loc))
 			for(var/dir in GLOB.cardinal)
 				for(var/obj/in_cardinal_tile in get_step(expand_loc, dir))
-					if(in_cardinal_tile.status_traits?[trait])
+					var/datum/object_system/adjacency_group/their_cardinal_group = in_cardinal_tile.status_traits?[trait]
+					if(their_cardinal_group)
+						if(their_cardinal_group.group != src)
+							continue
 						dirs_connecting |= dir
 						expanding += in_cardinal_tile.status_traits[trait]
 						break
