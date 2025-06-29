@@ -716,7 +716,7 @@
 	},
 /area/wizard_station)
 "bJ" = (
-/obj/machinery/mecha_part_fabricator,
+/obj/machinery/lathe/mecha_part_fabricator,
 /obj/machinery/status_display{
 	layer = 4;
 	pixel_x = 0;

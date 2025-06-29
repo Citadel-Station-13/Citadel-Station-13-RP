@@ -21,3 +21,5 @@
 	nullification = MATERIAL_RESISTANCE_NONE
 
 	worth = 7.5
+
+	material_constraints = MATERIAL_CONSTRAINT_RIGID

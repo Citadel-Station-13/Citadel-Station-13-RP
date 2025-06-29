@@ -10,9 +10,12 @@ import { IngredientsNeeded } from "./Ingredients";
 export interface Design {
   name: string;
   desc: string;
-  category: string;
+  categories: string[];
+  subcategories: string[];
   materials: Record<string, number> | null;
   material_parts: Record<string, number> | null;
+  material_constraints: Record<string, number> | null;
+  autodetect_tags: Record<string, string> | null;
   reagents: Record<string, number> | null;
   ingredients: IngredientsNeeded | null;
   resultItem: DesignItem;

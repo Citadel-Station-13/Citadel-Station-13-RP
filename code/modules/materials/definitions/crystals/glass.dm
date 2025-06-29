@@ -22,7 +22,7 @@
 	relative_integrity = 0.75
 	relative_reactivity = 0
 	relative_permeability = 0
-	hardness = MATERIAL_RESISTANCE_HIGH
+	hardness = MATERIAL_RESISTANCE_ABOVE_MODERATE(0.5)
 	toughness = MATERIAL_RESISTANCE_VERY_VULNERABLE
 	refraction = MATERIAL_RESISTANCE_NONE
 	absorption = MATERIAL_RESISTANCE_NONE

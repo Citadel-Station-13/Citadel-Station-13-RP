@@ -5110,7 +5110,7 @@
 	name = "Robotics RC";
 	pixel_y = 30
 	},
-/obj/machinery/mecha_part_fabricator/pros,
+/obj/machinery/lathe/mecha_part_fabricator/pros,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -9724,7 +9724,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/aft)
 "iaO" = (
-/obj/machinery/r_n_d/circuit_imprinter,
+/obj/machinery/lathe/r_n_d/circuit_imprinter,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/rnd/reception_desk)
@@ -11258,7 +11258,7 @@
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/assembly/robotics)
 "jlG" = (
-/obj/machinery/r_n_d/protolathe,
+/obj/machinery/lathe/r_n_d/protolathe,
 /turf/simulated/floor/tiled,
 /area/rnd/reception_desk)
 "jlX" = (
@@ -14331,7 +14331,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "lPA" = (
-/obj/machinery/r_n_d/circuit_imprinter,
+/obj/machinery/lathe/r_n_d/circuit_imprinter,
 /obj/item/reagent_containers/glass/beaker/sulphuric,
 /obj/structure/reagent_dispensers/acid{
 	pixel_y = 30
@@ -16719,7 +16719,7 @@
 	name = "Station Intercom (General)";
 	pixel_y = 21
 	},
-/obj/machinery/mecha_part_fabricator,
+/obj/machinery/lathe/mecha_part_fabricator,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
