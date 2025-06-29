@@ -41,19 +41,6 @@
     icon = 'icons/vore/custom_clothes_vr.dmi'
     icon_override = 'icons/vore/custom_onmob_vr.dmi'
 
-//Natje: Awen Henry
-/obj/item/clothing/under/fluff/wolfgirl
-	name = "Wolfgirl Clothes"
-	desc = "A set of clothes almost identical to those Wolf Girls always wear..."
-
-	icon = 'icons/vore/custom_clothes_vr.dmi'
-	icon_state = "wolfgirluni"
-	snowflake_worn_state = "wolfgirluni_mob"
-
-	icon_override = 'icons/vore/custom_clothes_vr.dmi'
-	item_state = "wolfgirluni_mob"
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-
 //! ## For general use
 /obj/item/clothing/accessory/fluff/smilepin
 	name = "Smiley Pin"
@@ -219,113 +206,6 @@
 	desc = "Ankle coverings for digitigrade creatures. Blue!"
 	icon_state = "bluecuffs"
 
-/obj/item/clothing/under/swimsuit/fluff/
-	icon = 'icons/vore/custom_clothes_vr.dmi'
-	icon_override = 'icons/vore/custom_clothes_vr.dmi'
-	siemens_coefficient = 1
-
-/obj/item/clothing/under/swimsuit/fluff/engineering
-	name = "Engineering Swimsuit"
-	desc = "It's an orange high visibility swimsuit worn by engineers. It lacks radiation, or any, shielding."
-	icon_state = "swimsuit_engineering"
-	item_state = "swimsuit_engineering_mob"
-
-/obj/item/clothing/under/swimsuit/fluff/science
-	name = "Science Swimsuit"
-	desc = "It's made of a special fiber that provides no protection whatsoever, but its hydrophobic. It has markings that denote the wearer as a scientist."
-	icon_state = "swimsuit_science"
-	item_state = "swimsuit_science_mob"
-
-/obj/item/clothing/under/swimsuit/fluff/security
-	name = "Security Swimsuit"
-	desc = "It's made of a slightly sturdier material than standard swimsuits, to allow for a more robust appearance."
-	icon_state = "swimsuit_security"
-	item_state = "swimsuit_security_mob"
-
-/obj/item/clothing/under/swimsuit/fluff/medical
-	name = "Medical Swimsuit"
-	desc = "It's made of a special fiber that provides no protection whatsoever, but its elastic. It has a cross on the back denoting that the wearer is trained medical personnel."
-	icon_state = "swimsuit_medical"
-	item_state = "swimsuit_medical_mob"
-
-/obj/item/clothing/under/rank/trek
-	name = "Section 31 Uniform"
-	desc = "Oooh... right."
-	icon = 'icons/vore/custom_clothes_vr.dmi'
-	icon_override = 'icons/vore/custom_clothes_vr.dmi'
-	item_state = ""
-
-//TOS
-/obj/item/clothing/under/rank/trek/command
-	name = "Command Uniform"
-	desc = "The uniform worn by command officers in the mid 2260s."
-	icon_state = "trek_command"
-	item_state = "trek_command"
-	armor_type = /datum/armor/station/padded
-
-/obj/item/clothing/under/rank/trek/engsec
-	name = "Operations Uniform"
-	desc = "The uniform worn by operations officers of the mid 2260s. You feel strangely vulnerable just seeing this..."
-	icon_state = "trek_engsec"
-	item_state = "trek_engsec"
-	armor_type = /datum/armor/station/padded
-
-/obj/item/clothing/under/rank/trek/medsci
-	name = "MedSci Uniform"
-	desc = "The uniform worn by medsci officers in the mid 2260s."
-	icon_state = "trek_medsci"
-	item_state = "trek_medsci"
-	permeability_coefficient = 0.50
-	armor_type = /datum/armor/medical/jumpsuit
-
-//TNG
-/obj/item/clothing/under/rank/trek/command/next
-	desc = "The uniform worn by command officers. This one's from the mid 2360s."
-	icon_state = "trek_next_command"
-	item_state = "trek_next_command"
-
-/obj/item/clothing/under/rank/trek/engsec/next
-	desc = "The uniform worn by operation officers. This one's from the mid 2360s."
-	icon_state = "trek_next_engsec"
-	item_state = "trek_next_engsec"
-
-/obj/item/clothing/under/rank/trek/medsci/next
-	desc = "The uniform worn by medsci officers. This one's from the mid 2360s."
-	icon_state = "trek_next_medsci"
-	item_state = "trek_next_medsci"
-
-//ENT
-/obj/item/clothing/under/rank/trek/command/ent
-	desc = "The uniform worn by command officers of the 2140s."
-	icon_state = "trek_ent_command"
-	item_state = "trek_ent_command"
-
-/obj/item/clothing/under/rank/trek/engsec/ent
-	desc = "The uniform worn by operations officers of the 2140s."
-	icon_state = "trek_ent_engsec"
-	item_state = "trek_ent_engsec"
-
-/obj/item/clothing/under/rank/trek/medsci/ent
-	desc = "The uniform worn by medsci officers of the 2140s."
-	icon_state = "trek_ent_medsci"
-	item_state = "trek_ent_medsci"
-
-//VOY
-/obj/item/clothing/under/rank/trek/command/voy
-	desc = "The uniform worn by command officers of the 2370s."
-	icon_state = "trek_voy_command"
-	item_state = "trek_voy_command"
-
-/obj/item/clothing/under/rank/trek/engsec/voy
-	desc = "The uniform worn by operations officers of the 2370s."
-	icon_state = "trek_voy_engsec"
-	item_state = "trek_voy_engsec"
-
-/obj/item/clothing/under/rank/trek/medsci/voy
-	desc = "The uniform worn by medsci officers of the 2370s."
-	icon_state = "trek_voy_medsci"
-	item_state = "trek_voy_medsci"
-
 //DS9
 
 /obj/item/clothing/suit/storage/trek/ds9
@@ -364,61 +244,7 @@
 	item_state = "trek_ds9_coat_adm_mob"
 	armor_type = /datum/armor/security/hos
 
-
-/obj/item/clothing/under/rank/trek/command/ds9
-	desc = "The uniform worn by command officers of the 2380s."
-	icon_state = "trek_command"
-	item_state = "trek_ds9_command"
-
-/obj/item/clothing/under/rank/trek/command/ds9/equipped(mob/user, slot, flags) // Cit change to take into account weirdness with defines. When put on it forces the correct sprite sheet. However when removed it shows a missing sprite for either uniform or suit depending on if it's the overcoat or uniform. Don't know how to fix
-	..()
-	var/mob/living/carbon/human/H = loc
-	if(istype(H) && H.w_uniform == src)
-		if(H.species.get_species_id() == SPECIES_ID_VOX)
-			icon_override = 'icons/mob/clothing/species/vox/uniform.dmi'
-		else
-			icon_override = 'icons/vore/custom_clothes_vr.dmi'
-	update_worn_icon()
-
-/obj/item/clothing/under/rank/trek/engsec/ds9
-	desc = "The uniform worn by operations officers of the 2380s."
-	icon_state = "trek_engsec"
-	item_state = "trek_ds9_engsec"
-
-/obj/item/clothing/under/rank/trek/engsec/ds9/equipped(mob/user, slot, flags) // Cit change, ditto
-	..()
-	var/mob/living/carbon/human/H = loc
-	if(istype(H) && H.w_uniform == src)
-		if(H.species.get_species_id() == SPECIES_ID_VOX)
-			icon_override = 'icons/mob/clothing/species/vox/uniform.dmi'
-		else
-			icon_override = 'icons/vore/custom_clothes_vr.dmi'
-	update_worn_icon()
-
-/obj/item/clothing/under/rank/trek/medsci/ds9
-	desc = "The uniform undershit worn by medsci officers of the 2380s."
-	icon_state = "trek_medsci"
-	item_state = "trek_ds9_medsci"
-
-/obj/item/clothing/under/rank/trek/medsci/ds9/equipped(mob/user, slot, flags) // Cit change, ditto
-	..()
-	var/mob/living/carbon/human/H = loc
-	if(istype(H) && H.w_uniform == src)
-		if(H.species.get_species_id() == SPECIES_ID_VOX)
-			icon_override = 'icons/mob/clothing/species/vox/uniform.dmi'
-		else
-			icon_override = 'icons/vore/custom_clothes_vr.dmi'
-	update_worn_icon()
-
 //For general use maybe
-/obj/item/clothing/under/batter //I guess we're going OFF limits.
-	name = "Worn baseball outfit"
-	desc = "<b>Purification in progress...</b>"
-	icon = 'icons/vore/custom_clothes_vr.dmi'
-	icon_override = 'icons/vore/custom_clothes_vr.dmi'
-	icon_state = "batter"
-	item_state = "batter_mob"
-
 /obj/item/clothing/suit/storage/hooded/wintercoat/jessie
 	name = "Handmade Winter Suit"
 	desc = "A durable, but somewhat ragged lower portion of a snow suit fitted for a wolftaur."
@@ -521,22 +347,6 @@
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	item_state = "gntop"
 
-/obj/item/clothing/under/fluff/gnshorts
-	name = "GN shorts"
-	desc = "Stylish white shorts with pockets, stripes, and even a belt."
-	icon = 'icons/vore/custom_items_vr.dmi'
-	icon_state = "gnshorts"
-	icon_override = 'icons/vore/custom_clothes_vr.dmi'
-	item_state = "gnshorts"
-
-/obj/item/clothing/under/fluff/v_nanovest
-	name = "Varmacorp nanovest"
-	desc = "A nifty little vest optimized for nanite contact."
-	icon = 'icons/vore/custom_clothes_vr.dmi'
-	icon_state = "nanovest"
-	icon_override = 'icons/vore/custom_clothes_vr.dmi'
-	item_state = "nanovest"
-
 //General use
 /obj/item/clothing/suit/storage/fluff/loincloth
 	name = "Loincloth"
@@ -548,30 +358,7 @@
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	item_state = "loincloth"
 
-//KotetsuRedwood:Latex Maid Dresses, for everyone to 'enjoy'. :3c
-/obj/item/clothing/under/fluff/latexmaid
-	name = "latex maid dress"
-	desc = "Squeak! A shiny outfit for cleaning, made by people with dirty minds."
-
-	icon = 'icons/clothing/uniform/costume/maid.dmi'
-	icon_state = "latex"
-	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI)
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO
-
 //Aztectornado:Tron inspired Siren outfit
-/obj/item/clothing/under/fluff/siren
-	name = "Siren Jumpsuit"
-	desc = "An advanced jumpsuit with inlaid neon highlighting, and a port on the back."
-	description_fluff = "Unlike other competitor suits, the Ward Takahashi Siren jumpsuit features a whole host of extra sensors for augmented reality use, and features a non-invasive neural sensor/stimulator for a fully immersive experience."
-
-	icon = 'icons/vore/custom_clothes_vr.dmi'
-	icon_override = 'icons/vore/custom_clothes_vr.dmi'
-	icon_state = "tronsiren"
-	snowflake_worn_state = "tronsiren_mob"
-	item_state = "tronsiren_mob"
-
 /obj/item/clothing/gloves/fluff/siren
 	name = "Siren Gloves"
 	desc = "A set of white and neon blue gloves."
@@ -604,33 +391,6 @@
 	name = "[signet_name]'s Bone Signet Ring"
 	desc = "A signet ring belonging to [signet_name], carved from the bones of something long extinct, as a ward against bad luck."
 
-//General definition for bracer items. No icons.
-/obj/item/clothing/accessory/bracer
-	name = "bracer"
-	desc = "A bracer."
-	icon_state = null
-	item_state = null
-	icon_override = null
-	slot_flags = SLOT_GLOVES | SLOT_TIE
-	w_class = WEIGHT_CLASS_SMALL
-	slot = ACCESSORY_SLOT_ARMBAND
-
-//AegisOA:Xander Bevin
-//WanderingDeviant:S'thasha Tavakdavi
-/obj/item/clothing/accessory/bracer/fluff/xander_sthasha
-	name = "Plasteel Bracer"
-	desc = "A sturdy arm-guard of polished plasteel that sports gold trimming, silver tribal-looping etchings, and a single cut diamond set into its side. Attached to one's forearm with a small, magnetic clasp."
-	icon = 'icons/vore/custom_items_vr.dmi'
-	icon_state = "bracer_xander_sthasha"
-	icon_override = 'icons/vore/custom_onmob_vr.dmi'
-	item_state = "bracer_xander_sthasha"
-
-/obj/item/clothing/accessory/bracer/fluff/xander_sthasha/digest_act(var/atom/movable/item_storage = null)
-	return FALSE
-
-/obj/item/clothing/accessory/bracer/fluff/xander_sthasha/gurgle_contaminate(var/atom/movable/item_storage = null)
-	return FALSE
-
 //Heroman3003:Lauren Zackson
 /obj/item/clothing/accessory/collar/fluff/goldenstring
 	name = "golden string"
@@ -641,52 +401,3 @@
 	item_state = "goldenstring"
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_TIE
-
-//Chaoko99: Aika Hisakawa
-/obj/item/clothing/suit/fluff/blue_trimmed_coat
-	name = "blue-trimmed greatcoat"
-	desc = "A heavy, form-obscuring coat with gilded buttons and azure trim."
-	icon = 'icons/vore/custom_clothes_vr.dmi'
-	icon_state = "aika_coat"
-
-	icon_override = 'icons/vore/custom_clothes_vr.dmi'
-	item_state = "aika_coat_mob"
-	inv_hide_flags = HIDEJUMPSUIT | HIDETIE
-
-	item_icons = list(
-		SLOT_ID_LEFT_HAND = 'icons/vore/custom_clothes_vr.dmi',
-		SLOT_ID_RIGHT_HAND = 'icons/vore/custom_clothes_vr.dmi',
-		)
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "aika_coat_mob_r", SLOT_ID_LEFT_HAND = "aika_coat_mob_l")
-
-//Burrito Justice: Jayda Wilson
-/obj/item/clothing/under/oricon/utility/sysguard/medical/fluff
-	desc = "The utility uniform of the Society of Universal Cartographers, made from biohazard resistant material. This is an older issuing of the uniform, with integrated department markings."
-
-	icon = 'icons/vore/custom_clothes_vr.dmi'
-	icon_override = 'icons/vore/custom_clothes_vr.dmi'
-
-	icon_state = "blackutility_med"
-	snowflake_worn_state = "blackutility_med"
-	item_state = "blackutility_med"
-
-	starting_accessories = null
-	item_icons = list()
-
-//Vorrarkul: Melanie Farmer
-/obj/item/clothing/under/fluff/slime_skeleton
-	name = "Melanie's Skeleton"
-	desc = "The skeleton of a promethean, still covered in residual slime. Upon closer inspection, they're not even real bones!"
-
-	icon = 'icons/vore/custom_clothes_vr.dmi'
-	icon_override = 'icons/vore/custom_clothes_vr.dmi'
-
-	icon_state = "melanie_skeleton"
-	item_state = "melanie_skeleton_mob"
-
-	body_cover_flags = NONE
-
-	species_restricted = list("exclude", SPECIES_TESHARI)
-
-/obj/item/clothing/under/fluff/slime_skeleton/digest_act(atom/movable/item_storage = null)
-	return FALSE //Indigestible
