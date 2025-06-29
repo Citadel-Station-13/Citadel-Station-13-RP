@@ -75,6 +75,8 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
  * **Typepaths for these are used directly in many circumstances instead of their slot IDs**
  * **Use resolve_inventory_slot(id) to automatically translate anything to the static datum.**
  *
+ * * Do not put special variables on subtypes if possible. This will eventually be a /prototype.
+ *
  * ABSTRACT SLOTS:
  * Abstract slots attempts to do something special, based on mob.
  * They only work on equips - can_equip, and anything unrelating to unequips, cannot check for it well.
@@ -84,7 +86,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	/// abstract type
 	abstract_type = /datum/inventory_slot
 
-	//* Intrinsics
+	//* Intrinsics *//
 	/// slot name
 	var/name = "unknown"
 	/// id
@@ -96,11 +98,12 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	/// filter flags
 	var/inventory_filter_flags = INV_FILTER_UNKNOWN
 	/// semantic layer
-	///
 	/// * higher = outer, lower = inner
 	/// * outer ones intercept hits/whatnot first
+	/// TODO: impl
 	var/semantic_layer = 0
-	/// display order - higher is upper. a <hr> is applied on 0.
+	/// display order - higher is upper.
+	/// * legacy: a <hr> is applied on 0 for the html strip menu.
 	var/sort_order = 0
 
 	//* HUD *//
@@ -117,15 +120,25 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	/// hud icon state in hud style
 	var/inventory_hud_icon_state = ""
 
-	//* Grammar
+	//* Display *//
+
 	/// player friendly name
 	var/display_name = "unknown"
+	/// player friendly verb
+	var/display_verb = "wearing"
 	/// player friendly preposition
 	var/display_preposition = "on"
 	/// is this a "plural" slot?
+	///
+	/// todo: remove this, this is only for abstract slots. abstract slots are ... questionable.
+	///       we need to figure out what to do with them.
 	var/display_plural = FALSE
 
-	//* Equip Checks
+	//* Examine *//
+	/// hide from worn examine if any of the following examine skip flags exist on skip_gear
+	var/legacy_examine_skip_flags
+
+	//* Equip Checks *//
 	/// equip checks to use
 	var/slot_equip_checks = NONE
 	/// slot flags required to have if checking
@@ -133,13 +146,13 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	/// slot flags forbidden to have if checking
 	var/slot_flags_forbidden = NONE
 
-	//* Stripping
+	//* Stripping *//
 	/// always show on strip/force equip menu, or only show when full
 	var/always_show_on_strip_menu = TRUE
 	/// default INV_VIEW flags for stripping
 	var/default_strip_inv_view_flags = NONE
 
-	//* Rendering
+	//* Rendering *//
 	/// rendering slot key
 	var/render_key
 	/// rendering plural slot key - only set on base type of plural slots
@@ -198,6 +211,15 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
  */
 /datum/inventory_slot/proc/strip_obfuscation_check(obj/item/equipped, mob/wearer, mob/user)
 	return default_strip_inv_view_flags
+
+//* Examine *//
+
+/**
+ * @return raw html
+ */
+/datum/inventory_slot/proc/examinate(mob/wearer, obj/item/in_slot, datum/event_args/examine/examine, examine_for, examine_from)
+	#warn item gets a say
+	return "[wearer.p_Theyre()] [display_verb] \a [in_slot] [display_preposition] [wearer.p_their()] [display_name]."
 
 //* Rendering *//
 
@@ -290,6 +312,8 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	display_name = "back"
 	display_preposition = "on"
 
+	legacy_examine_skip_flags = EXAMINE_SKIPGEAR_BACKPACK
+
 	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_HANDS
 	inventory_hud_main_axis = -1
 	inventory_hud_cross_axis = 0
@@ -317,6 +341,8 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	sort_order = 5000
 	display_name = "body"
 	display_preposition = "on"
+
+	legacy_examine_skip_flags = EXAMINE_SKIPGEAR_JUMPSUIT
 
 	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
 	inventory_hud_main_axis = 1
@@ -448,6 +474,8 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	display_name = "head"
 	display_preposition = "on"
 
+	legacy_examine_skip_flags = EXAMINE_SKIPGEAR_HELMET
+
 	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
 	inventory_hud_main_axis = 4
 	inventory_hud_cross_axis = 1
@@ -489,6 +517,8 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	sort_order = 7000
 	display_name = "suit"
 	display_preposition = "over"
+
+	legacy_examine_skip_flags = EXAMINE_SKIPBODY_BODY
 
 	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
 	inventory_hud_main_axis = 1
@@ -564,6 +594,8 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	sort_order = 6000
 	display_name = "waist"
 	display_preposition = "on"
+
+	legacy_examine_skip_flags = EXAMINE_SKIPGEAR_BELT
 
 	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_HANDS
 	inventory_hud_main_axis = -2
@@ -666,6 +698,8 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	display_name = "feet"
 	display_preposition = "on"
 
+	legacy_examine_skip_flags = EXAMINE_SKIPGEAR_SHOES
+
 	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
 	inventory_hud_cross_axis = 1
 	inventory_hud_icon_state = "shoes"
@@ -708,6 +742,8 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	display_name = "hands"
 	display_preposition = "on"
 
+	legacy_examine_skip_flags = EXAMINE_SKIPGEAR_GLOVES
+
 	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
 	inventory_hud_main_axis = 1
 	inventory_hud_cross_axis = 2
@@ -738,6 +774,8 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	display_name = "eyes"
 	display_preposition = "over"
 
+	legacy_examine_skip_flags = EXAMINE_SKIPGEAR_EYEWEAR
+
 	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
 	inventory_hud_main_axis = 2
 	inventory_hud_cross_axis = 0
@@ -767,6 +805,8 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	sort_order = 500
 	display_name = "suit"
 	display_preposition = "on"
+
+	legacy_examine_skip_flags = EXAMINE_SKIPGEAR_SUITSTORAGE
 
 	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
 	inventory_hud_main_axis = 0
@@ -815,6 +855,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	)
 	render_layer = HUMAN_LAYER_SLOT_EARS
 	render_key_plural = "ears"
+	legacy_examine_skip_flags = EXAMINE_SKIPGEAR_EARS
 
 /datum/inventory_slot/inventory/ears/left
 	name = "left ear"
@@ -857,6 +898,8 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	sort_order = 9250
 	display_name = "face"
 	display_preposition = "on"
+
+	legacy_examine_skip_flags = EXAMINE_SKIPGEAR_MASK
 
 	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
 	inventory_hud_main_axis = 3

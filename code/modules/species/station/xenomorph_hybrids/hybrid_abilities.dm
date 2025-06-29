@@ -38,7 +38,7 @@
 		return
 	P.adjust_plasma(-plasma_cost)
 
-/datum/ability/species/xenomorph_hybrid/on_trigger(mob/user, toggling)
+/datum/ability/species/xenomorph_hybrid/on_trigger_old(mob/user, toggling)
 	. = ..()
 	take_plasma(user)
 
@@ -53,7 +53,7 @@
 	mobility_check_flags = MOBILITY_IS_CONSCIOUS
 	plasma_cost = 10
 
-/datum/ability/species/xenomorph_hybrid/regenerate/on_trigger()
+/datum/ability/species/xenomorph_hybrid/regenerate/on_trigger_old()
 	. = ..()
 	var/mob/living/carbon/human/O = owner
 	if(istype(O))

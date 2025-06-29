@@ -64,7 +64,7 @@
 	if(language)
 		add_language(language)
 
-	gender = NEUTER
+	set_gender(NEUTER)
 
 	return ..()
 

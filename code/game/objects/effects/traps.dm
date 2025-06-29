@@ -430,7 +430,7 @@ Add those other swinging traps you mentioned above!
 
 //Heavy Fireball Launcher
 /obj/effect/trap/launcher/fireball_aoe
-	projectile_type = /obj/projectile/magic/aoe/fireball
+	projectile_type = /obj/projectile/magic/fireball
 	projectile_sound = 'sound/weapons/cannon.ogg'
 
 /obj/effect/trap/launcher/fireball_aoe/finite //Finite variant

@@ -287,7 +287,7 @@ Implant Specifics:<BR>"}
 	phrase = input("Choose activation phrase:") as text
 	var/list/replacechars = list("'" = "","\"" = "",">" = "","<" = "","(" = "",")" = "")
 	phrase = replace_characters(phrase, replacechars)
-	usr.mind.store_memory("Explosive implant in [source] can be activated by saying something containing the phrase ''[src.phrase]'', <B>say [src.phrase]</B> to attempt to activate.", 0, 0)
+	usr.mind.legacy_add_html_memory("Explosive implant in [source] can be activated by saying something containing the phrase ''[src.phrase]'', <B>say [src.phrase]</B> to attempt to activate.", 0, 0)
 	to_chat(usr, "The implanted explosive implant in [source] can be activated by saying something containing the phrase ''[src.phrase]'', <B>say [src.phrase]</B> to attempt to activate.")
 
 /obj/item/implant/explosive/emp_act(severity)
@@ -483,7 +483,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 	return
 
 /obj/item/implant/adrenalin/post_implant(mob/source)
-	source.mind.store_memory("A implant can be activated by using the pale emote, <B>say *pale</B> to attempt to activate.", 0, 0)
+	source.mind.legacy_add_html_memory("A implant can be activated by using the pale emote, <B>say *pale</B> to attempt to activate.", 0, 0)
 	to_chat(source, "The implanted freedom implant can be activated by using the pale emote, <B>say *pale</B> to attempt to activate.")
 
 //////////////////////////////
@@ -598,7 +598,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 /obj/item/implant/compressed/post_implant(mob/source)
 	src.activation_emote = input("Choose activation emote:") in list("blink", "blink_r", "eyebrow", "chuckle", "twitch", "frown", "nod", "blush", "giggle", "grin", "groan", "shrug", "smile", "pale", "sniff", "whimper", "wink")
 	if (source.mind)
-		source.mind.store_memory("Compressed matter implant can be activated by using the [src.activation_emote] emote, <B>say *[src.activation_emote]</B> to attempt to activate.", 0, 0)
+		source.mind.legacy_add_html_memory("Compressed matter implant can be activated by using the [src.activation_emote] emote, <B>say *[src.activation_emote]</B> to attempt to activate.", 0, 0)
 	to_chat(source, "The implanted compressed matter implant can be activated by using the [src.activation_emote] emote, <B>say *[src.activation_emote]</B> to attempt to activate.")
 
 
@@ -645,7 +645,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 		source.add_language(LANGUAGE_SOL_COMMON) //In case they're giving a xenomorph an implant or something.
 
 /obj/item/implant/uni_translator/post_implant(mob/source)
-	source.mind.store_memory("A implant can be activated by using the smile emote, <B>say *smile</B> to attempt to activate.", 0, 0)
+	source.mind.legacy_add_html_memory("A implant can be activated by using the smile emote, <B>say *smile</B> to attempt to activate.", 0, 0)
 	to_chat(source,"The implanted language implant can be activated by using the smile emote, <B>say *smile</B> to attempt to activate.")
 	return 1
 

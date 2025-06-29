@@ -24,12 +24,26 @@
 	var/tick_interval
 	/// next world.time we should tick.
 	var/tick_next
-	/// path of screen alert thrown
+	/// path of screen alert thrown; this is a legacy variable and kept for support.
+	/// * overrides new alert variables
+	/// todo: stop using this please, use new alert vars
 	var/alert_type
 	/// screen alert instance if it exists
 	var/atom/movable/screen/alert/status_effect/alert_linked
 	/// mob we're affecting
 	var/mob/owner
+
+	//* Alert *//
+
+	#warn hook these
+	/// name of our alert button
+	var/alert_name
+	/// description / tooltip of our alert button
+	var/alert_desc
+	/// icon of our alert button
+	var/alert_icon
+	/// icon state of our alert button
+	var/alert_icon_state
 
 /datum/status_effect/New(mob/owner, duration, list/arguments)
 	ASSERT(isnull(owner.status_effects[identifier]))
@@ -170,9 +184,6 @@
 	switch(var_name)
 		if(NAMEOF(src, duration))
 			rebuild_decay_timer()
-
-/datum/status_effect/proc/on_examine(list/examine_list)
-	return
 
 //? Mob procs
 

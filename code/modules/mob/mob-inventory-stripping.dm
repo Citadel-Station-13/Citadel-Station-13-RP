@@ -25,6 +25,8 @@
 	return open_strip_menu(user)
 
 /mob/proc/open_strip_menu(mob/user)
+
+
 	var/datum/browser/B = new(user, "strip_window_[REF(src)]", "[name] (stripping)", 340, 540)
 	var/list/content = render_strip_menu(user)
 	B.set_content(content.Join(""))
@@ -34,6 +36,7 @@
 /mob/proc/close_strip_menu(mob/user)
 	user << browse(null, "window=strip_window_[REF(src)]")
 
+#warn this shit TRAIT_ITEM_HIDE_WORN_EXAMINE
 /mob/proc/render_strip_menu(mob/user)
 	RETURN_TYPE(/list)
 	. = list()

@@ -32,7 +32,7 @@
 	// prevent_pierce forces detonation + deletion on impact always
 	if(detonate_prevent_pierce)
 		detonation(target_turf)
-		return impact_flags | PROJECTILE_IMPACT_DELETE
+		return impact_flags | PROJECTILE_IMPACT_FORCE_EXPIRE
 	// if we're piercing, we will return
 	// pierce means going through, even if it's not piercing.
 	if((impact_flags & PROJECTILE_IMPACT_FLAGS_SHOULD_GO_THROUGH) && !detonate_on_pierce)

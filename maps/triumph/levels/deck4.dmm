@@ -29944,7 +29944,7 @@
 /area/security/lobby)
 "uQs" = (
 /obj/structure/table/woodentable,
-/obj/item/nullrod,
+/obj/item/nullrod_legacy,
 /obj/item/reagent_containers/food/drinks/bottle/holywater,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
