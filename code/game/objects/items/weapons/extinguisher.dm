@@ -1,3 +1,5 @@
+#warn wipe out changes after testing
+OBJ_BIND_ADJACENCY_GROUP(/obj/item/extinguisher, test_group, "test_group")
 /obj/item/extinguisher
 	name = "fire extinguisher"
 	desc = "A traditional red fire extinguisher."
@@ -21,6 +23,14 @@
 	var/last_use = 1.0
 	var/safety = 1
 	var/sprite_name = "fire_extinguisher"
+
+/obj/item/extinguisher/object_adjacency_group_join(datum/object_system/adjacency_group/group_holder, datum/object_system/adjacency_group/group, directions)
+	. = ..()
+	maptext = MAPTEXT_CENTER("[directions]")
+
+/obj/item/extinguisher/object_adjacency_group_leave(datum/object_system/adjacency_group/group_holder, datum/object_system/adjacency_group/group, directions)
+	. = ..()
+	maptext = null
 
 /obj/item/extinguisher/mini
 	name = "fire extinguisher"

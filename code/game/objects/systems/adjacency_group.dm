@@ -3,6 +3,8 @@
 
 /**
  * Connects transitively to cardinals.
+ *
+ * Does something very, very evil to status_traits.
  */
 /datum/object_system/adjacency_group
 	/// string key
@@ -11,17 +13,28 @@
 	var/datum/adjacency_group/group
 	/// rebuild queued?
 	var/rebuild_queued = FALSE
+	/// connected directions
+	var/connected_directions = NONE
 
-/datum/object_system/adjacency_group/New(obj/parent)
-	LAZYSET(parent.status_traits, TRAIT_OBJ_ADJACENCY_GROUP(key), src)
+/datum/object_system/adjacency_group/New(obj/parent, key)
+	src.key = key
+	ASSERT(key)
+	LAZYSET(parent.status_traits, TRAIT_OBJ_ADJACENCY_GROUP(src.key), src)
 	queue_rebuild()
 	return ..()
 
 /datum/object_system/adjacency_group/Destroy()
 	LAZYREMOVE(parent.status_traits, TRAIT_OBJ_ADJACENCY_GROUP(key))
+	QDEL_NULL(group)
 	return ..()
 
+/datum/object_system/adjacency_group/proc/parent_moved()
+	QDEL_NULL(group)
+	queue_rebuild()
+
 /datum/object_system/adjacency_group/proc/create_initial_data()
+	if(rebuild_queued)
+		return
 	return parent.object_adjacency_group_create_initial_data(src)
 
 /datum/object_system/adjacency_group/proc/queue_rebuild()
@@ -57,25 +70,50 @@
 /datum/adjacency_group/proc/build(datum/object_system/adjacency_group/from_node)
 	// very destructive build process; when encountering 'enemy', immediately destroy it and trample over
 	var/list/datum/object_system/adjacency_group/expanding = list(from_node)
+	var/trait = TRAIT_OBJ_ADJACENCY_GROUP(key)
 	while(length(expanding))
 		var/datum/object_system/adjacency_group/expand_this = expanding[length(expanding)]
 		--expanding.len
+		var/dirs_connecting = NONE
+
+		var/atom/expand_loc = expand_this.parent.loc
+		if(isturf(expand_loc))
+			for(var/dir in GLOB.cardinal)
+				for(var/obj/in_tile in get_step(expand_loc, dir))
+					if(in_tile.status_traits?[trait])
+						dirs_connecting |= dir
+						expanding += in_tile.status_traits[trait]
+						break
+
+			for(var/obj/in_tile in expand_loc)
+				var/datum/object_system/adjacency_group/their_group = in_tile.status_traits?[trait]
+				if(!their_group || their_group == from_node)
+					continue
+				dirs_connecting |= ONTOP_BIT
+				if(their_group.group)
+					if(their_group.group == src)
+						CRASH("self-recursion during build")
+					else
+						qdel(their_group.group)
+				their_group.group = src
+				their_group.connected_directions = dirs_connecting
 		if(expand_this.group)
 			if(expand_this.group == src)
 				CRASH("self-recursion during build")
 			else
 				qdel(expand_this.group)
-				expand_this.group = null
-		#warn logic
+		expand_this.group = src
+		expand_this.connected_directions = dirs_connecting
 
-
-
+	for(var/datum/object_system/adjacency_group/member as anything in in_group)
+		member.parent.object_adjacency_group_join(member, src, member.connected_directions)
 
 /datum/adjacency_group/proc/teardown()
-	#warn logic
-	
-
-
+	for(var/datum/object_system/adjacency_group/member as anything in in_group)
+		member.parent.object_adjacency_group_leave(member, src, member.connected_directions)
+		member.group = null
+		member.connected_directions = NONE
+	in_group = null
 
 //* /obj hooks *//
 
