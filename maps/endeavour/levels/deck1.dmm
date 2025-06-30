@@ -6280,9 +6280,6 @@
 	dir = 4
 	},
 /obj/machinery/vending/cola,
-/obj/machinery/vending/wallmed1{
-	pixel_x = 32
-	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portamidhall)
 "eLu" = (
@@ -15124,6 +15121,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
 	},
+/obj/machinery/air_alarm/west_mount,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portamidhall)
 "lul" = (
@@ -20237,7 +20235,6 @@
 /turf/simulated/floor/tiled/monodark,
 /area/bridge)
 "phk" = (
-/obj/machinery/air_alarm/west_mount,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
@@ -21364,20 +21361,21 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/endeavour/hallway/d1afthall)
 "qdO" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 4
+/obj/structure/catwalk,
+/obj/machinery/door/firedoor{
+	dir = 1
 	},
-/obj/effect/floor_decal/corner/navblue/border{
-	dir = 4
+/obj/structure/cable/green{
+	icon_state = "1-2"
 	},
-/obj/structure/bed/chair{
-	dir = 8
-	},
+/obj/machinery/door/airlock/maintenance,
+/obj/map_helper/access_helper/airlock/station/maintenance,
 /obj/machinery/vending/wallmed1{
-	pixel_x = 32
+	pixel_x = 32;
+	products = list(/obj/item/stack/medical/bruise_pack = 2, /obj/item/storage/single_use/med_pouch/trauma = 1, /obj/item/stack/medical/ointmednt = 2, /obj/item/storage/single_use/med_pouch/burn = 1, /obj/item/reagent_containers/hypospray/autoinjector = 4, /obj/item/healthanalyzer = 1)
 	},
-/turf/simulated/floor/tiled/steel,
-/area/endeavour/hallway/d1portamidhall)
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d1fwdmaint)
 "qdW" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
@@ -44994,7 +44992,7 @@ uzj
 eLb
 rWR
 xyl
-qdO
+xyl
 gKk
 xgB
 ukd
@@ -46736,7 +46734,7 @@ hFM
 xkO
 ibI
 ukx
-xjY
+qdO
 miT
 miT
 miT
