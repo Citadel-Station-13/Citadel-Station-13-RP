@@ -24635,6 +24635,12 @@
 /obj/machinery/vending/cigarette,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portamidhall)
+"sAn" = (
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel,
+/area/endeavour/hallway/d1portamidhall)
 "sAo" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable/green{
@@ -44402,7 +44408,7 @@ sYL
 aAt
 aAt
 gnr
-dWV
+sAn
 dWV
 oJk
 kTF
@@ -44596,7 +44602,7 @@ sYL
 aAt
 aAt
 gnr
-dWV
+sAn
 dWV
 icN
 dWV
