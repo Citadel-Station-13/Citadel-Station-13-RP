@@ -21360,7 +21360,7 @@
 /obj/map_helper/access_helper/airlock/station/maintenance,
 /obj/machinery/vending/wallmed1{
 	pixel_x = 32;
-	products = list(/obj/item/stack/medical/bruise_pack = 2, /obj/item/storage/single_use/med_pouch/trauma = 1, /obj/item/stack/medical/ointmednt = 2, /obj/item/storage/single_use/med_pouch/burn = 1, /obj/item/reagent_containers/hypospray/autoinjector = 4, /obj/item/healthanalyzer = 1)
+	products = list(/obj/item/stack/medical/bruise_pack = 2, /obj/item/storage/single_use/med_pouch/trauma = 1, /obj/item/stack/medical/ointment = 2, /obj/item/storage/single_use/med_pouch/burn = 1, /obj/item/reagent_containers/hypospray/autoinjector = 4, /obj/item/healthanalyzer = 1)
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d1fwdmaint)
