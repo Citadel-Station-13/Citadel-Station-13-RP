@@ -957,10 +957,12 @@
 	tag_west = 2;
 	tag_north = 4
 	},
+/obj/machinery/door/window/northright{
+	dir = 2
+	},
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/structure/window/reinforced,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "aMU" = (
@@ -5420,9 +5422,11 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "eUr" = (
-/obj/machinery/atmospherics/component/binary/pump/on{
-	dir = 1;
-	name = "Waste to Filter"
+/obj/machinery/atmospherics/component/unary/freezer{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/hatch{
+	color = "#00B8B2"
 	},
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
@@ -7636,17 +7640,17 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/rnd/robotics/smallcraft)
 "gZD" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 6
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
 	},
-/obj/effect/floor_decal/corner/lightorange/border{
-	dir = 6
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/aux{
-	dir = 9
+/obj/structure/window/reinforced{
+	dir = 1
 	},
-/turf/simulated/floor/tiled/steel,
-/area/endeavour/hallway/d4starboardhall)
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/atmos)
 "gZX" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/navgold/border,
@@ -7884,12 +7888,13 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "hlV" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 1
+/obj/machinery/porta_turret/crescent{
+	density = 1;
+	faction = "neutral"
 	},
-/obj/machinery/light,
-/turf/simulated/floor/tiled/techmaint,
-/area/engineering/atmos)
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless/ceiling,
+/area/space)
 "hmG" = (
 /obj/map_helper/access_helper/airlock/station/maintenance,
 /obj/machinery/door/firedoor/glass{
@@ -10311,13 +10316,13 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "jse" = (
-/obj/machinery/atmospherics/pipe/simple/visible/aux{
-	dir = 1
+/obj/machinery/atmospherics/component/unary/heater{
+	dir = 4
 	},
-/obj/structure/window/reinforced{
-	dir = 1
+/obj/effect/floor_decal/industrial/hatch{
+	color = "#FF0000"
 	},
-/turf/simulated/floor/tiled/techmaint,
+/turf/simulated/floor/plating,
 /area/engineering/atmos)
 "jsv" = (
 /obj/landmark/spawnpoint/job/bartender,
@@ -10762,14 +10767,14 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/workshop)
 "jOw" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/structure/window/reinforced{
-	dir = 1
+/obj/machinery/atmospherics/component/binary/pump/on{
+	dir = 1;
+	name = "Waste to Filter"
 	},
-/turf/simulated/floor/tiled/techmaint,
+/turf/simulated/floor/plating,
 /area/engineering/atmos)
 "jPe" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
@@ -10785,9 +10790,9 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "jPu" = (
-/obj/machinery/atmospherics/pipe/simple/visible/red,
-/obj/machinery/door/window/northright{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/visible/aux{
+	dir = 5
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
@@ -10816,6 +10821,13 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/portnacelle)
+"jRN" = (
+/obj/machinery/light,
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/atmos)
 "jSb" = (
 /obj/machinery/door/airlock/glass/engineering,
 /obj/map_helper/access_helper/airlock/station/engineering/department,
@@ -14143,13 +14155,11 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "njb" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 8
+/obj/machinery/atmospherics/pipe/manifold/visible/black{
+	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techmaint,
+/obj/item/pipe_meter,
+/turf/simulated/floor/plating,
 /area/engineering/atmos)
 "nku" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -14329,6 +14339,18 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/ai_upload_foyer)
+"nsk" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/lightorange/border{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/steel,
+/area/space)
 "nsz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
 /obj/structure/cable{
@@ -20448,10 +20470,15 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4porthall)
 "tRp" = (
-/obj/machinery/atmospherics/pipe/simple/visible/aux{
-	dir = 5
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/visible/aux{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "tRQ" = (
@@ -22614,6 +22641,15 @@
 /obj/effect/floor_decal/corner/navgold/border,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/hallway/d4starboardforhall)
+"vNn" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/engineering/atmos)
 "vOO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -23283,14 +23319,8 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4porthall)
 "wrG" = (
-/obj/machinery/atmospherics/pipe/simple/visible/aux{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/engineering/atmos)
+/turf/simulated/wall/r_wall/prepainted/engineering/atmos,
+/area/endeavour/command/turrets)
 "wrI" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -24510,7 +24540,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
-/area/endeavour/hallway/d4starboardhall)
+/area/space)
 "xES" = (
 /obj/machinery/air_alarm{
 	dir = 4;
@@ -42037,11 +42067,11 @@ ezp
 fxi
 vVB
 eUp
-jPu
+eWw
 eWw
 nmZ
-bBy
-bBy
+vNn
+vNn
 bBy
 bBy
 bBy
@@ -42231,15 +42261,15 @@ fHc
 xrs
 bxh
 lEE
+jse
+eUr
 sFd
 bLG
 gFL
-jse
-wrG
 tRp
+jPu
 pwL
-hlV
-tqu
+jRN
 tqu
 jNg
 jNg
@@ -42425,16 +42455,16 @@ lTK
 wCy
 coT
 aMT
-ekS
-eUr
-gFL
-jOw
 njb
+ekS
+ekS
+jOw
+gFL
+gZD
 rfg
 ltz
 tqu
-tqu
-ycn
+wrG
 jNg
 jNg
 jNg
@@ -42552,7 +42582,7 @@ xRj
 xRj
 xRj
 xRj
-xRj
+cuI
 lRH
 lRH
 lRH
@@ -42623,12 +42653,12 @@ tqu
 tqu
 tqu
 tqu
+tqu
 vUP
 nsO
 tqu
-tqu
-cRV
-ycn
+wrG
+wrG
 jNg
 jNg
 jNg
@@ -42747,9 +42777,9 @@ xRj
 xRj
 xRj
 xRj
-jNg
-jNg
-iGa
+ycn
+lRH
+lRH
 kTE
 lPp
 mlp
@@ -42816,13 +42846,13 @@ elm
 pZs
 cGV
 vVM
+pZs
 iSG
 rlQ
 xDH
 vsf
-vsf
-ycn
-jNg
+wrG
+usG
 jNg
 jNg
 jNg
@@ -42941,9 +42971,9 @@ xRj
 xRj
 xRj
 xRj
-jNg
-jNg
-iGa
+ycn
+cRV
+lRH
 utm
 nwQ
 bYC
@@ -43012,11 +43042,11 @@ ouE
 uCd
 rxy
 hld
-gZD
+rxy
+nsk
 vsf
-mtv
-jNg
-jNg
+hlV
+usG
 jNg
 jNg
 jNg
@@ -43136,7 +43166,7 @@ xRj
 jNg
 jNg
 jNg
-rME
+ycn
 lRH
 lRH
 lRH
@@ -43208,8 +43238,8 @@ vsf
 vsf
 vsf
 vsf
-jNg
-jNg
+vsf
+usG
 jNg
 jNg
 jNg
@@ -43334,9 +43364,9 @@ jNg
 jNg
 jNg
 jNg
-ycn
-cRV
-ycn
+xRj
+xRj
+xRj
 xRj
 suy
 xRj
@@ -43399,10 +43429,10 @@ jNg
 jNg
 mtv
 jNg
-ycn
-cRV
-ycn
-jNg
+xRj
+xRj
+xRj
+mtv
 jNg
 jNg
 jNg
@@ -44169,7 +44199,7 @@ xKI
 xKI
 xKI
 xKI
-jNg
+xRj
 jNg
 jNg
 jNg
@@ -44312,7 +44342,7 @@ jNg
 jNg
 xRj
 xRj
-xRj
+ycn
 owo
 owo
 tiO
@@ -44362,7 +44392,7 @@ xKI
 xKI
 xKI
 xKI
-xRj
+ycn
 xRj
 xRj
 jNg
@@ -44506,8 +44536,8 @@ jNg
 jNg
 xRj
 xRj
-xRj
-xRj
+ycn
+cRV
 owo
 yeM
 nPO
@@ -44555,8 +44585,8 @@ ahp
 xKI
 xKI
 xKI
-mKs
-xRj
+cRV
+ycn
 xRj
 xRj
 jNg
@@ -44701,7 +44731,7 @@ jNg
 jNg
 xRj
 xRj
-jNg
+ycn
 owo
 owo
 owo
@@ -44749,7 +44779,7 @@ ahp
 xKI
 xKI
 xKI
-xRj
+ycn
 xRj
 xRj
 xRj
@@ -44896,7 +44926,7 @@ xRj
 jNg
 jNg
 jNg
-mtv
+rME
 owo
 kmf
 urm
@@ -44942,7 +44972,7 @@ qjZ
 ahp
 xKI
 xKI
-xRj
+rTQ
 xRj
 xRj
 xRj
