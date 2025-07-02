@@ -23212,7 +23212,7 @@
 	},
 /obj/machinery/holopad,
 /obj/machinery/button/remote/blast_door{
-	id = s;
+	id = "AI Core";
 	name = "AI Core Shutters";
 	pixel_y = 32;
 	pixel_x = -10
