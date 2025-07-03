@@ -2040,9 +2040,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
@@ -3505,9 +3502,6 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4portafthall)
 "djL" = (
@@ -3887,9 +3881,6 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
 	},
 /obj/map_helper/access_helper/airlock/station/engineering/department,
 /turf/simulated/floor/tiled/techfloor,
@@ -4550,9 +4541,6 @@
 	dir = 4
 	},
 /obj/machinery/light,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/hallway/d4portafthall)
 "edS" = (
@@ -6167,11 +6155,13 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/maintenance/security/lower)
 "fHR" = (
-/obj/structure/disposalpipe/trunk,
 /obj/machinery/disposal,
 /obj/machinery/fire_alarm/north_mount,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
@@ -7373,6 +7363,8 @@
 /obj/effect/floor_decal/corner/lightorange/bordercorner{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/hallway/d4porthall)
 "gGf" = (
@@ -8055,6 +8047,10 @@
 	},
 /obj/effect/floor_decal/techfloor/orange/corner{
 	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/locker_room)
@@ -8966,6 +8962,7 @@
 "ici" = (
 /obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/machinery/door/airlock/engineering,
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
 "ico" = (
@@ -9971,14 +9968,6 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
-"jdy" = (
-/obj/landmark/spawnpoint/job/station_engineer,
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/engineering/locker_room)
 "jdF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 8
@@ -10548,10 +10537,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/hallway/d4portafthall)
 "jyj" = (
@@ -11078,12 +11063,6 @@
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
-"kaJ" = (
-/obj/structure/disposalpipe/segment{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/engineering/locker_room)
 "kaY" = (
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4fwdmaint)
@@ -11150,9 +11129,6 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "2-8"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
 	},
 /obj/effect/floor_decal/techfloor/orange/corner{
 	dir = 8
@@ -12114,7 +12090,8 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/structure/disposalpipe/segment{
-	dir = 4
+	dir = 4;
+	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4portafthall)
@@ -15700,7 +15677,6 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/locker_room)
 "oxG" = (
@@ -16109,9 +16085,6 @@
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/techfloor/orange/corner,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/locker_room)
 "paG" = (
@@ -17368,20 +17341,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
-"qpL" = (
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/corner/lightorange/border,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/endeavour/hallway/d4portafthall)
 "qpS" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/hatch{
@@ -18331,20 +18290,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rnd/robotics/smallcraft)
-"roq" = (
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/corner/lightorange/border,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/steel_ridged,
-/area/endeavour/hallway/d4portafthall)
 "rpk" = (
 /obj/landmark/spawnpoint/job/ai,
 /obj/item/radio/intercom{
@@ -18498,10 +18443,6 @@
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
@@ -18615,7 +18556,6 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/locker_room)
 "rHa" = (
@@ -20462,9 +20402,6 @@
 	dir = 4
 	},
 /obj/machinery/light,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/hallway/d4portafthall)
 "tEL" = (
@@ -21120,7 +21057,6 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
 "ulo" = (
@@ -23566,9 +23502,6 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "wqk" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
@@ -24881,9 +24814,6 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
@@ -24958,9 +24888,6 @@
 	},
 /obj/item/radio/intercom{
 	pixel_y = -28
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4portafthall)
@@ -40602,7 +40529,7 @@ ahH
 eGm
 tMA
 fRA
-qpL
+rWR
 qwQ
 fEN
 grk
@@ -40796,7 +40723,7 @@ kBs
 wEe
 cLC
 eIN
-roq
+ihn
 qwQ
 sBU
 riD
@@ -40990,7 +40917,7 @@ wEe
 wEe
 rRm
 eIN
-qpL
+rWR
 qwQ
 gSX
 mrr
@@ -41187,8 +41114,8 @@ eIN
 ecY
 rSm
 fHR
-kaJ
-jdy
+riD
+ryp
 riD
 tmF
 uTn
