@@ -6263,11 +6263,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/chapel/office)
 "eJQ" = (
-/obj/structure/cable/green{
-	icon_state = "0-4"
+/obj/structure/cable/cyan{
+	icon_state = "2-4"
 	},
-/obj/machinery/power/terminal,
-/obj/structure/catwalk,
 /turf/simulated/floor,
 /area/shuttle/emt/general)
 "eJW" = (
@@ -6418,10 +6416,6 @@
 /turf/simulated/floor/reinforced,
 /area/endeavour/exploration/aux_hanger)
 "eQI" = (
-/obj/machinery/atmospherics/component/binary/pump{
-	dir = 1;
-	name = "secondary fuel pump"
-	},
 /turf/simulated/floor,
 /area/shuttle/emt/general)
 "eQT" = (
@@ -7068,14 +7062,12 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d1portamidhall)
 "fll" = (
-/obj/machinery/atmospherics/portables_connector{
-	dir = 1;
-	name = "Engine Fuel Port"
-	},
-/obj/machinery/light/small,
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/structure/cable/green{
-	icon_state = "2-4"
+	icon_state = "0-2"
+	},
+/obj/machinery/power/terminal{
+	dir = 4
 	},
 /turf/simulated/floor,
 /area/shuttle/emt/general)
@@ -7936,7 +7928,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/secondary/docking_hallway)
 "fPZ" = (
-/obj/structure/cable/green{
+/obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/white,
@@ -8864,7 +8856,6 @@
 /area/rnd/research/testingrange)
 "gCJ" = (
 /obj/machinery/holopad,
-/obj/machinery/power/apc/east_mount,
 /turf/simulated/floor/carpet/bcarpet,
 /area/chapel/main)
 "gDf" = (
@@ -10374,7 +10365,7 @@
 /area/tether/surfacebase/entertainment)
 "hXy" = (
 /obj/machinery/holopad/ship,
-/obj/structure/cable/green{
+/obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/white,
@@ -10605,10 +10596,9 @@
 /turf/simulated/floor/lino,
 /area/crew_quarters/coffee_shop)
 "icG" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 4
+/obj/machinery/atmospherics/component/binary/pump{
+	name = "secondary fuel pump"
 	},
-/obj/machinery/meter,
 /turf/simulated/floor,
 /area/shuttle/emt/general)
 "icN" = (
@@ -10898,13 +10888,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/entertainment)
-"int" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/machinery/power/apc/east_mount,
-/turf/simulated/floor/plating,
-/area/endeavour/hallway/d1fwdmaint)
 "inw" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
@@ -12922,18 +12905,16 @@
 /area/exploration/pilot_prep)
 "jMA" = (
 /obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/structure/cable/green{
 	icon_state = "1-4"
-	},
-/obj/structure/cable/green{
-	icon_state = "0-4"
 	},
 /obj/machinery/power/sensor{
 	name = "Powernet Sensor - Deck 1 Amidships Subgrid";
 	name_tag = "Deck 1 Amidships Subgrid"
 	},
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/obj/structure/cable/green,
 /turf/simulated/floor/plating,
 /area/engineering/substation/deck1amidships)
 "jMJ" = (
@@ -15706,11 +15687,11 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /obj/machinery/door/airlock/maintenance/engi{
 	req_one_access = null
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
 /area/engineering/substation/deck1aft)
@@ -16395,23 +16376,11 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portamidhall)
-"moP" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/endeavour/hallway/d1fwdmaint)
 "mpv" = (
-/obj/machinery/atmospherics/component/binary/pump{
-	name = "main fuel pump"
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
 	},
-/obj/structure/fuel_port{
-	dir = 4;
-	pixel_x = 29
-	},
+/obj/machinery/meter,
 /turf/simulated/floor,
 /area/shuttle/emt/general)
 "mpL" = (
@@ -16896,11 +16865,11 @@
 "mKW" = (
 /obj/machinery/door/firedoor,
 /obj/map_helper/access_helper/airlock/station/engineering/department,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /obj/machinery/door/airlock/maintenance/engi{
 	req_one_access = null
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
 /area/engineering/substation/deck1aft)
@@ -18363,6 +18332,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 5
 	},
+/obj/structure/fuel_port{
+	dir = 4;
+	pixel_y = -29
+	},
 /turf/simulated/floor,
 /area/shuttle/emt/general)
 "nLZ" = (
@@ -19290,7 +19263,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint)
 "oua" = (
-/obj/structure/cable/green{
+/obj/structure/cable/cyan{
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/white,
@@ -20345,8 +20318,8 @@
 /turf/simulated/floor/carpet/gaycarpet,
 /area/crew_quarters/clownoffice)
 "plD" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 8
+/obj/machinery/atmospherics/component/binary/pump{
+	name = "main fuel pump"
 	},
 /turf/simulated/floor,
 /area/shuttle/emt/general)
@@ -20581,7 +20554,7 @@
 	},
 /obj/machinery/air_alarm/north_mount,
 /obj/structure/cable{
-	icon_state = "0-2"
+	icon_state = "0-8"
 	},
 /turf/simulated/floor/plating,
 /area/engineering/substation/deck1amidships)
@@ -20603,9 +20576,7 @@
 	cur_coils = 3
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/cable/green{
-	icon_state = "0-8"
-	},
+/obj/structure/cable/cyan,
 /turf/simulated/floor,
 /area/shuttle/emt/general)
 "ptG" = (
@@ -21523,7 +21494,8 @@
 "qii" = (
 /obj/machinery/media/jukebox{
 	icon_state = "superjuke-nopower";
-	state_base = "superjuke"
+	state_base = "superjuke";
+	hacked = 1
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d1fwdmaint)
@@ -22112,11 +22084,11 @@
 /area/endeavour/hallway/d1fwdmaint)
 "qDU" = (
 /obj/machinery/power/apc/south_mount,
-/obj/structure/cable/green,
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/structure/bed/roller,
+/obj/structure/cable/cyan,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "qDW" = (
@@ -22293,8 +22265,8 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/outline/red,
-/obj/machinery/atmospherics/pipe/tank/phoron{
-	volume = 30000
+/obj/machinery/atmospherics/portables_connector{
+	name = "Engine Fuel Port"
 	},
 /turf/simulated/floor,
 /area/shuttle/emt/general)
@@ -24429,7 +24401,6 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d1fwdmaint)
 "ssc" = (
@@ -25798,11 +25769,11 @@
 /area/crew_quarters/captain)
 "tvl" = (
 /obj/machinery/door/firedoor/glass,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /obj/machinery/door/airlock/voidcraft/vertical{
 	name = "Engine Bay"
+	},
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor,
 /area/shuttle/emt/general)
@@ -31541,10 +31512,6 @@
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
-"xAO" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/plating,
-/area/endeavour/hallway/d1fwdmaint)
 "xBJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -35704,7 +35671,7 @@ qPy
 fXR
 plD
 mpv
-icG
+fpV
 eQI
 fll
 vgR
@@ -35896,8 +35863,8 @@ eVc
 dfS
 qPy
 qKF
+icG
 fpV
-qPy
 xLO
 eJQ
 psF
@@ -46933,7 +46900,7 @@ asR
 asR
 asR
 asR
-int
+mPv
 mPv
 ffi
 ffi
@@ -47317,8 +47284,8 @@ wsZ
 aka
 okP
 hFM
-moP
-xAO
+xkO
+ffi
 ffi
 asR
 wqg
