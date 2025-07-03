@@ -2076,7 +2076,7 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d1fwdmaint)
 "bDp" = (
-/obj/structure/table/rack/shelf,
+/obj/machinery/point_redemption_vendor/survey,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/endeavour/cargo)
 "bFi" = (
@@ -15335,6 +15335,7 @@
 	dir = 8
 	},
 /obj/machinery/light,
+/obj/machinery/point_redemption_vendor/survey,
 /turf/simulated/floor/tiled,
 /area/exploration)
 "lCd" = (
@@ -19326,10 +19327,9 @@
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint)
 "ovt" = (
-/obj/structure/table/standard,
-/obj/machinery/recharger,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
+/obj/machinery/point_redemption_vendor/survey,
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
 "ovE" = (

@@ -31694,6 +31694,11 @@
 	},
 /turf/simulated/floor/wood,
 /area/quartermaster/qm)
+"xyW" = (
+/obj/effect/floor_decal/corner/brown/diagonal,
+/obj/machinery/point_redemption_vendor/mining,
+/turf/simulated/floor/tiled/white,
+/area/quartermaster/belterdock/gear)
 "xzc" = (
 /turf/simulated/floor/tiled,
 /area/security/lobby)
@@ -47124,7 +47129,7 @@ qzI
 pJe
 itn
 lps
-vVH
+xyW
 vVH
 uwg
 aYi
