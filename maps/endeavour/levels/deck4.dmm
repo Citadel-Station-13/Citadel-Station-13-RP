@@ -8534,9 +8534,10 @@
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/corner/navgold/border,
-/obj/structure/disposalpipe/sortjunction/flipped{
-	name = "Kitchen";
-	dir = 4
+/obj/structure/disposalpipe/sortjunction{
+	dir = 4;
+	icon_state = "pipe-j2s";
+	name = "Kitchen"
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4starboardamidhall)
@@ -49494,7 +49495,7 @@ jNg
 jNg
 jNg
 jNg
-jNg
+vTv
 xRj
 xRj
 xRj
