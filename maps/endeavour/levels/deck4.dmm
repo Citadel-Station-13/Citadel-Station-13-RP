@@ -2187,14 +2187,11 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 1
+/obj/structure/cable/green{
+	icon_state = "1-4"
 	},
-/obj/effect/floor_decal/corner/navblue/border{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/steel_ridged,
-/area/endeavour/hallway/d4starboardforhall)
+/turf/simulated/floor/tiled,
+/area/endeavour/station/stairs_four)
 "bYC" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 8
@@ -7301,6 +7298,12 @@
 	},
 /turf/space,
 /area/space)
+"gGE" = (
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d4starboardforhall)
 "gHm" = (
 /obj/structure/closet,
 /obj/machinery/air_alarm/north_mount,
@@ -8094,6 +8097,9 @@
 /area/tcommsat/entrance)
 "htZ" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled,
 /area/endeavour/station/stairs_four)
 "huc" = (
@@ -8838,8 +8844,9 @@
 /obj/effect/floor_decal/corner/navblue/bordercorner2{
 	dir = 1
 	},
-/obj/machinery/light{
-	dir = 1
+/obj/machinery/power/apc/north_mount,
+/obj/structure/cable/green{
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/station/stairs_four)
@@ -9919,16 +9926,11 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4portafthall)
 "jfX" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/navblue/border{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/steel_grid,
+/turf/simulated/floor/tiled,
 /area/endeavour/hallway/d4starboardforhall)
 "jgy" = (
 /obj/machinery/portable_atmospherics/canister/empty,
@@ -11309,6 +11311,9 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d4starboardforhall)
 "kxo" = (
@@ -12686,6 +12691,12 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4starboardhall)
+"lRz" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d4starboardamidhall)
 "lRE" = (
 /obj/machinery/appliance/cooker/oven,
 /obj/effect/floor_decal/corner_oldtile/white/diagonal,
@@ -14504,6 +14515,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/corner/navgold/border,
+/obj/machinery/light,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/station/stairs_four)
 "nvN" = (
@@ -16928,9 +16940,6 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/engi_wash)
 "qfU" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
@@ -17521,9 +17530,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos/workshop)
 "qGa" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
@@ -17827,9 +17833,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/storage/tech)
 "qUu" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
@@ -19432,6 +19435,9 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled,
 /area/endeavour/station/stairs_four)
 "sNg" = (
@@ -19674,8 +19680,7 @@
 	dir = 1
 	},
 /obj/structure/cable/green{
-	dir = 1;
-	icon_state = "2-4"
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4starboardforhall)
@@ -20677,6 +20682,9 @@
 /area/engineering/drone_fabrication)
 "ubO" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled,
 /area/endeavour/station/stairs_four)
 "ubP" = (
@@ -21007,11 +21015,11 @@
 	dir = 1
 	},
 /obj/machinery/power/apc/north_mount,
-/obj/structure/cable/green{
-	icon_state = "0-4"
-	},
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 1
+	},
+/obj/structure/cable/green{
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/hallway/d4starboardforhall)
@@ -22342,17 +22350,8 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/navblue/border{
-	dir = 1
-	},
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/endeavour/hallway/d4starboardforhall)
+/turf/simulated/floor/tiled,
+/area/endeavour/station/stairs_four)
 "vAC" = (
 /obj/structure/lattice,
 /obj/machinery/camera/network/outside{
@@ -22597,6 +22596,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable{
 	icon_state = "1-2"
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d4starboardforhall)
@@ -23146,6 +23148,9 @@
 /area/tcommsat/computer)
 "whf" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d4starboardforhall)
 "whq" = (
@@ -24048,6 +24053,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4starboardhall)
+"xev" = (
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d4starboardamidhall)
 "xeH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
@@ -24106,6 +24117,19 @@
 /obj/machinery/air_alarm/south_mount,
 /turf/simulated/floor/plating,
 /area/engineering/storage)
+"xgX" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 1
+	},
+/obj/machinery/power/apc/north_mount,
+/obj/structure/cable/green{
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d4starboardamidhall)
 "xjc" = (
 /obj/structure/table/marble,
 /obj/item/flame/candle,
@@ -48081,8 +48105,8 @@ aCV
 aCV
 aCV
 kaa
-vsA
-cuh
+xgX
+xev
 dln
 kdV
 ebp
@@ -48276,7 +48300,7 @@ qyh
 kav
 kaa
 vsA
-cuh
+lRz
 dln
 kdV
 ebp
@@ -48664,7 +48688,7 @@ crB
 crB
 crB
 ibZ
-tBV
+bXW
 nve
 jsW
 iUB
@@ -48858,7 +48882,7 @@ oFZ
 nLM
 yjd
 nBc
-tBV
+vAB
 lsv
 dZJ
 iUB
@@ -49634,7 +49658,7 @@ wiw
 emb
 aqr
 dGn
-hLM
+fmu
 dIW
 owo
 kqJ
@@ -50022,7 +50046,7 @@ wiw
 aIr
 tyo
 umQ
-hLM
+fmu
 dIW
 owo
 kaY
@@ -50216,7 +50240,7 @@ iyM
 iyM
 iyM
 lBf
-hLM
+fmu
 oCj
 owo
 kaY
@@ -50604,7 +50628,7 @@ wQD
 dRL
 iyM
 wUt
-oSf
+jfX
 dRl
 owo
 owo
@@ -50798,7 +50822,7 @@ fvL
 dRL
 iyM
 oTS
-hLM
+fmu
 gbA
 owo
 lTp
@@ -50992,7 +51016,7 @@ xXV
 dRL
 iyM
 uqT
-hLM
+mjv
 vMN
 owo
 kaY
@@ -51185,7 +51209,7 @@ dRL
 ajH
 dRL
 iyM
-jfX
+lBf
 whf
 ufT
 owo
@@ -51380,7 +51404,7 @@ hUe
 dRL
 iyM
 qfU
-oSf
+jfX
 hXh
 xqF
 owo
@@ -51574,7 +51598,7 @@ ejd
 dRL
 iyM
 qUu
-hLM
+fmu
 oCj
 xjG
 owo
@@ -51767,8 +51791,8 @@ dEZ
 nIj
 dRL
 iyM
-vAB
-hLM
+wUt
+fmu
 dIW
 owo
 owo
@@ -51961,8 +51985,8 @@ dRL
 lbc
 dRL
 iyM
-bXW
-hLM
+oTS
+fmu
 rIU
 owo
 pWs
@@ -52350,7 +52374,7 @@ owo
 gLy
 akA
 tbc
-hLM
+gGE
 qYY
 owo
 cSy
