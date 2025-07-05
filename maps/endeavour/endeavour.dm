@@ -27,6 +27,7 @@
 		/datum/map/sector/miaphus,
 		/datum/map/sector/roguemining_192/one,
 		/datum/map/sector/sky_planet,
+		/datum/map/sector/osiris_field,
 	)
 
 	// todo: remove after dev is done
