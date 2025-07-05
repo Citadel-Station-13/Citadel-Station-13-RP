@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-//* /obj/var/hides_underfloor
+//* /obj/var/hides_underfloor *//
 
 /// do not change these willy-nilly, these are strings for the map editor.
 
