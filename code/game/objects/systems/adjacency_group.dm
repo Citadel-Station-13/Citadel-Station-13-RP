@@ -26,6 +26,7 @@
 /datum/object_system/adjacency_group/Destroy()
 	LAZYREMOVE(parent.status_traits, TRAIT_OBJ_ADJACENCY_GROUP(key))
 	QDEL_NULL(group)
+	rebuild_queued = FALSE
 	return ..()
 
 /datum/object_system/adjacency_group/proc/parent_moved()
@@ -45,11 +46,12 @@
 	if(!rebuild_queued)
 		return
 	rebuild_queued = FALSE
+	if(group)
+		return
 	rebuild()
 
 /datum/object_system/adjacency_group/proc/rebuild()
-	if(group)
-		QDEL_NULL(group)
+	QDEL_NULL(group)
 	var/datum/adjacency_group/new_group = new(key, create_initial_data())
 	new_group.build(src)
 
@@ -85,9 +87,9 @@
 				for(var/obj/in_cardinal_tile in get_step(expand_loc, dir))
 					var/datum/object_system/adjacency_group/their_cardinal_group = in_cardinal_tile.status_traits?[trait]
 					if(their_cardinal_group)
-						if(their_cardinal_group.group != src)
-							continue
 						dirs_connecting |= dir
+						if(their_cardinal_group.group == src)
+							break
 						expanding += in_cardinal_tile.status_traits[trait]
 						break
 
@@ -96,20 +98,19 @@
 				if(!their_group || their_group == expand_this)
 					continue
 				dirs_connecting |= ONTOP_BIT
-				if(their_group.group)
-					if(their_group.group == src)
-						CRASH("self-recursion during build")
-					else
+				if(their_group.group != src)
+					if(their_group.group)
 						qdel(their_group.group)
-				their_group.group = src
-				their_group.connected_directions = dirs_connecting
-		if(expand_this.group)
-			if(expand_this.group == src)
-				CRASH("self-recursion during build")
-			else
+					their_group.group = src
+					their_group.connected_directions = dirs_connecting
+					in_group += their_group
+
+		if(expand_this.group != src)
+			if(expand_this.group)
 				qdel(expand_this.group)
-		expand_this.group = src
-		expand_this.connected_directions = dirs_connecting
+			expand_this.group = src
+			expand_this.connected_directions = dirs_connecting
+			in_group += expand_this
 
 	for(var/datum/object_system/adjacency_group/member as anything in in_group)
 		member.parent.object_adjacency_group_join(member, src, member.connected_directions)
@@ -119,6 +120,7 @@
 		member.parent.object_adjacency_group_leave(member, src, member.connected_directions)
 		member.group = null
 		member.connected_directions = NONE
+		member.queue_rebuild()
 	in_group = null
 
 //* /obj hooks *//
