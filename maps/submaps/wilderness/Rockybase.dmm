@@ -801,7 +801,7 @@
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "cN" = (
-/obj/machinery/mecha_part_fabricator,
+/obj/machinery/lathe/mecha_part_fabricator,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "cP" = (

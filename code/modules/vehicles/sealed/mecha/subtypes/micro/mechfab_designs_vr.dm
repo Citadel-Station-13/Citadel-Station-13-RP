@@ -1,6 +1,6 @@
 /datum/prototype/design/science/mechfab/gopher
 	abstract_type = /datum/prototype/design/science/mechfab/gopher
-	category = list("Gopher")
+	category = "Gopher"
 	work = (5 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 
 /datum/prototype/design/science/mechfab/gopher/chassis
@@ -57,7 +57,7 @@
 
 /datum/prototype/design/science/mechfab/polecat
 	abstract_type = /datum/prototype/design/science/mechfab/polecat
-	category = list("Polecat")
+	category = "Polecat"
 	work = (10 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 
 /datum/prototype/design/science/mechfab/polecat/chassis
@@ -137,7 +137,7 @@
 
 /datum/prototype/design/science/mechfab/weasel
 	abstract_type = /datum/prototype/design/science/mechfab/weasel
-	category = list("Weasel")
+	category = "Weasel"
 	work = (5 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 
 /datum/prototype/design/science/mechfab/weasel/chassis

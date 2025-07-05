@@ -34,7 +34,7 @@
 		return
 	.["latheName"] = lathe.name
 	.["dynamicButtons"] = lathe.ui_custom_options()
-	.["materialsContext"] = SSmaterials.tgui_materials_context()
+	.["materialsContext"] = SSmaterials.tgui_materials_context(full=TRUE) //this is a full materials context now
 	.["speedMultiplier"] = lathe.speed_multiplier
 	.["efficiencyMultiplier"] = lathe.efficiency_multiplier
 	.["powerMultiplier"] = lathe.power_multiplier
@@ -107,7 +107,7 @@
 			var/amount = text2num(params["amount"]) || INFINITY
 			if(amount <= 0)
 				return FALSE
-			lathe.reagents.remove_reagent(params["id"], amount)
+			lathe.stored_reagents.remove_reagent(params["id"], amount)
 			ui_reagents_update()
 			return TRUE
 		if("ejectItem")
@@ -129,11 +129,18 @@
 	var/list/datum/prototype/design/designs = islist(design)? design : list(design)
 	var/list/built = list()
 	var/list/collated = list()
+	var/list/collated_subcat = list()
 	if(!islist(designs))
 		design = list(design)
 	for(var/datum/prototype/design/D as anything in designs)
 		built[D.id] = D.ui_data_list()
-		collated[D.category] = TRUE
+		if(islist(D.category))
+			for(var/elem in D.category)
+				collated[elem] = TRUE
+				LAZYDISTINCTADD(collated_subcat[elem], COERCE_OPTIONS_LIST(D.subcategory))
+		else
+			collated[D.category] = TRUE
+			LAZYDISTINCTADD(collated_subcat[D.category], COERCE_OPTIONS_LIST(D.subcategory))
 	var/list/flatten = list()
 	for(var/key in collated)
 		flatten += key
@@ -141,6 +148,7 @@
 	return list(
 		"instances" = built,
 		"categories" = collated,
+		"subcategories" = collated_subcat,
 	)
 
 /datum/tgui_module/lathe_control/proc/ui_design_add(list/datum/prototype/design/designs)

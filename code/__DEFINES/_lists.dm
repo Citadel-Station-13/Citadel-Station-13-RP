@@ -11,7 +11,7 @@
 #define UNSETEMPTY(L) if (L && !length(L)) L = null
 /// Removes I from list L, and sets I to null if it is now empty
 #define LAZYREMOVE(L, I) if(L) { L -= I; if(!length(L)) { L = null; } }
-/// Adds I to L, initalizing I if necessary
+/// Adds I to L, initalizing L if necessary
 #define LAZYADD(L, I) if(!L) { L = list(); } L += I;
 /// Adds I to L, initalizing L if necessary, if I is not already in L
 #define LAZYDISTINCTADD(L, I) if(!L) { L = list(); } L |= I;
@@ -58,7 +58,7 @@
 
 /// sanitize a lazy null-or-entry-or-list into always a list
 #define COERCE_OPTIONS_LIST(Entry) (islist(Entry)? Entry : (isnull(Entry)? list() : list(Entry)))
-/// COERCE_OPTIONS_LIST but does it to an existing variablew.
+/// COERCE_OPTIONS_LIST but does it to an existing variable.
 #define COERCE_OPTIONS_LIST_IN(Variable) Variable = COERCE_OPTIONS_LIST(Variable)
 
 /// Passed into BINARY_INSERT to compare keys

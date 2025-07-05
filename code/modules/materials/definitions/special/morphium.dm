@@ -25,6 +25,8 @@
 
 	worth = 100
 
+	material_constraints = MATERIAL_CONSTRAINT_RIGID
+
 /datum/prototype/material/morphium/hull
 	name = MAT_MORPHIUMHULL
 	id = "morphium_hull"
