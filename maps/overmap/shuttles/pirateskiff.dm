@@ -36,7 +36,7 @@
 /area/shuttle/pirate
 	requires_power = TRUE
 	name = "\improper Pirate Skiff"
-	icon_state = "shuttle1"
+	icon_state = "shuttle"
 
 /area/shuttle/pirate/deck
 	name = "\improper Pirate Skiff Deck"

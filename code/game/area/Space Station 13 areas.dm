@@ -2122,7 +2122,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/solar/aft
 	name = "\improper Aft Solar Array"
-	icon_state = "aft"
+	icon_state = "panelsAft"
 
 /area/solar/starboard
 	name = "\improper Aft Starboard Solar Array"
@@ -2980,7 +2980,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/solar/derelict_aft
 	name = "\improper Derelict Aft Solar Array"
-	icon_state = "aft"
+	icon_state = "panelsAft"
 
 /area/derelict/singularity_engine
 	name = "\improper Derelict Singularity Engine"
@@ -3043,7 +3043,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/solar/constructionsite
 	name = "\improper Construction Site Solars"
-	icon_state = "aft"
+	icon_state = "panelsAft"
 
 /area/constructionsite/teleporter
 	name = "Construction Site Teleporter"

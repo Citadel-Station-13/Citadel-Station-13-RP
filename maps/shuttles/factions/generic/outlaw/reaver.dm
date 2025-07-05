@@ -24,7 +24,7 @@
 /area/shuttle/reaver
 	requires_power = TRUE
 	name = "\improper Reaver Shuttle"
-	icon_state = "shuttle1"
+	icon_state = "shuttle"
 
 /area/shuttle/reaver/fore
 	name = "\improper Reaver Shuttle Fore"
