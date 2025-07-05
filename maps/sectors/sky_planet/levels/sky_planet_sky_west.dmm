@@ -383,6 +383,11 @@
 /mob/living/simple_mob/mechanical/hivebot,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
+"hu" = (
+/obj/item/robot_parts/l_arm,
+/obj/random/energy,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/sector/sky_planet/station_city/street)
 "hx" = (
 /obj/effect/debris/cleanable/blood,
 /obj/machinery/light/spot{
@@ -795,7 +800,7 @@
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/sector/sky_planet/station_city/street)
 "qa" = (
-/obj/structure/fake_stairs/west/bottom,
+/obj/structure/stairs/spawner/west,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/station_city/street)
 "qb" = (
@@ -1156,6 +1161,10 @@
 "ws" = (
 /turf/simulated/wall/solidrock,
 /area/sector/sky_planet/rock)
+"wv" = (
+/obj/random/multiple/gun/projectile/rifle,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/sector/sky_planet/station_city/street)
 "wz" = (
 /obj/effect/floor_decal/borderfloorwhite/full,
 /turf/simulated/floor/wood/indoors,
@@ -1733,7 +1742,7 @@
 /turf/simulated/open/lythios43c,
 /area/sector/sky_planet/outpost)
 "Jt" = (
-/obj/structure/fake_stairs/west/bottom,
+/obj/structure/stairs/spawner/west,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
 "Jw" = (
@@ -1895,6 +1904,10 @@
 	},
 /obj/structure/lightpost/urban,
 /turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/station_city/street)
+"MH" = (
+/obj/effect/debris/cleanable/molten_item,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/sector/sky_planet/station_city/street)
 "MR" = (
 /obj/structure/window/reinforced{
@@ -35543,8 +35556,8 @@ tE
 UF
 ae
 kM
-cx
-cx
+hu
+MH
 Ud
 Or
 vl
@@ -35737,8 +35750,8 @@ tE
 cx
 oH
 kM
-cx
-cx
+MH
+wv
 cx
 Yd
 cx
