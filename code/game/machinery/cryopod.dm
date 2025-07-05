@@ -381,16 +381,9 @@
 /// Also make sure there is a valid control computer
 /obj/machinery/cryopod/robot/despawn_occupant(mob/to_despawn)
 	var/mob/living/silicon/robot/R = to_despawn
-	if(!istype(R)) return ..()
-
+	if(!istype(R))
+		return ..()
 	qdel(R.mmi)
-	for(var/obj/item/I in R.module) // the tools the borg has; metal, glass, guns etc
-		for(var/mob/M in I)			despawn_occupant(M)
-		for(var/obj/item/O in I) // the things inside the tools, if anything; mainly for janiborg trash bags
-			O.forceMove(R)
-		qdel(I)
-	qdel(R.module)
-
 	return ..()
 
 /obj/machinery/cryopod/robot/door/gateway/despawn_occupant()
