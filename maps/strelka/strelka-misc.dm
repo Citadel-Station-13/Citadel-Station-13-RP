@@ -83,3 +83,11 @@
 	var/poison_chance = 35			// Chance for injection to occur.
 	var/poison_per_bite = 5			// Amount added per injection.
 
+/obj/item/paper/strelka_rust
+	name = "Safety Instructions for the R-UST on the NEV Strelka"
+	info = {"<h4>Getting Started</h4>
+	You can set this R-UST up like you can every other.
+	Be aware that it is far smaller than other R-USTs you might be familiar with.<br>
+	<b>DO <i>NOT</i> exceed a field strength of 50!</b><br>
+	Be safe.
+	"}
