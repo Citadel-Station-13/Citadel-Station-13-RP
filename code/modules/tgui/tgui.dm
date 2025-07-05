@@ -37,6 +37,14 @@
 	COOLDOWN_DECLARE(refresh_cooldown)
 	/// Are byond mouse events beyond the window passed in to the ui
 	var/mouse_hooked = FALSE
+	/// Is this an admin UI?
+	/// * Pushed to config structure of useBackend, allowing for UIs
+	///   to know if they're opened in admin or player context
+	/// * If TRUE, most interfaces should allow interaction and keep themselves
+	///   open even if the admin's mob shouldn't otherwise be able to use them.
+	/// * Only admin interfaces and control schemes should open these windows. Admins
+	///   accessing things as a player shold not.
+	var/admin_control = FALSE
 	/// The Parent UI
 	//? STOP USING THIS. USE MODULES. ~SILICONS
 	var/datum/tgui/parent_ui
@@ -70,10 +78,11 @@
  * required interface string The interface used to render the UI.
  * optional title string The title of the UI.
  * optional parent_ui datum/tgui The parent of this UI.
+ * optional admin_inspect bool If this UI should be opened in admin mode.
  *
  * return datum/tgui The requested UI.
  */
-/datum/tgui/New(mob/user, datum/src_object, interface, title, datum/tgui/parent_ui)
+/datum/tgui/New(mob/user, datum/src_object, interface, title, datum/tgui/parent_ui, admin_inspect)
 	log_tgui(user,
 		// "new [interface] fancy [user?.client?.prefs.tgui_fancy]",
 		"new [interface] fancy 1",
@@ -82,6 +91,7 @@
 	src.src_object = src_object
 	src.window_key = "[REF(src_object)]-main"
 	src.interface = interface
+	src.admin_control = admin_inspect
 	if(title)
 		src.title = title
 	src.state = src_object.ui_state(user)
@@ -311,6 +321,8 @@
 	json_data["config"] = list(
 		"title" = title,
 		"status" = status,
+		#warn admin control config read on tgui side
+		"admin" = admin_control,
 		"interface" = interface,
 		"refreshing" = refreshing,
 		"window" = list(
@@ -392,7 +404,7 @@
  */
 /datum/tgui/proc/process_status()
 	var/prev_status = status
-	status = src_object.ui_status(user, state)
+	status = src_object.ui_status(user, state, src)
 	if(parent_ui)
 		status = min(status, parent_ui.status)
 	return prev_status != status

@@ -1,0 +1,8 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
+
+/datum/prototype/eldritch_patron/ash
+	id = "ash"
+	name = "The Ashcrown"
+	desc = "Ashes to ashes, dust to dust."
+	#warn icon

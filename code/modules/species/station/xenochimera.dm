@@ -631,7 +631,7 @@
 		return TRUE
 
 
-/datum/ability/species/xenochimera/on_trigger(mob/user, toggling)
+/datum/ability/species/xenochimera/on_trigger_old(mob/user, toggling)
 	. = ..()
 	if(!ishuman(owner))
 		return
@@ -662,7 +662,7 @@
 	windup = 10 SECONDS
 	var/healing_amount = 60
 
-/datum/ability/species/xenochimera/regenerate/on_trigger()
+/datum/ability/species/xenochimera/regenerate/on_trigger_old()
 	. = ..()
 	if(!ishuman(owner))
 		return
@@ -721,7 +721,7 @@
 	var/active = FALSE
 	var/duration = 30 SECONDS
 
-/datum/ability/species/xenochimera/thermal_sight/on_trigger()
+/datum/ability/species/xenochimera/thermal_sight/on_trigger_old()
 	. = ..()
 	if(!ishuman(owner))
 		return
@@ -762,7 +762,7 @@
 	nutrition_cost_proportional = 5
 	var/active = FALSE
 
-/datum/ability/species/xenochimera/voice_mimic/on_trigger()
+/datum/ability/species/xenochimera/voice_mimic/on_trigger_old()
 	. = ..()
 	if(owner.stat != DEAD)
 		if(ishuman(owner))
@@ -805,7 +805,7 @@
 	is_feral = TRUE
 
 
-/datum/ability/species/xenochimera/dissonant_shriek/on_trigger()
+/datum/ability/species/xenochimera/dissonant_shriek/on_trigger_old()
 	. = ..()
 
 	if(owner.incapacitated())
@@ -862,7 +862,7 @@
 	else
 		return alert("Are you sure you want to use Hatch Stasis? This takes ten minutes and cannot be cancelled!", "Confirm Hatch", "Yes", "No") == "Yes"
 
-/datum/ability/species/xenochimera/hatch/on_trigger()
+/datum/ability/species/xenochimera/hatch/on_trigger_old()
 	. = ..()
 	if(ishuman(owner))
 		var/mob/living/carbon/human/H = owner
@@ -904,7 +904,7 @@
 	nutrition_cost_minimum = 1
 	nutrition_cost_proportional = 1
 
-/datum/ability/species/xenochimera/hatch_pop/on_trigger()
+/datum/ability/species/xenochimera/hatch_pop/on_trigger_old()
 	. = ..()
 	var/mob/living/carbon/human/H = owner
 
@@ -942,7 +942,7 @@
 	cooldown = 20 SECONDS
 
 
-/datum/ability/species/xenochimera/commune/on_trigger()
+/datum/ability/species/xenochimera/commune/on_trigger_old()
 	. = ..()
 	var/list/targets = list()
 	var/target = null

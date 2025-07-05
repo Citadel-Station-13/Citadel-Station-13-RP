@@ -43,14 +43,26 @@
 	/// * this actually just ensures reaction multiplier is a whole number.
 	var/require_whole_numbers = FALSE
 
+	/// require holder to have these flags
+	/// * only checked on start, not while ticking a ticked reaction
+	/// * will be re-checked after each recursion while performing instant reactions.
+	///   this means that if flags change, anything already queued to run will run,
+	///   and those flags only take effect after the run.
+	var/holder_flags_start_require = NONE
+	/// require holder to not have these flags
+	/// * only checked on start, not while ticking a ticked reaction
+	/// * will be re-checked after each recursion while performing instant reactions.
+	///   this means that if flags change, anything already queued to run will run,
+	///   and those flags only take effect after the run.
+	var/holder_flags_start_forbid = NONE
+
 	/// result reagent path or id. prefer path for compile time checking.
-	///
 	/// * It is allowed to have this set without a result_amount.
 	var/result
 	/// how much of the result is made per 1 ratio of required_reagents consumed.
 	///
 	/// * If this is 0, multiplier / calculations still work; we just won't make any result reagents. Useful for pyrotechnics.
-	/// * It is undefined behavior to have this be non-zero and still have a result defined.
+	/// * It is undefined behavior to have this be negative.
 	var/result_amount = 0
 
 	/// priority - higher is checked first when reacting.
@@ -231,11 +243,21 @@
  * Checks:
  * * Reagents, catalysts, moderators
  * * Everything in 'can_start_reaction'
+ *
+ * @params
+ * * holder - holder being checked
+ * * extra_flags - extra holder flags to treat us as having;
+ *   useful for reconsidering reactions on throw impact and similar
  */
-/datum/chemical_reaction/proc/can_happen(datum/reagent_holder/holder)
+/datum/chemical_reaction/proc/can_happen(datum/reagent_holder/holder, extra_flags)
 	// as an external proc, you should not need to override this
 	// without overriding can_start_reaction or can_proceed_reaction.
 	SHOULD_NOT_OVERRIDE(TRUE)
+
+	if(holder_flags_start_require && ((holder.reagent_holder_flags | extra_flags) & holder_flags_start_require) != holder_flags_start_require)
+		return FALSE
+	if(holder_flags_start_forbid && ((holder.reagent_holder_flags | extra_flags) & holder_flags_start_forbid))
+		return FALSE
 
 	// check requirements, if it's whole numbers required we need atleast multiplier = 1
 	if(require_whole_numbers)
@@ -281,7 +303,7 @@
  *
  * Checks:
  * * Temperature
- * * pH
+ * * pH once that's implemented
  */
 /datum/chemical_reaction/proc/can_proceed_reaction(datum/reagent_holder/holder)
 	if(holder.temperature < temperature_low || holder.temperature > temperature_high)

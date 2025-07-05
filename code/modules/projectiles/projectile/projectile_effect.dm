@@ -20,6 +20,8 @@
  * * you'll note that [efficiency] is not a thing here
  * * this is because this runs regardless of target's opinion
  * * this means you should probably be careful and check impact_flags!
+ * * returns are not entirely checked; this is only fired after most of impact processing does.
+ *   the only impact flag checked is probably 'should delete'.
  *
  * @return new impact flags
  */
@@ -47,5 +49,10 @@
 /datum/projectile_effect/proc/on_lifetime(obj/projectile/proj, impact_ground_on_expiry)
 	return
 
+/**
+ * This is called every time we move a tile.
+ * * Keep in mind, this is every tile, not every 32 pixels. If you're using this, make sure you
+ *   understand what this means. Diagonal moves involve a lot more tiles than cardinal.
+ */
 /datum/projectile_effect/proc/on_moved(obj/projectile/proj, atom/old_loc)
 	return

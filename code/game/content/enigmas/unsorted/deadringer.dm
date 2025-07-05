@@ -161,7 +161,7 @@
 		var/obj/item/clothing/c_type = H.item_by_slot_id(SLOT_ID_BACK)
 		temp.disguise(c_type.type)
 		ADD_TRAIT(temp, TRAIT_ITEM_NODROP, HOLOGRAM_TRAIT)
-	corpse.identifying_gender = H.identifying_gender
+	corpse.set_identifying_gender(H.identifying_gender)
 	corpse.flavor_texts = H.flavor_texts.Copy()
 	corpse.real_name = H.real_name
 	corpse.name = H.name

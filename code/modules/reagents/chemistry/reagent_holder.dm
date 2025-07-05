@@ -1,7 +1,7 @@
 /datum/reagent_holder
 	//* Core *//
 
-	/// reagent holder flags - see [code/__DEFINES/reagents/flags.dm]
+	/// reagent holder flags - see [code/__DEFINES/reagents/reagent_holder.dm]
 	var/reagent_holder_flags = NONE
 
 	//* Container *//
@@ -396,12 +396,6 @@
 		return
 
 	return trans_to_holder(target.reagents, amount, multiplier, copy)
-
-/* Atom reagent creation - use it all the time */
-
-/atom/proc/create_reagents(max_vol)
-	reagents = new /datum/reagent_holder(max_vol, src)
-	return reagents
 
 //Spreads the contents of this reagent holder all over the vicinity of the target turf.
 // todo: audit this proc

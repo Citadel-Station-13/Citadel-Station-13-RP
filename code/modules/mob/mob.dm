@@ -7,6 +7,12 @@
 	/// * Lazy list, see mob_movespeed.dm
 	var/list/actionspeed_modifier_immunities
 
+	//* Gender *//
+	/// Our gender datum
+	var/datum/gender/gender_datum
+	/// Our visible gender
+	var/datum/gender/gender_datum_visible
+
 	//* Impairments *//
 	/// active feign_impairment types
 	/// * lazy list
@@ -69,6 +75,8 @@
 	update_ssd_overlay()
 	// iff factions
 	init_iff()
+	// gender datum
+	update_gender()
 	return ..()
 
 /mob/Destroy()
@@ -449,34 +457,7 @@
 			. += M
 	. -= src
 
-/**
- * Get the notes of this mob
- *
- * This actually gets the mind datums notes
- */
-/mob/verb/memory()
-	set name = "Notes"
-	set category = VERB_CATEGORY_IC
-	if(mind)
-		mind.show_memory(src)
-	else
-		to_chat(src, "The game appears to have misplaced your mind datum, so we can't show you your notes.")
-
-/**
- * Add a note to the mind datum
- */
-/mob/verb/add_memory(msg as message)
-	set name = "Add Note"
-	set category = VERB_CATEGORY_IC
-
-	msg = sanitize(msg)
-
-	if(mind)
-		mind.store_memory(msg)
-	else
-		to_chat(src, "The game appears to have misplaced your mind datum, so we can't show you your notes.")
-
-/mob/proc/store_memory(msg as message, popup, sane = 1)
+/mob/proc/legacy_add_html_memory(msg as message, popup, sane = 1)
 	msg = copytext(msg, 1, MAX_MESSAGE_LEN)
 
 	if (sane)
@@ -489,9 +470,6 @@
 		memory += msg
 	else
 		memory += "<BR>[msg]"
-
-	if (popup)
-		memory()
 
 /mob/proc/update_flavor_text()
 	set src in usr
@@ -1097,29 +1075,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 	to_chat(src, "<span class='notice'>Diceroll result: <b>[rand(1, n)]</b></span>")
 
-/**
- * Checks for anti magic sources.
- *
- * @params
- * - magic - wizard-type magic
- * - holy - cult-type magic, stuff chaplains/nullrods/similar should be countering
- * - chargecost - charges to remove from antimagic if applicable/not a permanent source
- * - self - check if the antimagic is ourselves
- *
- * @return The datum source of the antimagic
- */
-/mob/proc/anti_magic_check(magic = TRUE, holy = FALSE, chargecost = 1, self = FALSE)
-	if(!magic && !holy)
-		return
-	var/list/protection_sources = list()
-	if(SEND_SIGNAL(src, COMSIG_MOB_RECEIVE_MAGIC, src, magic, holy, chargecost, self, protection_sources) & COMPONENT_MAGIC_BLOCKED)
-		if(protection_sources.len)
-			return pick(protection_sources)
-		else
-			return src
-	if((magic && HAS_TRAIT(src, TRAIT_ANTIMAGIC)) || (holy && HAS_TRAIT(src, TRAIT_HOLY)))
-		return src
-
 /mob/drop_location()
 	if(temporary_form)
 		return temporary_form.drop_location()
@@ -1140,6 +1095,30 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 /mob/z_pass_out(atom/movable/AM, dir, turf/new_loc)
 	return TRUE
+
+//* Gender *//
+
+/**
+ * Setter for gender.
+ */
+/mob/set_gender(new_gender)
+	. = ..()
+	if(!.)
+		return
+	update_gender()
+
+/**
+ * Update gender.
+ */
+/mob/proc/update_gender()
+	gender_datum = GLOB.gender_datums[gender] || GLOB.gender_datums[/datum/gender/neuter::key]
+
+/**
+ * Update gender.
+ */
+/mob/proc/update_visible_gender()
+	var/visible_gender = get_visible_gender()
+	gender_datum_visible = GLOB.gender_datums[visible_gender] || GLOB.gender_datums[/datum/gender/neuter::key]
 
 //? Pixel Offsets
 
@@ -1316,3 +1295,8 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
  */
 /mob/is_avoiding_ground()
 	return ..() || hovering || flying || (buckled?.buckle_flags & BUCKLING_GROUND_HOIST) || buckled?.is_avoiding_ground()
+
+//* Mob Modals *//
+
+/mob/proc/open_mob_modal(typepath, key, ...)
+	#warn impl

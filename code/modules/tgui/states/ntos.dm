@@ -8,7 +8,7 @@
 
 GLOBAL_DATUM_INIT(ntos_state, /datum/ui_state/ntos, new)
 
-/datum/ui_state/ntos/can_use_topic(src_object, mob/user)
+/datum/ui_state/ntos/can_use_topic(datum/src_object, mob/user, datum/tgui/ui)
 	var/datum/computer_file/program/P = src_object
 	if(!istype(P) || !P.computer)
 		return FALSE

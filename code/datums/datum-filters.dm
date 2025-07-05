@@ -1,3 +1,5 @@
+#warn deal with this..
+
 /** Add a filter to the datum.
  * This is on datum level, despite being most commonly / primarily used on atoms, so that filters can be applied to images / mutable appearances.
  * Can also be used to assert a filter's existence. I.E. update a filter regardless if it exists or not.
@@ -37,10 +39,6 @@
 		atom_cast.filters += filter(arglist(arguments))
 	UNSETEMPTY(filter_data)
 	SEND_SIGNAL(src, COMSIG_ATOM_RELOAD_FILTERS)
-
-/obj/item/update_filters()
-	. = ..()
-	update_action_buttons()
 
 /** Update a filter's parameter to the new one. If the filter doesn't exist we won't do anything.
  *

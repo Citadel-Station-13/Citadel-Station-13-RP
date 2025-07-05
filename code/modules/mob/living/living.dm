@@ -440,10 +440,6 @@ default behaviour is:
 	return
 
 /mob/living/proc/Examine_OOC()
-	set name = "Examine Meta-Info (OOC)"
-	set category = VERB_CATEGORY_OOC
-	set src in view()
-
 	// Making it so SSD people have prefs with fallback to original style.
 	if(ooc_notes)
 		to_chat(usr, "[src]'s Metainfo:<br>[ooc_notes]")

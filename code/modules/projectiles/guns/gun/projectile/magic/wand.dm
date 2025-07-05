@@ -173,7 +173,7 @@
 	name = "wand of fireball"
 	desc = "This wand shoots scorching balls of fire that explode into destructive flames."
 	fire_sound = 'sound/magic/fireball.ogg'
-	projectile_type = /obj/projectile/magic/aoe/fireball
+	projectile_type = /obj/projectile/magic/fireball
 	icon_state = "firewand"
 	max_charges = 8 //8, 4, 4, 3
 

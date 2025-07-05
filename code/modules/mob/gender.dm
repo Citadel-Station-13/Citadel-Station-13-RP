@@ -32,6 +32,9 @@ GLOBAL_LIST_INIT(gender_select_list, gender_selection())
 	var/hes		= "they're"
 	var/Hes = "They're"
 
+	/// Uses plural forms like 'appear' instead of 'appears'
+	var/use_plurals = TRUE
+
 /datum/gender/male
 	key		= "male"
 	pronoun_preview = "He/him"
@@ -49,6 +52,8 @@ GLOBAL_LIST_INIT(gender_select_list, gender_selection())
 	s		= "s"
 	hes		= "he's"
 	Hes = "He's"
+
+	use_plurals = FALSE
 
 /datum/gender/female
 	key		= "female"
@@ -68,6 +73,8 @@ GLOBAL_LIST_INIT(gender_select_list, gender_selection())
 	hes		= "she's"
 	Hes = "She's"
 
+	use_plurals = FALSE
+
 /datum/gender/neuter
 	key		= "neuter"
 	pronoun_preview = "It/its"
@@ -86,6 +93,8 @@ GLOBAL_LIST_INIT(gender_select_list, gender_selection())
 	hes		= "it's"
 	Hes = "It's"
 
+	use_plurals = FALSE
+
 /datum/gender/herm
 	key		= "herm"
 	pronoun_preview = "Shi/hir"
@@ -103,6 +112,8 @@ GLOBAL_LIST_INIT(gender_select_list, gender_selection())
 	s		= "s"
 	hes		= "shi's"
 	Hes = "Shi's"
+
+	use_plurals = FALSE
 
 /mob/proc/p_they()
 	var/datum/gender/G = GLOB.gender_datums[gender]
