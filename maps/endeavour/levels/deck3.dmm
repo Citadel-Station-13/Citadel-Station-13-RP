@@ -15407,9 +15407,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/hop)
 "lJE" = (
-/obj/item/orion_ship,
-/turf/simulated/floor/reinforced,
-/area/quartermaster/miningdock)
+/obj/landmark{
+	name = "carpspawn"
+	},
+/turf/space/basic,
+/area/space)
 "lKt" = (
 /obj/effect/floor_decal/industrial/outline{
 	color = "#D6DBDB"
@@ -31694,6 +31696,11 @@
 	},
 /turf/simulated/floor/wood,
 /area/quartermaster/qm)
+"xyW" = (
+/obj/effect/floor_decal/corner/brown/diagonal,
+/obj/machinery/point_redemption_vendor/mining,
+/turf/simulated/floor/tiled/white,
+/area/quartermaster/belterdock/gear)
 "xzc" = (
 /turf/simulated/floor/tiled,
 /area/security/lobby)
@@ -34934,7 +34941,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+lJE
 pRW
 pRW
 pRW
@@ -35500,7 +35507,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+lJE
 pRW
 pRW
 pRW
@@ -38386,7 +38393,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+lJE
 pRW
 pRW
 pRW
@@ -39430,7 +39437,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+lJE
 pRW
 pRW
 pRW
@@ -43332,7 +43339,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+lJE
 pRW
 pRW
 pRW
@@ -43818,8 +43825,8 @@ rwh
 iWE
 uRN
 gDV
-lJE
-lJE
+gDV
+gDV
 gDV
 rXr
 bxW
@@ -47124,7 +47131,7 @@ qzI
 pJe
 itn
 lps
-vVH
+xyW
 vVH
 uwg
 aYi
@@ -48070,7 +48077,7 @@ mDp
 mDp
 mDp
 mDp
-mDp
+gtM
 mDp
 pRW
 pRW
@@ -55351,7 +55358,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+lJE
 pRW
 pRW
 pRW
@@ -61929,7 +61936,7 @@ pRW
 pRW
 pRW
 pRW
-pRW
+lJE
 pRW
 mDp
 mDp
