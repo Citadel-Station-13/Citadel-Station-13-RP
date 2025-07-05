@@ -11800,6 +11800,9 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1afthall)
+"iZu" = (
+/turf/simulated/floor/carpet/bcarpet,
+/area/library/study)
 "iZy" = (
 /obj/machinery/fire_alarm/south_mount,
 /obj/effect/floor_decal/borderfloorblack,
@@ -47695,7 +47698,7 @@ prQ
 aKC
 eoP
 sCh
-xGj
+iZu
 uYs
 avM
 geW
@@ -49431,7 +49434,7 @@ rnV
 hmT
 lgr
 eGI
-uYs
+qzE
 tVw
 qzE
 qzE
