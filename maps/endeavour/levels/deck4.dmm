@@ -672,6 +672,8 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
+/obj/item/clothing/glasses/meson,
+/obj/item/clothing/glasses/meson,
 /turf/simulated/floor/tiled/monowhite,
 /area/engineering/engine_airlock)
 "aDr" = (
@@ -2910,16 +2912,6 @@
 	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/hallway/d4starboardhall)
-"cEz" = (
-/obj/structure/bed/chair/sofa/right,
-/obj/structure/window/basic{
-	dir = 1
-	},
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 4
-	},
-/turf/simulated/floor/carpet/bcarpet,
-/area/crew_quarters/bar)
 "cFb" = (
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -3218,9 +3210,6 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/hallway/d4starboardhall)
 "cQL" = (
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 1
-	},
 /obj/structure/table/marble,
 /obj/item/reagent_containers/food/condiment/small/saltshaker{
 	pixel_x = -3
@@ -4237,9 +4226,6 @@
 /obj/structure/window/basic{
 	dir = 1
 	},
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 8
-	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "dQV" = (
@@ -4766,10 +4752,10 @@
 /area/endeavour/hallway/d4starboardforhall)
 "emd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
+	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
@@ -6234,7 +6220,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload_foyer)
 "fJl" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -11622,6 +11608,8 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/danger,
+/obj/item/clothing/glasses/meson,
+/obj/item/clothing/glasses/meson,
 /turf/simulated/floor/tiled/monowhite,
 /area/engineering/engine_airlock)
 "kEh" = (
@@ -14414,19 +14402,6 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4starboardhall)
-"nih" = (
-/obj/structure/bed/chair/sofa,
-/obj/structure/window/basic{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
-	},
-/turf/simulated/floor/carpet/bcarpet,
-/area/crew_quarters/bar)
 "njb" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/black{
 	dir = 4
@@ -14527,10 +14502,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d4starboardhall)
-"noj" = (
-/obj/structure/catwalk,
-/turf/simulated/wall/r_wall/prepainted/command,
-/area/ai)
 "npu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black,
 /obj/machinery/telecomms/bus/preset_four,
@@ -16889,9 +16860,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload)
 "pIy" = (
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 1
-	},
 /obj/structure/table/marble,
 /obj/item/reagent_containers/food/condiment/small/saltshaker{
 	pixel_x = -3
@@ -23656,6 +23624,9 @@
 	name = "AI Core Shutters";
 	pixel_y = 32;
 	pixel_x = -10
+	},
+/obj/machinery/light{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ai)
@@ -39660,7 +39631,7 @@ lWn
 iGw
 wcd
 emd
-oPR
+vKu
 ctk
 jNg
 jNg
@@ -39854,7 +39825,7 @@ iGw
 lWJ
 wcd
 fJl
-vKu
+oPR
 ctk
 jNg
 jNg
@@ -43702,7 +43673,7 @@ fOA
 dhN
 lAf
 sjg
-cEz
+fOA
 dhN
 lAf
 xBv
@@ -43896,7 +43867,7 @@ sKT
 aEW
 hxz
 eXx
-nih
+sKT
 xjc
 hxz
 xBv
@@ -50684,7 +50655,7 @@ iyM
 iyM
 iyM
 iyM
-noj
+iyM
 iyM
 iyM
 iyM
