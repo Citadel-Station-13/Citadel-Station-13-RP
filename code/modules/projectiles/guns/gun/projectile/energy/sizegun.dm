@@ -1,26 +1,27 @@
+/datum/firemode/energy/sizegun
+	projectile_type = /obj/projectile/beam/sizegun
+	charge_cost = 240
 
 /obj/item/gun/projectile/energy/sizegun
 	name = "size gun" //I have no idea why this was called shrink ray when this increased and decreased size.
 	desc = "A highly advanced ray gun with a knob on the side to adjust the size you desire. Warning: Do not insert into mouth."
-	// TODO: modularize sprite
-	icon = 'icons/obj/gun/energy.dmi'
-	icon_state = "sizegun-shrink100" // Someone can probably do better. -Ace
-	item_state = null	//so the human update icon uses the icon_state instead
-	fire_sound = 'sound/weapons/wave.ogg'
-	charge_cost = 240
-	projectile_type = /obj/projectile/beam/sizegun
-	origin_tech = list(TECH_BLUESPACE = 4)
-	modifystate = "sizegun-grow"
-	no_pin_required = 1
-	legacy_battery_lock = 1
-	var/size_set_to = 1
+	icon = 'icons/modules/projectiles/guns/energy/sizegun.dmi'
+	icon_state = "sizegun-4"
+	base_icon_state = "sizegun"
+	worn_state = "sizegun"
+	item_renderer = /datum/gun_item_renderer{
+		count = 4;
+		use_empty = true;
+	}
+	no_pin_required = TRUE
+	legacy_battery_lock = TRUE
 	firemodes = list(
-		list(mode_name		= "select size",
-			projectile_type	= /obj/projectile/beam/sizegun,
-			modifystate		= "sizegun-grow",
-			fire_sound		= 'sound/weapons/pulse3.ogg'
-		))
+		/datum/firemode/energy/sizegun,
+	)
+
 	item_action_name = "Select Size"
+
+	var/size_set_to = 1
 
 /obj/item/gun/projectile/energy/sizegun/Initialize(mapload)
 	. = ..()
@@ -53,12 +54,14 @@
 	var/size_examine = (size_set_to*100)
 	. += "<span class='info'>It is currently set at [size_examine]%</span>"
 
+#warn test
 /obj/projectile/beam/sizegun
 	name = "size beam"
 	icon_state = "xray"
 	nodamage = 1
 	damage_force = 0
 	damage_flag = ARMOR_LASER
+	fire_sound = 'sound/weapons/pulse3.ogg'
 	var/set_size = 1 //Let's default to 100%
 
 	legacy_muzzle_type = /obj/effect/projectile/muzzle/xray
