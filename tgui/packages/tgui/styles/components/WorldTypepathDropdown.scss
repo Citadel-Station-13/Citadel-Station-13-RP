@@ -12,6 +12,7 @@
 .WorldTypepathDropdown__menu {
   position: absolute;
   overflow-y: auto;
+  height: 200px;
   z-index: 5;
   width: base.em(100px);
   max-height: base.em(200px);
@@ -23,5 +24,10 @@
 }
 
 .WorldTypepathDropdown__menuItem {
+  transition: background-color 100ms ease-out;
 
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transition: background-color 0ms;
+  }
 }
