@@ -17,7 +17,13 @@
 	// 	else
 	// 		to_chat(usr, "Upgrade error!")
 
+	upgrade.owner = src
+	upgrade.on_install(src)
+
 
 /mob/living/silicon/robot/proc/uninstall_upgrade(obj/item/robot_upgrade/upgrade, force, datum/event_args/actor/actor, silent, atom/new_loc)
+
+	upgrade.on_uninstall(src)
+	upgrade.owner = null
 
 #warn impl

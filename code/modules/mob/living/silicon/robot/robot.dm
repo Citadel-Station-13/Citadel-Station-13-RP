@@ -217,7 +217,7 @@
 
 	//* Movement *//
 	/// Base movement speed in tiles / second
-	var/movement_base_speed = 4
+	var/movement_base_speed = 4.5
 
 /mob/living/silicon/robot/Initialize(mapload, unfinished = FALSE)
 	spark_system = new /datum/effect_system/spark_spread()
@@ -279,7 +279,8 @@
 	aiCamera = new /obj/item/camera/siliconcam/robot_camera(src)
 
 	if(istype(conf_default_lawset_type, /datum/ai_lawset))
-		laws = conf_default_lawset_type.clone()
+		var/datum/ai_lawset/conf_default_lawset_instance = conf_default_lawset_type
+		laws = conf_default_lawset_instance.clone()
 	else if(ispath(conf_default_lawset_type, /datum/ai_lawset))
 		laws = new conf_default_lawset_type
 	else if(IS_ANONYMOUS_TYPEPATH(conf_default_lawset_type))
