@@ -1186,7 +1186,7 @@
 		if(damage_inflict_agony)
 			target.run_damage_instance(
 				damage_inflict_agony,
-				damage_type,
+				DAMAGE_TYPE_HALLOSS,
 				damage_tier,
 				damage_flag,
 				damage_mode | (DAMAGE_MODE_REQUEST_ARMOR_BLUNTING | DAMAGE_MODE_REQUEST_ARMOR_RANDOMIZATION),

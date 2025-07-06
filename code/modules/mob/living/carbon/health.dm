@@ -1,7 +1,7 @@
 /mob/living/carbon/is_in_critical()
 	return !IS_DEAD(src) && (health < getCritHealth())
 
-/mob/living/carbon/rejuvenate(fix_missing, reset_to_slot)
+/mob/living/carbon/rejuvenate(fix_missing, reset_to_slot, restore_nutrition = TRUE)
 	. = ..()
 	if(!.)
 		return

@@ -1,0 +1,5 @@
+author: "TheLordME"
+delete-after: True
+changes:
+  - tweak: "shuttle landing spot selection is now tgui"
+  - tweak: "shuttles no longer prepend sector name to a landing spot"
