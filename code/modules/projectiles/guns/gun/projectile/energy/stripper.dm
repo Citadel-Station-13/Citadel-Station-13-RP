@@ -2,7 +2,6 @@
 	projectile_type = /obj/projectile/energy/stripper
 	charge_cost = 240
 
-#warn test
 /obj/item/gun/projectile/energy/stripper//Because it can be fun
 	name = "stripper gun"
 	desc = "A gun designed to remove unnessary layers from people. For external use only!"

@@ -54,7 +54,6 @@
 	var/size_examine = (size_set_to*100)
 	. += "<span class='info'>It is currently set at [size_examine]%</span>"
 
-#warn test
 /obj/projectile/energy/sizegun
 	name = "size beam"
 	icon_state = "xray"
@@ -78,6 +77,8 @@
 		return
 
 	var/mob/living/M = target
+	if(!istype(M))
+		return
 	if(!M.permit_sizegun)
 		M.visible_message("<span class='warning'>[src] has no effect on [M].</span>")
 		return
