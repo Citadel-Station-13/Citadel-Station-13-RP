@@ -61,6 +61,7 @@ SUBSYSTEM_DEF(supply)
 // This is called by the process scheduler every thirty seconds
 /datum/controller/subsystem/supply/fire(resumed)
 	var/datum/economy_account/cargo_account = resolve_station_cargo_account()
+	// lag compensation
 	var/elapsed_time_in_seconds = (world.time - last_fire) * 0.1
 	cargo_account?.adjust_balance_without_logging(money_passive_generation_per_second)
 

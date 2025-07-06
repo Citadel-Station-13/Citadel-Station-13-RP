@@ -277,7 +277,7 @@
 
 	if(job)
 		// Set up their account
-		job.setup_account(H)
+		job.economy_create_self_account(H.mind)
 
 		// Equip job items.
 		job.equip(H, H.mind ? H.mind.role_alt_title : "")

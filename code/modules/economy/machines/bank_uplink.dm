@@ -185,6 +185,21 @@
 	.["printCooldown"] = last_report_print + report_print_cooldown > world.time
 
 /obj/machinery/computer/bank_uplink/proc/ui_push_account_details(datum/economy_account/account)
+	push_ui_modules(updates = list(
+		"acct-[account.account_id]" = list(
+			"id" = account.account_id,
+			"balance" = account.balance,
+			"ephemeral" = account.audit_ephemeral_balance_accumulator,
+			"owner" = account.fluff_owner_name,
+			"securityLevel" = account.security_level,
+			"securityLock" = account.security_lock,
+		),
+	))
+
+/obj/machinery/computer/bank_uplink/proc/ui_push_account_logs(datum/economy_account/account, page = 1)
+	push_ui_modules(updates = list(
+		"acct-log-[account.account_id]" = account.ui_audit_logs(page, 10),
+	))
 
 /obj/machinery/computer/bank_uplink/proc/ui_push_faction_accounts(datum/economy_faction/faction)
 
@@ -222,7 +237,7 @@
 	printing_paper.info = {"
 		<h1><center>Account Details (Confidential)</center></h1><hr>
 		<i>Account holder:</i> [account.owner_name]<br>
-		<i>Account number:</i> [account.account_number]<br>
+		<i>Account number:</i> [account.account_id]<br>
 		<i>Account pin:</i> [account.security_passkey]<br>
 		<i>Starting balance:</i> $[account.balance]<br>
 		<i>Date / Time:</i> [SSeconomy.timestamp_now()]<br>

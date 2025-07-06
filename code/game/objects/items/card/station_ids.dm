@@ -33,7 +33,6 @@
 	var/extra_info_visible
 
 	var/last_job_switch
-	var/lost_access = list()
 
 	var/primary_color = rgb(0,0,0) // Obtained by eyedroppering the stripe in the middle of the card
 	var/secondary_color = rgb(0,0,0) // Likewise for the oval in the top-left corner
@@ -49,9 +48,6 @@
 	/// stored POINT_REDEMPTION_TYPE_* points; enum associated to number
 	/// * lazy list
 	var/list/stored_redemption_points
-
-	/// i don't know what this does but you have to deal with this now
-	var/money = 2000
 
 /obj/item/card/id/Initialize(mapload)
 	. = ..()

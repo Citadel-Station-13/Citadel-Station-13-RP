@@ -78,7 +78,7 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 			if(!user.attempt_insert_item_for_installation(idcard, src))
 				return
 			held_card = idcard
-			if(authenticated_account && held_card.associated_account_number != authenticated_account.account_number)
+			if(authenticated_account && held_card.associated_account_number != authenticated_account.account_id)
 				authenticated_account = null
 	else if(authenticated_account)
 		var/can_deposit = I.is_static_currency(PAYMENT_TYPES_ALLOW_ONLY(deposit_payment_types))
@@ -182,7 +182,7 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 			R.name = "Account balance: [authenticated_account.owner_name]"
 			R.info = "<b>NT Automated Teller Account Statement</b><br><br>"
 			R.info += "<i>Account holder:</i> [authenticated_account.owner_name]<br>"
-			R.info += "<i>Account number:</i> [authenticated_account.account_number]<br>"
+			R.info += "<i>Account number:</i> [authenticated_account.account_id]<br>"
 			R.info += "<i>Balance:</i> $[authenticated_account.balance]<br>"
 			R.info += "<i>Date and time:</i> [stationtime2text()], [GLOB.current_date_string]<br><br>"
 			R.info += "<i>Service terminal ID:</i> [machine_id]<br>"
@@ -229,7 +229,7 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 				to_chat(user, "[icon2html(thing = src, target = user)]<span class='warning'>Funds transfer failed.</span>")
 			// /proc/charge_to_account(var/attempt_account_number, var/source_name, var/purpose, var/terminal_id, var/amount)
 			// 	for(var/datum/economy_account/D in GLOB.all_money_accounts)
-			// 		if(D.account_number == attempt_account_number && !D.suspended)
+			// 		if(D.account_id == attempt_account_number && !D.suspended)
 			// 			D.money += amount
 
 			// 			//create a transaction log entry
@@ -290,7 +290,7 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 			R.name = "Transaction logs: [authenticated_account.owner_name]"
 			R.info = "<b>Transaction logs</b><br>"
 			R.info += "<i>Account holder:</i> [authenticated_account.owner_name]<br>"
-			R.info += "<i>Account number:</i> [authenticated_account.account_number]<br>"
+			R.info += "<i>Account number:</i> [authenticated_account.account_id]<br>"
 			R.info += "<i>Date and time:</i> [stationtime2text()], [GLOB.current_date_string]<br><br>"
 			R.info += "<i>Service terminal ID:</i> [machine_id]<br>"
 			R.info += "<table border=1 style='width:100%'>"
@@ -381,7 +381,7 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 		if(tried_account_num)
 			D = get_account(tried_account_num)
 			if(D)
-				to_chat(user, "remote acc [D.account_number] remote pin [D.remote_access_pin]")
+				to_chat(user, "remote acc [D.account_id] remote pin [D.remote_access_pin]")
 
 			if(D)
 				account_security_level = D.security_level

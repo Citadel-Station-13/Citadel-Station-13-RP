@@ -14,7 +14,7 @@
 	///   UI unique-keys within the backend.
 	#warn impl uniqueness
 	#warn audit access
-	var/account_number
+	var/account_id
 
 	//* Balance *//
 
@@ -35,12 +35,15 @@
 
 	/// log entries
 	var/list/datum/economy_account_log/audit_log
+	/// balance change applied through adjust_balance_without_logging()
+	/// * applied as an audit log when a log is appended if it exists
+	var/audit_ephemeral_balance_accumulator = 0
 
 	//* Fluff *//
 
 	/// Owner name
 	/// * Used to infer ICly who it belongs to
-	var/owner_name = "Unknown"
+	var/fluff_owner_name = "Unknown"
 
 	//* Security *//
 
@@ -57,7 +60,7 @@
 	var/security_lock = FALSE
 
 /datum/economy_account/Destroy()
-	SSeconomy.account_lookup -= "[account_number]"
+	SSeconomy.account_lookup -= "[account_id]"
 	var/datum/economy_faction/our_faction = SSeconomy.faction_lookup[faction_id]
 	if(our_faction)
 		our_faction.accounts -= src
@@ -69,8 +72,19 @@
  *
  * * All parameters accept raw HTMl. This is an extremely unsafe proc; make sure you properly sanitize things.
  */
-/datum/economy_account/proc/append_audit_log(datum/economy_account_log/log_entry)
+/datum/economy_account/proc/append_audit_log(datum/economy_account_log/log_entry, do_not_flush)
+	if(!do_not_flush && audit_ephemeral_balance_accumulator)
+		var/datum/economy_account_log/log_for_untracked = new
+		log_for_untracked.audit_purpose_as_unsafe_html = "Untracked lambda balance adjustments."
+		log_for_untracked.audit_balance_change_as_unsafe_html = "[audit_ephemeral_balance_accumulator]"
+		append_audit_log(log_for_untracked, do_not_flush = TRUE)
+		audit_ephemeral_balance_accumulator = 0
 	#warn impl
+
+/datum/economy_account/proc/adjust_balance_without_logging(amount, actually_dont_log)
+	balance += amount
+	if(!actually_dont_log)
+		audit_ephemeral_balance_accumulator += amount
 
 /**
  * Randomize our access credentials
@@ -99,4 +113,21 @@
  * * via_bridge - (optional) this is like the ID card that's being used or whatever
  */
 /datum/economy_account/proc/user_clickchain_access(datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchian, datum/via_bridge)
+	#warn impl
+
+/**
+ * Helper to get standard economy log output
+ *
+ * @return {
+ *   pages = number,
+ *   page = number,
+ *   logs = {
+ *     balance = html | null,
+ *     peer = html | null,
+ *     terminal = html | null,
+ *     purpose = html | null,
+ *     timestamp = html | null,
+ *   }[],
+ */
+ /datum/economy_account/proc/ui_audit_logs(page, per_page = 10)
 	#warn impl

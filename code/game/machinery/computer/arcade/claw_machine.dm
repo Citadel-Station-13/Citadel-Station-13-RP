@@ -35,7 +35,7 @@
 			payment.amount = INFINITY
 
 		if(using.economy_attempt_payment(payment, NONE, src, e_args, e_args))
-			if(payment.out_success)
+			if(payment.is_successful())
 				gamepaid = TRUE
 				instructions = "Hit start to play!"
 			return CLICKCHAIN_DID_SOMETHING

@@ -20,7 +20,7 @@
 		payment.out_error_reason = "Linked account does not exist or is invalid."
 		return TRUE
 	if(connected_account.security_lock)
-		payment.out_error_reason = "Linked account is under security lockdown."
+		payment.out_error_reason = "Linked account is administratively locked."
 		return TRUE
 
 	switch(connected_account.security_level)

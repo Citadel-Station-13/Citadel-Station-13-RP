@@ -2,7 +2,8 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /**
- * Economy holder for factions.
+ * Economy holder for factions. More generically, this is just a way to
+ * group different accounts. Access to bank uplinks is determined by faction.
  *
  * * These are spawned by a `/datum/world_faction`
  * * These always have the same ID as their parent world faction
@@ -43,7 +44,7 @@
 /**
  * Checks if an uplink can manage an account
  * * Assumed that the account is part of our faction. This will not check for you.
- * 
+ *
  * todo: access constraints, should that be here or in the uplink?
  */
 /datum/economy_faction/proc/uplink_can_manage_account(datum/economy_account/account) as /datum/economy_account

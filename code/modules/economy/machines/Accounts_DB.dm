@@ -34,36 +34,15 @@
 	data["id_card"] = held_card ? "[held_card.registered_name], [held_card.assignment]" : "-----"
 	data["access_level"] = get_access_level()
 	data["machine_id"] = machine_id
-	data["creating_new_account"] = creating_new_account
 	data["detailed_account_view"] = !!detailed_account_view
-	data["GLOB.station_account_number"] = GLOB.station_account.account_number
 	data["transactions"] = null
 	data["accounts"] = null
-
-	if (detailed_account_view)
-		data["account_number"] = detailed_account_view.account_number
-		data["owner_name"] = detailed_account_view.owner_name
-		data["money"] = detailed_account_view.money
-		data["suspended"] = detailed_account_view.suspended
-
-		var/list/trx[0]
-		for (var/datum/economy_transaction/T in detailed_account_view.transaction_log)
-			trx.Add(list(list(\
-				"date" = T.date, \
-				"time" = T.time, \
-				"target_name" = T.target_name, \
-				"purpose" = T.purpose, \
-				"amount" = T.amount, \
-				"source_terminal" = T.source_terminal)))
-
-		if (trx.len > 0)
-			data["transactions"] = trx
 
 	var/list/accounts[0]
 	for(var/i=1, i<=GLOB.all_money_accounts.len, i++)
 		var/datum/economy_account/D = GLOB.all_money_accounts[i]
 		accounts.Add(list(list(\
-			"account_number"=D.account_number,\
+			"account_id"=D.account_id,\
 			"owner_name"=D.owner_name,\
 			"suspended"=D.suspended ? "SUSPENDED" : "",\
 			"account_index"=i)))
@@ -143,8 +122,8 @@
 				var/text
 				var/obj/item/paper/P = new(loc)
 				if (detailed_account_view)
-					P.name = "account #[detailed_account_view.account_number] details"
-					var/title = "Account #[detailed_account_view.account_number] Details"
+					P.name = "account #[detailed_account_view.account_id] details"
+					var/title = "Account #[detailed_account_view.account_id] Details"
 					text = {"
 						[accounting_letterhead(title)]
 						<u>Holder:</u> [detailed_account_view.owner_name]<br>
@@ -201,7 +180,7 @@
 						var/datum/economy_account/D = GLOB.all_money_accounts[i]
 						text += {"
 								<tr>
-									<td>#[D.account_number]</td>
+									<td>#[D.account_id]</td>
 									<td>[D.owner_name]</td>
 									<td>$[D.money]</td>
 									<td>[D.suspended ? "Suspended" : "Active"]</td>

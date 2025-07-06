@@ -48,6 +48,8 @@
 		CRASH("attempted to create self account on someone already with 'initial_economy_account_number' set.")
 
 	var/datum/economy_account/creating = SSeconomy.allocate_account()
+	. = creating
+
 	var/starting_amount = round(
 		  get_economic_payscale() \
 		* ECONOMY_PAYSCALE_BASE \
@@ -64,27 +66,8 @@
 	initial_funding_transaction.audit_peer_name_as_unsafe_html = "Orion Fudiciary Network"
 	initial_funding_transaction.execute_system_transaction(creating)
 
-	#warn impl
-
 	person.store_memory_of_economy_account(creating, "Personal Funds")
-	person.initial_economy_account_number = creating.account_number
-
-// /datum/role/job/proc/setup_account(var/mob/living/carbon/human/H)
-// 	var/datum/economy_account/M = create_account(H.real_name, money_amount, null, offmap_spawn)
-// 	if(H.mind)
-// 		var/remembered_info = ""
-// 		remembered_info += "<b>Your account number is:</b> #[M.account_number]<br>"
-// 		remembered_info += "<b>Your account pin is:</b> [M.remote_access_pin]<br>"
-// 		remembered_info += "<b>Your account funds are:</b> $[M.money]<br>"
-
-// 		if(M.transaction_log.len)
-// 			var/datum/economy_transaction/T = M.transaction_log[1]
-// 			remembered_info += "<b>Your account was created:</b> [T.time], [T.date] at [T.source_terminal]<br>"
-// 		H.mind.store_memory(remembered_info)
-
-// 		H.mind.initial_account = M
-
-// 	to_chat(H, "<span class='notice'><b>Your account number is: [M.account_number], your account pin is: [M.remote_access_pin]</b></span>")
+	person.initial_economy_account_number = creating.account_id
 
 /**
  * Imprint managed accounts on someone
@@ -105,4 +88,30 @@
  */
 /datum/role/proc/economy_get_managed_accounts(datum/mind/person) as /list
 	RETURN_TYPE(/list)
-	#warn impl
+	. = list()
+	for(var/first_key in economy_grant_account_details)
+		var/associated_values = economy_grant_account_details[first_key]
+		var/list/datum/economy_account/resolved
+		if(!islist(associated_values))
+			// global key
+			var/datum/economy_account/single = SSeconomy.resolve_account(first_key)
+			if(!single)
+				stack_trace("failed to resolve global id [first_key] in managed accounts")
+			else
+				resolved = list(single)
+		else
+			resolved = list()
+			var/datum/economy_faction/faction = SSeconomy.resolve_faction(first_key)
+			if(!faction)
+				stack_trace("failed to resolve faction id [first_key] in managed accounts")
+			else
+				for(var/second_key in associated_values)
+					// faction'd keys
+					var/datum/economy_account/keyed = SSeconomy.resolve_keyed_account()
+					if(!keyed)
+						stack_trace("failed to resolve keyed account [first_key]/[second_key] in managed accounts")
+					else
+						resolved += keyed
+		if(!resolved)
+			continue
+		. += resolved

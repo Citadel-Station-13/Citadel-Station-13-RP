@@ -17,7 +17,7 @@
 		account_hack_attempted = 1
 
 /datum/gm_action/money_hacker/announce()
-	var/message = "A brute force hack has been detected (in progress since [stationtime2text()]). The target of the attack is: Financial account #[affected_account.account_number], \
+	var/message = "A brute force hack has been detected (in progress since [stationtime2text()]). The target of the attack is: Financial account #[affected_account.account_id], \
 	without intervention this attack will succeed in approximately 10 minutes. Required intervention: temporary suspension of affected accounts until the attack has ceased. \
 	Notifications will be sent as updates occur.<br>"
 	var/my_department = "[station_name()] firewall subroutines"
