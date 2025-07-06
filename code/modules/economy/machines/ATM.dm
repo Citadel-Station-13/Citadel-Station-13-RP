@@ -153,6 +153,9 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 
 /obj/machinery/atm/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
+	if(.)
+		return
+
 	var/mob/living/carbon/human/user = usr
 	switch(action)
 		if("attempt_authentication")

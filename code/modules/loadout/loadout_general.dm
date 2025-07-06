@@ -146,3 +146,8 @@
 	name = "Normal Leash"
 	path = /obj/item/leash
 	description = "A simple tether that can easily be hooked onto a collar. Usually used to keep pets nearby."
+
+/datum/loadout_entry/clicker
+	name = "Clicker Toy"
+	path = /obj/item/bikehorn/clicker/random
+	description = "A clicker used to train pets. Why are pets allowed on station?"

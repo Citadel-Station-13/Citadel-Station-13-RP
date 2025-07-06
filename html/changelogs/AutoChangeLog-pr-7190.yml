@@ -1,0 +1,5 @@
+author: "GySgtMurphy"
+delete-after: True
+changes:
+  - rscadd: "New Explo Shuttle for Endeavour"
+  - rscdel: "Original Explo shuttle from Endeavour"

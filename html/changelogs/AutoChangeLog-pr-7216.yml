@@ -1,0 +1,5 @@
+author: "GySgtMurphy"
+delete-after: True
+changes:
+  - tweak: "adjusts Explo shuttle cockpit on Endeavour, removes extra atmo retention field from the interior airlock."
+  - tweak: "Removes an excess amount of defense turrets on Decks 1, 2, & 3."
