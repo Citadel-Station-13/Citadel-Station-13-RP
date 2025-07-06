@@ -1153,6 +1153,24 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rnd/robotics/smallcraft)
+"aZc" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/sign/deck/fourth{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/endeavour/hallway/d4starboardhall)
 "aZr" = (
 /obj/structure/table/steel,
 /obj/item/module/power_control,
@@ -2152,6 +2170,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4starboardhall)
 "bTL" = (
@@ -3513,7 +3533,6 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/glass/research{
 	name = "Hangar Repair Bay";
 	req_one_access = null
@@ -5415,6 +5434,19 @@
 /obj/machinery/air_alarm/west_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
+"eTo" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/lightorange/border,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/turf/simulated/floor/tiled/steel_grid,
+/area/endeavour/hallway/d4starboardhall)
 "eTz" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -6181,7 +6213,6 @@
 	name = "Electrical Maintenance";
 	id_tag = "engineSmesRoom"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/catwalk,
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -9585,6 +9616,9 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/hallway/d4starboardhall)
 "iHk" = (
@@ -9678,10 +9712,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
-	},
-/obj/structure/sign/deck/fourth{
-	pixel_x = -32;
-	pixel_y = 1
 	},
 /obj/structure/disposalpipe/segment,
 /obj/effect/floor_decal/corner/lightorange/border{
@@ -19352,6 +19382,11 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
+"smm" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d4starboardhall)
 "sni" = (
 /obj/structure/bed/chair/comfy/orange{
 	dir = 1
@@ -39798,8 +39833,8 @@ eHS
 oFU
 ebA
 bTE
-lOL
-lIS
+smm
+eTo
 iZT
 bhF
 xCJ
@@ -42125,7 +42160,7 @@ cin
 cin
 cin
 tmH
-voR
+aZc
 lOL
 dQW
 qGG
