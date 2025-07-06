@@ -14,9 +14,13 @@
 	recoil = 0
 
 	internal_magazine_size = 1
+	bolt_simulation = TRUE
+	chamber_simulation = TRUE
 
 /obj/item/gun/projectile/ballistic/syringe/rapid
 	name = "syringe gun revolver"
 	desc = "A modification of the syringe gun design, using a rotating cylinder to store up to five syringes. The spring still needs to be drawn between shots."
 	icon_state = "syringe-rapid"
 	internal_magazine_size = 5
+	bolt_simulation = FALSE
+	chamber_simulation = FALSE

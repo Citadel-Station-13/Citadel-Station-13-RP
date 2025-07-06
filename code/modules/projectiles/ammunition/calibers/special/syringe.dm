@@ -18,6 +18,17 @@
 
 	var/obj/item/reagent_containers/syringe/syringe
 
+
+/obj/item/ammo_casing/syringe/expend()
+	var/obj/projectile/syringe/maybe_syringe = ..()
+	if(!istype(maybe_syringe))
+		return maybe_syringe
+	if(syringe)
+		syringe.forceMove(maybe_syringe)
+		maybe_syringe.syringe = syringe
+		syringe = null
+	return maybe_syringe
+
 /obj/item/ammo_casing/syringe/update_icon()
 	underlays.Cut()
 	. = ..()
@@ -57,6 +68,7 @@
 	name = "syringe"
 	icon = 'icons/modules/projectiles/projectile-misc.dmi'
 	icon_state = "syringe"
+	impact_sound = PROJECTILE_IMPACT_SOUNDS_KINETIC
 	var/obj/item/reagent_containers/syringe/syringe
 
 /obj/projectile/syringe/proc/set_syringe(obj/item/reagent_containers/syringe/syringe)
@@ -64,11 +76,16 @@
 	src.name = syringe.name
 	src.desc = syringe.desc
 
+/obj/projectile/syringe/expire(impacting)
+	syringe?.forceMove(drop_location())
+	syringe = null
+	return ..()
+
 /obj/projectile/syringe/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	if(!syringe)
 		return ..()
 	var/units_injected = 0
 	impact_flags = syringe.handle_impact_as_projectile(target, impact_flags, def_zone, efficiency, &units_injected)
 	if(units_injected)
-		add_attack_logs(firer, target, "Shot with [src.name] transferring [trans] units")
+		add_attack_logs(firer, target, "Shot with [src.name] transferring [units_injected] units")
 	return ..()
