@@ -1,5 +1,5 @@
 /datum/firemode/energy/sizegun
-	projectile_type = /obj/projectile/beam/sizegun
+	projectile_type = /obj/projectile/energy/sizegun
 	charge_cost = 240
 
 /obj/item/gun/projectile/energy/sizegun
@@ -9,9 +9,9 @@
 	icon_state = "sizegun-4"
 	base_icon_state = "sizegun"
 	worn_state = "sizegun"
-	item_renderer = /datum/gun_item_renderer{
+	item_renderer = /datum/gun_item_renderer/states{
 		count = 4;
-		use_empty = true;
+		use_empty = TRUE;
 	}
 	no_pin_required = TRUE
 	legacy_battery_lock = TRUE
@@ -33,7 +33,7 @@
 
 /obj/item/gun/projectile/energy/sizegun/consume_next_projectile(datum/gun_firing_cycle/cycle)
 	. = ..()
-	var/obj/projectile/beam/sizegun/G = .
+	var/obj/projectile/energy/sizegun/G = .
 	if(istype(G))
 		G.set_size = size_set_to
 
@@ -55,12 +55,16 @@
 	. += "<span class='info'>It is currently set at [size_examine]%</span>"
 
 #warn test
-/obj/projectile/beam/sizegun
+/obj/projectile/energy/sizegun
 	name = "size beam"
 	icon_state = "xray"
+	hitscan = TRUE
 	nodamage = 1
 	damage_force = 0
 	damage_flag = ARMOR_LASER
+	light_range = 2
+	light_power = 0.5
+	light_color = "#2ec317"
 	fire_sound = 'sound/weapons/pulse3.ogg'
 	var/set_size = 1 //Let's default to 100%
 
@@ -68,7 +72,7 @@
 	legacy_tracer_type = /obj/effect/projectile/tracer/xray
 	legacy_impact_type = /obj/effect/projectile/impact/xray
 
-/obj/projectile/beam/sizegun/on_impact(atom/target, impact_flags, def_zone, efficiency)
+/obj/projectile/energy/sizegun/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return

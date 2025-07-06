@@ -83,3 +83,10 @@
 	microbattery_mode_color = "#d084d6"
 	microbattery_mode_name = "<span style='color:#d084d6;font-weight:bold;'>ION</span>"
 	projectile_type = /obj/projectile/ion/small
+
+/obj/item/ammo_casing/microbattery/nt_hydra/stripper
+	name = "\'Hydra\' microbattery - STRIPPER"
+	microbattery_group_key = "stripper"
+	microbattery_mode_color = "#fc8d0f"
+	microbattery_mode_name = "<span style='color:#fc8d0f;font-weight:bold;'>STRIPPER</span>"
+	projectile_type = /obj/projectile/energy/stripper

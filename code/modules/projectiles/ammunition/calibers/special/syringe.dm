@@ -55,13 +55,14 @@
 
 /obj/projectile/syringe
 	name = "syringe"
+	icon = 'icons/modules/projectiles/projectile-misc.dmi'
+	icon_state = "syringe"
 	var/obj/item/reagent_containers/syringe/syringe
 
 /obj/projectile/syringe/proc/set_syringe(obj/item/reagent_containers/syringe/syringe)
 	src.syringe = syringe
 	src.name = syringe.name
 	src.desc = syringe.desc
-	src.
 
 /obj/projectile/syringe/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	if(!syringe)

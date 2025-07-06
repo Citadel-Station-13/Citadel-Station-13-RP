@@ -10,9 +10,9 @@
 	icon_state = "stripper-4"
 	base_icon_state = "stripper"
 	worn_state = "stripper"
-	item_renderer = /datum/gun_item_renderer{
+	item_renderer = /datum/gun_item_renderer/states{
 		count = 4;
-		use_empty = true;
+		use_empty = TRUE;
 	}
 	modifystate = "sizegun-shrink"
 	no_pin_required = TRUE

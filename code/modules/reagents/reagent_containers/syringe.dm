@@ -289,6 +289,6 @@
 	if(isliving(target))
 		var/mob/living/casted = target
 		if(casted.can_inject() && reagents)
-			*injected_ptr = reagents.trans_to_mob(L, reagents.total_volume, CHEM_INJECT)
+			*injected_ptr = reagents.trans_to_mob(casted, reagents.total_volume, CHEM_INJECT)
 	break_syringe(iscarbon(target) ? target : null)
 	return impact_flags
