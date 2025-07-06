@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
+
 /**
  * ability system
  *
@@ -22,11 +25,11 @@
 	/// category - used for tgui
 	var/category = "Misc"
 
-	//? mob
+	//* Mob *//
 	/// owning mob - can be null if we aren't bound / granted to anyone.
 	var/mob/owner
 
-	//? binding
+	//* Action Button *//
 	/// action datum
 	var/datum/action/action
 	/// action button icon
@@ -37,6 +40,8 @@
 	var/background_icon = 'icons/screen/actions/backgrounds.dmi'
 	/// action button background icon state - the _on overlay will be added while active, automatically.
 	var/background_state = "default"
+
+	//* Binding *//
 	/// currently hotbound?
 	var/bound = FALSE
 	/// automatically hotbound?
@@ -55,11 +60,11 @@
 	/// range?
 	var/range
 
-	//? ui
-	/// tgui id
-	var/tgui_id = "TGUIAbility"
+	//* UI *//
+	/// Used to route to the right TGUI component.
+	var/ui_interface = "UIAbilityGeneric"
 
-	//? checks
+	//* Checks *//
 	/// check flags - see [code/__DEFINES/ability.dm]
 	var/ability_check_flags = NONE
 	/// mobility check flags
@@ -92,8 +97,6 @@
 	///   or if we sleep as a triggered spell, when the sleeping proc returns.
 	var/cooldown_applies_post_invocation = FALSE
 
-	#warn put in 'set_cooldown_left()', 'put_on_cooldown()'
-
 /datum/ability/Destroy()
 	if(!isnull(owner))
 		disassociate(owner)
@@ -106,7 +109,8 @@
 	.["state"] = serialize_state()
 
 /datum/ability/deserialize(list/data)
-	if(date["state"])
+	..()
+	if(data["state"])
 		deserialize_state(data["state"])
 
 /datum/ability/proc/serialize_state()
@@ -289,45 +293,6 @@
 	owner = null
 
 /**
- * checks if we can be used
- */
-/datum/ability/proc/available_check()
-	if(isnull(owner))
-		return FALSE
-	if(ability_check_flags == NONE)
-		return TRUE
-	if((ability_check_flags & ABILITY_CHECK_CONSCIOUS) && !IS_CONSCIOUS(owner))
-		return FALSE
-	if((ability_check_flags & ABILITY_CHECK_STANDING) && IS_PRONE(owner))
-		return FALSE
-	if((ability_check_flags & ABILITY_CHECK_FREE_HAND) && !(!owner.are_usable_hands_full()))
-		return FALSE
-	if((ability_check_flags & ABILITY_CHECK_RESTING) && !IS_PRONE(owner))
-		return FALSE
-	if(!CHECK_MOBILITY(owner, mobility_check_flags))
-		return FALSE
-	return TRUE
-
-/**
- * checks if we can be used, returning reason on failure or null for success.
- */
-/datum/ability/proc/unavailable_reason()
-	if(isnull(owner))
-		return "!ERROR - NO OWNER!"
-	if(ability_check_flags == NONE)
-		return
-	if((ability_check_flags & ABILITY_CHECK_CONSCIOUS) && !IS_CONSCIOUS(owner))
-		return "You cannot do that while unconscious."
-	if((ability_check_flags & ABILITY_CHECK_STANDING) && owner.lying)
-		return "You cannot do that while on the ground."
-	if((ability_check_flags & ABILITY_CHECK_FREE_HAND) && !(!owner.are_usable_hands_full()))
-		return "You cannot do that without a free hand."
-	if((ability_check_flags & ABILITY_CHECK_RESTING) && !owner.lying)
-		return "You must be lying down to do that."
-	if(!CHECK_MOBILITY(owner, mobility_check_flags))
-		return "You cannot do that while incapacitated."
-
-/**
  * sets us to hidden - no binding and not seen on panel
  */
 /datum/ability/proc/hide()
@@ -367,14 +332,78 @@
  */
 /datum/ability/ui_static_data(mob/user, datum/tgui/ui)
 	return list(
-		"$tgui" = tgui_id,
-		"$src" = REF(src),
+		"interface" = ui_interface,
 		"interact_type" = interact_type,
 		"can_bind" = !always_bind && (interact_type != ABILITY_INTERACT_NONE),
 		"bound" = bound,
 		"name" = name,
 		"desc" = desc,
 	)
+
+//* Checks *//
+
+/datum/ability/proc/check_availability(datum/event_args/actor/actor, silent)
+	return run_mobility_check_flags(actor) && run_check_ability_flags(actor)
+
+/datum/ability/proc/run_mobility_check_flags(datum/event_args/actor/actor, silent)
+	if((mobility_check_flags & MOBILITY_IS_STANDING) && !(owner.mobility_flags & MOBILITY_IS_STANDING))
+		if(!silent)
+			actor?.chat_feedback(
+				SPAN_WARNING("You cannot do that while on the ground."),
+			)
+		return FALSE
+	if((mobility_check_flags & MOBILITY_IS_CONSCIOUS) && !(owner.mobility_flags & MOBILITY_IS_CONSCIOUS))
+		if(!silent)
+			actor?.chat_feedback(
+				SPAN_WARNING("You cannot do that while unconscious."),
+			)
+		return FALSE
+
+	var/rest_of_flags = mobility_check_flags & ~(MOBILITY_IS_STANDING | MOBILITY_IS_CONSCIOUS)
+	if(rest_of_flags && (owner.mobility_flags & rest_of_flags) == rest_of_flags)
+		if(!silent)
+			actor?.chat_feedback(
+				SPAN_WARNING("You can't do that right now."),
+			)
+		return FALSE
+	return TRUE
+
+/datum/ability/proc/run_check_ability_flags(datum/event_args/actor/actor, silent)
+	if((ability_check_flags & ABILITY_CHECK_HAS_FREE_HAND) && owner.are_usable_hands_full())
+		if(!silent)
+			actor?.chat_feedback(
+				SPAN_WARNING("You need a free hand to do that."),
+			)
+		return FALSE
+	if((ability_check_flags & ABILITY_CHECK_IS_RESTING) && !owner.lying)
+		if(!silent)
+			actor?.chat_feedback(
+				SPAN_WARNING("You have to be laying down to do that."),
+			)
+		return FALSE
+	return TRUE
+
+//* Cooldown *//
+
+/datum/ability/proc/cooldown_check()
+	return cooldown_expires > world.time
+
+/**
+ * @return 1 if not on cooldown, 0 if freshly on cooldown
+ */
+/datum/ability/proc/cooldown_ratio()
+	if(!cooldown)
+		return cooldown_expires > world.time ? 0 : 1
+	return	clamp(1 - (cooldown_expires - world.time) / cooldown, 0, 1)
+
+
+/datum/ability/proc/cooldown_apply(time)
+	if(cooldown_expires - world.time > time)
+		return
+	set_cooldown_left(world.time + time)
+
+/datum/ability/proc/cooldown_set(time)
+	cooldown_expires = world.time + time
 
 //* Hooks *//
 

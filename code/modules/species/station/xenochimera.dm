@@ -831,7 +831,7 @@
 		L.on = TRUE
 		L.broken()
 
-/datum/ability/species/xenochimera/dissonant_shriek/available_check()
+/datum/ability/species/xenochimera/dissonant_shriek/check_availability(datum/event_args/actor/actor, silent)
 	var/mob/living/carbon/human/H
 	if(istype(owner,/mob/living/carbon/human))
 		H = owner

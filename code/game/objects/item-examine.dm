@@ -2,7 +2,7 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /obj/item/run_examine(datum/event_args/examine/examine, examine_for, examine_from)
-	if(examine_from & (EXAMINE_FROM_WORN | EXAMINE_FROM_STRIP))
+	if(examine_from & (EXAMINE_FROM_ATTACHED | EXAMINE_FROM_STRIP))
 		if(item_flags & (ITEM_ABSTRACT | ITEM_FLAG_HIDE_WORN_EXAMINE))
 			return null
 	var/datum/event_args/examine_output/output = ..()
@@ -19,7 +19,7 @@
  */
 /obj/item/proc/examine_encoding_as_worn(datum/event_args/examine/examine, examine_for, examine_from)
 	var/datum/event_args/examine_output/output = examine_new(examine, examine_for, examine_from)
-	#warn impl
+	#warn impl; FORMAT_TEXT_LOOKITEM_NAME
 
 	// if(shoes && !(skip_gear & EXAMINE_SKIPGEAR_SHOES) && shoes.show_examine)
 	// 	if(shoes.blood_DNA)

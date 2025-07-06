@@ -41,11 +41,6 @@
 	// The first line of the examine block.
 	. += SPAN_INFO("[icon2html(src, user)] This is <EM>[src.name]</EM>[skip_species? ". [SPAN_WARNING("You can't make out what species they are.")]" : ", [T.he] [T.is] [speciesblurb]!"]")
 
-	var/extra_species_text = species.get_additional_examine_text(src)
-	if(extra_species_text)
-		. += "[extra_species_text]"
-
-
 	//uniform
 	if(w_uniform && !(skip_gear & EXAMINE_SKIPGEAR_JUMPSUIT) && w_uniform.show_examine)
 		//Ties
@@ -85,13 +80,6 @@
 				else
 					to_chat(user, SPAN_DEADSAY("[T.He] [T.has] a pulse!"))
 
-
-	//splints
-	for(var/organ in BP_ALL)
-		var/obj/item/organ/external/o = get_organ(organ)
-		if(o && o.splinted && o.splinted.loc == o)
-			. += SPAN_WARNING("[T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(o.splinted)] on [T.his] [o.name]!")
-
 	for(var/obj/item/organ/external/temp in organs)
 		if(temp)
 			var/built = ""
@@ -108,18 +96,6 @@
 					built = SPAN_WARNING("[T.He] has [temp.get_wounds_desc()] on [T.his] [parent.name].")
 				else
 					built = SPAN_WARNING("[T.He] has [temp.get_wounds_desc()] on [T.his] [temp.name].")
-			if(temp.dislocated == 2)
-				built += SPAN_WARNING("[T.His] [temp.joint] is dislocated!")
-			if(temp.brute_dam > temp.min_broken_damage || (temp.status & (ORGAN_BROKEN | ORGAN_MUTATED)))
-				built += SPAN_WARNING("[T.His] [temp.name] is dented and swollen!")
-
-			if(temp.germ_level > INFECTION_LEVEL_TWO && !(temp.status & ORGAN_DEAD))
-				built += SPAN_WARNING("[T.His] [temp.name] looks very infected!")
-			else if(temp.status & ORGAN_DEAD)
-				built += SPAN_WARNING("[T.His] [temp.name] looks rotten!")
-
-			if(temp.status & ORGAN_BLEEDING)
-				is_bleeding["[temp.name]"] = SPAN_DANGER("[T.His] [temp.name] is bleeding!")
 
 			if(temp.applied_pressure == src)
 				applying_pressure = SPAN_NOTICE("[T.He] is applying pressure to [T.his] [temp.name].")

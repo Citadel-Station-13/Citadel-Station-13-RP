@@ -14,7 +14,7 @@
 	if(!examine.legacy_examine_no_touch)
 		#warn pulse
 
-	LAZYINITLIST(output.visible_descriptors)
+	LAZYINITLIST(output.out_visible_descriptors)
 
 	//* Organs*//
 	var/list/tagged_organs_or_missing_descriptors = list()
@@ -35,32 +35,34 @@
 		if(istype(organ_or_descriptor) && (organ_or_descriptor.legacy_examine_skip_flags & examine.legacy_examine_skip_body))
 			continue
 		else if(!istype(organ_or_descriptor) || (organ_or_descriptor.status & ORGAN_DESTROYED))
-			output.visible_descriptors += SPAN_BOLDWARNING("[gender_datum_visible.He] [gender_datum_visible.is] missing [gender_datum_visible.his] [organ_or_descriptor]")
+			output.out_visible_descriptors += SPAN_BOLDWARNING("[gender_datum_visible.He] [gender_datum_visible.is] missing [gender_datum_visible.his] [organ_or_descriptor]")
 			continue
 		else if(organ_or_descriptor.is_stump())
-			output.visible_descriptors += SPAN_BOLDWARNING("[gender_datum_visible.He] [gender_datum_visible.has] a stump where [gender_datum_visible.his] [organ_or_descriptor] should be.")
+			output.out_visible_descriptors += SPAN_BOLDWARNING("[gender_datum_visible.He] [gender_datum_visible.has] a stump where [gender_datum_visible.his] [organ_or_descriptor] should be.")
 			continue
-		output.visible_descriptors += organ_or_descriptor.examine_encoding_as_visible_organ(examine, examine_for, examine_from)
+		var/built = organ_or_descriptor.examine_encoding_as_visible_organ(examine, examine_for, examine_from)
+		output.out_visible_descriptors += "[gender_datum_visible.His] [built]."
 
 	for(var/obj/item/organ/external/extra_organ in additional_organs)
-		output.visible_descriptors += extra_organ.examine_encoding_as_visible_organ(examine, examine_for, examine_from)
+		var/built = extra_organ.examine_encoding_as_visible_organ(examine, examine_for, examine_from)
+		output.out_visible_descriptors += "[gender_datum_visible.His] [built]."
 
 	#warn above; are organs good now?
 
 	//* Pose *//
 	if(pose)
-		LAZYADD(output.visible_descriptors, SPAN_INFO("[gender_datum_visible.He] [pose]"))
+		LAZYADD(output.out_visible_descriptors, SPAN_INFO("[gender_datum_visible.He] [pose]"))
 
 	//* SSD *//
 	if(client && (client.is_afk() > 10 MINUTES))
-		LAZYADD(output.ooc_descriptors, SPAN_INFO("\[Inactive for [round(client.inactivity / (1 MINUTES), 1)] minutes.\]"))
+		LAZYADD(output.out_ooc_descriptors, SPAN_INFO("\[Inactive for [round(client.inactivity / (1 MINUTES), 1)] minutes.\]"))
 	else if(ssd_visible && !client && stat != DEAD)
 		// todo: this logic is meh
 		var/maybe_ssd_message = species.get_ssd(src)
 		if(maybe_ssd_message)
-			LAZYADD(output.ooc_descriptors, SPAN_DEADSAY("[gender_datum_visible.He] [gender_datum_visible.is] [maybe_ssd_message]. [ckey ? "" : "It doesn't look like [gender_datum_visible.he] [gender_datum_visible.is] waking up anytime soon."]"))
+			LAZYADD(output.out_ooc_descriptors, SPAN_DEADSAY("[gender_datum_visible.He] [gender_datum_visible.is] [maybe_ssd_message]. [ckey ? "" : "It doesn't look like [gender_datum_visible.he] [gender_datum_visible.is] waking up anytime soon."]"))
 		if(ckey && disconnect_time)
-			LAZYADD(output.ooc_descriptors, SPAN_INFO("\[Disconnected/ghosted [round((REALTIMEOFDAY - disconnect_time) / (1 MINUTES), 1)] minutes ago. \]"))
+			LAZYADD(output.out_ooc_descriptors, SPAN_INFO("\[Disconnected/ghosted [round((REALTIMEOFDAY - disconnect_time) / (1 MINUTES), 1)] minutes ago. \]"))
 
 	//* HUD *//
 	var/effective_hud_name = name
@@ -78,8 +80,8 @@
 			if(record.fields["name"] != effective_hud_name)
 				continue
 			medical_status = record.fields["p_stat"]
-		LAZYADD(output.analysis_descriptors, "Physical status: <a href='?src=\ref[src];medical=1'>\[[medical_status]\]</a>")
-		LAZYADD(output.analysis_descriptors, "Medical records: <a href='?src=\ref[src];medrecord=`'>\[View\]</a> <a href='?src=\ref[src];medrecordadd=`'>\[Add comment\]</a>")
+		LAZYADD(output.out_analysis_descriptors, "Physical status: <a href='?src=\ref[src];medical=1'>\[[medical_status]\]</a>")
+		LAZYADD(output.out_analysis_descriptors, "Medical records: <a href='?src=\ref[src];medrecord=`'>\[View\]</a> <a href='?src=\ref[src];medrecordadd=`'>\[Add comment\]</a>")
 
 	if(hasHUD(examine.seer, "security"))
 		var/security_status = "None"
@@ -87,11 +89,11 @@
 			if(record.fields["name"] != effective_hud_name)
 				continue
 			security_status = record.fields["criminal"]
-		LAZYADD(output.analysis_descriptors, "Criminal status: <a href='?src=\ref[src];criminal=1'>\[[security_status]\]</a>")
-		LAZYADD(output.analysis_descriptors, "Security records: <a href='?src=\ref[src];secrecord=`'>\[View\]</a>  <a href='?src=\ref[src];secrecordadd=`'>\[Add comment\]</a>")
+		LAZYADD(output.out_analysis_descriptors, "Criminal status: <a href='?src=\ref[src];criminal=1'>\[[security_status]\]</a>")
+		LAZYADD(output.out_analysis_descriptors, "Security records: <a href='?src=\ref[src];secrecord=`'>\[View\]</a>  <a href='?src=\ref[src];secrecordadd=`'>\[Add comment\]</a>")
 
 	if(hasHUD(examine.seer, "best"))
-		LAZYADD(output.analysis_descriptors, SPAN_BOLDNOTICE("Employment records: <a href='?src=\ref[src];emprecord=`'>\[View\]</a>"))
+		LAZYADD(output.out_analysis_descriptors, SPAN_BOLDNOTICE("Employment records: <a href='?src=\ref[src];emprecord=`'>\[View\]</a>"))
 
 	//* VR Overrides - remove when we can *//
 	//! dumb vorestation weight system
@@ -127,7 +129,7 @@
 				weight_message = SPAN_DANGER("[gender_datum_visible.He] [gender_datum_visible.is] so morbidly obese, you wonder how [gender_datum_visible.he] can even stand, let alone waddle around the station.")
 
 		if(weight_message)
-			LAZYADD(output.visible_descriptors, weight_message)
+			LAZYADD(output.out_visible_descriptors, weight_message)
 	//! god i hate it
 
 	return output

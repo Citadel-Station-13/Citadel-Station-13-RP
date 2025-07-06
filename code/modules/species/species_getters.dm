@@ -61,9 +61,6 @@
 /datum/species/proc/get_valid_shapeshifter_forms(mob/living/carbon/human/H)
 	return list()
 
-/datum/species/proc/get_additional_examine_text(mob/living/carbon/human/H)
-	return
-
 /datum/species/proc/get_blood_mask(mob/living/carbon/human/H)
 	return blood_mask
 

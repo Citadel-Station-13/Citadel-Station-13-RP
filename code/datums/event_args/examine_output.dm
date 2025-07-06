@@ -16,35 +16,35 @@
 	/// * For things visible from outside separately, like mech components, someone's clothing, etc
 	/// * As raw HTML lines
 	/// * Lazy list
-	var/list/worn_descriptors = list()
+	var/list/out_worn_descriptors = list()
 	/// visible descriptors
 	/// * For misc visible things
 	/// * As raw HTML lines
 	/// * Lazy list
-	var/list/visible_descriptors = list()
+	var/list/out_visible_descriptors = list()
 	/// 'things you notice' descriptors
 	/// * For misc things you notice
 	/// * As raw HTML lines
 	/// * Lazy list
-	var/list/noticed_descriptors = list()
+	var/list/out_noticed_descriptors = list()
 	/// interaction descriptors
 	/// * For things like counting their pulse automatically, etc
 	/// * Can contain links, and is considered interactive.
 	/// * As raw HTML lines
 	/// * Lazy list
-	var/list/interacted_descriptors = list()
+	var/list/out_interacted_descriptors = list()
 	/// analysis descriptors
 	/// * For things like HUD, flavor text, etc
 	/// * Can contain links, and is considered interactive.
 	/// * As raw HTML lines
 	/// * Lazy list
-	var/list/analysis_descriptors = list()
+	var/list/out_analysis_descriptors = list()
 	/// analysis descriptors
 	/// * For things like character directory, etc
 	/// * Can contain links, and is considered interactive.
 	/// * As raw HTML lines
 	/// * Lazy list
-	var/list/ooc_descriptors = list()
+	var/list/out_ooc_descriptors = list()
 
 	/// list of appearances to render to clients for them to be able to view them with native image ref'ing
 	var/list/appearance/required_appearances = list()

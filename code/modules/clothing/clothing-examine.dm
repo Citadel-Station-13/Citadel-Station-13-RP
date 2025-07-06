@@ -7,7 +7,7 @@
 		for(var/obj/item/clothing/attached as anything in accessories)
 			var/encoded = attached.examine_encoding_as_accessory(examine, examine_for, examine_from)
 			if(encoded)
-				output.worn_descriptors += encoded
+				output.out_worn_descriptors += encoded
 	return output
 
 /obj/item/clothing/proc/examine_encoding_as_accessory(datum/event_args/examine/examine, examine_for, examine_from)

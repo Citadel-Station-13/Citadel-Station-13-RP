@@ -17,13 +17,19 @@
 	/// the thing being examined
 	var/atom/examined
 
+	/// is this a live examine? this means it's going to chat
+	/// * things like FORMAT_LOOKITEM will only be ran on a live examine,
+	///   as we don't want clickable HTML in logs now do we
+	var/live_examine
+
 	var/legacy_examine_skip_body
 	var/legacy_examine_skip_gear
 	var/legacy_examine_no_touch
 
-/datum/event_args/examine/New(atom/examined, atom/movable/examiner)
+/datum/event_args/examine/New(atom/examined, atom/movable/examiner, live_examine)
 	src.examined = examined
 	src.examiner = src.seer = examiner
+	src.live_examine = live_examine
 
 	if(examiner && examined)
 		seer_distance = get_dist(examiner, examined)

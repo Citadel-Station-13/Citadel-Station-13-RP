@@ -7,4 +7,11 @@
 
 	return output
 
-/obj/item/organ/proc/examine_get_descriptor_strings(datum/event_args/examine/examine, examine_for, examien_from)
+/obj/item/organ/proc/examine_get_injury_descriptors(datum/event_args/examine/examine, examine_for, examien_from)
+	. = list()
+	if(germ_level > INFECTION_LEVEL_TWO && !(status & ORGAN_DEAD))
+		. += SPAN_WARNING("very infected")
+	else if(status & ORGAN_DEAD)
+		. += SPAN_DANGER("rotten")
+	if(status & ORGAN_BLEEDING)
+		. += SPAN_WARNING("bleeding")

@@ -15,9 +15,12 @@
 /// get everything not currently in the new examine system
 #define EXAMINE_FOR_REST (1<<5)
 
-/// examining something on a turf
+/// examining something on a turf (so normal)
 #define EXAMINE_FROM_TURF (1<<0)
-/// examining something when looking at a human's inventory
-#define EXAMINE_FROM_WORN (1<<1)
+/// queried from main examine()
+/// * clothing someone's wearing gets this when they get examined
+/// * same for items and organs
+/// * mech components can get this when the parent mech is examined
+#define EXAMINE_FROM_ATTACHED (1<<1)
 /// examining something when looking at a human's strip menu
 #define EXAMINE_FROM_STRIP (1<<2)

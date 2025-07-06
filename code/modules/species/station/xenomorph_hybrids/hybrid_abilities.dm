@@ -14,7 +14,7 @@
 	action_icon = 'icons/screen/actions/xenomorph.dmi'
 	var/plasma_cost = 0
 
-/datum/ability/species/xenomorph_hybrid/available_check()
+/datum/ability/species/xenomorph_hybrid/check_availability(datum/event_args/actor/actor, silent)
 	. = ..()
 	if(.)
 		var/mob/living/carbon/human/H = owner
@@ -49,7 +49,7 @@
 	windup = 0 SECOND
 	interact_type = ABILITY_INTERACT_TRIGGER
 	always_bind = TRUE
-	ability_check_flags = ABILITY_CHECK_RESTING
+	ability_check_flags = ABILITY_CHECK_IS_RESTING
 	mobility_check_flags = MOBILITY_IS_CONSCIOUS
 	plasma_cost = 10
 

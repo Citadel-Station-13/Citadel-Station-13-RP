@@ -227,9 +227,6 @@
 
 	return ..()
 
-/datum/species/protean/get_additional_examine_text(var/mob/living/carbon/human/H)
-	return ..() //Hmm, what could be done here?
-
 /datum/species/protean/statpanel_status(client/C, mob/living/carbon/human/H)
 	. = ..()
 	var/obj/item/organ/internal/nano/refactory/refactory = H.nano_get_refactory()
