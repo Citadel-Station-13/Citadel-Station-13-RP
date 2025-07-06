@@ -12,4 +12,4 @@
 
 /datum/lore/character_background/origin/oricon_league
 	abstract_type = /datum/lore/character_background/origin/oricon_league
-	category = "OriCon - Interplanetary Worker's League"
+	category = "OriCon - IWL"

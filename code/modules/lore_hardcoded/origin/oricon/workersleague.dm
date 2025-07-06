@@ -1,6 +1,6 @@
 /datum/lore/character_background/origin/oricon_league/workers_league
 	abstract_type = /datum/lore/character_background/origin/oricon_league/workers_league
-	category = "Oricon - Interplanetary Worker's League"
+	category = "Oricon - IWL"
 	innate_languages = list(
 		LANGUAGE_ID_HUMAN
 		)
