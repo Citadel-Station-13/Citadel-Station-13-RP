@@ -123,7 +123,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4portafthall)
 "agJ" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -5814,15 +5814,6 @@
 /obj/machinery/door/airlock/multi_tile/glass,
 /turf/simulated/floor/plating,
 /area/engineering/substation/deck4aft)
-"fod" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/simulated/floor/tiled,
-/area/endeavour/hallway/d4portafthall)
 "fos" = (
 /obj/structure/cable/green{
 	icon_state = "2-4"
@@ -7424,7 +7415,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4portafthall)
 "gJg" = (
 /obj/machinery/telecomms/server/presets/science,
@@ -10620,7 +10611,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4portafthall)
 "jzR" = (
 /obj/structure/sign/deck/fourth{
@@ -13600,7 +13591,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4portafthall)
 "mtZ" = (
 /obj/structure/cable/yellow{
@@ -16360,7 +16351,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4portafthall)
 "pgh" = (
 /obj/structure/reagent_dispensers/watertank,
@@ -17232,7 +17223,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4portafthall)
 "pZs" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -23559,7 +23550,7 @@
 	icon_state = "pipe-c"
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4portafthall)
 "whe" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -23807,7 +23798,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4portafthall)
 "wum" = (
 /obj/effect/floor_decal/corner/lightorange/border{
@@ -24743,7 +24734,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4portafthall)
 "xqF" = (
 /obj/structure/closet/firecloset/full,
@@ -24859,7 +24850,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 8
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4portafthall)
 "xxi" = (
 /obj/structure/cable/green{
@@ -37094,7 +37085,7 @@ jhP
 wCh
 jyr
 xmz
-fod
+hEI
 oRS
 urP
 eeF
