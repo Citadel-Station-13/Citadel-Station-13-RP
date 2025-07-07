@@ -286,6 +286,9 @@
 		add_fingerprint(user)
 	update_icon()
 
+/obj/item/reagent_containers/syringe/unbreakable/break_syringe(mob/living/carbon/target, mob/living/carbon/user)
+	return
+
 /obj/item/reagent_containers/syringe/ld50_syringe
 	name = "Lethal Injection Syringe"
 	desc = "A syringe used for lethal injections."
@@ -353,3 +356,4 @@
 /obj/item/reagent_containers/syringe/steroid/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("hyperzine",10)
+
