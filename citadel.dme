@@ -2709,6 +2709,7 @@
 #include "code\modules\clothing\head\oricon.dm"
 #include "code\modules\clothing\head\pilot_helmet.dm"
 #include "code\modules\clothing\head\soft_caps.dm"
+#include "code\modules\clothing\head\strawhats.dm"
 #include "code\modules\clothing\head\misc\cakehat.dm"
 #include "code\modules\clothing\head\xeno\tajara.dm"
 #include "code\modules\clothing\masks\_mask.dm"

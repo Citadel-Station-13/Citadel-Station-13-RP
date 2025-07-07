@@ -339,7 +339,8 @@
 	var/list/wearables = list()
 	for(var/wear in typesof(/obj/item/clothing/accessory/draped_beachwear))
 		var/obj/item/clothing/accessory/wear_type = wear
-		wearables[initial(wear_type.name)] = wear_type
+		var/wear_string = (initial(wear_type.name) + "(" + initial(wear_type.icon_state) + ")")
+		wearables[wear_string] = wear_type
 	tweaks += new/datum/loadout_tweak/path(tim_sort(wearables, GLOBAL_PROC_REF(cmp_text_asc)))
 
 
