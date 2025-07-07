@@ -89,24 +89,4 @@
 	microbattery_group_key = "stripper"
 	microbattery_mode_color = "#fc8d0f"
 	microbattery_mode_name = "<span style='color:#fc8d0f;font-weight:bold;'>STRIPPER</span>"
-	projectile_type = /obj/projectile/bullet/stripper
-
-/obj/projectile/bullet/stripper
-	icon_state = "magicm"
-	nodamage = 1
-	damage_inflict_agony = 5
-	embed_chance = 0
-	damage_mode = NONE
-	damage_flag = ARMOR_MELEE
-
-/obj/projectile/bullet/stripper/on_impact(atom/target, impact_flags, def_zone, efficiency)
-	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
-		return
-
-	if(ishuman(target))
-		var/mob/living/carbon/human/H = target
-		if(!H.permit_stripped)
-			return
-		H.drop_slots_to_ground(list(SLOT_ID_SUIT, SLOT_ID_UNIFORM, SLOT_ID_BACK, SLOT_ID_SHOES, SLOT_ID_GLOVES))
-		//Hats can stay! Most other things fall off with removing these.
+	projectile_type = /obj/projectile/energy/stripper

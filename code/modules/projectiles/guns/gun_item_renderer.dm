@@ -193,7 +193,7 @@
 		else
 			gun.icon_state = base_icon_state
 		return
-	gun.icon_state = "[base_icon_state]-[use_firemode && firemode_key && "-[firemode_key]"]-[ceil(count * ammo_ratio)]"
+	gun.icon_state = "[base_icon_state][use_firemode && firemode_key && "-[firemode_key]"]-[ceil(count * ammo_ratio)]"
 
 /datum/gun_item_renderer/states/dedupe_key()
 	return "states-[use_firemode]-[count]-[use_empty]-[use_firemode_empty]"
