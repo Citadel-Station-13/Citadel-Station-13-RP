@@ -26,7 +26,7 @@ export const ClientPlaytime = (props, context) => {
   const itIsntNullDamnit: Record<string, number> = data.playtime as any;
   const rawPlaytimeNumbers = Object.values(data.playtime);
   let highest: number = rawPlaytimeNumbers.length ? rawPlaytimeNumbers.reduce((a, b) => Math.max(a, b)) : 1;
-  let sorted = Object.keys(data.playtime).toSorted((a, b) => itIsntNullDamnit[a] - itIsntNullDamnit[b]);
+  let sorted = Object.keys(data.playtime).toSorted((a, b) => itIsntNullDamnit[b] - itIsntNullDamnit[a]);
 
   return (
     <Window width={400} height={600} title="Playtime Viewer">
