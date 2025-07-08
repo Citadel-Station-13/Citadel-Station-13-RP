@@ -71,9 +71,6 @@
 	var/mobility_check_flags = NONE
 
 	//? state
-	/// for toggled abilities, turning off incurs the cooldown - otherwise, cooldown begins on toggling off.
-	#warn handle
-	var/cooldown_for_deactivation = TRUE
 	/// windup delay, if we have a windup
 	var/windup = 0
 	/// windup requires standing still
@@ -85,6 +82,7 @@
 
 	//* Cooldown *//
 	/// default cooldown time, if any
+	/// * For toggled abilities, by default, this applies to a toggle.
 	var/cooldown = 0
 	/// world.time we can be used next
 	#warn impl
@@ -92,6 +90,12 @@
 	/// timerid of cooldown update timer
 	#warn impl
 	var/cooldown_timerid
+	/// for toggled abilities, toggling on will incur the cooldown.
+	#warn handle
+	var/cooldown_applies_for_activation = TRUE
+	/// for toggled abilities, toggling off will incur the cooldown.
+	#warn handle
+	var/cooldown_applies_for_deactivation = TRUE
 	/// cooldown applies at start of successful invocation
 	/// * if this is FALSE, cooldown starts after this is disabled,
 	///   or if we sleep as a triggered spell, when the sleeping proc returns.
@@ -158,14 +162,14 @@
 	recheck_queued_action_update()
 
 /datum/ability/proc/recheck_queued_action_update()
-	if(cooldown_visual_timerid)
-		deltimer(cooldown_visual_timerid)
-		cooldown_visual_timerid = null
+	if(cooldown_timerid)
+		deltimer(cooldown_timerid)
+		cooldown_timerid = null
 	var/next_available = 0
 	if(cooldown && !isnull(last_used) && (world.time < last_used + cooldown))
 		next_available = max(next_available, (last_used + cooldown) - world.time)
 	if(next_available > 0)
-		addtimer(CALLBACK(src, PROC_REF(update_action)), next_available, TIMER_STOPPABLE)
+		cooldown_timerid = addtimer(CALLBACK(src, PROC_REF(update_action)), next_available, TIMER_STOPPABLE)
 
 /datum/ability/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	. = ..()
@@ -218,8 +222,7 @@
 	if(!isnull(last_used) && (isnull(toggling) || toggling || (!toggling && cooldown_for_deactivation)) && (cooldown + last_used > world.time))
 		to_chat(user, SPAN_WARNING("[src] is still on cooldown! ([round((world.time - last_used) * 0.1, 0.1)] / [round(cooldown * 0.1, 0.1)])"))
 		return FALSE
-	if(!available_check())
-		to_chat(user, SPAN_WARNING(unavailable_reason()))
+	if(!check_availability(new /datum/event_args/actor(user), FALSE))
 		return FALSE
 	return TRUE
 

@@ -11,15 +11,21 @@
 	/**
 	 * antimagic sources, associated to callback, if a special handler is registered
 	 */
+	var/list/datum/antimagic/antimagic_callbacks
+
 
 /datum/component/antimagic_coverage/proc/add_source(datum/antimagic/source, datum/callback/on_invoke)
 	ASSERT(!antimagic_sources[source])
 	BINARY_INSERT(source, antimagic_sources, /datum/antimagic, source, priority, COMPARE_KEY)
 	antimagic_sources[source] = source.priority
+	if(on_invoke)
+		LAZYSET(antimagic_callbacks, source, on_invoke)
 
 /datum/component/antimagic_coverage/proc/remove_source(datum/antimagic/source)
 	ASSERT(antimagic_sources[source])
 	antimagic_sources -= source
+	LAZYREMOVE(antimagic_callbacks, source)
+	// TODO: auto-qdel-self on a timer if empty
 
 /datum/component/antimagic_coverage/proc/update_source(datum/antimagic/source)
 	ASSERT(antimagic_sources[source])

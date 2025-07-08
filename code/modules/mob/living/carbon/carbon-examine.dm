@@ -47,8 +47,6 @@
 		var/built = extra_organ.examine_encoding_as_visible_organ(examine, examine_for, examine_from)
 		output.out_visible_descriptors += "[gender_datum_visible.His] [built]."
 
-	#warn above; are organs good now?
-
 	//* Pose *//
 	if(pose)
 		LAZYADD(output.out_visible_descriptors, SPAN_INFO("[gender_datum_visible.He] [pose]"))

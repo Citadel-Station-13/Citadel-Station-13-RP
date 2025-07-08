@@ -11,7 +11,7 @@
 
 /obj/item/nullrod/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/antimagic_provider, /datum/antimagic/simple_linear/nullrod)
+	AddComponent(/datum/component/antimagic_provider/anywhere, /datum/antimagic/simple_linear/nullrod)
 
 #warn impl all
 
