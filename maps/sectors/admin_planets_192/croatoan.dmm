@@ -14910,7 +14910,7 @@
 "ZZ" = (
 /obj/effect/floor_decal/corner/lightorange/border,
 /obj/structure/table/reinforced,
-/obj/item/gun/launcher/syringe,
+/obj/item/gun/projectile/ballistic/syringe,
 /obj/item/storage/box/syringes{
 	pixel_x = -8
 	},

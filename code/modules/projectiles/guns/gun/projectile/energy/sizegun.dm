@@ -1,28 +1,27 @@
-//
-// Size Gun
-//
+/datum/firemode/energy/sizegun
+	projectile_type = /obj/projectile/energy/sizegun
+	charge_cost = 240
 
 /obj/item/gun/projectile/energy/sizegun
 	name = "size gun" //I have no idea why this was called shrink ray when this increased and decreased size.
 	desc = "A highly advanced ray gun with a knob on the side to adjust the size you desire. Warning: Do not insert into mouth."
-	icon = 'icons/obj/gun/energy.dmi'
-	icon_state = "sizegun-shrink100" // Someone can probably do better. -Ace
-	item_state = null	//so the human update icon uses the icon_state instead
-	fire_sound = 'sound/weapons/wave.ogg'
-	charge_cost = 240
-	projectile_type = /obj/projectile/beam/sizelaser
-	origin_tech = list(TECH_BLUESPACE = 4)
-	modifystate = "sizegun-grow"
-	no_pin_required = 1
-	legacy_battery_lock = 1
-	var/size_set_to = 1
+	icon = 'icons/modules/projectiles/guns/energy/sizegun.dmi'
+	icon_state = "sizegun-4"
+	base_icon_state = "sizegun"
+	worn_state = "sizegun"
+	item_renderer = /datum/gun_item_renderer/states{
+		count = 4;
+		use_empty = TRUE;
+	}
+	no_pin_required = TRUE
+	legacy_battery_lock = TRUE
 	firemodes = list(
-		list(mode_name		= "select size",
-			projectile_type	= /obj/projectile/beam/sizelaser,
-			modifystate		= "sizegun-grow",
-			fire_sound		= 'sound/weapons/pulse3.ogg'
-		))
+		/datum/firemode/energy/sizegun,
+	)
+
 	item_action_name = "Select Size"
+
+	var/size_set_to = 1
 
 /obj/item/gun/projectile/energy/sizegun/Initialize(mapload)
 	. = ..()
@@ -34,7 +33,7 @@
 
 /obj/item/gun/projectile/energy/sizegun/consume_next_projectile(datum/gun_firing_cycle/cycle)
 	. = ..()
-	var/obj/projectile/beam/sizelaser/G = .
+	var/obj/projectile/energy/sizegun/G = .
 	if(istype(G))
 		G.set_size = size_set_to
 
@@ -55,28 +54,31 @@
 	var/size_examine = (size_set_to*100)
 	. += "<span class='info'>It is currently set at [size_examine]%</span>"
 
-//
-// Beams for size gun
-//
-
-/obj/projectile/beam/sizelaser
+/obj/projectile/energy/sizegun
 	name = "size beam"
 	icon_state = "xray"
+	hitscan = TRUE
 	nodamage = 1
 	damage_force = 0
 	damage_flag = ARMOR_LASER
+	light_range = 2
+	light_power = 0.5
+	light_color = "#2ec317"
+	fire_sound = 'sound/weapons/pulse3.ogg'
 	var/set_size = 1 //Let's default to 100%
 
 	legacy_muzzle_type = /obj/effect/projectile/muzzle/xray
 	legacy_tracer_type = /obj/effect/projectile/tracer/xray
 	legacy_impact_type = /obj/effect/projectile/impact/xray
 
-/obj/projectile/beam/sizelaser/on_impact(atom/target, impact_flags, def_zone, efficiency)
+/obj/projectile/energy/sizegun/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 
 	var/mob/living/M = target
+	if(!istype(M))
+		return
 	if(!M.permit_sizegun)
 		M.visible_message("<span class='warning'>[src] has no effect on [M].</span>")
 		return
@@ -89,24 +91,3 @@
 		var/mob/living/H = M
 		H.resize(set_size, TRUE)
 		H.updateicon()
-
-/obj/projectile/beam/sizelaser/shrink
-	set_size = 0.5 //50% of current size
-
-/obj/projectile/beam/sizelaser/grow
-	set_size = 2.0 //200% of current size
-
-/obj/item/gun/projectile/energy/stripper//Because it can be fun
-	name = "stripper gun"
-	desc = "A gun designed to remove unnessary layers from people. For external use only!"
-	icon = 'icons/obj/gun/energy.dmi'
-	icon_state = "sizegun-shrink100" // Someone can probably do better. -Ace
-	item_state = null	//so the human update icon uses the icon_state instead
-	fire_sound = 'sound/weapons/wave.ogg'
-	charge_cost = 240
-	projectile_type = /obj/projectile/bullet/stripper
-	origin_tech = list(TECH_BLUESPACE = 4)
-	modifystate = "sizegun-shrink"
-	no_pin_required = 1
-	legacy_battery_lock = 1
-	firemodes = list()
