@@ -550,7 +550,7 @@ const LatheDesign = (props: LatheDesignProps, context) => {
                       let newMats = { ...mats };
                       newMats[name] = val;
                       setMats(newMats);
-                    }}))
+                    }}
                     options={
                       Object.keys(data.materials).flatMap((id) => ((props.design.material_constraints !== null) ?
                       (data.materialsContext.materials[id].constraints.includes((name in props.design.material_constraints) ?
