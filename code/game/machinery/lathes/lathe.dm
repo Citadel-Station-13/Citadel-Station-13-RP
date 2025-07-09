@@ -387,7 +387,6 @@
 	var/datum/lathe_queue_entry/head = queue[1]
 	var/datum/prototype/design/D
 	var/left_this_tick = max_items_per_tick
-	//var/printed_any = FALSE commented because i dont know why it exists
 	while(!isnull(head))
 		D = RSdesigns.fetch(head.design_id)
 		var/resource_limited = has_resources_for(D, head.material_parts, head.ingredient_parts)
@@ -399,7 +398,6 @@
 		var/printed = min(head.amount, D.is_stack? (D.max_stack * left_this_tick) : left_this_tick, round(progress / D.work), resource_limited)
 		if(!printed)
 			break
-		//printed_any = TRUE //blame silicons
 		left_this_tick -= D.is_stack? CEILING(D.max_stack / printed, 1) : printed
 		progress -= printed * D.work
 		head.amount -= printed

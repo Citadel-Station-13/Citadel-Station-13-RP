@@ -271,7 +271,10 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
                     {
                       Object.values(data.designs.instances).filter(
                         (d) => searchText.length > 2
-                          ? d.name.toLowerCase().includes(searchText) : (((subcategory.length > 0) && (d.subcategories.length > 0)) ? (d.categories.includes(category) && d.subcategories.includes(subcategory)) : d.categories.includes(category))
+                          ? d.name.toLowerCase().includes(searchText) :
+                          (((subcategory.length > 0) && (d.subcategories.length > 0)) ?
+                          (d.categories.includes(category) && d.subcategories.includes(subcategory)) :
+                          d.categories.includes(category))
                       ).sort((d1, d2) =>
                         d1.name.localeCompare(d2.name)
                       ).map((d) => (
@@ -567,12 +570,15 @@ const LatheDesign = (props: LatheDesignProps, context) => {
                       newMats[name] = val;
                       setMats(newMats);
                     }}
-                    // data.materialsContext.materials[id].constraints.includes(props.design.material_constraints[name]) ? data.materialsContext.materials[id].name : null
-                    // (id) => data.materialsContext.materials[id].name
-                    // props.design.material_constraints?.[name]
-                    // Object.keys(data.materials).map((id) => (data.materialsContext.materials[id].constraints.includes(((props.design.material_constraints === null) ? false : (name in props.design.material_constraints)) ? (((typeof props.design.material_constraints?.[name]) === 'number') ? props.design.material_constraints?.[name] : 16777218) : 16777218) ? data.materialsContext.materials[id].name : null))
                     options={
-                      Object.keys(data.materials).flatMap((id) => ((props.design.material_constraints !== null) ? (data.materialsContext.materials[id].constraints.includes((name in props.design.material_constraints) ? (((typeof props.design.material_constraints?.[name]) === 'number') ? props.design.material_constraints?.[name] : 16777218) : 16777218) ? [data.materialsContext.materials[id].name] : []) : [data.materialsContext.materials[id].name])) // THIS is the line we need to touch for constraint showing.
+                      Object.keys(data.materials).flatMap((id) => ((props.design.material_constraints !== null) ?
+                      (data.materialsContext.materials[id].constraints.includes(
+                        (name in props.design.material_constraints) ?
+                        (((typeof props.design.material_constraints?.[name]) === 'number') ?
+                        props.design.material_constraints?.[name] :
+                        16777218) : 16777218) ?
+                        [data.materialsContext.materials[id].name] : []) :
+                        [data.materialsContext.materials[id].name]))
                     } />
                 </Table.Cell>
                 <Table.Cell textAlign="center"
