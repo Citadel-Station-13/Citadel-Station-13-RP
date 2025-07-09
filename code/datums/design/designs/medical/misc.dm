@@ -2,7 +2,7 @@
 	id = "AmmoSyringeCartridge"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
-	build_path = /obj/item/syringe_cartridge
+	build_path = /obj/item/ammo_casing/syringe
 
 /datum/prototype/design/medical/implanter
 	id = "MedicalImplanter"
