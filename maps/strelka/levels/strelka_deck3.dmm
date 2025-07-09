@@ -1775,6 +1775,7 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
+/obj/structure/table/carbon/reinforced,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck3/science/xenobio)
 "gP" = (
@@ -2206,6 +2207,9 @@
 /obj/item/storage/box/syringes,
 /obj/item/storage/bag/xenobio,
 /obj/item/storage/bag/xenobio,
+/obj/item/stack/material/phoron{
+	amount = 25
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science/xenobio)
 "io" = (
@@ -4788,6 +4792,7 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
+/obj/structure/table/carbon/reinforced,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck3/science/xenobio)
 "rm" = (
@@ -4952,9 +4957,6 @@
 	starts_with = list(/obj/item/reagent_containers/food/snacks/monkeycube/wrapped=10)
 	},
 /obj/structure/table/carbon/reinforced,
-/obj/machinery/camera/network/security{
-	dir = 8
-	},
 /obj/machinery/camera/network/security{
 	dir = 8
 	},
@@ -6233,6 +6235,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/structure/table/carbon/reinforced,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck3/science/xenobio)
 "wx" = (
@@ -7833,6 +7836,7 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
+/obj/structure/table/carbon/reinforced,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck3/science/xenobio)
 "BG" = (
@@ -8030,6 +8034,7 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
+/obj/structure/table/carbon/reinforced,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck3/science/xenobio)
 "Cr" = (
@@ -10897,6 +10902,14 @@
 /area/strelka/shipbase/deck3/bridge/rd)
 "Mk" = (
 /obj/structure/closet/crate,
+/obj/item/stack/material/glass{
+	amount = 50
+	},
+/obj/item/stack/material/steel{
+	amount = 50;
+	pixel_x = 2;
+	pixel_y = 2
+	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck3/maintenance/cargo)
 "Ml" = (
@@ -11559,6 +11572,7 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
+/obj/structure/table/carbon/reinforced,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck3/science/xenobio)
 "Pb" = (
@@ -14215,6 +14229,15 @@
 "Ym" = (
 /obj/machinery/air_alarm/north_mount,
 /obj/structure/closet/crate,
+/obj/item/stack/material/wood/hard{
+	amount = 25
+	},
+/obj/item/stack/material/wood{
+	amount = 25
+	},
+/obj/item/stack/material/wood/ironwood{
+	amount = 25
+	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck3/maintenance/cargo)
 "Yq" = (

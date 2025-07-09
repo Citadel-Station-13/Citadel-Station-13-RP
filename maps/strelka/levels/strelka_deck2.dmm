@@ -5385,6 +5385,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc/east_mount,
+/obj/structure/closet/wardrobe/red,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck2/security/storage)
 "pA" = (
@@ -9728,7 +9729,6 @@
 /area/strelka/shipbase/deck2/maintenance/eva)
 "Ce" = (
 /obj/machinery/light/small/old,
-/mob/living/simple_mob/animal/passive/maint_drone,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/maintenance/eva)
 "Cf" = (
@@ -12421,6 +12421,7 @@
 /obj/effect/floor_decal/corner/red{
 	dir = 9
 	},
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck2/security/storage)
 "KQ" = (
@@ -16762,8 +16763,8 @@
 /obj/machinery/light/small/old{
 	dir = 8
 	},
-/obj/machinery/holopad,
 /obj/machinery/air_alarm/west_mount,
+/obj/structure/closet/wardrobe/red,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck2/security/storage)
 "XZ" = (
