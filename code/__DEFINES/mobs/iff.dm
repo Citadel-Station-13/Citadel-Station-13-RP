@@ -108,6 +108,7 @@
 
 #define MOB_IFF_FACTION_CLOCKWORK_CULT "clock-cult"
 #define MOB_IFF_FACTION_SANGUINE_CULT "blood-cult"
+#define MOB_IFF_FACTION_ELDRITCH_CULT "eldritch-cult"
 
 //? Tajara Factions ?//
 

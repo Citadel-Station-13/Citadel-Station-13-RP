@@ -1,3 +1,6 @@
+/datum/armor/eldritch
+
+
 /datum/armor/eldritch/robes
 	melee = 0.4
 	melee_tier = 3

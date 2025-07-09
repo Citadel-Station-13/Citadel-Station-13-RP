@@ -787,6 +787,7 @@
 #include "code\datums\armor\objects\standard.dm"
 #include "code\datums\armor\objects\windows.dm"
 #include "code\datums\armor\outsider\autolok.dm"
+#include "code\datums\armor\outsider\eldritch.dm"
 #include "code\datums\armor\outsider\imperial.dm"
 #include "code\datums\armor\outsider\lavaland.dm"
 #include "code\datums\armor\outsider\merc.dm"
