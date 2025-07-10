@@ -85,6 +85,7 @@
 
 /datum/gun_firing_cycle/proc/finish_iteration(result)
 	last_firing_result = result
+	++cycle_iterations_fired
 
 	next_dispersion_adjust = \
 	next_angle_adjust = \
