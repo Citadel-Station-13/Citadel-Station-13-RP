@@ -1,3 +1,10 @@
+/**
+ * Identification cards.
+ *
+ * * Can have access encoded into it
+ * * Can hvae a general set of data of its owner encoded into it
+ * * Can be linked to a /datum/economy_account to be used as a bank card.
+ */
 /obj/item/card/id
 	name = "identification card"
 	desc = "A card used to provide ID and determine access across the station."
@@ -6,12 +13,12 @@
 	item_state_slots = list(
 		SLOT_ID_WORN_ID = "id"
 	)
+	slot_flags = SLOT_ID | SLOT_EARS
 
 	/// Access levels held by this card.
 	var/list/access = list()
 	/// The name registered_name on the card.
 	var/registered_name = "Unknown"
-	slot_flags = SLOT_ID | SLOT_EARS
 
 	var/age = "\[UNSET\]"
 	var/dna_hash = "\[UNSET\]"
@@ -26,7 +33,6 @@
 	var/extra_info_visible
 
 	var/last_job_switch
-	var/lost_access = list()
 
 	var/primary_color = rgb(0,0,0) // Obtained by eyedroppering the stripe in the middle of the card
 	var/secondary_color = rgb(0,0,0) // Likewise for the oval in the top-left corner

@@ -8,8 +8,13 @@
 import { Button } from "../../components";
 
 export interface IDCard {
+  // entity name of the id card itself
   name?: string;
+  // actual role name
   rank?: string;
+  // actual role name, or alt title
+  title?: string;
+  // who it belongs to
   owner?: string;
 }
 

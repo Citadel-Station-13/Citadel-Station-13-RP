@@ -64,91 +64,11 @@
 //Destroyers are medium sized vessels, often used for escorting larger ships but able to go toe-to-toe with them if need be.
 //Frigates are medium sized vessels, often used for escorting larger ships. They will rapidly find themselves outclassed if forced to face heavy warships head on.
 
-GLOBAL_VAR(current_date_string)
-GLOBAL_DATUM(vendor_account, /datum/money_account)
-GLOBAL_DATUM(station_account, /datum/money_account)
-GLOBAL_LIST_EMPTY_TYPED(department_accounts, /datum/money_account)
-GLOBAL_VAR_INIT(num_financial_terminals, 1)
-GLOBAL_VAR_INIT(next_account_number, 0)
-GLOBAL_LIST_EMPTY(all_money_accounts)
-GLOBAL_LIST_EMPTY(transaction_devices)
-GLOBAL_VAR_INIT(economy_init, FALSE)
-
-/proc/setup_economy()
-	if(GLOB.economy_init)
-		return 2
-
+/proc/setup_economy_legacy()
 	//news_network.CreateFeedChannel("The [(LEGACY_MAP_DATUM).starsys_name] Times", "[(LEGACY_MAP_DATUM).starsys_name] Times ExoNode - [(LEGACY_MAP_DATUM).station_short]", 1, 1)
 	news_network.CreateFeedChannel("The Gibson Gazette", "Editor Mike Hammers", 1, 1)
 	news_network.CreateFeedChannel("Oculum Content Aggregator", "Oculus v6rev7", 1, 1)
-
 	for(var/loc_type in typesof(/datum/trade_destination) - /datum/trade_destination)
 		var/datum/trade_destination/D = new loc_type
 		weighted_randomevent_locations[D] = D.viable_random_events.len
 		weighted_mundaneevent_locations[D] = D.viable_mundane_events.len
-
-	create_station_account()
-
-	for(var/department in economy_station_departments)
-		create_department_account(department)
-	create_department_account("Vendor")
-	GLOB.vendor_account = GLOB.department_accounts["Vendor"]
-
-	for(var/obj/item/retail_scanner/RS in GLOB.transaction_devices)
-		if(RS.account_to_connect)
-			RS.linked_account = GLOB.department_accounts[RS.account_to_connect]
-	for(var/obj/machinery/cash_register/CR in GLOB.transaction_devices)
-		if(CR.account_to_connect)
-			CR.linked_account = GLOB.department_accounts[CR.account_to_connect]
-
-	GLOB.current_date_string = "[num2text(rand(1,31))] [pick("January","February","March","April","May","June","July","August","September","October","November","December")], [game_year]"
-
-	GLOB.economy_init = 1
-	return 1
-
-/proc/create_station_account()
-	if(!GLOB.station_account)
-		GLOB.next_account_number = rand(111111, 999999)
-
-		GLOB.station_account = new()
-		GLOB.station_account.owner_name = "[station_name()] Station Account"
-		GLOB.station_account.account_number = rand(111111, 999999)
-		GLOB.station_account.remote_access_pin = rand(1111, 111111)
-		GLOB.station_account.money = 100000
-
-		//create an entry in the account transaction log for when it was created
-		var/datum/transaction/T = new()
-		T.target_name = GLOB.station_account.owner_name
-		T.purpose = "Account creation"
-		T.amount = 100000
-		T.date = "2nd April, 2555"
-		T.time = "11:24"
-		T.source_terminal = "Biesel GalaxyNet Terminal #277"
-
-		//add the account
-		GLOB.station_account.transaction_log.Add(T)
-		GLOB.all_money_accounts.Add(GLOB.station_account)
-
-/proc/create_department_account(department)
-	GLOB.next_account_number = rand(111111, 999999)
-
-	var/datum/money_account/department_account = new()
-	department_account.owner_name = "[department] Account"
-	department_account.account_number = rand(111111, 999999)
-	department_account.remote_access_pin = rand(1111, 111111)
-	department_account.money = 10000
-
-	//create an entry in the account transaction log for when it was created
-	var/datum/transaction/T = new()
-	T.target_name = department_account.owner_name
-	T.purpose = "Account creation"
-	T.amount = department_account.money
-	T.date = "2nd April, 2555"
-	T.time = "11:24"
-	T.source_terminal = "Biesel GalaxyNet Terminal #277"
-
-	//add the account
-	department_account.transaction_log.Add(T)
-	GLOB.all_money_accounts.Add(department_account)
-
-	GLOB.department_accounts[department] = department_account
