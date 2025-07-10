@@ -49,11 +49,11 @@
 	STD_DEF("cloth uniform")
 	icon_state = "under"
 	icon = 'icons/antagonists/syndicate/items/clothing/sneaksuit.dmi'
-	inhand_default_type = INHAND_DEFAULT_ICON_UNIFORMS
-	inhand_state = "black"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_ALLOW_DEFAULT
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	cold_protection_cover = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /datum/loadout_entry/seasonal/masquarade/syndicate/sneaksuit_armor
 	display_name = "Sneaksuit Armor"
