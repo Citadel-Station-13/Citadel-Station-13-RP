@@ -1,31 +1,31 @@
-/obj/item/mansus/prop/codex
-	icon = 'code/game/content/factions/mansus/mansus.dmi/objects.dmi'
+/obj/item/eldritch/prop/codex
+	icon = 'code/game/content/factions/eldritch/eldritch.dmi/objects.dmi'
 	icon_state = "book"
 	name = "Bound Book"
 	desc = "A book decorated in purple leather and a series of odd runes. It appears to be bound by a chain made of some type of metal."
 	anchored = 0
 	density = 0
 
-/obj/item/mansus/prop/medallion
-	icon = 'code/game/content/factions/mansus/mansus.dmi/objects.dmi'
+/obj/item/eldritch/prop/medallion
+	icon = 'code/game/content/factions/eldritch/eldritch.dmi/objects.dmi'
 	icon_state = "eye_medalion"
 	name = "Odd Medallion"
 	desc = "A strange medallion, looks like some sort of eye."
 	anchored = 0
 	density = 0
 
-/obj/item/mansus/prop/flask
-	icon = 'code/game/content/factions/mansus/mansus.dmi/objects.dmi'
+/obj/item/eldritch/prop/flask
+	icon = 'code/game/content/factions/eldritch/eldritch.dmi/objects.dmi'
 	icon_state = "eldritch_flask"
 	name = "Strange Flask"
 	desc = "A strange flask. You can't seem to open it, but you don't recognize the material its made of. Or those runes..."
 
 
 //Blades
-/obj/item/mansus/blade/cursed
+/obj/item/eldritch/blade/cursed
 	name = "Odd Blade"
 	desc = "An odd blade, shaped like a crescent. It has a gem embeded into its handle that pulses eerily."
-	icon = 'code/game/content/factions/mansus/mansus.dmi/objects.dmi'
+	icon = 'code/game/content/factions/eldritch/eldritch.dmi/objects.dmi'
 	icon_state = "cursed_blade"
 	slot_flags = SLOT_BELT
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
@@ -49,10 +49,10 @@
 		SLOT_ID_RIGHT_HAND = 'icons/antagonists/heretic/on_mob/right_hand_64.dmi'
 	)
 
-/obj/item/mansus/blade/rust
+/obj/item/eldritch/blade/rust
 	name = "Odd Blade"
 	desc = "An odd blade, shaped like a crescent. Some sort of rust looks like it's dripping off it."
-	icon = 'code/game/content/factions/mansus/mansus.dmi/objects.dmi'
+	icon = 'code/game/content/factions/eldritch/eldritch.dmi/objects.dmi'
 	icon_state = "rust_blade"
 	slot_flags = SLOT_BELT
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE

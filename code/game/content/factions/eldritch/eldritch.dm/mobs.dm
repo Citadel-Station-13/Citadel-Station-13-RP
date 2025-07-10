@@ -1,14 +1,14 @@
-/mob/living/simple_mob/animal/mansus
-	icon = 'code/game/content/factions/mansus/mansus.dmi/mobs.dmi'
+/mob/living/simple_mob/animal/eldritch
+	icon = 'code/game/content/factions/eldritch/eldritch.dmi/mobs.dmi'
 	iff_factions = MOB_IFF_FACTION_ELDRITCH_CULT
 
-/mob/living/simple_mob/animal/mansus/death()
+/mob/living/simple_mob/animal/eldritch/death()
 	..(null,"emits an unexplainable sound as its body ceases to exist.")
 	ghostize()
 	qdel(src)
 
 
-/mob/living/simple_mob/animal/mansus/rust_walker
+/mob/living/simple_mob/animal/eldritch/rust_walker
 	name = "Rust Walker"
 	desc = "A construct made up of a combination of skulls, rusted metal and an unidentifiable fluid. You swear you hear whispers..."
 
