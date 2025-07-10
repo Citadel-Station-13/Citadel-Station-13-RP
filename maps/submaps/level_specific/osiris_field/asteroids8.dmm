@@ -1,0 +1,134 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/template_noop,
+/area/template_noop)
+"b" = (
+/turf/simulated/wall/dshull,
+/area/template_noop)
+"c" = (
+/obj/effect/decal/mecha_wreckage/cludge,
+/turf/simulated/floor/plating,
+/area/template_noop)
+"d" = (
+/turf/simulated/floor/event/derelict_plating,
+/area/template_noop)
+"j" = (
+/obj/effect/decal/mecha_wreckage/duke/db,
+/turf/template_noop,
+/area/template_noop)
+"T" = (
+/turf/simulated/floor/plating,
+/area/template_noop)
+
+(1,1,1) = {"
+a
+a
+j
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+T
+T
+T
+a
+b
+b
+a
+"}
+(3,1,1) = {"
+b
+T
+T
+T
+T
+a
+a
+T
+T
+T
+T
+T
+b
+a
+"}
+(4,1,1) = {"
+a
+T
+T
+d
+T
+d
+d
+a
+T
+T
+c
+T
+T
+a
+"}
+(5,1,1) = {"
+a
+b
+a
+b
+T
+T
+T
+T
+T
+a
+T
+T
+T
+a
+"}
+(6,1,1) = {"
+a
+a
+a
+T
+a
+T
+a
+a
+a
+a
+T
+T
+a
+a
+"}
+(7,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
