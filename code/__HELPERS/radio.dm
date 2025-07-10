@@ -8,7 +8,7 @@
 	if(!(. % 2)) // Ensure the last digit is an odd number
 		. += 1
 	if(. == FREQ_SYNDICATE && !syndie) // Prevents people from picking (or rounding up) into the syndie frequency
-		. = FREQ_COMMON
+		. = FREQ_ATC
 
 /// Format frequency by moving the decimal.
 /proc/format_frequency(frequency)
