@@ -130,7 +130,7 @@
 		SLOT_ID_RIGHT_HAND = 'icons/antagonists/heretic/on_mob/right_hand_64.dmi'
 	)
 
-	/obj/item/eldritch/blade/ash
+/obj/item/eldritch/blade/ash
 	name = "Odd Blade"
 	desc = "An odd blade, shaped like a crescent. It appears to be covered in molten ash, the entire length incessantly aflame."
 	icon = 'code/game/content/factions/eldritch/eldritch.dmi/objects.dmi'
