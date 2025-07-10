@@ -1138,6 +1138,9 @@
 /obj/item/surgical/retractor,
 /obj/item/surgical/scalpel,
 /obj/item/surgical/surgicaldrill,
+/obj/item/surgical/bone_clamp,
+/obj/item/surgical/bonegel,
+/obj/item/surgical/cautery,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/sdf)
 "fs" = (
@@ -2142,6 +2145,7 @@
 /area/shuttle/miaphus/sdf)
 "kA" = (
 /obj/machinery/door/airlock/hatch,
+/obj/map_helper/access_helper/airlock/disconnected/sdf,
 /turf/simulated/floor/tiled/old_tile,
 /area/sector/miaphus/beach/sdf)
 "kB" = (
