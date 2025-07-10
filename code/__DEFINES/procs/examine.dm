@@ -15,6 +15,8 @@
 /// get everything not currently in the new examine system
 #define EXAMINE_FOR_REST (1<<5)
 
+#define EXAMINE_FOR_EVERYTHING ALL
+
 /// examining something on a turf (so normal)
 #define EXAMINE_FROM_TURF (1<<0)
 /// queried from main examine()

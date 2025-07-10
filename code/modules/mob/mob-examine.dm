@@ -1,6 +1,8 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+//* Incoming *//
+
 /mob/pre_examine(datum/event_args/examine/examine, examine_for, examine_from)
 	examine = ..()
 
@@ -84,10 +86,77 @@
 
 	if(buckled)
 		LAZYADD(output.required_appearances, buckled.appearance)
-		LAZYADD(output.out_visible_descriptors, SPAN_WARNING("<img src='\ref[buckled.appearance]'> [gender_datum_visible.He] [gender_datum_visible.is] buckled to [FORMAT_TEXT_LOOKITEM(buckled)]."))
+		LAZYADD(output.out_visible_descriptors, SPAN_WARNING("<img src='\ref[buckled.appearance]'> [gender_datum_visible.He] [gender_datum_visible.is] buckled to [ENCODE_ATOM_HREFEXAMINE(buckled)]."))
 
 	var/maybe_flavor_text = print_flavor_text()
 	if(maybe_flavor_text)
 		LAZYADD(output.out_ooc_descriptors, maybe_flavor_text)
 
 	return output
+
+//* Outgoing *//
+
+// TODO: what about remote-viewing?
+/mob/proc/examine_entity_check_visibility(atom/entity, silent, from_href)
+	if(is_blind())
+		to_chat(src, SPAN_WARNING("You can't examine things while you're blind."))
+		return FALSE
+
+	// TODO: this allows for a view argument. use it.
+	if(!can_see_expensive(entity))
+		return FALSE
+
+	return TRUE
+
+/**
+ * @params
+ * * entity - what we're examining
+ * * force - skip visibility check
+ * * silent - don't emit output for the user or anyone else around them
+ * * virtual - Internal call, don't trigger things like insanity on examine. Implies 'force'.
+ *             Also don't trigger side effects like facing towards them.
+ * * from_href - atom/Topic() routed here
+ *
+ * TODO: what about remote-viewing?
+ *
+ * @return TRUE on success, FALSE otherwise
+ */
+/mob/proc/examine_entity(atom/entity, force, silent, virtual, from_href)
+	if(!force && !virtual && !examine_entity_check_visibility(entity, silent, from_href))
+		return FALSE
+
+	// TODO: get virtual dir from SSmapping instead so this works across z-transitions
+	if(!virtual && get_dist(entity, src) < 15 && entity.z == src.z)
+		face_atom(entity)
+
+	SEND_SIGNAL(src, COMSIG_MOB_EXAMINE_ENTITY, entity, force, silent, virtual)
+
+	var/datum/event_args/examine/input = new(entity, src, TRUE)
+	var/datum/event_args/examine_output/output = entity.examine_new(
+		input,
+		EXAMINE_FOR_EVERYTHING,
+		EXAMINE_FROM_TURF,
+	)
+
+	var/list/serialized_html = list()
+	serialized_html += "<blockquote class='info'>"
+	#warn impl
+	serialized_html += "</blockquote>"
+
+	// Show people around us if:
+	// 1. Not silent,
+	// 2. And it isn't in or on us,
+	// 3. And we're on a turf,
+	// 4. And it's not a turf,
+	// 5. And it has a location.
+	// TODO: visible_message like / proper feedback wrapper that checks for physical
+	//       visibility on turf.
+	var/atom/their_top_level_atom = get_top_level_atom(entity)
+	if(!silent && their_top_level_atom != src && !isturf(entity))
+		visible_message(SPAN_TINYNOTICE("<b>\The [src]</b> looks at \the [entity]."), range = MESSAGE_RANGE_EXAMINE)
+
+	to_chat(src, serialized_html)
+
+	return TRUE
+
+#warn impl all

@@ -52,19 +52,19 @@
 				if(skip_gear & EXAMINE_SKIPHOLSTER)
 					for(var/obj/item/clothing/accessory/A in U.accessories)
 						if(A.show_examine && !istype(A, /obj/item/clothing/accessory/holster)) // If we're supposed to skip holsters, actually skip them
-							accessories_visible.Add(FORMAT_TEXT_LOOKITEM(A))
+							accessories_visible.Add(ENCODE_ATOM_HREFEXAMINE(A))
 				else
 					for(var/obj/item/clothing/accessory/A in U.accessories)
 						if(A.concealed_holster == FALSE && A.show_examine)
-							accessories_visible.Add(FORMAT_TEXT_LOOKITEM(A))
+							accessories_visible.Add(ENCODE_ATOM_HREFEXAMINE(A))
 
 				if(accessories_visible.len)
 					tie_msg += SPAN_INFO(" Attached to it is [english_list(accessories_visible)].")
 
 		if(w_uniform.blood_DNA)
-			. += SPAN_WARNING("<hr>[icon2html(w_uniform, user)] [T.He] [T.is] wearing [w_uniform.gender == PLURAL ? "some" : "a"] [(w_uniform.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(w_uniform)]![tie_msg]")
+			. += SPAN_WARNING("<hr>[icon2html(w_uniform, user)] [T.He] [T.is] wearing [w_uniform.gender == PLURAL ? "some" : "a"] [(w_uniform.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [ENCODE_ATOM_HREFEXAMINE(w_uniform)]![tie_msg]")
 		else
-			. += SPAN_INFO("<hr>[icon2html(w_uniform, user)] [T.He] [T.is] wearing \a [FORMAT_TEXT_LOOKITEM(w_uniform)].[tie_msg]")
+			. += SPAN_INFO("<hr>[icon2html(w_uniform, user)] [T.He] [T.is] wearing \a [ENCODE_ATOM_HREFEXAMINE(w_uniform)].[tie_msg]")
 
 	// Pulse Checking.
 	if(src.stat)

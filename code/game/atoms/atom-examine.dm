@@ -85,6 +85,7 @@
 // todo: examine(datum/event_args/examine/e_args)
 // todo: standard controls / ui/ux help
 // todo: examine_more()?
+#warn audit calls
 /atom/proc/examine(mob/user, dist = 1)
 	#warn this shit
 	var/examine_string = get_examine_string(user, thats = TRUE)

@@ -19,13 +19,13 @@
  */
 /obj/item/proc/examine_encoding_as_worn(datum/event_args/examine/examine, examine_for, examine_from)
 	var/datum/event_args/examine_output/output = examine_new(examine, examine_for, examine_from)
-	#warn impl; FORMAT_TEXT_LOOKITEM_NAME
+	#warn impl; ENCODE_ATOM_HREFEXAMINE_NAME
 
 	// if(shoes && !(skip_gear & EXAMINE_SKIPGEAR_SHOES) && shoes.show_examine)
 	// 	if(shoes.blood_DNA)
-	// 		. += SPAN_WARNING("[icon2html(shoes, user)] [T.He] [T.is] wearing [shoes.gender == PLURAL ? "some" : "a"] [(shoes.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(shoes)] on [T.his] feet!")
+	// 		. += SPAN_WARNING("[icon2html(shoes, user)] [T.He] [T.is] wearing [shoes.gender == PLURAL ? "some" : "a"] [(shoes.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [ENCODE_ATOM_HREFEXAMINE(shoes)] on [T.his] feet!")
 	// 	else
-	// 		. += SPAN_INFO("[icon2html(shoes, user)] [T.He] [T.is] wearing \a [FORMAT_TEXT_LOOKITEM(shoes)] on [T.his] feet.")
+	// 		. += SPAN_INFO("[icon2html(shoes, user)] [T.He] [T.is] wearing \a [ENCODE_ATOM_HREFEXAMINE(shoes)] on [T.his] feet.")
 
 /**
  * @return html

@@ -63,10 +63,10 @@
 #define STRING_DIRECTORY "strings"
 
 #warn impl on topic, remove 'lookitem' from mob
-/// Takes an atom and formats it with a hyperlink to "lookitem" for the usr. Intended for 'examine' text.
-#define FORMAT_TEXT_LOOKITEM(item) "<a HREF=?src=\ref[item];format_lookitem_hook=\ref[item]>[item]</a>"
-/// Takes an atom and formats it with a hyperlink to "lookitem" for the usr. Intended for 'examine' text.
-#define FORMAT_TEXT_LOOKITEM_NAME(item, name) "<a HREF=?src=\ref[item];format_lookitem_hook=\ref[item]>[name]</a>"
+/// Encodes a href to have the user try looking at an entity on clickc.
+#define ENCODE_ATOM_HREFEXAMINE(item) "<a HREF=?src=\ref[item];hrefexamine_hook=1>[item]</a>"
+/// Encodes a href to have the user try looking at an entity on clickc.
+#define ENCODE_ATOM_HREFEXAMINE_NAME(item, name) "<a HREF=?src=\ref[item];hrefexamine_hook=1>[name]</a>"
 
 
 /// File location for arcade names

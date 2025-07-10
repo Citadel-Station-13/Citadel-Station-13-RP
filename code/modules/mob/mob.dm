@@ -327,47 +327,6 @@
 	return
 
 /**
- * Examine a mob
- *
- * mob verbs are faster than object verbs. See
- * [this byond forum post](https://secure.byond.com/forum/?post=1326139&page=2#comment8198716)
- * for why this isn't atom/verb/examine()
- */
-/mob/verb/examinate(atom/A as mob|obj|turf in view()) //It used to be oview(12), but I can't really say why
-	set name = "Examine"
-	set category = VERB_CATEGORY_IC
-
-	if(isturf(A) && !(sight & SEE_TURFS) && !(A in view(client ? client.view : world.view, src)))
-		// shift-click catcher may issue examinate() calls for out-of-sight turfs
-		return
-
-	if(is_blind()) //blind people see things differently (through touch)
-		to_chat(src, SPAN_WARNING("Something is there but you can't see it!"))
-		return
-
-	face_atom(A)
-	if(!isobserver(src) && !isturf(A) && (get_top_level_atom(A) != src) && get_turf(A))
-		for(var/mob/M in viewers(4, src))
-			if(M == src || M.is_blind())
-				continue
-			// if(M.client && M.client.get_preference_toggle(/datum/client_preference/examine_look))
-			to_chat(M, SPAN_TINYNOTICE("<b>\The [src]</b> looks at \the [A]."))
-
-	do_examinate(A)
-
-/**
- * examines something & sends results
- * no pre-checks for dist/view/whatnot
- */
-/mob/proc/do_examinate(atom/A)
-	var/list/result
-	if(client)
-		result = A.examine(src, game_range_to(src, A)) // if a tree is examined but no client is there to see it, did the tree ever really exist?
-
-	to_chat(src, "<blockquote class='info'>[result.Join("\n")]</blockquote>")
-	SEND_SIGNAL(src, COMSIG_MOB_EXAMINATE, A)
-
-/**
  * Point at an atom
  *
  * mob verbs are faster than object verbs. See
@@ -493,13 +452,6 @@
 		else
 			return "<font color=#4F49AF>[copytext_preserve_html(msg, 1, 37)]... <a href='byond://?src=\ref[src];flavor_more=1'>More...</font></a>"
 
-/*
-/mob/verb/help()
-	set name = "Help"
-	src << browse('html/help.html', "window=help")
-	return
-*/
-
 /mob/proc/set_respawn_timer(var/time)
 	// Try to figure out what time to use
 
@@ -608,30 +560,6 @@
 	var/list/names = list()
 	var/list/namecounts = list()
 	var/list/creatures = list()
-
-	/*for(var/obj/O in world)				//EWWWWWWWWWWWWWWWWWWWWWWWW ~needs to be optimised
-		if(!O.loc)
-			continue
-		if(istype(O, /obj/item/disk/nuclear))
-			var/name = "Nuclear Disk"
-			if (names.Find(name))
-				namecounts[name]++
-				name = "[name] ([namecounts[name]])"
-			else
-				names.Add(name)
-				namecounts[name] = 1
-			creatures[name] = O
-
-		if(istype(O, /obj/singularity))
-			var/name = "Singularity"
-			if (names.Find(name))
-				namecounts[name]++
-				name = "[name] ([namecounts[name]])"
-			else
-				names.Add(name)
-				namecounts[name] = 1
-			creatures[name] = O
-	*/
 
 	for(var/mob/M in sortList(GLOB.mob_list))
 		var/name = M.name
@@ -1243,6 +1171,24 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 		return
 	for(var/obj/item/I as anything in get_equipped_items(TRUE, TRUE))
 		I.clean_radiation(str, mul, cheap)
+
+//* Sight *//
+
+/**
+ * Quickly check if we can probably see someone
+ */
+/mob/proc/can_see_cheap(atom/enemy, use_view)
+	#warn impl
+
+/**
+ * Slowly check if we can probably see someone. More accurate.
+ */
+/mob/proc/can_see_expensive(atom/enemy, use_view)
+	var/their_dist = get_dist(src, enemy)
+
+	var/effective_view = use_view || (client ? client.view : world.view)
+	if(!(enemy in view(use_view , src)))
+	#warn impl
 
 //? Abilities
 
