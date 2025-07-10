@@ -21,7 +21,7 @@
 	icon_override = 'icons/mob/clothing/species/moth/moth_shoes.dmi'
 	icon_state = "leg_wraps"
 	item_state = "leg_wraps_s"
-	
+
 
 /obj/item/clothing/shoes/moth/legwrap/black
 	name = "black cloth legwraps"
