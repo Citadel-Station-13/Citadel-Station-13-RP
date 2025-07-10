@@ -3113,15 +3113,9 @@
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
 "jt" = (
-/obj/machinery/door/airlock/hatch{
-	icon_state = "door_locked";
-	id_tag = "engine_access_hatch";
-	locked = 1;
-	name = "Fusion Core Access";
-	req_one_access = null
-	},
-/turf/simulated/floor/plating,
-/area/strelka/shipbase/deck2/engineering/engine)
+/obj/map_helper/paint_stripe/sun,
+/turf/simulated/wall/r_wall/prepainted,
+/area/strelka/shipbase/deck2/engineering/coms)
 "jv" = (
 /obj/machinery/computer/ship/sensors{
 	dir = 8
@@ -3623,31 +3617,20 @@
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck2/engineering/nacelle2)
 "kR" = (
-/obj/machinery/button/remote/blast_door{
-	desc = "A remote control-switch for the engine core's emergency ejection vent.";
-	dir = 1;
-	id = "EngineVent";
-	name = "First Stage Engine Ejection - Blast Doors";
-	pixel_y = -6
-	},
-/obj/structure/window/basic{
-	dir = 8
-	},
 /obj/structure/window/basic{
 	dir = 4
 	},
-/obj/machinery/button/remote/driver{
-	id = "enginecore";
-	name = "Second Stage Engine Ejection - Core Ejection";
-	pixel_y = 4
-	},
-/obj/structure/table/carbon/reinforced,
+/obj/machinery/lathe/autolathe,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering)
 "kS" = (
 /obj/structure/window/phoronreinforced,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/science/anomaly)
+"kT" = (
+/obj/map_helper/paint_stripe/sun,
+/turf/simulated/wall/r_wall/prepainted,
+/area/strelka/shipbase/deck2/engineering/atmos/storage)
 "kU" = (
 /obj/structure/table/woodentable,
 /obj/item/book/manual/standard_operating_procedure,
@@ -5323,6 +5306,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/map_helper/access_helper/airlock/station/engineering/department,
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/nacelle2)
 "pu" = (
@@ -5987,7 +5971,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 5
 	},
-/turf/simulated/wall/r_wall/prepainted,
+/turf/simulated/wall/r_wall/prepainted/engineering,
 /area/strelka/shipbase/deck2/engineering/engine)
 "rm" = (
 /obj/structure/table/rack/shelf,
@@ -6132,6 +6116,9 @@
 	req_access = list(10);
 	pixel_x = -22
 	},
+/obj/item/paper/strelka_rust_access{
+	pixel_x = -33
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/engine)
 "rG" = (
@@ -6151,6 +6138,7 @@
 	output_tag = "cooling_out";
 	sensors = list("engine_sensor"="Engine Core")
 	},
+/obj/item/paper/strelka_rust_access,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck2/engineering/engine)
 "rL" = (
@@ -9700,7 +9688,7 @@
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/maintenance/sec)
 "Ch" = (
-/turf/simulated/wall/r_wall/prepainted/engineering/atmos,
+/turf/simulated/wall/r_wall/prepainted/science,
 /area/strelka/shipbase/deck2/science/anomaly)
 "Cl" = (
 /obj/structure/lattice,
@@ -12827,6 +12815,7 @@
 /area/strelka/shipbase/deck2/maintenance/eva)
 "Mp" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/map_helper/paint_stripe/sun,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering)
 "Mq" = (
@@ -13068,18 +13057,9 @@
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2)
 "MV" = (
-/obj/machinery/button/remote/airlock{
-	id = "engine_access_hatch";
-	name = "Door Bolt Control";
-	pixel_x = 24;
-	pixel_y = 31;
-	req_access = list(10);
-	specialfunctions = 4
-	},
-/obj/structure/railing/grey{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/map_helper/paint_stripe/sun,
+/turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/engine)
 "MX" = (
 /obj/machinery/holopad/ship,
@@ -15765,7 +15745,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/machinery/lathe/autolathe,
+/obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering)
 "VI" = (
@@ -16979,6 +16959,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/map_helper/access_helper/airlock/station/engineering/department,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck2/engineering/nacelle)
 "YU" = (
@@ -29216,8 +29197,8 @@ Dh
 fD
 kX
 QC
-jt
-MV
+kX
+fD
 Dh
 rE
 XD
@@ -29407,11 +29388,11 @@ OY
 Dh
 Dh
 XP
-vC
-vC
+fa
+fa
 Cb
-vC
-vC
+fa
+fa
 kt
 Dh
 BO
@@ -29796,9 +29777,9 @@ Gj
 Dh
 zF
 kF
-vC
+fa
 dV
-vC
+fa
 tn
 aH
 Dh
@@ -29992,7 +29973,7 @@ Dn
 St
 rk
 ZM
-vC
+fa
 gO
 Cu
 tH
@@ -30577,8 +30558,8 @@ ug
 DQ
 cC
 yB
-vC
-vC
+fa
+fa
 wf
 AN
 uK
@@ -30771,7 +30752,7 @@ Dh
 BS
 wk
 ml
-vC
+fa
 UN
 AF
 BR
@@ -30965,7 +30946,7 @@ jf
 jf
 jf
 Ny
-vC
+fa
 lB
 NE
 uM
@@ -31156,10 +31137,10 @@ VK
 VK
 Db
 fa
-kX
-kX
-kX
-vC
+MV
+MV
+MV
+fa
 FU
 IF
 oK
@@ -31353,7 +31334,7 @@ fa
 ak
 Vw
 ck
-vC
+fa
 TX
 SC
 Fl
@@ -31741,7 +31722,7 @@ fa
 tO
 rJ
 yb
-vC
+fa
 sb
 lK
 wh
@@ -31935,8 +31916,8 @@ fa
 fa
 fa
 VY
-vC
-vC
+fa
+fa
 Go
 vC
 Vf
@@ -31954,13 +31935,13 @@ qM
 pt
 qM
 CD
-CK
-CK
-CK
-CK
-CK
-CK
-CK
+xQ
+xQ
+xQ
+xQ
+xQ
+xQ
+xQ
 CK
 eV
 hO
@@ -32904,14 +32885,14 @@ dX
 OK
 Pm
 jJ
-wE
+jt
 rP
 IC
 Iu
 Fv
 ZD
 Sb
-eb
+kT
 OM
 Zr
 SM
@@ -33098,14 +33079,14 @@ SH
 eo
 CA
 hj
-wE
+jt
 TG
 vK
 vK
 vK
 zz
 Qu
-eb
+kT
 bD
 hz
 ha
@@ -33292,14 +33273,14 @@ gl
 Wa
 Ru
 kN
-wE
+jt
 Pe
 vK
 UQ
 vK
 Oo
 vv
-eb
+kT
 Kp
 Lk
 Uc
@@ -33486,7 +33467,7 @@ cT
 ZJ
 ye
 yQ
-wE
+jt
 ws
 vK
 Mk
@@ -33680,7 +33661,7 @@ sF
 aa
 kh
 xK
-wE
+jt
 FO
 vK
 jL
@@ -33874,7 +33855,7 @@ cT
 mJ
 ye
 dK
-wE
+jt
 bE
 vK
 jg
@@ -34068,7 +34049,7 @@ OO
 VQ
 Ud
 yz
-wE
+jt
 hF
 vK
 mu
@@ -34262,7 +34243,7 @@ cD
 TA
 dp
 jX
-wE
+jt
 HJ
 SL
 ym
@@ -34456,11 +34437,11 @@ PZ
 NP
 sS
 iq
-wE
+jt
 JJ
 Tk
 JJ
-wE
+jt
 ic
 bF
 Si
@@ -34654,7 +34635,7 @@ oh
 vS
 yg
 dM
-wE
+jt
 bk
 zz
 Si
@@ -35042,7 +35023,7 @@ iv
 oF
 xD
 sj
-wE
+jt
 rT
 MH
 Si

@@ -91,3 +91,13 @@
 	<b>DO <i>NOT</i> exceed a field strength of 50!</b><br>
 	Be safe.
 	"}
+
+/obj/item/paper/strelka_rust_access
+	name = "Access instructions for the R-UST"
+	info = {"<h4>How to access the R-UST core</h4>
+	As you will have noticed, there is no direct access to the R-UST core.
+	To access the core you will have to open the vent,
+	and use the public exterior airlock portside from here.
+	This is done to maintain a thermal and atmospheric seal between the Core and the rest of the station.
+	Be safe.
+	"}
