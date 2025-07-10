@@ -8,5 +8,5 @@
 
 /datum/prototype/eldritch_knowledge/patron/cosmic/entrypoint
 	name = "The Starborn Beast"
-	desc = "Go forwards towards the Starborn Beast."
+	desc = "Go forth towards the Starborn Beast."
 	// TODO: lore

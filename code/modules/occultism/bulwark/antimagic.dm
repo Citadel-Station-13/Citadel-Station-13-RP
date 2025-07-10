@@ -1,6 +1,9 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
+/proc/fetch_antimagic_struct(typepath)
+	return new typepath // TODO: caching lol
+
 /**
  * Antimagic struct.
  * * This is a struct datum, like armor and bodytypes. It's not a prototype.

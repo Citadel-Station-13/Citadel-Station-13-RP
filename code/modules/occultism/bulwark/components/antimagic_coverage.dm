@@ -32,11 +32,14 @@
 	remove_source(source)
 	add_source(source)
 
-
-#warn impl all
-
 /**
  * @return modified args; access with ANTIMAGIC_ARG_*
  */
 /datum/component/antimagic_coverage/proc/antimagic_check(magic_potency, magic_type, list/magic_data, target_zone, efficiency)
-
+	for(var/i in 1 to length(antimagic_sources))
+		var/datum/antimagic/antimagic = antimagic_sources[i]
+		var/datum/callback/callback = antimagic_callbacks[antimagic]
+		antimagic.handle_antimagic(args)
+		if(callback)
+			callback.invoke_no_sleep(antimagic, args)
+	return args.Copy()
