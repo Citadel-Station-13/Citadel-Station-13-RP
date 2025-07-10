@@ -4,11 +4,11 @@
 // -Athena/Odysseus :3
 
 
-/obj/item/book/mansus
+/obj/item/book/eldritch
 	name = "lore placeholder"
 	desc = "If you're seeing this, something has gone terribly wrong. Inform the coders please."
 	gender = NEUTER
-	icon = 'code/game/content/factions/mansus/mansus.dmi/objects.dmi'
+	icon = 'code/game/content/factions/eldritch/eldritch.dmi/objects.dmi'
 	icon_state = "book"
 	item_state = "book"
 	throw_force = 0
@@ -23,7 +23,7 @@
 	pickup_sound = 'sound/items/pickup/papercup.ogg'
 
 
-/obj/item/book/mansus/introduction
+/obj/item/book/eldritch/introduction
 	name = "Odd Book"
 	desc = "A enigmatic purple book made up of some sort of odd leather. It appears to be bound in a chain made of metal you've never seen before."
 	dat = {"<!DOCTYPE html>
