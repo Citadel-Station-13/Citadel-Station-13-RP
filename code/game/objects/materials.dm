@@ -8,8 +8,10 @@
 //? 1. You only need one material
 //? - set material_parts to MATERIAL_DEFAULT_NONE or a material typepath / id
 //? - set material_costs to a number to indicate how much cm3 of the material is in there
+//? - for items that can be made of multiple materials (most items), set material_constraints to a set of MATERIAL_CONSTRAINT flags that indicate the required constraint_flags on the material. combined flags are stricter
 //? - on update, update_material_single will be called; hook modifications to this
 //? - on init, the system will call update_material_single for you.
+//
 //?
 //? 2. You need multiple materials, and your item is rare enough there isn't more than a few hundred of it
 //? - set material_parts to a k-v list.
@@ -20,6 +22,10 @@
 //? - set material_costs to an ordered list of costs
 //?
 //?   example: list(2000, 1000) = 1 sheet of steel and 0.5 sheets of wood as per above
+//?
+//? - set material_constraints to an ordered list of constraints corresponding to the parts
+//?
+//?   example: list(MATERIAL_CONSTRAINT_RIGID, MATERIAL_CONSTRAINT_UNCONSTRAINED)
 //?
 //? - update_material_multi will be called with list of keys to instances as values
 //?   so you can implement your behaviors there
@@ -303,6 +309,9 @@
 		old = material_parts[part]
 		material_parts[part] = material
 	else if(part == MATERIAL_PART_DEFAULT)
+		old = material_parts
+		material_parts = material
+	else if(part == material_primary) //if we're not MATERIAL_PART_DEFAULT but our primary isn't MATERIAL_PART_DEFAULT, we need to check for that.
 		old = material_parts
 		material_parts = material
 	if(material != old)

@@ -54,3 +54,11 @@
 #define SHARD_NONE			""
 
 #define SHEET_MATERIAL_AMOUNT 2000
+
+#define MATERIAL_TAG_BASIC_STRUCTURAL "basic structural"
+#define MATERIAL_TAG_BASIC_TRANSPARENT "basic transparent"
+#define MATERIAL_TAG_BASIC_CONDUCTOR "basic conductor"
+
+#define MATERIAL_TAG_ADVANCED_STRUCTURAL "advanced structural"
+#define MATERIAL_TAG_ADVANCED_TRANSPARENT "advanced transparent"
+#define MATERIAL_TAG_ADVANCED_CONDUCTOR "advanced conductor"

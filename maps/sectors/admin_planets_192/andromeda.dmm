@@ -4301,7 +4301,7 @@
 /turf/simulated/floor/reinforced,
 /area/admin_planet/andromeda/northern_lobby)
 "mU" = (
-/obj/machinery/mecha_part_fabricator/pros,
+/obj/machinery/lathe/mecha_part_fabricator/pros,
 /turf/simulated/floor/tiled/dark{
 	color = "#A9A9A9"
 	},
@@ -5341,7 +5341,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/admin_planet/andromeda/rnd_chem_research)
 "qi" = (
-/obj/machinery/r_n_d/circuit_imprinter,
+/obj/machinery/lathe/r_n_d/circuit_imprinter,
 /obj/item/reagent_containers/glass/beaker/sulphuric,
 /turf/simulated/floor/tiled/dark{
 	color = "#A9A9A9"
@@ -6295,7 +6295,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/admin_planet/andromeda/engi_workroom)
 "tg" = (
-/obj/machinery/r_n_d/circuit_imprinter,
+/obj/machinery/lathe/r_n_d/circuit_imprinter,
 /obj/structure/reagent_dispensers/acid{
 	pixel_x = 29
 	},
@@ -7502,7 +7502,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/admin_planet/andromeda/rnd_lab)
 "xn" = (
-/obj/machinery/mecha_part_fabricator,
+/obj/machinery/lathe/mecha_part_fabricator,
 /turf/simulated/floor/tiled/dark{
 	color = "#A9A9A9"
 	},

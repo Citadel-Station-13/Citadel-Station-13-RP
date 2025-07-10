@@ -23,12 +23,13 @@
 	var/sprite_name = "fire_extinguisher"
 
 /obj/item/extinguisher/mini
-	name = "fire extinguisher"
+	name = "compact fire extinguisher"
 	desc = "A light and compact fibreglass-framed model fire extinguisher."
 	icon_state = "miniFE0"
 	item_state = "miniFE"
 	attack_sound = null	//it is much lighter, after all.
 	throw_force = 2
+	materials_base = list(MAT_PLASTIC = 90)
 	w_class = WEIGHT_CLASS_SMALL
 	damage_force = 3.0
 	max_water = 150

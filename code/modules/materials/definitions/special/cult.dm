@@ -9,6 +9,8 @@
 	sheet_singular_name = "brick"
 	sheet_plural_name = "bricks"
 
+	material_constraints = MATERIAL_CONSTRAINT_RIGID
+
 /datum/prototype/material/cult/place_dismantled_girder(var/turf/target)
 	new /obj/structure/girder/cult(target, /datum/prototype/material/cult)
 
