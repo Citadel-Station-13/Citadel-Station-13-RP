@@ -420,19 +420,19 @@
 
 /datum/loadout_entry/uniform/pyjamas_red
 	name = "Pyjamas - Red"
-	path = /obj/item/clothing/under/redpyjamas
+	path = /obj/item/clothing/under/pj/red
 
 /datum/loadout_entry/uniform/pyjamas_blue
 	name = "Pyjamas - Blue"
-	path = /obj/item/clothing/under/bluepyjamas
+	path = /obj/item/clothing/under/pj/blue
 
 /datum/loadout_entry/uniform/pyjamas_red_fem
 	name = "Pyjamas - Red - Female"
-	path = /obj/item/clothing/under/redpyjamas_fem
+	path = /obj/item/clothing/under/pj/red_fem
 
 /datum/loadout_entry/uniform/pyjamas_blue_fem
 	name = "Pyjamas - Blue - Female"
-	path = /obj/item/clothing/under/bluepyjamas_fem
+	path = /obj/item/clothing/under/pj/blue_fem
 
 /datum/loadout_entry/uniform/wrappedcoat
 	name = "Modern Wrapped Coat"

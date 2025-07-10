@@ -67,6 +67,7 @@
 		/mob/living/carbon/human/proc/hide_horns,
 		/mob/living/carbon/human/proc/hide_wings,
 		/mob/living/carbon/human/proc/hide_tail,
+		/mob/living/carbon/human/proc/water_stealth,
 	)
 
 /datum/species/akula/can_breathe_water()
