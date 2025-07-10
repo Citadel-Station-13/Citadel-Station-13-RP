@@ -157,6 +157,7 @@
 
 	to_chat(src, serialized_html)
 
-	return TRUE
+	if(!virtual)
+		update_examine_panel(entity)
 
-#warn impl all
+	return TRUE

@@ -96,13 +96,6 @@
 		if(description_holders["antag"])
 			STATPANEL_DATA_LINE("<font color='#8A0808'><b>[description_holders["antag"]]</b></font>") //Red, malicious antag-related text
 
-//override examinate verb to update description holders when things are examined
-/mob/examinate(atom/A as mob|obj|turf in view())
-	if(..())
-		return 1
-
-	update_examine_panel(A)
-
 /mob/proc/update_examine_panel(var/atom/A)
 	if(client)
 		var/is_antag = ((mind && mind.special_role) || isobserver(src)) //ghosts don't have minds
