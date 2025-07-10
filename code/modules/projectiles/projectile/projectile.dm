@@ -321,6 +321,7 @@
 	 *
 	 * Accepts:
 	 * * Null - auto-detect
+	 * * PROJECTILE_IMPACT_SOUNDS_* - classifiers, will be processed by target
 	 * * List - list of files, or soundbyte path's or id's. It will be selected from at random
 	 * * Anything else - passed into get_sfx().
 	 */
@@ -1186,7 +1187,7 @@
 		if(damage_inflict_agony)
 			target.run_damage_instance(
 				damage_inflict_agony,
-				damage_type,
+				DAMAGE_TYPE_HALLOSS,
 				damage_tier,
 				damage_flag,
 				damage_mode | (DAMAGE_MODE_REQUEST_ARMOR_BLUNTING | DAMAGE_MODE_REQUEST_ARMOR_RANDOMIZATION),
