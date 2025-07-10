@@ -20,11 +20,28 @@
 	damage_tier = 4.5
 	damage_type = DAMAGE_TYPE_BRUTE
 
-#warn impl
+	/// the eldritch holder we spawned from
+	var/datum/eldritch_holder/eldritch
+
+/obj/item/eldritch_blade/Initialize(mapload, datum/eldritch_holder/eldritch)
+	. = ..()
+	if(eldritch)
+		src.eldritch = eldritch
+		RegisterSignal(eldritch, COMSIG_PARENT_QDELETING, PROC_REF(eldritch_del))
+
+/obj/item/eldritch_blade/Destroy()
+	if(eldritch)
+		eldritch = null
+		UnregisterSignal(eldritch, COMSIG_PARENT_QDELETING, PROC_REF(eldritch_del))
+	return ..()
+
+/obj/item/eldritch_blade/proc/eldritch_del(datum/source)
+	qdel(src)
 
 /obj/item/eldritch_blade/melee_impact(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style)
-	. = ..()
-
+	if(eldritch)
+		SEND_SIGNAL(eldritch, COMSIG_ELDRITCH_HOLDER_BLADE_MELEE_IMPACT, args)
+	return ..()
 
 /obj/item/eldritch_blade/ash
 

@@ -15,7 +15,7 @@
 	)
 
 	grant_eldritch_passive_ids = list(
-		/datum/prototype/eldritch_passive/eldritch_awakening_antimagic::id,
+		/datum/prototype/eldritch_passive/eldritch_antimagic/awakening::id,
 	)
 
 	grant_eldritch_recipe_ids = list(

@@ -10,9 +10,9 @@
 	var/list/datum/antimagic/antimagic_sources = list()
 	/**
 	 * antimagic sources, associated to callback, if a special handler is registered
+	 * * callbacks will be executed with (datum/antimagic/source, list/antimagic_args).
 	 */
 	var/list/datum/antimagic/antimagic_callbacks
-
 
 /datum/component/antimagic_coverage/proc/add_source(datum/antimagic/source, datum/callback/on_invoke)
 	ASSERT(!antimagic_sources[source])

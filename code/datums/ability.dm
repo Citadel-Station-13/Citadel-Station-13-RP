@@ -90,15 +90,16 @@
 	/// timerid of cooldown update timer
 	#warn impl
 	var/cooldown_timerid
-	/// for toggled abilities, toggling on will incur the cooldown.
+	/// for toggled abilities, toggling on will check and incur the cooldown.
 	#warn handle
 	var/cooldown_applies_for_activation = TRUE
-	/// for toggled abilities, toggling off will incur the cooldown.
+	/// for toggled abilities, toggling off will check and incur the cooldown.
+	/// * implies [cooldown_applies_on_deactivation]
 	#warn handle
 	var/cooldown_applies_for_deactivation = TRUE
-	/// cooldown applies at start of successful invocation
-	/// * if this is FALSE, cooldown starts after this is disabled,
-	///   or if we sleep as a triggered spell, when the sleeping proc returns.
+	/// Applies cooldown post-invocation, whatever that means.
+	/// * for triggered abilities, apply cooldown after trigger() returns, not on invoke.
+	/// * for toggled abilities, apply the cooldown but not necessarily check for it on deactivation
 	var/cooldown_applies_post_invocation = FALSE
 
 /datum/ability/Destroy()
