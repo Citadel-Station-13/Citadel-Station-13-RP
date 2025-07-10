@@ -387,3 +387,14 @@
 		tcirclets[initial(tcirclet_type.name)] = tcirclet_type
 	tweaks += new/datum/loadout_tweak/path(tim_sort(tcirclets, GLOBAL_PROC_REF(cmp_text_asc)))
 
+/datum/loadout_entry/head/widestraw
+	name = "wide-brimmed straw hat selection"
+	path = /obj/item/clothing/head/widestraw
+
+/datum/loadout_entry/head/widestraw/New()
+	..()
+	var/list/hats = list()
+	for(var/hat in typesof(/obj/item/clothing/head/widestraw))
+		var/obj/item/clothing/head/hat_path = hat
+		hats[initial(hat_path.name)] = hat_path
+	tweaks += new/datum/loadout_tweak/path(tim_sort(hats, GLOBAL_PROC_REF(cmp_text_asc)))

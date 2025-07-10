@@ -329,3 +329,18 @@
 	name = "antediluvian armband"
 	description = "A small, fake blue gem placed neatly into an otherwise cloth armband with thin metal outlines."
 	path = /obj/item/clothing/accessory/ante_armband
+
+/datum/loadout_entry/accessory/beachwear
+	name = "modern draped beachwear selection"
+	path = /obj/item/clothing/accessory/draped_beachwear
+
+/datum/loadout_entry/accessory/beachwear/New()
+	..()
+	var/list/wearables = list()
+	for(var/wear in typesof(/obj/item/clothing/accessory/draped_beachwear))
+		var/obj/item/clothing/accessory/wear_type = wear
+		var/wear_string = (initial(wear_type.name) + "(" + initial(wear_type.icon_state) + ")")
+		wearables[wear_string] = wear_type
+	tweaks += new/datum/loadout_tweak/path(tim_sort(wearables, GLOBAL_PROC_REF(cmp_text_asc)))
+
+
