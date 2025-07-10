@@ -6480,7 +6480,8 @@
 /obj/map_helper/access_helper/airlock/station/service/botany,
 /obj/machinery/door/window{
 	dir = 1;
-	name = "Hydroponics"
+	name = "Hydroponics";
+	req_access = list(35)
 	},
 /obj/structure/flora/ausbushes/fullgrass{
 	pixel_x = -8
@@ -7350,7 +7351,8 @@
 "Hu" = (
 /obj/map_helper/access_helper/airlock/station/service/botany,
 /obj/machinery/door/window{
-	name = "Hydroponics"
+	name = "Hydroponics";
+	req_access = list(35)
 	},
 /obj/structure/flora/grass/event/full_grass3,
 /obj/machinery/door/firedoor/glass,
@@ -8177,7 +8179,8 @@
 "KL" = (
 /obj/map_helper/access_helper/airlock/station/service/botany,
 /obj/machinery/door/window{
-	name = "Hydroponics"
+	name = "Hydroponics";
+	req_access = list(35)
 	},
 /obj/structure/flora/grass/event/full_grass1,
 /obj/structure/cable/orange{
@@ -10884,7 +10887,8 @@
 /obj/map_helper/access_helper/airlock/station/service/botany,
 /obj/machinery/door/window{
 	dir = 1;
-	name = "Hydroponics"
+	name = "Hydroponics";
+	req_access = list(35)
 	},
 /obj/structure/cable/orange{
 	icon_state = "1-2"
