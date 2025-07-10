@@ -41,8 +41,8 @@
 	worn_y_dimension = 64
 	w_class = WEIGHT_CLASS_SMALL
 	passive_parry = /datum/passive_parry/melee{
-		parry_chance_default = 50;
-		parry_chance_projectile = 50;
+		parry_chance_default = 40;
+		parry_chance_projectile = 30;
 	}
 	item_icons = list(
 		SLOT_ID_LEFT_HAND = 'icons/antagonists/heretic/on_mob/left_hand_64.dmi',
@@ -68,8 +68,8 @@
 	worn_y_dimension = 64
 	w_class = WEIGHT_CLASS_SMALL
 	passive_parry = /datum/passive_parry/melee{
-		parry_chance_default = 50;
-		parry_chance_projectile = 50;
+		parry_chance_default = 60;
+		parry_chance_projectile = 30;
 	}
 	item_icons = list(
 		SLOT_ID_LEFT_HAND = 'icons/antagonists/heretic/on_mob/left_hand_64.dmi',
@@ -95,8 +95,8 @@
 	worn_y_dimension = 64
 	w_class = WEIGHT_CLASS_SMALL
 	passive_parry = /datum/passive_parry/melee{
-		parry_chance_default = 50;
-		parry_chance_projectile = 50;
+		parry_chance_default = 30;
+		parry_chance_projectile = 40;
 	}
 	item_icons = list(
 		SLOT_ID_LEFT_HAND = 'icons/antagonists/heretic/on_mob/left_hand_64.dmi',
@@ -122,8 +122,8 @@
 	worn_y_dimension = 64
 	w_class = WEIGHT_CLASS_SMALL
 	passive_parry = /datum/passive_parry/melee{
-		parry_chance_default = 50;
-		parry_chance_projectile = 50;
+		parry_chance_default = 60;
+		parry_chance_projectile = 30;
 	}
 	item_icons = list(
 		SLOT_ID_LEFT_HAND = 'icons/antagonists/heretic/on_mob/left_hand_64.dmi',
@@ -149,8 +149,8 @@
 	worn_y_dimension = 64
 	w_class = WEIGHT_CLASS_SMALL
 	passive_parry = /datum/passive_parry/melee{
-		parry_chance_default = 50;
-		parry_chance_projectile = 50;
+		parry_chance_default = 60;
+		parry_chance_projectile = 30;
 	}
 	item_icons = list(
 		SLOT_ID_LEFT_HAND = 'icons/antagonists/heretic/on_mob/left_hand_64.dmi',
@@ -176,8 +176,8 @@
 	worn_y_dimension = 64
 	w_class = WEIGHT_CLASS_SMALL
 	passive_parry = /datum/passive_parry/melee{
-		parry_chance_default = 50;
-		parry_chance_projectile = 50;
+		parry_chance_default = 30;
+		parry_chance_projectile = 40;
 	}
 	item_icons = list(
 		SLOT_ID_LEFT_HAND = 'icons/antagonists/heretic/on_mob/left_hand_64.dmi',
@@ -203,8 +203,8 @@
 	worn_y_dimension = 64
 	w_class = WEIGHT_CLASS_SMALL
 	passive_parry = /datum/passive_parry/melee{
-		parry_chance_default = 50;
-		parry_chance_projectile = 50;
+		parry_chance_default = 40;
+		parry_chance_projectile = 60;
 	}
 	item_icons = list(
 		SLOT_ID_LEFT_HAND = 'icons/antagonists/heretic/on_mob/left_hand_64.dmi',
@@ -230,8 +230,8 @@
 	worn_y_dimension = 64
 	w_class = WEIGHT_CLASS_SMALL
 	passive_parry = /datum/passive_parry/melee{
-		parry_chance_default = 50;
-		parry_chance_projectile = 50;
+		parry_chance_default = 40;
+		parry_chance_projectile = 60;
 	}
 	item_icons = list(
 		SLOT_ID_LEFT_HAND = 'icons/antagonists/heretic/on_mob/left_hand_64.dmi',
