@@ -2040,6 +2040,15 @@
 /obj/item/tank/jetpack/oxygen,
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/shipbase/deck1/fighterbay)
+"kJ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/machinery/light/small/old{
+	dir = 4
+	},
+/turf/simulated/floor,
+/area/shuttle/civvie/strelka)
 "kM" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 1
@@ -7769,9 +7778,11 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8
 	},
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	pixel_x = -23;
-	id_tag = "civvie_dock"
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	id_tag = "civvie_dock";
+	pixel_y = -4;
+	dir = 4;
+	pixel_x = -23
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1)
@@ -27489,7 +27500,7 @@ sk
 rL
 FK
 wG
-RD
+kJ
 Bf
 dk
 ad
