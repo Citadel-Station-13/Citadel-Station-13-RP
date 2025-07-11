@@ -1150,6 +1150,7 @@
 /obj/structure/closet/crate/medical/blood,
 /obj/item/storage/firstaid/regular,
 /obj/item/storage/firstaid/regular,
+/obj/item/storage/firstaid/combat,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/sdf)
 "ft" = (
