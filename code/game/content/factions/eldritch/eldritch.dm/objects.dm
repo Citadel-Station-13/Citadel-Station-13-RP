@@ -1,24 +1,24 @@
 /obj/item/eldritch/prop/codex
 	icon = 'code/game/content/factions/eldritch/eldritch.dmi/objects.dmi'
 	icon_state = "book"
-	name = "Bound Book"
-	desc = "A book decorated in purple leather and a series of odd runes. It appears to be bound by a chain made of some type of metal."
+	name = "bound book"
+	desc = "A heavy book that has been crafted out of purple leather and bound with a chain made of metal you don't recognize. A variety of runes have been etched into the cover."
 	anchored = 0
 	density = 0
 
 /obj/item/eldritch/prop/medallion
 	icon = 'code/game/content/factions/eldritch/eldritch.dmi/objects.dmi'
 	icon_state = "eye_medalion"
-	name = "Odd Medallion"
-	desc = "A strange medallion, looks like some sort of eye."
+	name = "medallion"
+	desc = "A medallion that appears to resemble an eye."
 	anchored = 0
 	density = 0
 
 /obj/item/eldritch/prop/flask
 	icon = 'code/game/content/factions/eldritch/eldritch.dmi/objects.dmi'
 	icon_state = "eldritch_flask"
-	name = "Strange Flask"
-	desc = "A strange flask. You can't seem to open it, but you don't recognize the material its made of. Or those runes..."
+	name = "strange flask"
+	desc = "A flask made of some type of green glass. A variety of runes have been etched into the material, but it seems empty."
 
 
 //Blades
