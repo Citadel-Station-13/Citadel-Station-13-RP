@@ -571,23 +571,12 @@
 			if(!read)
 				to_chat(usr, "<font color='red'>Unable to locate a data core entry for this person.</font>")
 
-	if (href_list["lookitem"])
-		var/obj/item/I = locate(href_list["lookitem"])
-		if(get_dist(src, get_turf(I)) > 7)
-			return
-		src.examinate(I)
-
-	if (href_list["lookmob"])
-		var/mob/M = locate(href_list["lookmob"])
-		if(get_dist(src, get_turf(M)) > 7)
-			return
-		src.examinate(M)
-
+	// TODO: kill this lmao this is lazy shitcode from economy
 	if (href_list["clickitem"])
 		var/obj/item/I = locate(href_list["clickitem"])
 		if(get_dist(src, get_turf(I)) > 7)
 			return
-		if(src.client)
+		if(src.client && isitem(I))
 			src.ClickOn(I)
 
 	if (href_list["flavor_change"])

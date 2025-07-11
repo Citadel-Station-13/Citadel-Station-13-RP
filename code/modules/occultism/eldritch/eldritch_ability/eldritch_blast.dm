@@ -100,7 +100,7 @@
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	#warn vfx
-	perform_splash_damage(target, hit_zone, damage_force)
+	perform_splash_damage(target, def_zone, damage_force)
 	#warn impl
 
 /obj/projectile/eldritch_blast/proc/perform_splash_damage(atom/target, hit_zone, amount)
