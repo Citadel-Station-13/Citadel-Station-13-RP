@@ -179,7 +179,7 @@
 	if(resolved_impact_sound)
 		playsound(src, resolved_impact_sound, 75, TRUE)
 	if(!(impact_flags & (PROJECTILE_IMPACT_BLOCKED | PROJECTILE_IMPACT_SKIP_STANDARD_DAMAGE)))
-		impact_flags |= proj.inflict_impact_damage(src, bullet_act_args[BULLET_ACT_ARG_EFFICIENCY], impact_flags, bullet_act_args[BULLET_ACT_ARG_ZONE])
+		impact_flags = proj.inflict_impact_damage(src, bullet_act_args[BULLET_ACT_ARG_EFFICIENCY], impact_flags, bullet_act_args[BULLET_ACT_ARG_ZONE])
 	return impact_flags
 
 //* External API / Damage Receiving - Electric *//
@@ -248,6 +248,7 @@
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 	PROTECTED_PROC(TRUE)
+	atom_shieldcall_handle_electrocute(args)
 	out_energy_consumed = on_electrocute_act(efficiency, energy, damage, stun_power, flags, hit_zone, source, shared_blackboard, out_energy_consumed)
 	return args.Copy()
 
@@ -600,6 +601,8 @@
 	. = shieldcall_flags
 	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
 		. |= shieldcall.handle_touch(src, ., fake_attack, clickchain, clickchain_flags, contact_flags, contact_specific)
+		if(. & SHIELDCALL_FLAG_TERMINATE)
+			break
 
 /**
  * Runs shieldcalls for handle_melee
@@ -671,3 +674,25 @@
 	. = shieldcall_flags
 	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
 		. |= shieldcall.handle_throw_impact(src, ., fake_attack, thrown)
+		if(. & SHIELDCALL_FLAG_TERMINATE)
+			break
+
+/**
+ * Runs shieldcalls for elecrocute_act
+ *
+ * @params
+ * * electrocute_act_args - indexed list of electrocute_act args
+ * * fake_attack - just checking!
+ * * shieldcall_flags - shieldcall flags. [code/__DEFINES/combat/shieldcall.dm]
+ *
+ * @return SHIELDCALL_FLAG_* flags
+ */
+/atom/proc/atom_shieldcall_handle_electrocute(list/electrocute_act_args, fake_attack, shieldcall_flags)
+	SHOULD_NOT_SLEEP(TRUE)
+	// send query signal
+	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCALL_ITERATION, ATOM_SHIELDCALL_ITERATING_ELECTROCUTE)
+	. = shieldcall_flags
+	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
+		. |= shieldcall.handle_electrocute(src, ., fake_attack, electrocute_act_args)
+		if(. & SHIELDCALL_FLAG_TERMINATE)
+			break

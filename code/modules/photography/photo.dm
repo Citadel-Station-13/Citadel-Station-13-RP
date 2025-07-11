@@ -85,9 +85,9 @@
 	scribble_spans = data["spans"]
 	photograph_id = data["photo"]
 
-/obj/item/photo/attack_self(mob/user, datum/event_args/actor/actor)
-	user.examinate(src)
-	return ..()
+/obj/item/photo/on_attack_self(datum/event_args/actor/e_args)
+	. = ..()
+	show(e_args.initiator)
 
 /obj/item/photo/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	// todo: pen_act?

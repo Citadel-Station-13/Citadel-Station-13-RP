@@ -245,6 +245,7 @@
 	mob_swap_flags = ~HEAVY
 
 	/// In case someone identifies as another gender than it's biological one
+	//  todo: legacy, audit calls & remove.
 	var/identifying_gender
 
 	/// For comparative examine code

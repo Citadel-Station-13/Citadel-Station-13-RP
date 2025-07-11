@@ -7,17 +7,16 @@
 	action_state = "shield"
 	cooldown = 2 SECONDS
 	always_bind = TRUE
+	mobility_check_flags = MOBILITY_IS_CONSCIOUS
 
-/datum/ability/species/sonar/unavailable_reason()
-	if(owner?.incapacitated())
-		return "You need to recover before you can use this ability."
+/datum/ability/species/sonar/check_availability(datum/event_args/actor/actor, silent)
 	if(owner?.is_deaf())
-		return "You are for all intents and purposes currently deaf!"
-	if(!get_turf(owner))
-		return "Not from here you can't."
-	. = ..()
+		if(!silent)
+			actor?.chat_feedback(SPAN_WARNING("You are for all intents and purposes currently deaf!"))
+		return FALSE
+	return ..()
 
-/datum/ability/species/sonar/on_trigger(mob/user, toggling)
+/datum/ability/species/sonar/on_trigger_old(mob/user, toggling)
 	. = ..()
 
 	if(SSmapping.level_trait(get_z(owner), ZTRAIT_BLOCK_LEGACY_WALLHACKS))
@@ -47,15 +46,14 @@
 	action_state = "flight"
 	always_bind = TRUE
 
-/datum/ability/species/toggle_flight/available_check()
-	if(owner.nutrition < 25 && !owner.flying)	//too hungry
+/datum/ability/species/toggle_flight/check_availability(datum/event_args/actor/actor, silent)
+	if(owner.nutrition < 25 && !owner.flying)
+		if(!silent)
+			actor?.chat_feedback(
+				SPAN_WARNING("You're too hungry to fly."),
+			)
 		return FALSE
-	. = ..()
-
-/datum/ability/species/toggle_flight/unavailable_reason()
-	if(owner.nutrition < 25 && !owner.flying)	//too hungry
-		return "You're too hungry to fly."
-	. = ..()
+	return ..()
 
 /datum/ability/species/toggle_flight/on_enable()
 	. = ..()

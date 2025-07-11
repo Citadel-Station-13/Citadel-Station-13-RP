@@ -11,5 +11,5 @@
 
 GLOBAL_DATUM_INIT(always_state, /datum/ui_state/always_state, new)
 
-/datum/ui_state/always_state/can_use_topic(src_object, mob/user)
+/datum/ui_state/always_state/can_use_topic(datum/src_object, mob/user, datum/tgui/ui)
 	return UI_INTERACTIVE

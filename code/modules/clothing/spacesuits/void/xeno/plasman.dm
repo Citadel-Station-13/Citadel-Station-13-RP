@@ -57,21 +57,19 @@
 
 
 /obj/item/clothing/head/helmet/space/void/plasman/equipped(mob/user, slot, flags)
-	..()
-	if((slot == SLOT_ID_HEAD) && (user._item_by_slot(SLOT_ID_HEAD) == src))
-		RegisterSignal(user, COMSIG_MOB_EXAMINATE, PROC_REF(doGasAnalysis))
+	. = ..()
+	if(slot == SLOT_ID_HEAD)
+		RegisterSignal(user, COMSIG_MOB_EXAMINE_ENTITY, PROC_REF(doGasAnalysis))
 
 
 /obj/item/clothing/head/helmet/space/void/plasman/unequipped(mob/user, slot, flags)
-	..()
-	UnregisterSignal(user, COMSIG_MOB_EXAMINATE)
+	. = ..()
+	UnregisterSignal(user, COMSIG_MOB_EXAMINE_ENTITY)
 
+/obj/item/clothing/head/helmet/space/void/plasman/proc/doGasAnalysis(mob/source, atom/entity)
+	if(analyzing)
+	analyze_gases(entity, source, TRUE, TRUE)
 
-/obj/item/clothing/head/helmet/space/void/plasman/proc/doGasAnalysis(mob/examiner, atom/target)
-	if(istype(examiner, /mob/living/carbon/human) && analyzing)
-		var/mob/living/carbon/human/H = examiner
-		if((H._item_by_slot(SLOT_ID_HEAD) == src))
-			analyze_gases(target, H, TRUE, TRUE)
 //
 // SEC
 //

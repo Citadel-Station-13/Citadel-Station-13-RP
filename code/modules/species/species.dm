@@ -596,7 +596,7 @@
 		H.holder_type = holder_type
 
 	if(!(H.gender in genders))
-		H.gender = genders[1]
+		H.set_gender(genders[1])
 
 	H.maxHealth = total_health
 	H.minHealth = death_health

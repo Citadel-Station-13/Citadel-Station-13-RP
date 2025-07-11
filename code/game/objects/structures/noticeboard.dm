@@ -92,7 +92,7 @@
 			// if(istype(item, /obj/item/paper))
 			// 	item.ui_interact(user) // not using tguipaper
 			// else
-			user.examinate(item)
+			user.examine_entity(src)
 			return TRUE
 		if("remove")
 			if(!allowed(user))

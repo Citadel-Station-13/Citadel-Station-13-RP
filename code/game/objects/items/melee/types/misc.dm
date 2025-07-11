@@ -213,6 +213,7 @@
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut", "chopped")
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 
+// TODO: readd antimagic
 /obj/item/melee/ashlander/elder
 	name = "elder bone sword"
 	desc = "These swords are crafted from one solid piece of a gigantic bone. Carried by the Ashlander priesthood, these weapons are considered holy relics and are often preserved over the lives of their wielders."
@@ -223,15 +224,13 @@
 	var/SA_bonus_damage = 25 // 50 total against demons and aberrations.
 	var/SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
 
-/obj/item/melee/ashlander/elder/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/anti_magic, TRUE, TRUE, FALSE, null, null, FALSE)
-
 /obj/item/melee/ashlander/elder/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(isliving(target))
-		var/mob/living/tm = target // targeted mob
-		if(SA_vulnerability & tm.mob_class)
-			tm.apply_damage(SA_bonus_damage) // fuck em
+	if(active)
+		if(isliving(target))
+			var/mob/living/tm = target // targeted mob
+			if(SA_vulnerability & tm.mob_class)
+				tm.apply_damage(SA_bonus_damage) // fuck em
+	..()
 
 /obj/item/melee/ashlander/elder/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()

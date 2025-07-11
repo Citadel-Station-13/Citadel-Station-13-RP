@@ -57,14 +57,6 @@
 #define ARMOR_ACID "acid"
 
 /**
- * Global randomization ratio for all armor checks.
- * * 0.25 will make all armor randomly
- *
- * TODO: impl
- */
-// #define ARMOR_CONF_RAND "conf-rand"
-
-/**
  * All armor enums that can be stored in an armor datum
  */
 GLOBAL_REAL_LIST(armor_enums) = list(

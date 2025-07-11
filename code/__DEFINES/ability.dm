@@ -1,4 +1,5 @@
-//? interact_type; used on tgui side - update that if you change these.
+//*                   interact_type                      *//
+//* used on tgui side - update that if you change these. *//
 
 /// no default interact, no hotbinding
 #define ABILITY_INTERACT_NONE "none"
@@ -13,10 +14,9 @@
 #define ABILITY_TARGET_MOB "mob"
 #define ABILITY_TARGET_TURF "turf"
 
-//? ability_check_flags - if you add new ones, make sure to modify available_check() and unavailable_reason().
+//* ability_check_flags - If you add these, make sure to modify /datum/ability/proc/run_ability_check_flags() *//
 
-#define ABILITY_CHECK_CONSCIOUS (1<<0)
-#define ABILITY_CHECK_STANDING (1<<1)
-#define ABILITY_CHECK_FREE_HAND (1<<2)
-#define ABILITY_CHECK_STUNNED (1<<3)
-#define ABILITY_CHECK_RESTING (1<<4)
+/// Requires a free hand.
+#define ABILITY_CHECK_HAS_FREE_HAND (1<<0)
+/// Requires you to be resting.
+#define ABILITY_CHECK_IS_RESTING (1<<1)

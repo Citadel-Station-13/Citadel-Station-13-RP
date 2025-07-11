@@ -143,14 +143,13 @@
 		user.visible_message("\The [user] crumples \the [src] into a ball!")
 		icon_state = "scrap"
 		return
-	user.examinate(src)
+	user.examine_entity(src)
 	if(rigged && (Holiday == "April Fool's Day"))
 		if(spam_flag == 0)
 			spam_flag = 1
 			playsound(loc, 'sound/items/bikehorn.ogg', 50, 1)
 			spawn(20)
 				spam_flag = 0
-	return
 
 /obj/item/paper/attack_ai(var/mob/living/silicon/ai/user as mob)
 	var/dist
@@ -173,7 +172,7 @@
 	if(user.zone_sel.selecting == O_EYES)
 		user.visible_message("<span class='notice'>You show the paper to [target]. </span>", \
 			"<span class='notice'> [user] holds up a paper and shows it to [target]. </span>")
-		target.examinate(src)
+		target.examine_entity(src)
 	else if(user.zone_sel.selecting == O_MOUTH) // lipstick wiping
 		if(ishuman(target))
 			var/mob/living/carbon/human/H = target

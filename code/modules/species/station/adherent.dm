@@ -217,9 +217,9 @@
 		if(2000 to 8000) . =  4
 		else             . =  8
 */
-/datum/species/adherent/get_additional_examine_text(mob/living/carbon/human/H)
-	if(can_overcome_gravity(H))
-		return "They are floating on a cloud of shimmering distortion."
+// /datum/species/adherent/get_additional_examine_text(mob/living/carbon/human/H)
+// 	if(can_overcome_gravity(H))
+// 		return "They are floating on a cloud of shimmering distortion."
 
 /datum/species/adherent/post_organ_rejuvenate(obj/item/organ/org, mob/living/carbon/human/H)
 	org.robotic = ORGAN_CRYSTAL

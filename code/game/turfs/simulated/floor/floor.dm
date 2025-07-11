@@ -88,7 +88,7 @@
 /turf/simulated/floor/is_plating()
 	return !flooring || flooring.is_plating
 
-/turf/simulated/floor/get_examine_desc(mob/user, dist)
+/turf/simulated/floor/get_examine_desc(datum/event_args/examine/examine, examine_for, examine_from)
 	return flooring ? flooring.desc : desc
 
 /turf/simulated/floor/hides_underfloor_objects()

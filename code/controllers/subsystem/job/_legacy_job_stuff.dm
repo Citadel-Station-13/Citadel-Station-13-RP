@@ -310,7 +310,7 @@
 				remembered_info += "<b>Department account pin ([D]):</b> [department_account.remote_access_pin]<br>"
 				remembered_info += "<b>Department account funds ([D]):</b> $[department_account.money]<br>"
 
-		H.mind.store_memory(remembered_info)
+		H.mind.legacy_add_html_memory(remembered_info)
 
 	var/alt_title = null
 	if(H.mind)
@@ -372,13 +372,13 @@
 	// If even fallback login generation failed, just don't give them an email. The chance of this happening is astronomically low.
 	if(ntnet_global.does_email_exist(complete_login))
 		to_chat(H, "You were not assigned an email address.")
-		H.mind.store_memory("You were not assigned an email address.")
+		H.mind.legacy_add_html_memory("You were not assigned an email address.")
 	else
 		var/datum/computer_file/data/email_account/EA = new/datum/computer_file/data/email_account()
 		EA.password = GenerateKey()
 		EA.login = 	complete_login
 		to_chat(H, "Your email account address is <b>[EA.login]</b> and the password is <b>[EA.password]</b>. This information has also been placed into your notes.")
-		H.mind.store_memory("Your email account address is [EA.login] and the password is [EA.password].")
+		H.mind.legacy_add_html_memory("Your email account address is [EA.login] and the password is [EA.password].")
 	// END EMAIL GENERATION
 
 	//Gives glasses to the vision impaired

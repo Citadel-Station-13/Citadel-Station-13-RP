@@ -4,6 +4,7 @@
  */
 
 /mob/living/carbon/human/proc/show_descriptors_to(mob/user)
+	. = list()
 	if(LAZYLEN(descriptors))
 		if(user == src)
 			for(var/entry in descriptors)

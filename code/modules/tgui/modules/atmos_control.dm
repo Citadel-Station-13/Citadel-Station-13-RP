@@ -89,7 +89,7 @@
 	var/datum/tgui_module_old/atmos_control/atmos_control = null
 	var/obj/machinery/air_alarm/air_alarm = null
 
-/datum/ui_state/air_alarm_remote/can_use_topic(src_object, mob/user)
+/datum/ui_state/air_alarm_remote/can_use_topic(datum/src_object, mob/user, datum/tgui/ui)
 	if(!atmos_control.ui_ref)
 		qdel(src)
 		return UI_CLOSE

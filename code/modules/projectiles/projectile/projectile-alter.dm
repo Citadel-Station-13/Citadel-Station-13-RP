@@ -8,15 +8,15 @@
 
 /**
  * Superheats a projectile.
- * 
+ *
  * @return joules - amount consumed. null for rejected.
  */
 /obj/projectile/proc/alter_superheat(joules)
-	return 
+	return
 
 /**
  * Overcharges a projectile.
- * 
+ *
  * @return joules - amount consumed. null for rejected.
  */
 /obj/projectile/proc/alter_overcharge(joules)

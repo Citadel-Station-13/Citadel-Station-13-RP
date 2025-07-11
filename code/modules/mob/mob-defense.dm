@@ -37,6 +37,7 @@
 /mob/proc/check_mob_armor(SHIELDCALL_PROC_HEADER)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	run_armorcalls(args, TRUE, hit_zone) // by default, use atom/var/armor on ourselves
+	return args.Copy()
 
 /**
  * Generic, low-level armor processing for inbound attacks
@@ -49,6 +50,7 @@
 /mob/proc/run_mob_armor(SHIELDCALL_PROC_HEADER)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	run_armorcalls(args, FALSE, hit_zone) // by default, use atom/var/armor on ourselves
+	return args.Copy()
 
 /**
  * Checks the average armor for a full-body attack.
@@ -61,6 +63,7 @@
 /mob/proc/check_mob_overall_armor(SHIELDCALL_PROC_HEADER)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	run_armorcalls(args, TRUE) // by default, use atom/var/armor on ourselves
+	return args.Copy()
 
 /**
  * Checks the average armor for a full-body attack.
@@ -73,6 +76,7 @@
 /mob/proc/run_mob_overall_armor(SHIELDCALL_PROC_HEADER)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	run_armorcalls(args, FALSE) // by default, use atom/var/armor on ourselves
+	return args.Copy()
 
 //* Defense Handling *//
 
@@ -88,6 +92,7 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 	run_armorcalls(args, TRUE, hit_zone) // by default, use atom/var/armor on ourselves
 	run_shieldcalls(args, TRUE)
+	return args.Copy()
 
 /**
  * Generic, low-level defense processing for inbound attacks
@@ -101,6 +106,7 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 	run_armorcalls(args, FALSE, hit_zone) // by default, use atom/var/armor on ourselves
 	run_shieldcalls(args, FALSE)
+	return args.Copy()
 
 /**
  * Checks the average defense for a full-body attack.
@@ -114,6 +120,7 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 	run_armorcalls(args, TRUE) // by default, use atom/var/armor on ourselves
 	run_shieldcalls(args, TRUE)
+	return args.Copy()
 
 /**
  * Checks the average defense for a full-body attack.
@@ -127,3 +134,4 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 	run_armorcalls(args, FALSE) // by default, use atom/var/armor on ourselves
 	run_shieldcalls(args, FALSE)
+	return args.Copy()

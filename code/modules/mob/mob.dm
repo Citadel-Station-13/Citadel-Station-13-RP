@@ -7,6 +7,12 @@
 	/// * Lazy list, see mob_movespeed.dm
 	var/list/actionspeed_modifier_immunities
 
+	//* Gender *//
+	/// Our gender datum
+	var/datum/gender/gender_datum
+	/// Our visible gender
+	var/datum/gender/gender_datum_visible
+
 	//* Impairments *//
 	/// active feign_impairment types
 	/// * lazy list
@@ -69,6 +75,8 @@
 	update_ssd_overlay()
 	// iff factions
 	init_iff()
+	// gender datum
+	update_gender()
 	return ..()
 
 /mob/Destroy()
@@ -319,47 +327,6 @@
 	return
 
 /**
- * Examine a mob
- *
- * mob verbs are faster than object verbs. See
- * [this byond forum post](https://secure.byond.com/forum/?post=1326139&page=2#comment8198716)
- * for why this isn't atom/verb/examine()
- */
-/mob/verb/examinate(atom/A as mob|obj|turf in view()) //It used to be oview(12), but I can't really say why
-	set name = "Examine"
-	set category = VERB_CATEGORY_IC
-
-	if(isturf(A) && !(sight & SEE_TURFS) && !(A in view(client ? client.view : world.view, src)))
-		// shift-click catcher may issue examinate() calls for out-of-sight turfs
-		return
-
-	if(is_blind()) //blind people see things differently (through touch)
-		to_chat(src, SPAN_WARNING("Something is there but you can't see it!"))
-		return
-
-	face_atom(A)
-	if(!isobserver(src) && !isturf(A) && (get_top_level_atom(A) != src) && get_turf(A))
-		for(var/mob/M in viewers(4, src))
-			if(M == src || M.is_blind())
-				continue
-			// if(M.client && M.client.get_preference_toggle(/datum/client_preference/examine_look))
-			to_chat(M, SPAN_TINYNOTICE("<b>\The [src]</b> looks at \the [A]."))
-
-	do_examinate(A)
-
-/**
- * examines something & sends results
- * no pre-checks for dist/view/whatnot
- */
-/mob/proc/do_examinate(atom/A)
-	var/list/result
-	if(client)
-		result = A.examine(src, game_range_to(src, A)) // if a tree is examined but no client is there to see it, did the tree ever really exist?
-
-	to_chat(src, "<blockquote class='info'>[result.Join("\n")]</blockquote>")
-	SEND_SIGNAL(src, COMSIG_MOB_EXAMINATE, A)
-
-/**
  * Point at an atom
  *
  * mob verbs are faster than object verbs. See
@@ -449,34 +416,7 @@
 			. += M
 	. -= src
 
-/**
- * Get the notes of this mob
- *
- * This actually gets the mind datums notes
- */
-/mob/verb/memory()
-	set name = "Notes"
-	set category = VERB_CATEGORY_IC
-	if(mind)
-		mind.show_memory(src)
-	else
-		to_chat(src, "The game appears to have misplaced your mind datum, so we can't show you your notes.")
-
-/**
- * Add a note to the mind datum
- */
-/mob/verb/add_memory(msg as message)
-	set name = "Add Note"
-	set category = VERB_CATEGORY_IC
-
-	msg = sanitize(msg)
-
-	if(mind)
-		mind.store_memory(msg)
-	else
-		to_chat(src, "The game appears to have misplaced your mind datum, so we can't show you your notes.")
-
-/mob/proc/store_memory(msg as message, popup, sane = 1)
+/mob/proc/legacy_add_html_memory(msg as message, popup, sane = 1)
 	msg = copytext(msg, 1, MAX_MESSAGE_LEN)
 
 	if (sane)
@@ -489,9 +429,6 @@
 		memory += msg
 	else
 		memory += "<BR>[msg]"
-
-	if (popup)
-		memory()
 
 /mob/proc/update_flavor_text()
 	set src in usr
@@ -514,13 +451,6 @@
 			return "<font color=#4F49AF>[msg]</font>"
 		else
 			return "<font color=#4F49AF>[copytext_preserve_html(msg, 1, 37)]... <a href='byond://?src=\ref[src];flavor_more=1'>More...</font></a>"
-
-/*
-/mob/verb/help()
-	set name = "Help"
-	src << browse('html/help.html', "window=help")
-	return
-*/
 
 /mob/proc/set_respawn_timer(var/time)
 	// Try to figure out what time to use
@@ -630,30 +560,6 @@
 	var/list/names = list()
 	var/list/namecounts = list()
 	var/list/creatures = list()
-
-	/*for(var/obj/O in world)				//EWWWWWWWWWWWWWWWWWWWWWWWW ~needs to be optimised
-		if(!O.loc)
-			continue
-		if(istype(O, /obj/item/disk/nuclear))
-			var/name = "Nuclear Disk"
-			if (names.Find(name))
-				namecounts[name]++
-				name = "[name] ([namecounts[name]])"
-			else
-				names.Add(name)
-				namecounts[name] = 1
-			creatures[name] = O
-
-		if(istype(O, /obj/singularity))
-			var/name = "Singularity"
-			if (names.Find(name))
-				namecounts[name]++
-				name = "[name] ([namecounts[name]])"
-			else
-				names.Add(name)
-				namecounts[name] = 1
-			creatures[name] = O
-	*/
 
 	for(var/mob/M in sortList(GLOB.mob_list))
 		var/name = M.name
@@ -1097,29 +1003,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 	to_chat(src, "<span class='notice'>Diceroll result: <b>[rand(1, n)]</b></span>")
 
-/**
- * Checks for anti magic sources.
- *
- * @params
- * - magic - wizard-type magic
- * - holy - cult-type magic, stuff chaplains/nullrods/similar should be countering
- * - chargecost - charges to remove from antimagic if applicable/not a permanent source
- * - self - check if the antimagic is ourselves
- *
- * @return The datum source of the antimagic
- */
-/mob/proc/anti_magic_check(magic = TRUE, holy = FALSE, chargecost = 1, self = FALSE)
-	if(!magic && !holy)
-		return
-	var/list/protection_sources = list()
-	if(SEND_SIGNAL(src, COMSIG_MOB_RECEIVE_MAGIC, src, magic, holy, chargecost, self, protection_sources) & COMPONENT_MAGIC_BLOCKED)
-		if(protection_sources.len)
-			return pick(protection_sources)
-		else
-			return src
-	if((magic && HAS_TRAIT(src, TRAIT_ANTIMAGIC)) || (holy && HAS_TRAIT(src, TRAIT_HOLY)))
-		return src
-
 /mob/drop_location()
 	if(temporary_form)
 		return temporary_form.drop_location()
@@ -1140,6 +1023,30 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 /mob/z_pass_out(atom/movable/AM, dir, turf/new_loc)
 	return TRUE
+
+//* Gender *//
+
+/**
+ * Setter for gender.
+ */
+/mob/set_gender(new_gender)
+	. = ..()
+	if(!.)
+		return
+	update_gender()
+
+/**
+ * Update gender.
+ */
+/mob/proc/update_gender()
+	gender_datum = GLOB.gender_datums[gender] || GLOB.gender_datums[/datum/gender/neuter::key]
+
+/**
+ * Update gender.
+ */
+/mob/proc/update_visible_gender()
+	var/visible_gender = get_visible_gender()
+	gender_datum_visible = GLOB.gender_datums[visible_gender] || GLOB.gender_datums[/datum/gender/neuter::key]
 
 //? Pixel Offsets
 
@@ -1265,6 +1172,41 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	for(var/obj/item/I as anything in get_equipped_items(TRUE, TRUE))
 		I.clean_radiation(str, mul, cheap)
 
+//* Sight *//
+
+/**
+ * Quickly check if we can probably see someone
+ */
+/mob/proc/can_see_cheap(atom/enemy, use_view)
+	return can_see_expensive(enemy, use_view) // too lazy to microoptimize for now
+
+/**
+ * Slowly check if we can probably see someone. More accurate.
+ */
+/mob/proc/can_see_expensive(atom/enemy, use_view)
+	var/view_highest_numeric
+	if(isnum(use_view))
+		view_highest_numeric = use_view
+	else
+		var/list/decoded_view = decode_view_size(use_view)
+		view_highest_numeric = max(decoded_view[1], decoded_view[2])
+
+	var/their_dist = get_dist(src, enemy)
+	var/our_sight_flags = sight
+	// check sight flags as needed, with 2 tiles of lag-compensation for it
+	if(their_dist <= view_highest_numeric + 2)
+		if(isturf(enemy) && (our_sight_flags & (SEE_TURFS | SEE_PIXELS)))
+			return TRUE
+		else if(isobj(enemy) && (our_sight_flags & (SEE_OBJS | SEE_PIXELS)))
+			return TRUE
+		else if(ismob(enemy) && (our_sight_flags & (SEE_MOBS | SEE_PIXELS)))
+			return TRUE
+
+	var/effective_view = use_view || (client ? client.view : world.view)
+	if(!(enemy in view(use_view , src)))
+		return FALSE
+	return TRUE
+
 //? Abilities
 
 /mob/proc/init_abilities()
@@ -1316,3 +1258,8 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
  */
 /mob/is_avoiding_ground()
 	return ..() || hovering || flying || (buckled?.buckle_flags & BUCKLING_GROUND_HOIST) || buckled?.is_avoiding_ground()
+
+//* Mob Modals *//
+
+/mob/proc/open_mob_modal(typepath, key, ...)
+	#warn impl

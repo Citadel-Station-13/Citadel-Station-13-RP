@@ -131,7 +131,7 @@
 
 /mob/living/simple_mob/animal/passive/cat/kitten/Initialize(mapload)
 	if(gender == NEUTER)
-		gender = pick(MALE, FEMALE)
+		set_gender(pick(MALE, FEMALE))
 	return ..()
 
 /mob/living/simple_mob/animal/passive/cat/black

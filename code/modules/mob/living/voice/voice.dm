@@ -30,7 +30,7 @@
 			var/datum/preferences/p = speaker.client.prefs
 			name = p.real_name
 			real_name = name
-			gender = p.identifying_gender
+			set_gender(p.identifying_gender)
 			// we don't check if they're above max because fuck you
 			for(var/id in p.all_language_ids())
 				add_language(id)

@@ -16,14 +16,16 @@
  * * inv_op_flags - INV_OP_* bits.
  * * actor - (optional) Actor data of who's putting it on us.
  */
-/obj/item/proc/on_inv_equipped(mob/wearer,datum/inventory/inventory, slot_id_or_index, inv_op_flags, datum/event_args/actor/actor)
+/obj/item/proc/on_inv_equipped(mob/wearer, datum/inventory/inventory, slot_id_or_index, inv_op_flags, datum/event_args/actor/actor)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
+	
+	SEND_SIGNAL(src, COMSIG_ITEM_ON_INV_EQUIP, wearer, inventory, slot_id_or_index, inv_op_flags, actor)
 
 /**
  * Called when we exit an inventory slot, or hand index.
  *
- * * Called after on_inv_unequipped in a swap
+ * * Called before on_inv_equipped in a swap
  * * Called before on_inv_dropped on a drop
  *
  * @params
@@ -33,9 +35,11 @@
  * * inv_op_flags - INV_OP_* bits.
  * * actor - (optional) Actor data of who's putting it on us.
  */
-/obj/item/proc/on_inv_unequipped(mob/wearer,datum/inventory/inventory, slot_id_or_index, inv_op_flags, datum/event_args/actor/actor)
+/obj/item/proc/on_inv_unequipped(mob/wearer, datum/inventory/inventory, slot_id_or_index, inv_op_flags, datum/event_args/actor/actor)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
+
+	SEND_SIGNAL(src, COMSIG_ITEM_ON_INV_UNEQUIP, wearer, inventory, slot_id_or_index, inv_op_flags, actor)
 
 /**
  * Called when we are picked up
@@ -98,7 +102,7 @@
 	var/datum/inventory_slot/slot_meta = resolve_inventory_slot(worn_slot)
 	return slot_meta.inventory_slot_flags & INV_SLOT_CONSIDERED_WORN
 
-//* Shieldcall registration
+//* Shieldcalls *//
 
 /obj/item/register_shieldcall(datum/shieldcall/delegate)
 	. = ..()

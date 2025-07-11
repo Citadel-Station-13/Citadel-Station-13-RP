@@ -1,3 +1,7 @@
+//* Trait Sources *//
+
+#define TRAIT_SOURCE_SRC(KEY) ("src-" + KEY)
+
 //? Generic sources - use extremely sparingly.
 
 /// generic trait source

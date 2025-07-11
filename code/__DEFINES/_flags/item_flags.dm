@@ -7,6 +7,8 @@
 /// cannot be used to do normal melee hits - this INCLUDES user overrides of it!
 #define ITEM_NO_BLUDGEON			(1<<2)
 /// for all things that are technically items but used for various different stuff
+/// * will not show in inventory examine
+/// * will not invoke most inventory procs
 #define ITEM_ABSTRACT			(1<<3)
 /// is this item in a storage datum?
 #define ITEM_IN_STORAGE			(1<<4)
@@ -28,7 +30,9 @@
 #define ITEM_ENCUMBERS_WHILE_HELD (1<<12)
 /// doesn't encumber while not in hand
 #define ITEM_ENCUMBERS_ONLY_HELD (1<<13)
-// todo: ITEM_SLOWS_WHILE_HELD for slowdown
+/// hide from examine while worn
+/// * implied by [ITEM_ABSTRACT]
+#define ITEM_FLAG_HIDE_WORN_EXAMINE (1<<14)
 
 DEFINE_BITFIELD(item_flags, list(
 	BITFIELD(ITEM_IN_INVENTORY),
@@ -45,6 +49,7 @@ DEFINE_BITFIELD(item_flags, list(
 	BITFIELD(ITEM_MASS_INGREDIENT),
 	BITFIELD(ITEM_ENCUMBERS_WHILE_HELD),
 	BITFIELD(ITEM_ENCUMBERS_ONLY_HELD),
+	BITFIELD_NEW("Hide From Worn Examine", ITEM_FLAG_HIDE_WORN_EXAMINE),
 ))
 
 //! Flags for the clothing_flags var on /obj/item

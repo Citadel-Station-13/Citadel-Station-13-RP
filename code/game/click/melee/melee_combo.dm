@@ -110,6 +110,7 @@
 	PROTECTED_PROC(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 
+	// TODO: this doesn't invoke shieldcall melee earlier, I think. It should.
 	if(damage_force)
 		clickchain?.data[ACTOR_DATA_COMBO_DAMAGE_LOG] = target.run_damage_instance(
 			damage_force,

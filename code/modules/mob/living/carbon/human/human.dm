@@ -1,3 +1,9 @@
+/mob/living/carbon/human
+	/// Our gender identity
+	var/gender_identifying
+	/// Our identifying gender
+	var/datum/gender/gender_datum_identifying
+
 /**
  * constructor; pass in a specieslike resolver as second argument to set
  *
@@ -7,6 +13,7 @@
 	// todo: rework this entire init sequence, dna/species shouldn't be entirely in conjunction and it's probably dumb to set dna then species
 	// todo: init_dna?? reset_dna??
 	. = ..()
+	update_identifying_gender()
 
 	if(!dna)
 		dna = new /datum/dna(null)
@@ -564,23 +571,12 @@
 			if(!read)
 				to_chat(usr, "<font color='red'>Unable to locate a data core entry for this person.</font>")
 
-	if (href_list["lookitem"])
-		var/obj/item/I = locate(href_list["lookitem"])
-		if(get_dist(src, get_turf(I)) > 7)
-			return
-		src.examinate(I)
-
-	if (href_list["lookmob"])
-		var/mob/M = locate(href_list["lookmob"])
-		if(get_dist(src, get_turf(M)) > 7)
-			return
-		src.examinate(M)
-
+	// TODO: kill this lmao this is lazy shitcode from economy
 	if (href_list["clickitem"])
 		var/obj/item/I = locate(href_list["clickitem"])
 		if(get_dist(src, get_turf(I)) > 7)
 			return
-		if(src.client)
+		if(src.client && isitem(I))
 			src.ClickOn(I)
 
 	if (href_list["flavor_change"])
@@ -791,11 +787,11 @@
 	var/new_gender = alert(usr, "Please select gender.", "Character Generation", "Male", "Female", "Neutral")
 	if (new_gender)
 		if(new_gender == "Male")
-			gender = MALE
+			set_gender(MALE)
 		else if(new_gender == "Female")
-			gender = FEMALE
+			set_gender(FEMALE)
 		else
-			gender = NEUTER
+			set_gender(NEUTER)
 	regenerate_icons()
 	check_dna()
 	var/datum/gender/T = GLOB.gender_datums[get_visible_gender()]
@@ -1633,3 +1629,18 @@
 	if(ab_handler?.process_click(src, A))
 		return
 	..()
+
+//* Gender *//
+
+/**
+ * Setter for identifying gender.
+ */
+/mob/living/carbon/human/proc/set_identifying_gender(new_gender)
+	src.gender_identifying = new_gender
+	src.identifying_gender = new_gender
+	update_identifying_gender()
+	return TRUE
+
+/mob/living/carbon/human/proc/update_identifying_gender()
+	gender_datum_identifying = GLOB.gender_datums[gender_identifying] || GLOB.gender_datums[/datum/gender/neuter::key]
+	return TRUE

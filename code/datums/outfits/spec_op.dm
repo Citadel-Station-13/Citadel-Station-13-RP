@@ -75,7 +75,7 @@
 	shoes = /obj/item/clothing/shoes/boots/swat/para
 	gloves = /obj/item/clothing/gloves/swat/para
 	l_ear = /obj/item/radio/headset/ert
-	belt = /obj/item/nullrod
+	belt = /obj/item/nullrod_legacy
 	head = /obj/item/clothing/head/helmet/para
 	back = /obj/item/storage/backpack/ert/para
 	l_pocket = /obj/item/grenade/simple/chemical/premade/holy

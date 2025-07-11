@@ -26,10 +26,12 @@
 /// * this is not used for base of /atom_shieldcall(), as it already has a signal!
 #define COMSIG_ATOM_SHIELDCALL_ITERATION "atom-shieldcall-iteration"
 	/// atom_shieldcall_handle_melee()
-	#define ATOM_SHIELDCALL_ITERATING_MELEE (1<<2)
+	#define ATOM_SHIELDCALL_ITERATING_MELEE (1<<0)
 	/// atom_shieldcall_handle_bullet_act()
-	#define ATOM_SHIELDCALL_ITERATING_BULLET_ACT (1<<3)
+	#define ATOM_SHIELDCALL_ITERATING_BULLET_ACT (1<<1)
 	/// atom_shieldcall_handle_touch()
-	#define ATOM_SHIELDCALL_ITERATING_TOUCH (1<<4)
+	#define ATOM_SHIELDCALL_ITERATING_TOUCH (1<<2)
 	/// atom_shieldcall_handle_throw_impact()
-	#define ATOM_SHIELDCALL_ITERATING_THROW_IMPACT (1<<5)
+	#define ATOM_SHIELDCALL_ITERATING_THROW_IMPACT (1<<3)
+	/// atom_shieldcall_handle_electrocute()
+	#define ATOM_SHIELDCALL_ITERATING_ELECTROCUTE (1<<4)

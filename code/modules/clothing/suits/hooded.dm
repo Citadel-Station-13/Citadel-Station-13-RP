@@ -1,15 +1,20 @@
 // Hooded suits
 
-//Hoods for winter coats and chaplain hoodie etc
+//Hoods for winter coats and chaplain hoodie
 
 /obj/item/clothing/suit/storage/hooded
 	var/obj/item/clothing/head/hood
 	var/hoodtype = null //so the chaplain hoodie or other hoodies can override this
 	var/hood_up = FALSE
 	var/toggleicon
-	item_action_name = "Toggle Hood"
-	allowed =  list (/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches,
-	/obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit)
+	item_actions = /datum/action/item_action/toggle_hood
+	allowed =  list(
+		/obj/item/tank/emergency/oxygen,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/storage/box/matches,
+		/obj/item/reagent_containers/food/drinks/flask,
+		/obj/item/suit_cooling_unit,
+	)
 
 /obj/item/clothing/suit/storage/hooded/Initialize(mapload)
 	. = ..()
@@ -29,7 +34,10 @@
 	ToggleHood()
 
 /obj/item/clothing/suit/storage/hooded/ui_action_click(datum/action/action, datum/event_args/actor/actor)
-	ToggleHood()
+	if(istype(action, /datum/action/item_action/toggle_hood))
+		ToggleHood()
+		return TRUE
+	return ..()
 
 /obj/item/clothing/suit/storage/hooded/equipped(mob/user, slot, flags)
 	if(slot != SLOT_ID_SUIT)

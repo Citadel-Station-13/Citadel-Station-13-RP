@@ -13,8 +13,8 @@
 /area/submap/debrisfiled_vr/clownshuttle)
 "am" = (
 /obj/structure/table/rack/steel,
-/obj/item/nullrod/clown,
-/obj/item/nullrod/clown,
+/obj/item/nullrod_legacy/clown,
+/obj/item/nullrod_legacy/clown,
 /turf/simulated/shuttle/floor/yellow/airless,
 /area/submap/debrisfiled_vr/clownshuttle)
 "an" = (

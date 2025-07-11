@@ -59,53 +59,18 @@
 /// We just use this macro to ensure that we will only pass strings to this BYOND-level function without developers needing to really worry about it.
 #define LOWER_TEXT(thing) lowertext(UNLINT("[thing]"))
 
-/*
-///Index access defines for paper/var/add_info_style
-#define ADD_INFO_COLOR 1
-#define ADD_INFO_FONT 2
-#define ADD_INFO_SIGN 3
-
-///Adds a html style to a text string. Hacky, but that's how inputted text appear on paper sheets after going through the UI.
-#define PAPER_MARK_TEXT(text, color, font) "<span style=\"color:[color];font-family:'[font]';\">[text]</span>\n \n"
-*/
 /// Folder directory for strings
 #define STRING_DIRECTORY "strings"
-/// Takes an atom and formats it with a hyperlink to "lookitem" for the usr. Intended for 'examine' text.
-#define FORMAT_TEXT_LOOKITEM(item) "<a HREF=?src=\ref[usr];lookitem=\ref[item]>[item]</a>"
-/*
-// JSON text files found in the tgstation/strings folder
-/// File location for brain damage traumas
-#define BRAIN_DAMAGE_FILE "pick/traumas.json"
-/// File location for AI ion laws
-#define ION_FILE "ion_laws.json"
-/// File location for pirate names
-#define PIRATE_NAMES_FILE "pirates.json"
-/// File location for redpill questions
-#define REDPILL_FILE "redpill.json"
-*/
+
+#warn impl on topic, remove 'lookitem' from mob
+/// Encodes a href to have the user try looking at an entity on clickc.
+#define ENCODE_ATOM_HREFEXAMINE(item) "<a HREF=?src=\ref[item];hrefexamine_hook=1>[item]</a>"
+/// Encodes a href to have the user try looking at an entity on clickc.
+#define ENCODE_ATOM_HREFEXAMINE_NAME(item, name) "<a HREF=?src=\ref[item];hrefexamine_hook=1>[name]</a>"
+
+
 /// File location for arcade names
 #define ARCADE_FILE "arcade.json"
-/*
-/// File location for boomer meme catchphrases
-#define BOOMER_FILE "pick/boomer.json"
-/// File location for locations on the station
-#define LOCATIONS_FILE "locations.json"
-/// File location for wanted posters messages
-#define WANTED_FILE "wanted_message.json"
-/// File location for really dumb suggestions memes
-#define VISTA_FILE "steve.json"
-/// File location for flesh wound descriptions
-#define FLESH_SCAR_FILE "wounds/flesh_scar_desc.json"
-/// File location for bone wound descriptions
-#define BONE_SCAR_FILE "wounds/bone_scar_desc.json"
-/// File location for scar wound descriptions
-#define SCAR_LOC_FILE "wounds/scar_loc.json"
-/// File location for exodrone descriptions
-#define EXODRONE_FILE "exodrone.json"
-/// File location for clown honk descriptions
-#define CLOWN_NONSENSE_FILE "clown_nonsense.json"
-/// File location for cult shuttle curse descriptions
-#define CULT_SHUTTLE_CURSE "cult_shuttle_curse.json"
-*/
+
 /// Prepares a text to be used for maptext. Use this so it doesn't look hideous.
 #define MAPTEXT_CENTER(text) {"<span class='maptext center'>[##text]</span>"}

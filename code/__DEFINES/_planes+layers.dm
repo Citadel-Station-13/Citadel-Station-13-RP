@@ -239,6 +239,14 @@
 #define WEATHER_PLANE 4
 
 /**
+ *! -- Game Displacement Plane
+ *? Used to do displacement effects on the game world.
+ */
+#define DISPLACEMENT_PLANE 5
+	#define DISPLACEMENT_LAYER_ELDRITCH_BLAST -100
+#define DISPLACEMENT_RENDER_TARGET "*DISPLACEMENT_PLANE"
+
+/**
  *! -- Lightmask Plane
  *
  * lighting mask plane used for:
@@ -324,26 +332,30 @@
 #define ABOVE_LIGHTING_LAYER_MAIN 1
 
 /**
- *! -- Debug Plane
- *? For things like map landmarks
+ *! -- Augmented Plane
+ *? Augmented-reality stuff.
  */
-#define DEBUG_PLANE 23
-#define DEBUG_LAYER_AREA_OVERLAYS 100
-#define DEBUG_LAYER_MAP_HELPERS 250
-#define DEBUG_LAYER_SHUTTLE_MARKERS 500
+#define AUGMENTED_PLANE 30
 
 /**
  *! -- Ghost Plane
  *? Where ghosts live.
  * ~ Spooooooooky ghooooooosts ~
  */
-#define OBSERVER_PLANE 30
+#define OBSERVER_PLANE 35
 
 /**
- *! -- Augmented Plane
- *? Augmented-reality stuff.
+ * Only visible by ghosts with game introspection toggled on.
  */
-#define AUGMENTED_PLANE 35
+#define INTROSPECTION_PLANE 36
+
+/**
+ * Only visible by admin-ghosts with game debug introspection toggled on.
+ */
+#define DEBUG_PLANE 37
+#define DEBUG_LAYER_AREA_OVERLAYS 100
+#define DEBUG_LAYER_MAP_HELPERS 250
+#define DEBUG_LAYER_SHUTTLE_MARKERS 500
 
 /**
  *! -- Verticality Plane

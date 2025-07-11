@@ -105,7 +105,7 @@
  *! ## To-Be-Deprecated.
  * optional parent_ui datum/tgui A parent UI that, when closed, closes this UI as well.
  */
-/datum/proc/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+/datum/proc/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui, admin_inspect)
 	return FALSE // Not implemented.
 
 /**
@@ -166,10 +166,11 @@
  * @params
  * * user - The mob who opened/is using the UI.
  * * state - The state to check.
+ * * ui - the tgui instance
  *
  * return UI_state The state of the UI.
  */
-/datum/proc/ui_status(mob/user, datum/ui_state/state)
+/datum/proc/ui_status(mob/user, datum/ui_state/state, datum/tgui/ui)
 	var/src_object = ui_host(user)
 	. = UI_CLOSE
 	if(!state)
@@ -187,7 +188,7 @@
 				. = max(., UI_UPDATE)
 
 	// Check if the state allows interaction
-	var/result = state.can_use_topic(src_object, user)
+	var/result = state.can_use_topic(src_object, user, ui)
 	. = max(., result)
 
 //* API - Update - Optimizers, look here! *//

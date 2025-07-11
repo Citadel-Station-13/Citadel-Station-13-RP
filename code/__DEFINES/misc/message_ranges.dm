@@ -20,3 +20,6 @@
 #define MESSAGE_RANGE_ITEM_SOFT 2
 /// item fiddling
 #define MESSAGE_RANGE_ITEM_HARD 5
+
+/// "x looks at y"
+#define MESSAGE_RANGE_EXAMINE 4
