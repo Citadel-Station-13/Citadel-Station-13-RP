@@ -391,7 +391,7 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 	. = ..()
 
 	if(src.pai != null) //Have a person in them already?
-		user.examinate(src)
+		user.examine_entity(src)
 		return
 
 	var/datum/category_item/player_setup_item/player_global/pai/pai_pref = user.client.prefs.preference_by_type[/datum/category_item/player_setup_item/player_global/pai]

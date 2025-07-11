@@ -222,11 +222,11 @@
  */
 /obj/projectile/proc/do_render_hitscan_muzzle(datum/point/location, angle)
 	SHOULD_NOT_SLEEP(TRUE)
-	var/turf/starting_turf = starting.return_turf()
+	var/turf/starting_turf = location.return_turf()
 	if(!starting_turf)
 		return
-	var/starting_px = starting.return_px()
-	var/starting_py = starting.return_py()
+	var/starting_px = location.return_px()
+	var/starting_py = location.return_py()
 	return new /atom/movable/render/projectile_tracer/muzzle(starting_turf, tracer_icon, "[tracer_icon_state]-muzzle", tracer_add_state, tracer_add_state_alpha, angle, starting_px, starting_py, color, auto_emissive_strength)
 
 /**
@@ -243,6 +243,7 @@
 
 /obj/projectile/proc/do_render_hitscan_beam(datum/point/point_a, datum/point/point_b)
 	SHOULD_NOT_SLEEP(TRUE)
+	. = list()
 	if(tracer_is_tiled)
 		// fucked up
 		var/total_pixel_length = pixel_length_between_points(point_a, point_b)
@@ -270,7 +271,7 @@
 			else
 				resultant_py -= WORLD_ICON_SIZE * 0.5
 			if(resultant_turf)
-				created += new /atom/movable/render/projectile_tracer/segment(resultant_turf, tracer_icon, "[tracer_icon_state]-beam", tracer_add_state, tracer_add_state_alpha, tracer_angle, resultant_px, resultant_py, color, auto_emissive_strength)
+				. += new /atom/movable/render/projectile_tracer/segment(resultant_turf, tracer_icon, "[tracer_icon_state]-beam", tracer_add_state, tracer_add_state_alpha, tracer_angle, resultant_px, resultant_py, color, auto_emissive_strength)
 	else
 		var/datum/point/midpoint = point_midpoint_points(point_a, point_b)
 		var/turf/midpoint_turf = midpoint.return_turf()
@@ -278,7 +279,7 @@
 		var/midpoint_py = midpoint.return_py()
 		var/tracer_angle = angle_between_points(point_a, point_b)
 		if(midpoint_turf)
-			created += new /atom/movable/render/projectile_tracer/beam(midpoint_turf, tracer_icon, "[tracer_icon_state]-beam", tracer_add_state, tracer_add_state_alpha, tracer_angle, midpoint_px, midpoint_py, color, auto_emissive_strength, pixel_length_between_points(point_a, point_b))
+			. += new /atom/movable/render/projectile_tracer/beam(midpoint_turf, tracer_icon, "[tracer_icon_state]-beam", tracer_add_state, tracer_add_state_alpha, tracer_angle, midpoint_px, midpoint_py, color, auto_emissive_strength, pixel_length_between_points(point_a, point_b))
 
 /obj/projectile/proc/cleanup_hitscan_tracers()
 	SHOULD_NOT_SLEEP(TRUE)
