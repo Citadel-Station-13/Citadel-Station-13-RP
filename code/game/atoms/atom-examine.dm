@@ -58,6 +58,13 @@
 	return output
 
 /**
+ * @return "(some | a) [blood stained?] [this]"
+ */
+/atom/proc/examine_encoding_as_self(datum/event_args/examine/examine, examine_for, examine_from)
+	#warn how to handle proper noun??
+	return "[gender == PLURAL ? "some" : "a"][encoded_name]"
+
+/**
  * Gets the name we should show in examine.
  *
  * @params
@@ -66,10 +73,19 @@
  * * ...
  * * embed_look_href - embed the href needed to look at us by click. Overridden to 'off' if examine
  *                     is not a live one.
+ *
+ * @return "[this]"
  */
-/atom/proc/get_examine_name(datum/event_args/examine/examine, examine_for, examine_from)
+/atom/proc/get_examine_name(datum/event_args/examine/examine, examine_for, examine_from, embed_look_href)
+	#warn how to handle proper noun??
+	
+	return "[gender == PLURAL ? "some" : "a"] \
+		"
 	return "[gender == PLURAL ? "some" : "a"][blood_DNA ? " <span class='warning'>blood-stained</span> " : ""][name]"
 
+/**
+ * Gets the **short** (DO NOT LOREDUMP ON THE PLAYER) desc we should show in examine.
+ */
 /atom/proc/get_examine_desc(datum/event_args/examine/examine, examine_for, examine_from)
 	return desc
 

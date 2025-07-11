@@ -242,9 +242,9 @@
  *! -- Game Displacement Plane
  *? Used to do displacement effects on the game world.
  */
-#warn impl this
 #define DISPLACEMENT_PLANE 5
 	#define DISPLACEMENT_LAYER_ELDRITCH_BLAST -100
+#define DISPLACEMENT_RENDER_TARGET "*DISPLACEMENT_PLANE"
 
 /**
  *! -- Lightmask Plane
@@ -348,7 +348,6 @@
  * Only visible by ghosts with game introspection toggled on.
  */
 #define INTROSPECTION_PLANE 36
-#warn impl this
 
 /**
  * Only visible by admin-ghosts with game debug introspection toggled on.
@@ -357,7 +356,6 @@
 #define DEBUG_LAYER_AREA_OVERLAYS 100
 #define DEBUG_LAYER_MAP_HELPERS 250
 #define DEBUG_LAYER_SHUTTLE_MARKERS 500
-#warn impl this
 
 /**
  *! -- Verticality Plane

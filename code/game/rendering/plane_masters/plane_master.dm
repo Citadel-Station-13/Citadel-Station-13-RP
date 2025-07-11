@@ -131,6 +131,13 @@
 		),
 	)
 
+/atom/movable/screen/plane_master/displacement
+	plane = DISPLACEMENT_PLANE
+	render_target = DISPLACEMENT_RENDER_TARGET
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	appearance_flags = PLANE_MASTER | NO_CLIENT_COLOR
+	#warn impl on game plane
+
 /atom/movable/screen/plane_master/lightmask
 	plane = LIGHTMASK_PLANE
 	render_target = LIGHTMASK_RENDER_TARGET
@@ -190,7 +197,6 @@
 	add_filter("occlusion", 2, alpha_mask_filter(render_source = DARKVISION_OCCLUSION_RENDER_TARGET, flags = MASK_INVERSE))
 	add_filter("fov", 3, alpha_mask_filter(render_source = FOV_OCCLUSION_RENDER_TARGET, flags = MASK_INVERSE))
 
-
 /**
  * *sigh* this sucks but whatever
  */
@@ -248,6 +254,17 @@
 
 /atom/movable/screen/plane_master/augmented
 	plane = AUGMENTED_PLANE
+	default_invisible = TRUE
+
+#warn add toggle
+/atom/movable/screen/plane_master/introspection
+
+	plane = INTROSPECTION_PLANE
+	default_invisible = TRUE
+
+#warn add toggle
+/atom/movable/screen/plane_master/debug
+	plane = DEBUG_PLANE
 	default_invisible = TRUE
 
 /atom/movable/screen/plane_master/verticality
