@@ -222,7 +222,7 @@
 
 /atom/proc/ShiftClick(var/mob/user)
 	if(user.client && user.allow_examine(src))
-		user.examinate(src)
+		user.examine_entity(src)
 
 /mob/proc/CtrlClickOn(var/atom/A)
 	A.CtrlClick(src)

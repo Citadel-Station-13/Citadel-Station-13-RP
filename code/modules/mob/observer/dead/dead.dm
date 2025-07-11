@@ -159,11 +159,6 @@ GLOBAL_LIST_EMPTY(observer_list)
 	if(href_list["reenter"])
 		reenter_corpse()
 		return
-	if (href_list["lookitem"])
-		var/obj/item/I = locate(href_list["lookitem"])
-		if(get_dist(src, get_turf(I)) > 7)
-			return
-		src.examinate(I)
 
 /mob/observer/dead/attackby(obj/item/W, mob/user)
 	if(istype(W,/obj/item/book/tome))

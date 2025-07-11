@@ -1125,6 +1125,7 @@
 #include "code\game\atoms\atom-context_menu.dm"
 #include "code\game\atoms\atom-damage.dm"
 #include "code\game\atoms\atom-defense.dm"
+#include "code\game\atoms\atom-examine-legacy.dm"
 #include "code\game\atoms\atom-examine.dm"
 #include "code\game\atoms\atom-logging.dm"
 #include "code\game\atoms\atom-materials.dm"
