@@ -51,7 +51,7 @@
 		AdminAIInteract(user)
 		return
 	if(user.client && user.client.inquisitive_ghost)
-		user.examinate(src)
+		user.examine_entity(src)
 
 // defaults to just attack_ai
 /atom/proc/AdminAIInteract(mob/user)

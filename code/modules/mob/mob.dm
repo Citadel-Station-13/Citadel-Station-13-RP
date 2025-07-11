@@ -1178,17 +1178,34 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
  * Quickly check if we can probably see someone
  */
 /mob/proc/can_see_cheap(atom/enemy, use_view)
-	#warn impl
+	return can_see_expensive(enemy, use_view) // too lazy to microoptimize for now
 
 /**
  * Slowly check if we can probably see someone. More accurate.
  */
 /mob/proc/can_see_expensive(atom/enemy, use_view)
+	var/view_highest_numeric
+	if(isnum(use_view))
+		view_highest_numeric = use_view
+	else
+		var/list/decoded_view = decode_view_size(use_view)
+		view_highest_numeric = max(decoded_view[1], decoded_view[2])
+
 	var/their_dist = get_dist(src, enemy)
+	var/our_sight_flags = sight
+	// check sight flags as needed, with 2 tiles of lag-compensation for it
+	if(their_dist <= view_highest_numeric + 2)
+		if(isturf(enemy) && (our_sight_flags & (SEE_TURFS | SEE_PIXELS)))
+			return TRUE
+		else if(isobj(enemy) && (our_sight_flags & (SEE_OBJS | SEE_PIXELS)))
+			return TRUE
+		else if(ismob(enemy) && (our_sight_flags & (SEE_MOBS | SEE_PIXELS)))
+			return TRUE
 
 	var/effective_view = use_view || (client ? client.view : world.view)
 	if(!(enemy in view(use_view , src)))
-	#warn impl
+		return FALSE
+	return TRUE
 
 //? Abilities
 
