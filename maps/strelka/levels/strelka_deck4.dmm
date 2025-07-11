@@ -4612,6 +4612,10 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
+/obj/item/paper_bin{
+	pixel_x = -7;
+	pixel_y = 7
+	},
 /turf/simulated/floor/lino,
 /area/strelka/shipbase/deck4/library)
 "tz" = (
@@ -7518,6 +7522,22 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
+/obj/structure/table/hardwoodtable,
+/obj/item/paper_bin{
+	pixel_x = -7;
+	pixel_y = 7
+	},
+/obj/machinery/photocopier/faxmachine{
+	department = "Dorms hallway";
+	pixel_x = 6
+	},
+/obj/item/pen,
+/obj/item/pen,
+/obj/structure/flora/pottedplant/smallcactus{
+	pixel_y = 18;
+	pixel_x = 12
+	},
+/obj/item/pen,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/dormhallway)
 "Ii" = (
@@ -9729,7 +9749,9 @@
 	pixel_y = 16;
 	layer = 3
 	},
-/obj/machinery/recharger,
+/obj/machinery/recharger{
+	pixel_x = 5
+	},
 /obj/machinery/light/fairy{
 	dir = 4
 	},
@@ -9738,6 +9760,10 @@
 	dir = 8;
 	id = "bar_shutters";
 	name = "Bar Shutters"
+	},
+/obj/item/paper_bin{
+	pixel_x = -7;
+	pixel_y = 7
 	},
 /turf/simulated/floor/bmarble,
 /area/strelka/shipbase/deck4/bar)
