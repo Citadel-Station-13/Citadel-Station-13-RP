@@ -3083,6 +3083,10 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/sdf)
+"qc" = (
+/obj/machinery/sleeper/survival_pod,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/miaphus/sdf)
 "qd" = (
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/miaphus/beach/station/tunnel)
@@ -8419,6 +8423,7 @@
 /area/sector/miaphus/beach/desalinator)
 "UF" = (
 /obj/structure/closet/crate/medical,
+/obj/item/storage/pill_bottle/iron,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/sdf)
 "UG" = (
@@ -43874,9 +43879,9 @@ IT
 xJ
 tW
 bL
-EZ
+qc
 Mm
-EZ
+qc
 bL
 XJ
 aa
