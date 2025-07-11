@@ -1205,7 +1205,7 @@
 "fH" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/photocopier/faxmachine{
-	department = "SDF vessel Singing Shiny Knights"
+	department = "SDF"
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/sector/miaphus/beach/sdf)
@@ -5510,12 +5510,12 @@
 /area/sector/miaphus/beach/resort)
 "DW" = (
 /obj/structure/catwalk,
-/obj/machinery/photocopier/faxmachine{
-	department = "SDF vessel Singing Shiny Knights"
-	},
 /obj/structure/table/steel_reinforced,
 /obj/machinery/newscaster{
 	pixel_y = 31
+	},
+/obj/machinery/photocopier/faxmachine{
+	department = "SDF"
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/miaphus/sdf)
@@ -6942,7 +6942,6 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/sleeper/survival_pod,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/miaphus/sdf)
 "Mn" = (
@@ -8157,10 +8156,6 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/miaphus/beach/resort/lockermed)
-"SX" = (
-/obj/machinery/sleeper/survival_pod,
-/turf/simulated/floor/tiled/techfloor,
-/area/shuttle/miaphus/sdf)
 "SY" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -43878,9 +43873,9 @@ IT
 xJ
 tW
 bL
-SX
+EZ
 Mm
-SX
+EZ
 bL
 XJ
 aa
