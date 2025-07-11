@@ -9,4 +9,3 @@
 	slot_flags = SLOT_MASK | SLOT_HEAD
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_ALLOW_DEFAULT
 	inv_hide_flags = HIDEFACE
-
