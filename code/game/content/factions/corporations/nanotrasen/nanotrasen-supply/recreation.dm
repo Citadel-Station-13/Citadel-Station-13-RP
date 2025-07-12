@@ -159,7 +159,6 @@
 		/obj/item/clothing/accessory/collar/bell = 1,
 		/obj/item/clothing/accessory/collar/pink = 1,
 		/obj/item/clothing/accessory/collar/holo = 1,
-		/obj/item/bikehorn/clicker/random = 3, // i'm sorry
 	)
 	worth = 500
 
