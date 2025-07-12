@@ -23,6 +23,19 @@
 	inv_hide_flags = HIDEEARS
 
 
+/obj/item/clothing/head/roguetown/blackleather
+	name = "black leather hat"
+	desc = "A hat crafted from some kind of black leather."
+	icon = 'icons/clothing/head/roguetown/blackleather_hat.dmi'
+	icon_state = "blackleatherhat"
+	icon_mob_y_align = 1
+	armor_type = /datum/armor/station/padded
+	slot_flags = SLOT_HEAD
+	body_cover_flags = HEAD
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_ALLOW_DEFAULT
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	inv_hide_flags = HIDEEARS
+
 // Hoods
 
 /obj/item/clothing/hood/roguetown/hide

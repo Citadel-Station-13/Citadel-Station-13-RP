@@ -63,6 +63,7 @@
 	desc = "A coat made out of fine, tanned leather."
 	icon = 'icons/clothing/suit/roguetown/leathercoat.dmi'
 	icon_state = "leathercoat"
+	icon_mob_y_align = -1
 	armor_type = /datum/armor/station/padded
 	slot_flags = SLOT_OCLOTHING
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_ALLOW_DEFAULT
@@ -73,7 +74,7 @@
 /obj/item/clothing/suit/roguetown/leathercoat/female
 	name = "leather coat"
 	desc = "A coat made out of fine, tanned leather. It seems fitted for a lady's porpotions."
-	icon = 'icons/clothing/suit/roguetown/leathercoat.dmi'
+	icon = 'icons/clothing/suit/roguetown/leathercoat_f.dmi'
 	icon_state = "leathercoat_f"
 	armor_type = /datum/armor/station/padded
 	slot_flags = SLOT_OCLOTHING
