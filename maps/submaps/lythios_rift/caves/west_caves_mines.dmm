@@ -1,0 +1,1252 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/open/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_caves)
+"b" = (
+/obj/effect/floor_decal/spline/fancy{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/fancy{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_caves)
+"c" = (
+/obj/effect/floor_decal/spline/fancy,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_caves)
+"d" = (
+/obj/structure/fence{
+	dir = 4
+	},
+/turf/simulated/floor/concrete/lythios43c,
+/area/rift/surfacebase/outside/west_caves)
+"e" = (
+/obj/effect/floor_decal/spline/fancy{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/fancy{
+	dir = 4
+	},
+/mob/living/simple_mob/animal/giant_spider/frost,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_caves)
+"f" = (
+/obj/effect/floor_decal/spline/fancy,
+/obj/effect/floor_decal/spline/fancy{
+	dir = 1
+	},
+/mob/living/simple_mob/animal/giant_spider/tunneler/frequent,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_caves)
+"h" = (
+/turf/simulated/mineral/icerock/ignore_cavegen/lythios43c,
+/area/rift/surfacebase/outside/west_caves)
+"i" = (
+/obj/effect/decal/mecha_wreckage/ripley,
+/turf/simulated/floor/concrete/lythios43c,
+/area/rift/surfacebase/outside/west_caves)
+"j" = (
+/obj/structure/event/prop/mining_truck,
+/turf/simulated/floor/concrete/lythios43c,
+/area/rift/surfacebase/outside/west_caves)
+"k" = (
+/obj/effect/floor_decal/spline/fancy,
+/obj/effect/floor_decal/spline/fancy{
+	dir = 4
+	},
+/mob/living/simple_mob/animal/giant_spider/frost,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_caves)
+"l" = (
+/obj/item/flashlight/lantern,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west_caves)
+"m" = (
+/obj/effect/floor_decal/spline/fancy,
+/obj/effect/floor_decal/spline/fancy{
+	dir = 1
+	},
+/obj/random/mob/spider,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_caves)
+"n" = (
+/obj/effect/floor_decal/spline/fancy{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_caves)
+"o" = (
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west_caves)
+"p" = (
+/obj/effect/floor_decal/spline/fancy,
+/obj/effect/floor_decal/spline/fancy{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_caves)
+"q" = (
+/obj/random/outcrop,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west_caves)
+"r" = (
+/obj/effect/floor_decal/spline/fancy{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy{
+	dir = 4
+	},
+/obj/random/mob/spider,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_caves)
+"s" = (
+/obj/effect/floor_decal/spline/fancy,
+/obj/effect/floor_decal/spline/fancy{
+	dir = 1
+	},
+/mob/living/simple_mob/animal/giant_spider/frost,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_caves)
+"t" = (
+/turf/simulated/wall/wood,
+/area/rift/surfacebase/outside/west_caves)
+"v" = (
+/obj/effect/floor_decal/spline/fancy,
+/obj/random/mob/spider,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_caves)
+"x" = (
+/obj/structure/closet/crate/miningcar,
+/obj/item/grenade/explosive/ied/tyrmalin,
+/obj/random/multiple/ores,
+/obj/item/grenade/explosive/ied/tyrmalin,
+/obj/item/grenade/explosive/ied/tyrmalin,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west_caves)
+"y" = (
+/obj/effect/floor_decal/spline/fancy{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_caves)
+"z" = (
+/obj/item/flashlight/lantern,
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west_caves)
+"B" = (
+/obj/structure/fence{
+	dir = 1
+	},
+/turf/simulated/floor/concrete/lythios43c,
+/area/rift/surfacebase/outside/west_caves)
+"C" = (
+/obj/effect/floor_decal/spline/fancy{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/fancy{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_caves)
+"D" = (
+/obj/structure/closet/crate/miningcar,
+/obj/random/multiple/underdark/ores,
+/obj/random/multiple/underdark/ores,
+/obj/random/multiple/underdark/ores,
+/turf/simulated/floor/concrete/lythios43c,
+/area/rift/surfacebase/outside/west_caves)
+"E" = (
+/obj/random/obstruction,
+/obj/effect/floor_decal/spline/fancy{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_caves)
+"F" = (
+/obj/effect/floor_decal/spline/fancy{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_caves)
+"G" = (
+/turf/simulated/wall/r_wall/prepainted,
+/area/rift/surfacebase/outside/west_caves)
+"H" = (
+/obj/structure/boulder,
+/turf/simulated/floor/concrete/lythios43c,
+/area/rift/surfacebase/outside/west_caves)
+"I" = (
+/obj/item/flashlight/lantern,
+/obj/structure/closet/crate/miningcar,
+/obj/random/multiple/ores,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west_caves)
+"J" = (
+/obj/effect/floor_decal/spline/fancy{
+	dir = 4
+	},
+/obj/random/mob/spider,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_caves)
+"L" = (
+/obj/effect/floor_decal/spline/fancy{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy{
+	dir = 4
+	},
+/mob/living/simple_mob/animal/giant_spider/tunneler/frequent,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_caves)
+"M" = (
+/obj/random/outcrop,
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west_caves)
+"N" = (
+/obj/effect/floor_decal/spline/fancy,
+/obj/effect/floor_decal/spline/fancy{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_caves)
+"O" = (
+/obj/effect/floor_decal/spline/fancy{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_caves)
+"P" = (
+/obj/effect/floor_decal/spline/fancy{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy{
+	dir = 4
+	},
+/mob/living/simple_mob/animal/giant_spider/frost,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_caves)
+"Q" = (
+/obj/random/mob/spider,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west_caves)
+"R" = (
+/obj/random/multiple/underdark/miningdrills,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west_caves)
+"S" = (
+/obj/effect/floor_decal/spline/fancy,
+/obj/effect/floor_decal/spline/fancy{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_caves)
+"T" = (
+/obj/random/obstruction,
+/obj/effect/floor_decal/spline/fancy,
+/obj/effect/floor_decal/spline/fancy{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_caves)
+"U" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 1
+	},
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west_caves)
+"V" = (
+/turf/template_noop,
+/area/template_noop)
+"W" = (
+/obj/structure/lattice,
+/turf/simulated/open/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_caves)
+"X" = (
+/obj/effect/floor_decal/spline/fancy,
+/obj/effect/floor_decal/spline/fancy{
+	dir = 8
+	},
+/mob/living/simple_mob/animal/giant_spider/frost,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_caves)
+"Y" = (
+/turf/simulated/floor/concrete/lythios43c,
+/area/rift/surfacebase/outside/west_caves)
+"Z" = (
+/obj/structure/fence/door,
+/turf/simulated/floor/concrete/lythios43c,
+/area/rift/surfacebase/outside/west_caves)
+
+(1,1,1) = {"
+V
+V
+V
+V
+V
+V
+V
+h
+h
+h
+h
+h
+h
+h
+h
+h
+h
+h
+V
+V
+V
+V
+V
+V
+V
+V
+V
+V
+V
+V
+"}
+(2,1,1) = {"
+V
+V
+V
+V
+V
+V
+h
+h
+h
+h
+h
+h
+h
+h
+h
+h
+h
+h
+h
+h
+h
+h
+h
+V
+V
+V
+V
+V
+V
+V
+"}
+(3,1,1) = {"
+V
+h
+h
+t
+T
+t
+h
+h
+h
+t
+o
+o
+o
+q
+o
+o
+t
+h
+h
+h
+h
+h
+h
+t
+T
+t
+h
+h
+h
+V
+"}
+(4,1,1) = {"
+h
+h
+h
+o
+S
+R
+h
+h
+h
+o
+b
+L
+y
+y
+P
+N
+o
+o
+o
+t
+o
+o
+o
+o
+S
+o
+o
+t
+h
+h
+"}
+(5,1,1) = {"
+h
+h
+h
+o
+S
+o
+h
+h
+h
+o
+S
+t
+o
+o
+t
+O
+y
+r
+y
+E
+y
+y
+y
+y
+F
+r
+N
+q
+h
+h
+"}
+(6,1,1) = {"
+h
+h
+h
+q
+f
+o
+h
+h
+h
+o
+m
+o
+h
+h
+o
+S
+o
+o
+o
+t
+o
+M
+o
+o
+z
+o
+S
+o
+h
+h
+"}
+(7,1,1) = {"
+h
+h
+h
+o
+m
+o
+h
+h
+h
+q
+S
+o
+h
+h
+t
+T
+t
+h
+h
+h
+h
+G
+B
+B
+G
+U
+S
+t
+h
+h
+"}
+(8,1,1) = {"
+h
+h
+h
+t
+S
+t
+h
+h
+h
+o
+S
+o
+h
+h
+o
+S
+o
+h
+h
+h
+h
+G
+j
+Y
+d
+o
+s
+o
+h
+h
+"}
+(9,1,1) = {"
+h
+h
+h
+o
+S
+q
+h
+h
+h
+t
+S
+t
+h
+h
+o
+S
+o
+q
+h
+h
+h
+G
+Y
+Y
+Z
+o
+S
+o
+h
+h
+"}
+(10,1,1) = {"
+h
+h
+h
+o
+s
+o
+o
+t
+o
+o
+S
+o
+h
+h
+o
+C
+X
+o
+h
+h
+h
+G
+D
+Y
+d
+o
+S
+o
+h
+h
+"}
+(11,1,1) = {"
+V
+h
+h
+q
+O
+y
+y
+E
+y
+y
+c
+o
+h
+h
+h
+R
+S
+o
+h
+h
+h
+G
+i
+Y
+d
+o
+S
+o
+h
+h
+"}
+(12,1,1) = {"
+V
+h
+h
+o
+S
+o
+o
+t
+o
+o
+s
+o
+h
+h
+h
+o
+S
+o
+x
+h
+h
+G
+H
+H
+G
+q
+S
+o
+h
+V
+"}
+(13,1,1) = {"
+V
+h
+h
+o
+S
+o
+h
+h
+h
+o
+S
+q
+h
+h
+h
+o
+C
+N
+o
+h
+h
+G
+H
+H
+G
+U
+S
+t
+h
+V
+"}
+(14,1,1) = {"
+V
+h
+h
+q
+S
+o
+h
+h
+h
+o
+S
+o
+h
+h
+h
+h
+t
+S
+t
+h
+h
+G
+G
+G
+G
+o
+S
+o
+h
+h
+"}
+(15,1,1) = {"
+h
+h
+h
+t
+S
+t
+h
+h
+h
+t
+T
+t
+h
+h
+h
+h
+W
+W
+W
+W
+h
+h
+h
+h
+h
+o
+m
+o
+h
+h
+"}
+(16,1,1) = {"
+h
+h
+h
+o
+S
+o
+h
+h
+h
+o
+T
+o
+h
+h
+h
+h
+W
+W
+W
+a
+a
+h
+h
+h
+h
+o
+S
+o
+h
+h
+"}
+(17,1,1) = {"
+h
+h
+h
+q
+S
+o
+h
+h
+h
+q
+S
+o
+h
+h
+h
+h
+a
+a
+a
+a
+a
+h
+h
+h
+t
+o
+S
+o
+h
+h
+"}
+(18,1,1) = {"
+h
+h
+h
+o
+S
+o
+h
+h
+h
+o
+m
+o
+h
+h
+h
+h
+a
+a
+a
+a
+a
+h
+h
+h
+o
+b
+k
+o
+h
+h
+"}
+(19,1,1) = {"
+V
+h
+h
+o
+S
+q
+h
+h
+h
+o
+S
+t
+o
+h
+h
+h
+h
+a
+a
+a
+h
+h
+h
+h
+o
+f
+o
+t
+h
+h
+"}
+(20,1,1) = {"
+V
+V
+h
+t
+S
+t
+h
+h
+h
+o
+C
+y
+N
+q
+h
+h
+h
+h
+h
+h
+h
+h
+h
+h
+q
+S
+o
+h
+h
+h
+"}
+(21,1,1) = {"
+V
+h
+h
+l
+S
+o
+h
+h
+h
+t
+o
+o
+S
+o
+h
+h
+h
+h
+h
+h
+h
+h
+h
+h
+o
+S
+o
+h
+h
+h
+"}
+(22,1,1) = {"
+V
+t
+o
+o
+S
+o
+h
+h
+h
+h
+h
+t
+S
+t
+h
+h
+h
+h
+h
+h
+h
+h
+h
+h
+t
+S
+t
+h
+h
+V
+"}
+(23,1,1) = {"
+V
+E
+y
+y
+J
+N
+t
+h
+h
+h
+h
+o
+S
+o
+h
+h
+h
+h
+h
+h
+h
+h
+h
+h
+o
+S
+o
+h
+h
+V
+"}
+(24,1,1) = {"
+V
+t
+o
+q
+o
+e
+N
+q
+h
+h
+h
+o
+S
+o
+t
+o
+o
+o
+t
+o
+o
+o
+o
+t
+o
+S
+o
+h
+h
+h
+"}
+(25,1,1) = {"
+V
+h
+h
+h
+t
+o
+S
+o
+h
+h
+h
+o
+O
+y
+y
+y
+y
+r
+E
+y
+y
+P
+y
+y
+y
+v
+I
+h
+h
+h
+"}
+(26,1,1) = {"
+V
+h
+h
+h
+h
+o
+f
+t
+o
+q
+o
+t
+S
+I
+t
+o
+o
+o
+t
+o
+q
+o
+o
+t
+o
+S
+q
+h
+h
+h
+"}
+(27,1,1) = {"
+V
+h
+h
+h
+h
+o
+C
+y
+y
+y
+n
+P
+p
+o
+h
+h
+h
+h
+h
+h
+h
+h
+h
+h
+o
+S
+o
+h
+h
+h
+"}
+(28,1,1) = {"
+V
+V
+V
+h
+h
+t
+o
+o
+o
+Q
+S
+q
+o
+t
+h
+h
+h
+h
+h
+h
+h
+h
+h
+h
+o
+S
+o
+h
+h
+h
+"}
+(29,1,1) = {"
+V
+V
+V
+h
+h
+h
+h
+h
+h
+o
+S
+o
+h
+h
+h
+h
+h
+h
+h
+h
+h
+h
+V
+h
+t
+T
+t
+h
+h
+h
+"}
+(30,1,1) = {"
+V
+V
+V
+V
+h
+h
+h
+h
+h
+t
+T
+t
+h
+h
+V
+h
+h
+h
+V
+V
+V
+V
+V
+V
+V
+o
+o
+h
+V
+V
+"}
