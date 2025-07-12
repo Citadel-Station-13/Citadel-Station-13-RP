@@ -1,3 +1,4 @@
+// todo: why is this here?
 GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 	/obj/structure/window/reinforced/tinted/full,
 	/obj/structure/window/reinforced/full,
@@ -9,6 +10,7 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 	/obj/structure/grille,
 	/obj/machinery/smartfridge,
 	/turf/simulated/wall,
+	/turf/simulated/shuttle/wall,
 	)))
 
 // todo: either this file should be wall_frame or this structure should be /low_wall, not both

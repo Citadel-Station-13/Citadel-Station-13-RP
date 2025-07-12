@@ -147,7 +147,7 @@
 			"name" = T.scan_name,
 			"x" = T.random_x,
 			"y" = T.random_y,
-			"z" = SSmapping.fluff_level_id(T.random_z),
+			"z" = SSmapping.level_get_fluff_id(T.random_z),
 			"accuracy" = T.accuracy,
 			"last" = world.time - T.last_updated,
 			"tag" = key,
