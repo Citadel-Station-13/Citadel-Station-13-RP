@@ -4432,7 +4432,7 @@
 /area/strelka/shipbase/deck3)
 "pT" = (
 /obj/machinery/door/blast/regular,
-/turf/simulated/floor/reinforced,
+/turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck3/cargo/hangar)
 "pY" = (
 /obj/effect/floor_decal/corner/purple/full,
@@ -4660,7 +4660,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3/science/robotics)
 "qV" = (
-/obj/map_helper/access_helper/airlock/station/science/department,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -9174,8 +9173,9 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck3)
 "FO" = (
-/obj/machinery/door/airlock/multi_tile/glass/exploration,
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/multi_tile/glass/exploration,
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science)
 "FP" = (
@@ -11140,7 +11140,8 @@
 "Nf" = (
 /obj/machinery/door/airlock/mining{
 	name = "Cargo Airlock";
-	req_one_access = list(31,47)
+	req_one_access = null;
+	req_access = list(31,47)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -11154,7 +11155,6 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/cargo/mining)
 "Ng" = (
