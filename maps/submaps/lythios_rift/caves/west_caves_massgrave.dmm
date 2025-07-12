@@ -1,0 +1,186 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/structure/sign/signnew/radiation,
+/turf/simulated/wall/lead,
+/area/submap/lythios/west_caves/buried_structure)
+"b" = (
+/obj/structure/closet/body_bag,
+/obj/item/bone/skull/tajaran,
+/obj/item/bone/ribs,
+/obj/item/bone/arm,
+/obj/item/bone/arm,
+/obj/item/bone/leg,
+/obj/item/bone/leg,
+/obj/effect/map_effect/radiation_emitter,
+/obj/item/clothing/under/tajaran/ala/black,
+/obj/item/clothing/head/beret/tajaran/dpra,
+/obj/item/clothing/shoes/boots/jackboots,
+/obj/random/ammo_all,
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"d" = (
+/obj/random/maintenance/security,
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"h" = (
+/obj/structure/closet/body_bag,
+/obj/item/bone/skull/tajaran,
+/obj/item/bone/ribs,
+/obj/item/bone/arm,
+/obj/item/bone/arm,
+/obj/item/bone/leg,
+/obj/item/bone/leg,
+/obj/item/clothing/gloves/black/tajara/smithgloves,
+/obj/item/clothing/under/tajaran/mechanic,
+/obj/item/clothing/shoes/tajara/workboots/dark,
+/obj/random/drinkbottle,
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"o" = (
+/obj/structure/closet/body_bag,
+/obj/item/bone/skull/tajaran,
+/obj/item/bone/ribs,
+/obj/item/bone/arm,
+/obj/item/bone/arm,
+/obj/item/bone/leg,
+/obj/item/bone/leg,
+/obj/item/clothing/under/tajaran/ala/black,
+/obj/item/clothing/head/beret/tajaran/dpra,
+/obj/item/clothing/shoes/boots/jackboots,
+/obj/random/ammo_all,
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"w" = (
+/turf/simulated/wall/lead,
+/area/submap/lythios/west_caves/buried_structure)
+"z" = (
+/obj/structure/simple_door/iron,
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"B" = (
+/obj/structure/closet/body_bag,
+/obj/item/bone/skull/tajaran,
+/obj/item/bone/ribs,
+/obj/item/bone/arm,
+/obj/item/bone/arm,
+/obj/item/bone/leg,
+/obj/item/bone/leg,
+/obj/item/clothing/under/tajaran/cosmonaut,
+/obj/item/clothing/shoes/boots/jackboots,
+/obj/item/clothing/head/beret/tajaran/pvsm,
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"C" = (
+/obj/structure/closet/body_bag,
+/obj/item/bone/skull/tajaran,
+/obj/item/bone/ribs,
+/obj/item/bone/arm,
+/obj/item/bone/arm,
+/obj/item/bone/leg,
+/obj/item/bone/leg,
+/obj/effect/map_effect/radiation_emitter,
+/obj/item/clothing/under/tajaran/mechanic,
+/obj/item/clothing/shoes/tajara/workboots/grey,
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"D" = (
+/obj/random/medical/lite,
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"O" = (
+/obj/structure/closet/body_bag,
+/obj/item/bone/skull/tajaran,
+/obj/item/bone/ribs,
+/obj/item/bone/arm,
+/obj/item/bone/arm,
+/obj/item/bone/leg,
+/obj/item/bone/leg,
+/obj/item/clothing/head/tajaran/army_commissar,
+/obj/item/clothing/under/tajaran/army_commissar,
+/obj/item/clothing/shoes/boots/jackboots,
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"T" = (
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"Y" = (
+/turf/template_noop,
+/area/template_noop)
+
+(1,1,1) = {"
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+"}
+(2,1,1) = {"
+Y
+a
+w
+w
+w
+a
+Y
+Y
+Y
+"}
+(3,1,1) = {"
+Y
+w
+h
+b
+B
+w
+w
+a
+Y
+"}
+(4,1,1) = {"
+Y
+w
+d
+D
+d
+z
+T
+z
+Y
+"}
+(5,1,1) = {"
+Y
+w
+O
+C
+o
+w
+w
+a
+Y
+"}
+(6,1,1) = {"
+Y
+a
+w
+w
+w
+a
+Y
+Y
+Y
+"}
+(7,1,1) = {"
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+"}

@@ -362,7 +362,7 @@
 			GLOBAL_PROC,
 			GLOBAL_PROC_REF(seed_submaps),
 			list(z_index),
-			50,
+			75,
 			/area/rift/surfacebase/outside/west_deep/submap_seedzone,
 			/datum/map_template/submap/level_specific/rift/west_deep,
 		)
@@ -393,7 +393,7 @@
 			GLOBAL_PROC,
 			GLOBAL_PROC_REF(seed_submaps),
 			list(z_index),
-			50,
+			80,
 			/area/rift/surfacebase/outside/west_caves/submap_seedzone,
 			/datum/map_template/submap/level_specific/rift/west_caves,
 		)
