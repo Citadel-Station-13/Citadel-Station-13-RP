@@ -1376,6 +1376,7 @@
 	dir = 8
 	},
 /obj/machinery/cryopod/robot/door/shuttle,
+/obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck4/arrival)
 "fS" = (
