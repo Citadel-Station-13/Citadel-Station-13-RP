@@ -117,13 +117,12 @@
 			// no locate() in list!
 			var/target_index = params["index"]
 			var/target_name = params["name"]
-			#warn this and that
 			if(target_index < 1 || target_index > length(prize_list))
-				// update_static_data(hard_refresh = TRUE)
+				update_static_data(hard_refresh = TRUE)
 				return TRUE
 			var/datum/point_redemption_item/resolved = prize_list[target_index]
 			if(resolved.name != target_name)
-				// update_static_data(hard_refresh = TRUE)
+				update_static_data(hard_refresh = TRUE)
 				return TRUE
 			if(inserted_id.get_redemption_points(point_type) < resolved.cost)
 				return TRUE

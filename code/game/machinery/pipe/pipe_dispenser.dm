@@ -17,10 +17,9 @@
 		return
 	ui_interact(user)
 
-#warn this and that
-// /obj/machinery/pipedispenser/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
-// 	immediate += /datum/asset_pack/spritesheet/pipes
-// 	return ..()
+/obj/machinery/pipedispenser/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
+	immediate += /datum/asset_pack/spritesheet/pipes
+	return ..()
 
 /obj/machinery/pipedispenser/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
