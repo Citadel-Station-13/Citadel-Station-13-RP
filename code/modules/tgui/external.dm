@@ -182,7 +182,7 @@
  *
  * return bool If TRUE, prevents propagation of the topic call.
  */
-/proc/tgui_Topic(href_list)
+/proc/tgui_topic(href_list)
 	// Skip non-tgui topics
 	if(!href_list["tgui"])
 		return FALSE

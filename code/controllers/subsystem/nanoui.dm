@@ -121,10 +121,10 @@ SUBSYSTEM_DEF(nanoui)
  */
 /datum/controller/subsystem/nanoui/proc/update_user_uis(mob/user, src_object, ui_key)
 	. = 0 // We're going to return the number of uis updated.
-	if (!length(user.open_uis))
+	if (!length(user.open_nano_uis))
 		return // has no open uis
 
-	for (var/datum/nanoui/ui as anything in user.open_uis)
+	for (var/datum/nanoui/ui as anything in user.open_nano_uis)
 		if ((isnull(src_object) || ui.src_object == src_object) && (isnull(ui_key) || ui.ui_key == ui_key))
 			ui.try_update(1)
 			.++
@@ -140,10 +140,10 @@ SUBSYSTEM_DEF(nanoui)
  */
 /datum/controller/subsystem/nanoui/proc/close_user_uis(mob/user, src_object, ui_key)
 	. = 0 // We're going to return the number of uis closed.
-	if (!length(user.open_uis))
+	if (!length(user.open_nano_uis))
 		return // has no open uis
 
-	for (var/datum/nanoui/ui in user.open_uis)
+	for (var/datum/nanoui/ui in user.open_nano_uis)
 		if ((isnull(src_object) || ui.src_object == src_object) && (isnull(ui_key) || ui.ui_key == ui_key))
 			ui.close()
 			.++
@@ -160,7 +160,7 @@ SUBSYSTEM_DEF(nanoui)
 	var/src_object_key = "\ref[ui.src_object]"
 	LAZYINITLIST(all_uis[src_object_key])
 	LAZYDISTINCTADD(all_uis[src_object_key][ui.ui_key], ui)
-	LAZYDISTINCTADD(ui.user.open_uis, ui)
+	LAZYDISTINCTADD(ui.user.open_nano_uis, ui)
 	processing_uis += ui
 
 /**
@@ -178,7 +178,7 @@ SUBSYSTEM_DEF(nanoui)
 
 	processing_uis -= ui
 	if(ui.user) // Sanity check in case a user has been deleted (say a blown up borg watching the alarm interface)
-		LAZYREMOVE(ui.user.open_uis, ui)
+		LAZYREMOVE(ui.user.open_nano_uis, ui)
 
 	all_uis[src_object_key][ui.ui_key] -= ui
 	if(!length(all_uis[src_object_key][ui.ui_key]))
@@ -209,13 +209,13 @@ SUBSYSTEM_DEF(nanoui)
  * @return bool FALSE if no ui was removed, TRUE if removed successfully
  */
 /datum/controller/subsystem/nanoui/proc/user_transferred(mob/oldMob, mob/newMob)
-	if (!oldMob || !oldMob.open_uis)
+	if (!oldMob || !oldMob.open_nano_uis)
 		return FALSE // has no open uis
 
-	LAZYINITLIST(newMob.open_uis)
-	for (var/datum/nanoui/ui in oldMob.open_uis)
+	LAZYINITLIST(newMob.open_nano_uis)
+	for (var/datum/nanoui/ui in oldMob.open_nano_uis)
 		ui.user = newMob
-		newMob.open_uis += ui
+		newMob.open_nano_uis += ui
 
-	oldMob.open_uis = null
+	oldMob.open_nano_uis = null
 	return TRUE // success
