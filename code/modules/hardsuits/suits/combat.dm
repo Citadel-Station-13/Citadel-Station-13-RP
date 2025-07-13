@@ -2,13 +2,18 @@
 	light_overlay = "helmet_light_dual_green"
 
 /datum/armor/hardsuit/combat
-	melee = 0.8
-	bullet = 0.65
+	melee = 0.5
+	melee_tier = 4
+	bullet = 0.45
+	bullet_tier = 4
 	laser = 0.5
+	laser_tier = 4
 	energy = 0.25
 	bomb = 0.6
 	bio = 1.0
 	rad = 0.6
+	fire = 0.5
+	acid = 0.8
 
 /obj/item/hardsuit/combat
 	name = "combat hardsuit control module"

@@ -81,6 +81,7 @@
 	var/tmp/movement_type = MOVEMENT_GROUND
 
 	//? Spacedrift
+	//  todo: rework spacedrift, proper bucket subsystem.
 	/// Which direction we're drifting
 	var/inertia_dir = NONE
 	/// Only set while drifting, last location we were while drifting

@@ -9,10 +9,12 @@
 	show_messages = 1
 	origin_tech = null
 	inhand_default_type = INHAND_DEFAULT_ICON_HOLDERS
+	worn_render_flags = WORN_RENDER_SLOT_ALLOW_DEFAULT
 	pixel_y = 8
 	throw_range = 14
 	throw_force = 10
 	throw_speed = 3
+	
 	var/static/list/holder_mob_icon_cache = list()
 	var/mob/living/held_mob
 
@@ -80,6 +82,7 @@
 	add_overlay(MA)
 	name = M.name
 	desc = M.desc
+	item_state = held_mob.icon_state
 	update_worn_icon()
 
 /obj/item/holder/contents_resist(mob/escapee)
@@ -97,6 +100,10 @@
 	else if(isitem(loc))
 		to_chat(escapee, SPAN_WARNING("You struggle free of [loc]."))
 		escapee.forceMove(get_turf(escapee))
+	else if(istype(loc, /atom/movable/storage_indirection) && loc.loc) //Second type how an item can have storage
+		to_chat(escapee, SPAN_WARNING("You struggle free of [loc.loc]."))
+		escapee.forceMove(get_turf(escapee))
+
 
 /obj/item/holder/can_equip(mob/M, slot, mob/user, flags)
 	if(M == held_mob)
@@ -211,7 +218,7 @@
 
 /mob/living/proc/get_scooped(var/mob/living/carbon/grabber, var/self_grab)
 
-	if(!holder_type || buckled || pinned.len)
+	if(!holder_type || buckled) // || pinned.len)
 		return
 
 	if(self_grab)

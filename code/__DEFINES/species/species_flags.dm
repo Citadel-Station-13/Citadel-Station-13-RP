@@ -75,12 +75,14 @@ DEFINE_BITFIELD(species_fluff_flags, list(
 /// Species is selectable and visible in chargen. This must be on a species to be roundstart/latejoin.
 #define SPECIES_SPAWN_CHARACTER (1<<1)
 /// Must be whitelisted to play roundstart/latejoin.
+/// TODO: get rid of this, rework whitelist system to config
 #define SPECIES_SPAWN_WHITELISTED (1<<2)
 /// Must be whitelisted to see this species at all.
 #define SPECIES_SPAWN_SECRET (1<<3)
 /// Cannot normally spawn; something must pass in PREFS_COPY_TO_NO_CHECK_SPECIES to spawn checks to use!
 #define SPECIES_SPAWN_RESTRICTED (1<<4)
 /// if set, check species.id in WL, otherwise use uid
+/// TODO: get rid of this, rework whitelist system to config
 #define SPECIES_SPAWN_WHITELIST_FLEXIBLE (1<<5)
 //? FLAGS ABOVE ARE RELEVANT TO UI.
 //? If you change them, change necessary TGUI too.

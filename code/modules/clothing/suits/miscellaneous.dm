@@ -1583,7 +1583,7 @@
 /obj/item/clothing/suit/storage/kamina
 	name = "spiral hero cloak"
 	desc = "Don't believe in yourself. Believe in the me that believes in you."
-	icon = 'icons/clothing/uniform/costume/spiral.dmi'
+	icon = 'icons/clothing/suit/costume/spiral.dmi'
 	icon_state = "kaminacape"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 

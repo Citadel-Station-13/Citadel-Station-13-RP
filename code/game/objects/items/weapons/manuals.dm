@@ -3703,3 +3703,211 @@
 				</body>
 			</html>
 			"}
+
+/obj/item/book/manual/legal/sdf
+	name = "SDF SOP"
+	icon_state = "corpreg_se"
+	author = "Hadiis Folly"
+	title = "Hadiis Folly Systeme Defense Force Patrol SOP"
+
+/obj/item/book/manual/legal/sdf/Initialize(mapload)
+	. = ..()
+	dat = {"<html>
+				<head>
+				<style>
+				h1 {font-size: 18px; margin: 15px 0px 5px;}
+				h2 {font-size: 15px; margin: 15px 0px 5px;}
+				h3 {font-size: 13px; margin: 15px 0px 5px;}
+				li {margin: 2px 0px 2px 15px;}
+				ul {margin: 5px; padding: 0px;}
+				ol {margin: 5px; padding: 0px 15px;}
+				body {font-size: 13px; font-family: Verdana;}
+				</style>
+				</head>
+				<body>
+
+				<h1>Hadiis Folly Systeme Defense Force Patrol SOP</h1>
+				<hr>
+				<h2>Introduction</h2>
+
+				The SDF is a small military organisation commissioned and enlisted by the Hadiis Folly Confederation of Freeholds.<BR><BR>
+				It is made of multiple vessels, small militias, small teams from multiple backgrounds organized to defend the system.<BR><BR>
+
+				Those documents are part of new reforms and reorganisations of the SDF, aimed for patrol groups based on the Lithos 43 planet Miaphus’Ira.<BR><BR>
+
+				The new Hadiis Folly SDF Standard Operating Procedures is made of multiple documents and are destined to:<BR><BR>
+				Members of the System defence Forces assigned patrolling crews<BR><BR>
+				Government employee in the sector of space/air/ground traffic control, military liaison, specialist, and government office workers.<BR><BR>
+				<hr>
+				<h2>Directives</h2>
+
+				This set of directives pertains to:<BR><BR>
+				Government Building<BR><BR>
+				Government controlled outpost and stations<BR><BR>
+				Gouvernement vessels<BR><BR>
+				SDF outpost<BR><BR>
+				SDF Patrol vessels (Shuttle, Corvette, Fregate)<BR><BR>
+
+				Main objective of the SDF is to secure the Hadii’s folly territory from threats of all kinds. Protect the colonists, allied factions and travellers.<BR><BR>
+
+				The SOP on other SDF and government entities is different, in accordance with their mission.<BR><BR>
+
+				The Hadii’s folly Systeme Defense Force Patrols are in fact acting like the systems police and have functions akin to a naval coast guard.<BR><BR>
+				<BR><BR>
+				<hr>
+				<h2>Expectations</h2>
+
+				It is expected for all government workers and soldiers to:<BR><BR>
+				Know and respects the laws of the Hadii’s folly government, <BR><BR>
+				Respect the boundaries of their authority<BR><BR>
+				Ensure the safety of all citizens and allies.<BR><BR>
+				Maintain order.<BR><BR>
+				<hr>
+				<h2>Enforcement</h2>
+
+				The Haddi’s Folly government authority must make sure the SOP is respected by all its members, and has full power to sanction any personnel.<BR><BR>
+				Complaints should be brought up as needed, and the installation's command station faxed in cases of severe violation.<BR><BR>
+
+
+				<h2>Uniforms</h2>
+
+				It is expected that all SDF personnel assigned to a vessel, base, or government building must wear uniforms during the time of their services.<BR><BR>
+
+				While the government is lenient with the customisation and accessories to the uniform, the uniform must stay visibles (no covering it with coat or jacket). Capes are only allowed for commissioned officers.<BR><BR>
+
+				The SDF doesn’t use rank insignias, instead use head covers to distinguish ranks of enlisted and non-commissioned personnel. Caps are for CNs, Berets are for POs.<BR><BR>
+
+				Civilian government workers must also wear uniforms at work.<BR><BR>
+
+				<h2>Ranks</h2>
+
+				Posted on Patrol vessels :<BR><BR>
+
+				<h3>Crew man (CN)</h3>
+				Crew mens are often enlisted recruits, and make up the bulk of the SDF patrols. Crew men wear the standard uniform, often without a cap. If they get seniority, they do often wear the tan cap.<BR><BR>
+
+				It is not uncommon to see other species allied and on good terms with tajarans at those ranks.<BR><BR>
+				- - -<BR><BR>
+				<h3>Petty Officers (PO)</h3>
+				Non Commissioned officers, often acting as second in command on patrol vessels, leading enlisted personnel.Petty officers wear the standard uniform, often with a beret.<BR><BR>
+
+				It is not uncommon to see other species allied and on good terms with tajarans at those ranks.<BR><BR>
+				- - -<BR><BR>
+				<h3>Lieutenant (LT)</h3>
+				Commissioned officers by the governments, captaining a patrol vessel (as such, crewmembers on board the vessel can call them captains). They wear the officer uniform, often with a formal cap.<BR><BR>
+
+				Commissioned officers are Tajarans.<BR><BR>
+				- - -<BR><BR>
+
+				On smaller crewed vessels, it can happen that multiple crewmembers of the same rank serve on the same vessels. The crew is expected to form a coherent hierarchy based on seniority, competence, leadership but also good faith<BR><BR>
+
+				<h2>Vessel</h2>
+				Patrol vessels are often heavily modified ships for the purpose of reconnaissance, escort, boarding, and first response. They are equipped with :<BR><BR>
+				Brig<BR><BR>
+				Fighter and gunship<BR><BR>
+				Small Medbay<BR><BR>
+				Armory<BR><BR>
+				Navigation room with console<BR><BR>
+				Ballista<BR><BR>
+				They are often crewed by 3 people.<BR><BR>
+
+				<h2>Soldiers code of conduct</h2>
+				This section only applies to SDF soldiers and officers.<BR><BR>
+				Soldiers must be of sound mind and without any disruptions to their judgements<BR><BR>
+				Heavy use of Alcohol, Ambrosia, and other recreational substances are strictly prohibited while on-duty.<BR><BR>
+				Any physical and psychological conditions documented must be cleared by medical personnel approved by the government.<BR><BR>
+				Soldiers are not above the law and must uphold it.<BR><BR>
+				Any misbehaving soldier may face a court martial.<BR><BR>
+				Haddi’s folly prisoners must be treated well and with respect. They are entitled for due process and a trial.<BR><BR>
+				All SDF soldiers are considered on-duty during a 3 to 5 hour shift.<BR><BR>
+				Permission can be granted, but only by the government. SDF soldiers on permission are considered civilians, off-duty, and cannot exercise their function.<BR><BR>
+
+
+				<h2>Command</h2>
+				Lieutenant are commanders of patrol vessels.<BR><BR>
+				If none is on board, vessel command can be taken by petty officers, and even crew mens. If more than 3 lieutenants are posted on the same vessels, all members must agree on a hierarchy.<BR><BR>
+
+				It is awaited for the commanding officer to:<BR><BR>
+
+				Be EVA trained, or obtain EVA training within one week of posting.<BR><BR>
+				Be trained in disaster response to common scenarios aboard a SDF vessel, including but not limited to fire, boarders, and structural damage.<BR><BR>
+				Assist in the operations of the ship.<BR><BR>
+				Commanders are responsible for organizing flight plans, shuttlecraft operations, and excursions.<BR><BR>
+				Commanders are responsible for planning the route that the ship will take to accomplish its directives.<BR><BR>
+				Commanders are responsible for monitoring the ship’s status, and undertaking necessary actions to protect the ship’s integrity.<BR><BR>
+				Commanders are responsible for training crew members.<BR><BR>
+
+
+				<h2>Government Communication</h2>
+				High Command of the Hadii’s Folly patrols crews is made of the government, who enlisted Captain’s and their crews.<BR><BR>
+				Vessels are often owned by the captains, with the government paying for their maintenance, but the other way around is also possible.<BR><BR>
+
+				Contacting the Government authority is done via Fax.<BR><BR>
+				It can be done to request orders, communicate reports (arrest, patrols, events, etcs…), and request warrants.<BR><BR>
+
+
+				<h2>Ship operation</h2>
+				While all SDF soldiers are allowed to helm their assigned patrol vessels, they must be trained for duty for the class of vessel they are operating.<BR><BR>
+				Learner helmsmen must be accompanied by a trainer while flying. They may not fly alone.<BR><BR>
+				SDF identification papers include legal Shuttle and Corvette class permits.<BR><BR>
+				An SDF vessel must be helm or commanded by at least one SDF personnel.<BR><BR>
+				SDF personnel on the ground must be able to take off at any moment.<BR><BR>
+				Lone SDF personnel may helm the vessel alone on small patrol craft.<BR><BR>
+				The loss of any SDF is unacceptable and should be avoided at all cost.<BR><BR>
+				SDF personnel are not obligated to remain on the vessel during ground operations.<BR><BR>
+
+
+				<h2>Duties</h2>
+				SDF soldiers have the following duties:<BR><BR>
+				Protect the sectors from hostiles<BR><BR>
+				Arrest and neutralise criminals<BR><BR>
+				Get rid of dangerous entities<BR><BR>
+				Check and confiscate contraband<BR><BR>
+				Check for firearm / pilot permit<BR><BR>
+				Patrol the sector<BR><BR>
+				Destroy pirate and mercenary illegal satellites<BR><BR>
+				Assist and rescue crew in trouble or requesting help.<BR><BR>
+
+				<h2>Allied factions</h2>
+				SDF has few allied factions that the SDF must assist in priority :<BR><BR>
+				Nanotrasen<BR><BR>
+				The main provider of gear, and the government is a client. When checking for contraband and doing a search, do not detain nor take contraband.<BR><BR>
+				Other SDF branches and units.<BR><BR>
+
+
+				<h2>Engagement</h2>
+				Patrol crews must try to respect a certain rule of engagement. Soldiers are equipped with limited less than lethal weapons. Small electric baton, and can make rubber bullets. Rest of their weaponry is lethal.<BR><BR>
+
+				Patrol crews must first try to deescalate a situation verbally. Unlike bigger vessels, their weaponry is limited.<BR><BR>
+				Non/Less-Lethal force may be used to detain a non-compliant perpetrator or stop an ongoing crime.
+				Lethal force may only be used in cases where other options are either ineffective, unable to prevent imminent loss of life, or against an opposing enemy faction.<BR><BR>
+
+				<h2>Arrest procedure</h2>
+				The SDF patrols have no arrest power without a warrant given by the government. However, they can still detain if a suspect commits a infraction.<BR><BR>
+				If a party wants to press charges against another, the SDF will still require a warrant, but can still detain someone. <BR><BR>
+				If an allied party request an individual accused to have made a infraction to them, the SDF can deliver it to them.<BR><BR>
+
+				<h2>Detainement</h2>
+				The act of detainment is often made by putting someone on the detainment brig on board a vessel. If non hostile, and showed no hostilities, they must be uncuffed.<BR><BR>
+				Detaining someone requires valid charges against them, and those charges cited.<BR><BR>
+				Detaining someone is only temporary. Not more than 10 minutes. Can’t detain and wait for a warrant response if it's a low level infraction.<BR><BR>
+				Detained individuals have all right to medical and food.<BR><BR>
+				Detained individuals can be interrogated.<BR><BR>
+				On low level infraction, fines can be issued. <BR><BR>
+
+				<h2>Arrest</h2>
+				An arrest is made when a Warrant arrives.<BR><BR>
+				Charges must be cited.<BR><BR>
+				When a warrant arrives, the personnel in command can issue the sanction.<BR><BR>
+				If a person is dead before or during the arrest : <BR><BR>
+				They must be brought to medical for reanimation attempt for low, to medium infraction<BR><BR>
+				Can be left for dead for high to special infraction, depending on the context of their death: if they died due to their hostility or due to an incident, for example.<BR><BR>
+
+				All arrest and detainment are advised to be communicated to the government via reports.<BR><BR>
+
+
+				</body>
+			</html>
+			"}
+
+

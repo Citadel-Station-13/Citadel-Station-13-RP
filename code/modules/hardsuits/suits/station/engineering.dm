@@ -27,12 +27,17 @@
 
 /datum/armor/hardsuit/eva
 	melee = 0.35
-	bullet = 0.1
+	melee_tier = 3.75
+	bullet = 0.075
+	bullet_tier = 3.75
 	laser = 0.2
-	energy = 0.25
-	bomb = 0.45
+	laser_tier = 4
+	energy = 0.45
+	bomb = 0.65
 	bio = 1.0
 	rad = 0.95
+	fire = 1.0
+	acid = 1.0
 
 /obj/item/clothing/gloves/gauntlets/hardsuit/eva
 	name = "insulated gauntlets"
@@ -82,12 +87,9 @@
 	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROTECTION_TEMPERATURE
 
 /datum/armor/hardsuit/ce
-	melee = 0.4
-	bullet = 0.2
-	laser = 0.3
-	energy = 0.25
-	bomb = 0.4
-	bio = 1.0
+	melee_tier = 4.1
+	bullet_tier = 4.1
+	laser_tier = 4.3
 	rad = 1.0
 
 /obj/item/clothing/gloves/gauntlets/hardsuit/ce

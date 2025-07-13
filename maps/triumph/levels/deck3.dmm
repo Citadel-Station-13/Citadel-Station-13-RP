@@ -7149,7 +7149,7 @@
 	},
 /obj/item/storage/box/syringegun,
 /obj/item/storage/box/syringegun,
-/obj/item/gun/launcher/syringe,
+/obj/item/gun/projectile/ballistic/syringe,
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/effect/floor_decal/corner/blue{
 	dir = 5
@@ -13771,14 +13771,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
-"lrJ" = (
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
-/obj/spawner/window/low_wall/reinforced,
-/obj/spawner/window/low_wall/reinforced,
-/turf/simulated/floor/plating,
-/area/medical/psych_ward)
 "lsM" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -26527,7 +26519,7 @@
 /obj/item/reagent_containers/glass/bottle/stoxin,
 /obj/item/reagent_containers/glass/bottle/stoxin,
 /obj/item/storage/box/syringes,
-/obj/item/gun/launcher/syringe,
+/obj/item/gun/projectile/ballistic/syringe,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
 	},
@@ -36402,7 +36394,7 @@ ekU
 ekU
 ekU
 ekU
-lrJ
+dOr
 dOr
 ekU
 ekU

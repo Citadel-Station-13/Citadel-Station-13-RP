@@ -1,16 +1,20 @@
-name: 'Check for merge conflicts'
+name: "Check for merge conflicts"
 on:
+  # So that PRs touching the same files as the push are updated
   push:
-    branches:
-      - master
-      - 'project/**'
+  # So that the `dirtyLabel` is removed if conflicts are resolve
+  # We recommend `pull_request_target` so that github secrets are available.
+  # In `pull_request` we wouldn't be able to change labels of fork PRs
+  pull_request_target:
+    types: [synchronize]
+
 jobs:
-  triage:
-    runs-on: ubuntu-20.04
+  main:
+    runs-on: ubuntu-latest
     steps:
-      - uses: mschilde/auto-label-merge-conflicts@2e8fcc76c6430272ec8bb64fb74ec1592156aa6a
+      - name: Check for merge conflicts
+        uses: eps1lon/actions-label-merge-conflict@1df065ebe6e3310545d4f4c4e862e43bdca146f0
         with:
-          CONFLICT_LABEL_NAME: 'Merge Conflict'
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # Default attempt count is 5, so default attempt delay is 5 * 10 = 50 seconds.
-          WAIT_MS: 10000
+          dirtyLabel: "Merge Conflict"
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          commentOnDirty: "This pull request conflicts with the merge target."

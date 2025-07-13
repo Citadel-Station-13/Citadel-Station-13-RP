@@ -66,6 +66,11 @@
 		if(DAMAGE_TYPE_BURN)
 		else
 			return // normal atoms can't take non brute-burn damage
+
+	#ifdef CF_VISUALIZE_DAMAGE_TICKS
+	visualize_atom_damage(damage, damage_type)
+	#endif
+
 	// default atom damage handling
 	inflict_atom_damage(
 		damage,
@@ -75,7 +80,7 @@
 		damage_mode,
 		hit_zone,
 		attack_type,
-		weapon,
+		attack_source,
 	)
 
 /**
@@ -111,7 +116,7 @@
  *
  * @return raw damage taken
  */
-/atom/proc/inflict_atom_damage(damage, damage_type, damage_tier, damage_flag, damage_mode, hit_zone, attack_type, datum/weapon)
+/atom/proc/inflict_atom_damage(damage, damage_type, damage_tier, damage_flag, damage_mode, hit_zone, attack_type, datum/attack_source)
 	if(!integrity_enabled)
 		return 0
 	if(integrity_flags & INTEGRITY_INDESTRUCTIBLE)
@@ -122,6 +127,17 @@
 	damage_integrity(damage)
 	. = . - integrity
 
+/**
+ * Visualizes a damage instance.
+ *
+ * @params
+ * * damage - amount inflicted
+ * * damage_type - (optional) damage type inflicted
+ */
+/atom/proc/visualize_atom_damage(damage, damage_type)
+	var/atom/movable/render/damage_tick/damage_tick = new(loc, src, 0.75 SECOND)
+	var/use_color = damage_type_to_visualized_color(damage_type)
+	damage_tick.maptext = MAPTEXT_CENTER("<font color='[use_color]'>[damage]</font>")
 
 //* Integrity - Direct Manipulation *//
 
