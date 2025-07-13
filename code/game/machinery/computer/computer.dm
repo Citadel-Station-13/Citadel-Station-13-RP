@@ -10,6 +10,8 @@
 	name = "computer"
 	icon = 'icons/obj/computer.dmi'
 	icon_state = "computer"
+	/// allow clicking through computers because they are often used in a way that blocks a corner tile
+	pass_flags = /obj/machinery::pass_flags | ATOM_PASS_CLICK
 	density = TRUE
 	anchored = TRUE
 	use_power = USE_POWER_IDLE

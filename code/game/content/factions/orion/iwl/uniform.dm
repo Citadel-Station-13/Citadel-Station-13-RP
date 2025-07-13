@@ -4,6 +4,9 @@
 	icon = 'icons/content/factions/orion/iwl/iwluni.dmi'
 	icon_state = "iwl_comm_uniform"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/iwlofficer
 	name = "officer's uniform"
@@ -11,6 +14,9 @@
 	icon = 'icons/content/factions/orion/iwl/iwluni.dmi'
 	icon_state = "iwl_off_uniform"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/iwluniform
 	name = "soldiery uniform"
@@ -18,3 +24,6 @@
 	icon = 'icons/content/factions/orion/iwl/iwluni.dmi'
 	icon_state = "iwl_uniform"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL

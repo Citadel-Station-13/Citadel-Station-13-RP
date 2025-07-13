@@ -1,4 +1,4 @@
-/mob/living/carbon/human/revive(force, full_heal)
+/mob/living/carbon/human/revive(force, full_heal, restore_nutrition = TRUE)
 	. = ..()
 	if(!.)
 		return
@@ -6,7 +6,7 @@
 	// This is because the logic for being unconscious from damage is, for some reason, in UI. //
 	handle_regular_UI_updates()
 
-/mob/living/carbon/human/rejuvenate(fix_missing, reset_to_slot, var/delete_nif = FALSE)
+/mob/living/carbon/human/rejuvenate(fix_missing, reset_to_slot, restore_nutrition = TRUE, var/delete_nif = FALSE)
 	. = ..()
 	if(!.)
 		return

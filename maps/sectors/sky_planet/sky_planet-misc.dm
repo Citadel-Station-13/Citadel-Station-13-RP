@@ -7,7 +7,7 @@
 [i]Class[/i]: P-Class Planet, with breathable air over cloud level.
 [i]Habitability[/i]: Weak : Ground level impossible. Settlements in high atltitude, on Sky-Rigs
 [i]Population[/i]: 500
-[i]Controlling Goverment[/i]: Previously : Various small defunct corporations. Now : SDF (limited), Haddi's Folly goverment (Limited)
+[i]Controlling Goverment[/i]: Previously : Various small defunct corporations. Now : SDF (limited), haddi's folley goverment (Limited)
 [b]Relationship with NT[/b]: Nanotrasen Client Government, NT asset was authorised to land, Tajaran SDF outpost given to NT.
 [b]Relevant Contracts[/b]: Dangerous Wildlife Control, System Self Defence Assistance."}
 	icon_state = "globe"

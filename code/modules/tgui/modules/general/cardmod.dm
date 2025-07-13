@@ -204,7 +204,8 @@
 	.["can_demote"] = auth_demote(user, editing, authing, editing?.rank)
 
 /datum/tgui_module/card_mod/ui_act(action, list/params, datum/tgui/ui)
-	. = ..()
+	if(..())
+		return TRUE
 	var/obj/item/card/id/target = edit_target()
 	var/obj/item/card/id/source = auth_source(usr)
 	switch(action)
