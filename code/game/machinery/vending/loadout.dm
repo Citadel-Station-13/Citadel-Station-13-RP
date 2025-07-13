@@ -262,6 +262,7 @@
 		/obj/item/clothing/accessory/collar/pink = 5,
 		/obj/item/clothing/accessory/collar/holo = 5,
 		/obj/item/clothing/accessory/collar/shock = 5,
+		/obj/item/leash = 5,
 		/obj/item/clothing/accessory/cowledvest = 5,
 		/obj/item/storage/belt/fannypack = 1,
 		/obj/item/storage/belt/fannypack/white = 5,
@@ -544,6 +545,7 @@
 		/obj/item/clothing/under/qipao = 5,
 		/obj/item/clothing/under/qipao/white = 5,
 		/obj/item/clothing/under/qipao/red = 5,
+		/obj/item/clothing/under/sleeveless_qipao = 5,
 		/obj/item/clothing/under/moderncoat = 5,
 		/obj/item/clothing/under/permit = 5,
 		/obj/item/clothing/under/oldwoman = 5,
@@ -699,10 +701,10 @@
 		/obj/item/storage/box/fluff/swimsuit/highclass = 3,
 		/obj/item/storage/box/fluff/swimsuit/latex = 3,
 		/obj/item/storage/box/rainponcho = 5,
-		/obj/item/clothing/under/redpyjamas = 5,
-		/obj/item/clothing/under/redpyjamas_fem = 5,
-		/obj/item/clothing/under/bluepyjamas = 5,
-		/obj/item/clothing/under/bluepyjamas_fem = 5,
+		/obj/item/clothing/under/pj/red = 5,
+		/obj/item/clothing/under/pj/red_fem = 5,
+		/obj/item/clothing/under/pj/blue = 5,
+		/obj/item/clothing/under/pj/blue_fem = 5,
 		/obj/item/clothing/under/utility = 5,
 		/obj/item/clothing/under/utility/grey = 5,
 		/obj/item/clothing/under/utility/blue = 5,
@@ -793,7 +795,8 @@
 		/obj/item/storage/backpack/dufflebag = 10,
 	)
 	premium = list(
-		/obj/item/clothing/under/color/rainbow = 1,
+		/obj/item/clothing/under/color/rainbow = 5,
+		/obj/item/clothing/under/color/rainbow_skirt = 5,
 	)
 	contraband = list(
 		/obj/item/clothing/under/rank/clown = 1,

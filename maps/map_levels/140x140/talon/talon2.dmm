@@ -466,7 +466,7 @@
 "gK" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/cell/device/weapon/empty,
-/obj/item/gun/energy/gun/eluger,
+/obj/item/gun/projectile/energy/gun/eluger,
 /turf/simulated/floor/reinforced,
 /area/talon/decktwo/vault)
 "gN" = (
@@ -3742,14 +3742,14 @@
 "Rr" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/cell/device/weapon/empty,
-/obj/item/gun/energy/laser/practice,
-/obj/item/gun/energy/laser/practice,
-/obj/item/gun/energy/laser/practice,
-/obj/item/gun/energy/lasertag/omni,
-/obj/item/gun/energy/lasertag/omni,
-/obj/item/gun/energy/lasertag/omni,
-/obj/item/gun/energy/lasertag/omni,
-/obj/item/gun/energy/lasertag/omni,
+/obj/item/gun/projectile/energy/laser/practice,
+/obj/item/gun/projectile/energy/laser/practice,
+/obj/item/gun/projectile/energy/laser/practice,
+/obj/item/gun/projectile/energy/lasertag/omni,
+/obj/item/gun/projectile/energy/lasertag/omni,
+/obj/item/gun/projectile/energy/lasertag/omni,
+/obj/item/gun/projectile/energy/lasertag/omni,
+/obj/item/gun/projectile/energy/lasertag/omni,
 /turf/simulated/floor/reinforced,
 /area/talon/decktwo/vault)
 "Ru" = (

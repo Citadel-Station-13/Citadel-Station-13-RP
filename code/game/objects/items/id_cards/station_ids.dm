@@ -37,9 +37,11 @@
 	var/assignment = null	//can be alt title or the actual job
 	var/rank = null			//actual job
 
-	var/mining_points = 0	// For redeeming at mining equipment vendors
-	var/survey_points = 0	// For redeeming at explorer equipment vendors.
-	var/engineer_points = 0	// For redeeming at engineering equipment vendors
+	//* Point Redemption *//
+
+	/// stored POINT_REDEMPTION_TYPE_* points; enum associated to number
+	/// * lazy list
+	var/list/stored_redemption_points
 
 /obj/item/card/id/Initialize(mapload)
 	. = ..()
@@ -76,8 +78,11 @@
 	. = ..()
 	if(.)
 		. += "<br>"
-	if(mining_points)
-		. += "There's [mining_points] mining equipment redemption point\s loaded onto this card."
+	for(var/key in stored_redemption_points)
+		var/amount = stored_redemption_points[key]
+		if(!amount)
+			continue
+		. += "There's [amount] [key] equipment redemption point[amount > 1 ? "s" : ""] loaded on this card."
 
 /obj/item/card/id/update_name()
 	name = "[registered_name? "[registered_name]'s " : ""]ID Card [assignment? "([assignment])" : ""]"
@@ -215,6 +220,27 @@
 	if(href_list[VV_HK_ID_MOD])
 		var/datum/tgui_module/card_mod/admin/card_vv/mod = new(src)
 		mod.ui_interact(usr)
+
+//* Point Redemption *//
+
+/obj/item/card/id/proc/get_redemption_points(point_type)
+	return stored_redemption_points?[point_type] || 0
+
+/obj/item/card/id/proc/set_redemption_points(point_type, amount)
+	LAZYSET(stored_redemption_points, point_type, amount)
+
+/obj/item/card/id/proc/adjust_redemption_points(point_type, amount)
+	LAZYINITLIST(stored_redemption_points)
+	stored_redemption_points[point_type] = max(0, stored_redemption_points[point_type] + amount)
+
+/**
+ * @return TRUE / FALSE on success / fail
+ */
+/obj/item/card/id/proc/use_redemption_points(point_type, amount)
+	if(stored_redemption_points?[point_type] < amount)
+		return FALSE
+	stored_redemption_points[point_type] -= amount
+	return TRUE
 
 /obj/item/card/id/silver
 	name = "command identification card"
@@ -769,3 +795,16 @@
 	icon_state = "guest"
 	job_access_type = null
 	access = list(170)
+
+/obj/item/card/id/external/id_nka
+	name = "New Kingdom of Adhomai Commoner's ID"
+	desc = "An ID issued to the non-noble commoners of the New Kingdom of Adhomai. In some regions, adults must legally carry it on their person at all times."
+	icon_state = "nka"
+	job_access_type = null
+
+/obj/item/card/id/external/id_sdf
+	name = "haddi's folley SDF ID"
+	desc = "An ID issued to members of the system defence force of haddi's folley."
+	icon_state = "sdf"
+	job_access_type = null
+	access = list(155)

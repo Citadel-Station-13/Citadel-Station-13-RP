@@ -140,7 +140,7 @@
 /obj/structure/window/phoronbasic{
 	dir = 1
 	},
-/obj/item/gun/energy/puzzle_key,
+/obj/item/gun/projectile/energy/puzzle_key,
 /turf/simulated/floor/phoron,
 /area/class_p/POIs/archaic_temple)
 "kE" = (
@@ -358,12 +358,12 @@
 /area/class_p/POIs/archaic_temple)
 "so" = (
 /obj/structure/table/rack/steel,
-/obj/item/gun/magic/wand/death,
+/obj/item/gun/projectile/magic/wand/death,
 /turf/simulated/floor/silver,
 /area/class_p/POIs/archaic_temple)
 "sH" = (
 /obj/structure/table/marble,
-/obj/item/gun/energy/staff/focus{
+/obj/item/gun/projectile/energy/staff/focus{
 	name = "Staff of the Forgotten"
 	},
 /obj/effect/trap/launcher/fireball_aoe/finite{

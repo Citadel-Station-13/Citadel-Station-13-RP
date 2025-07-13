@@ -170,7 +170,7 @@
 
 /datum/crafting_recipe/bone_bow
 	name = "Bone Bow"
-	result = /obj/item/gun/ballistic/bow/ashen
+	result = /obj/item/gun/projectile/ballistic/bow/ashen
 	time = 120 // 80+120 = 200
 	reqs = list(/obj/item/stack/material/bone = 8,
 				 /obj/item/stack/sinew = 4)
@@ -646,7 +646,7 @@
 
 /datum/crafting_recipe/heaven_shaker
 	name = "Heaven Shaker"
-	result = /obj/item/grenade/explosive/ashlander
+	result = /obj/item/grenade/simple/explosive/ashlander
 	time = 300
 	reqs = list(/obj/item/reagent_containers/glass/bucket/sandstone = 1,
 				/obj/item/condensedphlogiston = 3,
@@ -656,7 +656,7 @@
 
 /datum/crafting_recipe/heaven_shaker_frag
 	name = "Heaven Shaker (fragmentation)"
-	result = /obj/item/grenade/explosive/ashlander/fragmentation
+	result = /obj/item/grenade/simple/explosive/ashlander/fragmentation
 	time = 300
 	reqs = list(/obj/item/reagent_containers/glass/bucket/sandstone = 1,
 				/obj/item/condensedphlogiston = 3,

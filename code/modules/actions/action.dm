@@ -329,6 +329,8 @@
  * @params
  * * action - action datuam
  * * actor - the person clicking
+ *
+ * @return TRUE if handled
  */
 /datum/proc/ui_action_click(datum/action/action, datum/event_args/actor/actor)
-	return
+	return FALSE

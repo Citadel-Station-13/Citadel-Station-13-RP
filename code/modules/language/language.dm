@@ -222,7 +222,7 @@
 				if(!vocal || vocal.is_broken() || vocal.mute)
 					return FALSE
 
-			if(src.name in H.species.assisted_langs)
+			if(src.name in H.species.assisted_langs && !(src.name in H.species.intrinsic_languages))
 				. = FALSE
 				var/obj/item/organ/internal/voicebox/vox = locate() in H.internal_organs	// Only voiceboxes for now. Maybe someday it'll include other organs, but I'm not that clever
 				if(vox)
@@ -291,7 +291,7 @@
 		if(!(L.language_flags & LANGUAGE_NONGLOBAL))
 			dat += "<b>[L.name] ([get_language_prefix()][L.key])</b><br/>[L.desc]<br/><br/>"
 
-	src << browse(dat, "window=checklanguage")
+	src << browse(HTML_SKELETON(dat), "window=checklanguage")
 	return
 
 /mob/living/check_languages()
@@ -309,7 +309,7 @@
 			else
 				dat += "<b>[L.name] ([get_language_prefix()][L.key])</b> - cannot speak!<br/>[L.desc]<br/><br/>"
 
-	src << browse(dat, "window=checklanguage")
+	src << browse(HTML_SKELETON(dat), "window=checklanguage")
 
 /mob/living/Topic(href, href_list)
 	if(href_list["default_lang"])

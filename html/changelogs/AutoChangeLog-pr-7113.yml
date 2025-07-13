@@ -1,0 +1,9 @@
+author: "MarsM0nd"
+delete-after: True
+changes:
+  - bugfix: "Able to escape every storage"
+  - bugfix: "vore resist belly interactions"
+  - bugfix: "augment cooldowns"
+  - bugfix: "Cigar, chocolate, and crayon/marker/chalk boxes don't become (partly) invisible"
+  - bugfix: "resonate analyzer can be used"
+  - tweak: "plant analyzer is now small"

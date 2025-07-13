@@ -23,7 +23,7 @@
 	/// Minimum lightness for normal mode
 	var/minimum_normal_lightness = 50
 	/// Minimum lightness for matrix mode, tested using 4 test colors of full red, green, blue, white.
-	var/minimum_matrix_lightness = 75
+	var/minimum_matrix_lightness = 10
 	/// Minimum matrix tests that must pass for something to be considered a valid color (see above)
 	var/minimum_matrix_tests = 2
 	/// Temporary messages
@@ -37,6 +37,8 @@
 		/obj/item/hardsuit,
 		/obj/item/toy
 	)
+
+	var/snowflake_last_ui_expensive_update
 
 /obj/machinery/gear_painter/Initialize(mapload)
 	. = ..()
@@ -162,6 +164,10 @@
 	.["buildval"] = build_val
 	if(temp)
 		.["temp"] = temp
+	// TODO: use byondmap, don't use this shitty unresponsive throttling
+	if(snowflake_last_ui_expensive_update + 0.15 SECONDS > world.time)
+		return
+	snowflake_last_ui_expensive_update = world.time
 	if(inserted)
 		.["item"] = list()
 		.["item"]["name"] = inserted.name
@@ -296,10 +302,10 @@
 		// A predefined number of them must pass to be considered valid
 		var/passed = 0
 #define COLORTEST(thestring, thematrix) passed += (rgb2hsv(RGBMatrixTransform(thestring, thematrix))[3] >= minimum_matrix_lightness)
-		COLORTEST("FF0000", cm)
-		COLORTEST("00FF00", cm)
-		COLORTEST("0000FF", cm)
-		COLORTEST("FFFFFF", cm)
+		COLORTEST("#FF0000", cm)
+		COLORTEST("#00FF00", cm)
+		COLORTEST("#0000FF", cm)
+		COLORTEST("#FFFFFF", cm)
 		pass() // macro used immediately before being undefined; BYOND bug 2072419
 #undef COLORTEST
 		if(passed < minimum_matrix_tests)

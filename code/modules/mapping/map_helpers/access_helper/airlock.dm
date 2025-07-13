@@ -550,6 +550,13 @@
 		ACCESS_COMMAND_BRIDGE,
 	)
 
+/obj/map_helper/access_helper/airlock/station/command/strelka
+	req_one_access = list(
+		ACCESS_COMMAND_BRIDGE,
+		ACCESS_GENERAL_PATHFINDER,
+	)
+//Basically, the pathfinder gets bridge acces since the Strelka is a NEV
+
 /obj/map_helper/access_helper/airlock/station/command/ai_upload
 	req_access = list(
 		ACCESS_COMMAND_UPLOAD,
@@ -699,4 +706,9 @@
 /obj/map_helper/access_helper/airlock/disconnected/talon
 	req_access = list(
 		ACCESS_FACTION_TALON,
+	)
+
+/obj/map_helper/access_helper/airlock/disconnected/sdf
+	req_access = list(
+		ACCESS_FACTION_SDF,
 	)

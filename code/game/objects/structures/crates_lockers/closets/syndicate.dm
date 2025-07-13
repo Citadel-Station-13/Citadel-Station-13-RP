@@ -38,7 +38,7 @@
 	/obj/item/ammo_magazine/a10mm = 5,
 	/obj/item/storage/box/handcuffs,
 	/obj/item/storage/box/flashbangs,
-	/obj/item/gun/energy/gun = 5,
+	/obj/item/gun/projectile/energy/gun = 5,
 	/obj/item/pinpointer/nukeop = 5,
 	/obj/item/pda/syndicate,
 	/obj/item/radio/uplink)
@@ -133,5 +133,5 @@
 		/obj/item/bananapeel,
 		/obj/item/card/id/syndicate,
 		/obj/item/assembly/mousetrap/armed,
-		/obj/item/grenade/chem_grenade/lube_tactical,
+		/obj/item/grenade/simple/chemical/premade/lube_tactical,
 		/obj/item/clothing/shoes/clown_shoes)

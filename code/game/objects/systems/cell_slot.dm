@@ -9,15 +9,18 @@
 	var/obj/item/cell/cell
 	/// reserved - cell type accepted enum, for when we do large/medium/small/etc cells later.
 	var/cell_type
+
 	/// considered primary? if so, we get returned on get_cell()
 	var/primary = TRUE
+
 	/// allow inducer?
 	var/receive_inducer = FALSE
 	/// allow EMPs to hit?
 	var/receive_emp = FALSE
 	/// allow explosions to hit cell?
-	// todo: currently unused
+	// todo: currently unused; probably kill this eventually
 	var/recieve_explosion = FALSE
+
 	/// allow quick removal by clicking with hand?
 	var/remove_yank_offhand = FALSE
 	/// allow context menu removal?
@@ -27,11 +30,14 @@
 	/// no-tool time for removal, if any
 	var/remove_yank_time = 0
 	/// tool behavior for removal, if any
+
 	var/remove_tool_behavior = null
 	/// tool time for removal, if any
 	var/remove_tool_time = 0
+
 	/// removal / insertion is discrete or loud
 	var/remove_is_discrete = TRUE
+
 	/// legacy
 	// todo: kill this
 	var/legacy_use_device_cells = FALSE
@@ -199,20 +205,8 @@
  * cell function wrapper - checks if the specified amount can be provided. If it can, it removes the amount from the cell and returns TRUE otherwise does nothing and returns FALSE
  * returns FALSE if cell is null
  */
-/datum/object_system/cell_slot/proc/checked_use(var/amount)
-	return cell?.checked_use(amount) ? TRUE : FALSE
-
-/**
- * cell function wrapper - use x cell units, affected by GLOB.cellefficiency, returns the amount actually used or 0 if null
- */
-/datum/object_system/cell_slot/proc/use_scaled(var/amount)
-	return cell?.use_scaled(amount) || 0
-
-/**
- * cell function wrapper - checked_use() but scaled by GLOB.cellefficiency
- */
-/datum/object_system/cell_slot/proc/checked_use_scaled(var/amount)
-	return cell?.checked_use_scaled(amount) ? TRUE : FALSE
+/datum/object_system/cell_slot/proc/checked_use(amount, reserve)
+	return cell?.checked_use(amount, reserve) ? TRUE : FALSE
 
 /**
  * cell function wrapper - recharge the cell by x amount returns the amount consumed or 0 if cell is null

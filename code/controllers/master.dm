@@ -27,6 +27,9 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	/// How many times have we ran?
 	var/iteration = 0
 
+	/// Stack end detector to detect stack overflows that kill the mc's main loop
+	var/datum/stack_end_detector/stack_end_detector
+
 	/// world.time of last fire, for tracking lag outside of the mc.
 	var/last_run
 
@@ -123,7 +126,11 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 	//# 2. set up random seed
 	if(!random_seed)
-		random_seed = (TEST_RUN_PARAMETER in world.params) ? 29051994 : rand(1, 1e9)
+		#ifdef UNIT_TESTS
+		random_seed = 29051994 // How about 22475?
+		#else
+		random_seed = rand(1, 1e9)
+		#endif
 		rand_seed(random_seed)
 
 	//# 3. create subsystems
@@ -510,6 +517,10 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	var/error_level = 0
 	var/sleep_delta = 1
 
+	//setup the stack overflow detector
+	stack_end_detector = new()
+	var/datum/stack_canary/canary = stack_end_detector.prime_canary()
+	canary.use_variable()
 	//# The actual loop.
 	while (1)
 		var/new_tickdrift = (((REALTIMEOFDAY - loop_start_timeofday) - (world.time - loop_start_time)) / world.tick_lag)

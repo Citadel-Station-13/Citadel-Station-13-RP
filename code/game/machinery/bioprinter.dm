@@ -21,8 +21,8 @@
 	var/base_print_delay = 100
 	///Is the bioprinter printing
 	var/printing = FALSE
-	///Blood sample for DNA hashing.
-	var/loaded_dna
+	/// Blood sample for DNA hashing.
+	var/datum/blood_mixture/loaded_blood_mixture
 	///May cause rejection, or the printing of some alien limb instead!
 	var/malfunctioning = FALSE
 	///Can it print more 'complex' organs?
@@ -206,13 +206,7 @@
 
 /// Checks for reagents, then reports how much biomass it has in it.
 /obj/machinery/organ_printer/proc/get_biomass_volume()
-	var/biomass_count = 0
-	if(container && container.reagents)
-		for(var/datum/reagent/R in container.reagents.reagent_list)
-			if(R.id == "biomass")
-				biomass_count += R.volume
-
-	return biomass_count
+	return container.reagents?.reagent_volumes?[/datum/reagent/nutriment/biomass::id]
 
 /obj/machinery/organ_printer/proc/can_print(choice, biomass_needed = 0)
 	var/biomass = get_biomass_volume()
@@ -220,7 +214,8 @@
 		visible_message(SPAN_INFO("\The [src] displays a warning: 'Not enough biomass. [biomass] stored and [biomass_needed] needed.'"))
 		return FALSE
 
-	if(!loaded_dna || !loaded_dna["donor"])
+	var/datum/blood_fragment/using_fragment = loaded_blood_mixture.unsafe_get_fragment_ref(1)
+	if(!using_fragment)
 		visible_message(SPAN_INFO("\The [src] displays a warning: 'No DNA saved. Insert a blood sample.'"))
 		return FALSE
 	return TRUE
@@ -229,7 +224,8 @@
 	var/new_organ = choice
 	var/obj/item/organ/O = new new_organ(get_turf(src))
 	O.status |= ORGAN_CUT_AWAY
-	var/mob/living/carbon/human/C = loaded_dna["donor"]
+	var/datum/blood_fragment/using_fragment = loaded_blood_mixture.unsafe_get_fragment_ref(1)
+	var/mob/living/carbon/human/C = using_fragment.legacy_donor
 	O.set_dna(C.dna)
 	O.species = C.species
 
@@ -299,10 +295,9 @@
 	// DNA sample from syringe.
 	if(istype(W,/obj/item/reagent_containers/syringe))	//TODO: Make this actually empty the syringe
 		var/obj/item/reagent_containers/syringe/S = W
-		var/datum/reagent/blood/injected = locate() in S.reagents.reagent_list //Grab some blood
-		if(injected && injected.data)
-			loaded_dna = injected.data
-			S.reagents.remove_reagent("blood", injected.volume)
+		var/datum/blood_mixture/mixture = S.reagents?.reagent_datas[/datum/reagent/blood::id]
+		if((loaded_blood_mixture = mixture))
+			S.reagents.del_reagent(/datum/reagent/blood)
 			to_chat(user, SPAN_INFO("You scan the blood sample into the bioprinter."))
 		return
 	else if(istype(W,/obj/item/reagent_containers/glass))

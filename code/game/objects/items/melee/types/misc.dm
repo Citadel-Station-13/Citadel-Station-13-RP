@@ -10,11 +10,6 @@
 	origin_tech = list(TECH_COMBAT = 4)
 	attack_verb = list("flogged", "whipped", "lashed", "disciplined")
 
-/obj/item/melee/chainofcommand/suicide_act(mob/user)
-	var/datum/gender/T = GLOB.gender_datums[user.get_visible_gender()]
-	user.visible_message(SPAN_DANGER("\The [user] [T.is] strangling [T.himself] with \the [src]! It looks like [T.he] [T.is] trying to commit suicide."), SPAN_DANGER("You start to strangle yourself with \the [src]!"), SPAN_DANGER("You hear the sound of someone choking!"))
-	return (OXYLOSS)
-
 /obj/item/melee/umbrella
 	name = "umbrella"
 	desc = "To keep the rain off you. Use with caution on windy days."
@@ -175,40 +170,35 @@
 	item_state = "knife"
 	slot_flags = SLOT_BELT
 	damage_force = 30
+	damage_tier = 4
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	throw_force = 10
 	w_class = WEIGHT_CLASS_NORMAL
-	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	attack_verb = list("grasped", "torn", "cut", "pierced", "lashed")
 	attack_sound = 'sound/weapons/bladeslice.ogg'
-	armor_penetration = 10
 	var/poison_chance = 100
 	var/poison_amount = 5
 	var/poison_type = "shredding_nanites"
 
-/obj/item/melee/nanite_knife/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/melee/nanite_knife/melee_finalize(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style)
 	. = ..()
-	var/mob/living/L = target
+	if(. & (CLICKCHAIN_ATTACK_MISSED | CLICKCHAIN_FLAGS_UNCONDITIONAL_ABORT))
+		return
+	if(clickchain.attack_contact_multiplier <= 0)
+		return
+	var/mob/living/L = clickchain.performer
 	if(!istype(L))
 		return
 	if(!L.reagents)
 		return
-	if(L.can_inject(src, null, target_zone))
-		inject_poison(L, target_zone)
+	if(L.can_inject(src, null, clickchain.target_zone))
+		inject_poison(L, clickchain.target_zone)
 
  // Does actual poison injection, after all checks passed.
 /obj/item/melee/nanite_knife/proc/inject_poison(mob/living/M, target_zone)
 	if(prob(poison_chance))
 		to_chat(M, "<span class='warning'>You feel nanites digging into your skin!</span>")
 		M.reagents.add_reagent(poison_type, poison_amount)
-
-/obj/item/melee/nanite_knife/suicide_act(mob/user)
-	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-	user.visible_message(pick("<span class='danger'>\The [user] is shoving \the [src] into [TU.is] chest! It looks like [TU.he] [TU.is] trying to commit suicide.</span>",\
-		"<span class='danger'>\The [user] is stabbing themselves with \the [src]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>"))
-	var/turf/T = get_turf(src)
-	user.gib()
-	new /mob/living/simple_mob/mechanical/cyber_horror(T)
-	return
 
 //Interestingly, a magic flame sword has a lot in common with the thermal cutter Tech and I made for Goblins. So I decided it should share some of that code.
 /obj/item/melee/ashlander
@@ -348,9 +338,9 @@
 	throw_force = 30
 	force_wielded = 75
 	force_unwielded = 50
+	damage_tier = 6
 	w_class = WEIGHT_CLASS_HUGE
 	attack_verb = list("attacked", "smashed", "crushed", "wacked", "pounded")
-	armor_penetration = 50
 	weight = ITEM_WEIGHT_BASELINE
 
 //This currently just kills the user. lol
@@ -360,16 +350,16 @@
 
 	if(wielded || isliving(target))
 		if(prob(10))
-			G.electrocute_act(500, src, def_zone = BP_TORSO)
+			G.electrocute_act_parse_this(500, src, def_zone = BP_TORSO)
 			return
 		if(prob(10))
 			G.dust()
 			return
 		else
-			G.stun_effect_act(10 , 50, BP_TORSO, src)
+			G.stun_effect_act_parse_this(10 , 50, BP_TORSO, src)
 			G.take_random_targeted_damage(brute = 10)
 			G.afflict_unconscious(20 * 20)
-			playsound(src.loc, /datum/soundbyte/grouped/sparks, 50, 1)
+			playsound(src.loc, /datum/soundbyte/sparks, 50, 1)
 			return
 */
 

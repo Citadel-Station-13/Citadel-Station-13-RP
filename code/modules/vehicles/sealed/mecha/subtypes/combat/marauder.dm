@@ -30,18 +30,18 @@
 	thrusters_possible = 1
 
 	starting_components = list(
-		/obj/item/mecha_parts/component/hull/durable,
-		/obj/item/mecha_parts/component/actuator,
-		/obj/item/mecha_parts/component/armor/military,
-		/obj/item/mecha_parts/component/gas,
-		/obj/item/mecha_parts/component/electrical
+		/obj/item/vehicle_component/hull/durable,
+		/obj/item/vehicle_component/actuator,
+		/obj/item/vehicle_component/armor/military,
+		/obj/item/vehicle_component/gas,
+		/obj/item/vehicle_component/electrical
 		)
 
 	starting_equipment = list(
-		/obj/item/mecha_parts/mecha_equipment/weapon/energy/pulse,
-		/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/explosive,
-		/obj/item/mecha_parts/mecha_equipment/tesla_energy_relay,
-		/obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster
+		/obj/item/vehicle_module/weapon/energy/pulse,
+		/obj/item/vehicle_module/weapon/ballistic/missile_rack/explosive,
+		/obj/item/vehicle_module/tesla_energy_relay,
+		/obj/item/vehicle_module/antiproj_armor_booster
 		)
 
 	icon_scale_x = 1.5
@@ -62,11 +62,11 @@
 	max_equip = 5
 
 	starting_equipment = list(
-		/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/scattershot,
-		/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/explosive,
-		/obj/item/mecha_parts/mecha_equipment/tesla_energy_relay,
-		/obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster,
-		/obj/item/mecha_parts/mecha_equipment/teleporter
+		/obj/item/vehicle_module/weapon/ballistic/scattershot,
+		/obj/item/vehicle_module/weapon/ballistic/missile_rack/explosive,
+		/obj/item/vehicle_module/tesla_energy_relay,
+		/obj/item/vehicle_module/antiproj_armor_booster,
+		/obj/item/vehicle_module/teleporter
 		)
 
 //Note that is the Mauler

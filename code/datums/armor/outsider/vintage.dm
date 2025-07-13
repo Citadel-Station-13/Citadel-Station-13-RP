@@ -2,8 +2,11 @@
 
 /datum/armor/vintage/space
 	melee = 0.3
+	melee_tier = 3.5
 	bullet = 0.15
+	bullet_tier = 3.5
 	laser = 0.15
+	laser_tier = 3.5
 	energy = 0.1
 	bomb = 0.2
 	bio = 1.0
@@ -25,9 +28,12 @@
 	laser = 0.35
 
 /datum/armor/vintage/space/officer
-	melee = 0.6
+	melee = 0.5
+	melee_tier = 3.75
 	bullet = 0.45
+	bullet_tier = 3.75
 	laser = 0.45
+	laser_tier = 3.75
 	energy = 0.25
 	bomb = 0.6
 	rad = 0.7
@@ -40,6 +46,9 @@
 
 /datum/armor/vintage/space/merc
 	melee = 0.55
+	melee_tier = 3.75
 	bullet = 0.45
+	bullet_tier = 3.75
 	laser = 0.45
+	laser_tier = 3.75
 	bomb = 0.5

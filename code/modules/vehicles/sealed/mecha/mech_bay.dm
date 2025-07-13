@@ -99,4 +99,3 @@
 		else
 			to_chat(M, SPAN_NOTICE("Now charging..."))
 		charging = M
-	return

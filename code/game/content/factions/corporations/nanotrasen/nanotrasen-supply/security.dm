@@ -19,7 +19,7 @@
 		/obj/item/flash = 2,
 		/obj/item/reagent_containers/spray/pepper = 2,
 		/obj/item/melee/baton/loaded = 2,
-		/obj/item/gun/energy/taser = 2,
+		/obj/item/gun/projectile/energy/taser = 2,
 		/obj/item/gunbox = 2,
 		/obj/item/storage/box/flashbangs = 2,
 	)
@@ -402,7 +402,7 @@
 		/obj/item/storage/belt/security,
 		/obj/item/flash,
 		/obj/item/reagent_containers/spray/pepper,
-		/obj/item/grenade/flashbang,
+		/obj/item/grenade/simple/flashbang,
 		/obj/item/melee/baton/loaded,
 		/obj/item/clothing/glasses/sunglasses/sechud,
 		/obj/item/barrier_tape_roll/police,
@@ -412,7 +412,7 @@
 		/obj/item/clothing/accessory/storage/black_vest,
 		/obj/item/clothing/head/soft/sec/corp,
 		/obj/item/clothing/under/rank/security/corp,
-		/obj/item/gun/energy/taser,
+		/obj/item/gun/projectile/energy/taser,
 		/obj/item/flashlight/maglight,
 	)
 	worth = 750 // i'm lazy

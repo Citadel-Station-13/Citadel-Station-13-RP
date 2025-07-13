@@ -42,11 +42,11 @@
 /obj/structure/sign/department/armory{
 	pixel_x = 32
 	},
-/obj/item/gun/ballistic/automatic/z8,
+/obj/item/gun/projectile/ballistic/automatic/z8,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "abg" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /turf/simulated/floor/plating,
 /area/triumph/surfacebase/sauna)
 "abV" = (
@@ -669,7 +669,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar/lounge)
 "axz" = (
-/obj/item/grenade/chem_grenade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "axE" = (
@@ -939,7 +939,7 @@
 /area/crew_quarters/sleep/Dorm_6)
 "aCp" = (
 /obj/structure/bed/chair/sofa/black/corner{
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar/lounge)
@@ -2201,7 +2201,7 @@
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside2)
 "biy" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	dir = 2;
@@ -2210,7 +2210,7 @@
 	name = "Robotics shutter";
 	opacity = 0
 	},
-/obj/effect/paint/purplegray,
+/obj/map_helper/paint/purplegray,
 /obj/map_helper/electrochromatic_linker{
 	id = "robotics-inner"
 	},
@@ -2819,8 +2819,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "bBF" = (
@@ -3416,7 +3416,7 @@
 /turf/simulated/wall/prepainted,
 /area/maintenance/lower/medsec_maintenance)
 "bXh" = (
-/obj/item/mecha_parts/part/durand_right_leg{
+/obj/item/vehicle_part/durand_right_leg{
 	name = "Priapic Monument"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -3451,8 +3451,8 @@
 /area/medical/medbay_primary_storage)
 "bYv" = (
 /obj/structure/table/steel,
-/obj/item/gun/energy/laser/practice,
-/obj/item/gun/energy/laser/practice,
+/obj/item/gun/projectile/energy/laser/practice,
+/obj/item/gun/projectile/energy/laser/practice,
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 4;
 	pixel_y = -28
@@ -3833,9 +3833,6 @@
 /turf/simulated/floor/tiled/monotile,
 /area/security/lobby)
 "cky" = (
-/obj/structure/railing{
-	dir = 4
-	},
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/visible/supply{
 	dir = 6
@@ -4976,9 +4973,6 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/crew_quarters/bar/lounge)
 "daD" = (
-/obj/structure/railing{
-	dir = 4
-	},
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/visible/supply,
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
@@ -5197,7 +5191,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
 "djU" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/hammerhead/cockpit)
 "dke" = (
@@ -5562,8 +5556,8 @@
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab/foyer)
 "duY" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
-/obj/effect/paint/babyblue,
+/obj/spawner/window/low_wall/nogrille/firelocks,
+/obj/map_helper/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/surgeryprep)
 "dvw" = (
@@ -5898,8 +5892,10 @@
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
 "dDP" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
+	id = "warden-office"
+	},
+/obj/map_helper/paint/darkred,
 /obj/map_helper/electrochromatic_linker{
 	id = "warden-office"
 	},
@@ -6269,8 +6265,8 @@
 	name = "Security Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/lobby)
 "dNb" = (
@@ -6368,7 +6364,8 @@
 	name = "Pen 2 Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "dQE" = (
@@ -6735,8 +6732,8 @@
 	layer = 3.1;
 	name = "Chemistry Shutters"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/babyblue,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/chemistry)
 "egF" = (
@@ -6829,10 +6826,10 @@
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "ejt" = (
-/turf/simulated/floor/tiled/steel,
+/turf/simulated/floor/tiled/monotechmaint,
 /area/rift/station/public_garden/stairwell)
 "eju" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/sleep)
 "ejz" = (
@@ -6865,8 +6862,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/sleep)
 "eke" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
+/obj/map_helper/paint/darkred,
 /obj/map_helper/electrochromatic_linker{
 	id = "sec-locker"
 	},
@@ -7012,8 +7009,10 @@
 	name = "Warden's Office Shutters";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
+	id = "warden-office"
+	},
+/obj/map_helper/paint/darkred,
 /obj/map_helper/electrochromatic_linker{
 	id = "warden-office"
 	},
@@ -7308,8 +7307,8 @@
 	name = "Pen 6 Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "eBG" = (
@@ -7520,10 +7519,10 @@
 /area/crew_quarters/sleep/Dorm_2)
 "eIB" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
+/obj/item/gun/projectile/energy/gun,
+/obj/item/gun/projectile/energy/gun,
+/obj/item/gun/projectile/energy/gun,
+/obj/item/gun/projectile/energy/gun,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/camera/network/security,
 /obj/machinery/air_alarm{
@@ -7558,8 +7557,8 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery2)
 "eJW" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/lobby)
 "eKx" = (
@@ -7882,7 +7881,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_primary_storage)
 "eWD" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -8050,7 +8049,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
 "fcv" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/rift/stairwell/primary/surfacetwo)
 "fcw" = (
@@ -8373,10 +8372,10 @@
 /area/maintenance/substation/surface_two)
 "fmV" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/ionrifle{
+/obj/item/gun/projectile/energy/ionrifle{
 	pixel_y = 5
 	},
-/obj/item/gun/energy/ionrifle,
+/obj/item/gun/projectile/energy/ionrifle,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
@@ -9194,9 +9193,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/public_garden/stairwell)
 "fSh" = (
-/obj/structure/railing{
-	dir = 1
-	},
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
 	dir = 9
@@ -9417,8 +9413,8 @@
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/chemistry)
 "fZd" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
+/obj/map_helper/paint/darkred,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -10149,9 +10145,6 @@
 	dir = 4
 	},
 /obj/structure/catwalk,
-/obj/structure/railing{
-	dir = 1
-	},
 /turf/simulated/floor/plating,
 /area/rift/station/public_garden/gantry)
 "guh" = (
@@ -10386,7 +10379,7 @@
 /obj/effect/floor_decal/corner_techfloor_grid/full{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/hammerhead/cockpit)
 "gza" = (
@@ -10760,7 +10753,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
 "gIN" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /turf/simulated/floor/plating,
 /area/rift/station/public_garden/stairwell)
 "gJd" = (
@@ -11626,7 +11619,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
 "hsv" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/hammerhead/general)
 "hsO" = (
@@ -13085,7 +13078,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_3)
 "ifW" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /turf/simulated/floor/plating,
 /area/holodeck_control)
 "igc" = (
@@ -13178,7 +13171,7 @@
 /area/assembly/robotics)
 "iiw" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Northwestern Outpost Substation Bypass"
+	RCon_tag = "Surface 2 - Northwestern Outpost Substation Bypass"
 	},
 /turf/simulated/floor,
 /area/maintenance/substation/cafeteria_dock)
@@ -13292,8 +13285,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
 "inb" = (
-/obj/effect/paint/babyblue,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/map_helper/paint/babyblue,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/medical/resleeving)
 "inj" = (
@@ -13301,8 +13294,8 @@
 	pixel_x = -32
 	},
 /obj/structure/disposalpipe/segment,
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/babyblue,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
+/obj/map_helper/paint/babyblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "medbay-outer"
 	},
@@ -13623,7 +13616,7 @@
 /turf/simulated/floor/tiled,
 /area/security/briefing_room)
 "iCM" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/hammerhead/cockpit)
 "iDO" = (
@@ -13761,7 +13754,9 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/structure/closet/crate/bin,
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/rift/station/public_garden/gantry)
 "iIa" = (
@@ -13891,8 +13886,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "iMz" = (
@@ -14046,7 +14041,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/locker)
 "iQl" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/pool)
 "iQw" = (
@@ -14235,8 +14230,8 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery)
 "iWQ" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
+/obj/map_helper/paint/darkred,
 /obj/structure/cable/green,
 /obj/map_helper/electrochromatic_linker{
 	id = "Interr"
@@ -14530,8 +14525,8 @@
 	layer = 3.1;
 	name = "Chemistry Shutters"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/babyblue,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/chemistry)
 "jdp" = (
@@ -14579,7 +14574,8 @@
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
 "jfl" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab/storage)
 "jgg" = (
@@ -14769,7 +14765,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/assembly/robotics)
 "jmT" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	dir = 2;
@@ -14779,9 +14775,9 @@
 	name = "Head of Security's Office Shutters";
 	opacity = 0
 	},
-/obj/effect/paint/darkred,
+/obj/map_helper/paint/darkred,
 /obj/map_helper/electrochromatic_linker{
-	id = "warden-office"
+	id = "hos-office"
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hos)
@@ -14873,10 +14869,10 @@
 "jqk" = (
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/phasegun/rifle{
+/obj/item/gun/projectile/energy/phasegun/rifle{
 	pixel_y = 4
 	},
-/obj/item/gun/energy/phasegun/rifle{
+/obj/item/gun/projectile/energy/phasegun/rifle{
 	pixel_y = -4
 	},
 /obj/structure/cable/green{
@@ -14941,7 +14937,7 @@
 /area/maintenance/security/upper)
 "jsh" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Research Main";
+	RCon_tag = "Surface 2 - Research Main Subgrid";
 	output_attempt = 0
 	},
 /obj/structure/cable/green,
@@ -15031,8 +15027,8 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "juW" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
-/obj/effect/paint/darkred,
+/obj/spawner/window/low_wall/nogrille/firelocks,
+/obj/map_helper/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/briefing_room)
 "juX" = (
@@ -15623,10 +15619,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/range)
-"jQZ" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
-/area/rnd/telescience_lab/foyer)
 "jRK" = (
 /obj/structure/closet/hydrant{
 	pixel_x = -32
@@ -15657,8 +15649,8 @@
 	name = "Pen 8 Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "jSr" = (
@@ -16088,8 +16080,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/maintenance/medbay)
 "keC" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
+/obj/map_helper/paint/darkred,
 /obj/map_helper/electrochromatic_linker{
 	id = "sec-processing-l"
 	},
@@ -16138,8 +16130,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "kgx" = (
@@ -16307,7 +16299,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
 "kjT" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /turf/simulated/floor/plating,
 /area/rift/stairwell/primary/surfacetwo)
 "klg" = (
@@ -16412,7 +16404,7 @@
 /area/medical/surgery2)
 "kmZ" = (
 /obj/structure/bed/chair/sofa/black/corner{
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
@@ -16485,9 +16477,6 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/structure/railing{
-	dir = 4
-	},
 /turf/simulated/floor/plating,
 /area/rift/station/public_garden/gantry)
 "kqp" = (
@@ -16521,8 +16510,8 @@
 /area/crew_quarters/heads/hor)
 "kre" = (
 /obj/structure/table/steel,
-/obj/item/gun/ballistic/shotgun/pump/rifle/practice,
-/obj/item/gun/ballistic/shotgun/pump/rifle/practice,
+/obj/item/gun/projectile/ballistic/shotgun/pump/rifle/practice,
+/obj/item/gun/projectile/ballistic/shotgun/pump/rifle/practice,
 /obj/item/ammo_magazine/a7_62mm/clip/practice,
 /obj/item/ammo_magazine/a7_62mm/clip/practice,
 /obj/item/ammo_magazine/a7_62mm/clip/practice,
@@ -17161,7 +17150,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/lobby)
 "kMg" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /turf/simulated/floor/plating,
 /area/hallway/primary/surfacetwo)
 "kMi" = (
@@ -17267,7 +17256,7 @@
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "kPx" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	dir = 2;
@@ -17276,7 +17265,7 @@
 	name = "Research Director Office shutter";
 	opacity = 0
 	},
-/obj/effect/paint/purplegray,
+/obj/map_helper/paint/purplegray,
 /obj/map_helper/electrochromatic_linker{
 	id = "rd-office"
 	},
@@ -17385,8 +17374,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "kTd" = (
@@ -17572,8 +17561,8 @@
 /obj/structure/disposalpipe/up,
 /obj/machinery/atmospherics/pipe/zpipe/down/scrubbers,
 /obj/structure/lattice,
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/open,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "kXq" = (
@@ -17663,7 +17652,6 @@
 "kYo" = (
 /obj/structure/closet/secure_closet/security,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/holowarrant,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -17794,7 +17782,7 @@
 /turf/simulated/floor/tiled,
 /area/security/briefing_room)
 "laa" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/locker)
 "lac" = (
@@ -17874,7 +17862,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "lcJ" = (
@@ -18117,16 +18106,16 @@
 "llD" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/item/gun/energy/secutor{
+/obj/item/gun/projectile/energy/secutor{
 	pixel_y = -5
 	},
-/obj/item/gun/energy/secutor{
+/obj/item/gun/projectile/energy/secutor{
 	pixel_y = -3
 	},
-/obj/item/gun/energy/secutor{
+/obj/item/gun/projectile/energy/secutor{
 	pixel_y = -1
 	},
-/obj/item/gun/energy/secutor{
+/obj/item/gun/projectile/energy/secutor{
 	pixel_y = 1
 	},
 /turf/simulated/floor/tiled/dark,
@@ -18417,8 +18406,8 @@
 	name = "Pen 5 Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "lxP" = (
@@ -18528,7 +18517,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
 "lAW" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -18715,8 +18704,8 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
 "lDW" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "lEq" = (
@@ -18829,8 +18818,8 @@
 /turf/simulated/wall/prepainted,
 /area/maintenance/medbay)
 "lKj" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/nogrille/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/workshop)
 "lKu" = (
@@ -19043,10 +19032,10 @@
 /obj/structure/closet/crate{
 	name = "Grenade Crate"
 	},
-/obj/item/grenade/chem_grenade,
-/obj/item/grenade/chem_grenade,
-/obj/item/grenade/chem_grenade,
-/obj/item/grenade/chem_grenade,
+/obj/item/grenade/simple/chemical,
+/obj/item/grenade/simple/chemical,
+/obj/item/grenade/simple/chemical,
+/obj/item/grenade/simple/chemical,
 /obj/item/assembly/igniter,
 /obj/item/assembly/igniter,
 /obj/item/assembly/igniter,
@@ -19066,7 +19055,7 @@
 	pixel_x = -30
 	},
 /obj/item/storage/box/syringegun,
-/obj/item/gun/launcher/syringe,
+/obj/item/gun/projectile/ballistic/syringe,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_primary_storage)
 "lQo" = (
@@ -19213,8 +19202,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "lUI" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/breakroom)
 "lUK" = (
@@ -19223,7 +19212,6 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/holowarrant,
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
 "lUM" = (
@@ -19243,11 +19231,11 @@
 "lVi" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/effect/floor_decal/industrial/outline/red,
-/obj/item/gun/ballistic/automatic/wt550{
+/obj/item/gun/projectile/ballistic/automatic/wt550{
 	pixel_y = -7
 	},
-/obj/item/gun/ballistic/automatic/wt550,
-/obj/item/gun/ballistic/automatic/wt550{
+/obj/item/gun/projectile/ballistic/automatic/wt550,
+/obj/item/gun/projectile/ballistic/automatic/wt550{
 	pixel_y = 7
 	},
 /turf/simulated/floor/tiled/dark,
@@ -19345,8 +19333,8 @@
 	name = "Pen 7 Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "lYJ" = (
@@ -19664,7 +19652,8 @@
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/sleeper)
 "miH" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab/foyer)
 "mjr" = (
@@ -20204,7 +20193,7 @@
 	dir = 8
 	},
 /obj/machinery/button/windowtint/multitint{
-	id = "sec_processing_r";
+	id = "sec-processing-r";
 	pixel_x = 24;
 	pixel_y = 26;
 	req_access = list(1)
@@ -20228,12 +20217,6 @@
 /turf/simulated/floor/tiled/white,
 /area/security/warden)
 "mzG" = (
-/obj/machinery/button/crematorium{
-	id = "medbay_crematorium";
-	pixel_x = 26;
-	pixel_y = 23;
-	req_access = list(5)
-	},
 /obj/structure/noticeboard{
 	pixel_y = 32
 	},
@@ -20245,6 +20228,12 @@
 	name = "note from CentCom";
 	pixel_x = -6;
 	pixel_y = -4
+	},
+/obj/machinery/button/crematorium{
+	id = "medbay_crematorium";
+	pixel_x = 26;
+	pixel_y = 23;
+	req_access = list(5)
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/medical/morgue)
@@ -20424,7 +20413,7 @@
 /area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "mDo" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Surface 2"
+	RCon_tag = "Surface 2 - Main Substation"
 	},
 /obj/structure/cable/green,
 /obj/structure/cable/green{
@@ -20709,8 +20698,8 @@
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab/foyer)
 "mJx" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/map_helper/paint/darkred,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/security/hallway)
 "mKp" = (
@@ -20975,8 +20964,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "mQt" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/babyblue,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
+/obj/map_helper/paint/babyblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "medbay-outer"
 	},
@@ -21052,9 +21041,6 @@
 	icon_state = "1-2"
 	},
 /obj/structure/catwalk,
-/obj/structure/railing{
-	dir = 4
-	},
 /turf/simulated/floor/plating,
 /area/rift/station/public_garden/gantry)
 "mVh" = (
@@ -21092,7 +21078,7 @@
 /obj/effect/floor_decal/borderfloorblack/cee,
 /obj/item/ammo_magazine/a44,
 /obj/item/ammo_magazine/a44,
-/obj/item/gun/ballistic/deagle/taj,
+/obj/item/gun/projectile/ballistic/deagle/taj,
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
 "mVF" = (
@@ -21476,9 +21462,6 @@
 /obj/structure/catwalk,
 /obj/structure/cable/green{
 	icon_state = "4-8"
-	},
-/obj/structure/railing{
-	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/rift/station/public_garden/gantry)
@@ -22914,8 +22897,8 @@
 	name = "Pen 3 Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "obA" = (
@@ -23651,7 +23634,7 @@
 /obj/map_helper/access_helper/airlock/station/security/armory,
 /obj/machinery/door/airlock/glass/security/polarized{
 	id_tag = "warden_office";
-	id_tint = "warden_office";
+	id_tint = "warden-office";
 	name = "Warden";
 	req_one_access = null
 	},
@@ -23704,8 +23687,8 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/Dorm_4)
 "oFb" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/babyblue,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
+/obj/map_helper/paint/babyblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "resleeving-tint"
 	},
@@ -24389,7 +24372,7 @@
 "oXc" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass/security/polarized{
-	id_tint = "seclocker";
+	id_tint = "sec-locker";
 	name = "Locker Room";
 	req_one_access = null
 	},
@@ -24483,7 +24466,7 @@
 	dir = 4
 	},
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Surface 2 Substation Bypass"
+	RCon_tag = "Surface 2 - Main Substation Bypass"
 	},
 /turf/simulated/floor,
 /area/maintenance/substation/surface_two)
@@ -24740,8 +24723,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "phz" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/babyblue,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
+/obj/map_helper/paint/babyblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "medbay-outer"
 	},
@@ -24760,23 +24743,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
-"piB" = (
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 2;
-	icon_state = "shutter0";
-	id = "warden";
-	layer = 3.1;
-	name = "Warden's Office Shutters";
-	opacity = 0
-	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/darkred,
-/obj/map_helper/electrochromatic_linker{
-	id = "hos-office"
-	},
-/turf/simulated/floor/plating,
-/area/security/warden)
 "pjd" = (
 /obj/item/radio/intercom/department/security{
 	dir = 8;
@@ -24893,6 +24859,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery)
+"plK" = (
+/obj/machinery/camera/network/security,
+/turf/simulated/floor/reinforced,
+/area/security/hammerhead_bay)
 "plW" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
@@ -25478,8 +25448,8 @@
 	name = "Pen 4 Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "pMR" = (
@@ -25992,8 +25962,8 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside2)
 "qgn" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
+/obj/map_helper/paint/darkred,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -26568,7 +26538,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
 "qwz" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/recreation_area)
 "qwA" = (
@@ -26636,7 +26606,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/lockers)
 "qza" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/rift/trade_shop/loading)
 "qze" = (
@@ -26853,9 +26823,6 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/structure/railing{
-	dir = 4
-	},
 /turf/simulated/floor/plating,
 /area/rift/station/public_garden/gantry)
 "qEZ" = (
@@ -26974,8 +26941,8 @@
 /turf/simulated/open,
 /area/maintenance/lower/medsec_maintenance)
 "qJa" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "qJl" = (
@@ -27086,8 +27053,8 @@
 	name = "Research Director Office shutter";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/nogrille/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/lockers)
 "qLw" = (
@@ -27143,7 +27110,6 @@
 "qNS" = (
 /obj/structure/closet/secure_closet/security,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/holowarrant,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
@@ -27488,28 +27454,28 @@
 /obj/structure/sign/department/armory{
 	pixel_y = 32
 	},
-/obj/item/gun/ballistic/shotgun/pump/combat{
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat{
 	pixel_y = 7
 	},
-/obj/item/gun/ballistic/shotgun/pump/combat{
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat{
 	pixel_y = 7
 	},
-/obj/item/gun/ballistic/shotgun/pump/combat{
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat{
 	pixel_y = 7
 	},
-/obj/item/gun/ballistic/shotgun/pump/combat{
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat{
 	pixel_y = 7
 	},
-/obj/item/gun/energy/laser{
+/obj/item/gun/projectile/energy/laser{
 	pixel_y = -8
 	},
-/obj/item/gun/energy/laser{
+/obj/item/gun/projectile/energy/laser{
 	pixel_y = -8
 	},
-/obj/item/gun/energy/laser{
+/obj/item/gun/projectile/energy/laser{
 	pixel_y = -8
 	},
-/obj/item/gun/energy/laser{
+/obj/item/gun/projectile/energy/laser{
 	pixel_y = -8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -27757,8 +27723,8 @@
 	name = "Pen 1 Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "rhI" = (
@@ -27797,7 +27763,7 @@
 /turf/simulated/floor/wood,
 /area/rift/station/public_garden/gantry)
 "rin" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/computer/secure_data,
 /turf/simulated/floor/plating,
 /area/shuttle/hammerhead/cockpit)
@@ -28491,8 +28457,8 @@
 /turf/simulated/open,
 /area/turbolift/rsurface/level2)
 "rCu" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "rDz" = (
@@ -28681,7 +28647,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/pool)
 "rIt" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	dir = 2;
@@ -28690,7 +28656,7 @@
 	name = "Robotics shutter";
 	opacity = 0
 	},
-/obj/effect/paint/purplegray,
+/obj/map_helper/paint/purplegray,
 /obj/map_helper/electrochromatic_linker{
 	id = "robotics-outer"
 	},
@@ -28746,16 +28712,15 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
 "rLi" = (
-/obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/visible/supply,
-/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
 	name = "Public Garden"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/monotechmaint,
 /area/rift/station/public_garden/stairwell)
 "rLk" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -28906,10 +28871,10 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "rPd" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full{
+/obj/spawner/window/low_wall/reinforced/electrochromic{
 	spawn_grille = 0
 	},
-/obj/effect/paint/babyblue,
+/obj/map_helper/paint/babyblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "operating_theatre_1"
 	},
@@ -29034,8 +28999,8 @@
 	name = "Security Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/darkred,
 /turf/simulated/floor/tiled/monotile,
 /area/security/hallway)
 "rTn" = (
@@ -29102,7 +29067,7 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/glass/security/polarized{
-	id_tint = "seclocker";
+	id_tint = "sec-locker";
 	name = "Locker Room";
 	req_one_access = null
 	},
@@ -29162,7 +29127,7 @@
 "rWQ" = (
 /obj/effect/floor_decal/corner/black/diagonal,
 /obj/structure/bed/chair/sofa/beige/corner{
-	dir = 1
+	dir = 4
 	},
 /obj/machinery/light{
 	dir = 8;
@@ -29460,7 +29425,6 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/holowarrant,
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
 "ske" = (
@@ -29477,8 +29441,8 @@
 /turf/simulated/floor/plating,
 /area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "slq" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "sly" = (
@@ -29534,7 +29498,7 @@
 /turf/simulated/floor/tiled/red,
 /area/security/evastorage)
 "snv" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -29586,10 +29550,10 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_2)
 "soI" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full{
+/obj/spawner/window/low_wall/reinforced/electrochromic{
 	spawn_grille = 0
 	},
-/obj/effect/paint/babyblue,
+/obj/map_helper/paint/babyblue,
 /obj/map_helper/electrochromatic_linker{
 	id = "operating_theatre_2"
 	},
@@ -29869,14 +29833,14 @@
 "syF" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/item/gun/energy/taser{
+/obj/item/gun/projectile/energy/taser{
 	pixel_y = -4
 	},
-/obj/item/gun/energy/taser{
+/obj/item/gun/projectile/energy/taser{
 	pixel_y = -2
 	},
-/obj/item/gun/energy/taser,
-/obj/item/gun/energy/taser{
+/obj/item/gun/projectile/energy/taser,
+/obj/item/gun/projectile/energy/taser{
 	pixel_y = 2
 	},
 /turf/simulated/floor/tiled/dark,
@@ -29961,8 +29925,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "sEs" = (
@@ -30332,7 +30296,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/surfacetwo)
 "sQW" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "sRF" = (
@@ -30402,7 +30366,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar/lounge)
 "sVD" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/sleep)
 "sVH" = (
@@ -30495,7 +30459,7 @@
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "sZs" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/reading_room)
 "taa" = (
@@ -30641,7 +30605,7 @@
 /turf/simulated/floor/tiled/white,
 /area/security/security_bathroom)
 "tdg" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -30692,7 +30656,7 @@
 /obj/structure/curtain/open/bed{
 	name = "brown curtain"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/hallway/primary/surfacetwo)
 "tfp" = (
@@ -31055,8 +31019,8 @@
 	name = "Pen 9 Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "tsk" = (
@@ -32765,30 +32729,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
 "uDC" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 2;
-	icon_state = "shutter0";
-	id = "hos";
-	layer = 3.1;
-	name = "Head of Security's Office Shutters";
-	opacity = 0
-	},
-/obj/effect/paint/darkred,
-/obj/map_helper/electrochromatic_linker{
-	id = "hos-office"
-	},
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/darkred,
 /turf/simulated/floor/plating,
-/area/crew_quarters/heads/hos)
-"uEt" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/babyblue,
-/obj/map_helper/electrochromatic_linker{
-	id = "resleeving-tint"
-	},
-/turf/simulated/floor/plating,
-/area/medical/reception)
+/area/security/security_processing)
 "uEv" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
@@ -33581,7 +33525,7 @@
 /area/crew_quarters/showers)
 "uWX" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Security";
+	RCon_tag = "Surface 2 - Security Substation";
 	output_attempt = 0
 	},
 /obj/structure/cable/green{
@@ -33799,7 +33743,7 @@
 /area/maintenance/asmaint2)
 "vcn" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Northwestern Outpost";
+	RCon_tag = "Surface 2 - Northwestern Outpost Substation";
 	output_attempt = 0
 	},
 /obj/structure/cable/green,
@@ -34402,8 +34346,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/holodeck_control)
 "vvP" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab/foyer)
 "vwR" = (
@@ -34453,10 +34397,11 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside2)
 "vxB" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/electrochromatic_linker{
 	id = "research-inner"
 	},
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/research)
 "vyj" = (
@@ -34495,22 +34440,13 @@
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "vzm" = (
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 2;
-	icon_state = "shutter0";
-	id = "warden";
-	layer = 3.1;
-	name = "Warden's Office Shutters";
-	opacity = 0
-	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
+/obj/map_helper/paint/darkred,
 /obj/map_helper/electrochromatic_linker{
-	id = "sec-locker"
+	id = "sec-processing-r"
 	},
 /turf/simulated/floor/plating,
-/area/security/warden)
+/area/security/security_processing)
 "vzn" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 1
@@ -34783,8 +34719,10 @@
 	name = "Warden's Office Shutters";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
+	id = "warden-office"
+	},
+/obj/map_helper/paint/darkred,
 /obj/map_helper/electrochromatic_linker{
 	id = "warden-office"
 	},
@@ -35657,7 +35595,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/sleep)
 "wpY" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/research/xenobio)
 "wqh" = (
@@ -35722,7 +35660,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
 "wsj" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -36050,8 +35988,8 @@
 	name = "Pen 10 Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "wFo" = (
@@ -36196,7 +36134,7 @@
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "wMk" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Security Substation Bypass"
+	RCon_tag = "Surface 2 - Security Substation Bypass"
 	},
 /turf/simulated/floor,
 /area/maintenance/substation/security)
@@ -36237,7 +36175,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/security_processing)
 "wNZ" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay)
 "wOu" = (
@@ -36280,19 +36218,17 @@
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/sleep/Dorm_6)
 "wQz" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
-/obj/effect/paint/darkred,
 /obj/map_helper/electrochromatic_linker{
-	id = "warden-office"
+	id = "hos-office"
 	},
-/turf/simulated/floor/plating,
-/area/security/security_lockerroom)
+/turf/simulated/floor/carpet/blue,
+/area/security/breakroom)
 "wQJ" = (
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/ballistic/fiveseven,
-/obj/item/gun/ballistic/fiveseven,
-/obj/item/gun/ballistic/fiveseven,
+/obj/item/gun/projectile/ballistic/fiveseven,
+/obj/item/gun/projectile/ballistic/fiveseven,
+/obj/item/gun/projectile/ballistic/fiveseven,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "wRc" = (
@@ -36323,7 +36259,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "wSx" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/lounge)
 "wTh" = (
@@ -37697,9 +37633,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
-"xKD" = (
-/turf/simulated/wall/r_wall/prepainted,
-/area/rnd/outpost/xenobiology/outpost_slimepens)
 "xLb" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 5
@@ -37849,7 +37782,7 @@
 /area/security/hallway)
 "xNq" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Research Main Substation Bypass"
+	RCon_tag = "Surface 2 - Research Main Subgrid Bypass"
 	},
 /turf/simulated/floor,
 /area/maintenance/substation/research)
@@ -38022,8 +37955,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "xRj" = (
@@ -38271,7 +38204,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
 "xXT" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	dir = 2;
@@ -38280,7 +38213,7 @@
 	name = "Research shutter";
 	opacity = 0
 	},
-/obj/effect/paint/purplegray,
+/obj/map_helper/paint/purplegray,
 /obj/map_helper/electrochromatic_linker{
 	id = "research-outer"
 	},
@@ -38303,8 +38236,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "xYV" = (
@@ -38607,8 +38540,8 @@
 /obj/structure/sign/department/operational{
 	pixel_x = -32
 	},
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
-/obj/effect/paint/babyblue,
+/obj/spawner/window/low_wall/nogrille/firelocks,
+/obj/map_helper/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/sleeper)
 "yjq" = (
@@ -44093,7 +44026,7 @@ ddZ
 tex
 tex
 tex
-jQZ
+vvP
 kCB
 xFv
 hmz
@@ -44287,7 +44220,7 @@ gzd
 xax
 oDC
 tex
-jQZ
+vvP
 kCB
 qcg
 hmz
@@ -44675,7 +44608,7 @@ tVG
 aal
 srw
 tex
-jQZ
+vvP
 iTw
 iTw
 hmz
@@ -44869,7 +44802,7 @@ iPh
 aal
 srw
 tex
-jQZ
+vvP
 iTw
 iTw
 hmz
@@ -45063,7 +44996,7 @@ aYt
 uIZ
 srw
 tex
-jQZ
+vvP
 iTw
 iTw
 hmz
@@ -45258,8 +45191,8 @@ uIZ
 srw
 tex
 hmz
-jQZ
-jQZ
+vvP
+vvP
 hmz
 fnX
 wTh
@@ -45465,15 +45398,15 @@ fSq
 rhH
 kpD
 xYc
-xKD
+fSq
 kSM
 qat
 obw
-xKD
+fSq
 sDP
 pUL
 lxO
-xKD
+fSq
 kgd
 wLS
 lYG
@@ -46629,15 +46562,15 @@ fSq
 dQq
 pfn
 lcl
-xKD
+fSq
 iMv
 icn
 pLA
-xKD
+fSq
 xRi
 tGA
 eBD
-xKD
+fSq
 bBi
 qtI
 jRQ
@@ -52988,7 +52921,7 @@ mGl
 aaA
 vwR
 vYO
-uEt
+mQt
 rYY
 jMc
 rRs
@@ -53507,7 +53440,7 @@ enB
 pBj
 pBj
 uAn
-swv
+plK
 qly
 qly
 qly
@@ -54671,7 +54604,7 @@ bRx
 bRx
 bRx
 kvr
-swv
+plK
 qly
 qly
 oOw
@@ -56469,7 +56402,7 @@ ryQ
 ryQ
 ryQ
 mWB
-wQz
+eke
 rNb
 rVb
 rNb
@@ -57444,7 +57377,7 @@ vKj
 tiu
 bhS
 tyF
-keC
+uDC
 vNc
 wCk
 bHa
@@ -57634,7 +57567,7 @@ uKa
 bFQ
 oeO
 wsa
-vzm
+vKj
 tiu
 bhS
 kxd
@@ -57832,7 +57765,7 @@ ukp
 tiu
 bhS
 gjq
-keC
+uDC
 pvp
 oji
 tJz
@@ -58022,7 +57955,7 @@ rAw
 rdE
 kAI
 fxc
-piB
+vKj
 tiu
 bhS
 rrl
@@ -59190,7 +59123,7 @@ jmT
 tiu
 bhS
 nuH
-keC
+vzm
 rqf
 uIR
 bVn
@@ -59380,11 +59313,11 @@ guL
 tOd
 lDe
 jAc
-uDC
+jmT
 mve
 bhS
 nuH
-keC
+vzm
 hGI
 ijR
 eTG
@@ -59578,7 +59511,7 @@ iFX
 eCN
 ohv
 oQS
-keC
+vzm
 pUO
 mzx
 yaJ
@@ -59768,7 +59701,7 @@ suI
 wRc
 gFO
 eSN
-uDC
+jmT
 wXp
 ewu
 fgP
@@ -59962,7 +59895,7 @@ dwr
 gQH
 ioQ
 fSD
-uDC
+jmT
 tiu
 mgL
 ktw
@@ -61127,7 +61060,7 @@ bqU
 cBT
 lmf
 lmf
-rTn
+wQz
 iki
 kfW
 rjW

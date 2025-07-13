@@ -775,7 +775,7 @@
 /area/main_map/maintenance/deck_four/starboard)
 "cN" = (
 /obj/structure/table/standard,
-/obj/item/gun/energy/taser/xeno,
+/obj/item/gun/projectile/energy/taser/xeno,
 /obj/item/melee/baton/slime/loaded,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
@@ -1043,10 +1043,10 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/item/gun/energy/kinetic_accelerator,
-/obj/item/gun/energy/kinetic_accelerator,
-/obj/item/gun/energy/kinetic_accelerator,
-/obj/item/gun/energy/kinetic_accelerator,
+/obj/item/gun/projectile/energy/kinetic_accelerator,
+/obj/item/gun/projectile/energy/kinetic_accelerator,
+/obj/item/gun/projectile/energy/kinetic_accelerator,
+/obj/item/gun/projectile/energy/kinetic_accelerator,
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "dF" = (
@@ -2349,8 +2349,8 @@
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck4/fore)
 "im" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab/chamber)
 "in" = (
@@ -2729,7 +2729,7 @@
 	pressure_resistance = 750;
 	target_pressure = 750
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab)
 "jt" = (
@@ -6752,8 +6752,8 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "xj" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab)
 "xk" = (
@@ -7012,8 +7012,8 @@
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology)
 "yd" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab/foyer)
 "yg" = (
@@ -7230,7 +7230,7 @@
 /area/main_map/maintenance/deck_four/aft)
 "yT" = (
 /obj/structure/bed/chair/sofa/brown/corner{
-	dir = 4
+	dir = 1
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/main_map/hallway/deck4/fore)
@@ -7475,8 +7475,8 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/xenobiology)
 "zD" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab)
 "zE" = (
@@ -8324,7 +8324,7 @@
 /turf/simulated/floor/reinforced/outdoors,
 /area/space)
 "CB" = (
-/obj/machinery/mineral/equipment_vendor,
+/obj/machinery/point_redemption_vendor/mining,
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
 	},
@@ -11051,7 +11051,7 @@
 /turf/simulated/floor/wood,
 /area/library)
 "LR" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab/storage)
 "LT" = (
@@ -11658,8 +11658,8 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/secure_storage/critical/records)
 "NS" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
-/obj/effect/paint/violet,
+/obj/spawner/window/low_wall/nogrille/firelocks,
+/obj/map_helper/paint/violet,
 /turf/simulated/floor/plating,
 /area/exploration/explorer_prep)
 "NU" = (
@@ -13214,7 +13214,7 @@
 /area/exploration/explorer_prep)
 "Tg" = (
 /obj/structure/table/standard,
-/obj/item/gun/energy/taser/xeno,
+/obj/item/gun/projectile/energy/taser/xeno,
 /obj/item/multitool,
 /obj/structure/window/reinforced{
 	dir = 8
@@ -13664,7 +13664,7 @@
 /area/library)
 "UA" = (
 /obj/structure/bed/chair/sofa/brown/corner{
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/main_map/hallway/deck4/fore)

@@ -109,9 +109,6 @@ GLOBAL_LIST(topic_status_cache)
 	// Create robolimbs for chargen.
 	populate_robolimb_list()
 
-	//Must be done now, otherwise ZAS zones and lighting overlays need to be recreated.
-	createRandomZlevel()
-
 	if(fexists(RESTART_COUNTER_PATH))
 		GLOB.restart_counter = text2num(trim(file2text(RESTART_COUNTER_PATH)))
 		fdel(RESTART_COUNTER_PATH)
@@ -124,7 +121,6 @@ GLOBAL_LIST(topic_status_cache)
 	#ifdef UNIT_TESTS
 	HandleTestRun()
 	#endif
-
 	if(config_legacy.ToRban)
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(ToRban_autoupdate)), 5 MINUTES)
 
@@ -200,6 +196,8 @@ GLOBAL_LIST(topic_status_cache)
 	// log which is ultimately public.
 	log_runtime(GLOB.revdata.get_log_message())
 
+	global.event_logger.setup_logger(GLOB.log_directory)
+
 /world/proc/_setup_logs_boilerplate()
 
 /world/Topic(T, addr, master, key)
@@ -252,9 +250,17 @@ GLOBAL_LIST(topic_status_cache)
 	sleep(0) //yes, 0, this'll let Reboot finish and prevent byond memes
 	qdel(src) //shut it down
 
+/**
+ * byond reboot proc
+ * 
+ * @params
+ * * reason - this will be non-0 if initiated via byond admin tooling. we will always block this if a 'usr' exists and we are not OOM'd,
+ *            as we want to force admin verb usage
+ * * fast_track - skip normal shutdown processes, immediately reboot. data will be lost.
+ */
 /world/Reboot(reason = 0, fast_track = FALSE)
 	if (reason || fast_track) //special reboot, do none of the normal stuff
-		if (usr && Master && GLOB) // why && Master / GLOB? if OOM, MC gets erased :D
+		if (reason && usr && Master && GLOB) // why && Master / GLOB? if OOM, MC gets erased :D
 			message_admins("Blocked reboot request from [key_name_admin(usr)]. Please use the Reboot World verb.")
 			return // no thank you
 			// log_admin("[key_name(usr)] Has requested an immediate world restart via client side debugging tools")
@@ -505,6 +511,8 @@ GLOBAL_LIST(topic_status_cache)
 	// update
 	for(var/datum/controller/subsystem/subsystem in Master.subsystems)
 		subsystem.on_ticklag_changed(old, ticklag)
+	for(var/mob/mob in GLOB.mob_list)
+		mob.update_movespeed()
 
 //* Log Shunter *//
 

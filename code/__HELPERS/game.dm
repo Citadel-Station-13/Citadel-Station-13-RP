@@ -317,7 +317,7 @@
 
 	// For objects below the top level who still want to hear.
 	for(var/obj/O in global.listening_objects)
-		if(get_turf(O) in hearturfs)
+		if(get_turf(O) in hear)
 			objs |= O
 
 	return list("mobs" = mobs, "objs" = objs)
@@ -425,23 +425,6 @@
 	src.power_y = power_y
 	src.dest_x = dest_x
 	src.dest_y = dest_y
-
-/proc/projectile_trajectory(src_x, src_y, rotation, angle, power)
-
-	// returns the destination (Vx,y) that a projectile shot at [src_x], [src_y], with an angle of [angle],
-	// rotated at [rotation] and with the power of [power]
-	// Thanks to VistaPOWA for this function
-
-	var/power_x = power * cos(angle)
-	var/power_y = power * sin(angle)
-	var/time = 2* power_y / 10 //10 = g
-
-	var/distance = time * power_x
-
-	var/dest_x = src_x + distance*sin(rotation);
-	var/dest_y = src_y + distance*cos(rotation);
-
-	return new /datum/projectile_data(src_x, src_y, time, distance, power_x, power_y, dest_x, dest_y)
 
 /**
  * Gets the highest and lowest pressures from the tiles in cardinal directions
@@ -584,3 +567,23 @@
 
 	return hear
 
+///Get active players who are playing in the round
+/proc/get_active_player_count(alive_check = FALSE, afk_check = FALSE, human_check = FALSE)
+	var/active_players = 0
+	for(var/mob/player_mob as anything in GLOB.player_list)
+		if(!player_mob?.client)
+			continue
+		if(alive_check && player_mob.stat == DEAD)
+			continue
+		if(afk_check && player_mob.client.is_afk())
+			continue
+		if(human_check && !ishuman(player_mob))
+			continue
+		if(isnewplayer(player_mob)) // exclude people in the lobby
+			continue
+		if(isobserver(player_mob)) // Ghosts are fine if they were playing once (didn't start as observers)
+			// var/mob/dead/observer/ghost_player = player_mob
+			// if(ghost_player.started_as_observer) // Exclude people who started as observers
+			continue
+		active_players++
+	return active_players

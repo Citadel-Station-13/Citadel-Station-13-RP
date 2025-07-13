@@ -33,7 +33,7 @@
 		if(WAVE_SPREAD_SHADOW_LIKE)
 			// directionals fully allowed
 			// we use our own dir bits
-			edges[T] = dir? dir : ALL_DIRECTION_BITS
+			edges[T] = dir? dir : CARDINAL_DIAGONAL_DIRECTION_BITS
 			powers[T] = power
 		if(WAVE_SPREAD_SHOCKWAVE)
 			// no directionals. we use cardinal bits, though, due to the algorithm.
@@ -376,7 +376,7 @@
 			if(O.density && O.opacity)
 				. -= dense_falloff
 				break
-	T.maptext = "[power]"
+	T.maptext = MAPTEXT("[power]")
 	impacted += T
 
 GLOBAL_DATUM(active_wave_automata_test, /datum/automata/wave)

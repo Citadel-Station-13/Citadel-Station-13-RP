@@ -556,10 +556,6 @@ About the new airlock wires panel:
 /obj/machinery/door/airlock/attack_ai(mob/user as mob)
 	ui_interact(user)
 
-/obj/machinery/door/airlock/attack_ghost(mob/user)
-	. = ..()
-	ui_interact(user)
-
 /obj/machinery/door/airlock/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -857,11 +853,6 @@ About the new airlock wires panel:
 			if(locked)
 				to_chat(user, "<span class='notice'>The airlock's bolts prevent it from being forced.</span>")
 			else if( !welded && !operating )
-				if(istype(C, /obj/item/material/twohanded/fireaxe)) // If this is a fireaxe, make sure it's held in two hands.
-					var/obj/item/material/twohanded/fireaxe/F = C
-					if(!F.wielded)
-						to_chat(user, "<span class='warning'>You need to be wielding \the [F] to do that.</span>")
-						return
 				// At this point, it's an armblade or a fireaxe that passed the wielded test, let's try to open it.
 				if(density)
 					spawn(0)
@@ -873,7 +864,6 @@ About the new airlock wires panel:
 			..()
 	else
 		..()
-	return
 
 /obj/machinery/door/airlock/phoron/attackby(C as obj, mob/user as mob)
 	if(C)
@@ -1020,7 +1010,7 @@ About the new airlock wires panel:
 /mob/living/carbon/airlock_crush(var/crush_damage)
 	. = ..()
 	if(can_feel_pain())
-		emote("scream")
+		emote_nosleep("scream")
 
 /mob/living/silicon/robot/airlock_crush(var/crush_damage)
 	adjustBruteLoss(crush_damage)

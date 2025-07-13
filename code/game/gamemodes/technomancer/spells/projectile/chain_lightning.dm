@@ -26,9 +26,9 @@
 	nodamage = 1
 	damage_type = DAMAGE_TYPE_HALLOSS
 
-	muzzle_type = /obj/effect/projectile/muzzle/lightning
-	tracer_type = /obj/effect/projectile/tracer/lightning
-	impact_type = /obj/effect/projectile/impact/lightning
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/lightning
+	legacy_tracer_type = /obj/effect/projectile/tracer/lightning
+	legacy_impact_type = /obj/effect/projectile/impact/lightning
 
 	var/bounces = 3				//How many times it 'chains'.  Note that the first hit is not counted as it counts /bounces/.
 	var/list/hit_mobs = list() 	//Mobs which were already hit.
@@ -44,12 +44,7 @@
 	if(!isliving(target_mob))
 		return
 	//First we shock the guy we just hit.
-	if(ishuman(target_mob))
-		var/mob/living/carbon/human/H = target_mob
-		var/obj/item/organ/external/affected = H.get_organ(check_zone(BP_TORSO))
-		H.electrocute_act(power, src, H.get_siemens_coefficient_organ(affected), affected, 0)
-	else
-		target_mob.electrocute_act(power, src, 0.75, BP_TORSO)
+	target_mob.electrocute(power * 10, power, 0, NONE, def_zone, src)
 	hit_mobs |= target_mob
 
 	//Each bounce reduces the damage of the bolt.

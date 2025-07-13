@@ -1,4 +1,5 @@
 /datum/ammo_caliber/pellet
+	id = "pellet"
 	caliber = "pellet"
 
 //* Ammunition *//
@@ -6,7 +7,7 @@
 /obj/item/ammo_casing/p_pellet
 	name = "pellet"
 	desc = "Also know as a BB, it is shot from airguns for recreational shooting."
-	caliber = /datum/ammo_caliber/pellet
+	casing_caliber = /datum/ammo_caliber/pellet
 	icon = 'icons/obj/gun/ballistic/caseless/pellet.dmi'
 	icon_state = "pellet_single"
 	projectile_type = /obj/projectile/bullet/practice
@@ -29,7 +30,7 @@
 
 	ammo_caliber = /datum/ammo_caliber/pellet
 	ammo_preload = /obj/item/ammo_casing/p_pellet
-	magazine_type = MAGAZINE_TYPE_BOX
+	magazine_class = MAGAZINE_CLASS_POUCH
 	materials_base = list(
 		/datum/prototype/material/steel::id = 100,
 	)

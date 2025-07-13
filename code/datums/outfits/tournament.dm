@@ -4,8 +4,8 @@
 	head = /obj/item/clothing/head/helmet/thunderdome
 	suit = /obj/item/clothing/suit/armor/vest
 	l_hand = /obj/item/material/knife
-	r_hand = /obj/item/gun/energy/nt_pulse/rifle
-	r_pocket = /obj/item/grenade/smokebomb
+	r_hand = /obj/item/gun/projectile/energy/nt_pulse/rifle
+	r_pocket = /obj/item/grenade/simple/smoke
 	shoes = /obj/item/clothing/shoes/black
 
 /datum/outfit/tournament_gear/red
@@ -22,7 +22,7 @@
 	uniform = /obj/item/clothing/under/det
 	suit_store = /obj/item/clothing/suit/storage/det_trench
 	glasses = /obj/item/clothing/glasses/thermal/plain/monocle
-	r_hand = /obj/item/gun/ballistic/revolver
+	r_hand = /obj/item/gun/projectile/ballistic/revolver
 	l_pocket = /obj/item/ammo_magazine/a357/speedloader
 
 /datum/outfit/tournament_gear/chef
@@ -40,8 +40,8 @@
 	back = /obj/item/storage/backpack
 	r_hand = /obj/item/mop
 	l_hand = /obj/item/reagent_containers/glass/bucket
-	l_pocket = /obj/item/grenade/chem_grenade/cleaner
-	r_pocket = /obj/item/grenade/chem_grenade/cleaner
+	l_pocket = /obj/item/grenade/simple/chemical/premade/cleaner
+	r_pocket = /obj/item/grenade/simple/chemical/premade/cleaner
 	backpack_contents = list(/obj/item/stack/tile/floor = 6)
 
 /datum/outfit/tournament_gear/janitor/post_equip(var/mob/living/carbon/human/H)

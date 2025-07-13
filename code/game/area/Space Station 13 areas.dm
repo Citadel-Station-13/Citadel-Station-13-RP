@@ -2122,7 +2122,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/solar/aft
 	name = "\improper Aft Solar Array"
-	icon_state = "aft"
+	icon_state = "panelsAft"
 
 /area/solar/starboard
 	name = "\improper Aft Starboard Solar Array"
@@ -2980,7 +2980,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/solar/derelict_aft
 	name = "\improper Derelict Aft Solar Array"
-	icon_state = "aft"
+	icon_state = "panelsAft"
 
 /area/derelict/singularity_engine
 	name = "\improper Derelict Singularity Engine"
@@ -3043,7 +3043,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/solar/constructionsite
 	name = "\improper Construction Site Solars"
-	icon_state = "aft"
+	icon_state = "panelsAft"
 
 /area/constructionsite/teleporter
 	name = "Construction Site Teleporter"
@@ -3390,26 +3390,26 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/turbolift/e_ship/level4
 	name = "Deck 1"
 	lift_floor_label = "Deck 1"
-	lift_floor_name = "Exploration, Arrivals & Departures, Command, Chapel, Sauna, Docking Bay, Library, Garden, Tool Storage"
+	lift_floor_name = "Exploration, Arrivals & Departures, Command, Chapel, Cafe, Sauna, Docking Bay, Library, Tool Storage"
 	lift_announce_str = "Arriving at Deck 1."
 
 /area/turbolift/e_ship/level3
 	name = "Deck 2"
 	lift_floor_label = "Deck 2"
 	lift_floor_name = "Medical, Science, Holo Deck, Teleporter"
-	lift_announce_str = "Arriving at Deck 3."
+	lift_announce_str = "Arriving at Deck 2."
 
 /area/turbolift/e_ship/level2
 	name = "Deck 3"
 	lift_floor_label = "Deck 3"
-	lift_floor_name = "Dorms, Cargo, Security, Mining, Bar, Cafe, Solars, Shops"
-	lift_announce_str = "Arriving at Deck 2."
+	lift_floor_name = "Dorms, Cargo, Security, Head of Personnel Office, Mining, Trash Pit, Garden, Solars, Shops, Pool"
+	lift_announce_str = "Arriving at Deck 3."
 
 /area/turbolift/e_ship/level1
 	name = "Deck 4"
 	lift_floor_label = "Deck 4"
-	lift_floor_name = "Engineering, Reactor, Telecomms, Trash Pit, Atmospherics, Main Battery, Small Craft Fabrication, Secondary Bridge"
-	lift_announce_str = "Arriving at Deck 1."
+	lift_floor_name = "Engineering, Reactor, Telecomms, Bar, Atmospherics, Main Battery, Small Craft Fabrication, Secondary Bridge"
+	lift_announce_str = "Arriving at Deck 4."
 
 //Debug/Code areas
 

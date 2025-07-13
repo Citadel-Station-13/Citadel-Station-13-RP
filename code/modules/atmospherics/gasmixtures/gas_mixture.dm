@@ -50,7 +50,7 @@
 	volume = vol
 	gas = list()
 
-/datum/gas_mixture/clone(include_contents)
+/datum/gas_mixture/clone()
 	var/datum/gas_mixture/mixture = new(volume)
 	mixture.gas = gas.Copy()
 	mixture.temperature = temperature

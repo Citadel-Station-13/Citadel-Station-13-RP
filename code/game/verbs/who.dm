@@ -62,7 +62,23 @@
 			Lines += entry
 	else
 		for(var/client/C in GLOB.clients)
-			Lines += (C == src)? C.get_revealed_key() : C.get_public_key()
+			var/entry = "\t"
+			if(!C.initialized)
+				entry += "[C.ckey] - <b><font color='red'>Uninitialized</font></b>"
+				Lines += entry
+				continue
+			if(C == src)
+				entry += "[C.get_revealed_key()]"
+			else
+				entry += "[C.get_public_key()]"
+			if(C.get_preference_toggle(/datum/game_preference_toggle/presence/show_advanced_who))
+				if(isobserver(C.mob))
+					entry += " - <font color='gray'>Observing</font>"
+				else if(istype(C.mob, /mob/new_player))
+					entry += " - <font color=#4F49AF>In Lobby</font>"
+				else
+					entry += " - <font color='#5fe312'>Playing</font>"
+			Lines += entry
 
 	for(var/line in sortList(Lines))
 		msg += "[line]\n"

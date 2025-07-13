@@ -44,7 +44,7 @@
 /area/debrisfield/derelict)
 "at" = (
 /obj/random/humanoidremains,
-/obj/item/gun/energy/ionrifle,
+/obj/item/gun/projectile/energy/ionrifle,
 /turf/simulated/floor/tiled/airless,
 /area/debrisfield/derelict)
 "au" = (
@@ -133,7 +133,7 @@
 /area/debrisfield/derelict)
 "aQ" = (
 /obj/machinery/vr_sleeper/alien,
-/obj/item/grenade/empgrenade,
+/obj/item/grenade/simple/emp,
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/debrisfield/derelict)
 "aR" = (
@@ -602,7 +602,7 @@
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/debrisfield/derelict)
 "wj" = (
-/obj/item/gun/energy/ionrifle,
+/obj/item/gun/projectile/energy/ionrifle,
 /turf/simulated/floor/plating/outdoors,
 /area/debrisfield/derelict)
 "yE" = (
@@ -708,9 +708,9 @@
 /turf/simulated/floor/plating/outdoors,
 /area/debrisfield/derelict)
 "Zu" = (
-/obj/item/grenade/empgrenade,
-/obj/item/grenade/empgrenade,
-/obj/item/grenade/empgrenade,
+/obj/item/grenade/simple/emp,
+/obj/item/grenade/simple/emp,
+/obj/item/grenade/simple/emp,
 /turf/simulated/floor/plating/outdoors,
 /area/debrisfield/derelict)
 

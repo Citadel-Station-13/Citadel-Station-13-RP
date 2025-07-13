@@ -131,20 +131,24 @@
 		integrated_object.forceMove(src)
 	..(removed)
 
-/obj/item/organ/internal/augment/proc/augment_action()
+/obj/item/organ/internal/augment/proc/augment_use()
 	if(!owner)
 		return
 
 	if(aug_cooldown)
-		if(last_activate <= world.time + aug_cooldown)
+		if(last_activate + aug_cooldown <= world.time)
 			last_activate = world.time
 		else
+			to_chat(owner, SPAN_WARNING("\The [src] is still recharging."))
 			return
 
 	if(robotic && owner.get_restraining_bolt())
 		to_chat(owner, SPAN_WARNING("\The [src] doesn't respond."))
 		return
 
+	augment_action()
+
+/obj/item/organ/internal/augment/proc/augment_action()
 	//! todo: re fucking factor.
 
 	if(owner.is_in_inventory(integrated_object))
@@ -177,7 +181,7 @@
 
 	var/list/present_augs = list()
 
-	for(var/obj/item/organ/internal/augment/Aug in organs)
+	for(var/obj/item/organ/internal/augment/Aug in internal_organs)
 		if(Aug.my_radial_icon && !Aug.is_broken() && Aug.check_verb_compatability())
 			present_augs[Aug.radial_name] = Aug
 
@@ -194,7 +198,7 @@
 
 	if(!isnull(choice) && options[choice])
 		var/obj/item/organ/internal/augment/A = present_augs[choice]
-		A.augment_action(L)
+		A.augment_use()
 
 /* equip_augment_item
  * Used to equip an organ's augment items when possible.

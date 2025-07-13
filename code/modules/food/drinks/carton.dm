@@ -9,7 +9,7 @@
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
 	volume = 50
-	start_reagent = /datum/reagent/drink/milk
+	start_with_single_reagent = /datum/reagent/drink/milk
 
 /obj/item/reagent_containers/food/drinks/soymilk
 	name = "soymilk carton"
@@ -20,7 +20,7 @@
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
 	volume = 50
-	start_reagent = /datum/reagent/drink/milk/soymilk
+	start_with_single_reagent = /datum/reagent/drink/milk/soymilk
 
 /obj/item/reagent_containers/food/drinks/smallmilk
 	name = "small milk carton"
@@ -31,7 +31,7 @@
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
 	volume = 30
-	start_reagent = /datum/reagent/drink/milk
+	start_with_single_reagent = /datum/reagent/drink/milk
 
 /obj/item/reagent_containers/food/drinks/smallchocmilk
 	name = "small chocolate milk carton"
@@ -42,7 +42,7 @@
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
 	volume = 30
-	start_reagent = /datum/reagent/drink/milk/chocolate
+	start_with_single_reagent = /datum/reagent/drink/milk/chocolate
 
 //* Vetalan
 
@@ -54,7 +54,7 @@
 	center_of_mass = list("x"=16, "y"=9)
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
-	start_reagent = /datum/reagent/blood
+	start_with_single_reagent = /datum/reagent/blood
 
 /obj/item/reagent_containers/food/drinks/bludboxmaxlight
 	name = "Bludbox MAX Light carton"
@@ -64,7 +64,8 @@
 	center_of_mass = list("x"=16, "y"=9)
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
-	start_reagent = /datum/reagent/blood/synthblood
+	start_with_single_reagent = /datum/reagent/blood
+	start_with_single_data_initializer = new /datum/blood_mixture/preset/single/synthblood
 
 /obj/item/reagent_containers/food/drinks/bludbox
 	name = "Bludbox carton"
@@ -74,7 +75,8 @@
 	center_of_mass = list("x"=16, "y"=9)
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
-	start_reagent = /datum/reagent/drink/blud
+	start_with_single_reagent = /datum/reagent/drink/blud
+	start_with_single_data_initializer = new /datum/blood_mixture/preset/single/synthblood
 
 /obj/item/reagent_containers/food/drinks/bludboxlight
 	name = "Bludbox Light carton"
@@ -84,5 +86,5 @@
 	center_of_mass = list("x"=16, "y"=9)
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
-	start_reagent = /datum/reagent/drink/blud/bludlight
-
+	start_with_single_reagent = /datum/reagent/drink/blud/bludlight
+	start_with_single_data_initializer = new /datum/blood_mixture/preset/single/synthblood

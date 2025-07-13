@@ -46,6 +46,7 @@
  * * action - the string of the TGUI-side act() that was invoked by the user
  * * params - the list of key-value parameters of the act() invocation. This is always strings for both key and value!
  * * ui - the TGUI instance invoking this (host window)
+ * * e_args - actor datum holding data on who's doing it and who's initiating it
  *
  * @return bool If the user's input has been handled and the UI should update.
  */
@@ -152,7 +153,7 @@
 	// this basically matches the useModule<>() hook used on the UI side, because id is null if
 	// we're a host window, and not an act call from an embedded component.
 	if(!id)
-		return ui_act(action, params, ui)
+		return ui_act(action, params, ui, new /datum/event_args/actor(usr))
 	return FALSE
 
 /**

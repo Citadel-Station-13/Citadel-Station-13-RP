@@ -35,7 +35,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/GovPatrol)
 "k" = (
-/obj/item/gun/ballistic/shotgun/pump/rifle/lever,
+/obj/item/gun/projectile/ballistic/shotgun/pump/rifle/lever,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/GovPatrol)
 "m" = (

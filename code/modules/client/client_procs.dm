@@ -206,13 +206,11 @@
 	// log to player lookup
 	update_lookup_in_db()
 
-	//* Resolve storage datums
-	// resolve persistent data
+	//* Resolve storage datums *//
+
 	persistent = resolve_client_data(ckey, key)
-	//* Resolve database data
 	player = resolve_player_data(ckey, key)
 	player.log_connect()
-	//* Resolve preferences
 	preferences = SSpreferences.resolve_game_preferences(key, ckey)
 	//? WARNING: SHITCODE ALERT ?//
 	// we wait until it inits to do this
@@ -222,6 +220,10 @@
 	//? END ?//
 
 	//* Create interface UI *//
+
+	if(byond_version >= 516)
+		winset(src, null, list("browser-options" = "find,refresh,byondstorage"))
+
 	// todo: move top level menu here, for now it has to be under prefs.
 	tgui_stat = new(src, SKIN_BROWSER_ID_STAT)
 	tgui_panel = new(src, SKIN_BROWSER_ID_CHAT)
@@ -430,8 +432,6 @@
 		holder.owner = null
 		GLOB.admins -= src //delete them on the managed one too
 
-	active_mousedown_item = null
-
 	//* Cleanup rendering *//
 	if(using_perspective)
 		set_perspective(null)
@@ -602,4 +602,3 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 
 /client/proc/AnnouncePR(announcement)
 	to_chat(src, announcement)
-

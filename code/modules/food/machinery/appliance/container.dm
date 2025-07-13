@@ -110,7 +110,7 @@
 			.+=O.name//Just append the name of the first object
 			return
 	else if (reagents && reagents.total_volume > 0)
-		var/datum/reagent/R = reagents.get_master_reagent()
+		var/datum/reagent/R = reagents.get_majority_reagent_datum()
 		.+=R.name//Append name of most voluminous reagent
 		return
 	else

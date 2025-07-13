@@ -9,10 +9,12 @@
 	show_messages = 1
 	origin_tech = null
 	inhand_default_type = INHAND_DEFAULT_ICON_HOLDERS
+	worn_render_flags = WORN_RENDER_SLOT_ALLOW_DEFAULT
 	pixel_y = 8
 	throw_range = 14
 	throw_force = 10
 	throw_speed = 3
+	
 	var/static/list/holder_mob_icon_cache = list()
 	var/mob/living/held_mob
 
@@ -80,6 +82,7 @@
 	add_overlay(MA)
 	name = M.name
 	desc = M.desc
+	item_state = held_mob.icon_state
 	update_worn_icon()
 
 /obj/item/holder/contents_resist(mob/escapee)
@@ -97,6 +100,10 @@
 	else if(isitem(loc))
 		to_chat(escapee, SPAN_WARNING("You struggle free of [loc]."))
 		escapee.forceMove(get_turf(escapee))
+	else if(istype(loc, /atom/movable/storage_indirection) && loc.loc) //Second type how an item can have storage
+		to_chat(escapee, SPAN_WARNING("You struggle free of [loc.loc]."))
+		escapee.forceMove(get_turf(escapee))
+
 
 /obj/item/holder/can_equip(mob/M, slot, mob/user, flags)
 	if(M == held_mob)
@@ -125,6 +132,27 @@
 
 /obj/item/holder/pai
 	origin_tech = list(TECH_DATA = 2)
+
+/obj/item/holder/holosphere_shell
+	origin_tech = list(TECH_DATA = 2) // you monster.
+
+// apply mouse holder behaviour (see mouse.dm) so we can pat them in-hand
+/obj/item/holder/holosphere_shell/attack_self(mob/user, datum/event_args/actor/actor)
+	. = ..()
+	if(.)
+		return
+	for(var/mob/living/simple_mob/M in src.contents)
+		if((INTENT_HELP) && user.canClick())
+			user.setClickCooldownLegacy(user.get_attack_speed_legacy())
+			user.visible_message("<span class='notice'>[user] [M.response_help] \the [M].</span>")
+
+/obj/item/holder/holosphere_shell/relaymove(var/mob/user, var/direction)
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE))
+		return
+	var/obj/item/hardsuit/hardsuit = src.get_hardsuit()
+	if(istype(hardsuit))
+		hardsuit.forced_move(direction, user)
+
 
 /obj/item/holder/mouse
 	w_class = WEIGHT_CLASS_TINY
@@ -190,7 +218,7 @@
 
 /mob/living/proc/get_scooped(var/mob/living/carbon/grabber, var/self_grab)
 
-	if(!holder_type || buckled || pinned.len)
+	if(!holder_type || buckled) // || pinned.len)
 		return
 
 	if(self_grab)

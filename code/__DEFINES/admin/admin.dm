@@ -61,8 +61,7 @@
 #define ADMIN_LOOKUP(user)           ("[key_name_admin(user)][ADMIN_QUE(user)]")
 #define ADMIN_LOOKUPFLW(user)        ("[key_name_admin(user)][ADMIN_QUE(user)] [ADMIN_FLW(user)]")
 #define COORD(src)                   ("[src ? src.Admin_Coordinates_Readable() : "nonexistent location"]")
-// todo: this should be made faster/better, and support stuff like inventory / storage awareness
-#define AUDIT_COORD(src)             ("[src ? src.Admin_Coordinates_Readable() : "nonexistent location"]")
+#define ADMIN_AUDIT_LOC(src)         ("[src ? src.audit_loc() : "(bad ref)"]")
 #define AREACOORD(src)               ("[src ? src.Admin_Coordinates_Readable(TRUE) : "nonexistent location"]")
 #define ADMIN_COORDJMP(src)          ("[src ? src.Admin_Coordinates_Readable(FALSE, TRUE) : "nonexistent location"]")
 #define ADMIN_VERBOSEJMP(src)        ("[src ? src.Admin_Coordinates_Readable(TRUE, TRUE) : "nonexistent location"]")
@@ -85,7 +84,7 @@
 
 /atom/proc/Admin_Coordinates_Readable(area_name, admin_jump_ref)
 	var/turf/T = Safe_COORD_Location()
-	return T ? "[area_name ? "[get_area_name(T, TRUE)] " : " "]([T.x],[T.y],[T.z])[admin_jump_ref ? " [ADMIN_JMP(T)]" : ""]" : "nonexistent location"
+	return T ? "[area_name ? "[get_area_name(T, TRUE)] " : ""]([T.x],[T.y],[T.z])[admin_jump_ref ? " [ADMIN_JMP(T)]" : ""]" : "nonexistent location"
 
 /atom/proc/Safe_COORD_Location()
 	var/atom/A = drop_location()

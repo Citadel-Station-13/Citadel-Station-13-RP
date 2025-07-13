@@ -204,10 +204,10 @@
 	product_ads = "Stunning!;Take justice in your own hands!;LEADearship!"
 	icon_state = "weapon"
 	products = list(/obj/item/flash = 6,
-/obj/item/reagent_containers/spray/pepper = 6, /obj/item/gun/ballistic/olivaw = 5, /obj/item/gun/ballistic/giskard = 5, /obj/item/ammo_magazine/mg/cl32/rubber = 20)
+/obj/item/reagent_containers/spray/pepper = 6, /obj/item/gun/projectile/ballistic/olivaw = 5, /obj/item/gun/projectile/ballistic/giskard = 5, /obj/item/ammo_magazine/mg/cl32/rubber = 20)
 	contraband = list(/obj/item/reagent_containers/food/snacks/syndicake = 6)
 	prices = list(/obj/item/flash = 600,
-/obj/item/reagent_containers/spray/pepper = 800,  /obj/item/gun/ballistic/olivaw = 1600, /obj/item/gun/ballistic/giskard = 1200, /obj/item/ammo_magazine/mg/cl32/rubber = 200)
+/obj/item/reagent_containers/spray/pepper = 800,  /obj/item/gun/projectile/ballistic/olivaw = 1600, /obj/item/gun/projectile/ballistic/giskard = 1200, /obj/item/ammo_magazine/mg/cl32/rubber = 200)
 */
 
 /obj/machinery/vending/glukoz
@@ -295,7 +295,7 @@
 	)
 
 	contraband = list(
-		/obj/item/gun/ballistic/shotgun/doublebarrel = 2,
+		/obj/item/gun/projectile/ballistic/shotgun/doublebarrel = 2,
 		/obj/item/storage/box/shotgunshells = 2,
 	)
 
@@ -403,11 +403,11 @@
 		/obj/item/storage/toolbox/lunchbox/survival = 4,
 		/obj/item/survivalcapsule = 2,
 		/obj/item/gps/survival = 10,
-		/obj/item/gun/ballistic/shotgun/flare = 8,
+		/obj/item/gun/projectile/ballistic/shotgun/flare = 8,
 		/obj/item/clothing/accessory/holster/machete/occupied = 2,
 		/obj/item/clothing/accessory/holster/machete/occupied/deluxe = 1,
 		/obj/item/material/knife/machete/hatchet = 4,
-		/obj/item/gun/ballistic/pistol = 4,
+		/obj/item/gun/projectile/ballistic/pistol = 4,
 		/obj/item/storage/box/flare = 10,
 		/obj/item/storage/box/handcuffs = 5,
 		/obj/item/storage/box/beanbags = 6,
@@ -427,11 +427,11 @@
 		/obj/item/storage/toolbox/lunchbox/survival = 5,
 		/obj/item/survivalcapsule = 100,
 		/obj/item/gps/survival = 10,
-		/obj/item/gun/ballistic/shotgun/flare = 100,
+		/obj/item/gun/projectile/ballistic/shotgun/flare = 100,
 		/obj/item/clothing/accessory/holster/machete/occupied = 100,
 		/obj/item/clothing/accessory/holster/machete/occupied/deluxe = 150,
 		/obj/item/material/knife/machete/hatchet = 120,
-		/obj/item/gun/ballistic/pistol = 300,
+		/obj/item/gun/projectile/ballistic/pistol = 300,
 		/obj/item/storage/box/flare = 50,
 		/obj/item/storage/box/handcuffs = 80,
 		/obj/item/storage/box/beanbags = 80,

@@ -285,4 +285,5 @@
 /// how far you have to shift to not be bumped by people
 #define WALLFLOWERING_PIXEL_SHIFT 8
 
-
+/// Icon state to use for ai displays that just turns them off
+#define AI_DISPLAY_DONT_GLOW "ai_off"

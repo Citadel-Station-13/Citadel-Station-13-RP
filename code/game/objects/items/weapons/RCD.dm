@@ -11,7 +11,7 @@
 		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand.dmi',
 		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand.dmi',
 	)
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	damage_force = 10
 	throw_force = 10
 	throw_speed = 1
@@ -334,8 +334,8 @@
 		var/obj/item/hardsuit_module/module = loc
 		if(module.holder) // Is it attached to a HARDSUIT?
 			return module.holder.cell
-	if(istype(loc, /obj/item/mecha_parts/mecha_equipment)) // In a mech.
-		var/obj/item/mecha_parts/mecha_equipment/ME = loc
+	if(istype(loc, /obj/item/vehicle_module)) // In a mech.
+		var/obj/item/vehicle_module/ME = loc
 		if(ME.chassis) // Is the part attached to a mech?
 			return ME.chassis.cell
 	return null

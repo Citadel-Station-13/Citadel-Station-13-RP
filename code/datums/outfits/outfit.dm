@@ -75,6 +75,8 @@
 		J.toggle_valve()
 
 /datum/outfit/proc/equip(mob/living/carbon/human/H, rank, assignment)
+	H.species?.handle_species_job_outfit(H, src)
+
 	equip_base(H)
 
 	rank = rank || id_pda_assignment
@@ -247,7 +249,7 @@
 	l_pocket = /obj/item/ammo_magazine/m95
 	l_hand = /obj/item/ammo_magazine/m95
 	r_hand = /obj/item/ammo_magazine/m95
-	back = /obj/item/gun/ballistic/automatic/battlerifle
+	back = /obj/item/gun/projectile/ballistic/automatic/battlerifle
 	backpack_contents = list(/obj/item/storage/box = 1)
 	abstract_type = /datum/outfit/wizard
 	head = /obj/item/clothing/head/helmet/combat/JSDF
@@ -268,7 +270,7 @@
 	shoes = /obj/item/clothing/shoes/boots/jackboots
 	uniform = /obj/item/clothing/under/oricon/mildress/marine/command
 	back = /obj/item/storage/backpack/satchel
-	belt = /obj/item/gun/ballistic/revolver/consul
+	belt = /obj/item/gun/projectile/ballistic/revolver/consul
 	l_pocket = /obj/item/ammo_magazine/a44/speedloader
 	r_pocket = /obj/item/ammo_magazine/a44/speedloader
 	r_hand = /obj/item/clothing/accessory/holster/hip
@@ -316,7 +318,7 @@
 	r_pocket = /obj/item/cell/device/weapon
 	r_hand = /obj/item/melee/transforming/energy/sword/imperial
 	l_hand = /obj/item/shield/transforming/energy/imperial
-	suit_store = /obj/item/gun/energy/imperial
+	suit_store = /obj/item/gun/projectile/energy/imperial
 
 /datum/outfit/imperial/officer
 	name = "Imperial officer"
@@ -332,4 +334,4 @@
 	r_pocket = /obj/item/cell/device/weapon
 	r_hand = /obj/item/melee/transforming/energy/sword/imperial
 	l_hand = /obj/item/shield/transforming/energy/imperial
-	suit_store = /obj/item/gun/energy/imperial
+	suit_store = /obj/item/gun/projectile/energy/imperial

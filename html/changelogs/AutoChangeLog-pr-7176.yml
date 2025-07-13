@@ -1,0 +1,5 @@
+author: "its-helvi"
+delete-after: True
+changes:
+  - tweak: "Set-Pose and Set-Pose (Temporary) will now display your covered-under-warranty definitely-non-canon definitely-not-submissive positions. Silicons be glad that I didn't use the pillow biting pose instead."
+  - bugfix: "Synth arm implanting now works."

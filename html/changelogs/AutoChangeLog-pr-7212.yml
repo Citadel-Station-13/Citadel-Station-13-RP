@@ -1,0 +1,5 @@
+author: "timothyteakettle"
+delete-after: True
+changes:
+  - refactor: "refactor holosphere revive code"
+  - bugfix: "fixes holospheres being unable to revive at a later point when dying without having enough nutrition to initially revive"

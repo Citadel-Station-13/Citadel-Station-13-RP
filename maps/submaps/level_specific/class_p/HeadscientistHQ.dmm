@@ -299,7 +299,7 @@
 /turf/simulated/shuttle/floor/yellow,
 /area/submap/HeadscientistHQ)
 "lP" = (
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/medigun,
+/obj/item/vehicle_module/weapon/energy/medigun,
 /turf/simulated/shuttle/floor/red,
 /area/submap/HeadscientistHQ)
 "lW" = (
@@ -341,7 +341,7 @@
 /area/template_noop)
 "on" = (
 /obj/structure/table/rack/shelf,
-/obj/item/gun/energy/lasercannon,
+/obj/item/gun/projectile/energy/lasercannon,
 /turf/simulated/shuttle/floor/red,
 /area/submap/HeadscientistHQ)
 "oy" = (
@@ -448,7 +448,7 @@
 /turf/simulated/shuttle/floor/red,
 /area/submap/HeadscientistHQ)
 "uq" = (
-/obj/item/grenade/spawnergrenade/manhacks/mercenary,
+/obj/item/grenade/simple/spawner/manhacks/mercenary,
 /turf/simulated/shuttle/floor/red,
 /area/submap/HeadscientistHQ)
 "uz" = (
@@ -457,7 +457,7 @@
 /area/submap/HeadscientistHQ)
 "uA" = (
 /obj/structure/table/rack/shelf,
-/obj/item/gun/energy/sniperrifle/locked,
+/obj/item/gun/projectile/energy/sniperrifle/locked,
 /turf/simulated/shuttle/floor/red,
 /area/submap/HeadscientistHQ)
 "uG" = (
@@ -523,7 +523,7 @@
 /turf/simulated/shuttle/floor,
 /area/submap/HeadscientistHQ)
 "xA" = (
-/obj/item/mecha_parts/mecha_equipment/repair_droid,
+/obj/item/vehicle_module/repair_droid,
 /turf/template_noop,
 /area/template_noop)
 "xT" = (
@@ -1037,7 +1037,7 @@
 /turf/simulated/shuttle/floor/purple,
 /area/submap/HeadscientistHQ)
 "Vz" = (
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/scattershot,
+/obj/item/vehicle_module/weapon/ballistic/scattershot,
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/shuttle/floor/red,
 /area/submap/HeadscientistHQ)

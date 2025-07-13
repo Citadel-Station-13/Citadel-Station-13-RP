@@ -11,7 +11,7 @@
 
 	tool_speed = 2 //It is now used in surgery as a not awful, but probably dangerous option, due to speed.
 
-/obj/item/duct_tape_roll/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/duct_tape_roll/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/carbon/human/H = target
 	if(istype(H))
 		if(user.a_intent == INTENT_HELP)
@@ -162,7 +162,7 @@
 	icon_state = "tape"
 	w_class = WEIGHT_CLASS_TINY
 	plane = MOB_PLANE
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	anchored = FALSE
 
 	var/obj/item/stuck = null

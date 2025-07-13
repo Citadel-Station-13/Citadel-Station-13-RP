@@ -34,7 +34,7 @@
 		forceMove(get_turf(src))
 
 	/// Move us into the shell and move the shell to the ground.
-	transform_component.put_in_object()
+	transform_component.transform()
 
 	update_perspective()
 	set_resting(FALSE)
@@ -83,7 +83,7 @@
 		holder.pai = null
 
 	/// Handle the actual object stuffing via the component, essentially swapping their loc's around
-	transform_component.put_in_mob()
+	transform_component.untransform()
 
 	update_perspective()
 
@@ -111,10 +111,6 @@
 	H.icon_state = "[chassis]"
 	H.update_worn_icon()
 	return H
-
-/// Handle movement speed
-/mob/living/silicon/pai/movement_delay()
-	return ..() + speed
 
 /// This is a general check for if the pAI can do things such as fold in/out or perform other special actions
 /// (basically if some condition should be checked upon the use of all mob abilities like closing/opening the shell it goes here instead)

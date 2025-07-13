@@ -24,12 +24,6 @@
 	tool_speed = 1
 	var/random_color = TRUE
 
-/obj/item/tool/screwdriver/suicide_act(mob/user)
-	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-	user.visible_message(pick("<span class='danger'>\The [user] is stabbing the [src.name] into [TU.his] temple! It looks like [TU.hes] trying to commit suicide.</span>", \
-						"<span class='danger'>\The [user] is stabbing the [src.name] into [TU.his] heart! It looks like [TU.hes] trying to commit suicide.</span>"))
-	return(BRUTELOSS)
-
 /obj/item/tool/screwdriver/Initialize(mapload)
 	if(random_color)
 		switch(pick("red","blue","purple","brown","green","cyan","yellow"))
@@ -60,7 +54,7 @@
 
 	return ..()
 
-/obj/item/tool/screwdriver/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/tool/screwdriver/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent != INTENT_HARM)
 		return ..()
 	if(user.zone_sel.selecting != O_EYES && user.zone_sel.selecting != BP_HEAD)

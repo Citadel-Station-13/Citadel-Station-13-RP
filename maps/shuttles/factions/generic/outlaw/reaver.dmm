@@ -1,0 +1,1557 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ae" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 10
+	},
+/obj/machinery/air_alarm/alarms_hidden/north_mount,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/reaver/engine)
+"ao" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/storage/toolbox/electrical{
+	pixel_y = -4
+	},
+/obj/effect/floor_decal/techfloor,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/light,
+/obj/item/storage/toolbox/syndicate{
+	pixel_y = 5
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/cockpit)
+"ay" = (
+/obj/structure/cable/orange{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/reaver/engine)
+"aD" = (
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/reaver/cargo)
+"bD" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden,
+/obj/structure/handrail{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/reaver/fore)
+"bX" = (
+/obj/machinery/suit_cycler/syndicate,
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 4;
+	old_wall = 1
+	},
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/prep)
+"cd" = (
+/obj/machinery/door/airlock/glass_external{
+	name = "Ship Hatch"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 8
+	},
+/obj/map_helper/airlock/door/int_door,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/reaver/fore)
+"cA" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/closet/crate/freezer,
+/obj/item/storage/firstaid/adv{
+	pixel_x = -2
+	},
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/reaver/cargo)
+"cN" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/prep)
+"cY" = (
+/obj/spawner/window/reinforced/full,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/reaver/fore)
+"eA" = (
+/turf/simulated/wall/rshull,
+/area/shuttle/reaver/engine)
+"eI" = (
+/obj/spawner/window/reinforced/full,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/reaver/cockpit)
+"eZ" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/obj/structure/handrail{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/prep)
+"fq" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 4
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/reaver/engine)
+"fK" = (
+/obj/machinery/atmospherics/portables_connector{
+	name = "Engine Fuel Port"
+	},
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/reaver/engine)
+"ge" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/light{
+	dir = 4;
+	old_wall = 1
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/reaver/cargo)
+"gQ" = (
+/obj/structure/handrail,
+/turf/simulated/floor/airless,
+/area/shuttle/reaver/fore)
+"hh" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/obj/structure/handrail{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/fore)
+"hx" = (
+/obj/machinery/computer/shuttle_control/explore/reaver{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/reaver/cockpit)
+"if" = (
+/obj/structure/closet/emcloset,
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/cargo)
+"iF" = (
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/reaver/cockpit)
+"jq" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/universal{
+	dir = 4
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/reaver/engine)
+"jr" = (
+/obj/machinery/atmospherics/component/unary/engine/bigger{
+	dir = 8
+	},
+/turf/simulated/wall/rshull,
+/area/shuttle/reaver/engine)
+"jz" = (
+/obj/structure/dispenser/oxygen,
+/obj/effect/floor_decal/techfloor{
+	dir = 6
+	},
+/obj/machinery/light{
+	dir = 4;
+	old_wall = 1
+	},
+/obj/effect/floor_decal/industrial/outline/grey,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/prep)
+"jH" = (
+/obj/machinery/recharger/wallcharger{
+	pixel_y = -28;
+	pixel_x = 3
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/fore)
+"jI" = (
+/turf/simulated/wall/rshull,
+/area/shuttle/reaver/cockpit)
+"jM" = (
+/obj/spawner/window/reinforced/full,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 2;
+	icon_state = "pdoor0";
+	id = "reaver_lockdown";
+	name = "Shuttle Blast Doors";
+	opacity = 0
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/reaver/cockpit)
+"jZ" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/structure/closet/secure_closet/guncabinet,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/fore)
+"kn" = (
+/obj/structure/closet/firecloset/full,
+/obj/effect/floor_decal/techfloor{
+	dir = 9
+	},
+/obj/effect/floor_decal/industrial/outline/red,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/cargo)
+"kT" = (
+/obj/machinery/atmospherics/component/unary/engine{
+	dir = 8
+	},
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/reaver/engine)
+"lv" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/reaver/cargo)
+"lw" = (
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/fuel,
+/obj/machinery/meter{
+	pixel_y = 9;
+	pixel_x = 7
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/reaver/engine)
+"lE" = (
+/obj/machinery/door/airlock/glass_external{
+	name = "Ship Hatch"
+	},
+/obj/map_helper/airlock/door/ext_door,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 2;
+	icon_state = "pdoor0";
+	id = "reaver_airlock";
+	name = "Shuttle Blast Doors";
+	opacity = 0
+	},
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/reaver/fore)
+"lK" = (
+/obj/effect/floor_decal/techfloor/corner{
+	dir = 1
+	},
+/obj/effect/floor_decal/techfloor/corner{
+	dir = 8
+	},
+/obj/structure/cable/orange{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/prep)
+"lU" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/reaver/engine)
+"lV" = (
+/obj/machinery/door/airlock/hatch,
+/obj/structure/cable/orange{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/cargo)
+"mF" = (
+/obj/structure/cable/orange{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/reaver/cockpit)
+"mG" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/reaver/engine)
+"nf" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/fuel{
+	dir = 8
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/reaver/engine)
+"nZ" = (
+/obj/effect/floor_decal/techfloor/corner,
+/obj/structure/cable/orange{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/prep)
+"oo" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume,
+/obj/map_helper/airlock/atmos/chamber_pump,
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	pixel_y = 32;
+	id_tag = "reaver_dock"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/reaver/fore)
+"pg" = (
+/obj/structure/handrail{
+	dir = 4
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/reaver/engine)
+"pA" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/storage/firstaid/regular,
+/obj/machinery/power/apc/east_mount,
+/obj/structure/cable/orange{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/reaver/cockpit)
+"qf" = (
+/obj/machinery/computer/ship/engines{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/reaver/cockpit)
+"qB" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/structure/bed/chair/bay/chair/padded/black,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/fore)
+"rz" = (
+/obj/machinery/atmospherics/component/binary/pump{
+	dir = 4
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/reaver/engine)
+"rH" = (
+/obj/structure/sign/signnew/flammables{
+	pixel_x = 32
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 5
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/cockpit)
+"rX" = (
+/turf/space/basic,
+/area/shuttle/reaver/engine)
+"so" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 5
+	},
+/obj/machinery/power/port_gen/pacman{
+	anchored = 1
+	},
+/obj/structure/cable/yellow{
+	dir = 4
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/reaver/engine)
+"sS" = (
+/obj/effect/floor_decal/techfloor,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/fore)
+"tL" = (
+/obj/effect/floor_decal/techfloor,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/prep)
+"tT" = (
+/obj/effect/floor_decal/techfloor/corner,
+/obj/effect/floor_decal/techfloor/corner{
+	dir = 4
+	},
+/obj/structure/cable/orange{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/cargo)
+"uc" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 8
+	},
+/obj/machinery/airlock_sensor{
+	dir = 4;
+	pixel_x = -27
+	},
+/obj/map_helper/airlock/sensor/int_sensor,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/fore)
+"vb" = (
+/obj/effect/floor_decal/techfloor/corner{
+	dir = 1
+	},
+/obj/effect/floor_decal/techfloor/corner{
+	dir = 8
+	},
+/obj/structure/cable/orange{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/cargo)
+"vj" = (
+/obj/structure/cable/orange{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/prep)
+"vD" = (
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/reaver/engine)
+"wo" = (
+/obj/effect/floor_decal/techfloor/corner{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/fore)
+"wA" = (
+/obj/effect/floor_decal/techfloor/corner,
+/obj/effect/floor_decal/techfloor/corner{
+	dir = 4
+	},
+/obj/structure/cable/orange{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/fore)
+"wH" = (
+/obj/structure/handrail,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/reaver/engine)
+"wL" = (
+/obj/effect/floor_decal/techfloor/corner{
+	dir = 8
+	},
+/obj/machinery/light,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/fore)
+"xg" = (
+/obj/structure/cable/orange{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/prep)
+"xo" = (
+/obj/structure/bed/chair/bay/comfy{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/reaver/cockpit)
+"yk" = (
+/obj/machinery/atmospherics/component/binary/pump,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/reaver/engine)
+"yp" = (
+/obj/effect/floor_decal/techfloor,
+/obj/machinery/recharger/wallcharger{
+	pixel_y = -28;
+	pixel_x = 3
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/fore)
+"zv" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 6
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/reaver/engine)
+"Ac" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/fore)
+"Ap" = (
+/turf/simulated/floor/airless,
+/area/shuttle/reaver/fore)
+"Bg" = (
+/obj/machinery/atmospherics/pipe/tank/phoron{
+	dir = 4
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/reaver/engine)
+"Cv" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/obj/structure/handrail{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/fore)
+"CD" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 5
+	},
+/obj/structure/handrail{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/cargo)
+"CJ" = (
+/obj/machinery/recharger/wallcharger{
+	pixel_x = 32;
+	pixel_y = 3
+	},
+/obj/machinery/recharger/wallcharger{
+	pixel_x = 32;
+	pixel_y = -10
+	},
+/obj/structure/cable/orange{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/prep)
+"Du" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 4
+	},
+/obj/structure/cable/orange{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/cockpit)
+"DT" = (
+/obj/spawner/window/reinforced/full,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 2;
+	icon_state = "pdoor0";
+	id = "reaver_lockdown";
+	name = "Shuttle Blast Doors";
+	opacity = 0
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/reaver/prep)
+"DZ" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/structure/table/rack/shelf/steel,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/fore)
+"EA" = (
+/obj/structure/closet/firecloset/full,
+/obj/effect/floor_decal/techfloor{
+	dir = 10
+	},
+/obj/effect/floor_decal/industrial/outline/red,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/cockpit)
+"ED" = (
+/turf/simulated/wall/rshull,
+/area/shuttle/reaver/prep)
+"EP" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 9
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/structure/bed/chair/bay/chair/padded/black,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/fore)
+"EY" = (
+/obj/machinery/shipsensors,
+/turf/simulated/floor/airless,
+/area/shuttle/reaver/cockpit)
+"Fh" = (
+/obj/structure/closet,
+/obj/effect/floor_decal/techfloor{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/prep)
+"Fu" = (
+/obj/machinery/suit_storage_unit/syndicate,
+/obj/effect/floor_decal/techfloor{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/prep)
+"GJ" = (
+/obj/machinery/door/airlock/hatch,
+/obj/structure/cable/orange{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/reaver/cargo)
+"Hf" = (
+/obj/machinery/door/airlock/hatch,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/reaver/engine)
+"Hi" = (
+/obj/structure/cable/orange{
+	icon_state = "4-8"
+	},
+/obj/structure/cable/orange{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/cockpit)
+"IS" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/obj/machinery/light,
+/obj/overmap/entity/visitable/ship/landable/reaver,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/reaver/fore)
+"IW" = (
+/obj/effect/floor_decal/techfloor,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/cockpit)
+"JI" = (
+/obj/spawner/window/reinforced/full,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 2;
+	icon_state = "pdoor0";
+	id = "reaver_lockdown";
+	name = "Shuttle Blast Doors";
+	opacity = 0
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/reaver/cargo)
+"Kf" = (
+/obj/effect/floor_decal/techfloor,
+/obj/machinery/power/apc/south_mount,
+/obj/structure/cable/orange{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/fore)
+"Kn" = (
+/obj/machinery/door/airlock/hatch,
+/obj/structure/cable/orange{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/cockpit)
+"KK" = (
+/obj/structure/cable/orange{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/reaver/cargo)
+"KO" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/power/apc/west_mount,
+/obj/structure/cable/orange{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/reaver/cargo)
+"KW" = (
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/effect/floor_decal/techfloor,
+/obj/machinery/power/apc/south_mount,
+/obj/structure/cable/orange,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/prep)
+"LO" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/reaver/engine)
+"Mw" = (
+/obj/machinery/door/airlock/glass_external{
+	name = "Ship Hatch"
+	},
+/obj/map_helper/airlock/door/int_door,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/reaver/fore)
+"MQ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 6
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/reaver/engine)
+"MS" = (
+/obj/machinery/suit_storage_unit/syndicate,
+/obj/effect/floor_decal/techfloor{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/prep)
+"MW" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 4
+	},
+/turf/simulated/wall/rshull,
+/area/shuttle/reaver/engine)
+"Nq" = (
+/turf/space/basic,
+/area/space)
+"Nr" = (
+/obj/machinery/door/airlock/hatch,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/cable/orange{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/reaver/engine)
+"Nz" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/prep)
+"NB" = (
+/obj/structure/closet,
+/obj/effect/floor_decal/techfloor{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/prep)
+"ND" = (
+/obj/structure/cable/orange{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/prep)
+"OI" = (
+/obj/machinery/suit_storage_unit/syndicate,
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/prep)
+"ON" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/obj/machinery/button/remote/blast_door{
+	pixel_x = 26;
+	name = "Viewport Blast Doors";
+	id = "reaver_lockdown";
+	pixel_y = 7
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/button/remote/blast_door{
+	pixel_x = 26;
+	name = "Airlock Blast Doors";
+	id = "reaver_airlock";
+	pixel_y = -5
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/fore)
+"OZ" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume,
+/obj/map_helper/airlock/atmos/chamber_pump,
+/obj/machinery/airlock_sensor{
+	dir = 1;
+	pixel_y = 32
+	},
+/obj/map_helper/airlock/sensor/chamber_sensor,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/reaver/fore)
+"PN" = (
+/obj/structure/closet,
+/obj/effect/floor_decal/techfloor{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/prep)
+"Qe" = (
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/reaver/cockpit)
+"Qf" = (
+/obj/structure/cable/orange{
+	icon_state = "1-4"
+	},
+/obj/structure/cable/orange{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/prep)
+"Qp" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/closet/crate{
+	dir = 1
+	},
+/obj/item/storage/briefcase/inflatable,
+/obj/item/stack/material/phoron{
+	amount = 20
+	},
+/obj/item/stack/material/steel{
+	amount = 25
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/reaver/cargo)
+"Qs" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume,
+/obj/map_helper/airlock/atmos/chamber_pump,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/reaver/fore)
+"Qx" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden,
+/obj/machinery/meter,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/reaver/engine)
+"QV" = (
+/obj/structure/cable/orange{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/reaver/engine)
+"QY" = (
+/obj/structure/handrail{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/reaver/cargo)
+"Rx" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 9
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/reaver/engine)
+"RR" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/tank/air,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/fore)
+"Sx" = (
+/obj/machinery/airlock_sensor{
+	dir = 8;
+	pixel_x = 27;
+	pixel_y = 5
+	},
+/obj/map_helper/airlock/sensor/ext_sensor,
+/turf/simulated/floor/airless,
+/area/shuttle/reaver/fore)
+"SH" = (
+/obj/machinery/computer/ship/sensors{
+	dir = 4
+	},
+/obj/structure/panic_button{
+	pixel_y = 32;
+	pixel_x = 3
+	},
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/reaver/cockpit)
+"SN" = (
+/obj/structure/fuel_port{
+	pixel_x = -27
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 9
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/cockpit)
+"SQ" = (
+/obj/machinery/telecomms/relay/preset/telecomms,
+/turf/simulated/floor/airless,
+/area/shuttle/reaver/cockpit)
+"SS" = (
+/obj/spawner/window/reinforced/full,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 2;
+	icon_state = "pdoor0";
+	id = "reaver_lockdown";
+	name = "Shuttle Blast Doors";
+	opacity = 0
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/reaver/fore)
+"Ti" = (
+/turf/simulated/wall/rshull,
+/area/shuttle/reaver/fore)
+"To" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/reaver/cargo)
+"TU" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden,
+/obj/machinery/meter,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/reaver/fore)
+"Ue" = (
+/obj/effect/floor_decal/techfloor,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 4
+	},
+/obj/structure/handrail{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/cockpit)
+"UR" = (
+/obj/machinery/power/smes/buildable{
+	capacity = 1.5e+007;
+	charge = 1.5e+007;
+	cur_coils = 3;
+	input_attempt = 1
+	},
+/obj/structure/cable/orange,
+/obj/machinery/light,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/reaver/engine)
+"Vj" = (
+/obj/structure/cable/orange{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/cockpit)
+"Wy" = (
+/turf/simulated/wall/rshull,
+/area/shuttle/reaver/cargo)
+"Xc" = (
+/obj/effect/floor_decal/techfloor/corner{
+	dir = 8
+	},
+/obj/structure/cable/orange{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/fore)
+"XF" = (
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/prep)
+"XK" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/obj/machinery/fire_alarm/west_mount,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/reaver/engine)
+"XS" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/structure/cable/orange{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/cockpit)
+"Yz" = (
+/obj/machinery/computer/ship/helm{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/reaver/cockpit)
+"Zi" = (
+/obj/structure/cable/yellow{
+	icon_state = "0-4"
+	},
+/obj/machinery/power/apc/south_mount,
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/reaver/engine)
+"Zj" = (
+/obj/structure/cable/orange{
+	icon_state = "4-8"
+	},
+/obj/structure/cable/orange{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/reaver/cargo)
+"Zo" = (
+/obj/machinery/button/remote/blast_door{
+	pixel_x = 26;
+	name = "Lockdown Shutters";
+	id = "reaver_lockdown";
+	pixel_y = 28
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/reaver/cockpit)
+
+(1,1,1) = {"
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+"}
+(2,1,1) = {"
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+"}
+(3,1,1) = {"
+Nq
+Nq
+Nq
+Nq
+Ti
+Ti
+SS
+Ti
+gQ
+Ap
+Sx
+Nq
+Nq
+Nq
+"}
+(4,1,1) = {"
+Nq
+Nq
+Nq
+Nq
+Ti
+EP
+jH
+Ti
+lE
+lE
+Ti
+Nq
+Nq
+Nq
+"}
+(5,1,1) = {"
+Nq
+Nq
+Nq
+Nq
+Ti
+qB
+yp
+Ti
+OZ
+IS
+Ti
+Nq
+Nq
+Nq
+"}
+(6,1,1) = {"
+Nq
+Nq
+Nq
+Nq
+SS
+qB
+sS
+cY
+Qs
+TU
+SS
+Nq
+Nq
+Nq
+"}
+(7,1,1) = {"
+Nq
+Nq
+Nq
+Nq
+Ti
+DZ
+sS
+Ti
+oo
+bD
+Ti
+Nq
+Nq
+Nq
+"}
+(8,1,1) = {"
+Nq
+Nq
+Nq
+Nq
+Ti
+Ac
+Kf
+Ti
+Mw
+cd
+Ti
+Nq
+Nq
+Nq
+"}
+(9,1,1) = {"
+Nq
+Nq
+Nq
+Nq
+Ti
+jZ
+Xc
+uc
+wo
+wL
+Ti
+Nq
+Nq
+Nq
+"}
+(10,1,1) = {"
+Nq
+Nq
+Nq
+Nq
+Ti
+RR
+wA
+ON
+hh
+Cv
+Ti
+Nq
+Nq
+Nq
+"}
+(11,1,1) = {"
+Nq
+Nq
+Nq
+Nq
+Wy
+Wy
+lV
+Wy
+Wy
+Wy
+Wy
+Wy
+Nq
+Nq
+"}
+(12,1,1) = {"
+Nq
+Nq
+Nq
+Nq
+Wy
+kn
+vb
+Wy
+KO
+lv
+cA
+Wy
+Nq
+Nq
+"}
+(13,1,1) = {"
+Nq
+Nq
+Nq
+Nq
+Wy
+if
+Zj
+GJ
+KK
+aD
+QY
+Wy
+Nq
+Nq
+"}
+(14,1,1) = {"
+Nq
+Nq
+Nq
+Nq
+JI
+CD
+tT
+Wy
+Qp
+ge
+To
+Wy
+Nq
+Nq
+"}
+(15,1,1) = {"
+Nq
+Nq
+Nq
+ED
+Wy
+Wy
+lV
+Wy
+Wy
+Wy
+Wy
+Wy
+Nq
+Nq
+"}
+(16,1,1) = {"
+Nq
+Nq
+Nq
+ED
+MS
+Nz
+lK
+Fh
+Fh
+PN
+NB
+ED
+Nq
+Nq
+"}
+(17,1,1) = {"
+Nq
+Nq
+Nq
+ED
+OI
+XF
+ND
+XF
+XF
+XF
+tL
+DT
+Nq
+Nq
+"}
+(18,1,1) = {"
+Nq
+Nq
+Nq
+ED
+OI
+XF
+vj
+CJ
+Qf
+xg
+KW
+ED
+Nq
+Nq
+"}
+(19,1,1) = {"
+Nq
+Nq
+Nq
+ED
+Fu
+cN
+bX
+ED
+nZ
+eZ
+jz
+ED
+Nq
+Nq
+"}
+(20,1,1) = {"
+Nq
+Nq
+Nq
+jI
+jI
+eI
+jI
+jI
+Kn
+jI
+jI
+ED
+Nq
+Nq
+"}
+(21,1,1) = {"
+Nq
+Nq
+Nq
+jI
+SH
+Yz
+hx
+SN
+Vj
+EA
+jI
+Nq
+Nq
+Nq
+"}
+(22,1,1) = {"
+Nq
+Nq
+Nq
+jM
+Zo
+xo
+mF
+XS
+Hi
+ao
+jI
+Nq
+Nq
+Nq
+"}
+(23,1,1) = {"
+Nq
+Nq
+EY
+jI
+qf
+Qe
+pA
+rH
+Vj
+IW
+jM
+Nq
+Nq
+Nq
+"}
+(24,1,1) = {"
+Nq
+Nq
+jI
+jI
+jI
+iF
+jI
+jI
+Du
+Ue
+jI
+SQ
+Nq
+Nq
+"}
+(25,1,1) = {"
+Nq
+Nq
+eA
+Bg
+Bg
+zv
+XK
+eA
+Nr
+Hf
+eA
+eA
+Nq
+Nq
+"}
+(26,1,1) = {"
+Nq
+Nq
+eA
+ae
+lU
+Qx
+rz
+pg
+ay
+QV
+UR
+eA
+Nq
+Nq
+"}
+(27,1,1) = {"
+Nq
+Nq
+eA
+fK
+yk
+Rx
+jq
+vD
+vD
+vD
+Zi
+eA
+Nq
+Nq
+"}
+(28,1,1) = {"
+Nq
+Nq
+eA
+wH
+MQ
+mG
+lw
+LO
+nf
+nf
+so
+eA
+Nq
+Nq
+"}
+(29,1,1) = {"
+Nq
+Nq
+eA
+vD
+fq
+vD
+fq
+eA
+MW
+MW
+MW
+eA
+Nq
+Nq
+"}
+(30,1,1) = {"
+Nq
+Nq
+eA
+eA
+jr
+eA
+jr
+eA
+kT
+kT
+kT
+eA
+Nq
+Nq
+"}
+(31,1,1) = {"
+Nq
+Nq
+Nq
+rX
+rX
+rX
+rX
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+"}
+(32,1,1) = {"
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+"}
+(33,1,1) = {"
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+"}

@@ -1,64 +1,5 @@
 /* Food */
 
-/datum/reagent/nutriment
-	name = "Nutriment"
-	id = "nutriment"
-	description = "All the vitamins, minerals, and carbohydrates the body needs in pure form."
-	taste_mult = 4
-	reagent_state = REAGENT_SOLID
-	metabolism = REM * 4
-	ingest_met = REM * 4
-	var/nutriment_factor = 30 // Per unit
-	var/hydration_factor = 0 //Per unit
-	var/injectable = 0
-	color = "#664330"
-
-// todo: review data procs
-
-/datum/reagent/nutriment/mix_data(datum/reagent_holder/holder, list/current_data, current_amount, list/new_data, new_amount)
-
-	if(!islist(new_data) || !length(new_data))
-		return
-
-	LAZYINITLIST(data)
-
-	//add the new taste data
-	for(var/taste in new_data)
-		if(taste in data)
-			data[taste] += new_data[taste]
-		else
-			data[taste] = new_data[taste]
-
-	//cull all tastes below 10% of total
-	var/totalFlavor = 0
-	for(var/taste in data)
-		totalFlavor += data[taste]
-	if(totalFlavor) //Let's not divide by zero for things w/o taste
-		for(var/taste in data)
-			if(data[taste]/totalFlavor < 0.1)
-				data -= taste
-
-/datum/reagent/nutriment/affect_blood(mob/living/carbon/M, alien, removed)
-	if(!injectable && alien != IS_SLIME && alien != IS_CHIMERA)
-		M.adjustToxLoss(0.1 * removed)
-		return
-	affect_ingest(M, alien, removed)
-
-/datum/reagent/nutriment/affect_ingest(mob/living/carbon/M, alien, removed)
-	switch(alien)
-		if(IS_DIONA)
-			return
-		if(IS_UNATHI)
-			removed *= 0.5
-		if(IS_CHIMERA)
-			removed *= 0.25
-			if(issmall(M))
-				removed *= 2 // Small bodymass, more effect from lower volume.
-	M.heal_organ_damage(0.5 * removed, 0)
-	if(!M.species.is_vampire) // If this is set to 0, they don't get nutrition from food.
-		M.nutrition += nutriment_factor * removed // For hunger and fatness
-	M.adjust_hydration(hydration_factor * removed)
-	M.add_chemical_effect(CE_BLOODRESTORE, 4 * removed)
 
 /datum/reagent/nutriment/glucose
 	name = "Glucose"
@@ -74,7 +15,7 @@
 	taste_description = "some sort of meat"
 	color = "#440000"
 
-/datum/reagent/nutriment/protein/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/nutriment/protein/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	switch(alien)
 		if(IS_SKRELL)
 			M.adjustToxLoss(0.5 * removed)
@@ -87,7 +28,7 @@
 		else
 			..()
 
-/datum/reagent/nutriment/protein/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/nutriment/protein/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien && alien == IS_SKRELL)
 		M.adjustToxLoss(2 * removed)
 		return
@@ -113,16 +54,14 @@
 	nutriment_factor = 10
 	color = "#FFFF00"
 
-/datum/reagent/nutriment/honey/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/nutriment/honey/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 
-	var/effective_dose = dose
-	if(issmall(M))
-		effective_dose *= 2
+	var/effective_dose = metabolism.total_processed_dose
 
 	if(alien == IS_UNATHI)
 		if(effective_dose < 2)
-			if(effective_dose == metabolism * 2 || prob(5))
+			if(effective_dose == metabolism_rate * 2 || prob(5))
 				M.emote("yawn")
 		else if(effective_dose < 5)
 			M.eye_blurry = max(M.eye_blurry, 10)
@@ -151,7 +90,9 @@
 	nutriment_factor = 1
 	color = "#FFFFFF"
 
-/datum/reagent/nutriment/flour/touch_turf(turf/simulated/T)
+/datum/reagent/nutriment/flour/on_touch_turf(turf/target, remaining, allocated, data)
+	. = ..()
+	var/turf/T = target
 	if(!istype(T, /turf/space))
 		new /obj/effect/debris/cleanable/flour(T)
 
@@ -274,20 +215,14 @@
 	nutriment_factor = 15
 	color = "#4F3500"
 
-/datum/reagent/nutriment/peanutoil/touch_turf(turf/simulated/T)
-	if(!istype(T))
-		return
-
-	var/hotspot = (locate(/atom/movable/fire) in T)
-	if(hotspot && !istype(T, /turf/space))
-		var/datum/gas_mixture/lowertemp = T.remove_cell_volume()
-		lowertemp.temperature = max(min(lowertemp.temperature-2000, lowertemp.temperature / 2), 0)
-		lowertemp.react()
-		T.assume_air(lowertemp)
-		qdel(hotspot)
-
-	if(volume >= 5)
-		T.wet_floor()
+// todo: reagent effects
+/datum/reagent/nutriment/peanutoil/on_touch_turf(turf/target, remaining, allocated, data)
+	. = ..()
+	if(allocated >= 5)
+		if(istype(target, /turf/simulated))
+			var/turf/simulated/sim_target = target
+			sim_target.wet_floor()
+		. = max(., 5)
 
 /datum/reagent/nutriment/peanutbutter
 	name = "Peanut Butter"
@@ -319,20 +254,21 @@
 	glass_name = "durian paste"
 	glass_desc = "Durian paste. It smells horrific."
 
-/datum/reagent/nutriment/durian/touch_mob(mob/M, amount)
-	if(iscarbon(M) && !M.isSynthetic())
+/datum/reagent/nutriment/durian/on_touch_mob(mob/target, remaining, allocated, data, zone)
+	. = ..()
+	if(!target.isSynthetic())
 		var/message = pick("Oh god, it smells disgusting here.", "What is that stench?", "That's an awful odor.")
-		to_chat(M,"<span class='alien'>[message]</span>")
-		if(prob(clamp(amount, 5, 90)))
-			var/mob/living/L = M
-			L.vomit()
-	return ..()
+		to_chat(target, "<span class='alien'>[message]</span>")
+		if(prob(clamp(allocated, 5, 90)))
+			if(iscarbon(target))
+				var/mob/living/carbon/living_target = target
+				living_target.vomit()
 
-/datum/reagent/nutriment/durian/touch_turf(turf/T, amount)
-	if(istype(T))
-		var/obj/effect/debris/cleanable/chemcoating/C = new /obj/effect/debris/cleanable/chemcoating(T)
-		C.reagents.add_reagent(id, amount)
-	return ..()
+/datum/reagent/nutriment/durian/on_touch_turf(turf/target, remaining, allocated, data)
+	var/obj/effect/debris/cleanable/chemcoating/C = new /obj/effect/debris/cleanable/chemcoating(target)
+	var/amount_used = C.reagents.add_reagent(id, allocated)
+	allocated -= amount_used
+	return ..() + amount_used
 
 /datum/reagent/nutriment/virus_food
 	name = "Virus Food"
@@ -387,7 +323,7 @@
 	color = "#BBEDA4"
 	overdose = REAGENTS_OVERDOSE
 
-/datum/reagent/lipozine/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/lipozine/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.nutrition = max(M.nutrition - 10 * removed, 0)
 	M.overeatduration = 0
 	if(M.nutrition < 0)
@@ -405,15 +341,15 @@
 	overdose = REAGENTS_OVERDOSE
 	ingest_met = REM
 
-/datum/reagent/sodiumchloride/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/sodiumchloride/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(alien == IS_SLIME)
 		M.adjustFireLoss(removed)
 
-/datum/reagent/sodiumchloride/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/sodiumchloride/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	var/pass_mod = rand(3,5)
 	var/passthrough = (removed - (removed/pass_mod)) //Some may be nullified during consumption, between one third and one fifth.
-	affect_blood(M, alien, passthrough)
+	legacy_affect_blood(M, alien, passthrough, metabolism)
 
 /datum/reagent/blackpepper
 	name = "Black Pepper"
@@ -444,13 +380,13 @@
 	ingest_met = REM
 	color = "#B31008"
 
-/datum/reagent/frostoil/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/frostoil/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
 	M.bodytemperature = max(M.bodytemperature - 10 * TEMPERATURE_DAMAGE_COEFFICIENT, 215)
 	if(prob(1))
 		M.emote("shiver")
-	holder.remove_reagent("capsaicin", 5)
+	metabolism.legacy_current_holder.remove_reagent(/datum/reagent/capsaicin, 5)
 
 /datum/reagent/frostoil/cryotoxin //A longer lasting version of frost oil.
 	name = "Cryotoxin"
@@ -458,7 +394,7 @@
 	description = "Lowers the body's internal temperature."
 	reagent_state = REAGENT_LIQUID
 	color = "#B31008"
-	metabolism = REM * 0.5
+	metabolism_rate = REM * 0.5
 
 /datum/reagent/capsaicin
 	name = "Capsaicin Oil"
@@ -470,12 +406,12 @@
 	ingest_met = REM
 	color = "#B31008"
 
-/datum/reagent/capsaicin/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/capsaicin/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
 	M.adjustToxLoss(0.5 * removed)
 
-/datum/reagent/capsaicin/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/capsaicin/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
 	if(alien == IS_NARAMADI)
@@ -490,13 +426,13 @@
 		if(!H.can_feel_pain())
 			return
 
-	if(dose < 5 && (dose == metabolism || prob(5)))
+	if(metabolism.total_processed_dose < 5 && (metabolism.cycles_so_far == 1 || prob(5)))
 		to_chat(M, "<span class='danger'>Your insides feel uncomfortably hot!</span>")
-	if(dose >= 5)
+	if(metabolism.total_processed_dose >= 5)
 		M.apply_effect(2, AGONY, 0)
 		if(prob(5))
 			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
-	holder.remove_reagent("frostoil", 5)
+	metabolism.legacy_current_holder.remove_reagent(/datum/reagent/frostoil, 5)
 
 /datum/reagent/hexaisin
 	name = "Hexaisin"
@@ -508,7 +444,7 @@
 	ingest_met = REM
 	color = "#B31008"
 
-/datum/reagent/hexaisin/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/hexaisin/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_UNATHI)
 		return
 	if(alien == IS_NARAMADI)
@@ -517,13 +453,13 @@
 		var/mob/living/carbon/human/H = M
 		if(!H.can_feel_pain())
 			return
-	if(dose == metabolism)
+	if(metabolism.cycles_so_far == 1)
 		to_chat(M, "<span class='danger'>You feel like your insides are burning!</span>")
 	else
 		M.apply_effect(3, AGONY, 0)
 		if(prob(5))
 			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
-	holder.remove_reagent("frostoil", 5)
+	metabolism.legacy_current_holder.remove_reagent(/datum/reagent/frostoil, 5)
 
 /datum/reagent/condensedcapsaicin
 	name = "Condensed Capsaicin"
@@ -536,12 +472,12 @@
 	ingest_met = REM
 	color = "#B31008"
 
-/datum/reagent/condensedcapsaicin/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/condensedcapsaicin/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
 	M.adjustToxLoss(0.5 * removed)
 
-/datum/reagent/condensedcapsaicin/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/condensedcapsaicin/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	var/eyes_covered = 0
 	var/mouth_covered = 0
 
@@ -662,7 +598,7 @@
 				to_chat(M, "<span class='warning'>The exposed flesh on your feet burns!</span>")
 			M.apply_effect(effective_strength / 2, AGONY, 0)
 
-/datum/reagent/condensedcapsaicin/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/condensedcapsaicin/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_NARAMADI) //Moghes species with exception of Zaddat (for obvious reasons) are immune to taste and ingested effects of Capsaisin and Condensed variants.
 		return
 	if(alien == IS_UNATHI) //If you want to know why, look at Hexaisin. They are still affected by pepperspray, but not drinking it.
@@ -671,13 +607,13 @@
 		var/mob/living/carbon/human/H = M
 		if(!H.can_feel_pain())
 			return
-	if(dose == metabolism)
+	if(metabolism.cycles_so_far == 1)
 		to_chat(M, "<span class='danger'>You feel like your insides are burning!</span>")
 	else
 		M.apply_effect(4, AGONY, 0)
 		if(prob(5))
 			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
-	holder.remove_reagent("frostoil", 5)
+	metabolism.legacy_current_holder.remove_reagent(/datum/reagent/frostoil, 5)
 
 /* Drinks */
 
@@ -696,14 +632,14 @@
 	var/adj_temp = 0
 	var/water_based = TRUE
 
-/datum/reagent/drink/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	var/strength_mod = 1
 	if(alien == IS_SLIME && water_based)
 		strength_mod = 3
 	M.adjustToxLoss(removed * strength_mod) // Probably not a good idea; not very deadly though
 	return
 
-/datum/reagent/drink/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.adjust_nutrition(nutrition * removed)
 	M.adjust_hydration(hydration * removed)
 	M.dizziness = max(0, M.dizziness + adj_dizzy)
@@ -718,7 +654,7 @@
 	if(is_vampire)
 		handle_vampire(M, alien, removed, is_vampire)
 
-/datum/reagent/drink/overdose(mob/living/carbon/M, alien) //Add special interactions here in the future if desired.
+/datum/reagent/drink/legacy_affect_overdose(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 
 // Juices
@@ -763,7 +699,7 @@
 	glass_name = "Carrot Juice"
 	glass_desc = "It is just like a carrot but without crunching."
 
-/datum/reagent/drink/juice/carrot/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/juice/carrot/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	M.reagents.add_reagent("imidazoline", removed * 0.2)
 
@@ -779,16 +715,14 @@
 	glass_name = "Grape Juice"
 	glass_desc = "It's grrrrrape!"
 
-/datum/reagent/drink/juice/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/juice/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 
-	var/effective_dose = dose/2
-	if(issmall(M))
-		effective_dose *= 2
+	var/effective_dose = metabolism.total_processed_dose
 
 	if(alien == IS_UNATHI)
 		if(effective_dose < 2)
-			if(effective_dose == metabolism * 2 || prob(5))
+			if(effective_dose == metabolism_rate * 2 || prob(5))
 				M.emote("yawn")
 		else if(effective_dose < 5)
 			M.eye_blurry = max(M.eye_blurry, 10)
@@ -833,7 +767,7 @@
 	glass_name = "Lime Juice"
 	glass_desc = "A glass of sweet-sour lime juice"
 
-/datum/reagent/drink/juice/lime/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/juice/lime/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(alien == IS_DIONA)
 		return
@@ -849,7 +783,7 @@
 	glass_name = "orange juice"
 	glass_desc = "Vitamins! Yay!"
 
-/datum/reagent/drink/juice/orange/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/juice/orange/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(alien == IS_DIONA)
 		return
@@ -888,7 +822,7 @@
 	glass_name = "Tomato Juice"
 	glass_desc = "Are you sure this is tomato juice?"
 
-/datum/reagent/drink/juice/tomato/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/juice/tomato/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(alien == IS_DIONA)
 		return
@@ -915,6 +849,18 @@
 	glass_name = "glass of earthen-root juice"
 	glass_desc = "Juice extracted from earthen-root, a plant native to Adhomai."
 
+/datum/reagent/drink/juice/kompot_taj
+	name = "Adhomai Kompot"
+	id = "kompot_taj"
+	description = "Also known as Ashomar'darr Adhomai, this traditional beverage made from boiling Adhomai Holly in water."
+	color = "#a51919"
+	taste_description = "a bitter sweet fruitiness"
+
+	glass_icon_state = "berryjuice"
+	glass_name = "glass of Adhomai Kompot"
+	glass_desc = "A beverage made by boiling berries native to Adhomai in water."
+
+
 // Everything else
 
 /datum/reagent/drink/milk
@@ -933,6 +879,21 @@
 	cup_name = "Cup of Milk"
 	cup_desc = "White and nutritious goodness!"
 
+/datum/reagent/drink/milk/evaporated
+	name = "Evaporated Milk"
+	id = "evapmilk"
+	description = "Milk with much of its water boiled away. Has far beter shelf life then regular milk."
+	taste_description = "milk"
+	color = "#f7f8d2"
+	nutrition=5
+
+	glass_name = "Evaporate Milk"
+	glass_desc = "Thick, Creamy, White, and nutritious goodness!"
+
+	cup_icon_state = "cup_cream"
+	cup_name = "Cup of Evaporated Milk"
+	cup_desc = "Thick, Creamy, White, and nutritious goodness!"
+
 /datum/reagent/drink/milk/chocolate
 	name =  "Chocolate Milk"
 	id = "chocolate_milk"
@@ -946,19 +907,19 @@
 	glass_name = "Chocolate Milk"
 	glass_desc = "Deliciously fattening!"
 
-/datum/reagent/drink/milk/chocolate/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/milk/chocolate/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(alien == IS_ALRAUNE) //cit change: choccy is full of natural easily digestible plant fats
 		M.nutrition += removed * 5
 
-/datum/reagent/drink/milk/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/milk/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(alien == IS_DIONA)
 		return
 	if(alien == IS_ALRAUNE) //cit change: milk good for plant.
 		M.nutrition += removed * 3
 	M.heal_organ_damage(0.5 * removed, 0)
-	holder.remove_reagent("capsaicin", 10 * removed)
+	metabolism.legacy_current_holder.remove_reagent(/datum/reagent/capsaicin, 10 * removed)
 	if(contains_lactose == TRUE && alien == IS_NARAMADI) //Species-wide lactose intolerance, also funny that cheeses can't drink milk.
 		if(prob(5))
 			to_chat(M, SPAN_WARNING("You feel nauseous!"))
@@ -1031,7 +992,7 @@
 	cup_name = "Cup of Tea"
 	cup_desc = "Tasty black tea, it has antioxidants, it's good for you!"
 
-/datum/reagent/drink/tea/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/tea/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(alien == IS_DIONA)
 		return
@@ -1053,7 +1014,7 @@
 	cup_name = "Cup of Iced Tea"
 	cup_desc = "No relation to a certain rap artist/ actor."
 
-/datum/reagent/drink/tea/icetea/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/tea/icetea/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(alien == IS_SLIME)
 		if(M.bodytemperature > T0C)
@@ -1061,7 +1022,7 @@
 		if(M.bodytemperature < T0C)
 			M.bodytemperature += 0.5
 
-/datum/reagent/drink/tea/icetea/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/tea/icetea/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(alien == IS_SLIME)
 		if(M.bodytemperature > T0C)
@@ -1153,14 +1114,14 @@
 	cup_name = "Cup of Milk Tea"
 	cup_desc = "Sweet iced tea cut with milk."
 
-/datum/reagent/drink/tea/icetea/milktea/affect_ingest(mob/living/carbon/M, alien, removed)	//Milk tea and its variants inherit the properties of both iced tea and milk.
+/datum/reagent/drink/tea/icetea/milktea/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)	//Milk tea and its variants inherit the properties of both iced tea and milk.
 	..()
 	if(alien == IS_DIONA)
 		return
 	if(alien == IS_ALRAUNE) //cit change: milk good for plant.
 		M.nutrition += removed * 3
 	M.heal_organ_damage(0.5 * removed, 0)
-	holder.remove_reagent("capsaicin", 10 * removed)
+	metabolism.legacy_current_holder.remove_reagent(/datum/reagent/capsaicin, 10 * removed)
 
 /datum/reagent/drink/tea/icetea/milktea/honeybubbletea
 	name = "Honey Bubble Tea"
@@ -1269,17 +1230,17 @@
 	glass_desc = "Don't drop it, or you'll send scalding liquid and glass shards everywhere."
 
 
-/datum/reagent/drink/coffee/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/coffee/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
 	..()
 	if(adj_temp > 0)
-		holder.remove_reagent("frostoil", 10 * removed)
+		metabolism.legacy_current_holder.remove_reagent(/datum/reagent/frostoil, 10 * removed)
 
-/datum/reagent/drink/coffee/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/coffee/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 
-/datum/reagent/drink/coffee/overdose(mob/living/carbon/M, alien)
+/datum/reagent/drink/coffee/legacy_affect_overdose(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
 	M.make_jittery(5)
@@ -1295,7 +1256,7 @@
 	glass_desc = "A drink to perk you up and refresh you!"
 	glass_special = list(DRINK_ICE)
 
-/datum/reagent/drink/coffee/icecoffee/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/coffee/icecoffee/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(alien == IS_SLIME)
 		if(M.bodytemperature > T0C)
@@ -1303,7 +1264,7 @@
 		if(M.bodytemperature < T0C)
 			M.bodytemperature += 0.5
 
-/datum/reagent/drink/coffee/icecoffee/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/coffee/icecoffee/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(alien == IS_SLIME)
 		if(M.bodytemperature > T0C)
@@ -1328,7 +1289,7 @@
 	cup_name = "Cup of Soy Latte"
 	cup_desc = "A nice and refreshing beverage while you are reading."
 
-/datum/reagent/drink/coffee/soy_latte/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/coffee/soy_latte/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	M.heal_organ_damage(0.5 * removed, 0)
 
@@ -1348,7 +1309,7 @@
 	cup_name = "Cup of Cafe Latte"
 	cup_desc = "A nice and refreshing beverage while you are reading."
 
-/datum/reagent/drink/coffee/cafe_latte/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/coffee/cafe_latte/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	M.heal_organ_damage(0.5 * removed, 0)
 
@@ -1369,7 +1330,7 @@
 	cup_name = "Cup of Hot Chocolate"
 	cup_desc = "Made with love! And cocoa beans."
 
-/datum/reagent/drink/hot_coco/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/hot_coco/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(alien == IS_ALRAUNE) //cit change: choccy is full of natural easily digestible plant fats
 		M.nutrition += removed * 5
@@ -1532,16 +1493,14 @@
 	glass_name = "Milkshake"
 	glass_desc = "Glorious brainfreezing mixture."
 
-/datum/reagent/drink/milkshake/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/milkshake/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 
-	var/effective_dose = dose/2
-	if(issmall(M))
-		effective_dose *= 2
+	var/effective_dose = metabolism.total_processed_dose / 2
 
 	if(alien == IS_UNATHI)
 		if(effective_dose < 2)
-			if(effective_dose == metabolism * 2 || prob(5))
+			if(effective_dose == metabolism_rate * 2 || prob(5))
 				M.emote("yawn")
 		else if(effective_dose < 5)
 			M.eye_blurry = max(M.eye_blurry, 10)
@@ -1574,7 +1533,7 @@
 	glass_name = "Chocolate Milkshake"
 	glass_desc = "A refreshing chocolate milkshake, just like mom used to make."
 
-/datum/reagent/drink/milkshake/chocoshake/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/milkshake/chocoshake/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_ALRAUNE) //cit change: it wouldn't affect plants that much.
 		M.nutrition += removed * 5
 
@@ -1605,7 +1564,7 @@
 	glass_name = "Coffee Milkshake"
 	glass_desc = "An energizing coffee milkshake, perfect for hot days at work.."
 
-/datum/reagent/drink/milkshake/coffeeshake/overdose(mob/living/carbon/M, alien)
+/datum/reagent/drink/milkshake/coffeeshake/legacy_affect_overdose(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.make_jittery(5)
 
 /datum/reagent/drink/milkshake/peanutshake
@@ -1631,7 +1590,7 @@
 	glass_name = "Rewriter"
 	glass_desc = "The secret of the sanctuary of the Libarian..."
 
-/datum/reagent/drink/rewriter/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/rewriter/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	M.make_jittery(5)
 
@@ -1649,7 +1608,7 @@
 	glass_desc = "Don't cry, Don't raise your eye, It's only nuclear wasteland"
 	glass_special = list(DRINK_FIZZ)
 
-/datum/reagent/drink/soda/nuka_cola/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/soda/nuka_cola/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	M.add_chemical_effect(CE_SPEEDBOOST, 1)
 	M.make_jittery(20)
@@ -1922,7 +1881,7 @@
 	glass_name = "The Doctor's Delight"
 	glass_desc = "A healthy mixture of juices, guaranteed to keep you healthy until the next toolboxing takes place."
 
-/datum/reagent/drink/doctor_delight/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/doctor_delight/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(alien == IS_DIONA)
 		return
@@ -1972,7 +1931,7 @@
 	glass_name = "Hell Ramen"
 	glass_desc = "A glass of extremely spicy noodles. Wait, why did you put this into a glass?"
 
-/datum/reagent/drink/hell_ramen/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/hell_ramen/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(alien == IS_DIONA)
 		return
@@ -2003,7 +1962,7 @@
 	glass_desc = "Generally, you're supposed to put something else in there too..."
 	glass_icon = DRINK_ICON_NOISY
 
-/datum/reagent/drink/ice/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/ice/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(alien == IS_SLIME)
 		if(M.bodytemperature > T0C)
@@ -2011,7 +1970,7 @@
 		if(M.bodytemperature < T0C)
 			M.bodytemperature += rand(1,3)
 
-/datum/reagent/drink/ice/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/ice/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(alien == IS_SLIME)
 		if(M.bodytemperature > T0C)
@@ -2124,13 +2083,13 @@
 	glass_icon = DRINK_ICON_NOISY
 	glass_special = list(DRINK_FIZZ)
 
-/datum/reagent/drink/nuclearwaste/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/nuclearwaste/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(alien == IS_DIONA)
 		return
 	M.bloodstr.add_reagent("radium", 0.3)
 
-/datum/reagent/drink/nuclearwaste/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/nuclearwaste/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(alien == IS_DIONA)
 		return
@@ -2150,19 +2109,19 @@
 	glass_icon = DRINK_ICON_NOISY
 	glass_special = list(DRINK_FIZZ)
 
-/datum/reagent/drink/sodaoil/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/sodaoil/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(M.bloodstr) // If, for some reason, they are injected, dilute them as well.
-		for(var/datum/reagent/R in M.ingested.reagent_list)
+		for(var/datum/reagent/R in M.ingested.get_reagent_datums())
 			if(istype(R, /datum/reagent/drink))
 				var/datum/reagent/drink/D = R
 				if(D.water_based)
 					M.adjustToxLoss(removed * -3)
 
-/datum/reagent/drink/sodaoil/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/sodaoil/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(M.ingested) // Find how many drinks are causing tox, and negate them.
-		for(var/datum/reagent/R in M.ingested.reagent_list)
+		for(var/datum/reagent/R in M.ingested.get_reagent_datums())
 			if(istype(R, /datum/reagent/drink))
 				var/datum/reagent/drink/D = R
 				if(D.water_based)
@@ -2373,7 +2332,7 @@
 	glass_name = "Beer"
 	glass_desc = "A freezing pint of beer"
 
-/datum/reagent/ethanol/beer/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/ethanol/beer/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	. = ..()
 	if(.)
 		M.jitteriness = max(M.jitteriness - 3, 0)
@@ -2418,7 +2377,7 @@
 	glass_name = "Rum"
 	glass_desc = "Now you want to Pray for a pirate suit, don't you?"
 
-/datum/reagent/ethanol/deadrum/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/ethanol/deadrum/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	. = ..()
 	if(.)
 		M.dizziness += 5
@@ -2455,7 +2414,7 @@
 	id = "coffee_alcohol"
 	overdose = 45
 
-/datum/reagent/ethanol/coffee/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/ethanol/coffee/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
 	. = ..() // the rest is coffee stuff, ugh, go make reagent traits etc
@@ -2465,7 +2424,7 @@
 	if(M.bodytemperature > 310)
 		M.bodytemperature = max(310, M.bodytemperature - (5 * TEMPERATURE_DAMAGE_COEFFICIENT))
 
-/datum/reagent/ethanol/coffee/overdose(mob/living/carbon/M, alien)
+/datum/reagent/ethanol/coffee/legacy_affect_overdose(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
 	M.make_jittery(5)
@@ -2549,7 +2508,7 @@
 	glass_name = "Thirteen Loko"
 	glass_desc = "This is a glass of Thirteen Loko, it appears to be of the highest quality. The drink, not the glass."
 
-/datum/reagent/ethanol/thirteenloko/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/ethanol/thirteenloko/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	. = ..()
 	if(alien == IS_DIONA)
 		return
@@ -2585,7 +2544,7 @@
 	glass_name = "Vodka"
 	glass_desc = "The glass contain wodka. Xynta."
 
-/datum/reagent/ethanol/vodka/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/ethanol/vodka/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	. = ..()
 	M.cure_radiation(RAD_MOB_CURE_STRENGTH_VODKA(removed))
 
@@ -2982,7 +2941,7 @@
 	glass_name = "Beepsky Smash"
 	glass_desc = "Heavy, hot and strong. Just like the Iron fist of the LAW."
 
-/datum/reagent/ethanol/beepsky_smash/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/ethanol/beepsky_smash/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	. = ..()
 	M.afflict_stun(20 * 2)
 
@@ -3292,7 +3251,7 @@
 	glass_icon = DRINK_ICON_NOISY
 	glass_special = list("neuroright")
 
-/datum/reagent/ethanol/neurotoxin/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/ethanol/neurotoxin/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	. = ..()
 	M.afflict_paralyze(20 * 3)
 
@@ -3319,7 +3278,7 @@
 	glass_name = "???"
 	glass_desc = "A black ichor with an oily purple sheer on top. Are you sure you should drink this?"
 
-/datum/reagent/ethanol/pwine/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/ethanol/pwine/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(. > 30)
 		M.adjustToxLoss(2 * removed)
@@ -3532,7 +3491,7 @@
 	glass_name = "Redeemer's Brew"
 	glass_desc = "This barely qualifies as a drink, and may cause euphoria and numbness. Imbiber beware!"
 
-/datum/reagent/ethanol/unathiliquor/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/ethanol/unathiliquor/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(alien == IS_DIONA)
 		return
@@ -3552,13 +3511,13 @@
 		var/mob/living/carbon/human/H = M
 		if(!H.can_feel_pain())
 			return
-	if(dose == metabolism)
+	if(metabolism.cycles_so_far == 1)
 		to_chat(M, "<span class='danger'>You feel like your insides are burning!</span>")
 	else
 		M.apply_effect(4, AGONY, 0)
 		if(prob(5))
 			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
-	holder.remove_reagent("frostoil", 5)
+	metabolism.legacy_current_holder.remove_reagent(/datum/reagent/frostoil, 5)
 
 /datum/reagent/ethanol/sakebomb
 	name = "Sake Bomb"
@@ -3739,7 +3698,7 @@
 	glass_name = "Soemmer Fire"
 	glass_desc = "A painfully hot mixed drink, for when you absolutely need to hurt right now."
 
-/datum/reagent/ethanol/soemmerfire/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/ethanol/soemmerfire/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(alien == IS_DIONA)
 		return
@@ -3789,7 +3748,7 @@
 	glass_name = "Vox's Delight"
 	glass_desc = "Not recommended if you enjoy having organs."
 
-/datum/reagent/ethanol/voxdelight/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/ethanol/voxdelight/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(alien == IS_DIONA)
 		return
@@ -3854,7 +3813,7 @@
 	glass_name = "Named Bullet"
 	glass_desc = "A thick slime jelly shot. You can feel your death approaching."
 
-/datum/reagent/ethanol/slimeshot/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/ethanol/slimeshot/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(alien == IS_DIONA)
 		return
@@ -3998,7 +3957,7 @@
 	glass_desc = "The glass is barely able to contain the wodka. Xynta."
 	glass_special = list(DRINK_FIZZ)
 
-/datum/reagent/ethanol/godka/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/ethanol/godka/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	. = ..()
 	M.cure_radiation(RAD_MOB_CURE_STRENGTH_GODKA(removed * .))
 	if(. && ishuman(M))
@@ -4342,7 +4301,7 @@
 	glass_desc = "A drink usually enjoyed by only the highest castes of Apinae society. Incredibly sweet, it is said to have enormous health benefits."
 
 //This functions the same as Doctor's Delight, except it gets you drunk too.
-/datum/reagent/ethanol/royaljelly/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/ethanol/royaljelly/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	. = ..()
 	if(alien == IS_DIONA)
 		return
@@ -4536,81 +4495,6 @@
 ///////////////////////////////////////////////
 //// End of list for drinks for bartenders ////
 ///////////////////////////////////////////////
-/*
-	Coatings are used in cooking. Dipping food items in a reagent container with a coating in it
-	allows it to be covered in that, which will add a masked overlay to the sprite.
-	Coatings have both a raw and a cooked image. Raw coating is generally unhealthy
-	Generally coatings are intended for deep frying foods
-*/
-/datum/reagent/nutriment/coating
-	name = "coating"
-	id = "coating"
-	nutriment_factor = 6 //Less dense than the food itself, but coatings still add extra calories
-	var/messaged = 0
-	var/icon_raw
-	var/icon_cooked
-	var/coated_adj = "coated"
-	var/cooked_name = "coating"
-
-/datum/reagent/nutriment/coating/affect_ingest(mob/living/carbon/M, alien, removed)
-
-	//We'll assume that the batter isnt going to be regurgitated and eaten by someone else. Only show this once
-	if (data["cooked"] != 1)
-		if (!messaged)
-			to_chat(M, "Ugh, this raw [name] tastes disgusting.")
-			nutriment_factor *= 0.5
-			messaged = 1
-
-		//Raw coatings will sometimes cause vomiting
-		if (prob(1))
-			M.vomit()
-	..()
-
-/datum/reagent/nutriment/coating/initialize_data(newdata) // Called when the reagent is created.
-	..()
-	if (!data)
-		data = list()
-	else
-		if (isnull(data["cooked"]))
-			data["cooked"] = 0
-		return
-	data["cooked"] = 0
-	if (holder && holder.my_atom && istype(holder.my_atom,/obj/item/reagent_containers/food/snacks))
-		data["cooked"] = 1
-		name = cooked_name
-
-		//Batter which is part of objects at compiletime spawns in a cooked state
-
-
-//Handles setting the temperature when oils are mixed
-// todo: review data procs
-/datum/reagent/nutriment/coating/mix_data(datum/reagent_holder/holder, list/current_data, current_amount, list/new_data, new_amount)
-	LAZYINITLIST(data)
-	data["cooked"] = new_data["cooked"]
-
-/datum/reagent/nutriment/coating/batter
-	name = "batter mix"
-	cooked_name = "batter"
-	id = "batter"
-	color = "#f5f4e9"
-	reagent_state = REAGENT_LIQUID
-	icon_raw = "batter_raw"
-	icon_cooked = "batter_cooked"
-	coated_adj = "battered"
-
-/datum/reagent/nutriment/coating/beerbatter
-	name = "beer batter mix"
-	cooked_name = "beer batter"
-	id = "beerbatter"
-	color = "#f5f4e9"
-	reagent_state = REAGENT_LIQUID
-	icon_raw = "batter_raw"
-	icon_cooked = "batter_cooked"
-	coated_adj = "beer-battered"
-
-/datum/reagent/nutriment/coating/beerbatter/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
-	M.add_chemical_effect(CE_ALCOHOL, 0.02) //Very slightly alcoholic
 
 //=========================
 //Fats
@@ -4635,40 +4519,23 @@
 	touch_met = 1.5
 	var/lastburnmessage = 0
 
-/datum/reagent/nutriment/triglyceride/oil/touch_turf(turf/simulated/T)
-	if(!istype(T))
-		return
-
-	if(volume >= 3)
-		T.wet_floor(2)
-
-// todo: review data procs
-/datum/reagent/nutriment/triglyceride/oil/initialize_data(newdata) // Called when the reagent is created.
-	..()
-	if (!data)
-		data = list("temperature" = T20C)
-
-//Handles setting the temperature when oils are mixed
-/datum/reagent/nutriment/triglyceride/oil/mix_data(datum/reagent_holder/holder, list/current_data, current_amount, list/new_data, new_amount)
-	LAZYINITLIST(data)
-	if (current_amount <= 0 || !data["temperature"] || !volume)
-		//If we get here, then this reagent has just been created, just copy the temperature exactly
-		data["temperature"] = new_data["temperature"]
-	else
-		//Our temperature is set to the mean of the two mixtures, taking volume into account
-		var/total = (data["temperature"] * current_amount) + (new_data["temperature"] * new_amount)
-		data["temperature"] = total / volume
+/datum/reagent/nutriment/triglyceride/oil/on_touch_turf(turf/target, remaining, allocated, data)
+	if(allocated >= 3)
+		if(istype(target, /turf/simulated))
+			var/turf/simulated/simulated_target = target
+			simulated_target.wet_floor(2)
 	return ..()
 
 //Calculates a scaling factor for scalding damage, based on the temperature of the oil and creature's heat resistance
-/datum/reagent/nutriment/triglyceride/oil/proc/heatdamage(mob/living/carbon/M)
+/datum/reagent/nutriment/triglyceride/oil/proc/heatdamage(mob/living/carbon/M, datum/reagent_holder/holder)
+	var/temperature = holder.temperature
 	var/threshold = 360//Human heatdamage threshold
 	var/datum/species/S = M.species
 	if (S && istype(S))
 		threshold = S.heat_level_1
 
 	//If temperature is too low to burn, return a factor of 0. no damage
-	if (data["temperature"] < threshold)
+	if (temperature < threshold)
 		return 0
 
 	//Step = degrees above heat level 1 for 1.0 multiplier
@@ -4676,15 +4543,14 @@
 	if (S && istype(S))
 		step = (S.heat_level_2 - S.heat_level_1)*1.5
 
-	. = data["temperature"] - threshold
+	. = temperature - threshold
 	. /= step
 	. = min(., 2.5)//Cap multiplier at 2.5
 
-/datum/reagent/nutriment/triglyceride/oil/affect_touch(mob/living/carbon/M, alien, removed)
-	var/dfactor = heatdamage(M)
+/datum/reagent/nutriment/triglyceride/oil/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
+	var/dfactor = heatdamage(M, metabolism.legacy_current_holder)
 	if (dfactor)
 		M.take_random_targeted_damage(brute = 0, brute = removed * 1.5 * dfactor)
-		data["temperature"] -= (6 * removed) / (1 + volume*0.1)//Cools off as it burns you
 		if (lastburnmessage+100 < world.time	)
 			to_chat(M, SPAN_DANGER("Searing hot oil burns you, wash it off quick!"))
 			lastburnmessage = world.time
@@ -4738,7 +4604,7 @@
 	color = "#EDB91F"
 	taste_description = "cheese"
 
-/datum/reagent/nutriment/protein/cheese/affect_ingest(mob/living/carbon/M, alien, removed) //Cheese is a kind of milk.
+/datum/reagent/nutriment/protein/cheese/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism) //Cheese is a kind of milk.
 	if(alien == IS_NARAMADI)
 		if(prob(5))
 			to_chat(M, SPAN_WARNING("You feel nauseous!"))
@@ -4820,19 +4686,19 @@
 	taste_description = "the gross yet satisfying combination of chewing on a raw steak while downing a shot of whiskey"
 	proof = WHISKEY/2
 	color = "#d3785d"
-	metabolism = REM * 2.5 // about right for mixing nutriment and ethanol.
+	metabolism_rate = REM * 2.5 // about right for mixing nutriment and ethanol.
 	var/alt_nutriment_factor = 5 //half as much as protein since it's half protein.
 	//using a new variable instead of nutriment_factor so we can call ..() without that adding nutrition for us without taking factors for protein into account
 
 	glass_name = "Monster Tamer"
 	glass_desc = "This looks like an alcoholic slurry of meat. Gross."
 
-/datum/reagent/ethanol/monstertamer/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/ethanol/monstertamer/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 
 	monster_tamer(M,alien, removed, alt_nutriment_factor)
 
-/datum/reagent/ethanol/monstertamer/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/ethanol/monstertamer/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(alien == IS_SKRELL)
 		M.adjustToxLoss(removed)  //Equivalent to half as much protein, since it's half protein.
@@ -4846,19 +4712,19 @@
 	description = "A questionably-delicious blend of a carnivore's favorite food and, it turns out, certain oligosaccharides common to certain plants."
 	taste_description = "the gross yet satisfying combination of chewing on a raw steak while gulping a bunch of root beer"
 	color = "#d3785d"
-	metabolism = REM * 2.5 // not actually right for the mix, but required to make it mechanically equivalent for feralness purposes
+	metabolism_rate = REM * 2.5 // not actually right for the mix, but required to make it mechanically equivalent for feralness purposes
 	var/alt_nutriment_factor = 5 //half as much as protein since it's half protein.
 	//using a new variable instead of nutriment_factor so we can call ..() without that adding nutrition for us without taking factors for protein into account
 
 	glass_name = "Dry Monster Tamer"
 	glass_desc = "This looks like a fizzy slurry of meat. Gross."
 
-/datum/reagent/drink/drymonstertamer/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/drymonstertamer/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 
 	monster_tamer(M,alien, removed, alt_nutriment_factor)
 
-/datum/reagent/drink/drymonstertamer/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/drymonstertamer/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	if(alien == IS_SKRELL)
 		M.adjustToxLoss(removed)  //Equivalent to half as much protein, since it's half protein.
@@ -4880,7 +4746,7 @@
 	glass_name = "Galactic Panic Attack"
 	glass_desc = "Looking into this is like staring at the stars."
 
-/datum/reagent/ethanol/galacticpanic/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/ethanol/galacticpanic/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	. = ..()
 
 	M.afflict_stun(20 * 2)
@@ -4961,7 +4827,7 @@
 	glass_name = "Dumb Shroom Juice"
 	glass_desc = "Touch fuzzy, get dizzy."
 
-/datum/reagent/drink/shroomjuice/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/shroomjuice/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	. = ..()
 
 	if(alien == IS_DIONA)
@@ -4976,7 +4842,7 @@
 
 	M.druggy = max(M.druggy, 30)
 
-	var/effective_dose = dose
+	var/effective_dose = metabolism.total_processed_dose
 	if(issmall(M)) effective_dose *= 2
 	if(effective_dose < 1 * threshold)
 		M.apply_effect(3, STUTTER)
@@ -5129,13 +4995,13 @@
 	glass_name = "A Desire to Die"
 	glass_desc = "Deathbell and nuclear waste. The bane of your liver."
 
-/datum/reagent/ethanol/desiretodie/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/ethanol/desiretodie/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	. = ..()
 	if(alien == IS_DIONA)
 		return
 	M.bloodstr.add_reagent("radium", 0.3)
 
-/datum/reagent/ethanol/desiretodie/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/ethanol/desiretodie/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	. = ..()
 	if(alien == IS_DIONA)
 		return

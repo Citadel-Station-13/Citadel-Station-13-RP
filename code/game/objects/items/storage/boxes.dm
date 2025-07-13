@@ -108,7 +108,7 @@
 	name = "box of syringe gun cartridges"
 	desc = "A box full of compressed gas cartridges."
 	icon_state = "syringe"
-	starts_with = list(/obj/item/syringe_cartridge = 7)
+	starts_with = list(/obj/item/ammo_casing/syringe = 7)
 
 /obj/item/storage/box/beakers
 	name = "box of beakers"
@@ -237,7 +237,7 @@
 	name = "box of flashbangs (WARNING)"
 	desc = "<B>WARNING: These devices are extremely dangerous and can cause blindness or deafness in repeated use.</B>"
 	icon_state = "flashbang"
-	starts_with = list(/obj/item/grenade/flashbang = 7)
+	starts_with = list(/obj/item/grenade/simple/flashbang = 7)
 	drop_sound = 'sound/items/drop/ammobox.ogg'
 	pickup_sound = 'sound/items/pickup/ammobox.ogg'
 
@@ -245,7 +245,7 @@
 	name = "box of emp grenades"
 	desc = "A box containing 5 military grade EMP grenades.<br> WARNING: Do not use near unshielded electronics or biomechanical augmentations, death or permanent paralysis may occur."
 	icon_state = "emp"
-	starts_with = list(/obj/item/grenade/empgrenade = 7)
+	starts_with = list(/obj/item/grenade/simple/emp = 7)
 	drop_sound = 'sound/items/drop/ammobox.ogg'
 	pickup_sound = 'sound/items/pickup/ammobox.ogg'
 
@@ -253,7 +253,7 @@
 	name = "box of low yield emp grenades"
 	desc = "A box containing 5 low yield EMP grenades.<br> WARNING: Do not use near unshielded electronics or biomechanical augmentations, death or permanent paralysis may occur."
 	icon_state = "emp"
-	starts_with = list(/obj/item/grenade/empgrenade/low_yield = 7)
+	starts_with = list(/obj/item/grenade/simple/emp/low_yield = 7)
 	drop_sound = 'sound/items/drop/ammobox.ogg'
 	pickup_sound = 'sound/items/pickup/ammobox.ogg'
 
@@ -261,7 +261,7 @@
 	name = "box of smoke bombs"
 	desc = "A box containing 7 smoke bombs."
 	icon_state = "flashbang"
-	starts_with = list(/obj/item/grenade/smokebomb = 7)
+	starts_with = list(/obj/item/grenade/simple/smoke = 7)
 	drop_sound = 'sound/items/drop/ammobox.ogg'
 	pickup_sound = 'sound/items/pickup/ammobox.ogg'
 
@@ -269,7 +269,7 @@
 	name = "box of anti-photon grenades"
 	desc = "A box containing 7 experimental photon disruption grenades."
 	icon_state = "flashbang"
-	starts_with = list(/obj/item/grenade/anti_photon = 7)
+	starts_with = list(/obj/item/grenade/simple/antiphoton = 7)
 	drop_sound = 'sound/items/drop/ammobox.ogg'
 	pickup_sound = 'sound/items/pickup/ammobox.ogg'
 
@@ -277,7 +277,7 @@
 	name = "box of fragmentation grenades (WARNING)"
 	desc = "A box containing 7 military grade fragmentation grenades.<br> WARNING: These devices are extremely dangerous and can cause limb loss or death in repeated use."
 	icon_state = "frag"
-	starts_with = list(/obj/item/grenade/explosive = 7)
+	starts_with = list(/obj/item/grenade/simple/explosive = 7)
 	drop_sound = 'sound/items/drop/ammobox.ogg'
 	pickup_sound = 'sound/items/pickup/ammobox.ogg'
 
@@ -285,7 +285,7 @@
 	name = "box of fragmentation grenades (WARNING)"
 	desc = "A box containing 4 military grade fragmentation grenades.<br> WARNING: These devices are extremely dangerous and can cause limb loss or death in repeated use."
 	icon_state = "frag"
-	starts_with = list(/obj/item/grenade/explosive = 4)
+	starts_with = list(/obj/item/grenade/simple/explosive = 4)
 	drop_sound = 'sound/items/drop/ammobox.ogg'
 	pickup_sound = 'sound/items/pickup/ammobox.ogg'
 
@@ -293,13 +293,13 @@
 	name = "box of metal foam grenades."
 	desc = "A box containing 7 metal foam grenades."
 	icon_state = "flashbang"
-	starts_with = list(/obj/item/grenade/chem_grenade/metalfoam = 7)
+	starts_with = list(/obj/item/grenade/simple/chemical/premade/metalfoam = 7)
 
 /obj/item/storage/box/teargas
 	name = "box of teargas grenades"
 	desc = "A box containing 7 teargas grenades."
 	icon_state = "flashbang"
-	starts_with = list(/obj/item/grenade/chem_grenade/teargas = 7)
+	starts_with = list(/obj/item/grenade/simple/chemical/premade/teargas = 7)
 
 /obj/item/storage/box/flare
 	name = "box of flares"

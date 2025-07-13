@@ -55,6 +55,7 @@
 
 	//Organ exists, let's reshape it
 	var/list/usable_manufacturers = list()
+	usable_manufacturers["Default - Protean"] = null
 	for(var/company in GLOB.chargen_robolimbs)
 		var/datum/robolimb/M = GLOB.chargen_robolimbs[company]
 		if(!(choice in M.parts))
@@ -108,6 +109,7 @@
 		return
 	if(swap_not_rebuild == "Reshape")
 		var/list/usable_manufacturers = list()
+		usable_manufacturers["Default - Protean"] = null
 		for(var/company in GLOB.chargen_robolimbs)
 			var/datum/robolimb/M = GLOB.chargen_robolimbs[company]
 			if(!(BP_TORSO in M.parts))
@@ -294,6 +296,7 @@
 	if(new_species)
 		impersonate_bodytype_legacy = new_species.get_bodytype_legacy()
 		impersonate_bodytype = new_species.default_bodytype
+		impersonate_species_for_iconbase = new_species
 		regenerate_icons() //Expensive, but we need to recrunch all the icons we're wearing
 
 ////
@@ -342,6 +345,107 @@
 			to_chat(user,"<span class='warning'>Unfortunately, [cost-actually_added] steel was lost due to lack of storage space.</span>")
 
 	user.visible_message("<span class='notice'>Black mist swirls around [user] as they change size.</span>")
+
+
+/mob/living/carbon/human/proc/nano_copy_appearance()
+	set name = "Mimic Appearance"
+	set category = "Abilities"
+
+	if(stat || world.time < last_special)
+		return
+
+	last_special = world.time + 50 //eh, i'll just leave it as an additional cooldown
+
+	var/list/valid_moblist = list()
+
+	for(var/mob/living/carbon/human/M in oview(7))
+		valid_moblist |= M
+
+	var/mob/living/carbon/human/target = input(src,"Who do you wish to target?","Mimic Target") as null|anything in valid_moblist
+
+	if(!istype(target))
+		return FALSE
+
+	if(get_dist(src,target) > 7)
+		to_chat(src,"<span class='warning'>That person is too far away.</span>")
+		return FALSE
+
+	visible_message("<span class='warning'>[src] deforms and contorts strangely...</span>")
+	if(!do_after(src, 5)) //.5 seconds
+		return FALSE
+
+	shapeshifter_copy_core_features(target)
+
+
+	//markings and limbs time.
+	//ensure we get synthlimb markings if target has them
+	synth_markings = target.synth_markings
+
+	//copies all of the target's markings.
+	for(var/BP in target.organs_by_name)
+		var/obj/item/organ/external/their_organ = target.organs_by_name[BP]
+		var/obj/item/organ/external/our_organ = organs_by_name[BP]
+		if(their_organ && our_organ)
+			if((their_organ.robotic >= ORGAN_ROBOT))
+				our_organ.robotize(their_organ.model)
+			our_organ.s_col_blend = their_organ.s_col_blend
+			var/list/markings_to_copy = their_organ.markings.Copy()
+			our_organ.markings = markings_to_copy
+		if(our_organ)
+			our_organ.sync_colour_to_human(src)
+
+	if(target.species)
+		impersonate_bodytype_legacy = target.species.get_bodytype_legacy()
+		impersonate_bodytype = target.species.default_bodytype
+		impersonate_species_for_iconbase = target.species
+	regenerate_icons() //Expensive, but we need to recrunch all the icons we're wearing
+
+	visible_message("<span class='warning'>[src] transforms into a near-perfect visual copy of [target]!</span>") //you can clearly SEE them transform, so
+
+/mob/living/carbon/human/proc/nano_reset_to_slot()
+	set name = "Reset Appearance to Slot"
+	set category = "Abilities"
+	set desc = "Resets your character's appearance to the CURRENTLY-SELECTED slot."
+
+	if(stat || world.time < last_special)
+		return
+
+	last_special = world.time + 20 SECONDS
+
+	visible_message("<span class='warning'>[src] deforms and contorts strangely...</span>")
+	
+	if(!do_after(src, 50)) //5 seconds
+		return FALSE
+
+	shapeshifter_reset_to_slot_core(src)
+
+	var/datum/preferences/pref = src.client.prefs
+	for(var/name in list(
+		BP_TORSO,
+		BP_GROIN,
+		BP_HEAD,
+		BP_L_ARM,
+		BP_L_HAND,
+		BP_R_ARM,
+		BP_R_HAND,
+		BP_L_LEG,
+		BP_L_FOOT,
+		BP_R_LEG,
+		BP_R_FOOT
+	))
+
+		var/obj/item/organ/external/O = src.organs_by_name[name]
+		if(O)
+			if(pref.rlimb_data[name])
+				O.robotize(pref.rlimb_data[name])
+			else
+				O.robotize()
+
+//protean
+	impersonate_bodytype_legacy = null
+	impersonate_bodytype = null
+
+	regenerate_icons()
 
 /// /// /// A helper to reuse
 /mob/living/proc/nano_get_refactory(obj/item/organ/internal/nano/refactory/R)

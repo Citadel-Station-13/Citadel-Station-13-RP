@@ -101,11 +101,6 @@
 	if(max_fuel)
 		. += "<span class = 'notice'>The [src] feels like it contains roughtly [get_fuel()] units of fuel left.</span>"
 
-/obj/item/chainsaw/suicide_act(mob/user)
-	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-	to_chat(viewers(user), "<span class='danger'>[user] is lying down and pulling the chainsaw into [TU.him], it looks like [TU.he] [TU.is] trying to commit suicide!</span>")
-	return(BRUTELOSS)
-
 /obj/item/chainsaw/update_icon()
 	. = ..()
 	if(on)
@@ -122,12 +117,12 @@
 	item_state = "chainsword0"
 	slot_flags = SLOT_BELT
 	damage_force = 30
+	damage_tier = 4.5
 	throw_force = 10
 	w_class = WEIGHT_CLASS_NORMAL
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	attack_verb = list("sawed", "torn", "cut", "chopped", "diced")
 	attack_sound = 'sound/weapons/chainsaw_attack.ogg'
-	armor_penetration = 30
 
 /obj/item/chainsaw/chainsword/turnOn(mob/user as mob)
 	to_chat(user, "You begin pulling the throttle on \the [src].")

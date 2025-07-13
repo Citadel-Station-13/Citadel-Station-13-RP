@@ -1,6 +1,6 @@
 /obj/projectile/bullet/pistol/rubber/strong //"rubber" bullets for revolvers and matebas
 	damage_force = 10
-	agony = 60
+	damage_inflict_agony = 60
 	embed_chance = 0
 	damage_flag = ARMOR_MELEE
 
@@ -16,5 +16,8 @@
 	name = "stunshot"
 	icon_state = "bullet"
 	damage_force = 10
-	taser_effect = 1
-	agony = 100
+	base_projectile_effects = list(
+		/datum/projectile_effect/electrical_impulse{
+			shock_agony = 100;
+		}
+	)

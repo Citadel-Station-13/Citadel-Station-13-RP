@@ -171,7 +171,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/item/gun/energy/stunrevolver,
+/obj/item/gun/projectile/energy/stunrevolver,
 /obj/structure/closet/cabinet,
 /obj/item/clothing/suit/space/void/refurb/officer,
 /obj/item/clothing/head/helmet/space/void/refurb/officer,
@@ -307,7 +307,7 @@
 	icon_state = "1-4"
 	},
 /obj/item/storage/box/beanbags/large,
-/obj/item/gun/ballistic/shotgun/pump/combat{
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat{
 	desc = "When words don't strike hard enough.";
 	name = "Solid Argument"
 	},
@@ -328,7 +328,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc/alarms_hidden/east_mount{
-	
+
 	},
 /turf/simulated/floor/wood,
 /area/shuttle/bearcat/command_captain)

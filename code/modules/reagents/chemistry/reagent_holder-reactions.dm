@@ -12,11 +12,7 @@
 /datum/reagent_holder/proc/reconsider_reactions()
 	SHOULD_NOT_SLEEP(TRUE)
 
-	var/list/reagent_ids = list()
-	for(var/datum/reagent/reagent in reagent_list)
-		reagent_ids[reagent.id] = TRUE
-
-	var/list/datum/chemical_reaction/reactions = SSchemistry.immutable_relevant_reactions_for_reagent_ids(reagent_ids)
+	var/list/datum/chemical_reaction/reactions = SSchemistry.immutable_relevant_reactions_for_reagent_ids(reagent_volumes)
 	check_reactions(reactions)
 
 //* Internal API *//
@@ -155,12 +151,17 @@
 
 	var/list/ids_to_recheck = list()
 
+	if(!reagent_volumes)
+		for(var/datum/chemical_reaction/reaction as anything in active_reactions)
+			stop_ticked_reaction(reaction)
+		return
+
 	for(var/datum/chemical_reaction/reaction as anything in active_reactions)
 		var/checks_pass = TRUE
 
 		// make sure catalysts are there
 		for(var/reagent in reaction.catalysts)
-			var/catalyst_amount = legacy_direct_access_reagent_amount(reagent)
+			var/catalyst_amount = reagent_volumes[reagent]
 			if(isnull(catalyst_amount) || (catalyst_amount < reaction.catalysts[reagent]))
 				checks_pass = FALSE
 				break
@@ -175,7 +176,7 @@
 
 		// ingredients
 		for(var/id in reaction.required_reagents)
-			var/amount = legacy_direct_access_reagent_amount(id)
+			var/amount = reagent_volumes[id]
 			maximum_multiplier = min(maximum_multiplier, amount / reaction.required_reagents[id])
 			total_reactant_volume += amount
 
@@ -187,7 +188,7 @@
 		if(reaction.equilibrium != INFINITY)
 			// wanted % of product
 			var/wanted_percent = reaction.equilibrium / (reaction.equilibrium + 1)
-			var/wanted = wanted_percent * (legacy_direct_access_reagent_amount(reaction.result) + total_reactant_volume)
+			var/wanted = wanted_percent * (reagent_volumes[reaction.result] + total_reactant_volume)
 			maximum_multiplier = clamp(maximum_multiplier, 0, wanted / reaction.result_amount)
 			if(maximum_multiplier <= 0)
 				return
@@ -203,7 +204,7 @@
 
 		// moderators
 		for(var/id in reaction.moderators)
-			if(legacy_direct_access_reagent_amount(id))
+			if(reagent_volumes[id])
 				effective_half_life *= reaction.moderators[id]
 
 		// half life
@@ -223,7 +224,12 @@
 			remove_reagent(id, maximum_multiplier * reaction.required_reagents[id], TRUE)
 			ids_to_recheck[id] = TRUE
 		if(reaction.result_amount > 0)
-			add_reagent(reaction.result, maximum_multiplier * reaction.result_amount, null, TRUE)
+			add_reagent(
+				reaction.result,
+				maximum_multiplier * reaction.result_amount,
+				reaction.has_data_semantics ? reaction.compute_result_data_initializer(src, maximum_multiplier) : null,
+				TRUE,
+			)
 			ids_to_recheck[reaction.result] = TRUE
 
 		reaction.on_reaction_tick(src, delta_time, maximum_multiplier)
@@ -258,6 +264,8 @@
 	if(safety <= 0)
 		clear_reagents(TRUE)
 		CRASH("run_instant_reactions aborted due to potential infinite loop. reactions list was [english_list(reactions)]")
+	if(!reagent_volumes)
+		return
 
 	var/list/ids_to_recheck = list()
 
@@ -266,7 +274,7 @@
 
 		// make sure catalysts are there
 		for(var/reagent in reaction.catalysts)
-			var/catalyst_amount = legacy_direct_access_reagent_amount(reagent)
+			var/catalyst_amount = reagent_volumes[reagent]
 			if(isnull(catalyst_amount) || (catalyst_amount < reaction.catalysts[reagent]))
 				checks_pass = FALSE
 				break
@@ -276,7 +284,7 @@
 
 		// we only care about moderators that halt reaction for instant reactions
 		for(var/id in reaction.moderators)
-			if(reaction.moderators[id] >= SHORT_REAL_LIMIT && legacy_direct_access_reagent_amount(id))
+			if(reaction.moderators[id] >= SHORT_REAL_LIMIT && reagent_volumes[id])
 				checks_pass = FALSE
 				break
 		if(!checks_pass)
@@ -287,14 +295,14 @@
 		if(reaction.require_whole_numbers)
 			// tally up required reagents
 			for(var/id in reaction.required_reagents)
-				maximum_multiplier = min(maximum_multiplier, floor(legacy_direct_access_reagent_amount(id) / reaction.required_reagents[id]))
+				maximum_multiplier = min(maximum_multiplier, floor(reagent_volumes[id] / reaction.required_reagents[id]))
 			// tally up remaining space, taking into account the reagents we would consume if we reacted to completion
 			if(reaction.result && reaction.result_amount > 0)
 				maximum_multiplier = min(maximum_multiplier, floor(((maximum_volume - total_volume) + (maximum_multiplier * reaction.required_reagents_unit_volume)) / reaction.result_amount))
 		else
 			// tally up required reagents
 			for(var/id in reaction.required_reagents)
-				maximum_multiplier = min(maximum_multiplier, legacy_direct_access_reagent_amount(id) / reaction.required_reagents[id])
+				maximum_multiplier = min(maximum_multiplier, reagent_volumes[id] / reaction.required_reagents[id])
 			// tally up remaining space, taking into account the reagents we would consume if we reacted to completion
 			if(reaction.result && reaction.result_amount > 0)
 				maximum_multiplier = min(maximum_multiplier, ((maximum_volume - total_volume) + (maximum_multiplier * reaction.required_reagents_unit_volume)) / reaction.result_amount)
@@ -308,7 +316,12 @@
 			remove_reagent(id, maximum_multiplier * reaction.required_reagents[id], TRUE)
 			ids_to_recheck[id] = TRUE
 		if(reaction.result && reaction.result_amount > 0)
-			add_reagent(reaction.result, maximum_multiplier * reaction.result_amount, null, TRUE)
+			add_reagent(
+				reaction.result,
+				maximum_multiplier * reaction.result_amount,
+				reaction.has_data_semantics ? reaction.compute_result_data_initializer(src, maximum_multiplier) : null,
+				TRUE,
+			)
 			ids_to_recheck[reaction.result] = TRUE
 
 		reaction.on_reaction_instant(src, maximum_multiplier)

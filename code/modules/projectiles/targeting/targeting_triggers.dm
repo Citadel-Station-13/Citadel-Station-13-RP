@@ -19,10 +19,10 @@
 		return
 	if(!owner.canClick())
 		return
-	owner.setClickCooldown(5) // Spam prevention, essentially.
+	owner.setClickCooldownLegacy(5) // Spam prevention, essentially.
 	owner.visible_message("<span class='danger'>\The [owner] pulls the trigger reflexively!</span>")
 	var/obj/item/gun/G = aiming_with
 	if(istype(G))
-		INVOKE_ASYNC(G, TYPE_PROC_REF(/obj/item/gun, Fire), aiming_at, owner, null, null, TRUE)
+		G.start_firing_cycle_async(owner, get_centered_entity_tile_angle(owner, aiming_at), GUN_FIRING_BY_REFLEX, null, aiming_at, new /datum/event_args/actor(owner))
 		locked = 0
 		lock_time = world.time+10

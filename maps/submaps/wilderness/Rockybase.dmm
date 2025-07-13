@@ -7,7 +7,7 @@
 /turf/template_noop,
 /area/template_noop)
 "ac" = (
-/obj/item/grenade/chem_grenade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
 /turf/template_noop,
 /area/template_noop)
 "ad" = (
@@ -200,7 +200,7 @@
 /area/submap/Rockybase)
 "aQ" = (
 /obj/structure/table/rack,
-/obj/item/gun/ballistic/pistol,
+/obj/item/gun/projectile/ballistic/pistol,
 /obj/effect/floor_decal/corner/red/border{
 	dir = 1
 	},
@@ -208,7 +208,7 @@
 /area/submap/Rockybase)
 "aR" = (
 /obj/structure/table/rack,
-/obj/item/gun/energy/gun/taser,
+/obj/item/gun/projectile/energy/taser,
 /obj/effect/floor_decal/corner/red/border{
 	dir = 1
 	},
@@ -235,8 +235,8 @@
 /area/submap/Rockybase)
 "aV" = (
 /obj/structure/table/rack,
-/obj/item/gun/ballistic/shotgun/pump/combat,
-/obj/item/gun/ballistic/shotgun/pump/combat,
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat,
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat,
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/Rockybase)
 "aW" = (
@@ -275,9 +275,9 @@
 /area/submap/Rockybase)
 "bb" = (
 /obj/structure/table/standard,
-/obj/item/grenade/chem_grenade/cleaner,
-/obj/item/grenade/chem_grenade/cleaner,
-/obj/item/grenade/chem_grenade/cleaner,
+/obj/item/grenade/simple/chemical/premade/cleaner,
+/obj/item/grenade/simple/chemical/premade/cleaner,
+/obj/item/grenade/simple/chemical/premade/cleaner,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -352,7 +352,7 @@
 /turf/simulated/floor/tiled/hydro,
 /area/submap/Rockybase)
 "bl" = (
-/obj/item/mecha_parts/part/gygax_left_leg,
+/obj/item/vehicle_part/gygax_left_leg,
 /turf/simulated/floor/holofloor/lino,
 /area/submap/Rockybase)
 "bm" = (
@@ -362,7 +362,7 @@
 "bn" = (
 /obj/structure/bed,
 /obj/item/bedsheet,
-/obj/item/gun/ballistic/pistol,
+/obj/item/gun/projectile/ballistic/pistol,
 /turf/simulated/floor/holofloor/lino,
 /area/submap/Rockybase)
 "bo" = (
@@ -416,7 +416,7 @@
 /area/submap/Rockybase)
 "bx" = (
 /obj/structure/table/rack,
-/obj/item/gun/energy/ionrifle/pistol,
+/obj/item/gun/projectile/energy/ionrifle/pistol,
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/Rockybase)
 "by" = (
@@ -557,7 +557,7 @@
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "bW" = (
-/obj/item/mecha_parts/part/gygax_right_arm,
+/obj/item/vehicle_part/gygax_right_arm,
 /obj/effect/floor_decal/borderfloor,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
@@ -630,7 +630,7 @@
 /area/submap/Rockybase)
 "ci" = (
 /obj/structure/table/standard,
-/obj/item/grenade/spawnergrenade/manhacks,
+/obj/item/grenade/simple/spawner/manhacks,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "cj" = (
@@ -681,7 +681,7 @@
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "cs" = (
-/obj/item/mecha_parts/part/gygax_torso,
+/obj/item/vehicle_part/gygax_torso,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "ct" = (
@@ -806,8 +806,8 @@
 /area/submap/Rockybase)
 "cP" = (
 /obj/structure/table/standard,
-/obj/item/mecha_parts/mecha_equipment/repair_droid,
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/explosive,
+/obj/item/vehicle_module/repair_droid,
+/obj/item/vehicle_module/weapon/ballistic/missile_rack/explosive,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "cQ" = (
@@ -870,11 +870,11 @@
 /turf/simulated/floor,
 /area/submap/Rockybase)
 "cZ" = (
-/obj/item/mecha_parts/part/gygax_armour,
+/obj/item/vehicle_part/gygax_armour,
 /turf/simulated/floor,
 /area/submap/Rockybase)
 "da" = (
-/obj/item/mecha_parts/chassis/gygax,
+/obj/item/vehicle_chassis/gygax,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "dc" = (
@@ -934,7 +934,7 @@
 /turf/simulated/floor,
 /area/submap/Rockybase)
 "dj" = (
-/obj/item/mecha_parts/part/gygax_right_leg,
+/obj/item/vehicle_part/gygax_right_leg,
 /obj/effect/floor_decal/corner/lime/border{
 	dir = 4
 	},
@@ -945,7 +945,7 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/obj/item/mecha_parts/part/gygax_left_arm,
+/obj/item/vehicle_part/gygax_left_arm,
 /turf/simulated/floor/tiled/hydro,
 /area/submap/Rockybase)
 "dl" = (
@@ -1012,7 +1012,7 @@
 /area/submap/Rockybase)
 "dw" = (
 /obj/structure/table/standard,
-/obj/item/mecha_parts/part/gygax_head,
+/obj/item/vehicle_part/gygax_head,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "dx" = (

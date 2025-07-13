@@ -123,11 +123,10 @@
 
 #if defined(UNIT_TESTS)
 	//Hard del testing defines
-	// TODO: enable once reftrack is back
-	// #define REFERENCE_TRACKING
-	// #define REFERENCE_TRACKING_DEBUG
-	// #define FIND_REF_NO_CHECK_TICK
-	// #define GC_FAILURE_HARD_LOOKUP
+	#define REFERENCE_TRACKING
+	#define REFERENCE_TRACKING_DEBUG
+	#define FIND_REF_NO_CHECK_TICK
+	#define GC_FAILURE_HARD_LOOKUP
 	//Ensures all early assets can actually load early
 	#define DO_NOT_DEFER_ASSETS
 	//Test at full capacity, the extra cost doesn't matter
@@ -253,3 +252,14 @@
 // ## Timers
 
 // #define TIMER_LOOP_DEBUGGING
+
+// ## Misc visualizations
+
+/**
+ * terraria-like damage bubble toasts every time something takes significant damage
+*/
+// #define CF_VISUALIZE_DAMAGE_TICKS
+
+#ifdef CF_VISUALIZE_DAMAGE_TICKS
+	#warn Visualization of atom damage ticks enabled.
+#endif

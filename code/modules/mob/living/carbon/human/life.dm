@@ -1189,9 +1189,9 @@
 		// Check everything else.
 
 		//Periodically double-check embedded_flag
-		if(embedded_flag && !(life_tick % 10))
-			if(!embedded_needs_process())
-				embedded_flag = 0
+		// if(embedded_flag && !(life_tick % 10))
+			// if(!embedded_needs_process())
+			// 	embedded_flag = 0
 
 		if(species.vision_organ)
 			var/obj/item/organ/vision = internal_organs_by_name[species.vision_organ]
@@ -1795,7 +1795,7 @@
 	if(Pump)
 		temp += Pump.standard_pulse_level - PULSE_NORM
 
-	if(round(vessel.get_reagent_amount("blood")) <= species.blood_volume*species.blood_level_danger)	//how much blood do we have
+	if(round(blood_holder.get_total_volume()) <= species.blood_volume*species.blood_level_danger)	//how much blood do we have
 		temp = temp + 3	//not enough :(
 
 	if(status_flags & STATUS_FAKEDEATH)
@@ -1807,7 +1807,7 @@
 	temp = max(0, temp + modifier_shift)	// No negative pulses.
 
 	if(Pump)
-		for(var/datum/reagent/R in reagents.reagent_list)
+		for(var/datum/reagent/R in reagents.get_reagent_datums())
 			if(R.id in bradycardics)
 				if(temp <= Pump.standard_pulse_level + 3 && temp >= Pump.standard_pulse_level)
 					temp--
@@ -1817,11 +1817,11 @@
 			if(R.id in heartstopper) //To avoid using fakedeath
 				temp = PULSE_NONE
 			if(R.id in cheartstopper) //Conditional heart-stoppage
-				if(R.volume >= R.overdose)
+				if(reagents.get_reagent_amount(R.id) >= R.overdose)
 					temp = PULSE_NONE
 		return temp * brain_modifier
 	//handles different chems' influence on pulse
-	for(var/datum/reagent/R in reagents.reagent_list)
+	for(var/datum/reagent/R in reagents.get_reagent_datums())
 		if(R.id in bradycardics)
 			if(temp <= PULSE_THREADY && temp >= PULSE_NORM)
 				temp--
@@ -1831,7 +1831,7 @@
 		if(R.id in heartstopper) //To avoid using fakedeath
 			temp = PULSE_NONE
 		if(R.id in cheartstopper) //Conditional heart-stoppage
-			if(R.volume >= R.overdose)
+			if(reagents.get_reagent_amount(R.id) >= R.overdose)
 				temp = PULSE_NONE
 
 	return max(0, round(temp * brain_modifier))

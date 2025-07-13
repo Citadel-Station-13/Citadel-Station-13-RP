@@ -60,7 +60,7 @@
 			return
 		stop_pulling()
 
-	setClickCooldown(DEFAULT_PULL_COODDOWN)
+	setClickCooldownLegacy(DEFAULT_PULL_COODDOWN)
 
 	if(AM.pulledby)
 		if(!suppress_message)
@@ -73,6 +73,7 @@
 
 	pulling = AM
 	AM.pulledby = src
+	AM.on_start_pulled_by(src)
 	recursive_glidesize_update()
 
 	//SEND_SIGNAL(src, COMSIG_LIVING_START_PULL, AM)

@@ -96,13 +96,13 @@
 /obj/item/flashlight/lantern,
 /obj/item/material/knife/tacknife/survival,
 /obj/item/material/knife/tacknife/survival,
-/obj/item/gun/ballistic/bow,
+/obj/item/gun/projectile/ballistic/bow,
 /obj/item/storage/belt/quiver/full,
 /turf/simulated/mineral/floor/cave,
 /area/sector/miaphus/beach/desert/poi/huntercamp)
 "Z" = (
 /obj/structure/table/woodentable,
-/obj/item/gun/ballistic/contender/taj/a762,
+/obj/item/gun/projectile/ballistic/contender/taj/a762,
 /obj/item/ammo_magazine/a7_62mm/clip/hunter,
 /obj/item/storage/firstaid/toxin,
 /obj/item/storage/fancy/cigar/taj,
