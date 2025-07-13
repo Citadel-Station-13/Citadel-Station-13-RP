@@ -5,7 +5,7 @@ SUBSYSTEM_DEF(nanoui)
 	wait = 7
 
 	/// A list of current open /nanoui UIs, grouped by src_object and ui_key.
-	var/list/open_uis = list()
+	var/list/open_nano_uis = list()
 
 	/// A list of current open /nanoui UIs, not grouped, for use in processing.
 	var/list/processing_uis = list()
