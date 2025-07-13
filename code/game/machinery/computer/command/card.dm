@@ -21,14 +21,13 @@
 	QDEL_NULL(tgui_cardmod)
 	return ..()
 
-#warn this and that
-// /obj/machinery/computer/card/ui_route(action, list/params, datum/tgui/ui, id)
-// 	. = ..()
-// 	if(.)
-// 		return
-// 	switch(id)
-// 		if("modify")
-// 			return tgui_cardmod.ui_act(action, params, ui, new /datum/event_args/actor(usr))
+/obj/machinery/computer/card/ui_route(action, list/params, datum/tgui/ui, id)
+	. = ..()
+	if(.)
+		return
+	switch(id)
+		if("modify")
+			return tgui_cardmod.ui_act(action, params, ui, new /datum/event_args/actor(usr))
 
 /**
  * for later use: authorized to change slots

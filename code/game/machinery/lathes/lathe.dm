@@ -438,13 +438,12 @@
 		return FALSE
 	return TRUE
 
-#warn this and that
 /obj/machinery/lathe/proc/start_printing(silent)
 	if(queue_active)
 		return
 	if(!check_queue_head(silent))
 		return
-	// ui_controller?.update_ui_data()
+	ui_controller?.update_ui_data()
 	queue_active = TRUE
 	update_use_power(USE_POWER_ACTIVE)
 	update_icon()
@@ -453,7 +452,7 @@
 	if(!queue_active)
 		return
 	queue_active = FALSE
-	// ui_controller?.update_ui_data()
+	ui_controller?.update_ui_data()
 	update_use_power(USE_POWER_IDLE)
 	update_icon()
 
