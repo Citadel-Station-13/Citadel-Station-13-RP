@@ -22491,7 +22491,7 @@
 /obj/structure/table/steel_reinforced,
 /obj/item/storage/box/syringegun,
 /obj/item/storage/box/syringegun,
-/obj/item/gun/launcher/syringe,
+/obj/item/gun/projectile/ballistic/syringe,
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/effect/floor_decal/corner/blue{
 	dir = 5

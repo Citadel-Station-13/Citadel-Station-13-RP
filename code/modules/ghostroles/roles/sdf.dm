@@ -28,5 +28,28 @@
 	icon_state = "pad_active"
 	anchored = TRUE
 	role_type = /datum/role/ghostrole/sdf
-	role_spawns = 4
+	role_spawns = 3
 
+//SDF CRYO
+/obj/machinery/cryopod/robot/door/travel/sdf
+	name = "SDF Teleporter"
+	desc = "A teleporter towards outpost 01."
+	icon = 'icons/obj/machines/teleporter.dmi'
+	icon_state = "pad_idle"
+	announce_channel = "Trade"
+	base_icon_state = "pad"
+	occupied_icon_state = "pad_active"
+	on_store_message = "has departed from the ship."
+	on_store_name = "SDF Travel Oversight"
+	on_enter_occupant_message = "The gateway activates, and you step into the swirling portal."
+	on_store_visible_message_1 = "'s portal disappears just after"
+	on_store_visible_message_2 = "finishes walking across it."
+
+/obj/machinery/computer/cryopod/travel/sdf
+	name = "docking oversight console"
+	desc = "An interface between soldiers and the docking oversight systems tasked with keeping track of all soldiers who enter or exit from the docks."
+	circuit = "/obj/item/circuitboard/robotstoragecontrol"
+
+	storage_type = "visitors"
+	storage_name = "SDF Travel Oversight"
+	allow_items = TRUE

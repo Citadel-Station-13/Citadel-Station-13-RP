@@ -5793,10 +5793,6 @@
 /obj/effect/floor_decal/corner/blue/border,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
-"pA" = (
-/mob/living/simple_mob/animal/passive/maint_drone,
-/turf/simulated/wall/r_wall/prepainted,
-/area/centcom/control)
 "pC" = (
 /obj/structure/shuttle/engine/heater,
 /obj/structure/window/reinforced{
@@ -15515,10 +15511,6 @@
 	layer = 1
 	},
 /area/shuttle/specops/general)
-"Oy" = (
-/mob/living/simple_mob/animal/passive/maint_drone,
-/turf/simulated/wall/r_wall/prepainted,
-/area/tdome/tdomeadmin)
 "OA" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
@@ -45195,7 +45187,7 @@ EW
 EW
 EW
 EW
-Oy
+Aj
 Aj
 Aj
 Tj
@@ -46365,7 +46357,7 @@ kf
 kf
 ba
 ba
-pA
+ba
 ba
 ba
 ba
