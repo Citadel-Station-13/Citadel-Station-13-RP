@@ -152,6 +152,7 @@
 	if(!ui)
 		ui = new(user, src, "Fishing")
 		ui.set_autoupdate(FALSE)
+		ui.set_mouse_hook(TRUE)
 		ui.open()
 
 /datum/fishing_challenge/ui_host()
@@ -169,10 +170,10 @@
 	.["fish_ai"] = fish_ai
 	.["special_effects"] = special_effects
 	.["background_image"] = background
-#warn this and that
-// /datum/fishing_challenge/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
-// 	immediate += /datum/asset_pack/simple/fishing_minigame
-// 	return ..()
+
+/datum/fishing_challenge/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
+	immediate += /datum/asset_pack/simple/fishing_minigame
+	return ..()
 
 /datum/fishing_challenge/ui_status(mob/user, datum/ui_state/state)
 	return min(

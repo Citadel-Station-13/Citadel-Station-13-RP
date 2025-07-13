@@ -104,10 +104,9 @@
 		return
 	ui_interact(user)
 
-#warn this and that
-// /obj/item/pipe_dispenser/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
-// 	immediate += /datum/asset_pack/spritesheet/pipes
-// 	return ..()
+/obj/item/pipe_dispenser/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
+	immediate += /datum/asset_pack/spritesheet/pipes
+	return ..()
 
 /obj/item/pipe_dispenser/ui_state()
 	return GLOB.inventory_state

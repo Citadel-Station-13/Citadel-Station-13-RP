@@ -536,14 +536,14 @@
 			ui.register_module(middleware, key)
 		ui.set_autoupdate(FALSE)
 		ui.open()
-#warn this and that
-// /datum/game_preferences/ui_route(action, list/params, datum/tgui/ui, id)
-// 	. = ..()
-// 	if(.)
-// 		return
-// 	var/datum/game_preference_middleware/middleware = GLOB.game_preference_middleware[id]
-// 	if(middleware?.handle_topic(src, action, params))
-// 		return TRUE
+
+/datum/game_preferences/ui_route(action, list/params, datum/tgui/ui, id)
+	. = ..()
+	if(.)
+		return
+	var/datum/game_preference_middleware/middleware = GLOB.game_preference_middleware[id]
+	if(middleware?.handle_topic(src, action, params))
+		return TRUE
 
 /datum/game_preferences/ui_status(mob/user, datum/ui_state/state)
 	if(user.ckey == ckey)

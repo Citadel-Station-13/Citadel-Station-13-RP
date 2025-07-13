@@ -151,8 +151,8 @@
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 
 	. = ..()
-	// update_ui_data()
-#warn this and that
+	update_ui_data()
+
 /obj/machinery/portable_atmospherics/canister/attack_ai(var/mob/user as mob)
 	return src.attack_hand(user)
 

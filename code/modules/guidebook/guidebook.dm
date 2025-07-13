@@ -18,11 +18,11 @@ GLOBAL_DATUM_INIT(guidebook, /datum/guidebook, new)
 /datum/guidebook/on_ui_close(mob/user, datum/tgui/ui, embedded)
 	opened -= user
 	return ..()
-#warn this and that
-// /datum/guidebook/on_ui_transfer(mob/old_mob, mob/new_mob, datum/tgui/ui, embedded)
-// 	opened[new_mob] = opened[old_mob]
-// 	opened -= old_mob
-// 	return ..()
+
+/datum/guidebook/on_ui_transfer(mob/old_mob, mob/new_mob, datum/tgui/ui, embedded)
+	opened[new_mob] = opened[old_mob]
+	opened -= old_mob
+	return ..()
 
 /**
  * @params
@@ -60,8 +60,7 @@ GLOBAL_DATUM_INIT(guidebook, /datum/guidebook, new)
 		ui.set_autoupdate(FALSE)
 		ui.open(data = list("sections" = lookup), modules = built)
 	else
-	#warn this and that
-		// push_ui_modules(user, updates = built)
+		push_ui_modules(user, updates = built)
 		push_ui_data(user, data = list("sections" = lookup))
 
 /client/verb/access_guidebook()
