@@ -140,11 +140,11 @@
  */
 /datum/blood_mixture/proc/unsafe_merge_other_into_self(datum/blood_mixture/other, other_volume, self_volume)
 	if(other.legacy_antibodies)
-		LAZYOR(legacy_antibodies, other.legacy_antibodies)
+		LAZYDISTINCTADD(legacy_antibodies, other.legacy_antibodies)
 	if(other.legacy_is_synthetic)
 		legacy_is_synthetic ||= other.legacy_is_synthetic
 	if(other.legacy_virus2)
-		LAZYOR(legacy_virus2, other.legacy_virus2)
+		LAZYDISTINCTADD(legacy_virus2, other.legacy_virus2)
 	if(other.legacy_trace_chem)
 		var/list/yikes = length(legacy_trace_chem) ? params2list(legacy_trace_chem) : list()
 		yikes ||= params2list(other.legacy_trace_chem)

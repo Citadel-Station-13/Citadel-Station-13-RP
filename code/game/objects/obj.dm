@@ -487,7 +487,7 @@
 		visible_hard = SPAN_WARNING("[climber] starts climbing onto \the [src]!"),
 		hard_range = MESSAGE_RANGE_COMBAT_LOUD)
 	START_INTERACTING_WITH(climber, src, INTERACTING_FOR_CLIMB)
-	LAZYOR(climbing, climber)
+	LAZYDISTINCTADD(climbing, climber)
 	. = do_after(climber, climb_delay * delay_mod, src, mobility_flags = MOBILITY_CAN_MOVE | MOBILITY_CAN_STAND | MOBILITY_IS_STANDING)
 	if(!INTERACTING_WITH_FOR(climber, src, INTERACTING_FOR_CLIMB))
 		. = FALSE

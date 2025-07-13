@@ -207,7 +207,7 @@
 		user.set_machine(ui_host())
 	user.reset_view(current_uav)
 	current_uav.add_master(user)
-	LAZYOR(viewers, weakref(user))
+	LAZYDISTINCTADD(viewers, weakref(user))
 
 /datum/tgui_module_old/uav/proc/unlook(mob/user)
 	user.unset_machine()

@@ -290,7 +290,7 @@ SUBSYSTEM_DEF(tgui)
  */
 /datum/controller/subsystem/tgui/proc/on_open(datum/tgui/ui)
 	ui.user?.tgui_open_uis |= ui
-	LAZYOR(ui.src_object.open_uis, ui)
+	LAZYDISTINCTADD(ui.src_object.open_uis, ui)
 	all_uis |= ui
 
 /**

@@ -159,8 +159,8 @@ SUBSYSTEM_DEF(nanoui)
 /datum/controller/subsystem/nanoui/proc/ui_opened(datum/nanoui/ui)
 	var/src_object_key = "\ref[ui.src_object]"
 	LAZYINITLIST(all_uis[src_object_key])
-	LAZYOR(all_uis[src_object_key][ui.ui_key], ui)
-	LAZYOR(ui.user.open_uis, ui)
+	LAZYDISTINCTADD(all_uis[src_object_key][ui.ui_key], ui)
+	LAZYDISTINCTADD(ui.user.open_uis, ui)
 	processing_uis += ui
 
 /**

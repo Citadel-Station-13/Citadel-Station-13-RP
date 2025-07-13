@@ -32,9 +32,9 @@
 	if(!user.client.preferences.get_entry(/datum/game_preference_entry/toggle/tgui_input))
 		if(encode)
 			if(multiline)
-				return stripped_multiline_input(user, message, title, default, PREVENT_CHARACTER_TRIM_LOSS(max_length))
+				return stripped_multiline_input(user, message, title, default, max_length + 1)
 			else
-				return stripped_input(user, message, title, default, PREVENT_CHARACTER_TRIM_LOSS(max_length))
+				return stripped_input(user, message, title, default, max_length + 1)
 		else
 			if(multiline)
 				return input(user, message, title, default) as message|null
@@ -162,4 +162,4 @@
 /datum/tgui_input_text/proc/set_entry(entry)
 	if(!isnull(entry))
 		var/converted_entry = encode ? html_encode(entry) : entry
-		src.entry = max_length ? trim(converted_entry, PREVENT_CHARACTER_TRIM_LOSS(max_length)) : converted_entry
+		src.entry = max_length ? trim(converted_entry, max_length + 1) : converted_entry

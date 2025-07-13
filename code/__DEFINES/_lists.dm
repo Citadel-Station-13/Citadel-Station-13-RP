@@ -47,7 +47,7 @@
 ///Add an item to the list, if the list is null it will initialize it
 #define LAZYADD(L, I) if(!L) { L = list(); } L += I;
 ///Add an item to the list if not already present, if the list is null it will initialize it
-#define LAZYOR(L, I) if(!L) { L = list(); } L |= I;
+#define LAZYDISTINCTADD(L, I) if(!L) { L = list(); } L |= I;
 ///Returns the key of the submitted item in the list
 #define LAZYFIND(L, V) (L ? L.Find(V) : 0)
 ///returns L[I] if L exists and I is a valid index of L, runtimes if L is not a list
@@ -78,7 +78,7 @@
 ///Returns the list if it's actually a valid list, otherwise will initialize it
 #define SANITIZE_LIST(L) ( islist(L) ? L : list() )
 /// Performs an insertion on the given lazy list with the given key and value. If the value already exists, a new one will not be made.
-#define LAZYORASSOCLIST(lazy_list, key, value) \
+#define LAZYDISTINCTADDASSOC(lazy_list, key, value) \
 	LAZYINITLIST(lazy_list); \
 	LAZYINITLIST(lazy_list[key]); \
 	lazy_list[key] |= value;

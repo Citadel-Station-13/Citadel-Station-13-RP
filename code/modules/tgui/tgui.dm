@@ -405,7 +405,7 @@
 			if(!byond_ui_id || LAZYLEN(open_byondui_elements) > TGUI_MANAGED_BYONDUI_LIMIT)
 				return
 
-			LAZYOR(open_byondui_elements, byond_ui_id)
+			LAZYDISTINCTADD(open_byondui_elements, byond_ui_id)
 		if(TGUI_MANAGED_BYONDUI_TYPE_UNMOUNT)
 			var/byond_ui_id = payload[TGUI_MANAGED_BYONDUI_PAYLOAD_ID]
 			if(!byond_ui_id)

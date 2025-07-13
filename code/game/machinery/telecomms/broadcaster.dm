@@ -64,7 +64,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 		for(var/datum/weakref/wr in linked_radios_weakrefs)
 			var/obj/item/radio/R = wr.resolve()
 			if(istype(R))
-				LAZYOR(forced_radios, R)
+				LAZYDISTINCTADD(forced_radios, R)
 
 	   /** #### - Normal Broadcast - #### **/
 		if(signal.data["type"] == SIGNAL_NORMAL)

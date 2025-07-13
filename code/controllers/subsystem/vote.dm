@@ -97,10 +97,10 @@ SUBSYSTEM_DEF(vote)
 			continue
 		if(votes > greatest_votes)
 			winning = list()
-			LAZYOR(winning, option)
+			LAZYDISTINCTADD(winning, option)
 			greatest_votes = votes
 		else if(votes == greatest_votes)
-			LAZYOR(winning, option)
+			LAZYDISTINCTADD(winning, option)
 	return winning
 	//there used to be code here for giving default votes from non voters, but if you dont vote you dont get to default either
 

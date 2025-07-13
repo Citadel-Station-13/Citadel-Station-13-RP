@@ -238,7 +238,7 @@
 	if(!valid_target(target))
 		return
 	retaliation_target = target
-	LAZYOR(engaging_targets, target)
+	LAZYDISTINCTADD(engaging_targets, target)
 	engage()
 
 /**

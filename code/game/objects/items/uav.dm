@@ -102,7 +102,7 @@
 /obj/item/uav/attackby(var/obj/item/I, var/mob/user)
 	if(istype(I, /obj/item/modular_computer) && state == UAV_PAIRING)
 		var/obj/item/modular_computer/MC = I
-		LAZYOR(MC.paired_uavs, WEAKREF(src))
+		LAZYDISTINCTADD(MC.paired_uavs, WEAKREF(src))
 		playsound(src, 'sound/machines/buttonbeep.ogg', 50, 1)
 		visible_message(SPAN_NOTICE("[user] pairs [I] to [nickname]"))
 		toggle_pairing()
@@ -265,7 +265,7 @@
 	return "[nickname] - [get_x(src)],[get_y(src)],[get_z(src)] - I:[health]/[initial(health)] - C:[cell ? "[cell.charge]/[cell.maxcharge]" : "Not Installed"]"
 
 /obj/item/uav/proc/add_master(var/mob/living/M)
-	LAZYOR(masters, WEAKREF(M))
+	LAZYDISTINCTADD(masters, WEAKREF(M))
 
 /obj/item/uav/proc/remove_master(var/mob/living/M)
 	LAZYREMOVE(masters, WEAKREF(M))

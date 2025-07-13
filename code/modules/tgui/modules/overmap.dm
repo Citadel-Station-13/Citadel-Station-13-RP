@@ -58,7 +58,7 @@
 	var/list/view_size = decode_view_size(world.view)
 	user.client?.set_temporary_view(view_size[1] + extra_view, view_size[2] + extra_view)
 	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(unlook))
-	LAZYOR(viewers, WEAKREF(user))
+	LAZYDISTINCTADD(viewers, WEAKREF(user))
 
 /datum/tgui_module_old/ship/proc/unlook(var/mob/user)
 	user.reset_perspective()

@@ -74,7 +74,7 @@
 		for(var/datum/weakref/wr in linked_radios_weakrefs)
 			var/obj/item/radio/R = wr.resolve()
 			if(istype(R))
-				LAZYOR(forced_radios, R)
+				LAZYDISTINCTADD(forced_radios, R)
 
 		Broadcast_Message(
 			signal.data["connection"],
@@ -132,7 +132,7 @@
 		for(var/datum/weakref/wr in linked_radios_weakrefs)
 			var/obj/item/radio/R = wr.resolve()
 			if(istype(R))
-				LAZYOR(forced_radios, R)
+				LAZYDISTINCTADD(forced_radios, R)
 
 		if(connection.frequency in ANTAG_FREQS) // if antag broadcast, just
 			Broadcast_Message(signal.data["connection"], signal.data["mob"],
@@ -188,7 +188,7 @@
 		for(var/datum/weakref/wr in linked_radios_weakrefs)
 			var/obj/item/radio/R = wr.resolve()
 			if(istype(R))
-				LAZYOR(forced_radios, R)
+				LAZYDISTINCTADD(forced_radios, R)
 
 		if(connection.frequency in CENT_FREQS) // if ert broadcast, just
 			Broadcast_Message(signal.data["connection"], signal.data["mob"],
