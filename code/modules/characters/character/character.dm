@@ -4,44 +4,38 @@
 /**
  * A character in the game.
  *
- * Represents humanoid actors.
- *
- * * AI / Cyborg support is rudimentary at this time.
- *
- * How this works:
- *
- * * Above all, /datum/character_status is allowed to arbitrarily restrain things.
- * * Basic things like name, label, flavor text, etc, are set independently of everything.
- *
- * Then,
- *
- * * Core intrinsics like species are set first.
- * * Character background generally only depends on species, but can depend on physiology too.
- * * Character physiology generally only depends on species, but can depend on background too.
- * * Character appearance generally depends on species, background, and physiology.
- *
- * Lastly,
- *
- * * Character loadout depends on everything else.
- * * Extraneous data depends on everything else.
- *
  * Notes;
  *
+ * * Anything that is a system field should be prefixed with 's_'
  * * Anything that is a character field and not a system field / reference field
  *   should be prefixed with 'c_'
+ * * Ckey is intentionally not stored; characters don't belong to anyone,
+ *   the backend determines who can access what (thus establishing ownership).
  */
 /datum/character
 	//*                             System                          *//
 	//* -- Everything in here is handled by save / load backend. -- *//
+
 	/// character ID in the table
 	///
 	/// * for savefile / legacy characters, this will **not be set.**
 	/// * if this is null, no persistence can proceed as we are operating in legacy / savefile mode.
-	var/character_id
-	/// current character status; used for anything from faction locking to persistence
-	///
-	/// * this is saved / loaded even in legacy (savefile) mode
-	var/datum/character_status
+	var/s_character_id
+	/// ISO 8601 timestamp of first creation
+	var/s_created_time
+	/// Filter string. This is used to do things like filtering out the characters
+	/// that are actually relevant for a role.
+	/// * ADMINS, DO NOT TOUCH THIS FOR THE LOVE OF GOD
+	/// * The codebase reserves the right to edit this at any time for any reason.
+	var/s_filter_string
+	/// Current migrations applied, as a list.
+	/// * ADMINS, DO NOT TOUCH THIS FOR THE LOVE OF GOD
+	/// * The codebase reserves the right to edit this at any time for any reason.
+	var/list/s_migrations_performed
+
+
+
+#warn below
 
 	//* Appearance - Directly serialized *//
 	/// your main appearance
