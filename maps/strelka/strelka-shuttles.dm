@@ -124,7 +124,7 @@
 	warmup_time = 11
 	shuttle_area = list(/area/shuttle/civvie/strelka)
 	current_location = "strelka_civvie_home"
-	docking_controller_tag = "civvie_docker"
+	docking_controller_tag = "civvie_dock"
 	fuel_consumption = 12
 	move_time = 30
 
@@ -209,3 +209,4 @@
 	docking_controller = "civvie_dock"
 	base_turf = /turf/simulated/floor/reinforced
 	base_area = /area/strelka/shipbase/deck1/civhangar
+
