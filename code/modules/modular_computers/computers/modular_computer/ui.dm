@@ -1,8 +1,7 @@
 // Operates TGUI
-// /obj/item/modular_computer/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
-// 	immediate += /datum/asset_pack/simple/headers
-// 	return ..()
-#warn this and that
+/obj/item/modular_computer/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
+	immediate += /datum/asset_pack/simple/headers
+	return ..()
 
 /obj/item/modular_computer/ui_interact(mob/user, datum/tgui/ui)
 	if(!screen_on || !enabled)

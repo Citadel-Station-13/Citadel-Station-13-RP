@@ -20,14 +20,14 @@
 
 /datum/computer_file/program/card_mod/ui_static_data(mob/user, datum/tgui/ui)
 	. = get_header_data()
-#warn this and that
-// /datum/computer_file/program/card_mod/ui_route(action, list/params, datum/tgui/ui, id)
-// 	. = ..()
-// 	if(.)
-// 		return
-// 	switch(id)
-// 		if("modify")
-// 			return tgui_cardmod.ui_act(action, params, ui, new /datum/event_args/actor(usr))
+
+/datum/computer_file/program/card_mod/ui_route(action, list/params, datum/tgui/ui, id)
+	. = ..()
+	if(.)
+		return
+	switch(id)
+		if("modify")
+			return tgui_cardmod.ui_act(action, params, ui, new /datum/event_args/actor(usr))
 
 /datum/computer_file/program/card_mod/ui_pre_open(datum/tgui/ui)
 	ui.register_module(tgui_cardmod, "modify")

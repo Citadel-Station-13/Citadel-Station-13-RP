@@ -259,14 +259,14 @@ a creative player the means to solve many problems.  Circuits are held inside an
 			else
 				to_chat(usr, SPAN_WARNING("You need a multitool/debugger set to 'ref' mode to do that."))
 			return
-#warn this and that
-		// if("examine")
-		// 	var/obj/item/integrated_circuit/examined = locate(params["ref"])
-		// 	if(istype(examined) && (examined.loc == loc))
-		// 		if(ui.parent_ui)
-		// 			examined.ui_interact(usr, null, ui.parent_ui)
-		// 		else
-		// 			examined.ui_interact(usr)
+
+		if("examine")
+			var/obj/item/integrated_circuit/examined = locate(params["ref"])
+			if(istype(examined) && (examined.loc == loc))
+				if(ui.parent_ui)
+					examined.ui_interact(usr, null, ui.parent_ui)
+				else
+					examined.ui_interact(usr)
 
 		if("remove")
 			remove(usr, FALSE)
