@@ -96,8 +96,15 @@
 #define MOB_IFF_FACTION_CARP "carp"
 /// the bane of engineering (solargrubs)
 #define MOB_IFF_FACTION_GRUB "grubs"
+
 // odysseus may have been right... (monsters)
 #define MOB_IFF_FACTION_MONSTER "monsters"
+// snakes! why'd it have to be snakes?! (lamias)
+#define MOB_IFF_FACTION_MONSTER_LAMIA "lamias"
+// here kitty kitty... (bobcats)
+#define MOB_IFF_FACTION_MONSTER_BOBCAT "bobcats"
+// IS THAT A FUCKING BEAR?! (bears)
+#define MOB_IFF_FACTION_MONSTER_BEAR "bears"
 
 //? Human factions ?//
 

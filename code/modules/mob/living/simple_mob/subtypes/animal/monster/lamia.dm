@@ -2,7 +2,7 @@
 
 /mob/living/simple_mob/animal/monster/lamia
 	icon = 'icons/mob/monsters/lamia.dmi'
-	iff_factions = MOB_IFF_FACTION_MONSTER
+	iff_factions = MOB_IFF_FACTION_MONSTER_LAMIA
 	see_in_dark = 10
 	movement_sound = 'sound/spooky/boneclak.ogg'
 	attack_sound = 'sound/mobs/biomorphs/drone_attack.ogg'
