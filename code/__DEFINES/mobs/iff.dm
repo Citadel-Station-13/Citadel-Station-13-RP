@@ -96,6 +96,8 @@
 #define MOB_IFF_FACTION_CARP "carp"
 /// the bane of engineering (solargrubs)
 #define MOB_IFF_FACTION_GRUB "grubs"
+// odysseus may have been right... (monsters)
+#define MOB_IFF_FACTION_MONSTER "monsters"
 
 //? Human factions ?//
 
