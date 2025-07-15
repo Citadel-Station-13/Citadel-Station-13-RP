@@ -3660,6 +3660,17 @@
 "no" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck3/medical/main)
+"nq" = (
+/obj/machinery/recharger/wallcharger{
+	pixel_x = -24;
+	pixel_y = 4
+	},
+/obj/machinery/recharger/wallcharger{
+	pixel_x = -24;
+	pixel_y = -8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck3/science/xenobio)
 "nr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -13888,6 +13899,7 @@
 /obj/item/clothing/glasses/welding,
 /obj/item/weldingtool,
 /obj/item/weldingtool,
+/obj/machinery/recharger,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science/xenobio)
 "WJ" = (
@@ -29389,7 +29401,7 @@ pZ
 Gz
 yA
 Ay
-hV
+nq
 Bv
 Bv
 gw
