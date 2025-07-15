@@ -105,6 +105,18 @@
 #define MOB_IFF_FACTION_MONSTER_BOBCAT "bobcats"
 // IS THAT A FUCKING BEAR?! (bears)
 #define MOB_IFF_FACTION_MONSTER_BEAR "bears"
+// burn it with fire! (skallax)
+#define MOB_IFF_FACTION_MONSTER_SKALLAX "skallax"
+// hope little red isn't around! (wolves)
+#define MOB_IFF_FACTION_MONSTER_WOLF "wolves"
+// water won't do anything this time.. (slimes)
+#define MOB_IFF_FACTION_MONSTER_SLIME "slimes"
+// giant. fucking. mosquitos. (komar)
+#define MOB_IFF_FACTION_MONSTER_KOMAR "komar"
+// maybe ask them if they need sunglasses? (moles)
+#define MOB_IFF_FACTION_MONSTER_MOLE "mole"
+// bugs, bug and more bugs! (bugs)
+#define MOB_IFF_FACTION_MONSTER_BUG "bugs"
 
 //? Human factions ?//
 
