@@ -1,4 +1,6 @@
 /turf/simulated/floor/legacy_ex_act(severity)
+	if(integrity_flags & INTEGRITY_INDESTRUCTIBLE)
+		return
 	//set src in oview(1)
 	switch(severity)
 		if(1)
