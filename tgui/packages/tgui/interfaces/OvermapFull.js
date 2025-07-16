@@ -1,5 +1,5 @@
 import { useLocalState } from "../backend";
-import { Tabs } from "../components";
+import { Tabs } from "tgui-core/components";
 import { Window } from "../layouts";
 import { OvermapEnginesContent } from './OvermapEngines';
 import { OvermapHelmContent } from './OvermapHelm';

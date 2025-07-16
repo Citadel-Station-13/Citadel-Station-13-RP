@@ -1,5 +1,5 @@
 import { useBackend } from '../../backend';
-import { Button, NumberInput, LabeledList } from '../../components';
+import { Button, NumberInput, LabeledList } from 'tgui-core/components';
 import { OperatorData } from './data';
 import { toFixed } from 'common/math';
 

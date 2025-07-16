@@ -1,5 +1,5 @@
 import { useBackend, useSharedState } from '../backend';
-import { Button, NoticeBox, Section, Table, Tabs } from '../components';
+import { Button, NoticeBox, Section, Table, Tabs } from 'tgui-core/components';
 import { Window } from '../layouts';
 import { ShuttleConsoleContent } from './ShuttleConsole';
 

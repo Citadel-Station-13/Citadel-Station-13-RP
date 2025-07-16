@@ -1,6 +1,6 @@
 import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
-import { Button, Dropdown, Grid, Input, LabeledList, NoticeBox, NumberInput, Section } from '../components';
+import { Button, Dropdown, Grid, Input, LabeledList, NoticeBox, NumberInput, Section } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 export const NaniteCodes = (props, context) => {

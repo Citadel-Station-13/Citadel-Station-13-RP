@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { AnimatedNumber, LabeledList, NoticeBox, ProgressBar, Section, Divider } from '../components';
+import { AnimatedNumber, LabeledList, NoticeBox, ProgressBar, Section, Divider } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 const damageTypes = [

@@ -4,8 +4,8 @@
  */
 import { BooleanLike } from "common/react";
 import { useBackend, useLocalState } from "../../backend";
-import { Box, Button, Dimmer, Flex, Icon, LabeledList, Modal, NumberInput, Section, Stack } from "../../components";
-import { Sprite } from "../../components/Sprite";
+import { Box, Button, Dimmer, Flex, Icon, LabeledList, Modal, NumberInput, Section, Stack } from "tgui-core/components";
+import { Sprite } from "tgui-core/components/Sprite";
 import { Window } from "../../layouts";
 import { ByondColorString, ColorPicker } from "../common/Color";
 

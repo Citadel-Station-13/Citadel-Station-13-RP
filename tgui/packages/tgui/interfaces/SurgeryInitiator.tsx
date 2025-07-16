@@ -3,8 +3,8 @@ import { KEY_DOWN, KEY_ENTER, KEY_UP } from "common/keycodes";
 import { BooleanLike } from "common/react";
 import { Component } from "inferno";
 import { useBackend } from "../backend";
-import { Button, KeyListener, Stack } from "../components";
-import { BodyZone, BodyZoneSelector } from "../components/BodyZoneSelector";
+import { Button, KeyListener, Stack } from "tgui-core/components";
+import { BodyZone, BodyZoneSelector } from "tgui-core/components/BodyZoneSelector";
 import { Window } from "../layouts";
 
 type Surgery = {

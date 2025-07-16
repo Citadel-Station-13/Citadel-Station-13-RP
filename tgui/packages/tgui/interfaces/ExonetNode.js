@@ -1,5 +1,5 @@
 import { useBackend } from "../backend";
-import { Button, Box, Flex, LabeledList, Section } from "../components";
+import { Button, Box, Flex, LabeledList, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
 export const ExonetNode = (props, context) => {

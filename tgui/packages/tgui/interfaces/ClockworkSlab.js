@@ -8,7 +8,7 @@
 
 import { useBackend, useSharedState } from '../backend';
 import { map } from 'common/collections';
-import { Section, Tabs, Table, Button, Box, NoticeBox, Divider } from '../components';
+import { Section, Tabs, Table, Button, Box, NoticeBox, Divider } from 'tgui-core/components';
 import { Fragment } from 'inferno';
 import { Window } from '../layouts';
 

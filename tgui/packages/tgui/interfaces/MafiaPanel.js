@@ -1,7 +1,7 @@
 import { classes } from 'common/react';
 import { multiline } from 'common/string';
 import { useBackend } from '../backend';
-import { Box, Button, Collapsible, Flex, NoticeBox, Section, Stack, TimeDisplay } from '../components';
+import { Box, Button, Collapsible, Flex, NoticeBox, Section, Stack, TimeDisplay } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 export const MafiaPanel = (props, context) => {

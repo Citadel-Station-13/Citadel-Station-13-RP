@@ -1,5 +1,5 @@
 import { useBackend } from "../backend";
-import { Button, LabeledList, Section, AnimatedNumber, Dropdown } from "../components";
+import { Button, LabeledList, Section, AnimatedNumber, Dropdown } from "tgui-core/components";
 import { Window } from "../layouts";
 
 export const Floorbot = (props, context) => {

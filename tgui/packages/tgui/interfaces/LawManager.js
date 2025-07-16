@@ -1,6 +1,6 @@
 import { Fragment } from 'inferno';
 import { useBackend, useSharedState } from "../backend";
-import { Button, LabeledList, Section, Tabs, NoticeBox, Table, Input } from "../components";
+import { Button, LabeledList, Section, Tabs, NoticeBox, Table, Input } from "tgui-core/components";
 import { Window } from "../layouts";
 
 export const LawManager = (props, context) => {

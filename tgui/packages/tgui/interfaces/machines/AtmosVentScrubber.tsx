@@ -3,8 +3,8 @@
 
 import { BooleanLike } from "common/react";
 import { useBackend } from "../../backend";
-import { Button, LabeledList } from "../../components";
-import { Section, SectionProps } from "../../components/Section";
+import { Button, LabeledList } from "tgui-core/components";
+import { Section, SectionProps } from "tgui-core/components/Section";
 import { Window } from "../../layouts";
 import { AtmosFilterList, AtmosGasGroupFlags, AtmosGasID, AtmosGasIDs, GasContext } from "../common/Atmos";
 

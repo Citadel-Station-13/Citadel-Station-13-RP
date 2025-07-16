@@ -6,8 +6,8 @@
 import { BooleanLike } from "../../../common/react";
 import { capitalize } from "../../../common/string";
 import { ModuleProps, ModuleData, useModule, useLocalState } from "../../backend";
-import { Button, Flex, Input, LabeledList, Section, Tabs } from "../../components";
-import { SectionProps } from "../../components/Section";
+import { Button, Flex, Input, LabeledList, Section, Tabs } from "tgui-core/components";
+import { SectionProps } from "tgui-core/components/Section";
 import { AccessRegions, AccessTypes } from "../../constants/access";
 import { Modular } from "../../layouts/Modular";
 import { WindowProps } from "../../layouts/Window";

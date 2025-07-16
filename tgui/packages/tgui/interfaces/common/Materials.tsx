@@ -3,13 +3,13 @@
  * @license MIT
  */
 import { BooleanLike } from 'common/react';
-import { Box, Button, NumberInput, Section, Icon, Stack, Tooltip } from '../../components';
+import { Box, Button, NumberInput, Section, Icon, Stack, Tooltip } from 'tgui-core/components';
 import { formatSiUnit } from '../../format';
 import { useLocalState, useSharedState } from '../../backend';
-import { SectionProps } from '../../components/Section';
+import { SectionProps } from 'tgui-core/components/Section';
 import { InfernoNode } from 'inferno';
 import { toFixed } from 'common/math';
-import { Sprite } from '../../components/Sprite';
+import { Sprite } from 'tgui-core/components/Sprite';
 import { toTitleCase } from 'common/string';
 
 // the space is intentional

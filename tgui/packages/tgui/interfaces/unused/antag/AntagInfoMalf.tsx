@@ -1,7 +1,7 @@
 import { useBackend, useLocalState } from '../../../backend';
 import { multiline } from 'common/string';
 import { GenericUplink, Item } from '../../Uplink/GenericUplink';
-import { BlockQuote, Button, Section, Stack, Tabs } from '../../../components';
+import { BlockQuote, Button, Section, Stack, Tabs } from 'tgui-core/components';
 import { BooleanLike } from 'common/react';
 import { Window } from '../../../layouts';
 

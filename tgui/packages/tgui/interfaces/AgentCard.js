@@ -1,5 +1,5 @@
 import { useBackend } from "../backend";
-import { Button, Section, Table } from "../components";
+import { Button, Section, Table } from "tgui-core/components";
 import { Window } from "../layouts";
 
 export const AgentCard = (props, context) => {

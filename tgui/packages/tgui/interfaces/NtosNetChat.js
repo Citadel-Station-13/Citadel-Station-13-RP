@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Box, Button, Dimmer, Icon, Input, Section, Stack } from '../components';
+import { Box, Button, Dimmer, Icon, Input, Section, Stack } from 'tgui-core/components';
 import { NtosWindow } from '../layouts';
 
 // byond defines for the program state

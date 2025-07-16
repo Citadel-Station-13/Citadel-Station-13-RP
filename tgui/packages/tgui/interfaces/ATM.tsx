@@ -1,4 +1,4 @@
-import { Section, Flex, Box, Button, Input, LabeledList, Collapsible, Divider } from "../components";
+import { Section, Flex, Box, Button, Input, LabeledList, Collapsible, Divider } from "tgui-core/components";
 import { Window } from "../layouts";
 import { useBackend, useLocalState } from "../backend";
 

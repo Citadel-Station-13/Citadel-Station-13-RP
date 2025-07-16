@@ -1,5 +1,5 @@
 import { useBackend } from '../../backend';
-import { Stack, Button, Section, Box, ProgressBar, LabeledList } from '../../components';
+import { Stack, Button, Section, Box, ProgressBar, LabeledList } from 'tgui-core/components';
 import { KelvinZeroCelcius, OperatorData } from './data';
 import { toFixed } from 'common/math';
 

@@ -1,5 +1,5 @@
 import { useBackend } from '../../../backend';
-import { Box, Section, Stack } from '../../../components';
+import { Box, Section, Stack } from 'tgui-core/components';
 import { BooleanLike } from 'common/react';
 import { Window } from '../../../layouts';
 

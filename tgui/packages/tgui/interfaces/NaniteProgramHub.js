@@ -1,7 +1,7 @@
 import { map } from 'common/collections';
 import { Fragment } from 'inferno';
 import { useBackend, useSharedState } from '../backend';
-import { Button, Flex, LabeledList, NoticeBox, Section, Tabs } from '../components';
+import { Button, Flex, LabeledList, NoticeBox, Section, Tabs } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 export const NaniteProgramHub = (props, context) => {

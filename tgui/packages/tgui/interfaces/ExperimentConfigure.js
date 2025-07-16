@@ -1,6 +1,6 @@
 import { Window } from '../layouts';
 import { useBackend } from '../backend';
-import { Section, Box, Button, Flex, Icon, LabeledList, Table, Tooltip } from '../components';
+import { Section, Box, Button, Flex, Icon, LabeledList, Table, Tooltip } from 'tgui-core/components';
 import { sortBy } from 'common/collections';
 
 const ExperimentStages = props => {

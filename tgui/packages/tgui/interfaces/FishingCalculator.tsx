@@ -1,7 +1,7 @@
 import { round } from 'common/math';
 import { useBackend, useLocalState } from '../backend';
-import { Button, Dropdown, Input, Stack, Table } from '../components';
-import { TableCell, TableRow } from '../components/Table';
+import { Button, Dropdown, Input, Stack, Table } from 'tgui-core/components';
+import { TableCell, TableRow } from 'tgui-core/components/Table';
 import { Window } from '../layouts';
 
 type FishCalculatorEntry = {

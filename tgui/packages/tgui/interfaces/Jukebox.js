@@ -1,6 +1,6 @@
 import { round } from 'common/math';
 import { useBackend } from '../backend';
-import { Box, Button, Collapsible, LabeledList, ProgressBar, Section, Slider } from '../components';
+import { Box, Button, Collapsible, LabeledList, ProgressBar, Section, Slider } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 export const Jukebox = (props, context) => {

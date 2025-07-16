@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { AnimatedNumber, Button, LabeledList, NoticeBox, Section } from '../components';
+import { AnimatedNumber, Button, LabeledList, NoticeBox, Section } from 'tgui-core/components';
 import { formatMoney } from '../format';
 import { Window } from '../layouts';
 

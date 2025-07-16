@@ -1,5 +1,5 @@
 import { useBackend, useSharedState } from '../backend';
-import { Button, LabeledList, NoticeBox, Section, Tabs } from '../components';
+import { Button, LabeledList, NoticeBox, Section, Tabs } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 export const Microscope = (props, context) => {

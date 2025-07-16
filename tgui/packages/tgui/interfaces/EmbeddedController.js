@@ -7,7 +7,7 @@ import {
   Icon,
   LabeledList,
   ProgressBar,
-  Section } from "../components";
+  Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
 import { createLogger } from "../logging";

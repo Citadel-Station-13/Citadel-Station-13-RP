@@ -5,8 +5,8 @@
 
 import { BooleanLike } from "common/react";
 import { useBackend, useLocalState } from "../../backend";
-import { Button, NoticeBox, Section, Tabs } from "../../components";
-import { Module } from "../../components/Module";
+import { Button, NoticeBox, Section, Tabs } from "tgui-core/components";
+import { Module } from "tgui-core/components/Module";
 import { Window } from "../../layouts";
 import { IDCard, IDCardOrDefault, IDSlot } from "../common/IDCard";
 import { CrewManifestContent } from "../CrewManifest";

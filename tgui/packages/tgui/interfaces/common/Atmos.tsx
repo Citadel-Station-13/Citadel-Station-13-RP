@@ -4,8 +4,8 @@
 */
 
 import { bitfieldToPositions, round } from "common/math";
-import { Box, Button, Collapsible, LabeledList, Section } from "../../components";
-import { SectionProps } from "../../components/Section";
+import { Box, Button, Collapsible, LabeledList, Section } from "tgui-core/components";
+import { SectionProps } from "tgui-core/componentsents/Section";
 
 //* Context
 
@@ -14,10 +14,10 @@ export type AtmosGasIDs = AtmosGasID[];
 
 export enum AtmosGasGroupFlags {
   None = (0),
-  Core = (1<<0),
-  Other = (1<<1),
-  Unknown = (1<<2),
-  Reagents = (1<<3),
+  Core = (1 << 0),
+  Other = (1 << 1),
+  Unknown = (1 << 2),
+  Reagents = (1 << 3),
 }
 export type AtmosGasGroups = AtmosGasGroupFlags;
 
@@ -32,14 +32,14 @@ export const ATMOS_GROUP_COUNT = 4;
 
 export enum AtmosGasFlags {
   None = (0),
-  Fuel = (1<<0),
-  Oxidizer = (1<<1),
-  Contaminent = (1<<2),
-  FusionFuel = (1<<3),
-  Unknown = (1<<4),
-  Core = (1<<5),
-  Filterable = (1<<6),
-  Dangerous = (1<<7),
+  Fuel = (1 << 0),
+  Oxidizer = (1 << 1),
+  Contaminent = (1 << 2),
+  FusionFuel = (1 << 3),
+  Unknown = (1 << 4),
+  Core = (1 << 5),
+  Filterable = (1 << 6),
+  Dangerous = (1 << 7),
 }
 
 interface BaseGasContext {
@@ -197,7 +197,7 @@ export const AtmosTankSlot = (props: AtmosTankSlotProps, context) => {
           icon="eject"
           onClick={() => props.ejectAct?.()} />
       }>
-      {props.tank? (
+      {props.tank ? (
         <LabeledList>
           <LabeledList.Item label="Label">
             {props.tank.name}

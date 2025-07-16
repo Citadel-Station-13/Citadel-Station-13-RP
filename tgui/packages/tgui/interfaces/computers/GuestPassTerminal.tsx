@@ -4,7 +4,7 @@
  */
 
 import { useBackend, useLocalState } from "../../backend";
-import { Button, Input, LabeledList, NoticeBox, NumberInput, Section, Stack } from "../../components";
+import { Button, Input, LabeledList, NoticeBox, NumberInput, Section, Stack } from "tgui-core/components";
 import { Window } from "../../layouts";
 import { Access, AccessId, AccessListMod } from "../common/Access";
 import { IDCard, IDCardOrDefault, IDSlot } from "../common/IDCard";

@@ -1,6 +1,6 @@
 import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
-import { Button, LabeledList, Box, Section } from '../components';
+import { Button, LabeledList, Box, Section } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 export const CommunicationsConsole = (props, context) => {

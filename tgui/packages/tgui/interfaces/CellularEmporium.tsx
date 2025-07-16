@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Button, Section, Icon, Stack, LabeledList, Box, NoticeBox } from '../components';
+import { Button, Section, Icon, Stack, LabeledList, Box, NoticeBox } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 type CellularEmporiumContext = {

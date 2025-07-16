@@ -14,8 +14,8 @@ import {
   NoticeBox,
   Tooltip,
   Icon,
-} from '../components';
-import { TableCell, TableRow } from '../components/Table';
+} from 'tgui-core/components';
+import { TableCell, TableRow } from 'tgui-core/components/Table';
 import { NtosWindow } from '../layouts';
 
 export const NtosScipaper = (props, context) => {

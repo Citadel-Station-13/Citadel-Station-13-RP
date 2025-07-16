@@ -1,5 +1,5 @@
 import { useBackend } from "../backend";
-import { Button, NumberInput, Section, Stack, Input, LabeledList } from '../components';
+import { Button, NumberInput, Section, Stack, Input, LabeledList } from 'tgui-core/components';
 import { Window } from "../layouts";
 
 export const SentienceFunBalloon = (props, context) => {

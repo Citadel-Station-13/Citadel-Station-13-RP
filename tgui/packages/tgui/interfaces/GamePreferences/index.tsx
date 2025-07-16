@@ -11,7 +11,7 @@
 import { BooleanLike } from "common/react";
 import { InfernoNode } from "inferno";
 import { getModuleData, useBackend, useLocalState } from "../../backend";
-import { Button, Flex, Section, Stack, Tooltip } from "../../components";
+import { Button, Flex, Section, Stack, Tooltip } from "tgui-core/components";
 import { Window } from "../../layouts";
 import { GamePreferenceEntry, GamePreferenceEntrySchema } from "./GamePreferenceEntry";
 import { GamePreferenceKeybindMiddlware, GamePreferenceKeybindScreen } from "./GamePreferenceKeybinds";

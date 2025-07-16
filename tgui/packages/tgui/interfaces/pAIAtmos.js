@@ -1,7 +1,7 @@
 import { filter } from 'common/collections';
 import { decodeHtmlEntities } from 'common/string';
 import { useBackend } from "../backend";
-import { LabeledList, Section } from "../components";
+import { LabeledList, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
 const getItemColor = (value, min2, min1, max1, max2) => {

@@ -1,6 +1,6 @@
 import { sortBy } from 'common/collections';
 import { useBackend } from "../backend";
-import { Button, Section, Table } from "../components";
+import { Button, Section, Table } from "tgui-core/components";
 import { Window } from "../layouts";
 
 export const AdminShuttleController = (props, context) => {

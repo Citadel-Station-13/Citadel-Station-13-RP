@@ -1,7 +1,7 @@
 import { toTitleCase } from 'common/string';
 import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
-import { Box, Button, Dropdown, Section, LabeledList, AnimatedNumber } from '../components';
+import { Box, Button, Dropdown, Section, LabeledList, AnimatedNumber } from 'tgui-core/components';
 import { Window } from "../layouts";
 import { MiningUser } from './common/Mining';
 

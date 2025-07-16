@@ -1,6 +1,6 @@
 import { Color } from '../../common/colorLegacy';
 import { useBackend } from '../backend';
-import { AnimatedNumber, Box, Button, Section, Table } from '../components';
+import { AnimatedNumber, Box, Button, Section, Table } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 type ChemMasterData = {

@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Button, Dropdown, Flex, Input, LabeledList, ProgressBar, Section } from '../components';
+import { Button, Dropdown, Flex, Input, LabeledList, ProgressBar, Section } from 'tgui-core/components';
 import { Window } from '../layouts';
 import { InterfaceLockNoticeBox } from './common/InterfaceLockNoticeBox';
 

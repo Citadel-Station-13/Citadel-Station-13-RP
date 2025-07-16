@@ -1,7 +1,7 @@
 import { multiline } from 'common/string';
 import { resolveAsset } from '../assets';
 import { useBackend } from '../backend';
-import { BlockQuote, Box, Button, Icon, Section, Stack } from '../components';
+import { BlockQuote, Box, Button, Icon, Section, Stack } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 export const ApprenticeContract = (props, context) => {

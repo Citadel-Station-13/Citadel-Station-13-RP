@@ -1,5 +1,5 @@
 import { useBackend } from "../backend";
-import { Button, LabeledList, Section, NumberInput, AnimatedNumber } from "../components";
+import { Button, LabeledList, Section, NumberInput, AnimatedNumber } from "tgui-core/components";
 import { Window } from "../layouts";
 
 export const heat_pump = (props, context) => {

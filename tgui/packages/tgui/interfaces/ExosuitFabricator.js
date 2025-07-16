@@ -2,7 +2,7 @@ import { classes } from 'common/react';
 import { uniqBy } from 'common/collections';
 import { useBackend, useSharedState } from '../backend';
 import { formatSiUnit, formatMoney } from '../format';
-import { Flex, Section, Tabs, Box, Button, Fragment, ProgressBar, NumberInput, Icon, Input, Tooltip } from '../components';
+import { Flex, Section, Tabs, Box, Button, Fragment, ProgressBar, NumberInput, Icon, Input, Tooltip } from 'tgui-core/components';
 import { Window } from '../layouts';
 import { createSearch, toTitleCase } from 'common/string';
 import { toFixed } from 'common/math';

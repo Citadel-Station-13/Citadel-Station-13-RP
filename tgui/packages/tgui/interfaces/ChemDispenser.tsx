@@ -1,7 +1,7 @@
 
 import { BooleanLike } from "../../common/react";
 import { useBackend, useSharedState } from "../backend";
-import { Button, LabeledList, NoticeBox, NumberInput, ProgressBar, Section, Stack } from "../components";
+import { Button, LabeledList, NoticeBox, NumberInput, ProgressBar, Section, Stack } from "tgui-core/components";
 import { Window } from "../layouts";
 import { ReagentContents, ReagentContentsData } from "./common/Reagents";
 

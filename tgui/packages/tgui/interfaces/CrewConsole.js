@@ -1,16 +1,16 @@
 import { sortBy } from 'common/collections';
 import { useBackend } from '../backend';
-import { Box, Button, Section, Table, Icon } from '../components';
+import { Box, Button, Section, Table, Icon } from 'tgui-core/components';
 import { COLORS } from '../constants';
 import { Window } from '../layouts';
 
 const HEALTH_COLOR_BY_LEVEL = [
   '#17d568',
-  '#c4cf2d', 
+  '#c4cf2d',
   '#e67e22',
   '#ed5100',
   '#e74c3c',
-  '#801308', 
+  '#801308',
 ];
 
 const HEALTH_ICON_BY_LEVEL = [

@@ -1,5 +1,5 @@
 import { useBackend, useSharedState } from '../backend';
-import { AnimatedNumber, Box, Button, Flex, LabeledList, ProgressBar, Section, Slider, Tabs } from '../components';
+import { AnimatedNumber, Box, Button, Flex, LabeledList, ProgressBar, Section, Slider, Tabs } from 'tgui-core/components';
 import { NtosWindow } from '../layouts';
 
 export const NtosRobotact = (props, context) => {

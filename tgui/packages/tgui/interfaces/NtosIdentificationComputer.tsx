@@ -1,5 +1,5 @@
 import { NtosWindow } from "../layouts";
-import { Module } from "../components/Module";
+import { Module } from "tgui-core/components/Module";
 
 export const NtosIdentificationComputer = (props, context) => {
   return (

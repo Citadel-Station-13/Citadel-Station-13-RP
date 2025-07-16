@@ -1,7 +1,7 @@
 import { sortBy } from 'common/collections';
 import { toTitleCase } from 'common/string';
 import { useBackend } from '../backend';
-import { AnimatedNumber, Box, Button, LabeledList, Section } from '../components';
+import { AnimatedNumber, Box, Button, LabeledList, Section } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 export const PortableChemMixer = (props, context) => {

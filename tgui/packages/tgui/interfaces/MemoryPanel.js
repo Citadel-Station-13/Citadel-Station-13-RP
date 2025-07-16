@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Button, Dimmer, Section, Stack } from '../components';
+import { Button, Dimmer, Section, Stack } from 'tgui-core/components';
 import { multiline } from 'common/string';
 import { Window } from '../layouts';
 

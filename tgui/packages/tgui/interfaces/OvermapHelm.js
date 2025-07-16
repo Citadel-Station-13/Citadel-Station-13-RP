@@ -1,6 +1,6 @@
 import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
-import { Box, Button, Flex, LabeledList, Section, Table } from "../components";
+import { Box, Button, Flex, LabeledList, Section, Table } from "tgui-core/components";
 import { Window } from "../layouts";
 import { OvermapFlightData, OvermapPanControls } from './common/Overmap';
 

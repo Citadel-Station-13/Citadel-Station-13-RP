@@ -1,7 +1,7 @@
 import { flow } from 'common/fp';
 import { filter, sortBy } from 'common/collections';
 import { useBackend, useSharedState } from '../backend';
-import { AnimatedNumber, Box, Button, Flex, Icon, Input, LabeledList, NoticeBox, Section, Stack, Table, Tabs } from '../components';
+import { AnimatedNumber, Box, Button, Flex, Icon, Input, LabeledList, NoticeBox, Section, Stack, Table, Tabs } from 'tgui-core/components';
 import { formatMoney } from '../format';
 import { Window } from '../layouts';
 

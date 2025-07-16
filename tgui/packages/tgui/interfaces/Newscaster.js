@@ -9,7 +9,7 @@ import { decodeHtmlEntities } from 'common/string';
 import { useBackend, useSharedState, useLocalState } from '../backend';
 import { BountyBoardContent } from './BountyBoard';
 import { UserDetails } from './Vending';
-import { BlockQuote, Box, Button, Divider, LabeledList, Modal, Section, Stack, Tabs, TextArea } from '../components';
+import { BlockQuote, Box, Button, Divider, LabeledList, Modal, Section, Stack, Tabs, TextArea } from 'tgui-core/components';
 import { marked } from 'marked';
 import { sanitizeText } from "../sanitize";
 

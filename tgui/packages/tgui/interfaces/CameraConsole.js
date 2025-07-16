@@ -4,7 +4,7 @@ import { classes } from 'common/react';
 import { createSearch } from 'common/string';
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
-import { Button, ByondUi, Flex, Input, Section } from '../components';
+import { Button, ByondUi, Flex, Input, Section } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 /**

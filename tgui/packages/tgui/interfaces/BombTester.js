@@ -1,6 +1,6 @@
 import { Component } from 'inferno';
 import { useBackend } from "../backend";
-import { Box, Button, Icon, LabeledList, Section, Slider } from "../components";
+import { Box, Button, Icon, LabeledList, Section, Slider } from "tgui-core/components";
 import { Window } from "../layouts";
 
 export const BombTester = (props, context) => {

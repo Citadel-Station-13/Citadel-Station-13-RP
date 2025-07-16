@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Box, Button, Flex, LabeledList, NoticeBox, Section } from '../components';
+import { Box, Button, Flex, LabeledList, NoticeBox, Section } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 export const CivCargoHoldTerminal = (props, context) => {

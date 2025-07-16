@@ -2,7 +2,7 @@ import { Color } from 'common/colorLegacy';
 import { decodeHtmlEntities } from 'common/string';
 import { Component, createRef, RefObject } from 'inferno';
 import { useBackend } from '../backend';
-import { Box, Button, Flex } from '../components';
+import { Box, Button, Flex } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 type PaintCanvasProps = Partial<{

@@ -1,5 +1,5 @@
 import { useBackend } from "../backend";
-import { Box, Button, LabeledList, NoticeBox, Section } from "../components";
+import { Box, Button, LabeledList, NoticeBox, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 import { LoginInfo } from './common/LoginInfo';
 import { LoginScreen } from './common/LoginScreen';

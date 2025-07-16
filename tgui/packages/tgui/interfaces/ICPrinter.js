@@ -1,5 +1,5 @@
 import { useBackend, useSharedState } from "../backend";
-import { Button, Flex, LabeledList, ProgressBar, Section, Tabs, Stack } from "../components";
+import { Button, Flex, LabeledList, ProgressBar, Section, Tabs, Stack } from "tgui-core/components";
 import { Window } from "../layouts";
 import { sortBy, filter } from 'common/collections';
 

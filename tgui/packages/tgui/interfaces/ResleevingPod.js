@@ -1,7 +1,7 @@
 import { Window } from "../layouts";
 import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
-import { Box, LabeledList, ProgressBar, Section } from "../components";
+import { Box, LabeledList, ProgressBar, Section } from "tgui-core/components";
 
 export const ResleevingPod = (model, context) => {
   const { data } = useBackend(context);

@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { AnimatedNumber, Box, Button, LabeledList, Section } from '../components';
+import { AnimatedNumber, Box, Button, LabeledList, Section } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 export const CargoHoldTerminal = (props, context) => {

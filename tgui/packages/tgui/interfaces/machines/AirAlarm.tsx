@@ -2,7 +2,7 @@ import { round } from 'common/math';
 import { BooleanLike } from 'common/react';
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../../backend';
-import { Box, Button, LabeledList, NumberInput, Section, Stack } from '../../components';
+import { Box, Button, LabeledList, NumberInput, Section, Stack } from 'tgui-core/components';
 import { Window } from '../../layouts';
 import { AtmosAnalyzerResults, AtmosGasGroupFlags, AtmosGasID, GasContext } from '../common/Atmos';
 import { InterfaceLockNoticeBox } from '../common/InterfaceLockNoticeBox';

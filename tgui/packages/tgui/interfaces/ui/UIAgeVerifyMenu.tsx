@@ -1,5 +1,5 @@
 import { useBackend, useLocalState } from "../../backend";
-import { Button, NoticeBox, Section, Stack } from "../../components";
+import { Button, NoticeBox, Section, Stack } from "tgui-core/components";
 import { Window } from "../../layouts";
 
 const MONTH_DAYS_LOOKUP: number[] = [

@@ -1,5 +1,5 @@
 import { useBackend, useSharedState } from '../backend';
-import { Box, Button, LabeledList, NoticeBox, Section, Tabs } from '../components';
+import { Box, Button, LabeledList, NoticeBox, Section, Tabs } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 export const RoboticsControlConsole = (props, context) => {

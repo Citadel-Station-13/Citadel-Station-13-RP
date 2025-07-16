@@ -1,6 +1,6 @@
 import { BooleanLike } from 'common/react';
 import { useBackend, useLocalState } from '../backend';
-import { Box, Button, Dimmer, Icon, NoticeBox, Section, Stack, Tabs, Tooltip } from '../components';
+import { Box, Button, Dimmer, Icon, NoticeBox, Section, Stack, Tabs, Tooltip } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 // 15x crate value

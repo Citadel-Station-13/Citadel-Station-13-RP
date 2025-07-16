@@ -1,6 +1,6 @@
 import { Fragment } from 'inferno';
 import { useBackend, useSharedState } from "../backend";
-import { Box, Button, LabeledList, Section, Tabs } from "../components";
+import { Box, Button, LabeledList, Section, Tabs } from "tgui-core/components";
 import { Window } from "../layouts";
 import { filter } from 'common/collections';
 

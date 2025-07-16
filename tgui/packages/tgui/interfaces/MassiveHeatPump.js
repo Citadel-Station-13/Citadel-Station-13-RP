@@ -1,5 +1,5 @@
 import { useBackend } from "../backend";
-import { Button, LabeledList, ProgressBar, Section, AnimatedNumber } from "../components";
+import { Button, LabeledList, ProgressBar, Section, AnimatedNumber } from "tgui-core/components";
 import { formatPower, formatSiUnit } from '../format';
 import { Fragment } from 'inferno';
 import { Window } from "../layouts";

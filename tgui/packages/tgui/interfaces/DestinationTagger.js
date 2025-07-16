@@ -1,5 +1,5 @@
 import { useBackend } from "../backend";
-import { Button, Flex, Section } from "../components";
+import { Button, Flex, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
 export const DestinationTagger = (props, context) => {

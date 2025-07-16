@@ -4,7 +4,7 @@
  */
 import { BooleanLike } from "common/react";
 import { useBackend, useLocalState } from "../../backend";
-import { Button, LabeledList, NoticeBox, Section, Stack, Table, Tabs } from "../../components";
+import { Button, LabeledList, NoticeBox, Section, Stack, Table, Tabs } from "tgui-core/components";
 import { Window } from "../../layouts";
 
 enum HolopadCalling {

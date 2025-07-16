@@ -1,5 +1,5 @@
 import { useBackend, useLocalState } from "../backend";
-import { Box, Section, Tabs, NoticeBox } from "../components";
+import { Box, Section, Tabs, NoticeBox } from "tgui-core/components";
 import { Window } from "../layouts";
 import { CryoStorageCrew } from "./CryoStorage";
 

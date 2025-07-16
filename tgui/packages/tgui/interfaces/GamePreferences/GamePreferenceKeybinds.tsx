@@ -7,7 +7,7 @@ import { KEY_ALT, KEY_CTRL, KEY_ESCAPE, KEY_SHIFT } from "common/keycodes";
 import { BooleanLike } from "common/react";
 import { Component, InfernoNode } from "inferno";
 import { useLocalState } from "../../backend";
-import { Box, Button, Dimmer, Section, Stack, Table, Tooltip } from "../../components";
+import { Box, Button, Dimmer, Section, Stack, Table, Tooltip } from "tgui-core/components";
 import { KeyEvent } from "../../events";
 import { listenForKeyEvents } from "../../hotkeys";
 

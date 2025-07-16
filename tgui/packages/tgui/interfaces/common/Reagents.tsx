@@ -8,8 +8,8 @@
  */
 
 import { InfernoNode } from "inferno";
-import { LabeledList, NoticeBox, Section } from "../../components";
-import { SectionProps } from "../../components/Section";
+import { LabeledList, NoticeBox, Section } from "tgui-core/components";
+import { SectionProps } from "tgui-core/componentsents/Section";
 
 export const REAGENT_STORAGE_UNIT_NAME = "u";
 

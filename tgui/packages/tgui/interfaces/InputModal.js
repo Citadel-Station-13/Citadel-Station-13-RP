@@ -6,7 +6,7 @@
 
 import { clamp01 } from 'common/math';
 import { useBackend, useLocalState } from '../backend';
-import { Box, Button, Section, Input, Stack, TextArea } from '../components';
+import { Box, Button, Section, Input, Stack, TextArea } from 'tgui-core/components';
 import { KEY_ESCAPE } from 'common/keycodes';
 import { Window } from '../layouts';
 import { createLogger } from '../logging';

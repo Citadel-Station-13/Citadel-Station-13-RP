@@ -1,6 +1,6 @@
 import { round } from 'common/math';
 import { useBackend } from "../backend";
-import { Button, LabeledList, Section, Knob, Slider, LabeledControls, AnimatedNumber } from "../components";
+import { Button, LabeledList, Section, Knob, Slider, LabeledControls, AnimatedNumber } from "tgui-core/components";
 import { Window } from "../layouts";
 
 export const GasTemperatureSystem = (props, context) => {

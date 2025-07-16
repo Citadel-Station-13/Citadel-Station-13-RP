@@ -1,6 +1,6 @@
 import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
-import { Box, Button, Flex, LabeledList, Section } from "../components";
+import { Box, Button, Flex, LabeledList, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
 export const IsolationCentrifuge = (props, context) => {

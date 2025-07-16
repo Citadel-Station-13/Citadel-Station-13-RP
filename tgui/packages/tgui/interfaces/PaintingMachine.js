@@ -1,6 +1,6 @@
 import { useBackend, useSharedState } from '../backend';
 import { Window } from '../layouts';
-import { Button, Dropdown, Section, Stack } from '../components';
+import { Button, Dropdown, Section, Stack } from 'tgui-core/components';
 
 export const PaintingMachine = (props, context) => {
   const { act, data } = useBackend(context);

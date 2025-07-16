@@ -1,5 +1,5 @@
 import { useBackend } from '../../backend';
-import { Stack, Button, Box } from '../../components';
+import { Stack, Button, Box } from 'tgui-core/components';
 import { OperatorData, InternalDamageToDamagedDesc, InternalDamageToNormalDesc } from './data';
 
 export const AlertPane = (props, context) => {

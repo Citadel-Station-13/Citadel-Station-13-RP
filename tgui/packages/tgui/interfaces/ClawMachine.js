@@ -1,5 +1,5 @@
 import { useBackend } from "../backend";
-import { Button, ProgressBar, Box, LabeledList } from "../components";
+import { Button, ProgressBar, Box, LabeledList } from "tgui-core/components";
 import { Window } from "../layouts";
 
 export const ClawMachine = (props, context) => {

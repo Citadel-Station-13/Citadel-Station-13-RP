@@ -1,5 +1,5 @@
 import { useBackend } from "../backend";
-import { Button, Section } from "../components";
+import { Button, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 import { toTitleCase } from 'common/string';
 

@@ -4,7 +4,7 @@ import { useDispatch } from 'common/redux';
 import { Component } from 'inferno';
 import { resolveAsset } from '../assets';
 import { backendSuspendStart, useBackend } from '../backend';
-import { Icon } from '../components';
+import { Icon } from 'tgui-core/components';
 import { globalEvents } from '../events';
 import { Window } from '../layouts';
 

@@ -4,8 +4,8 @@
  */
 
 import { ModuleData, useBackend, useLocalState } from "../../backend";
-import { Stack, Tabs } from "../../components";
-import { Module } from "../../components/Module";
+import { Stack, Tabs } from "tgui-core/components";
+import { Module } from "tgui-core/components/Module";
 import { Window } from "../../layouts";
 
 interface TGUIGuidebookContext {

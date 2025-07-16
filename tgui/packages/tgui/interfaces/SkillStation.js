@@ -1,6 +1,6 @@
 import { toFixed } from 'common/math';
 import { useBackend } from '../backend';
-import { Box, Button, Flex, Icon, LabeledList, NoticeBox, Section, Stack, Table } from '../components';
+import { Box, Button, Flex, Icon, LabeledList, NoticeBox, Section, Stack, Table } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 export const InsertedSkillchip = (props, context) => {

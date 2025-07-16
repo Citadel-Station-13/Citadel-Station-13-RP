@@ -1,6 +1,6 @@
 import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
-import { Box, Button, LabeledList, ProgressBar, Section, AnimatedNumber } from "../components";
+import { Box, Button, LabeledList, ProgressBar, Section, AnimatedNumber } from "tgui-core/components";
 import { Window } from "../layouts";
 
 export const OvermapShieldGenerator = (props, context) => {

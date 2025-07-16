@@ -4,7 +4,7 @@
  */
 import { BooleanLike } from "../../../common/react";
 import { useBackend } from "../../backend";
-import { Button, Collapsible, Input, LabeledList, Section } from "../../components";
+import { Button, Collapsible, Input, LabeledList, Section } from "tgui-core/components";
 import { Window } from "../../layouts";
 
 interface BioscanConsoleData {

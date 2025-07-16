@@ -1,5 +1,5 @@
 import { useBackend, useLocalState } from '../backend';
-import { AnimatedNumber, Box, Button, Input, LabeledList, NumberInput, Section, RoundGauge, Stack } from '../components';
+import { AnimatedNumber, Box, Button, Input, LabeledList, NumberInput, Section, RoundGauge, Stack } from 'tgui-core/components';
 import { Window } from '../layouts';
 import { round, toFixed } from 'common/math';
 

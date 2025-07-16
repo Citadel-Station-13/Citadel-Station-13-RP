@@ -1,6 +1,6 @@
 import { classes } from 'common/react';
 import { useBackend } from '../backend';
-import { Box, Button, Section, Table } from '../components';
+import { Box, Button, Section, Table } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 export const MiningVendor = (props, context) => {

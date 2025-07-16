@@ -1,5 +1,5 @@
 import { useBackend, useLocalState } from "../backend";
-import { Box, Button, Section, Tabs, NoticeBox } from "../components";
+import { Box, Button, Section, Tabs, NoticeBox } from "tgui-core/components";
 import { Window } from "../layouts";
 
 export const CryoStorage = (props, context) => {

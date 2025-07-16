@@ -1,6 +1,6 @@
 import { resolveAsset } from '../assets';
 import { useBackend, useLocalState } from '../backend';
-import { Button, NoticeBox, Section, Stack, Input } from '../components';
+import { Button, NoticeBox, Section, Stack, Input } from 'tgui-core/components';
 import { NtosWindow } from '../layouts';
 
 export const NtosPortraitPrinter = (props, context) => {
@@ -19,7 +19,7 @@ export const NtosPortraitPrinter = (props, context) => {
   const current_portrait_asset_name = got_paintings
     && "paintings" + "_" + paintings[listIndex]["md5"];
   const current_portrait_ratio = got_paintings
-    && paintings[listIndex]["ratio"]; 
+    && paintings[listIndex]["ratio"];
   return (
     <NtosWindow
       title="Art Galaxy"

@@ -1,6 +1,6 @@
 import { useBackend } from "../backend";
 import { Fragment } from "inferno";
-import { Box, Button, LabeledList, Section, Table } from "../components";
+import { Box, Button, LabeledList, Section, Table } from "tgui-core/components";
 import { Window } from "../layouts";
 
 const getStatusText = port => {

@@ -2,7 +2,7 @@ import { round } from 'common/math';
 import { BooleanLike } from 'common/react';
 import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
-import { Box, Button, Flex, NoticeBox, LabeledList, Section, Collapsible } from "../components";
+import { Box, Button, Flex, NoticeBox, LabeledList, Section, Collapsible } from "tgui-core/components";
 import { formatTime } from '../format';
 import { Window } from "../layouts";
 

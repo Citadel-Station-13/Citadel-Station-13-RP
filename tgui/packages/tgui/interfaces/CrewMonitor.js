@@ -2,7 +2,7 @@ import { sortBy } from 'common/collections';
 import { flow } from 'common/fp';
 import { useBackend, useLocalState } from "../backend";
 import { Window } from "../layouts";
-import { NanoMap, Box, Table, Button, Tabs, Icon } from "../components";
+import { NanoMap, Box, Table, Button, Tabs, Icon } from "tgui-core/components";
 import { Fragment } from 'inferno';
 
 const getStatText = cm => {

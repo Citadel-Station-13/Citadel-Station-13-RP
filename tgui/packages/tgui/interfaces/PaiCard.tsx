@@ -1,6 +1,6 @@
 import { BooleanLike } from '../../common/react';
 import { useBackend, useLocalState } from '../backend';
-import { Box, Button, LabeledList, NoticeBox, Section, Stack } from '../components';
+import { Box, Button, LabeledList, NoticeBox, Section, Stack } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 type PaiCardData = {

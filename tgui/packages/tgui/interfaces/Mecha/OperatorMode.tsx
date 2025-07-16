@@ -1,5 +1,5 @@
 import { useBackend } from '../../backend';
-import { ByondUi, Stack, Section } from '../../components';
+import { ByondUi, Stack, Section } from 'tgui-core/components';
 import { OperatorData } from './data';
 import { RadioPane } from './RadioPane';
 import { AlertPane } from './AlertPane';

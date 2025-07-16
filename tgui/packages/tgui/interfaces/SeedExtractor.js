@@ -2,7 +2,7 @@ import { sortBy } from 'common/collections';
 import { flow } from 'common/fp';
 import { toTitleCase } from 'common/string';
 import { useBackend } from '../backend';
-import { Button, Section, Table } from '../components';
+import { Button, Section, Table } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 /**

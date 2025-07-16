@@ -1,6 +1,6 @@
 import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
-import { Box, Button, Flex, LabeledList, ProgressBar, Section } from "../components";
+import { Box, Button, Flex, LabeledList, ProgressBar, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 import { capitalize, toTitleCase } from 'common/string';
 

@@ -1,7 +1,7 @@
 import { useBackend } from '../backend';
-import { Button, Section, Stack } from '../components';
+import { Button, Section, Stack } from 'tgui-core/components';
 import { Window } from '../layouts';
- 
+
 export const MinigamesMenu = (props, context) => {
   const { act } = useBackend(context);
   return (
@@ -32,7 +32,7 @@ export const MinigamesMenu = (props, context) => {
                 onClick={() => act('mafia')}
               />
             </Stack.Item>
-          </Stack>  
+          </Stack>
         </Section>
       </Window.Content>
     </Window>

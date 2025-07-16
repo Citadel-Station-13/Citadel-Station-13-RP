@@ -1,5 +1,5 @@
 import { useBackend } from "../backend";
-import { Box, Button, Flex, LabeledList, Section } from "../components";
+import { Box, Button, Flex, LabeledList, Section } from "tgui-core/components";
 import { NtosWindow } from "../layouts";
 
 export const NtosUAV = (props, context) => {

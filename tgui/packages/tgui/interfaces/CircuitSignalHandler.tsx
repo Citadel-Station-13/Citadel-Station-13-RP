@@ -1,6 +1,6 @@
 import { Component } from "inferno";
 import { useBackend } from "../backend";
-import { Box, Stack, Section, Input, Button, Dropdown } from "../components";
+import { Box, Stack, Section, Input, Button, Dropdown } from "tgui-core/components";
 import { Window } from "../layouts";
 
 type Response = {
@@ -20,7 +20,7 @@ type CircuitSignalHandlerState = {
   global: boolean;
 }
 
-type CircuitSignalHandlerData ={
+type CircuitSignalHandlerData = {
   global_port_types: string[];
 }
 
@@ -44,7 +44,7 @@ export class CircuitSignalHandler
     this.bitflags = {};
 
     for (let i = 0; i < 24; i++) {
-      this.bitflags[1 << i] = `Flag ${i+1}`;
+      this.bitflags[1 << i] = `Flag ${i + 1}`;
     }
   }
 
@@ -227,14 +227,14 @@ const Entry = (props: EntryProps, context) => {
               onSelected={onSetOption}
             />
           ) || (
-            <Box
-              textAlign="center"
-              py="2px"
-              px={2}
-            >
-              {current_option}
-            </Box>
-          )}
+              <Box
+                textAlign="center"
+                py="2px"
+                px={2}
+              >
+                {current_option}
+              </Box>
+            )}
         </Stack.Item>
         <Stack.Item>
           <Button

@@ -1,5 +1,5 @@
 import { useBackend, useSharedState } from '../backend';
-import { BlockQuote, Box, Button, Collapsible, Dimmer, Icon, Section, Stack, Tabs } from '../components';
+import { BlockQuote, Box, Button, Collapsible, Dimmer, Icon, Section, Stack, Tabs } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 const ALIGNMENT2COLOR = {

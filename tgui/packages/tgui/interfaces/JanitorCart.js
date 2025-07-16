@@ -1,5 +1,5 @@
 import { useBackend } from "../backend";
-import { Button, Icon } from "../components";
+import { Button, Icon } from "tgui-core/components";
 import { Window } from "../layouts";
 
 export const JanitorCart = (props, context) => {

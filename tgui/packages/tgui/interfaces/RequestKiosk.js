@@ -1,6 +1,6 @@
 import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
-import { Box, Button, Collapsible, Flex, LabeledList, NumberInput, Section, TextArea } from '../components';
+import { Box, Button, Collapsible, Flex, LabeledList, NumberInput, Section, TextArea } from 'tgui-core/components';
 import { formatMoney } from '../format';
 import { Window } from '../layouts';
 

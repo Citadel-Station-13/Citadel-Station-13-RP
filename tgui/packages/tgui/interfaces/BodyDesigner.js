@@ -1,6 +1,6 @@
 import { capitalize } from 'common/string';
 import { useBackend } from "../backend";
-import { Box, ByondUi, Button, Flex, LabeledList, Section, ColorBox } from "../components";
+import { Box, ByondUi, Button, Flex, LabeledList, Section, ColorBox } from "tgui-core/components";
 import { Window } from "../layouts";
 
 export const BodyDesigner = (props, context) => {

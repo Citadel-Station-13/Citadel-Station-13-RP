@@ -1,6 +1,6 @@
 import { sortBy } from 'common/collections';
 import { useBackend } from '../backend';
-import { Box, Button, Dropdown, Flex, NumberInput, ProgressBar, Section } from '../components';
+import { Box, Button, Dropdown, Flex, NumberInput, ProgressBar, Section } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 export const Photocopier = (props, context) => {
@@ -34,7 +34,7 @@ export const Photocopier = (props, context) => {
             <Box color="average">
               No forms found. Please contact your system administrator.
             </Box>
-          </Section>  
+          </Section>
         )}
         {has_item ? (
           <Options />

@@ -1,9 +1,9 @@
 import { InfernoNode } from "inferno";
 import { BooleanLike } from "../../../common/react";
 import { useBackend } from "../../backend";
-import { Button, LabeledList, NumberInput, ProgressBar, Section, Stack } from "../../components";
-import { ComponentProps } from "../../components/Component";
-import { SectionProps } from "../../components/Section";
+import { Button, LabeledList, NumberInput, ProgressBar, Section, Stack } from "tgui-core/components";
+import { ComponentProps } from "tgui-core/components/Component";
+import { SectionProps } from "tgui-core/components/Section";
 import { Window } from "../../layouts";
 
 export enum AtmosComponentUIFlags {

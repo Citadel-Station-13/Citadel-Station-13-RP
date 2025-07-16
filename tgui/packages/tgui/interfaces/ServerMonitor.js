@@ -1,5 +1,5 @@
 import { useBackend, useLocalState } from '../backend';
-import { Section, Stack, Input, Button, Table, LabeledList, Flex, Divider, NoticeBox } from '../components';
+import { Section, Stack, Input, Button, Table, LabeledList, Flex, Divider, NoticeBox } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 
@@ -105,7 +105,7 @@ const MainScreen = (props, context) => {
     networkId,
     setNetworkId,
   ] = useLocalState(context, "networkId", network);
-  
+
   return (
     <Stack fill vertical>
       <Stack.Item>

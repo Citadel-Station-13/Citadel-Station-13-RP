@@ -1,7 +1,7 @@
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from "../backend";
 import { ComplexModal, modalRegisterBodyOverride } from "../interfaces/common/ComplexModal";
-import { Box, Button, Flex, LabeledList, Section, Tabs } from "../components";
+import { Box, Button, Flex, LabeledList, Section, Tabs } from "tgui-core/components";
 import { Window } from "../layouts";
 
 const virusModalBodyOverride = (modal, context) => {

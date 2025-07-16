@@ -1,5 +1,5 @@
 import { useBackend } from '../../backend';
-import { Button, LabeledList, ProgressBar } from '../../components';
+import { Button, LabeledList, ProgressBar } from 'tgui-core/components';
 import { OperatorData, MechaUtility } from './data';
 
 export const UtilityModulesPane = (props, context) => {

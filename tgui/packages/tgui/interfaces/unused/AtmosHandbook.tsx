@@ -1,6 +1,6 @@
 // todo: this here is a reminder that we need a popup atmos guide that you can pull up.
 
-import { Modal, Section } from "../../components";
+import { Modal, Section } from "tgui-core/components";
 import { FullGasContext } from "../common/Atmos";
 
 interface AtmosGuideProps {
@@ -46,7 +46,7 @@ import {
   Section,
   Stack,
   Tooltip,
-} from '../components';
+} from 'tgui-core/components';
 */
 
 /**

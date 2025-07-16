@@ -1,4 +1,4 @@
-import { Flex, Button, Box, LabeledList, Section } from "../components";
+import { Flex, Button, Box, LabeledList, Section } from "tgui-core/components";
 import { useBackend, useLocalState } from "../backend";
 import { Window } from '../layouts';
 import { toTitleCase } from 'common/string';

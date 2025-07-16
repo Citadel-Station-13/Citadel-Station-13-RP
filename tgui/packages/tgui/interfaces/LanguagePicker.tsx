@@ -1,6 +1,6 @@
 import { useBackend, useLocalState } from '../backend';
 import { Window } from '../layouts';
-import { Section, Stack, Button } from '../components';
+import { Section, Stack, Button } from 'tgui-core/components';
 
 type LanguagePickerContext = {
   categories: string[],

@@ -1,5 +1,5 @@
 import { useBackend } from '../../../backend';
-import { Icon, Section, Stack } from '../../../components';
+import { Icon, Section, Stack } from 'tgui-core/components';
 import { Window } from '../../../layouts';
 
 type Objective = {

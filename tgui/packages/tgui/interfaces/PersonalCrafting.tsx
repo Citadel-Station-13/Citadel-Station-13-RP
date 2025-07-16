@@ -2,7 +2,7 @@ import { filter, sortBy } from 'common/collections';
 import { flow } from 'common/fp';
 import { BooleanLike, classes } from 'common/react';
 import { useBackend } from '../backend';
-import { Button, Dimmer, Icon, Section, Stack, Table } from '../components';
+import { Button, Dimmer, Icon, Section, Stack, Table } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 type RawRecipe = {

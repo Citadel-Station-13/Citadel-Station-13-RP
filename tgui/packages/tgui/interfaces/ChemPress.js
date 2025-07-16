@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Box, Button, Input, LabeledList, NumberInput, Section } from '../components';
+import { Box, Button, Input, LabeledList, NumberInput, Section } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 export const ChemPress = (props, context) => {

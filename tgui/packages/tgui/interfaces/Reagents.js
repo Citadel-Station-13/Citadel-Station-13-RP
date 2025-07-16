@@ -1,5 +1,5 @@
 import { useBackend, useLocalState } from '../backend';
-import { Button, Icon, LabeledList, NumberInput, Section, Stack, Table } from '../components';
+import { Button, Icon, LabeledList, NumberInput, Section, Stack, Table } from 'tgui-core/components';
 import { Window } from '../layouts';
 import { ReagentLookup } from './common/ReagentLookup';
 import { RecipeLookup } from './common/RecipeLookup';

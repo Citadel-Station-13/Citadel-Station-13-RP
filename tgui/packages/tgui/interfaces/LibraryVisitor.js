@@ -1,7 +1,7 @@
 import { map, sortBy } from 'common/collections';
 import { flow } from 'common/fp';
 import { useBackend } from '../backend';
-import { Box, Button, Dropdown, Input, NoticeBox, Section, Stack, Table } from '../components';
+import { Box, Button, Dropdown, Input, NoticeBox, Section, Stack, Table } from 'tgui-core/components';
 import { Window } from '../layouts';
 import { PageSelect } from './LibraryConsole';
 

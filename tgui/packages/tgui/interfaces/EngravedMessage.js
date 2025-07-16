@@ -1,6 +1,6 @@
 import { decodeHtmlEntities } from 'common/string';
 import { useBackend } from '../backend';
-import { Box, Button, LabeledList, Section, Stack } from '../components';
+import { Box, Button, LabeledList, Section, Stack } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 export const EngravedMessage = (props, context) => {

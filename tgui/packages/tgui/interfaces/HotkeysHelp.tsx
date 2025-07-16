@@ -4,7 +4,7 @@ import {
   Section,
   Table,
   Tooltip,
-} from '../components';
+} from 'tgui-core/components';
 import { Window } from '../layouts';
 
 type BindingInfo = {

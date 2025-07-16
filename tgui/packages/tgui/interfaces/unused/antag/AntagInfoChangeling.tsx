@@ -1,6 +1,6 @@
 import { multiline } from 'common/string';
 import { useBackend, useSharedState } from '../../../backend';
-import { Box, Button, Dimmer, Dropdown, Section, Stack } from '../../../components';
+import { Box, Button, Dimmer, Dropdown, Section, Stack } from 'tgui-core/components';
 import { Window } from '../../../layouts';
 
 const hivestyle = {

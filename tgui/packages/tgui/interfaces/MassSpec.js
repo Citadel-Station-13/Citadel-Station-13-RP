@@ -1,6 +1,6 @@
 import { round } from 'common/math';
 import { useBackend } from '../backend';
-import { Box, Button, Dimmer, Icon, Section, Slider, Table } from '../components';
+import { Box, Button, Dimmer, Icon, Section, Slider, Table } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 export const MassSpec = (props, context) => {

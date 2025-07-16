@@ -5,7 +5,7 @@
 
 import { round } from "common/math";
 import { useBackend } from "../../backend";
-import { LabeledList, NoticeBox, ProgressBar, Section } from "../../components";
+import { LabeledList, NoticeBox, ProgressBar, Section } from "tgui-core/components";
 import { Window } from "../../layouts";
 
 interface ClientPlaytimeData {

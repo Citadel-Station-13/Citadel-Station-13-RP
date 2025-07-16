@@ -1,5 +1,5 @@
 import { useBackend } from "../backend";
-import { Button, ProgressBar, LabeledList, Box, Section } from "../components";
+import { Button, ProgressBar, LabeledList, Box, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
 export const AICard = (props, context) => {

@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Box, Button, Flex, Grid, NoticeBox, Section } from '../components';
+import { Box, Button, Flex, Grid, NoticeBox, Section } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 const NukeKeypad = (props, context) => {

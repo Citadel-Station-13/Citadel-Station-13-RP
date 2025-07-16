@@ -1,7 +1,7 @@
 import { round } from "common/math";
 import { BooleanLike } from "common/react";
 import { useBackend, useLocalState } from "../../backend";
-import { Button, Dropdown, Input, NumberInput, Section, Stack, Tooltip } from "../../components";
+import { Button, Dropdown, Input, NumberInput, Section, Stack, Tooltip } from "tgui-core/components";
 import { Window } from "../../layouts";
 
 interface UIDynamicInputContext {

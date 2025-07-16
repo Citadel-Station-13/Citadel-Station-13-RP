@@ -10,7 +10,7 @@ import {
   NumberInput,
   LabeledList,
   Collapsible,
-} from "../components";
+} from "tgui-core/components";
 import { Window } from "../layouts";
 
 interface VoteContext {

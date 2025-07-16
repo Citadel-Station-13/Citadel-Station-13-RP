@@ -1,5 +1,5 @@
 import { useBackend, useSharedState } from '../backend';
-import { Box, Button, Dimmer, Icon, LabeledList, Section, Tabs } from '../components';
+import { Box, Button, Dimmer, Icon, LabeledList, Section, Tabs } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 export const Limbgrower = (props, context) => {

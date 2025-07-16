@@ -1,5 +1,5 @@
 import { useBackend } from "../backend";
-import { Box, Icon, LabeledList, ProgressBar, Section } from "../components";
+import { Box, Icon, LabeledList, ProgressBar, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 import { FullscreenNotice } from './common/FullscreenNotice';
 

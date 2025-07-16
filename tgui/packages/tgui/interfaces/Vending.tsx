@@ -1,6 +1,6 @@
 import { classes } from 'common/react';
 import { useBackend } from '../backend';
-import { Box, Button, Icon, LabeledList, NoticeBox, Section, Stack, Table } from '../components';
+import { Box, Button, Icon, LabeledList, NoticeBox, Section, Stack, Table } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 type VendingData = {

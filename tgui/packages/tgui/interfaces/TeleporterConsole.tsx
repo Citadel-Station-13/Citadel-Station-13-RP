@@ -1,4 +1,4 @@
-import { Section, Flex, Box, Dropdown, ProgressBar, NumberInput } from "../components";
+import { Section, Flex, Box, Dropdown, ProgressBar, NumberInput } from "tgui-core/components";
 import { Window } from "../layouts";
 import { useBackend } from "../backend";
 import { toFixed } from 'common/math';

@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Button, LabeledList, ProgressBar, Section, NumberInput, Box } from '../components';
+import { Button, LabeledList, ProgressBar, Section, NumberInput, Box } from 'tgui-core/components';
 import { getGasColor, getGasLabel } from '../constants';
 import { toFixed } from 'common/math';
 import { Window } from '../layouts';

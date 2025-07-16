@@ -1,6 +1,6 @@
 import { classes } from 'common/react';
 import { useBackend, useLocalState } from '../backend';
-import { Box, Button, ColorBox, LabeledList, Section, Stack, Tabs } from '../components';
+import { Box, Button, ColorBox, LabeledList, Section, Stack, Tabs } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 const ROOT_CATEGORIES = [

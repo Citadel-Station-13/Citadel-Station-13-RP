@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Button, LabeledList, Section, Stack } from '../components';
+import { Button, LabeledList, Section, Stack } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 type SpawnersMenuContext = {

@@ -1,5 +1,5 @@
 import { useBackend } from "../backend";
-import { Button, Flex, LabeledList, Section, Collapsible } from "../components";
+import { Button, Flex, LabeledList, Section, Collapsible } from "tgui-core/components";
 import { Window } from "../layouts";
 import { toTitleCase } from 'common/string';
 import { sortBy } from 'common/collections';

@@ -1,5 +1,5 @@
 import { useBackend } from "../backend";
-import { Button, Flex, LabeledList, ProgressBar, Section, AnimatedNumber } from "../components";
+import { Button, Flex, LabeledList, ProgressBar, Section, AnimatedNumber } from "tgui-core/components";
 import { Window } from "../layouts";
 
 export const CookingAppliance = (props, context) => {

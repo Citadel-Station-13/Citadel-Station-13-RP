@@ -1,6 +1,6 @@
 import { NtosWindow } from '../layouts';
 import { useBackend } from '../backend';
-import { Stack, Input, Section } from '../components';
+import { Stack, Input, Section } from 'tgui-core/components';
 
 export const NtosNotepad = (props, context) => {
   const { act, data } = useBackend(context);

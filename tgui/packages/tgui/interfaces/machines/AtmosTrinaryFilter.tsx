@@ -2,8 +2,8 @@
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
 import { useBackend } from "../../backend";
-import { LabeledList, NumberInput } from "../../components";
-import { Section, SectionProps } from "../../components/Section";
+import { LabeledList, NumberInput } from "tgui-core/components";
+import { Section, SectionProps } from "tgui-core/components/Section";
 import { AtmosGasGroups, AtmosGasID, AtmosGasGroupFlags, GasContext, AtmosFilterList } from "../common/Atmos";
 import { AtmosComponent, AtmosComponentData } from "../common/AtmosMachine";
 

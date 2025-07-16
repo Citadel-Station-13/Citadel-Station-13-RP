@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import { useBackend } from "../backend";
-import { Box, Section, Table } from "../components";
+import { Box, Section, Table } from "tgui-core/components";
 import { Window } from "../layouts";
 import { COLORS } from "../constants";
 import { decodeHtmlEntities } from "common/string";

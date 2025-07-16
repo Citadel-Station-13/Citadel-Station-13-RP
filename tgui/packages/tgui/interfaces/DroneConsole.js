@@ -1,6 +1,6 @@
 import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
-import { Box, Button, LabeledList, Section, Dropdown } from "../components";
+import { Box, Button, LabeledList, Section, Dropdown } from "tgui-core/components";
 import { Window } from "../layouts";
 
 export const DroneConsole = (props, context) => {

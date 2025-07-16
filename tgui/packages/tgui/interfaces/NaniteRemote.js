@@ -1,6 +1,6 @@
 import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
-import { Button, LabeledList, NumberInput, Section, NoticeBox, Input, Table } from '../components';
+import { Button, LabeledList, NumberInput, Section, NoticeBox, Input, Table } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 export const NaniteRemote = (props, context) => {

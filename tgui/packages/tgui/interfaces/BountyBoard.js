@@ -1,6 +1,6 @@
 import { useBackend } from '../backend';
 import { UserDetails } from './Vending';
-import { BlockQuote, Box, Button, Collapsible, Flex, NumberInput, Section, Stack, TextArea } from '../components';
+import { BlockQuote, Box, Button, Collapsible, Flex, NumberInput, Section, Stack, TextArea } from 'tgui-core/components';
 import { formatMoney } from '../format';
 import { Window } from '../layouts';
 

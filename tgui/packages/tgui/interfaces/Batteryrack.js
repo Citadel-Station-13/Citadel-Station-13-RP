@@ -1,5 +1,5 @@
 import { useBackend } from "../backend";
-import { AnimatedNumber, Box, Button, LabeledList, ProgressBar, Section, Table } from "../components";
+import { AnimatedNumber, Box, Button, LabeledList, ProgressBar, Section, Table } from "tgui-core/components";
 import { Window } from "../layouts";
 
 export const Batteryrack = (props, context) => {

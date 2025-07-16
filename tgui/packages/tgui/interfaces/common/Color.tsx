@@ -1,8 +1,8 @@
 import { DecodeRGBString, EncodeRGBAString, EncodeRGBString, HSVtoRGB, RGBtoHSV } from "common/color";
 import { round } from "common/math";
 import { Component } from "inferno";
-import { Box, ColorBox, Input, NumberInput, Slider, Stack, Table, Tabs } from "../../components";
-import { BoxProps } from "../../components/Box";
+import { Box, ColorBox, Input, NumberInput, Slider, Stack, Table, Tabs } from "tgui-core/components";
+import { BoxProps } from "tgui-core/componentsents/Box";
 
 // full, 20-value RGBA matrix with constants
 export type ByondColorMatrixRGBAC = [
@@ -219,10 +219,10 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
       this.state.cBlue,
       this.state.cAlpha,
       true) : EncodeRGBString(
-      this.state.cRed,
-      this.state.cGreen,
-      this.state.cBlue,
-      true);
+        this.state.cRed,
+        this.state.cGreen,
+        this.state.cBlue,
+        true);
     let [cHue, cSat, cVal] = RGBtoHSV(this.state.cRed, this.state.cGreen, this.state.cBlue).map((n) => round(n, 2));
     return (
       <Box {...this.props}>
@@ -389,7 +389,7 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
                             }));
                             this.props.setColor(val);
                           }
-                          catch {}
+                          catch { }
                         }} width="90px" />
                       </Stack.Item>
                       <Stack.Item>
@@ -403,7 +403,7 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
             {this.state.mode === ColorPickerMode.Matrix && (
               <Table>
                 {
-                  this.props.allowAlpha? [
+                  this.props.allowAlpha ? [
                     ["RR", "RG", "RB", "RA"],
                     ["GR", "GG", "GB", "GA"],
                     ["BR", "BG", "BB", "BA"],
@@ -430,7 +430,8 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
                                 this.props.setColor(this.state.cMatrix);
                               }} />
                           </Table.Cell>
-                        ); })}
+                        );
+                      })}
                     </Table.Row>
                   )) : [
                     ["RR", "RG", "RB"],
@@ -440,7 +441,7 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
                   ].map((arr, i1) => (
                     <Table.Row key={i1}>
                       {arr.map((l, i2) => {
-                        let ifull = ((i1 === 3? 4 : i1) * 4) + (i2);
+                        let ifull = ((i1 === 3 ? 4 : i1) * 4) + (i2);
                         return (
                           <Table.Cell key={i2}>
                             {l}: <NumberInput width="50px"
@@ -458,7 +459,8 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
                                 this.props.setColor(ConvertByondColorMatrixRGBACToRGBC(this.state.cMatrix));
                               }} />
                           </Table.Cell>
-                        ); })}
+                        );
+                      })}
                     </Table.Row>
                   ))
                 }

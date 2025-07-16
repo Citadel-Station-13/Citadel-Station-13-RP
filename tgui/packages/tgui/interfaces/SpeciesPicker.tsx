@@ -1,6 +1,6 @@
 import { BooleanLike } from '../../common/react';
 import { useBackend, useLocalState } from '../backend';
-import { Section, Stack, Button, Box, NoticeBox } from '../components';
+import { Section, Stack, Button, Box, NoticeBox } from 'tgui-core/components';
 import { Window } from '../layouts';
 import { sanitizeText } from '../sanitize';
 

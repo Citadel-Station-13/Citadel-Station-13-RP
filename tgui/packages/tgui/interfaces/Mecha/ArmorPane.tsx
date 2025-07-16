@@ -1,5 +1,5 @@
 import { useBackend } from '../../backend';
-import { Stack, Button, Box } from '../../components';
+import { Stack, Button, Box } from 'tgui-core/components';
 import { OperatorData } from './data';
 import { classes } from 'common/react';
 

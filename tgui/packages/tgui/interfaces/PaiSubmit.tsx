@@ -1,5 +1,5 @@
 import { useBackend, useLocalState } from '../backend';
-import { Box, Button, Input, Section, Stack, Tooltip } from '../components';
+import { Box, Button, Input, Section, Stack, Tooltip } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 type CandidateData = {

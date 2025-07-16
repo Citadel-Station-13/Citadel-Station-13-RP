@@ -3,8 +3,8 @@
 
 import { BooleanLike } from "common/react";
 import { useBackend } from "../../backend";
-import { Button, LabeledList, NumberInput } from "../../components";
-import { Section, SectionProps } from "../../components/Section";
+import { Button, LabeledList, NumberInput } from "tgui-core/components";
+import { Section, SectionProps } from "tgui-core/components/Section";
 import { AtmosComponent, AtmosComponentData } from "../common/AtmosMachine";
 
 interface AtmosTrinaryMolarFilterControlProps extends SectionProps {

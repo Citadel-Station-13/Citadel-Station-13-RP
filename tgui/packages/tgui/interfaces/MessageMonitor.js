@@ -1,7 +1,7 @@
 import { decodeHtmlEntities } from 'common/string';
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from "../backend";
-import { Box, Button, Dropdown, Flex, Icon, Input, LabeledList, Section, Tabs } from "../components";
+import { Box, Button, Dropdown, Flex, Icon, Input, LabeledList, Section, Tabs } from "tgui-core/components";
 import { Window } from "../layouts";
 import { TemporaryNotice } from './common/TemporaryNotice';
 import { FullscreenNotice } from './common/FullscreenNotice';

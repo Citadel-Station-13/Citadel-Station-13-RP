@@ -2,7 +2,7 @@ import { BooleanLike } from "common/react";
 import { capitalize } from "common/string";
 import { Fragment } from "inferno";
 import { useBackend } from "../backend";
-import { Button, LabeledList, Section, AnimatedNumber } from "../components";
+import { Button, LabeledList, Section, AnimatedNumber } from "tgui-core/components";
 import { Window } from '../layouts';
 
 enum MaterialProcessorMode {

@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Button, Section, Input, Dropdown, LabeledList } from '../components';
+import { Button, Section, Input, Dropdown, LabeledList } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 export const AiVoiceChanger = (props, context) => {

@@ -1,5 +1,5 @@
 import { useBackend, useLocalState } from "../../backend";
-import { Box, Button, Dropdown, Flex, Input, Modal } from '../../components';
+import { Box, Button, Dropdown, Flex, Input, Modal } from 'tgui-core/components';
 
 let bodyOverrides = {};
 

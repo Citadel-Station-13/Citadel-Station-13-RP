@@ -1,6 +1,6 @@
 import { round } from 'common/math';
 import { useBackend } from "../backend";
-import { Box, Button, LabeledList, ProgressBar, Section, AnimatedNumber, Flex } from "../components";
+import { Box, Button, LabeledList, ProgressBar, Section, AnimatedNumber, Flex } from "tgui-core/components";
 import { Window } from "../layouts";
 import { formatPower } from "../format";
 

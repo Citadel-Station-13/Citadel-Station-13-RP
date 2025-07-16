@@ -13,7 +13,7 @@ import { classes } from 'common/react';
 import { Component } from 'inferno';
 import { marked } from 'marked';
 import { useBackend } from '../backend';
-import { Box, Flex, Tabs, TextArea } from '../components';
+import { Box, Flex, Tabs, TextArea } from 'tgui-core/components';
 import { Window } from '../layouts';
 import { clamp } from 'common/math';
 import { sanitizeText } from '../sanitize';

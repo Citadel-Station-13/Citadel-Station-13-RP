@@ -1,7 +1,7 @@
 import { Component } from "inferno";
 import { useLocalState } from "../../backend";
-import { Box, Button, Collapsible, Dropdown, Input, Stack, Tabs } from "../../components";
-import { Section, SectionProps } from "../../components/Section";
+import { Box, Button, Collapsible, Dropdown, Input, Stack, Tabs } from "tgui-core/components";
+import { Section, SectionProps } from "tgui-core/components/Section";
 import { ByondAtomColor, ByondColorMatrixRGBC, ColorPicker } from "../common/Color";
 
 export type LoadoutId = string;

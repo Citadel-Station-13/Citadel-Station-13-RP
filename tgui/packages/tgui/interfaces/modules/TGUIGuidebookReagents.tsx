@@ -14,7 +14,7 @@
 
 import { InfernoNode } from "inferno";
 import { useLocalState, useModule } from "../../backend";
-import { Input, Section, Stack, Tabs } from "../../components";
+import { Input, Section, Stack, Tabs } from "tgui-core/components";
 import { Modular } from "../../layouts/Modular";
 import { TGUIGuidebookSectionData } from "./TGUIGuidebook";
 

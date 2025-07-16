@@ -1,7 +1,7 @@
-import { Section, Flex, Divider, Table, Collapsible, Box } from "../components";
+import { Section, Flex, Divider, Table, Collapsible, Box } from "tgui-core/components";
 import { Window } from "../layouts";
 import { useBackend, useLocalState } from "../backend";
-import { Tabs } from "../components";
+import { Tabs } from "tgui-core/components";
 
 const getTagColor = (erptag) => {
   switch (erptag) {

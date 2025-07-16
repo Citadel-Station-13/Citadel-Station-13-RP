@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Box, Button, Icon, NoticeBox, ProgressBar, Section } from '../components';
+import { Box, Button, Icon, NoticeBox, ProgressBar, Section } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 export const Gateway = () => {

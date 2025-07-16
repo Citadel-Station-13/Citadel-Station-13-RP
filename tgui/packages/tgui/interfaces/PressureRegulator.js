@@ -1,6 +1,6 @@
 import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
-import { Button, LabeledList, Section, AnimatedNumber } from "../components";
+import { Button, LabeledList, Section, AnimatedNumber } from "tgui-core/components";
 import { Window } from "../layouts";
 
 export const PressureRegulator = (props, context) => {

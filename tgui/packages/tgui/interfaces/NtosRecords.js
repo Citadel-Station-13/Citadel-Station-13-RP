@@ -1,6 +1,6 @@
 import { createSearch } from 'common/string';
 import { useBackend, useLocalState } from '../backend';
-import { Box, Icon, Input, Section } from '../components';
+import { Box, Icon, Input, Section } from 'tgui-core/components';
 import { NtosWindow } from '../layouts';
 
 export const NtosRecords = (props, context) => {

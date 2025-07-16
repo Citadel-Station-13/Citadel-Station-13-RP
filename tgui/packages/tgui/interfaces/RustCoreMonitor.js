@@ -1,6 +1,6 @@
 import { useBackend } from "../backend";
 import { Window } from "../layouts";
-import { Button, Section, Table, Knob } from "../components";
+import { Button, Section, Table, Knob } from "tgui-core/components";
 
 export const RustCoreMonitor = (props, context) => (
   <Window
