@@ -33,6 +33,8 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/rocks)
 		PlaceOnTop(/turf/simulated/floor/outdoors/snow, flags = CHANGETURF_PRESERVE_OUTDOORS|CHANGETURF_INHERIT_AIR)
 
 /turf/simulated/floor/outdoors/legacy_ex_act(severity)
+	if(integrity_flags & INTEGRITY_INDESTRUCTIBLE)
+		return
 	switch(severity)
 		// Outdoor turfs are less explosion resistant
 		if(1)
