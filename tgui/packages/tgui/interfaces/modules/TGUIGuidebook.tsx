@@ -15,7 +15,7 @@ interface TGUIGuidebookContext {
 
 export const TGUIGuidebook = (props, context) => {
   let { act, data } = useBackend<TGUIGuidebookContext>(context);
-  const [activeSection, setActiveSection] = useLocalState<string | null>(context, 'masterGuidebookSection', null);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
   const sections = Object.keys(data.sections);
   const oneSectionMode = sections.length === 1;
   return (

@@ -24,7 +24,7 @@ interface StackCraftingEntryProps {
 }
 
 const StackCraftingEntry = (props: StackCraftingEntryProps, context) => {
-  const [amt, setAmt] = useLocalState<number>(context, props.recipe.ref, props.recipe.resultAmt);
+  const [amt, setAmt] = useState<number>(props.recipe.resultAmt);
   return (
     <Stack>
       <Stack.Item grow={1}>
@@ -50,7 +50,7 @@ const StackCraftingEntry = (props: StackCraftingEntryProps, context) => {
                       ceiling(
                         Math.min(
                           Math.max(1, val),
-                          props.recipe.maxAmount? props.recipe.maxAmount : Infinity
+                          props.recipe.maxAmount ? props.recipe.maxAmount : Infinity
                         ),
                         props.recipe.resultAmt
                       )
@@ -76,7 +76,7 @@ export const StackCrafting = (props, context) => {
   const { act, data } = useBackend<StackCraftingData>(context);
   let approximateEntries = 0;
   let categories: string[] = [];
-  const [searchText, setSearchText] = useLocalState<string | null>(context, "searchText", null);
+  const [searchText, setSearchText] = useState<string | null>(null);
   let searchString = searchText?.toLowerCase() || "";
   data.recipes.forEach((r) => {
     if (r.category) {
@@ -103,7 +103,7 @@ export const StackCrafting = (props, context) => {
           </>
         )}>
           <Stack vertical>
-            {searchText && searchText.length >= 2? (
+            {searchText && searchText.length >= 2 ? (
               <>
                 {data.recipes.filter((r) => r.name.toLowerCase().includes(searchString)).sort(
                   (a, b) => a.name.localeCompare(b.name)
@@ -135,7 +135,7 @@ export const StackCrafting = (props, context) => {
                   </Stack.Item>
                 ))}
                 {data.recipes.filter((r) => !r.category).sort((a, b) =>
-                  (a.sortOrder === b.sortOrder? a.name.localeCompare(b.name) : b.sortOrder - a.sortOrder)
+                  (a.sortOrder === b.sortOrder ? a.name.localeCompare(b.name) : b.sortOrder - a.sortOrder)
                 ).map((r) => (
                   <Stack.Item key={r.name} ml={0.75}>
                     <StackCraftingEntry recipe={r} craft={(ref, amt) => act(

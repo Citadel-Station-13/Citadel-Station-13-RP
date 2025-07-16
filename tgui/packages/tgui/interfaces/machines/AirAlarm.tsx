@@ -40,23 +40,23 @@ const AirAlarmRaiseLookup: {
   color: string;
   status: string;
 }[] = [
-  {
-    color: 'good',
-    status: 'Okay',
-  },
-  {
-    color: 'average',
-    status: 'Warning',
-  },
-  {
-    color: 'bad',
-    status: 'Danger',
-  },
-];
+    {
+      color: 'good',
+      status: 'Okay',
+    },
+    {
+      color: 'average',
+      status: 'Warning',
+    },
+    {
+      color: 'bad',
+      status: 'Danger',
+    },
+  ];
 
 type AirAlarmTLV = [number, number, number, number];
 
-const TLVCheck = (val: number, tlv: AirAlarmTLV | null | undefined) => tlv? (val < tlv[0] || val > tlv[3]
+const TLVCheck = (val: number, tlv: AirAlarmTLV | null | undefined) => tlv ? (val < tlv[0] || val > tlv[3]
   ? AirAlarmRaise.Danger : val < tlv[1] || val > tlv[2]
     ? AirAlarmRaise.Warning
     : AirAlarmRaise.Okay) : AirAlarmRaise.Okay;
@@ -131,8 +131,8 @@ export const AirAlarm = (props, context) => {
                 <LabeledList.Item label="Local Status" color={localRaised.color}>
                   {localRaised.status}
                 </LabeledList.Item>
-                <LabeledList.Item label="Area Status" color={data.atmos_alarm || data.fire_alarm? 'bad' : 'good'}>
-                  {data.atmos_alarm? "Atmosphere Alarm" : data.fire_alarm? "Fire Alarm" : "Nominal"}
+                <LabeledList.Item label="Area Status" color={data.atmos_alarm || data.fire_alarm ? 'bad' : 'good'}>
+                  {data.atmos_alarm ? "Atmosphere Alarm" : data.fire_alarm ? "Fire Alarm" : "Nominal"}
                 </LabeledList.Item>
                 {!!data.emagged && (
                   <LabeledList.Item
@@ -216,7 +216,7 @@ const AIR_ALARM_ROUTES = {
 };
 
 const AirAlarmControl = (props, context) => {
-  const [screen, setScreen] = useLocalState<string>(context, 'screen', 'home');
+  const [screen, setScreen] = useState<string>('home');
   const route = AIR_ALARM_ROUTES[screen] || AIR_ALARM_ROUTES.home;
   const Component = route.component();
   return (
@@ -241,7 +241,7 @@ const AirAlarmControl = (props, context) => {
 
 const AirAlarmControlHome = (props, context) => {
   const { act, data } = useBackend<AirAlarmData>(context);
-  const [screen, setScreen] = useLocalState<string>(context, 'screen', '');
+  const [screen, setScreen] = useState<string>('');
   const {
     mode,
     atmos_alarm,
@@ -423,7 +423,7 @@ interface AirAlarmModeButtonProps {
 const AirAlarmModeButton = (props: AirAlarmModeButtonProps) => {
   return (
     <Button
-      icon={props.selected? 'check-square-o' : 'square-o'}
+      icon={props.selected ? 'check-square-o' : 'square-o'}
       content={props.desc}
       onClick={() => props.setAct?.()}
       selected={props.selected}

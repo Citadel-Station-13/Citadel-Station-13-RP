@@ -107,7 +107,7 @@ export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenPr
   // that would probably be smart.
   // oh well! problems for later.
   // (we all know no one's touching this again)
-  const [activeCapture, setActiveCapture] = useLocalState<InfernoNode | null>(context, 'activeKeyCapture', null);
+  const [activeCapture, setActiveCapture] = useState<InfernoNode | null>(null);
 
   return (
     <Section fill scrollable>
@@ -207,12 +207,13 @@ export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenPr
                               }}>
                               <Box width="100%" overflowX="hidden"
                                 italic={!bind}
-                                textColor={bind? undefined : "#777777"}>
+                                textColor={bind ? undefined : "#777777"}>
                                 {bind || "Add Bind..."}
                               </Box>
                             </Box>
                           </Table.Cell>
-                        ); })}
+                        );
+                      })}
                     </Table.Row>
                   );
                 })}
@@ -292,7 +293,7 @@ class GamePreferenceKeybindCapture extends Component<{
         shift: this.state.shift,
         ctrl: this.state.ctrl,
         numpad: this.state.numpad,
-        key: this.state.terminal? keyCodeToByond(this.state.terminal) : null,
+        key: this.state.terminal ? keyCodeToByond(this.state.terminal) : null,
       });
     };
   }
@@ -324,12 +325,12 @@ class GamePreferenceKeybindCapture extends Component<{
                     Existing keybind is <b>{this.props.existing}.</b><br />
                   </>
                 )}
-                Press <b>Esc</b> to {this.props.existing? "removing existing bind" : "cancel"}.
+                Press <b>Esc</b> to {this.props.existing ? "removing existing bind" : "cancel"}.
               </Box>
             </Stack.Item>
             <Stack.Item>
               {this.state.alt && "Alt-"}{this.state.ctrl && "Ctrl-"}{this.state.shift && "Shift-"}
-              {this.state.numpad && "Numpad"}{this.state.terminal? keyCodeToByond(this.state.terminal) : ""}
+              {this.state.numpad && "Numpad"}{this.state.terminal ? keyCodeToByond(this.state.terminal) : ""}
             </Stack.Item>
           </Stack>
         </Section>

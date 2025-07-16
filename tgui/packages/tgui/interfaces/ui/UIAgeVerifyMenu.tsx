@@ -64,9 +64,9 @@ const validDays = (month: number, year: number) => {
 
 export const UIAgeVerifyMenu = (props, context) => {
   let { data, act } = useBackend(context);
-  let [month, setMonth] = useLocalState<string | null>(context, "month", null);
-  let [day, setDay] = useLocalState<string | null>(context, "day", null);
-  let [year, setYear] = useLocalState<string | null>(context, "year", null);
+  let [month, setMonth] = useState<string | null>(null);
+  let [day, setDay] = useState<string | null>(null);
+  let [year, setYear] = useState<string | null>(null);
   return (
     <Window width={400} height={400} title="Age Verification">
       <Window.Content>
@@ -82,8 +82,8 @@ export const UIAgeVerifyMenu = (props, context) => {
                 <Stack.Item width="33%" overflowY="scroll" overflowX="hidden">
                   {
                     validDays(
-                      (month === null)? 1 : Number.parseInt(month, 10),
-                      (year === null)? 1 : Number.parseInt(year, 10)
+                      (month === null) ? 1 : Number.parseInt(month, 10),
+                      (year === null) ? 1 : Number.parseInt(year, 10)
                     ).map((m) => (
                       <Button key={m} fluid content={m} color="transparent" selected={m === day}
                         onClick={() => setDay(m)} />
@@ -112,8 +112,8 @@ export const UIAgeVerifyMenu = (props, context) => {
               <Button.Confirm textAlign="center" color="transparent" fluid content="Submit"
                 disabled={
                   month === null
-                || day === null
-                || year === null
+                  || day === null
+                  || year === null
                 }
                 onClick={() => act('verify', {
                   month: (VALID_MONTHS.findIndex((m) => m === month) + 1),

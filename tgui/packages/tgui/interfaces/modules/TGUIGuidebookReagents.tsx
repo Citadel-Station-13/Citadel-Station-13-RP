@@ -26,13 +26,13 @@ export interface TGUIGuidebookReagentsData extends TGUIGuidebookSectionData {
 }
 
 enum ReagentGuidebookFlags {
-  Unlisted = (1<<0),
-  Hidden = (1<<1),
+  Unlisted = (1 << 0),
+  Hidden = (1 << 1),
 }
 
 enum ReactionGuidebookFlags {
-  Unlisted = (1<<0),
-  Hidden = (1<<1),
+  Unlisted = (1 << 0),
+  Hidden = (1 << 1),
 }
 
 interface TGUIGuidebookReagent {
@@ -76,8 +76,8 @@ interface TGUIGuidebookReaction {
 
 export const TGUIGuidebookReagents = (props, context) => {
   let { act, data } = useModule<TGUIGuidebookReagentsData>(context);
-  const [activeTab, setActiveTab] = useLocalState<string | null>(context, 'activeReagentsTab', null);
-  const [searchText, setSearchText] = useLocalState<string | null>(context, 'activeReagentsSearch', null);
+  const [activeTab, setActiveTab] = useState<string | null>(null);
+  const [searchText, setSearchText] = useState<string | null>(null);
 
   let rendered: InfernoNode | null = null;
   let categorizedReagents: Record<string, TGUIGuidebookReagent[]> = {};
@@ -87,12 +87,12 @@ export const TGUIGuidebookReagents = (props, context) => {
     case 'reagents':
       Object.values(data.reagents).filter(
         (reagent) => !searchText || reagent.name.toLowerCase().includes(searchText)).forEach(
-        (reagent) => {
-          if (categorizedReagents[reagent.category] === undefined) {
-            categorizedReagents[reagent.category] = [];
-          }
-          categorizedReagents[reagent.category].push(reagent);
-        });
+          (reagent) => {
+            if (categorizedReagents[reagent.category] === undefined) {
+              categorizedReagents[reagent.category] = [];
+            }
+            categorizedReagents[reagent.category].push(reagent);
+          });
       rendered = (
         <Stack vertical>
           {Object.entries(categorizedReagents).sort(([cat1, a1], [cat2, a2]) => cat1.localeCompare(cat2)).map(
@@ -116,12 +116,12 @@ export const TGUIGuidebookReagents = (props, context) => {
     case 'reactions':
       Object.values(data.reactions).filter(
         (reaction) => !searchText || reaction.name.toLowerCase().includes(searchText)).forEach(
-        (reaction) => {
-          if (categorizedReactions[reaction.category] === undefined) {
-            categorizedReactions[reaction.category] = [];
-          }
-          categorizedReactions[reaction.category].push(reaction);
-        });
+          (reaction) => {
+            if (categorizedReactions[reaction.category] === undefined) {
+              categorizedReactions[reaction.category] = [];
+            }
+            categorizedReactions[reaction.category].push(reaction);
+          });
       rendered = (
         <Stack vertical>
           {Object.entries(categorizedReactions).sort(([cat1, a1], [cat2, a2]) => cat1.localeCompare(cat2)).map(

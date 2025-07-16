@@ -29,7 +29,7 @@ export interface MaterialsContext {
 export interface FullMaterialsContext {
   materials: Record<string, DetailedMaterial>;
   sheetAmount: number;
- }
+}
 
 export interface Material {
   name: string;
@@ -51,7 +51,7 @@ export const MaterialStorage = (props: MaterialStorageProps, context) => {
     <MaterialRender
       {...props}
       materialButtons={(id) => {
-        const [ejectAmt, setEjectAmt] = useLocalState<number>(context, `matEject-${id}`, 1);
+        const [ejectAmt, setEjectAmt] = useState<number>(1);
         return (
           <>
             {props.materialButtons}
@@ -83,9 +83,9 @@ export const MaterialRender = (props: MaterialRenderProps, context) => {
 
   let scale = props.materialScale ?? 1.0;
 
-  return props.horizontal? (
+  return props.horizontal ? (
     <Section {...props}>
-      {isEmpty? (
+      {isEmpty ? (
         <Box textAlign="center">
           <Icon size={5} name="inbox" />
           <br />
@@ -130,5 +130,5 @@ export const MaterialRender = (props: MaterialRenderProps, context) => {
 };
 
 export const renderMaterialAmount = (amt: number): string => {
-  return `${(amt < 1 && amt > 0)? toFixed(amt, 2) : formatSiUnit(amt, 0)}${MATERIAL_STORAGE_UNIT_NAME}`;
+  return `${(amt < 1 && amt > 0) ? toFixed(amt, 2) : formatSiUnit(amt, 0)}${MATERIAL_STORAGE_UNIT_NAME}`;
 };

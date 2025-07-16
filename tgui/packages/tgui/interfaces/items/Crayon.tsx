@@ -38,7 +38,7 @@ const sizeKeyForCrayonDatapack = (pack: CrayonDatapack) => {
 
 export const Crayon = (props, context) => {
   const { data, act } = useBackend<CrayonUIData>(context);
-  const [pickingColor, setPickingColor] = useLocalState<boolean>(context, 'pickingColor', false);
+  const [pickingColor, setPickingColor] = useState<boolean>(false);
 
   return (
     <Window width={500} height={800} title={data.canonicalName}>
@@ -62,13 +62,13 @@ export const Crayon = (props, context) => {
               <LabeledList>
                 {!!data.cappable && (
                   <LabeledList.Item label="Cap">
-                    <Button content={data.capped? "Capped" : "Uncapped"}
+                    <Button content={data.capped ? "Capped" : "Uncapped"}
                       selected={!data.capped} onClick={() => act('cap')} />
                   </LabeledList.Item>
                 )}
                 {(data.anyColor || data.colorList) && (
                   <LabeledList.Item label="Color">
-                    {data.anyColor? (
+                    {data.anyColor ? (
                       <Stack>
                         <Stack.Item>
                           <Box style={{ position: "relative", top: "5px", "margin-top": "-3px" }}

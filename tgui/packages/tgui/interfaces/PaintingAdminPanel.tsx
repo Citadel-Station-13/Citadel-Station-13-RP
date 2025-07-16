@@ -27,7 +27,7 @@ type PaintingData = {
 
 export const PaintingAdminPanel = (props, context) => {
   const { act, data } = useBackend<PaintingAdminPanelData>(context);
-  const [chosenPaintingRef, setChosenPaintingRef] = useLocalState<string|null>(context, 'chosenPainting', null);
+  const [chosenPaintingRef, setChosenPaintingRef] = useState<string | null>(null);
   const {
     paintings,
   } = data;

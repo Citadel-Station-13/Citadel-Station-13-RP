@@ -66,7 +66,7 @@ type ToggleOption = BooleanLike;
 
 export const UIDynamicInputModal = (props, context) => {
   const { data, act } = useBackend<UIDynamicInputContext>(context);
-  const [options, setOptions] =useLocalState<Record<string, any>>(context, 'options', {});
+  const [options, setOptions] = useState<Record<string, any>>({});
   return (
     <Window title={data.title}>
       <Window.Content>
@@ -137,7 +137,7 @@ export const UIDynamicInputModal = (props, context) => {
 const preprocessOptions = (picked: Record<string, any>, query: Record<string, UIDynamicInputEntry>) => {
   let built = {};
   for (let key in Object.keys(query)) {
-    built[key] = picked[key] === undefined? query[key].default : picked[key];
+    built[key] = picked[key] === undefined ? query[key].default : picked[key];
   }
   return built;
 };
@@ -177,11 +177,11 @@ interface DynamicEntryNumberProps extends DynamicEntryProps {
 }
 
 const DynamicEntryNumber = (props: DynamicEntryNumberProps, context) => {
-  let current = props.current === undefined? props.entry.default === null? 0 : props.entry.default : props.current;
+  let current = props.current === undefined ? props.entry.default === null ? 0 : props.entry.default : props.current;
   return (
     <NumberInput value={current} minValue={props.entry.constraints[0]} maxValue={props.entry.constraints[1]}
       onChange={(e, val) => props.pick(
-        props.entry.constraints[2] === null? val : round(val, props.entry.constraints[2])
+        props.entry.constraints[2] === null ? val : round(val, props.entry.constraints[2])
       )} width="100%" />
   );
 };
@@ -192,7 +192,7 @@ interface DynamicEntryStringProps extends DynamicEntryProps {
 }
 
 const DynamicEntryString = (props: DynamicEntryStringProps, context) => {
-  let current = props.current === undefined? props.entry.default === null? "" : props.entry.default : props.current;
+  let current = props.current === undefined ? props.entry.default === null ? "" : props.entry.default : props.current;
   return (
     <Input value={current} maxLength={props.entry.constraints[0]}
       onInput={(e, val) => props.pick(
@@ -207,8 +207,8 @@ interface DynamicEntryPickProps extends DynamicEntryProps {
 }
 
 const DynamicEntryPick = (props: DynamicEntryPickProps, context) => {
-  let current = props.current === undefined? (
-    props.entry.constraints.length > 0? props.entry.constraints[0] : ""
+  let current = props.current === undefined ? (
+    props.entry.constraints.length > 0 ? props.entry.constraints[0] : ""
   ) : props.current;
   return (
     <Dropdown
@@ -224,7 +224,7 @@ interface DynamicEntryToggleProps extends DynamicEntryProps {
 }
 
 const DynamicEntryToggle = (props: DynamicEntryToggleProps, context) => {
-  let current = props.current === undefined? !!props.entry.default : props.current;
+  let current = props.current === undefined ? !!props.entry.default : props.current;
   return (
     <Button.Checkbox
       selected={current}

@@ -79,7 +79,7 @@ type IncomingCallsContext = BaseCallContext & {
 
 export const Holopad = (props, context) => {
   const { act, data } = useBackend<HolopadContext>(context);
-  const [tab, setTab] = useLocalState<number>(context, 'tab', 1);
+  const [tab, setTab] = useState<number>(1);
 
   return (
     <Window
@@ -90,21 +90,21 @@ export const Holopad = (props, context) => {
         <Section
           fill
           title={data.holopadName}
-          buttons={data.isAI? (
+          buttons={data.isAI ? (
             <Button
               content={data.aiEnabled
-                ?(data.isAIProjecting? "Stop Projecting" : "Start Projecting")
+                ? (data.isAIProjecting ? "Stop Projecting" : "Start Projecting")
                 : "AI Disabled"}
               disabled={!data.aiEnabled}
-              icon={data.aiEnabled && (data.isAIProjecting? `stop` : `phone`)}
+              icon={data.aiEnabled && (data.isAIProjecting ? `stop` : `phone`)}
               selected={data.aiEnabled && data.isAIProjecting}
               onClick={() => act('ai_project', { mode: !data.isAIProjecting })} />
           ) : (
             !!data.aiRequestAllowed && <Button.Confirm
               content={data.aiEnabled
-                ?(data.aiRequested? "AI Requested" : "Request AI")
+                ? (data.aiRequested ? "AI Requested" : "Request AI")
                 : "AI Disabled"}
-              icon={data.aiRequested? `wifi` : `wifi`}
+              icon={data.aiRequested ? `wifi` : `wifi`}
               selected={data.aiRequested}
               onClick={() => act('ai_request')} />
           )}>
@@ -131,10 +131,10 @@ export const Holopad = (props, context) => {
             <Stack.Item grow={1}>
               {tab === 1 && (
                 !!data.canCall && (
-                  data.calling === HolopadCalling.None? (
+                  data.calling === HolopadCalling.None ? (
                     <HolopadDirectory />
                   ) : (
-                    data.calling === HolopadCalling.Destination? (
+                    data.calling === HolopadCalling.Destination ? (
                       <HolopadCallIncoming />
                     ) : (
                       data.calling === HolopadCalling.Source && <HolopadCallOutgoing />
@@ -166,7 +166,7 @@ const HolopadCallOutgoing = (props, context) => {
           onClick={() => act('disconnect')} />
       }>
       {
-        callContext.ringing? (
+        callContext.ringing ? (
           <NoticeBox>
             Ringing...
           </NoticeBox>
@@ -176,16 +176,16 @@ const HolopadCallOutgoing = (props, context) => {
               {
                 <Button
                   disabled={!callContext.remotingAllowed}
-                  content={callContext.remotingAllowed? (callContext.remoting? "Projecting" : "Not Projecting") : "Destination Disabled"}
+                  content={callContext.remotingAllowed ? (callContext.remoting ? "Projecting" : "Not Projecting") : "Destination Disabled"}
                   selected={callContext.remoting}
-                  onClick={() => act(callContext.remoting? 'stop_remote' : 'start_remote')} />
+                  onClick={() => act(callContext.remoting ? 'stop_remote' : 'start_remote')} />
               }
             </Section>
             <Section title="Connected Pads">
               <LabeledList>
                 {callContext.connected.map((pad) => (
                   <LabeledList.Item
-                    label={`${pad.name} - ${pad.sector}${pad.id === callContext.target? " (Host)" : ""}`}
+                    label={`${pad.name} - ${pad.sector}${pad.id === callContext.target ? " (Host)" : ""}`}
                     key={pad.id} />
                 ))}
               </LabeledList>
@@ -217,7 +217,7 @@ const HolopadCallIncoming = (props, context) => {
               buttons={
                 <>
                   <Button
-                    content={callContext.projecting.includes(pad.id)? "Projecting" : "Not Projecting"}
+                    content={callContext.projecting.includes(pad.id) ? "Projecting" : "Not Projecting"}
                     color="transparent"
                     selected={callContext.projecting.includes(pad.id)} />
                   <Button.Confirm
@@ -247,7 +247,7 @@ const HolopadRinging = (props, context) => {
               <Stack.Item>
                 <Button.Confirm
                   disabled={data.calling === HolopadCalling.Source}
-                  content={data.calling === HolopadCalling.Source? "Already In Call" : "Connect"}
+                  content={data.calling === HolopadCalling.Source ? "Already In Call" : "Connect"}
                   onClick={() => act('connect', { id: pad.id })} />
               </Stack.Item>
             </Stack>
@@ -265,8 +265,8 @@ const HolopadDirectory = (props, context) => {
   const { data, act } = useBackend<HolopadContext>(context);
   const cats = {};
   const sectors = {};
-  const [sector, setSector] = useLocalState<string | null>(context, 'sector', null);
-  const [category, setCategory] = useLocalState<string | null>(context, 'category', null);
+  const [sector, setSector] = useState<string | null>(null);
+  const [category, setCategory] = useState<string | null>(null);
   data.connectivity.forEach((pad: ReachableHolopad) => {
     let effectiveSector = pad.sector || MISC_SECTOR;
     sectors[effectiveSector] = 1;
@@ -310,8 +310,8 @@ const HolopadDirectory = (props, context) => {
         <Section fill scrollable mr={1} mt={0.5} mb={0.5} ml={1}>
           <Stack vertical>
             {(data.connectivity.filter((pad) => (
-              pad.category? (pad.category === category) : (category === MISC_CATEGORY)
-              && pad.sector? (pad.sector === sector) : (sector === MISC_SECTOR)
+              pad.category ? (pad.category === category) : (category === MISC_CATEGORY)
+                && pad.sector ? (pad.sector === sector) : (sector === MISC_SECTOR)
             )).map((pad) => (
               <Stack.Item key={pad.id}>
                 <Stack fill>
@@ -345,7 +345,7 @@ const HolopadSettings = (props, context) => {
           </Table.Cell>
           <Table.Cell width="25%">
             <Button fluid
-              content={data.ringerEnabled? "Enabled" : "Disabled"}
+              content={data.ringerEnabled ? "Enabled" : "Disabled"}
               selected={data.ringerEnabled}
               disabled={!data.ringerToggle}
               onClick={() => act('toggle_ringer')} />
@@ -357,7 +357,7 @@ const HolopadSettings = (props, context) => {
           </Table.Cell>
           <Table.Cell>
             <Button fluid
-              content={data.callVisibility? "Visible" : "Invisible"}
+              content={data.callVisibility ? "Visible" : "Invisible"}
               selected={data.callVisibility}
               disabled={!data.toggleVisibility}
               onClick={() => act('toggle_visibility')} />
@@ -369,7 +369,7 @@ const HolopadSettings = (props, context) => {
           </Table.Cell>
           <Table.Cell>
             <Button fluid
-              content={data.sectorAnonymous? "Mask Identity" : "Broadcast Identity"}
+              content={data.sectorAnonymous ? "Mask Identity" : "Broadcast Identity"}
               selected={data.sectorAnonymous}
               disabled={!data.sectorAnonymousToggle}
               onClick={() => act('toggle_anonymous_sector')} />
@@ -381,7 +381,7 @@ const HolopadSettings = (props, context) => {
           </Table.Cell>
           <Table.Cell>
             <Button fluid
-              content={data.autoPickup? "Enabled" : "Disabled"}
+              content={data.autoPickup ? "Enabled" : "Disabled"}
               selected={data.autoPickup}
               disabled={!data.autoToggle}
               onClick={() => act('toggle_auto')} />
@@ -393,7 +393,7 @@ const HolopadSettings = (props, context) => {
           </Table.Cell>
           <Table.Cell>
             <Button fluid
-              content={data.videoEnabled? "Enabled" : "Disabled"}
+              content={data.videoEnabled ? "Enabled" : "Disabled"}
               selected={data.videoEnabled}
               disabled={!data.videoToggle}
               onClick={() => act('toggle_video')} />

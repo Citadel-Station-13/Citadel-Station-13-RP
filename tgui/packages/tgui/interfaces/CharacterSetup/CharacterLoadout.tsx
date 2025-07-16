@@ -54,9 +54,9 @@ export interface PartialLoadoutSlot {
 
 export enum LoadoutCustomizations {
   None = 0,
-  Rename = (1<<0),
-  Redesc = (1<<1),
-  Color = (1<<2),
+  Rename = (1 << 0),
+  Redesc = (1 << 1),
+  Color = (1 << 2),
 }
 
 interface LoadoutProps extends SectionProps {
@@ -76,8 +76,8 @@ interface LoadoutProps extends SectionProps {
 
 export const CharacterLoadout = (props: LoadoutProps, context) => {
   // todo: get rid of 'context' requirement.
-  let [loadoutCategory, setLoadoutCategory] = useLocalState<string | null>(context, "loadoutCategory", null);
-  let [loadoutSubcategory, setLoadoutSubcategory] = useLocalState<string | null>(context, "loadoutSubcategory", null);
+  let [loadoutCategory, setLoadoutCategory] = useState<string | null>(null);
+  let [loadoutSubcategory, setLoadoutSubcategory] = useState<string | null>(null);
   let currentCategoryHasSubcategories = !!loadoutCategory && props.gearContext.categories[loadoutCategory].length > 1;
   return (
     <Section {...props}>
@@ -121,12 +121,12 @@ export const CharacterLoadout = (props: LoadoutProps, context) => {
                   onClick={() => props.slotRenameAct?.(props.gearData.slotIndex)} />
               </Stack.Item>
               <Stack.Item grow>
-                <Box mt={0.5} textColor={props.gearData.slot.costUsed > props.gearData.slot.costMax? "bad" : undefined}>
+                <Box mt={0.5} textColor={props.gearData.slot.costUsed > props.gearData.slot.costMax ? "bad" : undefined}>
                   Points: {props.gearData.slot.costUsed} / {props.gearData.slot.costMax}
                 </Box>
               </Stack.Item>
               <Stack.Item grow>
-                <Box mt={0.5} textColor={Object.keys(props.gearData.slot.entries).length > props.gearContext.maxEntries? "bad" : undefined}>
+                <Box mt={0.5} textColor={Object.keys(props.gearData.slot.entries).length > props.gearContext.maxEntries ? "bad" : undefined}>
                   Items: {Object.keys(props.gearData.slot.entries).length} / {props.gearContext.maxEntries}
                 </Box>
               </Stack.Item>
@@ -183,7 +183,7 @@ export const CharacterLoadout = (props: LoadoutProps, context) => {
                   {
                     props.gearAllowed.map((id) => props.gearContext.instances[id]).filter(
                       (entry) => entry.category === loadoutCategory
-                      && (!currentCategoryHasSubcategories || entry.subcategory === loadoutSubcategory)
+                        && (!currentCategoryHasSubcategories || entry.subcategory === loadoutSubcategory)
                     ).sort(
                       (e1, e2) => e1.name.localeCompare(e2.name)
                     ).map(
@@ -251,20 +251,20 @@ class CharacterLoadoutEntry extends Component<CharacterLoadoutEntryProps, Charac
                     }))
                   } color="transparent" selected={this.state.editingName || !!this.props.selected?.rename} />
               )}
-              {this.state.editingName? (
+              {this.state.editingName ? (
                 <Input
                   value={this.props.selected?.rename}
                   onChange={(e, val) => {
                     this.props.customizeNameAct?.(this.props.entry.id, val);
                     this.setState((prevState) => ({ ...prevState, editingName: false }));
                   }} />
-              ) : (this.props.selected?.rename !== undefined? this.props.selected.rename : this.props.entry.name)}
+              ) : (this.props.selected?.rename !== undefined ? this.props.selected.rename : this.props.entry.name)}
             </>
           )}
           color="transparent"
           buttons={(
             <Button
-              content={this.props.selected? "Selected" : "Select"}
+              content={this.props.selected ? "Selected" : "Select"}
               selected={!!this.props.selected}
               color="transparent"
               onClick={() => this.props.toggleAct?.(this.props.entry.id)} />)}>
@@ -278,7 +278,7 @@ class CharacterLoadoutEntry extends Component<CharacterLoadoutEntryProps, Charac
                 color="transparent"
                 selected={this.state.editingColor}
                 onClick={() => this.props.selected
-                        && this.setState((prev) => ({ ...prev, editingColor: !prev.editingColor }))} />
+                  && this.setState((prev) => ({ ...prev, editingColor: !prev.editingColor }))} />
             )}
             <Box ml={4.25}>
               <Box>
@@ -288,16 +288,16 @@ class CharacterLoadoutEntry extends Component<CharacterLoadoutEntryProps, Charac
                       ...prevState,
                       editingDesc: !prevState.editingDesc,
                     }))
-                  } color={this.props.selected.recolor? undefined : "transparent"} selected={this.state.editingDesc || !!this.props.selected?.redesc} />
+                  } color={this.props.selected.recolor ? undefined : "transparent"} selected={this.state.editingDesc || !!this.props.selected?.redesc} />
                 )}
-                {this.state.editingDesc? (
+                {this.state.editingDesc ? (
                   <Input
                     value={this.props.selected?.redesc}
                     onChange={(e, val) => {
                       this.props.customizeDescAct?.(this.props.entry.id, val);
                       this.setState((prevState) => ({ ...prevState, editingDesc: false }));
                     }} />
-                ) : (this.props.selected?.redesc !== undefined? this.props.selected.redesc : this.props.entry.desc)}
+                ) : (this.props.selected?.redesc !== undefined ? this.props.selected.redesc : this.props.entry.desc)}
               </Box>
               {this.state.editingColor && !!this.props.selected && (
                 <Section>

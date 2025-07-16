@@ -3,13 +3,14 @@ import { Window } from "../layouts";
 import { useBackend, useLocalState } from "../backend";
 
 const ACCOUNT_SECURITY_DESCRIPTIONS: AccountSecurityDescription[] = [{ "level": 0, "desc": "Only account number required, automatically scanned from ID in proximity." },
-  { "level": 1, "desc": "Account number and PIN required; ID autoscan disabled." },
-  { "level": 2, "desc": "Inserted ID card, Account number, and PIN required." }];
+{ "level": 1, "desc": "Account number and PIN required; ID autoscan disabled." },
+{ "level": 2, "desc": "Inserted ID card, Account number, and PIN required." }];
 
 enum AccountSecurityLevels {
   SECURITY_LEVEL_MIN = 0,
   SECURITY_LEVEL_MED = 1,
-  SECURITY_LEVEL_MAX = 2}
+  SECURITY_LEVEL_MAX = 2
+}
 
 interface AccountSecurityDescription {
   level: number,
@@ -28,17 +29,17 @@ interface AccountTransactionEntry {
 }
 
 interface ATMContext {
-  "incorrect_attempts" : number,
-	"max_pin_attempts" : number,
-	"ticks_left_locked_down": number,
-	"emagged" : boolean,
-	"authenticated_acc" : boolean,
-	"account_name" : String,
-	"transaction_log": AccountTransactionLog,
-	"account_security_level" : number,
-	"current_account_security_level" : number,
-	"acc_suspended": boolean,
-	"balance": number,
+  "incorrect_attempts": number,
+  "max_pin_attempts": number,
+  "ticks_left_locked_down": number,
+  "emagged": boolean,
+  "authenticated_acc": boolean,
+  "account_name": String,
+  "transaction_log": AccountTransactionLog,
+  "account_security_level": number,
+  "current_account_security_level": number,
+  "acc_suspended": boolean,
+  "balance": number,
   "machine_id": String
   "card_inserted": boolean,
   "inserted_card_name": String,
@@ -52,11 +53,12 @@ export const ATM = (props, context) => {
       <Window resizable width={400} height={400}>
         <Window.Content scrollable>
           <Section title={data.machine_id} >
-            {data.ticks_left_locked_down || data.emagged ? (<LockedElement />) : (<LoginElement />) }
+            {data.ticks_left_locked_down || data.emagged ? (<LockedElement />) : (<LoginElement />)}
           </Section>
         </Window.Content>
       </Window>
-    ); }
+    );
+  }
   return (
     <Window resizable width={400} height={400} scrollable>
       <Window.Content scrollable>
@@ -133,12 +135,12 @@ const LockedElement = (props, context) => {
 
 const ATMElement = (props, context) => {
   const { act, data } = useBackend<ATMContext>(context);
-  const [TransferTarget, setTransferTarget] = useLocalState<number>(context, "TransferTarget", 1);
-  const [TransferAmount, setTransferAmount] = useLocalState<number>(context, "TransferAmount", 1);
-  const [TransferPurpose, setTransferPurpose] = useLocalState<String>(context, "TransferPurpose", "");
-  const [WithdrawAmount, setWithdrawAmount] = useLocalState<number>(context, "WithdrawAmount", 1);
-  const [EWallet, setEWallet] = useLocalState<boolean>(context, "EWallet", false);
-  const [Security, setSecurity] = useLocalState<number>(context, "Security", data.current_account_security_level);
+  const [TransferTarget, setTransferTarget] = useState<number>(1);
+  const [TransferAmount, setTransferAmount] = useState<number>(1);
+  const [TransferPurpose, setTransferPurpose] = useState<String>("");
+  const [WithdrawAmount, setWithdrawAmount] = useState<number>(1);
+  const [EWallet, setEWallet] = useState<boolean>(false);
+  const [Security, setSecurity] = useState<number>(data.current_account_security_level);
 
   if (data.acc_suspended) {
     return (

@@ -38,7 +38,7 @@ export const LanguagePicker = (props, context) => {
 
 const LanguageInfo = (props, context) => {
   const { act, data } = useBackend<LanguagePickerContext>(context);
-  const [selectedLanguage, setSelectedLanguage] = useLocalState<string | null>(context, 'selectedLanguage', null);
+  const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
   let lang = data.languages.find((l) => l.id === selectedLanguage);
   if (lang === undefined) {
     return (<Section fill />);
@@ -69,7 +69,7 @@ const LanguageInfo = (props, context) => {
 const LanguageCategories = (props, context) => {
   const { act, data } = useBackend<LanguagePickerContext>(context);
   const { categories } = data;
-  let [selectedCategory, setSelectedCategory] = useLocalState<string | null>(context, 'selectedCategory', null);
+  let [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   return (
     <Section fill scrollable title="Categories">
       {
@@ -93,8 +93,8 @@ const LanguageCategories = (props, context) => {
 
 const LanguageSelect = (props, context) => {
   const { act, data } = useBackend<LanguagePickerContext>(context);
-  let [selectedLanguage, setSelectedLanguage] = useLocalState<string | null>(context, 'selectedLanguage', null);
-  let [selectedCategory, setSelectedCategory] = useLocalState<string | null>(context, 'selectedCategory', null);
+  let [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
+  let [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   if (selectedCategory === null) {
     return (
       <Section fill />
