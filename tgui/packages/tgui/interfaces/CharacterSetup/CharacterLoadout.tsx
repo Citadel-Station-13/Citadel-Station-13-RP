@@ -1,7 +1,7 @@
 import { Box, Button, Collapsible, Dropdown, Input, Section, Stack, Tabs } from "tgui-core/components";
 import { ByondAtomColor, ByondColorMatrixRGBC, ColorPicker } from "../common/Color";
 import React, { Component, useState } from "react";
-import { BoxProps, SectionProps } from "../../components/ComponentProps";
+import { BoxProps, SectionProps } from "../../components";
 
 export type LoadoutId = string;
 

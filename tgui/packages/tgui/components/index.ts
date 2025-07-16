@@ -6,3 +6,9 @@ import { Box, Section } from "tgui-core/components";
 
 export type BoxProps = React.ComponentProps<typeof Box>;
 export type SectionProps = React.ComponentProps<typeof Section>;
+
+/**
+ * Re-exports everything from this folder
+ */
+
+export { Sprite } from './Sprite'

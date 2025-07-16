@@ -2,15 +2,14 @@
  * @file
  * @license MIT
  */
-import { BooleanLike } from 'common/react';
 import { Box, Button, NumberInput, Section, Icon, Stack, Tooltip } from 'tgui-core/components';
-import { formatSiUnit } from '../../format';
-import { useLocalState, useSharedState } from '../../backend';
-import { SectionProps } from 'tgui-core/components/Section';
-import { InfernoNode } from 'inferno';
-import { toFixed } from 'common/math';
-import { Sprite } from 'tgui-core/components/Sprite';
-import { toTitleCase } from 'common/string';
+import { useSharedState } from '../../backend';
+import { ReactNode, useState } from 'react';
+import { SectionProps, Sprite } from '../../components';
+import { BooleanLike } from 'tgui-core/react';
+import { toTitleCase } from 'tgui-core/string';
+import { toFixed } from 'tgui-core/math';
+import { formatSiUnit } from 'tgui-core/format';
 
 // the space is intentional
 export const MATERIAL_STORAGE_UNIT_NAME = " cm³";
@@ -55,7 +54,7 @@ export const MaterialStorage = (props: MaterialStorageProps) => {
         return (
           <>
             {props.materialButtons}
-            <NumberInput width={3} value={ejectAmt} minValue={1} onChange={(e, v) => setEjectAmt(v)} />
+            <NumberInput step={1} width={3} value={ejectAmt} minValue={1} maxValue={100} onChange={(v) => setEjectAmt(v)} />
             <Button
               icon="eject"
               onClick={() => props.eject(id, ejectAmt)} />
@@ -72,13 +71,13 @@ interface MaterialRenderProps extends SectionProps {
   // id to number
   readonly materialList: Record<string, number>;
   // id map to an element to render below/to the side respectively for vertical/horizontal
-  readonly materialButtons?: (id) => InfernoNode;
+  readonly materialButtons?: (id) => ReactNode;
   // icon scale factor
   readonly materialScale?: number;
 }
 
 export const MaterialRender = (props: MaterialRenderProps) => {
-  const [fancy, setFancy] = useSharedState(context, 'materialsFancy', true);
+  const [fancy, setFancy] = useSharedState('materialsFancy', true);
   const isEmpty = Object.keys(props.materialList).length === 0;
 
   let scale = props.materialScale ?? 1.0;

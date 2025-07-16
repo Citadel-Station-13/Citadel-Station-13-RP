@@ -3,9 +3,10 @@
  * @license MIT
 */
 
-import { bitfieldToPositions, round } from "common/math";
 import { Box, Button, Collapsible, LabeledList, Section } from "tgui-core/components";
-import { SectionProps } from "tgui-core/componentsents/Section";
+import { SectionProps } from "../../components";
+import { bitfieldToPositions } from "common/math";
+import { round } from "tgui-core/math";
 
 //* Context
 
@@ -131,10 +132,10 @@ interface AtmosFilterListProps extends SectionProps {
 export const AtmosFilterList = (props: AtmosFilterListProps) => {
   return (
     <Section {...props}>
-      <Collapsible captureKeys={false}
-        more={(
+      <Collapsible
+        buttons={(
           <>
-            <div style={{ display: "inline", color: "#7e90a7", "margin-left": "-0.235em", "padding-right": "1.225em" }}>Gases: </div>
+            <div style={{ display: "inline", color: "#7e90a7", "marginLeft": "-0.235em", "paddingRight": "1.225em" }}>Gases: </div>
             {props.gasContext.coreGases.map((id) => (
               <Button.Checkbox
                 key={id}

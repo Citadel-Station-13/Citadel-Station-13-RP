@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useBackend, useLocalState } from "../../backend";
 import { Box, Button, Dropdown, Flex, Input, Modal } from 'tgui-core/components';
 
@@ -37,7 +38,7 @@ export const modalRegisterBodyOverride = (id, bodyOverride) => {
   bodyOverrides[id] = bodyOverride;
 };
 
-const modalAnswer = (context, id, answer, args) => {
+const modalAnswer = (id, answer, args) => {
   const { act, data } = useBackend<ModalData>();
   if (!data.modal) {
     return;
@@ -51,8 +52,8 @@ const modalAnswer = (context, id, answer, args) => {
   });
 };
 
-const modalClose = (context, id) => {
-  const { act } = useBackend(context);
+const modalClose = (id) => {
+  const { act } = useBackend();
   act('modal_close', {
     id: id,
   });
@@ -95,16 +96,16 @@ export const ComplexModal = (props) => {
       icon="arrow-left"
       content="Cancel"
       color="grey"
-      onClick={() => modalClose(context, null)}
+      onClick={() => modalClose(null)}
     />
   );
 
   // Different contents depending on the type
   if (bodyOverrides[id]) {
-    modalBody = bodyOverrides[id](data.modal, context);
+    modalBody = bodyOverrides[id](data.modal);
   } else if (type === "input") {
-    const [curValue, setCurValue] = useLocalState(context, 'curValue' + data.modal.uid.toString(), data.modal.value.toString());
-    modalOnEnter = e => modalAnswer(context, id, curValue, null);
+    const [curValue, setCurValue] = useState(data.modal.value.toString());
+    modalOnEnter = e => modalAnswer(id, curValue, null);
     modalBody = (
       <Input
         value={data.modal.value}
@@ -113,7 +114,7 @@ export const ComplexModal = (props) => {
         my="0.5rem"
         autoFocus
         autoSelect
-        onChange={(_e, val) => {
+        onChange={(val) => {
           setCurValue(val);
         }}
       />
@@ -124,7 +125,7 @@ export const ComplexModal = (props) => {
           icon="arrow-left"
           content="Cancel"
           color="grey"
-          onClick={() => modalClose(context, null)}
+          onClick={() => modalClose(null)}
         />
         <Button
           icon="check"
@@ -132,7 +133,7 @@ export const ComplexModal = (props) => {
           color="good"
           float="right"
           m="0"
-          onClick={() => modalAnswer(context, id, curValue, null)}
+          onClick={() => modalAnswer(id, curValue, null)}
         />
         <Box clear="both" />
       </Box>
@@ -147,7 +148,7 @@ export const ComplexModal = (props) => {
         selected={data.modal.value}
         width="100%"
         my="0.5rem"
-        onSelected={val => modalAnswer(context, id, val, null)}
+        onSelected={val => modalAnswer(id, val, null)}
       />
     );
   } else if (type === "bento") {
@@ -161,7 +162,7 @@ export const ComplexModal = (props) => {
           <Flex.Item key={i} flex="1 1 auto">
             <Button
               selected={(i + 1) === parseInt(data.modal.value, 10)}
-              onClick={() => modalAnswer(context, id, i + 1, null)}>
+              onClick={() => modalAnswer(id, i + 1, null)}>
               <img src={c} />
             </Button>
           </Flex.Item>
@@ -177,7 +178,7 @@ export const ComplexModal = (props) => {
           color="bad"
           float="left"
           mb="0"
-          onClick={() => modalAnswer(context, id, 0, null)}
+          onClick={() => modalAnswer(id, 0, null)}
         />
         <Button
           icon="check"
@@ -185,7 +186,7 @@ export const ComplexModal = (props) => {
           color="good"
           float="right"
           m="0"
-          onClick={() => modalAnswer(context, id, 1, null)}
+          onClick={() => modalAnswer(id, 1, null)}
         />
         <Box clear="both" />
       </Box>

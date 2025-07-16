@@ -8,6 +8,7 @@
 import { useLocalState } from "../../backend";
 import { Button, Flex, LabeledList, Section, Tabs } from "tgui-core/components";
 import { AccessRegions, AccessTypes } from "../../constants/access";
+import { useState } from "react";
 
 export enum AccessListMode {
   AuthMode = "auth", // req, req_one
@@ -134,7 +135,6 @@ export const AccessListMod = (props: AccessListModProps) => {
                 return (
                   <Tabs.Tab
                     key={cat}
-                    altSelection
                     color={color}
                     icon={icon}
                     selected={cat === selectedCategory}
@@ -236,7 +236,6 @@ export const AccessListAuth = (props: AccessListAuthProps) => {
                 return (
                   <Tabs.Tab
                     key={cat}
-                    altSelection
                     color={color}
                     icon={icon}
                     selected={cat === selectedCategory}
@@ -323,7 +322,6 @@ export const AccessListSelect = (props: AccessListSelectProps) => {
                 return (
                   <Tabs.Tab
                     key={cat}
-                    altSelection
                     color={color}
                     icon={icon}
                     selected={cat === selectedCategory}

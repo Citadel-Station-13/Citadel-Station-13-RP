@@ -2,7 +2,7 @@ import { DecodeRGBString, EncodeRGBAString, EncodeRGBString, HSVtoRGB, RGBtoHSV 
 import { Component } from "react";
 import { Box, ColorBox, Input, NumberInput, Slider, Stack, Table, Tabs } from "tgui-core/components";
 import { round } from "tgui-core/math";
-import { BoxProps } from "../../components/ComponentProps";
+import { BoxProps } from "../../components";
 
 // full, 20-value RGBA matrix with constants
 export type ByondColorMatrixRGBAC = [
