@@ -292,7 +292,7 @@ const SpecimenDisplay = (_, context) => {
 /** Virus Tab display - changes the tab for virus info
  * Whenever the tab changes, the virus info is updated
  */
-const VirusTabs = (props: TabsProps, context) => {
+const VirusTabs = (props: TabsProps) => {
   const { data } = useBackend<PandemicContext>();
   const { tab, tabHandler } = props;
   const { viruses = [] } = data;
@@ -337,7 +337,7 @@ const VirusDisplay = (props: VirusDisplayProps) => {
 };
 
 /** Displays the description, name and other info for the virus. */
-const VirusTextInfo = (props: VirusInfoProps, context) => {
+const VirusTextInfo = (props: VirusInfoProps) => {
   const { act } = useBackend<PandemicContext>();
   const { virus } = props;
 

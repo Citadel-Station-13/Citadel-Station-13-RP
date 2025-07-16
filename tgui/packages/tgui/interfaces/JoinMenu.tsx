@@ -123,7 +123,7 @@ export const JoinMenu = (props) => {
   );
 };
 
-const JoinFaction = (props: JoinFactionProps, context) => {
+const JoinFaction = (props: JoinFactionProps) => {
   const { act } = useBackend(context);
   const ordered = Object.keys(props.departments).sort((a, b) => {
     const A = a.toLowerCase();

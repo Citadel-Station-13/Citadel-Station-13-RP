@@ -233,7 +233,7 @@ type CraftingListProps = {
   readonly compact?: boolean;
 };
 
-const CraftingList = (props: CraftingListProps, context) => {
+const CraftingList = (props: CraftingListProps) => {
   const { recipes = [], compact } = props;
   const { act } = useBackend<RawData>();
 
@@ -284,7 +284,7 @@ const CraftingList = (props: CraftingListProps, context) => {
   )) as any;
 };
 
-const CompactCraftingList = (props: CraftingListProps, context) => {
+const CompactCraftingList = (props: CraftingListProps) => {
   const { recipes = [] } = props;
   const { act } = useBackend<RawData>();
 

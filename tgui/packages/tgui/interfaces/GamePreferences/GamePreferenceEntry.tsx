@@ -4,7 +4,7 @@
  */
 import { BooleanLike } from "common/react";
 import { InfernoNode } from "inferno";
-import { Button, Collapsible, ColorBox, Dropdown, Input, NumberInput, Section, Stack, Tooltip } from "../../components";
+import { Button, Collapsible, ColorBox, Dropdown, Input, NumberInput, Section, Stack, Tooltip } from "tgui-core/components";
 import { ByondAtomColor, ByondColorString, ColorPicker } from "../common/Color";
 
 interface GamePreferenceEntryProps {
@@ -63,7 +63,7 @@ interface PreferenceSimpleColorEntrySchema extends PreferenceBaseEntrySchema {
   defaultValue: ByondAtomColor;
 }
 
-export const GamePreferenceEntry = (props: GamePreferenceEntryProps, context) => {
+export const GamePreferenceEntry = (props: GamePreferenceEntryProps) => {
   let innerContent: InfernoNode = null;
   switch (props.schema.type) {
     case 'number':
@@ -143,7 +143,7 @@ const ToggleEntry = (props: {
   readonly setValue: (val: BooleanLike) => void;
 }, context) => {
   return (
-    <Button.Checkbox fluid color="transparent" content={props.value? props.schema.enabledName : props.schema.disabledName}
+    <Button.Checkbox fluid color="transparent" content={props.value ? props.schema.enabledName : props.schema.disabledName}
       checked={props.value} onClick={() => props.setValue(!props.value)} />
   );
 };
@@ -166,7 +166,7 @@ const SimpleColorEntry = (props: {
   readonly setValue: (val: ByondColorString) => void;
 }, context) => {
   return (
-    <Collapsible color="transparent" title={props.value? (
+    <Collapsible color="transparent" title={props.value ? (
       <>
         <ColorBox color={props.value} /> {props.value}
       </>

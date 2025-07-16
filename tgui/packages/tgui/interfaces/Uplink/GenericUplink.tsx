@@ -1,6 +1,6 @@
 import { BooleanLike } from 'common/react';
 import { useLocalState, useSharedState } from '../../backend';
-import { Box, Button, Input, Section, Tabs, NoticeBox, Stack } from '../../components';
+import { Box, Button, Input, Section, Tabs, NoticeBox, Stack } from 'tgui-core/components';
 
 type GenericUplinkProps = {
   readonly currency?: string | JSX.Element,
@@ -10,7 +10,7 @@ type GenericUplinkProps = {
   readonly handleBuy: (item: Item) => void;
 }
 
-export const GenericUplink = (props: GenericUplinkProps, context) => {
+export const GenericUplink = (props: GenericUplinkProps) => {
   const {
     currency = 'cr',
     categories,
@@ -105,7 +105,7 @@ export type ItemListProps = {
   readonly handleBuy: (item: Item) => void;
 }
 
-const ItemList = (props: ItemListProps, context: any) => {
+const ItemList = (props: ItemListProps: any) => {
   const {
     compactMode,
     items,
@@ -124,7 +124,7 @@ const ItemList = (props: ItemListProps, context: any) => {
                 disabled={item.disabled}
                 onClick={(e) => handleBuy(item)} />
             )}>
-            {compactMode? null : item.desc}
+            {compactMode ? null : item.desc}
           </Section>
         </Stack.Item>
       ))}

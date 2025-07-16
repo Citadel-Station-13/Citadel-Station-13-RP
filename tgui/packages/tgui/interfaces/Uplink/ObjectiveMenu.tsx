@@ -1,6 +1,6 @@
 import { BooleanLike, classes } from "common/react";
 import { Component } from "inferno";
-import { Section, Stack, Box, Button, Flex, Tooltip, NoticeBox, Dimmer, Icon } from "../../components";
+import { Section, Stack, Box, Button, Flex, Tooltip, NoticeBox, Dimmer, Icon } from "tgui-core/components";
 import { calculateProgression, getReputation, Rank } from "./calculateReputationLevel";
 import { ObjectiveState } from "./constants";
 
@@ -39,7 +39,7 @@ type ObjectiveMenuProps = {
 }
 
 type ObjectiveMenuState = {
-  draggingObjective: Objective|null;
+  draggingObjective: Objective | null;
   objectiveX: number;
   objectiveY: number;
 }
@@ -144,44 +144,44 @@ export class ObjectiveMenu
               <Stack>
                 {Array.apply(null,
                   Array(maximumActiveObjectives)).map((_, index) => {
-                  if (index >= activeObjectives.length) {
+                    if (index >= activeObjectives.length) {
+                      return (
+                        <Stack.Item
+                          key={index}
+                          minHeight="100px"
+                          grow
+                        >
+                          <Box
+                            color="label"
+                            className="UplinkObjective__EmptyObjective"
+                            onMouseUp={this.handleObjectiveAdded}
+                          >
+                            <Stack textAlign="center" fill align="center">
+                              <Stack.Item textAlign="center" width="100%">
+                                Empty Objective, drop objectives here to take them
+                              </Stack.Item>
+                            </Stack>
+                          </Box>
+                        </Stack.Item>
+                      );
+                    }
+                    const objective = activeObjectives[index];
                     return (
                       <Stack.Item
                         key={index}
-                        minHeight="100px"
                         grow
                       >
-                        <Box
-                          color="label"
-                          className="UplinkObjective__EmptyObjective"
-                          onMouseUp={this.handleObjectiveAdded}
-                        >
-                          <Stack textAlign="center" fill align="center">
-                            <Stack.Item textAlign="center" width="100%">
-                              Empty Objective, drop objectives here to take them
-                            </Stack.Item>
-                          </Stack>
-                        </Box>
+                        {ObjectiveFunction(
+                          objective,
+                          true,
+                          handleObjectiveAction,
+                          handleObjectiveCompleted,
+                          handleObjectiveAbort,
+                          true,
+                        )}
                       </Stack.Item>
                     );
-                  }
-                  const objective = activeObjectives[index];
-                  return (
-                    <Stack.Item
-                      key={index}
-                      grow
-                    >
-                      {ObjectiveFunction(
-                        objective,
-                        true,
-                        handleObjectiveAction,
-                        handleObjectiveCompleted,
-                        handleObjectiveAbort,
-                        true,
-                      )}
-                    </Stack.Item>
-                  );
-                })}
+                  })}
               </Stack>
             </Section>
           </Stack.Item>
@@ -206,23 +206,23 @@ export class ObjectiveMenu
                       }}
                     >
                       {objective.id !== draggingObjective?.id
-                      && ObjectiveFunction(
-                        objective,
-                        false,
-                        undefined,
-                        undefined,
-                        undefined,
-                        true,
-                      ) || (
-                        <Box
-                          style={{
-                            "border": "2px dashed black",
-                          }}
-                          width="100%"
-                          height="100%"
-                          minHeight="100px"
-                        />
-                      )}
+                        && ObjectiveFunction(
+                          objective,
+                          false,
+                          undefined,
+                          undefined,
+                          undefined,
+                          true,
+                        ) || (
+                          <Box
+                            style={{
+                              "border": "2px dashed black",
+                            }}
+                            width="100%"
+                            height="100%"
+                            minHeight="100px"
+                          />
+                        )}
                     </Flex.Item>
                   );
                 })}
@@ -239,32 +239,32 @@ export class ObjectiveMenu
                     </Box>
                   </Dimmer>
                 )
-                || potentialObjectives.length < maximumPotentialObjectives && (
-                  <Flex.Item
-                    basis="100%"
-                    style={{
-                      // "background-color": "rgba(0, 0, 0, 0.5)",
-                    }}
-                    mb={1}
-                    mx="0.5%"
-                    minHeight="100px"
-                  >
-                    <Stack
-                      align="center"
-                      height="100%"
-                      width="100%"
-                      textAlign="center"
+                  || potentialObjectives.length < maximumPotentialObjectives && (
+                    <Flex.Item
+                      basis="100%"
+                      style={{
+                        // "background-color": "rgba(0, 0, 0, 0.5)",
+                      }}
+                      mb={1}
+                      mx="0.5%"
+                      minHeight="100px"
                     >
-                      <Stack.Item width="100%">
-                        <Button
-                          content="Request More Objectives"
-                          fontSize={2}
-                          onClick={handleRequestObjectives}
-                        />
-                      </Stack.Item>
-                    </Stack>
-                  </Flex.Item>
-                )}
+                      <Stack
+                        align="center"
+                        height="100%"
+                        width="100%"
+                        textAlign="center"
+                      >
+                        <Stack.Item width="100%">
+                          <Button
+                            content="Request More Objectives"
+                            fontSize={2}
+                            onClick={handleRequestObjectives}
+                          />
+                        </Stack.Item>
+                      </Stack>
+                    </Flex.Item>
+                  )}
               </Flex>
             </Section>
           </Stack.Item>
@@ -365,7 +365,7 @@ type ObjectiveElementProps = {
   readonly handleAbort: (event: MouseEvent) => void;
 }
 
-const ObjectiveElement = (props: ObjectiveElementProps, context) => {
+const ObjectiveElement = (props: ObjectiveElementProps) => {
   const {
     name,
     reputation,
@@ -405,11 +405,11 @@ const ObjectiveElement = (props: ObjectiveElementProps, context) => {
 
 
   const progressionDiff = Math.round(
-    (1 - (progressionReward / originalProgression))*1000
-  )/10;
+    (1 - (progressionReward / originalProgression)) * 1000
+  ) / 10;
 
   return (
-    <Flex height={grow? "100%" : undefined} direction="column">
+    <Flex height={grow ? "100%" : undefined} direction="column">
       <Flex.Item grow={grow} basis="content">
         <Box
           className={classes([
@@ -421,7 +421,7 @@ const ObjectiveElement = (props: ObjectiveElementProps, context) => {
         >
           <Stack>
             <Stack.Item grow={1}>
-              {name} {!objectiveFinished? null : `- ${objectiveCompletionText}`}
+              {name} {!objectiveFinished ? null : `- ${objectiveCompletionText}`}
             </Stack.Item>
             {canAbort && (
               <Stack.Item>
@@ -471,7 +471,7 @@ const ObjectiveElement = (props: ObjectiveElementProps, context) => {
                     "border": "2px solid rgba(0, 0, 0, 0.5)",
                     "border-left": "none",
                     "border-right": "none",
-                    "border-bottom": objectiveFinished? "none" : undefined,
+                    "border-bottom": objectiveFinished ? "none" : undefined,
                   }}
                   className={reputation.gradient}
                   py={0.5}
@@ -489,30 +489,30 @@ const ObjectiveElement = (props: ObjectiveElementProps, context) => {
                             <Box
                               mr={1}
                               ml={1}
-                              color={progressionDiff > 0? progressionDiff > 25? "red" : "orange" : "green"}
+                              color={progressionDiff > 0 ? progressionDiff > 25 ? "red" : "orange" : "green"}
                               as="span"
                             >
                               {Math.abs(progressionDiff)}%
                             </Box>
                             {progressionDiff > 0 ? "less" : "more"} reputation from this objective.
-                            This is because your reputation is {progressionDiff > 0? "ahead " : "behind "}
+                            This is because your reputation is {progressionDiff > 0 ? "ahead " : "behind "}
                             where it normally should be at.
                           </Box>
                         )}
                       >
                         <Box
                           ml={1}
-                          color={progressionDiff > 0? progressionDiff > 35? "red" : "orange" : "green"}
+                          color={progressionDiff > 0 ? progressionDiff > 35 ? "red" : "orange" : "green"}
                           as="span"
                         >
-                          ({progressionDiff > 0? "-" : "+"}{Math.abs(progressionDiff)}%)
+                          ({progressionDiff > 0 ? "-" : "+"}{Math.abs(progressionDiff)}%)
                         </Box>
                       </Tooltip>
                     )}
                   </Box>
                 </Box>
               </Stack>
-              {objectiveFinished? (
+              {objectiveFinished ? (
                 <Box
                   inline
                   className={reputation.gradient}
@@ -539,7 +539,7 @@ const ObjectiveElement = (props: ObjectiveElementProps, context) => {
                   />
                   <Button
                     onClick={handleCompletion}
-                    color={objectiveFailed? "bad" : "good"}
+                    color={objectiveFailed ? "bad" : "good"}
                     style={{
                       "border": "1px solid rgba(0, 0, 0, 0.65)",
                     }}

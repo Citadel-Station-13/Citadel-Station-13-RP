@@ -155,7 +155,7 @@ interface TelecommsSelectedServerProps {
   readonly universal_translate: BooleanLike;
 }
 
-const TelecommsSelectedServer = (props: TelecommsSelectedServerProps, context) => {
+const TelecommsSelectedServer = (props: TelecommsSelectedServerProps) => {
   const { act, data } = useBackend<TelecommsLogBrowserContext>();
 
   return (

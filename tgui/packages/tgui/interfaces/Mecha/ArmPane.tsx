@@ -3,7 +3,7 @@ import { useBackend } from '../../backend';
 import { Button, LabeledList, Stack, Section, ProgressBar } from 'tgui-core/components';
 import { MechWeapon, OperatorData } from './data';
 
-export const ArmPane = (props: { readonly weapon: MechWeapon }, context) => {
+export const ArmPane = (props: { readonly weapon: MechWeapon }) => {
   const { act, data } = useBackend<OperatorData>();
   const {
     name,
@@ -70,7 +70,7 @@ export const ArmPane = (props: { readonly weapon: MechWeapon }, context) => {
   );
 };
 
-const BallisticStats = (props: { readonly weapon: MechWeapon }, context) => {
+const BallisticStats = (props: { readonly weapon: MechWeapon }) => {
   const { act, data } = useBackend<OperatorData>();
   const {
     isballisticweapon,
@@ -120,7 +120,7 @@ const MECHA_SNOWFLAKE_ID_SYRINGE = "syringe_snowflake";
 const MECHA_SNOWFLAKE_ID_MODE = "mode_snowflake";
 
 // Handles all the snowflake buttons and whatever
-const Snowflake = (props: { readonly weapon: MechWeapon }, context) => {
+const Snowflake = (props: { readonly weapon: MechWeapon }) => {
   const {
     snowflake,
   } = props.weapon;
@@ -136,7 +136,7 @@ const Snowflake = (props: { readonly weapon: MechWeapon }, context) => {
   }
 };
 
-const SnowflakeSleeper = (props: { readonly weapon: MechWeapon }, context) => {
+const SnowflakeSleeper = (props: { readonly weapon: MechWeapon }) => {
   const { act, data } = useBackend<OperatorData>();
   const {
     patient,
@@ -181,7 +181,7 @@ const SnowflakeSleeper = (props: { readonly weapon: MechWeapon }, context) => {
   }
 };
 
-const SnowflakeSyringe = (props: { readonly weapon: MechWeapon }, context) => {
+const SnowflakeSyringe = (props: { readonly weapon: MechWeapon }) => {
   const { act, data } = useBackend<OperatorData>();
   const {
     mode,
@@ -220,7 +220,7 @@ const SnowflakeSyringe = (props: { readonly weapon: MechWeapon }, context) => {
   );
 };
 
-const SnowflakeExtinguisher = (props: { readonly weapon: MechWeapon }, context) => {
+const SnowflakeExtinguisher = (props: { readonly weapon: MechWeapon }) => {
   const {
     reagents,
     total_reagents,
@@ -236,7 +236,7 @@ const SnowflakeExtinguisher = (props: { readonly weapon: MechWeapon }, context) 
   );
 };
 
-const SnowflakeMode = (props: { readonly weapon: MechWeapon }, context) => {
+const SnowflakeMode = (props: { readonly weapon: MechWeapon }) => {
   const { act, data } = useBackend<OperatorData>();
   const {
     mode,

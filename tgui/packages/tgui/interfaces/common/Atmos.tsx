@@ -189,7 +189,7 @@ interface AtmosTankSlotProps extends SectionProps {
   readonly tank: AtmosTank | null;
 }
 
-export const AtmosTankSlot = (props: AtmosTankSlotProps, context) => {
+export const AtmosTankSlot = (props: AtmosTankSlotProps) => {
   return (
     <Section title="Tank" {...props}
       buttons={

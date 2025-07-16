@@ -150,7 +150,7 @@ interface DynamicEntryProps {
   readonly pick: (val: any) => void;
 }
 
-const DynamicEntry = (props: DynamicEntryProps, context) => {
+const DynamicEntry = (props: DynamicEntryProps) => {
   switch (props.entry.type) {
     case UIDynamicInputType.ListSingle:
       return (
@@ -176,7 +176,7 @@ interface DynamicEntryNumberProps extends DynamicEntryProps {
   current: NumberOption;
 }
 
-const DynamicEntryNumber = (props: DynamicEntryNumberProps, context) => {
+const DynamicEntryNumber = (props: DynamicEntryNumberProps) => {
   let current = props.current === undefined ? props.entry.default === null ? 0 : props.entry.default : props.current;
   return (
     <NumberInput value={current} minValue={props.entry.constraints[0]} maxValue={props.entry.constraints[1]}
@@ -191,7 +191,7 @@ interface DynamicEntryStringProps extends DynamicEntryProps {
   current: StringOption;
 }
 
-const DynamicEntryString = (props: DynamicEntryStringProps, context) => {
+const DynamicEntryString = (props: DynamicEntryStringProps) => {
   let current = props.current === undefined ? props.entry.default === null ? "" : props.entry.default : props.current;
   return (
     <Input value={current} maxLength={props.entry.constraints[0]}
@@ -206,7 +206,7 @@ interface DynamicEntryPickProps extends DynamicEntryProps {
   current: ListOption;
 }
 
-const DynamicEntryPick = (props: DynamicEntryPickProps, context) => {
+const DynamicEntryPick = (props: DynamicEntryPickProps) => {
   let current = props.current === undefined ? (
     props.entry.constraints.length > 0 ? props.entry.constraints[0] : ""
   ) : props.current;
@@ -223,7 +223,7 @@ interface DynamicEntryToggleProps extends DynamicEntryProps {
   current: ToggleOption;
 }
 
-const DynamicEntryToggle = (props: DynamicEntryToggleProps, context) => {
+const DynamicEntryToggle = (props: DynamicEntryToggleProps) => {
   let current = props.current === undefined ? !!props.entry.default : props.current;
   return (
     <Button.Checkbox

@@ -127,7 +127,7 @@ type IconButtonParams = {
   readonly selected: boolean;
 };
 
-const IconButton = (props: IconButtonParams, context) => {
+const IconButton = (props: IconButtonParams) => {
   const { act, data } = useBackend<DecalPainterData>();
 
   const generateIconKey = (decal: string, dir: number, color: string) =>

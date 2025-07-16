@@ -13,7 +13,7 @@ interface AtmosTrinaryFilterControlProps extends SectionProps {
   readonly setFiltering?: (target: AtmosGasGroups | AtmosGasID) => void;
 }
 
-export const AtmosTrinaryFilterControl = (props: AtmosTrinaryFilterControlProps, context) => {
+export const AtmosTrinaryFilterControl = (props: AtmosTrinaryFilterControlProps) => {
   return (
     <Section title="Filter" {...props}>
       <AtmosFilterList

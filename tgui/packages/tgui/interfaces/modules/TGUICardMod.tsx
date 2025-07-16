@@ -41,7 +41,7 @@ interface CardModProps extends ModuleProps {
   // nothing
 }
 
-export const TGUICardMod = (props: CardModProps, context) => {
+export const TGUICardMod = (props: CardModProps) => {
   const { data, act } = useModule<CardModContext>(context);
   const [mode, setMode] = useState<number>(0);
   const [department, setDepartment] = useState<string | null>(null);

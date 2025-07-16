@@ -24,7 +24,7 @@ export interface AtmosComponentControlProps extends SectionProps {
   readonly additionalListItems?: InfernoNode;
 }
 
-export const AtmosComponentControl = (props: AtmosComponentControlProps, context) => {
+export const AtmosComponentControl = (props: AtmosComponentControlProps) => {
   return (
     <Section title="Flow" {...props}>
       <LabeledList>
@@ -75,7 +75,7 @@ export interface AtmosComponentProps extends ComponentProps {
   readonly title: string;
 }
 
-export const AtmosComponent = (props: AtmosComponentProps, context) => {
+export const AtmosComponent = (props: AtmosComponentProps) => {
   const { data, act } = useBackend<AtmosComponentData>();
   return (
     <Window

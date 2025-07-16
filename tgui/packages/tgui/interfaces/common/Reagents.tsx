@@ -27,7 +27,7 @@ interface ReagentContentsEntry {
   amount: number;
 }
 
-export const ReagentContents = (props: ReagentContentsProps, context) => {
+export const ReagentContents = (props: ReagentContentsProps) => {
   return (
     <Section {...props}>
       <LabeledList>

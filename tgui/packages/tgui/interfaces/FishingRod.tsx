@@ -24,7 +24,7 @@ type FishingSlotProps = {
   readonly current_item_icon: string | null;
 };
 
-const FishingRodSlot = (props: FishingSlotProps, context) => {
+const FishingRodSlot = (props: FishingSlotProps) => {
   const { act } = useBackend(context);
 
   const icon_wrapper = (icon) => (

@@ -27,7 +27,7 @@ interface AtmosPortableControlProps {
   readonly additionalListItems?: InfernoNode;
 }
 
-export const AtmosPortableControl = (props: AtmosPortableControlProps, context) => {
+export const AtmosPortableControl = (props: AtmosPortableControlProps) => {
   return (
     <>
       <Section title="Status"
@@ -136,7 +136,7 @@ interface AtmosPortableProps extends ComponentProps {
   readonly additionalListItems?: InfernoNode;
 }
 
-export const AtmosPortable = (props: AtmosPortableProps, context) => {
+export const AtmosPortable = (props: AtmosPortableProps) => {
   const { data, act } = useBackend<AtmosPortableData>();
   let extraHeight = 0;
   if (data.useCell) {

@@ -16,7 +16,7 @@ interface AtmosTrinaryMolarFilterControlProps extends SectionProps {
   readonly toggleInvert: (on: boolean) => void;
 }
 
-export const AtmosTrinaryMolarFilterControl = (props: AtmosTrinaryMolarFilterControlProps, context) => {
+export const AtmosTrinaryMolarFilterControl = (props: AtmosTrinaryMolarFilterControlProps) => {
   return (
     <Section title="Filter" {...props}>
       <LabeledList>

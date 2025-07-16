@@ -46,7 +46,7 @@ interface MaterialStorageProps extends MaterialRenderProps {
   readonly eject: (string, number) => void; // called with (id, sheets).
 }
 
-export const MaterialStorage = (props: MaterialStorageProps, context) => {
+export const MaterialStorage = (props: MaterialStorageProps) => {
   return (
     <MaterialRender
       {...props}
@@ -77,7 +77,7 @@ interface MaterialRenderProps extends SectionProps {
   readonly materialScale?: number;
 }
 
-export const MaterialRender = (props: MaterialRenderProps, context) => {
+export const MaterialRender = (props: MaterialRenderProps) => {
   const [fancy, setFancy] = useSharedState(context, 'materialsFancy', true);
   const isEmpty = Object.keys(props.materialList).length === 0;
 

@@ -73,7 +73,7 @@ type LoadoutProps = {
   readonly clearSlotAct?: (index: number) => void;
 } & SectionProps;
 
-export const CharacterLoadout = (props: LoadoutProps, context) => {
+export const CharacterLoadout = (props: LoadoutProps) => {
   // todo: get rid of 'context' requirement.
   let [loadoutCategory, setLoadoutCategory] = useState<string | null>(null);
   let [loadoutSubcategory, setLoadoutSubcategory] = useState<string | null>(null);

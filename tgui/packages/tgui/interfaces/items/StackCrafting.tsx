@@ -23,7 +23,7 @@ interface StackCraftingEntryProps {
   readonly stackAmt: number;
 }
 
-const StackCraftingEntry = (props: StackCraftingEntryProps, context) => {
+const StackCraftingEntry = (props: StackCraftingEntryProps) => {
   const [amt, setAmt] = useState<number>(props.recipe.resultAmt);
   return (
     <Stack>

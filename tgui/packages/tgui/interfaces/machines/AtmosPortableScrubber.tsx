@@ -15,7 +15,7 @@ interface AtmosPortableScrubberControlProps extends SectionProps {
   readonly toggleGroup?: (group) => void;
 }
 
-export const AtmosPortableScrubberControl = (props: AtmosPortableScrubberControlProps, context) => {
+export const AtmosPortableScrubberControl = (props: AtmosPortableScrubberControlProps) => {
   return (
     <Section title="Scrubbing" {...props}>
       <AtmosFilterList

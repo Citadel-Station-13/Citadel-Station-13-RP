@@ -355,7 +355,7 @@ type ObjectiveBoxProps = {
   readonly objective: Objective
 }
 
-const ObjectiveBox = (props: ObjectiveBoxProps, context) => {
+const ObjectiveBox = (props: ObjectiveBoxProps) => {
   const { objective } = props;
   let width = `${(objective.progression_maximum / sizeLimit)
     * (window.innerWidth)}px`;

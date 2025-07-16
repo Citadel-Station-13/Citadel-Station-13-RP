@@ -1,4 +1,4 @@
-import { LabeledList, Box, Button } from '../../components';
+import { LabeledList, Box, Button } from 'tgui-core/components';
 
 export type Gasmix = {
   name?: string;
@@ -22,7 +22,7 @@ type GasmixParserProps = {
   readonly detailedReactions?: boolean;
 };
 
-export const GasmixParser = (props: GasmixParserProps, context) => {
+export const GasmixParser = (props: GasmixParserProps) => {
   const {
     gasmix,
     gasesOnClick,
@@ -104,14 +104,14 @@ export const GasmixParser = (props: GasmixParserProps, context) => {
           {reactions.length
             ? reactions.map((reaction) =>
               reactionOnClick ? (
-              // eslint-disable-next-line react/jsx-key
+                // eslint-disable-next-line react/jsx-key
                 <Box mb="0.5em">
                   <Button
                     content={reaction[1]}
                     onClick={() => reactionOnClick(reaction[0])}
                   />
                 </Box>
-              // eslint-disable-next-line react/jsx-key
+                // eslint-disable-next-line react/jsx-key
               ) : (<div>{reaction[1]}</div>)
             )
             : 'No reactions detected'}

@@ -59,7 +59,7 @@ type OrbitedButtonProps = {
   readonly thing: OrbitList,
 }
 
-const BasicSection = (props: BasicSectionProps, context: any) => {
+const BasicSection = (props: BasicSectionProps: any) => {
   const { act } = useBackend(context);
   const { searchText, source, title } = props;
   const things = source.filter(searchFor(searchText));
@@ -81,7 +81,7 @@ const BasicSection = (props: BasicSectionProps, context: any) => {
   );
 };
 
-const OrbitedButton = (props: OrbitedButtonProps, context: any) => {
+const OrbitedButton = (props: OrbitedButtonProps: any) => {
   const { act } = useBackend(context);
   const { color, thing } = props;
 
@@ -96,7 +96,7 @@ const OrbitedButton = (props: OrbitedButtonProps, context: any) => {
   );
 };
 
-export const Orbit = (props: any, context: any) => {
+export const Orbit = (props: any: any) => {
   const { act, data } = useBackend<OrbitData>();
   const {
     players,

@@ -94,7 +94,7 @@ const HOTKEY_MODE_DESCRIPTION = (
   </>
 );
 
-export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenProps, context) => {
+export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenProps) => {
   // keybinds are naturally sorted by compile order thanks to typesof()
   // let's not unnecessarily smash that.
   const sortedByCategory = preprocessKeybinds(props.keybinds);

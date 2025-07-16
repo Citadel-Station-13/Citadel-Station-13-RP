@@ -63,7 +63,7 @@ export const generateDynamicButton = (name, mode, actFunction) => {
   }
 };
 
-export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
+export const TGUILatheControl = (props: TGUILatheControlProps) => {
   const { data, act } = useModule<TGUILatheControlData>(context);
   const [category, setCategory] = useLocalState<string>(
     context,
@@ -324,7 +324,7 @@ interface LatheQueuedProps {
   readonly index: number;
 }
 
-const LatheQueued = (props: LatheQueuedProps, context) => {
+const LatheQueued = (props: LatheQueuedProps) => {
   let { data, act } = useModule<TGUILatheControlData>(context);
   let progressRender;
   if (props.index === 1 && data.queueActive && props.design !== undefined) {
@@ -418,7 +418,7 @@ const areMaterialsChosen = (mats: Record<string, number>, chosen: Record<string,
   return Object.keys(mats).every((mat) => (mat in chosen));
 };
 
-const LatheDesign = (props: LatheDesignProps, context) => {
+const LatheDesign = (props: LatheDesignProps) => {
   const { data, act, moduleID } = useModule<TGUILatheControlData>(context);
 
   // materials: key = material id

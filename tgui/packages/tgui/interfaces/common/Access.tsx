@@ -74,7 +74,7 @@ const diffMap = {
   },
 };
 
-export const AccessListMod = (props: AccessListModProps, context) => {
+export const AccessListMod = (props: AccessListModProps) => {
   const [selectedCategory, setSelectedCategory] = useState<string | undefined>(undefined);
   let categories: string[] = [];
   let lookup = new Map<number, Access>();
@@ -185,7 +185,7 @@ export const AccessListMod = (props: AccessListModProps, context) => {
   );
 };
 
-export const AccessListAuth = (props: AccessListAuthProps, context) => {
+export const AccessListAuth = (props: AccessListAuthProps) => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   let categories: string[] = [];
   let lookup = new Map<number, Access>();
@@ -296,7 +296,7 @@ export const AccessListAuth = (props: AccessListAuthProps, context) => {
   );
 };
 
-export const AccessListSelect = (props: AccessListSelectProps, context) => {
+export const AccessListSelect = (props: AccessListSelectProps) => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   let categories: string[] = [];
   let effectiveAccess = props.accessShown === undefined ? props.access : props.access.filter(
