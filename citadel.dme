@@ -2241,6 +2241,7 @@
 #include "code\game\turfs\simulated\wall\wall.dm"
 #include "code\game\turfs\simulated\wall\wall_attacks.dm"
 #include "code\game\turfs\simulated\wall\wall_icon.dm"
+#include "code\game\turfs\simulated\wall\subtypes\rt_medieval.dm"
 #include "code\game\turfs\simulated\wall_types\dungeon.dm"
 #include "code\game\turfs\simulated\wall_types\fancy_shuttle.dm"
 #include "code\game\turfs\simulated\wall_types\material.dm"
