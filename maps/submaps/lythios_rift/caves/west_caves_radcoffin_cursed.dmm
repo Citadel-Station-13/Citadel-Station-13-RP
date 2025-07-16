@@ -1,0 +1,66 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/template_noop,
+/area/space)
+"j" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/map_effect/radiation_emitter,
+/obj/structure/closet/crate,
+/obj/item/fuelrod/plutonium,
+/obj/item/fuelrod/plutonium,
+/obj/item/fuelrod/plutonium,
+/obj/item/fuelrod/uranium,
+/obj/item/fuelrod/uranium,
+/obj/item/fuelrod/uranium,
+/obj/random/ammo_all,
+/obj/random/medical/pillbottle,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/random,
+/mob/living/simple_mob/construct/nuclear/gammawraith,
+/turf/simulated/floor/lythios43c/indoors,
+/area/space)
+"J" = (
+/turf/simulated/wall/lead,
+/area/space)
+"S" = (
+/obj/structure/sign/signnew/radiation,
+/turf/simulated/wall/lead,
+/area/space)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+S
+J
+S
+a
+"}
+(3,1,1) = {"
+a
+J
+j
+J
+a
+"}
+(4,1,1) = {"
+a
+S
+J
+S
+a
+"}
+(5,1,1) = {"
+a
+a
+a
+a
+a
+"}

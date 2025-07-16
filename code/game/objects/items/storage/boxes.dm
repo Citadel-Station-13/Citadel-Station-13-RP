@@ -108,7 +108,7 @@
 	name = "box of syringe gun cartridges"
 	desc = "A box full of compressed gas cartridges."
 	icon_state = "syringe"
-	starts_with = list(/obj/item/syringe_cartridge = 7)
+	starts_with = list(/obj/item/ammo_casing/syringe = 7)
 
 /obj/item/storage/box/beakers
 	name = "box of beakers"
