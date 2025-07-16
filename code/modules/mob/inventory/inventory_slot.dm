@@ -218,7 +218,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
  * @return raw html
  */
 /datum/inventory_slot/proc/examinate(mob/wearer, obj/item/in_slot, datum/event_args/examine/examine, examine_for, examine_from)
-	#warn item gets a say
+	var/html_out = in_slot.examine_encoding_as_worn(examine, EXAMINE_FOR_NAME | EXAMINE_FOR_ATTACHED | EXAMINE_FOR_RENDER, EXAMINE_FROM_ATTACHED)
+	if(isnull(html_out))
+		return null
 	return "[wearer.p_Theyre()] [display_verb] \a [in_slot] [display_preposition] [wearer.p_their()] [display_name]."
 
 //* Rendering *//

@@ -79,7 +79,7 @@
 			var/encoded = held_item.examine_encoding_as_worn(examine, examine_for, examine_from)
 			var/hand_index = held_item.inv_slot_or_index
 			var/hand_str = (hand_index % 2)? "left hand[hand_index > 2? " #[round(hand_index / 2)]" : ""]" : "right hand[hand_index > 2? " #[round(hand_index / 2)]" : ""]"
-			if(encoded)
+			if(!isnull(encoded))
 				output.out_worn_descriptors += "[gender_datum_visible.He] [gender_datum_visible.is] \
 				holding [held_item.gender == PLURAL ? "some" : "a"] [held_item.examine_encoding_as_worn(examine, examine_for, examine_from)] \
 				in [gender_datum_visible.his] [hand_str]"

@@ -15,24 +15,28 @@
 
 /**
  * * Also called if held.
- * @return html, rendered as "[they] are [verb] [OUTPUT] [preposition] their [slot]"
+ * @return /datum/event_args/examine_output
  */
-/obj/item/proc/examine_encoding_as_worn(datum/event_args/examine/examine, examine_for, examine_from)
-	var/datum/event_args/examine_output/output = examine_new(examine, examine_for, examine_from)
-	#warn impl; ENCODE_ATOM_HREFEXAMINE_NAME
+/obj/item/proc/examine_as_worn(datum/event_args/examine/examine, examine_for, examine_from)
+	if(item_flags & (ITEM_ABSTRACT | (isnum(inv_slot_or_index) ? NONE : ITEM_FLAG_HIDE_WORN_EXAMINE)))
+		return null
+	var/datum/event_args/examine_output/output = examine_new(examine, examine_for | EXAMINE_FOR_NAME, EXAMINE_FROM_ATTACHED)
 
-	// if(shoes && !(skip_gear & EXAMINE_SKIPGEAR_SHOES) && shoes.show_examine)
-	// 	if(shoes.blood_DNA)
-	// 		. += SPAN_WARNING("[icon2html(shoes, user)] [T.He] [T.is] wearing \
-	// [shoes.gender == PLURAL ? "some" : "a"] [(shoes.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained
-	// [ENCODE_ATOM_HREFEXAMINE(shoes)] on [T.his] feet!")
-	// 	else
-	// 		. += SPAN_INFO("[icon2html(shoes, user)] [T.He] [T.is] wearing \a [ENCODE_ATOM_HREFEXAMINE(shoes)] on [T.his] feet.")
+	var/use_name = output.entity_name
+	var/use_appearance = output.entity_appearance
+	#warn render
+
+	if(blood_DNA)
+		// todo: this is shit, do it better
+		var/blood_render = blood_color == SYNTH_BLOOD_COLOUR ? "<i><font color='grey'>oil-stained</font></i>" : "<i><font color='red'>blood-staioned</font></i>"
+		return "a [blood_render] [ENCODE_ATOM_HREFEXAMINE_NAME(src, "[use_name]")]"
+	else
+		return ENCODE_ATOM_HREFEXAMINE_NAME(src, "\a [use_name]")
 
 /**
  * @return html
  */
 /obj/item/proc/examine_encoding_as_embed(datum/event_args/examine/examine, examine_for, examine_from)
-	var/datum/event_args/examine_output/output = examine_new(examine, examine_for, examine_from)
-	#warn impl
+	var/datum/event_args/examine_output/output = examine_new(examine, EXAMINE_FOR_NAME | EXAMINE_FOR_RENDER, EXAMINE_FROM_ATTACHED)
+	return ENCODE_ATOM_HREFEXAMINE_NAME(src, "\a [src]")
 
