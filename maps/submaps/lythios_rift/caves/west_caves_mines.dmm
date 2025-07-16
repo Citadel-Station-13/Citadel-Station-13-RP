@@ -118,10 +118,10 @@
 /area/rift/surfacebase/outside/west_caves)
 "x" = (
 /obj/structure/closet/crate/miningcar,
-/obj/item/grenade/explosive/ied/tyrmalin,
+/obj/item/grenade/simple/explosive/ied/tyrmalin,
 /obj/random/multiple/ores,
-/obj/item/grenade/explosive/ied/tyrmalin,
-/obj/item/grenade/explosive/ied/tyrmalin,
+/obj/item/grenade/simple/explosive/ied/tyrmalin,
+/obj/item/grenade/simple/explosive/ied/tyrmalin,
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west_caves)
 "y" = (
