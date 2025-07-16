@@ -591,3 +591,95 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/plating)
 	name = "snowy plating"
 	icon_state = "snowyplayingdrift"
 	initial_flooring = /datum/prototype/flooring/snow/plating/drift
+
+
+// Roguetown Floors
+CREATE_STANDARD_TURFS(/turf/simulated/floor/roguetown/wood)
+	name = "wooden floorboards"
+	icon = 'icons/turf/flooring/roguetown/wood.dmi'
+	icon_state = "wooden_floor"
+	initial_flooring = /datum/prototype/flooring/roguetown/wood
+
+
+CREATE_STANDARD_TURFS(/turf/simulated/floor/roguetown/dark_wood)
+	name = "dark wooden floorboards"
+	icon = 'icons/turf/flooring/roguetown/wood.dmi'
+	icon_state = "wooden_floor2"
+	initial_flooring = /datum/prototype/flooring/roguetown/dark_wood
+
+
+CREATE_STANDARD_TURFS(/turf/simulated/floor/roguetown/cobblestone)
+	name = "cobblestone"
+	icon = 'icons/turf/flooring/roguetown/cobble.dmi'
+	icon_state = "cobblestone1"
+	initial_flooring = /datum/prototype/flooring/roguetown/cobblestone
+
+
+CREATE_STANDARD_TURFS(/turf/simulated/floor/roguetown/cobblestone2)
+	name = "cobblestone"
+	icon = 'icons/turf/flooring/roguetown/cobble.dmi'
+	icon_state = "cobblestone2"
+	initial_flooring = /datum/prototype/flooring/roguetown/cobblestone2
+
+
+CREATE_STANDARD_TURFS(/turf/simulated/floor/roguetown/cobblestone3)
+	name = "cobblestone"
+	icon = 'icons/turf/flooring/roguetown/cobble.dmi'
+	icon_state = "cobblestone3"
+	initial_flooring = /datum/prototype/flooring/roguetown/cobblestone3
+
+
+CREATE_STANDARD_TURFS(/turf/simulated/floor/roguetown/grass)
+	name = "grass"
+	icon = 'icons/turf/flooring/roguetown/grass.dmi'
+	icon_state = "grass"
+	initial_flooring = /datum/prototype/flooring/roguetown/grass
+
+
+CREATE_STANDARD_TURFS(/turf/simulated/floor/roguetown/grass_red)
+	name = "red grass"
+	icon = 'icons/turf/flooring/roguetown/grass.dmi'
+	icon_state = "grass_red"
+	initial_flooring = /datum/prototype/flooring/roguetown/grass_red
+
+
+CREATE_STANDARD_TURFS(/turf/simulated/floor/roguetown/grass_yellow)
+	name = "yellow grass"
+	icon = 'icons/turf/flooring/roguetown/grass.dmi'
+	icon_state = "grass_yellow"
+	initial_flooring = /datum/prototype/flooring/roguetown/grass_yellow
+
+
+CREATE_STANDARD_TURFS(/turf/simulated/floor/roguetown/grass_cold)
+	name = "cold grass"
+	icon = 'icons/turf/flooring/roguetown/grass.dmi'
+	icon_state = "grass_cold"
+	initial_flooring = /datum/prototype/flooring/roguetown/grass_cold
+
+
+CREATE_STANDARD_TURFS(/turf/simulated/floor/roguetown/grass_odd)
+	name = "odd grass"
+	icon = 'icons/turf/flooring/roguetown/grass.dmi'
+	icon_state = "grass_odd"
+	initial_flooring = /datum/prototype/flooring/roguetown/grass_odd
+
+
+CREATE_STANDARD_TURFS(/turf/simulated/floor/roguetown/mud)
+	name = "mud"
+	icon = 'icons/turf/flooring/roguetown/mud.dmi'
+	icon_state = "mud1"
+	initial_flooring = /datum/prototype/flooring/roguetown/mud
+
+
+CREATE_STANDARD_TURFS(/turf/simulated/floor/roguetown/mud2)
+	name = "mud"
+	icon = 'icons/turf/flooring/roguetown/mud.dmi'
+	icon_state = "mud2"
+	initial_flooring = /datum/prototype/flooring/roguetown/mud2
+
+
+CREATE_STANDARD_TURFS(/turf/simulated/floor/roguetown/mud3)
+	name = "mud"
+	icon = 'icons/turf/flooring/roguetown/mud.dmi'
+	icon_state = "mud3"
+	initial_flooring = /datum/prototype/flooring/roguetown/mud3

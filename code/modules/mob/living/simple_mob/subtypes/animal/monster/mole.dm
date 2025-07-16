@@ -6,6 +6,9 @@
 	icon_state = "mole"
 	icon_living = "mole"
 	icon_dead = "mole_dead"
+	base_pixel_x = -23
+	base_pixel_y = -7
+
 
 	maxHealth = 300
 	health = 300

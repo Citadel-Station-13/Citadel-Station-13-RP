@@ -9,7 +9,7 @@
 	icon_state = "bobcat"
 	icon_living = "bobcat"
 	icon_dead = "bobcat_dead"
-	pixel_y = -6
+	base_pixel_y = -3
 
 	maxHealth = 200
 	health = 200

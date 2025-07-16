@@ -643,3 +643,174 @@
 	flooring_flags = TURF_REMOVE_WRENCH | TURF_ACID_IMMUNE
 
 	mz_flags = MZ_MIMIC_DEFAULTS
+
+
+// Roguetown
+
+/datum/prototype/flooring/roguetown/wood
+	name = "wooden floorboards"
+	desc = "Old wooden floorboards."
+	icon = 'icons/turf/flooring/roguetown/wood.dmi'
+	icon_base = "wooden_floor"
+	descriptor = "planks"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/wood1.ogg',
+		'sound/effects/footstep/wood2.ogg',
+		'sound/effects/footstep/wood3.ogg',
+		'sound/effects/footstep/wood4.ogg',
+		'sound/effects/footstep/wood5.ogg'))
+
+
+/datum/prototype/flooring/roguetown/dark_wood
+	name = "dark wooden floorboards"
+	desc = "Old and dark wooden floorboards."
+	icon = 'icons/turf/flooring/roguetown/wood.dmi'
+	icon_base = "wooden_floor2"
+	descriptor = "planks"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/wood1.ogg',
+		'sound/effects/footstep/wood2.ogg',
+		'sound/effects/footstep/wood3.ogg',
+		'sound/effects/footstep/wood4.ogg',
+		'sound/effects/footstep/wood5.ogg'))
+
+
+/datum/prototype/flooring/roguetown/cobblestone
+	name = "cobblestone"
+	desc = "Hard and cold cobblestone flooring."
+	icon = 'icons/turf/flooring/roguetown/cobble.dmi'
+	icon_base = "cobblestone1"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/floor1.ogg',
+		'sound/effects/footstep/floor2.ogg',
+		'sound/effects/footstep/floor3.ogg',
+		'sound/effects/footstep/floor4.ogg',
+		'sound/effects/footstep/floor5.ogg'))
+
+/datum/prototype/flooring/roguetown/cobblestone2
+	name = "cobblestone"
+	desc = "Hard and cold cobblestone flooring."
+	icon = 'icons/turf/flooring/roguetown/cobble.dmi'
+	icon_base = "cobblestone2"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/floor1.ogg',
+		'sound/effects/footstep/floor2.ogg',
+		'sound/effects/footstep/floor3.ogg',
+		'sound/effects/footstep/floor4.ogg',
+		'sound/effects/footstep/floor5.ogg'))
+
+/datum/prototype/flooring/roguetown/cobblestone3
+	name = "cobblestone"
+	desc = "Hard and cold cobblestone flooring."
+	icon = 'icons/turf/flooring/roguetown/cobble.dmi'
+	icon_base = "cobblestone3"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/floor1.ogg',
+		'sound/effects/footstep/floor2.ogg',
+		'sound/effects/footstep/floor3.ogg',
+		'sound/effects/footstep/floor4.ogg',
+		'sound/effects/footstep/floor5.ogg'))
+
+
+/datum/prototype/flooring/roguetown/grass
+	name = "grass"
+	desc = "Soft, earthy grass."
+	icon = 'icons/turf/flooring/roguetown/grass.dmi'
+	icon_base = "grass"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/grass1.ogg',
+		'sound/effects/footstep/grass2.ogg',
+		'sound/effects/footstep/grass3.ogg',
+		'sound/effects/footstep/grass4.ogg'))
+
+/datum/prototype/flooring/roguetown/grass_red
+	name = "red grass"
+	desc = "Soft, earthy red grass."
+	icon = 'icons/turf/flooring/roguetown/grass.dmi'
+	icon_base = "grass_red"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/grass1.ogg',
+		'sound/effects/footstep/grass2.ogg',
+		'sound/effects/footstep/grass3.ogg',
+		'sound/effects/footstep/grass4.ogg'))
+
+/datum/prototype/flooring/roguetown/grass_yellow
+	name = "yellow grass"
+	desc = "Soft, earthy yellow grass."
+	icon = 'icons/turf/flooring/roguetown/grass.dmi'
+	icon_base = "grass_yellow"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/grass1.ogg',
+		'sound/effects/footstep/grass2.ogg',
+		'sound/effects/footstep/grass3.ogg',
+		'sound/effects/footstep/grass4.ogg'))
+
+/datum/prototype/flooring/roguetown/grass_cold
+	name = "grass"
+	desc = "Soft, earthy and cold grass."
+	icon = 'icons/turf/flooring/roguetown/grass.dmi'
+	icon_base = "grass_cold"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/grass1.ogg',
+		'sound/effects/footstep/grass2.ogg',
+		'sound/effects/footstep/grass3.ogg',
+		'sound/effects/footstep/grass4.ogg'))
+
+/datum/prototype/flooring/roguetown/grass_odd
+	name = "odd grass"
+	desc = "Something about the grass beneath your feet feels wrong."
+	icon = 'icons/turf/flooring/roguetown/grass.dmi'
+	icon_base = "grass_odd"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/grass1.ogg',
+		'sound/effects/footstep/grass2.ogg',
+		'sound/effects/footstep/grass3.ogg',
+		'sound/effects/footstep/grass4.ogg'))
+
+
+/datum/prototype/flooring/roguetown/mud
+	name = "mud"
+	desc = "A mix of soft and hardened mud."
+	icon = 'icons/turf/flooring/roguetown/mud.dmi'
+	icon_base = "mud1"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/asteroid1.ogg',
+		'sound/effects/footstep/asteroid2.ogg',
+		'sound/effects/footstep/asteroid3.ogg',
+		'sound/effects/footstep/asteroid4.ogg'))
+
+/datum/prototype/flooring/roguetown/mud2
+	name = "mud"
+	desc = "A mix of soft and hardened mud."
+	icon = 'icons/turf/flooring/roguetown/mud.dmi'
+	icon_base = "mud2"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/asteroid1.ogg',
+		'sound/effects/footstep/asteroid2.ogg',
+		'sound/effects/footstep/asteroid3.ogg',
+		'sound/effects/footstep/asteroid4.ogg'))
+
+/datum/prototype/flooring/roguetown/mud3
+	name = "mud"
+	desc = "A mix of soft and hardened mud."
+	icon = 'icons/turf/flooring/roguetown/mud.dmi'
+	icon_base = "mud3"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/asteroid1.ogg',
+		'sound/effects/footstep/asteroid2.ogg',
+		'sound/effects/footstep/asteroid3.ogg',
+		'sound/effects/footstep/asteroid4.ogg'))
+
+
+/datum/prototype/flooring/roguetown/rock
+	name = "hard rock"
+	desc = "Hardened rock that rests beneath your feet."
+	icon = 'icons/turf/flooring/roguetown/rock.dmi'
+	icon_base = "rock"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/asteroid1.ogg',
+		'sound/effects/footstep/asteroid2.ogg',
+		'sound/effects/footstep/asteroid3.ogg',
+		'sound/effects/footstep/asteroid4.ogg'))
+
+
