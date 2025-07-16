@@ -46,10 +46,10 @@
 /datum/trait/kintype/purple
 	name = "Shadekin Purple Adaptation"
 	color = PURPLE_EYES
-	desc = "Very good energy regeneration in darkness, minor degeneration in the light and increased health!"
+	desc = "Very good energy regeneration in darkness, minor regeneration in the light and increased health!"
 	var_changes = list(
 		"total_health" = 150,
-		"energy_light" = -0.5,
+		"energy_light" = 0.25,
 		"energy_dark" = 1.5,
 		"unarmed_types" = list(
 			/datum/melee_attack/unarmed/stomp,
@@ -67,10 +67,10 @@
 /datum/trait/kintype/yellow
 	name = "Shadekin Yellow Adaptation"
 	color = YELLOW_EYES
-	desc = "Highest energy regeneration in darkness, high degeneration in the light and unchanged health!"
+	desc = "Highest energy regeneration in darkness, minor regeneration in the light and unchanged health!"
 	var_changes = list(
 		"total_health" = 100,
-		"energy_light" = -1,
+		"energy_light" = 0.25,
 		"energy_dark" = 3,
 		"unarmed_types" = list(
 			/datum/melee_attack/unarmed/stomp,
@@ -109,10 +109,10 @@
 /datum/trait/kintype/orange
 	name = "Shadekin Orange Adaptation"
 	color = ORANGE_EYES
-	desc = "Good energy regeneration in darkness, small degeneration in the light and increased health!"
+	desc = "Good energy regeneration in darkness, minor regeneration in the light and increased health!"
 	var_changes = list(
 		"total_health" = 175,
-		"energy_light" = -0.5,
+		"energy_light" = 0.25,
 		"energy_dark" = 1,
 		"unarmed_types" = list(
 			/datum/melee_attack/unarmed/stomp,

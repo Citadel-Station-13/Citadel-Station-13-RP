@@ -10,7 +10,7 @@
 [b]Notice[/b]: Nanotrasen Vessel, authorized personnel only, heavely refited."}
 
 	icon_state = "ship"
-	vessel_mass = 18500
+	vessel_mass = 10000
 	burn_delay = 2 SECONDS
 	fore_dir = EAST	// Which direction the ship/z-level is facing.  It will move dust particles from that direction when moving.
 	base = TRUE		// Honestly unsure what this does but it seems the main sector or "Map" we're at has this so here it stays

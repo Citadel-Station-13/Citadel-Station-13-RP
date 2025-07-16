@@ -10,7 +10,7 @@
 	organ_tag = O_AUG_L_FOREARM
 	parent_organ = BP_L_ARM
 	target_slot = /datum/inventory_slot/abstract/hand/left
-	target_parent_classes = list(ORGAN_FLESH, ORGAN_ASSISTED)
+	target_parent_classes = list(ORGAN_FLESH, ORGAN_ASSISTED, ORGAN_ROBOT, ORGAN_LIFELIKE)
 	integrated_object_type = /obj/item/gun/projectile/energy/laser/mounted/augment
 
 
