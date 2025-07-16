@@ -15,6 +15,7 @@
 
 // TODO: destructible sprites, consturction, shift these slowly into
 //       materials system. wall themes/styles?
+// TODO: proper icon smoothing
 
 /turf/simulated/wall/rt_medieval/boss
 	name = "archaic terrain wall"
