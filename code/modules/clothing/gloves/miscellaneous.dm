@@ -297,10 +297,6 @@
 	secondary_trait = TRAIT_ANTIMAGIC
 	var/chaplain_spawnable = TRUE
 
-/obj/item/clothing/gloves/fingerless/pugilist/chaplain/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/anti_magic, TRUE, TRUE, FALSE, null, null, FALSE)
-
 /obj/item/clothing/gloves/fingerless/pugilist/magic
 	name = "armwraps of mighty fists"
 	desc = "A series of armwraps. Makes you pretty keen to go adventuring and punch dragons."

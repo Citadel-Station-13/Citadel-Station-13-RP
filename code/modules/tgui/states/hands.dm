@@ -11,7 +11,7 @@
 
 GLOBAL_DATUM_INIT(hands_state, /datum/ui_state/hands_state, new)
 
-/datum/ui_state/hands_state/can_use_topic(src_object, mob/user)
+/datum/ui_state/hands_state/can_use_topic(datum/src_object, mob/user, datum/tgui/ui)
 	. = user.shared_ui_interaction(src_object)
 	if(. > UI_CLOSE)
 		return min(., user.hands_can_use_topic(src_object))

@@ -18,6 +18,7 @@
 	icon_state = "kinetic"
 	SET_APPEARANCE_FLAGS(KEEP_TOGETHER)
 	speed = /obj/projectile::speed * 1.1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_PIERCE
 
 	impact_sound = PROJECTILE_IMPACT_SOUNDS_KINETIC
 
@@ -91,7 +92,7 @@
 /obj/projectile/nt_protomag/emp
 	name = "ion slug"
 	color = "#aaaaff"
-	base_projectile_effects = list(
+	projectile_effects = list(
 		/datum/projectile_effect/detonation/legacy_emp{
 			sev_3 = 2;
 		}
@@ -116,7 +117,7 @@
 	speed = /obj/projectile/nt_protomag::speed * 0.8
 	damage_force = 10
 	damage_tier = 4.25
-	base_projectile_effects = list(
+	projectile_effects = list(
 		/datum/projectile_effect/electrical_impulse{
 			shock_damage = 15;
 			shock_agony = 30;

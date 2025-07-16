@@ -447,6 +447,7 @@
 			else									pullin.icon_state = "pull0"
 
 		if(purged)
+
 			if(purge > 0)							purged.icon_state = "purge1"
 			else									purged.icon_state = "purge0"
 

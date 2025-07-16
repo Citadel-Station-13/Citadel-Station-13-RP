@@ -1153,6 +1153,8 @@
 
 /mob/living/carbon/human/proc/set_pose(new_pose)
 	pose = sanitize(new_pose)
+	if(!findtext(pose, regex("\[.?!]$"))) // Will be zero if the last character is not a member of [.?!]
+		pose = addtext(pose,".") //Makes sure all emotes end with a period.
 
 /mob/living/carbon/human/verb/pose()
 	set name = "Set Pose"

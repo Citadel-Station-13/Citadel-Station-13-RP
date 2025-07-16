@@ -67,3 +67,6 @@
 /// trait registration defines
 /// due to how defines work, this goes AFTER the trait define!
 #define DATUM_TRAIT(TYPE, TRAIT)
+/// trait registration defines
+/// due to how defines work, this goes AFTER the trait define!
+#define DATUM_TRAIT_NEW(TYPE, TRAIT, DESC)

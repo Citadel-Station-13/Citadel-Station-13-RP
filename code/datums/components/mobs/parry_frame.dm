@@ -393,7 +393,7 @@
 		isnull(parry_transmute_mode) ? damage_mode : parry_transmute_mode,
 		ATTACK_TYPE_DEFENSIVE_PASSTHROUGH,
 		null,
-		SHIELDCALL_FLAG_SECOND_CALL,
+		NONE,
 		hit_zone,
 	)
 

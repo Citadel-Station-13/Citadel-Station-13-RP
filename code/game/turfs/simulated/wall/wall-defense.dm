@@ -26,19 +26,6 @@
 /turf/simulated/wall/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	// todo: this method of detecting destruction is shitcode but turf refs don't change so qdeleted() won't work
 	var/old_type = type
-	if(!(impact_flags & (PROJECTILE_IMPACT_BLOCKED | PROJECTILE_IMPACT_SKIP_STANDARD_DAMAGE)))
-		// todo: maybe the projectile side should handle this?
-		run_damage_instance(
-			proj.get_structure_damage() * bullet_act_args[BULLET_ACT_ARG_EFFICIENCY],
-			proj.damage_type,
-			proj.damage_tier,
-			proj.damage_flag,
-			proj.damage_mode,
-			ATTACK_TYPE_PROJECTILE,
-			proj,
-			NONE,
-			bullet_act_args[BULLET_ACT_ARG_ZONE],
-		)
 	// turf refs don't change so while QDELETED() doesn't work this is a close approximate
 	// until we have a better system or we decide to pay some overhead to track with a number or something
 	if(old_type != type)

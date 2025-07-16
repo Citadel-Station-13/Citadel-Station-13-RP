@@ -6,7 +6,7 @@
 
 GLOBAL_DATUM_INIT(new_player_state, /datum/ui_state/new_player_state, new)
 
-/datum/ui_state/new_player_state/can_use_topic(src_object, mob/user)
+/datum/ui_state/new_player_state/can_use_topic(datum/src_object, mob/user, datum/tgui/ui)
 	if(isnewplayer(user) || check_rights_for(user.client, R_ADMIN))
 		return UI_INTERACTIVE
 	return UI_CLOSE
@@ -19,7 +19,7 @@ GLOBAL_DATUM_INIT(new_player_state, /datum/ui_state/new_player_state, new)
 
 GLOBAL_DATUM_INIT(explicit_new_player_state, /datum/ui_state/explicit_new_player_state, new)
 
-/datum/ui_state/explicit_new_player_state/can_use_topic(src_object, mob/user)
+/datum/ui_state/explicit_new_player_state/can_use_topic(datum/src_object, mob/user, datum/tgui/ui)
 	if(isnewplayer(user))
 		return UI_INTERACTIVE
 	return UI_CLOSE

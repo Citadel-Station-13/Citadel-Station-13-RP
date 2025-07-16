@@ -238,7 +238,7 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 	/// what our color should be
 	var/current_color = "#ffffff"
 	/// our particles
-	var/atom/movable/particle_render/renderer
+	var/atom/movable/render/particle/renderer
 
 /datum/component/medichine_field/Initialize()
 	if(!isatom(parent))
@@ -326,7 +326,7 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 /datum/component/medichine_field/proc/ensure_visuals()
 	if(!isnull(renderer))
 		return
-	renderer = new /atom/movable/particle_render/medichine_field(null)
+	renderer = new /atom/movable/render/particle/medichine_field(null)
 	if(ismovable(parent))
 		var/atom/movable/entity = parent
 		entity.vis_contents += renderer
@@ -339,7 +339,7 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 
 //? VFX
 
-/atom/movable/particle_render/medichine_field
+/atom/movable/render/particle/medichine_field
 	alpha = 200
 
 /particles/medichine_field

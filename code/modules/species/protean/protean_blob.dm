@@ -91,7 +91,7 @@
 /mob/living/simple_mob/protean_blob/examine(mob/user, dist)
 	. = ..()
 	for(var/obj/item/I in get_held_items())
-		. += SPAN_INFO("[icon2html(I, user)] It is holding \a [FORMAT_TEXT_LOOKITEM(I)] in a psuedopod.")
+		. += SPAN_INFO("[icon2html(I, user)] It is holding \a [ENCODE_ATOM_HREFEXAMINE(I)] in a psuedopod.")
 
 /mob/living/simple_mob/protean_blob/Destroy()
 	humanform = null
@@ -673,7 +673,7 @@
 			chosen_list = GLOB.clothing_ears
 		if("headsets")
 			chosen_list = GLOB.clothing_headsets
-			
+
 
 	var/picked = input(src,"What clothing would you like to mimic?","Mimic Clothes") as null|anything in chosen_list
 	if(!ispath(chosen_list[picked]))

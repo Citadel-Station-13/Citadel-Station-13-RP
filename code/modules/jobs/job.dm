@@ -347,7 +347,7 @@
 		if(M.transaction_log.len)
 			var/datum/transaction/T = M.transaction_log[1]
 			remembered_info += "<b>Your account was created:</b> [T.time], [T.date] at [T.source_terminal]<br>"
-		H.mind.store_memory(remembered_info)
+		H.mind.legacy_add_html_memory(remembered_info)
 
 		H.mind.initial_account = M
 

@@ -450,7 +450,6 @@
 /obj/structure/closet/attack_ghost(mob/ghost)
 	. = ..()
 	if(ghost.client && ghost.client.inquisitive_ghost)
-		ghost.examinate(src)
 		if (!opened)
 			to_chat(ghost, "It contains: [english_list(contents)].")
 

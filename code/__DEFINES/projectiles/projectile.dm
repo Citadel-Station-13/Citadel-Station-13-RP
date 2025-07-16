@@ -62,6 +62,8 @@
 ///
 /// * stops generic 'inflict damage instance' from being procced automatically.
 #define PROJECTILE_IMPACT_SKIP_STANDARD_DAMAGE (1<<15)
+/// expire the projectile after impact, even if it tries to pierce
+#define PROJECTILE_IMPACT_FORCE_EXPIRE (1<<16)
 
 /// any of these means the projectile should delete immediately
 #define PROJECTILE_IMPACT_FLAGS_SHOULD_DELETE (PROJECTILE_IMPACT_DELETE)
@@ -73,6 +75,13 @@
 #define PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT (PROJECTILE_IMPACT_DELETE | PROJECTILE_IMPACT_REFLECT | PROJECTILE_IMPACT_PHASE | PROJECTILE_IMPACT_PASSTHROUGH)
 /// any of these means the projectile should abort bullet_act, but not on_impact() for the projectile
 #define PROJECTILE_IMPACT_FLAGS_TARGET_ABORT (PROJECTILE_IMPACT_DELETE | PROJECTILE_IMPACT_REFLECT | PROJECTILE_IMPACT_PHASE | PROJECTILE_IMPACT_PASSTHROUGH | PROJECTILE_IMPACT_TARGET_DELETED)
+
+//* /obj/projectile impact() args *//
+
+#define PROJECTILE_IMPACT_ARG_TARGET 1
+#define PROJECTILE_IMPACT_ARG_IMPACT_FLAGS 2
+#define PROJECTILE_IMPACT_ARG_DEF_ZONE 3
+#define PROJECTILE_IMPACT_ARG_EFFICIENCY 4
 
 //* projectile_type bitfield *//
 
@@ -119,6 +128,10 @@ DEFINE_BITFIELD_NEW(projectile_types, list(
 #define PROJECTILE_IMPACT_SOUNDS_ENERGY "ablate"
 /// bullets, etc
 #define PROJECTILE_IMPACT_SOUNDS_KINETIC "kinetic"
+
+//* /obj/projectile data list *//
+
+// Nothing yet!
 
 //* helpers *//
 

@@ -641,6 +641,11 @@
 		if(GLOB.wallframe_typecache[O.type])
 			return O
 
+//* Reagents *//
+
+/turf/create_reagents(max_vol, starting_flags)
+	return ..(max_vol, starting_flags | REAGENT_HOLDER_FLAG_OPEN_CONTAINER)
+
 //* Sector API *//
 
 /**

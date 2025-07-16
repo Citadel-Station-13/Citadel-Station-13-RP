@@ -135,7 +135,7 @@
 	cooldown = 5 SECONDS
 	hydration_cost = WETFLOOR_COST //50
 
-/datum/ability/species/skrell/puddle/on_trigger()
+/datum/ability/species/skrell/puddle/on_trigger_old()
 	. = ..()
 	if(!ishuman(owner))
 		return

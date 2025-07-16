@@ -74,6 +74,9 @@
 
 /**
  * physiology modifier
+ *
+ * TODO: add antimagic datum to this when organs rework is done. it should apply antimagic to the
+ *       mob.
  */
 /datum/physiology_modifier
 	abstract_type = /datum/physiology_modifier

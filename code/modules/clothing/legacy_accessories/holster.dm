@@ -189,17 +189,17 @@
 	desc = "A consecrated morphic scabbard etched with arcane runes. The device of a golden eye has been worked into the buckle."
 	icon_state = "holster_machete"
 	concealed_holster = 0
-	can_hold = list(/obj/item/nullrod)
+	can_hold = list(/obj/item/nullrod_legacy)
 	sound_in = 'sound/effects/holster/sheathin.ogg'
 	sound_out = 'sound/effects/holster/sheathout.ogg'
 	holster_verb = "sheathe"
 //List of Cans and Cant's for if we ever want to restrict weapons that can fit the scabbard.
 /*
-	can_hold = list(/obj/item/nullrod, /obj/item/nullrod/claymore, /obj/item/nullrod/scythe/vibro, /obj/item/nullrod/scythe/spellblade, /obj/item/nullrod/clown, /obj/item/nullrod/whip,
-					/obj/item/nullrod/tribal_knife
+	can_hold = list(/obj/item/nullrod_legacy, /obj/item/nullrod_legacy/claymore, /obj/item/nullrod_legacy/scythe/vibro, /obj/item/nullrod_legacy/scythe/spellblade, /obj/item/nullrod_legacy/clown, /obj/item/nullrod_legacy/whip,
+					/obj/item/nullrod_legacy/tribal_knife
 				)
-	cant_hold = list(/obj/item/nullrod/godhand, /obj/item/nullrod/staff, /obj/item/nullrod/scythe, /obj/item/nullrod/hammmer, /obj/item/nullrod/chainsaw, /obj/item/nullrod/pride_hammer,
-					/obj/item/nullrod/fedora, /obj/item/nullrod/armblade, /obj/item/nullrod/carp, /obj/item/nullrod/claymore/bostaff, /obj/item/nullrod/pitchfork, /obj/item/nullrod/egyptian,
-					/obj/item/nullrod/rosary
+	cant_hold = list(/obj/item/nullrod_legacy/godhand, /obj/item/nullrod_legacy/staff, /obj/item/nullrod_legacy/scythe, /obj/item/nullrod_legacy/hammmer, /obj/item/nullrod_legacy/chainsaw, /obj/item/nullrod_legacy/pride_hammer,
+					/obj/item/nullrod_legacy/fedora, /obj/item/nullrod_legacy/armblade, /obj/item/nullrod_legacy/carp, /obj/item/nullrod_legacy/claymore/bostaff, /obj/item/nullrod_legacy/pitchfork, /obj/item/nullrod_legacy/egyptian,
+					/obj/item/nullrod_legacy/rosary
 				)
 */

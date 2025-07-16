@@ -88,7 +88,7 @@
 
 	timeofdeath = world.time
 	if(mind)
-		mind.store_memory("Time of death: [stationtime2text()]", 0)
+		mind.legacy_add_html_memory("Time of death: [stationtime2text()]", 0)
 	living_mob_list -= src
 	dead_mob_list |= src
 

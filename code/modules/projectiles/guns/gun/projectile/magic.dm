@@ -7,7 +7,6 @@
 	item_state = "staff"
 	fire_sound = 'sound/weapons/emitter.ogg'
 	no_pin_required = TRUE
-	var/checks_antimagic = TRUE
 	var/max_charges = 6
 	var/charges = 0
 	var/recharge_rate = 4
@@ -27,9 +26,6 @@
 			return
 		else
 			no_den_usage = 0
-	if(checks_antimagic && user.anti_magic_check(TRUE, FALSE, FALSE, 0, TRUE))
-		to_chat(user, "<span class='warning'>Something is interfering with [src].</span>")
-		return
 	. = ..()
 
 /obj/item/gun/projectile/magic/Initialize(mapload)

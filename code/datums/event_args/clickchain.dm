@@ -62,15 +62,22 @@
 	//* Attack Data *//
 
 	/// Overall damage multiplier
-	///
 	/// * Allowed to be changed by shieldcalls and other intercepts
 	var/attack_melee_multiplier = 1
 	/// Overall impact multiplier
-	///
 	/// * Allowed to be changed by shieldcalls and other intercepts
 	/// * Unlike 'attack melee multiplier', this will block everything else too.
 	///   This is for shieldcalls to inject into to say 'hey, we blocked any contact, not just dampened damage'.
+	/// * This is valid to be used for things like antimagic! Antimagic goes through
+	///   the shieldcall system too.
 	var/attack_contact_multiplier = 1
+
+	//* Clickchain Data *//
+
+	/// Attack specifiers for misc data.
+	/// * Allowed to be changed by shieldcalls and other intercepts
+	/// * Lazy list
+	var/list/clickchain_data
 
 	//* Resolved Data *//
 

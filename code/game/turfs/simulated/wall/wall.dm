@@ -138,23 +138,6 @@
 	if(locate(/obj/effect/overlay/wallrot) in src)
 		. += "<span class='warning'>There is fungus growing on [src].</span>"
 
-//Damage
-
-/turf/simulated/wall/melt()
-
-	if(!can_melt())
-		return
-
-	src.ChangeTurf(/turf/simulated/floor/plating)
-
-	var/turf/simulated/floor/F = src
-	if(!F)
-		return
-	F.burn_tile()
-	F.icon_state = "wall_thermite"
-	visible_message("<span class='danger'>\The [src] spontaneously combusts!.</span>") //!!OH SHIT!!
-	return
-
 /turf/simulated/wall/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)//Doesn't fucking work because walls don't interact with air :(
 	burn(exposed_temperature)
 

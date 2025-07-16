@@ -14,7 +14,7 @@
 	action_icon = 'icons/screen/actions/xenomorph.dmi'
 	var/plasma_cost = 0
 
-/datum/ability/species/xenomorph_hybrid/available_check()
+/datum/ability/species/xenomorph_hybrid/check_availability(datum/event_args/actor/actor, silent)
 	. = ..()
 	if(.)
 		var/mob/living/carbon/human/H = owner
@@ -38,7 +38,7 @@
 		return
 	P.adjust_plasma(-plasma_cost)
 
-/datum/ability/species/xenomorph_hybrid/on_trigger(mob/user, toggling)
+/datum/ability/species/xenomorph_hybrid/on_trigger_old(mob/user, toggling)
 	. = ..()
 	take_plasma(user)
 
@@ -49,11 +49,11 @@
 	windup = 0 SECOND
 	interact_type = ABILITY_INTERACT_TRIGGER
 	always_bind = TRUE
-	ability_check_flags = ABILITY_CHECK_RESTING
+	ability_check_flags = ABILITY_CHECK_IS_RESTING
 	mobility_check_flags = MOBILITY_IS_CONSCIOUS
 	plasma_cost = 10
 
-/datum/ability/species/xenomorph_hybrid/regenerate/on_trigger()
+/datum/ability/species/xenomorph_hybrid/regenerate/on_trigger_old()
 	. = ..()
 	var/mob/living/carbon/human/O = owner
 	if(istype(O))

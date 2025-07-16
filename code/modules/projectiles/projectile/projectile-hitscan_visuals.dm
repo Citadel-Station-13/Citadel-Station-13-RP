@@ -138,7 +138,12 @@
 		CRASH("tried to add more than 25 vertices to a hitscan tracer")
 	phys_tracer_vertices += point
 
+/**
+ * Calls `do_render_hitscan_*` procs.
+ */
 /obj/projectile/proc/render_hitscan_tracers(duration = tracer_lifetime)
+	SHOULD_NOT_SLEEP(TRUE)
+
 	// don't stay too long
 	ASSERT(duration >= 0 && duration <= 10 SECONDS)
 
@@ -155,56 +160,19 @@
 			var/j = i + 1
 			var/datum/point/point_a = phys_tracer_vertices[i]
 			var/datum/point/point_b = phys_tracer_vertices[j]
-			if(tracer_is_tiled)
-				// fucked up
-				var/total_pixel_length = pixel_length_between_points(point_a, point_b)
-				var/tracer_angle = angle_between_points(point_a, point_b)
-				var/dx = sin(tracer_angle)
-				var/dy = cos(tracer_angle)
-				var/iterations = total_pixel_length / WORLD_ICON_SIZE
-				iterations = CEILING(iterations, 1)
-				for(var/iter in 0 to iterations)
-					var/resultant_x = (point_a.x + dx * iter * WORLD_ICON_SIZE) / WORLD_ICON_SIZE
-					var/resultant_y = (point_a.y + dy * iter * WORLD_ICON_SIZE) / WORLD_ICON_SIZE
-					var/turf/resultant_turf = locate(
-						round(resultant_x),
-						round(resultant_y),
-						point_a.z,
-					)
-					var/resultant_px = resultant_x % WORLD_ICON_SIZE
-					if(!resultant_px)
-						resultant_px = WORLD_ICON_SIZE * 0.5
-					else
-						resultant_px -= WORLD_ICON_SIZE * 0.5
-					var/resultant_py = resultant_y % WORLD_ICON_SIZE
-					if(!resultant_py)
-						resultant_py = WORLD_ICON_SIZE * 0.5
-					else
-						resultant_py -= WORLD_ICON_SIZE * 0.5
-					if(resultant_turf)
-						created += new /atom/movable/render/projectile_tracer/segment(resultant_turf, tracer_icon, "[tracer_icon_state]-beam", tracer_add_state, tracer_add_state_alpha, tracer_angle, resultant_px, resultant_py, color, auto_emissive_strength)
-			else
-				var/datum/point/midpoint = point_midpoint_points(point_a, point_b)
-				var/turf/midpoint_turf = midpoint.return_turf()
-				var/midpoint_px = midpoint.return_px()
-				var/midpoint_py = midpoint.return_py()
-				var/tracer_angle = angle_between_points(point_a, point_b)
-				if(midpoint_turf)
-					created += new /atom/movable/render/projectile_tracer/beam(midpoint_turf, tracer_icon, "[tracer_icon_state]-beam", tracer_add_state, tracer_add_state_alpha, tracer_angle, midpoint_px, midpoint_py, color, auto_emissive_strength, pixel_length_between_points(point_a, point_b))
+			var/created_tracer_effects = do_render_hitscan_beam(point_a, point_b)
+			if(created_tracer_effects)
+				created += created_tracer_effects
 		if(phys_tracer_do_muzzle)
 			var/datum/point/starting = phys_tracer_vertices[1]
-			var/turf/starting_turf = starting.return_turf()
-			if(starting_turf)
-				var/starting_px = starting.return_px()
-				var/starting_py = starting.return_py()
-				created += new /atom/movable/render/projectile_tracer/muzzle(starting_turf, tracer_icon, "[tracer_icon_state]-muzzle", tracer_add_state, tracer_add_state_alpha, original_angle, starting_px, starting_py, color, auto_emissive_strength)
+			var/created_muzzle_effects = do_render_hitscan_muzzle(starting, original_angle)
+			if(created_muzzle_effects)
+				created += created_muzzle_effects
 		if(phys_tracer_do_impact)
 			var/datum/point/ending = phys_tracer_vertices[length(phys_tracer_vertices)]
-			var/turf/ending_turf = ending.return_turf()
-			if(ending_turf)
-				var/ending_px = ending.return_px()
-				var/ending_py = ending.return_py()
-				created += new /atom/movable/render/projectile_tracer/impact(ending_turf, tracer_icon, "[tracer_icon_state]-impact", tracer_add_state, tracer_add_state_alpha, angle, ending_px, ending_py, color, auto_emissive_strength)
+			var/created_impact_effects = do_render_hitscan_muzzle(starting, angle)
+			if(created_impact_effects)
+				created += created_impact_effects
 		return
 
 	//! legacy below !//
@@ -246,10 +214,79 @@
 			var/datum/point/second_point = phys_tracer_vertices[j]
 			generate_tracer_between_points(first_point, second_point, beam_components, legacy_tracer_type, color, duration, legacy_hitscan_light_range, legacy_hitscan_light_color_override, legacy_hitscan_light_intensity, tempref)
 
+/**
+ * Angle is clockwise from north.
+ * * Also used for normal muzzle effects.
+ *
+ * @return created effect, or list(created effects...)
+ */
+/obj/projectile/proc/do_render_hitscan_muzzle(datum/point/location, angle)
+	SHOULD_NOT_SLEEP(TRUE)
+	var/turf/starting_turf = location.return_turf()
+	if(!starting_turf)
+		return
+	var/starting_px = location.return_px()
+	var/starting_py = location.return_py()
+	return new /atom/movable/render/projectile_tracer/muzzle(starting_turf, tracer_icon, "[tracer_icon_state]-muzzle", tracer_add_state, tracer_add_state_alpha, angle, starting_px, starting_py, color, auto_emissive_strength)
+
+/**
+ * Angle is clockwise from north.
+ */
+/obj/projectile/proc/do_render_hitscan_impact(datum/point/location, angle)
+	SHOULD_NOT_SLEEP(TRUE)
+	var/turf/ending_turf = location.return_turf()
+	if(!ending_turf)
+		return
+	var/ending_px = location.return_px()
+	var/ending_py = location.return_py()
+	return new /atom/movable/render/projectile_tracer/impact(ending_turf, tracer_icon, "[tracer_icon_state]-impact", tracer_add_state, tracer_add_state_alpha, angle, ending_px, ending_py, color, auto_emissive_strength)
+
+/obj/projectile/proc/do_render_hitscan_beam(datum/point/point_a, datum/point/point_b)
+	SHOULD_NOT_SLEEP(TRUE)
+	. = list()
+	if(tracer_is_tiled)
+		// fucked up
+		var/total_pixel_length = pixel_length_between_points(point_a, point_b)
+		var/tracer_angle = angle_between_points(point_a, point_b)
+		var/dx = sin(tracer_angle)
+		var/dy = cos(tracer_angle)
+		var/iterations = total_pixel_length / WORLD_ICON_SIZE
+		iterations = CEILING(iterations, 1)
+		for(var/iter in 0 to iterations)
+			var/resultant_x = (point_a.x + dx * iter * WORLD_ICON_SIZE) / WORLD_ICON_SIZE
+			var/resultant_y = (point_a.y + dy * iter * WORLD_ICON_SIZE) / WORLD_ICON_SIZE
+			var/turf/resultant_turf = locate(
+				round(resultant_x),
+				round(resultant_y),
+				point_a.z,
+			)
+			var/resultant_px = resultant_x % WORLD_ICON_SIZE
+			if(!resultant_px)
+				resultant_px = WORLD_ICON_SIZE * 0.5
+			else
+				resultant_px -= WORLD_ICON_SIZE * 0.5
+			var/resultant_py = resultant_y % WORLD_ICON_SIZE
+			if(!resultant_py)
+				resultant_py = WORLD_ICON_SIZE * 0.5
+			else
+				resultant_py -= WORLD_ICON_SIZE * 0.5
+			if(resultant_turf)
+				. += new /atom/movable/render/projectile_tracer/segment(resultant_turf, tracer_icon, "[tracer_icon_state]-beam", tracer_add_state, tracer_add_state_alpha, tracer_angle, resultant_px, resultant_py, color, auto_emissive_strength)
+	else
+		var/datum/point/midpoint = point_midpoint_points(point_a, point_b)
+		var/turf/midpoint_turf = midpoint.return_turf()
+		var/midpoint_px = midpoint.return_px()
+		var/midpoint_py = midpoint.return_py()
+		var/tracer_angle = angle_between_points(point_a, point_b)
+		if(midpoint_turf)
+			. += new /atom/movable/render/projectile_tracer/beam(midpoint_turf, tracer_icon, "[tracer_icon_state]-beam", tracer_add_state, tracer_add_state_alpha, tracer_angle, midpoint_px, midpoint_py, color, auto_emissive_strength, pixel_length_between_points(point_a, point_b))
+
 /obj/projectile/proc/cleanup_hitscan_tracers()
+	SHOULD_NOT_SLEEP(TRUE)
 	phys_tracer_vertices = null
 
 /obj/projectile/proc/finalize_hitscan_tracers(datum/point/end_point, impact_effect, kick_forwards)
+	SHOULD_NOT_SLEEP(TRUE)
 	// if end wasn't recorded yet and we're still on a turf, record end
 	if(isnull(phys_tracer_do_impact) && loc)
 		record_hitscan_end(end_point, impact_marker = impact_effect, kick_forwards = kick_forwards)

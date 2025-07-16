@@ -142,10 +142,6 @@
 	icon_state = "para_ert_rig"
 	item_action_name = "Enable RIG Sigils"
 
-	var/anti_magic = FALSE
-	var/blessed = FALSE
-	var/emp_proof = FALSE
-
 	initial_modules = list(
 		/obj/item/hardsuit_module/ai_container,
 		/obj/item/hardsuit_module/device/anomaly_scanner,
@@ -156,27 +152,3 @@
 		/obj/item/hardsuit_module/vision/meson,
 		/obj/item/hardsuit_module/self_destruct
 		)
-
-/obj/item/hardsuit/ert/para/attack_self(mob/user, datum/event_args/actor/actor)
-	. = ..()
-	if(.)
-		return
-	if(user.mind.isholy && !anti_magic && !emp_proof && !blessed)
-		anti_magic = TRUE
-		blessed = TRUE
-		emp_proof = TRUE
-		to_chat(user, "<font color=#4F49AF>You enable the RIG's protective sigils.</font>")
-	else
-		anti_magic = FALSE
-		blessed = FALSE
-		emp_proof = FALSE
-		to_chat(user, "<font color=#4F49AF>You disable the RIG's protective sigils.</font>")
-
-	if(!user.mind.isholy)
-		to_chat(user, "<font color='red'>You can't figure out what these symbols do.</font>")
-
-/obj/item/hardsuit/ert/para/emp_act(severity)
-	if(emp_proof)
-		emp_protection = 75
-	else
-		return

@@ -26,6 +26,11 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	depth_level = INFINITY // nothing should be passing over us from depth
 
+	//* Data *//
+
+	/// Arbitrary K-V data list.
+	var/list/data = list()
+
 	//* Collision Handling *//
 
 	/**
@@ -122,25 +127,38 @@
 	/// * Set when splitting into submunitions.
 	/// * It's the projectile effect datum's duty to read this.
 	var/projectile_effect_multiplier = 1
+
+	//* Composition *//
+
+	/// projectile_effects list has been copy'd (ergo no longer a typelist)
+	var/projectile_effect_mutable = FALSE
 	/// projectile effects
 	///
 	/// * this is a static typelist on this typepath
-	/// * do not under any circumstances edit this
-	/// * this is /tmp because this should never change on a typepath
-	VAR_PROTECTED/tmp/list/base_projectile_effects
-	/// projectile effects
-	///
-	/// * this is configured at runtime and can be edited
+	/// * do not under any circumstances edit this without using the helper
 	/// * this is non /tmp because this is infact serializable
-	/// * you must set this to a list of instances to use it; this is an advanced feature, and there's no guard-rails!
-	/// * the projectile will never modify the instances in here.
-	VAR_PROTECTED/list/additional_projectile_effects
+	VAR_PROTECTED/list/projectile_effects
+	/// projectile_hooks list has been copy'd (ergo no longer a typelist)
+	var/projectile_hooks_mutable = FALSE
+	/// projectile hooks
+	///
+	/// * this is a static typelist on this typepath
+	/// * do not under any circumstances edit this without using the helper
+	/// * this is non /tmp because this is infact serializable
+	VAR_PROTECTED/list/projectile_hooks
 
 	//* Configuration *//
 	/// Projectile type bitfield; set all that is relevant
 	var/projectile_type = NONE
 	/// Impact ground on expiry (range, or lifetime)
 	var/impact_ground_on_expiry = FALSE
+
+	//* Data *//
+	/// Arbitrary projectile data list.
+	/// * Keys are allowed to be strings or references. This is so
+	///   projectile effects/hooks have scratch space if they need it.
+	/// * Reference keys will not be serialized or logged. String keys will be.
+	var/list/data = list()
 
 	//* Physics - Configuration *//
 	/// speed, in pixels per second
@@ -299,6 +317,7 @@
 	/// amounts of power to submunitions, below 1 dampens.
 	var/submunition_distribution_mod = 1
 	/// Overwrite target projectile instead of adding?
+	/// * do not set to FALSE unless you really know what you're doing; this interacts weirdly with projectile effects.
 	var/submunition_distribution_overwrite = TRUE
 
 	//* Targeting *//
@@ -398,14 +417,6 @@
 	/// If this projectile is holy. Silver bullets, etc. Currently no effects.
 	var/holy = FALSE
 
-	// Antimagic
-	/// Should we check for antimagic effects?
-	var/antimagic_check = FALSE
-	/// Antimagic charges to use, if any
-	var/antimagic_charges_used = 0
-	/// Multiplier for damage if antimagic is on the target
-	var/antimagic_damage_factor = 0
-
 	var/embed_chance = 0	//Base chance for a projectile to embed
 
 	// todo: currently unimplemneted
@@ -414,23 +425,40 @@
 	var/no_attack_log = FALSE
 
 /obj/projectile/Initialize(mapload)
-	if(islist(base_projectile_effects))
-		var/list/existing_typelist = get_typelist(NAMEOF(src, base_projectile_effects))
+	if(islist(projectile_effects))
+		var/list/existing_typelist = get_typelist(NAMEOF(src, projectile_effects))
 		if(existing_typelist)
-			base_projectile_effects = existing_typelist
+			projectile_effects = existing_typelist
 		else
 			// generate, and process one
-			for(var/i in 1 to length(base_projectile_effects))
-				var/datum/projectile_effect/effectlike = base_projectile_effects[i]
+			for(var/i in 1 to length(projectile_effects))
+				var/datum/projectile_effect/effectlike = projectile_effects[i]
 				if(ispath(effectlike))
 					effectlike = new effectlike
 				else if(IS_ANONYMOUS_TYPEPATH(effectlike))
 					effectlike = new effectlike
 				else if(istype(effectlike))
 				else
-					stack_trace("tried to make a projectile with an invalid effect in base_projectile_effects")
-				base_projectile_effects[i] = effectlike
-			base_projectile_effects = typelist(NAMEOF(src, base_projectile_effects), base_projectile_effects)
+					stack_trace("tried to make a projectile with an invalid effect in projectile_effects")
+				projectile_effects[i] = effectlike
+			projectile_effects = typelist(NAMEOF(src, projectile_effects), projectile_effects)
+	if(islist(projectile_hooks))
+		var/list/existing_typelist = get_typelist(NAMEOF(src, projectile_hooks))
+		if(existing_typelist)
+			projectile_hooks = existing_typelist
+		else
+			// generate, and process one
+			for(var/i in 1 to length(projectile_hooks))
+				var/datum/projectile_hook/hooklike = projectile_hooks[i]
+				if(ispath(hooklike))
+					hooklike = new hooklike
+				else if(IS_ANONYMOUS_TYPEPATH(hooklike))
+					hooklike = new hooklike
+				else if(istype(hooklike))
+				else
+					stack_trace("tried to make a projectile with an invalid hook in projectile_hooks")
+				projectile_hooks[i] = hooklike
+			projectile_hooks = typelist(NAMEOF(src, projectile_hooks), projectile_hooks)
 	if(auto_emissive_strength && !hitscan)
 		appearance_flags |= KEEP_TOGETHER
 		var/image/emissive_image = new /image/projectile/projectile_tracer_emissive(icon, icon_state)
@@ -453,10 +481,7 @@
 /obj/projectile/proc/legacy_on_range() //if we want there to be effects when they reach the end of their range
 	finalize_hitscan_tracers(impact_effect = FALSE, kick_forwards = 8)
 
-	for(var/datum/projectile_effect/effect as anything in base_projectile_effects)
-		if(effect.hook_lifetime)
-			effect.on_lifetime(src, impact_ground_on_expiry)
-	for(var/datum/projectile_effect/effect as anything in additional_projectile_effects)
+	for(var/datum/projectile_effect/effect as anything in projectile_effects)
 		if(effect.hook_lifetime)
 			effect.on_lifetime(src, impact_ground_on_expiry)
 
@@ -471,10 +496,21 @@
 /obj/projectile/proc/add_projectile_effects(list/datum/projectile_effect/effects)
 	if(!length(effects))
 		return
-	if(additional_projectile_effects)
-		additional_projectile_effects += effects
-	else
-		additional_projectile_effects = effects.Copy()
+	if(!projectile_effect_mutable)
+		projectile_effects = projectile_effects ? projectile_effects.Copy() : list()
+		projectile_effect_mutable = TRUE
+	projectile_effects += effects
+
+/**
+ * Adds projectile hooks.
+ */
+/obj/projectile/proc/add_projectile_hooks(list/datum/projectile_hook/hooks)
+	if(!length(hooks))
+		return
+	if(!projectile_hooks_mutable)
+		projectile_hooks = projectile_hooks ? projectile_hooks.Copy() : list()
+		projectile_hooks_mutable = TRUE
+	projectile_hooks += hooks
 
 /**
  * Fires a projectile.
@@ -690,8 +726,6 @@
 			var/mob/living/simple_mob/SM = L
 			if(SM.mob_class & SA_vulnerability)
 				final_damage += SA_bonus_damage
-		if(L.anti_magic_check(TRUE, TRUE, antimagic_charges_used, FALSE))
-			final_damage *= antimagic_damage_factor
 	return final_damage
 
 /**
@@ -759,10 +793,7 @@
 	// scan the turf for anything we need to hit
 	scan_moved_turf(loc)
 	// trigger effects
-	for(var/datum/projectile_effect/effect as anything in base_projectile_effects)
-		if(effect.hook_moved)
-			effect.on_moved(src, old_loc)
-	for(var/datum/projectile_effect/effect as anything in additional_projectile_effects)
+	for(var/datum/projectile_effect/effect as anything in projectile_effects)
 		if(effect.hook_moved)
 			effect.on_moved(src, old_loc)
 
@@ -914,10 +945,11 @@
  * * target - thing being hit
  * * impact_flags - impact flags to feed in
  * * def_zone - zone to hit; otherwise this'll be calculated.
+ * * efficiency - efficiency of the hit
  *
  * @return resultant impact_flags
  */
-/obj/projectile/proc/impact(atom/target, impact_flags, def_zone = src.def_zone || BP_TORSO)
+/obj/projectile/proc/impact(atom/target, impact_flags, def_zone = src.def_zone || BP_TORSO, efficiency = 1)
 	SHOULD_NOT_OVERRIDE(TRUE)
 
 	if(impacted[target])
@@ -927,12 +959,24 @@
 	impact_flags = pre_impact(target, impact_flags, def_zone)
 	var/keep_going
 
+	// trigger projectile hooks
+	if(projectile_hooks)
+		for(var/datum/projectile_hook/hook as anything in projectile_hooks)
+			if(hook.hook_impact)
+				impact_flags = hook.on_impact(src, args)
+		if(impact_flags & PROJECTILE_IMPACT_FLAGS_SHOULD_DELETE)
+			if(hitscanning)
+				finalize_hitscan_tracers()
+			qdel(src)
+			return impact_flags
+
 	// priority 1: delete?
 	if(impact_flags & PROJECTILE_IMPACT_FLAGS_SHOULD_DELETE)
 		if(hitscanning)
 			finalize_hitscan_tracers()
 		qdel(src)
 		return impact_flags
+
 	// priority 2: should we hit?
 	if(impact_flags & PROJECTILE_IMPACT_FLAGS_SHOULD_NOT_HIT)
 		keep_going = TRUE
@@ -944,7 +988,7 @@
 			impact_flags = on_reflect(target, impact_flags, def_zone)
 		// else, is passthrough. do nothing
 	else
-		impact_flags = target.bullet_act(src, impact_flags, def_zone, 1)
+		impact_flags = target.bullet_act(src, impact_flags, def_zone, efficiency)
 		// did we pierce?
 		if(impact_flags & PROJECTILE_IMPACT_PIERCE)
 			keep_going = TRUE
@@ -961,15 +1005,10 @@
 		return impact_flags
 
 	// trigger projectile effects
-	if(base_projectile_effects || additional_projectile_effects)
-		// todo: can we move this to on_impact_new and have 'blocked' passed in? hrm.
-		for(var/datum/projectile_effect/effect as anything in base_projectile_effects)
+	if(projectile_effects)
+		for(var/datum/projectile_effect/effect as anything in projectile_effects)
 			if(effect.hook_impact)
 				impact_flags = effect.on_impact(src, target, impact_flags, def_zone)
-		for(var/datum/projectile_effect/effect as anything in additional_projectile_effects)
-			if(effect.hook_impact)
-				impact_flags = effect.on_impact(src, target, impact_flags, def_zone)
-		// did anything triggered up above trigger a delete?
 		if(impact_flags & PROJECTILE_IMPACT_FLAGS_SHOULD_DELETE)
 			if(hitscanning)
 				finalize_hitscan_tracers()
@@ -977,7 +1016,7 @@
 			return impact_flags
 
 	// see if we should keep going or delete
-	if(keep_going)
+	if(keep_going && !(impact_flags & PROJECTILE_IMPACT_FORCE_EXPIRE))
 		if(loc == where_we_were)
 			// if we are supposed to keep going and we didn't get yanked, continue the impact loop.
 			impact_flags |= PROJECTILE_IMPACT_CONTINUE_LOOP
@@ -1034,7 +1073,7 @@
  * todo: add PROJECTILE_IMPACT_DELETE_AFTER as opposed to DELETE? so rest of effects can still run
  *
  * @return new impact_flags; only PROJECTILE_IMPACT_DELETE is rechecked.
-	 */
+ */
 /obj/projectile/proc/on_impact(atom/target, impact_flags, def_zone, efficiency = 1)
 	//! legacy shit
 	if(damage_force && damage_type == DAMAGE_TYPE_BURN)
@@ -1181,26 +1220,23 @@
 			damage_mode | (DAMAGE_MODE_REQUEST_ARMOR_BLUNTING | DAMAGE_MODE_REQUEST_ARMOR_RANDOMIZATION),
 			ATTACK_TYPE_PROJECTILE,
 			src,
-			NONE,
+			SHIELDCALL_FLAG_SECOND_CALL,
 			hit_zone,
 		)
 		if(damage_inflict_agony)
 			target.run_damage_instance(
-				damage_inflict_agony,
+				damage_inflict_agony * efficiency,
 				DAMAGE_TYPE_HALLOSS,
 				damage_tier,
 				damage_flag,
 				damage_mode | (DAMAGE_MODE_REQUEST_ARMOR_BLUNTING | DAMAGE_MODE_REQUEST_ARMOR_RANDOMIZATION),
 				ATTACK_TYPE_PROJECTILE,
 				src,
-				NONE,
+				SHIELDCALL_FLAG_SECOND_CALL,
 				hit_zone,
 			)
 
-	for(var/datum/projectile_effect/effect as anything in base_projectile_effects)
-		if(effect.hook_damage)
-			effect.on_damage(src, target, impact_flags, hit_zone, efficiency)
-	for(var/datum/projectile_effect/effect as anything in additional_projectile_effects)
+	for(var/datum/projectile_effect/effect as anything in projectile_effects)
 		if(effect.hook_damage)
 			effect.on_damage(src, target, impact_flags, hit_zone, efficiency)
 
@@ -1335,19 +1371,14 @@
 			damage_flag = parent.damage_flag
 			damage_tier = parent.damage_tier
 			projectile_effect_multiplier = parent.projectile_effect_multiplier * effective_multiplier
-			base_projectile_effects = parent.base_projectile_effects
-			additional_projectile_effects = parent.additional_projectile_effects
+			projectile_effects = parent.projectile_effects
 		else
 			damage_force += parent.damage_force * effective_multiplier
 			damage_tier = max(damage_tier, parent.damage_tier)
 			// todo: proper collation for effects, not just an add and multiplier, maybe?
 			projectile_effect_multiplier = max(projectile_effect_multiplier, parent.projectile_effect_multiplier * effective_multiplier)
-			if(parent.base_projectile_effects)
-				LAZYINITLIST(base_projectile_effects)
-				base_projectile_effects += parent.base_projectile_effects
-			if(parent.additional_projectile_effects)
-				LAZYINITLIST(additional_projectile_effects)
-				additional_projectile_effects += parent.additional_projectile_effects
+			// todo: does this even work properly? the efefcts
+			add_projectile_effects(parent.projectile_effects)
 
 //* Targeting *//
 

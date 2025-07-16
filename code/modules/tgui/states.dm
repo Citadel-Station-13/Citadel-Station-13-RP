@@ -17,7 +17,7 @@
  *
  * return UI_state The state of the UI.
  */
-/datum/ui_state/proc/can_use_topic(src_object, mob/user)
+/datum/ui_state/proc/can_use_topic(datum/src_object, mob/user, datum/tgui/ui)
 	// Don't allow interaction by default.
 	return UI_CLOSE
 

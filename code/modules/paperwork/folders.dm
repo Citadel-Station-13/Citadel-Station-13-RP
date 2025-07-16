@@ -107,5 +107,5 @@
 		if("examine")
 			var/obj/item/Item = locate(params["ref"]) in src
 			if(istype(Item))
-				usr.examinate(Item)
+				usr.examine_entity(Item)
 				. = TRUE

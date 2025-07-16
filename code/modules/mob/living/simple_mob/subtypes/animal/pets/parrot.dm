@@ -154,7 +154,7 @@
 	tt_desc = "E Eclectus roratus"
 
 /mob/living/simple_mob/animal/passive/bird/parrot/eclectus/Initialize(mapload)
-	gender = pick(MALE, FEMALE)
+	set_gender(pick(MALE, FEMALE))
 	if(gender == FEMALE)
 		icon_state = "eclectusf"
 		icon_rest = "eclectusf-held"

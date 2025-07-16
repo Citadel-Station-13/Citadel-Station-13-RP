@@ -213,8 +213,8 @@
 		. += "<span class='info'>You peer into \the [src].</span>"
 		if(syringe)
 			. += "<span class='info'>It has a syringe added to it.</span>"
-		for(var/mob/living/L in contents)
-			user.do_examinate(L)
+		// for(var/mob/living/L in contents)
+		// 	user.do_examinate(L)
 
 /obj/structure/closet/body_bag/cryobag/attackby(obj/item/W, mob/user)
 	if(opened)

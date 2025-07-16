@@ -4,8 +4,14 @@
 	damage_force = 0
 	damage_type = DAMAGE_TYPE_OXY
 	nodamage = TRUE
-	var/magic = TRUE
-	var/checks_antimagic = TRUE
+
+	projectile_hooks = list(
+		/datum/projectile_hook/antimagic_check{
+			magic_potency = MAGIC_POTENCY_LEGACY_WIZARD;
+			magic_type = MAGIC_TYPE_GENERIC;
+			threshold_delete = MAGIC_POTENC_LEGACY_WIZARD_DELETE;
+		},
+	)
 
 /obj/projectile/magic/death
 	name = "bolt of death"
@@ -17,10 +23,6 @@
 		return
 	if(isliving(target))
 		var/mob/living/L = target
-		if(L.anti_magic_check())
-			L.visible_message("<span class='warning'>[src] vanishes on contact with [target]!</span>")
-			. |= PROJECTILE_IMPACT_DELETE
-			return
 		L.death(0)
 
 /obj/projectile/magic/resurrection
@@ -36,10 +38,6 @@
 		return
 	if(isliving(target))
 		var/mob/living/L = target
-		if(L.anti_magic_check())
-			L.visible_message("<span class='warning'>[src] vanishes on contact with [L]!</span>")
-			. |= PROJECTILE_IMPACT_DELETE
-			return
 		if(L.revive(full_heal = TRUE))
 			to_chat(L, "<span class='notice'>You rise with a start, you're alive!!!</span>")
 		else if(L.stat != DEAD)
@@ -59,12 +57,6 @@
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
-	if(ismob(target))
-		var/mob/L = target
-		if(L.anti_magic_check())
-			L.visible_message("<span class='warning'>[src] fizzles on contact with [target]!</span>")
-			. |= PROJECTILE_IMPACT_DELETE
-			return
 	var/teleammount = 0
 	var/teleloc = target
 	if(!isturf(target))
@@ -117,12 +109,6 @@
 
 /obj/projectile/magic/change/on_hit(atom/change)
 	. = ..()
-	if(ismob(change))
-		var/mob/M = change
-		if(M.anti_magic_check())
-			M.visible_message("<span class='warning'>[src] fizzles on contact with [M]!</span>")
-			qdel(src)
-			return BULLET_ACT_BLOCK
 	wabbajack(change)
 	qdel(src)
 
@@ -309,19 +295,6 @@
 	damage_force = 15
 	damage_type = DAMAGE_TYPE_BURN
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
-	magic = TRUE
-
-/obj/projectile/magic/spellblade/on_impact(atom/target, impact_flags, def_zone, efficiency)
-	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
-		return
-
-	if(ismob(target))
-		var/mob/L = target
-		if(L.anti_magic_check())
-			L.visible_message("<span class='warning'>[src] vanishes on contact with [target]!</span>")
-			qdel(src)
-			return
 
 /obj/projectile/magic/arcane_barrage
 	name = "arcane bolt"
@@ -331,27 +304,13 @@
 	damage_tier = 7
 	damage_flag = ARMOR_ENERGY
 	nodamage = FALSE
-	magic = TRUE
 	impact_sound = 'sound/weapons/barragespellhit.ogg'
-
-/obj/projectile/magic/arcane_barrage/on_impact(atom/target, impact_flags, def_zone, efficiency)
-	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
-		return
-
-	if(ismob(target))
-		var/mob/L = target
-		if(L.anti_magic_check())
-			L.visible_message("<span class='warning'>[src] vanishes on contact with [target]!</span>")
-			qdel(src)
-			return
 
 /* needs more work
 /obj/projectile/magic/locker
 	name = "locker bolt"
 	icon_state = "locker"
 	nodamage = TRUE
-	magic = TRUE
 	var/weld = TRUE
 	var/created = FALSE //prevents creation of more then one locker if it has multiple hits
 	var/locker_suck = TRUE
@@ -360,10 +319,6 @@
 /obj/projectile/magic/locker/proc/prehit(atom/A, var/mob/living/L)
 	if(ismob(A) && locker_suck)
 		var/mob/M = A
-		if(L.anti_magic_check())
-			M.visible_message("<span class='warning'>[src] vanishes on contact with [A]!</span>")
-			qdel(src)
-			return
 		if(M.anchored)
 			return ..()
 		M.forceMove(src)
@@ -419,54 +374,40 @@
 	update_icon()
 	addtimer(CALLBACK(src, PROC_REF(decay)), 15 SECONDS)
 
-/obj/projectile/magic/aoe
+/obj/projectile/magic
 	name = "Area Bolt"
 	desc = "What the fuck does this do?!"
 	damage_force = 0
-	var/proxdet = TRUE
 
-/obj/projectile/magic/aoe/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
-	. = ..()
-	if(proxdet)
-		for(var/mob/living/L in range(1, get_turf(src)))
-			if(L.stat != DEAD && L != firer && !L.anti_magic_check())
-				Bump(L)
-
-/obj/projectile/magic/aoe/lightning
+/obj/projectile/magic/lightning
 	name = "lightning bolt"
 	icon_state = "tesla_projectile"	//Better sprites are REALLY needed and appreciated!~
 	damage_force = 15
 	damage_type = DAMAGE_TYPE_BURN
 	nodamage = 0
-	magic = TRUE
 
 	var/zap_power = 20000
 	var/zap_range = 15
 	var/chain
 	var/mob/living/caster
 
-/obj/projectile/magic/aoe/lightning/fire(setAngle)
+/obj/projectile/magic/lightning/fire(setAngle)
 	if(caster)
 		chain = caster.Beam(src, icon_state = "lightning[rand(1, 12)]", time = INFINITY, maxdistance = INFINITY)
 	..()
 
-/obj/projectile/magic/aoe/lightning/on_impact(atom/target, impact_flags, def_zone, efficiency)
+/obj/projectile/magic/lightning/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
-	if(ismob(target))
-		var/mob/L = target
-		if(L.anti_magic_check())
-			L.visible_message("<span class='warning'>[src] fizzles on contact with [target]!</span>")
-			return . | PROJECTILE_IMPACT_DELETE
 	tesla_zap(src, zap_range, zap_power)
 	return . | PROJECTILE_IMPACT_DELETE
 
-/obj/projectile/magic/aoe/lightning/Destroy()
+/obj/projectile/magic/lightning/Destroy()
 	qdel(chain)
 	. = ..()
 
-/obj/projectile/magic/aoe/fireball
+/obj/projectile/magic/fireball
 	name = "bolt of fireball"
 	icon_state = "fireball"
 	damage_force = 10
@@ -479,29 +420,26 @@
 	var/exp_flash = 3
 	var/exp_fire = 2
 
-/obj/projectile/magic/aoe/fireball/on_impact(atom/target, impact_flags, def_zone, efficiency)
+/obj/projectile/magic/fireball/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	if(ismob(target))
 		var/mob/living/M = target
-		if(M.anti_magic_check())
-			visible_message("<span class='warning'>[src] vanishes into smoke on contact with [target]!</span>")
-			return . | PROJECTILE_IMPACT_DELETE
 		M.take_overall_damage(0,10) //between this 10 burn, the 10 brute, the explosion brute, and the onfire burn, your at about 65 damage if you stop drop and roll immediately
 	var/turf/T = get_turf(target)
 	explosion(T, -1, exp_heavy, exp_light, exp_flash, 0)//, flame_range = exp_fire)
 	return . | PROJECTILE_IMPACT_DELETE
 
 /* requires IMPACT_DELETE_AFTER
-/obj/projectile/magic/aoe/fireball/infernal
+/obj/projectile/magic/fireball/infernal
 	name = "infernal fireball"
 	exp_heavy = -1
 	exp_light = -1
 	exp_flash = 4
 	exp_fire= 5
 
-/obj/projectile/magic/aoe/fireball/infernal/on_impact(atom/target, impact_flags, def_zone, efficiency)
+/obj/projectile/magic/fireball/infernal/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
@@ -538,7 +476,7 @@
 
 //Spellcards
 
-/obj/projectile/spellcard
+/obj/projectile/magic/spellcard
 	name = "enchanted card"
 	desc = "A piece of paper enchanted to give it extreme durability and stiffness, along with a very hot burn to anyone unfortunate enough to get hit by a charged one."
 	icon_state = "spellcard"
@@ -552,7 +490,6 @@
 	icon_state = "spellcard"
 	damage_type = DAMAGE_TYPE_BURN
 	damage_force = 12
-	magic = TRUE
 
 /obj/projectile/magic/spellcard/book/spark
 	damage_force = 4
@@ -562,13 +499,8 @@
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
-	var/mob/living/carbon/M = target
-	if(ismob(target))
-		if(M.anti_magic_check())
-			M.visible_message("<span class='warning'>[src] vanishes on contact with [target]!</span>")
-			return
-
 	if(iscarbon(target))
+		var/mob/living/carbon/M = target
 		M.adjust_fire_stacks(fire_stacks)
 		M.IgniteMob()
 		return
@@ -589,10 +521,6 @@
 /obj/projectile/magic/spellcard/book/heal/on_hit(atom/target, blocked = FALSE)
 	. = ..()
 	var/mob/living/carbon/M = target
-	if(ismob(target))
-		if(M.anti_magic_check())
-			M.visible_message("<span class='warning'>[src] vanishes on contact with [target]!</span>")
-			return
 	if(iscarbon(target))
 		M.visible_message("<span class='warning'>[src] mends [target]!</span>")
 		M.adjustBruteLoss(-5) //HEALS

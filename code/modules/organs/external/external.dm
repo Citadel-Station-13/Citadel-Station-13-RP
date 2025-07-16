@@ -14,10 +14,15 @@
 	/// body_cover_flags that count as covering us
 	var/body_part_flags = NONE
 
-	//* Damage
+	//* Damage *//
 	/// https://www.desmos.com/calculator/eyn1lj5gq7
 	/// intensifier value used for inverse-damage softcap
 	var/damage_softcap_intensifier = 0
+
+	//* Examine *//
+	/// hide from worn examine if any of the following examine skip flags exist on skip_body
+	/// * set to "auto" to autoset
+	var/legacy_examine_skip_flags = "auto"
 
 	//* Physiology *//
 	/// local physiology holder
@@ -155,6 +160,30 @@
 		replaced(owner)
 		sync_colour_to_human(owner)
 	addtimer(CALLBACK(src, PROC_REF(get_icon)), 1)
+	if(legacy_examine_skip_flags == "auto")
+		switch(organ_tag)
+			if(BP_GROIN)
+				legacy_examine_skip_flags = EXAMINE_SKIPBODY_GROIN
+			if(BP_TORSO)
+				legacy_examine_skip_flags = EXAMINE_SKIPBODY_BODY
+			if(BP_HEAD)
+				legacy_examine_skip_flags = EXAMINE_SKIPBODY_HEAD
+			if(BP_L_ARM)
+				legacy_examine_skip_flags = EXAMINE_SKIPBODY_ARMS
+			if(BP_R_ARM)
+				legacy_examine_skip_flags = EXAMINE_SKIPBODY_ARMS
+			if(BP_L_HAND)
+				legacy_examine_skip_flags = EXAMINE_SKIPBODY_HANDS
+			if(BP_R_HAND)
+				legacy_examine_skip_flags = EXAMINE_SKIPBODY_HANDS
+			if(BP_L_FOOT)
+				legacy_examine_skip_flags = EXAMINE_SKIPBODY_FEET
+			if(BP_R_FOOT)
+				legacy_examine_skip_flags = EXAMINE_SKIPBODY_FEET
+			if(BP_L_LEG)
+				legacy_examine_skip_flags = EXAMINE_SKIPBODY_LEGS
+			if(BP_R_LEG)
+				legacy_examine_skip_flags = EXAMINE_SKIPBODY_LEGS
 
 /obj/item/organ/external/Destroy()
 

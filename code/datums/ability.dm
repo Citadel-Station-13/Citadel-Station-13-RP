@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
+
 /**
  * ability system
  *
@@ -6,21 +9,27 @@
  * - supports custom tgui
  *
  * used for intrinsic species / antagonist / body abiltiies
+ *
+ * * abilities can have state serialized serialize_state() and deserialize_state() separately
+ *   from the actual ability. this allows for managing ability states without needing to
+ *   store the actual ability and its properties.
  */
 /datum/ability
-	//? basics
+	//* Identity *//
 	/// name
 	var/name = "Unnamed ability"
 	/// desc
 	var/desc = "Some sort of ability."
+	// TODO: do we want a holder system and an action holder system instead of categories? or is this good enough?
+	// TODO: standard category icons and ability tgui when?
 	/// category - used for tgui
 	var/category = "Misc"
 
-	//? mob
+	//* Mob *//
 	/// owning mob - can be null if we aren't bound / granted to anyone.
 	var/mob/owner
 
-	//? binding
+	//* Action Button *//
 	/// action datum
 	var/datum/action/action
 	/// action button icon
@@ -31,6 +40,8 @@
 	var/background_icon = 'icons/screen/actions/backgrounds.dmi'
 	/// action button background icon state - the _on overlay will be added while active, automatically.
 	var/background_state = "default"
+
+	//* Binding *//
 	/// currently hotbound?
 	var/bound = FALSE
 	/// automatically hotbound?
@@ -49,31 +60,47 @@
 	/// range?
 	var/range
 
-	//? ui
-	/// tgui id
-	var/tgui_id = "TGUIAbility"
+	//* UI *//
+	/// Used to route to the right TGUI component.
+	var/ui_interface = "UIAbilityGeneric"
 
-	//? checks
+	//* Checks *//
 	/// check flags - see [code/__DEFINES/ability.dm]
 	var/ability_check_flags = NONE
 	/// mobility check flags
 	var/mobility_check_flags = NONE
 
 	//? state
-	/// cooldown delay, if we have a cooldown
-	var/cooldown = 0
-	/// for toggled abilities, turning off incurs the cooldown - otherwise, cooldown begins on toggling off.
-	var/cooldown_for_deactivation = TRUE
 	/// windup delay, if we have a windup
 	var/windup = 0
 	/// windup requires standing still
 	var/windup_requires_still = TRUE
 	/// last use world.time; null if we haven't been used yet
 	var/last_used
-	/// timerid for cooldown finish action button update
-	var/cooldown_visual_timerid
 	/// for toggle interacts: are we enabled?
 	var/enabled = FALSE
+
+	//* Cooldown *//
+	/// default cooldown time, if any
+	/// * For toggled abilities, by default, this applies to a toggle.
+	var/cooldown = 0
+	/// world.time we can be used next
+	#warn impl
+	var/cooldown_expires
+	/// timerid of cooldown update timer
+	#warn impl
+	var/cooldown_timerid
+	/// for toggled abilities, toggling on will check and incur the cooldown.
+	#warn handle
+	var/cooldown_applies_for_activation = TRUE
+	/// for toggled abilities, toggling off will check and incur the cooldown.
+	/// * implies [cooldown_applies_on_deactivation]
+	#warn handle
+	var/cooldown_applies_for_deactivation = TRUE
+	/// Applies cooldown post-invocation, whatever that means.
+	/// * for triggered abilities, apply cooldown after trigger() returns, not on invoke.
+	/// * for toggled abilities, apply the cooldown but not necessarily check for it on deactivation
+	var/cooldown_applies_post_invocation = FALSE
 
 /datum/ability/Destroy()
 	if(!isnull(owner))
@@ -81,6 +108,21 @@
 	if(!isnull(action))
 		QDEL_NULL(action)
 	return ..()
+
+/datum/ability/serialize()
+	. = ..()
+	.["state"] = serialize_state()
+
+/datum/ability/deserialize(list/data)
+	..()
+	if(data["state"])
+		deserialize_state(data["state"])
+
+/datum/ability/proc/serialize_state()
+	return list()
+
+/datum/ability/proc/deserialize_state(list/state)
+	return
 
 /**
  * generates our action button if it doesn't exist
@@ -121,14 +163,14 @@
 	recheck_queued_action_update()
 
 /datum/ability/proc/recheck_queued_action_update()
-	if(cooldown_visual_timerid)
-		deltimer(cooldown_visual_timerid)
-		cooldown_visual_timerid = null
+	if(cooldown_timerid)
+		deltimer(cooldown_timerid)
+		cooldown_timerid = null
 	var/next_available = 0
 	if(cooldown && !isnull(last_used) && (world.time < last_used + cooldown))
 		next_available = max(next_available, (last_used + cooldown) - world.time)
 	if(next_available > 0)
-		addtimer(CALLBACK(src, PROC_REF(update_action)), next_available, TIMER_STOPPABLE)
+		cooldown_timerid = addtimer(CALLBACK(src, PROC_REF(update_action)), next_available, TIMER_STOPPABLE)
 
 /datum/ability/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	. = ..()
@@ -181,8 +223,7 @@
 	if(!isnull(last_used) && (isnull(toggling) || toggling || (!toggling && cooldown_for_deactivation)) && (cooldown + last_used > world.time))
 		to_chat(user, SPAN_WARNING("[src] is still on cooldown! ([round((world.time - last_used) * 0.1, 0.1)] / [round(cooldown * 0.1, 0.1)])"))
 		return FALSE
-	if(!available_check())
-		to_chat(user, SPAN_WARNING(unavailable_reason()))
+	if(!check_availability(new /datum/event_args/actor(user), FALSE))
 		return FALSE
 	return TRUE
 
@@ -193,7 +234,7 @@
  * * user - triggering user. this is usually owner, but sometimes isn't.
  * * toggling - null if not toggled ability / not toggling, TRUE / FALSE for on / off.
  */
-/datum/ability/proc/on_trigger(mob/user, toggling)
+/datum/ability/proc/on_trigger_old(mob/user, toggling)
 	last_used = world.time
 	if(interact_type != ABILITY_INTERACT_TOGGLE)
 		update_action()
@@ -222,12 +263,6 @@
 	action?.background_icon_state = background_state
 	action?.update_buttons()
 	on_disable()
-
-/datum/ability/proc/on_enable()
-	return
-
-/datum/ability/proc/on_disable()
-	return
 
 /datum/ability/proc/quickbind()
 	if(bound)
@@ -260,45 +295,6 @@
 		action?.revoke(owner.actions_innate)
 	owner.unregister_ability(src)
 	owner = null
-
-/**
- * checks if we can be used
- */
-/datum/ability/proc/available_check()
-	if(isnull(owner))
-		return FALSE
-	if(ability_check_flags == NONE)
-		return TRUE
-	if((ability_check_flags & ABILITY_CHECK_CONSCIOUS) && !IS_CONSCIOUS(owner))
-		return FALSE
-	if((ability_check_flags & ABILITY_CHECK_STANDING) && IS_PRONE(owner))
-		return FALSE
-	if((ability_check_flags & ABILITY_CHECK_FREE_HAND) && !(!owner.are_usable_hands_full()))
-		return FALSE
-	if((ability_check_flags & ABILITY_CHECK_RESTING) && !IS_PRONE(owner))
-		return FALSE
-	if(!CHECK_MOBILITY(owner, mobility_check_flags))
-		return FALSE
-	return TRUE
-
-/**
- * checks if we can be used, returning reason on failure or null for success.
- */
-/datum/ability/proc/unavailable_reason()
-	if(isnull(owner))
-		return "!ERROR - NO OWNER!"
-	if(ability_check_flags == NONE)
-		return
-	if((ability_check_flags & ABILITY_CHECK_CONSCIOUS) && !IS_CONSCIOUS(owner))
-		return "You cannot do that while unconscious."
-	if((ability_check_flags & ABILITY_CHECK_STANDING) && owner.lying)
-		return "You cannot do that while on the ground."
-	if((ability_check_flags & ABILITY_CHECK_FREE_HAND) && !(!owner.are_usable_hands_full()))
-		return "You cannot do that without a free hand."
-	if((ability_check_flags & ABILITY_CHECK_RESTING) && !owner.lying)
-		return "You must be lying down to do that."
-	if(!CHECK_MOBILITY(owner, mobility_check_flags))
-		return "You cannot do that while incapacitated."
 
 /**
  * sets us to hidden - no binding and not seen on panel
@@ -340,14 +336,155 @@
  */
 /datum/ability/ui_static_data(mob/user, datum/tgui/ui)
 	return list(
-		"$tgui" = tgui_id,
-		"$src" = REF(src),
+		"interface" = ui_interface,
 		"interact_type" = interact_type,
 		"can_bind" = !always_bind && (interact_type != ABILITY_INTERACT_NONE),
 		"bound" = bound,
 		"name" = name,
 		"desc" = desc,
 	)
+
+//* Checks *//
+
+/datum/ability/proc/check_availability(datum/event_args/actor/actor, silent)
+	return run_mobility_check_flags(actor) && run_check_ability_flags(actor)
+
+/datum/ability/proc/run_mobility_check_flags(datum/event_args/actor/actor, silent)
+	if((mobility_check_flags & MOBILITY_IS_STANDING) && !(owner.mobility_flags & MOBILITY_IS_STANDING))
+		if(!silent)
+			actor?.chat_feedback(
+				SPAN_WARNING("You cannot do that while on the ground."),
+			)
+		return FALSE
+	if((mobility_check_flags & MOBILITY_IS_CONSCIOUS) && !(owner.mobility_flags & MOBILITY_IS_CONSCIOUS))
+		if(!silent)
+			actor?.chat_feedback(
+				SPAN_WARNING("You cannot do that while unconscious."),
+			)
+		return FALSE
+
+	var/rest_of_flags = mobility_check_flags & ~(MOBILITY_IS_STANDING | MOBILITY_IS_CONSCIOUS)
+	if(rest_of_flags && (owner.mobility_flags & rest_of_flags) == rest_of_flags)
+		if(!silent)
+			actor?.chat_feedback(
+				SPAN_WARNING("You can't do that right now."),
+			)
+		return FALSE
+	return TRUE
+
+/datum/ability/proc/run_check_ability_flags(datum/event_args/actor/actor, silent)
+	if((ability_check_flags & ABILITY_CHECK_HAS_FREE_HAND) && owner.are_usable_hands_full())
+		if(!silent)
+			actor?.chat_feedback(
+				SPAN_WARNING("You need a free hand to do that."),
+			)
+		return FALSE
+	if((ability_check_flags & ABILITY_CHECK_IS_RESTING) && !owner.lying)
+		if(!silent)
+			actor?.chat_feedback(
+				SPAN_WARNING("You have to be laying down to do that."),
+			)
+		return FALSE
+	return TRUE
+
+//* Cooldown *//
+
+/datum/ability/proc/cooldown_check()
+	return cooldown_expires > world.time
+
+/**
+ * @return 1 if not on cooldown, 0 if freshly on cooldown
+ */
+/datum/ability/proc/cooldown_ratio()
+	if(!cooldown)
+		return cooldown_expires > world.time ? 0 : 1
+	return	clamp(1 - (cooldown_expires - world.time) / cooldown, 0, 1)
+
+
+/datum/ability/proc/cooldown_apply(time)
+	if(cooldown_expires - world.time > time)
+		return
+	set_cooldown_left(world.time + time)
+
+/datum/ability/proc/cooldown_set(time)
+	cooldown_expires = world.time + time
+
+//* Hooks *//
+
+/**
+ * * Sleeping is allowed.
+ * * Enable / Disable is fired before this.
+ *
+ * @return TRUE if triggered. Cooldown and similar will only apply if trigger is successful.
+ */
+#warn hook
+/datum/ability/proc/on_trigger()
+	SHOULD_CALL_PARENT(TRUE)
+	PROTECTED_PROC(TRUE)
+
+/**
+ * * Called additionally to `on_trigger` if there's a target.
+ * * Enable / Disable is fired before this.
+ * * Sleeping is allowed.
+ *
+ * @params
+ * * target - target entity, if any
+ * * clickchain - provided clickchain for the triggering click, if any
+ *
+ * @return TRUE if triggered. Cooldown and similar will only apply if trigger is successful.
+ */
+#warn hook target
+/datum/ability/proc/on_targeted_trigger(atom/target, datum/event_args/actor/clickchain/clickchain)
+	SHOULD_CALL_PARENT(TRUE)
+	PROTECTED_PROC(TRUE)
+
+/**
+ * * Called additionally to `on_trigger` if we're a toggled ability.
+ * * Sleeping is allowed.
+ * * Called before on-trigger
+ */
+/datum/ability/proc/on_enable()
+	SHOULD_CALL_PARENT(TRUE)
+	PROTECTED_PROC(TRUE)
+
+#warn hook target
+/**
+ * * Called additionally to `on_enable` if we're a targeted ability.
+ * * Sleeping is allowed.
+ * * Called before on-trigger
+ *
+ * @params
+ * * target - target entity, if any
+ * * clickchain - provided clickchain for the triggering click, if any
+ */
+/datum/ability/proc/on_targeted_enable()
+	SHOULD_CALL_PARENT(TRUE)
+	PROTECTED_PROC(TRUE)
+
+/**
+ * * Called additionally to `on_trigger` if we're a toggled ability.
+ * * Sleeping is allowed.
+ * * Called before on-trigger
+ */
+/datum/ability/proc/on_disable()
+	SHOULD_CALL_PARENT(TRUE)
+	PROTECTED_PROC(TRUE)
+
+#warn hook target
+/**
+ * * Called additionally to `on_disable` if we're a targeted ability.
+ * * Sleeping is allowed.
+ * * Called before on-trigger
+ *
+ * @params
+ * * target - target entity, if any
+ * * clickchain - provided clickchain for the triggering click, if any
+ */
+/datum/ability/proc/on_targeted_disable(atom/target, datum/event_args/actor/clickchain/clickchain)
+	SHOULD_CALL_PARENT(TRUE)
+	PROTECTED_PROC(TRUE)
+
+//* Action Button *//
 
 /**
  * action datums for abilities
