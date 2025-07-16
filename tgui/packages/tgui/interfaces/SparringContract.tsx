@@ -47,7 +47,7 @@ type Info = {
 };
 
 export const SparringContract = (props, context) => {
-  const { data, act } = useBackend<Info>(context);
+  const { data, act } = useBackend<Info>();
   const {
     set_weapon,
     set_area,
@@ -95,16 +95,16 @@ export const SparringContract = (props, context) => {
                 <Stack.Item>
                   <Dropdown
                     width="100%"
-                    selected={weaponlist[weapon-1]}
+                    selected={weaponlist[weapon - 1]}
                     options={weaponlist}
                     onSelected={value =>
                       setWeapon(weaponlist.findIndex(title => (
                         title === value
-                      ))+1)} />
+                      )) + 1)} />
                 </Stack.Item>
                 <Stack.Item>
                   <BlockQuote>
-                    {weaponblurb[weapon-1]}
+                    {weaponblurb[weapon - 1]}
                   </BlockQuote>
                 </Stack.Item>
               </Stack>
@@ -137,16 +137,16 @@ export const SparringContract = (props, context) => {
                 <Stack.Item>
                   <Dropdown
                     width="100%"
-                    selected={stakelist[stakes-1]}
+                    selected={stakelist[stakes - 1]}
                     options={stakelist}
                     onSelected={value =>
                       setStakes(stakelist.findIndex(title => (
                         title === value
-                      ))+1)} />
+                      )) + 1)} />
                 </Stack.Item>
                 <Stack.Item>
                   <BlockQuote>
-                    {stakesblurb[stakes-1]}
+                    {stakesblurb[stakes - 1]}
                   </BlockQuote>
                 </Stack.Item>
               </Stack>
@@ -168,8 +168,8 @@ export const SparringContract = (props, context) => {
                       Sign Here
                     </Button>
                   ) || (
-                    left_sign
-                  )}
+                      left_sign
+                    )}
                 </Stack.Item>
                 <Stack.Item fontSize="16px">
                   VS
@@ -188,8 +188,8 @@ export const SparringContract = (props, context) => {
                       Sign Here
                     </Button>
                   ) || (
-                    right_sign
-                  )}
+                      right_sign
+                    )}
                 </Stack.Item>
               </Stack>
             </Stack.Item>
@@ -219,7 +219,7 @@ export const SparringContract = (props, context) => {
                 <Stack.Item>
                   <Button
                     tooltip={in_area
-                      && "Both participants are present in the "+ area + "."
+                      && "Both participants are present in the " + area + "."
                       || "Both participants need to be in the arena!"}
                     color={in_area && "green" || "red"}
                     icon="ring" >

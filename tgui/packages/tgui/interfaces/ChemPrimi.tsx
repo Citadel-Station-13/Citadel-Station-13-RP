@@ -66,7 +66,7 @@ type StyleData = {
 
 
 export const ChemPrimi = (props, context) => {
-  const { data } = useBackend<ChemMasterData>(context);
+  const { data } = useBackend<ChemMasterData>();
   const { screen } = data;
   return (
     <Window width={465} height={550}>
@@ -78,7 +78,7 @@ export const ChemPrimi = (props, context) => {
 };
 
 const ChemPrimiContent = (props, context) => {
-  const { act, data } = useBackend<ChemMasterData>(context);
+  const { act, data } = useBackend<ChemMasterData>();
   const {
     screen,
     beaker_contents = [],
@@ -165,7 +165,7 @@ const ChemPrimiContent = (props, context) => {
 const ChemicalBuffer = Table;
 
 const ChemicalBufferEntry = (props, context) => {
-  const { act } = useBackend<ChemMasterData>(context);
+  const { act } = useBackend<ChemMasterData>();
   const { chemical, transferTo } = props;
   return (
     <Table.Row key={chemical.id}>

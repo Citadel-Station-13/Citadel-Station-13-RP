@@ -52,7 +52,7 @@ interface JoinFactionProps {
 
 // LateChoices
 export const JoinMenu = (props, context) => {
-  const { act, data } = useBackend<JoinMenuData>(context);
+  const { act, data } = useBackend<JoinMenuData>();
 
   return (
     <Window width={500} height={800}>
@@ -71,8 +71,8 @@ export const JoinMenu = (props, context) => {
               <NoticeBox
                 info={data.evacuated === 2}
                 warning={data.evacuated === 1 || data.evacuated === 3}>
-                {(data.evacuated === 2)? "A crew transfer is in progress."
-                  : ((data.evacuated === 3)? "The installation has been evacuated."
+                {(data.evacuated === 2) ? "A crew transfer is in progress."
+                  : ((data.evacuated === 3) ? "The installation has been evacuated."
                     : "An evacuation is in progress.")}
               </NoticeBox>
             )}
@@ -97,7 +97,7 @@ export const JoinMenu = (props, context) => {
                   data.ghostroles.map((role) => {
                     return (
                       <Collapsible key={role.id} title={role.name} color="transparent" buttons={
-                        <>{(role.slots === -1)? '' : role.slots} <Icon name="user-friends" />
+                        <>{(role.slots === -1) ? '' : role.slots} <Icon name="user-friends" />
                           <Button.Confirm
                             icon="sign-in-alt"
                             content="Join"
@@ -159,7 +159,7 @@ const JoinFaction = (props: JoinFactionProps, context) => {
                   return (
                     <Collapsible color="transparent" headerProps={{ style: { "margin-left": "7.5%" } }}
                       key={job.id} title={job.name} buttons={
-                        <>{(job.slots === -1)? 'Unlimited' : `${job.slots} left`} <Icon name="user-friends" />
+                        <>{(job.slots === -1) ? 'Unlimited' : `${job.slots} left`} <Icon name="user-friends" />
                           <Button.Confirm
                             icon="sign-in-alt"
                             content="Join"

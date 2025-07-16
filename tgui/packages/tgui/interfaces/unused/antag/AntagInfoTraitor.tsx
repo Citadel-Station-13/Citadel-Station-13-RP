@@ -42,7 +42,7 @@ type Info = {
 };
 
 const ObjectivePrintout = (props, context) => {
-  const { data } = useBackend<Info>(context);
+  const { data } = useBackend<Info>();
   const {
     objectives,
   } = data;
@@ -53,18 +53,18 @@ const ObjectivePrintout = (props, context) => {
       </Stack.Item>
       <Stack.Item>
         {!objectives && "None!"
-        || objectives.map(objective => (
-          <Stack.Item key={objective.count}>
-            #{objective.count}: {objective.explanation}
-          </Stack.Item>
-        )) }
+          || objectives.map(objective => (
+            <Stack.Item key={objective.count}>
+              #{objective.count}: {objective.explanation}
+            </Stack.Item>
+          ))}
       </Stack.Item>
     </Stack>
   );
 };
 
 const IntroductionSection = (props, context) => {
-  const { act, data } = useBackend<Info>(context);
+  const { act, data } = useBackend<Info>();
   const {
     intro,
   } = data;
@@ -83,7 +83,7 @@ const IntroductionSection = (props, context) => {
 };
 
 const EmployerSection = (props, context) => {
-  const { data } = useBackend<Info>(context);
+  const { data } = useBackend<Info>();
   const {
     allies,
     goal,
@@ -132,7 +132,7 @@ const EmployerSection = (props, context) => {
 };
 
 const UplinkSection = (props, context) => {
-  const { data } = useBackend<Info>(context);
+  const { data } = useBackend<Info>();
   const {
     has_uplink,
     uplink_intro,
@@ -152,29 +152,29 @@ const UplinkSection = (props, context) => {
             </Stack.Item>
           </Dimmer>
         ) || (
-          <>
-            <Stack.Item bold>
-              {uplink_intro}
-              <br />
-              <span style={goalstyle}>Code: {code}</span>
-              <br />
-              <span style={badstyle}>Failsafe: {failsafe_code}</span>
-            </Stack.Item>
-            <Stack.Divider />
-            <Stack.Item mt="1%">
-              <BlockQuote>
-                {uplink_unlock_info}
-              </BlockQuote>
-            </Stack.Item>
-          </>
-        )}
+            <>
+              <Stack.Item bold>
+                {uplink_intro}
+                <br />
+                <span style={goalstyle}>Code: {code}</span>
+                <br />
+                <span style={badstyle}>Failsafe: {failsafe_code}</span>
+              </Stack.Item>
+              <Stack.Divider />
+              <Stack.Item mt="1%">
+                <BlockQuote>
+                  {uplink_unlock_info}
+                </BlockQuote>
+              </Stack.Item>
+            </>
+          )}
       </Stack>
     </Section>
   );
 };
 
 const CodewordsSection = (props, context) => {
-  const { data } = useBackend<Info>(context);
+  const { data } = useBackend<Info>();
   const {
     has_codewords,
     phrases,
@@ -192,46 +192,46 @@ const CodewordsSection = (props, context) => {
             Proceed with caution, however, as everyone is a potential foe.
           </BlockQuote>
         ) || (
-          <>
-            <Stack.Item grow basis={0}>
-              <BlockQuote>
-                The Syndicate have provided you with the following
-                codewords to identify fellow agents. Use the codewords
-                during regular conversation to identify other agents.
-                Proceed with caution, however, as everyone is a
-                potential foe.
-                <span style={badstyle}>
-                  &ensp;You have memorized the codewords, allowing you
-                  to recognise them when heard.
-                </span>
-              </BlockQuote>
-            </Stack.Item>
-            <Stack.Divider mr={1} />
-            <Stack.Item grow basis={0}>
-              <Stack vertical>
-                <Stack.Item>
-                  Code Phrases:
-                </Stack.Item>
-                <Stack.Item bold textColor="blue">
-                  {phrases}
-                </Stack.Item>
-                <Stack.Item>
-                  Code Responses:
-                </Stack.Item>
-                <Stack.Item bold textColor="red">
-                  {responses}
-                </Stack.Item>
-              </Stack>
-            </Stack.Item>
-          </>
-        )}
+            <>
+              <Stack.Item grow basis={0}>
+                <BlockQuote>
+                  The Syndicate have provided you with the following
+                  codewords to identify fellow agents. Use the codewords
+                  during regular conversation to identify other agents.
+                  Proceed with caution, however, as everyone is a
+                  potential foe.
+                  <span style={badstyle}>
+                    &ensp;You have memorized the codewords, allowing you
+                    to recognise them when heard.
+                  </span>
+                </BlockQuote>
+              </Stack.Item>
+              <Stack.Divider mr={1} />
+              <Stack.Item grow basis={0}>
+                <Stack vertical>
+                  <Stack.Item>
+                    Code Phrases:
+                  </Stack.Item>
+                  <Stack.Item bold textColor="blue">
+                    {phrases}
+                  </Stack.Item>
+                  <Stack.Item>
+                    Code Responses:
+                  </Stack.Item>
+                  <Stack.Item bold textColor="red">
+                    {responses}
+                  </Stack.Item>
+                </Stack>
+              </Stack.Item>
+            </>
+          )}
       </Stack>
     </Section>
   );
 };
 
 export const AntagInfoTraitor = (props, context) => {
-  const { data } = useBackend<Info>(context);
+  const { data } = useBackend<Info>();
   const {
     theme,
   } = data;

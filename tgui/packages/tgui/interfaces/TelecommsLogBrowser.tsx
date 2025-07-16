@@ -50,7 +50,7 @@ interface UITemporaryMessage {
 }
 
 export const TelecommsLogBrowser = (props, context) => {
-  const { act, data } = useBackend<TelecommsLogBrowserContext>(context);
+  const { act, data } = useBackend<TelecommsLogBrowserContext>();
 
   return (
     <Window
@@ -138,7 +138,7 @@ const TelecommsServerSelection = (props, context) => {
         {servers.map(server => (
           <LabeledList.Item
             key={server.id}
-            label={server.name+ " (" + server.id + ")"}>
+            label={server.name + " (" + server.id + ")"}>
             <Button
               content="View"
               icon="eye"
@@ -156,7 +156,7 @@ interface TelecommsSelectedServerProps {
 }
 
 const TelecommsSelectedServer = (props: TelecommsSelectedServerProps, context) => {
-  const { act, data } = useBackend<TelecommsLogBrowserContext>(context);
+  const { act, data } = useBackend<TelecommsLogBrowserContext>();
 
   return (
     <Section
@@ -182,7 +182,7 @@ const TelecommsSelectedServer = (props: TelecommsSelectedServerProps, context) =
           color="transparent"
           buttons={
             <Button
-              content={props.server.triangulating? "Enabled" : "Disabled"}
+              content={props.server.triangulating ? "Enabled" : "Disabled"}
               selected={!!props.server.triangulating}
               onClick={() => act('toggle_triangulation')} />
           }>
@@ -214,9 +214,9 @@ const TelecommsSelectedServer = (props: TelecommsSelectedServerProps, context) =
               <Flex.Item m="2px" key={log.id} basis="49%" grow={log.id % 2}>
                 <Section
                   title={(props.universal_translate
-                      || log.parameters["uspeech"]
-                      || log.parameters["intelligible"]
-                      || log.input_type === "Execution Error")
+                    || log.parameters["uspeech"]
+                    || log.parameters["intelligible"]
+                    || log.input_type === "Execution Error")
                     ? log.input_type
                     : "Audio File"}
                   buttons={
@@ -242,13 +242,13 @@ const TelecommsSelectedServer = (props: TelecommsSelectedServerProps, context) =
                       </LabeledList.Item>
                     </LabeledList>
                   ) : (props.universal_translate
-                      || log.parameters["uspeech"]
-                      || log.parameters["intelligible"])
+                    || log.parameters["uspeech"]
+                    || log.parameters["intelligible"])
                     ? <TelecommsLog log={log} />
                     : <TelecommsLog error />}
                 </Section>
               </Flex.Item>
-            )) }
+            ))}
         </Flex>
       </Section>
     </Section>
@@ -257,7 +257,7 @@ const TelecommsSelectedServer = (props: TelecommsSelectedServerProps, context) =
 
 
 const TelecommsLog = (props, context) => {
-  const { act, data } = useBackend<TelecommsLogBrowserContext>(context);
+  const { act, data } = useBackend<TelecommsLogBrowserContext>();
   const {
     log,
     error,

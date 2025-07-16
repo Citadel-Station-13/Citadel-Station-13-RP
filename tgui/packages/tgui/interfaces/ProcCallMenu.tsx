@@ -18,7 +18,7 @@ type ProcCallMenuData = {
 }
 
 export const ProcCallMenu = (props, context) => {
-  const { act, data } = useBackend<ProcCallMenuData>(context);
+  const { act, data } = useBackend<ProcCallMenuData>();
   const {
     input_ports,
     possible_types,
@@ -74,14 +74,14 @@ export const ProcCallMenu = (props, context) => {
                     datatype={val.datatype}
                     datatypeOptions={possible_types}
                     onRemove={() => act("remove_argument", {
-                      index: index+1,
+                      index: index + 1,
                     })}
                     onSetType={type => act("set_argument_datatype", {
-                      index: index+1,
+                      index: index + 1,
                       datatype: type,
                     })}
                     onEnter={(e, value) => act("rename_argument", {
-                      index: index+1,
+                      index: index + 1,
                       name: value,
                     })}
                   />

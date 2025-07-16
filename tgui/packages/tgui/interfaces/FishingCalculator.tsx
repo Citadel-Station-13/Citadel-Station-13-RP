@@ -20,7 +20,7 @@ type FishingCalculatorData = {
 };
 
 export const FishingCalculator = (props, context) => {
-  const { act, data } = useBackend<FishingCalculatorData>(context);
+  const { act, data } = useBackend<FishingCalculatorData>();
 
   const [bait, setBait] = useLocalState<string>(
     context,

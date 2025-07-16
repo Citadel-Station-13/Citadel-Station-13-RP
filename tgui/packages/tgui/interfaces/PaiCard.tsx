@@ -27,7 +27,7 @@ type Pai = {
 };
 
 export const PaiCard = (_, context) => {
-  const { data } = useBackend<PaiCardData>(context);
+  const { data } = useBackend<PaiCardData>();
   const { pai } = data;
 
   return (
@@ -39,7 +39,7 @@ export const PaiCard = (_, context) => {
 
 /** Gives a list of candidates as cards */
 const PaiDownload = (_, context) => {
-  const { act, data } = useBackend<PaiCardData>(context);
+  const { act, data } = useBackend<PaiCardData>();
   const { candidates = [] } = data;
   const [tabInChar, setTabInChar] = useLocalState(context, 'tab', true);
   const onClick = () => {
@@ -95,7 +95,7 @@ const PaiDownload = (_, context) => {
  * In longer entries, it is much more readable.
  */
 const CandidateDisplay = (props, context) => {
-  const { act } = useBackend<PaiCardData>(context);
+  const { act } = useBackend<PaiCardData>();
   const { candidate, index, tabInChar } = props;
   const { comments, description, key, name } = candidate;
 
@@ -133,7 +133,7 @@ const CandidateDisplay = (props, context) => {
 
 /** Once a pAI has been loaded, you can alter its settings here */
 const PaiOptions = (_, context) => {
-  const { act, data } = useBackend<PaiCardData>(context);
+  const { act, data } = useBackend<PaiCardData>();
   const { pai } = data;
   const { can_holo, dna, emagged, laws, master, name, transmit, receive } = pai;
 

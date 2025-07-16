@@ -23,7 +23,7 @@ interface GuestPassTerminalData {
 }
 
 export const GuestPassTerminal = (props, context) => {
-	const { data, act } = useBackend<GuestPassTerminalData>(context);
+	const { data, act } = useBackend<GuestPassTerminalData>();
 	const [tab, setTab] = useState<number>(1);
 	return (
 		<Window width={500} height={700}>

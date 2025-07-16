@@ -9,7 +9,7 @@ interface SheetSiloData {
 }
 
 export const SheetSilo = (props, context) => {
-  const { act, data } = useBackend<SheetSiloData>(context);
+  const { act, data } = useBackend<SheetSiloData>();
   const [dropAmounts, setDropAmounts] = useState<Record<string, number>>({});
   const setDropAmount = (id: string, amt: number) => {
     let corrected = { ...dropAmounts };

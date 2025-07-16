@@ -13,7 +13,7 @@ type SDQLSpellAdminPanelData = {
 }
 
 export const SDQLSpellAdminPanel = (props, context) => {
-  const { act, data } = useBackend<SDQLSpellAdminPanelData>(context);
+  const { act, data } = useBackend<SDQLSpellAdminPanelData>();
 
   return (
     <Window title="SDQL Spell Admin Panel" width={1200} height={500} theme="admin" resizable>

@@ -36,7 +36,7 @@ interface ProteanOrgans {
 }
 
 export const NaniteChamberControl = (props, context) => {
-  const { act, data } = useBackend<NaniteChamberControlData>(context);
+  const { act, data } = useBackend<NaniteChamberControlData>();
 
   return (
     <Window
@@ -51,27 +51,27 @@ export const NaniteChamberControl = (props, context) => {
 };
 
 const NaniteChamberControlContent = (props, context) => {
-  const { act, data } = useBackend<NaniteChamberControlData>(context);
+  const { act, data } = useBackend<NaniteChamberControlData>();
 
-  return data.hasChamber? (
+  return data.hasChamber ? (
     <Section
       title={`Chamber`}
       fill
       buttons={
         <Button
           disabled={data.open}
-          icon={data.locked? "lock" : "lock-open"}
-          content={data.locked? "Locked" : "Unlocked"}
-          color={data.locked? "bad" : "default"}
+          icon={data.locked ? "lock" : "lock-open"}
+          content={data.locked ? "Locked" : "Unlocked"}
+          color={data.locked ? "bad" : "default"}
           onClick={() => act('lock')} />
       }>
       {
-        data.open? (
+        data.open ? (
           <NoticeBox>
             Chamber open
           </NoticeBox>
         ) : (
-          data.operating? (
+          data.operating ? (
             <NoticeBox textAlign="center" fontSize="1.75em">
               Operating...
             </NoticeBox>
@@ -92,7 +92,7 @@ const NaniteChamberControlContent = (props, context) => {
 
 
 const NaniteChamberControlOccupant = (props, context) => {
-  const { act, data } = useBackend<NaniteChamberControlData>(context);
+  const { act, data } = useBackend<NaniteChamberControlData>();
 
   // mob occupant
   if (data.hasOccupant) {

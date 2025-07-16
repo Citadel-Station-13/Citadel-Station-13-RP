@@ -4,7 +4,7 @@ import { OperatorData } from './data';
 import { toFixed } from 'common/math';
 
 export const RadioPane = (props, context) => {
-  const { act, data } = useBackend<OperatorData>(context);
+  const { act, data } = useBackend<OperatorData>();
   const {
     microphone,
     speaker,
@@ -32,9 +32,9 @@ export const RadioPane = (props, context) => {
           unit="kHz"
           step={0.2}
           stepPixelSize={6}
-          minValue={minfreq/10}
-          maxValue={maxfreq/10}
-          value={frequency/10}
+          minValue={minfreq / 10}
+          maxValue={maxfreq / 10}
+          value={frequency / 10}
           format={value => toFixed(value, 1)}
           width="80px"
           onDrag={(e, value) => act('set_frequency', {

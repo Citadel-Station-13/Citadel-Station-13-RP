@@ -9,11 +9,11 @@ import { AtmosTank, AtmosTankSlot } from "./Atmos";
 
 enum AtmosPortableUIFlags {
   None = (0),
-  ViewFlow = (1<<0),
-  TogglePower = (1<<1),
-  SetFlow = (1<<2),
-  SetPower = (1<<3),
-  SeePower = (1<<4),
+  ViewFlow = (1 << 0),
+  TogglePower = (1 << 1),
+  SetFlow = (1 << 2),
+  SetPower = (1 << 3),
+  SeePower = (1 << 4),
 }
 
 interface AtmosPortableControlProps {
@@ -32,10 +32,10 @@ export const AtmosPortableControl = (props: AtmosPortableControlProps, context) 
     <>
       <Section title="Status"
         buttons={props.data.controlFlags & AtmosPortableUIFlags.TogglePower && (
-          <Button content={props.data.on? "On" : "Off"}
+          <Button content={props.data.on ? "On" : "Off"}
             onClick={() => props.toggleAct?.()}
             selected={props.data.on}
-            icon={props.data.on? 'power-off' : 'times'} />
+            icon={props.data.on ? 'power-off' : 'times'} />
         )}>
         <LabeledList>
           <LabeledList.Item label="Pressure">
@@ -44,14 +44,14 @@ export const AtmosPortableControl = (props: AtmosPortableControlProps, context) 
           <LabeledList.Item label="Temperature">
             <AnimatedNumber value={props.data.temperature} />{` kPa`}
           </LabeledList.Item>
-          <LabeledList.Item label="Port" color={props.data.portConnected? "good" : "average"}>
-            {props.data.portConnected? "Connected" : "Not Connected"}
+          <LabeledList.Item label="Port" color={props.data.portConnected ? "good" : "average"}>
+            {props.data.portConnected ? "Connected" : "Not Connected"}
           </LabeledList.Item>
         </LabeledList>
       </Section>
       <Section title="Flow">
         <LabeledList>
-          {props.data.controlFlags & AtmosPortableUIFlags.SetFlow? (
+          {props.data.controlFlags & AtmosPortableUIFlags.SetFlow ? (
             <LabeledList.Item label="Flow Limit">
               <NumberInput value={props.data.flowSetting}
                 maxValue={props.data.flowMax} onChange={(e, val) => props.setFlowAct?.(val)}
@@ -69,8 +69,8 @@ export const AtmosPortableControl = (props: AtmosPortableControlProps, context) 
         <Section title="Power">
           <LabeledList>
             <LabeledList.Item label="Cell">
-              <ProgressBar value={props.data.maxCharge? (props.data.charge / props.data.maxCharge) : 0}>
-                {props.data.charge? (round(props.data.charge / props.data.maxCharge, 1) * 100) : 0}%
+              <ProgressBar value={props.data.maxCharge ? (props.data.charge / props.data.maxCharge) : 0}>
+                {props.data.charge ? (round(props.data.charge / props.data.maxCharge, 1) * 100) : 0}%
               </ProgressBar>
             </LabeledList.Item>
             {!!(props.data.controlFlags & AtmosPortableUIFlags.SetPower) && (
@@ -129,7 +129,7 @@ export interface AtmosPortableData {
   portConnected: BooleanLike;
 }
 
-interface AtmosPortableProps extends ComponentProps{
+interface AtmosPortableProps extends ComponentProps {
   readonly minimumHeight?: number;
   readonly minimumWidth?: number;
   readonly name: string;
@@ -137,7 +137,7 @@ interface AtmosPortableProps extends ComponentProps{
 }
 
 export const AtmosPortable = (props: AtmosPortableProps, context) => {
-  const { data, act } = useBackend<AtmosPortableData>(context);
+  const { data, act } = useBackend<AtmosPortableData>();
   let extraHeight = 0;
   if (data.useCell) {
     extraHeight += 100;

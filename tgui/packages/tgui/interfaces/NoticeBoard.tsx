@@ -10,7 +10,7 @@ type Data = {
 };
 
 export const NoticeBoard = (props, context) => {
-  const { act, data } = useBackend<Data>(context);
+  const { act, data } = useBackend<Data>();
   const { allowed, items = [] } = data;
 
   return (

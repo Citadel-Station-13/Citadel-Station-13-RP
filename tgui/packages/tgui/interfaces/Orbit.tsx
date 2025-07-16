@@ -6,7 +6,7 @@ import { Window } from '../layouts';
 const PATTERN_NUMBER = / \(([0-9]+)\)$/;
 
 const searchFor = (searchText: string) => {
-  return createSearch(searchText, (thing: { name: string}) => thing.name);
+  return createSearch(searchText, (thing: { name: string }) => thing.name);
 };
 
 const compareNumberedText = (
@@ -97,7 +97,7 @@ const OrbitedButton = (props: OrbitedButtonProps, context: any) => {
 };
 
 export const Orbit = (props: any, context: any) => {
-  const { act, data } = useBackend<OrbitData>(context);
+  const { act, data } = useBackend<OrbitData>();
   const {
     players,
     simplemobs,

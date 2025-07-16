@@ -4,7 +4,7 @@ import { OperatorData } from './data';
 import { classes } from 'common/react';
 
 export const ArmorPane = (props, context) => {
-  const { act, data } = useBackend<OperatorData>(context);
+  const { act, data } = useBackend<OperatorData>();
   const {
     mech_equipment,
   } = data;

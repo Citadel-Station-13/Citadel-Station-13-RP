@@ -177,7 +177,7 @@ const SystemDisplay = () => {
 
 /** Renders some ASCII art. Changes to red on emag. */
 const SystemWallpaper = (_, context) => {
-  const { data } = useBackend<PaiInterfaceData>(context);
+  const { data } = useBackend<PaiInterfaceData>();
   const { emagged } = data;
 
   const owner = !emagged ? 'NANOTRASEN' : ' SYNDICATE';
@@ -222,7 +222,7 @@ const SystemWallpaper = (_, context) => {
  * You can check their DNA and change your image here.
  */
 const SystemInfo = (_, context) => {
-  const { act, data } = useBackend<PaiInterfaceData>(context);
+  const { act, data } = useBackend<PaiInterfaceData>();
   const { image, master } = data;
 
   return (
@@ -259,7 +259,7 @@ const SystemInfo = (_, context) => {
 
 /** Shows the hardcoded PAI info along with any supplied orders. */
 const DirectiveDisplay = (_, context) => {
-  const { data } = useBackend<PaiInterfaceData>(context);
+  const { data } = useBackend<PaiInterfaceData>();
   const { directives, master } = data;
 
   return (
@@ -322,7 +322,7 @@ const InstalledDisplay = (_, context) => {
 
 /** Iterates over installed software to render buttons. */
 const InstalledSoftware = (props, context) => {
-  const { data } = useBackend<PaiInterfaceData>(context);
+  const { data } = useBackend<PaiInterfaceData>();
   const { installed = [] } = data;
   const { onInstallClick } = props;
 
@@ -380,7 +380,7 @@ const InstalledInfo = (props) => {
 
 /** Todo: Remove this entirely when records get a TGUI interface themselves */
 const RecordsDisplay = (props, context) => {
-  const { act, data } = useBackend<PaiInterfaceData>(context);
+  const { act, data } = useBackend<PaiInterfaceData>();
   const { record_type } = props;
   const { records = [], refresh_spam } = data;
   const convertedRecords: CrewRecord[] = records[record_type];
@@ -451,7 +451,7 @@ const RecordRow = (props) => {
  * power toggle.
  */
 const SoftwareButtons = (props, context) => {
-  const { act, data } = useBackend<PaiInterfaceData>(context);
+  const { act, data } = useBackend<PaiInterfaceData>();
   const { door_jack, languages, pda } = data;
   const { software } = props;
 
@@ -559,7 +559,7 @@ const AvailableDisplay = () => {
 
 /** Displays the remaining RAM left as a progressbar. */
 const AvailableMemory = (_, context) => {
-  const { data } = useBackend<PaiInterfaceData>(context);
+  const { data } = useBackend<PaiInterfaceData>();
   const { ram } = data;
 
   return (
@@ -589,7 +589,7 @@ const AvailableMemory = (_, context) => {
  *  creates table rows for each, like a vendor.
  */
 const AvailableSoftware = (_, context) => {
-  const { data } = useBackend<PaiInterfaceData>(context);
+  const { data } = useBackend<PaiInterfaceData>();
   const { available } = data;
   const convertedList: Available[] = Object.entries(available).map((key) => {
     return { name: key[0], value: key[1] };
@@ -606,7 +606,7 @@ const AvailableSoftware = (_, context) => {
 
 /** A row for an individual software listing. */
 const AvailableRow = (props, context) => {
-  const { act, data } = useBackend<PaiInterfaceData>(context);
+  const { act, data } = useBackend<PaiInterfaceData>();
   const { ram } = data;
   const { installed } = data;
   const { software } = props;

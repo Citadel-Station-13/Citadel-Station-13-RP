@@ -11,7 +11,7 @@ interface AtmosGuideProps {
 }
 
 export const AtmosGuide = (props: AtmosGuideProps) => {
-  return props.embedded? (
+  return props.embedded ? (
     <Section fitted>
       <AtmosGuideInternal {...props} />
     </Section>
@@ -117,7 +117,7 @@ const GasSearchBar = (
 };
 
 const GasHandbook = (props, context) => {
-  const { act, data } = useBackend<{ gasInfo: Gas[] }>(context);
+  const { act, data } = useBackend<{ gasInfo: Gas[] }>();
   const { gasInfo } = data;
   const [activeGasId, setActiveGasId] = useLocalState(
     context,
@@ -173,7 +173,7 @@ const GasHandbook = (props, context) => {
 };
 
 const ReactionHandbook = (props, context) => {
-  const { act, data } = useBackend<{ reactionInfo: Reaction[] }>(context);
+  const { act, data } = useBackend<{ reactionInfo: Reaction[] }>();
   const { reactionInfo } = data;
   const [activeGasId, setActiveGasId] = useLocalState(
     context,

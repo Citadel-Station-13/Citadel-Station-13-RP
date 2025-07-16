@@ -8,9 +8,9 @@ import { Window } from "../../layouts";
 
 export enum AtmosComponentUIFlags {
   None = 0,
-  TogglePower = (1<<0),
-  SetPowerLimit = (1<<1),
-  SeePowerUsage = (1<<2),
+  TogglePower = (1 << 0),
+  SetPowerLimit = (1 << 1),
+  SeePowerUsage = (1 << 2),
 }
 
 export interface AtmosComponentControlProps extends SectionProps {
@@ -31,7 +31,7 @@ export const AtmosComponentControl = (props: AtmosComponentControlProps, context
         {!!(props.data.controlFlags & AtmosComponentUIFlags.TogglePower) && (
           <LabeledList.Item label="Enabled">
             <Button
-              content={props.data.on? "On" : "Off"}
+              content={props.data.on ? "On" : "Off"}
               selected={props.data.on}
               onClick={() => props.togglePowerAct?.(!props.data.on)} />
           </LabeledList.Item>
@@ -76,7 +76,7 @@ export interface AtmosComponentProps extends ComponentProps {
 }
 
 export const AtmosComponent = (props: AtmosComponentProps, context) => {
-  const { data, act } = useBackend<AtmosComponentData>(context);
+  const { data, act } = useBackend<AtmosComponentData>();
   return (
     <Window
       width={Math.max(300, props.minumumWidth || 0)}

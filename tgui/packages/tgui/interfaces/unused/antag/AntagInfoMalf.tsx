@@ -40,7 +40,7 @@ type Info = {
 };
 
 const ObjectivePrintout = (props, context) => {
-  const { data } = useBackend<Info>(context);
+  const { data } = useBackend<Info>();
   const {
     objectives,
   } = data;
@@ -51,18 +51,18 @@ const ObjectivePrintout = (props, context) => {
       </Stack.Item>
       <Stack.Item>
         {!objectives && "None!"
-        || objectives.map(objective => (
-          <Stack.Item key={objective.count}>
-            &#8805-{objective.count}: {objective.explanation}
-          </Stack.Item>
-        )) }
+          || objectives.map(objective => (
+            <Stack.Item key={objective.count}>
+              &#8805-{objective.count}: {objective.explanation}
+            </Stack.Item>
+          ))}
       </Stack.Item>
     </Stack>
   );
 };
 
 const IntroductionSection = (props, context) => {
-  const { act, data } = useBackend<Info>(context);
+  const { act, data } = useBackend<Info>();
   const {
     intro,
   } = data;
@@ -81,7 +81,7 @@ const IntroductionSection = (props, context) => {
 };
 
 const FlavorSection = (props, context) => {
-  const { data } = useBackend<Info>(context);
+  const { data } = useBackend<Info>();
   const {
     allies,
     goal,
@@ -135,7 +135,7 @@ const FlavorSection = (props, context) => {
 };
 
 const CodewordsSection = (props, context) => {
-  const { data } = useBackend<Info>(context);
+  const { data } = useBackend<Info>();
   const {
     has_codewords,
     phrases,
@@ -153,46 +153,46 @@ const CodewordsSection = (props, context) => {
             Proceed with caution, however, as everyone is a potential foe.
           </BlockQuote>
         ) || (
-          <>
-            <Stack.Item grow basis={0}>
-              <BlockQuote>
-                New access to restricted channels has provided you with
-                intercepted syndicate codewords. Syndicate agents will
-                respond as if you&apos;re one of their own.
-                Proceed with caution, however, as everyone is a potential
-                foe.
-                <span style={badstyle}>
-                  &ensp;The speech recognition subsystem has been
-                  configured to flag these codewords.
-                </span>
-              </BlockQuote>
-            </Stack.Item>
-            <Stack.Divider mr={1} />
-            <Stack.Item grow basis={0}>
-              <Stack vertical>
-                <Stack.Item>
-                  Code Phrases:
-                </Stack.Item>
-                <Stack.Item bold textColor="blue">
-                  {phrases}
-                </Stack.Item>
-                <Stack.Item>
-                  Code Responses:
-                </Stack.Item>
-                <Stack.Item bold textColor="red">
-                  {responses}
-                </Stack.Item>
-              </Stack>
-            </Stack.Item>
-          </>
-        )}
+            <>
+              <Stack.Item grow basis={0}>
+                <BlockQuote>
+                  New access to restricted channels has provided you with
+                  intercepted syndicate codewords. Syndicate agents will
+                  respond as if you&apos;re one of their own.
+                  Proceed with caution, however, as everyone is a potential
+                  foe.
+                  <span style={badstyle}>
+                    &ensp;The speech recognition subsystem has been
+                    configured to flag these codewords.
+                  </span>
+                </BlockQuote>
+              </Stack.Item>
+              <Stack.Divider mr={1} />
+              <Stack.Item grow basis={0}>
+                <Stack vertical>
+                  <Stack.Item>
+                    Code Phrases:
+                  </Stack.Item>
+                  <Stack.Item bold textColor="blue">
+                    {phrases}
+                  </Stack.Item>
+                  <Stack.Item>
+                    Code Responses:
+                  </Stack.Item>
+                  <Stack.Item bold textColor="red">
+                    {responses}
+                  </Stack.Item>
+                </Stack>
+              </Stack.Item>
+            </>
+          )}
       </Stack>
     </Section>
   );
 };
 
 export const AntagInfoMalf = (props, context) => {
-  const { act, data } = useBackend<Info>(context);
+  const { act, data } = useBackend<Info>();
   const {
     processingTime,
     categories,
@@ -261,17 +261,17 @@ export const AntagInfoMalf = (props, context) => {
               </Stack.Item>
             </>
           ) || (
-            <Stack.Item>
-              <Section>
-                <GenericUplink
-                  categories={categoriesList}
-                  items={items}
-                  currency={`${processingTime} PT`}
-                  handleBuy={(item) => act("buy", { name: item.name })}
-                />
-              </Section>
-            </Stack.Item>
-          )}
+              <Stack.Item>
+                <Section>
+                  <GenericUplink
+                    categories={categoriesList}
+                    items={items}
+                    currency={`${processingTime} PT`}
+                    handleBuy={(item) => act("buy", { name: item.name })}
+                  />
+                </Section>
+              </Stack.Item>
+            )}
         </Stack>
       </Window.Content>
     </Window>

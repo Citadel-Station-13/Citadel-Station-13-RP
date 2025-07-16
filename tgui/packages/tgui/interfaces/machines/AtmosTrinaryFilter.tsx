@@ -10,7 +10,7 @@ import { AtmosComponent, AtmosComponentData } from "../common/AtmosMachine";
 interface AtmosTrinaryFilterControlProps extends SectionProps {
   readonly atmosContext: GasContext;
   readonly filtering: null | AtmosGasGroups | AtmosGasID;
-  readonly setFiltering?: (target: AtmosGasGroups|AtmosGasID) => void;
+  readonly setFiltering?: (target: AtmosGasGroups | AtmosGasID) => void;
 }
 
 export const AtmosTrinaryFilterControl = (props: AtmosTrinaryFilterControlProps, context) => {
@@ -18,8 +18,8 @@ export const AtmosTrinaryFilterControl = (props: AtmosTrinaryFilterControlProps,
     <Section title="Filter" {...props}>
       <AtmosFilterList
         gasContext={props.atmosContext}
-        selectedGroups={((typeof props.filtering) === 'number')? (props.filtering as number) : AtmosGasGroupFlags.None}
-        selectedIds={((typeof props.filtering) === 'string')? ([props.filtering as string]) : []}
+        selectedGroups={((typeof props.filtering) === 'number') ? (props.filtering as number) : AtmosGasGroupFlags.None}
+        selectedIds={((typeof props.filtering) === 'string') ? ([props.filtering as string]) : []}
         selectGroup={(g) => props.setFiltering?.(g)}
         selectId={(id) => props.setFiltering?.(id)} />
     </Section>
@@ -34,7 +34,7 @@ interface AtmosTrinaryFilterData extends AtmosComponentData {
 }
 
 export const AtmosTrinaryFilter = (props, context) => {
-  const { act, data } = useBackend<AtmosTrinaryFilterData>(context);
+  const { act, data } = useBackend<AtmosTrinaryFilterData>();
 
   return (
     <AtmosComponent

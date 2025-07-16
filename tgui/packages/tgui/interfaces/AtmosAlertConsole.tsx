@@ -13,7 +13,7 @@ interface AtmosAlert {
 }
 
 export const AtmosAlertConsole = (props, context) => {
-  const { act, data } = useBackend<AtmosAlertConsoleData>(context);
+  const { act, data } = useBackend<AtmosAlertConsoleData>();
   return (
     <Window
       width={350}

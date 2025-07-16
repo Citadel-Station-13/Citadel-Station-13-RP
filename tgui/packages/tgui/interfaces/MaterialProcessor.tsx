@@ -20,26 +20,26 @@ const COLOR_PROCESSING = {
 };
 
 type OreData =
-{
-  name: string,
-  displayName: string,
-  processing: number,
-  amount: number,
-  ref: string,
-}
+  {
+    name: string,
+    displayName: string,
+    processing: number,
+    amount: number,
+    ref: string,
+  }
 
 type MaterialProcessorData =
-{
-  on: BooleanLike,
-  fast: BooleanLike,
-  ores: OreData[],
-  unclaimedPoints: number,
-  idName: string,
-  idPoints: number,
-}
+  {
+    on: BooleanLike,
+    fast: BooleanLike,
+    ores: OreData[],
+    unclaimedPoints: number,
+    idName: string,
+    idPoints: number,
+  }
 
 export const MaterialProcessor = (props, context) => {
-  const { act, data } = useBackend<MaterialProcessorData>(context);
+  const { act, data } = useBackend<MaterialProcessorData>();
   const {
     on,
     fast,
@@ -80,14 +80,14 @@ export const MaterialProcessor = (props, context) => {
                 <AnimatedNumber value={idPoints} />
               </LabeledList.Item>
             ) || (
-              <LabeledList.Item label="ID" buttons={
-                <Button
-                  content="Insert ID"
-                  icon="id-card"
-                  onClick={() => act("insert_id", {})} />
-              }
-              />
-            )}
+                <LabeledList.Item label="ID" buttons={
+                  <Button
+                    content="Insert ID"
+                    icon="id-card"
+                    onClick={() => act("insert_id", {})} />
+                }
+                />
+              )}
           </LabeledList>
         </Section>
         <Section title="Ore Processing" buttons={

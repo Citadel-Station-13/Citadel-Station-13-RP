@@ -9,7 +9,7 @@ type FishingPortalData = {
 };
 
 export const FishingPortalGenerator = (props, context) => {
-  const { act, data } = useBackend<FishingPortalData>(context);
+  const { act, data } = useBackend<FishingPortalData>();
 
   return (
     <Window title="Ishmael3000" width={300} height={300}>

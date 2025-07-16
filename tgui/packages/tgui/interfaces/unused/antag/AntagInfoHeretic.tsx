@@ -157,7 +157,7 @@ const GuideSection = () => {
 };
 
 const InformationSection = (props, context) => {
-  const { data } = useBackend<Info>(context);
+  const { data } = useBackend<Info>();
   const {
     charges,
     total_sacrifices,
@@ -180,7 +180,7 @@ const InformationSection = (props, context) => {
         )}
         <Stack.Item>
           You have <b>{charges || 0}</b>&nbsp;
-          <span style={hereticBlue}>knowledge point{charges !== 1 ? "s":""}</span>.
+          <span style={hereticBlue}>knowledge point{charges !== 1 ? "s" : ""}</span>.
         </Stack.Item>
         <Stack.Item>
           You have made a total of&nbsp;
@@ -193,7 +193,7 @@ const InformationSection = (props, context) => {
 };
 
 const ObjectivePrintout = (props, context) => {
-  const { data } = useBackend<Info>(context);
+  const { data } = useBackend<Info>();
   const {
     objectives,
   } = data;
@@ -205,11 +205,11 @@ const ObjectivePrintout = (props, context) => {
         </Stack.Item>
         <Stack.Item>
           {!objectives && "None!"
-          || objectives.map(objective => (
-            <Stack.Item key={objective.count}>
-              {objective.count}: {objective.explanation}
-            </Stack.Item>
-          )) }
+            || objectives.map(objective => (
+              <Stack.Item key={objective.count}>
+                {objective.count}: {objective.explanation}
+              </Stack.Item>
+            ))}
         </Stack.Item>
       </Stack>
     </Stack.Item>
@@ -217,7 +217,7 @@ const ObjectivePrintout = (props, context) => {
 };
 
 const ResearchedKnowledge = (props, context) => {
-  const { data } = useBackend<KnowledgeInfo>(context);
+  const { data } = useBackend<KnowledgeInfo>();
   const {
     learnedKnowledge,
   } = data;
@@ -238,7 +238,7 @@ const ResearchedKnowledge = (props, context) => {
                   content={`${learned.hereticPath} - ${learned.name}`}
                   tooltip={learned.desc} />
               </Stack.Item>
-            )) }
+            ))}
         </Stack>
       </Section>
     </Stack.Item>
@@ -246,7 +246,7 @@ const ResearchedKnowledge = (props, context) => {
 };
 
 const KnowledgeShop = (props, context) => {
-  const { data, act } = useBackend<KnowledgeInfo>(context);
+  const { data, act } = useBackend<KnowledgeInfo>();
   const {
     learnableKnowledge,
   } = data;
@@ -266,7 +266,7 @@ const KnowledgeShop = (props, context) => {
                 disabled={toLearn.disabled}
                 content={`${toLearn.hereticPath} - ${toLearn.cost > 0
                   ? `${toLearn.name}: ${toLearn.cost}
-                  point${toLearn.cost !== 1 ? "s":""}`
+                  point${toLearn.cost !== 1 ? "s" : ""}`
                   : toLearn.name}`}
                 tooltip={toLearn.desc}
                 onClick={() => act("research", { path: toLearn.path })} />
@@ -276,14 +276,14 @@ const KnowledgeShop = (props, context) => {
                 </BlockQuote>
               )}
             </Stack.Item>
-          )) }
+          ))}
       </Section>
     </Stack.Item>
   );
 };
 
 const ResearchInfo = (props, context) => {
-  const { data } = useBackend<Info>(context);
+  const { data } = useBackend<Info>();
   const {
     charges,
   } = data;
@@ -297,7 +297,7 @@ const ResearchInfo = (props, context) => {
         <Stack vertical height="100%">
           <Stack.Item fontSize="20px" textAlign="center">
             You have <b>{charges || 0}</b>&nbsp;
-            <span style={hereticBlue}>knowledge point{charges !== 1 ? "s":""}</span> to spend.
+            <span style={hereticBlue}>knowledge point{charges !== 1 ? "s" : ""}</span> to spend.
           </Stack.Item>
           <Stack.Item grow>
             <Stack height="100%">
@@ -313,7 +313,7 @@ const ResearchInfo = (props, context) => {
 
 
 export const AntagInfoHeretic = (props, context) => {
-  const { data } = useBackend<Info>(context);
+  const { data } = useBackend<Info>();
   const {
     ascended,
   } = data;
@@ -346,7 +346,7 @@ export const AntagInfoHeretic = (props, context) => {
                 Information
               </Tabs.Tab>
               <Tabs.Tab
-                icon={currentTab === 1 ? "book-open":"book"}
+                icon={currentTab === 1 ? "book-open" : "book"}
                 selected={currentTab === 1}
                 onClick={() => setTab(1)}>
                 Research
@@ -357,8 +357,8 @@ export const AntagInfoHeretic = (props, context) => {
             {currentTab === 0 && (
               <IntroductionSection />
             ) || (
-              <ResearchInfo />
-            )}
+                <ResearchInfo />
+              )}
           </Stack.Item>
         </Stack>
       </Window.Content>

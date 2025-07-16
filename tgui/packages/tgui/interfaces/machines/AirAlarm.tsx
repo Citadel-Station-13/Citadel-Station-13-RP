@@ -92,7 +92,7 @@ interface AirAlarmData {
 }
 
 export const AirAlarm = (props, context) => {
-  const { act, data } = useBackend<AirAlarmData>(context);
+  const { act, data } = useBackend<AirAlarmData>();
   const locked = data.locked && !data.siliconUser && !data.remoteUser;
   const localRaised = AirAlarmRaiseLookup[data.danger_level];
   const pressureRaised = AirAlarmRaiseLookup[TLVCheck(data.environment.pressure, data.pressureTLV)];
@@ -159,7 +159,7 @@ export const AirAlarm = (props, context) => {
 };
 
 const AirAlarmUnlockedControl = (props, context) => {
-  const { act, data } = useBackend<AirAlarmData>(context);
+  const { act, data } = useBackend<AirAlarmData>();
   const {
     target_temperature,
     rcon,
@@ -240,7 +240,7 @@ const AirAlarmControl = (props, context) => {
 // --------------------------------------------------------
 
 const AirAlarmControlHome = (props, context) => {
-  const { act, data } = useBackend<AirAlarmData>(context);
+  const { act, data } = useBackend<AirAlarmData>();
   const [screen, setScreen] = useState<string>('');
   const {
     mode,
@@ -292,7 +292,7 @@ const AirAlarmControlHome = (props, context) => {
 //* Vents *//
 
 const AirAlarmVentScreenWrapped = (props, context) => {
-  const { data, act } = useBackend<AirAlarmData>(context);
+  const { data, act } = useBackend<AirAlarmData>();
   return (
     <AirAlarmVentScreen
       vents={data.vents}
@@ -338,7 +338,7 @@ const AirAlarmVentScreen = (props: AirAlarmVentScreenProps) => {
 //* Scrubbers *//
 
 const AirAlarmScrubberScreenWrapped = (props, context) => {
-  const { data, act } = useBackend<AirAlarmData>(context);
+  const { data, act } = useBackend<AirAlarmData>();
   return (
     <AirAlarmScrubberScreen
       gasContext={data.gasContext}
@@ -385,7 +385,7 @@ const AirAlarmScrubberScreen = (props: AirAlarmScrubberScreenProps) => {
 
 // todo: legacy, remove
 const AirAlarmModeScreenWrapped = (props, context) => {
-  const { data, act } = useBackend<AirAlarmData>(context);
+  const { data, act } = useBackend<AirAlarmData>();
   return (
     <AirAlarmModeScreen
       selected={data.mode}
@@ -434,7 +434,7 @@ const AirAlarmModeButton = (props: AirAlarmModeButtonProps) => {
 //* Thresholds / TLVs *//
 
 const AirAlarmThresholdScreenWrapped = (props, context) => {
-  const { data, act } = useBackend<AirAlarmData>(context);
+  const { data, act } = useBackend<AirAlarmData>();
   return (
     <table
       className="LabeledList"

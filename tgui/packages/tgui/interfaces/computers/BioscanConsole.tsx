@@ -36,7 +36,7 @@ interface BioscanLevel {
 }
 
 export const BioscanConsole = (props, context) => {
-  let { act, data } = useBackend<BioscanConsoleData>(context);
+  let { act, data } = useBackend<BioscanConsoleData>();
   return (
     <Window
       title="Bioscan Control Console"
@@ -50,7 +50,7 @@ export const BioscanConsole = (props, context) => {
             </LabeledList.Item>
             <LabeledList.Item label="Scan">
               <Button
-                content={data.scan_ready? "Scan" : "Charging"}
+                content={data.scan_ready ? "Scan" : "Charging"}
                 icon="undo"
                 disabled={!data.scan_ready}
                 onClick={() => act('scan')} />
@@ -70,7 +70,7 @@ export const BioscanConsole = (props, context) => {
                       {antenna.level}
                     </LabeledList.Item>
                     <LabeledList.Item label="Floor Bolts">
-                      {antenna.anchor? "Anchored" : "Unanchored"}
+                      {antenna.anchor ? "Anchored" : "Unanchored"}
                     </LabeledList.Item>
                   </LabeledList>
                 </Collapsible>
@@ -79,7 +79,7 @@ export const BioscanConsole = (props, context) => {
           </Collapsible>
         </Section>
         <Section title="Results">
-          {data.scan? (
+          {data.scan ? (
             data.scan.levels.map((level) => (
               <Collapsible title={level.id} key={level.id} color="transparent">
                 <Section>

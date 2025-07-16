@@ -132,15 +132,15 @@ type ExodroneConsoleData = {
   all_tools: Record<string, ToolData>;
   all_bands: Record<string, string>;
 } & (
-  | (({
+    | (({
       drone: true;
     } & DroneData) &
       ActiveDrone)
-  | {
+    | {
       all_drones: Array<DroneBasicData>;
       drone: undefined;
     }
-);
+  );
 
 type ToolData = {
   description: string,
@@ -148,7 +148,7 @@ type ToolData = {
 }
 
 export const ExodroneConsole = (props, context) => {
-  const { data } = useBackend<ExodroneConsoleData>(context);
+  const { data } = useBackend<ExodroneConsoleData>();
   const {
     signal_lost,
   } = data;
@@ -210,7 +210,7 @@ const SignalLostModal = (props, context) => {
 const DroneSelectionSection = (props: {
   readonly all_drones: Array<DroneBasicData>,
 }, context) => {
-  const { act } = useBackend<ExodroneConsoleData>(context);
+  const { act } = useBackend<ExodroneConsoleData>();
   const { all_drones } = props;
 
   return (
@@ -233,12 +233,12 @@ const DroneSelectionSection = (props: {
                   {drone.controlled && (
                     "Controlled by another console."
                   ) || (
-                    <Button
-                      icon="plug"
-                      onClick={() => act("select_drone", { "drone_ref": drone.ref })}>
-                      Assume Control
-                    </Button>
-                  )}
+                      <Button
+                        icon="plug"
+                        onClick={() => act("select_drone", { "drone_ref": drone.ref })}>
+                        Assume Control
+                      </Button>
+                    )}
                 </Stack.Item>
               </Stack>
             </Stack.Item>
@@ -252,7 +252,7 @@ const DroneSelectionSection = (props: {
 
 
 const ToolSelectionModal = (props, context) => {
-  const { act, data } = useBackend<ExodroneConsoleData>(context);
+  const { act, data } = useBackend<ExodroneConsoleData>();
   const {
     all_tools = {},
   } = data;
@@ -292,11 +292,11 @@ const ToolSelectionModal = (props, context) => {
                 </Button>
               </Stack.Item>
             )) || (
-              <Stack.Item>
-                <Button
-                  content="Back" />
-              </Stack.Item>
-            )}
+                <Stack.Item>
+                  <Button
+                    content="Back" />
+                </Stack.Item>
+              )}
           </Stack>
         </Stack.Item>
       </Stack>
@@ -308,7 +308,7 @@ const EquipmentBox = (props: {
   readonly cargo: CargoData,
   readonly drone: DroneData,
 }, context) => {
-  const { act, data } = useBackend<ExodroneConsoleData>(context);
+  const { act, data } = useBackend<ExodroneConsoleData>();
   const { all_tools = {} } = data;
   const { configurable } = props.drone;
   const cargo = props.cargo;
@@ -391,7 +391,7 @@ const EquipmentBox = (props: {
 const EquipmentGrid = (props: {
   readonly drone: ActiveDrone & DroneData,
 }, context) => {
-  const { act } = useBackend<ExodroneConsoleData>(context);
+  const { act } = useBackend<ExodroneConsoleData>();
   const {
     cargo,
     configurable,
@@ -510,7 +510,7 @@ const TravelTargetSelectionScreen = (props: {
   readonly showCancelButton?: boolean,
 }, context) => {
   // List of sites and eta travel times to each
-  const { act, data } = useBackend<ExodroneConsoleData>(context);
+  const { act, data } = useBackend<ExodroneConsoleData>();
   const { drone } = props;
   const { all_bands } = data;
   const {
@@ -545,7 +545,7 @@ const TravelTargetSelectionScreen = (props: {
     act("start_travel", { "target_site": ref });
   };
 
-  const non_empty_bands = (dest : SiteData) => {
+  const non_empty_bands = (dest: SiteData) => {
     const band_check = (s: string) => dest.band_info[s] !== undefined
       && dest.band_info[s] !== 0;
     return Object.keys(all_bands).filter(band_check);
@@ -891,7 +891,7 @@ const DroneScreen = (props: {
 };
 
 const ExodroneConsoleContent = (props, context) => {
-  const { data } = useBackend<ExodroneConsoleData>(context);
+  const { data } = useBackend<ExodroneConsoleData>();
 
   if (!data.drone) {
     return <DroneSelectionSection all_drones={data.all_drones} />;

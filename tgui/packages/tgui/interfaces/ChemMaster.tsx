@@ -66,7 +66,7 @@ type StyleData = {
 
 
 export const ChemMaster = (props, context) => {
-  const { data } = useBackend<ChemMasterData>(context);
+  const { data } = useBackend<ChemMasterData>();
   const { screen } = data;
   return (
     <Window width={465} height={550}>
@@ -78,7 +78,7 @@ export const ChemMaster = (props, context) => {
 };
 
 const ChemMasterContent = (props, context) => {
-  const { act, data } = useBackend<ChemMasterData>(context);
+  const { act, data } = useBackend<ChemMasterData>();
   const {
     screen,
     beaker_contents = [],
@@ -188,7 +188,7 @@ const ChemMasterContent = (props, context) => {
 const ChemicalBuffer = Table;
 
 const ChemicalBufferEntry = (props, context) => {
-  const { act } = useBackend<ChemMasterData>(context);
+  const { act } = useBackend<ChemMasterData>();
   const { chemical, transferTo } = props;
   return (
     <Table.Row key={chemical.id}>
@@ -298,7 +298,7 @@ const PackagingControlsItem = (props) => {
 };
 
 const PackagingControls = (props, context) => {
-  const { act, data } = useBackend<ChemMasterData>(context);
+  const { act, data } = useBackend<ChemMasterData>();
   const [pillAmount, setPillAmount] = useSharedState(context, 'pillAmount', 1);
   const [patchAmount, setPatchAmount] = useSharedState(
     context,
@@ -497,7 +497,7 @@ const PackagingControls = (props, context) => {
 };
 
 const AnalysisResults = (props, context) => {
-  const { act, data } = useBackend<ChemMasterData>(context);
+  const { act, data } = useBackend<ChemMasterData>();
   const { analyzeVars } = data;
   return (
     <Section

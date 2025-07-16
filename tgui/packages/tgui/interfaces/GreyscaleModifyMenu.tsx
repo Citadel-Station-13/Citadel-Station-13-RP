@@ -43,7 +43,7 @@ enum Direction {
   NorthWest = "northwest"
 }
 
-const DirectionAbbreviation : Record<Direction, string> = {
+const DirectionAbbreviation: Record<Direction, string> = {
   [Direction.North]: "N",
   [Direction.NorthEast]: "NE",
   [Direction.East]: "E",
@@ -55,7 +55,7 @@ const DirectionAbbreviation : Record<Direction, string> = {
 };
 
 const ConfigDisplay = (props, context) => {
-  const { act, data } = useBackend<GreyscaleMenuData>(context);
+  const { act, data } = useBackend<GreyscaleMenuData>();
   return (
     <Section title="Designs">
       <LabeledList>
@@ -75,7 +75,7 @@ const ConfigDisplay = (props, context) => {
 };
 
 const ColorDisplay = (props, context) => {
-  const { act, data } = useBackend<GreyscaleMenuData>(context);
+  const { act, data } = useBackend<GreyscaleMenuData>();
   const colors = (data.colors || []);
   return (
     <Section title="Colors">
@@ -125,7 +125,7 @@ const ColorDisplay = (props, context) => {
 };
 
 const PreviewCompassSelect = (props, context) => {
-  const { act, data } = useBackend<GreyscaleMenuData>(context);
+  const { act, data } = useBackend<GreyscaleMenuData>();
   return (
     <Box>
       <Stack vertical>
@@ -155,7 +155,7 @@ const PreviewCompassSelect = (props, context) => {
 
 const SingleDirection = (props, context) => {
   const { dir } = props;
-  const { data, act } = useBackend<GreyscaleMenuData>(context);
+  const { data, act } = useBackend<GreyscaleMenuData>();
   return (
     <Flex.Item grow={1} basis={0}>
       <Button
@@ -173,7 +173,7 @@ const SingleDirection = (props, context) => {
 };
 
 const IconStatesDisplay = (props, context) => {
-  const { data, act } = useBackend<GreyscaleMenuData>(context);
+  const { data, act } = useBackend<GreyscaleMenuData>();
   return (
     <Section title="Icon States">
       <Flex>
@@ -195,7 +195,7 @@ const IconStatesDisplay = (props, context) => {
 };
 
 const PreviewDisplay = (props, context) => {
-  const { data } = useBackend<GreyscaleMenuData>(context);
+  const { data } = useBackend<GreyscaleMenuData>();
   return (
     <Section title={`Preview (${data.sprites_dir})`}>
       <Table>
@@ -222,39 +222,39 @@ const PreviewDisplay = (props, context) => {
       </Table>
       {
         !!data.generate_full_preview
-          && `Time Spent: ${data.sprites.time_spent}ms`
+        && `Time Spent: ${data.sprites.time_spent}ms`
       }
       <Divider />
       {
         !data.refreshing
-          && (
-            <Table>
-              {
-                !!data.generate_full_preview && data.sprites.steps !== null
-                  && (
-                    <Table.Row header>
-                      <Table.Cell width="50%" textAlign="center">Layer Source</Table.Cell>
-                      <Table.Cell width="25%" textAlign="center">Step Layer</Table.Cell>
-                      <Table.Cell width="25%" textAlign="center">Step Result</Table.Cell>
-                    </Table.Row>
-                  )
-              }
-              {
-                !!data.generate_full_preview && data.sprites.steps !== null
-                  && data.sprites.steps.map(item => (
-                    <Table.Row key={`${item.result}|${item.layer}`}>
-                      <Table.Cell verticalAlign="middle">{item.config_name}</Table.Cell>
-                      <Table.Cell>
-                        <SingleSprite source={item.layer} />
-                      </Table.Cell>
-                      <Table.Cell>
-                        <SingleSprite source={item.result} />
-                      </Table.Cell>
-                    </Table.Row>
-                  ))
-              }
-            </Table>
-          )
+        && (
+          <Table>
+            {
+              !!data.generate_full_preview && data.sprites.steps !== null
+              && (
+                <Table.Row header>
+                  <Table.Cell width="50%" textAlign="center">Layer Source</Table.Cell>
+                  <Table.Cell width="25%" textAlign="center">Step Layer</Table.Cell>
+                  <Table.Cell width="25%" textAlign="center">Step Result</Table.Cell>
+                </Table.Row>
+              )
+            }
+            {
+              !!data.generate_full_preview && data.sprites.steps !== null
+              && data.sprites.steps.map(item => (
+                <Table.Row key={`${item.result}|${item.layer}`}>
+                  <Table.Cell verticalAlign="middle">{item.config_name}</Table.Cell>
+                  <Table.Cell>
+                    <SingleSprite source={item.layer} />
+                  </Table.Cell>
+                  <Table.Cell>
+                    <SingleSprite source={item.result} />
+                  </Table.Cell>
+                </Table.Row>
+              ))
+            }
+          </Table>
+        )
       }
     </Section>
   );
@@ -283,7 +283,7 @@ const LoadingAnimation = () => {
 };
 
 export const GreyscaleModifyMenu = (props, context) => {
-  const { act, data } = useBackend<GreyscaleMenuData>(context);
+  const { act, data } = useBackend<GreyscaleMenuData>();
   return (
     <Window
       title="Color Configuration"
@@ -296,28 +296,28 @@ export const GreyscaleModifyMenu = (props, context) => {
         <Flex direction="column">
           {
             !!data.unlocked
-              && (
-                <Flex.Item justify="flex-start">
-                  <Button
-                    content={<Icon name="file-image-o" spin={data.monitoring_files} />}
-                    tooltip="Continuously checks files for changes and reloads when necessary. WARNING: Very expensive"
-                    selected={data.monitoring_files}
-                    onClick={() => act("toggle_mass_refresh")}
-                    width={1.9}
-                    mr={-0.2}
-                  />
-                  <Button
-                    content="Refresh Icon File"
-                    tooltip="Loads the json configuration and icon file fresh from disk. This is useful to avoid restarting the server to see changes. WARNING: Expensive"
-                    onClick={() => act("refresh_file")}
-                  />
-                  <Button
-                    content="Save Icon File"
-                    tooltip="Saves the icon to a temp file in tmp/. This is useful if you want to use a generated icon elsewhere or just view a more accurate representation"
-                    onClick={() => act("save_dmi")}
-                  />
-                </Flex.Item>
-              )
+            && (
+              <Flex.Item justify="flex-start">
+                <Button
+                  content={<Icon name="file-image-o" spin={data.monitoring_files} />}
+                  tooltip="Continuously checks files for changes and reloads when necessary. WARNING: Very expensive"
+                  selected={data.monitoring_files}
+                  onClick={() => act("toggle_mass_refresh")}
+                  width={1.9}
+                  mr={-0.2}
+                />
+                <Button
+                  content="Refresh Icon File"
+                  tooltip="Loads the json configuration and icon file fresh from disk. This is useful to avoid restarting the server to see changes. WARNING: Expensive"
+                  onClick={() => act("refresh_file")}
+                />
+                <Button
+                  content="Save Icon File"
+                  tooltip="Saves the icon to a temp file in tmp/. This is useful if you want to use a generated icon elsewhere or just view a more accurate representation"
+                  onClick={() => act("save_dmi")}
+                />
+              </Flex.Item>
+            )
           }
           <Flex.Item>
             <Button

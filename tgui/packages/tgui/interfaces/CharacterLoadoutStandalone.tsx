@@ -19,7 +19,7 @@ interface CharacterLoadoutStandaloneContext {
  * shim standalone interface for loadout
  */
 export const CharacterLoadoutStandalone = (props, context) => {
-  let { data, act } = useBackend<CharacterLoadoutStandaloneContext>(context);
+  let { data, act } = useBackend<CharacterLoadoutStandaloneContext>();
   return (
     <Window width={800} height={900} title={`Loadout - ${data.characterName}`}>
       <Window.Content>

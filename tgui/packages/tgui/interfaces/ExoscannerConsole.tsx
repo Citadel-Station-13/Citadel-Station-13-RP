@@ -40,7 +40,7 @@ const ScanFailedModal = (_, context) => {
 };
 
 const ScanSelectionSection = (_, context) => {
-  const { act, data } = useBackend<ScanData>(context);
+  const { act, data } = useBackend<ScanData>();
   const {
     scan_power,
     point_scan_eta,
@@ -139,7 +139,7 @@ type ScanInProgressData = {
 }
 
 const ScanInProgressModal = (_, context) => {
-  const { act, data } = useBackend<ScanInProgressData>(context);
+  const { act, data } = useBackend<ScanInProgressData>();
   const {
     scan_time,
     scan_power,
@@ -188,7 +188,7 @@ type ExoscannerConsoleData = {
 }
 
 export const ExoscannerConsole = (_, context) => {
-  const { act, data } = useBackend<ExoscannerConsoleData>(context);
+  const { act, data } = useBackend<ExoscannerConsoleData>();
   const {
     scan_in_progress,
     scan_power,
@@ -223,8 +223,8 @@ export const ExoscannerConsole = (_, context) => {
                         size={3} />
                     </>
                   ) || (
-                    "No properly configured scanner arrays detected."
-                  )}
+                      "No properly configured scanner arrays detected."
+                    )}
                 </Stack.Item>
               </Stack>
               <Section title="Special Scan Condtions">

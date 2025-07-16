@@ -9,7 +9,7 @@ interface AirlockElectronicsData {
 }
 
 export const AirlockElectronics = (props, context) => {
-  const { act, data } = useBackend<AirlockElectronicsData>(context);
+  const { act, data } = useBackend<AirlockElectronicsData>();
   return (
     <Window
       title="Airlock Electronics"

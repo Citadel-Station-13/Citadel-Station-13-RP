@@ -28,7 +28,7 @@ interface GamePreferencesData {
 }
 
 const GamePreferencesTabs = (props, context) => {
-  const { act, data } = useBackend<GamePreferencesData>(context);
+  const { act, data } = useBackend<GamePreferencesData>();
 
   let categoryCache = computeGamePreferenceCategoryCache(data.entries);
   let [activeCategory, setActiveCategory] = useState<string>(Object.keys(categoryCache)[0]);
@@ -89,7 +89,7 @@ const computeGamePreferenceCategoryCache = (entries: GamePreferenceEntrySchema[]
 };
 
 export const GamePreferences = (props, context) => {
-  const { act, data } = useBackend<GamePreferencesData>(context);
+  const { act, data } = useBackend<GamePreferencesData>();
 
   let categoryCache = computeGamePreferenceCategoryCache(data.entries);
   let [activeCategory, setActiveCategory] = useState<string>(Object.keys(categoryCache)[0]);
@@ -122,7 +122,7 @@ export const GamePreferences = (props, context) => {
 };
 
 const GamePreferencesBody = (props, context) => {
-  const { act, data } = useBackend<GamePreferencesData>(context);
+  const { act, data } = useBackend<GamePreferencesData>();
 
   let categoryCache = computeGamePreferenceCategoryCache(data.entries);
   let [activeCategory, setActiveCategory] = useState<string>(Object.keys(categoryCache)[0]);
@@ -190,7 +190,7 @@ const GamePreferenceFooter = (props: {
   readonly activeCategory: string,
   readonly activeMiddleware: string | null
 }, context) => {
-  const { act, data } = useBackend<GamePreferencesData>(context);
+  const { act, data } = useBackend<GamePreferencesData>();
   return (
     <Section>
       <Stack fill>

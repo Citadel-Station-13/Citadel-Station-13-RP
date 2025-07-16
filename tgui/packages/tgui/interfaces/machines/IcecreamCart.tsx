@@ -21,7 +21,7 @@ interface IcecreamCartData {
 }
 
 export const IcecreamCart = (props, context) => {
-  let { data, act } = useBackend<IcecreamCartData>(context);
+  let { data, act } = useBackend<IcecreamCartData>();
 
   return (
     <Window title="Icecream Cart" width={450} height={600}>

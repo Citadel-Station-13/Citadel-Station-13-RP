@@ -20,7 +20,7 @@ interface IdentificationComputerContext {
 }
 
 export const IdentificationComputer = (props, context) => {
-  const { data, act } = useBackend<IdentificationComputerContext>(context);
+  const { data, act } = useBackend<IdentificationComputerContext>();
   const [currentTab, setCurrentTab] = useState<number>(0);
   return (
     <Window width={500} height={700}>

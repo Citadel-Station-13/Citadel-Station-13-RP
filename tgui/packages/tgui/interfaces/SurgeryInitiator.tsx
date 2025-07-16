@@ -51,9 +51,9 @@ class SurgeryInitiatorInner extends Component<
 
   findSelectedSurgeryAfter(after: number): number | undefined {
     const foundIndex
-     = this.props.surgeries.findIndex(
-       (surgery, index) => index > after && !surgery.blocked
-     );
+      = this.props.surgeries.findIndex(
+        (surgery, index) => index > after && !surgery.blocked
+      );
 
     return foundIndex === -1 ? undefined : foundIndex;
   }
@@ -160,7 +160,7 @@ class SurgeryInitiatorInner extends Component<
 }
 
 export const SurgeryInitiator = (props, context) => {
-  const { data } = useBackend<SurgeryInitiatorData>(context);
+  const { data } = useBackend<SurgeryInitiatorData>();
 
   return (
     <SurgeryInitiatorInner

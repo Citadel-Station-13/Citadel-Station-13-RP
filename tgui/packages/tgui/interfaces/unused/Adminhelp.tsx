@@ -11,7 +11,7 @@ type AdminhelpData = {
 }
 
 export const Adminhelp = (props, context) => {
-  const { act, data } = useBackend<AdminhelpData>(context);
+  const { act, data } = useBackend<AdminhelpData>();
   const {
     adminCount,
     urgentAhelpEnabled,
@@ -70,24 +70,24 @@ export const Adminhelp = (props, context) => {
                     />
                   </Box>
                 ) || (
-                  <Button
-                    mt={1}
-                    content="Alert admins?"
-                    onClick={() => {
-                      if (requestForAdmin) {
-                        setRequestForAdmin(false);
-                      } else {
-                        setCurrentlyInputting(true);
-                      }
-                    }}
-                    color={requestForAdmin ? "orange" : "blue"}
-                    icon={requestForAdmin ? "check-square-o" : "square-o"}
-                    disabled={bannedFromUrgentAhelp}
-                    tooltip={bannedFromUrgentAhelp ? "You are banned from using urgent ahelps." : undefined}
-                    fluid
-                    textAlign="center"
-                  />
-                )}
+                    <Button
+                      mt={1}
+                      content="Alert admins?"
+                      onClick={() => {
+                        if (requestForAdmin) {
+                          setRequestForAdmin(false);
+                        } else {
+                          setCurrentlyInputting(true);
+                        }
+                      }}
+                      color={requestForAdmin ? "orange" : "blue"}
+                      icon={requestForAdmin ? "check-square-o" : "square-o"}
+                      disabled={bannedFromUrgentAhelp}
+                      tooltip={bannedFromUrgentAhelp ? "You are banned from using urgent ahelps." : undefined}
+                      fluid
+                      textAlign="center"
+                    />
+                  )}
               </NoticeBox>
             </Stack.Item>
           )}

@@ -47,7 +47,7 @@ interface ATMContext {
 }
 
 export const ATM = (props, context) => {
-  const { act, data } = useBackend<ATMContext>(context);
+  const { act, data } = useBackend<ATMContext>();
   if (!data.authenticated_acc) {
     return (
       <Window resizable width={400} height={400}>
@@ -71,7 +71,7 @@ export const ATM = (props, context) => {
 };
 
 const LoginElement = (props, context) => {
-  const { act, data } = useBackend<ATMContext>(context);
+  const { act, data } = useBackend<ATMContext>();
   const [epin, setPin] = useLocalState<number>(
     context,
     "epin",
@@ -107,7 +107,7 @@ const LoginElement = (props, context) => {
 };
 
 const LockedElement = (props, context) => {
-  const { act, data } = useBackend<ATMContext>(context);
+  const { act, data } = useBackend<ATMContext>();
   return (
     <Flex justify="space-between" direction="column" textColor="#ff000d" backgroundColor="#540004" scrollable>
       <Flex.Item><br />
@@ -134,7 +134,7 @@ const LockedElement = (props, context) => {
 };
 
 const ATMElement = (props, context) => {
-  const { act, data } = useBackend<ATMContext>(context);
+  const { act, data } = useBackend<ATMContext>();
   const [TransferTarget, setTransferTarget] = useState<number>(1);
   const [TransferAmount, setTransferAmount] = useState<number>(1);
   const [TransferPurpose, setTransferPurpose] = useState<String>("");

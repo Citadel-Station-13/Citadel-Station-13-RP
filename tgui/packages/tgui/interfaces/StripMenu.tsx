@@ -232,16 +232,16 @@ type StripMenuItem =
   | null
   | Interactable
   | ((
-      | {
-          icon: string;
-          name: string;
-          alternate?: string;
-        }
-      | {
-          obscured: ObscuringLevel;
-        }
-    ) &
-      Partial<Interactable>);
+    | {
+      icon: string;
+      name: string;
+      alternate?: string;
+    }
+    | {
+      obscured: ObscuringLevel;
+    }
+  ) &
+    Partial<Interactable>);
 
 type StripMenuData = {
   items: Record<keyof typeof SLOTS, StripMenuItem>;
@@ -249,7 +249,7 @@ type StripMenuData = {
 };
 
 export const StripMenu = (props, context) => {
-  const { act, data } = useBackend<StripMenuData>(context);
+  const { act, data } = useBackend<StripMenuData>();
 
   const gridSpots = new Map<GridSpotKey, string>();
   for (const key of Object.keys(data.items)) {

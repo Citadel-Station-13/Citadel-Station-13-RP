@@ -20,7 +20,7 @@ Keep in mind: Not entering information may lead to you not being
 selected. Press submit to alert pAI cards of your candidacy.`;
 
 export const PaiSubmit = (_, context) => {
-  const { data } = useBackend<CandidateData>(context);
+  const { data } = useBackend<CandidateData>();
   const [input, setInput] = useLocalState<CandidateData>(context, 'input', {
     comments: data.comments || '',
     description: data.description || '',
@@ -114,7 +114,7 @@ const InputDisplay = (props) => {
 
 /** Gives the user a submit button */
 const ButtonsDisplay = (props, context) => {
-  const { act } = useBackend<CandidateData>(context);
+  const { act } = useBackend<CandidateData>();
   const { input } = props;
 
   return (

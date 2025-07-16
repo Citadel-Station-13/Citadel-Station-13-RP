@@ -34,7 +34,7 @@ type FishCatalogData = {
 };
 
 export const FishCatalog = (props, context) => {
-  const { act, data } = useBackend<FishCatalogData>(context);
+  const { act, data } = useBackend<FishCatalogData>();
   const { fish_info, sponsored_by } = data;
   const fish_by_name = flow([sortBy((fish: FishInfo) => fish.name)])(
     fish_info || []

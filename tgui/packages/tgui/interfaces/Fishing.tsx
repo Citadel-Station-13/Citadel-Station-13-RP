@@ -427,7 +427,7 @@ type FishingData = {
 };
 
 export const Fishing = (props, context) => {
-  const { act, data } = useBackend<FishingData>(context);
+  const { act, data } = useBackend<FishingData>();
   return (
     <Window width={180} height={600}>
       <Window.Content fitted>

@@ -63,7 +63,7 @@ type CustomInput = {
 };
 
 export const Vending = (_, context) => {
-  const { data } = useBackend<VendingData>(context);
+  const { data } = useBackend<VendingData>();
   const { onstation } = data;
 
   return (
@@ -86,7 +86,7 @@ export const Vending = (_, context) => {
 
 /** Displays user details if an ID is present and the user is on the station */
 export const UserDetails = (_, context) => {
-  const { data } = useBackend<VendingData>(context);
+  const { data } = useBackend<VendingData>();
   const { user } = data;
 
   if (!user) {
@@ -116,7 +116,7 @@ export const UserDetails = (_, context) => {
 
 /** Displays  products in a section, with user balance at top */
 const ProductDisplay = (_, context) => {
-  const { data } = useBackend<VendingData>(context);
+  const { data } = useBackend<VendingData>();
   const {
     onstation,
     user,
@@ -170,7 +170,7 @@ const ProductDisplay = (_, context) => {
  * but you cannot use item icons as labels currently.
  */
 const VendingRow = (props, context) => {
-  const { data } = useBackend<VendingData>(context);
+  const { data } = useBackend<VendingData>();
   const { custom, product, productStock } = props;
   const { access, department, jobDiscount, onstation, user } = data;
   const free
@@ -183,7 +183,7 @@ const VendingRow = (props, context) => {
     = remaining === 0
     || (onstation && !user)
     || (onstation && !access
-    && (discount ? redPrice : product.price) > user?.cash);
+      && (discount ? redPrice : product.price) > user?.cash);
 
   return (
     <Table.Row>
@@ -246,7 +246,7 @@ const ProductImage = (props) => {
  * this displays a color wheel button that opens another window.
  */
 const ProductColorSelect = (props, context) => {
-  const { act } = useBackend<VendingData>(context);
+  const { act } = useBackend<VendingData>();
   const { disabled, product } = props;
 
   return (
@@ -277,7 +277,7 @@ const ProductStock = (props) => {
 
 /** The main button to purchase an item. */
 const ProductButton = (props, context) => {
-  const { act, data } = useBackend<VendingData>(context);
+  const { act, data } = useBackend<VendingData>();
   const { access } = data;
   const { custom, discount, disabled, free, product, redPrice } = props;
   const customPrice = access ? 'FREE' : product.price + ' cr';

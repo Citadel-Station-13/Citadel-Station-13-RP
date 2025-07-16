@@ -18,7 +18,7 @@ type ModalData = {
  * @param {object=} args The arguments to pass to the modal
  */
 export const modalOpen = (context, id, args) => {
-  const { act, data } = useBackend<ModalData>(context);
+  const { act, data } = useBackend<ModalData>();
   const newArgs = Object.assign(data.modal ? data.modal.args : {}, args || {});
 
   act('modal_open', {
@@ -38,7 +38,7 @@ export const modalRegisterBodyOverride = (id, bodyOverride) => {
 };
 
 const modalAnswer = (context, id, answer, args) => {
-  const { act, data } = useBackend<ModalData>(context);
+  const { act, data } = useBackend<ModalData>();
   if (!data.modal) {
     return;
   }
@@ -76,7 +76,7 @@ const modalClose = (context, id) => {
  * @param {object} context
  */
 export const ComplexModal = (props, context) => {
-  const { data } = useBackend<ModalData>(context);
+  const { data } = useBackend<ModalData>();
   if (!data.modal) {
     return;
   }

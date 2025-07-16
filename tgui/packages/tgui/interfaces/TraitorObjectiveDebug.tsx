@@ -18,7 +18,7 @@ type Objective = {
 }
 
 type ObjectiveList = {
-  objectives: (ObjectiveList|Objective)[]
+  objectives: (ObjectiveList | Objective)[]
   weight: number
 }
 
@@ -80,9 +80,9 @@ const sortingOptions: SortingOption[] = [
     name: "Telecrystal Payout",
     sort: (a, b) => {
       const telecrystalMeanA
-        = (a.telecrystal_reward[0] + a.telecrystal_reward[1])/2;
+        = (a.telecrystal_reward[0] + a.telecrystal_reward[1]) / 2;
       const telecrystalMeanB
-        = (b.telecrystal_reward[0] + b.telecrystal_reward[1])/2;
+        = (b.telecrystal_reward[0] + b.telecrystal_reward[1]) / 2;
       if (telecrystalMeanA < telecrystalMeanB) {
         return -1;
       } else if (telecrystalMeanA === telecrystalMeanB) {
@@ -95,9 +95,9 @@ const sortingOptions: SortingOption[] = [
     name: "Progression Payout",
     sort: (a, b) => {
       const progressionMeanA
-        = (a.progression_reward[0] + a.progression_reward[1])/2;
+        = (a.progression_reward[0] + a.progression_reward[1]) / 2;
       const progressionMeanB
-        = (b.progression_reward[0] + b.progression_reward[1])/2;
+        = (b.progression_reward[0] + b.progression_reward[1]) / 2;
       if (progressionMeanA < progressionMeanB) {
         return -1;
       } else if (progressionMeanA === progressionMeanB) {
@@ -110,11 +110,11 @@ const sortingOptions: SortingOption[] = [
     name: "Progression Payout + Min. Prog.",
     sort: (a, b) => {
       const progressionMeanA
-        = (a.progression_reward[0] + a.progression_reward[1])/2
-          + a.progression_minimum;
+        = (a.progression_reward[0] + a.progression_reward[1]) / 2
+        + a.progression_minimum;
       const progressionMeanB
-        = (b.progression_reward[0] + b.progression_reward[1])/2
-          + b.progression_minimum;
+        = (b.progression_reward[0] + b.progression_reward[1]) / 2
+        + b.progression_minimum;
       if (progressionMeanA < progressionMeanB) {
         return -1;
       } else if (progressionMeanA === progressionMeanB) {
@@ -126,7 +126,7 @@ const sortingOptions: SortingOption[] = [
 ];
 
 export const TraitorObjectiveDebug = (props, context) => {
-  const { data, act } = useBackend<ObjectiveData>(context);
+  const { data, act } = useBackend<ObjectiveData>();
   const { objective_data, player_data, current_progression } = data;
   const lines: JSX.Element[] = [];
   lines.sort();
@@ -160,7 +160,7 @@ export const TraitorObjectiveDebug = (props, context) => {
           }}
         >
           {/* Time in minutes of this threshold */}
-          {Math.round((sizeLimit*(i/100))/(600))} mins
+          {Math.round((sizeLimit * (i / 100)) / (600))} mins
         </Box>
       </Box>
     ));
@@ -290,11 +290,11 @@ export const TraitorObjectiveDebug = (props, context) => {
                         {value.player}
                       </LabeledList.Item>
                       <LabeledList.Item label={"Total PR"}>
-                        {Math.floor(value.progression_points/600)} mins
+                        {Math.floor(value.progression_points / 600)} mins
                       </LabeledList.Item>
                       <LabeledList.Item label={"Obj PR"}>
                         {Math.floor(
-                          value.total_progression_from_objectives/600)} mins
+                          value.total_progression_from_objectives / 600)} mins
                       </LabeledList.Item>
                     </LabeledList>
                   </Box>
@@ -304,8 +304,8 @@ export const TraitorObjectiveDebug = (props, context) => {
                 <Box
                   backgroundColor="red"
                   position="absolute"
-                  left={`${(value.progression_points/sizeLimit)
-                  *(window.innerWidth)}px`}
+                  left={`${(value.progression_points / sizeLimit)
+                    * (window.innerWidth)}px`}
                   width="3px"
                   height="100%"
                   top={0}
@@ -323,14 +323,13 @@ export const TraitorObjectiveDebug = (props, context) => {
             );
           })}
           <Tooltip
-            content={`Expected Progression: ${
-              Math.floor(current_progression/600)} mins`}
+            content={`Expected Progression: ${Math.floor(current_progression / 600)} mins`}
             position="top"
           >
             <Box
               position="absolute"
-              left={`${(current_progression/sizeLimit)
-                  *(window.innerWidth)}px`}
+              left={`${(current_progression / sizeLimit)
+                * (window.innerWidth)}px`}
               width="3px"
               height="100%"
               top={0}
@@ -358,8 +357,8 @@ type ObjectiveBoxProps = {
 
 const ObjectiveBox = (props: ObjectiveBoxProps, context) => {
   const { objective } = props;
-  let width = `${(objective.progression_maximum/sizeLimit)
-    *(window.innerWidth)}px`;
+  let width = `${(objective.progression_maximum / sizeLimit)
+    * (window.innerWidth)}px`;
   if (objective.progression_maximum > sizeLimit) {
     width = "100%";
   }
@@ -367,8 +366,8 @@ const ObjectiveBox = (props: ObjectiveBoxProps, context) => {
     <Box
       backgroundColor="grey"
       position="absolute"
-      left={`${(objective.progression_minimum/sizeLimit)
-        *(window.innerWidth)}px`}
+      left={`${(objective.progression_minimum / sizeLimit)
+        * (window.innerWidth)}px`}
       width={width}
       height="95px"
     >
@@ -384,11 +383,11 @@ const ObjectiveBox = (props: ObjectiveBoxProps, context) => {
         <Stack.Item>
           <Stack>
             <Stack.Item grow>
-              {objective.progression_minimum/600} mins
+              {objective.progression_minimum / 600} mins
             </Stack.Item>
             {objective.progression_maximum <= sizeLimit && (
               <Stack.Item>
-                {objective.progression_maximum/600} mins
+                {objective.progression_maximum / 600} mins
               </Stack.Item>
             )}
           </Stack>
@@ -399,14 +398,14 @@ const ObjectiveBox = (props: ObjectiveBoxProps, context) => {
             left={0}
             height="100%"
             backgroundColor="green"
-            width={`${(objective.progression_reward[1]/sizeLimit)
-              *(window.innerWidth)}px`}
+            width={`${(objective.progression_reward[1] / sizeLimit)
+              * (window.innerWidth)}px`}
             style={{
               "white-space": "nowrap",
             }}
           >
-            {objective.progression_reward[0]/600}
-            &nbsp;to {objective.progression_reward[1]/600} pr
+            {objective.progression_reward[0] / 600}
+            &nbsp;to {objective.progression_reward[1] / 600} pr
           </Box>
         </Stack.Item>
         <Stack.Item position="relative" basis="18px">

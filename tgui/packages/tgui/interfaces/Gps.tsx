@@ -27,15 +27,15 @@ interface Trackable {
   level: string,
 }
 
-interface GpsSignal extends Trackable {}
-interface GpsWaypoint extends Trackable {}
+interface GpsSignal extends Trackable { }
+interface GpsWaypoint extends Trackable { }
 
 interface TrackingEntryContext {
   tracking: Trackable,
 }
 
 export const Gps = (props, context) => {
-  const { act, data } = useBackend<GpsContext>(context);
+  const { act, data } = useBackend<GpsContext>();
   const [addWaypointName, setAddWaypointName] = useLocalState(context, 'waypointName', "");
   const [addWaypointX, setAddWaypointX] = useLocalState(context, 'waypointX', "");
   const [addWaypointY, setAddWaypointY] = useLocalState(context, 'waypointY', "");
@@ -51,7 +51,7 @@ export const Gps = (props, context) => {
           buttons={(
             <Button
               icon="power-off"
-              content={data.on? "On" : "Off"}
+              content={data.on ? "On" : "Off"}
               selected={!!data.on}
               onClick={() => act('power')} />
           )}>
@@ -65,14 +65,14 @@ export const Gps = (props, context) => {
             <LabeledList.Item label="Range">
               <Button
                 icon="sync"
-                content={data.local_mode? "Local" : "Maximum"}
+                content={data.local_mode ? "Local" : "Maximum"}
                 selected={!data.local_mode}
                 onClick={() => act('range')} />
             </LabeledList.Item>
             <LabeledList.Item label="Updating">
               <Button
-                icon={data.updating? "unlock" : "lock"}
-                content={data.updating? "Auto" : "Manual"}
+                icon={data.updating ? "unlock" : "lock"}
+                content={data.updating ? "Auto" : "Manual"}
                 selected={!data.updating}
                 onClick={() => act('toggle_update')} />
             </LabeledList.Item>
@@ -81,13 +81,13 @@ export const Gps = (props, context) => {
                 <LabeledList.Item label="Stealth">
                   <Button
                     icon="sync"
-                    content={data.visible? "Broadcasting" : "Concealed"}
+                    content={data.visible ? "Broadcasting" : "Concealed"}
                     selected={!data.visible}
                     onClick={() => act('hide')} />
                 </LabeledList.Item>
               ) : (
                 <LabeledList.Item label="Signal">
-                  {data.visible? "Broadcasting" : "Concealed"}
+                  {data.visible ? "Broadcasting" : "Concealed"}
                 </LabeledList.Item>
               )
             }
@@ -105,8 +105,10 @@ export const Gps = (props, context) => {
               buttons={
                 <Button
                   icon="plus"
-                  onClick={() => act('add_waypoint', { name: addWaypointName, level_id: addWaypointLevel,
-                    x: addWaypointX, y: addWaypointY })} />
+                  onClick={() => act('add_waypoint', {
+                    name: addWaypointName, level_id: addWaypointLevel,
+                    x: addWaypointX, y: addWaypointY
+                  })} />
               }>
               <Input placeholder="Waypoint" width="15rem"
                 value={addWaypointName} onChange={(_, v) => setAddWaypointName(v)} />
@@ -163,7 +165,7 @@ export const Gps = (props, context) => {
                       </Table.Cell>
                       <Table.Cell collapsing>
                         {
-                          data.level === signal.level? (
+                          data.level === signal.level ? (
                             `${signal.x}, ${signal.y}`
                           ) : (
                             `${signal.level} - ${signal.x}, ${signal.y}`
@@ -213,7 +215,7 @@ export const Gps = (props, context) => {
                       </Table.Cell>
                       <Table.Cell collapsing>
                         {
-                          data.level === signal.level? (
+                          data.level === signal.level ? (
                             `${signal.x}, ${signal.y}`
                           ) : (
                             `${signal.level} - ${signal.x}, ${signal.y}`

@@ -7,7 +7,7 @@ import { SectionProps } from "../../components/Section";
 import { AtmosFilterList, AtmosGasGroupFlags, AtmosGasIDs, GasContext } from "../common/Atmos";
 import { AtmosPortable } from "../common/AtmosPortable";
 
-interface AtmosPortableScrubberControlProps extends SectionProps{
+interface AtmosPortableScrubberControlProps extends SectionProps {
   readonly atmosContext: GasContext;
   readonly scrubbingIds: AtmosGasIDs;
   readonly scrubbingGroups: AtmosGasGroupFlags;
@@ -36,7 +36,7 @@ export interface AtmosPortableScubberData {
 }
 
 export const AtmosPortableScrubber = (props, context) => {
-  const { data, act } = useBackend<AtmosPortableScubberData>(context);
+  const { data, act } = useBackend<AtmosPortableScubberData>();
   return (
     <AtmosPortable
       minimumWidth={430}

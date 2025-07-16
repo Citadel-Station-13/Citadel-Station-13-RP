@@ -65,7 +65,7 @@ type ListOption = string | null | undefined;
 type ToggleOption = BooleanLike;
 
 export const UIDynamicInputModal = (props, context) => {
-  const { data, act } = useBackend<UIDynamicInputContext>(context);
+  const { data, act } = useBackend<UIDynamicInputContext>();
   const [options, setOptions] = useState<Record<string, any>>({});
   return (
     <Window title={data.title}>

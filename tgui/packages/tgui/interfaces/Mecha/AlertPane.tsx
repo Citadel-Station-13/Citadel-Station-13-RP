@@ -3,7 +3,7 @@ import { Stack, Button, Box } from '../../components';
 import { OperatorData, InternalDamageToDamagedDesc, InternalDamageToNormalDesc } from './data';
 
 export const AlertPane = (props, context) => {
-  const { act, data } = useBackend<OperatorData>(context);
+  const { act, data } = useBackend<OperatorData>();
   const {
     internal_damage,
     internal_damage_keys,
@@ -16,7 +16,7 @@ export const AlertPane = (props, context) => {
             <Stack.Item>
               <Box color={(internal_damage & internal_damage_keys[t]) ? "red" : "green"}>
                 {(internal_damage & internal_damage_keys[t])
-                  ?InternalDamageToDamagedDesc[t]:InternalDamageToNormalDesc[t]}
+                  ? InternalDamageToDamagedDesc[t] : InternalDamageToNormalDesc[t]}
               </Box>
             </Stack.Item>
             <Stack.Item>
@@ -25,7 +25,7 @@ export const AlertPane = (props, context) => {
                   flag: internal_damage_keys[t],
                 })}
                 color={"red"}
-                disabled={!(internal_damage&internal_damage_keys[t])}>
+                disabled={!(internal_damage & internal_damage_keys[t])}>
                 Repair
               </Button>
             </Stack.Item>

@@ -140,7 +140,7 @@ const isCategorySelected = (data: Data, item: Category | Recipe) => (
 );
 
 export const PersonalCrafting = (props, context) => {
-  const { act, data: rawData } = useBackend<RawData>(context);
+  const { act, data: rawData } = useBackend<RawData>();
   const data = remapData(rawData);
 
   const {
@@ -235,7 +235,7 @@ type CraftingListProps = {
 
 const CraftingList = (props: CraftingListProps, context) => {
   const { recipes = [], compact } = props;
-  const { act } = useBackend<RawData>(context);
+  const { act } = useBackend<RawData>();
 
   if (compact) {
     return <CompactCraftingList recipes={recipes} />;
@@ -286,7 +286,7 @@ const CraftingList = (props: CraftingListProps, context) => {
 
 const CompactCraftingList = (props: CraftingListProps, context) => {
   const { recipes = [] } = props;
-  const { act } = useBackend<RawData>(context);
+  const { act } = useBackend<RawData>();
 
   return (
     <table>

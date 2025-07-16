@@ -44,7 +44,7 @@ const PuzzgridButton = (props, context) => {
 };
 
 export const Puzzgrid = (props, context) => {
-  const { act, data } = useBackend<PuzzgridData>(context);
+  const { act, data } = useBackend<PuzzgridData>();
 
   const answersLeft = data.answers.filter(answer => (
     !data.solved_groups.find(group => group.answers.indexOf(answer) !== -1)

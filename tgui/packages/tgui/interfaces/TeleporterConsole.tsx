@@ -14,7 +14,7 @@ interface TeleporterConsoleContext {
 }
 
 export const TeleporterConsole = (props, context) => {
-  const { act, data } = useBackend<TeleporterConsoleContext>(context);
+  const { act, data } = useBackend<TeleporterConsoleContext>();
   const {
     locked,
   } = data;
@@ -23,13 +23,13 @@ export const TeleporterConsole = (props, context) => {
       width={600}
       height={400}
       resizable>
-      {data.disabled ? (<Box color="bad">TELEPORTER PAD OR PROJECTOR NOT FOUND. PLEASE CONTACT YOUR SYSTEM ADMINISTRATOR.</Box>):(<TeleporterConsoleOperational locked={locked} />)}
+      {data.disabled ? (<Box color="bad">TELEPORTER PAD OR PROJECTOR NOT FOUND. PLEASE CONTACT YOUR SYSTEM ADMINISTRATOR.</Box>) : (<TeleporterConsoleOperational locked={locked} />)}
     </Window>
   );
 };
 
 export const TeleporterConsoleOperational = (props, context) => {
-  const { act, data } = useBackend<TeleporterConsoleContext>(context);
+  const { act, data } = useBackend<TeleporterConsoleContext>();
   const {
     locked,
     projector_charge,

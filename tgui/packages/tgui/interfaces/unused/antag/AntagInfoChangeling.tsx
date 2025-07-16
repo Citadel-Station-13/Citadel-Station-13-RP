@@ -47,7 +47,7 @@ type Info = {
 };
 
 const ObjectivePrintout = (props, context) => {
-  const { data } = useBackend<Info>(context);
+  const { data } = useBackend<Info>();
   const {
     objectives,
   } = data;
@@ -58,18 +58,18 @@ const ObjectivePrintout = (props, context) => {
       </Stack.Item>
       <Stack.Item>
         {!objectives && "None!"
-        || objectives.map(objective => (
-          <Stack.Item key={objective.count}>
-            #{objective.count}: {objective.explanation}
-          </Stack.Item>
-        )) }
+          || objectives.map(objective => (
+            <Stack.Item key={objective.count}>
+              #{objective.count}: {objective.explanation}
+            </Stack.Item>
+          ))}
       </Stack.Item>
     </Stack>
   );
 };
 
 const IntroductionSection = (props, context) => {
-  const { act, data } = useBackend<Info>(context);
+  const { act, data } = useBackend<Info>();
   const {
     hive_name,
     objectives,
@@ -97,7 +97,7 @@ const IntroductionSection = (props, context) => {
 };
 
 const AbilitiesSection = (props, context) => {
-  const { data } = useBackend<Info>(context);
+  const { data } = useBackend<Info>();
   return (
     <Section fill title="Abilities">
       <Stack fill>
@@ -161,7 +161,7 @@ const AbilitiesSection = (props, context) => {
 };
 
 const MemoriesSection = (props, context) => {
-  const { act, data } = useBackend<Info>(context);
+  const { act, data } = useBackend<Info>();
   const {
     memories,
     stolen_antag_info,
@@ -199,29 +199,29 @@ const MemoriesSection = (props, context) => {
           )}
         </Box>
       ) || (
-        <Stack vertical>
-          <Stack.Item>
-            <Dropdown
-              width="100%"
-              selected={selectedMemory?.name}
-              options={
-                memories.map(memory => {
-                  return memory.name;
-                })
-              }
-              onSelected={selected => setSelectedMemory(memoryMap[selected])} />
-          </Stack.Item>
-          <Stack.Item>
-            {!!selectedMemory && selectedMemory.story}
-          </Stack.Item>
-        </Stack>
-      )}
+          <Stack vertical>
+            <Stack.Item>
+              <Dropdown
+                width="100%"
+                selected={selectedMemory?.name}
+                options={
+                  memories.map(memory => {
+                    return memory.name;
+                  })
+                }
+                onSelected={selected => setSelectedMemory(memoryMap[selected])} />
+            </Stack.Item>
+            <Stack.Item>
+              {!!selectedMemory && selectedMemory.story}
+            </Stack.Item>
+          </Stack>
+        )}
     </Section>
   );
 };
 
 const VictimPatternsSection = (props, context) => {
-  const { data } = useBackend<Info>(context);
+  const { data } = useBackend<Info>();
   const {
     stolen_antag_info,
   } = data;
@@ -238,7 +238,7 @@ const VictimPatternsSection = (props, context) => {
 };
 
 export const AntagInfoChangeling = (props, context) => {
-  const { data } = useBackend<Info>(context);
+  const { data } = useBackend<Info>();
   return (
     <Window
       width={620}

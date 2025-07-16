@@ -29,7 +29,7 @@ enum Tab {
 }
 
 const FutureStationTraitsPage = (props, context) => {
-  const { act, data } = useBackend<StationTraitsData>(context);
+  const { act, data } = useBackend<StationTraitsData>();
   const { future_station_traits } = data;
 
   const [selectedTrait, setSelectedTrait] = useLocalState<string | null>(
@@ -116,13 +116,13 @@ const FutureStationTraitsPage = (props, context) => {
                             onClick={() => {
                               act("setup_future_traits", {
                                 station_traits:
-                                filterMap(future_station_traits, otherTrait => {
-                                  if (otherTrait.path === trait.path) {
-                                    return undefined;
-                                  } else {
-                                    return otherTrait.path;
-                                  }
-                                }),
+                                  filterMap(future_station_traits, otherTrait => {
+                                    if (otherTrait.path === trait.path) {
+                                      return undefined;
+                                    } else {
+                                      return otherTrait.path;
+                                    }
+                                  }),
                               });
                             }}
                           >
@@ -177,7 +177,7 @@ const FutureStationTraitsPage = (props, context) => {
 };
 
 const ViewStationTraitsPage = (props, context) => {
-  const { act, data } = useBackend<StationTraitsData>(context);
+  const { act, data } = useBackend<StationTraitsData>();
 
   return data.current_traits.length > 0 ? (
     <Stack vertical fill>

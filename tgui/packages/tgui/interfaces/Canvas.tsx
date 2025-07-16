@@ -6,7 +6,7 @@ import { Box, Button, Flex } from '../components';
 import { Window } from '../layouts';
 
 type PaintCanvasProps = Partial<{
-  onCanvasModifiedHandler: (data : PointData[]) => void,
+  onCanvasModifiedHandler: (data: PointData[]) => void,
   value: string[][],
   width: number,
   height: number,
@@ -27,7 +27,7 @@ const fromDM = (data: string[][]) => {
 };
 
 const toMassPaintFormat = (data: PointData[]) => {
-  return data.map(p => ({ x: p.x+1, y: p.y+1 })); // 1-based index dm side
+  return data.map(p => ({ x: p.x + 1, y: p.y + 1 })); // 1-based index dm side
 };
 
 class PaintCanvas extends Component<PaintCanvasProps> {
@@ -94,7 +94,7 @@ class PaintCanvas extends Component<PaintCanvasProps> {
     }
   }
 
-  eventToCoords(event : MouseEvent) {
+  eventToCoords(event: MouseEvent) {
     const canvas = this.canvasRef.current!;
     const width = this.props.width || canvas.width || 360;
     const height = this.props.height || canvas.height || 360;
@@ -107,10 +107,10 @@ class PaintCanvas extends Component<PaintCanvasProps> {
     return { x, y };
   }
 
-  handleStartDrawing(event : MouseEvent) {
+  handleStartDrawing(event: MouseEvent) {
     if (!this.props.editable
-       || this.props.drawing_color === undefined
-       || this.props.drawing_color === null) {
+      || this.props.drawing_color === undefined
+      || this.props.drawing_color === null) {
       return;
     }
     this.modifiedElements = [];
@@ -201,7 +201,7 @@ type CanvasData = {
 }
 
 export const Canvas = (props, context) => {
-  const { act, data } = useBackend<CanvasData>(context);
+  const { act, data } = useBackend<CanvasData>();
   const [width, height] = getImageSize(data.grid);
   const scaled_width = width * data.px_per_unit;
   const scaled_height = height * data.px_per_unit;
@@ -212,7 +212,7 @@ export const Canvas = (props, context) => {
       width={scaled_width + 72}
       height={scaled_height + 75
         + (data.show_plaque ? average_plaque_height : 0)
-		+ (data.editable && data.paint_tool_palette ? palette_height : 0)}>
+        + (data.editable && data.paint_tool_palette ? palette_height : 0)}>
       <Window.Content>
         <Box textAlign="center">
           <PaintCanvas
@@ -264,7 +264,7 @@ export const Canvas = (props, context) => {
                 <Box mb={1} fontSize="18px" bold>{decodeHtmlEntities(data.name)}</Box>
                 <Box bold>
                   {data.author}
-                  {!!data.date && `- ${new Date(data.date).getFullYear()+540}`}
+                  {!!data.date && `- ${new Date(data.date).getFullYear() + 540}`}
                 </Box>
                 <Box italic>{data.medium}</Box>
                 <Box italic>

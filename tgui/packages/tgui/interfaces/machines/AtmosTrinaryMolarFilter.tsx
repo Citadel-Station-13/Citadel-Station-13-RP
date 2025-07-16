@@ -31,7 +31,7 @@ export const AtmosTrinaryMolarFilterControl = (props: AtmosTrinaryMolarFilterCon
             unit="g/mol" />
         </LabeledList.Item>
         <LabeledList.Item label="Inversion">
-          <Button.Checkbox content={props.invert? "Inverted" : "Normal"}
+          <Button.Checkbox content={props.invert ? "Inverted" : "Normal"}
             selected={props.invert}
             onClick={() => props.toggleInvert(!props.invert)} />
         </LabeledList.Item>
@@ -49,7 +49,7 @@ interface AtmosTrinaryMolarFilterData extends AtmosComponentData {
 }
 
 export const AtmosTrinaryMolarFilter = (props, context) => {
-  const { act, data } = useBackend<AtmosTrinaryMolarFilterData>(context);
+  const { act, data } = useBackend<AtmosTrinaryMolarFilterData>();
 
   return (
     <AtmosComponent

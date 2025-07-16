@@ -73,7 +73,7 @@ const StackCraftingEntry = (props: StackCraftingEntryProps, context) => {
 };
 
 export const StackCrafting = (props, context) => {
-  const { act, data } = useBackend<StackCraftingData>(context);
+  const { act, data } = useBackend<StackCraftingData>();
   let approximateEntries = 0;
   let categories: string[] = [];
   const [searchText, setSearchText] = useState<string | null>(null);

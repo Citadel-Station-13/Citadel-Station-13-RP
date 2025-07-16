@@ -59,7 +59,7 @@ export const AntagInfoBrainwashed = () => {
 };
 
 const ObjectivePrintout = (_, context) => {
-  const { data } = useBackend<Info>(context);
+  const { data } = useBackend<Info>();
   const {
     objectives,
   } = data;
@@ -70,16 +70,16 @@ const ObjectivePrintout = (_, context) => {
       </Stack.Item>
       <Stack.Item textAlign="left">
         {!objectives && "None!"
-        || objectives.map(objective => (
-          <>
-            <Stack.Item key={objective.count}>
-              {objective.count}. {objective.explanation}
-            </Stack.Item>
-            <Stack.Item bold textColor="red">
-              This Directive must be followed.
-            </Stack.Item>
-          </>
-        )) }
+          || objectives.map(objective => (
+            <>
+              <Stack.Item key={objective.count}>
+                {objective.count}. {objective.explanation}
+              </Stack.Item>
+              <Stack.Item bold textColor="red">
+                This Directive must be followed.
+              </Stack.Item>
+            </>
+          ))}
       </Stack.Item>
     </Stack>
   );

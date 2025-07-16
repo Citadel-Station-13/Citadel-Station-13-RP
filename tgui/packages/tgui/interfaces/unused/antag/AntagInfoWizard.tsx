@@ -130,7 +130,7 @@ export const AntagInfoWizard = (props, context) => {
 };
 
 const ObjectivePrintout = (props, context) => {
-  const { data } = useBackend<Info>(context);
+  const { data } = useBackend<Info>();
   const {
     objectives,
   } = data;
@@ -141,11 +141,11 @@ const ObjectivePrintout = (props, context) => {
       </Stack.Item>
       <Stack.Item>
         {!objectives && "None!"
-        || objectives.map(objective => (
-          <Stack.Item key={objective.count}>
-            #{objective.count}: {objective.explanation}
-          </Stack.Item>
-        )) }
+          || objectives.map(objective => (
+            <Stack.Item key={objective.count}>
+              #{objective.count}: {objective.explanation}
+            </Stack.Item>
+          ))}
       </Stack.Item>
     </Stack>
   );

@@ -33,8 +33,8 @@ const CooldownEstimate = (props) => {
     || cost > COST_UPPER_BOUND * 0.25 && "orange"
     || "green";
   const cooldownText = cost > COST_UPPER_BOUND * 0.75 && "long"
-  || cost > COST_UPPER_BOUND * 0.25 && "moderate"
-  || "short";
+    || cost > COST_UPPER_BOUND * 0.25 && "moderate"
+    || "short";
   return (
     <Box as="span" textColor={cooldownColor}>
       {cooldownText} cooldown.
@@ -43,7 +43,7 @@ const CooldownEstimate = (props) => {
 };
 
 export const DepartmentOrders = (props, context) => {
-  const { data } = useBackend<Info>(context);
+  const { data } = useBackend<Info>();
   const {
     time_left,
   } = data;
@@ -81,7 +81,7 @@ export const DepartmentOrders = (props, context) => {
 };
 
 const CooldownDimmer = (props, context) => {
-  const { act, data } = useBackend<Info>(context);
+  const { act, data } = useBackend<Info>();
   const {
     can_override,
     time_left,
@@ -121,7 +121,7 @@ const CooldownDimmer = (props, context) => {
 };
 
 const DepartmentCatalog = (props, context) => {
-  const { act, data } = useBackend<Info>(context);
+  const { act, data } = useBackend<Info>();
   const {
     supplies,
   } = data;

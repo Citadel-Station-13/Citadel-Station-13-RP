@@ -20,7 +20,7 @@ the Head of Personnel. All rights reserved. All trademarks are property
 of their respective owners.`;
 
 export const HoloPay = (_, context) => {
-  const { data } = useBackend<HoloPayData>(context);
+  const { data } = useBackend<HoloPayData>();
   const { owner } = data;
   const [setupMode, setSetupMode] = useLocalState(context, 'setupMode', false);
   // User clicked the "Setup" or "Done" button.
@@ -56,7 +56,7 @@ export const HoloPay = (_, context) => {
  * Displays the current user's bank information (if any)
  */
 const AccountDisplay = (_, context) => {
-  const { data } = useBackend<HoloPayData>(context);
+  const { data } = useBackend<HoloPayData>();
   const { user } = data;
   if (!user) {
     return <NoticeBox>Error! No account detected.</NoticeBox>;
@@ -88,7 +88,7 @@ const AccountDisplay = (_, context) => {
  * Shows icon, name, payment button.
  */
 const TerminalDisplay = (props, context) => {
-  const { act, data } = useBackend<HoloPayData>(context);
+  const { act, data } = useBackend<HoloPayData>();
   const { description, force_fee, name, owner, user, shop_logo } = data;
   const { onClick } = props;
   const is_owner = owner === user?.name;
@@ -170,7 +170,7 @@ const TerminalDisplay = (props, context) => {
  * User has clicked "setup" button. Changes vars on the holopay.
  */
 const SetupDisplay = (props, context) => {
-  const { act, data } = useBackend<HoloPayData>(context);
+  const { act, data } = useBackend<HoloPayData>();
   const { available_logos = [], force_fee, max_fee, name, shop_logo } = data;
   const { onClick } = props;
   const decodedName = name.replace(/&#(\d+);/g, (_, dec) => {

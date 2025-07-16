@@ -4,7 +4,7 @@ import { KelvinZeroCelcius, OperatorData } from './data';
 import { toFixed } from 'common/math';
 
 export const MechStatPane = (props, context) => {
-  const { act, data } = useBackend<OperatorData>(context);
+  const { act, data } = useBackend<OperatorData>();
   const {
     name,
     integrity,
@@ -63,7 +63,7 @@ export const MechStatPane = (props, context) => {
               </Button>
             </LabeledList.Item>
             <LabeledList.Item label="Cabin pressure">
-              <Box color={cabin_pressure>cabin_dangerous_highpressure?"red":null}>
+              <Box color={cabin_pressure > cabin_dangerous_highpressure ? "red" : null}>
                 {cabin_pressure} kPa
               </Box>
             </LabeledList.Item>
@@ -96,7 +96,7 @@ export const MechStatPane = (props, context) => {
             </LabeledList.Item>
             <LabeledList.Item label="Port connection">
               <Button onClick={() => act('toggle_port')} selected={port_connected}>
-                {port_connected ? "C":"Disc"}onnected
+                {port_connected ? "C" : "Disc"}onnected
               </Button>
             </LabeledList.Item>
           </LabeledList>
@@ -107,12 +107,12 @@ export const MechStatPane = (props, context) => {
 };
 
 const GetTempFormat = (temp) => {
-  return toFixed(temp, 1) +"°K\n"+ toFixed(temp-KelvinZeroCelcius, 1) + "°C";
+  return toFixed(temp, 1) + "°K\n" + toFixed(temp - KelvinZeroCelcius, 1) + "°C";
 };
 
 
 const EnviromentalAir = (props, context) => {
-  const { act, data } = useBackend<OperatorData>(context);
+  const { act, data } = useBackend<OperatorData>();
   const {
     airtank_pressure,
     airtank_temp,
@@ -134,7 +134,7 @@ const EnviromentalAir = (props, context) => {
 };
 
 const DNABody = (props, context) => {
-  const { act, data } = useBackend<OperatorData>(context);
+  const { act, data } = useBackend<OperatorData>();
   const {
     dna_lock,
   } = data;
@@ -172,7 +172,7 @@ const DNABody = (props, context) => {
 };
 
 const PowerBar = (props, context) => {
-  const { act, data } = useBackend<OperatorData>(context);
+  const { act, data } = useBackend<OperatorData>();
   const {
     power_level,
     power_max,
@@ -183,9 +183,9 @@ const PowerBar = (props, context) => {
     return (
       <ProgressBar
         ranges={{
-          good: [0.75*power_max, Infinity],
-          average: [0.25*power_max, 0.75*power_max],
-          bad: [-Infinity, 0.25*power_max],
+          good: [0.75 * power_max, Infinity],
+          average: [0.25 * power_max, 0.75 * power_max],
+          bad: [-Infinity, 0.25 * power_max],
         }}
         maxValue={power_max}
         value={power_level || 0} />

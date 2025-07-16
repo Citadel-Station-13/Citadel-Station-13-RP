@@ -17,7 +17,7 @@ type AirlockStatus = {
 };
 
 export const AirlockController = (_, context) => {
-  const { data } = useBackend<AirlockControllerData>(context);
+  const { data } = useBackend<AirlockControllerData>();
   const { airlockState, pumpStatus, interiorStatus, exteriorStatus } = data;
   const currentStatus: AirlockStatus = getAirlockStatus(airlockState);
   const nameToUpperCase = (str: string) =>
@@ -56,7 +56,7 @@ export const AirlockController = (_, context) => {
 
 /** Displays the buttons on top of the window to cycle the airlock */
 const AirLockButtons = (_, context) => {
-  const { act, data } = useBackend<AirlockControllerData>(context);
+  const { act, data } = useBackend<AirlockControllerData>();
   const { airlockState } = data;
   switch (airlockState) {
     case 'pressurize':
@@ -106,7 +106,7 @@ const AirLockButtons = (_, context) => {
 
 /** Displays the numeric pressure alongside an icon for the user */
 const PressureIndicator = (props, context) => {
-  const { data } = useBackend<AirlockControllerData>(context);
+  const { data } = useBackend<AirlockControllerData>();
   const { sensorPressure } = data;
   const {
     currentStatus: { icon, color },

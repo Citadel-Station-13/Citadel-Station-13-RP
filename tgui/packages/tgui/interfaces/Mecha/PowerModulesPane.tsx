@@ -4,7 +4,7 @@ import { OperatorData } from './data';
 import { toFixed } from 'common/math';
 
 export const PowerModulesPane = (props, context) => {
-  const { act, data } = useBackend<OperatorData>(context);
+  const { act, data } = useBackend<OperatorData>();
   const {
     mech_equipment,
     mineral_material_amount,
@@ -12,7 +12,7 @@ export const PowerModulesPane = (props, context) => {
   return (
     <LabeledList>
       {mech_equipment["power"].map((module, i) => (
-        <LabeledList.Item key={i} label={module.name + (module.snowflake.fuel === null ? "" : ": "+toFixed(module.snowflake.fuel*mineral_material_amount, 0.1)+" cm³")}>
+        <LabeledList.Item key={i} label={module.name + (module.snowflake.fuel === null ? "" : ": " + toFixed(module.snowflake.fuel * mineral_material_amount, 0.1) + " cm³")}>
           <Button
             content={(module.activated ? "En" : "Dis") + "abled"}
             selected={module.activated}
