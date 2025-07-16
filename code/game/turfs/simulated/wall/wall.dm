@@ -186,6 +186,8 @@
 	ScrapeAway()
 
 /turf/simulated/wall/legacy_ex_act(severity)
+	if(integrity_flags & INTEGRITY_INDESTRUCTIBLE)
+		return
 	switch(severity)
 		if(1.0)
 			if(material_girder.explosion_resistance >= 25 && prob(material_girder.explosion_resistance))
