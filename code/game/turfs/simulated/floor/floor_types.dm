@@ -10,6 +10,7 @@
 	desc = "This slick flesh ripples and squishes under your touch"
 	icon_state = "flesh-floor"
 	icon = 'icons/turf/stomach_vr.dmi'
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 /turf/simulated/floor/flesh/colour
 	name = "flesh"
@@ -18,7 +19,4 @@
 	icon = 'icons/turf/stomach_vr.dmi'
 
 /turf/simulated/floor/flesh/attackby()
-	return
-
-/turf/simulated/floor/flesh/legacy_ex_act(severity)
 	return
