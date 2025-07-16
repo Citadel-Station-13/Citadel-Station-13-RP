@@ -75,6 +75,11 @@ export const WarningParameter = new Juke.Parameter({
   alias: 'W',
 });
 
+export const NoWarningParameter = new Juke.Parameter({
+  type: 'string[]',
+  alias: 'I',
+});
+
 export const CutterTarget = new Juke.Target({
   onlyWhen: () => {
     const files = Juke.glob(cutter_path);
@@ -192,6 +197,7 @@ export const DmTarget = new Juke.Target({
   parameters: [
     DefineParameter,
     WarningParameter,
+    NoWarningParameter,
     SkipIconCutter,
   ],
   dependsOn: ({ get }) => [
@@ -214,6 +220,7 @@ export const DmTarget = new Juke.Target({
     await DreamMaker(`${DME_NAME}.dme`, {
       defines: ['CBT', ...get(DefineParameter)],
       warningsAsErrors: get(WarningParameter).includes('error'),
+      ignoreWarningCodes: get(NoWarningParameter),
     });
   },
 });
