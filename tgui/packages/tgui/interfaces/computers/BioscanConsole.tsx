@@ -2,10 +2,10 @@
  * @file
  * @license MIT
  */
-import { BooleanLike } from "../../../common/react";
 import { useBackend } from "../../backend";
 import { Button, Collapsible, Input, LabeledList, Section } from "tgui-core/components";
 import { Window } from "../../layouts";
+import { BooleanLike } from "tgui-core/react";
 
 interface BioscanConsoleData {
   network: string;
@@ -46,7 +46,7 @@ export const BioscanConsole = (props, context) => {
         <Section title="Controls">
           <LabeledList>
             <LabeledList.Item label="Network Key">
-              <Input value={data.network} onEnter={(_, val) => act('set_network', { network: val })} />
+              <Input value={data.network} onEnter={(val) => act('set_network', { network: val })} />
             </LabeledList.Item>
             <LabeledList.Item label="Scan">
               <Button

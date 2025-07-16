@@ -3,8 +3,8 @@
  * @license MIT
  */
 
-import { BooleanLike } from "common/react";
-import { Section } from "../../components";
+import { Section } from "tgui-core/components";
+import { BooleanLike } from "tgui-core/react";
 
 type IngredientRef = string;
 type IngredientPath = string;

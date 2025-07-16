@@ -1,8 +1,8 @@
 import { DecodeRGBString, EncodeRGBAString, EncodeRGBString, HSVtoRGB, RGBtoHSV } from "common/color";
-import { round } from "common/math";
-import { Component } from "inferno";
+import { Component } from "react";
 import { Box, ColorBox, Input, NumberInput, Slider, Stack, Table, Tabs } from "tgui-core/components";
-import { BoxProps } from "tgui-core/componentsents/Box";
+import { round } from "tgui-core/math";
+import { BoxProps } from "../../components/ComponentProps";
 
 // full, 20-value RGBA matrix with constants
 export type ByondColorMatrixRGBAC = [
@@ -377,7 +377,7 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
                         </Stack.Item>
                       )}
                       <Stack.Item>
-                        <Input value={colorAsString()} onChange={(e, val) => {
+                        <Input value={colorAsString()} onChange={(val) => {
                           try {
                             let [r, g, b, a] = DecodeRGBString(val);
                             this.setState((prev) => ({
@@ -418,7 +418,7 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
                             {l}: <NumberInput width="50px"
                               minValue={-10} maxValue={10}
                               step={0.01} value={this.state.cMatrix[ifull]}
-                              onChange={(e, val) => {
+                              onChange={(val) => {
                                 this.setState((prev) => {
                                   let modified = prev.cMatrix.slice();
                                   modified[ifull] = val;
@@ -447,7 +447,7 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
                             {l}: <NumberInput width="50px"
                               minValue={-10} maxValue={10}
                               step={0.01} value={round(this.state.cMatrix[ifull], 4)}
-                              onChange={(e, val) => {
+                              onChange={(val) => {
                                 this.setState((prev) => {
                                   let modified = prev.cMatrix.slice();
                                   modified[ifull] = val;

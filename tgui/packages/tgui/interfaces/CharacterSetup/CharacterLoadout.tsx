@@ -1,13 +1,12 @@
-import { Component } from "inferno";
-import { useLocalState } from "../../backend";
-import { Box, Button, Collapsible, Dropdown, Input, Stack, Tabs } from "tgui-core/components";
-import { Section, SectionProps } from "tgui-core/components/Section";
+import { Box, Button, Collapsible, Dropdown, Input, Section, Stack, Tabs } from "tgui-core/components";
 import { ByondAtomColor, ByondColorMatrixRGBC, ColorPicker } from "../common/Color";
+import React, { Component, useState } from "react";
+import { BoxProps, SectionProps } from "../../components/ComponentProps";
 
 export type LoadoutId = string;
 
 export interface LoadoutData {
-  slots?: PartialLoadoutSlot[];
+  slots: PartialLoadoutSlot[];
   slot: FullLoadoutSlot;
   slotIndex: number;
 }
@@ -59,7 +58,7 @@ export enum LoadoutCustomizations {
   Color = (1 << 2),
 }
 
-interface LoadoutProps extends SectionProps {
+type LoadoutProps = {
   readonly gearContext: LoadoutContext;
   // ids
   readonly gearAllowed: string[];
@@ -72,7 +71,7 @@ interface LoadoutProps extends SectionProps {
   readonly customizeColorAct?: (id: string, color?: ByondAtomColor) => void;
   readonly tweakAct?: (id: string, tweakId: string) => void;
   readonly clearSlotAct?: (index: number) => void;
-}
+} & SectionProps;
 
 export const CharacterLoadout = (props: LoadoutProps, context) => {
   // todo: get rid of 'context' requirement.
@@ -81,7 +80,7 @@ export const CharacterLoadout = (props: LoadoutProps, context) => {
   let currentCategoryHasSubcategories = !!loadoutCategory && props.gearContext.categories[loadoutCategory].length > 1;
   return (
     <Section {...props}>
-      <Stack vertical grow fill>
+      <Stack vertical fill>
         <Stack.Item>
           <Section>
             <Stack fill>
@@ -239,7 +238,6 @@ class CharacterLoadoutEntry extends Component<CharacterLoadoutEntryProps, Charac
     return (
       <Stack.Item>
         <Collapsible
-          captureKeys={false}
           title={(
             <>
               {(this.props.entry.customize & LoadoutCustomizations.Rename) && !!this.props.selected && (
@@ -253,8 +251,8 @@ class CharacterLoadoutEntry extends Component<CharacterLoadoutEntryProps, Charac
               )}
               {this.state.editingName ? (
                 <Input
-                  value={this.props.selected?.rename}
-                  onChange={(e, val) => {
+                  value={this.props.selected?.rename || undefined}
+                  onChange={(val) => {
                     this.props.customizeNameAct?.(this.props.entry.id, val);
                     this.setState((prevState) => ({ ...prevState, editingName: false }));
                   }} />
@@ -292,8 +290,8 @@ class CharacterLoadoutEntry extends Component<CharacterLoadoutEntryProps, Charac
                 )}
                 {this.state.editingDesc ? (
                   <Input
-                    value={this.props.selected?.redesc}
-                    onChange={(e, val) => {
+                    value={this.props.selected?.redesc || undefined}
+                    onChange={(val) => {
                       this.props.customizeDescAct?.(this.props.entry.id, val);
                       this.setState((prevState) => ({ ...prevState, editingDesc: false }));
                     }} />
