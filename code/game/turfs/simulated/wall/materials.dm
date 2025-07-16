@@ -1,4 +1,6 @@
 /turf/simulated/wall/proc/init_materials(datum/prototype/material/outer = material_outer, datum/prototype/material/reinforcing = material_reinf, datum/prototype/material/girder = material_girder)
+	if(!material_system)
+		return FALSE
 	outer = RSmaterials.fetch_local_or_throw(outer)
 	reinforcing = RSmaterials.fetch_local_or_throw(reinforcing)
 	girder = RSmaterials.fetch_local_or_throw(girder)
@@ -14,42 +16,64 @@
 		register_material(material_girder, FALSE)
 
 	update_materials()
+	return TRUE
 
 /turf/simulated/wall/proc/set_materials(datum/prototype/material/outer, datum/prototype/material/reinforcing, datum/prototype/material/girder)
+	if(!material_system)
+		return FALSE
+
 	unregister_material(material_outer, TRUE)
-	material_outer = outer
-	register_material(material_outer, TRUE)
 	unregister_material(material_reinf, FALSE)
-	material_reinf = reinforcing
-	register_material(material_reinf, FALSE)
 	unregister_material(material_girder, FALSE)
+
+	material_outer = outer
+	material_reinf = reinforcing
 	material_girder = girder
+
+	register_material(material_outer, TRUE)
+	register_material(material_reinf, FALSE)
 	register_material(material_girder, FALSE)
 
 	update_materials()
+	return TRUE
 
 /turf/simulated/wall/proc/set_outer_material(datum/prototype/material/material)
+	if(!material_system)
+		return FALSE
+
 	unregister_material(material_outer, TRUE)
 	material_outer = material
 	register_material(material_outer, TRUE)
 
 	update_materials()
+	return TRUE
 
 /turf/simulated/wall/proc/set_reinforcing_material(datum/prototype/material/material)
+	if(!material_system)
+		return FALSE
+
 	unregister_material(material_reinf, FALSE)
 	material_reinf = material
 	register_material(material_reinf, FALSE)
 
 	update_materials()
+	return TRUE
 
 /turf/simulated/wall/proc/set_girder_material(datum/prototype/material/material)
+	if(!material_system)
+		return FALSE
+
 	unregister_material(material_girder, FALSE)
 	material_girder = material
 	register_material(material_girder, FALSE)
 
 	update_materials()
+	return TRUE
 
 /turf/simulated/wall/proc/update_materials()
+	if(!material_system)
+		return FALSE
+
 	if(material_reinf)
 		construction_stage = 6
 	else
@@ -83,3 +107,4 @@
 	rad_insulation = 1 / ((material_girder?.density * 0.1 + material_outer?.density * 1.2 + material_reinf?.density * 0.5) / 8 * 1.7)
 
 	update_appearance()
+	return TRUE
