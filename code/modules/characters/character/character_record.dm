@@ -16,11 +16,9 @@
 	var/character_id
 
 	/// flags
-	///
 	/// * directly serialized to DB
 	var/character_record_flags = NONE
 	/// type
-	///
 	/// * directly serialized to DB
 	var/character_record_type
 
@@ -42,7 +40,12 @@
 	/// text; long description
 	var/r_content
 
-#warn impl
+/datum/character_record/New(record_type)
+	ASSERT(istext(record_type))
+
+	src.character_record_type = record_type
+
+#warn impl; how do we do this?
 
 /datum/character_record/serialize()
 	return list()

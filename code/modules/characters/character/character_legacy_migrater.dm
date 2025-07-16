@@ -10,6 +10,7 @@
  * * This **will potentially**, but will try not to, trample characters in the new system.
  */
 /datum/character_legacy_migrater
+	var/datum/character_backend/backend
 
 /**
  * @return characters migrated
@@ -53,8 +54,32 @@
 /datum/character_legacy_migrater/proc/pre_execute(list/out_errors)
 
 /datum/character_legacy_migrater/proc/execute_on_ckey(ckey, list/out_errors)
+	var/savefile_path = "data/player_saves/[copytext(ckey, 1, 3)]/[ckey]/preferences.sav"
+	var/savefile/savefile = new savefile(savefile_path)
 
-/datum/character_legacy_migrater/proc/execute_on_ckey_character(ckey, savefile/sf, list/out_errors)
+	#warn log?
+
+	// you know what if you have more than 128 characters that's a you problem buddy friend pal
+	for(var/i in 1 to 128)
+		// NEW SYSTEM
+		var/list/character_data
+		var/character_version
+		savefile["slot_[i]"] >> character_data
+		if(!islist(character_data))
+			#warn log?
+			continue
+		savefile.cd = "/character[i]"
+
+		CRASH("unimplemented")
+
+	#warn log?
+
+/datum/character_legacy_migrater/proc/execute_on_ckey_character(ckey, list/char_data, savefile/sf_data, list/out_errors)
+	if(!islist(char_data))
+		#warn log?
+		return
+
+	var/datum/character/creating
 
 
 #warn impl to some degree

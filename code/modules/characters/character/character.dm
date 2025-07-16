@@ -9,6 +9,7 @@
  * * Anything that is a system field should be prefixed with 's_'
  * * Anything that is a character field and not a system field / reference field
  *   should be prefixed with 'c_'
+ * * Any field that's a persistent field should be a 'p_'
  * * Ckey is intentionally not stored; characters don't belong to anyone,
  *   the backend determines who can access what (thus establishing ownership).
  */
@@ -32,6 +33,26 @@
 	/// * ADMINS, DO NOT TOUCH THIS FOR THE LOVE OF GOD
 	/// * The codebase reserves the right to edit this at any time for any reason.
 	var/list/s_migrations_performed
+	/// IC fluff ID. This is a system value because it's directly serialized to DB,
+	/// and can be used for filtering. It should not be modified without using
+	/// helper procs.
+	var/s_employee_id
+	/// Dirty / was modified
+	var/s_dirty = FALSE
+
+	//*             Character             *//
+
+	/// Faction
+	/// * Serialized as ID
+	/// * Determines base role eligibility, as well as what species you can choose.
+	#warn faction
+	var/datum/c_faction
+	/// Species
+	/// * Serialized as ID
+	/// * Determines the base attributes of this character.
+	#warn species
+	var/datum/species/c_species
+
 
 
 
@@ -63,6 +84,7 @@
 	//* Identity - Packed into data list *//
 	/// the character's age
 	var/c_age
+	/// Flavor text. This goes before appearance-specific flavor texts.
 	/// OOC notes
 	var/c_ooc_notes
 
@@ -86,10 +108,6 @@
 	//* Skills - Directly serialized *//
 	/// our skills holder
 	var/datum/character_skills/skills
-
-	//* Species - Directly serialized *//
-	/// our species ID
-	var/c_species_id
 
 	// todo:
 	// disabilities?

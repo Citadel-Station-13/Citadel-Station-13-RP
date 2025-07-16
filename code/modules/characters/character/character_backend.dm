@@ -32,10 +32,11 @@
 /**
  * @params
  * * ckey - ckey to fetch for
+ * * filter_string - if provided, character filter string must contain this substring.
  *
  * @return list of /datum/character's
  */
-/datum/character_backend/proc/fetch_characters_by_ckey(ckey) as /list
+/datum/character_backend/proc/fetch_characters_by_ckey(ckey, filter_string) as /list
 	CRASH("Not implemented.")
 
 /**
