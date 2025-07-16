@@ -5,25 +5,49 @@
  * @license MIT
  */
 
-import { BooleanLike } from "common/react";
-import { ModuleData, useLocalState, useModule } from "../../backend";
-import { Box, Button, Collapsible, Dropdown, Input, LabeledList, NoticeBox, NumberInput, ProgressBar, Stack, Table, Tabs } from "../../components";
-import { Section, SectionProps } from "../../components/Section";
-import { Modular } from "../../layouts/Modular";
-import { WindowProps } from "../../layouts/Window";
-import { Design } from "../common/Design";
-import { IngredientsAvailable, IngredientsSelected } from "../common/Ingredients";
-import { MaterialRender, MaterialsContext, MaterialStorage, MATERIAL_STORAGE_UNIT_NAME, renderMaterialAmount } from "../common/Materials";
-import { ReagentContents, ReagentContentsData, REAGENT_STORAGE_UNIT_NAME } from "../common/Reagents";
+import { BooleanLike } from 'common/react';
+import { ModuleData, useLocalState, useModule } from '../../backend';
+import {
+  Box,
+  Button,
+  Collapsible,
+  Dropdown,
+  Input,
+  LabeledList,
+  NoticeBox,
+  NumberInput,
+  ProgressBar,
+  Stack,
+  Table,
+  Tabs,
+} from '../../components';
+import { Section, SectionProps } from '../../components/Section';
+import { Modular } from '../../layouts/Modular';
+import { WindowProps } from '../../layouts/Window';
+import { Design } from '../common/Design';
+import {
+  IngredientsAvailable,
+  IngredientsSelected,
+} from '../common/Ingredients';
+import {
+  MaterialRender,
+  MaterialsContext,
+  MaterialStorage,
+  MATERIAL_STORAGE_UNIT_NAME,
+  renderMaterialAmount,
+} from '../common/Materials';
+import {
+  ReagentContents,
+  ReagentContentsData,
+  REAGENT_STORAGE_UNIT_NAME,
+} from '../common/Reagents';
 
-interface TGUILatheControlProps {
-
-}
+interface TGUILatheControlProps {}
 
 interface TGUILatheControlData extends ModuleData {
   designs: {
-    categories: string[],
-    instances: Record<string, Design>,
+    categories: string[];
+    instances: Record<string, Design>;
   };
   storesItems: BooleanLike;
   storesMaterials: BooleanLike;
@@ -32,7 +56,7 @@ interface TGUILatheControlData extends ModuleData {
   latheName: string;
   speedMultiplier: number;
   powerMultiplier: number;
-  dynamicButtons: Record<string, "off" | "on" | "disabled" | null>;
+  dynamicButtons: Record<string, 'off' | 'on' | 'disabled' | null>;
   efficiencyMultiplier: number;
   materials: Record<string, number>;
   materialsContext: MaterialsContext;
@@ -48,18 +72,16 @@ interface TGUILatheControlData extends ModuleData {
 export const generateDynamicButton = (name, mode, actFunction) => {
   if (mode === null) {
     return (
-      <Button fluid content={name} onClick={() => actFunction("custom", { name: name })} />
+      <Button
+        fluid
+        content={name}
+        onClick={() => actFunction('custom', { name: name })}
+      />
     );
-  }
-  else if (mode === "disabled") {
-    return (
-      <Button fluid content={name} disabled />
-    );
-  }
-  else {
-    return (
-      <Button selected={mode === "on"} fluid content={name} />
-    );
+  } else if (mode === 'disabled') {
+    return <Button fluid content={name} disabled />;
+  } else {
+    return <Button selected={mode === 'on'} fluid content={name} />;
   }
 };
 
@@ -68,14 +90,18 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
   const [category, setCategory] = useLocalState<string>(
     context,
     `${data.$ref}-category`,
-    data.designs.categories.length? data.designs.categories[1] : "General"
+    data.designs.categories.length ? data.designs.categories[1] : 'General',
   );
   const [resourcesSelect, setResourcesSelect] = useLocalState<string>(
     context,
     `${data.$ref}-rSelect`,
-    "Materials",
+    'Materials',
   );
-  const [searchText, setSearchText] = useLocalState<string>(context, `${data.$ref}-search`, "");
+  const [searchText, setSearchText] = useLocalState<string>(
+    context,
+    `${data.$ref}-search`,
+    '',
+  );
 
   const windowProps: WindowProps = {
     title: data.latheName,
@@ -90,7 +116,7 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
   let resourceRender;
 
   switch (resourcesSelect) {
-    case "Materials":
+    case 'Materials':
       resourceRender = (
         <MaterialStorage
           horizontal
@@ -99,35 +125,33 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
           materialScale={1.5}
           materialList={data.materials}
           materialContext={data.materialsContext}
-          eject={(id, amount) => act('ejectMaterial', { id: id, amount: amount })} />
+          eject={(id, amount) =>
+            act('ejectMaterial', { id: id, amount: amount })
+          }
+        />
       );
       break;
-    case "Reagents":
+    case 'Reagents':
       resourceRender = (
         <ReagentContents
           mr={0.5}
           ml={0.5}
           reagents={data.reagents}
-          reagentButtons={(id) => (
-            [1, 5, 10, 20, 50].map(
-              (n) => (
-                <Button
-                  icon="minus"
-                  key={n}
-                  content={`-${n}`}
-                  onClick={() => act('disposeReagent', { id: id, amonut: n })} />
-
-              )
-            )
-          )} />
+          reagentButtons={(id) =>
+            [1, 5, 10, 20, 50].map((n) => (
+              <Button
+                icon="minus"
+                key={n}
+                content={`-${n}`}
+                onClick={() => act('disposeReagent', { id: id, amonut: n })}
+              />
+            ))
+          }
+        />
       );
       break;
-    case "Items":
-      resourceRender = (
-        <>
-          Unimplemented
-        </>
-      );
+    case 'Items':
+      resourceRender = <>Unimplemented</>;
       break;
   }
 
@@ -145,7 +169,9 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
       }
       if (entry.materials !== null && design.material_parts !== null) {
         Object.entries(entry.materials).forEach(([name, id]) => {
-          queuedMaterials[id] = (queuedMaterials[id] ?? 0) + ((design.material_parts as {})[name] ?? 0) * entry.amount;
+          queuedMaterials[id] =
+            (queuedMaterials[id] ?? 0) +
+            ((design.material_parts as {})[name] ?? 0) * entry.amount;
         });
       }
     });
@@ -161,58 +187,49 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
                 <Stack vertical>
                   <Stack.Item>
                     <Tabs>
-                      {
-                        !!data.storesMaterials && (
-                          <Tabs.Tab
-                            content="Materials"
-                            selected={resourcesSelect === "Materials"}
-                            onClick={() => setResourcesSelect("Materials")}>
-                            Materials
-                          </Tabs.Tab>
-                        )
-                      }
-                      {
-                        !!data.storesReagents && (
-                          <Tabs.Tab
-                            selected={resourcesSelect === "Reagents"}
-                            onClick={() => setResourcesSelect("Reagents")}>
-                            Reagents
-                          </Tabs.Tab>
-                        )
-                      }
-                      {
-                        !!data.storesItems && (
-                          <Tabs.Tab
-                            content="Items"
-                            selected={resourcesSelect === "Items"}
-                            onClick={() => setResourcesSelect("Items")}>
-                            Items
-                          </Tabs.Tab>
-                        )
-                      }
+                      {!!data.storesMaterials && (
+                        <Tabs.Tab
+                          content="Materials"
+                          selected={resourcesSelect === 'Materials'}
+                          onClick={() => setResourcesSelect('Materials')}
+                        >
+                          Materials
+                        </Tabs.Tab>
+                      )}
+                      {!!data.storesReagents && (
+                        <Tabs.Tab
+                          selected={resourcesSelect === 'Reagents'}
+                          onClick={() => setResourcesSelect('Reagents')}
+                        >
+                          Reagents
+                        </Tabs.Tab>
+                      )}
+                      {!!data.storesItems && (
+                        <Tabs.Tab
+                          content="Items"
+                          selected={resourcesSelect === 'Items'}
+                          onClick={() => setResourcesSelect('Items')}
+                        >
+                          Items
+                        </Tabs.Tab>
+                      )}
                     </Tabs>
                   </Stack.Item>
-                  <Stack.Item>
-                    {resourceRender}
-                  </Stack.Item>
+                  <Stack.Item>{resourceRender}</Stack.Item>
                 </Stack>
               </Section>
             </Stack.Item>
-            {
-              !!Object.keys(data.dynamicButtons).length && (
-                <Stack.Item>
-                  <Section title="Control">
-                    <Stack vertical>
-                      {
-                        Object.entries(data.dynamicButtons).map(([name, mode]) => {
-                          return generateDynamicButton(name, mode, act);
-                        })
-                      }
-                    </Stack>
-                  </Section>
-                </Stack.Item>
-              )
-            }
+            {!!Object.keys(data.dynamicButtons).length && (
+              <Stack.Item>
+                <Section title="Control">
+                  <Stack vertical>
+                    {Object.entries(data.dynamicButtons).map(([name, mode]) => {
+                      return generateDynamicButton(name, mode, act);
+                    })}
+                  </Stack>
+                </Section>
+              </Stack.Item>
+            )}
           </Stack>
         </Stack.Item>
         <Stack.Item grow>
@@ -220,15 +237,19 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
             <Stack.Item grow={0.3}>
               <Section fill title="Categories" scrollable>
                 <Tabs vertical>
-                  {
-                    data.designs.categories.sort((c1, c2) => c1.localeCompare(c2)).map((cat) => (
-                      <Tabs.Tab key={cat} fluid color="transparent"
+                  {data.designs.categories
+                    .sort((c1, c2) => c1.localeCompare(c2))
+                    .map((cat) => (
+                      <Tabs.Tab
+                        key={cat}
+                        fluid
+                        color="transparent"
                         selected={cat === category}
-                        onClick={() => setCategory(cat)}>
+                        onClick={() => setCategory(cat)}
+                      >
                         {cat}
                       </Tabs.Tab>
-                    ))
-                  }
+                    ))}
                 </Tabs>
               </Section>
             </Stack.Item>
@@ -236,24 +257,26 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
               <Stack vertical fill>
                 <Stack.Item>
                   <Section>
-                    <Input placeholder="Search (3+ characters)"
-                      width="100%" value={searchText} onInput={(e, val) => setSearchText(val.toLowerCase())} />
+                    <Input
+                      placeholder="Search (3+ characters)"
+                      width="100%"
+                      value={searchText}
+                      onInput={(e, val) => setSearchText(val.toLowerCase())}
+                    />
                   </Section>
                 </Stack.Item>
                 <Stack.Item grow>
                   <Section fill title="Designs" scrollable>
-                    {
-                      Object.values(data.designs.instances).filter(
-                        (d) => searchText.length > 2
-                          ? d.name.toLowerCase().includes(searchText) : (d.category === category)
-                      ).sort((d1, d2) =>
-                        d1.name.localeCompare(d2.name)
-                      ).map((d) => (
-                        <LatheDesign
-                          key={d.id}
-                          design={d} />
-                      ))
-                    }
+                    {Object.values(data.designs.instances)
+                      .filter((d) =>
+                        searchText.length > 2
+                          ? d.name.toLowerCase().includes(searchText)
+                          : d.category === category,
+                      )
+                      .sort((d1, d2) => d1.name.localeCompare(d2.name))
+                      .map((d) => (
+                        <LatheDesign key={d.id} design={d} />
+                      ))}
                   </Section>
                 </Stack.Item>
               </Stack>
@@ -261,47 +284,62 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
             <Stack.Item grow={0.9}>
               <Stack vertical fill>
                 <Stack.Item grow>
-                  <Section fill title="Queue" scrollable
+                  <Section
+                    fill
+                    title="Queue"
+                    scrollable
                     buttons={
                       <>
-                        <Button.Confirm icon="minus" content="Clear" onClick={() => act('clear')}
-                          color="transparent" />
-                        <Button content={data.queueActive? "Stop" : "Start"}
-                          icon={data.queueActive? "stop" : "play"}
+                        <Button.Confirm
+                          icon="minus"
+                          content="Clear"
+                          onClick={() => act('clear')}
+                          color="transparent"
+                        />
+                        <Button
+                          content={data.queueActive ? 'Stop' : 'Start'}
+                          icon={data.queueActive ? 'stop' : 'play'}
                           color="transparent"
                           selected={data.queueActive}
-                          onClick={() => act(data.queueActive? "stop" : "start")} />
+                          onClick={() =>
+                            act(data.queueActive ? 'stop' : 'start')
+                          }
+                        />
                       </>
-                    }>
-                    {
-                      data.queue.map((entry, index) => (
-                        <LatheQueued key={`${index}-${entry.amount}-${entry.design}`}
-                          entry={entry} design={data.designs.instances[entry.design]} index={index + 1} />
-                      ))
                     }
+                  >
+                    {data.queue.map((entry, index) => (
+                      <LatheQueued
+                        key={`${index}-${entry.amount}-${entry.design}`}
+                        entry={entry}
+                        design={data.designs.instances[entry.design]}
+                        index={index + 1}
+                      />
+                    ))}
                   </Section>
                 </Stack.Item>
-                {
-                  Object.keys(queuedMaterials).length !== 0 && (
-                    <Stack.Item>
-                      <Section title="Material Cost">
-                        <MaterialRender
-                          ml={0.5}
-                          mr={0.5}
-                          horizontal
-                          materialList={queuedMaterials}
-                          materialContext={data.materialsContext}
-                          materialButtons={(id) => (
-                            ((data.materials[id] ?? 0) < queuedMaterials[id]) && (
-                              <Box textColor="bad">
-                                {renderMaterialAmount(queuedMaterials[id] - (data.materials[id] ?? 0))}
-                              </Box>
-                            )
-                          )} />
-                      </Section>
-                    </Stack.Item>
-                  )
-                }
+                {Object.keys(queuedMaterials).length !== 0 && (
+                  <Stack.Item>
+                    <Section title="Material Cost">
+                      <MaterialRender
+                        ml={0.5}
+                        mr={0.5}
+                        horizontal
+                        materialList={queuedMaterials}
+                        materialContext={data.materialsContext}
+                        materialButtons={(id) =>
+                          (data.materials[id] ?? 0) < queuedMaterials[id] && (
+                            <Box textColor="bad">
+                              {renderMaterialAmount(
+                                queuedMaterials[id] - (data.materials[id] ?? 0),
+                              )}
+                            </Box>
+                          )
+                        }
+                      />
+                    </Section>
+                  </Stack.Item>
+                )}
               </Stack>
             </Stack.Item>
           </Stack>
@@ -336,7 +374,8 @@ const LatheQueued = (props: LatheQueuedProps, context) => {
         left={0}
         right={0}
         color="#ffffff44"
-        value={data.progress / props.design.work} />
+        value={data.progress / props.design.work}
+      />
     );
   }
   return (
@@ -344,7 +383,7 @@ const LatheQueued = (props: LatheQueuedProps, context) => {
       color="transparent"
       title={
         <>
-          {`${props.entry.amount}x ${props.design !== undefined? props.design.name : "Error - Design Unloaded"}`}
+          {`${props.entry.amount}x ${props.design !== undefined ? props.design.name : 'Error - Design Unloaded'}`}
           {progressRender}
         </>
       }
@@ -353,19 +392,41 @@ const LatheQueued = (props: LatheQueuedProps, context) => {
           <Button
             color="transparent"
             icon="plus"
-            onClick={() => act('modqueue', { index: props.index, amount: props.entry.amount + 1 })} />
-          <NumberInput minValue={1} maxValue={100} step={1} width={3}
-            value={props.entry.amount} onChange={(e, v) => act('modqueue', { index: props.index, amount: v })} />
+            onClick={() =>
+              act('modqueue', {
+                index: props.index,
+                amount: props.entry.amount + 1,
+              })
+            }
+          />
+          <NumberInput
+            minValue={1}
+            maxValue={100}
+            step={1}
+            width={3}
+            value={props.entry.amount}
+            onChange={(e, v) =>
+              act('modqueue', { index: props.index, amount: v })
+            }
+          />
           <Button
             color="transparent"
             icon="minus"
-            onClick={() => act('modqueue', { index: props.index, amount: props.entry.amount - 1 })} />
+            onClick={() =>
+              act('modqueue', {
+                index: props.index,
+                amount: props.entry.amount - 1,
+              })
+            }
+          />
           <Button
             color="transparent"
             icon="trash"
-            onClick={() => act('dequeue', { index: props.index })} />
+            onClick={() => act('dequeue', { index: props.index })}
+          />
         </>
-      }>
+      }
+    >
       {props.design?.materials && (
         <Section title="Base Materials">
           <LabeledList>
@@ -393,7 +454,7 @@ const LatheQueued = (props: LatheQueuedProps, context) => {
           <LabeledList>
             {Object.entries(props.entry.materials).map(([k, v]) => (
               <LabeledList.Item key={k} label={k}>
-                {`${props.design?.material_parts?.[k] || "!ERROR! "}${MATERIAL_STORAGE_UNIT_NAME} of ${v}`}
+                {`${props.design?.material_parts?.[k] || '!ERROR! '}${MATERIAL_STORAGE_UNIT_NAME} of ${v}`}
               </LabeledList.Item>
             ))}
           </LabeledList>
@@ -401,9 +462,7 @@ const LatheQueued = (props: LatheQueuedProps, context) => {
       )}
       {props.entry.ingredients && (
         <Section title="Selected Ingredients">
-          <NoticeBox danger>
-            Unimplemented - contact a developer!
-          </NoticeBox>
+          <NoticeBox danger>Unimplemented - contact a developer!</NoticeBox>
         </Section>
       )}
     </Collapsible>
@@ -414,140 +473,172 @@ interface LatheDesignProps {
   readonly design: Design;
 }
 
-const areMaterialsChosen = (mats: Record<string, number>, chosen: Record<string, string>) => {
-  return Object.keys(mats).every((mat) => (mat in chosen));
+const areMaterialsChosen = (
+  mats: Record<string, number>,
+  chosen: Record<string, string>,
+) => {
+  return Object.keys(mats).every((mat) => mat in chosen);
 };
 
 const LatheDesign = (props: LatheDesignProps, context) => {
   const { data, act, moduleID } = useModule<TGUILatheControlData>(context);
 
   // materials: key = material id
-  let [mats, setMats] = useLocalState<Record<string, string>>(context, `${moduleID}-${props.design.id}-mats`, {});
+  let [mats, setMats] = useLocalState<Record<string, string>>(
+    context,
+    `${moduleID}-${props.design.id}-mats`,
+    {},
+  );
   // ingredients: key = ingredient id/value
-  let [inds, setInds] = useLocalState<Record<string, string>>(context, `${moduleID}-${props.design.id}-inds`, {});
+  let [inds, setInds] = useLocalState<Record<string, string>>(
+    context,
+    `${moduleID}-${props.design.id}-inds`,
+    {},
+  );
 
   // ingredients are currently unspported.
-  let awaitingSelections = !areMaterialsChosen(props.design.material_parts || {}, mats)
-  || !!props.design.ingredients;
+  let awaitingSelections =
+    !areMaterialsChosen(props.design.material_parts || {}, mats) ||
+    !!props.design.ingredients;
 
   return (
     <Collapsible
       title={props.design.name}
       color="transparent"
-      buttons={awaitingSelections? (
-        <Button
-          color="transparent"
-          textColor="red"
-          content="Selections required." />
-      ) : (
-        <>
-          {[1, 5, 10].map((n) => (
-            <Button
-              key={n}
-              icon="plus"
-              content={`${n}`}
-              onClick={() => act('enqueue', {
-                id: props.design.id,
-                amount: n,
-                immediate: false,
-                materials: mats,
-                items: [],
-              })} />
-          ))}
-          {
-            data.queueActive? (
+      buttons={
+        awaitingSelections ? (
+          <Button
+            color="transparent"
+            textColor="red"
+            content="Selections required."
+          />
+        ) : (
+          <>
+            {[1, 5, 10].map((n) => (
               <Button
-                icon="play"
-                content="Busy"
-                disabled />
+                key={n}
+                icon="plus"
+                content={`${n}`}
+                onClick={() =>
+                  act('enqueue', {
+                    id: props.design.id,
+                    amount: n,
+                    immediate: false,
+                    materials: mats,
+                    items: [],
+                  })
+                }
+              />
+            ))}
+            {data.queueActive ? (
+              <Button icon="play" content="Busy" disabled />
             ) : (
               <Button.Confirm
                 icon="play"
                 content="Print"
-                onClick={() => act('enqueue', {
-                  id: props.design.id,
-                  amount: 1,
-                  start: true,
-                  materials: mats,
-                  items: [],
-                })} />
-            )
-          }
-        </>
-      )}>
-      { (!!props.design.materials || !!props.design.material_parts || !!props.design.reagents) && (
+                onClick={() =>
+                  act('enqueue', {
+                    id: props.design.id,
+                    amount: 1,
+                    start: true,
+                    materials: mats,
+                    items: [],
+                  })
+                }
+              />
+            )}
+          </>
+        )
+      }
+    >
+      {(!!props.design.materials ||
+        !!props.design.material_parts ||
+        !!props.design.reagents) && (
         <Table>
           <Table.Row>
             <Table.Cell width="33%" />
             <Table.Cell width="33%" />
             <Table.Cell width="33%" />
           </Table.Row>
-          {
-            props.design.materials
-                    && Object.entries(props.design.materials).map(([id, amt]) => (
-                      <Table.Row key={id}>
-                        <Table.Cell />
-                        <Table.Cell>
-                          <div style={{
-                            "display": "inline-block",
-                            "padding-left": "0.5em",
-                            "width": "base em(100px)",
-                            "line-height": "base.em(17px)",
-                            "font-family": "Verdana, sans-serif",
-                            "font-size": "base.em(12px)",
-                          }}>
-                            {data.materialsContext.materials[id].name}
-                          </div>
-                        </Table.Cell>
-                        <Table.Cell textAlign="center" color={data.materials[id] >= amt? null : "bad"}>
-                          {`${amt}${MATERIAL_STORAGE_UNIT_NAME}`}
-                        </Table.Cell>
-                      </Table.Row>
-                    ))
-          }
-          {props.design.material_parts && Object.entries(props.design.material_parts).map(([name, amt]) => {
-            let selected = mats[name];
-            let selectedName = (selected && data.materialsContext[selected]?.name) || "Select";
-            return (
-              <Table.Row key={name}>
-                <Table.Cell textAlign="center">
-                  {name}
-                </Table.Cell>
-                <Table.Cell>
-                  <Dropdown
-                    width="100%"
-                    color="transparent"
-                    selected={selectedName}
-                    onSelected={(val) => {
-                      let newMats = { ...mats };
-                      newMats[name] = val;
-                      setMats(newMats);
-                    }}
-                    options={
-                      Object.keys(data.materials).map((id) => data.materialsContext.materials[id].name)
-                    } />
-                </Table.Cell>
-                <Table.Cell textAlign="center"
-                  color={!selected || data.materials[selected] >= amt? null : "bad"}>
-                  {`${amt}${MATERIAL_STORAGE_UNIT_NAME}`}
-                </Table.Cell>
-              </Table.Row>
-            );
-          })}
-          {props.design.reagents && (
-            Object.entries(props.design.reagents).map(([id, amt]) => (
+          {props.design.materials &&
+            Object.entries(props.design.materials).map(([id, amt]) => (
               <Table.Row key={id}>
                 <Table.Cell />
                 <Table.Cell>
-                  {id}
+                  <div
+                    style={{
+                      display: 'inline-block',
+                      'padding-left': '0.5em',
+                      width: 'base em(100px)',
+                      'line-height': 'base.em(17px)',
+                      'font-family': 'Verdana, sans-serif',
+                      'font-size': 'base.em(12px)',
+                    }}
+                  >
+                    {data.materialsContext.materials[id].name}
+                  </div>
                 </Table.Cell>
-                <Table.Cell textAlign="center"
-                  color={(data.reagents.find((r) => r.id === id)?.amount || 0) >= amt? null : "bad"}>
+                <Table.Cell
+                  textAlign="center"
+                  color={data.materials[id] >= amt ? null : 'bad'}
+                >
+                  {`${amt}${MATERIAL_STORAGE_UNIT_NAME}`}
+                </Table.Cell>
+              </Table.Row>
+            ))}
+          {props.design.material_parts &&
+            Object.entries(props.design.material_parts).map(([name, amt]) => {
+              let selected = mats[name];
+              let selectedName =
+                (selected && data.materialsContext[selected]?.name) || 'Select';
+              return (
+                <Table.Row key={name}>
+                  <Table.Cell textAlign="center">{name}</Table.Cell>
+                  <Table.Cell>
+                    <Dropdown
+                      width="100%"
+                      color="transparent"
+                      selected={selectedName}
+                      onSelected={(val) => {
+                        let newMats = { ...mats };
+                        newMats[name] = val;
+                        setMats(newMats);
+                      }}
+                      options={Object.keys(data.materials).map(
+                        (id) => data.materialsContext.materials[id].name,
+                      )}
+                    />
+                  </Table.Cell>
+                  <Table.Cell
+                    textAlign="center"
+                    color={
+                      !selected || data.materials[selected] >= amt
+                        ? null
+                        : 'bad'
+                    }
+                  >
+                    {`${amt}${MATERIAL_STORAGE_UNIT_NAME}`}
+                  </Table.Cell>
+                </Table.Row>
+              );
+            })}
+          {props.design.reagents &&
+            Object.entries(props.design.reagents).map(([id, amt]) => (
+              <Table.Row key={id}>
+                <Table.Cell />
+                <Table.Cell>{id}</Table.Cell>
+                <Table.Cell
+                  textAlign="center"
+                  color={
+                    (data.reagents.find((r) => r.id === id)?.amount || 0) >= amt
+                      ? null
+                      : 'bad'
+                  }
+                >
                   {`${amt}${REAGENT_STORAGE_UNIT_NAME}`}
                 </Table.Cell>
               </Table.Row>
-            ))
-          )}
+            ))}
         </Table>
       )}
     </Collapsible>

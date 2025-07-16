@@ -12,12 +12,7 @@ interface TableProps extends BoxProps {
 }
 
 export const Table = (props: TableProps) => {
-  const {
-    className,
-    collapsing,
-    children,
-    ...rest
-  } = props;
+  const { className, collapsing, children, ...rest } = props;
   return (
     <table
       className={classes([
@@ -26,10 +21,9 @@ export const Table = (props: TableProps) => {
         className,
         computeBoxClassName(rest),
       ])}
-      {...computeBoxProps(rest)}>
-      <tbody>
-        {children}
-      </tbody>
+      {...computeBoxProps(rest)}
+    >
+      <tbody>{children}</tbody>
     </table>
   );
 };
@@ -41,11 +35,7 @@ interface TableRowProps extends BoxProps {
 }
 
 export const TableRow = (props: TableRowProps) => {
-  const {
-    className,
-    header,
-    ...rest
-  } = props;
+  const { className, header, ...rest } = props;
   return (
     <tr
       className={classes([
@@ -54,7 +44,8 @@ export const TableRow = (props: TableRowProps) => {
         className,
         computeBoxClassName(props),
       ])}
-      {...computeBoxProps(rest)} />
+      {...computeBoxProps(rest)}
+    />
   );
 };
 
@@ -66,12 +57,7 @@ interface TableCellProps extends BoxProps {
 }
 
 export const TableCell = (props: TableCellProps) => {
-  const {
-    className,
-    collapsing,
-    header,
-    ...rest
-  } = props;
+  const { className, collapsing, header, ...rest } = props;
   return (
     <td
       className={classes([
@@ -81,7 +67,8 @@ export const TableCell = (props: TableCellProps) => {
         className,
         computeBoxClassName(props),
       ])}
-      {...computeBoxProps(rest)} />
+      {...computeBoxProps(rest)}
+    />
   );
 };
 

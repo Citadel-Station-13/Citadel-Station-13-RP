@@ -14,7 +14,7 @@ export const clamp = (value, min, max) => {
 /**
  * Limits a number between 0 and 1.
  */
-export const clamp01 = value => {
+export const clamp01 = (value) => {
   return value < 0 ? 0 : value > 1 ? 1 : value;
 };
 
@@ -91,9 +91,7 @@ export const toFixed = (value, fractionDigits = 0) => {
  * Range is an array of two numbers, for example: [0, 15].
  */
 export const inRange = (value, range) => {
-  return range
-    && value >= range[0]
-    && value <= range[1];
+  return range && value >= range[0] && value <= range[1];
 };
 
 /**
@@ -114,7 +112,7 @@ export const keyOfMatchingRange = (value, ranges) => {
 /**
  * Get number of digits following the decimal point in a number
  */
-export const numberOfDecimalDigits = value => {
+export const numberOfDecimalDigits = (value) => {
   if (Math.floor(value) !== value) {
     return value.toString().split('.')[1].length || 0;
   }
@@ -127,8 +125,8 @@ export const numberOfDecimalDigits = value => {
 export const bitfieldToBits = (field: number) => {
   let got: number[] = [];
   for (let bit = 0; bit < 24; bit++) {
-    if (field & (1<<bit)) {
-      got.push(1<<bit);
+    if (field & (1 << bit)) {
+      got.push(1 << bit);
     }
   }
   return got;
@@ -140,7 +138,7 @@ export const bitfieldToBits = (field: number) => {
 export const bitfieldToPositions = (field: number, limit: number = 24) => {
   let got: number[] = [];
   for (let bit = 0; bit < limit; bit++) {
-    if (field & (1<<bit)) {
+    if (field & (1 << bit)) {
       got.push(bit);
     }
   }

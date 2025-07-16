@@ -7,17 +7,17 @@
 @use 'sass:meta';
 
 @use '../colors.scss' with (
-  $primary: #B18B25,
-  $good: #CFBA47,
-  $average: #5F380E,
-  $bad: #5F380E,
+  $primary: #b18b25,
+  $good: #cfba47,
+  $average: #5f380e,
+  $bad: #5f380e,
   $fg-map-keys: (),
-  $bg-map-keys: (),
+  $bg-map-keys: ()
 );
 @use '../base.scss' with (
   $color-bg: #c9b12a,
   $color-bg-grad-spread: 6%,
-  $border-radius: 2px,
+  $border-radius: 2px
 );
 
 .theme-clockcult {
@@ -25,38 +25,53 @@
   @include meta.load-css('../atomic/color.scss');
 
   // Components
-  @include meta.load-css('../components/Button.scss', $with: (
-    'color-default': #5F380E, //wrong.
-    'color-disabled': #2D1400,
-    'color-selected': #CFBA47,
-    'color-caution': #FFAE42, //yellow-orange
-    'color-danger': #f0ff23, //yellow
-  ));
-  @include meta.load-css('../components/Input.scss', $with: (
-    'border-color': #CFBA47,
-  ));
-  @include meta.load-css('../components/NoticeBox.scss', $with: (
-    'background-color': #886a09,
-  ));
-  @include meta.load-css('../components/NumberInput.scss', $with: (
-    'border-color': #CFBA47,
-  ));
-  @include meta.load-css('../components/ProgressBar.scss', $with: (
-    'background-color': #2D1400, // 'border-color': #170800
-  ));
+  @include meta.load-css(
+    '../components/Button.scss',
+    $with: (
+      'color-default': #5f380e,
+      //wrong.
+      'color-disabled': #2d1400,
+      'color-selected': #cfba47,
+      'color-caution': #ffae42,
+      //yellow-orange
+      'color-danger': #f0ff23,
+      //yellow
+    )
+  );
+  @include meta.load-css(
+    '../components/Input.scss',
+    $with: ('border-color': #cfba47)
+  );
+  @include meta.load-css(
+    '../components/NoticeBox.scss',
+    $with: ('background-color': #886a09)
+  );
+  @include meta.load-css(
+    '../components/NumberInput.scss',
+    $with: ('border-color': #cfba47)
+  );
+  @include meta.load-css(
+    '../components/ProgressBar.scss',
+    $with: ('background-color': #2d1400, // 'border-color': #170800)
+  );
   @include meta.load-css('../components/Section.scss');
-  @include meta.load-css('../components/Tooltip.scss', $with: (
-    'background-color': #2D1400,
-  ));
+  @include meta.load-css(
+    '../components/Tooltip.scss',
+    $with: ('background-color': #2d1400)
+  );
 
   // Layouts
   @include meta.load-css('../layouts/Layout.scss');
   @include meta.load-css('../layouts/Window.scss');
-  @include meta.load-css('../layouts/TitleBar.scss', $with: (
-    'text-color': #CFBA47,
-    'background-color': #2D1400, // 'border-color': #170800
-    'shadow-color-core': #170800,
-  ));
+  @include meta.load-css(
+    '../layouts/TitleBar.scss',
+    $with: (
+      'text-color': #cfba47,
+      'background-color': #2d1400,
+      // 'border-color': #170800
+      'shadow-color-core': #170800
+    )
+  );
 
   .Layout__content {
     background-image: none; // fa-gear with a color of #CFBA47

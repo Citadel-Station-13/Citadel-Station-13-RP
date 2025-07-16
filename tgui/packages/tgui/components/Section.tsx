@@ -68,15 +68,12 @@ export class Section extends Component<SectionProps> {
           className,
           computeBoxClassName(rest),
         ])}
-        {...computeBoxProps(rest)}>
+        {...computeBoxProps(rest)}
+      >
         {hasTitle && (
-          <div className={title ? "Section__title" : "Section__titleHolder"}>
-            <span className="Section__titleText">
-              {title || "⠀"}
-            </span>
-            <div className="Section__buttons">
-              {buttons}
-            </div>
+          <div className={title ? 'Section__title' : 'Section__titleHolder'}>
+            <span className="Section__titleText">{title || '⠀'}</span>
+            <div className="Section__buttons">{buttons}</div>
           </div>
         )}
         <div className="Section__rest">

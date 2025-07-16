@@ -2,7 +2,7 @@
  * @file
  */
 
-import { createUuid } from "common/uuid";
+import { createUuid } from 'common/uuid';
 
 export const createHighlightSetting = (obj?: Record<string, any>) => ({
   id: createUuid(),

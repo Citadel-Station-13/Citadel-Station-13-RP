@@ -59,7 +59,7 @@ export class Popper extends Component<PopperProps> {
       this.popperInstance = createPopper(
         domNode,
         this.renderedContent,
-        options
+        options,
       );
     });
   }
@@ -82,7 +82,7 @@ export class Popper extends Component<PopperProps> {
       this.props.popperContent || null,
       this.renderedContent,
       callback,
-      this.context
+      this.context,
     );
   }
 

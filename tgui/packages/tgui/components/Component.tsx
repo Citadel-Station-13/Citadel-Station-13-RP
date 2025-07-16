@@ -5,8 +5,8 @@
  * @license MIT
  */
 
-import { InfernoNode } from "inferno";
+import { InfernoNode } from 'inferno';
 
 export type ComponentProps = {
   children?: InfernoNode;
-}
+};

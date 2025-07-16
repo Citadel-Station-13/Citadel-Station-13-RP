@@ -6,7 +6,12 @@
 
 import { Placement } from '@popperjs/core';
 import { KEY_ENTER, KEY_ESCAPE, KEY_SPACE } from 'common/keycodes';
-import { BooleanLike, classes, pureComponentHooks, StrictlyStringLike } from 'common/react';
+import {
+  BooleanLike,
+  classes,
+  pureComponentHooks,
+  StrictlyStringLike,
+} from 'common/react';
 import { ChangeEvent, Component, createRef } from 'inferno';
 import { createLogger } from '../logging';
 import { Box, BoxProps, computeBoxClassName, computeBoxProps } from './Box';
@@ -35,7 +40,7 @@ export type ButtonProps = BoxProps & {
   readonly content?: any;
   readonly onClick?: any;
   readonly verticalAlignContent?: 'top' | 'middle' | 'bottom';
-}
+};
 
 export const Button = (props: ButtonProps) => {
   const {
@@ -65,12 +70,13 @@ export const Button = (props: ButtonProps) => {
   // A warning about the lowercase onclick
   if (onclick) {
     logger.warn(
-      `Lowercase 'onclick' is not supported on Button and lowercase`
-      + ` prop names are discouraged in general. Please use a camelCase`
-      + `'onClick' instead and read: `
-      + `https://infernojs.org/docs/guides/event-handling`);
+      `Lowercase 'onclick' is not supported on Button and lowercase` +
+        ` prop names are discouraged in general. Please use a camelCase` +
+        `'onClick' instead and read: ` +
+        `https://infernojs.org/docs/guides/event-handling`,
+    );
   }
-  rest['onClick'] = e => {
+  rest['onClick'] = (e) => {
     if (!disabled && onClick) {
       onClick(e);
     }
@@ -91,17 +97,18 @@ export const Button = (props: ButtonProps) => {
         circular && 'Button--circular',
         compact && 'Button--compact',
         iconPosition && 'Button--iconPosition--' + iconPosition,
-        verticalAlignContent && "Button--flex",
-        (verticalAlignContent && fluid) && "Button--flex--fluid",
-        verticalAlignContent && 'Button--verticalAlignContent--' + verticalAlignContent,
-        (color && typeof color === 'string')
+        verticalAlignContent && 'Button--flex',
+        verticalAlignContent && fluid && 'Button--flex--fluid',
+        verticalAlignContent &&
+          'Button--verticalAlignContent--' + verticalAlignContent,
+        color && typeof color === 'string'
           ? 'Button--color--' + color
           : 'Button--color--default',
         className,
         computeBoxClassName(rest),
       ])}
       tabIndex={0}
-      onKeyDown={e => {
+      onKeyDown={(e) => {
         if (props.captureKeys === false) {
           return;
         }
@@ -120,7 +127,8 @@ export const Button = (props: ButtonProps) => {
           return;
         }
       }}
-      {...computeBoxProps(rest)}>
+      {...computeBoxProps(rest)}
+    >
       <div className="Button__content">
         {icon && iconPosition !== 'right' && (
           <Icon
@@ -170,7 +178,8 @@ export const ButtonCheckbox = (props: ButtonCheckboxProps) => {
       color="transparent"
       icon={checked ? 'check-square-o' : 'square-o'}
       selected={checked}
-      {...rest} />
+      {...rest}
+    />
   );
 };
 
@@ -179,13 +188,16 @@ Button.Checkbox = ButtonCheckbox;
 type ButtonConfirmProps = ButtonProps & {
   readonly confirmContent?: string;
   readonly confirmColor?: string;
-}
+};
 
 type ButtonConfirmState = {
   clicked: boolean;
-}
+};
 
-export class ButtonConfirm extends Component<ButtonConfirmProps, ButtonConfirmState> {
+export class ButtonConfirm extends Component<
+  ButtonConfirmProps,
+  ButtonConfirmState
+> {
   state: ButtonConfirmState = {
     clicked: false,
   };
@@ -200,16 +212,15 @@ export class ButtonConfirm extends Component<ButtonConfirmProps, ButtonConfirmSt
     this.setState({ clicked: clickedOnce });
     if (clickedOnce) {
       setTimeout(() => window.addEventListener('click', this.handleClick));
-    }
-    else {
+    } else {
       window.removeEventListener('click', this.handleClick);
     }
   }
 
   render() {
     const {
-      confirmContent = "Confirm?",
-      confirmColor = "bad",
+      confirmContent = 'Confirm?',
+      confirmColor = 'bad',
       confirmIcon,
       icon,
       color,
@@ -222,9 +233,9 @@ export class ButtonConfirm extends Component<ButtonConfirmProps, ButtonConfirmSt
         content={this.state.clicked ? confirmContent : content}
         icon={this.state.clicked ? confirmIcon : icon}
         color={this.state.clicked ? confirmColor : color}
-        onClick={(e) => this.state.clicked
-          ? onClick?.(e)
-          : this.setClickedOnce(true)}
+        onClick={(e) =>
+          this.state.clicked ? onClick?.(e) : this.setClickedOnce(true)
+        }
         {...rest}
       />
     );
@@ -238,7 +249,7 @@ type ButtonInputProps = BoxProps & {
   onCommit?: (e, value) => void;
   currentValue: string;
   defaultValue: string;
-}
+};
 
 export class ButtonInput<T extends ButtonInputProps> extends Component<T, {}> {
   inputRef: any;
@@ -254,12 +265,11 @@ export class ButtonInput<T extends ButtonInputProps> extends Component<T, {}> {
     if (this.inputRef) {
       const input = this.inputRef.current;
       if (inInput) {
-        input.value = this.props.currentValue || "";
+        input.value = this.props.currentValue || '';
         try {
           input.focus();
           input.select();
-        }
-        catch {}
+        } catch {}
       }
     }
   }
@@ -267,7 +277,7 @@ export class ButtonInput<T extends ButtonInputProps> extends Component<T, {}> {
   commitResult(e) {
     if (this.inputRef) {
       const input = this.inputRef.current;
-      const hasValue = (input.value !== "");
+      const hasValue = input.value !== '';
       if (hasValue) {
         this.props.onCommit?.(e, input.value);
         return;
@@ -303,28 +313,25 @@ export class ButtonInput<T extends ButtonInputProps> extends Component<T, {}> {
           'Button--color--' + color,
         ])}
         {...rest}
-        onClick={() => this.setInInput(true)}>
-        {icon && (
-          <Icon name={icon} rotation={iconRotation} spin={iconSpin} />
-        )}
-        <div>
-          {content}
-        </div>
+        onClick={() => this.setInInput(true)}
+      >
+        {icon && <Icon name={icon} rotation={iconRotation} spin={iconSpin} />}
+        <div>{content}</div>
         <input
           ref={this.inputRef}
           className="NumberInput__input"
           style={{
-            'display': !this.inputting ? 'none' : undefined,
+            display: !this.inputting ? 'none' : undefined,
             'text-align': 'left',
           }}
-          onBlur={e => {
+          onBlur={(e) => {
             if (!this.inputting) {
               return;
             }
             this.setInInput(false);
             this.commitResult(e);
           }}
-          onKeyDown={e => {
+          onKeyDown={(e) => {
             if (e.keyCode === KEY_ENTER) {
               this.setInInput(false);
               this.commitResult(e);
@@ -340,10 +347,7 @@ export class ButtonInput<T extends ButtonInputProps> extends Component<T, {}> {
 
     if (tooltip) {
       buttonContent = (
-        <Tooltip
-          content={tooltip}
-          position={tooltipPosition}
-        >
+        <Tooltip content={tooltip} position={tooltipPosition}>
           {buttonContent}
         </Tooltip>
       );

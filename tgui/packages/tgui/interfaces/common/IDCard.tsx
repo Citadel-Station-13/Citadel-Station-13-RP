@@ -5,7 +5,7 @@
  * @license MIT
  */
 
-import { Button } from "../../components";
+import { Button } from '../../components';
 
 export interface IDCard {
   name?: string;
@@ -18,9 +18,9 @@ export const IDCardOrDefault = (card: IDCard | null | undefined) => {
 };
 
 const IDCARD_BLANK = {
-  name: "-----",
-  rank: "Unassigned",
-  owner: "",
+  name: '-----',
+  rank: 'Unassigned',
+  owner: '',
 };
 
 export interface IDSlotProps {
@@ -33,7 +33,8 @@ export const IDSlot = (props: IDSlotProps, context) => {
     <Button
       icon="eject"
       fluid
-      content={props.card.name || "-----"}
-      onClick={(e) => props.onClick(e)} />
+      content={props.card.name || '-----'}
+      onClick={(e) => props.onClick(e)}
+    />
   );
 };

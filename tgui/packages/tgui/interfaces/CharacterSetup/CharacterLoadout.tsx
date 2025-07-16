@@ -1,8 +1,20 @@
-import { Component } from "inferno";
-import { useLocalState } from "../../backend";
-import { Box, Button, Collapsible, Dropdown, Input, Stack, Tabs } from "../../components";
-import { Section, SectionProps } from "../../components/Section";
-import { ByondAtomColor, ByondColorMatrixRGBC, ColorPicker } from "../common/Color";
+import { Component } from 'inferno';
+import { useLocalState } from '../../backend';
+import {
+  Box,
+  Button,
+  Collapsible,
+  Dropdown,
+  Input,
+  Stack,
+  Tabs,
+} from '../../components';
+import { Section, SectionProps } from '../../components/Section';
+import {
+  ByondAtomColor,
+  ByondColorMatrixRGBC,
+  ColorPicker,
+} from '../common/Color';
 
 export type LoadoutId = string;
 
@@ -54,9 +66,9 @@ export interface PartialLoadoutSlot {
 
 export enum LoadoutCustomizations {
   None = 0,
-  Rename = (1<<0),
-  Redesc = (1<<1),
-  Color = (1<<2),
+  Rename = 1 << 0,
+  Redesc = 1 << 1,
+  Color = 1 << 2,
 }
 
 interface LoadoutProps extends SectionProps {
@@ -76,9 +88,17 @@ interface LoadoutProps extends SectionProps {
 
 export const CharacterLoadout = (props: LoadoutProps, context) => {
   // todo: get rid of 'context' requirement.
-  let [loadoutCategory, setLoadoutCategory] = useLocalState<string | null>(context, "loadoutCategory", null);
-  let [loadoutSubcategory, setLoadoutSubcategory] = useLocalState<string | null>(context, "loadoutSubcategory", null);
-  let currentCategoryHasSubcategories = !!loadoutCategory && props.gearContext.categories[loadoutCategory].length > 1;
+  let [loadoutCategory, setLoadoutCategory] = useLocalState<string | null>(
+    context,
+    'loadoutCategory',
+    null,
+  );
+  let [loadoutSubcategory, setLoadoutSubcategory] = useLocalState<
+    string | null
+  >(context, 'loadoutSubcategory', null);
+  let currentCategoryHasSubcategories =
+    !!loadoutCategory &&
+    props.gearContext.categories[loadoutCategory].length > 1;
   return (
     <Section {...props}>
       <Stack vertical grow fill>
@@ -86,48 +106,69 @@ export const CharacterLoadout = (props: LoadoutProps, context) => {
           <Section>
             <Stack fill>
               <Stack.Item>
-                <Box mt={0.5}>
-                  Slot:
-                </Box>
+                <Box mt={0.5}>Slot:</Box>
               </Stack.Item>
               <Stack.Item width="30%">
                 <Dropdown
                   width="100%"
                   color="transparent"
                   selected={
-                    props.gearData.slot.name || `Slot ${props.gearData.slotIndex.toFixed(0)}`
+                    props.gearData.slot.name ||
+                    `Slot ${props.gearData.slotIndex.toFixed(0)}`
                   }
-                  options={
-                    props.gearData.slots?.map((slot, index) => slot.name || index.toFixed(0))
-                  }
+                  options={props.gearData.slots?.map(
+                    (slot, index) => slot.name || index.toFixed(0),
+                  )}
                   onSelected={(val) => {
-                    let index = (props.gearData.slots?.findIndex((slot) => slot.name === val));
+                    let index = props.gearData.slots?.findIndex(
+                      (slot) => slot.name === val,
+                    );
                     if (index === undefined) {
                       index = -1;
-                    }
-                    else {
+                    } else {
                       index += 1;
                     }
                     if (index === -1) {
                       index = Number.parseInt(val, 10) + 1;
                     }
                     props.slotChangeAct?.(index);
-                  }} />
+                  }}
+                />
               </Stack.Item>
               <Stack.Item>
                 <Button
                   color="transparent"
                   icon="pen"
-                  onClick={() => props.slotRenameAct?.(props.gearData.slotIndex)} />
+                  onClick={() =>
+                    props.slotRenameAct?.(props.gearData.slotIndex)
+                  }
+                />
               </Stack.Item>
               <Stack.Item grow>
-                <Box mt={0.5} textColor={props.gearData.slot.costUsed > props.gearData.slot.costMax? "bad" : undefined}>
-                  Points: {props.gearData.slot.costUsed} / {props.gearData.slot.costMax}
+                <Box
+                  mt={0.5}
+                  textColor={
+                    props.gearData.slot.costUsed > props.gearData.slot.costMax
+                      ? 'bad'
+                      : undefined
+                  }
+                >
+                  Points: {props.gearData.slot.costUsed} /{' '}
+                  {props.gearData.slot.costMax}
                 </Box>
               </Stack.Item>
               <Stack.Item grow>
-                <Box mt={0.5} textColor={Object.keys(props.gearData.slot.entries).length > props.gearContext.maxEntries? "bad" : undefined}>
-                  Items: {Object.keys(props.gearData.slot.entries).length} / {props.gearContext.maxEntries}
+                <Box
+                  mt={0.5}
+                  textColor={
+                    Object.keys(props.gearData.slot.entries).length >
+                    props.gearContext.maxEntries
+                      ? 'bad'
+                      : undefined
+                  }
+                >
+                  Items: {Object.keys(props.gearData.slot.entries).length} /{' '}
+                  {props.gearContext.maxEntries}
                 </Box>
               </Stack.Item>
               <Stack.Item grow />
@@ -136,7 +177,8 @@ export const CharacterLoadout = (props: LoadoutProps, context) => {
                   color="transparent"
                   icon="trash"
                   onClick={() => props.clearSlotAct?.(props.gearData.slotIndex)}
-                  content="Clear" />
+                  content="Clear"
+                />
               </Stack.Item>
             </Stack>
           </Section>
@@ -146,16 +188,22 @@ export const CharacterLoadout = (props: LoadoutProps, context) => {
             <Stack.Item>
               <Section fill title="Category">
                 <Tabs vertical>
-                  {Object.keys(props.gearContext.categories).sort(
-                    (a, b) => a.localeCompare(b)
-                  ).map((cat) => (
-                    <Tabs.Tab
-                      key={cat}
-                      selected={cat === loadoutCategory}
-                      onClick={() => { setLoadoutCategory(cat); setLoadoutSubcategory(null); }}>
-                      {cat}{props.gearData.slot.costCategories[cat] && ` - ${props.gearData.slot.costCategories[cat]}`}
-                    </Tabs.Tab>
-                  ))}
+                  {Object.keys(props.gearContext.categories)
+                    .sort((a, b) => a.localeCompare(b))
+                    .map((cat) => (
+                      <Tabs.Tab
+                        key={cat}
+                        selected={cat === loadoutCategory}
+                        onClick={() => {
+                          setLoadoutCategory(cat);
+                          setLoadoutSubcategory(null);
+                        }}
+                      >
+                        {cat}
+                        {props.gearData.slot.costCategories[cat] &&
+                          ` - ${props.gearData.slot.costCategories[cat]}`}
+                      </Tabs.Tab>
+                    ))}
                 </Tabs>
               </Section>
             </Stack.Item>
@@ -163,16 +211,21 @@ export const CharacterLoadout = (props: LoadoutProps, context) => {
               <Stack.Item>
                 <Section fill title="​">
                   <Tabs vertical>
-                    {props.gearContext.categories[loadoutCategory].sort(
-                      (a, b) => a.localeCompare(b)
-                    ).map((subcat) => (
-                      <Tabs.Tab
-                        key={subcat}
-                        selected={subcat === loadoutSubcategory}
-                        onClick={() => setLoadoutSubcategory(subcat)}>
-                        {subcat}{props.gearData.slot.costSubcategories[loadoutCategory as string]?.[subcat] && ` - ${props.gearData.slot.costSubcategories[loadoutCategory as string][subcat]}`}
-                      </Tabs.Tab>
-                    ))}
+                    {props.gearContext.categories[loadoutCategory]
+                      .sort((a, b) => a.localeCompare(b))
+                      .map((subcat) => (
+                        <Tabs.Tab
+                          key={subcat}
+                          selected={subcat === loadoutSubcategory}
+                          onClick={() => setLoadoutSubcategory(subcat)}
+                        >
+                          {subcat}
+                          {props.gearData.slot.costSubcategories[
+                            loadoutCategory as string
+                          ]?.[subcat] &&
+                            ` - ${props.gearData.slot.costSubcategories[loadoutCategory as string][subcat]}`}
+                        </Tabs.Tab>
+                      ))}
                   </Tabs>
                 </Section>
               </Stack.Item>
@@ -180,28 +233,31 @@ export const CharacterLoadout = (props: LoadoutProps, context) => {
             <Stack.Item grow>
               <Section title="Items" fill scrollable>
                 <Stack vertical>
-                  {
-                    props.gearAllowed.map((id) => props.gearContext.instances[id]).filter(
-                      (entry) => entry.category === loadoutCategory
-                      && (!currentCategoryHasSubcategories || entry.subcategory === loadoutSubcategory)
-                    ).sort(
-                      (e1, e2) => e1.name.localeCompare(e2.name)
-                    ).map(
-                      (entry) => {
-                        return (
-                          <CharacterLoadoutEntry
-                            key={`${entry.id}`}
-                            selected={props.gearData.slot.entries[entry.id] || null}
-                            entry={entry}
-                            toggleAct={props.toggleAct}
-                            customizeColorAct={props.customizeColorAct}
-                            customizeDescAct={props.customizeDescAct}
-                            customizeNameAct={props.customizeNameAct}
-                            tweakAct={props.tweakAct} />
-                        );
-                      }
+                  {props.gearAllowed
+                    .map((id) => props.gearContext.instances[id])
+                    .filter(
+                      (entry) =>
+                        entry.category === loadoutCategory &&
+                        (!currentCategoryHasSubcategories ||
+                          entry.subcategory === loadoutSubcategory),
                     )
-                  }
+                    .sort((e1, e2) => e1.name.localeCompare(e2.name))
+                    .map((entry) => {
+                      return (
+                        <CharacterLoadoutEntry
+                          key={`${entry.id}`}
+                          selected={
+                            props.gearData.slot.entries[entry.id] || null
+                          }
+                          entry={entry}
+                          toggleAct={props.toggleAct}
+                          customizeColorAct={props.customizeColorAct}
+                          customizeDescAct={props.customizeDescAct}
+                          customizeNameAct={props.customizeNameAct}
+                          tweakAct={props.tweakAct}
+                        />
+                      );
+                    })}
                 </Stack>
               </Section>
             </Stack.Item>
@@ -228,7 +284,10 @@ interface CharacterLoadoutEntryState {
   editingColor: boolean;
 }
 
-class CharacterLoadoutEntry extends Component<CharacterLoadoutEntryProps, CharacterLoadoutEntryState> {
+class CharacterLoadoutEntry extends Component<
+  CharacterLoadoutEntryProps,
+  CharacterLoadoutEntryState
+> {
   state: CharacterLoadoutEntryState = {
     editingName: false,
     editingDesc: false,
@@ -240,81 +299,140 @@ class CharacterLoadoutEntry extends Component<CharacterLoadoutEntryProps, Charac
       <Stack.Item>
         <Collapsible
           captureKeys={false}
-          title={(
+          title={
             <>
-              {(this.props.entry.customize & LoadoutCustomizations.Rename) && !!this.props.selected && (
-                <Button width="22px" icon="pen" mr={1}
-                  onClick={
-                    () => this.props.selected && this.setState((prevState) => ({
-                      ...prevState,
-                      editingName: !prevState.editingName,
-                    }))
-                  } color="transparent" selected={this.state.editingName || !!this.props.selected?.rename} />
-              )}
-              {this.state.editingName? (
+              {this.props.entry.customize & LoadoutCustomizations.Rename &&
+                !!this.props.selected && (
+                  <Button
+                    width="22px"
+                    icon="pen"
+                    mr={1}
+                    onClick={() =>
+                      this.props.selected &&
+                      this.setState((prevState) => ({
+                        ...prevState,
+                        editingName: !prevState.editingName,
+                      }))
+                    }
+                    color="transparent"
+                    selected={
+                      this.state.editingName || !!this.props.selected?.rename
+                    }
+                  />
+                )}
+              {this.state.editingName ? (
                 <Input
                   value={this.props.selected?.rename}
                   onChange={(e, val) => {
                     this.props.customizeNameAct?.(this.props.entry.id, val);
-                    this.setState((prevState) => ({ ...prevState, editingName: false }));
-                  }} />
-              ) : (this.props.selected?.rename !== undefined? this.props.selected.rename : this.props.entry.name)}
+                    this.setState((prevState) => ({
+                      ...prevState,
+                      editingName: false,
+                    }));
+                  }}
+                />
+              ) : this.props.selected?.rename !== undefined ? (
+                this.props.selected.rename
+              ) : (
+                this.props.entry.name
+              )}
             </>
-          )}
+          }
           color="transparent"
-          buttons={(
+          buttons={
             <Button
-              content={this.props.selected? "Selected" : "Select"}
+              content={this.props.selected ? 'Selected' : 'Select'}
               selected={!!this.props.selected}
               color="transparent"
-              onClick={() => this.props.toggleAct?.(this.props.entry.id)} />)}>
-          <div style={{ position: "relative" }}>
-            {(this.props.entry.customize & LoadoutCustomizations.Color) && !!this.props.selected && (
-              <Button
-                icon="tint"
-                position="absolute"
-                left={0.35}
-                top={0}
-                color="transparent"
-                selected={this.state.editingColor}
-                onClick={() => this.props.selected
-                        && this.setState((prev) => ({ ...prev, editingColor: !prev.editingColor }))} />
-            )}
+              onClick={() => this.props.toggleAct?.(this.props.entry.id)}
+            />
+          }
+        >
+          <div style={{ position: 'relative' }}>
+            {this.props.entry.customize & LoadoutCustomizations.Color &&
+              !!this.props.selected && (
+                <Button
+                  icon="tint"
+                  position="absolute"
+                  left={0.35}
+                  top={0}
+                  color="transparent"
+                  selected={this.state.editingColor}
+                  onClick={() =>
+                    this.props.selected &&
+                    this.setState((prev) => ({
+                      ...prev,
+                      editingColor: !prev.editingColor,
+                    }))
+                  }
+                />
+              )}
             <Box ml={4.25}>
               <Box>
-                {(this.props.entry.customize & LoadoutCustomizations.Redesc) && !!this.props.selected && (
-                  <Button mr={1} icon="pen" onClick={
-                    () => this.props.selected && this.setState((prevState) => ({
-                      ...prevState,
-                      editingDesc: !prevState.editingDesc,
-                    }))
-                  } color={this.props.selected.recolor? undefined : "transparent"} selected={this.state.editingDesc || !!this.props.selected?.redesc} />
-                )}
-                {this.state.editingDesc? (
+                {this.props.entry.customize & LoadoutCustomizations.Redesc &&
+                  !!this.props.selected && (
+                    <Button
+                      mr={1}
+                      icon="pen"
+                      onClick={() =>
+                        this.props.selected &&
+                        this.setState((prevState) => ({
+                          ...prevState,
+                          editingDesc: !prevState.editingDesc,
+                        }))
+                      }
+                      color={
+                        this.props.selected.recolor ? undefined : 'transparent'
+                      }
+                      selected={
+                        this.state.editingDesc || !!this.props.selected?.redesc
+                      }
+                    />
+                  )}
+                {this.state.editingDesc ? (
                   <Input
                     value={this.props.selected?.redesc}
                     onChange={(e, val) => {
                       this.props.customizeDescAct?.(this.props.entry.id, val);
-                      this.setState((prevState) => ({ ...prevState, editingDesc: false }));
-                    }} />
-                ) : (this.props.selected?.redesc !== undefined? this.props.selected.redesc : this.props.entry.desc)}
+                      this.setState((prevState) => ({
+                        ...prevState,
+                        editingDesc: false,
+                      }));
+                    }}
+                  />
+                ) : this.props.selected?.redesc !== undefined ? (
+                  this.props.selected.redesc
+                ) : (
+                  this.props.entry.desc
+                )}
               </Box>
               {this.state.editingColor && !!this.props.selected && (
                 <Section>
                   <ColorPicker
                     allowMatrix
-                    currentColor={this.props.selected?.recolor || "#ffffff"}
+                    currentColor={this.props.selected?.recolor || '#ffffff'}
                     setColor={(color) => {
-                      this.props.customizeColorAct?.(this.props.entry.id, color);
-                    }} />
+                      this.props.customizeColorAct?.(
+                        this.props.entry.id,
+                        color,
+                      );
+                    }}
+                  />
                 </Section>
               )}
-              {!!this.props.selected && this.props.entry.tweaks?.map((id) => {
-                return (
-                  <Button key={id} content={this.props.selected?.tweakTexts?.[id]}
-                    color="transparent" onClick={() => this.props.tweakAct?.(this.props.entry.id, id)} />
-                );
-              })}
+              {!!this.props.selected &&
+                this.props.entry.tweaks?.map((id) => {
+                  return (
+                    <Button
+                      key={id}
+                      content={this.props.selected?.tweakTexts?.[id]}
+                      color="transparent"
+                      onClick={() =>
+                        this.props.tweakAct?.(this.props.entry.id, id)
+                      }
+                    />
+                  );
+                })}
             </Box>
           </div>
         </Collapsible>

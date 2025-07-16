@@ -1,9 +1,30 @@
-import { EventEmitter } from "common/events";
-import { render } from "inferno";
-import { MESSAGE_PRUNE_INTERVAL, COMBINE_MAX_MESSAGES, MESSAGE_TYPE_INTERNAL, COMBINE_MAX_TIME_WINDOW, IMAGE_RETRY_MESSAGE_AGE, MESSAGE_TYPES, MESSAGE_TYPE_UNKNOWN, MAX_VISIBLE_MESSAGES, MAX_PERSISTED_MESSAGES } from "./constants";
-import { canPageAcceptType, isSameMessage, createMessage } from "./model";
-import { SCROLL_TRACKING_TOLERANCE, logger, findNearestScrollableParent, updateMessageBadge, createReconnectedNode, createMessageNode, TGUI_CHAT_ATTRIBUTES_TO_PROPS, TGUI_CHAT_COMPONENTS, createHighlightNode, handleImageError } from "./renderer";
-import { highlightNode, linkifyNode } from "./replaceInTextNode";
+import { EventEmitter } from 'common/events';
+import { render } from 'inferno';
+import {
+  MESSAGE_PRUNE_INTERVAL,
+  COMBINE_MAX_MESSAGES,
+  MESSAGE_TYPE_INTERNAL,
+  COMBINE_MAX_TIME_WINDOW,
+  IMAGE_RETRY_MESSAGE_AGE,
+  MESSAGE_TYPES,
+  MESSAGE_TYPE_UNKNOWN,
+  MAX_VISIBLE_MESSAGES,
+  MAX_PERSISTED_MESSAGES,
+} from './constants';
+import { canPageAcceptType, isSameMessage, createMessage } from './model';
+import {
+  SCROLL_TRACKING_TOLERANCE,
+  logger,
+  findNearestScrollableParent,
+  updateMessageBadge,
+  createReconnectedNode,
+  createMessageNode,
+  TGUI_CHAT_ATTRIBUTES_TO_PROPS,
+  TGUI_CHAT_COMPONENTS,
+  createHighlightNode,
+  handleImageError,
+} from './renderer';
+import { highlightNode, linkifyNode } from './replaceInTextNode';
 
 export class ChatRenderer {
   /**
@@ -92,7 +113,10 @@ export class ChatRenderer {
     }
   }
 
-  setHighlight(highlightSettings: string[], highlightSettingById: Record<string, any>) {
+  setHighlight(
+    highlightSettings: string[],
+    highlightSettingById: Record<string, any>,
+  ) {
     this.highlightParsers = null;
     if (!highlightSettings) {
       return;
@@ -118,7 +142,7 @@ export class ChatRenderer {
             (allowedRegex.test(str) ||
               (str.charAt(0) === '/' && str.charAt(str.length - 1) === '/')) &&
             // Reset lastIndex so it does not mess up the next word
-            ((allowedRegex.lastIndex = 0) || true)
+            ((allowedRegex.lastIndex = 0) || true),
         );
       let highlightWords: string[] | undefined;
       let highlightRegex: RegExp | null;
@@ -158,7 +182,7 @@ export class ChatRenderer {
           highlightRegex = new RegExp('(' + regexStr + ')', flags);
         } else {
           const pattern = `${matchWord ? '\\b' : ''}(${highlightWords!.join(
-            '|'
+            '|',
           )})${matchWord ? '\\b' : ''}`;
           highlightRegex = new RegExp(pattern, flags);
         }
@@ -232,7 +256,6 @@ export class ChatRenderer {
     }
     return null;
   }
-
 
   processBatch(batch, options: Record<string, any> = {}) {
     const { prepend, notifyListeners = true } = options;
@@ -323,7 +346,9 @@ export class ChatRenderer {
           render(
             <Element {...outputProps}>
               <span dangerouslySetInnerHTML={oldHtml} />
-            </Element>, childNode);
+            </Element>,
+            childNode,
+          );
           /* eslint-enable react/no-danger */
         }
 
@@ -505,7 +530,8 @@ export class ChatRenderer {
       }
     }
     // Create a page
-    const pageHtml = '<!doctype html>\n' +
+    const pageHtml =
+      '<!doctype html>\n' +
       '<html>\n' +
       '<head>\n' +
       '<title>SS13 Chat Log</title>\n' +

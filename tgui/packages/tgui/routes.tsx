@@ -17,15 +17,19 @@ const requireInterface = require.context('./interfaces');
 const routingNotFound = (props, context) => {
   const { tgui_root, tgui_module } = props;
   const { config } = useBackend(context);
-  return tgui_root? (
+  return tgui_root ? (
     <Window>
       <Window.Content scrollable>
-        <div>Interface <b>{config.interface || "!!NULL!!"}</b> was not found.</div>
+        <div>
+          Interface <b>{config.interface || '!!NULL!!'}</b> was not found.
+        </div>
       </Window.Content>
     </Window>
   ) : (
     <Section>
-      <div>Module <b>{tgui_module || "!!NULL!!"}</b> was not found.</div>
+      <div>
+        Module <b>{tgui_module || '!!NULL!!'}</b> was not found.
+      </div>
     </Section>
   );
 };
@@ -33,15 +37,19 @@ const routingNotFound = (props, context) => {
 const routingMissingExport = (props, context) => {
   const { tgui_root, tgui_module } = props;
   const { config } = useBackend(context);
-  return tgui_root? (
+  return tgui_root ? (
     <Window>
       <Window.Content scrollable>
-        <div>Interface <b>{config.interface}</b> is missing an export.</div>
+        <div>
+          Interface <b>{config.interface}</b> is missing an export.
+        </div>
       </Window.Content>
     </Window>
   ) : (
     <Section>
-      <div>Module <b>{tgui_module}</b> is missing an export.</div>
+      <div>
+        Module <b>{tgui_module}</b> is missing an export.
+      </div>
     </Section>
   );
 };
@@ -63,9 +71,7 @@ const RefreshingWindow = () => {
             <Stack.Item>
               <Icon color="blue" name="toolbox" spin size={4} />
             </Stack.Item>
-            <Stack.Item>
-              Please wait...
-            </Stack.Item>
+            <Stack.Item>Please wait...</Stack.Item>
           </Stack>
         </Section>
       </Window.Content>
@@ -83,9 +89,7 @@ const interfaceSubdirectories = [
 ];
 
 const interfacePath = (name: string) => {
-  let built: [string?] = [
-    name,
-  ];
+  let built: [string?] = [name];
   for (let i = 0; i < interfaceSubdirectories.length; i++) {
     let dir = interfaceSubdirectories[i];
     built.push(`${dir}/${name}.js`);
@@ -96,7 +100,7 @@ const interfacePath = (name: string) => {
   return built;
 };
 
-export const getRoutedComponent = store => {
+export const getRoutedComponent = (store) => {
   const state = store.getState();
   const { suspended, config } = selectBackend(state);
   if (suspended) {
@@ -122,8 +126,7 @@ export const directlyRouteComponent = (name: string) => {
     let path: string = got[i];
     try {
       esModule = requireInterface(path);
-    }
-    catch (err) {
+    } catch (err) {
       if (err instanceof Error) {
         // this is a node error, not a normal JS error; code should be there.
         if (err['code'] !== 'MODULE_NOT_FOUND') {
@@ -139,8 +142,9 @@ export const directlyRouteComponent = (name: string) => {
     return routingNotFound;
   }
   // pull out any /'s as the interface is often a path, not just the interface export
-  const nameHasABackslash = name.lastIndexOf("/");
-  const realName = nameHasABackslash === -1 ? name : name.substring(nameHasABackslash + 1);
+  const nameHasABackslash = name.lastIndexOf('/');
+  const realName =
+    nameHasABackslash === -1 ? name : name.substring(nameHasABackslash + 1);
   const Component = esModule[realName];
   if (!Component) {
     return routingMissingExport;

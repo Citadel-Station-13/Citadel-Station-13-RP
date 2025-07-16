@@ -1,8 +1,16 @@
-import { round } from "common/math";
-import { BooleanLike } from "common/react";
-import { useBackend, useLocalState } from "../../backend";
-import { Button, Dropdown, Input, NumberInput, Section, Stack, Tooltip } from "../../components";
-import { Window } from "../../layouts";
+import { round } from 'common/math';
+import { BooleanLike } from 'common/react';
+import { useBackend, useLocalState } from '../../backend';
+import {
+  Button,
+  Dropdown,
+  Input,
+  NumberInput,
+  Section,
+  Stack,
+  Tooltip,
+} from '../../components';
+import { Window } from '../../layouts';
 
 interface UIDynamicInputContext {
   title: string;
@@ -44,20 +52,28 @@ interface ToggleEntry extends BaseEntry {
 }
 
 enum UIDynamicInputType {
-  String = "text",
-  Number = "num",
-  ListSingle = "list_single",
-  Toggle = "bool",
+  String = 'text',
+  Number = 'num',
+  ListSingle = 'list_single',
+  Toggle = 'bool',
 }
 
-type UIDynamicInputConstraint = StringConstraint | NumberConstraint | ListConstraint | ToggleConstraint;
+type UIDynamicInputConstraint =
+  | StringConstraint
+  | NumberConstraint
+  | ListConstraint
+  | ToggleConstraint;
 
 type StringConstraint = [number];
 type NumberConstraint = [number, number, number | null];
 type ListConstraint = string[];
 type ToggleConstraint = [];
 
-type UIDynamicInputOption = StringOption | NumberOption | ListOption | ToggleOption;
+type UIDynamicInputOption =
+  | StringOption
+  | NumberOption
+  | ListOption
+  | ToggleOption;
 
 type StringOption = string | null | undefined;
 type NumberOption = number | null | undefined;
@@ -66,15 +82,17 @@ type ToggleOption = BooleanLike;
 
 export const UIDynamicInputModal = (props, context) => {
   const { data, act } = useBackend<UIDynamicInputContext>(context);
-  const [options, setOptions] =useLocalState<Record<string, any>>(context, 'options', {});
+  const [options, setOptions] = useLocalState<Record<string, any>>(
+    context,
+    'options',
+    {},
+  );
   return (
     <Window title={data.title}>
       <Window.Content>
         <Stack vertical fill>
           <Stack.Item>
-            <Section>
-              {data.message}
-            </Section>
+            <Section>{data.message}</Section>
           </Stack.Item>
           <Stack.Item grow={1}>
             <Section fill>
@@ -84,9 +102,7 @@ export const UIDynamicInputModal = (props, context) => {
                     <Stack>
                       <Stack.Item grow={1}>
                         <Stack>
-                          <Stack.Item grow={1}>
-                            {`${entry.name} `}
-                          </Stack.Item>
+                          <Stack.Item grow={1}>{`${entry.name} `}</Stack.Item>
                           <Stack.Item>
                             <Tooltip content={entry.desc}>
                               <Button icon="question" />
@@ -100,13 +116,17 @@ export const UIDynamicInputModal = (props, context) => {
                         but this may change in the future. If shit breaks, remove it and find another hack
                         to align the items.
                        */}
-                      <Stack.Item grow={1} shrink={1} align={"right" as any}>
-                        <DynamicEntry id={key} entry={entry} current={options[key]}
+                      <Stack.Item grow={1} shrink={1} align={'right' as any}>
+                        <DynamicEntry
+                          id={key}
+                          entry={entry}
+                          current={options[key]}
                           pick={(val) => {
                             let mutated = options;
                             mutated[key] = val;
                             setOptions(mutated);
-                          }} />
+                          }}
+                        />
                       </Stack.Item>
                     </Stack>
                   </Stack.Item>
@@ -118,12 +138,22 @@ export const UIDynamicInputModal = (props, context) => {
             <Section>
               <Stack>
                 <Stack.Item grow={1} align="center">
-                  <Button.Confirm icon="check"
-                    content="Confirm" onClick={() => act('submit', { choices: preprocessOptions(options, data.query) })} />
+                  <Button.Confirm
+                    icon="check"
+                    content="Confirm"
+                    onClick={() =>
+                      act('submit', {
+                        choices: preprocessOptions(options, data.query),
+                      })
+                    }
+                  />
                 </Stack.Item>
                 <Stack.Item grow={1} align="center">
-                  <Button.Confirm icon="xmark"
-                    content="Cancel" onClick={() => act('cancel')} />
+                  <Button.Confirm
+                    icon="xmark"
+                    content="Cancel"
+                    onClick={() => act('cancel')}
+                  />
                 </Stack.Item>
               </Stack>
             </Section>
@@ -134,10 +164,13 @@ export const UIDynamicInputModal = (props, context) => {
   );
 };
 
-const preprocessOptions = (picked: Record<string, any>, query: Record<string, UIDynamicInputEntry>) => {
+const preprocessOptions = (
+  picked: Record<string, any>,
+  query: Record<string, UIDynamicInputEntry>,
+) => {
   let built = {};
   for (let key in Object.keys(query)) {
-    built[key] = picked[key] === undefined? query[key].default : picked[key];
+    built[key] = picked[key] === undefined ? query[key].default : picked[key];
   }
   return built;
 };
@@ -154,19 +187,35 @@ const DynamicEntry = (props: DynamicEntryProps, context) => {
   switch (props.entry.type) {
     case UIDynamicInputType.ListSingle:
       return (
-        <DynamicEntryPick {...props} current={props.current as ListOption} entry={props.entry} />
+        <DynamicEntryPick
+          {...props}
+          current={props.current as ListOption}
+          entry={props.entry}
+        />
       );
     case UIDynamicInputType.Number:
       return (
-        <DynamicEntryNumber {...props} current={props.current as NumberOption} entry={props.entry} />
+        <DynamicEntryNumber
+          {...props}
+          current={props.current as NumberOption}
+          entry={props.entry}
+        />
       );
     case UIDynamicInputType.String:
       return (
-        <DynamicEntryString {...props} current={props.current as StringOption} entry={props.entry} />
+        <DynamicEntryString
+          {...props}
+          current={props.current as StringOption}
+          entry={props.entry}
+        />
       );
     case UIDynamicInputType.Toggle:
       return (
-        <DynamicEntryToggle {...props} current={props.current as ToggleOption} entry={props.entry} />
+        <DynamicEntryToggle
+          {...props}
+          current={props.current as ToggleOption}
+          entry={props.entry}
+        />
       );
   }
 };
@@ -177,12 +226,26 @@ interface DynamicEntryNumberProps extends DynamicEntryProps {
 }
 
 const DynamicEntryNumber = (props: DynamicEntryNumberProps, context) => {
-  let current = props.current === undefined? props.entry.default === null? 0 : props.entry.default : props.current;
+  let current =
+    props.current === undefined
+      ? props.entry.default === null
+        ? 0
+        : props.entry.default
+      : props.current;
   return (
-    <NumberInput value={current} minValue={props.entry.constraints[0]} maxValue={props.entry.constraints[1]}
-      onChange={(e, val) => props.pick(
-        props.entry.constraints[2] === null? val : round(val, props.entry.constraints[2])
-      )} width="100%" />
+    <NumberInput
+      value={current}
+      minValue={props.entry.constraints[0]}
+      maxValue={props.entry.constraints[1]}
+      onChange={(e, val) =>
+        props.pick(
+          props.entry.constraints[2] === null
+            ? val
+            : round(val, props.entry.constraints[2]),
+        )
+      }
+      width="100%"
+    />
   );
 };
 
@@ -192,12 +255,19 @@ interface DynamicEntryStringProps extends DynamicEntryProps {
 }
 
 const DynamicEntryString = (props: DynamicEntryStringProps, context) => {
-  let current = props.current === undefined? props.entry.default === null? "" : props.entry.default : props.current;
+  let current =
+    props.current === undefined
+      ? props.entry.default === null
+        ? ''
+        : props.entry.default
+      : props.current;
   return (
-    <Input value={current} maxLength={props.entry.constraints[0]}
-      onInput={(e, val) => props.pick(
-        val
-      )} width="100%" />
+    <Input
+      value={current}
+      maxLength={props.entry.constraints[0]}
+      onInput={(e, val) => props.pick(val)}
+      width="100%"
+    />
   );
 };
 
@@ -207,14 +277,18 @@ interface DynamicEntryPickProps extends DynamicEntryProps {
 }
 
 const DynamicEntryPick = (props: DynamicEntryPickProps, context) => {
-  let current = props.current === undefined? (
-    props.entry.constraints.length > 0? props.entry.constraints[0] : ""
-  ) : props.current;
+  let current =
+    props.current === undefined
+      ? props.entry.constraints.length > 0
+        ? props.entry.constraints[0]
+        : ''
+      : props.current;
   return (
     <Dropdown
       options={props.entry.constraints}
       selected={current}
-      onSelected={(v) => props.pick(v)} />
+      onSelected={(v) => props.pick(v)}
+    />
   );
 };
 
@@ -224,12 +298,9 @@ interface DynamicEntryToggleProps extends DynamicEntryProps {
 }
 
 const DynamicEntryToggle = (props: DynamicEntryToggleProps, context) => {
-  let current = props.current === undefined? !!props.entry.default : props.current;
+  let current =
+    props.current === undefined ? !!props.entry.default : props.current;
   return (
-    <Button.Checkbox
-      selected={current}
-      onClick={() => props.pick(!current)} />
+    <Button.Checkbox selected={current} onClick={() => props.pick(!current)} />
   );
 };
-
-

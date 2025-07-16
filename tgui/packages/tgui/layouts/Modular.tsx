@@ -3,11 +3,11 @@
  * @license MIT
  */
 
-import { BooleanLike } from "common/react";
-import { InfernoNode } from "inferno";
-import { Section } from "../components";
-import { SectionProps } from "../components/Section";
-import { Window, WindowProps } from "./Window";
+import { BooleanLike } from 'common/react';
+import { InfernoNode } from 'inferno';
+import { Section } from '../components';
+import { SectionProps } from '../components/Section';
+import { Window, WindowProps } from './Window';
 
 export interface ModularProps {
   readonly direct?: InfernoNode;
@@ -34,21 +34,17 @@ export const Modular = (props: ModularProps, context: any) => {
     ...props.section,
     ...m_section,
   };
-  return (
-    !is_module? (
-      <Window {...props.window}>
-        {props.direct}
-        <Window.Content scrollable={props.scrollable}>
-          {props.children}
-        </Window.Content>
-      </Window>
-    ) : (
-      <Section
-        {...props.section}
-        {...sectionProps}>
-        {props.direct}
+  return !is_module ? (
+    <Window {...props.window}>
+      {props.direct}
+      <Window.Content scrollable={props.scrollable}>
         {props.children}
-      </Section>
-    )
+      </Window.Content>
+    </Window>
+  ) : (
+    <Section {...props.section} {...sectionProps}>
+      {props.direct}
+      {props.children}
+    </Section>
   );
 };

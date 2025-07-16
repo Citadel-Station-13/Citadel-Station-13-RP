@@ -7,11 +7,11 @@
  * @license MIT
  */
 
-import { InfernoNode } from "inferno";
-import { LabeledList, NoticeBox, Section } from "../../components";
-import { SectionProps } from "../../components/Section";
+import { InfernoNode } from 'inferno';
+import { LabeledList, NoticeBox, Section } from '../../components';
+import { SectionProps } from '../../components/Section';
 
-export const REAGENT_STORAGE_UNIT_NAME = "u";
+export const REAGENT_STORAGE_UNIT_NAME = 'u';
 
 interface ReagentContentsProps extends SectionProps {
   readonly buttons?: InfernoNode;
@@ -32,20 +32,17 @@ export const ReagentContents = (props: ReagentContentsProps, context) => {
     <Section {...props}>
       <LabeledList>
         {props.reagents.length === 0 && (
-          <NoticeBox>
-            Container is empty.
-          </NoticeBox>
+          <NoticeBox>Container is empty.</NoticeBox>
         )}
-        {
-          props.reagents.map((reagent) => (
-            <LabeledList.Item
-              label={reagent.name}
-              key={reagent.id}
-              buttons={!!props.reagentButtons && props.reagentButtons(reagent.id)}>
-              {reagent.amount}u
-            </LabeledList.Item>
-          ))
-        }
+        {props.reagents.map((reagent) => (
+          <LabeledList.Item
+            label={reagent.name}
+            key={reagent.id}
+            buttons={!!props.reagentButtons && props.reagentButtons(reagent.id)}
+          >
+            {reagent.amount}u
+          </LabeledList.Item>
+        ))}
       </LabeledList>
     </Section>
   );

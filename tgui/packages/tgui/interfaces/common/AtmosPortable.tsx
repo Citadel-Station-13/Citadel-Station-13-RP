@@ -1,19 +1,27 @@
-import { round } from "common/math";
-import { InfernoNode } from "inferno";
-import { BooleanLike } from "../../../common/react";
-import { useBackend } from "../../backend";
-import { AnimatedNumber, Button, LabeledList, NumberInput, ProgressBar, Section, Stack } from "../../components";
-import { ComponentProps } from "../../components/Component";
-import { Window } from "../../layouts";
-import { AtmosTank, AtmosTankSlot } from "./Atmos";
+import { round } from 'common/math';
+import { InfernoNode } from 'inferno';
+import { BooleanLike } from '../../../common/react';
+import { useBackend } from '../../backend';
+import {
+  AnimatedNumber,
+  Button,
+  LabeledList,
+  NumberInput,
+  ProgressBar,
+  Section,
+  Stack,
+} from '../../components';
+import { ComponentProps } from '../../components/Component';
+import { Window } from '../../layouts';
+import { AtmosTank, AtmosTankSlot } from './Atmos';
 
 enum AtmosPortableUIFlags {
-  None = (0),
-  ViewFlow = (1<<0),
-  TogglePower = (1<<1),
-  SetFlow = (1<<2),
-  SetPower = (1<<3),
-  SeePower = (1<<4),
+  None = 0,
+  ViewFlow = 1 << 0,
+  TogglePower = 1 << 1,
+  SetFlow = 1 << 2,
+  SetPower = 1 << 3,
+  SeePower = 1 << 4,
 }
 
 interface AtmosPortableControlProps {
@@ -27,41 +35,60 @@ interface AtmosPortableControlProps {
   readonly additionalListItems?: InfernoNode;
 }
 
-export const AtmosPortableControl = (props: AtmosPortableControlProps, context) => {
+export const AtmosPortableControl = (
+  props: AtmosPortableControlProps,
+  context,
+) => {
   return (
     <>
-      <Section title="Status"
-        buttons={props.data.controlFlags & AtmosPortableUIFlags.TogglePower && (
-          <Button content={props.data.on? "On" : "Off"}
-            onClick={() => props.toggleAct?.()}
-            selected={props.data.on}
-            icon={props.data.on? 'power-off' : 'times'} />
-        )}>
+      <Section
+        title="Status"
+        buttons={
+          props.data.controlFlags & AtmosPortableUIFlags.TogglePower && (
+            <Button
+              content={props.data.on ? 'On' : 'Off'}
+              onClick={() => props.toggleAct?.()}
+              selected={props.data.on}
+              icon={props.data.on ? 'power-off' : 'times'}
+            />
+          )
+        }
+      >
         <LabeledList>
           <LabeledList.Item label="Pressure">
-            <AnimatedNumber value={props.data.pressure} />{` kPa`}
+            <AnimatedNumber value={props.data.pressure} />
+            {` kPa`}
           </LabeledList.Item>
           <LabeledList.Item label="Temperature">
-            <AnimatedNumber value={props.data.temperature} />{` kPa`}
+            <AnimatedNumber value={props.data.temperature} />
+            {` kPa`}
           </LabeledList.Item>
-          <LabeledList.Item label="Port" color={props.data.portConnected? "good" : "average"}>
-            {props.data.portConnected? "Connected" : "Not Connected"}
+          <LabeledList.Item
+            label="Port"
+            color={props.data.portConnected ? 'good' : 'average'}
+          >
+            {props.data.portConnected ? 'Connected' : 'Not Connected'}
           </LabeledList.Item>
         </LabeledList>
       </Section>
       <Section title="Flow">
         <LabeledList>
-          {props.data.controlFlags & AtmosPortableUIFlags.SetFlow? (
+          {props.data.controlFlags & AtmosPortableUIFlags.SetFlow ? (
             <LabeledList.Item label="Flow Limit">
-              <NumberInput value={props.data.flowSetting}
-                maxValue={props.data.flowMax} onChange={(e, val) => props.setFlowAct?.(val)}
-                unit="L/s" />
+              <NumberInput
+                value={props.data.flowSetting}
+                maxValue={props.data.flowMax}
+                onChange={(e, val) => props.setFlowAct?.(val)}
+                unit="L/s"
+              />
             </LabeledList.Item>
-          ) : (!!(props.data.controlFlags & AtmosPortableUIFlags.ViewFlow) && (
-            <LabeledList.Item label="Flow Status">
-              {props.data.flow} L/s
-            </LabeledList.Item>
-          ))}
+          ) : (
+            !!(props.data.controlFlags & AtmosPortableUIFlags.ViewFlow) && (
+              <LabeledList.Item label="Flow Status">
+                {props.data.flow} L/s
+              </LabeledList.Item>
+            )
+          )}
           {props.additionalListItems}
         </LabeledList>
       </Section>
@@ -69,8 +96,17 @@ export const AtmosPortableControl = (props: AtmosPortableControlProps, context) 
         <Section title="Power">
           <LabeledList>
             <LabeledList.Item label="Cell">
-              <ProgressBar value={props.data.maxCharge? (props.data.charge / props.data.maxCharge) : 0}>
-                {props.data.charge? (round(props.data.charge / props.data.maxCharge, 1) * 100) : 0}%
+              <ProgressBar
+                value={
+                  props.data.maxCharge
+                    ? props.data.charge / props.data.maxCharge
+                    : 0
+                }
+              >
+                {props.data.charge
+                  ? round(props.data.charge / props.data.maxCharge, 1) * 100
+                  : 0}
+                %
               </ProgressBar>
             </LabeledList.Item>
             {!!(props.data.controlFlags & AtmosPortableUIFlags.SetPower) && (
@@ -89,8 +125,6 @@ export const AtmosPortableControl = (props: AtmosPortableControlProps, context) 
     </>
   );
 };
-
-
 
 export interface AtmosPortableData {
   // UI control flgas
@@ -129,7 +163,7 @@ export interface AtmosPortableData {
   portConnected: BooleanLike;
 }
 
-interface AtmosPortableProps extends ComponentProps{
+interface AtmosPortableProps extends ComponentProps {
   readonly minimumHeight?: number;
   readonly minimumWidth?: number;
   readonly name: string;
@@ -153,16 +187,13 @@ export const AtmosPortable = (props: AtmosPortableProps, context) => {
               additionalListItems={props.additionalListItems}
               data={data}
               toggleAct={() => act('togglePower')}
-              setFlowAct={(amt) => act('setFlow', { value: amt })} />
+              setFlowAct={(amt) => act('setFlow', { value: amt })}
+            />
           </Stack.Item>
           <Stack.Item>
             <AtmosTankSlot tank={data.tank} ejectAct={() => act('eject')} />
           </Stack.Item>
-          {props.children && (
-            <Stack.Item grow>
-              {props.children}
-            </Stack.Item>
-          )}
+          {props.children && <Stack.Item grow>{props.children}</Stack.Item>}
         </Stack>
       </Window.Content>
     </Window>

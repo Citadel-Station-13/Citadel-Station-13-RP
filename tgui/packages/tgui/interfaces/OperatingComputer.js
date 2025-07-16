@@ -1,5 +1,12 @@
 import { useBackend } from '../backend';
-import { AnimatedNumber, LabeledList, NoticeBox, ProgressBar, Section, Divider } from '../components';
+import {
+  AnimatedNumber,
+  LabeledList,
+  NoticeBox,
+  ProgressBar,
+  Section,
+  Divider,
+} from '../components';
 import { Window } from '../layouts';
 
 const damageTypes = [
@@ -42,9 +49,7 @@ const patientStates = {
 
 export const OperatingComputer = (props, context) => {
   return (
-    <Window
-      width={350}
-      height={470}>
+    <Window width={350} height={470}>
       <Window.Content scrollable>
         <PatientStateView />
       </Window.Content>
@@ -54,27 +59,17 @@ export const OperatingComputer = (props, context) => {
 
 const PatientStateView = (props, context) => {
   const { act, data } = useBackend(context);
-  const {
-    table,
-    hasOccupant,
-    patient,
-  } = data;
+  const { table, hasOccupant, patient } = data;
   const patientStat = patientStates[patient.stat] || patientStates[3];
   if (!table) {
-    return (
-      <NoticeBox>
-        No Table Detected
-      </NoticeBox>
-    );
+    return <NoticeBox>No Table Detected</NoticeBox>;
   }
   return (
     <>
-      <Section title={patient.name || "Patient State"}>
-        {hasOccupant && (
+      <Section title={patient.name || 'Patient State'}>
+        {(hasOccupant && (
           <LabeledList>
-            <LabeledList.Item
-              label="State"
-              color={patientStat.color}>
+            <LabeledList.Item label="State" color={patientStat.color}>
               {patientStat.statText}
             </LabeledList.Item>
             <LabeledList.Item label="Blood Type">
@@ -85,33 +80,30 @@ const PatientStateView = (props, context) => {
                 value={patient.health}
                 minValue={patient.minHealth}
                 maxValue={patient.maxHealth}
-                color={patient.health >= 0 ? 'good' : 'average'}>
+                color={patient.health >= 0 ? 'good' : 'average'}
+              >
                 <AnimatedNumber value={patient.health} />
               </ProgressBar>
             </LabeledList.Item>
-            {damageTypes.map(type => (
+            {damageTypes.map((type) => (
               <LabeledList.Item key={type.type} label={type.label}>
                 <ProgressBar
                   value={patient[type.type] / patient.maxHealth}
-                  color="bad">
+                  color="bad"
+                >
                   <AnimatedNumber value={patient[type.type]} />
                 </ProgressBar>
               </LabeledList.Item>
             ))}
           </LabeledList>
-        ) || (
-          'No Patient Detected'
-        )}
+        )) ||
+          'No Patient Detected'}
       </Section>
-      {(patient.procedures?.length === 0) && (
-        <Section>
-          No Active Procedures
-        </Section>
+      {patient.procedures?.length === 0 && (
+        <Section>No Active Procedures</Section>
       )}
-      {patient.procedures?.map(procedure => (
-        <Section
-          key={procedure.name}
-          title={procedure.name}>
+      {patient.procedures?.map((procedure) => (
+        <Section key={procedure.name} title={procedure.name}>
           <i>{procedure.currentStage}</i>
           <Divider />
           <LabeledList>

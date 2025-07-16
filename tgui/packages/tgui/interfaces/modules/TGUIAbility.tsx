@@ -3,18 +3,16 @@
  * @license MIT
  */
 
-import { BooleanLike } from "../../../common/react";
-import { ModuleData, useModule } from "../../backend";
-import { Modular } from "../../layouts/Modular";
+import { BooleanLike } from '../../../common/react';
+import { ModuleData, useModule } from '../../backend';
+import { Modular } from '../../layouts/Modular';
 
-interface TGUIAbilityProps {
-
-}
+interface TGUIAbilityProps {}
 
 enum TGUIAbilityInteraction {
-  NONE = "none",
-  TRIGGER = "trigger",
-  TOGGLE = "toggle",
+  NONE = 'none',
+  TRIGGER = 'trigger',
+  TOGGLE = 'toggle',
 }
 
 interface TGUIAbilityData extends ModuleData {
@@ -28,9 +26,5 @@ interface TGUIAbilityData extends ModuleData {
 export const TGUIAbility = (props: TGUIAbilityProps, context) => {
   const { data, act } = useModule<TGUIAbilityData>(context);
 
-  return (
-    <Modular>
-      Not Implemented
-    </Modular>
-  );
+  return <Modular>Not Implemented</Modular>;
 };

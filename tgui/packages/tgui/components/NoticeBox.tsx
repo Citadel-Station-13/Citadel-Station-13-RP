@@ -12,18 +12,10 @@ export type NoticeBoxProps = BoxProps & {
   readonly success?: BooleanLike;
   readonly danger?: BooleanLike;
   readonly info?: BooleanLike;
-}
+};
 
 export const NoticeBox = (props: NoticeBoxProps) => {
-  const {
-    className,
-    color,
-    info,
-    warning,
-    success,
-    danger,
-    ...rest
-  } = props;
+  const { className, color, info, warning, success, danger, ...rest } = props;
   return (
     <Box
       className={classes([
@@ -34,7 +26,8 @@ export const NoticeBox = (props: NoticeBoxProps) => {
         danger && 'NoticeBox--type--danger',
         className,
       ])}
-      {...rest} />
+      {...rest}
+    />
   );
 };
 

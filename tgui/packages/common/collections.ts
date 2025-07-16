@@ -14,40 +14,33 @@
  *
  * @returns {any[]}
  */
-export const filter = <T>(iterateeFn: (
-  input: T,
-  index: number,
-  collection: T[],
-) => boolean) =>
-    (collection: T[]): T[] => {
-      if (collection === null || collection === undefined) {
-        return collection;
-      }
-      if (Array.isArray(collection)) {
-        const result: T[] = [];
-        for (let i = 0; i < collection.length; i++) {
-          const item = collection[i];
-          if (iterateeFn(item, i, collection)) {
-            result.push(item);
-          }
+export const filter =
+  <T>(iterateeFn: (input: T, index: number, collection: T[]) => boolean) =>
+  (collection: T[]): T[] => {
+    if (collection === null || collection === undefined) {
+      return collection;
+    }
+    if (Array.isArray(collection)) {
+      const result: T[] = [];
+      for (let i = 0; i < collection.length; i++) {
+        const item = collection[i];
+        if (iterateeFn(item, i, collection)) {
+          result.push(item);
         }
-        return result;
       }
-      throw new Error(`filter() can't iterate on type ${typeof collection}`);
-    };
+      return result;
+    }
+    throw new Error(`filter() can't iterate on type ${typeof collection}`);
+  };
 
 type MapFunction = {
-  <T, U>(iterateeFn: (
-    value: T,
-    index: number,
-    collection: T[],
-  ) => U): (collection: T[]) => U[];
+  <T, U>(
+    iterateeFn: (value: T, index: number, collection: T[]) => U,
+  ): (collection: T[]) => U[];
 
-  <T, U, K extends string | number>(iterateeFn: (
-    value: T,
-    index: K,
-    collection: Record<K, T>,
-  ) => U): (collection: Record<K, T>) => U[];
+  <T, U, K extends string | number>(
+    iterateeFn: (value: T, index: K, collection: Record<K, T>) => U,
+  ): (collection: Record<K, T>) => U[];
 };
 
 /**
@@ -62,7 +55,8 @@ type MapFunction = {
  *
  * todo: investigate if this is needed; javascript contains native Object.entries().map().
  */
-export const map: MapFunction = <T, U>(iterateeFn) =>
+export const map: MapFunction =
+  <T, U>(iterateeFn) =>
   // ts-ignored; i am not awake enough to deal with this right now
   // @ts-ignore
   (collection: T[]): U[] => {
@@ -87,9 +81,10 @@ export const map: MapFunction = <T, U>(iterateeFn) =>
  * Given a collection, will run each element through an iteratee function.
  * Will then filter out undefined values.
  */
-export const filterMap = <T, U>(collection: T[], iterateeFn: (
-  value: T
-) => U | undefined): U[] => {
+export const filterMap = <T, U>(
+  collection: T[],
+  iterateeFn: (value: T) => U | undefined,
+): U[] => {
   const finalCollection: U[] = [];
 
   for (const value of collection) {
@@ -125,22 +120,22 @@ const COMPARATOR = (objA, objB) => {
  *
  * Iteratees are called with one argument (value).
  */
-export const sortBy = <T>(
-  ...iterateeFns: ((input: T) => unknown)[]
-) => (array: T[]): T[] => {
+export const sortBy =
+  <T>(...iterateeFns: ((input: T) => unknown)[]) =>
+  (array: T[]): T[] => {
     if (!Array.isArray(array)) {
       return array;
     }
     let length = array.length;
     // Iterate over the array to collect criteria to sort it by
     let mappedArray: {
-      criteria: unknown[],
-      value: T,
+      criteria: unknown[];
+      value: T;
     }[] = [];
     for (let i = 0; i < length; i++) {
       const value = array[i];
       mappedArray.push({
-        criteria: iterateeFns.map(fn => fn(value)),
+        criteria: iterateeFns.map((fn) => fn(value)),
         value,
       });
     }
@@ -169,15 +164,14 @@ export const range = (start: number, end: number): number[] =>
 /**
  * A fast implementation of reduce.
  */
-export const reduce = (reducerFn, initialValue) => array => {
+export const reduce = (reducerFn, initialValue) => (array) => {
   const length = array.length;
   let i;
   let result;
   if (initialValue === undefined) {
     i = 1;
     result = array[0];
-  }
-  else {
+  } else {
     i = 0;
     result = initialValue;
   }
@@ -198,15 +192,14 @@ export const reduce = (reducerFn, initialValue) => array => {
  * is determined by the order they occur in the array. The iteratee is
  * invoked with one argument: value.
  */
-export const uniqBy = <T extends unknown>(
-  iterateeFn?: (value: T) => unknown
-) => (array: T[]): T[] => {
+export const uniqBy =
+  <T extends unknown>(iterateeFn?: (value: T) => unknown) =>
+  (array: T[]): T[] => {
     const { length } = array;
     const result: T[] = [];
     const seen: unknown[] = iterateeFn ? [] : result;
     let index = -1;
-    outer:
-    while (++index < length) {
+    outer: while (++index < length) {
       let value: T | 0 = array[index];
       const computed = iterateeFn ? iterateeFn(value) : value;
       if (computed === computed) {
@@ -220,8 +213,7 @@ export const uniqBy = <T extends unknown>(
           seen.push(computed);
         }
         result.push(value);
-      }
-      else if (!seen.includes(computed)) {
+      } else if (!seen.includes(computed)) {
         if (seen !== result) {
           seen.push(computed);
         }
@@ -267,7 +259,8 @@ export const zip = <T extends unknown[][]>(...arrays: T): Zip<T> => {
  * specify how grouped values should be combined. The iteratee is
  * invoked with the elements of each group.
  */
-export const zipWith = <T, U>(iterateeFn: (...values: T[]) => U) =>
+export const zipWith =
+  <T, U>(iterateeFn: (...values: T[]) => U) =>
   (...arrays: T[][]): U[] => {
     return map((values: T[]) => iterateeFn(...values))(zip(...arrays));
   };
@@ -307,9 +300,9 @@ const binarySearch = <T, U = unknown>(
   return compare > insertingKey ? middle : middle + 1;
 };
 
-export const binaryInsertWith = <T, U = unknown>(getKey: (value: T) => U):
-  ((collection: readonly T[], value: T) => T[]) =>
-{
+export const binaryInsertWith = <T, U = unknown>(
+  getKey: (value: T) => U,
+): ((collection: readonly T[], value: T) => T[]) => {
   return (collection, value) => {
     const copy = [...collection];
     copy.splice(binarySearch(getKey, collection, value), 0, value);
@@ -321,8 +314,10 @@ export const binaryInsertWith = <T, U = unknown>(getKey: (value: T) => U):
  * splits an array into x arrays of max size divisor
  * does not balance between the buckets
  */
-export const arrayBucketFill = <T>(arrIn: Array<T>, amt: number):
-  Array<Array<T>> => {
+export const arrayBucketFill = <T>(
+  arrIn: Array<T>,
+  amt: number,
+): Array<Array<T>> => {
   let output = new Array<Array<T>>();
   if (amt <= 0) {
     return output;
@@ -343,8 +338,10 @@ export const arrayBucketFill = <T>(arrIn: Array<T>, amt: number):
 /**
  * splits an array between x buckets evenly
  */
-export const arrayBucketSplit = <T>(arrIn: Array<T>, amt: number):
-Array<Array<T>> => {
+export const arrayBucketSplit = <T>(
+  arrIn: Array<T>,
+  amt: number,
+): Array<Array<T>> => {
   let output = new Array<Array<T>>();
   if (amt <= 0) {
     return output;

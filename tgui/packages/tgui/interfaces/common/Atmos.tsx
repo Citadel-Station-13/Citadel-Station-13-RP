@@ -1,11 +1,17 @@
 /**
  * @file
  * @license MIT
-*/
+ */
 
-import { bitfieldToPositions, round } from "common/math";
-import { Box, Button, Collapsible, LabeledList, Section } from "../../components";
-import { SectionProps } from "../../components/Section";
+import { bitfieldToPositions, round } from 'common/math';
+import {
+  Box,
+  Button,
+  Collapsible,
+  LabeledList,
+  Section,
+} from '../../components';
+import { SectionProps } from '../../components/Section';
 
 //* Context
 
@@ -13,33 +19,28 @@ export type AtmosGasID = string;
 export type AtmosGasIDs = AtmosGasID[];
 
 export enum AtmosGasGroupFlags {
-  None = (0),
-  Core = (1<<0),
-  Other = (1<<1),
-  Unknown = (1<<2),
-  Reagents = (1<<3),
+  None = 0,
+  Core = 1 << 0,
+  Other = 1 << 1,
+  Unknown = 1 << 2,
+  Reagents = 1 << 3,
 }
 export type AtmosGasGroups = AtmosGasGroupFlags;
 
-export const AtmosGroupFlagNames = [
-  "Core",
-  "Other",
-  "Unknown",
-  "Reagents",
-];
+export const AtmosGroupFlagNames = ['Core', 'Other', 'Unknown', 'Reagents'];
 
 export const ATMOS_GROUP_COUNT = 4;
 
 export enum AtmosGasFlags {
-  None = (0),
-  Fuel = (1<<0),
-  Oxidizer = (1<<1),
-  Contaminent = (1<<2),
-  FusionFuel = (1<<3),
-  Unknown = (1<<4),
-  Core = (1<<5),
-  Filterable = (1<<6),
-  Dangerous = (1<<7),
+  None = 0,
+  Fuel = 1 << 0,
+  Oxidizer = 1 << 1,
+  Contaminent = 1 << 2,
+  FusionFuel = 1 << 3,
+  Unknown = 1 << 4,
+  Core = 1 << 5,
+  Filterable = 1 << 6,
+  Dangerous = 1 << 7,
 }
 
 interface BaseGasContext {
@@ -66,9 +67,7 @@ export interface AtmosGas {
   molarMass: number;
 }
 
-export interface FullAtmosGas extends AtmosGas {
-
-}
+export interface FullAtmosGas extends AtmosGas {}
 
 //* Analyzer
 
@@ -102,17 +101,14 @@ export const AtmosAnalysis = (props: AtmosAnalysisProps) => {
         <LabeledList.Item label="Temperature">
           {temperatureRounded}°K ({temperatureRounded - 273.15}°C)
         </LabeledList.Item>
-        {
-          Object.entries(props.results.gases).map(([k, v]) => {
-            const percent = v / props.results.moles;
-            return (
-              <LabeledList.Item key={k}
-                label={props.results.names[k] || k}>
-                {round(percent, 2)}%
-              </LabeledList.Item>
-            );
-          })
-        }
+        {Object.entries(props.results.gases).map(([k, v]) => {
+          const percent = v / props.results.moles;
+          return (
+            <LabeledList.Item key={k} label={props.results.names[k] || k}>
+              {round(percent, 2)}%
+            </LabeledList.Item>
+          );
+        })}
       </LabeledList>
     </Section>
   );
@@ -131,39 +127,66 @@ interface AtmosFilterListProps extends SectionProps {
 export const AtmosFilterList = (props: AtmosFilterListProps) => {
   return (
     <Section {...props}>
-      <Collapsible captureKeys={false}
-        more={(
+      <Collapsible
+        captureKeys={false}
+        more={
           <>
-            <div style={{ display: "inline", color: "#7e90a7", "margin-left": "-0.235em", "padding-right": "1.225em" }}>Gases: </div>
+            <div
+              style={{
+                display: 'inline',
+                color: '#7e90a7',
+                'margin-left': '-0.235em',
+                'padding-right': '1.225em',
+              }}
+            >
+              Gases:{' '}
+            </div>
             {props.gasContext.coreGases.map((id) => (
               <Button.Checkbox
                 key={id}
                 content={props.gasContext.gases[id].name}
                 selected={props.selectedIds.includes(id)}
-                onClick={() => props.selectId?.(id, !props.selectedIds.includes(id))} />
+                onClick={() =>
+                  props.selectId?.(id, !props.selectedIds.includes(id))
+                }
+              />
             ))}
           </>
-        )} color="transparent">
-        {props.gasContext.filterableGases.filter((id) => !props.gasContext.coreGases.includes(id)).map(
-          (id) => props.gasContext.gases[id]
-        ).sort(
-          (a, b) => a.name.localeCompare(b.name)
-        ).map((gas) => (
-          <Button.Checkbox
-            key={gas.id}
-            content={gas.name}
-            selected={props.selectedIds.includes(gas.id)}
-            onClick={() => props.selectId?.(gas.id, !props.selectedIds.includes(gas.id))} />
-        ))}
+        }
+        color="transparent"
+      >
+        {props.gasContext.filterableGases
+          .filter((id) => !props.gasContext.coreGases.includes(id))
+          .map((id) => props.gasContext.gases[id])
+          .sort((a, b) => a.name.localeCompare(b.name))
+          .map((gas) => (
+            <Button.Checkbox
+              key={gas.id}
+              content={gas.name}
+              selected={props.selectedIds.includes(gas.id)}
+              onClick={() =>
+                props.selectId?.(gas.id, !props.selectedIds.includes(gas.id))
+              }
+            />
+          ))}
       </Collapsible>
       <LabeledList>
         <LabeledList.Item label="Groups">
-          {bitfieldToPositions(props.gasContext.filterableGroups, ATMOS_GROUP_COUNT).map((pos) => (
+          {bitfieldToPositions(
+            props.gasContext.filterableGroups,
+            ATMOS_GROUP_COUNT,
+          ).map((pos) => (
             <Button.Checkbox
               key={pos}
               content={AtmosGroupFlagNames[pos]}
               selected={props.selectedGroups & (1 << pos)}
-              onClick={() => props.selectGroup?.(1 << pos, !(props.selectedGroups & (1 << pos)))} />
+              onClick={() =>
+                props.selectGroup?.(
+                  1 << pos,
+                  !(props.selectedGroups & (1 << pos)),
+                )
+              }
+            />
           ))}
         </LabeledList.Item>
       </LabeledList>
@@ -191,25 +214,27 @@ interface AtmosTankSlotProps extends SectionProps {
 
 export const AtmosTankSlot = (props: AtmosTankSlotProps, context) => {
   return (
-    <Section title="Tank" {...props}
+    <Section
+      title="Tank"
+      {...props}
       buttons={
-        <Button content="Eject" disabled={!props.tank}
+        <Button
+          content="Eject"
+          disabled={!props.tank}
           icon="eject"
-          onClick={() => props.ejectAct?.()} />
-      }>
-      {props.tank? (
+          onClick={() => props.ejectAct?.()}
+        />
+      }
+    >
+      {props.tank ? (
         <LabeledList>
-          <LabeledList.Item label="Label">
-            {props.tank.name}
-          </LabeledList.Item>
+          <LabeledList.Item label="Label">{props.tank.name}</LabeledList.Item>
           <LabeledList.Item label="Pressure">
             {props.tank.pressure} kPa
           </LabeledList.Item>
         </LabeledList>
       ) : (
-        <Box textColor="average">
-          No holding tank
-        </Box>
+        <Box textColor="average">No holding tank</Box>
       )}
     </Section>
   );

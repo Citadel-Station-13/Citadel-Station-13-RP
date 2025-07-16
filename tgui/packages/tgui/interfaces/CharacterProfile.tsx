@@ -1,20 +1,20 @@
-import { Section, Flex, Divider, Table, Collapsible, Box } from "../components";
-import { Window } from "../layouts";
-import { useBackend, useLocalState } from "../backend";
-import { Tabs } from "../components";
+import { Section, Flex, Divider, Table, Collapsible, Box } from '../components';
+import { Window } from '../layouts';
+import { useBackend, useLocalState } from '../backend';
+import { Tabs } from '../components';
 
 const getTagColor = (erptag) => {
   switch (erptag) {
-    case "Unset":
-      return "label";
-    case "Top":
-      return "red";
-    case "Switch":
-      return "orange";
-    case "Bottom":
-      return "blue";
-    case "No ERP":
-      return "green";
+    case 'Unset':
+      return 'label';
+    case 'Top':
+      return 'red';
+    case 'Switch':
+      return 'orange';
+    case 'Bottom':
+      return 'blue';
+    case 'No ERP':
+      return 'green';
   }
 };
 
@@ -40,24 +40,27 @@ interface CharacterProfileContext {
   flavortext_hands: string;
   flavortext_legs: string;
   flavortext_feet: string;
-	vore_digestable: string;
-	vore_devourable: string;
-	vore_feedable: string;
-	vore_leaves_remains: string;
-	vore_healbelly: string;
-	vore_spontaneous_prey: string;
-	vore_spontaneous_pred: string;
+  vore_digestable: string;
+  vore_devourable: string;
+  vore_feedable: string;
+  vore_leaves_remains: string;
+  vore_healbelly: string;
+  vore_spontaneous_prey: string;
+  vore_spontaneous_pred: string;
 }
 
 export const CharacterProfile = (props, context) => {
   const { act, data } = useBackend<CharacterProfileContext>(context);
   const [selectedTab, setSelectedTab] = useLocalState<number>(
     context,
-    "selectedTab",
-    1
+    'selectedTab',
+    1,
   );
-  let combinedspeciesname : string = "";
-  combinedspeciesname = combinedspeciesname.concat("Species - ", data.species_name);
+  let combinedspeciesname: string = '';
+  combinedspeciesname = combinedspeciesname.concat(
+    'Species - ',
+    data.species_name,
+  );
 
   return (
     <Window resizable width={950} height={800}>
@@ -77,7 +80,7 @@ export const CharacterProfile = (props, context) => {
             </Flex.Item>
             <Flex.Item Flex-direction="column" pl="10px" width="100%">
               <Collapsible title={combinedspeciesname} open>
-                <Section style={{ "white-space": "pre-line" }}>
+                <Section style={{ 'white-space': 'pre-line' }}>
                   {data.species_text}
                 </Section>
               </Collapsible>
@@ -87,7 +90,7 @@ export const CharacterProfile = (props, context) => {
                 </Section>
               </Collapsible>
               <Collapsible title="OOC Notes" open>
-                <Section style={{ "white-space": "pre-line" }}>
+                <Section style={{ 'white-space': 'pre-line' }}>
                   {data.oocnotes}
                 </Section>
               </Collapsible>
@@ -121,14 +124,19 @@ export const CharacterProfile = (props, context) => {
                 <Flex.Item>Digestable: {data.vore_digestable}</Flex.Item>
                 <Flex.Item>Devourable: {data.vore_devourable}</Flex.Item>
                 <Flex.Item>Feedable: {data.vore_feedable}</Flex.Item>
-                <Flex.Item>Leaves Remains: {data.vore_leaves_remains}</Flex.Item>
+                <Flex.Item>
+                  Leaves Remains: {data.vore_leaves_remains}
+                </Flex.Item>
                 <Flex.Item>Belly Healing: {data.vore_healbelly}</Flex.Item>
-                <Flex.Item>Drop Vore Prey: {data.vore_spontaneous_prey}</Flex.Item>
-                <Flex.Item>Drop Vore Pred: {data.vore_spontaneous_pred}</Flex.Item>
+                <Flex.Item>
+                  Drop Vore Prey: {data.vore_spontaneous_prey}
+                </Flex.Item>
+                <Flex.Item>
+                  Drop Vore Pred: {data.vore_spontaneous_pred}
+                </Flex.Item>
               </Flex.Item>
             </Section>
           </Flex>
-
         )}
       </Window.Content>
     </Window>
@@ -138,25 +146,119 @@ export const CharacterProfile = (props, context) => {
 const CharacterProfileImageElement = (props, context) => {
   const { act, data } = useBackend<CharacterProfileContext>(context);
 
-  if (data.fullref_toggle && data.fullref_url) return (<Section title="Full Reference" pb="12" textAlign="center"><img src={data.fullref_url} style={{ "max-width": "500px", "max-height": "900px" }} /></Section>);
-  if (!data.fullref_toggle && data.headshot_url) return (<Section title="Headshot Reference" pb="12" textAlign="center"><img src={data.headshot_url} height="256px" width="256px" /></Section>);
-  return (<Box />);
+  if (data.fullref_toggle && data.fullref_url)
+    return (
+      <Section title="Full Reference" pb="12" textAlign="center">
+        <img
+          src={data.fullref_url}
+          style={{ 'max-width': '500px', 'max-height': '900px' }}
+        />
+      </Section>
+    );
+  if (!data.fullref_toggle && data.headshot_url)
+    return (
+      <Section title="Headshot Reference" pb="12" textAlign="center">
+        <img src={data.headshot_url} height="256px" width="256px" />
+      </Section>
+    );
+  return <Box />;
 };
-
 
 const CharacterProfileDescElement = (props, context) => {
   const { act, data } = useBackend<CharacterProfileContext>(context);
 
   return (
     <Flex direction="column">
-      {data.flavortext_general !== "" ? (<Flex.Item style={{ "white-space": "pre-line" }}><Divider /><b>General</b><br />{data.flavortext_general}</Flex.Item>): (<Box />) }
-      {data.flavortext_head !== "" ? (<Flex.Item style={{ "white-space": "pre-line" }}><Divider /><b>Head</b><br />{data.flavortext_head}</Flex.Item>): (<Box />) }
-      {data.flavortext_face !== "" ? (<Flex.Item style={{ "white-space": "pre-line" }}><Divider /><b>Face</b><br />{data.flavortext_face}</Flex.Item>): (<Box />) }
-      {data.flavortext_eyes !== "" ? (<Flex.Item style={{ "white-space": "pre-line" }}><Divider /><b>Eyes</b><br />{data.flavortext_eyes}</Flex.Item>): (<Box />) }
-      {data.flavortext_torso !== "" ? (<Flex.Item style={{ "white-space": "pre-line" }}><Divider /><b>Torso</b><br />{data.flavortext_torso}</Flex.Item>): (<Box />) }
-      {data.flavortext_arms !== "" ? (<Flex.Item style={{ "white-space": "pre-line" }}><Divider /><b>Arms</b><br />{data.flavortext_arms}</Flex.Item>): (<Box />) }
-      {data.flavortext_hands !== "" ? (<Flex.Item style={{ "white-space": "pre-line" }}><Divider /><b>Hands</b><br />{data.flavortext_hands}</Flex.Item>): (<Box />) }
-      {data.flavortext_legs !== "" ? (<Flex.Item style={{ "white-space": "pre-line" }}><Divider /><b>Legs</b><br />{data.flavortext_legs}</Flex.Item>): (<Box />) }
-      {data.flavortext_feet !== "" ? (<Flex.Item style={{ "white-space": "pre-line" }}><Divider /><b>Feet</b><br />{data.flavortext_feet}</Flex.Item>): (<Box />) }
+      {data.flavortext_general !== '' ? (
+        <Flex.Item style={{ 'white-space': 'pre-line' }}>
+          <Divider />
+          <b>General</b>
+          <br />
+          {data.flavortext_general}
+        </Flex.Item>
+      ) : (
+        <Box />
+      )}
+      {data.flavortext_head !== '' ? (
+        <Flex.Item style={{ 'white-space': 'pre-line' }}>
+          <Divider />
+          <b>Head</b>
+          <br />
+          {data.flavortext_head}
+        </Flex.Item>
+      ) : (
+        <Box />
+      )}
+      {data.flavortext_face !== '' ? (
+        <Flex.Item style={{ 'white-space': 'pre-line' }}>
+          <Divider />
+          <b>Face</b>
+          <br />
+          {data.flavortext_face}
+        </Flex.Item>
+      ) : (
+        <Box />
+      )}
+      {data.flavortext_eyes !== '' ? (
+        <Flex.Item style={{ 'white-space': 'pre-line' }}>
+          <Divider />
+          <b>Eyes</b>
+          <br />
+          {data.flavortext_eyes}
+        </Flex.Item>
+      ) : (
+        <Box />
+      )}
+      {data.flavortext_torso !== '' ? (
+        <Flex.Item style={{ 'white-space': 'pre-line' }}>
+          <Divider />
+          <b>Torso</b>
+          <br />
+          {data.flavortext_torso}
+        </Flex.Item>
+      ) : (
+        <Box />
+      )}
+      {data.flavortext_arms !== '' ? (
+        <Flex.Item style={{ 'white-space': 'pre-line' }}>
+          <Divider />
+          <b>Arms</b>
+          <br />
+          {data.flavortext_arms}
+        </Flex.Item>
+      ) : (
+        <Box />
+      )}
+      {data.flavortext_hands !== '' ? (
+        <Flex.Item style={{ 'white-space': 'pre-line' }}>
+          <Divider />
+          <b>Hands</b>
+          <br />
+          {data.flavortext_hands}
+        </Flex.Item>
+      ) : (
+        <Box />
+      )}
+      {data.flavortext_legs !== '' ? (
+        <Flex.Item style={{ 'white-space': 'pre-line' }}>
+          <Divider />
+          <b>Legs</b>
+          <br />
+          {data.flavortext_legs}
+        </Flex.Item>
+      ) : (
+        <Box />
+      )}
+      {data.flavortext_feet !== '' ? (
+        <Flex.Item style={{ 'white-space': 'pre-line' }}>
+          <Divider />
+          <b>Feet</b>
+          <br />
+          {data.flavortext_feet}
+        </Flex.Item>
+      ) : (
+        <Box />
+      )}
     </Flex>
-  ); };
+  );
+};

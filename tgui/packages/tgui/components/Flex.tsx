@@ -8,10 +8,38 @@ import { BooleanLike, classes, pureComponentHooks } from 'common/react';
 import { BoxProps, computeBoxClassName, computeBoxProps, unit } from './Box';
 
 export type FlexProps = BoxProps & {
-  readonly direction?: CSSWideKeyword | "column" | "row" | "row-reverse" | "column-reverse" | undefined;
-  readonly wrap?: CSSWideKeyword | "wrap" | "nowrap" | "wrap-reverse" | boolean | undefined;
-  readonly align?: CSSWideKeyword | "flex-start" | "flex-end" | "center" | "baseline" | "stretch" | undefined;
-  readonly justify?: CSSWideKeyword | "flex-start" | "flex-end" | "center" | "stretch" | "space-between" | "space-around" | "space-evenly" | undefined;
+  readonly direction?:
+    | CSSWideKeyword
+    | 'column'
+    | 'row'
+    | 'row-reverse'
+    | 'column-reverse'
+    | undefined;
+  readonly wrap?:
+    | CSSWideKeyword
+    | 'wrap'
+    | 'nowrap'
+    | 'wrap-reverse'
+    | boolean
+    | undefined;
+  readonly align?:
+    | CSSWideKeyword
+    | 'flex-start'
+    | 'flex-end'
+    | 'center'
+    | 'baseline'
+    | 'stretch'
+    | undefined;
+  readonly justify?:
+    | CSSWideKeyword
+    | 'flex-start'
+    | 'flex-end'
+    | 'center'
+    | 'stretch'
+    | 'space-between'
+    | 'space-around'
+    | 'space-evenly'
+    | undefined;
   readonly inline?: BooleanLike;
 };
 
@@ -26,16 +54,17 @@ export const computeFlexClassName = (props: FlexProps) => {
 };
 
 export const computeFlexProps = (props: FlexProps) => {
-  const {
-    className,
-    inline,
-    ...rest
-  } = props;
+  const { className, inline, ...rest } = props;
   return computeBoxProps({
     style: {
       ...rest.style,
       'flex-direction': props.direction,
-      'flex-wrap': props.wrap === true ? 'wrap' : (props.wrap === false? undefined : props.wrap),
+      'flex-wrap':
+        props.wrap === true
+          ? 'wrap'
+          : props.wrap === false
+            ? undefined
+            : props.wrap,
       'align-items': props.align,
       'justify-content': props.justify,
     },
@@ -47,10 +76,7 @@ export const Flex = (props: FlexProps) => {
   const { className, ...rest } = props;
   return (
     <div
-      className={classes([
-        className,
-        computeFlexClassName(rest),
-      ])}
+      className={classes([className, computeFlexClassName(rest)])}
       {...computeFlexProps(rest)}
     />
   );
@@ -63,7 +89,15 @@ export type FlexItemProps = BoxProps & {
   order?: number;
   shrink?: number | CSSWideKeyword | undefined;
   basis?: string | BooleanLike;
-  align?: CSSWideKeyword | "flex-start" | "flex-end" | "center" | "baseline" | "stretch" | "auto" | undefined;
+  align?:
+    | CSSWideKeyword
+    | 'flex-start'
+    | 'flex-end'
+    | 'center'
+    | 'baseline'
+    | 'stretch'
+    | 'auto'
+    | undefined;
 };
 
 export const computeFlexItemClassName = (props: FlexItemProps) => {
@@ -75,40 +109,34 @@ export const computeFlexItemClassName = (props: FlexItemProps) => {
 };
 
 export const computeFlexItemProps = (props: FlexItemProps) => {
-  const {
-    className,
-    style,
-    basis,
-    ...rest
-  } = props;
-  const computedBasis = basis
+  const { className, style, basis, ...rest } = props;
+  const computedBasis =
+    basis ??
     // IE11: Set basis to specified width if it's known, which fixes certain
     // bugs when rendering tables inside the flex.
-    ?? props.width
+    props.width ??
     // If grow is used, basis should be set to 0 to be consistent with
     // flex css shorthand `flex: 1`.
-    ?? (props.grow !== undefined ? 0 : undefined);
+    (props.grow !== undefined ? 0 : undefined);
   return computeBoxProps({
     style: {
       ...style,
-      'flex-grow': props.grow === undefined? undefined : Number(props.grow),
-      'flex-shrink': props.shrink === undefined? undefined : Number(props.shrink),
+      'flex-grow': props.grow === undefined ? undefined : Number(props.grow),
+      'flex-shrink':
+        props.shrink === undefined ? undefined : Number(props.shrink),
       'flex-basis': unit(computedBasis),
-      'order': props.order,
+      order: props.order,
       'align-self': props.align,
     },
     ...rest,
   });
 };
 
-const FlexItem = props => {
+const FlexItem = (props) => {
   const { className, ...rest } = props;
   return (
     <div
-      className={classes([
-        className,
-        computeFlexItemClassName(props),
-      ])}
+      className={classes([className, computeFlexItemClassName(props)])}
       {...computeFlexItemProps(rest)}
     />
   );

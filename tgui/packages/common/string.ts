@@ -7,7 +7,7 @@
 /**
  * Removes excess whitespace and indentation from the string.
  */
-export const multiline = str => {
+export const multiline = (str) => {
   if (Array.isArray(str)) {
     // Small stub to allow usage as a template tag
     return multiline(str.join(''));
@@ -32,7 +32,7 @@ export const multiline = str => {
   // Remove this base indentation and trim the resulting string
   // from both ends.
   return lines
-    .map(line => line.substr(minIndent).trimRight())
+    .map((line) => line.substr(minIndent).trimRight())
     .join('\n')
     .trim();
 };
@@ -44,12 +44,12 @@ export const multiline = str => {
  *
  * Example: createGlobPattern('*@domain')('user@domain') === true
  */
-export const createGlobPattern = pattern => {
-  const escapeString = str => str.replace(/[|\\{}()[\]^$+*?.]/g, '\\$&');
-  const regex = new RegExp('^'
-    + pattern.split(/\*+/).map(escapeString).join('.*')
-    + '$');
-  return str => regex.test(str);
+export const createGlobPattern = (pattern) => {
+  const escapeString = (str) => str.replace(/[|\\{}()[\]^$+*?.]/g, '\\$&');
+  const regex = new RegExp(
+    '^' + pattern.split(/\*+/).map(escapeString).join('.*') + '$',
+  );
+  return (str) => regex.test(str);
 };
 
 /**
@@ -128,7 +128,6 @@ export function capitalizeAll(str: string): string {
 export function capitalizeFirst(str: string): string {
   return str.replace(/^\w/, (letter) => letter.toUpperCase());
 }
-
 
 const WORDS_UPPER = ['Id', 'Tv'] as const;
 

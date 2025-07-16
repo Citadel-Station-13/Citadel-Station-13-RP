@@ -2,14 +2,22 @@
  * @file
  * @license MIT
  */
-import { IEKeyboardEventKeycodeToBYOND } from "common/keyboard";
-import { KEY_ALT, KEY_CTRL, KEY_ESCAPE, KEY_SHIFT } from "common/keycodes";
-import { BooleanLike } from "common/react";
-import { Component, InfernoNode } from "inferno";
-import { useLocalState } from "../../backend";
-import { Box, Button, Dimmer, Section, Stack, Table, Tooltip } from "../../components";
-import { KeyEvent } from "../../events";
-import { listenForKeyEvents } from "../../hotkeys";
+import { IEKeyboardEventKeycodeToBYOND } from 'common/keyboard';
+import { KEY_ALT, KEY_CTRL, KEY_ESCAPE, KEY_SHIFT } from 'common/keycodes';
+import { BooleanLike } from 'common/react';
+import { Component, InfernoNode } from 'inferno';
+import { useLocalState } from '../../backend';
+import {
+  Box,
+  Button,
+  Dimmer,
+  Section,
+  Stack,
+  Table,
+  Tooltip,
+} from '../../components';
+import { KeyEvent } from '../../events';
+import { listenForKeyEvents } from '../../hotkeys';
 
 export interface GamePreferenceKeybindMiddlware {
   readonly hotkeyMode: BooleanLike;
@@ -31,8 +39,13 @@ interface GamePreferenceKeybindDescriptor {
   numpad: boolean;
 }
 
-interface GamePreferenceKeybindScreenProps extends GamePreferenceKeybindMiddlware {
-  readonly addBind: (id: string, key: GamePreferenceKeybindDescriptor, replacingKey: string | null) => void;
+interface GamePreferenceKeybindScreenProps
+  extends GamePreferenceKeybindMiddlware {
+  readonly addBind: (
+    id: string,
+    key: GamePreferenceKeybindDescriptor,
+    replacingKey: string | null,
+  ) => void;
   readonly removeBind: (id: string, key: string | null) => void;
   readonly setHotkeyMode: (on: boolean) => void;
 }
@@ -44,8 +57,9 @@ interface GamePreferenceKeybind {
   category: string;
 }
 
-const preprocessKeybinds = (keybinds: GamePreferenceKeybind[]):
-  Record<string, GamePreferenceKeybind[]> => {
+const preprocessKeybinds = (
+  keybinds: GamePreferenceKeybind[],
+): Record<string, GamePreferenceKeybind[]> => {
   let collected: Record<string, GamePreferenceKeybind[]> = {};
   keybinds.forEach((bind) => {
     if (!collected[bind.category]) {
@@ -56,7 +70,9 @@ const preprocessKeybinds = (keybinds: GamePreferenceKeybind[]):
   return collected;
 };
 
-const computeBoundKeys = (keysBound: Record<string, string[]>): Record<string, string[]> => {
+const computeBoundKeys = (
+  keysBound: Record<string, string[]>,
+): Record<string, string[]> => {
   let computed: Record<string, string[]> = {};
   Object.entries(keysBound).forEach(([key, bindings]) => {
     bindings.forEach((bindId) => {
@@ -69,45 +85,59 @@ const computeBoundKeys = (keysBound: Record<string, string[]>): Record<string, s
   return computed;
 };
 
-const KEYBIND_ROW_HEIGHT_I_FUCKING_HATE_TABLES_WEBVIEW_WHEN = "2em";
+const KEYBIND_ROW_HEIGHT_I_FUCKING_HATE_TABLES_WEBVIEW_WHEN = '2em';
 
 const HOTKEY_MODE_DESCRIPTION = (
   <>
-    Keybindings mode controls how the game behaves with tab and map/input focus.<br />
-    If it is on <b>Hotkeys</b>, the game will always attempt to force you to map focus,
-    meaning keypresses are sent  directly to the map instead of the input.
-    You will still be able to use the command bar,
-    but you need to tab to do it every time you click on the game map.<br />
-    If it is on <b>Input</b>, the game will not force focus away from the input bar,
-    and you can switch focus using TAB between these two modes:
-    If the input bar is pink, that means that you are in non-hotkey mode,
-    sending all keypresses of the normal
-    alphanumeric characters, punctuation, spacebar, backspace, enter, etc, typing keys into the input bar.
-    If the input bar is white, you are in hotkey mode,
-    meaning all keypresses go into the game&apos;s keybind handling system unless you
-    manually click on the input bar to shift focus there.<br />
-    Input mode is the closest thing to the old input system.<br />
-    <b>IMPORTANT:</b> While in input mode&apos;s non hotkey setting (tab toggled),
-    Ctrl + KEY will send KEY to the keybind system as the key itself, not as Ctrl + KEY.
-    This means Ctrl + T/W/A/S/D/all your familiar stuff still works, but you
-    won&apos;t be able to access any regular Ctrl binds.<br />
+    Keybindings mode controls how the game behaves with tab and map/input focus.
+    <br />
+    If it is on <b>Hotkeys</b>, the game will always attempt to force you to map
+    focus, meaning keypresses are sent directly to the map instead of the input.
+    You will still be able to use the command bar, but you need to tab to do it
+    every time you click on the game map.
+    <br />
+    If it is on <b>Input</b>, the game will not force focus away from the input
+    bar, and you can switch focus using TAB between these two modes: If the
+    input bar is pink, that means that you are in non-hotkey mode, sending all
+    keypresses of the normal alphanumeric characters, punctuation, spacebar,
+    backspace, enter, etc, typing keys into the input bar. If the input bar is
+    white, you are in hotkey mode, meaning all keypresses go into the
+    game&apos;s keybind handling system unless you manually click on the input
+    bar to shift focus there.
+    <br />
+    Input mode is the closest thing to the old input system.
+    <br />
+    <b>IMPORTANT:</b> While in input mode&apos;s non hotkey setting (tab
+    toggled), Ctrl + KEY will send KEY to the keybind system as the key itself,
+    not as Ctrl + KEY. This means Ctrl + T/W/A/S/D/all your familiar stuff still
+    works, but you won&apos;t be able to access any regular Ctrl binds.
+    <br />
   </>
 );
 
-export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenProps, context) => {
+export const GamePreferenceKeybindScreen = (
+  props: GamePreferenceKeybindScreenProps,
+  context,
+) => {
   // keybinds are naturally sorted by compile order thanks to typesof()
   // let's not unnecessarily smash that.
   const sortedByCategory = preprocessKeybinds(props.keybinds);
   // unfortunately this can't be cached
   // damnit
-  const keysByKeybind: Record<string, string[]> = computeBoundKeys(props.bindings);
+  const keysByKeybind: Record<string, string[]> = computeBoundKeys(
+    props.bindings,
+  );
   // maybe this shouldn't be a function component
   // and we should do a window event handler
   // instead of using a lazy-ass modal
   // that would probably be smart.
   // oh well! problems for later.
   // (we all know no one's touching this again)
-  const [activeCapture, setActiveCapture] = useLocalState<InfernoNode | null>(context, 'activeKeyCapture', null);
+  const [activeCapture, setActiveCapture] = useLocalState<InfernoNode | null>(
+    context,
+    'activeKeyCapture',
+    null,
+  );
 
   return (
     <Section fill scrollable>
@@ -117,108 +147,149 @@ export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenPr
             <Stack>
               <Stack.Item grow>
                 <Tooltip content={HOTKEY_MODE_DESCRIPTION}>
-                  <Box width="100%" height="100%" style={{ display: "flex", "align-content": "center" }}>
-                    <Box>
-                      Hotkey Mode
-                    </Box>
+                  <Box
+                    width="100%"
+                    height="100%"
+                    style={{ display: 'flex', 'align-content': 'center' }}
+                  >
+                    <Box>Hotkey Mode</Box>
                   </Box>
                 </Tooltip>
               </Stack.Item>
               <Stack.Item grow>
-                <Button content="On" selected={props.hotkeyMode}
-                  color="transparent" fluid
-                  onClick={() => props.setHotkeyMode(true)} />
+                <Button
+                  content="On"
+                  selected={props.hotkeyMode}
+                  color="transparent"
+                  fluid
+                  onClick={() => props.setHotkeyMode(true)}
+                />
               </Stack.Item>
               <Stack.Item grow>
-                <Button content="Off" selected={!props.hotkeyMode}
-                  color="transparent" fluid
-                  onClick={() => props.setHotkeyMode(false)} />
+                <Button
+                  content="Off"
+                  selected={!props.hotkeyMode}
+                  color="transparent"
+                  fluid
+                  onClick={() => props.setHotkeyMode(false)}
+                />
               </Stack.Item>
             </Stack>
           </Section>
-          {Object.entries(sortedByCategory).sort(
-            ([c1, k1], [c2, k2]) => c1.localeCompare(c2)
-          ).map(([category, keybinds]) => (
-            <Stack.Item key={category}>
-              <h2 style={{ "text-align": "center" }}>{category}</h2>
-              <Table style={{
-                "border-bottom": "1px solid #999999",
-              }}>
-                {keybinds.map((keybind) => {
-                  let boundKeys: string[] = keysByKeybind[keybind.id] || [];
-                  return (
-                    <Table.Row key={keybind.id}
-                      height={KEYBIND_ROW_HEIGHT_I_FUCKING_HATE_TABLES_WEBVIEW_WHEN}
-                      style={{
-                        "border-top": "1px solid #999999",
-                      }}>
-                      <Table.Cell width="40%" maxWidth="40%">
-                        <Tooltip content={keybind.desc}>
-                          <Box width="100%"
-                            height={KEYBIND_ROW_HEIGHT_I_FUCKING_HATE_TABLES_WEBVIEW_WHEN}
-                            style={{
-                              display: "flex",
-                              "align-items": "center",
-                              margin: "0 0",
-                              padding: "0 0",
-                            }}>
-                            <Box bold overflowX="hidden" style={{
-                              "white-space": "nowrap",
-                            }}>
-                              {keybind.name}
-                            </Box>
-                          </Box>
-                        </Tooltip>
-                      </Table.Cell>
-                      {[0, 1, 2].map((i) => {
-                        let bind: string | null
-                          = boundKeys[i] || null;
-                        return (
-                          <Table.Cell width="20%" key={i}
-                            height={KEYBIND_ROW_HEIGHT_I_FUCKING_HATE_TABLES_WEBVIEW_WHEN}
-                            style={{
-                              padding: "0 0",
-                              margin: "0 0",
-                            }}>
-                            <Box width="100%"
-                              height={KEYBIND_ROW_HEIGHT_I_FUCKING_HATE_TABLES_WEBVIEW_WHEN}
-                              onClick={() => {
-                                setActiveCapture((
-                                  <GamePreferenceKeybindCapture
-                                    keybind={keybind}
-                                    existing={bind}
-                                    onCancel={() => setActiveCapture(null)}
-                                    onErase={() => {
-                                      setActiveCapture(null);
-                                      props.removeBind(keybind.id, bind);
-                                    }}
-                                    onCapture={(descriptor) => {
-                                      setActiveCapture(null);
-                                      props.addBind(keybind.id, descriptor, bind);
-                                    }} />
-                                ));
-                              }}
+          {Object.entries(sortedByCategory)
+            .sort(([c1, k1], [c2, k2]) => c1.localeCompare(c2))
+            .map(([category, keybinds]) => (
+              <Stack.Item key={category}>
+                <h2 style={{ 'text-align': 'center' }}>{category}</h2>
+                <Table
+                  style={{
+                    'border-bottom': '1px solid #999999',
+                  }}
+                >
+                  {keybinds.map((keybind) => {
+                    let boundKeys: string[] = keysByKeybind[keybind.id] || [];
+                    return (
+                      <Table.Row
+                        key={keybind.id}
+                        height={
+                          KEYBIND_ROW_HEIGHT_I_FUCKING_HATE_TABLES_WEBVIEW_WHEN
+                        }
+                        style={{
+                          'border-top': '1px solid #999999',
+                        }}
+                      >
+                        <Table.Cell width="40%" maxWidth="40%">
+                          <Tooltip content={keybind.desc}>
+                            <Box
+                              width="100%"
+                              height={
+                                KEYBIND_ROW_HEIGHT_I_FUCKING_HATE_TABLES_WEBVIEW_WHEN
+                              }
                               style={{
-                                display: "flex",
-                                "align-items": "center",
-                                "justify-content": "center",
-                                margin: "0 0",
-                                padding: "0, 0",
-                              }}>
-                              <Box width="100%" overflowX="hidden"
-                                italic={!bind}
-                                textColor={bind? undefined : "#777777"}>
-                                {bind || "Add Bind..."}
+                                display: 'flex',
+                                'align-items': 'center',
+                                margin: '0 0',
+                                padding: '0 0',
+                              }}
+                            >
+                              <Box
+                                bold
+                                overflowX="hidden"
+                                style={{
+                                  'white-space': 'nowrap',
+                                }}
+                              >
+                                {keybind.name}
                               </Box>
                             </Box>
-                          </Table.Cell>
-                        ); })}
-                    </Table.Row>
-                  );
-                })}
-              </Table>
-            </Stack.Item>
-          ))}
+                          </Tooltip>
+                        </Table.Cell>
+                        {[0, 1, 2].map((i) => {
+                          let bind: string | null = boundKeys[i] || null;
+                          return (
+                            <Table.Cell
+                              width="20%"
+                              key={i}
+                              height={
+                                KEYBIND_ROW_HEIGHT_I_FUCKING_HATE_TABLES_WEBVIEW_WHEN
+                              }
+                              style={{
+                                padding: '0 0',
+                                margin: '0 0',
+                              }}
+                            >
+                              <Box
+                                width="100%"
+                                height={
+                                  KEYBIND_ROW_HEIGHT_I_FUCKING_HATE_TABLES_WEBVIEW_WHEN
+                                }
+                                onClick={() => {
+                                  setActiveCapture(
+                                    <GamePreferenceKeybindCapture
+                                      keybind={keybind}
+                                      existing={bind}
+                                      onCancel={() => setActiveCapture(null)}
+                                      onErase={() => {
+                                        setActiveCapture(null);
+                                        props.removeBind(keybind.id, bind);
+                                      }}
+                                      onCapture={(descriptor) => {
+                                        setActiveCapture(null);
+                                        props.addBind(
+                                          keybind.id,
+                                          descriptor,
+                                          bind,
+                                        );
+                                      }}
+                                    />,
+                                  );
+                                }}
+                                style={{
+                                  display: 'flex',
+                                  'align-items': 'center',
+                                  'justify-content': 'center',
+                                  margin: '0 0',
+                                  padding: '0, 0',
+                                }}
+                              >
+                                <Box
+                                  width="100%"
+                                  overflowX="hidden"
+                                  italic={!bind}
+                                  textColor={bind ? undefined : '#777777'}
+                                >
+                                  {bind || 'Add Bind...'}
+                                </Box>
+                              </Box>
+                            </Table.Cell>
+                          );
+                        })}
+                      </Table.Row>
+                    );
+                  })}
+                </Table>
+              </Stack.Item>
+            ))}
         </Stack.Item>
       </Stack>
     </Section>
@@ -230,19 +301,22 @@ const keyCodeToByond = (code: number): string => {
 };
 
 // todo: why are we not doing KeyListener?
-class GamePreferenceKeybindCapture extends Component<{
-  readonly keybind: GamePreferenceKeybind,
-  readonly existing: string | null,
-  readonly onCapture: (descriptor: GamePreferenceKeybindDescriptor) => void;
-  readonly onErase: () => void;
-  readonly onCancel: () => void;
-}, {
-  alt: boolean;
-  ctrl: boolean;
-  shift: boolean;
-  numpad: boolean;
-  terminal: number | null;
-}> {
+class GamePreferenceKeybindCapture extends Component<
+  {
+    readonly keybind: GamePreferenceKeybind;
+    readonly existing: string | null;
+    readonly onCapture: (descriptor: GamePreferenceKeybindDescriptor) => void;
+    readonly onErase: () => void;
+    readonly onCancel: () => void;
+  },
+  {
+    alt: boolean;
+    ctrl: boolean;
+    shift: boolean;
+    numpad: boolean;
+    terminal: number | null;
+  }
+> {
   keydownHandler: (e: KeyEvent) => void;
   keyupHandler: (e: KeyEvent) => void;
   state = {
@@ -273,8 +347,7 @@ class GamePreferenceKeybindCapture extends Component<{
           case KEY_ESCAPE:
             if (this.props.existing) {
               this.props.onErase();
-            }
-            else {
+            } else {
               this.props.onCancel();
             }
             break;
@@ -292,7 +365,7 @@ class GamePreferenceKeybindCapture extends Component<{
         shift: this.state.shift,
         ctrl: this.state.ctrl,
         numpad: this.state.numpad,
-        key: this.state.terminal? keyCodeToByond(this.state.terminal) : null,
+        key: this.state.terminal ? keyCodeToByond(this.state.terminal) : null,
       });
     };
   }
@@ -318,18 +391,24 @@ class GamePreferenceKeybindCapture extends Component<{
           <Stack vertical>
             <Stack.Item>
               <Box textAlign="center">
-                Capturing key-binding for <b>{this.props.keybind.name}</b>.<br />
+                Capturing key-binding for <b>{this.props.keybind.name}</b>.
+                <br />
                 {!!this.props.existing && (
                   <>
-                    Existing keybind is <b>{this.props.existing}.</b><br />
+                    Existing keybind is <b>{this.props.existing}.</b>
+                    <br />
                   </>
                 )}
-                Press <b>Esc</b> to {this.props.existing? "removing existing bind" : "cancel"}.
+                Press <b>Esc</b> to{' '}
+                {this.props.existing ? 'removing existing bind' : 'cancel'}.
               </Box>
             </Stack.Item>
             <Stack.Item>
-              {this.state.alt && "Alt-"}{this.state.ctrl && "Ctrl-"}{this.state.shift && "Shift-"}
-              {this.state.numpad && "Numpad"}{this.state.terminal? keyCodeToByond(this.state.terminal) : ""}
+              {this.state.alt && 'Alt-'}
+              {this.state.ctrl && 'Ctrl-'}
+              {this.state.shift && 'Shift-'}
+              {this.state.numpad && 'Numpad'}
+              {this.state.terminal ? keyCodeToByond(this.state.terminal) : ''}
             </Stack.Item>
           </Stack>
         </Section>

@@ -1,4 +1,3 @@
-
 /**
  * /datum/tgui_module stuff
  * Citadel in house
@@ -20,9 +19,9 @@
  * @license MIT
  */
 
-import { Component } from "inferno";
-import { ModuleProps, useBackend } from "../backend";
-import { directlyRouteComponent } from "../routes";
+import { Component } from 'inferno';
+import { ModuleProps, useBackend } from '../backend';
+import { directlyRouteComponent } from '../routes';
 
 export class Module<T extends ModuleProps> extends Component<T, {}> {
   getChildContext() {
@@ -46,8 +45,6 @@ export class Module<T extends ModuleProps> extends Component<T, {}> {
     let { id } = this.props;
     let ui_name = modules[id]['$tgui'];
     const Component = directlyRouteComponent(ui_name);
-    return (
-      <Component tgui_module={ui_name} />
-    );
+    return <Component tgui_module={ui_name} />;
   }
 }

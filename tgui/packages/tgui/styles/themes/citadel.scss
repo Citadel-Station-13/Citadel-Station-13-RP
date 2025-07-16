@@ -9,12 +9,12 @@
 @use '../colors.scss' with (
   $primary: #376ba8,
   $fg-map-keys: (),
-  $bg-map-keys: (),
+  $bg-map-keys: ()
 );
 @use '../base.scss' with (
   $color-bg: #00132c,
   $color-bg-grad-spread: 3%,
-  $border-radius: 2px,
+  $border-radius: 2px
 );
 
 .theme-citadel {
@@ -24,10 +24,10 @@
   // Layouts
   @include meta.load-css('../layouts/Layout.scss');
   @include meta.load-css('../layouts/Window.scss');
-  @include meta.load-css('../layouts/TitleBar.scss', $with: (
-    'background-color': #104264,
-    'shadow-color-core': #170800,
-  ));
+  @include meta.load-css(
+    '../layouts/TitleBar.scss',
+    $with: ('background-color': #104264, 'shadow-color-core': #170800)
+  );
 
   .Layout__content {
     background-image: url('../../assets/bg-citadel.svg');

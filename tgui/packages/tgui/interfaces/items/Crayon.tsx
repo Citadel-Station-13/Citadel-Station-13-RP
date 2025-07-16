@@ -2,14 +2,25 @@
  * @file
  * @license MIT
  */
-import { BooleanLike } from "common/react";
-import { useBackend, useLocalState } from "../../backend";
-import { Box, Button, Dimmer, Flex, Icon, LabeledList, Modal, NumberInput, Section, Stack } from "../../components";
-import { Sprite } from "../../components/Sprite";
-import { Window } from "../../layouts";
-import { ByondColorString, ColorPicker } from "../common/Color";
+import { BooleanLike } from 'common/react';
+import { useBackend, useLocalState } from '../../backend';
+import {
+  Box,
+  Button,
+  Dimmer,
+  Flex,
+  Icon,
+  LabeledList,
+  Modal,
+  NumberInput,
+  Section,
+  Stack,
+} from '../../components';
+import { Sprite } from '../../components/Sprite';
+import { Window } from '../../layouts';
+import { ByondColorString, ColorPicker } from '../common/Color';
 
-const CRAYON_SPRITESHEET_NAME = "crayon-graffiti";
+const CRAYON_SPRITESHEET_NAME = 'crayon-graffiti';
 
 interface CrayonDatapack {
   name: string;
@@ -38,19 +49,28 @@ const sizeKeyForCrayonDatapack = (pack: CrayonDatapack) => {
 
 export const Crayon = (props, context) => {
   const { data, act } = useBackend<CrayonUIData>(context);
-  const [pickingColor, setPickingColor] = useLocalState<boolean>(context, 'pickingColor', false);
+  const [pickingColor, setPickingColor] = useLocalState<boolean>(
+    context,
+    'pickingColor',
+    false,
+  );
 
   return (
     <Window width={500} height={800} title={data.canonicalName}>
       {pickingColor && (
         <Dimmer>
           <Modal>
-            <Section title="Color" backgroundColor="transparent" buttons={
-              <Button icon="times" onClick={() => setPickingColor(false)} />
-            }>
+            <Section
+              title="Color"
+              backgroundColor="transparent"
+              buttons={
+                <Button icon="times" onClick={() => setPickingColor(false)} />
+              }
+            >
               <ColorPicker
                 currentColor={data.graffitiPickedColor}
-                setColor={(what) => act('color', { color: what })} />
+                setColor={(what) => act('color', { color: what })}
+              />
             </Section>
           </Modal>
         </Dimmer>
@@ -62,30 +82,55 @@ export const Crayon = (props, context) => {
               <LabeledList>
                 {!!data.cappable && (
                   <LabeledList.Item label="Cap">
-                    <Button content={data.capped? "Capped" : "Uncapped"}
-                      selected={!data.capped} onClick={() => act('cap')} />
+                    <Button
+                      content={data.capped ? 'Capped' : 'Uncapped'}
+                      selected={!data.capped}
+                      onClick={() => act('cap')}
+                    />
                   </LabeledList.Item>
                 )}
                 {(data.anyColor || data.colorList) && (
                   <LabeledList.Item label="Color">
-                    {data.anyColor? (
+                    {data.anyColor ? (
                       <Stack>
                         <Stack.Item>
-                          <Box style={{ position: "relative", top: "5px", "margin-top": "-3px" }}
-                            backgroundColor={data.graffitiPickedColor} width="13.5px" height="13.5px" />
+                          <Box
+                            style={{
+                              position: 'relative',
+                              top: '5px',
+                              'margin-top': '-3px',
+                            }}
+                            backgroundColor={data.graffitiPickedColor}
+                            width="13.5px"
+                            height="13.5px"
+                          />
                         </Stack.Item>
                         <Stack.Item>
-                          <Button content="Change" onClick={() => setPickingColor(true)} />
+                          <Button
+                            content="Change"
+                            onClick={() => setPickingColor(true)}
+                          />
                         </Stack.Item>
                       </Stack>
                     ) : (
                       <Stack>
                         {data.colorList?.map((color) => (
                           <Stack.Item key={color}>
-                            <Button content={
-                              <Box style={{ position: "relative", top: "5px", "margin-top": "-3px" }}
-                                backgroundColor={data.graffitiPickedColor} width="13.5px" height="13.5px" />
-                            } onClick={() => act('color', { color: color })} />
+                            <Button
+                              content={
+                                <Box
+                                  style={{
+                                    position: 'relative',
+                                    top: '5px',
+                                    'margin-top': '-3px',
+                                  }}
+                                  backgroundColor={data.graffitiPickedColor}
+                                  width="13.5px"
+                                  height="13.5px"
+                                />
+                              }
+                              onClick={() => act('color', { color: color })}
+                            />
                           </Stack.Item>
                         ))}
                       </Stack>
@@ -98,16 +143,16 @@ export const Crayon = (props, context) => {
                       mr={1}
                       size={1.2}
                       name="arrow-up"
-                      rotation={
-                        Math.round(data.graffitiPickedAngle)
-                      } />
+                      rotation={Math.round(data.graffitiPickedAngle)}
+                    />
                     <NumberInput
                       value={data.graffitiPickedAngle}
                       unit="deg"
                       minValue={0}
                       maxValue={359}
                       step={1}
-                      onChange={(e, val) => act('angle', { angle: val })} />
+                      onChange={(e, val) => act('angle', { angle: val })}
+                    />
                   </>
                 </LabeledList.Item>
               </LabeledList>
@@ -119,16 +164,30 @@ export const Crayon = (props, context) => {
                 {data.datapacks.map((pack) => (
                   <Flex.Item key={pack.id}>
                     <Flex wrap>
-                      {pack.states.sort((a, b) => a.localeCompare(b)).map((state) => (
-                        <Flex.Item key={state}>
-                          <Button selected={data.graffitiPickedState === state && data.graffitiPickedIcon === pack.id}
-                            onClick={() => act('pick', { icon: pack.id, state: state })}
-                            color="transparent">
-                            <Sprite sheet="crayon-graffiti" sprite={state} prefix={pack.name}
-                              sizeKey={sizeKeyForCrayonDatapack(pack)} key={state} />
-                          </Button>
-                        </Flex.Item>
-                      ))}
+                      {pack.states
+                        .sort((a, b) => a.localeCompare(b))
+                        .map((state) => (
+                          <Flex.Item key={state}>
+                            <Button
+                              selected={
+                                data.graffitiPickedState === state &&
+                                data.graffitiPickedIcon === pack.id
+                              }
+                              onClick={() =>
+                                act('pick', { icon: pack.id, state: state })
+                              }
+                              color="transparent"
+                            >
+                              <Sprite
+                                sheet="crayon-graffiti"
+                                sprite={state}
+                                prefix={pack.name}
+                                sizeKey={sizeKeyForCrayonDatapack(pack)}
+                                key={state}
+                              />
+                            </Button>
+                          </Flex.Item>
+                        ))}
                     </Flex>
                   </Flex.Item>
                 ))}
@@ -139,5 +198,4 @@ export const Crayon = (props, context) => {
       </Window.Content>
     </Window>
   );
-
 };

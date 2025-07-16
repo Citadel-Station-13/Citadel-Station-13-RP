@@ -10,7 +10,7 @@ import { Box, BoxProps } from './Box';
 import { Button, ButtonProps } from './Button';
 import { ComponentProps } from './Component';
 
-interface CollapsibleProps extends ComponentProps{
+interface CollapsibleProps extends ComponentProps {
   readonly buttons?: InfernoNode;
   readonly color?: string;
   readonly title?: string | InfernoNode;
@@ -42,70 +42,62 @@ export class Collapsible extends Component<CollapsibleProps, CollapsibleState> {
   render() {
     const { props } = this;
     const { open } = this.state;
-    const {
-      children,
-      color = 'default',
-      title,
-      buttons,
-      ...rest
-    } = props;
-    return props.more? (
+    const { children, color = 'default', title, buttons, ...rest } = props;
+    return props.more ? (
       <Box {...props.boxProps}>
         <div className="Collapsible__alt">
-          <div className="Collapsible__alt-more">
-            {props.more}
-          </div>
+          <div className="Collapsible__alt-more">{props.more}</div>
           <div className="Collapsible__alt-head">
             <div className="Collapsible__toggle">
               <Button
-                captureKeys={props.captureKeys === undefined? false : props.captureKeys}
+                captureKeys={
+                  props.captureKeys === undefined ? false : props.captureKeys
+                }
                 color={color}
                 selected={!!props.more && open}
                 icon={open ? 'chevron-down' : 'chevron-right'}
                 onClick={() => this.setState({ open: !open })}
                 height="100%"
-                {...props.headerProps}>
+                {...props.headerProps}
+              >
                 {title}
               </Button>
             </div>
-            {buttons && (
-              <div className="Collapsible__buttons">
-                {buttons}
-              </div>
-            )}
+            {buttons && <div className="Collapsible__buttons">{buttons}</div>}
           </div>
         </div>
         {open && (
           <div className="Collapsible__content">
-            {!!props.contentFunction && props.contentFunction()}{children}
+            {!!props.contentFunction && props.contentFunction()}
+            {children}
           </div>
         )}
       </Box>
-    ): (
+    ) : (
       <Box {...props.boxProps}>
         <div className="Collapsible">
           <div className="Collapsible__head">
             <div className="Collapsible__toggle">
               <Button
                 fluid
-                captureKeys={props.captureKeys === undefined? false : props.captureKeys}
+                captureKeys={
+                  props.captureKeys === undefined ? false : props.captureKeys
+                }
                 color={color}
                 icon={open ? 'chevron-down' : 'chevron-right'}
                 onClick={() => this.setState({ open: !open })}
-                {...props.headerProps}>
+                {...props.headerProps}
+              >
                 {title}
               </Button>
             </div>
-            {buttons && (
-              <div className="Collapsible__buttons">
-                {buttons}
-              </div>
-            )}
+            {buttons && <div className="Collapsible__buttons">{buttons}</div>}
           </div>
         </div>
         {open && (
           <div className="Collapsible__content">
-            {!!props.contentFunction && props.contentFunction()}{children}
+            {!!props.contentFunction && props.contentFunction()}
+            {children}
           </div>
         )}
       </Box>

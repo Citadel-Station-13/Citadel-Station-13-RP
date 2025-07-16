@@ -12,11 +12,11 @@
  * @license MIT
  */
 
-import { InfernoNode } from "inferno";
-import { useLocalState, useModule } from "../../backend";
-import { Input, Section, Stack, Tabs } from "../../components";
-import { Modular } from "../../layouts/Modular";
-import { TGUIGuidebookSectionData } from "./TGUIGuidebook";
+import { InfernoNode } from 'inferno';
+import { useLocalState, useModule } from '../../backend';
+import { Input, Section, Stack, Tabs } from '../../components';
+import { Modular } from '../../layouts/Modular';
+import { TGUIGuidebookSectionData } from './TGUIGuidebook';
 
 export interface TGUIGuidebookReagentsData extends TGUIGuidebookSectionData {
   // id to entry
@@ -26,13 +26,13 @@ export interface TGUIGuidebookReagentsData extends TGUIGuidebookSectionData {
 }
 
 enum ReagentGuidebookFlags {
-  Unlisted = (1<<0),
-  Hidden = (1<<1),
+  Unlisted = 1 << 0,
+  Hidden = 1 << 1,
 }
 
 enum ReactionGuidebookFlags {
-  Unlisted = (1<<0),
-  Hidden = (1<<1),
+  Unlisted = 1 << 0,
+  Hidden = 1 << 1,
 }
 
 interface TGUIGuidebookReagent {
@@ -76,8 +76,16 @@ interface TGUIGuidebookReaction {
 
 export const TGUIGuidebookReagents = (props, context) => {
   let { act, data } = useModule<TGUIGuidebookReagentsData>(context);
-  const [activeTab, setActiveTab] = useLocalState<string | null>(context, 'activeReagentsTab', null);
-  const [searchText, setSearchText] = useLocalState<string | null>(context, 'activeReagentsSearch', null);
+  const [activeTab, setActiveTab] = useLocalState<string | null>(
+    context,
+    'activeReagentsTab',
+    null,
+  );
+  const [searchText, setSearchText] = useLocalState<string | null>(
+    context,
+    'activeReagentsSearch',
+    null,
+  );
 
   let rendered: InfernoNode | null = null;
   let categorizedReagents: Record<string, TGUIGuidebookReagent[]> = {};
@@ -85,9 +93,12 @@ export const TGUIGuidebookReagents = (props, context) => {
 
   switch (activeTab) {
     case 'reagents':
-      Object.values(data.reagents).filter(
-        (reagent) => !searchText || reagent.name.toLowerCase().includes(searchText)).forEach(
-        (reagent) => {
+      Object.values(data.reagents)
+        .filter(
+          (reagent) =>
+            !searchText || reagent.name.toLowerCase().includes(searchText),
+        )
+        .forEach((reagent) => {
           if (categorizedReagents[reagent.category] === undefined) {
             categorizedReagents[reagent.category] = [];
           }
@@ -95,28 +106,31 @@ export const TGUIGuidebookReagents = (props, context) => {
         });
       rendered = (
         <Stack vertical>
-          {Object.entries(categorizedReagents).sort(([cat1, a1], [cat2, a2]) => cat1.localeCompare(cat2)).map(
-            ([cat, catReagents]) => (
+          {Object.entries(categorizedReagents)
+            .sort(([cat1, a1], [cat2, a2]) => cat1.localeCompare(cat2))
+            .map(([cat, catReagents]) => (
               <Stack.Item key={cat}>
                 <Section title={cat}>
                   <Stack vertical>
-                    {catReagents.sort((r1, r2) => r1.name.localeCompare(r2.name)).map((reagent) => (
-                      <Stack.Item key={reagent.id}>
-                        {reagent.name}
-                      </Stack.Item>
-                    ))}
+                    {catReagents
+                      .sort((r1, r2) => r1.name.localeCompare(r2.name))
+                      .map((reagent) => (
+                        <Stack.Item key={reagent.id}>{reagent.name}</Stack.Item>
+                      ))}
                   </Stack>
                 </Section>
               </Stack.Item>
-            )
-          )}
+            ))}
         </Stack>
       );
       break;
     case 'reactions':
-      Object.values(data.reactions).filter(
-        (reaction) => !searchText || reaction.name.toLowerCase().includes(searchText)).forEach(
-        (reaction) => {
+      Object.values(data.reactions)
+        .filter(
+          (reaction) =>
+            !searchText || reaction.name.toLowerCase().includes(searchText),
+        )
+        .forEach((reaction) => {
           if (categorizedReactions[reaction.category] === undefined) {
             categorizedReactions[reaction.category] = [];
           }
@@ -124,21 +138,23 @@ export const TGUIGuidebookReagents = (props, context) => {
         });
       rendered = (
         <Stack vertical>
-          {Object.entries(categorizedReactions).sort(([cat1, a1], [cat2, a2]) => cat1.localeCompare(cat2)).map(
-            ([cat, catReactions]) => (
+          {Object.entries(categorizedReactions)
+            .sort(([cat1, a1], [cat2, a2]) => cat1.localeCompare(cat2))
+            .map(([cat, catReactions]) => (
               <Stack.Item key={cat}>
                 <Section title={cat}>
                   <Stack vertical>
-                    {catReactions.sort((r1, r2) => r1.name.localeCompare(r2.name)).map((reaction) => (
-                      <Stack.Item key={reaction.id}>
-                        {reaction.name}
-                      </Stack.Item>
-                    ))}
+                    {catReactions
+                      .sort((r1, r2) => r1.name.localeCompare(r2.name))
+                      .map((reaction) => (
+                        <Stack.Item key={reaction.id}>
+                          {reaction.name}
+                        </Stack.Item>
+                      ))}
                   </Stack>
                 </Section>
               </Stack.Item>
-            )
-          )}
+            ))}
         </Stack>
       );
       break;
@@ -151,18 +167,26 @@ export const TGUIGuidebookReagents = (props, context) => {
           <Stack>
             <Stack.Item grow={1}>
               <Tabs>
-                <Tabs.Tab selected={activeTab === "reagents"}
-                  onClick={() => setActiveTab("reagents")}>
+                <Tabs.Tab
+                  selected={activeTab === 'reagents'}
+                  onClick={() => setActiveTab('reagents')}
+                >
                   Reagents
                 </Tabs.Tab>
-                <Tabs.Tab selected={activeTab === "reactions"}
-                  onClick={() => setActiveTab("reactions")}>
+                <Tabs.Tab
+                  selected={activeTab === 'reactions'}
+                  onClick={() => setActiveTab('reactions')}
+                >
                   Reactions
                 </Tabs.Tab>
               </Tabs>
             </Stack.Item>
             <Stack.Item>
-              Search <Input width="100px" onInput={(e, val) => setSearchText(val.toLowerCase())} />
+              Search{' '}
+              <Input
+                width="100px"
+                onInput={(e, val) => setSearchText(val.toLowerCase())}
+              />
             </Stack.Item>
           </Stack>
         </Stack.Item>

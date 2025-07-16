@@ -2,10 +2,20 @@
  * @file
  * @license MIT
  */
-import { BooleanLike } from "common/react";
-import { InfernoNode } from "inferno";
-import { Button, Collapsible, ColorBox, Dropdown, Input, NumberInput, Section, Stack, Tooltip } from "../../components";
-import { ByondAtomColor, ByondColorString, ColorPicker } from "../common/Color";
+import { BooleanLike } from 'common/react';
+import { InfernoNode } from 'inferno';
+import {
+  Button,
+  Collapsible,
+  ColorBox,
+  Dropdown,
+  Input,
+  NumberInput,
+  Section,
+  Stack,
+  Tooltip,
+} from '../../components';
+import { ByondAtomColor, ByondColorString, ColorPicker } from '../common/Color';
 
 interface GamePreferenceEntryProps {
   readonly schema: GamePreferenceEntrySchema;
@@ -14,11 +24,11 @@ interface GamePreferenceEntryProps {
 }
 
 export type GamePreferenceEntrySchema =
-  PreferenceNumberEntrySchema |
-  PreferenceStringEntrySchema |
-  PreferenceToggleEntrySchema |
-  PreferenceDropdownEntrySchema |
-  PreferenceSimpleColorEntrySchema;
+  | PreferenceNumberEntrySchema
+  | PreferenceStringEntrySchema
+  | PreferenceToggleEntrySchema
+  | PreferenceDropdownEntrySchema
+  | PreferenceSimpleColorEntrySchema;
 
 interface PreferenceBaseEntrySchema {
   key: string;
@@ -31,7 +41,7 @@ interface PreferenceBaseEntrySchema {
 }
 
 interface PreferenceNumberEntrySchema extends PreferenceBaseEntrySchema {
-  type: "number";
+  type: 'number';
   minValue: number | null;
   maxValue: number | null;
   roundTo: number | null;
@@ -39,57 +49,50 @@ interface PreferenceNumberEntrySchema extends PreferenceBaseEntrySchema {
 }
 
 interface PreferenceStringEntrySchema extends PreferenceBaseEntrySchema {
-  type: "string";
+  type: 'string';
   minLength: number;
   maxLength: number;
   defaultValue: string;
 }
 
 interface PreferenceToggleEntrySchema extends PreferenceBaseEntrySchema {
-  type: "toggle";
+  type: 'toggle';
   enabledName: string;
   disabledName: string;
   defaultValue: BooleanLike;
 }
 
 interface PreferenceDropdownEntrySchema extends PreferenceBaseEntrySchema {
-  type: "dropdown";
+  type: 'dropdown';
   options: string[];
   defaultValue: string;
 }
 
 interface PreferenceSimpleColorEntrySchema extends PreferenceBaseEntrySchema {
-  type: "simpleColor";
+  type: 'simpleColor';
   defaultValue: ByondAtomColor;
 }
 
-export const GamePreferenceEntry = (props: GamePreferenceEntryProps, context) => {
+export const GamePreferenceEntry = (
+  props: GamePreferenceEntryProps,
+  context,
+) => {
   let innerContent: InfernoNode = null;
   switch (props.schema.type) {
     case 'number':
-      innerContent = (
-        <NumberEntry {...props as any} />
-      );
+      innerContent = <NumberEntry {...(props as any)} />;
       break;
     case 'string':
-      innerContent = (
-        <StringEntry {...props as any} />
-      );
+      innerContent = <StringEntry {...(props as any)} />;
       break;
     case 'toggle':
-      innerContent = (
-        <ToggleEntry {...props as any} />
-      );
+      innerContent = <ToggleEntry {...(props as any)} />;
       break;
     case 'dropdown':
-      innerContent = (
-        <DropdownEntry {...props as any} />
-      );
+      innerContent = <DropdownEntry {...(props as any)} />;
       break;
     case 'simpleColor':
-      innerContent = (
-        <SimpleColorEntry {...props as any} />
-      );
+      innerContent = <SimpleColorEntry {...(props as any)} />;
       break;
   }
   return (
@@ -106,75 +109,119 @@ export const GamePreferenceEntry = (props: GamePreferenceEntryProps, context) =>
           </Stack.Item>
         </Stack>
       </Stack.Item>
-      <Stack.Item grow>
-        {innerContent}
-      </Stack.Item>
+      <Stack.Item grow>{innerContent}</Stack.Item>
     </Stack>
   );
 };
 
-const NumberEntry = (props: {
-  readonly schema: PreferenceNumberEntrySchema;
-  readonly value: number;
-  readonly setValue: (val: number) => void;
-}, context) => {
+const NumberEntry = (
+  props: {
+    readonly schema: PreferenceNumberEntrySchema;
+    readonly value: number;
+    readonly setValue: (val: number) => void;
+  },
+  context,
+) => {
   return (
-    <NumberInput fluid value={props.value}
-      minValue={props.schema.minValue || -Infinity} maxValue={props.schema.maxValue || Infinity}
-      step={props.schema.roundTo || undefined} onChange={(e, val) => props.setValue(val)} />
+    <NumberInput
+      fluid
+      value={props.value}
+      minValue={props.schema.minValue || -Infinity}
+      maxValue={props.schema.maxValue || Infinity}
+      step={props.schema.roundTo || undefined}
+      onChange={(e, val) => props.setValue(val)}
+    />
   );
 };
 
-const StringEntry = (props: {
-  // eslint-disable-next-line react/no-unused-prop-types
-  readonly schema: PreferenceStringEntrySchema;
-  readonly value: string;
-  readonly setValue: (val: string) => void;
-}, context) => {
+const StringEntry = (
+  props: {
+    // eslint-disable-next-line react/no-unused-prop-types
+    readonly schema: PreferenceStringEntrySchema;
+    readonly value: string;
+    readonly setValue: (val: string) => void;
+  },
+  context,
+) => {
   return (
-    <Input fluid value={props.value} onInput={(e, val) => props.setValue(val)} />
+    <Input
+      fluid
+      value={props.value}
+      onInput={(e, val) => props.setValue(val)}
+    />
   );
 };
 
-const ToggleEntry = (props: {
-  // eslint-disable-next-line react/no-unused-prop-types
-  readonly schema: PreferenceToggleEntrySchema;
-  readonly value: BooleanLike;
-  readonly setValue: (val: BooleanLike) => void;
-}, context) => {
+const ToggleEntry = (
+  props: {
+    // eslint-disable-next-line react/no-unused-prop-types
+    readonly schema: PreferenceToggleEntrySchema;
+    readonly value: BooleanLike;
+    readonly setValue: (val: BooleanLike) => void;
+  },
+  context,
+) => {
   return (
-    <Button.Checkbox fluid color="transparent" content={props.value? props.schema.enabledName : props.schema.disabledName}
-      checked={props.value} onClick={() => props.setValue(!props.value)} />
+    <Button.Checkbox
+      fluid
+      color="transparent"
+      content={
+        props.value ? props.schema.enabledName : props.schema.disabledName
+      }
+      checked={props.value}
+      onClick={() => props.setValue(!props.value)}
+    />
   );
 };
 
-const DropdownEntry = (props: {
-  readonly schema: PreferenceDropdownEntrySchema;
-  readonly value: string;
-  readonly setValue: (val: string) => void;
-}, context) => {
+const DropdownEntry = (
+  props: {
+    readonly schema: PreferenceDropdownEntrySchema;
+    readonly value: string;
+    readonly setValue: (val: string) => void;
+  },
+  context,
+) => {
   return (
-    <Dropdown selected={props.value} options={props.schema.options}
-      onSelected={(v) => props.setValue(v)} width="100%" />
+    <Dropdown
+      selected={props.value}
+      options={props.schema.options}
+      onSelected={(v) => props.setValue(v)}
+      width="100%"
+    />
   );
 };
 
-const SimpleColorEntry = (props: {
-  // eslint-disable-next-line react/no-unused-prop-types
-  readonly schema: PreferenceSimpleColorEntrySchema;
-  readonly value: ByondColorString;
-  readonly setValue: (val: ByondColorString) => void;
-}, context) => {
+const SimpleColorEntry = (
+  props: {
+    // eslint-disable-next-line react/no-unused-prop-types
+    readonly schema: PreferenceSimpleColorEntrySchema;
+    readonly value: ByondColorString;
+    readonly setValue: (val: ByondColorString) => void;
+  },
+  context,
+) => {
   return (
-    <Collapsible color="transparent" title={props.value? (
-      <>
-        <ColorBox color={props.value} /> {props.value}
-      </>
-    ) : ""} contentFunction={() => (
-      <Section>
-        <ColorPicker currentColor={props.value || "#ffffff"} allowMatrix={false}
-          setColor={(what) => props.setValue(what as ByondColorString)} />
-      </Section>
-    )} />
+    <Collapsible
+      color="transparent"
+      title={
+        props.value ? (
+          <>
+            <ColorBox color={props.value} /> {props.value}
+          </>
+        ) : (
+          ''
+        )
+      }
+      contentFunction={() => (
+        <Section>
+          <ColorPicker
+            currentColor={props.value || '#ffffff'}
+            allowMatrix={false}
+            setColor={(what) => props.setValue(what as ByondColorString)}
+          />
+        </Section>
+      )}
+    />
   );
 };

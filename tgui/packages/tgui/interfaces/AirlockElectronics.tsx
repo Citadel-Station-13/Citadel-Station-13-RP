@@ -1,20 +1,17 @@
-import { useBackend } from "../backend";
-import { Window } from "../layouts";
-import { Access, AccessId, AccessListAuth } from "./common/Access";
+import { useBackend } from '../backend';
+import { Window } from '../layouts';
+import { Access, AccessId, AccessListAuth } from './common/Access';
 
 interface AirlockElectronicsData {
-  access: [Access],
-  req_access: [AccessId],
-  req_one_access: [AccessId],
+  access: [Access];
+  req_access: [AccessId];
+  req_one_access: [AccessId];
 }
 
 export const AirlockElectronics = (props, context) => {
   const { act, data } = useBackend<AirlockElectronicsData>(context);
   return (
-    <Window
-      title="Airlock Electronics"
-      width={450}
-      height={600}>
+    <Window title="Airlock Electronics" width={450} height={600}>
       <Window.Content>
         <AccessListAuth
           fill
@@ -27,7 +24,8 @@ export const AirlockElectronics = (props, context) => {
           }}
           wipe={(category) => {
             act('wipe', { category: category });
-          }} />
+          }}
+        />
       </Window.Content>
     </Window>
   );

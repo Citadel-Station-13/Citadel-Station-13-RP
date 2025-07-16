@@ -3,9 +3,13 @@
  * @license MIT
  */
 
-import { useBackend } from "../backend";
-import { Window } from "../layouts";
-import { CharacterLoadout, LoadoutContext, LoadoutData } from "./CharacterSetup/CharacterLoadout";
+import { useBackend } from '../backend';
+import { Window } from '../layouts';
+import {
+  CharacterLoadout,
+  LoadoutContext,
+  LoadoutData,
+} from './CharacterSetup/CharacterLoadout';
 
 interface CharacterLoadoutStandaloneContext {
   gearContext: LoadoutContext;
@@ -29,13 +33,18 @@ export const CharacterLoadoutStandalone = (props, context) => {
           gearAllowed={data.gearAllowed}
           fill
           customizeDescAct={(id, desc) => act('redesc', { id: id, desc: desc })}
-          customizeColorAct={(id, color) => act('recolor', { id: id, color: color })}
+          customizeColorAct={(id, color) =>
+            act('recolor', { id: id, color: color })
+          }
           customizeNameAct={(id, name) => act('rename', { id: id, name: name })}
           toggleAct={(id) => act('toggle', { id: id })}
           tweakAct={(id, tweakId) => act('tweak', { id: id, tweakId: tweakId })}
-          slotRenameAct={(index, name) => act('slotName', { index: index, name: name })}
+          slotRenameAct={(index, name) =>
+            act('slotName', { index: index, name: name })
+          }
           slotChangeAct={(index) => act('slot', { index: index })}
-          clearSlotAct={(index) => act('clear', { index: index })} />
+          clearSlotAct={(index) => act('clear', { index: index })}
+        />
       </Window.Content>
     </Window>
   );

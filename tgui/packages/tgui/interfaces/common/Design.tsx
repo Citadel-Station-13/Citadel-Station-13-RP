@@ -2,7 +2,7 @@
  * @file
  * @license MIT
  */
-import { IngredientsNeeded } from "./Ingredients";
+import { IngredientsNeeded } from './Ingredients';
 
 /**
  * The Design interface. This is a class to facilitate the definition of static functions.
@@ -26,4 +26,3 @@ export interface DesignItem {
   iconSheet?: string;
   iconPath?: string; // direct access if sheet not provided, if sheet provided we use the spritesheet
 }
-

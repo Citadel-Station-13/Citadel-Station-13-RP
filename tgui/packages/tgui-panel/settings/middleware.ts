@@ -1,4 +1,3 @@
-
 /**
  * @file
  * @copyright 2020 Aleksej Komarov

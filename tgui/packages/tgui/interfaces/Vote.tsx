@@ -1,5 +1,5 @@
-import { BooleanLike } from "../../common/react";
-import { useBackend } from "../backend";
+import { BooleanLike } from '../../common/react';
+import { useBackend } from '../backend';
 import {
   Box,
   Icon,
@@ -10,24 +10,24 @@ import {
   NumberInput,
   LabeledList,
   Collapsible,
-} from "../components";
-import { Window } from "../layouts";
+} from '../components';
+import { Window } from '../layouts';
 
 interface VoteContext {
-  admin : BooleanLike;
-  selected_choice : string;
-  vote_happening : BooleanLike;
-  choices : VoteChoice[];
+  admin: BooleanLike;
+  selected_choice: string;
+  vote_happening: BooleanLike;
+  choices: VoteChoice[];
   question: string;
-  time_remaining : number;
-  secret : BooleanLike;
-  ghost : BooleanLike;
-  ghost_weight : number;
+  time_remaining: number;
+  secret: BooleanLike;
+  ghost: BooleanLike;
+  ghost_weight: number;
 }
 
 interface VoteChoice {
-  name : string;
-  votes : number;
+  name: string;
+  votes: number;
 }
 
 export const Vote = (props, context) => {
@@ -35,7 +35,7 @@ export const Vote = (props, context) => {
   const { admin, selected_choice } = data;
 
   // Adds the voting type to title if there is an ongoing vote
-  let windowTitle = "Vote";
+  let windowTitle = 'Vote';
 
   return (
     <Window title={windowTitle} width={400} height={500}>
@@ -49,10 +49,10 @@ export const Vote = (props, context) => {
           )}
           <ChoicesPanel />
           <Button
-            color={"green"}
+            color={'green'}
             disabled={!selected_choice}
             onClick={() => {
-              act("unvote");
+              act('unvote');
             }}
           >
             Unvote
@@ -76,7 +76,7 @@ const StartVoteOptions = (props, context) => {
               <Stack.Item>
                 <Button
                   disabled={vote_happening}
-                  onClick={() => act("transfer")}
+                  onClick={() => act('transfer')}
                 >
                   Start Transfer Vote
                 </Button>
@@ -84,16 +84,13 @@ const StartVoteOptions = (props, context) => {
               <Stack.Item>
                 <Button
                   disabled={vote_happening}
-                  onClick={() => act("restart")}
+                  onClick={() => act('restart')}
                 >
                   Restart
                 </Button>
               </Stack.Item>
               <Stack.Item>
-                <Button
-                  disabled={vote_happening}
-                  onClick={() => act("custom")}
-                >
+                <Button disabled={vote_happening} onClick={() => act('custom')}>
                   Custom Vote
                 </Button>
               </Stack.Item>
@@ -122,16 +119,18 @@ const VoteConfig = (props, context) => {
                   value={ghost_weight}
                   minValue={-1}
                   maxValue={100}
-                  onChange={(e, value) => act('ghost_weight', { ghost_weight: value })}
+                  onChange={(e, value) =>
+                    act('ghost_weight', { ghost_weight: value })
+                  }
                 />
               </Stack.Item>
               <Stack.Item>
                 <Button
-                  color={secret ? "green" : "red"}
-                  onClick={() => act("hide")}
+                  color={secret ? 'green' : 'red'}
+                  onClick={() => act('hide')}
                   icon={secret ? 'lock' : 'unlock'}
                 >
-                  {secret ? 'Show' : 'Hide' } Votes
+                  {secret ? 'Show' : 'Hide'} Votes
                 </Button>
               </Stack.Item>
             </Stack>
@@ -144,7 +143,15 @@ const VoteConfig = (props, context) => {
 // Display choices
 const ChoicesPanel = (props, context) => {
   const { act, data } = useBackend<VoteContext>(context);
-  const { ghost_weight, ghost, admin, choices, selected_choice, question, secret } = data;
+  const {
+    ghost_weight,
+    ghost,
+    admin,
+    choices,
+    selected_choice,
+    question,
+    secret,
+  } = data;
 
   return (
     <Stack.Item grow>
@@ -158,12 +165,13 @@ const ChoicesPanel = (props, context) => {
                   textAlign="right"
                   buttons={
                     <Button
-                      color={
-                        selected_choice !== choice.name ? "green" : "grey"
+                      color={selected_choice !== choice.name ? 'green' : 'grey'}
+                      disabled={
+                        choice.name === selected_choice ||
+                        (ghost_weight === 0 && ghost)
                       }
-                      disabled={choice.name === selected_choice || (ghost_weight === 0 && ghost)}
                       onClick={() => {
-                        act("vote", { index: i + 1 });
+                        act('vote', { index: i + 1 });
                       }}
                     >
                       Vote
@@ -178,7 +186,7 @@ const ChoicesPanel = (props, context) => {
                       name="vote-yea"
                     />
                   )}
-                  {(!admin && secret) ? "?" : choice.votes} Votes
+                  {!admin && secret ? '?' : choice.votes} Votes
                 </LabeledList.Item>
                 <LabeledList.Divider />
               </Box>
@@ -203,7 +211,11 @@ const TimePanel = (props, context) => {
         <Stack justify="space-between">
           <Box fontSize={1.5}>Time Remaining: {time_remaining || 0}s</Box>
           {!!admin && (
-            <Button color="red" onClick={() => act("cancel")} disabled={!vote_happening}>
+            <Button
+              color="red"
+              onClick={() => act('cancel')}
+              disabled={!vote_happening}
+            >
               Cancel Vote
             </Button>
           )}

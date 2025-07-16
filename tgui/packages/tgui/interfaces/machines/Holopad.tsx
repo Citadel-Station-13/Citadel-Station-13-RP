@@ -2,15 +2,23 @@
  * @file
  * @license MIT
  */
-import { BooleanLike } from "common/react";
-import { useBackend, useLocalState } from "../../backend";
-import { Button, LabeledList, NoticeBox, Section, Stack, Table, Tabs } from "../../components";
-import { Window } from "../../layouts";
+import { BooleanLike } from 'common/react';
+import { useBackend, useLocalState } from '../../backend';
+import {
+  Button,
+  LabeledList,
+  NoticeBox,
+  Section,
+  Stack,
+  Table,
+  Tabs,
+} from '../../components';
+import { Window } from '../../layouts';
 
 enum HolopadCalling {
-  None = "none",
-  Source = "source",
-  Destination = "destination",
+  None = 'none',
+  Source = 'source',
+  Destination = 'destination',
 }
 
 // holopad_uid
@@ -48,18 +56,18 @@ type ReachableHolopad = {
   name: string;
   category?: string;
   sector?: string;
-}
+};
 
 type TargetHolopad = {
   name: string;
   sector?: string;
   id: HolopadId;
-}
+};
 
 // all calls have this
 type BaseCallContext = {
   // nothing right now
-}
+};
 
 // outgoing calls have this
 type OutgoingCallContext = BaseCallContext & {
@@ -69,45 +77,61 @@ type OutgoingCallContext = BaseCallContext & {
   ringing: BooleanLike; // are we connected or still ringing
   connected: [TargetHolopad]; // all pads connected
   destination: TargetHolopad;
-}
+};
 
 // incoming calls have this
 type IncomingCallsContext = BaseCallContext & {
   callers: [TargetHolopad]; // calling ids
   projecting: [HolopadId]; // who's projecting over here right now
-}
+};
 
 export const Holopad = (props, context) => {
   const { act, data } = useBackend<HolopadContext>(context);
   const [tab, setTab] = useLocalState<number>(context, 'tab', 1);
 
   return (
-    <Window
-      title="Holopad"
-      width={700}
-      height={500}>
+    <Window title="Holopad" width={700} height={500}>
       <Window.Content>
         <Section
           fill
           title={data.holopadName}
-          buttons={data.isAI? (
-            <Button
-              content={data.aiEnabled
-                ?(data.isAIProjecting? "Stop Projecting" : "Start Projecting")
-                : "AI Disabled"}
-              disabled={!data.aiEnabled}
-              icon={data.aiEnabled && (data.isAIProjecting? `stop` : `phone`)}
-              selected={data.aiEnabled && data.isAIProjecting}
-              onClick={() => act('ai_project', { mode: !data.isAIProjecting })} />
-          ) : (
-            !!data.aiRequestAllowed && <Button.Confirm
-              content={data.aiEnabled
-                ?(data.aiRequested? "AI Requested" : "Request AI")
-                : "AI Disabled"}
-              icon={data.aiRequested? `wifi` : `wifi`}
-              selected={data.aiRequested}
-              onClick={() => act('ai_request')} />
-          )}>
+          buttons={
+            data.isAI ? (
+              <Button
+                content={
+                  data.aiEnabled
+                    ? data.isAIProjecting
+                      ? 'Stop Projecting'
+                      : 'Start Projecting'
+                    : 'AI Disabled'
+                }
+                disabled={!data.aiEnabled}
+                icon={
+                  data.aiEnabled && (data.isAIProjecting ? `stop` : `phone`)
+                }
+                selected={data.aiEnabled && data.isAIProjecting}
+                onClick={() =>
+                  act('ai_project', { mode: !data.isAIProjecting })
+                }
+              />
+            ) : (
+              !!data.aiRequestAllowed && (
+                <Button.Confirm
+                  content={
+                    data.aiEnabled
+                      ? data.aiRequested
+                        ? 'AI Requested'
+                        : 'Request AI'
+                      : 'AI Disabled'
+                  }
+                  icon={data.aiRequested ? `wifi` : `wifi`}
+                  selected={data.aiRequested}
+                  onClick={() => act('ai_request')}
+                />
+              )
+            )
+          }
+        >
           <Stack vertical fill>
             <Stack.Item>
               <HolopadRinging />
@@ -117,34 +141,32 @@ export const Holopad = (props, context) => {
                 <Tabs.Tab
                   width="50%"
                   selected={tab === 1}
-                  onClick={() => setTab(1)}>
+                  onClick={() => setTab(1)}
+                >
                   Communications
                 </Tabs.Tab>
                 <Tabs.Tab
                   width="50%"
                   selected={tab === 2}
-                  onClick={() => setTab(2)}>
+                  onClick={() => setTab(2)}
+                >
                   Settings
                 </Tabs.Tab>
               </Tabs>
             </Stack.Item>
             <Stack.Item grow={1}>
-              {tab === 1 && (
-                !!data.canCall && (
-                  data.calling === HolopadCalling.None? (
-                    <HolopadDirectory />
-                  ) : (
-                    data.calling === HolopadCalling.Destination? (
-                      <HolopadCallIncoming />
-                    ) : (
-                      data.calling === HolopadCalling.Source && <HolopadCallOutgoing />
-                    )
+              {tab === 1 &&
+                !!data.canCall &&
+                (data.calling === HolopadCalling.None ? (
+                  <HolopadDirectory />
+                ) : data.calling === HolopadCalling.Destination ? (
+                  <HolopadCallIncoming />
+                ) : (
+                  data.calling === HolopadCalling.Source && (
+                    <HolopadCallOutgoing />
                   )
-                )
-              )}
-              {tab === 2 && (
-                <HolopadSettings />
-              )}
+                ))}
+              {tab === 2 && <HolopadSettings />}
             </Stack.Item>
           </Stack>
         </Section>
@@ -163,51 +185,63 @@ const HolopadCallOutgoing = (props, context) => {
         <Button.Confirm
           content="Disconnect"
           icon="stop"
-          onClick={() => act('disconnect')} />
-      }>
-      {
-        callContext.ringing? (
-          <NoticeBox>
-            Ringing...
-          </NoticeBox>
-        ) : (
-          <>
-            <Section title="Remote Presence">
-              {
-                <Button
-                  disabled={!callContext.remotingAllowed}
-                  content={callContext.remotingAllowed? (callContext.remoting? "Projecting" : "Not Projecting") : "Destination Disabled"}
-                  selected={callContext.remoting}
-                  onClick={() => act(callContext.remoting? 'stop_remote' : 'start_remote')} />
-              }
-            </Section>
-            <Section title="Connected Pads">
-              <LabeledList>
-                {callContext.connected.map((pad) => (
-                  <LabeledList.Item
-                    label={`${pad.name} - ${pad.sector}${pad.id === callContext.target? " (Host)" : ""}`}
-                    key={pad.id} />
-                ))}
-              </LabeledList>
-            </Section>
-          </>
-        )
+          onClick={() => act('disconnect')}
+        />
       }
+    >
+      {callContext.ringing ? (
+        <NoticeBox>Ringing...</NoticeBox>
+      ) : (
+        <>
+          <Section title="Remote Presence">
+            {
+              <Button
+                disabled={!callContext.remotingAllowed}
+                content={
+                  callContext.remotingAllowed
+                    ? callContext.remoting
+                      ? 'Projecting'
+                      : 'Not Projecting'
+                    : 'Destination Disabled'
+                }
+                selected={callContext.remoting}
+                onClick={() =>
+                  act(callContext.remoting ? 'stop_remote' : 'start_remote')
+                }
+              />
+            }
+          </Section>
+          <Section title="Connected Pads">
+            <LabeledList>
+              {callContext.connected.map((pad) => (
+                <LabeledList.Item
+                  label={`${pad.name} - ${pad.sector}${pad.id === callContext.target ? ' (Host)' : ''}`}
+                  key={pad.id}
+                />
+              ))}
+            </LabeledList>
+          </Section>
+        </>
+      )}
     </Section>
   );
 };
 
 const HolopadCallIncoming = (props, context) => {
   const { data, act } = useBackend<HolopadContext>(context);
-  const callContext: IncomingCallsContext = data.calldata as IncomingCallsContext;
+  const callContext: IncomingCallsContext =
+    data.calldata as IncomingCallsContext;
   return (
-    <Section title="Active Calls"
+    <Section
+      title="Active Calls"
       buttons={
         <Button.Confirm
           content="Disconnect All"
           icon="stop"
-          onClick={() => act('disconnect')} />
-      }>
+          onClick={() => act('disconnect')}
+        />
+      }
+    >
       <LabeledList>
         <>
           {callContext.callers.map((pad) => (
@@ -217,15 +251,22 @@ const HolopadCallIncoming = (props, context) => {
               buttons={
                 <>
                   <Button
-                    content={callContext.projecting.includes(pad.id)? "Projecting" : "Not Projecting"}
+                    content={
+                      callContext.projecting.includes(pad.id)
+                        ? 'Projecting'
+                        : 'Not Projecting'
+                    }
                     color="transparent"
-                    selected={callContext.projecting.includes(pad.id)} />
+                    selected={callContext.projecting.includes(pad.id)}
+                  />
                   <Button.Confirm
                     content="Disconnect"
                     icon="stop"
-                    onClick={() => act('disconnect', { id: pad.id })} />
+                    onClick={() => act('disconnect', { id: pad.id })}
+                  />
                 </>
-              } />
+              }
+            />
           ))}
         </>
       </LabeledList>
@@ -237,36 +278,47 @@ const HolopadRinging = (props, context) => {
   const { data, act } = useBackend<HolopadContext>(context);
   return (
     <>
-      {
-        data.ringing.map((pad) => (
-          <NoticeBox key={pad.id}>
-            <Stack>
-              <Stack.Item grow={1}>
-                Incoming call from {pad.name} - {pad.sector}
-              </Stack.Item>
-              <Stack.Item>
-                <Button.Confirm
-                  disabled={data.calling === HolopadCalling.Source}
-                  content={data.calling === HolopadCalling.Source? "Already In Call" : "Connect"}
-                  onClick={() => act('connect', { id: pad.id })} />
-              </Stack.Item>
-            </Stack>
-          </NoticeBox>
-        ))
-      }
+      {data.ringing.map((pad) => (
+        <NoticeBox key={pad.id}>
+          <Stack>
+            <Stack.Item grow={1}>
+              Incoming call from {pad.name} - {pad.sector}
+            </Stack.Item>
+            <Stack.Item>
+              <Button.Confirm
+                disabled={data.calling === HolopadCalling.Source}
+                content={
+                  data.calling === HolopadCalling.Source
+                    ? 'Already In Call'
+                    : 'Connect'
+                }
+                onClick={() => act('connect', { id: pad.id })}
+              />
+            </Stack.Item>
+          </Stack>
+        </NoticeBox>
+      ))}
     </>
   );
 };
 
-const MISC_SECTOR = "Other";
-const MISC_CATEGORY = "Misc";
+const MISC_SECTOR = 'Other';
+const MISC_CATEGORY = 'Misc';
 
 const HolopadDirectory = (props, context) => {
   const { data, act } = useBackend<HolopadContext>(context);
   const cats = {};
   const sectors = {};
-  const [sector, setSector] = useLocalState<string | null>(context, 'sector', null);
-  const [category, setCategory] = useLocalState<string | null>(context, 'category', null);
+  const [sector, setSector] = useLocalState<string | null>(
+    context,
+    'sector',
+    null,
+  );
+  const [category, setCategory] = useLocalState<string | null>(
+    context,
+    'category',
+    null,
+  );
   data.connectivity.forEach((pad: ReachableHolopad) => {
     let effectiveSector = pad.sector || MISC_SECTOR;
     sectors[effectiveSector] = 1;
@@ -279,54 +331,62 @@ const HolopadDirectory = (props, context) => {
       <Stack.Item width="20%">
         <Section scrollable fill>
           <Tabs vertical>
-            {
-              Object.keys(sectors).sort((a, b) => (a.localeCompare(b))).map((key: string) => (
+            {Object.keys(sectors)
+              .sort((a, b) => a.localeCompare(b))
+              .map((key: string) => (
                 <Tabs.Tab
                   selected={sector === key}
                   key={key}
-                  onClick={() => setSector(key)}>
+                  onClick={() => setSector(key)}
+                >
                   {key}
                 </Tabs.Tab>
-              ))
-            }
+              ))}
           </Tabs>
         </Section>
       </Stack.Item>
       <Stack.Item width="30%">
         <Section scrollable fill>
           <Tabs vertical>
-            {Object.keys(cats).sort((a, b) => (a.localeCompare(b))).map((cat) => (
-              <Tabs.Tab
-                key={cat}
-                selected={cat === category}
-                onClick={() => setCategory(cat)}>
-                {cat}
-              </Tabs.Tab>
-            ))}
+            {Object.keys(cats)
+              .sort((a, b) => a.localeCompare(b))
+              .map((cat) => (
+                <Tabs.Tab
+                  key={cat}
+                  selected={cat === category}
+                  onClick={() => setCategory(cat)}
+                >
+                  {cat}
+                </Tabs.Tab>
+              ))}
           </Tabs>
         </Section>
       </Stack.Item>
       <Stack.Item width="50%">
         <Section fill scrollable mr={1} mt={0.5} mb={0.5} ml={1}>
           <Stack vertical>
-            {(data.connectivity.filter((pad) => (
-              pad.category? (pad.category === category) : (category === MISC_CATEGORY)
-              && pad.sector? (pad.sector === sector) : (sector === MISC_SECTOR)
-            )).map((pad) => (
-              <Stack.Item key={pad.id}>
-                <Stack fill>
-                  <Stack.Item grow={1}>
-                    {pad.name}
-                  </Stack.Item>
-                  <Stack.Item>
-                    <Button.Confirm
-                      content="Call"
-                      color="transparent"
-                      onClick={() => act('call', { id: pad.id })} />
-                  </Stack.Item>
-                </Stack>
-              </Stack.Item>
-            ))) || undefined}
+            {data.connectivity
+              .filter((pad) =>
+                pad.category
+                  ? pad.category === category
+                  : category === MISC_CATEGORY && pad.sector
+                    ? pad.sector === sector
+                    : sector === MISC_SECTOR,
+              )
+              .map((pad) => (
+                <Stack.Item key={pad.id}>
+                  <Stack fill>
+                    <Stack.Item grow={1}>{pad.name}</Stack.Item>
+                    <Stack.Item>
+                      <Button.Confirm
+                        content="Call"
+                        color="transparent"
+                        onClick={() => act('call', { id: pad.id })}
+                      />
+                    </Stack.Item>
+                  </Stack>
+                </Stack.Item>
+              )) || undefined}
           </Stack>
         </Section>
       </Stack.Item>
@@ -340,63 +400,65 @@ const HolopadSettings = (props, context) => {
     <Section m={1}>
       <Table>
         <Table.Row>
-          <Table.Cell>
-            Ringer
-          </Table.Cell>
+          <Table.Cell>Ringer</Table.Cell>
           <Table.Cell width="25%">
-            <Button fluid
-              content={data.ringerEnabled? "Enabled" : "Disabled"}
+            <Button
+              fluid
+              content={data.ringerEnabled ? 'Enabled' : 'Disabled'}
               selected={data.ringerEnabled}
               disabled={!data.ringerToggle}
-              onClick={() => act('toggle_ringer')} />
+              onClick={() => act('toggle_ringer')}
+            />
           </Table.Cell>
         </Table.Row>
         <Table.Row>
+          <Table.Cell>Visibility</Table.Cell>
           <Table.Cell>
-            Visibility
-          </Table.Cell>
-          <Table.Cell>
-            <Button fluid
-              content={data.callVisibility? "Visible" : "Invisible"}
+            <Button
+              fluid
+              content={data.callVisibility ? 'Visible' : 'Invisible'}
               selected={data.callVisibility}
               disabled={!data.toggleVisibility}
-              onClick={() => act('toggle_visibility')} />
+              onClick={() => act('toggle_visibility')}
+            />
           </Table.Cell>
         </Table.Row>
         <Table.Row>
+          <Table.Cell>Anonymous Sector Calls</Table.Cell>
           <Table.Cell>
-            Anonymous Sector Calls
-          </Table.Cell>
-          <Table.Cell>
-            <Button fluid
-              content={data.sectorAnonymous? "Mask Identity" : "Broadcast Identity"}
+            <Button
+              fluid
+              content={
+                data.sectorAnonymous ? 'Mask Identity' : 'Broadcast Identity'
+              }
               selected={data.sectorAnonymous}
               disabled={!data.sectorAnonymousToggle}
-              onClick={() => act('toggle_anonymous_sector')} />
+              onClick={() => act('toggle_anonymous_sector')}
+            />
           </Table.Cell>
         </Table.Row>
         <Table.Row>
+          <Table.Cell>Auto Pickup</Table.Cell>
           <Table.Cell>
-            Auto Pickup
-          </Table.Cell>
-          <Table.Cell>
-            <Button fluid
-              content={data.autoPickup? "Enabled" : "Disabled"}
+            <Button
+              fluid
+              content={data.autoPickup ? 'Enabled' : 'Disabled'}
               selected={data.autoPickup}
               disabled={!data.autoToggle}
-              onClick={() => act('toggle_auto')} />
+              onClick={() => act('toggle_auto')}
+            />
           </Table.Cell>
         </Table.Row>
         <Table.Row>
+          <Table.Cell>Inbound Video</Table.Cell>
           <Table.Cell>
-            Inbound Video
-          </Table.Cell>
-          <Table.Cell>
-            <Button fluid
-              content={data.videoEnabled? "Enabled" : "Disabled"}
+            <Button
+              fluid
+              content={data.videoEnabled ? 'Enabled' : 'Disabled'}
               selected={data.videoEnabled}
               disabled={!data.videoToggle}
-              onClick={() => act('toggle_video')} />
+              onClick={() => act('toggle_video')}
+            />
           </Table.Cell>
         </Table.Row>
       </Table>

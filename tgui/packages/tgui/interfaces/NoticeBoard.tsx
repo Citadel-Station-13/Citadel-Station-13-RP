@@ -1,8 +1,8 @@
-import { BooleanLike } from "common/react";
+import { BooleanLike } from 'common/react';
 
-import { useBackend } from "../backend";
-import { Box, Button, Section, Stack } from "../components";
-import { Window } from "../layouts";
+import { useBackend } from '../backend';
+import { Box, Button, Section, Stack } from '../components';
+import { Window } from '../layouts';
 
 type Data = {
   allowed: BooleanLike;

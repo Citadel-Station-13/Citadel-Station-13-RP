@@ -3,13 +3,13 @@
  * @license MIT
  */
 
-import { BooleanLike } from "common/react";
-import { Section } from "../../components";
+import { BooleanLike } from 'common/react';
+import { Section } from '../../components';
 
 type IngredientRef = string;
 type IngredientPath = string;
 type MaterialID = string;
-type ReagentID = string
+type ReagentID = string;
 
 export interface IngredientsAvailable {
   materials: Record<MaterialID, number>; // id to sheets
@@ -33,7 +33,7 @@ export type IngredientsNeeded = IngredientNeed[];
 
 export type IngredientsSelected = any[];
 
-export type IngredientType = "material" | "reagent" | "item" | "stack";
+export type IngredientType = 'material' | 'reagent' | 'item' | 'stack';
 
 export interface IngredientNeed {
   type: IngredientType;
@@ -53,11 +53,7 @@ export const IngredientsDisplay = (props: IngredientsDisplayProps, context) => {
   // Just here to make ESlint not complain about unused variables
   let { ingredients, lazy, vertical } = props;
   // End
-  return (
-    <Section title={props.title || "Ingredients"}>
-      Unimplemented
-    </Section>
-  );
+  return <Section title={props.title || 'Ingredients'}>Unimplemented</Section>;
 };
 
 interface IngredientsProps {
@@ -73,9 +69,5 @@ export const Ingredients = (props: IngredientsProps, context) => {
   // Just here to make ESlint not complain about unused variables
   let { need, available, selection, selected, vertical, select } = props;
   // End
-  return (
-    <Section>
-      Unimplemented
-    </Section>
-  );
+  return <Section>Unimplemented</Section>;
 };

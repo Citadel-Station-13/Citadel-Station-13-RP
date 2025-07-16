@@ -2,10 +2,10 @@
  * @file
  * @license MIT
  */
-import { BooleanLike } from "common/react";
-import { useBackend } from "../../backend";
-import { Button, LabeledList, NoticeBox, Section } from "../../components";
-import { Window } from "../../layouts";
+import { BooleanLike } from 'common/react';
+import { useBackend } from '../../backend';
+import { Button, LabeledList, NoticeBox, Section } from '../../components';
+import { Window } from '../../layouts';
 
 interface NaniteChamberControlData {
   hasChamber: BooleanLike;
@@ -39,10 +39,7 @@ export const NaniteChamberControl = (props, context) => {
   const { act, data } = useBackend<NaniteChamberControlData>(context);
 
   return (
-    <Window
-      title="Nanite Chamber Control"
-      width={380}
-      height={570}>
+    <Window title="Nanite Chamber Control" width={380} height={570}>
       <Window.Content>
         <NaniteChamberControlContent />
       </Window.Content>
@@ -53,43 +50,36 @@ export const NaniteChamberControl = (props, context) => {
 const NaniteChamberControlContent = (props, context) => {
   const { act, data } = useBackend<NaniteChamberControlData>(context);
 
-  return data.hasChamber? (
+  return data.hasChamber ? (
     <Section
       title={`Chamber`}
       fill
       buttons={
         <Button
           disabled={data.open}
-          icon={data.locked? "lock" : "lock-open"}
-          content={data.locked? "Locked" : "Unlocked"}
-          color={data.locked? "bad" : "default"}
-          onClick={() => act('lock')} />
-      }>
-      {
-        data.open? (
-          <NoticeBox>
-            Chamber open
-          </NoticeBox>
-        ) : (
-          data.operating? (
-            <NoticeBox textAlign="center" fontSize="1.75em">
-              Operating...
-            </NoticeBox>
-          ) : (
-            <NaniteChamberControlOccupant />
-          )
-        )
+          icon={data.locked ? 'lock' : 'lock-open'}
+          content={data.locked ? 'Locked' : 'Unlocked'}
+          color={data.locked ? 'bad' : 'default'}
+          onClick={() => act('lock')}
+        />
       }
+    >
+      {data.open ? (
+        <NoticeBox>Chamber open</NoticeBox>
+      ) : data.operating ? (
+        <NoticeBox textAlign="center" fontSize="1.75em">
+          Operating...
+        </NoticeBox>
+      ) : (
+        <NaniteChamberControlOccupant />
+      )}
     </Section>
   ) : (
     <Section>
-      <NoticeBox warning>
-        Chamber disconnected.
-      </NoticeBox>
+      <NoticeBox warning>Chamber disconnected.</NoticeBox>
     </Section>
   );
 };
-
 
 const NaniteChamberControlOccupant = (props, context) => {
   const { act, data } = useBackend<NaniteChamberControlData>(context);
@@ -107,7 +97,8 @@ const NaniteChamberControlOccupant = (props, context) => {
                   fluid
                   icon="tint"
                   content="Regenerate Swarm Volume"
-                  onClick={() => act('protean_refresh')} />
+                  onClick={() => act('protean_refresh')}
+                />
               </Section>
             )}
           </>
@@ -124,34 +115,33 @@ const NaniteChamberControlOccupant = (props, context) => {
           <LabeledList.Item label="Swarm Intelligence">
             {data.protean.name}
           </LabeledList.Item>
-          {
-            data.protean.organs.missing.map((n) => (
-              <LabeledList.Item label={n} color="bad" key={n}>
-                Missing
-              </LabeledList.Item>
-            ))
-          }
-          {
-            data.protean.organs.intact.map((n) => (
-              <LabeledList.Item label={n} color="good" key={n}>
-                Present
-              </LabeledList.Item>
-            ))
-          }
+          {data.protean.organs.missing.map((n) => (
+            <LabeledList.Item label={n} color="bad" key={n}>
+              Missing
+            </LabeledList.Item>
+          ))}
+          {data.protean.organs.intact.map((n) => (
+            <LabeledList.Item label={n} color="good" key={n}>
+              Present
+            </LabeledList.Item>
+          ))}
         </LabeledList>
         <Section title="Materials Required">
           <LabeledList>
-            {
-              Object.entries(data.protean.organs.cost).map(([k, v]) => (
-                <LabeledList.Item label={k} key={k}>
-                  {data.protean.materials[k] || 0} / {v}
-                </LabeledList.Item>
-              ))
-            }
+            {Object.entries(data.protean.organs.cost).map(([k, v]) => (
+              <LabeledList.Item label={k} key={k}>
+                {data.protean.materials[k] || 0} / {v}
+              </LabeledList.Item>
+            ))}
           </LabeledList>
         </Section>
-        <Button icon="wrench" fluid fontSize="2em" content="Rebuild"
-          onClick={() => act('protean_reconstruct')} />
+        <Button
+          icon="wrench"
+          fluid
+          fontSize="2em"
+          content="Rebuild"
+          onClick={() => act('protean_reconstruct')}
+        />
       </Section>
     );
   }
@@ -159,9 +149,7 @@ const NaniteChamberControlOccupant = (props, context) => {
   // nothing
   return (
     <Section title="Occupant">
-      <NoticeBox>
-        No occupant detected.
-      </NoticeBox>
+      <NoticeBox>No occupant detected.</NoticeBox>
     </Section>
   );
 };

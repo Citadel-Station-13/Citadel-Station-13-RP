@@ -3,8 +3,8 @@
  * @license MIT
  */
 
-import { BooleanLike, classes } from "common/react";
-import { Box, BoxProps } from "./Box";
+import { BooleanLike, classes } from 'common/react';
+import { Box, BoxProps } from './Box';
 
 interface SpriteProps extends BoxProps {
   readonly sheet: string;
@@ -16,13 +16,15 @@ interface SpriteProps extends BoxProps {
 
 export const Sprite = (props: SpriteProps) => {
   return (
-    <Box {...props}
+    <Box
+      {...props}
       className={classes([
-        "Sprite",
+        'Sprite',
         `${props.sheet}${props.sizeKey}`,
-        props.prefix? `${props.prefix}-${props.sprite}` : props.sprite,
+        props.prefix ? `${props.prefix}-${props.sprite}` : props.sprite,
         !!props.fill && 'Sprite--fill',
-      ])} />
+      ])}
+    />
   );
 };
 

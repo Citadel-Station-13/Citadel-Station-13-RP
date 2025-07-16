@@ -82,7 +82,6 @@ export const createStore = <State, ActionType extends Action = AnyAction>(
   };
 };
 
-
 /**
  * Creates a store enhancer which applies middleware to all dispatched
  * actions.
@@ -121,7 +120,6 @@ export const applyMiddleware = (
   };
 };
 
-
 /**
  * Combines reducers by running them in their own object namespaces as
  * defined in reducersObj paramter.
@@ -153,7 +151,6 @@ export const combineReducers = (
     return hasChanged ? nextState : prevState;
   };
 };
-
 
 /**
  * A utility function to create an action creator for the given action
@@ -198,11 +195,10 @@ export const createAction = <TAction extends string>(
   return actionCreator;
 };
 
-
 // Implementation specific
 // --------------------------------------------------------
 
-export const useDispatch = context => {
+export const useDispatch = (context) => {
   return context.store.dispatch;
 };
 

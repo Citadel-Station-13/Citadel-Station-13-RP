@@ -1,6 +1,15 @@
 import { useBackend } from '../backend';
-import { Box, Button, LabeledList, ProgressBar, Section, Flex, AnimatedNumber, Chart, ColorBox }
-  from '../components';
+import {
+  Box,
+  Button,
+  LabeledList,
+  ProgressBar,
+  Section,
+  Flex,
+  AnimatedNumber,
+  Chart,
+  ColorBox,
+} from '../components';
 import { Window } from '../layouts';
 import { round } from 'common/math';
 import { toTitleCase } from 'common/string';
@@ -36,18 +45,24 @@ const SupermatterMonitorList = (props, context) => {
   return (
     <Section
       title="Supermatters Detected"
-      buttons={<Button content="Refresh" icon="sync"
-        onClick={() => act('refresh')} />}>
+      buttons={
+        <Button content="Refresh" icon="sync" onClick={() => act('refresh')} />
+      }
+    >
       <Flex wrap="wrap">
         {supermatters.map((sm, i) => (
           <Flex.Item basis="49%" grow={i % 2} key={i}>
             <Section title={sm.area_name + ' (#' + sm.uid + ')'}>
               <LabeledList>
-                <LabeledList.Item label="Integrity">{sm.integrity} %
+                <LabeledList.Item label="Integrity">
+                  {sm.integrity} %
                 </LabeledList.Item>
                 <LabeledList.Item label="Options">
-                  <Button icon="eye" content="View Details"
-                    onClick={() => act('set', { set: sm.uid })} />
+                  <Button
+                    icon="eye"
+                    content="View Details"
+                    onClick={() => act('set', { set: sm.uid })}
+                  />
                 </LabeledList.Item>
               </LabeledList>
             </Section>
@@ -76,29 +91,49 @@ const SupermatterMonitorActive = (props, context) => {
     SM_gas_N2O,
   } = data;
 
-  const IntegrityData = SM_History.integrity_history.map((value, i) => [i, value]);
+  const IntegrityData = SM_History.integrity_history.map((value, i) => [
+    i,
+    value,
+  ]);
   const EERData = SM_History.EER_history.map((value, i) => [i, value]);
-  const TemperatureData = SM_History.temperature_history.map((value, i) => [i, value]);
-  const PressureData = SM_History.pressure_history.map((value, i) => [i, value]);
+  const TemperatureData = SM_History.temperature_history.map((value, i) => [
+    i,
+    value,
+  ]);
+  const PressureData = SM_History.pressure_history.map((value, i) => [
+    i,
+    value,
+  ]);
   const EPRData = SM_History.EPR_history.map((value, i) => [i, value]);
 
-  const EERSingleton = SM_History.EER_history[SM_History.EER_history.length - 1] || 0;
-  const TemperatureSingleton = SM_History.temperature_history[SM_History.temperature_history.length - 1] || 0;
-  const PressureSingleton = SM_History.pressure_history[SM_History.pressure_history.length - 1] || 0;
-  const EPRSingleton = SM_History.EPR_history[SM_History.EPR_history.length - 1] || 0;
+  const EERSingleton =
+    SM_History.EER_history[SM_History.EER_history.length - 1] || 0;
+  const TemperatureSingleton =
+    SM_History.temperature_history[SM_History.temperature_history.length - 1] ||
+    0;
+  const PressureSingleton =
+    SM_History.pressure_history[SM_History.pressure_history.length - 1] || 0;
+  const EPRSingleton =
+    SM_History.EPR_history[SM_History.EPR_history.length - 1] || 0;
 
   const IntegrityMax = 100;
-  const EERMax = Math.max(EERSingleton)+200;
-  const TemperatureMax = Math.max(TemperatureSingleton)+200;
-  const PressureMax = Math.max(PressureSingleton)+200;
-  const EPRMax = Math.max(EPRSingleton)+2;
+  const EERMax = Math.max(EERSingleton) + 200;
+  const TemperatureMax = Math.max(TemperatureSingleton) + 200;
+  const PressureMax = Math.max(PressureSingleton) + 200;
+  const EPRMax = Math.max(EPRSingleton) + 2;
 
   return (
     <Fragment>
       <Section
         title={toTitleCase(SM_area)}
-        buttons={<Button icon="arrow-left" content="Return to Menu"
-          onClick={() => act('clear')} />} />
+        buttons={
+          <Button
+            icon="arrow-left"
+            content="Return to Menu"
+            onClick={() => act('clear')}
+          />
+        }
+      />
       <Flex mx={-0.5} mb={1}>
         <Flex.Item mx={0.5} width="125px">
           <Section>
@@ -129,35 +164,40 @@ const SupermatterMonitorActive = (props, context) => {
               rangeX={[0, IntegrityData.length - 1]}
               rangeY={[0, IntegrityMax]}
               strokeColor="rgba(0, 215, 255, 0.8)"
-              fillColor="rgba(0, 215, 255, 0)" />
+              fillColor="rgba(0, 215, 255, 0)"
+            />
             <Chart.Line
               fillPositionedParent
               data={EERData}
               rangeX={[0, EERData.length - 1]}
               rangeY={[0, EERMax]}
               strokeColor="rgba(255, 66, 0, 0.8)"
-              fillColor="rgba(255, 66, 0, 0)" />
+              fillColor="rgba(255, 66, 0, 0)"
+            />
             <Chart.Line
               fillPositionedParent
               data={TemperatureData}
               rangeX={[0, TemperatureData.length - 1]}
               rangeY={[0, TemperatureMax]}
               strokeColor="rgba(231, 0, 255, 0.8)"
-              fillColor="rgba(231, 0, 255, 0)" />
+              fillColor="rgba(231, 0, 255, 0)"
+            />
             <Chart.Line
               fillPositionedParent
               data={PressureData}
               rangeX={[0, PressureData.length - 1]}
               rangeY={[0, PressureMax]}
               strokeColor="rgba(145, 206, 148, 0.8)"
-              fillColor="rgba(145, 206, 148, 0)" />
+              fillColor="rgba(145, 206, 148, 0)"
+            />
             <Chart.Line
               fillPositionedParent
               data={EPRData}
               rangeX={[0, EPRData.length - 1]}
               rangeY={[0, EPRMax]}
               strokeColor="rgba(143, 105, 185, 0.8)"
-              fillColor="rgba(143, 105, 185, 0)" />
+              fillColor="rgba(143, 105, 185, 0)"
+            />
           </Section>
         </Flex.Item>
       </Flex>
@@ -176,31 +216,52 @@ const SupermatterMonitorActive = (props, context) => {
           />
         </LabeledList.Item>
         <LabeledList.Item label="Relative EER">
-          <Box color={(SM_power > 300 && 'bad')
-            || (SM_power > 150 && 'average') || 'good'}>
-            <AnimatedNumber format={(val) => round(val, 2) + ' MeV/cm³'}
-              value={SM_power} />
+          <Box
+            color={
+              (SM_power > 300 && 'bad') ||
+              (SM_power > 150 && 'average') ||
+              'good'
+            }
+          >
+            <AnimatedNumber
+              format={(val) => round(val, 2) + ' MeV/cm³'}
+              value={SM_power}
+            />
           </Box>
         </LabeledList.Item>
         <LabeledList.Item label="Temperature">
-          <Box color={(SM_ambienttemp > 5000 && 'bad')
-            || (SM_ambienttemp > 4000 && 'average') || 'good'}>
-            <AnimatedNumber format={(val) => round(val, 2) + ' K'}
-              value={SM_ambienttemp} />
+          <Box
+            color={
+              (SM_ambienttemp > 5000 && 'bad') ||
+              (SM_ambienttemp > 4000 && 'average') ||
+              'good'
+            }
+          >
+            <AnimatedNumber
+              format={(val) => round(val, 2) + ' K'}
+              value={SM_ambienttemp}
+            />
           </Box>
         </LabeledList.Item>
         <LabeledList.Item label="Pressure">
-          <Box color={(SM_ambientpressure > 10000 && 'bad')
-            || (SM_ambientpressure > 5000 && 'average') || 'good'}>
-            <AnimatedNumber format={(val) => round(val, 2) + ' kPa'}
-              value={SM_ambientpressure} />
+          <Box
+            color={
+              (SM_ambientpressure > 10000 && 'bad') ||
+              (SM_ambientpressure > 5000 && 'average') ||
+              'good'
+            }
+          >
+            <AnimatedNumber
+              format={(val) => round(val, 2) + ' kPa'}
+              value={SM_ambientpressure}
+            />
           </Box>
         </LabeledList.Item>
         <LabeledList.Item label="Chamber EPR">
-          <Box color={(SM_EPR > 4 && 'bad')
-            ||(SM_EPR > 1 && 'average') || 'good'}>
-            <AnimatedNumber format={(val) => round(val, 2)}
-              value={SM_EPR} />
+          <Box
+            color={(SM_EPR > 4 && 'bad') || (SM_EPR > 1 && 'average') || 'good'}
+          >
+            <AnimatedNumber format={(val) => round(val, 2)} value={SM_EPR} />
           </Box>
         </LabeledList.Item>
         <LabeledList.Item label="Gas Composition">

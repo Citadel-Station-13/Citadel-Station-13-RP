@@ -21,12 +21,18 @@ import { importChatSettings } from './settingsImExport';
 import { useLocalState } from 'tgui/backend';
 
 export const SettingsGeneral = (props, context) => {
-  const { theme, fontFamily, fontSize, lineHeight } =
-    useSelector(context, selectSettings);
+  const { theme, fontFamily, fontSize, lineHeight } = useSelector(
+    context,
+    selectSettings,
+  );
   const dispatch = useDispatch(context);
-  const [freeFont, setFreeFont] = useLocalState(context, "freeFont", false);
+  const [freeFont, setFreeFont] = useLocalState(context, 'freeFont', false);
 
-  const [editingPanes, setEditingPanes] = useLocalState(context, "editingPanes", false);
+  const [editingPanes, setEditingPanes] = useLocalState(
+    context,
+    'editingPanes',
+    false,
+  );
 
   return (
     <Section>

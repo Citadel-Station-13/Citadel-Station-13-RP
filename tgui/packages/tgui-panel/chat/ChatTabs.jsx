@@ -41,12 +41,15 @@ export const ChatTabs = (props, context) => {
                 dispatch(
                   changeChatPage({
                     pageId: page.id,
-                  })
+                  }),
                 )
               }
-              rightSlot={!page.hideUnreadCount && page.unreadCount > 0 && (
-                <UnreadCountWidget value={page.unreadCount} />
-              )}
+              rightSlot={
+                !page.hideUnreadCount &&
+                page.unreadCount > 0 && (
+                  <UnreadCountWidget value={page.unreadCount} />
+                )
+              }
             >
               {page.name}
             </Tabs.Tab>

@@ -33,8 +33,7 @@ type StorageBackend = {
 const testGeneric = (testFn: () => boolean) => () => {
   try {
     return Boolean(testFn());
-  }
-  catch {
+  } catch {
     return false;
   }
 };
@@ -166,7 +165,6 @@ class IndexedDbBackend implements StorageBackend {
     store.clear();
   }
 }
-
 
 /**
  * Web Storage Proxy object, which selects the best backend available

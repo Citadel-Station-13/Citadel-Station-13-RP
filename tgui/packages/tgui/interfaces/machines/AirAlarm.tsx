@@ -2,32 +2,55 @@ import { round } from 'common/math';
 import { BooleanLike } from 'common/react';
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../../backend';
-import { Box, Button, LabeledList, NumberInput, Section, Stack } from '../../components';
+import {
+  Box,
+  Button,
+  LabeledList,
+  NumberInput,
+  Section,
+  Stack,
+} from '../../components';
 import { Window } from '../../layouts';
-import { AtmosAnalyzerResults, AtmosGasGroupFlags, AtmosGasID, GasContext } from '../common/Atmos';
+import {
+  AtmosAnalyzerResults,
+  AtmosGasGroupFlags,
+  AtmosGasID,
+  GasContext,
+} from '../common/Atmos';
 import { InterfaceLockNoticeBox } from '../common/InterfaceLockNoticeBox';
 import { AtmosVentPumpControl, AtmosVentPumpState } from './AtmosVentPump';
-import { AtmosVentScrubberControl, AtmosVentScrubberState } from './AtmosVentScrubber';
+import {
+  AtmosVentScrubberControl,
+  AtmosVentScrubberState,
+} from './AtmosVentScrubber';
 
 enum AirAlarmMode {
-  Off = "off",
-  Scrub = "scrub",
-  Replace = "replace",
-  Siphon = "siphon",
-  Cycle = "cycle",
-  Panic = "panic",
-  Contaminated = "contaminated",
-  Fill = "fill",
+  Off = 'off',
+  Scrub = 'scrub',
+  Replace = 'replace',
+  Siphon = 'siphon',
+  Cycle = 'cycle',
+  Panic = 'panic',
+  Contaminated = 'contaminated',
+  Fill = 'fill',
 }
 
 const AirAlarmModes: [AirAlarmMode, string, string | undefined][] = [
-  [AirAlarmMode.Scrub, "Filtering - Maintain area atmospheric integrity", undefined],
-  [AirAlarmMode.Contaminated, "Contaminated - Rapidly scrub out contaminants", undefined],
-  [AirAlarmMode.Replace, "Replace - Siphons air while replacing", undefined],
-  [AirAlarmMode.Cycle, "Cycle - Fully siphon before replacing", "danger"],
-  [AirAlarmMode.Fill, "Fill - Fill without scrubbing.", undefined],
-  [AirAlarmMode.Siphon, "Siphon - Drain air from room", "danger"],
-  [AirAlarmMode.Panic, "Panic Siphon - Quickly drain air from room", "danger"],
+  [
+    AirAlarmMode.Scrub,
+    'Filtering - Maintain area atmospheric integrity',
+    undefined,
+  ],
+  [
+    AirAlarmMode.Contaminated,
+    'Contaminated - Rapidly scrub out contaminants',
+    undefined,
+  ],
+  [AirAlarmMode.Replace, 'Replace - Siphons air while replacing', undefined],
+  [AirAlarmMode.Cycle, 'Cycle - Fully siphon before replacing', 'danger'],
+  [AirAlarmMode.Fill, 'Fill - Fill without scrubbing.', undefined],
+  [AirAlarmMode.Siphon, 'Siphon - Drain air from room', 'danger'],
+  [AirAlarmMode.Panic, 'Panic Siphon - Quickly drain air from room', 'danger'],
 ];
 
 enum AirAlarmRaise {
@@ -56,10 +79,14 @@ const AirAlarmRaiseLookup: {
 
 type AirAlarmTLV = [number, number, number, number];
 
-const TLVCheck = (val: number, tlv: AirAlarmTLV | null | undefined) => tlv? (val < tlv[0] || val > tlv[3]
-  ? AirAlarmRaise.Danger : val < tlv[1] || val > tlv[2]
-    ? AirAlarmRaise.Warning
-    : AirAlarmRaise.Okay) : AirAlarmRaise.Okay;
+const TLVCheck = (val: number, tlv: AirAlarmTLV | null | undefined) =>
+  tlv
+    ? val < tlv[0] || val > tlv[3]
+      ? AirAlarmRaise.Danger
+      : val < tlv[1] || val > tlv[2]
+        ? AirAlarmRaise.Warning
+        : AirAlarmRaise.Okay
+    : AirAlarmRaise.Okay;
 
 interface ExtendedVentPumpState extends AtmosVentPumpState {
   name: string;
@@ -95,13 +122,15 @@ export const AirAlarm = (props, context) => {
   const { act, data } = useBackend<AirAlarmData>(context);
   const locked = data.locked && !data.siliconUser && !data.remoteUser;
   const localRaised = AirAlarmRaiseLookup[data.danger_level];
-  const pressureRaised = AirAlarmRaiseLookup[TLVCheck(data.environment.pressure, data.pressureTLV)];
-  const temperatureRaised = AirAlarmRaiseLookup[TLVCheck(data.environment.temperature, data.temperatureTLV)];
+  const pressureRaised =
+    AirAlarmRaiseLookup[TLVCheck(data.environment.pressure, data.pressureTLV)];
+  const temperatureRaised =
+    AirAlarmRaiseLookup[
+      TLVCheck(data.environment.temperature, data.temperatureTLV)
+    ];
   const temperatureRounded = round(data.environment.temperature, 2);
   return (
-    <Window
-      width={440}
-      height={800}>
+    <Window width={440} height={800}>
       <Window.Content>
         <Stack vertical fill>
           <Stack.Item>
@@ -113,32 +142,47 @@ export const AirAlarm = (props, context) => {
                 <LabeledList.Item label="Pressure" color={pressureRaised.color}>
                   {round(data.environment.pressure, 2)} kPa
                 </LabeledList.Item>
-                <LabeledList.Item label="Temperature" color={temperatureRaised.color}>
-                  {temperatureRounded}K ({round(temperatureRounded - 273.15, 2)}°C)
+                <LabeledList.Item
+                  label="Temperature"
+                  color={temperatureRaised.color}
+                >
+                  {temperatureRounded}K ({round(temperatureRounded - 273.15, 2)}
+                  °C)
                 </LabeledList.Item>
-                {
-                  Object.entries(data.environment.gases).map(([k, v]) => {
-                    const percent = v / data.environment.moles * 100;
-                    const gasRaised = AirAlarmRaiseLookup[TLVCheck(v, data.gasTLV[k])];
-                    return (
-                      <LabeledList.Item key={k}
-                        label={data.environment.names[k] || k} color={gasRaised.color}>
-                        {round(percent, 2)}%
-                      </LabeledList.Item>
-                    );
-                  })
-                }
-                <LabeledList.Item label="Local Status" color={localRaised.color}>
+                {Object.entries(data.environment.gases).map(([k, v]) => {
+                  const percent = (v / data.environment.moles) * 100;
+                  const gasRaised =
+                    AirAlarmRaiseLookup[TLVCheck(v, data.gasTLV[k])];
+                  return (
+                    <LabeledList.Item
+                      key={k}
+                      label={data.environment.names[k] || k}
+                      color={gasRaised.color}
+                    >
+                      {round(percent, 2)}%
+                    </LabeledList.Item>
+                  );
+                })}
+                <LabeledList.Item
+                  label="Local Status"
+                  color={localRaised.color}
+                >
                   {localRaised.status}
                 </LabeledList.Item>
-                <LabeledList.Item label="Area Status" color={data.atmos_alarm || data.fire_alarm? 'bad' : 'good'}>
-                  {data.atmos_alarm? "Atmosphere Alarm" : data.fire_alarm? "Fire Alarm" : "Nominal"}
+                <LabeledList.Item
+                  label="Area Status"
+                  color={data.atmos_alarm || data.fire_alarm ? 'bad' : 'good'}
+                >
+                  {data.atmos_alarm
+                    ? 'Atmosphere Alarm'
+                    : data.fire_alarm
+                      ? 'Fire Alarm'
+                      : 'Nominal'}
                 </LabeledList.Item>
                 {!!data.emagged && (
-                  <LabeledList.Item
-                    label="Warning"
-                    color="bad">
-                    Safety measures offline. Device may exhibit abnormal behavior.
+                  <LabeledList.Item label="Warning" color="bad">
+                    Safety measures offline. Device may exhibit abnormal
+                    behavior.
                   </LabeledList.Item>
                 )}
               </LabeledList>
@@ -147,11 +191,7 @@ export const AirAlarm = (props, context) => {
           <Stack.Item>
             <AirAlarmUnlockedControl />
           </Stack.Item>
-          <Stack.Item grow>
-            {!locked && (
-              <AirAlarmControl />
-            )}
-          </Stack.Item>
+          <Stack.Item grow>{!locked && <AirAlarmControl />}</Stack.Item>
         </Stack>
       </Window.Content>
     </Window>
@@ -160,32 +200,32 @@ export const AirAlarm = (props, context) => {
 
 const AirAlarmUnlockedControl = (props, context) => {
   const { act, data } = useBackend<AirAlarmData>(context);
-  const {
-    target_temperature,
-    rcon,
-  } = data;
+  const { target_temperature, rcon } = data;
   return (
-    <Section
-      title="Comfort Settings">
+    <Section title="Comfort Settings">
       <LabeledList>
         <LabeledList.Item label="Remote Control">
           <Button
             selected={rcon === 1}
             content="Off"
-            onClick={() => act('rcon', { 'rcon': 1 })} />
+            onClick={() => act('rcon', { rcon: 1 })}
+          />
           <Button
             selected={rcon === 2}
             content="Auto"
-            onClick={() => act('rcon', { 'rcon': 2 })} />
+            onClick={() => act('rcon', { rcon: 2 })}
+          />
           <Button
             selected={rcon === 3}
             content="On"
-            onClick={() => act('rcon', { 'rcon': 3 })} />
+            onClick={() => act('rcon', { rcon: 3 })}
+          />
         </LabeledList.Item>
         <LabeledList.Item label="Thermostat">
           <Button
             content={target_temperature}
-            onClick={() => act('temperature')} />
+            onClick={() => act('temperature')}
+          />
         </LabeledList.Item>
       </LabeledList>
     </Section>
@@ -224,17 +264,20 @@ const AirAlarmControl = (props, context) => {
       scrollable
       fill
       title={route.title}
-      buttons={screen && (
-        <Button
-          icon="arrow-left"
-          content="Back"
-          onClick={() => setScreen('home')} />
-      )}>
+      buttons={
+        screen && (
+          <Button
+            icon="arrow-left"
+            content="Back"
+            onClick={() => setScreen('home')}
+          />
+        )
+      }
+    >
       <Component />
     </Section>
   );
 };
-
 
 //  Home screen
 // --------------------------------------------------------
@@ -242,49 +285,55 @@ const AirAlarmControl = (props, context) => {
 const AirAlarmControlHome = (props, context) => {
   const { act, data } = useBackend<AirAlarmData>(context);
   const [screen, setScreen] = useLocalState<string>(context, 'screen', '');
-  const {
-    mode,
-    atmos_alarm,
-  } = data;
+  const { mode, atmos_alarm } = data;
   return (
     <>
       <Button
-        icon={atmos_alarm
-          ? 'exclamation-triangle'
-          : 'exclamation'}
+        icon={atmos_alarm ? 'exclamation-triangle' : 'exclamation'}
         color={!!atmos_alarm && 'caution'}
         content="Area Atmosphere Alarm"
-        onClick={() => act(atmos_alarm ? 'reset' : 'alarm')} />
+        onClick={() => act(atmos_alarm ? 'reset' : 'alarm')}
+      />
       <Box mt={1} />
       <Button
-        icon={mode === AirAlarmMode.Panic
-          ? 'exclamation-triangle'
-          : 'exclamation'}
+        icon={
+          mode === AirAlarmMode.Panic ? 'exclamation-triangle' : 'exclamation'
+        }
         color={mode === AirAlarmMode.Panic && 'danger'}
         content="Panic Siphon"
-        onClick={() => act('mode', {
-          mode: mode === AirAlarmMode.Panic ? AirAlarmMode.Scrub : AirAlarmMode.Panic,
-        })} />
+        onClick={() =>
+          act('mode', {
+            mode:
+              mode === AirAlarmMode.Panic
+                ? AirAlarmMode.Scrub
+                : AirAlarmMode.Panic,
+          })
+        }
+      />
       <Box mt={2} />
       <Button
         icon="sign-out-alt"
         content="Vent Controls"
-        onClick={() => setScreen('vents')} />
+        onClick={() => setScreen('vents')}
+      />
       <Box mt={1} />
       <Button
         icon="filter"
         content="Scrubber Controls"
-        onClick={() => setScreen('scrubbers')} />
+        onClick={() => setScreen('scrubbers')}
+      />
       <Box mt={1} />
       <Button
         icon="cog"
         content="Operating Mode"
-        onClick={() => setScreen('modes')} />
+        onClick={() => setScreen('modes')}
+      />
       <Box mt={1} />
       <Button
         icon="chart-bar"
         content="Alarm Thresholds"
-        onClick={() => setScreen('thresholds')} />
+        onClick={() => setScreen('thresholds')}
+      />
     </>
   );
 };
@@ -298,10 +347,19 @@ const AirAlarmVentScreenWrapped = (props, context) => {
       vents={data.vents}
       dirToggle={(id) => act('vent', { id: id, command: 'direction' })}
       powerToggle={(id) => act('vent', { id: id, command: 'power' })}
-      internalToggle={(id) => act('vent', { id: id, command: 'internalToggle' })}
-      internalSet={(id, amt) => act('vent', { id: id, command: 'internalPressure', target: amt })}
-      externalToggle={(id) => act('vent', { id: id, command: 'externalToggle' })}
-      externalSet={(id, amt) => act('vent', { id: id, command: 'externalPressure', target: amt })} />
+      internalToggle={(id) =>
+        act('vent', { id: id, command: 'internalToggle' })
+      }
+      internalSet={(id, amt) =>
+        act('vent', { id: id, command: 'internalPressure', target: amt })
+      }
+      externalToggle={(id) =>
+        act('vent', { id: id, command: 'externalToggle' })
+      }
+      externalSet={(id, amt) =>
+        act('vent', { id: id, command: 'externalPressure', target: amt })
+      }
+    />
   );
 };
 
@@ -328,7 +386,8 @@ const AirAlarmVentScreen = (props: AirAlarmVentScreenProps) => {
             internalSet={(val) => props.internalSet(idTag, val)}
             externalSet={(val) => props.externalSet(idTag, val)}
             internalToggle={(on) => props.internalToggle(idTag, on)}
-            externalToggle={(on) => props.externalToggle(idTag, on)} />
+            externalToggle={(on) => props.externalToggle(idTag, on)}
+          />
         </Stack.Item>
       ))}
     </Stack>
@@ -346,8 +405,13 @@ const AirAlarmScrubberScreenWrapped = (props, context) => {
       powerToggle={(id) => act('scrubber', { id: id, command: 'power' })}
       siphonToggle={(id) => act('scrubber', { id: id, command: 'siphon' })}
       expandToggle={(id) => act('scrubber', { id: id, command: 'highPower' })}
-      gasToggle={(id, gas) => act('scrubber', { id: id, command: 'gasID', target: gas })}
-      groupToggle={(id, flags) => act('scrubber', { id: id, command: 'gasGroup', target: flags })} />
+      gasToggle={(id, gas) =>
+        act('scrubber', { id: id, command: 'gasID', target: gas })
+      }
+      groupToggle={(id, flags) =>
+        act('scrubber', { id: id, command: 'gasGroup', target: flags })
+      }
+    />
   );
 };
 
@@ -356,7 +420,11 @@ interface AirAlarmScrubberScreenProps {
   readonly siphonToggle: (id: string, on?: boolean) => void;
   readonly expandToggle: (id: string, on?: boolean) => void;
   readonly gasToggle: (id: string, gas: AtmosGasID, on?: boolean) => void;
-  readonly groupToggle: (id: string, group: AtmosGasGroupFlags, on?: boolean) => void;
+  readonly groupToggle: (
+    id: string,
+    group: AtmosGasGroupFlags,
+    on?: boolean,
+  ) => void;
   readonly scrubbers: Record<string, ExtendedVentScrubberState>;
   readonly gasContext: GasContext;
 }
@@ -374,7 +442,8 @@ const AirAlarmScrubberScreen = (props: AirAlarmScrubberScreenProps) => {
             siphonToggle={(on) => props.siphonToggle(idTag, on)}
             expandToggle={(on) => props.expandToggle(idTag, on)}
             idToggle={(id, on) => props.gasToggle(idTag, id, on)}
-            groupToggle={(group, on) => props.groupToggle(idTag, group, on)} />
+            groupToggle={(group, on) => props.groupToggle(idTag, group, on)}
+          />
         </Stack.Item>
       ))}
     </Stack>
@@ -389,7 +458,8 @@ const AirAlarmModeScreenWrapped = (props, context) => {
   return (
     <AirAlarmModeScreen
       selected={data.mode}
-      setAct={(mode) => act('mode', { mode: mode })} />
+      setAct={(mode) => act('mode', { mode: mode })}
+    />
   );
 };
 
@@ -407,7 +477,8 @@ const AirAlarmModeScreen = (props: AirAlarmModeScreenProps) => {
           desc={desc}
           color={color}
           selected={props.selected === mode}
-          setAct={() => props.setAct(mode)} />
+          setAct={() => props.setAct(mode)}
+        />
       ))}
     </Stack>
   );
@@ -423,11 +494,12 @@ interface AirAlarmModeButtonProps {
 const AirAlarmModeButton = (props: AirAlarmModeButtonProps) => {
   return (
     <Button
-      icon={props.selected? 'check-square-o' : 'square-o'}
+      icon={props.selected ? 'check-square-o' : 'square-o'}
       content={props.desc}
       onClick={() => props.setAct?.()}
       selected={props.selected}
-      color={props.selected && props.color} />
+      color={props.selected && props.color}
+    />
   );
 };
 
@@ -438,7 +510,8 @@ const AirAlarmThresholdScreenWrapped = (props, context) => {
   return (
     <table
       className="LabeledList"
-      style={{ width: '100%', "margin-left": "2.5px", "margin-right": "2.5px" }}>
+      style={{ width: '100%', 'margin-left': '2.5px', 'margin-right': '2.5px' }}
+    >
       <thead>
         <tr>
           <td />
@@ -449,27 +522,44 @@ const AirAlarmThresholdScreenWrapped = (props, context) => {
         </tr>
       </thead>
       <tbody>
-        {(
+        {
           <>
-            <AirAlarmTLVEntry name="Pressure" entry={data.pressureTLV}
-              setEntry={(val, index) => act('tlv', { entry: 'pressure', index: index, val: val })} />
-            <AirAlarmTLVEntry name="Temperature" entry={data.temperatureTLV}
-              setEntry={(val, index) => act('tlv', { entry: 'temperature', index: index, val: val })} />
+            <AirAlarmTLVEntry
+              name="Pressure"
+              entry={data.pressureTLV}
+              setEntry={(val, index) =>
+                act('tlv', { entry: 'pressure', index: index, val: val })
+              }
+            />
+            <AirAlarmTLVEntry
+              name="Temperature"
+              entry={data.temperatureTLV}
+              setEntry={(val, index) =>
+                act('tlv', { entry: 'temperature', index: index, val: val })
+              }
+            />
           </>
-        )}
+        }
         {Object.entries(data.gasTLV).map(([id, tlv]) => (
-          <AirAlarmTLVEntry name={id} entry={tlv} key={id}
-            setEntry={(v, i) => act('tlv', { entry: id, index: i, val: v })} />
+          <AirAlarmTLVEntry
+            name={id}
+            entry={tlv}
+            key={id}
+            setEntry={(v, i) => act('tlv', { entry: id, index: i, val: v })}
+          />
         ))}
         {Object.entries(data.groupTLV).map(([name, tlv]) => (
-          <AirAlarmTLVEntry name={name} entry={tlv} key={name}
-            setEntry={(v, i) => act('tlv', { entry: name, index: i, val: v })} />
+          <AirAlarmTLVEntry
+            name={name}
+            entry={tlv}
+            key={name}
+            setEntry={(v, i) => act('tlv', { entry: name, index: i, val: v })}
+          />
         ))}
       </tbody>
     </table>
   );
 };
-
 
 interface AirAlarmTLVEntryProps {
   readonly name: string;
@@ -481,9 +571,7 @@ const AirAlarmTLVEntry = (props: AirAlarmTLVEntryProps) => {
   return (
     <tr>
       <td className="LabeledList__label">
-        <span>
-          {props.name}
-        </span>
+        <span>{props.name}</span>
       </td>
       {props.entry.map((val, i) => (
         <td key={`${i}`}>
@@ -492,7 +580,8 @@ const AirAlarmTLVEntry = (props: AirAlarmTLVEntryProps) => {
             width="60px"
             minValue={0}
             maxValue={1000000}
-            onChange={(e, v) => props.setEntry(v, i)} />
+            onChange={(e, v) => props.setEntry(v, i)}
+          />
         </td>
       ))}
     </tr>

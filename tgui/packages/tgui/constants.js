@@ -33,16 +33,16 @@ export const COLORS = {
   },
   // VOREStation Addition begin
   manifest: {
-    command: "#3333FF",
-    security: "#8e0000",
-    medical: "#006600",
-    engineering: "#b27300",
-    science: "#a65ba6",
-    cargo: "#bb9040",
-    planetside: "#555555",
-    civilian: "#a32800",
-    miscellaneous: "#666666",
-    silicon: "#222222",
+    command: '#3333FF',
+    security: '#8e0000',
+    medical: '#006600',
+    engineering: '#b27300',
+    science: '#a65ba6',
+    cargo: '#bb9040',
+    planetside: '#555555',
+    civilian: '#a32800',
+    miscellaneous: '#666666',
+    silicon: '#222222',
   },
   // VOREStation Addition end
   // Damage type colors
@@ -54,8 +54,8 @@ export const COLORS = {
   },
   // reagent / chemistry related colours
   reagent: {
-    acidicbuffer: "#fbc314",
-    basicbuffer: "#3853a4",
+    acidicbuffer: '#fbc314',
+    basicbuffer: '#3853a4',
   },
 };
 
@@ -151,122 +151,124 @@ export const RADIO_CHANNELS = [
 
 const GASES = [
   {
-    'id': 'oxygen',
-    'name': 'Oxygen',
-    'label': 'O₂',
-    'color': 'blue',
+    id: 'oxygen',
+    name: 'Oxygen',
+    label: 'O₂',
+    color: 'blue',
   },
   {
-    'id': 'n2',
-    'name': 'Nitrogen',
-    'label': 'N₂',
-    'color': 'red',
+    id: 'n2',
+    name: 'Nitrogen',
+    label: 'N₂',
+    color: 'red',
   },
   {
-    'id': 'carbon dioxide',
-    'name': 'Carbon Dioxide',
-    'label': 'CO₂',
-    'color': 'grey',
+    id: 'carbon dioxide',
+    name: 'Carbon Dioxide',
+    label: 'CO₂',
+    color: 'grey',
   },
   {
-    'id': 'phoron',
-    'name': 'Phoron',
-    'label': 'Phoron',
-    'color': 'pink',
+    id: 'phoron',
+    name: 'Phoron',
+    label: 'Phoron',
+    color: 'pink',
   },
   {
-    'id': 'water_vapor',
-    'name': 'Water Vapor',
-    'label': 'H₂O',
-    'color': 'grey',
+    id: 'water_vapor',
+    name: 'Water Vapor',
+    label: 'H₂O',
+    color: 'grey',
   },
   {
-    'id': 'nob',
-    'name': 'Hyper-noblium',
-    'label': 'Hyper-nob',
-    'color': 'teal',
+    id: 'nob',
+    name: 'Hyper-noblium',
+    label: 'Hyper-nob',
+    color: 'teal',
   },
   {
-    'id': 'n2o',
-    'name': 'Nitrous Oxide',
-    'label': 'N₂O',
-    'color': 'red',
+    id: 'n2o',
+    name: 'Nitrous Oxide',
+    label: 'N₂O',
+    color: 'red',
   },
   {
-    'id': 'no2',
-    'name': 'Nitryl',
-    'label': 'NO₂',
-    'color': 'brown',
+    id: 'no2',
+    name: 'Nitryl',
+    label: 'NO₂',
+    color: 'brown',
   },
   {
-    'id': 'tritium',
-    'name': 'Tritium',
-    'label': 'Tritium',
-    'color': 'green',
+    id: 'tritium',
+    name: 'Tritium',
+    label: 'Tritium',
+    color: 'green',
   },
   {
-    'id': 'bz',
-    'name': 'BZ',
-    'label': 'BZ',
-    'color': 'purple',
+    id: 'bz',
+    name: 'BZ',
+    label: 'BZ',
+    color: 'purple',
   },
   {
-    'id': 'stim',
-    'name': 'Stimulum',
-    'label': 'Stimulum',
-    'color': 'purple',
+    id: 'stim',
+    name: 'Stimulum',
+    label: 'Stimulum',
+    color: 'purple',
   },
   {
-    'id': 'pluox',
-    'name': 'Pluoxium',
-    'label': 'Pluoxium',
-    'color': 'blue',
+    id: 'pluox',
+    name: 'Pluoxium',
+    label: 'Pluoxium',
+    color: 'blue',
   },
   {
-    'id': 'miasma',
-    'name': 'Miasma',
-    'label': 'Miasma',
-    'color': 'olive',
+    id: 'miasma',
+    name: 'Miasma',
+    label: 'Miasma',
+    color: 'olive',
   },
   {
-    'id': 'hydrogen',
-    'name': 'Hydrogen',
-    'label': 'H₂',
-    'color': 'white',
+    id: 'hydrogen',
+    name: 'Hydrogen',
+    label: 'H₂',
+    color: 'white',
   },
   {
-    'id': 'other',
-    'name': 'Other',
-    'label': 'Other',
-    'color': 'white',
+    id: 'other',
+    name: 'Other',
+    label: 'Other',
+    color: 'white',
   },
   {
-    'id': 'pressure',
-    'name': 'Pressure',
-    'label': 'Pressure',
-    'color': 'average',
+    id: 'pressure',
+    name: 'Pressure',
+    label: 'Pressure',
+    color: 'average',
   },
   {
-    'id': 'temperature',
-    'name': 'Temperature',
-    'label': 'Temperature',
-    'color': 'yellow',
+    id: 'temperature',
+    name: 'Temperature',
+    label: 'Temperature',
+    color: 'yellow',
   },
 ];
 
 export const getGasLabel = (gasId, fallbackValue) => {
   const gasSearchString = String(gasId).toLowerCase();
-  const gas = GASES.find(gas => gas.id === gasSearchString
-    || gas.name.toLowerCase() === gasSearchString);
-  return gas && gas.label
-    || fallbackValue
-    || gasId;
+  const gas = GASES.find(
+    (gas) =>
+      gas.id === gasSearchString || gas.name.toLowerCase() === gasSearchString,
+  );
+  return (gas && gas.label) || fallbackValue || gasId;
 };
 
-export const getGasColor = gasId => {
+export const getGasColor = (gasId) => {
   const gasSearchString = String(gasId).toLowerCase();
-  const gas = GASES.find(gas => gas.id === gasSearchString
-    || gas.name.toLowerCase() === gasSearchString);
+  const gas = GASES.find(
+    (gas) =>
+      gas.id === gasSearchString || gas.name.toLowerCase() === gasSearchString,
+  );
   return gas && gas.color;
 };
 

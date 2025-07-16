@@ -1,13 +1,18 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
-import { useBackend } from "../../backend";
-import { LabeledList, Section } from "../../components";
-import { SectionProps } from "../../components/Section";
-import { AtmosFilterList, AtmosGasGroupFlags, AtmosGasIDs, GasContext } from "../common/Atmos";
-import { AtmosPortable } from "../common/AtmosPortable";
+import { useBackend } from '../../backend';
+import { LabeledList, Section } from '../../components';
+import { SectionProps } from '../../components/Section';
+import {
+  AtmosFilterList,
+  AtmosGasGroupFlags,
+  AtmosGasIDs,
+  GasContext,
+} from '../common/Atmos';
+import { AtmosPortable } from '../common/AtmosPortable';
 
-interface AtmosPortableScrubberControlProps extends SectionProps{
+interface AtmosPortableScrubberControlProps extends SectionProps {
   readonly atmosContext: GasContext;
   readonly scrubbingIds: AtmosGasIDs;
   readonly scrubbingGroups: AtmosGasGroupFlags;
@@ -15,7 +20,10 @@ interface AtmosPortableScrubberControlProps extends SectionProps{
   readonly toggleGroup?: (group) => void;
 }
 
-export const AtmosPortableScrubberControl = (props: AtmosPortableScrubberControlProps, context) => {
+export const AtmosPortableScrubberControl = (
+  props: AtmosPortableScrubberControlProps,
+  context,
+) => {
   return (
     <Section title="Scrubbing" {...props}>
       <AtmosFilterList
@@ -23,7 +31,8 @@ export const AtmosPortableScrubberControl = (props: AtmosPortableScrubberControl
         selectedGroups={props.scrubbingGroups}
         selectedIds={props.scrubbingIds}
         selectGroup={(group) => props.toggleGroup?.(group)}
-        selectId={(id) => props.toggleId?.(id)} />
+        selectId={(id) => props.toggleId?.(id)}
+      />
     </Section>
   );
 };
@@ -42,11 +51,12 @@ export const AtmosPortableScrubber = (props, context) => {
       minimumWidth={430}
       minimumHeight={600}
       name="Portable Air Scrubber"
-      additionalListItems={(
+      additionalListItems={
         <LabeledList.Item label="Current Flow">
           {data.moleRate} mol/s
         </LabeledList.Item>
-      )}>
+      }
+    >
       <AtmosPortableScrubberControl
         fill
         scrollable
@@ -54,7 +64,8 @@ export const AtmosPortableScrubber = (props, context) => {
         scrubbingIds={data.scrubbingIds}
         scrubbingGroups={data.scrubbingGroups}
         toggleId={(id) => act('scrubID', { target: id })}
-        toggleGroup={(group) => act('scrubGroup', { target: group })} />
+        toggleGroup={(group) => act('scrubGroup', { target: group })}
+      />
     </AtmosPortable>
   );
 };

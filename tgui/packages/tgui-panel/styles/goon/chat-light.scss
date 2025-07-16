@@ -5,7 +5,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-html, body {
+html,
+body {
   padding: 0;
   margin: 0;
   height: 100%;
@@ -13,7 +14,7 @@ html, body {
 }
 
 body {
-  background: #E0E0E0; /*CIT CHANGE - darkens chatbox a lil*/
+  background: #e0e0e0; /*CIT CHANGE - darkens chatbox a lil*/
   font-family: Verdana, sans-serif;
   font-size: 13px;
   line-height: 1.2;
@@ -105,13 +106,13 @@ a.popt {
   color: #333;
 }
 
-.popup input[type=text]:hover,
-.popup input[type=text]:active,
-.popup input[type=text]:focus {
+.popup input[type='text']:hover,
+.popup input[type='text']:active,
+.popup input[type='text']:focus {
   border-color: green;
 }
 
-.popup input[type=submit] {
+.popup input[type='submit'] {
   padding: 5px 10px;
   background: #999;
   color: #ddd;
@@ -120,9 +121,9 @@ a.popt {
   font-weight: bold;
 }
 
-.popup input[type=submit]:hover,
-.popup input[type=submit]:focus,
-.popup input[type=submit]:active {
+.popup input[type='submit']:hover,
+.popup input[type='submit']:focus,
+.popup input[type='submit']:active {
   background: #aaa;
   cursor: pointer;
 }
@@ -147,7 +148,7 @@ a.popt {
   text-align: center;
 }
 
-.highlightPopup input[type=text] {
+.highlightPopup input[type='text'] {
   display: block;
   width: 215px;
   text-align: left;
@@ -155,17 +156,14 @@ a.popt {
 }
 
 .highlightPopup input.highlightColor {
-  background-color: #FFFF00;
+  background-color: #ffff00;
 }
 
 .highlightPopup input.highlightTermSubmit {
   margin-top: 5px;
 }
 
-
-
 /* ADMIN CONTEXT MENU */
-
 
 .contextMenu {
   background-color: #ddd;
@@ -185,10 +183,7 @@ a.popt {
   background-color: #ccc;
 }
 
-
-
 /* ADMIN FILTER MESSAGES MENU */
-
 
 .filterMessages {
   padding: 5px;
@@ -212,21 +207,13 @@ a.popt {
   margin-top: -2px;
 }
 
-
-
-
 /*****************************************
 *
 * OUTPUT ACTUALLY RELATED TO MESSAGES
 *
 ******************************************/
 
-
-
-
-
 /* MOTD */
-
 
 .motd {
   color: #638500;
@@ -252,10 +239,7 @@ a.popt {
   color: #638500;
 }
 
-
-
 /* ADD HERE FOR BOLD */
-
 
 .bold,
 .name,
@@ -269,31 +253,31 @@ a.popt {
   font-weight: bold;
 }
 
-
-
 /* ADD HERE FOR ITALIC */
-
 
 .italic,
 .italics {
   font-style: italic;
 }
 
-
-
 /* OUTPUT COLORS */
-
 
 .highlight {
   background: yellow;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: #0000ff;
   font-family: Georgia, Verdana, sans-serif;
 }
 
-h1.alert, h2.alert {
+h1.alert,
+h2.alert {
   color: #000000;
 }
 
@@ -308,7 +292,7 @@ em {
 }
 
 .looc {
-  color: #6699CC;
+  color: #6699cc;
   font-weight: bold;
 }
 
@@ -348,42 +332,41 @@ em {
   font-weight: bold;
 }
 
-
 //attack logging!
 .log_message {
-  color: #386AFF;
+  color: #386aff;
   font-weight: bold;
 }
 
 /* Debug Logs */
 .debug_error {
-  color:#FF0000;
-  font-weight:bold;
+  color: #ff0000;
+  font-weight: bold;
 }
 
 .debug_warning {
-  color:#FF0000;
+  color: #ff0000;
 }
 
 .debug_info {
 }
 
 .debug_debug {
-  color:#0000FF;
+  color: #0000ff;
 }
 
 .debug_trace {
-  color:#888888;
+  color: #888888;
 }
 
 /* cit-specific mentorsay*/
 .mentorsay {
-  color: #E236D8;
+  color: #e236d8;
   font-weight: bold;
 }
 
 .mentorsay_admin {
-  color: #8A2BE2;
+  color: #8a2be2;
   font-weight: bold;
 }
 
@@ -397,7 +380,11 @@ em {
   font-weight: bold;
 }
 
-.say, .emote, .infoplain, .oocplain, .warningplain {
+.say,
+.emote,
+.infoplain,
+.oocplain,
+.warningplain {
 }
 
 .deadsay {
@@ -499,7 +486,8 @@ em {
   color: #ff0000;
 }
 
-h1.alert, h2.alert {
+h1.alert,
+h2.alert {
   color: #000000;
 }
 
@@ -538,7 +526,7 @@ blockquote.warning {
 }
 
 .alertwarning {
-  color: #FF0000;
+  color: #ff0000;
   font-weight: bold;
 }
 
@@ -573,11 +561,11 @@ blockquote.warning {
 }
 
 .info {
-  color: #0000CC;
+  color: #0000cc;
 }
 
 blockquote.info {
-  border-color: #0000CC;
+  border-color: #0000cc;
 }
 
 .notice {
@@ -648,19 +636,19 @@ blockquote.green {
 }
 
 .red {
-  color: #FF0000;
+  color: #ff0000;
 }
 
 blockquote.red {
-  border-color: #FF0000;
+  border-color: #ff0000;
 }
 
 .blue {
-  color: #0000FF;
+  color: #0000ff;
 }
 
 blockquote.blue {
-  border-color: #0000FF;
+  border-color: #0000ff;
 }
 
 .nicegreen {
@@ -676,7 +664,7 @@ blockquote.nicegreen {
 }
 
 .userlove {
-  color: #FF1493;
+  color: #ff1493;
   font-style: italic;
   font-weight: bold;
   text-shadow: 0 0 6px #ff6dbc;
@@ -732,7 +720,7 @@ blockquote.cult {
 }
 
 .colossus {
-  color: #7F282A;
+  color: #7f282a;
   font-size: 310%;
 }
 
@@ -791,24 +779,24 @@ blockquote.purple {
 
 /* compatability */
 .umbra {
-  color: #5000A0;
+  color: #5000a0;
 }
 
 .umbra_emphasis {
-  color: #5000A0;
+  color: #5000a0;
   font-weight: bold;
   font-style: italic;
 }
 
 .umbra_large {
-  color: #5000A0;
+  color: #5000a0;
   font-weight: bold;
   font-style: italic;
   font-size: 3;
 }
 
 .deconversion_message {
-  color: #5000A0;
+  color: #5000a0;
   font-size: 185%;
   font-style: italic;
 }
@@ -816,131 +804,131 @@ blockquote.purple {
 /* coggers dosen't exist on tg :( */
 /* from decon_msg: font-size: 185% == font-size 3*/
 .brass {
-  color: #BE8700;
+  color: #be8700;
 }
 
 blockquote.brass {
-  border-color: #BE8700;
+  border-color: #be8700;
 }
 
 .heavy_brass {
-  color: #BE8700;
+  color: #be8700;
   font-weight: bold;
   font-style: italic;
 }
 
 .large_brass {
-  color: #BE8700;
+  color: #be8700;
   font-size: 185%;
- }
+}
 
 .big_brass {
-  color: #BE8700;
+  color: #be8700;
   font-size: 185%;
   font-weight: bold;
   font-style: italic;
 }
 
 .ratvar {
-  color: #BE8700;
+  color: #be8700;
   font-size: 6;
   font-weight: bold;
   font-style: italic;
 }
 
 .alloy {
-  color: #42474D;
+  color: #42474d;
 }
 
 .heavy_alloy {
-  color: #42474D;
+  color: #42474d;
   font-weight: bold;
   font-style: italic;
 }
 
 .nezbere_large {
-  color: #42474D;
+  color: #42474d;
   font-size: 185%;
   font-weight: bold;
   font-style: italic;
 }
 
 .nezbere {
-  color: #42474D;
+  color: #42474d;
   font-weight: bold;
   font-style: italic;
 }
 
 .nezbere_small {
-  color: #42474D;
+  color: #42474d;
 }
 
 .sevtug_large {
-  color: #AF0AAF;
+  color: #af0aaf;
   font-size: 185%;
   font-weight: bold;
   font-style: italic;
 }
 
-.sevtug	{
-  color: #AF0AAF;
+.sevtug {
+  color: #af0aaf;
   font-weight: bold;
   font-style: italic;
 }
 
 .sevtug_small {
-  color: #AF0AAF;
+  color: #af0aaf;
 }
 
 .inathneq_large {
-  color: #1E8CE1;
+  color: #1e8ce1;
   font-size: 185%;
   font-weight: bold;
   font-style: italic;
 }
 
-.inathneq	{
-  color: #1E8CE1;
+.inathneq {
+  color: #1e8ce1;
   font-weight: bold;
   font-style: italic;
 }
 
 .inathneq_small {
-  color: #1E8CE1;
+  color: #1e8ce1;
 }
 
 .nzcrentr_large {
-  color: #DAAA18;
+  color: #daaa18;
   font-size: 185%;
   font-weight: bold;
   font-style: italic;
 }
 
 .nzcrentr {
-  color: #DAAA18;
+  color: #daaa18;
   font-weight: bold;
   font-style: italic;
 }
 
 .nzcrentr_small {
-  color: #DAAA18;
+  color: #daaa18;
 }
 
 .neovgre_large {
-  color: #6E001A;
+  color: #6e001a;
   font-size: 185%;
   font-weight: bold;
   font-style: italic;
 }
 
 .neovgre {
-  color: #6E001A;
+  color: #6e001a;
   font-weight: bold;
   font-style: italic;
 }
 
 .neovgre_small {
-  color: #6E001A;
+  color: #6e001a;
 }
 
 .ghostalert {
@@ -968,7 +956,7 @@ blockquote.brass {
 }
 
 .alertsyndie {
-  color: #FF0000;
+  color: #ff0000;
   font-size: 185%;
   font-weight: bold;
 }
@@ -984,57 +972,58 @@ blockquote.brass {
 }
 
 .sans {
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
 }
 
 .papyrus {
-  font-family: "Papyrus", cursive, sans-serif;
+  font-family: 'Papyrus', cursive, sans-serif;
 }
 
 .robot {
-  font-family: "Courier New", cursive, sans-serif;
+  font-family: 'Courier New', cursive, sans-serif;
 }
 
 .tape_recorder {
   color: #800000;
-  font-family: "Courier New", cursive, sans-serif;
+  font-family: 'Courier New', cursive, sans-serif;
 }
 
 .greentext {
   @include size-ll;
-  color: #00FF00;
+  color: #00ff00;
 }
 
-.yellowtext	{
+.yellowtext {
   @include size-ll;
-  color: #FFCC00;
+  color: #ffcc00;
 }
 
 .redtext {
   @include size-ll;
-  color: #FF0000;
+  color: #ff0000;
 }
 
 .clown {
-  color: #FF69Bf;
+  color: #ff69bf;
   font-size: 125%;
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
   font-weight: bold;
 }
 
 .singing {
-  font-family: "Trebuchet MS", cursive, sans-serif;
+  font-family: 'Trebuchet MS', cursive, sans-serif;
   font-style: italic;
 }
 
 .his_grace {
-  color: #15D512;
-  font-family: "Courier New", cursive, sans-serif;
+  color: #15d512;
+  font-family: 'Courier New', cursive, sans-serif;
   font-style: italic;
 }
 
-.spooky { /* cit specific, used by jacq */
-  color: #FF9100;
+.spooky {
+  /* cit specific, used by jacq */
+  color: #ff9100;
 }
 
 /*pay attention to the votes.*/
@@ -1088,7 +1077,8 @@ blockquote.brass {
   }
 }
 
-.velvet	{ /* cit specific, used by MKU */
+.velvet {
+  /* cit specific, used by MKU */
   color: #660015;
   font-weight: bold;
   animation: velvet 5000ms infinite;
@@ -1100,13 +1090,13 @@ blockquote.brass {
     color: #400020;
   }
   40% {
-    color: #FF0000;
+    color: #ff0000;
   }
   50% {
-    color: #FF8888;
+    color: #ff8888;
   }
   60% {
-    color: #FF0000;
+    color: #ff0000;
   }
   100% {
     color: #400020;
@@ -1158,14 +1148,14 @@ blockquote.brass {
 }
 
 .mind_control {
-  color: #A00D6F;
+  color: #a00d6f;
   font-size: 100%;
   font-weight: bold;
   font-style: italic;
 }
 
 .slime {
-  color: #00CED1;
+  color: #00ced1;
 }
 
 .drone {
@@ -1177,11 +1167,11 @@ blockquote.brass {
 }
 
 .swarmer {
-  color: #2C75FF;
+  color: #2c75ff;
 }
 
 .resonate {
-  color: #298F85;
+  color: #298f85;
 }
 
 .monkeyhive {
@@ -1214,34 +1204,32 @@ blockquote.brass {
   color: #543354;
 }
 
-
 .tajaran {
-  color: #803B56;
+  color: #803b56;
 }
 
-
 .tajaran_signlang {
-  color: #941C1C;
+  color: #941c1c;
 }
 
 .akhani {
-  color: #AC398C;
+  color: #ac398c;
 }
 
 .skrell {
-  color: #00B0B3;
+  color: #00b0b3;
 }
 
 .skrellfar {
-  color: #70FCFF;
+  color: #70fcff;
 }
 
 .soghun {
-  color: #228B22;
+  color: #228b22;
 }
 
 .solcom {
-  color: #22228B;
+  color: #22228b;
 }
 
 .changeling {
@@ -1250,47 +1238,47 @@ blockquote.brass {
 
 .phoronoid_conlang {
   color: #636363;
-  font-family: "Courier New", cursive, sans-serif;
+  font-family: 'Courier New', cursive, sans-serif;
 }
 
 .phoronoid {
   color: #800080;
-  font-family: "Papyrus", cursive, sans-serif;
+  font-family: 'Papyrus', cursive, sans-serif;
 }
 
 .sergal {
-  color: #0077FF;
+  color: #0077ff;
 }
 
 .birdsongc {
-  color: #CC9900;
+  color: #cc9900;
 }
 
 .vulpkanin {
-  color: #B97A57;
+  color: #b97a57;
 }
 
 .luinimma {
   color: #d4bd11;
-  font-family: "Trebuchet MS", cursive, sans-serif;
+  font-family: 'Trebuchet MS', cursive, sans-serif;
 }
 
-.keisani{
+.keisani {
   color: #8b5c3d;
 }
 
 .enochian {
-  color: #848A33;
-  letter-spacing:-1pt;
-  word-spacing:4pt;
-  font-family: "Lucida Sans Unicode","Lucida Grande", sans-serif;
+  color: #848a33;
+  letter-spacing: -1pt;
+  word-spacing: 4pt;
+  font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
 }
 
 .daemon {
-  color: #5E339E;
-  letter-spacing:-1pt;
-  word-spacing:0pt;
-  font-family: "Courier New", Courier, monospace;
+  color: #5e339e;
+  letter-spacing: -1pt;
+  word-spacing: 0pt;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .bug {
@@ -1298,15 +1286,16 @@ blockquote.brass {
 }
 
 .vox {
-  color: #AA00AA;
+  color: #aa00aa;
 }
 
 .zaddat {
-  color: #941C1C;
+  color: #941c1c;
 }
 
 .promethean {
-  color: #5A5A5A; font-family:"Comic Sans MS","Comic Sans",cursive;
+  color: #5a5a5a;
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive;
 }
 
 .akula {
@@ -1315,11 +1304,11 @@ blockquote.brass {
 
 .squeakish {
   color: #f54298;
-  font-family: Arial
+  font-family: Arial;
 }
 
 .rough {
-  font-family: "Trebuchet MS", cursive, sans-serif;
+  font-family: 'Trebuchet MS', cursive, sans-serif;
 }
 
 .say_quote {
@@ -1327,7 +1316,7 @@ blockquote.brass {
 }
 
 .terminus {
-  font-family: "Times New Roman", Times, serif, sans-serif
+  font-family: 'Times New Roman', Times, serif, sans-serif;
 }
 
 .interface {
@@ -1335,7 +1324,6 @@ blockquote.brass {
 }
 
 /* HELPER CLASSES */
-
 
 .text-normal {
   font-weight: normal;

@@ -1,21 +1,27 @@
-import { useBackend } from "../../backend";
-import { Button, LabeledList, ProgressBar, Section, Stack } from "../../components";
-import { Window } from "../../layouts";
-import { ByondAtomColor } from "../common/Color";
+import { useBackend } from '../../backend';
+import {
+  Button,
+  LabeledList,
+  ProgressBar,
+  Section,
+  Stack,
+} from '../../components';
+import { Window } from '../../layouts';
+import { ByondAtomColor } from '../common/Color';
 
 interface IcecreamCartData {
   baseIngredients: {
-    milk: number,
-    flour: number,
-    sugar: number,
-    ice: number,
+    milk: number;
+    flour: number;
+    sugar: number;
+    ice: number;
   };
   sources: {
-    name: string,
-    volume: number,
-    maxVolume: number,
-    color: ByondAtomColor,
-    ref: string,
+    name: string;
+    volume: number;
+    maxVolume: number;
+    color: ByondAtomColor;
+    ref: string;
   }[];
   scoopSource: number | null;
 }
@@ -32,16 +38,36 @@ export const IcecreamCart = (props, context) => {
               <Section title="Base Ingredients">
                 <LabeledList>
                   <LabeledList.Item label="Flour">
-                    <ProgressBar width="100%" value={data.baseIngredients.flour / 60}>{data.baseIngredients.flour}u</ProgressBar>
+                    <ProgressBar
+                      width="100%"
+                      value={data.baseIngredients.flour / 60}
+                    >
+                      {data.baseIngredients.flour}u
+                    </ProgressBar>
                   </LabeledList.Item>
                   <LabeledList.Item label="Ice">
-                    <ProgressBar width="100%" value={data.baseIngredients.ice / 60}>{data.baseIngredients.ice}u</ProgressBar>
+                    <ProgressBar
+                      width="100%"
+                      value={data.baseIngredients.ice / 60}
+                    >
+                      {data.baseIngredients.ice}u
+                    </ProgressBar>
                   </LabeledList.Item>
                   <LabeledList.Item label="Milk">
-                    <ProgressBar width="100%" value={data.baseIngredients.milk / 60}>{data.baseIngredients.milk}u</ProgressBar>
+                    <ProgressBar
+                      width="100%"
+                      value={data.baseIngredients.milk / 60}
+                    >
+                      {data.baseIngredients.milk}u
+                    </ProgressBar>
                   </LabeledList.Item>
                   <LabeledList.Item label="Sugar">
-                    <ProgressBar width="100%" value={data.baseIngredients.sugar / 60}>{data.baseIngredients.sugar}u</ProgressBar>
+                    <ProgressBar
+                      width="100%"
+                      value={data.baseIngredients.sugar / 60}
+                    >
+                      {data.baseIngredients.sugar}u
+                    </ProgressBar>
                   </LabeledList.Item>
                 </LabeledList>
               </Section>
@@ -54,20 +80,23 @@ export const IcecreamCart = (props, context) => {
                   <Stack.Item key={s.ref}>
                     <Stack>
                       <Stack.Item>
-                        <Button selected={data.scoopSource === i + 1}
+                        <Button
+                          selected={data.scoopSource === i + 1}
                           content="Select"
-                          onClick={() => act('selectProduce', { index: i + 1 })} />
+                          onClick={() => act('selectProduce', { index: i + 1 })}
+                        />
                       </Stack.Item>
-                      <Stack.Item>
-                        {s.name}
-                      </Stack.Item>
+                      <Stack.Item>{s.name}</Stack.Item>
                       <Stack.Item grow={1}>
                         <ProgressBar value={s.volume / s.maxVolume}>
                           {s.volume}u
                         </ProgressBar>
                       </Stack.Item>
                       <Stack.Item>
-                        <Button.Confirm content="Eject" onClick={() => act('ejectSource', { index: i + 1 })} />
+                        <Button.Confirm
+                          content="Eject"
+                          onClick={() => act('ejectSource', { index: i + 1 })}
+                        />
                       </Stack.Item>
                     </Stack>
                   </Stack.Item>
@@ -77,8 +106,13 @@ export const IcecreamCart = (props, context) => {
           </Stack.Item>
           <Stack.Item>
             <Section>
-              <Button.Confirm color="transparent" textAlign="center" content="Make Cone" fluid
-                onClick={() => act('produceCone')} />
+              <Button.Confirm
+                color="transparent"
+                textAlign="center"
+                content="Make Cone"
+                fluid
+                onClick={() => act('produceCone')}
+              />
             </Section>
           </Stack.Item>
         </Stack>

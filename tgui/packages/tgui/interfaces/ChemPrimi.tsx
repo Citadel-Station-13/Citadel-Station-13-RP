@@ -55,7 +55,7 @@ type AnalyzeData = {
   description: string;
   metaRate: number;
   overD: number;
-}
+};
 
 // TODO: Universal type for assets. @Zandario
 type StyleData = {
@@ -64,15 +64,12 @@ type StyleData = {
   title: string;
 };
 
-
 export const ChemPrimi = (props, context) => {
   const { data } = useBackend<ChemMasterData>(context);
   const { screen } = data;
   return (
     <Window width={465} height={550}>
-      <Window.Content scrollable>
-        {<ChemPrimiContent />}
-      </Window.Content>
+      <Window.Content scrollable>{<ChemPrimiContent />}</Window.Content>
     </Window>
   );
 };
@@ -106,8 +103,10 @@ const ChemPrimiContent = (props, context) => {
                 content="Eject"
                 onClick={() => act('eject')}
               />
-            </>)
-        }>
+            </>
+          )
+        }
+      >
         {!is_beaker_loaded && (
           <Box color="label" mt="3px" mb="5px">
             No beaker loaded.
@@ -142,7 +141,8 @@ const ChemPrimiContent = (props, context) => {
               onClick={() => act('toggleMode')}
             />
           </>
-        }>
+        }
+      >
         {buffer_contents.length === 0 && (
           <Box color="label" mt="3px" mb="5px">
             Buffer is empty.
@@ -181,7 +181,8 @@ const ChemicalBufferEntry = (props, context) => {
               id: chemical.id,
               amount: 1,
               to: transferTo,
-            })}
+            })
+          }
         />
         <Button
           content="5"
@@ -190,7 +191,8 @@ const ChemicalBufferEntry = (props, context) => {
               id: chemical.id,
               amount: 5,
               to: transferTo,
-            })}
+            })
+          }
         />
         <Button
           content="10"
@@ -199,7 +201,8 @@ const ChemicalBufferEntry = (props, context) => {
               id: chemical.id,
               amount: 10,
               to: transferTo,
-            })}
+            })
+          }
         />
         <Button
           content="30"
@@ -208,7 +211,8 @@ const ChemicalBufferEntry = (props, context) => {
               id: chemical.id,
               amount: 30,
               to: transferTo,
-            })}
+            })
+          }
         />
         <Button
           content="60"
@@ -217,7 +221,8 @@ const ChemicalBufferEntry = (props, context) => {
               id: chemical.id,
               amount: 60,
               to: transferTo,
-            })}
+            })
+          }
         />
         <Button
           content="All"
@@ -226,10 +231,10 @@ const ChemicalBufferEntry = (props, context) => {
               id: chemical.id,
               amount: 1000,
               to: transferTo,
-            })}
+            })
+          }
         />
       </Table.Cell>
     </Table.Row>
   );
 };
-

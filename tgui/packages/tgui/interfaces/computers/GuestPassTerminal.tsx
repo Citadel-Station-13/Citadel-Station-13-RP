@@ -3,11 +3,19 @@
  * @license MIT
  */
 
-import { useBackend, useLocalState } from "../../backend";
-import { Button, Input, LabeledList, NoticeBox, NumberInput, Section, Stack } from "../../components";
-import { Window } from "../../layouts";
-import { Access, AccessId, AccessListMod } from "../common/Access";
-import { IDCard, IDCardOrDefault, IDSlot } from "../common/IDCard";
+import { useBackend, useLocalState } from '../../backend';
+import {
+  Button,
+  Input,
+  LabeledList,
+  NoticeBox,
+  NumberInput,
+  Section,
+  Stack,
+} from '../../components';
+import { Window } from '../../layouts';
+import { Access, AccessId, AccessListMod } from '../common/Access';
+import { IDCard, IDCardOrDefault, IDSlot } from '../common/IDCard';
 
 interface GuestPassTerminalData {
   auth?: IDCard;
@@ -31,45 +39,71 @@ export const GuestPassTerminal = (props, context) => {
         <Stack vertical fill>
           <Stack.Item>
             <Section title="Authentication">
-              <IDSlot card={IDCardOrDefault(data.auth)} onClick={() => act('eject')} />
+              <IDSlot
+                card={IDCardOrDefault(data.auth)}
+                onClick={() => act('eject')}
+              />
             </Section>
           </Stack.Item>
           <Stack.Item>
             <Section title="Guest">
               <LabeledList>
                 <LabeledList.Item label="Name">
-                  <Input width="100%" value={data.guestName} placeholder="Name"
-                    onInput={(e, val) => act('name', { value: val })} />
+                  <Input
+                    width="100%"
+                    value={data.guestName}
+                    placeholder="Name"
+                    onInput={(e, val) => act('name', { value: val })}
+                  />
                 </LabeledList.Item>
                 <LabeledList.Item label="Reason">
-                  <Input width="100%" value={data.guestReason} placeholder="Reason"
-                    onInput={(e, val) => act('reason', { value: val })} />
+                  <Input
+                    width="100%"
+                    value={data.guestReason}
+                    placeholder="Reason"
+                    onInput={(e, val) => act('reason', { value: val })}
+                  />
                 </LabeledList.Item>
                 <LabeledList.Item label="Duration (minutes)">
-                  <NumberInput width="100%" step={1} value={data.duration}
-                    minValue={data.durationMin} maxValue={data.durationMax}
-                    onChange={(e, val) => act('duration', { value: val })} />
+                  <NumberInput
+                    width="100%"
+                    step={1}
+                    value={data.duration}
+                    minValue={data.durationMin}
+                    maxValue={data.durationMax}
+                    onChange={(e, val) => act('duration', { value: val })}
+                  />
                 </LabeledList.Item>
               </LabeledList>
             </Section>
           </Stack.Item>
-          {!!data.auth && (
-            data.allowed.length > 0? (
+          {!!data.auth &&
+            (data.allowed.length > 0 ? (
               <>
                 <Stack.Item grow>
                   <AccessListMod
                     accessShown={data.allowed}
-                    selected={data.selected} access={data.access} uid="1"
-                    fill set={(id) => act('toggle', { value: id })}
+                    selected={data.selected}
+                    access={data.access}
+                    uid="1"
+                    fill
+                    set={(id) => act('toggle', { value: id })}
                     grant={(cat) => act('grant', { category: cat })}
-                    deny={(cat) => act('deny', { category: cat })} />
+                    deny={(cat) => act('deny', { category: cat })}
+                  />
                 </Stack.Item>
                 <Stack.Item>
                   <Section>
-                    <Button.Confirm textAlign="center"
-                      color="transparent" fluid disabled={data.printsLeft <= 0 || !data.auth}
-                      content={data.printsLeft > 0? "Issue" : "Printer Recharging"}
-                      onClick={() => act('issue')} />
+                    <Button.Confirm
+                      textAlign="center"
+                      color="transparent"
+                      fluid
+                      disabled={data.printsLeft <= 0 || !data.auth}
+                      content={
+                        data.printsLeft > 0 ? 'Issue' : 'Printer Recharging'
+                      }
+                      onClick={() => act('issue')}
+                    />
                   </Section>
                 </Stack.Item>
               </>
@@ -79,8 +113,7 @@ export const GuestPassTerminal = (props, context) => {
                   <NoticeBox>No access found on card.</NoticeBox>
                 </Section>
               </Stack.Item>
-            )
-          )}
+            ))}
           {!data.auth && (
             <Stack.Item grow>
               <Section fill>

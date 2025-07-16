@@ -7,7 +7,7 @@
 import { pingFail, pingReply, pingSoft, pingSuccess } from './actions';
 import { PING_QUEUE_SIZE, PING_TIMEOUT } from './constants';
 
-export const pingMiddleware = store => {
+export const pingMiddleware = (store) => {
   let initialized = false;
   let index = 0;
   const pings: ({ sentAt: number } | null)[] = [];
