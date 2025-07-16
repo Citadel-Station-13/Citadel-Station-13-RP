@@ -14,6 +14,7 @@
 	var/desc = "A fragment of forbidden knowledge. What's in the box? No one knows."
 	/// long-desc / lore in UI
 	/// * As unsafe HTML. Don't let players write this, please.
+	/// * This will be rendered in a div with as much size as we can afford it.
 	var/lore_as_unsafe_html
 	/// category, for list view
 	var/category = "???"
@@ -31,20 +32,20 @@
 	var/ui_icon_state
 
 	/// unlock recipe ids
-	/// * superceding another id is not supported at this time; please make sure no two
-	///   knowledge nodes can have the same ID.
+	/// * superceding another id is not supported at this time; you can't 'replace'
+	///   what's already there.
 	var/list/grant_eldritch_recipe_ids
 	/// unlock passive ids
-	/// * superceding another id is not supported at this time; please make sure no two
-	///   knowledge nodes can have the same ID.
+	/// * superceding another id is not supported at this time; you can't 'replace'
+	///   what's already there.
 	var/list/grant_eldritch_passive_ids
 	/// unlock ability ids
-	/// * superceding another id is not supported at this time; please make sure no two
-	///   knowledge nodes can have the same ID.
+	/// * superceding another id is not supported at this time; you can't 'replace'
+	///   what's already there.
 	var/list/grant_eldritch_ability_ids
 
 	/// autounlock other knowledge ids once unlocked
-	/// * will not be removed once this knowledge is removed.
+	/// * will not be removed once this knowledge is removed. this is handled by holder.
 	var/list/unlock_eldritch_knowledge_ids
 
 	/// required knowledge ids
@@ -94,9 +95,25 @@
 
 /datum/prototype/eldritch_knowledge/proc/ui_serialize_knowledge()
 	var/serialized_icon = ui_icon && ui_icon_state ? icon2base64(icon(ui_icon, ui_icon_state)) : null
-	var/list/serialized_abilities
-	var/list/serialized_passives
-	var/list/serialized_recipes
+
+	var/list/serialized_abilities = list()
+	var/list/serialized_passives = list()
+	var/list/serialized_recipes = list()
+
+	// TODO: /datum/prototype/eldritch_recipe --> /datum/prototype/crafting_recipe
+	var/list/resolved_recipes = list()
+	for(var/id in grant_eldritch_recipe_ids)
+		var/datum/crafting_recipe/eldritch_recipe/resolving_recipe = GLOB.crafting_recipe_lookup[id]
+		if(istype(resolving_recipe))
+			resolved_recipes += resolving_recipe
+
+	for(var/datum/crafting_recipe/eldritch_recipe/resolved_recipe in resolved_recipes)
+		serialized_recipes[++serialized_recipes.len] = resolved_recipe.ui_serialize_recipe()
+	for(var/datum/prototype/eldritch_passive/resolved_passive in RSeldritch_passive.fetch_multi(grant_eldritch_passive_ids))
+		serialized_passives[++serialized_passives.len] = resolved_passive.ui_serialize_passive()
+	for(var/datum/prototype/eldritch_ability/resolved_ability in RSeldritch_ability.fetch_multi(grant_eldritch_ability_ids))
+		serialized_abilities[++serialized_abilities.len] = resolved_ability.ui_serialize_ability()
+
 	#warn impl
 	return list(
 		"id" = id,

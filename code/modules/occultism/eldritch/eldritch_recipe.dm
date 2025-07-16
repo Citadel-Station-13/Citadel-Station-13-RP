@@ -3,6 +3,8 @@
 
 /**
  * default-locked crafting recipes used by heretics
+ *
+ * TODO:
  */
 /datum/crafting_recipe/eldritch_recipe
 	abstract_type = /datum/crafting_recipe/eldritch_recipe

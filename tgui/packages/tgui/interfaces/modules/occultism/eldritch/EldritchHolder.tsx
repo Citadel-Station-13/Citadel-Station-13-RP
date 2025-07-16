@@ -6,11 +6,10 @@
 import { BooleanLike } from "common/react";
 import { Stack } from "../../../../components";
 import { Window } from "../../../../layouts";
+import { EldritchAbility, EldritchKnowledge, EldritchPassive, EldritchPatron, EldritchRecipe } from "./types";
+import { useBackend } from "../../../../backend";
 
 interface EldritchHolderData {
-  // is the viewer an admin? enables admin controls
-  admin: BooleanLike;
-
   repositoryKnowledge: Record<string, EldritchKnowledge>;
   repositoryPassives: Record<string, EldritchPassive>;
   repositoryAbilities: Record<string, EldritchAbility>;
@@ -29,51 +28,6 @@ interface EldritchHolderData {
   activePatron: string | null;
 }
 
-interface EldritchKnowledge {
-  id: string;
-  name: string;
-  desc: string;
-  category: string;
-  loreAsUnsafeHtml: string | null;
-  iconAsBase64: string | null;
-  secret: BooleanLike;
-  hidden: BooleanLike;
-  reqKnowledgeIds: string[] | null;
-  giveAbilities: EldritchAbility[] | null;
-  givePassives: EldritchPassive[] | null;
-  giveKnowledgeIds: string[] | null;
-  giveRecips: EldritchRecipe[] | null;
-}
-
-interface EldritchPassive {
-  id: string;
-  name: string;
-  desc: string;
-  iconAsBase64: string | null;
-}
-
-interface EldritchAbility {
-  id: string;
-  name: string;
-  desc: string;
-  iconAsBase64: string | null;
-}
-
-interface EldritchRecipe {
-  id: string;
-  name: string;
-  desc: string;
-  iconAsBase64: string | null;
-}
-
-interface EldritchPatron {
-  id: string;
-  name: string;
-  desc: string;
-  loreAsUnsafeHtml: string | null;
-  iconAsBase64: string | null;
-}
-
 interface EldritchPassiveContext {
   enabled: BooleanLike;
 }
@@ -82,6 +36,8 @@ interface EldritchAbilityContext {
 }
 
 export const EldritchHolder = (props, context) => {
+  const { act, data, config, modules } = useBackend<EldritchHolderData>(context);
+
   return (
     <Window width={800} height={800}>
       <Window.Content>
