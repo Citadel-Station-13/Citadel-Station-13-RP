@@ -2115,6 +2115,8 @@
 #include "code\game\objects\structures\props\puzzledoor.dm"
 #include "code\game\objects\structures\props\swarm.dm"
 #include "code\game\objects\structures\props\transmitter.dm"
+#include "code\game\objects\structures\roguetown\decal_fog.dm"
+#include "code\game\objects\structures\roguetown\tree.dm"
 #include "code\game\objects\structures\stool_bed_chair_nest\alien_nests.dm"
 #include "code\game\objects\structures\stool_bed_chair_nest\bed.dm"
 #include "code\game\objects\structures\stool_bed_chair_nest\chairs.dm"

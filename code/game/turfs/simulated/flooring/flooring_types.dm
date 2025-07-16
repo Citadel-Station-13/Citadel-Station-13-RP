@@ -801,6 +801,16 @@
 		'sound/effects/footstep/asteroid3.ogg',
 		'sound/effects/footstep/asteroid4.ogg'))
 
+/datum/prototype/flooring/roguetown/dirt
+	name = "dirt"
+	desc = "Soft dirt."
+	icon = 'icons/turf/flooring/roguetown/dirt.dmi'
+	icon_base = "dirt"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/asteroid1.ogg',
+		'sound/effects/footstep/asteroid2.ogg',
+		'sound/effects/footstep/asteroid3.ogg',
+		'sound/effects/footstep/asteroid4.ogg'))
 
 /datum/prototype/flooring/roguetown/rock
 	name = "hard rock"
