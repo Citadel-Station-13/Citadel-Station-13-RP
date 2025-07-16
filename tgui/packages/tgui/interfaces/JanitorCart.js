@@ -2,7 +2,7 @@ import { useBackend } from "../backend";
 import { Button, Icon } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const JanitorCart = (props, context) => {
+export const JanitorCart = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -110,7 +110,7 @@ const iconkeysToIcons = {
   "signs": "sign",
 };
 
-const JanicartIcon = (props, context) => {
+const JanicartIcon = (props) => {
   const { data } = useBackend(context);
 
   const {

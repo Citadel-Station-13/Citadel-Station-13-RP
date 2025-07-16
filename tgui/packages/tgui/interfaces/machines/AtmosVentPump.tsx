@@ -128,7 +128,7 @@ interface AtmosVentPumpData {
   name: string;
 }
 
-export const AtmosVentPump = (props, context) => {
+export const AtmosVentPump = (props) => {
   let { data, act } = useBackend<AtmosVentPumpData>();
 
   return (

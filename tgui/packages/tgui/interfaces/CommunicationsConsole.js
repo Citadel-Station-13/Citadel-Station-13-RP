@@ -3,7 +3,7 @@ import { useBackend } from '../backend';
 import { Button, LabeledList, Box, Section } from 'tgui-core/components';
 import { Window } from '../layouts';
 
-export const CommunicationsConsole = (props, context) => {
+export const CommunicationsConsole = (props) => {
   return (
     <Window width={400} height={600} resizable>
       <Window.Content scrollable>
@@ -13,7 +13,7 @@ export const CommunicationsConsole = (props, context) => {
   );
 };
 
-export const CommunicationsConsoleContent = (props, context) => {
+export const CommunicationsConsoleContent = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -46,7 +46,7 @@ export const CommunicationsConsoleContent = (props, context) => {
   );
 };
 
-const CommunicationsConsoleMain = (props, context) => {
+const CommunicationsConsoleMain = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -160,7 +160,7 @@ const CommunicationsConsoleMain = (props, context) => {
   );
 };
 
-const CommunicationsConsoleAuth = (props, context) => {
+const CommunicationsConsoleAuth = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -236,7 +236,7 @@ const CommunicationsConsoleAuth = (props, context) => {
   );
 };
 
-const CommunicationsConsoleMessage = (props, context) => {
+const CommunicationsConsoleMessage = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -298,7 +298,7 @@ const CommunicationsConsoleMessage = (props, context) => {
   );
 };
 
-const CommunicationsConsoleStatusDisplay = (props, context) => {
+const CommunicationsConsoleStatusDisplay = (props) => {
   const { act, data } = useBackend(context);
 
   const {

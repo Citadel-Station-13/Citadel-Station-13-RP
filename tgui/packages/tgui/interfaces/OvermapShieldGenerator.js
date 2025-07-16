@@ -3,7 +3,7 @@ import { useBackend } from "../backend";
 import { Box, Button, LabeledList, ProgressBar, Section, AnimatedNumber } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const OvermapShieldGenerator = (props, context) => {
+export const OvermapShieldGenerator = (props) => {
   return (
     <Window width={500} height={760} resizable>
       <Window.Content scrollable>
@@ -13,7 +13,7 @@ export const OvermapShieldGenerator = (props, context) => {
   );
 };
 
-const OvermapShieldGeneratorContent = (props, context) => {
+const OvermapShieldGeneratorContent = (props) => {
   const { act, data } = useBackend(context);
   const {
     modes,
@@ -57,7 +57,7 @@ const OvermapShieldGeneratorContent = (props, context) => {
   );
 };
 
-const OvermapShieldGeneratorStatus = (props, context) => {
+const OvermapShieldGeneratorStatus = (props) => {
   const { act, data } = useBackend(context);
   const {
     running,
@@ -152,7 +152,7 @@ const OvermapShieldGeneratorStatus = (props, context) => {
   );
 };
 
-const OvermapShieldGeneratorControls = (props, context) => {
+const OvermapShieldGeneratorControls = (props) => {
   const { act, data } = useBackend(context);
   const {
     running,

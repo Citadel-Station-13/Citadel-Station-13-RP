@@ -2,7 +2,7 @@ import { useBackend } from "../backend";
 import { Box, Button, LabeledList, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const pAIMedrecords = (props, context) => {
+export const pAIMedrecords = (props) => {
   const { act, data } = useBackend(context);
 
   const {

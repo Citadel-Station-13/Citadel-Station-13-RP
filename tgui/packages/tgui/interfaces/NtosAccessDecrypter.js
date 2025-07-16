@@ -3,7 +3,7 @@ import { NtosWindow } from "../layouts";
 import { IdentificationComputerRegions } from "./computers/IdentificationComputer";
 import { NoticeBox, Box, Section, Button } from "tgui-core/components";
 
-export const NtosAccessDecrypter = (props, context) => {
+export const NtosAccessDecrypter = (props) => {
   const { act, data } = useBackend(context);
 
   const {

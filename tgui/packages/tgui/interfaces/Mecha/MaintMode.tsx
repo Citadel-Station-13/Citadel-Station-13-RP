@@ -17,7 +17,7 @@ const MECHA_MAINT_PANELS = {
   },
 };
 
-export const MaintMode = (props, context) => {
+export const MaintMode = (props) => {
   const [screen, setPanel] = useLocalState(context, 'screen', MECHA_MAINT_PANELS.main);
   const Component = screen.component();
   return (
@@ -40,7 +40,7 @@ export const MaintMode = (props, context) => {
   );
 };
 
-const MainPanel = (props, context) => {
+const MainPanel = (props) => {
   const { act, data } = useBackend<MaintData>();
   const [screen, setPanel] = useLocalState(context, 'screen', MECHA_MAINT_PANELS.main);
   const {
@@ -65,7 +65,7 @@ const MainPanel = (props, context) => {
   );
 };
 
-const MaintEnabled = (props, context) => {
+const MaintEnabled = (props) => {
   const { act, data } = useBackend<MaintData>();
   const [screen, setPanel] = useLocalState(context, 'screen', MECHA_MAINT_PANELS.main);
   return (
@@ -107,7 +107,7 @@ const MaintEnabled = (props, context) => {
   );
 };
 
-const StockPartsPanel = (props, context) => {
+const StockPartsPanel = (props) => {
   const { act, data } = useBackend<MaintData>();
   const {
     cell,
@@ -164,7 +164,7 @@ const StockPartsPanel = (props, context) => {
   );
 };
 
-const AccessPanel = (props, context) => {
+const AccessPanel = (props) => {
   const { act, data } = useBackend<MaintData>();
   const {
     idcard_access,

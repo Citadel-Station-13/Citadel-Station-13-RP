@@ -14,7 +14,7 @@ type Info = {
   nationColor: string;
 };
 
-export const AntagInfoSeparatist = (props, context) => {
+export const AntagInfoSeparatist = (props) => {
   const { data } = useBackend<Info>();
   const {
     nationColor,
@@ -37,7 +37,7 @@ export const AntagInfoSeparatist = (props, context) => {
   );
 };
 
-const IntroductionObjectives = (props, context) => {
+const IntroductionObjectives = (props) => {
   const { data } = useBackend<Info>();
   const {
     nation,
@@ -56,7 +56,7 @@ const IntroductionObjectives = (props, context) => {
   );
 };
 
-const FrequentlyAskedQuestions = (props, context) => {
+const FrequentlyAskedQuestions = (props) => {
   const { data } = useBackend<Info>();
   const {
     nation,
@@ -99,7 +99,7 @@ const FrequentlyAskedQuestions = (props, context) => {
   );
 };
 
-const ObjectivePrintout = (props, context) => {
+const ObjectivePrintout = (props) => {
   const { data } = useBackend<Info>();
   const {
     nation,

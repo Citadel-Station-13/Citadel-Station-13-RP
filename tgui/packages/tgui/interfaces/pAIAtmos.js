@@ -17,7 +17,7 @@ const getItemColor = (value, min2, min1, max1, max2) => {
   return "good";
 };
 
-export const pAIAtmos = (props, context) => {
+export const pAIAtmos = (props) => {
   const { act, data } = useBackend(context);
 
   const {

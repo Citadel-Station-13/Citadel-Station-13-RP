@@ -3,7 +3,7 @@ import { useBackend, useLocalState } from '../backend';
 import { Button, NoticeBox, Section, Stack, Input } from 'tgui-core/components';
 import { NtosWindow } from '../layouts';
 
-export const NtosPortraitPrinter = (props, context) => {
+export const NtosPortraitPrinter = (props) => {
   const { act, data } = useBackend(context);
   const [listIndex, setListIndex] = useLocalState(context, 'listIndex', 0);
   const {

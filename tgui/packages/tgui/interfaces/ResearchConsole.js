@@ -4,7 +4,7 @@ import { useBackend, useLocalState } from '../backend';
 import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section, Tabs, Input, NumberInput, Table, Divider } from "tgui-core/components";
 import { Window } from '../layouts';
 
-const ResearchConsoleViewResearch = (props, context) => {
+const ResearchConsoleViewResearch = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -36,7 +36,7 @@ const ResearchConsoleViewResearch = (props, context) => {
   );
 };
 
-const PaginationTitle = (props, context) => {
+const PaginationTitle = (props) => {
   const { data } = useBackend(context);
 
   const {
@@ -52,7 +52,7 @@ const PaginationTitle = (props, context) => {
   return title;
 };
 
-const PaginationChevrons = (props, context) => {
+const PaginationChevrons = (props) => {
   const { act } = useBackend(context);
 
   const {
@@ -74,7 +74,7 @@ const PaginationChevrons = (props, context) => {
   );
 };
 
-const ResearchConsoleViewDesigns = (props, context) => {
+const ResearchConsoleViewDesigns = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -113,7 +113,7 @@ const ResearchConsoleViewDesigns = (props, context) => {
   );
 };
 
-const TechDisk = (props, context) => {
+const TechDisk = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -213,7 +213,7 @@ const TechDisk = (props, context) => {
   );
 };
 
-const DataDisk = (props, context) => {
+const DataDisk = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -325,7 +325,7 @@ const DataDisk = (props, context) => {
   );
 };
 
-const ResearchConsoleDisk = (props, context) => {
+const ResearchConsoleDisk = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -349,7 +349,7 @@ const ResearchConsoleDisk = (props, context) => {
   );
 };
 
-const ResearchConsoleDestructiveAnalyzer = (props, context) => {
+const ResearchConsoleDestructiveAnalyzer = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -413,7 +413,7 @@ const ResearchConsoleDestructiveAnalyzer = (props, context) => {
   );
 };
 
-const ResearchConsoleBuildMenu = (props, context) => {
+const ResearchConsoleBuildMenu = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -487,7 +487,7 @@ const ResearchConsoleBuildMenu = (props, context) => {
 };
 
 /* Lathe + Circuit Imprinter all in one */
-const ResearchConsoleConstructor = (props, context) => {
+const ResearchConsoleConstructor = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -720,7 +720,7 @@ const ResearchConsoleConstructor = (props, context) => {
   );
 };
 
-const ResearchConsoleSettings = (props, context) => {
+const ResearchConsoleSettings = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -849,7 +849,7 @@ const menus = [
   { name: "Disk Operations", icon: "save", template: <ResearchConsoleDisk /> },
 ];
 
-export const ResearchConsole = (props, context) => {
+export const ResearchConsole = (props) => {
   const { act, data } = useBackend(context);
 
   const {

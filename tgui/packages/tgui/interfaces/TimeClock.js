@@ -1,10 +1,10 @@
 import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
-import { Box, Button, Flex, LabeledList, Section, NoticeBox } from "../components";
+import { Box, Button, Flex, LabeledList, Section, NoticeBox } from "tgui-core/components";
 import { Window } from "../layouts";
 import { RankIcon } from "./common/RankIcon";
 
-export const TimeClock = (props, context) => {
+export const TimeClock = (props) => {
   const { act, data } = useBackend(context);
 
   const {

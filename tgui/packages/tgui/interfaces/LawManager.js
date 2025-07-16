@@ -3,7 +3,7 @@ import { useBackend, useSharedState } from "../backend";
 import { Button, LabeledList, Section, Tabs, NoticeBox, Table, Input } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const LawManager = (props, context) => {
+export const LawManager = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -21,7 +21,7 @@ export const LawManager = (props, context) => {
   );
 };
 
-const LawManagerContent = (props, context) => {
+const LawManagerContent = (props) => {
   const [tabIndex, setTabIndex] = useSharedState(context, 'lawsTabIndex', 0);
 
   return (
@@ -44,7 +44,7 @@ const LawManagerContent = (props, context) => {
   );
 };
 
-const LawManagerLaws = (props, context) => {
+const LawManagerLaws = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -194,7 +194,7 @@ const LawManagerLaws = (props, context) => {
   );
 };
 
-const LawsTable = (props, context) => {
+const LawsTable = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -269,7 +269,7 @@ const LawsTable = (props, context) => {
 };
 
 
-const LawManagerLawSets = (props, context) => {
+const LawManagerLawSets = (props) => {
   const { act, data } = useBackend(context);
 
   const {

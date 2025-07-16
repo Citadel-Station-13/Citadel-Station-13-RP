@@ -4,7 +4,7 @@ import { useBackend } from "../backend";
 import { Box, Button, LabeledList, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const GuestPass = (props, context) => {
+export const GuestPass = (props) => {
   const { act, data } = useBackend(context);
 
   const {

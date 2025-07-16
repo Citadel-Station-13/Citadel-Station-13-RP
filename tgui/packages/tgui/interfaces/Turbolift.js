@@ -1,9 +1,9 @@
 import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
-import { Button, Flex, Section } from "../components";
+import { Button, Flex, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const Turbolift = (props, context) => {
+export const Turbolift = (props) => {
   const { act, data } = useBackend(context);
 
   const {

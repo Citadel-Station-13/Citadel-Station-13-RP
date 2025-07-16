@@ -116,7 +116,7 @@ const GasSearchBar = (
   );
 };
 
-const GasHandbook = (props, context) => {
+const GasHandbook = (props) => {
   const { act, data } = useBackend<{ gasInfo: Gas[] }>();
   const { gasInfo } = data;
   const [activeGasId, setActiveGasId] = useLocalState(
@@ -172,7 +172,7 @@ const GasHandbook = (props, context) => {
   );
 };
 
-const ReactionHandbook = (props, context) => {
+const ReactionHandbook = (props) => {
   const { act, data } = useBackend<{ reactionInfo: Reaction[] }>();
   const { reactionInfo } = data;
   const [activeGasId, setActiveGasId] = useLocalState(

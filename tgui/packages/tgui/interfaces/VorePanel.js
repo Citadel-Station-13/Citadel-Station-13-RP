@@ -1,7 +1,7 @@
 import { capitalize } from 'common/string';
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from "../backend";
-import { Box, Button, Flex, Collapsible, Icon, LabeledList, NoticeBox, Section, Tabs } from "../components";
+import { Box, Button, Flex, Collapsible, Icon, LabeledList, NoticeBox, Section, Tabs } from "tgui-core/components";
 import { Window } from "../layouts";
 import { classes } from 'common/react';
 
@@ -46,7 +46,7 @@ const digestModeToPreyMode = {
  *  - User Preferences, where you can adjust all of your vore preferences on the
  *  - fly.
  */
-export const VorePanel = (props, context) => {
+export const VorePanel = (props) => {
   const { act, data } = useBackend(context);
   return (
     <Window width={700} height={660} theme="abstract" resizable>
@@ -74,7 +74,7 @@ export const VorePanel = (props, context) => {
   );
 };
 
-const VoreInsidePanel = (props, context) => {
+const VoreInsidePanel = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -130,7 +130,7 @@ const VoreInsidePanel = (props, context) => {
   );
 };
 
-const VoreBellySelectionAndCustomization = (props, context) => {
+const VoreBellySelectionAndCustomization = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -166,7 +166,7 @@ const VoreBellySelectionAndCustomization = (props, context) => {
 /**
  * Subtemplate of VoreBellySelectionAndCustomization
  */
-const VoreSelectedBelly = (props, context) => {
+const VoreSelectedBelly = (props) => {
   const { act } = useBackend(context);
 
   const { belly } = props;
@@ -234,7 +234,7 @@ const VoreSelectedBelly = (props, context) => {
   );
 };
 
-const VoreSelectedBellyControls = (props, context) => {
+const VoreSelectedBellyControls = (props) => {
   const { act } = useBackend(context);
 
   const { belly } = props;
@@ -297,7 +297,7 @@ const VoreSelectedBellyControls = (props, context) => {
   );
 };
 
-const VoreSelectedBellyDescriptions = (props, context) => {
+const VoreSelectedBellyDescriptions = (props) => {
   const { act } = useBackend(context);
 
   const { belly } = props;
@@ -415,7 +415,7 @@ const VoreSelectedBellyDescriptions = (props, context) => {
   );
 };
 
-const VoreSelectedBellyOptions = (props, context) => {
+const VoreSelectedBellyOptions = (props) => {
   const { act } = useBackend(context);
 
   const { belly } = props;
@@ -535,7 +535,7 @@ const VoreSelectedBellyOptions = (props, context) => {
   );
 };
 
-const VoreSelectedBellySounds = (props, context) => {
+const VoreSelectedBellySounds = (props) => {
   const { act } = useBackend(context);
 
   const { belly } = props;
@@ -594,7 +594,7 @@ const VoreSelectedBellySounds = (props, context) => {
   );
 };
 
-const VoreSelectedBellyVisuals = (props, context) => {
+const VoreSelectedBellyVisuals = (props) => {
   const { act } = useBackend(context);
 
   const { belly } = props;
@@ -646,7 +646,7 @@ const VoreSelectedBellyVisuals = (props, context) => {
   );
 };
 
-const VoreSelectedBellyInteractions = (props, context) => {
+const VoreSelectedBellyInteractions = (props) => {
   const { act } = useBackend(context);
 
   const { belly } = props;
@@ -714,7 +714,7 @@ const VoreSelectedBellyInteractions = (props, context) => {
   );
 };
 
-const VoreContentsPanel = (props, context) => {
+const VoreContentsPanel = (props) => {
   const { act, data } = useBackend(context);
   const {
     show_pictures,
@@ -788,7 +788,7 @@ const VoreContentsPanel = (props, context) => {
   );
 };
 
-const VoreUserPreferences = (props, context) => {
+const VoreUserPreferences = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -1130,7 +1130,7 @@ const VoreUserPreferences = (props, context) => {
   );
 };
 
-const VoreUserPreferenceItem = (props, context) => {
+const VoreUserPreferenceItem = (props) => {
   const { act } = useBackend(context);
 
   const { spec, ...rest } = props;

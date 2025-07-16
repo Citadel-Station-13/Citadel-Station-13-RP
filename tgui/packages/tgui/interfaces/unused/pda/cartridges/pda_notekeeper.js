@@ -1,8 +1,8 @@
 /* eslint react/no-danger: "off" */
 import { useBackend } from "../../../../backend";
-import { Box, Button, Section } from "../../../../components";
+import { Box, Button, Section } from "tgui-core/components";
 
-export const pda_notekeeper = (props, context) => {
+export const pda_notekeeper = (props) => {
   const { act, data } = useBackend(context);
 
   const {

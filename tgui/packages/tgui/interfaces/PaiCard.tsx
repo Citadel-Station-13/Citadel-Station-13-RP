@@ -94,7 +94,7 @@ const PaiDownload = (_, context) => {
  * had to make the comments and descriptions a separate tab.
  * In longer entries, it is much more readable.
  */
-const CandidateDisplay = (props, context) => {
+const CandidateDisplay = (props) => {
   const { act } = useBackend<PaiCardData>();
   const { candidate, index, tabInChar } = props;
   const { comments, description, key, name } = candidate;

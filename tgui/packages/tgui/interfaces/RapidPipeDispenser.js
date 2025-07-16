@@ -40,7 +40,7 @@ const TOOLS = [
   },
 ];
 
-export const ColorItem = (props, context) => {
+export const ColorItem = (props) => {
   const { act, data } = useBackend(context);
   const {
     selected_color,
@@ -68,7 +68,7 @@ export const ColorItem = (props, context) => {
   );
 };
 
-const ModeItem = (props, context) => {
+const ModeItem = (props) => {
   const { act, data } = useBackend(context);
   const {
     mode,
@@ -92,7 +92,7 @@ const ModeItem = (props, context) => {
   );
 };
 
-const CategoryItem = (props, context) => {
+const CategoryItem = (props) => {
   const { act, data } = useBackend(context);
   const {
     category: rootCategoryIndex,
@@ -114,7 +114,7 @@ const CategoryItem = (props, context) => {
   );
 };
 
-const SelectionSection = (props, context) => {
+const SelectionSection = (props) => {
   const { act, data } = useBackend(context);
   return (
     <Section>
@@ -127,7 +127,7 @@ const SelectionSection = (props, context) => {
   );
 };
 
-export const LayerSelect = (props, context) => {
+export const LayerSelect = (props) => {
   const { act, data } = useBackend(context);
   const {
     piping_layer,
@@ -148,7 +148,7 @@ export const LayerSelect = (props, context) => {
   );
 };
 
-const PreviewSelect = (props, context) => {
+const PreviewSelect = (props) => {
   const { act, data } = useBackend(context);
   const {
     category: rootCategoryIndex,
@@ -185,7 +185,7 @@ const PreviewSelect = (props, context) => {
   );
 };
 
-const LayerSection = (props, context) => {
+const LayerSection = (props) => {
   const { act, data } = useBackend(context);
   const {
     category: rootCategoryIndex,
@@ -202,7 +202,7 @@ const LayerSection = (props, context) => {
   );
 };
 
-const PipeTypeSection = (props, context) => {
+const PipeTypeSection = (props) => {
   const { act, data } = useBackend(context);
   const {
     categories = [],
@@ -245,7 +245,7 @@ const PipeTypeSection = (props, context) => {
   );
 };
 
-export const RapidPipeDispenser = (props, context) => {
+export const RapidPipeDispenser = (props) => {
   const { act, data } = useBackend(context);
   const {
     category: rootCategoryIndex,

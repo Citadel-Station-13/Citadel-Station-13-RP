@@ -44,7 +44,7 @@ interface DispenserMacro {
   index: number;
 }
 
-export const ChemDispenser = (props, context) => {
+export const ChemDispenser = (props) => {
   const { act, data } = useBackend<ChemDispenserData>();
   const [macro, setMacro] = useSharedState<Array<[string, number]> | undefined>(context, 'recording', undefined);
   const isRecording = () => (macro !== undefined);

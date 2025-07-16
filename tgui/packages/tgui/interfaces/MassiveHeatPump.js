@@ -4,7 +4,7 @@ import { formatPower, formatSiUnit } from '../format';
 import { Fragment } from 'inferno';
 import { Window } from "../layouts";
 
-export const MassiveHeatPump = (props, context) => {
+export const MassiveHeatPump = (props) => {
   const { act, data } = useBackend(context);
 
   const {

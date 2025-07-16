@@ -1,8 +1,8 @@
 import { useBackend } from "../backend";
-import { Box, Button, LabeledList, ProgressBar, Section } from "../components";
+import { Box, Button, LabeledList, ProgressBar, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const XenoarchArtifactHarvester = (props, context) => {
+export const XenoarchArtifactHarvester = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -91,7 +91,7 @@ export const XenoarchArtifactHarvester = (props, context) => {
   );
 };
 
-const ArtHarvestBatteryProgress = (props, context) => {
+const ArtHarvestBatteryProgress = (props) => {
   const { act, data } = useBackend(context);
 
   const {

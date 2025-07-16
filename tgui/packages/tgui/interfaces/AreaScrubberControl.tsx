@@ -4,7 +4,7 @@ import { Window } from '../layouts';
 import { toTitleCase } from 'common/string';
 
 
-export const AreaScrubberControl = (props, context) => {
+export const AreaScrubberControl = (props) => {
   const { act, data } = useBackend(context);
 
   const [
@@ -84,7 +84,7 @@ export const AreaScrubberControl = (props, context) => {
   );
 };
 
-const BigScrubber = (props, context) => {
+const BigScrubber = (props) => {
   const { act } = useBackend(context);
 
   const {

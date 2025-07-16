@@ -22,7 +22,7 @@ const validThemes = [
   // "wizard",
 ];
 
-export const NIF = (props, context) => {
+export const NIF = (props) => {
   const { act, config, data } = useBackend(context);
 
   const {
@@ -147,7 +147,7 @@ const getNutritionText = (nutrition, isSynthetic) => {
   return "Power failure imminent.";
 };
 
-const NIFMain = (props, context) => {
+const NIFMain = (props) => {
   const { act, config, data } = useBackend(context);
 
   const {
@@ -236,7 +236,7 @@ const NIFMain = (props, context) => {
   );
 };
 
-const NIFSettings = (props, context) => {
+const NIFSettings = (props) => {
   const { act, data } = useBackend(context);
 
   const {

@@ -35,7 +35,7 @@ interface BioscanLevel {
   complex_dead: number;
 }
 
-export const BioscanConsole = (props, context) => {
+export const BioscanConsole = (props) => {
   let { act, data } = useBackend<BioscanConsoleData>();
   return (
     <Window

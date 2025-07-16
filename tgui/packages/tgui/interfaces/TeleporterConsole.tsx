@@ -13,7 +13,7 @@ interface TeleporterConsoleContext {
   "valid_destinations",
 }
 
-export const TeleporterConsole = (props, context) => {
+export const TeleporterConsole = (props) => {
   const { act, data } = useBackend<TeleporterConsoleContext>();
   const {
     locked,
@@ -28,7 +28,7 @@ export const TeleporterConsole = (props, context) => {
   );
 };
 
-export const TeleporterConsoleOperational = (props, context) => {
+export const TeleporterConsoleOperational = (props) => {
   const { act, data } = useBackend<TeleporterConsoleContext>();
   const {
     locked,

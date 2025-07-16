@@ -3,7 +3,7 @@ import { useBackend } from '../backend';
 import { Box, Button, Dropdown, Flex, NumberInput, ProgressBar, Section } from 'tgui-core/components';
 import { Window } from '../layouts';
 
-export const Photocopier = (props, context) => {
+export const Photocopier = (props) => {
   const { data } = useBackend(context);
   const {
     isAI,
@@ -53,7 +53,7 @@ export const Photocopier = (props, context) => {
   );
 };
 
-const Toner = (props, context) => {
+const Toner = (props) => {
   const { act, data } = useBackend(context);
   const {
     has_toner,
@@ -88,7 +88,7 @@ const Toner = (props, context) => {
   );
 };
 
-const Options = (props, context) => {
+const Options = (props) => {
   const { act, data } = useBackend(context);
   const {
     color_mode,
@@ -173,7 +173,7 @@ const Options = (props, context) => {
   );
 };
 
-const Blanks = (props, context) => {
+const Blanks = (props) => {
   const { act, data } = useBackend(context);
   const {
     blanks,
@@ -226,7 +226,7 @@ const Blanks = (props, context) => {
   );
 };
 
-const AIOptions = (props, context) => {
+const AIOptions = (props) => {
   const { act, data } = useBackend(context);
   const { can_AI_print } = data;
 

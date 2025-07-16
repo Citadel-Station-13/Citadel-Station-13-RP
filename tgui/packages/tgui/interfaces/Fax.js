@@ -4,7 +4,7 @@ import { Window } from "../layouts";
 import { LoginInfo } from './common/LoginInfo';
 import { LoginScreen } from './common/LoginScreen';
 
-export const Fax = (props, context) => {
+export const Fax = (props) => {
   const { data } = useBackend(context);
 
   const {
@@ -39,7 +39,7 @@ export const Fax = (props, context) => {
   );
 };
 
-export const FaxContent = (props, context) => {
+export const FaxContent = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -89,7 +89,7 @@ export const FaxContent = (props, context) => {
   );
 };
 
-const RemoveItem = (props, context) => {
+const RemoveItem = (props) => {
   const { act, data } = useBackend(context);
 
   const {

@@ -30,7 +30,7 @@ interface VoteChoice {
   votes: number;
 }
 
-export const Vote = (props, context) => {
+export const Vote = (props) => {
   const { act, data } = useBackend<VoteContext>();
   const { admin, selected_choice } = data;
 
@@ -64,7 +64,7 @@ export const Vote = (props, context) => {
   );
 };
 
-const StartVoteOptions = (props, context) => {
+const StartVoteOptions = (props) => {
   const { act, data } = useBackend<VoteContext>();
   const { vote_happening } = data;
   return (
@@ -105,7 +105,7 @@ const StartVoteOptions = (props, context) => {
   );
 };
 
-const VoteConfig = (props, context) => {
+const VoteConfig = (props) => {
   const { act, data } = useBackend<VoteContext>();
   const { ghost_weight, secret } = data;
   return (
@@ -142,7 +142,7 @@ const VoteConfig = (props, context) => {
   );
 };
 // Display choices
-const ChoicesPanel = (props, context) => {
+const ChoicesPanel = (props) => {
   const { act, data } = useBackend<VoteContext>();
   const { ghost_weight, ghost, admin, choices, selected_choice, question, secret } = data;
 
@@ -193,7 +193,7 @@ const ChoicesPanel = (props, context) => {
 };
 
 // Countdown timer at the bottom. Includes a cancel vote option for admins
-const TimePanel = (props, context) => {
+const TimePanel = (props) => {
   const { act, data } = useBackend<VoteContext>();
   const { admin, time_remaining, vote_happening } = data;
 

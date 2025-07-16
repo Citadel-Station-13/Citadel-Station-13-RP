@@ -1,9 +1,9 @@
 import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
-import { Box, Button, LabeledList, ProgressBar, Section } from "../components";
+import { Box, Button, LabeledList, ProgressBar, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const XenoarchSuspension = (props, context) => {
+export const XenoarchSuspension = (props) => {
   const { act, data } = useBackend(context);
 
   const {

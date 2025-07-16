@@ -14,7 +14,7 @@ export const AiRestorer = () => {
   );
 };
 
-export const AiRestorerContent = (props, context) => {
+export const AiRestorerContent = (props) => {
   const { act, data } = useBackend<any>(context);
   const {
     AI_present,

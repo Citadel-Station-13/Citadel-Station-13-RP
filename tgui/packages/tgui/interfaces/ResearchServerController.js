@@ -4,7 +4,7 @@ import { Box, Button, LabeledList, Section, Tabs } from "tgui-core/components";
 import { Window } from "../layouts";
 import { filter } from 'common/collections';
 
-export const ResearchServerController = (props, context) => {
+export const ResearchServerController = (props) => {
   const { act, data } = useBackend(context);
   return (
     <Window width={575} height={430} resizable>
@@ -15,7 +15,7 @@ export const ResearchServerController = (props, context) => {
   );
 };
 
-const ResearchControllerContent = (props, context) => {
+const ResearchControllerContent = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -48,7 +48,7 @@ const ResearchControllerContent = (props, context) => {
   );
 };
 
-const ResearchServer = (props, context) => {
+const ResearchServer = (props) => {
   const { act, data } = useBackend(context);
   const {
     badmin,
@@ -96,7 +96,7 @@ const ResearchServer = (props, context) => {
   );
 };
 
-const ResearchServerAccess = (props, context) => {
+const ResearchServerAccess = (props) => {
   const { act, data } = useBackend(context);
   const {
     server,
@@ -144,7 +144,7 @@ const ResearchServerAccess = (props, context) => {
   );
 };
 
-const ResearchServerData = (props, context) => {
+const ResearchServerData = (props) => {
   const { act, data } = useBackend(context);
   const {
     server,
@@ -180,7 +180,7 @@ const ResearchServerData = (props, context) => {
   );
 };
 
-const ResearchServerTransfer = (props, context) => {
+const ResearchServerTransfer = (props) => {
   const { act, data } = useBackend(context);
 
   const {

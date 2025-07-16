@@ -1,10 +1,10 @@
 import { classes } from 'common/react';
 import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
-import { Box, Button, Section, Table, Tooltip } from '../components';
+import { Box, Button, Section, Table, Tooltip } from 'tgui-core/components';
 import { Window } from '../layouts';
 
-const VendingRow = (props, context) => {
+const VendingRow = (props) => {
   const { act, data } = useBackend(context);
   const {
     actively_vending,
@@ -60,7 +60,7 @@ const VendingRow = (props, context) => {
   );
 };
 
-export const Vending = (props, context) => {
+export const Vending = (props) => {
   const { act, data } = useBackend(context);
   const {
     panel,
@@ -81,7 +81,7 @@ export const Vending = (props, context) => {
   );
 };
 
-export const VendingProducts = (props, context) => {
+export const VendingProducts = (props) => {
   const { act, data } = useBackend(context);
   const {
     coin,
@@ -136,7 +136,7 @@ export const VendingProducts = (props, context) => {
   );
 };
 
-export const VendingMaintenance = (props, context) => {
+export const VendingMaintenance = (props) => {
   const { act, data } = useBackend(context);
   const {
     speaker,

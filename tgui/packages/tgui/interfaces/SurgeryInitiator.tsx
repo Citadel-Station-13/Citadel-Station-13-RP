@@ -159,7 +159,7 @@ class SurgeryInitiatorInner extends Component<
   }
 }
 
-export const SurgeryInitiator = (props, context) => {
+export const SurgeryInitiator = (props) => {
   const { data } = useBackend<SurgeryInitiatorData>();
 
   return (

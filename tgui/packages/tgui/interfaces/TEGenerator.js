@@ -1,10 +1,10 @@
 import { round } from 'common/math';
 import { useBackend } from "../backend";
-import { Box, Flex, LabeledList, ProgressBar, Section } from "../components";
+import { Box, Flex, LabeledList, ProgressBar, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 import { formatSiUnit, formatPower } from "../format";
 
-export const TEGenerator = (props, context) => {
+export const TEGenerator = (props) => {
   const { data } = useBackend(context);
 
   const {
@@ -51,7 +51,7 @@ export const TEGenerator = (props, context) => {
   );
 };
 
-const TEGCirculator = (props, context) => {
+const TEGCirculator = (props) => {
   const {
     name,
     values,

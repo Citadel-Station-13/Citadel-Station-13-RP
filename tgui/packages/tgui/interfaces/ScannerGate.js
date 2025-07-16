@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Box, Button, LabeledList, Section } from '../components';
+import { Box, Button, LabeledList, Section } from 'tgui-core/components';
 import { InterfaceLockNoticeBox } from './common/InterfaceLockNoticeBox';
 import { Window } from '../layouts';
 
@@ -67,7 +67,7 @@ const TARGET_NUTRITION_LIST = [
   },
 ];
 
-export const ScannerGate = (props, context) => {
+export const ScannerGate = (props) => {
   const { act, data } = useBackend(context);
   return (
     <Window
@@ -115,7 +115,7 @@ const SCANNER_GATE_ROUTES = {
   },
 };
 
-const ScannerGateControl = (props, context) => {
+const ScannerGateControl = (props) => {
   const { act, data } = useBackend(context);
   const { scan_mode } = data;
   const route = SCANNER_GATE_ROUTES[scan_mode]
@@ -135,7 +135,7 @@ const ScannerGateControl = (props, context) => {
   );
 };
 
-const ScannerGateOff = (props, context) => {
+const ScannerGateOff = (props) => {
   const { act } = useBackend(context);
   return (
     <>
@@ -166,7 +166,7 @@ const ScannerGateOff = (props, context) => {
   );
 };
 
-const ScannerGateWanted = (props, context) => {
+const ScannerGateWanted = (props) => {
   const { data } = useBackend(context);
   const { reverse } = data;
   return (
@@ -180,7 +180,7 @@ const ScannerGateWanted = (props, context) => {
   );
 };
 
-const ScannerGateGuns = (props, context) => {
+const ScannerGateGuns = (props) => {
   const { data } = useBackend(context);
   const { reverse } = data;
   return (
@@ -194,7 +194,7 @@ const ScannerGateGuns = (props, context) => {
   );
 };
 
-const ScannerGateMindshield = (props, context) => {
+const ScannerGateMindshield = (props) => {
   const { data } = useBackend(context);
   const { reverse } = data;
   return (
@@ -208,7 +208,7 @@ const ScannerGateMindshield = (props, context) => {
   );
 };
 
-const ScannerGateDisease = (props, context) => {
+const ScannerGateDisease = (props) => {
   const { act, data } = useBackend(context);
   const { reverse, disease_threshold } = data;
   return (
@@ -233,7 +233,7 @@ const ScannerGateDisease = (props, context) => {
   );
 };
 
-const ScannerGateSpecies = (props, context) => {
+const ScannerGateSpecies = (props) => {
   const { act, data } = useBackend(context);
   const { reverse, target_species } = data;
   const species = TARGET_SPECIES_LIST.find(species => {
@@ -264,7 +264,7 @@ const ScannerGateSpecies = (props, context) => {
   );
 };
 
-const ScannerGateNutrition = (props, context) => {
+const ScannerGateNutrition = (props) => {
   const { act, data } = useBackend(context);
   const { reverse, target_nutrition } = data;
   const nutrition = TARGET_NUTRITION_LIST.find(nutrition => {
@@ -292,7 +292,7 @@ const ScannerGateNutrition = (props, context) => {
   );
 };
 
-const ScannerGateMode = (props, context) => {
+const ScannerGateMode = (props) => {
   const { act, data } = useBackend(context);
   const { reverse } = data;
   return (

@@ -10,7 +10,7 @@ const getStatusText = port => {
   return "Disabled";
 };
 
-export const OmniFilter = (props, context) => {
+export const OmniFilter = (props) => {
   const { act, data } = useBackend(context);
 
   const {

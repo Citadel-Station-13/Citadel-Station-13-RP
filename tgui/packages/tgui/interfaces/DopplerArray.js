@@ -11,7 +11,7 @@ import {
 } from 'tgui-core/components';
 import { Window } from '../layouts';
 
-export const DopplerArray = (props, context) => {
+export const DopplerArray = (props) => {
   const { act, data } = useBackend(context);
   return (
     <Window width={650} height={320} resizable>
@@ -22,7 +22,7 @@ export const DopplerArray = (props, context) => {
   );
 };
 
-const DopplerArrayContent = (props, context) => {
+const DopplerArrayContent = (props) => {
   const { act, data } = useBackend(context);
   const { records = [], disk, storage } = data;
   const [activeRecordName, setActiveRecordName] = useSharedState(

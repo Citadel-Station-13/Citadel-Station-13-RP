@@ -10,7 +10,7 @@ type AdminhelpData = {
   urgentAhelpPromptMessage: string,
 }
 
-export const Adminhelp = (props, context) => {
+export const Adminhelp = (props) => {
   const { act, data } = useBackend<AdminhelpData>();
   const {
     adminCount,

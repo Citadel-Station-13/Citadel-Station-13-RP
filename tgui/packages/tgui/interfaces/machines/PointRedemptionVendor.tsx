@@ -14,7 +14,7 @@ interface PointRedemptionVendorData {
   }[];
 }
 
-export const PointRedemptionVendor = (props, context) => {
+export const PointRedemptionVendor = (props) => {
   const { act, data, config } = useBackend<PointRedemptionVendorData>();
 
   return (

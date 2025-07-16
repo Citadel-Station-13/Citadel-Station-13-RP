@@ -2,7 +2,7 @@ import { useBackend } from "../backend";
 import { Button, LabeledList, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const AssemblyInfrared = (props, context) => {
+export const AssemblyInfrared = (props) => {
   const { act, data } = useBackend(context);
   const {
     on,

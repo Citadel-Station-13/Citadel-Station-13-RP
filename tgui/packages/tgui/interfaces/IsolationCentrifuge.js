@@ -3,7 +3,7 @@ import { useBackend } from "../backend";
 import { Box, Button, Flex, LabeledList, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const IsolationCentrifuge = (props, context) => {
+export const IsolationCentrifuge = (props) => {
   const { act, data } = useBackend(context);
 
   const {

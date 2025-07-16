@@ -2,7 +2,7 @@ import { useBackend, useSharedState } from '../backend';
 import { Box, Button, LabeledList, NoticeBox, Section, Tabs } from 'tgui-core/components';
 import { Window } from '../layouts';
 
-export const RoboticsControlConsole = (props, context) => {
+export const RoboticsControlConsole = (props) => {
   const { act, data } = useBackend(context);
   const [tab, setTab] = useSharedState(context, 'tab', 1);
   const {
@@ -46,7 +46,7 @@ export const RoboticsControlConsole = (props, context) => {
   );
 };
 
-const Cyborgs = (props, context) => {
+const Cyborgs = (props) => {
   const { cyborgs, can_hack, can_detonate } = props;
   const { act, data } = useBackend(context);
   if (!cyborgs.length) {
@@ -129,7 +129,7 @@ const Cyborgs = (props, context) => {
   });
 };
 
-const Drones = (props, context) => {
+const Drones = (props) => {
   const { drones } = props;
   const { act } = useBackend(context);
 

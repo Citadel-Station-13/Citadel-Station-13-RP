@@ -1,8 +1,8 @@
 import { useBackend, useLocalState } from '../../backend';
-import { Box, Flex, Icon, Table, Tabs } from '../../components';
+import { Box, Flex, Icon, Table, Tabs } from 'tgui-core/components';
 import { Window } from '../../layouts';
 
-export const Achievements = (props, context) => {
+export const Achievements = (props) => {
   const { data } = useBackend(context);
   const { categories } = data;
   const [
@@ -42,7 +42,7 @@ export const Achievements = (props, context) => {
   );
 };
 
-const AchievementTable = (props, context) => {
+const AchievementTable = (props) => {
   const { achievements } = props;
   return (
     <Table>
@@ -86,7 +86,7 @@ const Achievement = props => {
   );
 };
 
-const HighScoreTable = (props, context) => {
+const HighScoreTable = (props) => {
   const { data } = useBackend(context);
   const {
     highscore: highscores,

@@ -3,7 +3,7 @@ import { useBackend } from "../backend";
 import { Box, Button, LabeledList, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const Microwave = (props, context) => {
+export const Microwave = (props) => {
   const { act, config, data } = useBackend(context);
 
   const {

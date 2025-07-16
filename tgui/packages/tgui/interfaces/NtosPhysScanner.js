@@ -3,7 +3,7 @@ import { NtosWindow } from '../layouts';
 import { Section, Box, Dropdown } from 'tgui-core/components';
 import { sanitizeText } from '../sanitize';
 
-export const NtosPhysScanner = (props, context) => {
+export const NtosPhysScanner = (props) => {
   const { act, data } = useBackend(context);
   const {
     set_mode,

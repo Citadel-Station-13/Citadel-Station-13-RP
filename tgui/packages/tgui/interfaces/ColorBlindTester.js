@@ -2,7 +2,7 @@ import { useBackend } from '../backend';
 import { Box, Button, NoticeBox, Section } from 'tgui-core/components';
 import { Window } from '../layouts';
 
-export const ColorBlindTester = (props, context) => {
+export const ColorBlindTester = (props) => {
   const { act, data } = useBackend(context);
   const { details } = data;
   return (
@@ -46,7 +46,7 @@ export const ColorBlindTester = (props, context) => {
   );
 };
 
-const ColorBlindCategory = (props, context) => {
+const ColorBlindCategory = (props) => {
   const { act, data } = useBackend(context);
   const { category } = props;
   const { details, selected } = data;

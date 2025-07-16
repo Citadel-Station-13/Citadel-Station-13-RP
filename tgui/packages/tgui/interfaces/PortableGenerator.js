@@ -2,7 +2,7 @@ import { useBackend } from '../backend';
 import { Box, Button, LabeledList, NoticeBox, ProgressBar, Section } from 'tgui-core/components';
 import { Window } from '../layouts';
 
-export const PortableGenerator = (props, context) => {
+export const PortableGenerator = (props) => {
   const { act, data } = useBackend(context);
   const stack_percent = data.fuel_stored / data.fuel_capacity;
   const stackPercentState = (

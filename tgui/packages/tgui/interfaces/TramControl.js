@@ -1,5 +1,5 @@
 import { useBackend, useLocalState } from '../backend';
-import { Box, Button, Dimmer, Icon, Section, Stack } from '../components';
+import { Box, Button, Dimmer, Icon, Section, Stack } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 const DEPARTMENT2COLOR = {
@@ -59,7 +59,7 @@ const BrokenTramDimmer = () => {
   );
 };
 
-export const TramControl = (props, context) => {
+export const TramControl = (props) => {
   const { act, data } = useBackend(context);
   const {
     broken,

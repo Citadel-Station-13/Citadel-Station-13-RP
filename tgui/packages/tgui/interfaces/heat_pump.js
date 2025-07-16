@@ -2,7 +2,7 @@ import { useBackend } from "../backend";
 import { Button, LabeledList, Section, NumberInput, AnimatedNumber } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const heat_pump = (props, context) => {
+export const heat_pump = (props) => {
   const { act, data } = useBackend(context);
 
   const {

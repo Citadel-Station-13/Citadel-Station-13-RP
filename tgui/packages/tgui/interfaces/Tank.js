@@ -1,6 +1,6 @@
 import { toFixed } from 'common/math';
 import { useBackend } from '../backend';
-import { Button, LabeledControls, NumberInput, RoundGauge, Section } from '../components';
+import { Button, LabeledControls, NumberInput, RoundGauge, Section } from 'tgui-core/components';
 import { formatSiUnit } from '../format';
 import { Window } from '../layouts';
 
@@ -11,7 +11,7 @@ const formatPressure = value => {
   return formatSiUnit(value * 1000, 1, 'Pa');
 };
 
-export const Tank = (props, context) => {
+export const Tank = (props) => {
   const { act, data } = useBackend(context);
   const {
     defaultReleasePressure,

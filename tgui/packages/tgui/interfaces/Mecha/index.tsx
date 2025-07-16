@@ -4,7 +4,7 @@ import { MainData } from './data';
 import { MaintMode } from './MaintMode';
 import { OperatorMode } from './OperatorMode';
 
-export const Mecha = (props, context) => {
+export const Mecha = (props) => {
   const { data } = useBackend<MainData>();
   if (data.isoperator) {
     return (

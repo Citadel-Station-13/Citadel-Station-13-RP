@@ -1,6 +1,6 @@
 import { multiline } from 'common/string';
 import { useBackend, useLocalState } from '../backend';
-import { Box, Button, Dimmer, Divider, Icon, NoticeBox, ProgressBar, Section, Stack } from '../components';
+import { Box, Button, Dimmer, Divider, Icon, NoticeBox, ProgressBar, Section, Stack } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 const TAB2NAME = [
@@ -60,7 +60,7 @@ const BUYWORD2ICON = {
   Cast: 'meteor',
 };
 
-const EnscribedName = (props, context) => {
+const EnscribedName = (props) => {
   const { act, data } = useBackend(context);
   const { owner } = data;
   return (
@@ -81,7 +81,7 @@ const EnscribedName = (props, context) => {
 
 const lineHeightToc = "34.6px";
 
-const TableOfContents = (props, context) => {
+const TableOfContents = (props) => {
   const { act, data } = useBackend(context);
   const [
     tabIndex,
@@ -157,7 +157,7 @@ const TableOfContents = (props, context) => {
   );
 };
 
-const LockedPage = (props, context) => {
+const LockedPage = (props) => {
   const { act, data } = useBackend(context);
   const { owner } = data;
   return (
@@ -178,7 +178,7 @@ const LockedPage = (props, context) => {
   );
 };
 
-const PointLocked = (props, context) => {
+const PointLocked = (props) => {
   const { act, data } = useBackend(context);
   const { owner } = data;
   return (
@@ -210,7 +210,7 @@ const PointLocked = (props, context) => {
   );
 };
 
-const SingleLoadout = (props, context) => {
+const SingleLoadout = (props) => {
   const { act } = useBackend(context);
   const { author, name, blurb, icon, loadoutId, loadoutColor } = props;
   return (
@@ -239,7 +239,7 @@ const SingleLoadout = (props, context) => {
 
 const LoadoutWidth = 19.17;
 
-const Loadouts = (props, context) => {
+const Loadouts = (props) => {
   const { act, data } = useBackend(context);
   const { points } = data;
   return (
@@ -309,7 +309,7 @@ const Loadouts = (props, context) => {
 
 const lineHeightRandomize = 6;
 
-const Randomize = (props, context) => {
+const Randomize = (props) => {
   const { act, data } = useBackend(context);
   const { points, semi_random_bonus, full_random_bonus } = data;
   return (
@@ -356,7 +356,7 @@ const Randomize = (props, context) => {
 const widthSection = "466px";
 const heightSection = "456px";
 
-export const Spellbook = (props, context) => {
+export const Spellbook = (props) => {
   const { act, data } = useBackend(context);
   const {
     entries,

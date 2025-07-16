@@ -4,7 +4,7 @@ import { formatPower } from '../format';
 import { Fragment } from 'inferno';
 import { Window } from "../layouts";
 
-export const MassiveGasPump = (props, context) => {
+export const MassiveGasPump = (props) => {
   const { act, data } = useBackend(context);
 
   const {

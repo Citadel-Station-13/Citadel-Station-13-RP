@@ -2,7 +2,7 @@ import { useBackend } from '../backend';
 import { Box, Button, Section, Flex, Stack, Divider } from 'tgui-core/components';
 import { Window } from '../layouts';
 
-export const CTFPanel = (props, context) => {
+export const CTFPanel = (props) => {
   const { act, data } = useBackend(context);
   const teams = data.teams || [];
   const enabled = data.enabled || [];

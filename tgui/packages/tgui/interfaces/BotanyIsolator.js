@@ -2,7 +2,7 @@ import { useBackend } from "../backend";
 import { Box, Button, LabeledList, Section, NoticeBox } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const BotanyIsolator = (props, context) => {
+export const BotanyIsolator = (props) => {
   const { act, data } = useBackend(context);
 
   const {

@@ -3,7 +3,7 @@ import { Button, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 import { toTitleCase } from 'common/string';
 
-export const ICDetailer = (props, context) => {
+export const ICDetailer = (props) => {
   const { act, data } = useBackend(context);
 
   const {

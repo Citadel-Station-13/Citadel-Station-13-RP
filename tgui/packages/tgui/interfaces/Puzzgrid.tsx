@@ -22,7 +22,7 @@ type PuzzgridData = {
   wrong_group_select_cooldown: BooleanLike,
 };
 
-const PuzzgridButton = (props, context) => {
+const PuzzgridButton = (props) => {
   return (
     <Button
       verticalAlignContent="middle"
@@ -43,7 +43,7 @@ const PuzzgridButton = (props, context) => {
   );
 };
 
-export const Puzzgrid = (props, context) => {
+export const Puzzgrid = (props) => {
   const { act, data } = useBackend<PuzzgridData>();
 
   const answersLeft = data.answers.filter(answer => (

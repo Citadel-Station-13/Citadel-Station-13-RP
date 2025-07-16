@@ -39,7 +39,7 @@ type Info = {
   categories: any[];
 };
 
-const ObjectivePrintout = (props, context) => {
+const ObjectivePrintout = (props) => {
   const { data } = useBackend<Info>();
   const {
     objectives,
@@ -61,7 +61,7 @@ const ObjectivePrintout = (props, context) => {
   );
 };
 
-const IntroductionSection = (props, context) => {
+const IntroductionSection = (props) => {
   const { act, data } = useBackend<Info>();
   const {
     intro,
@@ -80,7 +80,7 @@ const IntroductionSection = (props, context) => {
   );
 };
 
-const FlavorSection = (props, context) => {
+const FlavorSection = (props) => {
   const { data } = useBackend<Info>();
   const {
     allies,
@@ -134,7 +134,7 @@ const FlavorSection = (props, context) => {
   );
 };
 
-const CodewordsSection = (props, context) => {
+const CodewordsSection = (props) => {
   const { data } = useBackend<Info>();
   const {
     has_codewords,
@@ -191,7 +191,7 @@ const CodewordsSection = (props, context) => {
   );
 };
 
-export const AntagInfoMalf = (props, context) => {
+export const AntagInfoMalf = (props) => {
   const { act, data } = useBackend<Info>();
   const {
     processingTime,

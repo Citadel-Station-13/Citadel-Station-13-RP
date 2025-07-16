@@ -38,7 +38,7 @@ type MaterialProcessorData =
     idPoints: number,
   }
 
-export const MaterialProcessor = (props, context) => {
+export const MaterialProcessor = (props) => {
   const { act, data } = useBackend<MaterialProcessorData>();
   const {
     on,

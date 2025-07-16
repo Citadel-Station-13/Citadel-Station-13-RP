@@ -7,11 +7,11 @@ import {
   Stack,
   LabeledList,
   Box,
-} from '../../components';
+} from 'tgui-core/components';
 import { Window } from '../../layouts';
 import { GasmixParser } from '../common/GasmixParser';
 
-export const AnomalyRefinery = (props, context) => {
+export const AnomalyRefinery = (props) => {
   const { act, data } = useBackend(context);
   return (
     <Window title="Anomaly Refinery" width={550} height={350}>
@@ -23,7 +23,7 @@ export const AnomalyRefinery = (props, context) => {
 };
 
 
-const AnomalyRefineryContent = (props, context) => {
+const AnomalyRefineryContent = (props) => {
   const { act, data } = useBackend(context);
   const [currentTab, changeTab] = useSharedState(context, 'exploderTab', 1);
   const { core, valvePresent, active } = data;
@@ -68,7 +68,7 @@ const AnomalyRefineryContent = (props, context) => {
   );
 };
 
-const CoreCompressorContent = (props, context) => {
+const CoreCompressorContent = (props) => {
   const { act, data } = useBackend(context);
   const { core, requiredRadius, gasList, valveReady, active, valvePresent }
     = data;
@@ -165,7 +165,7 @@ const CoreCompressorContent = (props, context) => {
     </>
   );
 };
-const BombProcessorContent = (props, context) => {
+const BombProcessorContent = (props) => {
   const { act, data } = useBackend(context);
   const { gasList, reactionIncrement } = data;
   return (

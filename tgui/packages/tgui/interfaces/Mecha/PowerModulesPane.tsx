@@ -3,7 +3,7 @@ import { Button, LabeledList } from 'tgui-core/components';
 import { OperatorData } from './data';
 import { toFixed } from 'common/math';
 
-export const PowerModulesPane = (props, context) => {
+export const PowerModulesPane = (props) => {
   const { act, data } = useBackend<OperatorData>();
   const {
     mech_equipment,

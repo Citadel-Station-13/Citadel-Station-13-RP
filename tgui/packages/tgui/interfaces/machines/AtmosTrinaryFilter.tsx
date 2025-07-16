@@ -33,7 +33,7 @@ interface AtmosTrinaryFilterData extends AtmosComponentData {
   maxRate: number;
 }
 
-export const AtmosTrinaryFilter = (props, context) => {
+export const AtmosTrinaryFilter = (props) => {
   const { act, data } = useBackend<AtmosTrinaryFilterData>();
 
   return (

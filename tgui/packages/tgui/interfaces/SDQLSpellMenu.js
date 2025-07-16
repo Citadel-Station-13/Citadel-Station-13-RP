@@ -372,7 +372,7 @@ const typevars = (type) => {
   return ret;
 };
 
-export const SDQLSpellMenu = (props, context) => {
+export const SDQLSpellMenu = (props) => {
   const { act, data } = useBackend(context);
   const { type, types, fixed_type, alert, parse_errors } = data;
 
@@ -476,7 +476,7 @@ const varCondition = (entry, saved_vars) => {
  * @param entry An object, from the list of objects returned by typevars(),
  * corresponding to the variable whose tooltip is to be shown.
  */
-const WrapInTooltip = (props, context) => {
+const WrapInTooltip = (props) => {
   const { data } = useBackend(context);
   const { entry, children } = props;
   const { type, tooltips } = data;
@@ -500,7 +500,7 @@ const WrapInTooltip = (props, context) => {
  * A React component that contains a list of the meaningfully-editable variables
  * of the spell being edited.
  */
-const SDQLSpellOptions = (props, context) => {
+const SDQLSpellOptions = (props) => {
   const { data } = useBackend(context);
   const { type, saved_vars } = data;
 
@@ -534,7 +534,7 @@ const SDQLSpellOptions = (props, context) => {
  * @param entry An object, from the list of objects returned by typevars(),
  * corresponding to the variable to provide an input element for.
  */
-const SDQLSpellInput = (props, context) => {
+const SDQLSpellInput = (props) => {
   const { act, data } = useBackend(context);
   const { saved_vars } = data;
   const { entry } = props;
@@ -597,7 +597,7 @@ const SDQLSpellInput = (props, context) => {
  * variable.
  * @param {string} list The name of the list to show variables for.
  */
-const SDQLSpellListEntry = (props, context) => {
+const SDQLSpellListEntry = (props) => {
   const { act, data } = useBackend(context);
   const { list_vars } = data;
   const { list, default_value, is_input } = props;
@@ -669,7 +669,7 @@ const SDQLSpellListEntry = (props, context) => {
  * @param type The type of the variable
  * @param value The current value of the variable
  */
-const SDQLSpellListVarInput = (props, context) => {
+const SDQLSpellListVarInput = (props) => {
   const { act } = useBackend(context);
   const { list, name, type, value } = props;
   switch (type) {
@@ -726,7 +726,7 @@ const SDQLSpellListVarInput = (props, context) => {
 
 
 
-const SDQLSpellIcons = (props, context) => {
+const SDQLSpellIcons = (props) => {
   const { data } = useBackend(context);
   const {
     saved_vars,
@@ -820,7 +820,7 @@ const SDQLSpellIcons = (props, context) => {
   );
 };
 
-const SDQLSpellParseErrorModal = (props, context) => {
+const SDQLSpellParseErrorModal = (props) => {
   const { act, data } = useBackend(context);
   const {
     parse_errors,
@@ -904,7 +904,7 @@ const SDQLSpellParseErrorModal = (props, context) => {
   );
 };
 
-const SDQLSpellParsedList = (props, context) => {
+const SDQLSpellParsedList = (props) => {
   const { list, name, recursive_props } = props;
   const { act, data } = useBackend(context);
   const { parsed_list_vars } = data;

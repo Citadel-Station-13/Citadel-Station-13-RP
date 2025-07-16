@@ -3,7 +3,7 @@ import { useBackend, useLocalState } from '../backend';
 import { Button, Flex, LabeledList, Section, Table, Tabs } from 'tgui-core/components';
 import { Window } from '../layouts';
 
-export const ShuttleManipulator = (props, context) => {
+export const ShuttleManipulator = (props) => {
   const [tab, setTab] = useLocalState(context, 'tab', 1);
   return (
     <Window
@@ -43,7 +43,7 @@ export const ShuttleManipulator = (props, context) => {
   );
 };
 
-export const ShuttleManipulatorStatus = (props, context) => {
+export const ShuttleManipulatorStatus = (props) => {
   const { act, data } = useBackend(context);
   const shuttles = data.shuttles || [];
   return (
@@ -100,7 +100,7 @@ export const ShuttleManipulatorStatus = (props, context) => {
   );
 };
 
-export const ShuttleManipulatorTemplates = (props, context) => {
+export const ShuttleManipulatorTemplates = (props) => {
   const { act, data } = useBackend(context);
   const templateObject = data.templates || {};
   const selected = data.selected || {};
@@ -168,7 +168,7 @@ export const ShuttleManipulatorTemplates = (props, context) => {
   );
 };
 
-export const ShuttleManipulatorModification = (props, context) => {
+export const ShuttleManipulatorModification = (props) => {
   const { act, data } = useBackend(context);
   const selected = data.selected || {};
   const existingShuttle = data.existing_shuttle || {};

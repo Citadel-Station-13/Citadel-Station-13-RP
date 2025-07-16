@@ -114,7 +114,7 @@ const viewRecordModalBodyOverride = (modal, context) => {
   );
 };
 
-export const CloningConsole = (props, context) => {
+export const CloningConsole = (props) => {
   const { act, data } = useBackend(context);
   const {
     menu,
@@ -135,7 +135,7 @@ export const CloningConsole = (props, context) => {
   );
 };
 
-const CloningConsoleNavigation = (props, context) => {
+const CloningConsoleNavigation = (props) => {
   const { act, data } = useBackend(context);
   const {
     menu,
@@ -162,7 +162,7 @@ const CloningConsoleNavigation = (props, context) => {
   );
 };
 
-const CloningConsoleBody = (props, context) => {
+const CloningConsoleBody = (props) => {
   const { data } = useBackend(context);
   const {
     menu,
@@ -176,7 +176,7 @@ const CloningConsoleBody = (props, context) => {
   return body;
 };
 
-const CloningConsoleMain = (props, context) => {
+const CloningConsoleMain = (props) => {
   const { act, data } = useBackend(context);
   const {
     loading,
@@ -328,7 +328,7 @@ const CloningConsoleMain = (props, context) => {
   );
 };
 
-const CloningConsoleRecords = (props, context) => {
+const CloningConsoleRecords = (props) => {
   const { act, data } = useBackend(context);
   const {
     records,
@@ -368,7 +368,7 @@ const CloningConsoleRecords = (props, context) => {
   );
 };
 
-const CloningConsoleTemp = (props, context) => {
+const CloningConsoleTemp = (props) => {
   const { act, data } = useBackend(context);
   const {
     temp,
@@ -393,7 +393,7 @@ const CloningConsoleTemp = (props, context) => {
   );
 };
 
-const CloningConsoleStatus = (props, context) => {
+const CloningConsoleStatus = (props) => {
   const { act, data } = useBackend(context);
   const {
     scanner,

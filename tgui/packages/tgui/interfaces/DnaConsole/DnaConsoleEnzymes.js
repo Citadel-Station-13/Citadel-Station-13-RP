@@ -1,9 +1,9 @@
 import { useBackend } from '../../backend';
-import { Box, Button, Collapsible, Dimmer, Divider, Icon, LabeledList, NumberInput, Section, Stack } from '../../components';
+import { Box, Button, Collapsible, Dimmer, Divider, Icon, LabeledList, NumberInput, Section, Stack } from 'tgui-core/components';
 import { GeneticMakeupInfo } from './GeneticMakeupInfo';
 import { PULSE_DURATION_MAX, PULSE_STRENGTH_MAX } from './constants';
 
-const GeneticMakeupBufferInfo = (props, context) => {
+const GeneticMakeupBufferInfo = (props) => {
   const { index, makeup } = props;
   const { act, data } = useBackend(context);
   const {
@@ -121,7 +121,7 @@ const GeneticMakeupBufferInfo = (props, context) => {
   );
 };
 
-const GeneticMakeupBuffers = (props, context) => {
+const GeneticMakeupBuffers = (props) => {
   const { data, act } = useBackend(context);
   const {
     diskHasMakeup,
@@ -193,7 +193,7 @@ const GeneticMakeupBuffers = (props, context) => {
   );
 };
 
-const PulseEmitterProbs = (props, context) => {
+const PulseEmitterProbs = (props) => {
   const { data } = useBackend(context);
   const {
     stdDevAcc,
@@ -224,7 +224,7 @@ const PulseEmitterProbs = (props, context) => {
   );
 };
 
-const PulseBoard = (props, context) => {
+const PulseBoard = (props) => {
   const { act } = useBackend(context);
   const {
     subjectBlock = [],
@@ -273,7 +273,7 @@ const PulseBoard = (props, context) => {
   );
 };
 
-const PulseSettings = (props, context) => {
+const PulseSettings = (props) => {
   const { data, act } = useBackend(context);
   const {
     pulseStrength,
@@ -313,7 +313,7 @@ const PulseSettings = (props, context) => {
   );
 };
 
-export const DnaConsoleEnzymes = (props, context) => {
+export const DnaConsoleEnzymes = (props) => {
   const { data, act } = useBackend(context);
   const {
     isScannerConnected,

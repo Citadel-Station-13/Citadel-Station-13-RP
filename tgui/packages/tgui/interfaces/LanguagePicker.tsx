@@ -14,7 +14,7 @@ type Language = {
   category: string,
 };
 
-export const LanguagePicker = (props, context) => {
+export const LanguagePicker = (props) => {
   const { act, data } = useBackend<LanguagePickerContext>();
 
   return (
@@ -36,7 +36,7 @@ export const LanguagePicker = (props, context) => {
   );
 };
 
-const LanguageInfo = (props, context) => {
+const LanguageInfo = (props) => {
   const { act, data } = useBackend<LanguagePickerContext>();
   const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
   let lang = data.languages.find((l) => l.id === selectedLanguage);
@@ -66,7 +66,7 @@ const LanguageInfo = (props, context) => {
   }
 };
 
-const LanguageCategories = (props, context) => {
+const LanguageCategories = (props) => {
   const { act, data } = useBackend<LanguagePickerContext>();
   const { categories } = data;
   let [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -91,7 +91,7 @@ const LanguageCategories = (props, context) => {
   );
 };
 
-const LanguageSelect = (props, context) => {
+const LanguageSelect = (props) => {
   const { act, data } = useBackend<LanguagePickerContext>();
   let [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
   let [selectedCategory, setSelectedCategory] = useState<string | null>(null);

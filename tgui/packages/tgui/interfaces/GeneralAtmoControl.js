@@ -3,7 +3,7 @@ import { useBackend } from "../backend";
 import { Box, Button, Flex, LabeledList, Slider, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const GeneralAtmoControl = (props, context) => {
+export const GeneralAtmoControl = (props) => {
   const { act, data } = useBackend(context);
 
   // While many of these variables are unused, it's helpful to have a consistent
@@ -43,7 +43,7 @@ export const GeneralAtmoControl = (props, context) => {
   );
 };
 
-const AtmoControlSensors = (props, context) => {
+const AtmoControlSensors = (props) => {
   const { act } = useBackend(context);
 
   const {
@@ -71,7 +71,7 @@ const AtmoControlSensors = (props, context) => {
   }
 };
 
-const AtmoSensor = (props, context) => {
+const AtmoSensor = (props) => {
   const {
     sensor,
   } = props;
@@ -124,7 +124,7 @@ const AtmoSensor = (props, context) => {
   );
 };
 
-const AtmoControlTankCore = (props, context) => {
+const AtmoControlTankCore = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -188,7 +188,7 @@ const AtmoControlTankCore = (props, context) => {
   );
 };
 
-const AtmoControlTankCoreControl = (props, context) => {
+const AtmoControlTankCoreControl = (props) => {
   const {
     info,
     maxSliderValue,
@@ -256,7 +256,7 @@ const AtmoControlTankCoreControl = (props, context) => {
   );
 };
 
-const AtmoControlFuel = (props, context) => {
+const AtmoControlFuel = (props) => {
   const { act, data } = useBackend(context);
 
   const {

@@ -2,7 +2,7 @@ import { useBackend } from "../backend";
 import { NtosWindow } from "../layouts";
 import { CommunicationsConsoleContent } from "./CommunicationsConsole";
 
-export const NtosCommunicationsConsole = (props, context) => {
+export const NtosCommunicationsConsole = (props) => {
   const { act, data } = useBackend(context);
 
   return (

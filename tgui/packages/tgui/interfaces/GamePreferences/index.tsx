@@ -27,7 +27,7 @@ interface GamePreferencesData {
   dirty: BooleanLike;
 }
 
-const GamePreferencesTabs = (props, context) => {
+const GamePreferencesTabs = (props) => {
   const { act, data } = useBackend<GamePreferencesData>();
 
   let categoryCache = computeGamePreferenceCategoryCache(data.entries);
@@ -88,7 +88,7 @@ const computeGamePreferenceCategoryCache = (entries: GamePreferenceEntrySchema[]
   return computed;
 };
 
-export const GamePreferences = (props, context) => {
+export const GamePreferences = (props) => {
   const { act, data } = useBackend<GamePreferencesData>();
 
   let categoryCache = computeGamePreferenceCategoryCache(data.entries);
@@ -121,7 +121,7 @@ export const GamePreferences = (props, context) => {
   );
 };
 
-const GamePreferencesBody = (props, context) => {
+const GamePreferencesBody = (props) => {
   const { act, data } = useBackend<GamePreferencesData>();
 
   let categoryCache = computeGamePreferenceCategoryCache(data.entries);
@@ -175,7 +175,7 @@ const GamePreferencesBody = (props, context) => {
   );
 };
 
-const GamePreferenceHeader = (props, context) => {
+const GamePreferenceHeader = (props) => {
   return (
     <Flex direction="column">
       <Flex.Item>

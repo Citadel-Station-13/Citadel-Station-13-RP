@@ -4,7 +4,7 @@ import { useBackend } from '../backend';
 import { BlockQuote, Box, Button, Icon, Section, Stack } from 'tgui-core/components';
 import { Window } from '../layouts';
 
-export const ApprenticeContract = (props, context) => {
+export const ApprenticeContract = (props) => {
   return (
     <Window
       width={620}
@@ -64,7 +64,7 @@ export const ApprenticeContract = (props, context) => {
   );
 };
 
-const ApprenticeSelection = (props, context) => {
+const ApprenticeSelection = (props) => {
   const { act } = useBackend(context);
   const {
     iconName,

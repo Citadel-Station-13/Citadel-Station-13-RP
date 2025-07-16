@@ -3,7 +3,7 @@ import { useBackend } from '../backend';
 import { Box, Button, Icon, LabeledList, NumberInput, Section } from 'tgui-core/components';
 import { Window } from '../layouts';
 
-export const BeaconLocator = (props, context) => {
+export const BeaconLocator = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -34,10 +34,10 @@ export const BeaconLocator = (props, context) => {
               Locked on. Follow the arrow.
             </Box>
           ) || (
-            <Box color="average">
-              No lock.
-            </Box>
-          )}
+              <Box color="average">
+                No lock.
+              </Box>
+            )}
           <Button
             mt={1}
             mb={1}

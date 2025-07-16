@@ -22,7 +22,7 @@ interface GuestPassTerminalData {
 	printsLeft: number;
 }
 
-export const GuestPassTerminal = (props, context) => {
+export const GuestPassTerminal = (props) => {
 	const { data, act } = useBackend<GuestPassTerminalData>();
 	const [tab, setTab] = useState<number>(1);
 	return (

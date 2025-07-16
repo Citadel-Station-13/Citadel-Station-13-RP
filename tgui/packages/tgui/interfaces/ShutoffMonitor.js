@@ -1,8 +1,8 @@
 import { useBackend } from "../backend";
 import { Window } from "../layouts";
-import { Button, Section, Table } from "../components";
+import { Button, Section, Table } from "tgui-core/components";
 
-export const ShutoffMonitor = (props, context) => (
+export const ShutoffMonitor = (props) => (
   <Window
     width={627}
     height={700}
@@ -13,7 +13,7 @@ export const ShutoffMonitor = (props, context) => (
   </Window>
 );
 
-export const ShutoffMonitorContent = (props, context) => {
+export const ShutoffMonitorContent = (props) => {
   const { act, data } = useBackend(context);
 
   const {

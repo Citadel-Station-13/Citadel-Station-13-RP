@@ -426,7 +426,7 @@ type FishingData = {
   background_image: string;
 };
 
-export const Fishing = (props, context) => {
+export const Fishing = (props) => {
   const { act, data } = useBackend<FishingData>();
   return (
     <Window width={180} height={600}>

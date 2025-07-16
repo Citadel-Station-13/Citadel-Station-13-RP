@@ -33,7 +33,7 @@ enum SpeciesSpawnFlags {
 
 // We currently do NOT render species appearance flags/numbers!
 
-export const SpeciesPicker = (props, context) => {
+export const SpeciesPicker = (props) => {
   const { act, data } = useBackend<SpeciesPickerContext>();
   const [selectedCategory, setSelectedCategory] = useState<String | null>(null);
   const [selectedSpecies, setSelectedSpecies] = useState<String | null>(data.default);

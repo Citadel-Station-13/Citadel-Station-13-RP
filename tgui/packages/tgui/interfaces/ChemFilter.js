@@ -3,7 +3,7 @@ import { useBackend, useLocalState } from '../backend';
 import { Button, Input, Section, Stack } from 'tgui-core/components';
 import { Window } from '../layouts';
 
-export const ChemFilterPane = (props, context) => {
+export const ChemFilterPane = (props) => {
   const { act } = useBackend(context);
   const { title, list, reagentName, onReagentInput } = props;
   const titleKey = title.toLowerCase();
@@ -42,7 +42,7 @@ export const ChemFilterPane = (props, context) => {
   );
 };
 
-export const ChemFilter = (props, context) => {
+export const ChemFilter = (props) => {
   const { act, data } = useBackend(context);
   const {
     left = [],

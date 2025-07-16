@@ -1,11 +1,11 @@
 import { classes } from 'common/react';
 import { resolveAsset } from '../../assets';
 import { useBackend } from '../../backend';
-import { Box, Button, Section, Stack } from '../../components';
+import { Box, Button, Section, Stack } from 'tgui-core/components';
 import { MutationInfo } from './MutationInfo';
 import { CLEAR_GENE, GENE_COLORS, MUT_NORMAL, NEXT_GENE, PREV_GENE, SUBJECT_DEAD, SUBJECT_TRANSFORMING } from './constants';
 
-const GenomeImage = (props, context) => {
+const GenomeImage = (props) => {
   const { url, selected, onClick } = props;
   let outline;
   if (selected) {
@@ -25,7 +25,7 @@ const GenomeImage = (props, context) => {
   );
 };
 
-const GeneCycler = (props, context) => {
+const GeneCycler = (props) => {
   const { act } = useBackend(context);
   const { alias, gene, index, disabled, ...rest } = props;
   const color = (disabled && GENE_COLORS['X']) || GENE_COLORS[gene];
@@ -66,7 +66,7 @@ const GeneCycler = (props, context) => {
   );
 };
 
-const GenomeSequencer = (props, context) => {
+const GenomeSequencer = (props) => {
   const { mutation } = props;
   if (!mutation) {
     return (
@@ -155,7 +155,7 @@ const GenomeSequencer = (props, context) => {
   );
 };
 
-export const DnaConsoleSequencer = (props, context) => {
+export const DnaConsoleSequencer = (props) => {
   const { data, act } = useBackend(context);
   const mutations = data.storage?.occupant ?? [];
   const {

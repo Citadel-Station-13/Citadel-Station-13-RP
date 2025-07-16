@@ -3,7 +3,7 @@ import { useBackend } from "../backend";
 import { Box, Button, LabeledList, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const MuleBot = (props, context) => {
+export const MuleBot = (props) => {
   const { act, data } = useBackend(context);
   const {
     suffix,
@@ -41,7 +41,7 @@ export const MuleBot = (props, context) => {
   );
 };
 
-const MuleBotClosed = (props, context) => {
+const MuleBotClosed = (props) => {
   const { act, data } = useBackend(context);
   const {
     suffix,
@@ -111,7 +111,7 @@ const MuleBotClosed = (props, context) => {
   );
 };
 
-const MuleBotOpen = (props, context) => {
+const MuleBotOpen = (props) => {
   const { act, data } = useBackend(context);
   const {
     suffix,

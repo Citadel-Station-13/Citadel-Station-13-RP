@@ -1,8 +1,8 @@
 import { useBackend } from "../backend";
 import { Window } from "../layouts";
-import { Box, Button, Section } from "../components";
+import { Box, Button, Section } from "tgui-core/components";
 
-export const XenoarchArtifactAnalyzer = (props, context) => {
+export const XenoarchArtifactAnalyzer = (props) => {
   return (
     <Window width={250} height={140}>
       <Window.Content>
@@ -12,7 +12,7 @@ export const XenoarchArtifactAnalyzer = (props, context) => {
   );
 };
 
-const XenoarchArtifactAnalyzerContent = (props, context) => {
+const XenoarchArtifactAnalyzerContent = (props) => {
   const { act, data } = useBackend(context);
 
   const {

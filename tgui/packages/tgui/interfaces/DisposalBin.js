@@ -2,7 +2,7 @@ import { useBackend } from "../backend";
 import { Button, LabeledList, Section, Box, ProgressBar } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const DisposalBin = (props, context) => {
+export const DisposalBin = (props) => {
   const { act, data } = useBackend(context);
   let stateColor;
   let stateText;

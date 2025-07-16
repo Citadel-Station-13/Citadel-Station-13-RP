@@ -2,7 +2,7 @@ import { useBackend } from "../backend";
 import { Box, Button, LabeledList, ProgressBar, Section, NumberInput } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const Medibot = (props, context) => {
+export const Medibot = (props) => {
   const { act, data } = useBackend(context);
 
   const {

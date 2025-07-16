@@ -4,7 +4,7 @@ import { Window } from "../layouts";
 import { toTitleCase } from 'common/string';
 import { sortBy } from 'common/collections';
 
-export const SeedStorage = (props, context) => {
+export const SeedStorage = (props) => {
   const { act, data } = useBackend(context);
 
   const {

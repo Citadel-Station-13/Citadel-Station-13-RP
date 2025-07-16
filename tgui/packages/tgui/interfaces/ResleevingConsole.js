@@ -126,7 +126,7 @@ const viewBodyRecordModalBodyOverride = (modal, context) => {
   );
 };
 
-export const ResleevingConsole = (props, context) => {
+export const ResleevingConsole = (props) => {
   const { act, data } = useBackend(context);
   const {
     menu,
@@ -164,7 +164,7 @@ export const ResleevingConsole = (props, context) => {
   );
 };
 
-const ResleevingConsoleNavigation = (props, context) => {
+const ResleevingConsoleNavigation = (props) => {
   const { act, data } = useBackend(context);
   const {
     menu,
@@ -199,7 +199,7 @@ const ResleevingConsoleNavigation = (props, context) => {
   );
 };
 
-const ResleevingConsoleBody = (props, context) => {
+const ResleevingConsoleBody = (props) => {
   const { data } = useBackend(context);
   const {
     menu,
@@ -223,7 +223,7 @@ const ResleevingConsoleBody = (props, context) => {
   return body;
 };
 
-const ResleevingConsoleCoreDump = (props, context) => {
+const ResleevingConsoleCoreDump = (props) => {
   return (
     <Dimmer>
       <Flex direction="column" justify="space-evenly" align="center">
@@ -238,7 +238,7 @@ const ResleevingConsoleCoreDump = (props, context) => {
   );
 };
 
-const ResleevingConsoleDiskPrep = (props, context) => {
+const ResleevingConsoleDiskPrep = (props) => {
   const { act } = useBackend(context);
   return (
     <Dimmer textAlign="center">
@@ -271,7 +271,7 @@ const ResleevingConsoleDiskPrep = (props, context) => {
   );
 };
 
-const ResleevingConsoleMain = (props, context) => {
+const ResleevingConsoleMain = (props) => {
   const { act, data } = useBackend(context);
   const {
     loading,
@@ -293,7 +293,7 @@ const ResleevingConsoleMain = (props, context) => {
   );
 };
 
-const ResleevingConsolePodGrowers = (props, context) => {
+const ResleevingConsolePodGrowers = (props) => {
   const { act, data } = useBackend(context);
   const {
     pods,
@@ -376,7 +376,7 @@ const ResleevingConsolePodGrowers = (props, context) => {
   return null;
 };
 
-const ResleevingConsolePodSleevers = (props, context) => {
+const ResleevingConsolePodSleevers = (props) => {
   const { act, data } = useBackend(context);
   const {
     sleevers,
@@ -420,7 +420,7 @@ const ResleevingConsolePodSleevers = (props, context) => {
   return null;
 };
 
-const ResleevingConsolePodSpods = (props, context) => {
+const ResleevingConsolePodSpods = (props) => {
   const { act, data } = useBackend(context);
   const {
     spods,
@@ -511,7 +511,7 @@ const ResleevingConsolePodSpods = (props, context) => {
   return null;
 };
 
-const ResleevingConsoleRecords = (props, context) => {
+const ResleevingConsoleRecords = (props) => {
   const { act } = useBackend(context);
   const {
     records,
@@ -552,7 +552,7 @@ const ResleevingConsoleRecords = (props, context) => {
   );
 };
 
-const ResleevingConsoleTemp = (props, context) => {
+const ResleevingConsoleTemp = (props) => {
   const { act, data } = useBackend(context);
   const {
     temp,
@@ -577,7 +577,7 @@ const ResleevingConsoleTemp = (props, context) => {
   );
 };
 
-const ResleevingConsoleStatus = (props, context) => {
+const ResleevingConsoleStatus = (props) => {
   const { act, data } = useBackend(context);
   const {
     pods,

@@ -1,8 +1,8 @@
 import { useBackend } from "../backend";
-import { Button } from "../components";
+import { Button } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const XenoarchReplicator = (props, context) => {
+export const XenoarchReplicator = (props) => {
   const { act, data } = useBackend(context);
 
   const {

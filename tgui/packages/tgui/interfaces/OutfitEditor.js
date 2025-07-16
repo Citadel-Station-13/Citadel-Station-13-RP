@@ -2,7 +2,7 @@ import { useBackend } from '../backend';
 import { Box, Button, Icon, Section, Stack } from 'tgui-core/components';
 import { Window } from '../layouts';
 
-export const OutfitEditor = (props, context) => {
+export const OutfitEditor = (props) => {
   const { act, data } = useBackend(context);
   const { outfit, saveable, dummy64 } = data;
   return (
@@ -99,7 +99,7 @@ export const OutfitEditor = (props, context) => {
   );
 };
 
-const OutfitSlot = (props, context) => {
+const OutfitSlot = (props) => {
   const { act, data } = useBackend(context);
   const { name, icon, iconRot, slot } = props;
   const { outfit } = data;

@@ -1,8 +1,8 @@
 import { Fragment } from 'inferno';
 import { useBackend } from "../../../../backend";
-import { Box, Button, LabeledList, Section } from "../../../../components";
+import { Box, Button, LabeledList, Section } from "tgui-core/components";
 
-export const pda_main_menu = (props, context) => {
+export const pda_main_menu = (props) => {
   const { act, data } = useBackend(context);
 
   const {

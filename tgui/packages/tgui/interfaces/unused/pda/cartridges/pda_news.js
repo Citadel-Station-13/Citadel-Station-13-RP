@@ -1,12 +1,12 @@
 import { decodeHtmlEntities } from 'common/string';
 import { Fragment } from 'inferno';
 import { useBackend } from "../../../../backend";
-import { Box, Button, Section } from "../../../../components";
+import { Box, Button, Section } from "tgui-core/components";
 
 // Stolen wholesale from communicators.
 // TGUITODO: Merge PDA & Communicator shared code once both are in
 /* News */
-export const pda_news = (props, context) => {
+export const pda_news = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -29,7 +29,7 @@ export const pda_news = (props, context) => {
   );
 };
 
-const NewsTargetFeed = (props, context) => {
+const NewsTargetFeed = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -70,7 +70,7 @@ const NewsTargetFeed = (props, context) => {
   );
 };
 
-const NewsFeed = (props, context) => {
+const NewsFeed = (props) => {
   const { act, data } = useBackend(context);
 
   const {

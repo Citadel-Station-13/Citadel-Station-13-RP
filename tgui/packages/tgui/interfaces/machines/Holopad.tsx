@@ -77,7 +77,7 @@ type IncomingCallsContext = BaseCallContext & {
   projecting: [HolopadId]; // who's projecting over here right now
 }
 
-export const Holopad = (props, context) => {
+export const Holopad = (props) => {
   const { act, data } = useBackend<HolopadContext>();
   const [tab, setTab] = useState<number>(1);
 
@@ -153,7 +153,7 @@ export const Holopad = (props, context) => {
   );
 };
 
-const HolopadCallOutgoing = (props, context) => {
+const HolopadCallOutgoing = (props) => {
   const { data, act } = useBackend<HolopadContext>();
   const callContext: OutgoingCallContext = data.calldata as OutgoingCallContext;
   return (
@@ -197,7 +197,7 @@ const HolopadCallOutgoing = (props, context) => {
   );
 };
 
-const HolopadCallIncoming = (props, context) => {
+const HolopadCallIncoming = (props) => {
   const { data, act } = useBackend<HolopadContext>();
   const callContext: IncomingCallsContext = data.calldata as IncomingCallsContext;
   return (
@@ -233,7 +233,7 @@ const HolopadCallIncoming = (props, context) => {
   );
 };
 
-const HolopadRinging = (props, context) => {
+const HolopadRinging = (props) => {
   const { data, act } = useBackend<HolopadContext>();
   return (
     <>
@@ -261,7 +261,7 @@ const HolopadRinging = (props, context) => {
 const MISC_SECTOR = "Other";
 const MISC_CATEGORY = "Misc";
 
-const HolopadDirectory = (props, context) => {
+const HolopadDirectory = (props) => {
   const { data, act } = useBackend<HolopadContext>();
   const cats = {};
   const sectors = {};
@@ -334,7 +334,7 @@ const HolopadDirectory = (props, context) => {
   );
 };
 
-const HolopadSettings = (props, context) => {
+const HolopadSettings = (props) => {
   let { data, act } = useBackend<HolopadContext>();
   return (
     <Section m={1}>

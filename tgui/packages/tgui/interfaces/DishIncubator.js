@@ -4,7 +4,7 @@ import { useBackend } from "../backend";
 import { Box, Button, Flex, LabeledList, ProgressBar, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const DishIncubator = (props, context) => {
+export const DishIncubator = (props) => {
   const { act, data } = useBackend(context);
 
   const {

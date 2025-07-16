@@ -64,7 +64,7 @@ type NumberOption = number | null | undefined;
 type ListOption = string | null | undefined;
 type ToggleOption = BooleanLike;
 
-export const UIDynamicInputModal = (props, context) => {
+export const UIDynamicInputModal = (props) => {
   const { data, act } = useBackend<UIDynamicInputContext>();
   const [options, setOptions] = useState<Record<string, any>>({});
   return (

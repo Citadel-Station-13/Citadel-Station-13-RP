@@ -3,7 +3,7 @@ import { useBackend } from "../backend";
 import { Box, Button, LabeledList, ProgressBar, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const DiseaseSplicer = (props, context) => {
+export const DiseaseSplicer = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -28,7 +28,7 @@ export const DiseaseSplicer = (props, context) => {
   );
 };
 
-const DiseaseSplicerVirusDish = (props, context) => {
+const DiseaseSplicerVirusDish = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -97,7 +97,7 @@ const DiseaseSplicerVirusDish = (props, context) => {
   );
 };
 
-const DiseaseSplicerStorage = (props, context) => {
+const DiseaseSplicerStorage = (props) => {
   const { act, data } = useBackend(context);
 
   const {

@@ -14,7 +14,7 @@ const RCS_VIEWMSGS = 6;	// View messages
 const RCS_MESSAUTH = 7;	// Authentication before sending
 const RCS_ANNOUNCE = 8;	// Send announcement
 
-const RequestConsoleSettings = (props, context) => {
+const RequestConsoleSettings = (props) => {
   const { act, data } = useBackend(context);
   const {
     silent,
@@ -31,7 +31,7 @@ const RequestConsoleSettings = (props, context) => {
   );
 };
 
-const RequestConsoleSupplies = (props, context) => {
+const RequestConsoleSupplies = (props) => {
   const { act, data } = useBackend(context);
   const {
     department,
@@ -44,7 +44,7 @@ const RequestConsoleSupplies = (props, context) => {
   );
 };
 
-const RequestConsoleAssistance = (props, context) => {
+const RequestConsoleAssistance = (props) => {
   const { act, data } = useBackend(context);
   const {
     department,
@@ -57,7 +57,7 @@ const RequestConsoleAssistance = (props, context) => {
   );
 };
 
-const RequestConsoleRelay = (props, context) => {
+const RequestConsoleRelay = (props) => {
   const { act, data } = useBackend(context);
   const {
     department,
@@ -70,7 +70,7 @@ const RequestConsoleRelay = (props, context) => {
   );
 };
 
-const RequestConsoleSendMenu = (props, context) => {
+const RequestConsoleSendMenu = (props) => {
   const { act } = useBackend(context);
   const {
     dept_list,
@@ -98,7 +98,7 @@ const RequestConsoleSendMenu = (props, context) => {
   );
 };
 
-const RequestConsoleSendPass = (props, context) => {
+const RequestConsoleSendPass = (props) => {
   const { act, data } = useBackend(context);
   return (
     <Section>
@@ -116,7 +116,7 @@ const RequestConsoleSendPass = (props, context) => {
   );
 };
 
-const RequestConsoleSendFail = (props, context) => {
+const RequestConsoleSendFail = (props) => {
   const { act, data } = useBackend(context);
   return (
     <Section>
@@ -134,7 +134,7 @@ const RequestConsoleSendFail = (props, context) => {
   );
 };
 
-const RequestConsoleViewMessages = (props, context) => {
+const RequestConsoleViewMessages = (props) => {
   const { act, data } = useBackend(context);
   const {
     message_log,
@@ -161,7 +161,7 @@ const RequestConsoleViewMessages = (props, context) => {
   );
 };
 
-const RequestConsoleMessageAuth = (props, context) => {
+const RequestConsoleMessageAuth = (props) => {
   const { act, data } = useBackend(context);
   const {
     message,
@@ -201,7 +201,7 @@ const RequestConsoleMessageAuth = (props, context) => {
   );
 };
 
-const RequestConsoleAnnounce = (props, context) => {
+const RequestConsoleAnnounce = (props) => {
   const { act, data } = useBackend(context);
   const {
     department,
@@ -269,7 +269,7 @@ screenToTemplate[RCS_VIEWMSGS] = RequestConsoleViewMessages;
 screenToTemplate[RCS_MESSAUTH] = RequestConsoleMessageAuth;
 screenToTemplate[RCS_ANNOUNCE] = RequestConsoleAnnounce;
 
-export const RequestConsole = (props, context) => {
+export const RequestConsole = (props) => {
   const { act, data } = useBackend(context);
   const {
     screen,

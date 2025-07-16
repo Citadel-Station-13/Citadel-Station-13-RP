@@ -3,7 +3,7 @@ import { useBackend } from '../backend';
 import { Button, Box, Section, Table } from 'tgui-core/components';
 import { NtosWindow } from '../layouts';
 
-export const NtosWordProcessor = (props, context) => {
+export const NtosWordProcessor = (props) => {
   const { act, data } = useBackend(context);
 
   const {

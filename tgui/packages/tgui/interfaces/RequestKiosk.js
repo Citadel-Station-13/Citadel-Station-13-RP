@@ -4,7 +4,7 @@ import { Box, Button, Collapsible, Flex, LabeledList, NumberInput, Section, Text
 import { formatMoney } from '../format';
 import { Window } from '../layouts';
 
-export const RequestKiosk = (props, context) => {
+export const RequestKiosk = (props) => {
   return (
     <Window
       width={550}
@@ -17,7 +17,7 @@ export const RequestKiosk = (props, context) => {
   );
 };
 
-export const RequestKioskContent = (props, context) => {
+export const RequestKioskContent = (props) => {
   const { act, data } = useBackend(context);
   const {
     accountName,

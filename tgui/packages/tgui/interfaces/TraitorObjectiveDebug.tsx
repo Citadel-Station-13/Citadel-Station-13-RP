@@ -125,7 +125,7 @@ const sortingOptions: SortingOption[] = [
   },
 ];
 
-export const TraitorObjectiveDebug = (props, context) => {
+export const TraitorObjectiveDebug = (props) => {
   const { data, act } = useBackend<ObjectiveData>();
   const { objective_data, player_data, current_progression } = data;
   const lines: JSX.Element[] = [];

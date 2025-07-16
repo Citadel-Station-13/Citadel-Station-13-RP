@@ -19,7 +19,7 @@ const operations = [
 
 const rejuvenatorsDoses = [5, 10, 20, 30, 50];
 
-export const DNAModifier = (props, context) => {
+export const DNAModifier = (props) => {
   const { act, data } = useBackend(context);
   const {
     irradiating,
@@ -49,7 +49,7 @@ export const DNAModifier = (props, context) => {
   );
 };
 
-const DNAModifierOccupant = (props, context) => {
+const DNAModifierOccupant = (props) => {
   const { act, data } = useBackend(context);
   const {
     locked,
@@ -141,7 +141,7 @@ const DNAModifierOccupant = (props, context) => {
   );
 };
 
-const DNAModifierMain = (props, context) => {
+const DNAModifierMain = (props) => {
   const { act, data } = useBackend(context);
   const {
     selectedMenuKey,
@@ -225,7 +225,7 @@ const DNAModifierMain = (props, context) => {
   );
 };
 
-const DNAModifierMainUI = (props, context) => {
+const DNAModifierMainUI = (props) => {
   const { act, data } = useBackend(context);
   const {
     selectedUIBlock,
@@ -265,7 +265,7 @@ const DNAModifierMainUI = (props, context) => {
   );
 };
 
-const DNAModifierMainSE = (props, context) => {
+const DNAModifierMainSE = (props) => {
   const { act, data } = useBackend(context);
   const {
     selectedSEBlock,
@@ -290,7 +290,7 @@ const DNAModifierMainSE = (props, context) => {
   );
 };
 
-const DNAModifierMainRadiationEmitter = (props, context) => {
+const DNAModifierMainRadiationEmitter = (props) => {
   const { act, data } = useBackend(context);
   const {
     radiationIntensity,
@@ -335,7 +335,7 @@ const DNAModifierMainRadiationEmitter = (props, context) => {
   );
 };
 
-const DNAModifierMainBuffers = (props, context) => {
+const DNAModifierMainBuffers = (props) => {
   const { act, data } = useBackend(context);
   const {
     buffers,
@@ -358,7 +358,7 @@ const DNAModifierMainBuffers = (props, context) => {
   );
 };
 
-const DNAModifierMainBuffersElement = (props, context) => {
+const DNAModifierMainBuffersElement = (props) => {
   const { act, data } = useBackend(context);
   const {
     id,
@@ -509,7 +509,7 @@ const DNAModifierMainBuffersElement = (props, context) => {
   );
 };
 
-const DNAModifierMainBuffersDisk = (props, context) => {
+const DNAModifierMainBuffersDisk = (props) => {
   const { act, data } = useBackend(context);
   const {
     hasDisk,
@@ -571,7 +571,7 @@ const DNAModifierMainBuffersDisk = (props, context) => {
   );
 };
 
-const DNAModifierMainRejuvenators = (props, context) => {
+const DNAModifierMainRejuvenators = (props) => {
   const { act, data } = useBackend(context);
   const {
     isBeakerLoaded,
@@ -638,7 +638,7 @@ const DNAModifierMainRejuvenators = (props, context) => {
   );
 };
 
-const DNAModifierIrradiating = (props, context) => {
+const DNAModifierIrradiating = (props) => {
   return (
     <Dimmer textAlign="center">
       <Icon name="spinner" size="5" spin /><br />
@@ -658,7 +658,7 @@ const DNAModifierIrradiating = (props, context) => {
   );
 };
 
-const DNAModifierBlocks = (props, context) => {
+const DNAModifierBlocks = (props) => {
   const { act, data } = useBackend(context);
   const {
     dnaString,

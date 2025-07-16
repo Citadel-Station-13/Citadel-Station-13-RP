@@ -2,7 +2,7 @@ import { useBackend } from "../backend";
 import { Box, Button, LabeledList, ProgressBar, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const RogueZones = (props, context) => {
+export const RogueZones = (props) => {
   const { act, data } = useBackend(context);
   const {
     timeout_percent,

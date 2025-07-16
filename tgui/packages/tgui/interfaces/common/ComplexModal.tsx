@@ -75,7 +75,7 @@ const modalClose = (context, id) => {
  * @param {object} props
  * @param {object} context
  */
-export const ComplexModal = (props, context) => {
+export const ComplexModal = (props) => {
   const { data } = useBackend<ModalData>();
   if (!data.modal) {
     return;

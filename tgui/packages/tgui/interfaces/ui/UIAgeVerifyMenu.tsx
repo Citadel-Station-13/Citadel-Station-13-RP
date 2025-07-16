@@ -62,7 +62,7 @@ const validDays = (month: number, year: number) => {
   return ret;
 };
 
-export const UIAgeVerifyMenu = (props, context) => {
+export const UIAgeVerifyMenu = (props) => {
   let { data, act } = useBackend(context);
   let [month, setMonth] = useState<string | null>(null);
   let [day, setDay] = useState<string | null>(null);

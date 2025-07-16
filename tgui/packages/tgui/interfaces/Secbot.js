@@ -2,7 +2,7 @@ import { useBackend } from "../backend";
 import { Button, LabeledList, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const Secbot = (props, context) => {
+export const Secbot = (props) => {
   const { act, data } = useBackend(context);
 
   const {

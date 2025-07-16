@@ -8,9 +8,9 @@ import { Window } from '../layouts';
 import { useBackend } from '../backend';
 import { toFixed } from 'common/math';
 import { RADIO_CHANNELS } from '../constants';
-import { Button, LabeledList, NumberInput, NoticeBox, Section, Input } from '../components';
+import { Button, LabeledList, NumberInput, NoticeBox, Section, Input } from 'tgui-core/components';
 
-export const TelecommsInteraction = (props, context) => {
+export const TelecommsInteraction = (props) => {
   const { act, data } = useBackend(context);
   const {
     notice = "",

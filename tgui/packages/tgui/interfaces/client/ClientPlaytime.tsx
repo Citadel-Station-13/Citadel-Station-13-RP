@@ -12,7 +12,7 @@ interface ClientPlaytimeData {
   playtime: Record<string, number> | null;
 }
 
-export const ClientPlaytime = (props, context) => {
+export const ClientPlaytime = (props) => {
   const { data } = useBackend<ClientPlaytimeData>();
 
   if (data.playtime === null) {

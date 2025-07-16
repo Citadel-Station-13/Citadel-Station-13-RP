@@ -6,7 +6,7 @@ import { useBackend, useLocalState } from '../backend';
 import { createLogger } from '../logging';
 const logger = createLogger("fuck");
 
-export const AtmosControl = (props, context) => {
+export const AtmosControl = (props) => {
   return (
     <Window
       width={600}
@@ -19,7 +19,7 @@ export const AtmosControl = (props, context) => {
   );
 };
 
-export const AtmosControlContent = (props, context) => {
+export const AtmosControlContent = (props) => {
   const { act, data, config } = useBackend(context);
 
   let sortedAlarms = sortBy(

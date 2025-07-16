@@ -3,7 +3,7 @@ import { Section, Stack, Input, Button, Table, LabeledList, Flex, Divider, Notic
 import { Window } from '../layouts';
 
 
-const PacketInfo = (props, context) => {
+const PacketInfo = (props) => {
   const { act, data } = useBackend(context);
   const {
     packet,
@@ -48,7 +48,7 @@ const PacketInfo = (props, context) => {
   );
 };
 
-const ServerScreen = (props, context) => {
+const ServerScreen = (props) => {
   const { act, data } = useBackend(context);
   const {
     network,
@@ -95,7 +95,7 @@ const ServerScreen = (props, context) => {
   );
 };
 
-const MainScreen = (props, context) => {
+const MainScreen = (props) => {
   const { act, data } = useBackend(context);
   const {
     servers,
@@ -154,7 +154,7 @@ const MainScreen = (props, context) => {
   );
 };
 
-export const ServerMonitor = (props, context) => {
+export const ServerMonitor = (props) => {
   const { act, data } = useBackend(context);
   const {
     screen,

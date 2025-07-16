@@ -1,9 +1,9 @@
 import { useBackend } from '../../../backend';
-import { AnimatedNumber, Box, Button, Modal, Section, Stack, Tabs } from '../../../components';
+import { AnimatedNumber, Box, Button, Modal, Section, Stack, Tabs } from 'tgui-core/components';
 import { formatMoney } from '../../../format';
 import { Window } from '../../../layouts';
 
-export const BlackMarketUplink = (props, context) => {
+export const BlackMarketUplink = (props) => {
   const { act, data } = useBackend(context);
   const {
     categories = [],
@@ -95,7 +95,7 @@ export const BlackMarketUplink = (props, context) => {
   );
 };
 
-const ShipmentSelector = (props, context) => {
+const ShipmentSelector = (props) => {
   const { act, data } = useBackend(context);
   const {
     buying,

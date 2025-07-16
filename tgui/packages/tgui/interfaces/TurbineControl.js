@@ -1,9 +1,9 @@
 import { formatPower } from "../format";
 import { useBackend } from "../backend";
-import { AnimatedNumber, Box, Button, LabeledList, Section } from "../components";
+import { AnimatedNumber, Box, Button, LabeledList, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const TurbineControl = (props, context) => {
+export const TurbineControl = (props) => {
   const { act, data } = useBackend(context);
 
   const {

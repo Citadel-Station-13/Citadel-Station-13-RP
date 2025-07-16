@@ -17,7 +17,7 @@ type Info = {
   objectives: Objective[];
 };
 
-export const AntagInfoGeneric = (props, context) => {
+export const AntagInfoGeneric = (props) => {
   const { data } = useBackend<Info>();
   const {
     antag_name,
@@ -42,7 +42,7 @@ export const AntagInfoGeneric = (props, context) => {
   );
 };
 
-const ObjectivePrintout = (props, context) => {
+const ObjectivePrintout = (props) => {
   const { data } = useBackend<Info>();
   const {
     objectives,

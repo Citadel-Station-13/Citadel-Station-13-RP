@@ -2,7 +2,7 @@ import { filter, sortBy } from 'common/collections';
 import { Fragment } from "inferno";
 import { formatTime } from "../format";
 import { useBackend, useLocalState } from "../backend";
-import { Box, Button, LabeledList, Section, Tabs, AnimatedNumber, Stack } from "../components";
+import { Box, Button, LabeledList, Section, Tabs, AnimatedNumber, Stack } from "tgui-core/components";
 import { ComplexModal, modalRegisterBodyOverride } from '../interfaces/common/ComplexModal';
 import { Window } from "../layouts";
 import { flow } from 'common/fp';
@@ -44,7 +44,7 @@ const viewCrateContents = (modal, context) => {
   );
 };
 
-export const SupplyConsole = (props, context) => {
+export const SupplyConsole = (props) => {
   const { act, data } = useBackend(context);
   modalRegisterBodyOverride("view_crate", viewCrateContents);
   return (
@@ -60,7 +60,7 @@ export const SupplyConsole = (props, context) => {
   );
 };
 
-const SupplyConsoleShuttleStatus = (props, context) => {
+const SupplyConsoleShuttleStatus = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -137,7 +137,7 @@ const SupplyConsoleShuttleStatus = (props, context) => {
   );
 };
 
-const SupplyConsoleMenu = (props, context) => {
+const SupplyConsoleMenu = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -189,7 +189,7 @@ const SupplyConsoleMenu = (props, context) => {
   );
 };
 
-const SupplyConsoleMenuOrder = (props, context) => {
+const SupplyConsoleMenuOrder = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -281,7 +281,7 @@ const SupplyConsoleMenuOrder = (props, context) => {
   );
 };
 
-const SupplyConsoleMenuOrderList = (props, context) => {
+const SupplyConsoleMenuOrderList = (props) => {
   const { act, data } = useBackend(context);
   const {
     mode,
@@ -360,7 +360,7 @@ const SupplyConsoleMenuOrderList = (props, context) => {
   );
 };
 
-const SupplyConsoleMenuHistoryExport = (props, context) => {
+const SupplyConsoleMenuHistoryExport = (props) => {
   const { act, data } = useBackend(context);
   const {
     receipts,

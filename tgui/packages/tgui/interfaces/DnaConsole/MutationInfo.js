@@ -1,7 +1,7 @@
 import { filter, uniqBy } from 'common/collections';
 import { flow } from 'common/fp';
 import { useBackend } from '../../backend';
-import { Box, Button, Divider, Dropdown, LabeledList } from '../../components';
+import { Box, Button, Divider, Dropdown, LabeledList } from 'tgui-core/components';
 import { CHROMOSOME_NEVER, CHROMOSOME_NONE, CHROMOSOME_USED, MUT_COLORS, MUT_EXTRA } from './constants';
 
 /**
@@ -14,7 +14,7 @@ const isSameMutation = (a, b) => {
     && a.AppliedChromo === b.AppliedChromo;
 };
 
-const ChromosomeInfo = (props, context) => {
+const ChromosomeInfo = (props) => {
   const { mutation, disabled } = props;
   const { data, act } = useBackend(context);
   if (mutation.CanChromo === CHROMOSOME_NEVER) {
@@ -61,7 +61,7 @@ const ChromosomeInfo = (props, context) => {
   return null;
 };
 
-const MutationCombiner = (props, context) => {
+const MutationCombiner = (props) => {
   const {
     mutations = [],
     source,
@@ -86,7 +86,7 @@ const MutationCombiner = (props, context) => {
   );
 };
 
-export const MutationInfo = (props, context) => {
+export const MutationInfo = (props) => {
   const { mutation } = props;
   const { data, act } = useBackend(context);
   const {

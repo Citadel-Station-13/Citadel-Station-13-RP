@@ -46,7 +46,7 @@ type Info = {
   objectives: Objective[];
 };
 
-const ObjectivePrintout = (props, context) => {
+const ObjectivePrintout = (props) => {
   const { data } = useBackend<Info>();
   const {
     objectives,
@@ -68,7 +68,7 @@ const ObjectivePrintout = (props, context) => {
   );
 };
 
-const IntroductionSection = (props, context) => {
+const IntroductionSection = (props) => {
   const { act, data } = useBackend<Info>();
   const {
     hive_name,
@@ -96,7 +96,7 @@ const IntroductionSection = (props, context) => {
   );
 };
 
-const AbilitiesSection = (props, context) => {
+const AbilitiesSection = (props) => {
   const { data } = useBackend<Info>();
   return (
     <Section fill title="Abilities">
@@ -160,7 +160,7 @@ const AbilitiesSection = (props, context) => {
   );
 };
 
-const MemoriesSection = (props, context) => {
+const MemoriesSection = (props) => {
   const { act, data } = useBackend<Info>();
   const {
     memories,
@@ -220,7 +220,7 @@ const MemoriesSection = (props, context) => {
   );
 };
 
-const VictimPatternsSection = (props, context) => {
+const VictimPatternsSection = (props) => {
   const { data } = useBackend<Info>();
   const {
     stolen_antag_info,
@@ -237,7 +237,7 @@ const VictimPatternsSection = (props, context) => {
   );
 };
 
-export const AntagInfoChangeling = (props, context) => {
+export const AntagInfoChangeling = (props) => {
   const { data } = useBackend<Info>();
   return (
     <Window

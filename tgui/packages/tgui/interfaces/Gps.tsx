@@ -34,7 +34,7 @@ interface TrackingEntryContext {
   tracking: Trackable,
 }
 
-export const Gps = (props, context) => {
+export const Gps = (props) => {
   const { act, data } = useBackend<GpsContext>();
   const [addWaypointName, setAddWaypointName] = useLocalState(context, 'waypointName', "");
   const [addWaypointX, setAddWaypointX] = useLocalState(context, 'waypointX', "");

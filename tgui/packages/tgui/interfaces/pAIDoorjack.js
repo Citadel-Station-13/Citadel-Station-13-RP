@@ -2,7 +2,7 @@ import { useBackend } from "../backend";
 import { AnimatedNumber, Box, Button, LabeledList, ProgressBar, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const pAIDoorjack = (props, context) => {
+export const pAIDoorjack = (props) => {
   const { act, data } = useBackend(context);
 
   const {

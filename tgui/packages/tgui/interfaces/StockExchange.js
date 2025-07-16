@@ -1,8 +1,8 @@
 import { useBackend } from "../backend";
-import { Box, Button, Divider, Section, Table } from "../components";
+import { Box, Button, Divider, Section, Table } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const StockExchange = (props, context) => {
+export const StockExchange = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -47,7 +47,7 @@ export const StockExchange = (props, context) => {
   );
 };
 
-const StockExchangeFullView = (props, context) => {
+const StockExchangeFullView = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -122,7 +122,7 @@ const StockExchangeFullView = (props, context) => {
   );
 };
 
-const StockExchangeCompactView = (props, context) => {
+const StockExchangeCompactView = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -154,7 +154,7 @@ const StockExchangeCompactView = (props, context) => {
   );
 };
 
-const StockExchangeHistory = (props, context) => {
+const StockExchangeHistory = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -186,7 +186,7 @@ const StockExchangeHistory = (props, context) => {
   );
 };
 
-const StockExchangeArchive = (props, context) => {
+const StockExchangeArchive = (props) => {
   const { act, data } = useBackend(context);
 
   const {

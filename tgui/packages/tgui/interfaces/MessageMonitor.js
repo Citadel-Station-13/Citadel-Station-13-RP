@@ -6,7 +6,7 @@ import { Window } from "../layouts";
 import { TemporaryNotice } from './common/TemporaryNotice';
 import { FullscreenNotice } from './common/FullscreenNotice';
 
-export const MessageMonitor = (props, context) => {
+export const MessageMonitor = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -41,7 +41,7 @@ export const MessageMonitor = (props, context) => {
   );
 };
 
-const MessageMonitorHack = (props, context) => {
+const MessageMonitorHack = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -98,7 +98,7 @@ const MessageMonitorHack = (props, context) => {
   );
 };
 
-const MessageMonitorLogin = (props, context) => {
+const MessageMonitorLogin = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -139,7 +139,7 @@ const MessageMonitorLogin = (props, context) => {
   );
 };
 
-const MessageMonitorContent = (props, context) => {
+const MessageMonitorContent = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -208,7 +208,7 @@ const MessageMonitorContent = (props, context) => {
   );
 };
 
-const MessageMonitorMain = (props, context) => {
+const MessageMonitorMain = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -250,7 +250,7 @@ const MessageMonitorMain = (props, context) => {
   );
 };
 
-const MessageMonitorLogs = (props, context) => {
+const MessageMonitorLogs = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -309,7 +309,7 @@ const MessageMonitorLogs = (props, context) => {
   );
 };
 
-const MessageMonitorAdmin = (props, context) => {
+const MessageMonitorAdmin = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -364,7 +364,7 @@ const MessageMonitorAdmin = (props, context) => {
   );
 };
 
-const MessageMonitorSpamFilter = (props, context) => {
+const MessageMonitorSpamFilter = (props) => {
   const { act, data } = useBackend(context);
 
   const {

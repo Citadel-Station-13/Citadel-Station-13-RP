@@ -85,7 +85,7 @@ interface AtmosVentScrubberData {
   gasContext: GasContext;
 }
 
-export const AtmosVentScrubber = (props, context) => {
+export const AtmosVentScrubber = (props) => {
   let { act, data } = useBackend<AtmosVentScrubberData>();
   return (
     <Window width={450} height={275} title={data.name}>

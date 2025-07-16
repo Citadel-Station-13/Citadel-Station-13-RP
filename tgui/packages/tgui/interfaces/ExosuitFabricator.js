@@ -136,7 +136,7 @@ const searchFilter = (search, allparts) => {
   return searchResults;
 };
 
-export const ExosuitFabricator = (props, context) => {
+export const ExosuitFabricator = (props) => {
   const { act, data } = useBackend(context);
 
   const queue = data.queue || [];
@@ -265,7 +265,7 @@ export const ExosuitFabricator = (props, context) => {
   );
 };
 
-const EjectMaterial = (props, context) => {
+const EjectMaterial = (props) => {
   const { act } = useBackend(context);
 
   const { material } = props;
@@ -311,7 +311,7 @@ const EjectMaterial = (props, context) => {
   );
 };
 
-export const Materials = (props, context) => {
+export const Materials = (props) => {
   const { data } = useBackend(context);
 
   const {
@@ -359,7 +359,7 @@ export const Materials = (props, context) => {
   );
 };
 
-const MaterialAmount = (props, context) => {
+const MaterialAmount = (props) => {
   const {
     name,
     amount,
@@ -407,7 +407,7 @@ const MaterialAmount = (props, context) => {
   );
 };
 
-const PartSets = (props, context) => {
+const PartSets = (props) => {
   const { data } = useBackend(context);
 
   const partSets = data.partSets || [];
@@ -440,7 +440,7 @@ const PartSets = (props, context) => {
   );
 };
 
-const PartLists = (props, context) => {
+const PartLists = (props) => {
   const { data } = useBackend(context);
 
   const getFirstValidPartSet = (sets => {
@@ -544,7 +544,7 @@ const PartLists = (props, context) => {
   );
 };
 
-const PartCategory = (props, context) => {
+const PartCategory = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -648,7 +648,7 @@ const PartCategory = (props, context) => {
   );
 };
 
-const Queue = (props, context) => {
+const Queue = (props) => {
   const { act, data } = useBackend(context);
 
   const { isProcessingQueue } = data;
@@ -723,7 +723,7 @@ const Queue = (props, context) => {
   );
 };
 
-const QueueMaterials = (props, context) => {
+const QueueMaterials = (props) => {
   const {
     queueMaterials,
     missingMaterials,
@@ -752,7 +752,7 @@ const QueueMaterials = (props, context) => {
   );
 };
 
-const QueueList = (props, context) => {
+const QueueList = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -801,7 +801,7 @@ const QueueList = (props, context) => {
   );
 };
 
-const BeingBuilt = (props, context) => {
+const BeingBuilt = (props) => {
   const { data } = useBackend(context);
 
   const {

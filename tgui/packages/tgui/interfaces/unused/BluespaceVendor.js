@@ -3,11 +3,11 @@ import { flow } from 'common/fp';
 import { toFixed } from 'common/math';
 import { multiline } from 'common/string';
 import { useBackend } from '../../backend';
-import { Button, Divider, LabeledList, NumberInput, ProgressBar, Section, Stack } from '../../components';
+import { Button, Divider, LabeledList, NumberInput, ProgressBar, Section, Stack } from 'tgui-core/components';
 import { getGasColor, getGasLabel } from '../../constants';
 import { Window } from '../../layouts';
 
-export const BluespaceVendor = (props, context) => {
+export const BluespaceVendor = (props) => {
   const { act, data } = useBackend(context);
   const {
     on,

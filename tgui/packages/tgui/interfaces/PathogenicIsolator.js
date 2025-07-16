@@ -61,7 +61,7 @@ const virusModalBodyOverride = (modal, context) => {
   );
 };
 
-export const PathogenicIsolator = (props, context) => {
+export const PathogenicIsolator = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -100,7 +100,7 @@ export const PathogenicIsolator = (props, context) => {
   );
 };
 
-const PathogenicIsolatorTabHome = (props, context) => {
+const PathogenicIsolatorTabHome = (props) => {
   const { act, data } = useBackend(context);
   const {
     syringe_inserted,
@@ -160,7 +160,7 @@ const PathogenicIsolatorTabHome = (props, context) => {
   );
 };
 
-const PathogenicIsolatorTabDatabase = (props, context) => {
+const PathogenicIsolatorTabDatabase = (props) => {
   const { act, data } = useBackend(context);
   const {
     database,

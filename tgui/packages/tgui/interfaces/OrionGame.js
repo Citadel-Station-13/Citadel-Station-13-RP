@@ -91,7 +91,7 @@ const locationInfo = [
   },
 ];
 
-const AdventureStatus = (props, context) => {
+const AdventureStatus = (props) => {
   const { data, act } = useBackend(context);
   const {
     lings_suspected,
@@ -190,7 +190,7 @@ const AdventureStatus = (props, context) => {
   );
 };
 
-const ORION_STATUS_START = (props, context) => {
+const ORION_STATUS_START = (props) => {
   const { data, act } = useBackend(context);
   const {
     gamename,
@@ -227,7 +227,7 @@ const ORION_STATUS_START = (props, context) => {
   );
 };
 
-const ORION_STATUS_INSTRUCTIONS = (props, context) => {
+const ORION_STATUS_INSTRUCTIONS = (props) => {
   const { act } = useBackend(context);
   const fake_settlers = ["John", "William", "Alice", "Tom"];
   return (
@@ -343,7 +343,7 @@ const ORION_STATUS_INSTRUCTIONS = (props, context) => {
   );
 };
 
-const ORION_STATUS_NORMAL = (props, context) => {
+const ORION_STATUS_NORMAL = (props) => {
   const { data, act } = useBackend(context);
   const {
     settlers,
@@ -405,7 +405,7 @@ const ORION_STATUS_NORMAL = (props, context) => {
   );
 };
 
-const ORION_STATUS_GAMEOVER = (props, context) => {
+const ORION_STATUS_GAMEOVER = (props) => {
   const { data, act } = useBackend(context);
   const {
     reason,
@@ -436,7 +436,7 @@ const ORION_STATUS_GAMEOVER = (props, context) => {
 
 const marketButtonSpacing = 0.8;
 
-const ORION_STATUS_MARKET = (props, context) => {
+const ORION_STATUS_MARKET = (props) => {
   const { data, act } = useBackend(context);
   const {
     turns,
@@ -602,7 +602,7 @@ const ORION_STATUS_MARKET = (props, context) => {
   );
 };
 
-export const OrionGame = (props, context) => {
+export const OrionGame = (props) => {
   const { act, data } = useBackend(context);
   const {
     gamestatus,

@@ -113,7 +113,7 @@ const InputDisplay = (props) => {
 };
 
 /** Gives the user a submit button */
-const ButtonsDisplay = (props, context) => {
+const ButtonsDisplay = (props) => {
   const { act } = useBackend<CandidateData>();
   const { input } = props;
 

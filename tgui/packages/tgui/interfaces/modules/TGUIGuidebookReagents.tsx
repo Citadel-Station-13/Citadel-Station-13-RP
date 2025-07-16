@@ -74,7 +74,7 @@ interface TGUIGuidebookReaction {
   resultAmount: number;
 }
 
-export const TGUIGuidebookReagents = (props, context) => {
+export const TGUIGuidebookReagents = (props) => {
   let { act, data } = useModule<TGUIGuidebookReagentsData>(context);
   const [activeTab, setActiveTab] = useState<string | null>(null);
   const [searchText, setSearchText] = useState<string | null>(null);

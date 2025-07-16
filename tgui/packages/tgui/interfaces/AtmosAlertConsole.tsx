@@ -12,7 +12,7 @@ interface AtmosAlert {
   ref: string;
 }
 
-export const AtmosAlertConsole = (props, context) => {
+export const AtmosAlertConsole = (props) => {
   const { act, data } = useBackend<AtmosAlertConsoleData>();
   return (
     <Window

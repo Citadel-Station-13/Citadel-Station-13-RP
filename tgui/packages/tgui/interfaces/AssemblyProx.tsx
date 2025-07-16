@@ -4,7 +4,7 @@ import { Window } from "../layouts";
 import { formatTime } from "tgui-core/format";
 import { round } from "tgui-core/math";
 
-export const AssemblyProx = (props, context) => {
+export const AssemblyProx = (props) => {
   const { act, data } = useBackend<any>();
   const {
     timing,

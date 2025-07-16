@@ -1,7 +1,7 @@
 import { useBackend } from "../../../../backend";
-import { Box, Button, LabeledList, Section } from "../../../../components";
+import { Box, Button, LabeledList, Section } from "tgui-core/components";
 
-export const pda_security = (props, context) => {
+export const pda_security = (props) => {
   const { act, data } = useBackend(context);
 
   const {

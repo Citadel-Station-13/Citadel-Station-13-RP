@@ -10,7 +10,7 @@ import { Button, Input, Section, Table } from 'tgui-core/components';
 import { Popper } from 'tgui-core/components/Popper';
 import { Window } from '../layouts';
 
-export const RequestManager = (props, context) => {
+export const RequestManager = (props) => {
   const { act, data } = useBackend(context);
   const { requests } = data;
   const [filteredTypes, _] = useLocalState(
@@ -96,7 +96,7 @@ const RequestType = (props) => {
   );
 };
 
-const RequestControls = (props, context) => {
+const RequestControls = (props) => {
   const { act, _ } = useBackend(context);
   const { request } = props;
 

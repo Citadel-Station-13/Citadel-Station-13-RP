@@ -6,7 +6,7 @@ import { COLORS } from '../constants';
 import { Window } from '../layouts';
 import { BeakerContents } from './common/BeakerContents';
 
-export const ChemHeater = (props, context) => {
+export const ChemHeater = (props) => {
   const { act, data } = useBackend(context);
   const {
     targetTemp,

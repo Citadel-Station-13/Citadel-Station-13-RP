@@ -25,7 +25,7 @@ type PaintingData = {
   medium: string | null
 }
 
-export const PaintingAdminPanel = (props, context) => {
+export const PaintingAdminPanel = (props) => {
   const { act, data } = useBackend<PaintingAdminPanelData>();
   const [chosenPaintingRef, setChosenPaintingRef] = useState<string | null>(null);
   const {

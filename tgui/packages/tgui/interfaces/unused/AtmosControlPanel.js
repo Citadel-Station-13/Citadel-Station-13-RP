@@ -1,10 +1,10 @@
 import { map, sortBy } from 'common/collections';
 import { flow } from 'common/fp';
 import { useBackend } from '../../backend';
-import { Box, Button, Flex, Section, Table } from '../../components';
+import { Box, Button, Flex, Section, Table } from 'tgui-core/components';
 import { Window } from '../../layouts';
 
-export const AtmosControlPanel = (props, context) => {
+export const AtmosControlPanel = (props) => {
   const { act, data } = useBackend(context);
   const groups = flow([
     map((group, i) => ({

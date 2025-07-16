@@ -5,7 +5,7 @@ import { Window } from "../layouts";
 import { decodeHtmlEntities } from 'common/string';
 import { formatPower } from "../format";
 
-export const ICCircuit = (props, context) => {
+export const ICCircuit = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -98,7 +98,7 @@ export const ICCircuit = (props, context) => {
   );
 };
 
-const ICIODisplay = (props, context) => {
+const ICIODisplay = (props) => {
   const { act } = useBackend(context);
 
   const {
@@ -120,7 +120,7 @@ const ICIODisplay = (props, context) => {
   ));
 };
 
-const ICLinkDisplay = (props, context) => {
+const ICLinkDisplay = (props) => {
   const { act } = useBackend(context);
 
   const {

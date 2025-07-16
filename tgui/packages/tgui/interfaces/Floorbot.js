@@ -2,7 +2,7 @@ import { useBackend } from "../backend";
 import { Button, LabeledList, Section, AnimatedNumber, Dropdown } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const Floorbot = (props, context) => {
+export const Floorbot = (props) => {
   const { act, data } = useBackend(context);
 
   const {

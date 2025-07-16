@@ -1,8 +1,8 @@
 import { useBackend } from "../backend";
-import { Button, LabeledList, Slider, Section } from "../components";
+import { Button, LabeledList, Slider, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const VolumePanel = (props, context) => {
+export const VolumePanel = (props) => {
   const { act, data } = useBackend(context);
 
   const {

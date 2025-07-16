@@ -3,7 +3,7 @@ import { Button, NumberInput, LabeledList } from 'tgui-core/components';
 import { OperatorData } from './data';
 import { toFixed } from 'common/math';
 
-export const RadioPane = (props, context) => {
+export const RadioPane = (props) => {
   const { act, data } = useBackend<OperatorData>();
   const {
     microphone,

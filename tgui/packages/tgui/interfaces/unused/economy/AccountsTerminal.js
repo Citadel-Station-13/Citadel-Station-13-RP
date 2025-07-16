@@ -1,8 +1,8 @@
 import { useBackend, useSharedState } from "../../../backend";
-import { Box, Button, LabeledList, Input, Section, Table, Tabs } from "../../../components";
+import { Box, Button, LabeledList, Input, Section, Table, Tabs } from "tgui-core/components";
 import { Window } from "../../../layouts";
 
-export const AccountsTerminal = (props, context) => {
+export const AccountsTerminal = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -35,7 +35,7 @@ export const AccountsTerminal = (props, context) => {
   );
 };
 
-const AccountTerminalContent = (props, context) => {
+const AccountTerminalContent = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -76,7 +76,7 @@ const AccountTerminalContent = (props, context) => {
   );
 };
 
-const NewAccountView = (props, context) => {
+const NewAccountView = (props) => {
   const { act } = useBackend(context);
 
   const [holder, setHolder] = useSharedState(context, "holder", "");
@@ -112,7 +112,7 @@ const NewAccountView = (props, context) => {
   );
 };
 
-const DetailedView = (props, context) => {
+const DetailedView = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -198,7 +198,7 @@ const DetailedView = (props, context) => {
   );
 };
 
-const ListView = (props, context) => {
+const ListView = (props) => {
   const { act, data } = useBackend(context);
 
   const {

@@ -321,7 +321,7 @@ const InstalledDisplay = (_, context) => {
 };
 
 /** Iterates over installed software to render buttons. */
-const InstalledSoftware = (props, context) => {
+const InstalledSoftware = (props) => {
   const { data } = useBackend<PaiInterfaceData>();
   const { installed = [] } = data;
   const { onInstallClick } = props;
@@ -379,7 +379,7 @@ const InstalledInfo = (props) => {
 };
 
 /** Todo: Remove this entirely when records get a TGUI interface themselves */
-const RecordsDisplay = (props, context) => {
+const RecordsDisplay = (props) => {
   const { act, data } = useBackend<PaiInterfaceData>();
   const { record_type } = props;
   const { records = [], refresh_spam } = data;
@@ -450,7 +450,7 @@ const RecordRow = (props) => {
 /** Once a software is selected, generates custom buttons or a default
  * power toggle.
  */
-const SoftwareButtons = (props, context) => {
+const SoftwareButtons = (props) => {
   const { act, data } = useBackend<PaiInterfaceData>();
   const { door_jack, languages, pda } = data;
   const { software } = props;
@@ -605,7 +605,7 @@ const AvailableSoftware = (_, context) => {
 };
 
 /** A row for an individual software listing. */
-const AvailableRow = (props, context) => {
+const AvailableRow = (props) => {
   const { act, data } = useBackend<PaiInterfaceData>();
   const { ram } = data;
   const { installed } = data;

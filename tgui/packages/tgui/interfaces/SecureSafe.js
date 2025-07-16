@@ -2,7 +2,7 @@ import { useBackend } from '../backend';
 import { Box, Button, Flex, Grid, NoticeBox, Section } from 'tgui-core/components';
 import { Window } from '../layouts';
 
-const NukeKeypad = (props, context) => {
+const NukeKeypad = (props) => {
   const { act, data } = useBackend(context);
   const keypadKeys = [
     ['1', '4', '7', 'R'],
@@ -42,7 +42,7 @@ const NukeKeypad = (props, context) => {
   );
 };
 
-export const SecureSafe = (props, context) => {
+export const SecureSafe = (props) => {
   const { act, data } = useBackend(context);
   const {
     code,

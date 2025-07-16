@@ -1,5 +1,5 @@
 import { useBackend } from '../../backend';
-import { Box, Button, Dimmer, Icon, LabeledList, Section } from '../../components';
+import { Box, Button, Dimmer, Icon, LabeledList, Section } from 'tgui-core/components';
 import { Window } from '../../layouts';
 import { DnaConsoleEnzymes } from './DnaConsoleEnzymes';
 import { DnaConsoleSequencer } from './DnaConsoleSequencer';
@@ -7,7 +7,7 @@ import { DnaConsoleStorage } from './DnaConsoleStorage';
 import { DnaScanner } from './DnaScanner';
 import { CONSOLE_MODE_ENZYMES, CONSOLE_MODE_FEATURES, CONSOLE_MODE_SEQUENCER, CONSOLE_MODE_STORAGE, STORAGE_MODE_CONSOLE } from './constants';
 
-const DnaConsoleCommands = (props, context) => {
+const DnaConsoleCommands = (props) => {
   const { data, act } = useBackend(context);
   const { hasDisk, isInjectorReady, injectorSeconds } = data;
   const { consoleMode } = data.view;
@@ -67,7 +67,7 @@ const DnaConsoleCommands = (props, context) => {
   );
 };
 
-export const DnaConsole = (props, context) => {
+export const DnaConsole = (props) => {
   const { data, act } = useBackend(context);
   const {
     isPulsing,

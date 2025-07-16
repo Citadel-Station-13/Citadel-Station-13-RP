@@ -1,9 +1,9 @@
 import { useBackend } from '../backend';
-import { Button, Input, LabeledList, Section, Table, NoticeBox, NumberInput, LabeledControls, Box } from '../components';
+import { Button, Input, LabeledList, Section, Table, NoticeBox, NumberInput, LabeledControls, Box } from 'tgui-core/components';
 import { RADIO_CHANNELS } from '../constants';
 import { Window } from '../layouts';
 
-export const Telecomms = (props, context) => {
+export const Telecomms = (props) => {
   const { act, data } = useBackend(context);
   const {
     type,

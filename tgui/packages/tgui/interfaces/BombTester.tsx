@@ -3,7 +3,7 @@ import { useBackend } from "../backend";
 import { Box, Button, Icon, LabeledList, Section, Slider } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const BombTester = (props, context) => {
+export const BombTester = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -48,12 +48,12 @@ export const BombTester = (props, context) => {
                     {tank1}
                   </Button>
                 ) || (
-                  <Button
-                    onClick={() => act("add_tank", { slot: 1 })}
-                    icon="upload">
-                    Insert Tank
-                  </Button>
-                )}
+                    <Button
+                      onClick={() => act("add_tank", { slot: 1 })}
+                      icon="upload">
+                      Insert Tank
+                    </Button>
+                  )}
               </LabeledList.Item>
               <LabeledList.Item label="Secondary Slot">
                 {tank2 && (
@@ -63,12 +63,12 @@ export const BombTester = (props, context) => {
                     {tank2}
                   </Button>
                 ) || (
-                  <Button
-                    onClick={() => act("add_tank", { slot: 2 })}
-                    icon="upload">
-                    Insert Tank
-                  </Button>
-                )}
+                    <Button
+                      onClick={() => act("add_tank", { slot: 2 })}
+                      icon="upload">
+                      Insert Tank
+                    </Button>
+                  )}
               </LabeledList.Item>
               <LabeledList.Item label="Connected Canister" buttons={
                 <Button
@@ -82,10 +82,10 @@ export const BombTester = (props, context) => {
                     {canister}
                   </Box>
                 ) || (
-                  <Box color="bad">
-                    No tank connected.
-                  </Box>
-                )}
+                    <Box color="bad">
+                      No tank connected.
+                    </Box>
+                  )}
               </LabeledList.Item>
               {canister && (
                 <LabeledList.Item label="Canister Release Pressure">

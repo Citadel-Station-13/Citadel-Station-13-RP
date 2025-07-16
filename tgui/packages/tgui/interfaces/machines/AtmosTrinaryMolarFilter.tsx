@@ -48,7 +48,7 @@ interface AtmosTrinaryMolarFilterData extends AtmosComponentData {
   maxRate: number;
 }
 
-export const AtmosTrinaryMolarFilter = (props, context) => {
+export const AtmosTrinaryMolarFilter = (props) => {
   const { act, data } = useBackend<AtmosTrinaryMolarFilterData>();
 
   return (

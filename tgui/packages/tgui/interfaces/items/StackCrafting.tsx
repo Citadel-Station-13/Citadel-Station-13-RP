@@ -72,7 +72,7 @@ const StackCraftingEntry = (props: StackCraftingEntryProps, context) => {
   );
 };
 
-export const StackCrafting = (props, context) => {
+export const StackCrafting = (props) => {
   const { act, data } = useBackend<StackCraftingData>();
   let approximateEntries = 0;
   let categories: string[] = [];

@@ -1,6 +1,6 @@
-import { LabeledList, Section } from '../../components';
+import { LabeledList, Section } from 'tgui-core/components';
 
-export const GeneticMakeupInfo = (props, context) => {
+export const GeneticMakeupInfo = (props) => {
   const { makeup } = props;
 
   return (

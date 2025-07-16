@@ -2,7 +2,7 @@ import { useBackend } from "../backend";
 import { Box, Button, LabeledList, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const pAIDirectives = (props, context) => {
+export const pAIDirectives = (props) => {
   const { act, data } = useBackend(context);
 
   const {

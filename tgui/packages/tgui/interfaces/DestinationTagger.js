@@ -2,7 +2,7 @@ import { useBackend } from "../backend";
 import { Button, Flex, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const DestinationTagger = (props, context) => {
+export const DestinationTagger = (props) => {
   const { act, data } = useBackend(context);
 
   const {

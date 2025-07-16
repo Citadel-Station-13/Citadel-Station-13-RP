@@ -2,7 +2,7 @@ import { useBackend } from '../backend';
 import { Box, Button, LabeledList, Section } from 'tgui-core/components';
 import { Window } from '../layouts';
 
-export const ParticleAccelerator = (props, context) => {
+export const ParticleAccelerator = (props) => {
   const { act, data } = useBackend(context);
   const {
     assembled,

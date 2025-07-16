@@ -2,7 +2,7 @@ import { useBackend } from '../backend';
 import { Box, Button, LabeledList, ProgressBar, Section } from 'tgui-core/components';
 import { NtosWindow } from '../layouts';
 
-export const NtosConfiguration = (props, context) => {
+export const NtosConfiguration = (props) => {
   const { act, data } = useBackend(context);
   const {
     PC_device_theme,

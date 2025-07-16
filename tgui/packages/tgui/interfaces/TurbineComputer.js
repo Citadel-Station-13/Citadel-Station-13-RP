@@ -1,8 +1,8 @@
 import { useBackend } from '../backend';
-import { Button, LabeledList, Section, Box, Modal, ProgressBar, NumberInput } from '../components';
+import { Button, LabeledList, Section, Box, Modal, ProgressBar, NumberInput } from 'tgui-core/components';
 import { Window } from '../layouts';
 
-export const TurbineComputer = (props, context) => {
+export const TurbineComputer = (props) => {
   const { act, data } = useBackend(context);
   const parts_not_connected = !data.parts_linked && (
     <Modal>

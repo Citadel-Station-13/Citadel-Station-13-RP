@@ -4,7 +4,7 @@ import { Box, Button, Flex, LabeledList, Section, Table } from "tgui-core/compon
 import { Window } from "../layouts";
 import { OvermapFlightData, OvermapPanControls } from './common/Overmap';
 
-export const OvermapHelm = (props, context) => {
+export const OvermapHelm = (props) => {
   return (
     <Window width={560} height={700} scrollable>
       <Window.Content>
@@ -14,7 +14,7 @@ export const OvermapHelm = (props, context) => {
   );
 };
 
-export const OvermapHelmContent = (props, context) => {
+export const OvermapHelmContent = (props) => {
   return (
     <Fragment>
       <Flex>
@@ -33,7 +33,7 @@ export const OvermapHelmContent = (props, context) => {
   );
 };
 
-export const OvermapFlightDataWrap = (props, context) => {
+export const OvermapFlightDataWrap = (props) => {
   const { act, data } = useBackend(context);
 
   // While, yes, this is a strange choice to use fieldset over Section just
@@ -46,7 +46,7 @@ export const OvermapFlightDataWrap = (props, context) => {
   );
 };
 
-const OvermapManualControl = (props, context) => {
+const OvermapManualControl = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -77,7 +77,7 @@ const OvermapManualControl = (props, context) => {
   );
 };
 
-const OvermapAutopilot = (props, context) => {
+const OvermapAutopilot = (props) => {
   const { act, data } = useBackend(context);
   const {
     dest,
@@ -163,7 +163,7 @@ const OvermapAutopilot = (props, context) => {
   );
 };
 
-const OvermapNavComputer = (props, context) => {
+const OvermapNavComputer = (props) => {
   const { act, data } = useBackend(context);
 
   const {

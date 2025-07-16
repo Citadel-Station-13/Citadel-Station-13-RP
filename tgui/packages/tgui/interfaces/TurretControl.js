@@ -1,9 +1,9 @@
 import { useBackend } from '../backend';
-import { Button, LabeledList, Section } from '../components';
+import { Button, LabeledList, Section } from 'tgui-core/components';
 import { Window } from '../layouts';
 import { InterfaceLockNoticeBox } from './common/InterfaceLockNoticeBox';
 
-export const TurretControl = (props, context) => {
+export const TurretControl = (props) => {
   const { act, data } = useBackend(context);
   const locked = data.locked && !data.siliconUser;
   const {

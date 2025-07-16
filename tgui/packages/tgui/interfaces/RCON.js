@@ -6,7 +6,7 @@ import { Box, Button, Icon, LabeledList, ProgressBar, Stack, Section, Tabs, Slid
 import { Window } from "../layouts";
 import { capitalize } from 'common/string';
 
-export const RCON = (props, context) => {
+export const RCON = (props) => {
   return (
     <Window
       width={630}
@@ -19,7 +19,7 @@ export const RCON = (props, context) => {
   );
 };
 
-export const RCONContent = (props, context) => {
+export const RCONContent = (props) => {
   const [tabIndex, setTabIndex] = useLocalState(context, 'tabIndex', 0);
 
   let body;
@@ -52,7 +52,7 @@ export const RCONContent = (props, context) => {
   );
 };
 
-const RCONSmesList = (props, context) => {
+const RCONSmesList = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -72,7 +72,7 @@ const RCONSmesList = (props, context) => {
   );
 };
 
-const SMESItem = (props, context) => {
+const SMESItem = (props) => {
   const { act } = useBackend(context);
   const {
     capacityPercent,
@@ -123,7 +123,7 @@ const SMESItem = (props, context) => {
   );
 };
 
-const SMESControls = (props, context) => {
+const SMESControls = (props) => {
   const { act } = useBackend(context);
   const {
     way,
@@ -249,7 +249,7 @@ const SMESControls = (props, context) => {
   );
 };
 
-const RCONBreakerList = (props, context) => {
+const RCONBreakerList = (props) => {
   const { act, data } = useBackend(context);
 
   const {

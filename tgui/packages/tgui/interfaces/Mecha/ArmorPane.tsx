@@ -3,7 +3,7 @@ import { Stack, Button, Box } from 'tgui-core/components';
 import { OperatorData } from './data';
 import { classes } from 'common/react';
 
-export const ArmorPane = (props, context) => {
+export const ArmorPane = (props) => {
   const { act, data } = useBackend<OperatorData>();
   const {
     mech_equipment,

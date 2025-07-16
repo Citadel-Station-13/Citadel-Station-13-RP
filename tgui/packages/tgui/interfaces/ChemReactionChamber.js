@@ -3,7 +3,7 @@ import { AnimatedNumber, Box, Button, Input, LabeledList, NumberInput, Section, 
 import { Window } from '../layouts';
 import { round, toFixed } from 'common/math';
 
-export const ChemReactionChamber = (props, context) => {
+export const ChemReactionChamber = (props) => {
   const { act, data } = useBackend(context);
 
   const [

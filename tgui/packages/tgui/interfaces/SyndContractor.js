@@ -1,6 +1,6 @@
 import { Component, Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
-import { Box, Button, Flex, Grid, Icon, LabeledList, Modal, NoticeBox, Section, Table, Tabs } from '../components';
+import { Box, Button, Flex, Grid, Icon, LabeledList, Modal, NoticeBox, Section, Table, Tabs } from 'tgui-core/components';
 import { NtosWindow } from '../layouts';
 
 const CONTRACT_STATUS_INACTIVE = 1;
@@ -61,7 +61,7 @@ export class FakeTerminal extends Component {
   }
 }
 
-export const SyndContractor = (props, context) => {
+export const SyndContractor = (props) => {
   return (
     <NtosWindow
       width={500}
@@ -75,7 +75,7 @@ export const SyndContractor = (props, context) => {
   );
 };
 
-export const SyndContractorContent = (props, context) => {
+export const SyndContractorContent = (props) => {
   const { data, act } = useBackend(context);
 
   const terminalMessages = [
@@ -218,7 +218,7 @@ export const SyndContractorContent = (props, context) => {
   );
 };
 
-export const StatusPane = (props, context) => {
+export const StatusPane = (props) => {
   const { act, data } = useBackend(context);
 
   return (
@@ -272,7 +272,7 @@ export const StatusPane = (props, context) => {
   );
 };
 
-export const SyndPane = (props, context) => {
+export const SyndPane = (props) => {
   const [tab, setTab] = useLocalState(context, 'tab', 1);
   return (
     <Fragment>
@@ -299,7 +299,7 @@ export const SyndPane = (props, context) => {
   );
 };
 
-const ContractsTab = (props, context) => {
+const ContractsTab = (props) => {
   const { act, data } = useBackend(context);
   const contracts = data.contracts || [];
   return (
@@ -378,7 +378,7 @@ const ContractsTab = (props, context) => {
   );
 };
 
-const HubTab = (props, context) => {
+const HubTab = (props) => {
   const { act, data } = useBackend(context);
   const contractor_hub_items = data.contractor_hub_items || [];
   return (

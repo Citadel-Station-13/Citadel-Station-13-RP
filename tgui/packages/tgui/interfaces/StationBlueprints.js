@@ -1,10 +1,10 @@
 import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
-import { ByondUi } from '../components';
+import { ByondUi } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 
-export const StationBlueprints = (props, context) => {
+export const StationBlueprints = (props) => {
   return (
     <Window
       width={870}
@@ -15,7 +15,7 @@ export const StationBlueprints = (props, context) => {
   );
 };
 
-export const StationBlueprintsContent = (props, context) => {
+export const StationBlueprintsContent = (props) => {
   const { act, data, config } = useBackend(context);
 
   const { mapRef, areas, turfs } = data;

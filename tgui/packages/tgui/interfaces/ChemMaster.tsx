@@ -65,7 +65,7 @@ type StyleData = {
 };
 
 
-export const ChemMaster = (props, context) => {
+export const ChemMaster = (props) => {
   const { data } = useBackend<ChemMasterData>();
   const { screen } = data;
   return (
@@ -77,7 +77,7 @@ export const ChemMaster = (props, context) => {
   );
 };
 
-const ChemMasterContent = (props, context) => {
+const ChemMasterContent = (props) => {
   const { act, data } = useBackend<ChemMasterData>();
   const {
     screen,
@@ -187,7 +187,7 @@ const ChemMasterContent = (props, context) => {
 
 const ChemicalBuffer = Table;
 
-const ChemicalBufferEntry = (props, context) => {
+const ChemicalBufferEntry = (props) => {
   const { act } = useBackend<ChemMasterData>();
   const { chemical, transferTo } = props;
   return (
@@ -297,7 +297,7 @@ const PackagingControlsItem = (props) => {
   );
 };
 
-const PackagingControls = (props, context) => {
+const PackagingControls = (props) => {
   const { act, data } = useBackend<ChemMasterData>();
   const [pillAmount, setPillAmount] = useSharedState(context, 'pillAmount', 1);
   const [patchAmount, setPatchAmount] = useSharedState(
@@ -496,7 +496,7 @@ const PackagingControls = (props, context) => {
   );
 };
 
-const AnalysisResults = (props, context) => {
+const AnalysisResults = (props) => {
   const { act, data } = useBackend<ChemMasterData>();
   const { analyzeVars } = data;
   return (

@@ -2,7 +2,7 @@ import { useBackend, useSharedState } from '../backend';
 import { Box, Button, LabeledList, NoticeBox, NumberInput, Icon, Section, Stack, Tabs } from 'tgui-core/components';
 import { NtosWindow } from '../layouts';
 
-export const NtosNetMonitor = (props, context) => {
+export const NtosNetMonitor = (props) => {
   const { act, data } = useBackend(context);
   const [tab_main, setTab_main] = useSharedState(context, 'tab_main', 1);
   const {
@@ -69,7 +69,7 @@ export const NtosNetMonitor = (props, context) => {
   );
 };
 
-const MainPage = (props, context) => {
+const MainPage = (props) => {
   const {
     ntnetrelays,
     ntnetstatus,
@@ -211,7 +211,7 @@ const MainPage = (props, context) => {
   );
 };
 
-const TabletPage = (props, context) => {
+const TabletPage = (props) => {
   const { tablets } = props;
   const { act, data } = useBackend(context);
   if (!tablets.length) {

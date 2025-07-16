@@ -6,7 +6,7 @@ import {
   Input,
   Dropdown,
   Icon,
-} from '../../components';
+} from 'tgui-core/components';
 import { Component } from 'inferno';
 import { shallowDiffers } from 'common/react';
 
@@ -191,7 +191,7 @@ export class VariableMenu extends Component {
   }
 }
 
-const IconButton = (props, context) => {
+const IconButton = (props) => {
   return (
     <Stack fill align="center">
       <Stack.Item grow basis="content">

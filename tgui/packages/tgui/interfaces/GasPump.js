@@ -2,7 +2,7 @@ import { useBackend } from "../backend";
 import { Button, LabeledList, ProgressBar, Section, LabeledControls, AnimatedNumber } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const GasPump = (props, context) => {
+export const GasPump = (props) => {
   const { act, data } = useBackend(context);
 
   const {

@@ -11,7 +11,7 @@ import {
 
 import { Window } from '../layouts';
 
-export const ColorMate = (props, context) => {
+export const ColorMate = (props) => {
   const { act, data } = useBackend(context);
   const { activemode, temp } = data;
   const item = data.item || [];
@@ -129,7 +129,7 @@ export const ColorMate = (props, context) => {
   );
 };
 
-export const ColorMateTint = (props, context) => {
+export const ColorMateTint = (props) => {
   const { act, data } = useBackend(context);
   return (
     <Button
@@ -141,7 +141,7 @@ export const ColorMateTint = (props, context) => {
   );
 };
 
-export const ColorMateMatrix = (props, context) => {
+export const ColorMateMatrix = (props) => {
   const { act, data } = useBackend(context);
   const matrixcolors = data.matrixcolors || [];
   return (
@@ -357,7 +357,7 @@ export const ColorMateMatrix = (props, context) => {
   );
 };
 
-export const ColorMateHSV = (props, context) => {
+export const ColorMateHSV = (props) => {
   const { act, data } = useBackend(context);
   const { buildhue, buildsat, buildval } = data;
   return (

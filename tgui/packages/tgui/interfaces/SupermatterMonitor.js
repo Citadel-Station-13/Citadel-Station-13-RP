@@ -1,6 +1,6 @@
 import { useBackend } from '../backend';
 import { Box, Button, LabeledList, ProgressBar, Section, Flex, AnimatedNumber, Chart, ColorBox }
-  from '../components';
+  from 'tgui-core/components';
 import { Window } from '../layouts';
 import { round } from 'common/math';
 import { toTitleCase } from 'common/string';
@@ -8,7 +8,7 @@ import { Fragment } from 'inferno';
 
 //  As of 2020-08-06 this isn't actually ever used, but it needs to exist
 //  because that's what tgui_modules expect
-export const SupermatterMonitor = (props, context) => (
+export const SupermatterMonitor = (props) => (
   <Window width={600} height={400} resizable>
     <Window.Content scrollable>
       <SupermatterMonitorContent />
@@ -16,7 +16,7 @@ export const SupermatterMonitor = (props, context) => (
   </Window>
 );
 
-export const SupermatterMonitorContent = (props, context) => {
+export const SupermatterMonitorContent = (props) => {
   const { act, data } = useBackend(context);
 
   const { active } = data;
@@ -28,7 +28,7 @@ export const SupermatterMonitorContent = (props, context) => {
   }
 };
 
-const SupermatterMonitorList = (props, context) => {
+const SupermatterMonitorList = (props) => {
   const { act, data } = useBackend(context);
 
   const { supermatters } = data;
@@ -58,7 +58,7 @@ const SupermatterMonitorList = (props, context) => {
   );
 };
 
-const SupermatterMonitorActive = (props, context) => {
+const SupermatterMonitorActive = (props) => {
   const { act, data } = useBackend(context);
   const { SM_History } = data;
 

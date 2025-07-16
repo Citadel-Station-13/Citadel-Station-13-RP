@@ -2,7 +2,7 @@ import { useBackend } from "../backend";
 import { Button, Box, Flex, LabeledList, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const ExonetNode = (props, context) => {
+export const ExonetNode = (props) => {
   const { act, data } = useBackend(context);
 
   const {

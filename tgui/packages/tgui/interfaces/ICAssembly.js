@@ -4,7 +4,7 @@ import { Box, Button, LabeledList, ProgressBar, Section, AnimatedNumber, Flex } 
 import { Window } from "../layouts";
 import { formatPower } from "../format";
 
-export const ICAssembly = (props, context) => {
+export const ICAssembly = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -90,7 +90,7 @@ export const ICAssembly = (props, context) => {
   );
 };
 
-const ICAssemblyCircuits = (props, context) => {
+const ICAssemblyCircuits = (props) => {
   const { act } = useBackend(context);
 
   const {
@@ -115,7 +115,7 @@ const ICAssemblyCircuits = (props, context) => {
   );
 };
 
-export const ICTerminal = (props, context) => {
+export const ICTerminal = (props) => {
   const { act, data } = useBackend(context);
 
   const {

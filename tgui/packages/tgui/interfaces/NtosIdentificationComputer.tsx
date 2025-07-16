@@ -1,7 +1,7 @@
 import { NtosWindow } from "../layouts";
 import { Module } from "tgui-core/components/Module";
 
-export const NtosIdentificationComputer = (props, context) => {
+export const NtosIdentificationComputer = (props) => {
   return (
     <NtosWindow
       width={870}

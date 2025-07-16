@@ -3,7 +3,7 @@ import { Stack, Button, Section, Box, ProgressBar, LabeledList } from 'tgui-core
 import { KelvinZeroCelcius, OperatorData } from './data';
 import { toFixed } from 'common/math';
 
-export const MechStatPane = (props, context) => {
+export const MechStatPane = (props) => {
   const { act, data } = useBackend<OperatorData>();
   const {
     name,
@@ -111,7 +111,7 @@ const GetTempFormat = (temp) => {
 };
 
 
-const EnviromentalAir = (props, context) => {
+const EnviromentalAir = (props) => {
   const { act, data } = useBackend<OperatorData>();
   const {
     airtank_pressure,
@@ -133,7 +133,7 @@ const EnviromentalAir = (props, context) => {
   }
 };
 
-const DNABody = (props, context) => {
+const DNABody = (props) => {
   const { act, data } = useBackend<OperatorData>();
   const {
     dna_lock,
@@ -171,7 +171,7 @@ const DNABody = (props, context) => {
   }
 };
 
-const PowerBar = (props, context) => {
+const PowerBar = (props) => {
   const { act, data } = useBackend<OperatorData>();
   const {
     power_level,

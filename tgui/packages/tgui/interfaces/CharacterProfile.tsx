@@ -49,7 +49,7 @@ interface CharacterProfileContext {
   vore_spontaneous_pred: string;
 }
 
-export const CharacterProfile = (props, context) => {
+export const CharacterProfile = (props) => {
   const { act, data } = useBackend<CharacterProfileContext>();
   const [selectedTab, setSelectedTab] = useLocalState<number>(
     context,
@@ -135,7 +135,7 @@ export const CharacterProfile = (props, context) => {
   );
 };
 
-const CharacterProfileImageElement = (props, context) => {
+const CharacterProfileImageElement = (props) => {
   const { act, data } = useBackend<CharacterProfileContext>();
 
   if (data.fullref_toggle && data.fullref_url) return (<Section title="Full Reference" pb="12" textAlign="center"><img src={data.fullref_url} style={{ "max-width": "500px", "max-height": "900px" }} /></Section>);
@@ -144,7 +144,7 @@ const CharacterProfileImageElement = (props, context) => {
 };
 
 
-const CharacterProfileDescElement = (props, context) => {
+const CharacterProfileDescElement = (props) => {
   const { act, data } = useBackend<CharacterProfileContext>();
 
   return (

@@ -21,7 +21,7 @@ const SETTTAB = 9;
 
 let TabToTemplate = {}; // Populated under each template
 
-export const Communicator = (props, context) => {
+export const Communicator = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -58,7 +58,7 @@ export const Communicator = (props, context) => {
   );
 };
 
-const VideoComm = (props, context) => {
+const VideoComm = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -171,7 +171,7 @@ const VideoComm = (props, context) => {
   return null;
 };
 
-const TemplateError = (props, context) => {
+const TemplateError = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -186,7 +186,7 @@ const TemplateError = (props, context) => {
   );
 };
 
-const CommunicatorHeader = (props, context) => {
+const CommunicatorHeader = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -218,7 +218,7 @@ const CommunicatorHeader = (props, context) => {
   );
 };
 
-const CommunicatorFooter = (props, context) => {
+const CommunicatorFooter = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -295,7 +295,7 @@ const hasNotifications = (app, context) => {
 /* Tabs Below this point */
 
 /* Home tab, provides access to all other tabs. */
-const HomeTab = (props, context) => {
+const HomeTab = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -336,7 +336,7 @@ const HomeTab = (props, context) => {
 TabToTemplate[HOMETAB] = <HomeTab />;
 
 /* Phone tab, provides a phone interface! */
-const PhoneTab = (props, context) => {
+const PhoneTab = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -491,7 +491,7 @@ const PhoneTab = (props, context) => {
 };
 
 // Subtemplate
-const NumberPad = (props, context) => {
+const NumberPad = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -595,7 +595,7 @@ const NumberPad = (props, context) => {
 TabToTemplate[PHONTAB] = <PhoneTab />;
 
 /* Contacts */
-const ContactsTab = (props, context) => {
+const ContactsTab = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -656,7 +656,7 @@ const ContactsTab = (props, context) => {
 TabToTemplate[CONTTAB] = <ContactsTab />;
 
 /* Messaging */
-const MessagingTab = (props, context) => {
+const MessagingTab = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -736,7 +736,7 @@ const findClassMessage = (im, targetAddress, lastIndex, filterArray) => {
   return thisSent ? "TinderMessage_First_Sent" : "TinderMessage_First_Received";
 };
 
-const MessagingThreadTab = (props, context) => {
+const MessagingThreadTab = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -843,7 +843,7 @@ const MessagingThreadTab = (props, context) => {
 TabToTemplate[MESSSUBTAB] = <MessagingThreadTab />;
 
 /* News */
-const NewsTab = (props, context) => {
+const NewsTab = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -866,7 +866,7 @@ const NewsTab = (props, context) => {
   );
 };
 
-const NewsTargetFeed = (props, context) => {
+const NewsTargetFeed = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -901,7 +901,7 @@ const NewsTargetFeed = (props, context) => {
   );
 };
 
-const NewsFeed = (props, context) => {
+const NewsFeed = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -954,7 +954,7 @@ const NewsFeed = (props, context) => {
 TabToTemplate[NEWSTAB] = <NewsTab />;
 
 /* Note Keeper */
-const NoteTab = (props, context) => {
+const NoteTab = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -994,7 +994,7 @@ const getItemColor = (value, min2, min1, max1, max2) => {
   return "good";
 };
 
-const WeatherTab = (props, context) => {
+const WeatherTab = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -1066,7 +1066,7 @@ TabToTemplate[WTHRTAB] = <WeatherTab />;
 TabToTemplate[MANITAB] = <CrewManifestContent />;
 
 /* Settings */
-const SettingsTab = (props, context) => {
+const SettingsTab = (props) => {
   const { act, data } = useBackend(context);
 
   const {

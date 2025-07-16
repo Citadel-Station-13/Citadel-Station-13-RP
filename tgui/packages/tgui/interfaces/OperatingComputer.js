@@ -40,7 +40,7 @@ const patientStates = {
   },
 };
 
-export const OperatingComputer = (props, context) => {
+export const OperatingComputer = (props) => {
   return (
     <Window
       width={350}
@@ -52,7 +52,7 @@ export const OperatingComputer = (props, context) => {
   );
 };
 
-const PatientStateView = (props, context) => {
+const PatientStateView = (props) => {
   const { act, data } = useBackend(context);
   const {
     table,

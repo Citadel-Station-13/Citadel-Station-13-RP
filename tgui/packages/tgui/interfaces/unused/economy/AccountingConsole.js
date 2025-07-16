@@ -1,9 +1,9 @@
-import { BlockQuote, Collapsible, LabeledList, Modal, Section, Tabs } from '../../../components';
+import { BlockQuote, Collapsible, LabeledList, Modal, Section, Tabs } from 'tgui-core/components';
 import { useBackend } from '../../../backend';
 import { useLocalState } from '../../../backend';
 import { Window } from '../../../layouts';
 
-export const AccountingConsole = (props, context) => {
+export const AccountingConsole = (props) => {
   const { act, data } = useBackend(context);
   const {
     PlayerAccounts,
@@ -72,7 +72,7 @@ export const AccountingConsole = (props, context) => {
 };
 
 /** The modal menu that contains the prompts to making new channels. */
-const MarketCrashing = (props, context) => {
+const MarketCrashing = (props) => {
   const { act, data } = useBackend(context);
   const [lockedmode, setLockedmode] = useLocalState(context, 'lockedmode', 1);
   const {

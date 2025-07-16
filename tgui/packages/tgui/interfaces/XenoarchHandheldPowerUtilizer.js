@@ -1,8 +1,8 @@
 import { useBackend } from '../backend';
-import { Box, Button, LabeledList, NumberInput, Section, ProgressBar } from '../components';
+import { Box, Button, LabeledList, NumberInput, Section, ProgressBar } from 'tgui-core/components';
 import { Window } from '../layouts';
 
-export const XenoarchHandheldPowerUtilizer = (props, context) => {
+export const XenoarchHandheldPowerUtilizer = (props) => {
   const { act, data } = useBackend(context);
 
   const {

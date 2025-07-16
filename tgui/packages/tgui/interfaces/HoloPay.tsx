@@ -87,7 +87,7 @@ const AccountDisplay = (_, context) => {
  * Displays the payment processor. This is the main display.
  * Shows icon, name, payment button.
  */
-const TerminalDisplay = (props, context) => {
+const TerminalDisplay = (props) => {
   const { act, data } = useBackend<HoloPayData>();
   const { description, force_fee, name, owner, user, shop_logo } = data;
   const { onClick } = props;
@@ -169,7 +169,7 @@ const TerminalDisplay = (props, context) => {
 /**
  * User has clicked "setup" button. Changes vars on the holopay.
  */
-const SetupDisplay = (props, context) => {
+const SetupDisplay = (props) => {
   const { act, data } = useBackend<HoloPayData>();
   const { available_logos = [], force_fee, max_fee, name, shop_logo } = data;
   const { onClick } = props;

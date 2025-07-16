@@ -10,7 +10,7 @@ const sortTypes = {
   'By price': (a, b) => a.price - b.price,
 };
 
-export const Biogenerator = (props, context) => {
+export const Biogenerator = (props) => {
   const { act, data } = useBackend(context);
   return (
     <Window width={400} height={450} resizable>
@@ -20,34 +20,34 @@ export const Biogenerator = (props, context) => {
             The biogenerator is processing reagents!
           </Section>
         ) || (
-          <Fragment>
-            <Section>
-              {data.points} points available.
-              <Button
-                ml={1}
-                icon="blender"
-                onClick={() => act("activate")}>
-                Activate
-              </Button>
-              <Button
-                ml={1}
-                icon="eject"
-                disabled={!data.beaker}
-                onClick={() => act("detach")}>
-                Eject Beaker
-              </Button>
-            </Section>
-            <BiogeneratorSearch />
-            <BiogeneratorItems />
-          </Fragment>
-        )}
+            <Fragment>
+              <Section>
+                {data.points} points available.
+                <Button
+                  ml={1}
+                  icon="blender"
+                  onClick={() => act("activate")}>
+                  Activate
+                </Button>
+                <Button
+                  ml={1}
+                  icon="eject"
+                  disabled={!data.beaker}
+                  onClick={() => act("detach")}>
+                  Eject Beaker
+                </Button>
+              </Section>
+              <BiogeneratorSearch />
+              <BiogeneratorItems />
+            </Fragment>
+          )}
       </Window.Content>
     </Window>
   );
 };
 
 
-const BiogeneratorItems = (props, context) => {
+const BiogeneratorItems = (props) => {
   const { act, data } = useBackend(context);
   const {
     points,
@@ -109,7 +109,7 @@ const BiogeneratorItems = (props, context) => {
   );
 };
 
-const BiogeneratorSearch = (props, context) => {
+const BiogeneratorSearch = (props) => {
   const [
     _searchText,
     setSearchText,

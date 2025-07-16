@@ -20,7 +20,7 @@ interface IcecreamCartData {
   scoopSource: number | null;
 }
 
-export const IcecreamCart = (props, context) => {
+export const IcecreamCart = (props) => {
   let { data, act } = useBackend<IcecreamCartData>();
 
   return (

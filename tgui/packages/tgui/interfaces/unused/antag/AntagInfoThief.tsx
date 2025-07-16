@@ -18,7 +18,7 @@ type Info = {
   policy: string;
 };
 
-export const AntagInfoThief = (props, context) => {
+export const AntagInfoThief = (props) => {
   const { data } = useBackend<Info>();
   const {
     intro,
@@ -70,7 +70,7 @@ export const AntagInfoThief = (props, context) => {
   );
 };
 
-const ObjectivePrintout = (props, context) => {
+const ObjectivePrintout = (props) => {
   const { data } = useBackend<Info>();
   const {
     objectives,

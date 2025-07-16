@@ -3,7 +3,7 @@ import { useBackend } from "../backend";
 import { Box, Button, LabeledList, ProgressBar, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const DNAForensics = (props, context) => {
+export const DNAForensics = (props) => {
   const { act, data } = useBackend(context);
   const {
     scan_progress,

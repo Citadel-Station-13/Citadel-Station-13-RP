@@ -9,7 +9,7 @@ import { UtilityModulesPane } from './UtilityModulesPane';
 import { PowerModulesPane } from './PowerModulesPane';
 import { ArmPane } from './ArmPane';
 
-export const OperatorMode = (props, context) => {
+export const OperatorMode = (props) => {
   const { act, data } = useBackend<OperatorData>();
   const {
     left_arm_weapon,

@@ -1,5 +1,5 @@
 import { useBackend, useLocalState } from "../../../backend";
-import { Box, Button, Flex, Icon, LabeledList, Section } from "../../../components";
+import { Box, Button, Flex, Icon, LabeledList, Section } from "tgui-core/components";
 import { Window } from "../../../layouts";
 
 /* This is all basically stolen from routes.js. */
@@ -24,7 +24,7 @@ const getPdaApp = name => {
   return Component;
 };
 
-export const Pda = (props, context) => {
+export const Pda = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -76,7 +76,7 @@ export const Pda = (props, context) => {
   );
 };
 
-const PDAHeader = (props, context) => {
+const PDAHeader = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -120,7 +120,7 @@ const PDAHeader = (props, context) => {
   );
 };
 
-const PDASettings = (props, context) => {
+const PDASettings = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -167,7 +167,7 @@ const PDASettings = (props, context) => {
   );
 };
 
-const PDAFooter = (props, context) => {
+const PDAFooter = (props) => {
   const { act, data } = useBackend(context);
 
   const {

@@ -2,7 +2,7 @@ import { useBackend } from "../backend";
 import { Box, Button, LabeledList, ProgressBar, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const Farmbot = (props, context) => {
+export const Farmbot = (props) => {
   const { act, data } = useBackend(context);
 
   const {

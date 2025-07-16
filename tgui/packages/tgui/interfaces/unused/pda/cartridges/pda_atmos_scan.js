@@ -1,7 +1,7 @@
 import { filter } from 'common/collections';
 import { decodeHtmlEntities } from 'common/string';
 import { useBackend } from "../../../../backend";
-import { Box, LabeledList } from "../../../../components";
+import { Box, LabeledList } from "tgui-core/components";
 
 const getItemColor = (value, min2, min1, max1, max2) => {
   if (value < min2) {
@@ -16,7 +16,7 @@ const getItemColor = (value, min2, min1, max1, max2) => {
   return "good";
 };
 
-export const pda_atmos_scan = (props, context) => {
+export const pda_atmos_scan = (props) => {
   const { act, data } = useBackend(context);
 
   const {

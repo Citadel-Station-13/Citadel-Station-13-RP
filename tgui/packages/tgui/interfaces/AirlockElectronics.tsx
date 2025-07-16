@@ -8,7 +8,7 @@ interface AirlockElectronicsData {
   req_one_access: [AccessId],
 }
 
-export const AirlockElectronics = (props, context) => {
+export const AirlockElectronics = (props) => {
   const { act, data } = useBackend<AirlockElectronicsData>();
   return (
     <Window

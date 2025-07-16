@@ -19,7 +19,7 @@ data["manifest"] = GLOB.PDA_Manifest
  * ```
  */
 
-export const CrewManifest = (props, context) => {
+export const CrewManifest = (props) => {
   return (
     <Window width={400} height={600}>
       <Window.Content scrollable>
@@ -29,7 +29,7 @@ export const CrewManifest = (props, context) => {
   );
 };
 
-export const CrewManifestContent = (props, context) => {
+export const CrewManifestContent = (props) => {
   const { act, data } = useBackend(context);
 
   const {

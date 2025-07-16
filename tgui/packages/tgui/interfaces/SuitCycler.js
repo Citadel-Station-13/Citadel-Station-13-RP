@@ -1,9 +1,9 @@
 import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
-import { Box, Button, Dropdown, NumberInput, LabeledList, NoticeBox, Section } from '../components';
+import { Box, Button, Dropdown, NumberInput, LabeledList, NoticeBox, Section } from 'tgui-core/components';
 import { Window } from '../layouts';
 
-export const SuitCycler = (props, context) => {
+export const SuitCycler = (props) => {
   const { act, data } = useBackend(context);
   const {
     active,
@@ -33,7 +33,7 @@ export const SuitCycler = (props, context) => {
   );
 };
 
-const SuitCyclerContent = (props, context) => {
+const SuitCyclerContent = (props) => {
   const { act, data } = useBackend(context);
   const {
     safeties,
@@ -151,7 +151,7 @@ const SuitCyclerContent = (props, context) => {
   );
 };
 
-const SuitCyclerUV = (props, context) => {
+const SuitCyclerUV = (props) => {
   return (
     <NoticeBox>
       Contents are currently being decontaminated. Please wait.
@@ -159,7 +159,7 @@ const SuitCyclerUV = (props, context) => {
   );
 };
 
-const SuitCyclerLocked = (props, context) => {
+const SuitCyclerLocked = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -184,7 +184,7 @@ const SuitCyclerLocked = (props, context) => {
   );
 };
 
-const SuitCyclerActive = (props, context) => {
+const SuitCyclerActive = (props) => {
   return (
     <NoticeBox>
       Contents are currently being painted. Please wait.

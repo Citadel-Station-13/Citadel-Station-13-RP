@@ -1,8 +1,8 @@
 import { useBackend } from '../backend';
-import { Button, ProgressBar, Section, Box, LabeledList } from '../components';
+import { Button, ProgressBar, Section, Box, LabeledList } from 'tgui-core/components';
 import { Window } from '../layouts';
 
-export const VrSleeper = (props, context) => {
+export const VrSleeper = (props) => {
   const { act, data } = useBackend(context);
   return (
     <Window

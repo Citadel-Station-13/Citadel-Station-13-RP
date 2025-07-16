@@ -1,13 +1,13 @@
 import { createSearch, decodeHtmlEntities } from 'common/string';
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
-import { Box, Button, Flex, Input, Section, Table, Tabs, NoticeBox, LabeledList } from '../components';
+import { Box, Button, Flex, Input, Section, Table, Tabs, NoticeBox, LabeledList } from 'tgui-core/components';
 import { formatMoney } from '../format';
 import { Window } from '../layouts';
 
 const MAX_SEARCH_RESULTS = 25;
 
-export const Uplink = (props, context) => {
+export const Uplink = (props) => {
   const { data } = useBackend(context);
 
   const [screen, setScreen] = useLocalState(context, 'screen', 0);
@@ -37,7 +37,7 @@ export const Uplink = (props, context) => {
   );
 };
 
-const UplinkHeader = (props, context) => {
+const UplinkHeader = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -84,7 +84,7 @@ const UplinkHeader = (props, context) => {
   );
 };
 
-const ExploitableInformation = (props, context) => {
+const ExploitableInformation = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -154,7 +154,7 @@ const ExploitableInformation = (props, context) => {
   );
 };
 
-export const GenericUplink = (props, context) => {
+export const GenericUplink = (props) => {
   const {
     currencyAmount = 0,
     currencySymbol = '₮',
@@ -251,7 +251,7 @@ export const GenericUplink = (props, context) => {
   );
 };
 
-const ItemList = (props, context) => {
+const ItemList = (props) => {
   const {
     compactMode,
     currencyAmount,

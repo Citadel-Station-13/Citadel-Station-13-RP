@@ -5,7 +5,7 @@ import { NtosWindow } from '../layouts';
 import { resolveAsset } from '../assets';
 import { Fragment } from 'inferno';
 
-export const NtosNewsBrowser = (props, context) => {
+export const NtosNewsBrowser = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -32,7 +32,7 @@ export const NtosNewsBrowser = (props, context) => {
   );
 };
 
-const SelectedArticle = (props, context) => {
+const SelectedArticle = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -78,7 +78,7 @@ const SelectedArticle = (props, context) => {
   );
 };
 
-const ViewArticles = (props, context) => {
+const ViewArticles = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -113,7 +113,7 @@ const ViewArticles = (props, context) => {
   );
 };
 
-const ArticleDownloading = (props, context) => {
+const ArticleDownloading = (props) => {
   const { act, data } = useBackend(context);
 
   const {

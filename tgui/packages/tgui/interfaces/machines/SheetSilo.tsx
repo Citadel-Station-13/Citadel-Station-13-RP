@@ -8,7 +8,7 @@ interface SheetSiloData {
   stored: Record<string, number>;
 }
 
-export const SheetSilo = (props, context) => {
+export const SheetSilo = (props) => {
   const { act, data } = useBackend<SheetSiloData>();
   const [dropAmounts, setDropAmounts] = useState<Record<string, number>>({});
   const setDropAmount = (id: string, amt: number) => {

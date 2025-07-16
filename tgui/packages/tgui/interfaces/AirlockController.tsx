@@ -105,7 +105,7 @@ const AirLockButtons = (_, context) => {
 };
 
 /** Displays the numeric pressure alongside an icon for the user */
-const PressureIndicator = (props, context) => {
+const PressureIndicator = (props) => {
   const { data } = useBackend<AirlockControllerData>();
   const { sensorPressure } = data;
   const {

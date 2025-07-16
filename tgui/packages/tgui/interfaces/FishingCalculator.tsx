@@ -19,7 +19,7 @@ type FishingCalculatorData = {
   spot_types: string[];
 };
 
-export const FishingCalculator = (props, context) => {
+export const FishingCalculator = (props) => {
   const { act, data } = useBackend<FishingCalculatorData>();
 
   const [bait, setBait] = useLocalState<string>(

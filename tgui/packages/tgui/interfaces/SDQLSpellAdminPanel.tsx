@@ -12,7 +12,7 @@ type SDQLSpellAdminPanelData = {
   }[]
 }
 
-export const SDQLSpellAdminPanel = (props, context) => {
+export const SDQLSpellAdminPanel = (props) => {
   const { act, data } = useBackend<SDQLSpellAdminPanelData>();
 
   return (

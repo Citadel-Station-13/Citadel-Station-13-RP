@@ -27,7 +27,7 @@ export const PowerMonitor = () => {
   );
 };
 
-export const PowerMonitorContent = (props, context) => {
+export const PowerMonitorContent = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -75,7 +75,7 @@ export const PowerMonitorContent = (props, context) => {
   );
 };
 
-export const PowerMonitorFocus = (props, context) => {
+export const PowerMonitorFocus = (props) => {
   const { act, data } = useBackend(context);
   const { focus } = props;
   const { history } = focus;

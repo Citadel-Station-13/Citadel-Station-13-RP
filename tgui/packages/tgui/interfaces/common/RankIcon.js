@@ -1,4 +1,4 @@
-import { Icon } from "../../components";
+import { Icon } from "tgui-core/components";
 
 const rank2icon = {
   // Command
@@ -100,7 +100,7 @@ const rank2icon = {
   'Emergency Responder': 'fighter-jet',
 };
 
-export const RankIcon = (props, context) => {
+export const RankIcon = (props) => {
   const {
     rank,
     color = 'label',

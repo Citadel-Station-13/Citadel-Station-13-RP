@@ -49,7 +49,7 @@ interface UITemporaryMessage {
   text: string;
 }
 
-export const TelecommsLogBrowser = (props, context) => {
+export const TelecommsLogBrowser = (props) => {
   const { act, data } = useBackend<TelecommsLogBrowserContext>();
 
   return (
@@ -110,7 +110,7 @@ export const TelecommsLogBrowser = (props, context) => {
   );
 };
 
-const TelecommsServerSelection = (props, context) => {
+const TelecommsServerSelection = (props) => {
   const { act, data } = useBackend(context);
   const {
     network,
@@ -256,7 +256,7 @@ const TelecommsSelectedServer = (props: TelecommsSelectedServerProps, context) =
 };
 
 
-const TelecommsLog = (props, context) => {
+const TelecommsLog = (props) => {
   const { act, data } = useBackend<TelecommsLogBrowserContext>();
   const {
     log,

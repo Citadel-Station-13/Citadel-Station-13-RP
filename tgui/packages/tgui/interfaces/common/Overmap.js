@@ -1,8 +1,8 @@
 import { Fragment } from 'inferno';
 import { useBackend } from "../../backend";
-import { Box, Button, LabeledList } from "../../components";
+import { Box, Button, LabeledList } from "tgui-core/components";
 
-export const OvermapFlightData = (props, context) => {
+export const OvermapFlightData = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -45,7 +45,7 @@ export const OvermapFlightData = (props, context) => {
   );
 };
 
-export const OvermapPanControls = (props, context) => {
+export const OvermapPanControls = (props) => {
   const { act } = useBackend(context);
 
   const {

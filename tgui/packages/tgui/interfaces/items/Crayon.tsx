@@ -36,7 +36,7 @@ const sizeKeyForCrayonDatapack = (pack: CrayonDatapack) => {
   return `${pack.width}x${pack.height}`;
 };
 
-export const Crayon = (props, context) => {
+export const Crayon = (props) => {
   const { data, act } = useBackend<CrayonUIData>();
   const [pickingColor, setPickingColor] = useState<boolean>(false);
 

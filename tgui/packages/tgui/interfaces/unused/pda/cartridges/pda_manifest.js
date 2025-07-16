@@ -1,8 +1,8 @@
 import { useBackend } from "../../../../backend";
-import { Box } from "../../../../components";
+import { Box } from "tgui-core/components";
 import { CrewManifestContent } from '../../../CrewManifest';
 
-export const pda_manifest = (props, context) => {
+export const pda_manifest = (props) => {
   const { act, data } = useBackend(context);
 
   return (

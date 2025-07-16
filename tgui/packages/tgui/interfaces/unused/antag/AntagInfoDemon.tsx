@@ -26,7 +26,7 @@ type Info = {
   objectives: Objective[];
 };
 
-export const AntagInfoDemon = (props, context) => {
+export const AntagInfoDemon = (props) => {
   const { data } = useBackend<Info>();
   const {
     fluff,
@@ -93,7 +93,7 @@ export const AntagInfoDemon = (props, context) => {
   );
 };
 
-const ObjectivePrintout = (props, context) => {
+const ObjectivePrintout = (props) => {
   const { data } = useBackend<Info>();
   const {
     objectives,
@@ -115,7 +115,7 @@ const ObjectivePrintout = (props, context) => {
   );
 };
 
-const DemonRunes = (props, context) => {
+const DemonRunes = (props) => {
   return (
     <Section
       height="102%"

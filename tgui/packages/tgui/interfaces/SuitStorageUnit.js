@@ -1,9 +1,9 @@
 import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
-import { Box, Button, Icon, LabeledList, Knob, NoticeBox, Section, Flex } from '../components';
+import { Box, Button, Icon, LabeledList, Knob, NoticeBox, Section, Flex } from 'tgui-core/components';
 import { Window } from '../layouts';
 
-export const SuitStorageUnit = (props, context) => {
+export const SuitStorageUnit = (props) => {
   const { act, data } = useBackend(context);
   const {
     panelopen,
@@ -33,7 +33,7 @@ export const SuitStorageUnit = (props, context) => {
   );
 };
 
-const SuitStorageUnitContent = (props, context) => {
+const SuitStorageUnitContent = (props) => {
   const { act, data } = useBackend(context);
   const {
     locked,
@@ -139,7 +139,7 @@ const SuitStorageUnitContent = (props, context) => {
   );
 };
 
-const SuitStorageUnitPanel = (props, context) => {
+const SuitStorageUnitPanel = (props) => {
   const { act, data } = useBackend(context);
   const {
     safeties,
@@ -214,7 +214,7 @@ const SuitStorageUnitPanel = (props, context) => {
   );
 };
 
-const SuitStorageUnitUV = (props, context) => {
+const SuitStorageUnitUV = (props) => {
   return (
     <NoticeBox>
       Contents are currently being decontaminated. Please wait.
@@ -222,7 +222,7 @@ const SuitStorageUnitUV = (props, context) => {
   );
 };
 
-const SuitStorageUnitBroken = (props, context) => {
+const SuitStorageUnitBroken = (props) => {
   return (
     <NoticeBox danger>
       Unit chamber is too contaminated to continue usage.

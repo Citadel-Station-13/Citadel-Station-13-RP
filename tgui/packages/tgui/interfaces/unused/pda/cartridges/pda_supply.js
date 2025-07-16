@@ -1,7 +1,7 @@
 import { useBackend } from "../../../../backend";
-import { Box, LabeledList, Section } from "../../../../components";
+import { Box, LabeledList, Section } from "tgui-core/components";
 
-export const pda_supply = (props, context) => {
+export const pda_supply = (props) => {
   const { act, data } = useBackend(context);
 
   const {

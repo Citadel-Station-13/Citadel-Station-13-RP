@@ -1,10 +1,10 @@
 import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
-import { Box, Button, LabeledList, Section, NumberInput } from "../components";
+import { Box, Button, LabeledList, Section, NumberInput } from "tgui-core/components";
 import { TemporaryNotice } from './common/TemporaryNotice';
 import { Window } from "../layouts";
 
-export const TelecommsMultitoolMenu = (props, context) => {
+export const TelecommsMultitoolMenu = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -36,7 +36,7 @@ export const TelecommsMultitoolMenu = (props, context) => {
   );
 };
 
-const TelecommsMultitoolMenuStatus = (props, context) => {
+const TelecommsMultitoolMenuStatus = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -141,7 +141,7 @@ const TelecommsMultitoolMenuStatus = (props, context) => {
   );
 };
 
-const TelecommsMultitoolMenuPolymorphicOptions = (props, context) => {
+const TelecommsMultitoolMenuPolymorphicOptions = (props) => {
   const { act, data } = useBackend(context);
 
   const {

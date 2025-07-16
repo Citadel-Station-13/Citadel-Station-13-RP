@@ -139,7 +139,7 @@ const isCategorySelected = (data: Data, item: Category | Recipe) => (
   && (!data.dm_subcategory || data.dm_subcategory === item.dm_subcategory)
 );
 
-export const PersonalCrafting = (props, context) => {
+export const PersonalCrafting = (props) => {
   const { act, data: rawData } = useBackend<RawData>();
   const data = remapData(rawData);
 

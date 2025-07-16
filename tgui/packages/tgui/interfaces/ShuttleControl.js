@@ -37,7 +37,7 @@ const getDockingStatus = (docking_status, docking_override) => {
 };
 
 /* Templates */
-const ShuttleControlSharedShuttleStatus = (props, context) => {
+const ShuttleControlSharedShuttleStatus = (props) => {
   const { act, data } = useBackend(context);
   const {
     engineName = "Bluespace Drive",
@@ -92,7 +92,7 @@ const ShuttleControlSharedShuttleStatus = (props, context) => {
   );
 };
 
-const ShuttleControlSharedShuttleControls = (props, context) => {
+const ShuttleControlSharedShuttleControls = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -137,7 +137,7 @@ const ShuttleControlSharedShuttleControls = (props, context) => {
   );
 };
 
-const ShuttleControlConsoleDefault = (props, context) => {
+const ShuttleControlConsoleDefault = (props) => {
   const { act, data } = useBackend(context);
   return (
     <Fragment>
@@ -147,7 +147,7 @@ const ShuttleControlConsoleDefault = (props, context) => {
   );
 };
 
-const ShuttleControlConsoleMulti = (props, context) => {
+const ShuttleControlConsoleMulti = (props) => {
   const { act, data } = useBackend(context);
   const {
     can_cloak,
@@ -186,7 +186,7 @@ const ShuttleControlConsoleMulti = (props, context) => {
   );
 };
 
-const ShuttleControlConsoleExploration = (props, context) => {
+const ShuttleControlConsoleExploration = (props) => {
   const { act, data } = useBackend(context);
   const {
     can_pick,
@@ -226,7 +226,7 @@ const ShuttleControlConsoleExploration = (props, context) => {
 };
 
 /* Ugh. Just ugh. */
-const ShuttleControlConsoleWeb = (props, context) => {
+const ShuttleControlConsoleWeb = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -466,7 +466,7 @@ const SubtemplateList = {
   "ShuttleControlConsoleWeb": <ShuttleControlConsoleWeb />,
 };
 
-export const ShuttleControl = (props, context) => {
+export const ShuttleControl = (props) => {
   const { act, data } = useBackend(context);
   const {
     subtemplate,

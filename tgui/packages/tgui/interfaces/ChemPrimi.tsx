@@ -65,7 +65,7 @@ type StyleData = {
 };
 
 
-export const ChemPrimi = (props, context) => {
+export const ChemPrimi = (props) => {
   const { data } = useBackend<ChemMasterData>();
   const { screen } = data;
   return (
@@ -77,7 +77,7 @@ export const ChemPrimi = (props, context) => {
   );
 };
 
-const ChemPrimiContent = (props, context) => {
+const ChemPrimiContent = (props) => {
   const { act, data } = useBackend<ChemMasterData>();
   const {
     screen,
@@ -164,7 +164,7 @@ const ChemPrimiContent = (props, context) => {
 
 const ChemicalBuffer = Table;
 
-const ChemicalBufferEntry = (props, context) => {
+const ChemicalBufferEntry = (props) => {
   const { act } = useBackend<ChemMasterData>();
   const { chemical, transferTo } = props;
   return (

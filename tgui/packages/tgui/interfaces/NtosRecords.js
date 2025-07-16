@@ -3,7 +3,7 @@ import { useBackend, useLocalState } from '../backend';
 import { Box, Icon, Input, Section } from 'tgui-core/components';
 import { NtosWindow } from '../layouts';
 
-export const NtosRecords = (props, context) => {
+export const NtosRecords = (props) => {
   const { act, data } = useBackend(context);
   const [searchTerm, setSearchTerm] = useLocalState(context, "search", "");
   const {

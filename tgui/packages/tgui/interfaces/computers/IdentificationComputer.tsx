@@ -19,7 +19,7 @@ interface IdentificationComputerContext {
   authed_slotmod: BooleanLike;
 }
 
-export const IdentificationComputer = (props, context) => {
+export const IdentificationComputer = (props) => {
   const { data, act } = useBackend<IdentificationComputerContext>();
   const [currentTab, setCurrentTab] = useState<number>(0);
   return (

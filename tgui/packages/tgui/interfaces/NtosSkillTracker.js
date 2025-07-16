@@ -2,7 +2,7 @@ import { useBackend } from '../backend';
 import { Button, Section, Table, BlockQuote, ProgressBar, AnimatedNumber } from 'tgui-core/components';
 import { NtosWindow } from '../layouts';
 
-export const NtosSkillTracker = (props, context) => {
+export const NtosSkillTracker = (props) => {
   const { act, data } = useBackend(context);
   const {
     skills = {},

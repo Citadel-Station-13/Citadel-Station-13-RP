@@ -1,8 +1,8 @@
 import { Fragment } from 'inferno';
 import { useBackend } from "../../backend";
-import { Box, Button, NoticeBox } from '../../components';
+import { Box, Button, NoticeBox } from 'tgui-core/components';
 
-export const MiningUser = (props, context) => {
+export const MiningUser = (props) => {
   const { act, data } = useBackend(context);
   const {
     insertIdText,

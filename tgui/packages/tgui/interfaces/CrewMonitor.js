@@ -38,7 +38,7 @@ export const CrewMonitor = () => {
   );
 };
 
-export const CrewMonitorContent = (props, context) => {
+export const CrewMonitorContent = (props) => {
   const { act, data, config } = useBackend(context);
   const [tabIndex, setTabIndex] = useLocalState(context, 'tabIndex', 0);
 
@@ -155,7 +155,7 @@ export const CrewMonitorContent = (props, context) => {
   );
 };
 
-const CrewMonitorMapView = (props, context) => {
+const CrewMonitorMapView = (props) => {
   const { act, config, data } = useBackend(context);
   const [zoom, setZoom] = useLocalState(context, 'zoom', 1);
   return (

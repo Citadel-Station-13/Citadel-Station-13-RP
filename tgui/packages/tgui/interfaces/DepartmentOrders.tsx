@@ -42,7 +42,7 @@ const CooldownEstimate = (props) => {
   );
 };
 
-export const DepartmentOrders = (props, context) => {
+export const DepartmentOrders = (props) => {
   const { data } = useBackend<Info>();
   const {
     time_left,
@@ -80,7 +80,7 @@ export const DepartmentOrders = (props, context) => {
   );
 };
 
-const CooldownDimmer = (props, context) => {
+const CooldownDimmer = (props) => {
   const { act, data } = useBackend<Info>();
   const {
     can_override,
@@ -120,7 +120,7 @@ const CooldownDimmer = (props, context) => {
   );
 };
 
-const DepartmentCatalog = (props, context) => {
+const DepartmentCatalog = (props) => {
   const { act, data } = useBackend<Info>();
   const {
     supplies,

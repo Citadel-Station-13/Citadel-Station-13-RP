@@ -1,9 +1,9 @@
 import { toFixed } from 'common/math';
 import { useBackend } from '../backend';
-import { Button, LabeledList, ProgressBar, Section } from '../components';
+import { Button, LabeledList, ProgressBar, Section } from 'tgui-core/components';
 import { Window } from '../layouts';
 
-export const VaultController = (props, context) => {
+export const VaultController = (props) => {
   const { act, data } = useBackend(context);
   return (
     <Window

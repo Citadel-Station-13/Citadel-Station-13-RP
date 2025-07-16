@@ -1,7 +1,7 @@
 import { uniqBy } from 'common/collections';
 import { capitalize } from 'common/string';
 import { useBackend } from '../../backend';
-import { Box, Button, Collapsible, Divider, Flex, LabeledList, Section } from '../../components';
+import { Box, Button, Collapsible, Divider, Flex, LabeledList, Section } from 'tgui-core/components';
 import { GeneticMakeupInfo } from './GeneticMakeupInfo';
 import { MutationInfo } from './MutationInfo';
 import {
@@ -15,7 +15,7 @@ import {
 } from './constants';
 
 
-const DnaConsoleAdvancedInjectors = (props, context) => {
+const DnaConsoleAdvancedInjectors = (props) => {
   const { act, data } = useBackend(context);
   const {
     maxAdvInjectors,
@@ -65,7 +65,7 @@ const DnaConsoleAdvancedInjectors = (props, context) => {
   );
 };
 
-const StorageButtons = (props, context) => {
+const StorageButtons = (props) => {
   const { data, act } = useBackend(context);
   const { hasDisk } = data;
   const { storageMode, storageConsSubMode, storageDiskSubMode } = data.view;
@@ -131,7 +131,7 @@ const StorageButtons = (props, context) => {
   );
 };
 
-const StorageChromosomes = (props, context) => {
+const StorageChromosomes = (props) => {
   const { data, act } = useBackend(context);
   const chromos = data.chromoStorage ?? [];
   const uniqueChromos = uniqBy(chromo => chromo.Name)(chromos);
@@ -198,7 +198,7 @@ const StorageChromosomes = (props, context) => {
   );
 };
 
-const StorageMutations = (props, context) => {
+const StorageMutations = (props) => {
   const {
     customMode = '',
   } = props;
@@ -252,7 +252,7 @@ const StorageMutations = (props, context) => {
   );
 };
 
-export const DnaConsoleStorage = (props, context) => {
+export const DnaConsoleStorage = (props) => {
   const { data, act } = useBackend(context);
   const { storageMode, storageConsSubMode, storageDiskSubMode } = data.view;
   const { diskMakeupBuffer, diskHasMakeup } = data;

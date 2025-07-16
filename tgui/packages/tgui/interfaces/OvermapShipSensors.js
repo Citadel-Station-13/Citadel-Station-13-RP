@@ -3,7 +3,7 @@ import { useBackend } from "../backend";
 import { Box, Button, LabeledList, ProgressBar, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const OvermapShipSensors = (props, context) => {
+export const OvermapShipSensors = (props) => {
   return (
     <Window width={375} height={545} resizable>
       <Window.Content>
@@ -13,7 +13,7 @@ export const OvermapShipSensors = (props, context) => {
   );
 };
 
-export const OvermapShipSensorsContent = (props, context) => {
+export const OvermapShipSensorsContent = (props) => {
   const { act, data } = useBackend(context);
   const {
     viewing,

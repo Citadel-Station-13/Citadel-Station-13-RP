@@ -4,7 +4,7 @@ import { Button, LabeledList, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 import { OvermapFlightData } from "./common/Overmap";
 
-export const OvermapNavigation = (props, context) => {
+export const OvermapNavigation = (props) => {
   return (
     <Window width={380} height={530} resizable>
       <Window.Content>
@@ -14,7 +14,7 @@ export const OvermapNavigation = (props, context) => {
   );
 };
 
-export const OvermapNavigationContent = (props, context) => {
+export const OvermapNavigationContent = (props) => {
   const { act, data } = useBackend(context);
   const {
     sector,

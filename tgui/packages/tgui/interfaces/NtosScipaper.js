@@ -18,7 +18,7 @@ import {
 import { TableCell, TableRow } from 'tgui-core/components/Table';
 import { NtosWindow } from '../layouts';
 
-export const NtosScipaper = (props, context) => {
+export const NtosScipaper = (props) => {
   return (
     <NtosWindow width={650} height={500}>
       <NtosWindow.Content scrollable>
@@ -28,7 +28,7 @@ export const NtosScipaper = (props, context) => {
   );
 };
 
-const PaperPublishing = (props, context) => {
+const PaperPublishing = (props) => {
   const { act, data } = useBackend(context);
   const {
     title,
@@ -208,7 +208,7 @@ const PaperPublishing = (props, context) => {
   );
 };
 
-const PaperBrowser = (props, context) => {
+const PaperBrowser = (props) => {
   const { act, data } = useBackend(context);
   const { publishedPapers, coopIndex, fundingIndex } = data;
   if (publishedPapers.length === 0) {
@@ -248,7 +248,7 @@ const PaperBrowser = (props, context) => {
     ));
   }
 };
-const ExperimentBrowser = (props, context) => {
+const ExperimentBrowser = (props) => {
   const { act, data } = useBackend(context);
   const { experimentInformation = [] } = data;
   return experimentInformation.map((experiment) => (
@@ -270,7 +270,7 @@ const ExperimentBrowser = (props, context) => {
   ));
 };
 
-const PartnersBrowser = (props, context) => {
+const PartnersBrowser = (props) => {
   const { act, data } = useBackend(context);
   const {
     partnersInformation,
@@ -337,7 +337,7 @@ const PartnersBrowser = (props, context) => {
   ));
 };
 
-export const NtosScipaperContent = (props, context) => {
+export const NtosScipaperContent = (props) => {
   const { act, data } = useBackend(context);
   const { currentTab } = data;
   return (

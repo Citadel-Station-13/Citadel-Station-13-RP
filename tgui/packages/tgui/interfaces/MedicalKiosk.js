@@ -3,7 +3,7 @@ import { useBackend, useSharedState } from '../backend';
 import { AnimatedNumber, Box, Button, Flex, Icon, LabeledList, ProgressBar, Section, Stack } from 'tgui-core/components';
 import { Window } from '../layouts';
 
-export const MedicalKiosk = (props, context) => {
+export const MedicalKiosk = (props) => {
   const { act, data } = useBackend(context);
   const [scanIndex] = useSharedState(context, 'scanIndex');
   const {
@@ -73,7 +73,7 @@ export const MedicalKiosk = (props, context) => {
   );
 };
 
-const MedicalKioskScanButton = (props, context) => {
+const MedicalKioskScanButton = (props) => {
   const {
     index,
     name,
@@ -109,7 +109,7 @@ const MedicalKioskScanButton = (props, context) => {
   );
 };
 
-const MedicalKioskInstructions = (props, context) => {
+const MedicalKioskInstructions = (props) => {
   const { act, data } = useBackend(context);
   const {
     kiosk_cost,
@@ -140,7 +140,7 @@ const MedicalKioskInstructions = (props, context) => {
   );
 };
 
-const MedicalKioskScanResults1 = (props, context) => {
+const MedicalKioskScanResults1 = (props) => {
   const { data } = useBackend(context);
   const {
     patient_health,
@@ -197,7 +197,7 @@ const MedicalKioskScanResults1 = (props, context) => {
   );
 };
 
-const MedicalKioskScanResults2 = (props, context) => {
+const MedicalKioskScanResults2 = (props) => {
   const { data } = useBackend(context);
   const {
     patient_status,
@@ -245,7 +245,7 @@ const MedicalKioskScanResults2 = (props, context) => {
   );
 };
 
-const MedicalKioskScanResults3 = (props, context) => {
+const MedicalKioskScanResults3 = (props) => {
   const { data } = useBackend(context);
   const {
     clone_health,
@@ -287,7 +287,7 @@ const MedicalKioskScanResults3 = (props, context) => {
   );
 };
 
-const MedicalKioskScanResults4 = (props, context) => {
+const MedicalKioskScanResults4 = (props) => {
   const { data } = useBackend(context);
   const {
     chemical_list = [],

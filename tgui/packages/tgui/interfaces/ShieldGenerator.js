@@ -1,12 +1,12 @@
 import { useBackend } from "../backend";
 import { Window } from "../layouts";
 import { Fragment } from 'inferno';
-import { Button, Box, Section, LabeledList, NumberInput, Icon } from "../components";
+import { Button, Box, Section, LabeledList, NumberInput, Icon } from "tgui-core/components";
 import { round } from "common/math";
 import { formatSiUnit, formatPower } from "../format";
 import { FullscreenNotice } from './common/FullscreenNotice';
 
-export const ShieldGenerator = (props, context) => {
+export const ShieldGenerator = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -25,7 +25,7 @@ export const ShieldGenerator = (props, context) => {
   );
 };
 
-const ShieldGeneratorLocked = (props, context) => (
+const ShieldGeneratorLocked = (props) => (
   <FullscreenNotice title="Locked">
     <Box fontSize="1.5rem" bold>
       <Icon
@@ -41,7 +41,7 @@ const ShieldGeneratorLocked = (props, context) => (
   </FullscreenNotice>
 );
 
-const ShieldGeneratorContent = (props, context) => {
+const ShieldGeneratorContent = (props) => {
   const { act, data } = useBackend(context);
 
   const {

@@ -2,7 +2,7 @@ import { useBackend, useLocalState } from "../backend";
 import { Box, Button, Section, Tabs, NoticeBox } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const CryoStorage = (props, context) => {
+export const CryoStorage = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -37,7 +37,7 @@ export const CryoStorage = (props, context) => {
   );
 };
 
-export const CryoStorageCrew = (props, context) => {
+export const CryoStorageCrew = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -55,7 +55,7 @@ export const CryoStorageCrew = (props, context) => {
   );
 };
 
-export const CryoStorageItems = (props, context) => {
+export const CryoStorageItems = (props) => {
   const { act, data } = useBackend(context);
 
   const {

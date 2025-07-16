@@ -18,7 +18,7 @@ const getTagColor = erptag => {
   }
 };
 
-export const CharacterDirectory = (props, context) => {
+export const CharacterDirectory = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -72,7 +72,7 @@ export const CharacterDirectory = (props, context) => {
   );
 };
 
-const ViewCharacter = (props, context) => {
+const ViewCharacter = (props) => {
   const [overlay, setOverlay] = useLocalState(context, "overlay", null);
 
   return (
@@ -116,7 +116,7 @@ const ViewCharacter = (props, context) => {
   );
 };
 
-const CharacterDirectoryList = (props, context) => {
+const CharacterDirectoryList = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -168,7 +168,7 @@ const CharacterDirectoryList = (props, context) => {
   );
 };
 
-const SortButton = (props, context) => {
+const SortButton = (props) => {
   const { act, data } = useBackend(context);
 
   const {

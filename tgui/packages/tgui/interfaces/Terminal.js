@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { NoticeBox, Section } from '../components';
+import { NoticeBox, Section } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 export const Terminal = (_, context) => {
@@ -17,7 +17,7 @@ export const Terminal = (_, context) => {
   );
 };
 
-const Messages = (props, context) => {
+const Messages = (props) => {
   const { messages } = props;
   const { act } = useBackend(context);
   return messages.map(message => {

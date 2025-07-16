@@ -5,7 +5,7 @@ import { OvermapEnginesContent } from './OvermapEngines';
 import { OvermapHelmContent } from './OvermapHelm';
 import { OvermapShipSensorsContent } from './OvermapShipSensors';
 
-export const OvermapFull = (props, context) => {
+export const OvermapFull = (props) => {
   const [tab, setTab] = useLocalState(context, 'overmapFullState', 0);
 
   return (

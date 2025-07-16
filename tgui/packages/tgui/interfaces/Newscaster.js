@@ -16,7 +16,7 @@ import { sanitizeText } from "../sanitize";
 const CENSOR_MESSAGE = "This channel has been deemed as threatening to \
   the welfare of the station, and marked with a Nanotrasen D-Notice.";
 
-export const Newscaster = (props, context) => {
+export const Newscaster = (props) => {
   const { act, data } = useBackend(context);
   const NEWSCASTER_SCREEN = 1;
   const BOUNTYBOARD_SCREEN = 2;
@@ -57,7 +57,7 @@ export const Newscaster = (props, context) => {
 };
 
 /** The modal menu that contains the prompts to making new channels. */
-const NewscasterChannelCreation = (props, context) => {
+const NewscasterChannelCreation = (props) => {
   const { act, data } = useBackend(context);
   const [lockedmode, setLockedmode] = useLocalState(context, 'lockedmode', 1);
   const {
@@ -146,7 +146,7 @@ const NewscasterChannelCreation = (props, context) => {
 };
 
 /** The modal menu that contains the prompts to making new comments. */
-const NewscasterCommentCreation = (props, context) => {
+const NewscasterCommentCreation = (props) => {
   const { act, data } = useBackend(context);
   const {
     creating_comment,
@@ -198,7 +198,7 @@ const NewscasterCommentCreation = (props, context) => {
   );
 };
 
-const NewscasterWantedScreen = (props, context) => {
+const NewscasterWantedScreen = (props) => {
   const { act, data } = useBackend(context);
   const {
     viewing_wanted,
@@ -305,7 +305,7 @@ const NewscasterWantedScreen = (props, context) => {
   );
 };
 
-const NewscasterContent = (props, context) => {
+const NewscasterContent = (props) => {
   const { act, data } = useBackend(context);
   const {
     current_channel = {},
@@ -415,7 +415,7 @@ const NewscasterChannelBox = (_, context) => {
 };
 
 /** Channel select is the left-hand menu where all the channels are listed. */
-const NewscasterChannelSelector = (props, context) => {
+const NewscasterChannelSelector = (props) => {
   const { act, data } = useBackend(context);
   const {
     channels = [],

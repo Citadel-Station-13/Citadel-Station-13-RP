@@ -18,7 +18,7 @@ type Info = {
   brothers: string;
 };
 
-export const AntagInfoBrother = (props, context) => {
+export const AntagInfoBrother = (props) => {
   const { data } = useBackend<Info>();
   const {
     antag_name,
@@ -44,7 +44,7 @@ export const AntagInfoBrother = (props, context) => {
   );
 };
 
-const ObjectivePrintout = (props, context) => {
+const ObjectivePrintout = (props) => {
   const { data } = useBackend<Info>();
   const {
     objectives,

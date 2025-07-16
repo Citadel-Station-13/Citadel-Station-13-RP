@@ -1,7 +1,7 @@
 import { NtosWindow } from "../layouts";
 import { ShutoffMonitorContent } from "./ShutoffMonitor";
 
-export const NtosShutoffMonitor = (props, context) => {
+export const NtosShutoffMonitor = (props) => {
   return (
     <NtosWindow
       width={627}

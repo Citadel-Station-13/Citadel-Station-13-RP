@@ -35,7 +35,7 @@ interface ProteanOrgans {
   cost: Record<string, number>;
 }
 
-export const NaniteChamberControl = (props, context) => {
+export const NaniteChamberControl = (props) => {
   const { act, data } = useBackend<NaniteChamberControlData>();
 
   return (

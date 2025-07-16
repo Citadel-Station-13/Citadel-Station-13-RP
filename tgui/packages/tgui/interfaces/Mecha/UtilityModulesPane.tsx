@@ -2,7 +2,7 @@ import { useBackend } from '../../backend';
 import { Button, LabeledList, ProgressBar } from 'tgui-core/components';
 import { OperatorData, MechaUtility } from './data';
 
-export const UtilityModulesPane = (props, context) => {
+export const UtilityModulesPane = (props) => {
   const { act, data } = useBackend<OperatorData>();
   const {
     mech_equipment,

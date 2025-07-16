@@ -3,7 +3,7 @@ import { Button, Flex, LabeledList, ProgressBar, Section, Tabs, Stack } from "tg
 import { Window } from "../layouts";
 import { sortBy, filter } from 'common/collections';
 
-export const ICPrinter = (props, context) => {
+export const ICPrinter = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -60,7 +60,7 @@ const canBuild = (item, data) => {
   return true;
 };
 
-const ICPrinterCategories = (props, context) => {
+const ICPrinterCategories = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -116,7 +116,7 @@ const ICPrinterCategories = (props, context) => {
     </Section>
   );
 };
-const ICCloningSection = (props, context) => {
+const ICCloningSection = (props) => {
   const { act, data } = useBackend(context);
   const {
     can_clone,

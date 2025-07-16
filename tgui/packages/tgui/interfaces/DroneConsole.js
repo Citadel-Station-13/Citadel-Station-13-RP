@@ -3,7 +3,7 @@ import { useBackend } from "../backend";
 import { Box, Button, LabeledList, Section, Dropdown } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const DroneConsole = (props, context) => {
+export const DroneConsole = (props) => {
   const { act, data } = useBackend(context);
 
   const {

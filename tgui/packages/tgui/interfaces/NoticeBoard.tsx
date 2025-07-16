@@ -9,7 +9,7 @@ type Data = {
   items: { ref: string; name: string }[];
 };
 
-export const NoticeBoard = (props, context) => {
+export const NoticeBoard = (props) => {
   const { act, data } = useBackend<Data>();
   const { allowed, items = [] } = data;
 

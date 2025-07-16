@@ -46,7 +46,7 @@ type Info = {
   possible_areas: Array<string>;
 };
 
-export const SparringContract = (props, context) => {
+export const SparringContract = (props) => {
   const { data, act } = useBackend<Info>();
   const {
     set_weapon,

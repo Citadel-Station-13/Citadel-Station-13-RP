@@ -1,10 +1,10 @@
 import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
-import { Box, Button, LabeledList, ProgressBar, Section, NoticeBox, Slider } from "../components";
+import { Box, Button, LabeledList, ProgressBar, Section, NoticeBox, Slider } from "tgui-core/components";
 import { Window } from "../layouts";
 import { decodeHtmlEntities } from "common/string";
 
-export const XenoarchSpectrometer = (props, context) => {
+export const XenoarchSpectrometer = (props) => {
   const { act, data } = useBackend(context);
 
   const {

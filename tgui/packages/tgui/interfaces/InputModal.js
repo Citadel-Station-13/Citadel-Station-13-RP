@@ -13,7 +13,7 @@ import { createLogger } from '../logging';
 
 const logger = createLogger('inputmodal');
 
-export const InputModal = (props, context) => {
+export const InputModal = (props) => {
   const { act, data } = useBackend(context);
   const { title, message, initial, input_type, timeout } = data;
 

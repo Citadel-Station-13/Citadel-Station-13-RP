@@ -2,7 +2,7 @@ import { useBackend } from '../../backend';
 import { Stack, Button, Box } from 'tgui-core/components';
 import { OperatorData, InternalDamageToDamagedDesc, InternalDamageToNormalDesc } from './data';
 
-export const AlertPane = (props, context) => {
+export const AlertPane = (props) => {
   const { act, data } = useBackend<OperatorData>();
   const {
     internal_damage,

@@ -51,7 +51,7 @@ interface JoinFactionProps {
 }
 
 // LateChoices
-export const JoinMenu = (props, context) => {
+export const JoinMenu = (props) => {
   const { act, data } = useBackend<JoinMenuData>();
 
   return (

@@ -3,7 +3,7 @@ import { useBackend } from "../backend";
 import { Box, Button, LabeledList, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const PlantAnalyzer = (props, context) => {
+export const PlantAnalyzer = (props) => {
   const { data } = useBackend(context);
 
   let calculatedHeight = 250;
@@ -25,7 +25,7 @@ export const PlantAnalyzer = (props, context) => {
   );
 };
 
-const PlantAnalyzerContent = (props, context) => {
+const PlantAnalyzerContent = (props) => {
   const { act, data } = useBackend(context);
 
   const {

@@ -3,7 +3,7 @@ import { Box, Button, LabeledList, Section, Table } from "tgui-core/components";
 import { NtosWindow } from "../layouts";
 import { NtosEmailClientViewMessage } from './NtosEmailClient';
 
-export const NtosEmailAdministration = (props, context) => {
+export const NtosEmailAdministration = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -31,7 +31,7 @@ export const NtosEmailAdministration = (props, context) => {
   );
 };
 
-const MainMenu = (props, context) => {
+const MainMenu = (props) => {
   const { act, data } = useBackend(context);
   const {
     accounts,
@@ -59,7 +59,7 @@ const MainMenu = (props, context) => {
   );
 };
 
-const EmailError = (props, context) => {
+const EmailError = (props) => {
   const { act, data } = useBackend(context);
   const {
     error,
@@ -71,7 +71,7 @@ const EmailError = (props, context) => {
   );
 };
 
-const ViewEmail = (props, context) => {
+const ViewEmail = (props) => {
   const { act, data } = useBackend(context);
   return (
     <Section>
@@ -80,7 +80,7 @@ const ViewEmail = (props, context) => {
   );
 };
 
-const ViewAccount = (props, context) => {
+const ViewAccount = (props) => {
   const { act, data } = useBackend(context);
   const {
     error,
