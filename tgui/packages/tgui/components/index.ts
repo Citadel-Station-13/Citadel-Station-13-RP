@@ -44,3 +44,8 @@ export { TextArea } from './TextArea';
 export { TimeDisplay } from './TimeDisplay';
 export { TrackOutsideClicks } from './TrackOutsideClicks';
 export { Tooltip } from './Tooltip';
+
+export { VSplitTooltipList } from './VSplitTooltipList';
+export { VScrollingWindower } from './VScrollingWindower';
+export { WorldTypepathDropdown } from './WorldTypepathDropdown';
+
