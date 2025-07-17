@@ -1,11 +1,11 @@
 import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
-import { Box, Button, Modal, LabeledList, ProgressBar, Section, NoticeBox } from "../components";
+import { Box, Button, Modal, LabeledList, ProgressBar, Section, NoticeBox } from "tgui-core/components";
 import { Window } from "../layouts";
 import { toTitleCase, decodeHtmlEntities } from 'common/string';
 
-export const MechaControlConsole = (props, context) => {
-  const { act, data } = useBackend(context);
+export const MechaControlConsole = (props) => {
+  const { act, data } = useBackend<any>();
   const {
     beacons,
     stored_data,

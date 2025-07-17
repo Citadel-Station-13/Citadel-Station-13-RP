@@ -5,8 +5,8 @@
 
 import { BooleanLike } from "common/react";
 import { useBackend, useLocalState } from "../../backend";
-import { Button, NoticeBox, Section, Tabs } from "../../components";
-import { Module } from "../../components/Module";
+import { Button, NoticeBox, Section, Tabs } from "tgui-core/components";
+import { Module } from "tgui-core/components/Module";
 import { Window } from "../../layouts";
 import { IDCard, IDCardOrDefault, IDSlot } from "../common/IDCard";
 import { CrewManifestContent } from "../CrewManifest";
@@ -19,9 +19,9 @@ interface IdentificationComputerContext {
   authed_slotmod: BooleanLike;
 }
 
-export const IdentificationComputer = (props, context) => {
-  const { data, act } = useBackend<IdentificationComputerContext>(context);
-  const [currentTab, setCurrentTab] = useLocalState<number>(context, 'currentTab', 0);
+export const IdentificationComputer = (props) => {
+  const { data, act } = useBackend<IdentificationComputerContext>();
+  const [currentTab, setCurrentTab] = useState<number>(0);
   return (
     <Window width={500} height={700}>
       <Window.Content scrollable>
@@ -47,8 +47,8 @@ export const IdentificationComputer = (props, context) => {
             </Section>
             <Section>
               {
-                data.authed_cardmod? (
-                  data.modify_card? (
+                data.authed_cardmod ? (
+                  data.modify_card ? (
                     <Module id="modify" />
                   ) : (
                     <NoticeBox warning>
@@ -69,7 +69,7 @@ export const IdentificationComputer = (props, context) => {
             title="Manifest"
             buttons={
               <Button
-                content={data.printing? "Printing" : "Print"}
+                content={data.printing ? "Printing" : "Print"}
                 disabled={data.printing}
                 icon="print"
                 onClick={() => act('print_manifest')} />

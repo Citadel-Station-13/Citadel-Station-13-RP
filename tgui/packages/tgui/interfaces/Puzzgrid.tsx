@@ -1,7 +1,7 @@
 import { range } from "common/collections";
 import { BooleanLike } from "common/react";
 import { useBackend } from "../backend";
-import { Box, Button, FitText, Stack } from "../components";
+import { Box, Button, FitText, Stack } from "tgui-core/components";
 import { Window } from "../layouts";
 
 const CELLS_PER_GROUP = 4;
@@ -22,7 +22,7 @@ type PuzzgridData = {
   wrong_group_select_cooldown: BooleanLike,
 };
 
-const PuzzgridButton = (props, context) => {
+const PuzzgridButton = (props) => {
   return (
     <Button
       verticalAlignContent="middle"
@@ -43,8 +43,8 @@ const PuzzgridButton = (props, context) => {
   );
 };
 
-export const Puzzgrid = (props, context) => {
-  const { act, data } = useBackend<PuzzgridData>(context);
+export const Puzzgrid = (props) => {
+  const { act, data } = useBackend<PuzzgridData>();
 
   const answersLeft = data.answers.filter(answer => (
     !data.solved_groups.find(group => group.answers.indexOf(answer) !== -1)

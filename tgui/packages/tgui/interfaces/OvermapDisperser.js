@@ -1,9 +1,9 @@
 import { useBackend } from "../backend";
-import { Box, Button, Flex, LabeledList, Section, AnimatedNumber } from "../components";
+import { Box, Button, Flex, LabeledList, Section, AnimatedNumber } from "tgui-core/components";
 import { Window } from "../layouts";
 import { OvermapPanControls } from './common/Overmap';
 
-export const OvermapDisperser = (props, context) => {
+export const OvermapDisperser = (props) => {
   return (
     <Window width={400} height={550} resizable>
       <Window.Content>
@@ -13,8 +13,8 @@ export const OvermapDisperser = (props, context) => {
   );
 };
 
-const OvermapDisperserContent = (props, context) => {
-  const { act, data } = useBackend(context);
+const OvermapDisperserContent = (props) => {
+  const { act, data } = useBackend<any>();
   const {
     faillink,
     calibration,

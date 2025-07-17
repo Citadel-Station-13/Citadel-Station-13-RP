@@ -6,8 +6,8 @@
 import { BooleanLike } from "../../../common/react";
 import { capitalize } from "../../../common/string";
 import { ModuleProps, ModuleData, useModule, useLocalState } from "../../backend";
-import { Button, Flex, Input, LabeledList, Section, Tabs } from "../../components";
-import { SectionProps } from "../../components/Section";
+import { Button, Flex, Input, LabeledList, Section, Tabs } from "tgui-core/components";
+import { SectionProps } from "tgui-core/components/Section";
 import { AccessRegions, AccessTypes } from "../../constants/access";
 import { Modular } from "../../layouts/Modular";
 import { WindowProps } from "../../layouts/Window";
@@ -41,10 +41,10 @@ interface CardModProps extends ModuleProps {
   // nothing
 }
 
-export const TGUICardMod = (props: CardModProps, context) => {
+export const TGUICardMod = (props: CardModProps) => {
   const { data, act } = useModule<CardModContext>(context);
-  const [mode, setMode] = useLocalState<number>(context, `${props.id}_mode`, 0);
-  const [department, setDepartment] = useLocalState<string | null>(context, 'dept', null);
+  const [mode, setMode] = useState<number>(0);
+  const [department, setDepartment] = useState<string | null>(null);
   const windowProps: WindowProps = {
     width: 500,
     height: 500,
@@ -68,7 +68,7 @@ export const TGUICardMod = (props: CardModProps, context) => {
         <LabeledList>
           <LabeledList.Item
             label="Owner">
-            {data.can_rename? (
+            {data.can_rename ? (
               <Input
                 value={data.card_name}
                 onChange={(e, val) => act('name', { set: val })} />
@@ -78,7 +78,7 @@ export const TGUICardMod = (props: CardModProps, context) => {
           </LabeledList.Item>
           <LabeledList.Item
             label="Account Number">
-            {data.modify_account? (
+            {data.modify_account ? (
               <Input
                 value={data.card_account}
                 onChange={(e, val) => act('account', { set: val })} />
@@ -118,7 +118,7 @@ export const TGUICardMod = (props: CardModProps, context) => {
           <LabeledList>
             <LabeledList.Item
               label="Rank">
-              {data.can_rank? (
+              {data.can_rank ? (
                 <Input
                   value={data.card_rank}
                   onChange={(e, val) => act('rank_custom', { rank: val })} />
@@ -128,7 +128,7 @@ export const TGUICardMod = (props: CardModProps, context) => {
             </LabeledList.Item>
             <LabeledList.Item
               label="Assignment / Title">
-              {data.can_rank? (
+              {data.can_rank ? (
                 <Input
                   value={data.card_assignment}
                   onChange={(e, val) => act('assignment', { set: val })} />

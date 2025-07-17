@@ -1,10 +1,10 @@
 import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
-import { Box, Button, Collapsible, Flex, LabeledList, NumberInput, Section, TextArea } from '../components';
+import { Box, Button, Collapsible, Flex, LabeledList, NumberInput, Section, TextArea } from 'tgui-core/components';
 import { formatMoney } from '../format';
 import { Window } from '../layouts';
 
-export const RequestKiosk = (props, context) => {
+export const RequestKiosk = (props) => {
   return (
     <Window
       width={550}
@@ -17,8 +17,8 @@ export const RequestKiosk = (props, context) => {
   );
 };
 
-export const RequestKioskContent = (props, context) => {
-  const { act, data } = useBackend(context);
+export const RequestKioskContent = (props) => {
+  const { act, data } = useBackend<any>();
   const {
     accountName,
     requests = [],

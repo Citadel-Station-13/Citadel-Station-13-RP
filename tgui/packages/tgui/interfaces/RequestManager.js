@@ -6,12 +6,12 @@
 
 import { decodeHtmlEntities } from 'common/string';
 import { useBackend, useLocalState } from '../backend';
-import { Button, Input, Section, Table } from '../components';
-import { Popper } from '../components/Popper';
+import { Button, Input, Section, Table } from 'tgui-core/components';
+import { Popper } from 'tgui-core/components/Popper';
 import { Window } from '../layouts';
 
-export const RequestManager = (props, context) => {
-  const { act, data } = useBackend(context);
+export const RequestManager = (props) => {
+  const { act, data } = useBackend<any>();
   const { requests } = data;
   const [filteredTypes, _] = useLocalState(
     context,
@@ -96,8 +96,8 @@ const RequestType = (props) => {
   );
 };
 
-const RequestControls = (props, context) => {
-  const { act, _ } = useBackend(context);
+const RequestControls = (props) => {
+  const { act, _ } = useBackend<any>();
   const { request } = props;
 
   return (

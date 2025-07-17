@@ -11,7 +11,7 @@
 import { BooleanLike } from "common/react";
 import { InfernoNode } from "inferno";
 import { getModuleData, useBackend, useLocalState } from "../../backend";
-import { Button, Flex, Section, Stack, Tooltip } from "../../components";
+import { Button, Flex, Section, Stack, Tooltip } from "tgui-core/components";
 import { Window } from "../../layouts";
 import { GamePreferenceEntry, GamePreferenceEntrySchema } from "./GamePreferenceEntry";
 import { GamePreferenceKeybindMiddlware, GamePreferenceKeybindScreen } from "./GamePreferenceKeybinds";
@@ -27,12 +27,12 @@ interface GamePreferencesData {
   dirty: BooleanLike;
 }
 
-const GamePreferencesTabs = (props, context) => {
-  const { act, data } = useBackend<GamePreferencesData>(context);
+const GamePreferencesTabs = (props) => {
+  const { act, data } = useBackend<GamePreferencesData>();
 
   let categoryCache = computeGamePreferenceCategoryCache(data.entries);
-  let [activeCategory, setActiveCategory] = useLocalState<string>(context, "prefsCategoryActive", Object.keys(categoryCache)[0]);
-  let [activeMiddleware, setActiveMiddleware] = useLocalState<string | null>(context, "prefsMiddlewareActive", null);
+  let [activeCategory, setActiveCategory] = useState<string>(Object.keys(categoryCache)[0]);
+  let [activeMiddleware, setActiveMiddleware] = useState<string | null>(null);
   let tabs: InfernoNode[] = [];
   Object.keys(categoryCache).forEach((cat) => tabs.push(
     <Stack.Item grow={1}>
@@ -42,14 +42,16 @@ const GamePreferencesTabs = (props, context) => {
         onClick={() => { setActiveCategory(cat); setActiveMiddleware(null); }} />
     </Stack.Item>
   ));
-  Object.entries(data.middleware).forEach(([key, name]) => { tabs.push(
-    <Stack.Item grow={1}>
-      <GamePreferencesTab
-        name={name}
-        selected={key === activeMiddleware}
-        onClick={() => { setActiveMiddleware(key); }} />
-    </Stack.Item>
-  ); });
+  Object.entries(data.middleware).forEach(([key, name]) => {
+    tabs.push(
+      <Stack.Item grow={1}>
+        <GamePreferencesTab
+          name={name}
+          selected={key === activeMiddleware}
+          onClick={() => { setActiveMiddleware(key); }} />
+      </Stack.Item>
+    );
+  });
 
   return (
     <Section>
@@ -86,17 +88,17 @@ const computeGamePreferenceCategoryCache = (entries: GamePreferenceEntrySchema[]
   return computed;
 };
 
-export const GamePreferences = (props, context) => {
-  const { act, data } = useBackend<GamePreferencesData>(context);
+export const GamePreferences = (props) => {
+  const { act, data } = useBackend<GamePreferencesData>();
 
   let categoryCache = computeGamePreferenceCategoryCache(data.entries);
-  let [activeCategory, setActiveCategory] = useLocalState<string>(context, "prefsCategoryActive", Object.keys(categoryCache)[0]);
-  let [activeMiddleware, setActiveMiddleware] = useLocalState<string | null>(context, "prefsMiddlewareActive", null);
+  let [activeCategory, setActiveCategory] = useState<string>(Object.keys(categoryCache)[0]);
+  let [activeMiddleware, setActiveMiddleware] = useState<string | null>(null);
 
   // sigh
   // this is shitcode
   // todo: refactor game prefs ui again
-  const [activeCapture, setActiveCapture] = useLocalState<InfernoNode | null>(context, 'activeKeyCapture', null);
+  const [activeCapture, setActiveCapture] = useState<InfernoNode | null>(null);
 
   return (
     <Window width={600} height={800} title="Game Preferences">
@@ -119,12 +121,12 @@ export const GamePreferences = (props, context) => {
   );
 };
 
-const GamePreferencesBody = (props, context) => {
-  const { act, data } = useBackend<GamePreferencesData>(context);
+const GamePreferencesBody = (props) => {
+  const { act, data } = useBackend<GamePreferencesData>();
 
   let categoryCache = computeGamePreferenceCategoryCache(data.entries);
-  let [activeCategory, setActiveCategory] = useLocalState<string>(context, "prefsCategoryActive", Object.keys(categoryCache)[0]);
-  let [activeMiddleware, setActiveMiddleware] = useLocalState<string | null>(context, "prefsMiddlewareActive", null);
+  let [activeCategory, setActiveCategory] = useState<string>(Object.keys(categoryCache)[0]);
+  let [activeMiddleware, setActiveMiddleware] = useState<string | null>(null);
 
   // todo: this is so fucking awful bros please don't make the same mistake on character setup.
   if (activeMiddleware && (typeof activeMiddleware === 'string')) {
@@ -173,7 +175,7 @@ const GamePreferencesBody = (props, context) => {
   );
 };
 
-const GamePreferenceHeader = (props, context) => {
+const GamePreferenceHeader = (props) => {
   return (
     <Flex direction="column">
       <Flex.Item>
@@ -188,7 +190,7 @@ const GamePreferenceFooter = (props: {
   readonly activeCategory: string,
   readonly activeMiddleware: string | null
 }, context) => {
-  const { act, data } = useBackend<GamePreferencesData>(context);
+  const { act, data } = useBackend<GamePreferencesData>();
   return (
     <Section>
       <Stack fill>
@@ -218,7 +220,7 @@ const GamePreferenceFooter = (props: {
               textAlign="center"
               color="transparent"
               onClick={() =>
-                act('reset', props.activeCategory? { category: props.activeCategory } : {}, props.activeMiddleware)}
+                act('reset', props.activeCategory ? { category: props.activeCategory } : {}, props.activeMiddleware)}
               content="Reset to Default" />
           </Tooltip>
         </Stack.Item>

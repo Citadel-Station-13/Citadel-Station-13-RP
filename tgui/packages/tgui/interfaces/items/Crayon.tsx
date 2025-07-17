@@ -4,8 +4,8 @@
  */
 import { BooleanLike } from "common/react";
 import { useBackend, useLocalState } from "../../backend";
-import { Box, Button, Dimmer, Flex, Icon, LabeledList, Modal, NumberInput, Section, Stack } from "../../components";
-import { Sprite } from "../../components/Sprite";
+import { Box, Button, Dimmer, Flex, Icon, LabeledList, Modal, NumberInput, Section, Stack } from "tgui-core/components";
+import { Sprite } from "tgui-core/components/Sprite";
 import { Window } from "../../layouts";
 import { ByondColorString, ColorPicker } from "../common/Color";
 
@@ -36,9 +36,9 @@ const sizeKeyForCrayonDatapack = (pack: CrayonDatapack) => {
   return `${pack.width}x${pack.height}`;
 };
 
-export const Crayon = (props, context) => {
-  const { data, act } = useBackend<CrayonUIData>(context);
-  const [pickingColor, setPickingColor] = useLocalState<boolean>(context, 'pickingColor', false);
+export const Crayon = (props) => {
+  const { data, act } = useBackend<CrayonUIData>();
+  const [pickingColor, setPickingColor] = useState<boolean>(false);
 
   return (
     <Window width={500} height={800} title={data.canonicalName}>
@@ -62,13 +62,13 @@ export const Crayon = (props, context) => {
               <LabeledList>
                 {!!data.cappable && (
                   <LabeledList.Item label="Cap">
-                    <Button content={data.capped? "Capped" : "Uncapped"}
+                    <Button content={data.capped ? "Capped" : "Uncapped"}
                       selected={!data.capped} onClick={() => act('cap')} />
                   </LabeledList.Item>
                 )}
                 {(data.anyColor || data.colorList) && (
                   <LabeledList.Item label="Color">
-                    {data.anyColor? (
+                    {data.anyColor ? (
                       <Stack>
                         <Stack.Item>
                           <Box style={{ position: "relative", top: "5px", "margin-top": "-3px" }}

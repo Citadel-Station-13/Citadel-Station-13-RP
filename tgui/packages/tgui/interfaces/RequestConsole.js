@@ -1,7 +1,7 @@
 import { decodeHtmlEntities } from 'common/string';
 import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
-import { Box, Button, LabeledList, Section, Tabs } from "../components";
+import { Box, Button, LabeledList, Section, Tabs } from "tgui-core/components";
 import { Window } from "../layouts";
 
 const RCS_MAINMENU = 0;	// Settings menu
@@ -14,8 +14,8 @@ const RCS_VIEWMSGS = 6;	// View messages
 const RCS_MESSAUTH = 7;	// Authentication before sending
 const RCS_ANNOUNCE = 8;	// Send announcement
 
-const RequestConsoleSettings = (props, context) => {
-  const { act, data } = useBackend(context);
+const RequestConsoleSettings = (props) => {
+  const { act, data } = useBackend<any>();
   const {
     silent,
   } = data;
@@ -31,8 +31,8 @@ const RequestConsoleSettings = (props, context) => {
   );
 };
 
-const RequestConsoleSupplies = (props, context) => {
-  const { act, data } = useBackend(context);
+const RequestConsoleSupplies = (props) => {
+  const { act, data } = useBackend<any>();
   const {
     department,
     supply_dept,
@@ -44,8 +44,8 @@ const RequestConsoleSupplies = (props, context) => {
   );
 };
 
-const RequestConsoleAssistance = (props, context) => {
-  const { act, data } = useBackend(context);
+const RequestConsoleAssistance = (props) => {
+  const { act, data } = useBackend<any>();
   const {
     department,
     assist_dept,
@@ -57,8 +57,8 @@ const RequestConsoleAssistance = (props, context) => {
   );
 };
 
-const RequestConsoleRelay = (props, context) => {
-  const { act, data } = useBackend(context);
+const RequestConsoleRelay = (props) => {
+  const { act, data } = useBackend<any>();
   const {
     department,
     info_dept,
@@ -70,8 +70,8 @@ const RequestConsoleRelay = (props, context) => {
   );
 };
 
-const RequestConsoleSendMenu = (props, context) => {
-  const { act } = useBackend(context);
+const RequestConsoleSendMenu = (props) => {
+  const { act } = useBackend<any>();
   const {
     dept_list,
     department,
@@ -98,8 +98,8 @@ const RequestConsoleSendMenu = (props, context) => {
   );
 };
 
-const RequestConsoleSendPass = (props, context) => {
-  const { act, data } = useBackend(context);
+const RequestConsoleSendPass = (props) => {
+  const { act, data } = useBackend<any>();
   return (
     <Section>
       <Box fontSize={2} color="good">
@@ -116,8 +116,8 @@ const RequestConsoleSendPass = (props, context) => {
   );
 };
 
-const RequestConsoleSendFail = (props, context) => {
-  const { act, data } = useBackend(context);
+const RequestConsoleSendFail = (props) => {
+  const { act, data } = useBackend<any>();
   return (
     <Section>
       <Box fontSize={1.5} bold color="bad">
@@ -134,8 +134,8 @@ const RequestConsoleSendFail = (props, context) => {
   );
 };
 
-const RequestConsoleViewMessages = (props, context) => {
-  const { act, data } = useBackend(context);
+const RequestConsoleViewMessages = (props) => {
+  const { act, data } = useBackend<any>();
   const {
     message_log,
   } = data;
@@ -161,8 +161,8 @@ const RequestConsoleViewMessages = (props, context) => {
   );
 };
 
-const RequestConsoleMessageAuth = (props, context) => {
-  const { act, data } = useBackend(context);
+const RequestConsoleMessageAuth = (props) => {
+  const { act, data } = useBackend<any>();
   const {
     message,
     recipient,
@@ -201,8 +201,8 @@ const RequestConsoleMessageAuth = (props, context) => {
   );
 };
 
-const RequestConsoleAnnounce = (props, context) => {
-  const { act, data } = useBackend(context);
+const RequestConsoleAnnounce = (props) => {
+  const { act, data } = useBackend<any>();
   const {
     department,
     screen,
@@ -269,8 +269,8 @@ screenToTemplate[RCS_VIEWMSGS] = RequestConsoleViewMessages;
 screenToTemplate[RCS_MESSAUTH] = RequestConsoleMessageAuth;
 screenToTemplate[RCS_ANNOUNCE] = RequestConsoleAnnounce;
 
-export const RequestConsole = (props, context) => {
-  const { act, data } = useBackend(context);
+export const RequestConsole = (props) => {
+  const { act, data } = useBackend<any>();
   const {
     screen,
     newmessagepriority,

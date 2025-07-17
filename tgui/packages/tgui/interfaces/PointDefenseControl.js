@@ -1,9 +1,9 @@
 import { useBackend } from "../backend";
-import { Box, Button, LabeledList, Section } from "../components";
+import { Box, Button, LabeledList, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const PointDefenseControl = (props, context) => {
-  const { act, data } = useBackend(context);
+export const PointDefenseControl = (props) => {
+  const { act, data } = useBackend<any>();
   const {
     id,
     turrets,

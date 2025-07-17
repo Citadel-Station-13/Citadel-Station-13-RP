@@ -1,9 +1,9 @@
 import { useBackend } from '../backend';
-import { BlockQuote, Button, LabeledList, ProgressBar, Section } from '../components';
+import { BlockQuote, Button, LabeledList, ProgressBar, Section } from 'tgui-core/components';
 import { Window } from '../layouts';
 
-export const Intellicard = (props, context) => {
-  const { act, data } = useBackend(context);
+export const Intellicard = (props) => {
+  const { act, data } = useBackend<any>();
   const {
     name,
     isDead,

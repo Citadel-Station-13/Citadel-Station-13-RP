@@ -1,10 +1,10 @@
 import { useBackend, useLocalState } from '../backend';
-import { Box, Button, Section, Tabs } from '../components';
+import { Box, Button, Section, Tabs } from 'tgui-core/components';
 import { Window } from '../layouts';
 import { ICON_BY_CATEGORY_NAME } from './RapidPipeDispenser';
 
-export const PipeDispenser = (props, context) => {
-  const { act, data } = useBackend(context);
+export const PipeDispenser = (props) => {
+  const { act, data } = useBackend<any>();
   const {
     disposals,
     p_layer,

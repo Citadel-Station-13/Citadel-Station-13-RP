@@ -1,10 +1,10 @@
 import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
-import { Box, Button, Flex, LabeledList, Section, Table } from "../components";
+import { Box, Button, Flex, LabeledList, Section, Table } from "tgui-core/components";
 import { Window } from "../layouts";
 import { OvermapFlightData, OvermapPanControls } from './common/Overmap';
 
-export const OvermapHelm = (props, context) => {
+export const OvermapHelm = (props) => {
   return (
     <Window width={560} height={700} scrollable>
       <Window.Content>
@@ -14,7 +14,7 @@ export const OvermapHelm = (props, context) => {
   );
 };
 
-export const OvermapHelmContent = (props, context) => {
+export const OvermapHelmContent = (props) => {
   return (
     <Fragment>
       <Flex>
@@ -33,8 +33,8 @@ export const OvermapHelmContent = (props, context) => {
   );
 };
 
-export const OvermapFlightDataWrap = (props, context) => {
-  const { act, data } = useBackend(context);
+export const OvermapFlightDataWrap = (props) => {
+  const { act, data } = useBackend<any>();
 
   // While, yes, this is a strange choice to use fieldset over Section just
   // look at how pretty the legend is, sticking partially through the border
@@ -46,8 +46,8 @@ export const OvermapFlightDataWrap = (props, context) => {
   );
 };
 
-const OvermapManualControl = (props, context) => {
-  const { act, data } = useBackend(context);
+const OvermapManualControl = (props) => {
+  const { act, data } = useBackend<any>();
 
   const {
     canburn,
@@ -77,8 +77,8 @@ const OvermapManualControl = (props, context) => {
   );
 };
 
-const OvermapAutopilot = (props, context) => {
-  const { act, data } = useBackend(context);
+const OvermapAutopilot = (props) => {
+  const { act, data } = useBackend<any>();
   const {
     dest,
     d_x,
@@ -163,8 +163,8 @@ const OvermapAutopilot = (props, context) => {
   );
 };
 
-const OvermapNavComputer = (props, context) => {
-  const { act, data } = useBackend(context);
+const OvermapNavComputer = (props) => {
+  const { act, data } = useBackend<any>();
 
   const {
     sector,

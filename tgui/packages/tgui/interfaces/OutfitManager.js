@@ -1,9 +1,9 @@
 import { useBackend } from '../backend';
-import { Button, Section, Stack } from '../components';
+import { Button, Section, Stack } from 'tgui-core/components';
 import { Window } from '../layouts';
 
-export const OutfitManager = (props, context) => {
-  const { act, data } = useBackend(context);
+export const OutfitManager = (props) => {
+  const { act, data } = useBackend<any>();
   const { outfits } = data;
   return (
     <Window

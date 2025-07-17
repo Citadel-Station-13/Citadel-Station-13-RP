@@ -1,9 +1,9 @@
 import { useBackend } from '../backend';
-import { Button, Icon, LabeledList, Section } from '../components';
+import { Button, Icon, LabeledList, Section } from 'tgui-core/components';
 import { Window } from '../layouts';
 
-export const ImplantChair = (props, context) => {
-  const { act, data } = useBackend(context);
+export const ImplantChair = (props) => {
+  const { act, data } = useBackend<any>();
   return (
     <Window
       width={375}

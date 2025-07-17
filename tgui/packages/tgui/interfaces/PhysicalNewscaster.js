@@ -1,7 +1,7 @@
 import { Newscaster } from "../interfaces/Newscaster";
 import { Window } from "../layouts";
 
-export const PhysicalNewscaster = (props, context) => {
+export const PhysicalNewscaster = (props) => {
   return (
     <Window
       width={575}

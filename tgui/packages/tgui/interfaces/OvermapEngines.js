@@ -1,9 +1,9 @@
 import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
-import { Box, Button, Flex, LabeledList, Section, AnimatedNumber, Collapsible } from "../components";
+import { Box, Button, Flex, LabeledList, Section, AnimatedNumber, Collapsible } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const OvermapEngines = (props, context) => {
+export const OvermapEngines = (props) => {
   return (
     <Window width={390} height={530}>
       <Window.Content>
@@ -13,8 +13,8 @@ export const OvermapEngines = (props, context) => {
   );
 };
 
-export const OvermapEnginesContent = (props, context) => {
-  const { act, data } = useBackend(context);
+export const OvermapEnginesContent = (props) => {
+  const { act, data } = useBackend<any>();
   const {
     global_state, // This indicates all engines being powered up or not
     global_limit, // Global Thrust limit

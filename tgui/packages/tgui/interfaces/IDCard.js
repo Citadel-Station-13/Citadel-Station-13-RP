@@ -1,10 +1,10 @@
-import { Box, Flex, LabeledList, Section, Icon } from "../components";
+import { Box, Flex, LabeledList, Section, Icon } from "tgui-core/components";
 import { useBackend } from "../backend";
 import { Window } from "../layouts";
 import { RankIcon } from "./common/RankIcon";
 
-export const IDCard = (props, context) => {
-  const { data } = useBackend(context);
+export const IDCard = (props) => {
+  const { data } = useBackend<any>();
 
   const {
     registered_name,

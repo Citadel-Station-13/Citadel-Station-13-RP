@@ -1,5 +1,5 @@
 import { useBackend, useLocalState } from "../../backend";
-import { Box, Button, NumberInput, Section, Stack } from "../../components";
+import { Box, Button, NumberInput, Section, Stack } from "tgui-core/components";
 import { Window } from "../../layouts";
 import { MaterialsContext } from "../common/Materials";
 
@@ -8,9 +8,9 @@ interface SheetSiloData {
   stored: Record<string, number>;
 }
 
-export const SheetSilo = (props, context) => {
-  const { act, data } = useBackend<SheetSiloData>(context);
-  const [dropAmounts, setDropAmounts] = useLocalState<Record<string, number>>(context, 'dropAmounts', {});
+export const SheetSilo = (props) => {
+  const { act, data } = useBackend<SheetSiloData>();
+  const [dropAmounts, setDropAmounts] = useState<Record<string, number>>({});
   const setDropAmount = (id: string, amt: number) => {
     let corrected = { ...dropAmounts };
     corrected[id] = amt;

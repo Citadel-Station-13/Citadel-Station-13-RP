@@ -1,5 +1,5 @@
 import { InputButtons } from './common/InputButtons';
-import { Box, Button, Input, LabeledList, Section, Stack, Table } from '../components';
+import { Box, Button, Input, LabeledList, Section, Stack, Table } from 'tgui-core/components';
 import { useBackend, useLocalState } from '../backend';
 import { Window } from '../layouts';
 
@@ -50,7 +50,7 @@ type AvailableTraitData = {
 };
 
 export const TraitSelectorModal = (_, context) => {
-  const { act, data } = useBackend<TraitSelectorInputData>(context);
+  const { act, data } = useBackend<TraitSelectorInputData>();
 
   const containsLoosely = function (needle: string, haystack: string): boolean {
     if (needle === "") { return true; }
@@ -107,9 +107,9 @@ export const TraitSelectorModal = (_, context) => {
           });
         }
         existing.items.push({
-          ...trait, 
-          display_name: trait.group_short_name ?? trait.name, 
-          sort_key: trait.sort_key ?? trait.name, 
+          ...trait,
+          display_name: trait.group_short_name ?? trait.name,
+          sort_key: trait.sort_key ?? trait.name,
           show_name: true,
         });
       } else {
@@ -118,9 +118,9 @@ export const TraitSelectorModal = (_, context) => {
           description: "",
           sort_key: trait.sort_key ?? trait.name,
           items: [{
-            ...trait, 
-            display_name: trait.name, 
-            sort_key: trait.sort_key ?? trait.name, 
+            ...trait,
+            display_name: trait.name,
+            sort_key: trait.sort_key ?? trait.name,
             show_name: false,
           }],
         };

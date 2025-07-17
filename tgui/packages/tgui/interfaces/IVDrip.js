@@ -1,9 +1,9 @@
 import { useBackend } from '../backend';
-import { Box, Button, NumberInput, LabeledList, Section } from '../components';
+import { Box, Button, NumberInput, LabeledList, Section } from 'tgui-core/components';
 import { Window } from '../layouts';
 
-export const IVDrip = (props, context) => {
-  const { act, data } = useBackend(context);
+export const IVDrip = (props) => {
+  const { act, data } = useBackend<any>();
   const {
     transferRate,
     injectOnly,

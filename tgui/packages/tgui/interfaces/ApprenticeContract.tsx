@@ -1,10 +1,10 @@
 import { multiline } from 'common/string';
 import { resolveAsset } from '../assets';
 import { useBackend } from '../backend';
-import { BlockQuote, Box, Button, Icon, Section, Stack } from '../components';
+import { BlockQuote, Box, Button, Icon, Section, Stack } from 'tgui-core/components';
 import { Window } from '../layouts';
 
-export const ApprenticeContract = (props, context) => {
+export const ApprenticeContract = (props) => {
   return (
     <Window
       width={620}
@@ -64,8 +64,8 @@ export const ApprenticeContract = (props, context) => {
   );
 };
 
-const ApprenticeSelection = (props, context) => {
-  const { act } = useBackend(context);
+const ApprenticeSelection = (props) => {
+  const { act } = useBackend<any>();
   const {
     iconName,
     fluffName,

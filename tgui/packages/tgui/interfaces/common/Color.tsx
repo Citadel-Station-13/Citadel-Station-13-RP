@@ -1,8 +1,8 @@
 import { DecodeRGBString, EncodeRGBAString, EncodeRGBString, HSVtoRGB, RGBtoHSV } from "common/color";
-import { round } from "common/math";
-import { Component } from "inferno";
-import { Box, ColorBox, Input, NumberInput, Slider, Stack, Table, Tabs } from "../../components";
-import { BoxProps } from "../../components/Box";
+import { Component } from "react";
+import { Box, ColorBox, Input, NumberInput, Slider, Stack, Table, Tabs } from "tgui-core/components";
+import { round } from "tgui-core/math";
+import { BoxProps } from "../../components";
 
 // full, 20-value RGBA matrix with constants
 export type ByondColorMatrixRGBAC = [
@@ -219,10 +219,10 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
       this.state.cBlue,
       this.state.cAlpha,
       true) : EncodeRGBString(
-      this.state.cRed,
-      this.state.cGreen,
-      this.state.cBlue,
-      true);
+        this.state.cRed,
+        this.state.cGreen,
+        this.state.cBlue,
+        true);
     let [cHue, cSat, cVal] = RGBtoHSV(this.state.cRed, this.state.cGreen, this.state.cBlue).map((n) => round(n, 2));
     return (
       <Box {...this.props}>
@@ -377,7 +377,7 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
                         </Stack.Item>
                       )}
                       <Stack.Item>
-                        <Input value={colorAsString()} onChange={(e, val) => {
+                        <Input value={colorAsString()} onChange={(val) => {
                           try {
                             let [r, g, b, a] = DecodeRGBString(val);
                             this.setState((prev) => ({
@@ -389,7 +389,7 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
                             }));
                             this.props.setColor(val);
                           }
-                          catch {}
+                          catch { }
                         }} width="90px" />
                       </Stack.Item>
                       <Stack.Item>
@@ -403,7 +403,7 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
             {this.state.mode === ColorPickerMode.Matrix && (
               <Table>
                 {
-                  this.props.allowAlpha? [
+                  this.props.allowAlpha ? [
                     ["RR", "RG", "RB", "RA"],
                     ["GR", "GG", "GB", "GA"],
                     ["BR", "BG", "BB", "BA"],
@@ -418,7 +418,7 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
                             {l}: <NumberInput width="50px"
                               minValue={-10} maxValue={10}
                               step={0.01} value={this.state.cMatrix[ifull]}
-                              onChange={(e, val) => {
+                              onChange={(val) => {
                                 this.setState((prev) => {
                                   let modified = prev.cMatrix.slice();
                                   modified[ifull] = val;
@@ -430,7 +430,8 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
                                 this.props.setColor(this.state.cMatrix);
                               }} />
                           </Table.Cell>
-                        ); })}
+                        );
+                      })}
                     </Table.Row>
                   )) : [
                     ["RR", "RG", "RB"],
@@ -440,13 +441,13 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
                   ].map((arr, i1) => (
                     <Table.Row key={i1}>
                       {arr.map((l, i2) => {
-                        let ifull = ((i1 === 3? 4 : i1) * 4) + (i2);
+                        let ifull = ((i1 === 3 ? 4 : i1) * 4) + (i2);
                         return (
                           <Table.Cell key={i2}>
                             {l}: <NumberInput width="50px"
                               minValue={-10} maxValue={10}
                               step={0.01} value={round(this.state.cMatrix[ifull], 4)}
-                              onChange={(e, val) => {
+                              onChange={(val) => {
                                 this.setState((prev) => {
                                   let modified = prev.cMatrix.slice();
                                   modified[ifull] = val;
@@ -458,7 +459,8 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
                                 this.props.setColor(ConvertByondColorMatrixRGBACToRGBC(this.state.cMatrix));
                               }} />
                           </Table.Cell>
-                        ); })}
+                        );
+                      })}
                     </Table.Row>
                   ))
                 }

@@ -1,6 +1,6 @@
 import { classes } from 'common/react';
 import { useBackend, useLocalState } from '../backend';
-import { Box, Button, ColorBox, LabeledList, Section, Stack, Tabs } from '../components';
+import { Box, Button, ColorBox, LabeledList, Section, Stack, Tabs } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 const ROOT_CATEGORIES = [
@@ -40,8 +40,8 @@ const TOOLS = [
   },
 ];
 
-export const ColorItem = (props, context) => {
-  const { act, data } = useBackend(context);
+export const ColorItem = (props) => {
+  const { act, data } = useBackend<any>();
   const {
     selected_color,
   } = data;
@@ -68,8 +68,8 @@ export const ColorItem = (props, context) => {
   );
 };
 
-const ModeItem = (props, context) => {
-  const { act, data } = useBackend(context);
+const ModeItem = (props) => {
+  const { act, data } = useBackend<any>();
   const {
     mode,
   } = data;
@@ -92,8 +92,8 @@ const ModeItem = (props, context) => {
   );
 };
 
-const CategoryItem = (props, context) => {
-  const { act, data } = useBackend(context);
+const CategoryItem = (props) => {
+  const { act, data } = useBackend<any>();
   const {
     category: rootCategoryIndex,
   } = data;
@@ -114,8 +114,8 @@ const CategoryItem = (props, context) => {
   );
 };
 
-const SelectionSection = (props, context) => {
-  const { act, data } = useBackend(context);
+const SelectionSection = (props) => {
+  const { act, data } = useBackend<any>();
   return (
     <Section>
       <LabeledList>
@@ -127,8 +127,8 @@ const SelectionSection = (props, context) => {
   );
 };
 
-export const LayerSelect = (props, context) => {
-  const { act, data } = useBackend(context);
+export const LayerSelect = (props) => {
+  const { act, data } = useBackend<any>();
   const {
     piping_layer,
   } = data;
@@ -148,8 +148,8 @@ export const LayerSelect = (props, context) => {
   );
 };
 
-const PreviewSelect = (props, context) => {
-  const { act, data } = useBackend(context);
+const PreviewSelect = (props) => {
+  const { act, data } = useBackend<any>();
   const {
     category: rootCategoryIndex,
   } = data;
@@ -185,8 +185,8 @@ const PreviewSelect = (props, context) => {
   );
 };
 
-const LayerSection = (props, context) => {
-  const { act, data } = useBackend(context);
+const LayerSection = (props) => {
+  const { act, data } = useBackend<any>();
   const {
     category: rootCategoryIndex,
     piping_layer,
@@ -202,8 +202,8 @@ const LayerSection = (props, context) => {
   );
 };
 
-const PipeTypeSection = (props, context) => {
-  const { act, data } = useBackend(context);
+const PipeTypeSection = (props) => {
+  const { act, data } = useBackend<any>();
   const {
     categories = [],
   } = data;
@@ -245,8 +245,8 @@ const PipeTypeSection = (props, context) => {
   );
 };
 
-export const RapidPipeDispenser = (props, context) => {
-  const { act, data } = useBackend(context);
+export const RapidPipeDispenser = (props) => {
+  const { act, data } = useBackend<any>();
   const {
     category: rootCategoryIndex,
   } = data;

@@ -28,14 +28,14 @@ export interface ModularProps {
  * todo: scrolling is broken when embedded. there's no workaround; tgui components and their CSS just can't handle
  *       proper scrolling behavior when made to auto-fill as opposed to fixed height.
  */
-export const Modular = (props: ModularProps, context: any) => {
+export const Modular = (props: ModularProps: any) => {
   const { is_module, m_section } = context;
   let sectionProps = {
     ...props.section,
     ...m_section,
   };
   return (
-    !is_module? (
+    !is_module ? (
       <Window {...props.window}>
         {props.direct}
         <Window.Content scrollable={props.scrollable}>

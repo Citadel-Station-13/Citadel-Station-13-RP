@@ -1,4 +1,5 @@
-import { useDispatch } from 'common/redux';
+import { useDispatch } from 'tgui/backend';
+
 import type { Page } from '../chat/types';
 import { importSettings } from './actions';
 
@@ -38,16 +39,12 @@ export function exportChatSettings(
     });
 }
 
-export async function importChatSettings(context, settings: FileList) {
-  if (!settings.length) {
+export function importChatSettings(settings: string | string[]) {
+  if (Array.isArray(settings)) {
     return;
   }
-
-  // its a blob...
-  const fileSetting = await settings[0].text();
-
-  const dispatch = useDispatch(context);
-  const ourImport = JSON.parse(fileSetting);
+  const dispatch = useDispatch();
+  const ourImport = JSON.parse(settings);
   if (!ourImport?.version) {
     return;
   }

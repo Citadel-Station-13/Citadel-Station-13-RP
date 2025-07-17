@@ -3,8 +3,8 @@
 
 import { BooleanLike } from "common/react";
 import { useBackend } from "../../backend";
-import { Button, LabeledList, NumberInput } from "../../components";
-import { Section, SectionProps } from "../../components/Section";
+import { Button, LabeledList, NumberInput } from "tgui-core/components";
+import { Section, SectionProps } from "tgui-core/components/Section";
 import { AtmosComponent, AtmosComponentData } from "../common/AtmosMachine";
 
 interface AtmosTrinaryMolarFilterControlProps extends SectionProps {
@@ -16,7 +16,7 @@ interface AtmosTrinaryMolarFilterControlProps extends SectionProps {
   readonly toggleInvert: (on: boolean) => void;
 }
 
-export const AtmosTrinaryMolarFilterControl = (props: AtmosTrinaryMolarFilterControlProps, context) => {
+export const AtmosTrinaryMolarFilterControl = (props: AtmosTrinaryMolarFilterControlProps) => {
   return (
     <Section title="Filter" {...props}>
       <LabeledList>
@@ -31,7 +31,7 @@ export const AtmosTrinaryMolarFilterControl = (props: AtmosTrinaryMolarFilterCon
             unit="g/mol" />
         </LabeledList.Item>
         <LabeledList.Item label="Inversion">
-          <Button.Checkbox content={props.invert? "Inverted" : "Normal"}
+          <Button.Checkbox content={props.invert ? "Inverted" : "Normal"}
             selected={props.invert}
             onClick={() => props.toggleInvert(!props.invert)} />
         </LabeledList.Item>
@@ -48,8 +48,8 @@ interface AtmosTrinaryMolarFilterData extends AtmosComponentData {
   maxRate: number;
 }
 
-export const AtmosTrinaryMolarFilter = (props, context) => {
-  const { act, data } = useBackend<AtmosTrinaryMolarFilterData>(context);
+export const AtmosTrinaryMolarFilter = (props) => {
+  const { act, data } = useBackend<AtmosTrinaryMolarFilterData>();
 
   return (
     <AtmosComponent

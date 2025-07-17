@@ -1,10 +1,10 @@
 import { round } from 'common/math';
 import { useBackend } from '../backend';
-import { Box, Button, Collapsible, LabeledList, ProgressBar, Section, Slider } from '../components';
+import { Box, Button, Collapsible, LabeledList, ProgressBar, Section, Slider } from 'tgui-core/components';
 import { Window } from '../layouts';
 
-export const Jukebox = (props, context) => {
-  const { act, data } = useBackend(context);
+export const Jukebox = (props) => {
+  const { act, data } = useBackend<any>();
 
   const {
     playing,

@@ -2,7 +2,7 @@ import { range } from "common/collections";
 import { BooleanLike } from "common/react";
 import { resolveAsset } from "../assets";
 import { useBackend } from "../backend";
-import { Box, Button, Icon, Stack } from "../components";
+import { Box, Button, Icon, Stack } from "tgui-core/components";
 import { Window } from "../layouts";
 
 const ROWS = 5;
@@ -232,24 +232,24 @@ type StripMenuItem =
   | null
   | Interactable
   | ((
-      | {
-          icon: string;
-          name: string;
-          alternate?: string;
-        }
-      | {
-          obscured: ObscuringLevel;
-        }
-    ) &
-      Partial<Interactable>);
+    | {
+      icon: string;
+      name: string;
+      alternate?: string;
+    }
+    | {
+      obscured: ObscuringLevel;
+    }
+  ) &
+    Partial<Interactable>);
 
 type StripMenuData = {
   items: Record<keyof typeof SLOTS, StripMenuItem>;
   name: string;
 };
 
-export const StripMenu = (props, context) => {
-  const { act, data } = useBackend<StripMenuData>(context);
+export const StripMenu = (props) => {
+  const { act, data } = useBackend<StripMenuData>();
 
   const gridSpots = new Map<GridSpotKey, string>();
   for (const key of Object.keys(data.items)) {

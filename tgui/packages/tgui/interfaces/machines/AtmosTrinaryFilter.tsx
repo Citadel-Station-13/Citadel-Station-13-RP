@@ -2,24 +2,24 @@
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
 import { useBackend } from "../../backend";
-import { LabeledList, NumberInput } from "../../components";
-import { Section, SectionProps } from "../../components/Section";
+import { LabeledList, NumberInput } from "tgui-core/components";
+import { Section, SectionProps } from "tgui-core/components/Section";
 import { AtmosGasGroups, AtmosGasID, AtmosGasGroupFlags, GasContext, AtmosFilterList } from "../common/Atmos";
 import { AtmosComponent, AtmosComponentData } from "../common/AtmosMachine";
 
 interface AtmosTrinaryFilterControlProps extends SectionProps {
   readonly atmosContext: GasContext;
   readonly filtering: null | AtmosGasGroups | AtmosGasID;
-  readonly setFiltering?: (target: AtmosGasGroups|AtmosGasID) => void;
+  readonly setFiltering?: (target: AtmosGasGroups | AtmosGasID) => void;
 }
 
-export const AtmosTrinaryFilterControl = (props: AtmosTrinaryFilterControlProps, context) => {
+export const AtmosTrinaryFilterControl = (props: AtmosTrinaryFilterControlProps) => {
   return (
     <Section title="Filter" {...props}>
       <AtmosFilterList
         gasContext={props.atmosContext}
-        selectedGroups={((typeof props.filtering) === 'number')? (props.filtering as number) : AtmosGasGroupFlags.None}
-        selectedIds={((typeof props.filtering) === 'string')? ([props.filtering as string]) : []}
+        selectedGroups={((typeof props.filtering) === 'number') ? (props.filtering as number) : AtmosGasGroupFlags.None}
+        selectedIds={((typeof props.filtering) === 'string') ? ([props.filtering as string]) : []}
         selectGroup={(g) => props.setFiltering?.(g)}
         selectId={(id) => props.setFiltering?.(id)} />
     </Section>
@@ -33,8 +33,8 @@ interface AtmosTrinaryFilterData extends AtmosComponentData {
   maxRate: number;
 }
 
-export const AtmosTrinaryFilter = (props, context) => {
-  const { act, data } = useBackend<AtmosTrinaryFilterData>(context);
+export const AtmosTrinaryFilter = (props) => {
+  const { act, data } = useBackend<AtmosTrinaryFilterData>();
 
   return (
     <AtmosComponent

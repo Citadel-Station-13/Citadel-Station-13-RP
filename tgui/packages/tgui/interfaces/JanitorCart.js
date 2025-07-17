@@ -1,9 +1,9 @@
 import { useBackend } from "../backend";
-import { Button, Icon } from "../components";
+import { Button, Icon } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const JanitorCart = (props, context) => {
-  const { act, data } = useBackend(context);
+export const JanitorCart = (props) => {
+  const { act, data } = useBackend<any>();
 
   const {
     mybag,
@@ -110,8 +110,8 @@ const iconkeysToIcons = {
   "signs": "sign",
 };
 
-const JanicartIcon = (props, context) => {
-  const { data } = useBackend(context);
+const JanicartIcon = (props) => {
+  const { data } = useBackend<any>();
 
   const {
     iconkey,

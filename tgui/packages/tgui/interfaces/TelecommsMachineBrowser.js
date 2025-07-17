@@ -1,10 +1,10 @@
 import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
-import { Box, Button, NoticeBox, LabeledList, Section } from "../components";
+import { Box, Button, NoticeBox, LabeledList, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const TelecommsMachineBrowser = (props, context) => {
-  const { act, data } = useBackend(context);
+export const TelecommsMachineBrowser = (props) => {
+  const { act, data } = useBackend<any>();
 
   const {
     network,
@@ -77,8 +77,8 @@ export const TelecommsMachineBrowser = (props, context) => {
   );
 };
 
-const TelecommsBrowser = (props, context) => {
-  const { act, data } = useBackend(context);
+const TelecommsBrowser = (props) => {
+  const { act, data } = useBackend<any>();
 
   const {
     list,

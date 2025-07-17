@@ -1,9 +1,9 @@
 import { useBackend } from '../backend';
-import { Box, Button, Icon, Section, Stack } from '../components';
+import { Box, Button, Icon, Section, Stack } from 'tgui-core/components';
 import { Window } from '../layouts';
 
-export const OutfitEditor = (props, context) => {
-  const { act, data } = useBackend(context);
+export const OutfitEditor = (props) => {
+  const { act, data } = useBackend<any>();
   const { outfit, saveable, dummy64 } = data;
   return (
     <Window
@@ -99,8 +99,8 @@ export const OutfitEditor = (props, context) => {
   );
 };
 
-const OutfitSlot = (props, context) => {
-  const { act, data } = useBackend(context);
+const OutfitSlot = (props) => {
+  const { act, data } = useBackend<any>();
   const { name, icon, iconRot, slot } = props;
   const { outfit } = data;
   const currItem = outfit[slot];

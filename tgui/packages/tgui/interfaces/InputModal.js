@@ -6,19 +6,19 @@
 
 import { clamp01 } from 'common/math';
 import { useBackend, useLocalState } from '../backend';
-import { Box, Button, Section, Input, Stack, TextArea } from '../components';
+import { Box, Button, Section, Input, Stack, TextArea } from 'tgui-core/components';
 import { KEY_ESCAPE } from 'common/keycodes';
 import { Window } from '../layouts';
 import { createLogger } from '../logging';
 
 const logger = createLogger('inputmodal');
 
-export const InputModal = (props, context) => {
-  const { act, data } = useBackend(context);
+export const InputModal = (props) => {
+  const { act, data } = useBackend<any>();
   const { title, message, initial, input_type, timeout } = data;
 
   // Current Input Value
-  const [curValue, setCurValue] = useLocalState(context, 'curValue', initial);
+  const [curValue, setCurValue] = useState(initial);
 
   const handleKeyDown = e => {
     if (e.keyCode === KEY_ESCAPE) {

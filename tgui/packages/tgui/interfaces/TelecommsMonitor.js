@@ -7,11 +7,11 @@ import { Fragment } from 'inferno';
 import { Window } from '../layouts';
 import { useBackend, useSharedState } from '../backend';
 import { RADIO_CHANNELS } from '../constants';
-import { Box, Button, LabeledList, NoticeBox, Section, Tabs, Input, ProgressBar } from '../components';
+import { Box, Button, LabeledList, NoticeBox, Section, Tabs, Input, ProgressBar } from 'tgui-core/components';
 
 
-export const TelecommsMonitor = (props, context) => {
-  const { act, data } = useBackend(context);
+export const TelecommsMonitor = (props) => {
+  const { act, data } = useBackend<any>();
   const {
     notice,
     network = "NULL",

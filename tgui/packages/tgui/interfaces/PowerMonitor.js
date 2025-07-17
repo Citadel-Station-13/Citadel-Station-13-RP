@@ -4,7 +4,7 @@ import { toFixed } from 'common/math';
 import { pureComponentHooks } from 'common/react';
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
-import { Box, Button, Chart, ColorBox, Flex, Icon, LabeledList, ProgressBar, Section, Table } from '../components';
+import { Box, Button, Chart, ColorBox, Flex, Icon, LabeledList, ProgressBar, Section, Table } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 const PEAK_DRAW = 500;
@@ -27,8 +27,8 @@ export const PowerMonitor = () => {
   );
 };
 
-export const PowerMonitorContent = (props, context) => {
-  const { act, data } = useBackend(context);
+export const PowerMonitorContent = (props) => {
+  const { act, data } = useBackend<any>();
 
   const {
     map_levels,
@@ -75,14 +75,14 @@ export const PowerMonitorContent = (props, context) => {
   );
 };
 
-export const PowerMonitorFocus = (props, context) => {
-  const { act, data } = useBackend(context);
+export const PowerMonitorFocus = (props) => {
+  const { act, data } = useBackend<any>();
   const { focus } = props;
   const { history } = focus;
   const [
     sortByField,
     setSortByField,
-  ] = useLocalState(context, 'sortByField', null);
+  ] = useState(null);
   const supply = history.supply[history.supply.length - 1] || 0;
   const demand = history.demand[history.demand.length - 1] || 0;
   const supplyData = history.supply.map((value, i) => [i, value]);

@@ -1,10 +1,10 @@
 import { sortBy } from 'common/collections';
 import { useBackend } from "../backend";
-import { AnimatedNumber, Box, Button, LabeledList, NoticeBox, NumberInput, Section } from "../components";
+import { AnimatedNumber, Box, Button, LabeledList, NoticeBox, NumberInput, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
-export const TelesciConsole = (props, context) => {
-  const { act, data } = useBackend(context);
+export const TelesciConsole = (props) => {
+  const { act, data } = useBackend<any>();
 
   const {
     noTelepad,
@@ -19,7 +19,7 @@ export const TelesciConsole = (props, context) => {
   );
 };
 
-const TelesciNoTelepadError = (props, context) => {
+const TelesciNoTelepadError = (props) => {
   return (
     <Section title="Error" color="bad">
       No telepad located.<br />
@@ -28,8 +28,8 @@ const TelesciNoTelepadError = (props, context) => {
   );
 };
 
-export const TelesciConsoleContent = (props, context) => {
-  const { act, data } = useBackend(context);
+export const TelesciConsoleContent = (props) => {
+  const { act, data } = useBackend<any>();
 
   const {
     insertedGps,

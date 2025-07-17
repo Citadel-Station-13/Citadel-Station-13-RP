@@ -25,7 +25,7 @@ interface TGUIAbilityData extends ModuleData {
   can_bind: BooleanLike;
 }
 
-export const TGUIAbility = (props: TGUIAbilityProps, context) => {
+export const TGUIAbility = (props: TGUIAbilityProps) => {
   const { data, act } = useModule<TGUIAbilityData>(context);
 
   return (
