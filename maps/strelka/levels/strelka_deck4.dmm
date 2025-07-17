@@ -1376,6 +1376,7 @@
 	dir = 8
 	},
 /obj/machinery/cryopod/robot/door/shuttle,
+/obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck4/arrival)
 "fS" = (
@@ -4612,6 +4613,10 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
+/obj/item/paper_bin{
+	pixel_x = -7;
+	pixel_y = 7
+	},
 /turf/simulated/floor/lino,
 /area/strelka/shipbase/deck4/library)
 "tz" = (
@@ -6480,7 +6485,8 @@
 /obj/map_helper/access_helper/airlock/station/service/botany,
 /obj/machinery/door/window{
 	dir = 1;
-	name = "Hydroponics"
+	name = "Hydroponics";
+	req_access = list(35)
 	},
 /obj/structure/flora/ausbushes/fullgrass{
 	pixel_x = -8
@@ -7350,7 +7356,8 @@
 "Hu" = (
 /obj/map_helper/access_helper/airlock/station/service/botany,
 /obj/machinery/door/window{
-	name = "Hydroponics"
+	name = "Hydroponics";
+	req_access = list(35)
 	},
 /obj/structure/flora/grass/event/full_grass3,
 /obj/machinery/door/firedoor/glass,
@@ -7516,6 +7523,22 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
+/obj/structure/table/hardwoodtable,
+/obj/item/paper_bin{
+	pixel_x = -7;
+	pixel_y = 7
+	},
+/obj/machinery/photocopier/faxmachine{
+	department = "Dorms hallway";
+	pixel_x = 6
+	},
+/obj/item/pen,
+/obj/item/pen,
+/obj/structure/flora/pottedplant/smallcactus{
+	pixel_y = 18;
+	pixel_x = 12
+	},
+/obj/item/pen,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/dormhallway)
 "Ii" = (
@@ -8177,7 +8200,8 @@
 "KL" = (
 /obj/map_helper/access_helper/airlock/station/service/botany,
 /obj/machinery/door/window{
-	name = "Hydroponics"
+	name = "Hydroponics";
+	req_access = list(35)
 	},
 /obj/structure/flora/grass/event/full_grass1,
 /obj/structure/cable/orange{
@@ -9726,7 +9750,9 @@
 	pixel_y = 16;
 	layer = 3
 	},
-/obj/machinery/recharger,
+/obj/machinery/recharger{
+	pixel_x = 5
+	},
 /obj/machinery/light/fairy{
 	dir = 4
 	},
@@ -9735,6 +9761,10 @@
 	dir = 8;
 	id = "bar_shutters";
 	name = "Bar Shutters"
+	},
+/obj/item/paper_bin{
+	pixel_x = -7;
+	pixel_y = 7
 	},
 /turf/simulated/floor/bmarble,
 /area/strelka/shipbase/deck4/bar)
@@ -10884,7 +10914,8 @@
 /obj/map_helper/access_helper/airlock/station/service/botany,
 /obj/machinery/door/window{
 	dir = 1;
-	name = "Hydroponics"
+	name = "Hydroponics";
+	req_access = list(35)
 	},
 /obj/structure/cable/orange{
 	icon_state = "1-2"
@@ -22462,7 +22493,7 @@ jR
 jR
 jR
 jR
-jR
+CA
 Gk
 Gk
 Gk
@@ -22470,7 +22501,7 @@ Gk
 Gk
 CA
 CA
-jR
+CA
 jR
 jR
 jR
@@ -22655,7 +22686,7 @@ jR
 jR
 jR
 jR
-jR
+CA
 CA
 qI
 qI
@@ -22665,7 +22696,7 @@ UC
 UC
 qI
 CA
-jR
+CA
 jR
 jR
 jR
@@ -22848,7 +22879,7 @@ jR
 jR
 jR
 jR
-jR
+CA
 CA
 UC
 cO
@@ -22860,7 +22891,7 @@ cO
 cO
 qI
 Gk
-jR
+CA
 jR
 jR
 jR
