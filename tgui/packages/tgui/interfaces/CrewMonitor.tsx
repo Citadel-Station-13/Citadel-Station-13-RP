@@ -40,7 +40,7 @@ export const CrewMonitor = () => {
 
 export const CrewMonitorContent = (props) => {
   const { act, data, config } = useBackend(context);
-  const [tabIndex, setTabIndex] = useLocalState(context, 'tabIndex', 0);
+  const [tabIndex, setTabIndex] = useState(0);
 
   const crew = flow([
     sortBy(cm => cm.name),
@@ -49,7 +49,7 @@ export const CrewMonitorContent = (props) => {
     sortBy(cm => cm?.realZ),
   ])(data.crewmembers || []);
 
-  const [zoom, setZoom] = useLocalState(context, 'zoom', 1);
+  const [zoom, setZoom] = useState(1);
 
   let body;
   // Data view
@@ -109,13 +109,13 @@ export const CrewMonitorContent = (props) => {
                   <Button fluid
                     icon="location-arrow"
                     content={
-                      cm.area+" ("+cm.x+", "+cm.y+")"
+                      cm.area + " (" + cm.x + ", " + cm.y + ")"
                     }
                     onClick={() => act('track', {
                       track: cm.ref,
                     })} />
                 ) : (
-                  cm.area+" ("+cm.x+", "+cm.y+", "+cm.z+")"
+                  cm.area + " (" + cm.x + ", " + cm.y + ", " + cm.z + ")"
                 )
               ) : "Not Available"}
             </Table.Cell>
@@ -157,7 +157,7 @@ export const CrewMonitorContent = (props) => {
 
 const CrewMonitorMapView = (props) => {
   const { act, config, data } = useBackend(context);
-  const [zoom, setZoom] = useLocalState(context, 'zoom', 1);
+  const [zoom, setZoom] = useState(1);
   return (
     <Box height="526px" mb="0.5rem" overflow="hidden">
       <NanoMap onZoom={v => setZoom(v)}>

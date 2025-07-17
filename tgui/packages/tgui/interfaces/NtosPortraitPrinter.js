@@ -5,7 +5,7 @@ import { NtosWindow } from '../layouts';
 
 export const NtosPortraitPrinter = (props) => {
   const { act, data } = useBackend(context);
-  const [listIndex, setListIndex] = useLocalState(context, 'listIndex', 0);
+  const [listIndex, setListIndex] = useState(0);
   const {
     paintings,
     search_string,

@@ -27,7 +27,7 @@ export const CharacterDirectory = (props) => {
     personalTag,
   } = data;
 
-  const [overlay, setOverlay] = useLocalState(context, "overlay", null);
+  const [overlay, setOverlay] = useState(null);
 
   return (
     <Window width={640} height={480} resizeable>
@@ -35,45 +35,45 @@ export const CharacterDirectory = (props) => {
         {overlay && (
           <ViewCharacter />
         ) || (
-          <Fragment>
-            <Section title="Controls">
-              <LabeledList>
-                <LabeledList.Item label="Visibility">
-                  <Button
-                    fluid
-                    content={personalVisibility ? "Shown" : "Not Shown"}
-                    onClick={() => act("setVisible")} />
-                </LabeledList.Item>
-                <LabeledList.Item label="ERP Tag">
-                  <Button
-                    fluid
-                    content={personalErpTag}
-                    onClick={() => act("setErpTag")} />
-                </LabeledList.Item>
-                <LabeledList.Item label="Vore Tag">
-                  <Button
-                    fluid
-                    content={personalTag}
-                    onClick={() => act("setTag")} />
-                </LabeledList.Item>
-                <LabeledList.Item label="Advertisement">
-                  <Button
-                    fluid
-                    content="Edit Ad"
-                    onClick={() => act("editAd")} />
-                </LabeledList.Item>
-              </LabeledList>
-            </Section>
-            <CharacterDirectoryList />
-          </Fragment>
-        )}
+            <Fragment>
+              <Section title="Controls">
+                <LabeledList>
+                  <LabeledList.Item label="Visibility">
+                    <Button
+                      fluid
+                      content={personalVisibility ? "Shown" : "Not Shown"}
+                      onClick={() => act("setVisible")} />
+                  </LabeledList.Item>
+                  <LabeledList.Item label="ERP Tag">
+                    <Button
+                      fluid
+                      content={personalErpTag}
+                      onClick={() => act("setErpTag")} />
+                  </LabeledList.Item>
+                  <LabeledList.Item label="Vore Tag">
+                    <Button
+                      fluid
+                      content={personalTag}
+                      onClick={() => act("setTag")} />
+                  </LabeledList.Item>
+                  <LabeledList.Item label="Advertisement">
+                    <Button
+                      fluid
+                      content="Edit Ad"
+                      onClick={() => act("editAd")} />
+                  </LabeledList.Item>
+                </LabeledList>
+              </Section>
+              <CharacterDirectoryList />
+            </Fragment>
+          )}
       </Window.Content>
     </Window>
   );
 };
 
 const ViewCharacter = (props) => {
-  const [overlay, setOverlay] = useLocalState(context, "overlay", null);
+  const [overlay, setOverlay] = useState(null);
 
   return (
     <Section title={overlay.name} buttons={
@@ -123,9 +123,9 @@ const CharacterDirectoryList = (props) => {
     directory,
   } = data;
 
-  const [sortId, _setSortId] = useLocalState(context, "sortId", "name");
-  const [sortOrder, _setSortOrder] = useLocalState(context, "sortOrder", "name");
-  const [overlay, setOverlay] = useLocalState(context, "overlay", null);
+  const [sortId, _setSortId] = useState("name");
+  const [sortOrder, _setSortOrder] = useState("name");
+  const [overlay, setOverlay] = useState(null);
 
   return (
     <Section title="Directory" buttons={
@@ -177,8 +177,8 @@ const SortButton = (props) => {
   } = props;
 
   // Hey, same keys mean same data~
-  const [sortId, setSortId] = useLocalState(context, "sortId", "name");
-  const [sortOrder, setSortOrder] = useLocalState(context, "sortOrder", "name");
+  const [sortId, setSortId] = useState("name");
+  const [sortOrder, setSortOrder] = useState("name");
 
   return (
     <Table.Cell collapsing>

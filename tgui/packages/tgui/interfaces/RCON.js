@@ -20,7 +20,7 @@ export const RCON = (props) => {
 };
 
 export const RCONContent = (props) => {
-  const [tabIndex, setTabIndex] = useLocalState(context, 'tabIndex', 0);
+  const [tabIndex, setTabIndex] = useState(0);
 
   let body;
   if (tabIndex === 0) {

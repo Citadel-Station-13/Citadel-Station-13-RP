@@ -107,8 +107,8 @@ const ResearchConsoleViewDesigns = (props) => {
           ))}
         </LabeledList>
       )) || (
-        <Box color="warning">No designs found.</Box>
-      )}
+          <Box color="warning">No designs found.</Box>
+        )}
     </Section>
   );
 };
@@ -128,7 +128,7 @@ const TechDisk = (props) => {
     return null;
   }
 
-  const [saveDialog, setSaveDialog] = useLocalState(context, "saveDialogTech", false);
+  const [saveDialog, setSaveDialog] = useState(false);
 
   if (saveDialog) {
     return (
@@ -193,22 +193,22 @@ const TechDisk = (props) => {
           </Box>
         </Box>
       ) || (
-        <Box>
           <Box>
-            This disk has no data stored on it.
+            <Box>
+              This disk has no data stored on it.
+            </Box>
+            <Button
+              icon="save"
+              onClick={() => setSaveDialog(true)}>
+              Load Tech To Disk
+            </Button>
+            <Button
+              icon="eject"
+              onClick={() => act("eject_tech")}>
+              Eject Disk
+            </Button>
           </Box>
-          <Button
-            icon="save"
-            onClick={() => setSaveDialog(true)}>
-            Load Tech To Disk
-          </Button>
-          <Button
-            icon="eject"
-            onClick={() => act("eject_tech")}>
-            Eject Disk
-          </Button>
-        </Box>
-      )}
+        )}
     </Box>
   );
 };
@@ -228,7 +228,7 @@ const DataDisk = (props) => {
     return null;
   }
 
-  const [saveDialog, setSaveDialog] = useLocalState(context, "saveDialogData", false);
+  const [saveDialog, setSaveDialog] = useState(false);
 
   if (saveDialog) {
     return (
@@ -305,22 +305,22 @@ const DataDisk = (props) => {
           </Box>
         </Box>
       ) || (
-        <Box>
-          <Box mb={0.5}>
-            This disk has no data stored on it.
+          <Box>
+            <Box mb={0.5}>
+              This disk has no data stored on it.
+            </Box>
+            <Button
+              icon="save"
+              onClick={() => setSaveDialog(true)}>
+              Load Design To Disk
+            </Button>
+            <Button
+              icon="eject"
+              onClick={() => act("eject_design")}>
+              Eject Disk
+            </Button>
           </Box>
-          <Button
-            icon="save"
-            onClick={() => setSaveDialog(true)}>
-            Load Design To Disk
-          </Button>
-          <Button
-            icon="eject"
-            onClick={() => act("eject_design")}>
-            Eject Disk
-          </Button>
-        </Box>
-      )}
+        )}
     </Box>
   );
 };
@@ -384,10 +384,10 @@ const ResearchConsoleDestructiveAnalyzer = (props) => {
                     {tech.level}&nbsp;&nbsp;{tech.current && "(Current: " + tech.current + ")"}
                   </LabeledList.Item>
                 )) || (
-                  <LabeledList.Item label="Error">
-                    No origin tech found.
-                  </LabeledList.Item>
-                )}
+                    <LabeledList.Item label="Error">
+                      No origin tech found.
+                    </LabeledList.Item>
+                  )}
               </LabeledList>
             </LabeledList.Item>
           </LabeledList>
@@ -405,10 +405,10 @@ const ResearchConsoleDestructiveAnalyzer = (props) => {
           </Button>
         </Box>
       ) || (
-        <Box>
-          No Item Loaded. Standing-by...
-        </Box>
-      )}
+          <Box>
+            No Item Loaded. Standing-by...
+          </Box>
+        )}
     </Section>
   );
 };
@@ -524,7 +524,7 @@ const ResearchConsoleConstructor = (props) => {
     queue,
   } = linked;
 
-  const [protoTab, setProtoTab] = useLocalState(context, "protoTab", 0);
+  const [protoTab, setProtoTab] = useState(0);
 
   let queueColor = "transparent";
   let queueSpin = false;
@@ -606,7 +606,7 @@ const ResearchConsoleConstructor = (props) => {
           {queue.length && queue.map(item => {
             if (item.index === 1) {
               return (
-              // eslint-disable-next-line react/jsx-key
+                // eslint-disable-next-line react/jsx-key
                 <LabeledList.Item label={item.name} labelColor="bad">
                   {!busy ? (
                     <Box>
@@ -636,15 +636,15 @@ const ResearchConsoleConstructor = (props) => {
               </LabeledList.Item>
             );
           }) || (
-            <Box m={1}>
-              Queue Empty.
-            </Box>
-          )}
+              <Box m={1}>
+                Queue Empty.
+              </Box>
+            )}
         </LabeledList>
       ) || protoTab === 2 && (
         <LabeledList>
           {mats.map(mat => {
-            const [ejectAmt, setEjectAmt] = useLocalState(context, "ejectAmt" + mat.name, 0);
+            const [ejectAmt, setEjectAmt] = useState(0);
             return (
               <LabeledList.Item label={toTitleCase(mat.name)}
                 key={mat.name} buttons={
@@ -662,9 +662,9 @@ const ResearchConsoleConstructor = (props) => {
                         setEjectAmt(0);
                         act(
                           ejectSheetAction, {
-                            [ejectSheetAction]: mat.name,
-                            amount: ejectAmt,
-                          });
+                          [ejectSheetAction]: mat.name,
+                          amount: ejectAmt,
+                        });
                       }}>
                       Num
                     </Button>
@@ -672,9 +672,10 @@ const ResearchConsoleConstructor = (props) => {
                       icon="eject"
                       disabled={!mat.removable}
                       onClick={() => act(ejectSheetAction,
-                        { [ejectSheetAction]:
-                      mat.name,
-                        amount: 50,
+                        {
+                          [ejectSheetAction]:
+                          mat.name,
+                          amount: 50,
                         })}>
                       All
                     </Button>
@@ -699,10 +700,10 @@ const ResearchConsoleConstructor = (props) => {
                 </Button>
               </LabeledList.Item>
             )) || (
-              <LabeledList.Item label="Empty">
-                No chems detected
-              </LabeledList.Item>
-            )}
+                <LabeledList.Item label="Empty">
+                  No chems detected
+                </LabeledList.Item>
+              )}
           </LabeledList>
           <Button
             mt={1}
@@ -712,10 +713,10 @@ const ResearchConsoleConstructor = (props) => {
           </Button>
         </Box>
       ) || (
-        <Box>
-          Error
-        </Box>
-      )}
+          <Box>
+            Error
+          </Box>
+        )}
     </Section>
   );
 };
@@ -730,7 +731,7 @@ const ResearchConsoleSettings = (props) => {
     linked_lathe,
   } = data.info;
 
-  const [settingsTab, setSettingsTab] = useLocalState(context, "settingsTab", 0);
+  const [settingsTab, setSettingsTab] = useState(0);
 
   return (
     <Section title="Settings">
@@ -766,13 +767,13 @@ const ResearchConsoleSettings = (props) => {
               </Button>
             </Fragment>
           ) || (
-            <Button
-              fluid
-              icon="link"
-              onClick={() => act("togglesync")}>
-              Connect to Research Network
-            </Button>
-          )}
+              <Button
+                fluid
+                icon="link"
+                onClick={() => act("togglesync")}>
+                Connect to Research Network
+              </Button>
+            )}
           <Button
             fluid
             icon="lock"
@@ -827,10 +828,10 @@ const ResearchConsoleSettings = (props) => {
           </LabeledList>
         </Box>
       ) || (
-        <Box>
-          Error
-        </Box>
-      )}
+          <Box>
+            Error
+          </Box>
+        )}
     </Section>
   );
 };
@@ -857,7 +858,7 @@ export const ResearchConsole = (props) => {
     locked,
   } = data;
 
-  const [menu, setMenu] = useLocalState(context, "rdmenu", 0);
+  const [menu, setMenu] = useState(0);
 
   let allTabsDisabled = false;
   if (locked) {

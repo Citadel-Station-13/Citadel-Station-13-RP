@@ -28,8 +28,8 @@ export const AtmosControlContent = (props) => {
 
   // sortedAlarms = sortedAlarms.slice(1, 3);
 
-  const [tabIndex, setTabIndex] = useLocalState(context, 'tabIndex', 0);
-  const [zoom, setZoom] = useLocalState(context, 'zoom', 1);
+  const [tabIndex, setTabIndex] = useState(0);
+  const [zoom, setZoom] = useState(1);
 
   let body;
   // Alarms View

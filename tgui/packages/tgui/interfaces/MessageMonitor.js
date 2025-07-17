@@ -146,7 +146,7 @@ const MessageMonitorContent = (props) => {
     linkedServer,
   } = data;
 
-  const [tabIndex, setTabIndex] = useLocalState(context, 'tabIndex', 0);
+  const [tabIndex, setTabIndex] = useState(0);
 
   let body;
   if (tabIndex === 0) {

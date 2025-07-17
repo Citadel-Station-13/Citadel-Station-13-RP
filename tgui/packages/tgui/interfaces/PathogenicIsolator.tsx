@@ -68,7 +68,7 @@ export const PathogenicIsolator = (props) => {
     isolating,
   } = data;
 
-  const [tabIndex, setTabIndex] = useLocalState(context, "tabIndex", 0);
+  const [tabIndex, setTabIndex] = useState(0);
 
   let tab = null;
   if (tabIndex === 0) {
@@ -179,10 +179,10 @@ const PathogenicIsolatorTabDatabase = (props) => {
           {entry.name}
         </Button>
       )) || (
-        <Box color="average">
-          The viral database is empty.
-        </Box>
-      )}
+          <Box color="average">
+            The viral database is empty.
+          </Box>
+        )}
     </Section>
   );
 };

@@ -18,7 +18,7 @@ export const InputModal = (props) => {
   const { title, message, initial, input_type, timeout } = data;
 
   // Current Input Value
-  const [curValue, setCurValue] = useLocalState(context, 'curValue', initial);
+  const [curValue, setCurValue] = useState(initial);
 
   const handleKeyDown = e => {
     if (e.keyCode === KEY_ESCAPE) {

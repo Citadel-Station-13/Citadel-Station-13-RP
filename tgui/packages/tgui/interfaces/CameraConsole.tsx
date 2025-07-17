@@ -95,7 +95,7 @@ export const CameraConsoleContent = (props) => {
   const [
     searchText,
     setSearchText,
-  ] = useLocalState(context, 'searchText', '');
+  ] = useState('');
   const { activeCamera } = data;
   const cameras = selectCameras(data.cameras, searchText);
   return (
@@ -116,8 +116,8 @@ export const CameraConsoleContent = (props) => {
           fill
           scrollable>
           {cameras.map(camera => (
-          // We're not using the component here because performance
-          // would be absolutely abysmal (50+ ms for each re-render)
+            // We're not using the component here because performance
+            // would be absolutely abysmal (50+ ms for each re-render)
             <div
               key={camera.name}
               title={camera.name}

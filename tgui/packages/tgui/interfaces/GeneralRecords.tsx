@@ -87,7 +87,7 @@ const GeneralRecordsList = (_properties, context) => {
   const [
     searchText,
     setSearchText,
-  ] = useLocalState(context, 'searchText', '');
+  ] = useState('');
 
   const records = selectRecords(data.records, searchText);
   return (

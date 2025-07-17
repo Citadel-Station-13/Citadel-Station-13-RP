@@ -34,7 +34,7 @@ export const Communicator = (props) => {
    * 1: Popup Video
    * 2: Minimized Video
    */
-  const [videoSetting, setVideoSetting] = useLocalState(context, 'videoSetting', 0);
+  const [videoSetting, setVideoSetting] = useState(0);
 
   return (
     <Window width={475} height={700} resizable>
@@ -396,10 +396,10 @@ const PhoneTab = (props) => {
               ))}
             </LabeledList>
           ) || (
-            <Box>
-              No connections
-            </Box>
-          )}
+              <Box>
+                No connections
+              </Box>
+            )}
         </Section>
         <Section title="Internal Connections" level={3}>
           {!!communicating.length && (
@@ -432,10 +432,10 @@ const PhoneTab = (props) => {
               ))}
             </Table>
           ) || (
-            <Box>
-              No connections
-            </Box>
-          )}
+              <Box>
+                No connections
+              </Box>
+            )}
         </Section>
         <Section title="Requests Received" level={3}>
           {!!requestsReceived.length && (
@@ -457,10 +457,10 @@ const PhoneTab = (props) => {
               ))}
             </LabeledList>
           ) || (
-            <Box>
-              No requests received.
-            </Box>
-          )}
+              <Box>
+                No requests received.
+              </Box>
+            )}
         </Section>
         <Section title="Invites Sent" level={3}>
           {!!invitesSent.length && (
@@ -480,10 +480,10 @@ const PhoneTab = (props) => {
               ))}
             </LabeledList>
           ) || (
-            <Box>
-              No invites sent.
-            </Box>
-          )}
+              <Box>
+                No invites sent.
+              </Box>
+            )}
         </Section>
       </Section>
     </Section>
@@ -645,10 +645,10 @@ const ContactsTab = (props) => {
           ))}
         </Table>
       ) || (
-        <Box>
-          No devices detected on your local NTNet region.
-        </Box>
-      )}
+          <Box>
+            No devices detected on your local NTNet region.
+          </Box>
+        )}
     </Section>
   );
 };
@@ -691,15 +691,15 @@ const MessagingTab = (props) => {
           ))}
         </Table>
       ) || (
-        <Box>
-          You haven&apos;t sent any messages yet.
-          <Button
-            fluid
-            icon="user"
-            onClick={() => act("switch_tab", { switch_tab: CONTTAB })}
-            content="Contacts" />
-        </Box>
-      )}
+          <Box>
+            You haven&apos;t sent any messages yet.
+            <Button
+              fluid
+              icon="user"
+              onClick={() => act("switch_tab", { switch_tab: CONTTAB })}
+              content="Contacts" />
+          </Box>
+        )}
     </Section>
   );
 };
@@ -745,7 +745,7 @@ const MessagingThreadTab = (props) => {
     imList,
   } = data;
 
-  const [clipboardMode, setClipboardMode] = useLocalState(context, 'clipboardMode', false);
+  const [clipboardMode, setClipboardMode] = useState(false);
 
   if (clipboardMode) {
     return (
@@ -860,8 +860,8 @@ const NewsTab = (props) => {
       ) || target_feed && (
         <NewsTargetFeed />
       ) || (
-        <NewsFeed />
-      )}
+          <NewsFeed />
+        )}
     </Section>
   );
 };
@@ -1050,10 +1050,10 @@ const WeatherTab = (props) => {
             ))}
           </LabeledList>
         ) || (
-          <Box color="bad">
-            No weather reports available. Please check back later.
-          </Box>
-        )}
+            <Box color="bad">
+              No weather reports available. Please check back later.
+            </Box>
+          )}
       </Section>
     </Section>
   );

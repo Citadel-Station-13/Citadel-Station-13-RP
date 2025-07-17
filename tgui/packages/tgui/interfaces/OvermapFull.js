@@ -6,7 +6,7 @@ import { OvermapHelmContent } from './OvermapHelm';
 import { OvermapShipSensorsContent } from './OvermapShipSensors';
 
 export const OvermapFull = (props) => {
-  const [tab, setTab] = useLocalState(context, 'overmapFullState', 0);
+  const [tab, setTab] = useState(0);
 
   return (
     <Window width={800} height={800} resizable>

@@ -550,8 +550,8 @@ export const Secrets = (props) => {
   const [
     tabIndex,
     setTabIndex,
-  ] = useLocalState(context, 'tab-index', 2);
-  const TabComponent = TAB2NAME[tabIndex-1].component();
+  ] = useState(2);
+  const TabComponent = TAB2NAME[tabIndex - 1].component();
   return (
     <Window
       title="Secrets Panel"
@@ -628,7 +628,7 @@ export const Secrets = (props) => {
                       label="Chances of admin complaint">
                       <RoundGauge
                         size={2}
-                        value={TAB2NAME[tabIndex-1].gauge}
+                        value={TAB2NAME[tabIndex - 1].gauge}
                         minValue={0}
                         maxValue={100}
                         alertAfter={100 * 0.70}
@@ -655,8 +655,8 @@ export const Secrets = (props) => {
           <Flex.Item grow={1}>
             <Section
               fill={false}
-              title={TAB2NAME[tabIndex-1].title
-                + " Or: " + TAB2NAME[tabIndex-1].blurb}>
+              title={TAB2NAME[tabIndex - 1].title
+                + " Or: " + TAB2NAME[tabIndex - 1].blurb}>
               <TabComponent />
             </Section>
           </Flex.Item>

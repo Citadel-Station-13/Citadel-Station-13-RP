@@ -5,7 +5,7 @@ import { Window } from '../layouts';
 
 export const PortraitPicker = (props) => {
   const { act, data } = useBackend(context);
-  const [listIndex, setListIndex] = useLocalState(context, 'listIndex', 0);
+  const [listIndex, setListIndex] = useState(0);
   const {
     paintings,
     search_string,
