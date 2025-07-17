@@ -1,5 +1,5 @@
+import { BooleanLike } from "tgui-core/react";
 import { useBackend, useLocalState } from "../backend";
-import { BooleanLike } from "../../common/react";
 import { Window } from "../layouts";
 import { Section, Button, LabeledList, Table, Input, Box, Icon } from "tgui-core/components";
 
