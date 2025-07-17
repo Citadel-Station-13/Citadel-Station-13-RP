@@ -8,12 +8,17 @@
  */
 /datum/character_record
 	/// database ID
-	///
 	/// * set by serializer / deserializer; do not touch
 	/// * this is global, not per-character.
 	var/id
 	/// database ID of character
 	var/character_id
+	/// timestamp this was created on
+	/// * this is OOC time as UTC
+	var/timestamp_created
+	/// timestamp this was modified on
+	/// * this is OOC time as UTC
+	var/timestamp_edited
 
 	/// flags
 	/// * directly serialized to DB
@@ -25,7 +30,6 @@
 	//* record fields *//
 
 	/// string date-time this was applied on
-	///
 	/// * this is IC time
 	var/r_timestamp
 	/// location; where was this added?
