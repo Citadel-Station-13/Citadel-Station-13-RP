@@ -13,3 +13,8 @@
 
 /datum/character_inventory/deserialize(list/data)
 	return
+
+// this file is obviously unfinished because we haven't finished persistence API yet.
+// this basically leaves references to entity IDs serialized by the persistence serializer.
+// this also necessary metadata so that we don't have to load the entity just to view it in the UI.
+// (realistically for the latter part we can probably do a SQL join)

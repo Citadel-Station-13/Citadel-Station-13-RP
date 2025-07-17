@@ -5,18 +5,18 @@
  * Stores a set of selected loadout items
  */
 /datum/character_loadout
-	///
-	var/list/selected_ids = list()
+	/// ordered list of descriptors
+	var/list/datum/character_loadout_descriptor/descriptors = list()
 
 /datum/character_loadout/serialize()
 	return list(
-		"selected" = selected_ids,
 	)
+	#warn impl
 
 /datum/character_loadout/deserialize(list/data)
-	selected_ids = sanitize_islist(data, list())
-	selected_ids.len = clamp(length(selected_ids), 0, CHARACTER_MAX_LOADOUT_ITEMS)
+	#warn impl
 
-
-#warn impl
-
+/datum/character_loadout/clone()
+	var/datum/character_loadout/clone = new
+	#warn impl
+	return clone

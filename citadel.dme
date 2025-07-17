@@ -2661,6 +2661,7 @@
 #include "code\modules\characters\character\character_inventory.dm"
 #include "code\modules\characters\character\character_legacy_migrater.dm"
 #include "code\modules\characters\character\character_loadout.dm"
+#include "code\modules\characters\character\character_loadout_descriptor.dm"
 #include "code\modules\characters\character\character_migrater.dm"
 #include "code\modules\characters\character\character_migration.dm"
 #include "code\modules\characters\character\character_organ_physiology.dm"
