@@ -28,7 +28,7 @@ export const PowerMonitor = () => {
 };
 
 export const PowerMonitorContent = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     map_levels,
@@ -76,7 +76,7 @@ export const PowerMonitorContent = (props) => {
 };
 
 export const PowerMonitorFocus = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const { focus } = props;
   const { history } = focus;
   const [

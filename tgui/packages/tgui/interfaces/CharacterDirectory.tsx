@@ -19,7 +19,7 @@ const getTagColor = erptag => {
 };
 
 export const CharacterDirectory = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     personalVisibility,
@@ -117,7 +117,7 @@ const ViewCharacter = (props) => {
 };
 
 const CharacterDirectoryList = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     directory,
@@ -169,7 +169,7 @@ const CharacterDirectoryList = (props) => {
 };
 
 const SortButton = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     id,

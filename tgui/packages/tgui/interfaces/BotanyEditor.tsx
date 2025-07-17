@@ -3,7 +3,7 @@ import { Box, Button, LabeledList, Section, NoticeBox } from "tgui-core/componen
 import { Window } from "../layouts";
 
 export const BotanyEditor = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     activity,
@@ -49,8 +49,8 @@ export const BotanyEditor = (props) => {
               </Button>
             </Box>
           ) || (
-            <NoticeBox warning>No disk loaded.</NoticeBox>
-          )}
+              <NoticeBox warning>No disk loaded.</NoticeBox>
+            )}
         </Section>
         <Section title="Loaded Material">
           {loaded && (
@@ -74,8 +74,8 @@ export const BotanyEditor = (props) => {
               </Button>
             </Box>
           ) || (
-            <NoticeBox warning>No target seed packet loaded.</NoticeBox>
-          )}
+              <NoticeBox warning>No target seed packet loaded.</NoticeBox>
+            )}
         </Section>
       </Window.Content>
     </Window>

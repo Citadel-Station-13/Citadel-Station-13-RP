@@ -4,7 +4,7 @@ import { Button, Box, Section, Table } from 'tgui-core/components';
 import { NtosWindow } from '../layouts';
 
 export const NtosWordProcessor = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     PC_device_theme,

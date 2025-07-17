@@ -4,7 +4,7 @@ import { IdentificationComputerRegions } from "./computers/IdentificationCompute
 import { NoticeBox, Box, Section, Button } from "tgui-core/components";
 
 export const NtosAccessDecrypter = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     message,

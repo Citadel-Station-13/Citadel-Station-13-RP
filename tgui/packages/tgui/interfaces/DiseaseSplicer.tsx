@@ -4,7 +4,7 @@ import { Box, Button, LabeledList, ProgressBar, Section } from "tgui-core/compon
 import { Window } from "../layouts";
 
 export const DiseaseSplicer = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     busy,
@@ -29,7 +29,7 @@ export const DiseaseSplicer = (props) => {
 };
 
 const DiseaseSplicerVirusDish = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     dish_inserted,
@@ -98,7 +98,7 @@ const DiseaseSplicerVirusDish = (props) => {
 };
 
 const DiseaseSplicerStorage = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     dish_inserted,

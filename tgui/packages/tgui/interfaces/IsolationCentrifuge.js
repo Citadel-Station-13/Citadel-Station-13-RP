@@ -4,7 +4,7 @@ import { Box, Button, Flex, LabeledList, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
 export const IsolationCentrifuge = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     busy,

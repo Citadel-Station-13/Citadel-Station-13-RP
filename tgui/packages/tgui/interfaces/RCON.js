@@ -53,7 +53,7 @@ export const RCONContent = (props) => {
 };
 
 const RCONSmesList = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     smes_info,
@@ -73,7 +73,7 @@ const RCONSmesList = (props) => {
 };
 
 const SMESItem = (props) => {
-  const { act } = useBackend(context);
+  const { act } = useBackend<any>();
   const {
     capacityPercent,
     capacity,
@@ -124,7 +124,7 @@ const SMESItem = (props) => {
 };
 
 const SMESControls = (props) => {
-  const { act } = useBackend(context);
+  const { act } = useBackend<any>();
   const {
     way,
     smes,
@@ -250,7 +250,7 @@ const SMESControls = (props) => {
 };
 
 const RCONBreakerList = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     breaker_info,

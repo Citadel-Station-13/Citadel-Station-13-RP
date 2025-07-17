@@ -16,7 +16,7 @@ export const StationAlertConsole = () => {
 };
 
 export const StationAlertConsoleContent = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     categories = [],
   } = data;

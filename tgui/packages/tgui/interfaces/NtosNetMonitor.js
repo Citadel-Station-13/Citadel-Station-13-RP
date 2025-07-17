@@ -3,7 +3,7 @@ import { Box, Button, LabeledList, NoticeBox, NumberInput, Icon, Section, Stack,
 import { NtosWindow } from '../layouts';
 
 export const NtosNetMonitor = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const [tab_main, setTab_main] = useSharedState(context, 'tab_main', 1);
   const {
     ntnetrelays,
@@ -84,7 +84,7 @@ const MainPage = (props) => {
     minlogs,
     ntnetlogs = [],
   } = props;
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   return (
     <Section>
       <NoticeBox>
@@ -213,7 +213,7 @@ const MainPage = (props) => {
 
 const TabletPage = (props) => {
   const { tablets } = props;
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   if (!tablets.length) {
     return (
       <NoticeBox>

@@ -11,7 +11,7 @@ const STORY_VALUE_AMAZING = 4;
 // STORY_VALUE_LEGENDARY = 5; (not actually used)
 
 const MemoryQuality = (props) => {
-  const { act } = useBackend(context);
+  const { act } = useBackend<any>();
   const {
     quality,
   } = props;
@@ -96,7 +96,7 @@ const MemoryQuality = (props) => {
 };
 
 export const MemoryPanel = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const memories = data.memories || [];
   return (
     <Window

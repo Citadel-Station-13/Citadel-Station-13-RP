@@ -11,7 +11,7 @@ const getStatusText = port => {
 };
 
 export const OmniMixer = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     power,
@@ -85,7 +85,7 @@ export const OmniMixer = (props) => {
 };
 
 const PortRow = (props) => {
-  const { act } = useBackend(context);
+  const { act } = useBackend<any>();
   const {
     port,
     config,

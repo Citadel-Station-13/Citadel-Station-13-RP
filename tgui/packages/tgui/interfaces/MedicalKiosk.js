@@ -4,7 +4,7 @@ import { AnimatedNumber, Box, Button, Flex, Icon, LabeledList, ProgressBar, Sect
 import { Window } from '../layouts';
 
 export const MedicalKiosk = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const [scanIndex] = useSharedState(context, 'scanIndex');
   const {
     active_status_1,
@@ -80,7 +80,7 @@ const MedicalKioskScanButton = (props) => {
     description,
     icon,
   } = props;
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const [scanIndex, setScanIndex] = useSharedState(context, 'scanIndex');
   const paid = data[`active_status_${index}`];
   return (
@@ -110,7 +110,7 @@ const MedicalKioskScanButton = (props) => {
 };
 
 const MedicalKioskInstructions = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     kiosk_cost,
     patient_name,
@@ -141,7 +141,7 @@ const MedicalKioskInstructions = (props) => {
 };
 
 const MedicalKioskScanResults1 = (props) => {
-  const { data } = useBackend(context);
+  const { data } = useBackend<any>();
   const {
     patient_health,
     brute_health,
@@ -198,7 +198,7 @@ const MedicalKioskScanResults1 = (props) => {
 };
 
 const MedicalKioskScanResults2 = (props) => {
-  const { data } = useBackend(context);
+  const { data } = useBackend<any>();
   const {
     patient_status,
     patient_illness,
@@ -246,7 +246,7 @@ const MedicalKioskScanResults2 = (props) => {
 };
 
 const MedicalKioskScanResults3 = (props) => {
-  const { data } = useBackend(context);
+  const { data } = useBackend<any>();
   const {
     clone_health,
     brain_damage,
@@ -288,7 +288,7 @@ const MedicalKioskScanResults3 = (props) => {
 };
 
 const MedicalKioskScanResults4 = (props) => {
-  const { data } = useBackend(context);
+  const { data } = useBackend<any>();
   const {
     chemical_list = [],
     overdose_list = [],

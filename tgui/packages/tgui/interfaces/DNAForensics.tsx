@@ -4,7 +4,7 @@ import { Box, Button, LabeledList, ProgressBar, Section } from "tgui-core/compon
 import { Window } from "../layouts";
 
 export const DNAForensics = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     scan_progress,
     scanning,
@@ -52,10 +52,10 @@ export const DNAForensics = (props) => {
               </Box>
             </Box>
           ) || (
-            <Box color="bad">
-              No blood sample inserted.
-            </Box>
-          )}
+              <Box color="bad">
+                No blood sample inserted.
+              </Box>
+            )}
         </Section>
       </Window.Content>
     </Window>

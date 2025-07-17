@@ -5,7 +5,7 @@ import { Box, Button, Flex, LabeledList, Section, Tabs } from "tgui-core/compone
 import { Window } from "../layouts";
 
 const virusModalBodyOverride = (modal, context) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     can_print,
   } = data;
@@ -62,7 +62,7 @@ const virusModalBodyOverride = (modal, context) => {
 };
 
 export const PathogenicIsolator = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     isolating,
@@ -101,7 +101,7 @@ export const PathogenicIsolator = (props) => {
 };
 
 const PathogenicIsolatorTabHome = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     syringe_inserted,
     pathogen_pool,
@@ -161,7 +161,7 @@ const PathogenicIsolatorTabHome = (props) => {
 };
 
 const PathogenicIsolatorTabDatabase = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     database,
     can_print,

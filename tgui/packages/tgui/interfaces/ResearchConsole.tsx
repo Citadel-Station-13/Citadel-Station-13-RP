@@ -5,7 +5,7 @@ import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section, Tabs, Input
 import { Window } from '../layouts';
 
 const ResearchConsoleViewResearch = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     tech,
@@ -37,7 +37,7 @@ const ResearchConsoleViewResearch = (props) => {
 };
 
 const PaginationTitle = (props) => {
-  const { data } = useBackend(context);
+  const { data } = useBackend<any>();
 
   const {
     title,
@@ -53,7 +53,7 @@ const PaginationTitle = (props) => {
 };
 
 const PaginationChevrons = (props) => {
-  const { act } = useBackend(context);
+  const { act } = useBackend<any>();
 
   const {
     target,
@@ -75,7 +75,7 @@ const PaginationChevrons = (props) => {
 };
 
 const ResearchConsoleViewDesigns = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     designs,
@@ -114,7 +114,7 @@ const ResearchConsoleViewDesigns = (props) => {
 };
 
 const TechDisk = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     tech,
@@ -214,7 +214,7 @@ const TechDisk = (props) => {
 };
 
 const DataDisk = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     designs,
@@ -326,7 +326,7 @@ const DataDisk = (props) => {
 };
 
 const ResearchConsoleDisk = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     d_disk,
@@ -350,7 +350,7 @@ const ResearchConsoleDisk = (props) => {
 };
 
 const ResearchConsoleDestructiveAnalyzer = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     linked_destroy,
@@ -414,7 +414,7 @@ const ResearchConsoleDestructiveAnalyzer = (props) => {
 };
 
 const ResearchConsoleBuildMenu = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     target,
@@ -488,7 +488,7 @@ const ResearchConsoleBuildMenu = (props) => {
 
 /* Lathe + Circuit Imprinter all in one */
 const ResearchConsoleConstructor = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     name,
@@ -674,7 +674,7 @@ const ResearchConsoleConstructor = (props) => {
                       onClick={() => act(ejectSheetAction,
                         {
                           [ejectSheetAction]:
-                          mat.name,
+                            mat.name,
                           amount: 50,
                         })}>
                       All
@@ -722,7 +722,7 @@ const ResearchConsoleConstructor = (props) => {
 };
 
 const ResearchConsoleSettings = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     sync,
@@ -851,7 +851,7 @@ const menus = [
 ];
 
 export const ResearchConsole = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     busy_msg,

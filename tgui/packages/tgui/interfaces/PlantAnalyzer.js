@@ -4,7 +4,7 @@ import { Box, Button, LabeledList, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
 export const PlantAnalyzer = (props) => {
-  const { data } = useBackend(context);
+  const { data } = useBackend<any>();
 
   let calculatedHeight = 250;
   if (data.seed) {
@@ -26,7 +26,7 @@ export const PlantAnalyzer = (props) => {
 };
 
 const PlantAnalyzerContent = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     no_seed,

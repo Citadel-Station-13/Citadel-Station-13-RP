@@ -4,7 +4,7 @@ import { Box, Button, LabeledList, Section, Dropdown } from "tgui-core/component
 import { Window } from "../layouts";
 
 export const DroneConsole = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     drones,

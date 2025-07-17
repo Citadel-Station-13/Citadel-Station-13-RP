@@ -3,7 +3,7 @@ import { Button, Icon } from "tgui-core/components";
 import { Window } from "../layouts";
 
 export const JanitorCart = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     mybag,
@@ -111,7 +111,7 @@ const iconkeysToIcons = {
 };
 
 const JanicartIcon = (props) => {
-  const { data } = useBackend(context);
+  const { data } = useBackend<any>();
 
   const {
     iconkey,

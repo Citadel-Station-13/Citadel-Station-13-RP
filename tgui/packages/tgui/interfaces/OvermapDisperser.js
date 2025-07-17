@@ -14,7 +14,7 @@ export const OvermapDisperser = (props) => {
 };
 
 const OvermapDisperserContent = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     faillink,
     calibration,

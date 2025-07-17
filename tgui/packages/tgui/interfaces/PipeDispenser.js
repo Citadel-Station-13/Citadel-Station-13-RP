@@ -4,7 +4,7 @@ import { Window } from '../layouts';
 import { ICON_BY_CATEGORY_NAME } from './RapidPipeDispenser';
 
 export const PipeDispenser = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     disposals,
     p_layer,

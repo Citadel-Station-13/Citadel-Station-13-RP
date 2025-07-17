@@ -4,7 +4,7 @@ import { Button, LabeledList, Section, AnimatedNumber } from "tgui-core/componen
 import { Window } from "../layouts";
 
 export const PressureRegulator = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     on,

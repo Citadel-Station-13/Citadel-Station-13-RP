@@ -4,7 +4,7 @@ import { NtosWindow } from '../layouts';
 import { prevNextCamera, selectCameras, CameraConsoleContent } from './CameraConsole';
 
 export const NtosSecurEye = (props) => {
-  const { act, data, config } = useBackend(context);
+  const { act, data, config } = useBackend<any>();
   const { PC_device_theme, mapRef, activeCamera } = data;
   const cameras = selectCameras(data.cameras);
   const [

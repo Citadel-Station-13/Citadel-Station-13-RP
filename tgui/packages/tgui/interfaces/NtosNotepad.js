@@ -3,7 +3,7 @@ import { useBackend } from '../backend';
 import { Stack, Input, Section } from 'tgui-core/components';
 
 export const NtosNotepad = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     note,
   } = data;

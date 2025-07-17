@@ -5,7 +5,7 @@ import { Box, Button, LabeledList, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
 export const GuestPass = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     access,
@@ -45,50 +45,50 @@ export const GuestPass = (props) => {
             </Section>
           </Section>
         ) || (
-          <Section title={"Guest pass terminal #" + uid} buttons={
-            <Button
-              icon="scroll"
-              content="Activity Log"
-              onClick={() => act("mode", { mode: 1 })} />
-          }>
-            <LabeledList>
-              <LabeledList.Item label="Issuing ID">
-                <Button
-                  content={giver || "Insert ID"}
-                  onClick={() => act("id")} />
-              </LabeledList.Item>
-              <LabeledList.Item label="Issued To">
-                <Button
-                  content={giveName}
-                  onClick={() => act("giv_name")} />
-              </LabeledList.Item>
-              <LabeledList.Item label="Reason">
-                <Button
-                  content={reason}
-                  onClick={() => act("reason")} />
-              </LabeledList.Item>
-              <LabeledList.Item label="Duration (minutes)">
-                <Button
-                  content={duration}
-                  onClick={() => act("duration")} />
-              </LabeledList.Item>
-            </LabeledList>
-            <Button.Confirm
-              icon="check"
-              fluid
-              content="Issue Pass"
-              onClick={() => act("issue")} />
-            <Section title="Access" level={2}>
-              {sortBy(a => a.area_name)(area).map(a => (
-                <Button.Checkbox
-                  checked={a.on}
-                  content={a.area_name}
-                  key={a.area}
-                  onClick={() => act("access", { access: a.area })} />
-              ))}
+            <Section title={"Guest pass terminal #" + uid} buttons={
+              <Button
+                icon="scroll"
+                content="Activity Log"
+                onClick={() => act("mode", { mode: 1 })} />
+            }>
+              <LabeledList>
+                <LabeledList.Item label="Issuing ID">
+                  <Button
+                    content={giver || "Insert ID"}
+                    onClick={() => act("id")} />
+                </LabeledList.Item>
+                <LabeledList.Item label="Issued To">
+                  <Button
+                    content={giveName}
+                    onClick={() => act("giv_name")} />
+                </LabeledList.Item>
+                <LabeledList.Item label="Reason">
+                  <Button
+                    content={reason}
+                    onClick={() => act("reason")} />
+                </LabeledList.Item>
+                <LabeledList.Item label="Duration (minutes)">
+                  <Button
+                    content={duration}
+                    onClick={() => act("duration")} />
+                </LabeledList.Item>
+              </LabeledList>
+              <Button.Confirm
+                icon="check"
+                fluid
+                content="Issue Pass"
+                onClick={() => act("issue")} />
+              <Section title="Access" level={2}>
+                {sortBy(a => a.area_name)(area).map(a => (
+                  <Button.Checkbox
+                    checked={a.on}
+                    content={a.area_name}
+                    key={a.area}
+                    onClick={() => act("access", { access: a.area })} />
+                ))}
+              </Section>
             </Section>
-          </Section>
-        )}
+          )}
       </Window.Content>
     </Window>
   );

@@ -13,7 +13,7 @@ export const XenoarchArtifactAnalyzer = (props) => {
 };
 
 const XenoarchArtifactAnalyzerContent = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     owned_scanner,

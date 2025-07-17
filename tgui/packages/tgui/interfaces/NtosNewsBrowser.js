@@ -6,7 +6,7 @@ import { resolveAsset } from '../assets';
 import { Fragment } from 'inferno';
 
 export const NtosNewsBrowser = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     article,
@@ -33,7 +33,7 @@ export const NtosNewsBrowser = (props) => {
 };
 
 const SelectedArticle = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     article,
@@ -79,7 +79,7 @@ const SelectedArticle = (props) => {
 };
 
 const ViewArticles = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     showing_archived,
@@ -114,7 +114,7 @@ const ViewArticles = (props) => {
 };
 
 const ArticleDownloading = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     download_progress,

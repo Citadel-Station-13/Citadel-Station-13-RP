@@ -20,7 +20,7 @@ export const AtmosControl = (props) => {
 };
 
 export const AtmosControlContent = (props) => {
-  const { act, data, config } = useBackend(context);
+  const { act, data, config } = useBackend<any>();
 
   let sortedAlarms = sortBy(
     alarm => alarm.name

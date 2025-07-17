@@ -111,7 +111,7 @@ export const TelecommsLogBrowser = (props) => {
 };
 
 const TelecommsServerSelection = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     network,
     servers,

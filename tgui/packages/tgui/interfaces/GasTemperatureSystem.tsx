@@ -4,7 +4,7 @@ import { Button, LabeledList, Section, Knob, Slider, LabeledControls, AnimatedNu
 import { Window } from "../layouts";
 
 export const GasTemperatureSystem = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     on,

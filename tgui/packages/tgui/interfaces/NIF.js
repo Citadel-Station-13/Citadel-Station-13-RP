@@ -23,7 +23,7 @@ const validThemes = [
 ];
 
 export const NIF = (props) => {
-  const { act, config, data } = useBackend(context);
+  const { act, config, data } = useBackend<any>();
 
   const {
     theme,
@@ -148,7 +148,7 @@ const getNutritionText = (nutrition, isSynthetic) => {
 };
 
 const NIFMain = (props) => {
-  const { act, config, data } = useBackend(context);
+  const { act, config, data } = useBackend<any>();
 
   const {
     nif_percent,
@@ -237,7 +237,7 @@ const NIFMain = (props) => {
 };
 
 const NIFSettings = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     theme,

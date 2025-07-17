@@ -4,7 +4,7 @@ import { Box, Button, Icon, LabeledList, Section, Slider } from "tgui-core/compo
 import { Window } from "../layouts";
 
 export const BombTester = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     simulating,

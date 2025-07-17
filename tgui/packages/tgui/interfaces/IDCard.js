@@ -4,7 +4,7 @@ import { Window } from "../layouts";
 import { RankIcon } from "./common/RankIcon";
 
 export const IDCard = (props) => {
-  const { data } = useBackend(context);
+  const { data } = useBackend<any>();
 
   const {
     registered_name,

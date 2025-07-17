@@ -4,7 +4,7 @@ import { Button, Section, Box, Table } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 export const PrisonerManagement = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     locked,
     chemImplants,

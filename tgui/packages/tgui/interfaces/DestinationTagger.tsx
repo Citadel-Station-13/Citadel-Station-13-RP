@@ -3,7 +3,7 @@ import { Button, Flex, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
 export const DestinationTagger = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     currTag,

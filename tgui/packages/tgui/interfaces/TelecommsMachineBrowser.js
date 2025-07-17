@@ -4,7 +4,7 @@ import { Box, Button, NoticeBox, LabeledList, Section } from "tgui-core/componen
 import { Window } from "../layouts";
 
 export const TelecommsMachineBrowser = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     network,
@@ -78,7 +78,7 @@ export const TelecommsMachineBrowser = (props) => {
 };
 
 const TelecommsBrowser = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     list,

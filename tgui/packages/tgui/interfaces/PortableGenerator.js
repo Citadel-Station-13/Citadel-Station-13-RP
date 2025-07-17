@@ -3,7 +3,7 @@ import { Box, Button, LabeledList, NoticeBox, ProgressBar, Section } from 'tgui-
 import { Window } from '../layouts';
 
 export const PortableGenerator = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const stack_percent = data.fuel_stored / data.fuel_capacity;
   const stackPercentState = (
     stack_percent > 50 && 'good'

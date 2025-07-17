@@ -4,7 +4,7 @@ import { Button, LabeledList, Section, Tabs, NoticeBox, Table, Input } from "tgu
 import { Window } from "../layouts";
 
 export const LawManager = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     isSlaved,
@@ -45,7 +45,7 @@ const LawManagerContent = (props) => {
 };
 
 const LawManagerLaws = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     ion_law_nr,
@@ -195,7 +195,7 @@ const LawManagerLaws = (props) => {
 };
 
 const LawsTable = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     isMalf,
@@ -270,7 +270,7 @@ const LawsTable = (props) => {
 
 
 const LawManagerLawSets = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     isMalf,

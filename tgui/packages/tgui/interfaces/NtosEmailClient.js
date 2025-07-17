@@ -6,7 +6,7 @@ import { NtosWindow } from '../layouts';
 import { round } from 'common/math';
 
 export const NtosEmailClient = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     PC_device_theme,
@@ -35,7 +35,7 @@ export const NtosEmailClient = (props) => {
 };
 
 const NtosEmailClientDownloading = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     down_filename,
@@ -68,7 +68,7 @@ const NtosEmailClientDownloading = (props) => {
 };
 
 const NtosEmailClientContent = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     current_account,
@@ -113,7 +113,7 @@ const NtosEmailClientContent = (props) => {
 };
 
 const NtosEmailClientInbox = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     current_account,
@@ -182,7 +182,7 @@ const NtosEmailClientInbox = (props) => {
 };
 
 export const NtosEmailClientViewMessage = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   // This is used to let NtosEmailAdministration use the same code for spying
   // on emails.  Administrators don't have access to attachments or the message
@@ -267,7 +267,7 @@ export const NtosEmailClientViewMessage = (props) => {
 };
 
 const NtosEmailClientAddressBook = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     accounts,
@@ -292,7 +292,7 @@ const NtosEmailClientAddressBook = (props) => {
 };
 
 const NtosEmailClientNewMessage = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     current_account,
@@ -385,7 +385,7 @@ const NtosEmailClientNewMessage = (props) => {
 };
 
 const NtosEmailClientError = (props) => {
-  const { act } = useBackend(context);
+  const { act } = useBackend<any>();
   const {
     error,
   } = props;
@@ -402,7 +402,7 @@ const NtosEmailClientError = (props) => {
 };
 
 const NtosEmailClientLogin = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     stored_login,

@@ -5,7 +5,7 @@ import { Fragment } from 'inferno';
 import { Window } from "../layouts";
 
 export const MassiveHeatPump = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     power_level,

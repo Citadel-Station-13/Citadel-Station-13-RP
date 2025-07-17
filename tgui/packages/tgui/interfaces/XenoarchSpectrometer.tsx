@@ -5,7 +5,7 @@ import { Window } from "../layouts";
 import { decodeHtmlEntities } from "common/string";
 
 export const XenoarchSpectrometer = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     scanned_item,

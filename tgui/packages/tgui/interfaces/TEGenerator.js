@@ -5,7 +5,7 @@ import { Window } from "../layouts";
 import { formatSiUnit, formatPower } from "../format";
 
 export const TEGenerator = (props) => {
-  const { data } = useBackend(context);
+  const { data } = useBackend<any>();
 
   const {
     totalOutput,

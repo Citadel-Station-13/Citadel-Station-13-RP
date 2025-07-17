@@ -4,7 +4,7 @@ import { Section, Box, Dropdown } from 'tgui-core/components';
 import { sanitizeText } from '../sanitize';
 
 export const NtosPhysScanner = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     set_mode,
     last_record,

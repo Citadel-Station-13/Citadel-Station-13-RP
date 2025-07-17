@@ -14,7 +14,7 @@ import { createLogger } from '../logging';
 const logger = createLogger('inputmodal');
 
 export const InputModal = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const { title, message, initial, input_type, timeout } = data;
 
   // Current Input Value

@@ -137,7 +137,7 @@ const searchFilter = (search, allparts) => {
 };
 
 export const ExosuitFabricator = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const queue = data.queue || [];
   const materialAsObj = materialArrayToObj(data.materials || []);
@@ -266,7 +266,7 @@ export const ExosuitFabricator = (props) => {
 };
 
 const EjectMaterial = (props) => {
-  const { act } = useBackend(context);
+  const { act } = useBackend<any>();
 
   const { material } = props;
 
@@ -312,7 +312,7 @@ const EjectMaterial = (props) => {
 };
 
 export const Materials = (props) => {
-  const { data } = useBackend(context);
+  const { data } = useBackend<any>();
 
   const {
     displayAllMat,
@@ -408,7 +408,7 @@ const MaterialAmount = (props) => {
 };
 
 const PartSets = (props) => {
-  const { data } = useBackend(context);
+  const { data } = useBackend<any>();
 
   const partSets = data.partSets || [];
   const buildableParts = data.buildableParts || {};
@@ -441,7 +441,7 @@ const PartSets = (props) => {
 };
 
 const PartLists = (props) => {
-  const { data } = useBackend(context);
+  const { data } = useBackend<any>();
 
   const getFirstValidPartSet = (sets => {
     for (let set of sets) {
@@ -533,19 +533,19 @@ const PartLists = (props) => {
           forceShow
           placeholder="No matching results..." />
       )) || (
-        Object.keys(partsList).map(category => (
-          <PartCategory
-            key={category}
-            name={category}
-            parts={partsList[category]} />
-        ))
-      )}
+          Object.keys(partsList).map(category => (
+            <PartCategory
+              key={category}
+              name={category}
+              parts={partsList[category]} />
+          ))
+        )}
     </Fragment>
   );
 };
 
 const PartCategory = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     buildingPart,
@@ -649,7 +649,7 @@ const PartCategory = (props) => {
 };
 
 const Queue = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const { isProcessingQueue } = data;
 
@@ -688,12 +688,12 @@ const Queue = (props) => {
                   icon="stop"
                   onClick={() => act("stop_queue")} />
               )) || (
-                <Button
-                  disabled={!queue.length}
-                  content="Build Queue"
-                  icon="play"
-                  onClick={() => act("build_queue")} />
-              )}
+                  <Button
+                    disabled={!queue.length}
+                    content="Build Queue"
+                    icon="play"
+                    onClick={() => act("build_queue")} />
+                )}
             </Fragment>
           }>
           <Flex
@@ -753,7 +753,7 @@ const QueueMaterials = (props) => {
 };
 
 const QueueList = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     textColors,
@@ -802,7 +802,7 @@ const QueueList = (props) => {
 };
 
 const BeingBuilt = (props) => {
-  const { data } = useBackend(context);
+  const { data } = useBackend<any>();
 
   const {
     buildingPart,

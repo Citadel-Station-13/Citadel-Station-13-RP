@@ -3,7 +3,7 @@ import { Box, Button, Dimmer, Icon, LabeledList, Section, Tabs } from 'tgui-core
 import { Window } from '../layouts';
 
 export const Limbgrower = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     reagents = [],
     total_reagents,

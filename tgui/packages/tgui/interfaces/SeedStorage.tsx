@@ -5,7 +5,7 @@ import { toTitleCase } from 'common/string';
 import { sortBy } from 'common/collections';
 
 export const SeedStorage = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     scanner,

@@ -5,7 +5,7 @@ import { Window } from "../layouts";
 import { filter } from 'common/collections';
 
 export const ResearchServerController = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   return (
     <Window width={575} height={430} resizable>
       <Window.Content scrollable>
@@ -16,7 +16,7 @@ export const ResearchServerController = (props) => {
 };
 
 const ResearchControllerContent = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     badmin,
@@ -49,7 +49,7 @@ const ResearchControllerContent = (props) => {
 };
 
 const ResearchServer = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     badmin,
   } = data;
@@ -97,7 +97,7 @@ const ResearchServer = (props) => {
 };
 
 const ResearchServerAccess = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     server,
   } = props;
@@ -145,7 +145,7 @@ const ResearchServerAccess = (props) => {
 };
 
 const ResearchServerData = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     server,
   } = props;
@@ -181,7 +181,7 @@ const ResearchServerData = (props) => {
 };
 
 const ResearchServerTransfer = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     server,

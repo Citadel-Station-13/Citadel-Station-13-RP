@@ -4,7 +4,7 @@ import { Box, Button, Collapsible, LabeledList, ProgressBar, Section, Slider } f
 import { Window } from '../layouts';
 
 export const Jukebox = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     playing,

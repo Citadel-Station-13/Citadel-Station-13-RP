@@ -3,7 +3,7 @@ import { Button, LabeledList, Section, NumberInput, AnimatedNumber } from "tgui-
 import { Window } from "../layouts";
 
 export const heat_pump = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     target_temp,
@@ -30,7 +30,7 @@ export const heat_pump = (props) => {
                 onClick={() => act('power')} />
             </LabeledList.Item>
             <LabeledList.Item label="Current Efficiency">
-              <AnimatedNumber value={efficiency*100} /> %
+              <AnimatedNumber value={efficiency * 100} /> %
             </LabeledList.Item>
             <LabeledList.Item label="Current Temperature">
               <AnimatedNumber value={current_temp} /> Kelvin

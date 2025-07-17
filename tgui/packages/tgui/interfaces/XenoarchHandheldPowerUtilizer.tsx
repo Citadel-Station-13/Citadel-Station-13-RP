@@ -3,7 +3,7 @@ import { Box, Button, LabeledList, NumberInput, Section, ProgressBar } from 'tgu
 import { Window } from '../layouts';
 
 export const XenoarchHandheldPowerUtilizer = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     inserted_battery,
@@ -75,8 +75,8 @@ export const XenoarchHandheldPowerUtilizer = (props) => {
               </LabeledList.Item>
             </LabeledList>
           ) || (
-            <Box color="bad">No battery inserted. Please insert a cell.</Box>
-          )}
+              <Box color="bad">No battery inserted. Please insert a cell.</Box>
+            )}
         </Section>
       </Window.Content>
     </Window>

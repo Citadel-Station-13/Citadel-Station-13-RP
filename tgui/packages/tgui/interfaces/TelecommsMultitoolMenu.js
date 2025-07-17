@@ -5,7 +5,7 @@ import { TemporaryNotice } from './common/TemporaryNotice';
 import { Window } from "../layouts";
 
 export const TelecommsMultitoolMenu = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     // All
@@ -37,7 +37,7 @@ export const TelecommsMultitoolMenu = (props) => {
 };
 
 const TelecommsMultitoolMenuStatus = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     // All
@@ -142,7 +142,7 @@ const TelecommsMultitoolMenuStatus = (props) => {
 };
 
 const TelecommsMultitoolMenuPolymorphicOptions = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     // Relay

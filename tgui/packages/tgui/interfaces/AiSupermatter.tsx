@@ -4,7 +4,7 @@ import { Window } from "../layouts";
 import { FullscreenNotice } from './common/FullscreenNotice';
 
 export const AiSupermatter = (props) => {
-  const { data } = useBackend(context);
+  const { data } = useBackend<any>();
 
   const {
     integrity_percentage,
@@ -46,7 +46,7 @@ const AiSupermatterDetonation = (props) => (
 );
 
 const AiSupermatterContent = (props) => {
-  const { data } = useBackend(context);
+  const { data } = useBackend<any>();
 
   const {
     integrity_percentage,

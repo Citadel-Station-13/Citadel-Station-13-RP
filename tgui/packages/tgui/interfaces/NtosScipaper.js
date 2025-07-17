@@ -29,7 +29,7 @@ export const NtosScipaper = (props) => {
 };
 
 const PaperPublishing = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     title,
     author,
@@ -209,7 +209,7 @@ const PaperPublishing = (props) => {
 };
 
 const PaperBrowser = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const { publishedPapers, coopIndex, fundingIndex } = data;
   if (publishedPapers.length === 0) {
     return <NoticeBox> No Published Papers! </NoticeBox>;
@@ -249,7 +249,7 @@ const PaperBrowser = (props) => {
   }
 };
 const ExperimentBrowser = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const { experimentInformation = [] } = data;
   return experimentInformation.map((experiment) => (
     <Section title={experiment.name} key={experiment.name}>
@@ -271,7 +271,7 @@ const ExperimentBrowser = (props) => {
 };
 
 const PartnersBrowser = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     partnersInformation,
     coopIndex,
@@ -338,7 +338,7 @@ const PartnersBrowser = (props) => {
 };
 
 export const NtosScipaperContent = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const { currentTab } = data;
   return (
     <>

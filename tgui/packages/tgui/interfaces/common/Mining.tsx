@@ -3,7 +3,7 @@ import { useBackend } from "../../backend";
 import { Box, Button, NoticeBox } from 'tgui-core/components';
 
 export const MiningUser = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     insertIdText,
   } = props;

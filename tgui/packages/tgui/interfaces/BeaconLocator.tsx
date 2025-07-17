@@ -4,7 +4,7 @@ import { Box, Button, Icon, LabeledList, NumberInput, Section } from 'tgui-core/
 import { Window } from '../layouts';
 
 export const BeaconLocator = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     scan_ticks,

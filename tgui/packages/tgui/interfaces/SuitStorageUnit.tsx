@@ -4,7 +4,7 @@ import { Box, Button, Icon, LabeledList, Knob, NoticeBox, Section, Flex } from '
 import { Window } from '../layouts';
 
 export const SuitStorageUnit = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     panelopen,
     uv_active,
@@ -34,7 +34,7 @@ export const SuitStorageUnit = (props) => {
 };
 
 const SuitStorageUnitContent = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     locked,
     open,
@@ -127,20 +127,20 @@ const SuitStorageUnitContent = (props) => {
           </LabeledList.Item>
         </LabeledList>
       ) || (
-        <Button
-          fluid
-          icon="recycle"
-          content="Decontaminate"
-          disabled={occupied && safeties}
-          textAlign="center"
-          onClick={() => act('uv')} />
-      )}
+          <Button
+            fluid
+            icon="recycle"
+            content="Decontaminate"
+            disabled={occupied && safeties}
+            textAlign="center"
+            onClick={() => act('uv')} />
+        )}
     </Section>
   );
 };
 
 const SuitStorageUnitPanel = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     safeties,
     uv_super,

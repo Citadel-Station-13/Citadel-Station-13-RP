@@ -12,7 +12,7 @@ import {
 import { Window } from '../layouts';
 
 export const ColorMate = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const { activemode, temp } = data;
   const item = data.item || [];
   return (
@@ -130,7 +130,7 @@ export const ColorMate = (props) => {
 };
 
 export const ColorMateTint = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   return (
     <Button
       fluid
@@ -142,7 +142,7 @@ export const ColorMateTint = (props) => {
 };
 
 export const ColorMateMatrix = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const matrixcolors = data.matrixcolors || [];
   return (
     <Table>
@@ -358,7 +358,7 @@ export const ColorMateMatrix = (props) => {
 };
 
 export const ColorMateHSV = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const { buildhue, buildsat, buildval } = data;
   return (
     <Table>

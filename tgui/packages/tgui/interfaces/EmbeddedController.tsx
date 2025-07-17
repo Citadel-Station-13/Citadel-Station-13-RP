@@ -7,7 +7,8 @@ import {
   Icon,
   LabeledList,
   ProgressBar,
-  Section } from "tgui-core/components";
+  Section
+} from "tgui-core/components";
 import { Window } from "../layouts";
 
 import { createLogger } from "../logging";
@@ -77,7 +78,7 @@ let primaryRoutes = {};
  * Entrypoint of the UI. This handles finding the correct route to use.
  */
 export const EmbeddedController = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     internalTemplateName,
   } = data;
@@ -157,7 +158,7 @@ const StatusDisplay = (props) => {
  * on it's own.
  */
 const StandardControls = (props) => {
-  const { data, act } = useBackend(context);
+  const { data, act } = useBackend<any>();
 
   let externalForceSafe = true;
   if (data["interior_status"] && data.interior_status.state === "open") {
@@ -217,7 +218,7 @@ const StandardControls = (props) => {
  * but I got rid of that stupid shit.
  */
 const EscapePodStatus = (props) => {
-  const { data, act } = useBackend(context);
+  const { data, act } = useBackend<any>();
 
   const statusToHtml = {
     "docked": <Armed />,
@@ -256,7 +257,7 @@ const EscapePodStatus = (props) => {
  * Keeps me from having to write like, two lines of code.
  */
 const Armed = (props) => {
-  const { data, act } = useBackend(context);
+  const { data, act } = useBackend<any>();
   return (
     data.armed
       ? <Box color="average">ARMED</Box>
@@ -269,7 +270,7 @@ const Armed = (props) => {
  * Basically just external door control.
  */
 const EscapePodControls = (props) => {
-  const { data, act } = useBackend(context);
+  const { data, act } = useBackend<any>();
 
   return (
     <Box>
@@ -293,7 +294,7 @@ const EscapePodControls = (props) => {
  * Just a neat little helper for all the different states of dock.
  */
 const DockStatus = (props) => {
-  const { data, act } = useBackend(context);
+  const { data, act } = useBackend<any>();
 
   const statusToHtml = {
     "docked": <Box color="good">DOCKED</Box>,
@@ -326,7 +327,7 @@ const DockStatus = (props) => {
  * Replaces advanced_airlock_console.tmpl
  */
 const AirlockConsoleAdvanced = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const color = value => {
     return (value < 80 || value > 120) ? 'bad'
@@ -397,7 +398,7 @@ primaryRoutes["AirlockConsoleAdvanced"] = AirlockConsoleAdvanced;
  * Replaces simple_airlock_console.tmpl
  */
 const AirlockConsoleSimple = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const bars = [
     {
@@ -440,7 +441,7 @@ primaryRoutes["AirlockConsoleSimple"] = AirlockConsoleSimple;
  * Replaces phoron_airlock_console.tmpl
  */
 const AirlockConsolePhoron = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const bars = [
     {
@@ -506,7 +507,7 @@ primaryRoutes["AirlockConsolePhoron"] = AirlockConsolePhoron;
  * Replaces docking_airlock_console.tmpl
  */
 const AirlockConsoleDocking = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const bars = [
     {
@@ -561,7 +562,7 @@ primaryRoutes["AirlockConsoleDocking"] = AirlockConsoleDocking;
  * Replaces simple_docking_console.tmpl
  */
 const DockingConsoleSimple = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   let dockHatch = <Box color="bad">ERROR</Box>;
 
@@ -608,7 +609,7 @@ primaryRoutes["DockingConsoleSimple"] = DockingConsoleSimple;
  * Replaces multi_docking_console.tmpl
  */
 const DockingConsoleMulti = (props) => {
-  const { data } = useBackend(context);
+  const { data } = useBackend<any>();
   return (
     <Fragment>
       <Section title="Docking Status">
@@ -653,7 +654,7 @@ primaryRoutes["DockingConsoleMulti"] = DockingConsoleMulti;
  * Replaces door_access_console.tmpl
  */
 const DoorAccessConsole = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   let interiorOpen = (
     data.interior_status.state === "open"
@@ -707,7 +708,7 @@ primaryRoutes["DoorAccessConsole"] = DoorAccessConsole;
  * Replaces escape_pod_console.tmpl
  */
 const EscapePodConsole = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   return (
     <Fragment>
       <EscapePodStatus />
@@ -738,7 +739,7 @@ primaryRoutes["EscapePodConsole"] = EscapePodConsole;
  * Replaces escape_pod_berth_console.tmpl
  */
 const EscapePodBerthConsole = (props) => {
-  const { data } = useBackend(context);
+  const { data } = useBackend<any>();
   return (
     <Fragment>
       <EscapePodStatus />

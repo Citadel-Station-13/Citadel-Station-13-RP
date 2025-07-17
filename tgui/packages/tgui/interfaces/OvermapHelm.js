@@ -34,7 +34,7 @@ export const OvermapHelmContent = (props) => {
 };
 
 export const OvermapFlightDataWrap = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   // While, yes, this is a strange choice to use fieldset over Section just
   // look at how pretty the legend is, sticking partially through the border
@@ -47,7 +47,7 @@ export const OvermapFlightDataWrap = (props) => {
 };
 
 const OvermapManualControl = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     canburn,
@@ -78,7 +78,7 @@ const OvermapManualControl = (props) => {
 };
 
 const OvermapAutopilot = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     dest,
     d_x,
@@ -164,7 +164,7 @@ const OvermapAutopilot = (props) => {
 };
 
 const OvermapNavComputer = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     sector,

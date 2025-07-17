@@ -128,7 +128,7 @@ import { Button, LabeledList, Section } from '../components';
 import { Window } from '../layouts';
 
 export const SampleInterface = (props, context) => {
-	const { act, data } = useBackend(context);
+	const { act, data } = useBackend<any>();
 	// Extract `health` and `color` variables from the `data` object.
 	const { health, color } = data;
 	return (
@@ -152,7 +152,7 @@ export const SampleInterface = (props, context) => {
 };
 ```
 
-Here are the key variables you get from a `useBackend(context)` function:
+Here are the key variables you get from a `useBackend<any>()` function:
 
 - `config` is part of core tgui. It contains meta-information about the
   interface and who uses it, BYOND refs to various objects, and so forth.
@@ -260,7 +260,7 @@ export const SampleInterface = (props, context) => {
 };
 
 const HealthStatus = (props, context) => {
-	const { act, data } = useBackend(context);
+	const { act, data } = useBackend<any>();
 	const { user } = props;
 	const { health, color } = data;
 	return (

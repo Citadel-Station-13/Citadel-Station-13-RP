@@ -4,7 +4,7 @@ import { Box, Icon, Input, Section } from 'tgui-core/components';
 import { NtosWindow } from '../layouts';
 
 export const NtosRecords = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const [searchTerm, setSearchTerm] = useState("");
   const {
     mode,

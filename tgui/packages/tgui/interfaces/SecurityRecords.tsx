@@ -15,7 +15,7 @@ const doEdit = (context, field) => {
 };
 
 export const SecurityRecords = (_properties, context) => {
-  const { data } = useBackend(context);
+  const { data } = useBackend<any>();
   const {
     authenticated,
     screen,
@@ -61,7 +61,7 @@ export const SecurityRecords = (_properties, context) => {
 };
 
 const SecurityRecordsList = (_properties, context) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     records,
   } = data;
@@ -89,7 +89,7 @@ const SecurityRecordsList = (_properties, context) => {
 };
 
 const SecurityRecordsMaintenance = (_properties, context) => {
-  const { act } = useBackend(context);
+  const { act } = useBackend<any>();
   return (
     <Fragment>
       <Button
@@ -113,7 +113,7 @@ const SecurityRecordsMaintenance = (_properties, context) => {
 };
 
 const SecurityRecordsView = (_properties, context) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     security,
     printing,
@@ -161,7 +161,7 @@ const SecurityRecordsView = (_properties, context) => {
 };
 
 const SecurityRecordsViewGeneral = (_properties, context) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     general,
   } = data;
@@ -226,7 +226,7 @@ const SecurityRecordsViewGeneral = (_properties, context) => {
 };
 
 const SecurityRecordsViewSecurity = (_properties, context) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     security,
   } = data;
@@ -299,7 +299,7 @@ const SecurityRecordsViewSecurity = (_properties, context) => {
 };
 
 const SecurityRecordsNavigation = (_properties, context) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     screen,
   } = data;

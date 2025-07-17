@@ -5,7 +5,7 @@ import { Window } from "../layouts";
 import { formatPower } from "../format";
 
 export const ICAssembly = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     total_parts,
@@ -91,7 +91,7 @@ export const ICAssembly = (props) => {
 };
 
 const ICAssemblyCircuits = (props) => {
-  const { act } = useBackend(context);
+  const { act } = useBackend<any>();
 
   const {
     title,
@@ -116,7 +116,7 @@ const ICAssemblyCircuits = (props) => {
 };
 
 export const ICTerminal = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     UI_settings,
@@ -127,11 +127,11 @@ export const ICTerminal = (props) => {
     <Section title="Terminal">
       <Flex direction="row" wrap="wrap" justify="space-evenly" align="baseline">
         {circuits.map(circuit =>
-          (circuit.input && (
-            <Flex.Item key={circuit.ref} grow={1} wrap="wrap" maxwidth="33%" inline={1} color="label" verticalAlignContent={1} basis="30%" m={0.5} p={0.5} >
-              <Button icon="eye" content={circuit.name} width="95%" align="center" verticalAlignContent="center" height={2.5} compact={0} fluid={1} wrap="wrap" ellipsis={1} onClick={() => act("input_selection", { ref: circuit.ref })} />
-            </Flex.Item>
-          ) || null)
+        (circuit.input && (
+          <Flex.Item key={circuit.ref} grow={1} wrap="wrap" maxwidth="33%" inline={1} color="label" verticalAlignContent={1} basis="30%" m={0.5} p={0.5} >
+            <Button icon="eye" content={circuit.name} width="95%" align="center" verticalAlignContent="center" height={2.5} compact={0} fluid={1} wrap="wrap" ellipsis={1} onClick={() => act("input_selection", { ref: circuit.ref })} />
+          </Flex.Item>
+        ) || null)
         )}
       </Flex>
     </Section>

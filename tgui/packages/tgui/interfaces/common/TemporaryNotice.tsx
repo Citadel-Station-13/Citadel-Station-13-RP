@@ -19,7 +19,7 @@ export const TemporaryNotice = (_properties, context) => {
   const {
     decode,
   } = _properties;
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const { temp } = data;
   if (!temp) {
     return;

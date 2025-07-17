@@ -4,7 +4,7 @@ import { Window } from "../layouts";
 import { sortBy, filter } from 'common/collections';
 
 export const ICPrinter = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     metal,
@@ -61,7 +61,7 @@ const canBuild = (item, data) => {
 };
 
 const ICPrinterCategories = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     categories,
@@ -71,7 +71,7 @@ const ICPrinterCategories = (props) => {
   const [categoryTarget, setcategoryTarget] = useSharedState(context, "categoryTarget", null);
 
   const selectedCategory
-  = filter(cat => cat.name === categoryTarget)(categories)[0];
+    = filter(cat => cat.name === categoryTarget)(categories)[0];
 
   return (
     <Section title="Circuits">
@@ -117,7 +117,7 @@ const ICPrinterCategories = (props) => {
   );
 };
 const ICCloningSection = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     can_clone,
     program,

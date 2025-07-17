@@ -4,7 +4,7 @@ import { Box, Button, Flex, LabeledList, Slider, Section } from "tgui-core/compo
 import { Window } from "../layouts";
 
 export const GeneralAtmoControl = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   // While many of these variables are unused, it's helpful to have a consistent
   // list of all possible parameters in the core component of this UI.
@@ -44,7 +44,7 @@ export const GeneralAtmoControl = (props) => {
 };
 
 const AtmoControlSensors = (props) => {
-  const { act } = useBackend(context);
+  const { act } = useBackend<any>();
 
   const {
     sensors,
@@ -125,7 +125,7 @@ const AtmoSensor = (props) => {
 };
 
 const AtmoControlTankCore = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     // Tanks /obj/machinery/computer/general_air_control
@@ -224,14 +224,14 @@ const AtmoControlTankCoreControl = (props) => {
             {info.power ? "Injecting" : "On Hold"}
           </LabeledList.Item>
         ) || (
-          <LabeledList.Item>
-            <Box color="bad">ERROR: Cannot Find {name} Port</Box>
-            <Button
-              icon="search"
-              content="Search"
-              onClick={() => actions.refresh()} />
-          </LabeledList.Item>
-        )}
+            <LabeledList.Item>
+              <Box color="bad">ERROR: Cannot Find {name} Port</Box>
+              <Button
+                icon="search"
+                content="Search"
+                onClick={() => actions.refresh()} />
+            </LabeledList.Item>
+          )}
         <LabeledList.Item label={limitName} buttons={
           <Button
             content="Apply"
@@ -257,7 +257,7 @@ const AtmoControlTankCoreControl = (props) => {
 };
 
 const AtmoControlFuel = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     fuel,

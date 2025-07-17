@@ -18,7 +18,7 @@ export const RequestKiosk = (props) => {
 };
 
 export const RequestKioskContent = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     accountName,
     requests = [],

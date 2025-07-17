@@ -11,7 +11,7 @@ const sortTypes = {
 };
 
 export const Biogenerator = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   return (
     <Window width={400} height={450} resizable>
       <Window.Content className="Layout__content--flexColumn" scrollable>
@@ -48,7 +48,7 @@ export const Biogenerator = (props) => {
 
 
 const BiogeneratorItems = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     points,
     items,
@@ -166,7 +166,7 @@ const canBuyItem = (item, data) => {
 };
 
 const BiogeneratorItemsCategory = (properties, context) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     title,
     items,

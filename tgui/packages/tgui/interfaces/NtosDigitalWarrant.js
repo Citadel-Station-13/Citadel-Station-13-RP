@@ -5,7 +5,7 @@ import { filter } from 'common/collections';
 import { Fragment } from 'inferno';
 
 export const NtosDigitalWarrant = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     warrantname,
@@ -31,7 +31,7 @@ export const NtosDigitalWarrant = (props) => {
 };
 
 const AllWarrants = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     allwarrants,
@@ -57,7 +57,7 @@ const AllWarrants = (props) => {
 };
 
 const WarrantList = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     type,
@@ -100,7 +100,7 @@ const WarrantList = (props) => {
 };
 
 const ActiveWarrant = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     warrantname,

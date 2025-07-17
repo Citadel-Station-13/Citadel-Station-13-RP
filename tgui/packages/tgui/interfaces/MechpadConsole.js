@@ -4,7 +4,7 @@ import { Window } from '../layouts';
 
 export const MechpadControl = (props) => {
   const { topLevel } = props;
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     pad_name,
     connected_mechpad,
@@ -44,7 +44,7 @@ export const MechpadControl = (props) => {
 };
 
 export const MechpadConsole = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     mechpads = [],
     selected_id,

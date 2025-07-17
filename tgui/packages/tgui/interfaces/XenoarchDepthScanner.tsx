@@ -3,7 +3,7 @@ import { Box, Button, LabeledList, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
 export const XenoarchDepthScanner = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     current,
@@ -60,8 +60,8 @@ export const XenoarchDepthScanner = (props) => {
               {loc.time}, {loc.coords}
             </Button>
           )) || (
-            <Box color="bad">No traces found.</Box>
-          )}
+              <Box color="bad">No traces found.</Box>
+            )}
         </Section>
       </Window.Content>
     </Window>

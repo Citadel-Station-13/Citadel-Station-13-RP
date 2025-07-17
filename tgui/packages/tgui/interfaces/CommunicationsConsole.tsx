@@ -14,7 +14,7 @@ export const CommunicationsConsole = (props) => {
 };
 
 export const CommunicationsConsoleContent = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     menu_state,
@@ -47,7 +47,7 @@ export const CommunicationsConsoleContent = (props) => {
 };
 
 const CommunicationsConsoleMain = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     messages,
@@ -113,14 +113,14 @@ const CommunicationsConsoleMain = (props) => {
                 onClick={() => act('RestoreBackup')} />
             </LabeledList.Item>
           ) || (
-            <LabeledList.Item label="Transmit">
-              <Button
-                icon="broadcast-tower"
-                content={ccMessageText}
-                disabled={!authmax || cc_cooldown > 0}
-                onClick={() => act('MessageCentCom')} />
-            </LabeledList.Item>
-          )}
+              <LabeledList.Item label="Transmit">
+                <Button
+                  icon="broadcast-tower"
+                  content={ccMessageText}
+                  disabled={!authmax || cc_cooldown > 0}
+                  onClick={() => act('MessageCentCom')} />
+              </LabeledList.Item>
+            )}
         </LabeledList>
       </Section>
       <Section title="Command Staff Actions">
@@ -161,7 +161,7 @@ const CommunicationsConsoleMain = (props) => {
 };
 
 const CommunicationsConsoleAuth = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     authenticated,
@@ -193,16 +193,16 @@ const CommunicationsConsoleAuth = (props) => {
               AI
             </LabeledList.Item>
           ) || (
-            <LabeledList.Item label="Actions">
-              <Button
-                icon={authenticated ? 'sign-out-alt' : 'id-card'}
-                selected={authenticated}
-                content={authenticated
-                  ? "Log Out (" + authReadable + ")"
-                  : 'Log In'}
-                onClick={() => act("auth")} />
-            </LabeledList.Item>
-          )}
+              <LabeledList.Item label="Actions">
+                <Button
+                  icon={authenticated ? 'sign-out-alt' : 'id-card'}
+                  selected={authenticated}
+                  content={authenticated
+                    ? "Log Out (" + authReadable + ")"
+                    : 'Log In'}
+                  onClick={() => act("auth")} />
+              </LabeledList.Item>
+            )}
         </LabeledList>
       </Section>
       <Section title="Escape Shuttle">
@@ -237,7 +237,7 @@ const CommunicationsConsoleAuth = (props) => {
 };
 
 const CommunicationsConsoleMessage = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     message_current,
@@ -299,7 +299,7 @@ const CommunicationsConsoleMessage = (props) => {
 };
 
 const CommunicationsConsoleStatusDisplay = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     stat_display,

@@ -3,7 +3,7 @@ import { Box, Button, LabeledList, ProgressBar, Section } from "tgui-core/compon
 import { Window } from "../layouts";
 
 export const Farmbot = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     on,
@@ -39,8 +39,8 @@ export const Farmbot = (props) => {
                   {tankVolume} / {tankMaxVolume}
                 </ProgressBar>
               ) || (
-                <Box color="average">No water tank detected.</Box>
-              )}
+                  <Box color="average">No water tank detected.</Box>
+                )}
             </LabeledList.Item>
             <LabeledList.Item label="Behavior Controls" color={locked ? "good" : "bad"}>
               {locked ? "Locked" : "Unlocked"}

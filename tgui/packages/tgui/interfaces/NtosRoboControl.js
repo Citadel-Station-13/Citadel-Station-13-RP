@@ -7,7 +7,7 @@ const getMuleByRef = (mules, ref) => {
 };
 
 export const NtosRoboControl = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const [tab_main, setTab_main] = useSharedState(context, 'tab_main', 1);
   const {
     bots,
@@ -97,7 +97,7 @@ export const NtosRoboControl = (props) => {
 
 export const RobotInfo = (props) => {
   const { robot } = props;
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const mules = data.mules || [];
   // Get a mule object
   const mule = !!robot.mule_check
@@ -259,7 +259,7 @@ export const RobotInfo = (props) => {
 
 export const DroneInfo = (props) => {
   const { drone } = props;
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const color = 'rgba(74, 59, 140, 1)';
 
   return (

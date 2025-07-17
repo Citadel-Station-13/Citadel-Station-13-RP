@@ -3,7 +3,7 @@ import { Box, Button, Flex, LabeledList, Section } from "tgui-core/components";
 import { NtosWindow } from "../layouts";
 
 export const NtosUAV = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     current_uav,

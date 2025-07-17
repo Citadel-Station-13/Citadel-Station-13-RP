@@ -3,7 +3,7 @@ import { Box, Button, LabeledList, Section, NoticeBox } from "tgui-core/componen
 import { Window } from "../layouts";
 
 export const BotanyIsolator = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     geneMasks,
@@ -63,23 +63,23 @@ export const BotanyIsolator = (props) => {
                   </Button>
                 </Box>
               ) || (
-                <NoticeBox mt={1} warning>No disk inserted.</NoticeBox>
-              )}
+                  <NoticeBox mt={1} warning>No disk inserted.</NoticeBox>
+                )}
             </Box>
           ) || (
-            <Box>
-              <NoticeBox warning>No Data Buffered.</NoticeBox>
-              {disk && (
-                <Button
-                  icon="eject"
-                  onClick={() => act("eject_disk")}>
-                  Eject Loaded Disk
-                </Button>
-              ) || (
-                <NoticeBox mt={1} warning>No disk inserted.</NoticeBox>
-              )}
-            </Box>
-          )}
+              <Box>
+                <NoticeBox warning>No Data Buffered.</NoticeBox>
+                {disk && (
+                  <Button
+                    icon="eject"
+                    onClick={() => act("eject_disk")}>
+                    Eject Loaded Disk
+                  </Button>
+                ) || (
+                    <NoticeBox mt={1} warning>No disk inserted.</NoticeBox>
+                  )}
+              </Box>
+            )}
         </Section>
         <Section title="Loaded Material">
           {loaded && (
@@ -102,8 +102,8 @@ export const BotanyIsolator = (props) => {
               </Button>
             </Box>
           ) || (
-            <NoticeBox warning>No packet loaded.</NoticeBox>
-          )}
+              <NoticeBox warning>No packet loaded.</NoticeBox>
+            )}
         </Section>
       </Window.Content>
     </Window>

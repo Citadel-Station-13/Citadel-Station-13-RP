@@ -3,7 +3,7 @@ import { Box, Button, Divider, Section, Table } from "tgui-core/components";
 import { Window } from "../layouts";
 
 export const StockExchange = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     stationName,
@@ -48,7 +48,7 @@ export const StockExchange = (props) => {
 };
 
 const StockExchangeFullView = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     stocks = [],
@@ -123,7 +123,7 @@ const StockExchangeFullView = (props) => {
 };
 
 const StockExchangeCompactView = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     stocks = [],

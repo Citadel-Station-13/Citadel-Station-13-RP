@@ -65,7 +65,7 @@ export const ApprenticeContract = (props) => {
 };
 
 const ApprenticeSelection = (props) => {
-  const { act } = useBackend(context);
+  const { act } = useBackend<any>();
   const {
     iconName,
     fluffName,

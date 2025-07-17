@@ -15,7 +15,7 @@ const RCS_MESSAUTH = 7;	// Authentication before sending
 const RCS_ANNOUNCE = 8;	// Send announcement
 
 const RequestConsoleSettings = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     silent,
   } = data;
@@ -32,7 +32,7 @@ const RequestConsoleSettings = (props) => {
 };
 
 const RequestConsoleSupplies = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     department,
     supply_dept,
@@ -45,7 +45,7 @@ const RequestConsoleSupplies = (props) => {
 };
 
 const RequestConsoleAssistance = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     department,
     assist_dept,
@@ -58,7 +58,7 @@ const RequestConsoleAssistance = (props) => {
 };
 
 const RequestConsoleRelay = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     department,
     info_dept,
@@ -71,7 +71,7 @@ const RequestConsoleRelay = (props) => {
 };
 
 const RequestConsoleSendMenu = (props) => {
-  const { act } = useBackend(context);
+  const { act } = useBackend<any>();
   const {
     dept_list,
     department,
@@ -99,7 +99,7 @@ const RequestConsoleSendMenu = (props) => {
 };
 
 const RequestConsoleSendPass = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   return (
     <Section>
       <Box fontSize={2} color="good">
@@ -117,7 +117,7 @@ const RequestConsoleSendPass = (props) => {
 };
 
 const RequestConsoleSendFail = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   return (
     <Section>
       <Box fontSize={1.5} bold color="bad">
@@ -135,7 +135,7 @@ const RequestConsoleSendFail = (props) => {
 };
 
 const RequestConsoleViewMessages = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     message_log,
   } = data;
@@ -162,7 +162,7 @@ const RequestConsoleViewMessages = (props) => {
 };
 
 const RequestConsoleMessageAuth = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     message,
     recipient,
@@ -202,7 +202,7 @@ const RequestConsoleMessageAuth = (props) => {
 };
 
 const RequestConsoleAnnounce = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     department,
     screen,
@@ -270,7 +270,7 @@ screenToTemplate[RCS_MESSAUTH] = RequestConsoleMessageAuth;
 screenToTemplate[RCS_ANNOUNCE] = RequestConsoleAnnounce;
 
 export const RequestConsole = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     screen,
     newmessagepriority,

@@ -3,7 +3,7 @@ import { Box, Button, Icon, LabeledList } from 'tgui-core/components';
 
 export const ReagentLookup = (props) => {
   const { reagent } = props;
-  const { act } = useBackend(context);
+  const { act } = useBackend<any>();
   if (!reagent) {
     return (
       <Box>
@@ -107,10 +107,10 @@ export const ReagentLookup = (props) => {
         {!reagent.failedReagent
           && !reagent.inverseReagent
           && !reagent.impureReagent && (
-          <Box>
-            This reagent has no impure reagents.
-          </Box>
-        )}
+            <Box>
+              This reagent has no impure reagents.
+            </Box>
+          )}
       </LabeledList.Item>
       <LabeledList.Item>
         <Button

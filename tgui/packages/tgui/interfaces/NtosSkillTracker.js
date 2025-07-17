@@ -3,7 +3,7 @@ import { Button, Section, Table, BlockQuote, ProgressBar, AnimatedNumber } from 
 import { NtosWindow } from '../layouts';
 
 export const NtosSkillTracker = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     skills = {},
   } = data;

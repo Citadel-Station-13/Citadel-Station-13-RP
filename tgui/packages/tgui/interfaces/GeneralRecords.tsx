@@ -18,7 +18,7 @@ const doEdit = (context, field) => {
 };
 
 export const GeneralRecords = (_properties, context) => {
-  const { data } = useBackend(context);
+  const { data } = useBackend<any>();
   const {
     authenticated,
     screen,
@@ -82,7 +82,7 @@ const selectRecords = (records, searchText = '') => {
 };
 
 const GeneralRecordsList = (_properties, context) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const [
     searchText,
@@ -118,7 +118,7 @@ const GeneralRecordsList = (_properties, context) => {
 };
 
 const GeneralRecordsMaintenance = (_properties, context) => {
-  const { act } = useBackend(context);
+  const { act } = useBackend<any>();
   return (
     <Button.Confirm
       icon="trash"
@@ -129,7 +129,7 @@ const GeneralRecordsMaintenance = (_properties, context) => {
 };
 
 const GeneralRecordsView = (_properties, context) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     general,
     printing,
@@ -167,7 +167,7 @@ const GeneralRecordsView = (_properties, context) => {
 };
 
 const GeneralRecordsViewGeneral = (_properties, context) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     general,
   } = data;
@@ -262,7 +262,7 @@ const GeneralRecordsViewGeneral = (_properties, context) => {
 };
 
 const GeneralRecordsNavigation = (_properties, context) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     screen,
   } = data;

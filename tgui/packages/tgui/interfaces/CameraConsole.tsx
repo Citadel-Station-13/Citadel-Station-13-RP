@@ -42,7 +42,7 @@ export const selectCameras = (cameras, searchText = '') => {
 };
 
 export const CameraConsole = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const { mapRef, activeCamera } = data;
   const cameras = selectCameras(data.cameras);
   const [
@@ -91,7 +91,7 @@ export const CameraConsole = (props) => {
 };
 
 export const CameraConsoleContent = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const [
     searchText,
     setSearchText,
@@ -143,7 +143,7 @@ export const CameraConsoleContent = (props) => {
 };
 
 export const CameraConsoleNTOS = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const { mapRef, activeCamera } = data;
   const cameras = selectCameras(data.cameras);
   const [

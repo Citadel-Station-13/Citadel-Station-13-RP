@@ -7,7 +7,7 @@ import { TemporaryNotice } from './common/TemporaryNotice';
 import { FullscreenNotice } from './common/FullscreenNotice';
 
 export const MessageMonitor = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     auth,
@@ -42,7 +42,7 @@ export const MessageMonitor = (props) => {
 };
 
 const MessageMonitorHack = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     isMalfAI,
@@ -99,7 +99,7 @@ const MessageMonitorHack = (props) => {
 };
 
 const MessageMonitorLogin = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     isMalfAI,
@@ -140,7 +140,7 @@ const MessageMonitorLogin = (props) => {
 };
 
 const MessageMonitorContent = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     linkedServer,
@@ -209,7 +209,7 @@ const MessageMonitorContent = (props) => {
 };
 
 const MessageMonitorMain = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     linkedServer,
@@ -251,7 +251,7 @@ const MessageMonitorMain = (props) => {
 };
 
 const MessageMonitorLogs = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     logs,
@@ -310,7 +310,7 @@ const MessageMonitorLogs = (props) => {
 };
 
 const MessageMonitorAdmin = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     possibleRecipients,
@@ -365,7 +365,7 @@ const MessageMonitorAdmin = (props) => {
 };
 
 const MessageMonitorSpamFilter = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     linkedServer,

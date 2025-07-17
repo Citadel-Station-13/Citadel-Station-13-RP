@@ -38,7 +38,7 @@ const getDockingStatus = (docking_status, docking_override) => {
 
 /* Templates */
 const ShuttleControlSharedShuttleStatus = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     engineName = "Bluespace Drive",
   } = props;
@@ -68,10 +68,10 @@ const ShuttleControlSharedShuttleStatus = (props) => {
               ENGAGED
             </Box>
           ) || (
-            <Box color="bad">
-              ERROR
-            </Box>
-          )}
+              <Box color="bad">
+                ERROR
+              </Box>
+            )}
         </LabeledList.Item>
         {has_docking && (
           <Fragment>
@@ -93,7 +93,7 @@ const ShuttleControlSharedShuttleStatus = (props) => {
 };
 
 const ShuttleControlSharedShuttleControls = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     can_launch,
@@ -138,7 +138,7 @@ const ShuttleControlSharedShuttleControls = (props) => {
 };
 
 const ShuttleControlConsoleDefault = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   return (
     <Fragment>
       <ShuttleControlSharedShuttleStatus />
@@ -148,7 +148,7 @@ const ShuttleControlConsoleDefault = (props) => {
 };
 
 const ShuttleControlConsoleMulti = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     can_cloak,
     can_pick,
@@ -187,7 +187,7 @@ const ShuttleControlConsoleMulti = (props) => {
 };
 
 const ShuttleControlConsoleExploration = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     can_pick,
     destination_name,
@@ -227,7 +227,7 @@ const ShuttleControlConsoleExploration = (props) => {
 
 /* Ugh. Just ugh. */
 const ShuttleControlConsoleWeb = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     autopilot,
@@ -286,10 +286,10 @@ const ShuttleControlConsoleWeb = (props) => {
                 ENGAGED
               </Box>
             ) || (
-              <Box color="bad">
-                ERROR
-              </Box>
-            )}
+                <Box color="bad">
+                  ERROR
+                </Box>
+              )}
           </LabeledList.Item>
           {!is_moving && (
             <Fragment>
@@ -353,10 +353,10 @@ const ShuttleControlConsoleWeb = (props) => {
                   </Button>
                 </LabeledList.Item>
               )) || (
-                <LabeledList.Item label="Error" color="bad">
-                  No routes found.
-                </LabeledList.Item>
-              )}
+                  <LabeledList.Item label="Error" color="bad">
+                    No routes found.
+                  </LabeledList.Item>
+                )}
             </LabeledList>
           </Section>
         ) || null}
@@ -388,20 +388,20 @@ const ShuttleControlConsoleWeb = (props) => {
                       Open
                     </Box>
                   ) || (
-                    <Box inline color="good">
-                      Closed
-                    </Box>
-                  )}
+                      <Box inline color="good">
+                        Closed
+                      </Box>
+                    )}
                   &nbsp;-&nbsp;
                   {door.bolted && (
                     <Box inline color="good">
                       Bolted
                     </Box>
                   ) || (
-                    <Box inline color="bad">
-                      Unbolted
-                    </Box>
-                  )}
+                      <Box inline color="bad">
+                        Unbolted
+                      </Box>
+                    )}
                 </LabeledList.Item>
               );
             })}
@@ -467,7 +467,7 @@ const SubtemplateList = {
 };
 
 export const ShuttleControl = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     subtemplate,
   } = data;

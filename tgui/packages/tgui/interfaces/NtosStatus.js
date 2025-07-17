@@ -3,7 +3,7 @@ import { NtosWindow } from '../layouts';
 import { Input, Section, Button } from 'tgui-core/components';
 
 export const NtosStatus = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     upper,
     lower,

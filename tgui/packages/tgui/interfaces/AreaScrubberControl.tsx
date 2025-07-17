@@ -5,7 +5,7 @@ import { toTitleCase } from 'common/string';
 
 
 export const AreaScrubberControl = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const [
     showArea,
@@ -85,7 +85,7 @@ export const AreaScrubberControl = (props) => {
 };
 
 const BigScrubber = (props) => {
-  const { act } = useBackend(context);
+  const { act } = useBackend<any>();
 
   const {
     scrubber,

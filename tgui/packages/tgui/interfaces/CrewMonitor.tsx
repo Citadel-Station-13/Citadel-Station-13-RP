@@ -39,7 +39,7 @@ export const CrewMonitor = () => {
 };
 
 export const CrewMonitorContent = (props) => {
-  const { act, data, config } = useBackend(context);
+  const { act, data, config } = useBackend<any>();
   const [tabIndex, setTabIndex] = useState(0);
 
   const crew = flow([
@@ -156,7 +156,7 @@ export const CrewMonitorContent = (props) => {
 };
 
 const CrewMonitorMapView = (props) => {
-  const { act, config, data } = useBackend(context);
+  const { act, config, data } = useBackend<any>();
   const [zoom, setZoom] = useState(1);
   return (
     <Box height="526px" mb="0.5rem" overflow="hidden">

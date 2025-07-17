@@ -11,7 +11,7 @@ const getStatusText = port => {
 };
 
 export const OmniFilter = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     power,

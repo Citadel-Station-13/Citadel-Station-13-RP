@@ -41,7 +41,7 @@ const TOOLS = [
 ];
 
 export const ColorItem = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     selected_color,
   } = data;
@@ -69,7 +69,7 @@ export const ColorItem = (props) => {
 };
 
 const ModeItem = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     mode,
   } = data;
@@ -93,7 +93,7 @@ const ModeItem = (props) => {
 };
 
 const CategoryItem = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     category: rootCategoryIndex,
   } = data;
@@ -115,7 +115,7 @@ const CategoryItem = (props) => {
 };
 
 const SelectionSection = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   return (
     <Section>
       <LabeledList>
@@ -128,7 +128,7 @@ const SelectionSection = (props) => {
 };
 
 export const LayerSelect = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     piping_layer,
   } = data;
@@ -149,7 +149,7 @@ export const LayerSelect = (props) => {
 };
 
 const PreviewSelect = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     category: rootCategoryIndex,
   } = data;
@@ -186,7 +186,7 @@ const PreviewSelect = (props) => {
 };
 
 const LayerSection = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     category: rootCategoryIndex,
     piping_layer,
@@ -203,7 +203,7 @@ const LayerSection = (props) => {
 };
 
 const PipeTypeSection = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     categories = [],
   } = data;
@@ -246,7 +246,7 @@ const PipeTypeSection = (props) => {
 };
 
 export const RapidPipeDispenser = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     category: rootCategoryIndex,
   } = data;

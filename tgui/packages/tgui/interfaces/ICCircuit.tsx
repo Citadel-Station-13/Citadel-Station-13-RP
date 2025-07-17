@@ -6,7 +6,7 @@ import { decodeHtmlEntities } from 'common/string';
 import { formatPower } from "../format";
 
 export const ICCircuit = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     name,
@@ -99,7 +99,7 @@ export const ICCircuit = (props) => {
 };
 
 const ICIODisplay = (props) => {
-  const { act } = useBackend(context);
+  const { act } = useBackend<any>();
 
   const {
     list,
@@ -121,7 +121,7 @@ const ICIODisplay = (props) => {
 };
 
 const ICLinkDisplay = (props) => {
-  const { act } = useBackend(context);
+  const { act } = useBackend<any>();
 
   const {
     pin,

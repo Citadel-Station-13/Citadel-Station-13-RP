@@ -4,7 +4,7 @@ import { NtosWindow } from "../layouts";
 import { NtosEmailClientViewMessage } from './NtosEmailClient';
 
 export const NtosEmailAdministration = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     error,
@@ -32,7 +32,7 @@ export const NtosEmailAdministration = (props) => {
 };
 
 const MainMenu = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     accounts,
   } = data;
@@ -60,7 +60,7 @@ const MainMenu = (props) => {
 };
 
 const EmailError = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     error,
   } = data;
@@ -72,7 +72,7 @@ const EmailError = (props) => {
 };
 
 const ViewEmail = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   return (
     <Section>
       <NtosEmailClientViewMessage administrator />
@@ -81,7 +81,7 @@ const ViewEmail = (props) => {
 };
 
 const ViewAccount = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     error,
     msg_title,

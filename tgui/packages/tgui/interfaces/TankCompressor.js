@@ -17,7 +17,7 @@ import { Window } from '../layouts';
 import { GasmixParser } from './common/GasmixParser';
 
 export const TankCompressor = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   return (
     <Window title="Tank Compressor" width={650} height={550}>
       <Window.Content>
@@ -28,7 +28,7 @@ export const TankCompressor = (props) => {
 };
 
 const TankCompressorContent = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const { disk, storage } = data;
   const [currentTab, changeTab] = useSharedState(context, 'compressorTab', 1);
   return (
@@ -68,7 +68,7 @@ const TankCompressorContent = (props) => {
 
 const AlertBoxes = (props) => {
   const { text_content, icon_name, icon_break, color, active } = props;
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   return (
     <Box
       bold
@@ -87,7 +87,7 @@ const AlertBoxes = (props) => {
 };
 
 const TankCompressorControls = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     tankPresent,
     leaking,
@@ -251,7 +251,7 @@ const TankCompressorControls = (props) => {
 };
 
 const TankCompressorRecords = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const { records = [], disk } = data;
   const [activeRecordRef, setActiveRecordRef] = useSharedState(
     context,

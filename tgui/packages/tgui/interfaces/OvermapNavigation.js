@@ -15,7 +15,7 @@ export const OvermapNavigation = (props) => {
 };
 
 export const OvermapNavigationContent = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     sector,
     s_x,

@@ -4,7 +4,7 @@ import { Window } from "../layouts";
 import { toTitleCase } from 'common/string';
 
 export const ICDetailer = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     detail_color,

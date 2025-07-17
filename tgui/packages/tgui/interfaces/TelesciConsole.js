@@ -4,7 +4,7 @@ import { AnimatedNumber, Box, Button, LabeledList, NoticeBox, NumberInput, Secti
 import { Window } from "../layouts";
 
 export const TelesciConsole = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     noTelepad,
@@ -29,7 +29,7 @@ const TelesciNoTelepadError = (props) => {
 };
 
 export const TelesciConsoleContent = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     insertedGps,

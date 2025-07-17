@@ -5,7 +5,7 @@ import { Fragment } from 'inferno';
 import { Window } from "../layouts";
 
 export const MassiveGasPump = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     on,

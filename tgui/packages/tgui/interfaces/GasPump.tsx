@@ -3,7 +3,7 @@ import { Button, LabeledList, ProgressBar, Section, LabeledControls, AnimatedNum
 import { Window } from "../layouts";
 
 export const GasPump = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     on,

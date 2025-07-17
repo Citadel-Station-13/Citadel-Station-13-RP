@@ -3,7 +3,7 @@ import { Box, Button, Dimmer, Icon, Section, Stack } from 'tgui-core/components'
 import { NtosWindow } from '../layouts';
 
 const NoIDDimmer = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const { owner } = data;
   return (
     <Stack>
@@ -32,7 +32,7 @@ const NoIDDimmer = (props) => {
 };
 
 export const NtosMessenger = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     owner,
     messages = [],

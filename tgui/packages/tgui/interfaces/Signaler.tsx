@@ -4,7 +4,7 @@ import { Button, Grid, NumberInput, Section } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 export const Signaler = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   return (
     <Window
       width={280}
@@ -17,7 +17,7 @@ export const Signaler = (props) => {
 };
 
 export const SignalerContent = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     code,
     frequency,

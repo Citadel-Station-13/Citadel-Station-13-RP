@@ -53,7 +53,7 @@ export const OperatingComputer = (props) => {
 };
 
 const PatientStateView = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     table,
     hasOccupant,

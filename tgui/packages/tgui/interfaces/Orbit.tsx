@@ -60,7 +60,7 @@ type OrbitedButtonProps = {
 }
 
 const BasicSection = (props: BasicSectionProps: any) => {
-  const { act } = useBackend(context);
+  const { act } = useBackend<any>();
   const { searchText, source, title } = props;
   const things = source.filter(searchFor(searchText));
   things.sort(compareNumberedText);
@@ -82,7 +82,7 @@ const BasicSection = (props: BasicSectionProps: any) => {
 };
 
 const OrbitedButton = (props: OrbitedButtonProps: any) => {
-  const { act } = useBackend(context);
+  const { act } = useBackend<any>();
   const { color, thing } = props;
 
   return (

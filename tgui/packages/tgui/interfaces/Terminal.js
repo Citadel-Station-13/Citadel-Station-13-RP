@@ -3,7 +3,7 @@ import { NoticeBox, Section } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 export const Terminal = (_, context) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const { uppertext, messages } = data;
   return (
     <Window theme={data.tguitheme} title="Terminal" width={480} height={520}>
@@ -19,7 +19,7 @@ export const Terminal = (_, context) => {
 
 const Messages = (props) => {
   const { messages } = props;
-  const { act } = useBackend(context);
+  const { act } = useBackend<any>();
   return messages.map(message => {
     return (
       <Section key={message.key}>

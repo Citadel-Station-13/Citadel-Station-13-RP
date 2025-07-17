@@ -3,7 +3,7 @@ import { Button, LabeledList, Section, AnimatedNumber, Dropdown } from "tgui-cor
 import { Window } from "../layouts";
 
 export const Floorbot = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     on,

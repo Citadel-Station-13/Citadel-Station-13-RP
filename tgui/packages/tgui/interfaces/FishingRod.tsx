@@ -25,7 +25,7 @@ type FishingSlotProps = {
 };
 
 const FishingRodSlot = (props: FishingSlotProps) => {
-  const { act } = useBackend(context);
+  const { act } = useBackend<any>();
 
   const icon_wrapper = (icon) => (
     <Box

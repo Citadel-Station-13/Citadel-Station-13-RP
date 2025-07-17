@@ -4,7 +4,7 @@ import { Box, Button, LabeledList, ProgressBar, Section } from "tgui-core/compon
 import { Window } from "../layouts";
 
 export const XenoarchSuspension = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     cell,
@@ -30,33 +30,33 @@ export const XenoarchSuspension = (props) => {
               This interface is locked. Swipe an ID card to unlock it.
             </Box>
           ) || (
-            <Fragment>
-              <LabeledList>
-                <LabeledList.Item label="Cell Charge">
-                  {cell && (
-                    <ProgressBar
-                      ranges={{
-                        good: [cellMaxCharge * 0.75, Infinity],
-                        average: [cellMaxCharge * 0.5, cellMaxCharge * 0.75],
-                        bad: [-Infinity, cellMaxCharge * 0.5],
-                      }}
-                      value={cellCharge}
-                      maxValue={cellMaxCharge} />
-                  ) || (
-                    <Box color="bad">No cell inserted.</Box>
-                  )}
-                </LabeledList.Item>
-              </LabeledList>
-              <Button
-                fluid
-                mt={1}
-                icon="meteor"
-                selected={suspension_field}
-                onClick={() => act("toggle_field")}>
-                {suspension_field ? "Disengage Suspension Field" : "Engage Suspension Field"}
-              </Button>
-            </Fragment>
-          )}
+              <Fragment>
+                <LabeledList>
+                  <LabeledList.Item label="Cell Charge">
+                    {cell && (
+                      <ProgressBar
+                        ranges={{
+                          good: [cellMaxCharge * 0.75, Infinity],
+                          average: [cellMaxCharge * 0.5, cellMaxCharge * 0.75],
+                          bad: [-Infinity, cellMaxCharge * 0.5],
+                        }}
+                        value={cellCharge}
+                        maxValue={cellMaxCharge} />
+                    ) || (
+                        <Box color="bad">No cell inserted.</Box>
+                      )}
+                  </LabeledList.Item>
+                </LabeledList>
+                <Button
+                  fluid
+                  mt={1}
+                  icon="meteor"
+                  selected={suspension_field}
+                  onClick={() => act("toggle_field")}>
+                  {suspension_field ? "Disengage Suspension Field" : "Engage Suspension Field"}
+                </Button>
+              </Fragment>
+            )}
         </Section>
       </Window.Content>
     </Window>

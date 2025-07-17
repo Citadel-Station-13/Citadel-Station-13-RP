@@ -17,7 +17,7 @@ export const SupermatterMonitor = (props) => (
 );
 
 export const SupermatterMonitorContent = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const { active } = data;
 
@@ -29,7 +29,7 @@ export const SupermatterMonitorContent = (props) => {
 };
 
 const SupermatterMonitorList = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const { supermatters } = data;
 
@@ -59,7 +59,7 @@ const SupermatterMonitorList = (props) => {
 };
 
 const SupermatterMonitorActive = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const { SM_History } = data;
 
   const {
@@ -88,10 +88,10 @@ const SupermatterMonitorActive = (props) => {
   const EPRSingleton = SM_History.EPR_history[SM_History.EPR_history.length - 1] || 0;
 
   const IntegrityMax = 100;
-  const EERMax = Math.max(EERSingleton)+200;
-  const TemperatureMax = Math.max(TemperatureSingleton)+200;
-  const PressureMax = Math.max(PressureSingleton)+200;
-  const EPRMax = Math.max(EPRSingleton)+2;
+  const EERMax = Math.max(EERSingleton) + 200;
+  const TemperatureMax = Math.max(TemperatureSingleton) + 200;
+  const PressureMax = Math.max(PressureSingleton) + 200;
+  const EPRMax = Math.max(EPRSingleton) + 2;
 
   return (
     <Fragment>
@@ -198,7 +198,7 @@ const SupermatterMonitorActive = (props) => {
         </LabeledList.Item>
         <LabeledList.Item label="Chamber EPR">
           <Box color={(SM_EPR > 4 && 'bad')
-            ||(SM_EPR > 1 && 'average') || 'good'}>
+            || (SM_EPR > 1 && 'average') || 'good'}>
             <AnimatedNumber format={(val) => round(val, 2)}
               value={SM_EPR} />
           </Box>

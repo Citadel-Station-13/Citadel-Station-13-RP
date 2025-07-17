@@ -14,7 +14,7 @@ const STATUS2TEXT = {
 };
 
 const NoChannelDimmer = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const { owner } = data;
   return (
     <Dimmer>
@@ -55,7 +55,7 @@ const NoChannelDimmer = (props) => {
 };
 
 export const NtosNetChat = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     title,
     can_admin,

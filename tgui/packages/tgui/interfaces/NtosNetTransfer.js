@@ -3,7 +3,7 @@ import { Button, Box, LabeledList, ProgressBar, Section, Icon } from 'tgui-core/
 import { NtosWindow } from '../layouts';
 
 export const NtosNetTransfer = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     error,
@@ -34,7 +34,7 @@ export const NtosNetTransfer = (props) => {
 };
 
 const P2PError = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     error,
   } = data;
@@ -52,7 +52,7 @@ const P2PError = (props) => {
 };
 
 const P2PDownload = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     download_name,
     download_progress,
@@ -88,7 +88,7 @@ const P2PDownload = (props) => {
 };
 
 const P2PUpload = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     upload_clients,
     upload_filename,
@@ -124,7 +124,7 @@ const P2PUpload = (props) => {
 };
 
 const P2PUploadServer = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     upload_filelist,
   } = data;
@@ -158,7 +158,7 @@ const P2PUploadServer = (props) => {
 };
 
 const P2PAvailable = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     servers,
   } = data;

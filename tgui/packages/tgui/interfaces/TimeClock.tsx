@@ -5,7 +5,7 @@ import { Window } from "../layouts";
 import { RankIcon } from "./common/RankIcon";
 
 export const TimeClock = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     user_name,
@@ -72,10 +72,10 @@ export const TimeClock = (props) => {
                       Requires PTO - {job_datum.pto_department}
                     </Box>
                   ) || (
-                    <Box>
-                      Neutral
-                    </Box>
-                  )}
+                      <Box>
+                        Neutral
+                      </Box>
+                    )}
                 </LabeledList.Item>
               </Fragment>
             )}
@@ -98,27 +98,27 @@ export const TimeClock = (props) => {
                 </Box>
               )
             ) || (
-              Object.keys(job_choices).length
-              && Object.keys(job_choices).map(job => {
-                let alt_titles = job_choices[job];
+                Object.keys(job_choices).length
+                && Object.keys(job_choices).map(job => {
+                  let alt_titles = job_choices[job];
 
-                return alt_titles.map(title => (
-                  <Button
-                    key={title}
-                    icon="suitcase"
-                    onClick={() => act("switch-to-onduty-rank", {
-                      "switch-to-onduty-rank": job,
-                      "switch-to-onduty-assignment": title,
-                    })}>
-                    {title}
-                  </Button>
-                ));
-              }) || (
-                <Box color="bad">
-                  No Open Positions - See Head Of Personnel
-                </Box>
-              )
-            )}
+                  return alt_titles.map(title => (
+                    <Button
+                      key={title}
+                      icon="suitcase"
+                      onClick={() => act("switch-to-onduty-rank", {
+                        "switch-to-onduty-rank": job,
+                        "switch-to-onduty-assignment": title,
+                      })}>
+                      {title}
+                    </Button>
+                  ));
+                }) || (
+                  <Box color="bad">
+                    No Open Positions - See Head Of Personnel
+                  </Box>
+                )
+              )}
           </Section>
         )}
       </Window.Content>
