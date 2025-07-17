@@ -15,10 +15,6 @@
 /obj/tether_away_spawner/debrisfield/carp,
 /turf/template_noop,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
-"i" = (
-/obj/spawner/corpse/skeleton,
-/turf/simulated/floor,
-/area/tether_away/debrisfield_vr/shuttle_buffer)
 "j" = (
 /obj/random/junk,
 /turf/simulated/floor,
@@ -81,7 +77,7 @@ d
 d
 d
 j
-i
+d
 d
 b
 a
@@ -92,7 +88,7 @@ O
 M
 d
 j
-i
+d
 d
 d
 d
@@ -126,7 +122,7 @@ d
 c
 c
 c
-i
+d
 d
 c
 c
@@ -187,7 +183,7 @@ a
 a
 d
 d
-i
+d
 c
 c
 c

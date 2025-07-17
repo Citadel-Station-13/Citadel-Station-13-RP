@@ -111,10 +111,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/submap/osiris_field/cargo_vessel2)
-"ov" = (
-/obj/spawner/corpse/skeleton,
-/turf/simulated/floor/tiled/techfloor/monogrid,
-/area/submap/osiris_field/cargo_vessel2)
 "oR" = (
 /obj/random/multiple/large_corp_crate/no_weapons,
 /turf/simulated/floor/plating,
@@ -1032,7 +1028,7 @@ Bn
 Td
 at
 hm
-ov
+hm
 hm
 hm
 hm
@@ -1062,7 +1058,7 @@ lC
 hm
 at
 Td
-ov
+hm
 hm
 hm
 Td
@@ -1151,7 +1147,7 @@ aU
 aU
 hm
 hm
-ov
+hm
 hm
 hm
 hm
@@ -1168,7 +1164,7 @@ lC
 Td
 hm
 hm
-ov
+hm
 Td
 qH
 qH
