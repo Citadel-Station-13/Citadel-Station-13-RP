@@ -33,6 +33,7 @@
 	var/c_profile_fullbody_href
 
 	/// base bodyset to use
+	/// * Serialied as ID
 	/// * Nullable
 	//  TODO: impl, prototype
 	var/datum/prototype/c_bodyset
@@ -86,4 +87,16 @@
 	)
 
 /datum/character_appearance/deserialize(list/data)
+	#warn impl
+
+
+/datum/character_appearance/clone() as /datum/character_appearance
+	var/datum/character_appearance/clone = new
+	#warn impl
+
+/**
+ * Gets the appearance when `overlay_from` is overlaid ontop of us.
+ */
+/datum/character_appearance/proc/compute_result(datum/character_appearance/overlay_from) as /datum/character_appearance
+	var/datum/character_appearance/overlay = new
 	#warn impl

@@ -12,3 +12,21 @@
 	var/blood_color
 
 #warn impl
+
+/datum/character_physiology/proc/serialize()
+	return list()
+	#warn serialize
+
+/datum/character_physiology/proc/deserialize(list/data)
+	#warn impl
+
+/datum/character_physiology/clone() as /datum/character_physiology
+	var/datum/character_physiology/clone = new
+	#warn impl
+
+/**
+ * Gets the physiology when `overlay_from` is overlaid ontop of us.
+ */
+/datum/character_physiology/proc/compute_result(datum/character_physiology/overlay_from) as /datum/character_physiology
+	var/datum/character_physiology/overlay = new
+	#warn impl

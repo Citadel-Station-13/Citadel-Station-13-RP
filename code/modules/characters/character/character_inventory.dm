@@ -3,14 +3,10 @@
 
 /**
  * Stores items stored by a character.
- *
  * * Persistent inventory can live here for things like event characters / offmap characters.
- * * Persistent loadout lives here.
+ * * This does not store loadout data. Loadout may reference things in this.
  */
 /datum/character_inventory
-
-
-#warn impl
 
 /datum/character_inventory/serialize()
 	return list()

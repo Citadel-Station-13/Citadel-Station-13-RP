@@ -2,22 +2,37 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
- * Stores overrides for a bodypart.
- *
- * * Specifically appearance; does not store physiology!
+ * Stores overrides for a bodypart's appearance.
  */
 /datum/character_bodypart_appearance
-	/// bodyset override
-	var/bodyset_id
-	/// body markings
-	var/list/datum/bodyset_marking_descriptor/body_markings
+	/// bodyset overridej
+	/// * Serialied as ID
+	/// * Nullable
+	//  TODO: impl, prototype
+	var/datum/prototype/c_bodyset
+	/// body markings. ordered.
+	/// * Nullable
+	/// * If set, fully overrides markings on that part.
+	var/list/datum/bodyset_marking_descriptor/c_body_markings
 	/// override skin color
-	var/skin_color
+	/// * Nullable
+	var/c_skin_color
 
 /datum/character_bodypart_appearance/serialize()
-	return list()
+	var/list/serialized_markings
+	#warn serialize
+	return list(
+		"c_bodyset" = c_bodyset?.id,
+		"c_bodymarks" = serialized_markings,
+		"c_skin_color" = c_skin_color,
+	)
 
 /datum/character_bodypart_appearance/deserialize(list/data)
-	return
+	#warn impl
 
-#warn impl
+/**
+ * Gets the appearance when `overlay_from` is overlaid ontop of us.
+ */
+/datum/character_bodypart_appearance/proc/compute_result(datum/character_bodypart_appearance/overlay_from) as /datum/character_bodypart_appearance
+	var/datum/character_bodypart_appearance/overlay = new
+	#warn impl
