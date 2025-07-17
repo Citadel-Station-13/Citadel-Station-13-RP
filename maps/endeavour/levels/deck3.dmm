@@ -712,7 +712,10 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled,
+/obj/effect/floor_decal/spline/plain{
+	dir = 5
+	},
+/turf/simulated/floor/carpet/tealcarpet,
 /area/crew_quarters/fitness)
 "aBU" = (
 /obj/structure/cable/green{
@@ -1507,8 +1510,9 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
 "aZV" = (
-/turf/simulated/wall/r_wall/prepainted/command,
-/area/maintenance/cargo)
+/obj/machinery/vending/fitness,
+/turf/simulated/floor/tiled/dark,
+/area/vacant/vacant_shop)
 "bax" = (
 /obj/structure/cable/green{
 	icon_state = "0-2"
@@ -2547,6 +2551,10 @@
 	},
 /obj/structure/table/wooden_reinforced,
 /obj/random/coin,
+/obj/item/pickaxe/drill{
+	name = "thermal drill";
+	desc = "Go get it."
+	},
 /turf/simulated/floor/wood,
 /area/maintenance/cargo)
 "bPs" = (
@@ -3589,7 +3597,6 @@
 /obj/machinery/camera/network/command{
 	dir = 4
 	},
-/obj/structure/table/rack,
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
 "cNr" = (
@@ -5627,6 +5634,7 @@
 /obj/machinery/camera/network/civilian{
 	dir = 8
 	},
+/obj/machinery/biogenerator,
 /turf/simulated/floor/wood,
 /area/hydroponics/garden)
 "egw" = (
@@ -6303,13 +6311,7 @@
 "eGL" = (
 /obj/machinery/light,
 /obj/structure/fitness/punchingbag,
-/obj/effect/floor_decal/corner_steel_grid{
-	dir = 10
-	},
-/obj/effect/floor_decal/corner_steel_grid{
-	dir = 5
-	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/carpet/tealcarpet,
 /area/crew_quarters/fitness)
 "eGX" = (
 /obj/machinery/door/blast/regular{
@@ -6661,7 +6663,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/carpet/tealcarpet,
 /area/crew_quarters/fitness)
 "eVb" = (
 /turf/simulated/floor/tiled/techfloor,
@@ -8551,6 +8553,10 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/dark,
 /area/security/lobby)
+"gpX" = (
+/obj/structure/disposalpipe/broken,
+/turf/simulated/floor/plating,
+/area/maintenance/pool)
 "gqj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
@@ -8593,10 +8599,10 @@
 /turf/simulated/floor,
 /area/maintenance/security/port)
 "gtD" = (
-/obj/structure/table/rack/shelf,
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/structure/table/rack/shelf,
 /turf/simulated/floor/tiled/dark,
 /area/vacant/vacant_shop)
 "gtG" = (
@@ -9438,13 +9444,10 @@
 /turf/simulated/floor/reinforced,
 /area/quartermaster/belterdock/refinery)
 "haU" = (
-/obj/effect/floor_decal/corner_steel_grid{
-	dir = 9
-	},
 /obj/machinery/newscaster{
 	pixel_x = -28
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/carpet/tealcarpet,
 /area/crew_quarters/fitness)
 "hbK" = (
 /obj/effect/floor_decal/industrial/danger{
@@ -10916,9 +10919,9 @@
 /turf/simulated/wall/r_wall/prepainted/security,
 /area/security/riot_control)
 "icz" = (
-/obj/machinery/biogenerator,
-/turf/simulated/floor/wood,
-/area/hydroponics/garden)
+/obj/effect/debris/cleanable/vomit,
+/turf/simulated/floor/plating,
+/area/maintenance/pool)
 "icM" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central6,
 /turf/simulated/floor/tiled,
@@ -11194,13 +11197,10 @@
 /area/crew_quarters/sleep/Dorm_8)
 "iqd" = (
 /obj/machinery/fitness/heavy/lifter,
-/obj/effect/floor_decal/corner_steel_grid{
-	dir = 10
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
 	},
-/obj/effect/floor_decal/corner_steel_grid{
-	dir = 5
-	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/carpet/tealcarpet,
 /area/crew_quarters/fitness)
 "iqj" = (
 /obj/machinery/power/port_gen/pacman/mrs{
@@ -11953,16 +11953,13 @@
 /area/shuttle/mining_ship/general)
 "iSj" = (
 /obj/machinery/fitness/heavy/lifter,
-/obj/effect/floor_decal/corner_steel_grid{
-	dir = 10
-	},
-/obj/effect/floor_decal/corner_steel_grid{
-	dir = 5
-	},
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/tiled,
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/tealcarpet,
 /area/crew_quarters/fitness)
 "iSy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -12695,14 +12692,8 @@
 /turf/simulated/wall/r_wall/prepainted/security,
 /area/security/security_lockerroom)
 "jwK" = (
-/obj/effect/floor_decal/corner_steel_grid{
-	dir = 10
-	},
 /obj/machinery/fitness/punching_bag/clown,
-/obj/effect/floor_decal/corner_steel_grid{
-	dir = 5
-	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/carpet/tealcarpet,
 /area/crew_quarters/fitness)
 "jwQ" = (
 /obj/structure/table/rack/shelf,
@@ -13209,10 +13200,7 @@
 /obj/machinery/camera/network/civilian{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner_steel_grid{
-	dir = 10
-	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/carpet/tealcarpet,
 /area/crew_quarters/fitness)
 "jQE" = (
 /obj/structure/catwalk,
@@ -13624,8 +13612,12 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d3aftmaint)
 "kfD" = (
-/turf/space/basic,
-/area/endeavour/command/turrets)
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/fiftyspawner/glass,
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
 "kfO" = (
 /turf/simulated/floor/wood,
 /area/maintenance/pool)
@@ -13779,6 +13771,9 @@
 "kkx" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 4
+	},
+/obj/landmark{
+	name = "maint_pred"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/pool)
@@ -16042,16 +16037,13 @@
 /area/hydroponics/garden)
 "mlH" = (
 /obj/structure/fitness/weightlifter,
-/obj/effect/floor_decal/corner_steel_grid{
-	dir = 10
-	},
-/obj/effect/floor_decal/corner_steel_grid{
-	dir = 5
-	},
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/tiled,
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/tealcarpet,
 /area/crew_quarters/fitness)
 "mlK" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -16694,7 +16686,7 @@
 /area/quartermaster/miningdock)
 "mLm" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/carpet/tealcarpet,
 /area/crew_quarters/fitness)
 "mMk" = (
 /obj/machinery/power/tracker,
@@ -17570,10 +17562,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner_steel_grid{
-	dir = 10
-	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/carpet/tealcarpet,
 /area/crew_quarters/fitness)
 "nsH" = (
 /obj/structure/table/wooden_reinforced,
@@ -18297,14 +18286,11 @@
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
 "nRx" = (
-/obj/effect/floor_decal/corner_steel_grid{
-	dir = 10
-	},
 /obj/machinery/fitness/punching_bag,
-/obj/effect/floor_decal/corner_steel_grid{
-	dir = 5
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/carpet/tealcarpet,
 /area/crew_quarters/fitness)
 "nRR" = (
 /turf/simulated/wall/prepainted,
@@ -18746,11 +18732,11 @@
 /turf/simulated/floor/tiled/monodark,
 /area/quartermaster/delivery)
 "oiH" = (
-/obj/item/stack/cable_coil/yellow,
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/structure/table/rack,
+/obj/structure/table/steel,
+/obj/item/storage/toolbox/electrical,
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/starboardsolar)
 "oiQ" = (
@@ -19798,10 +19784,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "pcx" = (
-/obj/effect/floor_decal/corner_steel_grid{
-	dir = 9
-	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/carpet/tealcarpet,
 /area/crew_quarters/fitness)
 "pcI" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -20083,6 +20066,7 @@
 /obj/structure/toilet{
 	dir = 1
 	},
+/obj/effect/debris/cleanable/vomit,
 /turf/simulated/floor/plating,
 /area/maintenance/pool)
 "pkv" = (
@@ -21453,13 +21437,10 @@
 /area/endeavour/hallway/d3portamidhall)
 "qln" = (
 /obj/structure/fitness/weightlifter,
-/obj/effect/floor_decal/corner_steel_grid{
-	dir = 10
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
 	},
-/obj/effect/floor_decal/corner_steel_grid{
-	dir = 5
-	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/carpet/tealcarpet,
 /area/crew_quarters/fitness)
 "qlU" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -21915,8 +21896,11 @@
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/crew_quarters/heads/hop)
 "qCM" = (
-/turf/simulated/wall/r_wall/prepainted/security,
-/area/space)
+/obj/structure/table/rack,
+/obj/random/maintenance,
+/obj/random/maintenance,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d3fwdmaint)
 "qCY" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -22569,14 +22553,8 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d3aftmaint)
 "rfb" = (
-/obj/effect/floor_decal/corner_steel_grid{
-	dir = 10
-	},
-/obj/effect/floor_decal/corner_steel_grid{
-	dir = 1
-	},
 /obj/machinery/media/jukebox,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/carpet/tealcarpet,
 /area/crew_quarters/fitness)
 "rfg" = (
 /turf/simulated/floor/water/pool,
@@ -24514,7 +24492,10 @@
 /area/quartermaster/warehouse)
 "soX" = (
 /obj/machinery/holopad,
-/turf/simulated/floor/tiled,
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/tealcarpet,
 /area/crew_quarters/fitness)
 "spp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -25714,9 +25695,10 @@
 /turf/simulated/floor/carpet/tealcarpet,
 /area/crew_quarters/sleep/Dorm_8)
 "tjB" = (
-/obj/fiftyspawner/glass,
-/turf/simulated/floor/plating,
-/area/maintenance/dormitory)
+/obj/structure/table/steel,
+/obj/item/storage/toolbox/mechanical,
+/turf/simulated/floor/tiled,
+/area/security/hanger)
 "tjK" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -27171,9 +27153,14 @@
 /turf/simulated/floor/plating,
 /area/security/hallway)
 "unJ" = (
-/obj/machinery/light,
-/turf/simulated/wall/prepainted,
-/area/engineering/substation/deck3amidships)
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/tealcarpet,
+/area/crew_quarters/fitness)
 "uoa" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -28146,7 +28133,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/tealcarpet,
 /area/crew_quarters/fitness)
 "veK" = (
 /obj/machinery/door/blast/regular{
@@ -29040,6 +29030,7 @@
 /area/security/security_processing)
 "vGx" = (
 /obj/machinery/vending/cigarette,
+/obj/effect/debris/cleanable/cobweb2,
 /turf/simulated/floor/wood,
 /area/maintenance/pool)
 "vGH" = (
@@ -29097,6 +29088,8 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
+/obj/structure/table,
+/obj/item/material/ashtray/glass,
 /turf/simulated/floor/wood,
 /area/maintenance/pool)
 "vJk" = (
@@ -30244,6 +30237,12 @@
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/starboardsolar)
+"wxz" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/tealcarpet,
+/area/crew_quarters/fitness)
 "wxD" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -31702,6 +31701,8 @@
 /turf/simulated/floor/tiled/white,
 /area/quartermaster/belterdock/gear)
 "xzc" = (
+/obj/structure/table/steel_reinforced,
+/obj/machinery/recharger,
 /turf/simulated/floor/tiled,
 /area/security/lobby)
 "xzR" = (
@@ -32674,7 +32675,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/carpet/tealcarpet,
 /area/crew_quarters/fitness)
 "ykx" = (
 /obj/structure/cable/green,
@@ -37076,7 +37077,7 @@ lLG
 brs
 brs
 brs
-swy
+alA
 guu
 bxI
 swy
@@ -37445,7 +37446,7 @@ sZl
 gXw
 rSu
 gXw
-lLG
+eFI
 odY
 ewW
 rvT
@@ -37639,7 +37640,7 @@ lXG
 sZl
 sZl
 sZl
-lLG
+eFI
 lMS
 kam
 qek
@@ -37659,7 +37660,7 @@ cXq
 oZW
 lrZ
 swy
-uZQ
+aZV
 eUL
 gtD
 bMf
@@ -37833,7 +37834,7 @@ vrt
 sZl
 vrt
 vrt
-lLG
+eFI
 xeB
 juB
 xYM
@@ -38027,7 +38028,7 @@ rRr
 gXw
 cJJ
 pku
-lLG
+eFI
 wIs
 wGm
 wUZ
@@ -38221,7 +38222,7 @@ vrt
 sZl
 vrt
 vrt
-lLG
+eFI
 qtB
 eip
 bie
@@ -38415,14 +38416,14 @@ aKw
 sZl
 xgS
 jCu
-lLG
 eFI
 eFI
 eFI
-lLG
-lLG
-lLG
-lLG
+eFI
+eFI
+eFI
+eFI
+eFI
 xdg
 sci
 rfg
@@ -38436,8 +38437,8 @@ viE
 aVW
 swy
 xoH
-eXa
-eXa
+uZQ
+uZQ
 eXa
 vWW
 dpE
@@ -38616,7 +38617,7 @@ eFI
 xlj
 huf
 eVt
-lLG
+eFI
 mqK
 sci
 rfg
@@ -38799,7 +38800,7 @@ sZl
 sZl
 sZl
 kfO
-sZl
+icz
 kfO
 sZl
 sZl
@@ -38810,7 +38811,7 @@ mTI
 cQO
 fcy
 tfq
-lLG
+eFI
 jfm
 sci
 ach
@@ -38996,7 +38997,7 @@ sZl
 sZl
 bXv
 kfO
-sZl
+gpX
 kfO
 cjl
 uhS
@@ -39004,7 +39005,7 @@ jWp
 wvv
 gwG
 mVs
-lLG
+eFI
 vkZ
 sci
 ach
@@ -39195,10 +39196,10 @@ vrt
 tIj
 nTC
 eFI
-lLG
+eFI
 dbw
 jAn
-lLG
+eFI
 jGZ
 sci
 ach
@@ -40399,7 +40400,7 @@ eCc
 wyr
 wyr
 wyr
-kfD
+pRW
 pRW
 pRW
 pRW
@@ -40593,7 +40594,7 @@ tqQ
 oWd
 icx
 icx
-kfD
+pRW
 pRW
 pRW
 pRW
@@ -40787,7 +40788,7 @@ bly
 yiF
 icx
 icx
-kfD
+pRW
 pRW
 pRW
 pRW
@@ -41369,7 +41370,7 @@ tsH
 gpB
 icx
 icx
-qCM
+icx
 pRW
 pRW
 pRW
@@ -41563,7 +41564,7 @@ icx
 icx
 icx
 icx
-qCM
+icx
 pRW
 pRW
 pRW
@@ -41755,9 +41756,9 @@ hPf
 iAo
 fEj
 jmX
-kDB
-kDB
-qCM
+eEQ
+eEQ
+eEQ
 pRW
 pRW
 jYr
@@ -41949,8 +41950,8 @@ nyW
 wqs
 lMO
 hNE
-kDB
-kDB
+eEQ
+eEQ
 eEQ
 eEQ
 eEQ
@@ -42144,11 +42145,11 @@ kBP
 pNm
 tDe
 eEQ
-eEQ
-eEQ
-eEQ
-eEQ
-sWC
+ooX
+kNj
+ooX
+ooX
+ooX
 iVS
 pvA
 eGX
@@ -42340,7 +42341,7 @@ hvn
 eEQ
 dpX
 ooX
-kNj
+ooX
 ooX
 ooX
 fCO
@@ -42922,7 +42923,7 @@ kDB
 eEQ
 oaR
 aAJ
-aAJ
+tjB
 lca
 ooX
 fCO
@@ -51442,8 +51443,8 @@ fLd
 fLd
 fLd
 fLd
-daj
-daj
+sqr
+sqr
 qHZ
 pDS
 pDS
@@ -51637,7 +51638,7 @@ fLd
 aqH
 fLd
 suh
-daj
+sqr
 sqr
 fUO
 pDS
@@ -51820,9 +51821,9 @@ gak
 blM
 iwU
 inp
-obw
-obw
-vdU
+wxz
+pcx
+unJ
 jwK
 fPN
 eJJ
@@ -51831,7 +51832,7 @@ hAr
 xeq
 fLd
 pDS
-daj
+pDS
 sqr
 sqr
 suh
@@ -52023,9 +52024,9 @@ bNb
 xuC
 fLd
 kgl
-unJ
+fLd
+bDh
 pDS
-daj
 djf
 sqr
 sqr
@@ -52209,8 +52210,8 @@ vdD
 ctO
 mnu
 mlH
-obw
-vdU
+pcx
+unJ
 eGL
 fPN
 pHf
@@ -52218,8 +52219,8 @@ fLd
 fLd
 xwr
 fLd
+kfD
 pDS
-daj
 pDS
 lKv
 sqr
@@ -52413,8 +52414,8 @@ pDS
 hHt
 pDS
 pDS
-daj
-bDh
+pDS
+pDS
 pDS
 vqI
 mcg
@@ -52607,8 +52608,8 @@ mQk
 uqr
 hEk
 pDS
-daj
-tjB
+pDS
+pDS
 pDS
 vqI
 mcg
@@ -52801,8 +52802,8 @@ pDS
 pDS
 mcg
 pDS
-daj
-qHZ
+pDS
+pDS
 gXD
 gXD
 mcg
@@ -53189,7 +53190,7 @@ wgJ
 ijS
 pDS
 pDS
-daj
+pDS
 viQ
 mQk
 pDS
@@ -54526,7 +54527,7 @@ hJb
 xkC
 dBL
 bUz
-icz
+cqZ
 cqZ
 mCj
 ipa
@@ -54898,15 +54899,15 @@ pRW
 pRW
 pRW
 pRW
-aZV
-aZV
-aZV
-aZV
-aZV
-aZV
-aZV
-aZV
-aZV
+riL
+riL
+riL
+riL
+riL
+riL
+riL
+riL
+riL
 ozQ
 jQE
 oem
@@ -57835,7 +57836,7 @@ abB
 avK
 liT
 avK
-pty
+qCM
 jUw
 pty
 agy

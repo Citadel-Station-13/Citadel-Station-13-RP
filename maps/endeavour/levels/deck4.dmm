@@ -3278,6 +3278,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4starboardhall)
+"cRL" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/air_alarm/west_mount,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d4fwdmaint)
 "cRV" = (
 /obj/machinery/porta_turret/crescent{
 	density = 1;
@@ -5305,6 +5310,11 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/tcommsat/computer)
+"eNM" = (
+/obj/item/trash/punctured_can,
+/obj/structure/table/steel,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d4fwdmaint)
 "eNP" = (
 /obj/structure/cable{
 	icon_state = "0-8"
@@ -6294,6 +6304,16 @@
 /obj/map_helper/access_helper/airlock/station/maintenance,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4fwdmaint)
+"fKZ" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/effect/floor_decal/rust,
+/obj/structure/table/rack/shelf/steel,
+/obj/item/storage/briefcase/inflatable,
+/obj/item/storage/briefcase/inflatable,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d4fwdmaint)
 "fLp" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -6884,7 +6904,7 @@
 /area/engineering/storage)
 "gkk" = (
 /obj/structure/sign/department/drones,
-/turf/simulated/wall/r_wall/prepainted/engineering,
+/turf/simulated/wall/prepainted/engineering,
 /area/engineering/drone_fabrication)
 "gkC" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -7400,10 +7420,8 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d4starboardforhall)
 "gHm" = (
-/obj/structure/closet,
-/obj/machinery/air_alarm/north_mount,
-/turf/simulated/floor/plating,
-/area/endeavour/hallway/d4fwdmaint)
+/turf/simulated/wall/prepainted/engineering,
+/area/endeavour/hallway/d4aftmaint)
 "gIB" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -16855,6 +16873,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
+/obj/structure/reagent_dispensers/watertank,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4fwdmaint)
 "pHk" = (
@@ -19015,12 +19034,8 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/portnacelle)
 "rUb" = (
-/obj/map_helper/access_helper/airlock/station/engineering/department{
-	name = "hallway";
-	req_one_access = list(10,24,11,19)
-	},
-/turf/simulated/floor/plating,
-/area/endeavour/hallway/d4fwdmaint)
+/turf/simulated/wall/prepainted/engineering,
+/area/engineering/drone_fabrication)
 "rUq" = (
 /obj/structure/toilet{
 	dir = 4
@@ -19552,6 +19567,9 @@
 /obj/machinery/air_alarm/east_mount,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
+"sBc" = (
+/turf/simulated/wall/prepainted/engineering,
+/area/engineering/portnacelle)
 "sBU" = (
 /obj/structure/table/rack{
 	dir = 8;
@@ -21581,6 +21599,11 @@
 	},
 /turf/simulated/wall/r_wall/prepainted/engineering/atmos,
 /area/engineering/atmos)
+"uxt" = (
+/obj/structure/closet,
+/turf/simulated/floor/plating,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d4fwdmaint)
 "uxC" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -25549,6 +25572,10 @@
 /area/engineering/locker_room)
 "yeM" = (
 /obj/machinery/atmospherics/pipe/tank/air,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d4fwdmaint)
+"yfp" = (
+/obj/structure/table/steel,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4fwdmaint)
 "yfM" = (
@@ -33010,9 +33037,9 @@ iYp
 cCF
 hZt
 saA
-saA
+sBc
 dmg
-saA
+sBc
 saA
 saA
 saA
@@ -33816,11 +33843,11 @@ uHx
 uHx
 uHx
 fpa
-uUN
+gHm
 jdF
-uUN
-uUN
-uUN
+gHm
+gHm
+gHm
 heJ
 heJ
 heJ
@@ -37508,13 +37535,13 @@ dkO
 mBD
 qzJ
 rtK
-uUN
-uUN
-uUN
-uUN
-uUN
-uUN
-uUN
+gHm
+gHm
+gHm
+gHm
+gHm
+gHm
+gHm
 uUN
 kNH
 kNH
@@ -42892,13 +42919,13 @@ bkd
 gXP
 sYk
 vui
-bto
-bto
+rUb
+rUb
 gkk
 qNT
-bto
-bto
-bto
+rUb
+rUb
+rUb
 ujd
 wJf
 eRS
@@ -43086,7 +43113,7 @@ rcZ
 gXP
 xGE
 jTT
-bto
+rUb
 cxA
 pSo
 sIk
@@ -43280,7 +43307,7 @@ mlp
 xQg
 ehk
 baJ
-bto
+rUb
 uJI
 ubm
 kKU
@@ -43474,7 +43501,7 @@ bYC
 gXP
 ldJ
 wpr
-bto
+rUb
 tWT
 dRg
 wyf
@@ -46203,7 +46230,7 @@ owo
 kIC
 kaY
 kaY
-kaY
+iCe
 iCe
 owo
 kaY
@@ -46982,7 +47009,7 @@ iCe
 goj
 owo
 owo
-kaY
+mcc
 iJZ
 ddd
 vag
@@ -47175,7 +47202,7 @@ owo
 owo
 owo
 owo
-dah
+kaY
 kaY
 iJZ
 ddd
@@ -47202,7 +47229,7 @@ kdV
 iCe
 nmL
 fKB
-rUb
+kaY
 kaY
 kaY
 mcc
@@ -47367,10 +47394,10 @@ jNg
 jNg
 owo
 owo
-hCZ
-mcc
+fKZ
+cRL
 kaY
-iCe
+kaY
 iJZ
 ddd
 oOK
@@ -47560,9 +47587,9 @@ xRj
 jNg
 jNg
 jNg
-owo
-owo
-gHm
+xFU
+xFU
+kaY
 kaY
 kaY
 iJZ
@@ -47755,10 +47782,10 @@ jNg
 jNg
 jNg
 jNg
-owo
-owo
-pgh
-kaY
+xFU
+xFU
+eNM
+yfp
 iJZ
 ddd
 cXH
@@ -47950,7 +47977,7 @@ jNg
 xRj
 xRj
 xRj
-owo
+xFU
 owo
 owo
 xPL
@@ -50088,7 +50115,7 @@ xRj
 xRj
 xRj
 owo
-mcc
+xcd
 onY
 lfB
 lfB
@@ -53580,7 +53607,7 @@ xRj
 jNg
 rME
 owo
-wYt
+uxt
 ciZ
 hPQ
 nku
