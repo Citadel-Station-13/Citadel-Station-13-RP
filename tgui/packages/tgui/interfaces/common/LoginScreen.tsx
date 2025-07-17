@@ -24,7 +24,7 @@ import { FullscreenNotice } from './FullscreenNotice';
  * @param {object} context
  */
 export const LoginScreen = (_properties, context) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     scan,
     isAI,

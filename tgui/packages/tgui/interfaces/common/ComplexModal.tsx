@@ -131,11 +131,11 @@ export const ComplexModal = (props) => {
           icon="check"
           content={"Confirm"}
           color="good"
-          float="right"
+          style={{ float: "right" }}
           m="0"
           onClick={() => modalAnswer(id, curValue, null)}
         />
-        <Box clear="both" />
+        <Box style={{ clear: "both" }} />
       </Box>
     );
   } else if (type === "choice") {
@@ -176,7 +176,7 @@ export const ComplexModal = (props) => {
           icon="times"
           content={data.modal.no_text}
           color="bad"
-          float="left"
+          style={{ float: "left" }}
           mb="0"
           onClick={() => modalAnswer(id, 0, null)}
         />
@@ -184,11 +184,11 @@ export const ComplexModal = (props) => {
           icon="check"
           content={data.modal.yes_text}
           color="good"
-          float="right"
+          style={{ float: "right" }}
           m="0"
           onClick={() => modalAnswer(id, 1, null)}
         />
-        <Box clear="both" />
+        <Box style={{ clear: "both" }} />
       </Box>
     );
   }

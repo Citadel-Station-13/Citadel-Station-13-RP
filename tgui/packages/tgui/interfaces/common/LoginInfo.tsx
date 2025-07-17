@@ -10,7 +10,7 @@ import { Box, Button, NoticeBox } from 'tgui-core/components';
  * @param {object} context
  */
 export const LoginInfo = (_properties, context) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     authenticated,
     rank,
@@ -20,17 +20,17 @@ export const LoginInfo = (_properties, context) => {
   }
   return (
     <NoticeBox info>
-      <Box display="inline-block" verticalAlign="middle">
+      <Box style={{ display: "inline-block" }} verticalAlign="middle">
         Logged in as: {authenticated} ({rank})
       </Box>
       <Button
         icon="sign-out-alt"
         content="Logout and Eject ID"
         color="good"
-        float="right"
+        style={{ float: "right" }}
         onClick={() => act('logout')}
       />
-      <Box clear="both" />
+      <Box style={{ clear: "both" }} />
     </NoticeBox>
   );
 };

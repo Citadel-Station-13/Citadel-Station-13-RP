@@ -3,7 +3,7 @@ import { Button, LabeledList, NumberInput, Section } from 'tgui-core/components'
 import { Window } from '../layouts';
 
 export const AtmosMixer = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   return (
     <Window
       width={370}
@@ -27,7 +27,7 @@ export const AtmosMixer = (props) => {
                 minValue={0}
                 maxValue={data.max_pressure}
                 step={10}
-                onChange={(e, value) => act('pressure', {
+                onChange={(value) => act('pressure', {
                   pressure: value,
                 })} />
               <Button
@@ -46,14 +46,16 @@ export const AtmosMixer = (props) => {
                 unit="%"
                 width="60px"
                 minValue={0}
+                step={1}
                 maxValue={100}
                 stepPixelSize={2}
-                onDrag={(e, value) => act('node1', {
+                onDrag={(value) => act('node1', {
                   concentration: value,
                 })} />
             </LabeledList.Item>
             <LabeledList.Item label="Side Node" labelColor="blue">
               <NumberInput
+                step={1}
                 animated
                 value={data.node2_concentration}
                 unit="%"
@@ -61,7 +63,7 @@ export const AtmosMixer = (props) => {
                 minValue={0}
                 maxValue={100}
                 stepPixelSize={2}
-                onDrag={(e, value) => act('node2', {
+                onDrag={(value) => act('node2', {
                   concentration: value,
                 })} />
             </LabeledList.Item>

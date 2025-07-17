@@ -3,7 +3,7 @@ import { Button, ProgressBar, Box, LabeledList } from "tgui-core/components";
 import { Window } from "../layouts";
 
 export const ClawMachine = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
   const {
     wintick,
     instructions,

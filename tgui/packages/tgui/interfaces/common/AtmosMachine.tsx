@@ -1,10 +1,9 @@
-import { InfernoNode } from "inferno";
-import { BooleanLike } from "../../../common/react";
 import { useBackend } from "../../backend";
 import { Button, LabeledList, NumberInput, ProgressBar, Section, Stack } from "tgui-core/components";
-import { ComponentProps } from "tgui-core/components/Component";
-import { SectionProps } from "tgui-core/components/Section";
 import { Window } from "../../layouts";
+import { SectionProps } from "../../components";
+import { ComponentProps, ReactNode } from "react";
+import { BooleanLike } from "tgui-core/react";
 
 export enum AtmosComponentUIFlags {
   None = 0,
@@ -21,7 +20,7 @@ export interface AtmosComponentControlProps extends SectionProps {
   // set target maximum power draw
   readonly setPowerLimitAct?: (watts: number) => void;
   // additional entries
-  readonly additionalListItems?: InfernoNode;
+  readonly additionalListItems?: ReactNode;
 }
 
 export const AtmosComponentControl = (props: AtmosComponentControlProps) => {
@@ -38,8 +37,8 @@ export const AtmosComponentControl = (props: AtmosComponentControlProps) => {
         )}
         {!!(props.data.controlFlags & AtmosComponentUIFlags.SetPowerLimit) && (
           <LabeledList.Item label="Power">
-            <NumberInput minValue={0} maxValue={props.data.powerRating}
-              value={props.data.powerSetting} onChange={(e, val) => props.setPowerLimitAct?.(val)} />
+            <NumberInput step={1} minValue={0} maxValue={props.data.powerRating}
+              value={props.data.powerSetting} onChange={(val) => props.setPowerLimitAct?.(val)} />
           </LabeledList.Item>
         )}
         {!!(props.data.controlFlags & AtmosComponentUIFlags.SeePowerUsage) && (
@@ -67,10 +66,11 @@ export interface AtmosComponentData {
   powerUsage: number;
 }
 
-export interface AtmosComponentProps extends ComponentProps {
+export interface AtmosComponentProps {
   readonly minumumHeight?: number;
   readonly minumumWidth?: number;
-  readonly additionalListItems?: InfernoNode;
+  readonly additionalListItems?: ReactNode;
+  readonly children?: ReactNode;
   // title
   readonly title: string;
 }

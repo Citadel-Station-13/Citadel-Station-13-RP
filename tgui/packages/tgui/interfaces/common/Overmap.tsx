@@ -1,9 +1,9 @@
-import { Fragment } from 'inferno';
+import { Fragment } from "react";
 import { useBackend } from "../../backend";
 import { Box, Button, LabeledList } from "tgui-core/components";
 
 export const OvermapFlightData = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     disableLimiterControls,
@@ -46,7 +46,7 @@ export const OvermapFlightData = (props) => {
 };
 
 export const OvermapPanControls = (props) => {
-  const { act } = useBackend(context);
+  const { act } = useBackend<any>();
 
   const {
     disabled,

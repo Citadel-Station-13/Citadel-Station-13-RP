@@ -1,11 +1,10 @@
-import { round } from "common/math";
-import { InfernoNode } from "inferno";
-import { BooleanLike } from "../../../common/react";
 import { useBackend } from "../../backend";
 import { AnimatedNumber, Button, LabeledList, NumberInput, ProgressBar, Section, Stack } from "tgui-core/components";
-import { ComponentProps } from "tgui-core/components/Component";
 import { Window } from "../../layouts";
 import { AtmosTank, AtmosTankSlot } from "./Atmos";
+import { ReactNode } from "react";
+import { round } from "tgui-core/math";
+import { BooleanLike } from "tgui-core/react";
 
 enum AtmosPortableUIFlags {
   None = (0),
@@ -24,7 +23,7 @@ interface AtmosPortableControlProps {
   // set flow act
   readonly setFlowAct?: (amt: number) => void;
   // any additional list items
-  readonly additionalListItems?: InfernoNode;
+  readonly additionalListItems?: ReactNode;
 }
 
 export const AtmosPortableControl = (props: AtmosPortableControlProps) => {
@@ -53,8 +52,8 @@ export const AtmosPortableControl = (props: AtmosPortableControlProps) => {
         <LabeledList>
           {props.data.controlFlags & AtmosPortableUIFlags.SetFlow ? (
             <LabeledList.Item label="Flow Limit">
-              <NumberInput value={props.data.flowSetting}
-                maxValue={props.data.flowMax} onChange={(e, val) => props.setFlowAct?.(val)}
+              <NumberInput step={1} minValue={0} value={props.data.flowSetting}
+                maxValue={props.data.flowMax} onChange={(val) => props.setFlowAct?.(val)}
                 unit="L/s" />
             </LabeledList.Item>
           ) : (!!(props.data.controlFlags & AtmosPortableUIFlags.ViewFlow) && (
@@ -129,11 +128,12 @@ export interface AtmosPortableData {
   portConnected: BooleanLike;
 }
 
-interface AtmosPortableProps extends ComponentProps {
+interface AtmosPortableProps {
   readonly minimumHeight?: number;
   readonly minimumWidth?: number;
   readonly name: string;
-  readonly additionalListItems?: InfernoNode;
+  readonly additionalListItems?: ReactNode;
+  readonly children?: ReactNode;
 }
 
 export const AtmosPortable = (props: AtmosPortableProps) => {

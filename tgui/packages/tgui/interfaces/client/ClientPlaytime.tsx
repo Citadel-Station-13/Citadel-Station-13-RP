@@ -3,10 +3,10 @@
  * @license MIT
  */
 
-import { round } from "common/math";
 import { useBackend } from "../../backend";
 import { LabeledList, NoticeBox, ProgressBar, Section } from "tgui-core/components";
 import { Window } from "../../layouts";
+import { round } from "tgui-core/math";
 
 interface ClientPlaytimeData {
   playtime: Record<string, number> | null;
@@ -18,7 +18,7 @@ export const ClientPlaytime = (props) => {
   if (data.playtime === null) {
     return (
       <Window width={400} height={200} title="Playtime Viewer">
-        <NoticeBox warning>Something went wrong while loading your playtime. Is the database connected?</NoticeBox>
+        <NoticeBox>Something went wrong while loading your playtime. Is the database connected?</NoticeBox>
       </Window>
     );
   }

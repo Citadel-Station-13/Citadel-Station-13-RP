@@ -3,7 +3,7 @@ import { Box, Button, LabeledList, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
 export const Cleanbot = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     on,
@@ -97,30 +97,30 @@ export const Cleanbot = (props) => {
                   onClick={() => act("blue_switch")} />
               </Box>
             ) || (
-              <Box>
-                <LabeledList>
-                  <LabeledList.Item label="Odd Looking Screw Twiddled">
-                    <Button
-                      fluid
-                      selected={wet_floors}
-                      onClick={() => act("wet_floors")}
-                      icon="screwdriver">
-                      {wet_floors ? "Yes" : "No"}
-                    </Button>
-                  </LabeledList.Item>
-                  <LabeledList.Item label="Weird Button Pressed">
-                    <Button
-                      fluid
-                      color="brown"
-                      selected={spray_blood}
-                      onClick={() => act("spray_blood")}
-                      icon="screwdriver">
-                      {spray_blood ? "Yes" : "No"}
-                    </Button>
-                  </LabeledList.Item>
-                </LabeledList>
-              </Box>
-            )}
+                <Box>
+                  <LabeledList>
+                    <LabeledList.Item label="Odd Looking Screw Twiddled">
+                      <Button
+                        fluid
+                        selected={wet_floors}
+                        onClick={() => act("wet_floors")}
+                        icon="screwdriver">
+                        {wet_floors ? "Yes" : "No"}
+                      </Button>
+                    </LabeledList.Item>
+                    <LabeledList.Item label="Weird Button Pressed">
+                      <Button
+                        fluid
+                        color="brown"
+                        selected={spray_blood}
+                        onClick={() => act("spray_blood")}
+                        icon="screwdriver">
+                        {spray_blood ? "Yes" : "No"}
+                      </Button>
+                    </LabeledList.Item>
+                  </LabeledList>
+                </Box>
+              )}
           </Section>
         ) || null}
       </Window.Content>
