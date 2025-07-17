@@ -1,0 +1,530 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/template_noop,
+/area/template_noop)
+"c" = (
+/obj/machinery/portable_atmospherics/canister/krypton,
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_shuttle3)
+"f" = (
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_shuttle3)
+"g" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/template_noop)
+"h" = (
+/obj/structure/table/steel_reinforced,
+/obj/structure/salvageable/console_broken_os{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/kafel_full/yellow,
+/area/submap/osiris_field/cargo_shuttle3)
+"i" = (
+/obj/machinery/portable_atmospherics/canister/methane,
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_shuttle3)
+"j" = (
+/obj/machinery/portable_atmospherics/canister/nitricoxide,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_shuttle3)
+"l" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/submap/osiris_field/cargo_shuttle3)
+"m" = (
+/turf/simulated/wall/r_lead,
+/area/submap/osiris_field/cargo_shuttle3)
+"n" = (
+/obj/structure/largecrate/vehicle/quadbike,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_shuttle3)
+"o" = (
+/obj/structure/salvageable/console_broken_os{
+	dir = 4
+	},
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/kafel_full/yellow,
+/area/submap/osiris_field/cargo_shuttle3)
+"q" = (
+/obj/effect/debris/cleanable/blood/oil/streak,
+/turf/simulated/floor/tiled/kafel_full/yellow,
+/area/submap/osiris_field/cargo_shuttle3)
+"s" = (
+/obj/structure/bed/chair/bay/comfy/beige,
+/obj/machinery/light/small/poi{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/kafel_full/yellow,
+/area/submap/osiris_field/cargo_shuttle3)
+"u" = (
+/obj/structure/toilet{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/kafel_full/white,
+/area/submap/osiris_field/cargo_shuttle3)
+"w" = (
+/obj/machinery/atmospherics/component/unary/engine/bigger,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_shuttle3)
+"x" = (
+/obj/structure/salvageable/console_broken_os{
+	dir = 8
+	},
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/kafel_full/yellow,
+/area/submap/osiris_field/cargo_shuttle3)
+"y" = (
+/obj/machinery/door/airlock/external,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_shuttle3)
+"z" = (
+/obj/machinery/portable_atmospherics/canister/empty/phoron,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_shuttle3)
+"A" = (
+/obj/machinery/door/airlock/maintenance_hatch,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_shuttle3)
+"B" = (
+/obj/effect/debris/cleanable/blood/oil/streak,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_shuttle3)
+"C" = (
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/kafel_full/yellow,
+/area/submap/osiris_field/cargo_shuttle3)
+"D" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing,
+/obj/machinery/portable_atmospherics/canister/nitricoxide,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_shuttle3)
+"F" = (
+/turf/template_noop,
+/area/submap/osiris_field/cargo_shuttle3)
+"G" = (
+/obj/machinery/light/small/poi{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/kafel_full/yellow,
+/area/submap/osiris_field/cargo_shuttle3)
+"H" = (
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/turf/simulated/floor/tiled/kafel_full/yellow,
+/area/submap/osiris_field/cargo_shuttle3)
+"I" = (
+/obj/machinery/portable_atmospherics/canister/neon,
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_shuttle3)
+"J" = (
+/turf/simulated/floor/plating,
+/area/template_noop)
+"K" = (
+/obj/structure/largecrate/vehicle/quadtrailer,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_shuttle3)
+"L" = (
+/obj/structure/lattice,
+/obj/item/rollingpaper,
+/turf/template_noop,
+/area/template_noop)
+"M" = (
+/obj/structure/bed/pod,
+/obj/random/bedsheet,
+/turf/simulated/floor/tiled/kafel_full/yellow,
+/area/submap/osiris_field/cargo_shuttle3)
+"N" = (
+/turf/simulated/floor/tiled/kafel_full/yellow,
+/area/submap/osiris_field/cargo_shuttle3)
+"O" = (
+/turf/simulated/floor/tiled/kafel_full/white,
+/area/submap/osiris_field/cargo_shuttle3)
+"P" = (
+/obj/machinery/light/small/poi{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_shuttle3)
+"Q" = (
+/obj/machinery/portable_atmospherics/canister/tritium,
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_shuttle3)
+"R" = (
+/obj/machinery/door/airlock/maintenance_hatch,
+/turf/simulated/floor/tiled/kafel_full/blue,
+/area/submap/osiris_field/cargo_shuttle3)
+"S" = (
+/turf/simulated/floor/tiled/kafel_full/blue,
+/area/submap/osiris_field/cargo_shuttle3)
+"T" = (
+/obj/structure/salvageable/console_broken_os{
+	dir = 1
+	},
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/kafel_full/yellow,
+/area/submap/osiris_field/cargo_shuttle3)
+"U" = (
+/obj/machinery/atmospherics/component/unary/engine/bigger,
+/turf/template_noop,
+/area/submap/osiris_field/cargo_shuttle3)
+"W" = (
+/obj/machinery/portable_atmospherics/canister/methyl_bromide,
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_shuttle3)
+"Z" = (
+/obj/machinery/light/small/poi{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_shuttle3)
+
+(1,1,1) = {"
+F
+U
+m
+m
+m
+m
+m
+m
+m
+m
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+F
+F
+m
+z
+Z
+B
+m
+K
+n
+m
+a
+a
+a
+a
+a
+a
+a
+"}
+(3,1,1) = {"
+F
+w
+m
+z
+f
+f
+f
+f
+B
+m
+m
+m
+m
+a
+a
+a
+a
+"}
+(4,1,1) = {"
+F
+f
+m
+m
+m
+m
+m
+D
+f
+m
+M
+M
+m
+H
+H
+H
+a
+"}
+(5,1,1) = {"
+a
+m
+m
+m
+i
+c
+W
+j
+f
+m
+N
+G
+m
+o
+C
+H
+a
+"}
+(6,1,1) = {"
+a
+y
+B
+y
+f
+f
+f
+f
+B
+m
+R
+m
+m
+s
+T
+H
+a
+"}
+(7,1,1) = {"
+a
+y
+f
+y
+f
+B
+f
+f
+f
+N
+q
+R
+N
+N
+h
+H
+a
+"}
+(8,1,1) = {"
+a
+y
+f
+y
+B
+f
+l
+f
+f
+m
+A
+m
+m
+s
+T
+H
+a
+"}
+(9,1,1) = {"
+a
+m
+m
+m
+I
+Q
+l
+l
+l
+l
+O
+S
+m
+x
+C
+H
+a
+"}
+(10,1,1) = {"
+a
+f
+f
+g
+g
+g
+a
+a
+a
+a
+g
+u
+m
+H
+H
+H
+a
+"}
+(11,1,1) = {"
+a
+g
+g
+a
+a
+a
+a
+a
+a
+a
+a
+g
+m
+a
+a
+a
+a
+"}
+(12,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+L
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(13,1,1) = {"
+a
+a
+g
+a
+a
+a
+g
+g
+J
+g
+a
+a
+a
+a
+a
+a
+a
+"}
+(14,1,1) = {"
+F
+U
+m
+l
+l
+l
+m
+f
+f
+m
+a
+a
+a
+a
+a
+a
+a
+"}
+(15,1,1) = {"
+F
+F
+m
+f
+f
+f
+f
+f
+B
+m
+a
+a
+a
+a
+a
+a
+a
+"}
+(16,1,1) = {"
+F
+w
+m
+z
+P
+B
+m
+f
+f
+m
+a
+a
+a
+a
+a
+a
+a
+"}
+(17,1,1) = {"
+F
+f
+m
+m
+m
+m
+m
+m
+m
+m
+a
+a
+a
+a
+a
+a
+a
+"}
