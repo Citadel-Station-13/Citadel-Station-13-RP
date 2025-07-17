@@ -18,6 +18,7 @@
 #define FREQ_SECURITY 1359 // Security comms frequency, red
 #define FREQ_EXPLORER 1361
 #define FREQ_TALON 1363
+#define FREQ_SDF 1365
 
 #define FREQ_ENTERTAINMENT 1461
 #define FREQ_SECURITY_INTERNAL 1475

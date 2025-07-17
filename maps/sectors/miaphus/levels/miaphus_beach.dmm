@@ -2408,6 +2408,17 @@
 /obj/structure/railing/grey{
 	dir = 4
 	},
+/obj/item/encryptionkey/sdf{
+	name = "SDF standard encryption key"
+	},
+/obj/item/encryptionkey/sdf{
+	name = "SDF standard encryption key"
+	},
+/obj/item/encryptionkey/sdf{
+	name = "SDF standard encryption key"
+	},
+/obj/item/radio/headset/sdf,
+/obj/item/radio/headset/sdf,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/miaphus/sdf)
 "mb" = (
@@ -3056,7 +3067,6 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/miaphus/beach/powershed)
 "pz" = (
-/obj/structure/closet/walllocker_double/hydrant/north,
 /obj/structure/catwalk,
 /obj/effect/floor_decal/borderfloorblack/shifted{
 	layer = 3
@@ -3067,6 +3077,7 @@
 /obj/structure/railing/grey{
 	dir = 4
 	},
+/obj/machinery/telecomms/allinone/sdf,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/miaphus/sdf)
 "pA" = (
@@ -4899,6 +4910,7 @@
 /obj/item/clothing/glasses/night,
 /obj/item/clothing/accessory/storage/pouches/large/tan,
 /obj/item/clothing/accessory/armor/armguards/tan,
+/obj/item/clothing/accessory/storage/laconic,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/miaphus/sdf)
 "zV" = (
@@ -5046,6 +5058,11 @@
 /obj/vehicle/ridden/boat,
 /turf/simulated/floor/water/indoors,
 /area/sector/miaphus/beach/mineshaft)
+"AR" = (
+/obj/structure/catwalk,
+/obj/structure/closet/walllocker_double/hydrant/east,
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/miaphus/sdf)
 "AS" = (
 /obj/effect/floor_decal/tracks{
 	dir = 9
@@ -5532,7 +5549,7 @@
 	dir = 4
 	},
 /obj/structure/table/rack/shelf,
-/obj/item/bluespace_radio,
+/obj/item/bluespace_radio/sdf,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/miaphus/sdf)
 "DA" = (
@@ -5752,6 +5769,7 @@
 /obj/item/clothing/glasses/night,
 /obj/item/clothing/accessory/storage/pouches/large/tan,
 /obj/item/clothing/accessory/armor/armguards/tan,
+/obj/item/clothing/accessory/storage/laconic,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/miaphus/sdf)
 "Ev" = (
@@ -40797,7 +40815,7 @@ bL
 Zt
 FV
 Yk
-PI
+AR
 Dz
 bL
 bL
