@@ -1,7 +1,7 @@
 import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
 import { Box, Button, Collapsible, Icon, Input, LabeledList, Section, Tabs } from "tgui-core/components";
-import { ComplexModal, modalOpen, modalRegisterBodyOverride } from "../interfaces/common/ComplexModal";
+import { ComplexModal, modalOpen, modalRegisterBodyOverride } from "./common/ComplexModal";
 import { Window } from "../layouts";
 import { LoginInfo } from './common/LoginInfo';
 import { LoginScreen } from './common/LoginScreen';
