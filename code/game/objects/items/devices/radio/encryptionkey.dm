@@ -196,4 +196,4 @@
 	channels = list("Talon" = 1)
 
 /obj/item/encryptionkey/sdf
-	channels = list("Sdf" = 1)
+	channels = list("SDF" = 1)

@@ -1650,6 +1650,12 @@
 /obj/item/storage/backpack/dufflebag,
 /obj/item/storage/backpack/dufflebag,
 /obj/item/storage/backpack/dufflebag,
+/obj/item/clothing/head/fluff/headbando,
+/obj/item/clothing/head/fluff/headbando,
+/obj/item/clothing/head/fluff/headbando,
+/obj/item/clothing/glasses/sunglasses,
+/obj/item/clothing/glasses/sunglasses,
+/obj/item/clothing/glasses/sunglasses,
 /turf/simulated/floor/lino,
 /area/shuttle/miaphus/sdf)
 "hQ" = (
@@ -2476,6 +2482,7 @@
 /obj/item/clothing/under/tajaran/hadiifolly/officer,
 /obj/item/clothing/suit/space/syndicate/black/orange,
 /obj/item/clothing/head/helmet/space/syndicate/black/orange,
+/obj/item/clothing/glasses/night,
 /turf/simulated/floor/lino,
 /area/shuttle/miaphus/sdf)
 "mr" = (
@@ -2643,6 +2650,7 @@
 	pixel_x = 30;
 	name = "Poster of the Hadii's Folly Declaration of Independence"
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/miaphus/sdf)
 "nd" = (
@@ -2745,6 +2753,10 @@
 "nx" = (
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/miaphus/beach/bunker/restroom)
+"nz" = (
+/obj/structure/catwalk,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/miaphus/sdf)
 "nA" = (
 /obj/map_helper/access_helper/airlock/disconnected/sdf,
 /obj/machinery/door/airlock/multi_tile{
@@ -4886,9 +4898,8 @@
 /obj/item/book/manual/legal/sdf,
 /obj/item/pda,
 /obj/item/clothing/accessory/holster/hip,
-/obj/item/clothing/glasses/night,
 /obj/item/clothing/accessory/storage/pouches/large/tan,
-/obj/item/clothing/accessory/armor/armguards/tan,
+/obj/item/clothing/accessory/armor/legguards/tan,
 /obj/item/clothing/accessory/storage/laconic,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/miaphus/sdf)
@@ -5089,6 +5100,10 @@
 	},
 /obj/fiftyspawner/steel,
 /obj/fiftyspawner/glass,
+/obj/item/storage/toolbox/mechanical{
+	pixel_y = -16;
+	pixel_x = 7
+	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/miaphus/sdf)
 "Bk" = (
@@ -5745,9 +5760,8 @@
 /obj/item/book/manual/legal/sdf,
 /obj/item/pda,
 /obj/item/clothing/accessory/holster/hip,
-/obj/item/clothing/glasses/night,
 /obj/item/clothing/accessory/storage/pouches/large/tan,
-/obj/item/clothing/accessory/armor/armguards/tan,
+/obj/item/clothing/accessory/armor/legguards/tan,
 /obj/item/clothing/accessory/storage/laconic,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/miaphus/sdf)
@@ -41980,7 +41994,7 @@ YU
 Vu
 bL
 Vs
-YU
+nz
 Et
 bL
 uN
@@ -42174,7 +42188,7 @@ ht
 Wr
 bL
 nn
-YU
+nz
 Et
 bL
 cK

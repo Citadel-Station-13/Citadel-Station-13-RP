@@ -588,4 +588,4 @@
 	desc = "A headset for communication for the SDF."
 	adhoc_fallback = TRUE
 	icon_state = "pilot_headset"
-	ks2type = /obj/item/encryptionkey/talon
+	ks2type = /obj/item/encryptionkey/sdf
