@@ -144,7 +144,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	"[FREQ_SYNDICATE]" = "syndradio",
 	"[FREQ_RAIDER]" = "syndradio",
 	"[FREQ_TRADER]" = "syndradio",
-	"[FREQ_SDF]"	= "syndradio",
+	"[FREQ_SDF]"	= "sdfradio",
 	"[FREQ_ERT]" = "centradio",
 	"[FREQ_DEATH_SQUAD]" = "centradio"
 	))
