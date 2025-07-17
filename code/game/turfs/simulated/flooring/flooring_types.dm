@@ -712,6 +712,240 @@
 		'sound/effects/footstep/floor5.ogg'))
 
 
+/datum/prototype/flooring/roguetown/paving
+	name = "paving"
+	desc = "Paved floor crafted from brick."
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_base = "paving"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/floor1.ogg',
+		'sound/effects/footstep/floor2.ogg',
+		'sound/effects/footstep/floor3.ogg',
+		'sound/effects/footstep/floor4.ogg',
+		'sound/effects/footstep/floor5.ogg'))
+
+
+/datum/prototype/flooring/roguetown/mossy_stone_1
+	name = "mossy stone"
+	desc = "Stone flooring which has evidently seen better days."
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_base = "mossystone1"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/floor1.ogg',
+		'sound/effects/footstep/floor2.ogg',
+		'sound/effects/footstep/floor3.ogg',
+		'sound/effects/footstep/floor4.ogg',
+		'sound/effects/footstep/floor5.ogg'))
+
+/datum/prototype/flooring/roguetown/mossy_stone_2
+	name = "mossy stone"
+	desc = "Stone flooring which has evidently seen better days."
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_base = "mossystone2"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/floor1.ogg',
+		'sound/effects/footstep/floor2.ogg',
+		'sound/effects/footstep/floor3.ogg',
+		'sound/effects/footstep/floor4.ogg',
+		'sound/effects/footstep/floor5.ogg'))
+
+/datum/prototype/flooring/roguetown/mossy_stone_3
+	name = "mossy stone"
+	desc = "Stone flooring which has evidently seen better days."
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_base = "mossystone3"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/floor1.ogg',
+		'sound/effects/footstep/floor2.ogg',
+		'sound/effects/footstep/floor3.ogg',
+		'sound/effects/footstep/floor4.ogg',
+		'sound/effects/footstep/floor5.ogg'))
+
+
+/datum/prototype/flooring/roguetown/church_marble
+	name = "marble flooring"
+	desc = "Fine marble flooring, tainted by endless time."
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_base = "church_marble"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/floor1.ogg',
+		'sound/effects/footstep/floor2.ogg',
+		'sound/effects/footstep/floor3.ogg',
+		'sound/effects/footstep/floor4.ogg',
+		'sound/effects/footstep/floor5.ogg'))
+
+/datum/prototype/flooring/roguetown/church_brick
+	name = "brick flooring"
+	desc = "Fine brick flooring, tainted by endless time."
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_base = "church_brick"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/floor1.ogg',
+		'sound/effects/footstep/floor2.ogg',
+		'sound/effects/footstep/floor3.ogg',
+		'sound/effects/footstep/floor4.ogg',
+		'sound/effects/footstep/floor5.ogg'))
+
+/datum/prototype/flooring/roguetown/church
+	name = "stone flooring"
+	desc = "Fine stone flooring, tainted by endless time."
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_base = "church_marble"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/floor1.ogg',
+		'sound/effects/footstep/floor2.ogg',
+		'sound/effects/footstep/floor3.ogg',
+		'sound/effects/footstep/floor4.ogg',
+		'sound/effects/footstep/floor5.ogg'))
+
+
+/datum/prototype/flooring/roguetown/blocks
+	name = "stone flooring"
+	desc = "Stone flooring, shaped into blocked grids."
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_base = "blocks"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/floor1.ogg',
+		'sound/effects/footstep/floor2.ogg',
+		'sound/effects/footstep/floor3.ogg',
+		'sound/effects/footstep/floor4.ogg',
+		'sound/effects/footstep/floor5.ogg'))
+
+
+/datum/prototype/flooring/roguetown/greenstone
+	name = "green stone flooring"
+	desc = "Stone brick with a weathered green appeareance."
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_base = "greenstone"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/floor1.ogg',
+		'sound/effects/footstep/floor2.ogg',
+		'sound/effects/footstep/floor3.ogg',
+		'sound/effects/footstep/floor4.ogg',
+		'sound/effects/footstep/floor5.ogg'))
+
+/datum/prototype/flooring/roguetown/glyph1
+	name = "green stone glyph"
+	desc = "Stone brick with a weathered green appeareance. It appears to be painted."
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_base = "glyph1"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/floor1.ogg',
+		'sound/effects/footstep/floor2.ogg',
+		'sound/effects/footstep/floor3.ogg',
+		'sound/effects/footstep/floor4.ogg',
+		'sound/effects/footstep/floor5.ogg'))
+
+/datum/prototype/flooring/roguetown/glyph2
+	name = "green stone glyph"
+	desc = "Stone brick with a weathered green appeareance. It appears to be painted."
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_base = "glyph2"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/floor1.ogg',
+		'sound/effects/footstep/floor2.ogg',
+		'sound/effects/footstep/floor3.ogg',
+		'sound/effects/footstep/floor4.ogg',
+		'sound/effects/footstep/floor5.ogg'))
+
+/datum/prototype/flooring/roguetown/glyph3
+	name = "green stone glyph"
+	desc = "Stone brick with a weathered green appeareance. It appears to be painted."
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_base = "glyph3"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/floor1.ogg',
+		'sound/effects/footstep/floor2.ogg',
+		'sound/effects/footstep/floor3.ogg',
+		'sound/effects/footstep/floor4.ogg',
+		'sound/effects/footstep/floor5.ogg'))
+
+/datum/prototype/flooring/roguetown/glyph4
+	name = "green stone glyph"
+	desc = "Stone brick with a weathered green appeareance. It appears to be painted."
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_base = "glyph4"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/floor1.ogg',
+		'sound/effects/footstep/floor2.ogg',
+		'sound/effects/footstep/floor3.ogg',
+		'sound/effects/footstep/floor4.ogg',
+		'sound/effects/footstep/floor5.ogg'))
+
+/datum/prototype/flooring/roguetown/glyph5
+	name = "green stone glyph"
+	desc = "Stone brick with a weathered green appeareance. It appears to be painted."
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_base = "glyph5"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/floor1.ogg',
+		'sound/effects/footstep/floor2.ogg',
+		'sound/effects/footstep/floor3.ogg',
+		'sound/effects/footstep/floor4.ogg',
+		'sound/effects/footstep/floor5.ogg'))
+
+/datum/prototype/flooring/roguetown/glyph6
+	name = "green stone glyph"
+	desc = "Stone brick with a weathered green appeareance. It appears to be painted."
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_base = "glyph6"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/floor1.ogg',
+		'sound/effects/footstep/floor2.ogg',
+		'sound/effects/footstep/floor3.ogg',
+		'sound/effects/footstep/floor4.ogg',
+		'sound/effects/footstep/floor5.ogg'))
+
+/datum/prototype/flooring/roguetown/glyph7
+	name = "green stone glyph"
+	desc = "Stone brick with a weathered green appeareance. It appears to be painted."
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_base = "glyph7"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/floor1.ogg',
+		'sound/effects/footstep/floor2.ogg',
+		'sound/effects/footstep/floor3.ogg',
+		'sound/effects/footstep/floor4.ogg',
+		'sound/effects/footstep/floor5.ogg'))
+
+/datum/prototype/flooring/roguetown/glyph8
+	name = "green stone glyph"
+	desc = "Stone brick with a weathered green appeareance. It appears to be painted."
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_base = "glyph8"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/floor1.ogg',
+		'sound/effects/footstep/floor2.ogg',
+		'sound/effects/footstep/floor3.ogg',
+		'sound/effects/footstep/floor4.ogg',
+		'sound/effects/footstep/floor5.ogg'))
+
+/datum/prototype/flooring/roguetown/glyph9
+	name = "green stone glyph"
+	desc = "Stone brick with a weathered green appeareance. It appears to be painted."
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_base = "glyph9"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/floor1.ogg',
+		'sound/effects/footstep/floor2.ogg',
+		'sound/effects/footstep/floor3.ogg',
+		'sound/effects/footstep/floor4.ogg',
+		'sound/effects/footstep/floor5.ogg'))
+
+
+/datum/prototype/flooring/roguetown/tempered
+	name = "tempered flooring"
+	desc = "Floor carved from hardened magma."
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_base = "lavafloor"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/floor1.ogg',
+		'sound/effects/footstep/floor2.ogg',
+		'sound/effects/footstep/floor3.ogg',
+		'sound/effects/footstep/floor4.ogg',
+		'sound/effects/footstep/floor5.ogg'))
+
+
 /datum/prototype/flooring/roguetown/grass
 	name = "grass"
 	desc = "Soft, earthy grass."

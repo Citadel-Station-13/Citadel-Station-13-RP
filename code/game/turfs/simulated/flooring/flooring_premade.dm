@@ -628,6 +628,119 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/plating)
 	icon_state = "cobblestone3"
 	initial_flooring = /datum/prototype/flooring/roguetown/cobblestone3
 
+/turf/simulated/floor/roguetown/paving
+	name = "paving"
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_state = "paving"
+	initial_flooring = /datum/prototype/flooring/roguetown/paving
+
+/turf/simulated/floor/roguetown/mossystone1
+	name = "mossy stone"
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_state = "mossystone1"
+	initial_flooring = /datum/prototype/flooring/roguetown/mossy_stone_1
+
+/turf/simulated/floor/roguetown/mossystone2
+	name = "mossy stone"
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_state = "mossystone1"
+	initial_flooring = /datum/prototype/flooring/roguetown/mossy_stone_2
+
+/turf/simulated/floor/roguetown/mossystone3
+	name = "mossy stone"
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_state = "mossystone1"
+	initial_flooring = /datum/prototype/flooring/roguetown/mossy_stone_3
+
+/turf/simulated/floor/roguetown/church_marble
+	name = "marble floor"
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_state = "church_marble"
+	initial_flooring = /datum/prototype/flooring/roguetown/church_marble
+
+/turf/simulated/floor/roguetown/church_brick
+	name = "brick floor"
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_state = "church_brick"
+	initial_flooring = /datum/prototype/flooring/roguetown/church_brick
+
+/turf/simulated/floor/roguetown/church
+	name = "marble floor"
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_state = "church"
+	initial_flooring = /datum/prototype/flooring/roguetown/church
+
+/turf/simulated/floor/roguetown/blocks
+	name = "stone blocks"
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_state = "blocks"
+	initial_flooring = /datum/prototype/flooring/roguetown/blocks
+
+/turf/simulated/floor/roguetown/greenstone
+	name = "green stone flooring"
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_state = "greenstone"
+	initial_flooring = /datum/prototype/flooring/roguetown/greenstone
+
+/turf/simulated/floor/roguetown/glyph1
+	name = "green stone glyph"
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_state = "glyph1"
+	initial_flooring = /datum/prototype/flooring/roguetown/glyph1
+
+/turf/simulated/floor/roguetown/glyph2
+	name = "green stone glyph"
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_state = "glyph2"
+	initial_flooring = /datum/prototype/flooring/roguetown/glyph2
+
+/turf/simulated/floor/roguetown/glyph3
+	name = "green stone glyph"
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_state = "glyph3"
+	initial_flooring = /datum/prototype/flooring/roguetown/glyph3
+
+/turf/simulated/floor/roguetown/glyph4
+	name = "green stone glyph"
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_state = "glyph4"
+	initial_flooring = /datum/prototype/flooring/roguetown/glyph4
+
+/turf/simulated/floor/roguetown/glyph5
+	name = "green stone glyph"
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_state = "glyph5"
+	initial_flooring = /datum/prototype/flooring/roguetown/glyph5
+
+/turf/simulated/floor/roguetown/glyph6
+	name = "green stone glyph"
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_state = "glyph6"
+	initial_flooring = /datum/prototype/flooring/roguetown/glyph6
+
+/turf/simulated/floor/roguetown/glyph7
+	name = "green stone glyph"
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_state = "glyph7"
+	initial_flooring = /datum/prototype/flooring/roguetown/glyph7
+
+/turf/simulated/floor/roguetown/glyph8
+	name = "green stone glyph"
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_state = "glyph8"
+	initial_flooring = /datum/prototype/flooring/roguetown/glyph8
+
+/turf/simulated/floor/roguetown/glyph9
+	name = "green stone glyph"
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_state = "glyph9"
+	initial_flooring = /datum/prototype/flooring/roguetown/glyph9
+
+/turf/simulated/floor/roguetown/tempered
+	name = "tempered flooring"
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_state = "lavafloor"
+	initial_flooring = /datum/prototype/flooring/roguetown/tempered
 
 /turf/simulated/floor/roguetown/grass
 	name = "grass"
