@@ -671,6 +671,12 @@
 /obj/machinery/door/airlock/glass_external,
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/access_button/airlock_interior{
+	frequency = 1380;
+	master_tag = "sdf_docker";
+	name = "internal access button";
+	pixel_x = -23
+	},
 /turf/simulated/floor,
 /area/shuttle/miaphus/sdf)
 "cS" = (
@@ -2633,6 +2639,10 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/structure/poster/preset/tgstation/tg_2{
+	pixel_x = 30;
+	name = "Poster of the Hadii's Folly Declaration of Independence"
+	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/miaphus/sdf)
 "nd" = (
@@ -2829,6 +2839,9 @@
 "oe" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
+	},
+/obj/structure/poster/preset/baystation/bay_47{
+	pixel_x = -31
 	},
 /turf/simulated/floor/lino,
 /area/shuttle/miaphus/sdf)
@@ -3220,20 +3233,6 @@
 /obj/machinery/power/port_gen/pacman/mrs,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/miaphus/beach/powershed)
-"qK" = (
-/obj/machinery/door/airlock/glass_external,
-/obj/map_helper/airlock/door/ext_door,
-/obj/machinery/access_button/airlock_exterior{
-	frequency = 1380;
-	master_tag = "sdf_docker2";
-	name = "external access button";
-	pixel_x = 25
-	},
-/obj/machinery/door/blast/regular/open{
-	id = "SDFantiboarding"
-	},
-/turf/simulated/floor,
-/area/shuttle/miaphus/sdf)
 "qM" = (
 /obj/effect/floor_decal/industrial/halfstair,
 /turf/simulated/floor/tiled/dark,
@@ -3707,20 +3706,6 @@
 	outdoors = 1
 	},
 /area/sector/miaphus/beach/resort)
-"tu" = (
-/obj/machinery/door/airlock/glass_external,
-/obj/map_helper/airlock/door/ext_door,
-/obj/machinery/access_button/airlock_exterior{
-	frequency = 1380;
-	master_tag = "sdf_docker";
-	name = "external access button";
-	pixel_x = 25
-	},
-/obj/machinery/door/blast/regular/open{
-	id = "SDFantiboarding"
-	},
-/turf/simulated/floor,
-/area/shuttle/miaphus/sdf)
 "tv" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -4152,12 +4137,6 @@
 /obj/machinery/door/airlock/glass_external,
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/map_helper/airlock/door/int_door,
-/obj/machinery/access_button/airlock_interior{
-	frequency = 1380;
-	master_tag = "sdf_docker2";
-	name = "internal access button";
-	pixel_x = 22
-	},
 /turf/simulated/floor,
 /area/shuttle/miaphus/sdf)
 "vy" = (
@@ -6186,6 +6165,12 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/machinery/access_button/airlock_exterior{
+	frequency = 1380;
+	master_tag = "sdf_docker2";
+	name = "external access button";
+	pixel_x = -23
+	},
 /turf/simulated/floor,
 /area/shuttle/miaphus/sdf)
 "Gw" = (
@@ -6526,7 +6511,8 @@
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	pixel_x = -24;
-	id_tag = "sdf_docker"
+	id_tag = "sdf_docker";
+	frequency = 1380
 	},
 /turf/simulated/floor,
 /area/shuttle/miaphus/sdf)
@@ -6914,6 +6900,12 @@
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
+	},
+/obj/machinery/access_button/airlock_interior{
+	frequency = 1380;
+	master_tag = "sdf_docker2";
+	name = "internal access button";
+	pixel_x = -23
 	},
 /turf/simulated/floor,
 /area/shuttle/miaphus/sdf)
@@ -8275,12 +8267,6 @@
 	dir = 1
 	},
 /obj/map_helper/airlock/door/int_door,
-/obj/machinery/access_button/airlock_interior{
-	frequency = 1380;
-	master_tag = "sdf_docker";
-	name = "internal access button";
-	pixel_x = 22
-	},
 /turf/simulated/floor,
 /area/shuttle/miaphus/sdf)
 "SC" = (
@@ -9333,6 +9319,20 @@
 	},
 /turf/simulated/floor/wood,
 /area/sector/miaphus/beach/resort/dorm2)
+"YT" = (
+/obj/machinery/door/airlock/glass_external,
+/obj/map_helper/airlock/door/ext_door,
+/obj/machinery/door/blast/regular/open{
+	id = "SDFantiboarding"
+	},
+/obj/machinery/access_button/airlock_exterior{
+	frequency = 1380;
+	master_tag = "sdf_docker";
+	name = "external access button";
+	pixel_x = -24
+	},
+/turf/simulated/floor,
+/area/shuttle/miaphus/sdf)
 "YU" = (
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/miaphus/sdf)
@@ -43326,7 +43326,7 @@ bq
 ce
 ce
 aa
-El
+YT
 Iy
 cR
 vv
@@ -43520,7 +43520,7 @@ bq
 ce
 ce
 ce
-tu
+El
 vA
 SB
 Op
@@ -43540,7 +43540,7 @@ cK
 Ea
 vw
 Ol
-qK
+El
 BK
 hJ
 fD
