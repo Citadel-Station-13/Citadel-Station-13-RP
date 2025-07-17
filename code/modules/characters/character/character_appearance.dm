@@ -3,84 +3,87 @@
 
 /**
  * Stores the appearance state of a character.
- *
- * * Defers to /datum/character_physiology.
- * * This means that physiology is always allowed to arbitarily
- *   override appearance whenever it wants.
+ * * This is an overlay. **Almost all variables are nullable.**
  */
 /datum/character_appearance
 	/// short notes field for the player, for this appearance slot
+	/// * Nullable
 	var/label
 
 	/// name to use
-	///
-	/// * overrides default if set on a slot
-	var/name
-
+	/// * Nullable
+	var/c_name
 	/// The character's general flavor text
-	///
-	/// * if set on a slot, the default flavortext will be suppressed
-	var/flavor_text_general
-	/// The character's per-zone flavor text
-	///
-	/// * if set on a slot, the default flavortext will be suppressed
-	/// * Lazy list
-	var/flavor_text_zones
+	/// * Nullable
+	var/c_flavor_text_general
+	/// The character's per-region flavor text
+	/// * Nullable
+	/// * Any key defined will override default; the key-value is not nullable on the value.
+	/// * This does mean the player has to manually override any region they set on their base
+	///   appearance. There's no better way to do this, unfortunately, without making the base
+	///   case too complicated.
+	#warn how should this be handled?
+	var/list/c_flavor_text_regions
 
 	/// headshot ref
-	///
-	/// * overrides default if set on a slot
-	// todo: implement
-	var/ref_image_headshot
+	/// * Nullable
+	var/c_profile_headshot_href
 	/// fullbody ref
-	///
-	/// * overrides default if set on a slot
-	// todo: implement
-	var/ref_image_fullbody
+	/// * Nullable
+	var/c_profile_fullbody_href
 
 	/// base bodyset to use
-	///
-	/// * overrides default if set on a slot
-	/// * null = use species
-	var/bodyset_id
+	/// * Nullable
+	//  TODO: impl, prototype
+	var/datum/prototype/c_bodyset
 
 	/// base skin color to use
-	///
-	/// * overrides default if set on a slot
-	var/skin_color
+	/// * Nullable
+	/// * This is not skin tone. The user can select skin tone via UI; backend only stores RGBA.
+	var/c_skin_color
 	/// eye color to use
-	///
-	/// * overrides default if set on a slot
-	var/eye_color
+	/// * Nullable
+	var/c_eye_color
 
 	/// sprite accessories; slot key to /datum/sprite_accessory_descriptor
-	///
-	/// * overrides default if set on a slot, by key!
-	/// * lazy list
-	var/list/sprite_accessories
-
+	/// * Nullable
+	/// * Any key defined will override default; the key-value is not nullable on the value.
+	var/list/c_sprite_accessory_by_key
 	/// bodyparts; bodypart key to /datum/character_bodypart_appearance
-	///
-	/// * overrides default if set on a slot, by key!
-	/// * lazy list
-	var/list/bodypart_appearances
+	/// * Nullable
+	/// * Any key defined will override default; the key-value is not nullable on the value.
+	var/list/c_bodypart_appearance_by_key
 
 	/// transform multiplier, x
-	///
-	/// * overrides default if set on a slot, by key!
-	var/size_x = 1
+	/// * Nullable
+	var/c_size_x
 	/// transform multiplier, y
-	///
-	/// * overrides default if set on a slot, by key!
-	var/size_y = 1
-	/// use fuzzy rendering? default to FALSE
-	///
-	/// * if FALSE, the person uses PIXEL_SCALE
-	/// * if TRUE, the person does not use PIXEL_SCALE
-	var/use_fuzzy_rendering = FALSE
+	/// * Nullable
+	var/c_size_y
+	/// use fuzzy rendering `TRUE`/`FALSE` (turn off PIXEL_SCALE)
+	/// * Nullable
+	var/c_use_fuzzy_rendering
 
 /datum/character_appearance/serialize()
+	var/list/serialized_sprite_accessories
+	var/list/serialized_bodypart_appearances
+	#warn serialize
+	return list(
+		"label" = label,
+		"c_name" = c_name,
+		"c_flavor_general" = c_flavor_text_general,
+		"c_flavor_regions" = c_flavor_regions,
+		"c_profile_headshot" = c_profile_headshot_href,
+		"c_profile_fullbody" = c_profile_fullbody_href,
+		"c_bodyset" = c_bodyset?.id,
+		"c_skin_color" = c_skin_color,
+		"c_eye_color" = c_eye_color,
+		"c_sprite_accessory" = serialized_sprite_accessories,
+		"c_bodypart_appearance" = serialized_bodypart_appearances,
+		"c_size_x" = c_size_x,
+		"c_size_y" = c_size_y,
+		"c_fuzzy" = c_use_fuzzy_rendering,
+	)
 
 /datum/character_appearance/deserialize(list/data)
-
-#warn impl
+	#warn impl

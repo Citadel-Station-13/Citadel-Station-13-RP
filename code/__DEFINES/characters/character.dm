@@ -3,7 +3,7 @@
 
 //* appearance *//
 
-/// max appearance slots soemone is allowed to have
+/// max appearance slots soemone is allowed to create
 #define CHARATER_MAX_APPEARANCE_SLOTS 32
 
 //* loadout *//
@@ -11,7 +11,7 @@
 /// max loadout sets someone is allowed to have
 #define CHARACTER_MAX_LOADOUT_SLOTS 32
 /// max loadout items in a set
-#define CHARACTER_MAX_LOADOUT_ITEMS 32
+#define CHARACTER_MAX_LOADOUT_ITEMS 64
 
 //* role priorities *//
 

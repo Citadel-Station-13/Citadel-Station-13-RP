@@ -3,4 +3,6 @@
 
 /datum/character_backend/mariadb
 
-/datum/character_backend/mariadb
+/datum/character_backend/mariadb/New()
+
+#warn impl
