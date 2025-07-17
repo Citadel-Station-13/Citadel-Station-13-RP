@@ -13,7 +13,8 @@
  */
 
 import { InfernoNode } from "inferno";
-import { useLocalState, useModule } from "../../backend";
+import { useLocalState } from "../../backend";
+import { useModule } from '../../experimental/moduleSystem';
 import { Input, Section, Stack, Tabs } from "../../components";
 import { Modular } from "../../layouts/Modular";
 import { TGUIGuidebookSectionData } from "./TGUIGuidebook";

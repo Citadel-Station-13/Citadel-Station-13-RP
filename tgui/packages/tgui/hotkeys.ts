@@ -134,7 +134,7 @@ export const releaseHeldKeys = () => {
   for (let byondKeyCode of Object.keys(keyState)) {
     if (keyState[byondKeyCode]) {
       keyState[byondKeyCode] = false;
-      logger.log(`releasing key "${byondKeyCode}"`);
+      logger.debug(`releasing key "${byondKeyCode}"`);
       Byond.command(`KeyUp "${byondKeyCode}"`);
     }
   }

@@ -20,9 +20,9 @@
 	planet_path = /datum/planet/classp
 	air_outdoors = /datum/atmosphere/planet/classp
 
-/datum/map_level/sector/frozen_192/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
+/datum/map_level/sector/frozen_192/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
 	. = ..()
-	additional_generation?.Add(
+	out_generation_callbacks?.Add(
 		CALLBACK(
 			GLOBAL_PROC,
 			GLOBAL_PROC_REF(seed_submaps),

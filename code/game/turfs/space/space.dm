@@ -3,6 +3,7 @@
 	name = "\proper space"
 	icon_state = "0"
 	plane = SPACE_PLANE
+	turf_spawn_flags = TURF_SPAWN_FLAGS_ALLOW_ALL
 	mz_flags = MZ_ATMOS_BOTH | MZ_OPEN_BOTH
 
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
