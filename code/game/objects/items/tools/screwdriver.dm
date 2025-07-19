@@ -108,7 +108,7 @@
 	<br><br>\
 	The hard light tip is able to shift its shape to a degree when pressed into \
 	a solid receptacle. This allows it to be able to function on many kinds of \
-	fastener, which includes the screws."
+	fastener, which includes screws."
 	value = CATALOGUER_REWARD_EASY
 
 /obj/item/tool/screwdriver/alien
@@ -166,12 +166,12 @@
 	tool_sound = 'sound/items/drill_use.ogg'
 	tool_speed = 0.25
 	random_color = FALSE
-	var/obj/item/tool/wrench/power/counterpart = null
+	var/obj/item/tool/wrench/power/counterpart = /obj/item/tool/wrench/power
 
 /obj/item/tool/screwdriver/power/Initialize(mapload, no_counterpart = TRUE)
 	. = ..()
-	if(!counterpart && no_counterpart)
-		counterpart = new(src, FALSE)
+	if(!isobj(counterpart) && no_counterpart)
+		counterpart = new counterpart(src, FALSE)
 		counterpart.counterpart = src
 
 /obj/item/tool/screwdriver/power/Destroy()

@@ -19,3 +19,5 @@
 	refraction = MATERIAL_RESISTANCE_NONE
 	absorption = MATERIAL_RESISTANCE_LOW
 	nullification = MATERIAL_RESISTANCE_NONE
+
+	material_constraints = MATERIAL_CONSTRAINT_RIGID

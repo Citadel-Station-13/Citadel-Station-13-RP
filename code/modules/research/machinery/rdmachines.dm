@@ -43,3 +43,11 @@
 	var/obj/item/stack/material/S = new sheetType(loc)
 	S.amount = eject
 	stored_materials[material] -= eject * perUnit
+
+
+
+/obj/machinery/lathe/r_n_d
+	var/design_type
+	var/obj/machinery/computer/rdconsole/linked_console
+
+/obj/machinery/lathe/r_n_d

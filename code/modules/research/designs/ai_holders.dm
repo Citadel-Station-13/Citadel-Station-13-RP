@@ -1,11 +1,6 @@
 /datum/prototype/design/science/ai_holder
 	abstract_type = /datum/prototype/design/science/ai_holder
 	category = DESIGN_CATEGORY_SYNTH
-	subcategory = DESIGN_SUBCATEGORY_SYNTHETIC_MINDS
-
-// Various AI/mind holding device
-/datum/prototype/design/science/ai_holder/generate_name(template)
-	return "Mind storage device prototype ([..()])"
 
 /datum/prototype/design/science/ai_holder/mmi
 	design_name = "Man-machine interface"
@@ -14,7 +9,6 @@
 	lathe_type = LATHE_TYPE_PROTOLATHE | LATHE_TYPE_PROSTHETICS
 	materials_base = list(MAT_STEEL = 1000, MAT_GLASS = 500)
 	build_path = /obj/item/mmi
-	category = list("Misc")
 
 /datum/prototype/design/science/ai_holder/posibrain
 	design_name = "Positronic brain"
@@ -23,7 +17,6 @@
 	lathe_type = LATHE_TYPE_PROTOLATHE | LATHE_TYPE_PROSTHETICS
 	materials_base = list(MAT_STEEL = 2000, MAT_GLASS = 1000, MAT_SILVER = 1000, MAT_GOLD = 500, MAT_PHORON = 500, MAT_DIAMOND = 100)
 	build_path = /obj/item/mmi/digital/posibrain
-	category = list("Misc")
 
 /datum/prototype/design/science/ai_holder/dronebrain
 	design_name = "Robotic intelligence circuit"
@@ -32,11 +25,10 @@
 	lathe_type = LATHE_TYPE_PROTOLATHE | LATHE_TYPE_PROSTHETICS
 	materials_base = list(MAT_STEEL = 2000, MAT_GLASS = 1000, MAT_SILVER = 1000, MAT_GOLD = 500)
 	build_path = /obj/item/mmi/digital/robot
-	category = list("Misc")
 
 /datum/prototype/design/science/ai_holder/paicard
 	design_name = "'pAI', personal artificial intelligence device"
-	id = "paicard"
+	id = "RNDDesignPAI"
 	req_tech = list(TECH_DATA = 2)
 	materials_base = list(MAT_GLASS = 500, MAT_STEEL = 500)
 	build_path = /obj/item/paicard
