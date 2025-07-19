@@ -53,3 +53,6 @@
 	storage_type = "visitors"
 	storage_name = "SDF Travel Oversight"
 	allow_items = TRUE
+
+/obj/machinery/telecomms/allinone/sdf
+	freq_listening = list(FREQ_COMMON, FREQ_SDF)
