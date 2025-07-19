@@ -261,7 +261,7 @@
 	name = "Show Status in Advanced Who"
 	description = "Show your playing status in advanced who."
 	key = "advanced_who_status"
-	default_value = FALSE
+	default_value = TRUE
 
 /datum/game_preference_toggle/presence/announce_ghost_joinleave
 	name = "Announce Observer Join/Leave"
