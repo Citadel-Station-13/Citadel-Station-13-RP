@@ -23,12 +23,6 @@
 	icon = 'icons/turf/walls/rt_medieval/boss.dmi'
 	icon_state = "boss"
 
-/turf/simulated/wall/rt_medieval/brick
-	name = "archaic brick wall"
-	desc = "An archaic wall made from brick. It looks sturdy."
-	icon = 'icons/turf/walls/rt_medieval/brick.dmi'
-	icon_state = "brick"
-
 /turf/simulated/wall/rt_medieval/stone
 	name = "archaic stone wall"
 	desc = "An archaic wall made from stone. It looks sturdy."
@@ -52,6 +46,12 @@
 	desc = "An archaic wall made from stone. It looks sturdy."
 	icon = 'icons/turf/walls/rt_medieval/stone/moss_red.dmi'
 	icon_state = "stone_moss_red"
+
+/turf/simulated/wall/rt_medieval/stone/moss_green
+	name = "archaic mossy stone wall"
+	desc = "An archaic wall made from stone. It looks sturdy."
+	icon = 'icons/turf/walls/rt_medieval/stone/moss_green.dmi'
+	icon_state = "stone_moss_green"
 
 /turf/simulated/wall/rt_medieval/stone/moss_blue
 	name = "archaic mossy stone wall"

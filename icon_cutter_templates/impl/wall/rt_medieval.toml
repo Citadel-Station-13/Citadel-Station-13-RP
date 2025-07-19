@@ -1,0 +1,13 @@
+template = "impl/wall_default.toml"
+
+smooth_diagonally = false
+
+[positions]
+convex = 0
+horizontal = 1
+vertical = 2
+concave = 3
+
+[cut_pos]
+x = 16
+y = 16
