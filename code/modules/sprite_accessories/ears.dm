@@ -1,5 +1,5 @@
-/datum/sprite_accessory/ears
-	abstract_type = /datum/sprite_accessory/ears
+/datum/prototype/sprite_accessory/ears
+	abstract_type = /datum/prototype/sprite_accessory/ears
 	name = "You should not see this..."
 	icon = 'icons/mob/sprite_accessories/ears.dmi'
 	do_colouration = 0 // Set to 1 to blend (ICON_ADD) hair color

@@ -1,4 +1,4 @@
-/datum/sprite_accessory/ears/otie
+/datum/prototype/sprite_accessory/ears/otie
 	name = "otie, colorable"
 	id = "ears_otie"
 	icon_state = "otie"

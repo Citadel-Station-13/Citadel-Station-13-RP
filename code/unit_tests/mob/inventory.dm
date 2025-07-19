@@ -1,4 +1,4 @@
-/datum/unit_test/inventory_slot_meta_uniqueness/Run()
+/datum/unit_test/inventory_slot_lookup_uniqueness/Run()
 	var/list/found = list()
 	for(var/path in subtypesof(/datum/inventory_slot))
 		var/datum/inventory_slot/meta = path

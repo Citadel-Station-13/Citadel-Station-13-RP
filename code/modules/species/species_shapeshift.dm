@@ -20,11 +20,6 @@ var/list/wrapped_species_by_ref = list()
 /datum/species/shapeshifter/get_valid_shapeshifter_forms(mob/living/carbon/human/H)
 	return valid_transform_species
 
-/datum/species/shapeshifter/get_icobase(mob/living/carbon/human/H, get_deform)
-	if(!H) return ..(null, get_deform)
-	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
-	return S.get_icobase(H, get_deform)
-
 /datum/species/shapeshifter/real_race_key(mob/living/carbon/human/H)
 	return "[..()]-[wrapped_species_by_ref["\ref[H]"]]"
 
@@ -48,28 +43,16 @@ var/list/wrapped_species_by_ref = list()
 	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
 	return S.get_blood_mask(H)
 
-/datum/species/shapeshifter/get_damage_mask(mob/living/carbon/human/H)
+/datum/species/shapeshifter/get_effective_bodyset(mob/living/carbon/human/H)
 	if(!H) return ..()
 	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
-	return S.get_damage_mask(H)
-
-/datum/species/shapeshifter/get_damage_overlays(mob/living/carbon/human/H)
-	if(!H) return ..()
-	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
-	return S.get_damage_overlays(H)
+	return S.get_effective_bodyset(H)
 
 /datum/species/shapeshifter/get_default_sprite_accessory(mob/living/carbon/human/character, slot)
 	if(!character)
 		return ..()
 	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[character]"])
 	return S.get_default_sprite_accessory(arglist(args))
-
-/datum/species/shapeshifter/get_husk_icon(mob/living/carbon/human/H)
-	if(H)
-		var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
-		if(S)
-			return S.get_husk_icon(H)
-	 return ..()
 
 /datum/species/shapeshifter/handle_post_spawn(mob/living/carbon/human/H)
 	..()
@@ -99,8 +82,8 @@ var/list/wrapped_species_by_ref = list()
 	var/list/valid_hairstyles = list()
 	var/list/valid_facialhairstyles = list()
 	var/list/valid_gradstyles = GLOB.hair_gradients
-	for(var/hairstyle in GLOB.legacy_hair_lookup)
-		var/datum/sprite_accessory/S = GLOB.legacy_hair_lookup[hairstyle]
+	for(var/hairstyle in RSsprite_accessories.legacy_hair_lookup)
+		var/datum/prototype/sprite_accessory/S = RSsprite_accessories.legacy_hair_lookup[hairstyle]
 		if(gender == MALE && S.random_generation_gender == FEMALE)
 			continue
 		if(gender == FEMALE && S.random_generation_gender == MALE)
@@ -108,8 +91,8 @@ var/list/wrapped_species_by_ref = list()
 		if(S.apply_restrictions && !(species.get_bodytype_legacy(src) in S.species_allowed))
 			continue
 		valid_hairstyles += hairstyle
-	for(var/facialhairstyle in GLOB.legacy_facial_hair_lookup)
-		var/datum/sprite_accessory/S = GLOB.legacy_facial_hair_lookup[facialhairstyle]
+	for(var/facialhairstyle in RSsprite_accessories.legacy_facial_hair_lookup)
+		var/datum/prototype/sprite_accessory/S = RSsprite_accessories.legacy_facial_hair_lookup[facialhairstyle]
 		if(!isnull(S.random_generation_gender) && gender != S.random_generation_gender)
 			continue
 		if(S.apply_restrictions && !(species.get_bodytype_legacy(src) in S.species_allowed))
@@ -292,8 +275,8 @@ var/list/wrapped_species_by_ref = list()
 	last_special = world.time + 10
 	// Construct the list of names allowed for this user.
 	var/list/pretty_ear_styles = list("Normal" = null)
-	for(var/path in GLOB.legacy_ears_lookup)
-		var/datum/sprite_accessory/ears/instance = GLOB.legacy_ears_lookup[path]
+	for(var/path in RSsprite_accessories.legacy_ears_lookup)
+		var/datum/prototype/sprite_accessory/ears/instance = RSsprite_accessories.legacy_ears_lookup[path]
 		pretty_ear_styles[instance.name] = path
 
 	// Present choice to user
@@ -302,7 +285,7 @@ var/list/wrapped_species_by_ref = list()
 		return
 
 	//Set new style
-	ear_style = GLOB.legacy_ears_lookup[pretty_ear_styles[new_ear_style]]
+	ear_style = RSsprite_accessories.legacy_ears_lookup[pretty_ear_styles[new_ear_style]]
 
 	//Allow color picks
 	var/current_pri_color = rgb(r_ears,g_ears,b_ears)
@@ -345,8 +328,8 @@ var/list/wrapped_species_by_ref = list()
 	last_special = world.time + 10
 	// Construct the list of names allowed for this user.
 	var/list/pretty_horn_styles = list("Normal" = null)
-	for(var/path in GLOB.legacy_ears_lookup)
-		var/datum/sprite_accessory/ears/instance = GLOB.legacy_ears_lookup[path]
+	for(var/path in RSsprite_accessories.legacy_ears_lookup)
+		var/datum/prototype/sprite_accessory/ears/instance = RSsprite_accessories.legacy_ears_lookup[path]
 		pretty_horn_styles[instance.name] = path
 
 	// Present choice to user
@@ -355,7 +338,7 @@ var/list/wrapped_species_by_ref = list()
 		return
 
 	//Set new style
-	horn_style = GLOB.legacy_ears_lookup[pretty_horn_styles[new_horn_style]]
+	horn_style = RSsprite_accessories.legacy_ears_lookup[pretty_horn_styles[new_horn_style]]
 
 	//Allow color picks
 	var/current_pri_color = rgb(r_horn,g_horn,b_horn)
@@ -398,8 +381,8 @@ var/list/wrapped_species_by_ref = list()
 	last_special = world.time + 10
 	// Construct the list of names allowed for this user.
 	var/list/pretty_tail_styles = list("Normal" = null)
-	for(var/path in GLOB.legacy_tail_lookup)
-		var/datum/sprite_accessory/tail/instance = GLOB.legacy_tail_lookup[path]
+	for(var/path in RSsprite_accessories.legacy_tail_lookup)
+		var/datum/prototype/sprite_accessory/tail/instance = RSsprite_accessories.legacy_tail_lookup[path]
 		pretty_tail_styles[instance.name] = path
 
 	// Present choice to user
@@ -408,7 +391,7 @@ var/list/wrapped_species_by_ref = list()
 		return
 
 	//Set new style
-	tail_style = GLOB.legacy_tail_lookup[pretty_tail_styles[new_tail_style]]
+	tail_style = RSsprite_accessories.legacy_tail_lookup[pretty_tail_styles[new_tail_style]]
 
 	//Allow color picks
 	var/current_pri_color = rgb(r_tail,g_tail,b_tail)
@@ -451,8 +434,8 @@ var/list/wrapped_species_by_ref = list()
 	last_special = world.time + 10
 	// Construct the list of names allowed for this user.
 	var/list/pretty_wing_styles = list("None" = null)
-	for(var/path in GLOB.legacy_wing_lookup)
-		var/datum/sprite_accessory/wing/instance = GLOB.legacy_wing_lookup[path]
+	for(var/path in RSsprite_accessories.legacy_wing_lookup)
+		var/datum/prototype/sprite_accessory/wing/instance = RSsprite_accessories.legacy_wing_lookup[path]
 		pretty_wing_styles[instance.name] = path
 
 	// Present choice to user
@@ -461,7 +444,7 @@ var/list/wrapped_species_by_ref = list()
 		return
 
 	//Set new style
-	wing_style = GLOB.legacy_wing_lookup[pretty_wing_styles[new_wing_style]]
+	wing_style = RSsprite_accessories.legacy_wing_lookup[pretty_wing_styles[new_wing_style]]
 
 	//Allow color picks
 	var/current_color = rgb(r_wing,g_wing,b_wing)
@@ -686,9 +669,10 @@ var/list/wrapped_species_by_ref = list()
 	character.g_skin			= pref.g_skin
 	character.b_skin			= pref.b_skin
 	character.s_tone			= pref.s_tone
-	var/datum/sprite_accessory/S = GLOB.sprite_accessory_hair[pref.h_style_id]
+	#warn this
+	var/datum/sprite_accessory/S = RSsprite_accessories.fetch_local_or_throw(pref.h_style_id)
 	character.h_style = S.name
-	S = GLOB.sprite_accessory_facial_hair[pref.f_style_id]
+	S = RSsprite_accessories.fetch_local_or_throw(pref.f_style_id)
 	character.f_style = S.name
 	character.grad_style		= pref.grad_style
 	character.b_type			= pref.b_type
@@ -701,10 +685,10 @@ var/list/wrapped_species_by_ref = list()
 	character.body_alpha        = pref.body_alpha
 	character.hair_alpha        = pref.hair_alpha
 
-	character.ear_style = GLOB.sprite_accessory_ears[pref.ear_style_id]
-	character.tail_style = GLOB.sprite_accessory_tails[pref.tail_style_id]
-	character.wing_style = GLOB.sprite_accessory_wings[pref.wing_style_id]
-	character.horn_style = GLOB.sprite_accessory_ears[pref.horn_style_id]
+	character.ear_style = RSsprite_accessories.fetch_local_or_throw(pref.ear_style_id)
+	character.tail_style = RSsprite_accessories.fetch_local_or_throw(pref.tail_style_id)
+	character.wing_style = RSsprite_accessories.fetch_local_or_throw(pref.wing_style_id)
+	character.horn_style = RSsprite_accessories.fetch_local_or_throw(pref.horn_style_id)
 
 	character.r_ears			= pref.r_ears
 	character.b_ears			= pref.b_ears
@@ -758,6 +742,7 @@ var/list/wrapped_species_by_ref = list()
 		O.sync_colour_to_human(character)
 
 	for(var/id in pref.body_marking_ids)
+		#warn this
 		var/datum/sprite_accessory/marking/mark_datum = GLOB.sprite_accessory_markings[id]
 		var/mark_color = "[pref.body_marking_ids[id]]"
 
