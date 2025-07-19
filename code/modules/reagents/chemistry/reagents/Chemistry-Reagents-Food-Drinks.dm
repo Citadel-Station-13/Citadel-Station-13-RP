@@ -5263,4 +5263,3 @@
 	taste_description = "milk"
 	color = "#efeff0"
 	nutriment_factor = 1.5
-	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED

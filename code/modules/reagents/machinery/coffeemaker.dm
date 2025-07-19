@@ -4,7 +4,6 @@
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "coffeemaker"
 	base_icon_state = "coffeemaker"
-	resistance_flags = FIRE_PROOF | ACID_PROOF
 	circuit = /obj/item/circuitboard/machine/coffeemaker
 	pixel_y = 4 //needed to make it sit nicely on tables
 	var/obj/item/reagent_containers/cup/coffeepot/coffeepot = null
@@ -87,8 +86,8 @@
 		. += "[SPAN_NOTICE("The status display reads:")]\n"+\
 		SPAN_NOTICE("- Brewing coffee at <b>[speed*100]%</b>.")
 		if(coffeepot)
-			for(var/datum/reagent/consumable/cawfee as anything in coffeepot.reagents.reagent_list)
-				. += SPAN_NOTICE("- [cawfee.volume] units of coffee in pot.")
+			for(var/id as anything in coffeepot.reagents.reagent_volumes)
+				. += SPAN_NOTICE("- [coffeepot.reagents.reagent_volumes[id]] units of coffee in pot.")
 		if(cartridge)
 			if(cartridge.charges < 1)
 				. += SPAN_NOTICE("- grounds cartridge is empty.")
@@ -119,7 +118,7 @@
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
-	if(!can_interact(user) || !user.canUseTopic(src, !issilicon(user), FALSE, NO_TK))
+	if(!can_interact(user) || !user.canUseTopic(src, !issilicon(user)))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	if(brewing)
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
@@ -180,23 +179,21 @@
 	if(panel_open) //Can't insert objects when its screwed open
 		return TRUE
 
-	if (istype(attack_item, /obj/item/reagent_containers/cup/coffeepot) && !(attack_item.item_flags & ABSTRACT) && attack_item.is_open_container())
+	if (istype(attack_item, /obj/item/reagent_containers/cup/coffeepot) && attack_item.is_open_container())
 		var/obj/item/reagent_containers/cup/coffeepot/new_pot = attack_item
 		. = TRUE //no afterattack
-		if(!user.transferItemToLoc(new_pot, src))
+		if(!user.canUseTopic(src, TRUE))
 			return TRUE
 		replace_pot(user, new_pot)
-		balloon_alert(user, "added pot")
 		update_appearance()
 		return TRUE //no afterattack
 
-	if (istype(attack_item, /obj/item/coffee_cartridge) && !(attack_item.item_flags & ABSTRACT))
+	if (istype(attack_item, /obj/item/coffee_cartridge))
 		var/obj/item/coffee_cartridge/new_cartridge = attack_item
 		. = TRUE //no afterattack
 		if(!user.transferItemToLoc(new_cartridge, src))
 			return TRUE
 		replace_cartridge(user, new_cartridge)
-		balloon_alert(user, "added cartridge")
 		update_appearance()
 		return TRUE //no afterattack
 
@@ -275,18 +272,16 @@
 
 /obj/machinery/coffeemaker/proc/take_cup(mob/user)
 	if(!coffee_cups) //shouldn't happen, but we all know how stuff manages to break
-		balloon_alert("no cups left!")
+		to_chat(user, SPAN_NOTICE("There's no cups left in the [src]!"))
 		return
-	balloon_alert_to_viewers("took cup")
 	var/obj/item/reagent_containers/cup/glass/coffee_cup/new_cup = new(get_turf(src))
 	user.put_in_hands(new_cup)
 	coffee_cups--
 
 /obj/machinery/coffeemaker/proc/take_sugar(mob/user)
 	if(!sugar_packs)
-		balloon_alert("no sugar left!")
+		to_chat(user, SPAN_NOTICE("There's no sugar left in the [src]!"))
 		return
-	balloon_alert_to_viewers("took sugar packet")
 	var/obj/item/reagent_containers/food/condiment/small/packet/sugar/new_pack = new(get_turf(src))
 	user.put_in_hands(new_pack)
 	sugar_packs--
@@ -295,16 +290,15 @@
 	if(!sweetener_packs)
 		balloon_alert("no sweetener left!")
 		return
-	balloon_alert_to_viewers("took sweetener packet")
+	to_chat(user, SPAN_NOTICE("There's no sweetener left in the [src]!"))
 	var/obj/item/reagent_containers/condiment/pack/astrotame/new_pack = new(get_turf(src))
 	user.put_in_hands(new_pack)
 	sweetener_packs--
 
 /obj/machinery/coffeemaker/proc/take_creamer(mob/user)
 	if(!creamer_packs)
-		balloon_alert("no creamer left!")
+		to_chat(user, SPAN_NOTICE("There's no creamer left in the [src]!"))
 		return
-	balloon_alert_to_viewers("took creamer packet")
 	var/obj/item/reagent_containers/food/condiment/small/packet/creamer/new_pack = new(get_turf(src))
 	user.put_in_hands(new_pack)
 	creamer_packs--
@@ -324,7 +318,8 @@
 	if(!coffeepot || machine_stat & (NOPOWER|BROKEN) || coffeepot.reagents.total_volume >= coffeepot.reagents.maximum_volume)
 		return
 	operate_for(brew_time)
-	coffeepot.reagents.add_reagent_list(cartridge.drink_type)
+	for(var/reagent in cartridge.drink_type)
+		coffeepot.reagents.add_reagent(reagent)
 	cartridge.charges--
 
 //Coffee Cartridges: like toner, but for your coffee!
@@ -393,9 +388,6 @@
 	base_icon_state = "coffee_cartrack"
 	contents_tag = "coffee cartridge"
 	is_open = TRUE
-	spawn_type = /obj/item/coffee_cartridge
-
-/obj/item/storage/fancy/coffee_cart_rack/Initialize()
-	. = ..()
-	atom_storage.max_slots = 4
-	atom_storage.set_holdable(list(/obj/item/coffee_cartridge))
+	max_items = 4
+	max_combined_volume = 4 * WEIGHT_VOLUME_SMALL
+	insertion_whitelist = list(/obj/item/coffee_cartridge)
