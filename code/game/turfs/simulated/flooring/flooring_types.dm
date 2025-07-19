@@ -1047,7 +1047,7 @@
 		'sound/effects/footstep/asteroid4.ogg'))
 
 /datum/prototype/flooring/roguetown/rock
-	name = "hard rock"
+	name = "hardened rock"
 	desc = "Hardened rock that rests beneath your feet."
 	icon = 'icons/turf/flooring/roguetown/rock.dmi'
 	icon_base = "rock"

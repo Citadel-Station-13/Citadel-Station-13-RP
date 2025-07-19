@@ -64,3 +64,9 @@
 	desc = "An archaic wall made from wood. It looks sturdy."
 	icon = 'icons/turf/walls/rt_medieval/wood.dmi'
 	icon_state = "wood"
+
+/turf/simulated/wall/rt_medieval/rock
+	name = "rock wall"
+	desc = "Rock forming a hard, indestructible wall."
+	icon = 'icons/turf/walls/rt_medieval/rock.dmi'
+	icon_state = "rock"

@@ -803,3 +803,10 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/plating)
 	icon = 'icons/turf/flooring/roguetown/dirt.dmi'
 	icon_state = "dirt"
 	initial_flooring = /datum/prototype/flooring/roguetown/dirt
+
+
+/turf/simulated/floor/roguetown/rock
+	name = "rocks"
+	icon = 'icons/turf/flooring/roguetown/rock.dmi'
+	icon_state = "rock"
+	initial_flooring = /datum/prototype/flooring/roguetown/rock
