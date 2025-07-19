@@ -127,7 +127,7 @@
 /area/strelka/shipbase/deck4/hallway)
 "aG" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Library and Church";
+	RCon_tag = "Substation - Deck 4 Library and Church";
 	output_attempt = 0
 	},
 /obj/structure/window/reinforced{
@@ -358,7 +358,8 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/sensor{
-	name_tag = "CHAPEL/LIBRARY"
+	name_tag = "Deck4 - Chapel / Library";
+	name = "Powernet Sensor - Chapel / Library"
 	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck4/maintenance/library)
@@ -948,6 +949,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 6
 	},
+/obj/item/book/manual/legal/sdf,
 /turf/simulated/floor/carpet/turcarpet,
 /area/strelka/shipbase/deck4/library)
 "ee" = (
@@ -2838,7 +2840,8 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/power/sensor{
-	name_tag = "BRIDGE"
+	name_tag = "Deck4 - Bridge";
+	name = "Powernet Sensor - Bridge"
 	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck4/maintenance)
@@ -3077,7 +3080,9 @@
 /obj/structure/window/reinforced/survival_pod{
 	dir = 8
 	},
-/obj/structure/closet/crate/bin,
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
 /turf/simulated/floor/wood/sif,
 /area/strelka/shipbase/deck4/chapel)
 "mT" = (
@@ -3105,10 +3110,6 @@
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/hallway)
 "mW" = (
-/obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Deck 4 Bridge";
-	output_attempt = 0
-	},
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -3122,6 +3123,10 @@
 /obj/machinery/door/window/brigdoor/eastleft{
 	req_access = null;
 	req_one_access = list(10,24,11)
+	},
+/obj/machinery/power/smes/buildable/offmap_spawn{
+	RCon_tag = "Substation - Deck 4 Bridge";
+	output_attempt = 0
 	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck4/maintenance)
@@ -3163,7 +3168,9 @@
 	dir = 4;
 	pixel_y = -18
 	},
-/obj/structure/closet/crate/bin,
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
 /obj/machinery/camera/network/security,
 /obj/machinery/status_display{
 	pixel_y = 32
@@ -3581,7 +3588,7 @@
 /area/strelka/shipbase/deck4/bridge/captain)
 "oO" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Library and Church Substation Bypass"
+	RCon_tag = "Deck 4 Library and Church Substation Bypass"
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -4685,7 +4692,7 @@
 /area/strelka/shipbase/deck4/bar)
 "tK" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Crew Quarter Substation Bypass"
+	RCon_tag = "Deck 4 Crew Quarter Substation Bypass"
 	},
 /obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/machinery/door/window/brigdoor/southright,
@@ -4890,6 +4897,11 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
+/obj/item/book/manual/legal/cr_vol1,
+/obj/item/book/manual/legal/cr_vol2,
+/obj/item/book/manual/legal/cr_vol3,
+/obj/item/book/manual/legal/cr_vol4,
+/obj/item/book/manual/legal/cr_vol5,
 /turf/simulated/floor/carpet/turcarpet,
 /area/strelka/shipbase/deck4/library)
 "uK" = (
@@ -5902,7 +5914,9 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
-/obj/structure/closet/crate/bin,
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
 /obj/machinery/light/small/old{
 	dir = 4
 	},
@@ -6218,6 +6232,10 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
+/obj/item/book/manual/legal/sop_vol1,
+/obj/item/book/manual/legal/sop_vol2,
+/obj/item/book/manual/legal/sop_vol3,
+/obj/item/book/manual/legal/sop_vol4,
 /turf/simulated/floor/carpet/turcarpet,
 /area/strelka/shipbase/deck4/library)
 "Bz" = (
@@ -6977,7 +6995,9 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/structure/closet/crate/bin,
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/dormhallway)
 "Fq" = (
@@ -7438,7 +7458,9 @@
 /obj/structure/cable/orange{
 	icon_state = "0-4"
 	},
-/obj/structure/closet/crate/bin,
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
 /turf/simulated/floor/wood/broken,
 /area/strelka/shipbase/deck4/library)
 "HQ" = (
@@ -7487,7 +7509,7 @@
 /area/strelka/shipbase/deck4/dormhallway)
 "Ib" = (
 /obj/item/flashlight/lamp/green/on,
-/obj/structure/table/bench/wooden,
+/obj/structure/table/wooden_reinforced,
 /turf/simulated/floor/carpet/turcarpet,
 /area/strelka/shipbase/deck4/library)
 "Ic" = (
@@ -7981,7 +8003,7 @@
 /area/space)
 "JJ" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Crew Quarter";
+	RCon_tag = "Substation - Deck 4 Crew Quarter";
 	output_attempt = 0
 	},
 /obj/map_helper/access_helper/airlock/station/engineering/department,
@@ -9090,7 +9112,9 @@
 "OQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/closet/crate/bin,
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/hallway)
 "OS" = (
@@ -10548,6 +10572,10 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck4/hallway)
+"Xf" = (
+/mob/living/simple_mob/animal/passive/fox/renault,
+/turf/simulated/floor/wood,
+/area/strelka/shipbase/deck4/bridge/captain/room)
 "Xg" = (
 /obj/machinery/holopad/ship,
 /turf/simulated/floor/carpet/turcarpet,
@@ -10721,7 +10749,8 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/sensor{
-	name_tag = "CREWQUARTER"
+	name_tag = "Deck4 - Crewquarters";
+	name = "Powernet Sensor - Crewquarters"
 	},
 /obj/structure/cable/orange{
 	icon_state = "2-4"
@@ -33564,7 +33593,7 @@ Zr
 IN
 iO
 jN
-jN
+Xf
 jN
 pe
 eh

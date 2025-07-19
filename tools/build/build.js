@@ -141,7 +141,7 @@ export const IconCutterTarget = new Juke.Target({
     const standard_inputs = [
       `icons/**/*.png.toml`,
       `icons/**/*.dmi.toml`,
-      `cutter_templates/**/*.toml`,
+      `icon_cutter_templates/**/*.toml`,
       cutter_path,
     ];
     // Alright we're gonna search out any existing toml files and convert
@@ -169,7 +169,7 @@ export const IconCutterTarget = new Juke.Target({
     await Juke.exec(cutter_path, [
       "--dont-wait",
       "--templates",
-      "cutter_templates",
+      "icon_cutter_templates",
       "icons",
     ]);
   },
