@@ -12,6 +12,9 @@
 	abstract_type = /turf/simulated/wall/rt_medieval
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	material_system = FALSE
+	// needed due to base wall being steel :/
+	base_icon_state = null
+	color = null
 
 // TODO: destructible sprites, consturction, shift these slowly into
 //       materials system. wall themes/styles?

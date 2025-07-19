@@ -12,7 +12,3 @@ y = 0
 [output_icon_size]
 x = 32
 y = 32
-
-[map_icon]
-icon_state_name = "map"
-automatic = true
