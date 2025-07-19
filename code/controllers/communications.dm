@@ -115,7 +115,8 @@ var/list/radiochannels = list(
 	"AI Private"	= FREQ_AI_PRIVATE,
 	"Entertainment" = FREQ_ENTERTAINMENT,
 	"Medical(I)"	= FREQ_MEDICAL_INTERNAL,
-	"Security(I)"	= FREQ_SECURITY_INTERNAL
+	"Security(I)"	= FREQ_SECURITY_INTERNAL,
+	"SDF"			= FREQ_SDF
 )
 
 // central command channels, i.e deathsquid & response teams
@@ -143,6 +144,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	"[FREQ_SYNDICATE]" = "syndradio",
 	"[FREQ_RAIDER]" = "syndradio",
 	"[FREQ_TRADER]" = "syndradio",
+	"[FREQ_SDF]"	= "sdfradio",
 	"[FREQ_ERT]" = "centradio",
 	"[FREQ_DEATH_SQUAD]" = "centradio"
 	))
