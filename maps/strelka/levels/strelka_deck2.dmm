@@ -405,6 +405,13 @@
 /obj/structure/cable/orange{
 	icon_state = "2-8"
 	},
+/obj/machinery/power/sensor{
+	name = "Powernet Sensor - Solar";
+	name_tag = "Deck2 - Solar"
+	},
+/obj/structure/cable/orange{
+	icon_state = "0-2"
+	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2)
 "bp" = (
@@ -1199,7 +1206,7 @@
 /area/strelka/shipbase/deck2/engineering/atmos)
 "dy" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Security / Exploration Substation Bypass"
+	RCon_tag = "Deck 2 Security / Exploration Substation Bypass"
 	},
 /obj/structure/cable/green,
 /obj/structure/window/reinforced,
@@ -1326,10 +1333,6 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck2)
 "ea" = (
-/obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Engineering";
-	output_attempt = 0
-	},
 /obj/structure/cable/orange,
 /obj/structure/cable/green{
 	icon_state = "0-2"
@@ -1341,6 +1344,10 @@
 	dir = 8;
 	req_access = null;
 	req_one_access = list(10,24,11)
+	},
+/obj/machinery/power/smes/buildable/offmap_spawn{
+	RCon_tag = "Substation - Deck 2 Engineering";
+	output_attempt = 0
 	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2)
@@ -2225,14 +2232,12 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/engine)
 "gM" = (
-/obj/machinery/power/tracker,
 /obj/structure/cable/white{
 	icon_state = "1-2"
 	},
 /obj/structure/cable/white{
-	icon_state = "0-2"
+	icon_state = "4-8"
 	},
-/obj/structure/cable/white,
 /turf/simulated/floor/airless,
 /area/space)
 "gN" = (
@@ -2368,7 +2373,9 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/spline/fancy/wood,
-/obj/structure/closet/crate/bin,
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
 /obj/machinery/light/fairy,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2)
@@ -4730,7 +4737,7 @@
 /area/strelka/shipbase/deck2/engineering/nacelle)
 "om" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Engineering Substation Bypass"
+	RCon_tag = "Deck 2 Engineering Substation Bypass"
 	},
 /obj/structure/cable/green,
 /obj/structure/window/reinforced,
@@ -6603,7 +6610,7 @@
 	name = "fuel pre-heater"
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/strelka/shipbase/deck2/engineering/nacelle)
 "tl" = (
 /obj/machinery/computer/security/engineering{
 	dir = 4
@@ -7764,6 +7771,13 @@
 	},
 /obj/landmark{
 	name = "maint_pred"
+	},
+/obj/machinery/power/sensor{
+	name = "Powernet Sensor - Security";
+	name_tag = "Deck2 - Security / Exploration"
+	},
+/obj/structure/cable/blue{
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/maintenance/sec)
@@ -9147,6 +9161,19 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck2/engineering/nacelle)
+"Aw" = (
+/obj/structure/cable/white{
+	icon_state = "4-8"
+	},
+/obj/structure/cable/white{
+	icon_state = "0-8"
+	},
+/obj/machinery/power/sensor{
+	name = "Powernet Sensor - Bride / IAA";
+	name_tag = "Deck2 - Bridge / IAA"
+	},
+/turf/simulated/floor/plating,
+/area/strelka/shipbase/deck2/maintenance/bridge)
 "Ax" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
@@ -9461,6 +9488,16 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/shield)
+"Bl" = (
+/obj/structure/cable{
+	icon_state = "0-5"
+	},
+/obj/machinery/power/sensor{
+	name = "Powernet Sensor - Engineering";
+	name_tag = "Deck2 - Engineering"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck2/maintenance/eva)
 "Bm" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -10068,7 +10105,9 @@
 /area/strelka/shipbase/deck2/explo/emt)
 "CZ" = (
 /obj/effect/floor_decal/rust,
-/obj/structure/closet/crate/bin,
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2)
 "Dc" = (
@@ -11103,6 +11142,10 @@
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/strelka/shipbase/deck2/engineering/engine)
+"Gx" = (
+/obj/machinery/power/tracker,
+/turf/simulated/floor/airless,
+/area/space)
 "Gy" = (
 /obj/structure/cable/white{
 	icon_state = "1-8"
@@ -11919,7 +11962,9 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
-/obj/structure/closet/crate/bin,
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck2/bridge)
 "Jk" = (
@@ -14021,7 +14066,7 @@
 	req_access = null
 	},
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Security / Exploration";
+	RCon_tag = "Substation - Deck 2 Security / Exploration";
 	output_attempt = 0
 	},
 /turf/simulated/floor/plating,
@@ -16009,6 +16054,9 @@
 	icon_state = "0-4"
 	},
 /obj/effect/floor_decal/industrial/warning/full,
+/obj/structure/cable{
+	icon_state = "0-10"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/maintenance/eva)
 "Wi" = (
@@ -16768,7 +16816,7 @@
 	name = "fuel pre-heater"
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/strelka/shipbase/deck2/engineering/nacelle)
 "XU" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/wood/indoors,
@@ -28874,7 +28922,7 @@ aA
 Ci
 bw
 rt
-UU
+WM
 KT
 vz
 vc
@@ -29097,7 +29145,7 @@ PM
 wZ
 vz
 vc
-UU
+WM
 qM
 zl
 vE
@@ -30809,7 +30857,7 @@ Dl
 rG
 rG
 rG
-rG
+Bl
 rG
 WM
 pZ
@@ -40146,7 +40194,7 @@ CI
 He
 dr
 ng
-MO
+Aw
 XZ
 yG
 xJ
@@ -44797,7 +44845,7 @@ KT
 KT
 KT
 KT
-KT
+Gx
 KT
 KT
 KT

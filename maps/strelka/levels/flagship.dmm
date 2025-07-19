@@ -4653,6 +4653,12 @@
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_emptycourt)
+"mO" = (
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/turf/unsimulated/floor{
+	name = "plating"
+	},
+/area/centcom/medical)
 "mP" = (
 /obj/item/stack/material/glass{
 	amount = 50
@@ -17031,11 +17037,6 @@
 /obj/structure/sign/securearea,
 /turf/simulated/wall/r_wall/prepainted,
 /area/centcom/control)
-"SH" = (
-/obj/effect/step_trigger/lost_in_space,
-/obj/spawner/window/reinforced/full/firelocks,
-/turf/space/transit/east,
-/area/space)
 "SI" = (
 /obj/structure/table/standard{
 	desc = "It's a table, it has something scratched on it 'I fuck the squirrel on this table'."
@@ -22199,7 +22200,7 @@ ls
 ls
 ls
 ls
-SH
+kJ
 ls
 ls
 rA
@@ -41701,10 +41702,10 @@ Tj
 Tj
 OX
 OX
-Cb
+mO
 ra
-Cb
-Cb
+mO
+mO
 OX
 Bs
 Bs
