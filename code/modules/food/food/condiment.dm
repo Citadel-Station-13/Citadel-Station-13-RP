@@ -449,3 +449,13 @@
 /obj/item/reagent_containers/food/condiment/cursed/Initialize()
 	.  = ..()
 	reagents.add_reagent(pick("condensedcapsaicin_v", "hydrophoron"), 50)
+
+/obj/item/reagent_containers/food/condiment/small/packet/creamer
+	name = "creamer pack"
+	originalname = "creamer"
+	list_reagents = list(/datum/reagent/nutriment/creamer = 5)
+
+/obj/item/reagent_containers/food/condiment/small/packet/sugar
+	name = "sugar pack"
+	originalname = "sugar"
+	list_reagents = list(/datum/reagent/sugar = 5)
