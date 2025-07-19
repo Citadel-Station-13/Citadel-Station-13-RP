@@ -65,11 +65,11 @@
 /obj/machinery/coffeemaker/examine(mob/user)
 	. = ..()
 	if(!in_range(user, src) && !issilicon(user) && !isobserver(user))
-		. += span_warning("You're too far away to examine [src]'s contents and display!")
+		. += SPAN_WARNING("You're too far away to examine [src]'s contents and display!")
 		return
 
 	if(brewing)
-		. += span_warning("\The [src] is brewing.")
+		. += SPAN_WARNING("\The [src] is brewing.")
 		return
 
 	if(panel_open)
@@ -77,43 +77,43 @@
 		return
 
 	if(coffeepot || cartridge)
-		. += span_notice("\The [src] contains:")
+		. += SPAN_NOTICE("\The [src] contains:")
 		if(coffeepot)
-			. += span_notice("- \A [coffeepot].")
+			. += SPAN_NOTICE("- \A [coffeepot].")
 		if(cartridge)
-			. += span_notice("- \A [cartridge].")
+			. += SPAN_NOTICE("- \A [cartridge].")
 
 	if(!(machine_stat & (NOPOWER|BROKEN)))
-		. += "[span_notice("The status display reads:")]\n"+\
-		span_notice("- Brewing coffee at <b>[speed*100]%</b>.")
+		. += "[SPAN_NOTICE("The status display reads:")]\n"+\
+		SPAN_NOTICE("- Brewing coffee at <b>[speed*100]%</b>.")
 		if(coffeepot)
 			for(var/datum/reagent/consumable/cawfee as anything in coffeepot.reagents.reagent_list)
-				. += span_notice("- [cawfee.volume] units of coffee in pot.")
+				. += SPAN_NOTICE("- [cawfee.volume] units of coffee in pot.")
 		if(cartridge)
 			if(cartridge.charges < 1)
-				. += span_notice("- grounds cartridge is empty.")
+				. += SPAN_NOTICE("- grounds cartridge is empty.")
 			else
-				. += span_notice("- grounds cartridge has [cartridge.charges] charges remaining.")
+				. += SPAN_NOTICE("- grounds cartridge has [cartridge.charges] charges remaining.")
 
 	if (coffee_cups >= 1)
-		. += span_notice("There [coffee_cups == 1 ? "is" : "are"] [coffee_cups] coffee cup[coffee_cups != 1 && "s"] left.")
+		. += SPAN_NOTICE("There [coffee_cups == 1 ? "is" : "are"] [coffee_cups] coffee cup[coffee_cups != 1 && "s"] left.")
 	else
-		. += span_notice("There are no cups left.")
+		. += SPAN_NOTICE("There are no cups left.")
 
 	if (sugar_packs >= 1)
-		. += span_notice("There [sugar_packs == 1 ? "is" : "are"] [sugar_packs] packet[sugar_packs != 1 && "s"] of sugar left.")
+		. += SPAN_NOTICE("There [sugar_packs == 1 ? "is" : "are"] [sugar_packs] packet[sugar_packs != 1 && "s"] of sugar left.")
 	else
-		. += span_notice("There is no sugar left.")
+		. += SPAN_NOTICE("There is no sugar left.")
 
 	if (sweetener_packs >= 1)
-		. += span_notice("There [sweetener_packs == 1 ? "is" : "are"] [sweetener_packs] packet[sweetener_packs != 1 && "s"] of sweetener left.")
+		. += SPAN_NOTICE("There [sweetener_packs == 1 ? "is" : "are"] [sweetener_packs] packet[sweetener_packs != 1 && "s"] of sweetener left.")
 	else
-		. += span_notice("There is no sweetener left.")
+		. += SPAN_NOTICE("There is no sweetener left.")
 
 	if (creamer_packs > 1)
-		. += span_notice("There [creamer_packs == 1 ? "is" : "are"] [creamer_packs] packet[creamer_packs != 1 && "s"] of creamer left.")
+		. += SPAN_NOTICE("There [creamer_packs == 1 ? "is" : "are"] [creamer_packs] packet[creamer_packs != 1 && "s"] of creamer left.")
 	else
-		. += span_notice("There is no creamer left.")
+		. += SPAN_NOTICE("There is no creamer left.")
 
 /obj/machinery/coffeemaker/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()
@@ -339,9 +339,9 @@
 /obj/item/coffee_cartridge/examine(mob/user)
 	. = ..()
 	if(charges)
-		. += span_warning("The cartridge has [charges] portions of grounds remaining.")
+		. += SPAN_WARNING("The cartridge has [charges] portions of grounds remaining.")
 	else
-		. += span_warning("The cartridge has no unspent grounds remaining.")
+		. += SPAN_WARNING("The cartridge has no unspent grounds remaining.")
 
 /obj/item/coffee_cartridge/fancy
 	name = "coffeemaker cartridge - Caffè Fantasioso"

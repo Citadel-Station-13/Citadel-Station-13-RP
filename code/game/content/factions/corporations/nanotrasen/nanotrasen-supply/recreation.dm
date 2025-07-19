@@ -204,30 +204,25 @@
 
 /datum/supply_pack/nanotrasen/recreation/coffee_mug
 	name = "Coffee Mug"
-	desc = "A bog standard coffee mug, for drinking coffee."
-	cost = 100
+	worth = 100
 	contains = list(/obj/item/reagent_containers/cup/glass/mug)
 
 /datum/supply_pack/nanotrasen/recreation/nt_mug
 	name = "Nanotrasen Coffee Mug"
-	desc = "A blue mug bearing the logo of your corporate masters. Usually given out at inductions or events, we'll send one out special for a nominal fee."
 	cost = 100
 	contains = list(/obj/item/reagent_containers/cup/glass/mug/nanotrasen)
 
 /datum/supply_pack/nanotrasen/recreation/coffee_cartridge
 	name = "Coffee Cartridge"
-	desc = "A basic cartridge for a coffeemaker. Makes 4 pots."
-	cost = 100
+	worth = 100
 	contains = list(/obj/item/coffee_cartridge)
 
 /datum/supply_pack/nanotrasen/recreation/coffee_cartridge_fancy
 	name = "Fancy Coffee Cartridge"
-	desc = "A fancy cartridge for a coffeemaker. Makes 4 pots."
-	cost = 200
+	worth = 200
 	contains = list(/obj/item/coffee_cartridge/fancy)
 
 /datum/supply_pack/nanotrasen/recreation/coffeepot
 	name = "Coffeepot"
-	desc = "A standard-sized coffeepot, for use with a coffeemaker."
-	cost = 200
+	worth = 200
 	contains = list(/obj/item/reagent_containers/cup/coffeepot)
