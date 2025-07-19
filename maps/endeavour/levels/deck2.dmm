@@ -2814,9 +2814,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
 "bXb" = (
-/obj/item/radio/intercom{
-	pixel_y = -24
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
@@ -2826,6 +2823,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
+/obj/structure/closet/radiation,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
 "bXr" = (
@@ -15529,6 +15527,10 @@
 	info = "This is a direct notice to anyone using firing range: All tests involving destruction of testing facilities MUST be run through Research Director or Central Command before anyone even so much as thinks about going through with this, or be moved outside to where test cannot affect any existing facility. This is both to maintain a professional environment, and ensure nobody else is harmed during these experiments. Nobody wants another 'two SM shards going nuclear in the firing range' incident again, especially not the people handling your paychecks.";
 	name = "note to science staff"
 	},
+/obj/item/radio/intercom{
+	dir = 4;
+	pixel_x = 24
+	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
 "ljq" = (
@@ -22954,6 +22956,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/structure/closet/bombcloset/double,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
 "qoP" = (
@@ -31976,6 +31979,7 @@
 "wUV" = (
 /obj/structure/table/standard,
 /obj/machinery/fire_alarm/alarms_hidden/west_mount,
+/obj/item/clothing/shoes/galoshes,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "wVd" = (
@@ -43197,13 +43201,13 @@ biX
 iAr
 uwU
 tfP
-bIl
-xSp
-xSp
-xSp
-xSp
-xSp
-xSp
+hNv
+hNv
+hNv
+hNv
+hNv
+hNv
+hNv
 vSY
 tLC
 cqH
