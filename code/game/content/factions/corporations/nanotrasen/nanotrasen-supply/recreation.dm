@@ -209,7 +209,7 @@
 
 /datum/supply_pack/nanotrasen/recreation/nt_mug
 	name = "Nanotrasen Coffee Mug"
-	cost = 100
+	worth = 100
 	contains = list(/obj/item/reagent_containers/cup/glass/mug/nanotrasen)
 
 /datum/supply_pack/nanotrasen/recreation/coffee_cartridge

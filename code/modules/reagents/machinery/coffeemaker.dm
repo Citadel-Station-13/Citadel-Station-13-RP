@@ -1,7 +1,7 @@
 /obj/machinery/coffeemaker
 	name = "coffeemaker"
 	desc = "A Modello 3 Coffeemaker that brews coffee and holds it at the perfect temperature of 176 fahrenheit. Made by Piccionaia Home Appliances."
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "coffeemaker"
 	base_icon_state = "coffeemaker"
 	resistance_flags = FIRE_PROOF | ACID_PROOF
@@ -73,7 +73,7 @@
 		return
 
 	if(panel_open)
-		. += span_notice("[src]'s maintenance hatch is open!")
+		. += SPAN_NOTICE("[src]'s maintenance hatch is open!")
 		return
 
 	if(coffeepot || cartridge)
@@ -331,10 +331,10 @@
 /obj/item/coffee_cartridge
 	name = "coffeemaker cartridge- Caffè Generico"
 	desc = "A coffee cartridge manufactured by Piccionaia Coffee, for use with the Modello 3 system."
-	icon = 'icons/obj/food/food.dmi'
+	icon = 'icons/obj/food.dmi'
 	icon_state = "cartridge_basic"
 	var/charges = 4
-	var/list/drink_type = list(/datum/reagent/consumable/coffee = 120)
+	var/list/drink_type = list(/datum/reagent/drink/coffee = 120)
 
 /obj/item/coffee_cartridge/examine(mob/user)
 	. = ..()
@@ -381,7 +381,7 @@
 /obj/item/blank_coffee_cartridge
 	name = "blank coffee cartridge"
 	desc = "A blank coffee cartridge, ready to be filled with coffee paste."
-	icon = 'icons/obj/food/food.dmi'
+	icon = 'icons/obj/food.dmi'
 	icon_state = "cartridge_blank"
 
 //now, how do you store coffee carts? well, in a rack, of course!

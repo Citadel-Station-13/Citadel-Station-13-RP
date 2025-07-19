@@ -814,6 +814,6 @@
 	time = 2 SECONDS
 	reqs = list(
 		/obj/item/blank_coffee_cartridge = 1,
-		/datum/reagent/toxin/coffeepowder = 10,
+		/datum/reagent/nutriment/coffee = 10,
 	)
 	category = CAT_MISC
