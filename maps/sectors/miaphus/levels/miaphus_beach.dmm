@@ -483,6 +483,15 @@
 	outdoors = 1
 	},
 /area/sector/miaphus/beach/mineyard)
+"bN" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/blast/regular/open{
+	id = "SDFantiboardingphase2"
+	},
+/obj/map_helper/access_helper/airlock/disconnected/sdf,
+/obj/machinery/door/airlock/multi_tile,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/miaphus/sdf)
 "bO" = (
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/bunker/engi)
@@ -603,6 +612,15 @@
 /obj/machinery/recharger,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/miaphus/sdf)
+"cr" = (
+/obj/structure/closet,
+/obj/item/clothing/under/overalls,
+/obj/item/clothing/head/hardhat,
+/obj/item/clothing/shoes/boots/jackboots/toeless,
+/obj/item/clothing/under/tajaran/hadiifolly,
+/obj/item/clothing/under/tajaran/hadiifolly,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/miaphus/beach/desalinator)
 "cs" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/storage/box/wormcan,
@@ -637,6 +655,19 @@
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/sdf)
+"cK" = (
+/obj/structure/catwalk,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/miaphus/sdf)
+"cL" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/structure/table/steel_reinforced,
+/obj/item/holowarrant,
+/obj/item/paper_bin,
+/obj/item/pen,
+/obj/item/pen,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/miaphus/sdf)
 "cM" = (
 /obj/effect/floor_decal/corner_steel_grid{
 	dir = 10
@@ -721,7 +752,28 @@
 /obj/structure/cable,
 /obj/structure/cable/green{
 	icon_state = "4-8"
+"cZ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
 	},
+/obj/machinery/camera/network{
+	network = list("SDF");
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/miaphus/sdf)
+"da" = (
+/obj/machinery/atmospherics/component/binary/pump/high_power{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/miaphus/sdf)
 "dd" = (
@@ -756,6 +808,9 @@
 	},
 /obj/effect/floor_decal/corner_steel_grid{
 	dir = 6
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -892,11 +947,17 @@
 /area/sector/miaphus/beach/desalinator)
 "ed" = (
 /obj/effect/floor_decal/corner_steel_grid{
+"ed" = (
+/obj/effect/floor_decal/corner_steel_grid{
 	dir = 1
 	},
 /obj/structure/cable{
 	icon_state = "1-4"
+/obj/structure/cable{
+	icon_state = "1-4"
 	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/miaphus/beach/sdf)
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/miaphus/beach/sdf)
 "eh" = (
@@ -919,7 +980,11 @@
 "em" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 4
+"em" = (
+/obj/effect/floor_decal/industrial/danger{
+	dir = 4
 	},
+/turf/simulated/floor/reinforced,
 /turf/simulated/floor/reinforced,
 /area/shuttle/miaphus/sdf)
 "er" = (
@@ -1037,6 +1102,10 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/desalinator)
+"eJ" = (
+/obj/effect/floor_decal/corner_steel_grid,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/miaphus/beach/sdf)
 "eK" = (
 /obj/random/underdark,
 /turf/simulated/mineral/floor/cave{
@@ -1049,6 +1118,11 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/sdf)
+"eT" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/effect/floor_decal/industrial/halfstair,
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/miaphus/sdf)
 "eT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/effect/floor_decal/industrial/halfstair,
@@ -1073,6 +1147,8 @@
 	},
 /turf/simulated/floor/wood,
 /area/sector/miaphus/beach/resort/bunk)
+"eZ" = (
+/obj/effect/floor_decal/techfloor{
 "eZ" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 4
@@ -1100,6 +1176,9 @@
 "fc" = (
 /obj/effect/floor_decal/corner_steel_grid{
 	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -1187,7 +1266,26 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/miaphus/sdf)
+"ft" = (
+/obj/structure/railing/grey,
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 8
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 1;
+	id = "starboardnacelleSDF";
+	pixel_y = -24
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/miaphus/sdf)
 "fv" = (
+/obj/effect/floor_decal/industrial/danger{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
 /obj/effect/floor_decal/industrial/danger{
 	dir = 4
 	},
@@ -1218,6 +1316,12 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel_dirty,
+/area/sector/miaphus/beach/sdf)
+"fG" = (
+/obj/effect/floor_decal/corner_steel_grid{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/miaphus/beach/sdf)
 "fG" = (
 /obj/effect/floor_decal/corner_steel_grid{
@@ -1261,6 +1365,8 @@
 "fN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/techfloor/grid,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/miaphus/sdf)
 "fO" = (
 /obj/structure/fence/corner{
@@ -1291,7 +1397,11 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /obj/structure/catwalk,
+/turf/simulated/floor/tiled/techfloor,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/miaphus/sdf)
 "fT" = (
@@ -1309,6 +1419,9 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/sdf)
 "fW" = (
@@ -1319,10 +1432,17 @@
 "fZ" = (
 /obj/effect/floor_decal/corner_steel_grid{
 	dir = 10
+"fZ" = (
+/obj/effect/floor_decal/corner_steel_grid{
+	dir = 10
 	},
 /obj/structure/cable{
 	icon_state = "1-4"
+/obj/structure/cable{
+	icon_state = "1-4"
 	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/miaphus/beach/sdf)
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/sdf)
 "ga" = (
@@ -1342,8 +1462,15 @@
 /area/sector/miaphus/beach/resort/greenhouse)
 "gh" = (
 /obj/structure/bed/chair/bay/chair/padded/red{
+"gh" = (
+/obj/structure/bed/chair/bay/chair/padded/red{
 	dir = 1
 	},
+/obj/machinery/button/remote/blast_door{
+	pixel_y = 26;
+	id = "SDFantiboarding";
+	pixel_x = 23;
+	name = "remote blast door-control (docks)"
 /obj/machinery/button/remote/blast_door{
 	pixel_y = 26;
 	id = "SDFantiboarding";
@@ -1367,13 +1494,40 @@
 	id = "SDFantiboardingphase4";
 	pixel_x = 38;
 	name = "remote blast door-control (Cockpit)"
+/obj/machinery/button/remote/blast_door{
+	pixel_y = 26;
+	id = "SDFantiboardingphase2";
+	pixel_x = 31;
+	name = "remote blast door-control (Sides)"
+	},
+/obj/machinery/button/remote/blast_door{
+	pixel_y = 26;
+	id = "SDFantiboardingphase3";
+	pixel_x = 40;
+	name = "remote blast door-control (Prison)"
+	},
+/obj/machinery/button/remote/blast_door{
+	pixel_y = 56;
+	id = "SDFantiboardingphase4";
+	pixel_x = 38;
+	name = "remote blast door-control (Cockpit)"
 	},
 /obj/machinery/button/remote/blast_door{
 	pixel_y = 56;
 	id = "SDFantiboardingphasearmory";
 	pixel_x = 27;
 	name = "remote blast door-control (armory)"
+/obj/machinery/button/remote/blast_door{
+	pixel_y = 56;
+	id = "SDFantiboardingphasearmory";
+	pixel_x = 27;
+	name = "remote blast door-control (armory)"
 	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/miaphus/sdf)
+"gl" = (
+/obj/machinery/holopad/ship/starts_inactive,
+/turf/simulated/floor/tiled/techfloor,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/miaphus/sdf)
 "gl" = (
@@ -1516,6 +1670,17 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/bunker/mess)
+"hd" = (
+/obj/structure/catwalk,
+/obj/machinery/camera/network{
+	network = list("SDF");
+	dir = 1
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/miaphus/sdf)
 "he" = (
 /mob/living/simple_mob/animal/roach/strahlend,
 /turf/simulated/floor/tiled/steel_dirty,
@@ -1754,6 +1919,9 @@
 /obj/structure/closet/secure_closet/guncabinet{
 	req_one_access = null
 	},
+/obj/structure/closet/secure_closet/guncabinet{
+	req_one_access = null
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/miaphus/beach/sdf)
 "ie" = (
@@ -1876,6 +2044,11 @@
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/bunker/engi)
+"iE" = (
+/obj/item/defib_kit/loaded,
+/obj/structure/table/steel,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/miaphus/sdf)
 "iF" = (
 /obj/structure/fence/door/opened{
 	dir = 8
@@ -1949,7 +2122,11 @@
 /obj/structure/catwalk,
 /obj/structure/cable/green{
 	icon_state = "4-8"
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
+/turf/simulated/floor/tiled/dark,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/miaphus/sdf)
 "iT" = (
@@ -2012,7 +2189,18 @@
 /obj/machinery/button/flasher{
 	pixel_x = -22;
 	id = "sdfflash"
+/obj/machinery/light{
+	dir = 8
 	},
+/obj/machinery/button/flasher{
+	pixel_x = -22;
+	id = "sdfflash"
+	},
+/obj/item/camera,
+/obj/structure/bed/chair/office/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotechmaint,
 /obj/item/camera,
 /obj/structure/bed/chair/office/light{
 	dir = 4
@@ -2044,6 +2232,20 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/station/tram)
+"jw" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/machinery/door/blast/regular/open{
+	id = "SDFantiboardingphaseengine"
+	},
+/obj/machinery/door/airlock/hatch,
+/obj/map_helper/access_helper/airlock/disconnected/sdf,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/miaphus/sdf)
 "jx" = (
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
@@ -2278,7 +2480,10 @@
 "kJ" = (
 /obj/machinery/door/blast/regular/open{
 	id = "SDFantiboardingphase2"
+/obj/machinery/door/blast/regular/open{
+	id = "SDFantiboardingphase2"
 	},
+/turf/simulated/floor/tiled/dark,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/miaphus/sdf)
 "kK" = (
@@ -2312,6 +2517,15 @@
 	},
 /turf/simulated/floor/wood/broken,
 /area/sector/miaphus/beach/resort/dorm2)
+"kS" = (
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/miaphus/sdf)
 "kT" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
@@ -2342,6 +2556,13 @@
 /turf/simulated/floor/wood/broken,
 /area/sector/miaphus/beach/resort/dorm2)
 "la" = (
+/obj/effect/floor_decal/industrial/danger{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 10
+	},
+/turf/simulated/floor/reinforced,
 /obj/effect/floor_decal/industrial/danger{
 	dir = 4
 	},
@@ -2405,7 +2626,15 @@
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
+"lo" = (
+/obj/effect/floor_decal/corner_steel_grid{
+	dir = 6
 	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/miaphus/beach/sdf)
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/miaphus/beach/sdf)
 "ls" = (
@@ -2433,7 +2662,12 @@
 /obj/structure/catwalk,
 /obj/structure/cable/green{
 	icon_state = "2-4"
+"lD" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "2-4"
 	},
+/turf/simulated/floor/tiled/dark,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/miaphus/sdf)
 "lE" = (
@@ -2441,6 +2675,9 @@
 /obj/map_helper/access_helper/airlock/disconnected/sdf,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/sdf)
+"lH" = (
+/obj/structure/table/bench/steel,
+/turf/simulated/floor/tiled/techfloor/grid,
 "lH" = (
 /obj/structure/table/bench/steel,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -2711,6 +2948,21 @@
 	outdoors = 1
 	},
 /area/sector/miaphus/beach/resort)
+"mT" = (
+/obj/map_helper/access_helper/airlock/disconnected/sdf,
+/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/door/blast/regular/open{
+	id = "SDFantiboardingphase3"
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/miaphus/sdf)
+"mU" = (
+/obj/effect/floor_decal/techfloor/orange,
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/miaphus/sdf)
 "mV" = (
 /obj/structure/window/wooden,
 /obj/structure/window/wooden{
@@ -2816,7 +3068,33 @@
 /obj/item/material/knife/tacknife/boot,
 /obj/structure/closet/secure_closet/guncabinet{
 	req_one_access = null
+"nn" = (
+/obj/effect/floor_decal/borderfloorblack/shifted,
+/obj/structure/railing/grey{
+	dir = 1
 	},
+/obj/machinery/air_alarm/alarms_hidden/north_mount{
+	req_one_access = null
+	},
+/obj/item/material/knife/tacknife/boot,
+/obj/structure/closet/secure_closet/guncabinet{
+	req_one_access = null
+	},
+/obj/item/ammo_magazine/a45/uzi,
+/obj/item/ammo_magazine/a45/uzi,
+/obj/item/gun/projectile/ballistic/colt/taj,
+/obj/item/gun/projectile/ballistic/automatic/mini_uzi/taj,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/miaphus/sdf)
+"nq" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	icon_state = "1-4"
 /obj/item/ammo_magazine/a45/uzi,
 /obj/item/ammo_magazine/a45/uzi,
 /obj/item/gun/projectile/ballistic/colt/taj,
@@ -2839,7 +3117,15 @@
 /obj/structure/catwalk,
 /obj/structure/cable/green{
 	icon_state = "4-8"
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/miaphus/sdf)
+"nr" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
+/obj/machinery/light,
+/turf/simulated/floor/tiled/dark,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/miaphus/sdf)
@@ -3242,6 +3528,19 @@
 /obj/machinery/power/smes/buildable/offmap_spawn,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/miaphus/sdf)
+"pg" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
+/obj/machinery/power/smes/buildable/offmap_spawn,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/miaphus/sdf)
 "ph" = (
 /mob/living/simple_mob/animal/roach/seuche,
 /turf/simulated/floor/tiled/old_tile/white,
@@ -3415,6 +3714,13 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor,
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor,
 /area/shuttle/miaphus/sdf)
 "qd" = (
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -3572,6 +3878,15 @@
 	outdoors = 1
 	},
 /area/sector/miaphus/beach/station/terminal)
+"rd" = (
+/obj/effect/floor_decal/corner_steel_grid{
+	dir = 8
+	},
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/miaphus/beach/sdf)
 "rf" = (
 /obj/effect/floor_decal/industrial/loading{
 	dir = 8
@@ -3606,6 +3921,15 @@
 "rp" = (
 /turf/simulated/floor/water/indoors,
 /area/sector/miaphus/beach/mineshaft)
+"rs" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/obj/structure/shuttle/engine/heater{
+	dir = 4
+	},
+/turf/simulated/wall/r_wall/prepainted,
+/area/shuttle/miaphus/sdf)
 "rs" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
@@ -3662,6 +3986,13 @@
 	},
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/miaphus/beach/bunker/kitchen)
+"rG" = (
+/obj/structure/railing/grey,
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/miaphus/sdf)
 "rH" = (
 /obj/effect/floor_decal/corner_steel_grid/full,
 /obj/structure/toilet{
@@ -3807,6 +4138,20 @@
 	},
 /turf/simulated/floor/outdoors/beach/sand,
 /area/sector/miaphus/beach/resort/dorm1)
+"st" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/camera/network{
+	network = list("SDF");
+	dir = 8
+	},
+/obj/machinery/door/blast/regular/open{
+	id = "SDFantiboardingphase2"
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/miaphus/sdf)
 "su" = (
 /obj/random/mob/spider/mutant,
 /obj/effect/floor_decal/tracks/t_east,
@@ -3871,6 +4216,15 @@
 	},
 /turf/simulated/floor/water/deep,
 /area/sector/miaphus/beach/aa)
+"sQ" = (
+/obj/effect/floor_decal/corner_steel_grid{
+	dir = 10
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/miaphus/beach/sdf)
 "sQ" = (
 /obj/effect/floor_decal/corner_steel_grid{
 	dir = 10
@@ -3960,6 +4314,21 @@
 	},
 /obj/machinery/light,
 /turf/simulated/floor/carpet/lythios43c,
+/area/shuttle/miaphus/sdf)
+"tn" = (
+/obj/structure/catwalk,
+/obj/structure/table/steel_reinforced,
+/obj/machinery/button/remote/blast_door{
+	dir = 4;
+	pixel_y = 16;
+	pixel_x = 6;
+	id = "SDFgeneral";
+	name = "remote blast door-control (Windows)"
+	},
+/obj/machinery/computer/ship/sensors{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/miaphus/sdf)
 "to" = (
 /obj/structure/cable/cyan{
@@ -4053,7 +4422,11 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
 	dir = 4
 	},
 /obj/machinery/power/terminal,
@@ -4071,6 +4444,10 @@
 /obj/effect/floor_decal/industrial/danger{
 	dir = 8
 	},
+/obj/machinery/atmospherics/portables_connector{
+	dir = 4
+	},
+/obj/machinery/mech_recharger,
 /turf/simulated/floor/reinforced,
 /area/shuttle/miaphus/sdf)
 "tO" = (
@@ -4081,6 +4458,15 @@
 /mob/living/simple_mob/animal/roach/jaeger,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/bunker)
+"tP" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 10
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/miaphus/sdf)
 "tQ" = (
 /obj/structure/fence/corner{
 	dir = 10
@@ -4224,6 +4610,8 @@
 /area/sector/miaphus/beach/mineshaft)
 "uB" = (
 /obj/effect/floor_decal/industrial/halfstair{
+"uB" = (
+/obj/effect/floor_decal/industrial/halfstair{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/monotechmaint,
@@ -4287,6 +4675,14 @@
 	},
 /turf/simulated/floor/wood/broken,
 /area/sector/miaphus/beach/resort/dorm1)
+"uU" = (
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	frequency = 1380;
+	id_tag = "sdf_outpost_dock";
+	pixel_x = 24
+	},
+/turf/simulated/wall/r_wall,
+/area/sector/miaphus/beach/jungle)
 "uV" = (
 /obj/machinery/door/blast/regular{
 	name = "Tram Tunnel Doors"
@@ -4652,6 +5048,24 @@
 /obj/random/empty_or_lootable_crate,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/desalinator)
+"wB" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "0-2"
+	},
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/machinery/shieldwallgen,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/miaphus/sdf)
+"wD" = (
+/obj/structure/catwalk,
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/miaphus/sdf)
 "wE" = (
 /obj/structure/railing{
 	dir = 8
@@ -4684,6 +5098,14 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/miaphus/beach/sdf)
+"wL" = (
+/obj/machinery/door/airlock/hatch,
+/obj/map_helper/access_helper/airlock/disconnected/sdf,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/miaphus/beach/sdf)
 "wM" = (
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
@@ -4699,6 +5121,10 @@
 /turf/simulated/wall/rthull,
 /area/sector/miaphus/beach/station/tram)
 "wR" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 8
 	},
@@ -4789,6 +5215,15 @@
 /obj/spawner/window/full,
 /turf/simulated/floor/plating,
 /area/sector/miaphus/beach/resort/greenhouse)
+"xk" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/miaphus/sdf)
 "xn" = (
 /obj/effect/floor_decal/tracks{
 	dir = 8
@@ -4797,6 +5232,16 @@
 /obj/random/multiple/underdark/ores,
 /turf/simulated/floor/wood,
 /area/sector/miaphus/beach/mineshaft)
+"xo" = (
+/obj/machinery/door/airlock/maintenance/engi{
+	name = "RTG Access";
+	req_one_access = null
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/miaphus/beach/sdf)
 "xs" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -4959,6 +5404,10 @@
 /obj/structure/catwalk,
 /obj/structure/table/steel_reinforced,
 /obj/machinery/computer/shuttle_control/explore/sdf{
+/obj/machinery/light,
+/obj/structure/catwalk,
+/obj/structure/table/steel_reinforced,
+/obj/machinery/computer/shuttle_control/explore/sdf{
 	dir = 1
 	},
 /obj/structure/railing/grey,
@@ -5056,6 +5505,14 @@
 	},
 /turf/simulated/floor/wood,
 /area/sector/miaphus/beach/resort/canteen)
+"zo" = (
+/obj/machinery/light/small{
+	dir = 1;
+	pixel_x = -2
+	},
+/obj/structure/curtain/open/bed,
+/turf/simulated/floor/lino,
+/area/shuttle/miaphus/sdf)
 "zs" = (
 /turf/simulated/wall/sandstone,
 /area/sector/miaphus/beach/resort/dorm2)
@@ -5099,7 +5556,10 @@
 "zL" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 8
+/obj/effect/floor_decal/industrial/danger{
+	dir = 8
 	},
+/turf/simulated/floor/reinforced,
 /turf/simulated/floor/reinforced,
 /area/shuttle/miaphus/sdf)
 "zN" = (
@@ -5269,6 +5729,13 @@
 	name = "dirt"
 	},
 /area/sector/miaphus/beach/jungle)
+"AH" = (
+/obj/effect/floor_decal/industrial/halfstair,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/miaphus/sdf)
 "AI" = (
 /mob/living/simple_mob/animal/roach/panzer,
 /turf/simulated/floor/tiled/steel_dirty,
@@ -5339,6 +5806,14 @@
 /obj/structure/table/steel_reinforced,
 /obj/machinery/light{
 	dir = 1
+"Bh" = (
+/obj/structure/bed/chair/bay/chair/padded/red,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/miaphus/sdf)
+"Bj" = (
+/obj/structure/table/steel_reinforced,
+/obj/machinery/light{
+	dir = 1
 	},
 /obj/fiftyspawner/steel,
 /obj/fiftyspawner/glass,
@@ -5396,6 +5871,9 @@
 /obj/effect/floor_decal/industrial/halfstair,
 /obj/machinery/light{
 	dir = 8
+/obj/effect/floor_decal/industrial/halfstair,
+/obj/machinery/light{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/miaphus/sdf)
@@ -5408,7 +5886,16 @@
 	},
 /obj/machinery/light{
 	dir = 4
+/obj/effect/floor_decal/industrial/danger{
+	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
 /turf/simulated/floor/reinforced,
 /area/shuttle/miaphus/sdf)
 "Bw" = (
@@ -5460,6 +5947,23 @@
 	dir = 8
 	},
 /area/sector/miaphus/beach/jungle)
+"BH" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/door/airlock/hatch,
+/obj/map_helper/access_helper/airlock/disconnected/sdf,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/miaphus/sdf)
+"BI" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/miaphus/sdf)
 "BJ" = (
 /obj/machinery/light{
 	dir = 1
@@ -5521,6 +6025,33 @@
 "BT" = (
 /turf/simulated/wall/sandstone,
 /area/sector/miaphus/beach/resort/bunk)
+"BV" = (
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/reinforced,
+/area/shuttle/miaphus/sdf)
+"BW" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/miaphus/sdf)
+"BX" = (
+/obj/structure/bed/pod,
+/obj/structure/curtain/open/bed,
+/obj/structure/closet/walllocker_double/east,
+/obj/item/clothing/under/tajaran/hadiifolly/soldier,
+/obj/item/clothing/head/utility/marine/tan,
+/obj/item/clothing/head/beret/tajaran{
+	name = "hadiist SDF beret";
+	desc = "A green beret issued to hadiist SDF soldiers. Seems to be surplus gear."
+	},
+/turf/simulated/floor/lino,
 "BV" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/cable/green{
@@ -5614,6 +6145,9 @@
 /obj/item/clothing/under/color/prison,
 /obj/item/clothing/under/color/prison/skirt,
 /obj/item/storage/box/handcuffs,
+/obj/item/clothing/under/color/prison,
+/obj/item/clothing/under/color/prison/skirt,
+/obj/item/storage/box/handcuffs,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/sdf)
 "Cp" = (
@@ -5677,6 +6211,15 @@
 "CC" = (
 /turf/simulated/floor/outdoors/beach/sand/desert,
 /area/sector/miaphus/beach/coast)
+"CE" = (
+/obj/effect/floor_decal/industrial/danger{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced,
+/area/shuttle/miaphus/sdf)
 "CG" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	desc = "Its bone dry.";
@@ -5791,6 +6334,7 @@
 /area/sector/miaphus/beach/desalinator)
 "Dj" = (
 /obj/machinery/computer/ship/engines{
+/obj/machinery/computer/ship/engines{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -5836,6 +6380,9 @@
 /turf/simulated/floor/outdoors/beach/sand/desert,
 /area/sector/miaphus/beach/jungle)
 "Ds" = (
+/obj/structure/catwalk,
+/obj/structure/railing/grey{
+	dir = 1
 /obj/structure/catwalk,
 /obj/structure/railing/grey{
 	dir = 1
@@ -5975,7 +6522,11 @@
 "DX" = (
 /obj/structure/cable{
 	icon_state = "1-2"
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
+/obj/structure/catwalk,
+/turf/simulated/floor/tiled/dark,
 /obj/structure/catwalk,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/miaphus/sdf)
@@ -5988,6 +6539,7 @@
 /area/sector/miaphus/beach/sdf)
 "Ea" = (
 /obj/structure/catwalk,
+/turf/simulated/floor/tiled/dark,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/miaphus/sdf)
 "Eb" = (
@@ -6258,6 +6810,15 @@
 	icon_state = "6-9"
 	},
 /turf/simulated/floor/tiled/techfloor,
+/obj/machinery/light,
+/obj/effect/floor_decal/techfloor/orange,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "6-9"
+	},
+/turf/simulated/floor/tiled/techfloor,
 /area/shuttle/miaphus/sdf)
 "EY" = (
 /obj/structure/closet,
@@ -6301,6 +6862,9 @@
 "Fh" = (
 /obj/machinery/optable,
 /turf/simulated/floor/tiled/techfloor,
+"Fh" = (
+/obj/machinery/optable,
+/turf/simulated/floor/tiled/techfloor,
 /area/shuttle/miaphus/sdf)
 "Fm" = (
 /obj/structure/cable{
@@ -6321,6 +6885,15 @@
 	outdoors = 1
 	},
 /area/sector/miaphus/beach/resort)
+"Fs" = (
+/obj/effect/floor_decal/industrial/danger{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 9
+	},
+/turf/simulated/floor/reinforced,
+/area/shuttle/miaphus/sdf)
 "Fs" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 4
@@ -6357,7 +6930,10 @@
 "FB" = (
 /obj/structure/bed/chair/bay/chair/padded/red{
 	dir = 8
+/obj/structure/bed/chair/bay/chair/padded/red{
+	dir = 8
 	},
+/turf/simulated/floor/tiled/techfloor,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/miaphus/sdf)
 "FD" = (
@@ -6374,7 +6950,15 @@
 /area/shuttle/miaphus/sdf)
 "FF" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
+/obj/machinery/atmospherics/pipe/manifold/hidden,
 /obj/effect/floor_decal/techfloor{
+	dir = 9
+	},
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
 	dir = 9
 	},
 /obj/structure/cable{
@@ -6391,6 +6975,15 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/miaphus/beach/station/tunnel)
+"FH" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor,
+/area/shuttle/miaphus/sdf)
 "FH" = (
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 1
@@ -6445,6 +7038,16 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/bunker/mess)
+"FV" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "0-2"
+	},
+/obj/machinery/power/apc/critical/east_mount{
+	req_access = null
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/miaphus/sdf)
 "FW" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/machinery/light/small{
@@ -6463,6 +7066,12 @@
 /obj/item/flashlight/color,
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/miaphus/beach/resort/lockermed)
+"FX" = (
+/obj/structure/table/steel_reinforced,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -2
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
 "FX" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/computer/ship/navigation/telescreen{
@@ -6547,6 +7156,17 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/shuttle/miaphus/sdf)
+"Gp" = (
+/obj/machinery/door/blast/regular{
+	dir = 4;
+	id = "portnacelleSDF"
+	},
+/obj/structure/atmospheric_retention_field,
+/obj/machinery/door/blast/regular/open{
+	id = "SDFantiboardingphase2"
+	},
+/turf/simulated/floor/reinforced,
+/area/shuttle/miaphus/sdf)
 "Gr" = (
 /obj/structure/cable/cyan{
 	icon_state = "2-4"
@@ -6596,6 +7216,13 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/desalinator)
+"GG" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/halfstair,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/miaphus/sdf)
 "GI" = (
 /obj/structure/table/bench/wooden,
 /obj/machinery/light/small{
@@ -6862,7 +7489,19 @@
 /obj/machinery/power/rtg/advanced,
 /obj/structure/cable{
 	icon_state = "0-8"
+"Il" = (
+/obj/machinery/power/rtg/advanced,
+/obj/structure/cable{
+	icon_state = "0-8"
 	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/miaphus/beach/sdf)
+"Im" = (
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/obj/structure/closet/crate,
+/turf/simulated/floor/tiled/techfloor/grid,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/miaphus/beach/sdf)
 "Im" = (
@@ -6898,6 +7537,9 @@
 /obj/structure/catwalk,
 /obj/structure/table/steel_reinforced,
 /obj/machinery/computer/ship/engines{
+/obj/structure/catwalk,
+/obj/structure/table/steel_reinforced,
+/obj/machinery/computer/ship/engines{
 	dir = 1
 	},
 /obj/structure/railing/grey,
@@ -6910,6 +7552,16 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/structure/bed/pod,
+/obj/structure/curtain/open/bed,
+/obj/structure/closet/walllocker_double/north,
+/obj/item/clothing/under/tajaran/hadiifolly/soldier,
+/obj/item/clothing/head/utility/marine/tan,
+/obj/item/clothing/head/beret/tajaran{
+	name = "hadiist SDF beret";
+	desc = "A green beret issued to hadiist SDF soldiers. Seems to be surplus gear."
+	},
+/turf/simulated/floor/tiled/dark,
 /obj/structure/bed/pod,
 /obj/structure/curtain/open/bed,
 /obj/structure/closet/walllocker_double/north,
@@ -7037,6 +7689,17 @@
 /obj/structure/flora/pottedplant/dead,
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/miaphus/beach/resort/lockermed)
+"Jf" = (
+/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/door/blast/regular/open{
+	id = "SDFantiboardingphase4"
+	},
+/obj/map_helper/access_helper/airlock/disconnected/sdf,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/miaphus/sdf)
 "Jh" = (
 /obj/structure/bed/chair/bay/comfy/black{
 	dir = 1
@@ -7172,6 +7835,9 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/sdf)
 "Kg" = (
@@ -7248,6 +7914,27 @@
 	},
 /turf/simulated/floor/water,
 /area/sector/miaphus/beach/desalinator)
+"KE" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/item/clothing/under/tajaran/hadiifolly/officer,
+/obj/item/clothing/under/tajaran/hadiifolly/officer,
+/obj/item/clothing/under/tajaran/hadiifolly/officer,
+/obj/item/clothing/under/tajaran/hadiifolly/soldier,
+/obj/item/clothing/under/tajaran/hadiifolly/soldier,
+/obj/item/clothing/under/tajaran/hadiifolly/soldier,
+/obj/item/clothing/under/tajaran/hadiifolly/soldier,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/miaphus/sdf)
+"KG" = (
+/obj/effect/floor_decal/corner_steel_grid{
+	dir = 5
+	},
+/obj/machinery/light,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/miaphus/beach/sdf)
 "KE" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/machinery/light{
@@ -7396,6 +8083,19 @@
 /obj/random/mre,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/bunker/bunk)
+"Lr" = (
+/obj/effect/floor_decal/corner_steel_grid{
+	dir = 9
+	},
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/miaphus/beach/sdf)
 "Ls" = (
 /obj/structure/bed,
 /obj/random/bedsheet,
@@ -7561,6 +8261,13 @@
 /obj/structure/salvageable/data,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/bunker)
+"Mo" = (
+/obj/machinery/air_alarm/alarms_hidden/north_mount{
+	req_one_access = null
+	},
+/obj/structure/undies_wardrobe,
+/turf/simulated/floor/lino,
+/area/shuttle/miaphus/sdf)
 "Mp" = (
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -7590,8 +8297,20 @@
 /obj/item/storage/box/glasses/rocks,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/bunker/mess)
+"My" = (
+/obj/structure/catwalk,
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/miaphus/sdf)
 "Mz" = (
 /turf/simulated/floor/lino,
+/area/shuttle/miaphus/sdf)
+"MD" = (
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/manifold/hidden,
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/miaphus/sdf)
 "MD" = (
 /obj/structure/catwalk,
@@ -7700,6 +8419,18 @@
 	desc = "A green beret issued to hadiist SDF soldiers. Seems to be surplus gear."
 	},
 /turf/simulated/floor/tiled/dark,
+"Na" = (
+/obj/structure/bed/pod,
+/obj/structure/curtain/open/bed,
+/obj/structure/curtain/open/bed,
+/obj/structure/closet/walllocker_double/south,
+/obj/item/clothing/under/tajaran/hadiifolly/soldier,
+/obj/item/clothing/head/utility/marine/tan,
+/obj/item/clothing/head/beret/tajaran{
+	name = "hadiist SDF beret";
+	desc = "A green beret issued to hadiist SDF soldiers. Seems to be surplus gear."
+	},
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/miaphus/sdf)
 "Nf" = (
 /obj/machinery/light/small{
@@ -7724,9 +8455,28 @@
 /obj/machinery/door/blast/regular/open{
 	id = "SDFantiboardingphase2"
 	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/blast/regular/open{
+	id = "SDFantiboardingphase2"
+	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
+	icon_state = "1-2"
 	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/miaphus/sdf)
+"Nm" = (
+/obj/effect/floor_decal/borderfloorblack/shifted{
+	req_access = list(155)
+	},
+/obj/structure/closet/walllocker_double/north,
+/obj/machinery/air_alarm/alarms_hidden/north_mount{
+	req_one_access = null
+	},
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotechmaint,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/miaphus/sdf)
 "Nm" = (
@@ -7784,7 +8534,11 @@
 "NH" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
+"NH" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 4
 	},
+/turf/simulated/wall/r_wall/prepainted,
 /turf/simulated/wall/r_wall/prepainted,
 /area/shuttle/miaphus/sdf)
 "NL" = (
@@ -7810,6 +8564,13 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
+/area/sector/miaphus/beach/sdf)
+"NT" = (
+/obj/machinery/power/smes/buildable/offmap_spawn,
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/miaphus/beach/sdf)
 "NT" = (
 /obj/machinery/power/smes/buildable/offmap_spawn,
@@ -7879,6 +8640,20 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/miaphus/beach/powershed)
+"Og" = (
+/obj/map_helper/access_helper/airlock/disconnected/sdf,
+/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/door/blast/regular/open{
+	id = "SDFantiboardingphasearmory"
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/miaphus/sdf)
+"Oh" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/miaphus/beach/sdf)
 "Oi" = (
 /obj/structure/bed/chair/comfy,
 /turf/simulated/floor/wood,
@@ -7993,8 +8768,12 @@
 /area/sector/miaphus/beach/aa)
 "OH" = (
 /obj/machinery/light{
+"OH" = (
+/obj/machinery/light{
 	dir = 4
 	},
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
@@ -8017,6 +8796,12 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/miaphus/beach/resort/greenhouse)
+"ON" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 1
+	},
+/obj/machinery/camera/network{
+	network = list("SDF");
 "ON" = (
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 1
@@ -8101,6 +8886,7 @@
 	dir = 4
 	},
 /turf/simulated/floor,
+/turf/simulated/floor,
 /area/shuttle/miaphus/sdf)
 "Pi" = (
 /obj/structure/cable/green{
@@ -8153,6 +8939,11 @@
 /obj/overmap/entity/visitable/ship/landable/miaphus/sdf,
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	pixel_x = -24;
+	id_tag = "sdf_docker2";
+	frequency = 1380
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
 	id_tag = "sdf_docker2";
 	frequency = 1380
 	},
@@ -8254,6 +9045,9 @@
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/miaphus/beach/bunker/restroom)
 "PS" = (
+/obj/structure/catwalk,
+/obj/structure/bed/chair/bay/chair/padded/red,
+/turf/simulated/floor/tiled/techfloor/monogrid,
 /obj/structure/catwalk,
 /obj/structure/bed/chair/bay/chair/padded/red,
 /turf/simulated/floor/tiled/techfloor/monogrid,
@@ -8393,7 +9187,13 @@
 /obj/item/clothing/suit/space/syndicate/black/orange,
 /obj/item/clothing/suit/space/syndicate/black/orange,
 /obj/item/tank/jetpack/oxygen,
+/obj/item/clothing/head/helmet/space/syndicate/black/orange,
+/obj/item/clothing/head/helmet/space/syndicate/black/orange,
+/obj/item/clothing/suit/space/syndicate/black/orange,
+/obj/item/clothing/suit/space/syndicate/black/orange,
 /obj/item/tank/jetpack/oxygen,
+/obj/item/tank/jetpack/oxygen,
+/obj/item/tank/emergency/oxygen/double,
 /obj/item/tank/emergency/oxygen/double,
 /obj/item/tank/emergency/oxygen/double,
 /turf/simulated/floor,
@@ -8426,6 +9226,12 @@
 /obj/structure/closet/jcloset,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/miaphus/beach/sdf)
+"QP" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 1
+	},
+/turf/simulated/wall/r_wall/prepainted,
+/area/shuttle/miaphus/sdf)
 "QP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 1
@@ -8505,8 +9311,12 @@
 "Rf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/effect/floor_decal/industrial/halfstair{
+"Rf" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/effect/floor_decal/industrial/halfstair{
 	dir = 1
 	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/miaphus/sdf)
 "Rh" = (
@@ -8719,6 +9529,7 @@
 /obj/item/clothing/head/hardhat,
 /obj/item/clothing/shoes/boots/jackboots/toeless,
 /obj/item/clothing/under/tajaran/hadiifolly,
+/obj/item/clothing/under/tajaran/hadiifolly,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/desalinator)
 "Se" = (
@@ -8914,6 +9725,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/lino,
 /area/shuttle/miaphus/sdf)
+"Tb" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/lino,
+/area/shuttle/miaphus/sdf)
 "Tg" = (
 /obj/machinery/door/blast/shutters{
 	dir = 2;
@@ -9060,6 +9875,15 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/miaphus/sdf)
+"TT" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 8
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/miaphus/sdf)
 "TU" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -9115,6 +9939,7 @@
 /obj/effect/floor_decal/industrial/danger{
 	dir = 8
 	},
+/turf/simulated/floor/reinforced,
 /turf/simulated/floor/reinforced,
 /area/shuttle/miaphus/sdf)
 "Uk" = (
@@ -9252,6 +10077,21 @@
 /obj/item/gun/projectile/ballistic/automatic/mini_uzi/taj,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/miaphus/sdf)
+"UZ" = (
+/obj/effect/floor_decal/borderfloorblack/shifted,
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/obj/item/material/knife/tacknife/boot,
+/obj/structure/closet/secure_closet/guncabinet{
+	req_one_access = null
+	},
+/obj/item/ammo_magazine/a45/uzi,
+/obj/item/ammo_magazine/a45/uzi,
+/obj/item/gun/projectile/ballistic/colt/taj,
+/obj/item/gun/projectile/ballistic/automatic/mini_uzi/taj,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/miaphus/sdf)
 "Va" = (
 /obj/structure/railing/grey{
 	dir = 1
@@ -9305,7 +10145,16 @@
 	},
 /obj/machinery/door/blast/regular/open{
 	id = "SDFantiboardingphase2"
+/obj/effect/floor_decal/industrial/danger{
+	dir = 8
 	},
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/machinery/door/blast/regular/open{
+	id = "SDFantiboardingphase2"
+	},
+/turf/simulated/floor/reinforced,
 /turf/simulated/floor/reinforced,
 /area/shuttle/miaphus/sdf)
 "Vo" = (
@@ -9315,6 +10164,19 @@
 /obj/machinery/chem_master/condimaster,
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/miaphus/beach/resort/canteen)
+"Vq" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/structure/table/rack/shelf/steel,
+/obj/item/tank/jetpack/oxygen,
+/obj/item/tank/emergency/oxygen/double,
+/obj/item/clothing/suit/space/syndicate/black/orange,
+/obj/item/clothing/head/helmet/space/syndicate/black/orange,
+/obj/item/clothing/head/helmet/space/syndicate/black/orange,
+/turf/simulated/floor,
+/area/shuttle/miaphus/sdf)
+"Vs" = (
 "Vq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -9340,7 +10202,25 @@
 /obj/item/ammo_magazine/a45/uzi,
 /obj/item/gun/projectile/ballistic/colt/taj,
 /obj/item/gun/projectile/ballistic/automatic/mini_uzi/taj,
+	dir = 1
+	},
+/obj/item/material/knife/tacknife/boot,
+/obj/structure/closet/secure_closet/guncabinet{
+	req_one_access = null
+	},
+/obj/item/ammo_magazine/a45/uzi,
+/obj/item/ammo_magazine/a45/uzi,
+/obj/item/gun/projectile/ballistic/colt/taj,
+/obj/item/gun/projectile/ballistic/automatic/mini_uzi/taj,
 /obj/structure/railing/grey{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/miaphus/sdf)
+"Vu" = (
+/obj/structure/railing/grey,
+/obj/machinery/camera/network{
+	network = list("SDF");
 	dir = 8
 	},
 /turf/simulated/floor/tiled/monotechmaint,
@@ -9522,6 +10402,36 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/bunker/mess)
+"Wz" = (
+/obj/item/reagent_containers/cooking_container/fryer,
+/obj/item/reagent_containers/food/condiment/ketchup,
+/obj/item/reagent_containers/food/condiment/ketchup,
+/obj/item/reagent_containers/food/condiment/spacespice,
+/obj/item/reagent_containers/food/condiment/spacespice,
+/obj/item/reagent_containers/food/condiment/cornoil,
+/obj/item/reagent_containers/food/condiment/cornoil,
+/obj/item/reagent_containers/food/condiment/enzyme,
+/obj/item/reagent_containers/food/condiment/enzyme,
+/obj/item/reagent_containers/food/condiment/sugar,
+/obj/item/reagent_containers/food/condiment/sugar,
+/obj/item/material/knife/butch,
+/obj/item/material/knife,
+/obj/item/storage/box/glasses/meta,
+/obj/item/storage/box/glasses/meta,
+/obj/item/reagent_containers/glass/beaker/large,
+/obj/structure/closet/walllocker_double/north,
+/obj/machinery/appliance/cooker/oven,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/miaphus/sdf)
+"WA" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/blast/regular/open{
+	id = "SDFantiboardingphase2"
+	},
+/obj/map_helper/access_helper/airlock/disconnected/sdf,
+/obj/machinery/door/airlock/multi_tile,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/miaphus/sdf)
 "WB" = (
 /obj/structure/bed/chair/sofa/black,
 /turf/simulated/floor/tiled/steel_dirty,
@@ -9548,6 +10458,13 @@
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/miaphus/beach/resort/lockermed)
 "WJ" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 6
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 6
 	},
@@ -9655,6 +10572,9 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/sdf)
 "Xn" = (
@@ -9725,9 +10645,14 @@
 /area/sector/miaphus/beach/sdf)
 "XJ" = (
 /turf/simulated/wall/r_wall/prepainted/engineering,
+/turf/simulated/wall/r_wall/prepainted/engineering,
 /area/shuttle/miaphus/sdf)
 "XM" = (
 /obj/effect/floor_decal/techfloor/orange{
+	dir = 5
+	},
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 5
 	dir = 5
 	},
 /obj/effect/floor_decal/techfloor/orange{
@@ -9800,6 +10725,15 @@
 /area/sector/miaphus/beach/powershed)
 "Yj" = (
 /turf/simulated/floor,
+/area/shuttle/miaphus/sdf)
+"Yk" = (
+/obj/effect/floor_decal/corner_techfloor_gray{
+	dir = 6
+	},
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/miaphus/sdf)
 "Yk" = (
 /obj/effect/floor_decal/corner_techfloor_gray{
@@ -9975,6 +10909,17 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/station/tram)
+"Ze" = (
+/obj/machinery/door/blast/regular{
+	dir = 4;
+	id = "starboardnacelleSDF"
+	},
+/obj/structure/atmospheric_retention_field,
+/obj/machinery/door/blast/regular/open{
+	id = "SDFantiboardingphase2"
+	},
+/turf/simulated/floor/reinforced,
+/area/shuttle/miaphus/sdf)
 "Zf" = (
 /obj/structure/railing/grey{
 	dir = 1
@@ -9992,6 +10937,8 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/station)
 "Zh" = (
+/obj/machinery/shipsensors,
+/turf/simulated/floor/tiled/monotechmaint,
 /obj/machinery/shipsensors,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/miaphus/sdf)
@@ -10072,6 +11019,21 @@
 	outdoors = 1
 	},
 /area/sector/miaphus/beach/mineyard)
+"Zv" = (
+/obj/machinery/door/blast/regular{
+	dir = 4;
+	id = "portnacelleSDF"
+	},
+/obj/machinery/door/blast/regular{
+	dir = 4;
+	id = "portnacelleSDF"
+	},
+/obj/structure/atmospheric_retention_field,
+/obj/machinery/door/blast/regular/open{
+	id = "SDFantiboardingphase2"
+	},
+/turf/simulated/floor/reinforced,
+/area/shuttle/miaphus/sdf)
 "Zw" = (
 /obj/structure/closet/crate/mimic/cointoss,
 /obj/random/firstaid,
@@ -10133,9 +11095,16 @@
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/structure/cable,
 /obj/machinery/power/port_gen/pacman/super,
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/structure/cable,
+/obj/machinery/power/port_gen/pacman/super,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/miaphus/sdf)
 "ZR" = (
+/obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/reinforced,
 /area/shuttle/miaphus/sdf)
@@ -36559,8 +37528,8 @@ bq
 bq
 bq
 bq
-aa
-aa
+bq
+bq
 bq
 bq
 bq
@@ -36754,9 +37723,9 @@ bq
 bq
 bq
 bq
-aa
-aa
-aa
+bq
+bq
+bq
 bq
 bq
 bq
@@ -36945,14 +37914,14 @@ bq
 bq
 bq
 bq
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
 bq
 bq
 bq
@@ -37138,16 +38107,16 @@ bq
 bq
 bq
 bq
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
 bq
 bq
 bq
@@ -37330,25 +38299,25 @@ bq
 bq
 bq
 bq
-aa
-aa
-aa
-aa
-aa
 bq
 bq
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
 bq
 bq
 Vb
@@ -37523,27 +38492,27 @@ bq
 bq
 bq
 bq
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
 bq
 bq
 Vb
@@ -37716,29 +38685,29 @@ TK
 bq
 bq
 bq
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
 bq
 bq
 Vb
@@ -37907,6 +38876,31 @@ Cg
 "}
 (144,1,1) = {"
 TK
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+ce
+ce
+bq
+bq
+bq
+bq
+bq
+bq
+bq
 bq
 bq
 bq
@@ -38131,6 +39125,33 @@ bq
 bq
 bq
 bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+ce
+ce
+ce
+ce
+ce
+ce
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
 Vb
 bq
 ce
@@ -38295,6 +39316,34 @@ Cg
 "}
 (146,1,1) = {"
 TK
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+ce
+ce
+ce
+ce
+ce
+ce
+ce
+bq
+bq
+bq
+bq
+bq
+bq
+bq
 bq
 bq
 bq
@@ -38519,6 +39568,35 @@ bq
 bq
 bq
 bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+ce
+ce
+ce
+aa
+ce
+ce
+ce
+ce
+ce
+ce
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
 Vb
 bq
 bq
@@ -38684,9 +39762,35 @@ Cg
 (148,1,1) = {"
 TK
 bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+ce
+ce
+ce
+ce
+ce
 aa
 aa
 aa
+aa
+ce
+ce
+ce
+bq
+bq
+bq
+bq
+bq
+bq
 aa
 ce
 ce
@@ -38862,9 +39966,35 @@ Cg
 (149,1,1) = {"
 TK
 bq
-bp
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+ce
+ce
+ce
 aa
 aa
+aa
+aa
+aa
+aa
+aa
+aa
+ce
+ce
+ce
+bq
+bq
+bq
+bq
+bq
 aa
 aa
 aa
@@ -39044,9 +40174,35 @@ Cg
 (150,1,1) = {"
 TK
 bq
-bp
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+ce
+ce
+ce
 aa
 aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ce
+ce
+bq
+bq
+bq
+bq
+bq
 aa
 aa
 aa
@@ -39227,9 +40383,35 @@ Cg
 (151,1,1) = {"
 TK
 bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+ce
+ce
 aa
 aa
 aa
+aa
+aa
+XJ
+yV
+yV
+yV
+XJ
+aa
+ce
+ce
+ce
+bq
+bq
+bq
+bq
 aa
 aa
 XJ
@@ -39410,8 +40592,35 @@ Cg
 (152,1,1) = {"
 TK
 bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+ce
+ce
 aa
 aa
+aa
+aa
+aa
+XJ
+bL
+nS
+nS
+nS
+bL
+XJ
+aa
+aa
+aa
+ce
+bq
+bq
+bq
 aa
 aa
 aa
@@ -39526,6 +40735,7 @@ yf
 Sa
 Sa
 cr
+cr
 Sa
 Sa
 Sa
@@ -39594,10 +40804,21 @@ Cg
 (153,1,1) = {"
 TK
 bq
-bp
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+ce
+ce
 aa
-bp
 aa
+aa
+aa
+XJ
 aa
 XJ
 bL
@@ -39605,8 +40826,18 @@ bL
 Fu
 wU
 tn
+Fu
+wU
+tn
 bL
 bL
+XJ
+aa
+aa
+ce
+ce
+bq
+bq
 XJ
 aa
 aa
@@ -39803,8 +41034,35 @@ Is
 bL
 bL
 XJ
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+ce
+ce
 aa
 aa
+aa
+aa
+XJ
+bL
+bL
+mL
+EZ
+FB
+EZ
+Is
+bL
+bL
+XJ
+aa
+aa
+ce
+bq
+bq
 Vb
 bq
 bq
@@ -39969,6 +41227,35 @@ Cg
 "}
 (155,1,1) = {"
 TK
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+ce
+aa
+aa
+aa
+aa
+XJ
+bL
+bL
+bL
+zv
+gh
+gl
+Bh
+yy
+bL
+If
+bL
+XJ
+aa
+ce
+ce
 bq
 bq
 bq
@@ -40164,6 +41451,14 @@ Cg
 (156,1,1) = {"
 TK
 bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+ce
 bq
 bq
 bq
@@ -40386,8 +41681,35 @@ BH
 bL
 bL
 XJ
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+ce
 aa
 aa
+aa
+XJ
+bL
+Us
+Yw
+bL
+pz
+yc
+FX
+yc
+ma
+bL
+BH
+bL
+bL
+XJ
+aa
+aa
+bq
 bq
 Vb
 bq
@@ -40971,6 +42293,35 @@ bL
 aa
 aa
 aa
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+ce
+ce
+aa
+Zh
+bL
+bL
+bL
+mo
+bL
+BJ
+gb
+Zl
+PS
+lZ
+bL
+bL
+zo
+bL
+bL
+aa
+aa
+aa
 Vb
 bq
 Qi
@@ -41136,6 +42487,35 @@ Cg
 (161,1,1) = {"
 TK
 bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+ce
+ce
+bL
+bL
+bL
+DJ
+ls
+tm
+bL
+DW
+cK
+Zl
+PI
+MO
+bL
+It
+Mz
+Na
+bL
+Cp
+bL
+aa
 bq
 bq
 bq
@@ -41359,6 +42739,7 @@ bL
 RL
 bL
 aa
+aa
 Vb
 bq
 Qi
@@ -41524,6 +42905,14 @@ Cg
 (163,1,1) = {"
 TK
 bq
+bq
+bq
+bq
+bq
+bq
+ce
+ce
+aa
 aa
 aa
 bL
@@ -41546,8 +42935,11 @@ bL
 bL
 bL
 vb
+bL
+vb
 Ev
 bL
+aa
 aa
 Vb
 bq
@@ -41742,6 +43134,7 @@ cK
 JP
 zG
 bL
+aa
 aa
 Vb
 bq
@@ -42120,7 +43513,9 @@ bL
 bL
 bL
 mT
+mT
 bL
+Og
 Og
 bL
 bL
@@ -42305,11 +43700,22 @@ bq
 bq
 ce
 aa
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+ce
+aa
 bL
 VA
 lV
 Ea
 iQ
+bL
+wt
 bL
 wt
 ji
@@ -42684,6 +44090,16 @@ Cg
 (169,1,1) = {"
 TK
 bq
+bq
+bq
+bq
+bq
+bq
+ce
+ce
+aa
+Gp
+zL
 bq
 bq
 bq
@@ -43072,7 +44488,15 @@ Cg
 (171,1,1) = {"
 TK
 bq
+bq
+bq
+bq
+bq
+ce
+ce
+ce
 aa
+Gp
 Gp
 aZ
 aZ
@@ -43273,8 +44697,30 @@ aZ
 vc
 ZR
 BV
+bq
+bq
+bq
+bq
+bq
+ce
+ce
+aa
+Zv
+aZ
+aZ
+vc
+ZR
+BV
 Vl
 zL
+CE
+zL
+zL
+zL
+CE
+zL
+Vl
+ZR
 CE
 zL
 zL
@@ -43454,6 +44900,16 @@ Cg
 TK
 bq
 bq
+bq
+bq
+bq
+bq
+ce
+ce
+aa
+Gp
+em
+fn
 bq
 bq
 bq
@@ -43655,6 +45111,23 @@ bq
 ce
 ce
 aa
+bq
+bq
+bq
+bq
+ce
+ce
+aa
+bL
+bL
+bL
+bL
+vu
+xk
+bL
+bL
+bL
+bL
 bL
 bL
 bL
@@ -43670,8 +45143,12 @@ bL
 bL
 bL
 bL
+bL
 wR
 ft
+bL
+ft
+bL
 bL
 bL
 bL
@@ -43866,15 +45343,29 @@ bL
 bL
 bL
 My
+Ig
+iQ
+bL
+bL
+bL
+jz
+Ay
+sa
+bL
+bL
+bL
+My
 fS
 DX
 Ll
 Pr
 Gu
+Gu
 LC
 fV
 fV
 Xm
+Bx
 Bx
 fV
 Ka
@@ -43884,6 +45375,7 @@ fV
 fV
 Ka
 fc
+fZ
 fZ
 Qi
 Qi
@@ -44054,8 +45546,18 @@ iQ
 ON
 oy
 WA
+MD
+iQ
+ON
+oy
+WA
 Uc
 EZ
+mU
+Gk
+AH
+Oq
+wD
 mU
 Gk
 AH
@@ -44240,11 +45742,21 @@ ce
 ce
 ce
 bL
+bq
+bq
+bq
+bq
+ce
+ce
+ce
+bL
 bL
 bL
 CH
 Vq
+Vq
 FE
+qe
 qe
 qe
 Nl
@@ -44254,9 +45766,16 @@ IT
 Vv
 qM
 iU
+BI
+mc
+IT
+Vv
+qM
+iU
 Yj
 Gl
 QG
+bL
 bL
 bL
 bL
@@ -44273,7 +45792,7 @@ Qi
 Ae
 Qi
 Qi
-Qi
+Oh
 Qi
 Qi
 bq
@@ -44467,9 +45986,9 @@ Qi
 sh
 Qi
 Qi
+wL
 Qi
 Qi
-bq
 bq
 bq
 bq
@@ -44660,10 +46179,10 @@ BK
 Qi
 Ae
 Qi
-bq
-bq
-bq
-bq
+eJ
+lo
+fG
+Qi
 bq
 bq
 bq
@@ -44854,10 +46373,10 @@ BK
 Qi
 Ae
 Qi
-bq
-bq
-bq
-bq
+sQ
+NT
+KG
+Qi
 bq
 bq
 bq
@@ -45048,10 +46567,10 @@ Js
 Qi
 Ae
 Qi
-bq
-bq
-bq
-bq
+rd
+Lr
+ed
+Qi
 bq
 bq
 bq
@@ -45242,10 +46761,10 @@ BK
 Qi
 Ae
 Qi
-bq
-bq
-bq
-bq
+xo
+Qi
+xo
+Qi
 bq
 bq
 bq
@@ -45415,8 +46934,32 @@ Ky
 FF
 TT
 tP
+bq
+bq
+bq
+bq
+bq
+bq
+ce
+ce
+aa
+bL
+bL
+bL
+bL
+bL
+bL
+Ky
+FF
+TT
+tP
 bU
 zj
+bL
+bL
+bL
+bL
+bL
 bL
 bL
 bL
@@ -45787,6 +47330,15 @@ Cg
 TK
 bq
 bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+ce
+ce
 aa
 aa
 bL
