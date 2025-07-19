@@ -453,9 +453,15 @@
 /obj/item/reagent_containers/food/condiment/small/packet/creamer
 	name = "creamer pack"
 	desc = "A small packet of coffee creamer."
-	list_reagents = list(/datum/reagent/nutriment/creamer = 5)
+
+/obj/item/reagent_containers/food/condiment/small/packet/creamer/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("creamer", 5)
 
 /obj/item/reagent_containers/food/condiment/small/packet/sugar
 	name = "sugar pack"
 	desc = "A small packet of sugar."
-	list_reagents = list(/datum/reagent/sugar = 5)
+
+/obj/item/reagent_containers/food/condiment/small/packet/sugar/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("sugar", 5)

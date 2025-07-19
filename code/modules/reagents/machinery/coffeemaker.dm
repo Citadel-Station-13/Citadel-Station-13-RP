@@ -287,7 +287,7 @@
 		balloon_alert("no sugar left!")
 		return
 	balloon_alert_to_viewers("took sugar packet")
-	var/obj/item/reagent_containers/condiment/pack/sugar/new_pack = new(get_turf(src))
+	var/obj/item/reagent_containers/food/condiment/small/packet/sugar/new_pack = new(get_turf(src))
 	user.put_in_hands(new_pack)
 	sugar_packs--
 
@@ -305,7 +305,7 @@
 		balloon_alert("no creamer left!")
 		return
 	balloon_alert_to_viewers("took creamer packet")
-	var/obj/item/reagent_containers/condiment/pack/creamer/new_pack = new(get_turf(src))
+	var/obj/item/reagent_containers/food/condiment/small/packet/creamer/new_pack = new(get_turf(src))
 	user.put_in_hands(new_pack)
 	creamer_packs--
 

@@ -5258,6 +5258,7 @@
 
 /datum/reagent/nutriment/creamer
 	name = "Coffee Creamer"
+	id = "creamer"
 	description = "Powdered milk for cheap coffee. How delightful."
 	taste_description = "milk"
 	color = "#efeff0"
