@@ -12,8 +12,9 @@
 	abstract_type = /turf/simulated/wall/rt_medieval
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	material_system = FALSE
+	base_icon_state = "wall"
+	icon_state = "wall-0"
 	// needed due to base wall being steel :/
-	base_icon_state = null
 	color = null
 
 // TODO: destructible sprites, consturction, shift these slowly into
@@ -24,46 +25,38 @@
 	name = "archaic terrain wall"
 	desc = "You don't how this was made, but it doesn't look very welcoming."
 	icon = 'icons/turf/walls/rt_medieval/boss.dmi'
-	icon_state = "0"
 
 /turf/simulated/wall/rt_medieval/stone
 	name = "archaic stone wall"
 	desc = "An archaic wall made from stone. It looks sturdy."
 	icon = 'icons/turf/walls/rt_medieval/stone.dmi'
-	icon_state = "0"
 
 /turf/simulated/wall/rt_medieval/stone/brick
 	name = "archaic stone brick wall"
 	desc = "An archaic wall made from stone brick. It looks sturdy."
 	icon = 'icons/turf/walls/rt_medieval/stone/brick.dmi'
-	icon_state = "0"
 
 /turf/simulated/wall/rt_medieval/stone/craft
 	name = "archaic craft stone wall"
 	desc = "An archaic wall made from textured stone. It looks sturdy."
 	icon = 'icons/turf/walls/rt_medieval/stone/craft.dmi'
-	icon_state = "0"
 
 /turf/simulated/wall/rt_medieval/stone/moss_red
 	name = "archaic mossy stone wall"
 	desc = "An archaic wall made from stone. It looks sturdy."
 	icon = 'icons/turf/walls/rt_medieval/stone/moss_red.dmi'
-	icon_state = "0"
 
 /turf/simulated/wall/rt_medieval/stone/moss_green
 	name = "archaic mossy stone wall"
 	desc = "An archaic wall made from stone. It looks sturdy."
 	icon = 'icons/turf/walls/rt_medieval/stone/moss_green.dmi'
-	icon_state = "0"
 
 /turf/simulated/wall/rt_medieval/stone/moss_blue
 	name = "archaic mossy stone wall"
 	desc = "An archaic wall made from stone. It looks sturdy."
 	icon = 'icons/turf/walls/rt_medieval/stone/moss_blue.dmi'
-	icon_state = "0"
 
 /turf/simulated/wall/rt_medieval/wood
 	name = "archaic wooden wall"
 	desc = "An archaic wall made from wood. It looks sturdy."
 	icon = 'icons/turf/walls/rt_medieval/wood.dmi'
-	icon_state = "0"
