@@ -9,3 +9,8 @@
 	name = "Singheim"
 	id = "singheim"
 	desc = "Test for now, fix later."
+
+/datum/lore/character_background/origin/oricon_tri_star/tri_star_compact/traxis
+	name = "Traxis Cluster."
+	id = "traxiscluster"
+	desc = "Test for now, fix later."

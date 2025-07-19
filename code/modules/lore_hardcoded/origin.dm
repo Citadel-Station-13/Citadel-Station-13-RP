@@ -14,10 +14,12 @@
 	desc = "Altam, located within the Vazzend system, is a somewhat-chilly planet and the seat of the Vulpkanin United Star. Its population is predominantly Vulpkanin, though migrant races are welcome in most areas, from the chilling polar tundras to the temperate equatorial forests."
 	innate_languages = list(LANGUAGE_ID_VULPKANIN)
 
+/*
 /datum/lore/character_background/origin/qerrbalak
 	name = "Qerr'Balak"
 	id = "qerrbalak"
 	desc = "Be it from the jungle-wrapped kingdoms of the skrellian continents, the cold teshari territories of the polar tundras, or somewhere in-between, you hail from the Vikara Combine's capital planet of Qerr'Balak."
+*/
 
 /datum/lore/character_background/origin/custom
 	name = "Other"
