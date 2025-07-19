@@ -21,46 +21,46 @@
 	name = "archaic terrain wall"
 	desc = "You don't how this was made, but it doesn't look very welcoming."
 	icon = 'icons/turf/walls/rt_medieval/boss.dmi'
-	icon_state = "boss"
+	icon_state = "0"
 
 /turf/simulated/wall/rt_medieval/stone
 	name = "archaic stone wall"
 	desc = "An archaic wall made from stone. It looks sturdy."
 	icon = 'icons/turf/walls/rt_medieval/stone.dmi'
-	icon_state = "stone"
+	icon_state = "0"
 
 /turf/simulated/wall/rt_medieval/stone/brick
 	name = "archaic stone brick wall"
 	desc = "An archaic wall made from stone brick. It looks sturdy."
 	icon = 'icons/turf/walls/rt_medieval/stone/brick.dmi'
-	icon_state = "stone_brick"
+	icon_state = "0"
 
 /turf/simulated/wall/rt_medieval/stone/craft
 	name = "archaic craft stone wall"
 	desc = "An archaic wall made from textured stone. It looks sturdy."
 	icon = 'icons/turf/walls/rt_medieval/stone/craft.dmi'
-	icon_state = "stone_craft"
+	icon_state = "0"
 
 /turf/simulated/wall/rt_medieval/stone/moss_red
 	name = "archaic mossy stone wall"
 	desc = "An archaic wall made from stone. It looks sturdy."
 	icon = 'icons/turf/walls/rt_medieval/stone/moss_red.dmi'
-	icon_state = "stone_moss_red"
+	icon_state = "0"
 
 /turf/simulated/wall/rt_medieval/stone/moss_green
 	name = "archaic mossy stone wall"
 	desc = "An archaic wall made from stone. It looks sturdy."
 	icon = 'icons/turf/walls/rt_medieval/stone/moss_green.dmi'
-	icon_state = "stone_moss_green"
+	icon_state = "0"
 
 /turf/simulated/wall/rt_medieval/stone/moss_blue
 	name = "archaic mossy stone wall"
 	desc = "An archaic wall made from stone. It looks sturdy."
 	icon = 'icons/turf/walls/rt_medieval/stone/moss_blue.dmi'
-	icon_state = "stone_moss_blue"
+	icon_state = "0"
 
 /turf/simulated/wall/rt_medieval/wood
 	name = "archaic wooden wall"
 	desc = "An archaic wall made from wood. It looks sturdy."
 	icon = 'icons/turf/walls/rt_medieval/wood.dmi'
-	icon_state = "wood"
+	icon_state = "0"
