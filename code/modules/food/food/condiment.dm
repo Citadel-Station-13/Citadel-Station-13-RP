@@ -465,3 +465,11 @@
 /obj/item/reagent_containers/food/condiment/small/packet/sugar/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("sugar", 5)
+
+/obj/item/reagent_containers/food/condiment/small/packet/astrotame
+	name = "astrotame pack"
+	desc = "A small packet of sweetener."
+
+/obj/item/reagent_containers/food/condiment/small/packet/astrotame/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("astrotame", 5)

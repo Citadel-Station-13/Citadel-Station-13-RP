@@ -5263,3 +5263,11 @@
 	taste_description = "milk"
 	color = "#efeff0"
 	nutriment_factor = 1.5
+
+/datum/reagent/nutriment/astrotame
+	name = "Astrotame"
+	description = "A space age artificial sweetener."
+	nutriment_factor = 0
+	color = COLOR_WHITE // rgb: 255, 255, 255
+	taste_mult = 8
+	taste_description = "sweetness"

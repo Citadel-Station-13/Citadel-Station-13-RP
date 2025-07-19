@@ -114,30 +114,14 @@
 	else
 		. += SPAN_NOTICE("There is no creamer left.")
 
-/obj/machinery/coffeemaker/attack_hand_secondary(mob/user, list/modifiers)
+/obj/machinery/coffeemaker/AltClick(mob/user)
 	. = ..()
-	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
-		return
 	if(!can_interact(user) || !user.canUseTopic(src, !issilicon(user)))
-		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+		return FALSE
 	if(brewing)
-		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+		return FALSE
 	replace_pot(user)
-	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-
-/obj/machinery/coffeemaker/attack_robot_secondary(mob/user, list/modifiers)
-	return attack_hand_secondary(user, modifiers)
-
-/obj/machinery/coffeemaker/attack_ai_secondary(mob/user, list/modifiers)
-	return attack_hand_secondary(user, modifiers)
-
-/obj/machinery/coffeemaker/handle_atom_del(atom/A)
-	. = ..()
-	if(A == coffeepot)
-		coffeepot = null
-	if(A == cartridge)
-		cartridge = null
-	update_appearance()
+	return TRUE
 
 /obj/machinery/coffeemaker/update_icon_state()
 	icon_state = "[base_icon_state][!!coffeepot][!!cartridge]"
@@ -166,7 +150,7 @@
 /obj/machinery/coffeemaker/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
 	default_unfasten_wrench(user, tool)
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	return TRUE
 
 /obj/machinery/coffeemaker/attackby(obj/item/attack_item, mob/living/user, params)
 	//You can only screw open empty grinder
@@ -191,7 +175,7 @@
 	if (istype(attack_item, /obj/item/coffee_cartridge))
 		var/obj/item/coffee_cartridge/new_cartridge = attack_item
 		. = TRUE //no afterattack
-		if(!user.transferItemToLoc(new_cartridge, src))
+		if(!user.canUseTopic(src, TRUE))
 			return TRUE
 		replace_cartridge(user, new_cartridge)
 		update_appearance()
@@ -288,10 +272,9 @@
 
 /obj/machinery/coffeemaker/proc/take_sweetener(mob/user)
 	if(!sweetener_packs)
-		balloon_alert("no sweetener left!")
+		to_chat(user, SPAN_NOTICE("There's no sweetener left in the [src]!"))
 		return
-	to_chat(user, SPAN_NOTICE("There's no sweetener left in the [src]!"))
-	var/obj/item/reagent_containers/condiment/pack/astrotame/new_pack = new(get_turf(src))
+	var/obj/item/reagent_containers/food/condiment/small/packet/astrotame/new_pack = new(get_turf(src))
 	user.put_in_hands(new_pack)
 	sweetener_packs--
 
@@ -386,8 +369,6 @@
 	icon = 'icons/obj/food/containers.dmi'
 	icon_state = "coffee_cartrack4"
 	base_icon_state = "coffee_cartrack"
-	contents_tag = "coffee cartridge"
-	is_open = TRUE
 	max_items = 4
 	max_combined_volume = 4 * WEIGHT_VOLUME_SMALL
 	insertion_whitelist = list(/obj/item/coffee_cartridge)
