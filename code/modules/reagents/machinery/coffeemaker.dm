@@ -39,7 +39,7 @@
 		cartridge = new /obj/item/coffee_cartridge(src)
 	update_icon_state()
 
-/obj/machinery/coffeemaker/deconstruct()
+/obj/machinery/coffeemaker/deconstructed()
 	coffeepot?.forceMove(drop_location())
 	cartridge?.forceMove(drop_location())
 	return ..()
@@ -153,37 +153,36 @@
 	default_unfasten_wrench(user, tool)
 	return TRUE
 
-/obj/machinery/coffeemaker/attackby(obj/item/attack_item, mob/living/user, params)
-	if(!attack_item || !istype(user))
+/obj/machinery/coffeemaker/using_item_on(obj/item/attack_item, mob/living/user, params)
+	. = ..()
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
 
 	//You can only screw open empty grinder
-	if(!coffeepot && default_deconstruction_screwdriver(user, icon_state, icon_state, attack_item))
-		return
+	if(!coffeepot && default_deconstruction_screwdriver(user, attack_item))
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 
-	if(default_deconstruction_crowbar(attack_item))
-		return
+	if(default_deconstruction_crowbar(user, attack_item))
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 
 	if(panel_open) //Can't insert objects when its screwed open
-		return TRUE
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 
 	if (istype(attack_item, /obj/item/reagent_containers/coffeepot) && attack_item.is_open_container())
 		var/obj/item/reagent_containers/coffeepot/new_pot = attack_item
-		. = TRUE //no afterattack
 		if(!user.canUseTopic(src, TRUE))
-			return TRUE
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 		replace_pot(user, new_pot)
 		update_appearance()
-		return TRUE //no afterattack
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING //no afterattack
 
 	if (istype(attack_item, /obj/item/coffee_cartridge))
 		var/obj/item/coffee_cartridge/new_cartridge = attack_item
-		. = TRUE //no afterattack
 		if(!user.canUseTopic(src, TRUE))
-			return TRUE
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 		replace_cartridge(user, new_cartridge)
 		update_appearance()
-		return TRUE //no afterattack
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING //no afterattack
 
 /obj/machinery/coffeemaker/ui_interact(mob/user) // The microwave Menu //I am reasonably certain that this is not a microwave //I am positively certain that this is not a microwave
 	. = ..()
@@ -311,7 +310,7 @@
 
 //Coffee Cartridges: like toner, but for your coffee!
 /obj/item/coffee_cartridge
-	name = "coffeemaker cartridge- Caffè Generico"
+	name = "coffeemaker cartridge- Caffï¿½ Generico"
 	desc = "A coffee cartridge manufactured by Piccionaia Coffee, for use with the Modello 3 system."
 	icon = 'icons/obj/food.dmi'
 	icon_state = "cartridge_basic"
@@ -326,7 +325,7 @@
 		. += SPAN_WARNING("The cartridge has no unspent grounds remaining.")
 
 /obj/item/coffee_cartridge/fancy
-	name = "coffeemaker cartridge - Caffè Fantasioso"
+	name = "coffeemaker cartridge - Caffï¿½ Fantasioso"
 	desc = "A fancy coffee cartridge manufactured by Piccionaia Coffee, for use with the Modello 3 system."
 	icon_state = "cartridge_blend"
 
@@ -349,7 +348,7 @@
 			icon_state = "cartridge_mocha"
 
 /obj/item/coffee_cartridge/decaf
-	name = "coffeemaker cartridge - Caffè Decaffeinato"
+	name = "coffeemaker cartridge - Caffï¿½ Decaffeinato"
 	desc = "A decaf coffee cartridge manufactured by Piccionaia Coffee, for use with the Modello 3 system."
 	icon_state = "cartridge_decaf"
 

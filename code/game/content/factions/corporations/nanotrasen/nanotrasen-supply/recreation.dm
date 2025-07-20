@@ -225,4 +225,4 @@
 /datum/supply_pack/nanotrasen/recreation/coffeepot
 	name = "Coffeepot"
 	worth = 200
-	contains = list(/obj/item/reagent_containers/cup/coffeepot)
+	contains = list(/obj/item/reagent_containers/coffeepot)
