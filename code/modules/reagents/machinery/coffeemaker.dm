@@ -6,7 +6,7 @@
 	base_icon_state = "coffeemaker"
 	circuit = /obj/item/circuitboard/machine/coffeemaker
 	pixel_y = 4 //needed to make it sit nicely on tables
-	var/obj/item/reagent_containers/cup/coffeepot/coffeepot = null
+	var/obj/item/reagent_containers/coffeepot/coffeepot = null
 	var/brewing = FALSE
 	var/brew_time = 20 SECONDS
 	var/speed = 1
@@ -35,7 +35,7 @@
 /obj/machinery/coffeemaker/Initialize(mapload)
 	. = ..()
 	if(mapload)
-		coffeepot = new /obj/item/reagent_containers/cup/coffeepot(src)
+		coffeepot = new /obj/item/reagent_containers/coffeepot(src)
 		cartridge = new /obj/item/coffee_cartridge(src)
 	update_icon_state()
 
@@ -128,7 +128,7 @@
 	icon_state = "[base_icon_state][!!coffeepot][!!cartridge]"
 	return ..()
 
-/obj/machinery/coffeemaker/proc/replace_pot(mob/living/user, obj/item/reagent_containers/cup/coffeepot/new_coffeepot)
+/obj/machinery/coffeemaker/proc/replace_pot(mob/living/user, obj/item/reagent_containers/coffeepot/new_coffeepot)
 	if(!user)
 		return FALSE
 	if(coffeepot)
@@ -164,8 +164,8 @@
 	if(panel_open) //Can't insert objects when its screwed open
 		return TRUE
 
-	if (istype(attack_item, /obj/item/reagent_containers/cup/coffeepot) && attack_item.is_open_container())
-		var/obj/item/reagent_containers/cup/coffeepot/new_pot = attack_item
+	if (istype(attack_item, /obj/item/reagent_containers/coffeepot) && attack_item.is_open_container())
+		var/obj/item/reagent_containers/coffeepot/new_pot = attack_item
 		. = TRUE //no afterattack
 		if(!user.canUseTopic(src, TRUE))
 			return TRUE
