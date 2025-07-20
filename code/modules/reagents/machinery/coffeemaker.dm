@@ -154,6 +154,9 @@
 	return TRUE
 
 /obj/machinery/coffeemaker/attackby(obj/item/attack_item, mob/living/user, params)
+	if(!attack_item || !istype(user))
+		return
+
 	//You can only screw open empty grinder
 	if(!coffeepot && default_deconstruction_screwdriver(user, icon_state, icon_state, attack_item))
 		return
