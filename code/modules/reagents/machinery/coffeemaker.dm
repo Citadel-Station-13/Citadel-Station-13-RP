@@ -258,7 +258,7 @@
 	if(!coffee_cups) //shouldn't happen, but we all know how stuff manages to break
 		to_chat(user, SPAN_NOTICE("There's no cups left in the [src]!"))
 		return
-	var/obj/item/reagent_containers/cup/glass/coffee_cup/new_cup = new(get_turf(src))
+	var/obj/item/reagent_containers/food/drinks/coffee_cup/new_cup = new(get_turf(src))
 	user.put_in_hands(new_cup)
 	coffee_cups--
 

@@ -201,3 +201,61 @@
 				W.update_icon()
 	else
 		return ..()
+
+//Coffeepots: for reference, a standard cup is 30u, to allow 20u for sugar/sweetener/milk/creamer
+/obj/item/reagent_containers/cup/coffeepot
+	name = "coffeepot"
+	desc = "A large pot for dispensing that ambrosia of corporate life known to mortals only as coffee. Contains 4 standard cups."
+	volume = 120
+	icon_state = "coffeepot"
+	fill_icon_state = "coffeepot"
+	fill_icon_thresholds = list(0, 1, 40, 80, 120)
+
+/obj/item/reagent_containers/cup/coffeepot/bluespace
+	name = "bluespace coffeepot"
+	desc = "The most advanced coffeepot the eggheads could cook up: sleek design; graduated lines; connection to a pocket dimension for coffee containment; yep, it's got it all. Contains 8 standard cups."
+	volume = 240
+	icon_state = "coffeepot_bluespace"
+	fill_icon_thresholds = list(0)
+
+// not using cup for the path here because we have some weird stuff with the icon setting
+//Coffeepots: for reference, a standard cup is 30u, to allow 20u for sugar/sweetener/milk/creamer
+/obj/item/reagent_containers/coffeepot
+	name = "coffeepot"
+	desc = "A large pot for dispensing that ambrosia of corporate life known to mortals only as coffee. Contains 4 standard cups."
+	volume = 120
+	icon_state = "coffeepot"
+	fill_icon_state = "coffeepot"
+	fill_icon_thresholds = list(0, 1, 40, 80, 120)
+	atom_flags = OPENCONTAINER
+
+/obj/item/reagent_containers/coffeepot/bluespace
+	name = "bluespace coffeepot"
+	desc = "The most advanced coffeepot the eggheads could cook up: sleek design; graduated lines; connection to a pocket dimension for coffee containment; yep, it's got it all. Contains 8 standard cups."
+	volume = 240
+	icon_state = "coffeepot_bluespace"
+	fill_icon_thresholds = list(0)
+
+/obj/item/reagent_containers/food/drinks/mug/nanotrasen
+	name = "\improper Nanotrasen mug"
+	desc = "A mug to display your corporate pride."
+	icon_state = "mug_nt_empty"
+	atom_flags = OPENCONTAINER
+
+/obj/item/reagent_containers/food/drinks/mug/nanotrasen/update_icon_state()
+	icon_state = reagents.total_volume ? "mug_nt" : "mug_nt_empty"
+	return ..()
+
+/obj/item/reagent_containers/food/drinks/coffee_cup
+	name = "coffee cup"
+	desc = "A heat-formed plastic coffee cup. Can theoretically be used for other hot drinks, if you're feeling adventurous."
+	icon_state = "coffee_cup_e"
+	possible_transfer_amounts = list(10)
+	volume = 30
+	atom_flags = OPENCONTAINER
+	drop_sound = 'sound/items/drop/papercup.ogg'
+	pickup_sound = 'sound/items/pickup/papercup.ogg'
+
+/obj/item/reagent_containers/food/drinks/coffee_cup/update_icon_state()
+	icon_state = reagents.total_volume ? "coffee_cup" : "coffee_cup_e"
+	return ..()

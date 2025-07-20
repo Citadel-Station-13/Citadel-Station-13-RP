@@ -205,12 +205,12 @@
 /datum/supply_pack/nanotrasen/recreation/coffee_mug
 	name = "Coffee Mug"
 	worth = 100
-	contains = list(/obj/item/reagent_containers/cup/glass/mug)
+	contains = list(/obj/item/reagent_containers/food/drinks/mug)
 
 /datum/supply_pack/nanotrasen/recreation/nt_mug
 	name = "Nanotrasen Coffee Mug"
 	worth = 100
-	contains = list(/obj/item/reagent_containers/cup/glass/mug/nanotrasen)
+	contains = list(/obj/item/reagent_containers/food/drinks/mug/nanotrasen)
 
 /datum/supply_pack/nanotrasen/recreation/coffee_cartridge
 	name = "Coffee Cartridge"
