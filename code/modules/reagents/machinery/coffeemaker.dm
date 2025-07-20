@@ -37,6 +37,7 @@
 	if(mapload)
 		coffeepot = new /obj/item/reagent_containers/cup/coffeepot(src)
 		cartridge = new /obj/item/coffee_cartridge(src)
+	update_icon_state()
 
 /obj/machinery/coffeemaker/deconstruct()
 	coffeepot?.forceMove(drop_location())
