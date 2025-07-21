@@ -656,16 +656,21 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d1fwdhall)
 "axC" = (
-/obj/machinery/vending/tool,
+/obj/structure/table/rack,
+/obj/item/storage/belt/utility,
+/obj/item/storage/belt/utility,
+/obj/item/storage/belt/utility,
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
 "axV" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/toolbox/emergency,
-/obj/random/tech_supply,
-/obj/random/tech_supply,
-/obj/random/tech_supply,
 /obj/item/clothing/gloves/yellow,
+/obj/random/tech_supply,
+/obj/random/tech_supply,
+/obj/random/tech_supply,
+/obj/random/tech_supply,
+/obj/random/tech_supply,
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
 "ayr" = (
@@ -4592,7 +4597,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/dark,
 /area/bridge/hallway)
 "dyT" = (
 /obj/structure/catwalk,
@@ -6363,9 +6368,18 @@
 /obj/item/storage/toolbox/mechanical,
 /obj/item/storage/toolbox/mechanical,
 /obj/item/storage/toolbox/mechanical,
-/obj/item/clothing/glasses/welding,
-/obj/item/clothing/glasses/welding,
-/obj/item/clothing/glasses/welding,
+/obj/item/clothing/glasses/welding{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/obj/item/clothing/glasses/welding{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/obj/item/clothing/glasses/welding{
+	pixel_x = 3;
+	pixel_y = 5
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/misc_lab)
 "ePo" = (
@@ -13750,6 +13764,8 @@
 /obj/random/tech_supply,
 /obj/random/tech_supply,
 /obj/random/tech_supply,
+/obj/random/tech_supply,
+/obj/random/tech_supply,
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
 "kuZ" = (
@@ -15925,7 +15941,10 @@
 /obj/item/tank/phoron,
 /obj/item/duct_tape_roll,
 /obj/item/weldingtool,
-/obj/item/clothing/glasses/welding,
+/obj/item/clothing/glasses/welding{
+	pixel_x = 3;
+	pixel_y = 5
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/endeavour/civillian/evastorage)
 "lXo" = (
@@ -19560,7 +19579,6 @@
 "oGj" = (
 /obj/structure/table/reinforced,
 /obj/machinery/cell_charger,
-/obj/random/tech_supply,
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
 "oGx" = (
@@ -21077,10 +21095,13 @@
 	pixel_y = 21
 	},
 /obj/structure/table/reinforced,
-/obj/random/tech_supply,
-/obj/random/tech_supply,
-/obj/random/tech_supply,
-/obj/random/tech_supply,
+/obj/item/clothing/head/welding,
+/obj/item/clothing/head/welding,
+/obj/item/clothing/glasses/welding{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/obj/item/clothing/glasses/welding,
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
 "pRe" = (
@@ -24902,7 +24923,6 @@
 /obj/random/tech_supply,
 /obj/random/tech_supply,
 /obj/random/tech_supply,
-/obj/random/tech_supply,
 /obj/item/duct_tape_roll,
 /obj/item/storage/toolbox/electrical,
 /turf/simulated/floor/tiled,
@@ -27803,14 +27823,10 @@
 /area/endeavour/hallway/d1afthall)
 "uKO" = (
 /obj/structure/table/reinforced,
-/obj/item/clothing/accessory/armor/helmetcamera/body,
-/obj/item/clothing/accessory/armor/helmetcamera/body,
-/obj/item/clothing/accessory/armor/helmetcamera/body,
-/obj/item/clothing/accessory/armor/helmetcamera/body,
-/obj/item/clothing/accessory/armor/helmetcamera/body,
-/obj/item/clothing/accessory/armor/helmetcamera/body,
-/obj/item/clothing/accessory/armor/helmetcamera/body,
-/obj/item/clothing/accessory/armor/helmetcamera/body,
+/obj/item/storage/briefcase/inflatable,
+/obj/item/storage/briefcase/inflatable,
+/obj/item/multitool,
+/obj/item/multitool,
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
 "uLa" = (
@@ -28278,10 +28294,14 @@
 "vcX" = (
 /obj/machinery/fire_alarm/north_mount,
 /obj/structure/table/reinforced,
-/obj/random/tech_supply,
-/obj/random/tech_supply,
-/obj/random/tech_supply,
-/obj/machinery/recharger,
+/obj/item/clothing/accessory/armor/helmetcamera/body,
+/obj/item/clothing/accessory/armor/helmetcamera/body,
+/obj/item/clothing/accessory/armor/helmetcamera/body,
+/obj/item/clothing/accessory/armor/helmetcamera/body,
+/obj/item/clothing/accessory/armor/helmetcamera/body,
+/obj/item/clothing/accessory/armor/helmetcamera/body,
+/obj/item/clothing/accessory/armor/helmetcamera/body,
+/obj/item/clothing/accessory/armor/helmetcamera/body,
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
 "vde" = (
@@ -28428,12 +28448,6 @@
 	dir = 8
 	},
 /obj/machinery/recharger,
-/obj/random/tech_supply,
-/obj/random/tech_supply,
-/obj/random/tech_supply,
-/obj/fiftyspawner/glass,
-/obj/fiftyspawner/glass,
-/obj/fiftyspawner/glass,
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
 "vgR" = (
@@ -28471,9 +28485,6 @@
 	pixel_x = 2;
 	pixel_y = 3
 	},
-/obj/random/tech_supply,
-/obj/random/tech_supply,
-/obj/random/tech_supply,
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
 "vik" = (
@@ -28929,7 +28940,6 @@
 /area/endeavour/hallway/d1fwdhall)
 "vzu" = (
 /obj/structure/table/reinforced,
-/obj/machinery/cell_charger,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
@@ -29610,6 +29620,10 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/structure/table/reinforced,
+/obj/item/cell,
+/obj/item/cell/device/empty,
+/obj/item/cell/device/empty,
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
 "wjN" = (
@@ -30624,10 +30638,11 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/obj/structure/table/reinforced,
 /obj/item/storage/toolbox/mechanical,
 /obj/item/storage/toolbox/emergency,
 /obj/random/tech_supply,
+/obj/random/tech_supply,
+/obj/structure/table/rack,
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
 "xas" = (
@@ -53681,7 +53696,7 @@ ffi
 ffi
 jxt
 sdj
-uKO
+oGj
 vgA
 phr
 jPj
@@ -54264,7 +54279,7 @@ ffi
 jxt
 pQC
 oWB
-oGj
+uKO
 xET
 fNJ
 svt
