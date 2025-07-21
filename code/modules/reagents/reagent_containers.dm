@@ -212,5 +212,4 @@
 	. += filling
 
 /obj/item/reagent_containers/on_reagent_change()
-	if(fill_icon_thresholds && reagents.maximum_volume)
-		update_icon()
+	update_icon()
