@@ -210,3 +210,7 @@
 	filling.color = reagents.get_color()
 
 	. += filling
+
+/obj/item/reagent_containers/on_reagent_change()
+	if(fill_icon_thresholds && reagents.maximum_volume)
+		update_icon()

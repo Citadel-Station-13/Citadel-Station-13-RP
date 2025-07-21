@@ -8,7 +8,7 @@
 	base_icon_state = "coffeemaker"
 	circuit = /obj/item/circuitboard/machine/coffeemaker
 	interaction_flags_machine = parent_type::interaction_flags_machine | INTERACT_MACHINE_OFFLINE
-	var/obj/item/reagent_containers/coffeepot/coffeepot = null
+	var/obj/item/reagent_containers/food/drinks/coffeepot/coffeepot = null
 	var/brewing = FALSE
 	var/brew_time = 20 SECONDS
 	var/speed = 1
@@ -41,7 +41,7 @@
 /obj/machinery/coffeemaker/Initialize(mapload)
 	. = ..()
 	if(mapload)
-		coffeepot = new /obj/item/reagent_containers/coffeepot(src)
+		coffeepot = new /obj/item/reagent_containers/food/drinks/coffeepot(src)
 		cartridge = new /obj/item/coffee_cartridge(src)
 
 /obj/machinery/coffeemaker/deconstructed(disassembled)
@@ -138,7 +138,7 @@
 /obj/machinery/coffeemaker/proc/overlay_checks()
 	. = list()
 	if(coffeepot)
-		if(istype(coffeepot, /obj/item/reagent_containers/coffeepot/bluespace))
+		if(istype(coffeepot, /obj/item/reagent_containers/food/drinks/coffeepot/bluespace))
 			. += "coffeemaker_pot_bluespace"
 		else
 			. += "coffeemaker_pot_[coffeepot.reagents.total_volume ? "full" : "empty"]"
@@ -146,7 +146,7 @@
 		. += "coffeemaker_cartidge"
 	return .
 
-/obj/machinery/coffeemaker/proc/replace_pot(mob/living/user, obj/item/reagent_containers/coffeepot/new_coffeepot)
+/obj/machinery/coffeemaker/proc/replace_pot(mob/living/user, obj/item/reagent_containers/food/drinks/coffeepot/new_coffeepot)
 	if(!user)
 		return FALSE
 	if(coffeepot)
@@ -171,95 +171,85 @@
 	default_unfasten_wrench(user, tool)
 	return TRUE
 
-/obj/machinery/coffeemaker/attackby(obj/item/attack_item, mob/living/user, list/modifiers, list/attack_modifiers)
+/obj/machinery/coffeemaker/using_item_on(obj/item/attack_item, mob/living/user, params)
 	//You can only screw open empty grinder
 	if(!coffeepot && default_deconstruction_screwdriver(user, icon_state, icon_state, attack_item))
-		return FALSE
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 
 	if(default_deconstruction_crowbar(attack_item))
-		return
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 
 	if(panel_open) //Can't insert objects when its screwed open
-		return TRUE
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 
-	if (istype(attack_item, /obj/item/reagent_containers/coffeepot) && attack_item.is_open_container())
-		var/obj/item/reagent_containers/coffeepot/new_pot = attack_item
+	if (istype(attack_item, /obj/item/reagent_containers/food/drinks/coffeepot) && attack_item.is_open_container())
+		var/obj/item/reagent_containers/food/drinks/coffeepot/new_pot = attack_item
 		. = TRUE //no afterattack
 		//if(!user.transferItemToLoc(new_pot, src))
 		//	return TRUE
 		new_pot.forceMove(src)
 		replace_pot(user, new_pot)
 		update_appearance(UPDATE_OVERLAYS)
-		return TRUE //no afterattack
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING //no afterattack
 
 	if (istype(attack_item, /obj/item/reagent_containers/food/drinks/coffee_cup) && attack_item.is_open_container())
 		var/obj/item/reagent_containers/food/drinks/coffee_cup/new_cup = attack_item
 		if(new_cup.reagents.total_volume > 0)
 			to_chat(user, SPAN_NOTICE("The cup must be full!"))
-			return
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(coffee_cups >= max_coffee_cups)
 			to_chat(user, SPAN_NOTICE("The cup holder is full!"))
-			return
-		//if(!user.transferItemToLoc(attack_item, src))
-		//	return
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 		attack_item.forceMove(src)
 		coffee_cups++
 		update_appearance(UPDATE_OVERLAYS)
-		return TRUE //no afterattack
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING //no afterattack
 
 	if (istype(attack_item, /obj/item/reagent_containers/food/condiment/small/packet/sugar))
 		var/obj/item/reagent_containers/food/condiment/small/packet/sugar/new_pack = attack_item
 		if(new_pack.reagents.total_volume < new_pack.reagents.maximum_volume)
 			to_chat(user, SPAN_NOTICE("The pack must be full!"))
-			return
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(sugar_packs >= max_sugar_packs)
 			to_chat(user, SPAN_NOTICE("The sugar compartment is full!"))
-			return
-		//if(!user.transferItemToLoc(attack_item, src))
-		//	return
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 		attack_item.forceMove(src)
 		sugar_packs++
 		update_appearance(UPDATE_OVERLAYS)
-		return TRUE //no afterattack
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING //no afterattack
 
 	if (istype(attack_item, /obj/item/reagent_containers/food/condiment/small/packet/creamer))
 		var/obj/item/reagent_containers/food/condiment/small/packet/creamer/new_pack = attack_item
 		if(new_pack.reagents.total_volume < new_pack.reagents.maximum_volume)
 			to_chat(user, SPAN_NOTICE("The pack be full!"))
-			return
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(creamer_packs >= max_creamer_packs)
 			to_chat(user, SPAN_NOTICE("The creamer compartment is full!"))
-			return
-		//if(!user.transferItemToLoc(attack_item, src))
-		//	return
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 		attack_item.forceMove(src)
 		creamer_packs++
 		update_appearance(UPDATE_OVERLAYS)
-		return TRUE //no afterattack
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING //no afterattack
 
 	if (istype(attack_item, /obj/item/reagent_containers/food/condiment/small/packet/astrotame))
 		var/obj/item/reagent_containers/food/condiment/small/packet/astrotame/new_pack = attack_item
 		if(new_pack.reagents.total_volume < new_pack.reagents.maximum_volume)
 			to_chat(user, SPAN_NOTICE("The pack must be full!"))
-			return
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(sweetener_packs >= max_sweetener_packs)
 			to_chat(user, SPAN_NOTICE("The sweetener compartment is full!"))
-			return
-		//if(!user.transferItemToLoc(attack_item, src))
-		//	return
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 		attack_item.forceMove(src)
 		sweetener_packs++
 		update_appearance(UPDATE_OVERLAYS)
-		return TRUE //no afterattack
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING //no afterattack
 
 	if (istype(attack_item, /obj/item/coffee_cartridge))
 		var/obj/item/coffee_cartridge/new_cartridge = attack_item
-		//if(!user.transferItemToLoc(new_cartridge, src))
-		//	return
 		new_cartridge.forceMove(src)
 		replace_cartridge(user, new_cartridge)
 		update_appearance(UPDATE_OVERLAYS)
-		return TRUE //no afterattack
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING //no afterattack
 
 /obj/machinery/coffeemaker/proc/try_brew()
 	if(!cartridge)
