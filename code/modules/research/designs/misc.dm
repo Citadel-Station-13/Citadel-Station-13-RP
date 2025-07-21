@@ -164,7 +164,7 @@
 	design_name = "Coffeepot"
 	id = "coffeepot"
 	materials_base = list(MAT_GLASS = 500, MAT_PLASTIC = 500)
-	build_path = /obj/item/reagent_containers/coffeepot
+	build_path = /obj/item/reagent_containers/food/drinks/coffeepot
 	category = DESIGN_CATEGORY_RECREATION
 
 /datum/prototype/design/science/coffeepot_bluespace
@@ -172,7 +172,7 @@
 	id = "bluespace_coffeepot"
 	// using phoron in your coffee pot is a good idea
 	materials_base = list(MAT_STEEL = 1000, MAT_PLASTIC = 500, MAT_PHORON = 500)
-	build_path = /obj/item/reagent_containers/coffeepot/bluespace
+	build_path = /obj/item/reagent_containers/food/drinks/coffeepot/bluespace
 	category = DESIGN_CATEGORY_RECREATION
 
 /datum/prototype/design/science/coffee_cartridge
