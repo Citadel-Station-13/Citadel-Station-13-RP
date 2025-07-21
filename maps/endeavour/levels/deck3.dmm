@@ -1514,8 +1514,8 @@
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
-/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/paint/darkred,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hos)
 "bbp" = (
@@ -2648,8 +2648,8 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/paint/darkred,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hos)
 "bTA" = (
@@ -5678,8 +5678,8 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/paint/darkred,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hos)
 "ekc" = (
@@ -15036,7 +15036,6 @@
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
-/obj/machinery/recharge_station,
 /turf/simulated/floor/tiled/monotile,
 /area/security/brig)
 "lDL" = (
@@ -19325,6 +19324,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
+"oQz" = (
+/obj/machinery/recharge_station,
+/turf/simulated/floor/tiled,
+/area/security/brig)
 "oQP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -24246,6 +24249,8 @@
 /obj/structure/window/reinforced/tinted{
 	dir = 4
 	},
+/obj/structure/dogbed,
+/obj/random/plushie,
 /turf/simulated/floor/carpet,
 /area/security/brig)
 "smB" = (
@@ -25418,8 +25423,6 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/showers)
 "tgJ" = (
-/obj/structure/dogbed,
-/obj/random/plushie,
 /obj/machinery/camera/network/security{
 	dir = 1
 	},
@@ -27708,6 +27711,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/fitness)
+"uWa" = (
+/obj/structure/table/rack/shelf,
+/turf/space,
+/area/space)
 "uWh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -39778,7 +39785,7 @@ ddh
 ddh
 ddh
 ddh
-uHU
+ddh
 apj
 tLt
 wyr
@@ -39964,7 +39971,7 @@ bMj
 dJX
 aqN
 feC
-feC
+oQz
 dhI
 dhI
 uFR
@@ -39972,7 +39979,7 @@ ekJ
 njC
 vgH
 bUa
-uHU
+ddh
 jMc
 voq
 wyr
@@ -40166,7 +40173,7 @@ cNA
 mnL
 mnL
 tgJ
-uHU
+ddh
 bOB
 wLx
 wyr
@@ -40360,7 +40367,7 @@ vXN
 smo
 oWL
 mnL
-uHU
+ddh
 aiW
 piH
 icx
@@ -40554,7 +40561,7 @@ rrf
 xJC
 xJC
 feC
-uHU
+ddh
 qDa
 qyk
 icx
@@ -65933,7 +65940,7 @@ mDp
 mDp
 mDp
 mDp
-mDp
+uWa
 pRW
 pRW
 pRW

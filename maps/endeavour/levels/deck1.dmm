@@ -4631,11 +4631,6 @@
 /turf/simulated/wall/prepainted/civilian,
 /area/chapel/office)
 "dBE" = (
-/obj/machinery/door/airlock/engineering{
-	name = "Security Substation";
-	req_one_access = null;
-	secured_wires = 1
-	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},

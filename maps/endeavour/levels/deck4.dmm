@@ -3761,9 +3761,6 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "dpZ" = (
-/obj/machinery/door/airlock{
-	name = "Restroom"
-	},
 /obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -3772,6 +3769,9 @@
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk,
+/obj/machinery/door/airlock/engineering{
+	name = "Engineering Storage Room"
+	},
 /turf/simulated/floor/plating,
 /area/engineering/storage)
 "dqc" = (
@@ -3898,9 +3898,6 @@
 /turf/space,
 /area/engineering/starboardnacelle)
 "dvQ" = (
-/obj/machinery/door/airlock/multi_tile/glass{
-	dir = 4
-	},
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -3912,6 +3909,10 @@
 	icon_state = "4-8"
 	},
 /obj/map_helper/access_helper/airlock/station/engineering/department,
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 4;
+	name = "Engineering Locker Room"
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/locker_room)
 "dwi" = (
@@ -5139,13 +5140,15 @@
 /area/engineering/engine_gas)
 "eGm" = (
 /obj/structure/catwalk,
-/obj/machinery/door/airlock/engineering,
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
 /obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/structure/cable/green{
 	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/engineering{
+	name = "Engineering Storage Room"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/station/eng_lower)
@@ -5523,7 +5526,6 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4fwdmaint)
 "eXl" = (
-/obj/machinery/door/airlock/engineering,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
@@ -5542,6 +5544,9 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "2-4"
+	},
+/obj/machinery/door/airlock/engineering{
+	name = "Engineering Locker Room"
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
@@ -5706,13 +5711,15 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/maintenance/engi,
 /obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /obj/machinery/door/firedoor{
 	dir = 8
+	},
+/obj/machinery/door/airlock/engineering{
+	name = "Deck 4 Aft Substation"
 	},
 /turf/simulated/floor/plating,
 /area/engineering/substation/deck4aft)
@@ -8016,7 +8023,9 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/obj/machinery/door/airlock/engineering,
+/obj/machinery/door/airlock/engineering{
+	name = "Deck 4 Aft Substation"
+	},
 /turf/simulated/floor/plating,
 /area/engineering/substation/deck4aft)
 "hmV" = (
@@ -8985,8 +8994,10 @@
 /area/endeavour/station/stairs_four)
 "ici" = (
 /obj/map_helper/access_helper/airlock/station/engineering/department,
-/obj/machinery/door/airlock/engineering,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/airlock/engineering{
+	name = "Engineering Locker Room"
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
 "ico" = (
@@ -10359,7 +10370,9 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/glass/engineering,
+/obj/machinery/door/airlock/glass/engineering{
+	name = "Engineering Monitor Room"
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engineering_monitoring)
 "jmD" = (
@@ -17749,7 +17762,9 @@
 "qyK" = (
 /obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/multi_tile/glass,
+/obj/machinery/door/airlock/multi_tile/glass{
+	name = "Engineering Locker Room"
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
 "qyM" = (
@@ -20638,13 +20653,15 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/hallway/d4portafthall)
 "tEL" = (
-/obj/machinery/door/airlock/engineering,
 /obj/machinery/door/firedoor/glass,
 /obj/map_helper/access_helper/airlock/station/maintenance,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/airlock/engineering{
+	name = "Deck 4 Aft Substation"
+	},
 /turf/simulated/floor/plating,
 /area/engineering/substation/deck4aft)
 "tFm" = (
@@ -22057,7 +22074,9 @@
 /obj/effect/floor_decal/corner/lightorange{
 	dir = 10
 	},
-/obj/machinery/door/airlock/engineering,
+/obj/machinery/door/airlock/engineering{
+	name = "Engineering Monitor Room"
+	},
 /turf/simulated/floor/tiled/white,
 /area/engineering/engineering_monitoring)
 "uUg" = (
@@ -23009,13 +23028,15 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/obj/machinery/door/airlock/maintenance/engi,
 /obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/door/airlock/engineering{
+	name = "Deck 4 Aft Substation"
 	},
 /turf/simulated/floor/plating,
 /area/engineering/substation/deck4aft)
@@ -25389,10 +25410,12 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/engineering,
 /obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/door/airlock/engineering{
+	name = "Deck 4 Aft Substation"
 	},
 /turf/simulated/floor/plating,
 /area/engineering/substation/deck4aft)
