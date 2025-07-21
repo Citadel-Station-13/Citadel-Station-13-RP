@@ -440,6 +440,7 @@
 	name = "coffeemaker cartridge - Caffè Decaffeinato"
 	desc = "A decaf coffee cartridge manufactured by Piccionaia Coffee, for use with the Modello 3 system."
 	icon_state = "cartridge_decaf"
+	drink_type = list("decafcoffee" = 120)
 
 // no you can't just squeeze the juice bag into a glass!
 /obj/item/coffee_cartridge/bootleg
