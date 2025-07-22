@@ -246,7 +246,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/command{
-	name = "Bridge";
+	name = "MD office";
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/head_office/chief_medical_officer,
@@ -269,7 +269,7 @@
 /area/strelka/shipbase/deck3/cargo/reception)
 "bo" = (
 /obj/structure/grille,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/reinforced,
 /area/space)
 "bp" = (
 /obj/machinery/atmospherics/portables_connector{
@@ -311,6 +311,15 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3)
+"bw" = (
+/obj/machinery/disposal/wall{
+	dir = 8
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/turf/simulated/wall/r_wall/prepainted/science,
+/area/strelka/shipbase/deck3/science/main)
 "bx" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -480,9 +489,6 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/machinery/light/small/old{
-	dir = 4
-	},
 /obj/structure/closet/secure_closet/hydroponics{
 	name = "Xenobotanist's locker";
 	req_access = list();
@@ -616,7 +622,7 @@
 /area/strelka/shipbase/deck3/cargo/hangar)
 "cN" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Medical Substation Bypass"
+	RCon_tag = "Deck 3 Medical Substation Bypass"
 	},
 /obj/machinery/door/window/brigdoor/eastleft{
 	req_access = null;
@@ -825,10 +831,6 @@
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck3/maintenance/science)
 "dJ" = (
-/obj/machinery/door/window/brigdoor/southright{
-	name = "Containment Pen";
-	req_access = list(55)
-	},
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -838,8 +840,7 @@
 	},
 /obj/machinery/door/window/brigdoor/northright{
 	name = "Containment Pen";
-	req_access = list(55);
-	dir = 2
+	req_access = list(55)
 	},
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck3/science/xenobio)
@@ -852,6 +853,9 @@
 	},
 /obj/machinery/air_alarm/north_mount,
 /obj/structure/marker_beacon/red,
+/obj/structure/railing{
+	dir = 4
+	},
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck3/cargo/hangar)
 "dL" = (
@@ -1105,7 +1109,7 @@
 "eS" = (
 /obj/map_helper/access_helper/airlock/station/head_office/chief_medical_officer,
 /obj/machinery/door/airlock/command{
-	name = "Bridge";
+	name = "MD office";
 	req_one_access = null
 	},
 /obj/machinery/door/firedoor/glass,
@@ -1191,10 +1195,6 @@
 /obj/machinery/air_alarm/north_mount,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/roomhallway)
-"fg" = (
-/obj/structure/closet/crate/freezer,
-/turf/simulated/floor/plating,
-/area/strelka/shipbase/deck3/maintenance/cargo)
 "fj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 1
@@ -1417,10 +1417,6 @@
 /obj/machinery/light/small/old{
 	dir = 1
 	},
-/obj/machinery/power/apc/north_mount,
-/obj/structure/cable/green{
-	icon_state = "0-8"
-	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck3/science/main)
 "fL" = (
@@ -1548,16 +1544,14 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 1
 	},
-/obj/structure/closet/crate/bin,
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
 /obj/structure/sign/redcross{
 	pixel_y = 29
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical)
-"gn" = (
-/obj/structure/closet/crate/internals,
-/turf/simulated/floor/plating,
-/area/strelka/shipbase/deck3/maintenance/cargo)
 "go" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 9
@@ -1620,6 +1614,12 @@
 /obj/machinery/air_alarm/south_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/resleeve)
+"gw" = (
+/obj/structure/sign/signnew/electrical{
+	pixel_x = -31
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck3/science/xenobio)
 "gx" = (
 /obj/structure/cable/yellow,
 /obj/machinery/power/apc/west_mount,
@@ -1775,6 +1775,7 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
+/obj/structure/table/carbon/reinforced,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck3/science/xenobio)
 "gP" = (
@@ -1990,6 +1991,12 @@
 "hB" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/strelka/shipbase/deck3/science/servers)
+"hD" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#B95A00"
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
 "hF" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
@@ -2206,6 +2213,9 @@
 /obj/item/storage/box/syringes,
 /obj/item/storage/bag/xenobio,
 /obj/item/storage/bag/xenobio,
+/obj/item/stack/material/phoron{
+	amount = 25
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science/xenobio)
 "io" = (
@@ -2338,10 +2348,6 @@
 /obj/machinery/light/fairy,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/cargo)
-"iL" = (
-/obj/structure/closet/crate/corporate/focalpoint,
-/turf/simulated/floor/plating,
-/area/strelka/shipbase/deck3/maintenance/cargo)
 "iM" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/dark,
@@ -2377,7 +2383,7 @@
 /area/strelka/shipbase/deck3/science/main)
 "iR" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Cargo Substation Bypass"
+	RCon_tag = "Deck 3 Cargo Substation Bypass"
 	},
 /obj/structure/window/reinforced{
 	dir = 8
@@ -3151,6 +3157,11 @@
 /obj/item/clipboard{
 	pixel_x = 2
 	},
+/obj/machinery/button/windowtint{
+	pixel_x = -7;
+	pixel_y = 2;
+	id = "QMtint"
+	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3/cargo/qm)
 "lI" = (
@@ -3217,6 +3228,9 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/machinery/light/small/old{
+	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck3/maintenance/science)
@@ -3500,11 +3514,6 @@
 "mO" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/strelka/shipbase/deck3/mininghangar)
-"mP" = (
-/obj/effect/floor_decal/rust,
-/obj/structure/closet/crate,
-/turf/simulated/floor/plating,
-/area/strelka/shipbase/deck3/maintenance/cargo)
 "mQ" = (
 /obj/machinery/door/airlock/command{
 	id_tag = "blueshielddoor";
@@ -3567,7 +3576,7 @@
 /obj/machinery/light/small/old{
 	dir = 1
 	},
-/obj/structure/closet/crate/corporate/nanotrasen,
+/obj/random/multiple/corp_crate/no_weapons,
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck3/maintenance/cargo)
 "mZ" = (
@@ -3651,6 +3660,17 @@
 "no" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck3/medical/main)
+"nq" = (
+/obj/machinery/recharger/wallcharger{
+	pixel_x = -24;
+	pixel_y = 4
+	},
+/obj/machinery/recharger/wallcharger{
+	pixel_x = -24;
+	pixel_y = -8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck3/science/xenobio)
 "nr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -3774,7 +3794,7 @@
 /area/strelka/shipbase/deck3)
 "nI" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Deck 3 bridge / AI";
+	RCon_tag = "Substation - Deck 3 Bridge / AI";
 	output_attempt = 0
 	},
 /obj/structure/cable/yellow{
@@ -4425,7 +4445,7 @@
 /area/strelka/shipbase/deck3)
 "pT" = (
 /obj/machinery/door/blast/regular,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck3/cargo/hangar)
 "pY" = (
 /obj/effect/floor_decal/corner/purple/full,
@@ -4612,9 +4632,6 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
-/obj/machinery/light/small/old{
-	dir = 8
-	},
 /obj/machinery/camera/network/security{
 	dir = 4
 	},
@@ -4653,7 +4670,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3/science/robotics)
 "qV" = (
-/obj/map_helper/access_helper/airlock/station/science/department,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -4788,6 +4804,7 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
+/obj/structure/table/carbon/reinforced,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck3/science/xenobio)
 "rm" = (
@@ -4857,12 +4874,6 @@
 "ru" = (
 /obj/fiftyspawner/steel,
 /obj/fiftyspawner/glass,
-/obj/machinery/requests_console{
-	department = "Research";
-	departmentType = 3;
-	name = "Research requests console";
-	pixel_x = 32
-	},
 /obj/structure/table/carbon/reinforced,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3/science/main)
@@ -4948,16 +4959,11 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/cargo/mining)
 "rI" = (
-/obj/item/storage/box/monkeycubes{
-	starts_with = list(/obj/item/reagent_containers/food/snacks/monkeycube/wrapped=10)
-	},
 /obj/structure/table/carbon/reinforced,
 /obj/machinery/camera/network/security{
 	dir = 8
 	},
-/obj/machinery/camera/network/security{
-	dir = 8
-	},
+/obj/machinery/reagentgrinder,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science/xenobio)
 "rL" = (
@@ -5045,7 +5051,9 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck3/science/xenobio)
 "sc" = (
-/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
+	id = "QMtint"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/cargo/qm)
 "sd" = (
@@ -5215,10 +5223,10 @@
 /obj/effect/floor_decal/corner/purple{
 	dir = 10
 	},
-/obj/machinery/disposal/wall{
-	dir = 4
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
 	},
-/obj/structure/disposalpipe/trunk,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science/main)
 "sO" = (
@@ -5317,7 +5325,9 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/structure/closet/crate/bin,
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck3)
 "te" = (
@@ -5658,6 +5668,12 @@
 /obj/structure/loot_pile/maint/technical,
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck3/maintenance/medical)
+"ut" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
+/area/strelka/shipbase/deck3/cargo/hangar)
 "uu" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -5859,11 +5875,7 @@
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3/medical/surgery)
 "uX" = (
-/obj/structure/table/carbon/reinforced,
-/obj/item/weldingtool,
-/obj/item/weldingtool,
-/obj/item/clothing/glasses/welding,
-/obj/item/clothing/glasses/welding,
+/obj/machinery/processor,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science/xenobio)
 "uY" = (
@@ -5876,7 +5888,7 @@
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 9
 	},
-/obj/machinery/organ_printer,
+/obj/machinery/organ_printer/flesh/full,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/resleeve)
 "vd" = (
@@ -5915,7 +5927,7 @@
 "vh" = (
 /obj/spawner/window/low_wall/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck3/cargo/hangar)
 "vm" = (
 /obj/machinery/mineral/input,
@@ -5978,12 +5990,15 @@
 /area/strelka/shipbase/deck3/cargo)
 "vN" = (
 /obj/structure/table/carbon/reinforced,
-/obj/item/slime_scanner,
 /obj/machinery/light/small/old{
 	dir = 4
 	},
-/obj/item/gun/projectile/energy/taser/xeno,
-/obj/item/melee/baton/slime,
+/obj/item/storage/box/monkeycubes{
+	starts_with = list(/obj/item/reagent_containers/food/snacks/monkeycube/wrapped=10)
+	},
+/obj/item/storage/box/monkeycubes{
+	starts_with = list(/obj/item/reagent_containers/food/snacks/monkeycube/wrapped=10)
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science/xenobio)
 "vO" = (
@@ -6173,6 +6188,10 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck3/science/main)
 "wp" = (
@@ -6233,6 +6252,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/structure/table/carbon/reinforced,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck3/science/xenobio)
 "wx" = (
@@ -6362,8 +6382,8 @@
 /area/strelka/shipbase/deck3/medical/main)
 "wU" = (
 /obj/machinery/power/sensor{
-	name = "Powernet Sensor - Cargo Subgrid";
-	name_tag = "Cargo Subgrid"
+	name = "Powernet Sensor - Park Subgrid";
+	name_tag = "Deck3 - Park"
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -6555,7 +6575,7 @@
 "xx" = (
 /obj/machinery/power/sensor{
 	name = "Powernet Sensor - Research Main Subgrid";
-	name_tag = "Research Main Subgrid"
+	name_tag = "Deck3 - Research Main Subgrid"
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -6699,14 +6719,6 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3/science/main)
-"xV" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/light/small/old{
-	dir = 4
-	},
-/obj/machinery/computer/timeclock/premade/east,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/strelka/shipbase/deck3/cargo)
 "xW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -6754,7 +6766,7 @@
 /area/strelka/shipbase/deck3/science/main)
 "yi" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Cargo";
+	RCon_tag = "Substation - Deck 3 Cargo";
 	output_attempt = 0
 	},
 /obj/structure/cable/green{
@@ -6834,7 +6846,9 @@
 /area/strelka/shipbase/deck3/medical/surgery)
 "yp" = (
 /obj/effect/floor_decal/rust,
-/obj/structure/closet/crate/bin,
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/cargo)
 "yq" = (
@@ -7064,7 +7078,7 @@
 /area/strelka/shipbase/deck3/medical/emtroom)
 "zb" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Park";
+	RCon_tag = "Substation - Deck 3 Park";
 	output_attempt = 0
 	},
 /obj/structure/cable/green{
@@ -7138,6 +7152,9 @@
 /obj/item/hand_labeler,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/main)
+"zn" = (
+/turf/simulated/floor/reinforced,
+/area/space)
 "zo" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -7223,7 +7240,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/closet/crate/corporate/aether,
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck3/maintenance/cargo)
 "zB" = (
@@ -7547,7 +7563,7 @@
 "AP" = (
 /obj/map_helper/access_helper/airlock/station/head_office/research_director,
 /obj/machinery/door/airlock/command{
-	name = "Bridge";
+	name = "RD office";
 	req_one_access = null
 	},
 /obj/machinery/door/firedoor/glass,
@@ -7660,11 +7676,6 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/obj/machinery/power/sensor{
-	name = "Powernet Sensor - Medical Subgrid";
-	name_tag = "Medical Subgrid"
-	},
-/obj/structure/cable/green,
 /obj/structure/cable/blue{
 	icon_state = "1-2"
 	},
@@ -7764,6 +7775,14 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/emtroom)
+"Bv" = (
+/obj/item/slime_scanner,
+/obj/item/gun/projectile/energy/taser/xeno,
+/obj/item/melee/baton/slime,
+/obj/structure/closet/walllocker_double/west,
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck3/science/xenobio)
 "Bx" = (
 /obj/machinery/atmospherics/component/unary/outlet_injector{
 	dir = 1
@@ -7833,6 +7852,7 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
+/obj/structure/table/carbon/reinforced,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck3/science/xenobio)
 "BG" = (
@@ -7956,7 +7976,6 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
-/mob/living/simple_mob/animal/passive/fox/renault,
 /turf/simulated/floor/carpet/purcarpet,
 /area/strelka/shipbase/deck3/science/main)
 "Cf" = (
@@ -8030,6 +8049,7 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
+/obj/structure/table/carbon/reinforced,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck3/science/xenobio)
 "Cr" = (
@@ -8167,7 +8187,7 @@
 "CI" = (
 /obj/machinery/power/sensor{
 	name = "Powernet Sensor - Cargo Subgrid";
-	name_tag = "Cargo Subgrid"
+	name_tag = "Deck3 - Cargo Subgrid"
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -8329,6 +8349,13 @@
 /area/strelka/shipbase/deck3/science/xenobotany)
 "Dc" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
+/obj/machinery/power/sensor{
+	name = "Powernet Sensor - Medical Subgrid";
+	name_tag = "Deck3 - Medical Subgrid"
+	},
+/obj/structure/cable/green{
+	icon_state = "0-9"
+	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck3/maintenance/medical)
 "De" = (
@@ -8696,6 +8723,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/main)
+"Eo" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/tiled/monodark,
+/area/space)
 "Eq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -8721,6 +8752,12 @@
 /obj/item/locator,
 /obj/machinery/camera/network/security{
 	dir = 1
+	},
+/obj/machinery/requests_console{
+	department = "Research";
+	departmentType = 3;
+	name = "Research requests console";
+	pixel_y = -30
 	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3/science/main)
@@ -8883,6 +8920,9 @@
 /area/strelka/shipbase/deck3/bridge/rd)
 "ET" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner,
+/obj/structure/railing{
+	dir = 4
+	},
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck3/cargo/hangar)
 "EV" = (
@@ -9042,10 +9082,6 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science)
 "Fv" = (
-/obj/machinery/door/window/brigdoor/southright{
-	name = "Containment Pen";
-	req_access = list(55)
-	},
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -9055,8 +9091,7 @@
 	},
 /obj/machinery/door/window/brigdoor/northright{
 	name = "Containment Pen";
-	req_access = list(55);
-	dir = 2
+	req_access = list(55)
 	},
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck3/science/xenobio)
@@ -9153,8 +9188,9 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck3)
 "FO" = (
-/obj/machinery/door/airlock/multi_tile/glass/exploration,
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/multi_tile/glass/exploration,
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science)
 "FP" = (
@@ -9253,6 +9289,9 @@
 	},
 /obj/machinery/light/small/old,
 /obj/structure/marker_beacon/red,
+/obj/structure/railing{
+	dir = 4
+	},
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck3/cargo/hangar)
 "Gh" = (
@@ -9374,6 +9413,10 @@
 /obj/structure/window/phoronreinforced,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science/xenobio)
+"GB" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/reinforced,
+/area/space)
 "GD" = (
 /obj/structure/cable/orange{
 	icon_state = "6-9"
@@ -9405,9 +9448,6 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/power/apc/north_mount,
-/obj/machinery/light/small/old{
-	dir = 1
-	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck3/maintenance/science)
 "GL" = (
@@ -9777,6 +9817,10 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3/science)
+"Ig" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/reinforced,
+/area/strelka/shipbase/pointdefense)
 "Ij" = (
 /obj/item/storage/box/beakers,
 /obj/item/storage/fancy/vials,
@@ -9883,7 +9927,6 @@
 /obj/machinery/atmospherics/pipe/zpipe/down/scrubbers{
 	dir = 4
 	},
-/obj/structure/closet/crate,
 /turf/simulated/open,
 /area/strelka/shipbase/deck3/maintenance/cargo)
 "Iv" = (
@@ -9909,7 +9952,7 @@
 /area/strelka/shipbase/deck3)
 "IE" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Park Substation Bypass"
+	RCon_tag = "Deck 3 Park Substation Bypass"
 	},
 /obj/structure/window/reinforced{
 	dir = 8
@@ -9930,7 +9973,9 @@
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck3/bridge/rd)
 "IG" = (
-/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
+	id = "QMtint"
+	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/strelka/shipbase/deck3/cargo/qm)
 "IH" = (
@@ -10395,7 +10440,7 @@
 /area/strelka/shipbase/deck3/mininghangar)
 "Kp" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Research Main";
+	RCon_tag = "Substation - Deck 3 Research Main";
 	output_attempt = 0
 	},
 /obj/structure/cable/green,
@@ -10828,16 +10873,16 @@
 	},
 /area/strelka/shipbase/deck3/science/servers)
 "Mc" = (
-/obj/machinery/door/window/brigdoor/northright{
-	name = "Containment Pen";
-	req_access = list(55)
-	},
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
 	id = "xenobio2";
 	name = "Containment Blast Doors";
 	opacity = 0
+	},
+/obj/machinery/door/window/brigdoor/southright{
+	name = "Containment Pen";
+	req_access = list(55)
 	},
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck3/science/xenobio)
@@ -10897,6 +10942,14 @@
 /area/strelka/shipbase/deck3/bridge/rd)
 "Mk" = (
 /obj/structure/closet/crate,
+/obj/item/stack/material/glass{
+	amount = 50
+	},
+/obj/item/stack/material/steel{
+	amount = 50;
+	pixel_x = 2;
+	pixel_y = 2
+	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck3/maintenance/cargo)
 "Ml" = (
@@ -10908,7 +10961,7 @@
 /area/strelka/shipbase/deck3/science/secondary)
 "Mq" = (
 /obj/item/storage/box/syringegun,
-/obj/item/gun/launcher/syringe/rapid,
+/obj/item/gun/projectile/ballistic/syringe/rapid,
 /obj/structure/closet/secure_closet/CMO,
 /obj/item/clothing/accessory/poncho/roles/cloak/cmo,
 /obj/item/storage/secure/briefcase/ml3m_pack_cmo,
@@ -11101,7 +11154,8 @@
 "Nf" = (
 /obj/machinery/door/airlock/mining{
 	name = "Cargo Airlock";
-	req_one_access = list(31,47)
+	req_one_access = null;
+	req_access = list(31,47)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -11115,7 +11169,6 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/cargo/mining)
 "Ng" = (
@@ -11138,8 +11191,8 @@
 /area/strelka/shipbase/deck3/medical/resleeve)
 "Nj" = (
 /obj/machinery/power/sensor{
-	name = "Powernet Sensor - Medical Subgrid";
-	name_tag = "Medical Subgrid"
+	name = "Powernet Sensor - Bridge AI";
+	name_tag = "Deck3 - Bridge AI"
 	},
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
@@ -11486,7 +11539,7 @@
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck3/bridge/blueshield)
 "Oz" = (
-/obj/structure/closet/crate/corporate/grayson,
+/obj/random/multiple/corp_crate/no_weapons,
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck3/maintenance/cargo)
 "OB" = (
@@ -11528,6 +11581,9 @@
 /obj/effect/floor_decal/industrial/warning/dust/corner{
 	dir = 4
 	},
+/obj/structure/railing{
+	dir = 4
+	},
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck3/cargo/hangar)
 "OQ" = (
@@ -11559,6 +11615,7 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
+/obj/structure/table/carbon/reinforced,
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck3/science/xenobio)
 "Pb" = (
@@ -12120,7 +12177,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/command{
-	name = "Bridge";
+	name = "RD office";
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/head_office/research_director,
@@ -12266,16 +12323,16 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/resleeve)
 "RF" = (
-/obj/machinery/door/window/brigdoor/northright{
-	name = "Containment Pen";
-	req_access = list(55)
-	},
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
 	id = "xenobio4";
 	name = "Containment Blast Doors";
 	opacity = 0
+	},
+/obj/machinery/door/window/brigdoor/southright{
+	name = "Containment Pen";
+	req_access = list(55)
 	},
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck3/science/xenobio)
@@ -12337,6 +12394,9 @@
 	},
 /obj/machinery/light/fairy{
 	dir = 1
+	},
+/obj/machinery/light/small/old{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/cargo)
@@ -12439,6 +12499,11 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3/science/secondary)
+"Sk" = (
+/obj/machinery/shield_diffuser,
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/reinforced,
+/area/space)
 "Sl" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
@@ -12661,16 +12726,16 @@
 /turf/simulated/floor/bluegrid,
 /area/strelka/shipbase/deck3/bridge/upload)
 "SR" = (
-/obj/machinery/door/window/brigdoor/northright{
-	name = "Containment Pen";
-	req_access = list(55)
-	},
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
 	id = "xenobio3";
 	name = "Containment Blast Doors";
 	opacity = 0
+	},
+/obj/machinery/door/window/brigdoor/southright{
+	name = "Containment Pen";
+	req_access = list(55)
 	},
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck3/science/xenobio)
@@ -12940,6 +13005,19 @@
 "TI" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/shipbase/deck3/medical/surgery)
+"TK" = (
+/obj/structure/closet/secure_closet/hydroponics{
+	name = "Xenobotanist's locker";
+	req_access = list();
+	req_one_access = list(30,35,47,77)
+	},
+/obj/item/clothing/suit/beekeeper,
+/obj/item/clothing/suit/beekeeper,
+/obj/machinery/light/small/old{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/strelka/shipbase/deck3/science/xenobotany)
 "TM" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
@@ -13437,14 +13515,9 @@
 /turf/simulated/floor/carpet/blue,
 /area/strelka/shipbase/deck3/bridge/md)
 "VG" = (
-/obj/machinery/door/window/brigdoor/southright{
-	name = "Containment Pen";
-	req_access = list(55)
-	},
 /obj/machinery/door/window/brigdoor/northright{
 	name = "Containment Pen";
-	req_access = list(55);
-	dir = 2
+	req_access = list(55)
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -13630,7 +13703,9 @@
 /obj/machinery/camera/network/security{
 	dir = 8
 	},
-/obj/structure/closet/crate/bin,
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
 /obj/structure/sign/science{
 	pixel_x = 31
 	},
@@ -13686,7 +13761,7 @@
 /area/strelka/shipbase/deck3/maintenance/cargo)
 "Wn" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Medical";
+	RCon_tag = "Substation - Deck 3 Medical";
 	output_attempt = 0
 	},
 /obj/structure/cable/green,
@@ -13697,6 +13772,9 @@
 /obj/machinery/door/window/brigdoor/eastright{
 	req_one_access = list(10,24,11);
 	req_access = null
+	},
+/obj/structure/cable/green{
+	icon_state = "0-6"
 	},
 /turf/simulated/floor,
 /area/strelka/shipbase/deck3/maintenance/medical)
@@ -13817,9 +13895,11 @@
 /area/strelka/shipbase/deck3/cargo/portal)
 "WH" = (
 /obj/structure/table/carbon/reinforced,
-/obj/item/slime_scanner,
-/obj/item/gun/projectile/energy/taser/xeno,
-/obj/item/melee/baton/slime,
+/obj/item/clothing/glasses/welding,
+/obj/item/clothing/glasses/welding,
+/obj/item/weldingtool,
+/obj/item/weldingtool,
+/obj/machinery/recharger,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science/xenobio)
 "WJ" = (
@@ -13955,7 +14035,7 @@
 /area/strelka/shipbase/deck3/medical/resleeve)
 "Xn" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Research Main Substation Bypass"
+	RCon_tag = "Deck 3 Research Main Substation Bypass"
 	},
 /obj/machinery/light/small/old{
 	dir = 8
@@ -14077,13 +14157,7 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck3/science/robotics)
 "XG" = (
-/obj/structure/closet/secure_closet/hydroponics{
-	name = "Xenobotanist's locker";
-	req_access = list();
-	req_one_access = list(30,35,47,77)
-	},
-/obj/item/clothing/suit/beekeeper,
-/obj/item/clothing/suit/beekeeper,
+/obj/machinery/botany/extractor,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science/xenobotany)
 "XH" = (
@@ -14215,6 +14289,15 @@
 "Ym" = (
 /obj/machinery/air_alarm/north_mount,
 /obj/structure/closet/crate,
+/obj/item/stack/material/wood/hard{
+	amount = 25
+	},
+/obj/item/stack/material/wood{
+	amount = 25
+	},
+/obj/item/stack/material/wood/ironwood{
+	amount = 25
+	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck3/maintenance/cargo)
 "Yq" = (
@@ -25792,6 +25875,20 @@ ae
 ae
 ae
 ae
+EP
+EP
+EP
+EP
+EP
+EP
+EP
+EP
+EP
+EP
+EP
+EP
+Eo
+Eo
 ae
 ae
 ae
@@ -25805,34 +25902,20 @@ ae
 ae
 ae
 ae
-rT
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-rT
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
+Eo
+Eo
+EP
+EP
+EP
+EP
+EP
+EP
+EP
+EP
+EP
+EP
+EP
+EP
 ae
 ae
 ae
@@ -25985,21 +26068,21 @@ ae
 ae
 ae
 ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-rT
-Xb
+EP
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+GB
+GB
+Ig
 XZ
 Gv
 mO
@@ -26013,21 +26096,21 @@ kR
 eB
 kR
 eB
-Xb
-rT
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
+Ig
+GB
+GB
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+EP
 ae
 ae
 ae
@@ -26178,21 +26261,21 @@ ae
 ae
 ae
 ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-rT
-Xb
+EP
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+Sk
+Ig
 SF
 Gv
 GX
@@ -26208,21 +26291,21 @@ cY
 Ns
 kR
 SF
-Xb
-rT
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
+Ig
+GB
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+EP
 ae
 ae
 ae
@@ -26371,22 +26454,22 @@ ae
 ae
 ae
 ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
 EP
-EP
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
 nN
 GX
 GX
@@ -26402,22 +26485,22 @@ nk
 Ns
 kR
 Ko
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
 EP
-EP
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
 ae
 ae
 ae
@@ -26564,23 +26647,23 @@ ae
 ae
 ae
 ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
 EP
 EP
-EP
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
 nN
 BW
 gQ
@@ -26596,22 +26679,22 @@ GP
 Ns
 eZ
 Ko
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+zn
 EP
-EP
-EP
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
 ae
 ae
 ae
@@ -26757,13 +26840,13 @@ ae
 ae
 ae
 ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
+EP
+EP
+EP
+zn
+zn
+zn
+zn
 IR
 IR
 pT
@@ -26801,12 +26884,12 @@ gc
 gc
 gc
 SI
-ae
-ae
-ae
-ae
-ae
-ae
+zn
+zn
+zn
+zn
+EP
+EP
 ae
 ae
 ae
@@ -26950,13 +27033,13 @@ ae
 ae
 ae
 ae
-ae
-ae
-ae
-ae
 EP
 EP
 EP
+EP
+zn
+zn
+zn
 zV
 su
 dh
@@ -26995,13 +27078,13 @@ ud
 ud
 FZ
 UP
+zn
+zn
+zn
+zn
 EP
 EP
 EP
-ae
-ae
-ae
-ae
 ae
 ae
 ae
@@ -27143,14 +27226,14 @@ ae
 ae
 ae
 ae
-ae
-ae
 EP
 EP
 EP
 EP
 EP
-EP
+zn
+zn
+zn
 bo
 vh
 uY
@@ -27189,14 +27272,14 @@ ny
 ny
 nz
 sa
+zn
+hD
+hD
+zn
 EP
-lI
-lI
 EP
 EP
 EP
-ae
-ae
 ae
 ae
 ae
@@ -27342,9 +27425,9 @@ EP
 lI
 lI
 lI
-lI
-lI
-lI
+hD
+hD
+hD
 mF
 su
 uY
@@ -27383,10 +27466,10 @@ ud
 ud
 ud
 sa
-EP
-EP
-EP
-EP
+zn
+zn
+zn
+zn
 EP
 EP
 EP
@@ -27580,7 +27663,7 @@ sa
 zq
 zq
 zq
-EP
+zn
 EP
 EP
 lI
@@ -28118,21 +28201,21 @@ mF
 mF
 mX
 Oz
-gn
+js
 pN
 Hb
 zb
 su
 dK
-uY
-uY
-uY
+ut
+ut
+ut
 ET
 cJ
 cJ
 ON
-uY
-uY
+ut
+ut
 Gf
 uL
 nn
@@ -28310,9 +28393,9 @@ EP
 zq
 mF
 Mk
-iL
+Oz
 Iu
-fg
+js
 pN
 js
 CI
@@ -28506,7 +28589,7 @@ mF
 Ym
 pQ
 zA
-mP
+Wm
 zf
 ca
 IE
@@ -29109,7 +29192,7 @@ xv
 jp
 yp
 vM
-xV
+sX
 gU
 sX
 JE
@@ -29318,10 +29401,10 @@ pZ
 Gz
 yA
 Ay
-hV
-hV
-hV
-hV
+nq
+Bv
+Bv
+gw
 je
 cE
 fw
@@ -29907,7 +29990,7 @@ rr
 VA
 JN
 La
-VA
+TK
 VA
 zq
 EP
@@ -35137,7 +35220,7 @@ hi
 sd
 yQ
 VL
-JC
+bw
 fJ
 HG
 et

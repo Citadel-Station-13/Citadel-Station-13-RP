@@ -1425,7 +1425,7 @@
 /area/awaymission/labs/militarydivision)
 "eH" = (
 /obj/structure/table/reinforced,
-/obj/item/gun/launcher/syringe{
+/obj/item/gun/projectile/ballistic/syringe{
 	pixel_x = 1;
 	pixel_y = 4
 	},
@@ -6756,7 +6756,7 @@
 	},
 /area/awaymission/labs/medical)
 "tE" = (
-/obj/item/gun/launcher/syringe/rapid,
+/obj/item/gun/projectile/ballistic/syringe/rapid,
 /obj/structure/table/standard,
 /turf/simulated/floor{
 	icon_state = "white"
@@ -7000,7 +7000,7 @@
 /area/awaymission/labs/security)
 "uo" = (
 /obj/structure/table/standard,
-/obj/item/gun/launcher/syringe/rapid,
+/obj/item/gun/projectile/ballistic/syringe/rapid,
 /turf/simulated/floor{
 	icon_state = "white"
 	},

@@ -1,0 +1,765 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ar" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/item/bedsheet,
+/obj/structure/bed,
+/obj/structure/window/wooden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"bY" = (
+/obj/random/crystal/normal_ice,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west_caves)
+"cl" = (
+/turf/template_noop,
+/area/template_noop)
+"cq" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/structure/mirror{
+	pixel_y = 36
+	},
+/obj/structure/sink/kitchen{
+	pixel_y = 24
+	},
+/obj/structure/loot_pile/surface/medicine_cabinet{
+	pixel_y = -32
+	},
+/turf/simulated/floor/concrete/tile/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"cE" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/machinery/door/airlock/external,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"cU" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/structure/table/bench/padded,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"dk" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/structure/window/wooden{
+	dir = 8
+	},
+/obj/random/alcohol,
+/obj/structure/closet,
+/obj/item/clothing/under/tajaran/cosmonaut,
+/obj/item/clothing/shoes/tajara/armored,
+/obj/item/clothing/head/beret/tajaran/dpra,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"dU" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/structure/table/standard,
+/obj/item/deck/cards,
+/obj/machinery/light/small/emergency/flicker{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"gP" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/catwalk,
+/obj/structure/reagent_dispensers/fueltank/barrel,
+/obj/effect/debris/cleanable/dirt,
+/obj/machinery/light/small/emergency/flicker,
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"hJ" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/machinery/floodlight,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"iq" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/item/bedsheet,
+/obj/structure/bed,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"jz" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/structure/table/rack/shelf/steel,
+/obj/random/mre,
+/obj/random/mre,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"jM" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/random/trash_pile,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"kS" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/machinery/door/blast/regular{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"mg" = (
+/obj/effect/decal/mecha_wreckage/gunpod,
+/obj/effect/debris/cleanable/dirt,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"nb" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/catwalk,
+/obj/effect/debris/cleanable/dirt,
+/obj/machinery/light/small/emergency/flicker{
+	dir = 1
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"ns" = (
+/obj/random/obstruction,
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"pa" = (
+/obj/random/obstruction,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west_caves)
+"qc" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/random/trash_pile,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"qw" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/catwalk,
+/obj/structure/reagent_dispensers/fueltank/barrel,
+/obj/effect/debris/cleanable/dirt,
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"qZ" = (
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west_caves)
+"sY" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"tm" = (
+/obj/effect/debris/cleanable/dirt,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"tr" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/catwalk,
+/obj/effect/debris/cleanable/dirt,
+/obj/random/trash_pile,
+/obj/machinery/light/small/emergency/flicker{
+	dir = 1
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"vo" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/catwalk,
+/obj/structure/table/rack/shelf/steel,
+/obj/effect/debris/cleanable/dirt,
+/obj/random/toolbox,
+/obj/machinery/light/small/emergency/flicker{
+	dir = 1
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"wP" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/structure/closet,
+/obj/item/clothing/under/tajaran/cosmonaut,
+/obj/item/clothing/shoes/tajara/armored,
+/obj/item/clothing/head/beret/tajaran/dpra,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"xh" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/random/obstruction,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"xF" = (
+/obj/structure/boulder,
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"xK" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/catwalk,
+/obj/effect/debris/cleanable/dirt,
+/obj/machinery/light/small/emergency/flicker,
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"xP" = (
+/obj/effect/debris/cleanable/dirt,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/lythios/west_caves/buried_structure)
+"yl" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoor0";
+	opacity = 0
+	},
+/obj/random/obstruction,
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"yS" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/structure/table/rack/shelf/steel,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"yY" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/structure/toilet{
+	pixel_y = 16
+	},
+/obj/machinery/light/small/emergency/flicker,
+/turf/simulated/floor/concrete/tile/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"zd" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/catwalk,
+/obj/effect/debris/cleanable/dirt,
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"zs" = (
+/obj/machinery/light/small/emergency{
+	dir = 8
+	},
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west_caves)
+"Am" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/random/cigarettes,
+/obj/random/cigarettes,
+/obj/structure/closet,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"BS" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/structure/table/rack/shelf/steel,
+/obj/random/tool,
+/obj/random/tool,
+/obj/random/tool,
+/obj/random/tool,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"BU" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/machinery/door/airlock/maintenance/int,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"Cw" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/machinery/door/airlock/maintenance/int,
+/turf/simulated/floor/concrete/tile/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"Dw" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/random/trash_pile,
+/turf/simulated/floor/concrete/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"Fh" = (
+/obj/effect/debris/cleanable/dirt,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"Ft" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/catwalk,
+/obj/effect/debris/cleanable/dirt,
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"FI" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"FJ" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/structure/closet/secure_closet/freezer/fridge,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"Ht" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/catwalk,
+/obj/effect/debris/cleanable/dirt,
+/obj/machinery/light/small/emergency/flicker,
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"Hw" = (
+/turf/simulated/wall/r_wall/prepainted,
+/area/submap/lythios/west_caves/buried_structure)
+"Hx" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/structure/curtain/open/shower,
+/obj/machinery/shower{
+	dir = 1
+	},
+/turf/simulated/floor/concrete/tile/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"Jn" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/structure/closet/crate/mimic/cointoss,
+/obj/random/ammo_all,
+/obj/random/mre,
+/obj/random/mre,
+/obj/machinery/light/small/emergency/flicker,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"LC" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"Op" = (
+/obj/random/crystal/ice,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west_caves)
+"OK" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/structure/table/rack/shelf/steel,
+/obj/random/medical/lite,
+/obj/random/medical/lite,
+/obj/random/medical/pillbottle,
+/obj/random/unidentified_medicine,
+/obj/random/unidentified_medicine,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"Pq" = (
+/obj/effect/debris/cleanable/dirt,
+/turf/simulated/floor/concrete/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"Pv" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/random/obstruction,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"Qw" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/floormimic/tile,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"RP" = (
+/obj/structure/boulder,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west_caves)
+"SB" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/machinery/door/airlock/multi_tile/metal,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/lythios/west_caves/buried_structure)
+"VZ" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/structure/table/rack/shelf/steel,
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"Xd" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/floormimic/plating,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"Yq" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/structure/window/wooden{
+	dir = 8
+	},
+/obj/structure/closet,
+/obj/item/clothing/under/tajaran/cosmonaut,
+/obj/item/clothing/shoes/tajara/armored,
+/obj/item/clothing/head/beret/tajaran/dpra,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"Yv" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/structure/table/standard,
+/obj/item/paper_bin{
+	pixel_y = 6
+	},
+/obj/item/pen,
+/obj/machinery/light/small/emergency{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"Zg" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/structure/table/rack/shelf/steel,
+/obj/fiftyspawner/steel,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"ZA" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/machinery/light/small/emergency/flicker{
+	dir = 8
+	},
+/turf/simulated/floor/concrete/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+
+(1,1,1) = {"
+cl
+cl
+cl
+cl
+cl
+cl
+cl
+cl
+cl
+cl
+cl
+cl
+cl
+cl
+cl
+cl
+cl
+cl
+cl
+cl
+"}
+(2,1,1) = {"
+cl
+Hw
+Hw
+Hw
+Hw
+Hw
+Hw
+Hw
+Hw
+Hw
+Hw
+Hw
+Hw
+Hw
+Hw
+Hw
+Hw
+Hw
+Hw
+cl
+"}
+(3,1,1) = {"
+cl
+Hw
+Hx
+Hw
+FJ
+tm
+cU
+dU
+cU
+Hw
+tr
+zd
+Fh
+Fh
+Fh
+Fh
+zd
+Ht
+Hw
+cl
+"}
+(4,1,1) = {"
+cl
+Hw
+yY
+Hw
+yS
+tm
+tm
+cU
+tm
+SB
+Fh
+Fh
+LC
+LC
+Fh
+Fh
+tm
+mg
+Hw
+cl
+"}
+(5,1,1) = {"
+cl
+Hw
+cq
+Hw
+tm
+sY
+Qw
+tm
+tm
+xP
+Fh
+xP
+LC
+Xd
+LC
+Fh
+tm
+tm
+Hw
+cl
+"}
+(6,1,1) = {"
+cl
+Hw
+Cw
+Hw
+BU
+Hw
+Hw
+BU
+Hw
+Hw
+vo
+Ft
+Fh
+LC
+LC
+Fh
+Ft
+xK
+Hw
+cl
+"}
+(7,1,1) = {"
+cl
+Hw
+tm
+Qw
+tm
+Hw
+Am
+tm
+wP
+Hw
+tm
+mg
+Fh
+hJ
+LC
+LC
+tm
+Zg
+Hw
+cl
+"}
+(8,1,1) = {"
+cl
+Hw
+tm
+tm
+tm
+Hw
+ar
+tm
+ar
+Hw
+tm
+tm
+Fh
+Fh
+LC
+LC
+tm
+BS
+Hw
+cl
+"}
+(9,1,1) = {"
+cl
+Hw
+FI
+tm
+tm
+BU
+tm
+tm
+Jn
+Hw
+nb
+Ft
+Fh
+Fh
+LC
+LC
+Ft
+xK
+Hw
+cl
+"}
+(10,1,1) = {"
+cl
+Hw
+Yv
+tm
+qc
+Hw
+Yq
+tm
+dk
+Hw
+ns
+xh
+Fh
+LC
+Xd
+LC
+tm
+tm
+Hw
+cl
+"}
+(11,1,1) = {"
+cl
+Hw
+Hw
+cE
+Hw
+Hw
+iq
+tm
+iq
+Hw
+xF
+ns
+jM
+LC
+LC
+Fh
+qc
+tm
+Hw
+cl
+"}
+(12,1,1) = {"
+cl
+Hw
+Dw
+Pq
+ZA
+Hw
+jz
+VZ
+OK
+Hw
+xF
+xF
+Pv
+Fh
+Fh
+Fh
+qw
+gP
+Hw
+cl
+"}
+(13,1,1) = {"
+cl
+Hw
+Pq
+Pq
+Pq
+Hw
+Hw
+Hw
+Hw
+Hw
+Hw
+Hw
+yl
+kS
+kS
+kS
+Hw
+Hw
+Hw
+cl
+"}
+(14,1,1) = {"
+cl
+bY
+qZ
+qZ
+qZ
+qZ
+Op
+cl
+cl
+cl
+cl
+RP
+pa
+qZ
+qZ
+qZ
+zs
+Op
+cl
+cl
+"}
+(15,1,1) = {"
+cl
+cl
+qZ
+qZ
+qZ
+qZ
+cl
+cl
+cl
+cl
+cl
+cl
+qZ
+qZ
+qZ
+qZ
+cl
+cl
+cl
+cl
+"}

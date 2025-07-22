@@ -19055,7 +19055,7 @@
 	pixel_x = -30
 	},
 /obj/item/storage/box/syringegun,
-/obj/item/gun/launcher/syringe,
+/obj/item/gun/projectile/ballistic/syringe,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_primary_storage)
 "lQo" = (
