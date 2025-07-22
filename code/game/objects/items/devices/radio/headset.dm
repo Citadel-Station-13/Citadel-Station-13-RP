@@ -582,3 +582,10 @@
 	adhoc_fallback = TRUE
 	icon_state = "pilot_headset"
 	ks2type = /obj/item/encryptionkey/talon
+
+/obj/item/radio/headset/sdf
+	name = "sdf headset"
+	desc = "A headset for communication for the SDF."
+	adhoc_fallback = TRUE
+	icon_state = "pilot_headset"
+	ks2type = /obj/item/encryptionkey/sdf

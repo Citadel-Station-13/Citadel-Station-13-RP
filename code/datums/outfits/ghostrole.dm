@@ -106,7 +106,7 @@
 	name = "Hadii's Folly SDF"
 	uniform = /obj/item/clothing/under/tajaran/hadiifolly/soldier
 	shoes = /obj/item/clothing/shoes/boots/jackboots
-	l_ear = /obj/item/radio/headset
+	l_ear = /obj/item/radio/headset/sdf
 	back = /obj/item/storage/backpack
 	id_slot = SLOT_ID_WORN_ID
 	id_type = /obj/item/card/id/external/id_sdf
