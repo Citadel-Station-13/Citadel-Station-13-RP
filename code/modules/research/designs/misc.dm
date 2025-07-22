@@ -156,28 +156,11 @@
 	materials_base = list(MAT_STEEL = 1000)
 	build_path = /obj/item/clothing/gloves/size
 
-/////////////////////////////////////////
-/////////Coffeemaker Stuff///////////////
-/////////////////////////////////////////
-
-/datum/prototype/design/science/coffeepot
-	design_name = "Coffeepot"
-	id = "coffeepot"
-	materials_base = list(MAT_GLASS = 500, MAT_PLASTIC = 500)
-	build_path = /obj/item/reagent_containers/food/drinks/coffeepot
-	category = DESIGN_CATEGORY_RECREATION
-
 /datum/prototype/design/science/coffeepot_bluespace
 	design_name = "Bluespace Coffeepot"
 	id = "bluespace_coffeepot"
 	// using phoron in your coffee pot is a good idea
 	materials_base = list(MAT_STEEL = 1000, MAT_PLASTIC = 500, MAT_PHORON = 500)
+	req_tech = list(TECH_BLUESPACE = 2, TECH_MATERIAL = 3)
 	build_path = /obj/item/reagent_containers/food/drinks/coffeepot/bluespace
-	category = DESIGN_CATEGORY_RECREATION
-
-/datum/prototype/design/science/coffee_cartridge
-	design_name = "Blank Coffee Cartridge"
-	id = "coffee_cartridge"
-	materials_base = list(MAT_PLASTIC = 1000)
-	build_path = /obj/item/blank_coffee_cartridge
 	category = DESIGN_CATEGORY_RECREATION

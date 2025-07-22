@@ -213,13 +213,15 @@
 	fill_icon_state = "coffeepot"
 	fill_icon_thresholds = list(0, 1, 40, 80, 120)
 	atom_flags = OPENCONTAINER
+	materials_base = list(MAT_GLASS = 500, MAT_PLASTIC = 500)
 
 /obj/item/reagent_containers/food/drinks/coffeepot/bluespace
 	name = "bluespace coffeepot"
 	desc = "The most advanced coffeepot the eggheads could cook up: sleek design; graduated lines; connection to a pocket dimension for coffee containment; yep, it's got it all. Contains 8 standard cups."
 	volume = 240
 	icon_state = "coffeepot_bluespace"
-	fill_icon_thresholds = list(0)
+	fill_icon_thresholds = list(0, 1, 40, 80, 120)
+	materials_base = list(MAT_STEEL = 1000, MAT_PLASTIC = 500, MAT_PHORON = 500)
 
 /obj/item/reagent_containers/food/drinks/mug/nanotrasen
 	name = "\improper Nanotrasen mug"
