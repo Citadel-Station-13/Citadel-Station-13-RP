@@ -15439,6 +15439,10 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/structure/cable,
+/obj/machinery/power/sensor{
+	name = "Powernet Sensor - Main Output"
+	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "nUN" = (
