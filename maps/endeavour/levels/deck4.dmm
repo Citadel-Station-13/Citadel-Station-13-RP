@@ -213,20 +213,6 @@
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/portnacelle)
-"aiw" = (
-/obj/structure/sign/directions/security{
-	dir = 1
-	},
-/obj/structure/sign/directions/medical{
-	pixel_y = -6;
-	dir = 1
-	},
-/obj/structure/sign/directions/bridge{
-	dir = 1;
-	pixel_y = 7
-	},
-/turf/simulated/wall/r_wall/prepainted,
-/area/space)
 "aiH" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/lightorange/border,
@@ -8045,14 +8031,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
-"hlV" = (
-/obj/machinery/porta_turret/crescent{
-	density = 1;
-	faction = "neutral"
-	},
-/obj/machinery/shield_diffuser,
-/turf/simulated/floor/airless/ceiling,
-/area/space)
 "hmG" = (
 /obj/map_helper/access_helper/airlock/station/maintenance,
 /obj/machinery/door/firedoor/glass{
@@ -14718,7 +14696,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel,
-/area/space)
+/area/endeavour/hallway/d4starboardhall)
 "nsz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
 /obj/structure/cable{
@@ -15113,13 +15091,6 @@
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
-/obj/machinery/power/sensor{
-	name = "Powernet Sensor - Engine Output";
-	name_tag = "Engine Circuit"
-	},
-/obj/structure/cable/cyan{
-	icon_state = "0-4"
-	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "nFE" = (
@@ -15323,9 +15294,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4fwdmaint)
-"nQj" = (
-/turf/simulated/wall/r_wall/prepainted,
-/area/space)
 "nQw" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/effect/floor_decal/industrial/warning{
@@ -15441,7 +15409,8 @@
 	},
 /obj/structure/cable,
 /obj/machinery/power/sensor{
-	name = "Powernet Sensor - Main Output"
+	name = "Powernet Sensor - Main Output";
+	name_tag = "Main Output"
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_smes)
@@ -22362,6 +22331,13 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
+/obj/machinery/power/sensor{
+	name = "Powernet Sensor - Engine Output";
+	name_tag = "Engine Output"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "0-8"
+	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "vbj" = (
@@ -22680,7 +22656,7 @@
 /area/engineering/atmos/eva)
 "vsf" = (
 /turf/simulated/wall/r_wall/prepainted/engineering/atmos,
-/area/space)
+/area/endeavour/hallway/d4starboardhall)
 "vss" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 8
@@ -23905,9 +23881,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4porthall)
-"wrG" = (
-/turf/simulated/wall/r_wall/prepainted/engineering/atmos,
-/area/endeavour/command/turrets)
 "wrI" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/navblue/border,
@@ -24073,12 +24046,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
-"wBv" = (
-/obj/machinery/camera/network/outside{
-	dir = 5
-	},
-/turf/simulated/floor/airless/ceiling,
-/area/space)
 "wCh" = (
 /obj/machinery/light,
 /turf/simulated/floor/reinforced,
@@ -24938,20 +24905,6 @@
 	},
 /turf/space,
 /area/engineering/portnacelle)
-"xsP" = (
-/obj/structure/sign/directions/science{
-	dir = 1
-	},
-/obj/structure/sign/directions/engineering{
-	dir = 8;
-	pixel_y = -7
-	},
-/obj/structure/sign/directions/cargo{
-	dir = 1;
-	pixel_y = 7
-	},
-/turf/simulated/wall/r_wall/prepainted,
-/area/space)
 "xty" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/navblue/border,
@@ -25176,7 +25129,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
-/area/space)
+/area/endeavour/hallway/d4starboardhall)
 "xES" = (
 /obj/machinery/air_alarm{
 	dir = 4;
@@ -43120,7 +43073,7 @@ gZD
 rfg
 ltz
 tqu
-wrG
+tqu
 jNg
 jNg
 jNg
@@ -43313,8 +43266,8 @@ tqu
 vUP
 nsO
 tqu
-wrG
-wrG
+tqu
+tqu
 jNg
 jNg
 jNg
@@ -43507,8 +43460,8 @@ iSG
 rlQ
 xDH
 vsf
-wrG
-usG
+tqu
+ycn
 jNg
 jNg
 jNg
@@ -43701,8 +43654,8 @@ hld
 rxy
 nsk
 vsf
-hlV
-usG
+cRV
+ycn
 jNg
 jNg
 jNg
@@ -43895,7 +43848,7 @@ vsf
 vsf
 vsf
 vsf
-usG
+ycn
 jNg
 jNg
 jNg
@@ -55099,11 +55052,11 @@ xRj
 xRj
 jNg
 jNg
-nQj
-nQj
-nQj
-nQj
-nQj
+owo
+owo
+owo
+owo
+owo
 hTL
 fMI
 hTL
@@ -55118,12 +55071,12 @@ oFZ
 nLM
 nLM
 wMU
-aiw
-nQj
-nQj
+jsW
+mIL
+mIL
 ycn
-hfY
-wBv
+jNg
+mtv
 xRj
 jNg
 jNg
@@ -55294,10 +55247,10 @@ xRj
 jNg
 jNg
 xRj
-nQj
-nQj
-nQj
-nQj
+owo
+owo
+owo
+owo
 eEF
 fMI
 rMC
@@ -55312,8 +55265,8 @@ oFZ
 nLM
 oTw
 wSS
-xsP
-nQj
+lsS
+mIL
 cRV
 ycn
 jNg
@@ -55490,8 +55443,8 @@ xRj
 xRj
 ycn
 cRV
-nQj
-nQj
+owo
+owo
 eEF
 fMI
 eEF
@@ -55501,12 +55454,12 @@ owo
 ixU
 sfK
 iKm
-nQj
-nQj
-nQj
-nQj
-nQj
-nQj
+iUB
+iUB
+iUB
+iUB
+iUB
+iUB
 ycn
 ycn
 jNg
@@ -55684,8 +55637,8 @@ xRj
 xRj
 jNg
 ycn
-nQj
-nQj
+owo
+owo
 eaj
 owo
 eaj
@@ -55695,11 +55648,11 @@ owo
 vWK
 mES
 vWK
-nQj
-nQj
-nQj
-nQj
-nQj
+iUB
+iUB
+iUB
+iUB
+iUB
 mtv
 xRj
 xRj
@@ -55879,7 +55832,7 @@ jNg
 xRj
 xRj
 jNg
-nQj
+owo
 qmL
 owo
 qmL
@@ -55889,8 +55842,8 @@ owo
 kfj
 jgS
 jgS
-nQj
-nQj
+iUB
+iUB
 cRV
 ycn
 xRj
@@ -56073,17 +56026,17 @@ xRj
 xRj
 xRj
 jNg
-nQj
-pzA
 owo
 pzA
 owo
+pzA
 owo
 owo
+owo
 nJx
 nJx
 nJx
-nQj
+iUB
 ycn
 ycn
 jNg
