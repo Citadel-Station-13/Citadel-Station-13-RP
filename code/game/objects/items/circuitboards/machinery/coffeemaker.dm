@@ -3,7 +3,7 @@
 #endif
 
 /obj/item/circuitboard/machine/coffeemaker
-	name = T_BOARD("coffee maker")
+	name = T_BOARD("coffeemaker")
 	board_type = new /datum/frame/frame_types/machine
 	build_path = /obj/machinery/coffeemaker
 	req_components = list(
