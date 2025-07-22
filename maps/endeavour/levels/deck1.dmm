@@ -10939,7 +10939,7 @@
 /obj/structure/sign/directions/bridge{
 	dir = 4
 	},
-/turf/simulated/wall/r_wall/prepainted,
+/turf/simulated/wall/prepainted/medical,
 /area/endeavour/hallway/d1portamidhall)
 "ipM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -31642,9 +31642,8 @@
 /turf/simulated/floor,
 /area/shuttle/civvie/general)
 "xGr" = (
-/obj/item/bodybag/cryobag,
-/turf/simulated/wall/prepainted,
-/area/maintenance/asmaint)
+/turf/simulated/wall/prepainted/medical,
+/area/endeavour/hallway/d1portamidhall)
 "xGD" = (
 /obj/machinery/power/terminal,
 /obj/structure/cable{
@@ -42256,13 +42255,13 @@ qTj
 oit
 gsA
 jPN
-sYL
-sYL
+xGr
+xGr
 jJh
 jJh
 jJh
-sYL
-sYL
+xGr
+xGr
 uCZ
 dWV
 dWV
@@ -42450,13 +42449,13 @@ lOX
 vHL
 tvd
 ugV
-sYL
+xGr
 tkc
 sTf
 woL
 wJX
 uZh
-sYL
+xGr
 nKD
 jHj
 dWV
@@ -42644,13 +42643,13 @@ lOX
 vnQ
 jWs
 pDn
-sYL
+xGr
 pWu
 miI
 kOT
 tAa
 nNE
-sYL
+xGr
 bQL
 dWV
 dWV
@@ -43032,7 +43031,7 @@ dMC
 vnQ
 dWV
 fCU
-sYL
+xGr
 cUV
 jKd
 klj
@@ -43226,9 +43225,9 @@ lOX
 vnQ
 dWV
 jPN
-sYL
-sYL
-sYL
+xGr
+xGr
+xGr
 mqE
 rSs
 rSs
@@ -43422,7 +43421,7 @@ dWV
 nGE
 nUE
 wbZ
-sYL
+xGr
 mPd
 rSs
 rSs
@@ -43616,7 +43615,7 @@ dWV
 dWV
 dWV
 vJw
-sYL
+xGr
 jvQ
 rSs
 dZJ
@@ -43810,11 +43809,11 @@ pbB
 kKt
 doM
 eyj
-sYL
-sYL
+xGr
+xGr
 mGK
-sYL
-sYL
+xGr
+xGr
 rSk
 hpD
 qAM
@@ -47534,7 +47533,7 @@ kCB
 kCB
 lOq
 kCB
-xGr
+oHo
 oHo
 oHo
 yjC
