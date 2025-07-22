@@ -16,7 +16,10 @@
 	color = "#ffd300" //Sandy
 	in_space = 0
 	initial_generic_waypoints = list("beach_e", "beach_c", "beach_nw")
-	initial_restricted_waypoints = list("Pirate Skiff" = list("pirate_hideout"))
+	initial_restricted_waypoints = list(
+		"Pirate Skiff" = list("pirate_hideout"),
+		"SDF Interrupted-The-Speech" = list ("sdf_outpost"),
+	)
 
 	start_x	= 35
 	start_y	= 40
