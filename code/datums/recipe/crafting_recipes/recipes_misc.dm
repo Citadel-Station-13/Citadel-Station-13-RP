@@ -816,4 +816,5 @@
 		/obj/item/blank_coffee_cartridge = 1,
 		/datum/reagent/nutriment/coffee = 10,
 	)
-	category = CAT_MISC
+	category = CAT_MISCELLANEOUS
+	subcategory = CAT_MISCELLANEOUS
