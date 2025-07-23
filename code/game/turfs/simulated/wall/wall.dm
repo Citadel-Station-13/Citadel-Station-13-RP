@@ -3,6 +3,8 @@
  * Surely, *surely*, such a nice, amazing thing wouldn't be entirely shitcode.
  * Right?
  *
+ * TODO: /turf/simulated/wall/material; do not have steel defines on base.
+ *
  * ## Material System
  *
  * By default, walls are made out of /datum/material's.
