@@ -382,7 +382,7 @@
 /obj/machinery/lathe/proc/progress_queue(time, mult = 1)
 	if(!check_queue_head())
 		return
-	var/total = time * mult
+	var/total = time * (mult + speed_multiplier)
 	progress += total
 	var/datum/lathe_queue_entry/head = queue[1]
 	var/datum/prototype/design/D
