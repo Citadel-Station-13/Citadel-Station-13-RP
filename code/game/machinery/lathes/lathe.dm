@@ -233,8 +233,8 @@
 	LAZYREMOVE(stored_items, I)
 	ui_controller?.ui_ingredients_update()
 
-/obj/machinery/lathe/proc/recycle_item(obj/item/I, mob/user, efficiency_multiplier = 1)
-	efficiency_multiplier *= recycle_efficiency
+/obj/machinery/lathe/proc/recycle_item(obj/item/I, mob/user, recycle_eff = 1)
+	recycle_eff *= recycle_efficiency
 	var/list/materials = I.materials_base.Copy()
 	if(!isnull(user) && !user.temporarily_remove_from_inventory(I))
 		user.action_feedback(SPAN_WARNING("[I] is stuck to your hand!"), src)
@@ -245,10 +245,10 @@
 		if(insert_icon_state)
 			flick(insert_icon_state, src)
 		return TRUE
-	if(!stored_materials?.has_space(materials, efficiency_multiplier))
+	if(!stored_materials?.has_space(materials, recycle_eff))
 		user?.action_feedback(SPAN_WARNING("[src] has no space to store the materials in [I]."), src)
 		return FALSE
-	stored_materials.add(materials, efficiency_multiplier)
+	stored_materials.add(materials, recycle_eff)
 	user?.action_feedback(SPAN_NOTICE("You recycle [I] in [src]."), src)
 	qdel(I)
 	if(insert_icon_state)
@@ -317,7 +317,7 @@
 
 /**
  * uses materials with a multiplier
- * efficiency multiplier is *not* applied in this proc.
+ * efficiency multiplier var on /lathe is *not* applied in this proc.
  * ingredients will ignore multiplier. you have been warned.
  */
 /obj/machinery/lathe/proc/use_resources(list/materials, list/reagents, list/ingredients, list/ingredient_parts, multiplier = 1)
