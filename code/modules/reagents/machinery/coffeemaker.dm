@@ -131,6 +131,14 @@
 	replace_pot(user)
 	return TRUE
 
+/obj/machinery/coffeemaker/CtrlClick(mob/user)
+	. = ..()
+	if(!can_interact(user) || !user.canUseTopic(src, !issilicon(user))
+		return FALSE
+	if(brewing)
+		return FALSE
+	brew()
+
 /obj/machinery/coffeemaker/update_overlays()
 	. = ..()
 	. += overlay_checks()
