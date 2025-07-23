@@ -61,7 +61,7 @@
 	NT's most well known products are its phoron based creations; especially those used in Cryotherapy. \
 	It also boasts an prosthetic line, which is provided to its employees as needed, and is used as an incentive \
 	for newly tested posibrains to remain with the company. Nanotrasen's corporate headquarters is based out of \
-	the NTS Creon in the privateyl owned Thebes system."
+	the NCS Creon in the privately owned Thebes system."
 	contractor_info = "You are an employee working for Nanotrasen. You are not a contractor, <i>you belong here.</i>"
 	job_whitelist = null
 	job_blacklist = list(
