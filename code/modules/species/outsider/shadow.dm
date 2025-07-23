@@ -7,9 +7,7 @@
 	A being of pure darkness, hates the light and all that comes with it.
 	"}
 
-	icobase   = 'icons/mob/species/shadow/body.dmi'
-	deform    = 'icons/mob/species/shadow/body.dmi'
-	husk_icon = 'icons/mob/species/shadow/husk.dmi'
+	bodyset = /datum/prototype/bodyset/special/shadow
 
 	// language = "Sol Common" //todo?
 	assisted_langs = list()

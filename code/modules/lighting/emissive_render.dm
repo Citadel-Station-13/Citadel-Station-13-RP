@@ -1,7 +1,9 @@
 /**
  * y'know tg's emissive_blocker
  *
- * this is the opposite
+ * this is the opposite but also not really
+ *
+ * we use this to collate overlays.
  *
  * please don't use this unless you know what you're doing
  *
@@ -13,6 +15,7 @@
 	plane = EMISSIVE_PLANE
 	layer = FLOAT_LAYER
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	vis_flags = VIS_INHERIT_DIR
 	// don't re-apply transform because vis_contents do it already
 	appearance_flags = RESET_TRANSFORM
 
@@ -20,7 +23,6 @@
 	. = ..()
 	verbs.Cut() //Cargo culting from lighting object, this maybe affects memory usage?
 	render_source = source
-	color = GLOB.emissive_color
 
 /atom/movable/emissive_render/Destroy()
 	if(ismovable(loc))
