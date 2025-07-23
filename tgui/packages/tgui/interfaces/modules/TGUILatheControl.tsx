@@ -71,7 +71,7 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
   const [category, setCategory] = useLocalState<string>(
     context,
     `${data.$ref}-category`,
-    data.designs.categories.length? data.designs.categories[1] : "General"
+    data.designs.categories.length? data.designs.categories[0] : "General"
   );
 
   const [subcategory, setSubCategory] = useLocalState<string>(
@@ -151,12 +151,12 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
       }
       if (design.materials !== null) {
         Object.entries(design.materials).forEach(([id, amt]) => {
-          queuedMaterials[id] = (queuedMaterials[id] ?? 0) + amt * entry.amount;
+          queuedMaterials[id] = (queuedMaterials[id] ?? 0) + amt * entry.amount * data.efficiencyMultiplier;
         });
       }
       if (entry.materials !== null && design.material_parts !== null) {
         Object.entries(entry.materials).forEach(([name, id]) => {
-          queuedMaterials[id] = (queuedMaterials[id] ?? 0) + ((design.material_parts as {})[name] ?? 0) * entry.amount;
+          queuedMaterials[id] = (queuedMaterials[id] ?? 0) + ((design.material_parts as {})[name] ?? 0) * entry.amount * data.efficiencyMultiplier;
         });
       }
     });
@@ -400,7 +400,7 @@ const LatheQueued = (props: LatheQueuedProps, context) => {
           <LabeledList>
             {Object.entries(props.design.materials).map(([k, v]) => (
               <LabeledList.Item key={k} label={k}>
-                {`${v}${MATERIAL_STORAGE_UNIT_NAME}`}
+                {`${(v * data.efficiencyMultiplier)}${MATERIAL_STORAGE_UNIT_NAME}`}
               </LabeledList.Item>
             ))}
           </LabeledList>
@@ -422,7 +422,7 @@ const LatheQueued = (props: LatheQueuedProps, context) => {
           <LabeledList>
             {Object.entries(props.entry.materials).map(([k, v]) => (
               <LabeledList.Item key={k} label={k}>
-                {`${props.design?.material_parts?.[k] || "!ERROR! "}${MATERIAL_STORAGE_UNIT_NAME} of ${v}`}
+                {`${(props.design?.material_parts?.[k] ? props.design?.material_parts?.[k]*data.efficiencyMultiplier : "!ERROR!")}${MATERIAL_STORAGE_UNIT_NAME} of ${v}`}
               </LabeledList.Item>
             ))}
           </LabeledList>
@@ -547,7 +547,7 @@ const LatheDesign = (props: LatheDesignProps, context) => {
                           </div>
                         </Table.Cell>
                         <Table.Cell textAlign="center" color={data.materials[id] >= amt? null : "bad"}>
-                          {`${amt}${MATERIAL_STORAGE_UNIT_NAME}`}
+                          {`${amt*data.efficiencyMultiplier}${MATERIAL_STORAGE_UNIT_NAME}`}
                         </Table.Cell>
                       </Table.Row>
                     ))
@@ -583,7 +583,7 @@ const LatheDesign = (props: LatheDesignProps, context) => {
                 </Table.Cell>
                 <Table.Cell textAlign="center"
                   color={!selected || data.materials[selected] >= amt? null : "bad"}>
-                  {`${amt}${MATERIAL_STORAGE_UNIT_NAME}`}
+                  {`${amt * data.efficiencyMultiplier}${MATERIAL_STORAGE_UNIT_NAME}`}
                 </Table.Cell>
               </Table.Row>
             );
