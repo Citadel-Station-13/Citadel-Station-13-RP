@@ -40,18 +40,24 @@
 
 //* Feedback *(//
 
-
+/**
+ * Sends feedback by chat.
+ */
 /datum/event_args/actor/proc/chat_feedback(msg, atom/target)
 	performer.action_feedback(msg, target)
 	if(performer != initiator)
 		initiator.action_feedback(msg, target)
 
+/**
+ * Sends feedback by bubble text on the target entity.
+ * * A target entity is required.
+ */
 /datum/event_args/actor/proc/bubble_feedback(msg, atom/target)
 	performer.bubble_action_feedback(msg, target)
 	if(performer != initiator)
 		initiator.bubble_action_feedback(msg, target)
 
-// todo: rework these awful ass feedback/message procs wtf
+// todo: reowrk these awful ass feedback/message procs below wtf
 
 // proposal:
 // visible_feedback(visible, audible, self, range, target)
