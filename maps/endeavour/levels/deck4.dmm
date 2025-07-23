@@ -234,10 +234,9 @@
 "ajH" = (
 /obj/machinery/power/smes/buildable{
 	charge = 5000;
-	input_attempt = 1;
-	input_level = 200;
 	output_level = 200;
-	RCon_tag = "AI PSU"
+	RCon_tag = "AI PSU";
+	input_level = 0
 	},
 /obj/effect/floor_decal/techfloor,
 /obj/structure/cable/cyan{
@@ -17377,10 +17376,7 @@
 /area/engineering/atmos)
 "qhx" = (
 /obj/structure/lattice,
-/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
-	dir = 5
-	},
-/turf/space,
+/turf/space/basic,
 /area/space)
 "qhH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
@@ -29662,10 +29658,10 @@ psc
 jfz
 psc
 psc
-jfz
+qhx
 psc
 psc
-jfz
+qhx
 psc
 jNg
 psc
@@ -32569,8 +32565,8 @@ iPU
 uhm
 iPU
 ryU
-qhx
-mhf
+uhm
+bEt
 jNg
 uUN
 uUN

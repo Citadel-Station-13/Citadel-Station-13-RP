@@ -732,7 +732,10 @@
 /area/endeavour/hallway/d3aftmaint)
 "aCW" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Solar Farm - SMES 1"
+	RCon_tag = "Power - Solar Array";
+	cur_coils = 4;
+	output_attempt = 0;
+	outputting = 0
 	},
 /obj/structure/cable{
 	icon_state = "0-8"
@@ -9356,18 +9359,6 @@
 /obj/item/stool/padded,
 /turf/simulated/floor/tiled/white,
 /area/quartermaster/belterdock/gear)
-"gZV" = (
-/obj/machinery/power/terminal{
-	dir = 1
-	},
-/obj/structure/cable/yellow{
-	icon_state = "0-4"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/maintenance/starboardsolar)
 "gZX" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -10513,15 +10504,6 @@
 	},
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
-"hQp" = (
-/obj/machinery/power/smes/buildable{
-	RCon_tag = "Solar Farm - SMES 2"
-	},
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/maintenance/starboardsolar)
 "hRv" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -12167,12 +12149,6 @@
 "jfr" = (
 /obj/structure/cable{
 	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/starboardsolar)
@@ -54847,8 +54823,8 @@ gFv
 eEa
 sSx
 pTo
-hQp
-cUA
+vUL
+qIx
 pTo
 mXs
 rlr
@@ -55236,7 +55212,7 @@ tsS
 rUz
 pTo
 aCW
-gZV
+cUA
 wxp
 sTn
 rlr
