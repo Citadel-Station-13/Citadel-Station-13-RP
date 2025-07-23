@@ -4138,11 +4138,6 @@
 	id_tag = "sdf_docker";
 	pixel_x = 25
 	},
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	pixel_x = -24;
-	id_tag = "sdf_docker";
-	frequency = 1380
-	},
 /turf/simulated/floor,
 /area/shuttle/miaphus/sdf)
 "vo" = (
@@ -4537,11 +4532,11 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/access_button/airlock_exterior{
+/obj/machinery/access_button/airlock_interior{
 	frequency = 1380;
 	master_tag = "sdf_docker";
-	name = "external access button";
-	pixel_x = -24
+	name = "internal access button";
+	pixel_x = -23
 	},
 /turf/simulated/floor,
 /area/shuttle/miaphus/sdf)
