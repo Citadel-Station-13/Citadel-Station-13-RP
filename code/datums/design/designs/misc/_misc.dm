@@ -54,12 +54,10 @@
 	id = "Coffeepot"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
-	materials_base = list(MAT_GLASS = 500, MAT_PLASTIC = 500)
 	build_path = /obj/item/reagent_containers/food/drinks/coffeepot
 
 /datum/prototype/design/misc/coffee_cartridge
 	id = "CoffeeCartridge"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
-	materials_base = list(MAT_PLASTIC = 1000)
 	build_path = /obj/item/blank_coffee_cartridge

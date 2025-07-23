@@ -465,5 +465,6 @@
 	base_icon_state = "coffee_cartrack"
 	max_items = 4
 	insertion_whitelist = list(/obj/item/coffee_cartridge)
+	materials_base = list(MAT_PLASTIC = 500)
 
 #undef BEAN_CAPACITY
