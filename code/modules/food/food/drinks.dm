@@ -242,7 +242,6 @@
 	atom_flags = OPENCONTAINER
 	drop_sound = 'sound/items/drop/papercup.ogg'
 	pickup_sound = 'sound/items/pickup/papercup.ogg'
-	materials_base = list(MAT_STEEL = 500)
 
 /obj/item/reagent_containers/food/drinks/coffee_cup/update_icon_state()
 	icon_state = reagents.total_volume ? "coffee_cup" : "coffee_cup_e"
