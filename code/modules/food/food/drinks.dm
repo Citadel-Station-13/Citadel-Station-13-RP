@@ -213,7 +213,7 @@
 	fill_icon_state = "coffeepot"
 	fill_icon_thresholds = list(0, 1, 40, 80, 120)
 	atom_flags = OPENCONTAINER
-	materials_base = list(MAT_GLASS = 500, MAT_PLASTIC = 500)
+	materials_base = list(MAT_GLASS = 500, MAT_STEEL = 500)
 
 /obj/item/reagent_containers/food/drinks/coffeepot/bluespace
 	name = "bluespace coffeepot"
@@ -221,7 +221,7 @@
 	volume = 240
 	icon_state = "coffeepot_bluespace"
 	fill_icon_thresholds = list(0, 1, 40, 80, 120)
-	materials_base = list(MAT_STEEL = 1000, MAT_PLASTIC = 500, MAT_PHORON = 500)
+	materials_base = list(MAT_STEEL = 1000, MAT_PHORON = 500)
 
 /obj/item/reagent_containers/food/drinks/mug/nanotrasen
 	name = "\improper Nanotrasen mug"
@@ -242,6 +242,7 @@
 	atom_flags = OPENCONTAINER
 	drop_sound = 'sound/items/drop/papercup.ogg'
 	pickup_sound = 'sound/items/pickup/papercup.ogg'
+	materials_base = list(MAT_STEEL = 500)
 
 /obj/item/reagent_containers/food/drinks/coffee_cup/update_icon_state()
 	icon_state = reagents.total_volume ? "coffee_cup" : "coffee_cup_e"
