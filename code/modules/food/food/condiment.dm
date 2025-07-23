@@ -226,15 +226,6 @@
 	. = ..()
 	reagents.add_reagent("blackpepper", 5)
 
-/obj/item/reagent_containers/food/condiment/small/packet/sugar
-	name = "sugar packet"
-	desc = "Contains 5u of refined sugar."
-	icon_state = "packet_small_white"
-
-/obj/item/reagent_containers/food/condiment/small/packet/sugar/Initialize(mapload)
-	. = ..()
-	reagents.add_reagent("sugar", 5)
-
 /obj/item/reagent_containers/food/condiment/small/packet/jelly
 	name = "jelly packet"
 	desc = "Contains 10u of cherry jelly. Best used for spreading on crackers."
