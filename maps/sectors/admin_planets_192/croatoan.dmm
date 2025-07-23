@@ -6474,7 +6474,7 @@
 /turf/simulated/floor/tiled/freezer/cold,
 /area/admin_planet/croatoan/high_sec_science_virology_lab)
 "wv" = (
-/obj/machinery/r_n_d/circuit_imprinter,
+/obj/machinery/lathe/r_n_d/circuit_imprinter,
 /turf/simulated/floor/tiled/techmaint,
 /area/admin_planet/croatoan/sci_robotics_lab)
 "ww" = (
@@ -7106,7 +7106,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/admin_planet/croatoan/sci_lower_checkpoint)
 "yE" = (
-/obj/machinery/mecha_part_fabricator/pros{
+/obj/machinery/lathe/mecha_part_fabricator/pros{
 	dir = 8;
 	pixel_y = 3
 	},
@@ -11131,7 +11131,7 @@
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/high_sec_science_virology_lab)
 "Nu" = (
-/obj/machinery/r_n_d/protolathe,
+/obj/machinery/lathe/r_n_d/protolathe,
 /turf/simulated/floor/tiled/old_tile/white,
 /area/admin_planet/croatoan/sci_rnd_lab)
 "Nv" = (
@@ -13424,7 +13424,7 @@
 /turf/simulated/shuttle/wall/voidcraft,
 /area/admin_planet/croatoan/high_sec_science_lower_checkpoint)
 "UT" = (
-/obj/machinery/r_n_d/circuit_imprinter,
+/obj/machinery/lathe/r_n_d/circuit_imprinter,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -14188,7 +14188,7 @@
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/high_sec_science_control_center)
 "XL" = (
-/obj/machinery/mecha_part_fabricator{
+/obj/machinery/lathe/mecha_part_fabricator{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,

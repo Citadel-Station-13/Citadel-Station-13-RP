@@ -37,6 +37,8 @@
 
 	worth = 5
 
+	material_constraints = MATERIAL_CONSTRAINT_RIGID
+
 /datum/prototype/material/wood_log/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(

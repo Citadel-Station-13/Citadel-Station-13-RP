@@ -5,6 +5,7 @@
 /datum/prototype/design/science
 	abstract_type = /datum/prototype/design/science
 	lathe_type = LATHE_TYPE_PROTOLATHE
+	design_unlock = DESIGN_UNLOCK_TECHLEVEL
 	var/legacy_stack_amount = 1
 
 //Make sure items don't get free power

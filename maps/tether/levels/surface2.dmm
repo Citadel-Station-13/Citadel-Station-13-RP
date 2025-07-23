@@ -7706,12 +7706,11 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/south)
 "fIK" = (
-/obj/machinery/mecha_part_fabricator/pros{
+/obj/machinery/lathe/mecha_part_fabricator/pros{
 	desc = "A machine used for construction of legit prosthetics. You weren't sure if cardboard was considered an engineering material before now.";
 	dir = 4;
 	name = "Legitmate Prosthetics Fabricator";
 	req_access = list();
-	res_max_amount = 150000
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
