@@ -6570,9 +6570,15 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2fwdhall)
 "ezb" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 1
+	},
 /obj/item/radio/beacon,
-/turf/simulated/floor/tiled/dark,
-/area/endeavour/hallway/d2fwdhall)
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2afthall)
 "ezI" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/air_alarm{
@@ -10346,13 +10352,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
-"hmG" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/item/radio/beacon,
-/turf/simulated/floor/tiled,
-/area/endeavour/hallway/d2afthall)
 "hnd" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/electrochromatic_linker{
@@ -12155,6 +12154,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/reception)
 "iEe" = (
+/obj/item/radio/beacon,
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
 "iEr" = (
@@ -12291,6 +12291,7 @@
 	name = "Medical Reception";
 	sortType = "Medical Reception"
 	},
+/obj/item/radio/beacon,
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "iGJ" = (
@@ -23810,13 +23811,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
-"qVk" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/item/radio/beacon,
-/turf/simulated/floor/tiled,
-/area/endeavour/hallway/d2fwdhall)
 "qVl" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -24947,13 +24941,9 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "rSq" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/item/radio/beacon,
 /turf/simulated/floor/tiled,
-/area/endeavour/hallway/d2afthall)
+/area/endeavour/hallway/d2fwdhall)
 "rTU" = (
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
@@ -27234,11 +27224,13 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/virology_fore_access)
 "txK" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
 /obj/item/radio/beacon,
 /turf/simulated/floor/tiled,
-/area/endeavour/hallway/d2fwdhall)
+/area/rnd/research_foyer)
 "txY" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
@@ -31007,7 +30999,6 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/item/radio/beacon,
 /turf/simulated/floor/wood,
 /area/tether/station/public_meeting_room)
 "wpO" = (
@@ -42045,7 +42036,7 @@ rMF
 rMF
 xSp
 byD
-rSq
+iMx
 dDL
 uZL
 uZL
@@ -45924,7 +45915,7 @@ sFS
 sdA
 sdA
 sdA
-wQI
+ezb
 gsh
 pnt
 sws
@@ -49406,7 +49397,7 @@ hCA
 riZ
 gdf
 mXO
-mFr
+txK
 xzy
 qTw
 vID
@@ -50584,7 +50575,7 @@ ovE
 jxy
 hnd
 wQI
-hmG
+lrJ
 bTF
 sFQ
 eMm
@@ -55046,7 +55037,7 @@ wDV
 wAD
 yax
 xYL
-qVk
+cAA
 fcM
 idr
 kvC
@@ -57574,7 +57565,7 @@ dgV
 dgV
 dgV
 dgV
-txK
+dgV
 anN
 rmq
 dAV
@@ -59902,7 +59893,7 @@ fNy
 anE
 rOO
 fZd
-nkN
+rSq
 pzO
 ces
 yeN
@@ -62424,7 +62415,7 @@ pLA
 rwG
 rwG
 gfI
-ezb
+jSU
 mxS
 nNS
 kKv

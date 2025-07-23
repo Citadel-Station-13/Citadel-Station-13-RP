@@ -648,13 +648,6 @@
 /obj/map_helper/access_helper/airlock/station/exploration/department,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/endeavour/civillian/evastorage)
-"axs" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/item/radio/beacon,
-/turf/simulated/floor/tiled,
-/area/endeavour/hallway/d1fwdhall)
 "axC" = (
 /obj/structure/table/rack,
 /obj/item/storage/belt/utility,
@@ -839,10 +832,9 @@
 /turf/simulated/floor/carpet/tealcarpet,
 /area/shuttle/civvie/general)
 "aFD" = (
-/obj/structure/disposalpipe/segment,
 /obj/item/radio/beacon,
-/turf/simulated/floor/tiled/steel,
-/area/endeavour/hallway/d1afthall)
+/turf/simulated/floor/tiled,
+/area/endeavour/exploration/hallway_aft)
 "aGh" = (
 /obj/structure/sign/hangar/three,
 /turf/simulated/wall/r_wall/prepainted,
@@ -3723,7 +3715,6 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/obj/item/radio/beacon,
 /turf/simulated/floor/carpet/purcarpet,
 /area/exploration/meeting)
 "cRj" = (
@@ -9028,7 +9019,6 @@
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
-/obj/item/radio/beacon,
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 4
 	},
@@ -10150,6 +10140,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/item/radio/beacon,
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "hOW" = (
@@ -13768,16 +13759,6 @@
 /obj/random/tech_supply,
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
-"kuZ" = (
-/obj/item/radio/beacon,
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/navgold/border{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/steel,
-/area/endeavour/hallway/d1afthall)
 "kvb" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/effect/floor_decal/borderfloorblack{
@@ -14590,7 +14571,6 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/item/radio/beacon,
 /obj/structure/disposalpipe/junction/flipped{
 	dir = 4
 	},
@@ -17601,22 +17581,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portamidhall)
-"nnP" = (
-/obj/item/radio/beacon,
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/beige/border{
-	dir = 8
-	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
-	dir = 10
-	},
-/obj/effect/floor_decal/corner/beige/bordercorner2{
-	dir = 10
-	},
-/turf/simulated/floor/tiled/dark,
-/area/bridge/hallway)
 "noe" = (
 /obj/machinery/button/remote/blast_door{
 	id = "cd-blast";
@@ -18516,19 +18480,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d1fwdmaint)
-"nRn" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/navgold/border{
-	dir = 8
-	},
-/obj/machinery/status_display{
-	pixel_x = -32
-	},
-/obj/item/radio/beacon,
-/turf/simulated/floor/tiled/steel,
-/area/endeavour/hallway/d1afthall)
 "nRC" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/navgold/border,
@@ -18972,19 +18923,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portamidhall)
-"oiy" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 1
-	},
-/obj/item/radio/beacon,
-/turf/simulated/floor/tiled,
-/area/endeavour/hallway/d1fwdhall)
 "oiA" = (
 /turf/simulated/wall/r_wall/prepainted/exploration,
 /area/shuttle/courser/general)
@@ -19202,16 +19140,6 @@
 "opC" = (
 /turf/simulated/floor/tiled/dark,
 /area/chapel/office)
-"opY" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/item/radio/beacon,
-/turf/simulated/floor/tiled,
-/area/endeavour/hallway/d1starboardamidhall)
 "oqw" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/red,
 /turf/simulated/floor/tiled,
@@ -23282,6 +23210,7 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
+/obj/item/radio/beacon,
 /turf/simulated/floor/tiled/dark,
 /area/bridge/hallway)
 "rzM" = (
@@ -25844,15 +25773,9 @@
 /turf/simulated/floor/carpet/blucarpet,
 /area/lawoffice)
 "txH" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/item/radio/beacon,
 /turf/simulated/floor/tiled/steel,
-/area/endeavour/hallway/d1fwdhall)
+/area/endeavour/hallway/d1afthall)
 "txV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -26300,16 +26223,6 @@
 	},
 /turf/simulated/floor/carpet,
 /area/bridge/office)
-"tLq" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/item/radio/beacon,
-/obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/steel,
-/area/endeavour/hallway/d1fwdhall)
 "tLu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
@@ -31292,19 +31205,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1afthall)
-"xvm" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/item/radio/beacon,
-/turf/simulated/floor/tiled,
-/area/exploration/explorer_prep)
 "xvH" = (
 /obj/machinery/light{
 	dir = 8
@@ -41323,7 +41223,7 @@ hfY
 xOD
 dkc
 khE
-khE
+txH
 khE
 nxJ
 xOD
@@ -41898,7 +41798,7 @@ qJu
 cPS
 rMy
 iui
-aFD
+iui
 hIY
 vAm
 iui
@@ -42048,7 +41948,7 @@ qpV
 tog
 enn
 hho
-dUe
+aFD
 bwl
 lsx
 eyp
@@ -43048,12 +42948,12 @@ xIR
 alb
 owg
 cSX
-kuZ
+qfe
 lKF
 dYa
 qfe
 qfe
-nRn
+lKF
 qfe
 lHa
 nmG
@@ -43988,7 +43888,7 @@ rwM
 fVc
 dUl
 bzE
-xvm
+xEy
 nlI
 dgm
 dgm
@@ -50605,7 +50505,7 @@ hyg
 dFa
 kAg
 fpc
-opY
+lgr
 ntG
 gAi
 qqo
@@ -53894,10 +53794,10 @@ gJc
 dct
 mPC
 sZS
-txH
+wSw
 xrO
 tqm
-tLq
+wSw
 wSw
 wSw
 wSw
@@ -56619,7 +56519,7 @@ rnc
 pvq
 svt
 jHK
-oiy
+anp
 jEr
 oRa
 cvc
@@ -59335,7 +59235,7 @@ pgF
 pgF
 pgF
 ojQ
-axs
+qbK
 vEe
 jOr
 iPF
@@ -61662,7 +61562,7 @@ luA
 gag
 bIh
 smS
-nnP
+xZD
 ieh
 ctD
 sqc

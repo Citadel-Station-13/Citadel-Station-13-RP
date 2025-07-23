@@ -192,7 +192,6 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
-/obj/item/radio/beacon,
 /turf/simulated/floor/wood,
 /area/endeavour/hallway/d3fwdhall)
 "ajW" = (
@@ -359,16 +358,6 @@
 /obj/structure/railing,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
-"aog" = (
-/obj/item/radio/beacon,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
-/area/endeavour/hallway/d3afthall)
 "aov" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/navgold/border,
@@ -5482,7 +5471,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/item/radio/beacon,
 /turf/simulated/floor/wood,
 /area/hydroponics/garden)
 "ecO" = (
@@ -14045,6 +14033,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/item/radio/beacon,
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/foyer)
 "kGf" = (
@@ -17446,15 +17435,9 @@
 /turf/simulated/floor/plating,
 /area/maintenance/pool)
 "nxj" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /obj/item/radio/beacon,
 /turf/simulated/floor/tiled,
-/area/endeavour/hallway/d3fwdhall)
+/area/security/hallway)
 "nxT" = (
 /obj/structure/bed/padded,
 /turf/simulated/floor/tiled/freezer,
@@ -20464,13 +20447,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/recreation_area)
-"pLl" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/item/radio/beacon,
-/turf/simulated/floor/tiled,
-/area/endeavour/hallway/d3portamidhall)
 "pLy" = (
 /obj/structure/table/woodentable,
 /obj/machinery/microwave,
@@ -26578,12 +26554,9 @@
 /turf/simulated/floor/tiled,
 /area/security/brig)
 "udU" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
 /obj/item/radio/beacon,
 /turf/simulated/floor/wood,
-/area/hydroponics/garden)
+/area/security/lobby)
 "ueB" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/navgold/border,
@@ -40441,7 +40414,7 @@ dia
 fPF
 rTe
 mwI
-aog
+uIG
 jZc
 sZz
 bfD
@@ -46261,7 +46234,7 @@ bhf
 dII
 eol
 fLD
-vjk
+udU
 vjk
 gMX
 pEk
@@ -46644,7 +46617,7 @@ oGr
 hFQ
 hPM
 peU
-pLl
+woX
 lYC
 glG
 bcj
@@ -47635,7 +47608,7 @@ qOr
 rNH
 hOL
 efa
-imz
+nxj
 pvn
 oUL
 xkN
@@ -49748,7 +49721,7 @@ uni
 jYc
 hJb
 dSn
-pLl
+woX
 gPr
 mwA
 mwA
@@ -53437,7 +53410,7 @@ swv
 jYc
 gvm
 lot
-udU
+cJi
 hbS
 xYm
 jYc
@@ -59649,7 +59622,7 @@ oms
 rSp
 avK
 isS
-nxj
+aQM
 qlU
 nRR
 wex
