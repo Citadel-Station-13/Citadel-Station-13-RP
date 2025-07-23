@@ -221,7 +221,6 @@
 	volume = 240
 	icon_state = "coffeepot_bluespace"
 	fill_icon_thresholds = list(0, 1, 40, 80, 120)
-	materials_base = list(MAT_STEEL = 1000, MAT_PHORON = 500)
 
 /obj/item/reagent_containers/food/drinks/mug/nanotrasen
 	name = "\improper Nanotrasen mug"
