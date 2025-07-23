@@ -5361,6 +5361,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_smes)
+"ePL" = (
+/obj/structure/lattice,
+/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
+	dir = 5
+	},
+/turf/space,
+/area/space)
 "eQk" = (
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -32565,8 +32572,8 @@ iPU
 uhm
 iPU
 ryU
-uhm
-bEt
+ePL
+mhf
 jNg
 uUN
 uUN
