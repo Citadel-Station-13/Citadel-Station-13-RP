@@ -13,6 +13,7 @@ var/list/gear_datums = list()
 	.["categories"] = categories
 	.["maxEntries"] = LOADOUT_MAX_ITEMS
 
+// todo: /loadout_item
 /datum/loadout_entry
 	abstract_type = /datum/loadout_entry
 
@@ -114,6 +115,19 @@ var/list/gear_datums = list()
 	//! end
 
 	return spawned
+
+/**
+ * Binding: `Game_LoadoutItem`
+ */
+/datum/loadout_entry/ui_serialize()
+	return list(
+		"id" = legacy_get_id(),
+		"name" = display_name || name,
+		"desc" = description,
+		"cost" = cost,
+		"category" = category,
+		"subcategory" = subcategory,
+	)
 
 /hook/startup/proc/populate_gear_list()
 

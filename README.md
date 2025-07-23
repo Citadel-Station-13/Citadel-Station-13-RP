@@ -63,8 +63,9 @@ These are also the folders you are likely going to encounter while managing the 
   - /asset-cache - default location for caching of generated assets
   - /asset-root - default location for generated assets to be served in webroot mode
   - /logs: logs are dumped in here
-  - /players: player data, like saves and characters get dumped in here
-- /tmp: server scratch space
+  - /players: (deprecating soon-tm) player data, like saves and characters get dumped in here
+  - /sqlite: sqlite databases when not operating in postgres mode get dumped in here
+- /tmp: server scratch space. can be deleted at any time by the server or anything else.
   - /assets - for asset generation
   - /config - used as scratch space for config
   
