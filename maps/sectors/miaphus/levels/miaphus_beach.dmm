@@ -3171,6 +3171,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/sector/miaphus/beach/resort/fishing)
+"pX" = (
+/obj/machinery/telecomms/allinone/sdf,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/miaphus/sdf)
 "pY" = (
 /obj/effect/floor_decal/corner_steel_grid{
 	dir = 5
@@ -8795,7 +8799,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/miaphus/sdf)
 "VA" = (
-/obj/machinery/lathe/autolathe,
 /obj/machinery/lathe/autolathe,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/miaphus/sdf)
@@ -45486,7 +45489,7 @@ bL
 tI
 pg
 Dj
-bL
+pX
 bL
 bL
 bL
