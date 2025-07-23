@@ -644,12 +644,12 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/miaphus/sdf)
 "cL" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/structure/table/steel_reinforced,
 /obj/item/holowarrant,
 /obj/item/paper_bin,
 /obj/item/pen,
 /obj/item/pen,
+/obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/miaphus/sdf)
 "cM" = (
@@ -3033,6 +3033,22 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/bunker/engi)
+"pm" = (
+/obj/machinery/atmospherics/pipe/tank/air{
+	dir = 1
+	},
+/obj/structure/window/reinforced/tinted{
+	dir = 1
+	},
+/obj/structure/window/reinforced/tinted{
+	dir = 8
+	},
+/obj/structure/window/reinforced/tinted,
+/obj/structure/window/reinforced/tinted{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/miaphus/sdf)
 "pp" = (
 /obj/machinery/recharger/wallcharger{
 	pixel_x = -22;
@@ -5073,6 +5089,9 @@
 "AR" = (
 /obj/structure/catwalk,
 /obj/structure/closet/walllocker_double/hydrant/east,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/miaphus/sdf)
 "AS" = (
@@ -5570,6 +5589,9 @@
 	},
 /obj/structure/table/rack/shelf,
 /obj/item/bluespace_radio/sdf,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/miaphus/sdf)
 "DA" = (
@@ -6026,6 +6048,12 @@
 	},
 /turf/simulated/floor,
 /area/shuttle/miaphus/sdf)
+"FI" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/miaphus/sdf)
 "FJ" = (
 /obj/structure/railing/grey{
 	dir = 8
@@ -6097,6 +6125,12 @@
 /obj/structure/table/steel_reinforced,
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = -2
+	},
+/obj/item/gps/internal{
+	gps_tag = "SDF ITS"
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/miaphus/sdf)
@@ -6483,10 +6517,10 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/miaphus/beach/sdf)
 "Im" = (
-/obj/random/mre,
-/obj/random/mre,
-/obj/random/mre,
-/obj/structure/closet/crate,
+/obj/machinery/microwave{
+	pixel_y = 9
+	},
+/obj/structure/table/steel,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/miaphus/sdf)
 "In" = (
@@ -7345,7 +7379,6 @@
 /obj/effect/floor_decal/borderfloorblack/shifted{
 	req_access = list(155)
 	},
-/obj/structure/closet/walllocker_double/north,
 /obj/machinery/air_alarm/alarms_hidden/north_mount{
 	req_one_access = null
 	},
@@ -8207,6 +8240,8 @@
 /area/sector/miaphus/beach/bunker/bunk)
 "RU" = (
 /obj/structure/table/steel,
+/obj/item/storage/single_use/mre/menu11,
+/obj/item/storage/single_use/mre/menu11,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/miaphus/sdf)
 "RX" = (
@@ -8592,9 +8627,6 @@
 /obj/item/reagent_containers/food/drinks/cans/cola_cherry,
 /obj/item/reagent_containers/food/drinks/cans/cola_coffee,
 /obj/item/reagent_containers/food/drinks/cans/cola_coffee,
-/obj/machinery/microwave{
-	pixel_y = 23
-	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/miaphus/sdf)
 "Uq" = (
@@ -8804,6 +8836,7 @@
 	network = list("SDF");
 	dir = 1
 	},
+/obj/structure/closet/walllocker_double/south,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/miaphus/sdf)
 "Vv" = (
@@ -8978,8 +9011,8 @@
 /obj/item/storage/box/glasses/meta,
 /obj/item/storage/box/glasses/meta,
 /obj/item/reagent_containers/glass/beaker/large,
-/obj/structure/closet/walllocker_double/north,
 /obj/machinery/appliance/cooker/oven,
+/obj/structure/closet/walllocker_double/medical/north,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/miaphus/sdf)
 "WA" = (
@@ -9253,6 +9286,9 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "1-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/miaphus/sdf)
@@ -40252,7 +40288,7 @@ Mz
 bL
 tV
 cK
-Zl
+FI
 PI
 Bb
 bL
@@ -40446,7 +40482,7 @@ mo
 bL
 BJ
 gb
-Zl
+FI
 PS
 lZ
 bL
@@ -40640,7 +40676,7 @@ tm
 bL
 DW
 cK
-Zl
+FI
 PI
 MO
 bL
@@ -40837,7 +40873,7 @@ FV
 Yk
 AR
 Dz
-bL
+pm
 bL
 BX
 bL
