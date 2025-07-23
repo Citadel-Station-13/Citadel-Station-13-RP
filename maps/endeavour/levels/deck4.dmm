@@ -13779,6 +13779,25 @@
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4fwdmaint)
+"mzK" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/air_alarm/north_mount,
+/turf/simulated/floor/tiled/steel_grid,
+/area/endeavour/hallway/d4starboardhall)
 "mAB" = (
 /obj/effect/floor_decal/corner/lightorange/border,
 /obj/structure/cable{
@@ -14799,6 +14818,19 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4porthall)
+"ntb" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 4
+	},
+/obj/machinery/air_alarm/east_mount,
+/turf/simulated/floor/tiled/steel_ridged,
+/area/endeavour/hallway/d4starboardhall)
 "ntj" = (
 /obj/machinery/door/firedoor/glass{
 	dir = 8
@@ -24140,7 +24172,6 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
 	},
-/obj/machinery/air_alarm/east_mount,
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 4
 	},
@@ -38986,7 +39017,7 @@ gzJ
 bKW
 jyN
 jDa
-bKW
+ntb
 nsz
 wFu
 ahu
@@ -39184,7 +39215,7 @@ seC
 seC
 seC
 seC
-ooX
+mzK
 tWf
 jTy
 ylX
