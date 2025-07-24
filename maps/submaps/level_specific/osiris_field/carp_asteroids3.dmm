@@ -1,0 +1,184 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/template_noop,
+/area/template_noop)
+"c" = (
+/mob/living/simple_mob/mechanical/mecha/fighter/baron/manned,
+/turf/template_noop,
+/area/tether_away/debrisfield_vr/shuttle_buffer)
+"d" = (
+/turf/template_noop,
+/area/tether_away/debrisfield_vr/shuttle_buffer)
+"e" = (
+/turf/simulated/floor,
+/area/tether_away/debrisfield_vr/shuttle_buffer)
+"m" = (
+/turf/simulated/floor,
+/area/template_noop)
+"p" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/template_noop)
+"w" = (
+/obj/structure/lattice,
+/mob/living/simple_mob/mechanical/mecha/fighter/baron/manned,
+/turf/template_noop,
+/area/template_noop)
+"x" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/tether_away/debrisfield_vr/shuttle_buffer)
+"D" = (
+/turf/simulated/wall/r_wall/prepainted/civilian,
+/area/tether_away/debrisfield_vr/shuttle_buffer)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+m
+a
+a
+"}
+(2,1,1) = {"
+a
+d
+w
+p
+p
+p
+a
+p
+m
+m
+m
+m
+m
+"}
+(3,1,1) = {"
+a
+a
+d
+e
+e
+e
+e
+x
+e
+e
+e
+m
+m
+"}
+(4,1,1) = {"
+a
+m
+e
+e
+e
+e
+e
+e
+e
+e
+e
+m
+a
+"}
+(5,1,1) = {"
+a
+a
+D
+e
+e
+e
+e
+e
+e
+x
+x
+p
+p
+"}
+(6,1,1) = {"
+a
+a
+D
+e
+e
+e
+e
+e
+e
+x
+x
+m
+a
+"}
+(7,1,1) = {"
+a
+a
+D
+e
+e
+e
+e
+e
+e
+x
+d
+m
+m
+"}
+(8,1,1) = {"
+a
+a
+e
+e
+e
+D
+D
+e
+e
+x
+d
+a
+m
+"}
+(9,1,1) = {"
+a
+a
+p
+p
+p
+a
+a
+m
+a
+c
+m
+m
+m
+"}
+(10,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+m
+m
+"}
