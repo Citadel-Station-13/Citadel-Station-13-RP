@@ -3789,7 +3789,8 @@
 	dir = 8
 	},
 /obj/structure/disposalpipe/sortjunction/flipped{
-	name = "Kitchen"
+	name = "Kitchen";
+	sortType = "Kitchen"
 	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/hallway/d4porthall)
