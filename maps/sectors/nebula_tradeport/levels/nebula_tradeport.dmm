@@ -18890,6 +18890,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/trade/scavenger)
 "bnC" = (
@@ -19050,18 +19053,6 @@
 	},
 /turf/simulated/floor/carpet/patterened/red,
 /area/shuttle/scoophead/cockpit)
-"bEe" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 10
-	},
-/obj/effect/floor_decal/techfloor/orange/corner{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/trade/scavenger)
 "bEl" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
@@ -19499,6 +19490,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/trade/scavenger)
+"cEb" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/trade/scavenger)
 "cEz" = (
 /obj/machinery/door/airlock/multi_tile/glass,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -19783,12 +19780,12 @@
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/shuttle/trade/scavenger)
 "dfK" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 9
-	},
 /obj/effect/floor_decal/techfloor/orange/corner,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/trade/scavenger)
@@ -21367,6 +21364,10 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cafeteria)
+"giM" = (
+/obj/effect/floor_decal/techfloor,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/trade/scavenger)
 "gkq" = (
 /obj/machinery/holosign/bar{
 	id = "tradersign2"
@@ -21667,6 +21668,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/effect/floor_decal/techfloor,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/trade/scavenger)
 "gSV" = (
@@ -23124,13 +23126,8 @@
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/room1)
 "jEl" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/old_cargo/blue,
+/obj/effect/floor_decal/techfloor,
+/turf/simulated/floor/tiled/old_tile/blue,
 /area/shuttle/trade/scavenger)
 "jFp" = (
 /obj/structure/railing{
@@ -27159,6 +27156,13 @@
 	},
 /turf/simulated/floor/tiled/old_cargo/blue,
 /area/shuttle/trade/scavenger)
+"rHy" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/obj/effect/floor_decal/techfloor,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/trade/scavenger)
 "rIw" = (
 /obj/structure/bed/chair/bay/chair/padded/teal{
 	dir = 4
@@ -27570,6 +27574,13 @@
 /area/shuttle/trade/scavenger)
 "sBd" = (
 /obj/machinery/portable_atmospherics/canister/air,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/trade/scavenger)
+"sCb" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/effect/floor_decal/techfloor,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/trade/scavenger)
 "sCj" = (
@@ -29169,6 +29180,9 @@
 "wcm" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/trade/scavenger)
@@ -58783,7 +58797,7 @@ laY
 dSF
 vcB
 guq
-vPC
+giM
 yjU
 fTC
 uFG
@@ -58801,7 +58815,7 @@ lLs
 gIV
 oEy
 qoe
-vPC
+cEb
 guq
 jMh
 jMh
@@ -58977,7 +58991,7 @@ xVu
 soz
 nfa
 jrW
-vPC
+giM
 yjU
 fTC
 uFG
@@ -58995,7 +59009,7 @@ xXW
 voi
 iOY
 qoe
-vPC
+cEb
 whj
 cCr
 lEZ
@@ -59189,7 +59203,7 @@ mgd
 hLV
 mMn
 tNJ
-vPC
+cEb
 iOY
 iOY
 iOY
@@ -59365,7 +59379,7 @@ iOY
 iOY
 tBe
 egU
-vPC
+giM
 yjU
 fTC
 uFG
@@ -59383,7 +59397,7 @@ iOY
 iOY
 iOY
 kxN
-vPC
+cEb
 rsP
 nUy
 iOY
@@ -59559,7 +59573,7 @@ iOY
 iOY
 qEM
 rzN
-vPC
+giM
 yjU
 fTC
 uFG
@@ -59577,7 +59591,7 @@ oVl
 bhp
 hGC
 vgV
-vPC
+cEb
 qlT
 bqW
 qpb
@@ -59753,7 +59767,7 @@ iOY
 vaK
 vHo
 uIa
-wcm
+rHy
 yjU
 fTC
 etj
@@ -59947,7 +59961,7 @@ iOY
 iOY
 tLl
 egU
-bna
+sCb
 xUM
 fTC
 uFG
@@ -60141,7 +60155,7 @@ iOY
 iOY
 nRV
 rzN
-bna
+sCb
 jzK
 fTC
 uFG
@@ -60333,9 +60347,9 @@ acd
 acd
 iOY
 xBt
+vHo
 jEl
-jEl
-bEe
+sCb
 xUM
 vYn
 bTm
