@@ -122,7 +122,7 @@
 		/obj/item/reagent_containers/food/drinks/coffee_cup = 10,
 		/obj/item/reagent_containers/food/condiment/small/packet/creamer = 20,
 		/obj/item/reagent_containers/food/condiment/small/packet/sugar = 20,
-		/obj/item/reagent_containers/food/condiment/small/packet/astrotame 20,
+		/obj/item/reagent_containers/food/condiment/small/packet/astrotame = 20,
 	)
 	contraband = list()
 	vend_delay = 15
