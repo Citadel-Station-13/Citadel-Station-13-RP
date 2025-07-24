@@ -2204,7 +2204,9 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d4starboardhall)
 "bVY" = (
-/obj/structure/reagent_dispensers/oil,
+/obj/structure/reagent_dispensers/tallow{
+	anchored = 1
+	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/kitchen)
 "bWU" = (
@@ -7788,7 +7790,9 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/structure/closet/secure_closet/freezer/kitchen,
+/obj/structure/closet/secure_closet/freezer/kitchen{
+	anchored = 1
+	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/kitchen)
 "gZz" = (
@@ -11561,7 +11565,9 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/workshop)
 "kye" = (
-/obj/structure/closet/secure_closet/freezer/kitchen,
+/obj/structure/closet/secure_closet/freezer/kitchen{
+	anchored = 1
+	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/kitchen)
 "kyG" = (
@@ -25192,7 +25198,9 @@
 /obj/machinery/camera/network/civilian{
 	dir = 4
 	},
-/obj/structure/reagent_dispensers/oil,
+/obj/structure/reagent_dispensers/tallow{
+	anchored = 1
+	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/kitchen)
 "xFh" = (
