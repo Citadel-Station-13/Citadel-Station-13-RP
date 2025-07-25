@@ -111,15 +111,6 @@
 /obj/effect/floor_decal/corner/paleblue/bordercorner2,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
-"aez" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled,
-/area/endeavour/hallway/d2afthall)
 "aeC" = (
 /obj/machinery/light{
 	dir = 8
@@ -462,9 +453,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
 "arK" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -3672,9 +3660,6 @@
 	name = "Medbay Emergency Lockdown Shutters";
 	opacity = 0
 	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
@@ -3844,7 +3829,7 @@
 	dir = 8
 	},
 /obj/structure/cable/green{
-	icon_state = "1-2"
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
@@ -5829,9 +5814,6 @@
 	},
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/junction,
 /turf/simulated/floor/tiled/white,
@@ -13591,9 +13573,6 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
@@ -16830,20 +16809,15 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical_science)
 "mdC" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
+/obj/structure/table/glass,
+/obj/item/deskbell,
+/obj/machinery/light,
+/obj/structure/sign/warning/nosmoking_1{
+	pixel_y = -26;
+	pixel_x = 7
 	},
-/obj/structure/cable/green{
-	icon_state = "2-4"
-	},
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/navblue/border{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
-/area/endeavour/hallway/d2afthall)
+/turf/simulated/floor/wood/sif/indoors,
+/area/medical/reception)
 "mdF" = (
 /obj/structure/catwalk,
 /obj/structure/cable{
@@ -19609,9 +19583,6 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "ohX" = (
@@ -19741,6 +19712,9 @@
 	},
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
@@ -20723,13 +20697,13 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "oZp" = (
-/obj/structure/sign/warning/nosmoking_1{
-	pixel_y = -26;
-	pixel_x = 7
-	},
 /obj/structure/bed/chair{
 	dir = 1
 	},
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
+/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/wood/sif/indoors,
 /area/medical/reception)
 "oZA" = (
@@ -24926,9 +24900,6 @@
 /turf/simulated/floor/tiled,
 /area/medical/medbay4)
 "rRJ" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
@@ -48061,7 +48032,7 @@ fQj
 gkz
 gkz
 gkz
-gWJ
+mdC
 ihi
 kNW
 mKw
@@ -48246,8 +48217,8 @@ asd
 xAr
 xJh
 fuU
-mdC
-aez
+wIK
+lrJ
 arK
 czJ
 jHE
@@ -48838,7 +48809,7 @@ gkz
 gkz
 gkz
 eff
-ihi
+pCb
 ebW
 ehP
 qBq
