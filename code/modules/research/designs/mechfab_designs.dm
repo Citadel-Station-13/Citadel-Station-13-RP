@@ -2,7 +2,7 @@
 	abstract_type = /datum/prototype/design/science/mechfab
 	lathe_type = LATHE_TYPE_MECHFAB
 	category = DESIGN_CATEGORY_MECHA
-	req_tech = list(TECH_MATERIAL = 1
+	req_tech = list(TECH_MATERIAL = 1)
 
 /datum/prototype/design/science/mechfab/ripley
 	abstract_type = /datum/prototype/design/science/mechfab/ripley
