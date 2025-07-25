@@ -4560,13 +4560,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardamidhall)
 "dxC" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/effect/floor_decal/industrial/loading{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/machinery/holopad/ship,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/excursion/endeavour/general)
 "dyH" = (
@@ -5310,6 +5307,16 @@
 "dWV" = (
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portamidhall)
+"dXW" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/loading{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/excursion/endeavour/general)
 "dYa" = (
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -11405,6 +11412,10 @@
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint)
+"iHm" = (
+/obj/machinery/holopad,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/excursion/endeavour/general)
 "iIr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 6
@@ -16238,6 +16249,13 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/entertainment)
+"miu" = (
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/obj/machinery/holopad/ship,
+/turf/simulated/floor/tiled/old_tile/green,
+/area/shuttle/civvie/general)
 "miI" = (
 /obj/machinery/holopad/ship,
 /turf/simulated/floor/tiled/techfloor,
@@ -17033,6 +17051,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
 "mRz" = (
@@ -38075,7 +38094,7 @@ nlB
 sWk
 bdl
 dxC
-oTk
+iHm
 pLH
 dKk
 yeQ
@@ -38268,8 +38287,8 @@ xSO
 reI
 usN
 kEo
-osQ
-rUC
+dXW
+oTk
 nXj
 jls
 gsG
@@ -40236,7 +40255,7 @@ oPk
 tCP
 lFq
 mQL
-mma
+miu
 qWo
 bPw
 oPk
