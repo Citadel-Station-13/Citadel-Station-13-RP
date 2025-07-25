@@ -70,10 +70,10 @@ export const ICAssembly = (props, context) => {
               <LabeledList.Item label="Net Energy" >
                 <Flex>
                   <Flex.Item grow={1}>
-                    {net_power === 0 && "0 W/s" || (
+                    {net_power === 0 && "0 W" || (
                       <AnimatedNumber
                         value={net_power}
-                        format={val => "-" + formatPower(Math.abs(val)) + "/s"} />)}
+                        format={val => "-" + formatPower(Math.abs(val))} />)}
                   </Flex.Item>
                   <Button icon="eye" onClick={() => act("remove_cell")}>Remove</Button>
                 </Flex>
