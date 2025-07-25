@@ -2,6 +2,8 @@
 	category = DESIGN_CATEGORY_MUNITIONS
 	abstract_type = /datum/prototype/design/science/weapon
 
+#warn deal with costs
+
 /datum/prototype/design/science/weapon/generate_name(template)
 	return "Weapon prototype ([..()])"
 

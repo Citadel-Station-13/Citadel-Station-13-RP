@@ -13,7 +13,7 @@
 	desc = "Used to scan and locate signals on a particular frequency."
 	id = "beaconlocator"
 	req_tech = list(TECH_MAGNET = 3, TECH_ENGINEERING = 2, TECH_BLUESPACE = 3)
-	materials_base = list(MAT_STEEL = 1000, MAT_GLASS = 500)
+	materials_base = list(MAT_STEEL = 250, MAT_GLASS = 25)
 	build_path = /obj/item/beacon_locator
 
 /datum/prototype/design/science/locator/beacon

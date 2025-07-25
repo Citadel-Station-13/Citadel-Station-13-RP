@@ -25,7 +25,7 @@
 	desc = "A combined wirecutter, screwdriver, crowbar, wrench and multitool. The small size makes it somewhat slower at work."
 	id = "switchtool"
 	req_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 4)
-	materials_base = list(MAT_STEEL = 4000, MAT_GLASS = 2000)
+	materials_base = list(MAT_STEEL = 750, MAT_GLASS = 250)
 	build_path = /obj/item/switchtool
 
 /datum/prototype/design/science/tool/t_scanner_upg
@@ -34,7 +34,7 @@
 	id = "upgtrayscanner"
 	subcategory = DESIGN_SUBCATEGORY_SCANNING
 	req_tech = list(TECH_MAGNET = 3, TECH_ENGINEERING = 4, TECH_MATERIAL = 2)
-	materials_base = list(MAT_STEEL = 500, MAT_PHORON = 150)
+	materials_base = list(MAT_STEEL = 350, MAT_PHORON = 150)
 	build_path = /obj/item/t_scanner/upgraded
 
 /datum/prototype/design/science/tool/t_scanner_adv
@@ -43,7 +43,7 @@
 	id = "advtrayscanner"
 	subcategory = DESIGN_SUBCATEGORY_SCANNING
 	req_tech = list(TECH_MAGNET = 6, TECH_ENGINEERING = 6, TECH_MATERIAL = 6)
-	materials_base = list(MAT_STEEL = 1250, MAT_PHORON = 500, MAT_SILVER = 50)
+	materials_base = list(MAT_STEEL = 350, MAT_PHORON = 25, MAT_SILVER = 50)
 	build_path = /obj/item/t_scanner/advanced
 
 /datum/prototype/design/science/tool/atmosanalyzerlongrange

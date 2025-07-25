@@ -4,6 +4,8 @@
 	category = DESIGN_CATEGORY_MECHA
 	req_tech = list(TECH_MATERIAL = 1)
 
+#warn deal with this dumpster fire of a file's costs
+
 /datum/prototype/design/science/mechfab/ripley
 	abstract_type = /datum/prototype/design/science/mechfab/ripley
 	category = "Ripley"

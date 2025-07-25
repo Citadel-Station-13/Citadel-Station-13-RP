@@ -4,6 +4,7 @@
 	materials_base = list(MAT_STEEL = 30, MAT_GLASS = 20)
 
 // Surgical devices
+#warn deal with costs
 
 /datum/prototype/design/science/medical/scalpel_laser1
 	id = "laserscalpel"

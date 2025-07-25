@@ -12,14 +12,14 @@
 /datum/prototype/design/science/powercell/basic
 	id = "basic_cell"
 	req_tech = list(TECH_POWER = 1)
-	materials_base = list(MAT_STEEL = 700, MAT_GLASS = 50)
+	materials_base = list(MAT_STEEL = 350, MAT_GLASS = 50)
 	build_path = /obj/item/cell
 
 
 /datum/prototype/design/science/powercell/high
 	id = "high_cell"
 	req_tech = list(TECH_POWER = 2)
-	materials_base = list(MAT_STEEL = 700, MAT_GLASS = 60)
+	materials_base = list(MAT_STEEL = 400, MAT_GLASS = 60)
 	build_path = /obj/item/cell/high
 
 
@@ -40,13 +40,13 @@
 /datum/prototype/design/science/powercell/device
 	lathe_type = LATHE_TYPE_PROTOLATHE
 	id = "device"
-	materials_base = list(MAT_STEEL = 350, MAT_GLASS = 25)
+	materials_base = list(MAT_STEEL = 250, MAT_GLASS = 25)
 	build_path = /obj/item/cell/device
 
 
 /datum/prototype/design/science/powercell/weapon
 	lathe_type = LATHE_TYPE_PROTOLATHE
 	id = "weapon"
-	materials_base = list(MAT_STEEL = 700, MAT_GLASS = 50)
+	materials_base = list(MAT_STEEL = 450, MAT_GLASS = 50)
 	build_path = /obj/item/cell/device/weapon
 

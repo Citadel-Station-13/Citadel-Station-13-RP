@@ -39,7 +39,7 @@
 /datum/prototype/design/science/stock_part/omni_matter_bin
 	id = "omni_matter_bin"
 	req_tech = list(TECH_MATERIAL = 7, TECH_PRECURSOR = 2)
-	materials_base = list(MAT_STEEL = 2000, MAT_PLASTEEL = 100, MAT_MORPHIUM = 100, MAT_DURASTEEL = 100)
+	materials_base = list(MAT_STEEL = 200, MAT_PLASTEEL = 100, MAT_MORPHIUM = 100, MAT_DURASTEEL = 100)
 	build_path = /obj/item/stock_parts/matter_bin/omni
 	subcategory = "Tier 5"
 
@@ -69,7 +69,7 @@
 /datum/prototype/design/science/stock_part/omni_mani
 	id = "omni_mani"
 	req_tech = list(TECH_MATERIAL = 7, TECH_DATA = 4, TECH_PRECURSOR = 2)
-	materials_base = list(MAT_STEEL = 2000, MAT_PLASTEEL = 500, MAT_MORPHIUM = 100, MAT_DURASTEEL = 100)
+	materials_base = list(MAT_STEEL = 200, MAT_PLASTEEL = 500, MAT_MORPHIUM = 100, MAT_DURASTEEL = 100)
 	build_path = /obj/item/stock_parts/manipulator/omni
 	subcategory = "Tier 5"
 
@@ -99,7 +99,7 @@
 /datum/prototype/design/science/stock_part/omni_capacitor
 	id = "omni_capacitor"
 	req_tech = list(TECH_POWER = 7, TECH_MATERIAL = 6, TECH_BLUESPACE = 3, TECH_PRECURSOR = 1)
-	materials_base = list(MAT_STEEL = 2000, MAT_DIAMOND = 1000, MAT_GLASS = 1000, MAT_MORPHIUM = 100, MAT_DURASTEEL = 100)
+	materials_base = list(MAT_STEEL = 200, MAT_DIAMOND = 1000, MAT_GLASS = 1000, MAT_MORPHIUM = 100, MAT_DURASTEEL = 100)
 	build_path = /obj/item/stock_parts/capacitor/omni
 	subcategory = "Tier 5"
 
@@ -129,7 +129,7 @@
 /datum/prototype/design/science/stock_part/omni_sensor
 	id = "omni_sensor"
 	req_tech = list(TECH_MAGNET = 7, TECH_MATERIAL = 5, TECH_PRECURSOR = 1)
-	materials_base = list(MAT_STEEL = 1000, MAT_PLASTEEL = 500, MAT_GLASS = 750, MAT_SILVER = 500, MAT_MORPHIUM = 60, MAT_DURASTEEL = 100)
+	materials_base = list(MAT_STEEL = 100, MAT_PLASTEEL = 500, MAT_GLASS = 750, MAT_SILVER = 500, MAT_MORPHIUM = 60, MAT_DURASTEEL = 100)
 	build_path = /obj/item/stock_parts/scanning_module/omni
 	subcategory = "Tier 5"
 
@@ -159,7 +159,7 @@
 /datum/prototype/design/science/stock_part/omni_micro_laser
 	id = "omni_micro_laser"
 	req_tech = list(TECH_MAGNET = 7, TECH_MATERIAL = 7, TECH_PRECURSOR = 2)
-	materials_base = list(MAT_STEEL = 2000, MAT_GLASS = 500, MAT_URANIUM = 2000, MAT_MORPHIUM = 50, MAT_DURASTEEL = 100)
+	materials_base = list(MAT_STEEL = 200, MAT_GLASS = 500, MAT_URANIUM = 2000, MAT_MORPHIUM = 50, MAT_DURASTEEL = 100)
 	build_path = /obj/item/stock_parts/micro_laser/omni
 	subcategory = "Tier 5"
 

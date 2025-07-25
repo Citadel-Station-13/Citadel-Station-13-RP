@@ -7,7 +7,7 @@
 	id = "mmi"
 	req_tech = list(TECH_DATA = 2, TECH_BIO = 3)
 	lathe_type = LATHE_TYPE_PROTOLATHE | LATHE_TYPE_PROSTHETICS
-	materials_base = list(MAT_STEEL = 1000, MAT_GLASS = 500)
+	materials_base = list(MAT_STEEL = 750, MAT_GLASS = 250)
 	build_path = /obj/item/mmi
 
 /datum/prototype/design/science/ai_holder/posibrain
@@ -15,7 +15,7 @@
 	id = "posibrain"
 	req_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 6, TECH_BLUESPACE = 2, TECH_DATA = 4)
 	lathe_type = LATHE_TYPE_PROTOLATHE | LATHE_TYPE_PROSTHETICS
-	materials_base = list(MAT_STEEL = 2000, MAT_GLASS = 1000, MAT_SILVER = 1000, MAT_GOLD = 500, MAT_PHORON = 500, MAT_DIAMOND = 100)
+	materials_base = list(MAT_STEEL = 1250, MAT_GLASS = 500, MAT_SILVER = 1000, MAT_GOLD = 500, MAT_PHORON = 500, MAT_DIAMOND = 100)
 	build_path = /obj/item/mmi/digital/posibrain
 
 /datum/prototype/design/science/ai_holder/dronebrain
@@ -23,7 +23,7 @@
 	id = "dronebrain"
 	req_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 5, TECH_DATA = 4)
 	lathe_type = LATHE_TYPE_PROTOLATHE | LATHE_TYPE_PROSTHETICS
-	materials_base = list(MAT_STEEL = 2000, MAT_GLASS = 1000, MAT_SILVER = 1000, MAT_GOLD = 500)
+	materials_base = list(MAT_STEEL = 1250, MAT_GLASS = 500, MAT_SILVER = 1000, MAT_GOLD = 500)
 	build_path = /obj/item/mmi/digital/robot
 
 /datum/prototype/design/science/ai_holder/paicard

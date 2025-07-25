@@ -46,7 +46,7 @@
 	id = "nanopaste"
 	category = DESIGN_CATEGORY_SYNTH
 	req_tech = list(TECH_MATERIAL = 4, TECH_ENGINEERING = 3)
-	materials_base = list(MAT_STEEL = 7000, MAT_GLASS = 7000)
+	materials_base = list(MAT_STEEL = 1500, MAT_GLASS = 750)
 	build_path = /obj/item/stack/nanopaste
 	legacy_stack_amount = 10
 
@@ -63,7 +63,7 @@
 	id = "nif"
 	subcategory = DESIGN_SUBCATEGORY_NIF
 	req_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5, TECH_MATERIAL = 5, TECH_ENGINEERING = 5, TECH_DATA = 5)
-	materials_base = list(MAT_STEEL = 5000, MAT_GLASS = 8000, MAT_URANIUM = 6000, MAT_DIAMOND = 6000)
+	materials_base = list(MAT_STEEL = 500, MAT_GLASS = 800, MAT_URANIUM = 600, MAT_DIAMOND = 600)
 	build_path = /obj/item/nif
 
 /datum/prototype/design/science/biotech/nifbio
@@ -71,7 +71,7 @@
 	id = "bionif"
 	subcategory = DESIGN_SUBCATEGORY_NIF
 	req_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5, TECH_MATERIAL = 5, TECH_ENGINEERING = 5, TECH_DATA = 5, TECH_BIO = 5)
-	materials_base = list(MAT_STEEL = 10000, MAT_GLASS = 15000, MAT_URANIUM = 10000, MAT_DIAMOND = 10000)
+	materials_base = list(MAT_STEEL = 1000, MAT_GLASS = 1500, MAT_URANIUM = 1000, MAT_DIAMOND = 1000)
 	build_path = /obj/item/nif/bioadap
 
 /datum/prototype/design/science/biotech/nifrepairtool
@@ -79,5 +79,5 @@
 	id = "niftool"
 	subcategory = DESIGN_SUBCATEGORY_NIF
 	req_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5, TECH_MATERIAL = 5, TECH_ENGINEERING = 5, TECH_DATA = 5)
-	materials_base = list(MAT_STEEL = 200, MAT_GLASS = 3000, MAT_URANIUM = 2000, MAT_DIAMOND = 2000)
+	materials_base = list(MAT_STEEL = 200, MAT_GLASS = 300, MAT_URANIUM = 200, MAT_DIAMOND = 200)
 	build_path = /obj/item/nifrepairer

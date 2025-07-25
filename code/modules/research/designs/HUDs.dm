@@ -36,5 +36,5 @@
 	design_name = "AR glasses"
 	id = "arhud"
 	req_tech = list(TECH_MAGNET = 4, TECH_COMBAT = 3, TECH_BIO = 3)
-	materials_base = list(MAT_STEEL = 1000, MAT_GLASS = 1000)
+	materials_base = list(MAT_STEEL = 100, MAT_GLASS = 250)
 	build_path = /obj/item/clothing/glasses/omnihud

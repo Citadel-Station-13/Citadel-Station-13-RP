@@ -17,5 +17,5 @@
 /datum/prototype/design/science/implant/sizecontrol
 	id = "sizeplant"
 	req_tech = list(TECH_MATERIAL = 3, TECH_BIO = 4, TECH_DATA = 4, TECH_ENGINEERING = 3)
-	materials_base = list(MAT_STEEL = 2000, MAT_GLASS = 2000, MAT_SILVER = 3000)
+	materials_base = list(MAT_STEEL = 200, MAT_GLASS = 200, MAT_SILVER = 300)
 	build_path = /obj/item/implanter/sizecontrol

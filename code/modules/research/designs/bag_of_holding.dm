@@ -8,6 +8,7 @@
 	id = "bag_of_holding"
 	category = DESIGN_CATEGORY_STORAGE
 	req_tech = list(TECH_BLUESPACE = 4, TECH_MATERIAL = 6)
+	// nah this stays at high values, bluespace bags bad lol
 	materials_base = list(MAT_GOLD = 3000, MAT_DIAMOND = 1500, MAT_URANIUM = 250)
 	build_path = /obj/item/storage/backpack/holding
 
@@ -17,5 +18,6 @@
 	id = "dbag_of_holding"
 	category = DESIGN_CATEGORY_STORAGE
 	req_tech = list(TECH_BLUESPACE = 4, TECH_MATERIAL = 6)
+	// nah this stays at high values, bluespace bags bad lol
 	materials_base = list(MAT_GOLD = 3000, MAT_DIAMOND = 1500, MAT_URANIUM = 250)
 	build_path = /obj/item/storage/backpack/holding/duffle
