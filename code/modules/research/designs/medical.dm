@@ -59,30 +59,28 @@
 	materials_base = list(MAT_STEEL = 350, MAT_GLASS = 125)
 	build_path = /obj/item/healthanalyzer
 
-#warn below
-
 /datum/prototype/design/science/medical/improved_analyzer
 	id = "ihealthscanner"
 	req_tech = list(TECH_MAGNET = 5, TECH_BIO = 6)
-	materials_base = list(MAT_STEEL = 2000, MAT_GLASS = 1000, MAT_SILVER = 1000, MAT_GOLD = 1500)
+	materials_base = list(MAT_STEEL = 350, MAT_GLASS = 250, MAT_SILVER = 250, MAT_GOLD = 250)
 	build_path = /obj/item/healthanalyzer/improved
 
 /datum/prototype/design/science/medical/advanced_analyzer
 	id = "advhealthscanner"
 	req_tech = list(TECH_MAGNET = 6, TECH_BIO = 7, TECH_PHORON = 4)
-	materials_base = list(MAT_STEEL = 2000, MAT_GLASS = 1000, MAT_SILVER = 1250, MAT_GOLD = 1750, MAT_URANIUM = 1000, MAT_PLASTIC = 500)
+	materials_base = list(MAT_STEEL = 375, MAT_GLASS = 250, MAT_SILVER = 350, MAT_GOLD = 500, MAT_URANIUM = 250, MAT_PLASTIC = 125)
 	build_path = /obj/item/healthanalyzer/advanced
 
 /datum/prototype/design/science/medical/phasic_analyzer
 	id = "phahealthscanner"
 	req_tech = list(TECH_MAGNET = 7, TECH_BIO = 8, TECH_BLUESPACE = 6, TECH_PHORON = 5)
-	materials_base = list(MAT_STEEL = 2000, MAT_GLASS = 1000, MAT_SILVER = 1500, MAT_GOLD = 2000, MAT_URANIUM = 1250, MAT_DIAMOND = 750, MAT_PHORON = 500, MAT_PLASTIC = 1000, MAT_OSMIUM = 500)
+	materials_base = list(MAT_STEEL = 375, MAT_GLASS = 250, MAT_SILVER = 750, MAT_GOLD = 500, MAT_URANIUM = 500, MAT_DIAMOND = 255, MAT_PHORON = 255, MAT_PLASTIC = 125, MAT_OSMIUM = 255)
 	build_path = /obj/item/healthanalyzer/phasic
 
 /datum/prototype/design/science/medical/advanced_roller
 	id = "superrollerbed"
 	req_tech = list(TECH_BIO = 3, TECH_MATERIAL = 3, TECH_MAGNET = 3)
-	materials_base = list(MAT_STEEL = 4000, MAT_GLASS = 2000, MAT_PHORON = 2000)
+	materials_base = list(MAT_STEEL = 2000, MAT_GLASS = 750, MAT_PHORON = 250)
 	build_path = /obj/item/roller/adv
 
 //General stuff
@@ -90,7 +88,7 @@
 /datum/prototype/design/science/medical/protohypospray
 	id = "protohypo"
 	req_tech = list(TECH_MATERIAL = 4, TECH_ENGINEERING = 3, TECH_POWER = 2, TECH_BIO = 4, TECH_ILLEGAL = 2)
-	materials_base = list(MAT_STEEL = 500, MAT_GLASS = 1500, MAT_SILVER = 2000, MAT_GOLD = 1500, MAT_URANIUM = 1000)
+	materials_base = list(MAT_STEEL = 500, MAT_GLASS = 750, MAT_SILVER = 1250, MAT_GOLD = 750, MAT_URANIUM = 250)
 	build_path = /obj/item/hypospray/advanced
 
 /datum/prototype/design/science/medical/cell_based
@@ -100,10 +98,8 @@
 	design_name = "advanced medical cell magazine"
 	id = "advmedcellmag"
 	req_tech = list(TECH_MATERIAL = 7, TECH_MAGNET = 6, TECH_POWER = 4, TECH_BIO = 7)
-	materials_base = list(MAT_STEEL = 5000, MAT_PLASTIC = 10000, MAT_GLASS = 5000, MAT_SILVER = 1500, MAT_GOLD = 1500, MAT_DIAMOND = 5000)
+	materials_base = list(MAT_STEEL = 1250, MAT_PLASTIC = 750, MAT_GLASS = 750, MAT_SILVER = 250, MAT_GOLD = 500, MAT_DIAMOND = 250)
 	build_path = /obj/item/ammo_magazine/microbattery/vm_aml/sidearm/advanced
-
-#warn above
 
 /datum/prototype/design/science/medigun_cell
 	category = DESIGN_CATEGORY_MEDIGUN //stop clogging up other categoriesp lease
