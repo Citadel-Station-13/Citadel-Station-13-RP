@@ -17,11 +17,17 @@
 	if(charge > max_charge)
 		charge = max_charge
 
-/obj/item/stock_parts/capacitor/proc/use(amount)
+
+// returns the amount actually consumed
+/obj/item/stock_parts/capacitor/proc/use(amount) 
 	if(charge)
 		charge -= amount
+		var/delta = 0
 		if(charge < 0)
+			delta = charge
 			charge = 0
+		return (amount+delta)
+	return 0
 
 /obj/item/stock_parts/capacitor/adv
 	name = "advanced capacitor"
