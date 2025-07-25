@@ -447,6 +447,13 @@
 	id = "vicDetOffice"
 	},
 /obj/map_helper/paint/darkred,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "security_lockdown";
+	name = "Security Blast Doors";
+	opacity = 0
+	},
 /turf/simulated/floor/plating,
 /area/security/detectives_office)
 "asX" = (
@@ -1508,8 +1515,11 @@
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
-/obj/map_helper/paint/darkred,
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
+/obj/map_helper/electrochromatic_linker{
+	id = "hos_office"
+	},
+/obj/map_helper/paint/darkred,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hos)
 "bbp" = (
@@ -2652,8 +2662,11 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/map_helper/paint/darkred,
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
+/obj/map_helper/electrochromatic_linker{
+	id = "hos_office"
+	},
+/obj/map_helper/paint/darkred,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hos)
 "bTA" = (
@@ -4565,6 +4578,14 @@
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/security/general,
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "security_lockdown";
+	name = "Security Blast Doors";
+	opacity = 0
+	},
 /turf/simulated/floor/plating,
 /area/security/evidence_storage)
 "drT" = (
@@ -5733,8 +5754,11 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/map_helper/paint/darkred,
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
+/obj/map_helper/electrochromatic_linker{
+	id = "hos_office"
+	},
+/obj/map_helper/paint/darkred,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hos)
 "ekc" = (
@@ -8265,6 +8289,13 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "security_lockdown";
+	name = "Security Blast Doors";
+	opacity = 0
+	},
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/security/hallway)
 "gdU" = (
@@ -8969,6 +9000,18 @@
 	},
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
+"gJu" = (
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/darkred,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "security_lockdown";
+	name = "Security Blast Doors";
+	opacity = 0
+	},
+/turf/simulated/floor/plating,
+/area/security/lobby)
 "gJI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -11524,6 +11567,13 @@
 	id = "vicDetOffice"
 	},
 /obj/map_helper/paint/darkred,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "security_lockdown";
+	name = "Security Blast Doors";
+	opacity = 0
+	},
 /turf/simulated/floor/lino,
 /area/security/detectives_office)
 "iAo" = (
@@ -16387,6 +16437,13 @@
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/security/general,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "security_lockdown";
+	name = "Security Blast Doors";
+	opacity = 0
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/security/lobby)
 "mBU" = (
@@ -18293,7 +18350,7 @@
 /obj/map_helper/electrochromatic_linker{
 	id = "vicDetOffice"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled,
 /area/security/detectives_office)
 "nTj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -19142,6 +19199,13 @@
 	id = "vicDetOffice"
 	},
 /obj/map_helper/paint/darkred,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "security_lockdown";
+	name = "Security Blast Doors";
+	opacity = 0
+	},
 /turf/simulated/floor/plating,
 /area/security/detectives_office)
 "oDl" = (
@@ -22129,6 +22193,13 @@
 /obj/machinery/door/firedoor/glass/talon,
 /obj/machinery/door/airlock/maintenance/sec,
 /obj/map_helper/access_helper/airlock/station/security/general,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "security_lockdown";
+	name = "Security Blast Doors";
+	opacity = 0
+	},
 /turf/simulated/floor/plating,
 /area/security/hallway)
 "qPi" = (
@@ -23966,6 +24037,7 @@
 	req_one_access = null
 	},
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
 "sfW" = (
@@ -31037,6 +31109,13 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/maintenance/sec,
 /obj/structure/catwalk,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "security_lockdown";
+	name = "Security Blast Doors";
+	opacity = 0
+	},
 /turf/simulated/floor/plating,
 /area/security/hallway)
 "xcu" = (
@@ -32614,6 +32693,13 @@
 	id = "vicDetOffice"
 	},
 /obj/map_helper/paint/darkred,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "security_lockdown";
+	name = "Security Blast Doors";
+	opacity = 0
+	},
 /turf/simulated/floor/plating,
 /area/security/detectives_office)
 "yls" = (
@@ -45140,7 +45226,7 @@ qVJ
 xnb
 rTD
 mmc
-glG
+gJu
 bYY
 bYY
 gVo
@@ -45334,7 +45420,7 @@ qVJ
 pKR
 eSt
 iur
-glG
+gJu
 dIB
 vLB
 gVo
