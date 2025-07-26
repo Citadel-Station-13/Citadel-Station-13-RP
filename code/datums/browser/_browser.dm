@@ -27,7 +27,9 @@
 	if (nref)
 		ref = WEAKREF(nref)
 
-	common_asset = SSassets.ready_asset_pack(/datum/asset_pack/simple/common)
+	spawn(0)
+		// i'm so sorry
+		common_asset = SSassets.ready_asset_pack(/datum/asset_pack/simple/common)
 
 /datum/browser/proc/user_deleted(datum/source)
 	SIGNAL_HANDLER

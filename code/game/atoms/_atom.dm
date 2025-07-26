@@ -230,7 +230,7 @@
 		QDEL_NULL(light)
 
 	#ifdef CF_ATOM_TRACE_INIT_EARLY_QDEL
-	if(!(atom_flags & ATOM_INITIALIZED) && world.time >= SSatoms.init_start_time)
+	if(!(atom_flags & ATOM_INITIALIZED) && SSatoms.init_start_time && (world.time >= SSatoms.init_start_time))
 		stack_trace("Attempted to qdel an atom prior to init after SSatoms already started.")
 	#endif
 
