@@ -155,3 +155,12 @@
 	req_tech = list(TECH_BLUESPACE = 5, TECH_MATERIAL = 3, TECH_BIO = 4)
 	materials_base = list(MAT_STEEL = 1000)
 	build_path = /obj/item/clothing/gloves/size
+
+/datum/prototype/design/science/coffeepot_bluespace
+	design_name = "Bluespace Coffeepot"
+	id = "bluespace_coffeepot"
+	// using phoron in your coffee pot is a good idea
+	materials_base = list(MAT_STEEL = 1000, MAT_PLASTIC = 500, MAT_PHORON = 500)
+	req_tech = list(TECH_BLUESPACE = 2, TECH_MATERIAL = 3)
+	build_path = /obj/item/reagent_containers/food/drinks/coffeepot/bluespace
+	category = DESIGN_CATEGORY_RECREATION

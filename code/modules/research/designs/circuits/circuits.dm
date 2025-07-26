@@ -819,3 +819,9 @@ CIRCUITS BELOW
 	category = DESIGN_CATEGORY_ENGINEERING
 	subcategory = DESIGN_SUBCATEGORY_STATION
 	build_path = /obj/item/circuitboard/massive_heat_pump
+
+/datum/prototype/design/circuit/coffeemaker
+	design_name = "coffeemaker"
+	id = "coffeemaker"
+	category = DESIGN_CATEGORY_RECREATION
+	build_path = /obj/item/circuitboard/machine/coffeemaker

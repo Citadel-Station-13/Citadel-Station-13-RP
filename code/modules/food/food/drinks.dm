@@ -17,13 +17,13 @@
 	var/custom_open_sound
 
 /obj/item/reagent_containers/food/drinks/on_reagent_change()
+	. = ..()
 	if (reagents.total_volume)
 		var/datum/reagent/R = reagents.get_majority_reagent_datum()
 		if(R.price_tag)
 			price_tag = R.price_tag
 		else
 			price_tag = null
-	return
 
 /obj/item/reagent_containers/food/drinks/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
@@ -201,3 +201,51 @@
 				W.update_icon()
 	else
 		return ..()
+
+//Coffeepots: for reference, a standard cup is 30u, to allow 20u for sugar/sweetener/milk/creamer
+/obj/item/reagent_containers/food/drinks/coffeepot
+	name = "coffeepot"
+	desc = "A large pot for dispensing that ambrosia of corporate life known to mortals only as coffee. Contains 4 standard cups."
+	amount_per_transfer_from_this = 10
+	possible_transfer_amounts = list(5, 10, 15, 20, 25, 30, 50)
+	volume = 120
+	icon_state = "coffeepot"
+	fill_icon_state = "coffeepot"
+	fill_icon_thresholds = list(0, 1, 40, 80, 120)
+	atom_flags = OPENCONTAINER
+	materials_base = list(MAT_GLASS = 500, MAT_STEEL = 500)
+
+/obj/item/reagent_containers/food/drinks/coffeepot/bluespace
+	name = "bluespace coffeepot"
+	desc = "The most advanced coffeepot the eggheads could cook up: sleek design; graduated lines; connection to a pocket dimension for coffee containment; yep, it's got it all. Contains 8 standard cups."
+	volume = 240
+	icon_state = "coffeepot_bluespace"
+	fill_icon_thresholds = list(0, 1, 40, 80, 120)
+
+/obj/item/reagent_containers/food/drinks/mug/nanotrasen
+	name = "\improper Nanotrasen mug"
+	desc = "A mug to display your corporate pride."
+	icon_state = "mug_nt_empty"
+	atom_flags = OPENCONTAINER
+
+/obj/item/reagent_containers/food/drinks/mug/nanotrasen/update_icon_state()
+	icon_state = reagents.total_volume ? "mug_nt" : "mug_nt_empty"
+	return ..()
+
+/obj/item/reagent_containers/food/drinks/coffee_cup
+	name = "coffee cup"
+	desc = "A heat-formed plastic coffee cup. Can theoretically be used for other hot drinks, if you're feeling adventurous."
+	icon_state = "coffee_cup_e"
+	possible_transfer_amounts = list(10)
+	volume = 30
+	atom_flags = OPENCONTAINER
+	drop_sound = 'sound/items/drop/papercup.ogg'
+	pickup_sound = 'sound/items/pickup/papercup.ogg'
+
+/obj/item/reagent_containers/food/drinks/coffee_cup/update_icon_state()
+	icon_state = reagents.total_volume ? "coffee_cup" : "coffee_cup_e"
+	return ..()
+
+/obj/item/reagent_containers/food/drinks/coffee_cup/on_reagent_change()
+	. = ..()
+	update_icon()

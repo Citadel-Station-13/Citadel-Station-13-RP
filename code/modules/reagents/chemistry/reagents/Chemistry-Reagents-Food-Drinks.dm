@@ -1229,7 +1229,6 @@
 	glass_name = "Coffee"
 	glass_desc = "Don't drop it, or you'll send scalding liquid and glass shards everywhere."
 
-
 /datum/reagent/drink/coffee/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
@@ -1312,6 +1311,18 @@
 /datum/reagent/drink/coffee/cafe_latte/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	..()
 	M.heal_organ_damage(0.5 * removed, 0)
+
+/datum/reagent/drink/coffee/decaf
+	name = "Decaffeinated Coffee"
+	id = "decafcoffee"
+	description = "Coffee, with the majority of the caffeine removed."
+	adj_dizzy = 0
+	adj_drowsy = 0
+	adj_sleepy = 0
+	overdose = 0
+
+	cup_name = "Cup of Decaf Coffee"
+	glass_name = "Decaf Coffee"
 
 /datum/reagent/drink/hot_coco
 	name = "Hot Chocolate"
@@ -5255,3 +5266,20 @@
 	color = "#0e0900"
 	glass_name = "skrianhi tea"
 	glass_desc = "A blend of teas from Moghes, commonly drank by Unathi."
+
+/datum/reagent/nutriment/creamer
+	name = "Coffee Creamer"
+	id = "creamer"
+	description = "Powdered milk for cheap coffee. How delightful."
+	taste_description = "milk"
+	color = "#efeff0"
+	nutriment_factor = 1.5
+
+/datum/reagent/nutriment/astrotame
+	name = "Astrotame"
+	id = "astrotame"
+	description = "A space age artificial sweetener."
+	nutriment_factor = 0
+	color = COLOR_WHITE // rgb: 255, 255, 255
+	taste_mult = 8
+	taste_description = "sweetness"
