@@ -212,4 +212,5 @@
 	. += filling
 
 /obj/item/reagent_containers/on_reagent_change()
-	update_icon()
+	if(fill_icon_thresholds)
+		update_icon()

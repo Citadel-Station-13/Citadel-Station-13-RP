@@ -123,7 +123,7 @@
 		. += SPAN_NOTICE("There is no creamer left.")
 
 /obj/machinery/coffeemaker/AltClick(mob/user)
-	. = ..()
+	..()
 	if(!can_interact(user) || !user.canUseTopic(src, !issilicon(user)))
 		return FALSE
 	if(brewing)
@@ -132,7 +132,6 @@
 	return TRUE
 
 /obj/machinery/coffeemaker/CtrlClick(mob/user)
-	. = ..()
 	if(!can_interact(user) || !user.canUseTopic(src, !issilicon(user)))
 		return FALSE
 	if(brewing)

@@ -17,13 +17,13 @@
 	var/custom_open_sound
 
 /obj/item/reagent_containers/food/drinks/on_reagent_change()
+	. = ..()
 	if (reagents.total_volume)
 		var/datum/reagent/R = reagents.get_majority_reagent_datum()
 		if(R.price_tag)
 			price_tag = R.price_tag
 		else
 			price_tag = null
-	return
 
 /obj/item/reagent_containers/food/drinks/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
@@ -245,3 +245,7 @@
 /obj/item/reagent_containers/food/drinks/coffee_cup/update_icon_state()
 	icon_state = reagents.total_volume ? "coffee_cup" : "coffee_cup_e"
 	return ..()
+
+/obj/item/reagent_containers/food/drinks/coffee_cup/on_reagent_change()
+	. = ..()
+	update_icon()
