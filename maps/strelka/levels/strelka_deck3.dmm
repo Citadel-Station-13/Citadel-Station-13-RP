@@ -8157,6 +8157,9 @@
 /obj/machinery/fire_alarm/west_mount,
 /obj/structure/curtain/open/shower/medical,
 /obj/structure/closet/l3closet/medical,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/resleeve)
 "CD" = (
@@ -8398,9 +8401,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck3/science/servers)
 "Dl" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 8
-	},
 /obj/structure/closet/walllocker_double/medical/north,
 /obj/item/clothing/under/color/white,
 /obj/item/clothing/under/color/white,
@@ -11959,13 +11959,13 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3/medical/roomhallway)
 "Qb" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 1
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/blue{
 	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/resleeve)
@@ -12858,6 +12858,9 @@
 	dir = 10
 	},
 /obj/structure/curtain/open/shower/medical,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/resleeve)
 "Tp" = (
@@ -14621,9 +14624,6 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck3)
 "ZI" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5
-	},
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 10
 	},
@@ -14633,6 +14633,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/curtain/open/shower/medical,
+/obj/machinery/atmospherics/pipe/manifold/hidden,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/resleeve)
 "ZK" = (

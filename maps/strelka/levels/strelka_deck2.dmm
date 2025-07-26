@@ -11241,7 +11241,7 @@
 "GR" = (
 /obj/machinery/door/blast/regular{
 	id = "UpperInnerTeleSciBlastDoor";
-	name = "Upper Exterior Telesci Blast Door"
+	name = "Telesci Blast Door"
 	},
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck2/science/tele)
