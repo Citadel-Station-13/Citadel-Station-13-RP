@@ -15561,6 +15561,7 @@
 	name = "Powernet Sensor - Main Output";
 	name_tag = "Main Output"
 	},
+/obj/machinery/air_alarm/east_mount,
 /turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "nUN" = (
@@ -17493,6 +17494,9 @@
 /area/crew_quarters/bar)
 "pXJ" = (
 /obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4starboardhall)
 "pYs" = (
@@ -20265,6 +20269,12 @@
 /obj/machinery/light,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/workshop)
+"sVP" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/endeavour/hallway/d4starboardhall)
 "sVR" = (
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/barrestroom)
@@ -24860,8 +24870,12 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4starboardhall)
 "xev" = (
@@ -39411,7 +39425,7 @@ seC
 seC
 seC
 mzK
-tWf
+sVP
 jTy
 ylX
 gDt
