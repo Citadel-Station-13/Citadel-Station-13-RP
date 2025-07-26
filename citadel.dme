@@ -4768,6 +4768,7 @@
 #include "code\modules\projectiles\guns\gun\projectile\energy-interaction.dm"
 #include "code\modules\projectiles\guns\gun\projectile\energy-modular.dm"
 #include "code\modules\projectiles\guns\gun\projectile\energy.dm"
+#include "code\modules\projectiles\guns\gun\projectile\engi.dm"
 #include "code\modules\projectiles\guns\gun\projectile\magic.dm"
 #include "code\modules\projectiles\guns\gun\projectile\magnetic.dm"
 #include "code\modules\projectiles\guns\gun\projectile\ballistic\automatic.dm"
