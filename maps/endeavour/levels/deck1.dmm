@@ -2749,6 +2749,17 @@
 /obj/machinery/cryopod,
 /turf/simulated/floor/tiled/techfloor,
 /area/endeavour/cryo)
+"cfU" = (
+/obj/structure/table/standard,
+/obj/item/stack/nanopaste,
+/obj/item/stack/nanopaste{
+	pixel_x = 5;
+	pixel_y = 3
+	},
+/obj/item/cane/crutch,
+/obj/item/cane/crutch,
+/turf/simulated/floor/tiled/monotile,
+/area/endeavour/hallway/d1portamidhall)
 "cgw" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -3838,10 +3849,13 @@
 /obj/item/storage/single_use/med_pouch/toxin{
 	pixel_x = -4
 	},
-/obj/item/storage/single_use/med_pouch/overdose,
 /obj/item/storage/single_use/med_pouch/oxyloss{
 	pixel_x = 4
 	},
+/obj/machinery/vending/wallmed1/public{
+	pixel_x = 28
+	},
+/obj/item/storage/pill_bottle/iron,
 /turf/simulated/floor/tiled/techfloor,
 /area/endeavour/hallway/d1portamidhall)
 "cVz" = (
@@ -6561,6 +6575,13 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/bedrooms)
+"eUQ" = (
+/obj/structure/table/standard,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/stack/cable_coil,
+/obj/item/clothing/head/welding,
+/turf/simulated/floor/tiled/monotile,
+/area/endeavour/hallway/d1portamidhall)
 "eVc" = (
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/secondary/docking_hallway)
@@ -8330,29 +8351,7 @@
 /obj/random/tech_supply,
 /obj/random/tech_supply,
 /obj/random/tech_supply,
-/obj/random/tech_supply,
-/obj/random/tech_supply,
-/obj/item/radio{
-	pixel_x = 2;
-	pixel_y = 3
-	},
-/obj/item/radio{
-	pixel_x = 2;
-	pixel_y = 3
-	},
-/obj/item/radio{
-	pixel_x = 2;
-	pixel_y = 3
-	},
-/obj/item/radio{
-	pixel_x = 2;
-	pixel_y = 3
-	},
 /obj/machinery/light,
-/obj/random/tech_supply,
-/obj/random/tech_supply,
-/obj/random/tech_supply,
-/obj/random/tech_supply,
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
 "giY" = (
@@ -14049,6 +14048,7 @@
 /area/endeavour/cryo)
 "kDV" = (
 /obj/machinery/fire_alarm/south_mount,
+/obj/machinery/recharge_station,
 /turf/simulated/floor/tiled/techfloor,
 /area/endeavour/hallway/d1portamidhall)
 "kEl" = (
@@ -21278,6 +21278,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/item/disk/nuclear,
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "qcD" = (
@@ -30569,8 +30570,6 @@
 	},
 /obj/item/storage/toolbox/mechanical,
 /obj/item/storage/toolbox/emergency,
-/obj/random/tech_supply,
-/obj/random/tech_supply,
 /obj/structure/table/rack,
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
@@ -30769,8 +30768,6 @@
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardamidhall)
 "xfQ" = (
@@ -43146,7 +43143,7 @@ xGr
 xGr
 mqE
 rSs
-rSs
+eUQ
 jJh
 kFW
 biu
@@ -43340,7 +43337,7 @@ wbZ
 xGr
 mPd
 rSs
-rSs
+cfU
 jJh
 bGA
 dWV
@@ -47417,8 +47414,8 @@ asR
 asR
 asR
 xfq
-kPd
-afN
+wpv
+ntG
 vso
 ngG
 kKK

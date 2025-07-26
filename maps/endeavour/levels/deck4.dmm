@@ -2216,8 +2216,8 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d4starboardhall)
 "bVY" = (
-/obj/structure/reagent_dispensers/tallow{
-	anchored = 1
+/obj/structure/reagent_dispensers/oil{
+	starting_reagents = list(/datum/reagent/corn_oil = 1000)
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/kitchen)
@@ -25386,9 +25386,6 @@
 	},
 /obj/machinery/camera/network/civilian{
 	dir = 4
-	},
-/obj/structure/reagent_dispensers/tallow{
-	anchored = 1
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/kitchen)

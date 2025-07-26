@@ -8082,6 +8082,9 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
 	},
+/obj/machinery/vending/wallmed1{
+	pixel_x = -32
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "fBT" = (
@@ -14215,11 +14218,9 @@
 /obj/item/tank/oxygen{
 	pixel_y = -4
 	},
-/obj/item/hardsuit/medical{
-	pixel_y = -4
-	},
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/blue,
+/obj/item/hardsuit/medical/equipped,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/medical/medbay_emt_bay)
 "kkr" = (
@@ -14673,6 +14674,7 @@
 /obj/item/storage/box/cups{
 	pixel_y = 5
 	},
+/obj/item/reagent_containers/spray/cleaner,
 /turf/simulated/floor/carpet/blucarpet,
 /area/crew_quarters/medbreak)
 "kFb" = (
@@ -17040,14 +17042,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/fpmaint2)
 "mog" = (
-/obj/structure/closet/secure_closet/medical_wall{
-	name = "O- Blood Locker";
-	pixel_x = -32
-	},
-/obj/item/reagent_containers/blood/OMinus,
-/obj/item/reagent_containers/blood/OMinus,
-/obj/item/reagent_containers/blood/OMinus,
-/obj/item/reagent_containers/blood/OMinus,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
 	},
@@ -17061,6 +17055,7 @@
 /obj/effect/floor_decal/corner/paleblue/bordercorner2{
 	dir = 10
 	},
+/obj/item/reagent_containers/spray/cleaner,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "mow" = (
@@ -18301,13 +18296,6 @@
 /obj/machinery/meter,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
-"ngB" = (
-/obj/machinery/smartfridge{
-	accepted_types = list(/obj/item);
-	desc = "A wall-mounted refrigerated storage unit. Should keep your food fresh until lunchtime."
-	},
-/turf/simulated/wall/prepainted/medical,
-/area/crew_quarters/medbreak)
 "ngN" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -18662,9 +18650,15 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 1
 	},
-/obj/machinery/vending/wallmed1{
+/obj/structure/closet/secure_closet/medical_wall{
+	name = "O- Blood Locker";
+	req_access = list(5);
 	pixel_y = 32
 	},
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "nwm" = (
@@ -24282,7 +24276,6 @@
 	dir = 4
 	},
 /obj/machinery/recharger,
-/obj/item/reagent_containers/spray/cleaner,
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "rrG" = (
@@ -29558,6 +29551,10 @@
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
 	},
+/obj/machinery/light{
+	dir = 8;
+	old_wall = 1
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "vtN" = (
@@ -32501,8 +32498,17 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "xpf" = (
-/obj/machinery/vending/blood,
 /obj/effect/floor_decal/industrial/outline/blue,
+/obj/structure/table/steel_reinforced,
+/obj/item/clothing/glasses/eyepatch,
+/obj/item/clothing/glasses/eyepatch,
+/obj/item/clothing/glasses/sunglasses/blindfold,
+/obj/item/clothing/glasses/sunglasses/blindfold,
+/obj/item/cane/crutch,
+/obj/item/cane/crutch,
+/obj/item/cane/crutch,
+/obj/item/cane/crutch,
+/obj/item/reagent_containers/spray/cleaner,
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "xpI" = (
@@ -51329,7 +51335,7 @@ oSb
 esO
 esO
 esO
-ngB
+esO
 esO
 esO
 pEq

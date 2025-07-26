@@ -11263,7 +11263,6 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3fwdhall)
 "irw" = (
-/obj/machinery/holopad,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -11273,6 +11272,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
 "irN" = (
@@ -18204,6 +18204,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
 "nPi" = (
@@ -18617,6 +18619,7 @@
 	icon_state = "4-8"
 	},
 /obj/random/cutout,
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
 "oez" = (
@@ -20610,6 +20613,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
 "pFo" = (
@@ -22995,10 +22999,10 @@
 /area/quartermaster/office)
 "rzc" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/table/rack,
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/machinery/nuclearbomb,
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
 "rzG" = (
@@ -56277,7 +56281,7 @@ riL
 riL
 tix
 ruY
-mYx
+irw
 ruY
 vxL
 riL
