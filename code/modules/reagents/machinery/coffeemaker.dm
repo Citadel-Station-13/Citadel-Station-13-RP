@@ -133,7 +133,7 @@
 
 /obj/machinery/coffeemaker/CtrlClick(mob/user)
 	. = ..()
-	if(!can_interact(user) || !user.canUseTopic(src, !issilicon(user))
+	if(!can_interact(user) || !user.canUseTopic(src, !issilicon(user)))
 		return FALSE
 	if(brewing)
 		return FALSE
