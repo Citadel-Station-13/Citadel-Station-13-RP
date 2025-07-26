@@ -22,7 +22,6 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/lathe/mecha_part_fabricator/LateInitialize()
-	. = ..()
 	for(var/obj/machinery/computer/rdconsole/RDC in get_area(src))
 		if(!RDC.sync)
 			continue

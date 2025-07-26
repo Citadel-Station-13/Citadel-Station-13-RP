@@ -122,6 +122,8 @@ SUBSYSTEM_DEF(assets)
 /datum/controller/subsystem/assets/proc/ready_asset_pack(identifier)
 	UNTIL(initialized)
 	var/datum/asset_pack/resolved = resolve_asset_pack(identifier)
+	if(!resolved)
+		return null
 	resolved.ensure_ready()
 	return resolved
 
