@@ -79,7 +79,7 @@
 /obj/effect/floor_decal/industrial/warning/cee{
 	dir = 8
 	},
-/turf/simulated/floor/trap/dark,
+/turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/chapel/office)
 "ao" = (
 /obj/machinery/door/airlock/glass/civilian{
@@ -343,6 +343,22 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck4/bridge)
+"bk" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/orange{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/strelka/shipbase/deck4/chapel/office)
 "bn" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/light/small/old{
@@ -582,7 +598,10 @@
 /obj/structure/cable/orange{
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/trap/dark,
+/obj/effect/floor_decal/spline/fancy/wood/cee{
+	dir = 4
+	},
+/turf/simulated/floor/lino,
 /area/strelka/shipbase/deck4/chapel/office)
 "ct" = (
 /obj/structure/railing{
@@ -1269,7 +1288,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/lino,
+/turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/chapel/office)
 "fu" = (
 /obj/structure/curtain/open/black,
@@ -1815,7 +1834,10 @@
 	dir = 4
 	},
 /obj/machinery/air_alarm/north_mount,
-/turf/simulated/floor/trap/dark,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/chapel/office)
 "hC" = (
 /turf/simulated/floor/lino,
@@ -2537,7 +2559,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/turf/simulated/floor/trap/dark,
+/turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/chapel/office)
 "kF" = (
 /obj/machinery/washing_machine,
@@ -2706,6 +2728,9 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/machinery/light/fairy{
+	dir = 1
+	},
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck4/hallway/botany)
 "lt" = (
@@ -2713,6 +2738,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck4/arrival)
 "lu" = (
@@ -3824,6 +3850,10 @@
 /obj/structure/curtain/black,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/chapel)
+"pM" = (
+/obj/structure/flora/ausbushes/fullgrass,
+/turf/simulated/floor/fey/forest_grass,
+/area/strelka/shipbase/deck4/hallway/botany)
 "pP" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
@@ -4086,6 +4116,13 @@
 	},
 /turf/simulated/floor/crystal,
 /area/strelka/shipbase/deck4/adherent)
+"ra" = (
+/obj/structure/flora/ausbushes/fullgrass,
+/obj/machinery/portable_atmospherics/hydroponics{
+	layer = 1
+	},
+/turf/simulated/floor/fey/forest_grass,
+/area/strelka/shipbase/deck4/hallway/botany)
 "rb" = (
 /obj/structure/bed/chair/sofa/brown/right{
 	dir = 4
@@ -4231,7 +4268,7 @@
 /obj/effect/floor_decal/industrial/warning/cee{
 	dir = 4
 	},
-/turf/simulated/floor/trap/dark,
+/turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/chapel/office)
 "rF" = (
 /obj/effect/floor_decal/spline/fancy/wood,
@@ -4350,6 +4387,21 @@
 /obj/item/paper/pamphlet/strelka,
 /turf/simulated/floor/bmarble,
 /area/strelka/shipbase/deck4/bar)
+"rV" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/orange{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/spline/fancy/wood/cee{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/strelka/shipbase/deck4/chapel/office)
 "rW" = (
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -4609,6 +4661,7 @@
 "ts" = (
 /obj/machinery/door/firedoor/glass,
 /obj/landmark/away,
+/obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck4/arrival)
 "tt" = (
@@ -4887,7 +4940,8 @@
 /obj/structure/cable/orange{
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/trap/dark,
+/obj/effect/floor_decal/spline/fancy/wood,
+/turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/chapel/office)
 "uJ" = (
 /obj/structure/bookcase/legal/corpreg,
@@ -5095,6 +5149,10 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/library/room)
+"vI" = (
+/obj/structure/flora/ausbushes/leafybush,
+/turf/simulated/floor/fey/forest_grass,
+/area/strelka/shipbase/deck4/hallway/botany)
 "vK" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/curtain/open/black,
@@ -5475,7 +5533,10 @@
 	id = "church_crematorium"
 	},
 /obj/machinery/camera/network/security,
-/turf/simulated/floor/trap/dark,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/chapel/office)
 "xX" = (
 /obj/structure/bed/chair/bay/comfy/blue{
@@ -5709,6 +5770,7 @@
 	dir = 8
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck4/arrival)
 "ze" = (
@@ -5772,6 +5834,11 @@
 	},
 /turf/simulated/floor/carpet/patterened/blue,
 /area/strelka/shipbase/deck4/bridge/captain)
+"zq" = (
+/obj/landmark/spawnpoint/job/botanist,
+/obj/structure/flora/ausbushes,
+/turf/simulated/floor/fey/forest_grass,
+/area/strelka/shipbase/deck4/hallway/botany)
 "zr" = (
 /obj/structure/table/hardwoodtable,
 /obj/structure/flora/pottedplant/orientaltree{
@@ -6681,7 +6748,10 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/trap/dark,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/chapel/office)
 "DM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -7468,7 +7538,7 @@
 /obj/effect/floor_decal/industrial/warning/cee{
 	dir = 4
 	},
-/turf/simulated/floor/trap/dark,
+/turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/chapel/office)
 "HU" = (
 /obj/structure/table/carbon/reinforced,
@@ -7862,7 +7932,10 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/holopad,
-/turf/simulated/floor/trap/dark,
+/obj/effect/floor_decal/spline/fancy/wood/cee{
+	dir = 8
+	},
+/turf/simulated/floor/lino,
 /area/strelka/shipbase/deck4/chapel/office)
 "Jl" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -8089,15 +8162,10 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck4/kitchen)
 "Kj" = (
-/obj/structure/window/reinforced{
-	dir = 1
+/obj/structure/sink/kitchen{
+	pixel_y = 28
 	},
-/obj/machinery/portable_atmospherics/hydroponics{
-	layer = 1
-	},
-/obj/machinery/light/fairy{
-	dir = 1
-	},
+/obj/structure/sink/puddle,
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck4/hallway/botany)
 "Kl" = (
@@ -8280,7 +8348,7 @@
 /obj/effect/floor_decal/industrial/warning/cee{
 	dir = 8
 	},
-/turf/simulated/floor/trap/dark,
+/turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/chapel/office)
 "KZ" = (
 /obj/machinery/power/apc/west_mount,
@@ -8501,6 +8569,12 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/arrival)
+"Mc" = (
+/turf/simulated/wall/wood/hardwood{
+	opacity = 0;
+	name = "Hollow hardwood"
+	},
+/area/strelka/shipbase/deck4/hallway/botany)
 "Mf" = (
 /turf/simulated/wall/wood/hardwood,
 /area/strelka/shipbase/deck4/bar/back)
@@ -8666,7 +8740,11 @@
 	pixel_y = -24;
 	id = "chapelgun2"
 	},
-/turf/simulated/floor/trap/dark,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/fancy/wood,
+/turf/simulated/floor/lino,
 /area/strelka/shipbase/deck4/chapel/office)
 "MT" = (
 /obj/structure/closet/secure_closet/personal,
@@ -8849,7 +8927,11 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/trap/dark,
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/floor_decal/spline/fancy/wood/corner{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/chapel/office)
 "NE" = (
 /obj/machinery/air_alarm/east_mount,
@@ -9917,7 +9999,7 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/wood/sif,
+/turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/chapel)
 "Tm" = (
 /obj/structure/grille,
@@ -10952,10 +11034,6 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck4/hallway/botany)
-"YW" = (
-/obj/structure/flora/ausbushes/ywflowers,
-/turf/simulated/floor/fey/forest_grass,
-/area/strelka/shipbase/deck4/hallway/botany)
 "Zc" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
@@ -11114,7 +11192,10 @@
 /obj/structure/cable/orange{
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/trap/dark,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/chapel/office)
 "ZH" = (
 /obj/machinery/vending/loadout/clothing,
@@ -29705,7 +29786,7 @@ bM
 pi
 Oq
 IS
-pi
+pM
 oV
 ez
 ZV
@@ -29913,7 +29994,7 @@ Ay
 hC
 Gp
 KW
-NB
+bk
 kD
 lb
 Vl
@@ -30091,9 +30172,9 @@ Kb
 rF
 kO
 OJ
-LV
 mU
-Ae
+pi
+mU
 Qb
 ke
 wf
@@ -30107,7 +30188,7 @@ XB
 Zs
 Gp
 rD
-NB
+rV
 HQ
 IW
 jR
@@ -30285,9 +30366,9 @@ ga
 kQ
 kO
 aX
-pi
 qe
-pi
+IS
+qe
 dB
 ke
 IY
@@ -30479,9 +30560,9 @@ Jc
 kQ
 kO
 GC
-WN
 qe
-pi
+ra
+qe
 RV
 ke
 Bc
@@ -30673,9 +30754,9 @@ Jc
 kQ
 kO
 hi
+Bb
 pi
 Bb
-YW
 eL
 ke
 Bc
@@ -30867,9 +30948,9 @@ Jc
 kQ
 kO
 ls
-pi
+vI
 hk
-Oq
+zq
 NS
 ke
 Bc
@@ -31059,9 +31140,9 @@ sw
 Iy
 Jc
 kQ
-kG
+Mc
 Kj
-pi
+WN
 IS
 dN
 jO

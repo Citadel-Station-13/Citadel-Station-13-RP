@@ -17,7 +17,9 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
 	},
-/obj/structure/catwalk,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor,
 /area/shuttle/civvie/strelka)
 "ae" = (
@@ -396,11 +398,6 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8
 	},
-/obj/machinery/button/windowtint{
-	pixel_x = 23;
-	id = "Centuries_old_shuttle_cockpit";
-	pixel_y = 23
-	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1)
 "bS" = (
@@ -685,11 +682,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
-/obj/structure/cable/orange{
-	icon_state = "2-4";
-	dir = 1
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
-/obj/structure/catwalk,
 /turf/simulated/floor,
 /area/shuttle/civvie/strelka)
 "dr" = (
@@ -1889,9 +1884,8 @@
 /area/strelka/shipbase/deck1/hangardeck)
 "jy" = (
 /obj/machinery/power/apc/south_mount,
-/obj/structure/cable/orange{
-	icon_state = "0-8";
-	dir = 1
+/obj/structure/cable{
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/civvie/strelka)
@@ -2058,9 +2052,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/structure/cable/orange{
-	icon_state = "1-8";
-	dir = 1
+/obj/structure/cable{
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/civvie/strelka)
@@ -3159,7 +3152,7 @@
 	dir = 1
 	},
 /obj/machinery/turretid{
-	control_area = "/area/shuttle/excursion/strelka";
+	control_area = "/area/strelka/shipbase/deck1/gateway";
 	pixel_x = -30;
 	uid = "gateway"
 	},
@@ -3228,9 +3221,8 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/structure/cable/orange{
-	icon_state = "2-4";
-	dir = 1
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/civvie/strelka)
@@ -4227,9 +4219,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck1/fighterbaysec)
 "wu" = (
-/obj/structure/cable/orange{
-	icon_state = "4-8";
-	dir = 1
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/civvie/strelka)
@@ -5051,11 +5042,9 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck1/fighterbay)
 "Bf" = (
-/obj/structure/cable/orange{
-	icon_state = "1-2";
-	dir = 1
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
-/obj/structure/catwalk,
 /turf/simulated/floor,
 /area/shuttle/civvie/strelka)
 "Bg" = (
@@ -5089,6 +5078,9 @@
 "Bp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/civvie/strelka)
@@ -5192,9 +5184,6 @@
 /area/strelka/shipbase/deck1/hangardeck)
 "BZ" = (
 /obj/machinery/recharge_station,
-/obj/structure/cable/orange{
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
 	},
@@ -5297,7 +5286,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},
-/obj/structure/catwalk,
 /turf/simulated/floor,
 /area/shuttle/civvie/strelka)
 "CE" = (
@@ -6249,11 +6237,6 @@
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck1/hangardeck)
 "Hd" = (
-/obj/structure/cable/orange{
-	icon_state = "4-8";
-	dir = 1
-	},
-/obj/structure/catwalk,
 /turf/simulated/floor,
 /area/shuttle/civvie/strelka)
 "Hn" = (
@@ -7251,13 +7234,12 @@
 /obj/machinery/light/small/old{
 	dir = 4
 	},
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
 /obj/machinery/power/smes/buildable{
 	charge = 15000;
 	cur_coils = 3
-	},
-/obj/structure/cable/orange{
-	icon_state = "0-4";
-	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/civvie/strelka)
@@ -8222,7 +8204,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/structure/catwalk,
 /turf/simulated/floor,
 /area/shuttle/civvie/strelka)
 "RG" = (
@@ -8233,13 +8214,6 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
-"RL" = (
-/obj/structure/cable/orange{
-	icon_state = "1-8";
-	dir = 1
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/shuttle/civvie/strelka)
 "RO" = (
 /obj/effect/shuttle_landmark/automatic{
 	name = "Hangar Section 1d"
@@ -9463,9 +9437,8 @@
 /area/strelka/shipbase/deck1/fighterbaysec)
 "XJ" = (
 /obj/machinery/door/airlock,
-/obj/structure/cable/orange{
-	icon_state = "4-8";
-	dir = 1
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/civvie/strelka)
@@ -22726,7 +22699,7 @@ vu
 vu
 vu
 vu
-vu
+gj
 vu
 vS
 bw
@@ -22920,7 +22893,7 @@ vu
 vu
 vu
 vu
-gj
+vu
 vu
 bH
 FL
@@ -27225,7 +27198,7 @@ VL
 wG
 Uz
 wh
-RL
+Py
 BZ
 qJ
 wG
@@ -27421,7 +27394,7 @@ Eb
 CC
 Hd
 RD
-Py
+wu
 tM
 IP
 rL

@@ -11154,8 +11154,7 @@
 "Nf" = (
 /obj/machinery/door/airlock/mining{
 	name = "Cargo Airlock";
-	req_one_access = null;
-	req_access = list(31,47)
+	req_one_access = list(31,47)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
