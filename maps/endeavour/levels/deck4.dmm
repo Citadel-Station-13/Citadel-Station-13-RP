@@ -2215,12 +2215,6 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d4starboardhall)
-"bVY" = (
-/obj/structure/reagent_dispensers/oil{
-	starting_reagents = list(/datum/reagent/corn_oil = 1000)
-	},
-/turf/simulated/floor/tiled/freezer,
-/area/crew_quarters/kitchen)
 "bWU" = (
 /obj/structure/railing{
 	dir = 1
@@ -48538,7 +48532,7 @@ aCV
 vQA
 jLs
 xES
-bVY
+aCV
 aHb
 mWZ
 kaa
