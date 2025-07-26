@@ -1,6 +1,7 @@
-#define COILGUN_EFFICIENCY_CURVE(SPEED, SWEETSPOT, BASE_EFF) -0.0001 * (SPEED - SWEETSPOT)**2 + BASE_EFF
+#define COILGUN_EFFICIENCY_CURVE(SPEED, SWEETSPOT, BASE_EFF) max((-0.0001 * (SPEED - SWEETSPOT)**2 + BASE_EFF),0.005)//0.5% efficiency :D)
 #define CHARGE_SPEED_CONVERSION(CHARGE, CELLRATE) sqrt((CHARGE * (1000 * CELLRATE) )/ 3.925)
-#define SPEED_CHARGE_CONVERSION(SPEED, CELLRATE) ((3.925 * (SPEED**2))/ (1000/CELLRATE))
+#define SPEED_CHARGE_CONVERSION(SPEED, CELLRATE) ((3.925 * (SPEED**2))/ (1000*CELLRATE))
+#define BASE_ACCEL 5
 
 
 
@@ -26,6 +27,7 @@
 /obj/item/coilgun_coil/Initialize(mapload)
 	. = ..()
 	charge_use_speed_range = ((3.925 * (speed_max**2))/ (1000/GLOB.cellrate))/efficiency
+	capacitor = new /obj/item/stock_parts/capacitor(src)
 	
 
 /obj/item/coilgun_coil/simple
@@ -59,6 +61,7 @@
 	//opposite of supercap, poor efficiency but good max speed
 	speed_min = 400
 	speed_max = 650
+	efficiency = 0.2
 
 
 /obj/item/coilgun_coil/hyper_accelerator
@@ -101,7 +104,7 @@
 	. += show_ammo()
 	var/slotnum = 1
 	for(var/obj/item/coilgun_coil/charging_coil in coils)
-		. += "It has the [charging_coil] installed in the number [slotnum] coil bracket, drawing power from \the [charging_coil.capacitor]."
+		. += "It has the [charging_coil] installed in the number [slotnum] coil bracket, drawing power from its [charging_coil.capacitor]."
 		slotnum++
 	
 
@@ -255,30 +258,44 @@
 	for(var/obj/item/coilgun_coil/charging_coil in coils)
 		if(speed < charging_coil.speed_min)
 			var/used_eff = COILGUN_EFFICIENCY_CURVE(speed, charging_coil.speed_min, charging_coil.efficiency)
-			var/energy_delta = SPEED_CHARGE_CONVERSION(charging_coil.speed_min, GLOB.cellrate) - projectile_energy
-			projectile_energy += charging_coil.capacitor.use(energy_delta/used_eff)
-			wasted_power += (energy_delta/(1-used_eff))
-			speed += CHARGE_SPEED_CONVERSION(projectile_energy, GLOB.cellrate)
+			var/energy_delta = SPEED_CHARGE_CONVERSION( (charging_coil.speed_max), GLOB.cellrate) - projectile_energy
+			var/post_efficiency_delta = energy_delta/charging_coil.efficiency
+			if(post_efficiency_delta > charging_coil.capacitor.charge)
+				energy_delta = charging_coil.capacitor.use(charging_coil.capacitor.charge)
+				projectile_energy += energy_delta*charging_coil.efficiency
+				wasted_power += (energy_delta* (1-charging_coil.efficiency))
+				speed = CHARGE_SPEED_CONVERSION(projectile_energy, GLOB.cellrate)
+			else
+				projectile_energy += charging_coil.capacitor.use(post_efficiency_delta)
+				wasted_power += (energy_delta/(1-charging_coil.efficiency))
+				speed = CHARGE_SPEED_CONVERSION(projectile_energy, GLOB.cellrate)
 
-		if( (charging_coil.charge_use_speed_range > charging_coil.capacitor.charge) && (speed >= charging_coil.speed_min) && (speed < charging_coil.speed_max)) //max efficiency
+		if( (charging_coil.charge_use_speed_range > charging_coil.capacitor.charge) && (speed == charging_coil.speed_min)) //max efficiency
 			var/power_used = charging_coil.capacitor.use(charging_coil.capacitor.charge)
 			projectile_energy += power_used * charging_coil.efficiency
 			wasted_power += (power_used*(1-charging_coil.efficiency))
-			speed += CHARGE_SPEED_CONVERSION(projectile_energy, GLOB.cellrate)
-		else
-			var/energy_delta = SPEED_CHARGE_CONVERSION(charging_coil.speed_max, GLOB.cellrate) - projectile_energy
-			projectile_energy += charging_coil.capacitor.use(energy_delta/charging_coil.efficiency)
-			wasted_power += (energy_delta/(1-charging_coil.efficiency))
-			speed += CHARGE_SPEED_CONVERSION(projectile_energy, GLOB.cellrate)
+			speed = CHARGE_SPEED_CONVERSION(projectile_energy, GLOB.cellrate)
+
+		else if(speed < charging_coil.speed_max)
+			var/energy_delta = SPEED_CHARGE_CONVERSION((charging_coil.speed_max), GLOB.cellrate) - projectile_energy
+			var/post_efficiency_delta = energy_delta/charging_coil.efficiency
+			if(post_efficiency_delta > charging_coil.capacitor.charge)
+				energy_delta = charging_coil.capacitor.use(charging_coil.capacitor.charge)
+				projectile_energy += energy_delta*charging_coil.efficiency
+				wasted_power += (energy_delta* (1-charging_coil.efficiency))
+				speed = CHARGE_SPEED_CONVERSION(projectile_energy, GLOB.cellrate)
+			else
+				projectile_energy += charging_coil.capacitor.use(post_efficiency_delta)
+				wasted_power += (energy_delta/(1-charging_coil.efficiency))
+				speed = CHARGE_SPEED_CONVERSION(projectile_energy, GLOB.cellrate)
 
 		if(speed >= charging_coil.speed_max)
 			var/power_used = charging_coil.capacitor.use(charging_coil.capacitor.charge)
 			var/used_eff = COILGUN_EFFICIENCY_CURVE(CHARGE_SPEED_CONVERSION(projectile_energy+charging_coil.capacitor.charge, GLOB.cellrate), charging_coil.speed_max, charging_coil.efficiency)
 			projectile_energy += power_used*used_eff
 			wasted_power += (power_used* (1-used_eff))
-			speed += CHARGE_SPEED_CONVERSION(projectile_energy, GLOB.cellrate)
+			speed = CHARGE_SPEED_CONVERSION(projectile_energy, GLOB.cellrate)
 
-	speed = CHARGE_SPEED_CONVERSION(projectile_energy, GLOB.cellrate)
 	update_icon()
 	var/obj/projectile/our_bb = new projectile_type(src)
 	our_bb.damage_force = (speed/10)
@@ -289,3 +306,4 @@
 	return our_bb
 
 #undef COILGUN_EFFICIENCY_CURVE
+#undef BASE_ACCEL
