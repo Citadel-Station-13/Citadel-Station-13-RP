@@ -5277,6 +5277,7 @@
 
 /datum/reagent/nutriment/astrotame
 	name = "Astrotame"
+	id = "astrotame"
 	description = "A space age artificial sweetener."
 	nutriment_factor = 0
 	color = COLOR_WHITE // rgb: 255, 255, 255

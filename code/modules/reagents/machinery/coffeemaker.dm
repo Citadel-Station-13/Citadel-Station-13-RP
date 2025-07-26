@@ -410,7 +410,7 @@
 	desc = "A coffee cartridge manufactured by Piccionaia Coffee, for use with the Modello 3 system."
 	icon = 'icons/obj/food.dmi'
 	icon_state = "cartridge_basic"
-	materials_base = list(MAT_PLASTIC = 1000)
+	materials_base = list(MAT_PLASTIC = 500)
 	var/charges = 4
 	var/list/drink_type = list("coffee" = 120)
 
