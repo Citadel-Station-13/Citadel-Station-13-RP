@@ -166,8 +166,8 @@
 	name = "\improper Training & Briefing Room"
 	icon_state = "security"
 
-/area/security/hanger
-	name = "\improper Security Hanger"
+/area/security/hangar
+	name = "\improper Security Hangar"
 	icon_state = "security_equip_storage"
 
 /area/security/visitor
