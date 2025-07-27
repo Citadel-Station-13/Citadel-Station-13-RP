@@ -4,7 +4,7 @@ import { NtosWindow } from '../layouts';
 
 export const NtosNetMonitor = (props) => {
   const { act, data } = useBackend<any>();
-  const [tab_main, setTab_main] = useSharedState(context, 'tab_main', 1);
+  const [tab_main, setTab_main] = useSharedState('tab_main', 1);
   const {
     ntnetrelays,
     ntnetstatus,

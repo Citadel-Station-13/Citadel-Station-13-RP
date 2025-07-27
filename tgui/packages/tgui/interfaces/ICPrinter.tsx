@@ -68,7 +68,7 @@ const ICPrinterCategories = (props) => {
     debug,
   } = data;
 
-  const [categoryTarget, setcategoryTarget] = useSharedState(context, "categoryTarget", null);
+  const [categoryTarget, setcategoryTarget] = useSharedState("categoryTarget", null);
 
   const selectedCategory
     = filter(cat => cat.name === categoryTarget)(categories)[0];

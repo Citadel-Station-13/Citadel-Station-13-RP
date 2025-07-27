@@ -299,7 +299,7 @@ const PackagingControlsItem = (props) => {
 
 const PackagingControls = (props) => {
   const { act, data } = useBackend<ChemMasterData>();
-  const [pillAmount, setPillAmount] = useSharedState(context, 'pillAmount', 1);
+  const [pillAmount, setPillAmount] = useSharedState('pillAmount', 1);
   const [patchAmount, setPatchAmount] = useSharedState(
     context,
     'patchAmount',
@@ -310,8 +310,8 @@ const PackagingControls = (props) => {
     'bottleAmount',
     1
   );
-  const [vialAmount, setVialAmount] = useSharedState(context, "vialAmount", 1);
-  const [packAmount, setPackAmount] = useSharedState(context, 'packAmount', 1);
+  const [vialAmount, setVialAmount] = useSharedState("vialAmount", 1);
+  const [packAmount, setPackAmount] = useSharedState('packAmount', 1);
   const {
     condi,
     chosen_pill_style,

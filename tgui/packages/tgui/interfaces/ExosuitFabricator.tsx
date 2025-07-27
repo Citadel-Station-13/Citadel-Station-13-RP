@@ -151,12 +151,12 @@ export const ExosuitFabricator = (props) => {
   const [
     displayMatCost,
     setDisplayMatCost,
-  ] = useSharedState(context, "display_mats", false);
+  ] = useSharedState("display_mats", false);
 
   const [
     displayAllMat,
     setDisplayAllMat,
-  ] = useSharedState(context, "display_all_mats", false);
+  ] = useSharedState("display_all_mats", false);
 
   return (
     <Window
@@ -279,7 +279,7 @@ const EjectMaterial = (props) => {
   const [
     removeMaterials,
     setRemoveMaterials,
-  ] = useSharedState(context, "remove_mats_" + name, 1);
+  ] = useSharedState("remove_mats_" + name, 1);
 
   if ((removeMaterials > 1) && (sheets < removeMaterials)) {
     setRemoveMaterials(sheets || 1);
@@ -472,7 +472,7 @@ const PartLists = (props) => {
   const [
     searchText,
     setSearchText,
-  ] = useSharedState(context, "search_text", "");
+  ] = useSharedState("search_text", "");
 
   if (!selectedPartTab || !buildableParts[selectedPartTab]) {
     const validSet = getFirstValidPartSet(partSets);
@@ -560,7 +560,7 @@ const PartCategory = (props) => {
 
   const [
     displayMatCost,
-  ] = useSharedState(context, "display_mats", false);
+  ] = useSharedState("display_mats", false);
 
   return (
     ((!!parts.length || forceShow) && (

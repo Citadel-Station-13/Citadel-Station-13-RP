@@ -24,7 +24,7 @@ const ResearchControllerContent = (props) => {
     consoles,
   } = data;
 
-  const [selectedServer, setSelectedServer] = useSharedState(context, "selectedServer", null);
+  const [selectedServer, setSelectedServer] = useSharedState("selectedServer", null);
 
   let realServer = servers.find(s => s.id === selectedServer);
 
@@ -58,7 +58,7 @@ const ResearchServer = (props) => {
     setSelectedServer,
   } = props;
 
-  const [tab, setTab] = useSharedState(context, "tab", 0);
+  const [tab, setTab] = useSharedState("tab", 0);
 
   return (
     <Section title={server.name} buttons={
