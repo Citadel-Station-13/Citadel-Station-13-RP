@@ -25,7 +25,7 @@
 		return
 	var/details = sanitize(tgui_input_text(user, "What is the ticket for? Avoid entering personally identifiable information in this section. This information should not be used to harrass or otherwise make the person feel uncomfortable. (Max length: 200)", "Ticket Details", max_length = 200))
 	if(length(details) > 200)
-		tgui_alert_async(user, "Entered details too long. 200 character limit.","Error")
+		tgui_alert(user, "Entered details too long. 200 character limit.","Error")
 		return
 	if(!details)
 		return

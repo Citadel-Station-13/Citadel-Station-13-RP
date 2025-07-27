@@ -111,7 +111,7 @@ export const NtosNetChat = (props) => {
                   <Button.Input
                     fluid
                     content="New Channel..."
-                    onCommit={(e, value) => act('PRG_newchannel', {
+                    onCommit={(value) => act('PRG_newchannel', {
                       new_channel_name: value,
                     })} />
                   {all_channels.map(channel => (
@@ -135,7 +135,7 @@ export const NtosNetChat = (props) => {
                     mt={1}
                     content={username + '...'}
                     currentValue={username}
-                    onCommit={(e, value) => act('PRG_changename', {
+                    onCommit={(value) => act('PRG_changename', {
                       new_name: value,
                     })} />
                   {!!can_admin && (
@@ -182,8 +182,8 @@ export const NtosNetChat = (props) => {
                       </Box>
                     )
                   ) || (
-                    <NoChannelDimmer />
-                  )}
+                      <NoChannelDimmer />
+                    )}
                 </Section>
               </Stack.Item>
               {!!in_channel && (
@@ -191,11 +191,11 @@ export const NtosNetChat = (props) => {
                   backgroundColor={(this_client && this_client.muted) && "red"}
                   height="22px"
                   placeholder={(this_client && this_client.muted)
-                    && "You are muted!" || "Message "+title}
+                    && "You are muted!" || "Message " + title}
                   fluid
                   selfClear
                   mt={1}
-                  onEnter={(e, value) => act('PRG_speak', {
+                  onEnter={(value) => act('PRG_speak', {
                     message: value,
                   })} />
               )}
@@ -265,7 +265,7 @@ export const NtosNetChat = (props) => {
                             fluid
                             content="Save log..."
                             defaultValue="new_log"
-                            onCommit={(e, value) => act('PRG_savelog', {
+                            onCommit={(value) => act('PRG_savelog', {
                               log_name: value,
                             })} />
                           <Button.Confirm
@@ -285,13 +285,13 @@ export const NtosNetChat = (props) => {
                             fluid
                             disabled={strong}
                             content="Rename Channel..."
-                            onCommit={(e, value) => act('PRG_renamechannel', {
+                            onCommit={(value) => act('PRG_renamechannel', {
                               new_name: value,
                             })} />
                           <Button.Input
                             fluid
                             content="Set Password..."
-                            onCommit={(e, value) => act('PRG_setpassword', {
+                            onCommit={(value) => act('PRG_setpassword', {
                               new_password: value,
                             })} />
                         </>

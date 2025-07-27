@@ -3,7 +3,7 @@
  * @license MIT
  */
 import { BooleanLike } from "common/react";
-import { InfernoNode } from "inferno";
+import { ReactNode } from "react";
 import { Button, Collapsible, ColorBox, Dropdown, Input, NumberInput, Section, Stack, Tooltip } from "tgui-core/components";
 import { ByondAtomColor, ByondColorString, ColorPicker } from "../common/Color";
 
@@ -64,7 +64,7 @@ interface PreferenceSimpleColorEntrySchema extends PreferenceBaseEntrySchema {
 }
 
 export const GamePreferenceEntry = (props: GamePreferenceEntryProps) => {
-  let innerContent: InfernoNode = null;
+  let innerContent: ReactNode = null;
   switch (props.schema.type) {
     case 'number':
       innerContent = (
@@ -121,7 +121,7 @@ const NumberEntry = (props: {
   return (
     <NumberInput fluid value={props.value}
       minValue={props.schema.minValue || -Infinity} maxValue={props.schema.maxValue || Infinity}
-      step={props.schema.roundTo || undefined} onChange={(e, val) => props.setValue(val)} />
+      step={props.schema.roundTo || undefined} onChange={(val) => props.setValue(val)} />
   );
 };
 
@@ -132,7 +132,7 @@ const StringEntry = (props: {
   readonly setValue: (val: string) => void;
 }, context) => {
   return (
-    <Input fluid value={props.value} onInput={(e, val) => props.setValue(val)} />
+    <Input fluid value={props.value} onInput={(val) => props.setValue(val)} />
   );
 };
 

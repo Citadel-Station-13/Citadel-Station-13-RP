@@ -4,14 +4,14 @@
  */
 
 import { BooleanLike } from "common/react";
-import { InfernoNode } from "inferno";
+import { ReactNode } from "react";
 import { Section } from "../components";
 import { SectionProps } from "../components/Section";
 import { Window, WindowProps } from "./Window";
 
 export interface ModularProps {
-  readonly direct?: InfernoNode;
-  readonly children?: InfernoNode;
+  readonly direct?: ReactNode;
+  readonly children?: ReactNode;
   readonly window?: WindowProps;
   readonly section?: SectionProps;
   readonly scrollable?: BooleanLike;

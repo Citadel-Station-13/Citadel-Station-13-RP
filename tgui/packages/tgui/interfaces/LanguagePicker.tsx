@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useBackend, useLocalState } from '../backend';
 import { Window } from '../layouts';
 import { Section, Stack, Button } from 'tgui-core/components';

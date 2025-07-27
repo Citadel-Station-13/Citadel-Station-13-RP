@@ -16,7 +16,7 @@ export const BotanyEditor = (props) => {
 
   if (activity) {
     return (
-      <Window width={470} height={500} resizable>
+      <Window width={470} height={500}>
         <Window.Content scrollable>
           <NoticeBox info>Scanning...</NoticeBox>
         </Window.Content>
@@ -25,7 +25,7 @@ export const BotanyEditor = (props) => {
   }
 
   return (
-    <Window width={470} height={500} resizable>
+    <Window width={470} height={500}>
       <Window.Content scrollable>
         <Section title="Buffered Genetic Data">
           {disk && (

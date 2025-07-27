@@ -3,7 +3,7 @@ import { useBackend } from "../backend";
 import { Box, Button, Flex, LabeledList, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 import { decodeHtmlEntities } from 'tgui-core/string';
-import { formatPower } from "../format";
+import { formatPower } from "tgui-core/format";
 
 export const ICCircuit = (props) => {
   const { act, data } = useBackend<any>();

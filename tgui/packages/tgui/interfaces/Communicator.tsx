@@ -358,7 +358,7 @@ const PhoneTab = (props) => {
               <Input
                 fluid
                 value={targetAddress}
-                onInput={(e, val) => act("write_target_address", { val: val })} />
+                onInput={(val) => act("write_target_address", { val: val })} />
             </Flex.Item>
             <Flex.Item>
               <Button

@@ -50,7 +50,7 @@ export const IVDrip = (props) => {
                 minValue={minInjectRate}
                 maxValue={maxInjectRate}
                 step={0.1}
-                onChange={(e, value) => act('changeRate', {
+                onChange={(value) => act('changeRate', {
                   rate: value,
                 })}
               />

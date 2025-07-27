@@ -52,10 +52,10 @@ export const Medibot = (props) => {
                   {beaker_total} / {beaker_max}
                 </ProgressBar>
               ) || (
-                <Box color="average">
-                  No beaker loaded.
-                </Box>
-              )}
+                  <Box color="average">
+                    No beaker loaded.
+                  </Box>
+                )}
             </LabeledList.Item>
             <LabeledList.Item label="Behavior Controls" color={locked ? "good" : "bad"}>
               {locked ? "Locked" : "Unlocked"}
@@ -71,7 +71,7 @@ export const Medibot = (props) => {
                   minValue={0}
                   maxValue={heal_threshold_max}
                   value={heal_threshold}
-                  onDrag={(e, val) => act("adj_threshold", { val: val })} />
+                  onDrag={(val) => act("adj_threshold", { val: val })} />
               </LabeledList.Item>
               <LabeledList.Item label="Injection Amount">
                 <NumberInput
@@ -79,7 +79,7 @@ export const Medibot = (props) => {
                   minValue={injection_amount_min}
                   maxValue={injection_amount_max}
                   value={injection_amount}
-                  onDrag={(e, val) => act("adj_inject", { val: val })} />
+                  onDrag={(val) => act("adj_inject", { val: val })} />
               </LabeledList.Item>
               <LabeledList.Item label="Reagent Source">
                 <Button

@@ -30,7 +30,7 @@ export const Aquarium = (props) => {
                 maxValue={maxTemperature}
                 step={1}
                 stepPixelSize={1}
-                onDrag={(e, value) => act('temperature', {
+                onDrag={(value) => act('temperature', {
                   temperature: value,
                 })} />
             </LabeledControls.Item>

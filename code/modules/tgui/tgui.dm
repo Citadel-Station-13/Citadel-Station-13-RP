@@ -39,6 +39,19 @@
 	/// The id of any ByondUi elements that we have opened
 	var/list/open_byondui_elements
 
+	/// The Parent UI
+	var/datum/tgui/parent_ui
+	/// Children of this UI
+	var/list/datum/tgui/children = list()
+
+	//* Modules - experimental *//
+	/// datums to IDs
+	//  todo: rid of this
+	var/list/datum/modules_registered
+	/// processed modules
+	//  todo: rid of this
+	var/list/datum/modules_processed
+
 /**
  * Linter check, do not call.
  */
@@ -72,10 +85,15 @@
 	if(title)
 		src.title = title
 	src.state = src_object.ui_state(user)
+	src.parent_ui = parent_ui
+	if(parent_ui)
+		parent_ui.children += src
 
 /datum/tgui/Destroy()
 	user = null
 	src_object = null
+	for(var/datum/module in modules_registered)
+		unregister_module(module)
 	return ..()
 
 /**
@@ -187,6 +205,13 @@
 			terminate_byondui_elements()
 
 	state = null
+	if(parent_ui)
+		parent_ui.children -= src
+	parent_ui = null
+	// todo: should these hooks be here?
+	src_object.on_ui_close(user, src)
+	for(var/datum/module as anything in modules_registered)
+		module.on_ui_close(user, src, TRUE)
 	qdel(src)
 
 /**
@@ -316,6 +341,28 @@
 		json_data["static_data"] = static_data
 	if(src_object.tgui_shared_states)
 		json_data["shared"] = src_object.tgui_shared_states
+	var/list/modules = list()
+	#warn below
+	// static first
+	if(with_static_data)
+		json_data["static"] = src_object.ui_static_data(user, src)
+		for(var/datum/module as anything in modules_registered)
+			var/id = modules_registered[module]
+			modules[id] = module.ui_static_data(user, src, TRUE)
+	if(with_data)
+		json_data["data"] = src_object.ui_data(user, src)
+		for(var/datum/module as anything in (with_static_data? modules_registered : modules_processed))
+			var/id = modules_registered[module]
+			modules[id] = modules[id] | module.ui_data(user, src, TRUE)
+	if(modules)
+		json_data["modules"] = modules
+	if(src_object.tgui_shared_states)
+		json_data["shared"] = src_object.tgui_shared_states
+	if(!isnull(force_data))
+		json_data["data"] = (json_data["data"] || list()) | force_data
+	if(!isnull(force_modules))
+		json_data["modules"] = (json_data["modules"] || list()) | force_modules
+		#warn ABOVE_HUD_PLANE
 	return json_data
 
 /**
@@ -341,7 +388,7 @@
 		return
 	// Update through a normal call to ui_interact
 	if(status != UI_DISABLED && (autoupdate || force))
-		src_object.ui_interact(user, src)
+		src_object.ui_interact(user, src, parent_ui)
 		return
 	// Update status only
 	var/needs_update = process_status()
@@ -359,8 +406,9 @@
 /datum/tgui/proc/process_status()
 	var/prev_status = status
 	status = src_object.ui_status(user, state)
+	if(parent_ui)
+		status = min(status, parent_ui.status)
 	return prev_status != status
-
 
 /**
  * private
@@ -379,6 +427,38 @@
 		on_act_message(act_type, payload, state)
 		// DEFAULT_QUEUE_OR_CALL_VERB(VERB_CALLBACK(src, PROC_REF(on_act_message), act_type, payload, state))
 		return FALSE
+	#warn below
+	if(type)
+		// micro opt in that these routes are same length so we only copytext once
+		switch(copytext(type, 1, 5))
+			if("act/")	// normal act
+				var/action = copytext(type, 5)
+				log_tgui(user, "Action: [action] [href_list["payload"]]",
+					window = window,
+					src_object = src_object)
+				process_status()
+				if(src_object.ui_act(action, payload, src, new /datum/event_args/actor(usr)))
+					SStgui.update_uis(src_object)
+				return FALSE
+			if("mod/")	// module act
+				var/action = copytext(type, 5)
+				var/id = payload["$m_id"]
+				// log, update status
+				log_tgui(user, "Module: [action] [href_list["payload"]]",
+					window = window,
+					src_object = src_object)
+				process_status()
+				// tell it to route the call
+				// note: this is pretty awful code because raw locate()'s are
+				// almost never a good idea
+				// however given we don't have a way of just tracking a ui module list (yet)
+				// we're kind of stuck doing this
+				// maybe in the future we'll just have ui modules list but for now
+				// eh.
+				if(src_object.ui_route(action, payload, src, id))
+					SStgui.update_uis(src_object)
+				return FALSE
+	#warn above
 	switch(type)
 		if("ready")
 			// Send a full update when the user manually refreshes the UI
@@ -484,21 +564,21 @@
 	if(isnull(interface) && istype(module, /datum/tgui_module))
 		var/datum/tgui_module/actual_module = module
 		interface = actual_module.tgui_id
-	// LAZYINITLIST(modules_registered)
-	// modules_registered[module] = id
-	// if(process)
-	// 	LAZYINITLIST(modules_processed)
-	// 	modules_processed += module
-	// RegisterSignal(module, COMSIG_PARENT_QDELETING, PROC_REF(module_deleted))
-	// RegisterSignal(module, COMSIG_DATUM_PUSH_UI_DATA, PROC_REF(module_send_data))
+	LAZYINITLIST(modules_registered)
+	modules_registered[module] = id
+	if(process)
+		LAZYINITLIST(modules_processed)
+		modules_processed += module
+	RegisterSignal(module, COMSIG_PARENT_QDELETING, PROC_REF(module_deleted))
+	RegisterSignal(module, COMSIG_DATUM_PUSH_UI_DATA, PROC_REF(module_send_data))
 
 /datum/tgui/proc/unregister_module(datum/module)
-	// modules_processed -= module
-	// modules_registered -= module
-	// UnregisterSignal(module, list(
-	// 	COMSIG_PARENT_QDELETING,
-	// 	COMSIG_DATUM_PUSH_UI_DATA,
-	// ))
+	modules_processed -= module
+	modules_registered -= module
+	UnregisterSignal(module, list(
+		COMSIG_PARENT_QDELETING,
+		COMSIG_DATUM_PUSH_UI_DATA,
+	))
 
 /datum/tgui/proc/module_deleted(datum/source)
 	SIGNAL_HANDLER
@@ -510,12 +590,12 @@
 	if(!isnull(ui) && ui != src)
 		return
 	// todo: this is force because otherwise static data can be desynced. should static data be on another proc instead?
-	// push_modules(
-	// 	updates = list(
-	// 		(modules_registered[source]) = data,
-	// 	),
-	// 	force = TRUE,
-	// )
+	push_modules(
+		updates = list(
+			(modules_registered[source]) = data,
+		),
+		force = TRUE,
+	)
 
 //* Helpers - Invoked from ui_act() *//
 

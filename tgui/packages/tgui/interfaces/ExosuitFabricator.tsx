@@ -1,7 +1,7 @@
 import { classes } from 'tgui-core/react';
 import { uniqBy } from 'common/collections';
 import { useBackend, useSharedState } from '../backend';
-import { formatSiUnit, formatMoney } from '../format';
+import { formatSiUnit, formatMoney } from "tgui-core/format";
 import { Flex, Section, Tabs, Box, Button, Fragment, ProgressBar, NumberInput, Icon, Input, Tooltip } from 'tgui-core/components';
 import { Window } from '../layouts';
 import { createSearch, toTitleCase } from 'tgui-core/string';
@@ -294,7 +294,7 @@ const EjectMaterial = (props) => {
         minValue={1}
         maxValue={sheets || 1}
         initial={1}
-        onDrag={(e, val) => {
+        onDrag={(val) => {
           const newVal = parseInt(val, 10);
           if (Number.isInteger(newVal)) {
             setRemoveMaterials(newVal);

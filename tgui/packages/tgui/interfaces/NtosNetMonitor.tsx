@@ -185,7 +185,7 @@ const MainPage = (props) => {
                 minValue={minlogs}
                 maxValue={maxlogs}
                 width="39px"
-                onChange={(e, value) => act('updatemaxlogs', {
+                onChange={(value) => act('updatemaxlogs', {
                   new_number: value,
                 })}
               />

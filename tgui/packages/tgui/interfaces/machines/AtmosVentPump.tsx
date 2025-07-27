@@ -98,7 +98,7 @@ export const AtmosVentPumpControl = (props: AtmosVentPumpControlProps) => {
             minValue={0}
             step={10}
             maxValue={101.325 * 500}
-            onChange={(e, val) => props.internalSet?.(val)} />
+            onChange={(val) => props.internalSet?.(val)} />
         </LabeledList.Item>
         <LabeledList.Item label="External Target"
           buttons={(
@@ -114,7 +114,7 @@ export const AtmosVentPumpControl = (props: AtmosVentPumpControlProps) => {
             minValue={0}
             step={10}
             maxValue={101.325 * 500}
-            onChange={(e, val) => props.externalSet?.(val)} />
+            onChange={(val) => props.externalSet?.(val)} />
         </LabeledList.Item>
       </LabeledList>
     </Section>

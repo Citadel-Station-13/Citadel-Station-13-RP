@@ -104,7 +104,7 @@ export const XenoarchSpectrometer = (props) => {
                 maxValue={maser_wavelength_max}
                 format={val => val + " MHz"}
                 step={10}
-                onDrag={(e, val) => act("maserWavelength", { wavelength: val })} />
+                onDrag={(val) => act("maserWavelength", { wavelength: val })} />
             </LabeledList.Item>
           </LabeledList>
         </Section>
@@ -180,7 +180,7 @@ export const XenoarchSpectrometer = (props) => {
                 maxValue={coolant_usage_max}
                 stepPixelSize={50}
                 format={val => val + " u/s"}
-                onDrag={(e, val) => act("coolantRate", { coolant: val })} />
+                onDrag={(val) => act("coolantRate", { coolant: val })} />
             </LabeledList.Item>
             <LabeledList.Item label="Coolant Purity">
               <ProgressBar

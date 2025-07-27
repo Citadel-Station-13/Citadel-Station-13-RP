@@ -29,7 +29,7 @@ export const StationAlertConsoleContent = (props) => {
           </li>
         )}
         {category.alarms.map(alarm => {
-          let footer = "";
+          let footer;
 
           // To be clear, this is never the case unless the user is an AI.
           if (alarm.has_cameras) {

@@ -67,7 +67,7 @@ export const TeleporterConsoleOperational = (props) => {
             minValue={0}
             maxValue={100000}
             suppressFlicker={250}
-            onChange={(e, value) => act('set_recharge', {
+            onChange={(value) => act('set_recharge', {
               target: value,
             })} />
         </Section>

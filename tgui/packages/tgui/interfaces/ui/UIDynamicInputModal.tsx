@@ -180,7 +180,7 @@ const DynamicEntryNumber = (props: DynamicEntryNumberProps) => {
   let current = props.current === undefined ? props.entry.default === null ? 0 : props.entry.default : props.current;
   return (
     <NumberInput value={current} minValue={props.entry.constraints[0]} maxValue={props.entry.constraints[1]}
-      onChange={(e, val) => props.pick(
+      onChange={(val) => props.pick(
         props.entry.constraints[2] === null ? val : round(val, props.entry.constraints[2])
       )} width="100%" />
   );
@@ -195,7 +195,7 @@ const DynamicEntryString = (props: DynamicEntryStringProps) => {
   let current = props.current === undefined ? props.entry.default === null ? "" : props.entry.default : props.current;
   return (
     <Input value={current} maxLength={props.entry.constraints[0]}
-      onInput={(e, val) => props.pick(
+      onInput={(val) => props.pick(
         val
       )} width="100%" />
   );

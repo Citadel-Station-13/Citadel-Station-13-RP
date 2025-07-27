@@ -43,7 +43,7 @@ const StackCraftingEntry = (props: StackCraftingEntryProps) => {
           </Stack.Item>
           <Stack.Item>
             <NumberInput width={2.5} value={amt}
-              onChange={(e, val) => setAmt(
+              onChange={(val) => setAmt(
                 Math.max(
                   Math.min(
                     Math.min(
@@ -98,7 +98,7 @@ export const StackCrafting = (props) => {
             <Input
               autoFocus
               value={searchText}
-              onInput={(e, val) => setSearchText(val)}
+              onInput={(val) => setSearchText(val)}
               mx={1} />
           </>
         )}>

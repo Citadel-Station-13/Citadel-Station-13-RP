@@ -1,8 +1,9 @@
-import { BooleanLike } from '../../common/react';
 import { useBackend, useLocalState } from '../backend';
 import { Section, Stack, Button, Box, NoticeBox } from 'tgui-core/components';
 import { Window } from '../layouts';
 import { sanitizeText } from '../sanitize';
+import { useState } from 'react';
+import { BooleanLike } from 'tgui-core/react';
 
 // todo: this stuff should be generic constants somewhere for species manip
 
@@ -35,8 +36,8 @@ enum SpeciesSpawnFlags {
 
 export const SpeciesPicker = (props) => {
   const { act, data } = useBackend<SpeciesPickerContext>();
-  const [selectedCategory, setSelectedCategory] = useState<String | null>(null);
-  const [selectedSpecies, setSelectedSpecies] = useState<String | null>(data.default);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedSpecies, setSelectedSpecies] = useState<string | null>(data.default);
   const { whitelisted = [] } = data;
   let categories: string[] = [];
   let species: Species[] = [];
@@ -140,7 +141,7 @@ export const SpeciesPicker = (props) => {
                             Please play responsibly.
                           </NoticeBox>
                         ) : (
-                          <NoticeBox warning textAlign="center">
+                          <NoticeBox textAlign="center">
                             This is a whitelisted species.
                             You can select it, but cannot join the game with it without a whitelist.
                           </NoticeBox>

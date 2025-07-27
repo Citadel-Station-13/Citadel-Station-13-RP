@@ -217,7 +217,7 @@ const TelecommsMultitoolMenuPolymorphicOptions = (props) => {
               unit="gigameters"
               stepPixelSize={4}
               format={val => val + 1}
-              onDrag={(e, val) => act("range", { range: val })} />
+              onDrag={(val) => act("range", { range: val })} />
           </LabeledList.Item>
         ) : null}
       </LabeledList>

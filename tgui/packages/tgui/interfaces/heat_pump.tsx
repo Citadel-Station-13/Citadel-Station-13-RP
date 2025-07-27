@@ -55,7 +55,7 @@ export const heat_pump = (props) => {
                 minValue={lowest_temp}
                 maxValue={highest_temp}
                 step={10}
-                onChange={(e, value) => act('target_temp', {
+                onChange={(value) => act('target_temp', {
                   temperature: value,
                 })} />
               <Button

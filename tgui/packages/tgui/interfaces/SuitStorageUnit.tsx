@@ -174,7 +174,7 @@ const SuitStorageUnitPanel = (props) => {
               stepPixelSize={40}
               color={uv_super ? "red" : "green"}
               format={val => val ? "15nm" : "185nm"}
-              onChange={(e, val) => act("toggleUV")} />
+              onChange={(val) => act("toggleUV")} />
           </Flex.Item>
           <Flex.Item basis="50%" textAlign="center">
             <Icon name="biohazard" size={3} color="orange" />

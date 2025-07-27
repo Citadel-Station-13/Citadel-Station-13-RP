@@ -1,4 +1,4 @@
-import { Fragment } from "inferno";
+import { Fragment } from "react";
 import { useBackend } from "../backend";
 import { Box, Button, Flex, LabeledList, Slider, Section } from "tgui-core/components";
 import { Window } from "../layouts";
@@ -89,7 +89,7 @@ const AtmoSensor = (props) => {
     phoron,
   } = sensor.sensor_data;
 
-  let labeledListContents = [];
+  let labeledListContents: any[] = [];
   if (pressure) {
     labeledListContents.push((
       <LabeledList.Item label="Pressure">{pressure} kPa</LabeledList.Item>

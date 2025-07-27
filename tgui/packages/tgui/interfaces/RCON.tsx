@@ -1,5 +1,5 @@
 import { round } from 'tgui-core/math';
-import { formatPower } from '../format';
+import { formatPower } from "tgui-core/format";
 import { Fragment } from 'react';
 import { useBackend, useLocalState } from "../backend";
 import { Box, Button, Icon, LabeledList, ProgressBar, Stack, Section, Tabs, Slider } from "tgui-core/components";
@@ -222,7 +222,7 @@ const SMESControls = (props) => {
               step={5}
               stepPixelSize={4}
               format={value => formatPower(available * 1000, 1) + "/" + formatPower(value * 1000, 1)}
-              onDrag={(e, value) => act(changeAmountAct, {
+              onDrag={(value) => act(changeAmountAct, {
                 target: value,
                 smes: RCON_tag,
               })} />

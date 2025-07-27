@@ -71,7 +71,7 @@ export const TGUICardMod = (props: CardModProps) => {
             {data.can_rename ? (
               <Input
                 value={data.card_name}
-                onChange={(e, val) => act('name', { set: val })} />
+                onChange={(val) => act('name', { set: val })} />
             ) : (
               data.card_name || "-----"
             )}
@@ -81,7 +81,7 @@ export const TGUICardMod = (props: CardModProps) => {
             {data.modify_account ? (
               <Input
                 value={data.card_account}
-                onChange={(e, val) => act('account', { set: val })} />
+                onChange={(val) => act('account', { set: val })} />
             ) : (
               data.card_account || "-----"
             )}
@@ -121,7 +121,7 @@ export const TGUICardMod = (props: CardModProps) => {
               {data.can_rank ? (
                 <Input
                   value={data.card_rank}
-                  onChange={(e, val) => act('rank_custom', { rank: val })} />
+                  onChange={(val) => act('rank_custom', { rank: val })} />
               ) : (
                 data.card_rank || "-----"
               )}
@@ -131,7 +131,7 @@ export const TGUICardMod = (props: CardModProps) => {
               {data.can_rank ? (
                 <Input
                   value={data.card_assignment}
-                  onChange={(e, val) => act('assignment', { set: val })} />
+                  onChange={(val) => act('assignment', { set: val })} />
               ) : (
                 data.card_assignment || "-----"
               )}

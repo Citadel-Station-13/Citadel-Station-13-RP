@@ -115,8 +115,8 @@
 		ui = new(user, src, "ListInputWindow")
 		ui.open()
 
-/datum/tgui_list_input/ui_close(mob/user)
-	. = ..()
+/datum/tgui_list_input/on_ui_close(mob/user, datum/tgui/ui, embedded)
+	..()
 	closed = TRUE
 
 /datum/tgui_list_input/ui_state(mob/user)

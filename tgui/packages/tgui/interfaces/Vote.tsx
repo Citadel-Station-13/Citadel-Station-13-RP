@@ -122,7 +122,7 @@ const VoteConfig = (props) => {
                   value={ghost_weight}
                   minValue={-1}
                   maxValue={100}
-                  onChange={(e, value) => act('ghost_weight', { ghost_weight: value })}
+                  onChange={(value) => act('ghost_weight', { ghost_weight: value })}
                 />
               </Stack.Item>
               <Stack.Item>

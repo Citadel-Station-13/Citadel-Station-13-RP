@@ -95,7 +95,7 @@ export const Jukebox = (props) => {
                   bad: [0, 25],
                 }}
                 format={(val) => round(val, 1) + '%'}
-                onChange={(e, val) =>
+                onChange={(val) =>
                   act('volume', { val: round(val / 100, 2) })}
               />
             </LabeledList.Item>

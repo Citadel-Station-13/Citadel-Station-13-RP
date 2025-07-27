@@ -42,7 +42,7 @@ export const SheetSilo = (props) => {
                   </Stack.Item>
                   <Stack.Item>
                     <NumberInput width={2.5} value={dropAmounts[k] || 1}
-                      onChange={(e, val) => setDropAmount(k, Math.floor(val))} />
+                      onChange={(val) => setDropAmount(k, Math.floor(val))} />
                   </Stack.Item>
                   <Stack.Item>
                     <Button icon="plus"

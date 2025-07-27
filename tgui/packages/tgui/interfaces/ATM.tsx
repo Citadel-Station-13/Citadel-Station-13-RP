@@ -93,10 +93,10 @@ const LoginElement = (props) => {
             <Button onClick={() => act('eject_card')} textAlign="right" icon="sim-card">{data.inserted_card_name}</Button><br />
           </LabeledList.Item>
           <LabeledList.Item label="Account Number">
-            <Input placeholder="Account Number" onChange={(e, value) => setAcc(value)} textAlign="right" /><br />
+            <Input placeholder="Account Number" onChange={(value) => setAcc(value)} textAlign="right" /><br />
           </LabeledList.Item>
           <LabeledList.Item label="PIN">
-            <Input placeholder="PIN" onChange={(e, value) => setPin(value)} textAlign="right" /><br /><br />
+            <Input placeholder="PIN" onChange={(value) => setPin(value)} textAlign="right" /><br /><br />
           </LabeledList.Item>
           <Button onClick={() => act('attempt_authentication', { pin: epin, acc: eacc })} icon="key"> Confirm and Authenticate </Button><br />
         </LabeledList>
@@ -239,13 +239,13 @@ const ATMElement = (props) => {
         <Collapsible title="Transfer Funds" headerProps={{ icon: "money-check" }}>
           <LabeledList>
             <LabeledList.Item label="Target">
-              <Input placeholder="Target" onChange={(e, value) => setTransferTarget(value)} />
+              <Input placeholder="Target" onChange={(value) => setTransferTarget(value)} />
             </LabeledList.Item>
             <LabeledList.Item label="Purpose">
-              <Input placeholder="Purpose" onChange={(e, value) => setTransferPurpose(value)} />
+              <Input placeholder="Purpose" onChange={(value) => setTransferPurpose(value)} />
             </LabeledList.Item>
             <LabeledList.Item label="Amount">
-              <Input placeholder="Amount" onChange={(e, value) => setTransferAmount(value)} />
+              <Input placeholder="Amount" onChange={(value) => setTransferAmount(value)} />
             </LabeledList.Item>
             <Button onClick={() => act('transfer', { target_acc_number: TransferTarget, purpose: TransferPurpose, funds_amount: TransferAmount })} icon="check">Confirm Transfer</Button>
           </LabeledList>
@@ -254,7 +254,7 @@ const ATMElement = (props) => {
         <Collapsible title="Withdraw Funds" headerProps={{ icon: "money-bill-alt" }}>
           <LabeledList>
             <LabeledList.Item label="Amount">
-              <Input placeholder="Amount" onChange={(e, value) => setWithdrawAmount(value)} />
+              <Input placeholder="Amount" onChange={(value) => setWithdrawAmount(value)} />
             </LabeledList.Item>
             <LabeledList.Item label="Method Selection">
               <Button.Checkbox checked={EWallet} onClick={() => setEWallet(!EWallet)} >EWallet</Button.Checkbox>

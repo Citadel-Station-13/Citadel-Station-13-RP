@@ -12,7 +12,7 @@
  * @license MIT
  */
 
-import { InfernoNode } from "inferno";
+import { ReactNode } from "react";
 import { useLocalState, useModule } from "../../backend";
 import { Input, Section, Stack, Tabs } from "tgui-core/components";
 import { Modular } from "../../layouts/Modular";
@@ -79,7 +79,7 @@ export const TGUIGuidebookReagents = (props) => {
   const [activeTab, setActiveTab] = useState<string | null>(null);
   const [searchText, setSearchText] = useState<string | null>(null);
 
-  let rendered: InfernoNode | null = null;
+  let rendered: ReactNode | null = null;
   let categorizedReagents: Record<string, TGUIGuidebookReagent[]> = {};
   let categorizedReactions: Record<string, TGUIGuidebookReaction[]> = {};
 
@@ -162,7 +162,7 @@ export const TGUIGuidebookReagents = (props) => {
               </Tabs>
             </Stack.Item>
             <Stack.Item>
-              Search <Input width="100px" onInput={(e, val) => setSearchText(val.toLowerCase())} />
+              Search <Input width="100px" onInput={(val) => setSearchText(val.toLowerCase())} />
             </Stack.Item>
           </Stack>
         </Stack.Item>

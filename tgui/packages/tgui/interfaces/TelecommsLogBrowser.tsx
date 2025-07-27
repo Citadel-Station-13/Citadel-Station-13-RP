@@ -3,7 +3,7 @@ import { BooleanLike } from 'tgui-core/react';
 import { Fragment } from 'react';
 import { useBackend } from "../backend";
 import { Box, Button, Flex, NoticeBox, LabeledList, Section, Collapsible } from "tgui-core/components";
-import { formatTime } from '../format';
+import { formatTime } from "tgui-core/format";
 import { Window } from "../layouts";
 
 interface TelecommsLogBrowserContext {

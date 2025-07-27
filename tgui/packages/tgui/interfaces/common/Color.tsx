@@ -259,7 +259,7 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
                           maxValue={255}
                           step={1}
                           value={this.state.cRed}
-                          onDrag={(e, val) => {
+                          onDrag={(val) => {
                             this.setState((prev) => ({
                               ...prev,
                               cRed: val,
@@ -274,7 +274,7 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
                           maxValue={255}
                           step={1}
                           value={this.state.cGreen}
-                          onDrag={(e, val) => {
+                          onDrag={(val) => {
                             this.setState((prev) => ({
                               ...prev,
                               cGreen: val,
@@ -289,7 +289,7 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
                           maxValue={255}
                           step={1}
                           value={this.state.cBlue}
-                          onDrag={(e, val) => {
+                          onDrag={(val) => {
                             this.setState((prev) => ({
                               ...prev,
                               cBlue: val,
@@ -308,7 +308,7 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
                           maxValue={360}
                           step={1}
                           value={cHue}
-                          onDrag={(e, val) => {
+                          onDrag={(val) => {
                             let [r, g, b] = HSVtoRGB(val, cSat, cVal).map((n) => round(n, 2));
                             this.setState((prev) => ({
                               ...prev,
@@ -326,8 +326,8 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
                           maxValue={100}
                           step={0.5}
                           value={cSat}
-                          onDrag={(e, val) => {
-                            let [r, g, b] = HSVtoRGB(cHue, val, cVal).map((n) => round(n, 2));
+                          onDrag={(val) => {
+                            let [r, g, b] = HSVtoRGB(cHuval, cVal).map((n) => round(n, 2));
                             this.setState((prev) => ({
                               ...prev,
                               cRed: r,
@@ -344,7 +344,7 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
                           maxValue={100}
                           step={0.5}
                           value={cVal}
-                          onDrag={(e, val) => {
+                          onDrag={(val) => {
                             let [r, g, b] = HSVtoRGB(cHue, cSat, val).map((n) => round(n, 2));
                             this.setState((prev) => ({
                               ...prev,
@@ -367,7 +367,7 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
                             maxValue={255}
                             step={1}
                             value={this.state.cAlpha}
-                            onDrag={(e, val) => {
+                            onDrag={(val) => {
                               this.setState((prev) => ({
                                 ...prev,
                                 cAlpha: val,

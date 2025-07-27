@@ -654,7 +654,7 @@ const ResearchConsoleConstructor = (props) => {
                       width="100px"
                       value={ejectAmt}
                       maxValue={mat.sheets}
-                      onDrag={(e, val) => setEjectAmt(val)} />
+                      onDrag={(val) => setEjectAmt(val)} />
                     <Button
                       icon="eject"
                       disabled={!mat.removable}

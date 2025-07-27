@@ -323,7 +323,7 @@ const NtosEmailClientNewMessage = (props) => {
           <Input
             fluid
             value={msg_title}
-            onInput={(e, val) => act("edit_title", { val: val })} />
+            onInput={(val) => act("edit_title", { val: val })} />
         </LabeledList.Item>
         <LabeledList.Item label="Recipient" verticalAlign="top">
           <Flex>
@@ -331,7 +331,7 @@ const NtosEmailClientNewMessage = (props) => {
               <Input
                 fluid
                 value={msg_recipient}
-                onInput={(e, val) => act("edit_recipient", { val: val })} />
+                onInput={(val) => act("edit_recipient", { val: val })} />
             </Flex.Item>
             <Flex.Item>
               <Button
@@ -416,13 +416,13 @@ const NtosEmailClientLogin = (props) => {
           <Input
             fluid
             value={stored_login}
-            onInput={(e, val) => act("edit_login", { val: val })} />
+            onInput={(val) => act("edit_login", { val: val })} />
         </LabeledList.Item>
         <LabeledList.Item label="Password">
           <Input
             fluid
             value={stored_password}
-            onInput={(e, val) => act("edit_password", { val: val })} />
+            onInput={(val) => act("edit_password", { val: val })} />
         </LabeledList.Item>
       </LabeledList>
       <Button

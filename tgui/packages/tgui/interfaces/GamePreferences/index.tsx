@@ -9,7 +9,7 @@
  * @license MIT
  */
 import { BooleanLike } from "common/react";
-import { InfernoNode } from "inferno";
+import { ReactNode } from "react";
 import { getModuleData, useBackend, useLocalState } from "../../backend";
 import { Button, Flex, Section, Stack, Tooltip } from "tgui-core/components";
 import { Window } from "../../layouts";
@@ -33,7 +33,7 @@ const GamePreferencesTabs = (props) => {
   let categoryCache = computeGamePreferenceCategoryCache(data.entries);
   let [activeCategory, setActiveCategory] = useState<string>(Object.keys(categoryCache)[0]);
   let [activeMiddleware, setActiveMiddleware] = useState<string | null>(null);
-  let tabs: InfernoNode[] = [];
+  let tabs: ReactNode[] = [];
   Object.keys(categoryCache).forEach((cat) => tabs.push(
     <Stack.Item grow={1}>
       <GamePreferencesTab
@@ -98,7 +98,7 @@ export const GamePreferences = (props) => {
   // sigh
   // this is shitcode
   // todo: refactor game prefs ui again
-  const [activeCapture, setActiveCapture] = useState<InfernoNode | null>(null);
+  const [activeCapture, setActiveCapture] = useState<ReactNode | null>(null);
 
   return (
     <Window width={600} height={800} title="Game Preferences">

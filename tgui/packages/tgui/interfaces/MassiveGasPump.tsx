@@ -1,6 +1,6 @@
 import { useBackend } from "../backend";
 import { Button, LabeledList, ProgressBar, Section, AnimatedNumber } from "tgui-core/components";
-import { formatPower } from '../format';
+import { formatPower } from "tgui-core/format";
 import { Fragment } from 'react';
 import { Window } from "../layouts";
 

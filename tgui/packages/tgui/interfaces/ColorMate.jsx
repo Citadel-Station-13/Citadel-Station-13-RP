@@ -155,7 +155,7 @@ export const ColorMateMatrix = (props) => {
             maxValue={10}
             step={0.01}
             value={matrixcolors.rr}
-            onChange={(e, value) =>
+            onChange={(value) =>
               act('set_matrix_color', {
                 color: 1,
                 value,
@@ -171,7 +171,7 @@ export const ColorMateMatrix = (props) => {
             maxValue={10}
             step={0.01}
             value={matrixcolors.gr}
-            onChange={(e, value) =>
+            onChange={(value) =>
               act('set_matrix_color', {
                 color: 4,
                 value,
@@ -187,7 +187,7 @@ export const ColorMateMatrix = (props) => {
             maxValue={10}
             step={0.01}
             value={matrixcolors.br}
-            onChange={(e, value) =>
+            onChange={(value) =>
               act('set_matrix_color', {
                 color: 7,
                 value,
@@ -205,7 +205,7 @@ export const ColorMateMatrix = (props) => {
             maxValue={10}
             step={0.01}
             value={matrixcolors.rg}
-            onChange={(e, value) =>
+            onChange={(value) =>
               act('set_matrix_color', {
                 color: 2,
                 value,
@@ -221,7 +221,7 @@ export const ColorMateMatrix = (props) => {
             maxValue={10}
             step={0.01}
             value={matrixcolors.gg}
-            onChange={(e, value) =>
+            onChange={(value) =>
               act('set_matrix_color', {
                 color: 5,
                 value,
@@ -237,7 +237,7 @@ export const ColorMateMatrix = (props) => {
             maxValue={10}
             step={0.01}
             value={matrixcolors.bg}
-            onChange={(e, value) =>
+            onChange={(value) =>
               act('set_matrix_color', {
                 color: 8,
                 value,
@@ -255,7 +255,7 @@ export const ColorMateMatrix = (props) => {
             maxValue={10}
             step={0.01}
             value={matrixcolors.rb}
-            onChange={(e, value) =>
+            onChange={(value) =>
               act('set_matrix_color', {
                 color: 3,
                 value,
@@ -271,7 +271,7 @@ export const ColorMateMatrix = (props) => {
             maxValue={10}
             step={0.01}
             value={matrixcolors.gb}
-            onChange={(e, value) =>
+            onChange={(value) =>
               act('set_matrix_color', {
                 color: 6,
                 value,
@@ -287,7 +287,7 @@ export const ColorMateMatrix = (props) => {
             maxValue={10}
             step={0.01}
             value={matrixcolors.bb}
-            onChange={(e, value) =>
+            onChange={(value) =>
               act('set_matrix_color', {
                 color: 9,
                 value,
@@ -305,7 +305,7 @@ export const ColorMateMatrix = (props) => {
             maxValue={10}
             step={0.01}
             value={matrixcolors.cr}
-            onChange={(e, value) =>
+            onChange={(value) =>
               act('set_matrix_color', {
                 color: 10,
                 value,
@@ -321,7 +321,7 @@ export const ColorMateMatrix = (props) => {
             maxValue={10}
             step={0.01}
             value={matrixcolors.cg}
-            onChange={(e, value) =>
+            onChange={(value) =>
               act('set_matrix_color', {
                 color: 11,
                 value,
@@ -337,7 +337,7 @@ export const ColorMateMatrix = (props) => {
             maxValue={10}
             step={0.01}
             value={matrixcolors.cb}
-            onChange={(e, value) =>
+            onChange={(value) =>
               act('set_matrix_color', {
                 color: 12,
                 value,
@@ -370,7 +370,7 @@ export const ColorMateHSV = (props) => {
             maxValue={360}
             step={1}
             value={buildhue}
-            onDrag={(e, value) =>
+            onDrag={(value) =>
               act('set_hue', {
                 buildhue: value,
               })
@@ -386,7 +386,7 @@ export const ColorMateHSV = (props) => {
             maxValue={10}
             step={0.01}
             value={buildsat}
-            onDrag={(e, value) =>
+            onDrag={(value) =>
               act('set_sat', {
                 buildsat: value,
               })
@@ -402,7 +402,7 @@ export const ColorMateHSV = (props) => {
             maxValue={10}
             step={0.01}
             value={buildval}
-            onDrag={(e, value) =>
+            onDrag={(value) =>
               act('set_val', {
                 buildval: value,
               })

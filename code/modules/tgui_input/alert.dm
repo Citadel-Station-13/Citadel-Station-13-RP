@@ -1,3 +1,8 @@
+/proc/tgui_alert_aync(mob/user, message = "", title, list/buttons = list("Ok"), timeout = 0, autofocus = TRUE, ui_state = GLOB.always_state, datum/callback/on_finish)
+	set waitfor = FALSE
+	var/result = tgui_alert(user, message, title, buttons, timeout, autofocus, ui_state)
+	on_finish?.Invoke(result)
+
 /**
  * Creates a TGUI alert window and returns the user's response.
  *
@@ -97,8 +102,8 @@
 		ui = new(user, src, "AlertModal")
 		ui.open()
 
-/datum/tgui_alert/ui_close(mob/user)
-	. = ..()
+/datum/tgui_alert/on_ui_close(mob/user, datum/tgui/ui, embedded)
+	..()
 	closed = TRUE
 
 /datum/tgui_alert/ui_state(mob/user)

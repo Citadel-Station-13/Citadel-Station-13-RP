@@ -1,7 +1,7 @@
 import { toFixed } from 'tgui-core/math';
 import { useBackend } from '../backend';
 import { Button, LabeledControls, NumberInput, RoundGauge, Section } from 'tgui-core/components';
-import { formatSiUnit } from '../format';
+import { formatSiUnit } from "tgui-core/format";
 import { Window } from '../layouts';
 
 const formatPressure = value => {
@@ -58,7 +58,7 @@ export const Tank = (props) => {
                 unit="kPa"
                 minValue={data.minReleasePressure}
                 maxValue={data.maxReleasePressure}
-                onChange={(e, value) => act('pressure', {
+                onChange={(value) => act('pressure', {
                   pressure: value,
                 })} />
               <Button

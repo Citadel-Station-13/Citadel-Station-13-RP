@@ -1,5 +1,5 @@
 import { useBackend } from "../backend";
-import { Fragment } from "inferno";
+import { Fragment } from "react";
 import { Box, Button, LabeledList, Section, Table } from "tgui-core/components";
 import { Window } from "../layouts";
 

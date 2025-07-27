@@ -43,7 +43,7 @@ export const AtmosTrinaryFilter = (props) => {
       additionalListItems={(
         <LabeledList.Item label="Flow">
           <NumberInput minValue={0} maxValue={data.maxRate}
-            value={data.rate} onChange={(e, val) => act('rate', { rate: val })}
+            value={data.rate} onChange={(val) => act('rate', { rate: val })}
             unit="L/s" />
         </LabeledList.Item>
       )}>

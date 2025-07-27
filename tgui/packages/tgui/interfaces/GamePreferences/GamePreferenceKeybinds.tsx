@@ -5,7 +5,7 @@
 import { IEKeyboardEventKeycodeToBYOND } from "common/keyboard";
 import { KEY_ALT, KEY_CTRL, KEY_ESCAPE, KEY_SHIFT } from "common/keycodes";
 import { BooleanLike } from "common/react";
-import { Component, InfernoNode } from "inferno";
+import { Component, ReactNode } from "react";
 import { useLocalState } from "../../backend";
 import { Box, Button, Dimmer, Section, Stack, Table, Tooltip } from "tgui-core/components";
 import { KeyEvent } from "../../events";
@@ -107,7 +107,7 @@ export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenPr
   // that would probably be smart.
   // oh well! problems for later.
   // (we all know no one's touching this again)
-  const [activeCapture, setActiveCapture] = useState<InfernoNode | null>(null);
+  const [activeCapture, setActiveCapture] = useState<ReactNode | null>(null);
 
   return (
     <Section fill scrollable>

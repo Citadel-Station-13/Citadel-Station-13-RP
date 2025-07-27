@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { useBackend, useLocalState } from '../backend';
 import { Box, Button, Icon, Input, LabeledList, Section, Tabs } from "tgui-core/components";
 import { ComplexModal, modalOpen } from "./common/ComplexModal";
@@ -87,7 +87,7 @@ const GeneralRecordsList = (_properties, context) => {
   const [
     searchText,
     setSearchText,
-  ] = useState('');
+  ] = useState<string>('something');
 
   const records = selectRecords(data.records, searchText);
   return (
@@ -101,7 +101,7 @@ const GeneralRecordsList = (_properties, context) => {
       <Input
         fluid
         placeholder="Search by Name, DNA, or ID"
-        onInput={(e, value) => setSearchText(value)} />
+        onInput={(value) => setSearchText(value)} />
       <Box mt="0.5rem">
         {records.map((record, i) => (
           <Button

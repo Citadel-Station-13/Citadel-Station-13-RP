@@ -86,8 +86,8 @@
 		ui = new(user, src, "CheckboxInput")
 		ui.open()
 
-/datum/tgui_checkbox_input/ui_close(mob/user)
-	. = ..()
+/datum/tgui_checkbox_input/on_ui_close(mob/user, datum/tgui/ui, embedded)
+	..()
 	closed = TRUE
 
 /datum/tgui_checkbox_input/ui_state(mob/user)
