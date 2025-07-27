@@ -79,7 +79,7 @@
 
 	legacy_discharged_fire_sound = 'sound/weapons/gunshot/gunshot_pistol.ogg'
 
-GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/magnetic/nt_protomag/sidearm/no_pin, /nt_protomag/sidearm, "nt-magpistol", /datum/prototype/techweb_node/faction_intrinsic/nanotrasen/magnetic_weapons)
+GENERATE_DESIGN_FOR_PROTOLATHE(/obj/item/gun/projectile/ballistic/magnetic/nt_protomag/sidearm/no_pin, /nt_protomag/sidearm, "nt-magpistol", /datum/prototype/techweb_node/faction_intrinsic/nanotrasen/magnetic_weapons)
 /obj/item/gun/projectile/ballistic/magnetic/nt_protomag/sidearm/no_pin
 	pin = null
 
@@ -129,6 +129,6 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/magnetic/nt
 
 	legacy_discharged_fire_sound = 'sound/weapons/gunshot/gunshot_strong.ogg'
 
-GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/magnetic/nt_protomag/rifle, /nt_protomag/rifle, "nt-magrifle", /datum/prototype/techweb_node/faction_intrinsic/nanotrasen/magnetic_weapons)
+GENERATE_DESIGN_FOR_PROTOLATHE(/obj/item/gun/projectile/ballistic/magnetic/nt_protomag/rifle, /nt_protomag/rifle, "nt-magrifle", /datum/prototype/techweb_node/faction_intrinsic/nanotrasen/magnetic_weapons)
 /obj/item/gun/projectile/ballistic/magnetic/nt_protomag/rifle/no_pin
 	pin = null

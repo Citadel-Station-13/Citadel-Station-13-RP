@@ -17,17 +17,17 @@
 	///   without necessarily being able to do it just by using the materials a lot.
 	var/list/trained_design_tags = list()
 
-#warn impl
-
 /datum/research_data_fabricator/clone()
 	var/datum/research_data_fabricator/cloned = new
-
+	trained_material_tags = cloned.trained_material_tags.Copy()
+	trained_design_tags = cloned.trained_design_tags.Copy()
 	return cloned
 
 /datum/research_data_fabricator/serialize()
-	. = ..()
+	. = list()
+	.["trained-material-tags"] = trained_material_tags
+	.["trained-design-tags"] = trained_design_tags
 
 /datum/research_data_fabricator/deserialize(list/data)
-	. = ..()
-
-
+	trained_material_tags = data["trained-material-tags"] || list()
+	trained_design_tags = data["trained-design-tags"] || list()

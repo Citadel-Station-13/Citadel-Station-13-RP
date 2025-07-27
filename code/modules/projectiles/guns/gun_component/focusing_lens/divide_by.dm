@@ -36,9 +36,9 @@
 	proj.submunition_distribution_mod = cheat_factor
 	proj.submunition_distribution_overwrite = TRUE
 
-GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun_component/focusing_lens/divide_by/two, /gun_component/focusing_lens/divide_by_two, "gun_component-focusing_lens-divide_by_two")
+GENERATE_DESIGN_FOR_PROTOLATHE(/obj/item/gun_component/focusing_lens/divide_by/two, /gun_component/focusing_lens/divide_by_two, "gun_component-focusing_lens-divide_by_two", /datum/prototype/techweb_node/faction_intrinsic/nanotrasen/guncrafting_divide_by)
 /obj/item/gun_component/focusing_lens/divide_by/two
-	name = "weapon focusing lens (2-linear multiplexer)"
+	name = "weapon focusing lens (2-linear splitter)"
 	divide_by = 2
 	cheat_factor = 1.15
 	cooldown_multiplier = 1.25
@@ -50,9 +50,9 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun_component/focusing_lens/divide_b
 		/datum/prototype/material/silver::id = 125,
 	)
 
-GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun_component/focusing_lens/divide_by/three, /gun_component/focusing_lens/divide_by_three, "gun_component-focusing_lens-divide_by_three")
+GENERATE_DESIGN_FOR_PROTOLATHE(/obj/item/gun_component/focusing_lens/divide_by/three, /gun_component/focusing_lens/divide_by_three, "gun_component-focusing_lens-divide_by_three", /datum/prototype/techweb_node/faction_intrinsic/nanotrasen/guncrafting_divide_by)
 /obj/item/gun_component/focusing_lens/divide_by/three
-	name = "weapon focusing lens (3-linear multiplexer)"
+	name = "weapon focusing lens (3-linear splitter)"
 	divide_by = 3
 	cheat_factor = 1.2
 	cooldown_multiplier = 1.5
