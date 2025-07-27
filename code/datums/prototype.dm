@@ -14,6 +14,14 @@
  * * Hardcoded prototypes should only refer to other prototypes with typepaths. This allows the subsystem to early-load
  *   the other prototypes before its own initialization, which is required to not have to enforce load order
  *   on repositories.
+ *
+ * ## State
+ * * Protolathes are entirely immutable once stored without admin intervention.
+ * * Variables labelled as /tmp are allowed for state / caching.
+ *
+ * ## Ser/de & Clone
+ * * 'id' field is never de/serialized or cloned. It's a very touchy field; ser/de and cloning of
+ *   a prototype is considered low level and the code calling these procs should handle id field separately.
  */
 /datum/prototype
 	abstract_type = /datum/prototype
@@ -68,14 +76,6 @@
 	ASSERT(anonymous_namespace)
 	return "[anonymous_namespace]-[num2text(world.realtime, 16)]-[++id_next]"
 
-/datum/prototype/serialize()
-	. = ..()
-	.["id"] = id
-
-/datum/prototype/deserialize(list/data)
-	. = ..()
-	id = data["id"]
-
 /**
  * called on register
  * always call return ..() *LAST* so side effects can be cleaned up on every level on failure.
@@ -93,3 +93,22 @@
  */
 /datum/prototype/proc/unregister()
 	return TRUE
+
+/**
+ * Clones this prototype. Prototypes should never be 'new type'd. Always copy variables manually.
+ * * The 'id' of the old prototype should never be cloned over.
+ */
+/datum/prototype/clone()
+	CRASH("attempted to clone a prototype without a defined clone function. this is illegal as prototypes need specific behaviors.")
+
+/**
+ * Serializes this prototype. The 'id' of the prototype should never be serialized.
+ */
+/datum/prototype/serialize()
+	CRASH("attempted to serialize a prototype without a serialize function override. this is illegal as prototypes need special handling, usually.")
+
+/**
+ * Deserializes this prototype. The 'id' of the prototype should never be deserialized.
+ */
+/datum/prototype/deserialize(list/data)
+	CRASH("attempted to deserialize a prototype without a serialize function override. this is illegal as prototypes need special handling, usually.")

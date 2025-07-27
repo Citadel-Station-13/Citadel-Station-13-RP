@@ -78,7 +78,7 @@
 		/datum/prototype/material/copper::id = 500,
 	)
 
-GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/energy/nt_protolaser/sidearm/no_pin, /nt_protolaser/sidearm, "nt-protolaser-sidearm")
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/energy/nt_protolaser/sidearm/no_pin, /nt_protolaser/sidearm, "nt-protolaser-sidearm", /datum/prototype/techweb_node/faction_intrinsic/nanotrasen/energy_weapons)
 /obj/item/gun/projectile/energy/nt_protolaser/sidearm/no_pin
 	pin = null
 
@@ -134,7 +134,7 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/energy/nt_protolaser/
 		/datum/prototype/material/copper::id = 500,
 	)
 
-GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/energy/nt_protolaser/carbine/no_pin, /nt_protolaser/carbine, "nt-protolaser-carbine")
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/energy/nt_protolaser/carbine/no_pin, /nt_protolaser/carbine, "nt-protolaser-carbine", /datum/prototype/techweb_node/faction_intrinsic/nanotrasen/energy_weapons)
 /obj/item/gun/projectile/energy/nt_protolaser/carbine/no_pin
 	pin = null
 
@@ -190,6 +190,6 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/energy/nt_protolaser/
 		/datum/prototype/material/copper::id = 500,
 	)
 
-GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/energy/nt_protolaser/rifle/no_pin, /nt_protolaser/rifle, "nt-protolaser-rifle")
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/energy/nt_protolaser/rifle/no_pin, /nt_protolaser/rifle, "nt-protolaser-rifle", /datum/prototype/techweb_node/faction_intrinsic/nanotrasen/energy_weapons)
 /obj/item/gun/projectile/energy/nt_protolaser/rifle/no_pin
 	pin = null

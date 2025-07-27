@@ -4,6 +4,8 @@
 //? Page has all balancing parameters + algorithms for dynamic attribute computations for things like armor ?//
 //? Prefix subsystem procs with 'dynamic_', please!                                                         ?//
 
+// TODO: probably rethink literally all of this, material stats right now are a nightmare.
+
 //* Armor *//
 
 /**
@@ -18,8 +20,8 @@
 /datum/prototype/material/proc/create_armor(significance = MATERIAL_SIGNIFICANCE_BASELINE, mob_armor)
 	RETURN_TYPE(/datum/armor)
 	var/cache_key = "[significance]_[!!mob_armor]"
-	if(!isnull(armor_cache[cache_key]))
-		return armor_cache[cache_key]
+	if(!isnull(dynamics_armor_cache[cache_key]))
+		return dynamics_armor_cache[cache_key]
 
 	//? Not even Desmos will save you now. ?//
 	//? WIP calculator: https://www.desmos.com/calculator/qqef72mlhf ?//
@@ -62,7 +64,7 @@
 	var/laser_tier = 1.6 * 6 * (1 / (1 + NUM_E ** -(0.0042 * (ablation_diffusion * significance_as_multiplier)))) - 0.5 * 1.6 * 6
 	var/laser_absorb = ((1 / (-(ablation_damping * significance_as_multiplier + 400) * 0.000025)) + 100) * 0.013
 	// we don't allow deflection for now
-	return (armor_cache[cache_key] = fetch_armor_struct(list(
+	return (dynamics_armor_cache[cache_key] = fetch_armor_struct(list(
 		ARMOR_MELEE = round(kinetic_absorb, ARMOR_PRECISION),
 		ARMOR_MELEE_TIER = round(kinetic_tier, ARMOR_TIER_PRECISION),
 		ARMOR_MELEE_SOAK = round(kinetic_damping * 0.005 + kinetic_hardness * 0.0025, DAMAGE_PRECISION),
@@ -223,8 +225,8 @@
  */
 /datum/prototype/material/proc/melee_stats(initial_modes, significance = MATERIAL_SIGNIFICANCE_BASELINE)
 	var/cache_key = "[initial_modes]_[significance]"
-	if(!isnull(melee_cache[cache_key]))
-		return melee_cache[cache_key]
+	if(!isnull(dynamics_melee_cache[cache_key]))
+		return dynamics_melee_cache[cache_key]
 	. = new /list(MATERIAL_MELEE_STATS_LISTLEN)
 
 	// see [code/__DEFINEs/materials/dynamics.dm] for equations / desmos links
@@ -260,7 +262,7 @@
 		) - MATERIAL_DYNAMICS_DAMTIER_CEILING + MATERIAL_DYNAMICS_DAMTIER_ADJUST ) * MATERIAL_DYNAMICS_DAMTIER_SCALER
 		.[MATERIAL_MELEE_STATS_TIERMOD] = round(tier, DAMAGE_TIER_PRECISION)
 
-	melee_cache[cache_key] = .
+	dynamics_melee_cache[cache_key] = .
 
 /obj/item/proc/apply_melee_stats(list/melee_stats, base_damage = 0, base_tier = 0, mod_damage = 1)
 	damage_force = base_damage + mod_damage * melee_stats[MATERIAL_MELEE_STATS_DAMAGE]

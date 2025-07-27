@@ -53,16 +53,16 @@
 	/// Will stacks made from this material pass their colors onto objects?
 	var/pass_stack_colors = FALSE
 
-	//* Armor
+	//* Dynamics *//
 	/// caching of armor. text2num(significance)_[mob_armor? 1 : 0] = armor datum instance
-	var/tmp/list/armor_cache = list()
-
-	//* Attacks
+	var/tmp/list/dynamics_armor_cache = list()
 	/// melee stats cache. text2num(mode)_text2num(significance) = list(stats)
-	var/tmp/list/melee_cache = list()
+	var/tmp/list/dynamics_melee_cache = list()
 
-	//* Attributes
+	//*   Physical Attributes     *//
+	//*  Prefix these with 'c_'!  *//
 	/// relative HP multiplier for something made out of this
+	//  TODO: prefix with c_
 	var/relative_integrity = 1
 
 	/// kinetic penetration resistance for something made out of this
@@ -70,12 +70,14 @@
 	/// * impacts sharp / blade damage
 	/// * impacts kinetic penetration resistance
 	/// * impacts bomb armor
+	//  TODO: prefix with c_
 	var/hardness = MATERIAL_RESISTANCE_NONE
 	/// kinetic scattering/dampening for something made out of this
 	/// based on MATERIAL_RESISTANCE_ defines
 	/// * impacts blunt / crush damage
 	/// * impacts kinetic damage resistance
 	/// * impacts bomb armor
+	//  TODO: prefix with c_
 	var/toughness = MATERIAL_RESISTANCE_NONE
 
 	/// how easily this material scatters energy
@@ -84,12 +86,14 @@
 	/// * impacts special energy armor
 	/// * impacts exotic energy armor (minor)
 	/// * slight modifier to radiation resist
+	//  TODO: prefix with c_
 	var/refraction = MATERIAL_RESISTANCE_NONE
 	/// how easily this material absorbs regular energy blasts
 	/// based on MATERIAL_RESISTANCE_ defines
 	/// * impacts laser armor
 	/// * impacts special energy armor (minor)
 	/// * very slight modifier to radiation resist
+	//  TODO: prefix with c_
 	var/absorption = MATERIAL_RESISTANCE_NONE
 	/// for how easily this material deflects exotic energy
 	/// based on MATERIAL_RESISTANCE_ defines
@@ -97,6 +101,7 @@
 	/// * impacts laser armor penetration resistance (moderate)
 	/// * impacts anomaly armor
 	/// * impacts radiation armor
+	//  TODO: prefix with c_
 	var/nullification = MATERIAL_RESISTANCE_NONE
 
 	/// density in g/cm3
@@ -107,24 +112,48 @@
 	/// * impacts blunt / crush damage
 	/// * impacts sharp / blade damage (minor)
 	/// * impacts kinetic damage resistance (minor)
+	//  TODO: prefix with c_
 	var/density = 8 * 1
 	/// weight multiplier - allowing for materials that behave like a high-density material but are light
 	/// * basically, low values = high density stats without the penalties from weight
+	//  TODO: prefix with c_
 	var/weight_multiplier = 1
 
 	/// relative multiplier for how easily this material passes electricity
 	/// '1' is an arbitrary value, probably 'the conductivity of high quality power lines'
 	/// * impacts conductivity
 	/// * impacts usage as a conductor
+	//  TODO: prefix with c_
 	var/relative_conductivity = 0
 	/// relative reactivity multiplier for something made out of this
 	/// * impacts fire/acid armor
+	//  TODO: prefix with c_
 	var/relative_reactivity = 1
 	/// relative permeability multiplier for something made out of this
 	/// * impacts permeability armor
 	/// * impacts bomb armor a little bit
 	/// * impacts acid armor
+	//  TODO: prefix with c_
 	var/relative_permeability = 1
+
+	//* Fabrication *//
+	//  TODO: implement fabricator training
+	/**
+	 * Relative fabricator difficulty.
+	 * * Interpreted by lathe, so not any specific units, just a multiplier.
+	 * * 10 = 10 times as hard to properly work with.
+	 */
+	var/fabricator_relative_printing_difficulty = 1
+	/**
+	 * Relative fabricator training ease.
+	 * * Interpreted by lathe, so not any specific units, just a multiplier.
+	 * * Only used by R&D usually.
+	 * * 10 = 10 times as easy to train on this material.
+	 */
+	var/fabricator_relative_training_difficulty = 1
+	/// Text tags this counts as for fabricator training, associated to numeric multiplier of relative effect.
+	/// * If empty or null, fabricator training is ignored for this material.
+	var/list/fabricator_training_tags
 
 	//* Flags
 	/// material flags
@@ -256,8 +285,11 @@
 
 	return TRUE
 
+/datum/prototype/material/clone()
+	// TODO: rest
+
 /datum/prototype/material/serialize()
-	. = ..()
+	. = list()
 	var/list/serialized_traits = list()
 	// use type directly - we don't care about update stability.
 	for(var/datum/prototype/material_trait/trait in material_traits)
@@ -267,8 +299,14 @@
 		)
 	.["traits"] = serialized_traits
 
+	//* fabrication *//
+	.["fabricator-rel-print-diff"] = fabricator_relative_printing_difficulty
+	.["fabricator-rel-train-diff"] = fabricator_relative_training_difficulty
+	// todo: training tags
+
+	// TODO: rest
+
 /datum/prototype/material/deserialize(list/data)
-	. = ..()
 	var/list/deserializing_traits = .["traits"]
 	for(var/path in deserializing_traits)
 		var/resolved = text2path(path)
@@ -278,6 +316,17 @@
 		var/datum/prototype/material_trait/trait = new resolved
 		trait.deserialize(data_list["trait"])
 		material_traits[trait] = data_list["data"]
+
+	//* fabrication *//
+	fabricator_relative_printing_difficulty = data["fabricator-rel-print-diff"]
+	if(isnull(fabricator_relative_printing_difficulty))
+		fabricator_relative_printing_difficulty = 1
+	fabricator_relative_training_difficulty = data["fabricator-rel-train-diff"]
+	if(isnull(fabricator_relative_training_difficulty))
+		fabricator_relative_training_difficulty = 1
+	// todo: training tags
+
+	// TODO: rest
 
 /// This is a placeholder for proper integration of windows/windoors into the system.
 /datum/prototype/material/proc/build_windows(mob/living/user, obj/item/stack/used_stack)

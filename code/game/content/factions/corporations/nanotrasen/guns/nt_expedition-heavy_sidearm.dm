@@ -179,6 +179,6 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/heavy_sidear
 		/datum/firemode/nt_expedition_heavy_smg/three_burst,
 	)
 
-GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/nt_expedition/heavy_sidearm/smg, /nt_expedition/heavy_smg, "nt-expeditionary-heavy_smg")
+GENERATE_DESIGN_FOR_PROTOLATHE(/obj/item/gun/projectile/ballistic/nt_expedition/heavy_sidearm/smg, /nt_expedition/heavy_smg, "nt-expeditionary-heavy_smg", /datum/prototype/techweb_node/faction_intrinsic/nanotrasen/ballistic_weapons)
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_sidearm/smg/no_pin
 	pin = null

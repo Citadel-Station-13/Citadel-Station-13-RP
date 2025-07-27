@@ -105,7 +105,7 @@ DEFINE_BITFIELD(design_flags, list(
 
 /**
  * Generates for all lathes.
- * * Implicitly allows protolathes to build it.
+ * * Implicitly allows both autolathes and protolathes to build it.
  */
 #define GENERATE_DESIGN_FOR_AUTOLATHE(ENTITY_PATH, DESIGN_PATH, DESIGN_ID) \
 GENERATE_DESIGN(ENTITY_PATH, DESIGN_PATH, DESIGN_ID); \
@@ -116,26 +116,12 @@ GENERATE_DESIGN(ENTITY_PATH, DESIGN_PATH, DESIGN_ID); \
 
 /**
  * Generates for protolathes.
+ * * faction-locked designs must use this, as autolathes are considered 'just shit we get in 2565' while
+ *   protolathes are how you make other designs.
  */
-#define GENERATE_DESIGN_FOR_PROTOLATHE(ENTITY_PATH, DESIGN_PATH, DESIGN_ID) \
+#define GENERATE_DESIGN_FOR_PROTOLATHE(ENTITY_PATH, DESIGN_PATH, DESIGN_ID, TECHWEB_NODE_PATH) \
 GENERATE_DESIGN(ENTITY_PATH, DESIGN_PATH, DESIGN_ID); \
 /datum/prototype/design/generated##DESIGN_PATH { \
 	lathe_type = LATHE_TYPE_PROTOLATHE; \
 }; \
 /datum/prototype/design/generated##DESIGN_PATH
-
-//* Design Helpers - For a specific lathe & faction *//
-
-/**
- * Generates for Nanotrasen-standard autolathes. In the future, we might have flags
- * for what factions get it automatically.
- */
-#define GENERATE_DESIGN_FOR_NT_AUTOLATHE(ENTITY_PATH, DESIGN_PATH, DESIGN_ID) \
-GENERATE_DESIGN_FOR_AUTOLATHE(ENTITY_PATH, DESIGN_PATH, DESIGN_ID)
-
-/**
- * Generates for Nanotrasen-standard protolathes. In the future, we might have flags
- * for what factions get it automatically.
- */
-#define GENERATE_DESIGN_FOR_NT_PROTOLATHE(ENTITY_PATH, DESIGN_PATH, DESIGN_ID) \
-GENERATE_DESIGN_FOR_PROTOLATHE(ENTITY_PATH, DESIGN_PATH, DESIGN_ID)

@@ -186,6 +186,6 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/light_sidear
 		/datum/firemode/nt_expedition_light_smg/two_burst,
 	)
 
-GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/nt_expedition/light_sidearm/smg/no_pin, /nt_expedition/light_smg, "nt-expeditionary-light_smg")
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/nt_expedition/light_sidearm/smg/no_pin, /nt_expedition/light_smg, "nt-expeditionary-light_smg", /datum/prototype/techweb_node/faction_intrinsic/nanotrasen/ballistic_weapons)
 /obj/item/gun/projectile/ballistic/nt_expedition/light_sidearm/smg/no_pin
 	pin = null
