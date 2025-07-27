@@ -32,7 +32,7 @@ import { TitleBar } from './TitleBar';
 const logger = createLogger('Window');
 const DEFAULT_SIZE: [number, number] = [400, 600];
 
-type Props = Partial<{
+export type WindowProps = Partial<{
   buttons: ReactNode;
   canClose: BooleanLike;
   height: number;
@@ -42,7 +42,7 @@ type Props = Partial<{
 }> &
   PropsWithChildren;
 
-export const Window = (props: Props) => {
+export const Window = (props: WindowProps) => {
   const {
     canClose = true,
     theme,

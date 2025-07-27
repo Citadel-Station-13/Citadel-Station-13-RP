@@ -1,8 +1,9 @@
-import { round } from "common/math";
-import { BooleanLike } from "common/react";
 import { useBackend, useLocalState } from "../../backend";
 import { Button, Dropdown, Input, NumberInput, Section, Stack, Tooltip } from "tgui-core/components";
 import { Window } from "../../layouts";
+import { BooleanLike } from "tgui-core/react";
+import { useState } from "react";
+import { round } from "tgui-core/math";
 
 interface UIDynamicInputContext {
   title: string;
@@ -179,7 +180,7 @@ interface DynamicEntryNumberProps extends DynamicEntryProps {
 const DynamicEntryNumber = (props: DynamicEntryNumberProps) => {
   let current = props.current === undefined ? props.entry.default === null ? 0 : props.entry.default : props.current;
   return (
-    <NumberInput value={current} minValue={props.entry.constraints[0]} maxValue={props.entry.constraints[1]}
+    <NumberInput value={current || "---"} step={0.0001} minValue={props.entry.constraints[0]} maxValue={props.entry.constraints[1]}
       onChange={(val) => props.pick(
         props.entry.constraints[2] === null ? val : round(val, props.entry.constraints[2])
       )} width="100%" />
@@ -194,8 +195,8 @@ interface DynamicEntryStringProps extends DynamicEntryProps {
 const DynamicEntryString = (props: DynamicEntryStringProps) => {
   let current = props.current === undefined ? props.entry.default === null ? "" : props.entry.default : props.current;
   return (
-    <Input value={current} maxLength={props.entry.constraints[0]}
-      onInput={(val) => props.pick(
+    <Input value={current || undefined} maxLength={props.entry.constraints[0]}
+      onChange={(val) => props.pick(
         val
       )} width="100%" />
   );

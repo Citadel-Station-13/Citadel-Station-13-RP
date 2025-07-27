@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import { useBackend } from "../backend";
 import { Box, Button, LabeledList, ProgressBar, Section, NoticeBox, Slider } from "tgui-core/components";
 import { Window } from "../layouts";
-import { decodeHtmlEntities } from "common/string";
+import { decodeHtmlEntities } from 'tgui-core/string';
 
 export const XenoarchSpectrometer = (props) => {
   const { act, data } = useBackend<any>();

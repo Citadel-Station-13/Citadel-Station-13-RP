@@ -1,4 +1,3 @@
-import { multiline } from '../../common/string';
 import { useBackend } from '../backend';
 import { Button, Icon, LabeledControls, NoticeBox, Section, Slider, Stack, Tooltip } from 'tgui-core/components';
 import { Window } from '../layouts';
@@ -29,7 +28,7 @@ type Controls = {
   [Control: string]: [Value: number];
 };
 
-export const SimpleBot = (_, context) => {
+export const SimpleBot = (_) => {
   const { data } = useBackend<SimpleBotContext>();
   const { can_hack, locked } = data;
   const access = (!locked || can_hack);
@@ -59,7 +58,7 @@ export const SimpleBot = (_, context) => {
 };
 
 /** Creates a lock button at the top of the controls */
-const TabDisplay = (_, context) => {
+const TabDisplay = (_) => {
   const { act, data } = useBackend<SimpleBotContext>();
   const { can_hack, has_access, locked, pai } = data;
   const { allow_pai } = pai;
@@ -82,7 +81,7 @@ const TabDisplay = (_, context) => {
 };
 
 /** If user is a bad silicon, they can press this button to hack the bot */
-const HackButton = (_, context) => {
+const HackButton = (_) => {
   const { act, data } = useBackend<SimpleBotContext>();
   const { can_hack, emagged } = data;
 
@@ -104,7 +103,7 @@ const HackButton = (_, context) => {
 };
 
 /** Creates a button indicating PAI status and offers the eject action */
-const PaiButton = (_, context) => {
+const PaiButton = (_) => {
   const { act, data } = useBackend<SimpleBotContext>();
   const { card_inserted } = data.pai;
 
@@ -113,7 +112,7 @@ const PaiButton = (_, context) => {
       <Button
         color="transparent"
         icon="robot"
-        tooltip={multiline`Insert an active PAI card to control this device.`}>
+        tooltip={`Insert an active PAI card to control this device.`}>
         No PAI Inserted
       </Button>
     );
@@ -123,7 +122,7 @@ const PaiButton = (_, context) => {
         disabled={!card_inserted}
         icon="eject"
         onClick={() => act('eject_pai')}
-        tooltip={multiline`Ejects the current PAI.`}>
+        tooltip={`Ejects the current PAI.`}>
         Eject PAI
       </Button>
     );
@@ -131,7 +130,7 @@ const PaiButton = (_, context) => {
 };
 
 /** Displays the bot's standard settings: Power, patrol, etc. */
-const SettingsDisplay = (_, context) => {
+const SettingsDisplay = (_) => {
   const { act, data } = useBackend<SimpleBotContext>();
   const { settings } = data;
   const { airplane_mode, patrol_station, power, maintenance_lock } = settings;
@@ -194,7 +193,7 @@ const SettingsDisplay = (_, context) => {
 /** Iterates over custom controls.
  * Calls the helper to identify which button to use.
  */
-const ControlsDisplay = (_, context) => {
+const ControlsDisplay = (_) => {
   const { data } = useBackend<SimpleBotContext>();
   const { custom_controls } = data;
 
@@ -247,7 +246,7 @@ const ControlHelper = (props) => {
 };
 
 /** Small button to sync medbots with research. */
-const MedbotSync = (_, context) => {
+const MedbotSync = (_) => {
   const { act } = useBackend<SimpleBotContext>();
 
   return (

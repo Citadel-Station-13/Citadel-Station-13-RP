@@ -117,7 +117,7 @@ const NumberEntry = (props: {
   readonly schema: PreferenceNumberEntrySchema;
   readonly value: number;
   readonly setValue: (val: number) => void;
-}, context) => {
+}) => {
   return (
     <NumberInput fluid value={props.value}
       minValue={props.schema.minValue || -Infinity} maxValue={props.schema.maxValue || Infinity}
@@ -130,7 +130,7 @@ const StringEntry = (props: {
   readonly schema: PreferenceStringEntrySchema;
   readonly value: string;
   readonly setValue: (val: string) => void;
-}, context) => {
+}) => {
   return (
     <Input fluid value={props.value} onInput={(val) => props.setValue(val)} />
   );
@@ -141,7 +141,7 @@ const ToggleEntry = (props: {
   readonly schema: PreferenceToggleEntrySchema;
   readonly value: BooleanLike;
   readonly setValue: (val: BooleanLike) => void;
-}, context) => {
+}) => {
   return (
     <Button.Checkbox fluid color="transparent" content={props.value ? props.schema.enabledName : props.schema.disabledName}
       checked={props.value} onClick={() => props.setValue(!props.value)} />
@@ -152,7 +152,7 @@ const DropdownEntry = (props: {
   readonly schema: PreferenceDropdownEntrySchema;
   readonly value: string;
   readonly setValue: (val: string) => void;
-}, context) => {
+}) => {
   return (
     <Dropdown selected={props.value} options={props.schema.options}
       onSelected={(v) => props.setValue(v)} width="100%" />
@@ -164,7 +164,7 @@ const SimpleColorEntry = (props: {
   readonly schema: PreferenceSimpleColorEntrySchema;
   readonly value: ByondColorString;
   readonly setValue: (val: ByondColorString) => void;
-}, context) => {
+}) => {
   return (
     <Collapsible color="transparent" title={props.value ? (
       <>

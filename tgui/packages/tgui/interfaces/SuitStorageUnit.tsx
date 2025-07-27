@@ -185,8 +185,8 @@ const SuitStorageUnitPanel = (props) => {
       <Box>
         A thick old-style button, with 2 grimy LED lights next to it.
         The {safeties
-          ? (<font color="green">GREEN</font>)
-          : (<font color="red">RED</font>)} LED is on.
+          ? (<div color="green">GREEN</div>)
+          : (<div color="red">RED</div>)} LED is on.
 
         <Flex
           mt={1}

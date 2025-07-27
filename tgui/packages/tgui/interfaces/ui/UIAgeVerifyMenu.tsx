@@ -1,6 +1,7 @@
 import { useBackend, useLocalState } from "../../backend";
 import { Button, NoticeBox, Section, Stack } from "tgui-core/components";
 import { Window } from "../../layouts";
+import { useState } from "react";
 
 const MONTH_DAYS_LOOKUP: number[] = [
   31,
@@ -73,7 +74,7 @@ export const UIAgeVerifyMenu = (props) => {
         <Section fill>
           <Stack vertical fill>
             <Stack.Item>
-              <NoticeBox warning>
+              <NoticeBox>
                 Please enter your date of birth to continue.
               </NoticeBox>
             </Stack.Item>

@@ -20,15 +20,15 @@ export const TelecommsMachineBrowser = (props) => {
     >
       <Window.Content scrollable>
         {(temp && temp.length) ? (
-          <NoticeBox warning>
-            <Box display="inline-box" verticalAlign="middle">
+          <NoticeBox>
+            <Box style={{ display: "inline-box" }} verticalAlign="middle">
               {temp}
             </Box>
             <Button
               icon="times-circle"
-              float="right"
+              style={{ float: "right" }}
               onClick={() => act('cleartemp')} />
-            <Box clear="both" />
+            <Box style={{ clear: "both" }} />
           </NoticeBox>
         ) : null}
         <Section title="Network Control">

@@ -1,9 +1,9 @@
-import { Color } from 'common/colorLegacy';
 import { decodeHtmlEntities } from 'tgui-core/string';
-import { Component, createRef, RefObject } from 'inferno';
+import { Component, createRef, RefObject } from 'react';
 import { useBackend } from '../../backend';
 import { Box, Button, Flex } from 'tgui-core/components';
 import { Window } from '../../layouts';
+import { Color } from 'tgui-core/color';
 
 type PaintCanvasProps = Partial<{
   onCanvasModifiedHandler: (data: PointData[]) => void,
@@ -31,7 +31,7 @@ const toMassPaintFormat = (data: PointData[]) => {
 };
 
 class PaintCanvas extends Component<PaintCanvasProps> {
-  canvasRef: RefObject<HTMLCanvasElement>;
+  canvasRef: RefObject<HTMLCanvasElement | null>;
   baseImageData: Color[][] | null | undefined;
   modifiedElements: PointData[];
   onCanvasModified: (data: PointData[]) => void;

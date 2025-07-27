@@ -1,6 +1,6 @@
 import { round } from 'tgui-core/math';
 import { formatPower } from "tgui-core/format";
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { useBackend, useLocalState } from "../backend";
 import { Box, Button, Icon, LabeledList, ProgressBar, Stack, Section, Tabs, Slider } from "tgui-core/components";
 import { Window } from "../layouts";

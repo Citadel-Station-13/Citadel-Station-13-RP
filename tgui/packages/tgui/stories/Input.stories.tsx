@@ -66,7 +66,7 @@ function Story() {
             value={number}
             minValue={-100}
             maxValue={100}
-            onDrag={(value) => setNumber(value)}
+            onDrag={(e, value) => setNumber(value)}
           />
         </LabeledList.Item>
         <LabeledList.Item label="Knob (onDrag)">
@@ -78,7 +78,7 @@ function Story() {
             value={number}
             minValue={-100}
             maxValue={100}
-            onDrag={(value) => setNumber(value)}
+            onDrag={(e, value) => setNumber(value)}
           />
           <Knob
             ml={1}
@@ -90,7 +90,7 @@ function Story() {
             value={number}
             minValue={-100}
             maxValue={100}
-            onDrag={(value) => setNumber(value)}
+            onDrag={(e, value) => setNumber(value)}
           />
         </LabeledList.Item>
         <LabeledList.Item label="Rotating Icon">

@@ -59,15 +59,15 @@ export const TelecommsLogBrowser = (props) => {
     >
       <Window.Content scrollable>
         {!!data.temp && (
-          <NoticeBox warning>
-            <Box display="inline-box" verticalAlign="middle">
+          <NoticeBox>
+            <Box style={{ display: "inline-box" }} verticalAlign="middle">
               {data.temp.text}
             </Box>
             <Button
               icon="times-circle"
-              float="right"
+              style={{ float: "right" }}
               onClick={() => act('cleartemp')} />
-            <Box clear="both" />
+            <Box style={{ clear: "both" }} />
           </NoticeBox>
         )}
         <Section title="Network Control">

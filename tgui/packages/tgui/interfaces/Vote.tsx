@@ -1,4 +1,3 @@
-import { BooleanLike } from "../../common/react";
 import { useBackend } from "../backend";
 import {
   Box,
@@ -12,6 +11,7 @@ import {
   Collapsible,
 } from "tgui-core/components";
 import { Window } from "../layouts";
+import { BooleanLike } from "tgui-core/react";
 
 interface VoteContext {
   admin: BooleanLike;
@@ -172,7 +172,7 @@ const ChoicesPanel = (props) => {
                 >
                   {selected_choice === choice.name && (
                     <Icon
-                      alignSelf="right"
+                      style={{ alignSelf: "right" }}
                       mr={2}
                       color="green"
                       name="vote-yea"

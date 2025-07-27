@@ -58,6 +58,7 @@ export const XenoarchHandheldPowerUtilizer = (props) => {
                   unit="s"
                   fluid
                   minValue={0}
+                  step={1}
                   value={duration}
                   stepPixelSize={4}
                   maxValue={30}
@@ -68,6 +69,7 @@ export const XenoarchHandheldPowerUtilizer = (props) => {
                   unit="s"
                   fluid
                   minValue={0}
+                  step={1}
                   value={interval}
                   stepPixelSize={10}
                   maxValue={10}

@@ -160,7 +160,6 @@ const PreviewSelect = (props) => {
         <Button
           ml={0}
           key={preview.dir}
-          title={preview.dir_name}
           selected={preview.selected}
           style={{
             width: '40px',
@@ -171,6 +170,7 @@ const PreviewSelect = (props) => {
             dir: preview.dir,
             flipped: preview.flipped,
           })}>
+          {preview.dir_name}
           <Box
             className={classes([
               'pipes32x32',

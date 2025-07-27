@@ -3,11 +3,11 @@
  * @license MIT
  */
 
-import { BooleanLike } from "common/react";
 import { ReactNode } from "react";
-import { Section } from "../components";
-import { SectionProps } from "../components/Section";
 import { Window, WindowProps } from "./Window";
+import { BooleanLike } from "tgui-core/react";
+import { SectionProps } from "../components";
+import { Section } from "tgui-core/components";
 
 export interface ModularProps {
   readonly direct?: ReactNode;
