@@ -14,9 +14,9 @@
 /obj/machinery/research_mainframe
 	name = "research mainframe"
 	desc = "A self-contained mainframe holding data needed to run research and inference systems."
-
-	/// linked servers
-	var/list/obj/machinery/research_server/servers
+	/// our created network
+	/// * we own this if we have it, generally
+	var/datum/research_network/network
 
 /obj/machinery/research_mainframe/Initialize(mapload)
 	. = ..()

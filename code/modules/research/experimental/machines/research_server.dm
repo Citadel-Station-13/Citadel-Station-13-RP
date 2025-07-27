@@ -2,13 +2,13 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /**
- * Linked to one research mainframe at a time.
+ * Linked to one research network at a time.
  */
 /obj/machinery/research_server
-	/// linked mainframe
+	/// linked network
 	/// * later on we'll use network system if we come up with one that doesn't suck;
 	///   for now it can link to any mainframe in the same /map
-	var/obj/machinery/research_mainframe/mainframe
+	var/datum/research_network/network
 
 #warn impl
 
@@ -18,14 +18,14 @@
 /obj/machinery/research_server/Destroy()
 	. = ..()
 
-/obj/machinery/research_server/proc/link_mainframe(obj/machinery/research_mainframe/mainframe)
-	if(src.mainframe)
-		if(src.mainframe == mainframe)
+/obj/machinery/research_server/proc/link_network(datum/research_network/network)
+	if(src.network)
+		if(src.network == network)
 			return
-		unlink_mainframe()
+		unlink_network()
 
-/obj/machinery/research_server/proc/unlink_mainframe()
-	if(!mainframe)
+/obj/machinery/research_server/proc/unlink_network()
+	if(!network)
 		return
 
 /obj/machinery/research_server/ui_data(mob/user, datum/tgui/ui)
