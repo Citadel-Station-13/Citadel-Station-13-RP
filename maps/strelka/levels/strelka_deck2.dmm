@@ -1449,9 +1449,7 @@
 /obj/machinery/door/window/brigdoor/northleft{
 	req_access = null
 	},
-/obj/machinery/door/window/southleft{
-	req_one_access = list(2,1,63,4)
-	},
+/obj/machinery/door/window/southleft,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2/security)
 "en" = (
@@ -2003,6 +2001,10 @@
 	dir = 1
 	},
 /obj/machinery/air_alarm/east_mount,
+/obj/machinery/recharger/wallcharger{
+	pixel_x = 4;
+	pixel_y = 28
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/strelka)
 "gb" = (
@@ -4396,6 +4398,10 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/machinery/recharger/wallcharger{
+	pixel_x = 4;
+	pixel_y = 28
+	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/emt/strelka/cockpit)
 "nq" = (
@@ -6112,9 +6118,6 @@
 	dir = 8;
 	name = "Fuel Line to Thrusters"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 10
-	},
 /obj/structure/fuel_port{
 	pixel_x = -27
 	},
@@ -6598,6 +6601,9 @@
 /obj/structure/poster/preset/nanotrasen/nt_1{
 	pixel_x = -29
 	},
+/obj/machinery/light/small/old{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/security)
 "ta" = (
@@ -6877,6 +6883,10 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/machinery/recharger/wallcharger{
+	pixel_x = 4;
+	pixel_y = 28
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/strelka)
 "tR" = (
@@ -7062,6 +7072,10 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
+/obj/machinery/recharger/wallcharger{
+	pixel_x = 4;
+	pixel_y = 28
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/emt/strelka/main)
 "uv" = (
@@ -11966,6 +11980,10 @@
 /obj/structure/cable/cyan{
 	icon_state = "2-8"
 	},
+/obj/machinery/recharger/wallcharger{
+	pixel_x = 4;
+	pixel_y = 28
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/emt/strelka/main)
 "IY" = (
@@ -13566,7 +13584,7 @@
 /area/strelka/shipbase/deck2/explo)
 "Og" = (
 /obj/machinery/atmospherics/component/unary/heater{
-	dir = 1
+	dir = 8
 	},
 /obj/machinery/light{
 	dir = 8;
@@ -14152,6 +14170,11 @@
 	},
 /turf/simulated/floor/airless,
 /area/space)
+"PT" = (
+/obj/map_helper/paint_stripe/purple,
+/obj/machinery/atmospherics/pipe/manifold4w/hidden,
+/turf/simulated/wall/r_wall/prepainted,
+/area/shuttle/excursion/strelka)
 "PU" = (
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 4
@@ -14653,9 +14676,7 @@
 /obj/machinery/door/window/brigdoor/northright{
 	req_access = null
 	},
-/obj/machinery/door/window/southright{
-	req_one_access = list(2,1,63,4)
-	},
+/obj/machinery/door/window/southright,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/security)
 "Ru" = (
@@ -16610,6 +16631,10 @@
 	dir = 1
 	},
 /obj/machinery/air_alarm/east_mount,
+/obj/machinery/recharger/wallcharger{
+	pixel_x = 4;
+	pixel_y = 28
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/emt/strelka/main)
 "Xe" = (
@@ -34455,7 +34480,7 @@ sq
 pW
 sq
 Ox
-eW
+PT
 AC
 kf
 kf

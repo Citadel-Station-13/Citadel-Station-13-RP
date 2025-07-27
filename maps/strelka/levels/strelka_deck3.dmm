@@ -4878,6 +4878,7 @@
 /obj/fiftyspawner/steel,
 /obj/fiftyspawner/glass,
 /obj/structure/table/carbon/reinforced,
+/obj/machinery/cell_charger,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3/science/main)
 "rv" = (
@@ -5390,9 +5391,15 @@
 /area/strelka/shipbase/deck3/science/xenobotany)
 "tt" = (
 /obj/structure/table/carbon/reinforced,
-/obj/machinery/recharger,
+/obj/machinery/recharger{
+	pixel_x = -10
+	},
 /obj/structure/reagent_dispensers/acid{
 	pixel_x = -32
+	},
+/obj/machinery/cell_charger{
+	pixel_y = 1;
+	pixel_x = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3/science/main)
