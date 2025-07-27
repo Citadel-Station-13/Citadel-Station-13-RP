@@ -1,5 +1,5 @@
-import { toTitleCase } from 'common/string';
-import { Fragment } from 'inferno';
+import { toTitleCase } from 'tgui-core/string';
+import { Fragment } from 'react';
 import { useBackend, useLocalState } from '../backend';
 import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section, Tabs, Input, NumberInput, Table, Divider } from "tgui-core/components";
 import { Window } from '../layouts';

@@ -1,4 +1,4 @@
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 import { useBackend } from "../backend";
 import { Box, Button, NoticeBox, LabeledList, Section } from "tgui-core/components";
 import { Window } from "../layouts";
@@ -17,7 +17,7 @@ export const TelecommsMachineBrowser = (props) => {
     <Window
       width={575}
       height={450}
-      resizable>
+    >
       <Window.Content scrollable>
         {(temp && temp.length) ? (
           <NoticeBox warning>
@@ -60,7 +60,7 @@ export const TelecommsMachineBrowser = (props) => {
           <TelecommsBrowser
             title={selectedMachine
               ? selectedMachine.name
-                + " (" + selectedMachine.id + ")"
+              + " (" + selectedMachine.id + ")"
               : "Detected Network Entities"}
             list={selectedMachine ? selectedMachine.links : machinelist}
             showBack={selectedMachine} />

@@ -25,7 +25,7 @@ export const NtosNetTransfer = (props) => {
   }
 
   return (
-    <NtosWindow width={575} height={700} resizable>
+    <NtosWindow width={575} height={700}>
       <NtosWindow.Content scrollable>
         {body}
       </NtosWindow.Content>
@@ -186,10 +186,10 @@ const P2PAvailable = (props) => {
           ))}
         </LabeledList>
       ) || (
-        <Box>
-          No upload servers found.
-        </Box>
-      )}
+          <Box>
+            No upload servers found.
+          </Box>
+        )}
     </Section>
   );
 };

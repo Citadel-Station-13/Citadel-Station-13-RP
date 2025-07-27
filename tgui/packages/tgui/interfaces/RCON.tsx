@@ -1,17 +1,17 @@
-import { round } from 'common/math';
+import { round } from 'tgui-core/math';
 import { formatPower } from '../format';
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 import { useBackend, useLocalState } from "../backend";
 import { Box, Button, Icon, LabeledList, ProgressBar, Stack, Section, Tabs, Slider } from "tgui-core/components";
 import { Window } from "../layouts";
-import { capitalize } from 'common/string';
+import { capitalize } from 'tgui-core/string';
 
 export const RCON = (props) => {
   return (
     <Window
       width={630}
       height={440}
-      resizable>
+    >
       <Window.Content scrollable>
         <RCONContent />
       </Window.Content>
@@ -106,7 +106,7 @@ const SMESItem = (props) => {
                 average: [0.15, 0.5],
                 bad: [-Infinity, 0.15],
               }}>
-              {round(charge/60, 1)} kWh / {round(capacity/60)} kWh
+              {round(charge / 60, 1)} kWh / {round(capacity / 60)} kWh
               ({capacityPercent}%)
             </ProgressBar>
           </Stack.Item>

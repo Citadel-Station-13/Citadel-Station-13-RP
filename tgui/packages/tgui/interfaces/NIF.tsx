@@ -1,4 +1,4 @@
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 import { useBackend, useLocalState } from "../backend";
 import { Box, Button, LabeledList, ProgressBar, Modal, Section, Dropdown, AnimatedNumber, NoticeBox, Table } from "tgui-core/components";
 import { Window } from "../layouts";
@@ -34,7 +34,7 @@ export const NIF = (props) => {
   const [viewingModule, setViewing] = useState(null);
 
   return (
-    <Window theme={theme} width={500} height={400} resizable>
+    <Window theme={theme} width={500} height={400}>
       <Window.Content scrollable>
         {!!last_notification && (
           <NoticeBox info>
@@ -100,7 +100,7 @@ export const NIF = (props) => {
             onClick={() => setSettingsOpen(!settingsOpen)} />
         }>
           {settingsOpen && <NIFSettings />
-          || <NIFMain setViewing={setViewing} />}
+            || <NIFMain setViewing={setViewing} />}
         </Section>
       </Window.Content>
     </Window>
@@ -224,10 +224,10 @@ const NIFMain = (props) => {
                   content={module.stat_text}
                   onClick={() => act("toggle_module", { module: module.ref })} />
               ) || (
-                <Box>
-                  {module.stat_text}
-                </Box>
-              )}
+                  <Box>
+                    {module.stat_text}
+                  </Box>
+                )}
             </LabeledList.Item>
           ))}
         </LabeledList>

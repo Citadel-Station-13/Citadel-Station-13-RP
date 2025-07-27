@@ -25,7 +25,7 @@ export const OmniFilter = (props) => {
     <Window
       width={360}
       height={330}
-      resizable>
+    >
       <Window.Content>
         <Section
           title={config ? "Configuration" : "Status"}
@@ -89,7 +89,7 @@ export const OmniFilter = (props) => {
                   icon="wrench"
                   content={(set_flow_rate / 10) + " L/s"}
                   onClick={() => act("set_flow_rate")} />
-              ) : (set_flow_rate / 10) + " L/s" }
+              ) : (set_flow_rate / 10) + " L/s"}
             </LabeledList.Item>
           </LabeledList>
         </Section>

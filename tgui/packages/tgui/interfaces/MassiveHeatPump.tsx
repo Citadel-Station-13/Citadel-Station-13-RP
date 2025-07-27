@@ -1,7 +1,7 @@
 import { useBackend } from "../backend";
 import { Button, LabeledList, ProgressBar, Section, AnimatedNumber } from "tgui-core/components";
 import { formatPower, formatSiUnit } from '../format';
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 import { Window } from "../layouts";
 
 export const MassiveHeatPump = (props) => {
@@ -24,7 +24,7 @@ export const MassiveHeatPump = (props) => {
     <Window
       width={470}
       height={270}
-      resizable>
+    >
       <Window.Content>
         <Section title="Status">
           <LabeledList>

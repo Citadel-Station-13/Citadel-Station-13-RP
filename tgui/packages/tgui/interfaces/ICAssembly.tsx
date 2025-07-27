@@ -1,4 +1,4 @@
-import { round } from 'common/math';
+import { round } from 'tgui-core/math';
 import { useBackend } from "../backend";
 import { Box, Button, LabeledList, ProgressBar, Section, AnimatedNumber, Flex } from "tgui-core/components";
 import { Window } from "../layouts";
@@ -20,7 +20,7 @@ export const ICAssembly = (props) => {
   } = data;
 
   return (
-    <Window width={600} height={380} resizable>
+    <Window width={600} height={380}>
       <Window.Content scrollable>
         <ICTerminal circuits={circuit_props} />
         {opened ? (

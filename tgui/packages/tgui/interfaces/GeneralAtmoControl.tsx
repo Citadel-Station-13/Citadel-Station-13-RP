@@ -33,7 +33,7 @@ export const GeneralAtmoControl = (props) => {
     <Window
       width={600}
       height={600}
-      resizable>
+    >
       <Window.Content>
         <AtmoControlSensors sensors={sensors} />
         {(core || tanks) && <AtmoControlTankCore />}

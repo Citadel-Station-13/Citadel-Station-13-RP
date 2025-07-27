@@ -1,9 +1,9 @@
 /* eslint react/no-danger: "off" */
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 import { useBackend } from '../backend';
 import { Button, Box, Section, Table, LabeledList, Input, Tabs, Flex, AnimatedNumber, ProgressBar } from 'tgui-core/components';
 import { NtosWindow } from '../layouts';
-import { round } from 'common/math';
+import { round } from 'tgui-core/math';
 
 export const NtosEmailClient = (props) => {
   const { act, data } = useBackend<any>();
@@ -175,8 +175,8 @@ const NtosEmailClientInbox = (props) => {
           </Table>
         </Section>
       ) || (
-        <Box color="bad">No emails found in {folder}.</Box>
-      )}
+          <Box color="bad">No emails found in {folder}.</Box>
+        )}
     </Section>
   );
 };
@@ -350,12 +350,12 @@ const NtosEmailClientNewMessage = (props) => {
             Remove Attachment
           </Button>
         ) || (
-          <Button
-            icon="plus"
-            onClick={() => act("addattachment")}>
-            Add Attachment
-          </Button>
-        )}>
+            <Button
+              icon="plus"
+              onClick={() => act("addattachment")}>
+              Add Attachment
+            </Button>
+          )}>
           {msg_hasattachment && (
             <Box inline>
               {msg_attachment_filename} ({msg_attachment_size}GQ)

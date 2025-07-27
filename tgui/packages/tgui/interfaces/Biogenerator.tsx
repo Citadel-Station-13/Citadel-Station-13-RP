@@ -1,5 +1,5 @@
-import { createSearch } from 'common/string';
-import { Fragment } from 'inferno';
+import { createSearch } from 'tgui-core/string';
+import { Fragment } from 'react';
 import { useBackend, useLocalState } from "../backend";
 import { Box, Button, Collapsible, Dropdown, Flex, Input, Section } from 'tgui-core/components';
 import { Window } from "../layouts";
@@ -13,7 +13,7 @@ const sortTypes = {
 export const Biogenerator = (props) => {
   const { act, data } = useBackend<any>();
   return (
-    <Window width={400} height={450} resizable>
+    <Window width={400} height={450}>
       <Window.Content className="Layout__content--flexColumn" scrollable>
         {data.processing && (
           <Section title="Processing">

@@ -1,4 +1,4 @@
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 import { useBackend, useLocalState } from "../backend";
 import { ComplexModal, modalRegisterBodyOverride } from "./common/ComplexModal";
 import { Box, Button, Flex, LabeledList, Section, Tabs } from "tgui-core/components";
@@ -79,7 +79,7 @@ export const PathogenicIsolator = (props) => {
 
   modalRegisterBodyOverride("virus", virusModalBodyOverride);
   return (
-    <Window height={500} width={520} resizable>
+    <Window height={500} width={520}>
       <ComplexModal maxHeight="100%" maxWidth="95%" />
       <Window.Content scrollable>
         <Tabs>

@@ -1,8 +1,8 @@
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 import { useBackend } from "../backend";
 import { Box, Button, Flex, LabeledList, Section } from "tgui-core/components";
 import { Window } from "../layouts";
-import { decodeHtmlEntities } from 'common/string';
+import { decodeHtmlEntities } from 'tgui-core/string';
 import { formatPower } from "../format";
 
 export const ICCircuit = (props) => {

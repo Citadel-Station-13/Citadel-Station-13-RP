@@ -10,7 +10,7 @@ export const XenoarchReplicator = (props) => {
   } = data;
 
   return (
-    <Window theme="abductor" width={400} height={400} resizable>
+    <Window theme="abductor" width={400} height={400}>
       <Window.Content scrollable>
         {tgui_construction.map((button, i) => (
           <Button

@@ -6,7 +6,7 @@ export const NtosOvermapNavigation = () => {
     <NtosWindow
       width={380}
       height={530}
-      resizable>
+    >
       <NtosWindow.Content scrollable>
         <OvermapNavigationContent />
       </NtosWindow.Content>

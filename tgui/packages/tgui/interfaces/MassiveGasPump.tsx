@@ -1,7 +1,7 @@
 import { useBackend } from "../backend";
 import { Button, LabeledList, ProgressBar, Section, AnimatedNumber } from "tgui-core/components";
 import { formatPower } from '../format';
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 import { Window } from "../layouts";
 
 export const MassiveGasPump = (props) => {
@@ -19,7 +19,7 @@ export const MassiveGasPump = (props) => {
     <Window
       width={470}
       height={250}
-      resizable>
+    >
       <Window.Content>
         <Section title="Status">
           <LabeledList>

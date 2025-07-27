@@ -1,4 +1,4 @@
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 import { useBackend } from "../backend";
 import { Box, Button, LabeledList, Section } from "tgui-core/components";
 import { Window } from "../layouts";
@@ -17,7 +17,7 @@ export const PlantAnalyzer = (props) => {
 
   // Resizable just in case the calculatedHeight fails
   return (
-    <Window width={400} height={calculatedHeight} resizable>
+    <Window width={400} height={calculatedHeight}>
       <Window.Content scrollable>
         <PlantAnalyzerContent />
       </Window.Content>

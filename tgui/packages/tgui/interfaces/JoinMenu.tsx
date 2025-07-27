@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-max-depth */
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 import { useBackend } from '../backend';
 import { Box, Button, Section, Icon, NoticeBox, Collapsible, Stack } from 'tgui-core/components';
 import { Window } from '../layouts';

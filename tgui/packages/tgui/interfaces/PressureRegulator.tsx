@@ -1,4 +1,4 @@
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 import { useBackend } from "../backend";
 import { Button, LabeledList, Section, AnimatedNumber } from "tgui-core/components";
 import { Window } from "../layouts";
@@ -21,7 +21,7 @@ export const PressureRegulator = (props) => {
     <Window
       width={470}
       height={370}
-      resizable>
+    >
       <Window.Content>
         <Section title="Status">
           <LabeledList>

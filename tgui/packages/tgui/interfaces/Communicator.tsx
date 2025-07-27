@@ -1,8 +1,8 @@
 /* eslint-disable unused-imports/no-unused-imports */
 /* eslint-disable max-len */
 import { filter } from 'common/collections';
-import { decodeHtmlEntities, toTitleCase } from 'common/string';
-import { Fragment } from 'inferno';
+import { decodeHtmlEntities, toTitleCase } from 'tgui-core/string';
+import { Fragment } from 'react';
 import { useBackend, useLocalState } from "../backend";
 import { Box, ByondUi, Button, Flex, Icon, LabeledList, Input, ProgressBar, Section, Table } from "tgui-core/components";
 import { Window } from "../layouts";
@@ -37,7 +37,7 @@ export const Communicator = (props) => {
   const [videoSetting, setVideoSetting] = useState(0);
 
   return (
-    <Window width={475} height={700} resizable>
+    <Window width={475} height={700}>
       <Window.Content>
         {video_comm && <VideoComm videoSetting={videoSetting} setVideoSetting={setVideoSetting} />}
         {(!video_comm || videoSetting !== 0) && (

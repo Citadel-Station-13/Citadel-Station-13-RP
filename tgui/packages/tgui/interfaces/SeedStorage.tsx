@@ -1,7 +1,7 @@
 import { useBackend } from "../backend";
 import { Button, Flex, LabeledList, Section, Collapsible } from "tgui-core/components";
 import { Window } from "../layouts";
-import { toTitleCase } from 'common/string';
+import { toTitleCase } from 'tgui-core/string';
 import { sortBy } from 'common/collections';
 
 export const SeedStorage = (props) => {
@@ -15,7 +15,7 @@ export const SeedStorage = (props) => {
   const sortedSeeds = sortBy(seed => seed.name.toLowerCase())(seeds);
 
   return (
-    <Window width={600} height={760} resizable>
+    <Window width={600} height={760}>
       <Window.Content scrollable>
         <Section title="Seeds">
           {sortedSeeds.map(seed => (

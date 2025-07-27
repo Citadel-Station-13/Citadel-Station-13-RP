@@ -1,8 +1,8 @@
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 import { useBackend } from "../backend";
 import { Box, Button, Modal, LabeledList, ProgressBar, Section, NoticeBox } from "tgui-core/components";
 import { Window } from "../layouts";
-import { toTitleCase, decodeHtmlEntities } from 'common/string';
+import { toTitleCase, decodeHtmlEntities } from 'tgui-core/string';
 
 export const MechaControlConsole = (props) => {
   const { act, data } = useBackend<any>();
@@ -11,7 +11,7 @@ export const MechaControlConsole = (props) => {
     stored_data,
   } = data;
   return (
-    <Window width={600} height={600} resizable>
+    <Window width={600} height={600}>
       <Window.Content scrollable>
         {stored_data.length && (
           <Modal>
@@ -102,8 +102,8 @@ export const MechaControlConsole = (props) => {
             </LabeledList>
           </Section>
         )) || (
-          <NoticeBox>No mecha beacons found.</NoticeBox>
-        )}
+            <NoticeBox>No mecha beacons found.</NoticeBox>
+          )}
       </Window.Content>
     </Window>
   );

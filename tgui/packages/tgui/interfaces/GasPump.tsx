@@ -17,7 +17,7 @@ export const GasPump = (props) => {
     <Window
       width={470}
       height={290}
-      resizable>
+    >
       <Window.Content>
         <Section title="Status">
           <LabeledList>

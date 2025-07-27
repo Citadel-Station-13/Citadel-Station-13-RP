@@ -1,4 +1,4 @@
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 import { useBackend } from "../backend";
 import { Box, Button, Collapsible, Icon, Input, LabeledList, Section, Tabs } from "tgui-core/components";
 import { ComplexModal, modalOpen, modalRegisterBodyOverride } from "./common/ComplexModal";
@@ -80,7 +80,7 @@ export const MedicalRecords = (_properties, context) => {
       <Window
         width={800}
         height={380}
-        resizable>
+      >
         <Window.Content>
           <LoginScreen />
         </Window.Content>
@@ -105,7 +105,7 @@ export const MedicalRecords = (_properties, context) => {
     <Window
       width={800}
       height={380}
-      resizable>
+    >
       <ComplexModal maxHeight="100%" maxWidth="80%" />
       <Window.Content className="Layout__content--flexColumn" scrollable>
         <LoginInfo />
@@ -390,7 +390,7 @@ const MedicalRecordsMedibots = (_properties, context) => {
                 <Box mt="0.5rem">
                   {medibot.use_beaker
                     ? ("Reservoir: "
-                    + medibot.total_volume + "/" + medibot.maximum_volume)
+                      + medibot.total_volume + "/" + medibot.maximum_volume)
                     : "Using internal synthesizer."}
                 </Box>
               </Fragment>

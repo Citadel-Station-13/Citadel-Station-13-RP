@@ -1,11 +1,11 @@
-import { classes } from 'common/react';
+import { classes } from 'tgui-core/react';
 import { uniqBy } from 'common/collections';
 import { useBackend, useSharedState } from '../backend';
 import { formatSiUnit, formatMoney } from '../format';
 import { Flex, Section, Tabs, Box, Button, Fragment, ProgressBar, NumberInput, Icon, Input, Tooltip } from 'tgui-core/components';
 import { Window } from '../layouts';
-import { createSearch, toTitleCase } from 'common/string';
-import { toFixed } from 'common/math';
+import { createSearch, toTitleCase } from 'tgui-core/string';
+import { toFixed } from 'tgui-core/math';
 
 const MATERIAL_KEYS = {
   "steel": "stack-metal",

@@ -3,7 +3,7 @@ import { useBackend } from '../backend';
 import { Button, LabeledList, ProgressBar, Section, NoticeBox } from 'tgui-core/components';
 import { NtosWindow } from '../layouts';
 import { resolveAsset } from '../assets';
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 
 export const NtosNewsBrowser = (props) => {
   const { act, data } = useBackend<any>();
@@ -23,7 +23,7 @@ export const NtosNewsBrowser = (props) => {
   }
 
   return (
-    <NtosWindow width={575} height={750} resizable>
+    <NtosWindow width={575} height={750}>
       <NtosWindow.Content scrollable>
         {!!message && <NoticeBox>{message} <Button icon="times" onClick={() => act("PRG_clearmessage")} /></NoticeBox>}
         {body}
@@ -104,10 +104,10 @@ const ViewArticles = (props) => {
             {article.size} GQ
           </LabeledList.Item>
         )) || (
-          <LabeledList.Item label="Error">
-            There appear to be no outstanding news articles on NTNet today.
-          </LabeledList.Item>
-        )}
+            <LabeledList.Item label="Error">
+              There appear to be no outstanding news articles on NTNet today.
+            </LabeledList.Item>
+          )}
       </LabeledList>
     </Section>
   );

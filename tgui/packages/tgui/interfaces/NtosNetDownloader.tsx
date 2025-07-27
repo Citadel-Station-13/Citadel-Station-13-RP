@@ -1,4 +1,4 @@
-import { round } from 'common/math';
+import { round } from 'tgui-core/math';
 import { useBackend } from '../backend';
 import { Box, Button, Flex, Icon, LabeledList, NoticeBox, ProgressBar, Section } from 'tgui-core/components';
 import { NtosWindow } from '../layouts';
@@ -19,7 +19,7 @@ export const NtosNetDownloader = (props) => {
       theme={PC_device_theme}
       width={480}
       height={735}
-      resizable>
+    >
       <NtosWindow.Content scrollable>
         {!!error && (
           <NoticeBox>
@@ -110,15 +110,15 @@ const Program = (props) => {
               Queued...
             </Button>
           ) || (
-            <Button
-              fluid
-              icon="download"
-              content="Download"
-              disabled={program.size > disk_free}
-              onClick={() => act('PRG_downloadfile', {
-                filename: program.filename,
-              })} />
-          )}
+              <Button
+                fluid
+                icon="download"
+                content="Download"
+                disabled={program.size > disk_free}
+                onClick={() => act('PRG_downloadfile', {
+                  filename: program.filename,
+                })} />
+            )}
         </Flex.Item>
       </Flex>
       {program.compatibility !== 'Compatible' && (

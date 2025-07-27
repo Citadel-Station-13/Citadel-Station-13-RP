@@ -1,6 +1,6 @@
-import { round } from 'common/math';
-import { BooleanLike } from 'common/react';
-import { Fragment } from 'inferno';
+import { round } from 'tgui-core/math';
+import { BooleanLike } from 'tgui-core/react';
+import { Fragment } from 'react';
 import { useBackend, useLocalState } from '../../backend';
 import { Box, Button, LabeledList, NumberInput, Section, Stack } from 'tgui-core/components';
 import { Window } from '../../layouts';

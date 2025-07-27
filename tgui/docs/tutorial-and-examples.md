@@ -132,7 +132,7 @@ export const SampleInterface = (props, context) => {
 	// Extract `health` and `color` variables from the `data` object.
 	const { health, color } = data;
 	return (
-		<Window resizable>
+		<Window>
 			<Window.Content scrollable>
 				<Section title="Health status">
 					<LabeledList>
@@ -251,7 +251,7 @@ import { Window } from '../layouts';
 
 export const SampleInterface = (props, context) => {
 	return (
-		<Window resizable>
+		<Window>
 			<Window.Content scrollable>
 				<HealthStatus user="Jerry" />
 			</Window.Content>
@@ -316,7 +316,7 @@ export const SampleInterface = (props, context) => {
 	// Extract `health` and `color` variables from the `data` object.
 	const { health, color } = data;
 	return (
-		<Window resizable>
+		<Window>
 			<Window.Content scrollable>
 				<Section title="Health status">
 					<LabeledList>

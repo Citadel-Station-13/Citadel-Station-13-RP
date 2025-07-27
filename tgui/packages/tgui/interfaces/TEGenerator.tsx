@@ -1,4 +1,4 @@
-import { round } from 'common/math';
+import { round } from 'tgui-core/math';
 import { useBackend } from "../backend";
 import { Box, Flex, LabeledList, ProgressBar, Section } from "tgui-core/components";
 import { Window } from "../layouts";
@@ -19,7 +19,7 @@ export const TEGenerator = (props) => {
     <Window
       width={550}
       height={310}
-      resizable>
+    >
       <Window.Content>
         <Section title="Status">
           <LabeledList>

@@ -1,4 +1,4 @@
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 import { useBackend } from "../backend";
 import { Box, Button, LabeledList, Section, Dropdown } from "tgui-core/components";
 import { Window } from "../layouts";
@@ -18,7 +18,7 @@ export const DroneConsole = (props) => {
     <Window
       width={600}
       height={350}
-      resizable>
+    >
       <Window.Content scrollable>
         <Section
           title="Drone Fabricator"

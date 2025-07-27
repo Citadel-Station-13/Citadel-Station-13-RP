@@ -1,7 +1,7 @@
 import { Flex, Button, Box, LabeledList, Section } from "tgui-core/components";
 import { useBackend, useLocalState } from "../backend";
 import { Window } from '../layouts';
-import { toTitleCase } from 'common/string';
+import { toTitleCase } from 'tgui-core/string';
 
 
 export const AreaScrubberControl = (props) => {
@@ -33,7 +33,7 @@ export const AreaScrubberControl = (props) => {
     <Window
       width={600}
       height={400}
-      resizable>
+    >
       <Window.Content scrollable>
         <Section>
           <Flex wrap="wrap">

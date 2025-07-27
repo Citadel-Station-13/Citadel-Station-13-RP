@@ -1,6 +1,6 @@
-import { round } from 'common/math';
-import { BooleanLike } from 'common/react';
-import { Fragment } from 'inferno';
+import { round } from 'tgui-core/math';
+import { BooleanLike } from 'tgui-core/react';
+import { Fragment } from 'react';
 import { useBackend } from "../backend";
 import { Box, Button, Flex, NoticeBox, LabeledList, Section, Collapsible } from "tgui-core/components";
 import { formatTime } from '../format';
@@ -56,7 +56,7 @@ export const TelecommsLogBrowser = (props) => {
     <Window
       width={575}
       height={450}
-      resizable>
+    >
       <Window.Content scrollable>
         {!!data.temp && (
           <NoticeBox warning>

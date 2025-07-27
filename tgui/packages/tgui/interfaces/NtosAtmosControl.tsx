@@ -6,7 +6,7 @@ export const NtosAtmosControl = () => {
     <NtosWindow
       width={870}
       height={708}
-      resizable>
+    >
       <NtosWindow.Content>
         <AtmosControlContent />
       </NtosWindow.Content>

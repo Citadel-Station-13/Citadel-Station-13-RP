@@ -11,7 +11,7 @@ export const DestinationTagger = (props) => {
   } = data;
 
   return (
-    <Window width={450} height={310} resizable>
+    <Window width={450} height={310}>
       <Window.Content>
         <Section title="Tagger Locations">
           <Flex wrap="wrap" spacing={1} justify="center">

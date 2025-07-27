@@ -2,14 +2,14 @@ import { useBackend } from '../backend';
 import { Box, Button, LabeledList, ProgressBar, Section, Flex, AnimatedNumber, Chart, ColorBox }
   from 'tgui-core/components';
 import { Window } from '../layouts';
-import { round } from 'common/math';
-import { toTitleCase } from 'common/string';
-import { Fragment } from 'inferno';
+import { round } from 'tgui-core/math';
+import { toTitleCase } from 'tgui-core/string';
+import { Fragment } from 'react';
 
 //  As of 2020-08-06 this isn't actually ever used, but it needs to exist
 //  because that's what tgui_modules expect
 export const SupermatterMonitor = (props) => (
-  <Window width={600} height={400} resizable>
+  <Window width={600} height={400}>
     <Window.Content scrollable>
       <SupermatterMonitorContent />
     </Window.Content>

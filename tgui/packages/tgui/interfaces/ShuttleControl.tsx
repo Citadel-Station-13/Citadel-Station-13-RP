@@ -1,5 +1,5 @@
-import { toTitleCase } from 'common/string';
-import { Fragment } from 'inferno';
+import { toTitleCase } from 'tgui-core/string';
+import { Fragment } from 'react';
 import { useBackend } from "../backend";
 import { Box, Button, Flex, LabeledList, ProgressBar, Section } from "tgui-core/components";
 import { Window } from "../layouts";
@@ -472,7 +472,7 @@ export const ShuttleControl = (props) => {
     subtemplate,
   } = data;
   return (
-    <Window width={470} height={(subtemplate === "ShuttleControlConsoleWeb") ? 560 : 370} resizable>
+    <Window width={470} height={(subtemplate === "ShuttleControlConsoleWeb") ? 560 : 370}>
       <Window.Content>
         {SubtemplateList[subtemplate]}
       </Window.Content>

@@ -1,4 +1,4 @@
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 import { useBackend } from "../../backend";
 import { Box, Button, NoticeBox } from 'tgui-core/components';
 

@@ -1,8 +1,8 @@
 import { filter, sortBy } from 'common/collections';
 import { flow } from 'common/fp';
-import { classes } from 'common/react';
-import { createSearch } from 'common/string';
-import { Fragment } from 'inferno';
+import { classes } from 'tgui-core/react';
+import { createSearch } from 'tgui-core/string';
+import { Fragment } from 'react';
 import { useBackend, useLocalState } from '../backend';
 import { Button, ByondUi, Flex, Input, Section } from 'tgui-core/components';
 import { Window } from '../layouts';

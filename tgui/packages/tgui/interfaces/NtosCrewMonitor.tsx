@@ -6,7 +6,7 @@ export const NtosCrewMonitor = () => {
     <NtosWindow
       width={800}
       height={600}
-      resizable>
+    >
       <NtosWindow.Content>
         <CrewMonitorContent />
       </NtosWindow.Content>

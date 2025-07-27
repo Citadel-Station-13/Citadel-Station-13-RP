@@ -25,7 +25,7 @@ export const OmniMixer = (props) => {
     <Window
       width={390}
       height={330}
-      resizable>
+    >
       <Window.Content>
         <Section
           title={config ? "Configuration" : "Status"}
@@ -75,7 +75,7 @@ export const OmniMixer = (props) => {
                   icon="wrench"
                   content={(set_flow_rate / 10) + " L/s"}
                   onClick={() => act("set_flow_rate")} />
-              ) : (set_flow_rate / 10) + " L/s" }
+              ) : (set_flow_rate / 10) + " L/s"}
             </LabeledList.Item>
           </LabeledList>
         </Section>
@@ -117,7 +117,7 @@ const PortRow = (props) => {
               "mode": "out",
               "dir": port.dir,
             })} />
-        ) : port.concentration*100 + "%"}
+        ) : port.concentration * 100 + "%"}
       </Table.Cell>
       {config ? (
         <Fragment>
@@ -126,7 +126,7 @@ const PortRow = (props) => {
               width="100%"
               icon="wrench"
               disabled={!port.input}
-              content={!port.input ? "-" : (port.concentration*100 + " %")}
+              content={!port.input ? "-" : (port.concentration * 100 + " %")}
               onClick={() => act("switch_con", {
                 "dir": port.dir,
               })} />

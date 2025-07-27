@@ -1,11 +1,11 @@
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 import { useBackend } from "../backend";
 import { Box, Button, LabeledList, ProgressBar, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
 export const OvermapShipSensors = (props) => {
   return (
-    <Window width={375} height={545} resizable>
+    <Window width={375} height={545}>
       <Window.Content>
         <OvermapShipSensorsContent />
       </Window.Content>
@@ -82,10 +82,10 @@ export const OvermapShipSensorsContent = (props) => {
               ) || heat < critical_heat * 0.75 && (
                 <Box>Sensor temperature high!</Box>
               ) || (
-                <Box>
-                  TEMPERATURE CRITICAL: Disable or reduce power immediately!
-                </Box>
-              )}
+                  <Box>
+                    TEMPERATURE CRITICAL: Disable or reduce power immediately!
+                  </Box>
+                )}
             </ProgressBar>
           </LabeledList.Item>
         </LabeledList>
@@ -101,10 +101,10 @@ export const OvermapShipSensorsContent = (props) => {
             <Box inline>, bearing: {alien.bearing}&deg;</Box>
           </Button>
         )) || (
-          <Box color="average">
-            No contacts on sensors.
-          </Box>
-        )}
+            <Box color="average">
+              No contacts on sensors.
+            </Box>
+          )}
       </Section>
       {data.status === "MISSING" && (
         <Section title="Error">

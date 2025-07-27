@@ -1,4 +1,4 @@
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 import { useBackend } from "../backend";
 import { Box, Button, LabeledList, Section, NumberInput } from "tgui-core/components";
 import { TemporaryNotice } from './common/TemporaryNotice';
@@ -26,7 +26,7 @@ export const TelecommsMultitoolMenu = (props) => {
     <Window
       width={520}
       height={540}
-      resizable>
+    >
       <Window.Content scrollable>
         <TemporaryNotice />
         <TelecommsMultitoolMenuStatus />
@@ -165,7 +165,7 @@ const TelecommsMultitoolMenuPolymorphicOptions = (props) => {
 
   // If absolutely nothing is active, we tell the user there ain't no shit here.
   if (!use_listening_level && !use_broadcasting && !use_receiving
-      && !use_change_freq && !use_broadcast_range && !use_receive_range) {
+    && !use_change_freq && !use_broadcast_range && !use_receive_range) {
     return <Section title="No Options Found" />;
   }
 

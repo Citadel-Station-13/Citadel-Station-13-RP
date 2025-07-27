@@ -1,4 +1,4 @@
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 import { useBackend } from "../backend";
 import { Box, Button, LabeledList, ProgressBar, Section, NoticeBox, Slider } from "tgui-core/components";
 import { Window } from "../layouts";
@@ -31,7 +31,7 @@ export const XenoarchSpectrometer = (props) => {
   } = data;
 
   return (
-    <Window width={900} height={760} resizable>
+    <Window width={900} height={760}>
       <Window.Content scrollable>
         <Section title="Status" buttons={
           <Fragment>

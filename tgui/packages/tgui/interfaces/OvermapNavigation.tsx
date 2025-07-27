@@ -1,4 +1,4 @@
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 import { useBackend } from "../backend";
 import { Button, LabeledList, Section } from "tgui-core/components";
 import { Window } from "../layouts";
@@ -6,7 +6,7 @@ import { OvermapFlightData } from "./common/Overmap";
 
 export const OvermapNavigation = (props) => {
   return (
-    <Window width={380} height={530} resizable>
+    <Window width={380} height={530}>
       <Window.Content>
         <OvermapNavigationContent />
       </Window.Content>

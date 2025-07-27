@@ -1,4 +1,4 @@
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 import { useBackend } from "../backend";
 import {
   Box,
@@ -94,7 +94,7 @@ export const EmbeddedController = (props) => {
     <Window
       width={450}
       height={340}
-      resizable>
+    >
       <Window.Content>
         <Component />
       </Window.Content>

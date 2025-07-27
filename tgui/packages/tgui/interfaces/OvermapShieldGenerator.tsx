@@ -1,11 +1,11 @@
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 import { useBackend } from "../backend";
 import { Box, Button, LabeledList, ProgressBar, Section, AnimatedNumber } from "tgui-core/components";
 import { Window } from "../layouts";
 
 export const OvermapShieldGenerator = (props) => {
   return (
-    <Window width={500} height={760} resizable>
+    <Window width={500} height={760}>
       <Window.Content scrollable>
         <OvermapShieldGeneratorContent />
       </Window.Content>
@@ -100,14 +100,14 @@ const OvermapShieldGeneratorStatus = (props) => {
               {target_radius !== field_radius && (
                 <Box inline>(Adjusting Radius)</Box>
               ) || (
-                <Box inline>{spinup_counter * 2}s</Box>
-              )}
+                  <Box inline>{spinup_counter * 2}s</Box>
+                )}
             </Box>
           ) || (
-            <Box color="bad">
-              Offline
-            </Box>
-          )}
+              <Box color="bad">
+                Offline
+              </Box>
+            )}
         </LabeledList.Item>
         <LabeledList.Item label="Energy Storage">
           <ProgressBar
@@ -136,10 +136,10 @@ const OvermapShieldGeneratorStatus = (props) => {
               </ProgressBar>
             </Box>
           ) || (
-            <Box>
-              <AnimatedNumber value={power_usage} /> kW (No Limit)
-            </Box>
-          )}
+              <Box>
+                <AnimatedNumber value={power_usage} /> kW (No Limit)
+              </Box>
+            )}
         </LabeledList.Item>
         <LabeledList.Item label="Field Size">
           <AnimatedNumber value={functional_segments} />&nbsp;/&nbsp;
@@ -170,14 +170,14 @@ const OvermapShieldGeneratorControls = (props) => {
             {running === 3 && (
               <Button icon="power-off" onClick={() => act("toggle_idle", { toggle_idle: 0 })}>Activate</Button>
             ) || (
-              <Button icon="power-off" onClick={() => act("toggle_idle", { toggle_idle: 1 })} selected>
-                Deactivate
-              </Button>
-            )}
+                <Button icon="power-off" onClick={() => act("toggle_idle", { toggle_idle: 1 })} selected>
+                  Deactivate
+                </Button>
+              )}
           </Box>
         ) || (
-          <Button icon="power-off" onClick={() => act("start_generator")}>Turn on</Button>
-        )}
+            <Button icon="power-off" onClick={() => act("start_generator")}>Turn on</Button>
+          )}
         {running && hacked && (
           <Button icon="exclamation-triangle" onClick={() => act("emergency_shutdown")} color="bad">
             EMERGENCY SHUTDOWN

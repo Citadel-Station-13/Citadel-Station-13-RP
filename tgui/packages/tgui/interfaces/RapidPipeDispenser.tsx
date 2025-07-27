@@ -1,4 +1,4 @@
-import { classes } from 'common/react';
+import { classes } from 'tgui-core/react';
 import { useBackend, useLocalState } from '../backend';
 import { Box, Button, ColorBox, LabeledList, Section, Stack, Tabs } from 'tgui-core/components';
 import { Window } from '../layouts';
@@ -6,7 +6,7 @@ import { Window } from '../layouts';
 const ROOT_CATEGORIES = [
   'Atmospherics',
   'Disposals',
-//   'Transit Tubes',
+  //   'Transit Tubes',
 ];
 
 export const ICON_BY_CATEGORY_NAME = {

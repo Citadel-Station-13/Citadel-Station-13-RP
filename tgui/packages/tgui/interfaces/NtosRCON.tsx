@@ -6,7 +6,7 @@ export const NtosRCON = () => {
     <NtosWindow
       width={630}
       height={440}
-      resizable>
+    >
       <NtosWindow.Content scrollable>
         <RCONContent />
       </NtosWindow.Content>

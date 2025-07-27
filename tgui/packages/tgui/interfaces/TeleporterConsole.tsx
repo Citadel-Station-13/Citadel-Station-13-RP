@@ -1,7 +1,7 @@
 import { Section, Flex, Box, Dropdown, ProgressBar, NumberInput } from "tgui-core/components";
 import { Window } from "../layouts";
 import { useBackend } from "../backend";
-import { toFixed } from 'common/math';
+import { toFixed } from 'tgui-core/math';
 
 interface TeleporterConsoleContext {
   "disabled",
@@ -22,7 +22,7 @@ export const TeleporterConsole = (props) => {
     <Window
       width={600}
       height={400}
-      resizable>
+    >
       {data.disabled ? (<Box color="bad">TELEPORTER PAD OR PROJECTOR NOT FOUND. PLEASE CONTACT YOUR SYSTEM ADMINISTRATOR.</Box>) : (<TeleporterConsoleOperational locked={locked} />)}
     </Window>
   );

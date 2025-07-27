@@ -1,4 +1,4 @@
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 import { useBackend } from "../backend";
 import { Box, Button, Flex, LabeledList, Section, Table } from "tgui-core/components";
 import { Window } from "../layouts";
@@ -130,10 +130,10 @@ const OvermapAutopilot = (props) => {
               </Button>
             </Fragment>
           ) || (
-            <Button icon="pen" onClick={() => act("setcoord", { setx: true, sety: true })}>
-              None
-            </Button>
-          )}
+              <Button icon="pen" onClick={() => act("setcoord", { setx: true, sety: true })}>
+                None
+              </Button>
+            )}
         </LabeledList.Item>
         <LabeledList.Item label="Speed Limit">
           <Button

@@ -1,4 +1,4 @@
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 import { useBackend, useSharedState } from "../backend";
 import { Box, Button, LabeledList, Section, Tabs } from "tgui-core/components";
 import { Window } from "../layouts";
@@ -7,7 +7,7 @@ import { filter } from 'common/collections';
 export const ResearchServerController = (props) => {
   const { act, data } = useBackend<any>();
   return (
-    <Window width={575} height={430} resizable>
+    <Window width={575} height={430}>
       <Window.Content scrollable>
         <ResearchControllerContent />
       </Window.Content>

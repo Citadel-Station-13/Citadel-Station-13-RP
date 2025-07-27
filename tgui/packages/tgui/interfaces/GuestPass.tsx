@@ -20,7 +20,7 @@ export const GuestPass = (props) => {
   } = data;
 
   return (
-    <Window width={500} height={520} resizable>
+    <Window width={500} height={520}>
       <Window.Content scrollable>
         {mode === 1 && (
           <Section title="Activity Log" buttons={

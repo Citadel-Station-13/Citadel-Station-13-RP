@@ -2,7 +2,7 @@ import { useBackend } from '../backend';
 import { Button, LabeledList, Section, Table } from 'tgui-core/components';
 import { NtosWindow } from '../layouts';
 import { filter } from 'common/collections';
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 
 export const NtosDigitalWarrant = (props) => {
   const { act, data } = useBackend<any>();
@@ -22,7 +22,7 @@ export const NtosDigitalWarrant = (props) => {
   }
 
   return (
-    <NtosWindow width={500} height={350} resizable>
+    <NtosWindow width={500} height={350}>
       <NtosWindow.Content scrollable>
         {body}
       </NtosWindow.Content>
@@ -89,12 +89,12 @@ const WarrantList = (props) => {
           </Table.Cell>
         </Table.Row>
       )) || (
-        <Table.Row>
-          <Table.Cell colspan="3" color="bad">
-            No {type} warrants found.
-          </Table.Cell>
-        </Table.Row>
-      )}
+          <Table.Row>
+            <Table.Cell colspan="3" color="bad">
+              No {type} warrants found.
+            </Table.Cell>
+          </Table.Row>
+        )}
     </Table>
   );
 };
@@ -146,10 +146,10 @@ const ActiveWarrant = (props) => {
               onClick={() => act("editwarrantnamecustom")} />
           </Fragment>
         ) || (
-          <Button
-            icon="pen"
-            onClick={() => act("editwarrantnamecustom")} />
-        )}>
+            <Button
+              icon="pen"
+              onClick={() => act("editwarrantnamecustom")} />
+          )}>
           {warrantname}
         </LabeledList.Item>
         <LabeledList.Item label={warrantchargesLabel} buttons={

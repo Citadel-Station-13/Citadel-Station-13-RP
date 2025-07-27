@@ -1,5 +1,5 @@
 import { Color } from 'common/colorLegacy';
-import { decodeHtmlEntities } from 'common/string';
+import { decodeHtmlEntities } from 'tgui-core/string';
 import { Component, createRef, RefObject } from 'inferno';
 import { useBackend } from '../../backend';
 import { Box, Button, Flex } from 'tgui-core/components';

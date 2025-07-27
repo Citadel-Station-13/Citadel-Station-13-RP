@@ -1,4 +1,4 @@
-import { round } from 'common/math';
+import { round } from 'tgui-core/math';
 import { useBackend } from '../backend';
 import { Box, Button, Collapsible, LabeledList, ProgressBar, Section, Slider } from 'tgui-core/components';
 import { Window } from '../layouts';
@@ -29,7 +29,7 @@ export const Jukebox = (props) => {
   let true_genre = playing && (current_genre || 'Uncategorized');
 
   return (
-    <Window width={450} height={600} resizable>
+    <Window width={450} height={600}>
       <Window.Content scrollable>
         <Section title="Currently Playing">
           <LabeledList>

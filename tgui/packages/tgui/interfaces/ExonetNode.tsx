@@ -17,7 +17,7 @@ export const ExonetNode = (props) => {
     <Window
       width={400}
       height={400}
-      resizable>
+    >
       <Window.Content scrollable>
         <Section
           title="Status"

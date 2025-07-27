@@ -24,7 +24,7 @@ export const StockExchange = (props) => {
     <Window
       width={600}
       height={600}
-      resizable>
+    >
       <Window.Content scrollable>
         <Section title={`${stationName} Stock Exchange`}>
           <span>Welcome, <b>{stationName} Cargo Department</b> | </span>

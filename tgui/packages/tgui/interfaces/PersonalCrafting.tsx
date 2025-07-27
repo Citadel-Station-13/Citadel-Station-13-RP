@@ -1,6 +1,6 @@
 import { filter, sortBy } from 'common/collections';
 import { flow } from 'common/fp';
-import { BooleanLike, classes } from 'common/react';
+import { BooleanLike, classes } from 'tgui-core/react';
 import { useBackend } from '../backend';
 import { Button, Dimmer, Icon, Section, Stack, Table } from 'tgui-core/components';
 import { Window } from '../layouts';

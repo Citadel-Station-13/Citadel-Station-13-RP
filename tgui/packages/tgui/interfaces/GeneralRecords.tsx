@@ -1,4 +1,4 @@
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 import { useBackend, useLocalState } from '../backend';
 import { Box, Button, Icon, Input, LabeledList, Section, Tabs } from "tgui-core/components";
 import { ComplexModal, modalOpen } from "./common/ComplexModal";
@@ -6,7 +6,7 @@ import { Window } from "../layouts";
 import { LoginInfo } from './common/LoginInfo';
 import { LoginScreen } from './common/LoginScreen';
 import { TemporaryNotice } from './common/TemporaryNotice';
-import { createSearch } from 'common/string';
+import { createSearch } from 'tgui-core/string';
 import { filter } from 'common/collections';
 import { flow } from 'common/fp';
 
@@ -28,7 +28,7 @@ export const GeneralRecords = (_properties, context) => {
       <Window
         width={800}
         height={380}
-        resizable>
+      >
         <Window.Content>
           <LoginScreen />
         </Window.Content>
@@ -49,7 +49,7 @@ export const GeneralRecords = (_properties, context) => {
     <Window
       width={800}
       height={640}
-      resizable>
+    >
       <ComplexModal />
       <Window.Content className="Layout__content--flexColumn" scrollable>
         <LoginInfo />

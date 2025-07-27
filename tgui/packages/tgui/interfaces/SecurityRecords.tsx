@@ -1,4 +1,4 @@
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 import { useBackend } from "../backend";
 import { Box, Button, Flex, Input, LabeledList, Section, Tabs } from "tgui-core/components";
 import { ComplexModal, modalOpen } from "./common/ComplexModal";
@@ -25,7 +25,7 @@ export const SecurityRecords = (_properties, context) => {
       <Window
         width={700}
         height={680}
-        resizable>
+      >
         <Window.Content>
           <LoginScreen />
         </Window.Content>
@@ -46,7 +46,7 @@ export const SecurityRecords = (_properties, context) => {
     <Window
       width={700}
       height={680}
-      resizable>
+    >
       <ComplexModal maxHeight="100%" maxWidth="400px" />
       <Window.Content scrollable>
         <LoginInfo />

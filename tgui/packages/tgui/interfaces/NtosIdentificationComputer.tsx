@@ -6,7 +6,7 @@ export const NtosIdentificationComputer = (props) => {
     <NtosWindow
       width={870}
       height={708}
-      resizable>
+    >
       <NtosWindow.Content scrollable>
         <Module id="modify" />
       </NtosWindow.Content>

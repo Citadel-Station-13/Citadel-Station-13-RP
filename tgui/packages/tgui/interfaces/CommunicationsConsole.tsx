@@ -1,11 +1,11 @@
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 import { useBackend } from '../backend';
 import { Button, LabeledList, Box, Section } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 export const CommunicationsConsole = (props) => {
   return (
-    <Window width={400} height={600} resizable>
+    <Window width={400} height={600}>
       <Window.Content scrollable>
         <CommunicationsConsoleContent />
       </Window.Content>

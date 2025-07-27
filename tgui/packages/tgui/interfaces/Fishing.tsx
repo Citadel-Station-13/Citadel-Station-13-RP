@@ -1,4 +1,4 @@
-import { clamp } from 'common/math';
+import { clamp } from 'tgui-core/math';
 import { randomInteger, randomNumber, randomPick, randomProb } from 'common/random';
 import { useDispatch } from 'common/redux';
 import { Component } from 'inferno';

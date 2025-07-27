@@ -1,4 +1,4 @@
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 import { useBackend } from "../backend";
 import { Box, Button, Flex, LabeledList, Section, AnimatedNumber, Collapsible } from "tgui-core/components";
 import { Window } from "../layouts";

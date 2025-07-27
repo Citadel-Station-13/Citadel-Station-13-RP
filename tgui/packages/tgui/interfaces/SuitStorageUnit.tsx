@@ -1,4 +1,4 @@
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 import { useBackend } from '../backend';
 import { Box, Button, Icon, LabeledList, Knob, NoticeBox, Section, Flex } from 'tgui-core/components';
 import { Window } from '../layouts';
@@ -25,7 +25,7 @@ export const SuitStorageUnit = (props) => {
     <Window
       width={400}
       height={365}
-      resizable>
+    >
       <Window.Content>
         {subTemplate}
       </Window.Content>

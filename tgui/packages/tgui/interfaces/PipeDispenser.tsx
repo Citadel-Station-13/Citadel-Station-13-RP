@@ -23,7 +23,7 @@ export const PipeDispenser = (props) => {
     <Window
       width={425}
       height={515}
-      resizable>
+    >
       <Window.Content scrollable>
         {!disposals && (
           <Section title="Layer">

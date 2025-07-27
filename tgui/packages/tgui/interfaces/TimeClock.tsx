@@ -1,4 +1,4 @@
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 import { useBackend } from "../backend";
 import { Box, Button, Flex, LabeledList, Section, NoticeBox } from "tgui-core/components";
 import { Window } from "../layouts";
@@ -17,7 +17,7 @@ export const TimeClock = (props) => {
   } = data;
 
   return (
-    <Window width={500} height={520} resizable>
+    <Window width={500} height={520}>
       <Window.Content scrollable>
         <Section title="OOC">
           <NoticeBox>
