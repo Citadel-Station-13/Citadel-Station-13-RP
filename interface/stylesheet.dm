@@ -88,6 +88,7 @@ em						{font-style: normal;font-weight: bold;}
 .greenteamradio			{color: #00ff00;}
 .yellowteamradio		{color: #d1ba22;}
 .gangradio				{color: #ac2ea1;}
+.sdfradio				{color: #ff9900;}
 
 //* Miscellaneous *//
 .name					{font-weight: bold;}

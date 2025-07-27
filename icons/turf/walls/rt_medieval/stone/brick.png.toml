@@ -1,0 +1,10 @@
+template = "impl/wall/rt_medieval.toml"
+
+smooth_diagonally = true
+
+[positions]
+convex = 1
+vertical = 4
+horizontal = 0
+concave = 3
+flat = 2

@@ -194,3 +194,6 @@
 
 /obj/item/encryptionkey/talon
 	channels = list("Talon" = 1)
+
+/obj/item/encryptionkey/sdf
+	channels = list("SDF" = 1)
