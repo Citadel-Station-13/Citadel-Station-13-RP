@@ -56,11 +56,10 @@
 /datum/tgui_module/ui_host()
 	return isnull(host)? src : host.ui_host()
 
-#warn this and that
 /datum/tgui_module/on_ui_close(mob/user, datum/tgui/ui, embedded)
-	// . = ..()
-	// if(ephemeral)
-	// 	qdel(src)
+	..()
+	if(ephemeral)
+		qdel(src)
 
 /datum/tgui_module/ui_state()
 	return isnull(host)? ..() : host.ui_state()

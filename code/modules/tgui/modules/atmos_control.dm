@@ -31,10 +31,9 @@
 					alarm.ui_interact(usr, parent_ui = ui_ref, state = TS)
 			return 1
 
-#warn this and that
-// /datum/tgui_module_old/atmos_control/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
-// 	immediate += /datum/asset_pack/simple/nanomaps
-// 	return ..()
+/datum/tgui_module_old/atmos_control/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
+	immediate += /datum/asset_pack/simple/nanomaps
+	return ..()
 
 /datum/tgui_module_old/atmos_control/ui_interact(mob/user, datum/tgui/ui)
 	. = ..()

@@ -1,6 +1,9 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
+// TODO: generalize this to a tgui helper / whatever, this shouldn't just be for dynamic input modal.
+//       this will be very useful for rigs & more.
+
 /**
  * Helper datum used to build a query for tgui_dynamic_input
  * High overhead, technically not necessary, but, this is easy to use as an API.
