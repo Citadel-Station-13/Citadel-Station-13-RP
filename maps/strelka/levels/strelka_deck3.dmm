@@ -4399,6 +4399,9 @@
 /turf/simulated/floor/tiled/monotile,
 /area/strelka/shipbase/deck3/science/test)
 "pL" = (
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3)
 "pM" = (
@@ -5042,6 +5045,9 @@
 /area/strelka/shipbase/deck3)
 "rX" = (
 /obj/structure/stairs/spawner/south,
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck3)
 "sa" = (
@@ -7018,6 +7024,9 @@
 /area/strelka/shipbase/deck3/maintenance/science)
 "yM" = (
 /obj/structure/stairs/spawner/west,
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3)
 "yN" = (
@@ -8852,6 +8861,9 @@
 /area/strelka/shipbase/deck3)
 "EK" = (
 /obj/structure/stairs/spawner/north,
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
 /turf/simulated/floor/event/grass/grass1,
 /area/strelka/shipbase/deck3)
 "EL" = (
@@ -10344,6 +10356,12 @@
 /obj/machinery/computer/timeclock/premade/north,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3)
+"JU" = (
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
+/turf/simulated/floor/fey/forest_grass,
+/area/strelka/shipbase/deck3)
 "JV" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck3/bridge)
@@ -10406,6 +10424,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3)
 "Kk" = (
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
 /turf/simulated/floor/event/grass/grass1,
 /area/strelka/shipbase/deck3)
 "Kl" = (
@@ -10983,6 +11004,9 @@
 /area/strelka/shipbase/deck3/bridge/md)
 "Mr" = (
 /obj/structure/stairs/spawner/east,
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3)
 "Ms" = (
@@ -11817,6 +11841,9 @@
 /area/strelka/shipbase/deck3/medical/psy)
 "Px" = (
 /obj/structure/stairs/spawner/south,
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
 /turf/simulated/floor/event/grass/grass1,
 /area/strelka/shipbase/deck3)
 "Py" = (
@@ -35403,7 +35430,7 @@ Kk
 pS
 Ui
 pS
-uZ
+JU
 rX
 pp
 lG

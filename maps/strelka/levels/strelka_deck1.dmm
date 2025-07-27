@@ -3622,6 +3622,9 @@
 /obj/machinery/light/small/old{
 	dir = 1
 	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck1)
 "sT" = (
@@ -4603,6 +4606,12 @@
 	},
 /turf/space/basic,
 /area/space)
+"yk" = (
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/strelka/shipbase/deck1)
 "ym" = (
 /turf/simulated/floor/airless,
 /area/space)
@@ -4929,6 +4938,9 @@
 /area/strelka/shipbase/deck1/armory)
 "zN" = (
 /obj/structure/stairs/spawner/west,
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck1)
 "zP" = (
@@ -32819,7 +32831,7 @@ sP
 cm
 NV
 Gk
-oy
+yk
 kp
 mR
 dO
