@@ -177,7 +177,7 @@
 /**
  * Trace Destroy() before Initialize().
  */
-#define CF_ATOM_TRACE_INIT_EARLY_QDEL
+// #define CF_ATOM_TRACE_INIT_EARLY_QDEL
 
 // ## AI Holders
 

@@ -128,6 +128,7 @@ GENERATE_DESIGN(ENTITY_PATH, DESIGN_PATH, DESIGN_ID); \
 GENERATE_DESIGN(ENTITY_PATH, DESIGN_PATH, DESIGN_ID); \
 /datum/prototype/design/generated##DESIGN_PATH { \
 	lathe_type = LATHE_TYPE_PROTOLATHE; \
+	design_unlock = DESIGN_UNLOCK_TECHLEVEL; \
 }; \
 /datum/prototype/design/generated##DESIGN_PATH
 

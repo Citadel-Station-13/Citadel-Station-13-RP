@@ -132,5 +132,3 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/magnetic/nt
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/magnetic/nt_protomag/rifle, /nt_protomag/rifle, "nt-magrifle")
 /obj/item/gun/projectile/ballistic/magnetic/nt_protomag/rifle/no_pin
 	pin = null
-
-#warn investigate this shit disappearing
