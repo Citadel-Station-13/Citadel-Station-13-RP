@@ -4988,7 +4988,7 @@
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck1/hangardeck)
 "As" = (
-/obj/machinery/computer/shuttle_control/explore/civvie/strelka{
+/obj/machinery/computer/shuttle_control/explore/civvie{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,

@@ -125,7 +125,7 @@
 	shuttle_area = list(/area/shuttle/civvie/strelka)
 	current_location = "strelka_civvie_home"
 	docking_controller_tag = "civvie_dock"
-	fuel_consumption = 12
+	fuel_consumption = 2
 	move_time = 30
 
 /area/shuttle/civvie/strelka
@@ -143,7 +143,7 @@
 	icon_state = "shuttle"
 	requires_power = 1
 
-/obj/machinery/computer/shuttle_control/explore/civvie/strelka
+/obj/machinery/computer/shuttle_control/explore/civvie
 	name = "civilian jump console"
 	shuttle_tag = "Decades Old civilian Transport"
 
