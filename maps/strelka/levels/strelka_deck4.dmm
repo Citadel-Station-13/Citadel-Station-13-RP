@@ -1013,11 +1013,7 @@
 	dir = 8
 	},
 /obj/machinery/air_alarm/west_mount,
-/obj/landmark/spawnpoint/job/chef,
-/obj/structure/sink/kitchen{
-	dir = 4;
-	pixel_x = -14
-	},
+/obj/machinery/appliance/cooker/grill,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck4/kitchen)
 "es" = (
@@ -1701,7 +1697,6 @@
 /area/strelka/shipbase/deck4/hallway)
 "he" = (
 /obj/effect/floor_decal/spline/fancy/wood,
-/obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
@@ -3904,11 +3899,6 @@
 "pV" = (
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck4/bridge/hop/room)
-"pZ" = (
-/obj/effect/floor_decal/spline/fancy/wood,
-/obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/asteroid_steel,
-/area/strelka/shipbase/deck4/kitchen)
 "qa" = (
 /obj/effect/floor_decal/spline/fancy/wood/cee{
 	dir = 8
@@ -3935,7 +3925,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
-/obj/machinery/appliance/cooker/grill,
+/obj/structure/table/hardwoodtable,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck4/kitchen)
 "qm" = (
@@ -4521,7 +4511,6 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck4/kitchen)
 "sI" = (
-/obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
@@ -5722,13 +5711,13 @@
 /turf/simulated/floor/wood,
 /area/strelka/shipbase/deck4/bridge/captain/room)
 "yU" = (
-/obj/structure/table/standard,
 /obj/machinery/microwave{
 	pixel_y = 10
 	},
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
+/obj/structure/table/hardwoodtable,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck4/kitchen)
 "yW" = (
@@ -6604,10 +6593,10 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck4/bridge)
 "CS" = (
-/obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
+/obj/structure/table/hardwoodtable,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck4/kitchen)
 "CU" = (
@@ -8460,7 +8449,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/arrival)
 "Lw" = (
-/obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
@@ -9480,7 +9468,6 @@
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/dormhallway/Dorm)
 "QD" = (
-/obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
@@ -9591,7 +9578,7 @@
 /turf/space/basic,
 /area/space)
 "Rp" = (
-/obj/effect/floor_decal/rust,
+/obj/landmark/spawnpoint/job/chef,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck4/kitchen)
 "Rq" = (
@@ -10124,6 +10111,10 @@
 	name = "Kitchen requests console";
 	pixel_x = 30
 	},
+/obj/structure/sink/kitchen{
+	dir = 8;
+	pixel_x = 11
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck4/kitchen)
 "TR" = (
@@ -10610,7 +10601,6 @@
 /area/space)
 "WM" = (
 /obj/effect/floor_decal/spline/fancy/wood,
-/obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
 	},
@@ -29579,7 +29569,7 @@ eh
 dR
 MJ
 QD
-pZ
+LD
 fo
 JD
 VJ
@@ -29772,7 +29762,7 @@ jR
 eh
 HG
 qf
-Rp
+VA
 wv
 mZ
 wP
@@ -29966,7 +29956,7 @@ jR
 Vl
 LB
 sH
-Rp
+VA
 LD
 XI
 VJ
