@@ -4268,7 +4268,8 @@
 	tag_north_con = 0.21;
 	tag_north = 1;
 	tag_east = 1;
-	tag_west_con = 0.79
+	tag_west_con = 0.79;
+	on = 1
 	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/atmos)
@@ -4278,6 +4279,14 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/terminal,
+/obj/item/stack/material/glass{
+	amount = 50
+	},
+/obj/item/stack/material/steel{
+	amount = 50;
+	pixel_x = 2;
+	pixel_y = 2
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/excursion/strelka)
 "nc" = (

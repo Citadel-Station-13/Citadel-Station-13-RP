@@ -372,6 +372,14 @@
 /area/strelka/shipbase/deck3/maintenance/science)
 "bG" = (
 /obj/machinery/lathe/autolathe,
+/obj/item/stack/material/steel{
+	amount = 50;
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/stack/material/glass{
+	amount = 50
+	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3/science/main)
 "bI" = (
@@ -1611,7 +1619,9 @@
 /obj/structure/bed/chair/office/light{
 	dir = 4
 	},
-/obj/machinery/air_alarm/south_mount,
+/obj/structure/closet/walllocker_double/medical/south,
+/obj/item/mirrortool,
+/obj/item/mirrorscanner,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/resleeve)
 "gw" = (
@@ -4057,12 +4067,11 @@
 	dir = 4
 	},
 /obj/structure/table/reinforced,
-/obj/item/paper/card/flower,
-/obj/item/paper/card/flower,
-/obj/item/reagent_containers/food/drinks/bottle/small/beer,
-/obj/item/reagent_containers/food/drinks/bottle/small/beer,
 /obj/machinery/camera/network/security{
 	dir = 8
+	},
+/obj/structure/flora/pottedplant/orientaltree{
+	pixel_y = 11
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical)
@@ -5066,11 +5075,6 @@
 "sd" = (
 /turf/simulated/wall/wood/hardwood,
 /area/strelka/shipbase/deck3/science/main)
-"se" = (
-/obj/effect/floor_decal/grass_edge,
-/obj/machinery/holopad,
-/turf/simulated/floor/tiled/asteroid_steel,
-/area/strelka/shipbase/deck3)
 "sh" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
@@ -7655,6 +7659,14 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
+/obj/item/stack/material/steel{
+	amount = 50;
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/stack/material/glass{
+	amount = 50
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/cargo/reception)
 "Bb" = (
@@ -9531,6 +9543,10 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/item/storage/box/nifsofts_engineering,
+/obj/item/storage/box/nifsofts_medical,
+/obj/item/storage/box/nifsofts_mining,
+/obj/item/storage/box/nifsofts_security,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3/medical/surgery)
 "GX" = (
@@ -12049,6 +12065,7 @@
 	dir = 10
 	},
 /obj/structure/curtain/open/shower/medical,
+/obj/machinery/air_alarm/east_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/medical/resleeve)
 "Qu" = (
@@ -13188,6 +13205,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
+/obj/machinery/holopad,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3)
 "Un" = (
@@ -13354,6 +13372,7 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
+/obj/machinery/holopad,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck3)
 "UV" = (
@@ -14649,14 +14668,6 @@
 /obj/structure/curtain/open/black,
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck3/bridge/rd)
-"ZH" = (
-/obj/effect/floor_decal/grass_edge{
-	dir = 1
-	},
-/obj/effect/floor_decal/rust,
-/obj/machinery/holopad,
-/turf/simulated/floor/tiled/asteroid_steel,
-/area/strelka/shipbase/deck3)
 "ZI" = (
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 10
@@ -32330,9 +32341,9 @@ dP
 KH
 Pf
 Ha
-ZH
-CQ
-gH
+ID
+mp
+RM
 Tf
 Pf
 Vw
@@ -35628,9 +35639,9 @@ sP
 KH
 bI
 sj
-xh
-jM
-se
+ID
+Zx
+RM
 Kn
 bI
 Vw

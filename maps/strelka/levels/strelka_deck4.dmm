@@ -5188,9 +5188,27 @@
 	dir = 1
 	},
 /obj/machinery/camera/network/security,
-/obj/item/folder/red_hos,
+/obj/machinery/chemical_dispenser/catering/bar_coffee{
+	pixel_y = 9
+	},
+/obj/item/folder/red_hos{
+	pixel_y = 17;
+	pixel_x = 7
+	},
 /obj/structure/panic_button{
 	pixel_y = 29
+	},
+/obj/item/reagent_containers/food/drinks/metaglass{
+	pixel_x = -8
+	},
+/obj/item/reagent_containers/food/drinks/metaglass{
+	pixel_x = -4
+	},
+/obj/item/reagent_containers/food/drinks/metaglass{
+	pixel_x = -1
+	},
+/obj/item/reagent_containers/food/drinks/metaglass{
+	pixel_x = 2
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck4/bridge)
@@ -7820,6 +7838,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
 	},
+/obj/structure/table/hardwoodtable,
 /turf/simulated/floor/bmarble,
 /area/strelka/shipbase/deck4/bar)
 "IR" = (
@@ -8170,7 +8189,6 @@
 /obj/structure/sink/kitchen{
 	pixel_y = 28
 	},
-/obj/structure/sink/puddle,
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck4/hallway/botany)
 "Kl" = (
@@ -10592,6 +10610,9 @@
 	pixel_y = -32
 	},
 /obj/item/folder/yellow_ce,
+/obj/item/reagent_containers/food/drinks/bottle/champagne/jericho{
+	pixel_x = -8
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/shipbase/deck4/bridge)
 "WF" = (
