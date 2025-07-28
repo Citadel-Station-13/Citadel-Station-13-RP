@@ -311,15 +311,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck3)
-"bw" = (
-/obj/machinery/disposal/wall{
-	dir = 8
-	},
-/obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
-/turf/simulated/wall/r_wall/prepainted/science,
-/area/strelka/shipbase/deck3/science/main)
 "bx" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -5234,10 +5225,11 @@
 /obj/effect/floor_decal/corner/purple{
 	dir = 10
 	},
-/obj/structure/disposalpipe/segment{
+/obj/machinery/disposal/wall{
 	dir = 4;
-	icon_state = "pipe-c"
+	pixel_x = 13
 	},
+/obj/structure/disposalpipe/trunk,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck3/science/main)
 "sO" = (
@@ -10251,10 +10243,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck3/bridge)
-"JA" = (
-/mob/living/simple_mob/animal/passive/bird/black_bird,
-/turf/simulated/floor/fey/forest_grass,
-/area/strelka/shipbase/deck3)
 "JB" = (
 /obj/structure/table/carbon/reinforced,
 /obj/item/storage/firstaid/surgery,
@@ -13184,10 +13172,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck3/bridge)
-"Uh" = (
-/mob/living/simple_mob/animal/passive/bird/ringneck_dove,
-/turf/simulated/floor/fey/forest_grass,
-/area/strelka/shipbase/deck3)
 "Ui" = (
 /obj/effect/floor_decal/spline/fancy/wood/corner,
 /obj/effect/floor_decal/spline/fancy/wood/corner{
@@ -31369,8 +31353,8 @@ va
 wx
 Pj
 uZ
-kC
-uZ
+WK
+rW
 xh
 CQ
 Nl
@@ -31569,7 +31553,7 @@ xh
 CQ
 gH
 SD
-Uh
+uZ
 KP
 Ur
 Mt
@@ -33702,7 +33686,7 @@ IK
 WM
 CQ
 gH
-JA
+uZ
 vw
 Bb
 lG
@@ -35265,7 +35249,7 @@ hi
 sd
 yQ
 VL
-bw
+JC
 fJ
 HG
 et

@@ -2029,6 +2029,19 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck2)
+"ge" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/turf/simulated/open,
+/area/strelka/shipbase/deck2)
 "gg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -2245,15 +2258,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/engine)
-"gM" = (
-/obj/structure/cable/white{
-	icon_state = "1-2"
-	},
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/airless,
-/area/space)
 "gN" = (
 /obj/item/circuitboard/robotics{
 	pixel_x = -2;
@@ -3026,14 +3030,6 @@
 /obj/machinery/computer/timeclock/premade/north,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2)
-"jj" = (
-/obj/machinery/power/solar,
-/obj/structure/cable/white,
-/obj/structure/cable/white{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/airless,
-/area/space)
 "jk" = (
 /obj/machinery/power/breakerbox/activated{
 	RCon_tag = "Deck 2 Bridge Substation Bypass"
@@ -6123,12 +6119,11 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/strelka/shipbase/deck2/bridge)
 "rC" = (
-/obj/machinery/atmospherics/component/binary/pump{
-	dir = 8;
-	name = "Fuel Line to Thrusters"
-	},
 /obj/structure/fuel_port{
 	pixel_x = -27
+	},
+/obj/machinery/atmospherics/component/binary/pump/high_power{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/excursion/strelka)
@@ -7871,6 +7866,13 @@
 	},
 /turf/simulated/floor/carpet/oracarpet,
 /area/strelka/shipbase/deck2/bridge/ce)
+"wI" = (
+/obj/structure/cable/white{
+	icon_state = "0-2"
+	},
+/obj/machinery/power/solar,
+/turf/simulated/floor/airless,
+/area/space)
 "wJ" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
@@ -8731,11 +8733,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck2/security/detective)
-"ze" = (
-/obj/structure/cable/white,
-/obj/machinery/power/tracker,
-/turf/simulated/floor/airless,
-/area/space)
 "zf" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -9801,6 +9798,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/engine)
+"BS" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/turf/simulated/open,
+/area/strelka/shipbase/deck2)
 "BT" = (
 /obj/machinery/portable_atmospherics/canister/phoron,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -11436,16 +11443,6 @@
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/maintenance/eva)
-"Hi" = (
-/obj/machinery/power/tracker,
-/obj/structure/cable/white{
-	icon_state = "0-2"
-	},
-/obj/structure/cable/white{
-	icon_state = "0-2"
-	},
-/turf/simulated/floor/airless,
-/area/space)
 "Hj" = (
 /obj/structure/cable/orange{
 	icon_state = "2-8"
@@ -11873,6 +11870,11 @@
 	},
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2/engineering/engine)
+"IH" = (
+/obj/machinery/power/tracker,
+/obj/structure/cable/white,
+/turf/simulated/floor/airless,
+/area/space)
 "II" = (
 /obj/structure/table/rack{
 	dir = 8;
@@ -11927,6 +11929,15 @@
 /obj/machinery/fire_alarm/west_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/shipbase/deck2/engineering/board)
+"IM" = (
+/obj/structure/cable/white{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/white{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/airless,
+/area/space)
 "IN" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -14732,6 +14743,19 @@
 "Ry" = (
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck2)
+"Rz" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 4
+	},
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/strelka/shipbase/deck2)
 "RA" = (
 /obj/structure/table/steel,
 /obj/item/integrated_electronics/debugger{
@@ -16605,6 +16629,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/spline/fancy/wood,
+/obj/structure/flora/pottedplant/hedge,
 /turf/simulated/floor/wood/broken,
 /area/strelka/shipbase/deck2)
 "WX" = (
@@ -28818,9 +28843,9 @@ KT
 KT
 KT
 KT
-KT
 FB
-FB
+DR
+IH
 WM
 WM
 WM
@@ -28865,7 +28890,7 @@ tK
 tK
 ff
 FB
-KT
+Gx
 KT
 KT
 KT
@@ -29012,9 +29037,9 @@ KT
 KT
 KT
 KT
-KT
 FB
-FB
+hf
+lg
 ZR
 aA
 aA
@@ -29058,8 +29083,8 @@ zl
 zl
 zl
 hy
-FB
-KT
+Za
+fN
 KT
 KT
 KT
@@ -29206,9 +29231,9 @@ KT
 KT
 KT
 KT
-KT
 FB
-FB
+hf
+lg
 jw
 WM
 Xo
@@ -29252,8 +29277,8 @@ qy
 ik
 Fp
 hy
-FB
-KT
+Za
+fN
 KT
 KT
 KT
@@ -29400,9 +29425,9 @@ KT
 KT
 KT
 KT
-KT
 FB
-FB
+hf
+lg
 jw
 WM
 Xo
@@ -29446,8 +29471,8 @@ HY
 vE
 zl
 hy
-FB
-KT
+Za
+fN
 KT
 KT
 KT
@@ -29594,9 +29619,9 @@ KT
 KT
 KT
 KT
-KT
 FB
-FB
+hf
+lg
 jw
 WM
 Xo
@@ -29640,8 +29665,8 @@ zl
 vE
 zl
 hy
-FB
-KT
+Za
+fN
 KT
 KT
 KT
@@ -29789,8 +29814,8 @@ EP
 Yg
 ys
 wU
-jj
-ze
+hW
+FB
 jw
 WM
 Xo
@@ -29834,8 +29859,8 @@ zl
 vE
 zl
 hy
-FB
-KT
+Za
+fN
 KT
 KT
 KT
@@ -30028,9 +30053,9 @@ zl
 jZ
 zl
 hy
-FB
-FB
-Hi
+wI
+IM
+PS
 xn
 Yg
 Yg
@@ -37184,7 +37209,7 @@ yH
 LB
 rO
 cT
-VQ
+Rz
 QD
 jX
 Gi
@@ -37378,7 +37403,7 @@ cB
 HB
 yW
 sQ
-VQ
+BS
 qI
 fs
 fd
@@ -37572,7 +37597,7 @@ fl
 HB
 rO
 LU
-VQ
+ge
 tz
 WW
 Gi
@@ -44750,7 +44775,7 @@ KT
 KT
 RU
 kB
-gM
+PS
 kB
 hW
 KT
@@ -44944,7 +44969,7 @@ KT
 KT
 KT
 KT
-Gx
+FB
 KT
 KT
 KT

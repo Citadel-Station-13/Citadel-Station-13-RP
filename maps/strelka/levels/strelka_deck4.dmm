@@ -1820,6 +1820,14 @@
 	dir = 5
 	},
 /obj/machinery/appliance/cooker/fryer,
+/obj/machinery/disposal/wall{
+	dir = 1;
+	pixel_y = 11;
+	pixel_x = 3
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck4/kitchen)
 "hz" = (
@@ -1932,9 +1940,6 @@
 	pixel_y = -29
 	},
 /obj/machinery/light,
-/obj/item/paper/pamphlet/strelka{
-	pixel_x = 16
-	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/arrival)
 "if" = (
@@ -3426,6 +3431,13 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/dormhallway/Dorm)
+"oc" = (
+/obj/structure/disposaloutlet{
+	dir = 1
+	},
+/obj/structure/disposalpipe/trunk,
+/turf/simulated/shuttle/floor/glass,
+/area/strelka/shipbase/deck4/kitchen)
 "od" = (
 /obj/structure/bed/chair/comfy/brown{
 	dir = 1
@@ -4037,10 +4049,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/computer/guestpass{
-	dir = 1;
-	pixel_y = -28
-	},
+/obj/machinery/vending/coffee,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/hallway)
 "qD" = (
@@ -4345,9 +4354,6 @@
 	dir = 8
 	},
 /obj/machinery/gear_painter,
-/obj/item/paper/pamphlet/strelka{
-	pixel_x = 16
-	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/arrival)
@@ -7360,9 +7366,6 @@
 /area/strelka/shipbase/deck4/fitness)
 "GN" = (
 /obj/machinery/vending/loadout/loadout_misc,
-/obj/item/paper/pamphlet/strelka{
-	pixel_x = 16
-	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/arrival)
@@ -10036,6 +10039,11 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck4/bar/back)
+"To" = (
+/obj/structure/grille,
+/obj/structure/disposalpipe/segment,
+/turf/simulated/shuttle/floor/glass,
+/area/strelka/shipbase/deck4/kitchen)
 "Tu" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 5
@@ -10367,6 +10375,26 @@
 /obj/structure/cable/orange{
 	icon_state = "0-4"
 	},
+/obj/item/paper_bin{
+	pixel_x = -7;
+	pixel_y = 7
+	},
+/obj/structure/table/wooden_reinforced,
+/obj/item/paper/pamphlet/strelka{
+	pixel_x = 6;
+	pixel_y = 3
+	},
+/obj/item/pen/blue{
+	pixel_x = -12
+	},
+/obj/item/paper/pamphlet/strelka{
+	pixel_x = 6;
+	pixel_y = 3
+	},
+/obj/item/paper/pamphlet/strelka{
+	pixel_x = 6;
+	pixel_y = 3
+	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/arrival)
 "Vj" = (
@@ -10390,6 +10418,7 @@
 /turf/simulated/floor/wood/indoors,
 /area/strelka/shipbase/deck4/hallway)
 "Vu" = (
+/obj/structure/disposalpipe/segment,
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/strelka/shipbase/deck4/kitchen)
 "Vw" = (
@@ -10420,9 +10449,6 @@
 /obj/machinery/air_alarm/south_mount,
 /obj/machinery/camera/network/security{
 	dir = 1
-	},
-/obj/item/paper/pamphlet/strelka{
-	pixel_x = 16
 	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/shipbase/deck4/arrival)
@@ -28637,7 +28663,7 @@ jR
 jR
 jR
 eh
-Vu
+HG
 aW
 er
 pm
@@ -28831,7 +28857,7 @@ jR
 jR
 jR
 eh
-LB
+HG
 Ng
 VA
 sI
@@ -29025,7 +29051,7 @@ jR
 jR
 jR
 eh
-Vu
+HG
 yU
 Rp
 Lw
@@ -29994,7 +30020,7 @@ jR
 jR
 jR
 jR
-Vl
+LB
 LB
 sH
 VA
@@ -30187,8 +30213,8 @@ jR
 jR
 jR
 jR
-jR
-eh
+oc
+To
 Vu
 hw
 TO
@@ -30382,7 +30408,7 @@ jR
 jR
 jR
 jR
-Vl
+LB
 LB
 LB
 lR
