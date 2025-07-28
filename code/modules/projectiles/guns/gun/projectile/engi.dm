@@ -1,8 +1,9 @@
-#define COILGUN_EFFICIENCY_CURVE(SPEED, SWEETSPOT, BASE_EFF) max((-0.0001 * (SPEED - SWEETSPOT)**2 + BASE_EFF),0.005)//0.5% efficiency :D)
+#define COILGUN_EFFICIENCY_CURVE(SPEED, SWEETSPOT, BASE_EFF) max((-0.0001 * (SPEED - SWEETSPOT)**2 + BASE_EFF),0.005)//0.5% :D)
 #define CHARGE_SPEED_CONVERSION(CHARGE, CELLRATE) sqrt((CHARGE * (1000 * CELLRATE) )/ 3.925)
 #define SPEED_CHARGE_CONVERSION(SPEED, CELLRATE) ((3.925 * (SPEED**2))/ (1000*CELLRATE))
-#define BASE_ACCEL 5
-
+#define ATMOS_MULT_CURVE(MOLS) MOLS/1000 //linear
+#define COILGUN_HEAT_CAPACITY 1.274  //0.49kJ per 1C @ 1kg for 2.6kg
+#define MAX_OPERATING_TEMP 213.15 //-60c
 
 
 /obj/item/coilgun_coil
@@ -28,7 +29,7 @@
 	. = ..()
 	charge_use_speed_range = ((3.925 * (speed_max**2))/ (1000/GLOB.cellrate))/efficiency
 	capacitor = new /obj/item/stock_parts/capacitor(src)
-	
+
 
 /obj/item/coilgun_coil/simple
 	name = "simple coilgun coil"
@@ -87,7 +88,7 @@
 
 	var/obj/item/loaded                                        // Currently loaded object, for retrieval/unloading.
 	var/load_type = /obj/item/stack/rods                       // Type of stack to load with.
- 
+
 
 	var/loop_open = FALSE //is the cooling loop open?
 	var/obj/item/tank/coolant_tank
@@ -106,7 +107,7 @@
 	for(var/obj/item/coilgun_coil/charging_coil in coils)
 		. += "It has the [charging_coil] installed in the number [slotnum] coil bracket, drawing power from its [charging_coil.capacitor]."
 		slotnum++
-	
+
 
 /obj/item/gun/projectile/engineering/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -150,7 +151,7 @@
 /*
 /obj/item/gun/projectile/engineering/examine(var/mob/user)
 	. = ..()
-	
+
 
 	if(obj_cell_slot.cell)
 		. += "<span class='notice'>The installed [obj_cell_slot.cell.name] has a charge level of [round((obj_cell_slot.cell.charge/obj_cell_slot.cell.maxcharge)*100)]%.</span>"
@@ -239,12 +240,44 @@
 	qdel(loaded)
 	loaded = null
 
+/obj/item/gun/projectile/engineering/proc/thermal_check())
+	var/turf/our_turf = get_turf(src)
+	if(istype(our_turf, /turf/space))
+		return (tank.return_temperature() < MAX_OPERATING_TEMP)
+	else
+		var/turf_mol = our_turf.total_mole
+		//do turf calc (we can share Some heat with turf, hopefully)
+		if(turf_mol < 5) //under 5 mol of stuff, barely anything, we ignore it and treat it like space
+			return (tank.return_temperature() < MAX_OPERATING_TEMP)
+		else
+			return (tank.return_temperature() < MAX_OPERATING_TEMP) || (our_turf.return_temperature() < MAX_OPERATING_TEMP)
+
+/obj/item/gun/projectile/engineering/proc/do_thermal_sharing(var/energy_charge)
+	var/energy_kj = DYNAMIC_KJ_TO_CELL_UNITS(energy_charge)
+	var/turf/our_turf = get_turf(src)
+	if(istype(our_turf, /turf/space))
+		//do space-related calc (exclusively use gas coolant)
+	else
+		var/turf_mol = our_turf.total_mole
+		//do turf calc (we can share Some heat with turf, hopefully)
+		if(turf_mol < 5) //under 5 mol of stuff, barely anything, we ignore it and treat it like space
+
+		else
+			var/sharing_with_turf_proportion = min(ATMOS_MULT_CURVE(turf_mol), 1) //it's based on mol because it represents the amount of gas around and we are (primarily) doing convection sim
+			//more gas, even with lower pressure (less movement): your gas is more likely to hit the gun and cool it down
+			var/energy_to_turf = energy_kj * sharing_with_turf_proportion
+
+			var/energy_to_tank = energy_kj - energy_to_turf
+			if((energy_to_turf*COILGUN_HEAT_CAPACITY) > our_turf.return_temperature() )
+
+
+
+
 /obj/item/gun/projectile/engineering/consume_next_projectile(datum/gun_firing_cycle/cycle)
 	var/no_power = FALSE
-
 	for(var/obj/item/coilgun_coil/charging_coil in coils)
-	
-		no_power = no_power || (charging_coil.capacitor.charge < 1) //you CAN fire it off prematurely! i don't know why you would, but, you can
+
+		no_power = no_power || (charging_coil.capacitor.charge < 1) //you CAN fire it off prematurely! i don't know why you would, but
 
 	if(!check_ammo() || !(coils.len) || no_power)
 		return
