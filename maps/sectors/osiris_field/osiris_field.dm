@@ -11,7 +11,7 @@
 	id = "Osirisfield1"
 	name = "Sector - Osiris Debris Field West"
 	display_name = "Osiris Debris Field West"
-	path = "maps/sectors/osiris_field/levels/osiris_field_1.dmm"
+	path = "maps/sectors/osiris_field/levels/osiris_field.dmm"
 	base_turf = /turf/space
 	base_area = /area/space
 

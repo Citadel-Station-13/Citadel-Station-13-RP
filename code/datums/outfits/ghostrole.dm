@@ -101,25 +101,6 @@
 	r_pocket = /obj/item/reagent_containers/food/drinks/flask/tajflask/v_gin
 	l_pocket = /obj/item/reagent_containers/food/snacks/taj_pemmican
 
-//Scavenger
-//
-/datum/outfit/scavenger
-	name = "Scavenger"
-	uniform = /obj/item/clothing/under/color/black
-	suit = /obj/item/clothing/suit/storage/hazardvest
-	head = /obj/item/clothing/head/hardhat/orange
-	l_ear = /obj/item/radio/headset/trader/outsider
-	shoes = /obj/item/clothing/shoes/galoshes/black
-	back = /obj/item/storage/backpack/industrial
-	id_type = /obj/item/card/id/assistant
-	pda_type = /obj/item/pda/engineering
-	belt = /obj/item/storage/belt/utility/full
-	backpack_contents = list(/obj/item/gps/engineering = 1,
-							/obj/item/gun/projectile/energy/phasegun/pistol = 1,
-							/obj/item/camera = 1,
-							/obj/item/spacecash/c200 = 1,
-							/obj/item/spacecash/c100 = 1
-							)
 //SDF
 /datum/outfit/sdf
 	name = "Hadii's Folly SDF"

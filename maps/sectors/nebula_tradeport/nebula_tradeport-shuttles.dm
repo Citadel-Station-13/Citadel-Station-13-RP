@@ -311,39 +311,3 @@
 	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
 	sound_env = SMALL_ENCLOSED
 
-//Salvager
-
-/datum/shuttle/autodock/overmap/trade/scavenger
-	name = "FTV Adala"
-	warmup_time = 8
-	shuttle_area = list(/area/shuttle/trade/scavenger)
-	docking_controller_tag = "scavenger_docker"
-	fuel_consumption = 3
-	move_time = 10
-	current_location = "tradeport_scavenging"
-
-/obj/overmap/entity/visitable/ship/landable/trade/scavenger
-	name = "FTV Adala"
-	desc = "A legal Salvager vessel."
-	scanner_name = "FTV Adala"
-	scanner_desc = @{"[i]Registration[/i]: Free Trade Union - Guardian Salvager - Adala - FTV 003
-[i]Class[/i]: Mega-Tug + Salvager trailer
-[i]Transponder[/i]: Transmitting (CIV), Free trade Union shuttle, Guardian Salvager subsidiary.
-[b]Notice[/b]: A Guardian Salvager company vessel, operated by the FTU. Able to carry small to big one decker vessels. Their scavenging permit as been confirm by CC and the local governement."}
-	color = "#f8e300"
-	fore_dir = EAST
-	vessel_mass = 8000
-	vessel_size = SHIP_SIZE_LARGE
-	shuttle = "FTV Adala"
-
-/obj/machinery/computer/shuttle_control/explore/scavenger
-	name = "short jump console"
-	shuttle_tag = "FTV Adala"
-
-/area/shuttle/trade/scavenger
-	name = "FTV Adala"
-	requires_power = 1
-	icon_state = "shuttle2"
-	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
-	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
-	sound_env = SMALL_ENCLOSED
