@@ -7534,7 +7534,7 @@
 /area/hallway/strelka/deck1)
 "NX" = (
 /obj/effect/shuttle_landmark{
-	base_area = /area/strelka/shipbase/deck1/hangardeck;
+	base_area = /area/strelka/hangardeck;
 	base_turf = /turf/space/basic;
 	docking_controller = "strelka_trade_beruang_docking";
 	landmark_tag = "scoophead_strelka";
