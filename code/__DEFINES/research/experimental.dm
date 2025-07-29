@@ -11,8 +11,11 @@
 /// rd's console should have this
 #define RESEARCH_NETWORK_OPLVL_DIRECTOR 25
 /// bridge's console should have this
+/// * UNUSED. I decided that bridge / command shouldn't be trusted with this.
 #define RESEARCH_NETWORK_OPLVL_BRIDGE 50
-/// normal consoles should have this
+/// preset department consoles should have this
+#define RESEARCH_NETWORK_OPLVL_DEPARTMENT 75
+/// default joining consoles should have this
 #define RESEARCH_NETWORK_OPLVL_DEFAULT 100
 
 /**

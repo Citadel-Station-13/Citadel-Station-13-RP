@@ -22,12 +22,16 @@
 	/// linked r&d machinery
 	var/list/obj/machinery/research_peripheral/linked_peripherals
 
-	/// always join this network
-	var/conf_network_autojoin_id
+	/// always join this network, without map mangling
+	var/conf_network_autojoin_static_id
 	/// use design tag whitelist
 	var/list/conf_network_autojoin_design_whitelist
 	/// use design tag blacklist
 	var/list/conf_network_autojoin_design_blacklist
+	/// use capabilities
+	var/conf_network_autojoin_capabilities = RESEARCH_NETWORK_CAPABILITY_PULL_KNOWLEDGE | RESEARCH_NETWORK_CAPABILITY_PULL_DESIGN
+	/// use oplvl
+	var/conf_network_autojoin_oplvl = RESEARCH_NETWORK_OPLVL_DEFAULT
 
 #warn impl all
 
@@ -67,6 +71,7 @@
 		DESIGN_TAG_C_WEAPON,
 		DESIGN_TAG_C_VEHICLE,
 	)
+	conf_network_autojoin_oplvl = RESEARCH_NETWORK_OPLVL_DEPARTMENT
 
 /obj/machinery/computer/research_console/preset/main_map/medical
 	conf_network_autojoin_design_whitelist = list(
@@ -75,7 +80,18 @@
 	conf_network_autojoin_design_blacklist = list(
 		DESIGN_TAG_S_EXPERIMENTAL,
 	)
+	conf_network_autojoin_oplvl = RESEARCH_NETWORK_OPLVL_DEPARTMENT
 
 /obj/machinery/computer/research_console/preset/main_map/science
 	conf_network_autojoin_design_blacklist = null
 	conf_network_autojoin_design_whitelist = null
+	conf_network_autojoin_capabilities = RESEARCH_NETWORK_CAPABILITY_ADMIN | RESEARCH_NETWORK_CAPABILITY_PULL_KNOWLEDGE | RESEARCH_NETWORK_CAPABILITY_PULL_DESIGN
+	conf_network_autojoin_oplvl = RESEARCH_NETWORK_OPLVL_DEPARTMENT
+
+/obj/machinery/computer/research_console/preset/main_map/bridge
+	conf_network_autojoin_capabilities = RESEARCH_NETWORK_CAPABILITY_ADMIN | RESEARCH_NETWORK_CAPABILITY_PULL_KNOWLEDGE | RESEARCH_NETWORK_CAPABILITY_PULL_DESIGN
+	conf_network_autojoin_oplvl = RESEARCH_NETWORK_OPLVL_DEPARTMENT
+
+/obj/machinery/computer/research_console/preset/main_map/rd_office
+	conf_network_autojoin_capabilities = RESEARCH_NETWORK_CAPABILITY_ADMIN | RESEARCH_NETWORK_CAPABILITY_PULL_KNOWLEDGE | RESEARCH_NETWORK_CAPABILITY_PULL_DESIGN
+	conf_network_autojoin_oplvl = RESEARCH_NETWORK_OPLVL_DIRECTOR

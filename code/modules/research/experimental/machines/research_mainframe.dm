@@ -21,12 +21,12 @@
 	/// our research data
 	var/datum/research_data/research
 
-	/// always make a network of this ID. cannot be set by players.
+	/// always make a network of this ID, without map mangling. cannot be set by players.
 	/// * runtimes if it collides with another.
 	var/conf_network_create_static_id
 	/// always make a network with this passkey. cannot be set by players.
 	/// * set to `TRUE` (numberic 1) to randomize on init
-	var/conf_network_create_static_passkey
+	var/conf_network_create_passkey
 	#warn impl
 
 /obj/machinery/research_mainframe/Initialize(mapload)

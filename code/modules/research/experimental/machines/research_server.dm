@@ -11,8 +11,8 @@
 	///   for now it can link to any mainframe in the same /map
 	var/datum/research_network/network
 
-	/// always join to a given network
-	var/conf_network_autojoin_id
+	/// always join to a given network, without map mangling
+	var/conf_network_autojoin_static_id
 
 #warn impl
 
