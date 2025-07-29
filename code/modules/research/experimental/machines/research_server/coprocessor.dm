@@ -2,6 +2,14 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /obj/machinery/research_server/coprocessor
+	name = "research coprocessing server"
+	desc = "A coprocessing unit that can be connected to a research network to provide available compute."
+
+	/// available compute
+	var/compute_capacity = 20
+	/// batch jobs on this associated to compute usage
+	/// * lazy list
+	var/list/compute_jobs
 
 #warn impl
 
@@ -16,3 +24,7 @@
 
 /obj/machinery/research_server/coprocessor/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
+
+/obj/machinery/research_server/coprocessor/proc/set_compute_capacity(capacity)
+	src.compute_capacity = capacity
+	#warn inform network

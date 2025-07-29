@@ -7,6 +7,11 @@
 /obj/machinery/research_server/storage
 	name = "research storage server"
 
+	/// inserted.
+	/// * not a lazy list, entries can be null
+	/// * not necessarily all disks.
+	var/list/obj/item/disk_bays
+
 #warn impl
 
 /obj/machinery/research_server/storage/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
@@ -20,4 +25,8 @@
 
 /obj/machinery/research_server/storage/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
+
+/obj/machinery/research_server/storage/proc/get_projected_nodes()
+
+/obj/machinery/research_server/storage/proc/get_projected_designs()
 
