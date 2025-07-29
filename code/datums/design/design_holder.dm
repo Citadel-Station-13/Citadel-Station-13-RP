@@ -11,7 +11,10 @@
  * @return list(design instance = design_context instance, ...)
  */
 /datum/design_holder/proc/get_designs_const() as /list
-	CRASH("get_designs_const not implemented.")
+	return list()
+
+/datum/design_holder/proc/has_design(datum/prototype/design/design)
+	return design in get_designs_const()
 
 /**
  * @return list(design instance = design_context instance, ...)
@@ -24,10 +27,7 @@
  * @return null if no context exists, or the design isn't in us.
  */
 /datum/design_holder/proc/get_design_context(datum/prototype/design/design)
-	CRASH("get_design_context not implemented.")
-
-/datum/design_holder/proc/has_design(datum/prototype/design/design)
-	CRASH("has_design not implemented.")
+	return null
 
 /**
  * Basic design holder that hard-references its designs.

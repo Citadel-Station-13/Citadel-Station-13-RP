@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
-//* /datum/prototype/material material_flags
+//* /datum/prototype/material material_flags - MATERIAL_FLAG_ *//
 
 /// vulnerability applies to mob armor (uh oh)
 #define MATERIAL_FLAG_VULNERABLE_MOB_ARMOR (1<<0)
@@ -17,8 +17,7 @@ DEFINE_BITFIELD(material_flags, list(
 	BITFIELD(MATERIAL_FLAG_CONSIDERED_OVERPOWERED),
 ))
 
-//* /datum/prototype/material material_constraints
-//* /datum/prototype/design material_constraints list values
+//* /datum/prototype/material material_constraints *//
 
 // None yet
 
@@ -26,7 +25,7 @@ DEFINE_BITFIELD(material_constraints, list(
 	// none yet
 ))
 
-//* /datum/prototype/material_trait material_trait_flags
+//* /datum/prototype/material_trait material_trait_flags *//
 
 /// hook melees
 #define MATERIAL_TRAIT_MELEE (1<<0)

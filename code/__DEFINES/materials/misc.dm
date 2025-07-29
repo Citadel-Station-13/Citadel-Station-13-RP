@@ -1,5 +1,9 @@
+//* Material Fabricator Tags - MATERIAL_F_TAG_ *//
 
-// Material Defines
+// None yet
+
+//* old material defines *//
+
 // todo: stop using these please, we're pushing them out in favor of `/material/typepath::id`
 #define MAT_ALGAE			"algae"
 #define MAT_BANANIUM		"bananium"

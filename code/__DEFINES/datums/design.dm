@@ -1,16 +1,4 @@
-//? design_unlock bitfield
-
-/// any lathe that can print us should have us always
-#define DESIGN_UNLOCK_INTRINSIC (1<<0)
-/// any lathe that can print us can have us uploaded
-#define DESIGN_UNLOCK_UPLOAD (1<<1)
-
-DEFINE_BITFIELD(design_unlock, list(
-	BITFIELD(DESIGN_UNLOCK_INTRINSIC),
-	BITFIELD(DESIGN_UNLOCK_UPLOAD),
-))
-
-//? design_flags bitfield
+//* Design Flags *//
 
 /// do not scale with efficiency
 #define DESIGN_NO_SCALE (1<<0)
@@ -22,8 +10,65 @@ DEFINE_BITFIELD(design_flags, list(
 	BITFIELD(DESIGN_IGNORE_RESOURCE_SANITY),
 ))
 
-//design categories
-//misc is the default
+//* Design Unlock Flags *//
+
+/// any lathe that can print us should have us always
+#define DESIGN_UNLOCK_INTRINSIC (1<<0)
+/// any lathe that can print us can have us uploaded
+#define DESIGN_UNLOCK_UPLOAD (1<<1)
+
+DEFINE_BITFIELD(design_unlock, list(
+	BITFIELD(DESIGN_UNLOCK_INTRINSIC),
+	BITFIELD(DESIGN_UNLOCK_UPLOAD),
+))
+
+//* Design Tags - DESIGN_TAG_     *//
+//* C_: category                  *//
+//* S_: stability                 *//
+
+/// intentional weapon of some kind
+#define DESIGN_TAG_C_WEAPON "c-weapon"
+/// intentional ranged weapon of some kind
+#define DESIGN_TAG_C_RANGED_WEAPON "c-weapon-ranged"
+/// intentional melee weapon of some kind
+#define DESIGN_TAG_C_MELEE_WEAPON "c-weapon-melee"
+
+/// stock machine part of some kind
+#define DESIGN_TAG_C_STOCK_PART "c-stock_part"
+
+/// tool of some kind
+#define DESIGN_TAG_C_TOOL "c-tool"
+/// basic tinkering / construction tools, usually not including TOOL_ENGI
+#define DESIGN_TAG_C_TOOL_MECH "c-tool-mech"
+/// engineering tool of some kind, usually not including TOOL_MECH
+#define DESIGN_TAG_C_TOOL_ENGI "c-tool-engi"
+/// medical tool of some kind, usually not including TOOL_SURG
+#define DESIGN_TAG_C_TOOL_MEDI "c-tool-medi"
+/// surgery tool of some kind, usually not including TOOL_MEDI
+#define DESIGN_TAG_C_TOOL_MEDI_SURG "c-tool-surg"
+
+/// circuits
+#define DESIGN_TAG_C_CIRCUIT "c-circuit"
+
+/// AI-related
+#define DESIGN_TAG_C_AI "c-ai"
+
+/// mecha / vehicle parts
+#define DESIGN_TAG_C_VEHICLE "c-vehicle"
+
+/// stable: 100% working, no weird quirks, standard upgrade / printing designs
+#define DESIGN_TAG_S_STABLE "s-stable"
+/// prototype: mostly working with quirks
+#define DESIGN_TAG_S_PROTOTYPE "s-prototype"
+/// experimental: highly unstable prototypes often with unpredictable side effects
+#define DESIGN_TAG_S_EXPERIMENTAL "s-experimental"
+
+//* Design Fabrication Tags - DESIGN_F_TAG_ *//
+
+// none yet
+
+//* Design Sub/Categories *//
+
 #define DESIGN_CATEGORY_MISC "Misc"
 #define DESIGN_CATEGORY_MUNITIONS "Munitions"
 #define DESIGN_CATEGORY_STORAGE "Storage"
@@ -48,8 +93,6 @@ DEFINE_BITFIELD(design_flags, list(
 #define DESIGN_CATEGORY_TOOLS "Tools"
 #define DESIGN_CATEGORY_HARDSUIT "Hardsuit"
 
-//subcategories
-//misc is the default
 #define DESIGN_SUBCATEGORY_MISC "Misc"
 
 //any category can go have station as a subcategory

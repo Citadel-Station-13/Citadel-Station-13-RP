@@ -15,6 +15,10 @@
 	var/design_flags = NONE
 	/// how are we unlocked - see [code/__DEFINES/datums/design.dm]
 	var/design_unlock = NONE
+	/// design tags - used for filtering
+	/// * lazy list
+	/// * can be overridden by context
+	var/list/design_tags
 	/// is stack? autodetected.
 	var/is_stack = FALSE
 	/// max stack amount? autodetected.
@@ -27,9 +31,9 @@
 	var/desc
 	/// overrides build_name for purposes of name generation.
 	var/design_name
-	/// category - string or list, or null; null results in undefined behavior depending on UI.
+	/// category - string.
 	var/category = DESIGN_CATEGORY_MISC
-
+	/// subcategory - string.
 	var/subcategory = DESIGN_CATEGORY_MISC
 
 	//? Build Data

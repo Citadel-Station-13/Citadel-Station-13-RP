@@ -25,6 +25,12 @@
 /obj/machinery/research_server/coprocessor/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 
+/obj/machinery/research_server/coprocessor/on_join_network(datum/research_network/network)
+	. = ..()
+
+/obj/machinery/research_server/coprocessor/on_leave_network(datum/research_network/network)
+	. = ..()
+
 /obj/machinery/research_server/coprocessor/proc/set_compute_capacity(capacity)
 	src.compute_capacity = capacity
 	#warn inform network

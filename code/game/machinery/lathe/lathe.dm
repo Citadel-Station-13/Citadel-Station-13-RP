@@ -110,8 +110,7 @@
 
 /obj/machinery/lathe/Destroy()
 	delete_storages()
-	if(design_holder?.owner == src)
-		QDEL_NULL(design_holder)
+	design_holder = null
 	return ..()
 
 /obj/machinery/lathe/examine(mob/user)
@@ -271,7 +270,8 @@
 		QDEL_LIST_NULL(stored_items)
 
 /obj/machinery/lathe/proc/has_design(datum/prototype/design/id_or_instance)
-	return design_holder.has_id(istext(id_or_instance)? id_or_instance : id_or_instance.id)
+	// TODO: don't fetch local only
+	return design_holder.has_design(RSdesigns.fetch_local_or_throw(id_or_instance))
 
 /obj/machinery/lathe/proc/has_capabilities_for(datum/prototype/design/instance)
 	return lathe_type & instance.lathe_type
@@ -538,11 +538,8 @@
 	RETURN_TYPE(/datum/tgui_module)
 	return ui_controller || (ui_controller = new(src))
 
-/obj/machinery/lathe/proc/available_design_ids()
-	return design_holder.available_ids()
-
 /obj/machinery/lathe/proc/available_designs()
-	return design_holder.available_designs()
+	return design_holder.get_designs()
 
 /obj/machinery/lathe/proc/eject_sheets(id, amount)
 	return stored_materials.dump(drop_location(), id, amount)

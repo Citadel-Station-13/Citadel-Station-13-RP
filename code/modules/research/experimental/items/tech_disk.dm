@@ -6,7 +6,13 @@
 	desc = "A disk holding technology, presumably."
 
 /obj/item/disk/tech_disk/proc/get_projected_nodes() as /list
-	CRASH("unimplemented proc")
+	return list()
+
+/**
+ * You **must** call this when modifying the disk's contents.
+ */
+/obj/item/disk/tech_disk/proc/notify_listeners_of_update(list/datum/prototype/techweb_node/added, list/datum/prototype/techweb_node/removed)
+	SEND_SIGNAL(src, COMSIG_DISK_TECHDISK_MODIFIED, added, removed)
 
 /obj/item/disk/tech_disk/simple
 	/// max techweb nodes
@@ -21,18 +27,24 @@
 	/// cannot copy / move nodes off of this, or add to it
 	var/drm_protected = FALSE
 
-/obj/item/disk/tech_disk/simple/get_projected_nodes() as /list
+/obj/item/disk/tech_disk/simple/get_projected_nodes()
 	. = list()
 	cached_node_context = update_cached_node_context()
 	for(var/k in node_store)
 		.[k] = cached_node_context
 
 /obj/item/disk/tech_disk/simple/proc/add_node(datum/prototype/techweb_node/node)
+	if(node in node_store)
+		return
 	LAZYDISTINCTADD(node_store, node)
+	notify_listeners_of_update(added = list(design))
 	return TRUE
 
 /obj/item/disk/tech_disk/simple/proc/remove_node(datum/prototype/techweb_node/node)
+	if(!(node in node_store))
+		return
 	LAZYREMOVE(node_store, node)
+	notify_listeners_of_update(removed = list(design))
 	return TRUE
 
 /obj/item/disk/tech_disk/simple/proc/has_room(datum/prototype/techweb_node/node)
@@ -40,8 +52,6 @@
 
 /obj/item/disk/tech_disk/simple/proc/has_node(datum/prototype/techweb_node/node)
 	return node in node_store
-
-#warn update signal
 
 /obj/item/disk/tech_disk/simple/proc/update_cached_node_context()
 	if(!cached_node_context)
