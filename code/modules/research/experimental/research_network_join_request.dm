@@ -9,7 +9,11 @@
 	/// weakref to requester
 	var/datum/weakref/r_requester_weakref
 	/// requesting network
-	var/datum/research_network/c_requested_network
+	var/datum/research_network/r_requested_network
+
+	/// requesting capability flags
+	var/r_request_capabilities
+	/// requesting
 
 /datum/research_network_join_request/New(datum/research_network/network, datum/requester)
 

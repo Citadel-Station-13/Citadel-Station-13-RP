@@ -23,7 +23,7 @@
 	. = ..()
 
 /obj/machinery/research_server/coprocessor/ui_act(action, list/params, datum/tgui/ui)
-	. = ..()
+	. = ..()wz
 
 /obj/machinery/research_server/coprocessor/on_join_network(datum/research_network/network)
 	. = ..()
