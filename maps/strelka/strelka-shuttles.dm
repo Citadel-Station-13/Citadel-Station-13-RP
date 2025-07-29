@@ -194,19 +194,19 @@
 	landmark_tag = "strelka_excursion_hangar"
 	docking_controller = "expshuttle_dock"
 	base_turf = /turf/simulated/floor/reinforced
-	base_area = /area/strelka/shipbase/deck2/explo
+	base_area = /area/strelka/explo
 
 /obj/effect/shuttle_landmark/strelka/deck2/emt
 	name = "NEV strelka - Hammerdart Hangar"
 	landmark_tag = "strelka_emt_hangar"
 	docking_controller = "emt_dock"
 	base_turf = /turf/simulated/floor/reinforced
-	base_area = /area/strelka/shipbase/deck2/explo/emt
+	base_area = /area/strelka/explo/emt
 
 /obj/effect/shuttle_landmark/strelka/deck1/civi
 	name = "NEV strelka - Civilian Private Dock"
 	landmark_tag = "strelka_civvie_home"
 	docking_controller = "civvie_dock"
 	base_turf = /turf/simulated/floor/reinforced
-	base_area = /area/strelka/shipbase/deck1/civhangar
+	base_area = /area/strelka/civhangar
 
