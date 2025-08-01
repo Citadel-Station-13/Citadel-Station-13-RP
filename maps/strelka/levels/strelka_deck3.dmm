@@ -30,6 +30,20 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/morgue)
+"aj" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/light_switch{
+	dir = 8;
+	pixel_x = -23
+	},
+/turf/simulated/floor/wood,
+/area/bridge/strelka/md)
 "ak" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
@@ -1293,6 +1307,10 @@
 /obj/machinery/computer/card,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/air_alarm/north_mount,
+/obj/machinery/light_switch{
+	dir = 8;
+	pixel_x = -23
+	},
 /turf/simulated/floor/wood,
 /area/bridge/strelka/md)
 "fw" = (
@@ -1536,6 +1554,10 @@
 /obj/structure/bed/chair/bay/comfy/black{
 	dir = 4
 	},
+/obj/machinery/light_switch{
+	dir = 1;
+	pixel_y = 20
+	},
 /turf/simulated/floor/wood,
 /area/bridge/strelka/blueshield)
 "gj" = (
@@ -1616,6 +1638,10 @@
 /obj/structure/closet/walllocker_double/medical/south,
 /obj/item/mirrortool,
 /obj/item/mirrorscanner,
+/obj/item/paper{
+	info = "Instructions on resleeving. Step 1: Remove the mirror using a Mirror Tool. Step 2: Slot the tool into the console to transfer the mirror. Step 3: Print the users body, move the body to the pod, and use the console to sleeve the occupant. Manually inserting a mirror into the console is possible in the event of body destruction, or surgical removal due to loss of the provided Mirror tool.";
+	name = "Simplified resleeving instructions"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/resleeve)
 "gw" = (
@@ -1892,6 +1918,23 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/medical/strelka/psy)
+"hd" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 1
+	},
+/obj/structure/cable/orange{
+	icon_state = "1-2"
+	},
+/obj/machinery/light_switch{
+	dir = 4;
+	pixel_x = 23
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/quartermaster/strelka/cargo/mining)
 "hi" = (
 /obj/spawner/window/low_wall/firelocks,
 /turf/simulated/floor/tiled/dark,
@@ -2899,6 +2942,10 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/strelka/borg)
+"kF" = (
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/dark,
+/area/hallway/strelka/deck3)
 "kG" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 10
@@ -3874,6 +3921,10 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
+/obj/machinery/light_switch{
+	dir = 8;
+	pixel_x = -23
+	},
 /turf/simulated/floor/wood,
 /area/bridge/strelka/rd)
 "nS" = (
@@ -4707,6 +4758,17 @@
 	},
 /obj/structure/closet/secure_closet/paramedic,
 /obj/item/storage/firstaid/surgery,
+/obj/item/roller,
+/obj/item/material/knife/machete,
+/obj/item/clothing/accessory/holster/machete,
+/obj/item/clothing/accessory/permit/gun/paramedic,
+/obj/item/storage/box/flare,
+/obj/item/bodybag/cryobag,
+/obj/item/clothing/head/helmet/space/void/medical/emt,
+/obj/item/clothing/suit/space/void/medical/emt,
+/obj/item/tank/oxygen{
+	pixel_y = -4
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/emtroom)
 "qY" = (
@@ -5159,6 +5221,7 @@
 /area/hallway/strelka/deck3)
 "st" = (
 /obj/structure/stairs/spawner/south,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck3)
 "su" = (
@@ -5651,6 +5714,9 @@
 "ug" = (
 /obj/structure/bed,
 /obj/item/bedsheet/blue,
+/obj/machinery/light_switch{
+	pixel_y = -21
+	},
 /turf/simulated/floor/carpet/blue,
 /area/bridge/strelka/blueshield/room)
 "uj" = (
@@ -5917,6 +5983,10 @@
 	dir = 9
 	},
 /obj/machinery/organ_printer/flesh/full,
+/obj/machinery/light_switch{
+	dir = 8;
+	pixel_x = -23
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/resleeve)
 "vd" = (
@@ -6370,15 +6440,15 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/bridge/strelka/ai)
 "wQ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/blue{
 	icon_state = "1-2"
 	},
 /obj/machinery/light/small/old{
 	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
 	},
 /turf/simulated/floor/wood/indoors,
 /area/medical/strelka/room2)
@@ -6546,14 +6616,14 @@
 /area/quartermaster/strelka/portal)
 "xp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9
-	},
 /obj/structure/cable/blue{
 	icon_state = "1-2"
 	},
 /obj/machinery/light/small/old{
 	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
 	},
 /turf/simulated/floor/wood/indoors,
 /area/medical/strelka/room)
@@ -6718,6 +6788,9 @@
 /obj/item/bedsheet/medical,
 /obj/machinery/air_alarm/south_mount,
 /obj/machinery/fire_alarm/west_mount,
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
 /turf/simulated/floor/wood/indoors,
 /area/medical/strelka/room2)
 "xQ" = (
@@ -6783,6 +6856,7 @@
 	},
 /obj/structure/cable/blue,
 /obj/machinery/power/apc/south_mount,
+/obj/machinery/iv_drip,
 /turf/simulated/floor/wood/broken,
 /area/medical/strelka/room2)
 "yg" = (
@@ -7487,6 +7561,16 @@
 	dir = 4
 	},
 /obj/landmark/spawnpoint/job/paramedic,
+/obj/item/reagent_containers/glass/hypovial/bicaridine,
+/obj/item/reagent_containers/glass/hypovial/bicaridine,
+/obj/item/reagent_containers/glass/hypovial/bicaridine,
+/obj/item/reagent_containers/glass/hypovial/tricordrazine,
+/obj/item/reagent_containers/glass/hypovial/tricordrazine,
+/obj/item/reagent_containers/glass/hypovial/tricordrazine,
+/obj/item/reagent_containers/glass/hypovial/dexalin,
+/obj/item/reagent_containers/glass/hypovial/dexalin,
+/obj/item/reagent_containers/glass/hypovial/dexalin,
+/obj/structure/closet/walllocker_double/medical/south,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/emtroom)
 "Ar" = (
@@ -8099,6 +8183,10 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
+/obj/machinery/light_switch{
+	dir = 4;
+	pixel_x = 23
+	},
 /turf/simulated/floor/wood/indoors,
 /area/quartermaster/strelka/qm)
 "Cs" = (
@@ -8528,6 +8616,10 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
+/obj/machinery/light_switch{
+	dir = 4;
+	pixel_x = 23
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/quartermaster/strelka/reception)
 "DD" = (
@@ -8725,6 +8817,9 @@
 /obj/item/autopsy_scanner,
 /obj/item/storage/box/bodybags,
 /obj/item/clothing/under/rank/medical/scrubs/black,
+/obj/machinery/light_switch{
+	pixel_y = -21
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/morgue)
 "Eh" = (
@@ -9048,6 +9143,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/light_switch{
+	dir = 4;
+	pixel_x = 23
+	},
 /turf/simulated/floor/wood/indoors,
 /area/medical/strelka/psy)
 "Fi" = (
@@ -9386,6 +9485,10 @@
 /area/rnd/strelka/test)
 "Gq" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
+/obj/machinery/light_switch{
+	dir = 8;
+	pixel_x = -23
+	},
 /turf/simulated/floor/wood,
 /area/bridge/strelka/rd)
 "Gs" = (
@@ -9400,6 +9503,7 @@
 	},
 /obj/structure/cable/blue,
 /obj/machinery/power/apc/south_mount,
+/obj/machinery/iv_drip,
 /turf/simulated/floor/wood/indoors,
 /area/medical/strelka/room)
 "Gv" = (
@@ -10172,6 +10276,7 @@
 /area/hallway/strelka/deck3)
 "Jh" = (
 /obj/structure/stairs/spawner/north,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck3)
 "Ji" = (
@@ -10630,6 +10735,13 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/medical/strelka/room)
+"KU" = (
+/obj/machinery/light_switch{
+	dir = 4;
+	pixel_x = 21
+	},
+/turf/simulated/open,
+/area/medical/strelka/emtroom)
 "KV" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
@@ -10991,6 +11103,7 @@
 /obj/structure/window/phoronreinforced{
 	dir = 8
 	},
+/obj/item/storage/backpack/parachute,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/strelka/science/secondary)
 "Mq" = (
@@ -11216,12 +11329,36 @@
 /turf/simulated/floor/tiled/monotechmaint,
 /area/rnd/strelka/xenobio)
 "Ni" = (
-/obj/structure/bed/roller,
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 9
 	},
 /obj/machinery/light{
 	dir = 8
+	},
+/obj/structure/table/standard,
+/obj/item/reagent_containers/glass/bottle/biomass{
+	pixel_x = -3;
+	pixel_y = -2
+	},
+/obj/item/reagent_containers/glass/bottle/biomass{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/glass/beaker/cryoxadone{
+	pixel_x = 7;
+	pixel_y = 1
+	},
+/obj/item/reagent_containers/glass/beaker/cryoxadone{
+	pixel_x = 7;
+	pixel_y = 1
+	},
+/obj/item/reagent_containers/glass/beaker/cryoxadone{
+	pixel_x = 7;
+	pixel_y = 1
+	},
+/obj/item/reagent_containers/glass/bottle/biomass{
+	pixel_x = -3;
+	pixel_y = -2
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/resleeve)
@@ -11336,15 +11473,22 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck3)
 "NB" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 4
-	},
-/obj/machinery/iv_drip,
 /obj/structure/sink{
 	dir = 8;
 	pixel_x = -13
 	},
-/turf/simulated/floor/wood/indoors,
+/obj/machinery/light_switch{
+	dir = 8;
+	pixel_x = -23
+	},
+/obj/machinery/shower{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/effect/floor_decal/spline/fancy/wood/three_quarters,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/medical/strelka/room)
 "NC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -11827,12 +11971,17 @@
 /area/hallway/strelka/deck3)
 "Pt" = (
 /obj/structure/table/standard,
-/obj/item/roller,
-/obj/item/roller{
-	pixel_y = 8
+/obj/item/spaceflare{
+	icon_state = "implantpad-0"
 	},
-/obj/item/roller{
-	pixel_y = 16
+/obj/machinery/cell_charger,
+/obj/item/cell/high{
+	pixel_x = 2;
+	pixel_y = -1
+	},
+/obj/item/cell/high{
+	pixel_x = 2;
+	pixel_y = -1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/emtroom)
@@ -12105,6 +12254,7 @@
 	layer = 4;
 	pixel_x = -22
 	},
+/obj/item/defib_kit/compact/loaded,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/emtroom)
 "QE" = (
@@ -12248,6 +12398,9 @@
 /obj/item/bedsheet/medical,
 /obj/machinery/air_alarm/south_mount,
 /obj/machinery/fire_alarm/west_mount,
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
 /turf/simulated/floor/wood/indoors,
 /area/medical/strelka/room)
 "Rn" = (
@@ -13650,15 +13803,22 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/strelka/deck3)
 "VV" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 4
-	},
-/obj/machinery/iv_drip,
 /obj/structure/sink{
 	dir = 8;
 	pixel_x = -13
 	},
-/turf/simulated/floor/wood/indoors,
+/obj/machinery/light_switch{
+	dir = 8;
+	pixel_x = -23
+	},
+/obj/machinery/shower{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/effect/floor_decal/spline/fancy/wood/three_quarters,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/medical/strelka/room2)
 "VW" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -13927,6 +14087,10 @@
 /obj/item/weldingtool,
 /obj/item/weldingtool,
 /obj/machinery/recharger,
+/obj/machinery/light_switch{
+	dir = 4;
+	pixel_x = 23
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/xenobio)
 "WJ" = (
@@ -14012,6 +14176,10 @@
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 4
+	},
+/obj/machinery/light_switch{
+	dir = 1;
+	pixel_y = 24
 	},
 /turf/simulated/floor/fey/forest_grass,
 /area/rnd/strelka/xenobotany)
@@ -14135,6 +14303,7 @@
 /obj/structure/window/phoronreinforced{
 	dir = 4
 	},
+/obj/item/storage/backpack/parachute,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/strelka/science/secondary)
 "Xz" = (
@@ -14273,6 +14442,11 @@
 /obj/effect/floor_decal/corner/purple/border,
 /obj/structure/sink{
 	pixel_y = 23
+	},
+/obj/machinery/light_switch{
+	dir = 1;
+	pixel_y = 29;
+	pixel_x = 9
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/science/main)
@@ -14492,6 +14666,17 @@
 	},
 /obj/structure/closet/secure_closet/paramedic,
 /obj/item/storage/firstaid/surgery,
+/obj/item/roller,
+/obj/item/material/knife/machete,
+/obj/item/clothing/accessory/holster/machete,
+/obj/item/clothing/accessory/permit/gun/paramedic,
+/obj/item/storage/box/flare,
+/obj/item/bodybag/cryobag,
+/obj/item/clothing/head/helmet/space/void/medical/emt,
+/obj/item/clothing/suit/space/void/medical/emt,
+/obj/item/tank/oxygen{
+	pixel_y = -4
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/emtroom)
 "Za" = (
@@ -28435,7 +28620,7 @@ sh
 pv
 zw
 Nw
-Nw
+hd
 SU
 bN
 un
@@ -29600,13 +29785,13 @@ aB
 ip
 pE
 jp
-Wt
+kF
 st
 FN
 JY
 FN
 Jh
-Wt
+kF
 Wt
 qM
 YG
@@ -30948,7 +31133,7 @@ ay
 ay
 ay
 ot
-ot
+KU
 Sw
 Ck
 Pz
@@ -37549,7 +37734,7 @@ io
 io
 qE
 oS
-xz
+aj
 iZ
 xz
 bf

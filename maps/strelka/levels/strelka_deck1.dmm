@@ -318,6 +318,9 @@
 	pixel_x = -24;
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/monodark,
 /area/shuttle/civvie/strelka)
 "bH" = (
@@ -1944,6 +1947,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/floor_decal/grass_edge{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/hallway/strelka/deck1)
 "jW" = (
@@ -2185,6 +2191,9 @@
 	id = "decade1"
 	},
 /obj/structure/fans/tiny,
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/monodark,
 /area/shuttle/civvie/strelka)
 "lv" = (
@@ -2281,12 +2290,6 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/hangardeck)
 "lR" = (
-/obj/effect/floor_decal/industrial/halfstair{
-	dir = 8
-	},
-/obj/effect/floor_decal/grass_edge{
-	dir = 1
-	},
 /obj/structure/cable/blue{
 	icon_state = "4-8"
 	},
@@ -2296,6 +2299,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/effect/floor_decal/corner_techfloor_grid{
+	dir = 5
+	},
+/obj/effect/floor_decal/borderfloorblack,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck1)
 "lS" = (
@@ -2696,6 +2703,9 @@
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
+	},
+/obj/machinery/light_switch{
+	pixel_y = -21
 	},
 /turf/simulated/floor/carpet/patterened/blue,
 /area/strelka/pilot)
@@ -3395,6 +3405,9 @@
 	id = "decade2"
 	},
 /obj/structure/fans/tiny,
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/monodark,
 /area/shuttle/civvie/strelka)
 "rw" = (
@@ -3672,6 +3685,7 @@
 	name = "Surface Checkpoint Shutter";
 	opacity = 0
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/checkpoint)
 "sW" = (
@@ -3826,15 +3840,16 @@
 /turf/simulated/floor/reinforced,
 /area/strelka/hangardeck)
 "tL" = (
-/obj/effect/floor_decal/corner_techfloor_grid{
-	dir = 10
-	},
 /obj/structure/cable/white{
 	icon_state = "4-8"
 	},
 /obj/structure/sign/deck/first{
 	pixel_y = 31
 	},
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 8
+	},
+/obj/effect/floor_decal/grass_edge,
 /turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck1)
 "tM" = (
@@ -3847,6 +3862,9 @@
 	id = "decade1";
 	name = "External airlock shutter control";
 	pixel_x = -24;
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/monodark,
@@ -4063,6 +4081,16 @@
 /obj/machinery/shield_diffuser,
 /turf/space/basic,
 /area/strelka/fighterbaysec)
+"vp" = (
+/obj/effect/floor_decal/grass_edge{
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/hallway/strelka/deck1)
 "vr" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -4283,6 +4311,26 @@
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/dark,
 /area/bridge/strelka/balista)
+"wE" = (
+/obj/effect/floor_decal/corner_techfloor_grid{
+	dir = 5
+	},
+/obj/effect/floor_decal/borderfloorblack,
+/obj/structure/cable/blue{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/plain,
+/obj/effect/floor_decal/grass_edge{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/hallway/strelka/deck1)
 "wG" = (
 /turf/simulated/wall/r_wall,
 /area/shuttle/civvie/strelka)
@@ -4338,6 +4386,7 @@
 	name = "Surface Checkpoint Shutter";
 	opacity = 0
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/strelka/checkpoint)
 "wR" = (
@@ -4716,6 +4765,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
+/obj/effect/floor_decal/grass_edge,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck1)
 "yM" = (
@@ -4824,10 +4874,12 @@
 "zo" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/storage/toolbox/electrical{
-	pixel_y = 16
+	pixel_y = 16;
+	layer = 4
 	},
 /obj/item/storage/toolbox/electrical{
-	pixel_y = 16
+	pixel_y = 16;
+	layer = 4
 	},
 /obj/item/storage/toolbox/mechanical{
 	pixel_y = 2
@@ -4840,6 +4892,16 @@
 	},
 /obj/item/storage/toolbox/emergency{
 	pixel_y = -13
+	},
+/obj/item/storage/toolbox/mechanical{
+	pixel_y = 2
+	},
+/obj/item/storage/toolbox/emergency{
+	pixel_y = -13
+	},
+/obj/item/storage/toolbox/electrical{
+	pixel_y = 16;
+	layer = 4
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/toolstorage)
@@ -4898,6 +4960,15 @@
 /obj/item/clothing/gloves/fyellow,
 /obj/item/clothing/gloves/fyellow,
 /obj/item/clothing/gloves/yellow,
+/obj/item/storage/belt/utility{
+	pixel_y = 14
+	},
+/obj/item/storage/belt/utility{
+	pixel_y = 14
+	},
+/obj/item/storage/belt/utility{
+	pixel_y = 14
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/toolstorage)
 "zu" = (
@@ -5399,6 +5470,9 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/effect/floor_decal/spline/plain,
+/obj/effect/floor_decal/grass_edge{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck1)
 "CO" = (
@@ -6059,6 +6133,9 @@
 	name = "Gateway"
 	},
 /obj/map_helper/access_helper/airlock/station/exploration/explorer,
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/gateway)
 "FS" = (
@@ -6895,15 +6972,20 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
+/obj/machinery/light_switch{
+	pixel_y = -21
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/toolstorage)
 "Kt" = (
-/obj/effect/floor_decal/industrial/halfstair{
-	dir = 8
-	},
-/obj/effect/floor_decal/grass_edge,
 /obj/structure/cable/white{
 	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/corner_techfloor_grid{
+	dir = 10
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck1)
@@ -7370,6 +7452,22 @@
 /obj/structure/flora/ausbushes/pointybush,
 /turf/simulated/floor/reinforced,
 /area/strelka/hangardeck)
+"MT" = (
+/obj/effect/floor_decal/corner_techfloor_grid{
+	dir = 10
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/structure/cable/white{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/obj/effect/floor_decal/grass_edge,
+/turf/simulated/floor/tiled/dark,
+/area/hallway/strelka/deck1)
 "MU" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -7528,9 +7626,6 @@
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
-	},
-/obj/effect/floor_decal/grass_edge{
-	dir = 8
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/asteroid_steel,
@@ -8124,6 +8219,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
+/obj/machinery/light/small/old,
 /turf/simulated/floor/carpet/patterened/blue,
 /area/strelka/pilot)
 "QU" = (
@@ -8776,9 +8872,6 @@
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/fighterbay)
 "Uq" = (
-/obj/effect/floor_decal/corner_techfloor_grid{
-	dir = 5
-	},
 /obj/structure/cable/blue{
 	icon_state = "4-8"
 	},
@@ -8791,12 +8884,16 @@
 /obj/machinery/atm{
 	pixel_y = -32
 	},
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 8
+	},
+/obj/effect/floor_decal/grass_edge{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck1)
 "Us" = (
 /obj/structure/table/carbon/reinforced,
-/obj/item/storage/belt/utility,
-/obj/item/storage/belt/utility,
 /obj/item/duct_tape_roll,
 /obj/item/duct_tape_roll,
 /obj/item/duct_tape_roll,
@@ -8969,9 +9066,6 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
-/obj/effect/floor_decal/grass_edge{
-	dir = 4
-	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/hallway/strelka/deck1)
@@ -9031,6 +9125,16 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/bridge/strelka/balista)
+"VT" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 8
+	},
+/obj/machinery/light/small/old,
+/turf/simulated/floor/tiled/steel_grid,
+/area/strelka/pilot/eva)
 "VU" = (
 /obj/structure/cable/blue{
 	icon_state = "4-8"
@@ -9046,6 +9150,7 @@
 	pixel_y = 25;
 	id = "decade3"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/civvie/strelka)
 "VW" = (
@@ -29761,9 +29866,9 @@ YW
 vf
 lJ
 ji
-Ye
+MT
 VJ
-Kp
+wE
 Re
 Vg
 Dh
@@ -30150,7 +30255,7 @@ Ff
 lJ
 ji
 Kt
-FS
+vp
 lR
 VN
 Us
@@ -30344,7 +30449,7 @@ zR
 zR
 ji
 cy
-Nb
+FS
 Hn
 VN
 Ji
@@ -30538,7 +30643,7 @@ YH
 zR
 ji
 tL
-dM
+Nb
 Uq
 VN
 oQ
@@ -32295,7 +32400,7 @@ bP
 wI
 uc
 Tx
-Tx
+VT
 zu
 vu
 vu
@@ -32672,7 +32777,7 @@ dE
 Mk
 zN
 js
-VW
+dM
 UC
 zN
 RS
