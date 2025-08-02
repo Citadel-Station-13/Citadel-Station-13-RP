@@ -37,14 +37,14 @@
 	if(node in node_store)
 		return
 	LAZYDISTINCTADD(node_store, node)
-	notify_listeners_of_update(added = list(design))
+	notify_listeners_of_update(added = list(node))
 	return TRUE
 
 /obj/item/disk/tech_disk/simple/proc/remove_node(datum/prototype/techweb_node/node)
 	if(!(node in node_store))
 		return
 	LAZYREMOVE(node_store, node)
-	notify_listeners_of_update(removed = list(design))
+	notify_listeners_of_update(removed = list(node))
 	return TRUE
 
 /obj/item/disk/tech_disk/simple/proc/has_room(datum/prototype/techweb_node/node)

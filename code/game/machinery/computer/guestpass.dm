@@ -134,7 +134,7 @@
 /obj/machinery/computer/guestpass/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "GuestPassTerminal")
+		ui = new(user, src, "computers/GuestPassTerminal")
 		ui.open()
 
 /obj/machinery/computer/guestpass/proc/push_selected_accesses()

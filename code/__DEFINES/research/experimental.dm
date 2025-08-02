@@ -30,8 +30,13 @@
 /**
  * * pull tech into local store / into disks
  */
-#define RESEARCH_NETWORK_CAPABILITY_PULL_KNOWLEDGE (1<<3)
+#define RESEARCH_NETWORK_CAPABILITY_PULL_KNOWLEDGE (1<<1)
 /**
  * * pull designs for printing / into local store / into disks
  */
-#define RESEARCH_NETWORK_CAPABILITY_PULL_DESIGN (1<<4)
+#define RESEARCH_NETWORK_CAPABILITY_PULL_DESIGN (1<<2)
+/**
+ * * Act as a network server. This is mandatory for servers, and cannot be
+ *   added or removed.
+ */
+#define RESEARCH_NETWORK_CAPABILITY_SERVER (1<<3)

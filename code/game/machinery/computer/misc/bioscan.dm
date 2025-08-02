@@ -22,7 +22,7 @@
 /obj/machinery/computer/bioscan/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "BioscanConsole")
+		ui = new(user, src, "computers/BioscanConsole")
 		ui.open()
 
 /obj/machinery/computer/bioscan/ui_static_data(mob/user, datum/tgui/ui)

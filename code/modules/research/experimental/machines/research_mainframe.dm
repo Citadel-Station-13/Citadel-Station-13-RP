@@ -14,6 +14,9 @@
 /obj/machinery/research_mainframe
 	name = "research mainframe"
 	desc = "A self-contained mainframe holding data needed to run research and inference systems."
+	// TODO: NEW SPRITE PLEASE
+	icon = 'icons/obj/machines/research.dmi'
+	icon_state = "server"
 
 	/// our created network
 	/// * we own this if we have it, generally
@@ -94,7 +97,7 @@
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 	conf_network_create_static_id = "station"
-	conf_network_create_static_passkey = TRUE
+	conf_network_create_passkey = TRUE
 
 	/// only one can exist at the same time
 	VAR_PRIVATE/static/obj/machinery/research_mainframe/preset/main_map/__highlander_mutex
