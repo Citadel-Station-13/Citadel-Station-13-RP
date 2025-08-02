@@ -188,16 +188,20 @@
 
 /**
  * serializes us to a list
- * note that *everything* will be trampled down to a number or text.
- * do not store raw types.
  *
- * do not serialize type with this; type should always be stored externally from data.
+ * * *everything* will be trampled down to a number or text internally.
+ * * do not store raw types.
+ * * This call can sleep due to needed DB calls.
+ * * do not serialize type with this; type should always be stored externally from data.
+ *
+ * @return JSON-compatible list
  */
 /datum/proc/serialize()
 	return list()
 
 /**
  * deserializes from a list
+ * * This call can sleep due to needed DB calls.
  *
  * @params
  * * data - json_decode()'d list.

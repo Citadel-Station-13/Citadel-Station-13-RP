@@ -12,9 +12,9 @@
 	///   for auto-reconnection when an unloaded network is reloaded.
 	var/c_network_id
 	/// operator level
-	var/c_operator_level
+	var/c_operator_level = RESEARCH_NETWORK_OPLVL_DEFAULT
 	/// capability flags
-	var/c_capability_flags
+	var/c_capability_flags = NONE
 
 	/// active network entity
 	var/datum/research_network/s_network
@@ -99,7 +99,7 @@
  * checks if the connection is still active.
  */
 /datum/research_network_connection/proc/is_active()
-	return s_active
+	return s_connected
 
 /datum/research_network_connection/proc/capability_set_flags(flags)
 	var/allowed = capability_allow_edit_flags()

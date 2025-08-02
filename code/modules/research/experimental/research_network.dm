@@ -6,26 +6,18 @@
  */
 /datum/research_network
 	/// network ID
-	/// TODO: persistence-stable if randomgen!
 	/// * this is not shown to players, a hash is.
 	#warn impl
 	var/network_id
-	/// network passkey
-	/// * things need passkey or click-to-allow to join
-	/// * null lets anything join
-	var/network_passkey
-	/// let things join as a specific oplvl if joining with passkey
-	var/network_passkey_oplvl
-	/// let things join with a specific capability flag set if joining with passkey
-	var/network_passkey_capabilities
+	/// network invites by username
+	/// * lazy list
+	var/list/network_invites
 
 	/// join requests (exonet protected setup, legally distinct from the router push button irl)
 	/// * lazy list
-	#warn impl
 	var/list/datum/research_network_connection_request/connection_requests
 	/// connections by id
 	/// * lazy list
-	#warn impl
 	var/list/datum/research_network_connection/connections
 
 	/// batch jobs, whether or not they're active
@@ -37,6 +29,21 @@
 	var/tmp/c_available_compute_capacity = 0
 	var/tmp/datum/design_holder/research_network/c_design_holder = new
 	var/tmp/datum/techweb_node_holder/research_network/c_node_holder = new
+
+/datum/research_network/New(force_id)
+	#warn id?
+
+/datum/research_network/Destroy()
+	mainframe?.leave_network()
+	QDEL_LIST(connection_requests)
+	QDEL_LIST_ASSOC_VAL(network_invites)
+	QDEL_LIST(jobs)
+	for(var/datum/research_network_connection/connection in connections)
+		connection.unlink_network()
+	connections = null
+	return ..()
+
+// TODO: ser/de
 
 /datum/research_network/proc/get_display_id()
 	return copytext(md5("[network_id]"), 1, 5)
@@ -61,6 +68,17 @@
 
 /datum/research_network/proc/request_node_holder() as /datum/techweb_node_holder
 	return c_node_holder
+
+/datum/research_network/proc/create_invite(username) as /datum/research_network_invite
+	if(network_invites?[username])
+		return null
+	if(!network_invites)
+		network_invites = list()
+	. = new /datum/research_network_invite(username)
+	network_invites[username] = .
+
+/datum/research_network/proc/get_invite(username)
+	return network_invites?[username]
 
 /**
  * Statefully registers designs to the network to be made accessible to members.
@@ -94,13 +112,71 @@
  */
 /datum/research_network/proc/unregister_projected_nodes(list/datum/prototype/techweb_node/nodes)
 
-/datum/research_network/proc/network_ui_data()
+/datum/research_network/proc/network_ui_data(datum/event_args/actor/actor, actor_oplvl, actor_capabilities)
 
-/datum/research_network/proc/network_ui_static_data()
+/**
+ * relayed up from accessor with authentication data so we know what they are
+ * allowed to modify
+ */
+/datum/research_network/proc/network_ui_act(action, list/params, datum/event_args/actor/actor, actor_oplvl, actor_capabilities)
+	switch(action)
+		if("acceptJoinRequest")
+			var/conn_id = params["id"]
+			var/capabilities = params["capabilities"]
+			var/oplvl = params["oplvl"]
+			var/list/design_blacklist = params["designBlacklist"]
+			var/list/design_whitelist = params["designWhitelist"]
+		if("createInvite")
+			var/username = params["username"]
+		if("modifyInvitePasskey")
+			var/username = params["username"]
+			var/passkey = params["passkey"]
+		if("modifyInviteOplvl")
+			var/username = params["username"]
+			var/oplvl = params["oplvl"]
+		if("modifyInviteCapabilities")
+			var/username = params["username"]
+			var/capabilities = params["capabilities"]
+		if("modifyInviteAddDesignBlacklist")
+			var/username = params["username"]
+			var/tag = params["tag"]
+		if("modifyInviteAddDesignWhitelist")
+			var/username = params["username"]
+			var/tag = params["tag"]
+		if("modifyInviteRemoveDesignBlacklist")
+			var/username = params["username"]
+			var/tag = params["tag"]
+		if("modifyInviteRemoveDesignWhitelist")
+			var/username = params["username"]
+			var/tag = params["tag"]
+		if("kick")
+			var/conn_id = params["id"]
+		if("modifyConnectionOplvl")
+			var/conn_id = params["id"]
+			var/oplvl = params["oplvl"]
+		if("modifyConnectionCapabilities")
+			var/conn_id = params["id"]
+			var/capabilities = params["capabilities"]
+		if("modifyConnectionAddDesignBlacklist")
+			var/conn_id = params["id"]
+			var/design_tag = params["tag"]
+		if("modifyConnectionRemoveDesignBlacklist")
+			var/conn_id = params["id"]
+			var/design_tag = params["tag"]
+		if("modifyConnectionAddDesignWhitelist")
+			var/conn_id = params["id"]
+			var/design_tag = params["tag"]
+		if("modifyConnectionRemoveDesignBlacklist")
+			var/conn_id = params["id"]
+			var/design_tag = params["tag"]
+		if("evictComputeJob")
+			var/ref = params["ref"]
+		if("toggleComputeJob")
+			var/ref = params["ref"]
+			var/active = params["active"]
 
-/datum/research_network/proc/network_ui_act(action, list/params, datum/event_args/actor/actor)
-
-/datum/research_network/proc/network_push_ui_data(list/data)
+/datum/research_network/proc/network_ui_push(list/data, filter_oplvl, filter_capabilities)
+	SEND_SIGNAL(src, COMSIG_RESEARCH_NETWORK_UI_DATA_PUSH, data, filter_oplvl, filter_capabilities)
 
 /datum/research_network/process(delta_time)
 

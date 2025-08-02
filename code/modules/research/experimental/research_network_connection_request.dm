@@ -28,6 +28,12 @@
 
 /datum/research_network_connection_request
 
+/datum/research_network_connection_request/proc/create_connection(datum/research_network/network) as /datum/research_network_connection
+	var/datum/research_network_connection/conn = new
+	conn.c_network_id = network.id
+	conn.c_capability_flags = r_request_capabilities
+	return conn
+
 /datum/research_network_connection_request/proc/on_success()
 
 /datum/research_network_connection_request/proc/on_failure()
@@ -53,7 +59,7 @@
 
 /datum/research_network_connection_request/Destroy()
 	if(!isnull(initiated_at))
-		r_requester_weakref = null
-		r_requested_network.remove_connection_request(src)
-		r_requested_network = null
+		r_network.remove_connection_request(src)
+	r_peer = null
+	r_network = null
 	return ..()

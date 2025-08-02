@@ -134,7 +134,7 @@
 	var/static/notch = 0
 	if(notch >= SHORT_REAL_LIMIT)
 		stack_trace("how the hell are we at this number?")
-	return "shuttle-[++notch]-[SSmapping.round_global_descriptor]"
+	return "shuttle-[++notch]-[SSuniqueness.get_round_notch()]"
 
 /datum/map_template/shuttle
 	abstract_type = /datum/map_template/shuttle

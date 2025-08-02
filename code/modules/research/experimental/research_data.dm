@@ -10,19 +10,10 @@
 	/// * Nullable, if we don't support this.
 	var/datum/research_data_techweb/r_techweb_data
 
-/**
- * Get a list of designs we provide, associated to number of times it's duplicated.
- */
-/datum/research_data/proc/compute_projected_designs() as /list
-	. = list()
-	var/list/techweb_out = r_techweb_data?.compute_projected_designs()
-	for(var/datum/prototype/techweb_node/node in techweb_out)
-		.[node] += techweb_out[node]
-
 /datum/research_data/clone()
 	var/datum/research_data/cloned = new
-	cloned.r_fabricator_data = r_fabricator_data?.clone()
-	cloned.r_techweb_data = r_techweb_data?.clone()
+	cloned.set_r_fabricator_data(r_fabricator_data?.clone())
+	cloned.set_r_techweb_data(r_techweb_data?.clone())
 	return cloned
 
 /datum/research_data/serialize()
@@ -42,11 +33,51 @@
 		deserialized_techweb_data.deserialize(data["r_techweb"])
 		r_techweb_data = deserialized_techweb_data
 
+/datum/research_data/proc/create_r_fabricator_data()
+	set_r_fabricator_data(new /datum/research_data_fabricator)
+
+/datum/research_data/proc/set_r_fabricator_data(datum/research_data_fabricator/new_holder)
+	if(r_fabricator_data)
+		unset_r_fabricator_data()
+	r_fabricator_data = new_holder
+
+/datum/research_data/proc/unset_r_fabricator_data()
+	if(!r_fabricator_data)
+		return
+	r_fabricator_data = null
+
+/datum/research_data/proc/create_r_techweb_data()
+	set_r_techweb_data(new /datum/research_data_techweb)
+
+/datum/research_data/proc/set_r_techweb_data(datum/research_data_fabricator/new_holder)
+	var/list/datum/prototype/techweb_node/old_nodes = list()
+	if(r_techweb_data)
+		old_nodes = r_techweb_data.nodes
+		unset_r_techweb_data()
+	var/list/datum/prototype/techweb_node/new_nodes = list()
+	if(new_holder)
+		r_techweb_data = new_holder
+		new_nodes = r_techweb_data.nodes
+		RegisterSignal(new_holder, COMSIG_RESEARCH_DATA_TECHWEB_MODIFIED, PROC_REF(on_r_techweb_modified))
+	var/list/datum/prototype/techweb_node/added_nodes = new_nodes - old_nodes
+	var/list/datum/prototype/techweb_node/removed_nodes = old_nodes - new_nodes
+	SEND_SIGNAL(src, COMSIG_RESEARCH_DATA_TECHWEB_MODIFIED, added_nodes, removed_nodes)
+
+/datum/research_data/proc/unset_r_techweb_data()
+	if(!r_techweb_data)
+		return
+	UnregisterSignal(r_techweb_data, COMSIG_RESEARCH_DATA_TECHWEB_MODIFIED)
+	r_techweb_data = null
+
+/datum/research_data/proc/on_r_techweb_modified(datum/source, list/datum/prototype/techweb_node/added, list/datum/prototype/techweb_node/removed)
+	// relay signal up
+	SEND_SIGNAL(src, COMSIG_RESEARCH_DATA_TECHWEB_MODIFIED, added, removed)
+
 /datum/research_data/nt_default
 
 /datum/research_data/nt_default/New()
-	r_fabricator_data = new
-	r_techweb_data = new
+	create_r_fabricator_data()
+	create_r_techweb_data()
 	..()
 	var/list/datum/prototype/techweb_node/auto_learn = list()
 	auto_learn += RStechweb_nodes.fetch_subtypes_immutable(/datum/prototype/techweb_node/faction_intrinsic/nanotrasen)

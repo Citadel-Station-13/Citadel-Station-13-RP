@@ -27,16 +27,17 @@
 	/// always make a network of this ID, without map mangling. cannot be set by players.
 	/// * runtimes if it collides with another.
 	var/conf_network_create_static_id
-	/// always make a network with this passkey. cannot be set by players.
-	/// * set to `TRUE` (numberic 1) to randomize on init
-	var/conf_network_create_passkey
-	#warn impl
 
 /obj/machinery/research_mainframe/Initialize(mapload)
 	. = ..()
+	research = new
+	network = new
+	take_network(network)
 
 /obj/machinery/research_mainframe/Destroy()
-	. = ..()
+	QDEL_NULL(network)
+	QDEL_NULL(research)
+	return ..()
 
 /obj/machinery/research_mainframe/proc/take_network(datum/research_network/network)
 	SHOULD_NOT_OVERRIDE(TRUE)
@@ -64,23 +65,44 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 
+	RegisterSignal(network, COMSIG_RESEARCH_NETWORK_UI_DATA_PUSH, PROC_REF(on_network_ui_data))
+
 /obj/machinery/research_mainframe/proc/on_leave_network(datum/research_network/network)
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 
+	UnregisterSignal(network, COMSIG_RESEARCH_NETWORK_UI_DATA_PUSH)
+
+/**
+ * utterly unhinged hook to relay ui data from network;
+ * wish we didn't have to do this but we have no good way
+ * of UI transclusion right now
+ */
+/obj/machinery/research_mainframe/proc/on_network_ui_data(datum/source, list/data)
+	push_ui_modules(updates = list("network" = data))
+
 #warn impl
 
 /obj/machinery/research_mainframe/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
-	. = ..()
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "machines/research/ResearchConsole")
+		ui.open(modules = list(
+			"network" = network.network_ui_data(),
+		))
 
 /obj/machinery/research_mainframe/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
+	.["hasNetwork"] = !!network
 
 /obj/machinery/research_mainframe/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 
 /obj/machinery/research_mainframe/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
+	if(.)
+		return
+
 
 //* Presets *//
 

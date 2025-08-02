@@ -16,7 +16,7 @@ SUBSYSTEM_DEF(uniqueness)
 	VAR_PRIVATE/round_notch
 
 /datum/controller/subsystem/uniqueness/Initialize()
-	var/rt_hex = [num2hex(world.realtime, 8)]
+	var/rt_hex = num2hex(world.realtime, 8)
 	if(length(rt_hex) != 8)
 		stack_trace("rt_hex '[rt_hex]' not 8 characters")
 	round_notch = "[copytext(rt_hex, 1, 5)]-[copytext(rt_hex, 5, 9)]"
