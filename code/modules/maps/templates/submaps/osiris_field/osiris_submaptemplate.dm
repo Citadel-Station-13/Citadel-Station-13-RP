@@ -167,66 +167,66 @@
 /datum/map_template/submap/level_specific/osirisfield/cargoshuttle1
 	name = "Cargo shuttle"
 	suffix = "cargo_shuttle1.dmm"
-	cost = 3
+	cost = 25
 	allow_duplicates = FALSE
 
 /datum/map_template/submap/level_specific/osirisfield/cargoshuttle2
 	name = "Cargo shuttle2"
 	suffix = "cargo_shuttle2.dmm"
-	cost = 3
+	cost = 25
 	allow_duplicates = FALSE
 
 /datum/map_template/submap/level_specific/osirisfield/cargoshuttle3
 	name = "Cargo shuttle3"
 	suffix = "cargo_shuttle3.dmm"
-	cost = 3
+	cost = 25
 	allow_duplicates = FALSE
 
 /datum/map_template/submap/level_specific/osirisfield/cargovessel1
 	name = "Cargo vessel"
 	suffix = "cargo_vessel1.dmm"
-	cost = 3
+	cost = 25
 	allow_duplicates = FALSE
 
 /datum/map_template/submap/level_specific/osirisfield/cargovessel2
 	name = "Cargo vessel2"
 	suffix = "cargo_vessel2.dmm"
-	cost = 3
+	cost = 25
 	allow_duplicates = FALSE
 
 /datum/map_template/submap/level_specific/osirisfield/cargovessel3
 	name = "Cargo vessel3"
 	suffix = "cargo_vessel3.dmm"
-	cost = 3
+	cost = 25
 	allow_duplicates = FALSE
 
 /datum/map_template/submap/level_specific/osirisfield/pirate1
 	name = "Pirate Shuttle"
 	suffix = "pirate_shuttle1.dmm"
-	cost = 3
+	cost = 25
 	allow_duplicates = FALSE
 
 /datum/map_template/submap/level_specific/osirisfield/pirate2
 	name = "Pirate Shuttle2"
 	suffix = "pirate_shuttle2.dmm"
-	cost = 3
+	cost = 25
 	allow_duplicates = FALSE
 
 /datum/map_template/submap/level_specific/osirisfield/pirate3
 	name = "Pirate Shuttle3"
 	suffix = "pirate_shuttle3.dmm"
-	cost = 3
+	cost = 25
 	allow_duplicates = FALSE
 
 /datum/map_template/submap/level_specific/osirisfield/transport1
 	name = "Transport Shuttle"
 	suffix = "transport1.dmm"
-	cost = 2
+	cost = 10
 
 /datum/map_template/submap/level_specific/osirisfield/transport2
 	name = "Transport Shuttle2"
 	suffix = "transport2.dmm"
-	cost = 2
+	cost = 10
 
 
 //repairable shuttles
@@ -234,17 +234,17 @@
 /datum/map_template/submap/level_specific/osirisfield/luxuryshuttle
 	name = "Colonial Liner"
 	suffix = "colonial_II.dmm"
-	cost = 2
+	cost = 10
 	allow_duplicates = FALSE
 
 /datum/map_template/submap/level_specific/osirisfield/battlestar
 	name = "Wrecked Mercenary Vessel Andromeda"
 	suffix = "warship.dmm"
-	cost = 2
+	cost = 10
 	allow_duplicates = FALSE
 
 /datum/map_template/submap/level_specific/osirisfield/cargoravana
 	name = "Spacena Cargoravana"
 	suffix = "mobilehome.dmm"
-	cost = 2
+	cost = 10
 	allow_duplicates = FALSE
