@@ -30,14 +30,20 @@
 
 /obj/machinery/research_mainframe/Initialize(mapload)
 	. = ..()
-	research = new
-	network = new
+	research = create_research()
+	network = create_network()
 	take_network(network)
 
 /obj/machinery/research_mainframe/Destroy()
 	QDEL_NULL(network)
 	QDEL_NULL(research)
 	return ..()
+
+/obj/machinery/research_mainframe/proc/create_network() as /datum/research_network
+	return new /datum/research_network
+
+/obj/machinery/research_mainframe/proc/create_research() as /datum/research_Data
+	return new /datum/research_data
 
 /obj/machinery/research_mainframe/proc/take_network(datum/research_network/network)
 	SHOULD_NOT_OVERRIDE(TRUE)
@@ -86,7 +92,7 @@
 /obj/machinery/research_mainframe/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "machines/research/ResearchConsole")
+		ui = new(user, src, "machines/research/ResearchMainframe")
 		ui.open(modules = list(
 			"network" = network.network_ui_data(),
 		))
@@ -94,15 +100,23 @@
 /obj/machinery/research_mainframe/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["hasNetwork"] = !!network
-
-/obj/machinery/research_mainframe/ui_static_data(mob/user, datum/tgui/ui)
-	. = ..()
+	.["networkId"] = network ? network.network_id : network
 
 /obj/machinery/research_mainframe/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return
-
+	switch(action)
+		if("networkAct")
+			var/nAction = params["action"]
+			var/list/nParams = params["params"]
+			network.network_ui_act(
+				nAction,
+				nParams,
+				new /datum/event_args/actor(usr),
+				RESEARCH_NETWORK_OPLVL_ROOT,
+				ALL,
+			)
 
 //* Presets *//
 
@@ -119,24 +133,60 @@
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 	conf_network_create_static_id = "station"
-	conf_network_create_passkey = TRUE
 
 	/// only one can exist at the same time
 	VAR_PRIVATE/static/obj/machinery/research_mainframe/preset/main_map/__highlander_mutex
+	/// did we create random invites?
+	var/roundstart_invites_randomized = FALSE
 
 /obj/machinery/research_mainframe/preset/main_map/Initialize(mapload)
 	. = ..()
 	if(__highlander_mutex)
 		QDEL_NULL(__highlander_mutex)
 	__highlander_mutex = src
+	randomize_station_invites()
 
 /obj/machinery/research_mainframe/preset/main_map/Destroy()
 	if(__highlander_mutex == src)
 		__highlander_mutex = null
 	return ..()
 
+/obj/machinery/research_mainframe/preset/main_map/create_research()
+	return new /datum/research_data/nt_default
+
 /**
  * Check before ser/de!
  */
 /obj/machinery/research_mainframe/preset/main_map/proc/has_persistence_mutex()
 	return __highlander_mutex == src
+
+/obj/machinery/research_mainframe/preset/main_map/proc/randomize_station_invites()
+	network.delete_invite("science")
+	network.delete_invite("server")
+	network.delete_invite("admin")
+
+	// scientists / engineers gets low-level read-only no-pull credentials
+	var/datum/research_network_invite/science_invite = network.create_invite(
+		"science",
+		SSuniqueness.generate_password_phrase(),
+		RESEARCH_NETWORK_OPLVL_DEFAULT,
+		RESEARCH_NETWORK_CAPABILITY_USE_DESIGN | RESEARCH_NETWORK_CAPABILITY_USE_KNOWLEDGE,
+	)
+
+	// senior researcher gets high-level credentials capable of provisioning departments
+	var/datum/research_network_invite/science_invite = network.create_invite(
+		"server",
+		SSuniqueness.generate_password_phrase(),
+		RESEARCH_NETWORK_OPLVL_DEPARTMENT,
+		RESEARCH_NETWORK_CAPABILITY_USE_DESIGN | RESEARCH_NETWORK_CAPABILITY_USE_KNOWLEDGE \
+		RESEARCH_NETWORK_CAPABILITY_PULL_DESIGN | RESEARCH_NETWORK_CAPABILITY_PULL_KNOWLEDGE \
+		RESEARCH_NETWORK_CAPABILITY_SERVER,
+	)
+
+	// research director / captain gets sudo
+	var/datum/research_network_invite/science_invite = network.create_invite(
+		"admin",
+		SSuniqueness.generate_password_phrase(),
+		RESEARCH_NETWORK_OPLVL_DIRECTOR,
+		ALL,
+	)

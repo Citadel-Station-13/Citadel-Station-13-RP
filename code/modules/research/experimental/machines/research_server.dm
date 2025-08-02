@@ -56,56 +56,88 @@
 
 /obj/machinery/research_server/proc/autojoin_network_id(id)
 
-/obj/machinery/computer/research_console/proc/on_connection_add(datum/research_network_connection/conn)
+/obj/machinery/research_server/proc/on_connection_register(datum/research_network_connection/conn)
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 
 
-/obj/machinery/computer/research_console/proc/on_connection_remove(datum/research_network_connection/conn)
+/obj/machinery/research_server/proc/on_connection_unregister(datum/research_network_connection/conn)
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 
 
-/obj/machinery/computer/research_console/proc/on_connection_active(datum/research_network_connection/conn)
+/obj/machinery/research_server/proc/on_connection_active(datum/research_network_connection/conn)
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 
-/obj/machinery/computer/research_console/proc/on_connection_inactive(datum/research_network_connection/conn)
+/obj/machinery/research_server/proc/on_connection_inactive(datum/research_network_connection/conn)
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 
-/obj/machinery/computer/research_console/proc/check_network_connectivity(datum/research_network/network)
+/obj/machinery/research_server/proc/check_network_connectivity(datum/research_network/network)
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
+
+/obj/machinery/research_server/proc/poll_networks_in_range()
+	return SSresearch.standard_network_connectivity_poll(src)
+
+/obj/machinery/research_server/proc/ui_serialize_available_networks()
+	var/list/datum/research_network/networks = poll_networks_in_range()
+	var/list/serialized = list()
+
+	for(var/datum/research_network/network as anything in networks)
+		serialized[++serialized.len] = list(
+			"id" = network.network_id,
+			"name" = network.network_name,
+			"reqPending" = connection_request.r_network == network,
+		)
+
+	return serialized
 
 /obj/machinery/research_server/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
-	.["network"] = network ? list(
-		"id" = network.network_id,
+	.["network"] = connection ? list(
+		"id" = connection.c_network_id,
+		"name" = connection.h_network_name,
+		"active" = connection.is_active(),
 	) : null
 
 /obj/machinery/research_server/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
+	.["networksAvailable"] = ui_serialize_available_networks()
 
 /obj/machinery/research_server/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return
 	switch(action)
+		if("refreshAvailableNetworks")
+			push_ui_data(data = list("networksAvailable" = ui_serialize_available_networks()))
+			return TRUE
 		if("requestNetworkJoin")
 			var/datum/research_network/target_network = SSresearch.get_network_by_id(params["id"])
 			if(!target_network)
-				return
+				return TRUE
+			return TRUE
 		if("passwordNetworkJoin")
 			var/datum/research_network/target_network = SSresearch.get_network_by_id(params["id"])
 			if(!target_network)
-				return
+				return TRUE
+			return TRUE
 		if("disconnectNetwork")
+			return TRUE
 
 /datum/research_network_connection/research_server
 	c_capability_flags = RESEARCH_NETWORK_CAPABILITY_SERVER
 
 /datum/research_network_connection/research_server/on_connection_active(datum/research_network/network, datum/peer)
+	..()
+	var/obj/machinery/research_server/maybe_server = s_peer
+	if(istype(maybe_server))
+		maybe_server.on_connection_active(src)
 
 /datum/research_network_connection/research_server/on_connection_inactive(datum/research_network/network, datum/peer)
-
+	..()
+	var/obj/machinery/research_server/maybe_server = s_peer
+	if(istype(maybe_server))
+		maybe_server.on_connection_inactive(src)

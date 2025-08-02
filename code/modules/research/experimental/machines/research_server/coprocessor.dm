@@ -10,8 +10,8 @@
 
 	/// available compute
 	var/compute_capacity = 20
-	/// total used compute
-	var/compute_used = 0
+	/// total scheduled compute
+	var/compute_scheduled = 0
 	/// batch jobs on this associated to compute usage
 	/// * lazy list
 	var/list/datum/research_batch_job/compute_active
@@ -20,13 +20,11 @@
 	if(compute_active[job])
 		remove_batch_job(job)
 	compute_active[job] = usage
-	compute_used += usage
+	compute_scheduled += usage
 
 /obj/machinery/research_server/coprocessor/proc/remove_batch_job(datum/research_batch_job/job)
-	compute_used -= compute_active[job]
+	compute_scheduled -= compute_active[job]
 	compute_active -= job
-
-#warn impl
 
 /obj/machinery/research_server/coprocessor/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -38,7 +36,7 @@
 /obj/machinery/research_server/coprocessor/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["cpuCapacity"] = compute_capacity
-	.["cpuUsed"] = compute_used
+	.["cpuScheduled"] = compute_scheduled
 	var/list/serialized_jobs = list()
 	for(var/datum/research_batch_job/job as anything in compute_active)
 		var/job_usage = compute_active[job]
@@ -48,10 +46,17 @@
 		)
 	.["jobs"] = serialized_jobs
 
-/obj/machinery/research_server/coprocessor/on_leave_network(datum/research_network/network)
+/obj/machinery/research_server/coprocessor/on_connection_inactive(datum/research_network_connection/conn)
 	..()
-	#warn evict jobs
+	for(var/datum/research_batch_job/job in compute_active)
+		job.remove_processor(src)
 
 /obj/machinery/research_server/coprocessor/proc/set_compute_capacity(capacity)
+	capacity = max(0, capacity)
 	src.compute_capacity = capacity
-	#warn inform network
+	while(compute_scheduled > compute_capacity)
+		if(!length(compute_active))
+			stack_trace("no compute active yet scheduled above capacity?")
+			break
+		var/datum/research_batch_job/popping = compute_active[length(compute_active)]
+		popping.remove_processor(src)

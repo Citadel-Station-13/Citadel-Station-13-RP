@@ -4,6 +4,7 @@
 SUBSYSTEM_DEF(research)
 	name = "Research"
 	subsystem_flags = SS_NO_INIT
+	wait = 2 SECONDS
 
 	/// k-v list id to network
 	//  TODO: recover() logic
@@ -42,3 +43,7 @@ SUBSYSTEM_DEF(research)
 /datum/controller/subsystem/research/proc/on_connection_created(datum/research_network_connection/connection)
 
 /datum/controller/subsystem/research/proc/on_connection_destroyed(datum/research_network_connection/connection)
+
+/datum/controller/subsystem/research/proc/standard_network_connectivity_check(atom/movable/entity, datum/research_network/network)
+
+/datum/controller/subsystem/research/proc/standard_network_connectivity_poll(atom/movable/entity)

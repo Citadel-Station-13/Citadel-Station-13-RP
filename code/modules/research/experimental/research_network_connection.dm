@@ -16,6 +16,9 @@
 	/// capability flags
 	var/c_capability_flags = NONE
 
+	/// refreshed when connection becomes active
+	var/h_network_name
+
 	/// active network entity
 	var/datum/research_network/s_network
 	/// active peer entity
@@ -85,6 +88,9 @@
 /datum/research_network_connection/proc/on_connection_active(datum/research_network/network, datum/peer)
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
+
+	// update cached variables
+	h_network_name = network.network_name
 
 /**
  * called when connectivity is dropped

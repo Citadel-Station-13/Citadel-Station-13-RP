@@ -47,7 +47,13 @@
 	var/list/serialized_bays = list()
 
 	for(var/i in 1 to length(disk_bays))
-		#warn impl
+		var/obj/item/maybe_in_bay = disk_bays[i]
+		if(maybe_in_bay)
+			serialized_bays[++serialized_bays.len] = list(
+				"name" = maybe_in_bay.name,
+			)
+		else
+			serialized_bays[++serialized_bays.len] = null
 
 	.["baysCount"] = disk_bays_count
 	.["bays"] = serialized_bays

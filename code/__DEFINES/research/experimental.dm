@@ -32,7 +32,7 @@
  */
 #define RESEARCH_NETWORK_CAPABILITY_PULL_KNOWLEDGE (1<<1)
 /**
- * * pull designs for printing / into local store / into disks
+ * * pull designs into local store / into disks
  */
 #define RESEARCH_NETWORK_CAPABILITY_PULL_DESIGN (1<<2)
 /**
@@ -40,3 +40,11 @@
  *   added or removed.
  */
 #define RESEARCH_NETWORK_CAPABILITY_SERVER (1<<3)
+/**
+ * * use tech on peripherals
+ */
+#define RESEARCH_NETWORK_CAPABILITY_USE_KNOWLEDGE (1<<4)
+/**
+ * * use designs for printing
+ */
+#define RESEARCH_NETWORK_CAPABILITY_USE_DESIGN (1<<5)
