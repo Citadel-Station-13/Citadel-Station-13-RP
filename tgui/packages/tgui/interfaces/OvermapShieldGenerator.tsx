@@ -36,7 +36,7 @@ const OvermapShieldGeneratorContent = (props) => {
       <OvermapShieldGeneratorControls />
       <Section title="Field Calibration">
         {modes.map(mode => (
-          <Section title={mode.name} level={2} key={mode.name} buttons={
+          <Section title={mode.name} key={mode.name} buttons={
             <Button
               icon="power-off"
               selected={mode.status}

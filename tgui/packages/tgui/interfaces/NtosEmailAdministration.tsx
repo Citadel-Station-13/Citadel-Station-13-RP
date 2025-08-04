@@ -119,7 +119,7 @@ const ViewAccount = (props) => {
           </Button>
         </LabeledList.Item>
       </LabeledList>
-      <Section level={2} title="Messages">
+      <Section title="Messages">
         {messages.length && (
           <Table>
             <Table.Row header>

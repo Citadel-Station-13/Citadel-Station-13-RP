@@ -194,7 +194,7 @@ const NIFMain = (props) => {
           </ProgressBar>
         </LabeledList.Item>
       </LabeledList>
-      <Section level={2} title="NIFSoft Modules" mt={1}>
+      <Section title="NIFSoft Modules" mt={1}>
         <LabeledList>
           {modules.map(module => (
             <LabeledList.Item

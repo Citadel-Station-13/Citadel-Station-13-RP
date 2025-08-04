@@ -136,7 +136,7 @@ const GeneralRecordsView = (_properties) => {
   } = data;
   return (
     <Fragment>
-      <Section title="General Data" level={2} mt="-6px">
+      <Section title="General Data" mt="-6px">
         <GeneralRecordsViewGeneral />
       </Section>
       <Section title="Actions" level={2}>
@@ -202,7 +202,7 @@ const GeneralRecordsViewGeneral = (_properties) => {
             </LabeledList.Item>
           ))}
         </LabeledList>
-        <Section title="Employment/Skills Summary" level={2} preserveWhitespace>
+        <Section title="Employment/Skills Summary" preserveWhitespace>
           {general.skills || "No data found."}
         </Section>
         <Section title="Comments/Log" level={2}>

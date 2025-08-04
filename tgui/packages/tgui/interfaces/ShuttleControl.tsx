@@ -342,7 +342,7 @@ const ShuttleControlConsoleWeb = (props) => {
           ) || null}
         </LabeledList>
         {!is_moving && (
-          <Section level={2} title="Available Destinations">
+          <Section title="Available Destinations">
             <LabeledList>
               {routes.length && routes.map(route => (
                 <LabeledList.Item label={route.name} key={route.name}>

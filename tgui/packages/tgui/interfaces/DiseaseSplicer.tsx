@@ -66,18 +66,18 @@ const DiseaseSplicerVirusDish = (props) => {
         </Section>
       ) : (
         <Fragment>
-          <Section level={2} title="Symptoms">
+          <Section title="Symptoms">
             {effects && effects.map(effect => (
               <Box color="label" key={effect.stage}>
                 ({effect.stage}) {effect.name} {effect.badness > 1 ? "Dangerous!" : null}
               </Box>
             )) || <Box>No virus sample loaded.</Box>}
           </Section>
-          <Section level={2} title="Affected Species" color="label">
+          <Section title="Affected Species" color="label">
             {(!affected_species || !affected_species.length) ? "None" : null}
             {affected_species.sort().join(", ")}
           </Section>
-          <Section level={2} title="Reverse Engineering">
+          <Section title="Reverse Engineering">
             <Box color="bad" mb={1}><i>CAUTION: Reverse engineering will destroy the viral sample.</i></Box>
             {effects.map(e => (
               <Button

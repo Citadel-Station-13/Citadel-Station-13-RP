@@ -36,7 +36,7 @@ export const GuestPass = (props) => {
               onClick={() => act("print")}
               fluid
               mb={1} />
-            <Section level={2} title="Logs">
+            <Section title="Logs">
               {/* These are internally generated only. */}
               {log.length
                 && log.map(l => (<div key={l}

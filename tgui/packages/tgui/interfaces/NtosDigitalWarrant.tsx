@@ -46,10 +46,10 @@ const AllWarrants = (props) => {
         onClick={() => act("addwarrant")}>
         Create New Warrant
       </Button>
-      <Section level={2} title="Arrest Warrants">
+      <Section title="Arrest Warrants">
         <WarrantList type="arrest" />
       </Section>
-      <Section level={2} title="Search Warrants">
+      <Section title="Search Warrants">
         <WarrantList type="search" />
       </Section>
     </Section>

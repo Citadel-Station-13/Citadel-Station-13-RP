@@ -77,7 +77,7 @@ const PlantAnalyzerContent = (props) => {
         </LabeledList.Item>
       </LabeledList>
       {reagents.length && (
-        <Section level={2} title="Plant Reagents">
+        <Section title="Plant Reagents">
           <LabeledList>
             {reagents.map(r => (
               <LabeledList.Item key={r.name} label={r.name}>
@@ -87,7 +87,7 @@ const PlantAnalyzerContent = (props) => {
           </LabeledList>
         </Section>
       ) || null}
-      <Section level={2} title="Other Data">
+      <Section title="Other Data">
         {seed.trait_info.map(trait => (
           <Box color="label" key={trait} mb={0.4}>{trait}</Box>
         ))}

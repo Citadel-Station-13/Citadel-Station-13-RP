@@ -49,7 +49,7 @@ export const Farmbot = (props) => {
         </Section>
         {!locked && (
           <Section title="Behavior Controls">
-            <Section level={2} title="Watering Controls">
+            <Section title="Watering Controls">
               <LabeledList>
                 <LabeledList.Item label="Water plants">
                   <Button
@@ -69,7 +69,7 @@ export const Farmbot = (props) => {
                 </LabeledList.Item>
               </LabeledList>
             </Section>
-            <Section level={2} title="Weeding controls">
+            <Section title="Weeding controls">
               <LabeledList>
                 <LabeledList.Item label="Weed plants">
                   <Button
@@ -81,7 +81,7 @@ export const Farmbot = (props) => {
                 </LabeledList.Item>
               </LabeledList>
             </Section>
-            <Section level={2} title="Nutriment controls">
+            <Section title="Nutriment controls">
               <LabeledList>
                 <LabeledList.Item label="Replace fertilizer">
                   <Button
@@ -94,7 +94,7 @@ export const Farmbot = (props) => {
               </LabeledList>
             </Section>
             {/* VOREStation Edit: No automatic hydroponics with the lagbot */}
-            {/* <Section level={2} title="Plant controls">
+            {/* <Section title="Plant controls">
               <LabeledList>
                 <LabeledList.Item label="Collect produce">
                   <Button

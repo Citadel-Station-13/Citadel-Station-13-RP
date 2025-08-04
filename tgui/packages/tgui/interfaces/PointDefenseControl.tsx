@@ -13,7 +13,7 @@ export const PointDefenseControl = (props) => {
       <Window.Content scrollable>
         <Section title={"Fire Assist Mainframe: " + (id || "[no tag]")}>
           {turrets.length && turrets.map(pd => (
-            <Section level={2} title={pd.id} key={pd.id} buttons={
+            <Section title={pd.id} key={pd.id} buttons={
               <Button
                 selected={pd.active}
                 icon="power-off"
@@ -34,11 +34,11 @@ export const PointDefenseControl = (props) => {
               </LabeledList>
             </Section>
           )) || (
-            <Box color="bad">
-              Error: No weapon systems detected.
-              Please check network connection.
-            </Box>
-          )}
+              <Box color="bad">
+                Error: No weapon systems detected.
+                Please check network connection.
+              </Box>
+            )}
         </Section>
       </Window.Content>
     </Window>

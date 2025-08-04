@@ -369,7 +369,7 @@ const PhoneTab = (props) => {
         </LabeledList.Item>
       </LabeledList>
       <NumberPad />
-      <Section title="Connection Management" level={2} mt={2}>
+      <Section title="Connection Management" mt={2}>
         <LabeledList>
           <LabeledList.Item label="Camera Mode">
             <Button
@@ -1004,7 +1004,7 @@ const WeatherTab = (props) => {
 
   return (
     <Section title="Weather">
-      <Section level={2} title="Current Conditions">
+      <Section title="Current Conditions">
         <LabeledList>
           {filter(
             i => (i.val !== "0") || i.entry === "Pressure" || i.entry === "Temperature"
@@ -1019,7 +1019,7 @@ const WeatherTab = (props) => {
             ))}
         </LabeledList>
       </Section>
-      <Section level={2} title="Weather Reports">
+      <Section title="Weather Reports">
         {!!weather.length && (
           <LabeledList>
             {weather.map(wr => (

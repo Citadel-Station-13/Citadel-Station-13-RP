@@ -123,7 +123,7 @@ const NtosEmailClientInbox = (props) => {
   } = data;
 
   return (
-    <Section level={2} noTopPadding>
+    <Section noTopPadding>
       <Tabs>
         <Tabs.Tab
           selected={folder === "Inbox"}
@@ -274,7 +274,7 @@ const NtosEmailClientAddressBook = (props) => {
   } = data;
 
   return (
-    <Section title="Address Book" level={2} buttons={
+    <Section title="Address Book" buttons={
       <Button
         color="bad"
         icon="times"
@@ -305,7 +305,7 @@ const NtosEmailClientNewMessage = (props) => {
   } = data;
 
   return (
-    <Section title="New Message" level={2} buttons={
+    <Section title="New Message" buttons={
       <Fragment>
         <Button
           icon="share"

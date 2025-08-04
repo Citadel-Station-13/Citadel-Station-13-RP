@@ -178,7 +178,7 @@ const MedicalRecordsView = (_properties, context) => {
   } = data;
   return (
     <Fragment>
-      <Section title="General Data" level={2} mt="-6px">
+      <Section title="General Data" mt="-6px">
         <MedicalRecordsViewGeneral />
       </Section>
       <Section title="Medical Data" level={2}>
@@ -303,7 +303,7 @@ const MedicalRecordsViewMedical = (_properties, context) => {
           </LabeledList.Item>
         ))}
       </LabeledList>
-      <Section title="Medical Notes Summary" level={2} preserveWhitespace>
+      <Section title="Medical Notes Summary" preserveWhitespace>
         {medical.notes || "No data found."}
       </Section>
       <Section title="Comments/Log" level={2}>

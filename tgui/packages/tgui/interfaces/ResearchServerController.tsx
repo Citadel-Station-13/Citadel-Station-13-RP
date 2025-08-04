@@ -121,7 +121,7 @@ const ResearchServerAccess = (props) => {
   };
 
   return (
-    <Section level={2} title="Consoles">
+    <Section title="Consoles">
       <LabeledList>
         {consoles.length && consoles.map(console => (
           <LabeledList.Item key={console.name} label={console.name + " (" + console.loc + ")"}>
@@ -152,7 +152,7 @@ const ResearchServerData = (props) => {
 
   return (
     <Fragment>
-      <Section level={2} title="Research Levels">
+      <Section title="Research Levels">
         {server.tech.map(tech => (
           <LabeledList.Item label={tech.name} key={tech.name} buttons={
             <Button.Confirm
@@ -164,7 +164,7 @@ const ResearchServerData = (props) => {
           } />
         ))}
       </Section>
-      <Section level={2} title="Designs">
+      <Section title="Designs">
         {filter(design => !!design.name)(server.designs).map(design => (
           <LabeledList.Item label={design.name} key={design.name} buttons={
             <Button.Confirm
@@ -198,7 +198,7 @@ const ResearchServerTransfer = (props) => {
 
 
   return (
-    <Section level={2} title="Server Data Transfer">
+    <Section title="Server Data Transfer">
       {servers.map(newserver => (
         <Box key={newserver.name}>
           <Button.Confirm

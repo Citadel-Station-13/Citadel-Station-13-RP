@@ -82,32 +82,32 @@ const ViewCharacter = (props) => {
         content="Back"
         onClick={() => setOverlay(null)} />
     }>
-      <Section level={2} title="Species">
+      <Section title="Species">
         <Box>
           {overlay.species}
         </Box>
       </Section>
-      <Section level={2} title="ERP Tag">
+      <Section title="ERP Tag">
         <Box p={1} backgroundColor={getTagColor(overlay.erptag)}>
           {overlay.erptag}
         </Box>
       </Section>
-      <Section level={2} title="Vore Tag">
+      <Section title="Vore Tag">
         <Box>
           {overlay.tag}
         </Box>
       </Section>
-      <Section level={2} title="Character Ad">
+      <Section title="Character Ad">
         <Box style={{ "word-break": "break-all" }} preserveWhitespace>
           {overlay.character_ad || "Unset."}
         </Box>
       </Section>
-      <Section level={2} title="OOC Notes">
+      <Section title="OOC Notes">
         <Box style={{ "word-break": "break-all" }} preserveWhitespace>
           {overlay.ooc_notes || "Unset."}
         </Box>
       </Section>
-      <Section level={2} title="Flavor Text">
+      <Section title="Flavor Text">
         <Box style={{ "word-break": "break-all" }} preserveWhitespace>
           {overlay.flavor_text || "Unset."}
         </Box>
