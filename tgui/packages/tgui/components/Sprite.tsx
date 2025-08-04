@@ -3,8 +3,9 @@
  * @license MIT
  */
 
-import { BooleanLike, classes } from "common/react";
-import { Box, BoxProps } from "./Box";
+import { BooleanLike, classes } from "tgui-core/react";
+import { BoxProps } from ".";
+import { Box } from "tgui-core/components";
 
 interface SpriteProps extends BoxProps {
   readonly sheet: string;
@@ -20,7 +21,7 @@ export const Sprite = (props: SpriteProps) => {
       className={classes([
         "Sprite",
         `${props.sheet}${props.sizeKey}`,
-        props.prefix? `${props.prefix}-${props.sprite}` : props.sprite,
+        props.prefix ? `${props.prefix}-${props.sprite}` : props.sprite,
         !!props.fill && 'Sprite--fill',
       ])} />
   );

@@ -119,14 +119,14 @@ export class NanoMap extends Component {
     const newStyle = {
       width: mapSize,
       height: mapSize,
-      "margin-top": offsetY + "px",
-      "margin-left": offsetX + "px",
+      marginTop: offsetY + "px",
+      marginLeft: offsetX + "px",
       "overflow": "hidden",
       "position": "relative",
-      "background-image": "url(" + mapUrl + ")",
-      "background-size": "cover",
-      "background-repeat": "no-repeat",
-      "text-align": "center",
+      backgroundImage: "url(" + mapUrl + ")",
+      backgroundSize: "cover",
+      backgroundRepeat: "no-repeat",
+      textAlign: "center",
       "cursor": dragging ? "move" : "auto",
     };
 

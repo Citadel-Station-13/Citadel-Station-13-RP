@@ -4,8 +4,8 @@
  */
 
 import { ModuleData, useBackend, useLocalState } from "../../backend";
-import { Stack, Tabs } from "../../components";
-import { Module } from "../../components/Module";
+import { Stack, Tabs } from "tgui-core/components";
+import { Module } from "tgui-core/components/Module";
 import { Window } from "../../layouts";
 
 interface TGUIGuidebookContext {
@@ -13,9 +13,9 @@ interface TGUIGuidebookContext {
   sections: Record<string, string>;
 }
 
-export const TGUIGuidebook = (props, context) => {
-  let { act, data } = useBackend<TGUIGuidebookContext>(context);
-  const [activeSection, setActiveSection] = useLocalState<string | null>(context, 'masterGuidebookSection', null);
+export const TGUIGuidebook = (props) => {
+  let { act, data } = useBackend<TGUIGuidebookContext>();
+  const [activeSection, setActiveSection] = useState<string | null>(null);
   const sections = Object.keys(data.sections);
   const oneSectionMode = sections.length === 1;
   return (

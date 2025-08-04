@@ -251,3 +251,6 @@
 
 /// get highest magnitude of two numbers, magnitude is abs value
 #define BIGGER_MAGNITUDE(a, b) ((abs(a) > abs(b))? a : b)
+
+#define SI_COEFFICIENT "coefficient"
+#define SI_UNIT "unit"

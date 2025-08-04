@@ -1,4 +1,3 @@
-
 /**
  * @file
  * @copyright 2020 Aleksej Komarov
@@ -18,6 +17,7 @@ import {
   updateSettings,
 } from './actions';
 import { FONTS_DISABLED } from './constants';
+import { setDisplayScaling } from './scaling';
 import { selectSettings } from './selectors';
 import { exportChatSettings } from './settingsImExport';
 
@@ -89,6 +89,8 @@ export function settingsMiddleware(store) {
 
     if (!initialized) {
       initialized = true;
+
+      setDisplayScaling();
 
       storage.get('panel-settings').then((settings) => {
         store.dispatch(loadSettings(settings));

@@ -1,10 +1,10 @@
-import { clamp } from 'common/math';
+import { clamp } from 'tgui-core/math';
 import { randomInteger, randomNumber, randomPick, randomProb } from 'common/random';
 import { useDispatch } from 'common/redux';
 import { Component } from 'inferno';
 import { resolveAsset } from '../assets';
 import { backendSuspendStart, useBackend } from '../backend';
-import { Icon } from '../components';
+import { Icon } from 'tgui-core/components';
 import { globalEvents } from '../events';
 import { Window } from '../layouts';
 
@@ -426,8 +426,8 @@ type FishingData = {
   background_image: string;
 };
 
-export const Fishing = (props, context) => {
-  const { act, data } = useBackend<FishingData>(context);
+export const Fishing = (props) => {
+  const { act, data } = useBackend<FishingData>();
   return (
     <Window width={180} height={600}>
       <Window.Content fitted>

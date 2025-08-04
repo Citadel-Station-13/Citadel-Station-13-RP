@@ -1,4 +1,3 @@
-import { BooleanLike } from "../../common/react";
 import { useBackend } from "../backend";
 import {
   Box,
@@ -10,28 +9,29 @@ import {
   NumberInput,
   LabeledList,
   Collapsible,
-} from "../components";
+} from "tgui-core/components";
 import { Window } from "../layouts";
+import { BooleanLike } from "tgui-core/react";
 
 interface VoteContext {
-  admin : BooleanLike;
-  selected_choice : string;
-  vote_happening : BooleanLike;
-  choices : VoteChoice[];
+  admin: BooleanLike;
+  selected_choice: string;
+  vote_happening: BooleanLike;
+  choices: VoteChoice[];
   question: string;
-  time_remaining : number;
-  secret : BooleanLike;
-  ghost : BooleanLike;
-  ghost_weight : number;
+  time_remaining: number;
+  secret: BooleanLike;
+  ghost: BooleanLike;
+  ghost_weight: number;
 }
 
 interface VoteChoice {
-  name : string;
-  votes : number;
+  name: string;
+  votes: number;
 }
 
-export const Vote = (props, context) => {
-  const { act, data } = useBackend<VoteContext>(context);
+export const Vote = (props) => {
+  const { act, data } = useBackend<VoteContext>();
   const { admin, selected_choice } = data;
 
   // Adds the voting type to title if there is an ongoing vote
@@ -64,8 +64,8 @@ export const Vote = (props, context) => {
   );
 };
 
-const StartVoteOptions = (props, context) => {
-  const { act, data } = useBackend<VoteContext>(context);
+const StartVoteOptions = (props) => {
+  const { act, data } = useBackend<VoteContext>();
   const { vote_happening } = data;
   return (
     <Stack.Item>
@@ -105,8 +105,8 @@ const StartVoteOptions = (props, context) => {
   );
 };
 
-const VoteConfig = (props, context) => {
-  const { act, data } = useBackend<VoteContext>(context);
+const VoteConfig = (props) => {
+  const { act, data } = useBackend<VoteContext>();
   const { ghost_weight, secret } = data;
   return (
     <Stack.Item>
@@ -122,7 +122,7 @@ const VoteConfig = (props, context) => {
                   value={ghost_weight}
                   minValue={-1}
                   maxValue={100}
-                  onChange={(e, value) => act('ghost_weight', { ghost_weight: value })}
+                  onChange={(value) => act('ghost_weight', { ghost_weight: value })}
                 />
               </Stack.Item>
               <Stack.Item>
@@ -131,7 +131,7 @@ const VoteConfig = (props, context) => {
                   onClick={() => act("hide")}
                   icon={secret ? 'lock' : 'unlock'}
                 >
-                  {secret ? 'Show' : 'Hide' } Votes
+                  {secret ? 'Show' : 'Hide'} Votes
                 </Button>
               </Stack.Item>
             </Stack>
@@ -142,8 +142,8 @@ const VoteConfig = (props, context) => {
   );
 };
 // Display choices
-const ChoicesPanel = (props, context) => {
-  const { act, data } = useBackend<VoteContext>(context);
+const ChoicesPanel = (props) => {
+  const { act, data } = useBackend<VoteContext>();
   const { ghost_weight, ghost, admin, choices, selected_choice, question, secret } = data;
 
   return (
@@ -172,7 +172,7 @@ const ChoicesPanel = (props, context) => {
                 >
                   {selected_choice === choice.name && (
                     <Icon
-                      alignSelf="right"
+                      style={{ alignSelf: "right" }}
                       mr={2}
                       color="green"
                       name="vote-yea"
@@ -193,8 +193,8 @@ const ChoicesPanel = (props, context) => {
 };
 
 // Countdown timer at the bottom. Includes a cancel vote option for admins
-const TimePanel = (props, context) => {
-  const { act, data } = useBackend<VoteContext>(context);
+const TimePanel = (props) => {
+  const { act, data } = useBackend<VoteContext>();
   const { admin, time_remaining, vote_happening } = data;
 
   return (

@@ -47,38 +47,9 @@ type ByondType = {
   IS_BYOND: boolean;
 
   /**
-   * Version of Trident engine of Internet Explorer. Null if N/A.
-   */
-  TRIDENT: number | null;
-
-  /**
    * Version of Blink engine of WebView2. Null if N/A.
    */
   BLINK: number | null;
-
-  /**
-   * True if browser is IE8 or lower.
-   * @deprecated
-   */
-  IS_LTE_IE8: boolean;
-
-  /**
-   * True if browser is IE9 or lower.
-   * @deprecated
-   */
-  IS_LTE_IE9: boolean;
-
-  /**
-   * True if browser is IE10 or lower.
-   * @deprecated
-   */
-  IS_LTE_IE10: boolean;
-
-  /**
-   * True if browser is IE11 or lower.
-   * @deprecated
-   */
-  IS_LTE_IE11: boolean;
 
   /**
    * If `true`, unhandled errors and common mistakes result in a blue screen
@@ -197,6 +168,11 @@ type ByondType = {
    * Loads a script into the document.
    */
   loadJs(url: string): void;
+
+  /**
+   * Maps icons to their ref
+   */
+  iconRefMap: Record<string, string>;
 
   /**
    * Downloads a blob, platform-agnostic
