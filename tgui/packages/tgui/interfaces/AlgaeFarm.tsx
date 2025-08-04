@@ -24,8 +24,8 @@ export const AlgaeFarm = (props) => {
     >
       <Window.Content>
         {errorText && (
-          <NoticeBox warning>
-            <Box display="inline-block" verticalAlign="middle">
+          <NoticeBox>
+            <Box style={{display: "inline-block"}} verticalAlign="middle">
               {errorText}
             </Box>
           </NoticeBox>

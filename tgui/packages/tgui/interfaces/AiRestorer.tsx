@@ -15,7 +15,7 @@ export const AiRestorer = () => {
 };
 
 export const AiRestorerContent = (props) => {
-  const { act, data } = useBackend<any>(context);
+  const { act, data } = useBackend<any>();
   const {
     AI_present,
     error,
@@ -82,7 +82,7 @@ export const AiRestorerContent = (props) => {
             disabled={restoring}
             mt={1}
             onClick={() => act('PRG_beginReconstruction')} />
-          <Section title="Laws" level={2}>
+          <Section title="Laws" style={{ zIndex: 2 }}>
             {laws.map(law => (
               <Box key={law} className="candystripe">
                 {law}

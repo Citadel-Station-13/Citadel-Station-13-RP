@@ -1,9 +1,10 @@
 import { sortBy } from 'common/collections';
 import { Window } from '../layouts';
-import { Fragment } from 'react';
-import { Button, Box, Tabs, Icon, Section, NanoMap } from 'tgui-core/components';
+import { Fragment, useState } from 'react';
+import { Button, Box, Tabs, Icon, Section } from 'tgui-core/components';
 import { useBackend, useLocalState } from '../backend';
 import { createLogger } from '../logging';
+import { NanoMap } from '../components/NanoMap';
 const logger = createLogger("fuck");
 
 export const AtmosControl = (props) => {

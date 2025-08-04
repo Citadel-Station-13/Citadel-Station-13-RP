@@ -1,8 +1,8 @@
-import { multiline } from 'tgui-core/string';
 import { resolveAsset } from '../assets';
 import { useBackend } from '../backend';
 import { BlockQuote, Box, Button, Icon, Section, Stack } from 'tgui-core/components';
 import { Window } from '../layouts';
+import { multiline } from 'common/string';
 
 export const ApprenticeContract = (props) => {
   return (
@@ -82,8 +82,8 @@ const ApprenticeSelection = (props) => {
               <img
                 src={resolveAsset(assetName)}
                 style={{
-                  "border-style": "solid",
-                  "border-color": "#7e90a7",
+                  borderStyle: "solid",
+                  borderColor: "#7e90a7",
                 }} />
             </Stack.Item>
             <Stack.Item>

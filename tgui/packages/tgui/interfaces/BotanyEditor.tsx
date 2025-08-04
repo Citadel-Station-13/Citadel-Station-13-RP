@@ -49,7 +49,7 @@ export const BotanyEditor = (props) => {
               </Button>
             </Box>
           ) || (
-              <NoticeBox warning>No disk loaded.</NoticeBox>
+              <NoticeBox>No disk loaded.</NoticeBox>
             )}
         </Section>
         <Section title="Loaded Material">

@@ -55,7 +55,7 @@ export const AirlockController = (_, context) => {
 };
 
 /** Displays the buttons on top of the window to cycle the airlock */
-const AirLockButtons = (_, context) => {
+const AirLockButtons = (props) => {
   const { act, data } = useBackend<AirlockControllerData>();
   const { airlockState } = data;
   switch (airlockState) {

@@ -2,6 +2,7 @@ import { Flex, Button, Box, LabeledList, Section } from "tgui-core/components";
 import { useBackend, useLocalState } from "../backend";
 import { Window } from '../layouts';
 import { toTitleCase } from 'tgui-core/string';
+import { useState } from "react";
 
 
 export const AreaScrubberControl = (props) => {
