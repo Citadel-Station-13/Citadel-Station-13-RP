@@ -51,7 +51,7 @@ export const ATM = (props) => {
   const { act, data } = useBackend<ATMContext>();
   if (!data.authenticated_acc) {
     return (
-      <Window resizable width={400} height={400}>
+      <Window width={400} height={400}>
         <Window.Content scrollable>
           <Section title={data.machine_id} >
             {data.ticks_left_locked_down || data.emagged ? (<LockedElement />) : (<LoginElement />)}
@@ -61,7 +61,7 @@ export const ATM = (props) => {
     );
   }
   return (
-    <Window resizable width={400} height={400} scrollable>
+    <Window width={400} height={400} scrollable>
       <Window.Content scrollable>
         <Section title={data.machine_id} >
           <ATMElement />

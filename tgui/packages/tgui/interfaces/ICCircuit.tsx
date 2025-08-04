@@ -24,7 +24,7 @@ export const ICCircuit = (props) => {
   } = data;
 
   return (
-    <Window width={600} height={400} resizable title={displayed_name}>
+    <Window width={600} height={400} title={displayed_name}>
       <Window.Content scrollable>
         <Section title="Stats" buttons={
           <Fragment>

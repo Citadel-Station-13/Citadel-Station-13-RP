@@ -26,7 +26,7 @@ export const NtosEmailClient = (props) => {
   }
 
   return (
-    <NtosWindow resizable theme={PC_device_theme}>
+    <NtosWindow theme={PC_device_theme}>
       <NtosWindow.Content scrollable>
         {content}
       </NtosWindow.Content>

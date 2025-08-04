@@ -2,7 +2,7 @@
 /* eslint-disable max-len */
 import { filter } from 'common/collections';
 import { decodeHtmlEntities, toTitleCase } from 'tgui-core/string';
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { useBackend, useLocalState } from "../backend";
 import { Box, ByondUi, Button, Flex, Icon, LabeledList, Input, ProgressBar, Section, Table } from "tgui-core/components";
 import { Window } from "../layouts";
@@ -44,7 +44,7 @@ export const Communicator = (props) => {
           <Fragment>
             <CommunicatorHeader />
             <Box height="88%" mb={1} style={{
-              "overflow-y": "auto",
+              overflowY: "auto",
             }}>
               {TabToTemplate[currentTab] || <TemplateError />}
             </Box>
@@ -271,7 +271,7 @@ const CommunicatorFooter = (props) => {
 };
 
 /* Helper for notifications (yes this is a mess, but whatever, it works) */
-const hasNotifications = (app, context) => {
+const hasNotifications = (app) => {
   const { data } = useBackend<any>();
 
   const {
@@ -308,16 +308,16 @@ const HomeTab = (props) => {
         <Flex.Item basis="25%" textAlign="center" mb={2} key={app.number}>
           <Button
             style={{
-              "border-radius": "10%",
-              "border": "1px solid #000",
+              borderRadius: "10%",
+              border: "1px solid #000",
             }}
             width="64px"
             height="64px"
             position="relative"
             onClick={() => act("switch_tab", { switch_tab: app.number })}>
             <Icon
-              spin={hasNotifications(app.module, context)}
-              color={hasNotifications(app.module, context) ? "bad" : null}
+              spin={hasNotifications(app.module)}
+              color={hasNotifications(app.module) ? "bad" : null}
               name={app.icon}
               position="absolute"
               size={3}
@@ -382,7 +382,7 @@ const PhoneTab = (props) => {
               onClick={() => act("selfie_mode")} />
           </LabeledList.Item>
         </LabeledList>
-        <Section title="External Connections" level={3}>
+        <Section title="External Connections">
           {!!voice_mobs.length && (
             <LabeledList>
               {voice_mobs.map(mob => (
@@ -401,7 +401,7 @@ const PhoneTab = (props) => {
               </Box>
             )}
         </Section>
-        <Section title="Internal Connections" level={3}>
+        <Section title="Internal Connections">
           {!!communicating.length && (
             <Table>
               {communicating.map(comm => (
@@ -437,7 +437,7 @@ const PhoneTab = (props) => {
               </Box>
             )}
         </Section>
-        <Section title="Requests Received" level={3}>
+        <Section title="Requests Received">
           {!!requestsReceived.length && (
             <LabeledList>
               {requestsReceived.map(request => (
@@ -462,7 +462,7 @@ const PhoneTab = (props) => {
               </Box>
             )}
         </Section>
-        <Section title="Invites Sent" level={3}>
+        <Section title="Invites Sent">
           {!!invitesSent.length && (
             <LabeledList>
               {invitesSent.map(invite => (

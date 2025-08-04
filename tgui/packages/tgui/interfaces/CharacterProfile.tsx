@@ -2,6 +2,7 @@ import { Section, Flex, Divider, Table, Collapsible, Box } from "tgui-core/compo
 import { Window } from "../layouts";
 import { useBackend, useLocalState } from "../backend";
 import { Tabs } from "tgui-core/components";
+import { useState } from "react";
 
 const getTagColor = (erptag) => {
   switch (erptag) {
@@ -51,16 +52,12 @@ interface CharacterProfileContext {
 
 export const CharacterProfile = (props) => {
   const { act, data } = useBackend<CharacterProfileContext>();
-  const [selectedTab, setSelectedTab] = useLocalState<number>(
-    context,
-    "selectedTab",
-    1
-  );
+  const [selectedTab, setSelectedTab] = useState<number>(1);
   let combinedspeciesname: string = "";
   combinedspeciesname = combinedspeciesname.concat("Species - ", data.species_name);
 
   return (
-    <Window resizable width={950} height={800}>
+    <Window width={950} height={800}>
       <Window.Content scrollable>
         <Tabs>
           <Tabs.Tab onClick={() => setSelectedTab(1)}>
@@ -138,7 +135,7 @@ export const CharacterProfile = (props) => {
 const CharacterProfileImageElement = (props) => {
   const { act, data } = useBackend<CharacterProfileContext>();
 
-  if (data.fullref_toggle && data.fullref_url) return (<Section title="Full Reference" pb="12" textAlign="center"><img src={data.fullref_url} style={{ "max-width": "500px", "max-height": "900px" }} /></Section>);
+  if (data.fullref_toggle && data.fullref_url) return (<Section title="Full Reference" pb="12" textAlign="center"><img src={data.fullref_url} style={{ maxWidth: "500px", maxHeight: "900px" }} /></Section>);
   if (!data.fullref_toggle && data.headshot_url) return (<Section title="Headshot Reference" pb="12" textAlign="center"><img src={data.headshot_url} height="256px" width="256px" /></Section>);
   return (<Box />);
 };

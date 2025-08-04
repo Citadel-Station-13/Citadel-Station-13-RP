@@ -30,10 +30,10 @@ export const CharacterDirectory = (props) => {
   const [overlay, setOverlay] = useState(null);
 
   return (
-    <Window width={640} height={480} resizeable>
+    <Window width={640} height={480}>
       <Window.Content scrollable>
         {overlay && (
-          <ViewCharacter />
+          <ViewCharacter overlay={overlay} setOverlay={setOverlay} />
         ) || (
             <Fragment>
               <Section title="Controls">
@@ -64,7 +64,7 @@ export const CharacterDirectory = (props) => {
                   </LabeledList.Item>
                 </LabeledList>
               </Section>
-              <CharacterDirectoryList />
+              <CharacterDirectoryList overlay={overlay} setOverlay={setOverlay} />
             </Fragment>
           )}
       </Window.Content>
@@ -73,7 +73,7 @@ export const CharacterDirectory = (props) => {
 };
 
 const ViewCharacter = (props) => {
-  const [overlay, setOverlay] = useState(null);
+  const { overlay, setOverlay } = props;
 
   return (
     <Section title={overlay.name} buttons={
@@ -98,17 +98,17 @@ const ViewCharacter = (props) => {
         </Box>
       </Section>
       <Section title="Character Ad">
-        <Box style={{ "word-break": "break-all" }} preserveWhitespace>
+        <Box style={{ wordBreak: "break-all" }} preserveWhitespace>
           {overlay.character_ad || "Unset."}
         </Box>
       </Section>
       <Section title="OOC Notes">
-        <Box style={{ "word-break": "break-all" }} preserveWhitespace>
+        <Box style={{ wordBreak: "break-all" }} preserveWhitespace>
           {overlay.ooc_notes || "Unset."}
         </Box>
       </Section>
       <Section title="Flavor Text">
-        <Box style={{ "word-break": "break-all" }} preserveWhitespace>
+        <Box style={{ wordBreak: "break-all" }} preserveWhitespace>
           {overlay.flavor_text || "Unset."}
         </Box>
       </Section>
@@ -125,7 +125,7 @@ const CharacterDirectoryList = (props) => {
 
   const [sortId, _setSortId] = useState("name");
   const [sortOrder, _setSortOrder] = useState("name");
-  const [overlay, setOverlay] = useState(null);
+  const { overlay, setOverlay } = props;
 
   return (
     <Section title="Directory" buttons={
@@ -178,7 +178,7 @@ const SortButton = (props) => {
 
   // Hey, same keys mean same data~
   const [sortId, setSortId] = useState("name");
-  const [sortOrder, setSortOrder] = useState("name");
+  const [sortOrder, setSortOrder] = useState(true);
 
   return (
     <Table.Cell collapsing>

@@ -1,9 +1,9 @@
 
-import { BooleanLike } from "../../common/react";
 import { useBackend, useSharedState } from "../backend";
 import { Button, LabeledList, NoticeBox, NumberInput, ProgressBar, Section, Stack } from "tgui-core/components";
 import { Window } from "../layouts";
 import { ReagentContents, ReagentContentsData } from "./common/Reagents";
+import { BooleanLike } from "tgui-core/react";
 
 interface ReagentData {
   name: string;
@@ -46,7 +46,7 @@ interface DispenserMacro {
 
 export const ChemDispenser = (props) => {
   const { act, data } = useBackend<ChemDispenserData>();
-  const [macro, setMacro] = useSharedState<Array<[string, number]> | undefined>(context, 'recording', undefined);
+  const [macro, setMacro] = useSharedState<Array<[string, number]> | undefined>('recording', undefined);
   const isRecording = () => (macro !== undefined);
   const sortedMacros = data.macros.sort((a, b) => a.name.localeCompare(b.name));
   const sortedReagents = data.reagents.sort((a, b) => a.name.localeCompare(b.name));

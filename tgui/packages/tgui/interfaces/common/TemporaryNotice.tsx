@@ -27,14 +27,14 @@ export const TemporaryNotice = (_properties, context) => {
   const temporaryProperty = { [temp.style]: true };
   return (
     <NoticeBox {...temporaryProperty}>
-      <Box display="inline-block" verticalAlign="middle">
+      <Box style={{ display: "inline-block" }} verticalAlign="middle">
         {decode ? decodeHtmlEntities(temp.text) : temp.text}
       </Box>
       <Button
         icon="times-circle"
-        float="right"
+        style={{ float: "right" }}
         onClick={() => act('cleartemp')} />
-      <Box clear="both" />
+      <Box style={{ clear: "both" }} />
     </NoticeBox>
   );
 };
