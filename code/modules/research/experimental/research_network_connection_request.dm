@@ -30,7 +30,7 @@
 
 /datum/research_network_connection_request/proc/create_connection(datum/research_network/network) as /datum/research_network_connection
 	var/datum/research_network_connection/conn = new
-	conn.c_network_id = network.id
+	conn.c_network_id = network.network_id
 	conn.c_capability_flags = r_request_capabilities
 	return conn
 

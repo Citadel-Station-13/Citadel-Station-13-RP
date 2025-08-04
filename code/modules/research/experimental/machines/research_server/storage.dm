@@ -80,11 +80,13 @@
 
 #warn impl all
 
-/obj/machinery/research_server/storage/on_join_network(datum/research_network/network)
+/obj/machinery/research_server/storage/on_connection_active(datum/research_network_connection/conn)
 	. = ..()
 
-/obj/machinery/research_server/storage/on_leave_network(datum/research_network/network)
+
+/obj/machinery/research_server/storage/on_connection_inactive(datum/research_network_connection/conn)
 	. = ..()
+
 
 /obj/machinery/research_server/storage/proc/insert_slot(slot_idx, obj/item/inserting)
 
