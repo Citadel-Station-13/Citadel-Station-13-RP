@@ -235,9 +235,9 @@ export const Canvas = (props) => {
                     style={{
                       "width": "24px",
                       "height": "24px",
-                      "border-style": "solid",
-                      "border-color": element.is_selected ? "lightblue" : "black",
-                      "border-width": "2px",
+                      borderStyle: "solid",
+                      borderColor: element.is_selected ? "lightblue" : "black",
+                      borderWidth: "2px",
                     }}
                     onClick={() => act('select_color', {
                       selected_color: element.color,
@@ -260,7 +260,7 @@ export const Canvas = (props) => {
                 textColor="black"
                 textAlign="left"
                 backgroundColor="white"
-                style={{ "border-style": "inset" }}>
+                style={{ borderStyle: "inset" }}>
                 <Box mb={1} fontSize="18px" bold>{decodeHtmlEntities(data.name)}</Box>
                 <Box bold>
                   {data.author}

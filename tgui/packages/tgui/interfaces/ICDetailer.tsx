@@ -29,9 +29,9 @@ export const ICDetailer = (props) => {
               onClick={() => act("change_color", { color: key })}
               style={color_list[key] === detail_color ? {
                 border: "4px solid black",
-                "border-radius": 0,
+                borderRadius: 0,
               } : {
-                "border-radius": 0,
+                borderRadius: 0,
               }}
               backgroundColor={color_list[key]} />
           ))}

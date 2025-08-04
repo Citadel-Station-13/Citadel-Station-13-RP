@@ -74,7 +74,7 @@ export const CharacterProfile = (props) => {
             </Flex.Item>
             <Flex.Item Flex-direction="column" pl="10px" width="100%">
               <Collapsible title={combinedspeciesname} open>
-                <Section style={{ "white-space": "pre-line" }}>
+                <Section style={{ whiteSpace: "pre-line" }}>
                   {data.species_text}
                 </Section>
               </Collapsible>
@@ -84,7 +84,7 @@ export const CharacterProfile = (props) => {
                 </Section>
               </Collapsible>
               <Collapsible title="OOC Notes" open>
-                <Section style={{ "white-space": "pre-line" }}>
+                <Section style={{ whiteSpace: "pre-line" }}>
                   {data.oocnotes}
                 </Section>
               </Collapsible>
@@ -146,15 +146,15 @@ const CharacterProfileDescElement = (props) => {
 
   return (
     <Flex direction="column">
-      {data.flavortext_general !== "" ? (<Flex.Item style={{ "white-space": "pre-line" }}><Divider /><b>General</b><br />{data.flavortext_general}</Flex.Item>) : (<Box />)}
-      {data.flavortext_head !== "" ? (<Flex.Item style={{ "white-space": "pre-line" }}><Divider /><b>Head</b><br />{data.flavortext_head}</Flex.Item>) : (<Box />)}
-      {data.flavortext_face !== "" ? (<Flex.Item style={{ "white-space": "pre-line" }}><Divider /><b>Face</b><br />{data.flavortext_face}</Flex.Item>) : (<Box />)}
-      {data.flavortext_eyes !== "" ? (<Flex.Item style={{ "white-space": "pre-line" }}><Divider /><b>Eyes</b><br />{data.flavortext_eyes}</Flex.Item>) : (<Box />)}
-      {data.flavortext_torso !== "" ? (<Flex.Item style={{ "white-space": "pre-line" }}><Divider /><b>Torso</b><br />{data.flavortext_torso}</Flex.Item>) : (<Box />)}
-      {data.flavortext_arms !== "" ? (<Flex.Item style={{ "white-space": "pre-line" }}><Divider /><b>Arms</b><br />{data.flavortext_arms}</Flex.Item>) : (<Box />)}
-      {data.flavortext_hands !== "" ? (<Flex.Item style={{ "white-space": "pre-line" }}><Divider /><b>Hands</b><br />{data.flavortext_hands}</Flex.Item>) : (<Box />)}
-      {data.flavortext_legs !== "" ? (<Flex.Item style={{ "white-space": "pre-line" }}><Divider /><b>Legs</b><br />{data.flavortext_legs}</Flex.Item>) : (<Box />)}
-      {data.flavortext_feet !== "" ? (<Flex.Item style={{ "white-space": "pre-line" }}><Divider /><b>Feet</b><br />{data.flavortext_feet}</Flex.Item>) : (<Box />)}
+      {data.flavortext_general !== "" ? (<Flex.Item style={{ whiteSpace: "pre-line" }}><Divider /><b>General</b><br />{data.flavortext_general}</Flex.Item>) : (<Box />)}
+      {data.flavortext_head !== "" ? (<Flex.Item style={{ whiteSpace: "pre-line" }}><Divider /><b>Head</b><br />{data.flavortext_head}</Flex.Item>) : (<Box />)}
+      {data.flavortext_face !== "" ? (<Flex.Item style={{ whiteSpace: "pre-line" }}><Divider /><b>Face</b><br />{data.flavortext_face}</Flex.Item>) : (<Box />)}
+      {data.flavortext_eyes !== "" ? (<Flex.Item style={{ whiteSpace: "pre-line" }}><Divider /><b>Eyes</b><br />{data.flavortext_eyes}</Flex.Item>) : (<Box />)}
+      {data.flavortext_torso !== "" ? (<Flex.Item style={{ whiteSpace: "pre-line" }}><Divider /><b>Torso</b><br />{data.flavortext_torso}</Flex.Item>) : (<Box />)}
+      {data.flavortext_arms !== "" ? (<Flex.Item style={{ whiteSpace: "pre-line" }}><Divider /><b>Arms</b><br />{data.flavortext_arms}</Flex.Item>) : (<Box />)}
+      {data.flavortext_hands !== "" ? (<Flex.Item style={{ whiteSpace: "pre-line" }}><Divider /><b>Hands</b><br />{data.flavortext_hands}</Flex.Item>) : (<Box />)}
+      {data.flavortext_legs !== "" ? (<Flex.Item style={{ whiteSpace: "pre-line" }}><Divider /><b>Legs</b><br />{data.flavortext_legs}</Flex.Item>) : (<Box />)}
+      {data.flavortext_feet !== "" ? (<Flex.Item style={{ whiteSpace: "pre-line" }}><Divider /><b>Feet</b><br />{data.flavortext_feet}</Flex.Item>) : (<Box />)}
     </Flex>
   );
 };

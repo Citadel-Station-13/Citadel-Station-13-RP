@@ -49,7 +49,7 @@ export const OvermapEnginesContent = (props) => {
           </LabeledList.Item>
         </LabeledList>
       </Section>
-      <Section title="Engines" height="340px" style={{ "overflow-y": "auto" }}>
+      <Section title="Engines" height="340px" style={{ overflowY: "auto" }}>
         {engines_info.map((engine, i) => (
           <Flex spacing={1} mt={i !== 0 && -1} key={i}>
             <Flex.Item basis="80%">

@@ -48,7 +48,7 @@ export const GamePreferenceToggleScreen = (props: GamePreferenceToggleScreenProp
           )
         ).map(([category, keys]) => (
           <Stack.Item key={category}>
-            <h2 style={{ "text-align": "center" }}>{category}</h2>
+            <h2 style={{ textAlign: "center" }}>{category}</h2>
             <hr />
             <Table>
               {keys.map((key) => {

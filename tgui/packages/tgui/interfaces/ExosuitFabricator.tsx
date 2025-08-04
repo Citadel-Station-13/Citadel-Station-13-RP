@@ -348,7 +348,7 @@ export const Materials = (props) => {
           {!disableEject && (
             <Box
               mt={1}
-              style={{ "text-align": "center" }}>
+              style={{ textAlign: "center" }}>
               <EjectMaterial
                 material={material} />
             </Box>
@@ -399,7 +399,7 @@ const MaterialAmount = (props) => {
       <Flex.Item>
         <Box
           textColor={color}
-          style={{ "text-align": "center" }}>
+          style={{ textAlign: "center" }}>
           {amountDisplay}
         </Box>
       </Flex.Item>
@@ -742,7 +742,7 @@ const QueueMaterials = (props) => {
           {(!!missingMaterials[material] && (
             <Box
               textColor="bad"
-              style={{ "text-align": "center" }}>
+              style={{ textAlign: "center" }}>
               {formatMoney(missingMaterials[material])}
             </Box>
           ))}

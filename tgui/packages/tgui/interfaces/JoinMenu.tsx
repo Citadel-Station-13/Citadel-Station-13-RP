@@ -105,7 +105,7 @@ export const JoinMenu = (props) => {
                             onClick={() => act('join', { id: role.id, type: "ghostrole" })} />
                         </>
                       } headerProps={{
-                        style: { "padding-left": "5%" },
+                        style: { paddingLeft: "5%" },
                       }}>
                         <Box>
                           {role.desc}
@@ -152,12 +152,12 @@ const JoinFaction = (props: JoinFactionProps) => {
           return (
             <Collapsible color="transparent" key={depName} title={depName}
               headerProps={{
-                style: { "margin-left": "2.5%" },
+                style: { marginLeft: "2.5%" },
               }}>
               {
                 jobs.map((job) => {
                   return (
-                    <Collapsible color="transparent" headerProps={{ style: { "margin-left": "7.5%" } }}
+                    <Collapsible color="transparent" headerProps={{ style: { marginLeft: "7.5%" } }}
                       key={job.id} title={job.name} buttons={
                         <>{(job.slots === -1) ? 'Unlimited' : `${job.slots} left`} <Icon name="user-friends" />
                           <Button.Confirm
@@ -167,7 +167,7 @@ const JoinFaction = (props: JoinFactionProps) => {
                             onClick={() => act('join', { id: job.id, type: "job" })} />
                         </>
                       }>
-                      <Section style={{ "padding-left": "5%", "padding-right": "5%" }}>
+                      <Section style={{ paddingLeft: "5%", paddingRight: "5%" }}>
                         {job.desc}
                       </Section>
                     </Collapsible>
@@ -194,7 +194,7 @@ const sortWeight = {
   civilian: 50,
   misc: 40,
   miscellaneous: 40,
-  "off-duty": 30,
+  offDuty: 30,
   silicons: 20,
   synthetics: 20,
   trade: -20,

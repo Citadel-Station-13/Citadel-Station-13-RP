@@ -117,7 +117,7 @@ export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenPr
             <Stack>
               <Stack.Item grow>
                 <Tooltip content={HOTKEY_MODE_DESCRIPTION}>
-                  <Box width="100%" height="100%" style={{ display: "flex", "align-content": "center" }}>
+                  <Box width="100%" height="100%" style={{ display: "flex", alignContent: "center" }}>
                     <Box>
                       Hotkey Mode
                     </Box>
@@ -140,9 +140,9 @@ export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenPr
             ([c1, k1], [c2, k2]) => c1.localeCompare(c2)
           ).map(([category, keybinds]) => (
             <Stack.Item key={category}>
-              <h2 style={{ "text-align": "center" }}>{category}</h2>
+              <h2 style={{ textAlign: "center" }}>{category}</h2>
               <Table style={{
-                "border-bottom": "1px solid #999999",
+                borderBottom: "1px solid #999999",
               }}>
                 {keybinds.map((keybind) => {
                   let boundKeys: string[] = keysByKeybind[keybind.id] || [];
@@ -150,7 +150,7 @@ export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenPr
                     <Table.Row key={keybind.id}
                       height={KEYBIND_ROW_HEIGHT_I_FUCKING_HATE_TABLES_WEBVIEW_WHEN}
                       style={{
-                        "border-top": "1px solid #999999",
+                        borderTop: "1px solid #999999",
                       }}>
                       <Table.Cell width="40%" maxWidth="40%">
                         <Tooltip content={keybind.desc}>
@@ -158,12 +158,12 @@ export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenPr
                             height={KEYBIND_ROW_HEIGHT_I_FUCKING_HATE_TABLES_WEBVIEW_WHEN}
                             style={{
                               display: "flex",
-                              "align-items": "center",
+                              alignItems: "center",
                               margin: "0 0",
                               padding: "0 0",
                             }}>
                             <Box bold overflowX="hidden" style={{
-                              "white-space": "nowrap",
+                              whiteSpace: "nowrap",
                             }}>
                               {keybind.name}
                             </Box>
@@ -200,8 +200,8 @@ export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenPr
                               }}
                               style={{
                                 display: "flex",
-                                "align-items": "center",
-                                "justify-content": "center",
+                                alignItems: "center",
+                                justifyContent: "center",
                                 margin: "0 0",
                                 padding: "0, 0",
                               }}>

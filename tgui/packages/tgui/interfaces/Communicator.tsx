@@ -118,7 +118,7 @@ const VideoComm = (props) => {
           "position": "absolute",
           "right": "5px",
           "bottom": "50px",
-          "z-index": 1,
+          zIndex: 1,
         }}>
         <Section p={0} m={0}>
           <Flex justify="space-between" spacing={1}>
@@ -609,7 +609,7 @@ const ContactsTab = (props) => {
           {knownDevices.map(device => (
             <Table.Row key={device.address}>
               <Table.Cell color="label" style={{
-                "word-break": "break-all",
+                wordBreak: "break-all",
               }}>
                 {decodeHtmlEntities(device.name)}
               </Table.Cell>
@@ -670,7 +670,7 @@ const MessagingTab = (props) => {
           {imContacts.map(device => (
             <Table.Row key={device.address}>
               <Table.Cell color="label" style={{
-                "word-break": "break-all",
+                wordBreak: "break-all",
               }}>
                 {decodeHtmlEntities(device.name)}:
               </Table.Cell>
@@ -754,8 +754,8 @@ const MessagingThreadTab = (props) => {
           <Box
             inline
             style={{
-              "white-space": "nowrap",
-              "overflow-x": "hidden",
+              whiteSpace: "nowrap",
+              overflowX: "hidden",
             }}
             width="90%">
             {enforceLengthLimit("Conversation with ", decodeHtmlEntities(targetAddressName), 30)}
@@ -773,7 +773,7 @@ const MessagingThreadTab = (props) => {
         stretchContents>
         <Section style={{
           "height": "95%",
-          "overflow-y": "auto",
+          overflowY: "auto",
         }}>
           {imList.map((im, i) => (
             <Box
@@ -797,8 +797,8 @@ const MessagingThreadTab = (props) => {
         <Box
           inline
           style={{
-            "white-space": "nowrap",
-            "overflow-x": "hidden",
+            whiteSpace: "nowrap",
+            overflowX: "hidden",
           }}
           width="100%">
           {enforceLengthLimit("Conversation with ", decodeHtmlEntities(targetAddressName), 30)}
@@ -816,7 +816,7 @@ const MessagingThreadTab = (props) => {
       stretchContents>
       <Section style={{
         "height": "95%",
-        "overflow-y": "auto",
+        overflowY: "auto",
       }}>
         {imList.map((im, i, filterArr) => (
           <Box
@@ -969,8 +969,8 @@ const NoteTab = (props) => {
         content="Edit Notes" />
     }>
       <Section color="average" width="100%" height="100%" style={{
-        "word-break": "break-all",
-        "overflow-y": "auto",
+        wordBreak: "break-all",
+        overflowY: "auto",
       }}>
         {note}
       </Section>

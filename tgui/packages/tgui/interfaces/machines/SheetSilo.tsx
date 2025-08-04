@@ -32,7 +32,7 @@ export const SheetSilo = (props) => {
               <Stack.Item key={`${k}-${dropAmounts[k]}`}>
                 <Stack>
                   <Stack.Item grow={1} style={{ display: "flex", border: "1px solid gray" }} pl={1}>
-                    <Box style={{ "align-self": "center" }} bold>
+                    <Box style={{ alignSelf: "center" }} bold>
                       {data.materialContext.materials[k]?.name || 'UNKNOWN'} - {v}
                     </Box>
                   </Stack.Item>

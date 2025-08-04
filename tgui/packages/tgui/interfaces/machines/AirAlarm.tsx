@@ -438,7 +438,7 @@ const AirAlarmThresholdScreenWrapped = (props) => {
   return (
     <table
       className="LabeledList"
-      style={{ width: '100%', "margin-left": "2.5px", "margin-right": "2.5px" }}>
+      style={{ width: '100%', marginLeft: "2.5px", marginRight: "2.5px" }}>
       <thead>
         <tr>
           <td />

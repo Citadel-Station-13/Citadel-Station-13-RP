@@ -490,11 +490,11 @@ const LatheDesign = (props: LatheDesignProps) => {
                 <Table.Cell>
                   <div style={{
                     "display": "inline-block",
-                    "padding-left": "0.5em",
+                    paddingLeft: "0.5em",
                     "width": "base em(100px)",
-                    "line-height": "base.em(17px)",
-                    "font-family": "Verdana, sans-serif",
-                    "font-size": "base.em(12px)",
+                    lineHeight: "base.em(17px)",
+                    fontFamily: "Verdana, sans-serif",
+                    fontSize: "base.em(12px)",
                   }}>
                     {data.materialsContext.materials[id].name}
                   </div>

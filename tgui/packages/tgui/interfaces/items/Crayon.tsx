@@ -71,7 +71,7 @@ export const Crayon = (props) => {
                     {data.anyColor ? (
                       <Stack>
                         <Stack.Item>
-                          <Box style={{ position: "relative", top: "5px", "margin-top": "-3px" }}
+                          <Box style={{ position: "relative", top: "5px", marginTop: "-3px" }}
                             backgroundColor={data.graffitiPickedColor} width="13.5px" height="13.5px" />
                         </Stack.Item>
                         <Stack.Item>
@@ -83,7 +83,7 @@ export const Crayon = (props) => {
                         {data.colorList?.map((color) => (
                           <Stack.Item key={color}>
                             <Button content={
-                              <Box style={{ position: "relative", top: "5px", "margin-top": "-3px" }}
+                              <Box style={{ position: "relative", top: "5px", marginTop: "-3px" }}
                                 backgroundColor={data.graffitiPickedColor} width="13.5px" height="13.5px" />
                             } onClick={() => act('color', { color: color })} />
                           </Stack.Item>

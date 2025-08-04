@@ -446,7 +446,7 @@ const ResearchConsoleBuildMenu = (props) => {
       {designs && designs.length ? designs.map(design => (
         <Fragment key={design.id}>
           <Flex width="100%" justify="space-between">
-            <Flex.Item width="40%" style={{ "word-wrap": "break-all" }}>
+            <Flex.Item width="40%" style={{ wordWrap: "break-all" }}>
               {design.name}
             </Flex.Item>
             <Flex.Item width="15%" textAlign="center">
@@ -466,7 +466,7 @@ const ResearchConsoleBuildMenu = (props) => {
                 </Button>
               )}
             </Flex.Item>
-            <Flex.Item width="45%" style={{ "word-wrap": "break-all" }}>
+            <Flex.Item width="45%" style={{ wordWrap: "break-all" }}>
               <Box inline color="label">
                 {design.mat_list.join(" ")}
               </Box>

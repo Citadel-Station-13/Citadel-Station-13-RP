@@ -15,7 +15,7 @@ export const MechaControlConsole = (props) => {
       <Window.Content scrollable>
         {stored_data.length && (
           <Modal>
-            <Section height="400px" style={{ "overflow-y": "auto" }} title="Log" buttons={
+            <Section height="400px" style={{ overflowY: "auto" }} title="Log" buttons={
               <Button
                 icon="window-close"
                 onClick={() => act("clear_log")} />
