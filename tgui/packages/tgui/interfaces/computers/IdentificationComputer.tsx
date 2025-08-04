@@ -3,7 +3,7 @@
  * @license MIT
  */
 
-import { BooleanLike } from "common/react";
+import { BooleanLike } from "tgui-core/react";
 import { useBackend, useLocalState } from "../../backend";
 import { Button, NoticeBox, Section, Tabs } from "tgui-core/components";
 import { Module } from "tgui-core/components/Module";

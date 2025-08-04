@@ -8,7 +8,7 @@
  * @file
  * @license MIT
  */
-import { BooleanLike } from "common/react";
+import { BooleanLike } from "tgui-core/react";
 import { ReactNode } from "react";
 import { getModuleData, useBackend, useLocalState } from "../../backend";
 import { Button, Flex, Section, Stack, Tooltip } from "tgui-core/components";

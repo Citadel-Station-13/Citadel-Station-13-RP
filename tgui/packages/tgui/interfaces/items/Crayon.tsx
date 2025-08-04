@@ -2,7 +2,7 @@
  * @file
  * @license MIT
  */
-import { BooleanLike } from "common/react";
+import { BooleanLike } from "tgui-core/react";
 import { useBackend, useLocalState } from "../../backend";
 import { Box, Button, Dimmer, Flex, Icon, LabeledList, Modal, NumberInput, Section, Stack } from "tgui-core/components";
 import { Sprite } from "tgui-core/components/Sprite";

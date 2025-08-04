@@ -2,7 +2,7 @@
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
 import { round } from "common/math";
-import { BooleanLike } from "common/react";
+import { BooleanLike } from "tgui-core/react";
 import { useBackend } from "../../backend";
 import { Button, LabeledList, NumberInput } from "tgui-core/components";
 import { Section, SectionProps } from "tgui-core/components/Section";

@@ -1,7 +1,7 @@
-import { Color } from '../../common/colorLegacy';
 import { useBackend, useSharedState } from '../backend';
 import { AnimatedNumber, Box, Button, ColorBox, LabeledList, NumberInput, Section, Table } from 'tgui-core/components';
 import { Window } from '../layouts';
+import { Color } from 'tgui-core/color';
 
 type ChemMasterData = {
   // Generic Data

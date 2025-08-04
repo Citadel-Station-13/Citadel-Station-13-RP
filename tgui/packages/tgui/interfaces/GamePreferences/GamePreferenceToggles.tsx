@@ -2,8 +2,8 @@
  * @file
  * @license MIT
  */
-import { BooleanLike } from "common/react";
 import { Button, Section, Stack, Table } from "tgui-core/components";
+import { BooleanLike } from "tgui-core/react";
 
 export interface GamePreferenceTogglesMiddleware {
   readonly toggles: Record<string, GamePreferenceToggleSchema>;

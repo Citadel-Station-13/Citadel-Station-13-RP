@@ -1,4 +1,4 @@
-import { BooleanLike } from "common/react";
+import { BooleanLike } from "tgui-core/react";
 import { capitalize } from "common/string";
 import { Fragment } from "react";
 import { useBackend } from "../backend";

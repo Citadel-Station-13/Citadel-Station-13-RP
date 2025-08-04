@@ -2,7 +2,7 @@
  * @file
  * @license MIT
  */
-import { BooleanLike } from "common/react";
+import { BooleanLike } from "tgui-core/react";
 import { ReactNode } from "react";
 import { Button, Collapsible, ColorBox, Dropdown, Input, NumberInput, Section, Stack, Tooltip } from "tgui-core/components";
 import { ByondAtomColor, ByondColorString, ColorPicker } from "../common/Color";
@@ -121,7 +121,7 @@ const NumberEntry = (props: {
   return (
     <NumberInput fluid value={props.value}
       minValue={props.schema.minValue || -Infinity} maxValue={props.schema.maxValue || Infinity}
-      step={props.schema.roundTo || undefined} onChange={(val) => props.setValue(val)} />
+      step={props.schema.roundTo || 1} onChange={(val) => props.setValue(val)} />
   );
 };
 

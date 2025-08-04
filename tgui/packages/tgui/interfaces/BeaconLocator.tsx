@@ -58,7 +58,7 @@ export const BeaconLocator = (props) => {
                 value={rawfreq / 10}
                 format={value => toFixed(value, 1)}
                 onDrag={(value) => act('setFrequency', {
-                  freq: round(value * 10),
+                  freq: round(value * 10, 1),
                 })} />
             </LabeledList.Item>
           </LabeledList>

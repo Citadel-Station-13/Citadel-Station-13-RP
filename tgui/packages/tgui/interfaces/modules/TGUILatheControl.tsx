@@ -5,7 +5,7 @@
  * @license MIT
  */
 
-import { BooleanLike } from "common/react";
+import { BooleanLike } from "tgui-core/react";
 import { ModuleData, useLocalState, useModule } from "../../backend";
 import { Box, Button, Collapsible, Dropdown, Input, LabeledList, NoticeBox, NumberInput, ProgressBar, Stack, Table, Tabs } from "tgui-core/components";
 import { Section, SectionProps } from "tgui-core/components/Section";
