@@ -165,7 +165,7 @@ const canBuyItem = (item, data) => {
   return true;
 };
 
-const BiogeneratorItemsCategory = (properties, context) => {
+const BiogeneratorItemsCategory = (properties) => {
   const { act, data } = useBackend<any>();
   const {
     title,

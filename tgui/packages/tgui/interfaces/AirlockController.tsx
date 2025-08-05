@@ -16,7 +16,7 @@ type AirlockStatus = {
   color: string;
 };
 
-export const AirlockController = (_, context) => {
+export const AirlockController = (_) => {
   const { data } = useBackend<AirlockControllerData>();
   const { airlockState, pumpStatus, interiorStatus, exteriorStatus } = data;
   const currentStatus: AirlockStatus = getAirlockStatus(airlockState);

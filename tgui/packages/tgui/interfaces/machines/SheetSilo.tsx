@@ -43,6 +43,7 @@ export const SheetSilo = (props) => {
                   </Stack.Item>
                   <Stack.Item>
                     <NumberInput width={2.5} value={dropAmounts[k] || 1}
+                      minValue={0} maxValue={200} step={1}
                       onChange={(val) => setDropAmount(k, Math.floor(val))} />
                   </Stack.Item>
                   <Stack.Item>

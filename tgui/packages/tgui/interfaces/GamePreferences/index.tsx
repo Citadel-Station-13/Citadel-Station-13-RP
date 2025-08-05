@@ -9,7 +9,7 @@
  * @license MIT
  */
 import { BooleanLike } from "tgui-core/react";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import { getModuleData, useBackend, useLocalState } from "../../backend";
 import { Button, Flex, Section, Stack, Tooltip } from "tgui-core/components";
 import { Window } from "../../layouts";
@@ -66,7 +66,7 @@ const GamePreferencesTab = (props: {
   readonly onClick?: () => void;
   readonly name: string;
   readonly selected: BooleanLike;
-}, context) => {
+}) => {
   return (
     <Button color="transparent"
       fluid selected={props.selected} onClick={props.onClick} textAlign="center">{props.name}

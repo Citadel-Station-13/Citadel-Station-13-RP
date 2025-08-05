@@ -51,7 +51,6 @@ export const MaterialProcessor = (props) => {
 
   return (
     <Window
-      resizable
       title="Material Processor Console"
       width={380}
       height={550}>

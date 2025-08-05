@@ -3,9 +3,9 @@
 
 import { useBackend } from "../../backend";
 import { LabeledList, Section } from "tgui-core/components";
-import { SectionProps } from "tgui-core/components/Section";
 import { AtmosFilterList, AtmosGasGroupFlags, AtmosGasIDs, GasContext } from "../common/Atmos";
 import { AtmosPortable } from "../common/AtmosPortable";
+import { SectionProps } from "../../components";
 
 interface AtmosPortableScrubberControlProps extends SectionProps {
   readonly atmosContext: GasContext;

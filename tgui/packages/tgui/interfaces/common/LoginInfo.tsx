@@ -9,7 +9,7 @@ import { Box, Button, NoticeBox } from 'tgui-core/components';
  * @param {object} _properties
  * @param {object} context
  */
-export const LoginInfo = (_properties, context) => {
+export const LoginInfo = (_properties) => {
   const { act, data } = useBackend<any>();
   const {
     authenticated,

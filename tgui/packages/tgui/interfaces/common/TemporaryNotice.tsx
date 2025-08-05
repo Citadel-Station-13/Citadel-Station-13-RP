@@ -15,7 +15,7 @@ import { Box, Button, NoticeBox } from "tgui-core/components";
  * @param {object} _properties
  * @param {object} context
  */
-export const TemporaryNotice = (_properties, context) => {
+export const TemporaryNotice = (_properties) => {
   const {
     decode,
   } = _properties;

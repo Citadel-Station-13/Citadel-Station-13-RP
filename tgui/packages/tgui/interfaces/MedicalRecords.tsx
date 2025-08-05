@@ -22,7 +22,7 @@ const doEdit = (context, field) => {
   });
 };
 
-const virusModalBodyOverride = (modal, context) => {
+const virusModalBodyOverride = (modal) => {
   const { act } = useBackend<any>();
   const virus = modal.args;
   return (
@@ -69,7 +69,7 @@ const virusModalBodyOverride = (modal, context) => {
   );
 };
 
-export const MedicalRecords = (_properties, context) => {
+export const MedicalRecords = (_properties) => {
   const { data } = useBackend<any>();
   const {
     authenticated,
@@ -119,7 +119,7 @@ export const MedicalRecords = (_properties, context) => {
   );
 };
 
-const MedicalRecordsList = (_properties, context) => {
+const MedicalRecordsList = (_properties) => {
   const { act, data } = useBackend<any>();
   const {
     records,
@@ -146,7 +146,7 @@ const MedicalRecordsList = (_properties, context) => {
   );
 };
 
-const MedicalRecordsMaintenance = (_properties, context) => {
+const MedicalRecordsMaintenance = (_properties) => {
   const { act } = useBackend<any>();
   return (
     <Fragment>
@@ -170,7 +170,7 @@ const MedicalRecordsMaintenance = (_properties, context) => {
   );
 };
 
-const MedicalRecordsView = (_properties, context) => {
+const MedicalRecordsView = (_properties) => {
   const { act, data } = useBackend<any>();
   const {
     medical,
@@ -211,7 +211,7 @@ const MedicalRecordsView = (_properties, context) => {
   );
 };
 
-const MedicalRecordsViewGeneral = (_properties, context) => {
+const MedicalRecordsViewGeneral = (_properties) => {
   const { data } = useBackend<any>();
   const {
     general,
@@ -268,7 +268,7 @@ const MedicalRecordsViewGeneral = (_properties, context) => {
   );
 };
 
-const MedicalRecordsViewMedical = (_properties, context) => {
+const MedicalRecordsViewMedical = (_properties) => {
   const { act, data } = useBackend<any>();
   const {
     medical,
@@ -340,7 +340,7 @@ const MedicalRecordsViewMedical = (_properties, context) => {
   );
 };
 
-const MedicalRecordsViruses = (_properties, context) => {
+const MedicalRecordsViruses = (_properties) => {
   const { act, data } = useBackend<any>();
   const {
     virus,
@@ -359,7 +359,7 @@ const MedicalRecordsViruses = (_properties, context) => {
   ));
 };
 
-const MedicalRecordsMedibots = (_properties, context) => {
+const MedicalRecordsMedibots = (_properties) => {
   const { data } = useBackend<any>();
   const {
     medibots,
@@ -406,7 +406,7 @@ const MedicalRecordsMedibots = (_properties, context) => {
   ));
 };
 
-const MedicalRecordsNavigation = (_properties, context) => {
+const MedicalRecordsNavigation = (_properties) => {
   const { act, data } = useBackend<any>();
   const {
     screen,

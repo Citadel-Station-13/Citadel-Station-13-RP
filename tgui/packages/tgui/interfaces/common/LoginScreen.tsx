@@ -23,7 +23,7 @@ import { FullscreenNotice } from './FullscreenNotice';
  * @param {object} _properties
  * @param {object} context
  */
-export const LoginScreen = (_properties, context) => {
+export const LoginScreen = (_properties) => {
   const { act, data } = useBackend<any>();
   const {
     scan,
