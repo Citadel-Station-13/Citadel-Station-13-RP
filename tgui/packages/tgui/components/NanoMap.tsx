@@ -1,5 +1,5 @@
-import { Component } from 'inferno';
-import { Box, Button, Icon, Tooltip, LabeledList, Slider } from '.';
+import { Component } from 'react';
+import { Box, Button, Icon, Tooltip, LabeledList, Slider } from 'tgui-core/components';
 import { useBackend } from "../backend";
 
 const pauseEvent = e => {
@@ -12,7 +12,17 @@ const pauseEvent = e => {
 
 const zoomScale = 280;
 
-export class NanoMap extends Component {
+export class LegacyNanoMap extends Component<any, any> {
+  handleDragStart: any;
+  handleDragMove: any;
+  handleDragEnd: any;
+  handleOnClick: any;
+  handleZoom: any;
+  ref: any;
+
+  static Zoomer: any;
+  static Marker: any;
+
   constructor(props) {
     super(props);
 
@@ -73,12 +83,12 @@ export class NanoMap extends Component {
     };
 
     this.handleOnClick = e => {
-      let byondX = (e.offsetX/this.state.zoom)/zoomScale;
-      let byondY = 1-(e.offsetY/this.state.zoom)/zoomScale;
+      let byondX = (e.offsetX / this.state.zoom) / zoomScale;
+      let byondY = 1 - (e.offsetY / this.state.zoom) / zoomScale;
 
       e.byondX = byondX;
       e.byondY = byondY;
-      if (typeof(this.props.onClick) === "function") {
+      if (typeof (this.props.onClick) === "function") {
         this.props.onClick(e);
       }
     };
@@ -109,7 +119,7 @@ export class NanoMap extends Component {
   }
 
   render() {
-    const { config } = useBackend(this.context);
+    const { config } = useBackend();
     const { dragging, offsetX, offsetY, zoom = 1 } = this.state;
     const { children } = this.props;
 
@@ -122,18 +132,20 @@ export class NanoMap extends Component {
       marginTop: offsetY + "px",
       marginLeft: offsetX + "px",
       "overflow": "hidden",
-      "position": "relative",
       backgroundImage: "url(" + mapUrl + ")",
       backgroundSize: "cover",
       backgroundRepeat: "no-repeat",
-      textAlign: "center",
       "cursor": dragging ? "move" : "auto",
     };
 
     return (
       <Box className="NanoMap__container">
         <Box
-          style={newStyle}
+          style={{
+            ...newStyle,
+            position: "relative",
+            textAlign: "center",
+          }}
           textAlign="center"
           onMouseDown={this.handleDragStart}
           onClick={this.handleOnClick}>
@@ -147,7 +159,7 @@ export class NanoMap extends Component {
   }
 }
 
-const NanoMapMarker = (props, context) => {
+const NanoMapMarker = (props) => {
   const {
     x,
     y,
@@ -187,18 +199,18 @@ const NanoMapMarker = (props, context) => {
   );
 };
 
-NanoMap.Marker = NanoMapMarker;
+LegacyNanoMap.Marker = NanoMapMarker;
 
-const NanoMapZoomer = (props, context) => {
-  const { act, config, data } = useBackend(context);
+const NanoMapZoomer = (props) => {
+  const { act, config, data } = useBackend<any>();
   return (
     <Box className="NanoMap__zoomer">
       <LabeledList>
         <LabeledList.Item label="Zoom">
           <Slider
-            minValue="1"
-            maxValue="8"
-            stepPixelSize="10"
+            minValue={1}
+            maxValue={8}
+            stepPixelSize={10}
             format={v => v + "x"}
             value={props.zoom}
             onDrag={(e, v) => props.onZoom(e, v)}
@@ -222,4 +234,4 @@ const NanoMapZoomer = (props, context) => {
   );
 };
 
-NanoMap.Zoomer = NanoMapZoomer;
+LegacyNanoMap.Zoomer = NanoMapZoomer;

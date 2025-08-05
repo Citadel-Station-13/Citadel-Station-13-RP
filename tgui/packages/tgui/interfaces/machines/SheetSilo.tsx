@@ -2,6 +2,7 @@ import { useBackend, useLocalState } from "../../backend";
 import { Box, Button, NumberInput, Section, Stack } from "tgui-core/components";
 import { Window } from "../../layouts";
 import { MaterialsContext } from "../common/Materials";
+import { useState } from "react";
 
 interface SheetSiloData {
   materialContext: MaterialsContext;

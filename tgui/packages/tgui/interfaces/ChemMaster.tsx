@@ -198,77 +198,61 @@ const ChemicalBufferEntry = (props) => {
       </Table.Cell>
       <Table.Cell collapsing>
         <Button
-          content="1"
           onClick={() =>
             act('transfer', {
               id: chemical.id,
               amount: 1,
               to: transferTo,
-            })}
-        />
+            })}>1</Button>
         <Button
-          content="5"
           onClick={() =>
             act('transfer', {
               id: chemical.id,
               amount: 5,
               to: transferTo,
-            })}
-        />
+            })}>5</Button>
         <Button
-          content="10"
           onClick={() =>
             act('transfer', {
               id: chemical.id,
               amount: 10,
               to: transferTo,
-            })}
-        />
+            })}>10</Button>
         <Button
-          content="30"
           onClick={() =>
             act('transfer', {
               id: chemical.id,
               amount: 30,
               to: transferTo,
-            })}
-        />
+            })}>30</Button>
         <Button
-          content="60"
           onClick={() =>
             act('transfer', {
               id: chemical.id,
               amount: 60,
               to: transferTo,
-            })}
-        />
+            })}>60</Button>
         <Button
-          content="All"
           onClick={() =>
             act('transfer', {
               id: chemical.id,
               amount: 1000,
               to: transferTo,
-            })}
-        />
+            })}>All</Button>
         <Button
           icon="ellipsis-h"
-          title="Custom amount"
           onClick={() =>
             act('transfer', {
               id: chemical.id,
               amount: -1,
               to: transferTo,
-            })}
-        />
+            })}>Custom Amount</Button>
         <Button
           icon="question"
-          title="Analyze"
           onClick={() =>
             act('analyze', {
               id: chemical.id,
-            })}
-        />
+            })}>Analyze</Button>
       </Table.Cell>
     </Table.Row>
   );
@@ -301,12 +285,10 @@ const PackagingControls = (props) => {
   const { act, data } = useBackend<ChemMasterData>();
   const [pillAmount, setPillAmount] = useSharedState('pillAmount', 1);
   const [patchAmount, setPatchAmount] = useSharedState(
-    context,
     'patchAmount',
     1
   );
   const [bottleAmount, setBottleAmount] = useSharedState(
-    context,
     'bottleAmount',
     1
   );
@@ -517,8 +499,8 @@ const AnalysisResults = (props) => {
         <LabeledList.Item label="State">{analyzeVars.state}</LabeledList.Item>
         {/* <LabeledList.Item label="pH">{analyzeVars.ph}</LabeledList.Item> */}
         <LabeledList.Item label="Color">
-          <ColorBox color={analyzeVars.color} mr={1} />
-          {analyzeVars.color}
+          <ColorBox color={analyzeVars.color.toString()} mr={1} />
+          {analyzeVars.color.toString()}
         </LabeledList.Item>
         <LabeledList.Item label="Description">
           {analyzeVars.description}

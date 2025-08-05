@@ -66,7 +66,7 @@ const BiogeneratorItems = (props) => {
     descending,
     _setDescending,
   ] = useState(false);
-  const searcher = createSearch(searchText, item => {
+  const searcher = createSearch(searchText, (item: any) => {
     return item[0];
   });
 

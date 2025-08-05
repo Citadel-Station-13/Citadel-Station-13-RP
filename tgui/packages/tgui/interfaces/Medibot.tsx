@@ -67,6 +67,7 @@ export const Medibot = (props) => {
             <LabeledList>
               <LabeledList.Item label="Healing Threshold">
                 <NumberInput
+                  step={0.01}
                   fluid
                   minValue={0}
                   maxValue={heal_threshold_max}
@@ -75,6 +76,7 @@ export const Medibot = (props) => {
               </LabeledList.Item>
               <LabeledList.Item label="Injection Amount">
                 <NumberInput
+                  step={0.01}
                   fluid
                   minValue={injection_amount_min}
                   maxValue={injection_amount_max}

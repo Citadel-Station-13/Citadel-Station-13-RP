@@ -6,6 +6,7 @@ import { BooleanLike } from "tgui-core/react";
 import { useBackend, useLocalState } from "../../backend";
 import { Button, LabeledList, NoticeBox, Section, Stack, Table, Tabs } from "tgui-core/components";
 import { Window } from "../../layouts";
+import { useState } from "react";
 
 enum HolopadCalling {
   None = "none",
@@ -96,7 +97,7 @@ export const Holopad = (props) => {
                 ? (data.isAIProjecting ? "Stop Projecting" : "Start Projecting")
                 : "AI Disabled"}
               disabled={!data.aiEnabled}
-              icon={data.aiEnabled && (data.isAIProjecting ? `stop` : `phone`)}
+              icon={data.aiEnabled ? (data.isAIProjecting ? `stop` : `phone`) : undefined}
               selected={data.aiEnabled && data.isAIProjecting}
               onClick={() => act('ai_project', { mode: !data.isAIProjecting })} />
           ) : (

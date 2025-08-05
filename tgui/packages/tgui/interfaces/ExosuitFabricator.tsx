@@ -119,7 +119,7 @@ const searchFilter = (search, allparts) => {
     return;
   }
 
-  const resultFilter = createSearch(search, part => (
+  const resultFilter = createSearch(search, (part: any) => (
     (part.name || "")
     + (part.desc || "")
     + (part.searchMeta || "")

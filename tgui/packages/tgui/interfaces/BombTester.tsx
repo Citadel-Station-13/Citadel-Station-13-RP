@@ -1,4 +1,4 @@
-import { Component } from 'inferno';
+import { Component } from 'react';
 import { useBackend } from "../backend";
 import { Box, Button, Icon, LabeledList, Section, Slider } from "tgui-core/components";
 import { Window } from "../layouts";
@@ -113,7 +113,9 @@ export const BombTester = (props) => {
   );
 };
 
-class BombTesterSimulation extends Component {
+class BombTesterSimulation extends Component<any, any> {
+  process: any;
+
   constructor(props) {
     super(props);
 

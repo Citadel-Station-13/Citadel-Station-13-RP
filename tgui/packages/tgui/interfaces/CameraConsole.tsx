@@ -2,7 +2,7 @@ import { filter, sortBy } from 'common/collections';
 import { flow } from 'tgui-core/fp';
 import { classes } from 'tgui-core/react';
 import { createSearch } from 'tgui-core/string';
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { useBackend, useLocalState } from '../backend';
 import { Button, ByondUi, Flex, Input, Section } from 'tgui-core/components';
 import { Window } from '../layouts';
@@ -108,7 +108,7 @@ export const CameraConsoleContent = (props) => {
           fluid
           mt={1}
           placeholder="Search for a camera"
-          onInput={(value) => setSearchText(value)} />
+          onChange={(value) => setSearchText(value)} />
       </Flex.Item>
       <Flex.Item
         height="100%">

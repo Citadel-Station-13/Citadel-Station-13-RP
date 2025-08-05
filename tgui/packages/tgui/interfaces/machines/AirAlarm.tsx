@@ -1,6 +1,6 @@
 import { round } from 'tgui-core/math';
 import { BooleanLike } from 'tgui-core/react';
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { useBackend, useLocalState } from '../../backend';
 import { Box, Button, LabeledList, NumberInput, Section, Stack } from 'tgui-core/components';
 import { Window } from '../../layouts';
@@ -216,7 +216,7 @@ const AIR_ALARM_ROUTES = {
 };
 
 const AirAlarmControl = (props) => {
-  const [screen, setScreen] = useState<string>('home');
+  const [screen, setScreen] = useLocalState<string>('screen', 'home');
   const route = AIR_ALARM_ROUTES[screen] || AIR_ALARM_ROUTES.home;
   const Component = route.component();
   return (
@@ -241,7 +241,7 @@ const AirAlarmControl = (props) => {
 
 const AirAlarmControlHome = (props) => {
   const { act, data } = useBackend<AirAlarmData>();
-  const [screen, setScreen] = useState<string>('');
+  const [screen, setScreen] = useLocalState<string>('screen', '');
   const {
     mode,
     atmos_alarm,
@@ -488,11 +488,12 @@ const AirAlarmTLVEntry = (props: AirAlarmTLVEntryProps) => {
       {props.entry.map((val, i) => (
         <td key={`${i}`}>
           <NumberInput
+            step={0.001}
             value={round(val, 2)}
             width="60px"
             minValue={0}
             maxValue={1000000}
-            onChange={(e, v) => props.setEntry(v, i)} />
+            onChange={(v) => props.setEntry(v, i)} />
         </td>
       ))}
     </tr>

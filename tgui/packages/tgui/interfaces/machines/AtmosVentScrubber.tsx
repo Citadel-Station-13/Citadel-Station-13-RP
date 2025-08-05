@@ -4,9 +4,10 @@
 import { BooleanLike } from "tgui-core/react";
 import { useBackend } from "../../backend";
 import { Button, LabeledList } from "tgui-core/components";
-import { Section, SectionProps } from "tgui-core/components/Section";
+import { Section } from "tgui-core/components/Section";
 import { Window } from "../../layouts";
 import { AtmosFilterList, AtmosGasGroupFlags, AtmosGasID, AtmosGasIDs, GasContext } from "../common/Atmos";
+import { SectionProps } from "../../components";
 
 export interface AtmosVentScrubberState {
   // are we on siphon mode

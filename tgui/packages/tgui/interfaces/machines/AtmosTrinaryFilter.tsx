@@ -3,9 +3,10 @@
 
 import { useBackend } from "../../backend";
 import { LabeledList, NumberInput } from "tgui-core/components";
-import { Section, SectionProps } from "tgui-core/components/Section";
+import { Section } from "tgui-core/components";
 import { AtmosGasGroups, AtmosGasID, AtmosGasGroupFlags, GasContext, AtmosFilterList } from "../common/Atmos";
 import { AtmosComponent, AtmosComponentData } from "../common/AtmosMachine";
+import { SectionProps } from "../../components";
 
 interface AtmosTrinaryFilterControlProps extends SectionProps {
   readonly atmosContext: GasContext;
@@ -42,7 +43,7 @@ export const AtmosTrinaryFilter = (props) => {
       minumumWidth={500}
       additionalListItems={(
         <LabeledList.Item label="Flow">
-          <NumberInput minValue={0} maxValue={data.maxRate}
+          <NumberInput minValue={0} maxValue={data.maxRate} step={0.001}
             value={data.rate} onChange={(val) => act('rate', { rate: val })}
             unit="L/s" />
         </LabeledList.Item>

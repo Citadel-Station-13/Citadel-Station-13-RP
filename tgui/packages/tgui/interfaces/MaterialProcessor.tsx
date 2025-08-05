@@ -1,9 +1,9 @@
 import { BooleanLike } from "tgui-core/react";
-import { capitalize } from "common/string";
 import { Fragment } from "react";
 import { useBackend } from "../backend";
 import { Button, LabeledList, Section, AnimatedNumber } from "tgui-core/components";
 import { Window } from '../layouts';
+import { capitalize } from "tgui-core/string";
 
 enum MaterialProcessorMode {
   None = 0,

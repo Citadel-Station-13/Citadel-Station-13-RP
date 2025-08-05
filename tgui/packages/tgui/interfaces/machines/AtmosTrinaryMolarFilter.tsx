@@ -4,8 +4,9 @@
 import { BooleanLike } from "tgui-core/react";
 import { useBackend } from "../../backend";
 import { Button, LabeledList, NumberInput } from "tgui-core/components";
-import { Section, SectionProps } from "tgui-core/components/Section";
+import { Section } from "tgui-core/components";
 import { AtmosComponent, AtmosComponentData } from "../common/AtmosMachine";
+import { SectionProps } from "../../components";
 
 interface AtmosTrinaryMolarFilterControlProps extends SectionProps {
   readonly invert: BooleanLike;
@@ -56,7 +57,7 @@ export const AtmosTrinaryMolarFilter = (props) => {
       title="Mass Filter"
       additionalListItems={(
         <LabeledList.Item label="Flow">
-          <NumberInput minValue={0} maxValue={data.maxRate}
+          <NumberInput minValue={0} maxValue={data.maxRate} step={0.001}
             value={data.rate} onChange={(val) => act('rate', { rate: val })}
             unit="L/s" />
         </LabeledList.Item>

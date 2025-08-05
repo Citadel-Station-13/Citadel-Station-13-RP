@@ -61,7 +61,7 @@ export const ATM = (props) => {
     );
   }
   return (
-    <Window width={400} height={400} scrollable>
+    <Window width={400} height={400}>
       <Window.Content scrollable>
         <Section title={data.machine_id} >
           <ATMElement />
@@ -171,7 +171,7 @@ const ATMElement = (props) => {
       </Flex.Item>
       <Divider />
       <Flex.Item>
-        <Collapsible title="Security Controls" headerProps={{ icon: "shield-alt" }}>
+        <Collapsible title="Security Controls" icon="shield-alt">
           <LabeledList>
             <LabeledList.Item label="Security Setting">
               <Button.Checkbox
@@ -247,7 +247,7 @@ const ATMElement = (props) => {
         <Collapsible title="Withdraw Funds" icon="money-bill-alt" >
           <LabeledList>
             <LabeledList.Item label="Amount">
-              <NumberInput placeholder="Amount" step={1} onChange={(value) => setWithdrawAmount(value)} />
+              <NumberInput step={1} minValue={0} maxValue={Infinity} value={withdrawAmount} onChange={(value) => setWithdrawAmount(value)} />
             </LabeledList.Item>
             <LabeledList.Item label="Method Selection">
               <Button.Checkbox checked={EWallet} onClick={() => setEWallet(!EWallet)} >EWallet</Button.Checkbox>

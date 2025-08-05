@@ -1,8 +1,9 @@
 import { round } from 'tgui-core/math';
-import { useBackend, useLocalState } from '../backend';
+import { useBackend } from '../backend';
 import { Button, Dropdown, Input, Stack, Table } from 'tgui-core/components';
 import { TableCell, TableRow } from 'tgui-core/components/Table';
 import { Window } from '../layouts';
+import { useState } from 'react';
 
 type FishCalculatorEntry = {
   result: string;
@@ -22,29 +23,19 @@ type FishingCalculatorData = {
 export const FishingCalculator = (props) => {
   const { act, data } = useBackend<FishingCalculatorData>();
 
-  const [bait, setBait] = useLocalState<string>(
-    context,
-    'bait',
+  const [bait, setBait] = useState<string>(
     '/obj/item/food/bait/worm'
   );
-  const [spot, setSpot] = useLocalState<string>(
-    context,
-    'spot',
+  const [spot, setSpot] = useState<string>(
     data.spot_types[0]
   );
-  const [rod, setRod] = useLocalState<string>(
-    context,
-    'rod',
+  const [rod, setRod] = useState<string>(
     data.rod_types[0]
   );
-  const [hook, setHook] = useLocalState<string>(
-    context,
-    'hook',
+  const [hook, setHook] = useState<string>(
     data.hook_types[0]
   );
-  const [line, setLine] = useLocalState<string>(
-    context,
-    'line',
+  const [line, setLine] = useState<string>(
     data.line_types[0]
   );
 
