@@ -44,6 +44,7 @@
 		new /datum/point_redemption_item("Binoculars",					/obj/item/binoculars,										100),
 		new /datum/point_redemption_item("100 Thalers",					/obj/item/spacecash/c100,									100),
 		new /datum/point_redemption_item("Defense Equipment - Razor Drone Deployer",	/obj/item/grenade/simple/spawner/manhacks/station/locked,		100),
+		new /datum/point_redemption_item("Explosive Excavation Kit - Plastic Charge",/obj/item/plastique/seismic/locked,					100),
 		new /datum/point_redemption_item("Mini-Translocator",			/obj/item/perfect_tele/one_beacon,							120),
 		new /datum/point_redemption_item("Extraction Equipment - Fulton Pack",		/obj/item/extraction_pack,						125),
 		new /datum/point_redemption_item("Defense Equipment - Sentry Drone Deployer",	/obj/item/grenade/simple/spawner/ward,							150),
