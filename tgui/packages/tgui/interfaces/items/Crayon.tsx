@@ -5,9 +5,10 @@
 import { BooleanLike } from "tgui-core/react";
 import { useBackend, useLocalState } from "../../backend";
 import { Box, Button, Dimmer, Flex, Icon, LabeledList, Modal, NumberInput, Section, Stack } from "tgui-core/components";
-import { Sprite } from "tgui-core/components/Sprite";
 import { Window } from "../../layouts";
 import { ByondColorString, ColorPicker } from "../common/Color";
+import { useState } from "react";
+import { Sprite } from "../../components";
 
 const CRAYON_SPRITESHEET_NAME = "crayon-graffiti";
 

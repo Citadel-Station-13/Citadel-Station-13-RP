@@ -116,7 +116,7 @@ export const RecipeLookup = (props) => {
         </LabeledList.Item>
       )}
       {recipe.reqContainer && (
-        <LabeledList.Item bold label="Container">
+        <LabeledList.Item label="Container">
           <Button
             color="transparent"
             textColor="white"
@@ -125,7 +125,7 @@ export const RecipeLookup = (props) => {
             tooltip="The required container for this reaction to occur in." />
         </LabeledList.Item>
       )}
-      <LabeledList.Item bold label="Purity">
+      <LabeledList.Item label="Purity">
         <LabeledList>
           <LabeledList.Item label="Optimal pH range">
             <Box position="relative">
@@ -157,12 +157,12 @@ export const RecipeLookup = (props) => {
           )}
         </LabeledList>
       </LabeledList.Item>
-      <LabeledList.Item bold label="Rate profile" width="10px">
+      <LabeledList.Item label="Rate profile">
         <Box
           height="50px"
           position="relative"
           style={{
-            'background-color': 'black',
+            backgroundColor: "black",
           }}>
           <Chart.Line
             fillPositionedParent
@@ -172,7 +172,7 @@ export const RecipeLookup = (props) => {
           {recipe.explosive && (
             <Chart.Line
               position="absolute"
-              justify="right"
+              style={{ justifyContent: "right" }}
               top={0.01}
               bottom={0}
               right={recipe.isColdRecipe ? null : 0}
@@ -213,7 +213,7 @@ export const RecipeLookup = (props) => {
           )}
         </Flex>
       </LabeledList.Item>
-      <LabeledList.Item bold label="Dynamics">
+      <LabeledList.Item label="Dynamics">
         <LabeledList>
           <LabeledList.Item label="Optimal rate">
             <Tooltip

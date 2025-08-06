@@ -387,20 +387,20 @@ class FishingMinigame extends Component<
     const posToStyle = (value: number) => (value / this.area_height) * 100;
     const background_image = resolveAsset(this.props.background);
     return (
-      <div class="fishing">
-        <div class="main">
+      <div className="fishing">
+        <div className="main">
           <div
-            class="background"
+            className="background"
             style={{ 'background-image': `url("${background_image}")` }}>
             <div
-              class="bait"
+              className='bait'
               style={{
                 height: `${posToStyle(bait.height)}%`,
                 top: `${posToStyle(bait.position)}%`,
               }}
             />
             <div
-              class="fish"
+              className="fish"
               style={{
                 top: `${posToStyle(fish.position)}%`,
                 height: `${posToStyle(fish.height)}%`,
@@ -409,9 +409,9 @@ class FishingMinigame extends Component<
             </div>
           </div>
         </div>
-        <div class="completion">
-          <div class="background">
-            <div class="bar" style={{ height: `${Math.round(completion)}%` }} />
+        <div className="completion">
+          <div className="background">
+            <div className="bar" style={{ height: `${Math.round(completion)}%` }} />
           </div>
         </div>
       </div>

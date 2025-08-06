@@ -52,7 +52,7 @@ export const CrewManifestContent = (props) => {
             </Box>
           )}
           key={category.cat}
-          level={2}>
+        >
           <Table>
             <Table.Row header color="white">
               <Table.Cell>Name</Table.Cell>

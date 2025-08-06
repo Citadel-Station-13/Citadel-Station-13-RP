@@ -69,8 +69,7 @@ export const JoinMenu = (props) => {
           <Stack.Item>
             {!!data.evacuated && (
               <NoticeBox
-                info={data.evacuated === 2}
-                warning={data.evacuated === 1 || data.evacuated === 3}>
+                info={data.evacuated === 2}>
                 {(data.evacuated === 2) ? "A crew transfer is in progress."
                   : ((data.evacuated === 3) ? "The installation has been evacuated."
                     : "An evacuation is in progress.")}

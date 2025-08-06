@@ -40,11 +40,11 @@ export const GuestPassTerminal = (props) => {
               <LabeledList>
                 <LabeledList.Item label="Name">
                   <Input width="100%" value={data.guestName} placeholder="Name"
-                    onInput={(val) => act('name', { value: val })} />
+                    onChange={(val) => act('name', { value: val })} />
                 </LabeledList.Item>
                 <LabeledList.Item label="Reason">
                   <Input width="100%" value={data.guestReason} placeholder="Reason"
-                    onInput={(val) => act('reason', { value: val })} />
+                    onChange={(val) => act('reason', { value: val })} />
                 </LabeledList.Item>
                 <LabeledList.Item label="Duration (minutes)">
                   <NumberInput width="100%" step={1} value={data.duration}

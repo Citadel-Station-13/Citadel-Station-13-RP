@@ -358,7 +358,7 @@ const PhoneTab = (props) => {
               <Input
                 fluid
                 value={targetAddress}
-                onInput={(val) => act("write_target_address", { val: val })} />
+                onChange={(val) => act("write_target_address", { val: val })} />
             </Flex.Item>
             <Flex.Item>
               <Button
@@ -876,7 +876,7 @@ const NewsTargetFeed = (props) => {
   return (
     <Section
       title={decodeHtmlEntities(target_feed.name) + " by " + decodeHtmlEntities(target_feed.author)}
-      level={2}
+
       buttons={
         <Button
           content="Back"
@@ -911,7 +911,7 @@ const NewsFeed = (props) => {
 
   return (
     <Fragment>
-      <Section title="Recent News" level={2}>
+      <Section title="Recent News">
         <Section>
           {latest_news.map(news => (
             <Box mb={2} key={news.index}>
@@ -937,7 +937,7 @@ const NewsFeed = (props) => {
           ))}
         </Section>
       </Section>
-      <Section title="News Feeds" level={2}>
+      <Section title="News Feeds">
         {feeds.map(feed => (
           <Button
             key={feed.index}

@@ -1,7 +1,6 @@
 import { round } from 'tgui-core/math';
 import { useBackend } from '../backend';
 import { Button, Dropdown, Input, Stack, Table } from 'tgui-core/components';
-import { TableCell, TableRow } from 'tgui-core/components/Table';
 import { Window } from '../layouts';
 import { useState } from 'react';
 
@@ -72,8 +71,8 @@ export const FishingCalculator = (props) => {
             />
             <Input
               value={bait}
-              label="Bait"
-              onChange={(_, value) => setBait(value)}
+              placeholder="Bait"
+              onChange={(value) => setBait(value)}
               width="100%"
             />
             <Button
@@ -90,23 +89,23 @@ export const FishingCalculator = (props) => {
           </Stack.Item>
           <Stack.Item>
             <Table>
-              <TableRow header>
-                <TableCell>Outcome</TableCell>
-                <TableCell>Weight</TableCell>
-                <TableCell>Probabilty</TableCell>
-                <TableCell>Difficulty</TableCell>
-                <TableCell>Count</TableCell>
-              </TableRow>
+              <Table.Row header>
+                <Table.Cell>Outcome</Table.Cell>
+                <Table.Cell>Weight</Table.Cell>
+                <Table.Cell>Probabilty</Table.Cell>
+                <Table.Cell>Difficulty</Table.Cell>
+                <Table.Cell>Count</Table.Cell>
+              </Table.Row>
               {data.info?.map((result) => (
-                <TableRow key={result.result}>
-                  <TableCell>{result.result}</TableCell>
-                  <TableCell>{result.weight}</TableCell>
-                  <TableCell>
+                <Table.Row key={result.result}>
+                  <Table.Cell>{result.result}</Table.Cell>
+                  <Table.Cell>{result.weight}</Table.Cell>
+                  <Table.Cell>
                     {round((result.weight / weight_sum) * 100, 2)}%
-                  </TableCell>
-                  <TableCell>{result.difficulty}</TableCell>
-                  <TableCell>{result.count}</TableCell>
-                </TableRow>
+                  </Table.Cell>
+                  <Table.Cell>{result.difficulty}</Table.Cell>
+                  <Table.Cell>{result.count}</Table.Cell>
+                </Table.Row>
               ))}
             </Table>
           </Stack.Item>

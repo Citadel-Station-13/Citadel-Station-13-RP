@@ -15,7 +15,7 @@ export const PipeDispenser = (props) => {
   const [
     categoryName,
     setCategoryName,
-  ] = useLocalState(context, 'categoryName');
+  ] = useLocalState('categoryName', null);
   const shownCategory = categories
     .find(category => category.cat_name === categoryName)
     || categories[0];
@@ -61,12 +61,11 @@ export const PipeDispenser = (props) => {
               fluid
               ellipsis
               content={recipe.pipe_name}
-              title={recipe.pipe_name}
               onClick={() => act('dispense_pipe', {
                 ref: recipe.ref,
                 bent: recipe.bent,
                 category: shownCategory.cat_name,
-              })} />
+              })}>{recipe.pipe_name}</Button>
           ))}
         </Section>
       </Window.Content>

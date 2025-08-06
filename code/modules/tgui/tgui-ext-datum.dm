@@ -191,7 +191,7 @@
 	// ~silicons
 	SEND_SIGNAL(src, COMSIG_DATUM_PUSH_UI_DATA, user, ui, data)
 	if(!user)
-		for (var/datum/tgui/window as anything in SStgui.open_uis_by_src[REF(src)])
+		for (var/datum/tgui/window as anything in open_uis)
 			window.push_data(data)
 		return
 	if(!ui)
@@ -208,15 +208,15 @@
  * * ui - when specified, only pushes this ui for a given user.
  * * updates - list(id = list(data...), ...) for modules. the reducer on tgui-side will only overwrite provided data keys.
  */
-/datum/proc/push_ui_modules(mob/user, datum/tgui/ui, list/updates)
+/datum/proc/push_nested_data(mob/user, datum/tgui/ui, list/updates)
 	if(!user)
-		for (var/datum/tgui/window as anything in SStgui.open_uis_by_src[REF(src)])
-			window.push_modules(updates)
+		for (var/datum/tgui/window as anything in open_uis)
+			window.push_nested_data(updates)
 		return
 	if(!ui)
 		ui = SStgui.get_open_ui(user, src)
 	if(ui)
-		ui.push_modules(updates)
+		ui.push_nested_data(updates)
 
 #warn this was removed in tgui update what do we do with this
 /**

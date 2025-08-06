@@ -61,7 +61,7 @@ const DiseaseSplicerVirusDish = (props) => {
         </LabeledList.Item>
       </LabeledList>
       {info ? (
-        <Section level={2}>
+        <Section>
           <Box color="bad">{info}</Box>
         </Section>
       ) : (

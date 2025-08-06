@@ -534,17 +534,17 @@
  * WARNING: Do not use this unless you know what you are doing.
  *
  * @params
- * * updates - list(id = list(data...), ...) of modules to update.
+ * * updates - list(id = list(data...), ...) of nested data to update.
  * * force - (optional) send update even if UI is not interactive
  *
  * @return TRUE if data was sent, FALSE otherwise.
  */
-/datum/tgui/proc/push_modules(list/updates, force)
+/datum/tgui/proc/push_nested_data(list/updates, force)
 	if(isnull(user.client) || !initialized || closing)
 		return FALSE
 	if(!force && status < UI_UPDATE)
 		return FALSE
-	window.send_message("modules", updates)
+	window.send_message("nestedData", updates)
 	return TRUE
 
 //* Module System *//
@@ -590,7 +590,7 @@
 	if(!isnull(ui) && ui != src)
 		return
 	// todo: this is force because otherwise static data can be desynced. should static data be on another proc instead?
-	push_modules(
+	push_nested_data(
 		updates = list(
 			(modules_registered[source]) = data,
 		),

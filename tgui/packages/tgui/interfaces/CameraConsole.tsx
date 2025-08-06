@@ -1,4 +1,3 @@
-import { filter, sortBy } from 'common/collections';
 import { flow } from 'tgui-core/fp';
 import { classes } from 'tgui-core/react';
 import { createSearch } from 'tgui-core/string';
@@ -6,6 +5,7 @@ import { Fragment, useState } from 'react';
 import { useBackend, useLocalState } from '../backend';
 import { Button, ByondUi, Flex, Input, Section } from 'tgui-core/components';
 import { Window } from '../layouts';
+import { filter, sortBy } from 'common/collections';
 
 /**
  * Returns previous and next camera names relative to the currently
@@ -30,7 +30,7 @@ export const prevNextCamera = (cameras, activeCamera) => {
  * Filters cameras, applies search terms and sorts the alphabetically.
  */
 export const selectCameras = (cameras, searchText = '') => {
-  const testSearch = createSearch(searchText, camera => camera.name);
+  const testSearch = createSearch(searchText, (camera: any) => camera.name);
   return flow([
     // Null camera filter
     filter(camera => camera?.name),

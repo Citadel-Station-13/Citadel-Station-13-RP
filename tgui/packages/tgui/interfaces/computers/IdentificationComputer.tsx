@@ -6,10 +6,10 @@
 import { BooleanLike } from "tgui-core/react";
 import { useBackend, useLocalState } from "../../backend";
 import { Button, NoticeBox, Section, Tabs } from "tgui-core/components";
-import { Module } from "tgui-core/components/Module";
 import { Window } from "../../layouts";
 import { IDCard, IDCardOrDefault, IDSlot } from "../common/IDCard";
 import { CrewManifestContent } from "../CrewManifest";
+import { LegacyModule } from "../../components/LegacyModule";
 
 interface IdentificationComputerContext {
   printing: BooleanLike;
@@ -49,14 +49,14 @@ export const IdentificationComputer = (props) => {
               {
                 data.authed_cardmod ? (
                   data.modify_card ? (
-                    <Module id="modify" />
+                    <LegacyModule id="modify" />
                   ) : (
-                    <NoticeBox warning>
+                    <NoticeBox >
                       Please insert target card.
                     </NoticeBox>
                   )
                 ) : (
-                  <NoticeBox warning>
+                  <NoticeBox >
                     Authentication required for ID modification.
                   </NoticeBox>
                 )

@@ -95,7 +95,7 @@ export const Jukebox = (props) => {
                   bad: [0, 25],
                 }}
                 format={(val) => round(val, 1) + '%'}
-                onChange={(val) =>
+                onChange={(e, val) =>
                   act('volume', { val: round(val / 100, 2) })}
               />
             </LabeledList.Item>
@@ -110,7 +110,7 @@ export const Jukebox = (props) => {
                 key={genre}
                 color={true_genre === genre ? 'green' : 'default'}
                 child_mt={0}>
-                <div style={{ 'margin-left': '1em' }}>
+                <div style={{ marginLeft: '1em' }}>
                   {genre_songs[genre].map((track) => (
                     <Button
                       fluid

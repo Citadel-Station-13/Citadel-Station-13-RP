@@ -29,6 +29,8 @@ export const setGlobalStore = (store) => {
 };
 
 export const backendUpdate = createAction('backend/update');
+export const backendPushData = createAction('backend/pushData');
+export const backendPushNestedData = createAction('backend/pushNestedData');
 export const backendSetSharedState = createAction('backend/setSharedState');
 export const backendSuspendStart = createAction('backend/suspendStart');
 export const backendCreatePayloadQueue = createAction(
@@ -52,6 +54,7 @@ export const backendSuspendSuccess = () => ({
 const initialState = {
   config: {},
   data: {},
+  nestedData: {},
   shared: {},
   outgoingPayloadQueues: {} as Record<string, string[]>,
   // Start as suspended
@@ -94,6 +97,33 @@ export const backendReducer = (state = initialState, action) => {
       shared,
       suspended: false,
     };
+  }
+
+  if (type === 'backend/pushData') {
+    const mergedData = {
+      ...state.data,
+      ...payload,
+    }
+    return {
+      ...state,
+      data: mergedData,
+    }
+  }
+
+  if (type === 'backend/pushNestedData') {
+    const mergedNestedData = {
+      ...state.nestedData,
+    }
+    for (let id of Object.keys(payload)) {
+      state[id] = {
+        ...state[id],
+        ...payload[id],
+      }
+    }
+    return {
+      ...state,
+      nestedData: mergedNestedData,
+    }
   }
 
   if (type === 'backend/setSharedState') {
@@ -151,9 +181,9 @@ export const backendReducer = (state = initialState, action) => {
       ...state,
       outgoingPayloadQueues: rest.length
         ? {
-            ...otherQueues,
-            [id]: rest,
-          }
+          ...otherQueues,
+          [id]: rest,
+        }
         : otherQueues,
     };
   }
@@ -188,6 +218,16 @@ export const backendMiddleware = (store) => {
 
     if (type === 'suspend') {
       store.dispatch(backendSuspendSuccess());
+      return;
+    }
+
+    if (type === 'data') {
+      store.dispatch(backendPushData(payload));
+      return;
+    }
+
+    if (type === 'nestedData') {
+      store.dispatch(backendPushNestedData(payload));
       return;
     }
 
@@ -385,7 +425,7 @@ export const sendAct = (action: string, payload: object = {}) => {
   Byond.sendMessage('act/' + action, payload);
 };
 
-type BackendState<TData> = {
+type BackendState<TData, NData = {}> = {
   config: {
     title: string;
     status: number;
@@ -412,6 +452,7 @@ type BackendState<TData> = {
     };
   };
   data: TData;
+  nestedData: NData;
   shared: Record<string, any>;
   outgoingPayloadQueues: Record<string, any[]>;
   suspending: boolean;
@@ -421,7 +462,7 @@ type BackendState<TData> = {
 /**
  * Selects a backend-related slice of Redux state
  */
-export const selectBackend = <TData>(state: any): BackendState<TData> =>
+export const selectBackend = <TData, NData = {}>(state: any): BackendState<TData> =>
   state.backend || {};
 
 /**
@@ -429,8 +470,8 @@ export const selectBackend = <TData>(state: any): BackendState<TData> =>
  *
  * Includes the `act` function for performing DM actions.
  */
-export const useBackend = <TData>() => {
-  const state: BackendState<TData> = globalStore?.getState()?.backend;
+export const useBackend = <TData, NData = {}>() => {
+  const state: BackendState<TData, NData> = globalStore?.getState()?.backend;
 
   return {
     ...state,

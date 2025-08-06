@@ -102,7 +102,7 @@ function Story() {
               dragMatrix={[0, -1]}
               step={1}
               stepPixelSize={5}
-              onDrag={(value) => setNumber(value)}
+              onDrag={(e, value) => setNumber(value)}
             >
               {(control) => (
                 <Box onMouseDown={control.handleDragStart}>

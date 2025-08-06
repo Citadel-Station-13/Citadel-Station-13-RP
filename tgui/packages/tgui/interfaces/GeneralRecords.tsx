@@ -68,10 +68,10 @@ export const GeneralRecords = (_properties) => {
  *
  * Filters records, applies search terms and sorts the alphabetically.
  */
-const selectRecords = (records, searchText = '') => {
-  const nameSearch = createSearch(searchText, record => record.name);
-  const idSearch = createSearch(searchText, record => record.id);
-  const dnaSearch = createSearch(searchText, record => record.b_dna);
+const selectRecords = (records: any, searchText = '') => {
+  const nameSearch = createSearch<any>(searchText, record => record.name);
+  const idSearch = createSearch<any>(searchText, record => record.id);
+  const dnaSearch = createSearch<any>(searchText, record => record.b_dna);
   let fl = flow([
     // Optional search term
     searchText && filter(record => {
@@ -139,7 +139,7 @@ const GeneralRecordsView = (_properties) => {
       <Section title="General Data" mt="-6px">
         <GeneralRecordsViewGeneral />
       </Section>
-      <Section title="Actions" level={2}>
+      <Section title="Actions">
         <Button.Confirm
           icon="trash"
           disabled={!!general.empty}
@@ -205,7 +205,7 @@ const GeneralRecordsViewGeneral = (_properties) => {
         <Section title="Employment/Skills Summary" preserveWhitespace>
           {general.skills || "No data found."}
         </Section>
-        <Section title="Comments/Log" level={2}>
+        <Section title="Comments/Log">
           {general.comments.length === 0 ? (
             <Box color="label">
               No comments found.

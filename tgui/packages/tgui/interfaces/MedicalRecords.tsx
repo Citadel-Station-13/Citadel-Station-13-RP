@@ -27,7 +27,6 @@ const virusModalBodyOverride = (modal) => {
   const virus = modal.args;
   return (
     <Section
-      level={2}
       m="-1rem"
       title={virus.name || "Virus"}
       buttons={
@@ -181,10 +180,10 @@ const MedicalRecordsView = (_properties) => {
       <Section title="General Data" mt="-6px">
         <MedicalRecordsViewGeneral />
       </Section>
-      <Section title="Medical Data" level={2}>
+      <Section title="Medical Data">
         <MedicalRecordsViewMedical />
       </Section>
-      <Section title="Actions" level={2}>
+      <Section title="Actions">
         <Button.Confirm
           icon="trash"
           disabled={!!medical.empty}
@@ -306,7 +305,7 @@ const MedicalRecordsViewMedical = (_properties) => {
       <Section title="Medical Notes Summary" preserveWhitespace>
         {medical.notes || "No data found."}
       </Section>
-      <Section title="Comments/Log" level={2}>
+      <Section title="Comments/Log">
         {medical.comments.length === 0 ? (
           <Box color="label">
             No comments found.

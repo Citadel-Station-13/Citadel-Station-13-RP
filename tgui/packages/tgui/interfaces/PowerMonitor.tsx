@@ -1,11 +1,10 @@
 import { map, sortBy } from 'common/collections';
-import { flow } from 'common/fp';
 import { toFixed } from 'tgui-core/math';
-import { pureComponentHooks } from 'tgui-core/react';
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { useBackend, useLocalState } from '../backend';
 import { Box, Button, Chart, ColorBox, Flex, Icon, LabeledList, ProgressBar, Section, Table } from 'tgui-core/components';
 import { Window } from '../layouts';
+import { flow } from 'tgui-core/fp';
 
 const PEAK_DRAW = 500;
 
@@ -82,7 +81,7 @@ export const PowerMonitorFocus = (props) => {
   const [
     sortByField,
     setSortByField,
-  ] = useState(null);
+  ] = useState<null | string>(null);
   const supply = history.supply[history.supply.length - 1] || 0;
   const demand = history.demand[history.demand.length - 1] || 0;
   const supplyData = history.supply.map((value, i) => [i, value]);

@@ -3,11 +3,12 @@
  * @license MIT
  */
 
-import { ReactNode } from "react";
+import { ReactNode, useContext } from "react";
 import { Window, WindowProps } from "./Window";
 import { BooleanLike } from "tgui-core/react";
 import { SectionProps } from "../components";
 import { Section } from "tgui-core/components";
+import { LegacyModuleContext } from "../components/LegacyModule";
 
 export interface ModularProps {
   readonly direct?: ReactNode;
@@ -28,17 +29,17 @@ export interface ModularProps {
  * todo: scrolling is broken when embedded. there's no workaround; tgui components and their CSS just can't handle
  *       proper scrolling behavior when made to auto-fill as opposed to fixed height.
  */
-export const Modular = (props: ModularProps: any) => {
-  const { is_module, m_section } = context;
+export const Modular = (props: ModularProps) => {
+  const { isModule, moduleSection } = useContext(LegacyModuleContext);
   let sectionProps = {
     ...props.section,
-    ...m_section,
+    ...moduleSection,
   };
   return (
-    !is_module ? (
+    !isModule ? (
       <Window {...props.window}>
         {props.direct}
-        <Window.Content scrollable={props.scrollable}>
+        <Window.Content scrollable={!!props.scrollable}>
           {props.children}
         </Window.Content>
       </Window>

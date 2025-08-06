@@ -2,6 +2,7 @@ import { Component } from 'react';
 import { useBackend } from "../backend";
 import { Box, Button, Icon, LabeledList, Section, Slider } from "tgui-core/components";
 import { Window } from "../layouts";
+import { relative } from 'node:path';
 
 export const BombTester = (props) => {
   const { act, data } = useBackend<any>();
@@ -181,16 +182,14 @@ class BombTesterSimulation extends Component<any, any> {
   render() {
     const { x, y } = this.state;
 
-    const newStyle = {
-      position: "relative",
-      "left": x + "px",
-      "top": y + "px",
-    };
-
     return (
       <Section title="Simulation in progress!" fill>
         <Box position="absolute" style={{ overflow: "hidden", width: "100%", height: "100%" }}>
-          <Icon style={newStyle} name="bomb" size={10} color="red" />
+          <Icon style={{
+            position: "relative",
+            left: x + "px",
+            top: y + "px",
+          }} name="bomb" size={10} color="red" />
         </Box>
       </Section>
     );

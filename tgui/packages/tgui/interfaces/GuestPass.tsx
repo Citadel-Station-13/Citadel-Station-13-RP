@@ -78,7 +78,7 @@ export const GuestPass = (props) => {
                 fluid
                 content="Issue Pass"
                 onClick={() => act("issue")} />
-              <Section title="Access" level={2}>
+              <Section title="Access">
                 {sortBy(a => a.area_name)(area).map(a => (
                   <Button.Checkbox
                     checked={a.on}

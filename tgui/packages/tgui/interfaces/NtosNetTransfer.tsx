@@ -142,7 +142,7 @@ const P2PUploadServer = (props) => {
         onClick={() => act("PRG_setpassword")}>
         Set Password
       </Button>
-      <Section title="Pick file to serve." level={2}>
+      <Section title="Pick file to serve.">
         {upload_filelist.map(file => (
           <Button
             key={file.uid}

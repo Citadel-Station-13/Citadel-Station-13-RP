@@ -259,7 +259,7 @@ const FilterEntry = (props) => {
         </>
       }
     >
-      <Section level={2}>
+      <Section>
         <LabeledList>
           {targetFilterPossibleKeys.map((entryName) => {
             const defaults = filterDefaults[type]['defaults'];

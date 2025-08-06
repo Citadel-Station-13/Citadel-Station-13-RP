@@ -193,7 +193,7 @@ const MainPage = (props) => {
         </LabeledList>
         <Section
           title="System Log"
-          level={2}
+
           buttons={(
             <Button.Confirm
               icon="trash"
