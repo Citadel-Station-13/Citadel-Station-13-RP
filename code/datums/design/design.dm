@@ -84,6 +84,8 @@
 	///IDs of that techs the object originated from and the minimum level requirements.
 	var/list/req_tech = list()
 
+	var/complexity = 1 //'complexity' or storage space required on design disks. almost always 1.
+
 /datum/prototype/design/New()
 	autodetect()
 	generate()

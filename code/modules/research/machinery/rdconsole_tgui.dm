@@ -73,21 +73,21 @@
 		if(d_disk)
 			data["info"]["d_disk"] = list(
 				"present" = TRUE,
-				"stored" = (LAZYLEN(d_disk.design_ids) > 0),
+				"stored" = (d_disk.used_storage() > 0),
 			)
 			if(d_disk.design_ids)
 				var/list/id_name = list()
 				var/list/id_buildtype = list()
 				var/list/id_matsbase = list()
-				for(var/id in COERCE_OPTIONS_LIST(d_disk.design_ids) )
+				for(var/id in d_disk.get_designs() )
 					var/datum/prototype/design/blueprint = RSdesigns.fetch(id)
 					id_name[id] = blueprint.name
 					id_buildtype[id] = blueprint.lathe_type
 					id_matsbase[id] = blueprint.materials_base
 
-				data["info"]["d_disk"]["ids"] = COERCE_OPTIONS_LIST(d_disk.design_ids)
-				data["info"]["d_disk"]["design_count"] = LAZYLEN(d_disk.design_ids)
-				data["info"]["d_disk"]["design_cap"] = d_disk.design_capacity
+				data["info"]["d_disk"]["ids"] = d_disk.get_designs()
+				data["info"]["d_disk"]["design_count"] = d_disk.used_storage()
+				data["info"]["d_disk"]["design_cap"] = d_disk.get_max_capacity()
 				data["info"]["d_disk"]["names"] = id_name
 				data["info"]["d_disk"]["build_types"] = id_buildtype
 				data["info"]["d_disk"]["materials"] = id_matsbase
