@@ -49,6 +49,23 @@ SUBSYSTEM_DEF(assets)
 #endif
 	return SS_INIT_SUCCESS
 
+/datum/controller/subsystem/assets/on_config_loaded()
+	var/newtransporttype = /datum/asset_transport/browse_rsc
+	switch (CONFIG_GET(string/asset_transport))
+		if ("webroot")
+			newtransporttype = /datum/asset_transport/webroot
+
+	if (newtransporttype == transport?.type)
+		return
+
+	var/datum/asset_transport/newtransport = new newtransporttype
+	if (!newtransport.validate_config())
+		stack_trace("failed to validate config; going back to browse_rsc")
+		qdel(newtransport)
+		newtransport = new /datum/asset_transport/browse_rsc
+
+	set_transport_to(newtransport)
+
 /**
  * register an asset pack to make it able to be resolved or loaded
  *
@@ -72,17 +89,10 @@ SUBSYSTEM_DEF(assets)
 	if(should_preload_native_pack(pack))
 		asset_packs_to_natively_preload += pack
 
-/datum/controller/subsystem/assets/proc/should_preload_native_pack(datum/asset_pack/pack)
-	if(pack.do_not_preload)
-		return FALSE
-	return CONFIG_GET(flag/asset_simple_preload)
-
-/datum/controller/subsystem/assets/proc/immediately_ready_all_packs()
-	for(var/datum/asset_pack/pack as anything in asset_packs)
-		pack.ensure_ready()
-
 /**
  * fetches an asset datum, **without** ensuring it's ready / loaded
+ *
+ * * This proc does not block. This can fail to find something if we're not initialized.
  *
  * @return asset pack resolved
  */
@@ -95,6 +105,14 @@ SUBSYSTEM_DEF(assets)
 		return asset_packs_by_id[identifier]
 
 /**
+ * * Blocking proc.
+ */
+/datum/controller/subsystem/assets/proc/ready_all_asset_packs()
+	UNTIL(initialized)
+	for(var/datum/asset_pack/pack as anything in asset_packs)
+		pack.ensure_ready()
+
+/**
  * fetches an asset datum, and ensures it's ready / loaded
  *
  * * This proc can block if something needs to generate.
@@ -102,25 +120,29 @@ SUBSYSTEM_DEF(assets)
  * @return asset pack resolved
  */
 /datum/controller/subsystem/assets/proc/ready_asset_pack(identifier)
+	UNTIL(initialized)
 	var/datum/asset_pack/resolved = resolve_asset_pack(identifier)
+	if(!resolved)
+		return null
 	resolved.ensure_ready()
 	return resolved
 
 /**
  * ensures an asset has been sent to a client
  *
+ * * Blocks until it is.
+ *
  * @params
  * * target - a client or a list of clients
  * * identifier - asset type, id, or instance
- *
- * @return TRUE if an asset had to be sent, FALSE if the client (is supposed to) already have it.
  */
 /datum/controller/subsystem/assets/proc/send_asset_pack(client/target, identifier)
+	UNTIL(initialized)
+
 	if(isnull(target))
-		return FALSE
+		return
 
 	var/datum/asset_pack/resolved = ready_asset_pack(identifier)
-
 	var/list/targets = islist(target)? target : list(target)
 
 	for(var/client/C as anything in targets)
@@ -130,7 +152,7 @@ SUBSYSTEM_DEF(assets)
  * loads a file that we declare to not be necessary to keep around / store information on after
  * the necessary clients have loaded it.
  *
- * * blocking proc
+ * * not a blocking proc; the consumer of the URL must be able to perform retries.
  * * warning - this can clog a client's browse queue. use send_anonymous_files() to send multiple in a short period of time!
  *
  * @params
@@ -141,14 +163,16 @@ SUBSYSTEM_DEF(assets)
  * @return url to load it with; this will usually be heavily mangled.
  */
 /datum/controller/subsystem/assets/proc/send_anonymous_file(list/client/targets, file, ext)
+	set waitfor = FALSE
 	ASSERT(ext)
+	UNTIL(initialized)
 	return transport.send_anonymous_file(targets, file, ext)
 
 /**
  * loads a set of files that we declare to not be necessary to keep around / store information on after
  * the necessary clients have loaded it.
  *
- * * blocking proc
+ * * not a blocking proc; the consumer of the URL must be able to perform retries.
  * * you should probably not use this if you can; it's a little janky.
  *
  * @params
@@ -158,7 +182,9 @@ SUBSYSTEM_DEF(assets)
  * @return list(urls) in same order as files.
  */
 /datum/controller/subsystem/assets/proc/send_anonymous_files(list/client/targets, list/files)
+	set waitfor = FALSE
 	// todo: optimize this proc
+	UNTIL(initialized)
 	. = new /list(length(files))
 	for(var/i in 1 to length(files))
 		var/file = files[i]
@@ -177,11 +203,18 @@ SUBSYSTEM_DEF(assets)
 	RETURN_TYPE(/datum/asset_item/dynamic)
 	if(dynamic_asset_items_by_name[name])
 		. = FALSE
-		CRASH("collision on [name]; automatically-updating dynamic items are not yet supported.")
+		CRASH("collision on [name]; overwriting dynamic items is not yet supported.")
 	var/datum/asset_item/dynamic/created = new(name, file, do_not_mangle = do_not_mangle)
+	dynamic_asset_items_by_name[name] = created
 	return created
 
+/**
+ * * Not a blocking proc. The consumer of the dynamic item's URL must be equipped to automatically retry
+ *   on a failed fetch.
+ */
 /datum/controller/subsystem/assets/proc/send_dynamic_item_by_name(list/client/clients, list/names)
+	set waitfor = FALSE
+	UNTIL(initialized)
 	if(!islist(clients))
 		clients = list(clients)
 	for(var/name in names)
@@ -191,27 +224,20 @@ SUBSYSTEM_DEF(assets)
 /datum/controller/subsystem/assets/proc/get_dynamic_item_url_by_name(name)
 	return dynamic_asset_items_by_name[name]?.get_url()
 
-/datum/controller/subsystem/assets/on_config_loaded()
-	var/newtransporttype = /datum/asset_transport/browse_rsc
-	switch (CONFIG_GET(string/asset_transport))
-		if ("webroot")
-			newtransporttype = /datum/asset_transport/webroot
+//* Transport *//
 
-	if (newtransporttype == transport?.type)
-		return
-
-	var/datum/asset_transport/newtransport = new newtransporttype
-	if (!newtransport.validate_config())
-		stack_trace("failed to validate config; going back to browse_rsc")
-		qdel(newtransport)
-		newtransport = new /datum/asset_transport/browse_rsc
-
-	set_transport_to(newtransport)
-
+/**
+ * Remakes the current transport.
+ */
 /datum/controller/subsystem/assets/proc/reload_transport()
 	set_transport_to(new transport.type)
 
+/**
+ * Sets our transport to a new transport.
+ * * Transports cannot be re-used. Once it's given to us, please drop all references to it.
+ */
 /datum/controller/subsystem/assets/proc/set_transport_to(datum/asset_transport/new_transport)
+	ASSERT(transport != new_transport)
 	QDEL_NULL(transport)
 	transport = new_transport
 
@@ -227,5 +253,18 @@ SUBSYSTEM_DEF(assets)
 
 	transport.initialize()
 
+//* Preload *//
+
+/**
+ * Called on client init to slowly preload necessary assets while they're not doing anything.
+ */
 /datum/controller/subsystem/assets/proc/preload_client_assets(client/target)
 	transport.perform_native_preload(target, asset_packs_to_natively_preload)
+
+/**
+ * Checks if an asset pack should be preloaded to all clients that connect.
+ */
+/datum/controller/subsystem/assets/proc/should_preload_native_pack(datum/asset_pack/pack)
+	if(pack.do_not_preload)
+		return FALSE
+	return CONFIG_GET(flag/asset_simple_preload)

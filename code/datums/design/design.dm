@@ -30,7 +30,8 @@
 	/// category - string or list, or null; null results in undefined behavior depending on UI.
 	var/category = DESIGN_CATEGORY_MISC
 
-	var/subcategory = DESIGN_CATEGORY_MISC
+	/// subcategory - string or list, or null. null generally results in no seperate subcategory header
+	var/subcategory = null
 
 	//? Build Data
 	/// name of item before any name-generation is done. also shown in ui. if null, it'll be auto-detected from the build_path if possible.
@@ -48,7 +49,7 @@
 	var/work = 5 SECONDS
 
 	//? Build Costs
-	/// list of materials needed - typepath or id to amount. null to auto-detect from the object in question. list() for no cost (DANGEROUS).
+	/// list of specific materials needed - typepath or id to amount. null to auto-detect from the object in question. list() for no cost (DANGEROUS).
 	///
 	/// * This should always be using typepath instead of ID for hardcoded designs, as typepaths can be eagerly loaded before
 	///   the materials repository can initialize normally.
@@ -61,6 +62,12 @@
 	/// this should obviously match material_parts on the /obj in question.
 	/// todo: add optional parts and constraints
 	var/list/material_costs
+	/// for variable-material designs: assoc list of keys to constraints
+	/// this should obviously match material_parts on the /obj in question.
+	var/list/material_constraints
+	/// for variable-material designs: assoc list of keys to tags, for autodetect
+	/// this should obviously match material_parts on the /obj in question.
+	var/list/material_autodetect_tags
 	/// Items needed, as ingredients list - see [code/__HELPERS/datastructs/ingredients.dm]
 	///
 	/// * This should always be using typepath instead of ID where possible for hardcoded designs, as typepaths can be eagerly
@@ -76,6 +83,8 @@
 	//? legacy
 	///IDs of that techs the object originated from and the minimum level requirements.
 	var/list/req_tech = list()
+
+	var/complexity = 1 //'complexity' or storage space required on design disks. almost always 1.
 
 /datum/prototype/design/New()
 	autodetect()
@@ -137,9 +146,12 @@
 		"desc" = desc,
 		"id" = id,
 		"work" = work,
-		"category" = category,
+		"categories" = COERCE_OPTIONS_LIST(category),
+		"subcategories" = COERCE_OPTIONS_LIST(subcategory),
 		"materials" = length(materials_base)? materials_base : null,
 		"material_parts" = length(material_costs)? material_costs : null,
+		"material_constraints" = length(material_constraints)? material_constraints : null,
+		"autodetect_tags" = length(material_autodetect_tags)? material_autodetect_tags : null,
 		"reagents" = length(reagents)? reagents : null,
 		"ingredients" = length(ingredients)? ingredients : null,
 		"resultItem" = list(

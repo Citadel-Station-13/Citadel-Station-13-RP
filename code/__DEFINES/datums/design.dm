@@ -4,10 +4,13 @@
 #define DESIGN_UNLOCK_INTRINSIC (1<<0)
 /// any lathe that can print us can have us uploaded
 #define DESIGN_UNLOCK_UPLOAD (1<<1)
+/// design is unlocked via REQ_TECH
+#define DESIGN_UNLOCK_TECHLEVEL (1<<2)
 
 DEFINE_BITFIELD(design_unlock, list(
 	BITFIELD(DESIGN_UNLOCK_INTRINSIC),
 	BITFIELD(DESIGN_UNLOCK_UPLOAD),
+	BITFIELD(DESIGN_UNLOCK_TECHLEVEL),
 ))
 
 //? design_flags bitfield
@@ -29,19 +32,23 @@ DEFINE_BITFIELD(design_flags, list(
 #define DESIGN_CATEGORY_STORAGE "Storage"
 #define DESIGN_CATEGORY_AI "AI"
 #define DESIGN_CATEGORY_ATMOS "Atmospherics"
+#define DESIGN_CATEGORY_ANOM "Anomalous Technology"
 #define DESIGN_CATEGORY_MECHA "Mecha"
 #define DESIGN_CATEGORY_RECREATION "Recreation"
-#define DESIGN_CATEGORY_TELEPORTATION "Teleportation"
+#define DESIGN_CATEGORY_BLUESPACE "Bluespace"
 #define DESIGN_CATEGORY_POWER "Power"
 #define DESIGN_CATEGORY_TELECOMMUNICATIONS "Telecommunications"
 #define DESIGN_CATEGORY_MEDICAL "Medical"
+#define DESIGN_CATEGORY_MEDIGUN "Medigun Cells"
+#define DESIGN_CATEGORY_MODGUN "Modular Weapons"
 #define DESIGN_CATEGORY_CARGO_MINING "Cargo / Mining"
 #define DESIGN_CATEGORY_SECURITY "Security"
 #define DESIGN_CATEGORY_SCIENCE "Science"
+#define DESIGN_CATEGORY_STOCK_PARTS "Stock Parts"
 #define DESIGN_CATEGORY_COMPUTER "Computer Parts"
 #define DESIGN_CATEGORY_ENGINEERING "Engineering"
 #define DESIGN_CATEGORY_INTEGRATED_CIRCUITRY "Integrated Circuitry"
-#define DESIGN_CATEGORY_SYNTH "Synth"
+#define DESIGN_CATEGORY_SYNTH "Synthetics"
 #define DESIGN_CATEGORY_PROSTHETIC "Prosthetics"
 #define DESIGN_CATEGORY_DATA "Data"
 #define DESIGN_CATEGORY_ATTACHMENTS "Attachments"
@@ -121,6 +128,7 @@ GENERATE_DESIGN(ENTITY_PATH, DESIGN_PATH, DESIGN_ID); \
 GENERATE_DESIGN(ENTITY_PATH, DESIGN_PATH, DESIGN_ID); \
 /datum/prototype/design/generated##DESIGN_PATH { \
 	lathe_type = LATHE_TYPE_PROTOLATHE; \
+	design_unlock = DESIGN_UNLOCK_TECHLEVEL; \
 }; \
 /datum/prototype/design/generated##DESIGN_PATH
 

@@ -44,6 +44,8 @@
 /// this is only to be used if the material was registered. if it was never registered, DO NOT call this.
 /// this should null-check, as null is a valid material.
 /atom/proc/unregister_material(datum/prototype/material/mat, primary)
+	if(!mat) //null checking
+		return
 	if(!isnull(mat?.material_traits))
 		for(var/datum/prototype/material_trait/trait as anything in mat.material_traits)
 			if(islist(material_traits))

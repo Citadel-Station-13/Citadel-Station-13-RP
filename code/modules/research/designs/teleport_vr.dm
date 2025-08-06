@@ -1,5 +1,5 @@
 /datum/prototype/design/science/teleport
-	category = DESIGN_CATEGORY_TELEPORTATION
+	category = DESIGN_CATEGORY_BLUESPACE
 	abstract_type = /datum/prototype/design/science/teleport
 
 
@@ -10,7 +10,7 @@
 	design_name = "Personal translocator"
 	id = "translocator"
 	req_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5, TECH_ILLEGAL = 6)
-	materials_base = list(MAT_STEEL = 4000, MAT_GLASS = 2000, MAT_URANIUM = 4000, MAT_DIAMOND = 2000)
+	materials_base = list(MAT_STEEL = 2000, MAT_GLASS = 500, MAT_URANIUM = 4000, MAT_DIAMOND = 2000)
 	build_path = /obj/item/perfect_tele
 
 /*

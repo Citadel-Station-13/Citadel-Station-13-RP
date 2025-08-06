@@ -9,13 +9,17 @@
 /datum/prototype/design/science/xenobio/slimebaton
 	id = "slimebaton"
 	req_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2, TECH_POWER = 3, TECH_COMBAT = 3)
-	materials_base = list(MAT_STEEL = 5000)
+	materials_base = list(
+		/datum/prototype/material/steel::id = 3000,
+	)
 	build_path = /obj/item/melee/baton/slime
 
 /datum/prototype/design/science/xenobio/slimetaser
 	id = "slimetaser"
 	req_tech = list(TECH_MATERIAL = 3, TECH_BIO = 3, TECH_POWER = 4, TECH_COMBAT = 4)
-	materials_base = list(MAT_STEEL = 5000)
+	materials_base = list(
+		/datum/prototype/material/steel::id = 3000,
+	)
 	build_path = /obj/item/gun/projectile/energy/taser/xeno
 
 /datum/prototype/design/science/xenobio/slime_scanner

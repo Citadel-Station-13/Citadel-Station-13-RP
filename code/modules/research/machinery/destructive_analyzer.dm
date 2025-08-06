@@ -29,7 +29,7 @@ Note: Must be placed within 3 tiles of the R&D Console
 	var/T = 0
 	for(var/obj/item/stock_parts/S in component_parts)
 		T += S.rating
-	decon_mod = T * 0.1
+	decon_mod = min(T * 0.1, 1)
 
 /obj/machinery/r_n_d/destructive_analyzer/update_icon()
 	if(panel_open)
@@ -97,7 +97,7 @@ Note: Must be placed within 3 tiles of the R&D Console
 		if(!rped_recycler_ready)
 			to_chat(user, "<span class='notice'>\The [src]'s stock parts recycler isn't ready yet.</span>")
 			return 0
-		var/obj/machinery/r_n_d/protolathe/lathe_to_fill = linked_console.linked_lathe
+		var/obj/machinery/lathe/r_n_d/protolathe/lathe_to_fill = linked_console.linked_lathe
 		var/lowest_rating = INFINITY // We want the lowest-part tier rating in the RPED so we only recycle the lowest-tier parts.
 		for(var/obj/item/B in replacer.contents)
 			if(B.rped_rating() < lowest_rating)
@@ -110,9 +110,7 @@ Note: Must be placed within 3 tiles of the R&D Console
 				continue
 			if(lathe_to_fill) // Sending salvaged materials to the lathe...
 				var/list/mats = B.get_materials(TRUE)
-				for(var/t in mats)
-					if(t in lathe_to_fill.stored_materials)
-						lathe_to_fill.stored_materials[t] += mats[t] * src.decon_mod
+				lathe_to_fill.stored_materials.add(mats, decon_mod)
 			qdel(B)
 		playsound(get_turf(src), 'sound/machines/click.ogg', 50, 1)
 		rped_recycler_ready = FALSE

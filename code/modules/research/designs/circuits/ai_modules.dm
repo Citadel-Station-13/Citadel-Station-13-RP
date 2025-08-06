@@ -3,7 +3,7 @@
 	lathe_type = LATHE_TYPE_CIRCUIT
 	category = DESIGN_CATEGORY_AI
 	subcategory = DESIGN_SUBCATEGORY_LAWS
-	materials_base = list(MAT_GLASS = 2000, MAT_GOLD = 100)
+	materials_base = list(MAT_GLASS = 250, MAT_GOLD = 50)
 
 /datum/prototype/design/aimodule/generate_name(template)
 	return "AI module design ([template])"
