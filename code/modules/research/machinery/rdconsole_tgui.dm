@@ -73,7 +73,7 @@
 		if(d_disk)
 			data["info"]["d_disk"] = list(
 				"present" = TRUE,
-				"stored" = (d_disk.used_storage() > 0),
+				"stored" = (d_disk.design_count() > 0),
 			)
 			if(d_disk.design_ids)
 				var/list/id_name = list()
@@ -184,13 +184,14 @@
 			busy_msg = "Updating Database..."
 			spawn(5 SECONDS)
 				busy_msg = null
-				if(d_disk?.design_ids)
-					files.AddDesign2Known(RSdesigns.fetch(params["design"]))
+				if(params["design"] in d_disk.get_designs())
+					src.files.AddDesign2Known(RSdesigns.fetch(params["design"]))
+					UpdateKnownDesigns()
 				update_static_data(usr, ui)
 			return TRUE
 
 		if("clear_design") //Erases data on the design disk.
-			d_disk.design_ids -= params["design"]
+			d_disk.remove_design(params["design"])
 			update_ui_data(usr, ui)
 			return TRUE
 
@@ -202,8 +203,8 @@
 
 		if("copy_design") //Copy design data from the research holder to the design disk.
 			var/target_design_id = params["copy_design_ID"]
-			if(target_design_id in files.known_design_ids)
-				LAZYDISTINCTADD(d_disk.design_ids, target_design_id)
+			if(target_design_id in src.files.known_design_ids)
+				d_disk.add_design(target_design_id)
 			return TRUE
 
 		if("eject_item") //Eject the item inside the destructive analyzer.

@@ -20,15 +20,16 @@
 
 /obj/item/disk/design_disk/proc/used_storage()
 	var/tally = 0
-	for(var/datum/prototype/design/check in design_ids)
-		tally += check.complexity
+	for(var/check in design_ids)
+		var/datum/prototype/design/D = RSdesigns.fetch(check)
+		tally += D?.complexity
 	return tally
 
 /obj/item/disk/design_disk/proc/get_remaining_capacity()
-	return (used_storage() - design_capacity)
+	return (design_capacity - used_storage())
 
 /obj/item/disk/design_disk/proc/add_design_force(var/added_id)
-	LAZYADD(design_ids, added_id)
+	LAZYDISTINCTADD(design_ids, added_id)
 	return TRUE
 
 /obj/item/disk/design_disk/proc/del_design_force(var/removed_id)

@@ -2,22 +2,13 @@
 	category = DESIGN_CATEGORY_MUNITIONS
 	abstract_type = /datum/prototype/design/science/weapon
 
-/datum/prototype/design/science/weapon/generate_name(template)
-	return "Weapon prototype ([..()])"
-
 /datum/prototype/design/science/weapon/ammo
 	category = DESIGN_SUBCATEGORY_AMMO
 	abstract_type = /datum/prototype/design/science/weapon/ammo
 
-/datum/prototype/design/science/weapon/ammo/generate_name(template)
-	return "Weapon ammo ([..()])"
-
 /datum/prototype/design/science/weapon/energy
 	subcategory = DESIGN_SUBCATEGORY_ENERGY
 	abstract_type = /datum/prototype/design/science/weapon/energy
-
-/datum/prototype/design/science/weapon/energy/generate_name(template)
-	return "Energy weapon prototype ([..()])"
 
 /datum/prototype/design/science/weapon/energy/stunrevolver
 	id = "stunrevolver"
@@ -69,14 +60,8 @@
 	subcategory = DESIGN_SUBCATEGORY_BALLISTIC
 	abstract_type = /datum/prototype/design/science/weapon/ballistic
 
-/datum/prototype/design/science/weapon/ballistic/generate_name(template)
-	return "Ballistic weapon prototype ([..()])"
-
 /datum/prototype/design/science/weapon/ballistic/ammo
 	abstract_type = /datum/prototype/design/science/weapon/ballistic/ammo
-
-/datum/prototype/design/science/weapon/ballistic/ammo/generate_name(template)
-	return "Ballistic weapon ammo ([..()])"
 
 /datum/prototype/design/science/weapon/ballistic/ammo/techshell
 	design_name = "unloaded tech shell"
@@ -216,9 +201,6 @@
 /datum/prototype/design/science/weapon/phase
 	abstract_type = /datum/prototype/design/science/weapon/phase
 
-/datum/prototype/design/science/weapon/phase/generate_name(template)
-	return "Phase weapon prototype ([..()])"
-
 /datum/prototype/design/science/weapon/phase/phase_pistol
 	id = "phasepistol"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2, TECH_POWER = 2)
@@ -300,18 +282,15 @@
 	subcategory = DESIGN_SUBCATEGORY_MELEE
 	abstract_type = /datum/prototype/design/science/weapon/melee
 
-/datum/prototype/design/science/weapon/melee/generate_name(template)
-	return "Melee weapon prototype ([..()])"
-
 /datum/prototype/design/science/weapon/melee/esword
-	design_name = "Portable Energy Blade"
+	design_name = "charge sword"
 	id = "chargesword"
 	req_tech = list(TECH_COMBAT = 6, TECH_MAGNET = 4, TECH_ENGINEERING = 5, TECH_ILLEGAL = 4, TECH_ARCANE = 1)
 	materials_base = list(MAT_PLASTEEL = 1750, MAT_GLASS = 750, MAT_LEAD = 750, MAT_METALHYDROGEN = 500)
 	build_path = /obj/item/melee/transforming/energy/sword/charge
 
 /datum/prototype/design/science/weapon/melee/eaxe
-	design_name = "Energy Axe"
+	design_name = "charge axe"
 	id = "chargeaxe"
 	req_tech = list(TECH_COMBAT = 6, TECH_MAGNET = 5, TECH_ENGINEERING = 4, TECH_ILLEGAL = 4)
 	materials_base = list(MAT_PLASTEEL = 1500, MAT_OSMIUM = 1500, MAT_LEAD = 2000, MAT_METALHYDROGEN = 500)
@@ -319,9 +298,6 @@
 
 /datum/prototype/design/science/weapon/grenade
 	abstract_type = /datum/prototype/design/science/weapon/grenade
-
-/datum/prototype/design/science/weapon/grenade/generate_name(template)
-	return "Grenade casing prototype ([..()])"
 
 /datum/prototype/design/science/weapon/grenade/large_grenade
 	id = "large_Grenade"
@@ -353,9 +329,6 @@
 /datum/prototype/design/science/weapon/particle
 	abstract_type = /datum/prototype/design/science/weapon/particle
 
-/datum/prototype/design/science/weapon/particle/generate_name(template)
-	return "Anti-particle weapon prototype ([..()])"
-
 /datum/prototype/design/science/weapon/particle/advparticle
 	design_name = "Advanced anti-particle rifle"
 	id = "advparticle"
@@ -379,9 +352,6 @@
 
 /datum/prototype/design/science/weapon/cell_based
 	abstract_type = /datum/prototype/design/science/weapon/cell_based
-
-/datum/prototype/design/science/weapon/cell_based/generate_name(template)
-	return "Cell-based weapon prototype ([..()])"
 
 /datum/prototype/design/science/weapon/cell_based/prototype_nsfw
 	design_name = "cell-loaded revolver"
@@ -462,18 +432,13 @@
 	subcategory = DESIGN_SUBCATEGORY_PINS
 	abstract_type = /datum/prototype/design/science/pin
 
-/datum/prototype/design/science/pin/generate_name(template)
-	return "Weapon firing pin ([..()])"
-
 /datum/prototype/design/science/pin/test
-	design_name = "Testing range"
 	id = "test_range_pin"
 	req_tech = list(TECH_MATERIAL = 3, TECH_POWER = 2, TECH_COMBAT = 2)
 	materials_base = list(MAT_STEEL = 100)
 	build_path = /obj/item/firing_pin/test_range
 
 /datum/prototype/design/science/pin/explorer
-	design_name = "Exploration"
 	id = "explorer_pin"
 	req_tech = list(TECH_MATERIAL = 3, TECH_POWER = 2, TECH_COMBAT = 2)
 	materials_base = list(MAT_STEEL = 100, MAT_GLASS = 50)
