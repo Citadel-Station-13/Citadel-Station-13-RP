@@ -26,7 +26,7 @@
 		M = new /mob/living/carbon/human(get_turf(source))
 	M.real_name = source.real_name
 	M.name = M.real_name
-	M.ckey = source.ckey
+	source.transfer_client_to(M)
 	add_antagonist(M.mind, 1, 0, 1) // Equip them and move them to spawn.
 	return M
 
@@ -44,9 +44,9 @@
 	var/obj/item/radio/R
 
 	switch(freq)
-		if(SYND_FREQ)
+		if(FREQ_SYNDICATE)
 			R = new/obj/item/radio/headset/syndicate(player)
-		if(RAID_FREQ)
+		if(FREQ_RAIDER)
 			R = new/obj/item/radio/headset/raider(player)
 		else
 			R = new/obj/item/radio/headset(player)

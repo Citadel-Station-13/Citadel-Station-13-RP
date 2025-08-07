@@ -140,7 +140,7 @@
 /area/admin_planet/croatoan/extreme_security_containment_facilities)
 "ao" = (
 /obj/item/pickaxe/diamonddrill,
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/mountain)
 "ap" = (
 /obj/structure/cable{
@@ -152,7 +152,7 @@
 /obj/structure/bed/chair/sofa/black/left{
 	dir = 1
 	},
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "at" = (
 /turf/simulated/wall/durasteel,
@@ -188,7 +188,7 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 8
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "ay" = (
 /obj/effect/floor_decal/corner/lightorange/border{
@@ -201,7 +201,7 @@
 /area/admin_planet/croatoan/med_chemistry)
 "az" = (
 /obj/effect/debris/cleanable/blood/oil,
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/mountain)
 "aA" = (
 /obj/effect/floor_decal/borderfloor,
@@ -324,15 +324,6 @@
 /obj/spawner/corpse/scientist,
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/high_sec_science_entrance)
-"aZ" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/external,
-/area/admin_planet/croatoan/civilian/dorms)
 "ba" = (
 /obj/effect/floor_decal/corner_oldtile/red/diagonal,
 /obj/structure/table/wooden_reinforced,
@@ -458,7 +449,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/outdoors,
 /area/admin_planet/croatoan/med_checkpoint_lower)
 "bv" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -583,7 +574,7 @@
 /area/admin_planet/croatoan/high_sec_science_containment_cells)
 "bR" = (
 /obj/structure/closet/secure_closet/personal,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "bT" = (
 /obj/structure/cable{
@@ -818,7 +809,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 10
 	},
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/high_sec_science_containment_cells)
 "cA" = (
 /obj/machinery/beehive,
@@ -995,7 +986,7 @@
 	info = "The further we go in, the heavier gear we need. Mountain's tough as Hell to dig into, had to start using those bulky excavation drills."
 	},
 /obj/structure/table/reinforced,
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/mountain)
 "cX" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -1048,7 +1039,7 @@
 /obj/structure/railing/grey{
 	dir = 3
 	},
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/civ_bar_public)
 "dk" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -1332,7 +1323,7 @@
 	info = "Had a lot of shipments come in out of the blue recently. Not the usual either, like materials and new hires. Saw a bunch of Blackstar guys come in recently too, all carrying rifles strapped to their backs and wearing red voidsuits. I can tell it's getting some of the other guys on edge, too.";
 	name = "Shipments"
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "dX" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -1394,7 +1385,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/outdoors,
 /area/admin_planet/croatoan/mountain_plains)
 "el" = (
 /obj/machinery/atmospherics/pipe/simple/visible/black{
@@ -1403,11 +1394,11 @@
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/sci_canister_storage)
 "en" = (
-/turf/simulated/sky/triumph,
+/turf/simulated/fake_sky/triumph,
 /area/admin_planet/croatoan/mountain)
 "eo" = (
 /obj/machinery/light/flamp/noshade,
-/turf/simulated/floor/outdoors/dirt/classp,
+/turf/simulated/floor/outdoors/dirt,
 /area/admin_planet/croatoan/mountain_plains)
 "ep" = (
 /obj/machinery/light,
@@ -1454,7 +1445,7 @@
 /area/admin_planet/croatoan/sci_primary_hallway)
 "ey" = (
 /obj/structure/closet/firecloset/full,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "ez" = (
 /turf/simulated/mineral/icerock,
@@ -1486,7 +1477,7 @@
 /area/admin_planet/croatoan/high_sec_science_lower_checkpoint)
 "eF" = (
 /obj/structure/bed/chair/wood,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "eG" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -1523,7 +1514,7 @@
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/extreme_security_containment_facilities)
 "eL" = (
-/obj/structure/sign/poster,
+/obj/structure/poster,
 /turf/simulated/wall/prepainted/civilian,
 /area/admin_planet/croatoan/civ_hydro)
 "eM" = (
@@ -1797,25 +1788,9 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/high_sec_science_containment_cells)
-"fA" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/machinery/light/flamp/noshade,
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/external,
-/area/admin_planet/croatoan/civilian/dorms)
 "fB" = (
 /obj/effect/floormimic/plating/guaranteed,
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/high_sec_science_containment_cells)
 "fC" = (
 /obj/effect/floor_decal/corner/red/border{
@@ -1929,12 +1904,12 @@
 /area/admin_planet/croatoan/high_sec_science_lower_checkpoint)
 "gb" = (
 /obj/structure/closet/secure_closet/guncabinet,
-/obj/item/gun/ballistic/shotgun/pump/combat,
-/obj/item/gun/ballistic/shotgun/pump/combat{
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat,
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat{
 	pixel_y = 7
 	},
-/obj/item/gun/ballistic/shotgun/pump/combat/warden,
-/obj/item/gun/ballistic/shotgun/pump/JSDF,
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat/warden,
+/obj/item/gun/projectile/ballistic/shotgun/pump/JSDF,
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/sec_armory)
 "gc" = (
@@ -1966,7 +1941,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 6
 	},
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/high_sec_science_containment_cells)
 "gk" = (
 /obj/structure/sign/signnew/canisters,
@@ -1982,8 +1957,8 @@
 /area/admin_planet/croatoan/high_sec_science_virology_lab)
 "gn" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/gun/combat,
-/obj/item/gun/energy/gun/combat,
+/obj/item/gun/projectile/energy/gun/combat,
+/obj/item/gun/projectile/energy/gun/combat,
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/sec_armory)
 "go" = (
@@ -2019,10 +1994,10 @@
 /area/admin_planet/croatoan/high_sec_science_checkpoint)
 "gt" = (
 /obj/machinery/mining/brace,
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/mountain_plains)
 "gu" = (
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /turf/simulated/wall/prepainted,
 /area/admin_planet/croatoan/civ_bar_public)
 "gv" = (
@@ -2046,6 +2021,22 @@
 /obj/effect/floor_decal/corner/grey/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/admin_planet/croatoan/civ_bar_public)
+"gC" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/machinery/light/flamp/noshade,
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/outdoors,
+/area/admin_planet/croatoan/civilian/dorms)
 "gE" = (
 /obj/machinery/door/airlock/highsecurity{
 	name = "High Security Science Wing Containment Access";
@@ -2135,7 +2126,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/admin_planet/croatoan/sci_xenoflora_lab)
 "gY" = (
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/mountain_plains)
 "gZ" = (
 /obj/structure/railing{
@@ -2161,10 +2152,10 @@
 /obj/structure/bed/chair/wood{
 	dir = 1
 	},
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "he" = (
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/mountain)
 "hf" = (
 /obj/structure/salvageable/server,
@@ -2191,7 +2182,7 @@
 "hj" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/green,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "hk" = (
 /obj/item/card/id/centcom/ERT{
@@ -2478,7 +2469,7 @@
 "ii" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/mime,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "ij" = (
 /obj/machinery/power/apc/alarms_hidden/east_mount,
@@ -2558,6 +2549,21 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/admin_planet/croatoan/sci_entry_hallway)
+"ir" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/outdoors,
+/area/admin_planet/croatoan/civilian/dorms)
 "is" = (
 /obj/structure/table/standard,
 /obj/item/storage/box/bodybags,
@@ -2602,7 +2608,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "iG" = (
 /obj/machinery/door/airlock/engineering{
@@ -2618,12 +2624,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/sci_canister_storage)
-"iI" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/external,
-/area/admin_planet/croatoan/civilian/dorms)
 "iJ" = (
 /obj/machinery/light{
 	dir = 4
@@ -2917,7 +2917,7 @@
 /area/admin_planet/croatoan/high_sec_science_lower_checkpoint)
 "jL" = (
 /obj/structure/flora/rock/ice,
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/mountain)
 "jM" = (
 /obj/effect/floor_decal/corner/red/border{
@@ -2966,7 +2966,7 @@
 "jW" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/blue,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "jX" = (
 /obj/structure/cable{
@@ -3144,7 +3144,7 @@
 /area/admin_planet/croatoan/sci_robotics_lab)
 "kI" = (
 /obj/machinery/light/flamp/noshade,
-/turf/simulated/floor/outdoors/dirt/classp,
+/turf/simulated/floor/outdoors/dirt,
 /area/admin_planet/croatoan/med_checkpoint_lower)
 "kK" = (
 /obj/effect/floor_decal/borderfloor{
@@ -3250,8 +3250,8 @@
 /area/admin_planet/croatoan/sci_cargo_shuttle_pad)
 "le" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/combat,
-/obj/item/gun/energy/combat,
+/obj/item/gun/projectile/energy/combat,
+/obj/item/gun/projectile/energy/combat,
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/sec_armory)
 "lg" = (
@@ -3315,7 +3315,7 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 8
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "lt" = (
 /obj/machinery/computer/security{
@@ -3406,7 +3406,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/sign/m,
-/turf/simulated/floor/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/outdoors,
 /area/admin_planet/croatoan/med_checkpoint_lower)
 "lH" = (
 /obj/machinery/computer/secure_data{
@@ -3424,7 +3424,7 @@
 /area/admin_planet/croatoan/high_sec_science_containment_cells)
 "lK" = (
 /obj/machinery/light/flamp/noshade,
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/sci_cargo_shuttle_pad)
 "lL" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -3441,7 +3441,7 @@
 /area/admin_planet/croatoan/high_sec_science_observation)
 "lM" = (
 /obj/spawner/corpse/syndicatecommando,
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/landing_pad)
 "lN" = (
 /obj/spawner/window/borosillicate/reinforced/full,
@@ -3453,7 +3453,7 @@
 "lO" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/clown,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "lQ" = (
 /obj/structure/table/reinforced,
@@ -3570,7 +3570,7 @@
 /obj/structure/bed/chair/backed_grey{
 	dir = 1
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "mz" = (
 /obj/structure/railing{
@@ -3786,7 +3786,7 @@
 /obj/effect/shuttle_landmark/automatic{
 	name = "Hammer-Head Landing Pad"
 	},
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/landing_pad)
 "ne" = (
 /mob/living/simple_mob/mechanical/combat_drone,
@@ -4024,7 +4024,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
 	},
-/turf/simulated/floor/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/outdoors,
 /area/admin_planet/croatoan/med_checkpoint_lower)
 "nW" = (
 /obj/effect/floor_decal/corner/lightorange/border,
@@ -4067,7 +4067,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/outdoors,
 /area/admin_planet/croatoan/mountain_plains)
 "oe" = (
 /obj/structure/cable{
@@ -4085,6 +4085,22 @@
 /obj/item/pen,
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/high_sec_science_observation)
+"oj" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/machinery/light/flamp/noshade,
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/outdoors,
+/area/admin_planet/croatoan/civilian/dorms)
 "ol" = (
 /obj/machinery/light{
 	dir = 1
@@ -4196,7 +4212,7 @@
 /area/admin_planet/croatoan/med_treatment)
 "oy" = (
 /obj/machinery/light/flamp,
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/landing_pad)
 "oB" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
@@ -4227,6 +4243,12 @@
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/admin_planet/croatoan/med_chemistry)
+"oG" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/outdoors,
+/area/admin_planet/croatoan/civilian/dorms)
 "oH" = (
 /obj/effect/floor_decal/corner/lightorange/border{
 	dir = 6
@@ -4254,7 +4276,7 @@
 /area/admin_planet/croatoan/med_treatment)
 "oL" = (
 /obj/effect/debris/cleanable/blood/oil/streak,
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/mountain)
 "oM" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -4298,7 +4320,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/high_sec_science_containment_cells)
 "oR" = (
 /obj/structure/closet/crate/corporate/nanomed,
@@ -4395,6 +4417,9 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/red,
 /area/admin_planet/croatoan/sec_equipment_storage)
+"pg" = (
+/turf/simulated/floor/tiled/outdoors,
+/area/admin_planet/croatoan/civilian/dorms)
 "ph" = (
 /obj/structure/atmospheric_retention_field,
 /obj/machinery/door/airlock/external{
@@ -4426,7 +4451,7 @@
 "po" = (
 /obj/machinery/power/apc/alarms_hidden/south_mount,
 /obj/structure/cable,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "pp" = (
 /mob/living/simple_mob/mechanical/combat_drone,
@@ -4526,7 +4551,7 @@
 /area/admin_planet/croatoan/high_sec_science_containment_cells)
 "pH" = (
 /obj/effect/floor_decal/industrial/warning,
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/high_sec_science_containment_cells)
 "pJ" = (
 /obj/effect/floor_decal/corner/red/border{
@@ -4539,8 +4564,8 @@
 /area/admin_planet/croatoan/sec_holding_cells)
 "pL" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/gun/fluff/dominator,
-/obj/item/gun/energy/gun/fluff/dominator,
+/obj/item/gun/projectile/energy/gun/fluff/dominator,
+/obj/item/gun/projectile/energy/gun/fluff/dominator,
 /obj/machinery/light/small/emergency{
 	dir = 4
 	},
@@ -4765,12 +4790,12 @@
 /area/admin_planet/croatoan/sci_anomaly_lab)
 "qt" = (
 /obj/effect/debris/cleanable/blood/splatter,
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/mountain)
 "qu" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/donator_teak,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "qw" = (
 /obj/random/obstruction,
@@ -4935,7 +4960,7 @@
 /area/admin_planet/croatoan/sec_entrance_hallway)
 "rj" = (
 /obj/item/pickaxe,
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/mountain)
 "rm" = (
 /obj/structure/cable{
@@ -5050,15 +5075,6 @@
 /obj/random/obstruction,
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/high_sec_science_control_center)
-"rI" = (
-/obj/effect/floor_decal/industrial/halfstair{
-	dir = 1
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/external,
-/area/admin_planet/croatoan/civilian/dorms)
 "rJ" = (
 /turf/simulated/wall/r_wall/prepainted/security,
 /area/admin_planet/croatoan/sec_main_hallway)
@@ -5287,7 +5303,7 @@
 	id_tag = "dorm1";
 	name = "Dormitory Lobby"
 	},
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "su" = (
 /obj/structure/sign/signnew/canisters,
@@ -5341,7 +5357,7 @@
 "sG" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/purple,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "sJ" = (
 /obj/effect/floor_decal/corner/red/border,
@@ -5361,15 +5377,15 @@
 /area/admin_planet/croatoan/civ_bar_public)
 "sN" = (
 /obj/structure/table/reinforced,
-/obj/item/storage/hypokit,
-/obj/item/storage/hypokit{
+/obj/item/storage/hypokit/full/loaded,
+/obj/item/storage/hypokit/full/loaded{
 	pixel_x = -8;
 	pixel_y = -8
 	},
-/obj/item/storage/hypokit{
+/obj/item/storage/hypokit/full/loaded{
 	pixel_x = -8
 	},
-/obj/item/storage/hypokit{
+/obj/item/storage/hypokit/full/loaded{
 	pixel_x = -8;
 	pixel_y = 8
 	},
@@ -5515,12 +5531,6 @@
 /obj/effect/floor_decal/corner_techfloor_grid/diagonal,
 /turf/simulated/floor/tiled/dark,
 /area/admin_planet/croatoan/med_storage)
-"ti" = (
-/obj/structure/table/borosilicate,
-/obj/item/ammo_magazine/s357,
-/obj/item/ammo_magazine/s357,
-/turf/simulated/floor/tiled/steel_dirty/red,
-/area/admin_planet/croatoan/sec_hos_office)
 "tn" = (
 /obj/structure/table/standard,
 /obj/effect/floor_decal/corner/grey/diagonal,
@@ -5535,7 +5545,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/blue/border,
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "tp" = (
 /turf/simulated/floor/tiled/dark,
@@ -5575,7 +5585,7 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/outdoors,
 /area/admin_planet/croatoan/mountain_plains)
 "tz" = (
 /obj/structure/reagent_dispensers/watertank/high,
@@ -5729,7 +5739,7 @@
 	dir = 4
 	},
 /obj/machinery/camera/east_mount,
-/turf/simulated/floor/outdoors/dirt/classp,
+/turf/simulated/floor/outdoors/dirt,
 /area/admin_planet/croatoan/med_checkpoint_lower)
 "tN" = (
 /obj/machinery/light{
@@ -5745,7 +5755,7 @@
 /turf/simulated/floor/tiled/white,
 /area/admin_planet/croatoan/civilian/dorms)
 "tP" = (
-/obj/structure/sign/poster,
+/obj/structure/poster,
 /turf/simulated/wall/prepainted,
 /area/admin_planet/croatoan/civ_kitchen)
 "tQ" = (
@@ -5842,7 +5852,7 @@
 	docking_controller = "frozen";
 	name = "Civilian Shuttle Landing Pad"
 	},
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/landing_pad)
 "um" = (
 /turf/simulated/wall/r_wall/prepainted/security,
@@ -5852,6 +5862,15 @@
 /obj/item/electronic_assembly/large/default,
 /turf/simulated/floor/tiled/techmaint,
 /area/admin_planet/croatoan/sci_circuitry_lab)
+"uo" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/outdoors,
+/area/admin_planet/croatoan/civilian/dorms)
 "uq" = (
 /obj/machinery/door/airlock/highsecurity{
 	name = "High Security Science Wing Containment Access";
@@ -5868,7 +5887,7 @@
 /area/admin_planet/croatoan/med_chemistry)
 "ut" = (
 /obj/machinery/camera/west_mount,
-/turf/simulated/floor/outdoors/dirt/classp,
+/turf/simulated/floor/outdoors/dirt,
 /area/admin_planet/croatoan/mountain_plains)
 "uu" = (
 /obj/structure/table/reinforced,
@@ -6083,7 +6102,7 @@
 /obj/effect/floor_decal/corner/beige{
 	dir = 4
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "vd" = (
 /obj/machinery/portable_atmospherics/hydroponics,
@@ -6101,7 +6120,7 @@
 /obj/structure/window/reinforced/survival_pod{
 	dir = 8
 	},
-/obj/item/gun/ballistic/revolver/mateba{
+/obj/item/gun/projectile/ballistic/revolver/mateba{
 	name = "Last Hope";
 	desc = "A highly ordained Mateba which seems to have seen quite a lot of action. Engravings cover the length of the revolver, telling tales of uncountable holders and endless glory."
 	},
@@ -6324,7 +6343,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/admin_planet/croatoan/sci_xenoflora_lab)
 "vW" = (
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/mountain)
 "vX" = (
 /obj/effect/floor_decal/corner/paleblue/border,
@@ -6359,7 +6378,7 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/outdoors,
 /area/admin_planet/croatoan/mountain_plains)
 "we" = (
 /obj/machinery/door/airlock/glass/research{
@@ -6501,7 +6520,7 @@
 "wE" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/brown,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "wG" = (
 /obj/machinery/power/apc/alarms_hidden/east_mount,
@@ -6531,7 +6550,7 @@
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/high_sec_science_entrance)
 "wN" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/tiled/steel_dirty/red,
 /area/admin_planet/croatoan/sec_hos_office)
 "wO" = (
@@ -6560,7 +6579,7 @@
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 4
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "wS" = (
 /obj/effect/floor_decal/industrial/warning,
@@ -6581,7 +6600,7 @@
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 8
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "wW" = (
 /obj/machinery/light/flicker,
@@ -6734,7 +6753,7 @@
 	dir = 5;
 	icon_state = "warning"
 	},
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/high_sec_science_containment_cells)
 "xs" = (
 /obj/effect/floor_decal/borderfloor{
@@ -6818,19 +6837,19 @@
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/sci_cargo_shuttle_pad)
 "xO" = (
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/sci_cargo_shuttle_pad)
 "xR" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/lasershotgun,
-/obj/item/gun/energy/lasershotgun,
+/obj/item/gun/projectile/energy/lasershotgun,
+/obj/item/gun/projectile/energy/lasershotgun,
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/sec_armory)
 "xU" = (
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 4
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "xV" = (
 /turf/simulated/floor/tiled/steel,
@@ -6880,7 +6899,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/outdoors,
 /area/admin_planet/croatoan/mountain_plains)
 "yh" = (
 /obj/machinery/door/airlock/highsecurity{
@@ -6912,7 +6931,6 @@
 /area/admin_planet/croatoan/sec_holding_cells)
 "yj" = (
 /obj/structure/reagent_dispensers/virusfood,
-/turf/simulated/floor/reinforced,
 /turf/simulated/wall/durasteel,
 /area/admin_planet/croatoan/high_sec_science_virology_lab)
 "yl" = (
@@ -7041,14 +7059,14 @@
 	dir = 4
 	},
 /obj/machinery/camera/east_mount,
-/turf/simulated/floor/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/outdoors,
 /area/admin_planet/croatoan/med_checkpoint_lower)
 "yx" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
 /obj/effect/floor_decal/corner/beige{
 	dir = 6
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_kitchen)
 "yy" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
@@ -7058,13 +7076,13 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "yA" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 9
 	},
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/high_sec_science_containment_cells)
 "yB" = (
 /obj/effect/floor_decal/corner/paleblue{
@@ -7216,7 +7234,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/high_sec_science_containment_cells)
 "yZ" = (
 /obj/effect/forcefield/cult,
@@ -7405,7 +7423,7 @@
 /area/admin_planet/croatoan/high_sec_science_entrance)
 "zM" = (
 /obj/structure/flora/rock,
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/mountain)
 "zN" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -7464,6 +7482,15 @@
 /obj/machinery/appliance/cooker/oven,
 /turf/simulated/floor/tiled/white,
 /area/admin_planet/croatoan/civ_kitchen)
+"zZ" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/outdoors,
+/area/admin_planet/croatoan/civilian/dorms)
 "Aa" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
 /obj/machinery/light{
@@ -7548,7 +7575,7 @@
 /area/admin_planet/croatoan/sci_upper_checkpoint)
 "Ar" = (
 /obj/structure/flora/rock/ice/alternative_1,
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/mountain)
 "At" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -7601,7 +7628,7 @@
 	dir = 4;
 	light_range = 12
 	},
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/high_sec_science_containment_cells)
 "AF" = (
 /obj/machinery/door/airlock/highsecurity{
@@ -7783,7 +7810,7 @@
 /area/admin_planet/croatoan/sec_entrance_hallway)
 "Bp" = (
 /obj/effect/floor_decal/corner/blue/border,
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "Bq" = (
 /obj/effect/floor_decal/borderfloor/corner{
@@ -7896,8 +7923,17 @@
 /area/admin_planet/croatoan/med_cmo_office)
 "BL" = (
 /obj/machinery/light/flamp/noshade,
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/mountain_plains)
+"BM" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/outdoors,
+/area/admin_planet/croatoan/civilian/dorms)
 "BN" = (
 /obj/machinery/seed_extractor,
 /obj/effect/floor_decal/corner/lime/border{
@@ -7937,6 +7973,12 @@
 /obj/effect/floor_decal/corner/paleblue/border,
 /turf/simulated/floor/tiled/white,
 /area/admin_planet/croatoan/med_treatment)
+"BY" = (
+/obj/structure/table/borosilicate,
+/obj/item/ammo_magazine/a357/speedloader,
+/obj/item/ammo_magazine/a357/speedloader,
+/turf/simulated/floor/tiled/steel_dirty/red,
+/area/admin_planet/croatoan/sec_hos_office)
 "Cc" = (
 /obj/structure/closet/secure_closet/hos2,
 /turf/simulated/floor/tiled/steel_dirty/red,
@@ -7987,7 +8029,7 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 8
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "Ck" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -8001,7 +8043,7 @@
 /area/admin_planet/croatoan/high_sec_science_observation)
 "Cl" = (
 /obj/structure/table/wooden_reinforced,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "Cp" = (
 /obj/machinery/portable_atmospherics/canister/chlorine,
@@ -8048,10 +8090,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/high_sec_science_containment_cells)
-"Cz" = (
-/obj/structure/reagent_dispensers/virusfood,
-/turf/simulated/wall/durasteel,
-/area/admin_planet/croatoan/high_sec_science_virology_lab)
 "CA" = (
 /obj/machinery/door/airlock/vault{
 	name = "Extreme Security Containment Cell Access";
@@ -8088,6 +8126,15 @@
 /obj/structure/table/hardwoodtable,
 /turf/simulated/floor/tiled/dark,
 /area/admin_planet/croatoan/civ_bar_public)
+"CG" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/outdoors,
+/area/admin_planet/croatoan/civilian/dorms)
 "CI" = (
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/effect/floor_decal/corner/paleblue/border{
@@ -8150,7 +8197,7 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/outdoors,
 /area/admin_planet/croatoan/mountain_plains)
 "CX" = (
 /obj/structure/fake_stairs/north/top{
@@ -8241,7 +8288,7 @@
 /area/admin_planet/croatoan/civ_bar_public)
 "Dn" = (
 /obj/machinery/light/flamp/noshade,
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/landing_pad)
 "Dp" = (
 /turf/simulated/wall/r_wall/prepainted/security,
@@ -8273,7 +8320,7 @@
 /area/admin_planet/croatoan/sec_equipment_storage)
 "Dt" = (
 /obj/effect/floor_decal/borderfloor/corner,
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "Dv" = (
 /obj/machinery/light,
@@ -8358,7 +8405,7 @@
 "DQ" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/orange,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "DT" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -8515,21 +8562,6 @@
 /obj/random/obstruction,
 /turf/simulated/floor/tiled/steel,
 /area/admin_planet/croatoan/sci_entry_hallway)
-"Ex" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/external,
-/area/admin_planet/croatoan/civilian/dorms)
 "Ez" = (
 /obj/machinery/light{
 	dir = 1
@@ -8540,7 +8572,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "EC" = (
 /obj/structure/fake_stairs/north/top{
@@ -8723,7 +8755,7 @@
 	id_tag = "dorm1";
 	name = "Dormitory"
 	},
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "Ff" = (
 /obj/effect/floor_decal/corner_oldtile/red/diagonal,
@@ -8936,21 +8968,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/admin_planet/croatoan/sec_holding_cells)
-"FI" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/external,
-/area/admin_planet/croatoan/civilian/dorms)
 "FJ" = (
 /obj/machinery/porta_turret{
 	emagged = 1
@@ -8984,7 +9001,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "FP" = (
 /obj/machinery/portable_atmospherics/canister/air,
@@ -9013,7 +9030,7 @@
 /turf/simulated/floor/tiled/freezer/cold,
 /area/admin_planet/croatoan/civ_kitchen)
 "FU" = (
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "FW" = (
 /obj/effect/floor_decal/borderfloor{
@@ -9089,7 +9106,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "Gt" = (
 /obj/machinery/light{
@@ -9193,7 +9210,7 @@
 	id_tag = "dorm1";
 	name = "Dormitory"
 	},
-/turf/simulated/floor/trap/delayed/wood/classp,
+/turf/simulated/floor/trap/delayed/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "GJ" = (
 /obj/structure/closet/l3closet/scientist,
@@ -9254,6 +9271,21 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/red,
 /area/admin_planet/croatoan/sec_equipment_storage)
+"GQ" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/outdoors,
+/area/admin_planet/croatoan/civilian/dorms)
 "GT" = (
 /obj/structure/closet/crate/corporate/aether,
 /obj/machinery/light,
@@ -9264,7 +9296,7 @@
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 1
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "GV" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -9290,7 +9322,7 @@
 /turf/simulated/wall/r_wall/prepainted/security,
 /area/admin_planet/croatoan/sci_primary_hallway)
 "Hb" = (
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "Hc" = (
 /obj/structure/railing{
@@ -9356,7 +9388,7 @@
 /area/admin_planet/croatoan/med_treatment)
 "Hn" = (
 /obj/structure/barricade,
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/mountain)
 "Hu" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -9376,7 +9408,7 @@
 /area/admin_planet/croatoan/civ_kitchen)
 "Hz" = (
 /obj/machinery/camera/west_mount,
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/mountain_plains)
 "HA" = (
 /obj/effect/floor_decal/industrial/loading{
@@ -9399,41 +9431,41 @@
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/high_sec_science_lower_checkpoint)
 "HF" = (
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark";
 	icon = 'icons/turf/walls.dmi'
 	},
 /area/admin_planet/croatoan/landing_pad)
 "HG" = (
-/obj/item/gun/energy/secutor,
-/obj/item/gun/energy/secutor{
+/obj/item/gun/projectile/energy/secutor,
+/obj/item/gun/projectile/energy/secutor{
 	pixel_y = -5
 	},
-/obj/item/gun/energy/secutor{
+/obj/item/gun/projectile/energy/secutor{
 	pixel_y = -3
 	},
-/obj/item/gun/energy/secutor{
+/obj/item/gun/projectile/energy/secutor{
 	pixel_y = -1
 	},
-/obj/item/gun/energy/taser,
-/obj/item/gun/energy/taser{
+/obj/item/gun/projectile/energy/taser,
+/obj/item/gun/projectile/energy/taser{
 	pixel_y = -4
 	},
-/obj/item/gun/energy/taser{
+/obj/item/gun/projectile/energy/taser{
 	pixel_y = -2
 	},
-/obj/item/gun/energy/taser{
+/obj/item/gun/projectile/energy/taser{
 	pixel_y = 2
 	},
-/obj/item/gun/energy/phasegun,
-/obj/item/gun/energy/phasegun,
-/obj/item/gun/energy/phasegun,
-/obj/item/gun/energy/phasegun,
-/obj/item/gun/energy/phasegun/pistol,
-/obj/item/gun/energy/phasegun/pistol,
-/obj/item/gun/energy/phasegun/pistol,
-/obj/item/gun/energy/phasegun/pistol,
+/obj/item/gun/projectile/energy/phasegun,
+/obj/item/gun/projectile/energy/phasegun,
+/obj/item/gun/projectile/energy/phasegun,
+/obj/item/gun/projectile/energy/phasegun,
+/obj/item/gun/projectile/energy/phasegun/pistol,
+/obj/item/gun/projectile/energy/phasegun/pistol,
+/obj/item/gun/projectile/energy/phasegun/pistol,
+/obj/item/gun/projectile/energy/phasegun/pistol,
 /obj/machinery/light/small/emergency{
 	dir = 1
 	},
@@ -9448,30 +9480,14 @@
 	name = "Construction Area"
 	},
 /obj/structure/fans/tiny,
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/sci_entry_hallway)
 "HJ" = (
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/admin_planet/croatoan/sci_robotics_lab)
 "HK" = (
-/turf/simulated/floor/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/outdoors,
 /area/admin_planet/croatoan/mountain_plains)
-"HM" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/machinery/light/flamp/noshade,
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/external,
-/area/admin_planet/croatoan/civilian/dorms)
 "HO" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -9806,7 +9822,7 @@
 /area/admin_planet/croatoan/high_sec_science_observation)
 "IP" = (
 /obj/item/pickaxe/excavationdrill,
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/mountain)
 "IR" = (
 /obj/machinery/r_n_d/destructive_analyzer,
@@ -9879,7 +9895,7 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 4
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "Jf" = (
 /obj/effect/floor_decal/corner/red/border{
@@ -9912,7 +9928,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/landing_pad)
 "Jk" = (
 /obj/structure/bed/chair{
@@ -10026,7 +10042,7 @@
 	docking_controller = "frozen";
 	name = "Exploration Shuttle Landing Pad"
 	},
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/landing_pad)
 "JE" = (
 /obj/structure/cable{
@@ -10099,7 +10115,7 @@
 /obj/item/card/id/civilian/janitor{
 	registered_name = "Chayse Nowton"
 	},
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "JR" = (
 /obj/machinery/light/flicker,
@@ -10134,7 +10150,7 @@
 /area/admin_planet/croatoan/high_sec_science_entrance)
 "JY" = (
 /obj/machinery/door/airlock/maintenance,
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/med_lobby)
 "Ka" = (
 /obj/effect/floor_decal/industrial/warning,
@@ -10188,7 +10204,7 @@
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/high_sec_science_control_center)
 "Kf" = (
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark";
 	icon = 'icons/turf/walls.dmi'
@@ -10287,12 +10303,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/high_sec_science_lower_checkpoint)
-"Kz" = (
-/obj/effect/floor_decal/industrial/halfstair{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/external,
-/area/admin_planet/croatoan/civilian/dorms)
 "KB" = (
 /obj/effect/floor_decal/corner/red/border{
 	dir = 1
@@ -10302,12 +10312,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/red,
 /area/admin_planet/croatoan/sec_operations_center)
-"KC" = (
-/obj/machinery/holoposter{
-	pixel_y = -32
-	},
-/turf/simulated/floor/tiled/external,
-/area/admin_planet/croatoan/civilian/dorms)
 "KD" = (
 /obj/effect/floor_decal/corner/lightorange/border{
 	dir = 4
@@ -10379,7 +10383,7 @@
 	id_tag = "dorm1";
 	name = "Dormitory Lobby"
 	},
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark";
 	icon = 'icons/turf/walls.dmi'
@@ -10408,7 +10412,7 @@
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/high_sec_science_containment_cells)
 "KX" = (
-/obj/structure/sign/poster,
+/obj/structure/poster,
 /turf/simulated/wall/dungeon,
 /area/admin_planet/croatoan/civ_bar_public)
 "KY" = (
@@ -10467,27 +10471,27 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/storage/hypokit,
-/obj/item/storage/hypokit{
+/obj/item/storage/hypokit/full/loaded,
+/obj/item/storage/hypokit/full/loaded{
 	pixel_x = -8;
 	pixel_y = -8
 	},
-/obj/item/storage/hypokit{
+/obj/item/storage/hypokit/full/loaded{
 	pixel_x = -8
 	},
-/obj/item/storage/hypokit{
+/obj/item/storage/hypokit/full/loaded{
 	pixel_x = -8;
 	pixel_y = 8
 	},
-/obj/item/storage/hypokit{
+/obj/item/storage/hypokit/full/loaded{
 	pixel_x = 8;
 	pixel_y = 8
 	},
-/obj/item/storage/hypokit{
+/obj/item/storage/hypokit/full/loaded{
 	pixel_x = 8;
 	pixel_y = -8
 	},
-/obj/item/storage/hypokit{
+/obj/item/storage/hypokit/full/loaded{
 	pixel_x = 8
 	},
 /obj/effect/floor_decal/corner_techfloor_grid/diagonal,
@@ -10592,10 +10596,10 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/outdoors,
 /area/admin_planet/croatoan/mountain_plains)
 "LA" = (
-/obj/structure/sign/poster,
+/obj/structure/poster,
 /turf/simulated/wall/prepainted,
 /area/admin_planet/croatoan/civ_bar_public)
 "LB" = (
@@ -10659,7 +10663,7 @@
 /obj/machinery/mining/drill{
 	name = "Excavation Drill"
 	},
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/mountain_plains)
 "LK" = (
 /obj/spawner/window/borosillicate/reinforced/full,
@@ -10862,7 +10866,7 @@
 	dir = 8
 	},
 /obj/structure/closet/firecloset/full,
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "MD" = (
 /obj/structure/table/rack/shelf/steel,
@@ -10953,7 +10957,7 @@
 /obj/structure/bed/chair/wood{
 	dir = 1
 	},
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "MS" = (
 /obj/machinery/portable_atmospherics/canister/nitrous_oxide,
@@ -11109,9 +11113,9 @@
 /area/admin_planet/croatoan/high_sec_science_virology_lab)
 "Ns" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/taser/xeno/sec,
-/obj/item/gun/energy/taser/xeno/robot,
-/obj/item/gun/energy/taser/xeno,
+/obj/item/gun/projectile/energy/taser/xeno/sec,
+/obj/item/gun/projectile/energy/taser/xeno/robot,
+/obj/item/gun/projectile/energy/taser/xeno,
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/extreme_security_containment_facilities)
 "Nt" = (
@@ -11170,7 +11174,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8
 	},
-/turf/simulated/floor/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/outdoors,
 /area/admin_planet/croatoan/mountain_plains)
 "NA" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -11187,7 +11191,7 @@
 "NB" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/yellow,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "NC" = (
 /obj/spawner/window/borosillicate/reinforced/full,
@@ -11422,7 +11426,7 @@
 /area/admin_planet/croatoan/sci_entry_hallway)
 "Ok" = (
 /obj/spawner/corpse/scientist,
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/mountain_plains)
 "On" = (
 /obj/structure/closet/l3closet/scientist,
@@ -11434,15 +11438,15 @@
 /area/admin_planet/croatoan/sci_entry_hallway)
 "Oo" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/pulse_pistol,
-/obj/item/gun/energy/pulse_pistol,
+/obj/item/gun/projectile/energy/nt_pulse/carbine,
+/obj/item/gun/projectile/energy/nt_pulse/carbine,
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/sec_armory)
 "Op" = (
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "Or" = (
 /obj/structure/cable{
@@ -11764,7 +11768,7 @@
 /area/admin_planet/croatoan/sec_operations_center)
 "Pf" = (
 /obj/structure/table/reinforced,
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "Pg" = (
 /obj/structure/closet/secure_closet/security,
@@ -11781,7 +11785,7 @@
 /area/admin_planet/croatoan/sec_operations_center)
 "Ph" = (
 /obj/machinery/light,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "Pl" = (
 /obj/structure/cable{
@@ -11898,7 +11902,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/blue/border,
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "PH" = (
 /obj/machinery/door/airlock/external{
@@ -11980,7 +11984,7 @@
 /obj/effect/floor_decal/corner/beige{
 	dir = 5
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "PX" = (
 /obj/structure/cable{
@@ -12257,6 +12261,12 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/admin_planet/croatoan/sci_circuitry_lab)
+"QN" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/outdoors,
+/area/admin_planet/croatoan/civilian/dorms)
 "QO" = (
 /obj/effect/floor_decal/corner/lightorange/border,
 /obj/machinery/chemical_dispenser/full,
@@ -12306,106 +12316,6 @@
 /obj/random/obstruction,
 /turf/simulated/floor/tiled/techfloor,
 /area/admin_planet/croatoan/med_checkpoint_lower)
-"QU" = (
-/obj/structure/closet/crate/secure/weapon,
-/obj/item/storage/box/stunshells/large,
-/obj/item/storage/box/stunshells/large,
-/obj/item/storage/box/shotgunshells/large,
-/obj/item/storage/box/shotgunshells/large,
-/obj/item/storage/box/shotgunshells/large,
-/obj/item/storage/box/shotgunshells/large,
-/obj/item/storage/box/shotgunammo/large,
-/obj/item/storage/box/shotgunammo/large,
-/obj/item/storage/box/shotgunammo/large,
-/obj/item/storage/box/shotgunammo/large,
-/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
-/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
-/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
-/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
-/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
-/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
-/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
-/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
-/obj/item/ammo_magazine/m9mmt{
-	pixel_x = 1;
-	pixel_y = -5
-	},
-/obj/item/ammo_magazine/m9mmt{
-	pixel_x = 1;
-	pixel_y = -5
-	},
-/obj/item/ammo_magazine/m9mmt{
-	pixel_x = 1;
-	pixel_y = -5
-	},
-/obj/item/ammo_magazine/m9mmt{
-	pixel_x = 1;
-	pixel_y = -5
-	},
-/obj/item/ammo_magazine/m9mmt{
-	pixel_x = 1;
-	pixel_y = -5
-	},
-/obj/item/ammo_magazine/m9mmt{
-	pixel_x = 1;
-	pixel_y = -5
-	},
-/obj/item/ammo_magazine/m9mmt{
-	pixel_x = 1;
-	pixel_y = -5
-	},
-/obj/item/ammo_magazine/m9mmt{
-	pixel_x = 1;
-	pixel_y = -5
-	},
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m44,
-/obj/item/ammo_magazine/m44,
-/obj/item/ammo_magazine/m45,
-/obj/item/ammo_magazine/m45,
-/obj/item/ammo_magazine/m12gdrum,
-/obj/item/ammo_magazine/m12gdrum,
-/obj/item/ammo_magazine/m556,
-/obj/item/ammo_magazine/m556,
-/obj/item/ammo_magazine/m45uzi,
-/obj/item/ammo_magazine/m45uzi,
-/obj/item/ammo_magazine/m57x28mm/fiveseven,
-/obj/item/ammo_magazine/m57x28mm/fiveseven,
-/obj/item/ammo_magazine/m57x28mm/ntles,
-/obj/item/ammo_magazine/m57x28mm/ntles,
-/obj/item/ammo_magazine/m57x28mm/smg,
-/obj/item/ammo_magazine/m57x28mm/smg,
-/obj/item/ammo_magazine/m5mmcaseless,
-/obj/item/ammo_magazine/m5mmcaseless,
-/obj/item/ammo_magazine/m75,
-/obj/item/ammo_magazine/m75,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762garand,
-/obj/item/ammo_magazine/m762garand,
-/obj/item/ammo_magazine/m762m,
-/obj/item/ammo_magazine/m762m,
-/obj/item/ammo_magazine/m762svd,
-/obj/item/ammo_magazine/m762svd,
-/obj/item/ammo_magazine/m792,
-/obj/item/ammo_magazine/m792,
-/obj/item/ammo_magazine/m95,
-/obj/item/ammo_magazine/m95,
-/obj/item/ammo_magazine/m9mm,
-/obj/item/ammo_magazine/m9mm,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/machinery/light/small/emergency{
-	dir = 1
-	},
-/turf/simulated/floor/reinforced,
-/area/admin_planet/croatoan/sec_armory)
 "QV" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -12439,7 +12349,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "Rf" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -12512,7 +12422,7 @@
 /turf/simulated/floor/durasteel,
 /area/admin_planet/croatoan/high_sec_science_lower_checkpoint)
 "Rr" = (
-/turf/simulated/floor/outdoors/dirt/classp,
+/turf/simulated/floor/outdoors/dirt,
 /area/admin_planet/croatoan/mountain_plains)
 "Rt" = (
 /turf/simulated/wall/r_wall/prepainted/security,
@@ -12537,7 +12447,7 @@
 /obj/structure/bed/chair/sofa/black/right{
 	dir = 1
 	},
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "Rz" = (
 /obj/effect/floor_decal/corner/red/border{
@@ -12563,7 +12473,7 @@
 /area/admin_planet/croatoan/med_checkpoint_lower)
 "RB" = (
 /obj/structure/table/bench/wooden,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "RD" = (
 /obj/machinery/suit_cycler/headofsecurity,
@@ -12754,7 +12664,7 @@
 /area/admin_planet/croatoan/extreme_security_containment_facilities)
 "Sn" = (
 /obj/random/obstruction,
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/mountain)
 "Ss" = (
 /obj/machinery/holoposter,
@@ -12796,7 +12706,7 @@
 /turf/simulated/floor/tiled/white,
 /area/admin_planet/croatoan/med_treatment)
 "Sw" = (
-/obj/spawner/window/low_wall/reinforced/full,
+/obj/spawner/window/low_wall/reinforced,
 /turf/space/basic,
 /area/admin_planet/croatoan/civ_bar_public)
 "Sx" = (
@@ -12910,7 +12820,7 @@
 /area/admin_planet/croatoan/high_sec_science_entrance)
 "SO" = (
 /obj/structure/flora/rock/ice/alternative_2,
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/mountain)
 "SP" = (
 /obj/machinery/door/airlock/highsecurity{
@@ -12963,7 +12873,7 @@
 	info = "Note to engineering staff: Get us a new APC, this one keeps frying its cells left and right. Last thing we want is to get locked out of Medical."
 	},
 /obj/structure/table/reinforced,
-/turf/simulated/floor/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/outdoors,
 /area/admin_planet/croatoan/med_checkpoint_lower)
 "SY" = (
 /obj/effect/floor_decal/corner_oldtile/red/diagonal,
@@ -13039,7 +12949,7 @@
 /obj/effect/floor_decal/corner/beige{
 	dir = 9
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_kitchen)
 "Tm" = (
 /obj/structure/table/reinforced,
@@ -13064,6 +12974,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/admin_planet/croatoan/sec_forensics_lab)
+"To" = (
+/obj/machinery/holoposter{
+	pixel_y = -32
+	},
+/turf/simulated/floor/tiled/outdoors,
+/area/admin_planet/croatoan/civilian/dorms)
 "Tp" = (
 /obj/item/paper{
 	name = "WORK ORDER: RUSTING PHORON PIPES";
@@ -13118,7 +13034,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "Tz" = (
 /obj/machinery/button/remote/blast_door{
@@ -13254,7 +13170,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "TX" = (
 /obj/item/reagent_containers/syringe,
@@ -13303,10 +13219,10 @@
 /area/admin_planet/croatoan/sci_entry_hallway)
 "Uf" = (
 /obj/structure/closet/secure_closet/guncabinet,
-/obj/item/gun/ballistic/automatic/c20r,
-/obj/item/gun/ballistic/automatic/bullpup,
-/obj/item/gun/ballistic/automatic/battlerifle,
-/obj/item/gun/ballistic/automatic/combat,
+/obj/item/gun/projectile/ballistic/automatic/c20r,
+/obj/item/gun/projectile/ballistic/automatic/bullpup,
+/obj/item/gun/projectile/ballistic/automatic/battlerifle,
+/obj/item/gun/projectile/ballistic/automatic/combat,
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/sec_armory)
 "Ul" = (
@@ -13341,9 +13257,6 @@
 "Ur" = (
 /turf/simulated/wall/dungeon,
 /area/admin_planet/croatoan/mountain)
-"Us" = (
-/turf/simulated/floor/tiled/external,
-/area/admin_planet/croatoan/civilian/dorms)
 "Uu" = (
 /obj/structure/table/reinforced,
 /obj/item/defib_kit,
@@ -13520,12 +13433,12 @@
 "UU" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/red,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "UV" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/ian,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "UX" = (
 /obj/effect/floor_decal/corner/red/border{
@@ -13577,7 +13490,7 @@
 "Vh" = (
 /obj/item/pickaxe/silver,
 /obj/random/obstruction,
-/turf/simulated/floor/old_tile,
+/turf/simulated/floor/tiled/old_tile,
 /area/admin_planet/croatoan/mountain)
 "Vj" = (
 /obj/machinery/light{
@@ -13606,7 +13519,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/outdoors,
 /area/admin_planet/croatoan/mountain_plains)
 "Vn" = (
 /obj/structure/cable{
@@ -13688,7 +13601,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
 "Vu" = (
 /obj/machinery/power/smes/buildable/point_of_interest,
@@ -13801,17 +13714,8 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/concrete/tile/classm,
+/turf/simulated/floor/concrete/tile,
 /area/admin_planet/croatoan/civ_bar_public)
-"VV" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/external,
-/area/admin_planet/croatoan/civilian/dorms)
 "VW" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/paper{
@@ -13884,11 +13788,11 @@
 /obj/structure/window/reinforced/survival_pod{
 	dir = 8
 	},
-/obj/item/clothing/head/helmet/space/plasman/sec/hos/alt2{
+/obj/item/clothing/head/helmet/space/void/plasman/sec/hos/alt2{
 	name = "Harbinger Helmet";
 	desc = "A helmet of extremely odd design, it seems custom-made for a species you've never seen before."
 	},
-/obj/item/clothing/suit/space/plasman/sec/hos{
+/obj/item/clothing/suit/space/void/plasman/sec/hos{
 	name = "Harbingers Shield";
 	desc = "A unique suit designed specifically for one wearer. It looks highly ordained and armored."
 	},
@@ -13979,7 +13883,7 @@
 	name = "Backup Civilian Lockdown Passcode";
 	info = "Backup code for the civilian lockdown incase it triggers on accident again. System's faulty and we need to get it looked at, RD's pissed. Don't tell her about this paper though, I'll likely get chewed out. Code is.. '19982'"
 	},
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "WF" = (
 /obj/structure/bed/chair/bay/comfy/red{
@@ -14049,15 +13953,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/high_sec_science_checkpoint)
-"WR" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/external,
-/area/admin_planet/croatoan/civilian/dorms)
 "WS" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 8
@@ -14187,7 +14082,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "Xl" = (
 /obj/effect/floor_decal/borderfloor,
@@ -14225,10 +14120,6 @@
 /obj/machinery/light,
 /turf/simulated/floor/cult,
 /area/admin_planet/croatoan/extreme_security_containment_facilities)
-"Xt" = (
-/turf/simulated/floor/reinforced,
-/turf/simulated/wall/durasteel,
-/area/admin_planet/croatoan/high_sec_science_virology_lab)
 "Xv" = (
 /obj/machinery/door/airlock/highsecurity{
 	req_access = list(58);
@@ -14415,6 +14306,106 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/admin_planet/croatoan/sci_circuitry_lab)
+"Yl" = (
+/obj/structure/closet/crate/secure/weapon,
+/obj/item/storage/box/stunshells/large,
+/obj/item/storage/box/stunshells/large,
+/obj/item/storage/box/shotgunshells/large,
+/obj/item/storage/box/shotgunshells/large,
+/obj/item/storage/box/shotgunshells/large,
+/obj/item/storage/box/shotgunshells/large,
+/obj/item/storage/box/shotgunammo/large,
+/obj/item/storage/box/shotgunammo/large,
+/obj/item/storage/box/shotgunammo/large,
+/obj/item/storage/box/shotgunammo/large,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a9mm/top_mount{
+	pixel_x = 1;
+	pixel_y = -5
+	},
+/obj/item/ammo_magazine/a9mm/top_mount{
+	pixel_x = 1;
+	pixel_y = -5
+	},
+/obj/item/ammo_magazine/a9mm/top_mount{
+	pixel_x = 1;
+	pixel_y = -5
+	},
+/obj/item/ammo_magazine/a9mm/top_mount{
+	pixel_x = 1;
+	pixel_y = -5
+	},
+/obj/item/ammo_magazine/a9mm/top_mount{
+	pixel_x = 1;
+	pixel_y = -5
+	},
+/obj/item/ammo_magazine/a9mm/top_mount{
+	pixel_x = 1;
+	pixel_y = -5
+	},
+/obj/item/ammo_magazine/a9mm/top_mount{
+	pixel_x = 1;
+	pixel_y = -5
+	},
+/obj/item/ammo_magazine/a9mm/top_mount{
+	pixel_x = 1;
+	pixel_y = -5
+	},
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a44,
+/obj/item/ammo_magazine/a44,
+/obj/item/ammo_magazine/a45,
+/obj/item/ammo_magazine/a45,
+/obj/item/ammo_magazine/a12g/drum,
+/obj/item/ammo_magazine/a12g/drum,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a45/uzi,
+/obj/item/ammo_magazine/a45/uzi,
+/obj/item/ammo_magazine/a5_7mm/five_seven,
+/obj/item/ammo_magazine/a5_7mm/five_seven,
+/obj/item/ammo_magazine/a5_7mm/nt_les,
+/obj/item/ammo_magazine/a5_7mm/nt_les,
+/obj/item/ammo_magazine/a5_7mm/harpy_smg,
+/obj/item/ammo_magazine/a5_7mm/harpy_smg,
+/obj/item/ammo_magazine/m5mmcaseless,
+/obj/item/ammo_magazine/m5mmcaseless,
+/obj/item/ammo_magazine/a75,
+/obj/item/ammo_magazine/a75,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm/garand,
+/obj/item/ammo_magazine/a7_62mm/garand,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm/svd,
+/obj/item/ammo_magazine/a7_62mm/svd,
+/obj/item/ammo_magazine/a7_92mm,
+/obj/item/ammo_magazine/a7_92mm,
+/obj/item/ammo_magazine/m95,
+/obj/item/ammo_magazine/m95,
+/obj/item/ammo_magazine/a9mm,
+/obj/item/ammo_magazine/a9mm,
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/item/ammo_magazine/a9mm/top_mount,
+/obj/machinery/light/small/emergency{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/admin_planet/croatoan/sec_armory)
 "Ym" = (
 /obj/effect/floor_decal/corner/red/border{
 	dir = 4
@@ -14598,7 +14589,7 @@
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/high_sec_science_entrance)
 "YN" = (
-/obj/structure/sign/poster,
+/obj/structure/poster,
 /turf/simulated/wall/prepainted,
 /area/admin_planet/croatoan/civilian/dorms)
 "YO" = (
@@ -14716,7 +14707,7 @@
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/high_sec_science_containment_cells)
 "Zl" = (
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/floor/outdoors/snow/no_tree,
 /area/admin_planet/croatoan/landing_pad)
 "Zm" = (
 /obj/machinery/door/airlock{
@@ -14726,7 +14717,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "Zn" = (
 /obj/machinery/biogenerator,
@@ -14848,7 +14839,7 @@
 	id_tag = "dorm1";
 	name = "Dormitory"
 	},
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark";
 	icon = 'icons/turf/walls.dmi'
@@ -14888,7 +14879,7 @@
 "ZT" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/cosmos,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/admin_planet/croatoan/civilian/dorms)
 "ZV" = (
 /obj/random/obstruction,
@@ -14913,13 +14904,13 @@
 /area/admin_planet/croatoan/sec_hos_office)
 "ZY" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
-/obj/structure/sign/poster,
+/obj/structure/poster,
 /turf/simulated/wall/prepainted/civilian,
 /area/admin_planet/croatoan/civ_kitchen)
 "ZZ" = (
 /obj/effect/floor_decal/corner/lightorange/border,
 /obj/structure/table/reinforced,
-/obj/item/gun/launcher/syringe,
+/obj/item/gun/projectile/ballistic/syringe,
 /obj/item/storage/box/syringes{
 	pixel_x = -8
 	},
@@ -28731,9 +28722,9 @@ HK
 Rr
 gY
 Rr
-HM
-aZ
-aZ
+oj
+BM
+BM
 qp
 Cl
 Cl
@@ -28925,9 +28916,9 @@ HK
 Rr
 gY
 Rr
-WR
-Us
-Us
+uo
+pg
+pg
 qp
 RB
 FU
@@ -29119,9 +29110,9 @@ HK
 Rr
 Rr
 Rr
-Ex
-Us
-Us
+GQ
+pg
+pg
 qp
 FU
 Op
@@ -29313,9 +29304,9 @@ HK
 HK
 HK
 HK
-Kz
-Us
-Us
+oG
+pg
+pg
 st
 Ze
 hF
@@ -29507,9 +29498,9 @@ HK
 HK
 HK
 HK
-Kz
-Us
-KC
+oG
+pg
+To
 qp
 tN
 hF
@@ -29701,9 +29692,9 @@ yg
 yg
 yg
 yg
-rI
-iI
-iI
+CG
+QN
+QN
 Zm
 JE
 aQ
@@ -29895,9 +29886,9 @@ HK
 gY
 gY
 gY
-FI
-Us
-Us
+ir
+pg
+pg
 qp
 eF
 FU
@@ -30089,9 +30080,9 @@ HK
 gY
 Rr
 gY
-WR
-Us
-Us
+uo
+pg
+pg
 YN
 eF
 FU
@@ -30283,9 +30274,9 @@ HK
 gY
 gY
 Rr
-fA
-VV
-VV
+gC
+zZ
+zZ
 qp
 eF
 FU
@@ -38338,7 +38329,7 @@ lW
 lW
 La
 La
-Cz
+yj
 La
 La
 La
@@ -39889,7 +39880,7 @@ lW
 lW
 lW
 La
-Xt
+La
 yj
 La
 La
@@ -43849,7 +43840,7 @@ Ur
 Rt
 Rt
 Rt
-QU
+Yl
 yu
 MM
 MM
@@ -45031,7 +45022,7 @@ wN
 pS
 Or
 pS
-ti
+BY
 NI
 pS
 pc

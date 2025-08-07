@@ -32,14 +32,14 @@
 		potential_damage *= 1 SECOND / (base_attack_cooldown + melee_attack_delay)
 	else
 		var/obj/projectile/P = new projectiletype(src)
-		if(P.nodamage || P.taser_effect) // Tasers are somewhat less scary.
-			potential_damage = P.agony / 2
+		if(P.nodamage)
+			potential_damage = P.damage_inflict_agony / 2
 		else
-			potential_damage = P.damage
-			if(P.damage_type == HALLOSS) // Not sure if any projectiles do this, but can't be too safe.
+			potential_damage = P.damage_force
+			if(P.damage_type == DAMAGE_TYPE_HALLOSS) // Not sure if any projectiles do this, but can't be too safe.
 				potential_damage /= 2
 			// Rubber bullets, I guess.
-			potential_damage += P.agony / 2
+			potential_damage += P.damage_inflict_agony / 2
 		qdel(P)
 
 		potential_damage *= 1 SECOND / (base_attack_cooldown + ranged_attack_delay)
@@ -69,7 +69,7 @@
 	if(incapacitated(INCAPACITATION_DISABLED))
 		return 0 // Can't currently hurt you if it's stunned.
 
-	var/friendly = threatened.faction == faction
+	var/friendly = threatened.shares_iff_faction(src)
 
 	var/threat = guess_threat_level(threatened)
 
@@ -155,11 +155,11 @@
 		var/damage_guess = 0
 		if(ishuman(src) && ishuman(threatened))
 			var/mob/living/carbon/human/H = src
-			var/datum/unarmed_attack/attack = H.get_unarmed_attack(threatened, BP_TORSO)
+			var/datum/melee_attack/unarmed/attack = H.get_unarmed_attack(threatened, BP_TORSO)
 			if(!attack)
 				damage_guess += 5
 
-			var/punch_damage = attack.get_unarmed_damage(H)
+			var/punch_damage = attack.damage
 			if(H.gloves)
 				if(istype(H.gloves, /obj/item/clothing/gloves))
 					var/obj/item/clothing/gloves/G = H.gloves
@@ -177,7 +177,7 @@
 		threat_guess += damage_guess
 
 	else
-		var/weapon_attack_speed = get_attack_speed(I) / (1 SECOND)
+		var/weapon_attack_speed = get_attack_speed_legacy(I) / (1 SECOND)
 		var/weapon_damage = I.damage_force
 
 		for(var/datum/modifier/M in modifiers)
@@ -192,10 +192,10 @@
 			P = new G.projectile_type()
 
 			if(P) // Does the gun even have a projectile type?
-				weapon_damage = P.damage
+				weapon_damage = P.damage_force
 				if(will_point_blank && a_intent == INTENT_HARM)
 					weapon_damage *= 1.5
-				weapon_attack_speed = G.fire_delay / (1 SECOND)
+				weapon_attack_speed = (G.firemode.cycle_cooldown || (0.4 SECONDS)) / (1 SECONDS)
 				qdel(P)
 
 		var/average_damage = weapon_damage / weapon_attack_speed

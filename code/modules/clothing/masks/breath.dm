@@ -9,7 +9,7 @@
 	gas_transfer_coefficient = 0.10
 	permeability_coefficient = 0.50
 	var/hanging = 0
-	action_button_name = "Adjust Breath Mask"
+	item_action_name = "Adjust Breath Mask"
 
 
 /obj/item/clothing/mask/breath/proc/adjust_mask(mob/user)
@@ -17,19 +17,19 @@
 		hanging = !hanging
 		if (hanging)
 			gas_transfer_coefficient = 1
-			body_cover_flags = body_cover_flags & ~FACE
+			set_body_cover_flags(body_cover_flags & ~FACE)
 			clothing_flags = clothing_flags & ~ALLOWINTERNALS
 			icon_state = "breathdown"
 			to_chat(user, "Your mask is now hanging on your neck.")
 		else
 			gas_transfer_coefficient = initial(gas_transfer_coefficient)
-			body_cover_flags = initial(body_cover_flags)
+			set_body_cover_flags(initial(body_cover_flags))
 			clothing_flags = initial(clothing_flags)
 			icon_state = initial(icon_state)
 			to_chat(user, "You pull the mask up to cover your face.")
 		update_worn_icon()
 
-/obj/item/clothing/mask/breath/attack_self(mob/user)
+/obj/item/clothing/mask/breath/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

@@ -53,6 +53,9 @@
 
 /obj/machinery/computer/bioscan/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
+	if(.)
+		return
+
 	switch(action)
 		if("scan")
 			if(!network_key)
@@ -111,7 +114,7 @@
 			++mobs_all
 			if(!isliving(M))
 				continue	// don't care didn't ask
-			if(!issimple(M))
+			if(!issimplemob(M))
 				++mobs_complex
 				if(IS_DEAD(M))
 					++mobs_complex_dead

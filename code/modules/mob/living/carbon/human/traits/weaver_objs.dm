@@ -16,15 +16,15 @@ var/global/list/weavable_items = list()
 	return
 
 /obj/effect/weaversilk/attackby(var/obj/item/W, var/mob/user)
-	user.setClickCooldown(user.get_attack_speed(W))
+	user.setClickCooldownLegacy(user.get_attack_speed_legacy(W))
 
 	if(W.damage_force)
 		visible_message("<span class='warning'>\The [src] has been [W.get_attack_verb(src, user)] with \the [W][(user ? " by [user]." : ".")]</span>")
 		qdel(src)
 
-/obj/effect/weaversilk/bullet_act(var/obj/projectile/Proj)
-	..()
-	if(Proj.get_structure_damage())
+/obj/effect/weaversilk/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	. = ..()
+	if(proj.get_structure_damage())
 		qdel(src)
 
 /obj/effect/weaversilk/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
@@ -34,7 +34,7 @@ var/global/list/weavable_items = list()
 	if(damage)
 		qdel(src)
 
-/obj/effect/weaversilk/attack_hand(mob/user, list/params)
+/obj/effect/weaversilk/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	..()
 	if(user.a_intent == INTENT_HARM)
 		to_chat(user,"<span class='warning'>You easily tear down [name].</span>")
@@ -81,7 +81,7 @@ var/global/list/weavable_items = list()
 		return
 	..()
 
-/obj/structure/bed/double/weaversilk_nest/attack_hand(mob/user, list/params)
+/obj/structure/bed/double/weaversilk_nest/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	..()
 	if(user.a_intent == INTENT_HARM && !has_buckled_mobs())
 		to_chat(user,"<span class='warning'>You easily tear down [name].</span>")
@@ -95,7 +95,7 @@ var/global/list/weavable_items = list()
 	var/trap_active = TRUE
 
 /obj/effect/weaversilk/trap/Crossed(atom/movable/AM as mob|obj)
-	if(AM.is_incorporeal())
+	if(AM.is_incorporeal() || AM.is_avoiding_ground()) //The flavor is stepping onto it to trigger, so if we aren't stepping anywhere
 		return
 	if(istype(AM, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = AM

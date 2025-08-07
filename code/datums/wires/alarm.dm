@@ -45,7 +45,7 @@
 				A.apply_mode()
 
 		if(WIRE_AALARM)
-			if(A.alarm_area.atmosalert(2, A))
+			if(A.alarm_area.atmosalert(2, A, list("CIRCUIT FAULT")))
 				A.post_alert(2)
 			A.update_icon()
 	..()

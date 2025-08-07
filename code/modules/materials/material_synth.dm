@@ -15,25 +15,31 @@
 
 /obj/item/stack/material/cyborg/plastic
 	icon_state = "sheet-plastic"
-	material = /datum/material/plastic
+	stack_type = /obj/item/stack/material/plastic
+	material = /datum/prototype/material/plastic
 
 /obj/item/stack/material/cyborg/steel
 	icon_state = "sheet-metal"
-	material = /datum/material/steel
+	stack_type = /obj/item/stack/material/steel
+	material = /datum/prototype/material/steel
 
 /obj/item/stack/material/cyborg/plasteel
 	icon_state = "sheet-plasteel"
-	material = /datum/material/plasteel
+	stack_type = /obj/item/stack/material/plasteel
+	material = /datum/prototype/material/plasteel
 
 /obj/item/stack/material/cyborg/wood
 	icon_state = "sheet-wood"
-	material = /datum/material/wood_plank
+	stack_type = /obj/item/stack/material/wood
+	material = /datum/prototype/material/wood_plank
 
 /obj/item/stack/material/cyborg/glass
 	icon_state = "sheet-glass"
-	material = /datum/material/glass
+	stack_type = /obj/item/stack/material/glass
+	material = /datum/prototype/material/glass
 
 /obj/item/stack/material/cyborg/glass/reinforced
 	icon_state = "sheet-rglass"
-	material = /datum/material/glass/reinforced
+	stack_type = /obj/item/stack/material/glass/reinforced
+	material = /datum/prototype/material/glass/reinforced
 	charge_costs = list(500, 1000)

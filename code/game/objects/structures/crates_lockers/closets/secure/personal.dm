@@ -50,13 +50,13 @@
 			update_icon()
 		else
 			to_chat(user, "<span class='warning'>Access Denied</span>")
-	else if(istype(W, /obj/item/melee/energy/blade))
+	else if(istype(W, /obj/item/melee/ninja_energy_blade))
 		if(emag_act(INFINITY, user, "The locker has been sliced open by [user] with \an [W]!", "You hear metal being sliced and sparks flying."))
 			var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 			spark_system.set_up(5, 0, loc)
 			spark_system.start()
 			playsound(loc, 'sound/weapons/blade1.ogg', 50, 1)
-			playsound(loc, /datum/soundbyte/grouped/sparks, 50, 1)
+			playsound(loc, /datum/soundbyte/sparks, 50, 1)
 	else
 		to_chat(user, "<span class='warning'>Access Denied</span>")
 	return

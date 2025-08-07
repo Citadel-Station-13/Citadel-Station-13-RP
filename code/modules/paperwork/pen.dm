@@ -36,7 +36,7 @@
 	/// can we click?
 	var/clickable = TRUE
 
-/obj/item/pen/attack_self(mob/user)
+/obj/item/pen/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -44,7 +44,7 @@
 		return
 	if(user.next_move > world.time)
 		return
-	user.setClickCooldown(1 SECOND)
+	user.setClickCooldownLegacy(1 SECOND)
 	to_chat(user, "<span class='notice'>Click.</span>")
 	playsound(src, 'sound/items/penclick.ogg', 50, 1)
 
@@ -72,7 +72,7 @@
 	playsound(src, 'sound/items/penclick.ogg', 50, 1)
 	return
 
-/obj/item/pen/multi/attack_self(mob/user)
+/obj/item/pen/multi/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -91,7 +91,7 @@
 /obj/item/pen/click
 	name = "clicker pen"
 
-/obj/item/pen/click/attack_self(mob/user)
+/obj/item/pen/click/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -124,7 +124,7 @@
 	. = ..()
 	create_reagents(30)
 
-/obj/item/pen/reagent/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/pen/reagent/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
 	var/mob/living/L = target
 	if(istype(L))
@@ -153,7 +153,7 @@
 	w_class = WEIGHT_CLASS_TINY
 	throw_speed = 7
 	throw_range = 15
-	armor_penetration = 20
+	damage_tier = 5
 
 	var/active = 0
 	var/active_embed_chance = 0
@@ -185,14 +185,10 @@
 	embed_chance = active_embed_chance
 	damage_force = active_force
 	throw_force = active_throwforce
-
-
-
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	set_weight_class(active_w_class)
 	playsound(src, 'sound/weapons/saberon.ogg', 15, 1)
-	damtype = SEARING
+	damage_type = DAMAGE_TYPE_SEARING
 	item_flags |= ITEM_THROW_UNCATCHABLE
 
 	attack_verb |= list(\
@@ -211,10 +207,9 @@
 	embed_chance = initial(embed_chance)
 	damage_force = initial(damage_force)
 	throw_force = initial(throw_force)
-	sharp = initial(sharp)
-	edge = initial(edge)
+	damage_mode = initial(damage_mode)
 	set_weight_class(initial(w_class))
-	damtype = BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 	item_flags &= ~ITEM_THROW_UNCATCHABLE
 
 /obj/item/pen/blade/blue
@@ -261,7 +256,7 @@
 /obj/item/pen/chameleon
 	var/signature = ""
 
-/obj/item/pen/chameleon/attack_self(mob/user)
+/obj/item/pen/chameleon/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

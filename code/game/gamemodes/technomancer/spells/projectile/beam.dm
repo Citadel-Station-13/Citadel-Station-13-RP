@@ -20,8 +20,8 @@
 	fire_sound = 'sound/weapons/Laser.ogg'
 
 /obj/projectile/beam/blue
-	damage = 30
+	damage_force = 30
 
-	muzzle_type = /obj/effect/projectile/muzzle/laser_blue
-	tracer_type = /obj/effect/projectile/tracer/laser_blue
-	impact_type = /obj/effect/projectile/impact/laser_blue
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/laser_blue
+	legacy_tracer_type = /obj/effect/projectile/tracer/laser_blue
+	legacy_impact_type = /obj/effect/projectile/impact/laser_blue

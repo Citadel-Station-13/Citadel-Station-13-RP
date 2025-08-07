@@ -36,11 +36,11 @@
 	mod_min = 100
 	mod_max = 150
 
-	faction = "crabs"
+	iff_factions = MOB_IFF_FACTION_BIND_TO_MAP
 
 	maxHealth = 200
 	health = 200
-	movement_cooldown = 10
+	movement_base_speed = 10 / 10
 	movement_sound = 'sound/weapons/heavysmash.ogg'
 	movement_shake_radius = 5
 

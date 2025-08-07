@@ -2,7 +2,7 @@
 	name = "alien machine"
 	desc = "It's some kind of pod with strange wires and gadgets all over it."
 	icon = 'icons/obj/xenoarchaeology.dmi'
-	icon_state = "borgcharger0(old)"
+	icon_state = "replicator"
 	density = TRUE
 
 	idle_power_usage = 100
@@ -62,8 +62,8 @@
 	/obj/item/tool/wirecutters,
 	/obj/item/tool/wrench,
 	/obj/item/tool/screwdriver,
-	/obj/item/grenade/chem_grenade/cleaner,
-	/obj/item/grenade/chem_grenade/metalfoam,
+	/obj/item/grenade/simple/chemical/premade/cleaner,
+	/obj/item/grenade/simple/chemical/premade/metalfoam,
 	/obj/structure/closet/crate/mimic/
 	)
 
@@ -138,7 +138,7 @@
 
 	last_process_time = world.time
 
-/obj/machinery/replicator/attack_hand(mob/user, list/params)
+/obj/machinery/replicator/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	ui_interact(user)
 
 /obj/machinery/replicator/ui_interact(mob/user, datum/tgui/ui)

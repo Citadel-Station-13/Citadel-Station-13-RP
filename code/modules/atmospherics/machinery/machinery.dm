@@ -19,7 +19,6 @@ Pipelines + Other Objects -> Pipe network
 	obj_flags = OBJ_ON_BLUEPRINTS | OBJ_MELEE_TARGETABLE
 	// why block contents? so you ventcrawling little fucks don't pull a 2020 Citadel Main.
 	rad_flags = RAD_BLOCK_CONTENTS | RAD_NO_CONTAMINATE
-	atom_colouration_system = FALSE
 	climb_allowed = FALSE
 	depth_projected = FALSE
 	hides_underfloor = OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP
@@ -105,7 +104,7 @@ Pipelines + Other Objects -> Pipe network
 
 /obj/machinery/atmospherics/proc/add_underlay(var/turf/T, var/obj/machinery/atmospherics/node, var/direction, var/icon_connect_type)
 	if(node)
-		if(istype(node, /obj/machinery/atmospherics/pipe) && (node.hides_underfloor == OBJ_UNDERFLOOR_ALWAYS) && T.hides_underfloor_objects())
+		if(istype(node, /obj/machinery/atmospherics/pipe) && (node.will_hide_underfloor()) && T.hides_underfloor_objects())
 			//underlays += icon_manager.get_atmos_icon("underlay_down", direction, color_cache_name(node))
 			underlays += icon_manager.get_atmos_icon("underlay", direction, color_cache_name(node), "down" + icon_connect_type)
 		else
@@ -180,10 +179,12 @@ Pipelines + Other Objects -> Pipe network
 
 // Deconstruct into a pipe item.
 /obj/machinery/atmospherics/drop_products(method, atom/where)
-	if(construction_type)
+	if(construction_type && !circuit)
 		var/obj/item/pipe/I = new construction_type(loc, null, null, src)
 		I.setPipingLayer(piping_layer)
 		transfer_fingerprints_to(I)
+		return
+	return ..()
 
 // Return a list of nodes which we should call atmos_init() and build_network() during on_construction()
 /obj/machinery/atmospherics/proc/get_neighbor_nodes_for_init()

@@ -21,7 +21,7 @@ SUBSYSTEM_DEF(planets)
 	report_progress("Initializing planetary weather.")
 	allocateTurfs(TRUE)
 	fire() // Fire once to preemptively set up weather and planetary ambient lighting.
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/planets/on_max_z_changed(old_z_count, new_z_count)
 	. = ..()
@@ -159,7 +159,7 @@ SUBSYSTEM_DEF(planets)
 			return
 
 	var/list/currentrun = src.currentrun
-	var/dt = (subsystem_flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
+	var/dt = nominal_dt_s
 	while(currentrun.len)
 		var/datum/planet/P = currentrun[currentrun.len]
 		currentrun.len--

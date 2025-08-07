@@ -11,13 +11,11 @@
 
 	if(holder && (R_ADMIN & holder.rights || R_MOD & holder.rights))
 		for(var/client/C in GLOB.clients)
-			var/entry = "\t[C.key]"
+			var/entry = "\t[C.get_revealed_key()]"
 			if(!C.initialized)
 				entry += "[C.ckey] - <b><font color='red'>Uninitialized</font></b>"
 				Lines += entry
 				continue
-			if(C.holder && C.holder.fakekey)
-				entry += " <i>(as [C.holder.fakekey])</i>"
 			if(!C.initialized)
 				entry += " - [SPAN_BOLDANNOUNCE("UNINITIALIZED!")]"
 				continue
@@ -64,10 +62,23 @@
 			Lines += entry
 	else
 		for(var/client/C in GLOB.clients)
-			if(C.holder && C.holder.fakekey)
-				Lines += C.holder.fakekey
+			var/entry = "\t"
+			if(!C.initialized)
+				entry += "[C.ckey] - <b><font color='red'>Uninitialized</font></b>"
+				Lines += entry
+				continue
+			if(C == src)
+				entry += "[C.get_revealed_key()]"
 			else
-				Lines += C.key
+				entry += "[C.get_public_key()]"
+			if(C.get_preference_toggle(/datum/game_preference_toggle/presence/show_advanced_who))
+				if(isobserver(C.mob))
+					entry += " - <font color='gray'>Observing</font>"
+				else if(istype(C.mob, /mob/new_player))
+					entry += " - <font color=#4F49AF>In Lobby</font>"
+				else
+					entry += " - <font color='#5fe312'>Playing</font>"
+			Lines += entry
 
 	for(var/line in sortList(Lines))
 		msg += "[line]\n"
@@ -86,13 +97,10 @@
 			if(!C.initialized)
 				continue
 
-			if(C.holder.fakekey && !((R_ADMIN|R_MOD) & holder.rights))
+			if(C.is_under_stealthmin() && !((R_ADMIN|R_MOD) & holder.rights))
 				continue
 
-			msg += "\t[C] is a [C.holder.rank]"
-
-			if(C.holder.fakekey)
-				msg += " <i>(as [C.holder.fakekey])</i>"
+			msg += "\t[C.get_revealed_key()] is a [C.holder.rank]"
 
 			if(isobserver(C.mob))
 				msg += " - Observing"
@@ -113,7 +121,7 @@
 		for(var/client/C in GLOB.admins)
 			if(!C.initialized)
 				continue
-			if(C.holder.fakekey)
+			if(C.is_under_stealthmin())
 				continue	// hidden
 			msg += "\t[C] is a [C.holder.rank]"
 			num_admins_online++
@@ -124,9 +132,6 @@
 					msg += " (Inactive \[10m+\])"
 			msg += "\n"
 
-
-	if(config_legacy.admin_irc)
-		to_chat(src, "<span class='info'>Adminhelps are also sent to IRC. If no admins are available in game try anyway and an admin on IRC may see it and respond.</span>")
 	msg = "<b>Current Admins ([num_admins_online]):</b>\n" + msg
 
 	to_chat(src, msg)

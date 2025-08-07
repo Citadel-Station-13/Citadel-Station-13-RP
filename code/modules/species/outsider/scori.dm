@@ -3,7 +3,7 @@
 	name = "Scorian"
 	name_plural = SPECIES_SCORI
 	category = SPECIES_CATEGORY_RESTRICTED
-	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick,  /datum/unarmed_attack/bite)
+	unarmed_types = list(/datum/melee_attack/unarmed/stomp, /datum/melee_attack/unarmed/kick,  /datum/melee_attack/unarmed/bite)
 	//rarity_value = 4
 
 	blurb = "The Scori are the native inhabitants of Surt. Much of their history has been lost,	save for artistic \
@@ -66,6 +66,3 @@
 		/mob/living/carbon/human/proc/hide_wings,
 		/mob/living/carbon/human/proc/hide_tail
 		)
-
-/datum/species/scori/equip_survival_gear()
-	return

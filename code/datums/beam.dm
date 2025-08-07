@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
 
 /**
  * creates a segmenting beam
@@ -80,6 +80,10 @@
 	var/atom/beam_source
 	/// target
 	var/atom/beam_target
+	/// listener for source
+	var/datum/beam_listener/listener_source
+	/// listener for target
+	var/datum/beam_listener/listener_target
 	/// distance to bias towards target from source
 	var/shift_start_towards_target = 0
 	/// distance to bias towards source from target
@@ -97,9 +101,9 @@
 
 	//* segmentation *//
 	/// beam segment holder
-	var/atom/movable/graphics_render/beam_segments/segmentation
+	var/atom/movable/render/beam_segments/segmentation
 	/// beam segment holder
-	var/atom/movable/graphics_render/beam_segments/emissive/emissive_segmentation
+	var/atom/movable/render/beam_segments/emissive/emissive_segmentation
 
 	//* graphics *//
 	/// graphics mode
@@ -111,13 +115,13 @@
 	/// emissive state to use in non-particle mode
 	var/emissive_state
 	/// if we are in stretch mode, this is our rendering line
-	var/atom/movable/graphics_render/beam_line/line_renderer
+	var/atom/movable/render/beam_line/line_renderer
 	/// if we are in stretch mode, this is our emissive rendering line
-	var/atom/movable/graphics_render/beam_line/emissive/emissive_line_renderer
+	var/atom/movable/render/beam_line/emissive/emissive_line_renderer
 	/// if we are in particle mode, this is our renderer
-	var/atom/movable/particle_render/beam_line/particle_renderer
+	var/atom/movable/render/particle/beam_line/particle_renderer
 	/// if we are in particle mode, this is our emissive renderer
-	var/atom/movable/particle_render/beam_line/emissive/emissive_particle_renderer
+	var/atom/movable/render/particle/beam_line/emissive/emissive_particle_renderer
 	/// if we are in particle mode, this is the particle instance we use.
 	var/particles/particle_reference
 	/// if we are in particle mode, tihs is the emissive particle instance we use.
@@ -130,6 +134,8 @@
 
 /datum/beam/Destroy()
 	unregister()
+	beam_source = null
+	beam_target = null
 	// get rid of emissives first
 	QDEL_NULL(emissive_line_renderer)
 	QDEL_NULL(line_renderer)
@@ -142,36 +148,12 @@
 	return ..()
 
 /datum/beam/proc/register()
-	var/atom/iterating
-	// register signal hooks for movement all the way up the stack to the top level atom
-	if(ismovable(beam_source))
-		iterating = beam_source
-		do
-			RegisterSignal(iterating, COMSIG_MOVABLE_MOVED, PROC_REF(signal_redraw))
-			iterating = iterating.loc
-		while(ismovable(iterating))
-	if(ismovable(beam_target))
-		iterating = beam_target
-		do
-			RegisterSignal(iterating, COMSIG_MOVABLE_MOVED, PROC_REF(signal_redraw))
-			iterating = iterating.loc
-		while(ismovable(iterating))
+	listener_source = new(src, beam_source)
+	listener_target = new(src, beam_target)
 
 /datum/beam/proc/unregister()
-	var/atom/iterating
-	// drop signal hooks for movement all the way up the stack to the top level atom
-	if(ismovable(beam_source))
-		iterating = beam_source
-		do
-			UnregisterSignal(iterating, COMSIG_MOVABLE_MOVED)
-			iterating = iterating.loc
-		while(ismovable(iterating))
-	if(ismovable(beam_target))
-		iterating = beam_target
-		do
-			UnregisterSignal(iterating, COMSIG_MOVABLE_MOVED)
-			iterating = iterating.loc
-		while(ismovable(iterating))
+	QDEL_NULL(listener_source)
+	QDEL_NULL(listener_target)
 
 /datum/beam/proc/initialize()
 	// for any modes with emissives, the emissive is shoved into the main renderer
@@ -245,7 +227,15 @@
 
 /datum/beam/proc/render(turf/start, start_px, start_py, turf/end, end_px, end_py)
 	// nah.
-	if(start.z != end.z)
+	if(start.z != end.z || start == end)
+		switch(beam_visual_mode)
+			if(BEAM_VISUAL_SEGMENTS)
+				segmentation?.loc = emissive_segmentation?.loc = null
+			if(BEAM_VISUAL_STRETCH)
+				line_renderer?.loc = emissive_line_renderer?.loc = null
+		particle_renderer?.loc = null
+		for(var/atom/movable/beam_collider/collider as anything in colliders)
+			collider.move_onto(null)
 		return FALSE
 	// calculate parameters
 	var/dx = ((WORLD_ICON_SIZE * end.x + end_px) - (WORLD_ICON_SIZE * start.x + start_px))
@@ -388,25 +378,69 @@
 		QDEL_NULL(emissive_particle_renderer)
 	force_redraw()
 
+/**
+ * tl;dr
+ *
+ * we don't track the 'real' top level atom in beam
+ * so this causes problems since component signal registrations are idempotent for a given (target, listening, signal) tuple
+ * we don't want that but that's what makes comsigs efficient
+ *
+ * so this is here because this means /datum/beam isn't the only datum when source / target are part of the same
+ * nested contents tree, avoiding collisions from it
+ */
+/datum/beam_listener
+	/// our beam
+	var/datum/beam/beam
+	/// our target
+	var/atom/target
+
+/datum/beam_listener/New(datum/beam/beam, atom/target)
+	src.beam = beam
+	src.target = target
+	register()
+
+/datum/beam_listener/Destroy()
+	unregister()
+	return ..()
+
+/datum/beam_listener/proc/register()
+	if(ismovable(target))
+		var/atom/iterating = target
+		do
+			RegisterSignal(iterating, COMSIG_MOVABLE_MOVED, PROC_REF(on_move))
+			iterating = iterating.loc
+		while(ismovable(iterating))
+
+/datum/beam_listener/proc/unregister()
+	if(ismovable(target))
+		var/atom/iterating = target
+		do
+			UnregisterSignal(iterating, COMSIG_MOVABLE_MOVED)
+			iterating = iterating.loc
+		while(ismovable(iterating))
+
+/datum/beam_listener/proc/on_move(atom/movable/source, atom/old_loc, dir, forced, list/old_locs, momentum_change)
+	beam.signal_redraw(arglist(args))
+
 //* Segmented Renderers *//
 
-/atom/movable/graphics_render/beam_segments
-	appearance_flags = KEEP_TOGETHER
+/atom/movable/render/beam_segments
+	SET_APPEARANCE_FLAGS(PIXEL_SCALE | KEEP_TOGETHER)
 	animate_movement = NONE
 
 	/// segments in us
 	var/list/image/segment_appearances = list()
 
-/atom/movable/graphics_render/beam_segments/emissive
+/atom/movable/render/beam_segments/emissive
 	plane = EMISSIVE_PLANE
 
-/atom/movable/graphics_render/beam_segments/emissive/Initialize(mapload)
-	ASSERT(istype(loc, /atom/movable/graphics_render/beam_segments))
+/atom/movable/render/beam_segments/emissive/Initialize(mapload)
+	ASSERT(istype(loc, /atom/movable/render/beam_segments))
 	loc:vis_contents += src
 	return ..()
 
-/atom/movable/graphics_render/beam_segments/emissive/Destroy()
-	ASSERT(istype(loc, /atom/movable/graphics_render/beam_segments))
+/atom/movable/render/beam_segments/emissive/Destroy()
+	ASSERT(istype(loc, /atom/movable/render/beam_segments))
 	loc:vis_contents -= src
 	return ..()
 
@@ -476,38 +510,38 @@ INITIALIZE_IMMEDIATE(/atom/movable/beam_collider)
 
 //* Stretched Renderers *//
 
-/atom/movable/graphics_render/beam_line
+/atom/movable/render/beam_line
 	appearance_flags = KEEP_TOGETHER
 	animate_movement = NONE
 
-/atom/movable/graphics_render/beam_line/emissive
+/atom/movable/render/beam_line/emissive
 	plane = EMISSIVE_PLANE
 
-/atom/movable/graphics_render/beam_line/emissive/Initialize(mapload)
-	ASSERT(istype(loc, /atom/movable/graphics_render/beam_line))
+/atom/movable/render/beam_line/emissive/Initialize(mapload)
+	ASSERT(istype(loc, /atom/movable/render/beam_line))
 	loc:vis_contents += src
 	return ..()
 
-/atom/movable/graphics_render/beam_line/emissive/Destroy()
-	ASSERT(istype(loc, /atom/movable/graphics_render/beam_line))
+/atom/movable/render/beam_line/emissive/Destroy()
+	ASSERT(istype(loc, /atom/movable/render/beam_line))
 	loc:vis_contents -= src
 	return ..()
 
 //* Particle Renderers *//
 
-/atom/movable/particle_render/beam_line
+/atom/movable/render/particle/beam_line
 	appearance_flags = KEEP_TOGETHER
 	animate_movement = NONE
 
-/atom/movable/particle_render/beam_line/emissive
+/atom/movable/render/particle/beam_line/emissive
 	plane = EMISSIVE_PLANE
 
-/atom/movable/particle_render/beam_line/emissive/Initialize(mapload)
-	ASSERT(istype(loc, /atom/movable/particle_render/beam_line))
+/atom/movable/render/particle/beam_line/emissive/Initialize(mapload)
+	ASSERT(istype(loc, /atom/movable/render/particle/beam_line))
 	loc:vis_contents += src
 	return ..()
 
-/atom/movable/particle_render/beam_line/emissive/Destroy()
-	ASSERT(istype(loc, /atom/movable/particle_render/beam_line))
+/atom/movable/render/particle/beam_line/emissive/Destroy()
+	ASSERT(istype(loc, /atom/movable/render/particle/beam_line))
 	loc:vis_contents -= src
 	return ..()

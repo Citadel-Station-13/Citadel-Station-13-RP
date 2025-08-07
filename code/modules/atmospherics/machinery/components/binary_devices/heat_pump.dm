@@ -109,7 +109,7 @@
 			"You hear ratchet.")
 		deconstruct()
 
-/obj/machinery/atmospherics/component/binary/heat_pump/attack_hand(mob/user, list/params)
+/obj/machinery/atmospherics/component/binary/heat_pump/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(..())
 		return
 	src.add_fingerprint(usr)
@@ -121,6 +121,7 @@
 	return
 
 /obj/machinery/atmospherics/component/binary/heat_pump/process(delta_time)
+	..()
 	update_icon()
 	if((machine_stat & (NOPOWER|BROKEN)) || !use_power)
 		return

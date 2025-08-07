@@ -32,7 +32,7 @@
 	)
 	assisted_langs   = list(LANGUAGE_EAL, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX, LANGUAGE_PROMETHEAN)
 
-	slowdown  = -0.2
+	movement_base_speed = 5.5
 	color_mult = 1
 	health_hud_intensity = 2
 
@@ -91,7 +91,7 @@
 	)
 
 	unarmed_types = list(
-		/datum/unarmed_attack/punch,
+		/datum/melee_attack/unarmed/punch,
 	)
 
 	abilities = list(
@@ -141,7 +141,7 @@
 		return
 	var/turf/T = get_turf(owner)
 	if(T)
-		var/datum/reagents/R = new /datum/reagents(10)
+		var/datum/reagent_holder/R = new /datum/reagent_holder(10)
 		R.add_reagent("water", 10)
 		T.reagents = R
 		T.clean(T, owner, 1)

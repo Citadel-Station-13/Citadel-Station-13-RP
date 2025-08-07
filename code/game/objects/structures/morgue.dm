@@ -20,7 +20,7 @@
 	var/obj/structure/m_tray/connected = null
 	var/list/occupants = list()
 	anchored = 1
-	can_be_unanchored = 1
+	// can_be_unanchored = 1
 
 /obj/structure/morgue/Destroy()
 	if(connected)
@@ -82,7 +82,10 @@
 	if(Adjacent(user))
 		attack_hand(user)
 
-/obj/structure/morgue/attack_hand(mob/user, list/params)
+/obj/structure/morgue/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
+	if (!anchored)
+		user.show_message(SPAN_WARNING("You can't open [src] while it's unanchored."))
+		return
 	if (src.connected)
 		close()
 	else
@@ -132,6 +135,9 @@
 		else
 			src.name = "Morgue"
 	if(istype(W, /obj/item/tool/wrench))
+		if(connected)
+			user.show_message(SPAN_WARNING("You can't move [src] while it's open."))
+			return
 		if(anchored)
 			user.show_message(SPAN_NOTICE("[src] can now be moved."))
 			playsound(src, W.tool_sound, 50, 1)
@@ -173,7 +179,7 @@
 	if(Adjacent(user))
 		attack_hand(user)
 
-/obj/structure/m_tray/attack_hand(mob/user, list/params)
+/obj/structure/m_tray/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if (src.connected)
 		for(var/atom/movable/A as mob|obj in src.loc)
 			if (!( A.anchored ))
@@ -227,7 +233,7 @@ GLOBAL_LIST_BOILERPLATE(all_crematoriums, /obj/structure/morgue/crematorium)
 			src.icon_state = "crema1"
 	return
 
-/obj/structure/morgue/crematorium/attack_hand(mob/user, list/params)
+/obj/structure/morgue/crematorium/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if (cremating)
 		to_chat(usr, "<span class='warning'>It's locked.</span>")
 		return
@@ -251,8 +257,8 @@ GLOBAL_LIST_BOILERPLATE(all_crematoriums, /obj/structure/morgue/crematorium)
 				A.forceMove(src.connected.loc)
 			src.connected.icon_state = "cremat"
 		else
-			//src.connected = null
 			qdel(src.connected)
+			src.connected = null
 	src.add_fingerprint(user)
 	update()
 
@@ -312,11 +318,11 @@ GLOBAL_LIST_BOILERPLATE(all_crematoriums, /obj/structure/morgue/crematorium)
 		for(var/mob/living/M in contents)
 			if (M.stat!=2)
 				if (!iscarbon(M))
-					M.emote("scream")
+					M.emote_nosleep("scream")
 				else
 					var/mob/living/carbon/C = M
 					if (C.can_feel_pain())
-						C.emote("scream")
+						C.emote_nosleep("scream")
 
 			M.death(1)
 			M.ghostize()
@@ -350,7 +356,7 @@ GLOBAL_LIST_BOILERPLATE(all_crematoriums, /obj/structure/morgue/crematorium)
 	req_access = list(ACCESS_GENERAL_CREMATOR)
 	id = 1
 
-/obj/machinery/button/crematorium/attack_hand(mob/user, list/params)
+/obj/machinery/button/crematorium/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(..())
 		return
 	if(src.allowed(user))
@@ -403,11 +409,11 @@ GLOBAL_LIST_BOILERPLATE(all_crematoriums, /obj/structure/morgue/crematorium)
 		for(var/mob/living/M in contents)
 			if (M.stat!=2)
 				if (!iscarbon(M))
-					M.emote("scream")
+					M.emote_nosleep("scream")
 				else
 					var/mob/living/carbon/C = M
 					if (C.can_feel_pain())
-						C.emote("scream")
+						C.emote_nosleep("scream")
 
 			M.death(1)
 			M.ghostize()

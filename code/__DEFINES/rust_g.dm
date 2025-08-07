@@ -15,25 +15,36 @@
 // On Windows, looks in the standard places for `rust_g.dll`.
 // On Linux, looks in `.`, `$LD_LIBRARY_PATH`, and `~/.byond/bin` for either of
 // `librust_g.so` (preferred) or `rust_g` (old).
+// On OpenDream, `rust_g64.dll` / `librust_g64.so` are used instead.
 
 /* This comment bypasses grep checks */ /var/__rust_g
 
+#ifndef OPENDREAM
+#define RUST_G_BASE	"rust_g"
+#else
+#define RUST_G_BASE	"rust_g64"
+#endif
+
 /proc/__detect_rust_g()
 	if (world.system_type == UNIX)
-		if (fexists("./librust_g.so"))
+		if (fexists("./lib[RUST_G_BASE].so"))
 			// No need for LD_LIBRARY_PATH badness.
-			return __rust_g = "./librust_g.so"
-		else if (fexists("./rust_g"))
+			return __rust_g = "./lib[RUST_G_BASE].so"
+#ifndef OPENDREAM
+		else if (fexists("./[RUST_G_BASE]"))
 			// Old dumb filename.
-			return __rust_g = "./rust_g"
-		else if (fexists("[world.GetConfig("env", "HOME")]/.byond/bin/rust_g"))
+			return __rust_g = "./[RUST_G_BASE]"
+		else if (fexists("[world.GetConfig("env", "HOME")]/.byond/bin/[RUST_G_BASE]"))
 			// Old dumb filename in `~/.byond/bin`.
-			return __rust_g = "rust_g"
+			return __rust_g = RUST_G_BASE
+#endif
 		else
 			// It's not in the current directory, so try others
-			return __rust_g = "librust_g.so"
+			return __rust_g = "lib[RUST_G_BASE].so"
 	else
-		return __rust_g = "rust_g"
+		return __rust_g = RUST_G_BASE
+
+#undef RUST_G_BASE
 
 #define RUST_G (__rust_g || __detect_rust_g())
 #endif
@@ -135,7 +146,7 @@
 #define rustg_dmi_icon_states(fname) RUSTG_CALL(RUST_G, "dmi_icon_states")(fname)
 
 #define rustg_file_read(fname) RUSTG_CALL(RUST_G, "file_read")(fname)
-#define rustg_file_exists(fname) RUSTG_CALL(RUST_G, "file_exists")(fname)
+#define rustg_file_exists(fname) (RUSTG_CALL(RUST_G, "file_exists")(fname) == "true")
 #define rustg_file_write(text, fname) RUSTG_CALL(RUST_G, "file_write")(text, fname)
 #define rustg_file_append(text, fname) RUSTG_CALL(RUST_G, "file_append")(text, fname)
 #define rustg_file_get_line_count(fname) text2num(RUSTG_CALL(RUST_G, "file_get_line_count")(fname))
@@ -146,34 +157,14 @@
 	#define text2file(text, fname) rustg_file_append(text, "[fname]")
 #endif
 
-/**
- * Please see code/datums/math/vec2.dm.
- */
-#define rustg_geometry_delaunay_triangulate_to_graph(point_json) RUSTG_CALL(RUST_G, "geometry_delaunay_triangulate_to_graph")(point_json)
-
-/**
- * Please see code/datums/math/vec2.dm.
- */
-#define rustg_geometry_delaunay_voronoi_graph(packed) RUSTG_CALL(RUST_G, "geometry_delaunay_voronoi_graph")(packed)
-
+/// Returns the git hash of the given revision, ex. "HEAD".
 #define rustg_git_revparse(rev) RUSTG_CALL(RUST_G, "rg_git_revparse")(rev)
+
+/**
+ * Returns the date of the given revision in the format YYYY-MM-DD.
+ * Returns null if the revision is invalid.
+ */
 #define rustg_git_commit_date(rev) RUSTG_CALL(RUST_G, "rg_git_commit_date")(rev)
-
-#define rustg_hash_string(algorithm, text) RUSTG_CALL(RUST_G, "hash_string")(algorithm, text)
-#define rustg_hash_file(algorithm, fname) RUSTG_CALL(RUST_G, "hash_file")(algorithm, fname)
-#define rustg_hash_generate_totp(seed) RUSTG_CALL(RUST_G, "generate_totp")(seed)
-#define rustg_hash_generate_totp_tolerance(seed, tolerance) RUSTG_CALL(RUST_G, "generate_totp_tolerance")(seed, tolerance)
-
-#define RUSTG_HASH_MD5 "md5"
-#define RUSTG_HASH_SHA1 "sha1"
-#define RUSTG_HASH_SHA256 "sha256"
-#define RUSTG_HASH_SHA512 "sha512"
-#define RUSTG_HASH_XXH64 "xxh64"
-#define RUSTG_HASH_BASE64 "base64"
-
-#ifdef RUSTG_OVERRIDE_BUILTINS
-	#define md5(thing) (isfile(thing) ? rustg_hash_file(RUSTG_HASH_MD5, "[thing]") : rustg_hash_string(RUSTG_HASH_MD5, thing))
-#endif
 
 #define RUSTG_HTTP_METHOD_GET "get"
 #define RUSTG_HTTP_METHOD_PUT "put"
@@ -195,6 +186,74 @@
 /proc/rustg_log_close_all() return RUSTG_CALL(RUST_G, "log_close_all")()
 
 #define rustg_noise_get_at_coordinates(seed, x, y) RUSTG_CALL(RUST_G, "noise_get_at_coordinates")(seed, x, y)
+
+#define rustg_sql_connect_pool(options) RUSTG_CALL(RUST_G, "sql_connect_pool")(options)
+#define rustg_sql_query_async(handle, query, params) RUSTG_CALL(RUST_G, "sql_query_async")(handle, query, params)
+#define rustg_sql_query_blocking(handle, query, params) RUSTG_CALL(RUST_G, "sql_query_blocking")(handle, query, params)
+#define rustg_sql_connected(handle) RUSTG_CALL(RUST_G, "sql_connected")(handle)
+#define rustg_sql_disconnect_pool(handle) RUSTG_CALL(RUST_G, "sql_disconnect_pool")(handle)
+#define rustg_sql_check_query(job_id) RUSTG_CALL(RUST_G, "sql_check_query")("[job_id]")
+
+#define rustg_time_microseconds(id) text2num(RUSTG_CALL(RUST_G, "time_microseconds")(id))
+#define rustg_time_milliseconds(id) text2num(RUSTG_CALL(RUST_G, "time_milliseconds")(id))
+#define rustg_time_reset(id) RUSTG_CALL(RUST_G, "time_reset")(id)
+
+/// Returns the timestamp as a string
+/proc/rustg_unix_timestamp()
+	return RUSTG_CALL(RUST_G, "unix_timestamp")()
+
+#define rustg_raw_read_toml_file(path) json_decode(RUSTG_CALL(RUST_G, "toml_file_to_json")(path) || "null")
+
+/proc/rustg_read_toml_file(path)
+	var/list/output = rustg_raw_read_toml_file(path)
+	if (output["success"])
+		return json_decode(output["content"])
+	else
+		CRASH(output["content"])
+
+#define rustg_raw_toml_encode(value) json_decode(RUSTG_CALL(RUST_G, "toml_encode")(json_encode(value)))
+
+/proc/rustg_toml_encode(value)
+	var/list/output = rustg_raw_toml_encode(value)
+	if (output["success"])
+		return output["content"]
+	else
+		CRASH(output["content"])
+
+#define rustg_url_encode(text) RUSTG_CALL(RUST_G, "url_encode")("[text]")
+#define rustg_url_decode(text) RUSTG_CALL(RUST_G, "url_decode")(text)
+
+#ifdef RUSTG_OVERRIDE_BUILTINS
+	#define url_encode(text) rustg_url_encode(text)
+	#define url_decode(text) rustg_url_decode(text)
+#endif
+
+//! Citadel rust-g addons
+/**
+ * Please see code/datums/math/vec2.dm.
+ */
+#define rustg_geometry_delaunay_triangulate_to_graph(point_json) RUSTG_CALL(RUST_G, "geometry_delaunay_triangulate_to_graph")(point_json)
+
+/**
+ * Please see code/datums/math/vec2.dm.
+ */
+#define rustg_geometry_delaunay_voronoi_graph(packed) RUSTG_CALL(RUST_G, "geometry_delaunay_voronoi_graph")(packed)
+
+#define rustg_hash_string(algorithm, text) RUSTG_CALL(RUST_G, "hash_string")(algorithm, text)
+#define rustg_hash_file(algorithm, fname) RUSTG_CALL(RUST_G, "hash_file")(algorithm, fname)
+#define rustg_hash_generate_totp(seed) RUSTG_CALL(RUST_G, "generate_totp")(seed)
+#define rustg_hash_generate_totp_tolerance(seed, tolerance) RUSTG_CALL(RUST_G, "generate_totp_tolerance")(seed, tolerance)
+
+#define RUSTG_HASH_MD5 "md5"
+#define RUSTG_HASH_SHA1 "sha1"
+#define RUSTG_HASH_SHA256 "sha256"
+#define RUSTG_HASH_SHA512 "sha512"
+#define RUSTG_HASH_XXH64 "xxh64"
+#define RUSTG_HASH_BASE64 "base64"
+
+#ifdef RUSTG_OVERRIDE_BUILTINS
+	#define md5(thing) (isfile(thing) ? rustg_hash_file(RUSTG_HASH_MD5, "[thing]") : rustg_hash_string(RUSTG_HASH_MD5, thing))
+#endif
 
 /**
  * Register a list of nodes into a rust library. This list of nodes must have been serialized in a json.
@@ -275,65 +334,3 @@
  * Note: `count` was added in Redis version 6.2.0
  */
 #define rustg_redis_lpop(key, count) RUSTG_CALL(RUST_G, "redis_lpop")(key, count)
-
-#define rustg_sql_connect_pool(options) RUSTG_CALL(RUST_G, "sql_connect_pool")(options)
-#define rustg_sql_query_async(handle, query, params) RUSTG_CALL(RUST_G, "sql_query_async")(handle, query, params)
-#define rustg_sql_query_blocking(handle, query, params) RUSTG_CALL(RUST_G, "sql_query_blocking")(handle, query, params)
-#define rustg_sql_connected(handle) RUSTG_CALL(RUST_G, "sql_connected")(handle)
-#define rustg_sql_disconnect_pool(handle) RUSTG_CALL(RUST_G, "sql_disconnect_pool")(handle)
-#define rustg_sql_check_query(job_id) RUSTG_CALL(RUST_G, "sql_check_query")("[job_id]")
-
-#define rustg_time_microseconds(id) text2num(RUSTG_CALL(RUST_G, "time_microseconds")(id))
-#define rustg_time_milliseconds(id) text2num(RUSTG_CALL(RUST_G, "time_milliseconds")(id))
-#define rustg_time_reset(id) RUSTG_CALL(RUST_G, "time_reset")(id)
-
-/// Returns the timestamp as a string
-/proc/rustg_unix_timestamp()
-	return RUSTG_CALL(RUST_G, "unix_timestamp")()
-
-#define rustg_raw_read_toml_file(path) json_decode(RUSTG_CALL(RUST_G, "toml_file_to_json")(path) || "null")
-
-/proc/rustg_read_toml_file(path)
-	var/list/output = rustg_raw_read_toml_file(path)
-	if (output["success"])
-		return json_decode(output["content"])
-	else
-		CRASH(output["content"])
-
-#define rustg_raw_toml_encode(value) json_decode(RUSTG_CALL(RUST_G, "toml_encode")(json_encode(value)))
-
-/proc/rustg_toml_encode(value)
-	var/list/output = rustg_raw_toml_encode(value)
-	if (output["success"])
-		return output["content"]
-	else
-		CRASH(output["content"])
-
-#define rustg_unzip_download_async(url, unzip_directory) RUSTG_CALL(RUST_G, "unzip_download_async")(url, unzip_directory)
-#define rustg_unzip_check(job_id) RUSTG_CALL(RUST_G, "unzip_check")("[job_id]")
-
-#define rustg_url_encode(text) RUSTG_CALL(RUST_G, "url_encode")("[text]")
-#define rustg_url_decode(text) RUSTG_CALL(RUST_G, "url_decode")(text)
-
-#ifdef RUSTG_OVERRIDE_BUILTINS
-	#define url_encode(text) rustg_url_encode(text)
-	#define url_decode(text) rustg_url_decode(text)
-#endif
-
-/**
- * This proc generates a noise grid using worley noise algorithm
- *
- * Returns a single string that goes row by row, with values of 1 representing an alive cell, and a value of 0 representing a dead cell.
- *
- * Arguments:
- * * region_size: The size of regions
- * * threshold: the value that determines wether a cell is dead or alive
- * * node_per_region_chance: chance of a node existiing in a region
- * * size: size of the returned grid
- * * node_min: minimum amount of nodes in a region (after the node_per_region_chance is applied)
- * * node_max: maximum amount of nodes in a region
- */
-#define rustg_worley_generate(region_size, threshold, node_per_region_chance, size, node_min, node_max) \
-	RUSTG_CALL(RUST_G, "worley_generate")(region_size, threshold, node_per_region_chance, size, node_min, node_max)
-
-

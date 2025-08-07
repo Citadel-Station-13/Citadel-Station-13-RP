@@ -18,7 +18,7 @@
 		material_parts = material_armor
 	return ..()
 
-/obj/item/clothing/update_material_single(datum/material/material)
+/obj/item/clothing/update_material_single(datum/prototype/material/material)
 	. = ..()
 	if(isnull(material))
 		return
@@ -36,7 +36,7 @@
 
 /obj/item/clothing/suit/armor/material
 	name = "armor"
-	material_parts = /datum/material/steel
+	material_parts = /datum/prototype/material/steel
 
 /obj/item/clothing/suit/armor/material/makeshift
 	name = "sheet armor"
@@ -44,10 +44,10 @@
 	icon_state = "material_armor_makeshift"
 
 /obj/item/clothing/suit/armor/material/makeshift/durasteel
-	material_parts = /datum/material/durasteel
+	material_parts = /datum/prototype/material/durasteel
 
 /obj/item/clothing/suit/armor/material/makeshift/glass
-	material_parts = /datum/material/glass
+	material_parts = /datum/prototype/material/glass
 
 // Used to craft sheet armor, and possibly other things in the Future(tm).
 /obj/item/material/armor_plating
@@ -123,7 +123,7 @@
 /obj/item/clothing/head/helmet/material
 	name = "helmet"
 	inv_hide_flags = HIDEEARS|HIDEEYES|BLOCKHAIR
-	material_parts = /datum/material/steel
+	material_parts = /datum/prototype/material/steel
 
 /obj/item/clothing/head/helmet/material/makeshift
 	name = "bucket"
@@ -132,4 +132,4 @@
 	icon_state = "material_armor_makeshift"
 
 /obj/item/clothing/head/helmet/material/makeshift/durasteel
-	material_parts = /datum/material/durasteel
+	material_parts = /datum/prototype/material/durasteel

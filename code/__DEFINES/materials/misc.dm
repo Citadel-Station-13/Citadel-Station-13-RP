@@ -1,6 +1,6 @@
 
 // Material Defines
-// todo: stop using these please, we're reliance on them out.
+// todo: stop using these please, we're pushing them out in favor of `/material/typepath::id`
 #define MAT_ALGAE			"algae"
 #define MAT_BANANIUM		"bananium"
 #define MAT_CARBON			"carbon"
@@ -16,6 +16,8 @@
 #define MAT_HARDWOOD		"hardwood"
 #define MAT_HEMATITE		"hematite"
 #define MAT_IRON			"iron"
+#define MAT_IRONLOG			"ironwood log"
+#define MAT_IRONWOOD		"ironwood"
 #define MAT_LEAD			"lead"
 #define MAT_LEATHER			"leather"
 #define MAT_LOG				"log"

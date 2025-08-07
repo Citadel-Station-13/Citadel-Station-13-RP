@@ -122,7 +122,7 @@ GLOBAL_LIST_INIT(ghostroles, init_ghostroles())
 /datum/role/ghostrole/proc/Transfer(client/C, mob/created)
 	if(!isnewplayer(C.mob))
 		C.mob.ghostize(TRUE, TRUE)
-	created.ckey = C.ckey
+	C.transfer_to(created)
 	return TRUE
 
 /**

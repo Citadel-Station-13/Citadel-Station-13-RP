@@ -7,7 +7,7 @@
 	var/hoodtype = null //so the chaplain hoodie or other hoodies can override this
 	var/hood_up = FALSE
 	var/toggleicon
-	action_button_name = "Toggle Hood"
+	item_action_name = "Toggle Hood"
 	allowed =  list (/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches,
 	/obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit)
 
@@ -28,7 +28,7 @@
 /obj/item/clothing/suit/storage/hooded/AltClick()
 	ToggleHood()
 
-/obj/item/clothing/suit/storage/hooded/ui_action_click()
+/obj/item/clothing/suit/storage/hooded/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	ToggleHood()
 
 /obj/item/clothing/suit/storage/hooded/equipped(mob/user, slot, flags)
@@ -63,12 +63,12 @@
 				else
 					hood.atom_flags &= ~PHORONGUARD
 				hood.set_armor(fetch_armor())
-				hood.copy_atom_colour(src)
+				hood.copy_atom_color(src)
 				// equip after armor / color changes
 				H.equip_to_slot_if_possible(hood, SLOT_ID_HEAD)
 				hood_up = TRUE
 				ADD_TRAIT(hood, TRAIT_ITEM_NODROP, CLOTHING_TRAIT)
-				icon_state = "[toggleicon]-t"
+				icon_state = ("[toggleicon]-t" in icon_states(icon)) ? "[toggleicon]-t" : toggleicon
 				update_worn_icon()
 	else
 		RemoveHood()
@@ -82,7 +82,7 @@
 	inv_hide_flags = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 	cold_protection_cover = UPPER_TORSO|LOWER_TORSO|ARMS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE	//Space carp like space, so you should too
-	action_button_name = "Toggle Carp Hood"
+	item_action_name = "Toggle Carp Hood"
 	hoodtype = /obj/item/clothing/head/hood/carp_hood
 
 /obj/item/clothing/suit/storage/hooded/ian_costume	//It's Ian, rub his bell- oh god what happened to his inside parts?
@@ -92,7 +92,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "ian", SLOT_ID_LEFT_HAND = "ian") //Does not exist -S2-
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
 	inv_hide_flags = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
-	action_button_name = "Toggle Ian Hood"
+	item_action_name = "Toggle Ian Hood"
 	hoodtype = /obj/item/clothing/head/hood/ian_hood
 
 /obj/item/clothing/suit/storage/hooded/bee_costume
@@ -101,7 +101,7 @@
 	icon_state = "bee"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
 	inv_hide_flags = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
-	action_button_name = "Toggle Bee Hood"
+	item_action_name = "Toggle Bee Hood"
 	hoodtype = /obj/item/clothing/head/hood/bee_hood
 
 /obj/item/clothing/suit/storage/hooded/flash_costume
@@ -110,14 +110,14 @@
 	icon_state = "flashsuit"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
 	inv_hide_flags = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
-	action_button_name = "Toggle Flash Top"
+	item_action_name = "Toggle Flash Top"
 	hoodtype = /obj/item/clothing/head/hood/flash_hood
 
 /obj/item/clothing/suit/storage/hooded/techpriest /// TO DO - FIND A WAY TO HIDE FEET PROPERLY
 	name = "tech priest robe"
 	desc = "A robe for those that worship the Omnissiah. Also toasters.. for.. some reason."
 	icon_state = "techpriest"
-	action_button_name = "Toggle Priest Hood"
+	item_action_name = "Toggle Priest Hood"
 	body_cover_flags = LOWER_TORSO|UPPER_TORSO|ARMS|LEGS|FEET
 	inv_hide_flags = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "techpriest", SLOT_ID_LEFT_HAND = "techpriest")
@@ -158,8 +158,8 @@
 	armor_type = /datum/armor/security/light_formalwear
 	hoodtype = /obj/item/clothing/head/hood/winter/captain
 	allowed =  list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
-	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
-	/obj/item/reagent_containers/spray/pepper,/obj/item/gun/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,
+	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/projectile/energy,
+	/obj/item/reagent_containers/spray/pepper,/obj/item/gun/projectile/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,
 	/obj/item/handcuffs,/obj/item/clothing/head/helmet)
 
 /obj/item/clothing/suit/storage/hooded/wintercoat/captain/hop
@@ -177,8 +177,8 @@
 	armor_type = /datum/armor/security/light_formalwear
 	hoodtype = /obj/item/clothing/head/hood/winter/security
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
-	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
-	/obj/item/reagent_containers/spray/pepper,/obj/item/gun/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,
+	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/projectile/energy,
+	/obj/item/reagent_containers/spray/pepper,/obj/item/gun/projectile/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,
 	/obj/item/handcuffs,/obj/item/clothing/head/helmet)
 
 /obj/item/clothing/suit/storage/hooded/wintercoat/security/hos
@@ -446,7 +446,7 @@
 		/obj/item/tank,
 		/obj/item/radio,
 		/obj/item/pickaxe,
-		/obj/item/gun/ballistic/sec/flash
+		/obj/item/gun/projectile/ballistic/sec/flash
 		)
 
 /obj/item/clothing/suit/storage/hooded/miner
@@ -470,11 +470,11 @@
 		/obj/item/radio,
 		/obj/item/suit_cooling_unit,
 		/obj/item/pickaxe,
-		/obj/item/gun/energy/kinetic_accelerator,
+		/obj/item/gun/projectile/energy/kinetic_accelerator,
 		/obj/item/kinetic_crusher,
 		/obj/item/resonator,
-		/obj/item/gun/energy/gun/miningcarbine,
-		/obj/item/gun/magnetic/matfed
+		/obj/item/gun/projectile/energy/gun/miningcarbine,
+		/obj/item/gun/projectile/magnetic/matfed
 		)
 
 // Eldritch suit
@@ -486,7 +486,7 @@
 	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
 	inv_hide_flags = HIDEHOLSTER
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "brown_jacket", SLOT_ID_LEFT_HAND = "brown_jacket")
-	action_button_name = "Toggle Eldritch Hood"
+	item_action_name = "Toggle Eldritch Hood"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	hoodtype = /obj/item/clothing/head/hood/eldritch
 	armor_type = /datum/armor/lavaland/eldritch
@@ -503,7 +503,7 @@
 	allowed = list(
 		/obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/pickaxe, /obj/item/material/twohanded/spear, /obj/item/material/twohanded/spear/bone,
 		/obj/item/material/knife/tacknife/combatknife/bone, /obj/item/material/knife/tacknife/survival/bone, /obj/item/material/knife/tacknife/survival/bone, /obj/item/melee/ashlander,
-		/obj/item/gun/ballistic/musket/pistol
+		/obj/item/gun/projectile/ballistic/musket/pistol
 		)
 	armor_type = /datum/armor/lavaland/goliath
 	hoodtype = /obj/item/clothing/head/hood/goliath
@@ -514,7 +514,7 @@
 	name = "drake armour"
 	icon_state = "dragon"
 	desc = "A suit of armour fashioned from the remains of an ash drake."
-	allowed = list(/obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/resonator, /obj/item/mining_scanner, /obj/item/mining_scanner/advanced, /obj/item/gun/energy/kinetic_accelerator, /obj/item/pickaxe, /obj/item/material/twohanded/spear)
+	allowed = list(/obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/resonator, /obj/item/mining_scanner, /obj/item/mining_scanner/advanced, /obj/item/gun/projectile/energy/kinetic_accelerator, /obj/item/pickaxe, /obj/item/material/twohanded/spear)
 	armor_type = /datum/armor/lavaland/drake
 	hoodtype = /obj/item/clothing/head/hood/drake
 	heat_protection_cover = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
@@ -594,8 +594,8 @@
 		)
 	blood_overlay_type = "armor"
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
-	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
-	/obj/item/gun/ballistic, /obj/item/ammo_magazine, /obj/item/melee/baton)
+	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/projectile/energy,
+	/obj/item/gun/projectile/ballistic, /obj/item/ammo_magazine, /obj/item/melee/baton)
 	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/heavy, /obj/item/clothing/accessory/storage/pouches)
 
 /obj/item/clothing/suit/storage/hooded/covertcarrier/can_equip(mob/M, slot, mob/user, flags)

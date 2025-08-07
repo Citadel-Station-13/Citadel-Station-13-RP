@@ -1,4 +1,8 @@
-/// sent at the very end of /mob/update_mobility(): (new_mobility_flags)
+/**
+ * sent at the very end of /mob/update_mobility(): (new_mobility_flags)
+ *
+ * * only sent if mobility actually changed
+ */
 #define COMSIG_MOB_ON_UPDATE_MOBILITY "mob_updated_mobility"
 /// sent at the very end of /mob/set_resitng(): (new_resting)
 #define COMSIG_MOB_ON_SET_RESTING "mob_set_resting"

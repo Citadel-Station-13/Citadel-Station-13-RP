@@ -8,7 +8,6 @@
 	icon_dead = "wolfgirl-dead"
 	icon = 'icons/mob/vore.dmi'
 
-	faction = "wolfgirl"
 	maxHealth = 30
 	health = 30
 
@@ -35,9 +34,6 @@
 */
 // Activate Noms!
 /mob/living/simple_mob/vore/wolfgirl
-	vore_active = 1
-	vore_pounce_chance = 40
-	vore_icons = SA_ICON_LIVING
 
 /datum/ai_holder/polaris/simple_mob/retaliate/cooperative/wolfgirl/on_hear_say(mob/living/speaker, message)
 

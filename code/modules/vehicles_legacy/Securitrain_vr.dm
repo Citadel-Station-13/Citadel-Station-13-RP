@@ -4,7 +4,7 @@
 
 /obj/vehicle_old/train/security/engine
 	name = "Security Cart"
-	desc = "A ridable electric car designed for pulling trolleys as well as personal transport."
+	desc = "A rideable electric car designed for pulling trolleys as well as personal transport."
 	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "paddywagon"
 	on = 0
@@ -101,12 +101,11 @@
 	..()
 
 //cargo trains are open topped, so there is a chance the projectile will hit the mob ridding the train instead
-/obj/vehicle_old/train/security/bullet_act(var/obj/projectile/Proj)
+/obj/vehicle_old/train/security/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	if(has_buckled_mobs() && prob(70))
-		var/mob/living/M = pick(buckled_mobs)
-		M.bullet_act(Proj)
-		return
-	..()
+		var/mob/buckled = pick(buckled_mobs)
+		return proj.impact_redirect(buckled, args)
+	return ..()
 
 /obj/vehicle_old/train/security/update_icon()
 	if(open)
@@ -172,7 +171,7 @@
 
 	M.apply_effects(5, 5)
 	for(var/i = 0, i < rand(1,3), i++)
-		M.apply_damage(rand(1,5), BRUTE, pick(parts))
+		M.apply_damage(rand(1,5), DAMAGE_TYPE_BRUTE, pick(parts))
 
 /obj/vehicle_old/train/security/trolley/RunOver(var/mob/living/M)
 	..()
@@ -375,7 +374,7 @@
 	else
 		move_delay = max(0, (-car_limit * active_engines) + train_length - active_engines)	//limits base overweight so you cant overspeed trains
 		move_delay *= (1 / max(1, active_engines)) * 2 										//overweight penalty (scaled by the number of engines)
-		move_delay += config_legacy.run_speed 														//base reference speed
+		move_delay += 2 														//base reference speed
 		move_delay *= 1.1																	//makes cargo trains 10% slower than running when not overweight
 
 /obj/vehicle_old/train/security/trolley/update_car(var/train_length, var/active_engines)

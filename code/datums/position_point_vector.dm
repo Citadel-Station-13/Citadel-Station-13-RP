@@ -9,7 +9,10 @@
 #define RETURN_POINT_VECTOR(ATOM, ANGLE, SPEED) {new /datum/point/vector(ATOM, null, null, null, null, ANGLE, SPEED)}
 #define RETURN_POINT_VECTOR_INCREMENT(ATOM, ANGLE, SPEED, AMT) new /datum/point/vector(ATOM, null, null, null, null, ANGLE, SPEED, AMT)
 
-/datum/position			//For positions with map x/y/z and pixel x/y so you don't have to return lists. Could use addition/subtraction in the future I guess.
+/**
+ * Stores x/y/z and pixel_x/pixel_y
+ */
+/datum/position
 	var/x = 0
 	var/y = 0
 	var/z = 0
@@ -53,20 +56,31 @@
 /datum/position/proc/return_point()
 	return new /datum/point(src)
 
+// todo: shouldn't be global scope
 /proc/point_midpoint_points(datum/point/a, datum/point/b)	//Obviously will not support multiZ calculations! Same for the two below.
-	var/datum/point/P = new
-	P.x = a.x + (b.x - a.x) / 2
-	P.y = a.y + (b.y - a.y) / 2
-	P.z = a.z
-	return P
+	var/datum/point/created = new
+	created.x = a.x + (b.x - a.x) / 2
+	created.y = a.y + (b.y - a.y) / 2
+	created.z = a.z
+	return created
 
+// todo: shouldn't be global scope
 /proc/pixel_length_between_points(datum/point/a, datum/point/b)
 	return sqrt(((b.x - a.x) ** 2) + ((b.y - a.y) ** 2))
 
+// todo: shouldn't be global scope
+/**
+ * @return angle between A and B, as degrees **clockwise from north**
+ */
 /proc/angle_between_points(datum/point/a, datum/point/b)
 	return arctan((b.y - a.y), (b.x - a.x))
 
-/datum/point		//A precise point on the map in absolute pixel locations based on world.icon_size. Pixels are FROM THE EDGE OF THE MAP!
+/**
+ * A precise point on the map.
+ *
+ * x/y are absolute pixels from map edge, so 1, 1 = the lower-left most pixel on the zlevel, not the center of turf (1,1)!
+ */
+/datum/point
 	var/x = 0
 	var/y = 0
 	var/z = 0
@@ -80,6 +94,7 @@
 	p.z = z
 	return p
 
+// todo: get first of first argument wrapping, use to_point() on /datum/position and from_atom() / from_position() on /datum/point
 /datum/point/New(_x, _y, _z, _pixel_x = 0, _pixel_y = 0)	//first argument can also be a /datum/position or /atom.
 	if(istype(_x, /datum/position))
 		var/datum/position/P = _x
@@ -99,9 +114,9 @@
 
 /datum/point/proc/initialize_location(tile_x, tile_y, tile_z, p_x = 0, p_y = 0)
 	if(!isnull(tile_x))
-		x = ((tile_x - 1) * world.icon_size) + world.icon_size / 2 + p_x + 1
+		x = ((tile_x - 1) * WORLD_ICON_SIZE) + WORLD_ICON_SIZE / 2 + p_x + 1
 	if(!isnull(tile_y))
-		y = ((tile_y - 1) * world.icon_size) + world.icon_size / 2 + p_y + 1
+		y = ((tile_y - 1) * WORLD_ICON_SIZE) + WORLD_ICON_SIZE / 2 + p_y + 1
 	if(!isnull(tile_z))
 		z = tile_z
 
@@ -109,29 +124,87 @@
 	var/turf/T = return_turf()
 	return "\ref[src] aX [x] aY [y] aZ [z] pX [return_px()] pY [return_py()] mX [T.x] mY [T.y] mZ [T.z]"
 
-/datum/point/proc/move_atom_to_src(atom/movable/AM)
-	AM.forceMove(return_turf())
-	AM.pixel_x = return_px()
-	AM.pixel_y = return_py()
+/**
+ * angle is clockwise from north
+ *
+ * @return self
+ */
+/datum/point/proc/shift_in_projectile_angle(angle, distance)
+	x += sin(angle) * distance
+	y += cos(angle) * distance
+	return src
 
-/datum/point/proc/return_turf()
-	return locate(CEILING(x / world.icon_size, 1), CEILING(y / world.icon_size, 1), z)
+/**
+ * doesn't use set base pixel x/y
+ *
+ * if not on a turf, we return null
+ */
+/datum/point/proc/instantiate_movable_with_unmanaged_offsets(typepath, ...)
+	ASSERT(ispath(typepath, /atom/movable))
+	// todo: inline everything
+	var/turf/where = return_turf()
+	if(!where)
+		return
+	var/atom/movable/created = new typepath(arglist(list(where) + args.Copy(2)))
+	created.pixel_x = return_px()
+	created.pixel_y = return_py()
+	return created
 
-/datum/point/proc/clamped_return_turf()
-	return locate(clamp(CEILING(x / world.icon_size, 1), 1, world.maxx), clamp(CEILING(y / world.icon_size, 1), 1, world.maxy), z)
-
-/datum/point/proc/return_coordinates()		//[turf_x, turf_y, z]
-	return list(CEILING(x / world.icon_size, 1), CEILING(y / world.icon_size, 1), z)
-
-/datum/point/proc/return_position()
-	return new /datum/position(src)
-
+/**
+ * return rounded pixel x
+ */
 /datum/point/proc/return_px()
-	return MODULUS(x, world.icon_size) - 16 - 1
+	// 1 = -15,
+	// 32 = +16
+	// we start at 16, 16
+	. = x % WORLD_ICON_SIZE
+	if(!.)
+		return WORLD_ICON_SIZE * 0.5
+	. -= WORLD_ICON_SIZE * 0.5
 
+/**
+ * return rounded pixel y
+ */
 /datum/point/proc/return_py()
-	return MODULUS(y, world.icon_size) - 16 - 1
+	// 1 = -15,
+	// 32 = +16
+	// we start at 16, 16
+	. = y % WORLD_ICON_SIZE
+	if(!.)
+		return WORLD_ICON_SIZE * 0.5
+	. -= WORLD_ICON_SIZE * 0.5
 
+/**
+ * return  turf
+ */
+/datum/point/proc/return_turf()
+	return locate(
+		ceil(floor(x) / WORLD_ICON_SIZE),
+		ceil(floor(y) / WORLD_ICON_SIZE),
+		z,
+	)
+
+/**
+ * extract closest in-bounds turf
+ *
+ * does not check for map transitions
+ */
+/datum/point/proc/clamped_return_turf()
+	return locate(
+		clamp(ceil(floor(x) / WORLD_ICON_SIZE), 1, world.maxx),
+		clamp(ceil(floor(y) / WORLD_ICON_SIZE), 1, world.maxy),
+		z,
+	)
+
+/**
+ * return list(x, y, z)
+ */
+/datum/point/proc/return_coordinates()		//[turf_x, turf_y, z]
+	return list(
+		ceil(floor(x) / WORLD_ICON_SIZE),
+		ceil(floor(y) / WORLD_ICON_SIZE),
+		z,
+	)
 
 /datum/point/vector
 	/// Pixels per iteration

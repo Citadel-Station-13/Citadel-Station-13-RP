@@ -75,8 +75,12 @@
 				revive_ready = REVIVING_READY //reset their cooldown
 
 /mob/living/carbon/human/proc/hasnutriment()
-	return (nutrition+ bloodstr.get_reagent("protein") * 10 + bloodstr.get_reagent("nutriment") * 5 + ingested.get_reagent("protein") * 5 + ingested.get_reagent("nutriment") * 2.5) > 425
-
+	. = nutrition
+	. += bloodstr.reagent_volumes[/datum/reagent/nutriment::id] * 5
+	. += bloodstr.reagent_volumes[/datum/reagent/nutriment/protein::id] * 10
+	. += ingested.reagent_volumes[/datum/reagent/nutriment::id] * 2.5
+	. += ingested.reagent_volumes[/datum/reagent/nutriment/protein::id] * 5
+	return . > 425
 
 /mob/living/carbon/human/proc/hatch()
 	set name = "Hatch"
@@ -159,51 +163,51 @@
 				if(16 to 25) //10% chance
 					//Strange items
 					//to_chat(src, "Traitor Items")
-					if(!halitem)
-						halitem = new
-						var/list/slots_free = list(ui_lhand,ui_rhand)
-						if(l_hand) slots_free -= ui_lhand
-						if(r_hand) slots_free -= ui_rhand
-						if(istype(src,/mob/living/carbon/human))
-							var/mob/living/carbon/human/H = src
-							if(!H.belt) slots_free += ui_belt
-							if(!H.l_store) slots_free += ui_storage1
-							if(!H.r_store) slots_free += ui_storage2
-						if(slots_free.len)
-							halitem.screen_loc = pick(slots_free)
-							halitem.layer = 50
-							switch(rand(1,6))
-								if(1) //revolver
-									halitem.icon = 'icons/obj/gun/ballistic.dmi'
-									halitem.icon_state = "revolver"
-									halitem.name = "Revolver"
-								if(2) //c4
-									halitem.icon = 'icons/obj/assemblies.dmi'
-									halitem.icon_state = "plastic-explosive0"
-									halitem.name = "Mysterious Package"
-									if(prob(25))
-										halitem.icon_state = "c4small_1"
-								if(3) //sword
-									halitem.icon = 'icons/obj/weapons.dmi'
-									halitem.icon_state = "sword1"
-									halitem.name = "Sword"
-								if(4) //stun baton
-									halitem.icon = 'icons/obj/weapons.dmi'
-									halitem.icon_state = "stunbaton"
-									halitem.name = "Stun Baton"
-								if(5) //emag
-									halitem.icon = 'icons/obj/card.dmi'
-									halitem.icon_state = "emag"
-									halitem.name = "Cryptographic Sequencer"
-								if(6) //flashbang
-									halitem.icon = 'icons/obj/grenade.dmi'
-									halitem.icon_state = "flashbang1"
-									halitem.name = "Flashbang"
-							if(client) client.screen += halitem
-							spawn(rand(100,250))
-								if(client)
-									client.screen -= halitem
-								halitem = null
+					// if(!halitem)
+					// 	halitem = new
+					// 	var/list/slots_free = list()
+					// 	for(var/i in get_empty_hand_indices())
+					// 		slots_free += SCREEN_LOC_INV_HAND(i)
+					// 	if(istype(src,/mob/living/carbon/human))
+					// 		var/mob/living/carbon/human/H = src
+					// 		if(!H.belt) slots_free += ui_belt
+					// 		if(!H.l_store) slots_free += ui_storage1
+					// 		if(!H.r_store) slots_free += ui_storage2
+					// 	if(slots_free.len)
+					// 		halitem.screen_loc = pick(slots_free)
+					// 		halitem.layer = 50
+					// 		switch(rand(1,6))
+					// 			if(1) //revolver
+					// 				halitem.icon = 'icons/obj/gun/ballistic.dmi'
+					// 				halitem.icon_state = "revolver"
+					// 				halitem.name = "Revolver"
+					// 			if(2) //c4
+					// 				halitem.icon = 'icons/obj/assemblies.dmi'
+					// 				halitem.icon_state = "plastic-explosive0"
+					// 				halitem.name = "Mysterious Package"
+					// 				if(prob(25))
+					// 					halitem.icon_state = "c4small_1"
+					// 			if(3) //sword
+					// 				halitem.icon = 'icons/obj/weapons.dmi'
+					// 				halitem.icon_state = "sword1"
+					// 				halitem.name = "Sword"
+					// 			if(4) //stun baton
+					// 				halitem.icon = 'icons/obj/weapons.dmi'
+					// 				halitem.icon_state = "stunbaton"
+					// 				halitem.name = "Stun Baton"
+					// 			if(5) //emag
+					// 				halitem.icon = 'icons/obj/card.dmi'
+					// 				halitem.icon_state = "emag"
+					// 				halitem.name = "Cryptographic Sequencer"
+					// 			if(6) //flashbang
+					// 				halitem.icon = 'icons/obj/grenade.dmi'
+					// 				halitem.icon_state = "flashbang1"
+					// 				halitem.name = "Flashbang"
+					// 		if(client) client.screen += halitem
+					// 		spawn(rand(100,250))
+					// 			if(client)
+					// 				client.screen -= halitem
+					// 			halitem = null
 				if(26 to 35) //10% chance
 					//Flashes of danger
 					//to_chat(src, "Danger Flash")
@@ -396,7 +400,7 @@
 			if(src.nutrition > 901) //prevent going into the fat ranges of nutrition needlessly and prevents minmaxing certain racial traits/abilities that rely on nutrition via farming one victim
 				src.nutrition = 900
 			if(B.nutrition < 100)
-				B.apply_damage(15, BRUTE, BP_TORSO) // if they have nothing to give, this just harms them
+				B.apply_damage(15, DAMAGE_TYPE_BRUTE, BP_TORSO) // if they have nothing to give, this just harms them
 			B.bitten = 1 //debuff tracking for balance
 	else if(!istype(B,/mob/living/carbon) && src.isSynthetic() || istype(B,/mob/living/carbon) && B.isSynthetic() && src.isSynthetic()) // for synths to feed on robots and other synths
 		if(do_after(src, 50, B))
@@ -406,7 +410,7 @@
 				src.nutrition += 300
 				B.nutrition -= 150
 			if(B.nutrition < 100)
-				B.apply_damage(15, BRUTE, BP_TORSO)
+				B.apply_damage(15, DAMAGE_TYPE_BRUTE, BP_TORSO)
 	else if(istype(B,/mob/living/silicon) && !istype(src,/mob/living/silicon))
 		if(do_after(src, 50, B))
 			to_chat(src, "You don't sense any viable blood...")
@@ -474,7 +478,7 @@
 				C.nutrition = (C.nutrition + T.nutrition)
 				T.nutrition = 0 //Completely drained of everything.
 				var/damage_to_be_applied = T.species.total_health //Get their max health.
-				T.apply_damage(damage_to_be_applied, HALLOSS) //Knock em out.
+				T.apply_damage(damage_to_be_applied, DAMAGE_TYPE_HALLOSS) //Knock em out.
 				C.absorbing_prey = 0
 				if(T.isSynthetic())
 					to_chat(C, "<span class='notice'>You have siphoned the power out of [T], causing them to crumple on the floor.</span>")
@@ -562,7 +566,7 @@
 					nutrition = (nutrition + T.nutrition)
 					T.nutrition = 0 //Completely drained of everything.
 					var/damage_to_be_applied = T.species.total_health //Get their max health.
-					T.apply_damage(damage_to_be_applied, HALLOSS) //Knock em out.
+					T.apply_damage(damage_to_be_applied, DAMAGE_TYPE_HALLOSS) //Knock em out.
 					absorbing_prey = 0 //Clean this up before we return
 					return
 				if(T.isSynthetic())
@@ -573,7 +577,7 @@
 					to_chat(T, "<span class='danger'>An odd sensation flows through your body as you as [src] begins to drain you to dangerous levels!</span>")
 			if(51 to 98)
 				if(T.stat == DEAD)
-					T.apply_damage(500, OXY) //Bit of fluff.
+					T.apply_damage(500, DAMAGE_TYPE_OXY) //Bit of fluff.
 					absorbing_prey = 0
 					if(T.isSynthetic())
 						to_chat(src, "<span class='notice'>You have completely drained the power from [T], shutting them down for good.</span>")
@@ -591,7 +595,7 @@
 				if(drain_finalized != 1)
 					stage = 51
 			if(100) //They shouldn't  survive long enough to get here, but just in case.
-				T.apply_damage(500, OXY) //Kill them.
+				T.apply_damage(500, DAMAGE_TYPE_OXY) //Kill them.
 				absorbing_prey = 0
 				if(T.isSynthetic())
 					to_chat(src, "<span class='notice'>You have completely drained the power from [T], shutting them down for good.</span>")
@@ -802,7 +806,7 @@
 
 		//Removing an internal organ
 		if(T_int && T_int.damage >= 25) //Internal organ and it's been severely damaged
-			T.apply_damage(15, BRUTE, T_ext) //Damage the external organ they're going through.
+			T.apply_damage(15, DAMAGE_TYPE_BRUTE, T_ext) //Damage the external organ they're going through.
 			T_int.removed()
 			if(B)
 				T_int.forceMove(B) //Move to pred's gut
@@ -817,7 +821,7 @@
 
 			//Is it groin/chest? You can't remove those.
 			if(T_ext.cannot_amputate)
-				T.apply_damage(25, BRUTE, T_ext)
+				T.apply_damage(25, DAMAGE_TYPE_BRUTE, T_ext)
 				visible_message("<span class='danger'>[src] severely damages [T]'s [T_ext.name]!</span>")
 			else if(B)
 				T_ext.forceMove(B)
@@ -830,7 +834,7 @@
 		else
 			if(T_int)
 				T_int.take_damage(25 - T_int.damage)
-			T.apply_damage(25, BRUTE, T_ext)
+			T.apply_damage(25, DAMAGE_TYPE_BRUTE, T_ext)
 			visible_message("<span class='danger'>[src] severely damages [T]'s [T_ext.name]!</span>")
 
 		add_attack_logs(src,T,"Shredded (hardvore)")
@@ -867,3 +871,91 @@
 	set category = "Abilities"
 	pass_flags ^= ATOM_PASS_TABLE //I dunno what this fancy ^= is but Aronai gave it to me.
 	to_chat(src, "You [pass_flags&ATOM_PASS_TABLE ? "will" : "will NOT"] move over tables/railings/trays!")
+
+/mob/living/carbon/human/proc/water_stealth()
+	set name = "Dive under water / Resurface"
+	set desc = "Dive under water, allowing for you to be stealthy and move faster."
+	set category = "Abilities"
+
+	if(last_special > world.time)
+		return
+	last_special = world.time + 50 //No spamming!
+
+	if(has_modifier_of_type(/datum/modifier/trait/underwater_stealth))
+		to_chat(src, "You resurface!")
+		remove_modifiers_of_type(/datum/modifier/trait/underwater_stealth)
+		return
+
+	if(!isturf(loc)) //We have no turf.
+		to_chat(src, "There is no water for you to dive into!")
+		return
+
+	if(istype(src.loc, /turf/simulated/floor/water))
+		var/turf/simulated/floor/water/water_floor = src.loc
+		if(water_floor.depth >= 1) //Is it deep enough?
+			add_modifier(/datum/modifier/trait/underwater_stealth) //No duration. It'll remove itself when they exit the water!
+			to_chat(src, "You dive into the water!")
+			visible_message("[src] dives into the water!")
+		else
+			to_chat(src, "The water here is not deep enough to dive into!")
+			return
+
+	else
+		to_chat(src, "There is no water for you to dive into!")
+		return
+
+/mob/living/carbon/human/proc/underwater_devour()
+	set name = "Devour From Water"
+	set desc = "Grab something in the water with you and devour them with your selected stomach."
+	set category = "Abilities.Vore"
+
+	if(last_special > world.time)
+		return
+	last_special = world.time + 50 //No spamming!
+
+	if(stat == DEAD || !CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
+		to_chat(src, SPAN_NOTICE("You cannot do that while in your current state."))
+		return
+
+	if(!(src.vore_selected))
+		to_chat(src, SPAN_NOTICE("No selected belly found."))
+		return
+
+
+	if(!has_modifier_of_type(/datum/modifier/trait/underwater_stealth))
+		to_chat(src, "You must be underwater to do this!!")
+		return
+
+	var/list/targets = list() //Shameless copy and paste. If it ain't broke don't fix it!
+
+	for(var/turf/T in range(1, src))
+		if(istype(T, /turf/simulated/floor/water))
+			for(var/mob/living/L in T)
+				if(L == src) //no eating yourself. 1984.
+					continue
+				if(L.devourable && L.can_be_drop_prey)
+					targets += L
+
+	if(!(targets.len))
+		to_chat(src, SPAN_NOTICE("No eligible targets found."))
+		return
+
+	var/mob/living/target = tgui_input_list(src, "Please select a target.", "Victim", targets)
+
+	if(!target)
+		return
+
+	to_chat(target, SPAN_CRITICAL("Something begins to circle around you in the water!")) //Dun dun...
+	var/starting_loc = target.loc
+
+	if(do_after(src, 50))
+		if(target.loc != starting_loc)
+			to_chat(target, SPAN_WARNING("You got away from whatever that was..."))
+			to_chat(src, SPAN_NOTICE("They got away."))
+			return
+		if(target.buckled) //how are you buckled in the water?!
+			target.buckled.unbuckle_mob()
+		target.visible_message(SPAN_WARNING("\The [target] suddenly disappears, being dragged into the water!"),\
+			SPAN_DANGER("You are dragged below the water and feel yourself slipping directly into \the [src]'s [lowertext(vore_selected)]!"))
+		to_chat(src, SPAN_NOTICE("You successfully drag \the [target] into the water, slipping them into your [lowertext(vore_selected)]."))
+		target.forceMove(src.vore_selected)

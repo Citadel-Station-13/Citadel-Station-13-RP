@@ -287,7 +287,7 @@
 				to_chat(src, SPAN_NOTICE("You feel a slithering sensation as your [O.name] reform."))
 
 				var/agony_to_apply = round(0.66 * O.max_damage) // 66% of the limb's health is converted into pain.
-				src.apply_damage(agony_to_apply, HALLOSS)
+				src.apply_damage(agony_to_apply, DAMAGE_TYPE_HALLOSS)
 
 		for(var/organtype in species.has_organ) // Replace completely missing internal organs. -After- external ones, so they all should exist.
 			if(!src.internal_organs_by_name[organtype])
@@ -335,7 +335,7 @@
 
 /mob/living/carbon/human/proc/shadekin_get_energy()
 	var/datum/species/shadekin/sk = species
-	var/datum/species/crew_shadekin/besk = species
+	var/datum/species/shadekin/black_eyed/besk = species
 
 	if(istype(sk))
 		return sk.get_energy(src)
@@ -345,7 +345,7 @@
 
 /mob/living/carbon/human/proc/shadekin_get_max_energy()
 	var/datum/species/shadekin/sk = species
-	var/datum/species/crew_shadekin/besk = species
+	var/datum/species/shadekin/black_eyed/besk = species
 
 	if(istype(sk))
 		return sk.get_max_energy(src)
@@ -355,7 +355,7 @@
 
 /mob/living/carbon/human/proc/shadekin_set_energy(new_energy)
 	var/datum/species/shadekin/sk = species
-	var/datum/species/crew_shadekin/besk = species
+	var/datum/species/shadekin/black_eyed/besk = species
 
 	if(istype(sk))
 		sk.set_energy(src, new_energy)
@@ -365,7 +365,7 @@
 
 /mob/living/carbon/human/proc/shadekin_set_max_energy(new_max_energy)
 	var/datum/species/shadekin/sk = species
-	var/datum/species/crew_shadekin/besk = species
+	var/datum/species/shadekin/black_eyed/besk = species
 
 	if(istype(sk))
 		sk.set_max_energy(src, new_max_energy)
@@ -377,7 +377,7 @@
 
 /mob/living/carbon/human/proc/shadekin_adjust_energy(amount)
 	var/datum/species/shadekin/sk = species
-	var/datum/species/crew_shadekin/besk = species
+	var/datum/species/shadekin/black_eyed/besk = species
 
 	if(istype(sk))
 		if(amount > 0 || !(sk.check_infinite_energy(src)))

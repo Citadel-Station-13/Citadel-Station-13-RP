@@ -6,6 +6,6 @@
 			continue
 		var/id = num2text(initial(A.access_value))
 		if(lookup_ids[id])
-			Fail("Collission on access value [id]")
+			Fail("Collision on [A] and [lookup_ids[id]]")
 			continue
 		lookup_ids[id] = A

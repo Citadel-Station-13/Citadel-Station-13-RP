@@ -33,11 +33,12 @@
 			Though complete safety is assured, participants are advised to prepare for inhospitable \
 			environs."
 
-//we don't want the silly text overlay!
-/obj/item/paper/pamphlet/update_icon()
-	return
-
 /obj/item/paper/pamphlet/violent_video_games
 	name = "pamphlet - \'Violent Video Games and You\'"
 	desc = "A pamphlet encouraging the reader to maintain a balanced lifestyle and take care of their mental health, while still enjoying video games in a healthy way. You probably don't need this..."
 	info = "They don't make you kill people. There, we said it. Now get back to work!"
+
+/obj/item/paper/pamphlet/vacation
+	name = "pamphlet - \'Five Planets You MUST Visit\'"
+	desc = "A pamphlet showing of various resorts in exotic systems with exorbident prices."
+	info = "<i> Most of this is just advertisements and pictures of resorts with little actual substanence </i>"

@@ -20,8 +20,9 @@
 
 	var/datum/radio_frequency/radio_connection
 
-/obj/machinery/air_sensor/update_icon()
+/obj/machinery/air_sensor/update_icon_state()
 	icon_state = "gsensor[on]"
+	return ..()
 
 /obj/machinery/air_sensor/process(delta_time)
 	if(on)
@@ -86,7 +87,7 @@
 		radio_controller.remove_object(src, frequency)
 	..()
 
-/obj/machinery/computer/general_air_control/attack_hand(mob/user, list/params)
+/obj/machinery/computer/general_air_control/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(..(user))
 		return
 

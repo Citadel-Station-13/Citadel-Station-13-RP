@@ -1,4 +1,4 @@
-/datum/language/unathi
+/datum/prototype/language/unathi
 	id = LANGUAGE_ID_UNATHI
 	name = LANGUAGE_UNATHI
 	translation_class = TRANSLATION_CLASS_DEFAULT_CORE_RACE
@@ -20,7 +20,7 @@
 	)
 	shorthand = "ST"
 
-/datum/language/unathi/get_random_name()
+/datum/prototype/language/unathi/get_random_name()
 
 	var/new_name = ..()
 	while(findtextEx(new_name,"sss",1,null))

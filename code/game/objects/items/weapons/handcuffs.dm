@@ -2,8 +2,10 @@
 	name = "handcuffs"
 	desc = "Use this to keep prisoners in line."
 	gender = PLURAL
-	icon = 'icons/obj/items.dmi'
+	icon = 'icons/items/handcuffs.dmi'
 	icon_state = "handcuff"
+	worn_state = "handcuff"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	slot_flags = SLOT_BELT
 	throw_force = 5
 	w_class = WEIGHT_CLASS_SMALL
@@ -13,6 +15,7 @@
 	materials_base = list(MAT_STEEL = 500)
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
+	worth_intrinsic = 10
 	var/elastic
 	var/dispenser = 0
 	var/breakouttime = 1200 //Deciseconds = 120s = 2 minutes
@@ -20,7 +23,7 @@
 	var/cuff_type = "handcuffs"
 	var/use_time = 30
 
-/obj/item/handcuffs/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/handcuffs/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/carbon/C = target
 	if(!istype(C))
 		return
@@ -86,7 +89,7 @@
 	add_attack_logs(user,H,"Handcuffed (attempt)")
 	feedback_add_details("handcuffs","H")
 
-	user.setClickCooldown(user.get_attack_speed(src))
+	user.setClickCooldownLegacy(user.get_attack_speed_legacy(src))
 	user.do_attack_animation(H)
 
 	user.visible_message("<span class='danger'>\The [user] has put [cuff_type] on \the [H]!</span>")
@@ -102,7 +105,7 @@
 /obj/item/handcuffs/equipped(mob/living/user, slot, accessory)
 	. = ..()
 	if(slot == SLOT_ID_HANDCUFFED)
-		user.drop_all_held_items()
+		user.drop_held_items()
 		user.stop_pulling()
 
 /* grimdark code that's disabled for code quality reasons - readd later if we care
@@ -153,6 +156,8 @@ var/last_chew = 0
 	cuff_sound = 'sound/weapons/cablecuff.ogg'
 	cuff_type = "cable restraints"
 	elastic = 0 //citadel change, why would cable be better than actual handcuffs? who knows.
+	worth_intrinsic = 10
+	economic_category_obj = ECONOMIC_CATEGORY_OBJ_SCRAP
 
 /obj/item/handcuffs/cable/red
 	color = "#DD0000"
@@ -204,9 +209,11 @@ var/last_chew = 0
 /obj/item/handcuffs/cable/tape/cyborg
 	dispenser = TRUE
 
+// todo: entirely overhaul or remove this
 /obj/item/handcuffs/disruptor
 	name = "disruptor cuffs"
 	icon_state = "disruptorcuff"
+	worn_state = "disruptorcuff"
 	desc = "These cutting edge handcuffs were originally designed by the PMD. Commonly deployed to restrain anomalous lifeforms, disruptor cuffs employ a form of acausal logic engine disruption, in tandem with morphogenic resonance, to neutralize the abilities of technological and biological threats."
 
 /obj/item/handcuffs/disruptor/equipped(var/mob/living/user,var/slot)
@@ -229,7 +236,7 @@ var/last_chew = 0
 	elastic = 0
 	cuff_sound = 'sound/weapons/handcuffs.ogg' //This shold work for now.
 
-/obj/item/handcuffs/legcuffs/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/handcuffs/legcuffs/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/carbon/C = target
 	if(!istype(C))
 		return
@@ -262,7 +269,7 @@ var/last_chew = 0
 	if(!H.can_equip(src, SLOT_ID_LEGCUFFED, user = user))
 		return FALSE
 
-	if(istype(H.shoes,/obj/item/clothing/shoes/magboots/hardsuit) && !elastic) // Can't cuff someone who's in a deployed hardsuit.
+	if(istype(H.inventory.get_slot(/datum/inventory_slot/inventory/shoes), /obj/item/clothing/shoes/magboots/hardsuit) && !elastic) // Can't cuff someone who's in a deployed hardsuit.
 		to_chat(user, "<span class='danger'>\The [src] won't fit around \the [H.shoes]!</span>")
 		return 0
 
@@ -280,7 +287,7 @@ var/last_chew = 0
 	add_attack_logs(user,H,"Legcuffed (attempt)")
 	feedback_add_details("legcuffs","H")
 
-	user.setClickCooldown(user.get_attack_speed(src))
+	user.setClickCooldownLegacy(user.get_attack_speed_legacy(src))
 	user.do_attack_animation(H)
 
 	user.visible_message("<span class='danger'>\The [user] has put [cuff_type] on \the [H]!</span>")

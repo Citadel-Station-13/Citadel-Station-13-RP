@@ -1,9 +1,11 @@
-/datum/material/copper
+/datum/prototype/material/copper
 	id = MAT_COPPER
 	name = "copper"
 	icon_colour = "#b45c13"
 	stack_type = /obj/item/stack/material/copper
 	tgui_icon_key = "copper"
+
+	worth = 3.5
 
 	relative_integrity = 0.8
 	density = 8 * 0.9

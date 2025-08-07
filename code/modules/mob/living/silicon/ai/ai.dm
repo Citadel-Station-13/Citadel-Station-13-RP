@@ -190,8 +190,7 @@ var/list/ai_verbs_default = list(
 	if(!safety)//Only used by AIize() to successfully spawn an AI.
 		if (!B)//If there is no player/brain inside.
 			GLOB.empty_playable_ai_cores += new /obj/structure/AIcore/deactivated(loc)//New empty terminal.
-			qdel(src)//Delete AI.
-			return
+			return INITIALIZE_HINT_QDEL //Delete AI
 		else
 			if (B.brainmob.mind)
 				B.brainmob.mind.transfer(src)
@@ -346,8 +345,8 @@ var/list/ai_verbs_default = list(
 	use_power(USE_POWER_IDLE) // Just incase we need to wake up the power system.
 
 /obj/machinery/ai_powersupply/Destroy()
-	. = ..()
 	powered_ai = null
+	return ..()
 
 /obj/machinery/ai_powersupply/process(delta_time)
 	if(!powered_ai || powered_ai.stat == DEAD)

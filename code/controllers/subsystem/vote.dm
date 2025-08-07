@@ -35,9 +35,9 @@ SUBSYSTEM_DEF(vote)
 /datum/config_entry/string/default_on_transfer_tie
 	default = "Extend the Shift"
 
-/datum/controller/subsystem/vote/Initialize(start_timeofday)
-	. = ..()
+/datum/controller/subsystem/vote/Initialize()
 	ghost_weight_percent = CONFIG_GET(number/ghost_weight)
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/vote/fire(resumed)
 	if(mode)
@@ -114,7 +114,10 @@ SUBSYSTEM_DEF(vote)
 			if(2)
 				. = CONFIG_GET(string/default_on_transfer_tie)
 	if(LAZYLEN(winners) > 0)
-		. = pick(winners)
+		if(!.)
+			if(LAZYLEN(winners) > 1)
+				text += "More than one winner, result chosen at random."
+			. = pick(winners)
 		text += "<b>Vote Result: [.]</b>"
 	else
 		text += "<b>Vote Result: Inconclusive - No Votes!</b>"

@@ -1,4 +1,4 @@
-/datum/material/valhollide
+/datum/prototype/material/valhollide
 	name = MAT_VALHOLLIDE
 	id = MAT_VALHOLLIDE
 	stack_type = /obj/item/stack/material/valhollide
@@ -22,3 +22,5 @@
 	refraction = MATERIAL_RESISTANCE_HIGH
 	absorption = MATERIAL_RESISTANCE_HIGH
 	nullification = MATERIAL_RESISTANCE_MODERATE
+
+	worth = 100

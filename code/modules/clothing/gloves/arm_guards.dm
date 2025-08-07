@@ -28,14 +28,6 @@
 				return FALSE
 	return TRUE
 
-/obj/item/clothing/gloves/arm_guard/laserproof
-	name = "ablative arm guards"
-	desc = "These arm guards will protect your hands and arms from energy weapons."
-	icon_state = "arm_guards_laser"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
-	siemens_coefficient = 0.4 //This is worse than the other ablative pieces, to avoid this from becoming the poor warden's insulated gloves.
-	armor_type = /datum/armor/station/ablative
-
 /obj/item/clothing/gloves/arm_guard/bulletproof
 	name = "ballistic arm guards"
 	desc = "These arm guards will protect your hands and arms from ballistic weapons."

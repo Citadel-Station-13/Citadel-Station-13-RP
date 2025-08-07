@@ -1,6 +1,6 @@
 //contains the relavant data for the xenohybrid resin, a more versitile, and legaly distinct material.
 
-/datum/material/hybrid_resin
+/datum/prototype/material/hybrid_resin
 	id = "xenoresin_hybrid"
 	name = "resin compound"
 	icon_colour = "#321a49"
@@ -30,13 +30,13 @@
 /obj/item/stack/material/hybrid_resin
 	name = "resin compound"
 	icon_state = "sheet-resin"
-	material = /datum/material/hybrid_resin
+	material = /datum/prototype/material/hybrid_resin
 	no_variants = TRUE
 	apply_colour = TRUE
 	pass_color = TRUE
 	strict_color_stacking = TRUE
 
-/datum/material/hybrid_resin/generate_recipes()
+/datum/prototype/material/hybrid_resin/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(
 		name = "resin nest",
@@ -90,16 +90,15 @@
 		O.color = "#321D37"
 
 /obj/structure/simple_door/hybrid_resin/Initialize(mapload, material_name)
-	return ..(mapload, "resin compound")
+	return ..(mapload, "xenoresin_hybrid")
 
 /obj/structure/bed/hybrid_nest
 	name = "alien nest"
 	desc = "It's a gruesome pile of thick, sticky resin shaped like a nest."
 	icon = 'icons/mob/alien.dmi'
 	icon_state = "nest"
-	color = "#321a49"
-	material = "resin compound"
-	padding_material = "resin compound"
+	material = "xenoresin_hybrid"
+	padding_material = "xenoresin_hybrid"
 	hit_sound_brute = 'sound/effects/attackblob.ogg'
 
 	integrity = 100
@@ -168,17 +167,7 @@
 	integrity = 120
 	integrity_max = 120
 
-/obj/structure/alien/hybrid_resin/Initialize(mapload)
-	. = ..()
-	var/turf/T = get_turf(src)
-	T.thermal_conductivity = WALL_HEAT_TRANSFER_COEFFICIENT
-
-/obj/structure/alien/hybrid_resin/Destroy()
-	var/turf/T = get_turf(src)
-	T.thermal_conductivity = initial(T.thermal_conductivity)
-	..()
-
-/obj/structure/alien/hybrid_resin/attack_hand(mob/user, list/params)
+/obj/structure/alien/hybrid_resin/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		if(locate(/obj/item/organ/internal/xenos/hivenode) in C.internal_organs)

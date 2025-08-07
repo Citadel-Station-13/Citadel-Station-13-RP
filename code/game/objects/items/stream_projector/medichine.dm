@@ -18,6 +18,7 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
  */
 ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, interface)
 /obj/item/stream_projector/medichine
+	prototype_id = "ItemMedichineProjector"
 	name = "medichine stream projector"
 	desc = "A specialized, locked-down variant of a nanite stream projector. Deploys medichines from a cartridge onto a target's surface."
 	icon = 'icons/items/stream_projector/medichine.dmi'
@@ -60,7 +61,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 /obj/item/stream_projector/medichine/valid_target(atom/entity)
 	return isliving(entity)
 
-/obj/item/stream_projector/medichine/attack_hand(mob/user, list/params)
+/obj/item/stream_projector/medichine/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.is_holding_inactive(src))
 		if(isnull(inserted_cartridge))
 			user.action_feedback(SPAN_WARNING("[src] has no vial loaded."), src)
@@ -95,6 +96,13 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	return ..()
 
 /obj/item/stream_projector/medichine/try_lock_target(atom/entity, datum/event_args/actor/actor, silent)
+	var/datum/medichine_cell/effective_cell = effective_cell_datum()
+	if(isnull(effective_cell))
+		actor.chat_feedback(
+			SPAN_WARNING("There's no medichines loaded."),
+			target = src,
+		)
+		return FALSE
 	var/turf/where_we_are = get_turf(src)
 	var/turf/where_they_are = get_turf(entity)
 	if(get_dist(where_we_are, where_they_are) > maximum_distance)
@@ -171,12 +179,13 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 		return
 	var/datum/medichine_cell/effective_cell = effective_cell_datum()
 	if(!isnull(effective_cell))
+		var/beam_color = beam_color(effective_cell.color)
 		for(var/atom/entity as anything in beams_by_entity)
 			var/datum/beam/entity_beam = beams_by_entity[entity]
-			entity_beam.segmentation.color = beam_color(effective_cell.color)
+			entity_beam.segmentation.color = beam_color
 
 /obj/item/stream_projector/medichine/proc/beam_color(color)
-	var/list/decoded = ReadRGB(color)
+	var/list/decoded = rgb2num(color)
 	return list(
 		decoded[1] / 255, decoded[2] / 255, decoded[3] / 255,
 		0, 0, 0,
@@ -210,15 +219,20 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 			var/datum/component/medichine_field/field = entity.LoadComponent(/datum/component/medichine_field)
 			var/distance_multiplier = 1 / max(1, 1 + max(get_dist(src, entity) - distance_penalty_start, 0) * distance_divisor_multiplier)
 			var/requested = min(injecting_rate * distance_multiplier, max(0, injecting_suspension - field.active?[injecting_package]))
-			var/allowed = isnull(interface)? inserted_cartridge?.use(injecting_package, requested) : interface.use_medichines(injecting_package, requested)
+			var/allowed = inserted_cartridge?.use(injecting_package, requested)
 			field.inject_medichines(injecting_package, allowed)
 
 //? Field
 
 /**
  * component used to form a mob's nanite cloud visuals + processing
+ *
+ * todo: scale / whatever properly to large mobs, including taurs
+ * todo: fields might need to pull from projectors, rather than projectors pushing to fields. this prevents oscillation.
+ * todo: the current anti-oscillation is a little overpowered for buff effects, as buff effects won't generally check for amount.
  */
 /datum/component/medichine_field
+	registered_type = /datum/component/medichine_field
 	/// active effect packages associated to nanite volume
 	var/list/datum/medichine_cell/active
 	/// cached total volume
@@ -235,11 +249,11 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 
 /datum/component/medichine_field/RegisterWithParent()
 	. = ..()
-	RegisterSignal(parent, COMSIG_MOB_ON_LIFE, PROC_REF(on_life))
+	RegisterSignal(parent, COMSIG_MOB_PHYSICAL_LIFE, PROC_REF(on_life))
 
 /datum/component/medichine_field/UnregisterFromParent()
 	. = ..()
-	UnregisterSignal(parent, COMSIG_MOB_ON_LIFE)
+	UnregisterSignal(parent, COMSIG_MOB_PHYSICAL_LIFE)
 	QDEL_NULL(renderer)
 
 /datum/component/medichine_field/proc/on_life(datum/source, seconds, times_fired)
@@ -258,24 +272,32 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 		var/reacting = min(cell_package.reaction_rate, cell_volume)
 		var/reacted_ratio = 0
 
-		// perform tick
-		for(var/datum/medichine_effect/cell_effect as anything in cell_package.effects)
-			var/used_ratio
-			used_ratio = cell_effect.tick_on_mob(src, victim, reacting)
-			if(isnull(used_ratio))
-				continue
-			reacted_ratio = max(reacted_ratio, used_ratio)
-
-		var/decaying = max(cell_package.decay_minimum_baseline, reacting * reacted_ratio)
-		active[cell_package] -= decaying
-		total_volume -= decaying
-		if(active[cell_package] < 0)
+		// if we were already at 0, remove
+		if(reacting <= 0)
 			active -= cell_package
 			for(var/datum/medichine_effect/cell_effect as anything in cell_package.effects)
 				cell_effect.target_removed(victim)
 			removed_something = TRUE
+		// else, tick
+		else if(reacting > 0)
+			// perform tick
+			for(var/datum/medichine_effect/cell_effect as anything in cell_package.effects)
+				var/used_ratio
+				used_ratio = cell_effect.tick_on_mob(src, victim, reacting)
+				if(isnull(used_ratio))
+					continue
+				reacted_ratio = max(reacted_ratio, used_ratio)
+
+			var/decaying = max(cell_package.decay_minimum_baseline, reacting * reacted_ratio, 0)
+			active[cell_package] -= decaying
+			total_volume -= decaying
+			// if we're at 0, we do nothing; it's removed next tick
+			// this way, if the projector adds more before next tick, we don't oscillate as hard.
 	if(removed_something)
-		recalculate_color()
+		if(!length(active))
+			qdel(src)
+		else
+			recalculate_color()
 
 /datum/component/medichine_field/proc/recalculate_color()
 	if(!total_volume)
@@ -288,17 +310,20 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 			blended[2] += package.color_rgb_list[2] * ratio
 			blended[3] += package.color_rgb_list[3] * ratio
 		current_color = rgb(blended[1], blended[2], blended[3])
-	renderer.color = current_color
+	renderer.particles.color = current_color
 
 /datum/component/medichine_field/proc/inject_medichines(datum/medichine_cell/medichines, amount)
 	LAZYINITLIST(active)
 	ensure_visuals()
+	var/wasnt_there
 	if(isnull(active[medichines]))
+		wasnt_there = TRUE
+	active[medichines] += amount
+	total_volume += amount
+	if(wasnt_there)
 		for(var/datum/medichine_effect/effect as anything in medichines.effects)
 			effect.target_added(parent)
 		recalculate_color()
-	active[medichines] += amount
-	total_volume += amount
 
 /datum/component/medichine_field/proc/ensure_visuals()
 	if(!isnull(renderer))
@@ -311,8 +336,8 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 		var/atom/entity = parent
 		renderer.loc = entity
 	var/particles/particle_instance = new /particles/medichine_field
+	particle_instance.color = current_color
 	renderer.particles = particle_instance
-	renderer.color = current_color
 
 //? VFX
 
@@ -323,7 +348,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	width = 32
 	height = 32
 	count = 75
-	spawning = 1.25
+	spawning = 0.65
 	fade = 3
 	lifespan = 3
 	velocity = list(0, 2.5, 0)
@@ -339,6 +364,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
  * medical beamgun cell
  */
 /obj/item/medichine_cell
+	prototype_id = "ItemMedichineCell"
 	name = "medichine cartridge (EMPTY)"
 	desc = "A cartridge meant to hold medicinal nanites."
 	icon = 'icons/items/stream_projector/medichine.dmi'
@@ -377,6 +403,26 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 		var/image/I = image(icon, "[base_icon_state]-[number]")
 		I.color = cell_datum.color
 		add_overlay(I, TRUE)
+
+/obj/item/medichine_cell/serialize()
+	. = ..()
+	// todo: id
+	.["cell"] = "[cell_datum.type]"
+	.["volume"] = volume
+	// todo: how do we know when we should serialize varedits? we have a serious potential desync issue otherwise
+	.["max_volume"] = max_volume
+
+/obj/item/medichine_cell/deserialize(list/data)
+	// todo: id
+	if(data["cell"])
+		var/datum/medichine_cell/cell_found = fetch_cached_medichine_cell_datum(text2path(data["cell"]))
+		if(cell_found)
+			cell_datum = cell_found
+	if(!isnull(data["volume"]))
+		volume = data["volume"]
+	if(!isnull(data["max_volume"]))
+		max_volume = data["max_volume"]
+	return ..()
 
 /obj/item/medichine_cell/proc/fill(amount)
 	. = min(amount, volume)
@@ -495,7 +541,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	var/list/color_rgb_list
 
 /datum/medichine_cell/New()
-	color_rgb_list = ReadRGB(color)
+	color_rgb_list = rgb2num(color)
 	for(var/i in 1 to length(effects))
 		var/datum/medichine_effect/effect = effects[i]
 		if(istype(effect))
@@ -510,8 +556,8 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 			biology_types = BIOLOGY_TYPES_FLESHY;
 			disinfect_wounds = TRUE;
 			seal_wounds = TRUE;
-			repair_strength_brute = 4;
-			repair_strength_burn = 4;
+			repair_strength_brute = 2.5;
+			repair_strength_burn = 2.5;
 		}
 	)
 	color = "#aa0000"
@@ -528,8 +574,8 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 			biology_types = BIOLOGY_TYPES_FLESHY;
 			disinfect_wounds = TRUE;
 			seal_wounds = TRUE;
-			repair_strength_brute = 2;
-			repair_strength_burn = 2;
+			repair_strength_brute = 5;
+			repair_strength_burn = 5;
 		},
 	)
 	color = "#ff3300"
@@ -607,7 +653,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 /**
  * as opposed to ticking on objs.
  *
- * @return 0 to 1 of ratio used; null for 'stop'
+ * @return 0 to 1 of ratio used; null for 'stop' / 'hibernate'
  */
 /datum/medichine_effect/proc/tick_on_mob(datum/component/medichine_field/field, mob/living/entity, volume, seconds)
 	return 1
@@ -655,6 +701,8 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	var/burn_loss_instances = 0
 	var/list/datum/wound/wounds_healing = list()
 	for(var/obj/item/organ/external/ext as anything in humanlike.bad_external_organs)
+		if(!ext.is_any_biology_type(biology_types))
+			continue
 		// only heal 15 wounds at a time thank you!
 		if(length(wounds_healing) > 15)
 			break
@@ -668,7 +716,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 				continue
 			if(only_open && (wound.is_treated()))
 				continue
-			if(wound.damage_type == BURN)
+			if(wound.wound_type == WOUND_TYPE_BURN)
 				burn_loss_instances++
 			else
 				brute_loss_instances++
@@ -681,7 +729,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	var/brute_heal_overrun = 0
 	for(var/datum/wound/wound as anything in wounds_healing)
 		var/effective_heal
-		if(wound.damage_type == BURN)
+		if(wound.wound_type == WOUND_TYPE_BURN)
 			if(!burn_healing_left)
 				continue
 			effective_heal = min(burn_heal_per + burn_heal_overrun, burn_healing_left)
@@ -709,7 +757,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 				wound.salve()
 			if(disinfect_wounds)
 				wound.disinfect()
-	return max(1 - (burn_healing_left / burn_healing_total), 1 - (brute_healing_left / brute_healing_total))
+	return max(burn_healing_total && (1 - (burn_healing_left / burn_healing_total)), brute_healing_total && (1 - (brute_healing_left / brute_healing_total)))
 
 /datum/medichine_effect/oxygenate
 	/// works on the dead

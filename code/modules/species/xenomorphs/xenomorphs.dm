@@ -10,22 +10,22 @@
 /mob/living/carbon/human/xdrone
 	species = /datum/species/xenos/drone
 	h_style = "Bald"
-	faction = "xeno"
+	iff_factions = MOB_IFF_FACTION_XENOMORPH
 
 /mob/living/carbon/human/xsentinel
 	species = /datum/species/xenos/sentinel
 	h_style = "Bald"
-	faction = "xeno"
+	iff_factions = MOB_IFF_FACTION_XENOMORPH
 
 /mob/living/carbon/human/xhunter
 	species = /datum/species/xenos/hunter
 	h_style = "Bald"
-	faction = "xeno"
+	iff_factions = MOB_IFF_FACTION_XENOMORPH
 
 /mob/living/carbon/human/xqueen
 	species = /datum/species/xenos/queen
 	h_style = "Bald"
-	faction = "xeno"
+	iff_factions = MOB_IFF_FACTION_XENOMORPH
 
 // I feel like we should generalize/condense down all the various icon-rendering antag procs.
 /*----------------------------------------

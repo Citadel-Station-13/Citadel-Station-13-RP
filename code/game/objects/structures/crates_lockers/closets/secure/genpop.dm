@@ -95,7 +95,7 @@
 		locked = TRUE
 	return ..()
 
-/obj/structure/closet/secure_closet/genpop/attack_hand(mob/user)
+/obj/structure/closet/secure_closet/genpop/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.lying && get_dist(src, user) > 0)
 		return
 

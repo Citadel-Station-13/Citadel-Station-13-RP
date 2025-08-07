@@ -30,64 +30,79 @@
 	spark_system = null
 	return ..()
 
-/obj/item/spell/reflect/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	if(user.incapacitated())
-		return 0
+/obj/item/spell/reflect/pickup(mob/user, flags, atom/oldLoc)
+	. = ..()
+	// if you're reading this: this is not the right way to do shieldcalls
+	// this is just a lazy implementation
+	// signals have highest priority, this as a piece of armor shouldn't have that.
+	RegisterSignal(user, COMSIG_ATOM_SHIELDCALL, PROC_REF(shieldcall))
 
-	var/damage_to_energy_cost = (damage_to_energy_multiplier * damage)
+/obj/item/spell/reflect/dropped(mob/user, flags, atom/newLoc)
+	. = ..()
+	UnregisterSignal(user, COMSIG_ATOM_SHIELDCALL)
+
+/obj/item/spell/reflect/proc/shieldcall(datum/source, list/shieldcall_args, fake_attack)
+	if(shieldcall_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAG_TERMINATE)
+		return
+	var/mob/user = source
+	if(user.incapacitated())
+		return
+
+	var/mob/attacker
+	var/damage_to_energy_cost = (damage_to_energy_multiplier * shieldcall_args[SHIELDCALL_ARG_DAMAGE])
+	var/damage_source = shieldcall_args[SHIELDCALL_ARG_ATTACK_SOURCE]
 
 	if(!pay_energy(damage_to_energy_cost))
 		to_chat(owner, "<span class='danger'>Your shield fades due to lack of energy!</span>")
 		qdel(src)
-		return 0
+		return
 
-	//block as long as they are not directly behind us
-	var/bad_arc = global.reverse_dir[user.dir] //arc of directions from which we cannot block
-	if(check_shield_arc(user, bad_arc, damage_source, attacker))
+	if(istype(damage_source, /obj/projectile))
+		var/obj/projectile/P = damage_source
+		attacker = P.firer
 
-		if(istype(damage_source, /obj/projectile))
-			var/obj/projectile/P = damage_source
+		if(P.starting && !P.reflected)
+			visible_message("<span class='danger'>\The [user]'s [src.name] reflects [P]!</span>")
 
-			if(P.starting && !P.reflected)
-				visible_message("<span class='danger'>\The [user]'s [src.name] reflects [attack_text]!</span>")
+			var/turf/curloc = get_turf(user)
 
-				var/turf/curloc = get_turf(user)
+			// redirect the projectile
+			P.legacy_redirect(P.starting.x, P.starting.y, curloc, user)
+			P.reflected = 1
+			if(check_for_scepter())
+				P.damage_force = P.damage_force * 1.5
 
-				// redirect the projectile
-				P.redirect(P.starting.x, P.starting.y, curloc, user)
-				P.reflected = 1
-				if(check_for_scepter())
-					P.damage = P.damage * 1.5
-
-				spark_system.start()
-				playsound(user.loc, 'sound/weapons/blade1.ogg', 50, 1)
-				// now send a log so that admins don't think they're shooting themselves on purpose.
-				log_and_message_admins("[user] reflected [attacker]'s attack back at them.")
-
-				if(!reflecting)
-					reflecting = 1
-					spawn(2 SECONDS) //To ensure that most or all of a burst fire cycle is reflected.
-						to_chat(owner, "<span class='danger'>Your shield fades due being used up!</span>")
-						qdel(src)
-
-				return PROJECTILE_CONTINUE // complete projectile permutation
-
-		else if(istype(damage_source, /obj/item))
-			var/obj/item/W = damage_source
+			spark_system.start()
+			playsound(user.loc, 'sound/weapons/blade1.ogg', 50, 1)
+			// now send a log so that admins don't think they're shooting themselves on purpose.
 			if(attacker)
-				W.melee_interaction_chain(attacker)
-				to_chat(attacker, "<span class='danger'>Your [damage_source.name] goes through \the [src] in one location, comes out \
-				on the same side, and hits you!</span>")
-
-				spark_system.start()
-				playsound(user.loc, 'sound/weapons/blade1.ogg', 50, 1)
-
 				log_and_message_admins("[user] reflected [attacker]'s attack back at them.")
 
-				if(!reflecting)
-					reflecting = 1
-					spawn(2 SECONDS) //To ensure that most or all of a burst fire cycle is reflected.
-						to_chat(owner, "<span class='danger'>Your shield fades due being used up!</span>")
-						qdel(src)
-		return 1
-	return 0
+			if(!reflecting)
+				reflecting = 1
+				spawn(2 SECONDS) //To ensure that most or all of a burst fire cycle is reflected.
+					to_chat(owner, "<span class='danger'>Your shield fades due being used up!</span>")
+					qdel(src)
+
+			shieldcall_args[SHIELDCALL_ARG_FLAGS] |= SHIELDCALL_FLAG_ATTACK_PASSTHROUGH | SHIELDCALL_FLAG_ATTACK_REDIRECT | SHIELDCALL_FLAG_ATTACK_BLOCKED | SHIELDCALL_FLAG_TERMINATE
+
+	else if(istype(damage_source, /datum/event_args/actor/clickchain))
+		var/datum/event_args/actor/clickchain/clickchain = damage_source
+		var/obj/item/W = clickchain.using_melee_weapon
+		attacker = clickchain.performer
+		if(attacker)
+			W.melee_interaction_chain(attacker, attacker)
+			to_chat(attacker, "<span class='danger'>Your [damage_source] goes through \the [src] in one location, comes out \
+			on the same side, and hits you!</span>")
+
+			spark_system.start()
+			playsound(user.loc, 'sound/weapons/blade1.ogg', 50, 1)
+
+			log_and_message_admins("[user] reflected [attacker]'s attack back at them.")
+
+			if(!reflecting)
+				reflecting = 1
+				spawn(2 SECONDS) //To ensure that most or all of a burst fire cycle is reflected.
+					to_chat(owner, "<span class='danger'>Your shield fades due being used up!</span>")
+					qdel(src)
+		shieldcall_args[SHIELDCALL_ARG_FLAGS] |= SHIELDCALL_FLAG_ATTACK_REDIRECT | SHIELDCALL_FLAG_ATTACK_BLOCKED | SHIELDCALL_FLAG_TERMINATE

@@ -17,21 +17,13 @@
 	circuit = /obj/item/circuitboard/cell_charger
 
 /obj/machinery/cell_charger/update_icon()
+	cut_overlays()
 	icon_state = "ccharger[charging ? 1 : 0]"
+	. = ..()
 
 	if(charging && !(machine_stat & (BROKEN|NOPOWER)))
-
 		var/newlevel = 	round(charging.percent() * 4.0 / 99)
-		//to_chat(world, "nl: [newlevel]")
-
-		if(chargelevel != newlevel)
-
-			cut_overlays()
-			add_overlay("ccharger-o[newlevel]")
-
-			chargelevel = newlevel
-	else
-		cut_overlays()
+		add_overlay("ccharger-o[newlevel]")
 
 /obj/machinery/cell_charger/examine(mob/user, dist)
 	. = ..()
@@ -81,7 +73,7 @@
 	else if(default_part_replacement(user, W))
 		return
 
-/obj/machinery/cell_charger/attack_hand(mob/user, list/params)
+/obj/machinery/cell_charger/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	add_fingerprint(user)
 
 	if(charging)
@@ -145,7 +137,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	materials_base = list(MAT_STEEL = 4000, MAT_GLASS = 1000)
 
-/obj/item/cell_charger_kit/attack_self(mob/user)
+/obj/item/cell_charger_kit/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

@@ -8,7 +8,7 @@
 	products = list(
 		/obj/item/reagent_containers/food/snacks/wrapped/candy = 6,
 		/obj/item/reagent_containers/food/drinks/dry_ramen = 6,
-		/obj/item/reagent_containers/food/snacks/bagged/chips =6,
+		/obj/item/reagent_containers/food/snacks/bagged/chips = 6,
 		/obj/item/reagent_containers/food/snacks/bagged/sosjerky = 6,
 		/obj/item/reagent_containers/food/snacks/boxed/no_raisin = 6,
 		/obj/item/reagent_containers/food/snacks/wrapped/spacetwinkie = 6,
@@ -43,7 +43,9 @@
 		/obj/item/reagent_containers/hard_candy/lollipop = 2,
 		/obj/item/reagent_containers/food/snacks/wrapped/spunow = 4,
 		/obj/item/reagent_containers/food/snacks/wrapped/glad2nut = 4,
-		/obj/item/reagent_containers/food/snacks/wrapped/natkat = 4
+		/obj/item/reagent_containers/food/snacks/wrapped/natkat = 4,
+		/obj/item/reagent_containers/food/snacks/syndicake = 7,
+		/obj/item/reagent_containers/food/snacks/boxed/unajerky = 6,
 	)
 
 /obj/machinery/vending/fitness // Added Liquid Protein and slightly adjusted price of liquid food items due to buff.
@@ -62,6 +64,9 @@
 		/obj/item/towel/random = 8,
 		/obj/item/reagent_containers/food/snacks/brainsnax = 5,
 	)
+	contraband = list(
+		/obj/item/reagent_containers/syringe/steroid = 4
+	)
 	// yes, it's a ripoff, much like real sports food.
 	prices = list(
 		/obj/item/reagent_containers/food/drinks/smallmilk = 3,
@@ -74,10 +79,9 @@
 		/obj/item/reagent_containers/pill/diet = 10,
 		/obj/item/towel/random = 15,
 		/obj/item/reagent_containers/food/snacks/brainsnax = 10,
+		/obj/item/reagent_containers/syringe/steroid = 12,
 	)
-	contraband = list(
-		/obj/item/reagent_containers/syringe/steroid = 4
-	)
+
 /obj/machinery/vending/weeb
 	name = "Nippon-Tan!"
 	desc = "A vendor full of asian snackfood variety!"

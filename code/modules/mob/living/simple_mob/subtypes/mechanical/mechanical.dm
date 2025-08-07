@@ -22,7 +22,7 @@
 	return TRUE
 
 /mob/living/simple_mob/mechanical/speech_bubble_appearance()
-	return faction != "neutral" ? "synthetic_evil" : "machine"
+	return !has_iff_faction(MOB_IFF_FACTION_NEUTRAL) ? "synthetic_evil" : "machine"
 
 // Fix for Virgo 2's Surface
 /mob/living/simple_mob/mechanical

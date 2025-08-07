@@ -162,9 +162,9 @@ var/bomb_set
 				return
 	..()
 
-/obj/machinery/nuclearbomb/attack_hand(mob/user, list/params)
+/obj/machinery/nuclearbomb/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(extended)
-		if(!ishuman(user))
+		if(!user.IsAdvancedToolUser())
 			to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
 			return 1
 
@@ -187,7 +187,7 @@ var/bomb_set
 			if(yes_code)
 				message = "*****"
 		dat += "<HR>\n>[message]<BR>\n<A href='?src=\ref[src];type=1'>1</A>-<A href='?src=\ref[src];type=2'>2</A>-<A href='?src=\ref[src];type=3'>3</A><BR>\n<A href='?src=\ref[src];type=4'>4</A>-<A href='?src=\ref[src];type=5'>5</A>-<A href='?src=\ref[src];type=6'>6</A><BR>\n<A href='?src=\ref[src];type=7'>7</A>-<A href='?src=\ref[src];type=8'>8</A>-<A href='?src=\ref[src];type=9'>9</A><BR>\n<A href='?src=\ref[src];type=R'>R</A>-<A href='?src=\ref[src];type=0'>0</A>-<A href='?src=\ref[src];type=E'>E</A><BR>\n</TT>"
-		user << browse(dat, "window=nuclearbomb;size=300x400")
+		user << browse(HTML_SKELETON(dat), "window=nuclearbomb;size=300x400")
 		onclose(user, "nuclearbomb")
 	else if(deployable)
 		if(removal_stage < 5)
@@ -219,9 +219,9 @@ var/bomb_set
 
 	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
 		return
-	if(!ishuman(usr))
-		to_chat(usr, "<span class='warning'>You don't have the dexterity to do this!</span>")
-		return 1
+	if(!usr.IsAdvancedToolUser())
+		to_chat(usr, SPAN_WARNING("You don't have the dexterity to do this!"))
+		return TRUE
 
 	if(deployable)
 		to_chat(usr, "<span class='warning'>You close several panels to make [src] undeployable.</span>")
@@ -423,6 +423,3 @@ var/bomb_set
 		log_game("[src], the last authentication disk, has been destroyed. Spawning [D] at ([D.x], [D.y], [D.z]).")
 	nuke_disks -= src
 	return ..()
-
-/obj/item/disk/nuclear/touch_map_edge()
-	qdel(src)

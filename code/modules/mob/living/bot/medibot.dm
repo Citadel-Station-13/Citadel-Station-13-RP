@@ -221,7 +221,7 @@
 	busy = FALSE
 	update_appearance()
 
-/mob/living/bot/medibot/attack_hand(mob/user, list/params)
+/mob/living/bot/medibot/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -527,8 +527,8 @@
 
 	// If they're injured, we're using a beaker, and they don't have on of the chems in the beaker.
 	if(reagent_glass && use_beaker && ((victim.getBruteLoss() >= heal_threshold) || (victim.getToxLoss() >= heal_threshold) || (victim.getToxLoss() >= heal_threshold) || (victim.getOxyLoss() >= (heal_threshold + 15))))
-		for(var/datum/reagent/R in reagent_glass.reagents.reagent_list)
-			if(!victim.reagents.has_reagent(R))
+		for(var/datum/reagent/R in reagent_glass.reagents.get_reagent_datums())
+			if(!victim.reagents.has_reagent(R.id))
 				return 1
 			continue
 

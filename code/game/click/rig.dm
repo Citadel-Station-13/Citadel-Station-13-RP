@@ -53,6 +53,9 @@
 /mob/living/carbon/human/can_use_hardsuit()
 	return 1
 
+/mob/living/simple_mob/holosphere_shell/can_use_hardsuit()
+	return 1
+
 /mob/living/carbon/brain/can_use_hardsuit()
 	return istype(loc, /obj/item/mmi)
 
@@ -74,7 +77,7 @@
 				return 0
 		hardsuit.selected_module.engage(A, alert_ai)
 		if(ismob(A)) // No instant mob attacking - though modules have their own cooldowns
-			setClickCooldown(get_attack_speed())
+			setClickCooldownLegacy(get_attack_speed_legacy())
 		return 1
 	return 0
 

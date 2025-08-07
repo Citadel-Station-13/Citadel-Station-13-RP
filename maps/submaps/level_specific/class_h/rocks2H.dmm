@@ -3,7 +3,7 @@
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/class_h/explored)
 "p" = (
-/turf/simulated/mineral/classh,
+/turf/simulated/mineral,
 /area/class_h/explored)
 "r" = (
 /obj/random/mob/spider,

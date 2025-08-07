@@ -34,7 +34,7 @@ SUBSYSTEM_DEF(plants)
 
 /datum/controller/subsystem/plants/Initialize(timeofday)
 	setup()
-	return ..()
+	return SS_INIT_SUCCESS
 
 /**
  * Predefined/roundstart varieties use a string key to make it

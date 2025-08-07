@@ -33,10 +33,10 @@
 		return 1
 	if (get_dist(P.starting, loc) <= 1) //Tables won't help you if people are THIS close
 		return 1
-	if (get_turf(P.original) == cover)
+	if (get_turf(P.original_target) == cover)
 		var/chance = 20
-		if (ismob(P.original))
-			var/mob/M = P.original
+		if (ismob(P.original_target))
+			var/mob/M = P.original_target
 			if (M.lying)
 				chance += 20				//Lying down lets you catch less bullets
 		if(flipped==1)
@@ -71,7 +71,7 @@
 					else
 						playsound(loc, 'sound/weapons/tablehit1.ogg', 50, 1)
 					var/turf/old_loc = loc
-					inflict_atom_damage(40, flag = ARMOR_MELEE)
+					inflict_atom_damage(40, damage_flag = ARMOR_MELEE)
 					if(QDELETED(src))
 						// got broken
 						visible_message(SPAN_DANGER("[src] shatters under the impact!"))
@@ -84,8 +84,8 @@
 								M.visible_message("<span class='danger'>\The [S] slices [M]'s face messily!</span>",
 												"<span class='danger'>\The [S] slices your face messily!</span>")
 								M.apply_damage(10, def_zone = BP_HEAD)
-								if(prob(2))
-									M.embed(S, def_zone = BP_HEAD)
+								// if(prob(2))
+								// 	M.embed(S, def_zone = BP_HEAD)
 
 				else
 					to_chat(user, "<span class='danger'>You need a better grip to do that!</span>")

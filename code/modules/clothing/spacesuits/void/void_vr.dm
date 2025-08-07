@@ -48,29 +48,7 @@
 
 /obj/item/clothing/suit/space/void/explorer
 	desc = "A classy red voidsuit for the needs of any semi-retro-futuristic spaceperson! This one is rather loose fitting."
-	species_restricted = list(
-		SPECIES_AKULA,
-		SPECIES_ALRAUNE,
-		SPECIES_APIDAEN,
-		SPECIES_AURIL,
-		SPECIES_DREMACHIR,
-		SPECIES_HUMAN,
-		SPECIES_NEVREAN,
-		SPECIES_RAPALA,
-		SPECIES_SERGAL,
-		SPECIES_SKRELL,
-		SPECIES_TAJ,
-		SPECIES_TESHARI,
-		SPECIES_UNATHI,
-		SPECIES_UNATHI_DIGI,
-		SPECIES_VASILISSAN,
-		SPECIES_VOX,
-		SPECIES_VULPKANIN,
-		SPECIES_XENOCHIMERA,
-		SPECIES_XENOHYBRID,
-		SPECIES_ZORREN_FLAT,
-		SPECIES_ZORREN_HIGH,
-	)
+	helmet_type = /obj/item/clothing/head/helmet/space/void/explorer
 
 /obj/item/clothing/suit/space/void/explorer/Initialize(mapload)
 	. = ..()
@@ -79,29 +57,6 @@
 
 /obj/item/clothing/head/helmet/space/void/explorer
 	desc = "A helmet that matches a red voidsuit! So classy."
-	species_restricted = list(
-		SPECIES_AKULA,
-		SPECIES_ALRAUNE,
-		SPECIES_APIDAEN,
-		SPECIES_AURIL,
-		SPECIES_DREMACHIR,
-		SPECIES_HUMAN,
-		SPECIES_NEVREAN,
-		SPECIES_RAPALA,
-		SPECIES_SERGAL,
-		SPECIES_SKRELL,
-		SPECIES_TAJ,
-		SPECIES_TESHARI,
-		SPECIES_UNATHI,
-		SPECIES_UNATHI_DIGI,
-		SPECIES_VASILISSAN,
-		SPECIES_VOX,
-		SPECIES_VULPKANIN,
-		SPECIES_XENOCHIMERA,
-		SPECIES_XENOHYBRID,
-		SPECIES_ZORREN_FLAT,
-		SPECIES_ZORREN_HIGH,
-	)
 
 /obj/item/clothing/head/helmet/space/void/explorer/Initialize(mapload)
 	. = ..()
@@ -121,6 +76,7 @@
 	species_restricted = list("exclude",SPECIES_DIONA,SPECIES_VOX) //this thing can autoadapt
 	breach_threshold = 6 //this thing is basically tissue paper
 	w_class = WEIGHT_CLASS_NORMAL //if it's snug, high-tech, and made of relatively soft materials, it should be much easier to store!
+	helmet_type = /obj/item/clothing/suit/space/void/autolok
 
 /obj/item/clothing/suit/space/void/autolok/Initialize(mapload)
 	. = ..()

@@ -107,7 +107,7 @@ export const MedicalRecords = (_properties, context) => {
       height={380}
       resizable>
       <ComplexModal maxHeight="100%" maxWidth="80%" />
-      <Window.Content className="Layout__content--flexColumn">
+      <Window.Content className="Layout__content--flexColumn" scrollable>
         <LoginInfo />
         <TemporaryNotice />
         <MedicalRecordsNavigation />

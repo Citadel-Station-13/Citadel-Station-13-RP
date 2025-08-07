@@ -112,7 +112,12 @@
 /datum/integrated_io/lists/write_data_to_pin(var/new_data)
 	if(islist(new_data))
 		var/list/new_list = new_data
-		data = new_list.Copy(max(1,new_list.len - IC_MAX_LIST_LENGTH+1),0)
+		new_list = new_list.Copy(max(1,new_list.len - IC_MAX_LIST_LENGTH+1),0)
+		for(var/i in 1 to length(new_list))
+			var/datum/dataRef = new_list[i]
+			if(istype(dataRef) && !isweakref(dataRef))
+				new_list[i] = WEAKREF(dataRef)
+		data = new_list
 		holder.on_data_written()
 	else if(isnull(new_data))	// Clear the list
 		var/list/my_list = data

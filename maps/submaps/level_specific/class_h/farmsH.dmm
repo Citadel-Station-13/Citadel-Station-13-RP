@@ -12,7 +12,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/dirt_farm)
 "g" = (
 /obj/structure/closet/crate,
@@ -25,7 +25,7 @@
 /obj/item/reagent_containers/food/condiment/flour,
 /obj/item/reagent_containers/food/condiment/flour,
 /obj/item/reagent_containers/food/condiment/flour,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/dirt_farm)
 "h" = (
 /obj/structure/railing{
@@ -38,7 +38,7 @@
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
 /area/class_h/POIs/dirt_farm)
 "o" = (
-/turf/simulated/wall/sandstone/classh,
+/turf/simulated/wall/sandstone,
 /area/class_h/POIs/dirt_farm)
 "p" = (
 /obj/machinery/vending/hydronutrients{
@@ -50,16 +50,16 @@
 /obj/structure/bed/chair/wood/wings{
 	dir = 1
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/dirt_farm)
 "s" = (
 /obj/structure/table/woodentable,
 /obj/machinery/microwave,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/dirt_farm)
 "v" = (
 /obj/structure/simple_door/wood,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/dirt_farm)
 "w" = (
 /obj/item/bedsheet/browndouble,
@@ -67,7 +67,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/dirt_farm)
 "y" = (
 /obj/structure/railing{
@@ -99,10 +99,10 @@
 /obj/machinery/light/small/flicker{
 	dir = 1
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/dirt_farm)
 "M" = (
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/dirt_farm)
 "N" = (
 /obj/structure/closet/cabinet,
@@ -115,9 +115,9 @@
 /obj/item/clothing/head/cowboy_hat,
 /obj/item/clothing/head/cowboy_hat,
 /obj/item/clothing/head/cowboy_hat,
-/obj/item/gun/ballistic/shotgun/doublebarrel/pellet,
+/obj/item/gun/projectile/ballistic/shotgun/doublebarrel/pellet,
 /obj/item/storage/box/shotgunshells,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/dirt_farm)
 "O" = (
 /turf/simulated/floor/outdoors/beach/sand/desert/indoors,
@@ -139,7 +139,7 @@
 /area/class_h/POIs/dirt_farm)
 "Z" = (
 /obj/structure/bed/chair/wood/wings,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/dirt_farm)
 
 (1,1,1) = {"

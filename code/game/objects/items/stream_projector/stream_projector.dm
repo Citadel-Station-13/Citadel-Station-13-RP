@@ -9,6 +9,7 @@
  * processing uses SSprocessing.
  */
 /obj/item/stream_projector
+	abstract_type = /obj/item/stream_projector
 	/// locked targets; associated value must be truthy but is reserved by visual construction.
 	var/list/atom/active_targets
 	/// drop all targets on attack self
@@ -39,7 +40,7 @@
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	return ..()
 
-/obj/item/stream_projector/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/stream_projector/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	// flatly don't emit the attack if not in harm
 	if(intent == INTENT_HARM)
 		return ..()
@@ -156,6 +157,8 @@
 	teardown_target_visuals(entity)
 	on_target_remove(entity)
 	LAZYREMOVE(active_targets, entity)
+	if(ismovable(entity))
+		UnregisterSignal(entity, COMSIG_MOVABLE_MOVED)
 	if(!length(active_targets) && process_while_active && !process_always)
 		STOP_PROCESSING(SSprocessing, src)
 	return TRUE

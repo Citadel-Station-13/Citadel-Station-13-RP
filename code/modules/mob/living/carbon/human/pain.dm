@@ -1,11 +1,6 @@
 /mob/proc/flash_pain()
 	flick("pain",pain)
 
-/mob/var/list/pain_stored = list()
-/mob/var/last_pain_message = ""
-/mob/var/next_pain_time = 0
-
-
 /mob/living/proc/custom_pain(message, power, force)
 
 // message is the custom message to be displayed

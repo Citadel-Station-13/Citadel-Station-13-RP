@@ -31,7 +31,17 @@
 	heat_resist = -0.50
 	cold_resist = 0.75
 
+	exotic_type = /obj/item/reagent_containers/glass/venomgland/spider/cryotoxin
+
 // Sif variant with a somewhat different desc.
 /mob/living/simple_mob/animal/giant_spider/frost/sif
 	desc = "Icy and blue, it makes you shudder to look at it. This one has brilliant blue eyes. \
 	It isn't native to Sif."
+
+/obj/item/reagent_containers/glass/venomgland/spider/cryotoxin
+	name = "Chilly Venom Gland"
+	desc = "A sac full of venom. It's cold to the touch."
+
+/obj/item/reagent_containers/glass/venomgland/spider/cryotoxin/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("cryotoxin", 15)

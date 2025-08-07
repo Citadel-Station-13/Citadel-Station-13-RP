@@ -47,3 +47,6 @@
 	name = "harvesting fronds"
 	icon_state = "xenoch_intestine"
 	biology_type = BIOLOGY_TYPE_CHIMERA
+
+/obj/item/organ/internal/weaver/weak/xenochimera
+	name = "protein reservoir"

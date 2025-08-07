@@ -92,25 +92,6 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 /proc/cmp_ckey_dsc(client/a, client/b)
 	return sorttext(a.ckey, b.ckey)
 
-/**
- * Sorts subsystems alphabetically.
- */
-/proc/cmp_subsystem_display(datum/controller/subsystem/a, datum/controller/subsystem/b)
-	return sorttext(b.name, a.name)
-
-/**
- * Sorts subsystems by init_order.
- */
-/proc/cmp_subsystem_init(datum/controller/subsystem/a, datum/controller/subsystem/b)
-	// Uses initial() so it can be used on types.
-	return initial(b.init_order) - initial(a.init_order)
-
-/**
- * Sorts subsystems by priority.
- */
-/proc/cmp_subsystem_priority(datum/controller/subsystem/a, datum/controller/subsystem/b)
-	return a.priority - b.priority
-
 /proc/cmp_filter_data_priority(list/A, list/B)
 	return A["priority"] - B["priority"]
 
@@ -210,3 +191,6 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 
 /proc/cmp_planelayer(atom/A, atom/B)
 	return (B.plane - A.plane) || (B.layer - A.layer)
+
+/proc/cmp_typepaths_asc(A, B)
+	return sorttext("[B]","[A]")

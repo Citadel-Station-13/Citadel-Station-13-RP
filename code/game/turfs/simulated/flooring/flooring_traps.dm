@@ -1,5 +1,5 @@
 //This is an experimental turf type that functions as a step-trigger for traps. I'm starting this project without any idea what I'm actually doing here.
-
+// todo: this needs to be /obj/structure's, not floors, for fuck's sakes.
 /turf/simulated/floor/trap
 	name = "suspicious flooring"
 	icon = 'icons/turf/flooring/trap.dmi'
@@ -11,7 +11,7 @@
 /turf/simulated/floor/trap/Entered(atom/A)
 	if(isliving(A) && !tripped)
 		var/mob/living/L = A
-		if(L.hovering) // Flying things shouldn't trigger pressure plates.
+		if(L.is_avoiding_ground()) // Flying things shouldn't trigger pressure plates.
 			return ..()
 		trigger()
 	else
@@ -22,7 +22,7 @@
 	visible_message("<span class='danger'>You hear a click nearby!</span>")
 	update_icon()
 	playsound(src, 'sound/machines/click.ogg', 50, 1)
-	SimpleNetworkSend(id, "trip")
+	simple_network_send(id, "trip")
 	return
 
 /turf/simulated/floor/trap/update_icon()
@@ -31,7 +31,7 @@
 	else if (tripped)
 		icon_state = "[initial(icon_state)]_tripped"
 
-/turf/simulated/floor/trap/attack_hand(mob/user, list/params)
+/turf/simulated/floor/trap/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(tripped)
 		to_chat(usr, "<span class='notice'>You reset the triggered mechanism.</span>")
 		tripped = 0
@@ -50,7 +50,7 @@
 		visible_message("<span class='danger'>You hear a click nearby!</span>")
 		update_icon()
 		playsound(src, 'sound/machines/click.ogg', 50, 1)
-		SimpleNetworkSend(id, "trip")
+		simple_network_send(id, "trip")
 		return
 
 //Types
@@ -168,31 +168,6 @@
 
 /turf/simulated/floor/trap/delayed/sifwood
 	icon_state = "sifwood"
-
-//Lavaland Subtypes
-/turf/simulated/floor/trap/lavaland
-	initial_gas_mix = ATMOSPHERE_ID_LAVALAND
-
-/turf/simulated/floor/trap/plating/lavaland
-	initial_gas_mix = ATMOSPHERE_ID_LAVALAND
-
-/turf/simulated/floor/trap/steel/lavaland
-	initial_gas_mix = ATMOSPHERE_ID_LAVALAND
-
-/turf/simulated/floor/trap/wood/lavaland
-	initial_gas_mix = ATMOSPHERE_ID_LAVALAND
-
-/turf/simulated/floor/trap/delayed/lavaland
-	initial_gas_mix = ATMOSPHERE_ID_LAVALAND
-
-/turf/simulated/floor/trap/delayed/steel/lavaland
-	initial_gas_mix = ATMOSPHERE_ID_LAVALAND
-
-/turf/simulated/floor/trap/delayed/plating/lavaland
-	initial_gas_mix = ATMOSPHERE_ID_LAVALAND
-
-/turf/simulated/floor/trap/delayed/wood/lavaland
-	initial_gas_mix = ATMOSPHERE_ID_LAVALAND
 
 
 /*

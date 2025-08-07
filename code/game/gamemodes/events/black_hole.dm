@@ -11,7 +11,7 @@
 
 /obj/effect/bhole/Initialize(mapload)
 	. = ..()
-	START_PROCESSING(SSfastprocess, src)
+	START_PROCESSING(SSprocess_5fps, src)
 
 /obj/effect/bhole/process()
 	if(!isturf(loc))

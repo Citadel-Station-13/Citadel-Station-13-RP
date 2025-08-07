@@ -1,5 +1,5 @@
 // When someone clicks us with an empty hand
-/mob/living/simple_mob/attack_hand(mob/user, list/params)
+/mob/living/simple_mob/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -30,21 +30,11 @@
 
 			L.put_in_active_hand(G)
 
-			G.synch()
 			G.affecting = src
 			LAssailant = L
 
 			L.visible_message("<span class='warning'>\The [L] has grabbed [src] passively!</span>")
 			L.do_attack_animation(src)
-
-		if(INTENT_HARM)
-			var/armor = run_armor_check(def_zone = null, attack_flag = "melee")
-			apply_damage(damage = harm_intent_damage, damagetype = BURN, def_zone = null, blocked = armor, blocked = resistance, used_weapon = null, sharp = FALSE, edge = FALSE)
-			L.visible_message("<span class='warning'>\The [L] [response_harm] \the [src]!</span>")
-			L.do_attack_animation(src)
-
-	return
-
 
 // When somoene clicks us with an item in hand
 /mob/living/simple_mob/attackby(var/obj/item/O, var/mob/user)
@@ -69,24 +59,6 @@
 
 	return ..()
 
-
-// Handles the actual harming by a melee weapon.
-/mob/living/simple_mob/hit_with_weapon(obj/item/O, mob/living/user, var/effective_force, var/hit_zone)
-	effective_force = O.damage_force
-
-	//Animals can't be stunned(?)
-	if(O.damtype == HALLOSS)
-		effective_force = 0
-	if(supernatural && istype(O,/obj/item/nullrod))
-		effective_force *= 2
-		purge = 3
-	if(O.damage_force <= resistance)
-		to_chat(user,"<span class='danger'>This weapon is ineffective, it does no damage.</span>")
-		return 2 //???
-
-	. = ..()
-
-
 // Exploding.
 /mob/living/simple_mob/legacy_ex_act(severity)
 	if(!has_status_effect(/datum/status_effect/sight/blindness))
@@ -101,7 +73,7 @@
 		if (3.0)
 			bombdam = 30
 
-	apply_damage(damage = bombdam, damagetype = BRUTE, def_zone = null, blocked = armor, blocked = resistance, used_weapon = null, sharp = FALSE, edge = FALSE)
+	apply_damage(damage = bombdam, damagetype = DAMAGE_TYPE_BRUTE, def_zone = null, blocked = armor, used_weapon = null, sharp = FALSE, edge = FALSE)
 
 	if(bombdam > maxHealth)
 		gib()
@@ -146,49 +118,6 @@
 	. = 1 - .
 	. = min(., 1.0)
 
-// Electricity
-/mob/living/simple_mob/electrocute_act(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0, var/def_zone = null)
-	shock_damage *= siemens_coeff
-	if(shock_damage < 1)
-		return 0
-
-	apply_damage(damage = shock_damage, damagetype = BURN, def_zone = null, blocked = null, blocked = resistance, used_weapon = null, sharp = FALSE, edge = FALSE)
-	playsound(loc, /datum/soundbyte/grouped/sparks, 50, 1, -1)
-
-	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-	s.set_up(5, 1, loc)
-	s.start()
-
-/mob/living/simple_mob/get_shock_protection()
-	. = shock_resist
-	. = 1 - . // Invert from 1 = immunity to 0 = immunity.
-
-	// Doing it this way makes multiplicative stacking not get out of hand, so two modifiers that give 0.5 protection will be combined to 0.75 in the end.
-	for(var/thing in modifiers)
-		var/datum/modifier/M = thing
-		if(!isnull(M.siemens_coefficient))
-			. *= M.siemens_coefficient
-
-	// Code that calls this expects 1 = immunity so we need to invert again.
-	. = 1 - .
-	. = min(., 1.0)
-
-// Shot with taser/stunvolver
-/mob/living/simple_mob/stun_effect_act(var/stun_amount, var/agony_amount, var/def_zone, var/used_weapon=null)
-	if(taser_kill)
-		var/stunDam = 0
-		var/agonyDam = 0
-		var/armor = run_armor_check(def_zone = null, attack_flag = "energy")
-
-		if(stun_amount)
-			stunDam += stun_amount * 0.5
-			apply_damage(damage = stunDam, damagetype = BURN, def_zone = null, blocked = armor, blocked = resistance, used_weapon = used_weapon, sharp = FALSE, edge = FALSE)
-
-		if(agony_amount)
-			agonyDam += agony_amount * 0.5
-			apply_damage(damage = agonyDam, damagetype = BURN, def_zone = null, blocked = armor, blocked = resistance, used_weapon = used_weapon, sharp = FALSE, edge = FALSE)
-
-
 // Electromagnetism
 /mob/living/simple_mob/emp_act(severity)
 	..() // To emp_act() its contents.
@@ -218,14 +147,14 @@
 
 // Armor
 /mob/living/simple_mob/legacy_mob_armor(def_zone, type)
-	var/armorval = fetch_armor().raw(type) * 100
+	var/armorval = fetch_armor().get_mitigation(type) * 100
 	if(!armorval)
 		return 0
 	else
 		return armorval
 
 /mob/living/simple_mob/legacy_mob_soak(def_zone, attack_flag)
-	var/armorval = fetch_armor().soak(attack_flag) * 100
+	var/armorval = fetch_armor().get_soak(attack_flag) * 100
 	if(!armorval)
 		return 0
 	else
@@ -237,7 +166,7 @@
 	// If a non-player simple_mob was struck, inflict huge damage.
 	// If the damage is fatal, it is turned to ash.
 	if(!client)
-		inflict_shock_damage(200) // Mobs that are very beefy or resistant to shock may survive getting struck.
+		inflict_shock_damage_legacy(200) // Mobs that are very beefy or resistant to shock may survive getting struck.
 		update_health()
 		if(health <= 0)
 			visible_message(SPAN_CRITICAL("\The [src] disintegrates into ash!"))

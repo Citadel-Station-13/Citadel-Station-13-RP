@@ -7,6 +7,7 @@
 /*
  * Beds
  */
+// todo: /bed/material, same with chairs, same with tables, etc, because what the fuck is going on
 /obj/structure/bed
 	name = "bed"
 	desc = "This is used to lie in, sleep in or strap on."
@@ -19,15 +20,19 @@
 	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW
 	buckle_dir = SOUTH
 	buckle_lying = 90
-	var/datum/material/material
-	var/datum/material/padding_material
+
+	// todo: what a dumpster fire, unfuck / fully abstract this using new API,
+	//       or get rid of it. wtf.
+	var/datum/prototype/material/material
+	var/datum/prototype/material/padding_material
 	var/base_icon = "bed"
 	var/material_color = 1
 	var/can_buckle = TRUE
+	var/legacy_do_not_use_material = FALSE
 
 /obj/structure/bed/Initialize(mapload, new_material, new_padding_material)
 	. = ..(mapload)
-	remove_atom_colour(FIXED_COLOUR_PRIORITY)
+	remove_atom_color()
 	if(!new_material)
 		new_material = MAT_STEEL
 	material = get_material_by_name(new_material)
@@ -40,9 +45,12 @@
 
 // Reuse the cache/code from stools, todo maybe unify.
 /obj/structure/bed/update_icon()
+	if(!material || legacy_do_not_use_material)
+		return ..()
+	cut_overlays()
+	. = ..()
 	// Prep icon.
 	icon_state = ""
-	cut_overlays()
 	var/list/overlays_to_add = list()
 	// Base icon.
 	var/cache_key = "[base_icon]-[material.name]"
@@ -189,9 +197,14 @@
 	base_icon_state = "rollerbed"
 	anchored = FALSE
 	surgery_odds = 75
+	legacy_do_not_use_material = TRUE
 
 	var/bedtype = /obj/structure/bed/roller
 	var/rollertype = /obj/item/roller
+
+/obj/structure/bed/roller/Initialize(mapload, new_material, new_padding_material)
+	. = ..()
+	material = null
 
 /obj/structure/bed/roller/adv
 	name = "advanced roller bed"
@@ -232,9 +245,6 @@
 		for(var/mob/M in old_buckled)
 			buckle_mob(M, BUCKLE_OP_FORCE)
 
-/obj/structure/bed/roller/update_icon()
-	return
-
 /obj/structure/bed/roller/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench() || istype(W,/obj/item/stack) || W.is_wirecutter())
 		return
@@ -262,7 +272,7 @@
 	drop_sound = 'sound/items/drop/axe.ogg'
 	pickup_sound = 'sound/items/pickup/axe.ogg'
 
-/obj/item/roller/attack_self(mob/user)
+/obj/item/roller/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -301,7 +311,7 @@
 	. = ..()
 	held = new /obj/item/roller(src)
 
-/obj/item/roller_holder/attack_self(mob/user)
+/obj/item/roller_holder/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -374,9 +384,6 @@
 	catalogue_data = list(/datum/category_item/catalogue/anomalous/precursor_a/alien_bed)
 	icon = 'icons/obj/abductor.dmi'
 	icon_state = "bed"
-
-/obj/structure/bed/alien/update_icon()
-	return // Doesn't care about material or anything else.
 
 /obj/structure/bed/alien/attackby(obj/item/W, mob/user)
 	return // No deconning.

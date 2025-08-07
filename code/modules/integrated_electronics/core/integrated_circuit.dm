@@ -113,17 +113,15 @@ a creative player the means to solve many problems.  Circuits are held inside an
 /obj/item/integrated_circuit/proc/check_interactivity(mob/user)
 	return (ui_status(user, GLOB.physical_state) == UI_INTERACTIVE) && (!assembly || assembly.opened)
 
-/obj/item/integrated_circuit/verb/rename_component()
-	set name = "Rename Circuit"
-	set category = VERB_CATEGORY_OBJECT
-	set desc = "Rename your circuit, useful to stay organized."
-	set src in usr
-
-	var/mob/M = usr
-	var/input = tgui_input_text(usr, "What do you want to name this circuit?", "Rename", src.name, MAX_NAME_LEN)
-	if(src && input)
-		to_chat(M, SPAN_NOTICE("The circuit '[src.name]' is now labeled '[input]'."))
+/obj/item/integrated_circuit/proc/rename_component(mob/user)
+	var/input = tgui_input_text(user, "What do you want to name this circuit?", "Rename", src.displayed_name, MAX_NAME_LEN)
+	if(input)
+		to_chat(user, SPAN_NOTICE("The circuit '[displayed_name] ([name])' is now labeled '[input]'."))
 		displayed_name = input
+		if(assembly)
+			var/index = assembly.assembly_components.Find(src)
+			assembly.ui_circuit_props.Cut(index, 1 + index)
+			assembly.ui_circuit_props.Insert(index, list(list("name" = displayed_name,"ref" = REF(src),"removable" = removable,"input" = can_be_asked_input)))
 
 /obj/item/integrated_circuit/ui_state()
 	return GLOB.physical_state
@@ -255,7 +253,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 			if(istype(held_item, /obj/item/integrated_electronics/debugger))
 				var/obj/item/integrated_electronics/debugger/D = held_item
 				if(D.accepting_refs)
-					D.afterattack(src, usr, TRUE)
+					D.afterattack(src, usr, CLICKCHAIN_HAS_PROXIMITY)
 				else
 					to_chat(usr, SPAN_WARNING("The Debugger's 'ref scanner' needs to be on."))
 			else
@@ -271,7 +269,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 					examined.ui_interact(usr)
 
 		if("remove")
-			remove(usr, index = params["index"])
+			remove(usr, FALSE)
 			return
 	return FALSE
 
@@ -287,6 +285,11 @@ a creative player the means to solve many problems.  Circuits are held inside an
 
 	power_fail()
 	disconnect_all()
+
+	// in case we can't easily get the index, we want to be able to get it still.
+	if(!index && A)
+		index = A.ui_circuit_props.Find(src)
+
 	// Remove from helper and TGUI lists
 	A.ui_circuit_props.Cut(index, index + 1)
 	A.assembly_components.Cut(index, index + 1)
@@ -336,10 +339,10 @@ a creative player the means to solve many problems.  Circuits are held inside an
 		if(!check_power())
 			power_fail()
 			return FALSE
+	do_work(ord) //Moved it behind next use incase the cooldown is modified in do_work
 	next_use = world.time + cooldown_per_use
 	if(assembly)
 		assembly.ext_next_use = world.time + ext_cooldown
-	do_work(ord)
 	return TRUE
 
 /obj/item/integrated_circuit/proc/do_work(ord)

@@ -23,8 +23,6 @@ var/list/floor_light_cache = list()
 /obj/machinery/floor_light/prebuilt
 	anchored = TRUE
 
-
-
 /obj/machinery/floor_light/attackby(obj/item/W, mob/user)
 	if(W.is_screwdriver())
 		anchored = !anchored
@@ -62,7 +60,7 @@ var/list/floor_light_cache = list()
 		attack_hand(user)
 	return
 
-/obj/machinery/floor_light/attack_hand(mob/user, list/params)
+/obj/machinery/floor_light/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 
 	if(user.a_intent == INTENT_HARM && !issmall(user))
 		if(!isnull(damaged) && !(machine_stat & BROKEN))
@@ -122,6 +120,7 @@ var/list/floor_light_cache = list()
 
 /obj/machinery/floor_light/update_icon()
 	cut_overlays()
+	. = ..()
 	if(use_power && !broken())
 		if(isnull(damaged))
 			var/cache_key = "floorlight-[default_light_colour]"

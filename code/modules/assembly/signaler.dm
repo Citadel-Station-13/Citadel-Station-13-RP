@@ -10,7 +10,7 @@
 	secured = TRUE
 
 	var/code = 30
-	var/frequency = 1457
+	var/frequency = FREQ_SIGNALER
 	var/delay = 0
 	var/hearing_range = 1
 	var/airlock_wire = null
@@ -23,7 +23,6 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/item/assembly/signaler/LateInitialize()
-	. = ..()
 	set_frequency(frequency)
 
 /obj/item/assembly/signaler/activate()
@@ -46,8 +45,8 @@
 	var/list/data = list()
 	data["frequency"] = frequency
 	data["code"] = code
-	data["minFrequency"] = RADIO_LOW_FREQ
-	data["maxFrequency"] = RADIO_HIGH_FREQ
+	data["minFrequency"] = MIN_FREE_FREQ
+	data["maxFrequency"] = MAX_FREE_FREQ
 	return data
 
 /obj/item/assembly/signaler/ui_act(action, list/params, datum/tgui/ui)
@@ -60,7 +59,7 @@
 			. = TRUE
 		if("freq")
 			frequency = unformat_frequency(params["freq"])
-			frequency = sanitize_frequency(frequency, RADIO_LOW_FREQ, RADIO_HIGH_FREQ)
+			frequency = sanitize_frequency(frequency, free = TRUE)
 			set_frequency(frequency)
 			. = TRUE
 		if("code")

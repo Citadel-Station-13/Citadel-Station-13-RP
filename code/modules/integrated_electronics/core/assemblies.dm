@@ -7,7 +7,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	icon = 'icons/obj/integrated_electronics/electronic_setups.dmi'
 	icon_state = "setup_small"
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	show_messages = TRUE
 	datum_flags = DF_USE_TAG
 	var/list/assembly_components = list()
@@ -32,7 +32,6 @@
 	/// Time until circuit cn perform another external action
 	var/ext_next_use = 0
 	var/atom/collw
-	var/obj/item/card/id/access_card
 	/// Which circuit flags are allowed
 	var/allowed_circuit_action_flags = IC_ACTION_COMBAT | IC_ACTION_LONG_RANGE
 	/// Number of combat cicuits in the assembly, used for diagnostic hud
@@ -107,15 +106,13 @@
 	diag_hud_set_circuitstat()
 	diag_hud_set_circuittracking()
 */
-	access_card = new /obj/item/card/id(src)
-	. =..()
+	return ..()
 
 /obj/item/electronic_assembly/Destroy()
 	battery = null // It will be qdel'd by ..() if still in our contents
 	STOP_PROCESSING(SSobj, src)
 //	for(var/datum/atom_hud/data/diagnostic/diag_hud in GLOB.huds)
 // TBI		diag_hud.remove_from_hud(src)
-	QDEL_NULL(access_card)
 	return ..()
 
 /obj/item/electronic_assembly/process(delta_time)
@@ -245,7 +242,7 @@
 			if(istype(held_item, /obj/item/integrated_electronics/debugger))
 				var/obj/item/integrated_electronics/debugger/D = held_item
 				if(D.accepting_refs)
-					D.afterattack(C, usr, TRUE)
+					D.afterattack(C, usr, CLICKCHAIN_HAS_PROXIMITY)
 				else
 					to_chat(usr, SPAN_WARNING("The Debugger's 'ref scanner' needs to be on."))
 			else
@@ -256,7 +253,7 @@
 			var/obj/item/integrated_circuit/C = locate(params["ref"]) in assembly_components
 			if(!istype(C))
 				return
-			C.remove(usr, TRUE, index = params["index"])
+			C.remove(usr, FALSE, index = params["index"])
 			return TRUE
 
 		if("bottom_circuit")
@@ -265,12 +262,14 @@
 				return
 			// Puts it at the bottom of our contents
 			// Note, this intentionally does *not* use forceMove, because forceMove will stop if it detects the same loc
-			ui_circuit_props.Cut(params["index"], 1 + params["index"])
+			var/index = assembly_components.Find(C)
+			ui_circuit_props.Cut(index, 1 + index)
 			ui_circuit_props.Add(list(list("name" = C.displayed_name,"ref" = REF(C),"removable" = C.removable,"input" = C.can_be_asked_input)))
-			assembly_components.Cut(params["index"], 1 + params["index"])
+			assembly_components.Cut(index, 1 + index)
 			assembly_components.Add(C)
 			C.loc = null
 			C.loc = src
+			return TRUE
 
 		if("input_selection")
 			var/obj/item/integrated_circuit/input/C = locate(params["ref"]) in assembly_components
@@ -503,7 +502,7 @@
 		var/saved = "[src.name] analyzed! On circuit printers with cloning enabled, you may use the code below to clone the circuit:<br><br><code>[save]</code>"
 		if(save)
 			to_chat(usr, SPAN_WARNING("You scan [src]."))
-			user << browse(saved, "window=circuit_scan;size=500x600;border=1;can_resize=1;can_close=1;can_minimize=1")
+			user << browse(HTML_SKELETON(saved), "window=circuit_scan;size=500x600;border=1;can_resize=1;can_close=1;can_minimize=1")
 		else
 			to_chat(usr, SPAN_WARNING("[src] is not complete enough to be encoded!"))
 		return TRUE
@@ -512,7 +511,7 @@
 			return TRUE
 	return ..()
 
-/obj/item/electronic_assembly/attack_self(mob/user)
+/obj/item/electronic_assembly/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -538,32 +537,32 @@
 	if(battery)
 		var/lost = battery.use(DYNAMIC_W_TO_CELL_UNITS(amount, 1))
 		net_power -= lost
-		return lost > 0
-	return FALSE
+		return lost
+	return 0
 
 // Ditto for giving.
 /obj/item/electronic_assembly/proc/give_power(amount)
 	if(battery)
 		var/gained = battery.give(DYNAMIC_W_TO_CELL_UNITS(amount, 1))
 		net_power += gained
-		return TRUE
-	return FALSE
+		return gained
+	return 0
 
 // Returns true if power was successfully drawn.
 /obj/item/electronic_assembly/proc/draw_power_kw(amount)
 	if(battery)
 		var/lost = battery.use(DYNAMIC_KW_TO_CELL_UNITS(amount, 1))
 		net_power -= lost
-		return lost > 0
-	return FALSE
+		return lost
+	return 0
 
 // Ditto for giving.
 /obj/item/electronic_assembly/proc/give_power_kw(amount)
 	if(battery)
 		var/gained = battery.give(DYNAMIC_KW_TO_CELL_UNITS(amount, 1))
 		net_power += gained
-		return TRUE
-	return FALSE
+		return gained
+	return 0
 
 /obj/item/electronic_assembly/on_loc_moved(oldloc)
 	. = ..()
@@ -607,7 +606,7 @@
 		return
 	..()
 
-/obj/item/electronic_assembly/attack_hand(mob/user, act_intent = user.a_intent, unarmed_attack_flags)
+/obj/item/electronic_assembly/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(anchored)
 		attack_self(user)
 		return

@@ -20,9 +20,9 @@
 	material_parts = MATERIAL_DEFAULT_ABSTRACTED
 	material_primary = "base"
 	/// what we're made out of
-	var/datum/material/material_structure = /datum/material/steel
+	var/datum/prototype/material/material_structure = /datum/prototype/material/steel
 	/// what our reinforcement is made out of
-	var/datum/material/material_reinforcing
+	var/datum/prototype/material/material_reinforcing
 
 /obj/structure/girder/Initialize(mapload, material, reinforcement)
 	if(!isnull(material))
@@ -45,20 +45,24 @@
 		set_multiplied_integrity(1)
 	else
 		name = "[material_reinforcing.display_name]-reinforced [material_structure.display_name] girder"
-		set_multiplied_integrity(material_structure.relative_integrity * multiply_effect_multiplier(material_reinforcing.relative_integrity, 0.5))
+		// ()'s to coerce them into instances, and not text strings.
+		set_multiplied_integrity(SSmaterials.dynamic_calculate_relative_integrity(list(
+			(material_structure) = 1,
+			(material_reinforcing) = 0.5,
+		)))
 
 	// todo: refactor
 	if(material_color)
 		color = material_structure.icon_colour
 
 /obj/structure/girder/material_init_parts()
-	material_structure = SSmaterials.resolve_material(material_structure)
-	material_reinforcing = SSmaterials.resolve_material(material_reinforcing)
+	material_structure = RSmaterials.fetch(material_structure)
+	material_reinforcing = RSmaterials.fetch(material_reinforcing)
 	register_material(material_structure, TRUE)
 	register_material(material_reinforcing, FALSE)
 
-/obj/structure/girder/material_set_part(part, datum/material/material)
-	var/datum/material/old
+/obj/structure/girder/material_set_part(part, datum/prototype/material/material)
+	var/datum/prototype/material/old
 	switch(part)
 		if("base")
 			old = material_structure
@@ -84,8 +88,8 @@
 		"reinf" = material_reinforcing,
 	)
 
-/obj/structure/girder/material_set_part(part, datum/material/material)
-	var/datum/material/old
+/obj/structure/girder/material_set_part(part, datum/prototype/material/material)
+	var/datum/prototype/material/old
 	switch(part)
 		if("base")
 			old = material_structure
@@ -203,7 +207,7 @@
 		to_chat(user, "<span class='notice'>There isn't enough material here to construct a wall.</span>")
 		return 0
 
-	var/datum/material/M = S.material
+	var/datum/prototype/material/M = S.material
 	if(!istype(M))
 		return 0
 
@@ -240,7 +244,7 @@
 		to_chat(user, "<span class='notice'>There isn't enough material here to reinforce the girder.</span>")
 		return 0
 
-	var/datum/material/M = S.material
+	var/datum/prototype/material/M = S.material
 
 	to_chat(user, "<span class='notice'>Now reinforcing...</span>")
 	if (!do_after(user,40) || !S.use(1))
@@ -294,7 +298,7 @@
 			var/turf/simulated/wall/new_T = get_turf(src) // Ref to the wall we just built.
 			// Apparently set_material(...) for walls requires refs to the material singletons and not strings.
 			// This is different from how other material objects with their own set_material(...) do it, but whatever.
-			var/datum/material/M = get_material_by_name(the_rcd.material_to_use)
+			var/datum/prototype/material/M = get_material_by_name(the_rcd.material_to_use)
 			new_T.set_materials(M, the_rcd.make_rwalls ? material_reinforcing || M : material_reinforcing, material_structure)
 			new_T.add_hiddenprint(user)
 			qdel(src)
@@ -311,7 +315,7 @@
 	icon_state= "cultgirder"
 	cover = 70
 	material_color = 0
-	material_structure = /datum/material/cult
+	material_structure = /datum/prototype/material/cult
 
 /obj/structure/girder/cult/update_icon_state()
 	. = ..()
@@ -347,4 +351,4 @@
 	name = "soft girder"
 	icon_state = "girder_resin"
 	cover = 60
-	material_structure = /datum/material/resin
+	material_structure = /datum/prototype/material/resin

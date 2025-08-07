@@ -31,11 +31,11 @@
 	for(var/direction in GLOB.cardinal)
 		var/turf/simulated/shielded_tile = get_step(get_turf(src), direction)
 		for(var/obj/effect/shield/S in shielded_tile)
-			if(istype(S) && !S.diffused_for && !S.disabled_for && cell.checked_use_scaled(CELL_COST_SHIELD_DIFFUSION))
+			if(istype(S) && !S.diffused_for && !S.disabled_for && cell.checked_use(CELL_COST_SHIELD_DIFFUSION))
 				S.diffuse(20)
 		// Legacy shield support
 		for(var/obj/effect/energy_field/S in shielded_tile)
-			if(istype(S) && cell.checked_use_scaled(CELL_COST_SHIELD_DIFFUSION))
+			if(istype(S) && cell.checked_use(CELL_COST_SHIELD_DIFFUSION))
 				qdel(S)
 
 /obj/item/shield_diffuser/update_icon()
@@ -44,7 +44,7 @@
 	else
 		icon_state = "hdiffuser_off"
 
-/obj/item/shield_diffuser/attack_self(mob/user)
+/obj/item/shield_diffuser/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -61,7 +61,7 @@
 	to_chat(user, "The charge meter reads [cell ? cell.percent() : 0]%")
 	to_chat(user, "It is [enabled ? "enabled" : "disabled"].")
 
-/obj/item/shield_diffuser/attack_hand(mob/user, list/params)
+/obj/item/shield_diffuser/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		if(cell)
 			cell.update_icon()

@@ -3,26 +3,27 @@
  *
  * todo: better documentation
  */
-/obj/item/organ/external/proc/create_wound(var/type = CUT, var/damage)
+/obj/item/organ/external/proc/create_wound(var/type = WOUND_TYPE_CUT, var/damage)
 	if(damage == 0)
 		return
 
 	//moved this before the open_wound check so that having many small wounds for example doesn't somehow protect you from taking internal damage (because of the return)
 	//Possibly trigger an internal wound, too.
 	var/local_damage = brute_dam + burn_dam + damage
-	if((damage > 15) && (type != BURN) && (local_damage > 30) && prob(damage) && (robotic < ORGAN_ROBOT) && !(species.species_flags & NO_BLOOD))
+	if((damage > 15) && (type != WOUND_TYPE_BURN) && (local_damage > 30) && prob(damage) && (robotic < ORGAN_ROBOT) && !(species.species_flags & NO_BLOOD))
 		create_specific_wound(/datum/wound/internal_bleeding, min(damage - 15, 15))
-		owner.custom_pain("You feel something rip in your [name]!", 50)
+		if(!(behaviour_flags & BODYPART_SILENT_WOUNDS))
+			owner.custom_pain("You feel something rip in your [name]!", 50)
 
 //Burn damage can cause fluid loss due to blistering and cook-off
 
-	if((damage > 5 || damage + burn_dam >= 15) && type == BURN && (robotic < ORGAN_ROBOT) && !(species.species_flags & NO_BLOOD))
-		var/fluid_loss = 0.4 * (damage/(owner.getMaxHealth() - config_legacy.health_threshold_dead)) * owner.species.blood_volume*(1 - owner.species.blood_level_fatal)
-		owner.remove_blood(fluid_loss)
+	if((damage > 5 || damage + burn_dam >= 15) && type == WOUND_TYPE_BURN && (robotic < ORGAN_ROBOT) && !(species.species_flags & NO_BLOOD))
+		var/fluid_loss = 0.4 * (damage/(owner.getMaxHealth() - owner.getMinHealth())) * owner.species.blood_volume*(1 - owner.species.blood_level_fatal)
+		owner.erase_blood(fluid_loss)
 
 	// first check whether we can widen an existing wound
 	if(length(wounds) > 0 && prob(max(50+(wound_tally-1)*10,90)))
-		if((type == CUT || type == BRUISE) && damage >= 5)
+		if((type == WOUND_TYPE_CUT || type == WOUND_TYPE_BRUISE) && damage >= 5)
 			//we need to make sure that the wound we are going to worsen is compatible with the type of damage...
 			var/list/compatible_wounds = list()
 			for (var/datum/wound/W as anything in wounds)
@@ -32,7 +33,7 @@
 			if(compatible_wounds.len)
 				var/datum/wound/W = pick(compatible_wounds)
 				W.open_wound(damage)
-				if(prob(25))
+				if(!(behaviour_flags & BODYPART_SILENT_WOUNDS) && prob(25))
 					if(robotic >= ORGAN_ROBOT)
 						owner.visible_message("<span class='danger'>The damage to [owner.name]'s [name] worsens.</span>",\
 						"<span class='danger'>The damage to your [name] worsens.</span>",\
@@ -47,7 +48,7 @@
 	var/wound_type = get_wound_type(type, damage)
 
 	if(wound_type)
-		var/datum/wound/W = new wound_type(damage)
+		var/datum/wound/W = new wound_type(damage, behaviour_flags & BODYPART_NO_INFECTION)
 
 		//Check whether we can add the wound to an existing wound
 		for(var/datum/wound/other as anything in wounds)
@@ -78,7 +79,7 @@
 /obj/item/organ/external/proc/create_specific_wound(path, damage, updating = TRUE)
 	ASSERT(ispath(path, /datum/wound))
 
-	var/datum/wound/creating = new path(damage)
+	var/datum/wound/creating = new path(damage, behaviour_flags & BODYPART_NO_INFECTION)
 	var/datum/wound/merged
 
 	for(var/datum/wound/other as anything in wounds)
@@ -188,8 +189,8 @@
 	var/internal = FALSE
 	// maximum stage at which bleeding should still happen. Beyond this stage bleeding is prevented.
 	var/max_bleeding_stage = 0
-	// one of CUT, PIERCE, BRUISE, BURN
-	var/damage_type = CUT
+	// one of WOUND_TYPE_CUT, WOUND_TYPE_PIERCE, WOUND_TYPE_BRUISE, WOUND_TYPE_BURN
+	var/wound_type = WOUND_TYPE_CUT
 	// whether this wound needs a bandage/salve to heal at all
 	// the maximum amount of damage that this wound can have and still autoheal
 	var/autoheal_cutoff = 10
@@ -202,7 +203,9 @@
 	var/tmp/list/desc_list = list()
 	var/tmp/list/damage_list = list()
 
-/datum/wound/New(damage)
+	var/can_infect = TRUE
+
+/datum/wound/New(damage, _can_infect = TRUE)
 
 	created = world.time
 
@@ -218,6 +221,8 @@
 	src.init_stage(damage)
 
 	bleed_timer += damage
+
+	can_infect = _can_infect
 
 // returns 1 if there's a next stage, 0 otherwise
 /datum/wound/proc/init_stage(initial_damage)
@@ -243,9 +248,9 @@
 
 // checks whether the wound has been appropriately treated
 /datum/wound/proc/is_treated()
-	if(damage_type == BRUISE || damage_type == CUT || damage_type == PIERCE)
+	if(wound_type == WOUND_TYPE_BRUISE || wound_type == WOUND_TYPE_CUT || wound_type == WOUND_TYPE_PIERCE)
 		return bandaged
-	else if(damage_type == BURN)
+	else if(wound_type == WOUND_TYPE_BURN)
 		return salved
 
 // Checks whether other other can be merged into src.
@@ -254,7 +259,7 @@
 		return 0
 	if (other.current_stage != src.current_stage)
 		return 0
-	if (other.damage_type != src.damage_type)
+	if (other.wound_type != src.wound_type)
 		return 0
 	if (!(other.can_autoheal()) != !(src.can_autoheal()))
 		return 0
@@ -286,6 +291,8 @@
 // checks if wound is considered open for external infections
 // untreated cuts (and bleeding bruises) and burns are possibly infectable, chance higher if wound is bigger
 /datum/wound/proc/infection_check()
+	if(!can_infect)
+		return FALSE
 	if (disinfected)
 		if(germ_level > INFECTION_LEVEL_ONE)
 			germ_level = 0	//reset this, just in case
@@ -295,7 +302,7 @@
 		return FALSE
 	if (is_treated() && damage < 25)	//anything less than a flesh wound (or equivalent) isn't infectable if treated properly
 		return FALSE
-	if (damage_type == BRUISE && !bleeding()) //bruises only infectable if bleeding
+	if (wound_type == WOUND_TYPE_BRUISE && !bleeding()) //bruises only infectable if bleeding
 		return FALSE
 
 
@@ -303,12 +310,12 @@
 		return TRUE
 
 	var/dam_coef = round(damage/10)
-	switch (damage_type)
-		if (BRUISE)
+	switch (wound_type)
+		if (WOUND_TYPE_BRUISE)
 			return prob(dam_coef*5)
-		if (BURN)
+		if (WOUND_TYPE_BURN)
 			return prob(dam_coef*10)
-		if (CUT)
+		if (WOUND_TYPE_CUT)
 			return prob(dam_coef*20)
 
 	return FALSE
@@ -355,8 +362,8 @@
 
 // returns whether this wound can absorb the given amount of damage.
 // this will prevent large amounts of damage being trapped in less severe wound types
-/datum/wound/proc/can_worsen(damage_type, damage)
-	if (src.damage_type != damage_type)
+/datum/wound/proc/can_worsen(woud_type, damage)
+	if (src.wound_type != woud_type)
 		return 0	//incompatible damage types
 
 	if (src.amount > 1)
@@ -392,9 +399,9 @@
 //the damage amount for the stage with the same name as the wound.
 //e.g. /datum/wound/cut/deep should only be applied for 15 damage and up,
 //because in it's stages list, "deep cut" = 15.
-/proc/get_wound_type(type = CUT, damage)
+/proc/get_wound_type(type = WOUND_TYPE_CUT, damage)
 	switch(type)
-		if(CUT)
+		if(WOUND_TYPE_CUT)
 			switch(damage)
 				if(70 to INFINITY)
 					return /datum/wound/cut/massive
@@ -408,7 +415,7 @@
 					return /datum/wound/cut/deep
 				if(0 to 15)
 					return /datum/wound/cut/small
-		if(PIERCE)
+		if(WOUND_TYPE_PIERCE)
 			switch(damage)
 				if(60 to INFINITY)
 					return /datum/wound/puncture/massive
@@ -420,9 +427,9 @@
 					return /datum/wound/puncture/flesh
 				if(0 to 15)
 					return /datum/wound/puncture/small
-		if(BRUISE)
+		if(WOUND_TYPE_BRUISE)
 			return /datum/wound/bruise
-		if(BURN)
+		if(WOUND_TYPE_BURN)
 			switch(damage)
 				if(50 to INFINITY)
 					return /datum/wound/burn/carbonised

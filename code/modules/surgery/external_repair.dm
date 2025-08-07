@@ -9,6 +9,7 @@
 	req_open = 1
 
 /datum/surgery_step/repairflesh/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
+	if(!..()) return FALSE
 	if (isslime(target))
 		return 0
 	if (target_zone == O_EYES || target_zone == O_MOUTH)
@@ -30,6 +31,8 @@
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery_step/repairflesh/scan_injury
+	step_name = "Scan injury"
+
 	allowed_tools = list(
 	/obj/item/healthanalyzer = 100,
 	/obj/item/atmos_analyzer = 10
@@ -73,21 +76,21 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='warning'>[user]'s hand slips, dropping \the [tool] onto [target]'s [affected]!</span>" , \
 	"<span class='warning'>Your hand slips, dropping \the [tool] onto [target]'s [affected]!</span>" )
-	affected.create_wound(BRUISE, 10)
+	affected.create_wound(WOUND_TYPE_BRUISE, 10)
 
 //////////////////////////////////////////////////////////////////
 //						BURN STEP								//
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery_step/repairflesh/repair_burns
+	step_name = "Reconstruct skin"
+
 	allowed_tools = list(
 	/obj/item/stack/medical/advanced/ointment = 100,
 	/obj/item/surgical/FixOVein = 100,
 	/obj/item/surgical/hemostat = 60,
 	/obj/item/stack/medical/ointment = 50,
 	/obj/item/surgical/hemostat_primitive = 40,
-	/obj/item/duct_tape_roll = 30,
-	/obj/item/barrier_tape_roll = 10
 	)
 
 	priority = 3
@@ -99,8 +102,6 @@
 	if(..())
 		var/obj/item/organ/external/affected = target.get_organ(target_zone)
 		if(affected.burn_stage < 1 || !(affected.burn_dam))
-			return 0
-		if(affected.burn_dam < affected.brute_dam)
 			return 0
 		return 1
 	return 0
@@ -124,7 +125,7 @@
 	if(istype(tool, /obj/item/duct_tape_roll) || istype(tool, /obj/item/barrier_tape_roll))
 		user.visible_message("<span class='notice'>[user] finishes taping up [target]'s [affected] with \the [tool].</span>", \
 	"<span class='notice'>You finish taping up [target]'s [affected] with \the [tool].</span>")
-		affected.create_wound(BRUISE, 10)
+		affected.create_wound(WOUND_TYPE_BRUISE, 10)
 	affected.heal_damage(0, 25, 0, 0)
 	if(!(affected.burn_dam))
 		affected.burn_stage = 0
@@ -137,8 +138,8 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='danger'>[user]'s hand slips, tearing up [target]'s [affected] with \the [tool].</span>", \
 	"<span class='danger'>Your hand slips, tearing up [target]'s [affected] with \the [tool].</span>")
-	affected.create_wound(BRUISE, 10)
-	affected.create_wound(CUT, 5)
+	affected.create_wound(WOUND_TYPE_BRUISE, 10)
+	affected.create_wound(WOUND_TYPE_CUT, 5)
 	if(istype(tool, /obj/item/stack) && prob(30))
 		var/obj/item/stack/T = tool
 		T.use(1)
@@ -149,6 +150,8 @@
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery_step/repairflesh/repair_brute
+	step_name = "Repair skin"
+
 	allowed_tools = list(
 	/obj/item/stack/medical/advanced/bruise_pack = 100,
 	/obj/item/surgical/cautery = 100,
@@ -169,8 +172,6 @@
 	if(..())
 		var/obj/item/organ/external/affected = target.get_organ(target_zone)
 		if(affected.brute_stage < 1 || !(affected.brute_dam))
-			return 0
-		if(affected.brute_dam < affected.burn_dam)
 			return 0
 		return 1
 	return 0
@@ -194,7 +195,7 @@
 	if(istype(tool, /obj/item/duct_tape_roll) || istype(tool, /obj/item/barrier_tape_roll))
 		user.visible_message("<span class='notice'>[user] finishes taping up [target]'s [affected] with \the [tool].</span>", \
 	"<span class='notice'>You finish taping up [target]'s [affected] with \the [tool].</span>")
-		affected.create_wound(BRUISE, 10)
+		affected.create_wound(WOUND_TYPE_BRUISE, 10)
 	affected.heal_damage(25, 0, 0, 0)
 	if(!(affected.brute_dam))
 		affected.brute_stage = 0
@@ -207,8 +208,8 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='danger'>[user]'s hand slips, tearing up [target]'s [affected] with \the [tool].</span>", \
 	"<span class='danger'>Your hand slips, tearing up [target]'s [affected] with \the [tool].</span>")
-	affected.create_wound(BRUISE, 10)
-	affected.create_wound(CUT, 5)
+	affected.create_wound(WOUND_TYPE_BRUISE, 10)
+	affected.create_wound(WOUND_TYPE_CUT, 5)
 	if(istype(tool, /obj/item/stack) && prob(30))
 		var/obj/item/stack/T = tool
 		T.use(1)

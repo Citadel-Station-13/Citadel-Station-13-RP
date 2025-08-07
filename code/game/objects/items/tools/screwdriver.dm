@@ -20,15 +20,9 @@
 	pickup_sound = 'sound/items/pickup/screwdriver.ogg'
 	materials_base = list(MAT_STEEL = 75)
 	attack_verb = list("stabbed")
-	sharp  = 1
+	damage_mode = DAMAGE_MODE_SHARP
 	tool_speed = 1
 	var/random_color = TRUE
-
-/obj/item/tool/screwdriver/suicide_act(mob/user)
-	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-	user.visible_message(pick("<span class='danger'>\The [user] is stabbing the [src.name] into [TU.his] temple! It looks like [TU.hes] trying to commit suicide.</span>", \
-						"<span class='danger'>\The [user] is stabbing the [src.name] into [TU.his] heart! It looks like [TU.hes] trying to commit suicide.</span>"))
-	return(BRUTELOSS)
 
 /obj/item/tool/screwdriver/Initialize(mapload)
 	if(random_color)
@@ -60,7 +54,7 @@
 
 	return ..()
 
-/obj/item/tool/screwdriver/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/tool/screwdriver/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent != INTENT_HARM)
 		return ..()
 	if(user.zone_sel.selecting != O_EYES && user.zone_sel.selecting != BP_HEAD)
@@ -75,6 +69,14 @@
 	icon_state = "screwdriver_bone"
 	random_color = FALSE
 	tool_speed = 1.25
+
+/obj/item/tool/screwdriver/bronze
+	name = "bronze chisel"
+	desc = "A flat point chisel made of bronze, used to carve bone. It may make a good screwdriver in a pinch."
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "screwdriver_bronze"
+	item_state = "screwdriver_brass"
+	random_color = FALSE
 
 /obj/item/tool/screwdriver/brass
 	name = "brass screwdriver"
@@ -172,7 +174,7 @@
 		QDEL_NULL(counterpart)
 	return ..()
 
-/obj/item/tool/screwdriver/power/attack_self(mob/user)
+/obj/item/tool/screwdriver/power/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

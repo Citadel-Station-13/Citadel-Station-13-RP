@@ -60,7 +60,7 @@
 	add_hiddenprint(user)
 	return attack_hand(user)
 
-/obj/machinery/clonepod/attack_hand(mob/user, list/params)
+/obj/machinery/clonepod/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if((isnull(occupant)) || (machine_stat & NOPOWER))
 		return
 	if((!isnull(occupant)) && (occupant.stat != 2))
@@ -120,7 +120,6 @@
 	H.update_health()
 
 	clonemind.transfer(H)
-	H.ckey = R.ckey
 	to_chat(H, SPAN_BOLDDANGER("Consciousness slowly creeps over you as your body regenerates.<br>") + SPAN_USERDANGER("Your recent memories are fuzzy, and it's hard to remember anything from today...<br>") + SPAN_NOTICE(SPAN_ROSE("So this is what cloning feels like?")))
 
 	// -- Mode/mind specific stuff goes here
@@ -162,7 +161,7 @@
 	for(var/modifier_type in R.genetic_modifiers)
 		H.add_modifier(modifier_type)
 
-	for(var/datum/language/L in R.languages)
+	for(var/datum/prototype/language/L in R.languages)
 		H.add_language(L.name)
 
 	H.flavor_texts = R.flavor.Copy()
@@ -345,34 +344,17 @@
 // Returns the total amount of biomass reagent in all of the pod's stored containers
 /obj/machinery/clonepod/proc/get_biomass()
 	var/biomass_count = 0
-	if(LAZYLEN(containers))
-		for(var/obj/item/reagent_containers/glass/G in containers)
-			for(var/datum/reagent/R in G.reagents.reagent_list)
-				if(R.id == "biomass")
-					biomass_count += R.volume
-
+	for(var/obj/item/reagent_containers/container in containers)
+		biomass_count += container.reagents?.reagent_volumes?[/datum/reagent/nutriment/biomass::id]
 	return biomass_count
 
 // Removes [amount] biomass, spread across all containers. Doesn't have any check that you actually HAVE enough biomass, though.
-/obj/machinery/clonepod/proc/remove_biomass(var/amount = CLONE_BIOMASS)		//Just in case it doesn't get passed a new amount, assume one clone
-	var/to_remove = 0	// Tracks how much biomass has been found so far
-	if(LAZYLEN(containers))
-		for(var/obj/item/reagent_containers/glass/G in containers)
-			if(to_remove < amount)	//If we have what we need, we can stop. Checked every time we switch beakers
-				for(var/datum/reagent/R in G.reagents.reagent_list)
-					if(R.id == "biomass")		// Finds Biomass
-						var/need_remove = max(0, amount - to_remove)	//Figures out how much biomass is in this container
-						if(R.volume >= need_remove)						//If we have more than enough in this beaker, only take what we need
-							R.remove_self(need_remove)
-							to_remove = amount
-						else											//Otherwise, take everything and move on
-							to_remove += R.volume
-							R.remove_self(R.volume)
-					else
-						continue
-			else
-				return 1
-	return 0
+/obj/machinery/clonepod/proc/remove_biomass(amount = CLONE_BIOMASS)		//Just in case it doesn't get passed a new amount, assume one clone
+	for(var/obj/item/reagent_containers/glass/beaker in containers)
+		amount -= beaker.reagents.remove_reagent(/datum/reagent/nutriment/biomass, amount)
+		if(!amount)
+			return TRUE
+	return !amount
 
 // Empties all of the beakers from the cloning pod, used to refill it
 /obj/machinery/clonepod/verb/empty_beakers()
@@ -526,7 +508,7 @@
 	var/diskcolor = pick(0,1,2)
 	icon_state = "datadisk[diskcolor]"
 
-/obj/item/disk/data/attack_self(mob/user)
+/obj/item/disk/data/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

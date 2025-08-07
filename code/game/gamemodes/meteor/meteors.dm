@@ -162,7 +162,7 @@
 	if(T)
 		if(istype(T, /turf/simulated/wall))
 			var/turf/simulated/wall/W = T
-			W.inflict_atom_damage(wall_power, flag = ARMOR_BOMB) // Stronger walls can halt asteroids.
+			W.inflict_atom_damage(wall_power, damage_flag = ARMOR_BOMB) // Stronger walls can halt asteroids.
 
 /obj/effect/meteor/proc/get_shield_damage()
 	return max(((max(hits, 2)) * (heavy + 1) * rand(6, 12)) / hitpwr , 0)
@@ -182,11 +182,11 @@
 /obj/effect/meteor/legacy_ex_act()
 	return
 
-/obj/effect/meteor/attackby(obj/item/W as obj, mob/user as mob, params)
-	if(istype(W, /obj/item/pickaxe))
+/obj/effect/meteor/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	. = ..()
+	if(istype(using, /obj/item/pickaxe))
 		qdel(src)
-		return
-	..()
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 
 /obj/effect/meteor/proc/make_debris()
 	for(var/throws = dropamt, throws > 0, throws--)

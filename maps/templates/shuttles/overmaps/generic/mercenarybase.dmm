@@ -2350,8 +2350,8 @@
 /obj/item/clothing/accessory/armor/armguards/combat,
 /obj/item/clothing/accessory/armor/legguards/combat,
 /obj/item/clothing/head/helmet/redcombat,
-/obj/item/gun/energy/gun,
-/obj/item/grenade/flashbang,
+/obj/item/gun/projectile/energy/gun,
+/obj/item/grenade/simple/flashbang,
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/eqroom)
 "lR" = (
@@ -2390,8 +2390,8 @@
 /obj/item/clothing/accessory/armor/armguards/combat,
 /obj/item/clothing/accessory/armor/legguards/combat,
 /obj/item/clothing/head/helmet/redcombat,
-/obj/item/gun/energy/gun,
-/obj/item/grenade/flashbang,
+/obj/item/gun/projectile/energy/gun,
+/obj/item/grenade/simple/flashbang,
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/eqroom)
 "lT" = (
@@ -2985,7 +2985,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/hall)
 "nN" = (
-/obj/structure/sign/poster,
+/obj/structure/poster,
 /turf/simulated/wall/r_wall,
 /area/mercbase/barracks)
 "nO" = (
@@ -3141,8 +3141,8 @@
 /obj/item/clothing/accessory/armor/armguards/combat,
 /obj/item/clothing/accessory/armor/legguards/combat,
 /obj/item/clothing/head/helmet/redcombat,
-/obj/item/gun/energy/gun,
-/obj/item/grenade/flashbang,
+/obj/item/gun/projectile/energy/gun,
+/obj/item/grenade/simple/flashbang,
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/eqroom)
 "oo" = (
@@ -3156,12 +3156,12 @@
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/medicalstorage)
 "oq" = (
-/obj/item/gun/ballistic/automatic/bullpup,
-/obj/item/gun/ballistic/automatic/bullpup,
-/obj/item/gun/ballistic/automatic/bullpup,
-/obj/item/gun/ballistic/automatic/p90,
-/obj/item/gun/ballistic/automatic/p90,
-/obj/item/gun/ballistic/automatic/p90,
+/obj/item/gun/projectile/ballistic/automatic/bullpup,
+/obj/item/gun/projectile/ballistic/automatic/bullpup,
+/obj/item/gun/projectile/ballistic/automatic/bullpup,
+/obj/item/gun/projectile/ballistic/automatic/p90,
+/obj/item/gun/projectile/ballistic/automatic/p90,
+/obj/item/gun/projectile/ballistic/automatic/p90,
 /obj/structure/closet/secure_closet/guncabinet{
 	req_one_access = list(150)
 	},
@@ -3181,8 +3181,8 @@
 /obj/item/clothing/accessory/armor/armguards/combat,
 /obj/item/clothing/accessory/armor/legguards/combat,
 /obj/item/clothing/head/helmet/redcombat,
-/obj/item/gun/energy/gun,
-/obj/item/grenade/flashbang,
+/obj/item/gun/projectile/energy/gun,
+/obj/item/grenade/simple/flashbang,
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/eqroom)
 "os" = (
@@ -3191,12 +3191,12 @@
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/engineering)
 "ot" = (
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
+/obj/item/gun/projectile/energy/laser,
+/obj/item/gun/projectile/energy/laser,
+/obj/item/gun/projectile/energy/laser,
+/obj/item/gun/projectile/energy/laser,
+/obj/item/gun/projectile/energy/laser,
+/obj/item/gun/projectile/energy/laser,
 /obj/structure/closet/secure_closet/guncabinet{
 	req_one_access = list(150)
 	},

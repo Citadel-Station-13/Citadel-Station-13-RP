@@ -40,7 +40,7 @@ GLOBAL_LIST_EMPTY(exonet_nodes)
 // Proc: update_icon()
 // Parameters: None
 // Description: Self explanatory.
-/obj/machinery/exonet_node/update_icon()
+/obj/machinery/exonet_node/update_icon_state()
 	if(on)
 		if(!allow_external_PDAs && !allow_external_communicators && !allow_external_newscasters)
 			icon_state = "[initial(icon_state)]_idle"
@@ -48,6 +48,7 @@ GLOBAL_LIST_EMPTY(exonet_nodes)
 			icon_state = initial(icon_state)
 	else
 		icon_state = "[initial(icon_state)]_off"
+	return ..()
 
 // Proc: update_power()
 // Parameters: None
@@ -103,7 +104,7 @@ GLOBAL_LIST_EMPTY(exonet_nodes)
 // Proc: attack_hand()
 // Parameters: 1 (user - the person clicking on the machine)
 // Description: Opens the TGUI interface with ui_interact()
-/obj/machinery/exonet_node/attack_hand(mob/user, list/params)
+/obj/machinery/exonet_node/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	ui_interact(user)
 
 // Proc: ui_interact()

@@ -17,13 +17,13 @@
 
 	// i'm going to trust people aren't stupid and won't put the name of a regular panel in spells.
 	if(!length(spell_list))
-		if(C.statpanel_spell_last)
+		if(C.tgui_stat.spell_last)
 			// dispose
-			for(var/tab in C.statpanel_spell_last)
+			for(var/tab in C.tgui_stat.spell_last)
 				C.statpanel_tab(tab, FALSE)
-			C.statpanel_spell_last = null
+			C.tgui_stat.spell_last = null
 		return
-	LAZYINITLIST(C.statpanel_spell_last)
+	LAZYINITLIST(C.tgui_stat.spell_last)
 	var/list/collected = list()
 	for(var/spell/S in spell_list)
 		if(!S.panel || !S.connected_button)
@@ -39,8 +39,8 @@
 			if(Sp_HOLDVAR)
 				STATPANEL_DATA_CLICK("[S.holder_var_type] [S.holder_var_amount]", "[S.connected_button]", "\ref[S.connected_button]")
 	// process tabs
-	var/list/removing = C.statpanel_spell_last - collected
-	var/list/adding = collected - C.statpanel_spell_last
+	var/list/removing = C.tgui_stat.spell_last - collected
+	var/list/adding = collected - C.tgui_stat.spell_last
 	for(var/tab in adding)
 		C.statpanel_tab(adding, TRUE)
 	for(var/tab in removing)

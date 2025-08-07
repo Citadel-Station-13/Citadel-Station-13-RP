@@ -25,7 +25,7 @@
 	base_pixel_y = -10 // To prevent resetting above var.
 
 	maxHealth = 300
-	movement_cooldown = 10
+	movement_base_speed = 10 / 10
 	melee_attack_delay = 0.5 SECONDS
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/pointblank
@@ -64,21 +64,23 @@
 /obj/projectile/icicle
 	name = "icicle"
 	icon_state = "ice_2"
-	damage = 40
-	damage_type = BRUTE
+	damage_force = 40
+	damage_type = DAMAGE_TYPE_BRUTE
 	damage_flag = ARMOR_MELEE
-	armor_penetration = 30
-	speed = 2
+	damage_tier = 4
+	speed = 7.5 * WORLD_ICON_SIZE
 	icon_scale_x = 2 // It hits like a truck.
 	icon_scale_y = 2
-	sharp = TRUE
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_PIERCE
 
-/obj/projectile/icicle/on_impact(atom/A)
-	playsound(get_turf(A), "shatter", 70, 1)
-	return ..()
+/obj/projectile/icicle/on_impact(atom/target, impact_flags, def_zone, efficiency)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
+	playsound(get_turf(target), "shatter", 70, 1)
 
 /obj/projectile/icicle/get_structure_damage()
-	return damage / 2 // They're really deadly against mobs, but less effective against solid things.
+	return damage_force / 2 // They're really deadly against mobs, but less effective against solid things.
 
 /mob/living/simple_mob/slime/feral/dark_blue/handle_special()
 	if(stat != DEAD)

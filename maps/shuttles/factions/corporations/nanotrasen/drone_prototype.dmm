@@ -1,0 +1,412 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/space/basic,
+/area/space)
+"c" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/drone_prototype)
+"d" = (
+/obj/structure/handrail{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/power/terminal{
+	dir = 4
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/drone_prototype)
+"e" = (
+/obj/structure/handrail{
+	dir = 8
+	},
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/drone_prototype)
+"g" = (
+/obj/effect/floor_decal/industrial/warning/full,
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/drone_prototype)
+"h" = (
+/obj/structure/handrail{
+	dir = 8
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/drone_prototype)
+"i" = (
+/turf/simulated/shuttle/wall/voidcraft,
+/area/shuttle/nanotrasen/drone_prototype)
+"j" = (
+/obj/machinery/shipsensors,
+/obj/effect/floor_decal/industrial/warning/full,
+/turf/simulated/floor/plating/outdoors,
+/area/shuttle/nanotrasen/drone_prototype)
+"k" = (
+/obj/structure/handrail{
+	dir = 4
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/drone_prototype)
+"l" = (
+/obj/effect/floor_decal/industrial/warning/full,
+/obj/machinery/power/apc/south_mount,
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/drone_prototype)
+"q" = (
+/turf/simulated/wall/rshull,
+/area/shuttle/nanotrasen/drone_prototype)
+"s" = (
+/obj/effect/floor_decal/industrial/warning/full,
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/drone_prototype)
+"t" = (
+/obj/structure/railing,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/drone_prototype)
+"w" = (
+/obj/effect/floor_decal/industrial/warning/full,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/drone_prototype)
+"B" = (
+/obj/spawner/window/low_wall/reinforced,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/drone_prototype)
+"E" = (
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/drone_prototype)
+"I" = (
+/obj/effect/floor_decal/industrial/warning/full,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/drone_prototype)
+"L" = (
+/obj/structure/table/rack/shelf,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/drone_prototype)
+"M" = (
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/drone_prototype)
+"N" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/drone_prototype)
+"P" = (
+/obj/machinery/door/airlock/external/glass,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/drone_prototype)
+"Q" = (
+/obj/effect/floor_decal/industrial/warning/full,
+/turf/space/basic,
+/area/shuttle/nanotrasen/drone_prototype)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(3,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(4,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+Q
+Q
+Q
+a
+a
+a
+a
+a
+"}
+(5,1,1) = {"
+a
+a
+a
+a
+a
+a
+j
+q
+B
+B
+q
+a
+a
+a
+a
+a
+"}
+(6,1,1) = {"
+a
+a
+a
+a
+a
+q
+B
+q
+w
+w
+w
+q
+w
+a
+a
+a
+"}
+(7,1,1) = {"
+a
+a
+a
+a
+q
+L
+t
+k
+h
+E
+E
+q
+w
+a
+a
+a
+"}
+(8,1,1) = {"
+a
+a
+a
+a
+B
+w
+E
+l
+i
+s
+M
+P
+a
+a
+a
+a
+"}
+(9,1,1) = {"
+a
+a
+a
+a
+B
+w
+E
+c
+i
+I
+E
+P
+a
+a
+a
+a
+"}
+(10,1,1) = {"
+a
+a
+a
+a
+q
+L
+t
+e
+d
+c
+E
+q
+w
+a
+a
+a
+"}
+(11,1,1) = {"
+a
+a
+a
+a
+a
+q
+B
+q
+g
+N
+E
+q
+w
+a
+a
+a
+"}
+(12,1,1) = {"
+a
+a
+a
+a
+a
+a
+Q
+q
+B
+B
+q
+a
+a
+a
+a
+a
+"}
+(13,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+Q
+Q
+Q
+a
+a
+a
+a
+a
+"}
+(14,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(15,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(16,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}

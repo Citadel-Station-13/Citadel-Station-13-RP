@@ -160,13 +160,6 @@
 	name = "\improper Reading Room"
 /area/triumph/surfacebase/vacant_site
 	name = "\improper Vacant Site"
-//Shuttle crashes
-/area/shuttle/triumph/crash1
-	name = "\improper Crash Site 1"
-	icon_state = "shuttle2"
-/area/shuttle/triumph/crash2
-	name = "\improper Crash Site 2"
-	icon_state = "shuttle2"
 
 // Class D world areas
 /area/class_d
@@ -315,69 +308,108 @@
 
 //Gaia planet world areas
 /area/class_m
-	name = "Class M World"
+	name = "Gaia Station"
 	icon_state = "away"
 	requires_power = 1
 	dynamic_lighting = 1
 
 /area/class_m/inside
-	name = "Class M World - Inside (E)"
+	name = "Gaia Station - Inside (E)"
 	icon_state = "red"
 
 /area/class_m/inside/main
-	name = "Class M World - Main Facility"
+	name = "Gaia Station - Main Facility"
 
 /area/class_m/inside/dorms
-	name = "Class M World - Dormitories"
+	name = "Gaia Station - Dormitories"
+	icon_state = "green"
+
+/area/class_m/inside/vip_dorms
+	name = "Gaia Station - Premium Dormitories"
 	icon_state = "green"
 
 /area/class_m/inside/bathroom
-	name = "Class M World - Bathrooms"
+	name = "Gaia Station - Bathrooms"
 	icon_state = "green"
 
 /area/class_m/inside/cabin
-	name = "Class M World - Cabin"
+	name = "Gaia Station - Cabin"
 
 /area/class_m/inside/islandbeachhouse
-	name = "Class M World - Island Beach House"
+	name = "Gaia Station - Island Beach House"
 
 /area/class_m/inside/sauna
-	name = "Class M World - Main Sauna"
+	name = "Gaia Station - Main Sauna"
 
 /area/class_m/inside/sauna2
-	name = "Class M World - Beach Sauna"
+	name = "Gaia Station - Beach Sauna"
 
 /area/class_m/inside/sauna3
-	name = "Class M World - Island Sauna"
+	name = "Gaia Station - Island Sauna"
 
 /area/class_m/inside/garage
-	name = "Class M World - Garage"
+	name = "Gaia Station - Garage"
 
 /area/class_m/inside/hotspringcaves
-	name = "Class M World - Hotspring Caves"
+	name = "Gaia Station - Hotspring Caves"
+
+/area/class_m/inside/igloos
+	name = "Gaia Station - Igloos"
+
+/area/class_m/inside/hangars
+	name = "Gaia Station - Hangars"
+
+/area/class_m/inside/reception
+	name = "Gaia Station - Reception Area"
+
+/area/class_m/inside/maintenance
+	name = "Gaia Station - Maintnence Areas"
+
+/area/class_m/inside/maintenance/winter
+	name = "Gaia Station - Winter Biome Maintenance"
+
+/area/class_m/inside/maintenance/desert
+	name = "Gaia Station - Dessert Biome Maintenance"
+
+/area/class_m/inside/entrance
+	name = "Gaia Station - Park Gate"
+
+/area/class_m/inside/coats
+	name = "Gaia Station - Coat Room"
+
+/area/class_m/inside/staff
+	name = "Gaia Station - Staff Room"
 
 /area/class_m/outside
-	name = "Class M World - Outside (UE)"
+	name = "Gaia Station - 'Outside' (UE)"
 	icon_state = "bluenew"
 	is_outside = OUTSIDE_YES
 
 /area/class_m/outside/beach
-	name = "Class M World - Beach"
+	name = "Gaia Station - Beach"
 	icon_state = "yellow"
+
 /area/class_m/outside/beachmiddle
-	name = "Class M World - Beach Center"
+	name = "Gaia Station - Beach Center"
 	icon_state = "purple"
 
 /area/class_m/outside/island
-	name = "Class M World - Island"
+	name = "Gaia Station - Island"
 	icon_state = "purple"
 
 /area/class_m/outside/island2
-	name = "Class M World - Island"
+	name = "Gaia Station - Island"
 	icon_state = "blue"
 
 /area/class_m/outside/docks
-	name = "Class M World - Docks"
+	name = "Gaia Station - Docks"
+
+/area/class_m/outside/winter
+	name = "Gaia Station - Winter Biome"
+
+/area/class_m/outside/desert
+	name = "Gaia Station - Desert Biome"
+
 
 // Frozen planet world areas
 /area/class_p
@@ -725,133 +757,10 @@
 	icon_state = "shuttle"
 	dynamic_lighting = 0
 
-
 // Lavaland
 /area/shuttle/excursion/lavaland
 	name = "Shuttle Landing Point"
 	area_flags = AREA_RAD_SHIELDED
-
-/area/lavaland
-	name = "Lava Land"
-	icon_state = "away"
-	requires_power = 1
-	dynamic_lighting = 1
-
-/area/lavaland/horrors
-	name = "Lava Land - Horrors"
-
-/area/lavaland/dogs
-	name = "Lava Land - Dogs"
-
-/area/lavaland/idleruins
-	name = "Lava Land - Idle Ruins"
-
-/area/lavaland/ashlander_camp
-	name = "Lava Land - Ashlander Camp"
-
-/area/lavaland/bosses
-	name = "Lava Land - Boss"
-	requires_power = 0
-
-/area/lavaland/central/base
-	name = "Lava Land (Center) - Mining Base"
-	icon_state = "green"
-
-/area/lavaland/central/base/common
-	name = "Lava Land (Center) - Mining Base"
-	icon_state = "blue"
-
-/area/lavaland/central/explored
-	name = "Lava Land (Center) - Thoroughfare"
-	icon_state = "red"
-	ambience = AMBIENCE_LAVA
-
-/area/lavaland/central/unexplored
-	name = "Lava Land (Center) - Unknown"
-	icon_state = "yellow"
-	ambience = AMBIENCE_LAVA
-
-/area/lavaland/central/transit
-	name = "Lava Land (Center) - Transit"
-	icon_state = "blue"
-
-/area/lavaland/north/explored
-	name = "Lava Land (North) - Thoroughfare"
-	icon_state = "red"
-	ambience = AMBIENCE_LAVA
-
-/area/lavaland/north/unexplored
-	name = "Lava Land (North) - Unknown"
-	icon_state = "yellow"
-	ambience = AMBIENCE_LAVA
-
-/area/lavaland/south/explored
-	name = "Lava Land (South) - Thoroughfare"
-	icon_state = "red"
-	ambience = AMBIENCE_LAVA
-
-/area/lavaland/south/unexplored
-	name = "Lava Land (South) - Unknown"
-	icon_state = "yellow"
-	ambience = AMBIENCE_LAVA
-
-/area/lavaland/east/explored
-	name = "Lava Land (East) - Thoroughfare"
-	icon_state = "red"
-	ambience = AMBIENCE_LAVA
-
-/area/lavaland/east/unexplored
-	name = "Lava Land (East) - Unknown"
-	icon_state = "yellow"
-	ambience = AMBIENCE_LAVA
-
-/area/lavaland/east/transit
-	name = "Lava Land (East) - Transit"
-	icon_state = "blue"
-
-/area/lavaland/east/ashlander_village
-	name = "Lava Land (East) - Ashlander Village"
-	icon_state = "blue"
-
-/area/lavaland/west/explored
-	name = "Lava Land (West) - Thoroughfare"
-	icon_state = "red"
-	ambience = AMBIENCE_LAVA
-
-//These were from the Colony Event. Just holding onto them for now.
-/*
-/area/lavaland/east/colony
-	name = "Lava Land (East) - Colony"
-	icon_state = "blue"
-
-/area/lavaland/east/lab
-	name = "Lava Land (East) - S4"
-
-/area/lavaland/east/lab/core
-	name = "Lava Land (East) - S4"
-	icon_state = "blue"
-
-/area/lavaland/east/lab/containment
-	name = "Lava Land (East) - S4 Containment"
-	icon_state = "blue"
-
-/area/lavaland/east/lab/bunker
-	name = "Lava Land (East) - S4 Bunker"
-	icon_state = "blue"
-*/
-
-/area/lavaland/west/unexplored
-	name = "Lava Land (West) - Unknown"
-	icon_state = "yellow"
-	ambience = AMBIENCE_LAVA
-
-/area/lavaland/dungeon/exterior
-	name = "Lava Land (Dungeon) - Unknown"
-	icon_state = "yellow"
-
-/area/lavaland/dungeon/facility
-	name = "Lava Land (Dungeon) - Pump Facility"
-	icon_state = "blue"
 
 // Aerostat
 /area/shuttle/excursion/away_aerostat

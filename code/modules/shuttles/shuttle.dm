@@ -1,7 +1,6 @@
 //shuttle moving state defines are in setup.dm
 
 /datum/shuttle
-	var/name = ""
 	var/warmup_time = 0
 	var/moving_status = SHUTTLE_IDLE
 
@@ -13,8 +12,6 @@
 	var/process_state = IDLE_STATE	// Used with SHUTTLE_FLAGS_PROCESS, as well as to store current state.
 	var/category = /datum/shuttle
 	var/multiz = 0	// How many multiz levels, starts at 0  TODO Leshana - Are we porting this?
-
-	var/ceiling_type = /turf/simulated/shuttle_ceiling	// Type path of turf to roof over the shuttle when at multi-z landmarks.  Ignored if null.
 
 	var/sound_takeoff = 'sound/effects/shuttles/shuttle_takeoff.ogg'
 	var/sound_landing = 'sound/effects/shuttles/shuttle_landing.ogg'

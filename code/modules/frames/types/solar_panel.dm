@@ -9,7 +9,7 @@ AUTO_FRAME_DATUM(/datum/frame2/solar_panel, solar_panel, 'icons/machinery/power/
 			steps = list(
 				/datum/frame_step{
 					name = "finish panel";
-					request = /datum/material/glass;
+					request = /datum/prototype/material/glass;
 					request_amount = 1;
 					direction = TOOL_DIRECTION_FORWARDS;
 					stage = FRAME_STAGE_FINISH;

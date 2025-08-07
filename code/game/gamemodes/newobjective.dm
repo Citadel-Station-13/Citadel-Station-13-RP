@@ -563,7 +563,7 @@ datum
 
 
 			captainslaser
-				steal_target = /obj/item/gun/energy/captain
+				steal_target = /obj/item/gun/projectile/energy/captain
 				explanation_text = "Steal the Facility Director's antique laser gun."
 				weight = 20
 
@@ -593,7 +593,7 @@ datum
 				weight = 20
 
 				get_points(var/job)
-					if(job in science_positions || job in command_positions)
+					if((job in science_positions) || (job in command_positions))
 						return 20
 					return 40
 
@@ -820,7 +820,7 @@ datum
 						return 20
 
 			nuke_gun
-				steal_target = /obj/item/gun/energy/gun/nuclear
+				steal_target = /obj/item/gun/projectile/energy/gun/nuclear
 				explanation_text = "Steal a nuclear powered gun."
 				weight = 20
 

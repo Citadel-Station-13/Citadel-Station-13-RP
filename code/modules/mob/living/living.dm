@@ -10,6 +10,18 @@ TYPE_REGISTER_SPATIAL_GRID(/mob/living, SSspatial_grids.living)
 
 	selected_image = image(icon = 'icons/mob/screen1.dmi', loc = src, icon_state = "centermarker")
 
+	//* ~~~~~~~VORE~~~~~~~ *//
+	add_verb(src, /mob/living/proc/escapeOOC)
+	add_verb(src, /mob/living/proc/lick)
+	add_verb(src, /mob/living/proc/smell)
+	add_verb(src, /mob/living/proc/switch_scaling)
+	if(!no_vore) //If the mob isn't supposed to have a stomach, let's not give it an insidepanel so it can make one for itself, or a stomach.
+		add_verb(src, /mob/living/proc/insidePanel)
+		//Tries to load prefs if a client is present otherwise gives freebie stomach
+		spawn(2 SECONDS)
+			init_vore()
+	//*        END         *//
+
 /mob/living/Destroy()
 	if(nest) //Ew.
 		if(istype(nest, /obj/structure/prop/nest))
@@ -138,6 +150,183 @@ default behaviour is:
 //		to_chat(world, "[src] ~ [src.bodytemperature] ~ [temperature]")
 	return temperature
 
+
+// ++++ROCKDTBEN++++ MOB PROCS -- Ask me before touching.
+// Stop! ... Hammertime! ~Carn
+// I touched them without asking... I'm soooo edgy ~Erro (added nodamage checks)
+
+/mob/living/proc/getBruteLoss()
+	return bruteloss
+
+/mob/living/proc/getShockBruteLoss()	//Only checks for things that'll actually hurt (not robolimbs)
+	return bruteloss
+
+/mob/living/proc/getActualBruteLoss()	// Mostly for humans with robolimbs.
+	return getBruteLoss()
+
+//'include_robo' only applies to healing, for legacy purposes, as all damage typically hurts both types of organs
+/mob/living/proc/adjustBruteLoss(var/amount,var/include_robo)
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
+
+	if(amount > 0)
+		for(var/datum/modifier/M in modifiers)
+			if(!isnull(M.incoming_damage_percent))
+				amount *= M.incoming_damage_percent
+			if(!isnull(M.incoming_brute_damage_percent))
+				amount *= M.incoming_brute_damage_percent
+	else if(amount < 0)
+		for(var/datum/modifier/M in modifiers)
+			if(!isnull(M.incoming_healing_percent))
+				amount *= M.incoming_healing_percent
+
+	bruteloss = min(max(bruteloss + amount, 0),(getMaxHealth()*2))
+	update_health()
+
+/mob/living/proc/getOxyLoss()
+	return oxyloss
+
+/mob/living/proc/adjustOxyLoss(var/amount)
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
+
+	if(amount > 0)
+		for(var/datum/modifier/M in modifiers)
+			if(!isnull(M.incoming_damage_percent))
+				amount *= M.incoming_damage_percent
+			if(!isnull(M.incoming_oxy_damage_percent))
+				amount *= M.incoming_oxy_damage_percent
+	else if(amount < 0)
+		for(var/datum/modifier/M in modifiers)
+			if(!isnull(M.incoming_healing_percent))
+				amount *= M.incoming_healing_percent
+
+	oxyloss = min(max(oxyloss + amount, 0),(getMaxHealth()*2))
+	update_health()
+
+/mob/living/proc/setOxyLoss(var/amount)
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
+	oxyloss = amount
+
+/mob/living/proc/getToxLoss()
+	return toxloss
+
+/mob/living/proc/adjustToxLoss(var/amount)
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
+
+	if(amount > 0)
+		for(var/datum/modifier/M in modifiers)
+			if(!isnull(M.incoming_damage_percent))
+				amount *= M.incoming_damage_percent
+			if(!isnull(M.incoming_tox_damage_percent))
+				amount *= M.incoming_tox_damage_percent
+	else if(amount < 0)
+		for(var/datum/modifier/M in modifiers)
+			if(!isnull(M.incoming_healing_percent))
+				amount *= M.incoming_healing_percent
+
+	toxloss = min(max(toxloss + amount, 0),(getMaxHealth()*2))
+	update_health()
+
+/mob/living/proc/setToxLoss(var/amount)
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
+	toxloss = amount
+
+/mob/living/proc/getFireLoss()
+	return fireloss
+
+/mob/living/proc/getShockFireLoss()	//Only checks for things that'll actually hurt (not robolimbs)
+	return fireloss
+
+/mob/living/proc/getActualFireLoss()	// Mostly for humans with robolimbs.
+	return getFireLoss()
+
+//'include_robo' only applies to healing, for legacy purposes, as all damage typically hurts both types of organs
+/mob/living/proc/adjustFireLoss(var/amount,var/include_robo)
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
+	if(amount > 0)
+		for(var/datum/modifier/M in modifiers)
+			if(!isnull(M.incoming_damage_percent))
+				amount *= M.incoming_damage_percent
+			if(!isnull(M.incoming_fire_damage_percent))
+				amount *= M.incoming_fire_damage_percent
+	else if(amount < 0)
+		for(var/datum/modifier/M in modifiers)
+			if(!isnull(M.incoming_healing_percent))
+				amount *= M.incoming_healing_percent
+
+	fireloss = min(max(fireloss + amount, 0),(getMaxHealth()*2))
+	update_health()
+
+/mob/living/proc/getCloneLoss()
+	return cloneloss
+
+/mob/living/proc/adjustCloneLoss(var/amount)
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
+
+	if(amount > 0)
+		for(var/datum/modifier/M in modifiers)
+			if(!isnull(M.incoming_damage_percent))
+				amount *= M.incoming_damage_percent
+			if(!isnull(M.incoming_clone_damage_percent))
+				amount *= M.incoming_clone_damage_percent
+	else if(amount < 0)
+		for(var/datum/modifier/M in modifiers)
+			if(!isnull(M.incoming_healing_percent))
+				amount *= M.incoming_healing_percent
+
+	cloneloss = min(max(cloneloss + amount, 0),(getMaxHealth()*2))
+	update_health()
+
+/mob/living/proc/setCloneLoss(var/amount)
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
+	cloneloss = amount
+
+/mob/living/proc/getBrainLoss()
+	return brainloss
+
+/mob/living/proc/adjustBrainLoss(var/amount)
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
+	brainloss = min(max(brainloss + amount, 0),(getMaxHealth()*2))
+
+/mob/living/proc/setBrainLoss(var/amount)
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
+	brainloss = amount
+
+/mob/living/proc/getHalLoss()
+	return halloss
+
+/mob/living/proc/adjustHalLoss(var/amount)
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
+	if(amount > 0)
+		for(var/datum/modifier/M in modifiers)
+			if(!isnull(M.incoming_damage_percent))
+				amount *= M.incoming_damage_percent
+			if(!isnull(M.incoming_hal_damage_percent))
+				amount *= M.incoming_hal_damage_percent
+			if(!isnull(M.disable_duration_percent))
+				amount *= M.incoming_hal_damage_percent
+	else if(amount < 0)
+		for(var/datum/modifier/M in modifiers)
+			if(!isnull(M.incoming_healing_percent))
+				amount *= M.incoming_healing_percent
+	halloss = min(max(halloss + amount, 0),(getMaxHealth()*2))
+	update_health()
+
+/mob/living/proc/setHalLoss(var/amount)
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
+	halloss = amount
+
+/mob/living/proc/adjustHallucination(amount)
+	if(status_flags & STATUS_GODMODE)
+		hallucination = 0
+		return 0	//godmode
+	hallucination = clamp(hallucination + amount, 0, 400) //cap at 400, any higher is just obnoxious
+
+/mob/living/proc/setHallucination(amount)
+	if(status_flags & STATUS_GODMODE)
+		hallucination = 0
+		return 0	//godmode
+	hallucination = clamp(amount, 0, 400) //cap at 400, any higher is just obnoxious
+
 // Use this to get a mob's max health whenever possible.  Reading maxHealth directly will give inaccurate results if any modifiers exist.
 /mob/living/proc/getMaxHealth()
 	var/result = maxHealth
@@ -154,6 +343,15 @@ default behaviour is:
 	health = (health/maxHealth) * (newMaxHealth) // Adjust existing health
 	maxHealth = newMaxHealth
 
+// Use this to get a mob's min health whenever possible. (modifiers for minHealth don't exist currently!)
+/mob/living/proc/getMinHealth()
+	return minHealth
+
+/mob/living/proc/getCritHealth()
+	return critHealth
+
+/mob/living/proc/getSoftCritHealth()
+	return softCritHealth
 
 /mob/living/Confuse(amount)
 	for(var/datum/modifier/M in modifiers)
@@ -167,6 +365,38 @@ default behaviour is:
 			if(!isnull(M.disable_duration_percent))
 				amount = round(amount * M.disable_duration_percent)
 	..(amount)
+
+// ++++ROCKDTBEN++++ MOB PROCS //END
+
+// Applies direct "cold" damage while checking protection against the cold.
+/mob/living/proc/inflict_cold_damage(amount)
+	amount *= 1 - get_cold_protection(50) // Within spacesuit protection.
+	if(amount > 0)
+		adjustFireLoss(amount)
+
+// Ditto, but for "heat".
+/mob/living/proc/inflict_heat_damage(amount)
+	amount *= 1 - get_heat_protection(10000) // Within firesuit protection.
+	if(amount > 0)
+		adjustFireLoss(amount)
+
+// and one for electricity because why not
+/mob/living/proc/inflict_shock_damage_legacy(amount)
+	electrocute(0, amount, 0, NONE, pick(BP_TORSO, BP_HEAD, BP_GROIN))
+
+// also one for water (most things resist it entirely, except for slimes)
+/mob/living/proc/inflict_water_damage(amount)
+	amount *= 1 - get_water_protection()
+	if(amount > 0)
+		adjustToxLoss(amount)
+
+// one for abstracted away ""poison"" (mostly because simplemobs shouldn't handle reagents)
+/mob/living/proc/inflict_poison_damage(amount)
+	if(isSynthetic())
+		return
+	amount *= 1 - get_poison_protection()
+	if(amount > 0)
+		adjustToxLoss(amount)
 
 /mob/proc/get_contents()
 	. = list()
@@ -239,9 +469,6 @@ default behaviour is:
 			return TRUE
 
 	return FALSE
-
-/mob/living/proc/slip(var/slipped_on,stun_duration=8)
-	return 0
 
 //damage/heal the mob ears and adjust the deaf amount
 /mob/living/adjustEarDamage(var/damage, var/deaf)
@@ -364,19 +591,21 @@ default behaviour is:
 		if(!isnull(M.icon_scale_y_percent))
 			. *= M.icon_scale_y_percent
 
-/mob/living/update_transform()
-	var/matrix/old_matrix = transform
-	// First, get the correct size.
+/mob/living/base_transform(matrix/applying)
+	SHOULD_CALL_PARENT(FALSE)
+
 	var/desired_scale_x = size_multiplier * icon_scale_x
 	var/desired_scale_y = size_multiplier * icon_scale_y
 
-	// Now for the regular stuff.
-	var/matrix/M = matrix()
-	M.Scale(desired_scale_x, desired_scale_y)
-	M.Translate(0, 16*(desired_scale_y-1))
+	applying.Scale(desired_scale_x, desired_scale_y)
+	applying.Translate(0, 16 * (desired_scale_y - 1))
+
+	SEND_SIGNAL(src, COMSIG_MOVABLE_BASE_TRANSFORM, applying)
+	return applying
+
+/mob/living/apply_transform(matrix/to_apply)
+	animate(src, transform = to_apply, time = 1 SECONDS, flags = ANIMATION_LINEAR_TRANSFORM | ANIMATION_PARALLEL)
 	update_ssd_overlay()
-	animate(src, transform = M, time = 10)
-	SEND_SIGNAL(src, COMSIG_MOB_UPDATE_TRANSFORM, old_matrix, M)
 
 // This handles setting the client's color variable, which makes everything look a specific color.
 // This proc is here so it can be called without needing to check if the client exists, or if the client relogs.
@@ -416,49 +645,6 @@ default behaviour is:
 
 	else // No colors, so remove the client's color.
 		animate(client, color = null, time = 10)
-
-/mob/living/swap_hand()
-	src.hand = !( src.hand )
-	if(hud_used.l_hand_hud_object && hud_used.r_hand_hud_object)
-		if(hand)	//This being 1 means the left hand is in use
-			hud_used.l_hand_hud_object.icon_state = "l_hand_active"
-			hud_used.r_hand_hud_object.icon_state = "r_hand_inactive"
-		else
-			hud_used.l_hand_hud_object.icon_state = "l_hand_inactive"
-			hud_used.r_hand_hud_object.icon_state = "r_hand_active"
-
-	// We just swapped hands, so the thing in our inactive hand will notice it's not the focus
-	var/obj/item/I = get_inactive_held_item()
-	if(I)
-		if(I.zoom)
-			I.zoom()
-	return
-
-/mob/proc/activate_hand(selhand)
-
-/mob/living/activate_hand(selhand) //0 or "r" or "right" for right hand; 1 or "l" or "left" for left hand.
-
-	if(istext(selhand))
-		selhand = lowertext(selhand)
-
-		if(selhand == "right" || selhand == "r")
-			selhand = 0
-		if(selhand == "left" || selhand == "l")
-			selhand = 1
-
-	if(selhand != src.hand)
-		swap_hand()
-
-// todo: multihands
-
-/mob/proc/activate_hand_of_index(index)
-
-/mob/living/activate_hand_of_index(index)
-	switch(index)
-		if(1)
-			activate_hand("l")
-		if(2)
-			activate_hand("r")
 
 /mob/living/get_sound_env(var/pressure_factor)
 	if (hallucination)
@@ -516,7 +702,7 @@ default behaviour is:
 /mob/living/get_centering_pixel_y_offset(dir)
 	. = ..()
 	// since we're shifted up by transforms..
-	. -= ((size_multiplier * icon_scale_y) - 1) * 16
+	. -= (size_multiplier * icon_scale_y - 1) * 16
 
 /mob/living/get_managed_pixel_y()
 	. = ..()

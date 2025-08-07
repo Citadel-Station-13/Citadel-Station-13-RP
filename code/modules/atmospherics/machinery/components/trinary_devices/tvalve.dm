@@ -27,8 +27,9 @@
 	icon_state = "map_tvalve1"
 	state = 1
 
-/obj/machinery/atmospherics/tvalve/update_icon(animation)
+/obj/machinery/atmospherics/tvalve/update_icon_state()
 	icon_state = "tvalve[mirrored ? "m" : ""][state]"
+	return ..()
 
 /obj/machinery/atmospherics/tvalve/proc/animation()
 	flick("tvalve[mirrored ? "m" : ""][src.state][!src.state]",src)
@@ -157,7 +158,7 @@
 /obj/machinery/atmospherics/tvalve/attack_ai(mob/user as mob)
 	return
 
-/obj/machinery/atmospherics/tvalve/attack_hand(mob/user, list/params)
+/obj/machinery/atmospherics/tvalve/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	src.add_fingerprint(usr)
 	animation()
 	sleep(10)
@@ -281,7 +282,7 @@
 /obj/machinery/atmospherics/tvalve/digital/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/atmospherics/tvalve/digital/attack_hand(mob/user, list/params)
+/obj/machinery/atmospherics/tvalve/digital/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(!powered())
 		return
 	if(!src.allowed(user))

@@ -1,4 +1,4 @@
-/datum/material/bone
+/datum/prototype/material/bone
 	id = "bone"
 	name = "bone"
 	icon_colour = "#e6dfc8"
@@ -25,7 +25,7 @@
 	absorption = MATERIAL_RESISTANCE_MODERATE
 	nullification = MATERIAL_RESISTANCE_NONE
 
-/datum/material/bone/generate_recipes()
+/datum/prototype/material/bone/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(
 		name = "bone roofing tile",
@@ -50,7 +50,7 @@
 	. += create_stack_recipe_datum(category = "statues", name = "skull statue", product = /obj/structure/statue/bone/skull, cost = 15, time = 2 SECONDS)
 	. += create_stack_recipe_datum(category = "statues", name = "half-skull statue", product = /obj/structure/statue/bone/skull/half, cost = 15, time = 2 SECONDS)
 
-/datum/material/bone/wall_touch_special(var/turf/simulated/wall/W, var/mob/living/L)
+/datum/prototype/material/bone/wall_touch_special(var/turf/simulated/wall/W, var/mob/living/L)
 	var/mob/living/carbon/M = L
 	if(istype(M) && L.mind.isholy)
 		to_chat(M, "<span class = 'notice'>\The [W] shudders under your touch, starting to become porous.</span>")

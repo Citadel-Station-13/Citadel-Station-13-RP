@@ -1,9 +1,3 @@
-//DO NOT USE THIS UNLESS YOU ABSOLUTELY HAVE TO. THIS IS BEING PHASED OUT FOR THE MOVESPEED MODIFICATION SYSTEM.
-//See code/modules/movespeed/movespeed_modifier.dm
-/mob/proc/movement_delay()	//update /living/movement_delay() if you change this
-	SHOULD_CALL_PARENT(TRUE)
-	return cached_multiplicative_slowdown
-
 /mob/proc/applyMoveCooldown(amount)
 	move_delay = max(move_delay, world.time + amount)
 
@@ -12,16 +6,6 @@
 
 /client/proc/client_dir(input, direction=-1)
 	return turn(input, direction*dir2angle(dir))
-
-/client/verb/swap_hand()
-	set hidden = 1
-	if(istype(mob, /mob/living))
-		var/mob/living/L = mob
-		L.swap_hand()
-	if(istype(mob,/mob/living/silicon/robot))
-		var/mob/living/silicon/robot/R = mob
-		R.cycle_modules()
-	return
 
 /client/verb/drop_item()
 	set hidden = 1
@@ -47,9 +31,6 @@
 	. = ..()
 	if(.)
 		return
-	if(istype(mover, /obj/projectile))
-		var/obj/projectile/P = mover
-		return !P.can_hit_target(src, P.permutated, src == P.original, TRUE)
 	// thrown things still hit us even when nondense
 	if(can_cross_under(mover))
 		return TRUE
@@ -61,26 +42,11 @@
 			return TRUE
 	return ..()
 
-/mob/proc/can_cross_under(atom/movable/mover)
-	return !mover.density && !mover.throwing
-
 /**
-  * Toggle the move intent of the mob
-  *
-  * triggers an update the move intent hud as well
-  */
-/mob/proc/toggle_move_intent(mob/user)
-	if(m_intent == MOVE_INTENT_RUN)
-		m_intent = MOVE_INTENT_WALK
-	else
-		m_intent = MOVE_INTENT_RUN
-/*
-	if(hud_used && hud_used.static_inventory)
-		for(var/atom/movable/screen/mov_intent/selector in hud_used.static_inventory)
-			selector.update_icon()
-*/
-	// nah, vorecode bad.
-	hud_used?.move_intent?.icon_state = (m_intent == MOVE_INTENT_RUN)? "running" : "walking"
+ * Can something cross under us without being blocked by us?
+ */
+/mob/proc/can_cross_under(atom/movable/mover)
+	return !mover.density && !mover.throwing && !istype(mover, /obj/projectile)
 
 /**
   * Move a client in a direction
@@ -140,7 +106,7 @@
 		return
 	// nonliving get handled differently
 	if(!isliving(mob))
-		mob.move_delay = world.time + mob.cached_multiplicative_slowdown
+		mob.move_delay = world.time + mob.movement_delay()
 		return mob.Move(n, direct)
 	// autoghost if needed
 	if((mob.stat == DEAD) && isliving(mob) && !mob.forbid_seeing_deadchat)
@@ -235,19 +201,16 @@
 		to_chat(src, "<span class='warning'>You're restrained! You can't move!</span>")
 		mob.move_delay = world.time + 5 // 5 ds delay
 		return FALSE
-	if(length(mob.pinned))
-		mob.move_delay = world.time + 5 // 5 ds delay
-		to_chat(src, "<font color=#4F49AF>You're pinned to a wall by [mob.pinned[1]]!</font>")
-		return FALSE
+	// if(length(mob.pinned))
+	// 	mob.move_delay = world.time + 5 // 5 ds delay
+	// 	to_chat(src, "<font color=#4F49AF>You're pinned to a wall by [mob.pinned[1]]!</font>")
+	// 	return FALSE
 	//! End
 
 	//? NOW we try to move.
 
 	// get additional delay from this move
-	var/add_delay = mob.movement_delay()
-	//! TODO: REMOVE ; COMPATABILITY LAYER TO USE NEW MOVESPEED.
-	add_delay = min(10 / ((10 / add_delay) * (1 * mob.cached_movespeed_multiply)), 10 / MOVESPEED_ABSOLUTE_MINIMUM_TILES_PER_SECOND)
-	//! END
+	var/add_delay = max(world.tick_lag, mob.movement_delay())
 	// for grabs (legacy code moment)
 	var/add_delay_grab = 0
 
@@ -284,7 +247,7 @@
 	//Something with pulling things
 	if(locate(/obj/item/grab, mob))
 		add_delay_grab = 7
-		var/list/grabbed = mob.ret_grab()
+		var/list/grabbed = mob.get_grabbing_recursive() + src // im fucking screaming; this is because old code always considers self as grabbed.
 		if(grabbed)
 			if(grabbed.len == 2)
 				grabbed -= mob
@@ -352,14 +315,14 @@
 	// preserve momentum: for non-evenly-0.5-multiple movespeeds (HELLO, DIAGONAL MOVES),
 	// we need to store how much we're cheated out of our tick and carry it through
 	// make an intelligent guess at if they're trying to keep moving, tho!
-	if(mob.last_move_time > (world.time - add_delay * 1.25))
+	if(mob.last_self_move > (world.time - add_delay * 1.25))
 		mob.move_delay = old_delay + add_delay
 	else
 		mob.move_delay = world.time + add_delay
 
 	SMOOTH_GLIDE_SIZE(mob, DELAY_TO_GLIDE_SIZE(add_delay))
 
-	mob.last_move_time = world.time
+	mob.last_self_move = world.time
 
 /mob/proc/SelfMove(turf/T, dir)
 	in_selfmove = TRUE
@@ -537,7 +500,7 @@
   * * we are not restrained
   */
 /mob/proc/canface()
-	if(world.time <= last_turn)
+	if(world.time <= last_self_turn)
 		return FALSE
 	if(stat == DEAD || stat == UNCONSCIOUS)
 		return FALSE
@@ -554,7 +517,7 @@
 	if(!canface())
 		return FALSE
 	setDir(EAST)
-	last_turn = world.time
+	last_self_turn = world.time
 	return TRUE
 
 ///Hidden verb to turn west
@@ -564,7 +527,7 @@
 	if(!canface())
 		return FALSE
 	setDir(WEST)
-	last_turn = world.time
+	last_self_turn = world.time
 	return TRUE
 
 ///Hidden verb to turn north
@@ -574,7 +537,7 @@
 	if(!canface())
 		return FALSE
 	setDir(NORTH)
-	last_turn = world.time
+	last_self_turn = world.time
 	return TRUE
 
 ///Hidden verb to turn south
@@ -584,7 +547,7 @@
 	if(!canface())
 		return FALSE
 	setDir(SOUTH)
-	last_turn = world.time
+	last_self_turn = world.time
 	return TRUE
 
 //! Pixel Shifting

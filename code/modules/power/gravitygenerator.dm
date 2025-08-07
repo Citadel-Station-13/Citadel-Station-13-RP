@@ -79,7 +79,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 /obj/machinery/gravity_generator/part/get_status()
 	return main_part?.get_status()
 
-/obj/machinery/gravity_generator/part/attack_hand(mob/user, list/params)
+/obj/machinery/gravity_generator/part/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	return main_part.attack_hand(user)
 
 /obj/machinery/gravity_generator/part/set_broken()
@@ -129,13 +129,12 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 	var/list/areas = list()
 
 /obj/machinery/gravity_generator/main/Initialize(mapload)
-	..()
+	. = ..()
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/gravity_generator/main/LateInitialize() //Needs to happen after overmap sectors are initialized so we can figure out where we are
 	update_list()
 	update_areas()
-	return ..()
 
 /obj/machinery/gravity_generator/main/set_fix()
 	. = ..()
@@ -239,7 +238,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 				return
 	return ..()
 
-/obj/machinery/gravity_generator/main/attack_hand(mob/user, list/params)
+/obj/machinery/gravity_generator/main/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if((. = ..()))
 		return
 	ui_interact(user)

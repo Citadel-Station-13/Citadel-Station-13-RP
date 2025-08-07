@@ -31,10 +31,10 @@
 	if(soaked >= 30)
 		return
 
-	if(!M.apply_damage(base_damage, BRUTE, target_zone, blocked, soaked, used_weapon=src))
+	if(!M.apply_damage(base_damage, DAMAGE_TYPE_BRUTE, target_zone, blocked, soaked, used_weapon=src))
 		return 0
 
-/obj/effect/plant/attack_hand(mob/user, list/params)
+/obj/effect/plant/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	manual_unbuckle(user)
 
 /obj/effect/plant/attack_generic(var/mob/user)
@@ -93,7 +93,7 @@
 					"<span class='warning'>You hear shredding and ripping.</span>")
 				unbuckle()
 		else
-			user.setClickCooldown(user.get_attack_speed())
+			user.setClickCooldownLegacy(user.get_attack_speed_legacy())
 			var/text = pick("rip","tear","pull", "bite", "tug")
 			user.visible_message(\
 			"<span class='warning'>\The [user] [text]s at \the [src].</span>",\

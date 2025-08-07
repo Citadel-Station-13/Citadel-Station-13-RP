@@ -35,3 +35,8 @@
 #define COMSIG_MOB_ON_LIFE			"mob_life"
 	#define COMPONENT_INTERRUPT_PHYSICAL_LIFE			(1<<0)
 	#define COMPONENT_INTERRUPT_BIOLOGICAL_LIFE			(1<<1)
+
+/// From base of mob/PhysicalLife(): (seconds, times_fired)
+#define COMSIG_MOB_PHYSICAL_LIFE "mob_physical_life"
+/// From base of mob/BiologicalLife(): (seconds, times_fired)
+#define COMSIG_MOB_BIOLOGICAL_LIFE "mob_biological_life"

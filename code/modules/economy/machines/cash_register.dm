@@ -39,7 +39,7 @@
 			. += "It's completely empty."
 
 
-/obj/machinery/cash_register/attack_hand(mob/user, list/params)
+/obj/machinery/cash_register/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	// Don't be accessible from the wrong side of the machine
 	if(get_dir(src, user) & global.reverse_dir[src.dir]) return
 
@@ -83,7 +83,7 @@
 		dat += locked ? "<br>" : "<a href='?src=\ref[src];choice=reset_log'>Reset Log</a><br>"
 		dat += "<br>"
 	dat += "<i>Device ID:</i> [machine_id]"
-	user << browse(dat, "window=cash_register;size=350x500")
+	user << browse(HTML_SKELETON(dat), "window=cash_register;size=350x500")
 	onclose(user, "cash_register")
 
 
@@ -505,7 +505,7 @@
 /obj/machinery/cash_register/emag_act(var/remaining_charges, var/mob/user)
 	if(!emagged)
 		src.visible_message("<span class='danger'>The [src]'s cash box springs open as [user] swipes the card through the scanner!</span>")
-		playsound(src, /datum/soundbyte/grouped/sparks, 50, 1)
+		playsound(src, /datum/soundbyte/sparks, 50, 1)
 		req_access = list()
 		emagged = 1
 		locked = 0
@@ -541,3 +541,9 @@
 	account_to_connect = "Civilian"
 	machine_id = "Nebula Gas RETAIL UNIT"
 	req_access = list(160)
+
+/obj/machinery/cash_register/resort
+	name = "Gaia Station Cash Register"
+	account_to_connect = "Civilian"
+	machine_id = "Gaia Station RETAIL UNIT"
+	req_access = list(252)

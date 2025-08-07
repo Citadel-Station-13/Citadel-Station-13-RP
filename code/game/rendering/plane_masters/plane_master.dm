@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /atom/movable/screen/plane_master
 	icon = null
 	icon_state = null
@@ -93,7 +96,40 @@
 
 /atom/movable/screen/plane_master/emissive/Initialize(mapload)
 	. = ..()
-	add_filter("em_block_masking", 1, color_matrix_filter(GLOB.em_mask_matrix))
+	color = GLOB.em_mask_matrix
+	add_filter(
+		"color",
+		50,
+		color_matrix_filter(
+			GLOB.em_mask_matrix,
+		),
+	)
+	add_filter(
+		"blur",
+		5,
+		gauss_blur_filter(
+			1.5,
+		),
+	)
+	add_filter(
+		"shadow",
+		10,
+		drop_shadow_filter(
+			0,
+			0,
+			1.5,
+			1,
+			"#2323237a",
+		),
+	)
+	add_filter(
+		"outline",
+		20,
+		outline_filter(
+			0,
+			"#000000",
+		),
+	)
 
 /atom/movable/screen/plane_master/lightmask
 	plane = LIGHTMASK_PLANE
@@ -231,7 +267,7 @@
 	appearance_flags = PLANE_MASTER | NO_CLIENT_COLOR
 
 /atom/movable/screen/plane_master/inventory
-	plane = INVENTORY_PLANE
+	plane = HUD_ITEM_PLANE
 
 /atom/movable/screen/plane_master/above_hud
 	plane = ABOVE_HUD_PLANE

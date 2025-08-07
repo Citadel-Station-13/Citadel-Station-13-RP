@@ -1,4 +1,11 @@
-# Hierarchy
+# Signals
+
+## Naming
+
+- Signals should be named `COMSIG_<CATEGORY>_<DESCRIBE>`
+- Return flags should be named `RAISE_<CATEGORY>_<DESCRIBE>_*`
+
+## Hierarchy
 
 - /components - component-specific signals, `signals_component_*`
 - /datums - datum-specific signals, `signals_<datumname>`

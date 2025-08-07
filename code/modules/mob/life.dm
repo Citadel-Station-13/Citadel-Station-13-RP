@@ -39,6 +39,7 @@
  */
 /mob/proc/PhysicalLife(seconds, times_fired)
 	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_MOB_PHYSICAL_LIFE, seconds, times_fired)
 
 /**
  * processes biological life processes like metabolism
@@ -48,6 +49,7 @@
  */
 /mob/proc/BiologicalLife(seconds, times_fired)
 	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_MOB_BIOLOGICAL_LIFE, seconds, times_fired)
 
 /**
  * handle modifiers - physical/biological life haltedd is passed in

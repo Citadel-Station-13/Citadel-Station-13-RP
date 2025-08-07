@@ -23,7 +23,7 @@
 	tt_desc = "S Felidae fluctursora"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/kururak)
 
-	faction = "kururak"
+	iff_factions = MOB_IFF_FACTION_BIND_TO_MAP
 
 	icon_state = "bigcat"
 	icon_living = "bigcat"
@@ -40,7 +40,7 @@
 
 	universal_understand = 1
 
-	movement_cooldown = 1
+	movement_base_speed = 10 / 1
 
 	legacy_melee_damage_lower = 15
 	legacy_melee_damage_upper = 25
@@ -156,7 +156,7 @@
 			if(src.Adjacent(C))
 				choices += C
 
-		for(var/obj/mecha/M in view(1,src))
+		for(var/obj/vehicle/sealed/mecha/M in view(1,src))
 			if(src.Adjacent(M))
 				choices += M
 
@@ -185,7 +185,7 @@
 							H.eye_blurry = max(H.eye_blurry, flash_strength + 5)
 							H.flash_eyes()
 							H.adjustHalLoss(flash_strength / 5)
-							H.apply_damage(flash_strength * H.species.flash_burn/5, BURN, BP_HEAD, 0, 0, "Photon burns")
+							H.apply_damage(flash_strength * H.species.flash_burn/5, DAMAGE_TYPE_BURN, BP_HEAD, 0, 0, "Photon burns")
 
 		else if(issilicon(L))
 			if(isrobot(L))
@@ -243,7 +243,7 @@
 			if(src.Adjacent(C))
 				choices += C
 
-		for(var/obj/mecha/M in view(1,src))
+		for(var/obj/vehicle/sealed/mecha/M in view(1,src))
 			if(src.Adjacent(M))
 				choices += M
 
@@ -263,20 +263,20 @@
 		var/mob/living/L = A
 		if(ishuman(L))
 			var/mob/living/carbon/human/H = L
-			H.apply_damage(damage_to_apply, BRUTE, BP_TORSO, 0, 0, "Animal claws")
+			H.apply_damage(damage_to_apply, DAMAGE_TYPE_BRUTE, BP_TORSO, 0, 0, "Animal claws")
 
 		else
 			L.adjustBruteLoss(damage_to_apply)
 
 		L.add_modifier(/datum/modifier/grievous_wounds, 60 SECONDS)
 
-	else if(istype(A, /obj/mecha))
+	else if(istype(A, /obj/vehicle/sealed/mecha))
 		visible_message(SPAN_DANGER("\The [src] rakes its claws against \the [A]."))
-		var/obj/mecha/M = A
+		var/obj/vehicle/sealed/mecha/M = A
 		M.take_damage_legacy(damage_to_apply)
-		if(prob(3) && do_after(src, 5))
-			visible_message(SPAN_CRITICAL("\The [src]'s strike ripped \the [M]'s access hatch open, allowing it to drag [M.occupant] out!"))
-			M.go_out()
+		if(prob(3) && M.occupant_legacy && do_after(src, 5))
+			visible_message(SPAN_CRITICAL("\The [src]'s strike ripped \the [M]'s access hatch open, allowing it to drag [M.occupant_legacy] out!"))
+			M.mob_exit(M.occupant_legacy)
 
 	else
 		A.attack_generic(src, damage_to_apply, "rakes its claws against")	// Well it's not a mob, and it's not a mech.
@@ -292,7 +292,7 @@
 				continue
 			if(!K.ai_holder)
 				continue
-			if(K.faction != src.faction)
+			if(!K.shares_iff_faction(src))
 				continue
 			var/datum/ai_holder/polaris/AI = K.ai_holder
 			to_chat(K, SPAN_NOTICE("The pack leader wishes for you to follow them."))
@@ -369,7 +369,7 @@
 		if(issilicon(L) && holder.a_intent != INTENT_GRAB)
 			holder.a_intent = INTENT_DISARM
 
-	else if(istype(A, /obj/mecha))
+	else if(istype(A, /obj/vehicle/sealed/mecha))
 		holder.a_intent = INTENT_GRAB
 
 /datum/ai_holder/polaris/simple_mob/intentional/kururak/post_melee_attack()

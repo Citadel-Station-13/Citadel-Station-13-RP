@@ -1,6 +1,7 @@
 SUBSYSTEM_DEF(assets)
 	name = "Assets"
 	init_order = INIT_ORDER_ASSETS
+	init_stage = INIT_STAGE_EARLY
 	subsystem_flags = SS_NO_FIRE
 
 	/// asset packs by type; this is for hardcoded assets
@@ -31,13 +32,11 @@ SUBSYSTEM_DEF(assets)
 
 /datum/controller/subsystem/assets/Initialize(timeofday)
 	// detect_cache_worthiness()
-
 	for(var/datum/asset_pack/path as anything in typesof(/datum/asset_pack))
 		if(path == initial(path.abstract_type))
 			continue
 		var/datum/asset_pack/instance = new path
 		register_asset_pack(instance, TRUE)
-
 #ifndef DO_NOT_DEFER_ASSETS
 		if(initial(instance.load_deferred))
 			continue
@@ -48,8 +47,7 @@ SUBSYSTEM_DEF(assets)
 #else
 		instance.load()
 #endif
-
-	return ..()
+	return SS_INIT_SUCCESS
 
 /**
  * register an asset pack to make it able to be resolved or loaded
@@ -193,7 +191,7 @@ SUBSYSTEM_DEF(assets)
 /datum/controller/subsystem/assets/proc/get_dynamic_item_url_by_name(name)
 	return dynamic_asset_items_by_name[name]?.get_url()
 
-/datum/controller/subsystem/assets/OnConfigLoad()
+/datum/controller/subsystem/assets/on_config_loaded()
 	var/newtransporttype = /datum/asset_transport/browse_rsc
 	switch (CONFIG_GET(string/asset_transport))
 		if ("webroot")
@@ -210,13 +208,16 @@ SUBSYSTEM_DEF(assets)
 
 	set_transport_to(newtransport)
 
+/datum/controller/subsystem/assets/proc/reload_transport()
+	set_transport_to(new transport.type)
+
 /datum/controller/subsystem/assets/proc/set_transport_to(datum/asset_transport/new_transport)
 	QDEL_NULL(transport)
 	transport = new_transport
 
 	// unload all asset packs
 	for(var/datum/asset_pack/pack in asset_packs)
-		pack.loaded_urls = null
+		pack.unload()
 	// unload all dynamic items
 	for(var/name in dynamic_asset_items_by_name)
 		var/datum/asset_item/dynamic/item = dynamic_asset_items_by_name[name]

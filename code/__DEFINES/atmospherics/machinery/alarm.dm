@@ -36,3 +36,4 @@
 	AIR_ALARM_RAISE_DANGER : ((val < list[AIR_ALARM_TLV_WARNING_LOW] || val > list[AIR_ALARM_TLV_WARNING_HIGH]+0.001)? \
 	AIR_ALARM_RAISE_WARNING : AIR_ALARM_RAISE_OKAY) \
 	)
+#define AIR_ALARM_GET_REASON_TLV(val, list, name) (val < list[AIR_ALARM_TLV_WARNING_LOW]) ? "Low [name]" : (val > list[AIR_ALARM_TLV_WARNING_HIGH]) ? "High [name]" : null

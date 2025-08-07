@@ -82,7 +82,7 @@
 	return SScharacters.resolve_religion(/datum/lore/character_background/religion/custom).id
 
 /datum/category_item/player_setup_item/background/religion/informed_default_value(datum/preferences/prefs, randomizing)
-	var/datum/character_species/S = SScharacters.resolve_character_species(prefs.character_species_id())
+	var/datum/species/S = SScharacters.resolve_character_species(prefs.character_species_id())
 	if(!S)
 		return ..()
 	return S.get_default_religion_id()

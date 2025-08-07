@@ -16,5 +16,5 @@
 
 	log_admin("[key_name(usr)] set ckey of [key_name(M)] to [selection]")
 	message_admins("[key_name_admin(usr)] set ckey of [key_name_admin(M)] to [selection]", 1)
-	M.ckey = selection.ckey
+	selection.transfer_to(M)
 	feedback_add_details("admin_verb","SCK") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

@@ -72,7 +72,7 @@
 	stored_item = I
 	set_weight_class(I.w_class)
 
-/obj/item/evidencebag/attack_self(mob/user)
+/obj/item/evidencebag/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

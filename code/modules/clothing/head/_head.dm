@@ -22,7 +22,7 @@
 	unequip_sound = 'sound/items/drop/hat.ogg'
 	pickup_sound = 'sound/items/pickup/hat.ogg'
 
-/obj/item/clothing/head/attack_self(mob/user)
+/obj/item/clothing/head/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -45,7 +45,7 @@
 		light_applied = 0
 	update_icon()
 	update_worn_icon()
-	user.update_action_buttons()
+	update_action_buttons()
 
 /obj/item/clothing/head/attack_ai(var/mob/user)
 	if(!mob_wear_hat(user))
@@ -83,7 +83,7 @@
 	return 1
 
 /obj/item/clothing/head/update_icon()
-	var/mob/living/carbon/human/H = worn_mob()
+	var/mob/living/carbon/human/H = get_worn_mob()
 
 	if(on)
 		// Generate object icon.

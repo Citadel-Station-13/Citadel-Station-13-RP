@@ -77,7 +77,8 @@
 	else if(loc == L) // at least they're holding it
 		to_chat(L, "<span class='warning'>Turn on the [src] first.</span>")
 
-/obj/item/device/walkpod/attack_self(mob/living/L)
+/obj/item/device/walkpod/attack_self(mob/user, datum/event_args/actor/actor)
+	var/mob/living/L = user
 	if(!istype(L) || loc != L)
 		return
 	if(!listener)

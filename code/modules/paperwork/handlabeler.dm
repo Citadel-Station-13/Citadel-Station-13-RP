@@ -1,13 +1,21 @@
 /obj/item/hand_labeler
 	name = "hand labeler"
+	desc = "A combined label printer, applicator, and remover, all in a single portable device. Designed to be easy to operate and use."
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "labeler0"
-	var/label = null
-	var/labels_left = 30
-	var/mode = 0	//off or on.
+	item_flags = ITEM_NO_BLUDGEON
 	w_class = WEIGHT_CLASS_SMALL
+	drop_sound = 'sound/items/handling/tape_drop.ogg'
+	pickup_sound = 'sound/items/handling/tape_pickup.ogg'
+	worth_intrinsic = 50
+	/// Tracks the current label text
+	var/label
+	/// How many labels are left in the current roll? Also serves as our "max".
+	var/labels_left = 30
+	/// Whether we are in label mode
+	VAR_FINAL/mode = FALSE
 
-/obj/item/hand_labeler/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/hand_labeler/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 
@@ -56,7 +64,7 @@
 						 "<span class='notice'>You label [target] as [label].</span>")
 	target.name = "[target.name] ([label])"
 
-/obj/item/hand_labeler/attack_self(mob/user)
+/obj/item/hand_labeler/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

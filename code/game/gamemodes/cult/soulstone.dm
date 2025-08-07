@@ -19,7 +19,7 @@
 
 //////////////////////////////Capturing////////////////////////////////////////////////////////
 
-/obj/item/soulstone/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/soulstone/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(!istype(target, /mob/living/carbon/human))//If target is not a human.
 		return ..()
 	if(istype(target, /mob/living/carbon/human/dummy))
@@ -36,7 +36,7 @@
 
 ///////////////////Options for using captured souls///////////////////////////////////////
 
-/obj/item/soulstone/attack_self(mob/user)
+/obj/item/soulstone/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -49,7 +49,7 @@
 		dat += {"<A href='byond://?src=\ref[src];choice=Summon'>Summon Shade</A>"}
 		dat += "<br>"
 		dat += {"<a href='byond://?src=\ref[src];choice=Close'> Close</a>"}
-	user << browse(dat, "window=aicard")
+	user << browse(HTML_SKELETON(dat), "window=aicard")
 	onclose(user, "aicard")
 	return
 
@@ -108,7 +108,7 @@
 	if(src.imprinted != "empty")
 		to_chat(U, "<span class='danger'>Capture failed!</span>: The soul stone has already been imprinted with [src.imprinted]'s mind!")
 		return
-	if ((T.health + T.halloss) > config_legacy.health_threshold_crit && T.stat != DEAD)
+	if ((T.health + T.halloss) > T.getCritHealth() && T.stat != DEAD)
 		to_chat(U, "<span class='danger'>Capture failed!</span>: Kill or maim the victim first!")
 		return
 	if(T.client == null)
@@ -183,7 +183,7 @@
 	switch(construct_class)
 		if("Juggernaut")
 			var/mob/living/simple_mob/construct/juggernaut/Z = new /mob/living/simple_mob/construct/juggernaut (get_turf(T.loc))
-			Z.key = A.key
+			A.transfer_client_to(Z)
 			if(iscultist(U))
 				cult.add_antagonist(Z.mind)
 			qdel(T)
@@ -193,7 +193,7 @@
 			qdel(src)
 		if("Wraith")
 			var/mob/living/simple_mob/construct/wraith/Z = new /mob/living/simple_mob/construct/wraith (get_turf(T.loc))
-			Z.key = A.key
+			A.transfer_client_to(Z)
 			if(iscultist(U))
 				cult.add_antagonist(Z.mind)
 			qdel(T)
@@ -203,7 +203,7 @@
 			qdel(src)
 		if("Artificer")
 			var/mob/living/simple_mob/construct/artificer/Z = new /mob/living/simple_mob/construct/artificer (get_turf(T.loc))
-			Z.key = A.key
+			A.transfer_client_to(Z)
 			if(iscultist(U))
 				cult.add_antagonist(Z.mind)
 			qdel(T)
@@ -213,7 +213,7 @@
 			qdel(src)
 		if("Harvester")
 			var/mob/living/simple_mob/construct/harvester/Z = new /mob/living/simple_mob/construct/harvester (get_turf(T.loc))
-			Z.key = A.key
+			A.transfer_client_to(Z)
 			if(iscultist(U))
 				cult.add_antagonist(Z.mind)
 			qdel(T)
@@ -223,7 +223,7 @@
 			qdel(src)
 		if("Behemoth")
 			var/mob/living/simple_mob/construct/juggernaut/behemoth/Z = new /mob/living/simple_mob/construct/juggernaut/behemoth (get_turf(T.loc))
-			Z.key = A.key
+			A.transfer_client_to(Z)
 			if(iscultist(U))
 				cult.add_antagonist(Z.mind)
 			qdel(T)

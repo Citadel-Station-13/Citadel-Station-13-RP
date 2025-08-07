@@ -127,7 +127,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/submap/cave/cultmine)
 "ay" = (
-/obj/item/mecha_parts/mecha_equipment/tool/hydraulic_clamp,
+/obj/item/vehicle_module/tool/hydraulic_clamp,
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/steel_grid,
 /area/submap/cave/cultmine)
@@ -265,7 +265,7 @@
 /turf/simulated/wall,
 /area/submap/cave/cultmine)
 "ba" = (
-/obj/item/mecha_parts/mecha_equipment/generator,
+/obj/item/vehicle_module/generator,
 /turf/simulated/floor/tiled/freezer,
 /area/submap/cave/cultmine)
 "bb" = (
@@ -409,7 +409,7 @@
 /turf/simulated/floor/tiled/white,
 /area/submap/cave/cultmine)
 "bD" = (
-/obj/item/mecha_parts/mecha_equipment/tool/drill,
+/obj/item/vehicle_module/tool/drill,
 /turf/simulated/floor/tiled/white,
 /area/submap/cave/cultmine)
 "bE" = (
@@ -427,7 +427,7 @@
 /area/submap/cave/cultmine)
 "bG" = (
 /obj/structure/table/steel,
-/obj/item/reagent_containers/food/snacks/liquidfood,
+/obj/item/reagent_containers/food/snacks/liquid,
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
@@ -682,7 +682,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/cultmine)
 "cG" = (
-/obj/mecha/working/ripley{
+/obj/vehicle/sealed/mecha/working/ripley{
 	desc = "The zealous martyr is praised for his valour: the craven and the unready are justly abhorred.";
 	icon_state = "deathripley";
 	initial_icon = "deathripley";

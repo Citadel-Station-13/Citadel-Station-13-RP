@@ -62,7 +62,7 @@
 	icon_state = "[initial(icon_state)][imps.len]"
 	germ_level = 0
 
-/obj/item/backup_implanter/attack_self(mob/user)
+/obj/item/backup_implanter/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -93,7 +93,7 @@
 		else
 			to_chat(user, "<span class='warning'>\The [src] is already full!</span>")
 
-/obj/item/backup_implanter/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/backup_implanter/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	if (!istype(target, /mob/living/carbon))
@@ -101,7 +101,7 @@
 	if (user && imps.len)
 		target.visible_message("<span class='notice'>[user] is injecting a backup implant into [target].</span>")
 
-		user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
+		user.setClickCooldownLegacy(DEFAULT_QUICK_COOLDOWN)
 		user.do_attack_animation(target)
 
 		var/turf/T1 = get_turf(target)

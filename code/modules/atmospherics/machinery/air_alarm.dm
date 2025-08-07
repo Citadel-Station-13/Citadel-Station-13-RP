@@ -80,6 +80,8 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm, 26)
 	///If the alarms from this machine are visible on consoles
 	var/alarms_hidden = FALSE
 
+	var/list/alarmreasons = new()
+
 /obj/machinery/air_alarm/Initialize(mapload)
 	. = ..()
 	GLOB.air_alarms += src
@@ -152,6 +154,10 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm, 26)
 	if (danger_level)
 		handle_sounds()
 
+	//Putting this check here to overwrite any previous alarm reasons if the wire was cut
+	if(WIRE_AALARM in wires.cut_wires)
+		alarmreasons = list("CIRCUIT FAULT")
+
 	if(old_level != danger_level)
 		apply_danger_level(danger_level)
 
@@ -175,6 +181,11 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm, 26)
 				remote_control = 0
 		if(RCON_YES)
 			remote_control = 1
+
+	//This is extremely snowflakey but it's the simplest way to make sure the reasons constantly update even if there's already an alarm here
+	//Basically looking to see if there is already an alarm in this area triggered by this air alarm, and updating the reason for it.
+	var/datum/alarm_source/ouralarm = atmosphere_alarm.alarms_assoc[get_area(src)]?.sources_assoc[src]
+	if(ouralarm) ouralarm.reasons = alarmreasons
 
 	return
 
@@ -248,13 +259,19 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm, 26)
 /obj/machinery/air_alarm/proc/overall_danger_level(datum/gas_mixture/environment)
 	var/environment_pressure = environment.return_pressure()
 	var/partial_pressure_factor = (R_IDEAL_GAS_EQUATION * environment.temperature) / environment.volume
+	alarmreasons = new()
+	var/reason
 
 	var/dangerlevel = AIR_ALARM_TEST_TLV(environment_pressure, tlv_pressure)
-	if(dangerlevel >= AIR_ALARM_RAISE_DANGER)
-		return dangerlevel
+	reason = AIR_ALARM_GET_REASON_TLV(environment_pressure, tlv_pressure, "Pressure")
+	if(reason) alarmreasons += reason
+//	if(dangerlevel >= AIR_ALARM_RAISE_DANGER) These are being commented instead of deleted in case not short-circuiting this causes performance issues.
+//		return dangerlevel
 	dangerlevel = max(dangerlevel, AIR_ALARM_TEST_TLV(environment.temperature, tlv_temperature))
-	if(dangerlevel >= AIR_ALARM_RAISE_DANGER)
-		return dangerlevel
+	reason = AIR_ALARM_GET_REASON_TLV(environment.temperature, tlv_temperature, "Temperature")
+	if(reason) alarmreasons += reason
+//	if(dangerlevel >= AIR_ALARM_RAISE_DANGER)
+//		return dangerlevel
 
 	// todo: would be faster to iterate once and store the groups we care about...
 
@@ -262,15 +279,20 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm, 26)
 		var/list/tlv = tlv_ids[id]
 		var/partial = environment.gas[id] * partial_pressure_factor
 		dangerlevel = max(dangerlevel, AIR_ALARM_TEST_TLV(partial, tlv))
-		if(dangerlevel >= AIR_ALARM_RAISE_DANGER)
-			return dangerlevel
+		var/datum/gas/gas_datum = global.gas_data.gases[id]
+		reason = AIR_ALARM_GET_REASON_TLV(partial, tlv, gas_datum.name)
+		if(reason) alarmreasons += reason
+//		if(dangerlevel >= AIR_ALARM_RAISE_DANGER)
+//			return dangerlevel
 
 	for(var/name in tlv_groups)
 		var/list/tlv = tlv_groups[name]
 		var/partial = environment.moles_by_group(global.gas_data.gas_group_by_name[name]) * partial_pressure_factor
 		dangerlevel = max(dangerlevel, AIR_ALARM_TEST_TLV(partial, tlv))
-		if(dangerlevel >= AIR_ALARM_RAISE_DANGER)
-			return dangerlevel
+		reason = AIR_ALARM_GET_REASON_TLV(partial, tlv, name)
+		if(reason) alarmreasons += reason
+//		if(dangerlevel >= AIR_ALARM_RAISE_DANGER)
+//			return dangerlevel
 
 	return dangerlevel
 
@@ -486,7 +508,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm, 26)
 				send_signal(scrubber.id_tag, list("power" = FALSE))
 
 /obj/machinery/air_alarm/proc/apply_danger_level(var/new_danger_level)
-	if(report_danger_level && alarm_area.atmosalert(new_danger_level, src))
+	if(report_danger_level && alarm_area.atmosalert(new_danger_level, src, alarmreasons))
 		post_alert(new_danger_level)
 
 	update_icon()
@@ -514,7 +536,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm, 26)
 /obj/machinery/air_alarm/attack_ai(mob/user)
 	ui_interact(user)
 
-/obj/machinery/air_alarm/attack_hand(mob/user, list/params)
+/obj/machinery/air_alarm/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -700,7 +722,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm, 26)
 			return TRUE
 		if("alarm")
 			//! warning: legacy
-			if(alarm_area.atmosalert(2, src))
+			if(alarm_area.atmosalert(2, src, list("Manual")))
 				apply_danger_level(2)
 			return TRUE
 		if("reset")

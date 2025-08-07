@@ -4,7 +4,7 @@
 	desc = "The practical paperwork replacement for the officer on the go."
 	icon_state = "holowarrant"
 	item_state = "flashtool"
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	throw_force = 5
 	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 4
@@ -22,7 +22,7 @@
 		to_chat(user, "<span class='notice'>You have to go closer if you want to read it.</span>")
 
 //hit yourself with it
-/obj/item/holowarrant/attack_self(mob/user)
+/obj/item/holowarrant/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -54,13 +54,14 @@
 	..()
 
 //hit other people with it
-/obj/item/holowarrant/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/holowarrant/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	user.visible_message("<span class='notice'>You show the warrant to [target].</span>", \
 			"<span class='notice'>[user] holds up a warrant projector and shows the contents to [target].</span>")
 	target.examinate(src)
 	return CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/holowarrant/update_icon()
+	. = ..()
 	if(active)
 		icon_state = "holowarrant_filled"
 	else

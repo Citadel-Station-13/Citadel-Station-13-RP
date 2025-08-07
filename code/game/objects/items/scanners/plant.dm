@@ -5,8 +5,9 @@
 	item_state = "analyzer"
 	var/datum/seed/last_seed
 	var/list/last_reagents
+	w_class = WEIGHT_CLASS_SMALL
 
-/obj/item/plant_analyzer/attack_self(mob/user)
+/obj/item/plant_analyzer/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -52,7 +53,7 @@
 		return
 
 	var/datum/seed/grown_seed
-	var/datum/reagents/grown_reagents
+	var/datum/reagent_holder/grown_reagents
 	if(istype(target,/obj/structure/table))
 		return ..()
 	else if(istype(target,/obj/item/reagent_containers/food/snacks/grown))
@@ -90,12 +91,12 @@
 	user.visible_message("<span class='notice'>[user] runs the scanner over \the [target].</span>")
 
 	last_reagents = list()
-	if(grown_reagents && grown_reagents.reagent_list && grown_reagents.reagent_list.len)
-		for(var/datum/reagent/R in grown_reagents.reagent_list)
-			last_reagents.Add(list(list(
-				"name" = R.name,
-				"volume" = grown_reagents.get_reagent_amount(R.id),
-			)))
+	for(var/reagent_id in grown_reagents?.reagent_volumes)
+		var/datum/reagent/R = SSchemistry.fetch_reagent(reagent_id)
+		last_reagents.Add(list(list(
+			"name" = R.name,
+			"volume" = grown_reagents.get_reagent_amount(R.id),
+		)))
 
 	ui_interact(user)
 

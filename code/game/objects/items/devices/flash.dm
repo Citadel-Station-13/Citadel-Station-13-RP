@@ -9,6 +9,7 @@
 	throw_speed = 4
 	throw_range = 10
 	origin_tech = list(TECH_MAGNET = 2, TECH_COMBAT = 1)
+	worth_intrinsic = 45
 
 	var/times_used = 0 //Number of times it's been used.
 	var/broken = FALSE     //Is the flash burnt out?
@@ -61,6 +62,7 @@
 		..()
 
 /obj/item/flash/update_icon()
+	. = ..()
 	var/obj/item/cell/battery = power_supply
 
 	if(use_external_power)
@@ -70,7 +72,6 @@
 		icon_state = "[base_icon]burnt"
 	else
 		icon_state = "[base_icon]"
-	return
 
 /obj/item/flash/get_cell(inducer)
 	return power_supply
@@ -151,7 +152,7 @@
 		return TRUE
 
 //attack_as_weapon
-/obj/item/flash/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/flash/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	flash_mob(target, user)
 	return CLICKCHAIN_DO_NOT_PROPAGATE
 
@@ -161,7 +162,7 @@
 
 	add_attack_logs(user,M,"Flashed (attempt) with [src]")
 
-	user.setClickCooldown(user.get_attack_speed(src))
+	user.setClickCooldownLegacy(user.get_attack_speed_legacy(src))
 	user.do_attack_animation(M)
 
 	if(!clown_check(user))
@@ -202,7 +203,7 @@
 						H.eye_blurry = max(H.eye_blurry, flash_strength + 5)
 						H.flash_eyes()
 						H.adjustHalLoss(halloss_per_flash * (flash_strength / 5)) // Should take four flashes to stun.
-						H.apply_damage(10 * (H.species.flash_burn / 5), BURN, BP_HEAD, 0, 0, "Photon burns")
+						H.apply_damage(10 * (H.species.flash_burn / 5), DAMAGE_TYPE_BURN, BP_HEAD, 0, 0, "Photon burns")
 
 			else
 				flashfail = 1
@@ -242,11 +243,11 @@
 	else
 		user.visible_message("<span class='notice'>[user] fails to blind [M] with the flash!</span>")
 
-/obj/item/flash/attack_self(mob/living/carbon/user as mob, flag = 0, emp = 0)
+/obj/item/flash/attack_self(mob/user, datum/event_args/actor/actor)
 	if(!user || !clown_check(user))
 		return
 
-	user.setClickCooldown(user.get_attack_speed(src))
+	user.setClickCooldownLegacy(user.get_attack_speed_legacy(src))
 
 	if(broken)
 		user.show_message("<span class='warning'>The [src.name] is broken</span>", 2)
@@ -304,14 +305,14 @@
 	can_repair = FALSE
 
 //attack_as_weapon
-/obj/item/flash/synthetic/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/flash/synthetic/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
 	if(!broken)
 		broken = 1
 		to_chat(user, "<span class='warning'>The bulb has burnt out!</span>")
 		update_icon()
 
-/obj/item/flash/synthetic/attack_self(mob/living/carbon/user as mob, flag = 0, emp = 0)
+/obj/item/flash/synthetic/attack_self(mob/user, datum/event_args/actor/actor)
 	..()
 	if(!broken)
 		broken = 1

@@ -27,6 +27,8 @@
 
 	interaction_flags_machine = INTERACT_MACHINE_OFFLINE | INTERACT_MACHINE_OPEN | INTERACT_MACHINE_OPEN_SILICON | INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OFFLINE_SILICON
 
+	worth_intrinsic = 150
+
 	/// reagent synthesizers in us - set to list of typepaths to init on Initialize().
 	var/list/obj/item/reagent_synth/synthesizers
 	/// synthesizers are swappable
@@ -87,6 +89,15 @@
 		QDEL_NULL(cell)
 		component_parts -= cell
 	return ..()
+
+/obj/machinery/chemical_dispenser/worth_contents(flags)
+	. = ..()
+	if(synthesizers)
+		. += synthesizers
+	if(cartridges)
+		. += cartridges
+	if(inserted)
+		. += inserted
 
 /obj/machinery/chemical_dispenser/RefreshParts()
 	var/total_capacitor_rating = 0

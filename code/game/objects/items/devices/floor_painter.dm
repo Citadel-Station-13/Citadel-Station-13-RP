@@ -48,7 +48,7 @@
 		to_chat(user, "<span class='warning'>\The [src] can only be used on station flooring.</span>")
 		return
 
-	if(!F.flooring || !F.flooring.can_paint || F.broken || F.burnt)
+	if(!F.flooring || !F.flooring.can_paint_on || F.broken || F.burnt)
 		to_chat(user, "<span class='warning'>\The [src] cannot paint broken or missing tiles.</span>")
 		return
 
@@ -100,7 +100,7 @@
 
 	new painting_decal(F, painting_dir, painting_colour)
 
-/obj/item/floor_painter/attack_self(mob/user)
+/obj/item/floor_painter/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

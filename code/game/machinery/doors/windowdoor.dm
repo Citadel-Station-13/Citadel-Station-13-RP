@@ -25,6 +25,7 @@
 		src.base_state = src.icon_state
 
 /obj/machinery/door/window/update_icon()
+	. = ..()
 	if(density)
 		icon_state = base_state
 	else
@@ -67,10 +68,10 @@
 			if(density && src.check_access(bot.botcard))
 				open()
 				addtimer(CALLBACK(src, PROC_REF(close)), 50)
-		else if(istype(AM, /obj/mecha))
-			var/obj/mecha/mecha = AM
+		else if(istype(AM, /obj/vehicle/sealed/mecha))
+			var/obj/vehicle/sealed/mecha/mecha = AM
 			if(density)
-				if(mecha.occupant && src.allowed(mecha.occupant))
+				if(mecha.occupant_legacy && src.allowed(mecha.occupant_legacy))
 					open()
 					addtimer(CALLBACK(src, PROC_REF(close)), 50)
 		return
@@ -145,7 +146,7 @@
 /obj/machinery/door/window/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/door/window/attack_hand(mob/user, list/params)
+/obj/machinery/door/window/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	src.add_fingerprint(user)
@@ -194,12 +195,12 @@
 			return
 
 		//Emags and ninja swords? You may pass.
-		if (istype(I, /obj/item/melee/energy/blade))
+		if (istype(I, /obj/item/melee/ninja_energy_blade))
 			if(emag_act(10, user))
 				var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 				spark_system.set_up(5, 0, src.loc)
 				spark_system.start()
-				playsound(src.loc, /datum/soundbyte/grouped/sparks, 50, 1)
+				playsound(src.loc, /datum/soundbyte/sparks, 50, 1)
 				playsound(src.loc, 'sound/weapons/blade1.ogg', 50, 1)
 				visible_message("<span class='warning'>The glass door was sliced open by [user]!</span>")
 			return 1

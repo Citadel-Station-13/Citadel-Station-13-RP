@@ -7,7 +7,7 @@ import { IngredientsNeeded } from "./Ingredients";
 /**
  * The Design interface. This is a class to facilitate the definition of static functions.
  */
-export abstract class Design {
+export interface Design {
   name: string;
   desc: string;
   category: string;

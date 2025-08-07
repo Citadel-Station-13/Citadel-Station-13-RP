@@ -27,10 +27,10 @@
 	icon_living = "viscerator_attack"
 	hovering = TRUE // Won't trigger landmines.
 
-	faction = "syndicate"
+	iff_factions = MOB_IFF_FACTION_MERCENARY
 	maxHealth = 15
 	health = 15
-	movement_cooldown = 0
+	movement_base_speed = 6.66
 
 	pass_flags = ATOM_PASS_TABLE
 	mob_swap_flags = 0

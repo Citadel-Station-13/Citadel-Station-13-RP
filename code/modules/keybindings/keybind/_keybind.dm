@@ -1,6 +1,12 @@
+// todo: rename file to keybinding.dm
 /datum/keybinding
+	/// default keys on hotkey mode
 	var/list/hotkey_keys
+	/// default keys on classic mode
+	/// * holding down `Ctrl` is mandatory to invoke keys in classic mode so don't bind things to `Ctrl`
+	/// * this may be deprecated at some point
 	var/list/classic_keys
+	/// Our unique ID.
 	var/name
 	var/full_name
 	var/description = "No description provided."

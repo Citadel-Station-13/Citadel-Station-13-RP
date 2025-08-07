@@ -5,7 +5,6 @@
 #define UI_STYLE_ORANGE				"Orange"
 #define UI_STYLE_OLD				"old"
 #define UI_STYLE_WHITE				"White"
-#define UI_STYLE_OLD_NOBORDER		"old-noborder"
 #define UI_STYLE_MINIMALIST			"minimalist"
 #define UI_STYLE_HOLOGRAM			"Hologram"
 

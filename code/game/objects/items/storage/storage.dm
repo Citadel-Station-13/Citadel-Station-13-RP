@@ -1,3 +1,11 @@
+/**
+ * ## Paths
+ *
+ * For an example of `/obj/item/storage/box/gimmicks`,
+ * * /obj/item/storage/box/gimmicks should be empty
+ * * /obj/item/storage/box/gimmicks/full should have preloaded contents in starts_with / procs
+ * * /obj/item/storage/box/gimmicks/full/loaded should have filled containers, as an example, if it's a box of reagents or something.
+ */
 /obj/item/storage
 	name = "storage"
 	icon = 'icons/obj/storage.dmi'
@@ -42,21 +50,30 @@
 	var/storage_datum_path = /datum/object_system/storage
 	/// Cleared after Initialize().
 	/// List of types associated to amounts.
+	//  todo: stack handling
 	var/list/starts_with
 	/// set to prevent us from spawning starts_with
 	var/empty = FALSE
 
-/obj/item/storage/Initialize(mapload)
+/obj/item/storage/preload_from_stack_recipe(datum/stack_recipe/recipe)
+	..()
+	if(recipe.product_auto_create_empty)
+		empty = TRUE
+
+/obj/item/storage/Initialize(mapload, empty)
 	. = ..()
 	initialize_storage()
-	spawn_contents()
-	legacy_spawn_contents()
+	if(!empty && !src.empty)
+		spawn_contents()
+		legacy_spawn_contents()
+	else
+		starts_with = null
 
 /**
  * Make sure to set [worth_dynamic] to TRUE if this does more than spawning what's in starts_with.
  */
 /obj/item/storage/proc/spawn_contents()
-	if(length(starts_with) && !empty)
+	if(length(starts_with))
 		// this is way too permissive already
 		var/safety = 256
 		var/atom/where_real_contents = obj_storage.real_contents_loc()

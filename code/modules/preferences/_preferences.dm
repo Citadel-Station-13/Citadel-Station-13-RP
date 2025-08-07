@@ -99,6 +99,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/g_hair = 0
 	/// Hair color.
 	var/b_hair = 0
+	/// Hair alpha (currently only handled by holospheres)
+	var/a_hair = 255
 	/// Gradient style.
 	var/grad_style = "None"
 	/// Gradient color.
@@ -145,6 +147,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/b_synth
 	/// Enable/disable markings on synth parts.
 	var/synth_markings = 1
+	/// Body alpha
+	var/body_alpha = 255
+	/// Hair alpha
+	var/hair_alpha = 255
 
 	//* ## Background Preferences
 	///Antag associated faction.
@@ -426,3 +432,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	panel = new(user, "Character Slots", "Character Slots", 300, 390, src)
 	panel.set_content(dat)
 	panel.open()
+
+
+/datum/preferences/proc/get_trait_id_info()
+	. = list()
+	for (var/path in (pos_traits + neg_traits + neu_traits) - id_hidden_traits)
+		var/datum/trait/trait = all_traits[path]
+		if(istype(trait))
+			if(trait.extra_id_info)
+				.["[ckey(trait.name)]"] = trait.extra_id_info
+	return .

@@ -15,7 +15,7 @@
 	var/attack_verb = "attacks"			// Used for the visible_message(), as the above is shown to the mob getting hit directly.
 										// Format is '\The [blob name] [attack_verb] [victim]!' E.g. 'The explosive lattice blasts John Doe!'
 
-	var/damage_type = BRUTE				// What kind of damage to do to living mobs via blob_act()
+	var/damage_type = DAMAGE_TYPE_BRUTE				// What kind of damage to do to living mobs via blob_act()
 	var/armor_check = "melee"			// What armor to check for when blob_act()-ing living mobs.
 	var/armor_pen = 0					// How much armor to penetrate(ignore) when attacking via blob_act().
 	var/damage_lower = 30				// Lower bound for amount of damage to do for attacks.
@@ -146,7 +146,7 @@
 	complementary_color = "#BE5532"
 	spread_modifier = 0.5
 	ai_aggressiveness = 50
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	burn_multiplier = 0 // Fire immunity
 	attack_message = "The blazing oil splashes you with its burning oil"
 	attack_message_living = ", and you feel your skin char and melt"
@@ -192,7 +192,7 @@
 	difficulty = BLOB_DIFFICULTY_MEDIUM // Rough for robots but otherwise fragile and can be fought at range like most blobs anyways.
 	color = "#83ECEC"
 	complementary_color = "#EC8383"
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	damage_lower = 10
 	damage_upper = 20
 	brute_multiplier = 3
@@ -220,7 +220,7 @@
 	difficulty = BLOB_DIFFICULTY_MEDIUM // The spores are more of an annoyance but can be difficult to contain.
 	color = "#AAAAAA"
 	complementary_color = "#FFFFFF"
-	damage_type = TOX
+	damage_type = DAMAGE_TYPE_TOX
 	damage_lower = 15
 	damage_upper = 25
 	spread_modifier = 0.3 // Lower, since spores will do a lot of the spreading.
@@ -250,7 +250,7 @@
 	difficulty = BLOB_DIFFICULTY_HARD // Loads of spores that can overwhelm, and spreads quickly.
 	color = "#FF0000" // Red
 	complementary_color = "#FFCC00" // Orange-ish
-	damage_type = TOX
+	damage_type = DAMAGE_TYPE_TOX
 	damage_lower = 10
 	damage_upper = 20
 	spread_modifier = 0.7
@@ -266,8 +266,7 @@
 		if(istype(S))
 			S.overmind = O
 			O.blob_mobs.Add(S)
-		else
-			S.faction = "blob"
+		S.add_iff_faction(MOB_IFF_FACTION_BLOB)
 		S.update_icons()
 
 /datum/blob_type/fulminant_organism/on_death(obj/structure/blob/B)
@@ -277,8 +276,7 @@
 		if(istype(S))
 			S.overmind = B.overmind
 			B.overmind.blob_mobs.Add(S)
-		else
-			S.faction = "blob"
+		S.add_iff_faction(MOB_IFF_FACTION_BLOB)
 		S.update_icons()
 
 
@@ -292,7 +290,7 @@
 	difficulty = BLOB_DIFFICULTY_EASY // Potentially deadly to people not knowing the mechanics, but otherwise fairly tame, due to its slow spread and weakness.
 	color = "#9ACD32"
 	complementary_color = "#FFA500"
-	damage_type = BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 	damage_lower = 30
 	damage_upper = 40
 	armor_pen = 50 // Even with riot armor and tactical jumpsuit, you'd have 90 armor, reduced by 50, totaling 40.  Getting hit for around 21 damage is still rough.
@@ -323,7 +321,7 @@
 	difficulty = BLOB_DIFFICULTY_EASY // Mostly a tank and spank.
 	color = "#65ADA2"
 	complementary_color = "#AD6570"
-	damage_type = BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 	damage_lower = 10
 	damage_upper = 15
 	brute_multiplier = 0.5
@@ -368,7 +366,7 @@
 	difficulty = BLOB_DIFFICULTY_EASY
 	color = "#C8963C"
 	complementary_color = "#3C6EC8"
-	damage_type = BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 	damage_lower = 20
 	damage_upper = 30
 	brute_multiplier = 0.5
@@ -405,7 +403,7 @@
 	difficulty = BLOB_DIFFICULTY_MEDIUM
 	color = "#8BA6E9"
 	complementary_color = "#7D6EB4"
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	damage_lower = 15
 	damage_upper = 25
 	brute_multiplier = 0.25
@@ -451,7 +449,7 @@
 	difficulty = BLOB_DIFFICULTY_MEDIUM
 	color = "#EFD65A"
 	complementary_color = "#00E5B1"
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	damage_lower = 5
 	damage_upper = 10
 	brute_multiplier = 0.5
@@ -464,9 +462,7 @@
 	attack_verb = "prods"
 
 /datum/blob_type/energized_jelly/on_attack(obj/structure/blob/B, mob/living/victim, def_zone)
-	victim.electrocute_act(10, src, 1, def_zone)
-	victim.stun_effect_act(0, 40, BP_TORSO, src)
-
+	victim.electrocute(0, 10, 40, NONE, BP_TORSO, src)
 
 // A blob with area of effect attacks.
 /datum/blob_type/explosive_lattice
@@ -477,7 +473,7 @@
 	difficulty = BLOB_DIFFICULTY_MEDIUM
 	color = "#8B2500"
 	complementary_color = "#00668B"
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	damage_lower = 25
 	damage_upper = 35
 	armor_check = "bomb"
@@ -500,7 +496,7 @@
 	for(var/mob/living/L in range(get_turf(victim), 1)) // We don't use orange(), in case there is more than one mob on the target tile.
 		if(L == victim) // Already hit.
 			continue
-		if(L.faction == "blob") // No friendly fire
+		if(L.has_iff_faction(MOB_IFF_FACTION_BLOB))
 			continue
 		L.blob_act()
 
@@ -529,7 +525,7 @@
 	difficulty = BLOB_DIFFICULTY_HARD
 	color = "#AAAABB"
 	complementary_color = "#BBBBAA"
-	damage_type = OXY
+	damage_type = DAMAGE_TYPE_OXY
 	damage_lower = 5
 	damage_upper = 15
 	armor_check = null
@@ -579,7 +575,7 @@
 	difficulty = BLOB_DIFFICULTY_MEDIUM
 	color = "#33CC33"
 	complementary_color = "#99FF66"
-	damage_type = TOX
+	damage_type = DAMAGE_TYPE_TOX
 	damage_lower = 20
 	damage_upper = 30
 	armor_check = "rad"
@@ -631,7 +627,7 @@
 		if(!H.drop_item_to_ground(I))
 			B.visible_message(SPAN_DANGER("[name] heaves and pulls at [H]'s [I], struggling to pull it from their grip!"))
 			return ..()
-		if((I.sharp || I.edge || (I.damage_mode & (DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE))) && !istype(I, /obj/item/gun))
+		if(((I.damage_mode & (DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE))) && !istype(I, /obj/item/gun))
 			I.forceMove(get_turf(B)) // Disarmed entirely.
 			B.visible_message("<span class='danger'>The [name] heaves, \the [attacker]'s weapon becoming stuck in the churning mass!</span>")
 		else

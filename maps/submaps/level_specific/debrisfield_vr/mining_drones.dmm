@@ -7,7 +7,7 @@
 /area/space)
 "c" = (
 /mob/living/simple_mob/mechanical/corrupt_maint_drone{
-	faction = "poi_mining_drones"
+	iff_factions = "poi_mining_drones"
 	},
 /turf/simulated/floor/airless,
 /area/submap/debrisfield_vr/mining_outpost)
@@ -21,10 +21,6 @@
 "e" = (
 /obj/structure/cable{
 	icon_state = "0-4"
-	},
-/obj/machinery/power/smes/batteryrack{
-	input_attempt = 1;
-	output_attempt = 1
 	},
 /turf/simulated/floor/tiled/airless,
 /area/submap/debrisfield_vr/mining_outpost)
@@ -57,9 +53,6 @@
 /area/submap/debrisfield_vr/mining_outpost)
 "m" = (
 /obj/structure/cable,
-/obj/machinery/power/terminal{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/airless,
 /area/submap/debrisfield_vr/mining_outpost)
 "n" = (
@@ -85,9 +78,8 @@
 /turf/space,
 /area/space)
 "q" = (
-/obj/structure/sign/poster{
-	pixel_y = 32;
-	poster_type = "/datum/poster/bay_50"
+/obj/structure/poster{
+	pixel_y = 32
 	},
 /turf/simulated/floor/airless,
 /area/submap/debrisfield_vr/mining_outpost)

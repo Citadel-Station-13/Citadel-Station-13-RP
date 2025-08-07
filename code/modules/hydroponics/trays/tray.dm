@@ -1,3 +1,5 @@
+// todo: use something like /datum/component/atmos_connector_attach
+// todo: /obj/machinery/hydroponics_tray or /obj/machinery/portable_atmospherics/hydroponics_tray
 /obj/machinery/portable_atmospherics/hydroponics
 	name = "hydroponics tray"
 	icon = 'icons/obj/hydroponics_machines.dmi'
@@ -201,26 +203,22 @@
 	check_health()
 	update_icon()
 
-/obj/machinery/portable_atmospherics/hydroponics/bullet_act(var/obj/projectile/Proj)
-
+/obj/machinery/portable_atmospherics/hydroponics/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	. = ..()
 	//Don't act on seeds like dionaea that shouldn't change.
 	if(seed && seed.get_trait(TRAIT_IMMUTABLE) > 0)
 		return
 
 	//Override for somatoray projectiles.
-	if(istype(Proj ,/obj/projectile/energy/floramut)&& prob(20))
-		if(istype(Proj, /obj/projectile/energy/floramut/gene))
-			var/obj/projectile/energy/floramut/gene/G = Proj
+	if(istype(proj ,/obj/projectile/energy/floramut)&& prob(20))
+		if(istype(proj, /obj/projectile/energy/floramut/gene))
+			var/obj/projectile/energy/floramut/gene/G = proj
 			if(seed)
 				seed = seed.diverge_mutate_gene(G.gene, get_turf(loc))	//get_turf just in case it's not in a turf.
 		else
 			mutate(1)
-			return
-	else if(istype(Proj ,/obj/projectile/energy/florayield) && prob(20))
+	else if(istype(proj ,/obj/projectile/energy/florayield) && prob(20))
 		yield_mod = min(10,yield_mod+rand(1,2))
-		return
-
-	..()
 
 /obj/machinery/portable_atmospherics/hydroponics/proc/check_health()
 	if(seed && !dead && health <= 0)
@@ -237,15 +235,15 @@
 
 //Process reagents being input into the tray.
 /obj/machinery/portable_atmospherics/hydroponics/proc/process_reagents()
-
-	if(!reagents) return
+	if(!reagents)
+		return
 
 	if(reagents.total_volume <= 0)
 		return
 
 	reagents.trans_to_obj(temp_chem_holder, min(reagents.total_volume,rand(1,3)))
 
-	for(var/datum/reagent/R in temp_chem_holder.reagents.reagent_list)
+	for(var/datum/reagent/R in temp_chem_holder.reagents.get_reagent_datums())
 
 		var/reagent_total = temp_chem_holder.reagents.get_reagent_amount(R.id)
 
@@ -566,7 +564,7 @@
 		return
 
 	else if(O.damage_force && seed)
-		user.setClickCooldown(user.get_attack_speed(O))
+		user.setClickCooldownLegacy(user.get_attack_speed_legacy(O))
 		user.visible_message("<span class='danger'>\The [seed.display_name] has been attacked by [user] with \the [O]!</span>")
 		if(!dead)
 			health -= O.damage_force
@@ -580,7 +578,7 @@
 	else if(harvest)
 		harvest(user)
 
-/obj/machinery/portable_atmospherics/hydroponics/attack_hand(mob/user, list/params)
+/obj/machinery/portable_atmospherics/hydroponics/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 
 	if(istype(usr,/mob/living/silicon))
 		return
@@ -654,3 +652,8 @@
 	closed_system = !closed_system
 	to_chat(user, "You [closed_system ? "close" : "open"] the tray's lid.")
 	update_icon()
+
+//* Subtypes *//
+
+/obj/machinery/portable_atmospherics/hydroponics/unanchored
+	anchored = FALSE

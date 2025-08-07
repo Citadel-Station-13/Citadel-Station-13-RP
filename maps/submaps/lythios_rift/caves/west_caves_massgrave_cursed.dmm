@@ -1,0 +1,133 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/template_noop,
+/area/template_noop)
+"d" = (
+/turf/simulated/wall/lead,
+/area/submap/lythios/west_caves/buried_structure)
+"j" = (
+/obj/structure/simple_door/iron,
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"n" = (
+/obj/random/ammo_all,
+/mob/living/simple_mob/construct/nuclear/charred,
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"o" = (
+/obj/structure/sign/signnew/radiation,
+/turf/simulated/wall/lead,
+/area/submap/lythios/west_caves/buried_structure)
+"y" = (
+/obj/effect/map_effect/radiation_emitter,
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"z" = (
+/mob/living/simple_mob/construct/nuclear/charred,
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"B" = (
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"E" = (
+/obj/item/bone/skull/tajaran,
+/obj/random/drinkbottle,
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"H" = (
+/obj/structure/closet/body_bag,
+/obj/item/bone/skull/tajaran,
+/obj/effect/map_effect/radiation_emitter,
+/obj/item/clothing/under/tajaran/ala/black,
+/obj/item/clothing/head/beret/tajaran/dpra,
+/obj/item/clothing/shoes/boots/jackboots,
+/obj/random/ammo_all,
+/mob/living/simple_mob/construct/nuclear/charred,
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"L" = (
+/obj/random/maintenance/security,
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"T" = (
+/obj/random/medical/lite,
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+o
+d
+d
+d
+o
+a
+a
+a
+"}
+(3,1,1) = {"
+a
+d
+E
+H
+z
+d
+d
+o
+a
+"}
+(4,1,1) = {"
+a
+d
+L
+T
+L
+j
+B
+j
+a
+"}
+(5,1,1) = {"
+a
+d
+z
+y
+n
+d
+d
+o
+a
+"}
+(6,1,1) = {"
+a
+o
+d
+d
+d
+o
+a
+a
+a
+"}
+(7,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}

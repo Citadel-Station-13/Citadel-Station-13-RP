@@ -114,7 +114,7 @@ export const DishIncubator = (props, context) => {
                   </ProgressBar>
                 </LabeledList.Item>
                 <LabeledList.Item label="Breeding Environment" color={can_breed_virus ? 'good' : 'average'}>
-                  {dish_inserted ? (can_breed_virus ? 'Suitable' : 'No hemolytic samples detected') : 'N/A'}
+                  {dish_inserted ? (can_breed_virus ? 'Suitable' : 'No hematologic samples detected') : 'N/A'}
                   {blood_already_infected ? (
                     <Box color="bad">CAUTION: Viral infection detected in blood sample.</Box>
                   ) : null}

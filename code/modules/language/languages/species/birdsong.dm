@@ -1,4 +1,4 @@
-/datum/language/birdsong
+/datum/prototype/language/birdsong
 	id = LANGUAGE_ID_BIRDSONG
 	name = LANGUAGE_BIRDSONG
 	translation_class = TRANSLATION_CLASS_DEFAULT_STANDARD_RACE

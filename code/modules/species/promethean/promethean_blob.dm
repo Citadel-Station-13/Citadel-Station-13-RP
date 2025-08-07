@@ -8,7 +8,7 @@
 	unity = TRUE
 	water_resist = 1 // Lets not kill the prommies
 	cores = 0
-	movement_cooldown = 3
+	movement_base_speed = 10 / 3
 	//species_appearance_flags = RADIATION_GLOWS
 	shock_resist = 0 // Lets not be immune to zaps.
 	friendly = list("nuzzles", "glomps", "snuggles", "cuddles", "squishes") // lets be cute :3
@@ -21,10 +21,7 @@
 	//glow_intensity = 0
 
 	var/mob/living/carbon/human/humanform
-	var/datum/modifier/healing
-
-	var/datum/weakref/prev_left_hand
-	var/datum/weakref/prev_right_hand
+	var/list/datum/weakref/previously_held
 
 	var/human_brute = 0
 	var/human_burn = 0
@@ -195,11 +192,10 @@
 		set_light(max(1,min(5,rad_glow/15)), max(1,min(10,rad_glow/25)), color)
 		update_icon()
 
-/mob/living/simple_mob/slime/promethean/bullet_act(obj/projectile/P)
+/mob/living/simple_mob/slime/promethean/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	if(humanform)
-		return humanform.bullet_act(P)
-	else
-		return ..()
+		return proj.impact_redirect(humanform, args)
+	return ..()
 
 /mob/living/simple_mob/slime/promethean/death(gibbed, deathmessage = "rapidly loses cohesion, splattering across the ground...")
 	if(humanform)
@@ -358,15 +354,11 @@
 	//Size update
 	blob.transform = matrix()*size_multiplier
 	blob.size_multiplier = size_multiplier
-
-	if(l_hand)
-		blob.prev_left_hand = WEAKREF(l_hand) //Won't save them if dropped above, but necessary if handdrop is disabled.
-	if(r_hand)
-		blob.prev_right_hand = WEAKREF(r_hand)
+	blob.previously_held = inventory?.get_held_items_as_weakrefs()
 
 	//Put our owner in it (don't transfer var/mind)
 	blob.transforming = TRUE
-	blob.ckey = ckey
+	transfer_client_to(blob)
 	blob.ooc_notes = ooc_notes
 	blob.transforming = FALSE
 	blob.name = name
@@ -434,7 +426,7 @@
 	//Put our owner in it (don't transfer var/mind)
 	playsound(src.loc, "sound/effects/slime_squish.ogg", 15)
 	transforming = TRUE
-	ckey = blob.ckey
+	blob.transfer_client_to(src)
 	ooc_notes = blob.ooc_notes // Updating notes incase they change them in blob form.
 	transforming = FALSE
 	blob.name = "Promethean Blob"
@@ -465,10 +457,12 @@
 
 	//vore_organs.Cut()
 
-	if(blob.prev_left_hand)
-		put_in_left_hand(blob.prev_left_hand.resolve()) //The restore for when reforming.
-	if(blob.prev_right_hand)
-		put_in_right_hand(blob.prev_right_hand.resolve())
+	for(var/i in 1 to length(blob.previously_held))
+		var/datum/weakref/ref = blob.previously_held[i]
+		var/obj/item/resolved = ref?.resolve()
+		if(isnull(resolved))
+			continue
+		put_in_hands_or_drop(resolved, specific_index = i)
 
 	if(!isnull(blob.mob_radio))
 		if(!equip_to_slots_if_possible(blob.mob_radio, list(
@@ -517,11 +511,11 @@
 	if(hat)
 		. += "They are wearing \a [hat]."
 
-/mob/living/simple_mob/slime/promethean/say_understands(var/mob/other, var/datum/language/speaking = null)
+/mob/living/simple_mob/slime/promethean/say_understands(var/mob/other, var/datum/prototype/language/speaking = null)
 	if(speaking?.id == LANGUAGE_ID_PROMETHEAN) //Promethean and sign are both nonverbal, so won't work with the same trick as below, so let's check for them
 		return TRUE
 	else if(speaking?.id == LANGUAGE_ID_SIGN)
-		for(var/datum/language/L in humanform.languages)
+		for(var/datum/prototype/language/L in humanform.languages)
 			if(L.id == LANGUAGE_ID_SIGN)
 				return TRUE
 	else if(humanform.say_understands(other, speaking))		//So they're speaking something other than promethean or sign, let's just ask our original mob if it understands

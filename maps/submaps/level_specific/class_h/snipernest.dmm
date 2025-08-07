@@ -4,66 +4,66 @@
 /area/template_noop)
 "b" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/snipernest)
+/area/sector/miaphus/beach/desert/poi/snipernest)
 "i" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/template_noop)
 "l" = (
 /obj/structure/sandbag,
 /turf/simulated/mineral/floor/cave,
-/area/tether_away/beach/desert/poi/snipernest)
+/area/sector/miaphus/beach/desert/poi/snipernest)
 "m" = (
 /obj/structure/toilet{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desert/poi/snipernest)
+/area/sector/miaphus/beach/desert/poi/snipernest)
 "s" = (
 /obj/random/trash,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desert/poi/snipernest)
+/area/sector/miaphus/beach/desert/poi/snipernest)
 "u" = (
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desert/poi/snipernest)
+/area/sector/miaphus/beach/desert/poi/snipernest)
 "v" = (
 /turf/simulated/mineral/floor/cave,
-/area/tether_away/beach/desert/poi/snipernest)
+/area/sector/miaphus/beach/desert/poi/snipernest)
 "D" = (
 /obj/structure/bed/padded,
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desert/poi/snipernest)
+/area/sector/miaphus/beach/desert/poi/snipernest)
 "F" = (
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desert/poi/snipernest)
+/area/sector/miaphus/beach/desert/poi/snipernest)
 "G" = (
 /turf/simulated/wall/dungeon,
-/area/tether_away/beach/desert/poi/snipernest)
+/area/sector/miaphus/beach/desert/poi/snipernest)
 "J" = (
 /mob/living/simple_mob/humanoid/merc/ranged/garand/sniper,
 /turf/simulated/mineral/floor/cave,
-/area/tether_away/beach/desert/poi/snipernest)
+/area/sector/miaphus/beach/desert/poi/snipernest)
 "N" = (
 /obj/random/trash,
 /turf/simulated/mineral/floor/cave,
-/area/tether_away/beach/desert/poi/snipernest)
+/area/sector/miaphus/beach/desert/poi/snipernest)
 "P" = (
 /obj/structure/bed/padded,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desert/poi/snipernest)
+/area/sector/miaphus/beach/desert/poi/snipernest)
 "W" = (
-/turf/simulated/mineral/ignore_mapgen/classh,
-/area/tether_away/beach/desert/poi/snipernest)
+/turf/simulated/mineral/ignore_mapgen,
+/area/sector/miaphus/beach/desert/poi/snipernest)
 "Y" = (
 /obj/structure/closet/crate/freezer/rations,
 /obj/machinery/light/small,
 /obj/random/firstaid,
 /obj/random/firstaid,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desert/poi/snipernest)
+/area/sector/miaphus/beach/desert/poi/snipernest)
 
 (1,1,1) = {"
 a

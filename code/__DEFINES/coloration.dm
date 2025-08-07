@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
 
-//* coloration_mode
+//* coloration_mode; only bitfields for quick checks. only one can be applied at a time!
 
 /// no recoloring
 #define COLORATION_MODE_NONE (1<<0)

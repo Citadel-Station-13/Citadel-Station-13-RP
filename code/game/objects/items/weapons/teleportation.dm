@@ -13,7 +13,7 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "locator"
 	var/temp = null
-	var/frequency = 1451
+	var/frequency = FREQ_LOCATOR_IMPLANT
 	var/broadcasting = null
 	var/listening = 1.0
 	w_class = WEIGHT_CLASS_SMALL
@@ -23,7 +23,7 @@
 	origin_tech = list(TECH_MAGNET = 1)
 	materials_base = list(MAT_STEEL = 400)
 
-/obj/item/locator/attack_self(mob/user)
+/obj/item/locator/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -41,7 +41,7 @@ Frequency:
 <A href='byond://?src=\ref[src];freq=10'>+</A><BR>
 
 <A href='?src=\ref[src];refresh=1'>Refresh</A>"}
-	user << browse(dat, "window=radio")
+	user << browse(HTML_SKELETON(dat), "window=radio")
 	onclose(user, "radio")
 	return
 
@@ -133,7 +133,7 @@ Frequency:
 	materials_base = list(MAT_STEEL = 10000)
 	preserve_item = 1
 
-/obj/item/hand_tele/attack_self(mob/user)
+/obj/item/hand_tele/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

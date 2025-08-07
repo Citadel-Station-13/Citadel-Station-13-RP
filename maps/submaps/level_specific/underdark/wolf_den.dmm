@@ -37,7 +37,7 @@
 /area/mine/explored/underdark)
 "j" = (
 /mob/living/simple_mob/otie/feral{
-	faction = "underdark"
+	iff_factions = "underdark"
 	},
 /turf/simulated/mineral/floor/ignore_cavegen/virgo3b,
 /area/mine/explored/underdark)

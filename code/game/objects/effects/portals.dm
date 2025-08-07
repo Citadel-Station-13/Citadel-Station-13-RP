@@ -8,7 +8,6 @@ GLOBAL_LIST_BOILERPLATE(all_portals, /obj/effect/portal)
 	density = TRUE
 	anchored = TRUE
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE | INTEGRITY_ACIDPROOF | INTEGRITY_FIREPROOF | INTEGRITY_LAVAPROOF
-	var/failchance = 5
 	var/obj/item/target = null
 	var/creator = null
 
@@ -21,7 +20,7 @@ GLOBAL_LIST_BOILERPLATE(all_portals, /obj/effect/portal)
 	. = ..()
 	teleport(AM)
 
-/obj/effect/portal/attack_hand(mob/user, list/params)
+/obj/effect/portal/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(istype(user) && !(istype(user,/mob/living)))
 		return	//do not send ghosts, zshadows, ai eyes, etc
 	spawn(0)
@@ -36,7 +35,7 @@ GLOBAL_LIST_BOILERPLATE(all_portals, /obj/effect/portal)
 /obj/effect/portal/proc/teleport(atom/movable/M as mob|obj)
 	if(istype(M, /obj/effect)) //sparks don't teleport
 		return
-	if (M.anchored&&istype(M, /obj/mecha))
+	if (M.anchored&&istype(M, /obj/vehicle/sealed/mecha))
 		return
 	if (icon_state == "portal1")
 		return
@@ -44,9 +43,5 @@ GLOBAL_LIST_BOILERPLATE(all_portals, /obj/effect/portal)
 		qdel(src)
 		return
 	if (istype(M, /atom/movable))
-		if(prob(failchance))
-			src.icon_state = "portal1"
-			do_teleport(M, locate(rand(5, world.maxx - 5), rand(5, world.maxy -5), pick((LEGACY_MAP_DATUM).get_map_levels(z))), 0)
-		else
-			do_teleport(M, target, 1) ///You will appear adjacent to the beacon
+		do_teleport(M, target, 1) ///You will appear adjacent to the beacon
 

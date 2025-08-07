@@ -10,7 +10,8 @@ var/list/overminds = list()
 	see_in_dark = 8
 	invisibility = INVISIBILITY_OBSERVER
 
-	faction = "blob"
+	iff_factions = MOB_IFF_FACTION_BLOB
+
 	var/obj/structure/blob/core/blob_core = null // The blob overmind's core
 	var/blob_points = 0
 	var/max_blob_points = 200

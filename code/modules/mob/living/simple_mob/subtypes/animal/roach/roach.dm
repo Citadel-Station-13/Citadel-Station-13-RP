@@ -40,6 +40,9 @@
 		)
 
 /datum/armor/physiology/roach
+	melee_tier = 3
+	bullet_tier = 3
+	laser_tier = 3
 	melee = 0.05
 	rad = 1.0
 
@@ -62,7 +65,8 @@
 
 	see_in_dark = 6
 	universal_understand = 1
-	faction = "roaches"
+
+	iff_factions = MOB_IFF_FACTION_ROACH
 
 	mob_size = MOB_SMALL
 	pass_flags = ATOM_PASS_TABLE
@@ -124,18 +128,8 @@
 
 //Unrandom the pet...?
 /mob/living/simple_mob/animal/roach/Greta/Initialize(mapload)
-    . = ..()
-    size_multiplier = 1
-    maxHealth = maxHealth
-    health = health
-    legacy_melee_damage_lower = legacy_melee_damage_lower
-    legacy_melee_damage_upper = legacy_melee_damage_upper
-    movement_cooldown = movement_cooldown
-    meat_amount = meat_amount
-    update_icons()
-
-/mob/living/simple_mob/animal/roach/Greta/Initialize(mapload)
 	. = ..()
+	size_multiplier = 1
 	// Change my name back, don't want to be named Tom (666)
 	name = initial(name)
 
@@ -160,7 +154,7 @@
 	maxHealth = 5
 	health = 5
 
-	movement_cooldown = 4
+	movement_base_speed = 10 / 4
 
 	legacy_melee_damage_lower = 2
 	legacy_melee_damage_upper = 3
@@ -223,7 +217,7 @@
 
 	taser_kill = 0
 
-	movement_cooldown = 7
+	movement_base_speed = 10 / 7
 
 	armor_type = /datum/armor/physiology/roach/panzer
 
@@ -257,7 +251,7 @@
 	legacy_melee_damage_lower = 7
 	legacy_melee_damage_upper = 10
 
-	movement_cooldown = 4
+	movement_base_speed = 10 / 4
 
 	armor_type = /datum/armor/physiology/roach/jaegar
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive
@@ -346,7 +340,7 @@
 
 	armor_type = /datum/armor/physiology/roach/atomar
 
-	base_attack_cooldown = 4
+	base_attack_cooldown = 2 SECONDS
 	projectiletype = /obj/projectile/energy/blob/toxic
 	projectilesound = 'sound/effects/slime_squish.ogg'
 
@@ -377,12 +371,12 @@
 	item_state = "uberfallen"
 	icon_living = "uberfallen"
 	icon_dead = "uberfallen_dead"
-	faction = "synthtide"
+
 	catalogue_data = list(/datum/category_item/catalogue/fauna/roach/uberfallen)
 	maxHealth = 30
 	health = 30
 	taser_kill = 0
-	movement_cooldown = 8
+	movement_base_speed = 10 / 8
 
 	legacy_melee_damage_lower = 5
 	legacy_melee_damage_upper = 10
@@ -425,7 +419,7 @@
 	taser_kill = 0
 	armor_type = /datum/armor/physiology/roach/strahland
 
-	base_attack_cooldown = 4
+	base_attack_cooldown = 2 SECONDS
 	projectiletype = /obj/projectile/energy/dart
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
@@ -465,7 +459,7 @@
 	legacy_melee_damage_lower = 5
 	legacy_melee_damage_upper = 10
 
-	movement_cooldown = 3
+	movement_base_speed = 10 / 3
 
 	armor_type = /datum/armor/physiology/roach/zeitraum
 
@@ -537,12 +531,14 @@
 	..() // For the poison.
 
 // Force unstealthing if attacked.
-/mob/living/simple_mob/animal/roach/zeitraum/bullet_act(obj/projectile/P)
+/mob/living/simple_mob/animal/roach/zeitraum/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	. = ..()
 	break_cloak()
 
-/mob/living/simple_mob/animal/roach/zeitraum/hit_with_weapon(obj/item/O, mob/living/user, effective_force, hit_zone)
+/mob/living/simple_mob/animal/roach/zeitraum/on_melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/attack_style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
+	if(. & CLICKCHAIN_ATTACK_MISSED)
+		return
 	break_cloak()
 
 //King? Look around you! King of what?
@@ -580,6 +576,6 @@
 	legacy_melee_damage_lower = 10
 	legacy_melee_damage_upper = 20
 
-	movement_cooldown = 6
+	movement_base_speed = 10 / 6
 
 	armor_type = /datum/armor/physiology/roach/fuhrer

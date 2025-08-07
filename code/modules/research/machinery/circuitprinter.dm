@@ -11,7 +11,7 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 	base_icon_state = "imprinter"
 	atom_flags = OPENCONTAINER
 	circuit = /obj/item/circuitboard/circuit_imprinter
-	var/list/datum/design/queue = list()
+	var/list/datum/prototype/design/queue = list()
 	var/progress = 0
 
 	var/max_material_storage = 75000
@@ -60,7 +60,7 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 		busy = 0
 		update_appearance()
 		return
-	var/datum/design/D = queue[1]
+	var/datum/prototype/design/D = queue[1]
 	if(canBuild(D))
 		busy = 1
 		progress += speed
@@ -189,7 +189,7 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 	updateUsrDialog()
 	return
 
-/obj/machinery/r_n_d/circuit_imprinter/proc/addToQueue(var/datum/design/D)
+/obj/machinery/r_n_d/circuit_imprinter/proc/addToQueue(var/datum/prototype/design/D)
 	queue += D
 	return
 
@@ -197,7 +197,7 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 	queue.Cut(index, index + 1)
 	return
 
-/obj/machinery/r_n_d/circuit_imprinter/proc/canBuild(var/datum/design/D)
+/obj/machinery/r_n_d/circuit_imprinter/proc/canBuild(var/datum/prototype/design/D)
 	for(var/M in D.materials_base)
 		if(stored_materials[M] < (D.materials_base[M] * mat_efficiency))
 			return 0
@@ -206,7 +206,7 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 			return 0
 	return 1
 
-/obj/machinery/r_n_d/circuit_imprinter/proc/getLackingMaterials(var/datum/design/D)
+/obj/machinery/r_n_d/circuit_imprinter/proc/getLackingMaterials(var/datum/prototype/design/D)
 	var/ret = ""
 	for(var/M in D.materials_base)
 		if(stored_materials[M] < D.materials_base[M])
@@ -220,7 +220,7 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 			ret += C
 	return ret
 
-/obj/machinery/r_n_d/circuit_imprinter/proc/build(var/datum/design/D)
+/obj/machinery/r_n_d/circuit_imprinter/proc/build(var/datum/prototype/design/D)
 	var/power = active_power_usage
 	for(var/M in D.materials_base)
 		power += round(D.materials_base[M] / 5)

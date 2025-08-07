@@ -97,7 +97,7 @@
 		create_track()
 	driving = 0
 
-/obj/structure/bed/chair/wheelchair/attack_hand(mob/user, list/params)
+/obj/structure/bed/chair/wheelchair/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if (pulling_along)
 		MouseDrop(usr)
 	return ..()
@@ -140,7 +140,7 @@
 		occupant.apply_effect(6, STUN, blocked)
 		occupant.apply_effect(6, WEAKEN, blocked)
 		occupant.apply_effect(6, STUTTER, blocked)
-		occupant.apply_damage(10, BRUTE, def_zone, soaked)
+		occupant.apply_damage(10, DAMAGE_TYPE_BRUTE, def_zone, soaked)
 		playsound(src.loc, 'sound/weapons/punch1.ogg', 50, 1, -1)
 		if(istype(A, /mob/living))
 			var/mob/living/victim = A
@@ -150,7 +150,7 @@
 			victim.apply_effect(6, STUN, blocked)
 			victim.apply_effect(6, WEAKEN, blocked)
 			victim.apply_effect(6, STUTTER, blocked)
-			victim.apply_damage(10, BRUTE, def_zone, soaked)
+			victim.apply_damage(10, DAMAGE_TYPE_BRUTE, def_zone, soaked)
 		if(pulling_along)
 			occupant.visible_message("<span class='danger'>[pulling_along] has thrusted \the [name] into \the [A], throwing \the [occupant] out of it!</span>")
 
@@ -195,7 +195,7 @@
 	/// What we unfold to
 	var/unfolded_type = /obj/structure/bed/chair/wheelchair
 
-/obj/item/wheelchair/attack_self(mob/user)
+/obj/item/wheelchair/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

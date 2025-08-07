@@ -205,7 +205,7 @@
 /turf/simulated/wall/thull,
 /area/submap/debrisfield_vr/sci_overrun)
 "aN" = (
-/obj/item/gun/energy/temperature,
+/obj/item/gun/projectile/energy/temperature,
 /obj/structure/table/rack,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
@@ -261,7 +261,7 @@
 /turf/simulated/wall/thull,
 /area/submap/debrisfield_vr/sci_overrun)
 "aX" = (
-/obj/item/gun/energy/decloner,
+/obj/item/gun/projectile/energy/decloner,
 /obj/structure/table/rack,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
@@ -347,7 +347,7 @@
 /area/submap/debrisfield_vr/sci_overrun)
 "bl" = (
 /obj/structure/table/reinforced,
-/obj/item/gun/energy/taser/xeno,
+/obj/item/gun/projectile/energy/taser/xeno,
 /obj/item/melee/baton/slime/loaded,
 /turf/simulated/floor/tiled/white/airless,
 /area/submap/debrisfield_vr/sci_overrun)

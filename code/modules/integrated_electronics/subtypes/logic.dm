@@ -16,10 +16,9 @@
 	activators = list("compare" = IC_PINTYPE_PULSE_IN, "on true result" = IC_PINTYPE_PULSE_OUT, "on false result" = IC_PINTYPE_PULSE_OUT)
 
 /obj/item/integrated_circuit/logic/binary/do_work()
-	var/datum/integrated_io/A = inputs[1]
-	var/datum/integrated_io/B = inputs[2]
-	var/datum/integrated_io/O = outputs[1]
-	O.data = do_compare(A, B) ? TRUE : FALSE
+	var/A = get_pin_data(IC_INPUT, 1)
+	var/B = get_pin_data(IC_INPUT, 2)
+	set_pin_data(IC_OUTPUT, 1, do_compare(A, B) ? TRUE : FALSE)
 
 	if(get_pin_data(IC_OUTPUT, 1))
 		activate_pin(2)
@@ -27,24 +26,24 @@
 		activate_pin(3)
 	..()
 
-/obj/item/integrated_circuit/logic/binary/proc/do_compare(var/datum/integrated_io/A, var/datum/integrated_io/B)
+/obj/item/integrated_circuit/logic/binary/proc/do_compare(var/datum/A, var/datum/B)
 	return FALSE
 
-/obj/item/integrated_circuit/logic/binary/proc/comparable(var/datum/integrated_io/A, var/datum/integrated_io/B)
-	return (isnum(A.data) && isnum(B.data)) || (istext(A.data) && istext(B.data))
+/obj/item/integrated_circuit/logic/binary/proc/comparable(var/datum/A, var/datum/B)
+	return (isnum(A) && isnum(B)) || (istext(A) && istext(B))
 
 /obj/item/integrated_circuit/logic/unary
 	inputs = list("A" = IC_PINTYPE_ANY)
 	activators = list("compare" = IC_PINTYPE_PULSE_IN, "on compare" = IC_PINTYPE_PULSE_OUT)
 
 /obj/item/integrated_circuit/logic/unary/do_work()
-	var/datum/integrated_io/A = inputs[1]
-	var/datum/integrated_io/O = outputs[1]
-	O.data = do_check(A) ? TRUE : FALSE
+	var/A = get_pin_data(IC_INPUT, 1)
+	set_pin_data(IC_OUTPUT, 1, do_check(A) ? TRUE : FALSE)
+
 	..()
 	activate_pin(2)
 
-/obj/item/integrated_circuit/logic/unary/proc/do_check(var/datum/integrated_io/A)
+/obj/item/integrated_circuit/logic/unary/proc/do_check(var/datum/A)
 	return FALSE
 
 /obj/item/integrated_circuit/logic/binary/equals
@@ -53,8 +52,8 @@
 	icon_state = "equal"
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/integrated_circuit/logic/binary/equals/do_compare(var/datum/integrated_io/A, var/datum/integrated_io/B)
-	return A.data == B.data
+/obj/item/integrated_circuit/logic/binary/equals/do_compare(var/datum/A, var/datum/B)
+	return A == B
 
 /obj/item/integrated_circuit/logic/binary/jklatch
 	name = "JK latch"
@@ -67,20 +66,18 @@
 	var/lstate=FALSE
 
 /obj/item/integrated_circuit/logic/binary/jklatch/do_work()
-	var/datum/integrated_io/A = inputs[1]
-	var/datum/integrated_io/B = inputs[2]
-	var/datum/integrated_io/O = outputs[1]
-	var/datum/integrated_io/Q = outputs[2]
-	if(A.data)
-		if(B.data)
+	var/A = get_pin_data(IC_INPUT, 1)
+	var/B = get_pin_data(IC_INPUT, 2)
+	if(A)
+		if(B)
 			lstate=!lstate
 		else
 			lstate = TRUE
 	else
-		if(B.data)
+		if(B)
 			lstate=FALSE
-	O.data = lstate ? TRUE : FALSE
-	Q.data = !lstate ? TRUE : FALSE
+	set_pin_data(IC_OUTPUT, 1, lstate ? TRUE : FALSE)
+	set_pin_data(IC_OUTPUT, 2, !lstate ? TRUE : FALSE)
 	if(get_pin_data(IC_OUTPUT, 1))
 		activate_pin(2)
 	else
@@ -98,18 +95,16 @@
 	var/lstate=FALSE
 
 /obj/item/integrated_circuit/logic/binary/rslatch/do_work()
-	var/datum/integrated_io/A = inputs[1]
-	var/datum/integrated_io/B = inputs[2]
-	var/datum/integrated_io/O = outputs[1]
-	var/datum/integrated_io/Q = outputs[2]
-	if(A.data)
-		if(!B.data)
+	var/A = get_pin_data(IC_INPUT, 1)
+	var/B = get_pin_data(IC_INPUT, 2)
+	if(A)
+		if(!B)
 			lstate=TRUE
 	else
-		if(B.data)
+		if(B)
 			lstate=FALSE
-	O.data = lstate ? TRUE : FALSE
-	Q.data = !lstate ? TRUE : FALSE
+	set_pin_data(IC_OUTPUT, 1, lstate ? TRUE : FALSE)
+	set_pin_data(IC_OUTPUT, 2, !lstate ? TRUE : FALSE)
 	if(get_pin_data(IC_OUTPUT, 1))
 		activate_pin(2)
 	else
@@ -127,18 +122,16 @@
 	var/lstate=FALSE
 
 /obj/item/integrated_circuit/logic/binary/gdlatch/do_work()
-	var/datum/integrated_io/A = inputs[1]
-	var/datum/integrated_io/B = inputs[2]
-	var/datum/integrated_io/O = outputs[1]
-	var/datum/integrated_io/Q = outputs[2]
-	if(B.data)
-		if(A.data)
+	var/A = get_pin_data(IC_INPUT, 1)
+	var/B = get_pin_data(IC_INPUT, 2)
+	if(B)
+		if(A)
 			lstate=TRUE
 		else
 			lstate=FALSE
 
-	O.data = lstate ? TRUE : FALSE
-	Q.data = !lstate ? TRUE : FALSE
+	set_pin_data(IC_OUTPUT, 1, lstate ? TRUE : FALSE)
+	set_pin_data(IC_OUTPUT, 2, !lstate ? TRUE : FALSE)
 	if(get_pin_data(IC_OUTPUT, 1))
 		activate_pin(2)
 	else
@@ -151,8 +144,8 @@
 	icon_state = "not_equal"
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/integrated_circuit/logic/binary/not_equals/do_compare(var/datum/integrated_io/A, var/datum/integrated_io/B)
-	return A.data != B.data
+/obj/item/integrated_circuit/logic/binary/not_equals/do_compare(var/datum/A, var/datum/B)
+	return A != B
 
 /obj/item/integrated_circuit/logic/binary/and
 	name = "and gate"
@@ -160,8 +153,8 @@
 	icon_state = "and"
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/integrated_circuit/logic/binary/and/do_compare(var/datum/integrated_io/A, var/datum/integrated_io/B)
-	return A.data && B.data
+/obj/item/integrated_circuit/logic/binary/and/do_compare(var/datum/A, var/datum/B)
+	return A && B
 
 /obj/item/integrated_circuit/logic/binary/or
 	name = "or gate"
@@ -169,8 +162,8 @@
 	icon_state = "or"
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/integrated_circuit/logic/binary/or/do_compare(var/datum/integrated_io/A, var/datum/integrated_io/B)
-	return A.data || B.data
+/obj/item/integrated_circuit/logic/binary/or/do_compare(var/datum/A, var/datum/B)
+	return A || B
 
 /obj/item/integrated_circuit/logic/binary/less_than
 	name = "less than gate"
@@ -178,9 +171,9 @@
 	icon_state = "less_than"
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/integrated_circuit/logic/binary/less_than/do_compare(var/datum/integrated_io/A, var/datum/integrated_io/B)
+/obj/item/integrated_circuit/logic/binary/less_than/do_compare(var/datum/A, var/datum/B)
 	if(comparable(A, B))
-		return A.data < B.data
+		return A < B
 
 /obj/item/integrated_circuit/logic/binary/less_than_or_equal
 	name = "less than or equal gate"
@@ -188,9 +181,9 @@
 	icon_state = "less_than_or_equal"
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/integrated_circuit/logic/binary/less_than_or_equal/do_compare(var/datum/integrated_io/A, var/datum/integrated_io/B)
+/obj/item/integrated_circuit/logic/binary/less_than_or_equal/do_compare(var/datum/A, var/datum/B)
 	if(comparable(A, B))
-		return A.data <= B.data
+		return A <= B
 
 /obj/item/integrated_circuit/logic/binary/greater_than
 	name = "greater than gate"
@@ -198,9 +191,9 @@
 	icon_state = "greater_than"
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/integrated_circuit/logic/binary/greater_than/do_compare(var/datum/integrated_io/A, var/datum/integrated_io/B)
+/obj/item/integrated_circuit/logic/binary/greater_than/do_compare(var/datum/A, var/datum/B)
 	if(comparable(A, B))
-		return A.data > B.data
+		return A > B
 
 /obj/item/integrated_circuit/logic/binary/greater_than_or_equal
 	name = "greater than or equal gate"
@@ -208,9 +201,9 @@
 	icon_state = "greater_than_or_equal"
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/integrated_circuit/logic/binary/greater_than_or_equal/do_compare(var/datum/integrated_io/A, var/datum/integrated_io/B)
+/obj/item/integrated_circuit/logic/binary/greater_than_or_equal/do_compare(var/datum/A, var/datum/B)
 	if(comparable(A, B))
-		return A.data >= B.data
+		return A >= B
 
 /obj/item/integrated_circuit/logic/unary/not
 	name = "not gate"
@@ -219,5 +212,5 @@
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 	activators = list("invert" = IC_PINTYPE_PULSE_IN, "on inverted" = IC_PINTYPE_PULSE_OUT)
 
-/obj/item/integrated_circuit/logic/unary/not/do_check(var/datum/integrated_io/A)
-	return !A.data
+/obj/item/integrated_circuit/logic/unary/not/do_check(var/datum/A)
+	return !A

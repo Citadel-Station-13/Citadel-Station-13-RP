@@ -6,6 +6,10 @@
 	organ_tag = "limb"
 	decays = FALSE
 
+	//* Behaviour *//
+	/// this covers things like 'can this limb be injected' or 'can this limb be healed'
+	var/behaviour_flags = NONE
+
 	//* Coverage *//
 	/// body_cover_flags that count as covering us
 	var/body_part_flags = NONE
@@ -186,9 +190,9 @@
 	var/burn_damage = 0
 	switch(severity)
 		if (1)
-			burn_damage += rand(10, 14)
+			burn_damage += rand(10, 12)
 		if (2)
-			burn_damage += rand(7, 8.5)
+			burn_damage += rand(6.5, 8)
 		if(3)
 			burn_damage += rand(4, 8)
 		if(4)
@@ -200,7 +204,7 @@
 			weapon_descriptor = "electromagnetic overload",
 		)
 
-/obj/item/organ/external/attack_self(mob/user)
+/obj/item/organ/external/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -351,6 +355,10 @@
 	brute = round(brute * brute_mod, 0.1)
 	burn = round(burn * burn_mod, 0.1)
 
+	// todo: better way to godmode
+	if(src.owner?.status_flags & STATUS_GODMODE)
+		return 0
+
 	if(!brute && !burn)
 		return 0
 
@@ -375,7 +383,8 @@
 	if(is_broken() && brute && !(damage_mode & DAMAGE_MODE_GRADUAL))
 		jostle_bone(brute)
 		if(organ_can_feel_pain() && IS_CONSCIOUS(owner) && prob(40))
-			owner.emote("scream")	//getting hit on broken hand hurts
+			spawn(-1)
+				owner.emote_nosleep("scream")	//getting hit on broken hand hurts
 
 	// todo: optimization
 	// legacy: autopsy data
@@ -394,11 +403,11 @@
 		if(can_inflict_brute >= brute)
 			if(can_cut)
 				if(sharp && !edge)
-					create_wound( PIERCE, brute )
+					create_wound( WOUND_TYPE_PIERCE, brute )
 				else
-					create_wound( CUT, brute )
+					create_wound( WOUND_TYPE_CUT, brute )
 			else
-				create_wound( BRUISE, brute )
+				create_wound( WOUND_TYPE_BRUISE, brute )
 		else if(!(damage_mode & DAMAGE_MODE_NO_OVERFLOW))
 			var/overflow_brute = brute - can_inflict_brute
 			// keep allowing it, but, diminishing returns
@@ -408,24 +417,24 @@
 			overflow_brute -= damage_anyways_brute
 			if(can_cut)
 				if(sharp && !edge)
-					create_wound( PIERCE, damage_anyways_brute )
+					create_wound( WOUND_TYPE_PIERCE, damage_anyways_brute )
 				else
-					create_wound( CUT, damage_anyways_brute )
+					create_wound( WOUND_TYPE_CUT, damage_anyways_brute )
 			else
-				create_wound( BRUISE, damage_anyways_brute )
+				create_wound( WOUND_TYPE_BRUISE, damage_anyways_brute )
 			// rest goes into shock
 			owner.shock_stage += overflow_brute * 0.33
 	if(burn)
 		var/can_inflict_burn = max(0, max_damage - burn_dam)
 		if(can_inflict_burn >= burn)
-			create_wound( BURN, burn )
+			create_wound( WOUND_TYPE_BURN, burn )
 		else
 			var/overflow_burn = burn - can_inflict_burn
 			var/damage_anyways_burn = !(damage_mode & DAMAGE_MODE_NO_OVERFLOW) && ( \
 				overflow_burn  * min(1, 1 / ((max(burn_dam, max_damage) + damage_softcap_intensifier) / (damage_softcap_intensifier + max_damage))) \
 			)
 			overflow_burn -= damage_anyways_burn
-			create_wound(BURN, damage_anyways_burn + can_inflict_burn)
+			create_wound(WOUND_TYPE_BURN, damage_anyways_burn + can_inflict_burn)
 			// rest goes into shock
 			owner.shock_stage += overflow_burn * 0.33
 
@@ -500,7 +509,7 @@
 			break
 
 		// heal brute damage
-		if(W.damage_type == BURN)
+		if(W.wound_type == WOUND_TYPE_BURN)
 			burn = W.heal_damage(burn)
 		else
 			brute = W.heal_damage(brute)
@@ -523,9 +532,9 @@
 
 	var/damage_amount
 	switch(damage_type)
-		if(BRUTE)
+		if(DAMAGE_TYPE_BRUTE)
 			damage_amount = brute_dam
-		if(BURN)
+		if(DAMAGE_TYPE_BURN)
 			damage_amount = burn_dam
 		if("omni")
 			damage_amount = max(brute_dam,burn_dam)
@@ -542,25 +551,19 @@
 		return FALSE
 
 	if(user == src.owner)
-		var/grasp
-		if(user.l_hand == tool && (src.body_part_flags & (ARM_LEFT|HAND_LEFT)))
-			grasp = BP_L_HAND
-		else if(user.r_hand == tool && (src.body_part_flags & (ARM_RIGHT|HAND_RIGHT)))
-			grasp = BP_R_HAND
-
-		if(grasp)
-			to_chat(user, SPAN_WARNING("You can't reach your [src.name] while holding [tool] in your [owner.get_bodypart_name(grasp)]."))
+		if(owner.get_hand_organ(owner.get_held_index(tool)) == src)
+			to_chat(user, SPAN_WARNING("You can't reach your [src] while holding [tool] in the same hand!"))
 			return FALSE
 
-	user.setClickCooldown(user.get_attack_speed(tool))
+	user.setClickCooldownLegacy(user.get_attack_speed_legacy(tool))
 	if(!do_mob(user, owner, 10))
 		to_chat(user, SPAN_WARNING("You must stand still to do that."))
 		return FALSE
 
 	switch(damage_type)
-		if(BRUTE)
+		if(DAMAGE_TYPE_BRUTE)
 			src.heal_damage(repair_amount, 0, 0, 1)
-		if(BURN)
+		if(DAMAGE_TYPE_BURN)
 			src.heal_damage(0, repair_amount, 0, 1)
 		if("omni")
 			src.heal_damage(repair_amount, repair_amount, 0, 1)
@@ -802,7 +805,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 			if(!(W.can_autoheal() || (bicardose && inaprovaline) || myeldose))	//bicaridine and inaprovaline stop internal wounds from growing bigger with time, unless it is so small that it is already healing
 				W.open_wound(0.1)
 
-			owner.vessel.remove_reagent("blood", W.damage/40) //line should possibly be moved to handle_blood, so all the bleeding stuff is in one place.
+			owner.erase_blood(W.damage / 40)
 			if(prob(1))
 				owner.custom_pain("You feel a stabbing pain in your [name]!", 50)
 
@@ -845,7 +848,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	//update damage counts
 	for(var/datum/wound/W as anything in wounds)
 		if(!W.internal) //so IB doesn't count towards crit/paincrit
-			if(W.damage_type == BURN)
+			if(W.wound_type == WOUND_TYPE_BURN)
 				burn_dam += W.damage
 			else
 				brute_dam += W.damage
@@ -858,7 +861,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 		wound_tally += W.amount
 
-	//things tend to bleed if they are CUT OPEN
+	//things tend to bleed if they are WOUND_TYPE_CUT OPEN
 	if (open && !clamped && (H && H.should_have_organ(O_HEART)))
 		status |= ORGAN_BLEEDING
 
@@ -1017,13 +1020,6 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 			qdel(src)
 
-	if(victim.l_hand)
-		if(istype(victim.l_hand,/obj/item/material/twohanded)) //if they're holding a two-handed weapon, drop it now they've lost a hand
-			victim.l_hand.update_held_icon()
-	if(victim.r_hand)
-		if(istype(victim.r_hand,/obj/item/material/twohanded))
-			victim.r_hand.update_held_icon()
-
 /****************************************************
 			   HELPERS
 ****************************************************/
@@ -1174,7 +1170,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 	if(company)
 		model = company
-		var/datum/robolimb/R = GLOB.all_robolimbs[company]
+		var/datum/robolimb/R = GLOB.all_robolimbs[isnum(company) ? GLOB.all_robolimbs[company] : company]
 		if(!R || (species && (species.name in R.species_cannot_use)))
 			R = GLOB.basic_robolimb
 		if(R)
@@ -1262,11 +1258,13 @@ Note that amputating the affected organ does in fact remove the infection from t
 /obj/item/organ/external/proc/is_malfunctioning()
 	return ((robotic >= ORGAN_ROBOT) && (brute_dam + burn_dam) >= min_broken_damage*0.83 && prob(brute_dam + burn_dam)) // Makes robotic limb damage scalable
 
+// TODO: rework embeds, this only works for tiny items right now as
+//       larger ones won't be removable!!
 /obj/item/organ/external/proc/embed(var/obj/item/W, var/silent = 0)
 	if(!owner || loc != owner)
 		return
-	if(owner.species.species_flags & IS_SLIME)
-		create_wound( CUT, 15 )  //fixes proms being bugged into paincrit;instead whatever would embed now just takes a chunk out
+	if(owner.species.reagent_tag == IS_SLIME)
+		create_wound( WOUND_TYPE_CUT, 15 )  //fixes proms being bugged into paincrit;instead whatever would embed now just takes a chunk out
 		src.visible_message("<font color='red'>[owner] has been seriously wounded by [W]!</font>")
 		W.add_blood(owner)
 		return 0
@@ -1278,8 +1276,9 @@ Note that amputating the affected organ does in fact remove the infection from t
 		owner.visible_message("<span class='danger'>\The [W] sticks in the wound!</span>")
 	implants += W
 	owner.embedded_flag = 1
-	add_verb(owner, /mob/proc/yank_out_object)
-	W.add_blood(owner)
+	// add_verb(owner, /mob/proc/yank_out_object)
+	if(!(owner.species.species_flags & NO_BLOOD))
+		W.add_blood(owner)
 	W.forceMove(owner)
 
 /obj/item/organ/external/removed(var/mob/living/user, var/ignore_children = 0)
@@ -1425,7 +1424,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 		if(W.internal && !open) continue // can't see internal wounds
 		var/this_wound_desc = W.desc
 
-		if(W.damage_type == BURN && W.salved)
+		if(W.wound_type == WOUND_TYPE_BURN && W.salved)
 			this_wound_desc = "salved [this_wound_desc]"
 
 		if(W.bleeding())
@@ -1503,6 +1502,12 @@ Note that amputating the affected organ does in fact remove the infection from t
 		for(var/obj/item/I in L.implants)
 			if(!istype(I,/obj/item/implant) && !istype(I,/obj/item/nif))
 				return TRUE
+
+//* Hand Integration *//
+
+// todo: some kind of API for querying what hands this organ provides
+//       this will require organs be composition instead of inheritance,
+//       as defining this on every left / right hand would be satanic.
 
 //* Environmentals *//
 

@@ -4,18 +4,8 @@ SUBSYSTEM_DEF(materials)
 	init_order = INIT_ORDER_MATERIALS
 	wait = 2 SECONDS
 
-	/// material by id
-	var/list/material_lookup
-	/// material trait by path
-	var/list/material_traits
-	/// legacy material lookup *vomit
-	var/list/legacy_material_lookup
 	/// material recipes
 	var/list/datum/stack_recipe/material/material_stack_recipes
-
-	// todo: Recover() should keep procedural materials
-	// however, i can't be assed to write Recover() until we do procedural materials
-	// thus, dealing with it later :^)
 
 	/// ticked atoms
 	var/list/ticking = list()
@@ -30,14 +20,10 @@ SUBSYSTEM_DEF(materials)
 	var/list/wall_armor_cache = list()
 
 /datum/controller/subsystem/materials/Initialize()
-	initialize_material_traits()
-	initialize_materials()
 	initialize_material_recipes()
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/materials/Recover()
-	initialize_material_traits()
-	initialize_materials()
 	initialize_material_recipes()
 	if(islist(SSmaterials.ticking))
 		// todo: better sanitization
@@ -63,9 +49,9 @@ SUBSYSTEM_DEF(materials)
 		src.currentrun = ticking.Copy()
 	var/list/currentrun = src.currentrun
 	var/atom/A
-	var/dt = (subsystem_flags & SS_TICKER)? (wait * world.tick_lag) : max(world.tick_lag, wait * 0.1)
+	var/dt = nominal_dt_s
 	var/i
-	var/datum/material_trait/trait
+	var/datum/prototype/material_trait/trait
 	for(i in length(currentrun) to 1 step -1)
 		A = currentrun[A]
 		if(length(A.material_traits))
@@ -80,33 +66,6 @@ SUBSYSTEM_DEF(materials)
 			break
 	currentrun.len -= (length(currentrun) - i + 1)
 
-/datum/controller/subsystem/materials/proc/initialize_materials()
-	material_lookup = list()
-	legacy_material_lookup = list()
-
-	for(var/path in subtypesof(/datum/material))
-		var/datum/material/mat_ref = path
-		if(initial(mat_ref.abstract_type) == path)
-			continue
-
-		mat_ref = new path
-		// Initialize the material. It'll return TRUE if everything went well.
-		if(!mat_ref.Initialize())
-			CRASH("Failed to initialize material [mat_ref.name]!")
-
-		// why are we doing initial() here? because the unit test checks for initial.
-		material_lookup[initial(mat_ref.id)] = mat_ref
-		legacy_material_lookup[lowertext(mat_ref.name)] = mat_ref
-
-/datum/controller/subsystem/materials/proc/initialize_material_traits()
-	material_traits = list()
-	for(var/path in subtypesof(/datum/material_trait))
-		var/datum/material/mat_trait = path
-		if(initial(mat_trait.abstract_type) == path)
-			continue
-		mat_trait = new path
-		material_traits[path] = mat_trait
-
 /datum/controller/subsystem/materials/proc/initialize_material_recipes()
 	material_stack_recipes = list()
 	for(var/path in subtypesof(/datum/stack_recipe/material))
@@ -114,61 +73,6 @@ SUBSYSTEM_DEF(materials)
 		if(initial(this.abstract_type) == path)
 			continue
 		material_stack_recipes += new path
-
-/**
- * fetches material instance
- *
- * please use typepaths whenever possible at compile-time for compiler sanity checking support
- * ids are acceptable on maps
- *
- * @params
- * id_or_path - id or typepath; if this is already a material instance, it will be returned as-is.
- */
-/datum/controller/subsystem/materials/proc/resolve_material(datum/material/id_or_path)
-	if(istext(id_or_path))
-		// yay it's an id
-		return material_lookup[id_or_path]
-	else if(istype(id_or_path))
-		return id_or_path
-	else if(ispath(id_or_path))
-		// yay it's a path
-		return material_lookup[initial(id_or_path.id)]
-	else if(isnull(id_or_path))
-		return
-	CRASH("what?")
-
-/**
- * resolve a 'reskinned' material
- *
- * basically, a material but looking like another
- *
- * @params
- * * id_or_path - real material to use
- * * into_material - what material to make it look like
- */
-/datum/controller/subsystem/materials/proc/resolve_reskinned_material(datum/material/id_or_path, datum/material/into_material)
-	// todo: optimize
-	var/datum/material/source_material = resolve_material(id_or_path)
-	var/datum/material/target_material = resolve_material(into_material)
-	var/reskinned_id = "[target_material.id]-reskinned-[source_material.id]"
-	if(isnull(material_lookup[reskinned_id]))
-		var/datum/material/created_reskin = source_material.clone()
-		var/static/list/direct_clone_vars = list(
-			NAMEOF(created_reskin, icon_colour),
-			NAMEOF(created_reskin, icon_base),
-			NAMEOF(created_reskin, icon_reinf),
-			NAMEOF(created_reskin, wall_stripe_icon),
-			NAMEOF(created_reskin, door_icon_base),
-			NAMEOF(created_reskin, table_icon_base),
-			NAMEOF(created_reskin, table_reinf_icon_base),
-			NAMEOF(created_reskin, icon_reinf_directionals),
-			NAMEOF(created_reskin, shard_icon),
-			NAMEOF(created_reskin, tgui_icon_key),
-		)
-		for(var/varname in direct_clone_vars)
-			created_reskin.vars[varname] = into_material.vars[varname]
-		material_lookup[reskinned_id] = created_reskin
-	return material_lookup[reskinned_id]
 
 /**
  * ensures a list is full of material ids for keys
@@ -179,7 +83,7 @@ SUBSYSTEM_DEF(materials)
 	// todo: optimize
 	. = list()
 	for(var/i in 1 to length(L))
-		var/datum/material/resolved = resolve_material(L[i])
+		var/datum/prototype/material/resolved = RSmaterials.fetch(L[i])
 		. += resolved?.id
 
 /**
@@ -191,7 +95,7 @@ SUBSYSTEM_DEF(materials)
 	// todo: optimize
 	. = list()
 	for(var/i in 1 to length(L))
-		var/datum/material/resolved = resolve_material(L[i])
+		var/datum/prototype/material/resolved = RSmaterials.fetch(L[i])
 		. += resolved
 
 /**
@@ -204,12 +108,16 @@ SUBSYSTEM_DEF(materials)
 	// todo: optimize
 	. = list()
 	for(var/i in 1 to length(L))
-		var/key = L[i]
-		var/datum/material/resolved = resolve_material(key)
-		if(isnull(resolved))
-			continue
+		var/datum/prototype/material/key = L[i]
 		var/value = L[key]
-		.[resolved.id] = value
+		if(istype(key))
+			key = key.id
+		else if(ispath(key))
+			key = initial(key.id)
+		else if(istext(key))
+		else
+			CRASH("what? '[key]'")
+		.[key] = value
 
 /**
  * ensures a list is full of material references for keys
@@ -222,10 +130,14 @@ SUBSYSTEM_DEF(materials)
 	. = list()
 	for(var/i in 1 to length(L))
 		var/key = L[i]
-		var/datum/material/resolved = resolve_material(key)
-		if(isnull(resolved))
-			continue
 		var/value = L[key]
+		var/datum/prototype/material/resolved = RSmaterials.fetch_or_defer(key)
+		switch(resolved)
+			if(null)
+				continue
+			if(REPOSITORY_FETCH_DEFER)
+				// todo: handle this
+				continue
 		.[resolved] = value
 
 /**
@@ -238,9 +150,15 @@ SUBSYSTEM_DEF(materials)
 	. = list()
 	for(var/i in 1 to length(L))
 		var/key = L[i]
-		var/value = L[key]
-		var/datum/material/resolved = resolve_material(value)
-		.[key] = resolved?.id
+		var/datum/prototype/material/value = L[key]
+		if(istype(value))
+			value = value.id
+		else if(ispath(value))
+			value = initial(value.id)
+		else if(istext(value))
+		else
+			CRASH("what? '[value]'")
+		.[key] = value
 
 /**
  * ensures a list is full of material references for values
@@ -253,7 +171,12 @@ SUBSYSTEM_DEF(materials)
 	for(var/i in 1 to length(L))
 		var/key = L[i]
 		var/value = L[key]
-		var/datum/material/resolved = resolve_material(value)
+		var/datum/prototype/material/resolved = RSmaterials.fetch_or_defer(value)
+		switch(resolved)
+			if(REPOSITORY_FETCH_DEFER)
+				// todo: handle this
+			else
+				value = resolved
 		.[key] = resolved
 
 /**
@@ -263,15 +186,13 @@ SUBSYSTEM_DEF(materials)
  */
 /datum/controller/subsystem/materials/proc/all_materials()
 	RETURN_TYPE(/list)
-	. = list()
-	for(var/id in material_lookup)
-		. += material_lookup[id]
+	return RSmaterials.fetch_subtypes_immutable(/datum/prototype/material):Copy()
 
 /**
  * drop a material sheet
  */
-/datum/controller/subsystem/materials/proc/drop_sheets(datum/material/id_or_path, amount, atom/where)
-	var/datum/material/mat = resolve_material(id_or_path)
+/datum/controller/subsystem/materials/proc/drop_sheets(datum/prototype/material/id_or_path, amount, atom/where)
+	var/datum/prototype/material/mat = RSmaterials.fetch(id_or_path)
 	mat.place_sheet(where, amount)
 
 /**
@@ -279,12 +200,12 @@ SUBSYSTEM_DEF(materials)
  * todo: REMOVE
  *
  * DO NOT USE THIS PROC
- * Use SSmaterials.resolve_material()!
+ * Use RSmaterials.fetch()!
  */
 /proc/get_material_by_name(name)
-	if(istype(name, /datum/material))
+	if(istype(name, /datum/prototype/material))
 		return name
-	return SSmaterials.legacy_material_lookup[name]
+	return RSmaterials.legacy_material_lookup[name]
 
 /**
  * tgui materials context
@@ -300,8 +221,8 @@ SUBSYSTEM_DEF(materials)
 /datum/controller/subsystem/materials/proc/tgui_materials_context(list/ids, full = FALSE)
 	var/list/data = list()
 	// a hack to make this default to all if not specified.
-	for(var/id in ids || material_lookup)
-		var/datum/material/mat = material_lookup[id]
+	for(var/id in ids || RSmaterials.id_lookup)
+		var/datum/prototype/material/mat = RSmaterials.fetch(id)
 		var/list/built = list(
 			"name" = mat.display_name || mat.name,
 			"id" = mat.id,

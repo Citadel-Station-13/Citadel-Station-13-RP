@@ -45,6 +45,10 @@
 	name = "Qipao - Red"
 	path = /obj/item/clothing/under/qipao/red
 
+/datum/loadout_entry/uniform/qipao/sleeveless
+	name = "Qipao - Sleeveless Black"
+	path = /obj/item/clothing/under/sleeveless_qipao
+
 /datum/loadout_entry/uniform/croptop
 	name = "Croptop Selection"
 	description = "Light shirts which shows the midsection of the wearer."
@@ -416,19 +420,19 @@
 
 /datum/loadout_entry/uniform/pyjamas_red
 	name = "Pyjamas - Red"
-	path = /obj/item/clothing/under/redpyjamas
+	path = /obj/item/clothing/under/pj/red
 
 /datum/loadout_entry/uniform/pyjamas_blue
 	name = "Pyjamas - Blue"
-	path = /obj/item/clothing/under/bluepyjamas
+	path = /obj/item/clothing/under/pj/blue
 
 /datum/loadout_entry/uniform/pyjamas_red_fem
 	name = "Pyjamas - Red - Female"
-	path = /obj/item/clothing/under/redpyjamas_fem
+	path = /obj/item/clothing/under/pj/red_fem
 
 /datum/loadout_entry/uniform/pyjamas_blue_fem
 	name = "Pyjamas - Blue - Female"
-	path = /obj/item/clothing/under/bluepyjamas_fem
+	path = /obj/item/clothing/under/pj/blue_fem
 
 /datum/loadout_entry/uniform/wrappedcoat
 	name = "Modern Wrapped Coat"
@@ -525,6 +529,10 @@
 /datum/loadout_entry/uniform/leotardcolor
 	name = "Colored Leotard"
 	path = /obj/item/clothing/under/leotardcolor
+
+/datum/loadout_entry/uniform/leotardwindow
+	name = "Window Leotard"
+	path = /obj/item/clothing/under/leotardwindow
 
 /datum/loadout_entry/uniform/bunnysuit_f
 	name = "Bunny Leotard - Female"
@@ -959,6 +967,10 @@ Swimsuits
 		var/obj/item/clothing/under/altbodysuitfem_type = altbodysuitfem
 		altbodysuitfem_selection[initial(altbodysuitfem_type.name)] = altbodysuitfem_type
 	tweaks += new/datum/loadout_tweak/path(tim_sort(altbodysuitfem_selection, GLOBAL_PROC_REF(cmp_text_asc)))
+
+/datum/loadout_entry/uniform/skinsuit_striped
+	name = "Skinsuit Striped"
+	path = /obj/item/clothing/under/skinsuit_striped
 
 /datum/loadout_entry/uniform/ballet
 	name = "Antheia Tutu"

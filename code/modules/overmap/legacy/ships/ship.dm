@@ -14,8 +14,10 @@
 	scanner_desc = "Unknown spacefaring vessel."
 	dir = NORTH
 	icon_state = "ship"
-	appearance_flags = TILE_BOUND|KEEP_TOGETHER|LONG_GLIDE
-	glide_size = 8
+	bound_width = 28
+	bound_height = 28
+	bound_x = 2
+	bound_y = 2
 	var/moving_state = "ship_moving"
 
 	/// Tonnes, arbitrary number, affects acceleration provided by engines.
@@ -92,7 +94,7 @@
  * get speed in tiles / decisecond
  */
 /obj/overmap/entity/visitable/ship/proc/get_speed_legacy()
-	return OVERMAP_DIST_TO_PIXEL(get_speed()) / WORLD_ICON_SIZE / 10
+	return OVERMAP_DIST_TO_PIXEL(get_speed()) / (WORLD_ICON_SIZE * 10)
 
 // Get heading in BYOND dir bits
 /obj/overmap/entity/visitable/ship/proc/get_heading_direction()
@@ -125,7 +127,6 @@
 			// fuck you we're extra brutal today, decelration kills you too!
 			SSmapping.throw_movables_on_z_turfs_of_type(zz, /turf/space, fore_dir)
 	else
-		glide_size = WORLD_ICON_SIZE/max(DS2TICKS(SSprocessing.wait), 1)	// Down to whatever decimal
 		for(var/zz in map_z)
 			SSparallax.update_z_motion(zz)
 			SSmapping.throw_movables_on_z_turfs_of_type(zz, /turf/space, global.reverse_dir[fore_dir])
@@ -183,11 +184,11 @@
 
 /obj/overmap/entity/visitable/ship/proc/burn()
 	for(var/datum/ship_engine/E in engines)
-		. += E.burn()
+		. += E.burn() * SSovermaps.global_thrust_multiplier
 
 /obj/overmap/entity/visitable/ship/proc/get_total_thrust()
 	for(var/datum/ship_engine/E in engines)
-		. += E.get_thrust()
+		. += E.get_thrust() * SSovermaps.global_thrust_multiplier
 
 /obj/overmap/entity/visitable/ship/proc/can_burn()
 	if(halted)
@@ -201,17 +202,15 @@
 /obj/overmap/entity/visitable/ship/proc/ETA()
 	. = INFINITY
 	if(vel_x)
-		var/offset = MODULUS(OVERMAP_DIST_TO_PIXEL(pos_x), WORLD_ICON_SIZE)
-		var/dist_to_go = (vel_x > 0) ? (WORLD_ICON_SIZE - offset) : offset
-		. = min(., (dist_to_go / OVERMAP_DIST_TO_PIXEL(abs(vel_x))) * 10)
+		var/offset = step_x
+		. = min(., OVERMAP_PIXEL_TO_DIST(vel_x > 0? WORLD_ICON_SIZE - offset : offset) / vel_x * 10)
 	if(vel_y)
-		var/offset = MODULUS(OVERMAP_DIST_TO_PIXEL(pos_y), WORLD_ICON_SIZE)
-		var/dist_to_go = (vel_y > 0) ? (WORLD_ICON_SIZE - offset) : offset
-		. = min(., (dist_to_go / OVERMAP_DIST_TO_PIXEL(abs(vel_y))) * 10)
+		var/offset = step_y
+		. = min(., OVERMAP_PIXEL_TO_DIST(vel_y > 0? WORLD_ICON_SIZE - offset : offset) / vel_y * 10)
 	. = max(., 0)
 
 /obj/overmap/entity/visitable/ship/proc/halt()
-	adjust_speed(-vel_x, -vel_y)
+	initialize_physics()
 	halted = 1
 
 /obj/overmap/entity/visitable/ship/proc/unhalt()

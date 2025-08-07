@@ -42,6 +42,7 @@ GLOBAL_LIST_EMPTY(holoposters)
 	. += examine_addon
 
 /obj/machinery/holoposter/update_icon()
+	. = ..()
 	if(machine_stat & NOPOWER)
 		icon_state = "off"
 		examine_addon = "It appears to be powered off."
@@ -100,6 +101,7 @@ GLOBAL_LIST_EMPTY(holoposters)
 		machine_stat &= ~BROKEN
 		update_icon()
 		return
+	. = ..()
 
 /obj/machinery/holoposter/attack_ai(mob/user)
 	return attack_hand(user)

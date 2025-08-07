@@ -23,9 +23,13 @@
 		integrity_flags |= INTEGRITY_ACIDPROOF
 
 /obj/item/reagent_containers/food/drinks/bottle/Destroy()
+	QDEL_NULL(rag)
+	return ..()
+
+/obj/item/reagent_containers/food/drinks/bottle/drop_products(method, atom/where)
 	if(rag)
-		rag.forceMove(src.loc)
-	rag = null
+		drop_product(method, rag, where)
+		rag = null
 	return ..()
 
 //when thrown on impact, bottles smash and spill their contents
@@ -107,7 +111,7 @@
 		return
 	..()
 
-/obj/item/reagent_containers/food/drinks/bottle/attack_self(mob/user)
+/obj/item/reagent_containers/food/drinks/bottle/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -146,23 +150,22 @@
 	else
 		set_light(0)
 
-/obj/item/reagent_containers/food/drinks/bottle/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	. = ..()
+/obj/item/reagent_containers/food/drinks/bottle/melee_override(atom/target, mob/user, intent, zone, efficiency, datum/event_args/actor/actor)
+	if(efficiency <= 0)
+		return ..()
+	if(!isliving(target))
+		return ..()
+	if(!smash_check(target))
+		return ..()
+
 	var/mob/living/L = target
-	if(!istype(L))
-		return
-	if(user.a_intent != INTENT_HARM)
-		return
-	if(!smash_check(1))
-		return //won't always break on the first hit
-
 	// You are going to knock someone out for longer if they are not wearing a helmet.
-	var/weaken_duration = smash_duration + min(0, damage_force - L.legacy_mob_armor(target_zone, "melee") + 10)
+	var/weaken_duration = smash_duration + min(0, damage_force - L.legacy_mob_armor(zone, "melee") + 10)
 
-	if(target_zone == "head" && istype(L, /mob/living/carbon/))
+	if(zone == "head" && istype(L, /mob/living/carbon/))
 		user.visible_message("<span class='danger'>\The [user] smashes [src] over [L]'s head!</span>")
 		if(weaken_duration)
-			L.apply_effect(min(weaken_duration, 5), WEAKEN, blocked) // Never weaken more than a flash!
+			L.apply_effect(min(weaken_duration, 5), WEAKEN) // Never weaken more than a flash!
 	else
 		user.visible_message("<span class='danger'>\The [user] smashes [src] into [L]!</span>")
 
@@ -174,6 +177,7 @@
 	//Finally, smash the bottle. This kills (qdel) the bottle.
 	var/obj/item/broken_bottle/B = smash(L.loc, L)
 	user.put_in_active_hand(B)
+	return TRUE
 
 //Keeping this here for now, I'll ask if I should keep it here.
 /obj/item/broken_bottle
@@ -189,8 +193,7 @@
 	item_state = "beer"
 	atom_flags = NOCONDUCT
 	attack_verb = list("stabbed", "slashed", "attacked")
-	sharp = 1
-	edge = 0
+	damage_mode = DAMAGE_MODE_SHARP
 	var/icon/broken_outline = icon('icons/obj/drinks.dmi', "broken")
 
 /obj/item/reagent_containers/food/drinks/bottle/redeemersbrew
@@ -390,7 +393,7 @@
 	icon_state = "ambrosia_mead"
 	center_of_mass = list("x"=4, "y"=12)
 
-/obj/item/reagent_containers/food/drinks/bottle/royaljelly/Initialize(mapload)
+/obj/item/reagent_containers/food/drinks/bottle/ambrosia_mead/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("mead", 100)
 

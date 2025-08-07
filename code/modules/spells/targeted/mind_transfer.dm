@@ -63,7 +63,7 @@
 				add_verb(caster, V)
 
 		ghost.mind.transfer(caster)
-		caster.key = ghost.key	//have to transfer the key since the mind was not active
+		ghost.transfer_client_to(caster)
 		for(var/spell/S in ghost.spell_list)
 			caster.add_spell(S)
 		ghost.spell_list = list()

@@ -32,8 +32,7 @@
 		O.update_icon()
 	for(var/obj/structure/catwalk/C in get_turf(src))
 		if(C != src)
-			warning("Duplicate [type] in [loc] ([x], [y], [z])")
-			return INITIALIZE_HINT_QDEL
+			CRASH("Duplicate catwalk set to spawn at X [audit_loc()]. Please delete the duplicate catwalk.")
 	update_icon()
 
 /obj/structure/catwalk/Destroy()
@@ -70,17 +69,6 @@
 
 	icon_state = "catwalk[connectdir]-[diagonalconnect]"
 
-
-/obj/structure/catwalk/legacy_ex_act(severity)
-	switch(severity)
-		if(1.0)
-			qdel(src)
-		if(2.0)
-			qdel(src)
-		if(3.0)
-			qdel(src)
-	return
-
 /obj/structure/catwalk/attackby(obj/item/C as obj, mob/user as mob)
 	if(istype(C, /obj/item/weldingtool))
 		var/obj/item/weldingtool/WT = C
@@ -100,7 +88,7 @@
 
 /obj/structure/catwalk/Crossed()
 	. = ..()
-	if(isliving(usr) && !usr.is_incorporeal())
+	if(isliving(usr) && !usr.is_incorporeal() && !usr.is_avoiding_ground())
 		playsound(src, pick('sound/effects/footstep/catwalk1.ogg', 'sound/effects/footstep/catwalk2.ogg', 'sound/effects/footstep/catwalk3.ogg', 'sound/effects/footstep/catwalk4.ogg', 'sound/effects/footstep/catwalk5.ogg'), 25, 1)
 
 /obj/structure/catwalk/CheckExit(atom/movable/O, turf/target)
@@ -135,21 +123,12 @@
 	. = ..()
 	activate()
 
-/obj/effect/catwalk_plated/attack_hand(mob/user, list/params)
-	attack_generic()
-
-/obj/effect/catwalk_plated/attack_ghost()
-	. = ..()
-	attack_generic()
-
-/obj/effect/catwalk_plated/attack_generic()
-	activate()
-
 /obj/effect/catwalk_plated/proc/activate()
-	if(activated) return
+	if(activated)
+		return
 
 	if(locate(/obj/structure/catwalk) in loc)
-		warning("Frame Spawner: A catwalk already exists at [loc.x]-[loc.y]-[loc.z]")
+		CRASH("Frame spawner: A catwalk already exists at [audit_loc()]. Please remove the duplicate catwalk.")
 	else
 		var/obj/structure/catwalk/C = new /obj/structure/catwalk(loc)
 		C.plated_tile = tile
@@ -186,7 +165,7 @@
 
 /obj/structure/catwalk/plank/Crossed()
 	. = ..()
-	if(isliving(usr) && !usr.is_incorporeal())
+	if(isliving(usr) && !usr.is_incorporeal() && !usr.is_avoiding_ground())
 		switch(rand(1,100))
 			if(1 to 5)
 				qdel(src)
@@ -194,7 +173,7 @@
 			if(6 to 50)
 				inflict_atom_damage(
 					rand(10, 20),
-					flag = ARMOR_MELEE,
+					damage_flag = ARMOR_MELEE,
 				)
 				visible_message("<span class='danger'>The planks creak and groan as they're crossed.</span>")
 			if(51 to 100)

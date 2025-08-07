@@ -8,6 +8,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/fix_vein
+	step_name = "Fix vein"
+
 	priority = 2
 	allowed_tools = list(
 	/obj/item/surgical/FixOVein = 100, \
@@ -20,6 +22,7 @@
 	max_duration = 90
 
 /datum/surgery_step/fix_vein/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
+	if(!..()) return FALSE
 	if(!hasorgans(target))
 		return 0
 
@@ -70,9 +73,12 @@
 // Necrosis Surgery Step 1
 ///////////////////////////////////////////////////////////////
 /datum/surgery_step/fix_dead_tissue        //Debridement
+	step_name = "Debride tissue"
+
 	priority = 2
 	allowed_tools = list(
 		/obj/item/surgical/scalpel = 100,        \
+		/obj/item/surgical/scalpel_bronze = 90,	\
 		/obj/item/surgical/scalpel_primitive = 80,	\
 		/obj/item/material/knife = 75,    \
 		/obj/item/material/shard = 50,         \
@@ -112,12 +118,14 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, slicing an artery inside [target]'s [affected.name] with \the [tool]!</font>", \
 	"<font color='red'>Your hand slips, slicing an artery inside [target]'s [affected.name] with \the [tool]!</font>")
-	affected.create_wound(CUT, 20, 1)
+	affected.create_wound(WOUND_TYPE_CUT, 20, 1)
 
 ///////////////////////////////////////////////////////////////
 // Necrosis Surgery Step 2
 ///////////////////////////////////////////////////////////////
 /datum/surgery_step/treat_necrosis
+	step_name = "Treat necrosis"
+
 	priority = 2
 	allowed_tools = list(
 		/obj/item/reagent_containers/dropper = 100,
@@ -193,9 +201,12 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/hardsuit
+	step_name = "Remove hardsuit"
+
 	allowed_tools = list(
 		/obj/item/weldingtool = 80,
 		/obj/item/surgical/circular_saw = 60,
+		/obj/item/surgical/saw_bronze = 30,
 		/obj/item/surgical/saw_primitive = 25,
 		/obj/item/pickaxe/plasmacutter = 100
 		)
@@ -258,6 +269,8 @@
 	return target_zone == BP_TORSO && (MUTATION_HUSK in target.mutations)
 
 /datum/surgery_step/dehusk/structinitial
+	step_name = "Create mesh"
+
 	allowed_tools = list(
 		/obj/item/surgical/bioregen = 100
 	)
@@ -282,11 +295,13 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='danger'>[user]'s hand slips, and the mesh falls, with \the [tool] scraping [target]'s body.</span>", \
 	"<span class='danger'>Your hand slips, and the mesh falls, with \the [tool] scraping [target]'s body.</span>")
-	affected.create_wound(CUT, 15)
-	affected.create_wound(BRUISE, 10)
+	affected.create_wound(WOUND_TYPE_CUT, 15)
+	affected.create_wound(WOUND_TYPE_BRUISE, 10)
 	..()
 
 /datum/surgery_step/dehusk/relocateflesh
+	step_name = "Relocate flesh"
+
 	allowed_tools = list(
 		/obj/item/surgical/hemostat = 100,	\
 		/obj/item/stack/cable_coil = 75, 	\
@@ -314,11 +329,13 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='danger'>[user] accidentally rips a massive chunk out of [target]'s flesh with \the [tool], causing massive damage.</span>", \
 	"<span class='danger'>You accidentally rip a massive chunk out of [target]'s flesh with \the [tool], causing massive damage.</span>")
-	affected.create_wound(CUT, 25)
-	affected.create_wound(BRUISE, 10)
+	affected.create_wound(WOUND_TYPE_CUT, 25)
+	affected.create_wound(WOUND_TYPE_BRUISE, 10)
 	..()
 
 /datum/surgery_step/dehusk/structfinish
+	step_name = "Finish structure"
+
 	allowed_tools = list(
 		/obj/item/surgical/bioregen = 100, \
 		/obj/item/surgical/FixOVein = 30
@@ -354,8 +371,8 @@
 	else if(istype(tool,/obj/item/surgical/FixOVein))
 		user.visible_message("<span class='danger'>[user] fails to finish the structure over the gaps in [target]'s flesh, doing more damage than good.</span>", \
 	"<span class='danger'>You fail to finish the structure over the gaps in [target]'s flesh, doing more damage than good.</span>")
-	affected.create_wound(CUT, 15)
-	affected.create_wound(BRUISE, 10)
+	affected.create_wound(WOUND_TYPE_CUT, 15)
+	affected.create_wound(WOUND_TYPE_BRUISE, 10)
 	..()
 
 ///////////////////////////////////////////////////////////////
@@ -363,6 +380,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/internal/detoxify
+	step_name = "Detoxify"
+
 	blood_level = 1
 	allowed_tools = list(/obj/item/surgical/bioregen=100)
 	min_duration = 90
@@ -389,6 +408,6 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='danger'>[user]'s hand slips, failing to finish the surgery, and damaging [target] with \the [tool].</span>", \
 	"<span class='danger'>Your hand slips, failing to finish the surgery, and damaging [target] with \the [tool].</span>")
-	affected.create_wound(CUT, 15)
-	affected.create_wound(BRUISE, 10)
+	affected.create_wound(WOUND_TYPE_CUT, 15)
+	affected.create_wound(WOUND_TYPE_BRUISE, 10)
 	..()

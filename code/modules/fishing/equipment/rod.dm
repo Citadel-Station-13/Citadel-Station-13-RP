@@ -112,7 +112,7 @@
 	if(!istype(user))
 		return
 	var/beam_color = line?.line_color || default_line_color
-	var/datum/beam_legacy/fishing_line/fishing_line_beam = new(user, target, icon_state = "gray_pixel_line_scaling", beam_color = beam_color, override_target_pixel_y = target_py)
+	var/datum/beam_legacy/fishing_line/fishing_line_beam = new(user, target, icon_state = "fishing_line", beam_color = beam_color, override_target_pixel_y = target_py)
 	fishing_line_beam.lefthand = user.get_held_index(src) % 2 == 1
 	RegisterSignal(fishing_line_beam, COMSIG_LEGACY_BEAM_BEFORE_DRAW, PROC_REF(check_los))
 	RegisterSignal(fishing_line_beam, COMSIG_PARENT_QDELETING, PROC_REF(clear_line))

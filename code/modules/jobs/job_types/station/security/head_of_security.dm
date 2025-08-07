@@ -78,6 +78,10 @@
 	glasses = /obj/item/clothing/glasses/sunglasses/sechud
 	gloves = /obj/item/clothing/gloves/black
 	shoes = /obj/item/clothing/shoes/boots/jackboots
+	belt = /obj/item/storage/belt/security/nt_isd_preload
+
+	// todo below
+	// belt = /obj/item/storage/belt/security/nt_isd_preload
 
 	id_type = /obj/item/card/id/security/head
 	pda_type = /obj/item/pda/heads/hos

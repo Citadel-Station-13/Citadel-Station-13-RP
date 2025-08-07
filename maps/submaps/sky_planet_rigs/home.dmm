@@ -1,0 +1,742 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/floor/reinforced/outdoors,
+/area/template_noop)
+"b" = (
+/obj/structure/bed/chair/sofa/blue/corner{
+	dir = 1
+	},
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/home)
+"c" = (
+/obj/effect/wingrille_spawn/reinforced,
+/turf/simulated/floor/tiled,
+/area/submap/skyplanet/poi/home)
+"d" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced/outdoors,
+/area/template_noop)
+"e" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/structure/curtain/open/shower,
+/obj/machinery/shower{
+	dir = 1
+	},
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/kafel_full,
+/area/submap/skyplanet/poi/home)
+"f" = (
+/obj/effect/debris/cleanable/dirt,
+/turf/simulated/floor/tiled,
+/area/submap/skyplanet/poi/home)
+"g" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/submap/skyplanet/poi/home)
+"h" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/structure/table/standard{
+	name = "plastic table frame"
+	},
+/obj/machinery/microwave{
+	pixel_y = 6
+	},
+/turf/simulated/floor/tiled,
+/area/submap/skyplanet/poi/home)
+"j" = (
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/home)
+"k" = (
+/obj/structure/flora/pottedplant/stoutbush,
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/home)
+"m" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing,
+/turf/simulated/floor/reinforced/outdoors,
+/area/template_noop)
+"o" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/structure/bed/chair/comfy/black{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/submap/skyplanet/poi/home)
+"p" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled,
+/area/submap/skyplanet/poi/home)
+"q" = (
+/obj/structure/bed/chair/sofa/blue{
+	dir = 4
+	},
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/home)
+"r" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/structure/table/rack,
+/obj/item/clothing/suit/space,
+/obj/item/clothing/head/helmet/space,
+/obj/item/clothing/head/helmet/space,
+/obj/item/clothing/suit/space,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/item/tank/oxygen,
+/obj/item/tank/oxygen,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/turf/simulated/floor/tiled,
+/area/submap/skyplanet/poi/home)
+"s" = (
+/obj/structure/railing,
+/turf/simulated/floor/reinforced/outdoors,
+/area/template_noop)
+"t" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/structure/bed/double,
+/obj/item/bedsheet/bluedouble,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/submap/skyplanet/poi/home)
+"u" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced/outdoors,
+/area/template_noop)
+"v" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/bed/chair/sofa/blue/left{
+	dir = 4
+	},
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/home)
+"w" = (
+/obj/structure/fireplace{
+	pixel_y = 13
+	},
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/home)
+"x" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/structure/closet/cabinet,
+/obj/item/clothing/under/color/grey,
+/obj/item/clothing/under/color/grey,
+/obj/item/clothing/under/color/grey,
+/obj/item/clothing/shoes/black,
+/obj/item/clothing/shoes/black,
+/obj/item/clothing/shoes/black,
+/obj/item/ammo_magazine/a7_62mm/clip,
+/obj/item/ammo_magazine/a7_62mm/clip,
+/obj/item/ammo_magazine/a7_62mm/clip,
+/turf/simulated/floor/wood,
+/area/submap/skyplanet/poi/home)
+"y" = (
+/obj/machinery/suit_cycler/vintage,
+/turf/simulated/floor/tiled,
+/area/submap/skyplanet/poi/home)
+"z" = (
+/obj/machinery/door/airlock/glass_external/public,
+/turf/simulated/floor/tiled,
+/area/submap/skyplanet/poi/home)
+"A" = (
+/obj/structure/table/bench/wooden,
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/home)
+"B" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/machinery/door/airlock,
+/turf/simulated/floor/wood,
+/area/submap/skyplanet/poi/home)
+"C" = (
+/obj/effect/debris/cleanable/dirt,
+/turf/simulated/floor/wood,
+/area/submap/skyplanet/poi/home)
+"D" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/door/airlock/glass_external/public,
+/turf/simulated/floor/tiled,
+/area/submap/skyplanet/poi/home)
+"E" = (
+/obj/machinery/door/airlock/glass_external/public,
+/obj/structure/fans/tiny,
+/turf/simulated/floor/tiled,
+/area/submap/skyplanet/poi/home)
+"F" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/structure/bed/chair/comfy/black,
+/turf/simulated/floor/tiled,
+/area/submap/skyplanet/poi/home)
+"G" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced/outdoors,
+/area/template_noop)
+"H" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/structure/closet/crate/freezer/rations,
+/obj/item/storage/box/donkpockets,
+/obj/item/storage/box/donkpockets,
+/obj/item/storage/box/donkpockets,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled,
+/area/submap/skyplanet/poi/home)
+"I" = (
+/obj/effect/wingrille_spawn/reinforced,
+/turf/simulated/wall,
+/area/submap/skyplanet/poi/home)
+"J" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/structure/table/wooden_reinforced,
+/turf/simulated/floor/tiled,
+/area/submap/skyplanet/poi/home)
+"K" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled,
+/area/submap/skyplanet/poi/home)
+"L" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced/outdoors,
+/area/template_noop)
+"M" = (
+/turf/simulated/wall/r_wall,
+/area/template_noop)
+"N" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/machinery/door/airlock,
+/turf/simulated/floor/tiled/kafel_full,
+/area/submap/skyplanet/poi/home)
+"O" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/machinery/power/smes,
+/turf/simulated/floor/tiled,
+/area/submap/skyplanet/poi/home)
+"P" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/structure/loot_pile/surface/medicine_cabinet/fresh{
+	pixel_y = -35
+	},
+/obj/structure/sink{
+	pixel_y = 25
+	},
+/turf/simulated/floor/tiled/kafel_full,
+/area/submap/skyplanet/poi/home)
+"Q" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/submap/skyplanet/poi/home)
+"R" = (
+/turf/template_noop,
+/area/template_noop)
+"S" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced/outdoors,
+/area/template_noop)
+"T" = (
+/obj/machinery/atmospherics/pipe/tank/air{
+	dir = 4
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled,
+/area/submap/skyplanet/poi/home)
+"U" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/floor_decal/rust,
+/obj/structure/closet/toolcloset,
+/turf/simulated/floor/tiled,
+/area/submap/skyplanet/poi/home)
+"W" = (
+/turf/simulated/wall,
+/area/submap/skyplanet/poi/home)
+"X" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	dir = 8;
+	frequency = 1379;
+	id_tag = "rnd_s_airlock_pump"
+	},
+/turf/simulated/floor/tiled,
+/area/submap/skyplanet/poi/home)
+"Y" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled,
+/area/submap/skyplanet/poi/home)
+"Z" = (
+/obj/structure/bed/chair/sofa/blue/right{
+	dir = 1
+	},
+/turf/simulated/floor/wood/indoors,
+/area/submap/skyplanet/poi/home)
+
+(1,1,1) = {"
+M
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+M
+"}
+(2,1,1) = {"
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+"}
+(3,1,1) = {"
+R
+R
+R
+W
+W
+W
+W
+W
+W
+W
+W
+W
+W
+W
+W
+W
+W
+R
+R
+R
+"}
+(4,1,1) = {"
+R
+R
+W
+W
+y
+T
+W
+r
+O
+W
+k
+v
+q
+b
+W
+e
+W
+W
+R
+R
+"}
+(5,1,1) = {"
+R
+R
+W
+W
+Q
+p
+D
+Y
+Y
+W
+w
+A
+A
+Z
+W
+P
+W
+W
+R
+R
+"}
+(6,1,1) = {"
+R
+R
+W
+W
+K
+X
+z
+g
+f
+f
+j
+j
+j
+W
+W
+N
+W
+W
+R
+R
+"}
+(7,1,1) = {"
+R
+R
+W
+W
+E
+E
+W
+W
+K
+K
+f
+o
+K
+B
+C
+C
+W
+W
+R
+R
+"}
+(8,1,1) = {"
+R
+R
+a
+a
+a
+a
+a
+I
+h
+H
+F
+J
+U
+W
+x
+t
+W
+W
+R
+R
+"}
+(9,1,1) = {"
+R
+R
+a
+a
+a
+a
+a
+W
+c
+c
+c
+c
+W
+W
+W
+W
+W
+W
+R
+R
+"}
+(10,1,1) = {"
+R
+R
+L
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+R
+R
+"}
+(11,1,1) = {"
+R
+R
+L
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+R
+R
+"}
+(12,1,1) = {"
+R
+R
+L
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+s
+R
+R
+"}
+(13,1,1) = {"
+R
+R
+L
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+s
+R
+R
+"}
+(14,1,1) = {"
+R
+R
+L
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+s
+R
+R
+"}
+(15,1,1) = {"
+R
+R
+L
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+s
+R
+R
+"}
+(16,1,1) = {"
+R
+R
+L
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+s
+R
+R
+"}
+(17,1,1) = {"
+R
+R
+G
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+d
+R
+R
+"}
+(18,1,1) = {"
+R
+R
+R
+S
+u
+a
+a
+u
+u
+u
+u
+u
+u
+a
+a
+u
+m
+R
+R
+R
+"}
+(19,1,1) = {"
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+"}
+(20,1,1) = {"
+M
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+M
+"}

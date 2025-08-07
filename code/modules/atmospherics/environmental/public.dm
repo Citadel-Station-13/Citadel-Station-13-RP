@@ -1,5 +1,3 @@
-//* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
 
 // when writing atmos machinery, prefer using these procs
 // this lets us somewhat separate API from implemenetation of the environmental module.
@@ -96,7 +94,7 @@
  * return temperature of air
  */
 /atom/proc/return_temperature()
-	return return_air()?.temperature
+	return return_air_immutable()?.temperature
 
 /**
  * gets moles of gas in a single turf's worth of air

@@ -19,7 +19,3 @@
 		var/datum/species/S = path
 		if(initial(S.min_age) < 18)
 			Fail("[path] has min age below 18")
-	for(var/path in subtypesof(/datum/character_species))
-		var/datum/character_species/S = path
-		if(initial(S.min_age) < 18)
-			Fail("[path] has min age below 18")

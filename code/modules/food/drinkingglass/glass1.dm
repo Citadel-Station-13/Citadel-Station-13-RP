@@ -8,7 +8,7 @@
 	center_of_mass = list("x"=16, "y"=10)
 	drop_sound = 'sound/items/drop/drinkglass.ogg'
 	pickup_sound =  'sound/items/pickup/drinkglass.ogg'
-	materials_base = list(MAT_GLASS = 500)
+	materials_base = list(MAT_GLASS = 80)
 
 /obj/item/reagent_containers/food/drinks/drinkingglass/on_reagent_change()
 	/*if(reagents.reagent_list.len > 1 )
@@ -18,8 +18,8 @@
 	/*else if(reagents.reagent_list.len == 1)
 		for(var/datum/reagent/R in reagents.reagent_list)
 			switch(R.id)*/
-	if (reagents.reagent_list.len > 0)
-		var/datum/reagent/R = reagents.get_master_reagent()
+	if (reagents.total_volume)
+		var/datum/reagent/R = reagents.get_majority_reagent_datum()
 
 		if(R.glass_icon_state)
 			icon_state = R.glass_icon_state
@@ -59,10 +59,11 @@
 	amount_per_transfer_from_this = 5
 	volume = 30
 	center_of_mass = list("x"=16, "y"=16)
+	materials_base = list(MAT_GLASS = 60)
 
 /obj/item/reagent_containers/food/drinks/cup/on_reagent_change()
-	if (reagents.reagent_list.len > 0)
-		var/datum/reagent/R = reagents.get_master_reagent()
+	if (reagents.total_volume)
+		var/datum/reagent/R = reagents.get_majority_reagent_datum()
 
 		if(R.cup_icon_state)
 			icon_state = R.cup_icon_state
@@ -113,7 +114,7 @@
 	icon_state = "shotglass"
 	amount_per_transfer_from_this = 10
 	volume = 10
-	materials_base = list(MAT_GLASS = 175)
+	materials_base = list(MAT_GLASS = 10)
 
 /obj/item/reagent_containers/food/drinks/drinkingglass/shotglass/on_reagent_change()
 	cut_overlays()
@@ -131,7 +132,7 @@
 
 		filling.color += reagents.get_color()
 		add_overlay(filling)
-		name = "shot glass of " + reagents.get_master_reagent_name() //No matter what, the glass will tell you the reagent's name. Might be too abusable in the future.
+		name = "shot glass of " + reagents.get_majority_reagent_name() //No matter what, the glass will tell you the reagent's name. Might be too abusable in the future.
 	else
 		name = "shot glass"
 
@@ -140,7 +141,7 @@
 	desc = "Big enough to contain enough protein to get perfectly swole. Don't mind the bits."
 	icon_state = "fitness-cup_black"
 	volume = 100
-	materials_base = list(MAT_PLASTIC = 2000)
+	materials_base = list(MAT_PLASTIC = 120)
 
 /obj/item/reagent_containers/food/drinks/drinkingglass/fitnessflask/Initialize(mapload)
 	. = ..()

@@ -22,8 +22,8 @@ $bg-map: colors.$bg-map !default;
   // Adapt text color to background luminance to ensure high contast
   $luminance: luminance($button-solid-color);
   $text-color: if($luminance > 0.4,
-    rgba(0, 0, 0, 1),
-    rgba(255, 255, 255, 1));
+      rgba(0, 0, 0, 1),
+      rgba(255, 255, 255, 1));
 
   transition: color 50ms, background-color 50ms;
   background-color: $button-solid-color;
@@ -48,8 +48,8 @@ $bg-map: colors.$bg-map !default;
   // Adapt text color to background luminance to ensure high contast
   $luminance: luminance($button-flash-color);
   $text-color: if($luminance > 0.4,
-    rgba(0, 0, 0, 1),
-    rgba(255, 255, 255, 1));
+      rgba(0, 0, 0, 1),
+      rgba(255, 255, 255, 1));
 
   background-color: $button-flash-color;
   color: $text-color;
@@ -76,7 +76,9 @@ $bg-map: colors.$bg-map !default;
     margin-bottom: 0;
   }
 
-  .fa, .fas, .far {
+  .fa,
+  .fas,
+  .far {
     margin-left: -0.25em;
     margin-right: -0.25em;
     min-width: 1.333em;
@@ -85,14 +87,20 @@ $bg-map: colors.$bg-map !default;
 }
 
 .Button--hasContent {
+
   // Add a margin to the icon to keep it separate from the text
-  .fa, .fas, .far {
+  .fa,
+  .fas,
+  .far {
     margin-right: 0.25em;
   }
 }
 
 .Button--hasContent.Button--iconPosition--right {
-  .fa, .fas, .far {
+
+  .fa,
+  .fas,
+  .far {
     margin-right: 0px;
     margin-left: 3px;
   }
@@ -130,6 +138,7 @@ $bg-map: colors.$bg-map !default;
     0% {
       background-color: color.scale(lighten($color-value, 0%), $alpha: -50%);
     }
+
     100% {
       background-color: lighten($color-value, 35%);
     }
@@ -148,6 +157,7 @@ $bg-map: colors.$bg-map !default;
   0% {
     background-color: color.scale(lighten($color-default, 0%), $alpha: -50%);
   }
+
   100% {
     background-color: lighten($color-default, 35%);
   }
@@ -165,6 +175,7 @@ $bg-map: colors.$bg-map !default;
   0% {
     background-color: color.scale(lighten($color-caution, 0%), $alpha: -50%);
   }
+
   100% {
     background-color: lighten($color-caution, 35%);
   }
@@ -182,6 +193,7 @@ $bg-map: colors.$bg-map !default;
   0% {
     background-color: color.scale(lighten($color-danger, 0%), $alpha: -50%);
   }
+
   100% {
     background-color: lighten($color-danger, 35%);
   }
@@ -208,6 +220,18 @@ $bg-map: colors.$bg-map !default;
 
 .Button--flash--transparent {
   @include button-flash(base.$color-bg, 'transparent');
+}
+
+.Button--color--transparent-with-disabling {
+  @include button-color(base.$color-bg);
+  background-color: rgba(base.$color-bg, 0);
+}
+
+.Button--disabled.Button--color--transparent-with-disabling {
+  /* the base behavior for disabled buttons is to be grayed out, _even when transparent_ */
+  /* the transparent-with-disabling class handles this correctly */
+  background-color: rgba(base.$color-bg, 0) !important;
+  color: $color-transparent-text !important;
 }
 
 .Button--disabled {

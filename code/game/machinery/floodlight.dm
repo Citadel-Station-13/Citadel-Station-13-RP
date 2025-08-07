@@ -9,14 +9,15 @@
 	var/unlocked = FALSE
 	var/open = FALSE
 	var/brightness_on = 8		//can't remember what the maxed out value is
+	climb_allowed = TRUE
 
 /obj/machinery/floodlight/Initialize(mapload)
 	. = ..()
 	cell = new(src)
 
-/obj/machinery/floodlight/update_icon()
-	cut_overlays()
+/obj/machinery/floodlight/update_icon_state()
 	icon_state = "flood[open ? "o" : ""][open && cell ? "b" : ""]0[on]"
+	return ..()
 
 /obj/machinery/floodlight/process(delta_time)
 	if(!on)
@@ -66,7 +67,7 @@
 		if(!turn_on(TRUE))
 			to_chat(user, "You try to turn on \the [src] but it does not work.")
 
-/obj/machinery/floodlight/attack_hand(mob/user, list/params)
+/obj/machinery/floodlight/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(open && cell)
 		user.grab_item_from_interacted_with(cell, src)
 
@@ -89,6 +90,8 @@
 	update_icon()
 
 /obj/machinery/floodlight/attackby(obj/item/W, mob/user)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 	if(W.is_screwdriver())
 		if(!open)
 			if(unlocked)

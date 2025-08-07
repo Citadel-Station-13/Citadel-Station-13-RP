@@ -12,8 +12,8 @@ var/global/list/stool_cache = list() //haha stool
 	material_parts = MATERIAL_DEFAULT_ABSTRACTED
 	material_primary = "base"
 	var/base_icon = "stool_base"
-	var/datum/material/material_base
-	var/datum/material/material_padding
+	var/datum/prototype/material/material_base
+	var/datum/prototype/material/material_padding
 
 /obj/item/stool/Initialize(mapload, new_material, new_material_padding)
 	if(!isnull(new_material))
@@ -33,8 +33,8 @@ var/global/list/stool_cache = list() //haha stool
 		if("padding")
 			return material_padding
 
-/obj/item/stool/material_set_part(part, datum/material/material)
-	var/datum/material/old
+/obj/item/stool/material_set_part(part, datum/prototype/material/material)
+	var/datum/prototype/material/old
 	var/primary = part == "base"
 	switch(part)
 		if("base")
@@ -54,8 +54,8 @@ var/global/list/stool_cache = list() //haha stool
 	)
 
 /obj/item/stool/material_init_parts()
-	material_base = SSmaterials.resolve_material(material_base)
-	material_padding = SSmaterials.resolve_material(material_padding)
+	material_base = RSmaterials.fetch(material_base)
+	material_padding = RSmaterials.fetch(material_padding)
 	register_material(material_base, TRUE)
 	register_material(material_padding, FALSE)
 
@@ -92,20 +92,20 @@ var/global/list/stool_cache = list() //haha stool
 	add_overlay(overlays_to_add)
 
 /obj/item/stool/proc/add_padding(var/padding_type)
-	set_material_part("padding", SSmaterials.resolve_material(padding_type))
+	set_material_part("padding", RSmaterials.fetch(padding_type))
 
 /obj/item/stool/proc/remove_padding()
 	if(material_padding)
 		material_padding.place_sheet(get_turf(src))
 		set_material_part("padding", null)
 
-/obj/item/stool/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/stool/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
 
 	var/mob/living/L = user
 	if (prob(5) && istype(L) && istype(target, /mob/living))
 		L.visible_message("<span class='danger'>[L] breaks [src] over [target]'s back!</span>")
-		L.setClickCooldown(L.get_attack_speed())
+		L.setClickCooldownLegacy(L.get_attack_speed_legacy())
 		L.do_attack_animation(target)
 		L.drop_item_to_ground(src, INV_OP_FORCE)
 		dismantle()
@@ -173,5 +173,5 @@ var/global/list/stool_cache = list() //haha stool
 
 /obj/item/stool/padded
 	icon_state = "stool_padded_preview" //set for the map
-	material_base = /datum/material/steel
-	material_padding = /datum/material/carpet
+	material_base = /datum/prototype/material/steel
+	material_padding = /datum/prototype/material/carpet

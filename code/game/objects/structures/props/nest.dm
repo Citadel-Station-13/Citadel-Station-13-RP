@@ -34,7 +34,7 @@
 	STOP_PROCESSING(SSobj, src)
 	..()
 
-/obj/structure/prop/nest/attack_hand(mob/user, list/params) // Used to tell the player that this isn't useful for anything.
+/obj/structure/prop/nest/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	..()
 	if(user && prob(disturbance_spawn_chance))
 		spawn_creature(get_turf(src))
@@ -53,7 +53,7 @@
 		var/spawn_choice = pick(creature_types)
 		var/mob/living/L = new spawn_choice(spawnpoint)
 		if(den_faction)
-			L.faction = den_faction
+			L.set_iff_factions(den_faction)
 		visible_message("<span class='warning'>\The [L] crawls out of \the [src].</span>")
 		den_mobs += L
 		tally++

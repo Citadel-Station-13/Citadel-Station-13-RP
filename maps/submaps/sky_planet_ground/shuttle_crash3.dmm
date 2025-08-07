@@ -1,0 +1,603 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/template_noop,
+/area/template_noop)
+"b" = (
+/obj/structure/largecrate/mule,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/shuttlecrash3)
+"c" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/shuttlecrash3)
+"d" = (
+/obj/structure/salvageable/console_broken_os{
+	dir = 4
+	},
+/obj/item/gps/internal/poi{
+	gps_tag = "Faint SOS"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/shuttlecrash3)
+"i" = (
+/obj/structure/salvageable/console_broken_os{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/shuttlecrash3)
+"j" = (
+/obj/structure/largecrate/animal/carp,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/shuttlecrash3)
+"k" = (
+/obj/item/stack/material/wood,
+/obj/item/stack/material/wood,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/shuttlecrash3)
+"l" = (
+/obj/structure/largecrate/animal/chick,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/shuttlecrash3)
+"m" = (
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
+/area/submap/skyplanet/poi/shuttlecrash3)
+"n" = (
+/obj/effect/floor_decal/industrial/halfstair,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/shuttlecrash3)
+"o" = (
+/obj/random/multiple/large_corp_crate,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/shuttlecrash3)
+"p" = (
+/obj/structure/closet/crate/secure/phoron,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/shuttlecrash3)
+"q" = (
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/template_noop)
+"s" = (
+/obj/structure/largecrate/animal/spiders,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/shuttlecrash3)
+"t" = (
+/obj/item/stack/material/wood,
+/obj/item/stack/material/wood,
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/shuttlecrash3)
+"u" = (
+/obj/machinery/atmospherics/component/unary/engine{
+	dir = 8
+	},
+/turf/template_noop,
+/area/template_noop)
+"v" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/shuttlecrash3)
+"y" = (
+/obj/machinery/power/fractal_reactor/fluff/smes,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/shuttlecrash3)
+"A" = (
+/obj/structure/largecrate/animal/mulebot,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/shuttlecrash3)
+"B" = (
+/obj/machinery/portable_atmospherics/canister/empty/phoron,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/shuttlecrash3)
+"C" = (
+/obj/machinery/atmospherics/component/unary/engine{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
+/area/template_noop)
+"E" = (
+/turf/simulated/floor/plating,
+/area/template_noop)
+"F" = (
+/obj/machinery/door/airlock/hatch,
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/shuttlecrash3)
+"H" = (
+/obj/spawner/window/low_wall/firelocks,
+/obj/machinery/door/blast/regular,
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/shuttlecrash3)
+"J" = (
+/turf/simulated/wall/r_lead,
+/area/submap/skyplanet/poi/shuttlecrash3)
+"K" = (
+/obj/structure/largecrate/animal/horse,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/shuttlecrash3)
+"L" = (
+/mob/living/simple_mob/vore/aggressive/giant_snake,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/shuttlecrash3)
+"M" = (
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
+/area/template_noop)
+"N" = (
+/obj/structure/largecrate/animal/carp,
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/shuttlecrash3)
+"O" = (
+/obj/spawner/window/low_wall/firelocks,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/shuttlecrash3)
+"P" = (
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/submap/skyplanet/poi/shuttlecrash3)
+"Q" = (
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/shuttlecrash3)
+"R" = (
+/obj/random/multiple/large_corp_crate/no_weapons,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/shuttlecrash3)
+"S" = (
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/shuttlecrash3)
+"U" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/shuttlecrash3)
+"X" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/shuttlecrash3)
+"Y" = (
+/mob/living/simple_mob/vore/aggressive/giant_snake,
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/shuttlecrash3)
+"Z" = (
+/obj/structure/largecrate/animal/goat,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/shuttlecrash3)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+H
+H
+H
+H
+H
+H
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+J
+i
+d
+i
+i
+J
+J
+a
+a
+a
+a
+a
+a
+"}
+(3,1,1) = {"
+a
+a
+a
+a
+M
+J
+a
+q
+P
+P
+P
+U
+X
+J
+J
+M
+a
+a
+a
+a
+"}
+(4,1,1) = {"
+a
+a
+a
+a
+M
+H
+E
+q
+P
+S
+Q
+U
+U
+S
+Q
+M
+a
+a
+a
+a
+"}
+(5,1,1) = {"
+a
+a
+M
+M
+M
+H
+q
+P
+Q
+P
+Q
+X
+X
+Q
+H
+M
+a
+a
+a
+a
+"}
+(6,1,1) = {"
+a
+a
+a
+a
+M
+H
+m
+S
+S
+U
+S
+Q
+Q
+Q
+H
+M
+a
+a
+a
+a
+"}
+(7,1,1) = {"
+a
+M
+J
+a
+M
+J
+Q
+S
+Q
+Q
+S
+S
+Q
+S
+J
+a
+M
+J
+a
+a
+"}
+(8,1,1) = {"
+M
+M
+J
+M
+M
+J
+J
+J
+v
+J
+J
+v
+J
+J
+J
+a
+M
+J
+M
+a
+"}
+(9,1,1) = {"
+M
+M
+J
+M
+M
+J
+J
+J
+Q
+Q
+Q
+Y
+J
+J
+J
+M
+a
+J
+M
+M
+"}
+(10,1,1) = {"
+M
+J
+J
+J
+M
+M
+J
+J
+X
+X
+S
+Q
+J
+J
+M
+M
+J
+J
+J
+M
+"}
+(11,1,1) = {"
+J
+J
+j
+J
+J
+M
+M
+J
+U
+U
+Q
+X
+J
+M
+M
+J
+J
+A
+J
+J
+"}
+(12,1,1) = {"
+J
+N
+Q
+p
+J
+J
+M
+J
+X
+X
+X
+Q
+J
+M
+J
+J
+b
+S
+o
+J
+"}
+(13,1,1) = {"
+J
+t
+U
+U
+R
+J
+J
+J
+J
+F
+J
+J
+J
+J
+J
+Z
+S
+X
+S
+J
+"}
+(14,1,1) = {"
+J
+j
+Q
+S
+X
+U
+U
+S
+c
+Q
+S
+n
+S
+Q
+k
+Q
+S
+S
+K
+J
+"}
+(15,1,1) = {"
+J
+J
+j
+S
+U
+U
+U
+S
+c
+Q
+S
+n
+Q
+U
+U
+U
+U
+l
+J
+J
+"}
+(16,1,1) = {"
+a
+J
+J
+s
+X
+U
+X
+Q
+O
+X
+U
+O
+S
+X
+U
+Q
+j
+J
+J
+a
+"}
+(17,1,1) = {"
+M
+M
+J
+J
+s
+L
+Q
+S
+J
+Q
+Q
+J
+S
+X
+U
+j
+J
+J
+a
+M
+"}
+(18,1,1) = {"
+a
+a
+M
+J
+J
+S
+B
+B
+J
+F
+F
+J
+y
+B
+B
+J
+J
+M
+M
+M
+"}
+(19,1,1) = {"
+a
+a
+M
+M
+J
+J
+J
+J
+J
+a
+a
+J
+J
+J
+J
+J
+M
+M
+M
+M
+"}
+(20,1,1) = {"
+M
+M
+M
+M
+u
+u
+u
+C
+C
+a
+a
+C
+C
+C
+C
+u
+M
+a
+M
+a
+"}

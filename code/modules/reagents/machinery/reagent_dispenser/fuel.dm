@@ -39,7 +39,7 @@
 		if(rig)
 			. += "<span class='notice'>There is some kind of device rigged to the tank.</span>"
 
-/obj/structure/reagent_dispensers/fueltank/attack_hand()
+/obj/structure/reagent_dispensers/fueltank/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if (rig)
 		usr.visible_message("[usr] begins to detach [rig] from \the [src].", "You begin to detach [rig] from \the [src]")
 		if(do_after(usr, 20))
@@ -84,13 +84,14 @@
 
 	return ..()
 
-/obj/structure/reagent_dispensers/fueltank/bullet_act(var/obj/projectile/Proj)
-	if(Proj.get_structure_damage())
-		if(istype(Proj.firer))
-			message_admins("[key_name_admin(Proj.firer)] shot fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]) (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>).")
-			log_game("[key_name(Proj.firer)] shot fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]).")
+/obj/structure/reagent_dispensers/fueltank/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	. = ..()
+	if(proj.get_structure_damage())
+		if(istype(proj.firer))
+			message_admins("[key_name_admin(proj.firer)] shot fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]) (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>).")
+			log_game("[key_name(proj.firer)] shot fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]).")
 
-		if(!istype(Proj ,/obj/projectile/beam/lasertag) && !istype(Proj ,/obj/projectile/beam/practice) )
+		if(!istype(proj ,/obj/projectile/beam/lasertag) && !istype(proj ,/obj/projectile/beam/practice) )
 			explode()
 
 /obj/structure/reagent_dispensers/fueltank/legacy_ex_act()

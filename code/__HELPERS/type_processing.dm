@@ -1,54 +1,64 @@
+/**
+ * todo: rename this
+ *
+ * Reformat types to be more readable for admin interfaces.
+ *
+ * This is done because BYOND is hell and "input in list" is obnoxious.
+ */
 /proc/make_types_fancy(list/types)
 	if (ispath(types))
 		types = list(types)
 	. = list()
+	var/static/list/shortcut_lookup = list(
+		/obj/effect/debris = "//debris",
+		/obj/item/radio/headset = "//headset",
+		/obj/item/reagent_containers/food/drinks = "//drink",
+		/obj/item/reagent_containers/food = "//food",
+		/obj/machinery/atmospherics = "//atmos",
+		/obj/machinery/portable_atmospherics = "//port_atmos",
+		/obj/vehicle = "//vehicle",
+		/obj/item/vehicle_chassis = "//vehicle_chassis",
+		/obj/item/vehicle_part = "//vehicle_part",
+		/obj/item/vehicle_component  = "//vehicle_component",
+		/obj/item/vehicle_module = "//vehicle_module",
+		/obj/item/vehicle_module/weapon = "//vehicle_weapon",
+		/obj/item/organ = "//organ",
+		/obj/item/gun_attachment = "//gun-attachment",
+		/obj/item/gun_component = "//gun-component",
+		/obj/item/gun/projectile/ballistic = "//gun-ballistic",
+		/obj/item/gun/projectile/energy = "//gun-energy",
+		/obj/item/gun/projectile/magnetic = "//gun-magnetic",
+		/obj/item/gun = "//gun",
+		/obj/item/ammo_casing = "//ammo",
+		/obj/item/ammo_magazine = "//magazine",
+		/obj/item = "//item",
+		/obj/machinery = "//machine",
+		/obj/effect = "//effect",
+		/turf/simulated/floor = "//floor",
+		/turf/simulated = "//simulated",
+		/mob/living/carbon = "//carbon",
+		/mob/living/simple_mob = "//simple",
+		/mob/living = "//living",
+		// we must have normal A-T-O-M handled; otherwise weird stuff happens when it falls to /atom/movable
+		/obj = "/obj",
+		/turf = "/turf",
+		/area = "/area",
+		/mob = "/mob",
+		/atom/movable = "//movable",
+	)
 	for(var/type in types)
-		var/typename = "[type]"
-		var/static/list/TYPES_SHORTCUTS = list(
-			/obj/effect/debris/cleanable = "CLEANABLE",
-			/obj/item/radio/headset = "HEADSET",
-			/obj/item/clothing/head/helmet/space = "SPESSHELMET",
-			// /obj/item/book/manual = "MANUAL",
-			// /obj/item/reagent_containers/food/drinks = "DRINK", //longest paths comes first
-			// /obj/item/reagent_containers/food = "FOOD",
-			// /obj/item/reagent_containers = "REAGENT_CONTAINERS",
-			/obj/machinery/atmospherics = "ATMOS_MACH",
-			/obj/machinery/portable_atmospherics = "PORT_ATMOS",
-			/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack = "MECHA_MISSILE_RACK",
-			/obj/item/mecha_parts/mecha_equipment = "MECHA_EQUIP",
-			/obj/item/organ = "ORGAN",
-			/obj/item = "ITEM",
-			/obj/machinery = "MACHINERY",
-			/obj/effect = "EFFECT",
-			/obj = "O",
-			/datum = "D",
-			// /turf/open = "OPEN",
-			// /turf/closed = "CLOSED",
-			/turf = "T",
-			/mob/living/carbon = "CARBON",
-			/mob/living/simple_animal = "SIMPLE",
-			/mob/living = "LIVING",
-			/mob = "M",
-		)
-		for (var/tn in TYPES_SHORTCUTS)
-			if (copytext(typename,1, length("[tn]/")+1)=="[tn]/" /*findtextEx(typename,"[tn]/",1,2)*/ )
-				typename = TYPES_SHORTCUTS[tn]+copytext(typename,length("[tn]/"))
+		var/shortcut
+		for(var/prefix in shortcut_lookup)
+			if(ispath(type, prefix))
+				shortcut = "[shortcut_lookup[prefix]][copytext("[type]", length("[prefix]") + 1)]"
 				break
-		.[typename] = type
+		.[shortcut || "[type]"] = type
 
 /proc/get_fancy_list_of_atom_types()
-	var/static/list/pre_generated_list
-	if (!pre_generated_list) //init
-		pre_generated_list = make_types_fancy(typesof(/atom))
-	return pre_generated_list
-
+	return make_types_fancy(typesof(/atom))
 
 /proc/get_fancy_list_of_datum_types()
-	var/static/list/pre_generated_list
-	if (!pre_generated_list) //init
-		pre_generated_list = make_types_fancy(sortList(typesof(/datum) - typesof(/atom)))
-	return pre_generated_list
-
+	return make_types_fancy(typesof(/datum) - typesof(/atom))
 
 /proc/filter_fancy_list(list/L, filter as text)
 	var/list/matches = new

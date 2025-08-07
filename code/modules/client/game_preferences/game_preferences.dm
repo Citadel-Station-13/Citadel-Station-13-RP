@@ -1,10 +1,21 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 silicons                             *//
 
+/client/on_new_hook_stability_checks()
+	// preferences are critical; if they can't load, kick them
+	spawn(0)
+		if(!preferences.block_on_initialized(5 SECONDS))
+			disconnection_message("A fatal error occurred while attempting to load: preferences not initialized. Please notify a coder.")
+			stack_trace("we just kicked a client due to prefs not loading; something is horribly wrong!")
+			qdel(src)
+	return ..()
+
 /**
  * Game preferences
  *
  * Game prefs don't need an init order because unlike character setup, there's no dependencies, in theory.
+ *
+ * todo: rework this a bit, the way i did tgui is pretty atrocious;
  */
 /datum/game_preferences
 	//* Loading *//
@@ -19,7 +30,7 @@
 	// todo: move menu options in here and not from /datum/preferences
 
 	//* Middleware - Keybindings *//
-	/// keybindings - key to list of keybinds
+	/// keybindings - key to list of keybind ids
 	var/list/keybindings
 
 	//* Middleware - Toggles *//
@@ -61,13 +72,16 @@
 //* Init *//
 
 /datum/game_preferences/proc/initialize()
-	perform_initial_load()
-	initialized = TRUE
+	// do not mess with client init; start a new call chain
+	spawn(0)
+		perform_initial_load()
+		initialized = TRUE
 
 /datum/game_preferences/proc/on_reconnect()
-	if(!initialized)
-		return
-	initialize_client()
+	// do not mess with client init; start a new call chain
+	spawn(0)
+		block_on_initialized()
+		initialize_client()
 
 /datum/game_preferences/proc/block_on_initialized(timeout = 10 SECONDS)
 	var/wait_until = world.time + timeout
@@ -133,12 +147,12 @@
 
 	var/list/old_toggles
 	legacy_savefile["preferences"] >> old_toggles
-
-	for(var/key in SSpreferences.toggles_by_key)
-		var/datum/game_preference_toggle/toggle = SSpreferences.toggles_by_key[key]
-		if(!toggle.legacy_key)
-			continue
-		toggles_by_key[key] = (toggle.legacy_key in old_toggles)
+	if(islist(old_toggles))
+		for(var/key in SSpreferences.toggles_by_key)
+			var/datum/game_preference_toggle/toggle = SSpreferences.toggles_by_key[key]
+			if(!toggle.legacy_key)
+				continue
+			toggles_by_key[key] = (toggle.legacy_key in old_toggles)
 
 	var/list/old_keybinds
 	legacy_savefile["key_bindings"] >> old_keybinds
@@ -151,6 +165,7 @@
 	return TRUE
 
 /datum/game_preferences/proc/perform_initial_load()
+	sleep(2 SECONDS)
 	if(!is_guest)
 		// only if not guest
 		if(SSdbcore.IsConnected())
@@ -253,9 +268,6 @@
 		CRASH("invalid fetch")
 	if(!initialized)
 		return FALSE
-	// we don't check is visible, as it's checked on 'get'
-	// if(!toggle.is_visible(active))
-	// 	return FALSE
 	toggles_by_key[toggle.key] = value
 	if(active)
 		toggle.toggled(active, value)
@@ -268,9 +280,6 @@
 		CRASH("invalid fetch")
 	if(!initialized)
 		return FALSE
-	// we don't check is visible, as it's checked on 'get'
-	// if(!toggle.is_visible(active))
-	// 	return FALSE
 	toggles_by_key[toggle.key] = !toggles_by_key[toggle.key]
 	if(active)
 		toggle.toggled(active, toggles_by_key[toggle.key])
@@ -363,7 +372,7 @@
 	usr = null
 
 	var/datum/db_query/query = SSdbcore.NewQuery(
-		"SELECT `toggles`, `entries`, `misc`, `keybinds`, `version` FROM [format_table_name("game_preferences")] \
+		"SELECT `toggles`, `entries`, `misc`, `keybinds`, `version` FROM [DB_PREFIX_TABLE_NAME("game_preferences")] \
 		WHERE `player` = :player",
 		list(
 			"player" = authoritative_player_id,
@@ -407,7 +416,7 @@
 	usr = null
 
 	var/datum/db_query/query = SSdbcore.NewQuery(
-		"INSERT INTO [format_table_name("game_preferences")] \
+		"INSERT INTO [DB_PREFIX_TABLE_NAME("game_preferences")] \
 		(`player`, `toggles`, `entries`, `misc`, `keybinds`, `version`, `modified`) VALUES \
 		(:player, :toggles, :entries, :misc, :keybinds, :version, Now()) ON DUPLICATE KEY UPDATE \
 		`player` = VALUES(player), `toggles` = VALUES(toggles), `entries` = VALUES(entries), `misc` = VALUES(misc), \

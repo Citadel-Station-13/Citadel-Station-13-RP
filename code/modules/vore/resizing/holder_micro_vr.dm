@@ -22,7 +22,7 @@
 	for(var/mob/living/carbon/human/O in contents)
 		O.request_strip_menu(usr)
 
-/obj/item/holder/micro/attack_self(mob/user)
+/obj/item/holder/micro/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

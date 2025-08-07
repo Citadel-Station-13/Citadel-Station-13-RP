@@ -128,6 +128,9 @@
 
 /datum/ai_holder/polaris/simple_mob/melee
 
+// This allows mobs, with the proper code, to tunnel.
+/datum/ai_holder/polaris/simple_mob/melee/tunneler
+
 // Dances around the enemy its fighting, making it harder to fight back.
 /datum/ai_holder/polaris/simple_mob/melee/evasive
 

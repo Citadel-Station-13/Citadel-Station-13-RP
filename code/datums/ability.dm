@@ -102,7 +102,6 @@
 		action = new(src)
 	action.name = hotbind_name()
 	action.desc = hotbind_desc()
-	action.button_managed = TRUE
 	action.button_icon = action_icon
 	action.button_icon_state = action_state
 	action.background_icon = background_icon
@@ -116,7 +115,9 @@
 	var/availability = 1
 	if(cooldown && !isnull(last_used))
 		availability = clamp((world.time - last_used) / cooldown, 0, 1)
-	action?.push_button_update(availability, (interact_type == ABILITY_INTERACT_TOGGLE) && enabled)
+	action?.background_additional_overlay = (interact_type) == ABILITY_INTERACT_TOGGLE && enabled ? "[background_state]_on" : null
+	action?.push_button_availability(availability, FALSE)
+	action?.update_buttons()
 	recheck_queued_action_update()
 
 /datum/ability/proc/recheck_queued_action_update()
@@ -129,9 +130,9 @@
 	if(next_available > 0)
 		addtimer(CALLBACK(src, PROC_REF(update_action)), next_available, TIMER_STOPPABLE)
 
-/datum/ability/ui_action_click(datum/action/action, mob/user)
+/datum/ability/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	. = ..()
-	action_trigger(user)
+	action_trigger(actor.performer)
 
 /datum/ability/proc/action_trigger(mob/user)
 	attempt_trigger(user)
@@ -211,7 +212,7 @@
 	if(update_action)
 		update_action()
 	action?.background_icon_state += "_on"
-	action?.update_button()
+	action?.update_buttons()
 	on_enable()
 
 /datum/ability/proc/disable(update_action)
@@ -219,7 +220,7 @@
 	if(update_action)
 		update_action()
 	action?.background_icon_state = background_state
-	action?.update_button()
+	action?.update_buttons()
 	on_disable()
 
 /datum/ability/proc/on_enable()
@@ -234,12 +235,12 @@
 	bound = TRUE
 	generate_action()
 	if(!isnull(owner))
-		action?.grant(owner)
+		action?.grant(owner.actions_innate)
 
 /datum/ability/proc/unbind()
 	bound = FALSE
 	if(!isnull(owner))
-		action?.remove(owner)
+		action?.revoke(owner.actions_innate)
 
 /datum/ability/proc/associate(mob/M)
 	if(owner == M)
@@ -248,7 +249,7 @@
 	owner = M
 	owner.register_ability(src)
 	if(bound)
-		action?.grant(M)
+		action?.grant(owner.actions_innate)
 		update_action()
 	else if(always_bind && !hidden)
 		quickbind()
@@ -256,7 +257,7 @@
 /datum/ability/proc/disassociate(mob/M)
 	ASSERT(owner == M)
 	if(bound)
-		action?.remove(owner)
+		action?.revoke(owner.actions_innate)
 	owner.unregister_ability(src)
 	owner = null
 
@@ -272,7 +273,7 @@
 		return FALSE
 	if((ability_check_flags & ABILITY_CHECK_STANDING) && IS_PRONE(owner))
 		return FALSE
-	if((ability_check_flags & ABILITY_CHECK_FREE_HAND) && !(owner.has_free_hand()))
+	if((ability_check_flags & ABILITY_CHECK_FREE_HAND) && !(!owner.are_usable_hands_full()))
 		return FALSE
 	if((ability_check_flags & ABILITY_CHECK_RESTING) && !IS_PRONE(owner))
 		return FALSE
@@ -292,7 +293,7 @@
 		return "You cannot do that while unconscious."
 	if((ability_check_flags & ABILITY_CHECK_STANDING) && owner.lying)
 		return "You cannot do that while on the ground."
-	if((ability_check_flags & ABILITY_CHECK_FREE_HAND) && !(owner.has_free_hand()))
+	if((ability_check_flags & ABILITY_CHECK_FREE_HAND) && !(!owner.are_usable_hands_full()))
 		return "You cannot do that without a free hand."
 	if((ability_check_flags & ABILITY_CHECK_RESTING) && !owner.lying)
 		return "You must be lying down to do that."

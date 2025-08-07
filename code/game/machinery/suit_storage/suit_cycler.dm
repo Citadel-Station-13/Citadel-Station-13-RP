@@ -260,7 +260,7 @@
 	updateUsrDialog()
 	return 1
 
-/obj/machinery/suit_cycler/attack_hand(mob/user, list/params)
+/obj/machinery/suit_cycler/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 
 	add_fingerprint(user)
 
@@ -408,7 +408,7 @@
 
 	if(occupant)
 		if(prob(radiation_level*2))
-			occupant.emote("scream")
+			occupant.emote_nosleep("scream")
 		if(radiation_level > 2)
 			occupant.take_random_targeted_damage(0,radiation_level*2 + rand(1,3))
 		if(radiation_level > 1)

@@ -8,6 +8,12 @@
 	opacity = FALSE
 	var/mob/living/occupant
 
+/obj/structure/adherent_bath/examine(mob/user, dist)
+	. = ..()
+	var/mob/living/carbon/human/H = user
+	if(istype(H) && H.species.get_species_id() != SPECIES_ID_ADHERENT)
+		. += "It appears quite hot, taking a dip would be quite hazardous."
+
 /obj/structure/adherent_bath/Destroy()
 	eject_occupant()
 	. = ..()
@@ -66,7 +72,7 @@
 	START_PROCESSING(SSobj, src)
 	return TRUE
 
-/obj/structure/adherent_bath/attack_hand(mob/user, list/params)
+/obj/structure/adherent_bath/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	eject_occupant()
 
 /obj/structure/adherent_bath/proc/eject_occupant()

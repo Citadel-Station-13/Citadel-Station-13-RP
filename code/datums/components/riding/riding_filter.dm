@@ -43,7 +43,7 @@
 
 /datum/component/riding_filter/Initialize(handler_typepath)
 	. = ..()
-	if(. & COMPONENT_INCOMPATIBLE)
+	if(. == COMPONENT_INCOMPATIBLE)
 		return
 	if(!istype(parent, expected_typepath))
 		return COMPONENT_INCOMPATIBLE
@@ -80,11 +80,11 @@
 
 /datum/component/riding_filter/proc/signal_hook_user_buckle(atom/movable/source, mob/M, flags, mob/user, semantic)
 	SIGNAL_HANDLER_DOES_SLEEP
-	return check_user_mount(M, flags, user, semantic)? COMPONENT_FORCE_BUCKLE_OPERATION : COMPONENT_BLOCK_BUCKLE_OPERATION
+	return check_user_mount(M, flags, user, semantic)? SIGNAL_RETURN_FORCE_BUCKLE_OPERATION : SIGNAL_RETURN_BLOCK_BUCKLE_OPERATION
 
 /datum/component/riding_filter/proc/signal_hook_pre_buckle(atom/movable/source, mob/M, flags, mob/user, semantic)
 	SIGNAL_HANDLER
-	return on_mount_attempt(M, flags, user, semantic)? COMPONENT_FORCE_BUCKLE_OPERATION : COMPONENT_BLOCK_BUCKLE_OPERATION
+	return on_mount_attempt(M, flags, user, semantic)? SIGNAL_RETURN_FORCE_BUCKLE_OPERATION : SIGNAL_RETURN_BLOCK_BUCKLE_OPERATION
 
 /datum/component/riding_filter/proc/signal_hook_post_buckle(atom/movable/source, mob/M, flags, mob/user, semantic)
 	SIGNAL_HANDLER
@@ -106,7 +106,7 @@
  */
 /datum/component/riding_filter/proc/signal_hook_can_buckle(atom/movable/source, mob/M, flags, mob/user, semantic)
 	SIGNAL_HANDLER
-	return check_mount_attempt(M, flags, user, semantic)? COMPONENT_FORCE_BUCKLE_OPERATION : COMPONENT_BLOCK_BUCKLE_OPERATION
+	return check_mount_attempt(M, flags, user, semantic)? SIGNAL_RETURN_FORCE_BUCKLE_OPERATION : SIGNAL_RETURN_BLOCK_BUCKLE_OPERATION
 
 /**
  * called on buckling process right before point of no return
@@ -210,7 +210,7 @@
 	ASSERT(islist(offhands))
 	var/amount_needed = rider_offhands_needed(rider, semantic)
 	if(!offhand_requirements_are_rigid)
-		amount_needed = min(amount_needed, rider.get_number_of_hands())
+		amount_needed = min(amount_needed, rider.get_nominal_hand_count())
 	if(!amount_needed)
 		return TRUE
 	for(var/i in 1 to amount_needed)

@@ -21,10 +21,12 @@
 		/datum/map/sector/gaia_192,
 		/datum/map/sector/frozen_192,
 		/datum/map/sector/wasteland_192,
-		/datum/map/sector/tradeport_192,
-		/datum/map/sector/lavaland_192,
-		/datum/map/sector/miaphus_192,
+		/datum/map/sector/nebula_tradeport,
+		/datum/map/sector/delerict_casino,
+		/datum/map/sector/surt,
+		/datum/map/sector/miaphus,
 		/datum/map/sector/roguemining_192/one,
+		/datum/map/sector/sky_planet,
 	)
 
 	//* LEGACY BELOW *//
@@ -99,7 +101,7 @@
 
 	bot_patrolling = FALSE
 
-	allowed_spawns = list(LATEJOIN_METHOD_ARRIVALS_SHUTTLE,LATEJOIN_METHOD_GATEWAY,LATEJOIN_METHOD_CRYOGENIC_STORAGE,LATEJOIN_METHOD_ROBOT_STORAGE,"Beruang Trading Corp Cryo")
+	allowed_spawns = list(LATEJOIN_METHOD_ARRIVALS_SHUTTLE,LATEJOIN_METHOD_GATEWAY,LATEJOIN_METHOD_CRYOGENIC_STORAGE,LATEJOIN_METHOD_ROBOT_STORAGE,"Beruang Trading Corp Cryo","Nebula Visitor Arrival")
 	spawnpoint_died = /datum/spawnpoint/arrivals
 	spawnpoint_left = /datum/spawnpoint/arrivals
 	spawnpoint_stayed = /datum/spawnpoint/cryo
@@ -136,7 +138,7 @@
 	name = "Triumph - Deck 1"
 	display_id = "triumph-deck-1"
 	display_name = "NSV Triumph - Engineering Deck"
-	absolute_path = "maps/triumph/levels/deck1.dmm"
+	path = "maps/triumph/levels/deck1.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -150,7 +152,7 @@
 	name = "Triumph - Deck 2"
 	display_id = "triumph-deck-2"
 	display_name = "NSV Triumph - Service Deck"
-	absolute_path = "maps/triumph/levels/deck2.dmm"
+	path = "maps/triumph/levels/deck2.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -166,7 +168,7 @@
 	name = "Triumph - Deck 3"
 	display_id = "triumph-deck-3"
 	display_name = "NSV Triumph - Operations Deck"
-	absolute_path = "maps/triumph/levels/deck3.dmm"
+	path = "maps/triumph/levels/deck3.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -181,7 +183,7 @@
 	name = "Triumph - Deck 4"
 	display_id = "triumph-deck-4"
 	display_name = "NSV Triumph - Command Deck"
-	absolute_path = "maps/triumph/levels/deck4.dmm"
+	path = "maps/triumph/levels/deck4.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -195,13 +197,13 @@
 	name = "Triumph - Centcom / Flagship"
 	display_id = "triumph-flagship"
 	display_name = "NSV Triumph - Flagship Offboarding"
-	absolute_path = "maps/triumph/levels/flagship.dmm"
+	path = "maps/triumph/levels/flagship.dmm"
 	flags = LEGACY_LEVEL_ADMIN|LEGACY_LEVEL_CONTACT
 
 /datum/map_level/triumph/transit
 	id = "TriumphTransit"
 	name = "Triumph - Ships / Static Transit"
-	absolute_path = "maps/triumph/levels/transit.dmm"
+	path = "maps/triumph/levels/transit.dmm"
 	traits = list(
 		ZTRAIT_LEGACY_BELTER_TRANSIT,
 	)
@@ -210,7 +212,7 @@
 /datum/map_level/triumph/misc
 	id = "TriumphMisc"
 	name = "Triumph - Misc"
-	absolute_path = "maps/triumph/levels/misc.dmm"
+	path = "maps/triumph/levels/misc.dmm"
 	flags = LEGACY_LEVEL_ADMIN
 
 #undef TRIUMPH_MAP_SIZE

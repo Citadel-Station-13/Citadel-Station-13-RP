@@ -3,10 +3,11 @@
 #define LYTHIOS43C_TURF_CREATE(x)	x/lythios43c/initial_gas_mix=ATMOSPHERE_ID_LYTHIOS43C;x/lythios43c/outdoors=TRUE
 #define LYTHIOS43C_TURF_CREATE_UN(x)	x/lythios43c/initial_gas_mix=ATMOSPHERE_ID_LYTHIOS43C;x/lythios43c/outdoors=FALSE
 
-/turf/simulated/open/lythios43c/Initialize(mapload)
-	. = ..()
-	if(outdoors)
-		SSplanets.addTurf(src)
+// usless init, check [/turf/simulated/Initialize()]
+// /turf/simulated/open/lythios43c/Initialize(mapload)
+// 	. = ..()
+// 	if(outdoors)
+// 		SSplanets.addTurf(src)
 
 
 LYTHIOS43C_TURF_CREATE(/turf/simulated/open)
@@ -19,8 +20,8 @@ LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/snow)
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/ice)
 LYTHIOS43C_TURF_CREATE(/turf/simulated/mineral)
 LYTHIOS43C_TURF_CREATE(/turf/simulated/mineral/floor)
-LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/sky/depths)
-LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/sky/depths/west)
+LYTHIOS43C_TURF_CREATE(/turf/simulated/sky/depths)
+LYTHIOS43C_TURF_CREATE(/turf/simulated/sky/depths/west)
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/plating)
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/plasteel)
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/tiled/steel_grid)
@@ -50,14 +51,13 @@ LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/floor/wood)
 LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/shuttle/floor/voidcraft)
 LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock)
 LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock/floor)
-LYTHIOS43C_TURF_CREATE_UN(/turf/unsimulated/mineral/icerock)
-LYTHIOS43C_TURF_CREATE_UN(/turf/unsimulated/mineral)
+LYTHIOS43C_TURF_CREATE_UN(/turf/unsimulated/wall/mineral/icerock)
+LYTHIOS43C_TURF_CREATE_UN(/turf/unsimulated/wall/mineral)
 LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/ignore_cavegen)
 LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/floor/ignore_cavegen)
 LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/floor/icerock)
 LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock/ignore_cavegen)
 LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
-
 
 /turf/simulated/mineral/icerock/lythios43c/make_floor()
 	if(!density && !opacity)
@@ -70,13 +70,17 @@ LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 	blocks_air = FALSE
 	can_build_into_floor = TRUE
 	smoothing_groups = (SMOOTH_GROUP_FLOOR_SNOW)
+	canSmoothWith = null
 	icon = 'icons/turf/flooring/asteroid.dmi'
 	icon_state = "asteroid"
 	color = LIGHT_COLOR_BLUE
-	queue_zone_update()
-	QUEUE_SMOOTH(src)
-	QUEUE_SMOOTH_NEIGHBORS(src)
-
+	if(atom_flags & ATOM_INITIALIZED)
+		SETUP_SMOOTHING()
+		QUEUE_SMOOTH(src)
+		QUEUE_SMOOTH_NEIGHBORS(src)
+	update_icon()
+	if(SSair.initialized)
+		queue_zone_update()
 
 /turf/simulated/open/lythios43c
 	edge_blending_priority = 0.5 //Turfs which also have e_b_p and higher than this will plop decorative edges onto this turf
@@ -159,7 +163,7 @@ LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 	outdoors = TRUE
 
 
-/// Needs to be remmapped to use /turf/unsimulated/mineral/icerock/lythios43c .
+/// Needs to be remmapped to use /turf/unsimulated/wall/mineral/icerock/lythios43c .
 /turf/unsimulated/icerock/lythios43c
 	icon = 'icons/turf/walls.dmi'
 	icon_state = "icerock-dark"

@@ -86,7 +86,7 @@
 
 	return
 
-/obj/machinery/computer/teleporter/attack_hand(mob/user, list/params)
+/obj/machinery/computer/teleporter/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	ui_interact(user)
 
 /obj/machinery/computer/teleporter/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
@@ -108,6 +108,10 @@
 	return data
 
 /obj/machinery/computer/teleporter/ui_act(action, list/params, datum/tgui/ui)
+	. = ..()
+	if(.)
+		return
+
 	switch(action)
 		if("set_destination")
 			set_destination(compare_beacon_to_identifier(params["new_locked"], beacon_uuid_assoc.Copy()))

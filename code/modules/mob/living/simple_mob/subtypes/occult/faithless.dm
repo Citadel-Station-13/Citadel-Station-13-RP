@@ -12,7 +12,7 @@
 	icon_dead = "faithless_dead"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/horror)
 
-	faction = "faithless"
+	iff_factions = MOB_IFF_FACTION_MUTANT
 
 	mob_class = MOB_CLASS_DEMONIC
 
@@ -74,7 +74,7 @@
 
 // Cult Variant
 /mob/living/simple_mob/faithless/cult
-	faction = "cult"
+	iff_factions = MOB_IFF_FACTION_SANGUINE_CULT
 	supernatural = TRUE
 
 /mob/living/simple_mob/faithless/cult/cultify()

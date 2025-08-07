@@ -14,12 +14,14 @@
 /obj/structure/cult/pylon/swarm/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover, /mob/living))
 		var/mob/living/L = mover
-		if(L.faction == "swarmer")
+		if(L.has_iff_faction(MOB_IFF_FACTION_SWARMER))
 			return TRUE
 	else if(istype(mover, /obj/projectile))
 		var/obj/projectile/P = mover
-		if(istype(P.firer) && P.firer.faction == "swarmer")
-			return TRUE
+		if(isliving(P.firer))
+			var/mob/living/L = P.firer
+			if(L.has_iff_faction(MOB_IFF_FACTION_SWARMER))
+				return TRUE
 	return ..()
 
 /obj/structure/cult/pylon/swarm/Initialize(mapload)

@@ -1,0 +1,43 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/floor/holofloor/desert,
+/area/holodeck/holodorm/source_desert)
+"q" = (
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/simulated/floor/holofloor/desert,
+/area/holodeck/holodorm/source_desert)
+"M" = (
+/obj/structure/flora/ausbushes/fullgrass,
+/turf/simulated/floor/holofloor/desert,
+/area/holodeck/holodorm/source_desert)
+
+(1,1,1) = {"
+M
+a
+a
+"}
+(2,1,1) = {"
+a
+a
+q
+"}
+(3,1,1) = {"
+a
+a
+a
+"}
+(4,1,1) = {"
+a
+M
+a
+"}
+(5,1,1) = {"
+a
+a
+a
+"}
+(6,1,1) = {"
+q
+a
+a
+"}

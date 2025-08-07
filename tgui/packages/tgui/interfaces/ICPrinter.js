@@ -45,6 +45,10 @@ export const ICPrinter = (props, context) => {
 };
 
 const canBuild = (item, data) => {
+  if (!item) {
+    return false;
+  }
+
   if (!item.can_build) {
     return false;
   }
@@ -133,7 +137,7 @@ const ICCloningSection = (props, context) => {
             iconSize={2}
             tooltip="Load a program to print."
             textAlign="center"
-            onClick={() => act("load_blueprint", { build: item.path })} />
+            onClick={() => act("load_blueprint")} />
         </Flex.Item>
         <Flex.Item basis={"50%"}>
           <Button
@@ -143,7 +147,7 @@ const ICCloningSection = (props, context) => {
             color={program ? "good" : "bad"}
             iconSize={2}
             textAlign="center"
-            onClick={() => act("clone", { build: item.path })} />
+            onClick={() => act("clone")} />
         </Flex.Item>
       </Flex>
     </Section>

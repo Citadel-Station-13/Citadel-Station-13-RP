@@ -26,7 +26,7 @@ var/global/file_uid = 0
 	return ..()
 
 // Returns independent copy of this file.
-/datum/computer_file/clone(include_contents)
+/datum/computer_file/clone()
 	var/datum/computer_file/temp = ..()
 	temp.unsendable = unsendable
 	temp.undeletable = undeletable

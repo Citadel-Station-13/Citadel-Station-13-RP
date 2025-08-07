@@ -6,10 +6,8 @@
 	// todo: nuke this shit from orbit, this is awful.
 	var/atom/master = null
 
-/atom/movable/overlay/attackby(a, b)
-	if (src.master)
-		return src.master.attackby(a, b)
+/atom/movable/overlay/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
+	return master.attackby(arglist(args))
 
-/atom/movable/overlay/attack_hand(a, b, c)
-	if (src.master)
-		return src.master.attack_hand(a, b, c)
+/atom/movable/overlay/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
+	return master.attack_hand(arglist(args))

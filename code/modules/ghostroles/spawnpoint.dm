@@ -20,7 +20,7 @@ GLOBAL_LIST_EMPTY(ghostrole_spawnpoints)
 	var/spawntext
 
 /datum/component/ghostrole_spawnpoint/Initialize(role_type, allowed_spawns = INFINITY, list/params, datum/callback/proc_to_call_or_callback, notify_ghosts = TRUE, spawntext)
-	if((. = ..()) & COMPONENT_INCOMPATIBLE)
+	if((. = ..()) == COMPONENT_INCOMPATIBLE)
 		return
 	if(!isatom(parent))
 		return COMPONENT_INCOMPATIBLE

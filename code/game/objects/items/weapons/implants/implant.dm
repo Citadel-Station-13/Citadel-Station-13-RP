@@ -61,7 +61,7 @@
 		)
 	else
 		var/mob/living/M = imp_in
-		M.apply_damage(15,BURN)
+		M.apply_damage(15,DAMAGE_TYPE_BURN)
 	name = "melted implant"
 	desc = "Charred circuit in melted plastic case. Wonder what that used to be..."
 	icon_state = "implant_melted"
@@ -92,6 +92,10 @@
 	else
 		..()
 
+/obj/item/implant/surgically_remove(mob/living/carbon/human/target, obj/item/organ/external/chest/removing_from)
+	. = ..()
+	imp_in = null
+	implanted = 0
 //////////////////////////////
 //	Tracking Implant
 //////////////////////////////
@@ -156,7 +160,7 @@ Implant Specifics:<BR>"}
 	switch(severity)
 		if(1)
 			if(prob(60))
-				meltdown()
+				INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/item/implant, meltdown))
 		if(2)
 			delay = rand(5*60*10,15*60*10)	//from 5 to 15 minutes of free time
 		if(3)
@@ -256,7 +260,7 @@ Implant Specifics:<BR>"}
 					if (istype(part,/obj/item/organ/external/chest) ||	\
 						istype(part,/obj/item/organ/external/groin) ||	\
 						istype(part,/obj/item/organ/external/head))
-						part.create_wound(BRUISE, 80)	//mangle them instead
+						part.create_wound(WOUND_TYPE_BRUISE, 80)	//mangle them instead
 						explosion(get_turf(imp_in), -1, -1, 1, 3)
 						qdel(src)
 					else
@@ -290,31 +294,32 @@ Implant Specifics:<BR>"}
 	if (malfunction)
 		return
 	malfunction = MALFUNCTION_TEMPORARY
-	switch (severity)
-		if (4)	//Weak EMP will make implant tear limbs off.
-			if (prob(25))
-				small_boom()
-		if (3)	//Weak EMP will make implant tear limbs off.
-			if (prob(50))
-				small_boom()
-		if (2)	//strong EMP will melt implant either making it go off, or disarming it
-			if (prob(70))
-				if (prob(75))
+	spawn(-1)
+		switch (severity)
+			if (4)	//Weak EMP will make implant tear limbs off.
+				if (prob(25))
 					small_boom()
-				else
-					if (prob(13))
-						activate()		//chance of bye bye
-					else
-						meltdown()		//chance of implant disarming
-		if (1)	//strong EMP will melt implant either making it go off, or disarming it
-			if (prob(70))
+			if (3)	//Weak EMP will make implant tear limbs off.
 				if (prob(50))
 					small_boom()
-				else
-					if (prob(50))
-						activate()		//50% chance of bye bye
+			if (2)	//strong EMP will melt implant either making it go off, or disarming it
+				if (prob(70))
+					if (prob(75))
+						small_boom()
 					else
-						meltdown()		//50% chance of implant disarming
+						if (prob(13))
+							activate()		//chance of bye bye
+						else
+							meltdown()		//chance of implant disarming
+			if (1)	//strong EMP will melt implant either making it go off, or disarming it
+				if (prob(70))
+					if (prob(50))
+						small_boom()
+					else
+						if (prob(50))
+							activate()		//50% chance of bye bye
+						else
+							meltdown()		//50% chance of implant disarming
 	spawn (20)
 		malfunction--
 
@@ -332,7 +337,7 @@ Implant Specifics:<BR>"}
 				if (istype(part,/obj/item/organ/external/chest) ||	\
 					istype(part,/obj/item/organ/external/groin) ||	\
 					istype(part,/obj/item/organ/external/head))
-					part.create_wound(BRUISE, 80)	//mangle them instead
+					part.create_wound(WOUND_TYPE_BRUISE, 80)	//mangle them instead
 				else
 					part.droplimb(0,DROPLIMB_BLUNT)
 			explosion(get_turf(imp_in), -1, -1, 1, 3)
@@ -534,13 +539,14 @@ the implant may become unstable and either pre-maturely inject the subject or si
 		return
 	malfunction = MALFUNCTION_TEMPORARY
 
-	activate("emp")	//let's shout that this dude is dead
-	if(severity == 1)
-		if(prob(40))	//small chance of obvious meltdown
-			meltdown()
-		else if (prob(60))	//but more likely it will just quietly die
-			malfunction = MALFUNCTION_PERMANENT
-		STOP_PROCESSING(SSobj, src)
+	spawn(-1)
+		activate("emp")	//let's shout that this dude is dead
+		if(severity == 1)
+			if(prob(40))	//small chance of obvious meltdown
+				meltdown()
+			else if (prob(60))	//but more likely it will just quietly die
+				malfunction = MALFUNCTION_PERMANENT
+			STOP_PROCESSING(SSobj, src)
 
 	spawn(20)
 		malfunction--

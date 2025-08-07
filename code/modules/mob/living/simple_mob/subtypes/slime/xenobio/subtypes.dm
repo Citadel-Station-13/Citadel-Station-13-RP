@@ -143,7 +143,7 @@
 	..()
 	if(isliving(A))
 		var/mob/living/L = A
-		L.inflict_shock_damage(is_adult ? 10 : 5)
+		L.inflict_shock_damage_legacy(is_adult ? 10 : 5)
 		to_chat(src, SPAN_NOTICE("You shock \the [L]."))
 		to_chat(L, SPAN_DANGER("You've been shocked by \the [src]!"))
 
@@ -199,15 +199,15 @@
 	log_and_message_admins("[src] ignited due to exposure to fire.")
 	ignite()
 
-/mob/living/simple_mob/slime/xenobio/dark_purple/bullet_act(var/obj/projectile/P, var/def_zone)
-	if(P.damage_type && P.damage_type == BURN && P.damage) // Most bullets won't trigger the explosion, as a mercy towards Security.
-		log_and_message_admins("[src] ignited due to bring hit by a burning projectile[P.firer ? " by [key_name(P.firer)]" : ""].")
+/mob/living/simple_mob/slime/xenobio/dark_purple/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	. = ..()
+	// Most bullets won't trigger the explosion, as a mercy towards Security.
+	if(proj.damage_type && proj.damage_type == DAMAGE_TYPE_BURN && proj.damage_force)
+		log_and_message_admins("[src] ignited due to bring hit by a burning projectile[proj.firer ? " by [key_name(proj.firer)]" : ""].")
 		ignite()
-	else
-		return ..()
 
 /mob/living/simple_mob/slime/xenobio/dark_purple/attackby(var/obj/item/W, var/mob/user)
-	if(istype(W) && W.damage_force && W.damtype == BURN)
+	if(istype(W) && W.damage_force && W.damage_type == DAMAGE_TYPE_BURN)
 		log_and_message_admins("[src] ignited due to being hit with a burning weapon ([W]) by [key_name(user)].")
 		ignite()
 	else
@@ -285,21 +285,20 @@
 			/mob/living/simple_mob/slime/xenobio/amber
 		)
 
-/mob/living/simple_mob/slime/xenobio/silver/bullet_act(var/obj/projectile/P, var/def_zone)
-	if(istype(P,/obj/projectile/beam) || istype(P, /obj/projectile/energy))
-		visible_message(SPAN_DANGER("\The [src] reflects \the [P]!"))
+/mob/living/simple_mob/slime/xenobio/silver/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	if(istype(proj,/obj/projectile/beam) || istype(proj, /obj/projectile/energy))
+		visible_message(SPAN_DANGER("\The [src] reflects \the [proj]!"))
 
 		// Find a turf near or on the original location to bounce to
-		var/new_x = P.starting.x + pick(0, 0, 0, -1, 1, -2, 2)
-		var/new_y = P.starting.y + pick(0, 0, 0, -1, 1, -2, 2)
+		var/new_x = proj.starting.x + pick(0, 0, 0, -1, 1, -2, 2)
+		var/new_y = proj.starting.y + pick(0, 0, 0, -1, 1, -2, 2)
 		var/turf/curloc = get_turf(src)
 
 		// redirect the projectile
-		P.redirect(new_x, new_y, curloc, src)
-		P.reflected = TRUE
-		return PROJECTILE_CONTINUE // complete projectile permutation
-	else
-		return ..()
+		proj.legacy_redirect(new_x, new_y, curloc, src)
+		proj.reflected = TRUE
+		impact_flags |= PROJECTILE_IMPACT_REFLECT
+	return ..()
 
 // Tier 3
 
@@ -463,7 +462,7 @@
 	legacy_melee_damage_lower = 10
 	legacy_melee_damage_upper = 30
 
-	movement_cooldown = 0 // This actually isn't any faster due to AI limitations that hopefully the timer subsystem can fix in the future.
+	movement_base_speed = 6.66 // This actually isn't any faster due to AI limitations that hopefully the timer subsystem can fix in the future.
 
 	slime_mutation = list(
 		/mob/living/simple_mob/slime/xenobio/dark_blue,
@@ -479,7 +478,7 @@
 	color = "#FF3333"
 	slime_color = "red"
 	coretype = /obj/item/slime_extract/red
-	movement_cooldown = 0 // See above.
+	movement_base_speed = 6.66 // See above.
 	untamable = TRUE // Will enrage if disciplined.
 
 	description_info = "This slime is faster than the others.  Attempting to discipline this slime will always cause it to go rabid and berserk."
@@ -654,15 +653,15 @@
 	log_and_message_admins("[src] exploded due to exposure to fire.")
 	explode()
 
-/mob/living/simple_mob/slime/xenobio/oil/bullet_act(obj/projectile/P, def_zone)
-	if(P.damage_type && P.damage_type == BURN && P.damage) // Most bullets won't trigger the explosion, as a mercy towards Security.
-		log_and_message_admins("[src] exploded due to bring hit by a burning projectile[P.firer ? " by [key_name(P.firer)]" : ""].")
+/mob/living/simple_mob/slime/xenobio/oil/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	. = ..()
+	// Most bullets won't trigger the explosion, as a mercy towards Security.
+	if(proj.damage_type && proj.damage_type == DAMAGE_TYPE_BURN && proj.damage_force)
+		log_and_message_admins("[src] exploded due to bring hit by a burning projectile[proj.firer ? " by [key_name(proj.firer)]" : ""].")
 		explode()
-	else
-		return ..()
 
 /mob/living/simple_mob/slime/xenobio/oil/attackby(obj/item/W, mob/living/user)
-	if(istype(W) && W.damage_force && W.damtype == BURN)
+	if(istype(W) && W.damage_force && W.damage_type == DAMAGE_TYPE_BURN)
 		log_and_message_admins("[src] exploded due to being hit with a burning weapon ([W]) by [key_name(user)].")
 		explode()
 	else

@@ -72,6 +72,8 @@
 	return ..()
 
 /obj/structure/fence/attackby(obj/item/W, mob/user)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 	if(W.is_wirecutter())
 		if(!cuttable)
 			to_chat(user, SPAN_WARNING( "This section of the fence can't be cut."))
@@ -98,7 +100,7 @@
 						visible_message(SPAN_NOTICE("\The [user] completely cuts through \the [src]."))
 						to_chat(user, SPAN_NOTICE("The hole in \the [src] is now big enough to walk through."))
 				update_cut_status()
-	return TRUE
+		return TRUE
 
 /obj/structure/fence/proc/update_cut_status()
 	if(!cuttable)
@@ -142,7 +144,7 @@
 	desc = "It looks like it has a strong padlock attached."
 	locked = TRUE
 
-/obj/structure/fence/door/attack_hand(mob/user, list/params)
+/obj/structure/fence/door/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(can_open(user))
 		toggle(user)
 	else

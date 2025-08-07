@@ -1,0 +1,19 @@
+# syntax: whitelist.{alien | role |language}.{id} = [
+#   'ckey1',
+#   'ckey2',
+# ]
+
+# DO NOT ACTUALLY PUT ANYONE IN HERE, THIS IS READ BY THE SERVER!
+# This should only contain examples, commented out.
+
+whitelist.species.moth_dark = [
+	# 'silicons',
+]
+
+whitelist.language.luinimma = [
+	# 'silicons',
+]
+
+whitelist.role.mime = [
+	# 'silicons',
+]

@@ -1,4 +1,5 @@
 /obj/item/card/emag_broken
+	prototype_id = "ItemEmagBroken"
 	desc = "It's a card with a magnetic strip attached to some circuitry. It looks too busted to be used for anything but salvage."
 	name = "broken cryptographic sequencer"
 	icon_state = "emag-spent"
@@ -6,12 +7,22 @@
 	origin_tech = list(TECH_MAGNET = 2, TECH_ILLEGAL = 2)
 
 /obj/item/card/emag
+	prototype_id = "ItemEmag"
 	desc = "It's a card with a magnetic strip attached to some circuitry."
 	name = "cryptographic sequencer"
 	icon_state = "emag"
 	item_state = "card-id"
 	origin_tech = list(TECH_MAGNET = 2, TECH_ILLEGAL = 2)
 	var/uses = 10
+
+/obj/item/card/emag/serialize()
+	. = ..()
+	.["uses"] = uses
+
+/obj/item/card/emag/deserialize(list/data)
+	if(isnum(data["uses"]))
+		uses = max(0, floor(data["uses"]))
+	return ..()
 
 /obj/item/card/emag/resolve_attackby(atom/W, mob/user, params, attack_modifier = 1)
 	var/used_uses = W.emag_act(uses, user, src)

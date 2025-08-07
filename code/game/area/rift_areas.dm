@@ -15,13 +15,13 @@
 /area/turbolift/runder/level2
 	name = "under (level 2)"
 	lift_floor_label = "Underground 2"
-	lift_floor_name = "Atmospherics, Chapel, Mining, Bunker"
+	lift_floor_name = "Engineering, Chapel, Mining, Bunker"
 	lift_announce_str = "Arriving at underground level two."
 
 /area/turbolift/runder/level1
 	name = "under (level 1)"
 	lift_floor_label = "Underground 1"
-	lift_floor_name = "Engineering"
+	lift_floor_name = "Atmospherics"
 	lift_announce_str = "Arriving at underground level one."
 
 /area/turbolift/rsurface/level1
@@ -779,6 +779,10 @@
 
 /area/medical/virologyisolation
 	name = "\improper Virology Isolation"
+	icon_state = "virology"
+
+/area/medical/virologymorgue
+	name = "\improper Virology Morgue"
 	icon_state = "virology"
 
 /area/medical/recoveryrestroom

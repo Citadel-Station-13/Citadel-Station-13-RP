@@ -98,7 +98,7 @@
 
 /obj/item/robot_parts/robot_suit/attackby(obj/item/W as obj, mob/user as mob)
 	..()
-	if(W.is_material_stack_of(/datum/material/steel) && !l_arm && !r_arm && !l_leg && !r_leg && !chest && !head)
+	if(W.is_material_stack_of(/datum/prototype/material/steel) && !l_arm && !r_arm && !l_leg && !r_leg && !chest && !head)
 		var/obj/item/stack/material/M = W
 		if (M.use(1))
 			new /obj/item/secbot_assembly/ed209_assembly(get_turf(src))
@@ -207,7 +207,7 @@
 				M.brainmob.mind.transfer(O)
 				if(O.mind && O.mind.special_role)
 					O.mind.store_memory("In case you look at this after being borged, the objectives are only here until I find a way to make them not show up for you, as I can't simply delete them without screwing up round-end reporting. --NeoFite")
-				for(var/datum/language/L in M.brainmob.languages)
+				for(var/datum/prototype/language/L in M.brainmob.languages)
 					O.add_language(L.name)
 			O.job = "Cyborg"
 			O.cell = chest.cell

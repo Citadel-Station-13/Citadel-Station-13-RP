@@ -6,73 +6,73 @@
 	pixel_x = -2
 	},
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/oilwell)
+/area/sector/miaphus/beach/desert/poi/oilwell)
 "b" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/oilwell)
+/area/sector/miaphus/beach/desert/poi/oilwell)
 "c" = (
 /obj/machinery/door/airlock/maintenance/engi{
 	req_one_access = null
 	},
 /obj/effect/debris/cleanable/liquid_fuel,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desert/poi/oilwell)
+/area/sector/miaphus/beach/desert/poi/oilwell)
 "d" = (
 /obj/structure/closet/secure_closet/engineering_personal,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desert/poi/oilwell)
+/area/sector/miaphus/beach/desert/poi/oilwell)
 "e" = (
 /obj/effect/debris/cleanable/liquid_fuel,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desert/poi/oilwell)
+/area/sector/miaphus/beach/desert/poi/oilwell)
 "f" = (
 /obj/structure/sink/oil_well,
 /obj/effect/debris/cleanable/liquid_fuel,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/oilwell)
+/area/sector/miaphus/beach/desert/poi/oilwell)
 "g" = (
 /obj/structure/fence{
 	dir = 1
 	},
 /obj/machinery/light/small,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/oilwell)
+/area/sector/miaphus/beach/desert/poi/oilwell)
 "j" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/template_noop)
 "k" = (
 /obj/structure/closet/firecloset/full,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desert/poi/oilwell)
+/area/sector/miaphus/beach/desert/poi/oilwell)
 "l" = (
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/desert/poi/oilwell)
+/area/sector/miaphus/beach/desert/poi/oilwell)
 "n" = (
 /obj/effect/debris/cleanable/liquid_fuel/flamethrower_fuel,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desert/poi/oilwell)
+/area/sector/miaphus/beach/desert/poi/oilwell)
 "o" = (
 /obj/structure/sign/signnew/flammables,
-/turf/simulated/wall/sandstone/classh,
-/area/tether_away/beach/desert/poi/oilwell)
+/turf/simulated/wall/sandstone,
+/area/sector/miaphus/beach/desert/poi/oilwell)
 "p" = (
 /obj/effect/debris/cleanable/liquid_fuel/flamethrower_fuel,
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/desert/poi/oilwell)
+/area/sector/miaphus/beach/desert/poi/oilwell)
 "q" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desert/poi/oilwell)
+/area/sector/miaphus/beach/desert/poi/oilwell)
 "r" = (
 /obj/structure/fence,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/oilwell)
+/area/sector/miaphus/beach/desert/poi/oilwell)
 "u" = (
 /obj/structure/fence{
 	dir = 4
@@ -81,16 +81,16 @@
 	dir = 8
 	},
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/oilwell)
+/area/sector/miaphus/beach/desert/poi/oilwell)
 "v" = (
 /obj/structure/fence,
 /obj/machinery/light/small,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/oilwell)
+/area/sector/miaphus/beach/desert/poi/oilwell)
 "w" = (
 /obj/effect/debris/cleanable/liquid_fuel,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/oilwell)
+/area/sector/miaphus/beach/desert/poi/oilwell)
 "x" = (
 /obj/structure/fence{
 	dir = 4
@@ -99,7 +99,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/oilwell)
+/area/sector/miaphus/beach/desert/poi/oilwell)
 "C" = (
 /obj/structure/fence/door/locked{
 	dir = 4
@@ -107,7 +107,7 @@
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/desert/poi/oilwell)
+/area/sector/miaphus/beach/desert/poi/oilwell)
 "E" = (
 /obj/structure/table/rack/shelf,
 /obj/random/maintenance/engineering,
@@ -123,22 +123,22 @@
 /obj/random/maintenance/engineering,
 /obj/random/maintenance/engineering,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desert/poi/oilwell)
+/area/sector/miaphus/beach/desert/poi/oilwell)
 "F" = (
 /turf/simulated/wall,
-/area/tether_away/beach/desert/poi/oilwell)
+/area/sector/miaphus/beach/desert/poi/oilwell)
 "L" = (
 /obj/effect/debris/cleanable/liquid_fuel,
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/desert/poi/oilwell)
+/area/sector/miaphus/beach/desert/poi/oilwell)
 "N" = (
 /obj/structure/fence{
 	dir = 1
 	},
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/oilwell)
+/area/sector/miaphus/beach/desert/poi/oilwell)
 "O" = (
 /turf/template_noop,
 /area/template_noop)
@@ -154,23 +154,23 @@
 /obj/item/reagent_containers/glass/bucket,
 /obj/effect/debris/cleanable/liquid_fuel/flamethrower_fuel,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desert/poi/oilwell)
+/area/sector/miaphus/beach/desert/poi/oilwell)
 "S" = (
 /obj/effect/debris/cleanable/liquid_fuel/flamethrower_fuel,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/oilwell)
+/area/sector/miaphus/beach/desert/poi/oilwell)
 "V" = (
 /obj/structure/fence/door/locked,
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
-/area/tether_away/beach/desert/poi/oilwell)
+/area/sector/miaphus/beach/desert/poi/oilwell)
 "X" = (
 /obj/structure/fence{
 	dir = 4
 	},
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/oilwell)
+/area/sector/miaphus/beach/desert/poi/oilwell)
 
 (1,1,1) = {"
 O

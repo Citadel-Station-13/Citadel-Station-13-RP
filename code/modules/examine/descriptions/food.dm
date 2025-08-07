@@ -40,7 +40,7 @@
 /obj/item/reagent_containers/food/snacks/twobread
   description_fluff = "The most popular recipe from the Morpheus Cyberkinetics cookbook 'Calories for Organics'"
 
-/obj/item/reagent_containers/food/snacks/liquidfood
+/obj/item/reagent_containers/food/snacks/liquid
   description_fluff = "A survival food commonly packed onto short-distance bluespace shuttles and similar vessels. Tastes like chalk, but is packed full of nutrients and will keep you alive."
 
 /obj/item/reagent_containers/food/snacks/tastybread

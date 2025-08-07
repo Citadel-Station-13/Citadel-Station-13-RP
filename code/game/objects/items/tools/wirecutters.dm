@@ -20,8 +20,7 @@
 	tool_sound = 'sound/items/wirecutter.ogg'
 	drop_sound = 'sound/items/drop/wirecutter.ogg'
 	pickup_sound = 'sound/items/pickup/wirecutter.ogg'
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	tool_speed = 1
 	var/random_color = TRUE
 
@@ -42,7 +41,7 @@
 				icon_state = "cutters_blue"
 				item_state = "cutters_blue"
 
-/obj/item/tool/wirecutters/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/tool/wirecutters/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/carbon/C = target
 	if(istype(C) && user.a_intent == INTENT_HELP && (C.handcuffed) && (istype(C.handcuffed, /obj/item/handcuffs/cable)))
 		usr.visible_message("\The [usr] cuts \the [C]'s restraints with \the [src]!",\
@@ -56,6 +55,15 @@
 	name = "primitive wirecutters"
 	desc = "Dull wirecutters knapped from bone."
 	icon_state = "cutters_bone"
+	tool_speed = 1.25
+	random_color = FALSE
+
+/obj/item/tool/wirecutters/bronze
+	name = "bronze shears"
+	desc = "Bronze cutters made of a single piece of forged bronze simply but effective."
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "cutters_bronze"
+	item_state = "cutters_brass"
 	tool_speed = 1.25
 	random_color = FALSE
 
@@ -146,7 +154,7 @@
 		QDEL_NULL(counterpart)
 	return ..()
 
-/obj/item/tool/wirecutters/power/attack_self(mob/user)
+/obj/item/tool/wirecutters/power/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

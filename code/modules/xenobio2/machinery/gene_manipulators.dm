@@ -20,7 +20,7 @@
 	var/list/genes = list()
 	var/genesource = "unknown"
 
-/obj/item/disk/xenobio/attack_self(mob/user)
+/obj/item/disk/xenobio/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -59,7 +59,7 @@
 /obj/machinery/xenobio/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/xenobio/attack_hand(mob/user, list/params)
+/obj/machinery/xenobio/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	nano_ui_interact(user)
 
 /obj/machinery/xenobio/attackby(obj/item/W as obj, mob/user as mob)

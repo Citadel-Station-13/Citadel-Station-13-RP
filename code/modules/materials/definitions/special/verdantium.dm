@@ -1,8 +1,8 @@
-/datum/material/verdantium
+/datum/prototype/material/verdantium
 	name = MAT_VERDANTIUM
 	id = MAT_VERDANTIUM
 	stack_type = /obj/item/stack/material/verdantium
-	icon_base = 'icons/turf/walls/metal.dmi'
+	icon_base = 'icons/turf/walls/metal_wall.dmi'
 	icon_reinf = 'icons/turf/walls/reinforced_metal.dmi'
 	door_icon_base = "metal"
 	icon_colour = "#4FE95A"
@@ -22,3 +22,5 @@
 	refraction = MATERIAL_RESISTANCE_LOW
 	absorption = MATERIAL_RESISTANCE_HIGH
 	nullification = MATERIAL_RESISTANCE_MODERATE
+
+	worth = 35

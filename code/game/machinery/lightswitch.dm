@@ -19,18 +19,14 @@
 
 /obj/machinery/light_switch/Initialize(mapload, newdir)
 	. = ..()
+	area = get_area(src)
+	if(otherarea)
+		area = locate(text2path("/area/[otherarea]"))
+	if(!name)
+		name = "light switch ([area.name])"
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/light_switch/LateInitialize()
-	. = ..()
-	area = get_area(src)
-
-	if(otherarea)
-		area = locate(text2path("/area/[otherarea]"))
-
-	if(!name)
-		name = "light switch ([area.name])"
-
 	on = area.lightswitch
 	updateicon()
 
@@ -52,7 +48,7 @@
 /obj/machinery/light_switch/examine(mob/user, dist)
 	. += SPAN_NOTICE("A light switch. It is [on? "on" : "off"].")
 
-/obj/machinery/light_switch/attack_hand(mob/user, list/params)
+/obj/machinery/light_switch/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 
 	on = !on
 

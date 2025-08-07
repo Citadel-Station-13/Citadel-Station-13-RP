@@ -8,15 +8,15 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/light/small,
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "aP" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 10
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals4,
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "be" = (
 /obj/structure/toilet{
 	pixel_y = 10
@@ -25,12 +25,12 @@
 	dir = 4
 	},
 /mob/living/simple_mob/animal/roach/uberfallen,
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "bh" = (
 /obj/structure/loot_pile/maint/technical,
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "bl" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 1
@@ -38,8 +38,8 @@
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 6
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "ce" = (
 /obj/structure/flora/pottedplant/dead,
 /obj/effect/floor_decal/borderfloorblack{
@@ -48,28 +48,28 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 5
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "ch" = (
 /obj/machinery/door/airlock/multi_tile/glass,
-/turf/simulated/floor/wood/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/wood,
+/area/sector/surt/dungeon/facility)
 "cn" = (
 /obj/machinery/door/airlock{
 	name = "Janitorial Closet"
 	},
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "cA" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 5
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "cR" = (
 /obj/structure/disposalpipe/trunk,
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "cS" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -77,22 +77,22 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 1
 	},
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_y = 32
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "dc" = (
 /obj/structure/bed/chair/sofa/right,
-/turf/simulated/floor/wood/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/wood,
+/area/sector/surt/dungeon/facility)
 "dE" = (
 /obj/structure/disposalpipe/sortjunction/untagged{
 	dir = 4
 	},
 /obj/structure/catwalk,
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "dK" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -100,28 +100,28 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "ee" = (
 /obj/structure/disposalpipe/junction/yjunction{
 	dir = 4
 	},
 /obj/structure/catwalk,
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "eM" = (
 /obj/structure/disposalpipe/sortjunction/untagged/flipped{
 	dir = 4
 	},
 /obj/structure/catwalk,
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "eT" = (
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "eW" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -129,24 +129,24 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "fD" = (
 /obj/structure/bed/chair/wood{
 	dir = 4
 	},
-/turf/simulated/floor/wood/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/wood,
+/area/sector/surt/dungeon/facility)
 "fR" = (
-/turf/simulated/floor/wood/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/wood,
+/area/sector/surt/dungeon/facility)
 "gc" = (
 /obj/structure/table/bench/wooden,
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "ge" = (
 /obj/machinery/light{
 	dir = 4
@@ -163,14 +163,14 @@
 /obj/effect/floor_decal/corner/brown/bordercorner2{
 	dir = 5
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "gM" = (
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 9
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "hm" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 5
@@ -178,31 +178,31 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 5
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "hJ" = (
 /obj/machinery/power/breakerbox/activated,
 /obj/structure/cable/cyan{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "hP" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "hY" = (
 /obj/structure/railing,
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "jx" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "jC" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 5
@@ -210,12 +210,12 @@
 /obj/effect/floor_decal/corner/orange/border{
 	dir = 5
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "jN" = (
 /obj/machinery/light,
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "jO" = (
 /obj/machinery/light{
 	dir = 1
@@ -226,59 +226,59 @@
 /obj/effect/floor_decal/corner/orange/border{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "kt" = (
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
 	dir = 1
 	},
 /obj/structure/window/phoronreinforced/full,
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "kN" = (
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "la" = (
 /obj/structure/catwalk,
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "lL" = (
 /obj/effect/floor_decal/industrial/danger/corner{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "mg" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
 	icon_state = "pipe-c"
 	},
 /obj/structure/catwalk,
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "mo" = (
 /obj/structure/table/marble,
 /obj/effect/floor_decal/spline/fancy{
 	dir = 4
 	},
-/turf/simulated/floor/wood/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/wood,
+/area/sector/surt/dungeon/facility)
 "mr" = (
-/turf/unsimulated/mineral/triumph,
-/area/lavaland/dungeon/exterior)
+/turf/unsimulated/wall/mineral,
+/area/sector/surt/dungeon/exterior)
 "mA" = (
-/turf/simulated/floor/trap/delayed/plating/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/trap/delayed/plating,
+/area/sector/surt/dungeon/facility)
 "mK" = (
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "mL" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -292,35 +292,35 @@
 /obj/effect/floor_decal/corner/brown/bordercorner2{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "nc" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/structure/barricade,
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "nn" = (
 /mob/living/simple_mob/animal/space/bats/surt,
-/turf/simulated/floor/outdoors/lava/lavaland,
-/area/lavaland/dungeon/exterior)
+/turf/simulated/lava,
+/area/sector/surt/dungeon/exterior)
 "nH" = (
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 10
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "nL" = (
 /obj/machinery/light,
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/brown/border,
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "nY" = (
 /obj/machinery/door/airlock{
 	name = "Drone Maintenance"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "oH" = (
 /obj/structure/railing{
 	dir = 1
@@ -328,22 +328,22 @@
 /obj/effect/floor_decal/industrial/danger{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "pe" = (
 /obj/structure/table/marble,
-/turf/simulated/floor/wood/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/wood,
+/area/sector/surt/dungeon/facility)
 "pl" = (
 /obj/structure/closet/l3closet/janitor,
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "pt" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "pG" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -351,32 +351,32 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "qa" = (
 /obj/random/outcrop,
-/turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/dungeon/exterior)
+/turf/simulated/floor/outdoors/ash_sand,
+/area/sector/surt/dungeon/exterior)
 "qU" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /obj/structure/boulder,
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "rf" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "ri" = (
 /turf/simulated/wall/r_wall,
-/area/lavaland/dungeon/facility)
+/area/sector/surt/dungeon/facility)
 "sd" = (
 /obj/structure/closet/crate/trashcart,
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "sy" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -384,8 +384,8 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "sP" = (
 /obj/structure/railing{
 	dir = 1
@@ -402,25 +402,25 @@
 /obj/effect/floor_decal/industrial/danger{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "sT" = (
 /obj/structure/bed/chair/sofa,
-/turf/simulated/floor/wood/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/wood,
+/area/sector/surt/dungeon/facility)
 "ta" = (
 /obj/machinery/door/airlock{
 	name = "Toilet"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "td" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4,
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 10
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "tD" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -428,8 +428,8 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "tR" = (
 /obj/structure/bed/chair/sofa/right{
 	dir = 1
@@ -437,16 +437,16 @@
 /obj/effect/floor_decal/spline/fancy{
 	dir = 4
 	},
-/turf/simulated/floor/wood/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/wood,
+/area/sector/surt/dungeon/facility)
 "tW" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/brown/border,
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "ug" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -454,11 +454,11 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
 	},
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "vf" = (
-/turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/dungeon/exterior)
+/turf/simulated/floor/outdoors/ash_sand,
+/area/sector/surt/dungeon/exterior)
 "vx" = (
 /obj/structure/sink{
 	dir = 8;
@@ -475,8 +475,8 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "vV" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -484,15 +484,15 @@
 /obj/effect/floor_decal/corner/orange/border{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "wj" = (
 /obj/machinery/computer/area_atmos{
 	dir = 4;
 	machine_stat = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "wn" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -501,42 +501,42 @@
 	dir = 1
 	},
 /obj/structure/railing,
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "wY" = (
 /mob/living/simple_mob/animal/space/bats/surt,
-/turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/dungeon/exterior)
+/turf/simulated/floor/outdoors/ash_sand,
+/area/sector/surt/dungeon/exterior)
 "xj" = (
 /obj/machinery/drone_fabricator{
 	machine_stat = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "xz" = (
 /obj/effect/trap/pop_up/thrower{
 	id = "control_maint"
 	},
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "xE" = (
 /obj/machinery/computer/power_monitor{
 	dir = 4;
 	machine_stat = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "xN" = (
 /obj/structure/railing,
 /obj/effect/floor_decal/industrial/danger,
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "xV" = (
 /obj/machinery/door/airlock{
 	name = "Locker Room"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "yc" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -550,8 +550,8 @@
 /obj/effect/floor_decal/corner/yellow/bordercorner2{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "yD" = (
 /obj/structure/sink{
 	dir = 8;
@@ -568,18 +568,18 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "zi" = (
 /mob/living/simple_mob/animal/space/bats/surt,
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "zo" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "zq" = (
 /obj/structure/table/marble,
 /obj/machinery/chemical_dispenser/catering/bar_soft{
@@ -588,32 +588,32 @@
 /obj/effect/floor_decal/spline/fancy{
 	dir = 8
 	},
-/turf/simulated/floor/wood/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/wood,
+/area/sector/surt/dungeon/facility)
 "zW" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "Ac" = (
-/turf/simulated/floor/trap/plating/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/trap/plating,
+/area/sector/surt/dungeon/facility)
 "Ap" = (
 /obj/item/stack/rods,
 /obj/item/material/shard/phoron,
 /obj/item/material/shard/phoron,
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "AQ" = (
 /mob/living/simple_mob/animal/roach/uberfallen,
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "AR" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/catwalk,
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "AW" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -627,31 +627,31 @@
 /obj/effect/floor_decal/corner/yellow/bordercorner2{
 	dir = 10
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "Bj" = (
 /obj/structure/railing,
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "BN" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "Cj" = (
 /obj/structure/girder/reinforced,
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "Cv" = (
 /obj/structure/bed/chair/sofa{
 	dir = 1
 	},
-/turf/simulated/floor/wood/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/wood,
+/area/sector/surt/dungeon/facility)
 "CO" = (
 /mob/living/simple_mob/animal/roach/uberfallen,
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -660,25 +660,25 @@
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "CW" = (
 /obj/machinery/door/airlock{
 	name = "Restroom"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "Dj" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /obj/structure/catwalk,
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "DB" = (
 /obj/structure/girder/reinforced,
 /turf/simulated/wall/r_wall,
-/area/lavaland/dungeon/facility)
+/area/sector/surt/dungeon/facility)
 "DD" = (
 /obj/machinery/light{
 	dir = 1
@@ -689,16 +689,16 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "DO" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
 	icon_state = "pipe-c"
 	},
 /obj/structure/catwalk,
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "DP" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 9
@@ -707,14 +707,14 @@
 	dir = 9
 	},
 /obj/structure/railing,
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "DR" = (
 /obj/structure/bed/chair/wood{
 	dir = 8
 	},
-/turf/simulated/floor/wood/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/wood,
+/area/sector/surt/dungeon/facility)
 "DT" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 10
@@ -722,31 +722,31 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 10
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "Eb" = (
 /obj/structure/cable/cyan{
 	dir = 1
 	},
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "Es" = (
 /obj/machinery/door/airlock/maintenance,
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "Fd" = (
 /obj/structure/table/woodentable,
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "FJ" = (
 /obj/structure/disposalpipe/trunk,
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "Ga" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/yellow/border,
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "Gg" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 6
@@ -756,20 +756,20 @@
 	},
 /obj/effect/floor_decal/borderfloorblack/corner2,
 /obj/effect/floor_decal/corner/brown/bordercorner2,
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "Gx" = (
 /turf/simulated/wall/r_wall,
-/area/lavaland/dungeon/exterior)
+/area/sector/surt/dungeon/exterior)
 "GA" = (
 /obj/structure/boulder,
-/turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/dungeon/exterior)
+/turf/simulated/floor/outdoors/ash_sand,
+/area/sector/surt/dungeon/exterior)
 "Hx" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/orange/border,
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "HH" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
@@ -777,16 +777,16 @@
 /obj/structure/cable/cyan{
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "Il" = (
 /obj/structure/table/woodentable,
-/turf/simulated/floor/wood/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/wood,
+/area/sector/surt/dungeon/facility)
 "IL" = (
 /obj/structure/janitorialcart,
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "Jg" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 9
@@ -794,8 +794,8 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 9
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "Ju" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -815,8 +815,8 @@
 /obj/effect/floor_decal/corner/brown/bordercorner2{
 	dir = 6
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "Kq" = (
 /obj/structure/flora/pottedplant/dead,
 /obj/effect/floor_decal/borderfloorblack{
@@ -825,35 +825,35 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 9
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "KC" = (
 /obj/structure/table/standard,
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "KQ" = (
 /obj/structure/boulder,
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "KW" = (
 /obj/structure/bed/chair/sofa/left,
 /obj/effect/floor_decal/spline/fancy{
 	dir = 4
 	},
-/turf/simulated/floor/wood/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/wood,
+/area/sector/surt/dungeon/facility)
 "Lx" = (
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "LW" = (
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "Md" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 10
@@ -861,36 +861,36 @@
 /obj/effect/floor_decal/corner/orange/border{
 	dir = 10
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "Nq" = (
 /obj/structure/sink/kitchen{
 	dir = 4;
 	pixel_x = -11
 	},
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "NK" = (
 /obj/structure/table,
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "NX" = (
 /obj/machinery/door/airlock/maintenance,
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "NY" = (
 /obj/structure/barricade,
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "NZ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	icon_state = "pipe-c"
 	},
 /obj/structure/catwalk,
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "Of" = (
 /obj/effect/floor_decal/borderfloorblack/corner{
 	dir = 4
@@ -898,52 +898,52 @@
 /obj/effect/floor_decal/corner/brown/bordercorner{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "OT" = (
-/turf/simulated/mineral/triumph/lavaland,
-/area/lavaland/dungeon/exterior)
+/turf/simulated/mineral,
+/area/sector/surt/dungeon/exterior)
 "Qr" = (
 /obj/structure/table/marble,
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/wood/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/wood,
+/area/sector/surt/dungeon/facility)
 "Qy" = (
 /obj/structure/table/bench/wooden,
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "QY" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/brown/border,
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "QZ" = (
 /obj/structure/boulder,
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "Rl" = (
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "RE" = (
 /obj/machinery/computer/drone_control{
 	dir = 4;
 	machine_stat = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "RI" = (
 /obj/structure/table/marble,
 /obj/machinery/microwave,
 /obj/effect/floor_decal/spline/fancy{
 	dir = 8
 	},
-/turf/simulated/floor/wood/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/wood,
+/area/sector/surt/dungeon/facility)
 "RR" = (
 /obj/structure/table/marble,
 /obj/machinery/light{
@@ -952,21 +952,21 @@
 /obj/effect/floor_decal/spline/fancy{
 	dir = 8
 	},
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_x = 32
 	},
-/turf/simulated/floor/wood/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/wood,
+/area/sector/surt/dungeon/facility)
 "RY" = (
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "Si" = (
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "Substation - Cargo";
 	output_attempt = 0
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "Sk" = (
 /obj/machinery/power/apc/south_mount,
 /obj/structure/cable{
@@ -975,8 +975,8 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "SE" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -984,8 +984,8 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "SP" = (
 /obj/effect/floor_decal/borderfloorblack/corner{
 	dir = 1
@@ -993,18 +993,18 @@
 /obj/effect/floor_decal/corner/brown/bordercorner{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "SU" = (
 /obj/machinery/drone_fabricator{
 	machine_stat = 1
 	},
 /obj/structure/boulder,
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "Tl" = (
-/turf/simulated/mineral/rich/triumph/lavaland,
-/area/lavaland/dungeon/exterior)
+/turf/simulated/mineral/rich,
+/area/sector/surt/dungeon/exterior)
 "TO" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -1018,24 +1018,24 @@
 /obj/effect/floor_decal/corner/brown/bordercorner2{
 	dir = 5
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "TR" = (
 /obj/machinery/light,
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "Ub" = (
-/turf/simulated/floor/outdoors/lava/lavaland,
-/area/lavaland/dungeon/exterior)
+/turf/simulated/lava,
+/area/sector/surt/dungeon/exterior)
 "UG" = (
 /obj/machinery/light/small,
 /obj/structure/loot_pile/maint/technical,
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "UV" = (
 /mob/living/simple_mob/animal/space/bats/surt,
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "UX" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -1049,16 +1049,16 @@
 /obj/effect/floor_decal/corner/brown/bordercorner2{
 	dir = 6
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "UZ" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/catwalk,
 /obj/structure/sign/warning/lava{
 	pixel_x = 32
 	},
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "Vi" = (
 /obj/machinery/light{
 	dir = 4
@@ -1075,8 +1075,8 @@
 /obj/effect/floor_decal/corner/brown/bordercorner2{
 	dir = 6
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "Vx" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -1090,55 +1090,55 @@
 /obj/effect/floor_decal/corner/brown/bordercorner2{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "VI" = (
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_y = 32
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "Wc" = (
 /obj/structure/table/standard,
 /obj/item/reagent_containers/glass/bucket,
 /obj/item/mop,
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "Wd" = (
 /obj/structure/disposalpipe/down{
 	dir = 8
 	},
 /obj/structure/plasticflaps,
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "Wg" = (
 /obj/structure/bed/chair/sofa/left{
 	dir = 1
 	},
-/turf/simulated/floor/wood/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/wood,
+/area/sector/surt/dungeon/facility)
 "Wm" = (
 /mob/living/simple_mob/animal/roach/uberfallen,
-/turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/dungeon/exterior)
+/turf/simulated/floor/outdoors/ash_sand,
+/area/sector/surt/dungeon/exterior)
 "WH" = (
 /obj/structure/stairs/spawner/west,
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "WX" = (
 /obj/structure/closet,
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "XG" = (
 /obj/structure/urinal{
 	pixel_x = 26
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "XN" = (
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "XX" = (
 /obj/structure/flora/pottedplant/dead,
 /obj/effect/floor_decal/borderfloorblack{
@@ -1147,22 +1147,22 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 6
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/surt/dungeon/facility)
 "Yn" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c"
 	},
 /obj/structure/catwalk,
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 "YT" = (
 /obj/effect/trap/pit/punji{
 	id = "maint_north"
 	},
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
+/turf/simulated/floor,
+/area/sector/surt/dungeon/facility)
 
 (1,1,1) = {"
 mr

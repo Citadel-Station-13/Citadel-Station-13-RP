@@ -277,7 +277,6 @@
 	dir = 4;
 	icon_state = "propulsion_r"
 	},
-/turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/trade)
 "aP" = (
@@ -346,7 +345,6 @@
 /obj/structure/shuttle/engine/propulsion{
 	dir = 4
 	},
-/turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/trade)
 "ba" = (
@@ -509,7 +507,7 @@
 "bq" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/hos,
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = -32
 	},
 /turf/simulated/shuttle/floor/black,
@@ -600,7 +598,6 @@
 	dir = 4;
 	icon_state = "propulsion_l"
 	},
-/turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/trade)
 "bE" = (
@@ -1022,7 +1019,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 5
 	},
-/obj/mecha/working/ripley/mining,
+/obj/vehicle/sealed/mecha/working/ripley/mining,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "cB" = (
@@ -1133,7 +1130,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 6
 	},
-/obj/mecha/working/ripley/firefighter,
+/obj/vehicle/sealed/mecha/working/ripley/firefighter,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "cP" = (
@@ -1203,7 +1200,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "cW" = (
-/obj/structure/sign/poster{
+/obj/structure/poster{
 	pixel_y = -32
 	},
 /turf/simulated/shuttle/floor/black,
@@ -1289,11 +1286,11 @@
 	dir = 1
 	},
 /obj/structure/table/steel_reinforced,
-/obj/item/contraband/poster,
-/obj/item/contraband/poster,
-/obj/item/contraband/poster,
-/obj/item/contraband/poster,
-/obj/item/contraband/poster,
+/obj/item/poster,
+/obj/item/poster,
+/obj/item/poster,
+/obj/item/poster,
+/obj/item/poster,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "dg" = (
@@ -1540,7 +1537,7 @@
 /obj/item/clothing/under/cheongsam,
 /obj/item/clothing/under/hosformalmale,
 /obj/item/clothing/under/hosformalfem,
-/obj/item/clothing/under/harness,
+/obj/item/clothing/under/gear_harness,
 /obj/item/clothing/under/gladiator,
 /obj/item/clothing/under/ert,
 /obj/item/clothing/under/schoolgirl,

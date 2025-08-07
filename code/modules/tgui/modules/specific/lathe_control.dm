@@ -58,7 +58,7 @@
 			var/immediate = text2num(params["start"])
 			var/list/material_parts = params["materials"]
 			var/list/item_parts = params["items"]
-			var/datum/design/D = SSresearch.fetch_design(id)
+			var/datum/prototype/design/D = RSdesigns.fetch(id)
 			if(!lathe.has_design(D))
 				return TRUE
 			lathe.enqueue(D, amount, material_parts, item_parts, immediate)
@@ -81,7 +81,7 @@
 			var/index = text2num(params["index"])
 			var/new_amount = text2num(params["amount"])
 			var/datum/lathe_queue_entry/entry = SAFEINDEXACCESS(lathe.queue, index)
-			var/datum/design/D = SSresearch.fetch_design(entry.design_id)
+			var/datum/prototype/design/D = RSdesigns.fetch(entry.design_id)
 			if(isnull(entry))
 				return FALSE
 			if(isnull(new_amount) || (new_amount <= 0))
@@ -125,13 +125,13 @@
 	immediate += /datum/asset_pack/spritesheet/materials
 	return ..()
 
-/datum/tgui_module/lathe_control/proc/ui_design_data(datum/design/design)
-	var/list/datum/design/designs = islist(design)? design : list(design)
+/datum/tgui_module/lathe_control/proc/ui_design_data(datum/prototype/design/design)
+	var/list/datum/prototype/design/designs = islist(design)? design : list(design)
 	var/list/built = list()
 	var/list/collated = list()
 	if(!islist(designs))
 		design = list(design)
-	for(var/datum/design/D as anything in designs)
+	for(var/datum/prototype/design/D as anything in designs)
 		built[D.id] = D.ui_data_list()
 		collated[D.category] = TRUE
 	var/list/flatten = list()
@@ -143,14 +143,14 @@
 		"categories" = collated,
 	)
 
-/datum/tgui_module/lathe_control/proc/ui_design_add(list/datum/design/designs)
+/datum/tgui_module/lathe_control/proc/ui_design_add(list/datum/prototype/design/designs)
 	if(design_update_queued)
 		return
 	addtimer(CALLBACK(src, PROC_REF(ui_design_update), 1), 0)
 
 	design_update_queued = TRUE
 
-/datum/tgui_module/lathe_control/proc/ui_design_remove(list/datum/design/designs)
+/datum/tgui_module/lathe_control/proc/ui_design_remove(list/datum/prototype/design/designs)
 	if(design_update_queued)
 		return
 	addtimer(CALLBACK(src, PROC_REF(ui_design_update), 1), 0)

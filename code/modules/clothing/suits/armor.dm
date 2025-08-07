@@ -1,5 +1,5 @@
 /obj/item/clothing/suit/armor
-	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/gun/energy,/obj/item/reagent_containers/spray/pepper,/obj/item/gun/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/flashlight/maglight,/obj/item/clothing/head/helmet)
+	allowed = list(/obj/item/gun/projectile/ballistic/sec/flash, /obj/item/gun/projectile/energy,/obj/item/reagent_containers/spray/pepper,/obj/item/gun/projectile/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/flashlight/maglight,/obj/item/clothing/head/helmet)
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
 	valid_accessory_slots = (\
@@ -79,37 +79,6 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "bulletproof_new", SLOT_ID_LEFT_HAND = "bulletproof_new")
 	blood_overlay_type = "armor"
 
-/obj/item/clothing/suit/armor/laserproof
-	name = "ablative armor vest"
-	desc = "A vest that excels in protecting the wearer against energy projectiles."
-	icon_state = "armor_reflec"
-	blood_overlay_type = "armor"
-	armor_type = /datum/armor/station/ablative
-	siemens_coefficient = 0.1
-
-/obj/item/clothing/suit/armor/laserproof/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	if(istype(damage_source, /obj/projectile/energy) || istype(damage_source, /obj/projectile/beam))
-		var/obj/projectile/P = damage_source
-
-		if(P.reflected) // Can't reflect twice
-			return ..()
-
-		var/reflectchance = 40 - round(damage/3)
-		if(!(def_zone in list(BP_TORSO, BP_GROIN)))
-			reflectchance /= 2
-		if(P.starting && prob(reflectchance))
-			visible_message("<span class='danger'>\The [user]'s [src.name] reflects [attack_text]!</span>")
-
-			// Find a turf near or on the original location to bounce to
-			var/new_x = P.starting.x + pick(0, 0, 0, 0, 0, -1, 1, -2, 2)
-			var/new_y = P.starting.y + pick(0, 0, 0, 0, 0, -1, 1, -2, 2)
-			var/turf/curloc = get_turf(user)
-
-			// redirect the projectile
-			P.redirect(new_x, new_y, curloc, user)
-			P.reflected = 1
-
-			return PROJECTILE_CONTINUE // complete projectile permutation
 
 /obj/item/clothing/suit/armor/combat
 	name = "combat vest"
@@ -193,7 +162,22 @@
 	blood_overlay_type = "armor"
 	armor_type = /datum/armor/none
 
-/obj/item/clothing/suit/armor/reactive/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+/obj/item/clothing/suit/armor/reactive/equipped(mob/user, slot, flags)
+	. = ..()
+	if(slot == SLOT_ID_HANDS)
+		return
+	// if you're reading this: this is not the right way to do shieldcalls
+	// this is just a lazy implementation
+	// signals have highest priority, this as a piece of armor shouldn't have that.
+	RegisterSignal(user, COMSIG_ATOM_SHIELDCALL, PROC_REF(shieldcall))
+
+/obj/item/clothing/suit/armor/reactive/unequipped(mob/user, slot, flags)
+	. = ..()
+	if(slot == SLOT_ID_HANDS)
+		return
+	UnregisterSignal(user, COMSIG_ATOM_SHIELDCALL)
+
+/obj/item/clothing/suit/armor/reactive/proc/shieldcall(mob/user, list/shieldcall_args, fake_attack)
 	if(prob(50))
 		user.visible_message("<span class='danger'>The reactive teleport system flings [user] clear of the attack!</span>")
 		var/list/turfs = new/list()
@@ -210,13 +194,11 @@
 		var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 		spark_system.set_up(5, 0, user.loc)
 		spark_system.start()
-		playsound(user.loc, /datum/soundbyte/grouped/sparks, 50, 1)
+		playsound(user.loc, /datum/soundbyte/sparks, 50, 1)
+		user.forceMove(picked)
+		shieldcall_args[SHIELDCALL_ARG_FLAGS] |= SHIELDCALL_FLAG_ATTACK_BLOCKED | SHIELDCALL_FLAG_ATTACK_PASSTHROUGH
 
-		user.loc = picked
-		return PROJECTILE_FORCE_MISS
-	return 0
-
-/obj/item/clothing/suit/armor/reactive/attack_self(mob/user)
+/obj/item/clothing/suit/armor/reactive/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -250,6 +232,13 @@
 	valid_accessory_slots = null
 	var/block_chance = 20
 
+/obj/item/clothing/suit/armor/alien/mob_armorcall(mob/defending, list/shieldcall_args, fake_attack)
+	if(prob(block_chance))
+		defending.visible_message(SPAN_DANGER("[src] completely absorbs [RESOLVE_SHIELDCALL_ATTACK_TEXT(shieldcall_args)]!"))
+		shieldcall_args[SHIELDCALL_ARG_FLAGS] |= SHIELDCALL_FLAGS_FOR_COMPLETE_BLOCK
+		return
+	return ..()
+
 /obj/item/clothing/suit/armor/alien/tank
 	name = "alien protection suit"
 	desc = "It's really resilient yet lightweight, so it's probably meant to be armor. Strangely enough it seems to have been designed for a humanoid shape."
@@ -259,12 +248,6 @@
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	armor_type = /datum/armor/alien/heavy
 	block_chance = 40
-
-/obj/item/clothing/suit/armor/alien/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	if(prob(block_chance))
-		user.visible_message("<span class='danger'>\The [src] completely absorbs [attack_text]!</span>")
-		return TRUE
-	return FALSE
 
 //Non-hardsuit ERT armor.
 /obj/item/clothing/suit/armor/vest/ert
@@ -316,6 +299,7 @@
 	heat_protection_cover = UPPER_TORSO|LOWER_TORSO
 	max_heat_protection_temperature = ARMOR_MAX_HEAT_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.6
+	worth_intrinsic = 100
 
 /obj/item/clothing/suit/storage/vest/officer
 	name = "officer armor vest"
@@ -560,7 +544,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
 	w_class = WEIGHT_CLASS_BULKY//bulky item
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/gun/energy,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/tank/emergency/oxygen,/obj/item/clothing/head/helmet)
+	allowed = list(/obj/item/gun/projectile/ballistic/sec/flash, /obj/item/gun/projectile/energy,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/tank/emergency/oxygen,/obj/item/clothing/head/helmet)
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 	cold_protection_cover = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
@@ -768,12 +752,12 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
 	armor_type = /datum/armor/centcom/ert/paracausal
-	action_button_name = "Enable Armor Sigils"
+	item_action_name = "Enable Armor Sigils"
 
 	var/anti_magic = FALSE
 	var/blessed = FALSE
 
-/obj/item/clothing/suit/armor/vest/para/attack_self(mob/user)
+/obj/item/clothing/suit/armor/vest/para/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -797,7 +781,7 @@
 	blood_overlay_type = "armor"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	armor_type = /datum/armor/centcom/ert/paracausal
-	action_button_name = "Enable Coat Sigils"
+	item_action_name = "Enable Coat Sigils"
 	valid_accessory_slots = null
 
 /obj/item/clothing/suit/armor/vest/wolftaur
@@ -912,7 +896,7 @@
 	icon = 'icons/clothing/suit/ashlander.dmi'
 	icon_state = "lamellar"
 	armor_type = /datum/armor/lavaland/ashlander
-	allowed = list(/obj/item/clothing/head/helmet/ashlander, /obj/item/melee, /obj/item/gun/ballistic)
+	allowed = list(/obj/item/clothing/head/helmet/ashlander, /obj/item/melee, /obj/item/gun/projectile/ballistic)
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/suit/armor/ashlander/xeno

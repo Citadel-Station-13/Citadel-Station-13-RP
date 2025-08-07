@@ -1,13 +1,7 @@
 /// Percentage of tick to leave for master controller to run
 #define MAPTICK_MC_MIN_RESERVE 70
 
-/// ~~internal_tick_usage is updated every tick by extools~~
-/// sike we use byond now
-#if DM_VERSION > 513
 #define MAPTICK_LAST_INTERNAL_TICK_USAGE world.map_cpu
-#else
-#define MAPTICK_LAST_INTERNAL_TICK_USAGE 20
-#endif
 
 /// Tick limit while running normally
 #define TICK_BYOND_RESERVE 2
@@ -33,6 +27,10 @@
 #define CHECK_TICK ( TICK_CHECK ? stoplag() : 0 )
 
 /// Returns true if tick usage is above 95, for high priority usage
-#define TICK_CHECK_HIGH_PRIORITY ( TICK_USAGE > 95 )
+///
+/// * Use for admin functions so they stay responsive and functional during lag.
+#define TICK_CHECK_HIGH_PRIORITY ( TICK_USAGE > 99 )
 /// runs stoplag if tick_usage is above 95, for high priority usage
+///
+/// * Use for admin functions so they stay responsive and functional during lag.
 #define CHECK_TICK_HIGH_PRIORITY ( TICK_CHECK_HIGH_PRIORITY? stoplag() : 0 )

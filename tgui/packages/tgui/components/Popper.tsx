@@ -11,7 +11,15 @@ type PopperProps = {
 export class Popper extends Component<PopperProps> {
   static id: number = 0;
 
+  // this is set in componentDidMount
+  // if you get errors from this file, look into these vars as they
+  // are not verified by TSC.
+  // @ts-ignore
   renderedContent: HTMLDivElement;
+  // this is set in componentDidMount
+  // if you get errors from this file, look into these vars as they
+  // are not verified by TSC.
+  // @ts-ignore
   popperInstance: ReturnType<typeof createPopper>;
 
   constructor() {

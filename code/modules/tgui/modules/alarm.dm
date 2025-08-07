@@ -125,6 +125,7 @@
 		for(var/datum/alarm/A in AH.visible_alarms(z))
 			var/cameras[0]
 			var/lost_sources[0]
+			var/list/reasons = list()
 
 			if(isAI(user))
 				for(var/obj/machinery/camera/C in A.cameras())
@@ -132,9 +133,11 @@
 			for(var/datum/alarm_source/AS in A.sources)
 				if(!AS.source)
 					lost_sources[++lost_sources.len] = AS.source_name
+				reasons |= AS.reasons //No duplicates
+			reasons = reasons.Join(", ")
 
 			categories[categories.len]["alarms"] += list(list(
-					"name" = "[A.alarm_name()]" + "[A.max_severity() > 1 ? "(MAJOR)" : ""]",
+					"name" = "[A.alarm_name()]" + "[A.max_severity() > 1 ? " (MAJOR)" : ""]" + "[reasons ? " ([reasons])" : ""]",
 					"origin_lost" = A.origin == null,
 					"has_cameras" = cameras.len,
 					"cameras" = cameras,

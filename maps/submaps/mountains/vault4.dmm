@@ -22,7 +22,7 @@
 /area/submap/cave/vault4)
 "f" = (
 /obj/structure/alien/weeds,
-/mob/living/simple_mob/animal/space/alien/drone,
+/mob/living/simple_mob/animal/space/xenomorph/warrior,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/vault4)
 "g" = (
@@ -34,14 +34,16 @@
 /obj/random/multiple/minevault,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/vault4)
-"i" = (
-/obj/structure/alien/weeds,
-/mob/living/simple_mob/animal/space/alien,
-/turf/simulated/mineral/floor/ignore_mapgen,
-/area/submap/cave/vault4)
 "j" = (
 /obj/structure/alien/weeds,
 /obj/structure/alien/egg,
+/mob/living/simple_mob/animal/space/xenomorph/vanguard,
+/turf/simulated/mineral/floor/ignore_mapgen,
+/area/submap/cave/vault4)
+"N" = (
+/obj/structure/alien/weeds,
+/obj/structure/bed/nest,
+/mob/living/simple_mob/animal/space/xenomorph/warrior,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/vault4)
 
@@ -71,8 +73,8 @@ a
 a
 b
 b
-d
-i
+N
+e
 h
 b
 b
@@ -85,7 +87,7 @@ d
 e
 e
 g
-f
+e
 b
 a
 "}
@@ -107,7 +109,7 @@ f
 g
 e
 e
-d
+N
 b
 a
 "}
@@ -116,7 +118,7 @@ a
 b
 b
 h
-i
+e
 d
 b
 b

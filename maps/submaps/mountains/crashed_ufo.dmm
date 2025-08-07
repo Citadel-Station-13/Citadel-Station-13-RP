@@ -297,7 +297,7 @@
 /turf/simulated/shuttle/floor/alienplating,
 /area/submap/cave/crashed_ufo)
 "bm" = (
-/obj/item/gun/energy/retro/empty,
+/obj/item/gun/projectile/energy/retro/empty,
 /turf/simulated/shuttle/floor/alienplating,
 /area/submap/cave/crashed_ufo)
 "bn" = (

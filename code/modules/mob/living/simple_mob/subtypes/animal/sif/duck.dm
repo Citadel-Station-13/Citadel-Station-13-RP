@@ -19,7 +19,7 @@
 	tt_desc = "S Anatidae vitriae"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/crystalduck)
 
-	faction = "duck"
+	iff_factions = MOB_IFF_FACTION_FARM_NEUTRAL
 
 	icon_state = "duck"
 	icon_living = "duck"
@@ -31,7 +31,7 @@
 	health = 50
 	randomized = TRUE
 
-	movement_cooldown = 0
+	movement_base_speed = 6.66
 
 	legacy_melee_damage_lower = 2
 	legacy_melee_damage_upper = 10

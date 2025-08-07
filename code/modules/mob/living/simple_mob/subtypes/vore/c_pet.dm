@@ -40,7 +40,7 @@
 
 	has_langs = list("Coulrian")
 
-/mob/living/simple_mob/animal/passive/honkpet/attack_hand(mob/user, list/params)
+/mob/living/simple_mob/animal/passive/honkpet/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.a_intent == INTENT_DISARM)
 		return icon_state = pick("c_pet", "m_pet")
 	.=..()
@@ -53,7 +53,7 @@
 	icon_state = "dave1"
 	icon_living = "dave1"
 	icon_dead = "dave_dead"
-	movement_cooldown = 300
+	movement_base_speed = 10 / 300
 
 	maxHealth = 1500
 	health = 1500
@@ -78,7 +78,7 @@
 				"rad" = 0
 				)
 
-/mob/living/simple_mob/animal/passive/mimepet/attack_hand(mob/user, list/params)
+/mob/living/simple_mob/animal/passive/mimepet/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.a_intent == INTENT_DISARM)
 		icon_state = pick("dave1", "dave2", "dave3", "dave5" , "dave6" , "dave7" , "dave8" , "dave9" , "dave10")
 	.=..()

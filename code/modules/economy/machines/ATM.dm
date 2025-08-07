@@ -82,9 +82,6 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 			//prevent inserting id into an emagged ATM
 			to_chat(user, SPAN_CAUTION("[icon2html(thing = src, target = user)] CARD READER ERROR. This system has been compromised!"))
 			return
-		else if(istype(I,/obj/item/card/emag))
-			I.resolve_attackby(src, user)
-			return
 
 		var/obj/item/card/id/idcard = I
 		if(!held_card)
@@ -166,6 +163,9 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 
 /obj/machinery/atm/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
+	if(.)
+		return
+
 	var/mob/living/carbon/human/user = usr
 	switch(action)
 		if("attempt_authentication")
@@ -308,7 +308,7 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 			authenticated_account = null
 			account_security_level = 0
 
-/obj/machinery/atm/attack_hand(mob/user, list/params)
+/obj/machinery/atm/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(istype(user, /mob/living/silicon))
 		to_chat (user, SPAN_WARNING("A firewall prevents you from interfacing with this device!"))
 		return

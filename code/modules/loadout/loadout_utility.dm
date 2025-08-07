@@ -164,6 +164,10 @@
 	path = /obj/item/melee/umbrella
 	cost = 3
 
+/datum/loadout_entry/utility/bluespace_bracelet
+	name = "Size Standardization Bracelet"
+	path = /obj/item/clothing/gloves/size
+
 /****************
 modular computers
 ****************/
@@ -269,6 +273,7 @@ modular computers
 	path = /obj/item/clothing/head/welding/arar
 
 /datum/loadout_entry/utility/webbing
+	slot = /datum/inventory_slot/abstract/attach_as_accessory
 	name = "Webbing - Simple"
 	path = /obj/item/clothing/accessory/storage/webbing
 

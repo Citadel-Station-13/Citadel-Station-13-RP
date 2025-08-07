@@ -8,7 +8,7 @@
 	item_state = "carton"
 	center_of_mass = list("x"=16, "y"=7)
 	isGlass = 0
-	start_reagent = /datum/reagent/drink/juice/apple
+	start_with_single_reagent = /datum/reagent/drink/juice/apple
 
 /obj/item/reagent_containers/food/drinks/bottle/coconutmilk
 	name = "Coconut Milk"
@@ -17,7 +17,7 @@
 	item_state = "carton"
 	center_of_mass = list("x"=16, "y"=8)
 	isGlass = 0
-	start_reagent = /datum/reagent/drink/milk/coconutmilk
+	start_with_single_reagent = /datum/reagent/drink/milk/coconutmilk
 
 /obj/item/reagent_containers/food/drinks/bottle/lemonjuice
 	name = "Lemon Juice"
@@ -26,7 +26,7 @@
 	item_state = "carton"
 	center_of_mass = list("x"=16, "y"=8)
 	isGlass = 0
-	start_reagent = /datum/reagent/drink/juice/lemon
+	start_with_single_reagent = /datum/reagent/drink/juice/lemon
 
 /obj/item/reagent_containers/food/drinks/bottle/limejuice
 	name = "Lime Juice"
@@ -35,7 +35,7 @@
 	item_state = "carton"
 	center_of_mass = list("x"=16, "y"=8)
 	isGlass = 0
-	start_reagent = /datum/reagent/drink/juice/lime
+	start_with_single_reagent = /datum/reagent/drink/juice/lime
 
 /obj/item/reagent_containers/food/drinks/bottle/orangejuice
 	name = "Orange Juice"
@@ -44,7 +44,7 @@
 	item_state = "carton"
 	center_of_mass = list("x"=16, "y"=7)
 	isGlass = 0
-	start_reagent = /datum/reagent/drink/juice/orange
+	start_with_single_reagent = /datum/reagent/drink/juice/orange
 
 /obj/item/reagent_containers/food/drinks/bottle/tomatojuice
 	name = "Tomato Juice"
@@ -53,4 +53,4 @@
 	item_state = "carton"
 	center_of_mass = list("x"=16, "y"=8)
 	isGlass = 0
-	start_reagent = /datum/reagent/drink/juice/tomato
+	start_with_single_reagent = /datum/reagent/drink/juice/tomato

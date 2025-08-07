@@ -41,7 +41,7 @@
 			if(prob(25))
 				density = 0
 
-/obj/machinery/optable/attack_hand(mob/user, list/params)
+/obj/machinery/optable/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(MUTATION_HULK in usr.mutations)
 		visible_message(SPAN_DANGER("\The [usr] destroys \the [src]!"))
 		density = FALSE
@@ -66,7 +66,7 @@
 		user.visible_message("[user] climbs on \the [src].","You climb on \the [src].")
 	else
 		visible_message(SPAN_NOTICE("\The [C] has been laid on \the [src] by [user]."))
-	C.resting = 1
+	C.set_intentionally_resting(TRUE)
 	C.forceMove(loc)
 	// now that we hold parts, this must be commented out to prevent dumping our parts onto our loc. not sure what this was intended to do when it was written.
 	/*for(var/obj/O in src)
@@ -100,13 +100,16 @@
 
 	take_victim(usr,usr)
 
-/obj/machinery/optable/attackby(obj/item/W, obj/item/I, mob/living/carbon/user)
-	if(istype(W, /obj/item/grab))
-		var/obj/item/grab/G = W
+/obj/machinery/optable/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	. = ..()
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
+	if(istype(using, /obj/item/grab))
+		var/obj/item/grab/G = using
 		if(iscarbon(G.affecting) && check_table(G.affecting))
 			take_victim(G.affecting,usr)
-			qdel(W)
-			return
+			qdel(using)
+			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 
 /obj/machinery/optable/proc/check_table(mob/living/carbon/patient)
 	check_victim()

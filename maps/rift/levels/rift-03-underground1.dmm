@@ -1289,6 +1289,11 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
+"cT" = (
+/turf/simulated/floor/water/beach{
+	dir = 4
+	},
+/area/rift/surfacebase/underground/under1)
 "cU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -1815,10 +1820,14 @@
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint/pipecyan,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/map_helper/paint/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
+"dZ" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/surfacebase/underground/under1)
 "ea" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -1848,7 +1857,7 @@
 /area/hallway/primary/underone)
 "ed" = (
 /obj/structure/bed/chair/sofa/black/corner{
-	dir = 4
+	dir = 1
 	},
 /turf/simulated/floor/wood,
 /area/maintenance/engineering)
@@ -2025,7 +2034,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor,
 /area/storage/tech)
 "eH" = (
@@ -2077,7 +2086,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/pumpstation)
 "eS" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/rift/station/fighter_bay)
 "eT" = (
@@ -2102,8 +2111,8 @@
 /obj/machinery/atmospherics/pipe/simple/visible/blue{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint/pipecyan,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/map_helper/paint/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "eX" = (
@@ -2274,6 +2283,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/pumpstation)
+"fA" = (
+/obj/structure/sign/warning,
+/turf/simulated/wall/prepainted,
+/area/rift/surfacebase/underground/under1)
 "fB" = (
 /obj/random/trash_pile,
 /obj/effect/floor_decal/rust,
@@ -2784,7 +2797,7 @@
 /area/engineering/atmos)
 "ha" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Underground 1"
+	RCon_tag = "Underground 1 - Main Bypass"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/engineering)
@@ -2996,7 +3009,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/station/fighter_bay/transport_tunnel)
 "hL" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/spawner/window/low_wall/nogrille/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/pool)
 "hM" = (
@@ -3012,8 +3025,8 @@
 /obj/machinery/meter{
 	pixel_y = -21
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint/pipecyan,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/map_helper/paint/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "hP" = (
@@ -3173,8 +3186,8 @@
 /obj/machinery/meter{
 	pixel_y = -21
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint/pipecyan,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/map_helper/paint/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "iy" = (
@@ -3256,6 +3269,14 @@
 	},
 /turf/simulated/floor/concrete/indoors,
 /area/security/prison/lower)
+"iN" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/effect/floor_decal/rust,
+/obj/random/maintenance/engineering,
+/obj/random/maintenance/engineering,
+/obj/random/maintenance/engineering,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/surfacebase/underground/under1)
 "iO" = (
 /obj/machinery/atmospherics/component/unary/outlet_injector{
 	dir = 4;
@@ -3507,8 +3528,8 @@
 /turf/simulated/mineral/ignore_cavegen/geothermal,
 /area/rift/surfacebase/underground/under1)
 "jF" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/darkred,
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "prison_spectators";
@@ -3630,14 +3651,15 @@
 /obj/machinery/door/firedoor/glass,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/glass/engineering{
-	req_one_access = null
+	req_one_access = null;
+	name = "Atmospherics Airlock"
 	},
 /obj/map_helper/access_helper/airlock/station/engineering/department,
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/atmos/hallway)
 "jU" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Underground 1"
+	RCon_tag = "Underground 1 - Main Substation"
 	},
 /obj/structure/cable/green{
 	icon_state = "0-2"
@@ -4143,8 +4165,8 @@
 /turf/simulated/floor/tiled,
 /area/maintenance/elevator)
 "lK" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/darkred,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/darkred,
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "prison_kitchen";
@@ -4248,6 +4270,13 @@
 "lZ" = (
 /turf/simulated/floor/outdoors/rocks/caves/geothermal,
 /area/rift/surfacebase/underground/under1)
+"ma" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/surfacebase/underground/under1)
 "mc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -4345,7 +4374,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/blue{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "mo" = (
@@ -4376,7 +4405,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/secure_storage/upper)
 "mr" = (
-/obj/structure/sign/department/eng{
+/obj/structure/sign/department/atmos{
 	pixel_y = -32
 	},
 /obj/machinery/light,
@@ -4393,7 +4422,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/hallway/primary/underone)
 "ms" = (
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark"
 	},
@@ -4945,8 +4974,8 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint/pipecyan,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/map_helper/paint/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "ov" = (
@@ -4994,7 +5023,7 @@
 /area/hallway/primary/underone)
 "oB" = (
 /obj/structure/cable/green,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor,
 /area/storage/tech)
 "oC" = (
@@ -5024,6 +5053,10 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/station/fighter_bay/transport_tunnel)
+"oI" = (
+/obj/machinery/light/small/emergency/flicker,
+/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+/area/rift/surfacebase/underground/under1)
 "oJ" = (
 /obj/structure/table/rack/steel,
 /obj/item/computer_hardware/battery_module,
@@ -5197,6 +5230,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"pe" = (
+/obj/structure/stairs/bottom{
+	dir = 1
+	},
+/obj/effect/floor_decal/rust,
+/obj/structure/boulder,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/surfacebase/underground/under1)
 "pf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/blue{
 	dir = 8
@@ -5242,6 +5283,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"pm" = (
+/obj/effect/floor_decal/industrial/warning,
+/turf/simulated/floor/crystal,
+/area/rift/station/adherent_maintenance)
 "pn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/blue{
 	dir = 6
@@ -5249,7 +5294,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/atmos)
 "po" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "pp" = (
@@ -5479,8 +5524,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/aux,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/pipecyan,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/hallway)
 "qb" = (
@@ -5536,8 +5581,8 @@
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint/pipecyan,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/map_helper/paint/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "ql" = (
@@ -5556,7 +5601,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/secure_storage/upper)
 "qo" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/hallway/primary/underone)
 "qp" = (
@@ -5598,7 +5643,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor,
 /area/storage/tech)
 "qz" = (
@@ -5650,7 +5695,7 @@
 /turf/simulated/floor,
 /area/security/prison/lower)
 "qH" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "qK" = (
@@ -5789,7 +5834,7 @@
 /area/engineering/atmos)
 "rj" = (
 /obj/machinery/mech_recharger,
-/obj/mecha/combat/fighter/pinnace/loaded{
+/obj/vehicle/sealed/mecha/combat/fighter/pinnace/loaded{
 	dir = 1
 	},
 /obj/machinery/atmospherics/portables_connector{
@@ -6016,6 +6061,13 @@
 /obj/structure/mirror/long/right,
 /turf/simulated/wall/r_wall/prepainted/security,
 /area/security/prison/lower)
+"rR" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/surfacebase/underground/under1)
 "rS" = (
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/concrete/rng/indoors,
@@ -6119,6 +6171,15 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
+"st" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 1
+	},
+/turf/simulated/floor/crystal,
+/area/rift/station/adherent_maintenance)
 "sy" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 8
@@ -6336,13 +6397,6 @@
 /obj/map_helper/access_helper/airlock/station/engineering/atmospherics,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
-"tm" = (
-/obj/structure/grille,
-/obj/machinery/power/apc/east_mount{
-	alarms_hidden = 1
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/underground/under1)
 "tn" = (
 /obj/structure/railing{
 	dir = 8
@@ -6435,7 +6489,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 9
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "tz" = (
@@ -6552,6 +6606,11 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/station/fighter_bay/transport_tunnel)
+"tS" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/ghost_role_spawner/lythios_colonist,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/surfacebase/underground/under1)
 "tT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/blue{
 	dir = 8
@@ -6755,6 +6814,14 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
+"uK" = (
+/obj/effect/floor_decal/rust,
+/obj/random/trash_pile,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/surfacebase/underground/under1)
 "uM" = (
 /obj/machinery/atmospherics/pipe/simple/visible/blue{
 	dir = 9
@@ -6934,8 +7001,8 @@
 /turf/simulated/floor/outdoors/safeice/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "vj" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/pipecyan,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "vk" = (
@@ -7104,6 +7171,9 @@
 	},
 /turf/simulated/floor/concrete/rng/indoors,
 /area/rift/station/fighter_bay/transport_tunnel_garage)
+"vM" = (
+/turf/simulated/floor/water/beach/corner,
+/area/rift/surfacebase/underground/under1)
 "vP" = (
 /obj/item/stack/tile/floor,
 /obj/machinery/light/small{
@@ -7258,9 +7328,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
 "ww" = (
-/obj/structure/sign/electricshock,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
+/obj/structure/sign/signnew/danger,
+/turf/simulated/wall/prepainted,
 /area/rift/station/adherent_maintenance)
 "wx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -7343,7 +7412,7 @@
 /area/maintenance/engineering)
 "wC" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging,
-/turf/simulated/floor/outdoors/lava/indoors/geothermal,
+/turf/simulated/lava/indoors/geothermal,
 /area/rift/surfacebase/underground/under1)
 "wD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -7420,8 +7489,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "wQ" = (
-/obj/structure/sign/signnew/danger,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/rift/station/adherent_maintenance)
 "wR" = (
@@ -7952,6 +8020,11 @@
 	},
 /turf/simulated/floor/wood,
 /area/rift/station/fighter_bay)
+"yj" = (
+/obj/effect/floor_decal/rust,
+/obj/random/junk,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/surfacebase/underground/under1)
 "yk" = (
 /mob/living/simple_mob/animal/passive/woolie,
 /turf/simulated/floor/outdoors/snow/lythios43c,
@@ -8097,8 +8170,8 @@
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint/pipecyan,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/map_helper/paint/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "yH" = (
@@ -8144,6 +8217,9 @@
 /obj/machinery/power/apc/west_mount,
 /turf/simulated/floor/concrete/rng/indoors,
 /area/rift/station/fighter_bay/transport_tunnel_garage)
+"yS" = (
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/surfacebase/underground/under1)
 "yT" = (
 /turf/simulated/floor/plating,
 /area/rift/trade_shop)
@@ -8423,8 +8499,9 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "zM" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 1
+/obj/effect/floor_decal/industrial/warning/corner,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
 	},
 /turf/simulated/floor/crystal,
 /area/rift/station/adherent_maintenance)
@@ -9073,8 +9150,7 @@
 "Ck" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/airlock/freezer{
-	name = "Prison Kitchen Freezer";
-	req_access = null
+	name = "Prison Kitchen Freezer"
 	},
 /turf/simulated/floor/tiled/freezer/cold,
 /area/security/prison/lower)
@@ -9682,8 +9758,8 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/station/fighter_bay/transport_tunnel)
 "Et" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/pipecyan,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/hallway)
 "Eu" = (
@@ -9765,6 +9841,9 @@
 	dir = 1;
 	pixel_y = -24
 	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
 /turf/simulated/floor/crystal,
 /area/rift/station/adherent_maintenance)
 "EE" = (
@@ -9785,6 +9864,14 @@
 "EH" = (
 /turf/simulated/floor/tiled/monowhite,
 /area/security/prison/lower)
+"EI" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/effect/floor_decal/rust,
+/obj/random/maintenance/cargo,
+/obj/random/maintenance/cargo,
+/obj/random/maintenance/cargo,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/surfacebase/underground/under1)
 "EJ" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -9842,6 +9929,11 @@
 /obj/machinery/pipedispenser/disposal,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"EV" = (
+/obj/effect/floor_decal/rust,
+/obj/item/barrier_tape_segment/engineering,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/surfacebase/underground/under1)
 "EW" = (
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden/blue{
@@ -9929,8 +10021,8 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "Fj" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/commandblue,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/commandblue,
 /turf/simulated/floor/plating,
 /area/tcommsat/computer)
 "Fk" = (
@@ -10202,6 +10294,10 @@
 /obj/structure/mirror/long/left,
 /turf/simulated/wall/r_wall/prepainted/security,
 /area/security/prison/lower)
+"FV" = (
+/obj/structure/adherent_pylon,
+/turf/simulated/floor/crystal,
+/area/rift/station/adherent_maintenance)
 "FW" = (
 /obj/machinery/camera/network/security{
 	dir = 1
@@ -10747,7 +10843,7 @@
 /area/rift/station/fighter_bay/hangar)
 "Hy" = (
 /obj/structure/cable/green,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/rift/trade_shop)
 "Hz" = (
@@ -10866,8 +10962,8 @@
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/maintenance/engineering)
 "HX" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint/pipecyan,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/map_helper/paint/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "HY" = (
@@ -11372,6 +11468,10 @@
 	},
 /turf/simulated/floor/concrete/indoors,
 /area/security/prison/lower)
+"JA" = (
+/obj/structure/sign/electricshock,
+/turf/simulated/wall/prepainted,
+/area/rift/station/adherent_maintenance)
 "JB" = (
 /obj/structure/bed/chair/bay{
 	dir = 1
@@ -11423,6 +11523,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/secure_storage/upper)
+"JP" = (
+/obj/structure/stairs/middle{
+	dir = 1
+	},
+/obj/effect/floor_decal/rust,
+/obj/random/junk,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/surfacebase/underground/under1)
 "JQ" = (
 /obj/machinery/light,
 /turf/simulated/floor/bluegrid{
@@ -11959,7 +12067,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor,
 /area/storage/tech)
 "Lr" = (
@@ -11980,6 +12088,17 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/elevator)
+"Lt" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 8
+	},
+/obj/structure/table/rack/shelf/steel,
+/obj/effect/floor_decal/rust,
+/obj/random/maintenance,
+/obj/random/maintenance,
+/obj/random/maintenance,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/surfacebase/underground/under1)
 "Lu" = (
 /obj/item/digestion_remains/skull/tajaran,
 /obj/item/stack/tile/floor,
@@ -12236,6 +12355,12 @@
 /obj/machinery/camera/network/cargo{
 	dir = 1
 	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 4
+	},
 /turf/simulated/floor/crystal,
 /area/rift/station/adherent_maintenance)
 "Mp" = (
@@ -12306,6 +12431,17 @@
 /obj/item/coin/bananium,
 /turf/simulated/floor/plating,
 /area/storage/tech)
+"MD" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/closet/crate/trashcart,
+/obj/random/junk,
+/obj/random/junk,
+/obj/random/junk,
+/obj/random/junk,
+/obj/random/junk,
+/obj/random/junk,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/surfacebase/underground/under1)
 "MF" = (
 /obj/machinery/atmospherics/pipe/simple/visible,
 /turf/simulated/floor/plating,
@@ -12690,7 +12826,7 @@
 /area/engineering/drone_fabrication)
 "NH" = (
 /obj/machinery/mech_recharger,
-/obj/mecha/combat/fighter/pinnace/loaded{
+/obj/vehicle/sealed/mecha/combat/fighter/pinnace/loaded{
 	dir = 1
 	},
 /obj/machinery/camera/network/civilian{
@@ -12800,7 +12936,7 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/red{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "NU" = (
@@ -12908,8 +13044,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
-/obj/effect/paint/pipecyan,
+/obj/spawner/window/low_wall/nogrille/firelocks,
+/obj/map_helper/paint/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "Oj" = (
@@ -12931,7 +13067,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/rift/trade_shop)
 "Ol" = (
@@ -12960,8 +13096,8 @@
 /area/rift/station/adherent_maintenance)
 "Oq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/aux,
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
-/obj/effect/paint/pipecyan,
+/obj/spawner/window/low_wall/nogrille/firelocks,
+/obj/map_helper/paint/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "Or" = (
@@ -13184,7 +13320,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/underone)
 "Pc" = (
-/obj/mecha/combat/fighter/pinnace/loaded,
+/obj/vehicle/sealed/mecha/combat/fighter/pinnace/loaded,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/station/fighter_bay/hangar)
@@ -13307,6 +13443,9 @@
 /obj/structure/snowman,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under1)
+"PA" = (
+/turf/simulated/floor/outdoors/beach/sand/desert/indoors,
+/area/rift/surfacebase/underground/under1)
 "PC" = (
 /obj/machinery/air_alarm{
 	dir = 4;
@@ -13330,8 +13469,8 @@
 /obj/machinery/atmospherics/pipe/simple/visible/purple{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint/pipecyan,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/map_helper/paint/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "PF" = (
@@ -13408,6 +13547,10 @@
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"PT" = (
+/obj/machinery/door/airlock/multi_tile/metal/mait,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/surfacebase/underground/under1)
 "PU" = (
 /obj/effect/overlay/snow/floor/pointy,
 /obj/effect/overlay/snow/floor/pointy{
@@ -13452,6 +13595,11 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"Qf" = (
+/obj/effect/floor_decal/rust,
+/obj/random/trash_pile,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/surfacebase/underground/under1)
 "Qh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -13459,8 +13607,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "Qi" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/secure_storage/upper)
 "Qj" = (
@@ -13541,6 +13689,10 @@
 /obj/structure/flora/ausbushes/lavendergrass,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under1)
+"Qy" = (
+/obj/structure/closet/crate/mimic,
+/turf/simulated/floor/holofloor/beach/water,
+/area/rift/surfacebase/underground/under1)
 "Qz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
@@ -13572,7 +13724,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor,
 /area/storage/tech)
 "QM" = (
@@ -13742,8 +13894,8 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint/pipecyan,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/map_helper/paint/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "Rq" = (
@@ -13763,8 +13915,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "Rs" = (
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 1
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
 	},
 /turf/simulated/floor/crystal,
 /area/rift/station/adherent_maintenance)
@@ -13844,7 +13999,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_x = -32
 	},
 /turf/simulated/floor/wood,
@@ -13921,10 +14076,10 @@
 /turf/simulated/floor/tiled,
 /area/maintenance/elevator)
 "RQ" = (
-/obj/structure/adherent_pylon,
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
+/obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/crystal,
 /area/rift/station/adherent_maintenance)
 "RR" = (
@@ -13998,10 +14153,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
-"Sj" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
-/area/rnd/secure_storage/upper)
 "Sk" = (
 /obj/structure/table/rack,
 /obj/random/maintenance/clean,
@@ -14023,6 +14174,14 @@
 /obj/machinery/disposal,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"Sp" = (
+/obj/structure/stairs/bottom{
+	dir = 1
+	},
+/obj/structure/boulder,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/surfacebase/underground/under1)
 "Sq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -14432,7 +14591,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor,
 /area/storage/tech)
 "TR" = (
@@ -14565,8 +14724,8 @@
 /obj/machinery/atmospherics/pipe/simple/visible/supply,
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/aux,
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint/pipecyan,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/map_helper/paint/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "Us" = (
@@ -14706,6 +14865,9 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/plating,
 /area/rift/station/fighter_bay/hangar)
+"UM" = (
+/turf/simulated/floor/water/beach,
+/area/rift/surfacebase/underground/under1)
 "UN" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/sink{
@@ -14727,7 +14889,7 @@
 	dir = 5
 	},
 /obj/machinery/power/breakerbox{
-	RCon_tag = "Telecomms"
+	RCon_tag = "Underground 1 - Telecomms Substation Bypass"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
@@ -15052,6 +15214,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"VI" = (
+/obj/item/beach_ball,
+/turf/simulated/floor/water/beach,
+/area/rift/surfacebase/underground/under1)
 "VJ" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/railing{
@@ -15166,9 +15332,14 @@
 /turf/simulated/floor,
 /area/hallway/primary/underone)
 "Wd" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 8
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
 	},
 /turf/simulated/floor/crystal,
 /area/rift/station/adherent_maintenance)
@@ -15216,7 +15387,7 @@
 /area/rift/surfacebase/underground/under1)
 "Wk" = (
 /obj/structure/bed/chair/sofa/black/corner{
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/maintenance/engineering)
@@ -15544,6 +15715,9 @@
 /obj/machinery/nanite_chamber,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/station/protean_nanite_room)
+"Xo" = (
+/turf/simulated/floor/holofloor/beach/water,
+/area/rift/surfacebase/underground/under1)
 "Xp" = (
 /turf/simulated/wall/prepainted/engineering/atmos,
 /area/engineering/atmos/hallway)
@@ -15734,7 +15908,8 @@
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/tcommsat/computer)
 "Yb" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/effect/floor_decal/industrial/warning/corner,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/crystal,
@@ -15766,8 +15941,8 @@
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "Yh" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
-/obj/effect/paint/pipecyan,
+/obj/spawner/window/low_wall/nogrille/firelocks,
+/obj/map_helper/paint/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "Yi" = (
@@ -16259,6 +16434,14 @@
 	},
 /turf/simulated/floor,
 /area/security/prison/lower)
+"ZI" = (
+/obj/structure/stairs/middle{
+	dir = 1
+	},
+/obj/effect/floor_decal/rust,
+/obj/structure/boulder,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/surfacebase/underground/under1)
 "ZJ" = (
 /obj/structure/bed/chair/sofa/green/left,
 /turf/simulated/floor/concrete/indoors,
@@ -16329,7 +16512,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_y = 32
 	},
 /obj/structure/disposalpipe/trunk,
@@ -16337,7 +16520,7 @@
 /turf/simulated/floor/wood,
 /area/rift/station/fighter_bay)
 "ZS" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/rift/station/stairs_two)
 "ZT" = (
@@ -18715,7 +18898,7 @@ aa
 aa
 aa
 aa
-aa
+db
 IJ
 rV
 aa
@@ -19106,12 +19289,12 @@ Zt
 yb
 rV
 rV
-aa
-aa
-aa
-aa
-aa
-aa
+db
+db
+db
+db
+db
+db
 aa
 aa
 aa
@@ -19300,15 +19483,15 @@ Xi
 WR
 WR
 rV
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+fA
+iN
+Lt
+EI
+iN
+db
+db
+db
+db
 ms
 "}
 (16,1,1) = {"
@@ -19494,15 +19677,15 @@ Lh
 Lh
 WR
 WR
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+PT
+dZ
+dZ
+yj
+dZ
+EV
+JP
+Sp
+db
 ms
 "}
 (17,1,1) = {"
@@ -19688,15 +19871,15 @@ Lh
 Lh
 rV
 WR
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+yS
+dZ
+dZ
+dZ
+dZ
+EV
+ZI
+pe
+db
 ms
 "}
 (18,1,1) = {"
@@ -19881,16 +20064,16 @@ db
 WR
 Lh
 rV
-rV
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+oI
+db
+MD
+dZ
+rR
+uK
+db
+db
+db
+db
 ms
 "}
 (19,1,1) = {"
@@ -20076,12 +20259,12 @@ WR
 rV
 rV
 rV
-aa
-aa
-aa
-aa
-aa
-aa
+db
+Qf
+ma
+dZ
+tS
+db
 aa
 aa
 aa
@@ -20270,12 +20453,12 @@ aa
 WR
 rV
 rV
-aa
-aa
-aa
-aa
-aa
-aa
+db
+db
+db
+db
+db
+db
 aa
 aa
 aa
@@ -23153,7 +23336,7 @@ oT
 UH
 uA
 uA
-Sj
+Qi
 uA
 uA
 WR
@@ -23698,7 +23881,7 @@ WR
 sV
 es
 es
-tm
+sV
 WR
 WR
 rV
@@ -23892,7 +24075,7 @@ aa
 sV
 es
 es
-tm
+sV
 WR
 Zl
 rV
@@ -26599,10 +26782,10 @@ AS
 Cl
 eg
 rT
-zz
+ww
 Op
 PH
-PH
+pm
 Yt
 zz
 my
@@ -26990,7 +27173,7 @@ ru
 FL
 sf
 RQ
-PH
+FV
 ED
 zz
 my
@@ -27181,11 +27364,11 @@ Gj
 Vm
 NA
 fO
-ww
+wQ
 xy
 Wd
 zM
-PH
+st
 zz
 my
 sR
@@ -27375,10 +27558,10 @@ AS
 Cy
 eg
 rT
-zz
+JA
 Am
 Hj
-PH
+pm
 Yt
 zz
 my
@@ -41745,12 +41928,12 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+PA
+vM
+cT
+cT
+cT
+cT
 aa
 aa
 aa
@@ -41939,12 +42122,12 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+PA
+UM
+Xo
+Xo
+Xo
+Xo
 aa
 aa
 aa
@@ -42132,13 +42315,13 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+PA
+PA
+UM
+Xo
+Xo
+Xo
+Xo
 aa
 aa
 aa
@@ -42326,13 +42509,13 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+PA
+PA
+VI
+Qy
+Xo
+Xo
+Xo
 aa
 aa
 aa
@@ -42520,13 +42703,13 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+PA
+PA
+UM
+Xo
+Xo
+Xo
+Xo
 aa
 aa
 aa
@@ -42715,12 +42898,12 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+PA
+UM
+Xo
+Xo
+Xo
+Xo
 aa
 aa
 aa
@@ -42909,12 +43092,12 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+PA
+UM
+Xo
+Xo
+Xo
+Xo
 aa
 aa
 aa

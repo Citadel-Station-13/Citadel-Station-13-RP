@@ -1,8 +1,8 @@
-/datum/material/cardboard
+/datum/prototype/material/cardboard
 	id = "cardboard"
 	name = "cardboard"
 	stack_type = /obj/item/stack/material/cardboard
-	icon_base = 'icons/turf/walls/solid.dmi'
+	icon_base = 'icons/turf/walls/solid_wall.dmi'
 	icon_reinf = 'icons/turf/walls/reinforced_solid.dmi'
 	icon_colour = "#AAAAAA"
 	ignition_point = T0C+232 //"the temperature at which book-paper catches fire, and burns." close enough
@@ -11,6 +11,8 @@
 	door_icon_base = "wood"
 	destruction_desc = "crumples"
 	pass_stack_colors = TRUE
+
+	worth = 1
 
 	relative_integrity = 0.25
 	weight_multiplier = 1
@@ -24,7 +26,7 @@
 	absorption = MATERIAL_RESISTANCE_LOW
 	nullification = MATERIAL_RESISTANCE_NONE
 
-/datum/material/cardboard/generate_recipes()
+/datum/prototype/material/cardboard/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(
 		name = "box",

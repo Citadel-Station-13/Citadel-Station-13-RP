@@ -1,4 +1,4 @@
-/datum/language/terminus
+/datum/prototype/language/terminus
 	id = LANGUAGE_ID_TERMINUS
 	name = LANGUAGE_TERMINUS
 	translation_class = TRANSLATION_CLASS_DEFAULT_STANDARD_RACE

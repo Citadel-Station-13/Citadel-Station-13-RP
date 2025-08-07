@@ -12,7 +12,7 @@
 	// Coffee is really bad for you with busted kidneys.
 	// This should probably be expanded in some way, but fucked if I know
 	// what else kidneys can process in our reagent list.
-	var/datum/reagent/coffee = locate(/datum/reagent/drink/coffee) in owner.reagents.reagent_list
+	var/datum/reagent/coffee = locate(/datum/reagent/drink/coffee) in owner.reagents.get_reagent_datums()
 	if(coffee)
 		if(is_bruised())
 			owner.adjustToxLoss(0.1 * (dt * 5))
@@ -41,8 +41,7 @@
 	if (. >= 2)
 		if(prob(1))
 			owner.custom_pain("You feel extremely tired, like you can't move!",1)
-			owner.m_intent = "walk"
-			owner.hud_used.move_intent.icon_state = "walking"
+			owner.set_move_intent(MOVE_INTENT_WALK)
 
 /obj/item/organ/internal/kidneys/grey
 	icon_state = "kidneys_grey"
@@ -55,4 +54,4 @@
 	if(ishuman(owner))
 		var/mob/living/carbon/human/H = owner
 		if(H.species.blood_color)
-			add_atom_colour(H.species.blood_color, FIXED_COLOUR_PRIORITY)
+			add_atom_color(H.species.blood_color)

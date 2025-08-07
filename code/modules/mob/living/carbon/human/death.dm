@@ -18,7 +18,7 @@
 		vr_link = null
 
 	for(var/obj/item/organ/I in internal_organs)
-		I.removed()
+		I.removed(src, TRUE)
 		if(istype(loc,/turf))
 			I.throw_at_old(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),30)
 
@@ -91,11 +91,10 @@
 				B = I
 	if(B)
 		if(!B.ckey && ckey && B.controlling)
-			B.ckey = ckey
+			transfer_client_to(B)
 			B.controlling = 0
 		if(B.host_brain.ckey)
-			ckey = B.host_brain.ckey
-			B.host_brain.ckey = null
+			B.host_brain.transfer_client_to(src)
 			B.host_brain.name = "host brain"
 			B.host_brain.real_name = "host brain"
 

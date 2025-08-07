@@ -10,6 +10,8 @@
 
 	icon = 'icons/obj/machines/reagent.dmi'
 	icon_state = "distiller"
+
+	worth_intrinsic = 500
 	var/base_state	// The string var used in update icon for overlays, either set manually or initialized.
 
 	var/power_rating = 3000
@@ -19,11 +21,8 @@
 	var/max_temp = T20C + 300
 	var/min_temp = T0C - 10
 
-	var/current_temp = T20C
-
 	var/use_atmos = FALSE	// If true, this machine will be connectable to ports, and use gas mixtures as the source of heat, rather than its internal controls.
 
-	var/static/radial_examine = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_examine")
 	var/static/radial_use = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_use")
 
 	var/static/radial_pump = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_pump")
@@ -37,8 +36,6 @@
 	var/static/radial_install_output = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_add")
 
 	var/static/radial_inspectgauges = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_lookat")
-
-	var/static/radial_mix = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_mix")
 
 // Overlay holders so we don't have to constantly remake them.
 	var/image/overlay_output_beaker
@@ -105,12 +102,10 @@
 
 	..()
 
-/obj/machinery/portable_atmospherics/powered/reagent_distillery/attack_hand(mob/user, list/params)
+/obj/machinery/portable_atmospherics/powered/reagent_distillery/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	var/list/options = list()
-	options["examine"] = radial_examine
 	options["use"] = radial_use
 	options["inspect gauges"] = radial_inspectgauges
-	options["pulse agitator"] = radial_mix
 
 	if(InputBeaker)
 		options["eject input"] = radial_eject_input
@@ -131,9 +126,6 @@
 		choice = show_radial_menu(user, src, options, require_near = !issilicon(user))
 
 	switch(choice)
-		if("examine")
-			examine(user)
-
 		if("use")
 			if(powered())
 				on = !on
@@ -143,16 +135,7 @@
 			to_chat(user, "<span class='notice'>\The [src]'s gauges read:</span>")
 			if(!use_atmos)
 				to_chat(user, "<span class='notice'>- Target Temperature:</span> <span class='warning'>[target_temp]</span>")
-			to_chat(user, "<span class='notice'>- Temperature:</span> <span class='warning'>[current_temp]</span>")
-
-		if("pulse agitator")
-			to_chat(user, "<span class='notice'>You press \the [src]'s chamber agitator button.</span>")
-			if(on)
-				visible_message("<span class='notice'>\The [src] rattles to life.</span>")
-				Reservoir.reagents.handle_reactions()
-			else
-				spawn(1 SECOND)
-					to_chat(user, "<span class='notice'>Nothing happens..</span>")
+			to_chat(user, "<span class='notice'>- Temperature:</span> <span class='warning'>[Reservoir.reagents.temperature]</span>")
 
 		if("eject input")
 			if(InputBeaker)
@@ -246,21 +229,21 @@
 	if(!powered())
 		on = FALSE
 
-	if(!on || (use_atmos && (!connected_port || avg_pressure < 1000)))
-		current_temp = round((current_temp + T20C) / 2)
+	if(!on || (use_atmos && (!connected_port || avg_pressure < 15)))
+		Reservoir.reagents.temperature = round((Reservoir.reagents.temperature + T20C) / 2)
 
 	else if(on)
 		if(!use_atmos)
-			if(current_temp != round(target_temp))
+			if(Reservoir.reagents.temperature != round(target_temp))
 				var/shift_mod = 0
-				if(current_temp < target_temp)
+				if(Reservoir.reagents.temperature < target_temp)
 					shift_mod = 1
-				else if(current_temp > target_temp)
+				else if(Reservoir.reagents.temperature > target_temp)
 					shift_mod = -1
-				current_temp = clamp(round((current_temp + 1 * shift_mod) + (rand(-5, 5) / 10)), min_temp, max_temp)
+				Reservoir.reagents.temperature = clamp(round((Reservoir.reagents.temperature + 1 * shift_mod) + (rand(-5, 5) / 10)), min_temp, max_temp)
 				use_power(power_rating)
-		else if(connected_port && avg_pressure > 1000)
-			current_temp = round((current_temp + avg_temp) / 2)
+		else if(connected_port && avg_pressure > 15)
+			Reservoir.reagents.temperature = round((Reservoir.reagents.temperature + avg_temp) / 2)
 		else if(!run_pump)
 			visible_message("<span class='notice'>\The [src]'s motors wind down.</span>")
 			on = FALSE
@@ -287,9 +270,9 @@
 	if(on)
 		if(OutputBeaker && OutputBeaker.reagents.total_volume < OutputBeaker.reagents.maximum_volume)
 			add_overlay(overlay_dumping)
-		else if(current_temp == round(target_temp))
+		else if(Reservoir.reagents.temperature == round(target_temp))
 			add_overlay(overlay_ready)
-		else if(current_temp < target_temp)
+		else if(Reservoir.reagents.temperature < target_temp)
 			add_overlay(overlay_heating)
 		else
 			add_overlay(overlay_cooling)
@@ -309,3 +292,4 @@
 	desc = "A gas-operated variant of a chemical distillery. Able to reach much higher, and lower, temperatures through the use of treated gas."
 
 	use_atmos = TRUE
+	worth_intrinsic = 1000

@@ -118,11 +118,12 @@
 	if(!surpress_send) send_status()
 
 
+// some legacy shitcode to let mecha automatically open an airlock on bump
 /obj/machinery/door/airlock/Bumped(atom/AM)
 	..(AM)
-	if(istype(AM, /obj/mecha))
-		var/obj/mecha/mecha = AM
-		if(density && radio_connection && mecha.occupant && (src.allowed(mecha.occupant) || src.check_access_list(mecha.operation_req_access)))
+	if(istype(AM, /obj/vehicle/sealed/mecha))
+		var/obj/vehicle/sealed/mecha/mecha = AM
+		if(density && radio_connection && mecha.occupant_legacy && (src.allowed(mecha.occupant_legacy) || src.check_access_list(mecha.operation_req_access)))
 			send_status(1)
 	return
 
@@ -167,7 +168,7 @@
 	var/previous_phoron
 	var/previous_temperature
 
-/obj/machinery/airlock_sensor/update_icon()
+/obj/machinery/airlock_sensor/update_icon_state()
 	if(on)
 		if(alert)
 			icon_state = "airlock_sensor_alert"
@@ -175,8 +176,9 @@
 			icon_state = "airlock_sensor_standby"
 	else
 		icon_state = "airlock_sensor_off"
+	return ..()
 
-/obj/machinery/airlock_sensor/attack_hand(mob/user, list/params)
+/obj/machinery/airlock_sensor/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	var/datum/signal/signal = new
 	signal.transmission_method = TRANSMISSION_RADIO //radio signal
 	signal.data["tag"] = master_tag
@@ -266,12 +268,12 @@
 
 	var/on = 1
 
-
-/obj/machinery/access_button/update_icon()
+/obj/machinery/access_button/update_icon_state()
 	if(on)
 		icon_state = "access_button_standby"
 	else
 		icon_state = "access_button_off"
+	return ..()
 
 /obj/machinery/access_button/attackby(obj/item/I as obj, mob/user as mob)
 	//Swiping ID on the access button
@@ -280,7 +282,7 @@
 		return
 	..()
 
-/obj/machinery/access_button/attack_hand(mob/user, list/params)
+/obj/machinery/access_button/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	..()
 	if(!allowed(user))
 		to_chat(user, "<span class='warning'>Access Denied</span>")

@@ -26,24 +26,27 @@
 	color = "#1C1300"
 	ingest_met = REM * 5
 
-/datum/reagent/carbon/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/carbon/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
-	if(M.ingested && M.ingested.reagent_list.len > 1) // Need to have at least 2 reagents - cabon and something to remove
-		var/effect = 1 / (M.ingested.reagent_list.len - 1)
-		for(var/datum/reagent/R in M.ingested.reagent_list)
+	if(length(M.ingested.reagent_volumes) > 1)
+		var/effect = 1 / (length(M.ingested.reagent_volumes) - 1)
+		for(var/datum/reagent/R in M.ingested.get_reagent_datums())
 			if(R == src)
 				continue
 			M.ingested.remove_reagent(R.id, removed * effect)
 
-/datum/reagent/carbon/touch_turf(turf/T)
+/datum/reagent/carbon/on_touch_turf(turf/target, remaining, allocated, data)
+	. = ..()
+
+	var/turf/T = target
 	if(!istype(T, /turf/space))
 		var/obj/effect/debris/cleanable/dirt/dirtoverlay = locate(/obj/effect/debris/cleanable/dirt, T)
 		if (!dirtoverlay)
 			dirtoverlay = new/obj/effect/debris/cleanable/dirt(T)
-			dirtoverlay.alpha = volume * 30
+			dirtoverlay.alpha = allocated * 30
 		else
-			dirtoverlay.alpha = min(dirtoverlay.alpha + volume * 30, 255)
+			dirtoverlay.alpha = min(dirtoverlay.alpha + allocated * 30, 255)
 
 /datum/reagent/chlorine
 	name = "Chlorine"
@@ -53,10 +56,10 @@
 	reagent_state = REAGENT_GAS
 	color = "#d1db77"
 
-/datum/reagent/chlorine/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/chlorine/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.take_random_targeted_damage(brute = 1*REM, brute = 0)
 
-/datum/reagent/chlorine/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/chlorine/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.take_random_targeted_damage(brute = 1*REM, brute = 0)
 
 /datum/reagent/copper
@@ -74,11 +77,19 @@
 	reagent_state = REAGENT_GAS
 	color = "#808080"
 
-/datum/reagent/fluorine/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/fluorine/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.adjustToxLoss(removed)
 
-/datum/reagent/fluorine/affect_touch(mob/living/carbon/M, alien, removed)
+/datum/reagent/fluorine/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.adjustToxLoss(removed)
+
+/datum/reagent/gold
+	name = "Gold"
+	id = "gold"
+	description = "Gold is a dense, soft, shiny metal and the most malleable and ductile metal known."
+	taste_description = "metal"
+	reagent_state = REAGENT_SOLID
+	color = "#F7C430"
 
 /datum/reagent/hydrogen
 	name = "Hydrogen"
@@ -96,7 +107,7 @@
 	reagent_state = REAGENT_SOLID
 	color = "#353535"
 
-/datum/reagent/iron/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/iron/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien != IS_DIONA)
 		M.add_chemical_effect(CE_BLOODRESTORE, 8 * removed)
 
@@ -108,7 +119,7 @@
 	reagent_state = REAGENT_SOLID
 	color = "#808080"
 
-/datum/reagent/lithium/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/lithium/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien != IS_DIONA)
 		if(CHECK_MOBILITY(M, MOBILITY_CAN_MOVE) && istype(M.loc, /turf/space))
 			step(M, pick(GLOB.cardinal))
@@ -123,7 +134,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#484848"
 
-/datum/reagent/mercury/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/mercury/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien != IS_DIONA)
 		if(CHECK_MOBILITY(M, MOBILITY_CAN_MOVE) && istype(M.loc, /turf/space))
 			step(M, pick(GLOB.cardinal))
@@ -147,7 +158,7 @@
 	reagent_state = REAGENT_GAS
 	color = "#808080"
 
-/datum/reagent/oxygen/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/oxygen/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_VOX)
 		M.adjustToxLoss(removed * 3)
 
@@ -159,9 +170,17 @@
 	reagent_state = REAGENT_SOLID
 	color = "#832828"
 
-/datum/reagent/phosphorus/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/phosphorus/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_ALRAUNE)
 		M.nutrition += removed * 2 //cit change - phosphorus is good for plants
+
+/datum/reagent/platinum
+	name = "Platinum"
+	id = "platinum"
+	description = "Platinum is a dense, malleable, ductile, highly unreactive, precious, gray-white transition metal.  It is very resistant to corrosion."
+	taste_description = "metal"
+	reagent_state = REAGENT_SOLID
+	color = "#777777"
 
 /datum/reagent/potassium
 	name = "Potassium"
@@ -179,7 +198,7 @@
 	reagent_state = REAGENT_SOLID
 	color = "#C7C7C7"
 
-/datum/reagent/radium/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/radium/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(issmall(M))
 		removed *= 2
 	M.afflict_radiation(RAD_MOB_AFFLICT_STRENGTH_RADIUM(removed))
@@ -189,13 +208,15 @@
 			if(prob(5))
 				M.antibodies |= V.antigen
 
-/datum/reagent/radium/touch_turf(turf/T)
-	if(volume >= 3)
+/datum/reagent/radium/on_touch_turf(turf/target, remaining, allocated, data)
+	. = ..()
+
+	var/turf/T = target
+	if(allocated >= 3)
 		if(!istype(T, /turf/space))
 			var/obj/effect/debris/cleanable/greenglow/glow = locate(/obj/effect/debris/cleanable/greenglow, T)
 			if(!glow)
 				new /obj/effect/debris/cleanable/greenglow(T)
-			return
 
 /datum/reagent/silicon
 	name = "Silicon"
@@ -204,6 +225,14 @@
 	taste_mult = 0
 	reagent_state = REAGENT_SOLID
 	color = "#A8A8A8"
+
+/datum/reagent/silver
+	name = "Silver"
+	id = "silver"
+	description = "A soft, white, lustrous transition metal, it has the highest electrical conductivity of any element and the highest thermal conductivity of any metal."
+	taste_description = "metal"
+	reagent_state = REAGENT_SOLID
+	color = "#D0D0D0"
 
 /datum/reagent/sodium
 	name = "Sodium"
@@ -221,3 +250,25 @@
 	taste_mult = 0 //no taste
 	reagent_state = REAGENT_SOLID
 	color = "#DCDCDC"
+
+/datum/reagent/uranium
+	name ="Uranium"
+	id = "uranium"
+	description = "A silvery-white metallic chemical element in the actinide series, weakly radioactive."
+	taste_description = "metal"
+	reagent_state = REAGENT_SOLID
+	color = "#B8B8C0"
+
+/datum/reagent/uranium/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
+	legacy_affect_ingest(M, alien, removed, metabolism)
+
+/datum/reagent/uranium/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
+	M.apply_effect(5 * removed, IRRADIATE, 0)
+
+/datum/reagent/uranium/on_touch_turf(turf/target, remaining, allocated, data)
+	. = ..()
+	if(allocated >= 3)
+		if(!istype(target, /turf/space))
+			var/obj/effect/debris/cleanable/greenglow/glow = locate(/obj/effect/debris/cleanable/greenglow, target)
+			if(!glow)
+				new /obj/effect/debris/cleanable/greenglow(target)

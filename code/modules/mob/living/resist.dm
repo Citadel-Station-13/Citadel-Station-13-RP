@@ -3,17 +3,23 @@
 	set category = VERB_CATEGORY_IC
 
 	if(!incapacitated(INCAPACITATION_KNOCKOUT) && canClick())
-		setClickCooldown(20)
-		resist_grab()
 		if(CHECK_MOBILITY(src, MOBILITY_CAN_RESIST))
-			process_resist()
+			// this means execute both and get as boolean
+			// this is done so resist doesn't always invoke clickcd
+			if(resist_grab() | process_resist())
+				setClickCooldownLegacy(20)
 
+// todo: refactor
+// todo: resist doing normal clickcd is kinda weird
+/**
+ * @return TRUE if we should apply resist delay
+ */
 /mob/living/proc/process_resist()
 	if(!CHECK_MOBILITY(src, MOBILITY_CAN_RESIST))
-		return
+		return FALSE
 
 	if(SEND_SIGNAL(src, COMSIG_MOB_PROCESS_RESIST) & COMPONENT_MOB_RESIST_INTERRUPT)
-		return
+		return TRUE
 
 	//unbuckling yourself
 	if(buckled)
@@ -27,24 +33,20 @@
 		return TRUE
 
 	if(resist_fire())
-		return
+		return TRUE
 
 	if(resist_restraints())
-		return
-
-	if(isbelly(loc))
-		var/obj/belly/B = loc
-		B.relay_resist(src)
-		return
+		return TRUE
 
 	if(resist_a_rest())
-		return
+		return FALSE
 
 /mob/living/proc/resist_grab()
 	var/resisting = 0
 	for(var/obj/item/grab/G in grabbed_by)
 		resisting++
 		G.handle_resist()
+		. = TRUE
 	if(resisting)
 		visible_message("<span class='danger'>[src] resists!</span>")
 

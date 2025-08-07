@@ -183,12 +183,12 @@
 	attack_armor_pen = 100;
 	attacktext = list("lightly bonked");
 	desc = "Furry and brown, this spider is so goddamn fat you're surprised it even moves around.";
-	faction = "neutral";
+	iff_factions = "neutral";
 	health = 400;
 	legacy_melee_damage_lower = 1;
 	legacy_melee_damage_upper = 3;
 	melee_miss_chance = 30;
-	movement_cooldown = 8;
+	movement_base_speed = 10 / 8;
 	name = "Mr. Tuddly"
 	},
 /turf/simulated/floor/carpet/turcarpet,
