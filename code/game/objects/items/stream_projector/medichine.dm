@@ -240,7 +240,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	/// what our color should be
 	var/current_color = "#ffffff"
 	/// our particles
-	var/atom/movable/particle_render/renderer
+	var/atom/movable/render/renderer
 
 /datum/component/medichine_field/Initialize()
 	if(!isatom(parent))
@@ -328,7 +328,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 /datum/component/medichine_field/proc/ensure_visuals()
 	if(!isnull(renderer))
 		return
-	renderer = new /atom/movable/particle_render/medichine_field(null)
+	renderer = new /atom/movable/render/medichine_field(null)
 	if(ismovable(parent))
 		var/atom/movable/entity = parent
 		entity.vis_contents += renderer
@@ -341,7 +341,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 
 //? VFX
 
-/atom/movable/particle_render/medichine_field
+/atom/movable/render/medichine_field
 	alpha = 200
 
 /particles/medichine_field
