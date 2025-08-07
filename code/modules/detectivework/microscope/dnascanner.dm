@@ -59,7 +59,7 @@
 		ui.open()
 
 
-/obj/machinery/dnaforensics/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/dnaforensics/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["scan_progress"] = round(scanner_progress)

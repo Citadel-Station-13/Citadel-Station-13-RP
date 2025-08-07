@@ -462,7 +462,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 	.["ringerToggle"] = ringer_toggleable
 	.["autoToggle"] = call_auto_toggle
 
-/obj/machinery/holopad/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/holopad/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["isAIProjecting"] = isAI(user) && is_ai_projecting(user)
 	.["aiRequested"] = !request_ai_cooldown()

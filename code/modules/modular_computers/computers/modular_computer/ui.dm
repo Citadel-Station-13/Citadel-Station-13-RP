@@ -32,7 +32,7 @@
 		ui.set_autoupdate(TRUE)
 		ui.open()
 
-/obj/item/modular_computer/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/item/modular_computer/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = get_header_data()
 
 	data["login"] = list()

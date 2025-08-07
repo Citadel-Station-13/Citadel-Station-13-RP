@@ -34,7 +34,7 @@
 		ui = new(user, src, "AreaScrubberControl", name)
 		ui.open()
 
-/obj/machinery/computer/area_atmos/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/computer/area_atmos/ui_data(mob/user, datum/tgui/ui)
 	var/list/working = list()
 	for(var/id in connectedscrubbers)
 		var/obj/machinery/portable_atmospherics/powered/scrubber/huge/scrubber = connectedscrubbers[id]

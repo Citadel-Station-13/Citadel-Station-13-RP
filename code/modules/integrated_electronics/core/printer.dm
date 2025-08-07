@@ -237,7 +237,7 @@
 
 	return data
 
-/obj/item/integrated_circuit_printer/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/item/integrated_circuit_printer/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["metal"] = cur_metal

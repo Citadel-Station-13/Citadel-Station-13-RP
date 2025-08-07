@@ -152,7 +152,7 @@
 		assembled[++assembled.len] = recipe.tgui_recipe_data()
 	return assembled
 
-/obj/item/stack/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/item/stack/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["amount"] = get_amount()
 

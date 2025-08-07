@@ -89,7 +89,7 @@
 /**
  * This provides all of the relevant data to the UI in a list().
  */
-/datum/computer_file/program/game/ui_data(mob/user, datum/tgui/ui, is_module)
+/datum/computer_file/program/game/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = get_header_data()
 	data["Hitpoints"] = boss_hp
 	data["PlayerHitpoints"] = player_hp

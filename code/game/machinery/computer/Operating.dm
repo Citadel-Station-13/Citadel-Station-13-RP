@@ -60,7 +60,7 @@
 		ui = new(user, src, "OperatingComputer", "Patient Monitor")
 		ui.open()
 
-/obj/machinery/computer/operating/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/computer/operating/ui_data(mob/user, datum/tgui/ui)
 	var/data[0]
 	var/mob/living/carbon/human/occupant
 	if(!table)

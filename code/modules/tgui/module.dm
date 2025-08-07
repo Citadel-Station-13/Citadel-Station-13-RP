@@ -82,7 +82,7 @@
 /**
  * called directly, if operating standalone. routes to data(user), with all other args skipped.
  */
-/datum/tgui_module/ui_data(mob/user, datum/tgui/ui, is_module)
+/datum/tgui_module/ui_data(mob/user, datum/tgui/ui)
 	return data(user)
 
 /**

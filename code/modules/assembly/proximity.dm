@@ -107,7 +107,7 @@
 		ui = new(user, src, "AssemblyProx", name)
 		ui.open()
 
-/obj/item/assembly/prox_sensor/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/item/assembly/prox_sensor/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["time"] = time * 10

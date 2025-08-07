@@ -141,7 +141,7 @@
 			HDD.store_file(C)
 			return TRUE
 
-/datum/computer_file/program/filemanager/ui_data(mob/user, datum/tgui/ui, is_module)
+/datum/computer_file/program/filemanager/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = get_header_data()
 
 	var/obj/item/computer_hardware/hard_drive/HDD = computer.hard_drive

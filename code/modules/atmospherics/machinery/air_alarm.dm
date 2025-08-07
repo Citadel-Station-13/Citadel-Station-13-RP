@@ -561,7 +561,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm, 26)
 			ui.set_state(state)
 		ui.open()
 
-/obj/machinery/air_alarm/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/air_alarm/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	var/datum/gas_mixture/environment = loc.return_air()
 	.["environment"] = environment.tgui_analyzer_scan(GAS_GROUP_REAGENT | GAS_GROUP_UNKNOWN)

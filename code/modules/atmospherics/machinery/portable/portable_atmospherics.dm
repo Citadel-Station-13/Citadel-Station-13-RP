@@ -91,7 +91,7 @@
 	.["useCharge"] = FALSE
 	.["flowMax"] = flow_maximum
 
-/obj/machinery/portable_atmospherics/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/portable_atmospherics/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["flow"] = flow_current
 	.["flowSetting"] = flow_setting

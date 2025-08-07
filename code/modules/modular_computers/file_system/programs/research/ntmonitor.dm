@@ -11,7 +11,7 @@
 	available_on_ntnet = TRUE
 	tgui_id = "NtosNetMonitor"
 
-/datum/computer_file/program/ntnetmonitor/ui_data(mob/user, datum/tgui/ui, is_module)
+/datum/computer_file/program/ntnetmonitor/ui_data(mob/user, datum/tgui/ui)
 	if(!ntnet_global)
 		return
 	var/list/data = get_header_data()

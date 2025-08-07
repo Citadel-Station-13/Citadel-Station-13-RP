@@ -84,7 +84,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/color_matrix_proxy_view)
 
 	return data
 
-/datum/color_matrix_editor/ui_data(mob/user, datum/tgui/ui, is_module)
+/datum/color_matrix_editor/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	data["currentColor"] = current_color
 

@@ -44,7 +44,7 @@
 		ui.open()
 
 
-/datum/tgui_module_old/crew_monitor/ui_data(mob/user, datum/tgui/ui, is_module)
+/datum/tgui_module_old/crew_monitor/ui_data(mob/user, datum/tgui/ui)
 	var/data[0]
 
 	data["isAI"] = isAI(user)

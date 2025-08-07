@@ -164,7 +164,7 @@
 		ui = new(user, src, "Biogenerator", name)
 		ui.open()
 
-/obj/machinery/biogenerator/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/biogenerator/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["build_eff"] = build_eff

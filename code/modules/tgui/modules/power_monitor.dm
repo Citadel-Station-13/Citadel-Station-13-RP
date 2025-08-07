@@ -8,7 +8,7 @@
 	. = ..()
 	refresh_sensors()
 
-/datum/tgui_module_old/power_monitor/ui_data(mob/user, datum/tgui/ui, is_module)
+/datum/tgui_module_old/power_monitor/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	var/list/sensors = list()

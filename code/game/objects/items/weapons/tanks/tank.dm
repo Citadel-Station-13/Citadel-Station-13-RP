@@ -251,7 +251,7 @@ var/list/global/tank_gauge_cache = list()
 		"fragmentPressure" = round(TANK_FRAGMENT_PRESSURE)
 	)
 
-/obj/item/tank/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/item/tank/ui_data(mob/user, datum/tgui/ui)
 	. = list(
 		"tankPressure" = round(air_contents.return_pressure()),
 		"releasePressure" = round(distribute_pressure)

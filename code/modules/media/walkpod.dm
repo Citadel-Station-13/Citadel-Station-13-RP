@@ -172,7 +172,7 @@
 		ui = new(user, src, "Jukebox", "PodZu Music Player")
 		ui.open()
 
-/obj/item/device/walkpod/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/item/device/walkpod/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["playing"] = playing

@@ -171,7 +171,7 @@
 		ui = new(user, src, "XenoarchDepthScanner", name)
 		ui.open()
 
-/obj/item/depth_scanner/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/item/depth_scanner/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["current"] = list()
@@ -298,7 +298,7 @@
 		ui = new(user, src, "BeaconLocator", name)
 		ui.open()
 
-/obj/item/beacon_locator/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/item/beacon_locator/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["scan_ticks"] = scan_ticks

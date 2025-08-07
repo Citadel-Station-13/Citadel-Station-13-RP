@@ -310,7 +310,7 @@
 		return TRUE
 	return ..()
 
-/obj/item/fishing_rod/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/item/fishing_rod/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	var/list/data = list()
 

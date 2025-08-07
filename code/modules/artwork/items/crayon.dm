@@ -86,7 +86,7 @@
 	.["colorList"] = crayon_pickable_colors
 	.["canonicalName"] = crayon_name
 
-/obj/item/pen/crayon/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/item/pen/crayon/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["capped"] = capped
 	.["graffitiPickedIcon"] = current_graffiti_icon_string_path

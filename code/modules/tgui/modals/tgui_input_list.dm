@@ -150,7 +150,7 @@
 	.["swapped_buttons"] = FALSE//user.client.prefs.read_preference(/datum/preference/toggle/tgui_input_swapped)
 	.["title"] = title
 
-/datum/tgui_list_input/ui_data(mob/user, datum/tgui/ui, is_module)
+/datum/tgui_list_input/ui_data(mob/user, datum/tgui/ui)
 	. = list()
 	if(timeout)
 		.["timeout"] = clamp((timeout - (world.time - start_time) - 1 SECONDS) / (timeout - 1 SECONDS), 0, 1)

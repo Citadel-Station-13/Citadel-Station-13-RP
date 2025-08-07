@@ -322,7 +322,7 @@
 		ui = new(user, src, "PersonalCrafting")
 		ui.open()
 
-/datum/component/personal_crafting/ui_data(mob/user, datum/tgui/ui, is_module)
+/datum/component/personal_crafting/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	data["busy"] = busy
 	data["category"] = cur_category

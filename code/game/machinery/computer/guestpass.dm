@@ -124,7 +124,7 @@
 	.["durationMin"] = min_duration
 	.["auth"] = tgui_inserted_card()
 
-/obj/machinery/computer/guestpass/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/computer/guestpass/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["guestName"] = guest_name
 	.["guestReason"] = guest_reason

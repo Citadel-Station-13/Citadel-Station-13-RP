@@ -80,7 +80,7 @@
 		ui.open()
 		ui.set_autoupdate(FALSE)
 
-/obj/machinery/computer/skills/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/computer/skills/ui_data(mob/user, datum/tgui/ui)
 	var/data[0]
 
 	data["temp"] = temp

@@ -350,7 +350,7 @@
 	. = ..()
 	.["waypoints"] = ui_waypoint_data()
 
-/obj/item/gps/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/item/gps/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 
 	.["on"] = !!on

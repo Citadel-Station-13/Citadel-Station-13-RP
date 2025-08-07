@@ -89,7 +89,7 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 		ghostroles += list(ghostrole_data)	// wrap list
 	return data
 
-/datum/join_menu/ui_data(mob/user, datum/tgui/ui, is_module)
+/datum/join_menu/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 	// common info goes into ui data
 	var/level = "green"

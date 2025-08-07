@@ -149,7 +149,7 @@
 		ui = new(user, src, "Cleanbot", name)
 		ui.open()
 
-/mob/living/bot/cleanbot/ui_data(mob/user, datum/tgui/ui, is_module)
+/mob/living/bot/cleanbot/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 	data["on"] = on
 	data["open"] = open

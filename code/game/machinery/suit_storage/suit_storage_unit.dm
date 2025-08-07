@@ -97,7 +97,7 @@
 		ui = new(user, src, "SuitStorageUnit", name)
 		ui.open()
 
-/obj/machinery/suit_storage_unit/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/suit_storage_unit/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	data["broken"] = isbroken

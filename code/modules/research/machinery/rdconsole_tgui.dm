@@ -35,7 +35,7 @@
 
 	return data
 
-/obj/machinery/computer/rdconsole/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/computer/rdconsole/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["locked"] = locked

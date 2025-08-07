@@ -205,7 +205,7 @@
 
 	return ..()
 
-/obj/machinery/computer/shuttle_control/web/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/computer/shuttle_control/web/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	var/list/routes[0]

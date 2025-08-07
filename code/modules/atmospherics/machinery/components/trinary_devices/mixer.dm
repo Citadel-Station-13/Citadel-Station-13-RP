@@ -83,7 +83,7 @@
 		ui = new(user, src, "AtmosMixer", name)
 		ui.open()
 
-/obj/machinery/atmospherics/component/trinary/mixer/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/atmospherics/component/trinary/mixer/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	data["on"] = use_power
 	data["set_pressure"] = round(set_flow_rate)

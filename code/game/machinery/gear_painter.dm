@@ -142,7 +142,7 @@
 		ui.set_autoupdate(FALSE) //This might be a bit intensive, better to not update it every few ticks
 		ui.open()
 
-/obj/machinery/gear_painter/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/gear_painter/ui_data(mob/user, datum/tgui/ui)
 	. = list()
 	.["activemode"] = active_mode
 	.["matrixcolors"] = list(

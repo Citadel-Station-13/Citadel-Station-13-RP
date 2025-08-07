@@ -327,7 +327,7 @@
 
 	return data
 
-/datum/tgui_module_old/appearance_changer/ui_data(mob/user, datum/tgui/ui, is_module)
+/datum/tgui_module_old/appearance_changer/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	generate_data(user)

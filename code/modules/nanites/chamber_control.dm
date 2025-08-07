@@ -75,7 +75,7 @@
 			linked.try_refresh_protean(usr)
 			return TRUE
 
-/obj/machinery/computer/nanite_chamber/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/computer/nanite_chamber/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	if(isnull(linked))
 		return

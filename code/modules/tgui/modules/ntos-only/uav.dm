@@ -8,7 +8,7 @@
 	var/list/viewers //Who's viewing a UAV through us
 	var/adhoc_range = 30 //How far we can operate on a UAV without NTnet
 
-/datum/tgui_module_old/uav/ui_data(mob/user, datum/tgui/ui, is_module)
+/datum/tgui_module_old/uav/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	if(current_uav)

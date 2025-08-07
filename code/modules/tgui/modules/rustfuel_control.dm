@@ -26,7 +26,7 @@
 			if(new_ident)
 				fuel_tag = new_ident
 
-/datum/tgui_module_old/rustfuel_control/ui_data(mob/user, datum/tgui/ui, is_module)
+/datum/tgui_module_old/rustfuel_control/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	var/list/fuels = list()
 

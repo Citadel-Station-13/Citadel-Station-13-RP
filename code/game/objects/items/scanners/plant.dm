@@ -22,7 +22,7 @@
 /obj/item/plant_analyzer/ui_state()
 	return GLOB.inventory_state
 
-/obj/item/plant_analyzer/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/item/plant_analyzer/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	var/datum/seed/grown_seed = locate(last_seed)

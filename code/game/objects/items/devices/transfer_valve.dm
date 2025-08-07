@@ -86,7 +86,7 @@
 		ui = new(user, src, "TransferValve", name) // 460, 320
 		ui.open()
 
-/obj/item/transfer_valve/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/item/transfer_valve/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	data["tank_one"] = tank_one ? tank_one.name : null
 	data["tank_two"] = tank_two ? tank_two.name : null

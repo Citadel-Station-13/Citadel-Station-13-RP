@@ -40,7 +40,7 @@
 
 	..(forced)
 
-/datum/computer_file/program/ntnet_dos/ui_data(mob/user, datum/tgui/ui, is_module)
+/datum/computer_file/program/ntnet_dos/ui_data(mob/user, datum/tgui/ui)
 	if(!ntnet_global)
 		return
 

@@ -407,7 +407,7 @@
 		ui.open()
 
 // This is purely informational UI that may be accessed by AIs or robots
-/obj/machinery/power/supermatter/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/power/supermatter/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	data["integrity_percentage"] = round(get_integrity())

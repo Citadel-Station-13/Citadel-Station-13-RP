@@ -175,7 +175,7 @@
 	data["can_admin"] = can_run(user, FALSE, ACCESS_NETWORK)
 	return data
 
-/datum/computer_file/program/chatclient/ui_data(mob/user, datum/tgui/ui, is_module)
+/datum/computer_file/program/chatclient/ui_data(mob/user, datum/tgui/ui)
 	if(!ntnet_global || !ntnet_global.chat_channels)
 		return list()
 

@@ -402,7 +402,7 @@
 		ui = new(user, src, "OvermapShieldGenerator", name) // 500, 800
 		ui.open()
 
-/obj/machinery/power/shield_generator/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/power/shield_generator/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	data["running"] = running

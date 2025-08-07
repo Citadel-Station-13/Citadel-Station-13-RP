@@ -137,7 +137,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 		ui = new(user, src, "ICCircuit", name, parent_ui)
 		ui.open()
 
-/obj/item/integrated_circuit/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/item/integrated_circuit/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["name"] = name

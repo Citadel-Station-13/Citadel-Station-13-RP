@@ -34,7 +34,7 @@
 	.["line_types"] = typesof(/obj/item/fishing_line)
 	.["spot_types"] = subtypesof(/datum/fish_source)
 
-/datum/fishing_calculator/ui_data(mob/user, datum/tgui/ui, is_module)
+/datum/fishing_calculator/ui_data(mob/user, datum/tgui/ui)
 	return list("info" = current_table)
 
 /datum/fishing_calculator/ui_act(action, list/params, datum/tgui/ui)

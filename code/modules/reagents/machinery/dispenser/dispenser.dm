@@ -192,7 +192,7 @@
 	.["macros_full"] = length(macros) >= MAX_MACROS
 	.["macros_max_steps"] = MAX_MACRO_STEPS
 
-/obj/machinery/chemical_dispenser/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/chemical_dispenser/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["amount"] = dispense_amount
 	.["amount_max"] = dispense_amount_max

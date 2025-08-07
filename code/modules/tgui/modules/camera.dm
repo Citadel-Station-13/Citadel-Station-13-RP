@@ -102,7 +102,7 @@
 		ui = new(user, src, tgui_id, name)
 		ui.open()
 
-/datum/tgui_module_old/camera/ui_data(mob/user, datum/tgui/ui, is_module)
+/datum/tgui_module_old/camera/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	data["activeCamera"] = null
 	if(active_camera)

@@ -37,7 +37,7 @@
 	.["powerRating"] = power_maximum
 	.["useCell"] = use_cell
 
-/obj/machinery/portable_atmospherics/powered/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/portable_atmospherics/powered/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["charge"] = isnull(cell)? 0 : cell.charge
 	if(atmos_portable_ui_flags & (ATMOS_PORTABLE_UI_SEE_POWER | ATMOS_PORTABLE_UI_SET_POWER))

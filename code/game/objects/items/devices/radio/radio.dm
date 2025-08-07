@@ -160,7 +160,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 		ui = new(user, src, "Radio", name)
 		ui.open()
 
-/obj/item/radio/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/item/radio/ui_data(mob/user, datum/tgui/ui)
 	var/data[0]
 
 	data["rawfreq"] = frequency

@@ -20,7 +20,7 @@
 	. = ..()
 	.["access"] = SSjob.tgui_access_data()
 
-/obj/item/airlock_electronics/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/item/airlock_electronics/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["req_access"] = conf_req_access || list()
 	.["req_one_access"] = conf_req_one_access || list()

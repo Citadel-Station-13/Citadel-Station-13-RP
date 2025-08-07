@@ -137,7 +137,7 @@
 	.["moduleRefs"] = module_refs
 	.["wornCorrectly"] = is_in_right_slot()
 
-/obj/item/rig/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/item/rig/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	// todo: maybe cache this
 	.["controlFlags"] = effective_control_flags(user)

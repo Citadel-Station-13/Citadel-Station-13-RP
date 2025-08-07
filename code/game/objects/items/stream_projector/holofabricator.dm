@@ -218,7 +218,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricato
 	.["materialContext"] = SSmaterials.tgui_materials_context()
 	#warn impl
 
-/obj/item/stream_projector/holofabricator/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/item/stream_projector/holofabricator/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	#warn impl
 

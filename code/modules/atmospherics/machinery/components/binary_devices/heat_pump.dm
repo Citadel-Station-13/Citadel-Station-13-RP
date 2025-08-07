@@ -169,7 +169,7 @@
 		ui = new(user, src, "heat_pump", name)
 		ui.open()
 
-/obj/machinery/atmospherics/component/binary/heat_pump/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/atmospherics/component/binary/heat_pump/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	data["target_temp"] = target_temp
 	data["current_temp"] = air2.temperature

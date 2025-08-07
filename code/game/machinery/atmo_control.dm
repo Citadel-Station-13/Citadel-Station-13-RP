@@ -109,7 +109,7 @@
 		ui = new(user, src, "GeneralAtmoControl", name)
 		ui.open()
 
-/obj/machinery/computer/general_air_control/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/computer/general_air_control/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	var/sensors_ui[0]
 	if(sensors.len)
@@ -145,7 +145,7 @@
 	var/pressure_setting = ONE_ATMOSPHERE * 45
 	circuit = /obj/item/circuitboard/air_management/tank_control
 
-/obj/machinery/computer/general_air_control/large_tank_control/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/computer/general_air_control/large_tank_control/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["tanks"] = 1
@@ -244,7 +244,7 @@
 	var/pressure_setting = 100
 	circuit = /obj/item/circuitboard/air_management/supermatter_core
 
-/obj/machinery/computer/general_air_control/supermatter_core/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/computer/general_air_control/supermatter_core/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 	data["core"] = 1
 
@@ -373,7 +373,7 @@
 
 	..()
 
-/obj/machinery/computer/general_air_control/fuel_injection/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/computer/general_air_control/fuel_injection/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 	data["fuel"] = 1
 	data["automation"] = automation

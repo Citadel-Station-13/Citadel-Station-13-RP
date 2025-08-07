@@ -145,7 +145,7 @@
 		ui = new(user, src, "ResearchServerController", name)
 		ui.open()
 
-/obj/machinery/computer/rdservercontrol/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/computer/rdservercontrol/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["badmin"] = badmin

@@ -219,7 +219,7 @@
 		else if(dead_fish > 0)
 			to_chat(user, SPAN_WARNING("The fish are all dead!"))
 
-/obj/structure/aquarium/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/structure/aquarium/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["fluid_type"] = fluid_type
 	.["temperature"] = fluid_temp

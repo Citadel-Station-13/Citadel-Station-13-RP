@@ -68,7 +68,7 @@
 /obj/machinery/atmospherics/component/trinary/molar_filter/proc/set_rate(liters)
 	flow_setting = clamp(liters, 0, air1.volume)
 
-/obj/machinery/atmospherics/component/trinary/molar_filter/ui_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/atmospherics/component/trinary/molar_filter/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["lower"] = mass_lower
 	.["upper"] = mass_upper
