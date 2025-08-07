@@ -1,12 +1,12 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
 
 /datum/rig_theme/nanotrasen
 	abstract_type = /datum/rig_theme/nanotrasen
 	// bye-bye security
 	siemens_coefficient = 0.5
 
-AUTO_RIG_THEME(/nanotrasen/asset_protection)
+DECLARE_RIG_THEME(/nanotrasen/asset_protection)
 /datum/rig_theme/nanotrasen/asset_protection
 	name = "deathsquad rig"
 	base_state = "deathsquad"
@@ -44,7 +44,7 @@ AUTO_RIG_THEME(/nanotrasen/asset_protection)
 	fire = 0.75
 	acid = 1.0
 
-AUTO_RIG_THEME(/nanotrasen/officer)
+DECLARE_RIG_THEME(/nanotrasen/officer)
 /datum/rig_theme/nanotrasen/officer
 	name = "centcom rig"
 	base_state = "responsory"
@@ -80,7 +80,7 @@ AUTO_RIG_THEME(/nanotrasen/officer)
 	fire = 0.75
 	acid = 1.0
 
-AUTO_RIG_THEME(/nanotrasen/inquisition)
+DECLARE_RIG_THEME(/nanotrasen/inquisition)
 /datum/rig_theme/nanotrasen/inquisition
 	name = "inquisition rig"
 	base_state = "inquisitory"
@@ -145,7 +145,7 @@ AUTO_RIG_THEME(/nanotrasen/inquisition)
 	fire = 0.75
 	acid = 1.0
 
-AUTO_RIG_THEME(/nanotrasen/response/commander)
+DECLARE_RIG_THEME(/nanotrasen/response/commander)
 /datum/rig_theme/nanotrasen/response/commander
 	name = "ert commander rig"
 	base_state = "commander"
@@ -154,7 +154,7 @@ AUTO_RIG_THEME(/nanotrasen/response/commander)
 	visible_name = "Command"
 	control_sealed_append = ""
 
-AUTO_RIG_THEME(/nanotrasen/response/medic)
+DECLARE_RIG_THEME(/nanotrasen/response/medic)
 /datum/rig_theme/nanotrasen/response/medic
 	name = "ert medic rig"
 	base_state = "medic"
@@ -163,7 +163,7 @@ AUTO_RIG_THEME(/nanotrasen/response/medic)
 	visible_name = "Rescue"
 	control_sealed_append = ""
 
-AUTO_RIG_THEME(/nanotrasen/response/engineer)
+DECLARE_RIG_THEME(/nanotrasen/response/engineer)
 /datum/rig_theme/nanotrasen/response/engineer
 	name = "ert engineer rig"
 	base_state = "engineer"
@@ -172,7 +172,7 @@ AUTO_RIG_THEME(/nanotrasen/response/engineer)
 	visible_name = "Engineering"
 	control_sealed_append = ""
 
-AUTO_RIG_THEME(/nanotrasen/response/security)
+DECLARE_RIG_THEME(/nanotrasen/response/security)
 /datum/rig_theme/nanotrasen/response/security
 	name = "ert security rig"
 	base_state = "security"

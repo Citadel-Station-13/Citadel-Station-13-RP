@@ -7,7 +7,8 @@
 
 DEFINE_ENUM(rig_module_conflict, list(
 	/obj/item/rig_module = list(
-		"single_conflict_rig",
+		"global_conflict_enum",
+		"zone_conflict_enum",
 	),
 ), list(
 ))

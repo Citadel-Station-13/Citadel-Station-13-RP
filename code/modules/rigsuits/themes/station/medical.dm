@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
 
 /datum/rig_theme/station/medical
 	abstract_type = /datum/rig_theme/station/medical
@@ -26,7 +26,7 @@
 	fire = 0.575
 	acid = 1.0
 
-AUTO_RIG_THEME(/station/medical/standard)
+DECLARE_RIG_THEME(/station/medical/standard)
 /datum/rig_theme/station/medical/standard
 	name = "medical rig"
 	base_state = "medical"
@@ -52,7 +52,7 @@ AUTO_RIG_THEME(/station/medical/standard)
 	)
 	#warn encumbrance
 
-AUTO_RIG_THEME(/station/medical/advanced)
+DECLARE_RIG_THEME(/station/medical/advanced)
 /datum/rig_theme/station/medical/advanced
 	name = "chief medical rig"
 	base_state = "corpsman"

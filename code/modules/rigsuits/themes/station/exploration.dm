@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
 
 /datum/rig_theme/station/exploration
 	abstract_type = /datum/rig_theme/station/exploration
@@ -15,7 +15,7 @@
 	control_base_state_worn = ""
 	control_sealed_append = ""
 
-AUTO_RIG_THEME(/station/exploration/standard)
+DECLARE_RIG_THEME(/station/exploration/standard)
 /datum/rig_theme/station/exploration/standard
 	name = "excursion rig"
 	base_state = "explo"
@@ -25,7 +25,7 @@ AUTO_RIG_THEME(/station/exploration/standard)
 	visible_name = "excursion"
 	#warn impl
 
-AUTO_RIG_THEME(/station/exploration/pathfinder)
+DECLARE_RIG_THEME(/station/exploration/pathfinder)
 /datum/rig_theme/station/exploration/pathfinder
 	name = "pathfinder rig"
 	base_state = "pf"
@@ -36,7 +36,7 @@ AUTO_RIG_THEME(/station/exploration/pathfinder)
 	control_base_state_worn = null
 	#warn impl
 
-AUTO_RIG_THEME(/station/exploration/medic)
+DECLARE_RIG_THEME(/station/exploration/medic)
 /datum/rig_theme/station/exploration/medic
 	name = "field medic rig"
 	base_state = "medic"
@@ -46,7 +46,7 @@ AUTO_RIG_THEME(/station/exploration/medic)
 	visible_name = "medic"
 	#warn impl
 
-AUTO_RIG_THEME(/station/exploration/pilot)
+DECLARE_RIG_THEME(/station/exploration/pilot)
 /datum/rig_theme/station/exploration/pilot
 	name = "pilot rig"
 	base_state = "pilot"

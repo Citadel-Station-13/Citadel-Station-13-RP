@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
 
 /datum/rig_theme/station/engineering
 	abstract_type = /datum/rig_theme/station/engineering
@@ -27,7 +27,7 @@
 	fire = 0.75
 	acid = 1.0
 
-AUTO_RIG_THEME(/station/engineering/standard)
+DECLARE_RIG_THEME(/station/engineering/standard)
 /datum/rig_theme/station/engineering/standard
 	name = "engineering rig"
 	base_state = "engineering"
@@ -46,7 +46,7 @@ AUTO_RIG_THEME(/station/engineering/standard)
 /datum/armor/rigsuit/station/engineering/standard
 	rad = 0.8
 
-AUTO_RIG_THEME(/station/engineering/atmospherics)
+DECLARE_RIG_THEME(/station/engineering/atmospherics)
 /datum/rig_theme/station/engineering/atmospherics
 	name = "atmospherics rig"
 	base_state = "atmospheric"
@@ -64,7 +64,7 @@ AUTO_RIG_THEME(/station/engineering/atmospherics)
 	fire = 1.0
 	rad = 0.45
 
-AUTO_RIG_THEME(/station/engineering/advanced)
+DECLARE_RIG_THEME(/station/engineering/advanced)
 /datum/rig_theme/station/engineering/advanced
 	name = "advanced rig"
 	base_state = "advanced"

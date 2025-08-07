@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
 
 /datum/rig_theme/station/security
 	abstract_type = /datum/rig_theme/station/security
@@ -7,7 +7,7 @@
 	// combat rigs
 	siemens_coefficient = 0.65
 
-AUTO_RIG_THEME(/station/security/standard)
+DECLARE_RIG_THEME(/station/security/standard)
 /datum/rig_theme/station/security/standard
 	name = "security rig"
 	base_state = "security"
@@ -17,7 +17,7 @@ AUTO_RIG_THEME(/station/security/standard)
 	visible_name = "Security"
 	#warn impl
 
-AUTO_RIG_THEME(/station/security/)
+DECLARE_RIG_THEME(/station/security/)
 /datum/rig_theme/station/security/safeguard
 	name = "safeguard rig"
 	base_state = "safeguard"

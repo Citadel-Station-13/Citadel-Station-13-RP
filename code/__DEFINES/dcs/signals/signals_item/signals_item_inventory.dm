@@ -9,10 +9,3 @@
 /// From base of obj/item/unequipped(): (/mob/unequipped, slot_id, inv_op_flags)
 
 #define COMSIG_ITEM_UNEQUIPPED "item_unequip"
-
-//* Return values for all of the above 4 signals
-//  todo: implement on pickup
-//  todo: implement on unequipped
-//  todo: implement on equipped
-	#define COMPONENT_ITEM_INV_OP_RELOCATE				(1<<0)
-	#define COMPONENT_ITEM_INV_OP_SUPPRESS_SOUND		(1<<1)

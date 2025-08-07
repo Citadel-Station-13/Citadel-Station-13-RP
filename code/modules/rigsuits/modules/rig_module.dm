@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
 
 /**
  * modules are modular items that can be inserted into specific complexity on the rig.
@@ -7,13 +7,15 @@
 /obj/item/rig_module
 	#warn impl all
 
-	//* Core
+	//* Core *//
 	/// lookup id
+	/// * set on a rigsuit so this module is addressable by the console and other features
+	/// * shown to players as well as used on the backend.
 	var/lookup_id
 	/// lookup prefix - set this please
 	var/lookup_prefix = "unkw"
 
-	//* Balancing
+	//* Balancing *//
 	/// complexity this takes up
 	///
 	/// complexity is the metric used to balance complexity / variety of functions
@@ -29,22 +31,21 @@
 	/// stuff like heavy armor tends to be heavier.
 	var/module_weight = 0
 
-	//* Conflicts
+	//* Conflicts *//
 	/// single-conflict enum; if set, only one of this kind of module can exist on a rig
-	/// this will not conflict with any of the other conflict types!
+	/// * this will not conflict with any of the other conflict types!
 	var/global_conflict_enum
 	/// cannot put more than one of this type in the rig;
+	/// * this will not conflict with any of the other conflict types!
 	var/global_conflict_type
-	/// cannot put more than one of ourselves into the rig
-	var/global_conflict_self
 	/// zone-conflict enum; if set, only one our exact type can exist in any of our zones
+	/// * this will not conflict with any of the other conflict types!
 	var/zone_conflict_enum
 	/// cannot put more than one of this type in any of our zones
+	/// * this will not conflict with any of the other conflict types!
 	var/zone_conflict_type
-	/// cannot put more htan one of our own exact type into any of our zones
-	var/zone_conflict_self
 
-	//* Defense
+	//* Defense *//
 	/// brute damage
 	var/brute_damage = 0
 	/// burn damage
@@ -52,24 +53,25 @@
 	/// total integrity
 	var/max_health = 100
 
-	//* Registration
+	//* Registration *//
 	/// the rig we're on
 	var/obj/item/rig/host
+	#warn reconsider power
 	/// registered low power draw in watts
 	var/registered_low_power = 0
 	/// registered high power draw in watts
 	var/registered_high_power = 0
 
-	//* UI
+	//* UI *//
 	//! todo: this is fucking evil
 	/// cached b64 string of our UI icon
 	var/cached_tgui_icon_b64
 	/// is our UI update queued?
 	var/ui_update_queued = FALSE
 	/// TGUI route; this is handled by routes.tsx in the Rigsuit folder on TGUI!
-	var/tgui_interface = "inert"
+	var/tgui_interface = "Inert"
 
-	//* Zone
+	//* Zone *//
 	/// our zone define, e.g. RIG_ZONE_X
 	/// all = takes complexity from all zones
 	/// none = takes complexity from any zone
@@ -185,28 +187,32 @@
 	var/old = module_weight
 	module_weight = weight
 	host?.on_module_weight_change(src, old, weight)
+	return TRUE
 
 /obj/item/rig_module/proc/set_module_volume(volume)
 	var/old = module_volume
 	module_volume = volume
 	host?.on_module_volume_change(src, old, volume)
+	return TRUE
 
 /obj/item/rig_module/proc/set_module_complexity(complexity)
 	var/old = module_complexity
 	module_complexity = complexity
 	host?.on_module_complexity_change(src, old, complexity)
+	return TRUE
 
 /obj/item/rig_module/proc/set_module_zone(new_zone)
-	// yeah, nah, we're not handling this cleanly
-	ASSERT(!host)
+	// no current handling for setting while attached
+	if(host)
+		return FALSE
 	zone = new_zone
+	return TRUE
 
 //* UI *//
 
 /obj/item/rig_module/proc/rig_static_data()
 	return list(
 		"$tgui" = tgui_interface,
-		"$src" = ref(src),
 	)
 	#warn impl
 
@@ -217,15 +223,9 @@
 	#warn impl
 
 /**
- * queues non-static
- */
-/obj/item/rig_module/proc/rig_queue_data()
-	#warn impl
-
-/**
  * @return TRUE if did something (and stop propagation).
  */
-/obj/item/rig_module/proc/rig_act(mob/user, control_flags, action, list/params)
+/obj/item/rig_module/proc/rig_act(datum/event_args/actor/actor, control_flags, action, list/params)
 	return FALSE
 
 /**
@@ -233,7 +233,7 @@
  *
  * @return TRUE / FALSE
  */
-/obj/item/rig_module/proc/rig_allowed(mob/user, control_flags, action, list/params)
+/obj/item/rig_module/proc/rig_allowed(datum/event_args/actor/actor, control_flags, action, list/params)
 	return control_flags & RIG_CONTROL_MODULES
 
 //* Zones *//
@@ -254,7 +254,7 @@
  *
  * @return RIG_HANDEDNESS_X enum
  */
-/obj/item/rig_module/proc/safe_handedness()
+/obj/item/rig_module/proc/get_handedness()
 	var/our_bits = rig_zone_to_bit[zone]
 	if(our_bits & (RIG_ZONE_BIT_ARMS | RIG_ZONE_BIT_LEGS))
 		return our_bits & (RIG_ZONE_BIT_LEFT_ARM | RIG_ZONE_BIT_LEFT_LEG) ? RIG_HANDEDNESS_LEFT : RIG_HANDEDNESS_RIGHT

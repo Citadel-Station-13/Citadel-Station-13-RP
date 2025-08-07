@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
 
 //* WELCOME TO THE SEVENTH CIRCLE OF WEBDEV HELL
 /// For efficiency, rigs will internally track and cache what needs to update.

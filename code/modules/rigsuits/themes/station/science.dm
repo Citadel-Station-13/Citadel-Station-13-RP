@@ -1,11 +1,11 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
 
 /datum/rig_theme/station/science
 	abstract_type = /datum/rig_theme/station/science
 	base_icon = 'icons/modules/rigsuits/suits/science.dmi'
 
-AUTO_RIG_THEME(/station/science/standard)
+DECLARE_RIG_THEME(/station/science/standard)
 /datum/rig_theme/station/science/standard
 	name = "prototype rig"
 	base_state = "prototype"
@@ -15,7 +15,7 @@ AUTO_RIG_THEME(/station/science/standard)
 	visible_name = "Prototype"
 	#warn impl
 
-AUTO_RIG_THEME(/station/science/anomaly)
+DECLARE_RIG_THEME(/station/science/anomaly)
 /datum/rig_theme/station/science/anomaly
 	name = "anomaly rig"
 	base_state = "apocryphal"

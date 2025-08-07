@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
 
 /datum/rig_theme/species/nepid
 	abstract_type = /datum/rig_theme/species/nepid
@@ -26,7 +26,7 @@
 	fire = 1.0
 	acid = 1.0
 
-AUTO_RIG_THEME(/species/nepid/generic)
+DECLARE_RIG_THEME(/species/nepid/generic)
 /datum/rig_theme/species/nepid/generic
 	name = "Dnin-Nepid EVA harness"
 	base_state = "generic"

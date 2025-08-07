@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
 
 /datum/rig_theme/station/cargo
 	abstract_type = /datum/rig_theme/station/cargo
@@ -26,7 +26,7 @@
 	fire = 0.75
 	acid = 1.0
 
-AUTO_RIG_THEME(/station/cargo/asteroid)
+DECLARE_RIG_THEME(/station/cargo/asteroid)
 /datum/rig_theme/station/cargo/asteroid
 	name = "salvage rig"
 	base_state = "salvage"
@@ -44,7 +44,7 @@ AUTO_RIG_THEME(/station/cargo/asteroid)
 
 /datum/armor/rigsuit/station/cargo/asteroid
 
-AUTO_RIG_THEME(/station/cargo/mining)
+DECLARE_RIG_THEME(/station/cargo/mining)
 /datum/rig_theme/station/cargo/mining
 	name = "mining rig"
 	base_state = "mining"
@@ -69,7 +69,7 @@ AUTO_RIG_THEME(/station/cargo/mining)
 	laser_tier = LASER_TIER_LOW
 	rad = 0.35
 
-AUTO_RIG_THEME(/station/cargo/loader)
+DECLARE_RIG_THEME(/station/cargo/loader)
 /datum/rig_theme/station/cargo/loader
 	name = "loader rig"
 	base_state = "loader"

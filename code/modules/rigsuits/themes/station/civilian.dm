@@ -1,11 +1,11 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
 
 /datum/rig_theme/station/civilian
 	abstract_type = /datum/rig_theme/station/civilian
 	base_icon = 'icons/modules/rigsuits/suits/civilian.dmi'
 
-AUTO_RIG_THEME(/station/civilian/standard)
+DECLARE_RIG_THEME(/station/civilian/standard)
 /datum/rig_theme/station/civilian/standard
 	name = "standard rig"
 	base_state = "standard"

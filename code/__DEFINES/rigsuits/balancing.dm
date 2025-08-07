@@ -14,5 +14,4 @@
  * * rigsuits get slower and more inefficient at higher weights
  */
 
-
-
+#warn impl?

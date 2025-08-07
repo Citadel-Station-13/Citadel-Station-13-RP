@@ -2,5 +2,5 @@
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
 /// Do **not** use on abstract themes.
-#define AUTO_RIG_THEME(PATH) \
-/obj/item/rig##PATH { theme_preset = /datum/rig_theme##PATH };
+#define DECLARE_RIG_THEME(PATH) \
+/obj/item/rig/preset##PATH { theme_preset = /datum/rig_theme##PATH };

@@ -1,11 +1,11 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
 
 /datum/rig_theme/station/command
 	abstract_type = /datum/rig_theme/station/command
 	base_icon = 'icons/modules/rigsuits/suits/command.dmi'
 
-AUTO_RIG_THEME(/station/command/captain)
+DECLARE_RIG_THEME(/station/command/captain)
 /datum/rig_theme/station/command/captain
 	name = "director rig"
 	base_state = "magnate"

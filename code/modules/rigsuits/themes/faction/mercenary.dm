@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
 
 /**
  * generic bad-or-maybe-bad guy suits
@@ -9,12 +9,12 @@
 	// bye-bye security
 	siemens_coefficient = 0.5
 
-AUTO_RIG_THEME(/mercenary/gorlex)
+DECLARE_RIG_THEME(/mercenary/gorlex)
 /datum/rig_theme/mercenary/gorlex
 	abstract_type = /datum/rig_theme/mercenary/gorlex
 	base_icon = 'icons/modules/rigsuits/suits/factions/military_gorlex.dmi'
 
-AUTO_RIG_THEME(/mercenary/gorlex_raider)
+DECLARE_RIG_THEME(/mercenary/gorlex_raider)
 /datum/rig_theme/mercenary/gorlex_raider
 	name = "nukeops rig"
 	base_state = "syndicate"
@@ -24,7 +24,7 @@ AUTO_RIG_THEME(/mercenary/gorlex_raider)
 	visible_name = "Operator"
 	#warn impl
 
-AUTO_RIG_THEME(/mercenary/gorlex_infiltrator)
+DECLARE_RIG_THEME(/mercenary/gorlex_infiltrator)
 /datum/rig_theme/mercenary/gorlex_infiltrator
 	name = "contractor rig"
 	base_state = "infiltrator"
@@ -34,7 +34,7 @@ AUTO_RIG_THEME(/mercenary/gorlex_infiltrator)
 	visible_name = "Streamlined"
 	#warn impl
 
-AUTO_RIG_THEME(/mercenary/gorlex_assault)
+DECLARE_RIG_THEME(/mercenary/gorlex_assault)
 /datum/rig_theme/mercenary/gorlex_assault
 	name = "elite nukeops rig"
 	base_state = "elite"
@@ -44,7 +44,7 @@ AUTO_RIG_THEME(/mercenary/gorlex_assault)
 	visible_name = "Battle"
 	#warn impl
 
-AUTO_RIG_THEME(/mercenary/marine)
+DECLARE_RIG_THEME(/mercenary/marine)
 /datum/rig_theme/mercenary/marine
 	base_icon = 'icons/modules/rigsuits/suits/factions/military_marine.dmi'
 	name = "marine rig"
@@ -73,7 +73,7 @@ AUTO_RIG_THEME(/mercenary/marine)
 		},
 	)
 
-AUTO_RIG_THEME(/mercenary/pmc/commander)
+DECLARE_RIG_THEME(/mercenary/pmc/commander)
 /datum/rig_theme/mercenary/pmc/commander
 	name = "pmc commander rig"
 	base_state = "commander"
@@ -83,7 +83,7 @@ AUTO_RIG_THEME(/mercenary/pmc/commander)
 	visible_name = "Leader"
 	#warn impl
 
-AUTO_RIG_THEME(/mercenary/pmc/medic)
+DECLARE_RIG_THEME(/mercenary/pmc/medic)
 /datum/rig_theme/mercenary/pmc/medic
 	name = "pmc medic rig"
 	base_state = "medic"
@@ -94,7 +94,7 @@ AUTO_RIG_THEME(/mercenary/pmc/medic)
 	#warn impl
 
 
-AUTO_RIG_THEME(/mercenary/pmc/engineer)
+DECLARE_RIG_THEME(/mercenary/pmc/engineer)
 /datum/rig_theme/mercenary/pmc/engineer
 	name = "pmc engineer rig"
 	base_state = "engineer"
@@ -105,7 +105,7 @@ AUTO_RIG_THEME(/mercenary/pmc/engineer)
 	#warn impl
 
 
-AUTO_RIG_THEME(/mercenary/pmc/security)
+DECLARE_RIG_THEME(/mercenary/pmc/security)
 /datum/rig_theme/mercenary/pmc/security
 	name = "pmc security rig"
 	base_state = "security"
@@ -115,7 +115,7 @@ AUTO_RIG_THEME(/mercenary/pmc/security)
 	visible_name = "Officer"
 	#warn impl
 
-AUTO_RIG_THEME(/mercenary/sleek)
+DECLARE_RIG_THEME(/mercenary/sleek)
 /datum/rig_theme/mercenary/sleek
 	base_icon = 'icons/modules/rigsuits/suits/factions/military_sleek.dmi'
 	name = "sleek combat rig"
