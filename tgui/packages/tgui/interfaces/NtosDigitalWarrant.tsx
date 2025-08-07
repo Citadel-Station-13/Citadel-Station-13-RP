@@ -90,7 +90,7 @@ const WarrantList = (props) => {
         </Table.Row>
       )) || (
           <Table.Row>
-            <Table.Cell colspan="3" color="bad">
+            <Table.Cell colSpan="3" color="bad">
               No {type} warrants found.
             </Table.Cell>
           </Table.Row>

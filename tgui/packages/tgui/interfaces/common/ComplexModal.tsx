@@ -18,9 +18,9 @@ type ModalData = {
  * @param {string} id The identifier of the modal
  * @param {object=} args The arguments to pass to the modal
  */
-export const modalOpen = (context, id, args) => {
+export const modalOpen = (id, args = {}) => {
   const { act, data } = useBackend<ModalData>();
-  const newArgs = Object.assign(data.modal ? data.modal.args : {}, args || {});
+  const newArgs = Object.assign(data.modal ? data.modal.args : {}, args);
 
   act('modal_open', {
     id: id,

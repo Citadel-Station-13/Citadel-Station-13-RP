@@ -12,7 +12,7 @@ export const SeedStorage = (props) => {
     seeds,
   } = data;
 
-  const sortedSeeds = sortBy(seed => seed.name.toLowerCase())(seeds);
+  const sortedSeeds = sortBy(seeds, (seed: any) => seed.name.toLowerCase());
 
   return (
     <Window width={600} height={760}>
@@ -46,7 +46,6 @@ export const SeedStorage = (props) => {
               </Flex.Item>
               <Flex.Item grow={1}>
                 <Button.Confirm
-                  confirm
                   fluid
                   icon="trash"
                   onClick={() => act("purge", { id: seed.id })}>

@@ -8,6 +8,7 @@ import { Button, Collapsible, Input, NumberInput, Section, Stack } from "tgui-co
 import { Window } from "../../layouts";
 import { StackRecipeData } from "../common/StackRecipe";
 import { useState } from "react";
+import { ceiling, floor } from "common/math";
 
 interface StackCraftingData {
   recipes: StackRecipeData[];
@@ -43,6 +44,9 @@ const StackCraftingEntry = (props: StackCraftingEntryProps) => {
           </Stack.Item>
           <Stack.Item>
             <NumberInput width={2.5} value={amt}
+              minValue={0}
+              maxValue={10000}
+              step={1}
               onChange={(val) => setAmt(
                 Math.max(
                   Math.min(
@@ -97,8 +101,8 @@ export const StackCrafting = (props) => {
             Search
             <Input
               autoFocus
-              value={searchText}
-              onInput={(val) => setSearchText(val)}
+              value={searchText || ""}
+              onChange={(val) => setSearchText(val)}
               mx={1} />
           </>
         )}>
@@ -120,7 +124,7 @@ export const StackCrafting = (props) => {
               <>
                 {categories.sort((a, b) => a.localeCompare(b)).map((cat) => (
                   <Stack.Item key={cat}>
-                    <Collapsible title={cat} contentFunction={() => (
+                    <Collapsible title={cat}>
                       <Stack vertical ml={1} mt={1}>
                         {data.recipes.filter((r) => r.category === cat).map((r) => (
                           <Stack.Item key={r.name}>
@@ -131,7 +135,7 @@ export const StackCrafting = (props) => {
                           </Stack.Item>
                         ))}
                       </Stack>
-                    )} />
+                    </Collapsible>
                   </Stack.Item>
                 ))}
                 {data.recipes.filter((r) => !r.category).sort((a, b) =>

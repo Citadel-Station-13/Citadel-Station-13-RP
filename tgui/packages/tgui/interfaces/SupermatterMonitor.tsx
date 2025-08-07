@@ -164,7 +164,6 @@ const SupermatterMonitorActive = (props) => {
       <LabeledList>
         <LabeledList.Item label="Core Integrity">
           <ProgressBar
-            animated
             value={SM_integrity}
             minValue={0}
             maxValue={100}
@@ -199,7 +198,7 @@ const SupermatterMonitorActive = (props) => {
         <LabeledList.Item label="Chamber EPR">
           <Box color={(SM_EPR > 4 && 'bad')
             || (SM_EPR > 1 && 'average') || 'good'}>
-            <AnimatedNumber format={(val) => round(val, 2)}
+            <AnimatedNumber format={(val) => `${round(val, 2)}`}
               value={SM_EPR} />
           </Box>
         </LabeledList.Item>

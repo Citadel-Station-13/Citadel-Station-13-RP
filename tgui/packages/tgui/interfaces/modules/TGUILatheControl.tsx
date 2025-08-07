@@ -15,6 +15,7 @@ import { Design } from "../common/Design";
 import { IngredientsAvailable, IngredientsSelected } from "../common/Ingredients";
 import { MaterialRender, MaterialsContext, MaterialStorage, MATERIAL_STORAGE_UNIT_NAME, renderMaterialAmount } from "../common/Materials";
 import { ReagentContents, ReagentContentsData, REAGENT_STORAGE_UNIT_NAME } from "../common/Reagents";
+import { useState } from "react";
 
 interface TGUILatheControlProps {
 
@@ -66,12 +67,10 @@ export const generateDynamicButton = (name, mode, actFunction) => {
 export const TGUILatheControl = (props: TGUILatheControlProps) => {
   const { data, act } = useModule<TGUILatheControlData>(context);
   const [category, setCategory] = useLocalState<string>(
-    context,
     `${data.$ref}-category`,
     data.designs.categories.length ? data.designs.categories[1] : "General"
   );
   const [resourcesSelect, setResourcesSelect] = useLocalState<string>(
-    context,
     `${data.$ref}-rSelect`,
     "Materials",
   );
@@ -155,7 +154,7 @@ export const TGUILatheControl = (props: TGUILatheControlProps) => {
     <Modular window={windowProps}>
       <Stack vertical fill>
         <Stack.Item>
-          <Stack fluid>
+          <Stack>
             <Stack.Item grow={1}>
               <Section title="Resources">
                 <Stack vertical>
@@ -216,7 +215,7 @@ export const TGUILatheControl = (props: TGUILatheControlProps) => {
           </Stack>
         </Stack.Item>
         <Stack.Item grow>
-          <Stack fluid fill>
+          <Stack fill>
             <Stack.Item grow={0.3}>
               <Section fill title="Categories" scrollable>
                 <Tabs vertical>

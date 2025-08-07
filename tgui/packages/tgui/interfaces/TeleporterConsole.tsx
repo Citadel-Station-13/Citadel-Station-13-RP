@@ -64,9 +64,9 @@ export const TeleporterConsoleOperational = (props) => {
             value={projector_recharge_rate}
             unit="kW"
             width="100px"
+            step={0.01}
             minValue={0}
             maxValue={100000}
-            suppressFlicker={250}
             onChange={(value) => act('set_recharge', {
               target: value,
             })} />

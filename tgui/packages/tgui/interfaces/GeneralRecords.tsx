@@ -10,8 +10,8 @@ import { createSearch } from 'tgui-core/string';
 import { filter } from 'common/collections';
 import { flow } from 'common/fp';
 
-const doEdit = (context, field) => {
-  modalOpen(context, 'edit', {
+const doEdit = (field) => {
+  modalOpen('edit', {
     field: field.edit,
     value: field.value,
   });
@@ -196,7 +196,7 @@ const GeneralRecordsViewGeneral = (_properties) => {
                 <Button
                   icon="pen"
                   ml="0.5rem"
-                  onClick={() => doEdit(context, field)}
+                  onClick={() => doEdit(field)}
                 />
               )}
             </LabeledList.Item>
@@ -232,24 +232,24 @@ const GeneralRecordsViewGeneral = (_properties) => {
             color="good"
             mt="0.5rem"
             mb="0"
-            onClick={() => modalOpen(context, 'add_c')}
+            onClick={() => modalOpen('add_c')}
           />
         </Section>
       </Box>
-      <Box width="50%" float="right" textAlign="right">
+      <Box width="50%" style={{ float: "right" }} textAlign="right">
         {!!general.has_photos && (
           general.photos.map((p, i) => (
             <Box
               key={i}
-              display="inline-block"
+              style={{ display: "inline-block" }}
               textAlign="center"
               color="label">
               <img
                 src={p.substr(1, p.length - 1)}
                 style={{
                   width: '96px',
-                  'margin-bottom': '0.5rem',
-                  '-ms-interpolation-mode': 'nearest-neighbor',
+                  marginBottom: "0.5rem",
+                  imageRendering: "crisp-edges",
                 }}
               /><br />
               Photo #{i + 1}

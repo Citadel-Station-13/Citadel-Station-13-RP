@@ -211,12 +211,13 @@ const TelecommsMultitoolMenuPolymorphicOptions = (props) => {
           <LabeledList.Item
             label={(use_broadcast_range ? "Broadcast" : "Receive") + " Range"}>
             <NumberInput
+              step={1}
               value={range}
               minValue={minRange}
               maxValue={maxRange}
               unit="gigameters"
               stepPixelSize={4}
-              format={val => val + 1}
+              format={val => `${val + 1}`}
               onDrag={(val) => act("range", { range: val })} />
           </LabeledList.Item>
         ) : null}

@@ -6,7 +6,7 @@ import { OvermapFlightData, OvermapPanControls } from './common/Overmap';
 
 export const OvermapHelm = (props) => {
   return (
-    <Window width={560} height={700} scrollable>
+    <Window width={560} height={700}>
       <Window.Content>
         <OvermapHelmContent />
       </Window.Content>
@@ -63,7 +63,7 @@ const OvermapManualControl = (props) => {
         </Flex.Item>
       </Flex>
       <Box textAlign="center" mt={1}>
-        <Box bold underline>
+        <Box bold style={{ textDecoration: "underline" }}>
           Direct Control
         </Box>
         <Button

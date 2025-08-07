@@ -129,7 +129,9 @@ export const ICTerminal = (props) => {
         {circuits.map(circuit =>
         (circuit.input && (
           <Flex.Item key={circuit.ref} grow={1} wrap="wrap" maxwidth="33%" inline={1} color="label" verticalAlignContent={1} basis="30%" m={0.5} p={0.5} >
-            <Button icon="eye" content={circuit.name} width="95%" align="center" verticalAlignContent="center" height={2.5} fluid wrap="wrap" ellipsis onClick={() => act("input_selection", { ref: circuit.ref })} />
+            <Button icon="eye" width="95%" align="center" verticalAlignContent="center" height={2.5} fluid style={{ textWrap: "wrap" }} ellipsis onClick={() => act("input_selection", { ref: circuit.ref })}>
+              {circuit.name}
+            </Button>
           </Flex.Item>
         ) || null)
         )}

@@ -7,8 +7,8 @@ import { LoginInfo } from './common/LoginInfo';
 import { LoginScreen } from './common/LoginScreen';
 import { TemporaryNotice } from './common/TemporaryNotice';
 
-const doEdit = (context, field) => {
-  modalOpen(context, 'edit', {
+const doEdit = (field) => {
+  modalOpen('edit', {
     field: field.edit,
     value: field.value,
   });
@@ -70,7 +70,7 @@ const SecurityRecordsList = (_properties) => {
       <Input
         fluid
         placeholder="Search by Name, DNA, or ID"
-        onChange={(_event, value) => act('search', { t1: value })}
+        onChange={(value) => act('search', { t1: value })}
       />
       <Box mt="0.5rem">
         {records.map((record, i) => (
@@ -185,7 +185,7 @@ const SecurityRecordsViewGeneral = (_properties) => {
                 <Button
                   icon="pen"
                   ml="0.5rem"
-                  onClick={() => doEdit(context, field)}
+                  onClick={() => doEdit(field)}
                 />
               )}
             </LabeledList.Item>
@@ -197,15 +197,15 @@ const SecurityRecordsViewGeneral = (_properties) => {
           general.photos.map((p, i) => (
             <Box
               key={i}
-              display="inline-block"
               textAlign="center"
+              style={{ display: "inline-block" }}
               color="label">
               <img
                 src={p.substr(1, p.length - 1)}
                 style={{
                   width: '96px',
-                  'margin-bottom': '0.5rem',
-                  '-ms-interpolation-mode': 'nearest-neighbor',
+                  marginBottom: '0.5rem',
+                  imageRendering: "crisp-edges",
                 }}
               /><br />
               Photo #{i + 1}
@@ -256,7 +256,7 @@ const SecurityRecordsViewSecurity = (_properties) => {
               icon="pen"
               ml="0.5rem"
               mb={field.line_break ? '1rem' : 'initial'}
-              onClick={() => doEdit(context, field)}
+              onClick={() => doEdit(field)}
             />
           </LabeledList.Item>
         ))}
@@ -291,7 +291,7 @@ const SecurityRecordsViewSecurity = (_properties) => {
           color="good"
           mt="0.5rem"
           mb="0"
-          onClick={() => modalOpen(context, 'add_c')}
+          onClick={() => modalOpen('add_c')}
         />
       </Section>
     </Fragment>

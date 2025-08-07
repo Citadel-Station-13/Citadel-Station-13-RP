@@ -4,6 +4,7 @@ import { Window } from "../layouts";
 import { OvermapEnginesContent } from './OvermapEngines';
 import { OvermapHelmContent } from './OvermapHelm';
 import { OvermapShipSensorsContent } from './OvermapShipSensors';
+import { useState } from "react";
 
 export const OvermapFull = (props) => {
   const [tab, setTab] = useState(0);

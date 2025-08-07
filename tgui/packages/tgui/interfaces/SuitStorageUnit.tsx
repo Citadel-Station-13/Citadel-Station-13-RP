@@ -200,7 +200,7 @@ const SuitStorageUnitPanel = (props) => {
               icon="caret-square-right"
               style={{
                 'border': '4px solid #777',
-                'border-style': 'outset',
+                borderStyle: 'outset',
               }}
               onClick={() => act("togglesafeties")} />
           </Flex.Item>

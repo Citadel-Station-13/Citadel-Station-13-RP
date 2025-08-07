@@ -15,7 +15,7 @@ const severities = {
   "BIOHAZARD THREAT!": "bad",
 };
 
-const doEdit = (context, field) => {
+const doEdit = (field) => {
   modalOpen(context, 'edit', {
     field: field.edit,
     value: field.value,
@@ -110,7 +110,7 @@ export const MedicalRecords = (_properties) => {
         <LoginInfo />
         <TemporaryNotice />
         <MedicalRecordsNavigation />
-        <Section height="calc(100% - 5rem)" flexGrow="1">
+        <Section height="calc(100% - 5rem)" flexGrow>
           {body}
         </Section>
       </Window.Content>
@@ -224,18 +224,18 @@ const MedicalRecordsViewGeneral = (_properties) => {
   }
   return (
     <Fragment>
-      <Box width="50%" float="left">
+      <Box width="50%" style={{ float: "left" }}>
         <LabeledList>
           {general.fields.map((field, i) => (
             <LabeledList.Item key={i} label={field.field}>
-              <Box height="20px" display="inline-block" preserveWhitespace>
+              <Box height="20px" style={{ display: "inline-block" }} preserveWhitespace>
                 {field.value}
               </Box>
               {!!field.edit && (
                 <Button
                   icon="pen"
                   ml="0.5rem"
-                  onClick={() => doEdit(context, field)}
+                  onClick={() => doEdit(field)}
                 />
               )}
             </LabeledList.Item>
@@ -254,8 +254,8 @@ const MedicalRecordsViewGeneral = (_properties) => {
                 src={p.substr(1, p.length - 1)}
                 style={{
                   width: '96px',
-                  'margin-bottom': '0.5rem',
-                  '-ms-interpolation-mode': 'nearest-neighbor',
+                  marginBottom: '0.5rem',
+                  imageRendering: "crisp-edges",
                 }}
               /><br />
               Photo #{i + 1}
@@ -297,7 +297,7 @@ const MedicalRecordsViewMedical = (_properties) => {
               icon="pen"
               ml="0.5rem"
               mb={field.line_break ? '1rem' : 'initial'}
-              onClick={() => doEdit(context, field)}
+              onClick={() => doEdit(field)}
             />
           </LabeledList.Item>
         ))}

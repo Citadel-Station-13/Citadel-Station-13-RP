@@ -39,7 +39,6 @@ export const Radio = (props) => {
     <Window
       width={310}
       height={height}
-      resizable
       theme={useSyndMode ? "syndicate" : ""}>
       <Window.Content>
         <Section>

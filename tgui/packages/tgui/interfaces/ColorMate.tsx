@@ -32,8 +32,7 @@ export const ColorMate = (props) => {
                       width="100%"
                       height="100%"
                       style={{
-                        '-ms-interpolation-mode': 'nearest-neighbor',
-                        'image-rendering': 'pixelated',
+                        imageRendering: "crisp-edges",
                       }}
                     />
                   </Section>
@@ -46,8 +45,7 @@ export const ColorMate = (props) => {
                       width="100%"
                       height="100%"
                       style={{
-                        '-ms-interpolation-mode': 'nearest-neighbor',
-                        'image-rendering': 'pixelated',
+                        imageRendering: "crisp-edges",
                       }}
                     />
                   </Section>

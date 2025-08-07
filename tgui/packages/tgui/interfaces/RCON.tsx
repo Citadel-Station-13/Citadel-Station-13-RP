@@ -106,7 +106,7 @@ const SMESItem = (props) => {
                 average: [0.15, 0.5],
                 bad: [-Infinity, 0.15],
               }}>
-              {round(charge / 60, 1)} kWh / {round(capacity / 60)} kWh
+              {round(charge / 60, 0.1)} kWh / {round(capacity / 60, 0.1)} kWh
               ({capacityPercent}%)
             </ProgressBar>
           </Stack.Item>

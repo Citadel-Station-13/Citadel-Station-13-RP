@@ -1,5 +1,5 @@
 import { toTitleCase } from 'tgui-core/string';
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { useBackend, useLocalState } from '../backend';
 import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section, Tabs, Input, NumberInput, Table, Divider } from "tgui-core/components";
 import { Window } from '../layouts';
@@ -89,14 +89,14 @@ const ResearchConsoleViewDesigns = (props) => {
           onClick={() => act("print", { print: 2 })}>
           Print This Page
         </Button>
-        {<PaginationChevrons target={"design_page"} /> || null}
+        <PaginationChevrons target={"design_page"} />
       </Fragment>
     }>
       <Input
         fluid
         placeholder="Search for..."
         value={data.search}
-        onInput={(e, v) => act("search", { search: v })}
+        onChange={(v) => act("search", { search: v })}
         mb={1} />
       {(designs && designs.length && (
         <LabeledList>
@@ -240,14 +240,14 @@ const DataDisk = (props) => {
               icon="arrow-left"
               content="Back"
               onClick={() => setSaveDialog(false)} />
-            {<PaginationChevrons target={"design_page"} /> || null}
+            <PaginationChevrons target={"design_page"} />
           </Fragment>
         }>
         <Input
           fluid
           placeholder="Search for..."
           value={data.search}
-          onInput={(e, v) => act("search", { search: v })}
+          onChange={(v) => act("search", { search: v })}
           mb={1} />
         <LabeledList>
           {designs.map(item => (
@@ -441,7 +441,7 @@ const ResearchConsoleBuildMenu = (props) => {
         fluid
         placeholder="Search for..."
         value={data.search}
-        onInput={(e, v) => act("search", { search: v })}
+        onChange={(v) => act("search", { search: v })}
         mb={1} />
       {designs && designs.length ? designs.map(design => (
         <Fragment key={design.id}>
@@ -494,8 +494,8 @@ const ResearchConsoleConstructor = (props) => {
     name,
   } = props;
 
-  let linked = null;
-  let designs = null;
+  let linked: any = null;
+  let designs: any = null;
 
   if (name === "Protolathe") {
     linked = data.info.linked_lathe;
@@ -650,6 +650,7 @@ const ResearchConsoleConstructor = (props) => {
                 key={mat.name} buttons={
                   <Fragment>
                     <NumberInput
+                      step={1}
                       minValue={0}
                       width="100px"
                       value={ejectAmt}
@@ -874,7 +875,6 @@ export const ResearchConsole = (props) => {
               key={i}
               icon={obj.icon}
               selected={menu === i}
-              disabled={allTabsDisabled}
               onClick={() => setMenu(i)}>
               {obj.name}
             </Tabs.Tab>

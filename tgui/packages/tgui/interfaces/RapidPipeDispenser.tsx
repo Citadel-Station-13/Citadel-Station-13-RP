@@ -210,7 +210,7 @@ const PipeTypeSection = (props) => {
   const [
     categoryName,
     setCategoryName,
-  ] = useLocalState(context, 'categoryName');
+  ] = useLocalState('categoryName');
   const shownCategory = categories
     .find(category => category.cat_name === categoryName)
     || categories[0];
@@ -219,7 +219,6 @@ const PipeTypeSection = (props) => {
       <Tabs>
         {categories.map((category, i) => (
           <Tabs.Tab
-            fluid
             key={category.cat_name}
             icon={ICON_BY_CATEGORY_NAME[category.cat_name]}
             selected={category.cat_name === shownCategory.cat_name}

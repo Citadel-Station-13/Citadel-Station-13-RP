@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { useBackend, useLocalState } from "../backend";
 import { ComplexModal, modalRegisterBodyOverride } from "./common/ComplexModal";
 import { Box, Button, Flex, LabeledList, Section, Tabs } from "tgui-core/components";
@@ -70,7 +70,7 @@ export const PathogenicIsolator = (props) => {
 
   const [tabIndex, setTabIndex] = useState(0);
 
-  let tab = null;
+  let tab: any = null;
   if (tabIndex === 0) {
     tab = <PathogenicIsolatorTabHome />;
   } else if (tabIndex === 1) {

@@ -165,7 +165,7 @@ const ResearchServerData = (props) => {
         ))}
       </Section>
       <Section title="Designs">
-        {filter(design => !!design.name)(server.designs).map(design => (
+        {filter(server.designs, (design: any) => !!design.name).map(design => (
           <LabeledList.Item label={design.name} key={design.name} buttons={
             <Button.Confirm
               icon="trash"

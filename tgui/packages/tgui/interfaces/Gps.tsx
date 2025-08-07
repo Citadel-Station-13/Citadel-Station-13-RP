@@ -2,6 +2,7 @@ import { BooleanLike } from "tgui-core/react";
 import { useBackend, useLocalState } from "../backend";
 import { Window } from "../layouts";
 import { Section, Button, LabeledList, Table, Input, Box, Icon } from "tgui-core/components";
+import { useState } from "react";
 
 type GpsContext = {
   on: BooleanLike,
@@ -111,13 +112,13 @@ export const Gps = (props) => {
                   })} />
               }>
               <Input placeholder="Waypoint" width="15rem"
-                value={addWaypointName} onChange={(_, v) => setAddWaypointName(v)} />
+                value={addWaypointName} onChange={(v) => setAddWaypointName(v)} />
               <Input placeholder="X" width="3rem"
-                value={addWaypointX} onChange={(_, v) => setAddWaypointX(v)} />
+                value={addWaypointX} onChange={(v) => setAddWaypointX(v)} />
               <Input placeholder="Y" width="3rem"
-                value={addWaypointY} onChange={(_, v) => setAddWaypointY(v)} />
+                value={addWaypointY} onChange={(v) => setAddWaypointY(v)} />
               <Input placeholder="Level" width="10rem"
-                value={addWaypointLevel} onChange={(_, v) => setAddWaypointLevel(v)} />
+                value={addWaypointLevel} onChange={(v) => setAddWaypointLevel(v)} />
             </Section>
             <Section
               title="Signals / Waypoints">

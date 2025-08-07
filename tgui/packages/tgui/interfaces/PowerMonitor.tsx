@@ -81,7 +81,7 @@ export const PowerMonitorFocus = (props) => {
   const [
     sortByField,
     setSortByField,
-  ] = useState<null | string>(null);
+  ] = useState<string>('name');
   const supply = history.supply[history.supply.length - 1] || 0;
   const demand = history.demand[history.demand.length - 1] || 0;
   const supplyData = history.supply.map((value, i) => [i, value]);
@@ -91,24 +91,40 @@ export const PowerMonitorFocus = (props) => {
     ...history.supply,
     ...history.demand);
   // Process area data
-  const areas = flow([
-    map((area, i) => ({
+  const areas = (focus as any[])
+    .map((area, i) => ({
       ...area,
-      // Generate a unique id
-      id: area.name + i,
-    })),
-    sortByField === 'name' && sortBy(area => area.name),
-    sortByField === 'charge' && sortBy(area => -area.charge),
-    sortByField === 'draw' && sortBy(
-      area => -powerRank(area.load),
-      area => -parseFloat(area.load)),
-    sortByField === 'problems' && sortBy(
-      area => area.eqp,
-      area => area.lgt,
-      area => area.env,
-      area => area.charge,
-      area => area.name),
-  ])(focus.areas);
+      id: area.name + i
+    }))
+    .sort((a, b) => {
+      if (sortByField === 'name') {
+        return a.name.localeCompare(b.name);
+      } else if (sortByField === 'charge') {
+        return a.charge - b.charge;
+      } else if (sortByField === 'draw') {
+        const rankA = powerRank(a.load);
+        const rankB = powerRank(b.load);
+        if (rankA != rankB) {
+          return rankA - rankB;
+        }
+        return parseFloat(a.load) - parseFloat(b.load);
+      } else if (sortByField === 'problems') {
+        if (a.eqp != b.eqp) {
+          return a.eqp - b.eqp;
+        }
+        if (a.lgt != b.lgt) {
+          return a.lgt - b.lgt;
+        }
+        if (a.env != b.env) {
+          return a.env - b.env;
+        }
+        if (a.charge != b.charge) {
+          return a.charge - b.charge;
+        }
+        return a.name.localeCompare(b.name);
+      }
+    });
+
   return (
     <Fragment>
       <Section
@@ -172,25 +188,25 @@ export const PowerMonitorFocus = (props) => {
             checked={sortByField === 'name'}
             content="Name"
             onClick={() => setSortByField(
-              sortByField !== 'name' && 'name'
+              'name'
             )} />
           <Button.Checkbox
             checked={sortByField === 'charge'}
             content="Charge"
             onClick={() => setSortByField(
-              sortByField !== 'charge' && 'charge'
+              'charge'
             )} />
           <Button.Checkbox
             checked={sortByField === 'draw'}
             content="Draw"
             onClick={() => setSortByField(
-              sortByField !== 'draw' && 'draw'
+              'draw'
             )} />
           <Button.Checkbox
             checked={sortByField === 'problems'}
             content="Problems"
             onClick={() => setSortByField(
-              sortByField !== 'problems' && 'problems'
+              'problems'
             )} />
         </Box>
         <Table>
@@ -204,13 +220,13 @@ export const PowerMonitorFocus = (props) => {
             <Table.Cell textAlign="right">
               Draw
             </Table.Cell>
-            <Table.Cell collapsing title="Equipment">
+            <Table.Cell collapsing>
               Eqp
             </Table.Cell>
-            <Table.Cell collapsing title="Lighting">
+            <Table.Cell collapsing>
               Lgt
             </Table.Cell>
-            <Table.Cell collapsing title="Environment">
+            <Table.Cell collapsing>
               Env
             </Table.Cell>
           </Table.Row>
@@ -261,6 +277,7 @@ export const AreaCharge = props => {
           )
           || charging === 1 && 'bolt'
           || charging === 2 && 'battery-full'
+          || 'battery-half'
         )}
         color={(
           charging === 0 && (
@@ -281,8 +298,6 @@ export const AreaCharge = props => {
   );
 };
 
-AreaCharge.defaultHooks = pureComponentHooks;
-
 const AreaStatusColorBox = props => {
   const { status } = props;
   const power = Boolean(status & 2);
@@ -293,8 +308,6 @@ const AreaStatusColorBox = props => {
     <ColorBox
       color={power ? 'good' : 'bad'}
       content={mode ? undefined : 'M'}
-      title={tooltipText} />
+    />
   );
 };
-
-AreaStatusColorBox.defaultHooks = pureComponentHooks;

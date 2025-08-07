@@ -1,5 +1,3 @@
-import { filter, sortBy } from 'common/collections';
-import { flow } from 'common/fp';
 import { BooleanLike, classes } from 'tgui-core/react';
 import { useBackend } from '../backend';
 import { Button, Dimmer, Icon, Section, Stack, Table } from 'tgui-core/components';
@@ -151,18 +149,17 @@ export const PersonalCrafting = (props) => {
     groups,
   } = data;
 
-  const shownRecipes = flow([
-    filter<Recipe>((recipe) => (
-      // Show selected category only
-      isCategorySelected(data, recipe)
-      // If craftable only is selected, then filter by craftability
-      && (!display_craftable_only || recipe.craftable)
-    )),
-    sortBy<Recipe>((recipe) => [
-      -recipe.craftable,
-      recipe.name,
-    ]),
-  ])(recipes);
+  const shownRecipes = recipes
+    .filter(recipe => isCategorySelected(data, recipe) && (!display_craftable_only || recipe.craftable))
+    .sort((a, b) => {
+      if (a.craftable && !b.craftable) {
+        return -1;
+      } else if (b.craftable && !a.craftable) {
+        return 1;
+      } else {
+        return a.name.localeCompare(b.name);
+      }
+    });
 
   return (
     <Window title="Crafting Menu" width={700} height={700}>
