@@ -18,7 +18,7 @@
 /datum/rig_maint_panel/ui_host()
 	return host
 
-/datum/rig_maint_panel/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/datum/rig_maint_panel/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["activation"] = host.activation_state
 	var/list/assembled_ids = list()

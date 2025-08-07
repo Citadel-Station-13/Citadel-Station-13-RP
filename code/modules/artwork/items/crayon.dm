@@ -75,7 +75,7 @@
 		ui = new(user, src, "Crayon")
 		ui.open()
 
-/obj/item/pen/crayon/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/obj/item/pen/crayon/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	var/list/datapacks = list()
 	for(var/datum/crayon_decal_meta/datapack in GLOB.crayon_data)

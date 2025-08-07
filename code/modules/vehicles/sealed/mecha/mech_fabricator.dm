@@ -494,7 +494,7 @@
 		ui = new(user, src, "ExosuitFabricator", name)
 		ui.open()
 
-/obj/machinery/mecha_part_fabricator/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/mecha_part_fabricator/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	var/list/final_sets = list()

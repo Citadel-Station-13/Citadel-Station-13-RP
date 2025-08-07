@@ -229,7 +229,7 @@
 		content_data += list(list("name"=fish.name,"ref"=ref(fish)))
 	.["contents"] = content_data
 
-/obj/structure/aquarium/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/obj/structure/aquarium/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	//I guess these should depend on the fluid so lava critters can get high or stuff below water freezing point but let's keep it simple for now.
 	.["minTemperature"] = min_fluid_temp

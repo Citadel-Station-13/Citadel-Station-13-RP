@@ -111,7 +111,7 @@
 		ui.register_module(tgui_cardmod, "modify")
 		ui.open()
 
-/obj/machinery/computer/card/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/computer/card/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	//? manifest
 	// todo: refactor PDA_Manifest and CrewManifest.js

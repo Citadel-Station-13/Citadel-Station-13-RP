@@ -174,7 +174,7 @@
 
 	return data
 
-/obj/machinery/biogenerator/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/biogenerator/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/static_data[0]
 
 	// Available items - in static data because we don't wanna compute this list every time! It hardly changes.

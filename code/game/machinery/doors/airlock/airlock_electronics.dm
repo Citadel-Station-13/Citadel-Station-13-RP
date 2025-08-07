@@ -16,7 +16,7 @@
 		ui = new(user, src, "AirlockElectronics")
 		ui.open()
 
-/obj/item/airlock_electronics/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/obj/item/airlock_electronics/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["access"] = SSjob.tgui_access_data()
 

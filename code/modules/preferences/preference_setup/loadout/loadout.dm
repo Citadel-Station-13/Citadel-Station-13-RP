@@ -98,7 +98,7 @@
 			. = FALSE
 		current_cost += entry.cost
 
-/datum/category_item/player_setup_item/loadout/gear/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/datum/category_item/player_setup_item/loadout/gear/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["gearContext"] = tgui_loadout_context()
 	var/list/allowed_ids = list()

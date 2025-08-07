@@ -123,7 +123,7 @@
 /datum/tgui_modal/ui_state()
 	return GLOB.always_state
 
-/datum/tgui_modal/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/datum/tgui_modal/ui_static_data(mob/user, datum/tgui/ui)
 	. = list()
 	.["autofocus"] = autofocus
 	.["buttons"] = buttons

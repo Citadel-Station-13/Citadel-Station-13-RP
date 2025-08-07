@@ -170,7 +170,7 @@
 		channel.remove_client(src)
 	..()
 
-/datum/computer_file/program/chatclient/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/datum/computer_file/program/chatclient/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	data["can_admin"] = can_run(user, FALSE, ACCESS_NETWORK)
 	return data

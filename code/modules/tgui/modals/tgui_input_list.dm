@@ -141,7 +141,7 @@
 /datum/tgui_list_input/ui_state()
 	return GLOB.always_state
 
-/datum/tgui_list_input/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/datum/tgui_list_input/ui_static_data(mob/user, datum/tgui/ui)
 	. = list()
 	.["init_value"] = default || items[1]
 	.["items"] = items

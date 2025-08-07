@@ -90,7 +90,7 @@
  *
  * return list Static Data to be sent to the UI.
  */
-/datum/proc/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/datum/proc/ui_static_data(mob/user, datum/tgui/ui)
 	return list()
 
 /**

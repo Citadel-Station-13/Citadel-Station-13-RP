@@ -193,7 +193,7 @@
 		ui = new(user, src, "ICPrinter", name) // 500, 600
 		ui.open()
 
-/obj/item/integrated_circuit_printer/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/obj/item/integrated_circuit_printer/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	var/list/categories = list()

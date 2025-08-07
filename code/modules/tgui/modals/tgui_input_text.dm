@@ -165,7 +165,7 @@
 /datum/tgui_input_text/ui_state()
 	return GLOB.always_state
 
-/datum/tgui_input_text/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/datum/tgui_input_text/ui_static_data(mob/user, datum/tgui/ui)
 	. = list()
 	.["large_buttons"] = FALSE//user.client.prefs.read_preference(/datum/preference/toggle/tgui_input_large)
 	.["max_length"] = max_length

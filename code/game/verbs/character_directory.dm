@@ -37,7 +37,7 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 
 	return data
 
-/datum/character_directory/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/datum/character_directory/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	var/list/directory_mobs = list()

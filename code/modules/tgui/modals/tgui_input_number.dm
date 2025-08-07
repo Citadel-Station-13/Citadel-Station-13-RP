@@ -143,7 +143,7 @@
 /datum/tgui_input_number/ui_state()
 	return GLOB.always_state
 
-/datum/tgui_input_number/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/datum/tgui_input_number/ui_static_data(mob/user, datum/tgui/ui)
 	. = list()
 	.["init_value"] = default // Default is a reserved keyword
 	.["large_buttons"] = FALSE//user.client.prefs.read_preference(/datum/preference/toggle/tgui_input_large)

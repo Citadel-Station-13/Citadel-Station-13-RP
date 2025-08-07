@@ -78,7 +78,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/color_matrix_proxy_view)
 /datum/color_matrix_editor/ui_state()
 	return GLOB.admin_state
 
-/datum/color_matrix_editor/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/datum/color_matrix_editor/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	data["mapRef"] = proxy_view.assigned_map
 

@@ -3,7 +3,7 @@
 /datum/characteristics_holder/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 
-/datum/characteristics_holder/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/datum/characteristics_holder/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 
 /datum/characteristics_holder/ui_data(mob/user, datum/tgui/ui)

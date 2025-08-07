@@ -213,7 +213,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricato
 	drop_all_targets()
 	deconstruction_mode = new_state
 
-/obj/item/stream_projector/holofabricator/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/obj/item/stream_projector/holofabricator/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["materialContext"] = SSmaterials.tgui_materials_context()
 	#warn impl

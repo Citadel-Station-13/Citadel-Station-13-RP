@@ -115,7 +115,7 @@
 			deltimer(print_timer)
 			print_timer = null
 
-/obj/machinery/computer/guestpass/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/computer/guestpass/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["access"] = SSjob.tgui_access_data()
 	.["allowed"] = allowed_accesses()

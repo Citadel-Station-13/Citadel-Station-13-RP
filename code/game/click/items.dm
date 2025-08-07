@@ -58,69 +58,6 @@
 	// todo: signal for afterattack here
 	return . | afterattack(target, user, clickchain_flags, params)
 
-// todo:
-//* tools
-// /obj/item/proc/tool_attack_chain(atom/entity, datum/event_args/actor/actor, datum/event_args/actor/clickchain/from_click)
-// /atom/proc/tool_interaction(obj/item/tool, datum/event_args/actor/actor, datum/event_args/actor/clickchain/from_click)
-// /atom/proc/tool_act(tool_function, ...) --> route to [function]_act
-// /atom/proc/[function]_act(...)
-
-//* specific item interactions
-// /obj/item/proc/item_attack_chain(atom/entity, datum/event_args/actor/actor, datum/event_args/actor/clickchain/from_click)
-// /obj/item/proc/item_attack(atom/entity, datum/event_args/actor/actor, datum/event_args/actor/clickchain/from_click)
-// /atom/proc/item_interaction(obj/item/item, datum/event_args/actor/actor, datum/event_args/actor/clickchain/from_click)
-// /atom/proc/item_act(obj/item/item, datum/event_args/actor/actor, datum/event_args/actor/clickchain/from_click)
-
-//* melee attack
-// /obj/item/proc/melee_attack_chain(atom/entity, datum/event_args/actor/actor, datum/event_args/actor/clickchain/from_click)
-// /obj/item/proc/melee_attack(atom/entity, datum/event_args/actor/actor, datum/event_args/actor/clickchain/from_click, damage_multiplier = 1)
-// /obj/item/proc/melee_(mob|obj)_hit((mob|obj)/entity, datum/event_args/actor/actor, datum/event_args/actor/clickchain/from_click, damage_multiplier = 1, target_zone, intent)
-// /obj/item/proc/melee_(mob|obj)_miss((mob|obj)/entity, datum/event_args/actor/actor, datum/event_args/actor/clickchain/from_click, damage_multiplier = 1, target_zone, intent)
-// /obj/item/proc/melee_(mob|obj)_finalize((mob|obj)/entity, datum/event_args/actor/actor, datum/event_args/actor/clickchain/from_click, damage_multiplier = 1, target_zone, intent, successful)
-// /(obj|mob)/proc/melee_act(obj/item/weapon, datum/event_args/actor/actor, datum/event_args/actor/clickchain/from_click, damage_multiplier = 1)
-
-//* misc
-// /obj/item/proc/afterattack(atom/entity, datum/event_args/actor/actor, datum/event_args/actor/clickchain/from_click) <-- catch-all for 'did nothing so far, now what?'
-
-//* total
-// proc chains as follows;
-//
-// anything returning CLICKCHAIN_DO_NOT_PROPAGATE will signal 'we did something, stop now'
-// and terminate the chain
-//
-// mob/obj are intentionally separate from melee attacks, because many things
-// like stunbatons would simply bludgeon an obj while having special effects on mobs!
-//
-// item/melee_interaction_chain:
-// - item/tool_attack_chain
-//   - atom/tool_interaction
-//     - atom/tool_act
-//       - atom/[function]_act
-// - item/item_attack_chain
-//   - item/item_attack
-//     - atom/item_interaction
-//       - atom/item_act
-// - item/melee_attack_chain
-//   - item/melee_attack
-//     - item/melee_hit
-//       - atom/melee_act
-//     OR
-//     - item/melee_miss
-//     FINALLY
-//     - item/melee_finalize
-// - item/afterattack
-//
-// ranged_interaction_chain:
-// - item/afterattack
-
-//* iteration 2 melee
-// /obj/item/proc/melee_attack_chain(atom/entity, datum/event_args/actor/actor, datum/event_args/actor/clickchain/from_click)
-// /obj/item/proc/melee_attack(atom/entity, datum/event_args/actor/actor, datum/event_args/actor/clickchain/from_click, damage_multiplier, target_zone, intent)
-// /obj/item/proc/melee_hit(atom/entity, datum/event_args/actor/actor, datum/event_args/actor/clickchain/from_click, damage_multiplier, target_zone, intent)
-// /obj/item/proc/melee_miss(atom/entity, datum/event_args/actor/actor, datum/event_args/actor/clickchain/from_click, damage_multiplier, target_zone, intent)
-// /obj/item/proc/melee_after(atom/entity, datum/event_args/actor/actor, datum/event_args/actor/clickchain/from_click, damage_multiplier, target_zone, intent, successful)
-// /atom/proc/melee_act(obj/item/weapon, datum/event_args/actor/actor, datum/event_args/actor/clickchain/from_click, damage_multiplier, target_zone, intent, successful)
-
 /**
  * Called when trying to click something that the user can't Reachability() to.
  *

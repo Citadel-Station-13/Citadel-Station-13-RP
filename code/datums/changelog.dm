@@ -25,7 +25,7 @@
 		ui.send_asset(changelog_item)
 		return TRUE
 
-/datum/changelog/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/datum/changelog/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/data = list( "dates" = list() )
 	var/regex/ymlRegex = regex(@"\.yml", "g")
 

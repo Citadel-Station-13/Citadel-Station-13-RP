@@ -137,7 +137,7 @@
 		ui = new(user, src, "StackCrafting")
 		ui.open()
 
-/obj/item/stack/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/obj/item/stack/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["recipes"] = tgui_recipes()
 	.["maxAmount"] = max_amount

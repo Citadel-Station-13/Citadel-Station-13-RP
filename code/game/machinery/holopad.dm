@@ -447,7 +447,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 		ui = new(user, src, "Holopad")
 		ui.open()
 
-/obj/machinery/holopad/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/holopad/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["connectivity"] = ui_connectivity_data()
 	.["isAI"] = isAI(user)

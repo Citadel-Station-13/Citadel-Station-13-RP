@@ -76,7 +76,7 @@
 	.["maxRate"] = air1.volume
 	.["rate"] = flow_setting
 
-/obj/machinery/atmospherics/component/trinary/filter/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/atmospherics/component/trinary/filter/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["atmosContext"] = global.gas_data.tgui_gas_context()
 

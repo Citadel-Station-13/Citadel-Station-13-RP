@@ -298,7 +298,7 @@
 // Proc: ui_static_data()
 // Parameters: User, UI, State
 // Description: Just like ui_data, except it only gets called once when the user opens the UI, not every tick.
-/obj/item/communicator/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/obj/item/communicator/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 	// Update manifest'
 	if(data_core)

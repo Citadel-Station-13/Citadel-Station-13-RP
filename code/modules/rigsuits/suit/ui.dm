@@ -115,7 +115,7 @@
 
 #warn impl all
 
-/obj/item/rig/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/obj/item/rig/ui_static_data(mob/user, datum/tgui/ui)
 	#warn icecream update will modify this, check the root definition!
 	. = ..()
 	.["theme"] = theme_name

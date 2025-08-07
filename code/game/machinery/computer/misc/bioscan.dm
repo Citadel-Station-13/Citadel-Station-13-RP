@@ -25,7 +25,7 @@
 		ui = new(user, src, "BioscanConsole")
 		ui.open()
 
-/obj/machinery/computer/bioscan/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/computer/bioscan/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["scan"] = buffer
 	.["antennas"] = ui_antenna_data()

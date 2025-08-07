@@ -173,7 +173,7 @@
 	closed = TRUE
 	return ..()
 
-/datum/tgui_dynamic_input/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/datum/tgui_dynamic_input/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["query"] = query.get_query()
 	.["title"] = title

@@ -595,7 +595,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm, 26)
 	. += data
 	//! end
 
-/obj/machinery/air_alarm/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/air_alarm/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["gasContext"] = global.gas_data.tgui_gas_context()
 	.["gasTLV"] = tlv_ids

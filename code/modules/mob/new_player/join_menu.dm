@@ -17,7 +17,7 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 /datum/join_menu/ui_state()
 	return GLOB.explicit_new_player_state
 
-/datum/join_menu/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/datum/join_menu/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 	// every entry will have:
 	// - faction

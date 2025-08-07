@@ -242,7 +242,7 @@ var/list/global/tank_gauge_cache = list()
 		ui = new(user, src, "Tank", name)
 		ui.open()
 
-/obj/item/tank/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/obj/item/tank/ui_static_data(mob/user, datum/tgui/ui)
 	. = list (
 		"defaultReleasePressure" = round(TANK_DEFAULT_RELEASE_PRESSURE),
 		"minReleasePressure" = round(TANK_MIN_RELEASE_PRESSURE),

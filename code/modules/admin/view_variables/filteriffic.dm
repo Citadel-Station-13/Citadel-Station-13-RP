@@ -13,7 +13,7 @@
 		ui = new(user, src, "Filteriffic")
 		ui.open()
 
-/datum/filter_editor/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/datum/filter_editor/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	data["filter_info"] = GLOB.master_filter_info
 	return data

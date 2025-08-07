@@ -167,7 +167,7 @@
 		macros_built[++macros_built.len] = L | list("index" = ++index)
 	return macros_built
 
-/obj/machinery/chemical_dispenser/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/chemical_dispenser/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["cartridges"] = ui_cartridge_data()
 	var/list/chems_built = list()

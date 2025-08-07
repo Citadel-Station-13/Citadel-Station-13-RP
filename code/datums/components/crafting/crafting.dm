@@ -346,7 +346,7 @@
 	data["craftability"] = craftability
 	return data
 
-/datum/component/personal_crafting/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/datum/component/personal_crafting/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	var/list/crafting_recipes = list()

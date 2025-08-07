@@ -30,7 +30,7 @@
 		return 1
 	return 0
 
-/obj/machinery/portable_atmospherics/powered/ui_static_data(mob/user, datum/tgui/ui, is_module)
+/obj/machinery/portable_atmospherics/powered/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["useCharge"] = TRUE
 	.["maxCharge"] = isnull(cell)? 0 : cell.maxcharge
