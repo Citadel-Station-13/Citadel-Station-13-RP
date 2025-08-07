@@ -10886,10 +10886,12 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/hallway/d4portafthall)
 "jDI" = (
-/obj/machinery/vending/boozeomat,
 /obj/structure/table/marble,
 /obj/effect/floor_decal/corner_oldtile/white/diagonal,
 /obj/machinery/camera/network/civilian,
+/obj/machinery/vending/boozeomat{
+	req_access = null
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "jDZ" = (
