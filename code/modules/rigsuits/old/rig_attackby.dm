@@ -60,7 +60,7 @@
 			return
 
 		// Check if this is a hardsuit upgrade or a modification.
-		else if(istype(W,/obj/item/hardsuit_module))
+		else if(istype(W,/obj/item/rig_module/basic))
 			if(istype(src.loc,/mob/living/carbon/human) && !maintenance_while_online)
 				var/mob/living/carbon/human/H = src.loc
 				if(H.back == src || H.belt == src)
@@ -70,12 +70,12 @@
 			if(!installed_modules)
 				installed_modules = list()
 			if(installed_modules.len)
-				for(var/obj/item/hardsuit_module/installed_mod in installed_modules)
+				for(var/obj/item/rig_module/basic/installed_mod in installed_modules)
 					if(!installed_mod.redundant && istype(installed_mod,W))
 						to_chat(user, "The hardsuit already has a module of that class installed.")
 						return 1
 
-			var/obj/item/hardsuit_module/mod = W
+			var/obj/item/rig_module/basic/mod = W
 			to_chat(user, "You begin installing \the [mod] into \the [src].")
 			if(!do_after(user,40))
 				return
@@ -129,7 +129,7 @@
 
 					if(cell && !unremovable_cell)
 						to_chat(user, "You detach \the [cell] from \the [src]'s battery mount.")
-						for(var/obj/item/hardsuit_module/module in installed_modules)
+						for(var/obj/item/rig_module/basic/module in installed_modules)
 							module.deactivate()
 						user.grab_item_from_interacted_with(cell, src)
 						cell = null
@@ -139,7 +139,7 @@
 				if("system module")
 
 					var/list/possible_removals = list()
-					for(var/obj/item/hardsuit_module/module in installed_modules)
+					for(var/obj/item/rig_module/basic/module in installed_modules)
 						if(module.permanent)
 							continue
 						possible_removals[module.name] = module
@@ -152,7 +152,7 @@
 					if(!removal_choice)
 						return
 
-					var/obj/item/hardsuit_module/removed = possible_removals[removal_choice]
+					var/obj/item/rig_module/basic/removed = possible_removals[removal_choice]
 					to_chat(user, "You detach \the [removed] from \the [src].")
 					removed.forceMove(get_turf(src))
 					removed.removed()
@@ -163,7 +163,7 @@
 
 	// If we've gotten this far, all we have left to do before we pass off to root procs
 	// is check if any of the loaded modules want to use the item we've been given.
-	for(var/obj/item/hardsuit_module/module in installed_modules)
+	for(var/obj/item/rig_module/basic/module in installed_modules)
 		if(module.accepts_item(W,user)) //Item is handled in this proc
 			return
 	..()

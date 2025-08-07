@@ -1,15 +1,15 @@
 /*
  * Contains
- * /obj/item/hardsuit_module/grenade_launcher
- * /obj/item/hardsuit_module/mounted
- * /obj/item/hardsuit_module/mounted/taser
- * /obj/item/hardsuit_module/shield
- * /obj/item/hardsuit_module/fabricator
- * /obj/item/hardsuit_module/mounted/energy_blade
- * /obj/item/hardsuit_module/armblade
- * /obj/item/hardsuit_module/device/flash */
+ * /obj/item/rig_module/basic/grenade_launcher
+ * /obj/item/rig_module/basic/mounted
+ * /obj/item/rig_module/basic/mounted/taser
+ * /obj/item/rig_module/basic/shield
+ * /obj/item/rig_module/basic/fabricator
+ * /obj/item/rig_module/basic/mounted/energy_blade
+ * /obj/item/rig_module/basic/armblade
+ * /obj/item/rig_module/basic/device/flash */
 
-/obj/item/hardsuit_module/device/flash
+/obj/item/rig_module/basic/device/flash
 	name = "mounted flash"
 	desc = "You are the law."
 	icon_state = "flash"
@@ -17,7 +17,7 @@
 	interface_desc = "Stuns your target by blinding them with a bright light."
 	device_type = /obj/item/flash
 
-/obj/item/hardsuit_module/grenade_launcher
+/obj/item/rig_module/basic/grenade_launcher
 
 	name = "mounted grenade launcher"
 	desc = "A shoulder-mounted micro-explosive dispenser."
@@ -36,7 +36,7 @@
 		list("EMP grenade", "EMP grenade", /obj/item/grenade/simple/emp, 3),
 		)
 
-/obj/item/hardsuit_module/grenade_launcher/accepts_item(var/obj/item/input_device, var/mob/living/user)
+/obj/item/rig_module/basic/grenade_launcher/accepts_item(var/obj/item/input_device, var/mob/living/user)
 
 	if(!istype(input_device) || !istype(user))
 		return 0
@@ -62,7 +62,7 @@
 	accepted_item.charges++
 	return 1
 
-/obj/item/hardsuit_module/grenade_launcher/engage(atom/target)
+/obj/item/rig_module/basic/grenade_launcher/engage(atom/target)
 
 	if(!..())
 		return 0
@@ -91,7 +91,7 @@
 	new_grenade.activate(new /datum/event_args/actor(H))
 	new_grenade.throw_at_old(target,fire_force,fire_distance)
 
-/obj/item/hardsuit_module/grenade_launcher/smoke
+/obj/item/rig_module/basic/grenade_launcher/smoke
 	name = "mounted smoke-bomb launcher"
 	desc = "A shoulder-mounted smoke-bomb dispenser."
 
@@ -104,7 +104,7 @@
 		list("smoke bomb",  "smoke bomb",  /obj/item/grenade/simple/smoke,  6)
 		)
 
-/obj/item/hardsuit_module/grenade_launcher/holy
+/obj/item/rig_module/basic/grenade_launcher/holy
 	name = "mounted PARA disruptor launcher"
 	desc = "A shoulder-mounted holy water dispenser."
 
@@ -117,7 +117,7 @@
 		list("PARA disruptor grenade",  "PARA disruptor grenade",  /obj/item/grenade/simple/chemical/premade/holy,  6)
 		)
 
-/obj/item/hardsuit_module/mounted
+/obj/item/rig_module/basic/mounted
 
 	name = "mounted laser cannon"
 	desc = "A shoulder-mounted battery-powered laser cannon mount."
@@ -134,13 +134,13 @@
 	var/gun_type = /obj/item/gun/projectile/energy/lasercannon/mounted
 	var/obj/item/gun/gun
 
-/obj/item/hardsuit_module/mounted/Initialize(mapload)
+/obj/item/rig_module/basic/mounted/Initialize(mapload)
 	. = ..()
 	gun = new gun_type(src)
 	gun.safety_state = GUN_SAFETY_OFF
 	gun.one_handed_penalty = 0
 
-/obj/item/hardsuit_module/mounted/engage(atom/target)
+/obj/item/rig_module/basic/mounted/engage(atom/target)
 
 	if(!..())
 		return 0
@@ -152,7 +152,7 @@
 	gun.start_firing_cycle_async(holder.wearer, get_centered_entity_tile_angle(holder.wearer, target), NONE, null, target, new /datum/event_args/actor(holder.wearer))
 	return 1
 
-/obj/item/hardsuit_module/mounted/egun
+/obj/item/rig_module/basic/mounted/egun
 
 	name = "mounted energy gun"
 	desc = "A forearm-mounted energy projector."
@@ -163,7 +163,7 @@
 
 	gun_type = /obj/item/gun/projectile/energy/gun/mounted
 
-/obj/item/hardsuit_module/mounted/taser
+/obj/item/rig_module/basic/mounted/taser
 
 	name = "mounted taser"
 	desc = "A palm-mounted nonlethal energy projector."
@@ -179,7 +179,7 @@
 
 	gun_type = /obj/item/gun/projectile/energy/taser/mounted
 
-/obj/item/hardsuit_module/mounted/energy_blade
+/obj/item/rig_module/basic/mounted/energy_blade
 
 	name = "energy blade projector"
 	desc = "A powerful cutting beam projector."
@@ -200,7 +200,7 @@
 
 	gun_type = /obj/item/gun/projectile/energy/crossbow/ninja
 
-/obj/item/hardsuit_module/mounted/energy_blade/process(delta_time)
+/obj/item/rig_module/basic/mounted/energy_blade/process(delta_time)
 
 	if(holder && holder.wearer)
 		if(!(locate(/obj/item/melee/ninja_energy_blade) in holder.wearer))
@@ -209,7 +209,7 @@
 
 	return ..()
 
-/obj/item/hardsuit_module/mounted/energy_blade/activate()
+/obj/item/rig_module/basic/mounted/energy_blade/activate()
 
 	..()
 
@@ -224,7 +224,7 @@
 	blade.creator = M
 	M.put_in_hands(blade)
 
-/obj/item/hardsuit_module/mounted/energy_blade/deactivate()
+/obj/item/rig_module/basic/mounted/energy_blade/deactivate()
 
 	..()
 
@@ -236,7 +236,7 @@
 	for(var/obj/item/melee/ninja_energy_blade/blade in M.contents)
 		qdel(blade)
 
-/obj/item/hardsuit_module/fabricator
+/obj/item/rig_module/basic/fabricator
 
 	name = "matter fabricator"
 	desc = "A self-contained microfactory system for hardsuit integration."
@@ -254,7 +254,7 @@
 	var/fire_force = 30
 	var/fire_distance = 10
 
-/obj/item/hardsuit_module/fabricator/engage(atom/target)
+/obj/item/rig_module/basic/fabricator/engage(atom/target)
 
 	if(!..())
 		return 0
@@ -277,7 +277,7 @@
 
 	return 1
 
-/obj/item/hardsuit_module/armblade
+/obj/item/rig_module/basic/armblade
 	name = "retractable armblade"
 	desc = "A retractable arm-mounted blade in an equally retractable scabbard that fits in standardized hardsuit mounts. Attaches to the user's forearm."
 	icon_state = "armblade"
@@ -291,19 +291,19 @@
 	deactivate_string = "Retract Blade"
 	var/obj/item/material/knife/machete/armblade/hardsuit/held_blade
 
-/obj/item/hardsuit_module/armblade/Initialize(mapload)
+/obj/item/rig_module/basic/armblade/Initialize(mapload)
 	. = ..()
 	held_blade = new /obj/item/material/knife/machete/armblade/hardsuit
 	held_blade.storing_module = src
 	RegisterSignal(held_blade, COMSIG_ITEM_DROPPED, PROC_REF(magnetic_catch))
 
-/obj/item/hardsuit_module/armblade/proc/magnetic_catch(datum/source)
+/obj/item/rig_module/basic/armblade/proc/magnetic_catch(datum/source)
 	var/obj/item/I = source
 	if(I != held_blade)
 		return
 	deactivate()
 
-/obj/item/hardsuit_module/armblade/process(delta_time)
+/obj/item/rig_module/basic/armblade/process(delta_time)
 
 	if(holder && holder.wearer)
 		if(!(locate(/obj/item/material/knife/machete/armblade) in holder.wearer))
@@ -312,7 +312,7 @@
 
 	return ..()
 
-/obj/item/hardsuit_module/armblade/activate()
+/obj/item/rig_module/basic/armblade/activate()
 
 	..()
 	var/mob/living/M = holder.wearer
@@ -336,6 +336,6 @@
 
 	playsound(src, 'sound/items/helmetdeploy.ogg', 40, 1)
 
-/obj/item/hardsuit_module/armblade/deactivate()
+/obj/item/rig_module/basic/armblade/deactivate()
 	..()
 	held_blade?.forceMove(src)

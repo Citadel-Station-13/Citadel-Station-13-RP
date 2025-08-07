@@ -9,9 +9,9 @@
 	seal_delay = 1
 	var/mob/living/carbon/human/myprotean
 	initial_modules = list(
-		/obj/item/hardsuit_module/power_sink,
-		/obj/item/hardsuit_module/device/rigwelder, // Almost forgot these, but who uses blobsuits for their intended purpose anyways?
-		/obj/item/hardsuit_module/device/toolset    // I did say I was going to do it
+		/obj/item/rig_module/basic/power_sink,
+		/obj/item/rig_module/basic/device/rigwelder, // Almost forgot these, but who uses blobsuits for their intended purpose anyways?
+		/obj/item/rig_module/basic/device/toolset    // I did say I was going to do it
 		)
 
 	helm_type = /obj/item/clothing/head/helmet/space/hardsuit/protean

@@ -63,12 +63,12 @@
 	boot_type = /obj/item/clothing/shoes/lightrig/hacker
 
 	initial_modules = list(
-		/obj/item/hardsuit_module/ai_container,
-		/obj/item/hardsuit_module/power_sink,
-		/obj/item/hardsuit_module/datajack,
-		/obj/item/hardsuit_module/electrowarfare_suite,
-		/obj/item/hardsuit_module/voice,
-		/obj/item/hardsuit_module/vision,
+		/obj/item/rig_module/basic/ai_container,
+		/obj/item/rig_module/basic/power_sink,
+		/obj/item/rig_module/basic/datajack,
+		/obj/item/rig_module/basic/electrowarfare_suite,
+		/obj/item/rig_module/basic/voice,
+		/obj/item/rig_module/basic/vision,
 		)
 
 //The cybersuit is not space-proof. It does however, have good siemens_coefficient values
@@ -114,18 +114,18 @@
 	)
 
 	initial_modules = list(
-		/obj/item/hardsuit_module/teleporter,
-		/obj/item/hardsuit_module/stealth_field,
-		/obj/item/hardsuit_module/mounted/energy_blade,
-		/obj/item/hardsuit_module/vision,
-		/obj/item/hardsuit_module/voice,
-		/obj/item/hardsuit_module/fabricator/energy_net,
-		/obj/item/hardsuit_module/chem_dispenser/ninja,
-		/obj/item/hardsuit_module/grenade_launcher,
-		/obj/item/hardsuit_module/ai_container,
-		/obj/item/hardsuit_module/power_sink,
-		/obj/item/hardsuit_module/datajack,
-		/obj/item/hardsuit_module/self_destruct
+		/obj/item/rig_module/basic/teleporter,
+		/obj/item/rig_module/basic/stealth_field,
+		/obj/item/rig_module/basic/mounted/energy_blade,
+		/obj/item/rig_module/basic/vision,
+		/obj/item/rig_module/basic/voice,
+		/obj/item/rig_module/basic/fabricator/energy_net,
+		/obj/item/rig_module/basic/chem_dispenser/ninja,
+		/obj/item/rig_module/basic/grenade_launcher,
+		/obj/item/rig_module/basic/ai_container,
+		/obj/item/rig_module/basic/power_sink,
+		/obj/item/rig_module/basic/datajack,
+		/obj/item/rig_module/basic/self_destruct
 		)
 
 
@@ -148,6 +148,6 @@
 	req_access = list(ACCESS_FACTION_SYNDICATE)
 
 	initial_modules = list(
-		/obj/item/hardsuit_module/stealth_field,
-		/obj/item/hardsuit_module/vision
+		/obj/item/rig_module/basic/stealth_field,
+		/obj/item/rig_module/basic/vision
 		)

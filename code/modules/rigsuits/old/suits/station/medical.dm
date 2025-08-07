@@ -38,14 +38,14 @@
 /obj/item/hardsuit/medical/equipped
 	seal_delay = 5
 	initial_modules = list(
-		/obj/item/hardsuit_module/maneuvering_jets,
-		/obj/item/hardsuit_module/device/healthscanner,
-		/obj/item/hardsuit_module/vision/medhud,
-		/obj/item/hardsuit_module/sprinter,
-		/obj/item/hardsuit_module/chem_dispenser/injector,
-		/obj/item/hardsuit_module/pat_module,
-		/obj/item/hardsuit_module/rescue_pharm,
-		/obj/item/hardsuit_module/device/hand_defib,
+		/obj/item/rig_module/basic/maneuvering_jets,
+		/obj/item/rig_module/basic/device/healthscanner,
+		/obj/item/rig_module/basic/vision/medhud,
+		/obj/item/rig_module/basic/sprinter,
+		/obj/item/rig_module/basic/chem_dispenser/injector,
+		/obj/item/rig_module/basic/pat_module,
+		/obj/item/rig_module/basic/rescue_pharm,
+		/obj/item/rig_module/basic/device/hand_defib,
 		)
 
 /obj/item/clothing/head/helmet/space/hardsuit/medical

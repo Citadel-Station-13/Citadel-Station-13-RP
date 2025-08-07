@@ -46,12 +46,22 @@
 	var/zone_conflict_type
 
 	//* Defense *//
+	#warn use atom integrity instead?
 	/// brute damage
 	var/brute_damage = 0
 	/// burn damage
 	var/burn_damage = 0
 	/// total integrity
 	var/max_health = 100
+
+	//* Hotbinds *//
+	/// Our hotbind datums
+	/// * lazy list
+	var/list/datum/rig_hotbind/hotbinds
+
+	//* Installation *//
+	/// can be added / removed
+	var/can_remove = TRUE
 
 	//* Registration *//
 	/// the rig we're on
@@ -166,6 +176,22 @@
  */
 /obj/item/rig_module/proc/console_process(effective_control_flags, username, command, list/arguments)
 	return list("unknown command", "<invalid>")
+
+//* Hotbinds *//
+
+/**
+ * * Do not access 'action' and 'params' directly from the hotbinding. The reference is there
+ *   as an escape hatch.
+ */
+/obj/item/rig_module/proc/on_hotbind(datum/event_args/actor/actor, datum/rig_hotbind/bind, action, list/params)
+
+/obj/item/rig_module/proc/create_hotbind(action, list/params)
+
+/obj/item/rig_module/proc/on_hotbind_created(datum/rig_hotbind/bind)
+
+/obj/item/rig_module/proc/on_hotbind_destroyed(datum/rig_hotbind/bind)
+
+#warn impl
 
 //* Power *//
 

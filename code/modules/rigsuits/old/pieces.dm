@@ -143,7 +143,7 @@
 	if(!suit || !istype(suit) || !suit.installed_modules.len)
 		return FALSE
 
-	for(var/obj/item/hardsuit_module/module in suit.installed_modules)
+	for(var/obj/item/rig_module/basic/module in suit.installed_modules)
 		if(module.active && module.activates_on_touch)
 			if(module.engage(A))
 				return TRUE

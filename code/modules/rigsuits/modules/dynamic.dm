@@ -1,6 +1,8 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
+// TODO: file unticked for now, we need to figure this out later.
+
 /**
  * 'Dynamic' modules
  *
@@ -8,7 +10,7 @@
  * have to write their own TGUI templates.
  */
 /obj/item/rig_module/dynamic
-	tgui_interface = "dynamic"
+	tgui_interface = "Dynamic"
 	#warn impl
 
 	/// by type

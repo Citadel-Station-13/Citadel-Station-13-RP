@@ -54,12 +54,12 @@
 	req_access = list(ACCESS_FACTION_SYNDICATE)
 	cell_type =  /obj/item/cell/hyper
 	initial_modules = list(
-		/obj/item/hardsuit_module/mounted/energy_blade,
-		/obj/item/hardsuit_module/sprinter,
-		/obj/item/hardsuit_module/electrowarfare_suite,
-		/obj/item/hardsuit_module/vision,
-		/obj/item/hardsuit_module/power_sink,
-		/obj/item/hardsuit_module/self_destruct
+		/obj/item/rig_module/basic/mounted/energy_blade,
+		/obj/item/rig_module/basic/sprinter,
+		/obj/item/rig_module/basic/electrowarfare_suite,
+		/obj/item/rig_module/basic/vision,
+		/obj/item/rig_module/basic/power_sink,
+		/obj/item/rig_module/basic/self_destruct
 		)
 
 /obj/item/hardsuit/vox/stealth
@@ -70,9 +70,9 @@
 	req_access = list(ACCESS_FACTION_SYNDICATE)
 	cell_type =  /obj/item/cell/hyper
 	initial_modules = list(
-		/obj/item/hardsuit_module/stealth_field,
-		/obj/item/hardsuit_module/electrowarfare_suite,
-		/obj/item/hardsuit_module/vision,
-		/obj/item/hardsuit_module/power_sink,
-		/obj/item/hardsuit_module/self_destruct
+		/obj/item/rig_module/basic/stealth_field,
+		/obj/item/rig_module/basic/electrowarfare_suite,
+		/obj/item/rig_module/basic/vision,
+		/obj/item/rig_module/basic/power_sink,
+		/obj/item/rig_module/basic/self_destruct
 		)

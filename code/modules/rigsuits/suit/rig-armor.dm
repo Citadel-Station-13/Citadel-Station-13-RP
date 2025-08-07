@@ -1,4 +1,5 @@
-//* hardcoded armor defines, to be replaced with components later *//
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
 
 /datum/armor/rigsuit
 	melee = 0.3

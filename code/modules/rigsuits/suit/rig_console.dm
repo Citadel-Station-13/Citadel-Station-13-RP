@@ -41,7 +41,7 @@
 	command_logs += "> [console_out]"
 	// todo: better logging lmao
 	log_game("RIG-CONSOLE: [key_name(user)] @ [REF(host)] ([key_name(host.wearer)]): [string] --> [log_out || console_out]")
-	// todo: should this really be here?
+	// todo: please have a stream system don't just update the entire console that's awful
 	host.maint_panel?.push_ui_data(list("console" = tgui_console_data()))
 	return result
 

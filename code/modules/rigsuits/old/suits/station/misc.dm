@@ -23,11 +23,11 @@
 
 /obj/item/hardsuit/internalaffairs/equipped
 	initial_modules = list(
-		/obj/item/hardsuit_module/ai_container,
-		/obj/item/hardsuit_module/device/flash,
-		/obj/item/hardsuit_module/device/paperdispenser,
-		/obj/item/hardsuit_module/device/pen,
-		/obj/item/hardsuit_module/device/stamp
+		/obj/item/rig_module/basic/ai_container,
+		/obj/item/rig_module/basic/device/flash,
+		/obj/item/rig_module/basic/device/paperdispenser,
+		/obj/item/rig_module/basic/device/pen,
+		/obj/item/rig_module/basic/device/stamp
 		)
 
 	glove_type = null

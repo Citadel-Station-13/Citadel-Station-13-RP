@@ -57,9 +57,9 @@
 /obj/item/hardsuit/pmc/commander/grey/equipped
 
 	initial_modules = list(
-		/obj/item/hardsuit_module/ai_container,
-		/obj/item/hardsuit_module/maneuvering_jets,
-		/obj/item/hardsuit_module/datajack,
+		/obj/item/rig_module/basic/ai_container,
+		/obj/item/rig_module/basic/maneuvering_jets,
+		/obj/item/rig_module/basic/datajack,
 		)
 
 /obj/item/hardsuit/pmc/commander/green
@@ -68,9 +68,9 @@
 /obj/item/hardsuit/pmc/commander/green/equipped
 
 	initial_modules = list(
-		/obj/item/hardsuit_module/ai_container,
-		/obj/item/hardsuit_module/maneuvering_jets,
-		/obj/item/hardsuit_module/datajack,
+		/obj/item/rig_module/basic/ai_container,
+		/obj/item/rig_module/basic/maneuvering_jets,
+		/obj/item/rig_module/basic/datajack,
 		)
 
 /datum/armor/hardsuit/pmc/engineer
@@ -87,10 +87,10 @@
 /obj/item/hardsuit/pmc/engineer/grey/equipped
 
 	initial_modules = list(
-		/obj/item/hardsuit_module/ai_container,
-		/obj/item/hardsuit_module/maneuvering_jets,
-		/obj/item/hardsuit_module/device/plasmacutter,
-		/obj/item/hardsuit_module/device/rcd
+		/obj/item/rig_module/basic/ai_container,
+		/obj/item/rig_module/basic/maneuvering_jets,
+		/obj/item/rig_module/basic/device/plasmacutter,
+		/obj/item/rig_module/basic/device/rcd
 		)
 
 /obj/item/hardsuit/pmc/engineer/green
@@ -99,10 +99,10 @@
 /obj/item/hardsuit/pmc/engineer/green/equipped
 
 	initial_modules = list(
-		/obj/item/hardsuit_module/ai_container,
-		/obj/item/hardsuit_module/maneuvering_jets,
-		/obj/item/hardsuit_module/device/plasmacutter,
-		/obj/item/hardsuit_module/device/rcd
+		/obj/item/rig_module/basic/ai_container,
+		/obj/item/rig_module/basic/maneuvering_jets,
+		/obj/item/rig_module/basic/device/plasmacutter,
+		/obj/item/rig_module/basic/device/rcd
 		)
 
 /obj/item/hardsuit/pmc/medical
@@ -114,10 +114,10 @@
 /obj/item/hardsuit/pmc/medical/grey/equipped
 
 	initial_modules = list(
-		/obj/item/hardsuit_module/ai_container,
-		/obj/item/hardsuit_module/maneuvering_jets,
-		/obj/item/hardsuit_module/device/healthscanner,
-		/obj/item/hardsuit_module/chem_dispenser/injector/advanced
+		/obj/item/rig_module/basic/ai_container,
+		/obj/item/rig_module/basic/maneuvering_jets,
+		/obj/item/rig_module/basic/device/healthscanner,
+		/obj/item/rig_module/basic/chem_dispenser/injector/advanced
 		)
 
 /obj/item/hardsuit/pmc/medical/green
@@ -126,10 +126,10 @@
 /obj/item/hardsuit/pmc/medical/green/equipped
 
 	initial_modules = list(
-		/obj/item/hardsuit_module/ai_container,
-		/obj/item/hardsuit_module/maneuvering_jets,
-		/obj/item/hardsuit_module/device/healthscanner,
-		/obj/item/hardsuit_module/chem_dispenser/injector/advanced
+		/obj/item/rig_module/basic/ai_container,
+		/obj/item/rig_module/basic/maneuvering_jets,
+		/obj/item/rig_module/basic/device/healthscanner,
+		/obj/item/rig_module/basic/chem_dispenser/injector/advanced
 		)
 
 /obj/item/hardsuit/pmc/security
@@ -141,9 +141,9 @@
 /obj/item/hardsuit/pmc/security/grey/equipped
 
 	initial_modules = list(
-		/obj/item/hardsuit_module/ai_container,
-		/obj/item/hardsuit_module/maneuvering_jets,
-		/obj/item/hardsuit_module/mounted/egun,
+		/obj/item/rig_module/basic/ai_container,
+		/obj/item/rig_module/basic/maneuvering_jets,
+		/obj/item/rig_module/basic/mounted/egun,
 		)
 
 /obj/item/hardsuit/pmc/security/green
@@ -152,7 +152,7 @@
 /obj/item/hardsuit/pmc/security/green/equipped
 
 	initial_modules = list(
-		/obj/item/hardsuit_module/ai_container,
-		/obj/item/hardsuit_module/maneuvering_jets,
-		/obj/item/hardsuit_module/mounted/egun,
+		/obj/item/rig_module/basic/ai_container,
+		/obj/item/rig_module/basic/maneuvering_jets,
+		/obj/item/rig_module/basic/mounted/egun,
 		)

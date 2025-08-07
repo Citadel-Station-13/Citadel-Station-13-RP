@@ -1,26 +1,4 @@
-/* Contains:
- * /obj/item/hardsuit_module/device
- * /obj/item/hardsuit_module/device/plasmacutter
- * /obj/item/hardsuit_module/device/healthscanner
- * /obj/item/hardsuit_module/device/drill
- * /obj/item/hardsuit_module/device/orescanner
- * /obj/item/hardsuit_module/device/rcd
- * /obj/item/hardsuit_module/device/anomaly_scanner
- * /obj/item/hardsuit_module/maneuvering_jets
- * /obj/item/hardsuit_module/foam_sprayer
- * /obj/item/hardsuit_module/device/broadcaster
- * /obj/item/hardsuit_module/chem_dispenser
- * /obj/item/hardsuit_module/chem_dispenser/injector
- * /obj/item/hardsuit_module/voice
- * /obj/item/hardsuit_module/device/paperdispenser
- * /obj/item/hardsuit_module/device/pen
- * /obj/item/hardsuit_module/device/stamp
- * /obj/item/hardsuit_module/mop
- * /obj/item/hardsuit_module/cleaner_launcher
- * /obj/item/hardsuit_module/device/hand_defib
- */
-
-/obj/item/hardsuit_module/device
+/obj/item/rig_module/basic/device
 	name = "mounted device"
 	desc = "Some kind of hardsuit mount."
 	usable = 0
@@ -31,7 +9,7 @@
 	var/device_type
 	var/obj/item/device
 
-/obj/item/hardsuit_module/device/plasmacutter
+/obj/item/rig_module/basic/device/plasmacutter
 	name = "hardsuit plasma cutter"
 	desc = "A lethal-looking industrial cutter."
 	icon_state = "plasmacutter"
@@ -44,7 +22,7 @@
 
 	device_type = /obj/item/pickaxe/plasmacutter
 
-/obj/item/hardsuit_module/device/healthscanner
+/obj/item/rig_module/basic/device/healthscanner
 	name = "health scanner module"
 	desc = "A hardsuit-mounted health scanner."
 	icon_state = "scanner"
@@ -53,7 +31,7 @@
 
 	device_type = /obj/item/healthanalyzer
 
-/obj/item/hardsuit_module/device/drill
+/obj/item/rig_module/basic/device/drill
 	name = "hardsuit drill mount"
 	desc = "A very heavy diamond-tipped drill."
 	icon_state = "drill"
@@ -66,7 +44,7 @@
 
 	device_type = /obj/item/pickaxe/diamonddrill
 
-/obj/item/hardsuit_module/device/anomaly_scanner
+/obj/item/rig_module/basic/device/anomaly_scanner
 	name = "hardsuit anomaly scanner"
 	desc = "You think it's called an Elder Sarsparilla or something."
 	icon_state = "eldersasparilla"
@@ -77,7 +55,7 @@
 	selectable = 0
 	device_type = /obj/item/ano_scanner
 
-/obj/item/hardsuit_module/device/orescanner
+/obj/item/rig_module/basic/device/orescanner
 	name = "ore scanner module"
 	desc = "A clunky old ore scanner."
 	icon_state = "scanner"
@@ -88,13 +66,13 @@
 	selectable = 0
 	device_type = /obj/item/mining_scanner
 
-/obj/item/hardsuit_module/device/orescanner/advanced
+/obj/item/rig_module/basic/device/orescanner/advanced
 	name = "advanced ore scanner module"
 	desc = "A sleeker, yet still somewhat clunky ore scanner."
 	interface_name = "adv. ore detector"
 	device_type = /obj/item/mining_scanner/advanced
 
-/obj/item/hardsuit_module/device/rcd
+/obj/item/rig_module/basic/device/rcd
 	name = "RCD mount"
 	desc = "A cell-powered rapid construction device for a hardsuit."
 	icon_state = "rcd"
@@ -105,11 +83,11 @@
 
 	device_type = /obj/item/rcd/electric/mounted/hardsuit
 
-/obj/item/hardsuit_module/device/Initialize(mapload)
+/obj/item/rig_module/basic/device/Initialize(mapload)
 	. = ..()
 	if(device_type) device = new device_type(src)
 
-/obj/item/hardsuit_module/device/engage(atom/target)
+/obj/item/rig_module/basic/device/engage(atom/target)
 	if(!..() || !device)
 		return 0
 
@@ -124,7 +102,7 @@
 	device.melee_interaction_chain(target, holder.wearer, CLICKCHAIN_HAS_PROXIMITY)
 	return 1
 
-/obj/item/hardsuit_module/chem_dispenser
+/obj/item/rig_module/basic/chem_dispenser
 	name = "mounted chemical dispenser"
 	desc = "A complex web of tubing and needles suitable for hardsuit use."
 	icon_state = "injector"
@@ -151,7 +129,7 @@
 
 	var/max_reagent_volume = 80 //Used when refilling.
 
-/obj/item/hardsuit_module/chem_dispenser/ninja
+/obj/item/rig_module/basic/chem_dispenser/ninja
 	interface_desc = "Dispenses loaded chemicals directly into the wearer's bloodstream. This variant is made to be extremely light and flexible."
 
 	//Want more? Go refill. Gives the ninja another reason to have to show their face.
@@ -169,7 +147,7 @@
 		list("radium",        "radium",        0, 30)
 		)
 
-/obj/item/hardsuit_module/chem_dispenser/accepts_item(var/obj/item/input_item, var/mob/living/user)
+/obj/item/rig_module/basic/chem_dispenser/accepts_item(var/obj/item/input_item, var/mob/living/user)
 
 	if(!input_item.is_open_container())
 		return 0
@@ -201,7 +179,7 @@
 		to_chat(user, "<span class='danger'>None of the reagents seem suitable.</span>")
 	return 1
 
-/obj/item/hardsuit_module/chem_dispenser/engage(atom/target)
+/obj/item/rig_module/basic/chem_dispenser/engage(atom/target)
 
 	if(!..())
 		return 0
@@ -243,7 +221,7 @@
 
 	return 1
 
-/obj/item/hardsuit_module/chem_dispenser/combat
+/obj/item/rig_module/basic/chem_dispenser/combat
 
 	name = "combat chemical injector"
 	desc = "A complex web of tubing and needles suitable for hardsuit use."
@@ -260,7 +238,7 @@
 	interface_desc = "Dispenses loaded chemicals directly into the bloodstream."
 
 
-/obj/item/hardsuit_module/chem_dispenser/injector
+/obj/item/rig_module/basic/chem_dispenser/injector
 
 	name = "mounted chemical injector"
 	desc = "A complex web of tubing and a large needle suitable for hardsuit use."
@@ -271,7 +249,7 @@
 	interface_name = "mounted chem injector"
 	interface_desc = "Dispenses loaded chemicals via an arm-mounted injector."
 
-/obj/item/hardsuit_module/chem_dispenser/injector/advanced
+/obj/item/rig_module/basic/chem_dispenser/injector/advanced
 
 	charges = list(
 		list("tricordrazine", "tricordrazine", 0, 80),
@@ -285,7 +263,7 @@
 		list("clotting agent", "myelamine", 0, 80)
 		)
 
-/obj/item/hardsuit_module/voice
+/obj/item/rig_module/basic/voice
 
 	name = "hardsuit voice synthesizer"
 	desc = "A speaker box and sound processor."
@@ -302,16 +280,16 @@
 
 	var/obj/item/voice_changer/voice_holder
 
-/obj/item/hardsuit_module/voice/Initialize(mapload)
+/obj/item/rig_module/basic/voice/Initialize(mapload)
 	. = ..()
 	voice_holder = new(src)
 	voice_holder.active = 0
 
-/obj/item/hardsuit_module/voice/installed()
+/obj/item/rig_module/basic/voice/installed()
 	..()
 	holder.speech = src
 
-/obj/item/hardsuit_module/voice/engage()
+/obj/item/rig_module/basic/voice/engage()
 
 	if(!..())
 		return 0
@@ -338,7 +316,7 @@
 			to_chat(usr, "<font color=#4F49AF>You are now mimicking <B>[voice_holder.voice]</B>.</font>")
 	return 1
 
-/obj/item/hardsuit_module/maneuvering_jets
+/obj/item/rig_module/basic/maneuvering_jets
 
 	name = "hardsuit maneuvering jets"
 	desc = "A compact gas thruster system for a hardsuit."
@@ -360,13 +338,13 @@
 
 	var/obj/item/tank/jetpack/hardsuit/jets
 
-/obj/item/hardsuit_module/maneuvering_jets/engage()
+/obj/item/rig_module/basic/maneuvering_jets/engage()
 	if(!..())
 		return 0
 	jets.toggle_rockets()
 	return 1
 
-/obj/item/hardsuit_module/maneuvering_jets/activate()
+/obj/item/rig_module/basic/maneuvering_jets/activate()
 
 	if(active)
 		return 0
@@ -384,33 +362,33 @@
 		jets.toggle()
 	return 1
 
-/obj/item/hardsuit_module/maneuvering_jets/deactivate()
+/obj/item/rig_module/basic/maneuvering_jets/deactivate()
 	if(!..())
 		return 0
 	if(jets.on)
 		jets.toggle()
 	return 1
 
-/obj/item/hardsuit_module/maneuvering_jets/Initialize(mapload)
+/obj/item/rig_module/basic/maneuvering_jets/Initialize(mapload)
 	. = ..()
 	jets = new(src)
 
-/obj/item/hardsuit_module/maneuvering_jets/installed()
+/obj/item/rig_module/basic/maneuvering_jets/installed()
 	..()
 	jets.holder = holder
 	jets.ion_trail.set_up(holder)
 
-/obj/item/hardsuit_module/maneuvering_jets/removed()
+/obj/item/rig_module/basic/maneuvering_jets/removed()
 	..()
 	jets.holder = null
 	jets.ion_trail.set_up(jets)
 
-/obj/item/hardsuit_module/foam_sprayer
+/obj/item/rig_module/basic/foam_sprayer
 
 
 //Deployable Mop
 
-/obj/item/hardsuit_module/mop
+/obj/item/rig_module/basic/mop
 
 	name = "mop projector"
 	desc = "A powerful mop projector."
@@ -429,7 +407,7 @@
 	active_power_cost = 0
 	passive_power_cost = 0
 
-/obj/item/hardsuit_module/mop/process(delta_time)
+/obj/item/rig_module/basic/mop/process(delta_time)
 
 	if(holder && holder.wearer)
 		if(!(locate(/obj/item/mop_deploy) in holder.wearer))
@@ -438,7 +416,7 @@
 
 	return ..()
 
-/obj/item/hardsuit_module/mop/activate()
+/obj/item/rig_module/basic/mop/activate()
 
 	..()
 
@@ -453,7 +431,7 @@
 	blade.creator = M
 	M.put_in_hands(blade)
 
-/obj/item/hardsuit_module/mop/deactivate()
+/obj/item/rig_module/basic/mop/deactivate()
 
 	..()
 
@@ -468,7 +446,7 @@
 
 	//Space Cleaner Launcher
 
-/obj/item/hardsuit_module/cleaner_launcher
+/obj/item/rig_module/basic/cleaner_launcher
 
 	name = "mounted space cleaner launcher"
 	desc = "A shoulder-mounted micro-cleaner dispenser."
@@ -484,7 +462,7 @@
 		list("cleaner grenade",   "cleaner grenade",   /obj/item/grenade/simple/chemical/premade/cleaner,  9),
 		)
 
-/obj/item/hardsuit_module/cleaner_launcher/accepts_item(var/obj/item/input_device, var/mob/living/user)
+/obj/item/rig_module/basic/cleaner_launcher/accepts_item(var/obj/item/input_device, var/mob/living/user)
 
 	if(!istype(input_device) || !istype(user))
 		return 0
@@ -509,7 +487,7 @@
 	accepted_item.charges++
 	return 1
 
-/obj/item/hardsuit_module/cleaner_launcher/engage(atom/target)
+/obj/item/rig_module/basic/cleaner_launcher/engage(atom/target)
 
 	if(!..())
 		return 0
@@ -538,7 +516,7 @@
 	new_grenade.activate(new /datum/event_args/actor(H))
 	new_grenade.throw_at_old(target,fire_force,fire_distance)
 
-/obj/item/hardsuit_module/device/paperdispenser
+/obj/item/rig_module/basic/device/paperdispenser
 	name = "hardsuit paper dispenser"
 	desc = "Crisp sheets."
 	icon_state = "paper"
@@ -549,7 +527,7 @@
 	selectable = 0
 	device_type = /obj/item/paper_bin
 
-/obj/item/hardsuit_module/device/paperdispenser/engage(atom/target)
+/obj/item/rig_module/basic/device/paperdispenser/engage(atom/target)
 
 	if(!..() || !device)
 		return 0
@@ -558,7 +536,7 @@
 		device.attack_hand(holder.wearer)
 		return 1
 
-/obj/item/hardsuit_module/device/pen
+/obj/item/rig_module/basic/device/pen
 	name = "mounted pen"
 	desc = "For mecha John Hancocks."
 	icon_state = "pen"
@@ -568,7 +546,7 @@
 	usable = 1
 	device_type = /obj/item/pen/multi
 
-/obj/item/hardsuit_module/device/stamp
+/obj/item/rig_module/basic/device/stamp
 	name = "mounted internal affairs stamp"
 	desc = "DENIED."
 	icon_state = "stamp"
@@ -579,13 +557,13 @@
 	var/iastamp
 	var/deniedstamp
 
-/obj/item/hardsuit_module/device/stamp/Initialize(mapload)
+/obj/item/rig_module/basic/device/stamp/Initialize(mapload)
 	. = ..()
 	iastamp = new /obj/item/stamp/internalaffairs(src)
 	deniedstamp = new /obj/item/stamp/denied(src)
 	device = iastamp
 
-/obj/item/hardsuit_module/device/stamp/engage(atom/target)
+/obj/item/rig_module/basic/device/stamp/engage(atom/target)
 	if(!..() || !device)
 		return 0
 
@@ -598,7 +576,7 @@
 			to_chat(holder.wearer, "<span class='notice'>Switched to internal affairs stamp.</span>")
 		return 1
 
-/obj/item/hardsuit_module/sprinter
+/obj/item/rig_module/basic/sprinter
 	name = "sprint module"
 	desc = "A robust hardsuit-integrated sprint module."
 	icon_state = "sprinter"
@@ -620,7 +598,7 @@
 	interface_name = "sprint system"
 	interface_desc = "Increases power to the suit's actuators, allowing faster movement."
 
-/obj/item/hardsuit_module/sprinter/activate()
+/obj/item/rig_module/basic/sprinter/activate()
 
 	if(!..())
 		return 0
@@ -632,7 +610,7 @@
 	holder.set_slowdown(holder.slowdown - sprint_speed)
 	holder.sprint_slowdown_modifier = -sprint_speed
 
-/obj/item/hardsuit_module/sprinter/deactivate()
+/obj/item/rig_module/basic/sprinter/deactivate()
 
 	if(!..())
 		return 0
@@ -644,7 +622,7 @@
 	holder.set_slowdown(holder.slowdown + sprint_speed)
 	holder.sprint_slowdown_modifier = 0
 
-/obj/item/hardsuit_module/device/hand_defib
+/obj/item/rig_module/basic/device/hand_defib
 	name = "\improper Hand-mounted Defibrillator"
 	desc = "Following complaints regarding the danger of switching equipment in the field, Vey-Med developed internalised defibrillator paddles mounted in the gauntlets of the rescue suit powered by the suit's cell."
 
@@ -654,56 +632,3 @@
 	interface_desc = "Following complaints regarding the danger of switching equipment in the field, Vey-Med developed internalised defibrillator paddles mounted in the gauntlets of the rescue suit powered by the suit's cell."
 
 	device_type = /obj/item/shockpaddles/standalone/hardsuit
-
-/obj/item/hardsuit_module/device/toolset
-	name = "integrated toolset"
-	desc = "A set of actuators and toolheads for use in hardsuit-based toolsets."
-	icon_state = "stamp"
-	interface_name = "integrated toolset"
-	interface_desc = "The power of engineering, in the palm of your hand."
-	engage_string = "Switch tool type"
-	usable = 1
-	module_cooldown = 0
-	var/intcrowbar
-	var/intwrench
-	var/intcutter
-	var/intdriver
-
-/obj/item/hardsuit_module/device/toolset/Initialize(mapload)
-	. = ..()
-	intcrowbar = new /obj/item/tool/crowbar/rig_basic(src)
-	intwrench = new /obj/item/tool/wrench/rig_basic(src)
-	intcutter = new /obj/item/tool/wirecutters/rig_basic(src)
-	intdriver = new /obj/item/tool/screwdriver/rig_basic(src)
-	//intwelder = new /obj/item/weldingtool/electric/mounted/rig_basic(src)
-	device = intcrowbar
-
-/obj/item/hardsuit_module/device/toolset/engage(atom/target)
-	if(!..() || !device)
-		return 0
-
-	if(!target)
-		if(device == intcrowbar)
-			device = intwrench
-			to_chat(holder.wearer, "<span class='notice'>Hydraulic wrench engaged.</span>")
-		else if(device == intwrench)
-			device = intcutter
-			to_chat(holder.wearer, "<span class='notice'>Hydraulic cutters engaged.</span>")
-		else if(device == intcutter)
-			device = intdriver
-			to_chat(holder.wearer, "<span class='notice'>Hydraulic driver engaged.</span>")
-		else if(device == intdriver) // I'm tired and can't think of anything better
-			device = intcrowbar // Feel free to improve this mess
-			to_chat(holder.wearer, "<span class='notice'>Hydraulic crowbar engaged.</span>")
-	interface_name = "[initial(interface_name)] - [device]"
-	return 1
-
-/obj/item/hardsuit_module/device/rigwelder
-	name = "integrated arc-welder"
-	desc = "A set of tubes and canisters to be attached to a hardsuit."
-	module_cooldown = 0
-	usable = 1
-	interface_name = "Integrated arc-welder"
-	interface_desc = "A hardsuit-mounted electrical welder. Smells of ozone."
-	engage_string = "Engage/Disengage"
-	device_type = /obj/item/weldingtool/electric/mounted/rig_basic

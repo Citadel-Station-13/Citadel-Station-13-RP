@@ -692,8 +692,8 @@
 	if(isrobot(src.loc))
 		var/mob/living/silicon/robot/R = src.loc
 		return R.cell
-	if(istype(src.loc, /obj/item/hardsuit_module))
-		var/obj/item/hardsuit_module/module = src.loc
+	if(istype(src.loc, /obj/item/rig_module/basic))
+		var/obj/item/rig_module/basic/module = src.loc
 		if(module.holder && module.holder.wearer)
 			var/mob/living/carbon/human/H = module.holder.wearer
 			if(istype(H) && H.back)

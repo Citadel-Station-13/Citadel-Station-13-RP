@@ -51,9 +51,9 @@
 	)
 
 	initial_modules = list(
-		/obj/item/hardsuit_module/ai_container,
-		/obj/item/hardsuit_module/maneuvering_jets,
-		/obj/item/hardsuit_module/datajack,
+		/obj/item/rig_module/basic/ai_container,
+		/obj/item/rig_module/basic/maneuvering_jets,
+		/obj/item/rig_module/basic/datajack,
 		)
 
 /obj/item/hardsuit/ert/engineer
@@ -64,10 +64,10 @@
 	glove_type = /obj/item/clothing/gloves/gauntlets/hardsuit/eva
 
 	initial_modules = list(
-		/obj/item/hardsuit_module/ai_container,
-		/obj/item/hardsuit_module/maneuvering_jets,
-		/obj/item/hardsuit_module/device/plasmacutter,
-		/obj/item/hardsuit_module/device/rcd
+		/obj/item/rig_module/basic/ai_container,
+		/obj/item/rig_module/basic/maneuvering_jets,
+		/obj/item/rig_module/basic/device/plasmacutter,
+		/obj/item/rig_module/basic/device/rcd
 		)
 
 /obj/item/hardsuit/ert/medical
@@ -77,10 +77,10 @@
 	icon_state = "ert_medical_rig"
 
 	initial_modules = list(
-		/obj/item/hardsuit_module/ai_container,
-		/obj/item/hardsuit_module/maneuvering_jets,
-		/obj/item/hardsuit_module/device/healthscanner,
-		/obj/item/hardsuit_module/chem_dispenser/injector/advanced
+		/obj/item/rig_module/basic/ai_container,
+		/obj/item/rig_module/basic/maneuvering_jets,
+		/obj/item/rig_module/basic/device/healthscanner,
+		/obj/item/rig_module/basic/chem_dispenser/injector/advanced
 		)
 
 /obj/item/hardsuit/ert/security
@@ -90,10 +90,10 @@
 	icon_state = "ert_security_rig"
 
 	initial_modules = list(
-		/obj/item/hardsuit_module/ai_container,
-		/obj/item/hardsuit_module/maneuvering_jets,
-		/obj/item/hardsuit_module/grenade_launcher,
-		/obj/item/hardsuit_module/mounted/egun,
+		/obj/item/rig_module/basic/ai_container,
+		/obj/item/rig_module/basic/maneuvering_jets,
+		/obj/item/rig_module/basic/grenade_launcher,
+		/obj/item/rig_module/basic/mounted/egun,
 		)
 
 /obj/item/hardsuit/ert/janitor
@@ -103,8 +103,8 @@
 	icon_state = "ert_janitor_rig"
 
 	initial_modules = list(
-		/obj/item/hardsuit_module/maneuvering_jets,
-		/obj/item/hardsuit_module/grenade_launcher/cleaner,
+		/obj/item/rig_module/basic/maneuvering_jets,
+		/obj/item/rig_module/basic/grenade_launcher/cleaner,
 		)
 
 /datum/armor/hardsuit/ert/deathsquad
@@ -124,15 +124,15 @@
 	glove_type = /obj/item/clothing/gloves/gauntlets/hardsuit/eva
 
 	initial_modules = list(
-		/obj/item/hardsuit_module/ai_container,
-		/obj/item/hardsuit_module/maneuvering_jets,
-		/obj/item/hardsuit_module/grenade_launcher,
-		/obj/item/hardsuit_module/vision/multi,
-		/obj/item/hardsuit_module/mounted/egun,
-		/obj/item/hardsuit_module/chem_dispenser/injector,
-		/obj/item/hardsuit_module/device/plasmacutter,
-		/obj/item/hardsuit_module/device/rcd,
-		/obj/item/hardsuit_module/datajack
+		/obj/item/rig_module/basic/ai_container,
+		/obj/item/rig_module/basic/maneuvering_jets,
+		/obj/item/rig_module/basic/grenade_launcher,
+		/obj/item/rig_module/basic/vision/multi,
+		/obj/item/rig_module/basic/mounted/egun,
+		/obj/item/rig_module/basic/chem_dispenser/injector,
+		/obj/item/rig_module/basic/device/plasmacutter,
+		/obj/item/rig_module/basic/device/rcd,
+		/obj/item/rig_module/basic/datajack
 		)
 
 /obj/item/hardsuit/ert/para
@@ -147,14 +147,14 @@
 	var/emp_proof = FALSE
 
 	initial_modules = list(
-		/obj/item/hardsuit_module/ai_container,
-		/obj/item/hardsuit_module/device/anomaly_scanner,
-		/obj/item/hardsuit_module/armblade,
-		/obj/item/hardsuit_module/datajack,
-		/obj/item/hardsuit_module/grenade_launcher/holy,
-		/obj/item/hardsuit_module/maneuvering_jets,
-		/obj/item/hardsuit_module/vision/meson,
-		/obj/item/hardsuit_module/self_destruct
+		/obj/item/rig_module/basic/ai_container,
+		/obj/item/rig_module/basic/device/anomaly_scanner,
+		/obj/item/rig_module/basic/armblade,
+		/obj/item/rig_module/basic/datajack,
+		/obj/item/rig_module/basic/grenade_launcher/holy,
+		/obj/item/rig_module/basic/maneuvering_jets,
+		/obj/item/rig_module/basic/vision/meson,
+		/obj/item/rig_module/basic/self_destruct
 		)
 
 /obj/item/hardsuit/ert/para/attack_self(mob/user, datum/event_args/actor/actor)

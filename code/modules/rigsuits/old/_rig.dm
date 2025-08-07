@@ -77,9 +77,9 @@
 	var/obj/item/clothing/head/helmet/space/hardsuit/helmet = null // Deployable helmet, if any.
 	var/obj/item/clothing/gloves/gauntlets/hardsuit/gloves = null  // Deployable gauntlets, if any.
 	var/obj/item/cell/cell                             // Power supply, if any.
-	var/obj/item/hardsuit_module/selected_module = null            // Primary system (used with middle-click)
-	var/obj/item/hardsuit_module/vision/visor                      // Kinda shitty to have a var for a module, but saves time.
-	var/obj/item/hardsuit_module/voice/speech                      // As above.
+	var/obj/item/rig_module/basic/selected_module = null            // Primary system (used with middle-click)
+	var/obj/item/rig_module/basic/vision/visor                      // Kinda shitty to have a var for a module, but saves time.
+	var/obj/item/rig_module/basic/voice/speech                      // As above.
 	var/mob/living/carbon/human/wearer                        // The person currently wearing the hardsuit.
 	var/mutable_appearance/mob_icon                                        // Holder for on-mob icon.
 	var/list/installed_modules = list()                       // Power consumption/use bookkeeping.
@@ -198,7 +198,7 @@
 
 	if(initial_modules && initial_modules.len)
 		for(var/path in initial_modules)
-			var/obj/item/hardsuit_module/module = new path(src)
+			var/obj/item/rig_module/basic/module = new path(src)
 			installed_modules += module
 			module.installed(src)
 
@@ -530,7 +530,7 @@
 			trap(M)
 
 	if(!is_sealing)
-		for(var/obj/item/hardsuit_module/module in installed_modules)
+		for(var/obj/item/rig_module/basic/module in installed_modules)
 			module.deactivate()
 
 	if(airtight)
@@ -650,7 +650,7 @@
 	if(!is_online())
 		if(last_online)
 			last_online = FALSE
-			for(var/obj/item/hardsuit_module/module in installed_modules)
+			for(var/obj/item/rig_module/basic/module in installed_modules)
 				module.deactivate()
 			set_encumbrance(offline_encumbrance)
 			if(istype(wearer))
@@ -680,10 +680,10 @@
 		malfunctioning--
 		malfunction()
 
-	for(var/obj/item/hardsuit_module/module in installed_modules)
+	for(var/obj/item/rig_module/basic/module in installed_modules)
 		cell.use(module.process()*10)
 
-/obj/item/hardsuit/proc/check_power_cost(var/mob/living/user, var/cost, var/use_unconcious, var/obj/item/hardsuit_module/mod, var/user_is_ai)
+/obj/item/hardsuit/proc/check_power_cost(var/mob/living/user, var/cost, var/use_unconcious, var/obj/item/rig_module/basic/mod, var/user_is_ai)
 
 	if(!istype(user))
 		return 0
@@ -711,7 +711,7 @@
 
 	// This is largely for cancelling stealth and whatever.
 	if(mod && mod.disruptive)
-		for(var/obj/item/hardsuit_module/module in (installed_modules - mod))
+		for(var/obj/item/rig_module/basic/module in (installed_modules - mod))
 			if(module.active && module.disruptable)
 				module.deactivate()
 
@@ -752,7 +752,7 @@
 
 	var/list/module_list = list()
 	var/i = 1
-	for(var/obj/item/hardsuit_module/module in installed_modules)
+	for(var/obj/item/rig_module/basic/module in installed_modules)
 		var/list/module_data = list(
 			"index" =             i,
 			"name" =              "[module.interface_name]",
@@ -807,7 +807,7 @@
 		mob_icon.color = color
 
 	if(installed_modules.len)
-		for(var/obj/item/hardsuit_module/module in installed_modules)
+		for(var/obj/item/rig_module/basic/module in installed_modules)
 			if(module.suit_overlay)
 				chest.add_overlay(image("icon" = 'icons/mob/clothing/rig_modules.dmi', "icon_state" = "[module.suit_overlay]", "dir" = SOUTH))
 
@@ -857,7 +857,7 @@
 		var/module_index = text2num(href_list["interact_module"])
 
 		if(module_index > 0 && module_index <= installed_modules.len)
-			var/obj/item/hardsuit_module/module = installed_modules[module_index]
+			var/obj/item/rig_module/basic/module = installed_modules[module_index]
 			switch(href_list["module_mode"])
 				if("activate")
 					module.activate()
@@ -880,7 +880,7 @@
 	return 0
 
 /obj/item/hardsuit/proc/notify_ai(var/message)
-	for(var/obj/item/hardsuit_module/ai_container/module in installed_modules)
+	for(var/obj/item/rig_module/basic/ai_container/module in installed_modules)
 		if(module.integrated_ai && module.integrated_ai.client && !module.integrated_ai.stat)
 			to_chat(module.integrated_ai, "[message]")
 			. = 1
@@ -1049,13 +1049,13 @@
 	//This way the chances of a module being disabled aren't so remote.
 	var/list/valid_modules = list()
 	var/list/damaged_modules = list()
-	for(var/obj/item/hardsuit_module/module in installed_modules)
+	for(var/obj/item/rig_module/basic/module in installed_modules)
 		if(module.damage < 2)
 			valid_modules |= module
 			if(module.damage > 0)
 				damaged_modules |= module
 
-	var/obj/item/hardsuit_module/dam_module = null
+	var/obj/item/rig_module/basic/dam_module = null
 	if(damaged_modules.len)
 		dam_module = pick(damaged_modules)
 	else if(valid_modules.len)
@@ -1087,10 +1087,10 @@
 /obj/item/hardsuit/proc/ai_can_move_suit(var/mob/user, var/check_user_module = 0, var/check_for_ai = 0)
 
 	if(check_for_ai)
-		if(!(locate(/obj/item/hardsuit_module/ai_container) in contents))
+		if(!(locate(/obj/item/rig_module/basic/ai_container) in contents))
 			return 0
 		var/found_ai
-		for(var/obj/item/hardsuit_module/ai_container/module in contents)
+		for(var/obj/item/rig_module/basic/ai_container/module in contents)
 			if(module.damage >= 2)
 				continue
 			if(module.integrated_ai && module.integrated_ai.client && !module.integrated_ai.stat)
@@ -1102,7 +1102,7 @@
 	if(check_user_module)
 		if(!user || !user.loc || !user.loc.loc)
 			return 0
-		var/obj/item/hardsuit_module/ai_container/module = user.loc.loc
+		var/obj/item/rig_module/basic/ai_container/module = user.loc.loc
 		if(!istype(module) || module.damage >= 2)
 			to_chat(user, "<span class='warning'>Your host module is unable to interface with the suit.</span>")
 			return 0

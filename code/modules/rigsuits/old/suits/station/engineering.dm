@@ -45,10 +45,10 @@
 
 /obj/item/hardsuit/eva/equipped
 	initial_modules = list(
-		/obj/item/hardsuit_module/device/plasmacutter,
-		/obj/item/hardsuit_module/maneuvering_jets,
-		/obj/item/hardsuit_module/device/rcd,
-		/obj/item/hardsuit_module/vision/meson
+		/obj/item/rig_module/basic/device/plasmacutter,
+		/obj/item/rig_module/basic/maneuvering_jets,
+		/obj/item/rig_module/basic/device/rcd,
+		/obj/item/rig_module/basic/vision/meson
 		)
 
 /obj/item/clothing/head/helmet/space/hardsuit/eva
@@ -101,13 +101,13 @@
 
 /obj/item/hardsuit/ce/equipped
 	initial_modules = list(
-		/obj/item/hardsuit_module/ai_container,
-		/obj/item/hardsuit_module/maneuvering_jets,
-		/obj/item/hardsuit_module/device/plasmacutter,
-		/obj/item/hardsuit_module/device/rcd,
-		/obj/item/hardsuit_module/vision/meson,
-		/obj/item/hardsuit_module/device/rigwelder, // CE gets tools in their hardsuit
-		/obj/item/hardsuit_module/device/toolset
+		/obj/item/rig_module/basic/ai_container,
+		/obj/item/rig_module/basic/maneuvering_jets,
+		/obj/item/rig_module/basic/device/plasmacutter,
+		/obj/item/rig_module/basic/device/rcd,
+		/obj/item/rig_module/basic/vision/meson,
+		/obj/item/rig_module/basic/device/rigwelder, // CE gets tools in their hardsuit
+		/obj/item/rig_module/basic/device/toolset
 		)
 
 /obj/item/clothing/head/helmet/space/hardsuit/ce

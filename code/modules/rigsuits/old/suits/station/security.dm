@@ -35,10 +35,10 @@
 /obj/item/hardsuit/hazard/equipped
 
 	initial_modules = list(
-		/obj/item/hardsuit_module/vision/sechud,
-		/obj/item/hardsuit_module/maneuvering_jets,
-		/obj/item/hardsuit_module/grenade_launcher,
-		/obj/item/hardsuit_module/mounted/taser
+		/obj/item/rig_module/basic/vision/sechud,
+		/obj/item/rig_module/basic/maneuvering_jets,
+		/obj/item/rig_module/basic/grenade_launcher,
+		/obj/item/rig_module/basic/mounted/taser
 		)
 
 /obj/item/clothing/head/helmet/space/hardsuit/hazard

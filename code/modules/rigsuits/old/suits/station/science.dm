@@ -44,10 +44,10 @@
 
 /obj/item/hardsuit/hazmat/equipped
 	initial_modules = list(
-		/obj/item/hardsuit_module/ai_container,
-		/obj/item/hardsuit_module/maneuvering_jets,
-		/obj/item/hardsuit_module/device/anomaly_scanner,
-		/obj/item/hardsuit_module/device/drill,
+		/obj/item/rig_module/basic/ai_container,
+		/obj/item/rig_module/basic/maneuvering_jets,
+		/obj/item/rig_module/basic/device/anomaly_scanner,
+		/obj/item/rig_module/basic/device/drill,
 		)
 
 /obj/item/clothing/head/helmet/space/hardsuit/hazmat

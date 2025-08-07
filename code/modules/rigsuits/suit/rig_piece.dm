@@ -89,7 +89,7 @@
 	retract(INV_OP_FORCE)
 	return COMPONENT_ITEM_INV_OP_RELOCATE | COMPONENT_ITEM_INV_OP_SUPPRESS_SOUND
 
-/datum/component/rig_piece/proc/tgui_piece_data()
+/datum/component/rig_piece/proc/rig_data()
 	var/obj/item/physical = parent
 	#warn needs to have better caching for the b64, this is way too slow for production
 	return list(
@@ -103,14 +103,8 @@
 		"sprite64" = isnull(cached_tgui_icon_b64)? (cached_tgui_icon_b64 = icon2base64(icon(physical.icon, state_sealed, SOUTH, 1, FALSE))) : cached_tgui_icon_b64
 	)
 
-/datum/component/rig_piece/proc/push_piece_data(list/data)
+/datum/component/rig_piece/proc/rig_push_data(list/data)
 	controller?.push_ui_modules(updates = list(RIG_UI_ENCODE_PIECE_REF(src) = data))
-
-/datum/component/rig_piece/proc/update_piece_data()
-	if(ui_update_queued)
-		return
-	ui_update_queued = TRUE
-	controller?.ui_queue_piece(src)
 
 /datum/component/rig_piece/proc/seal_sync(instant, silent, subtle)
 	if(sealed == RIG_PIECE_SEALED)

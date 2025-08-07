@@ -218,11 +218,11 @@
 		return
 
 	var/list/selectable = list()
-	for(var/obj/item/hardsuit_module/module in installed_modules)
+	for(var/obj/item/rig_module/basic/module in installed_modules)
 		if(module.selectable)
 			selectable |= module
 
-	var/obj/item/hardsuit_module/module = input("Which module do you wish to select?") as null|anything in selectable
+	var/obj/item/rig_module/basic/module = input("Which module do you wish to select?") as null|anything in selectable
 
 	if(!istype(module))
 		selected_module = null
@@ -254,11 +254,11 @@
 		return
 
 	var/list/selectable = list()
-	for(var/obj/item/hardsuit_module/module in installed_modules)
+	for(var/obj/item/rig_module/basic/module in installed_modules)
 		if(module.toggleable)
 			selectable |= module
 
-	var/obj/item/hardsuit_module/module = input("Which module do you wish to toggle?") as null|anything in selectable
+	var/obj/item/rig_module/basic/module = input("Which module do you wish to toggle?") as null|anything in selectable
 
 	if(!istype(module))
 		return
@@ -292,11 +292,11 @@
 		return
 
 	var/list/selectable = list()
-	for(var/obj/item/hardsuit_module/module in installed_modules)
+	for(var/obj/item/rig_module/basic/module in installed_modules)
 		if(module.usable)
 			selectable |= module
 
-	var/obj/item/hardsuit_module/module = input("Which module do you wish to engage?") as null|anything in selectable
+	var/obj/item/rig_module/basic/module = input("Which module do you wish to engage?") as null|anything in selectable
 
 	if(!istype(module))
 		return

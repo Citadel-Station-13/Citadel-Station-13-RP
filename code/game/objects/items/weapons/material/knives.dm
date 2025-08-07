@@ -170,7 +170,7 @@
 	}
 
 /obj/item/material/knife/machete/armblade/hardsuit
-	var/obj/item/hardsuit_module/armblade/storing_module
+	var/obj/item/rig_module/basic/armblade/storing_module
 
 /obj/item/material/knife/machete/armblade/hardsuit/dropped(mob/user, flags, atom/newLoc)
 	. = ..()

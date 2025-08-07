@@ -36,11 +36,11 @@
 
 /obj/item/hardsuit/industrial/equipped
 	initial_modules = list(
-		/obj/item/hardsuit_module/device/plasmacutter,
-		/obj/item/hardsuit_module/device/drill,
-		/obj/item/hardsuit_module/device/orescanner,
-		/obj/item/hardsuit_module/vision/material,
-		/obj/item/hardsuit_module/maneuvering_jets,
+		/obj/item/rig_module/basic/device/plasmacutter,
+		/obj/item/rig_module/basic/device/drill,
+		/obj/item/rig_module/basic/device/orescanner,
+		/obj/item/rig_module/basic/vision/material,
+		/obj/item/rig_module/basic/maneuvering_jets,
 		)
 
 /obj/item/clothing/head/helmet/space/hardsuit/industrial

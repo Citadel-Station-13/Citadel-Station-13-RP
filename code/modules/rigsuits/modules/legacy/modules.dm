@@ -8,33 +8,24 @@
 	var/product_type = "undefined"
 	var/charges = 0
 
-/obj/item/hardsuit_module
+/obj/item/rig_module/basic
 	name = "hardsuit upgrade"
 	desc = "It looks pretty sciency."
 	icon = 'icons/obj/rig_modules.dmi'
 	icon_state = "module"
 	materials_base = list(MAT_STEEL = 20000, MAT_PLASTIC = 30000, MAT_GLASS = 5000)
 
-	var/damage = 0
-	var/obj/item/hardsuit/holder
-
-	var/module_cooldown = 10
-	var/next_use = 0
-
-	var/toggleable                      // Set to 1 for the device to show up as an active effect.
-	var/usable                          // Set to 1 for the device to have an on-use effect.
-	var/selectable                      // Set to 1 to be able to assign the device as primary system.
+	#warn we will need to implement global conflict type on everything as this defaults off
 	var/redundant                       // Set to 1 to ignore duplicate module checking when installing.
-	var/permanent                       // If set, the module can't be removed.
 	var/disruptive = 1                  // Can disrupt by other effects.
 	var/activates_on_touch              // If set, unarmed attacks will call engage() on the target.
+
 
 	var/active                          // Basic module status
 	var/disruptable                     // Will deactivate if some other powers are used.
 
 	var/use_power_cost = 0              // Power used when single-use ability called.
 	var/active_power_cost = 0           // Power used when turned on.
-	var/passive_power_cost = 0          // Power used when turned off.
 
 	var/list/charges                    // Associative list of charge types and remaining numbers.
 	var/charge_selected                 // Currently selected option used for charge dispensing.
@@ -52,9 +43,7 @@
 	var/activate_string = "Activate"
 	var/deactivate_string = "Deactivate"
 
-	var/list/stat_hardsuit_module/stat_modules = new()
-
-/obj/item/hardsuit_module/examine(mob/user, dist)
+/obj/item/rig_module/basic/examine(mob/user, dist)
 	. = ..()
 	switch(damage)
 		if(0)
@@ -64,7 +53,7 @@
 		if(2)
 			. += "It is almost completely destroyed."
 
-/obj/item/hardsuit_module/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/rig_module/basic/attackby(obj/item/W as obj, mob/user as mob)
 
 	if(istype(W,/obj/item/stack/nanopaste))
 
@@ -108,7 +97,7 @@
 		return
 	..()
 
-/obj/item/hardsuit_module/Initialize(mapload)
+/obj/item/rig_module/basic/Initialize(mapload)
 	. = ..()
 	if(suit_overlay_inactive)
 		suit_overlay = suit_overlay_inactive
@@ -134,17 +123,17 @@
 	stat_modules +=	new/stat_hardsuit_module/select(src)
 	stat_modules +=	new/stat_hardsuit_module/charge(src)
 
-/obj/item/hardsuit_module/Destroy()
+/obj/item/rig_module/basic/Destroy()
 	QDEL_LIST(stat_modules)
 	return ..()
 
 // Called when the module is installed into a suit.
-/obj/item/hardsuit_module/proc/installed(var/obj/item/hardsuit/new_holder)
+/obj/item/rig_module/basic/proc/installed(var/obj/item/hardsuit/new_holder)
 	holder = new_holder
 	return
 
 //Proc for one-use abilities like teleport.
-/obj/item/hardsuit_module/proc/engage()
+/obj/item/rig_module/basic/proc/engage()
 
 	if(damage >= 2)
 		to_chat(usr, "<span class='warning'>The [interface_name] is damaged beyond use!</span>")
@@ -178,7 +167,7 @@
 	return 1
 
 // Proc for toggling on active abilities.
-/obj/item/hardsuit_module/proc/activate(var/skip_engage = 0) // Allow us to skip the engage call.
+/obj/item/rig_module/basic/proc/activate(var/skip_engage = 0) // Allow us to skip the engage call.
 	// Allow us to skip the engage call
 	if(active)
 		return 0
@@ -196,7 +185,7 @@
 	return 1
 
 // Proc for toggling off active abilities.
-/obj/item/hardsuit_module/proc/deactivate()
+/obj/item/rig_module/basic/proc/deactivate()
 
 	if(!active)
 		return 0
@@ -214,13 +203,13 @@
 	return 1
 
 // Called when the module is uninstalled from a suit.
-/obj/item/hardsuit_module/proc/removed()
+/obj/item/rig_module/basic/proc/removed()
 	deactivate()
 	holder = null
 	return
 
 // Called by the hardsuit each hardsuit process tick.
-/obj/item/hardsuit_module/process(delta_time)
+/obj/item/rig_module/basic/process(delta_time)
 	if(active)
 		return active_power_cost
 	else
@@ -228,7 +217,7 @@
 
 // Called by holder rigsuit attackby()
 // Checks if an item is usable with this module and handles it if it is
-/obj/item/hardsuit_module/proc/accepts_item(var/obj/item/input_device)
+/obj/item/rig_module/basic/proc/accepts_item(var/obj/item/input_device)
 	return 0
 
 /mob/living/carbon/human/statpanel_data(client/C)
@@ -249,7 +238,7 @@
 		return
 	var/cell_status = R.cell ? "[R.cell.charge]/[R.cell.maxcharge]" : "ERROR"
 	STATPANEL_DATA_ENTRY("Suit charge", cell_status)
-	for(var/obj/item/hardsuit_module/module in R.installed_modules)
+	for(var/obj/item/rig_module/basic/module in R.installed_modules)
 		for(var/stat_hardsuit_module/SRM in module.stat_modules)
 			if(SRM.CanUse())
 				STATPANEL_DATA_CLICK(SRM.module.interface_name, SRM.name, REF(SRM))
@@ -257,9 +246,9 @@
 /stat_hardsuit_module
 	parent_type = /atom/movable
 	var/module_mode = ""
-	var/obj/item/hardsuit_module/module
+	var/obj/item/rig_module/basic/module
 
-/stat_hardsuit_module/New(var/obj/item/hardsuit_module/module)
+/stat_hardsuit_module/New(var/obj/item/rig_module/basic/module)
 	..()
 	src.module = module
 
@@ -288,7 +277,7 @@
 /stat_hardsuit_module/DblClick()
 	return Click()
 
-/stat_hardsuit_module/activate/New(var/obj/item/hardsuit_module/module)
+/stat_hardsuit_module/activate/New(var/obj/item/rig_module/basic/module)
 	..()
 	name = module.activate_string
 	if(module.active_power_cost)
@@ -298,7 +287,7 @@
 /stat_hardsuit_module/activate/CanUse()
 	return module.toggleable && !module.active
 
-/stat_hardsuit_module/deactivate/New(var/obj/item/hardsuit_module/module)
+/stat_hardsuit_module/deactivate/New(var/obj/item/rig_module/basic/module)
 	..()
 	name = module.deactivate_string
 	// Show cost despite being 0, if it means changing from an active cost.
@@ -310,7 +299,7 @@
 /stat_hardsuit_module/deactivate/CanUse()
 	return module.toggleable && module.active
 
-/stat_hardsuit_module/engage/New(var/obj/item/hardsuit_module/module)
+/stat_hardsuit_module/engage/New(var/obj/item/rig_module/basic/module)
 	..()
 	name = module.engage_string
 	if(module.use_power_cost)

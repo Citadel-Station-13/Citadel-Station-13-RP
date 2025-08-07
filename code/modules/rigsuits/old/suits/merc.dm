@@ -42,19 +42,19 @@
 	)
 
 	initial_modules = list(
-		/obj/item/hardsuit_module/mounted,
-		/obj/item/hardsuit_module/vision/thermal,
-		/obj/item/hardsuit_module/grenade_launcher,
-		/obj/item/hardsuit_module/ai_container,
-		/obj/item/hardsuit_module/power_sink,
-		/obj/item/hardsuit_module/electrowarfare_suite,
-		/obj/item/hardsuit_module/chem_dispenser/combat,
-		/obj/item/hardsuit_module/fabricator/energy_net
+		/obj/item/rig_module/basic/mounted,
+		/obj/item/rig_module/basic/vision/thermal,
+		/obj/item/rig_module/basic/grenade_launcher,
+		/obj/item/rig_module/basic/ai_container,
+		/obj/item/rig_module/basic/power_sink,
+		/obj/item/rig_module/basic/electrowarfare_suite,
+		/obj/item/rig_module/basic/chem_dispenser/combat,
+		/obj/item/rig_module/basic/fabricator/energy_net
 		)
 
 //Has most of the modules removed
 /obj/item/hardsuit/merc/empty
 	initial_modules = list(
-		/obj/item/hardsuit_module/ai_container,
-		/obj/item/hardsuit_module/electrowarfare_suite, //might as well
+		/obj/item/rig_module/basic/ai_container,
+		/obj/item/rig_module/basic/electrowarfare_suite, //might as well
 		)
