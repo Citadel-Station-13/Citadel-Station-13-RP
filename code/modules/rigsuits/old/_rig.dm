@@ -225,7 +225,7 @@
 	for(var/obj/item/piece in list(gloves,helmet,boots,chest))
 		if(!istype(piece))
 			continue
-		ADD_TRAIT(piece, TRAIT_ITEM_NODROP, RIG_TRAIT)
+		ADD_TRAIT(piece, TRAIT_ITEM_NODROP, RIG_CONTROLLER_TRAIT(src))
 		piece.name = "[suit_type] [initial(piece.name)]"
 		piece.desc = "It seems to be part of a [src.name]."
 		piece.icon_state = "[suit_state]"
@@ -332,7 +332,7 @@
 
 /obj/item/hardsuit/proc/reset()
 	set_activation_state(HARDSUIT_ACTIVATION_OFF)
-	REMOVE_TRAIT(src, TRAIT_ITEM_NODROP, RIG_TRAIT)
+	REMOVE_TRAIT(src, TRAIT_ITEM_NODROP, RIG_CONTROLLER_TRAIT(src))
 	//Reset the trap and upgrade it. Won't affect standard rigs.
 	trapSprung = 0
 	springtrapped = 1
@@ -414,7 +414,7 @@
 		M.client.screen += booting_L
 		M.client.screen += booting_R
 
-	ADD_TRAIT(src, TRAIT_ITEM_NODROP, RIG_TRAIT)
+	ADD_TRAIT(src, TRAIT_ITEM_NODROP, RIG_CONTROLLER_TRAIT(src))
 	set_activation_state(is_sealing? HARDSUIT_ACTIVATION_STARTUP : HARDSUIT_ACTIVATION_SHUTDOWN)
 
 	if(is_sealing && !suit_is_deployed())
@@ -493,9 +493,9 @@
 			piece.update_worn_icon()
 
 		if(is_activated())
-			ADD_TRAIT(src, TRAIT_ITEM_NODROP, RIG_TRAIT)
+			ADD_TRAIT(src, TRAIT_ITEM_NODROP, RIG_CONTROLLER_TRAIT(src))
 		else
-			REMOVE_TRAIT(src, TRAIT_ITEM_NODROP, RIG_TRAIT)
+			REMOVE_TRAIT(src, TRAIT_ITEM_NODROP, RIG_CONTROLLER_TRAIT(src))
 		if(airtight)
 			update_component_sealed()
 		update_icon(1)
@@ -504,10 +504,10 @@
 	// Success!
 	if(is_sealing)
 		set_activation_state(HARDSUIT_ACTIVATION_ON)
-		ADD_TRAIT(src, TRAIT_ITEM_NODROP, RIG_TRAIT)
+		ADD_TRAIT(src, TRAIT_ITEM_NODROP, RIG_CONTROLLER_TRAIT(src))
 	else
 		set_activation_state(HARDSUIT_ACTIVATION_OFF)
-		REMOVE_TRAIT(src, TRAIT_ITEM_NODROP, RIG_TRAIT)
+		REMOVE_TRAIT(src, TRAIT_ITEM_NODROP, RIG_CONTROLLER_TRAIT(src))
 
 	if(M.hud_used)
 		if(!is_activated())

@@ -17,6 +17,11 @@
 	/// description for organ action; defaults to [desc]
 	var/organ_action_desc
 
+	//* Biology *//
+	/// biology type this is
+	/// * this will be replaced by proper datum on biology / organ update
+	var/biology_type = NONE
+
 	//* ## STRINGS VARS
 	/// Unique identifier.
 	var/organ_tag = "organ"

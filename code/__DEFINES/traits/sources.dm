@@ -15,9 +15,11 @@
 //? Item Sources
 
 /// From a flashbulb
-#define FLASH_TRAIT "flash"
+#define TRAIT_SOURCE_HANDHELD_FLASH "flash"
 /// From a RIGsuit's controller
-#define RIG_TRAIT "rig"
+#define TRAIT_SOURCE_RIG_CONTROLLER(REF) "rig-[REF]"
+/// From a RIGsuit's piece component
+#define TRAIT_SOURCE_RIG_PIECE(REF) "rig-piece-[REF]"
 
 //* Machinery *//
 

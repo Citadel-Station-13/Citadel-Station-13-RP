@@ -569,6 +569,8 @@ About the new airlock wires panel:
 	else
 		return 0
 
+/obj/machinery/door/airlock/proc/update_airlock_icon()
+	update_icon()
 
 /obj/machinery/door/airlock/update_icon()
 	. = ..()
@@ -585,9 +587,6 @@ About the new airlock wires panel:
 /obj/machinery/door/airlock/update_icon(updates)
 	. = ..()
 	set_airlock_overlays(state)
-
-/obj/machinery/door/airlock/snowflake_please_refactor_me_later_update_icon_hook()
-	return // sigh.
 
 /obj/machinery/door/airlock/custom_smooth()
 	return //we only custom smooth because we don't need to do anything else.

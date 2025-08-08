@@ -190,7 +190,7 @@
 	if(!is_deployed())
 		stack_trace("not properly deployed?")
 
-	ADD_TRAIT(src, TRAIT_ITEM_NODROP, RIG_TRAIT)
+	ADD_TRAIT(src, TRAIT_ITEM_NODROP, RIG_PIECE_TRAIT(src))
 
 	if(!subtle)
 		physical.visible_message(
@@ -218,7 +218,7 @@
 	#warn maint panel
 	update_piece_data()
 
-	REMOVE_TRAIT(src, TRAIT_ITEM_NODROP, RIG_TRAIT)
+	REMOVE_TRAIT(src, TRAIT_ITEM_NODROP, RIG_PIECE_TRAIT(src))
 
 	if(!subtle)
 		physical.visible_message(

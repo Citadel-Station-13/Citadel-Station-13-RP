@@ -33,7 +33,47 @@
 	var/toggle_cooldown_for_disable
 	/// next world.time we can be toggled
 	var/toggle_next_time
+	/// currently active?
+	var/toggle_enabled = FALSE
 
+/obj/item/rig_module/basic
 
+/obj/item/rig_module/basic/proc/handle_toggle(datum/event_args/actor/actor, from_console, intended_state)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+
+/obj/item/rig_module/basic/proc/on_toggle(datum/event_args/actor/actor, from_console)
+	SHOULD_NOT_SLEEP(TRUE)
+
+/obj/item/rig_module/basic/proc/on_toggle_enabled(datum/event_args/actor/actor, from_console)
+	SHOULD_NOT_SLEEP(TRUE)
+
+/obj/item/rig_module/basic/proc/on_toggle_disabled(datum/event_args/actor/actor, from_console)
+	SHOULD_NOT_SLEEP(TRUE)
+
+/obj/item/rig_module/basic/proc/handle_trigger(datum/event_args/actor/actor, from_console)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+
+/obj/item/rig_module/basic/proc/on_trigger(datum/event_args/actor/actor, from_console)
+	SHOULD_NOT_SLEEP(TRUE)
+
+/**
+ * @return clickchain flags
+ */
+/obj/item/rig_module/basic/proc/handle_click(datum/event_args/actor/clickchain/clickchain, clickchain_flags, from_console)
+	SHOULD_NOT_SLEEP(TRUE)
+	if(lazy_on_click(clickchain.target, clickchain.performer, clickchain.using_intent, clickchain.target_zone, clickchain.attack_contact_multiplier, clickchain))
+		return clickchain_flags | CLICKCHAIN_DID_SOMETHING
+	. = clickchain_flags
+
+/**
+ * Lazy override for handle_click() that doesn't require you to understand how citrp's overengineered
+ * clickchain system works.
+ *
+ * @return TRUE if handled
+ */
+/obj/item/rig_module/basic/proc/lazy_on_click(atom/target, mob/user, intent, zone, efficiency, datum/event_args/actor/actor)
+	SHOULD_NOT_SLEEP(TRUE)
 
 #warn impl

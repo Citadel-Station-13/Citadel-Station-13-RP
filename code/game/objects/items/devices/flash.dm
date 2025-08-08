@@ -29,8 +29,8 @@
 	var/base_icon = "flash"
 
 	var/obj/item/cell/power_supply //What type of power cell this uses
-	var/charge_cost = 30 //How much energy is needed to flash.
-	var/use_external_power = FALSE // Do we use charge from an external source?
+	/// charge cost in joules
+	var/charge_cost = 75
 
 	var/cell_type = /obj/item/cell/device
 
@@ -63,12 +63,9 @@
 
 /obj/item/flash/update_icon()
 	. = ..()
-	var/obj/item/cell/battery = power_supply
+	var/has_another_charge = has_another_battery_charge()
 
-	if(use_external_power)
-		battery = get_external_power_supply()
-
-	if(broken || !battery || battery.charge < charge_cost)
+	if(broken || !has_another_charge)
 		icon_state = "[base_icon]burnt"
 	else
 		icon_state = "[base_icon]"
@@ -76,19 +73,12 @@
 /obj/item/flash/get_cell(inducer)
 	return power_supply
 
-/obj/item/flash/proc/get_external_power_supply()
-	if(isrobot(src.loc))
-		var/mob/living/silicon/robot/R = src.loc
-		return R.cell
-	if(istype(src.loc, /obj/item/rig_module/basic))
-		var/obj/item/rig_module/basic/module = src.loc
-		if(module.holder && module.holder.wearer)
-			var/mob/living/carbon/human/H = module.holder.wearer
-			if(istype(H) && H.back)
-				var/obj/item/hardsuit/suit = H.back
-				if(istype(suit))
-					return suit.cell
-	return null
+/obj/item/flash/proc/has_another_battery_charge()
+	if(item_mount)
+		return item_mount.has_lazy_power(charge_cost)
+	if(power_supply)
+		return power_supply.check_charge(DYNAMIC_J_TO_CELL_UNITS(charge_cost))
+	return FALSE
 
 /obj/item/flash/proc/clown_check(var/mob/user)
 	if(user && (MUTATION_CLUMSY in user.mutations) && prob(50))
@@ -198,7 +188,7 @@
 
 					if(flash_strength > 0)
 						H.Confuse(flash_strength + 5)
-						H.afflict_stagger(FLASH_TRAIT, stagger_strength, stagger_duration)
+						H.afflict_stagger(TRAIT_SOURCE_HANDHELD_FLASH, stagger_strength, stagger_duration)
 						H.apply_status_effect(/datum/status_effect/sight/blindness, flash_strength SECONDS)
 						H.eye_blurry = max(H.eye_blurry, flash_strength + 5)
 						H.flash_eyes()

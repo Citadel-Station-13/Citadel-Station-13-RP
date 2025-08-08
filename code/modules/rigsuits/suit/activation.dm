@@ -130,7 +130,7 @@
 	set_weight(online_weight)
 	set_encumbrance(online_encumbrance)
 
-	ADD_TRAIT(src, TRAIT_ITEM_NODROP, RIG_TRAIT)
+	ADD_TRAIT(src, TRAIT_ITEM_NODROP, RIG_CONTROLLER_TRAIT(src))
 
 	if(activation_state != RIG_ACTIVATION_ONLINE)
 		activation_state = RIG_ACTIVATION_ONLINE
@@ -171,7 +171,7 @@
 				continue
 			unseal_piece_sync(piece, TRUE)
 
-	REMOVE_TRAIT(src, TRAIT_ITEM_NODROP, RIG_TRAIT)
+	REMOVE_TRAIT(src, TRAIT_ITEM_NODROP, RIG_CONTROLLER_TRAIT(src))
 
 	if(activation_state != RIG_ACTIVATION_OFFLINE)
 		activation_state = RIG_ACTIVATION_OFFLINE

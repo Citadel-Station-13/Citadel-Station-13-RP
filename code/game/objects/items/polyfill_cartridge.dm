@@ -21,7 +21,7 @@
 
 /obj/item/polyfill_cartridge/get_materials(respect_multiplier)
 	. = ..()
-	var/datum/material/resolved_polyfill = SSmaterials.resolve_material(polyfill_type)
+	var/datum/prototype/material/resolved_polyfill = RSmaterials.fetch_local_or_throw(polyfill_type)
 	/// only separate for weak alloys
 	if(!isnull(resolved_polyfill.weak_alloy))
 		for(var/key in resolved_polyfill.weak_alloy)

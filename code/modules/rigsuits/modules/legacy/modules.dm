@@ -18,8 +18,6 @@
 	#warn we will need to implement global conflict type on everything as this defaults off
 	var/redundant                       // Set to 1 to ignore duplicate module checking when installing.
 	var/disruptive = 1                  // Can disrupt by other effects.
-	var/activates_on_touch              // If set, unarmed attacks will call engage() on the target.
-
 
 	var/active                          // Basic module status
 	var/disruptable                     // Will deactivate if some other powers are used.

@@ -54,12 +54,16 @@
 	var/pass_stack_colors = FALSE
 
 	//* Alloying *//
-	/// if set, we are considered a 'weak' allow; get_materials (when supported) will consider this material to be composite
+	/// if set, we are considered a 'weak' alloy; get_materials (when supported) will consider this material to be composite
 	/// and in many cases this material can even be broken down to materials during fabrication
+	/// * the technical term is more a mixture of dust but I don't want to confuse people who don't know how alloys work
+	/// * set to a list of id to associated number of how many units is contained per unit of this
 	var/list/weak_alloy
-	/// if set, we are considered a 'strong' allow; this doesn't separate properly, and while materials science
+	/// if set, we are considered a 'strong' alloy; this doesn't separate easily, and while materials science
 	/// can use this to detect our alloy composition, we won't automatically break down during fabrication to
 	/// the component materials
+	/// * this is what actual alloys are
+	/// * set to a list of id to associated number of how many units is contained per unit of this
 	var/list/strong_alloy
 
 	//* Armor *//

@@ -7,5 +7,4 @@
 /// From base of obj/item/equipped(): (/mob/equipper, slot_id, inv_op_flags)
 #define COMSIG_ITEM_EQUIPPED "item_equip"
 /// From base of obj/item/unequipped(): (/mob/unequipped, slot_id, inv_op_flags)
-
 #define COMSIG_ITEM_UNEQUIPPED "item_unequip"
