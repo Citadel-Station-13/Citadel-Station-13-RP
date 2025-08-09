@@ -232,6 +232,16 @@ GLOBAL_LIST_EMPTY(sprite_accessory_icon_cache)
 				),
 			)
 
+/**
+ * Binding: `Game_SpriteAccessory`
+ */
+/datum/sprite_accessory/ui_serialize()
+	return list(
+		"id" = id,
+		"name" = name,
+		"colorChannels" = (coloration_mode != COLORATION_MODE_NONE) ? coloration_amount : 0,
+	)
+
 //* Resolution *//
 
 /**

@@ -338,3 +338,20 @@
  */
 /datum/proc/on_ui_transfer(mob/old_mob, mob/new_mob, datum/tgui/ui, embedded)
 	return
+
+//*                           Bindings                         *//
+//* This is a citadel edit. It's for the TGUI bindings system. *//
+//* This is only defined on datums that have TGUI bindings and *//
+//*            are treated directly as structs.                *//
+
+/**
+ * Serialize for a typescript binding.
+ *
+ * Please annotate the binding path, e.g. `Game_SpriteAccessory`
+ */
+/datum/proc/ui_serialize()
+	CRASH(
+		"Unimplemented ui_serialize() called. This is only a standardized pattern for \
+		the TGUI datum binding pattern for struct-like datums. This is not for use with \
+		TGUI backend directly other than being passed as a data struct."
+	)
