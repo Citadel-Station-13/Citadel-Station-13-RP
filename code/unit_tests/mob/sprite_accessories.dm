@@ -3,8 +3,8 @@
 	var/list/names_hair = list()
 	var/list/names_beard = list()
 	var/list/names_marking = list()
-	for(var/path in subtypesof(/datum/sprite_accessory))
-		var/datum/sprite_accessory/S = path
+	for(var/path in subtypesof(/datum/prototype/sprite_accessory))
+		var/datum/prototype/sprite_accessory/S = path
 		if(initial(S.abstract_type) == path)
 			continue
 		S = new path
@@ -16,17 +16,17 @@
 		else
 			ids[S.id] = S
 		// yanderedev gaming
-		if(istype(S, /datum/sprite_accessory/hair))
+		if(istype(S, /datum/prototype/sprite_accessory/hair))
 			if(names_hair[S.name])
 				Fail("duplciate name [S.name] on [path] against [names_hair[S.name]:type]")
 			else
 				names_hair[S.name] = S
-		else if(istype(S, /datum/sprite_accessory/facial_hair))
+		else if(istype(S, /datum/prototype/sprite_accessory/facial_hair))
 			if(names_beard[S.name])
 				Fail("duplciate name [S.name] on [path] against [names_beard[S.name]:type]")
 			else
 				names_beard[S.name] = S
-		else if(istype(S, /datum/sprite_accessory/marking))
+		else if(istype(S, /datum/prototype/sprite_accessory/marking))
 			if(names_marking[S.name])
 				Fail("duplciate name [S.name] on [path] against [names_marking[S.name]:type]")
 			else
