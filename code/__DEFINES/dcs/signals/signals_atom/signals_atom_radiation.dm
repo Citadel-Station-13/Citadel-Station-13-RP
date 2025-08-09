@@ -12,6 +12,9 @@
 //* --    END    -- *//
 
 /// From /datum/radiation_wave's iteration: (strength, datum/radiation_wave/wave)
-#define COMSIG_ATOM_RAD_PULSE_ITERATE "rad_pulse_iterate"
+/// * Called on a turf when a radiation wave hits.
+#define COMSIG_TURF_RAD_PULSE_ITERATE "rad_pulse_iterate"
+
 /// From base on atom/rad_act(): (strength, datum/radiation_wave/wave)
+/// * Called by radiation listener components/elements
 #define COMSIG_ATOM_RAD_ACT "atom_rad_act"

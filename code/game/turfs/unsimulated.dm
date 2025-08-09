@@ -1,5 +1,6 @@
 /turf/unsimulated
 	name = "command"
+	turf_spawn_flags = TURF_SPAWN_FLAGS_ALLOW_ALL
 
 	//air_status = AIR_STATUS_IMMUTABLE
 

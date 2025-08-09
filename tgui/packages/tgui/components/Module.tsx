@@ -4,6 +4,8 @@
  * Citadel in house
  * Suffer.
  *
+ * todo: throw this out and rethink modules entirely, this is not the way to go
+ *
  * Basically, how this works, is we inject the module's
  * id, ref, data, and act into context, fetched with useModule().
  *
@@ -22,13 +24,13 @@
 
 import { Component } from "inferno";
 import { ModuleProps, useBackend } from "../backend";
-import { directlyRouteComponent } from "../routes";
+import { getRawRoutedComponent } from "../routes";
 
 export class Module<T extends ModuleProps> extends Component<T, {}> {
   getChildContext() {
     let { id } = this.props;
-    let { modules } = useBackend(this.context);
-    let data = modules[id];
+    let { nestedData } = useBackend(this.context);
+    let data = nestedData[id];
     let ref = data['$src'];
     let ui_name = data['$tgui'];
     return {
@@ -42,12 +44,12 @@ export class Module<T extends ModuleProps> extends Component<T, {}> {
   }
 
   render() {
-    let { modules } = useBackend(this.context);
+    let { nestedData } = useBackend(this.context);
     let { id } = this.props;
-    let ui_name = modules[id]['$tgui'];
-    const Component = directlyRouteComponent(ui_name);
+    let ui_name = nestedData[id]['$tgui'];
+    const Component = getRawRoutedComponent(ui_name);
     return (
-      <Component tgui_module={ui_name} />
+      <Component tguiModule={ui_name} />
     );
   }
 }
