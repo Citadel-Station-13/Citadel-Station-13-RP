@@ -15,6 +15,10 @@
 	var/design_flags = NONE
 	/// how are we unlocked - see [code/__DEFINES/datums/design.dm]
 	var/design_unlock = NONE
+	/// design tags - used for filtering
+	/// * lazy list
+	/// * can be overridden by context
+	var/list/design_tags
 	/// is stack? autodetected.
 	var/is_stack = FALSE
 	/// max stack amount? autodetected.
@@ -27,9 +31,9 @@
 	var/desc
 	/// overrides build_name for purposes of name generation.
 	var/design_name
-	/// category - string or list, or null; null results in undefined behavior depending on UI.
+	/// category - string.
 	var/category = DESIGN_CATEGORY_MISC
-
+	/// subcategory - string.
 	var/subcategory = DESIGN_CATEGORY_MISC
 
 	//? Build Data
@@ -72,6 +76,16 @@
 	///   the materials repository can initialize normally.
 	var/list/reagents
 	// todo: reagent_parts?
+
+	//* Fabricator Training *//
+	//  TODO: implement fabricator training
+	/// Multiplier interpreted by lathes.
+	var/fabricator_relative_training_difficulty = 1
+	/// Multiplier interpreted by lathes.
+	var/fabricator_relative_printing_difficulty = 1
+	/// Text tags this counts as for fabricator training, associated to numeric multiplier of relative effect.
+	/// * If empty or null, fabricator training is ignored for this design.
+	var/list/fabricator_training_tags
 
 	//? legacy
 	///IDs of that techs the object originated from and the minimum level requirements.
@@ -127,6 +141,36 @@
 
 /datum/prototype/design/proc/generate_desc(template_name, template_desc)
 	return template_desc
+
+/datum/prototype/design/serialize()
+	. = list()
+	// TODO: serde / clone
+
+	//* fabricator training *//
+	.["fabricator-rel-print-diff"] = fabricator_relative_printing_difficulty
+	.["fabricator-rel-train-diff"] = fabricator_relative_training_difficulty
+	// todo: training tags
+
+/datum/prototype/design/deserialize(list/data)
+	// TODO: serde / clone
+
+	//* fabricator training *//
+	fabricator_relative_printing_difficulty = data["fabricator-rel-print-diff"]
+	if(isnull(fabricator_relative_printing_difficulty))
+		fabricator_relative_printing_difficulty = 1
+	fabricator_relative_training_difficulty = data["fabricator-rel-train-diff"]
+	if(isnull(fabricator_relative_training_difficulty))
+		fabricator_relative_training_difficulty = 1
+	// todo: training tags
+
+/datum/prototype/design/clone()
+	var/datum/prototype/design/cloned = new
+
+	cloned.fabricator_relative_printing_difficulty = fabricator_relative_printing_difficulty
+	cloned.fabricator_relative_training_difficulty = fabricator_relative_training_difficulty
+	// todo: training tags
+
+	// TODO: serde / clone
 
 /**
  * Encodes data for [tgui/packages/tgui/interfaces/common/Design.tsx]
