@@ -140,6 +140,16 @@
 	damage_flag = ARMOR_ACID
 	combustion = FALSE
 
+/obj/projectile/energy/acid/weak
+	name = "acidic spit"
+	icon_state = "neurotoxin"
+	fire_sound = 'sound/effects/splat.ogg'
+	damage_force = 20
+	damage_type = DAMAGE_TYPE_BURN
+	damage_inflict_agony = 10
+	damage_flag = ARMOR_ACID
+	combustion = FALSE
+
 /obj/projectile/energy/neurotoxin
 	name = "neurotoxic spit"
 	icon_state = "neurotoxin"
