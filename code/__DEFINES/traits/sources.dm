@@ -16,6 +16,8 @@
 
 /// From a flashbulb
 #define FLASH_TRAIT "flash"
+/// From a RIGsuit's controller
+#define RIG_TRAIT "rig"
 
 //* Machinery *//
 
@@ -56,7 +58,6 @@
 #define MIME_TRAIT "mime"
 
 #define CLOTHING_TRAIT "clothing"
-#define RIG_TRAIT "rig"
 #define MAGBOOT_TRAIT "magboot"
 #define TOGGLE_CLOTHING_TRAIT "toggle_clothing"
 #define AUGMENT_TRAIT "trait"

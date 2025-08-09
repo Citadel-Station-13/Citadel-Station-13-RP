@@ -574,7 +574,7 @@ var/global/list/all_objectives = list()
 	if(!istype(S) || !S.installed_modules || !S.installed_modules.len)
 		return FALSE
 
-	var/obj/item/hardsuit_module/datajack/stolen_data = locate() in S.installed_modules
+	var/obj/item/rig_module/basic/datajack/stolen_data = locate() in S.installed_modules
 	if(!istype(stolen_data))
 		return FALSE
 

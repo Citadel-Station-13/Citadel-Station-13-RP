@@ -1,3 +1,4 @@
+// todo: these are legacy objects, should we get rid of them?
 /atom/movable/overlay
 	atom_flags = ATOM_ABSTRACT
 	vis_flags = VIS_INHERIT_ID

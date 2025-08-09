@@ -7,7 +7,6 @@
 	door_icon_base = "metal"
 	icon_colour = "#37115A"
 	shard_type = SHARD_SHARD
-	negation = 25
 	explosion_resistance = 85
 	stack_origin_tech = list(TECH_MATERIAL = 8, TECH_MAGNET = 8, TECH_PHORON = 6, TECH_BLUESPACE = 6, TECH_ARCANE = 3)
 

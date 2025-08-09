@@ -337,6 +337,7 @@
 /// Being used to make robutt hearts, etc
 /obj/item/organ/proc/robotize()
 	robotic = ORGAN_ROBOT
+	biology_type = BIOLOGY_TYPE_SYNTH
 	src.status &= ~ORGAN_BROKEN
 	src.status &= ~ORGAN_BLEEDING
 	src.status &= ~ORGAN_CUT_AWAY

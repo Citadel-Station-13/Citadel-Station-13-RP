@@ -119,7 +119,7 @@
 
 		var/obj/item/hardsuit/wornrig = H.get_hardsuit()
 		if(wornrig) // just to make sure
-			for(var/obj/item/hardsuit_module/storedmod in wornrig)
+			for(var/obj/item/rig_module/basic/storedmod in wornrig)
 				if(weld_rate && storedmod.damage != 0 && cell.checked_use(DYNAMIC_W_TO_CELL_UNITS(weld_power_use * weld_rate, 1)))
 					to_chat(H, "<span class='notice'>\The [storedmod] is repaired!</span>")
 					storedmod.damage = 0

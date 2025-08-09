@@ -330,8 +330,8 @@
 	if(isrobot(loc)) // In a borg.
 		var/mob/living/silicon/robot/R = loc
 		return R.cell
-	if(istype(loc, /obj/item/hardsuit_module)) // In a HARDSUIT.
-		var/obj/item/hardsuit_module/module = loc
+	if(istype(loc, /obj/item/rig_module/basic)) // In a HARDSUIT.
+		var/obj/item/rig_module/basic/module = loc
 		if(module.holder) // Is it attached to a HARDSUIT?
 			return module.holder.cell
 	if(istype(loc, /obj/item/vehicle_module)) // In a mech.
