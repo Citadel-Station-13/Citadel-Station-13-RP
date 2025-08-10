@@ -113,3 +113,17 @@
 	r_hand = /obj/item/flame/lighter/zippo/taj
 	r_pocket = /obj/item/reagent_containers/food/drinks/flask/tajflask
 	l_pocket = /obj/item/reagent_containers/food/snacks/taj_pemmican
+
+//Occulum
+/datum/outfit/occulum
+	name = "Occulum operator"
+	uniform = /obj/item/clothing/under/office_worker
+	shoes = /obj/item/clothing/shoes/flats
+	l_ear = /obj/item/radio/headset/trader/outsider
+	back = /obj/item/storage/backpack
+	id_slot = SLOT_ID_WORN_ID
+	id_type = /obj/item/card/id/external/id_occulum
+	r_pocket = /obj/item/camera
+	l_pocket = /obj/item/folder/white
+	r_hand = /obj/item/clipboard
+	l_hand = /obj/item/pda/librarian

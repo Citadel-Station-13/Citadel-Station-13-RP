@@ -808,3 +808,8 @@
 	icon_state = "sdf"
 	job_access_type = null
 	access = list(155)
+
+/obj/item/card/id/external/id_occulum
+	name = "Occulum Operator ID"
+	desc = "An ID issued to operators of Occulum. Radio host, reporter, journalist, contacts, technician, spies... All get one. It also counts as a Press document, valid in this system."
+	icon_state = "occulum"
