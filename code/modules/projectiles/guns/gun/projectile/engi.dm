@@ -31,6 +31,27 @@
 	charge_use_speed_range = ((3.925 * (speed_max**2))/ (1000/GLOB.cellrate))/efficiency
 	capacitor = new /obj/item/stock_parts/capacitor(src)
 
+/obj/item/coilgun_coil/engineering/attackby(var/obj/item/thing, var/mob/user)
+	if(thing.tool_check(TOOL_SCREWDRIVER))
+		if(!capacitor)
+			to_chat(user, "<span class='warning'>\The [src] has no capacitor installed.</span>")
+			return
+		user.grab_item_from_interacted_with(capacitor, src)
+		user.visible_message("<span class='notice'>\The [user] unscrews \the [capacitor] from \the [src].</span>")
+		playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
+		capacitor = null
+		update_icon()
+		return
+
+	if(istype(thing, /obj/item/stock_parts/capacitor))
+		if(capacitor)
+			to_chat(user, "<span class='warning'>\The [src] already has a capacitor installed!</span>")
+			return
+		if(!user.attempt_insert_item_for_installation(thing, src))
+			return
+		capacitor = thing
+
+	. = ..()
 
 /obj/item/coilgun_coil/simple
 	name = "simple coilgun coil"
