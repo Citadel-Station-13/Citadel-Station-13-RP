@@ -178,6 +178,17 @@
 		coils -= coils[coils.len]
 		update_icon()
 		return
+	if(thing.tool_check(TOOL_WRENCH))
+		if(!tank)
+			to_chat(user, "<span class='warning'>\The [src] has no tank installed.</span>")
+			return
+		user.grab_item_from_interacted_with(tank, src)
+		user.visible_message("<span class='notice'>\The [user] removes \the [tank] from \the [src].</span>")
+		playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
+		tank = null
+		update_icon()
+		return
+
 	if(istype(thing, /obj/item/coilgun_coil))
 		if(LAZYLEN(coils) >= max_coils)
 			to_chat(user, "<span class='warning'>\The [src] already has [max_coils] coils installed!</span>")
@@ -215,6 +226,19 @@
 		playsound(src, 'sound/weapons/flipblade.ogg', 50, 1)
 		update_icon()
 		return
+	if(istype(thing,/obj/item/tank))
+		if(!tank)
+			if(thing.w_class != WEIGHT_CLASS_NORMAL)
+				to_chat(user, SPAN_NOTICE("[thing] isn't the right size to fit into the tank mount!))
+				return
+			if(!user.attempt_insert_item_for_installation(thing, src))
+				return
+			tank = thing
+			return
+		else
+			to_chat(user, SPAN_NOTICE("[src] already has a tank mounted!))
+			return
+
 	. = ..()
 
 /obj/item/gun/projectile/engineering/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
