@@ -4,6 +4,7 @@
 #define ATMOS_MULT_CURVE(MOLS) MOLS/1000 //linear
 #define COILGUN_HEAT_CAPACITY 1.274  //0.49kJ per 1C @ 1kg for 2.6kg
 #define MAX_OPERATING_TEMP 213.15 //-60c
+#define GAS_CONSUMED_OPEN_LOOP 0.7 //0.7L
 
 
 /obj/item/coilgun_coil
@@ -252,23 +253,43 @@
 		else
 			return (tank.return_temperature() < MAX_OPERATING_TEMP) || (our_turf.return_temperature() < MAX_OPERATING_TEMP)
 
-/obj/item/gun/projectile/engineering/proc/do_thermal_sharing(var/energy_charge)
-	var/energy_kj = DYNAMIC_KJ_TO_CELL_UNITS(energy_charge)
+/obj/item/gun/projectile/engineering/proc/do_thermal_sharing(var/heat_energy_charge)
+	var/energy_kj = DYNAMIC_KJ_TO_CELL_UNITS(heat_energy_charge)
 	var/turf/our_turf = get_turf(src)
-	if(istype(our_turf, /turf/space))
-		//do space-related calc (exclusively use gas coolant)
+	var/datum/gas_mixture/turf_air = our_turf.return_air()
+	var/datum/gas_mixture/tank_air = tank.return_air()
+
+
+	if(istype(our_turf, /turf/space) || !turf_air)
+		if(loop_open)
+			tank_air.remove_volume(GAS_CONSUMED_OPEN_LOOP)
+		else
+			tank_air.adjust_thermal_energy(energy_to_tank * 1000)
 	else
-		var/turf_mol = our_turf.total_mole
+		var/turf_mol = turf_air.total_moles
 		//do turf calc (we can share Some heat with turf, hopefully)
 		if(turf_mol < 5) //under 5 mol of stuff, barely anything, we ignore it and treat it like space
-
+			if(loop_open)
+				var/datum/gas_mixture/removed = tank_air.remove_volume(GAS_CONSUMED_OPEN_LOOP)
+				removed.adjust_thermal_energy(energy_to_tank * 1000)
+				turf_air.merge(removed)
+			else
+				tank_air.adjust_thermal_energy(energy_to_tank * 1000)
 		else
 			var/sharing_with_turf_proportion = min(ATMOS_MULT_CURVE(turf_mol), 1) //it's based on mol because it represents the amount of gas around and we are (primarily) doing convection sim
 			//more gas, even with lower pressure (less movement): your gas is more likely to hit the gun and cool it down
 			var/energy_to_turf = energy_kj * sharing_with_turf_proportion
 
 			var/energy_to_tank = energy_kj - energy_to_turf
-			if((energy_to_turf*COILGUN_HEAT_CAPACITY) > our_turf.return_temperature() )
+			if((energy_to_turf*COILGUN_HEAT_CAPACITY) < our_turf.return_temperature() ) //not hot enough, don't move to turf
+				turf_air.adjust_thermal_energy(energy_to_turf * 1000)
+				if(loop_open)
+					var/datum/gas_mixture/removed = tank_air.remove_volume(GAS_CONSUMED_OPEN_LOOP)
+					removed.adjust_thermal_energy(energy_to_tank * 1000)
+					turf_air.merge(removed)
+				else
+					tank_air.adjust_thermal_energy(energy_to_tank * 1000)
+
 
 
 
