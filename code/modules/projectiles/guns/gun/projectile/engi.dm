@@ -241,7 +241,7 @@
 	qdel(loaded)
 	loaded = null
 
-/obj/item/gun/projectile/engineering/proc/thermal_check())
+/obj/item/gun/projectile/engineering/proc/thermal_check()
 	var/turf/our_turf = get_turf(src)
 	if(istype(our_turf, /turf/space))
 		return (tank.return_temperature() < MAX_OPERATING_TEMP)
@@ -300,7 +300,7 @@
 
 		no_power = no_power || (charging_coil.capacitor.charge < 1) //you CAN fire it off prematurely! i don't know why you would, but
 
-	if(!check_ammo() || !(coils.len) || no_power)
+	if(!check_ammo() || !(coils.len) || no_power || !thermal_check())
 		return
 
 	use_ammo()
@@ -351,12 +351,13 @@
 			speed = CHARGE_SPEED_CONVERSION(projectile_energy, GLOB.cellrate)
 
 	update_icon()
+	do_thermal_sharing(wasted_power)
 	var/obj/projectile/our_bb = new projectile_type(src)
 	our_bb.damage_force = (speed/10)
 	our_bb.speed = speed*WORLD_ICON_SIZE //speed is in m/s
-	our_bb.hitscan = (speed>900) //it's over 900!!!!
+	our_bb.hitscan = (speed>900) //it's over 900!!!! this means 90 damage. it's unachievable without vv
 	our_bb.legacy_penetrating = (speed/100)
-	//this means 90 damage. it's unachievable without vv
+
 	return our_bb
 
 #undef COILGUN_EFFICIENCY_CURVE
