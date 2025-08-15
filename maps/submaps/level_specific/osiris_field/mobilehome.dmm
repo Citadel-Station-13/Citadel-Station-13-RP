@@ -1,0 +1,931 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aY" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/wall/prepainted,
+/area/shuttle/cargoravana)
+"bl" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/obj/structure/bed/chair/sofa/brown/right{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/cargoravana)
+"bG" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/bed/chair/wood{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/kafel_full/white,
+/area/shuttle/cargoravana)
+"eZ" = (
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/cargoravana)
+"fj" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/corner_techfloor_grid/full{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/kafel_full/white,
+/area/shuttle/cargoravana)
+"gl" = (
+/obj/machinery/door/airlock/hatch{
+	name = "Caravan Airtight Hatch";
+	req_one_access = null
+	},
+/turf/simulated/floor/wood,
+/area/shuttle/cargoravana)
+"gp" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/simulated/wall/prepainted,
+/area/shuttle/cargoravana)
+"hT" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/button/remote/blast_door{
+	id = "Bcaravan1";
+	name = "Caravan Front Door";
+	pixel_x = -25
+	},
+/obj/machinery/door/airlock/hatch{
+	name = "Caravan Airtight Hatch";
+	req_one_access = null
+	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoorc0";
+	id = "Bcaravan2";
+	name = "Spacenat Caravan Airlock";
+	opacity = 0
+	},
+/obj/structure/fans/tiny,
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/cargoravana)
+"ix" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 10
+	},
+/obj/machinery/shipsensors,
+/turf/simulated/floor/plating,
+/area/shuttle/cargoravana)
+"iz" = (
+/obj/machinery/portable_atmospherics/canister/air/airlock,
+/obj/machinery/atmospherics/portables_connector,
+/obj/machinery/power/terminal{
+	dir = 4
+	},
+/obj/structure/cable/orange{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/cargoravana)
+"jZ" = (
+/obj/structure/closet/walllocker/emergsuit_wall{
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/cargoravana)
+"kt" = (
+/obj/structure/cable/orange{
+	icon_state = "1-2"
+	},
+/turf/simulated/wall/prepainted,
+/area/shuttle/cargoravana)
+"kD" = (
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/turf/simulated/wall/prepainted,
+/area/shuttle/cargoravana)
+"lI" = (
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -33
+	},
+/obj/structure/bed/chair/sofa/brown/right{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/cargoravana)
+"lS" = (
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 9
+	},
+/turf/simulated/wall/prepainted,
+/area/shuttle/cargoravana)
+"mi" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/structure/table/wooden_reinforced,
+/obj/effect/floor_decal/corner_techfloor_grid{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/kafel_full/white,
+/area/shuttle/cargoravana)
+"mQ" = (
+/obj/structure/fuel_port{
+	pixel_x = -27
+	},
+/obj/overmap/entity/visitable/ship/landable/trade/cargoravana,
+/obj/effect/shuttle_landmark/shuttle_initializer/cargoravana,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/cargoravana)
+"nh" = (
+/obj/item/reagent_containers/glass/beaker{
+	pixel_x = 5
+	},
+/obj/machinery/appliance/cooker/oven,
+/obj/effect/floor_decal/corner_techfloor_grid{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/old_tile/white,
+/area/shuttle/cargoravana)
+"nG" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/shuttle/cargoravana)
+"ov" = (
+/obj/machinery/button/remote/blast_door{
+	dir = 4;
+	pixel_y = -8;
+	id = "Bcaravan1";
+	name = "Caravan Back Door"
+	},
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/cargoravana)
+"oI" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/structure/bed/chair/sofa/brown/left{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/cargoravana)
+"pq" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/cargoravana)
+"qc" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/cargoravana)
+"qi" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/closet/walllocker_double/east,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/cargoravana)
+"sd" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 1
+	},
+/turf/simulated/wall/prepainted,
+/area/shuttle/cargoravana)
+"tf" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 6
+	},
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/corner_techfloor_grid/full{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_ridged,
+/area/shuttle/cargoravana)
+"uj" = (
+/obj/effect/floor_decal/corner_techfloor_grid{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/kafel_full/white,
+/area/shuttle/cargoravana)
+"vh" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/holopad/ship,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/cargoravana)
+"vN" = (
+/turf/template_noop,
+/area/template_noop)
+"wq" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/corner_techfloor_grid/diagonal{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_ridged,
+/area/shuttle/cargoravana)
+"wN" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/turf/simulated/wall/prepainted,
+/area/shuttle/cargoravana)
+"wR" = (
+/obj/machinery/light_switch{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/cargoravana)
+"xf" = (
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/turf/simulated/floor/tiled/old_tile/beige,
+/area/shuttle/cargoravana)
+"xJ" = (
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/turf/simulated/floor/tiled/old_tile/blue,
+/area/shuttle/cargoravana)
+"zm" = (
+/obj/structure/bed/chair/comfy/brown{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/cargoravana)
+"Aj" = (
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/turf/simulated/wall/prepainted,
+/area/shuttle/cargoravana)
+"Cg" = (
+/obj/machinery/newscaster{
+	pixel_y = -28
+	},
+/obj/structure/table/bench/steel,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/cargoravana)
+"Cu" = (
+/turf/simulated/wall/prepainted,
+/area/shuttle/cargoravana)
+"Cz" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner_techfloor_grid/full{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_ridged,
+/area/shuttle/cargoravana)
+"CZ" = (
+/obj/machinery/atmospherics/component/unary/engine{
+	dir = 8
+	},
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/cargoravana)
+"Dn" = (
+/obj/machinery/button/remote/blast_door{
+	dir = 4;
+	pixel_y = 9;
+	id = "Bcaravan2";
+	name = "Caravan Front Door"
+	},
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/cargoravana)
+"Ed" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/cargoravana)
+"Fq" = (
+/obj/structure/bed/chair/comfy/brown{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/cargoravana)
+"FD" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/cargoravana)
+"FQ" = (
+/turf/simulated/floor/wood,
+/area/shuttle/cargoravana)
+"Ge" = (
+/obj/structure/table/steel,
+/obj/structure/sink/kitchen,
+/obj/effect/floor_decal/corner_techfloor_grid{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/old_tile/white,
+/area/shuttle/cargoravana)
+"Gh" = (
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoorc0";
+	id = "Bcaravan1";
+	name = "Spacenat Caravan Airlock";
+	opacity = 0
+	},
+/obj/machinery/door/airlock/hatch{
+	name = "Caravan Airtight Hatch";
+	req_one_access = null
+	},
+/obj/machinery/door/firedoor,
+/obj/structure/fans/tiny,
+/turf/simulated/floor/tiled/old_tile/blue,
+/area/shuttle/cargoravana)
+"Gr" = (
+/obj/structure/panic_button{
+	pixel_y = -28
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/cargoravana)
+"GB" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/structure/bed/chair/wood{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner_techfloor_grid{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/kafel_full/white,
+/area/shuttle/cargoravana)
+"GL" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/cargoravana)
+"GP" = (
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/cargoravana)
+"GS" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/table/wooden_reinforced,
+/turf/simulated/floor/tiled/kafel_full/white,
+/area/shuttle/cargoravana)
+"GW" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner_techfloor_grid{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/kafel_full/white,
+/area/shuttle/cargoravana)
+"He" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/bed/chair/wood{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner_techfloor_grid{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/kafel_full/white,
+/area/shuttle/cargoravana)
+"HF" = (
+/obj/structure/cable/green,
+/obj/structure/table/steel_reinforced,
+/obj/machinery/computer/ship/sensors{
+	dir = 1
+	},
+/obj/machinery/power/apc/alarms_hidden/south_mount{
+	req_access = null
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/cargoravana)
+"KA" = (
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/cargoravana)
+"LI" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner_techfloor_grid/full{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_ridged,
+/area/shuttle/cargoravana)
+"LV" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/structure/bed/chair/wood{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner_techfloor_grid/full,
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled/kafel_full/white,
+/area/shuttle/cargoravana)
+"Ms" = (
+/obj/machinery/telecomms/relay/preset/telecomms,
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/cargoravana)
+"Mt" = (
+/obj/effect/floor_decal/corner_techfloor_grid{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/kafel_full/white,
+/area/shuttle/cargoravana)
+"Nf" = (
+/obj/structure/bed/pod,
+/obj/structure/bed/pod{
+	pixel_y = 16
+	},
+/turf/simulated/floor/wood,
+/area/shuttle/cargoravana)
+"NG" = (
+/obj/structure/closet/secure_closet/freezer/meat,
+/obj/item/reagent_containers/food/drinks/soymilk,
+/obj/item/reagent_containers/food/drinks/soymilk,
+/obj/item/reagent_containers/food/drinks/bottle/milk,
+/obj/item/reagent_containers/food/drinks/bottle/milk,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/storage/box/glasses/meta,
+/obj/effect/floor_decal/corner_techfloor_grid/full{
+	dir = 1
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/kafel_full/white,
+/area/shuttle/cargoravana)
+"NK" = (
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/obj/structure/shuttle/engine/heater{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/wall/prepainted,
+/area/shuttle/cargoravana)
+"NL" = (
+/obj/machinery/atmospherics/portables_connector{
+	dir = 1
+	},
+/obj/machinery/portable_atmospherics/canister/empty/phoron,
+/turf/simulated/floor/plating,
+/area/shuttle/cargoravana)
+"OR" = (
+/turf/simulated/wall/prepainted/civilian,
+/area/shuttle/cargoravana)
+"Pi" = (
+/obj/effect/floor_decal/corner_techfloor_grid/full,
+/turf/simulated/floor/tiled/steel_ridged,
+/area/shuttle/cargoravana)
+"Pj" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/wall/prepainted,
+/area/shuttle/cargoravana)
+"Pt" = (
+/obj/effect/floor_decal/corner_techfloor_grid/diagonal,
+/turf/simulated/floor/tiled/steel_ridged,
+/area/shuttle/cargoravana)
+"PJ" = (
+/obj/machinery/computer/ship/engines{
+	dir = 1
+	},
+/obj/structure/table/steel_reinforced,
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/cargoravana)
+"Qo" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/structure/table/bench/steel,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/cargoravana)
+"QJ" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/shuttle/cargoravana)
+"Rf" = (
+/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/atmospherics/portables_connector{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/cargoravana)
+"Rg" = (
+/obj/machinery/power/smes/buildable{
+	charge = 15000;
+	cur_coils = 3
+	},
+/obj/structure/cable/green{
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/cargoravana)
+"St" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/cargoravana)
+"SK" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/valve{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/cargoravana)
+"ST" = (
+/obj/structure/cable/orange{
+	icon_state = "1-4"
+	},
+/turf/simulated/wall/prepainted,
+/area/shuttle/cargoravana)
+"UC" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/cargoravana)
+"UF" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/gps/internal/base{
+	name = "Caravan Beacon";
+	gps_tag = "CARGORAVAN"
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/machinery/computer/shuttle_control/explore/cargoravana,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/cargoravana)
+"Wb" = (
+/obj/structure/table/steel,
+/obj/machinery/microwave,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/machinery/air_alarm/alarms_hidden/north_mount{
+	req_one_access = null
+	},
+/obj/effect/floor_decal/corner_techfloor_grid/full{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/kafel_full/white,
+/area/shuttle/cargoravana)
+"WR" = (
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/cargoravana)
+"Xg" = (
+/obj/structure/bed/chair/sofa/brown/left{
+	dir = 8
+	},
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/cargoravana)
+"XF" = (
+/obj/machinery/computer/ship/helm{
+	req_one_access = null
+	},
+/obj/structure/table/steel_reinforced,
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	pixel_y = 30;
+	pixel_x = -6;
+	id_tag = "tradeport_cargoravana_docker"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/cargoravana)
+"Yo" = (
+/turf/simulated/floor/tiled/kafel_full/white,
+/area/shuttle/cargoravana)
+"Zc" = (
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoorc0";
+	id = "Bcaravan1";
+	name = "Spacenat Caravan Airlock";
+	opacity = 0
+	},
+/obj/machinery/button/remote/blast_door{
+	id = "Bcaravan1";
+	name = "Caravan Back Door";
+	pixel_x = 26
+	},
+/obj/machinery/door/airlock/hatch{
+	name = "Caravan Airtight Hatch";
+	req_one_access = null
+	},
+/obj/machinery/door/firedoor,
+/obj/structure/fans/tiny,
+/turf/simulated/floor/tiled/old_tile/blue,
+/area/shuttle/cargoravana)
+"ZJ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/machinery/door/airlock/hatch{
+	name = "Caravan Airtight Hatch";
+	req_one_access = null
+	},
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/shuttle/cargoravana)
+
+(1,1,1) = {"
+vN
+vN
+OR
+xf
+xf
+xf
+xf
+OR
+vN
+vN
+"}
+(2,1,1) = {"
+vN
+vN
+xf
+UF
+Dn
+ov
+PJ
+xf
+vN
+vN
+"}
+(3,1,1) = {"
+vN
+vN
+OR
+XF
+Fq
+zm
+HF
+OR
+vN
+vN
+"}
+(4,1,1) = {"
+vN
+vN
+hT
+eZ
+eZ
+vh
+Gr
+OR
+vN
+vN
+"}
+(5,1,1) = {"
+vN
+vN
+OR
+jZ
+eZ
+oI
+lI
+OR
+vN
+vN
+"}
+(6,1,1) = {"
+vN
+vN
+xJ
+WR
+eZ
+Qo
+Cg
+OR
+vN
+vN
+"}
+(7,1,1) = {"
+vN
+vN
+QJ
+eZ
+eZ
+bl
+Xg
+OR
+OR
+vN
+"}
+(8,1,1) = {"
+vN
+QJ
+QJ
+QJ
+WR
+SK
+eZ
+wR
+OR
+OR
+"}
+(9,1,1) = {"
+vN
+QJ
+QJ
+pq
+GL
+St
+eZ
+eZ
+mQ
+Gh
+"}
+(10,1,1) = {"
+QJ
+QJ
+KA
+qc
+eZ
+UC
+eZ
+eZ
+eZ
+Zc
+"}
+(11,1,1) = {"
+OR
+Cu
+KA
+gp
+Aj
+kD
+Ed
+Ed
+FD
+OR
+"}
+(12,1,1) = {"
+OR
+Wb
+Mt
+He
+LV
+Cu
+qi
+qi
+qi
+GP
+"}
+(13,1,1) = {"
+GP
+Ge
+Yo
+GS
+mi
+Cu
+Cu
+Cu
+Cu
+OR
+"}
+(14,1,1) = {"
+GP
+nh
+Yo
+bG
+GB
+Cu
+Nf
+FQ
+Nf
+GP
+"}
+(15,1,1) = {"
+OR
+NG
+uj
+GW
+fj
+gl
+FQ
+nG
+FQ
+GP
+"}
+(16,1,1) = {"
+OR
+Cu
+Cu
+ZJ
+aY
+Cu
+Cu
+Cu
+Cu
+OR
+"}
+(17,1,1) = {"
+Cu
+Cu
+Cu
+Cz
+wq
+Pt
+Pi
+Cu
+Cu
+Cu
+"}
+(18,1,1) = {"
+vN
+kt
+ST
+gp
+tf
+LI
+wN
+Cu
+Cu
+vN
+"}
+(19,1,1) = {"
+vN
+vN
+iz
+lS
+NK
+Pj
+sd
+NL
+vN
+vN
+"}
+(20,1,1) = {"
+vN
+vN
+Rg
+Ms
+CZ
+CZ
+ix
+Rf
+vN
+vN
+"}

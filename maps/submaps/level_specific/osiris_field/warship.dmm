@@ -1,0 +1,2859 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ag" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/table/bench/steel,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"av" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"bm" = (
+/obj/structure/table/steel,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"bZ" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/table/bench/steel,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"cu" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"cD" = (
+/obj/machinery/light,
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/floor_decal/industrial/loading{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
+/area/shuttle/osiris/battlestar)
+"cG" = (
+/obj/machinery/atmospherics/pipe/manifold4w/hidden,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"cK" = (
+/obj/machinery/computer/ship/engines/adv{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/osiris/battlestar)
+"da" = (
+/obj/effect/floor_decal/industrial/loading{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced,
+/area/shuttle/osiris/battlestar)
+"dl" = (
+/obj/machinery/atmospherics/component/binary/pump/high_power,
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"dr" = (
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/osiris/battlestar)
+"dC" = (
+/obj/machinery/conveyor{
+	id = "balsitwar";
+	dir = 8
+	},
+/obj/machinery/light,
+/turf/simulated/floor/reinforced,
+/area/shuttle/osiris/battlestar)
+"dV" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"dZ" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/closet,
+/obj/item/clothing/suit/space/void/refurb/mercenary,
+/obj/item/clothing/head/helmet/space/void/refurb/mercenary,
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"ed" = (
+/mob/living/simple_mob/mechanical/viscerator/mercenary,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"ef" = (
+/obj/structure/event/prop/server1,
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/osiris/battlestar)
+"ep" = (
+/obj/machinery/shipsensors/weak,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"eq" = (
+/obj/effect/floor_decal/industrial/halfstair,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"et" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"eL" = (
+/obj/structure/salvageable/computer_os,
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/osiris/battlestar)
+"fd" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/shuttle/osiris/battlestar)
+"ff" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 4
+	},
+/turf/simulated/wall/r_wall/prepainted,
+/area/shuttle/osiris/battlestar)
+"fo" = (
+/obj/machinery/computer/ship/sensors/adv{
+	dir = 1
+	},
+/obj/machinery/light,
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/osiris/battlestar)
+"fO" = (
+/obj/machinery/disperser/middle{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced,
+/area/shuttle/osiris/battlestar)
+"gc" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/embedded_controller/radio/airlock/airlock_controller{
+	frequency = 1380;
+	id_tag = "battlestar_docker2";
+	pixel_x = -25
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"gi" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/rust,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"gm" = (
+/obj/structure/salvageable/server_os,
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/osiris/battlestar)
+"gC" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/pipe/manifold/hidden,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"gJ" = (
+/obj/effect/floor_decal/carpet{
+	dir = 8
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 1
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 9
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/lythios43c,
+/area/shuttle/osiris/battlestar)
+"hb" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/table/steel,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"he" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"hh" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"hp" = (
+/obj/machinery/door/airlock/hatch,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor,
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"hq" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/floor_decal/rust,
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"hU" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"hV" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/air_alarm/alarms_hidden/north_mount,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"ic" = (
+/obj/structure/cryofeed,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"is" = (
+/obj/machinery/disperser/back{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced,
+/area/shuttle/osiris/battlestar)
+"iw" = (
+/obj/machinery/computer/ship/engines/adv{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/osiris/battlestar)
+"iY" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/air_alarm/alarms_hidden/north_mount,
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"jc" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/door/airlock/glass_external,
+/obj/map_helper/airlock/door/ext_door,
+/obj/machinery/access_button/airlock_exterior{
+	frequency = 1380;
+	master_tag = "battlestar_docker2";
+	name = "external access button";
+	pixel_x = 25
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"jo" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 1
+	},
+/obj/machinery/power/smes/buildable,
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"jp" = (
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"kq" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"kt" = (
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"kI" = (
+/obj/structure/salvageable/computer_os,
+/obj/machinery/air_alarm/alarms_hidden/north_mount,
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/osiris/battlestar)
+"kS" = (
+/obj/structure/table/steel_reinforced,
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"kX" = (
+/obj/machinery/door/airlock/hatch,
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"lg" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"lq" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/cable{
+	icon_state = "4-10"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"lS" = (
+/obj/machinery/cryopod{
+	dir = 2
+	},
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"mg" = (
+/obj/structure/window/basic{
+	dir = 8
+	},
+/obj/effect/floor_decal/rust,
+/obj/machinery/air_alarm/alarms_hidden/north_mount,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"mv" = (
+/obj/machinery/door/airlock/hatch,
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"mw" = (
+/obj/structure/railing,
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/osiris/battlestar)
+"mx" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"mN" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/floor_decal/rust,
+/obj/machinery/door/airlock/glass_external,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/map_helper/airlock/door/int_door,
+/obj/machinery/access_button/airlock_interior{
+	frequency = 1380;
+	master_tag = "battlestar_docker2";
+	name = "internal access button";
+	pixel_x = 22
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"ne" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"nu" = (
+/obj/structure/table/bench/steel,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"nw" = (
+/obj/effect/floor_decal/carpet{
+	dir = 1
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 4
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 5
+	},
+/obj/structure/bed/pod,
+/turf/simulated/floor/carpet/lythios43c,
+/area/shuttle/osiris/battlestar)
+"od" = (
+/obj/machinery/door/airlock/hatch,
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/osiris/battlestar)
+"oo" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"or" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/tvalve,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"ot" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/portables_connector,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"oO" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"pB" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/air_alarm/alarms_hidden/north_mount,
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"pC" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/structure/cable,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"pY" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"pZ" = (
+/obj/machinery/button/remote/blast_door{
+	pixel_y = 25;
+	id = "dedalios"
+	},
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"qc" = (
+/obj/machinery/conveyor{
+	id = "balsitwar";
+	dir = 8
+	},
+/turf/simulated/floor/reinforced,
+/area/shuttle/osiris/battlestar)
+"qA" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/closet/walllocker_double/north,
+/obj/random/mre,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"qJ" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/light,
+/obj/machinery/atmospherics/pipe/manifold/hidden,
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"rR" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"sc" = (
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/floor_decal/industrial/loading{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced,
+/area/shuttle/osiris/battlestar)
+"sk" = (
+/turf/template_noop,
+/area/shuttle/osiris/battlestar)
+"sq" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"st" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/accessory/holster/hip,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"sy" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/closet/walllocker_double/north,
+/obj/random/mre,
+/obj/random/medical/lite,
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"sG" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 6
+	},
+/obj/structure/fuel_port{
+	pixel_x = -25
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"sO" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/door/airlock/glass_external,
+/obj/map_helper/airlock/door/ext_door,
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"sQ" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"uk" = (
+/obj/structure/table/steel_reinforced,
+/obj/machinery/atmospherics/pipe/manifold4w/hidden,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"ul" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"ut" = (
+/obj/structure/window/basic{
+	dir = 8
+	},
+/obj/structure/ship_munition/disperser_charge/emp,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"uD" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 6
+	},
+/mob/living/simple_mob/mechanical/viscerator/mercenary,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"uE" = (
+/obj/machinery/door/airlock/hatch,
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 1
+	},
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"vc" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"vh" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"vL" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/osiris/battlestar)
+"vM" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"vU" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/closet/walllocker_double/north,
+/obj/random/mre,
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"wL" = (
+/obj/machinery/cryopod{
+	dir = 4
+	},
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"xt" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"xv" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"xI" = (
+/obj/effect/floor_decal/industrial/halfstair,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"xU" = (
+/obj/structure/bed/chair/bay/chair/padded/red{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/osiris/battlestar)
+"ye" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"yp" = (
+/obj/machinery/computer/ship/sensors/adv,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/osiris/battlestar)
+"zy" = (
+/obj/machinery/computer/ship/helm/adv{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/osiris/battlestar)
+"zP" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/closet,
+/obj/item/clothing/suit/space/void/refurb/mercenary,
+/obj/item/clothing/head/helmet/space/void/refurb/mercenary,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"zX" = (
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/floor_decal/industrial/loading{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
+/area/shuttle/osiris/battlestar)
+"An" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/table/rack/shelf/steel,
+/obj/random/multiple/gun/projectile/rifle,
+/obj/item/clothing/accessory/holster/hip,
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"Aw" = (
+/obj/structure/salvageable/data_os,
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/osiris/battlestar)
+"AO" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/air_alarm/alarms_hidden/north_mount,
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"AW" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"Ba" = (
+/obj/structure/bed/pod,
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"BL" = (
+/obj/machinery/door/airlock/hatch,
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 1
+	},
+/obj/machinery/door/firedoor,
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"BU" = (
+/obj/item/modular_computer/console/preset/mercenary,
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/osiris/battlestar)
+"BZ" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"Cv" = (
+/obj/vehicle/sealed/mecha/combat/fighter/gunpod/loaded,
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/floor_decal/industrial/loading{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
+/area/shuttle/osiris/battlestar)
+"CU" = (
+/obj/machinery/atmospheric_field_generator/perma,
+/obj/machinery/door/blast/regular{
+	id = "dedalios"
+	},
+/turf/simulated/floor/reinforced,
+/area/shuttle/osiris/battlestar)
+"CZ" = (
+/obj/machinery/holopad/ship/starts_inactive,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"Dy" = (
+/obj/machinery/conveyor{
+	id = "balsitwar";
+	dir = 8
+	},
+/obj/structure/plasticflaps,
+/turf/simulated/floor/reinforced,
+/area/shuttle/osiris/battlestar)
+"DM" = (
+/obj/machinery/door/airlock/hatch,
+/obj/effect/floor_decal/industrial/halfstair,
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"DQ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 6
+	},
+/obj/structure/shuttle/engine/heater{
+	dir = 4
+	},
+/turf/simulated/wall/r_wall/prepainted,
+/area/shuttle/osiris/battlestar)
+"Ec" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/accessory/holster/hip,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"Ef" = (
+/obj/machinery/door/airlock/hatch,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"Eg" = (
+/obj/structure/salvageable/console_broken_os{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/osiris/battlestar)
+"Ez" = (
+/turf/simulated/wall/r_wall/prepainted,
+/area/shuttle/osiris/battlestar)
+"EB" = (
+/obj/machinery/disperser/front{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced,
+/area/shuttle/osiris/battlestar)
+"EP" = (
+/obj/machinery/computer/shuttle_control/explore/battlestar{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/osiris/battlestar)
+"EU" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/obj/machinery/power/apc/critical/east_mount,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"Fa" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/floor_decal/rust,
+/obj/structure/table/bench/steel,
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"Fk" = (
+/obj/machinery/light,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"Fl" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"FD" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/osiris/battlestar)
+"Gj" = (
+/obj/structure/salvageable/machine_os,
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/osiris/battlestar)
+"Go" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/pipe/manifold/hidden,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"Gr" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/mob/living/simple_mob/mechanical/viscerator/mercenary,
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"GL" = (
+/mob/living/simple_mob/mechanical/viscerator/mercenary,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"GN" = (
+/obj/structure/bed/chair/office/light,
+/obj/effect/floor_decal/carpet{
+	dir = 8
+	},
+/obj/effect/floor_decal/carpet,
+/obj/effect/floor_decal/carpet{
+	dir = 10
+	},
+/turf/simulated/floor/carpet/lythios43c,
+/area/shuttle/osiris/battlestar)
+"GY" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 1
+	},
+/turf/simulated/wall/r_wall/prepainted,
+/area/shuttle/osiris/battlestar)
+"Hd" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/table/steel,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"Hi" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/door/airlock/hatch,
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"HF" = (
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/reinforced,
+/area/shuttle/osiris/battlestar)
+"IE" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"IV" = (
+/obj/machinery/computer/ship/engines/adv,
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/osiris/battlestar)
+"Jd" = (
+/obj/effect/floor_decal/rust,
+/obj/overmap/entity/visitable/ship/landable/osiris/battlestar,
+/obj/machinery/embedded_controller/radio/airlock/airlock_controller{
+	frequency = 1380;
+	id_tag = "battlestar_docker";
+	pixel_x = -25
+	},
+/obj/effect/shuttle_landmark/shuttle_initializer/battlestar,
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"Jf" = (
+/obj/structure/closet/walllocker_double/north,
+/obj/random/mre,
+/obj/random/medical/lite,
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"Jv" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/table/rack/shelf/steel,
+/obj/random/multiple/gun/projectile/smg,
+/obj/item/clothing/accessory/holster/hip,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"KD" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/light,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"Lp" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/portables_connector,
+/obj/machinery/air_alarm/alarms_hidden/north_mount,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"Lv" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/bed/pod,
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"Lw" = (
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"Lx" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/light,
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"LC" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/tank/air,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"LF" = (
+/obj/structure/toilet{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/air_alarm/alarms_hidden/north_mount,
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"LH" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/component/binary/pump/high_power{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/mob/living/simple_mob/mechanical/viscerator/mercenary,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"LL" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/tank/air{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"LN" = (
+/obj/structure/closet,
+/obj/item/clothing/suit/space/void/refurb/mercenary,
+/obj/item/clothing/head/helmet/space/void/refurb/mercenary,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"LX" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/osiris/battlestar)
+"Mg" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"Mk" = (
+/obj/machinery/light,
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"Mn" = (
+/obj/machinery/door/airlock/hatch,
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"Nc" = (
+/obj/structure/table/steel_reinforced,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"Ni" = (
+/obj/structure/salvageable/computer_os,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/osiris/battlestar)
+"No" = (
+/obj/structure/lattice,
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/floor_decal/industrial/loading{
+	dir = 8
+	},
+/turf/template_noop,
+/area/shuttle/osiris/battlestar)
+"Nr" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	frequency = 1380;
+	id_tag = "battlestar_docker"
+	},
+/obj/machinery/airlock_sensor{
+	frequency = 1380;
+	id_tag = "battlestar_docker";
+	pixel_x = 25
+	},
+/obj/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/sensor/chamber_sensor,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"NF" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"NJ" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/floor_decal/rust,
+/obj/structure/cable{
+	icon_state = "5-8"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"OD" = (
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"OS" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"Pj" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/table/steel,
+/obj/item/gun/projectile/ballistic/automatic/mini_uzi,
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"Pw" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"PD" = (
+/obj/machinery/atmospherics/portables_connector,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"PT" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/air_alarm/alarms_hidden/north_mount,
+/obj/structure/cryofeed{
+	dir = 2
+	},
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"PU" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"Ql" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 1
+	},
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"QA" = (
+/obj/machinery/shipsensors,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"QE" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/air_alarm/alarms_hidden/north_mount,
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"QV" = (
+/turf/template_noop,
+/area/template_noop)
+"Ra" = (
+/obj/machinery/door/airlock/hatch,
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"Rg" = (
+/obj/machinery/door/airlock/hatch,
+/obj/machinery/door/firedoor,
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"Rm" = (
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"Rt" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/floor_decal/rust,
+/obj/effect/floor_decal/rust,
+/obj/machinery/air_alarm/alarms_hidden/north_mount,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"Ru" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/obj/structure/shuttle/engine/heater{
+	dir = 4
+	},
+/turf/simulated/wall/r_wall/prepainted,
+/area/shuttle/osiris/battlestar)
+"RF" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"RT" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/floor_decal/rust,
+/obj/structure/table/steel,
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"RW" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/mob/living/simple_mob/mechanical/viscerator/mercenary,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"RX" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/door/airlock/glass_external,
+/obj/map_helper/airlock/door/int_door,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"RY" = (
+/obj/structure/table/steel_reinforced,
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"Sc" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/smartfridge/survival_pod,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"Sq" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"Sr" = (
+/obj/structure/bed/chair/bay/chair/padded/red{
+	dir = 1
+	},
+/obj/structure/railing,
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/osiris/battlestar)
+"SH" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"Tc" = (
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"Tf" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/table/bench/steel,
+/mob/living/simple_mob/mechanical/viscerator/mercenary,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"Tj" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"Tw" = (
+/obj/machinery/door/airlock/glass_external,
+/obj/map_helper/airlock/door/ext_door,
+/obj/machinery/access_button/airlock_exterior{
+	frequency = 1380;
+	master_tag = "battlestar_docker";
+	name = "external access button";
+	pixel_x = 25
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"TI" = (
+/obj/machinery/atmospherics/portables_connector{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"Ub" = (
+/obj/structure/bed/chair/bay/chair/padded/red,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/osiris/battlestar)
+"Ue" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"Ul" = (
+/obj/structure/window/basic{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"Uz" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/table/bench/steel,
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"Vi" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"Vj" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/floor_decal/industrial/loading{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced,
+/area/shuttle/osiris/battlestar)
+"Vo" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"VJ" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/structure/table/bench/steel,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"Ww" = (
+/obj/structure/lattice,
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/floor_decal/industrial/loading{
+	dir = 4
+	},
+/turf/template_noop,
+/area/shuttle/osiris/battlestar)
+"Wx" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/portables_connector{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"WF" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/door/airlock/glass_external,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 1
+	},
+/obj/map_helper/airlock/door/int_door,
+/obj/machinery/access_button/airlock_interior{
+	frequency = 1380;
+	master_tag = "battlestar_docker";
+	name = "internal access button";
+	pixel_x = 22
+	},
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"WM" = (
+/obj/machinery/light,
+/obj/machinery/computer/ship/disperser{
+	dir = 1
+	},
+/obj/machinery/computer/ship/disperser{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/osiris/battlestar)
+"WV" = (
+/obj/machinery/computer/ship/engines/adv{
+	dir = 4
+	},
+/obj/item/gps/internal/base{
+	gps_tag = "DEDALOS"
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/osiris/battlestar)
+"WY" = (
+/obj/machinery/conveyor{
+	id = "balsitwar";
+	dir = 6
+	},
+/turf/simulated/floor/reinforced,
+/area/shuttle/osiris/battlestar)
+"Xg" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/door/airlock/glass_external,
+/obj/map_helper/airlock/door/ext_door,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"Xl" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	frequency = 1380;
+	id_tag = "battlestar_docker2";
+	dir = 1
+	},
+/obj/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/sensor/chamber_sensor,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"Xp" = (
+/obj/machinery/door/airlock/hatch,
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/battlestar)
+"Xz" = (
+/obj/machinery/atmospherics/pipe/tank/air{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+"XU" = (
+/obj/machinery/atmospherics/component/unary/engine/biggest{
+	dir = 8
+	},
+/turf/template_noop,
+/area/shuttle/osiris/battlestar)
+"Yk" = (
+/obj/machinery/door/airlock/glass_external,
+/obj/map_helper/airlock/door/int_door,
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"YA" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
+	},
+/obj/structure/shuttle/engine/heater{
+	dir = 4
+	},
+/turf/simulated/wall/r_wall/prepainted,
+/area/shuttle/osiris/battlestar)
+"YD" = (
+/obj/structure/salvageable/console_broken_os{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/osiris/battlestar)
+"YI" = (
+/turf/simulated/floor/reinforced,
+/area/shuttle/osiris/battlestar)
+"YR" = (
+/obj/structure/undies_wardrobe,
+/obj/effect/floor_decal/carpet{
+	dir = 4
+	},
+/obj/effect/floor_decal/carpet,
+/obj/effect/floor_decal/carpet{
+	dir = 6
+	},
+/turf/simulated/floor/carpet/lythios43c,
+/area/shuttle/osiris/battlestar)
+"Zj" = (
+/obj/machinery/air_alarm/alarms_hidden/north_mount,
+/turf/simulated/floor,
+/area/shuttle/osiris/battlestar)
+"ZV" = (
+/obj/structure/table/steel,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/osiris/battlestar)
+
+(1,1,1) = {"
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+"}
+(2,1,1) = {"
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+Ez
+Ez
+Ez
+Ez
+Ez
+Ez
+Ez
+Ez
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+"}
+(3,1,1) = {"
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+Ez
+Ez
+zy
+iw
+Eg
+Eg
+WV
+zy
+Ez
+Ez
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+"}
+(4,1,1) = {"
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+Ez
+Ez
+eL
+dr
+xU
+vL
+vL
+xU
+dr
+YD
+Ez
+Ez
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+"}
+(5,1,1) = {"
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+Ez
+Ez
+Ez
+yp
+Sr
+gi
+oo
+oo
+KD
+Ub
+fo
+Ez
+Ez
+Ez
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+"}
+(6,1,1) = {"
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+sk
+fd
+Sq
+Ez
+BU
+mw
+oO
+kt
+kt
+Rm
+FD
+EP
+Ez
+zP
+Ez
+Ez
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+"}
+(7,1,1) = {"
+QV
+QV
+QV
+QV
+QV
+QV
+sk
+fd
+fd
+Mk
+Ez
+ef
+mw
+oO
+kt
+RY
+Rm
+FD
+Aw
+Ez
+Tj
+Pw
+Ez
+Ez
+QV
+QV
+QV
+QV
+QV
+QV
+"}
+(8,1,1) = {"
+QV
+QV
+QV
+QV
+QV
+QV
+sk
+fd
+fd
+SH
+od
+LX
+eq
+hh
+Nc
+uk
+he
+IE
+LX
+od
+ne
+RT
+hb
+Lw
+QV
+QV
+QV
+QV
+QV
+QV
+"}
+(9,1,1) = {"
+QV
+QV
+QV
+QV
+QV
+QV
+Ez
+pB
+fd
+fd
+Ez
+kI
+mw
+pY
+kt
+kS
+oo
+FD
+YD
+Ez
+hV
+hq
+hb
+Ez
+QV
+QV
+QV
+QV
+QV
+QV
+"}
+(10,1,1) = {"
+QV
+QV
+QV
+QV
+QV
+QV
+Ez
+Ez
+Ez
+Sq
+Ez
+IV
+Sr
+pY
+CZ
+rR
+ed
+Ub
+cK
+Ez
+Ue
+Ez
+Ez
+Ez
+QV
+QV
+QV
+QV
+QV
+QV
+"}
+(11,1,1) = {"
+QV
+QV
+QV
+QV
+QV
+QV
+Lw
+Pj
+Sq
+Lx
+Ez
+Ni
+mw
+pY
+oo
+av
+Rm
+FD
+WM
+Ez
+gJ
+GN
+ZV
+Lw
+QV
+QV
+QV
+QV
+QV
+QV
+"}
+(12,1,1) = {"
+QV
+QV
+QV
+QV
+QV
+QV
+Ez
+Ez
+Tc
+Lv
+Ez
+gm
+mw
+EU
+jp
+lg
+Fk
+FD
+Gj
+Ez
+nw
+YR
+Ez
+Ez
+QV
+QV
+QV
+QV
+QV
+QV
+"}
+(13,1,1) = {"
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+Ez
+Ez
+Ez
+Ez
+Ez
+Ez
+Ez
+Ef
+mv
+Ez
+Ez
+Ez
+Ez
+Ez
+Ez
+Ez
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+"}
+(14,1,1) = {"
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+ep
+Ez
+Ba
+dV
+dV
+Ez
+xt
+OS
+kX
+OD
+nu
+Jv
+Ez
+QA
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+"}
+(15,1,1) = {"
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+Ez
+Ez
+Rt
+ne
+Xp
+ye
+cG
+Xp
+ne
+Uz
+st
+Ez
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+"}
+(16,1,1) = {"
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+Ez
+Lv
+PU
+dV
+Ez
+Vi
+Fk
+Ez
+qA
+Ue
+LN
+Ez
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+"}
+(17,1,1) = {"
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+Ez
+Ez
+PU
+Sq
+Ez
+AO
+Rm
+Ez
+Jf
+Ue
+Sq
+Ez
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+"}
+(18,1,1) = {"
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+fd
+OD
+Tc
+Lx
+Ez
+kq
+rR
+Ez
+iY
+Ue
+dZ
+Ez
+QV
+Ez
+EB
+Ez
+Ez
+QV
+QV
+QV
+QV
+"}
+(19,1,1) = {"
+QV
+QV
+QV
+Ez
+CU
+CU
+Ez
+Ez
+Ez
+fd
+fd
+fd
+Tc
+Ez
+RW
+rR
+Ez
+vU
+Fa
+An
+Ez
+Ez
+Ez
+fO
+Ez
+Ez
+Ez
+QV
+QV
+QV
+"}
+(20,1,1) = {"
+QV
+QV
+QV
+Ez
+YI
+YI
+zX
+Cv
+Ez
+Ez
+fd
+fd
+Tc
+Ez
+BZ
+Lx
+Ez
+sy
+bZ
+Ec
+Ez
+Ez
+Ez
+is
+Ez
+Ez
+Ez
+QV
+QV
+QV
+"}
+(21,1,1) = {"
+QV
+QV
+QV
+Ez
+fd
+YI
+sc
+sc
+Ez
+QV
+Ez
+fd
+Ez
+Ez
+kq
+Tc
+Ez
+Ez
+Ez
+Ez
+Ez
+Ez
+Ez
+qc
+Ez
+Ez
+Ez
+QV
+QV
+QV
+"}
+(22,1,1) = {"
+QV
+QV
+QV
+sk
+fd
+fd
+Ww
+cD
+Ez
+QV
+fd
+sk
+sk
+Ez
+kq
+OS
+Ez
+LF
+ic
+Ez
+QV
+Ez
+Ez
+qc
+Ez
+Ez
+Ez
+QV
+QV
+QV
+"}
+(23,1,1) = {"
+QV
+QV
+QV
+sk
+sk
+fd
+No
+sc
+Ez
+QV
+fd
+sk
+sk
+sk
+fd
+Tc
+Rg
+Tc
+wL
+Ez
+QV
+Ez
+Ez
+qc
+Ez
+Ez
+Ez
+QV
+QV
+QV
+"}
+(24,1,1) = {"
+QV
+QV
+QV
+sk
+sk
+fd
+Ww
+Ww
+Ez
+QV
+fd
+fd
+fd
+sk
+fd
+Mk
+Ez
+Ez
+Ez
+Ez
+QV
+Ez
+Ez
+qc
+WY
+Ez
+Ez
+QV
+QV
+QV
+"}
+(25,1,1) = {"
+QV
+QV
+QV
+sk
+fd
+fd
+sc
+sc
+fd
+QV
+Ez
+fd
+fd
+fd
+fd
+OS
+Tc
+fd
+Tc
+fd
+QV
+Ez
+Ez
+HF
+Dy
+Ez
+Ez
+QV
+QV
+QV
+"}
+(26,1,1) = {"
+QV
+QV
+QV
+Ez
+fd
+YI
+zX
+zX
+fd
+QV
+sk
+fd
+fd
+fd
+fd
+Tc
+Tc
+fd
+fd
+Ez
+QV
+Ez
+dV
+GL
+qc
+Ez
+Ez
+QV
+QV
+QV
+"}
+(27,1,1) = {"
+QV
+QV
+QV
+Ez
+fd
+YI
+Vj
+da
+fd
+QV
+sk
+sk
+Ez
+Ez
+QE
+Tc
+Sq
+fd
+sk
+sk
+QV
+Ez
+Tj
+OD
+dC
+Ez
+Ez
+QV
+QV
+QV
+"}
+(28,1,1) = {"
+QV
+QV
+QV
+Ez
+Tc
+Tc
+Sq
+Tc
+Ez
+QV
+Ez
+vM
+Tc
+Ra
+kq
+rR
+Sq
+fd
+fd
+Ez
+QV
+Ez
+mg
+dV
+qc
+Ez
+Ez
+QV
+QV
+QV
+"}
+(29,1,1) = {"
+QV
+QV
+QV
+Ez
+Zj
+Sq
+dV
+Sq
+Ez
+QV
+Ez
+Tc
+Tc
+Ez
+NF
+qJ
+Ez
+fd
+fd
+fd
+QV
+Ez
+Ul
+dV
+qc
+Ez
+Ez
+QV
+QV
+QV
+"}
+(30,1,1) = {"
+QV
+QV
+QV
+Ez
+sQ
+Sq
+Tc
+Lx
+Ez
+QV
+Ez
+Ez
+Ez
+Ez
+hp
+Hi
+Ez
+Ez
+Ez
+Ez
+QV
+Ez
+Ul
+dV
+qc
+Ez
+Ez
+QV
+QV
+QV
+"}
+(31,1,1) = {"
+QV
+QV
+QV
+Ez
+OD
+OD
+Tc
+Sq
+Ez
+QV
+Ez
+PT
+lS
+Rm
+Tc
+rR
+Tc
+oo
+Sc
+Ez
+QV
+Ez
+ut
+dV
+qc
+Ez
+Ez
+QV
+QV
+QV
+"}
+(32,1,1) = {"
+QV
+QV
+QV
+Ez
+Ez
+Ez
+pZ
+Sq
+Ez
+Ez
+Ez
+Ez
+RF
+Rm
+vc
+rR
+Sq
+KD
+Ez
+Ez
+Ez
+Ez
+Ez
+OD
+Ez
+Ez
+Ez
+QV
+QV
+QV
+"}
+(33,1,1) = {"
+QV
+QV
+QV
+sO
+Jd
+Yk
+Sq
+Sq
+BL
+mx
+Ql
+uE
+oo
+oo
+vc
+Gr
+Sq
+Rm
+DM
+xI
+xI
+DM
+OD
+dV
+RX
+gc
+Xg
+QV
+QV
+QV
+"}
+(34,1,1) = {"
+QV
+QV
+QV
+Tw
+Nr
+WF
+AW
+OD
+Ez
+Ez
+Ez
+Ez
+ag
+Tf
+vc
+lg
+oo
+Rm
+Ez
+Ez
+Ez
+Ez
+Tj
+uD
+mN
+Xl
+jc
+QV
+QV
+QV
+"}
+(35,1,1) = {"
+QV
+QV
+QV
+Ez
+Ez
+Ez
+Xz
+Ez
+Ez
+QV
+Ez
+Ez
+Hd
+bm
+Vo
+Fl
+oo
+oo
+Ez
+Ez
+QV
+Ez
+Ez
+Xz
+Ez
+Ez
+Ez
+QV
+QV
+QV
+"}
+(36,1,1) = {"
+QV
+QV
+QV
+Ez
+Ez
+Ez
+Ez
+Ez
+Ez
+QV
+Ez
+Ez
+ag
+VJ
+xv
+lg
+Mg
+oo
+Ez
+Ez
+QV
+Ez
+Ez
+Ez
+Ez
+Ez
+Ez
+QV
+QV
+QV
+"}
+(37,1,1) = {"
+QV
+QV
+QV
+QV
+Ez
+Ez
+Ez
+Ez
+QV
+QV
+Ez
+Ez
+Ez
+Ez
+Ef
+Mn
+Ez
+Ez
+Ez
+Ez
+QV
+QV
+Ez
+Ez
+Ez
+Ez
+QV
+QV
+QV
+QV
+"}
+(38,1,1) = {"
+QV
+QV
+QV
+QV
+QV
+Ez
+Ez
+QV
+QV
+QV
+Ez
+PD
+sq
+LC
+vh
+or
+LL
+sG
+Wx
+Ez
+QV
+QV
+QV
+Ez
+Ez
+QV
+QV
+QV
+QV
+QV
+"}
+(39,1,1) = {"
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+Ez
+Ez
+Lp
+Go
+Ue
+NJ
+dV
+dV
+ul
+Wx
+Ez
+Ez
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+"}
+(40,1,1) = {"
+QV
+QV
+QV
+QV
+QV
+QV
+Ez
+Ez
+Ez
+Ez
+Ez
+ot
+gC
+lq
+OD
+OD
+OD
+hU
+Wx
+Ez
+Ez
+Ez
+Ez
+Ez
+QV
+QV
+QV
+QV
+QV
+QV
+"}
+(41,1,1) = {"
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+Ez
+Ez
+Ez
+Ez
+ot
+et
+jo
+dl
+pC
+LH
+cu
+TI
+Ez
+Ez
+Ez
+Ez
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+"}
+(42,1,1) = {"
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+Ez
+DQ
+YA
+YA
+GY
+GY
+GY
+ff
+GY
+GY
+YA
+YA
+Ru
+Ez
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+"}
+(43,1,1) = {"
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+sk
+sk
+XU
+Ez
+Ez
+Ez
+Ez
+Ez
+Ez
+sk
+sk
+XU
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+"}
+(44,1,1) = {"
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+sk
+sk
+sk
+Ez
+Ez
+Ez
+Ez
+Ez
+Ez
+sk
+sk
+sk
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+"}
+(45,1,1) = {"
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+sk
+sk
+sk
+Ez
+Ez
+Ez
+Ez
+Ez
+Ez
+sk
+sk
+sk
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+"}
