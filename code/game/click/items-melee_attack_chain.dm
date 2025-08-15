@@ -19,7 +19,7 @@
 		return CLICKCHAIN_DO_NOT_ATTACK
 	if(item_flags & ITEM_NO_BLUDGEON)
 		return CLICKCHAIN_DO_NOT_ATTACK
-	if(!clickchain.target?.is_melee_targetable(clickchain))
+	if(!clickchain?.target?.is_melee_targetable(clickchain))//Why is clickchain null so often?
 		return CLICKCHAIN_DO_NOT_ATTACK
 
 	clickchain.performer.legacy_alter_melee_clickchain(clickchain)
