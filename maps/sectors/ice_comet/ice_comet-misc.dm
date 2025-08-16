@@ -15,6 +15,7 @@
 	icon_state = "comet"
 	color = "#b8e3ff"
 	in_space = 1
+	known = FALSE
 
 //decoration
 
