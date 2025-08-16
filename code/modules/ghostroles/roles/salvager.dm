@@ -22,19 +22,12 @@
 		return new /datum/outfit/salvager
 
 /obj/structure/ghost_role_spawner/salvager
-	name = "Salvager's bed"
-	desc = "You woke up here."
+	name = "Salvager's Telepad"
+	desc = "You arrived from here."
 	role_type = /datum/role/ghostrole/salvager
-	role_spawns = 1
-	icon = 'icons/obj/furniture.dmi'
-	icon_state = "bed"
-	pressure_resistance = 15
-	surgery_odds = 70 // better than nothing
-	anchored = TRUE
-	buckle_allowed = TRUE
-	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW
-	buckle_dir = SOUTH
-	buckle_lying = 90
+	role_spawns = 2
+	icon = 'icons/obj/machines/teleporter.dmi'
+	icon_state = "pad_idle"
 
 //salvager CRYO
 /obj/machinery/cryopod/robot/door/travel/salvager

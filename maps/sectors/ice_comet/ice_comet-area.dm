@@ -5,7 +5,7 @@
 	requires_power = 1
 
 /area/sector/ice_comet/facility
-	name = "Vey-med outpost"
+	name = "Away Mission - Ice Comet Weldana - Vey-med outpost"
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "green"
 	requires_power = 0

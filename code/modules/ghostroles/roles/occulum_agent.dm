@@ -22,19 +22,12 @@
 		return new /datum/outfit/occulum
 
 /obj/structure/ghost_role_spawner/occulum
-	name = "Operator's bed"
-	desc = "You woke up here."
+	name = "Operator's teleporter"
+	desc = "Arrived from here."
 	role_type = /datum/role/ghostrole/occulum
 	role_spawns = 1
-	icon = 'icons/obj/furniture.dmi'
-	icon_state = "bed"
-	pressure_resistance = 15
-	surgery_odds = 70 // better than nothing
-	anchored = TRUE
-	buckle_allowed = TRUE
-	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW
-	buckle_dir = SOUTH
-	buckle_lying = 90
+	icon = 'icons/obj/machines/teleporter.dmi'
+	icon_state = "pad_idle"
 
 //occulum CRYO
 /obj/machinery/cryopod/robot/door/travel/occulum
