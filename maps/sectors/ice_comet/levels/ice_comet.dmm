@@ -156,6 +156,12 @@
 /obj/structure/event/prop/active_pod2,
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/ice_comet/facility)
+"fg" = (
+/obj/structure/flora/rock/geyser,
+/turf/simulated/floor/outdoors/rocks{
+	color = "#6A97B0"
+	},
+/area/sector/ice_comet)
 "fA" = (
 /obj/structure/sandbag,
 /turf/simulated/floor/outdoors/rocks{
@@ -179,6 +185,11 @@
 	},
 /turf/space/basic,
 /area/space)
+"gm" = (
+/obj/structure/flora/rock/geyser,
+/obj/structure/flora/rock/geyser,
+/turf/simulated/floor/outdoors/safeice/lythios43c,
+/area/sector/ice_comet)
 "gp" = (
 /turf/simulated/shuttle/wall/voidcraft/survival,
 /area/sector/ice_comet)
@@ -1336,6 +1347,10 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/ice_comet/facility)
+"TB" = (
+/obj/structure/flora/rock/geyser,
+/turf/simulated/floor/outdoors/safeice/lythios43c,
+/area/sector/ice_comet)
 "TP" = (
 /obj/structure/table/steel,
 /obj/item/disk/limb/veymed,
@@ -7253,7 +7268,7 @@ Rn
 Yv
 Rn
 Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -7429,6 +7444,7 @@ Rn
 Rn
 Rn
 Rn
+TB
 Rn
 Rn
 Rn
@@ -7438,8 +7454,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -9388,6 +9403,7 @@ Rn
 Rn
 Rn
 Rn
+TB
 Rn
 Rn
 Rn
@@ -9409,8 +9425,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -9638,7 +9653,7 @@ YE
 Rn
 Rn
 Rn
-Rn
+gm
 Rn
 Rn
 Rn
@@ -9742,7 +9757,7 @@ Qm
 Qm
 Rn
 Rn
-Rn
+TB
 Rn
 Rn
 le
@@ -9786,7 +9801,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -10806,7 +10821,7 @@ YE
 YE
 YE
 Rn
-YE
+fg
 Rn
 Rn
 Rn
@@ -11702,7 +11717,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -12112,7 +12127,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -12726,7 +12741,7 @@ lm
 lm
 lm
 lm
-Rn
+TB
 lm
 lm
 lm
@@ -12909,7 +12924,7 @@ lm
 lm
 lm
 lm
-Rn
+TB
 lm
 lm
 lm
@@ -13319,7 +13334,7 @@ lm
 Rn
 Rn
 Rn
-YE
+fg
 YE
 YE
 YE
@@ -13423,7 +13438,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -13466,7 +13481,7 @@ Rn
 lm
 Rn
 Rn
-Rn
+TB
 lm
 Rn
 Rn
@@ -13609,7 +13624,7 @@ Qm
 Qm
 Rn
 Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -13633,15 +13648,15 @@ nz
 Rn
 lm
 Rn
-Rn
-Rn
-lm
-lm
-Rn
-lm
+TB
 Rn
 lm
 lm
+Rn
+lm
+Rn
+lm
+lm
 lm
 lm
 lm
@@ -13649,7 +13664,7 @@ lm
 lm
 lm
 Rn
-Rn
+TB
 Rn
 lm
 lm
@@ -14218,7 +14233,7 @@ lm
 Rn
 lm
 lm
-Rn
+TB
 lm
 Rn
 lm
@@ -14261,7 +14276,7 @@ Rn
 lm
 lm
 lm
-Rn
+TB
 lm
 lm
 lm
@@ -14282,7 +14297,7 @@ Rn
 lm
 lm
 Rn
-Rn
+TB
 Rn
 lm
 lm
@@ -14586,7 +14601,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
+TB
 Rn
 lm
 lm
@@ -14613,7 +14628,7 @@ lm
 lm
 lm
 Rn
-Rn
+TB
 Rn
 Rn
 lm
@@ -14660,7 +14675,7 @@ lm
 lm
 Rn
 Rn
-Rn
+TB
 Rn
 lm
 lm
@@ -15220,7 +15235,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -15401,7 +15416,7 @@ Rn
 Rn
 lm
 lm
-Rn
+TB
 Rn
 lm
 lm
@@ -16163,7 +16178,7 @@ Rn
 lm
 lm
 lm
-Rn
+TB
 lm
 lm
 lm
@@ -16364,7 +16379,7 @@ lm
 lm
 lm
 lm
-Rn
+TB
 Rn
 lm
 lm
@@ -16524,7 +16539,7 @@ lm
 lm
 lm
 lm
-Rn
+TB
 lm
 Rn
 lm
@@ -16724,7 +16739,7 @@ Rn
 lm
 lm
 lm
-Rn
+TB
 Rn
 Rn
 lm
@@ -16760,7 +16775,7 @@ lm
 lm
 lm
 Rn
-Rn
+TB
 Rn
 Rn
 YE
@@ -16788,7 +16803,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
+TB
 lm
 lm
 lm
@@ -16803,7 +16818,7 @@ Rn
 lm
 lm
 lm
-Rn
+TB
 lm
 lm
 lm
@@ -17363,7 +17378,7 @@ Rn
 Ec
 Rn
 Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -17679,11 +17694,11 @@ Qm
 Rn
 Rn
 Rn
-Rn
+TB
 Rn
 lm
 lm
-Rn
+TB
 lm
 lm
 lm
@@ -18075,7 +18090,7 @@ lm
 lm
 lm
 lm
-Rn
+TB
 lm
 Rn
 lm
@@ -18130,7 +18145,7 @@ lm
 Rn
 Rn
 Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -18575,7 +18590,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -18747,7 +18762,7 @@ Rn
 lm
 lm
 Rn
-Rn
+TB
 lm
 lm
 lm
@@ -19738,7 +19753,7 @@ lm
 lm
 lm
 Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -20104,13 +20119,13 @@ lm
 lm
 lm
 lm
+TB
 Rn
-Rn
 lm
 lm
 lm
 lm
-Rn
+TB
 Rn
 lm
 lm
@@ -20240,7 +20255,7 @@ lm
 Rn
 Rn
 Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -20277,7 +20292,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -20602,7 +20617,7 @@ Rn
 Rn
 lm
 lm
-Rn
+TB
 Rn
 lm
 lm
@@ -20679,7 +20694,7 @@ Rn
 lm
 Rn
 lm
-Rn
+TB
 lm
 lm
 lm
@@ -20784,7 +20799,7 @@ Qm
 Qm
 Rn
 Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -20910,7 +20925,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -21223,6 +21238,7 @@ Rn
 Rn
 Rn
 Rn
+TB
 Rn
 Rn
 Rn
@@ -21237,8 +21253,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -21258,7 +21273,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
+TB
 Rn
 lm
 lm
@@ -21286,7 +21301,7 @@ lm
 lm
 lm
 Rn
-Rn
+TB
 lm
 lm
 Rn
@@ -21956,7 +21971,7 @@ Rn
 Rn
 Rn
 lm
-Rn
+TB
 lm
 lm
 Rn
@@ -22049,7 +22064,7 @@ lm
 lm
 lm
 lm
-Rn
+TB
 Rn
 lm
 lm
@@ -22253,7 +22268,7 @@ lm
 lm
 Rn
 lm
-Rn
+TB
 Rn
 lm
 Rn
@@ -22565,7 +22580,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -22768,7 +22783,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -23051,7 +23066,7 @@ Rn
 Rn
 Rn
 YE
-YE
+fg
 YE
 YE
 YE
@@ -23182,7 +23197,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -24089,7 +24104,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
+TB
 HR
 Rn
 Rn
@@ -24481,7 +24496,7 @@ Rn
 HR
 YE
 Rn
-Rn
+TB
 Rn
 nz
 po
@@ -24494,7 +24509,7 @@ Rn
 lm
 lm
 Rn
-Rn
+TB
 Rn
 Rn
 lm
@@ -24517,7 +24532,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -24586,7 +24601,7 @@ lm
 lm
 Rn
 Rn
-Rn
+TB
 lm
 lm
 lm
@@ -24770,7 +24785,7 @@ lm
 Rn
 lm
 lm
-Rn
+TB
 lm
 lm
 Rn
@@ -24970,7 +24985,7 @@ lm
 Rn
 Rn
 lm
-Rn
+gm
 lm
 lm
 lm
@@ -24981,7 +24996,7 @@ lm
 lm
 Rn
 Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -25134,7 +25149,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -25471,7 +25486,7 @@ Rn
 lm
 lm
 Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -25509,7 +25524,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -25531,7 +25546,7 @@ Rn
 Ec
 Rn
 Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -25567,7 +25582,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -26327,7 +26342,7 @@ lm
 Rn
 lm
 Rn
-Rn
+TB
 Rn
 lm
 Rn
@@ -26416,7 +26431,7 @@ Qm
 Qm
 Rn
 Rn
-Rn
+TB
 Rn
 HR
 Rn
@@ -26810,7 +26825,7 @@ HR
 Rn
 Rn
 YE
-Rn
+TB
 Rn
 Rn
 YE
@@ -27017,7 +27032,7 @@ YE
 YE
 YE
 lm
-Rn
+TB
 lm
 Rn
 Rn
@@ -27485,7 +27500,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -27637,7 +27652,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -27850,7 +27865,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -27889,7 +27904,7 @@ YE
 YE
 YE
 Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -28189,7 +28204,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -28985,7 +29000,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -29011,7 +29026,7 @@ Rn
 lm
 lm
 lm
-Rn
+TB
 Rn
 lm
 Rn
@@ -29027,7 +29042,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
+TB
 Rn
 Rn
 Ec
@@ -29042,7 +29057,7 @@ YE
 YE
 YE
 YE
-YE
+fg
 YE
 Rn
 YE
@@ -29145,7 +29160,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
+TB
 Rn
 Rn
 YE
@@ -29327,7 +29342,7 @@ Qm
 Qm
 Rn
 Rn
-Rn
+gm
 Rn
 Rn
 Rn
@@ -29986,7 +30001,7 @@ Rn
 lm
 lm
 lm
-Rn
+TB
 lm
 Rn
 Rn
@@ -30173,7 +30188,7 @@ Rn
 lm
 lm
 lm
-Rn
+TB
 Rn
 Rn
 lm
@@ -30407,7 +30422,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -30496,7 +30511,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
+TB
 Rn
 Rn
 Yv
@@ -30552,7 +30567,7 @@ Rn
 YE
 YE
 Rn
-Rn
+TB
 Rn
 lm
 Rn
@@ -30784,7 +30799,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -30916,7 +30931,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -31146,7 +31161,7 @@ Rn
 Rn
 Rn
 lm
-Rn
+TB
 Rn
 Rn
 Rn
@@ -31285,7 +31300,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -31332,7 +31347,7 @@ Rn
 YE
 YE
 YE
-Rn
+TB
 Rn
 lm
 lm
@@ -31935,7 +31950,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -32092,7 +32107,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
+TB
 Rn
 Rn
 Rn
@@ -32143,7 +32158,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
+TB
 Rn
 Rn
 Rn
