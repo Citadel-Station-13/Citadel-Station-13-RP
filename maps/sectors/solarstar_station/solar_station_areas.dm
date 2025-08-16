@@ -1,0 +1,46 @@
+/area/sector/solar_station
+	name = "Away Mission - Solar Station"
+	icon = 'icons/turf/areas.dmi'
+	icon_state = "dark"
+	area_flags = AREA_RAD_SHIELDED
+	requires_power = 1
+	ambience = AMBIENCE_GENERIC
+
+/area/sector/solar_station/space
+	name = "Away Mission - Solar Station"
+
+/area/sector/solar_station/space/sun
+	name = "Away Mission - Solar Station"
+	initial_gas_mix ="o2=22;n2=82;TEMP=500.15"
+
+/area/sector/solar_station/space/sun/close
+	name = "Away Mission - Solar Station"
+	initial_gas_mix ="o2=22;n2=82;TEMP=1000.15"
+
+/area/sector/solar_station/space/sun/veryclose
+	name = "Away Mission - Solar Station"
+	initial_gas_mix ="o2=22;n2=82;TEMP=5000.15"
+
+/area/sector/solar_station/deck1
+	name = "Solar Station Kwar'Lih - HFS Denounced by the brother - Deck 1"
+	icon = 'icons/turf/areas.dmi'
+	icon_state = "dark"
+	area_flags = AREA_RAD_SHIELDED
+	requires_power = 1
+	ambience = AMBIENCE_GENERIC
+
+/area/sector/solar_station/deck0
+	name = "Solar Station Kwar'Lih - HFS Denounced by the brother - Deck 0"
+	icon = 'icons/turf/areas.dmi'
+	icon_state = "dark"
+	area_flags = AREA_RAD_SHIELDED
+	requires_power = 0
+	ambience = AMBIENCE_GENERIC
+
+/area/sector/solar_station/deck2
+	name = "Solar Station Kwar'Lih - HFS Denounced by the brother - Deck 2"
+	icon = 'icons/turf/areas.dmi'
+	icon_state = "dark"
+	area_flags = AREA_RAD_SHIELDED
+	requires_power = 0
+	ambience = AMBIENCE_GENERIC

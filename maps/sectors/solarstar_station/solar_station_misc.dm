@@ -13,15 +13,22 @@
 [b]Relationship with NT[/b]: Nanotrasen Client Government.
 [b]Relevant Contracts[/b]: Use to recharge vessels in power, and studies of the Lythios 43 star."}
 
-	icon = "icons/modules/overmap/bigger_entity.dmi"
 	icon_state = "sun"
 	color = "#ffeb85"
-	bound_x = 96
-	bound_y = 96
+
+	initial_restricted_waypoints = list(
+		"GCSS Vevalia Salvage Shuttle" = list ("solar_salvage"),
+	)
+
+/obj/effect/shuttle_landmark/solar_station_salvage
+	name = "Guardian Company Salvage Docking spot"
+	landmark_tag = "solar_salvage"
+	base_turf = /turf/space/basic
+	base_area = /area/sector/solar_station
 
 /obj/item/radio/phone/laptop
-	icon = 'icons/obj/items.dmi'
-	icon_state = "red_phone"
+	icon = 'icons/obj/computer.dmi'
+	icon_state = "laptop"
 	anchored = FALSE
 	broadcasting = FALSE
 	listening = TRUE

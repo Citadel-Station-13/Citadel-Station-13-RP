@@ -39,6 +39,7 @@
 		"Bonnethead Racing Shuttle" = list ("voidline_bonnethead"),
 		"Udang Pari-pari Racing Shuttle" = list ("voidline_udang"),
 		"Arrowhead Racing Shuttle" = list ("voidline_arrowhead"),
+		"ORS Crescend Radio Shuttle" = list ("occulum_safehouse"),
 		)
 
 //Turfs
@@ -261,6 +262,12 @@
 /obj/effect/shuttle_landmark/skyplanet/voidline6
 	name = "Voidline Rig - pad 6"
 	landmark_tag = "skyplanet_voidline_pad6"
+	base_turf = /turf/simulated/floor/reinforced
+	base_area = /area/sector/sky_planet/sky
+
+/obj/effect/shuttle_landmark/skyplanet/voidline/crescend
+	name = "Occulum Rig - Crescend Pad"
+	landmark_tag = "occulum_safehouse"
 	base_turf = /turf/simulated/floor/reinforced
 	base_area = /area/sector/sky_planet/sky
 

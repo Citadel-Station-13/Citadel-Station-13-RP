@@ -68,7 +68,7 @@
 /area/sector/sky_planet/ground)
 "dN" = (
 /obj/item/stack/medical/crude_pack,
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/floor/outdoors/dirt/outdoors,
 /area/sector/sky_planet/rock)
 "ez" = (
 /obj/effect/floor_decal/corner/navblue/border{
@@ -114,7 +114,7 @@
 /area/sector/sky_planet/rock)
 "gF" = (
 /mob/living/simple_mob/humanoid/cultist/mad,
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/floor/outdoors/dirt/outdoors,
 /area/sector/sky_planet/rock)
 "gR" = (
 /obj/effect/floor_decal/corner/navblue/diagonal,
@@ -128,6 +128,10 @@
 /obj/random/medical/pillbottle,
 /turf/simulated/floor/plating,
 /area/sector/sky_planet/poi)
+"hC" = (
+/obj/structure/closet/crate/miningcar,
+/turf/simulated/floor/outdoors/dirt/outdoors,
+/area/sector/sky_planet/rock)
 "iq" = (
 /turf/simulated/mineral/cave,
 /area/sector/sky_planet/rock)
@@ -248,6 +252,10 @@
 /obj/machinery/door/airlock/external/glass,
 /turf/simulated/floor/plating,
 /area/sector/sky_planet/poi)
+"mo" = (
+/obj/random/outcrop,
+/turf/simulated/floor/outdoors/dirt/outdoors,
+/area/sector/sky_planet/rock)
 "mt" = (
 /obj/effect/debris/cleanable/blood/drip,
 /obj/effect/floor_decal/rust,
@@ -284,6 +292,10 @@
 /area/sector/sky_planet/rock)
 "ot" = (
 /obj/structure/fence/wooden/post,
+/turf/simulated/floor/outdoors/dirt/outdoors,
+/area/sector/sky_planet/ground)
+"oJ" = (
+/obj/structure/sandbag,
 /turf/simulated/floor/outdoors/dirt/outdoors,
 /area/sector/sky_planet/ground)
 "oQ" = (
@@ -327,7 +339,7 @@
 /area/sector/sky_planet/rock)
 "pW" = (
 /obj/structure/catwalk,
-/turf/simulated/lava,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/sector/sky_planet/ground)
 "qo" = (
 /obj/effect/floor_decal/corner/navblue/border,
@@ -501,6 +513,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/sector/sky_planet/poi)
+"xl" = (
+/turf/simulated/mineral/cave,
+/area/sector/sky_planet/ground)
 "xr" = (
 /turf/simulated/floor/plating,
 /area/sector/sky_planet/poi)
@@ -518,6 +533,10 @@
 /mob/living/simple_mob/mechanical/hivebot/ranged_damage/sniper,
 /turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/rock)
+"yZ" = (
+/obj/machinery/mining/drill,
+/turf/simulated/floor/outdoors/dirt/outdoors,
+/area/sector/sky_planet/ground)
 "zb" = (
 /turf/simulated/floor/holofloor/reinforced{
 	outdoors = 1
@@ -534,6 +553,9 @@
 /obj/structure/stairs/spawner/north,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/ground)
+"zs" = (
+/turf/simulated/floor/outdoors/dirt/outdoors,
+/area/sector/sky_planet/rock)
 "zQ" = (
 /obj/effect/floor_decal/corner/navblue/diagonal,
 /obj/structure/window/reinforced,
@@ -720,16 +742,23 @@
 /area/sector/sky_planet/poi)
 "Ht" = (
 /obj/structure/event/prop/campfire,
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/floor/outdoors/dirt/outdoors,
 /area/sector/sky_planet/rock)
 "Hz" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/water/acid/outdoors,
 /area/sector/sky_planet/ground)
+"HD" = (
+/obj/structure/event/prop/mining_truck,
+/turf/simulated/floor/outdoors/dirt/outdoors,
+/area/sector/sky_planet/ground)
 "HG" = (
 /obj/random/outcrop,
 /turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground)
+"IA" = (
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/sector/sky_planet/rock)
 "IH" = (
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 10
@@ -739,7 +768,7 @@
 /area/sector/sky_planet/poi)
 "IL" = (
 /obj/effect/debris/cleanable/blood,
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/floor/outdoors/dirt/outdoors,
 /area/sector/sky_planet/rock)
 "Ja" = (
 /obj/effect/floor_decal/corner/navblue/border{
@@ -756,6 +785,10 @@
 /mob/living/simple_mob/mechanical/hivebot/swarm,
 /turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/rock)
+"JU" = (
+/mob/living/simple_mob/aggressive/dragoon,
+/turf/simulated/floor/outdoors/rocks/outdoors,
+/area/sector/sky_planet/ground)
 "JY" = (
 /obj/random/roguemineloot,
 /turf/simulated/floor/outdoors/rocks/outdoors,
@@ -839,6 +872,10 @@
 /obj/machinery/door/airlock/external/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/poi)
+"NF" = (
+/mob/living/simple_mob/aggressive/dragoon/yellow,
+/turf/simulated/floor/outdoors/dirt/outdoors,
+/area/sector/sky_planet/ground)
 "NH" = (
 /obj/structure/table/steel_reinforced,
 /obj/random/tool/alien,
@@ -852,6 +889,10 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/freezer,
 /area/sector/sky_planet/poi)
+"OG" = (
+/mob/living/simple_mob/mechanical/hivebot/ranged_damage,
+/turf/simulated/floor/outdoors/rocks/outdoors,
+/area/sector/sky_planet/ground)
 "OQ" = (
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 1
@@ -916,11 +957,15 @@
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/freezer,
 /area/sector/sky_planet/poi)
+"Rs" = (
+/mob/living/simple_mob/mechanical/hivebot/ranged_damage/sniper,
+/turf/simulated/floor/outdoors/dirt/outdoors,
+/area/sector/sky_planet/ground)
 "RA" = (
 /obj/item/flashlight/glowstick/red{
 	on = 1
 	},
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/floor/outdoors/dirt/outdoors,
 /area/sector/sky_planet/rock)
 "RQ" = (
 /obj/effect/floor_decal/industrial/warning,
@@ -949,6 +994,10 @@
 /obj/structure/simple_door/cult,
 /turf/simulated/floor/outdoors/rocks/caves,
 /area/sector/sky_planet/rock)
+"St" = (
+/obj/structure/sandbag,
+/turf/simulated/floor/outdoors/rocks/outdoors,
+/area/sector/sky_planet/ground)
 "SE" = (
 /obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/floor/outdoors/ash_sand/outdoors,
@@ -959,6 +1008,14 @@
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/sector/sky_planet/poi)
+"Tr" = (
+/obj/structure/catwalk,
+/obj/structure/catwalk,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/sector/sky_planet/ground)
+"TT" = (
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/sector/sky_planet/ground)
 "TU" = (
 /turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground/unexplored)
@@ -975,6 +1032,10 @@
 "UL" = (
 /turf/simulated/wall/solidrock,
 /area/sector/sky_planet/rock)
+"UO" = (
+/obj/random/outcrop,
+/turf/simulated/floor/outdoors/dirt/outdoors,
+/area/sector/sky_planet/ground)
 "UP" = (
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 6
@@ -1023,6 +1084,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/sky_planet/poi)
+"VA" = (
+/obj/structure/flora/rock/rock2,
+/turf/simulated/floor/outdoors/dirt/outdoors,
+/area/sector/sky_planet/ground)
 "VQ" = (
 /obj/structure/fence/wooden/end{
 	dir = 1
@@ -1057,6 +1122,10 @@
 "Ya" = (
 /obj/structure/grille,
 /turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/ground)
+"Yu" = (
+/obj/structure/flora/rock/rock4,
+/turf/simulated/floor/outdoors/dirt/outdoors,
 /area/sector/sky_planet/ground)
 "YK" = (
 /obj/effect/floor_decal/corner/navblue/diagonal,
@@ -1754,13 +1823,13 @@ iV
 iV
 iV
 iV
-iV
-Hz
-Hz
-Hz
-Hz
-Hz
-iV
+TT
+pW
+pW
+pW
+pW
+pW
+TT
 iV
 iV
 iV
@@ -1948,13 +2017,13 @@ iV
 aH
 iV
 iV
-iV
-Hz
-Hz
-Hz
-Hz
-Hz
-iV
+TT
+pW
+pW
+pW
+pW
+pW
+TT
 iV
 iV
 iV
@@ -2508,7 +2577,7 @@ je
 iV
 iV
 iV
-iV
+JU
 iV
 iV
 nf
@@ -3665,12 +3734,12 @@ iV
 nf
 nf
 rX
-rX
-Hz
-Hz
-Hz
-Hz
-rX
+TT
+pW
+pW
+pW
+pW
+TT
 rX
 rX
 rX
@@ -3791,10 +3860,10 @@ iV
 rf
 iV
 iV
-iV
-Hz
-Hz
-iV
+TT
+pW
+pW
+TT
 iV
 iV
 HG
@@ -3859,12 +3928,12 @@ iV
 nf
 rX
 rX
-nf
-Hz
-Hz
-Hz
-Hz
-rX
+TT
+pW
+pW
+pW
+pW
+TT
 rX
 rX
 iV
@@ -3985,10 +4054,10 @@ iV
 iV
 iV
 iV
-iV
-Hz
-Hz
-iV
+TT
+pW
+pW
+TT
 iV
 iV
 iV
@@ -4407,10 +4476,10 @@ nf
 nf
 rX
 rX
-iV
-Hz
-Hz
-iV
+TT
+pW
+pW
+TT
 nf
 nf
 iV
@@ -4601,10 +4670,10 @@ iV
 nf
 nf
 nf
-rX
-Hz
-Hz
-rX
+TT
+pW
+pW
+TT
 rX
 nf
 nf
@@ -6058,10 +6127,10 @@ iV
 iV
 iV
 iV
+nf
+nf
 iV
-iV
-iV
-iV
+nf
 iV
 iq
 iq
@@ -6251,11 +6320,11 @@ fC
 iV
 iV
 iV
-iV
-iV
-iV
-iV
-iV
+nf
+nf
+nf
+nf
+nf
 iV
 iq
 iq
@@ -6444,12 +6513,12 @@ iV
 iV
 iV
 iV
-iV
-iV
-iV
-iV
-iV
-iV
+nf
+nf
+nf
+nf
+nf
+nf
 iV
 iq
 iq
@@ -6638,12 +6707,12 @@ iV
 iV
 iV
 iV
-iV
-iV
-iV
-iV
-iV
-iV
+nf
+nf
+nf
+nf
+nf
+nf
 iq
 iq
 iq
@@ -6831,12 +6900,12 @@ iV
 iV
 iV
 iV
-iV
-iV
-iV
-iV
-iV
-iV
+nf
+nf
+nf
+nf
+nf
+nf
 iq
 iq
 iq
@@ -7024,13 +7093,13 @@ iV
 iV
 iV
 iV
-iV
-iV
-HG
-iV
-iV
-iV
-iq
+nf
+nf
+UO
+nf
+nf
+nf
+zs
 iq
 iq
 iq
@@ -7217,13 +7286,13 @@ iV
 iV
 iV
 iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
+nf
+nf
+nf
+nf
+nf
+nf
+nf
 iq
 iq
 iq
@@ -7411,12 +7480,12 @@ iV
 iV
 iV
 iV
-iV
-iV
-iV
-iV
-iV
-iV
+nf
+nf
+nf
+nf
+nf
+nf
 iq
 iq
 iq
@@ -7604,13 +7673,13 @@ iV
 iV
 iV
 KK
-iV
-iV
-iV
-iV
-iV
-iV
-iV
+nf
+nf
+nf
+nf
+nf
+nf
+nf
 iq
 iq
 iq
@@ -7798,12 +7867,12 @@ iV
 iV
 iV
 iV
-iV
-iV
-iV
-iV
-iV
-iV
+nf
+nf
+nf
+nf
+nf
+nf
 iq
 iq
 iq
@@ -7992,13 +8061,13 @@ je
 iV
 iV
 iV
-iV
-iV
-aH
-iV
-iV
-iV
-iq
+nf
+nf
+VA
+nf
+nf
+nf
+zs
 iq
 iq
 iq
@@ -8187,12 +8256,12 @@ iV
 iV
 iV
 iV
-iV
-iV
-iV
-iV
-iV
-iq
+nf
+nf
+nf
+yZ
+nf
+zs
 iq
 iq
 iq
@@ -8381,14 +8450,14 @@ iV
 iV
 iV
 iV
-iV
-iV
-iV
-iV
-iV
-iq
-iq
-iq
+nf
+nf
+nf
+nf
+nf
+zs
+zs
+zs
 iq
 iq
 iq
@@ -8574,16 +8643,16 @@ je
 iV
 iV
 iV
-iV
-iV
-iV
-iV
-iV
-iV
-iq
-iq
-iq
-iq
+nf
+nf
+HD
+nf
+nf
+nf
+hC
+zs
+zs
+mo
 iq
 iq
 iq
@@ -8646,7 +8715,7 @@ iV
 je
 je
 iV
-iV
+TT
 iV
 iV
 je
@@ -8767,17 +8836,17 @@ je
 je
 iV
 iV
-iV
-HG
-iV
-iV
-iV
-iV
-iV
-iq
-iq
-iq
-iq
+nf
+UO
+nf
+nf
+nf
+NF
+nf
+zs
+zs
+zs
+zs
 iq
 iq
 iq
@@ -8839,8 +8908,8 @@ Hz
 je
 je
 je
-iV
-Hz
+TT
+pW
 je
 je
 je
@@ -8961,17 +9030,17 @@ je
 je
 iV
 iV
-iV
-iV
-iV
-iV
-iV
-iV
-iq
-iq
-iq
-iq
-iq
+nf
+nf
+nf
+nf
+nf
+nf
+zs
+zs
+hC
+zs
+zs
 iq
 iq
 iq
@@ -9033,8 +9102,8 @@ je
 je
 je
 je
-Hz
-Hz
+pW
+pW
 je
 je
 iV
@@ -9156,15 +9225,15 @@ je
 iV
 iV
 iV
-iV
-iV
-KK
-iV
-iV
-iV
-iq
-iq
-iq
+nf
+nf
+Yu
+nf
+nf
+nf
+zs
+zs
+zs
 iq
 iq
 iq
@@ -9227,8 +9296,8 @@ gl
 je
 je
 iV
-iV
-fk
+TT
+IA
 iq
 iq
 iq
@@ -9351,14 +9420,14 @@ iV
 iV
 iV
 iV
-iV
-iV
-iV
-iV
-iq
-iq
-iq
-iq
+nf
+nf
+nf
+nf
+zs
+zs
+mo
+zs
 iq
 iq
 iq
@@ -9545,13 +9614,13 @@ iV
 iV
 iV
 iV
-iV
-iV
-iV
-iV
-iq
-iq
-iq
+nf
+nf
+nf
+HD
+zs
+zs
+zs
 iq
 iq
 iq
@@ -9740,11 +9809,11 @@ iV
 iV
 iV
 iV
-iV
-iV
-iV
+nf
+nf
+nf
 iq
-iq
+zs
 iq
 iq
 iq
@@ -9934,9 +10003,9 @@ iV
 iV
 iV
 iV
-iV
-iV
-iV
+nf
+nf
+nf
 iq
 iq
 iq
@@ -10129,8 +10198,8 @@ KK
 iV
 iV
 iV
-iV
-iV
+nf
+UO
 iq
 iq
 iq
@@ -10323,8 +10392,8 @@ iV
 iV
 iV
 iV
-iV
-iV
+nf
+nf
 iq
 iq
 iq
@@ -10518,7 +10587,7 @@ iV
 iV
 iV
 iV
-iV
+nf
 iq
 iq
 iq
@@ -13375,8 +13444,8 @@ je
 je
 iV
 iV
-rX
-rX
+TT
+TT
 iV
 iV
 je
@@ -13569,8 +13638,8 @@ je
 je
 je
 je
-Hz
-Hz
+pW
+pW
 je
 je
 je
@@ -13763,8 +13832,8 @@ je
 je
 je
 je
-Hz
-Hz
+pW
+pW
 je
 je
 je
@@ -13957,8 +14026,8 @@ je
 je
 je
 je
-Hz
-Hz
+pW
+pW
 je
 je
 je
@@ -14151,8 +14220,8 @@ je
 je
 je
 je
-Hz
-Hz
+pW
+pW
 je
 je
 je
@@ -14345,8 +14414,8 @@ je
 je
 je
 je
-Hz
-Hz
+pW
+pW
 je
 je
 je
@@ -14539,8 +14608,8 @@ je
 je
 je
 je
-Hz
-Hz
+pW
+pW
 je
 je
 je
@@ -14733,8 +14802,8 @@ je
 je
 je
 je
-Hz
-Hz
+pW
+pW
 je
 iV
 iV
@@ -14927,8 +14996,8 @@ iV
 iV
 iV
 je
-rX
-rX
+TT
+TT
 iV
 iV
 iV
@@ -18384,7 +18453,7 @@ iV
 iV
 iV
 iV
-iV
+JU
 iV
 iV
 iV
@@ -22888,7 +22957,7 @@ iV
 iV
 iV
 iV
-iV
+JU
 iV
 iV
 iV
@@ -24315,10 +24384,10 @@ iV
 iV
 iV
 iV
-iV
+TT
 pW
-iV
-iV
+TT
+TT
 iV
 iV
 Fw
@@ -24509,10 +24578,10 @@ KK
 iV
 iV
 iV
-iV
+TT
 pW
 pW
-iV
+TT
 iV
 iV
 iV
@@ -27753,7 +27822,7 @@ iq
 QJ
 IL
 dN
-jG
+zs
 iq
 iq
 iq
@@ -28352,7 +28421,7 @@ iV
 iV
 iV
 iV
-iV
+aH
 iV
 iV
 iV
@@ -28533,17 +28602,17 @@ iq
 iq
 iq
 iV
+St
+St
+St
+St
 iV
 iV
 iV
 iV
 iV
 iV
-iV
-iV
-iV
-iV
-iV
+aH
 iV
 iV
 iV
@@ -28729,7 +28798,7 @@ iV
 iV
 iV
 iV
-iV
+OG
 aH
 iV
 iV
@@ -29314,8 +29383,8 @@ iV
 iV
 iV
 iV
-iV
-zh
+TT
+pW
 zh
 zh
 iV
@@ -29508,8 +29577,8 @@ iV
 iV
 iV
 iV
-zh
-zh
+pW
+Tr
 zh
 iV
 iV
@@ -29702,8 +29771,8 @@ iV
 zh
 zh
 zh
-zh
-iV
+pW
+TT
 iV
 iV
 iV
@@ -30288,9 +30357,9 @@ iV
 iV
 iV
 iV
-iq
-iq
-iq
+nf
+nf
+nf
 iV
 iV
 iV
@@ -30480,12 +30549,12 @@ iV
 aH
 iV
 iV
-iq
-iq
-iq
-iq
-iq
-iq
+oJ
+oJ
+oJ
+oJ
+oJ
+oJ
 iq
 iV
 iV
@@ -30674,12 +30743,12 @@ iV
 iV
 iV
 iV
-iq
-iq
-iq
-iq
-iq
-iq
+oJ
+Rs
+nf
+nf
+nf
+zs
 iq
 iq
 iV
@@ -30868,10 +30937,10 @@ iV
 iV
 iV
 iV
-iq
-iq
-iq
-iq
+oJ
+nf
+nf
+zs
 iq
 iq
 iq
@@ -31061,10 +31130,10 @@ iV
 iV
 iV
 iV
-iq
-iq
-iq
-iq
+nf
+oJ
+nf
+zs
 iq
 iq
 iq
@@ -31255,8 +31324,8 @@ HG
 iV
 iV
 iV
-iq
-iq
+nf
+xl
 iq
 iq
 iq
@@ -34950,10 +35019,10 @@ zh
 zh
 zh
 iV
-iV
-iV
-iV
-iV
+TT
+TT
+TT
+TT
 iV
 iV
 iV
@@ -35532,10 +35601,10 @@ iV
 Fw
 iV
 iV
-iV
-iV
-iV
-iV
+TT
+TT
+TT
+TT
 iV
 iV
 iV

@@ -54,9 +54,9 @@
 	title_outfit = /datum/outfit/job/station/outsider/tourist
 	title_blurb = "You are a tourist, visiting the sector."
 
-/datum/prototype/struct/alt_title/vacationer,
+/datum/prototype/struct/alt_title/vacationer
 	title = "NT Vacationer"
-	title_outfit = /datum/outfit/job/station/outsider/tourist
+	title_outfit = /datum/outfit/job/station/outsider/vacationer
 	title_blurb = "You are a off-duty NT employee. While you enjoy the benefits of being vacationning outside the station, base, ship, you are off-duty and can't return on duty unless something grave happends."
 
 /datum/prototype/struct/alt_title/indyreport
@@ -77,7 +77,7 @@
 	id_pda_assignment = "Tourist"
 
 /datum/outfit/job/station/outsider/vacationer
-	id_pda_assignment "NT Vacationer"
+	id_pda_assignment = "NT Vacationer"
 
 /datum/outfit/job/station/outsider/indyreport
 	name = OUTFIT_JOB_NAME("Independant Reporter")

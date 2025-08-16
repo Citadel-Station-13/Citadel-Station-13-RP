@@ -92,6 +92,16 @@
 	icon_state = "blue"
 	ambience = AMBIENCE_HANGAR
 
+/area/sector/sky_planet/occulum
+	name = "Occulum Safehouse"
+	icon_state = "blue"
+	requires_power = 1
+
+/area/sector/sky_planet/highway
+	name = "Sky Highway Stop"
+	icon_state = "blue"
+	ambience = AMBIENCE_HANGAR
+
 //Station City
 
 /area/sector/sky_planet/station_city
