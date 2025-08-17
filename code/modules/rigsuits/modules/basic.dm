@@ -77,3 +77,15 @@
 	SHOULD_NOT_SLEEP(TRUE)
 
 #warn impl
+
+/obj/item/rig_module/basic/rig_static_data()
+	. = ..()
+	.["implToggle"] = impl_toggle
+	.["implClick"] = impl_click
+	.["implTrigger"] = impl_trigger
+
+/obj/item/rig_module/basic/rig_data()
+	. = ..()
+
+/obj/item/rig_module/basic/rig_act(datum/event_args/actor/actor, control_flags, action, list/params)
+	. = ..()

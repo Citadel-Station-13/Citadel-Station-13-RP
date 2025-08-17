@@ -32,7 +32,6 @@
 	icon_state = "IIS"
 	toggleable = 1
 	usable = 1
-	disruptive = 0
 	activates_on_touch = 1
 
 	engage_string = "Eject AI"

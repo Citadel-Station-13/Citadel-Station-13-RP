@@ -282,7 +282,6 @@
 	desc = "A retractable arm-mounted blade in an equally retractable scabbard that fits in standardized hardsuit mounts. Attaches to the user's forearm."
 	icon_state = "armblade"
 	toggleable = TRUE
-	disruptive = FALSE
 
 	interface_name = "retractable armblade"
 	interface_desc = "An attached armblade fitted to the wearer's arm of choice."

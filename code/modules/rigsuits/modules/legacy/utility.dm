@@ -109,7 +109,6 @@
 	usable = 1
 	selectable = 0
 	toggleable = 0
-	disruptive = 0
 
 	engage_string = "Inject"
 
@@ -244,7 +243,6 @@
 	desc = "A complex web of tubing and a large needle suitable for hardsuit use."
 	usable = 0
 	selectable = 1
-	disruptive = 1
 
 	interface_name = "mounted chem injector"
 	interface_desc = "Dispenses loaded chemicals via an arm-mounted injector."
@@ -271,7 +269,6 @@
 	usable = 1
 	selectable = 0
 	toggleable = 0
-	disruptive = 0
 
 	engage_string = "Configure Synthesizer"
 
@@ -324,7 +321,6 @@
 	usable = 1
 	toggleable = 1
 	selectable = 0
-	disruptive = 0
 
 	suit_overlay_active = "maneuvering_active"
 	suit_overlay_inactive = null //"maneuvering_inactive"
@@ -584,8 +580,6 @@
 	var/sprint_speed = 1
 
 	toggleable = 1
-	disruptable = 1
-	disruptive = 0
 
 	use_power_cost = 0
 	active_power_cost = 5

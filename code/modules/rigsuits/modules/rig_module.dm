@@ -125,6 +125,20 @@
 //* Attachment *//
 
 /**
+ * first check - 'does it make sense for this to be attached to the rig?'
+ * * if not, specify why if not silent and actor is provided
+ * * this has final say for denial; this overrides even forced attachments.
+ *
+ * @params
+ * * rig - the suit
+ * * actor - (optional) person attaching
+ * * silent - (optional) should we inform the person attaching?
+ */
+/obj/item/rig_module/proc/is_valid_attach(obj/item/rig/rig, datum/event_args/actor/actor, silent)
+	SHOULD_NOT_SLEEP(TRUE)
+	return TRUE
+
+/**
  * has final say over rig
  * most regular checks should be rig-side
  *
@@ -135,19 +149,7 @@
  * * silent - (optional) should we inform the person attaching?
  */
 /obj/item/rig_module/proc/can_attach(obj/item/rig/rig, rig_opinion, datum/event_args/actor/actor, silent)
-	return TRUE
-
-/**
- * first check - 'does it make sense for this to be attached to the rig?'
- *
- * if not, specify why if not silent and actor is provided
- *
- * @params
- * * rig - the suit
- * * actor - (optional) person attaching
- * * silent - (optional) should we inform the person attaching?
- */
-/obj/item/rig_module/proc/valid_attach(obj/item/rig/rig, datum/event_args/actor/actor, silent)
+	SHOULD_NOT_SLEEP(TRUE)
 	return TRUE
 
 /**
@@ -161,7 +163,32 @@
  * * silent - (optional) should we inform the person attaching?
  */
 /obj/item/rig_module/proc/can_detach(obj/item/rig/rig, rig_opinion, datum/event_args/actor/actor, silent)
+	SHOULD_NOT_SLEEP(TRUE)
 	return TRUE
+
+/obj/item/rig_module/proc/on_attach(obj/item/rig/rig, datum/event_args/actor/actor, silent)
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_CALL_PARENT(TRUE)
+
+/obj/item/rig_module/proc/on_detach(obj/item/rig/rig, datum/event_args/actor/actor, silent)
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_CALL_PARENT(TRUE)
+
+//* Feedback *//
+
+/**
+ * Transmits a feedback message to rig users
+ */
+/obj/item/rig_module/proc/rig_feedback(msg, datum/event_args/actor/actor)
+	#warn impl
+
+/**
+ * Appends a message to rig logs
+ */
+/obj/item/rig_module/proc/rig_log(msg)
+	#warn impl
+
+// todo: rig sound / vfx ?
 
 //* Console *//
 
@@ -195,17 +222,11 @@
 
 //* Power *//
 
-/obj/item/rig_module/proc/set_high_power_draw(watts)
+/obj/item/rig_module/proc/set_static_power_draw(watts)
 	#warn impl
 
-/obj/item/rig_module/proc/set_low_power_draw(watts)
-	#warn impl
-
-/obj/item/rig_module/proc/use_high_burst_power(joules)
-	return isnull(host)? 0 : host.draw_high_power(joules)
-
-/obj/item/rig_module/proc/use_low_burst_power(joules)
-	return isnull(host)? 0 : host.draw_low_power(joules)
+/obj/item/rig_module/proc/clear_static_power_draw()
+	set_static_power_draw(0)
 
 //* Setters *//
 
@@ -236,22 +257,36 @@
 
 //* UI *//
 
+/**
+ * Static data.
+ * * Unlike regular static data, there is no way to update this. This is pretty much
+ *   only for hardcoded values to be transmitted to the UI.
+ */
 /obj/item/rig_module/proc/rig_static_data()
+	return list()
+
+/**
+ * UI data.
+ * * This does not auto-update on tick. Use rig_push_data() as needed, and rig_update_data().
+ */
+/obj/item/rig_module/proc/rig_data()
 	return list(
 		"$tgui" = tgui_interface,
 	)
 	#warn impl
 
-/obj/item/rig_module/proc/rig_data()
+/obj/item/rig_module/proc/rig_push_data(list/data, immediate)
 	#warn impl
 
-/obj/item/rig_module/proc/rig_push_data(list/data)
+/obj/item/rig_module/proc/rig_update_data()
 	#warn impl
 
 /**
  * @return TRUE if did something (and stop propagation).
  */
 /obj/item/rig_module/proc/rig_act(datum/event_args/actor/actor, control_flags, action, list/params)
+	if(!rig_allowed(actor, control_flags, action, params))
+		return TRUE
 	return FALSE
 
 /**

@@ -7,8 +7,6 @@
 
 	usable = 1
 	toggleable = 1
-	disruptable = 1
-	disruptive = 0
 
 	use_power_cost = 100
 	active_power_cost = 1

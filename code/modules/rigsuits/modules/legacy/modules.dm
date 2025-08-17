@@ -13,17 +13,10 @@
 	desc = "It looks pretty sciency."
 	icon = 'icons/obj/rig_modules.dmi'
 	icon_state = "module"
-	materials_base = list(MAT_STEEL = 20000, MAT_PLASTIC = 30000, MAT_GLASS = 5000)
+	materials_base = list(MAT_STEEL = 2000, MAT_PLASTIC = 2500, MAT_GLASS = 1750)
 
 	#warn we will need to implement global conflict type on everything as this defaults off
 	var/redundant                       // Set to 1 to ignore duplicate module checking when installing.
-	var/disruptive = 1                  // Can disrupt by other effects.
-
-	var/active                          // Basic module status
-	var/disruptable                     // Will deactivate if some other powers are used.
-
-	var/use_power_cost = 0              // Power used when single-use ability called.
-	var/active_power_cost = 0           // Power used when turned on.
 
 	var/list/charges                    // Associative list of charge types and remaining numbers.
 	var/charge_selected                 // Currently selected option used for charge dispensing.
@@ -114,21 +107,6 @@
 			processed_charges[charge_dat.short_name] = charge_dat
 
 		charges = processed_charges
-
-	stat_modules +=	new/stat_hardsuit_module/activate(src)
-	stat_modules +=	new/stat_hardsuit_module/deactivate(src)
-	stat_modules +=	new/stat_hardsuit_module/engage(src)
-	stat_modules +=	new/stat_hardsuit_module/select(src)
-	stat_modules +=	new/stat_hardsuit_module/charge(src)
-
-/obj/item/rig_module/basic/Destroy()
-	QDEL_LIST(stat_modules)
-	return ..()
-
-// Called when the module is installed into a suit.
-/obj/item/rig_module/basic/proc/installed(var/obj/item/hardsuit/new_holder)
-	holder = new_holder
-	return
 
 //Proc for one-use abilities like teleport.
 /obj/item/rig_module/basic/proc/engage()

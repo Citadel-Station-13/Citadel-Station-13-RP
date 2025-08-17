@@ -65,7 +65,6 @@
 
 	usable = 1
 	toggleable = 1
-	disruptive = 0
 	module_cooldown = 0
 
 	engage_string = "Cycle Visor Mode"

@@ -7,14 +7,12 @@
  */
 
 /obj/item/rig_module/basic/stealth_field
-
+	#warn make sure this breaks on weapon / item usage
 	name = "active camouflage module"
 	desc = "A robust hardsuit-integrated stealth module."
 	icon_state = "cloak"
 
 	toggleable = 1
-	disruptable = 1
-	disruptive = 0
 
 	use_power_cost = 50
 	active_power_cost = 10
