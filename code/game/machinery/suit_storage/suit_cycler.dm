@@ -72,7 +72,7 @@
 	name = "Medical suit cycler"
 	model_text = "Medical"
 	req_access = list(ACCESS_MEDICAL_MAIN)
-	departments = list("Medical","Biohazard","Emergency Medical Response", "No Change")
+	departments = list("Medical","Biohazard","Emergency Medical Response","Field Medic", "No Change")
 
 /obj/machinery/suit_cycler/syndicate
 	name = "Nonstandard suit cycler"
@@ -84,7 +84,7 @@
 /obj/machinery/suit_cycler/exploration
 	name = "Explorer suit cycler"
 	model_text = "Exploration"
-	req_access = list(ACCESS_GENERAL_EXPLORER) //Old Exploration needs fixing up
+	req_access = list(ACCESS_GENERAL_EXPLORER)
 	departments = list("Exploration", "No Change")
 
 /obj/machinery/suit_cycler/pathfinder
@@ -535,6 +535,9 @@
 		if("Old Exploration")
 			parent_helmet = /obj/item/clothing/head/helmet/space/void/exploration/alt
 			parent_suit = /obj/item/clothing/suit/space/void/exploration/alt
+		if("Field Medic")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/exploration/med
+			parent_suit = /obj/item/clothing/suit/space/void/exploration/med
 		if("Pathfinder")
 			parent_helmet = /obj/item/clothing/head/helmet/space/void/exploration/pathfinder
 			parent_suit = /obj/item/clothing/suit/space/void/exploration/pathfinder
