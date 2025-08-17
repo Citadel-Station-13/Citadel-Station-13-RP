@@ -2,7 +2,11 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /**
- * straight ports of old modules
+ * Basic modules.
+ * This is useful for modules that have functionality not more complex than:
+ * * A toggle
+ * * A trigger
+ * * A click-hook
  */
 /obj/item/rig_module/basic
 	tgui_interface = "Basic"
@@ -23,6 +27,10 @@
 	var/trigger_cooldown = 1 SECONDS
 	/// next world.time we can be triggered
 	var/trigger_next_time
+	/// text for trigger button
+	var/trigger_desc = "Activate"
+	/// text for trigger button while on cd, if any
+	var/trigger_desc_cd
 
 	/// power use per second when toggled on
 	var/toggle_active_power_cost
@@ -35,6 +43,14 @@
 	var/toggle_next_time
 	/// currently active?
 	var/toggle_enabled = FALSE
+	/// text for toggle button to enable
+	var/toggle_desc_enable = "Activate"
+	/// text for toggle button to disable
+	var/toggle_desc_disable = "Deactivate"
+	/// text for toggle button to enable while on cd for enabling
+	var/toggle_desc_enable_cd
+	/// text for toggle button to disable while on cd for disabling
+	var/toggle_desc_disable_cd
 
 /obj/item/rig_module/basic
 

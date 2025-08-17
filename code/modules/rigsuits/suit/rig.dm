@@ -20,7 +20,7 @@
 	#warn we gotta refactor actions for this lmao, esp for remote control (?!!)
 	action_button_name = "Debug UI"
 
-	//* Activation
+	//* Activation *//
 	/// activation state
 	var/activation_state = RIG_ACTIVATION_OFFLINE
 	/// currently in an activation operation.
@@ -29,36 +29,36 @@
 	/// activation operation identifier - this lets us abort by just changing this while the loop is running
 	var/activation_operation = 0
 
-	//* Appearance (Self)
+	//* Appearance (Self) *//
 	var/state_worn_sealed
 	var/state_worn_unsealed
 	var/state_sealed
 	var/state_unsealed
 
-	//* Console
+	//* Console *//
 	/// Our console
 	var/datum/rig_console/console
 
-	//* Control
+	//* Control *//
 	#warn todo
 
-	//* Defense
+	//* Defense *//
 
-	//* Environmentals
+	//* Environmentals *//
 	#warn todo
 
-	//* Legacy - to be made into dynamic data once components/modules are done.
+	//* Legacy - to be made into dynamic data once components/modules are done. *//
 	var/datum/armor/suit_armor
 	var/min_pressure_protect
 	var/max_pressure_protect
 	var/min_temperature_protect
 	var/max_temperature_protect
 
-	//* Internal
+	//* Internal *//
 	/// lookup id
 	var/next_lookup_id = 0
 
-	//* Maintenance
+	//* Maintenance *//
 	/// panel datum to host our maint tgui
 	/// lazy-init'd
 	var/datum/rig_maint_panel/maint_panel
@@ -77,7 +77,7 @@
 	/// armor type on panel
 	var/maint_panel_armor_type = /datum/armor/object/light
 
-	//* Modules
+	//* Modules *//
 	/// list of /obj/item/rig_module's by its lookup_id
 	var/list/obj/item/rig_module/module_lookup
 	/// total weight of all modules
@@ -89,11 +89,11 @@
 	/// conflict enums and types
 	var/list/module_conflict_lookup
 
-	//* Pieces
+	//* Pieces *//
 	/// list of /datum/component/rig_piece's by its lookup_id
 	var/list/datum/component/rig_piece/piece_lookup
 
-	//* Power
+	//* Power *//
 	#warn todo.
 
 	//* Stats - Base
@@ -113,7 +113,11 @@
 	//  todo: maybe by-piece ones too..?
 	var/online_encumbrance
 
-	//* Theme
+	//* Resources *//
+	/// resource bus
+	var/datum/item_mount/rig_resources/resources
+
+	//* Theme *//
 	/// default theme
 	var/theme_preset = /datum/rig_theme/station/civilian/standard
 	/// Is our theme initialized?
@@ -121,7 +125,7 @@
 	/// theme name - this is the fluff/player facing name
 	var/theme_name = "Unknown"
 
-	//* UI
+	//* UI *//
 	/// update timerid
 	var/ui_queued_timer
 	/// core systems awaiting update
@@ -142,13 +146,13 @@
 	#warn hook
 	var/ui_theme
 
-	//* Wearer
+	//* Wearer *//
 	/// Our wearer
 	var/mob/wearer
 	/// What slot we must be in - typepath or ID.
 	var/wearer_required_slot_id = /datum/inventory_slot_meta/inventory/back
 
-	//* Zones
+	//* Zones *//
 	var/datum/rig_zone/z_head = new /datum/rig_zone/head
 	var/datum/rig_zone/z_chest = new /datum/rig_zone/chest
 	var/datum/rig_zone/z_left_arm = new /datum/rig_zone/left_arm
@@ -162,12 +166,14 @@
 
 /obj/item/rig/Initialize(mapload, datum/rig_theme/theme_like)
 	. = ..()
+	resources = new(src)
 	// todo: this is shitcode and just bypasses the init sleep check, if shit breaks idfk lmao
 	INVOKE_ASYNC(src, PROC_REF(init_theme), theme_like || theme_preset)
 
 /obj/item/rig/Destroy()
 	hard_reset()
 	wipe_everything()
+	QDEL_NULL(resources)
 	QDEL_NULL(console)
 	QDEL_NULL(maint_panel)
 	QDEL_NULL(z_head)

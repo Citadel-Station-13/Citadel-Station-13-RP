@@ -2,13 +2,13 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /**
- * Root subtype of toolset modules
+ * Root subtype of item deployer modules
  *
- * Toolset modules allow for deploying a set of items in hand.
+ * Item deployer modules allow for deploying a set of items in hand.
  * Said items work with item mounts/energy draw/etc.
  */
-/obj/item/rig_module/toolset
-	abstract_type = /obj/item/rig_module/toolset
+/obj/item/rig_module/item_deploy
+	abstract_type = /obj/item/rig_module/item_deploy
 
 	/// list of items; set to a list of typepaths to init.
 	var/list/obj/item/items = list()

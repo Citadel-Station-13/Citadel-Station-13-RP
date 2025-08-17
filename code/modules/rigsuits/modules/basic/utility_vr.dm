@@ -20,16 +20,6 @@
 	interface_name = "PAT system"
 	interface_desc = "For opening doors ahead of you, in advance. Override notifies command staff."
 
-/*
-	var/message = "[H] has activated \a [src] in [get_area(T)] at position [T.x],[T.y],[T.z], giving them full access for medical rescue."
-	var/obj/item/radio/headset/a = new /obj/item/radio/headset/heads/captain(null)
-	a.icon = icon
-	a.icon_state = icon_state
-	a.autosay(message, "Security Subsystem", "Command")
-	a.autosay(message, "Security Subsystem", "Security")
-	qdel(a)
-*/
-
 /obj/item/rig_module/basic/pat_module/activate()
 	if(!..(TRUE)) //Skip the engage() call, that's for the override and is 'spensive.
 		return 0

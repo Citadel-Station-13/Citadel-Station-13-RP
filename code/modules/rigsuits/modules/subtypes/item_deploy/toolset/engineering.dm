@@ -1,12 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
-/obj/item/rig_module/toolset/engineering
-	abstract_type = /obj/item/rig_module/toolset/engineering
-
-//? Simple
-
-/obj/item/rig_module/toolset/engineering/simple
+/obj/item/rig_module/item_deploy/toolset/engineering
 	items = list(
 		/obj/item/tool/screwdriver/rig_basic,
 		/obj/item/tool/wirecutters/rig_basic,
@@ -15,7 +10,7 @@
 	)
 	#warn impl
 
-/obj/item/rig_module/toolset/engineering/simple/with_multitool
+/obj/item/rig_module/item_deploy/toolset/engineering/with_multitool
 	items = list(
 		/obj/item/tool/screwdriver/rig_basic,
 		/obj/item/tool/wirecutters/rig_basic,
@@ -24,7 +19,7 @@
 		/obj/item/multitool,
 	)
 
-/obj/item/rig_module/toolset/engineering/simple/with_welder
+/obj/item/rig_module/item_deploy/toolset/engineering/with_welder
 	items = list(
 		/obj/item/tool/screwdriver/rig_basic,
 		/obj/item/tool/wirecutters/rig_basic,
@@ -33,7 +28,7 @@
 		/obj/item/weldingtool/electric,
 	)
 
-/obj/item/rig_module/toolset/engineering/simple/full
+/obj/item/rig_module/item_deploy/toolset/engineering/full
 	items = list(
 		/obj/item/tool/screwdriver/rig_basic,
 		/obj/item/tool/wirecutters/rig_basic,
@@ -71,10 +66,10 @@
 
 // todo: powertools
 
-/obj/item/rig_module/toolset/engineering/power
+/obj/item/rig_module/item_deploy/engineering/power
 
 //? Hardlight (tier 3)
 
 // todo: hardlight
 
-/obj/item/rig_module/toolset/engineering/hardlight
+/obj/item/rig_module/item_deploy/engineering/hardlight

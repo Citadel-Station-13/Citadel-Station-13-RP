@@ -5,6 +5,8 @@
  * modules are modular items that can be inserted into specific complexity on the rig.
  */
 /obj/item/rig_module
+	name = "rig module"
+	desc = "A piece of equipment able to be installed onto powered hardsuits."
 	#warn impl all
 
 	//* Core *//
