@@ -251,6 +251,12 @@
 	color = "#6A97B0"
 	},
 /area/sector/ice_comet)
+"ig" = (
+/obj/structure/flora/rock/rock3,
+/turf/simulated/floor/outdoors/rocks{
+	color = "#6A97B0"
+	},
+/area/sector/ice_comet)
 "is" = (
 /obj/item/modular_computer/console/preset/research,
 /turf/simulated/floor/tiled/techmaint,
@@ -312,6 +318,12 @@
 	dir = 8
 	},
 /turf/simulated/floor/outdoors/safeice/lythios43c,
+/area/sector/ice_comet)
+"ll" = (
+/obj/structure/alien/acid,
+/turf/simulated/floor/outdoors/rocks{
+	color = "#6A97B0"
+	},
 /area/sector/ice_comet)
 "lm" = (
 /turf/simulated/floor/water/deep/indoors/lythios43c,
@@ -409,6 +421,12 @@
 "nz" = (
 /turf/simulated/shuttle/wall/voidcraft/survival,
 /area/sector/ice_comet/facility)
+"nK" = (
+/obj/structure/flora/rock/rock2,
+/turf/simulated/floor/outdoors/rocks{
+	color = "#6A97B0"
+	},
+/area/sector/ice_comet)
 "nQ" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -499,6 +517,12 @@
 /obj/structure/flora/pottedplant/hedge,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/ice_comet/facility)
+"qy" = (
+/obj/structure/flora/rock/rock1,
+/turf/simulated/floor/outdoors/rocks{
+	color = "#6A97B0"
+	},
+/area/sector/ice_comet)
 "qC" = (
 /obj/structure/flora/rock/ice/alternative_2,
 /turf/simulated/floor/outdoors/rocks{
@@ -612,6 +636,13 @@
 /area/sector/ice_comet/facility)
 "ut" = (
 /obj/structure/event/prop/excavation_drill,
+/turf/simulated/floor/outdoors/rocks{
+	color = "#6A97B0"
+	},
+/area/sector/ice_comet)
+"uA" = (
+/obj/structure/flora/rock/rock3,
+/obj/structure/alien/acid,
 /turf/simulated/floor/outdoors/rocks{
 	color = "#6A97B0"
 	},
@@ -823,12 +854,24 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/ice_comet/facility)
+"AR" = (
+/obj/effect/particle_effect/smoke,
+/turf/simulated/floor/outdoors/rocks{
+	color = "#6A97B0"
+	},
+/area/sector/ice_comet)
 "Bk" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/ice_comet/facility)
+"Bn" = (
+/obj/structure/flora/rock/rock4,
+/turf/simulated/floor/outdoors/rocks{
+	color = "#6A97B0"
+	},
+/area/sector/ice_comet)
 "BH" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/water/deep/indoors/lythios43c,
@@ -1089,6 +1132,10 @@
 /obj/structure/event/prop/wire,
 /turf/simulated/floor/outdoors/safeice/lythios43c,
 /area/sector/ice_comet)
+"HW" = (
+/obj/structure/flora/rock/rock3,
+/turf/simulated/floor/outdoors/safeice/lythios43c,
+/area/sector/ice_comet)
 "Ih" = (
 /obj/structure/cryofeed{
 	dir = 2
@@ -1151,6 +1198,12 @@
 "JZ" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/ice_comet/facility)
+"Kz" = (
+/obj/structure/flora/rock/alternative_1,
+/turf/simulated/floor/outdoors/rocks{
+	color = "#6A97B0"
+	},
+/area/sector/ice_comet)
 "KR" = (
 /obj/machinery/light/spot{
 	dir = 4
@@ -1196,6 +1249,10 @@
 /obj/spawner/window/reinforced/full,
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/ice_comet/facility)
+"Ni" = (
+/obj/structure/flora/rock/rock4,
+/turf/simulated/floor/outdoors/safeice/lythios43c,
+/area/sector/ice_comet)
 "NG" = (
 /obj/structure/railing/grey{
 	dir = 8
@@ -1458,6 +1515,15 @@
 /obj/spawner/window/reinforced/full,
 /turf/simulated/floor,
 /area/sector/ice_comet/facility)
+"WD" = (
+/obj/structure/flora/rock/rock3{
+	pixel_x = -43;
+	pixel_y = 12
+	},
+/turf/simulated/floor/outdoors/rocks{
+	color = "#6A97B0"
+	},
+/area/sector/ice_comet)
 "Xb" = (
 /obj/effect/floor_decal/corner/purple/border,
 /obj/effect/floor_decal/corner/purple/border{
@@ -1496,6 +1562,12 @@
 	},
 /turf/simulated/floor,
 /area/sector/ice_comet/facility)
+"XE" = (
+/mob/living/simple_mob/animal/giant_spider/frost{
+	iff_factions = "mutant"
+	},
+/turf/simulated/floor/outdoors/safeice/lythios43c,
+/area/sector/ice_comet)
 "XQ" = (
 /obj/structure/railing/grey,
 /obj/structure/cryofeed{
@@ -1530,6 +1602,15 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/ice_comet/facility)
+"Zp" = (
+/obj/structure/prop/alien/pod,
+/obj/item/storage/belt/utility/alien,
+/obj/item/clothing/suit/armor/alien,
+/obj/item/clothing/head/helmet/alien,
+/turf/simulated/floor/outdoors/rocks{
+	color = "#6A97B0"
+	},
+/area/sector/ice_comet)
 "ZG" = (
 /obj/machinery/light/spot{
 	dir = 4
@@ -23576,13 +23657,13 @@ Rn
 Rn
 Rn
 Rn
+XE
 Rn
 Rn
 Rn
 Rn
 Rn
-Rn
-Rn
+HW
 Rn
 Rn
 Rn
@@ -23963,11 +24044,11 @@ Rn
 gM
 Rn
 Rn
-Rn
-Rn
-Rn
-Rn
-Rn
+HW
+YE
+YE
+YE
+YE
 Rn
 Rn
 Rn
@@ -24158,10 +24239,10 @@ Rn
 Rn
 Rn
 Rn
-Rn
-Rn
-Rn
-Rn
+qy
+ig
+YE
+YE
 Rn
 Yv
 Rn
@@ -24350,15 +24431,15 @@ Rn
 Rn
 Rn
 Rn
-Rn
-Rn
-Rn
-Rn
-Rn
-Rn
-Rn
-Rn
-Rn
+YE
+YE
+YE
+ll
+Bn
+YE
+YE
+YE
+YE
 Rn
 Rn
 Rn
@@ -24543,16 +24624,16 @@ Rn
 Rn
 Rn
 Rn
-Rn
-Rn
-Rn
-Rn
-Rn
-Rn
-Rn
-Rn
-Rn
-Rn
+YE
+YE
+YE
+YE
+YE
+YE
+YE
+YE
+Kz
+YE
 Rn
 Rn
 Rn
@@ -24736,19 +24817,19 @@ Rn
 Rn
 Rn
 Rn
+YE
+YE
+YE
+YE
+AR
+Zp
+YE
+YE
+YE
 Rn
 Rn
 Rn
-Rn
-Rn
-Rn
-Rn
-Rn
-Rn
-Rn
-Rn
-Rn
-Rn
+HW
 Rn
 Rn
 Rn
@@ -24932,14 +25013,14 @@ Rn
 Rn
 Rn
 Rn
-Rn
-Rn
-Rn
-Rn
-Rn
-Rn
-Rn
-Rn
+YE
+YE
+YE
+YE
+WD
+ll
+YE
+YE
 Rn
 Rn
 Rn
@@ -25123,17 +25204,17 @@ Rn
 Rn
 Rn
 Rn
+XE
 Rn
-Rn
-Rn
-Rn
-Rn
-Rn
-Rn
-Rn
-Rn
-Rn
-Rn
+YE
+uA
+YE
+YE
+YE
+YE
+YE
+Bn
+YE
 Rn
 Rn
 Rn
@@ -25318,16 +25399,16 @@ Rn
 Rn
 Rn
 Rn
-Rn
-Rn
-Rn
-Rn
-Rn
-Rn
-Rn
-Rn
-Rn
-Rn
+YE
+Kz
+YE
+YE
+ig
+nK
+YE
+YE
+YE
+YE
 Rn
 Rn
 Rn
@@ -25511,17 +25592,17 @@ Rn
 Rn
 Rn
 Rn
+YE
+YE
+YE
+YE
+YE
+YE
+YE
 Rn
 Rn
-Rn
-TB
-Rn
-Rn
-Rn
-Rn
-Rn
-Rn
-Rn
+YE
+YE
 Rn
 Rn
 Rn
@@ -25705,13 +25786,13 @@ Rn
 gM
 Rn
 Rn
-Rn
-Rn
-Rn
-Rn
-Rn
-Rn
-Rn
+YE
+YE
+YE
+ig
+YE
+YE
+YE
 Rn
 gM
 Rn
@@ -25899,11 +25980,11 @@ Rn
 Rn
 Rn
 Rn
-Rn
-Rn
-Rn
-Rn
-Rn
+YE
+YE
+YE
+YE
+Ni
 Rn
 Rn
 Rn
@@ -26092,10 +26173,10 @@ Rn
 Rn
 Rn
 Rn
-Rn
-Rn
-Rn
-Rn
+HW
+YE
+YE
+YE
 Rn
 Rn
 Rn
@@ -26286,11 +26367,11 @@ Rn
 Rn
 Rn
 Rn
-Rn
-Rn
-Rn
-Rn
-Rn
+YE
+YE
+ig
+YE
+XE
 Rn
 Rn
 Rn
@@ -26478,10 +26559,10 @@ Rn
 Rn
 Rn
 Rn
+Ni
 Rn
-Rn
-Rn
-Rn
+YE
+YE
 Rn
 Rn
 Rn
@@ -26673,11 +26754,11 @@ Rn
 Rn
 Rn
 Rn
+YE
+YE
 Rn
 Rn
-Rn
-Rn
-Rn
+HW
 Rn
 Rn
 Rn
@@ -26865,10 +26946,10 @@ Rn
 Rn
 Rn
 Rn
+HW
 Rn
-Rn
-Rn
-Rn
+YE
+YE
 Rn
 Rn
 Rn
@@ -27059,8 +27140,8 @@ Rn
 gM
 Rn
 Rn
-Rn
-Rn
+YE
+UU
 Rn
 Rn
 Rn
@@ -27252,8 +27333,8 @@ Rn
 Rn
 Rn
 Rn
-Rn
-Rn
+YE
+YE
 Rn
 Rn
 Rn
@@ -27641,7 +27722,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
+HW
 TB
 Rn
 Rn
@@ -27832,7 +27913,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
+Ni
 Rn
 Rn
 Rn
@@ -28023,7 +28104,7 @@ Rn
 Rn
 Rn
 Rn
-Rn
+XE
 Rn
 Rn
 Rn
