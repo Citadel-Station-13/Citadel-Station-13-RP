@@ -8,7 +8,7 @@
 	)
 
 /datum/map_level/sector/ice_comet
-	id = "Solarstation"
+	id = "Icecomet"
 	name = "Sector - Lythios 43 Star"
 	display_name = "Lythios 43 Star"
 	path = "maps/sectors/ice_comet/levels/ice_comet.dmm"
