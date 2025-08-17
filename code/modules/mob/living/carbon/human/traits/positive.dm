@@ -2,7 +2,7 @@
 	name = "Haste"
 	desc = "Faster than average."
 	cost = 2
-	var_changes = list("slowdown" = -0.2)
+	var_changes = list("movement_base_speed" = 5.5)
 
 	group = /datum/trait_group/speed
 	group_short_name = "Haste"
