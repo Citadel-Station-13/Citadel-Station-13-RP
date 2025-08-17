@@ -171,6 +171,7 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 /datum/species/moth/dark
 	name = SPECIES_MOTH_DARK
 	uid = SPECIES_ID_MOTH_DARK
+	id = SPECIES_ID_MOTH_DARK
 	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/nepid/dark
 
@@ -186,6 +187,7 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 /datum/species/moth/light
 	name = SPECIES_MOTH_LIGHT
 	uid = SPECIES_ID_MOTH_LIGHT
+	id = SPECIES_ID_MOTH_LIGHT
 	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/nepid/light
 
