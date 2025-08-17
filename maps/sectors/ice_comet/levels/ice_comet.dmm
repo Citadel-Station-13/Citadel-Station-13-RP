@@ -710,11 +710,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/ice_comet/facility)
-"xc" = (
-/obj/spawner/window/reinforced/full,
-/obj/spawner/window/reinforced/full,
-/turf/simulated/floor/tiled/techmaint,
-/area/sector/ice_comet/facility)
 "xe" = (
 /obj/structure/sandbag,
 /obj/structure/sandbag,
@@ -1201,11 +1196,6 @@
 /obj/spawner/window/reinforced/full,
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/ice_comet/facility)
-"NB" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/space/basic,
-/area/space)
 "NG" = (
 /obj/structure/railing/grey{
 	dir = 8
@@ -15469,7 +15459,7 @@ lm
 lm
 Rn
 YE
-xc
+Ng
 wh
 sK
 HH
@@ -16851,7 +16841,7 @@ cY
 cY
 cY
 cY
-NB
+cY
 Qm
 Qm
 Qm

@@ -1584,6 +1584,10 @@
 	},
 /turf/simulated/floor/plating/indoors,
 /area/sector/solar_station/deck1)
+"BF" = (
+/obj/overmap/entity/visitable/sector/solar_station,
+/turf/space/basic,
+/area/sector/solar_station/space)
 "BN" = (
 /obj/spawner/window/low_wall/firelocks,
 /turf/simulated/floor/plating/outdoors,
@@ -3089,7 +3093,7 @@ cP
 cP
 cP
 cP
-cP
+BF
 cP
 "}
 (3,1,1) = {"

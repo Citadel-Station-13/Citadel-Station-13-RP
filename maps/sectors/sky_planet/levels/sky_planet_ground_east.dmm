@@ -1008,11 +1008,6 @@
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/sector/sky_planet/poi)
-"Tr" = (
-/obj/structure/catwalk,
-/obj/structure/catwalk,
-/turf/simulated/floor/tiled/techfloor/lythios43c,
-/area/sector/sky_planet/ground)
 "TT" = (
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/sector/sky_planet/ground)
@@ -29578,7 +29573,7 @@ iV
 iV
 iV
 pW
-Tr
+pW
 zh
 iV
 iV
