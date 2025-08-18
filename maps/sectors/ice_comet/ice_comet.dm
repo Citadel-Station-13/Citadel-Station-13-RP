@@ -9,8 +9,8 @@
 
 /datum/map_level/sector/ice_comet
 	id = "Icecomet"
-	name = "Sector - Lythios 43 Star"
-	display_name = "Lythios 43 Star"
+	name = "Sector - Ice Comet"
+	display_name = "Ice Comet"
 	path = "maps/sectors/ice_comet/levels/ice_comet.dmm"
 	base_turf = /turf/space
 	base_area = /area/space
