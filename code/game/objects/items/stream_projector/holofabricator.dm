@@ -1,5 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
+
+// TODO: holofabricators
 
 //? initialized by SSearly_init due to icon ops
 //  maybe a serializable/persistable repository someday idfk
@@ -25,7 +27,6 @@ GLOBAL_LIST_EMPTY(holofabricator_templates)
 /**
  * new RCDs
  */
-ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/holofabricator, interface)
 /obj/item/stream_projector/holofabricator
 	name = "holofabricator"
 	desc = "A precise triage tool used by many frontier engineers. Uses materials from a loaded cartridge \

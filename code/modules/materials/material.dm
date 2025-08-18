@@ -330,7 +330,7 @@
 
 //* Alloys *//
 
-/datum/material/proc/init_alloys()
+/datum/prototype/material/proc/init_alloys()
 	for(var/i in 1 to length(weak_alloy))
 		var/key = weak_alloy[i]
 		var/value = weak_alloy[key]

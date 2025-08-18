@@ -2,6 +2,25 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /obj/item/rig_module/basic/teleporter
+	var/supports_targeted_jaunt = TRUE
+	var/supports_emergency_jaunt = TRUE
+
+/obj/item/rig_module/basic/teleporter/Initialize(mapload)
+	. = ..()
+
+/obj/item/rig_module/basic/teleporter/Destroy()
+	. = ..()
+
+/obj/item/rig_module/basic/teleporter/proc/get_emergency_jaunt_loc()
+
+/obj/item/rig_module/basic/teleporter/proc/on_jaunt(atom/old_loc, atom/new_loc)
+
+/obj/item/rig_module/basic/teleporter/proc/on_targeted_jaunt(atom/old_loc, atom/new_loc)
+
+/obj/item/rig_module/basic/teleporter/proc/on_emergency_jaunt(atom/old_loc, atom/new_loc)
+
+/obj/item/rig_module/basic/teleporter/proc/jaunt(atom/new_loc)
+
 
 /obj/item/rig_module/basic/teleporter/ninja
 	name = /obj/item/rig_module/basic::name + " (phase-shift jaunter)"

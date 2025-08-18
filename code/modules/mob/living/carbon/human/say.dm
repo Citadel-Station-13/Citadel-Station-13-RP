@@ -46,11 +46,11 @@
 /mob/living/carbon/human/GetVoice()
 
 	var/voice_sub
-	if(istype(back,/obj/item/hardsuit))
-		var/obj/item/hardsuit/hardsuit = back
-		// todo: fix this shit
-		if(hardsuit.speech && hardsuit.speech.voice_holder && hardsuit.speech.voice_holder.active && hardsuit.speech.voice_holder.voice)
-			voice_sub = hardsuit.speech.voice_holder.voice
+	// if(istype(back,/obj/item/hardsuit))
+	// 	var/obj/item/hardsuit/hardsuit = back
+	// 	// todo: fix this shit
+	// 	if(hardsuit.speech && hardsuit.speech.voice_holder && hardsuit.speech.voice_holder.active && hardsuit.speech.voice_holder.voice)
+	// 		voice_sub = hardsuit.speech.voice_holder.voice
 	if(!voice_sub)	// If the hardsuit has a voice changer, then we use that. Otherwise, use this
 		for(var/obj/item/gear in list(wear_mask,wear_suit,head))
 			if(!gear)

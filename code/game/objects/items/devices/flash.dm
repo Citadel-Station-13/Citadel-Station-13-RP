@@ -75,7 +75,7 @@
 
 /obj/item/flash/proc/has_another_battery_charge()
 	if(item_mount)
-		return item_mount.has_lazy_power(charge_cost)
+		return item_mount.lazy_power_check(charge_cost)
 	if(power_supply)
 		return power_supply.check_charge(DYNAMIC_J_TO_CELL_UNITS(charge_cost))
 	return FALSE

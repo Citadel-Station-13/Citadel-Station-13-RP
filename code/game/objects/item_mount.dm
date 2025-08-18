@@ -92,6 +92,6 @@
  * @return joules supplied
  */
 /datum/item_mount/proc/lazy_power_use_checked(obj/item/item, key, joules, minimum_reserve)
-	if(!has_lazy_power(joules + minimum_reserve))
+	if(!lazy_power_check(joules + minimum_reserve))
 		return 0
-	return use_lazy_power(joules, minimum_reserve)
+	return lazy_power_use(joules, minimum_reserve)
