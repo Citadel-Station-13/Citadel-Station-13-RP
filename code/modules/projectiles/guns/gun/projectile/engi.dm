@@ -346,6 +346,7 @@
 		no_power = no_power || (charging_coil.capacitor.charge < 1) //you CAN fire it off prematurely! i don't know why you would, but
 
 	if(!check_ammo() || !(coils.len) || no_power || !thermal_check())
+		visible_message("<span class='notice'>A light on \the [src] blinks red.</span>") //debug your own gun
 		return
 
 	use_ammo()
