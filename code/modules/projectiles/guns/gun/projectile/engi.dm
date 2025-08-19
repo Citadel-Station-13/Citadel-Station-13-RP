@@ -200,13 +200,13 @@
 		update_icon()
 		return
 	if(thing.tool_check(TOOL_WRENCH))
-		if(!tank)
+		if(!coolant_tank)
 			to_chat(user, "<span class='warning'>\The [src] has no tank installed.</span>")
 			return
-		user.grab_item_from_interacted_with(tank, src)
-		user.visible_message("<span class='notice'>\The [user] removes \the [tank] from \the [src].</span>")
+		user.grab_item_from_interacted_with(coolant_tank, src)
+		user.visible_message("<span class='notice'>\The [user] removes \the [coolant_tank] from \the [src].</span>")
 		playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
-		tank = null
+		coolant_tank = null
 		update_icon()
 		return
 
@@ -248,16 +248,16 @@
 		update_icon()
 		return
 	if(istype(thing,/obj/item/tank))
-		if(!tank)
+		if(!coolant_tank)
 			if(thing.w_class != WEIGHT_CLASS_NORMAL)
-				to_chat(user, SPAN_NOTICE("[thing] isn't the right size to fit into the tank mount!))
+				to_chat(user, SPAN_NOTICE("[thing] isn't the right size to fit into the tank mount!"))
 				return
 			if(!user.attempt_insert_item_for_installation(thing, src))
 				return
-			tank = thing
+			coolant_tank = thing
 			return
 		else
-			to_chat(user, SPAN_NOTICE("[src] already has a tank mounted!))
+			to_chat(user, SPAN_NOTICE("[src] already has a tank mounted!"))
 			return
 
 	. = ..()
@@ -289,37 +289,37 @@
 /obj/item/gun/projectile/engineering/proc/thermal_check()
 	var/turf/our_turf = get_turf(src)
 	if(istype(our_turf, /turf/space))
-		return (tank.return_temperature() < MAX_OPERATING_TEMP)
+		return (coolant_tank.return_temperature() < MAX_OPERATING_TEMP)
 	else
-		var/turf_mol = our_turf.total_mole
+		var/turf_mol = our_turf.total_mole()
 		//do turf calc (we can share Some heat with turf, hopefully)
 		if(turf_mol < 5) //under 5 mol of stuff, barely anything, we ignore it and treat it like space
-			return (tank.return_temperature() < MAX_OPERATING_TEMP)
+			return (coolant_tank.return_temperature() < MAX_OPERATING_TEMP)
 		else
-			return (tank.return_temperature() < MAX_OPERATING_TEMP) || (our_turf.return_temperature() < MAX_OPERATING_TEMP)
+			return (coolant_tank.return_temperature() < MAX_OPERATING_TEMP) || (our_turf.return_temperature() < MAX_OPERATING_TEMP)
 
 /obj/item/gun/projectile/engineering/proc/do_thermal_sharing(var/heat_energy_charge)
 	var/energy_kj = DYNAMIC_KJ_TO_CELL_UNITS(heat_energy_charge)
 	var/turf/our_turf = get_turf(src)
 	var/datum/gas_mixture/turf_air = our_turf.return_air()
-	var/datum/gas_mixture/tank_air = tank.return_air()
+	var/datum/gas_mixture/tank_air = coolant_tank.return_air()
 
 
 	if(istype(our_turf, /turf/space) || !turf_air)
 		if(loop_open)
 			tank_air.remove_volume(GAS_CONSUMED_OPEN_LOOP)
 		else
-			tank_air.adjust_thermal_energy(energy_to_tank * 1000)
+			tank_air.adjust_thermal_energy(energy_kj * 1000)
 	else
 		var/turf_mol = turf_air.total_moles
 		//do turf calc (we can share Some heat with turf, hopefully)
 		if(turf_mol < 5) //under 5 mol of stuff, barely anything, we ignore it and treat it like space
 			if(loop_open)
 				var/datum/gas_mixture/removed = tank_air.remove_volume(GAS_CONSUMED_OPEN_LOOP)
-				removed.adjust_thermal_energy(energy_to_tank * 1000)
+				removed.adjust_thermal_energy(energy_kj * 1000)
 				turf_air.merge(removed)
 			else
-				tank_air.adjust_thermal_energy(energy_to_tank * 1000)
+				tank_air.adjust_thermal_energy(energy_kj * 1000)
 		else
 			var/sharing_with_turf_proportion = min(ATMOS_MULT_CURVE(turf_mol), 1) //it's based on mol because it represents the amount of gas around and we are (primarily) doing convection sim
 			//more gas, even with lower pressure (less movement): your gas is more likely to hit the gun and cool it down
