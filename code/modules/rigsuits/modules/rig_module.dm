@@ -84,6 +84,10 @@
 	var/ui_update_queued = FALSE
 	/// TGUI route; this is handled by routes.tsx in the Rigsuit folder on TGUI!
 	var/tgui_interface = "Inert"
+	/// display name
+	var/display_name
+	/// display desc
+	var/display_desc
 
 	//* Zone *//
 	/// our zone define, e.g. RIG_ZONE_X

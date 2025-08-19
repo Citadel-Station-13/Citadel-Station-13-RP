@@ -38,6 +38,7 @@
 		/datum/reagent/dexalin::id,
 		/datum/reagent/hyronalin::id,
 		/datum/reagent/spaceacillin::id,
+		/datum/reagent/paracetamol::id,
 	)
 
 /**
