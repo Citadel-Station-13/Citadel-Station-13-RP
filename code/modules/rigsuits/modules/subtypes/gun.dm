@@ -8,6 +8,9 @@
  *   they're Really Quite Bad.
  */
 /obj/item/rig_module/gun
+	zone_conflict_type = /obj/item/rig_module/gun
+	zone = RIG_ZONE_LEFT_ARM
+
 	/// automatically sets everything as needed.
 	var/lazy_automount_path
 

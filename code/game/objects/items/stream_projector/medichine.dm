@@ -16,7 +16,6 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
  *
  * todo: should we use reagents instead..?
  */
-ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, interface)
 /obj/item/stream_projector/medichine
 	prototype_id = "ItemMedichineProjector"
 	name = "medichine stream projector"

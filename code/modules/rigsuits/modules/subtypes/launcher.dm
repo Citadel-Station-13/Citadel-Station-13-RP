@@ -3,8 +3,13 @@
 
 /**
  * launches things. simple as.
+ * * consider using rig gun API for launcher guns usually, but, this is a good lazy one that
+ *   supports more like selection.
  */
 /obj/item/rig_module/launcher
 
 
 #warn impl
+
+
+/obj/item/rig_module/launcher/proc/yeet_entity(atom/movable/entity, atom/target)

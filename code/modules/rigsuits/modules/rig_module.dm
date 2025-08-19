@@ -9,6 +9,8 @@
 	desc = "A piece of equipment able to be installed onto powered hardsuits."
 	#warn impl all
 
+	materials_base = list(MAT_STEEL = 2000, MAT_PLASTIC = 2500, MAT_GLASS = 1750)
+
 	//* Core *//
 	/// lookup id
 	/// * set on a rigsuit so this module is addressable by the console and other features
@@ -127,16 +129,16 @@
 //* Attachment *//
 
 /**
- * first check - 'does it make sense for this to be attached to the rig?'
+ * first check - 'does it make sense for this to be installed to the rig?'
  * * if not, specify why if not silent and actor is provided
- * * this has final say for denial; this overrides even forced attachments.
+ * * this has final say for denial; this overrides even forced installations.
  *
  * @params
  * * rig - the suit
- * * actor - (optional) person attaching
- * * silent - (optional) should we inform the person attaching?
+ * * actor - (optional) person installing
+ * * silent - (optional) should we inform the person installing?
  */
-/obj/item/rig_module/proc/is_valid_attach(obj/item/rig/rig, datum/event_args/actor/actor, silent)
+/obj/item/rig_module/proc/is_valid_install(obj/item/rig/rig, datum/event_args/actor/actor, silent)
 	SHOULD_NOT_SLEEP(TRUE)
 	return TRUE
 
@@ -147,10 +149,10 @@
  * @params
  * * rig - the suit
  * * rig_opinion - what does the suit say about this?
- * * actor - (optional) person attaching
- * * silent - (optional) should we inform the person attaching?
+ * * actor - (optional) person installing
+ * * silent - (optional) should we inform the person installing?
  */
-/obj/item/rig_module/proc/can_attach(obj/item/rig/rig, rig_opinion, datum/event_args/actor/actor, silent)
+/obj/item/rig_module/proc/can_install(obj/item/rig/rig, rig_opinion, datum/event_args/actor/actor, silent)
 	SHOULD_NOT_SLEEP(TRUE)
 	return TRUE
 
@@ -161,18 +163,36 @@
  * @params
  * * rig - the suit
  * * rig_opinion - what does the suit say about this?
- * * actor - (optional) person attaching
- * * silent - (optional) should we inform the person attaching?
+ * * actor - (optional) person installing
+ * * silent - (optional) should we inform the person installing?
  */
-/obj/item/rig_module/proc/can_detach(obj/item/rig/rig, rig_opinion, datum/event_args/actor/actor, silent)
+/obj/item/rig_module/proc/can_uninstall(obj/item/rig/rig, rig_opinion, datum/event_args/actor/actor, silent)
 	SHOULD_NOT_SLEEP(TRUE)
 	return TRUE
 
-/obj/item/rig_module/proc/on_attach(obj/item/rig/rig, datum/event_args/actor/actor, silent)
+/obj/item/rig_module/proc/on_install(obj/item/rig/rig, datum/event_args/actor/actor, silent)
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 
-/obj/item/rig_module/proc/on_detach(obj/item/rig/rig, datum/event_args/actor/actor, silent)
+/obj/item/rig_module/proc/on_uninstall(obj/item/rig/rig, datum/event_args/actor/actor, silent)
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_CALL_PARENT(TRUE)
+
+/**
+ * Called after add if the rig is online, or when the rig goes online, or when the rig is mob-swapped.
+ * * Use to handle behaviors that need to bind to a mob.
+ * * If the rig is mob-swapped, this will be called on the old wearer.
+ */
+/obj/item/rig_module/proc/on_online(obj/item/rig/rig, mob/wearer)
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_CALL_PARENT(TRUE)
+
+/**
+ * Called before remove if the rig is offline, or when the rig is taken offline, or when the rig is mob-swapped.
+ * * Use to handle behaviors that need to bind to a mob.
+ * * If the rig is mob-swapped, this will be called on the old wearer.
+ */
+/obj/item/rig_module/proc/on_offline(obj/item/rig/rig, mob/wearer)
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 
@@ -182,29 +202,30 @@
  * Transmits a feedback message to rig users
  */
 /obj/item/rig_module/proc/rig_feedback(msg, datum/event_args/actor/actor)
-	#warn impl
+	host?.on_module_rig_feedback(src, msg, actor)
 
 /**
  * Appends a message to rig logs
  */
 /obj/item/rig_module/proc/rig_log(msg)
-	#warn impl
+	host?.on_module_rig_log(src, msg)
 
 // todo: rig sound / vfx ?
 
 //* Console *//
+//  TODO: implement
 
-/**
- * @return list(command = desc, ...)
- */
-/obj/item/rig_module/proc/console_query(effective_control_flags, username)
-	return list()
+// /**
+//  * @return list(command = desc, ...)
+//  */
+// /obj/item/rig_module/proc/console_query(effective_control_flags, username)
+// 	return list()
 
-/**
- * @return list(output, admin log text)
- */
-/obj/item/rig_module/proc/console_process(effective_control_flags, username, command, list/arguments)
-	return list("unknown command", "<invalid>")
+// /**
+//  * @return list(output, admin log text)
+//  */
+// /obj/item/rig_module/proc/console_process(effective_control_flags, username, command, list/arguments)
+// 	return list("unknown command", "<invalid>")
 
 //* Hotbinds *//
 
@@ -222,6 +243,16 @@
 
 #warn impl
 
+//* Hooks *//
+
+/**
+ * Called when something is used on the rig as an item.
+ * * Use to do grenade refills and whatnot
+ */
+/obj/item/rig_module/proc/handle_using_item_on_rig(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	return NONE
+#warn hook
+
 //* Power *//
 
 /obj/item/rig_module/proc/set_static_power_draw(watts)
@@ -229,6 +260,12 @@
 
 /obj/item/rig_module/proc/clear_static_power_draw()
 	set_static_power_draw(0)
+
+//* Resource API *//
+
+/obj/item/rig_module/proc/pull_resource_gas_route(obj/item/rig_module/requesting, key, )
+
+#warn AAAA
 
 //* Setters *//
 
@@ -251,7 +288,7 @@
 	return TRUE
 
 /obj/item/rig_module/proc/set_module_zone(new_zone)
-	// no current handling for setting while attached
+	// no current handling for setting while installed
 	if(host)
 		return FALSE
 	zone = new_zone
@@ -261,8 +298,6 @@
 
 /**
  * Static data.
- * * Unlike regular static data, there is no way to update this. This is pretty much
- *   only for hardcoded values to be transmitted to the UI.
  */
 /obj/item/rig_module/proc/rig_static_data()
 	return list()
@@ -281,6 +316,9 @@
 	#warn impl
 
 /obj/item/rig_module/proc/rig_update_data()
+	#warn impl
+
+/obj/item/rig_module/proc/rig_update_static_data()
 	#warn impl
 
 /**

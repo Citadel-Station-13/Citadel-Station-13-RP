@@ -87,6 +87,7 @@
 	if(flags & INV_OP_SHOULD_NOT_INTERCEPT)
 		return
 	retract(INV_OP_FORCE)
+	#warn so we do need this on unequipped not just dropped fuck
 	return COMPONENT_ITEM_INV_OP_RELOCATE | COMPONENT_ITEM_INV_OP_SUPPRESS_SOUND
 
 /datum/component/rig_piece/proc/rig_data()
@@ -310,40 +311,53 @@
 	return sealed == RIG_PIECE_UNSEALED
 
 //* Console *//
+//  TODO: implement
 
-/**
- * @return list(command = desc, ...)
- */
-/datum/component/rig_piece/proc/console_query(effective_control_flags, username)
-	return list(
-		"deploy \['seal'?\]" = "Deploy to user. Use 'deploy seal' to seal after deployment.",
-		"retract" = "Retract into controller.",
-		"seal" = "Seal around user",
-		"unseal" = "Unseal from user.",
-	)
+// /**
+//  * @return list(command = desc, ...)
+//  */
+// /datum/component/rig_piece/proc/console_query(effective_control_flags, username)
+// 	return list(
+// 		"deploy \['seal'?\]" = "Deploy to user. Use 'deploy seal' to seal after deployment.",
+// 		"retract" = "Retract into controller.",
+// 		"seal" = "Seal around user",
+// 		"unseal" = "Unseal from user.",
+// 	)
 
-/**
- * @return list(output, admin log text)
- */
-/datum/component/rig_piece/proc/console_process(effective_control_flags, username, command, list/arguments)
-	switch(command)
-		if("deploy")
-			#warn impl
-		if("retract")
-			#warn impl
-		if("seal")
-			#warn impl
-		if("unseal")
-			#warn impl
-	return list("unknown command", "<invalid>")
+// /**
+//  * @return list(output, admin log text)
+//  */
+// /datum/component/rig_piece/proc/console_process(effective_control_flags, username, command, list/arguments)
+// 	switch(command)
+// 		if("deploy")
+// 			#warn impl
+// 		if("retract")
+// 			#warn impl
+// 		if("seal")
+// 			#warn impl
+// 		if("unseal")
+// 			#warn impl
+// 	return list("unknown command", "<invalid>")
 
 //* Base Piece Defs *//
 
 /obj/item/clothing/head/rig
+	atom_flags = PHORONGUARD
+	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT | ALLOW_SURVIVALFOOD | CLOTHING_IGNORE_BELTLINK | CLOTHING_IGNORE_DELIMB | CLOTHING_ALLOW_SINGLE_LIMB | ALLOWINTERNALS
+	inv_hide_flags = HIDEEARS | HIDEEYES | HIDEFACE | BLOCKHAIR
+	body_cover_flags = HEAD | FACE | EYES
+	heat_protection_cover = HEAD | FACE | EYES
+	cold_protection_cover = HEAD | FACE | EYES
 
 /obj/item/clothing/suit/rig
 
 /obj/item/clothing/gloves/rig
+	atom_flags = PHORONGUARD
+	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT | ALLOW_SURVIVALFOOD | CLOTHING_IGNORE_BELTLINK | CLOTHING_IGNORE_DELIMB | CLOTHING_ALLOW_SINGLE_LIMB | ALLOWINTERNALS
+	inv_hide_flags = NONE
+	body_cover_flags = HANDS
+	heat_protection_cover = HANDS
+	cold_protection_cover = HANDS
 
 /obj/item/clothing/gloves/rig/equip_worn_over_check(mob/M, slot, mob/user, obj/item/I, flags)
 	return !istype(I, /obj/item/clothing/gloves/rig)

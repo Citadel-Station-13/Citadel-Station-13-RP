@@ -8,43 +8,68 @@
 	name = /obj/item/rig_module::name + " (gas tank)"
 	desc = /obj/item/rig_module::desc + " This one provides gas storage."
 
-/obj/item/rig_module/resource_store/reagent_tank/slotted
-	/// starting tank
-	var/starting_tank
-	/// override starting tank volume
-	var/starting_tank_volume
-	/// override starting tank gas
-	/// * ignored if [starting_tank_pressure] is unset
-	var/starting_tank_gas
-	/// override starting tank pressure
-	/// * ignored if [starting_tank_gas] is unset
-	var/starting_tank_gas
-
 #warn impl
 
-/obj/item/rig_module/resource_store/reagent_tank/slotted
+/**
+ * Classic one-chem-at-a-time with maybe- regeneration.
+ */
+/obj/item/rig_module/resource_store/reagent_tank/single_router
+	/// reagent ids
+	var/list/reagent_ids = list()
+	/// can regen?
+	var/regen = FALSE
+	/// regen cost **kilojoules** per unit default
+	var/regen_cost = 20
+	/// regen cost overrides for reagent ids
+	/// * lazy list
+	var/list/regen_cost_override
+	/// regen max power draw in kilowatts (yes we measure in kilowatts)
+	/// * default is 2 units a second which is really fucking fast lol
+	var/regen_draw = 40
 
-/obj/item/rig_module/resource_store/reagent_tank/slotted/breathing
-	name = /obj/item/rig_module::name + " (breathing gas tank slot)"
-	desc = /obj/item/rig_module::desc + " This one provides gas storage, and \
-	is restrained to the 'breathing' gas channel after numerous accidents involving \
-	users accidentally routing maneuvering jet CO2 to their life support systems."
+/**
+ * okay for station use
+ */
+/obj/item/rig_module/resource_store/reagent_tank/single_router/basic_meds
+	reagent_ids = list(
+		/datum/reagent/tricordrazine::id,
+		/datum/reagent/inaprovaline::id,
+		/datum/reagent/dylovene::id,
+		/datum/reagent/dexalin::id,
+		/datum/reagent/hyronalin::id,
+		/datum/reagent/spaceacillin::id,
+	)
 
+/**
+ * should proabbly be ert/antag only, if even that
+ */
+/obj/item/rig_module/resource_store/reagent_tank/single_router/advanced_meds
+	reagent_ids = list(
+		/datum/reagent/bicaridine::id,
+		/datum/reagent/kelotane::id,
+		/datum/reagent/dylovene::id,
+		/datum/reagent/dexalin::id,
+		/datum/reagent/inaprovaline::id,
+		/datum/reagent/spaceacillin::id,
+		/datum/reagent/hyronalin::id,
+		/datum/reagent/tramadol::id,
+	)
 
-/obj/item/rig_module/resource_store/reagent_tank/slotted/jetpack
-	name = /obj/item/rig_module::name + " (jetpack gas tank slot)"
-	desc = /obj/item/rig_module::desc + " This one provides gas storage, and \
-	is restrained to the 'jetpack' gas channel after numerous accidents involving \
-	users accidentally routing CO2 to their life support systems."
-
-
-
-/obj/item/rig_module/resource_store/reagent_tank/internal
-	/// starting volume
-	var/starting_volume = 150
-	/// starting gas
-	var/starting_gas = /datum/gas/nitrogen::id
-	/// starting pressure
-	var/starting_pressure = 1013.15
-
-// TODO: impl internal.
+/**
+ * put this in game regularly and i'll turn you into a gondola
+ */
+/obj/item/rig_module/resource_store/reagent_tank/single_router/combat_meds
+	reagent_ids = list(
+		/datum/reagent/bicaridine::id,
+		/datum/reagent/kelotane::id,
+		/datum/reagent/dylovene::id,
+		/datum/reagent/dexalin::id,
+		/datum/reagent/inaprovaline::id,
+		/datum/reagent/hyperzine::id,
+		/datum/reagent/spaceacillin::id,
+		/datum/reagent/tramadol::id,
+		/datum/reagent/oxycodone::id,
+		/datum/reagent/myelamine::id,
+		/datum/reagent/dexalinp::id,
+		/datum/reagent/arithrazine::id,
+	)

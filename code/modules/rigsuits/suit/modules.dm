@@ -1,6 +1,10 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
+/obj/item/rig/proc/get_modules()
+	. = list()
+	for(var/id in module_lookup)
+		. += module_lookup[id]
 
 #warn fuck
 

@@ -5,34 +5,10 @@
 /obj/item/clothing/head/helmet/space/hardsuit
 	name = "helmet"
 	atom_flags = PHORONGUARD
-	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT | ALLOW_SURVIVALFOOD | CLOTHING_IGNORE_BELTLINK | CLOTHING_IGNORE_DELIMB | ALLOWINTERNALS
 	inv_hide_flags      = HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
-	body_cover_flags = HEAD|FACE|EYES
-	heat_protection_cover    = HEAD|FACE|EYES
-	cold_protection_cover    = HEAD|FACE|EYES
-	brightness_on = 4
 
 	max_pressure_protection = null
 	min_pressure_protection = null
-	damage_force = 3 // if you're headbutting someone with something meant to protect you from space...
-
-	weight = 0
-	encumbrance = 0
-
-/obj/item/clothing/gloves/gauntlets/hardsuit
-	name = "gauntlets"
-	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT | CLOTHING_IGNORE_BELTLINK | CLOTHING_IGNORE_DELIMB
-	atom_flags = PHORONGUARD
-	body_cover_flags = HANDS
-	heat_protection_cover    = HANDS
-	cold_protection_cover    = HANDS
-
-	weight = 0
-	encumbrance = 0
-
-/obj/item/clothing/gloves/gauntlets/hardsuit/equipped
-
-/obj/item/clothing/gloves/gauntlets/hardsuit
 
 /obj/item/clothing/shoes/magboots/hardsuit
 	name = "boots"
@@ -120,39 +96,3 @@
 				return TRUE
 
 	return FALSE
-
-//hardsuit pieces for non-spacesuit based rigs
-
-/obj/item/clothing/head/lightrig
-	name = "mask"
-	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT | ALLOWINTERNALS | CLOTHING_IGNORE_BELTLINK | CLOTHING_IGNORE_DELIMB
-	atom_flags = PHORONGUARD
-	body_cover_flags = HEAD|FACE|EYES
-	heat_protection_cover    = HEAD|FACE|EYES
-	cold_protection_cover    = HEAD|FACE|EYES
-
-/obj/item/clothing/suit/lightrig
-	name = "suit"
-	allowed = list(/obj/item/flashlight)
-	inv_hide_flags = HIDEJUMPSUIT
-	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT | CLOTHING_IGNORE_BELTLINK | CLOTHING_IGNORE_DELIMB
-	atom_flags = PHORONGUARD
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-	heat_protection_cover    = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-	cold_protection_cover    = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-
-/obj/item/clothing/shoes/lightrig
-	name = "boots"
-	atom_flags = PHORONGUARD
-	clothing_flags = CLOTHING_IGNORE_BELTLINK | CLOTHING_IGNORE_DELIMB
-	body_cover_flags = FEET
-	cold_protection_cover    = FEET
-	heat_protection_cover    = FEET
-
-/obj/item/clothing/gloves/gauntlets/lightrig
-	name = "gloves"
-	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT | CLOTHING_IGNORE_BELTLINK | CLOTHING_IGNORE_DELIMB
-	atom_flags = PHORONGUARD
-	body_cover_flags = HANDS
-	heat_protection_cover    = HANDS
-	cold_protection_cover    = HANDS

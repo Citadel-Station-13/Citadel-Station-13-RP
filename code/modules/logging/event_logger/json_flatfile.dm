@@ -5,6 +5,7 @@
 	var/version = "0.0.1"
 
 	var/log__gun_firing_cycle
+	var/log__rigsuit_tracing
 
 /datum/world_event_logger/json_flatfile/setup_logger(log_directory)
 	for(var/varname in vars)
@@ -33,3 +34,14 @@
 		"result_last" = cycle.last_firing_result,
 	)
 	WRITE_LOG(log__gun_firing_cycle, json_encode(.))
+
+/datum/world_event_logger/proc/log__rigsuit_raw(obj/item/rig/rig, datum/event_args/actor/actor, action, list/data)
+	. = list(
+		"time" = world.time,
+		"ref_rig" = ref(rig),
+		"ref_initiator" = ref(actor.initiator),
+		"ref_performer" = ref(actor.performer),
+		"action",
+		"data" = data,
+	)
+	WRITE_LOG(log__rigsuit_tracing, json_encode(.))

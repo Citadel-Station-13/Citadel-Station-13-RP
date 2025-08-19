@@ -76,6 +76,9 @@
 	var/datum/armor/maint_panel_armor
 	/// armor type on panel
 	var/maint_panel_armor_type = /datum/armor/object/light
+	/// allow the wearer to reach their own maint panel
+	/// * overpowered as hell; do not allow this by default!
+	var/maint_panel_allow_wearer = FALSE
 
 	//* Modules *//
 	/// list of /obj/item/rig_module's by its lookup_id
@@ -149,8 +152,8 @@
 	//* Wearer *//
 	/// Our wearer
 	var/mob/wearer
-	/// What slot we must be in - typepath or ID.
-	var/wearer_required_slot_id = /datum/inventory_slot_meta/inventory/back
+	/// What slot we must be in - id
+	var/wearer_required_slot_id = /datum/inventory_slot_meta/inventory/back::id
 
 	//* Zones *//
 	var/datum/rig_zone/z_head = new /datum/rig_zone/head
@@ -279,26 +282,5 @@
 		var/datum/rig_maint_panel/panel = request_maint()
 		panel.ui_interact(user)
 		return TRUE
-
-//* Maintenance *//
-
-/obj/item/rig/proc/request_maint()
-	RETURN_TYPE(/datum/rig_maint_panel)
-	if(isnull(maint_panel))
-		maint_panel = new(src)
-	return maint_panel
-
-/obj/item/rig/proc/is_maint_panel_locked()
-	// todo: better access locking? maybe. for now, it's always unlocked if not being worn.
-	return maint_panel_locked && (activation_state == RIG_ACTIVATION_ONLINE)
-
-/obj/item/rig/proc/assert_maint_panel_armor()
-	#warn impl
-
-/obj/item/rig/proc/repair_maint_panel(datum/event_args/actor/actor, obj/item/tool)
-
-/obj/item/rig/proc/attack_maint_panel(datum/event_args/actor/actor, obj/item/tool, damage_multiplier = 1)
-
-/obj/item/rig/proc/cut_maint_panel(datum/event_args/actor/actor, obj/item/tool)
 
 #warn handling for armor etc etc

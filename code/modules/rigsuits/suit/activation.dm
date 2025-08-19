@@ -1,6 +1,8 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
+#warn impl all; rig module on_online/offline
+
 /obj/item/rig/proc/set_activation_state(new_state)
 	activation_state = new_state
 	if(activation_state & (RIG_ACTIVATION_ACTIVATING | RIG_ACTIVATION_OFFLINE))
@@ -20,8 +22,7 @@
  * checks if we're in the right inventory slot to activate.
  */
 /obj/item/rig/proc/is_in_right_slot()
-	var/datum/inventory_slot/wslot = wearer_required_slot_id
-	return worn_slot == (ispath(wslot)? initial(wslot.id) : wslot)
+	return inv_slot_or_index == wearer_required_slot_id
 
 /**
  * blocking proc

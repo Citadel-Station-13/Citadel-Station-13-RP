@@ -7,9 +7,10 @@
 
 /obj/item/rig_module/basic/defib/Initialize(mapload)
 	. = ..()
+	internal_paddles = new /obj/item/shockpaddles/standalone
 
 /obj/item/rig_module/basic/defib/Destroy()
-
+	QDEL_NULL(internal_paddles)
 	return ..()
 
 #warn impl
