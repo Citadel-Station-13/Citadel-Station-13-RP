@@ -235,7 +235,7 @@
 
 /obj/machinery/lathe/proc/recycle_item(obj/item/I, mob/user, recycle_eff = 1)
 	recycle_eff *= recycle_efficiency
-	var/list/materials = I.materials_base.Copy()
+	var/list/materials = I?.materials_base.Copy()
 	if(!isnull(user) && !user.temporarily_remove_from_inventory(I))
 		user.action_feedback(SPAN_WARNING("[I] is stuck to your hand!"), src)
 		return FALSE
