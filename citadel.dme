@@ -3147,7 +3147,6 @@
 #include "code\modules\rigsuits\modules\basic\modules.dm"
 #include "code\modules\rigsuits\modules\basic\ninja.dm"
 #include "code\modules\rigsuits\modules\basic\utility.dm"
-#include "code\modules\rigsuits\modules\basic\utility_vr.dm"
 #include "code\modules\rigsuits\modules\basic\vision.dm"
 #include "code\modules\rigsuits\modules\subtypes\basic.dm"
 #include "code\modules\rigsuits\modules\subtypes\chem_injector.dm"

@@ -64,6 +64,7 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 	var/has_beeped = 0
 	var/spawnPowerRestoreRunning = 0
 	var/welded = null
+	/// bolted
 	var/locked = 0
 	/// Bolt lights show by default.
 	var/lights = 1
@@ -1026,7 +1027,7 @@ About the new airlock wires panel:
 
 /obj/machinery/door/airlock/can_open(var/forced=0)
 	if(!forced)
-		if(!arePowerSystemsOn() || wires.is_cut(WIRE_OPEN_DOOR))
+		if(!arePowerSystemsOn() || wires.is_cut(WIRE_OPEN_DOOR) || locked)
 			return 0
 
 	if(locked || welded)
