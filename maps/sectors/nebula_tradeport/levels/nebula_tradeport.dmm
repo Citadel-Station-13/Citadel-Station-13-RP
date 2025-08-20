@@ -1461,6 +1461,8 @@
 	pixel_x = -22;
 	req_one_access = list(160)
 	},
+/obj/effect/floor_decal/industrial/outline/grey,
+/obj/machinery/telecomms/allinone,
 /turf/simulated/floor/tiled/techmaint,
 /area/tradeport/engineering)
 "aef" = (
@@ -19655,6 +19657,11 @@
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/facility)
+"beZ" = (
+/obj/effect/floor_decal/industrial/outline/grey,
+/obj/machinery/pda_multicaster,
+/turf/simulated/floor/tiled/techmaint,
+/area/tradeport/engineering)
 "bfo" = (
 /obj/structure/sink{
 	dir = 4;
@@ -51937,8 +51944,8 @@ awT
 awT
 awT
 awT
-awV
-awV
+awT
+awT
 abU
 awV
 awV
@@ -52129,10 +52136,10 @@ aun
 aiu
 aeu
 aee
+beZ
+aci
 aGB
 awT
-awV
-awV
 abU
 awV
 awV
@@ -52323,9 +52330,9 @@ apG
 aUq
 acJ
 aLe
+aci
+aci
 acW
-awT
-awT
 awT
 aLE
 awV

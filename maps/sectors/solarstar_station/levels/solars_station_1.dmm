@@ -8,7 +8,8 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
-	dir = 8
+	dir = 8;
+	id_tag = "solar_docks_4"
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/monotechmaint,
@@ -104,12 +105,7 @@
 	dir = 10
 	},
 /obj/effect/floor_decal/industrial/warning/dust,
-/obj/machinery/door/airlock/glass_external,
-/obj/map_helper/airlock/door/int_door,
-/obj/machinery/access_button/airlock_interior{
-	pixel_x = 19;
-	tag = "salvage_shuttle1"
-	},
+/obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/salvager)
 "bq" = (
@@ -140,12 +136,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
 	},
-/obj/machinery/door/airlock/glass_external,
-/obj/map_helper/airlock/door/int_door,
-/obj/machinery/access_button/airlock_interior{
-	pixel_x = 19;
-	tag = "salvage_shuttle3"
-	},
+/obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/salvager)
 "bT" = (
@@ -263,6 +254,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
+/obj/structure/shuttle/engine/heater{
+	dir = 8
+	},
 /turf/simulated/wall/r_wall/prepainted,
 /area/shuttle/salvager)
 "fd" = (
@@ -365,7 +359,10 @@
 /turf/simulated/floor/plating/outdoors,
 /area/sector/solar_station/space)
 "hm" = (
-/obj/machinery/atmospherics/pipe/manifold4w/hidden,
+/obj/machinery/atmospherics/pipe/manifold/hidden,
+/obj/structure/shuttle/engine/heater{
+	dir = 8
+	},
 /turf/simulated/wall/r_wall/prepainted,
 /area/shuttle/salvager)
 "hD" = (
@@ -417,7 +414,8 @@
 /obj/map_helper/airlock/door/ext_door,
 /obj/structure/catwalk,
 /obj/machinery/access_button/airlock_exterior{
-	pixel_x = 22
+	pixel_x = 22;
+	master_tag = "solar_docks_2"
 	},
 /obj/structure/cable/blue{
 	icon_state = "1-4"
@@ -447,7 +445,8 @@
 /obj/machinery/door/airlock/glass_external,
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button/airlock_interior{
-	pixel_y = -22
+	pixel_y = -22;
+	master_tag = "solar_docks_3"
 	},
 /turf/simulated/floor/plating/outdoors,
 /area/sector/solar_station/deck1)
@@ -461,9 +460,8 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 9
 	},
-/obj/machinery/light{
-	dir = 8
-	},
+/obj/structure/closet/walllocker_double/kitchen/west,
+/obj/item/storage/box/sinpockets,
 /turf/simulated/floor/carpet/patterened/blue,
 /area/shuttle/salvager)
 "jl" = (
@@ -556,30 +554,17 @@
 /area/sector/solar_station/deck1)
 "kz" = (
 /obj/structure/catwalk,
-/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
-	dir = 4;
-	tag = "salvage_shuttle2"
+/obj/machinery/door/blast/regular{
+	id = "salv3"
 	},
-/obj/map_helper/airlock/atmos/chamber_pump,
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	pixel_y = 31;
-	tag = "salvage_shuttle2"
-	},
-/obj/machinery/airlock_sensor{
-	frequency = 8018;
-	id_tag = "salvage_shuttle2";
-	pixel_x = 9;
-	pixel_y = 22
-	},
-/obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/plating/outdoors,
 /area/shuttle/salvager)
 "kC" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden,
 /obj/machinery/mech_recharger,
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /turf/simulated/floor/plating/outdoors,
 /area/shuttle/salvager)
 "kF" = (
@@ -769,18 +754,6 @@
 	},
 /turf/simulated/floor/plating/eris/under,
 /area/sector/solar_station/deck1)
-"oC" = (
-/obj/structure/lattice,
-/obj/structure/catwalk,
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/door/airlock/glass_external,
-/obj/map_helper/airlock/door/ext_door,
-/obj/machinery/access_button/airlock_exterior{
-	pixel_y = 21;
-	tag = "salvage_shuttle2"
-	},
-/turf/simulated/floor/plating/outdoors,
-/area/shuttle/salvager)
 "oG" = (
 /obj/structure/cable/blue{
 	icon_state = "4-8"
@@ -907,17 +880,13 @@
 /turf/simulated/floor/plating/eris/under,
 /area/sector/solar_station/deck1)
 "rM" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
 	},
-/obj/machinery/door/airlock/glass_external,
-/obj/map_helper/airlock/door/int_door,
-/obj/machinery/access_button/airlock_interior{
-	pixel_y = -22;
-	tag = "salvage_shuttle2"
+/obj/structure/fans/tiny,
+/obj/machinery/button/remote/blast_door{
+	pixel_y = 24;
+	id = "salv3"
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/salvager)
@@ -1013,6 +982,9 @@
 	dir = 8
 	},
 /obj/structure/curtain/open/bed,
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/salvager)
 "sR" = (
@@ -1057,7 +1029,8 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
-	dir = 4
+	dir = 4;
+	id_tag = "solar_docks_3"
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/monotechmaint,
@@ -1077,7 +1050,8 @@
 /obj/map_helper/airlock/door/ext_door,
 /obj/structure/catwalk,
 /obj/machinery/access_button/airlock_exterior{
-	pixel_x = -22
+	pixel_x = -22;
+	master_tag = "solar_docks_1"
 	},
 /turf/simulated/floor/plating/indoors,
 /area/sector/solar_station/deck1)
@@ -1094,7 +1068,8 @@
 /obj/machinery/door/airlock/glass_external,
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button/airlock_exterior{
-	pixel_x = 22
+	pixel_x = 22;
+	master_tag = "solar_docks_4"
 	},
 /turf/simulated/floor/plating/outdoors,
 /area/sector/solar_station/deck1)
@@ -1140,18 +1115,16 @@
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/access_button/airlock_interior{
-	pixel_x = 22
+	pixel_x = 22;
+	master_tag = "solar_docks_2"
 	},
 /turf/simulated/floor/plating/indoors,
 /area/sector/solar_station/deck1)
 "uN" = (
 /obj/structure/lattice,
 /obj/structure/catwalk,
-/obj/machinery/door/airlock/glass_external,
-/obj/map_helper/airlock/door/ext_door,
-/obj/machinery/access_button/airlock_exterior{
-	pixel_x = -22;
-	tag = "salvage_shuttle3"
+/obj/machinery/door/blast/regular{
+	id = "salv2"
 	},
 /turf/simulated/floor/plating/outdoors,
 /area/shuttle/salvager)
@@ -1160,7 +1133,8 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
-	dir = 1
+	dir = 1;
+	id_tag = "solar_docks_3"
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/monotechmaint,
@@ -1201,6 +1175,7 @@
 /obj/item/stack/material/plastic{
 	amount = 50
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/plating/outdoors,
 /area/shuttle/salvager)
 "wj" = (
@@ -1218,10 +1193,12 @@
 	dir = 4
 	},
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
-	pixel_x = -21
+	pixel_x = -21;
+	id_tag = "solar_docks_3"
 	},
 /obj/machinery/airlock_sensor{
-	pixel_y = -21
+	pixel_y = -21;
+	id_tag = "solar_docks_3"
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/monotechmaint,
@@ -1523,6 +1500,13 @@
 	},
 /turf/simulated/floor/event/derelict_wall_floor,
 /area/sector/solar_station/deck1)
+"AP" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/plating/outdoors,
+/area/shuttle/salvager)
 "AW" = (
 /obj/structure/cable/blue,
 /turf/simulated/floor/plating/outdoors,
@@ -1557,7 +1541,8 @@
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/access_button/airlock_interior{
-	pixel_x = -22
+	pixel_x = -22;
+	master_tag = "solar_docks_1"
 	},
 /turf/simulated/floor/plating/indoors,
 /area/sector/solar_station/deck1)
@@ -1609,10 +1594,12 @@
 	dir = 1
 	},
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
-	pixel_x = 24
+	pixel_x = 24;
+	tag = "solar_docks_4"
 	},
 /obj/machinery/airlock_sensor{
-	pixel_y = -21
+	pixel_y = -21;
+	id_tag = "solar_docks_4"
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/monotechmaint,
@@ -1644,11 +1631,13 @@
 /area/sector/solar_station/space)
 "CA" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
-	dir = 4
+	dir = 4;
+	id_tag = "solar_docks_2"
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
-	pixel_x = -21
+	pixel_x = -21;
+	id_tag = "solar_docks_2"
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/sector/solar_station/deck1)
@@ -1679,6 +1668,15 @@
 /obj/effect/particle_effect/smoke/elemental/fire,
 /turf/space/basic,
 /area/sector/solar_station/space/sun)
+"Dd" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/wall/r_wall/prepainted,
+/area/shuttle/salvager)
 "Dv" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -1832,24 +1830,16 @@
 	},
 /obj/structure/lattice,
 /obj/structure/catwalk,
-/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
-	dir = 8;
-	tag = "salvage_shuttle1"
-	},
-/obj/map_helper/airlock/atmos/chamber_pump,
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	pixel_x = 23;
-	tag = "salvage_shuttle1"
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 8
 	},
 /obj/overmap/entity/visitable/ship/landable/trade/salvager,
 /obj/effect/shuttle_landmark/solar_station_salvage,
-/obj/machinery/airlock_sensor{
-	frequency = 8018;
-	id_tag = "salvage_shuttle1";
-	pixel_x = 21;
-	pixel_y = 11
+/obj/machinery/button/remote/blast_door{
+	dir = 8;
+	pixel_x = 27;
+	id = "salv1"
 	},
-/obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/salvager)
 "GZ" = (
@@ -1973,23 +1963,14 @@
 /area/sector/solar_station/space)
 "Kf" = (
 /obj/structure/catwalk,
-/obj/structure/lattice,
-/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
-	dir = 1;
-	tag = "salvage_shuttle3"
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
 	},
-/obj/map_helper/airlock/atmos/chamber_pump,
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	pixel_x = 23;
-	tag = "salvage_shuttle3"
+/obj/machinery/button/remote/blast_door{
+	dir = 8;
+	pixel_x = 27;
+	id = "salv2"
 	},
-/obj/machinery/airlock_sensor{
-	frequency = 8018;
-	id_tag = "salvage_shuttle3";
-	pixel_x = 21;
-	pixel_y = 11
-	},
-/obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/plating/outdoors,
 /area/shuttle/salvager)
 "Ko" = (
@@ -2002,7 +1983,8 @@
 /obj/machinery/door/airlock/glass_external,
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button/airlock_exterior{
-	pixel_x = -22
+	pixel_x = -22;
+	master_tag = "solar_docks_3"
 	},
 /turf/simulated/floor/plating/outdoors,
 /area/sector/solar_station/deck1)
@@ -2220,13 +2202,26 @@
 "Pa" = (
 /turf/simulated/open,
 /area/sector/solar_station/deck1)
+"Pg" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	dir = 1;
+	id_tag = "solar_docks_4"
+	},
+/obj/map_helper/airlock/atmos/chamber_pump,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/solar_station/deck1)
 "Po" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
-	dir = 8
+	dir = 8;
+	id_tag = "solar_docks_1"
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
-	pixel_x = 24
+	pixel_x = 24;
+	id_tag = "solar_docks_1"
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/sector/solar_station/deck1)
@@ -2311,11 +2306,8 @@
 	},
 /obj/structure/lattice,
 /obj/structure/catwalk,
-/obj/machinery/door/airlock/glass_external,
-/obj/map_helper/airlock/door/ext_door,
-/obj/machinery/access_button/airlock_exterior{
-	pixel_x = -22;
-	tag = "salvage_shuttle1"
+/obj/machinery/door/blast/regular{
+	id = "salv1"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/salvager)
@@ -2468,12 +2460,14 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
-	dir = 8
+	dir = 8;
+	id_tag = "solar_docks_1"
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/airlock_sensor{
 	pixel_x = 21;
-	pixel_y = 5
+	pixel_y = 5;
+	id_tag = "solar_docks_1"
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/techfloor/monogrid,
@@ -2652,12 +2646,14 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
-	dir = 4
+	dir = 4;
+	id_tag = "solar_docks_2"
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/airlock_sensor{
 	pixel_x = -21;
-	pixel_y = 5
+	pixel_y = 5;
+	id_tag = "solar_docks_2"
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/techfloor/monogrid,
@@ -2670,7 +2666,8 @@
 /obj/machinery/door/airlock/glass_external,
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button/airlock_interior{
-	pixel_y = -22
+	pixel_y = -22;
+	master_tag = "solar_docks_4"
 	},
 /turf/simulated/floor/plating,
 /area/sector/solar_station/deck1)
@@ -20348,7 +20345,7 @@ ko
 Jl
 Jl
 FN
-Jl
+cP
 cP
 cP
 cP
@@ -20541,8 +20538,8 @@ cP
 ko
 eP
 hm
-oC
-DM
+FN
+cP
 cP
 cP
 cP
@@ -20737,7 +20734,7 @@ Ey
 wJ
 kz
 ko
-cP
+Jl
 cP
 cP
 cP
@@ -20931,7 +20928,7 @@ ug
 VL
 rM
 ko
-ko
+Dd
 cP
 cP
 cP
@@ -21123,9 +21120,9 @@ cP
 ko
 yt
 kC
-uk
+AP
 vM
-ko
+DM
 cP
 cP
 cP
@@ -23769,7 +23766,7 @@ ex
 Yj
 gI
 wj
-vb
+Pg
 qq
 Lq
 Lq

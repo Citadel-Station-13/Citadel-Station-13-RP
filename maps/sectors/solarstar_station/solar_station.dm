@@ -24,7 +24,7 @@
 	link_above = /datum/map_level/sector/solars_station/upper
 
 /datum/map_level/sector/solars_station/under
-	id = "Solarstation2"
+	id = "Solarstationunder"
 	name = "Sector - Lythios 43 Star Lower"
 	display_name = "Lythios 43 Star Lower"
 	path = "maps/sectors/solars_station/levels/solars_station_0.dmm"
@@ -33,7 +33,7 @@
 	link_above = /datum/map_level/sector/solars_station
 
 /datum/map_level/sector/solars_station/upper
-	id = "Solarstation3"
+	id = "Solarstationupper"
 	name = "Sector - Lythios 43 Star Upper"
 	display_name = "Lythios 43 Star Upper"
 	path = "maps/sectors/solars_station/levels/solars_station_2.dmm"
