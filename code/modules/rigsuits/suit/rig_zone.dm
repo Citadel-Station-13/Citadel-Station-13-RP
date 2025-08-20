@@ -10,8 +10,6 @@
 	var/zone_bit
 
 	//* State Store *//
-	/// modules registered on us
-	var/list/obj/item/rig_module/modules
 	/// our brute damage
 	var/brute_damage = 0
 	/// our burn damage

@@ -1,6 +1,14 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
+/obj/item/rig/proc/get_piece_components()
+
+/obj/item/rig/proc/get_piece_component_by_registered_id(id)
+
+/obj/item/rig/proc/get_piece_components_by_zone_bits()
+
+#warn impl
+
 /// Regarding sealing / unsealing
 ///
 /// RIG pieces are nominally sealed if the RIG is activated,

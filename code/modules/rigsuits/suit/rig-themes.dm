@@ -9,7 +9,7 @@
 	if(ispath(override))
 		override = fetch_rig_theme(override)
 	ASSERT(istype(override))
-	wipe_everything()
+	wipe_everything(TRUE)
 	theme_initialized = TRUE
 	var/datum/rig_theme/initializing = override
 	initializing.imprint_control_appearance(src)

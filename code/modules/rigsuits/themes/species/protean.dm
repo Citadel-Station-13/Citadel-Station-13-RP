@@ -35,3 +35,10 @@ DECLARE_RIG_THEME(/species/protean)
 	rad = 0.75
 	fire = 1.0
 	acid = 1.0
+
+/obj/item/rig/preset/species/protean/equipped
+	modules = list(
+		/obj/item/rig_module/item_deploy/toolset/engineering/industrial,
+		#warn jetpack, battery, jetpack tank, power sink
+	)
+	#warn starting modules

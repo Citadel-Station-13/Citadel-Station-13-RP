@@ -2,9 +2,12 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /obj/item/rig/proc/get_modules()
-	. = list()
-	for(var/id in module_lookup)
-		. += module_lookup[id]
+
+/obj/item/rig/proc/get_module_by_registered_id(id)
+
+/obj/item/rig/proc/get_modules_by_zone_bits()
+
+#warn impl
 
 #warn fuck
 

@@ -6,8 +6,12 @@
  *
  * Modular suit system.
  *
- * ## Pieces
+ * ## Modules
+ * * Modules are stored on the rig, not the rig theme.
+ * * Module capacity / handling is sometimes determined by theme.
  *
+ * ## Pieces
+ * * Pieces are determined and created by theme.
  * * Pieces automatically un/seal based on activation state when un/deploying.
  */
 /obj/item/rig
@@ -91,20 +95,18 @@
 	var/maint_panel_allow_wearer = FALSE
 
 	//* Modules *//
+	/// list of all modules in us; set to list to init on creation.
+	VAR_PROTECTED/list/obj/item/rig_module/modules
 	/// list of /obj/item/rig_module's by its lookup_id
-	var/list/obj/item/rig_module/module_lookup
+	VAR_PROTECTED/list/module_lookup
 	/// total weight of all modules
 	var/module_weight_tally = 0
-	/// registered high power load from modules
-	var/module_power_high = 0
-	/// registered low power load from modules
-	var/module_power_low = 0
-	/// conflict enums and types
-	var/list/module_conflict_lookup
 
 	//* Pieces *//
+	/// list of all /datum/component/rig_piece's
+	VAR_PROTECTED/list/datum/component/rig_piece/pieces
 	/// list of /datum/component/rig_piece's by its lookup_id
-	var/list/datum/component/rig_piece/piece_lookup
+	VAR_PROTECTED/list/piece_lookup
 
 	//* Power *//
 	#warn todo.
@@ -162,6 +164,9 @@
 	//* Wearer *//
 	/// Our wearer
 	var/mob/wearer
+	/// wearer actor hud
+	/// * actor HUDs are used to separate intent from wearer vs controllers.
+	var/datum/actor_hud/wearer_hud
 	/// What slot we must be in - id
 	var/wearer_required_slot_id = /datum/inventory_slot_meta/inventory/back::id
 
@@ -187,7 +192,7 @@
 	hard_reset()
 	wipe_everything()
 	QDEL_NULL(resources)
-	QDEL_NULL(console)
+	// QDEL_NULL(console)
 	QDEL_NULL(maint_panel)
 	QDEL_NULL(z_head)
 	QDEL_NULL(z_chest)
@@ -235,12 +240,13 @@
 /obj/item/rig/proc/hard_reset()
 	deactivate(TRUE, TRUE, TRUE, TRUE)
 
-/obj/item/rig/proc/wipe_everything()
+/obj/item/rig/proc/wipe_everything(skip_modules)
 	hard_reset()
 	for(var/id in piece_lookup)
 		var/datum/component/rig_piece/piece = piece_lookup[id]
 		remove_piece(piece)
-	#warn annihilate modules
+	if(!skip_modules)
+		#warn annihilate modules
 	z_head.reset_state_after_wipe()
 	z_chest.reset_state_after_wipe()
 	z_left_arm.reset_state_after_wipe()

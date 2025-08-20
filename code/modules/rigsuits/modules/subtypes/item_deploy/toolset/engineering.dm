@@ -66,7 +66,7 @@
 
 // todo: powertools
 
-/obj/item/rig_module/item_deploy/engineering/power
+/obj/item/rig_module/item_deploy/engineering/industrial
 
 //? Hardlight (tier 3)
 

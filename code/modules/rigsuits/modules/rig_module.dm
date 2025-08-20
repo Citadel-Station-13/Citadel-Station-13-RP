@@ -10,6 +10,8 @@
 	#warn impl all
 
 	materials_base = list(MAT_STEEL = 2000, MAT_PLASTIC = 2500, MAT_GLASS = 1750)
+	/// use our own integrity system
+	integrity_enabled = FALSE
 
 	//* Core *//
 	/// lookup id
@@ -50,7 +52,6 @@
 	var/zone_conflict_type
 
 	//* Defense *//
-	#warn use atom integrity instead?
 	/// brute damage
 	var/brute_damage = 0
 	/// burn damage
@@ -72,15 +73,6 @@
 	var/obj/item/rig/host
 	/// needs ticking
 	var/host_ticked = FALSE
-	/// registered keyroutes
-	/// * lazy list
-	var/list/datum/rig_keyroute/host_keyroutes
-
-	#warn reconsider power
-	/// registered low power draw in watts
-	var/registered_low_power = 0
-	/// registered high power draw in watts
-	var/registered_high_power = 0
 
 	//* UI *//
 	//! todo: this is fucking evil
@@ -153,8 +145,9 @@
 	return TRUE
 
 /**
- * has final say over rig
- * most regular checks should be rig-side
+ * * has final say over rig
+ * * most regular checks should be rig-side
+ * * not checked for forced operations
  *
  * @params
  * * rig - the suit
@@ -167,8 +160,9 @@
 	return TRUE
 
 /**
- * has final say over rig
- * most regular checks should be rig-side
+ * * has final say over rig
+ * * most regular checks should be rig-side
+ * * not checked for forced operations
  *
  * @params
  * * rig - the suit
@@ -264,12 +258,37 @@
 	return
 
 /**
+ * Called to see if we're interested in an item's usage.
+ * * Used so the user can radial for what module to use an item on.
+ * @return TRUE if we're interested.
+ */
+/obj/item/rig_module/proc/check_using_item_on_rig(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	return FALSE
+
+/**
  * Called when something is used on the rig as an item.
  * * Use to do grenade refills and whatnot
  */
 /obj/item/rig_module/proc/handle_using_item_on_rig(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	return NONE
 #warn hook
+
+//* Input *//
+
+/obj/item/rig_module/proc/is_active_rig_click_module()
+	return host?.get_active_rig_module_click() == src
+
+/obj/item/rig_module/proc/become_active_rig_click_module()
+	#warn impl
+
+/**
+ * Set this to return TRUE if your module is a selectable module.
+ */
+/obj/item/rig_module/proc/is_rig_click_module()
+	return FALSE
+
+/obj/item/rig_module/proc/handle_rig_module_click(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	return NONE
 
 //* Power *//
 
@@ -315,13 +334,7 @@
 //* UI *//
 
 /**
- * Static data.
- */
-/obj/item/rig_module/proc/rig_static_data()
-	return list()
-
-/**
- * UI data.
+ * UI module data
  * * This does not auto-update on tick. Use rig_push_data() as needed, and rig_update_data().
  */
 /obj/item/rig_module/proc/rig_data()
@@ -336,35 +349,13 @@
 /obj/item/rig_module/proc/rig_update_data()
 	#warn impl
 
-/obj/item/rig_module/proc/rig_update_static_data()
-	#warn impl
-
 /**
  * @return TRUE if did something (and stop propagation).
  */
 /obj/item/rig_module/proc/rig_act(datum/event_args/actor/actor, control_flags, action, list/params)
-	if(!rig_allowed(actor, control_flags, action, params))
-		return TRUE
 	return FALSE
 
-/**
- * checks if someone's allowed to do something; if FALSE, tgui_act
- *
- * @return TRUE / FALSE
- */
-/obj/item/rig_module/proc/rig_allowed(datum/event_args/actor/actor, control_flags, action, list/params)
-	return control_flags & RIG_CONTROL_MODULES
-
 //* Zones *//
-
-/**
- * detect handedness;
- * this only makes sense if we are hand-based
- * we do not check for hand zones existing here
- * we do not check if our arms and legs are for some reason on different sides.
- */
-/obj/item/rig_module/proc/unsafe_is_left_handed()
-	return rig_zone_to_bit[zone] & (RIG_ZONE_BIT_LEFT_ARM | RIG_ZONE_BIT_LEFT_LEG)
 
 /**
  * detect handedness;
