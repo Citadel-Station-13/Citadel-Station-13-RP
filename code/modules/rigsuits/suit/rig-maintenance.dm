@@ -11,8 +11,10 @@
 	// todo: better access locking? maybe. for now, it's always unlocked if not being worn.
 	return maint_panel_locked && (activation_state == RIG_ACTIVATION_ONLINE)
 
-/obj/item/rig/proc/assert_maint_panel_armor()
-	#warn impl
+/obj/item/rig/proc/get_maint_panel_armor()
+	if(!maint_panel_armor)
+		maint_panel_armor = fetch_armor_struct(maint_panel_armor_type)
+	return maint_panel_armor
 
 /obj/item/rig/proc/repair_maint_panel(datum/event_args/actor/actor, obj/item/tool)
 
@@ -20,5 +22,13 @@
 
 /obj/item/rig/proc/cut_maint_panel(datum/event_args/actor/actor, obj/item/tool)
 
+#warn impl all
+
 /obj/item/rig/proc/is_maint_panel_self_reachable()
 	return maint_panel_allow_wearer
+
+/obj/item/rig/proc/can_reach_maint_panel(datum/event_args/actor/actor, silent)
+
+/obj/item/rig/proc/can_reach_maint_panel_interior(datum/event_args/actor/actor, silent)
+
+#warn impl above two

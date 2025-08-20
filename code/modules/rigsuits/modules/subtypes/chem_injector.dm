@@ -6,3 +6,6 @@
 	var/impl_inject_other = TRUE
 
 #warn impl
+
+/obj/item/rig_module/chem_injector/is_rig_click_module()
+	return TRUE

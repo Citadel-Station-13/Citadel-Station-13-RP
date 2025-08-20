@@ -10,7 +10,4 @@
 /obj/item/rig_module/item_deploy
 	abstract_type = /obj/item/rig_module/item_deploy
 
-	/// list of items; set to a list of typepaths to init.
-	var/list/obj/item/items = list()
-
 #warn impl all

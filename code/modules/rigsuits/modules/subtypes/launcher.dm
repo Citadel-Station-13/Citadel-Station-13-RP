@@ -13,3 +13,6 @@
 
 
 /obj/item/rig_module/launcher/proc/yeet_entity(atom/movable/entity, atom/target)
+
+/obj/item/rig_module/launcher/is_rig_click_module()
+	return TRUE

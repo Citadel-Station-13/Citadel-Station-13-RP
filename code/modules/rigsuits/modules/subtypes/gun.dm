@@ -15,3 +15,6 @@
 	var/lazy_automount_path
 
 #warn impl
+
+/obj/item/rig_module/gun/is_rig_click_module()
+	return TRUE

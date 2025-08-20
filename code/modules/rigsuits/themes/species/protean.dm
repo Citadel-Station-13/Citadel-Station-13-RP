@@ -38,7 +38,13 @@ DECLARE_RIG_THEME(/species/protean)
 
 /obj/item/rig/preset/species/protean/equipped
 	modules = list(
-		/obj/item/rig_module/item_deploy/toolset/engineering/industrial,
-		#warn jetpack, battery, jetpack tank, power sink
+		/obj/item/rig_module/item_deploy/simple/toolset/engineering/industrial,
+		/obj/item/rig_module/resource_store/gas_tank/slotted/breathing,
+		/obj/item/rig_module/resource_store/gas_tank/slotted/jetpack,
+		/obj/item/rig_module/basic/power_sink,
+		#warn jetpack
+		#warn battery slot
+		#warn storage
+		#warn lamp
+		#warn magboots
 	)
-	#warn starting modules
