@@ -1,0 +1,4 @@
+author: "Putnam3145"
+delete-after: True
+changes:
+  - code_imp: "Made flavor text loop-switch into a series of if statements instead"

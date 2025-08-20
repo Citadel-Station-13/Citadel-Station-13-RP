@@ -321,6 +321,7 @@
 	 *
 	 * Accepts:
 	 * * Null - auto-detect
+	 * * PROJECTILE_IMPACT_SOUNDS_* - classifiers, will be processed by target
 	 * * List - list of files, or soundbyte path's or id's. It will be selected from at random
 	 * * Anything else - passed into get_sfx().
 	 */

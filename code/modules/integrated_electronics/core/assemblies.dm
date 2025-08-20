@@ -537,32 +537,32 @@
 	if(battery)
 		var/lost = battery.use(DYNAMIC_W_TO_CELL_UNITS(amount, 1))
 		net_power -= lost
-		return lost > 0
-	return FALSE
+		return lost
+	return 0
 
 // Ditto for giving.
 /obj/item/electronic_assembly/proc/give_power(amount)
 	if(battery)
 		var/gained = battery.give(DYNAMIC_W_TO_CELL_UNITS(amount, 1))
 		net_power += gained
-		return TRUE
-	return FALSE
+		return gained
+	return 0
 
 // Returns true if power was successfully drawn.
 /obj/item/electronic_assembly/proc/draw_power_kw(amount)
 	if(battery)
 		var/lost = battery.use(DYNAMIC_KW_TO_CELL_UNITS(amount, 1))
 		net_power -= lost
-		return lost > 0
-	return FALSE
+		return lost
+	return 0
 
 // Ditto for giving.
 /obj/item/electronic_assembly/proc/give_power_kw(amount)
 	if(battery)
 		var/gained = battery.give(DYNAMIC_KW_TO_CELL_UNITS(amount, 1))
 		net_power += gained
-		return TRUE
-	return FALSE
+		return gained
+	return 0
 
 /obj/item/electronic_assembly/on_loc_moved(oldloc)
 	. = ..()

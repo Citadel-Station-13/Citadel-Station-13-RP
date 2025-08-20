@@ -328,6 +328,7 @@
 	name = "Nebula Motel"
 	},
 /obj/effect/floor_decal/corner/green/border,
+/obj/landmark/spawnpoint/job/outsider,
 /turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "aaY" = (
@@ -11092,6 +11093,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/green/border,
+/obj/landmark/spawnpoint/job/outsider,
 /turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "aCQ" = (
@@ -11269,6 +11271,7 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
+/obj/landmark/spawnpoint/job/outsider/override,
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/commhall)
 "aDo" = (
@@ -14703,6 +14706,7 @@
 /obj/effect/floor_decal/corner/green/border{
 	dir = 1
 	},
+/obj/landmark/spawnpoint/job/outsider,
 /turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "aMK" = (
@@ -20788,6 +20792,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
+/obj/landmark/spawnpoint/job/outsider,
 /turf/simulated/floor/tiled,
 /area/tradeport/commhall)
 "dXo" = (
@@ -22644,6 +22649,17 @@
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/tiled/neutral,
 /area/shuttle/scoophead/cockpit)
+"jda" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 1
+	},
+/obj/effect/floor_decal/techfloor,
+/obj/effect/floor_decal/corner/green/border{
+	dir = 1
+	},
+/obj/landmark/spawnpoint/job/outsider,
+/turf/simulated/floor/tiled,
+/area/tradeport/commhall)
 "jdu" = (
 /obj/machinery/washing_machine,
 /obj/item/storage/laundry_basket{
@@ -22727,10 +22743,6 @@
 	pixel_x = 32
 	},
 /turf/simulated/floor/carpet/patterened/red,
-/area/shuttle/scoophead/cockpit)
-"jpc" = (
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/turf/simulated/floor/plating,
 /area/shuttle/scoophead/cockpit)
 "juq" = (
 /obj/effect/debris/cleanable/dirt,
@@ -23941,6 +23953,10 @@
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/dark,
 /area/sector/nebula_tradeport/motel/sauna)
+"myr" = (
+/obj/landmark/spawnpoint/job/outsider,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/tradeport/commons)
 "myP" = (
 /obj/machinery/light{
 	dir = 1
@@ -26475,6 +26491,14 @@
 	},
 /turf/simulated/floor/carpet/turcarpet,
 /area/sector/nebula_tradeport/motel)
+"upl" = (
+/obj/effect/floor_decal/techfloor,
+/obj/effect/floor_decal/corner/green/border{
+	dir = 1
+	},
+/obj/landmark/spawnpoint/job/outsider,
+/turf/simulated/floor/tiled,
+/area/tradeport/commhall)
 "upC" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -26786,10 +26810,6 @@
 /obj/landmark/spawnpoint/job/trader,
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
-"vkf" = (
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/turf/simulated/floor/plating,
-/area/shuttle/scoophead/cockpit)
 "vld" = (
 /turf/simulated/wall/r_wall,
 /area/sector/nebula_tradeport/motel/room8)
@@ -37193,7 +37213,7 @@ abr
 nHT
 awO
 aYp
-aVm
+upl
 aoN
 apv
 aWO
@@ -37387,7 +37407,7 @@ abr
 awu
 aCZ
 akM
-aWb
+jda
 aoN
 apv
 aeh
@@ -37969,7 +37989,7 @@ aIe
 aKB
 aJh
 aYp
-aVm
+upl
 aoN
 aWH
 aXS
@@ -38163,7 +38183,7 @@ aaB
 aby
 aCQ
 aYp
-aVm
+upl
 aoN
 aHw
 aXS
@@ -38745,7 +38765,7 @@ aFw
 ayd
 aCQ
 aYp
-aVm
+upl
 aoN
 azZ
 aHw
@@ -38939,7 +38959,7 @@ tFV
 aCP
 aCQ
 aYp
-aVm
+upl
 aoN
 aIV
 aHw
@@ -54383,9 +54403,9 @@ aDh
 aDh
 acd
 aDh
-vkf
-vkf
-vkf
+huS
+huS
+huS
 bRZ
 bRZ
 bRZ
@@ -54576,8 +54596,8 @@ aDh
 aDh
 aDh
 acd
-vkf
-vkf
+huS
+huS
 btq
 umb
 crT
@@ -54770,7 +54790,7 @@ aDh
 aDh
 aDh
 acd
-vkf
+huS
 xuJ
 xvE
 fES
@@ -54778,7 +54798,7 @@ crT
 rai
 luK
 eDY
-vkf
+huS
 aDh
 aDh
 awV
@@ -54964,7 +54984,7 @@ aDh
 aDh
 aDh
 aDh
-vkf
+huS
 dFp
 jPy
 nhC
@@ -54972,7 +54992,7 @@ dze
 pfn
 veG
 tBc
-vkf
+huS
 aDh
 aDh
 awV
@@ -55165,8 +55185,8 @@ xWa
 crT
 utC
 crT
-jpc
-vkf
+huS
+huS
 aDh
 aDh
 awV
@@ -55354,7 +55374,7 @@ aDh
 aDh
 aDh
 ygc
-vkf
+huS
 bEV
 bCt
 wux
@@ -55548,11 +55568,11 @@ aDh
 aDh
 aDh
 ygc
-vkf
+huS
 iPk
 uFC
 oBT
-vkf
+huS
 ygc
 aDh
 aDh
@@ -55742,11 +55762,11 @@ aDh
 aDh
 aDh
 ygc
-vkf
+huS
 bEV
 whD
 joQ
-vkf
+huS
 ygc
 aDh
 aDh
@@ -56586,7 +56606,7 @@ wBj
 aLr
 iAn
 anq
-aXZ
+myr
 aXZ
 aXZ
 aXZ
@@ -56780,7 +56800,7 @@ wcE
 xhh
 pfJ
 anq
-aXZ
+myr
 qhK
 qhK
 qhK
