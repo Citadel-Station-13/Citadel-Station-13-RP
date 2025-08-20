@@ -105,7 +105,7 @@
 	else
 		#warn feedback
 	if(!active_cache)
-			active_cache = list()
+		active_cache = list()
 	if(is_cached)
 		// elevate by removing, so it's always at the end
 		active_cache -= target_ref
@@ -120,7 +120,8 @@
 	if(!suppressed)
 		var/username = FindNameFromID(actor.performer) || "Unknown"
 		var/area/target_area = get_area(target)
-		var/message = "[username] has overridden [target] (airlock) [target_area ? "in [target_area.get_display_name()]" : ""] at [A.x],[A.y],[A.z] with \the [src]."
+		// TODO: describe more...
+		var/message = "[username] has overridden [target] [target_area ? "in [target_area.get_display_name()]" : ""] with \the [src]."
 		GLOB.global_announcer.autosay(message, "Security Subsystem", "Command")
 		GLOB.global_announcer.autosay(message, "Security Subsystem", "Security")
 	if(!silent)

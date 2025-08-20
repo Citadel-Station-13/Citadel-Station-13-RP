@@ -26,15 +26,15 @@ DECLARE_RIG_THEME(/nanotrasen/asset_protection)
 
 /datum/armor/rigsuit/nanotrasen/asset_protection
 	melee = 0.55
-	melee_tier = MELEE_TIER_HEAVY
+	melee_tier = 4
 	melee_soak = 0
 	melee_deflect = 5
 	bullet = 0.55
-	bullet_tier = BULLET_TIER_HIGH
+	bullet_tier = 4
 	bullet_soak = 0
 	bullet_deflect = 5
 	laser = 0.55
-	laser_tier = LASER_TIER_HIGH
+	laser_tier = 4
 	laser_soak = 0
 	laser_deflect = 5
 	energy = 0.45
@@ -62,15 +62,15 @@ DECLARE_RIG_THEME(/nanotrasen/officer)
 
 /datum/armor/rigsuit/nanotrasen/officer
 	melee = 0.45
-	melee_tier = MELEE_TIER_MEDIUM
+	melee_tier = 3
 	melee_soak = 0
 	melee_deflect = 5
 	bullet = 0.45
-	bullet_tier = BULLET_TIER_MEDIUM
+	bullet_tier = 3
 	bullet_soak = 0
 	bullet_deflect = 5
 	laser = 0.45
-	laser_tier = LASER_TIER_MEDIUM
+	laser_tier = 3
 	laser_soak = 0
 	laser_deflect = 5
 	energy = 0.35
@@ -97,15 +97,15 @@ DECLARE_RIG_THEME(/nanotrasen/inquisition)
 
 /datum/armor/rigsuit/nanotrasen/inquisition
 	melee = 0.35
-	melee_tier = MELEE_TIER_HEAVY
+	melee_tier = 4
 	melee_soak = 0
 	melee_deflect = 5
 	bullet = 0.35
-	bullet_tier = BULLET_TIER_HIGH
+	bullet_tier = 4
 	bullet_soak = 0
 	bullet_deflect = 5
 	laser = 0.35
-	laser_tier = LASER_TIER_HIGH
+	laser_tier = 4
 	laser_soak = 0
 	laser_deflect = 5
 	energy = 0.35
@@ -127,15 +127,15 @@ DECLARE_RIG_THEME(/nanotrasen/inquisition)
 
 /datum/armor/rigsuit/nanotrasen/response
 	melee = 0.35
-	melee_tier = MELEE_TIER_HEAVY
+	melee_tier = 4
 	melee_soak = 0
 	melee_deflect = 5
 	bullet = 0.35
-	bullet_tier = BULLET_TIER_HIGH
+	bullet_tier = 4
 	bullet_soak = 0
 	bullet_deflect = 5
 	laser = 0.35
-	laser_tier = LASER_TIER_HIGH
+	laser_tier = 4
 	laser_soak = 0
 	laser_deflect = 5
 	energy = 0.35

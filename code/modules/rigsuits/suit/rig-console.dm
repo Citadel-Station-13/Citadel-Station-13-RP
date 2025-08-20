@@ -3,6 +3,12 @@
 
 // TODO: finish this system
 
+// /obj/item/rig/proc/request_console()
+// 	RETURN_TYPE(/datum/rig_console)
+// 	if(isnull(console))
+// 		console = new(src)
+// 	return console
+
 // /obj/item/rig/proc/console_query(effective_control_flags, username)
 // 	return list(
 // 		"activate" = "Engage the hardsuit's systems and bind it to its wearer.",

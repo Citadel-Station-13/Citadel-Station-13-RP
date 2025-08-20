@@ -425,18 +425,6 @@
 			src.forceMove(prig)
 			return
 
-/mob/living/proc/usehardsuit()
-	set name = "Utilize Hardsuit Interface"
-	set desc = "Allows a protean blob to open hardsuit interface."
-	set category = "Abilities"
-
-	if(istype(loc, /obj/item/hardsuit/protean))
-		var/obj/item/hardsuit/protean/prig = loc
-		to_chat(src, "You attempt to interface with the [prig].")
-		prig.nano_ui_interact(src, nano_state = interactive_state)
-	else
-		to_chat(src, "You are not in hardsuit form.")
-
 /mob/living/carbon/human/proc/nano_outofblob(var/mob/living/simple_mob/protean_blob/blob)
 	if(!istype(blob))
 		return
@@ -673,7 +661,7 @@
 			chosen_list = GLOB.clothing_ears
 		if("headsets")
 			chosen_list = GLOB.clothing_headsets
-			
+
 
 	var/picked = input(src,"What clothing would you like to mimic?","Mimic Clothes") as null|anything in chosen_list
 	if(!ispath(chosen_list[picked]))

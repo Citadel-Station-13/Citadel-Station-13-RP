@@ -8,15 +8,15 @@
 
 /datum/armor/rigsuit/station/cargo
 	melee = 0.5
-	melee_tier = MELEE_TIER_MEDIUM
+	melee_tier = 3
 	melee_soak = 0
 	melee_deflect = 5
 	bullet = 0.35
-	bullet_tier = BULLET_TIER_MEDIUM
+	bullet_tier = 3
 	bullet_soak = 0
 	bullet_deflect = 5
 	laser = 0.25
-	laser_tier = LASER_TIER_MEDIUM
+	laser_tier = 3
 	laser_soak = 0
 	laser_deflect = 0
 	energy = 0.05
@@ -63,10 +63,10 @@ DECLARE_RIG_THEME(/station/cargo/mining)
 	#warn encumbrance
 
 /datum/armor/rigsuit/station/cargo/mining
-	bullet = 0.2
-	bullet_tier = BULLET_TIER_LOW
-	laser = 0.3
-	laser_tier = LASER_TIER_LOW
+	bullet = 0.35
+	bullet_tier = 2
+	laser = 0.35
+	laser_tier = 2
 	rad = 0.35
 
 DECLARE_RIG_THEME(/station/cargo/loader)

@@ -61,3 +61,16 @@
 			var/datum/rig_maint_panel/panel = request_maint()
 			panel.ui_interact(e_args.initiator)
 			return TRUE
+
+/obj/item/rig/strip_menu_options(mob/user)
+	. = ..()
+	.["maint"] = "Access Panel"
+
+/obj/item/rig/strip_menu_act(mob/user, action)
+	. = ..()
+	if(.)
+		return
+	if(action == "maint")
+		var/datum/rig_maint_panel/panel = request_maint()
+		panel.ui_interact(user)
+		return TRUE

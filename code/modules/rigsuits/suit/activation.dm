@@ -12,11 +12,17 @@
 		set_weight(online_weight)
 		set_encumbrance(online_encumbrance)
 
-/obj/item/rig/proc/fully_activated()
-	return activation_state == RIG_ACTIVATION_ONLINE
+/obj/item/rig/proc/is_online()
+	switch(activation_state)
+		if(RIG_ACTIVATION_ONLINE)
+			return TRUE
+	return FALSE
 
-/obj/item/rig/proc/partially_activated()
-	return activation_state & RIG_ACTIVATION_IS_CYCLING
+/obj/item/rig/proc/is_online_or_cycling()
+	switch(activation_state)
+		if(RIG_ACTIVATION_OFFLINE)
+			return FALSE
+	return TRUE
 
 /**
  * checks if we're in the right inventory slot to activate.
@@ -172,7 +178,7 @@
 				continue
 			unseal_piece_sync(piece, TRUE)
 
-	REMOVE_TRAIT(src, TRAIT_ITEM_NODROP, RIG_CONTROLLER_TRAIT(src))
+	REMOVE_TRAIT(src, TRAIT_ITEM_NODROP, TRAIT_SOURCE_RIG_CONTROLLER(src))
 
 	if(activation_state != RIG_ACTIVATION_OFFLINE)
 		activation_state = RIG_ACTIVATION_OFFLINE

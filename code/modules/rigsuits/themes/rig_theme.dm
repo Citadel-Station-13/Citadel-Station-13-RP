@@ -61,7 +61,7 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	/// TGUI theme; unset to default
 	var/ui_theme
 
-	//* base stats
+	//* base stats *//
 	/// startup / shutdown time
 	var/boot_delay = 5 SECONDS
 	/// piece seal/unseal time
@@ -79,21 +79,27 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	#warn encumbrance
 	var/online_encumbrance = 0
 
-	//* vars to be replaced by components/modules at some point
+	//* vars to be replaced by components/modules at some point *//
 	var/datum/armor/armor = /datum/armor/rigsuit
 	var/min_pressure_protect = 0 * ONE_ATMOSPHERE
 	var/max_pressure_protect = 10 * ONE_ATMOSPHERE
 	var/min_temperature_protect = COLD_PROTECTION_VOIDSUIT
 	var/max_temperature_protect = HEAT_PROTECTION_NORMAL_VOIDSUIT
 	var/insulated_gloves = TRUE
-	// todo: this should be dropped down way more later so tasers hit the suit instead of the user
-	//       this is pretty much a maintainer mandate too so discuss before trying to go against this
-	//       if you're reading it
+	// todo: this should be dropped down way more later when tasers hit the suit instead of the user
+	//       this is pretty much a maintainer mandate so please discuss before opening a PR
+	//       or you risk it being closed.
+	//
 	//       hardsuits, like armor, absolutely should be one of those things that forces a lethal
-	//       engagement if you don't want an easy 3 click win via stuns
+	//       engagement; we dont' want people in them to be 3 click nonlethal'd with stuns.
+	//
 	//       that said, ions/electrical stuns absolutely should fuck up internal systems and cause lockups
-	//       so it's still very useful to pack a taser to a rig fight
+	//       so it's still very useful to pack a taser to a rig fight. this is the only reason this is not lower.
 	var/siemens_coefficient = 0.8
+
+	//* economy *//
+	/// cost in thalers, not including modules
+	var/worth = 300
 
 	#warn values lmao
 

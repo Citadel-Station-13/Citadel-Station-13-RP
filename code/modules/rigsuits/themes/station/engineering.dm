@@ -9,15 +9,15 @@
 
 /datum/armor/rigsuit/station/engineering
 	melee = 0.25
-	melee_tier = MELEE_TIER_MEDIUM
+	melee_tier = 3
 	melee_soak = 0
 	melee_deflect = 5
 	bullet = 0.15
-	bullet_tier = BULLET_TIER_LOW
+	bullet_tier = 2
 	bullet_soak = 0
 	bullet_deflect = 0
 	laser = 0.3
-	laser_tier = LASER_TIER_MEDIUM
+	laser_tier = 3
 	laser_soak = 5
 	laser_deflect = 0
 	energy = 0.25
@@ -83,5 +83,5 @@ DECLARE_RIG_THEME(/station/engineering/advanced)
 	fire = 1.0
 	rad = 0.85
 	melee = 0.3
-	bullet_tier = BULLET_TIER_MEDIUM
+	bullet_tier = 3
 	laser_deflect = 5

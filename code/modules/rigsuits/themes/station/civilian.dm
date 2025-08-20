@@ -21,15 +21,15 @@ DECLARE_RIG_THEME(/station/civilian/standard)
 
 /datum/armor/rigsuit/station/civilian/standard
 	melee = 0.15
-	melee_tier = MELEE_TIER_MEDIUM
+	melee_tier = 3
 	melee_soak = 0
 	melee_deflect = 5
 	bullet = 0.15
-	bullet_tier = BULLET_TIER_LOW
+	bullet_tier = 2
 	bullet_soak = 0
 	bullet_deflect = 0
 	laser = 0.25
-	laser_tier = LASER_TIER_LOW
+	laser_tier = 2
 	laser_soak = 2
 	laser_deflect = 2
 	energy = 0.25

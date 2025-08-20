@@ -6,6 +6,9 @@
 	desc = /obj/item/rig_module::desc + " This one contains a mounted flashbulb generally used \
 	by security teams to non-lethally disorient combatants."
 
+	impl_click = TRUE
+
+
 	var/flash_type = /obj/item/flash
 
 #warn impl

@@ -70,6 +70,12 @@
 	//* Registration *//
 	/// the rig we're on
 	var/obj/item/rig/host
+	/// needs ticking
+	var/host_ticked = FALSE
+	/// registered keyroutes
+	/// * lazy list
+	var/list/datum/rig_keyroute/host_keyroutes
+
 	#warn reconsider power
 	/// registered low power draw in watts
 	var/registered_low_power = 0
@@ -248,6 +254,14 @@
 #warn impl
 
 //* Hooks *//
+
+/**
+ * on host tick
+ * * only called if `host_ticked` is `TRUE`.
+ * * not called while host is offline / deactivated.
+ */
+/obj/item/rig_module/proc/handle_rig_tick(dt)
+	return
 
 /**
  * Called when something is used on the rig as an item.

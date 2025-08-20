@@ -21,15 +21,15 @@ DECLARE_RIG_THEME(/station/command/captain)
 
 /datum/armor/rigsuit/station/command/captain
 	melee = 0.4
-	melee_tier = MELEE_TIER_HEAVY
+	melee_tier = 4
 	melee_soak = 0
 	melee_deflect = 5
 	bullet = 0.35
-	bullet_tier = BULLET_TIER_HIGH
+	bullet_tier = 4
 	bullet_soak = 0
 	bullet_deflect = 5
 	laser = 0.35
-	laser_tier = LASER_TIER_HIGH
+	laser_tier = 4
 	laser_soak = 5
 	laser_deflect = 0
 	energy = 0.35

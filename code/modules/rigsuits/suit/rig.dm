@@ -47,6 +47,16 @@
 	//* Environmentals *//
 	#warn todo
 
+	//* Hotbinds *//
+
+	/// active hotbinds
+	/// * lazy list
+	var/list/datum/rig_hotbind/hotbinds
+
+	//* Input *//
+	/// Active module to route clicks to
+	var/obj/item/rig_module/rig_module_click_active
+
 	//* Legacy - to be made into dynamic data once components/modules are done. *//
 	var/datum/armor/suit_armor
 	var/min_pressure_protect
@@ -260,27 +270,15 @@
 	. = ..()
 	ui_interact(user)
 
-//* Console *//
 
-/obj/item/rig/proc/request_console()
-	RETURN_TYPE(/datum/rig_console)
-	if(isnull(console))
-		console = new(src)
-	return console
+//* Processing *//
 
-//* Inventory *//
+/obj/item/rig/process(delta_time)
 
-/obj/item/rig/strip_menu_options(mob/user)
-	. = ..()
-	.["maint"] = "Access Panel"
-
-/obj/item/rig/strip_menu_act(mob/user, action)
-	. = ..()
-	if(.)
+	if(activation_state == RIG_ACTIVATION_OFFLINE)
 		return
-	if(action == "maint")
-		var/datum/rig_maint_panel/panel = request_maint()
-		panel.ui_interact(user)
-		return TRUE
+	for(var/obj/item/rig_module/module as anything in get_modules())
+		if(module.host_ticked)
+			module.handle_rig_tick(delta_time)
 
-#warn handling for armor etc etc
+	#warn impl

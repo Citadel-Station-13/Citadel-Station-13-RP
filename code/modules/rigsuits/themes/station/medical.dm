@@ -8,15 +8,15 @@
 
 /datum/armor/rigsuit/station/medical
 	melee = 0.3
-	melee_tier = MELEE_TIER_MEDIUM
+	melee_tier = 3
 	melee_soak = 3
 	melee_deflect = 0
 	bullet = 0.25
-	bullet_tier = BULLET_TIER_LOW
+	bullet_tier = 2
 	bullet_soak = 0
 	bullet_deflect = 0
 	laser = 0.3
-	laser_tier = LASER_TIER_LOW
+	laser_tier = 2
 	laser_soak = 0
 	laser_deflect = 0
 	energy = 0.2
@@ -69,9 +69,9 @@ DECLARE_RIG_THEME(/station/medical/advanced)
 
 /datum/armor/rigsuit/station/medical/advanced
 	melee = 0.35
-	melee_tier = MELEE_TIER_MEDIUM
+	melee_tier = 3
 	bullet = 0.2
-	bullet_tier = BULLET_TIER_MEDIUM
+	bullet_tier = 3
 	laser = 0.3
-	laser_tier = LASER_TIER_MEDIUM
+	laser_tier = 3
 	bomb = 0.4

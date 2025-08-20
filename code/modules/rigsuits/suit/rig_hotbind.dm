@@ -17,7 +17,7 @@
 	VAR_PROTECTED/bind_action
 	/// see [bind_action]
 	VAR_PROTECTED/list/bind_params
-	/// action button
+	/// action button; lazy-init
 	var/datum/action/action
 
 /datum/rig_hotbind/New(obj/item/rig_module/module, action, list/params)
@@ -28,16 +28,17 @@
 /datum/rig_hotbind/Destroy()
 	bind_action = bind_params = null
 	#warn clear from module
-	QDEL_NULL(action)
+	clear_action()
 	return ..()
 
 /datum/rig_hotbind/proc/request_action() as /datum/action
 
+/datum/rig_hotbind/proc/clear_action()
+	QDEL_NULL(action)
 
 /datum/rig_hotbind/proc/on_invoke(datum/event_args/actor/actor)
 
-
-/datum/rig_hotbind/proc/render_button_appearance()
+#warn rendering?
 
 /**
  * @params

@@ -124,9 +124,9 @@
 	var/protected = 0
 
 	//anomaly suits give best protection, but excavation suits are almost as good
-	if(istype(H.back,/obj/item/hardsuit/hazmat))
-		var/obj/item/hardsuit/hazmat/hardsuit = H.back
-		if(hardsuit.suit_is_deployed() && hardsuit.is_online())
+	if(istype(H.back,/obj/item/rig/preset/station/science))
+		var/obj/item/rig/rig = H.back
+		if(rig.is_online())
 			protected += 1
 
 	if(istype(H.wear_suit,/obj/item/clothing/suit/bio_suit/anomaly))
