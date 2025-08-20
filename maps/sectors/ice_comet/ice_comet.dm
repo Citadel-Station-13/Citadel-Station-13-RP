@@ -1,5 +1,5 @@
 /datum/map/sector/ice_comet
-	id = "solars_station"
+	id = "ice_comet"
 	name = "Sector - Ice Comet Welnada"
 	width = 192
 	height = 192
