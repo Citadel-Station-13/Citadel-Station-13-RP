@@ -66,6 +66,11 @@
 	if(should_simple_delay_adjust(new /datum/event_args/actor(user)))
 		. += SPAN_NOTICE("Use a screwdriver on this to change the fuse time.")
 
+/obj/item/grenade/simple/on_activate_shot_from_generic(datum/launcher, requested_time, datum/event_args/actor/actor)
+	if(!isnull(requested_time))
+		activation_detonate_delay = requested_time
+	activate(actor)
+
 /obj/item/grenade/simple/activate(datum/event_args/actor/actor)
 	if(activated)
 		return

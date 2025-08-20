@@ -61,3 +61,5 @@
 							organ.implants -= src
 			host._handle_inventory_hud_remove(src)
 		qdel(src)
+
+#warn tidy up this shit

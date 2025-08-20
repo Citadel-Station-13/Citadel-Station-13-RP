@@ -5,6 +5,7 @@
  * Bindings for a pickaxe.
  */
 /obj/item/rig_module/basic/pickaxe
+	impl_click = TRUE
 	/// automatically mounts and sets everything
 	var/lazy_automount_path = /obj/item/pickaxe
 

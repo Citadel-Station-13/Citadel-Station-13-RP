@@ -5,8 +5,13 @@
 	var/supports_targeted_jaunt = TRUE
 	var/supports_emergency_jaunt = TRUE
 
+	var/bring_grabbed = TRUE
+	var/bring_pulled = TRUE
+
 /obj/item/rig_module/basic/teleporter/Initialize(mapload)
 	. = ..()
+	impl_trigger = supports_emergency_jaunt
+	impl_click = supports_targeted_jaunt
 
 /obj/item/rig_module/basic/teleporter/Destroy()
 	. = ..()

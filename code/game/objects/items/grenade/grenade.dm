@@ -41,6 +41,12 @@
 /obj/item/grenade/proc/on_activate_shot_from_gun(obj/item/gun/gun, datum/gun_firing_cycle/cycle)
 	activate(cycle.firing_actor)
 
+/obj/item/grenade/proc/activate_shot_from_generic(datum/launcher, requested_time, datum/event_args/actor/actor)
+	on_activate_shot_from_generic(launcher, requested_time, actor)
+
+/obj/item/grenade/proc/on_activate_shot_from_generic(datum/launcher, requested_time, datum/event_args/actor/actor)
+	activate(actor)
+
 /obj/item/grenade/proc/activate(datum/event_args/actor/actor)
 	on_activate(actor)
 
