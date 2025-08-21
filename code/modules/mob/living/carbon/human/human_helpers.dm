@@ -60,7 +60,7 @@
 	// Ninja cloak.
 	if(istype(back, /obj/item/hardsuit))
 		var/obj/item/hardsuit/suit = back
-		for(var/obj/item/hardsuit_module/stealth_field/cloaker in suit.installed_modules)
+		for(var/obj/item/rig_module/basic/stealth_field/cloaker in suit.installed_modules)
 			if(cloaker.active)
 				cloaker.deactivate()
 
@@ -71,7 +71,7 @@
 	// Ninja cloak.
 	else if(istype(back, /obj/item/hardsuit))
 		var/obj/item/hardsuit/suit = back
-		for(var/obj/item/hardsuit_module/stealth_field/cloaker in suit.installed_modules)
+		for(var/obj/item/rig_module/basic/stealth_field/cloaker in suit.installed_modules)
 			if(cloaker.active)
 				return TRUE
 	return ..()

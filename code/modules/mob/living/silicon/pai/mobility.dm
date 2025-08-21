@@ -58,7 +58,7 @@
 
 /mob/living/silicon/pai/proc/open_up()
 	/// Stops unfolding in hardsuits and vore bellies, if implanted you explode out
-	if(istype(shell.loc,/obj/item/hardsuit_module))
+	if(istype(shell.loc,/obj/item/rig_module/basic))
 		to_chat(src, "There is no room to unfold inside this hardsuit module. You're good and stuck.")
 		return FALSE
 	else if(istype(shell.loc,/mob))

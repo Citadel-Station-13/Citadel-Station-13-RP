@@ -55,6 +55,7 @@
  * handle modifiers - physical/biological life haltedd is passed in
  */
 /mob/proc/handle_modifiers(component_signal)
+	// todo: nuke this probably i think status effects is fine idk???
 
 //* Metabolism *//
 

@@ -27,6 +27,8 @@
 
 	//Welding tool specific stuff
 	var/welding = 0 	//Whether or not the welding tool is off(0), on(1) or currently welding(2)
+	/// damage force when on (+ will be burning damage instead of brute)
+	var/damage_on = 15
 	var/status = 1 		//Whether the welder is secured or unsecured (able to attach rods to it to make a flamethrower)
 	var/max_fuel = 20 	//The max amount of fuel the welder can hold
 
@@ -690,8 +692,8 @@
 	if(isrobot(src.loc))
 		var/mob/living/silicon/robot/R = src.loc
 		return R.cell
-	if(istype(src.loc, /obj/item/hardsuit_module))
-		var/obj/item/hardsuit_module/module = src.loc
+	if(istype(src.loc, /obj/item/rig_module/basic))
+		var/obj/item/rig_module/basic/module = src.loc
 		if(module.holder && module.holder.wearer)
 			var/mob/living/carbon/human/H = module.holder.wearer
 			if(istype(H) && H.back)
@@ -706,11 +708,6 @@
 /obj/item/weldingtool/electric/mounted/cyborg
 	tool_speed = 0.5
 
-
-/obj/item/weldingtool/electric/mounted/RIGset
-	name = "arc welder"
-	tool_speed = 0.7 // Let's see if this works with RIGs
-	desc = "If you're seeing this, someone did a dum-dum."
 
 /obj/item/weldingtool/electric/mounted/exosuit
 	var/obj/item/vehicle_module/equip_mount = null

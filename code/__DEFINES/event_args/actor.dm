@@ -16,6 +16,8 @@
 /// logging only
 /// * kinetic gauntlets
 #define ACTOR_DATA_KINETIC_IMPACT_LOG "kinetic-impact-log"
+/// logging only
+#define ACTOR_DATA_RIGSUIT_CLICK_LOG "rig-click-log"
 
 /// upon melee impact
 #define ACTOR_DATA_MELEE_DAMAGE_INSTANCE_RESULTS "melee-damage-instance-results"

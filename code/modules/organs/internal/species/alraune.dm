@@ -4,24 +4,28 @@
 	name = "neuro-stroma"
 	desc = "A knot of fibrous plant matter."
 	parent_organ = BP_TORSO // brains in their core
+	biology_type = BIOLOGY_TYPE_PLANT
 
 /obj/item/organ/internal/eyes/alraune
 	icon = 'icons/mob/clothing/species/alraune/organs.dmi'
 	icon_state = "photoreceptors"
 	name = "photoreceptors"
 	desc = "Bulbous and fleshy plant matter."
+	biology_type = BIOLOGY_TYPE_PLANT
 
 /obj/item/organ/internal/kidneys/alraune
 	icon = 'icons/mob/clothing/species/alraune/organs.dmi'
 	icon_state = "rhyzofilter"
 	name = "rhyzofilter"
 	desc = "A tangle of root nodules."
+	biology_type = BIOLOGY_TYPE_PLANT
 
 /obj/item/organ/internal/liver/alraune
 	icon = 'icons/mob/clothing/species/alraune/organs.dmi'
 	icon_state = "phytoextractor"
 	name = "enzoretector"
 	desc = "A bulbous gourd-like structure."
+	biology_type = BIOLOGY_TYPE_PLANT
 
 //Begin fruit gland and its code.
 /obj/item/organ/internal/fruitgland //Amazing name, I know.
@@ -30,6 +34,7 @@
 	name = "fruit gland"
 	desc = "A bulbous gourd-like structure."
 	organ_tag = O_FRUIT
+	biology_type = BIOLOGY_TYPE_PLANT
 	var/generated_reagents = list("sugar" = 2) //This actually allows them. This could be anything, but sugar seems most fitting.
 	var/usable_volume = 250 //Five fruit.
 	var/transfer_amount = 50
