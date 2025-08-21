@@ -272,7 +272,7 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
                       Object.values(data.designs.instances).filter(
                         (d) => searchText.length > 2
                           ? d.name.toLowerCase().includes(searchText) :
-                          (((subcategory.length > 0) && (d.subcategories.length > 0)) ?
+                          ((subcategory.length > 0) ?
                           (d.categories.includes(category) && d.subcategories.includes(subcategory)) :
                           d.categories.includes(category))
                       ).sort((d1, d2) =>
