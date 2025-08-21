@@ -262,7 +262,12 @@
 
 //* Set / Get *//
 
+/**
+ * Please use type whenever you can, do not use IDs/instances unless absolutely necessary.
+ */
 /datum/game_preferences/proc/set_toggle(datum/game_preference_toggle/id_path_instance, value)
+	if(!SSpreferences.initialized)
+		return FALSE
 	var/datum/game_preference_toggle/toggle = SSpreferences.resolve_preference_toggle(id_path_instance)
 	if(isnull(toggle))
 		CRASH("invalid fetch")
@@ -274,7 +279,12 @@
 	mark_dirty()
 	return TRUE
 
+/**
+ * Please use type whenever you can, do not use IDs/instances unless absolutely necessary.
+ */
 /datum/game_preferences/proc/toggle(datum/game_preference_toggle/id_path_instance)
+	if(!SSpreferences.initialized)
+		return FALSE
 	var/datum/game_preference_toggle/toggle = SSpreferences.resolve_preference_toggle(id_path_instance)
 	if(isnull(toggle))
 		CRASH("invalid fetch")
@@ -286,7 +296,12 @@
 	mark_dirty()
 	return TRUE
 
+/**
+ * Please use type whenever you can, do not use IDs/instances unless absolutely necessary.
+ */
 /datum/game_preferences/proc/get_toggle(datum/game_preference_toggle/id_path_instance)
+	if(ispath(id_path_instance) && !SSpreferences.initialized)
+		return id_path_instance.default_value
 	var/datum/game_preference_toggle/toggle = SSpreferences.resolve_preference_toggle(id_path_instance)
 	if(isnull(toggle))
 		CRASH("invalid fetch")
@@ -296,7 +311,12 @@
 		return toggle.default_value
 	return toggles_by_key[toggle.key]
 
+/**
+ * Please use type whenever you can, do not use IDs/instances unless absolutely necessary.
+ */
 /datum/game_preferences/proc/set_entry(datum/game_preference_entry/id_path_instance, value)
+	if(!SSpreferences.initialized)
+		return FALSE
 	var/datum/game_preference_entry/entry = SSpreferences.resolve_preference_entry(id_path_instance)
 	if(isnull(entry))
 		CRASH("invalid fetch")
@@ -312,7 +332,12 @@
 	push_ui_data(data = list("values" = entries_by_key))
 	return TRUE
 
+/**
+ * Please use type whenever you can, do not use IDs/instances unless absolutely necessary.
+ */
 /datum/game_preferences/proc/get_entry(datum/game_preference_entry/id_path_instance)
+	if(ispath(id_path_instance) && !SSpreferences.initialized)
+		return id_path_instance.default_value
 	var/datum/game_preference_entry/entry = SSpreferences.resolve_preference_entry(id_path_instance)
 	if(isnull(entry))
 		CRASH("invalid fetch")
@@ -575,44 +600,37 @@
 
 //? Client Wrappers ?//
 
+/**
+ * Please use type whenever you can, do not use IDs/instances unless absolutely necessary.
+ */
 /client/proc/get_preference_toggle(datum/game_preference_toggle/id_path_instance)
-	var/datum/game_preference_toggle/toggle = SSpreferences.resolve_preference_toggle(id_path_instance)
-	if(isnull(toggle))
-		CRASH("invalid fetch")
-	if(!initialized || !preferences.initialized)
-		return toggle.default_value
-	if(!toggle.is_visible(src, TRUE))
-		return toggle.default_value
-	return preferences.toggles_by_key[toggle.key]
+	if(!preferences && ispath(id_path_instance))
+		return id_path_instance.default_value
+	return preferences.get_toggle(id_path_instance)
 
+/**
+ * Please use type whenever you can, do not use IDs/instances unless absolutely necessary.
+ */
 /client/proc/get_preference_entry(datum/game_preference_entry/id_path_instance)
-	var/datum/game_preference_entry/entry = SSpreferences.resolve_preference_entry(id_path_instance)
-	if(isnull(entry))
-		CRASH("invalid fetch")
-	if(!initialized)
-		return entry.default_value(src)
-	if(!entry.is_visible(src, TRUE))
-		return entry.default_value(src)
-	return preferences.entries_by_key[entry.key]
+	if(!preferences && ispath(id_path_instance))
+		return id_path_instance.default_value
+	return preferences.get_entry(id_path_instance)
 
 //? Mob Wrappers ?//
 
+/**
+ * Please use type whenever you can, do not use IDs/instances unless absolutely necessary.
+ */
 /mob/proc/get_preference_toggle(datum/game_preference_toggle/id_path_instance)
-	var/datum/game_preference_toggle/toggle = SSpreferences.resolve_preference_toggle(id_path_instance)
-	if(isnull(toggle))
-		CRASH("invalid fetch")
-	if(!client?.initialized || !client.preferences.initialized)
-		return toggle.default_value
-	if(!toggle.is_visible(client, TRUE))
-		return toggle.default_value
-	return client.preferences.toggles_by_key[toggle.key]
+	if(!client?.preferences && ispath(id_path_instance))
+		return id_path_instance.default_value
+	return client.preferences.get_toggle(id_path_instance)
 
+/**
+ * Please use type whenever you can, do not use IDs/instances unless absolutely necessary.
+ */
 /mob/proc/get_preference_entry(datum/game_preference_entry/id_path_instance)
-	var/datum/game_preference_entry/entry = SSpreferences.resolve_preference_entry(id_path_instance)
-	if(isnull(entry))
-		CRASH("invalid fetch")
-	if(!client?.initialized || !client.preferences.initialized)
-		return entry.default_value(client)
-	if(!entry.is_visible(client, TRUE))
-		return entry.default_value(client)
-	return client.preferences.entries_by_key[entry.key]
+	if(!client?.preferences && ispath(id_path_instance))
+		return id_path_instance.default_value
+	return client.preferences.get_entry(id_path_instance)
+
