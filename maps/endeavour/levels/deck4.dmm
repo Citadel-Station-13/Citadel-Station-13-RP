@@ -7105,6 +7105,9 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 9
 	},
+/obj/machinery/computer/cryopod/robot{
+	pixel_y = 30
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_cyborg_station)
 "gpF" = (
