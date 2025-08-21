@@ -450,6 +450,7 @@
 /obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
+/obj/structure/stasis_cage,
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
 "arK" = (
@@ -6842,6 +6843,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
+"eJA" = (
+/obj/structure/stasis_cage,
+/turf/simulated/floor/tiled,
+/area/rnd/research_foyer_auxiliary)
 "eJQ" = (
 /obj/machinery/air_alarm/west_mount,
 /obj/effect/floor_decal/borderfloor{
@@ -20236,6 +20241,7 @@
 /obj/machinery/camera/network/research{
 	dir = 1
 	},
+/obj/structure/stasis_cage,
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
 "oHb" = (
@@ -20645,6 +20651,7 @@
 "oWJ" = (
 /obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
+/obj/structure/stasis_cage,
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
 "oXp" = (
@@ -41495,7 +41502,7 @@ uOW
 vLZ
 lzL
 rMF
-rMF
+eJA
 xSp
 qGt
 wAu
@@ -42077,7 +42084,7 @@ oNw
 oNw
 mrs
 rMF
-rMF
+eJA
 xSp
 byD
 iMx
