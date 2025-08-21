@@ -400,30 +400,7 @@
 		remove_micros(I, root) //Recursion. I'm honestly depending on there being no containment loop, but at the cost of performance that can be fixed too.
 		if(istype(I, /obj/item/holder))
 			I.forceMove(root.drop_location())
-/* protean blobs have an inventory now and should NOT be redirecting strip
 
-/mob/living/simple_mob/protean_blob/strip_menu_act(mob/user, action)
-	return humanform.strip_menu_act(arglist(args))
-
-/mob/living/simple_mob/protean_blob/strip_menu_options(mob/user)
-	return humanform.strip_menu_options(arglist(args))
-
-/mob/living/simple_mob/protean_blob/strip_interaction_prechecks(mob/user, autoclose, allow_loc)
-	allow_loc = TRUE
-	return humanform.strip_interaction_prechecks(arglist(args))
-
-/mob/living/simple_mob/protean_blob/open_strip_menu(mob/user)
-	return humanform.open_strip_menu(arglist(args))
-
-/mob/living/simple_mob/protean_blob/close_strip_menu(mob/user)
-	return humanform.close_strip_menu(arglist(args))
-
-/mob/living/simple_mob/protean_blob/request_strip_menu(mob/user)
-	return humanform.request_strip_menu(arglist(args))
-
-/mob/living/simple_mob/protean_blob/render_strip_menu(mob/user)
-	return humanform.render_strip_menu(arglist(args))
-*/
 /mob/living/simple_mob/protean_blob/proc/rig_transform()
 	set name = "Modify Form - Hardsuit"
 	set desc = "Allows a protean blob to solidify its form into one extremely similar to a hardsuit."
