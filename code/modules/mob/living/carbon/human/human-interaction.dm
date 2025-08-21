@@ -75,13 +75,12 @@
 		return CLICKCHAIN_FULL_BLOCKED | CLICKCHAIN_DID_SOMETHING
 
 	// mostly legacy code
-	var/mob/living/carbon/human/H = clickchain.performer
-	if(!istype(H))
-		return NONE
-	if(legacy_unarmed_miss_hook(H))
-		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_ATTACK_MISSED
-	var/mob/living/L = H
-	add_attack_logs(H,src,"Disarmed")
+	var/mob/living/L = clickchain.performer
+	if(istype(L, /mob/living/carbon/human))
+		var/mob/living/carbon/human/H = L
+		if(legacy_unarmed_miss_hook(H))
+			return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_ATTACK_MISSED
+	add_attack_logs(L,src,"Disarmed")
 	L.do_attack_animation(src)
 
 	if(w_uniform)

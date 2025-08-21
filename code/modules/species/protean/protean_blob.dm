@@ -129,7 +129,8 @@
 	if(has_buckled_mobs() && (new_buckmax < buckle_max_mobs))
 		visible_message(SPAN_WARNING("[src] sloughs off its riders!"))
 		unbuckle_all_mobs(BUCKLE_OP_FORCE)
-		buckle_max_mobs = new_buckmax
+	
+	buckle_max_mobs = new_buckmax
 	
 
 /mob/living/simple_mob/protean_blob/update_health()
@@ -832,28 +833,28 @@
 	expected_typepath = /mob/living/simple_mob/protean_blob
 	rider_offsets = list(
 		list(
-			list(0, 0, 0.1, null),
-			list(0, 0, 0.1, null),
-			list(0, 0, -0.1, null),
-			list(0, 0, 0.1, null)
+			list(0, 8, -0.1, null),
+			list(0, 8, -0.1, null),
+			list(0, 8, -0.1, null),
+			list(0, 8, -0.1, null)
 		),
 		list(
-			list(0, 2, 0.2, null),
-			list(0, -2, 0.2, null),
-			list(-4, 0, -0.2, null),
-			list(4, 0, 0.2, null)
+			list(3, 7, -0.2, null),
+			list(3, 7, -0.2, null),
+			list(3, 7, -0.2, null),
+			list(-4, 7, -0.2, null)
 		),
 		list(
-			list(-1, -2, 0.2, null),
-			list(1, 2, 0.2, null),
-			list(4, 0, -0.2, null),
-			list(-4, 0, 0.2, null)
+			list(-3, 7, -0.2, null),
+			list(-3, 7, -0.2, null),
+			list(-3, 7, -0.2, null),
+			list(3, 7, -0.2, null)
 		),
 		list(
-			list(-2, 2, 0.2, null),
-			list(1, 2, 0.2, null),
-			list(4, 0, -0.2, null),
-			list(-4, 0, 0.2, null)
+			list(0, 8, -0.2, null),
+			list(0, 8, -0.2, null),
+			list(-4, 8, -0.2, null),
+			list(4, 8, -0.2, null)
 		)
 	)
 	rider_offset_format = CF_RIDING_OFFSETS_ENUMERATED
