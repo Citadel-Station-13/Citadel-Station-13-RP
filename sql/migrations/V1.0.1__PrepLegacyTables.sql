@@ -8,7 +8,9 @@
  * PRESERVE ANY vr_'s! We need to replace those tables and features at some point, that's how we konw.
  **/
 
--- core --
+/**************************************************************************************************
+                                       Database Backend
+**************************************************************************************************/
 
 --
 -- Table structure for table `schema_revision`
@@ -20,7 +22,35 @@ CREATE TABLE IF NOT EXISTS `rp_schema_revision` (
   PRIMARY KEY (`major`, `minor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- persistence --
+/**************************************************************************************************
+                                       Character Tables
+**************************************************************************************************/
+
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%characters` (
+  `id` INT(24) NOT NULL AUTO INCREMENT,
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%character_records` (
+  `id` INT(24) NOT NULL AUTO INCREMENT,
+  `character_id` INT(24) NOT NULL,
+  `flags` INT(24) NOT NULL DEFAULT 0,
+  `type` VARCHAR(64) NOT NULL,
+  `data` MEDIUMTEXT NOT NULL DEFAULT '{}',
+  `r_timestamp` DATETIME NULL,
+  `r_location` VARCHAR(512) NULL,
+  `r_label` VARCHAR(256) NULL,
+  `r_content_type` VARCHAR(64) NULL,
+  `r_content` TEXT NULL,
+  CONSTRAINT `character_id` FOREIGN KEY (`character_id`)
+  REFERENCES `%_PREFIX_%characters` (`id`)
+  ON DELETE NULL
+  ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/**************************************************************************************************
+                                  World Persistence Tables
+**************************************************************************************************/
 
 -- SSpersistence modules/bulk_entity
 CREATE TABLE IF NOT EXISTS `rp_persistence_bulk_entity` (
@@ -99,7 +129,9 @@ CREATE TABLE IF NOT EXISTS `rp_persistence_string_kv` (
   PRIMARY KEY(`key`, `group`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- photography --
+/**************************************************************************************************
+                                       Photography Tables
+**************************************************************************************************/
 
 --           picture table            --
 -- used to store data about pictures  --
@@ -130,7 +162,9 @@ CREATE TABLE IF NOT EXISTS `rp_photographs` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Players --
+/**************************************************************************************************
+                                       Player Tables
+**************************************************************************************************/
 
 --           Player lookup table                   --
 -- Used to look up player ID from ckey, as well as --
@@ -159,7 +193,9 @@ CREATE TABLE IF NOT EXISTS `rp_player` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Playtime / JEXP --
+/**************************************************************************************************
+                                       Players - Playtime Tracking
+**************************************************************************************************/
 
 --      Role Time Table - Master     --
 -- Stores total role time.           --
@@ -197,8 +233,9 @@ END
 $$
 DELIMITER ;
 
-
--- Preferences --
+/**************************************************************************************************
+                                       Players - Game Preferences
+**************************************************************************************************/
 
 -- Stores game preferences --
 CREATE TABLE IF NOT EXISTS `rp_game_preferences` (
