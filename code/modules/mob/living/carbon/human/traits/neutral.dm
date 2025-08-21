@@ -56,40 +56,6 @@
 	group = /datum/trait_group/temperature
 	group_short_name = "Cold-Blooded"
 
-/datum/trait/neutral/autohiss_unathi
-	name = "Autohiss (Unathi)"
-	desc = "Rolls your S's and X's."
-	cost = 0
-	custom_only = FALSE
-	var_changes = list(
-	autohiss_basic_map = list(
-			"s" = list("ss", "sss", "ssss")
-		),
-	autohiss_extra_map = list(
-			"x" = list("ks", "kss", "ksss")
-		),
-	autohiss_exempt = list("Sinta'unathi"))
-
-	excludes = list(/datum/trait/neutral/autohiss_tajaran)
-
-	group = /datum/trait_group/autohiss
-	group_short_name = "Unathi"
-
-/datum/trait/neutral/autohiss_tajaran
-	name = "Autohiss (Tajaran)"
-	desc = "Rolls your R's."
-	cost = 0
-	custom_only = FALSE
-	var_changes = list(
-	autohiss_basic_map = list(
-			"r" = list("rr", "rrr", "rrrr")
-		),
-	autohiss_exempt = list("Siik"))
-	excludes = list(/datum/trait/neutral/autohiss_unathi)
-
-	group = /datum/trait_group/autohiss
-	group_short_name = "Tajaran"
-
 /datum/trait/neutral/bloodsucker
 	name = "Bloodsucker"
 	desc = "Only blood provides nutrition. Sharp fangs included. No other features."
