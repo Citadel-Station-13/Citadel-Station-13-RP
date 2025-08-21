@@ -18,6 +18,7 @@
 	say_list_type = /datum/say_list/protean_blob
 
 	show_stat_health = FALSE //We will do it ourselves
+	pass_flags = ATOM_PASS_TABLE
 	has_langs = list(LANGUAGE_GALCOM, LANGUAGE_EAL)
 	response_help = "pats the"
 	response_disarm = "gently pushes aside the"
@@ -64,6 +65,11 @@
 	player_msg = "In this form, you can move a little faster and your health will regenerate as long as you have metal in you!"
 	holder_type = /obj/item/holder/protoblob
 
+	buckle_lying = FALSE
+	buckle_max_mobs = 2
+	buckle_allowed = TRUE
+	buckle_flags = BUCKLING_GROUND_HOIST //blobsurfing
+
 /datum/say_list/protean_blob
 	speak = list("Blrb?","Sqrsh.","Glrsh!")
 	emote_hear = list("squishes softly","spluts quietly","makes wet noises")
@@ -73,6 +79,7 @@
 /mob/living/simple_mob/protean_blob/Initialize(mapload, mob/living/carbon/human/H)
 	. = ..()
 	access_card = new(src)
+	AddComponent(/datum/component/riding_filter/mob/animal/protean)
 	if(H)
 		humanform = H
 		refactory = locate() in humanform.internal_organs
@@ -83,6 +90,7 @@
 		add_verb(src, /mob/living/simple_mob/protean_blob/proc/chameleon_apperance)
 		add_verb(src, /mob/living/simple_mob/protean_blob/proc/chameleon_color)
 		add_verb(src, /mob/living/simple_mob/protean_blob/proc/chameleon_apperance_rig)
+		add_verb(src, /mob/living/simple_mob/protean_blob/proc/toggle_rider_control)
 		add_verb(src, /mob/living/proc/usehardsuit)
 		INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, update_health))
 	else
@@ -113,6 +121,16 @@
 	. = ..()
 	if(humanform && C.statpanel_tab("Species", TRUE))
 		. += humanform.species.statpanel_status(C, humanform)
+
+/mob/living/simple_mob/protean_blob/resize(new_size, animate = FALSE, ignore_cooldown = FALSE)
+	. = ..()
+	var/new_buckmax = round(new_size * 2)
+	
+	if(has_buckled_mobs() && (new_buckmax < buckle_max_mobs))
+		visible_message(SPAN_WARNING("[src] sloughs off its riders!"))
+		unbuckle_all_mobs(BUCKLE_OP_FORCE)
+		buckle_max_mobs = new_buckmax
+	
 
 /mob/living/simple_mob/protean_blob/update_health()
 	if(humanform)
@@ -381,6 +399,7 @@
 		remove_micros(I, root) //Recursion. I'm honestly depending on there being no containment loop, but at the cost of performance that can be fixed too.
 		if(istype(I, /obj/item/holder))
 			I.forceMove(root.drop_location())
+/* protean blobs have an inventory now and should NOT be redirecting strip
 
 /mob/living/simple_mob/protean_blob/strip_menu_act(mob/user, action)
 	return humanform.strip_menu_act(arglist(args))
@@ -403,7 +422,7 @@
 
 /mob/living/simple_mob/protean_blob/render_strip_menu(mob/user)
 	return humanform.render_strip_menu(arglist(args))
-
+*/
 /mob/living/simple_mob/protean_blob/proc/rig_transform()
 	set name = "Modify Form - Hardsuit"
 	set desc = "Allows a protean blob to solidify its form into one extremely similar to a hardsuit."
@@ -747,6 +766,25 @@
 		colour_ui = new(src)
 		colour_ui.ui_interact(usr)
 
+/mob/living/simple_mob/protean_blob/proc/toggle_rider_control()
+	set name = "Give Reins"
+	set desc = "Give or take the person riding on you control of your movement."
+	set category = VERB_CATEGORY_IC
+	var/datum/component/riding_filter/mob/animal/riding_filter = GetComponent(/datum/component/riding_filter/mob/animal)
+	if(!riding_filter)
+		to_chat(src, "<span class='warning'>Your form is incompatible with being ridden! Somehow. This is a bug.</warning>")
+		return
+	if(riding_filter.handler_typepath == /datum/component/riding_handler/mob/animal)
+		riding_filter.handler_typepath = /datum/component/riding_handler/mob/animal/controllable
+		to_chat(src, "<span class='notice'>You can now be controlled!")
+	else
+		riding_filter.handler_typepath = /datum/component/riding_handler/mob/animal
+		to_chat(src, "<span class='notice'>You can no longer be controlled!")
+	var/datum/component/riding_handler/mob/animal/riding_handler = GetComponent(/datum/component/riding_handler/mob/animal)
+	if(!riding_handler)
+		//No need to update the handler if it doesn't exist.
+		return
+	riding_handler.riding_handler_flags ^= CF_RIDING_HANDLER_IS_CONTROLLABLE
 
 /mob/living/simple_mob/protean_blob/make_perspective()
 	. = ..()
@@ -785,3 +823,40 @@
 		// Fix internal damage
 		if(O.damage > 0)
 			O.heal_damage_i(3, can_revive = TRUE)
+
+/datum/component/riding_filter/mob/animal/protean
+	expected_typepath = /mob/living/simple_mob/protean_blob
+	handler_typepath = /datum/component/riding_handler/mob/protean
+
+/datum/component/riding_handler/mob/protean
+	expected_typepath = /mob/living/simple_mob/protean_blob
+	rider_offsets = list(
+		list(
+			list(0, 0, 0.1, null),
+			list(0, 0, 0.1, null),
+			list(0, 0, -0.1, null),
+			list(0, 0, 0.1, null)
+		),
+		list(
+			list(0, 2, 0.2, null),
+			list(0, -2, 0.2, null),
+			list(-4, 0, -0.2, null),
+			list(4, 0, 0.2, null)
+		),
+		list(
+			list(-1, -2, 0.2, null),
+			list(1, 2, 0.2, null),
+			list(4, 0, -0.2, null),
+			list(-4, 0, 0.2, null)
+		),
+		list(
+			list(-2, 2, 0.2, null),
+			list(1, 2, 0.2, null),
+			list(4, 0, -0.2, null),
+			list(-4, 0, 0.2, null)
+		)
+	)
+	rider_offset_format = CF_RIDING_OFFSETS_ENUMERATED
+
+/datum/component/riding_handler/mob/protean/controllable
+	riding_handler_flags = CF_RIDING_HANDLER_IS_CONTROLLABLE
