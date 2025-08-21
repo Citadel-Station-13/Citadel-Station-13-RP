@@ -18168,6 +18168,7 @@
 /area/endeavour/hallway/d2fwdhall)
 "mZc" = (
 /obj/machinery/light,
+/obj/machinery/vending/nifsoft_shop,
 /turf/simulated/floor/tiled,
 /area/holodeck_control)
 "mZj" = (
@@ -22801,9 +22802,6 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/navblue/border{
-	dir = 1
-	},
-/obj/machinery/vending/nifsoft_shop{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
