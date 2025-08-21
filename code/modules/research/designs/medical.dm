@@ -209,6 +209,7 @@
 
 /datum/prototype/design/science/medigun_cell/toxin3
 	design_name = "meditox3cell"
+	id = "meditox3cell"
 	req_tech = list(TECH_MATERIAL = 7, TECH_MAGNET = 6, TECH_POWER = 5, TECH_BIO = 7, TECH_ARCANE = 2)
 	materials_base = list(MAT_STEEL = 4500 * (1 / 3), MAT_GLASS = 4500 * (1 / 3), MAT_PLASTIC = 2250 * (1 / 3), MAT_DIAMOND = 500 * (1 / 3), MAT_VERDANTIUM = 900 * (1 / 3))
 	build_path = /obj/item/ammo_casing/microbattery/vm_aml/toxin3
