@@ -3460,6 +3460,14 @@
 /obj/machinery/mech_recharger,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d1fwdmaint)
+"cEy" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/mauve/border,
+/obj/machinery/camera/network/exploration{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/exploration/hallway_aft)
 "cEM" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -6111,9 +6119,11 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/tether/surfacebase/entertainment)
 "eDP" = (
-/obj/machinery/holopad,
-/turf/simulated/floor/wood,
-/area/endeavour/hallway/d1fwdmaint)
+/obj/machinery/camera/network/civilian{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/chapel/main)
 "eEl" = (
 /obj/machinery/light{
 	dir = 1;
@@ -7064,6 +7074,18 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/exploration/explorer_prep)
+"fkV" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/camera/network/civilian{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/library)
 "fkZ" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/navgold/border,
@@ -9829,9 +9851,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway2)
 "htT" = (
-/obj/machinery/camera/network/civilian{
-	dir = 9
-	},
 /obj/machinery/light/small{
 	dir = 4
 	},
@@ -12201,6 +12220,7 @@
 /obj/effect/floor_decal/corner/navgold/bordercorner2{
 	dir = 1
 	},
+/obj/machinery/camera/network/civilian,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardamidhall)
 "jrM" = (
@@ -16014,6 +16034,9 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
 /turf/simulated/floor/wood,
 /area/library)
 "maZ" = (
@@ -19132,9 +19155,6 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/exploration/hallway_fore)
 "ooD" = (
-/obj/machinery/camera/network/civilian{
-	dir = 4
-	},
 /obj/structure/table/bench/wooden,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/dark,
@@ -23828,6 +23848,14 @@
 	},
 /turf/simulated/floor/wood,
 /area/lawoffice)
+"rWk" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/floor_decal/corner/black/full,
+/obj/machinery/camera/network/civilian{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/crew_quarters/lounge/kitchen_freezer)
 "rWR" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -26528,11 +26556,11 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d1fwdmaint)
 "tXS" = (
-/obj/item/radio/intercom{
-	pixel_y = -24
-	},
 /obj/machinery/vending/coffee,
 /obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/machinery/camera/network/civilian{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
@@ -30124,13 +30152,13 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/camera/network/exploration,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
 	},
+/obj/machinery/camera/network/exploration,
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
 "wCh" = (
@@ -40799,7 +40827,7 @@ usu
 usu
 usu
 glq
-dpf
+cEy
 hgT
 rUz
 vvR
@@ -42150,7 +42178,7 @@ yme
 yme
 yme
 ngf
-kFF
+wCc
 xvP
 tog
 tQu
@@ -42732,7 +42760,7 @@ yme
 yme
 yme
 ngf
-wCc
+kFF
 kJA
 fVc
 aXm
@@ -49166,7 +49194,7 @@ jrM
 oRw
 rby
 jyn
-rby
+fkV
 eIG
 rbY
 irV
@@ -52453,7 +52481,7 @@ peY
 ikV
 eeY
 snQ
-eeY
+rWk
 yek
 gOB
 vyv
@@ -52872,7 +52900,7 @@ wPz
 khS
 khS
 khS
-khS
+eDP
 pgA
 exi
 kdL
@@ -58686,7 +58714,7 @@ asR
 asR
 xtW
 xtW
-eDP
+xtW
 sMI
 aJX
 xRj

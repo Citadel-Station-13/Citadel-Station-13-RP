@@ -616,6 +616,15 @@
 "DF" = (
 /turf/template_noop,
 /area/template_noop)
+"En" = (
+/obj/machinery/atmospherics/pipe/simple/visible/green{
+	dir = 4
+	},
+/obj/machinery/camera/network/engine{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
 "EH" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
@@ -1051,7 +1060,7 @@ VX
 Qo
 Ua
 tw
-pp
+En
 jf
 UA
 yy
