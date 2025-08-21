@@ -14,8 +14,8 @@ DECLARE_RIG_THEME(/mercenary/gorlex)
 	abstract_type = /datum/rig_theme/mercenary/gorlex
 	base_icon = 'icons/modules/rigsuits/suits/factions/military_gorlex.dmi'
 
-DECLARE_RIG_THEME(/mercenary/gorlex_raider)
-/datum/rig_theme/mercenary/gorlex_raider
+DECLARE_RIG_THEME(/mercenary/gorlex/raider)
+/datum/rig_theme/mercenary/gorlex/raider
 	name = "nukeops rig"
 	base_state = "syndicate"
 	desc = "TBD"
@@ -24,8 +24,8 @@ DECLARE_RIG_THEME(/mercenary/gorlex_raider)
 	visible_name = "Operator"
 	#warn impl
 
-DECLARE_RIG_THEME(/mercenary/gorlex_infiltrator)
-/datum/rig_theme/mercenary/gorlex_infiltrator
+DECLARE_RIG_THEME(/mercenary/gorlex/infiltrator)
+/datum/rig_theme/mercenary/gorlex/infiltrator
 	name = "contractor rig"
 	base_state = "infiltrator"
 	desc = "TBD"
@@ -34,8 +34,8 @@ DECLARE_RIG_THEME(/mercenary/gorlex_infiltrator)
 	visible_name = "Streamlined"
 	#warn impl
 
-DECLARE_RIG_THEME(/mercenary/gorlex_assault)
-/datum/rig_theme/mercenary/gorlex_assault
+DECLARE_RIG_THEME(/mercenary/gorlex/assault)
+/datum/rig_theme/mercenary/gorlex/assault
 	name = "elite nukeops rig"
 	base_state = "elite"
 	desc = "TBD"

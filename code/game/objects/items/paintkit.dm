@@ -154,58 +154,58 @@
 		return
 	return ..()
 
-/obj/item/kit/suit/hardsuit
-	name = "hardsuit modification kit"
-	desc = "A kit for modifying a rigsuit."
-	uses = 1
+// /obj/item/kit/suit/hardsuit
+// 	name = "hardsuit modification kit"
+// 	desc = "A kit for modifying a rigsuit."
+// 	uses = 1
 
-/obj/item/kit/suit/hardsuit/customize(var/obj/item/I, var/mob/user)
-	var/obj/item/hardsuit/HARDSUIT = I
-	HARDSUIT.suit_state = new_icon
-	HARDSUIT.item_state = new_icon
-	HARDSUIT.suit_type = "customized [initial(HARDSUIT.suit_type)]"
-	HARDSUIT.name = "[new_name]"
-	HARDSUIT.desc = new_desc
-	HARDSUIT.description_fluff = new_fluff
-	HARDSUIT.icon = new_icon_file
-	HARDSUIT.icon_state = new_icon
-	HARDSUIT.icon_override = new_icon_override_file
-	for(var/obj/item/piece in list(HARDSUIT.gloves,HARDSUIT.helmet,HARDSUIT.boots,HARDSUIT.chest))
-		if(!istype(piece))
-			continue
-		piece.name = "[HARDSUIT.suit_type] [initial(piece.name)]"
-		piece.desc = "It seems to be part of a [HARDSUIT.name]."
-		piece.icon_state = "[HARDSUIT.suit_state]"
-		if(istype(piece, /obj/item/clothing/shoes))
-			piece.icon = 'icons/mob/clothing/custom_items_rig_boots.dmi'
-			piece.icon_override = 'icons/mob/clothing/custom_items_rig_boots.dmi'
-		if(istype(piece, /obj/item/clothing/suit))
-			piece.icon = 'icons/mob/clothing/custom_items_rig_suits.dmi'
-			piece.icon_override = 'icons/mob/clothing/custom_items_rig_suits.dmi'
-		if(istype(piece, /obj/item/clothing/head))
-			piece.icon = 'icons/mob/clothing/custom_items_rig_helmet.dmi'
-			piece.icon_override = 'icons/mob/clothing/custom_items_rig_helmet.dmi'
-		if(istype(piece, /obj/item/clothing/gloves))
-			piece.icon = 'icons/mob/clothing/custom_items_rig_gloves.dmi'
-			piece.icon_override = 'icons/mob/clothing/custom_items_rig_gloves.dmi'
-	if(HARDSUIT.helmet && istype(HARDSUIT.helmet, /obj/item/clothing/head/helmet) && new_light_overlay)
-		var/obj/item/clothing/head/helmet/H = HARDSUIT.helmet
-		H.light_overlay = new_light_overlay
-	use(1,user)
+// /obj/item/kit/suit/hardsuit/customize(var/obj/item/I, var/mob/user)
+// 	var/obj/item/hardsuit/HARDSUIT = I
+// 	HARDSUIT.suit_state = new_icon
+// 	HARDSUIT.item_state = new_icon
+// 	HARDSUIT.suit_type = "customized [initial(HARDSUIT.suit_type)]"
+// 	HARDSUIT.name = "[new_name]"
+// 	HARDSUIT.desc = new_desc
+// 	HARDSUIT.description_fluff = new_fluff
+// 	HARDSUIT.icon = new_icon_file
+// 	HARDSUIT.icon_state = new_icon
+// 	HARDSUIT.icon_override = new_icon_override_file
+// 	for(var/obj/item/piece in list(HARDSUIT.gloves,HARDSUIT.helmet,HARDSUIT.boots,HARDSUIT.chest))
+// 		if(!istype(piece))
+// 			continue
+// 		piece.name = "[HARDSUIT.suit_type] [initial(piece.name)]"
+// 		piece.desc = "It seems to be part of a [HARDSUIT.name]."
+// 		piece.icon_state = "[HARDSUIT.suit_state]"
+// 		if(istype(piece, /obj/item/clothing/shoes))
+// 			piece.icon = 'icons/mob/clothing/custom_items_rig_boots.dmi'
+// 			piece.icon_override = 'icons/mob/clothing/custom_items_rig_boots.dmi'
+// 		if(istype(piece, /obj/item/clothing/suit))
+// 			piece.icon = 'icons/mob/clothing/custom_items_rig_suits.dmi'
+// 			piece.icon_override = 'icons/mob/clothing/custom_items_rig_suits.dmi'
+// 		if(istype(piece, /obj/item/clothing/head))
+// 			piece.icon = 'icons/mob/clothing/custom_items_rig_helmet.dmi'
+// 			piece.icon_override = 'icons/mob/clothing/custom_items_rig_helmet.dmi'
+// 		if(istype(piece, /obj/item/clothing/gloves))
+// 			piece.icon = 'icons/mob/clothing/custom_items_rig_gloves.dmi'
+// 			piece.icon_override = 'icons/mob/clothing/custom_items_rig_gloves.dmi'
+// 	if(HARDSUIT.helmet && istype(HARDSUIT.helmet, /obj/item/clothing/head/helmet) && new_light_overlay)
+// 		var/obj/item/clothing/head/helmet/H = HARDSUIT.helmet
+// 		H.light_overlay = new_light_overlay
+// 	use(1,user)
 
-/obj/item/kit/suit/hardsuit/can_customize(var/obj/item/I)
-	return istype(I, /obj/item/hardsuit)
+// /obj/item/kit/suit/hardsuit/can_customize(var/obj/item/I)
+// 	return istype(I, /obj/item/hardsuit)
 
-/obj/item/hardsuit/attackby(var/obj/item/O, var/mob/user)
-	if(istype(O,/obj/item/kit/suit))
-		var/obj/item/kit/suit/hardsuit/kit = O
-		kit.customize(src, user)
-		return
-	return ..()
+// /obj/item/hardsuit/attackby(var/obj/item/O, var/mob/user)
+// 	if(istype(O,/obj/item/kit/suit))
+// 		var/obj/item/kit/suit/hardsuit/kit = O
+// 		kit.customize(src, user)
+// 		return
+// 	return ..()
 
-/obj/item/kit/suit/hardsuit/debug/Initialize(mapload)
-	. = ..()
-	set_info("debug suit", "This is a test", "debug", CUSTOM_ITEM_OBJ, CUSTOM_ITEM_MOB)
+// /obj/item/kit/suit/hardsuit/debug/Initialize(mapload)
+// 	. = ..()
+// 	set_info("debug suit", "This is a test", "debug", CUSTOM_ITEM_OBJ, CUSTOM_ITEM_MOB)
 
 /obj/item/kit/paint
 	name = "mecha customisation kit"

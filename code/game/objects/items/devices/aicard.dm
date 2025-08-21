@@ -163,9 +163,9 @@
 /obj/item/aicard/relaymove(var/mob/user, var/direction)
 	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE))
 		return
-	var/obj/item/hardsuit/hardsuit = src.get_hardsuit()
-	if(istype(hardsuit))
-		hardsuit.forced_move(direction, user)
+	// var/obj/item/hardsuit/hardsuit = src.get_hardsuit()
+	// if(istype(hardsuit))
+	// 	hardsuit.forced_move(direction, user)
 
 //Subtypes
 /obj/item/aicard/aitater

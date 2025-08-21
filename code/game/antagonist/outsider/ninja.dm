@@ -1,5 +1,7 @@
 var/datum/antagonist/ninja/ninjas
 
+// unticked: antag system is effective decommissioned let's do it a bit earlier
+
 /datum/antagonist/ninja
 	id = MODE_NINJA
 	role_type = BE_NINJA

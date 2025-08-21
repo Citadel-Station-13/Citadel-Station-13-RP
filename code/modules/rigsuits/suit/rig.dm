@@ -97,6 +97,9 @@
 	//* Modules *//
 	/// list of all modules in us; set to list to init on creation.
 	VAR_PROTECTED/list/obj/item/rig_module/modules
+	/// modules are online? this is FALSE if we ever run out of power, until module buffer is
+	/// refilled.
+	var/modules_online = TRUE
 	/// list of /obj/item/rig_module's by its lookup_id
 	VAR_PROTECTED/list/module_lookup
 	/// total weight of all modules
@@ -109,29 +112,12 @@
 	VAR_PROTECTED/list/piece_lookup
 
 	//* Power *//
-	/// our power cell
-	/// * intentionally not using obj_cell_slot here due to how complex rigsuits are
-	var/obj/item/cell/cell
-	/// starting cell type
-	var/cell_type = /obj/item/cell/high
-	/// power draw from modules
-	var/power_last_burst_module_draw = 0
-	/// power draw for controller
-	var/power_last_burst_controller_draw = 0
-	/// power buffer
-	/// * this is in kilojoules.
-	/// * you might notice this is very high. this is intentional.
-	/// * this is used to keep essential suit functions up while the cell is gone.
-	///   things like, well, life support and movement.
-	var/power_controller_buffer = 1000
-	/// power buffer capacity
-	var/power_controller_buffer_max = 1000
-	/// static module power draws by module
-	/// * lazy list
-	var/list/power_module_static_draws
-	/// static controller power draws by string source
-	/// * lazy list
-	var/list/power_controller_static_draws
+
+	/// used for modules, functions, etc.
+	var/datum/rig_power_bus/power_main_bus
+	var/datum/rig_power_bus/power_aux_bus
+	var/power_main_cell_type = /obj/item/cell/high
+	var/power_aux_cell_type = /obj/item/cell/device/weapon
 
 	//* Stats - Base
 	/// startup/shutdown time
@@ -155,7 +141,7 @@
 	var/datum/item_mount/rig_resources/resources
 
 	//* Theme *//
-	/// default theme
+	/// default theme; set this to a datum path
 	var/theme_preset = /datum/rig_theme/station/civilian/standard
 	/// Is our theme initialized?
 	var/theme_initialized = FALSE

@@ -85,14 +85,14 @@
 	// prune cache before reading
 	// entries are always latest at the bottom
 	if(active_cache)
-		var/first_valid_entry
-		for(first_valid_entry in 1 to length(active_cache))
-			var/cache_ref = active_cache[i]
+		var/first_valid_entry_index
+		for(first_valid_entry_index in 1 to length(active_cache))
+			var/cache_ref = active_cache[first_valid_entry_index]
 			var/cache_time = active_cache[cache_ref]
 			if(cache_time >= world.time - active_cache_time)
 				break
-		if(first_valid_entry != 1)
-			active_cache.Cut(1, first_valid_entry)
+		if(first_valid_entry_index != 1)
+			active_cache.Cut(1, first_valid_entry_index)
 	var/is_cached = active_cache?[target_ref]
 	if(is_cached)
 		suppressed = TRUE

@@ -124,21 +124,22 @@
 	. = ..()
 	to_chat(src,"<b>Why are you in this [src]? Why can't you say more than a few phrases? Why. What. Kill. Kill. Kill. Kill. KILL! KILL! KILL!</b> [player_msg]")
 
-/obj/item/hardsuit/eva/old
+/obj/item/rig/prefab/old_eva_hardsuit
+	theme_preset = /datum/rig_theme/station/engineering/standard
 	name = "old EVA suit control module"
 	desc = "A light hardsuit for repairs and maintenance to the outside of habitats and vessels. It appears to be pretty old and worn down."
-	isTrapped = 1
+	// isTrapped = 1
 
-/obj/item/hardsuit/eva/old/spring
-	springtrapped = 1
+/obj/item/rig/prefab/old_eva_hardsuit/springlocked
+	// springtrapped = 1
 
 //Now let's make some more!
 /mob/living/simple_mob/humanoid/possessed/industrial
 	name = "old industrial RIG suit"
 	desc = "A heavy, powerful hardsuit used by construction crews and mining corporations. Seems to be worn down and damaged. But it seems to still be moving. Is someone in it?"
 	icon_state = "industrial-rig"
-	rig1 = /obj/item/hardsuit/industrial/old
-	rig2 = /obj/item/hardsuit/industrial/old/spring
+	rig1 = /obj/item/rig/prefab/old_eva_hardsuit
+	rig2 = /obj/item/rig/prefab/old_eva_hardsuit/springlocked
 	armor_legacy_mob = list(melee = 60, bullet = 50, laser = 30,energy = 15, bomb = 30, bio = 100, rad = 100)
 
 /obj/item/hardsuit/industrial/old
@@ -153,17 +154,18 @@
 	name = "old crimson hardsuit"
 	desc = "A blood-red hardsuit featuring some fairly illegal technology. Seems to be worn down and damaged. But it seems to still be moving. Is someone in it?"
 	icon_state = "merc-rig"
-	rig1 = /obj/item/hardsuit/merc/old
-	rig2 = /obj/item/hardsuit/merc/old/spring
+	rig1 = /obj/item/rig/prefab/old_merc_hardsuit
+	rig2 = /obj/item/rig/prefab/old_merc_hardsuit/springlocked
 	armor_legacy_mob = list(melee = 80, bullet = 65, laser = 50, energy = 15, bomb = 80, bio = 100, rad = 60)
 
-/obj/item/hardsuit/merc/old
+/obj/item/rig/prefab/old_merc_hardsuit
+	theme_preset = /datum/rig_theme/mercenary/gorlex/raider
 	name = "old crimson hardsuit control module"
 	desc = "A blood-red hardsuit featuring some fairly illegal technology. It appears to be pretty old and worn down."
-	isTrapped = 1
+	// isTrapped = 1
 
-/obj/item/hardsuit/merc/old/spring
-	springtrapped = 1
+/obj/item/rig/prefab/old_merc_hardsuit/springlocked
+	// springtrapped = 1
 
 /mob/living/simple_mob/humanoid/possessed/merc/feral	// Special one that moves faster attacks faster. Intended as a special mech pilot
 	desc = "A blood-red hardsuit featuring some fairly illegal technology. Seems to be worn down and damaged but moving with surprising speed!"
