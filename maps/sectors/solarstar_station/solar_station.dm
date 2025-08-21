@@ -40,5 +40,5 @@
 	path = "maps/sectors/solarstar_station/levels/solars_station_upper.dmm"
 	base_turf = /turf/space
 	base_area = /area/space
-	link_bellow = /datum/map_level/sector/solars_station
+	link_below = /datum/map_level/sector/solars_station
 
