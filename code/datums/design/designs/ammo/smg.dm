@@ -1,5 +1,6 @@
 /datum/prototype/design/ammo/smg
 	abstract_type = /datum/prototype/design/ammo/smg
+	subcategory = "SMG"
 
 /datum/prototype/design/ammo/smg/a9mm_t
 	id = "AmmoSMG9mmT"

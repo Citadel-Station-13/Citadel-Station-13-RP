@@ -1,5 +1,6 @@
 /datum/prototype/design/ammo/pistol
 	abstract_type = /datum/prototype/design/ammo/pistol
+	subcategory = "Pistol"
 
 /datum/prototype/design/ammo/pistol/a44
 	id = "AmmoPistol44"

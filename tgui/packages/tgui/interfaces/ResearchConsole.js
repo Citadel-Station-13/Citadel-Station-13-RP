@@ -1,7 +1,6 @@
-import { toTitleCase } from 'common/string';
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
-import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section, Tabs, Input, NumberInput, Table, Divider } from "../components";
+import { Box, Button, LabeledList, Section, Tabs, Input, Table, Stack } from "../components";
 import { Window } from '../layouts';
 
 const ResearchConsoleViewResearch = (props, context) => {
@@ -132,31 +131,34 @@ const TechDisk = (props, context) => {
 
   if (saveDialog) {
     return (
-      <Section title="Load Technology to Disk" buttons={
-        <Button
-          icon="arrow-left"
-          content="Back"
-          onClick={() => setSaveDialog(false)} />
-      }>
-        <LabeledList>
-          {tech.map(level => (
-            <LabeledList.Item label={level.name} key={level.name}>
-              <Button
-                icon="save"
-                onClick={() => {
-                  setSaveDialog(false);
-                  act("copy_tech", { copy_tech_ID: level.id });
-                }}>
-                Copy To Disk
-              </Button>
-            </LabeledList.Item>
-          ))}
-        </LabeledList>
+      <Section title="Inserted Technology Disk">
+        <Section title="Load Technology to Disk" buttons={
+          <Button
+            icon="arrow-left"
+            content="Back"
+            onClick={() => setSaveDialog(false)} />
+        }>
+          <LabeledList>
+            {tech.map(level => (
+              <LabeledList.Item label={level.name} key={level.name}>
+                <Button
+                  icon="save"
+                  onClick={() => {
+                    setSaveDialog(false);
+                    act("copy_tech", { copy_tech_ID: level.id });
+                  }}>
+                  Copy To Disk
+                </Button>
+              </LabeledList.Item>
+            ))}
+          </LabeledList>
+        </Section>
       </Section>
     );
   }
 
   return (
+    <Section title="Inserted Technology Disk">
     <Box>
       <LabeledList>
         <LabeledList.Item label="Disk Contents">
@@ -210,6 +212,7 @@ const TechDisk = (props, context) => {
         </Box>
       )}
     </Box>
+    </Section>
   );
 };
 
@@ -218,7 +221,7 @@ const DataDisk = (props, context) => {
 
   const {
     designs,
-  } = data.info;
+  } = data;
 
   const {
     disk,
@@ -231,79 +234,96 @@ const DataDisk = (props, context) => {
   const [saveDialog, setSaveDialog] = useLocalState(context, "saveDialogData", false);
 
   if (saveDialog) {
+    act("push_design_data");
     return (
-      <Section
-        title={<PaginationTitle title="Load Design to Disk" target="design_page" />}
-        buttons={
-          <Fragment>
-            <Button
-              icon="arrow-left"
-              content="Back"
-              onClick={() => setSaveDialog(false)} />
-            {<PaginationChevrons target={"design_page"} /> || null}
-          </Fragment>
-        }>
-        <Input
-          fluid
-          placeholder="Search for..."
-          value={data.search}
-          onInput={(e, v) => act("search", { search: v })}
-          mb={1} />
-        <LabeledList>
-          {designs.map(item => (
-            <LabeledList.Item label={item.name} key={item.name}>
+      <Section title={`Inserted Design Disk (${disk.design_count}/${disk.design_cap} stored)`}>
+        <Section
+          title={<PaginationTitle title="Load Design to Disk" target="design_page" />}
+          buttons={
+            <Fragment>
               <Button
-                icon="save"
-                onClick={() => {
-                  setSaveDialog(false);
-                  act("copy_design", { copy_design_ID: item.id });
-                }}>
-                Copy To Disk
-              </Button>
-            </LabeledList.Item>
-          ))}
-        </LabeledList>
+                icon="arrow-left"
+                content="Back"
+                onClick={() => setSaveDialog(false)} />
+              {<PaginationChevrons target={"design_page"} /> || null}
+            </Fragment>
+          }>
+          <Input
+            fluid
+            placeholder="Search for..."
+            value={data.search}
+            onInput={(e, v) => act("search", { search: v })}
+            mb={1} />
+          <LabeledList>
+            {designs.map(item => (
+              <LabeledList.Item label={item.name} key={item.name}>
+                <Button
+                  icon="save"
+                  onClick={() => {
+                    setSaveDialog(false);
+                    act("copy_design", { copy_design_ID: item.id });
+                  }}>
+                  Copy To Disk
+                </Button>
+              </LabeledList.Item>
+            ))}
+          </LabeledList>
+        </Section>
       </Section>
     );
   }
 
   return (
-    <Box>
+    <Section title={`Inserted Design Disk (${disk.design_count}/${disk.design_cap} stored)`}>
+      <Box>
       {disk.stored && (
-        <Box>
-          <LabeledList>
-            <LabeledList.Item label="Name">
-              {disk.name}
-            </LabeledList.Item>
-            <LabeledList.Item label="Lathe Type">
-              {disk.build_type}
-            </LabeledList.Item>
-            <LabeledList.Item label="Required Materials">
-              {Object.keys(disk.materials).map(mat => (
-                <Box key={mat}>
-                  {mat} x {disk.materials[mat]}
-                </Box>
-              ))}
-            </LabeledList.Item>
-          </LabeledList>
-          <Box mt={1}>
-            <Button
-              icon="save"
-              onClick={() => act("updt_design")}>
-              Upload to Database
-            </Button>
-            <Button
-              icon="trash"
-              onClick={() => act("clear_design")}>
-              Clear Disk
-            </Button>
-            <Button
-              icon="eject"
-              onClick={() => act("eject_design")}>
-              Eject Disk
-            </Button>
-          </Box>
-        </Box>
+        <Stack vertical fluid fill>
+          { disk.ids.map((disk_id) => (
+          <Stack.Item key={disk_id}>
+            <Box>
+              <LabeledList>
+                <LabeledList.Item label="Name">
+                  {disk.names[disk_id]}
+                </LabeledList.Item>
+                <LabeledList.Item label="Lathe Type">
+                  {disk.build_types[disk_id]}
+                </LabeledList.Item>
+                <LabeledList.Item label="Required Materials">
+                  {Object.keys(disk.materials[disk_id]).map(mat => (
+                    <Box key={mat}>
+                      {mat} x {disk.materials[disk_id][mat]}
+                    </Box>
+                  ))}
+                </LabeledList.Item>
+              </LabeledList>
+              <Box mt={1}>
+                <Button
+                  icon="save"
+                    onClick={() => act("updt_design", { design: disk_id })}>
+                  Upload to Database
+                </Button>
+                  {(disk.design_cap < disk.design_count) &&
+                  <Button
+                    icon="save"
+                    onClick={() => setSaveDialog(true)}>
+                    Load Design To Disk
+                  </Button>
+                  }
+                <Button
+                  icon="trash"
+                    onClick={() => act("clear_design", { design: disk_id })}>
+                  Clear Disk
+                </Button>
+                <Button
+                  icon="eject"
+                  onClick={() => act("eject_design")}>
+                  Eject Disk
+                </Button>
+              </Box>
+            </Box>
+          </Stack.Item>
+          ))}
+        </Stack>
       ) || (
         <Box>
           <Box mb={0.5}>
@@ -321,7 +341,8 @@ const DataDisk = (props, context) => {
           </Button>
         </Box>
       )}
-    </Box>
+      </Box>
+    </Section>
   );
 };
 
@@ -407,313 +428,6 @@ const ResearchConsoleDestructiveAnalyzer = (props, context) => {
       ) || (
         <Box>
           No Item Loaded. Standing-by...
-        </Box>
-      )}
-    </Section>
-  );
-};
-
-const ResearchConsoleBuildMenu = (props, context) => {
-  const { act, data } = useBackend(context);
-
-  const {
-    target,
-    designs,
-    buildName,
-    buildFiveName,
-  } = props;
-
-  if (!target) {
-    return (
-      <Box color="bad">
-        Error
-      </Box>
-    );
-  }
-
-  return (
-    <Section
-      title={<PaginationTitle target="builder_page" title="Designs" />}
-      buttons={
-        <PaginationChevrons target={"builder_page"} />
-      }>
-      <Input
-        fluid
-        placeholder="Search for..."
-        value={data.search}
-        onInput={(e, v) => act("search", { search: v })}
-        mb={1} />
-      {designs && designs.length ? designs.map(design => (
-        <Fragment key={design.id}>
-          <Flex width="100%" justify="space-between">
-            <Flex.Item width="40%" style={{ "word-wrap": "break-all" }}>
-              {design.name}
-            </Flex.Item>
-            <Flex.Item width="15%" textAlign="center">
-              <Button
-                mb={-1}
-                icon="wrench"
-                onClick={() => act(buildName,
-                  { build: design.id, imprint: design.id })}>
-                Build
-              </Button>
-              {buildFiveName && (
-                <Button
-                  mb={-1}
-                  onClick={() => act(buildFiveName,
-                    { build: design.id, imprint: design.id })}>
-                  x5
-                </Button>
-              )}
-            </Flex.Item>
-            <Flex.Item width="45%" style={{ "word-wrap": "break-all" }}>
-              <Box inline color="label">
-                {design.mat_list.join(" ")}
-              </Box>
-              <Box inline color="average" ml={1}>
-                {design.chem_list.join(" ")}
-              </Box>
-            </Flex.Item>
-          </Flex>
-          <Divider />
-        </Fragment>
-      )) : (
-        <Box>
-          No items could be found matching the parameters (page or search).
-        </Box>
-      )}
-    </Section>
-  );
-};
-
-/* Lathe + Circuit Imprinter all in one */
-const ResearchConsoleConstructor = (props, context) => {
-  const { act, data } = useBackend(context);
-
-  const {
-    name,
-  } = props;
-
-  let linked = null;
-  let designs = null;
-
-  if (name === "Protolathe") {
-    linked = data.info.linked_lathe;
-    designs = data.lathe_designs;
-  } else {
-    linked = data.info.linked_imprinter;
-    designs = data.imprinter_designs;
-  }
-
-  if (!linked || !linked.present) {
-    return (
-      <Section title={name}>
-        No {name} found.
-      </Section>
-    );
-  }
-
-  const {
-    total_materials,
-    max_materials,
-    total_volume,
-    max_volume,
-    busy,
-    mats,
-    reagents,
-    queue,
-  } = linked;
-
-  const [protoTab, setProtoTab] = useLocalState(context, "protoTab", 0);
-
-  let queueColor = "transparent";
-  let queueSpin = false;
-  let queueIcon = "layer-group";
-  if (busy) {
-    queueIcon = "hammer";
-    queueColor = "average";
-    queueSpin = true;
-  } else if (queue && queue.length) {
-    queueIcon = "sync";
-    queueColor = "green";
-    queueSpin = true;
-  }
-
-  // Proto vs Circuit differences
-  let removeQueueAction = (name === "Protolathe") ? "removeP" : "removeI";
-  let ejectSheetAction = (name === "Protolathe") ? "lathe_ejectsheet" : "imprinter_ejectsheet";
-  let ejectChemAction = (name === "Protolathe") ? "disposeP" : "disposeI";
-  let ejectAllChemAction = (name === "Protolathe") ? "disposeallP" : "disposeallI";
-
-  return (
-    <Section title={name} buttons={busy && (
-      <Icon
-        name="sync"
-        spin />
-    ) || null}>
-      <LabeledList>
-        <LabeledList.Item label="Materials">
-          <ProgressBar
-            value={total_materials}
-            maxValue={max_materials}>
-            {total_materials} cm&sup3; / {max_materials} cm&sup3;
-          </ProgressBar>
-        </LabeledList.Item>
-        <LabeledList.Item label="Chemicals">
-          <ProgressBar
-            value={total_volume}
-            maxValue={max_volume}>
-            {total_volume}u / {max_volume}u
-          </ProgressBar>
-        </LabeledList.Item>
-      </LabeledList>
-      <Tabs mt={1}>
-        <Tabs.Tab
-          icon="wrench"
-          selected={protoTab === 0}
-          onClick={() => setProtoTab(0)}>
-          Build
-        </Tabs.Tab>
-        <Tabs.Tab
-          icon={queueIcon}
-          iconSpin={queueSpin}
-          color={queueColor}
-          selected={protoTab === 1}
-          onClick={() => setProtoTab(1)}>
-          Queue
-        </Tabs.Tab>
-        <Tabs.Tab
-          icon="cookie-bite"
-          selected={protoTab === 2}
-          onClick={() => setProtoTab(2)}>
-          Mat Storage
-        </Tabs.Tab>
-        <Tabs.Tab
-          icon="flask"
-          selected={protoTab === 3}
-          onClick={() => setProtoTab(3)}>
-          Chem Storage
-        </Tabs.Tab>
-      </Tabs>
-      {protoTab === 0 && (
-        <ResearchConsoleBuildMenu
-          target={linked}
-          designs={designs}
-          buildName={name === "Protolathe" ? "build" : "imprint"}
-          buildFiveName={name === "Protolathe" ? "buildfive" : null} />
-      ) || protoTab === 1 && (
-        <LabeledList>
-          {queue.length && queue.map(item => {
-            if (item.index === 1) {
-              return (
-              // eslint-disable-next-line react/jsx-key
-                <LabeledList.Item label={item.name} labelColor="bad">
-                  {!busy ? (
-                    <Box>
-                      (Awaiting Materials)
-                      <Button
-                        ml={1}
-                        icon="trash"
-                        onClick={() => act(removeQueueAction,
-                          { [removeQueueAction]: item.index })}>
-                        Remove
-                      </Button>
-                    </Box>
-                  ) : (
-                    <Button disabled icon="trash">Remove</Button>
-                  )}
-                </LabeledList.Item>
-              );
-            }
-            return (
-              <LabeledList.Item label={item.name} key={item.name}>
-                <Button
-                  icon="trash"
-                  onClick={() => act(removeQueueAction,
-                    { [removeQueueAction]: item.index })}>
-                  Remove
-                </Button>
-              </LabeledList.Item>
-            );
-          }) || (
-            <Box m={1}>
-              Queue Empty.
-            </Box>
-          )}
-        </LabeledList>
-      ) || protoTab === 2 && (
-        <LabeledList>
-          {mats.map(mat => {
-            const [ejectAmt, setEjectAmt] = useLocalState(context, "ejectAmt" + mat.name, 0);
-            return (
-              <LabeledList.Item label={toTitleCase(mat.name)}
-                key={mat.name} buttons={
-                  <Fragment>
-                    <NumberInput
-                      minValue={0}
-                      width="100px"
-                      value={ejectAmt}
-                      maxValue={mat.sheets}
-                      onDrag={(e, val) => setEjectAmt(val)} />
-                    <Button
-                      icon="eject"
-                      disabled={!mat.removable}
-                      onClick={() => {
-                        setEjectAmt(0);
-                        act(
-                          ejectSheetAction, {
-                            [ejectSheetAction]: mat.name,
-                            amount: ejectAmt,
-                          });
-                      }}>
-                      Num
-                    </Button>
-                    <Button
-                      icon="eject"
-                      disabled={!mat.removable}
-                      onClick={() => act(ejectSheetAction,
-                        { [ejectSheetAction]:
-                      mat.name,
-                        amount: 50,
-                        })}>
-                      All
-                    </Button>
-                  </Fragment>
-                }>
-                {mat.amount} cm&sup3;
-              </LabeledList.Item>
-            );
-          })}
-        </LabeledList>
-      ) || protoTab === 3 && (
-        <Box>
-          <LabeledList>
-            {reagents.length && reagents.map(chem => (
-              <LabeledList.Item label={chem.name} key={chem.name}>
-                {chem.volume}u
-                <Button
-                  ml={1}
-                  icon="eject"
-                  onClick={() => act(ejectChemAction, { dispose: chem.id })}>
-                  Purge
-                </Button>
-              </LabeledList.Item>
-            )) || (
-              <LabeledList.Item label="Empty">
-                No chems detected
-              </LabeledList.Item>
-            )}
-          </LabeledList>
-          <Button
-            mt={1}
-            icon="trash"
-            onClick={() => act(ejectAllChemAction)}>
-            Disposal All Chemicals In Storage
-          </Button>
-        </Box>
-      ) || (
-        <Box>
-          Error
         </Box>
       )}
     </Section>
@@ -835,12 +549,71 @@ const ResearchConsoleSettings = (props, context) => {
   );
 };
 
+export const ResearchConsoleProtolathe = (props, context) => {
+  const { act, data } = useBackend(context);
+
+  const {
+    sync,
+    linked_destroy,
+    linked_imprinter,
+    linked_lathe,
+  } = data.info;
+
+
+  if (!linked_lathe.present) {
+    return (
+      <Section title="Protolathe">
+        No protolathe found.
+      </Section>
+    );
+  }
+  return (
+    <Section title="Protolathe">
+      <Button
+        fluid
+        icon="link"
+        onClick={() => act("access_lathe")}>
+        Open Lathe Remote Interface
+      </Button>
+    </Section>
+  );
+};
+
+export const ResearchConsoleImprinter = (props, context) => {
+  const { act, data } = useBackend(context);
+
+  const {
+    sync,
+    linked_destroy,
+    linked_imprinter,
+    linked_lathe,
+  } = data.info;
+
+  if (!linked_imprinter.present) {
+    return (
+      <Section title="Circuit Imprinter">
+        No circuit imprinter found.
+      </Section>
+    );
+  }
+  return (
+    <Section title="Circuit Imprinter">
+      <Button
+        fluid
+        icon="link"
+        onClick={() => act("access_imprinter")}>
+        Open Circuit Imprinter Remote Interface
+      </Button>
+    </Section>
+  );
+};
+
 const menus = [
-  { name: "Protolathe", icon: "wrench", template: <ResearchConsoleConstructor name="Protolathe" /> },
+  { name: "Protolathe", icon: "wrench", template: <ResearchConsoleProtolathe name="Protolathe" /> },
   {
     name: "Circuit Imprinter",
     icon: "digital-tachograph",
-    template: <ResearchConsoleConstructor name="Circuit Imprinter" />,
+    template: <ResearchConsoleImprinter name="Circuit Imprinter" />,
   },
   { name: "Destructive Analyzer", icon: "eraser", template: <ResearchConsoleDestructiveAnalyzer /> },
   { name: "Settings", icon: "cog", template: <ResearchConsoleSettings /> },
@@ -848,6 +621,7 @@ const menus = [
   { name: "Design List", icon: "file", template: <ResearchConsoleViewDesigns /> },
   { name: "Disk Operations", icon: "save", template: <ResearchConsoleDisk /> },
 ];
+
 
 export const ResearchConsole = (props, context) => {
   const { act, data } = useBackend(context);
