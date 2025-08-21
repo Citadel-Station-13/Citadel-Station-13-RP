@@ -24077,7 +24077,9 @@
 /obj/machinery/media/jukebox{
 	pixel_x = -32;
 	pixel_y = 32;
-	name = "wall mounted space jukebox"
+	name = "wall mounted space jukebox";
+	density = 0;
+	hacked = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ai)

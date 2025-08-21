@@ -10911,7 +10911,6 @@
 /area/endeavour/hallway/d3fwdhall)
 "iac" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/machinery/camera/network/civilian,
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
 "iaj" = (
@@ -14656,18 +14655,6 @@
 /obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/warehouse)
-"leb" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/disposalpipe/segment,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/machinery/camera/network/civilian{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/freezer,
-/area/crew_quarters/pool)
 "lew" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
@@ -15652,12 +15639,10 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
 	},
-/obj/machinery/vending/nifsoft_shop{
-	dir = 8
-	},
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/machinery/vending/nifsoft_shop,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/game_room)
 "lUH" = (
@@ -20881,6 +20866,9 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable/green{
 	icon_state = "1-2"
+	},
+/obj/machinery/camera/network/civilian{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
@@ -39868,7 +39856,7 @@ muX
 uCk
 suB
 pTj
-leb
+gMQ
 gMQ
 wZY
 sPi
