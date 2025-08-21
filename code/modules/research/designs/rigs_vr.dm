@@ -2,7 +2,7 @@
 	abstract_type = /datum/prototype/design/science/hardsuit_module
 	category = DESIGN_CATEGORY_HARDSUIT
 	req_tech = list(TECH_MATERIAL = 5, TECH_POWER = 5, TECH_MAGNET = 5)
-	materials_base = list(MAT_STEEL = 6000, MAT_GLASS = 6000, MAT_SILVER = 4000, MAT_URANIUM = 2000)
+	materials_base = list(MAT_STEEL = 850, MAT_GLASS = 750, MAT_SILVER = 750, MAT_URANIUM = 750)
 
 /datum/prototype/design/science/hardsuit_module/generate_name(template)
 	return "hardsuit module prototype ([..()])"
@@ -51,13 +51,13 @@
 	design_name = "laser cannon"
 	id = "hardsuitmod_lasercannon"
 	build_path = /obj/item/hardsuit_module/mounted
-	materials_base = list(MAT_STEEL = 6000, MAT_GLASS = 6000, MAT_SILVER = 4000, MAT_URANIUM = 2000, MAT_DIAMOND = 2000)
+	materials_base = list(MAT_STEEL = 1500, MAT_GLASS = 1500, MAT_SILVER = 2000, MAT_URANIUM = 2000, MAT_DIAMOND = 2000)
 
 /datum/prototype/design/science/hardsuit_module/egun
 	design_name = "energy gun"
 	id = "hardsuitmod_egun"
 	build_path = /obj/item/hardsuit_module/mounted/egun
-	materials_base = list(MAT_STEEL = 6000, MAT_GLASS = 6000, MAT_SILVER = 4000, MAT_URANIUM = 2000, MAT_DIAMOND = 1000)
+	materials_base = list(MAT_STEEL = 1500, MAT_GLASS = 1500, MAT_SILVER = 1500, MAT_URANIUM = 750, MAT_DIAMOND = 350)
 
 /datum/prototype/design/science/hardsuit_module/taser
 	design_name = "taser"
@@ -68,22 +68,22 @@
 	design_name = "arm-mounted blade"
 	id = "hardsuitmod_armblade"
 	build_path = /obj/item/hardsuit_module/armblade
-	materials_base = list(MAT_STEEL = 8000, MAT_GLASS = 2000, MAT_SILVER = 2000, MAT_GOLD = 2000)
+	materials_base = list(MAT_STEEL = 2000, MAT_GLASS = 350, MAT_SILVER = 150, MAT_GOLD = 250)
 
 /datum/prototype/design/science/hardsuit_module/rcd
 	design_name = "rcd"
 	id = "hardsuitmod_rcd"
 	build_path = /obj/item/hardsuit_module/device/rcd
-	materials_base = list(MAT_STEEL = 6000, MAT_GLASS = 6000, MAT_SILVER = 4000, MAT_URANIUM = 2000, MAT_DIAMOND = 2000)
+	materials_base = list(MAT_STEEL = 2000, MAT_GLASS = 1000, MAT_SILVER = 750, MAT_URANIUM = 350, MAT_DIAMOND = 500)
 
 /datum/prototype/design/science/hardsuit_module/hardsuitwelder
 	design_name = "RIG arc-welder"
 	id = "hardsuitmod_welder"
 	build_path = /obj/item/hardsuit_module/device/rigwelder
-	materials_base = list(MAT_STEEL = 6000, MAT_GLASS = 4000, MAT_SILVER = 2000, MAT_GOLD = 4000)
+	materials_base = list(MAT_STEEL = 250, MAT_GLASS = 750, MAT_SILVER = 250, MAT_GOLD = 250)
 
 /datum/prototype/design/science/hardsuit_module/toolset
 	design_name = "RIG toolset"
 	id = "hardsuitmod_tools"
 	build_path = /obj/item/hardsuit_module/device/toolset
-	materials_base = list(MAT_STEEL = 8000, MAT_GLASS = 2000, MAT_SILVER = 2000, MAT_PLASTEEL = 1000)
+	materials_base = list(MAT_STEEL = 750, MAT_GLASS = 750, MAT_SILVER = 250, MAT_PLASTEEL = 250)

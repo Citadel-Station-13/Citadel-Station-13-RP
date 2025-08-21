@@ -7965,7 +7965,7 @@
 /area/engineering/engineering_monitoring)
 "hgQ" = (
 /obj/machinery/air_alarm/west_mount,
-/obj/machinery/mecha_part_fabricator,
+/obj/machinery/lathe/mecha_part_fabricator,
 /turf/simulated/floor/tiled/techmaint,
 /area/rnd/robotics/smallcraft)
 "hhb" = (

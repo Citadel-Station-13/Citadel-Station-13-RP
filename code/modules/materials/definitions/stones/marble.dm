@@ -27,6 +27,8 @@
 
 	worth = 2
 
+	material_constraints = MATERIAL_CONSTRAINT_RIGID
+
 /datum/prototype/material/marble/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(
