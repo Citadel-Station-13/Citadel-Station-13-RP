@@ -109,7 +109,29 @@
 	VAR_PROTECTED/list/piece_lookup
 
 	//* Power *//
-	#warn todo.
+	/// our power cell
+	/// * intentionally not using obj_cell_slot here due to how complex rigsuits are
+	var/obj/item/cell/cell
+	/// starting cell type
+	var/cell_type = /obj/item/cell/high
+	/// power draw from modules
+	var/power_last_burst_module_draw = 0
+	/// power draw for controller
+	var/power_last_burst_controller_draw = 0
+	/// power buffer
+	/// * this is in kilojoules.
+	/// * you might notice this is very high. this is intentional.
+	/// * this is used to keep essential suit functions up while the cell is gone.
+	///   things like, well, life support and movement.
+	var/power_controller_buffer = 1000
+	/// power buffer capacity
+	var/power_controller_buffer_max = 1000
+	/// static module power draws by module
+	/// * lazy list
+	var/list/power_module_static_draws
+	/// static controller power draws by string source
+	/// * lazy list
+	var/list/power_controller_static_draws
 
 	//* Stats - Base
 	/// startup/shutdown time
@@ -185,6 +207,7 @@
 /obj/item/rig/Initialize(mapload, datum/rig_theme/theme_like)
 	. = ..()
 	resources = new(src)
+	#warn create cell? create modules?
 	// todo: this is shitcode and just bypasses the init sleep check, if shit breaks idfk lmao
 	INVOKE_ASYNC(src, PROC_REF(init_theme), theme_like || theme_preset)
 
@@ -283,6 +306,7 @@
 
 	if(activation_state == RIG_ACTIVATION_OFFLINE)
 		return
+	process_power(delta_time)
 	for(var/obj/item/rig_module/module as anything in get_modules())
 		if(module.host_ticked)
 			module.handle_rig_tick(delta_time)

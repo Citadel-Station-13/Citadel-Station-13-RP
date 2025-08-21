@@ -21,7 +21,7 @@
 /obj/item/rig_module/locomotion/jetpack/gas
 	/// gas key to pull from
 	var/gas_route = "jetpack"
-
+w
 	/// grams of gas needed to move one tile
 	/// * pressure-cramming is punished by [jet_minimum_release_volume]
 	/// * the value here is to let you go ~1920 tiles on ~31 mols of nitrogen at 273.15K,

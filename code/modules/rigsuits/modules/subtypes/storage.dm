@@ -68,7 +68,7 @@
 
 	obj_storage.ui_numerical_mode = storage_ui_numerical_mode
 
-/obj/item/hardsuit/proc/spawn_storage_contents()
+/obj/item/rig_module/storage/proc/spawn_storage_contents()
 	if(length(storage_starts_with) && !storage_empty)
 		// this is way too permissive already
 		var/safety = 256

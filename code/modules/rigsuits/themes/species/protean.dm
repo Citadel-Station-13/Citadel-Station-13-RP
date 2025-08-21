@@ -42,9 +42,8 @@ DECLARE_RIG_THEME(/species/protean)
 		/obj/item/rig_module/resource_store/gas_tank/slotted/breathing,
 		/obj/item/rig_module/resource_store/gas_tank/slotted/jetpack,
 		/obj/item/rig_module/basic/power_sink,
+		/obj/item/rig_module/magboots,
+		/obj/item/rig_module/lamp,
+		/obj/item/rig_module/storage/primary/default,
 		#warn jetpack
-		#warn battery slot
-		#warn storage
-		#warn lamp
-		#warn magboots
 	)

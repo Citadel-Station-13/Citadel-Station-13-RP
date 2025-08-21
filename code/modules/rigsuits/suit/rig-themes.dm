@@ -26,3 +26,6 @@
 	if(theme_initialized)
 		return
 	init_theme()
+
+/obj/item/rig/proc/obliterate_theme()
+	#warn this instead of wipe_everything
