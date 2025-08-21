@@ -3,9 +3,6 @@
 	subcategory = DESIGN_SUBCATEGORY_PARTS
 	abstract_type = /datum/prototype/design/science/stock_part/subspace
 
-/datum/prototype/design/science/stock_part/subspace/generate_name(template)
-	return "Subspace component design ([..()])"
-
 /datum/prototype/design/science/stock_part/subspace/subspace_ansible
 	id = "s-ansible"
 	req_tech = list(TECH_DATA = 3, TECH_MAGNET = 4, TECH_MATERIAL = 4, TECH_BLUESPACE = 2)
