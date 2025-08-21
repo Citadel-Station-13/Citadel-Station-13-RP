@@ -1,18 +1,18 @@
-/datum/sprite_accessory/tail/special/nevreanhc
+/datum/prototype/sprite_accessory/tail/special/nevreanhc
 	name = "nevrean tail, colorable"
 	id = "tail_nevrean_color"
 	icon_state = "nevreantail_hc_s"
 	do_colouration = 1
 	legacy_use_additive_color_matrix = FALSE
 
-/datum/sprite_accessory/tail/special/nevrean
+/datum/prototype/sprite_accessory/tail/special/nevrean
 	name = "nevrean tail"
 	id = "tail_nevrean"
 	icon_state = "nevreantail_s"
 	do_colouration = 1
 	legacy_use_additive_color_matrix = FALSE
 
-/datum/sprite_accessory/tail/nevreandc
+/datum/prototype/sprite_accessory/tail/nevreandc
 	name = "nevrean tail, dual-color"
 	id = "tail_nevrean2"
 	icon_state = "nevreantail_dc"
@@ -20,7 +20,7 @@
 	do_colouration = 1
 	legacy_use_additive_color_matrix = FALSE
 
-/datum/sprite_accessory/tail/nevreanwagdc
+/datum/prototype/sprite_accessory/tail/nevreanwagdc
 	name = "nevrean wagtail, dual-color"
 	id = "tail_nevrean_wag"
 	icon_state = "wagtail"
@@ -28,7 +28,7 @@
 	do_colouration = 1
 	legacy_use_additive_color_matrix = FALSE
 
-/datum/sprite_accessory/tail/nevreanwagdc_alt
+/datum/prototype/sprite_accessory/tail/nevreanwagdc_alt
 	name = "nevrean wagtail, marked, dual-color"
 	id = "tail_nevrean_wag_mark"
 	icon_state = "wagtail2_dc"
