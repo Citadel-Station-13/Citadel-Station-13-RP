@@ -1398,11 +1398,6 @@
 /obj/structure/flora/rock/geyser,
 /turf/simulated/floor/outdoors/safeice/lythios43c,
 /area/sector/ice_comet)
-"TP" = (
-/obj/structure/table/steel,
-/obj/item/disk/limb/veymed,
-/turf/simulated/floor/tiled/techmaint,
-/area/sector/ice_comet/facility)
 "Ub" = (
 /obj/structure/table/bench/wooden,
 /obj/item/reagent_containers/food/snacks/slice/vegetablepizza,
@@ -17875,7 +17870,7 @@ Xx
 Vr
 uV
 Zi
-TP
+YB
 YB
 Iq
 Vr
