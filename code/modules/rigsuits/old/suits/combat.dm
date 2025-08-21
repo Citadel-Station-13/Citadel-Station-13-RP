@@ -26,15 +26,6 @@
 	offline_vision_restriction = 1
 
 	helm_type = /obj/item/clothing/head/helmet/space/hardsuit/combat
-	allowed = list(
-		/obj/item/gun,
-		/obj/item/flashlight,
-		/obj/item/tank,
-		/obj/item/suit_cooling_unit,
-		/obj/item/melee/baton,
-		/obj/item/bluespace_radio,
-	)
-
 
 /obj/item/hardsuit/combat/equipped
 
