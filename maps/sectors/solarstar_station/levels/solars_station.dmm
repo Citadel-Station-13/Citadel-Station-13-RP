@@ -204,6 +204,7 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced,
+/obj/machinery/power/smes/buildable/offmap_spawn,
 /turf/simulated/floor/plating/indoors,
 /area/sector/solar_station/deck1)
 "ef" = (
@@ -712,13 +713,13 @@
 /turf/simulated/floor/plating/outdoors,
 /area/sector/solar_station/space)
 "ok" = (
-/obj/machinery/power/smes/buildable/offmap_spawn,
 /obj/structure/cable/blue{
 	icon_state = "0-4"
 	},
 /obj/structure/window/reinforced{
 	dir = 4
 	},
+/obj/machinery/power/smes/buildable/offmap_spawn/empty,
 /turf/simulated/floor/plating/indoors,
 /area/sector/solar_station/deck1)
 "ou" = (
@@ -1366,9 +1367,6 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating/indoors,
-/area/sector/solar_station/deck1)
-"zm" = (
-/turf/simulated/floor/plating,
 /area/sector/solar_station/deck1)
 "zx" = (
 /obj/structure/cable{
@@ -2107,10 +2105,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/monotechmaint,
-/area/sector/solar_station/deck1)
-"Oh" = (
-/obj/structure/stairs/spawner/north,
-/turf/simulated/floor/plating,
 /area/sector/solar_station/deck1)
 "Ol" = (
 /obj/machinery/computer/cryopod/travel/salvager{
@@ -20816,8 +20810,8 @@ as
 IZ
 YW
 IZ
-Oh
-zm
+IZ
+IZ
 SJ
 SJ
 SJ
@@ -21010,8 +21004,8 @@ QF
 IZ
 YW
 IZ
-Oh
-zm
+IZ
+IZ
 SJ
 pH
 yz
@@ -22562,8 +22556,8 @@ jm
 IZ
 YW
 IZ
-Oh
-zm
+IZ
+IZ
 SJ
 pH
 pH
@@ -22756,8 +22750,8 @@ as
 IZ
 YW
 IZ
-Oh
-zm
+IZ
+IZ
 SJ
 SJ
 SJ

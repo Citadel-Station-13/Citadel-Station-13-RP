@@ -6,7 +6,6 @@
 	levels = list(
 		/datum/map_level/sector/solars_station,
 		/datum/map_level/sector/solars_station/under,
-		/datum/map_level/sector/solars_station/upper,
 	)
 
 	legacy_assert_shuttle_datums = list(
@@ -31,14 +30,4 @@
 	base_turf = /turf/space
 	base_area = /area/space
 	link_above = /datum/map_level/sector/solars_station
-
-
-/datum/map_level/sector/solars_station/upper
-	id = "Solar_station_upper"
-	name = "Sector - Lythios 43 Star Upper"
-	display_name = "Lythios 43 Star Upper"
-	path = "maps/sectors/solarstar_station/levels/solars_station_upper.dmm"
-	base_turf = /turf/space
-	base_area = /area/space
-	link_below = /datum/map_level/sector/solars_station
 
