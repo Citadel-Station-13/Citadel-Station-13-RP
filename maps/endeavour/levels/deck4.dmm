@@ -22440,6 +22440,13 @@
 /obj/machinery/camera/network/command{
 	dir = 9
 	},
+/obj/machinery/button/remote/blast_door{
+	id = "AI Core";
+	name = "AI Core Shutters";
+	pixel_y = 32;
+	pixel_x = -10;
+	req_one_access = list(19)
+	},
 /turf/simulated/floor/bluegrid,
 /area/ai_upload)
 "uUN" = (
@@ -24069,7 +24076,8 @@
 	id = "AI Core";
 	name = "AI Core Shutters";
 	pixel_y = 32;
-	pixel_x = -10
+	pixel_x = -10;
+	req_one_access = list(19)
 	},
 /obj/machinery/light{
 	dir = 1
