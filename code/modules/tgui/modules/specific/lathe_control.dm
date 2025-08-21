@@ -38,7 +38,7 @@
 	.["speedMultiplier"] = lathe.speed_multiplier
 	.["efficiencyMultiplier"] = lathe.efficiency_multiplier
 	.["powerMultiplier"] = lathe.power_multiplier
-	.["designs"] = ui_design_data(lathe.design_holder.available_designs())
+	.["designs"] = ui_design_data(lathe.design_holder.get_designs_const())
 	.["materials"] = lathe.stored_materials?.ui_storage_data() || list()
 	.["reagents"] = lathe.stored_reagents?.tgui_reagent_contents() || list()
 	.["queue"] = ui_queue_data()
@@ -164,7 +164,7 @@
 		return
 	design_update_queued = FALSE
 	var/obj/machinery/lathe/lathe = host
-	push_ui_data(data = list("designs" = ui_design_data(lathe.design_holder.available_designs())))
+	push_ui_data(data = list("designs" = ui_design_data(lathe.design_holder.get_designs_const())))
 
 /datum/tgui_module/lathe_control/proc/ui_ingredients_update()
 	var/obj/machinery/lathe/lathe = host

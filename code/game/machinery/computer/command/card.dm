@@ -107,7 +107,7 @@
 /obj/machinery/computer/card/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "IdentificationComputer", name)
+		ui = new(user, src, "computers/IdentificationComputer", name)
 		ui.register_module(tgui_cardmod, "modify")
 		ui.open()
 
