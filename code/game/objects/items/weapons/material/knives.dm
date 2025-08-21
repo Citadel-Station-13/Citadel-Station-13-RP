@@ -85,6 +85,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "tacknife"
 	item_state = "knife"
+	material_primary = "blade"
 	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_LIGHT
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	attack_verb = list("stabbed", "chopped", "cut")

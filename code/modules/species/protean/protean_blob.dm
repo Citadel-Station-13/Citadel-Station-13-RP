@@ -209,7 +209,7 @@
 			if(potentials.len)
 				var/mob/living/target = pick(potentials)
 				var/allowed = TRUE
-				if(target.client && target.can_be_drop_prey)//you can still vore ai mobs with the pref off
+				if(target.client && !target.can_be_drop_prey)//you can still vore ai mobs with the pref off
 					allowed = FALSE
 				if(istype(target) && vore_selected && allowed) //no more ooc-noncon vore, thanks
 					if(target.buckled)

@@ -1,0 +1,4 @@
+author: "Putnam3145"
+delete-after: True
+changes:
+  - bugfix: "made protean dropvore(?) not check the exact opposite pref it should"
