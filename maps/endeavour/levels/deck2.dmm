@@ -31858,10 +31858,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/research/port)
-"wQo" = (
-/obj/landmark/spawnpoint/latejoin/station/cyborg,
-/turf/simulated/floor/tiled/techfloor,
-/area/assembly/robotics)
 "wQp" = (
 /obj/machinery/door/firedoor/glass{
 	dir = 4
@@ -51204,7 +51200,7 @@ dar
 ovE
 xfV
 ovE
-wQo
+ovE
 tDA
 jFo
 mBj

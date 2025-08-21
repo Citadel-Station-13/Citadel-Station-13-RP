@@ -26382,20 +26382,9 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
 "tPq" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/camera/network/command,
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/beige/border{
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/beige/border,
+/obj/machinery/camera/network/command{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
@@ -28898,9 +28887,6 @@
 /area/endeavour/hallway/d1fwdhall)
 "vzu" = (
 /obj/structure/table/reinforced,
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 4
-	},
 /obj/random/tech_supply,
 /obj/random/tech_supply,
 /obj/random/tech_supply,
@@ -59846,7 +59832,7 @@ eFG
 eFG
 eFG
 dkh
-prS
+tPq
 dQJ
 dMa
 ffi
@@ -60427,7 +60413,7 @@ pBk
 kOz
 bLW
 dQJ
-tPq
+kmo
 prS
 dQJ
 dMa
@@ -61010,7 +60996,7 @@ uDt
 mgv
 dQJ
 eyP
-prS
+tPq
 dQJ
 mEk
 vlU

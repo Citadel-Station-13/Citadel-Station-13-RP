@@ -1126,6 +1126,9 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
+/obj/machinery/camera/network/engine{
+	dir = 1
+	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "aXs" = (
@@ -9694,6 +9697,9 @@
 	pixel_y = -4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/light/small{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/storage/tech)
 "iGw" = (
@@ -15275,6 +15281,9 @@
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
+/obj/machinery/camera/network/engine{
+	dir = 1
+	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_smes)
 "nFE" = (
@@ -18963,6 +18972,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/locker_room)
+"rxf" = (
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/turf/simulated/floor/plating,
+/area/engineering/portnacelle)
 "rxy" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -19988,6 +20001,9 @@
 	pixel_y = -3
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/light/small{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/storage/tech)
 "sFd" = (
@@ -21317,6 +21333,10 @@
 /obj/structure/lattice,
 /turf/space,
 /area/space)
+"tTX" = (
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d4aftmaint)
 "tUm" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/lightorange/border,
@@ -24827,6 +24847,21 @@
 /obj/machinery/door/airlock/highsecurity,
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_server_room)
+"wYf" = (
+/obj/structure/closet/crate,
+/obj/item/circuitboard/smes,
+/obj/item/smes_coil,
+/obj/item/smes_coil,
+/obj/item/smes_coil/super_capacity,
+/obj/item/smes_coil/super_capacity,
+/obj/item/smes_coil/super_io,
+/obj/item/smes_coil/super_io,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/camera/network/engine{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/engineering/engine_smes)
 "wYj" = (
 /obj/structure/stairs/spawner/north,
 /turf/simulated/floor/plating,
@@ -31530,7 +31565,7 @@ psc
 psc
 psc
 psc
-vAC
+psc
 uUN
 uUN
 heJ
@@ -31889,7 +31924,7 @@ saA
 brM
 saA
 saA
-jNg
+mKs
 jNg
 jNg
 jNg
@@ -31916,7 +31951,7 @@ wTU
 fvC
 jNg
 psc
-jNg
+rME
 uUN
 uUN
 kej
@@ -32471,8 +32506,8 @@ saA
 kdA
 brM
 bkY
-saA
-psc
+rxf
+qhx
 psc
 psc
 xbR
@@ -32498,7 +32533,7 @@ wTU
 oNF
 psc
 psc
-uUN
+tTX
 oKm
 iXz
 hHV
@@ -32665,8 +32700,8 @@ saA
 krH
 pGV
 brM
-saA
-bXA
+rxf
+rxf
 jNg
 jNg
 mhf
@@ -32691,8 +32726,8 @@ iPU
 uhm
 fvC
 jNg
-psc
-uUN
+tTX
+tTX
 kkQ
 iXz
 hHV
@@ -32859,8 +32894,8 @@ saA
 gsH
 mPc
 brM
-saA
-saA
+brM
+rxf
 jNg
 jNg
 mhf
@@ -32885,8 +32920,8 @@ ryU
 ePL
 mhf
 jNg
-uUN
-uUN
+tTX
+kkQ
 kkQ
 iXz
 hHV
@@ -37920,7 +37955,7 @@ oIg
 qyb
 nEQ
 tFG
-uqm
+wYf
 uqm
 tFG
 nTD
@@ -44291,7 +44326,7 @@ xRj
 xRj
 xRj
 suy
-xRj
+usG
 xTZ
 pku
 qEr
@@ -44347,7 +44382,7 @@ igs
 agJ
 vZX
 aIP
-jNg
+usG
 jNg
 mtv
 jNg
