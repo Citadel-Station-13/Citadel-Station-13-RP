@@ -376,20 +376,10 @@
 		var/obj/item/i = usr.get_active_held_item() // Check to see if he still got that darn pen, also check if he's using a crayon or pen.
 		var/iscrayon = 0
 		if(!istype(i, /obj/item/pen))
-			var/mob/living/M = usr
-			if(istype(M) && M.back && istype(M.back,/obj/item/hardsuit))
-				var/obj/item/hardsuit/r = M.back
-				var/obj/item/rig_module/basic/device/pen/m = locate(/obj/item/rig_module/basic/device/pen) in r.installed_modules
-				if(r.is_online() && m)
-					i = m.device
-				else
-					return
-			else
-				return
+			return
 
 		if(istype(i, /obj/item/pen/crayon))
 			iscrayon = 1
-
 
 		// if paper is not in usr, then it must be near them, or in a clipboard or folder, which must be in or near usr
 		if(src.loc != usr && !src.Adjacent(usr) && !((istype(src.loc, /obj/item/clipboard) || istype(src.loc, /obj/item/folder)) && (src.loc.loc == usr || src.loc.Adjacent(usr)) ) )

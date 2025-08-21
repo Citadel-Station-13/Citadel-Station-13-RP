@@ -31,13 +31,13 @@
 		to_chat(owner, SPAN_DANGER("Your [name] [gender == PLURAL ? "are" : "is"] out of power!"))
 		refresh_action_button()
 
-/obj/item/organ/internal/powered/update_action_buttons()
+/obj/item/organ/internal/adherent/update_action_buttons()
 	if(istype(organ_actions, /datum/action))
 		var/datum/action/action = organ_actions
 		action.button_icon_state = "[base_action_state]-[active ? "on" : "off"]"
 	return ..()
 
-/obj/item/organ/internal/powered/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/organ/internal/adherent/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -70,7 +70,7 @@
 	. = ..()
 	//add_obj_verb(src, /obj/item/organ/internal/adherent/jets/proc/activatej)
 
-/obj/item/organ/internal/powered/jets/ui_action_click(datum/action/action, datum/event_args/actor/actor)
+/obj/item/organ/internal/adherent/jets/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	activatej()
 
 /obj/item/organ/internal/adherent/jets/proc/activatej()
@@ -112,7 +112,7 @@
 	//add_obj_verb(src, /obj/item/organ/internal/adherent/float/proc/flying_toggle)
 	add_obj_verb(src, /obj/item/organ/internal/adherent/float/proc/hover)
 
-/obj/item/organ/internal/powered/float/ui_action_click(datum/action/action, datum/event_args/actor/actor)
+/obj/item/organ/internal/adherent/float/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	hover()
 /obj/item/organ/internal/eyes/adherent
 	name = "receptor prism"
@@ -158,7 +158,7 @@
 	. = ..()
 	add_obj_verb(src, /obj/item/organ/internal/adherent/cooling_fins/proc/activatecf)
 
-/obj/item/organ/internal/powered/cooling_fins/ui_action_click(datum/action/action, datum/event_args/actor/actor)
+/obj/item/organ/internal/adherent/cooling_fins/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	activatecf()
 
 /obj/item/organ/internal/adherent/cooling_fins/proc/activatecf()
