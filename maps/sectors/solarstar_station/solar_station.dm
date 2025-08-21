@@ -20,7 +20,6 @@
 	base_turf = /turf/space
 	base_area = /area/space
 	link_below = /datum/map_level/sector/solars_station/under
-	link_above = /datum/map_level/sector/solars_station/upper
 
 /datum/map_level/sector/solars_station/under
 	id = "Solar_station_under"
