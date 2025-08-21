@@ -207,24 +207,28 @@
 	landmark_tag = "voidline_redcomet"
 	base_turf = /turf/simulated/floor/reinforced
 	base_area = /area/sector/sky_planet/racing_station/dock
+	docking_controller = "voidline_redcomet_dock"
 
 /obj/effect/shuttle_landmark/skyplanet/voidline/bonnethead
 	name = "Voidline Rig - Bonnethead Pad"
 	landmark_tag = "voidline_bonnethead"
 	base_turf = /turf/simulated/floor/reinforced
 	base_area = /area/sector/sky_planet/racing_station/dock
+	docking_controller = "voidline_bonnethead_dock"
 
 /obj/effect/shuttle_landmark/skyplanet/voidline/udang
 	name = "Voidline Rig - Udang Pari-pari Pad"
 	landmark_tag = "voidline_udang"
 	base_turf = /turf/simulated/floor/reinforced
 	base_area = /area/sector/sky_planet/racing_station/dock
+	docking_controller = "voidline_udang_dock"
 
 /obj/effect/shuttle_landmark/skyplanet/voidline/arrowhead
 	name = "Voidline Rig - Arrowhead Pad"
 	landmark_tag = "voidline_arrowhead"
 	base_turf = /turf/simulated/floor/reinforced
 	base_area = /area/sector/sky_planet/racing_station/dock
+	docking_controller = "voidline_arrowhead_dock"
 
 //Public
 

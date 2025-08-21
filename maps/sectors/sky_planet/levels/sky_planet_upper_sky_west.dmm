@@ -1804,6 +1804,11 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 6
 	},
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	id_tag = "voidline_udang_dock";
+	dir = 8;
+	pixel_x = 26
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/racing_station/dock)
 "ke" = (
@@ -2284,6 +2289,10 @@
 "mZ" = (
 /obj/overmap/entity/visitable/ship/landable/trade/paripari,
 /obj/effect/shuttle_landmark/skyplanet/voidline/udang,
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	id_tag = "voidline_udang_docker";
+	pixel_x = -28
+	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/shuttle/paripari)
 "nb" = (
@@ -3761,7 +3770,11 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/obj/machinery/air_alarm/east_mount,
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	id_tag = "voidline_bonnethead_dock";
+	dir = 8;
+	pixel_x = 26
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/racing_station/dock)
 "uW" = (
@@ -4924,6 +4937,11 @@
 /obj/machinery/light/poi{
 	dir = 4
 	},
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	id_tag = "voidline_redcomet_dock";
+	dir = 8;
+	pixel_x = 26
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/racing_station/dock)
 "Bw" = (
@@ -5181,6 +5199,15 @@
 "CY" = (
 /turf/simulated/wall/r_wall/prepainted/security,
 /area/shuttle/redcomet)
+"Da" = (
+/obj/effect/floor_decal/industrial/halfstair,
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	id_tag = "voidline_arrowhead_dock";
+	dir = 8;
+	pixel_x = 26
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/racing_station/dock)
 "Db" = (
 /obj/structure/bed/chair/comfy/brown{
 	dir = 4
@@ -5284,6 +5311,10 @@
 /obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
+"DC" = (
+/obj/machinery/air_alarm/east_mount,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/racing_station/dock)
 "DD" = (
 /obj/structure/railing{
 	dir = 4
@@ -7564,6 +7595,10 @@
 "Pw" = (
 /obj/effect/shuttle_landmark/skyplanet/voidline/bonnethead,
 /obj/overmap/entity/visitable/ship/landable/trade/bonnethead,
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	id_tag = "voidline_bonnethead_docker";
+	pixel_x = -28
+	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
 /area/shuttle/bonnethead)
 "Px" = (
@@ -7637,6 +7672,10 @@
 	},
 /obj/machinery/light{
 	dir = 8
+	},
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	id_tag = "voidline_redcomet_docker";
+	pixel_x = -28
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/shuttle/redcomet)
@@ -36523,7 +36562,7 @@ ze
 Bv
 uV
 kd
-Nd
+Da
 iE
 MJ
 co
@@ -37101,7 +37140,7 @@ LQ
 iG
 pY
 Pr
-pY
+DC
 zK
 OK
 DS

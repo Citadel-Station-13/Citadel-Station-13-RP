@@ -111,15 +111,6 @@
 /obj/effect/floor_decal/corner/paleblue/bordercorner2,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
-"aez" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled,
-/area/endeavour/hallway/d2afthall)
 "aeC" = (
 /obj/machinery/light{
 	dir = 8
@@ -462,9 +453,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
 "arK" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -2814,9 +2802,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
 "bXb" = (
-/obj/item/radio/intercom{
-	pixel_y = -24
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
@@ -2826,6 +2811,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
+/obj/structure/closet/radiation,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
 "bXr" = (
@@ -3674,9 +3660,6 @@
 	name = "Medbay Emergency Lockdown Shutters";
 	opacity = 0
 	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
@@ -3846,7 +3829,7 @@
 	dir = 8
 	},
 /obj/structure/cable/green{
-	icon_state = "1-2"
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
@@ -5832,9 +5815,6 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /obj/structure/disposalpipe/junction,
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
@@ -6572,9 +6552,15 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2fwdhall)
 "ezb" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 1
+	},
 /obj/item/radio/beacon,
-/turf/simulated/floor/tiled/dark,
-/area/endeavour/hallway/d2fwdhall)
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2afthall)
 "ezI" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/air_alarm{
@@ -8095,6 +8081,9 @@
 	},
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
+	},
+/obj/machinery/vending/wallmed1{
+	pixel_x = -32
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
@@ -10348,13 +10337,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
-"hmG" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/item/radio/beacon,
-/turf/simulated/floor/tiled,
-/area/endeavour/hallway/d2afthall)
 "hnd" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/electrochromatic_linker{
@@ -12157,6 +12139,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/reception)
 "iEe" = (
+/obj/item/radio/beacon,
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
 "iEr" = (
@@ -12293,6 +12276,7 @@
 	name = "Medical Reception";
 	sortType = "Medical Reception"
 	},
+/obj/item/radio/beacon,
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "iGJ" = (
@@ -13592,9 +13576,6 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
@@ -14237,11 +14218,9 @@
 /obj/item/tank/oxygen{
 	pixel_y = -4
 	},
-/obj/item/hardsuit/medical{
-	pixel_y = -4
-	},
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/blue,
+/obj/item/hardsuit/medical/equipped,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/medical/medbay_emt_bay)
 "kkr" = (
@@ -14695,6 +14674,7 @@
 /obj/item/storage/box/cups{
 	pixel_y = 5
 	},
+/obj/item/reagent_containers/spray/cleaner,
 /turf/simulated/floor/carpet/blucarpet,
 /area/crew_quarters/medbreak)
 "kFb" = (
@@ -15528,6 +15508,10 @@
 	desc = "";
 	info = "This is a direct notice to anyone using firing range: All tests involving destruction of testing facilities MUST be run through Research Director or Central Command before anyone even so much as thinks about going through with this, or be moved outside to where test cannot affect any existing facility. This is both to maintain a professional environment, and ensure nobody else is harmed during these experiments. Nobody wants another 'two SM shards going nuclear in the firing range' incident again, especially not the people handling your paychecks.";
 	name = "note to science staff"
+	},
+/obj/item/radio/intercom{
+	dir = 4;
+	pixel_x = 24
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
@@ -16827,20 +16811,15 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical_science)
 "mdC" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
+/obj/structure/table/glass,
+/obj/item/deskbell,
+/obj/machinery/light,
+/obj/structure/sign/warning/nosmoking_1{
+	pixel_y = -26;
+	pixel_x = 7
 	},
-/obj/structure/cable/green{
-	icon_state = "2-4"
-	},
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/navblue/border{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
-/area/endeavour/hallway/d2afthall)
+/turf/simulated/floor/wood/sif/indoors,
+/area/medical/reception)
 "mdF" = (
 /obj/structure/catwalk,
 /obj/structure/cable{
@@ -17063,14 +17042,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/fpmaint2)
 "mog" = (
-/obj/structure/closet/secure_closet/medical_wall{
-	name = "O- Blood Locker";
-	pixel_x = -32
-	},
-/obj/item/reagent_containers/blood/OMinus,
-/obj/item/reagent_containers/blood/OMinus,
-/obj/item/reagent_containers/blood/OMinus,
-/obj/item/reagent_containers/blood/OMinus,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
 	},
@@ -17084,6 +17055,7 @@
 /obj/effect/floor_decal/corner/paleblue/bordercorner2{
 	dir = 10
 	},
+/obj/item/reagent_containers/spray/cleaner,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "mow" = (
@@ -18324,13 +18296,6 @@
 /obj/machinery/meter,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
-"ngB" = (
-/obj/machinery/smartfridge{
-	accepted_types = list(/obj/item);
-	desc = "A wall-mounted refrigerated storage unit. Should keep your food fresh until lunchtime."
-	},
-/turf/simulated/wall/prepainted/medical,
-/area/crew_quarters/medbreak)
 "ngN" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -18685,9 +18650,15 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 1
 	},
-/obj/machinery/vending/wallmed1{
+/obj/structure/closet/secure_closet/medical_wall{
+	name = "O- Blood Locker";
+	req_access = list(5);
 	pixel_y = 32
 	},
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "nwm" = (
@@ -19606,9 +19577,6 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "ohX" = (
@@ -19738,6 +19706,9 @@
 	},
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
@@ -20720,13 +20691,13 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "oZp" = (
-/obj/structure/sign/warning/nosmoking_1{
-	pixel_y = -26;
-	pixel_x = 7
-	},
 /obj/structure/bed/chair{
 	dir = 1
 	},
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
+/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/wood/sif/indoors,
 /area/medical/reception)
 "oZA" = (
@@ -22954,6 +22925,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/structure/closet/bombcloset/double,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
 "qoP" = (
@@ -23807,13 +23779,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
-"qVk" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/item/radio/beacon,
-/turf/simulated/floor/tiled,
-/area/endeavour/hallway/d2fwdhall)
 "qVl" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -24311,7 +24276,6 @@
 	dir = 4
 	},
 /obj/machinery/recharger,
-/obj/item/reagent_containers/spray/cleaner,
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "rrG" = (
@@ -24930,9 +24894,6 @@
 /area/medical/medbay4)
 "rRJ" = (
 /obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/structure/cable/green{
 	icon_state = "2-4"
 	},
 /obj/effect/floor_decal/borderfloorwhite{
@@ -24944,13 +24905,9 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "rSq" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/item/radio/beacon,
 /turf/simulated/floor/tiled,
-/area/endeavour/hallway/d2afthall)
+/area/endeavour/hallway/d2fwdhall)
 "rTU" = (
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
@@ -27231,11 +27188,13 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/virology_fore_access)
 "txK" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
 /obj/item/radio/beacon,
 /turf/simulated/floor/tiled,
-/area/endeavour/hallway/d2fwdhall)
+/area/rnd/research_foyer)
 "txY" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
@@ -29592,6 +29551,10 @@
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
 	},
+/obj/machinery/light{
+	dir = 8;
+	old_wall = 1
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "vtN" = (
@@ -31004,7 +30967,6 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/item/radio/beacon,
 /turf/simulated/floor/wood,
 /area/tether/station/public_meeting_room)
 "wpO" = (
@@ -31976,6 +31938,7 @@
 "wUV" = (
 /obj/structure/table/standard,
 /obj/machinery/fire_alarm/alarms_hidden/west_mount,
+/obj/item/clothing/shoes/galoshes,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "wVd" = (
@@ -32535,8 +32498,17 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "xpf" = (
-/obj/machinery/vending/blood,
 /obj/effect/floor_decal/industrial/outline/blue,
+/obj/structure/table/steel_reinforced,
+/obj/item/clothing/glasses/eyepatch,
+/obj/item/clothing/glasses/eyepatch,
+/obj/item/clothing/glasses/sunglasses/blindfold,
+/obj/item/clothing/glasses/sunglasses/blindfold,
+/obj/item/cane/crutch,
+/obj/item/cane/crutch,
+/obj/item/cane/crutch,
+/obj/item/cane/crutch,
+/obj/item/reagent_containers/spray/cleaner,
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "xpI" = (
@@ -42041,7 +42013,7 @@ rMF
 rMF
 xSp
 byD
-rSq
+iMx
 dDL
 uZL
 uZL
@@ -43197,13 +43169,13 @@ biX
 iAr
 uwU
 tfP
-bIl
-xSp
-xSp
-xSp
-xSp
-xSp
-xSp
+hNv
+hNv
+hNv
+hNv
+hNv
+hNv
+hNv
 vSY
 tLC
 cqH
@@ -45920,7 +45892,7 @@ sFS
 sdA
 sdA
 sdA
-wQI
+ezb
 gsh
 pnt
 sws
@@ -48066,7 +48038,7 @@ fQj
 gkz
 gkz
 gkz
-gWJ
+mdC
 ihi
 kNW
 mKw
@@ -48251,8 +48223,8 @@ asd
 xAr
 xJh
 fuU
-mdC
-aez
+wIK
+lrJ
 arK
 czJ
 jHE
@@ -48843,7 +48815,7 @@ gkz
 gkz
 gkz
 eff
-ihi
+pCb
 ebW
 ehP
 qBq
@@ -49402,7 +49374,7 @@ hCA
 riZ
 gdf
 mXO
-mFr
+txK
 xzy
 qTw
 vID
@@ -50580,7 +50552,7 @@ ovE
 jxy
 hnd
 wQI
-hmG
+lrJ
 bTF
 sFQ
 eMm
@@ -51363,7 +51335,7 @@ oSb
 esO
 esO
 esO
-ngB
+esO
 esO
 esO
 pEq
@@ -55042,7 +55014,7 @@ wDV
 wAD
 yax
 xYL
-qVk
+cAA
 fcM
 idr
 kvC
@@ -57570,7 +57542,7 @@ dgV
 dgV
 dgV
 dgV
-txK
+dgV
 anN
 rmq
 dAV
@@ -59898,7 +59870,7 @@ fNy
 anE
 rOO
 fZd
-nkN
+rSq
 pzO
 ces
 yeN
@@ -62420,7 +62392,7 @@ pLA
 rwG
 rwG
 gfI
-ezb
+jSU
 mxS
 nNS
 kKv
