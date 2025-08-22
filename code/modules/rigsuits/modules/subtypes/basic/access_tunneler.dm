@@ -30,6 +30,14 @@
 
 /obj/item/rig_module/basic/facility_access_override/lazy_on_click(atom/target, mob/user, intent, zone, efficiency, datum/event_args/actor/actor)
 	. = ..()
+	if(.)
+		return
+	if(!rig_reachability(target, user))
+		actor?.chat_feedback(
+			SPAN_WARNING("You can't reach [target]."),
+			target = src,
+		)
+		return TRUE
 
 #warn impl
 #warn item mount it??

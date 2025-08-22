@@ -33,3 +33,17 @@
 			return z_left_leg
 		if(RIG_ZONE_RIGHT_LEG)
 			return z_right_leg
+
+/obj/item/rig/proc/reset_zones()
+	var/list/datum/rig_zone/zones = list(
+		z_head,
+		z_chest,
+		z_left_arm,
+		z_right_arm,
+		z_left_leg,
+		z_right_leg,
+	)
+	for(var/datum/rig_zone/zone as anything in zones)
+		zone.brute_damage = zone.burn_damage = 0
+		zone.complexity_used = zone.volume_used = 0
+	#warn retally module volume/complexity

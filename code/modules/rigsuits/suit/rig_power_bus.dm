@@ -4,9 +4,10 @@
 /**
  * individual power bus
  * * units are joules / watts
- * * technically called rig power bus but can probably be reused elsewhere wink wink nudge nudge cyborgs and humans
  */
 /datum/rig_power_bus
+	/// owning rig
+	var/obj/item/rig/rig
 	/// cell
 	var/obj/item/cell/cell
 	/// is the cell removable?
@@ -22,7 +23,11 @@
 	/// online? we become offline if we run out of power during usage
 	var/online = TRUE
 
+/datum/rig_power_bus/New(obj/item/rig/rig, starting_cell_type)
+	src.rig = rig
+
 /datum/rig_power_bus/Destroy()
+	rig = null
 	burst_draws = null
 	static_draws = null
 	return ..()

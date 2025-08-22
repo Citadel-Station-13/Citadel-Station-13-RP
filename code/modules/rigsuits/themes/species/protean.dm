@@ -45,5 +45,5 @@ DECLARE_RIG_THEME(/species/protean)
 		/obj/item/rig_module/magboots,
 		/obj/item/rig_module/lamp,
 		/obj/item/rig_module/storage/primary/default,
-		#warn jetpack
+		/obj/item/rig_module/locomotion/jetpack/gas/ion,
 	)

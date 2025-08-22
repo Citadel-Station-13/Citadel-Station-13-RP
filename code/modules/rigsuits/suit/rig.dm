@@ -193,13 +193,15 @@
 /obj/item/rig/Initialize(mapload, datum/rig_theme/theme_like)
 	. = ..()
 	resources = new(src)
-	#warn create cell? create modules?
+	#warn initialize power bus
 	// todo: this is shitcode and just bypasses the init sleep check, if shit breaks idfk lmao
 	INVOKE_ASYNC(src, PROC_REF(init_theme), theme_like || theme_preset)
 
 /obj/item/rig/Destroy()
 	hard_reset()
 	wipe_everything()
+	QDEL_NULL(power_main_bus)
+	QDEL_NULL(power_aux_bus)
 	QDEL_NULL(resources)
 	// QDEL_NULL(console)
 	QDEL_NULL(maint_panel)

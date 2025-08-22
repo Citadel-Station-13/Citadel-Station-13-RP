@@ -29,6 +29,8 @@
 			to_chat(src, "Somehow you bugged the system. Setting your hardsuit mode to middle-click.")
 			hardsuit_click_mode = MIDDLE_CLICK
 
+// TODO: rework input / keybind system again this is fucking horrible and we need
+//       unified modifier controls for clicking.
 /mob/living/MiddleClickOn(atom/A)
 	if(client && client.hardsuit_click_mode == MIDDLE_CLICK)
 		if(HardsuitClickOn(A))
@@ -46,24 +48,6 @@
 		if(HardsuitClickOn(A))
 			return
 	..()
-
-/mob/living/proc/can_use_hardsuit()
-	return 0
-
-/mob/living/carbon/human/can_use_hardsuit()
-	return 1
-
-/mob/living/simple_mob/holosphere_shell/can_use_hardsuit()
-	return 1
-
-/mob/living/carbon/brain/can_use_hardsuit()
-	return istype(loc, /obj/item/mmi)
-
-/mob/living/silicon/ai/can_use_hardsuit()
-	return carded
-
-/mob/living/silicon/pai/can_use_hardsuit()
-	return loc == card
 
 /mob/living/proc/HardsuitClickOn(var/atom/A, var/alert_ai = 0)
 	if(!can_use_hardsuit() || !canClick())

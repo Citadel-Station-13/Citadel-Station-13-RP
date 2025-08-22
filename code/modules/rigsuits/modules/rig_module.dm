@@ -3,6 +3,19 @@
 
 /**
  * modules are modular items that can be inserted into specific complexity on the rig.
+ *
+ * # lifecycle
+ * Modules have a manged lifecycle.
+ * * un/install refers to being added/removed to the rig.
+ * * de/activation refers to the rig being attached / detached from someone,
+ * * on/offline refers to the module being powered / depowered.
+ *
+ * Lifecycle events are fired in order if added/removed while others are 'active'.
+ * As an example, removing a module while modules are powered and the suit is activated will:
+ * * first fire 'on_offline' so it's brought offline
+ * * then fire 'on_deactivation'
+ * * then fire 'on_uninstall'
+ * While if the module was in a deactivated suit, it would only call 'on_uninstall'.
  */
 /obj/item/rig_module
 	name = "rig module"
@@ -187,12 +200,32 @@
  * * Use to handle behaviors that need to bind to a mob.
  * * If the rig is mob-swapped, this will be called on the old wearer.
  */
+/obj/item/rig_module/proc/on_activation(obj/item/rig/rig, mob/wearer)
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_CALL_PARENT(TRUE)
+
+/**
+ * * Called before uninstall if the rig is attached to someone.
+ * * Use to handle behaviors that need to bind to a mob.
+ * * If the rig is mob-swapped, this will be called on the old wearer.
+ */
+/obj/item/rig_module/proc/on_deactivation(obj/item/rig/rig, mob/wearer)
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_CALL_PARENT(TRUE)
+
+/**
+ * Called after add if the rig is online, or when the rig goes online, or when the rig is mob-swapped.
+ * * Rig modules go offline when the module bus power is cut.
+ * * Use to handle behaviors that need to bind to a mob.
+ * * If the rig is mob-swapped, this will be called on the old wearer.
+ */
 /obj/item/rig_module/proc/on_online(obj/item/rig/rig, mob/wearer)
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 
 /**
  * Called before remove if the rig is offline, or when the rig is taken offline, or when the rig is mob-swapped.
+ * * Rig modules go offline when the module bus power is cut.
  * * Use to handle behaviors that need to bind to a mob.
  * * If the rig is mob-swapped, this will be called on the old wearer.
  */
@@ -288,7 +321,17 @@
 	return FALSE
 
 /obj/item/rig_module/proc/handle_rig_module_click(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
-	return NONE
+	return clickchain_flags
+
+//* Interaction *//
+
+/**
+ * checks rig reachability if mounted, otherwise performer reachability assuming we're held
+ */
+/obj/item/rig_module/proc/rig_reachability(atom/target, mob/performer)
+	if(host)
+		return host.wearer?.Reachability(target)
+	return performer?.Reachability(target)
 
 //* Power *//
 

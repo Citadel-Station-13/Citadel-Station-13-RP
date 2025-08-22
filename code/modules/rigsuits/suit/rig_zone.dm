@@ -25,19 +25,6 @@
 	/// volume available
 	var/volume_capacity = 0
 
-/datum/rig_zone/Destroy()
-	if(length(modules))
-		stack_trace("deleted with active modules")
-		modules = null
-	return ..()
-
-/datum/rig_zone/proc/reset_state_after_wipe()
-	ASSERT(!length(modules))
-	brute_damage = 0
-	burn_damage = 0
-	complexity_used = 0
-	volume_used = 0
-
 /datum/rig_zone/head
 	zone_enum = RIG_ZONE_HEAD
 	zone_bit = RIG_ZONE_BIT_HEAD

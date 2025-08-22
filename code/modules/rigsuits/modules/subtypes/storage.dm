@@ -97,8 +97,15 @@
 				if(!silent)
 					actor?.chat_feedback(
 						SPAN_WARNING("[rig] already has a primary storage module."),
-						target = src,
+						target = rig,
 					)
 				return FALSE
+		if(rig.obj_storage)
+			if(!silent)
+				actor?.chat_feedback(
+					SPAN_WARNING("[rig] already has storage in it."),
+					target = rig,
+				)
+			return FALSE
 
 #warn impl all

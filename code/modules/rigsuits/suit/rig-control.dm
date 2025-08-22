@@ -17,3 +17,6 @@
 	. = check_control_flags(user, control_flags)
 	if(!.)
 		user.action_feedback(SPAN_WARNING("Insufficient access to perform command."), src)
+
+/obj/item/rig/proc/check_control_flags_or_reject_topic_act(datum/event_args/actor/actor, control_flags)
+	#warn impl
