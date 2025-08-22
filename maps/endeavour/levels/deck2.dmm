@@ -2545,10 +2545,6 @@
 /obj/structure/table/bench/steel,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/endeavour/hallway/d2afthall)
-"bPa" = (
-/obj/structure/bed/chair/wheelchair,
-/turf/simulated/floor/tiled,
-/area/medical/surgeryprep)
 "bPH" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -19974,18 +19970,13 @@
 /turf/simulated/floor/tiled/dark,
 /area/assembly/robotics/surgery)
 "oAr" = (
-/obj/machinery/door/airlock/medical{
-	name = "Patient Ward C";
-	req_one_access = null
-	},
-/obj/map_helper/access_helper/airlock/station/medical/department,
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 10
 	},
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
 	},
-/turf/simulated/floor/tiled/white,
+/turf/simulated/wall/r_wall/prepainted/medical,
 /area/medical/medbay3)
 "oAN" = (
 /turf/simulated/wall/prepainted/medical,
@@ -20996,9 +20987,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/public_meeting_room)
 "piH" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
-/obj/map_helper/electrochromatic_linker{
-	id = "ward_a"
+/obj/spawner/window/low_wall/reinforced/firelocks{
+	id = "or2obs"
 	},
 /obj/map_helper/paint/babyblue,
 /turf/simulated/floor/plating,
@@ -24906,12 +24896,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
-"rPS" = (
-/obj/spawner/window/low_wall/reinforced/firelocks{
-	id = "or2obs"
-	},
-/turf/simulated/floor/plating,
-/area/medical/surgeryobs)
 "rPX" = (
 /obj/machinery/iv_drip,
 /turf/simulated/floor/tiled,
@@ -33018,13 +33002,6 @@
 /obj/effect/floor_decal/spline/fancy/wood,
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/breakroom)
-"xGI" = (
-/obj/machinery/door/firedoor{
-	dir = 1
-	},
-/obj/machinery/door/airlock,
-/turf/simulated/floor/carpet/bcarpet,
-/area/endeavour/hallway/d2afthall)
 "xHh" = (
 /obj/structure/cable/green{
 	icon_state = "2-8"
@@ -43452,7 +43429,7 @@ bQq
 tIT
 dVG
 mQh
-rPS
+gjC
 rPX
 gHX
 uTV
@@ -43646,7 +43623,7 @@ bQq
 bKi
 ncZ
 dKE
-rPS
+gjC
 jxH
 dHE
 axP
@@ -43840,7 +43817,7 @@ bQq
 dEH
 ncZ
 dKE
-rPS
+gjC
 qNL
 whn
 dDs
@@ -44034,7 +44011,7 @@ bQq
 xZA
 ldf
 dKE
-rPS
+gjC
 heh
 aeY
 cVE
@@ -44046,7 +44023,7 @@ hwp
 oen
 kxs
 kxs
-bPa
+kxs
 piH
 rbR
 lFZ
@@ -45775,7 +45752,7 @@ mDj
 cjj
 cjj
 cjj
-xGI
+cjj
 oAN
 oAN
 oAN
