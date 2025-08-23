@@ -1282,6 +1282,9 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/camera/network/civilian{
+	dir = 4
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "bcK" = (
@@ -2294,7 +2297,9 @@
 /area/crew_quarters/bar)
 "bZe" = (
 /obj/effect/floor_decal/spline/fancy/wood,
-/obj/structure/flora/pottedplant/orientaltree,
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "bZn" = (
@@ -3882,7 +3887,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "dtD" = (
-/obj/structure/flora/pottedplant/orientaltree,
 /obj/item/radio/intercom{
 	pixel_y = -24
 	},
@@ -5635,6 +5639,10 @@
 /obj/structure/window/basic{
 	dir = 1
 	},
+/obj/structure/flora/pottedplant/hedge{
+	anchored = 1;
+	can_be_unanchored = 1
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "eYL" = (
@@ -6853,8 +6861,13 @@
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_gas)
 "gaJ" = (
-/obj/structure/sign/deck/fourth,
-/turf/simulated/wall/prepainted/civilian,
+/obj/structure/bed/chair/sofa/left{
+	dir = 1
+	},
+/obj/machinery/status_display{
+	pixel_x = -32
+	},
+/turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "gbi" = (
 /obj/machinery/light{
@@ -7325,7 +7338,6 @@
 /turf/simulated/floor/plating,
 /area/engineering/substation/deck4aft)
 "gzp" = (
-/obj/effect/floor_decal/spline/fancy/wood,
 /obj/structure/bed/chair/comfy/blue{
 	dir = 8
 	},
@@ -9330,8 +9342,8 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4fwdmaint)
 "ioW" = (
-/obj/machinery/camera/network/civilian,
-/turf/simulated/floor/wood,
+/obj/structure/flora/pottedplant/orientaltree,
+/turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "ipg" = (
 /obj/machinery/light,
@@ -9370,6 +9382,10 @@
 	},
 /obj/structure/window/basic{
 	dir = 1
+	},
+/obj/structure/flora/pottedplant/hedge{
+	anchored = 1;
+	can_be_unanchored = 1
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
@@ -9429,6 +9445,13 @@
 /obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/plating,
 /area/engineering/substation/deck4amidships)
+"itI" = (
+/obj/machinery/computer/security/telescreen{
+	pixel_y = 32
+	},
+/obj/structure/table/marble,
+/turf/simulated/floor/carpet/bcarpet,
+/area/crew_quarters/bar)
 "iuB" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 6
@@ -12067,12 +12090,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/engineering/break_room/lower)
 "kTM" = (
-/obj/effect/floor_decal/spline/fancy/wood,
-/obj/structure/bed/chair/comfy/blue{
-	dir = 4
+/obj/machinery/media/jukebox{
+	emagged = 1
 	},
-/turf/simulated/floor/carpet/bcarpet,
-/area/crew_quarters/bar)
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d4fwdmaint)
 "kVa" = (
 /obj/machinery/computer/telecomms/monitor,
 /turf/simulated/floor/tiled/steel,
@@ -12107,6 +12129,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_y = -31
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4starboardamidhall)
@@ -13681,8 +13706,10 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/hallway/d4starboardhall)
 "moi" = (
-/obj/item/toy/plushie/nymph,
-/turf/simulated/floor/plating,
+/obj/structure/bed/chair/comfy/blue{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "moo" = (
 /obj/structure/sign/electricshock,
@@ -14725,9 +14752,6 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/navgold/border,
-/obj/structure/extinguisher_cabinet{
-	pixel_y = -31
-	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -15890,6 +15914,12 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4porthall)
 "ooH" = (
@@ -16155,6 +16185,9 @@
 	},
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
+	},
+/obj/structure/sign/deck/fourth{
+	pixel_y = 32
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
@@ -17509,13 +17542,9 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4fwdmaint)
 "pWV" = (
-/obj/effect/floor_decal/spline/fancy/wood,
-/obj/structure/table/marble,
-/obj/machinery/computer/security/telescreen{
-	pixel_y = 32
-	},
-/turf/simulated/floor/carpet/bcarpet,
-/area/crew_quarters/bar)
+/obj/item/toy/plushie/nymph,
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d4fwdmaint)
 "pXf" = (
 /obj/landmark/spawnpoint/job/bartender,
 /obj/effect/floor_decal/corner_oldtile/white/diagonal,
@@ -18914,11 +18943,8 @@
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "rtv" = (
-/obj/machinery/media/jukebox{
-	emagged = 1
-	},
-/turf/simulated/floor/plating,
-/area/crew_quarters/bar)
+/turf/simulated/wall/prepainted,
+/area/endeavour/hallway/d4fwdmaint)
 "rtE" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -19651,6 +19677,10 @@
 /obj/machinery/camera/network/civilian{
 	dir = 4
 	},
+/obj/structure/flora/pottedplant/hedge{
+	anchored = 1;
+	can_be_unanchored = 1
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "sjo" = (
@@ -20089,24 +20119,11 @@
 /turf/simulated/floor/reinforced/airmix,
 /area/engineering/atmos)
 "sMa" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 4
+/obj/structure/railing{
+	dir = 8
 	},
-/obj/effect/floor_decal/corner/navblue/border{
-	dir = 4
-	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
-	alpha = 255;
-	dir = 5
-	},
-/obj/effect/floor_decal/corner/navblue/bordercorner2{
-	dir = 5
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/steel_ridged,
-/area/endeavour/hallway/d4porthall)
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d4fwdmaint)
 "sMs" = (
 /mob/living/simple_mob/animal/passive/penguin/emperor{
 	desc = "There's a tag on this pengiun that says Skipper. You're not even sure where the chef found them.";
@@ -21031,6 +21048,9 @@
 /mob/living/simple_mob/animal/passive/bird/ringneck_dove{
 	desc = "The bartenders newest pet on the station. They seem like they want to help you out.";
 	name = "Brewster"
+	},
+/obj/machinery/status_display{
+	pixel_y = 30
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
@@ -22402,6 +22422,7 @@
 /obj/machinery/camera/network/civilian{
 	dir = 1
 	},
+/obj/structure/flora/pottedplant/orientaltree,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "uSv" = (
@@ -24267,12 +24288,6 @@
 	},
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 4
-	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
-	dir = 6
-	},
-/obj/effect/floor_decal/corner/navblue/bordercorner2{
-	dir = 6
 	},
 /obj/machinery/light{
 	dir = 4
@@ -43175,7 +43190,7 @@ dTA
 xPV
 gya
 pSM
-sMa
+iuY
 ooA
 wwu
 kZE
@@ -44152,7 +44167,7 @@ swV
 fbo
 paR
 dhN
-lAf
+gaJ
 sjg
 fOA
 dhN
@@ -44533,7 +44548,7 @@ eRS
 fzO
 fzO
 fzO
-ioW
+swV
 pyZ
 swV
 swV
@@ -44724,8 +44739,8 @@ jiQ
 bPr
 htc
 eRS
-moi
 iFT
+moi
 bZe
 swV
 vbj
@@ -44918,9 +44933,9 @@ pdB
 ekG
 hmV
 eRS
-rtv
 iFT
-kTM
+itI
+aoU
 piY
 dkJ
 uhX
@@ -45113,8 +45128,8 @@ nmx
 mTR
 eRS
 iFT
-iFT
-pWV
+gzp
+aoU
 dCE
 dlu
 qxt
@@ -45307,8 +45322,8 @@ ydy
 tqM
 eRS
 iFT
-iFT
-gzp
+ioW
+aoU
 dCE
 rqK
 nmp
@@ -45519,8 +45534,8 @@ xBv
 mGg
 cuh
 nmv
-ggO
-kaY
+adG
+nmL
 nmL
 qqz
 dyD
@@ -46470,7 +46485,7 @@ eRS
 eRS
 eRS
 iFT
-gaJ
+iFT
 oAA
 bZc
 nBI
@@ -46661,7 +46676,7 @@ kaY
 iCe
 iCe
 owo
-kaY
+goj
 wKD
 wYj
 dgk
@@ -46855,7 +46870,7 @@ kaY
 mcc
 fgE
 owo
-kaY
+sMa
 wKD
 wKD
 swz
@@ -47239,9 +47254,9 @@ xRj
 owo
 owo
 owo
-kaY
-kaY
-kaY
+rtv
+rtv
+rtv
 owo
 kaY
 iJZ
@@ -47433,8 +47448,8 @@ xRj
 xRj
 suy
 owo
-iCe
-goj
+kTM
+pWV
 owo
 owo
 mcc
