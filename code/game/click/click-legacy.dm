@@ -1,33 +1,3 @@
-/**
- * Backend clickcode.
- *
- * * Things in this file are **not** part of the clickchain, instead being the machinery that initiates the clickchain.
- */
-
-/*
-	Before anything else, defer these calls to a per-mobtype handler.  This allows us to
-	remove istype() spaghetti code, but requires the addition of other handler procs to simplify it.
-
-	Alternately, you could hardcode every mob's variation in a flat ClickOn() proc; however,
-	that's a lot of code duplication and is hard to maintain.
-
-	Note that this proc can be overridden, and is in the case of screen objects.
-*/
-
-/atom/DblClick(var/location, var/control, var/params)
-	if(!(atom_flags & ATOM_INITIALIZED))
-		to_chat(usr, SPAN_WARNING("[type] initialization failure. Click dropped. Contact a coder or admin."))
-		return
-	usr.DblClickOn(src, params)
-
-/atom/MouseWheel(delta_x,delta_y,location,control,params)
-	usr.MouseWheelOn(src, delta_x, delta_y, params)
-
-/mob/proc/legacy_click_on(atom/target, location, control, params)
-	if(client.buildmode)
-		build_click(src, client.buildmode, params, target)
-		return TRUE
-	return FALSE
 
 #warn obliterate
 
@@ -70,10 +40,6 @@
 	if(next_move <= world.time)
 		return 1
 	return 0
-
-// Default behavior: ignore double clicks, the second click that makes the doubleclick call already calls for a normal click
-/mob/proc/DblClickOn(var/atom/A, var/params)
-	return
 
 /*
 	Translates into attack_hand, etc.
@@ -198,37 +164,7 @@
 	else
 		to_chat(src, "<span class='warning'>You're out of energy!  You need food!</span>")
 
-/// Simple helper to face what you clicked on, in case it should be needed in more than one place.
-/mob/proc/face_atom(var/atom/atom_to_face)
-	if(buckled || stat != CONSCIOUS || !atom_to_face || !x || !y || !atom_to_face.x || !atom_to_face.y)
-		return
-	if(!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
-		return
-
-	var/dx = atom_to_face.x - x
-	var/dy = atom_to_face.y - y
-	if(!dx && !dy) // Wall items are graphically shifted but on the floor
-		if(atom_to_face.pixel_y > 16)
-			setDir(NORTH)
-		else if(atom_to_face.pixel_y < -16)
-			setDir(SOUTH)
-		else if(atom_to_face.pixel_x > 16)
-			setDir(EAST)
-		else if(atom_to_face.pixel_x < -16)
-			setDir(WEST)
-		return
-
-	if(abs(dx) < abs(dy))
-		if(dy > 0)
-			setDir(NORTH)
-		else
-			setDir(SOUTH)
-	else
-		if(dx > 0)
-			setDir(EAST)
-		else
-			setDir(WEST)
-
+#warn obliterate
 /// MouseWheelOn
 /mob/proc/MouseWheelOn(atom/A, delta_x, delta_y, params)
 	SEND_SIGNAL(src, COMSIG_MOUSE_SCROLL_ON, A, delta_x, delta_y, params)

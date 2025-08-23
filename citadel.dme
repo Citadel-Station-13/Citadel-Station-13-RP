@@ -1137,6 +1137,8 @@
 #include "code\game\click\click-legacy.dm"
 #include "code\game\click\click-living.dm"
 #include "code\game\click\click-new_player.dm"
+#include "code\game\click\click-silicon-ai.dm"
+#include "code\game\click\click-silicon.dm"
 #include "code\game\click\click.dm"
 #include "code\game\click\cyborg.dm"
 #include "code\game\click\drag_drop.dm"

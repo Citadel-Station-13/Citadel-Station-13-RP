@@ -1,13 +1,44 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
+/**
+ * Master click handling entrypoint file for both actual clicks and
+ * remote control (direct click interaction chain invocation) clicks.
+ *
+ * A 'natural' clickchain is approximately as follows;
+ * * Click/DblClick/MouseWheel/... (native procs) called on the client. Security handling and misc hooks happen here.
+ * * Click/DblClick/MouseWheel/... (native procs) called on the clicked atom. Overrides are allowed but discouraged here.
+ * * click_on/double_click_on/... called on the mob. The majority of sanity checks, bindings, etc, are handled here.
+ * * on_x_click called on the atom if it's a special modifier click. Various behaviors are here.
+ * --- Above cannot be touched by remote control ---
+ * * If not, the click is passsed off to `click_interaction_chain()` for standard handling of what you'd
+ *   usually consider 'interacting' with something.
+ *
+ * How remote control of mobs (will) work is that clicks are sent to click_interaction_chain().
+ */
+
+//* Native /atom Procs *//
+
 /atom/Click(location, control, params)
 	if(!(atom_flags & ATOM_INITIALIZED))
 		to_chat(usr, SPAN_WARNING("[src] ([type]) not yet initialized; please contact a coder with this message."))
 		return
 	usr.click_on(src, location, control, params)
 
-// TODO: other click procs
+/atom/DblClick(location, control, params)
+	if(!(atom_flags & ATOM_INITIALIZED))
+		to_chat(usr, SPAN_WARNING("[src] ([type]) not yet initialized; please contact a coder with this message."))
+		return
+	usr.double_click_on(src, location, control, params)
+
+/atom/MouseWheel(delta_x, delta_y, location, control, params)
+	if(!(atom_flags & ATOM_INITIALIZED))
+		return
+	usr.mouse_wheel_on(src, delta_x, delta_y, location, control, params)
+
+// TODO: other click procs should be here too
+
+//* Single Click *//
 
 /**
  * Entrypoint of clickchain processing.
@@ -113,6 +144,14 @@
 		//! end
 		return
 
+/**
+ * pretty much just for hooks that happen before standard handling and I'm too lazy to rewrite.
+ */
+/mob/proc/legacy_click_on(atom/target, location, control, params)
+	if(client.buildmode)
+		build_click(src, client.buildmode, params, target)
+		return TRUE
+	return FALSE
 
 //* Special modifiers; these are often routed per-mob. *//
 
@@ -164,4 +203,34 @@
  * @return TRUE to break regular click handling logic.
  */
 /mob/proc/alt_click_on(atom/target, location, control, list/params)
+	return FALSE
+
+//* Double Click *//
+
+/**
+ * A click entrypoint proc.
+ * * This should never be called other than as a **verb** executed by our own client.
+ */
+/mob/proc/double_click_on(atom/target, location, control, raw_params)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	// make sure no one's doing something insane
+	if(usr != src)
+		CRASH("non-src usr double_click_on in mob. someone is abusing the proc and likely incorrectly so.")
+	// Throttle self outbound clicks to once per tick.
+	if(world.time < next_click)
+		return FALSE
+	next_click = world.time + world.tick_lag
+	return FALSE
+
+//* Mouse Wheel *//
+
+/**
+ * A click entrypoint proc.
+ * * This should never be called other than as a **verb** executed by our own client.
+ */
+/mob/proc/mouse_wheel_on(atom/target, delta_x, delta_y location, control, raw_params)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	// make sure no one's doing something insane
+	if(usr != src)
+		CRASH("non-src usr mouse_wheel_on in mob. someone is abusing the proc and likely incorrectly so.")
 	return FALSE
