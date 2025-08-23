@@ -11239,13 +11239,6 @@
 /turf/simulated/floor/tiled,
 /area/security/hallway)
 "iqW" = (
-/obj/machinery/button/remote/blast_door{
-	id = "VaultAc";
-	name = "Vault Blast Door";
-	req_access = list(53);
-	req_one_access = list(53);
-	pixel_x = -30
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
@@ -13440,7 +13433,18 @@
 	id = "vault";
 	name = "Vault Door Lockdown";
 	specialfunctions = 4;
-	pixel_x = 30
+	pixel_x = 30;
+	req_access = list(53);
+	req_one_access = list(53);
+	pixel_y = 6
+	},
+/obj/machinery/button/remote/blast_door{
+	id = "VaultAc";
+	name = "Vault Blast Door";
+	req_access = list(53);
+	req_one_access = list(53);
+	pixel_x = 30;
+	pixel_y = -6
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
@@ -17776,6 +17780,23 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/button/remote/blast_door{
+	id = "VaultAc";
+	name = "Vault Blast Door";
+	req_access = list(53);
+	req_one_access = list(53);
+	pixel_x = -30;
+	pixel_y = -6
+	},
+/obj/machinery/button/remote/airlock{
+	id = "vault";
+	name = "Vault Door Lockdown";
+	specialfunctions = 4;
+	pixel_x = -30;
+	pixel_y = 6;
+	req_access = list(53);
+	req_one_access = list(53)
+	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d3fwdhall)
 "nBK" = (
@@ -21244,16 +21265,6 @@
 /obj/effect/mist,
 /turf/simulated/floor/water/deep/pool,
 /area/crew_quarters/pool)
-"qeX" = (
-/obj/machinery/button/remote/blast_door{
-	id = "VaultAc";
-	name = "Vault Blast Door";
-	req_access = list(53);
-	req_one_access = list(53);
-	pixel_x = 30
-	},
-/turf/simulated/floor/tiled/dark,
-/area/security/nuke_storage)
 "qfT" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
@@ -26908,12 +26919,6 @@
 	},
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 8
-	},
-/obj/machinery/button/remote/airlock{
-	id = "vault";
-	name = "Vault Door Lockdown";
-	specialfunctions = 4;
-	pixel_x = -30
 	},
 /obj/effect/floor_decal/borderfloorblack/corner2{
 	alpha = 255;
@@ -56440,7 +56445,7 @@ twA
 ncY
 riL
 chd
-qeX
+ruY
 mYx
 kbM
 vxL
