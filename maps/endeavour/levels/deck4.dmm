@@ -5643,6 +5643,10 @@
 /obj/structure/window/basic{
 	dir = 1
 	},
+/obj/structure/flora/pottedplant/hedge{
+	anchored = 1;
+	can_be_unanchored = 1
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "eYL" = (
@@ -9385,6 +9389,10 @@
 	},
 /obj/structure/window/basic{
 	dir = 1
+	},
+/obj/structure/flora/pottedplant/hedge{
+	anchored = 1;
+	can_be_unanchored = 1
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
@@ -19678,6 +19686,10 @@
 	},
 /obj/machinery/camera/network/civilian{
 	dir = 4
+	},
+/obj/structure/flora/pottedplant/hedge{
+	anchored = 1;
+	can_be_unanchored = 1
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)

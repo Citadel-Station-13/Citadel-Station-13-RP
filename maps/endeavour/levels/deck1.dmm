@@ -9586,6 +9586,10 @@
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/endeavour/exploration/hallway_aft)
+"hhq" = (
+/obj/machinery/vending/cafe,
+/turf/simulated/floor/wood,
+/area/crew_quarters/coffee_shop)
 "hhr" = (
 /obj/machinery/floodlight,
 /turf/simulated/floor/plating,
@@ -10631,7 +10635,6 @@
 /obj/structure/poster{
 	pixel_y = 32
 	},
-/obj/machinery/vending/cafe,
 /turf/simulated/floor/lino,
 /area/crew_quarters/coffee_shop)
 "icG" = (
@@ -52145,7 +52148,7 @@ xSC
 gOB
 gOB
 ayy
-wYg
+hhq
 uaP
 uaP
 hJE
