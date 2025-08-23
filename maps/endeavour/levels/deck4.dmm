@@ -333,13 +333,12 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
-/obj/structure/cable/green{
-	dir = 1;
-	icon_state = "2-4"
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 8;
 	icon_state = "pipe-c"
+	},
+/obj/structure/cable/green{
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
@@ -727,8 +726,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
-	dir = 1;
-	icon_state = "2-4"
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d4starboardforhall)
@@ -1269,13 +1267,12 @@
 	name = "Powernet Sensor - Deck 3 Fore Subgrid";
 	name_tag = "Deck 3 Fore Subgrid"
 	},
-/obj/structure/cable/green{
-	dir = 1;
-	icon_state = "2-4"
-	},
 /obj/structure/cable/green,
 /obj/structure/cable/green{
 	icon_state = "1-4"
+	},
+/obj/structure/cable/green{
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating,
 /area/engineering/substation/deck4forward)
@@ -1513,9 +1510,6 @@
 /turf/simulated/wall/prepainted/civilian,
 /area/crew_quarters/bar)
 "bny" = (
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 8
-	},
 /obj/effect/floor_decal/corner_oldtile/white/diagonal,
 /obj/machinery/appliance/mixer/candy,
 /turf/simulated/floor/tiled/dark,
@@ -1583,7 +1577,9 @@
 /area/engineering/atmos)
 "boY" = (
 /obj/machinery/light,
-/obj/structure/statue/gold/ce,
+/obj/structure/statue/gold/ce{
+	anchored = 1
+	},
 /turf/simulated/floor/carpet/oracarpet,
 /area/endeavour/hallway/d4starboardhall)
 "bps" = (
@@ -5951,8 +5947,7 @@
 	dir = 4
 	},
 /obj/structure/cable/green{
-	dir = 1;
-	icon_state = "2-4"
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4porthall)
@@ -7778,11 +7773,10 @@
 	dir = 8
 	},
 /obj/structure/cable/green{
-	dir = 1;
-	icon_state = "2-4"
+	icon_state = "2-8"
 	},
 /obj/structure/cable/green{
-	icon_state = "2-8"
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4porthall)
@@ -9254,13 +9248,12 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4starboardhall)
 "imB" = (
-/obj/structure/cable/green{
-	dir = 1;
-	icon_state = "2-4"
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 8;
 	icon_state = "pipe-c"
+	},
+/obj/structure/cable/green{
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled,
 /area/hydroponics)
@@ -10059,10 +10052,6 @@
 	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable/green{
-	dir = 8;
-	icon_state = "2-4"
-	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 5
 	},
@@ -10070,6 +10059,9 @@
 	dir = 6
 	},
 /obj/machinery/air_alarm/east_mount,
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/barrestroom)
 "jao" = (
@@ -13048,8 +13040,7 @@
 "lOK" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
-	dir = 1;
-	icon_state = "2-4"
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4fwdmaint)
@@ -17837,11 +17828,10 @@
 	},
 /obj/structure/table/reinforced,
 /obj/structure/cable/green{
-	dir = 1;
-	icon_state = "2-4"
+	icon_state = "4-8"
 	},
 /obj/structure/cable/green{
-	icon_state = "4-8"
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engineering_monitoring)
@@ -22666,8 +22656,7 @@
 	dir = 10
 	},
 /obj/structure/cable/green{
-	dir = 8;
-	icon_state = "2-4"
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)

@@ -360,6 +360,8 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
+/obj/structure/table/rack/shelf/steel,
+/obj/item/storage/briefcase/inflatable,
 /turf/simulated/floor/plating,
 /area/maintenance/fpmaint2)
 "apg" = (
@@ -3136,8 +3138,10 @@
 /turf/simulated/floor/plating,
 /area/rnd/research/researchdivision)
 "cja" = (
-/obj/structure/reagent_dispensers/watertank,
-/obj/effect/floor_decal/rust,
+/obj/structure/closet/crate,
+/obj/item/stack/material/phoron{
+	amount = 10
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/fpmaint2)
 "cje" = (
@@ -5618,13 +5622,6 @@
 /obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
-"dOE" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/machinery/portable_atmospherics/powered/scrubber,
-/turf/simulated/floor/plating,
-/area/maintenance/fpmaint2)
 "dPs" = (
 /obj/structure/reagent_dispensers/watertank,
 /obj/item/reagent_containers/glass/bucket,
@@ -6881,10 +6878,7 @@
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/maintenance/research/port)
 "eKM" = (
-/obj/machinery/light/small{
-	dir = 4
-	},
-/obj/machinery/floodlight,
+/obj/machinery/portable_atmospherics/powered/scrubber,
 /turf/simulated/floor/plating,
 /area/maintenance/fpmaint2)
 "eLb" = (
@@ -18201,8 +18195,8 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "naZ" = (
-/obj/item/clothing/head/hardhat/red,
 /obj/structure/table/rack,
+/obj/item/clothing/head/hardhat/red,
 /turf/simulated/floor/plating,
 /area/maintenance/fpmaint2)
 "nbe" = (
@@ -21162,11 +21156,9 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2afthall)
 "pmG" = (
-/obj/structure/railing{
-	dir = 8
-	},
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
-/area/maintenance/fpmaint2)
+/area/endeavour/hallway/reservehanger)
 "pmN" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -22151,11 +22143,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
-"pPZ" = (
-/obj/machinery/portable_atmospherics/powered/scrubber,
-/obj/machinery/fire_alarm/east_mount,
-/turf/simulated/floor/plating,
-/area/maintenance/fpmaint2)
 "pQr" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 10
@@ -30610,8 +30597,10 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical_science)
 "wcV" = (
-/obj/item/storage/briefcase/inflatable,
-/obj/structure/table/rack/shelf/steel,
+/obj/machinery/fire_alarm/west_mount,
+/obj/machinery/power/port_gen/pacman{
+	anchored = 1
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/fpmaint2)
 "wdf" = (
@@ -61884,7 +61873,7 @@ dAw
 usB
 ces
 ces
-ces
+pmG
 ces
 ces
 ces
@@ -62080,10 +62069,10 @@ eKM
 qjz
 qjz
 qjz
-qjz
 wcV
-wsg
-pPZ
+qjz
+cja
+egx
 ces
 ces
 lIp
@@ -62270,10 +62259,10 @@ lYn
 tKs
 cVq
 nSx
+wsg
+kNU
 qjz
-qjz
-dOE
-pmG
+dxX
 qjz
 qjz
 egx
@@ -62464,10 +62453,10 @@ jSU
 mxS
 nNS
 kKv
-qjz
-qjz
-pXE
-naZ
+egx
+egx
+egx
+egx
 aoi
 riM
 egx
@@ -62658,10 +62647,10 @@ tEF
 vhp
 gzF
 coa
+eKM
 qjz
-qjz
-qjz
-cja
+pXE
+egx
 egx
 egx
 egx
@@ -63048,7 +63037,7 @@ reX
 bzV
 qjz
 qjz
-qjz
+naZ
 xYz
 egx
 lIp
