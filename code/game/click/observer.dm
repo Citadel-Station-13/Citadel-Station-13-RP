@@ -29,9 +29,7 @@
 		to_chat(src, "<span class='notice'>You will no longer examine things you click on.</span>")
 
 /mob/observer/dead/ClickOn(var/atom/A, var/params)
-	if(client.buildmode)
-		build_click(src, client.buildmode, params, A)
-		return
+	#warn obliterate
 	var/list/modifiers = params2list(params)
 	if(modifiers["shift"] && modifiers["middle"])
 		ShiftMiddleClickOn(A)

@@ -142,10 +142,3 @@
 
 	setClickCooldownLegacy(get_attack_speed_legacy())
 	A.attack_generic(src,rand(5,6),"bitten")
-
-/*
-	New Players:
-	Have no reason to click on anything at all.
-*/
-/mob/new_player/ClickOn()
-	return

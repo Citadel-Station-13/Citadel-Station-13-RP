@@ -8,41 +8,12 @@
 
 // todo: unify with normal click procs
 /mob/living/silicon/robot/ClickOn(var/atom/A, var/params)
-	if(world.time <= next_click)
-		return
-	next_click = world.time + 1
-
-	if(client.buildmode) // comes after object.Click to allow buildmode gui objects to be clicked
-		build_click(src, client.buildmode, params, A)
-		return
-
-	var/list/unpacked_params = params2list(params)
-	if(unpacked_params["shift"] && unpacked_params["ctrl"])
-		CtrlShiftClickOn(A)
-		return
-	if(unpacked_params["shift"] && unpacked_params["middle"])
-		ShiftMiddleClickOn(A)
-		return
-	if(unpacked_params["middle"])
-		MiddleClickOn(A)
-		return
-	if(unpacked_params["shift"])
-		ShiftClickOn(A)
-		return
-	if(unpacked_params["alt"]) // alt and alt-gr (rightalt)
-		AltClickOn(A)
-		return
-	if(unpacked_params["ctrl"])
-		CtrlClickOn(A)
-		return
-
+#warn obliterate
 	if(!IS_CONSCIOUS(src) || !CHECK_MOBILITY(src, MOBILITY_CAN_USE))
 		return
 
 	if(!canClick())
 		return
-
-	face_atom(A) // change direction to face what you clicked on
 
 	if(aiCamera.in_camera_mode)
 		aiCamera.camera_mode_off()
@@ -51,13 +22,6 @@
 		else
 			to_chat(src, "<span class='userdanger'>Your camera isn't functional.</span>")
 		return
-
-	/*
-	cyborg restrained() currently does nothing
-	if(restrained())
-		RestrainedClickOn(A)
-		return
-	*/
 
 	//? Grab click semantics
 	var/obj/item/I = get_active_held_item()
@@ -69,36 +33,6 @@
 			return
 		A.add_hiddenprint(src)
 		A.attack_robot(src)
-		return
-
-	//? Handle special cases
-	if(I == A)
-		// attack_self
-		I.attack_self(src)
-		// todo: refactor
-		trigger_aiming(TARGET_CAN_CLICK)
-		return
-
-	//? check if we can click from our current location
-	var/ranged_generics_allowed = loc?.AllowClick(src, A, I)
-
-	if(Reachability(A, null, I?.reach, I))
-		//? attempt melee attack chain
-		if(I)
-			I.melee_interaction_chain(A, src, CLICKCHAIN_HAS_PROXIMITY, unpacked_params)
-		else
-			melee_interaction_chain(A, CLICKCHAIN_HAS_PROXIMITY, unpacked_params)
-		// todo: refactor aiming
-		trigger_aiming(TARGET_CAN_CLICK)
-		return
-	else if(ranged_generics_allowed)
-		//? attempt ranged attack chain
-		if(I)
-			I.ranged_interaction_chain(A, src, NONE, unpacked_params)
-		else
-			ranged_interaction_chain(A, NONE, unpacked_params)
-		// todo: refactor aiming
-		trigger_aiming(TARGET_CAN_CLICK)
 		return
 
 //Middle click cycles through selected modules.
