@@ -258,6 +258,7 @@
 		return
 
 	if(QDELETED(src))
+		. |= CLICKCHAIN_DO_NOT_PROPAGATE
 		return
 
 	if(!affecting)
