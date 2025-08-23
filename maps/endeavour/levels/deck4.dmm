@@ -1467,10 +1467,13 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4starboardhall)
 "bkd" = (
-/obj/structure/cable/green,
-/obj/machinery/power/apc/south_mount,
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/lightorange/border,
+/obj/structure/table/standard,
+/obj/item/storage/box/donkpockets,
+/obj/item/storage/box/donkpockets{
+	pixel_y = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/engineering/break_room/lower)
 "bkM" = (
@@ -2192,6 +2195,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
+/obj/structure/bed/chair/comfy/orange,
 /turf/simulated/floor/carpet/patterened,
 /area/engineering/break_room/lower)
 "bVv" = (
@@ -6676,6 +6680,7 @@
 /area/crew_quarters/bar)
 "fTF" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
+/obj/machinery/air_alarm/north_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/eva)
 "fUv" = (
@@ -7768,11 +7773,11 @@
 /turf/simulated/floor/reinforced/n20,
 /area/engineering/atmos)
 "gTc" = (
-/obj/machinery/air_alarm/east_mount,
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 4
+/obj/machinery/smartfridge{
+	accepted_types = list(/obj/item);
+	desc = "A wall-mounted refrigerated storage unit. Should keep your food fresh until lunchtime."
 	},
-/turf/simulated/floor/carpet/patterened,
+/turf/simulated/floor/plating,
 /area/engineering/break_room/lower)
 "gTl" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -10400,19 +10405,8 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "jka" = (
-/obj/structure/cable/green{
-	icon_state = "2-4"
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/steel,
+/obj/effect/floor_decal/spline/fancy/wood,
+/turf/simulated/floor/carpet/patterened,
 /area/engineering/break_room/lower)
 "jkl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
@@ -12087,6 +12081,8 @@
 /obj/effect/floor_decal/corner/lightorange/border{
 	dir = 1
 	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/obj/machinery/air_alarm/north_mount,
 /turf/simulated/floor/tiled/steel,
 /area/engineering/break_room/lower)
 "kTM" = (
@@ -12716,6 +12712,13 @@
 /obj/machinery/atmospherics/pipe/simple/visible,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
+"lvU" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/obj/structure/flora/pottedplant/smelly,
+/turf/simulated/floor/carpet/patterened,
+/area/engineering/break_room/lower)
 "lwu" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -13079,11 +13082,11 @@
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
 /area/engineering/break_room/lower)
@@ -13628,8 +13631,9 @@
 	icon_state = "pipe-c"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/engineering/break_room/lower)
@@ -14935,7 +14939,6 @@
 /obj/effect/floor_decal/corner/lightorange/border{
 	dir = 5
 	},
-/obj/machinery/recharge_station,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4starboardhall)
 "nsO" = (
@@ -15092,15 +15095,17 @@
 /obj/machinery/space_heater,
 /turf/simulated/floor/plating,
 /area/endeavour/command/turrets)
+"nwJ" = (
+/turf/simulated/floor/carpet/patterened,
+/area/engineering/break_room/lower)
 "nwQ" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
 	},
-/obj/structure/table/standard,
 /obj/effect/floor_decal/corner/lightorange/border{
 	dir = 4
 	},
-/obj/machinery/microwave,
+/obj/machinery/vending/snack,
 /turf/simulated/floor/tiled/steel,
 /area/engineering/break_room/lower)
 "nyM" = (
@@ -16144,15 +16149,32 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/endeavour/hallway/d4fwdmaint)
 "oyv" = (
+/obj/item/coffee_cartridge{
+	pixel_y = 11;
+	pixel_x = 5
+	},
+/obj/item/coffee_cartridge/decaf{
+	pixel_y = -7;
+	pixel_x = 5
+	},
+/obj/item/reagent_containers/food/condiment/small/packet/sugar{
+	pixel_y = 5;
+	pixel_x = -4
+	},
+/obj/item/reagent_containers/food/condiment/small/packet/creamer{
+	pixel_y = -4;
+	pixel_x = -4
+	},
+/obj/item/coffee_cartridge{
+	pixel_y = 5;
+	pixel_x = 5
+	},
+/obj/item/coffee_cartridge/decaf{
+	pixel_y = -1;
+	pixel_x = 5
+	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 10
-	},
-/obj/structure/table/standard,
-/obj/machinery/camera/network/engineering{
-	dir = 1
-	},
-/obj/machinery/chemical_dispenser/catering/bar_soft{
-	dir = 1
 	},
 /obj/effect/floor_decal/corner/lightorange/border{
 	dir = 10
@@ -16162,6 +16184,11 @@
 	},
 /obj/effect/floor_decal/corner/lightorange/bordercorner2{
 	dir = 8
+	},
+/obj/structure/table/standard,
+/obj/machinery/fire_alarm/south_mount,
+/obj/machinery/camera/network/engineering{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
 /area/engineering/break_room/lower)
@@ -18637,15 +18664,15 @@
 "rcZ" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/lightorange/border,
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 4
-	},
-/obj/machinery/fire_alarm/south_mount,
 /obj/effect/floor_decal/borderfloorblack/corner2{
 	dir = 9
 	},
 /obj/effect/floor_decal/corner/lightorange/bordercorner2{
 	dir = 9
+	},
+/obj/machinery/power/apc/south_mount,
+/obj/structure/cable/green{
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/engineering/break_room/lower)
@@ -19758,10 +19785,10 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d4starboardhall)
 "sni" = (
+/obj/effect/floor_decal/spline/fancy/wood,
 /obj/structure/bed/chair/comfy/orange{
 	dir = 1
 	},
-/obj/effect/floor_decal/spline/fancy/wood,
 /turf/simulated/floor/carpet/patterened,
 /area/engineering/break_room/lower)
 "snF" = (
@@ -20533,6 +20560,12 @@
 "tfU" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
+	},
+/obj/structure/bed/chair/comfy/orange{
+	dir = 1
+	},
+/obj/structure/poster/nanotrasen{
+	pixel_x = -32
 	},
 /turf/simulated/floor/carpet/patterened,
 /area/engineering/break_room/lower)
@@ -21891,14 +21924,13 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 5
 	},
-/obj/structure/table/standard,
 /obj/effect/floor_decal/corner/lightorange/border{
 	dir = 5
 	},
-/obj/item/storage/box/donkpockets,
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/machinery/vending/fitness,
 /turf/simulated/floor/tiled/steel,
 /area/engineering/break_room/lower)
 "utR" = (
@@ -25912,7 +25944,7 @@
 /turf/simulated/floor/reinforced,
 /area/maintenance/security/lower)
 "xZN" = (
-/obj/machinery/air_alarm/west_mount,
+/obj/machinery/recharge_station,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/eva)
 "yaf" = (
@@ -25988,8 +26020,8 @@
 "yds" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/structure/table/standard,
-/obj/item/storage/box/cups,
 /obj/effect/floor_decal/corner/lightorange/border,
+/obj/machinery/coffeemaker,
 /turf/simulated/floor/tiled/steel,
 /area/engineering/break_room/lower)
 "ydy" = (
@@ -26100,6 +26132,7 @@
 /obj/structure/table/standard,
 /obj/effect/floor_decal/corner/lightorange/border,
 /obj/machinery/light,
+/obj/machinery/microwave,
 /turf/simulated/floor/tiled/steel,
 /area/engineering/break_room/lower)
 "yiq" = (
@@ -26145,6 +26178,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/structure/table/standard,
 /turf/simulated/floor/carpet/patterened,
 /area/engineering/break_room/lower)
 "yki" = (
@@ -43160,9 +43194,9 @@ xRj
 xRj
 xRj
 iGa
-wPh
-mLk
-sni
+nwJ
+nwJ
+jka
 kKb
 yhV
 gXP
@@ -43354,10 +43388,10 @@ xRj
 xRj
 xRj
 iGa
+lvU
 nJT
-gTc
 qQo
-jka
+kKb
 bkd
 gXP
 sYk
@@ -43549,7 +43583,7 @@ xRj
 cuI
 lRH
 lRH
-lRH
+gTc
 caq
 scy
 rcZ

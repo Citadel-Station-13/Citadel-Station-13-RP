@@ -5880,7 +5880,7 @@
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
 "epb" = (
-/obj/machinery/vending/coffee,
+/obj/machinery/vending/cigarette,
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/cargo_shelter_dock)
 "epe" = (
@@ -6524,11 +6524,9 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/recreation_area)
 "eMM" = (
+/obj/effect/floor_decal/spline/fancy/wood,
 /obj/structure/bed/chair/sofa/black{
 	dir = 1
-	},
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/endeavour/surfacebase/mining_main/break_room)
@@ -7151,8 +7149,29 @@
 /area/endeavour/hallway/d3fwdmaint)
 "fiR" = (
 /obj/structure/table/woodentable,
-/obj/machinery/chemical_dispenser/catering/bar_soft{
-	dir = 8
+/obj/item/coffee_cartridge{
+	pixel_y = 11;
+	pixel_x = 5
+	},
+/obj/item/coffee_cartridge/decaf{
+	pixel_y = -7;
+	pixel_x = 5
+	},
+/obj/item/reagent_containers/food/condiment/small/packet/sugar{
+	pixel_y = 5;
+	pixel_x = -4
+	},
+/obj/item/reagent_containers/food/condiment/small/packet/creamer{
+	pixel_y = -4;
+	pixel_x = -4
+	},
+/obj/item/coffee_cartridge{
+	pixel_y = 5;
+	pixel_x = 5
+	},
+/obj/item/coffee_cartridge/decaf{
+	pixel_y = -1;
+	pixel_x = 5
 	},
 /obj/machinery/light{
 	dir = 4
@@ -8224,8 +8243,8 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
-/obj/structure/bed/chair/sofa/black/corner{
-	dir = 1
+/obj/structure/bed/chair/sofa/black{
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/endeavour/surfacebase/mining_main/break_room)
@@ -11195,9 +11214,6 @@
 /area/hydroponics/garden)
 "ipU" = (
 /obj/structure/table/gamblingtable,
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 4
-	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -12157,16 +12173,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
 "jaW" = (
-/obj/structure/cable/green{
-	icon_state = "2-4"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
-	},
-/obj/structure/table/gamblingtable,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 1
-	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -13204,6 +13210,9 @@
 /area/space)
 "jRg" = (
 /obj/effect/floor_decal/spline/fancy/wood,
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
 /turf/simulated/floor/wood,
 /area/endeavour/surfacebase/mining_main/break_room)
 "jSG" = (
@@ -13812,7 +13821,12 @@
 /area/endeavour/hallway/d3fwdhall)
 "knk" = (
 /obj/structure/table/woodentable,
-/obj/item/storage/box/glasses/meta,
+/obj/machinery/coffeemaker{
+	pixel_y = 7
+	},
+/obj/structure/poster/nanotrasen{
+	pixel_x = 32
+	},
 /turf/simulated/floor/wood,
 /area/security/breakroom)
 "kno" = (
@@ -14287,15 +14301,15 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c"
 	},
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
 	},
 /turf/simulated/floor/wood,
 /area/endeavour/surfacebase/mining_main/break_room)
@@ -15044,13 +15058,11 @@
 /turf/simulated/floor,
 /area/maintenance/security/port)
 "luu" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
+/obj/machinery/door/airlock/mining,
+/obj/map_helper/access_helper/airlock/station/supply/mining,
 /obj/machinery/door/firedoor,
-/turf/simulated/floor/tiled/monotile,
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/plating,
 /area/endeavour/surfacebase/mining_main/break_room)
 "lux" = (
 /obj/structure/cable/green{
@@ -18938,16 +18950,7 @@
 /turf/simulated/floor/reinforced,
 /area/security/hangar)
 "opq" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/bed/chair/sofa/black/right{
-	dir = 1
-	},
+/obj/structure/table/gamblingtable,
 /turf/simulated/floor/wood,
 /area/endeavour/surfacebase/mining_main/break_room)
 "opM" = (
@@ -22211,17 +22214,12 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
 "qMz" = (
-/obj/machinery/light_switch{
-	pixel_y = 24
-	},
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
 /obj/structure/table/wooden_reinforced,
-/obj/machinery/chemical_dispenser/catering/bar_soft,
-/obj/item/storage/box/glasses/square{
-	pixel_x = -25;
-	pixel_y = 6
+/obj/machinery/coffeemaker{
+	pixel_y = 7
 	},
 /turf/simulated/floor/wood,
 /area/endeavour/surfacebase/mining_main/break_room)
@@ -22411,6 +22409,9 @@
 	dir = 4;
 	pixel_x = -24;
 	pixel_y = 2
+	},
+/obj/structure/bed/chair/sofa/black/corner{
+	dir = 1
 	},
 /turf/simulated/floor/wood,
 /area/endeavour/surfacebase/mining_main/break_room)
@@ -25364,9 +25365,12 @@
 	dir = 1
 	},
 /obj/structure/table/wooden_reinforced,
-/obj/machinery/chemical_dispenser/catering/bar_coffee,
 /obj/machinery/air_alarm{
 	pixel_y = 22
+	},
+/obj/item/storage/box/donkpockets,
+/obj/item/storage/box/donkpockets{
+	pixel_y = 4
 	},
 /turf/simulated/floor/wood,
 /area/endeavour/surfacebase/mining_main/break_room)
@@ -25850,13 +25854,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/bed/chair/comfy{
-	dir = 8
+	dir = 6
 	},
 /turf/simulated/floor/wood,
 /area/endeavour/surfacebase/mining_main/break_room)
@@ -27616,6 +27614,9 @@
 	dir = 4
 	},
 /obj/machinery/fire_alarm/east_mount,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 1
+	},
 /turf/simulated/floor/wood,
 /area/endeavour/surfacebase/mining_main/break_room)
 "uHj" = (
@@ -27814,12 +27815,10 @@
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "uQm" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/floor_decal/spline/fancy/wood,
+/obj/structure/bed/chair/sofa/black/right{
+	dir = 1
+	},
 /turf/simulated/floor/wood,
 /area/endeavour/surfacebase/mining_main/break_room)
 "uQr" = (
@@ -28470,7 +28469,7 @@
 /turf/simulated/floor/crystal,
 /area/endeavour/hallway/d3fwdhall)
 "vqa" = (
-/obj/machinery/vending/coffee,
+/obj/machinery/vending/snack,
 /turf/simulated/floor/wood,
 /area/security/breakroom)
 "vqf" = (
@@ -30294,10 +30293,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
 "wzn" = (
-/obj/map_helper/access_helper/airlock/station/supply/mining,
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/multi_tile/metal/mait,
-/turf/simulated/floor/tiled/monotile,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/wood,
 /area/endeavour/surfacebase/mining_main/break_room)
 "wzB" = (
 /obj/structure/cable/green{
@@ -31314,13 +31311,36 @@
 /turf/space,
 /area/space)
 "xjK" = (
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 9
+/obj/item/coffee_cartridge{
+	pixel_y = 11;
+	pixel_x = 5
+	},
+/obj/item/coffee_cartridge/decaf{
+	pixel_y = -7;
+	pixel_x = 5
+	},
+/obj/item/reagent_containers/food/condiment/small/packet/sugar{
+	pixel_y = 5;
+	pixel_x = -4
+	},
+/obj/item/reagent_containers/food/condiment/small/packet/creamer{
+	pixel_y = -4;
+	pixel_x = -4
+	},
+/obj/item/coffee_cartridge{
+	pixel_y = 5;
+	pixel_x = 5
+	},
+/obj/item/coffee_cartridge/decaf{
+	pixel_y = -1;
+	pixel_x = 5
 	},
 /obj/structure/table/wooden_reinforced,
-/obj/machinery/recharger{
-	pixel_x = -6;
-	pixel_y = 2
+/obj/machinery/light_switch{
+	pixel_y = 24
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 9
 	},
 /turf/simulated/floor/wood,
 /area/endeavour/surfacebase/mining_main/break_room)
@@ -43301,9 +43321,9 @@ xBj
 qMz
 pdC
 ipU
+opq
 eMM
-jRg
-wzn
+naj
 bfD
 bfD
 bfD
@@ -43497,7 +43517,7 @@ pdC
 jaW
 opq
 uQm
-luu
+naj
 bfD
 cEH
 sDq
@@ -43689,9 +43709,9 @@ xBj
 vyR
 pdC
 tox
-pdC
+wzn
 jRg
-naj
+luu
 bfD
 cEH
 sDq

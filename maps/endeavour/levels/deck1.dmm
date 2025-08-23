@@ -928,9 +928,9 @@
 /area/endeavour/hallway/d1aftmaint)
 "aIx" = (
 /obj/structure/table/marble,
-/obj/item/reagent_containers/food/drinks/britcup{
+/obj/item/reagent_containers/food/drinks/mug/nanotrasen{
 	pixel_y = 9;
-	pixel_x = 9
+	pixel_x = 8
 	},
 /turf/simulated/floor/carpet,
 /area/bridge/meeting_room)
@@ -5098,9 +5098,6 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
-/obj/machinery/camera/network/exploration{
-	dir = 8
-	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 4
 	},
@@ -7893,7 +7890,8 @@
 /area/crew_quarters/captain)
 "fMh" = (
 /obj/structure/table/woodentable,
-/obj/item/instrument/guitar,
+/obj/item/paper_bin,
+/obj/item/pen,
 /turf/simulated/floor/wood,
 /area/exploration/meeting)
 "fMr" = (
@@ -15357,16 +15355,35 @@
 /turf/simulated/floor/tiled/monofloor,
 /area/exploration)
 "lAO" = (
-/obj/structure/table/woodentable,
-/obj/machinery/camera/network/exploration{
-	dir = 4
+/obj/item/coffee_cartridge{
+	pixel_y = 11;
+	pixel_x = 5
 	},
-/obj/item/paper_bin,
+/obj/item/coffee_cartridge/decaf{
+	pixel_y = -7;
+	pixel_x = 5
+	},
+/obj/item/reagent_containers/food/condiment/small/packet/sugar{
+	pixel_y = 5;
+	pixel_x = -4
+	},
+/obj/item/reagent_containers/food/condiment/small/packet/creamer{
+	pixel_y = -4;
+	pixel_x = -4
+	},
+/obj/item/coffee_cartridge{
+	pixel_y = 5;
+	pixel_x = 5
+	},
+/obj/item/coffee_cartridge/decaf{
+	pixel_y = -1;
+	pixel_x = 5
+	},
+/obj/structure/table/woodentable,
 /obj/machinery/light_switch{
 	dir = 4;
 	pixel_x = -24
 	},
-/obj/item/pen,
 /turf/simulated/floor/wood,
 /area/exploration/meeting)
 "lBc" = (
@@ -16799,6 +16816,18 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/excursion_dock)
+"mEZ" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 4
+	},
+/obj/machinery/camera/network/exploration{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/exploration/hallway_aft)
 "mFi" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -17273,8 +17302,41 @@
 /turf/simulated/floor/lino,
 /area/chapel/office)
 "mWe" = (
-/turf/simulated/wall/prepainted,
-/area/space)
+/obj/item/coffee_cartridge{
+	pixel_y = 11;
+	pixel_x = 5
+	},
+/obj/item/coffee_cartridge/decaf{
+	pixel_y = 5;
+	pixel_x = 5
+	},
+/obj/item/reagent_containers/food/condiment/small/packet/sugar{
+	pixel_y = 5;
+	pixel_x = -4
+	},
+/obj/item/reagent_containers/food/condiment/small/packet/creamer{
+	pixel_y = -4;
+	pixel_x = -4
+	},
+/obj/structure/table/marble,
+/obj/item/reagent_containers/food/condiment/small/packet/astrotame{
+	pixel_x = -9;
+	pixel_y = -4
+	},
+/obj/item/reagent_containers/food/condiment/small/packet/astrotame{
+	pixel_x = -9;
+	pixel_y = 5
+	},
+/obj/item/coffee_cartridge/fancy{
+	pixel_x = 5;
+	pixel_y = -7
+	},
+/obj/item/coffee_cartridge/fancy{
+	pixel_x = 5;
+	pixel_y = -1
+	},
+/turf/simulated/floor/wood,
+/area/bridge/meeting_room)
 "mWf" = (
 /obj/structure/table/reinforced,
 /turf/simulated/floor/tiled/monowhite,
@@ -19782,7 +19844,8 @@
 /turf/simulated/floor/grass,
 /area/exploration/meeting)
 "oSH" = (
-/obj/machinery/vending/coffee,
+/obj/structure/table/woodentable,
+/obj/machinery/coffeemaker,
 /turf/simulated/floor/wood,
 /area/exploration/meeting)
 "oSJ" = (
@@ -20320,7 +20383,6 @@
 /turf/simulated/floor/carpet/blue,
 /area/crew_quarters/sleep/Dorm_3)
 "plz" = (
-/mob/living/simple_mob/animal/passive/honkpet,
 /turf/simulated/floor/carpet/gaycarpet,
 /area/crew_quarters/clownoffice)
 "plD" = (
@@ -24861,7 +24923,6 @@
 "sFT" = (
 /obj/structure/window/reinforced,
 /obj/structure/table/steel_reinforced,
-/obj/item/storage/firstaid/adv,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/excursion/endeavour/cargo)
 "sFX" = (
@@ -27727,8 +27788,10 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "uGL" = (
+/obj/machinery/coffeemaker{
+	pixel_y = 5
+	},
 /obj/structure/table/marble,
-/obj/machinery/chemical_dispenser/catering/bar_soft,
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
 "uGO" = (
@@ -32227,10 +32290,20 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1starboardamidhall)
 "ycW" = (
-/obj/structure/table/marble,
-/obj/item/storage/box/glasses/mug,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/camera/network/exploration{
+	dir = 1
+	},
 /turf/simulated/floor/wood,
-/area/bridge/meeting_room)
+/area/exploration/meeting)
 "ydr" = (
 /obj/structure/catwalk,
 /obj/machinery/light/small{
@@ -38743,7 +38816,7 @@ tog
 bBI
 wwN
 dQg
-wwN
+mEZ
 gJj
 vUK
 vUK
@@ -39715,7 +39788,7 @@ sEA
 sGN
 dVT
 cJE
-jsu
+ycW
 usu
 kxB
 fUg
@@ -58339,7 +58412,7 @@ xRj
 xRj
 sQl
 sQl
-mWe
+sQl
 xrL
 plJ
 plJ
@@ -58924,7 +58997,7 @@ hfY
 hfY
 hfY
 bOP
-ycW
+nNn
 aIx
 kWt
 eLZ
@@ -59312,7 +59385,7 @@ jNg
 xRj
 uUX
 bOP
-nNn
+mWe
 ybg
 nCl
 nCl
