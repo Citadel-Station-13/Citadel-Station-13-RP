@@ -20045,6 +20045,15 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/sector/nebula_tradeport/medical/public)
+"cfC" = (
+/obj/machinery/conveyor_switch/oneway{
+	id = "ftu_cargo_transit";
+	name = "inbound conveyor";
+	pixel_y = -5;
+	pixel_x = 11
+	},
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/tradeport/spine)
 "cfJ" = (
 /obj/structure/closet/largecardboard,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -20843,6 +20852,10 @@
 	},
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/tradeport/spine)
+"dZI" = (
+/obj/machinery/smuggling/processing_unit/ftu,
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/tradeport/spine)
 "dZV" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 4
@@ -21516,6 +21529,10 @@
 	},
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport/commons)
+"fPC" = (
+/obj/structure/sign/department/cargo,
+/turf/simulated/wall/r_wall,
+/area/tradeport/spine)
 "fQy" = (
 /obj/structure/table/hardwoodtable,
 /obj/machinery/microwave{
@@ -21789,6 +21806,10 @@
 /obj/machinery/body_scanconsole,
 /turf/simulated/floor/tiled/white,
 /area/sector/nebula_tradeport/medical/public)
+"gPB" = (
+/obj/spawner/window/low_wall/nogrille/firelocks,
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/tradeport/cafeteria)
 "gPE" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -22338,6 +22359,10 @@
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/tradeport/cafeteria)
+"iav" = (
+/obj/structure/cargotransitcrate/ftu,
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/tradeport/spine)
 "iaF" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -22955,6 +22980,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/tradeport/commons)
+"jRA" = (
+/obj/machinery/point_redemption_vendor/smuggle/ftu,
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/tradeport/spine)
 "jSR" = (
 /obj/structure/bed/chair/comfy/brown{
 	dir = 1
@@ -24800,6 +24829,14 @@
 	},
 /turf/simulated/floor/wood,
 /area/shuttle/scoophead/cockpit)
+"pfo" = (
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "ftu_cargo_transit"
+	},
+/obj/machinery/smuggling/input,
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/tradeport/spine)
 "pfv" = (
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
@@ -24947,6 +24984,12 @@
 	},
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport/commons)
+"pzY" = (
+/obj/machinery/smuggling/processing_unit_console{
+	pixel_x = 30
+	},
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/tradeport/spine)
 "pAI" = (
 /obj/effect/floor_decal/corner/blue/border,
 /obj/machinery/holopad,
@@ -27075,6 +27118,13 @@
 	},
 /turf/simulated/floor/carpet/patterened/red,
 /area/shuttle/scoophead/cockpit)
+"wkH" = (
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "ftu_cargo_transit"
+	},
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/tradeport/spine)
 "wlu" = (
 /obj/machinery/shipsensors,
 /turf/simulated/floor/plating,
@@ -51948,7 +51998,7 @@ aDh
 aDh
 aDh
 snu
-sYJ
+iav
 dYK
 doo
 bro
@@ -52142,7 +52192,7 @@ aDh
 aDh
 aDh
 snu
-sYJ
+iav
 vGS
 ves
 fbx
@@ -52532,9 +52582,9 @@ aDh
 snu
 sYJ
 sYJ
-sYJ
 tQG
-abc
+sYJ
+fPC
 dtU
 aVa
 awX
@@ -52727,7 +52777,7 @@ abc
 fdo
 sYJ
 sYJ
-sYJ
+cfC
 snu
 tRl
 awc
@@ -52921,7 +52971,7 @@ abc
 sDd
 sYJ
 sYJ
-sYJ
+wkH
 snu
 bfK
 aHh
@@ -53115,7 +53165,7 @@ tSe
 sDd
 sYJ
 sYJ
-sYJ
+wkH
 snu
 bNF
 aWh
@@ -53307,9 +53357,9 @@ aDh
 aDh
 tSe
 sDd
-fdo
 sYJ
 sYJ
+pfo
 snu
 lkX
 aVa
@@ -53501,9 +53551,9 @@ aDh
 aDh
 abc
 sDd
-fdo
-fdo
-sYJ
+jRA
+pzY
+dZI
 snu
 tRl
 awc
@@ -53695,9 +53745,9 @@ aDh
 aDa
 aDa
 aDa
+gPB
 aDa
-aBS
-aBS
+aDa
 aDa
 aBS
 aDa

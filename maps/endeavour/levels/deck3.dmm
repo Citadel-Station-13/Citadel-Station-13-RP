@@ -29458,6 +29458,13 @@
 /obj/effect/floor_decal/corner/brown/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/quartermaster/belterdock/gear)
+"vVT" = (
+/obj/effect/floor_decal/industrial/outline{
+	color = "#D6DBDB"
+	},
+/obj/structure/cargotransitcrate/nt,
+/turf/simulated/floor/tiled/monodark,
+/area/quartermaster/warehouse)
 "vWt" = (
 /obj/structure/table/standard,
 /obj/item/towel/random,
@@ -48490,9 +48497,9 @@ vjg
 pRW
 noy
 lea
-uUl
-uUl
-uUl
+vVT
+vVT
+vVT
 pmo
 pmo
 pmo
@@ -48684,9 +48691,9 @@ vjg
 pRW
 noy
 mJv
-uUl
-uUl
-uUl
+vVT
+vVT
+vVT
 pmo
 pmo
 pmo

@@ -9927,6 +9927,7 @@
 /obj/machinery/atmospherics/pipe/zpipe/down/scrubbers{
 	dir = 4
 	},
+/obj/structure/cargotransitcrate/nt,
 /turf/simulated/open,
 /area/strelka/shipbase/deck3/maintenance/cargo)
 "Iv" = (
@@ -11005,6 +11006,10 @@
 	dir = 4
 	},
 /obj/machinery/light/small/old,
+/turf/simulated/floor/plating,
+/area/strelka/shipbase/deck3/maintenance/cargo)
+"My" = (
+/obj/structure/cargotransitcrate/nt,
 /turf/simulated/floor/plating,
 /area/strelka/shipbase/deck3/maintenance/cargo)
 "MB" = (
@@ -28201,7 +28206,7 @@ mF
 mF
 mX
 Oz
-js
+My
 pN
 Hb
 zb
@@ -28395,7 +28400,7 @@ mF
 Mk
 Oz
 Iu
-js
+My
 pN
 js
 CI

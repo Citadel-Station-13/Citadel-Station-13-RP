@@ -580,6 +580,27 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/strelka/shipbase/deck1/fighterbay)
+"cH" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/grass_edge,
+/obj/effect/floor_decal/grass_edge/corner{
+	dir = 9
+	},
+/obj/structure/cable/blue{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "nt_cargo_transit"
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/strelka/shipbase/deck1/hangardeck)
 "cI" = (
 /obj/structure/railing{
 	dir = 1
@@ -1081,6 +1102,22 @@
 /obj/machinery/light/small/old{
 	dir = 4
 	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/strelka/shipbase/deck1/hangardeck)
+"fr" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/grass_edge,
+/obj/effect/floor_decal/grass_edge/corner{
+	dir = 5
+	},
+/obj/structure/cable/blue{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/machinery/smuggling/processing_unit/nt,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
 "fx" = (
@@ -1965,6 +2002,9 @@
 /area/strelka/shipbase/deck1/bridge/balista)
 "kb" = (
 /obj/structure/flora/ausbushes/sparsegrass,
+/obj/machinery/smuggling/processing_unit_console{
+	pixel_y = -37
+	},
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/shipbase/deck1/hangardeck)
 "kh" = (
@@ -2087,6 +2127,9 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc/south_mount,
+/obj/machinery/conveyor_switch/oneway{
+	id = "nt_cargo_transit"
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
 "kP" = (
@@ -4209,6 +4252,9 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/computer/supplycomp{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
 "wp" = (
@@ -7407,6 +7453,27 @@
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/simulated/floor/water/indoors,
 /area/strelka/shipbase/deck1)
+"Nc" = (
+/obj/effect/floor_decal/grass_edge{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/grass_edge,
+/obj/structure/cable/blue{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "nt_cargo_transit"
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/strelka/shipbase/deck1/hangardeck)
 "Nd" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -7662,6 +7729,18 @@
 /obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor/tiled/techmaint,
 /area/strelka/shipbase/deck1/gateway)
+"OF" = (
+/obj/structure/cable/blue{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/wall/r_wall/prepainted,
+/area/strelka/shipbase/deck1/hangardeck)
 "OI" = (
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = 30
@@ -8547,6 +8626,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/point_redemption_vendor/smuggle/nt,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/shipbase/deck1/hangardeck)
 "TI" = (
@@ -25473,7 +25553,7 @@ Nv
 Ub
 XT
 de
-xM
+Nc
 ZP
 ZW
 SS
@@ -25667,7 +25747,7 @@ Nv
 mI
 Id
 uX
-sN
+cH
 ZP
 Ju
 nQ
@@ -25861,7 +25941,7 @@ Nv
 VR
 xK
 HU
-UQ
+fr
 ZP
 hS
 wG
@@ -26055,8 +26135,8 @@ Nv
 qL
 eQ
 kb
-xM
-ZP
+OF
+rL
 ss
 wG
 fx
