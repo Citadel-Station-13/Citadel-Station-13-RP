@@ -49,13 +49,13 @@
 	// make sure no one's doing something insane
 	if(usr != src)
 		CRASH("non-src usr click_on in mob. someone is abusing the proc and likely incorrectly so.")
+	// handle legacy; in the future, things like buildmode clicks (pre-throttle) happen here
+	if(legacy_click_on(target, location, control, raw_params))
+		return TRUE
 	// Throttle self outbound clicks to once per tick.
 	if(world.time < next_click)
 		return FALSE
 	next_click = world.time + world.tick_lag
-
-	if(legacy_click_on(target, location, control, raw_params))
-		return TRUE
 
 	var/list/params = params2list(raw_params)
 
@@ -221,7 +221,6 @@
  * * This should never be called other than as a **verb** executed by our own client.
  */
 /mob/proc/double_click_on(atom/target, location, control, raw_params)
-	SHOULD_NOT_OVERRIDE(TRUE)
 	// make sure no one's doing something insane
 	if(usr != src)
 		CRASH("non-src usr double_click_on in mob. someone is abusing the proc and likely incorrectly so.")

@@ -2,12 +2,6 @@
 #warn obliterate
 
 /mob/proc/ClickOn(atom/A, params, clickchain_flags)
-	if(!IS_CONSCIOUS(src))
-		return
-
-	if(!canClick()) // in the year 2000...
-		return
-
 	if(istype(loc, /obj/vehicle/sealed/mecha))
 		if(!locate(/turf) in list(A, A.loc)) // Prevents inventory from being drilled
 			return
@@ -18,10 +12,6 @@
 		setClickCooldownLegacy(10)
 		RestrainedClickOn(A)
 		return 1
-
-	if(!CHECK_MOBILITY(src, MOBILITY_CAN_USE))
-		to_chat(src, SPAN_WARNING("You can't do that right now."))
-		return
 
 	if(throw_mode_check())
 		if(isturf(A) || isturf(A.loc))
@@ -77,15 +67,8 @@
 		if(get_dist(src, A) > tk_maxrange)
 			return
 		A.attack_tk(src)
-/*
-	Restrained ClickOn
 
-	Used when you are handcuffed and click things.
-	Not currently used by anything but could easily be.
-*/
-/mob/proc/RestrainedClickOn(var/atom/A)
-	return
-
+#warn deal with all of this
 /mob/proc/ShiftMiddleClickOn(atom/A)
 	pointed(A)
 
