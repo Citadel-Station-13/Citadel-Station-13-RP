@@ -3288,6 +3288,16 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
+"clR" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 1
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/turf/simulated/floor/tiled,
+/area/rnd/research/researchdivision)
 "cmy" = (
 /obj/machinery/smartfridge/secure/extract,
 /turf/simulated/floor/tiled,
@@ -8175,6 +8185,12 @@
 	pixel_y = 38
 	},
 /turf/simulated/floor/tiled/steel_grid,
+/area/rnd/xenobiology)
+"fEE" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/air_alarm/east_mount,
+/turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "fFG" = (
 /obj/machinery/r_n_d/server/robotics,
@@ -17732,6 +17748,16 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/wood,
 /area/tether/station/public_meeting_room)
+"mIA" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 1
+	},
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
+/turf/simulated/floor/tiled,
+/area/rnd/research/researchdivision)
 "mIS" = (
 /obj/structure/table/reinforced,
 /obj/machinery/cell_charger,
@@ -19107,6 +19133,21 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/endeavour/hallway/d2fwdhall)
+"nNT" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/mauve/border,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/research/researchdivision)
 "nNV" = (
 /obj/item/newspaper,
 /turf/simulated/floor,
@@ -22320,10 +22361,6 @@
 /obj/machinery/camera/network/research,
 /obj/effect/floor_decal/industrial/danger/corner{
 	dir = 8
-	},
-/obj/machinery/air_alarm{
-	frequency = 1441;
-	pixel_y = 22
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
@@ -26957,6 +26994,21 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/assembly/robotics/surgery)
+"tvT" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/mauve/border,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/turf/simulated/floor/tiled,
+/area/rnd/research/researchdivision)
 "tvV" = (
 /obj/machinery/light{
 	dir = 8
@@ -39276,7 +39328,7 @@ tws
 rKu
 ekm
 pul
-cqv
+fEE
 vTK
 oZR
 cqv
@@ -43746,8 +43798,8 @@ xFB
 xFB
 jZz
 mAR
-wEJ
-gcJ
+clR
+nNT
 hNv
 nEj
 eRT
@@ -43940,8 +43992,8 @@ xFB
 xFB
 jZz
 mAR
-wEJ
-gcJ
+mIA
+tvT
 hNv
 weJ
 wSf
