@@ -249,7 +249,7 @@
 	tgui_stat.byond_stat_turf = null
 
 /client/proc/list_turf_check(turf/T)
-	return mob.TurfAdjacent(T)
+	return mob.snowflake_ai_vision_adjacency(T)
 
 /**
  * must return list(name, icon, ref).

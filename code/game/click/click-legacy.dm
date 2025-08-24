@@ -113,7 +113,7 @@
 	var/turf/T = get_turf(A)
 	if(!T)
 		return
-	if(!TurfAdjacent(T))
+	if(!snowflake_ai_vision_adjacency(T))
 		return
 	if(!client)
 		return
@@ -128,7 +128,12 @@
 	return FALSE
 
 // todo: rework
-/mob/proc/TurfAdjacent(var/turf/T)
+/**
+ * If you see me on git blame just know that it's a weird situation. This was TurfAdjacent()
+ * but it was only used for AI cameras and statpanel
+ * So, this is an IOU refactor and in the legacy file.
+ */
+/mob/proc/snowflake_ai_vision_adjacency(var/turf/T)
 	return T.AdjacentQuick(src)
 
 /mob/proc/CtrlShiftClickOn(var/atom/A)

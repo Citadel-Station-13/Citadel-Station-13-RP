@@ -16,6 +16,10 @@
  *
  * If you have a function that should require clickchain, like a lot of the default functions,
  * simply do nothing. The default function for this should be to open an UI anyways.
+ *
+ * Unfortunately, this entire system does not support admin AI interact; this was deemed
+ * acceptable because admin AI interact should probably be a sideband from actual AI interact
+ * in the first place, with all the AI reworks planned for this codebase.
  */
 /mob/living/silicon/proc/silicon_control_interaction_chain(atom/target, datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	if(!silicon_control_interaction_allowed(target, actor, clickchain, clickchain_flags))

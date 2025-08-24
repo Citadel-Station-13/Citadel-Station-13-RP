@@ -10,6 +10,7 @@
 	Note that AI have no need for the adjacency proc, and so this proc is a lot cleaner.
 */
 /mob/living/silicon/ai/DblClickOn(var/atom/A, params)
+	#warn obliterate
 	if(control_disabled || stat) return
 
 	if(ismob(A))
@@ -86,5 +87,5 @@
 	return TRUE
 
 #warn what the fuck this is for alt click listed turf it shouldn't override base turf adjacent!!
-/mob/living/silicon/ai/TurfAdjacent(var/turf/T)
+/mob/living/silicon/ai/snowflake_ai_vision_adjacency(var/turf/T)
 	return (GLOB.cameranet && GLOB.cameranet.checkTurfVis(T))
