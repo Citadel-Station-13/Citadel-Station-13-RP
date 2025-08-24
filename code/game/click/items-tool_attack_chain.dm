@@ -10,4 +10,4 @@
 	// are we on harm intent? if so, lol no
 	if(clickchain.initiator?.a_intent == INTENT_HARM)
 		return NONE
-	return target.tool_interaction(src, clickchain, clickchain_flags | CLICKCHAIN_TOOL_ACT)
+	return clickchain.target.tool_interaction(src, clickchain, clickchain_flags | CLICKCHAIN_TOOL_ACT)

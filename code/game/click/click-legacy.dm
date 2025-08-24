@@ -86,9 +86,6 @@
 /mob/proc/RestrainedClickOn(var/atom/A)
 	return
 
-/mob/proc/MiddleClickOn(var/atom/A)
-	swap_hand()
-
 /mob/proc/ShiftMiddleClickOn(atom/A)
 	pointed(A)
 
@@ -173,6 +170,8 @@
 
 /**
  * Prevents a mob from acting again until time has passed.
+ * This is in legacy because at some point click cooldowns will be .. weird, with remote control
+ * being a thing. But for now, let's not overcomplicate it.
  */
 /mob/proc/apply_click_cooldown(time)
 	next_move = max(world.time + time, next_move)

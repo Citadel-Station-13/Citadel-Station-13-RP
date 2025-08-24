@@ -33,7 +33,7 @@
 		return
 
 	// todo: is pre_attack really needed/justified?
-	if(!(. & (CLICKCHAIN_FLAGS_INTERACT_ABORT | CLICKCHAIN_FLAGS_ATTACK_ABORT)) && ((. |= pre_attack(target, user, ., params)) & CLICKCHAIN_DO_NOT_PROPAGATE))
+	if(!(. & (CLICKCHAIN_FLAGS_INTERACT_ABORT | CLICKCHAIN_FLAGS_ATTACK_ABORT)) && ((. |= pre_attack(clickchain.target, clickchain.performer, ., clickchain.click_params)) & CLICKCHAIN_DO_NOT_PROPAGATE))
 		return
 
 	// todo: refactor

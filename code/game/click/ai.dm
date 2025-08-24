@@ -17,26 +17,13 @@
 	else
 		A.move_camera_by_click()
 
-
 /mob/living/silicon/ai/ClickOn(var/atom/A, params)
 #warn obliterate
-	if(stat)
-		return
-
-	if(control_disabled || !canClick())
-		return
-
 	if(aiCamera.in_camera_mode)
 		aiCamera.camera_mode_off()
 		aiCamera.captureimage(A, usr)
 		return
 
-	/*
-		AI restrained() currently does nothing
-	if(restrained())
-		RestrainedClickOn(A)
-	else
-	*/
 	A.add_hiddenprint(src)
 	A.attack_ai(src)
 
@@ -54,83 +41,15 @@
 /atom/proc/attack_ai(mob/user as mob)
 	return
 
-/*
-	Since the AI handles shift, ctrl, and alt-click differently
-	than anything else in the game, atoms have separate procs
-	for AI shift, ctrl, and alt clicking.
-*/
-
-/mob/living/silicon/ai/ShiftClickOn(var/atom/A)
-	if(!control_disabled && A.AIShiftClick(src))
-		return
-	..()
-
-/mob/living/silicon/ai/CtrlClickOn(var/atom/A)
-	if(!control_disabled && A.AICtrlClick(src))
-		return
-	..()
-
-/mob/living/silicon/ai/AltClickOn(var/atom/A)
-	if(!control_disabled && A.AIAltClick(src))
-		return
-	..()
-
-/mob/living/silicon/ai/MiddleClickOn(var/atom/A)
-	if(!control_disabled && A.AIMiddleClick(src))
-		return
-	..()
-
-/*
-	The following criminally helpful code is just the previous code cleaned up;
-	I have no idea why it was in atoms.dm instead of respective files.
-*/
-
-/atom/proc/AICtrlShiftClick(mob/user)
-	return
-
-/atom/proc/AIShiftClick(mob/user)
-	return
-
 /obj/machinery/door/airlock/AIShiftClick(mob/user)  // Opens and closes doors!
 	add_hiddenprint(user)
 	toggle_open(user)//instead of topic() procs
 	return TRUE
 
-/atom/proc/AICtrlClick(mob/user)
-	return
-
 /obj/machinery/door/airlock/AICtrlClick(mob/user) // Bolts doors
 	add_hiddenprint(user)
 	toggle_bolt(user)//apparently this is better than the topic function
 	return TRUE
-
-/obj/machinery/power/apc/AICtrlClick(mob/user) // turns off/on APCs.
-	add_hiddenprint(user)
-	toggle_breaker(user)
-	return TRUE
-
-/obj/machinery/turretid/AICtrlClick(mob/user) //turns off/on Turrets
-	add_hiddenprint(user)
-	enabled = !enabled //toggles the turret on/off
-	return TRUE
-
-/atom/proc/AIAltClick(var/atom/A)
-	return AltClick(A)
-
-/obj/machinery/door/airlock/AIAltClick(mob/user) // Electrifies doors.
-	if(electrified_until)
-		electrify(0, 1)
-	else
-		electrify(-1,1)
-	return TRUE
-
-/obj/machinery/turretid/AIAltClick(mob/user) //toggles lethal on turrets
-	add_hiddenprint(user)
-	lethal = !lethal
-	return TRUE
-
-/atom/proc/AIMiddleClick(var/mob/living/silicon/user)
-	return FALSE
 
 /obj/machinery/door/airlock/AIMiddleClick(mob/user) // Toggles door bolt lights.
 	if(..())
@@ -144,9 +63,28 @@
 	update_icon()
 	return TRUE
 
-//
-// Override AdjacentQuick for AltClicking
-//
+/obj/machinery/door/airlock/AIAltClick(mob/user) // Electrifies doors.
+	if(electrified_until)
+		electrify(0, 1)
+	else
+		electrify(-1,1)
+	return TRUE
 
+/obj/machinery/power/apc/AICtrlClick(mob/user) // turns off/on APCs.
+	add_hiddenprint(user)
+	toggle_breaker(user)
+	return TRUE
+
+/obj/machinery/turretid/AICtrlClick(mob/user) //turns off/on Turrets
+	add_hiddenprint(user)
+	enabled = !enabled //toggles the turret on/off
+	return TRUE
+
+/obj/machinery/turretid/AIAltClick(mob/user) //toggles lethal on turrets
+	add_hiddenprint(user)
+	lethal = !lethal
+	return TRUE
+
+#warn what the fuck this is for alt click listed turf it shouldn't override base turf adjacent!!
 /mob/living/silicon/ai/TurfAdjacent(var/turf/T)
 	return (GLOB.cameranet && GLOB.cameranet.checkTurfVis(T))

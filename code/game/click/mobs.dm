@@ -13,7 +13,7 @@
 /mob/proc/melee_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	// todo: refactor cooldown handling
-	if(ismob(target))
+	if(ismob(clickchain.target))
 		setClickCooldownLegacy(get_attack_speed_legacy())
 	UnarmedAttack(clickchain.target, clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)
 

@@ -48,7 +48,6 @@
 		if(ishuman(parent))
 			remove_verb(owner, /mob/living/carbon/human/proc/nif_menu)
 
-
 /datum/component/nif_menu/proc/create_mob_button(mob/user)
 	var/datum/hud/HUD = user.hud_used
 	if(!screen_icon)

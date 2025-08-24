@@ -108,11 +108,20 @@
  * Standard world-click interaction chain.
  * * Routes as needed to item/melee/tool interaction chains.
  * * This can be called by remote control handling directly.
+ * @return clickchain flags
  */
-/mob/proc/click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+/mob/proc/click_interaction(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	var/obj/item/active_item = get_active_held_item()
+	return click_interaction_chain(clickchain, clickchain_flags, active_item)
+
+/**
+ * The proc that actually does something with a held item. Override this to do something else.
+ * * Also handles standard unarmed behavior.
+ * @return clickchain flags
+ */
+/mob/proc/click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
 	face_atom(clickchain.target)
 
-	var/obj/item/active_item = get_active_held_item()
 	if(active_item == clickchain.target)
 		active_item.attack_self(src, clickchain)
 		//! legacy
@@ -228,7 +237,7 @@
  * A click entrypoint proc.
  * * This should never be called other than as a **verb** executed by our own client.
  */
-/mob/proc/mouse_wheel_on(atom/target, delta_x, delta_y location, control, raw_params)
+/mob/proc/mouse_wheel_on(atom/target, delta_x, delta_y, location, control, raw_params)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	// make sure no one's doing something insane
 	if(usr != src)
