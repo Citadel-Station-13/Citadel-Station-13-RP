@@ -3228,6 +3228,16 @@
 	outdoors = 1
 	},
 /area/sector/miaphus/beach/resort)
+"ql" = (
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "miningops"
+	},
+/obj/machinery/smuggling/input,
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/jungle)
 "qm" = (
 /obj/random/outcrop,
 /turf/simulated/mineral/floor/cave{
@@ -4730,6 +4740,12 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/wood/broken,
 /area/sector/miaphus/beach/station/terminal)
+"yw" = (
+/obj/machinery/point_redemption_vendor/smuggle/miaphus,
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/jungle)
 "yy" = (
 /obj/machinery/light,
 /obj/structure/catwalk,
@@ -5674,6 +5690,15 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/sdf)
+"DP" = (
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "miningops"
+	},
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/jungle)
 "DQ" = (
 /obj/effect/floor_decal/tracks{
 	dir = 4
@@ -7740,6 +7765,9 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/sdf)
+"Pm" = (
+/turf/simulated/wall,
+/area/sector/miaphus/beach/jungle)
 "Po" = (
 /obj/effect/floor_decal/tracks{
 	dir = 10
@@ -21535,7 +21563,7 @@ bp
 bp
 SK
 bp
-aa
+bp
 aa
 aa
 aa
@@ -21729,10 +21757,10 @@ bp
 SK
 SK
 bp
-aa
-aa
-aa
-aa
+DP
+SK
+bp
+bp
 aa
 aa
 aa
@@ -21923,10 +21951,10 @@ bp
 bp
 Jm
 bp
-aa
-aa
-aa
-aa
+DP
+SK
+SK
+SK
 aa
 aa
 aa
@@ -22117,11 +22145,11 @@ aa
 bp
 Jm
 bp
+ql
+SK
+SK
+SK
 bp
-aa
-aa
-aa
-aa
 aa
 lI
 lI
@@ -22311,11 +22339,11 @@ aa
 bp
 Jm
 SK
-aa
-aa
-aa
-aa
-aa
+SK
+SK
+SK
+SK
+bp
 lI
 lI
 lI
@@ -22505,11 +22533,11 @@ aa
 bp
 SK
 bp
-bp
-aa
-aa
-aa
-pP
+Pm
+SK
+SK
+SK
+OK
 cC
 Le
 Le
@@ -22699,11 +22727,11 @@ aa
 bp
 Jm
 bp
-aa
-aa
-aa
-lI
-lI
+yw
+SK
+SK
+zw
+Nv
 Ia
 yX
 zb
@@ -22893,11 +22921,11 @@ aa
 SK
 Jm
 SK
-aa
-lI
-lI
-lI
-lI
+SK
+zw
+zw
+zw
+Nv
 Ia
 aT
 aV
