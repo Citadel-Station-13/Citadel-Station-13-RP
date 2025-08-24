@@ -18,7 +18,7 @@ type CargoTransitData =
 {
   on: BooleanLike,
   fast: BooleanLike,
-  cargotransits: cargotransitData[],
+  cargotransits: CargoTransitData[],
   unclaimedPoints: number,
   idName: string,
   idPoints: number,
@@ -100,21 +100,21 @@ export const CargoTransit = (props, context) => {
               <LabeledList.Item
                 label={capitalize(cargotransit.displayName)}
                 key={cargotransit.ref}
-                color={COLOR_PROCESSING[cargotransit.porcessing]}
+                color={COLOR_PROCESSING[cargotransit.processing]}
                 buttons={
                   <Fragment>
                     <Button
                       icon="layer-group"
                       tooltip={"Process " + cargotransit.displayName}
                       tooltipPosition="top"
-                      selected={cargotransit.porcessing === CargoTransitMode.Process}
+                      selected={cargotransit.processing === CargoTransitMode.Process}
                       onClick={() => act("change_mode", { cargotransit: cargotransit.name, mode: CargoTransitMode.Process })}
                     />
                     <Button
                       icon="ban"
                       tooltip={"No processing " + cargotransit.displayName}
                       tooltipPosition="top"
-                      selected={cargotransit.porcessing === CargoTransitMode.None}
+                      selected={cargotransit.processing === CargoTransitMode.None}
                       onClick={() => act("change_mode", { cargotransit: cargotransit.name, mode: CargoTransitMode.None })}
                     />
                   </Fragment>
