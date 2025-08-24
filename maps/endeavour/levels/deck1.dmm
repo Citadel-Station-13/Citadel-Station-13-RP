@@ -3827,6 +3827,9 @@
 /obj/effect/floor_decal/corner/navgold/border{
 	dir = 4
 	},
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1afthall)
 "cXD" = (
@@ -4888,6 +4891,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
+/obj/machinery/light,
 /turf/simulated/floor/tiled/steel,
 /area/station/stairs_one)
 "dMG" = (
@@ -12426,6 +12430,13 @@
 "jDo" = (
 /turf/simulated/floor/carpet/blue,
 /area/crew_quarters/sleep/Dorm_3)
+"jDu" = (
+/obj/structure/flora/ausbushes/lavendergrass,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/grass,
+/area/endeavour/hallway/d1portamidhall)
 "jEi" = (
 /obj/machinery/recharge_station,
 /obj/machinery/light/small{
@@ -13438,6 +13449,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d1fwdmaint)
+"knV" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/library)
 "kom" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/effect/floor_decal/steeldecal/steel_decals5,
@@ -20665,7 +20685,6 @@
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/docking_hallway2)
 "pKP" = (
-/obj/machinery/light/small,
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
@@ -21956,6 +21975,13 @@
 /obj/structure/ship_munition/disperser_charge/mining,
 /turf/simulated/floor/tiled/dark,
 /area/exploration/courser_dock)
+"qHZ" = (
+/obj/structure/flora/ausbushes/leafybush,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/grass,
+/area/endeavour/hallway/d1portamidhall)
 "qIc" = (
 /obj/machinery/air_alarm{
 	frequency = 1441;
@@ -27871,6 +27897,7 @@
 /area/hallway/secondary/docking_hallway)
 "uZh" = (
 /obj/structure/flora/ausbushes/grassybush,
+/obj/machinery/light,
 /turf/simulated/floor/grass,
 /area/endeavour/hallway/d1portamidhall)
 "uZA" = (
@@ -42331,7 +42358,7 @@ vnQ
 jWs
 pDn
 wvv
-woL
+qHZ
 miI
 kOT
 tAa
@@ -43498,7 +43525,7 @@ doM
 hpD
 xGr
 wvv
-tAa
+jDu
 wJX
 wvv
 rSk
@@ -49334,7 +49361,7 @@ rdf
 qqq
 qzE
 lCx
-kpq
+knV
 kpq
 kpq
 kpq

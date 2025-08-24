@@ -3008,6 +3008,13 @@
 	},
 /turf/simulated/floor/wood,
 /area/quartermaster/office)
+"cjU" = (
+/obj/effect/floor_decal/corner_steel_grid/diagonal,
+/obj/machinery/status_display{
+	pixel_x = -32
+	},
+/turf/simulated/floor/tiled,
+/area/security/breakroom)
 "ckQ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -17746,8 +17753,12 @@
 /turf/simulated/wall/r_wall/prepainted/cargo,
 /area/quartermaster/delivery)
 "nyr" = (
+/obj/machinery/vending/nifsoft_shop{
+	dir = 1
+	},
 /obj/item/radio/intercom{
-	pixel_y = -24
+	dir = 8;
+	pixel_x = -28
 	},
 /turf/simulated/floor/tiled/dark,
 /area/endeavour/station/stairs_three)
@@ -25352,6 +25363,7 @@
 	icon_state = "0-8"
 	},
 /obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/darkred,
 /turf/simulated/floor/plating,
 /area/prison/cell_block)
 "sXV" = (
@@ -31105,9 +31117,6 @@
 "xao" = (
 /obj/machinery/light{
 	dir = 1
-	},
-/obj/machinery/status_display{
-	pixel_y = 32
 	},
 /obj/effect/floor_decal/corner_steel_grid{
 	dir = 1
@@ -43346,7 +43355,7 @@ cAN
 qGX
 qGX
 qGX
-hMP
+nyr
 wMT
 axk
 qZW
@@ -43540,7 +43549,7 @@ egL
 qGX
 qGX
 qGX
-nyr
+hMP
 wMT
 hLo
 sZz
@@ -49375,7 +49384,7 @@ jtn
 rQE
 vOF
 jzh
-pnh
+cjU
 tYX
 gtG
 ktJ
