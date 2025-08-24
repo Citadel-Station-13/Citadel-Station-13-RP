@@ -15658,24 +15658,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/endeavour/surfacebase/sauna)
-"lTA" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/navblue/border{
-	dir = 8
-	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
-	dir = 10
-	},
-/obj/effect/floor_decal/corner/navblue/bordercorner2{
-	dir = 10
-	},
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/steel,
-/area/endeavour/hallway/d1fwdhall)
 "lUh" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -16279,12 +16261,6 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/navblue/border{
-	dir = 8
-	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/navblue/bordercorner2{
 	dir = 8
 	},
 /obj/machinery/camera/network/civilian{
@@ -16895,17 +16871,6 @@
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
-"mRz" = (
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
-/obj/machinery/door/airlock/freezer{
-	name = "Cafe Backroom";
-	req_one_access = list()
-	},
-/obj/map_helper/access_helper/airlock/station/service/bar,
-/turf/simulated/floor/tiled,
-/area/endeavour/hallway/d1fwdhall)
 "mRF" = (
 /obj/machinery/atmospherics/portables_connector{
 	name = "Engine Fuel Port"
@@ -25256,6 +25221,12 @@
 "thT" = (
 /obj/landmark{
 	name = "lightsout"
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1fwdhall)
@@ -53222,7 +53193,7 @@ jxt
 hJE
 hJE
 hJE
-mRz
+aKv
 aKv
 aKv
 hJE
@@ -53415,7 +53386,7 @@ phr
 jPj
 iyH
 cPf
-lTA
+cef
 thT
 mrC
 cvv

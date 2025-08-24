@@ -1735,10 +1735,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/machinery/requests_console/preset/medical{
-	pixel_y = -30;
-	pixel_x = -3
-	},
+/obj/machinery/light,
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "bop" = (
@@ -2682,6 +2679,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/medical/surgeryobs)
@@ -3814,6 +3814,16 @@
 /obj/map_helper/access_helper/airlock/station/science/xenoarcheology,
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab/containment_one)
+"cEz" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/power/apc/north_mount,
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/medical/surgeryobs)
 "cET" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -5264,6 +5274,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/medical/surgeryobs)
 "dEY" = (
@@ -6331,6 +6344,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
@@ -7721,6 +7737,12 @@
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
+"fot" = (
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/medical/locker_room)
 "foJ" = (
 /obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1;
@@ -9558,6 +9580,15 @@
 	},
 /turf/simulated/floor/wood,
 /area/rnd/xenobiology)
+"gGp" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/medical/surgeryobs)
 "gGu" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/medical{
@@ -9969,7 +10000,10 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/obj/machinery/light,
+/obj/machinery/requests_console/preset/medical{
+	pixel_y = -30;
+	pixel_x = -3
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "gWU" = (
@@ -12901,9 +12935,6 @@
 /area/medical/medbay_emt_bay)
 "jhl" = (
 /obj/machinery/air_alarm/south_mount,
-/obj/structure/window/reinforced/tinted/frosted{
-	dir = 8
-	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
@@ -13895,6 +13926,21 @@
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled,
 /area/medical/medbay_primary_storage)
+"jSK" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/patient_wing)
 "jSN" = (
 /turf/simulated/wall/prepainted/medical,
 /area/medical/resleeving)
@@ -16658,6 +16704,9 @@
 /area/engineering/substation/deck2amidships)
 "lYl" = (
 /obj/machinery/light,
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/medical/locker_room)
 "lYn" = (
@@ -17490,6 +17539,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "mzm" = (
@@ -18156,11 +18208,18 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d2aftmaint)
 "mXV" = (
-/obj/structure/window/reinforced/tinted/frosted{
-	dir = 8
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/obj/machinery/power/apc/north_mount,
+/obj/structure/cable/green{
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/locker_room)
+/area/medical/surgeryprep)
 "mYG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -25781,6 +25840,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/medical/surgeryobs)
 "sIr" = (
@@ -27379,6 +27441,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/medical/surgeryobs)
 "tJk" = (
@@ -28575,6 +28640,16 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/exam_room/exam_2)
+"uHv" = (
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/paleblue/border,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/power/apc/south_mount,
+/obj/structure/cable/green,
+/turf/simulated/floor/tiled/white,
+/area/medical/patient_wing)
 "uHG" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
@@ -30738,6 +30813,9 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/holopad,
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "wlW" = (
@@ -32108,9 +32186,6 @@
 /turf/simulated/floor/tiled,
 /area/medical/virology_fore_access)
 "xgD" = (
-/obj/structure/window/reinforced/tinted/frosted{
-	dir = 8
-	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
@@ -33421,6 +33496,9 @@
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/medical/surgeryobs)
@@ -42890,7 +42968,7 @@ cjj
 wXD
 cjj
 bQq
-bKi
+cEz
 eUd
 vMn
 gjC
@@ -43094,7 +43172,7 @@ fNW
 fNW
 fNW
 fNW
-nvq
+mXV
 wlM
 oen
 kxs
@@ -43472,7 +43550,7 @@ cUI
 svB
 svB
 bQq
-bKi
+gGp
 ncZ
 dKE
 gjC
@@ -44848,8 +44926,8 @@ jZP
 itq
 uTr
 luF
-lFZ
-uZs
+jSK
+uHv
 oPi
 oPi
 oPi
@@ -52006,9 +52084,9 @@ bTF
 viJ
 upx
 rVB
-rVB
-rVB
-rVB
+fot
+fot
+fot
 lYl
 viJ
 qRe
@@ -52200,9 +52278,9 @@ ftf
 viJ
 nYa
 bAd
-mXV
+bAd
 xgD
-mXV
+bAd
 jhl
 viJ
 xDg

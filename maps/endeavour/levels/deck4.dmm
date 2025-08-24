@@ -25479,6 +25479,7 @@
 /area/maintenance/station/eng_lower)
 "xBv" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/palebottlegreen,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
 "xBx" = (
