@@ -183,7 +183,8 @@
  * @return TRUE to break regular click handling logic.
  */
 /mob/proc/shift_middle_click_on(atom/target, location, control, list/params)
-	return FALSE
+	pointed(target)
+	return TRUE
 
 /**
  * * Nonstandard binding.
@@ -198,6 +199,13 @@
  * @return TRUE to break regular click handling logic.
  */
 /mob/proc/shift_click_on(atom/target, location, control, list/params)
+	return target.shift_clicked_on(src, location, control, params)
+
+/**
+ * * Will only be called from input of a client's mob. Remote control procs won't call this.
+ * @return TRUE to stop click propagation.
+ */
+/atom/proc/shift_clicked_on(mob/user, location, control, list/params)
 	return FALSE
 
 /**
@@ -205,13 +213,28 @@
  * @return TRUE to break regular click handling logic.
  */
 /mob/proc/ctrl_click_on(atom/target, location, control, list/params)
-	return FALSE
+	return target.ctrl_clicked_on(src, location, control, params)
+
+/**
+ * * Will only be called from input of a client's mob. Remote control procs won't call this.
+ * @return TRUE to stop click propagation.
+ */
+/atom/proc/ctrl_clicked_on(mob/user, location, control, list/params)
+	return CtrlClick(user) != "keep-going"
+	// return FALSE
 
 /**
  * * Standard binding; usually 'list turf'.
  * @return TRUE to break regular click handling logic.
  */
 /mob/proc/alt_click_on(atom/target, location, control, list/params)
+	return target.alt_clicked_on(src, location, control, params)
+
+/**
+ * * Will only be called from input of a client's mob. Remote control procs won't call this.
+ * @return TRUE to stop click propagation.
+ */
+/atom/proc/alt_clicked_on(mob/user, location, control, list/params)
 	return FALSE
 
 //* Double Click *//

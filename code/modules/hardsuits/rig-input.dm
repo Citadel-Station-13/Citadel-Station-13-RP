@@ -9,7 +9,10 @@
 	if(!using_module)
 		using_module = selected_module
 	if(!using_module)
-		#warn warn them
+		clickchain.chat_feedback(
+			SPAN_WARNING("None of your hardsuit's modules are currently the active module."),
+			target = src,
+		)
 		return NONE
 
 	if(clickchain.performer != wearer)
@@ -17,6 +20,7 @@
 
 	//! legacy
 	#warn trigger module
+	selected_module.
 	clickchain.performer.setClickCooldownLegacy(wearer?.get_attack_speed_legacy() || 0.8 SECONDS)
 	//! end
 	return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING

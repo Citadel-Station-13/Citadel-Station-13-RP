@@ -6,7 +6,7 @@
 	// as I don't know if we will at some point add, oh, I don't know, modules that let AIs
 	// fire lasers out of their core or something.
 	if(!active_item)
-		. = silicon_control_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+		. = silicon_control_interaction_chain(clickchain, clickchain_flags)
 		if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 			return
 	return . | ..()
@@ -37,7 +37,7 @@
 	else if(click_params["alt"])
 		executed_something = target.on_silicon_control_alt_click(src, actor, clickchain, clickchain_flags) && "alt"
 	else if(click_params["button"] == "middle")
-		executed_something = target.on_silicon_control_middile_click(src, actor, clickchain, clickchain_flags) && "middle"
+		executed_something = target.on_silicon_control_middle_click(src, actor, clickchain, clickchain_flags) && "middle"
 	if(executed_something)
 		clickchain.data[ACTOR_DATA_SILICON_CONTROL_LOG] ||= executed_something
 		return clickchain_flags | CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING

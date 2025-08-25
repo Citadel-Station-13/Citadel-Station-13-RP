@@ -10,7 +10,6 @@
 
 	if(restrained())
 		setClickCooldownLegacy(10)
-		RestrainedClickOn(A)
 		return 1
 
 	if(throw_mode_check())
@@ -69,9 +68,6 @@
 		A.attack_tk(src)
 
 #warn deal with all of this
-/mob/proc/ShiftMiddleClickOn(atom/A)
-	pointed(A)
-
 /mob/proc/ShiftClickOn(var/atom/A)
 	A.ShiftClick(src)
 
@@ -79,10 +75,9 @@
 	if(user.client && user.allow_examine(src))
 		user.examinate(src)
 
-/mob/proc/CtrlClickOn(var/atom/A)
-	A.CtrlClick(src)
-
+// LEGACY PROC, STOP USING THIS
 /atom/proc/CtrlClick(var/mob/user)
+	. = "keep-going"
 
 /atom/movable/CtrlClick(var/mob/user)
 	if(Adjacent(user))
