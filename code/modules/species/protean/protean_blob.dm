@@ -125,13 +125,13 @@
 /mob/living/simple_mob/protean_blob/resize(new_size, animate = FALSE, ignore_cooldown = FALSE)
 	. = ..()
 	var/new_buckmax = round(new_size * 2)
-	
+
 	if(has_buckled_mobs() && (new_buckmax < buckle_max_mobs))
 		visible_message(SPAN_WARNING("[src] sloughs off its riders!"))
 		unbuckle_all_mobs(BUCKLE_OP_FORCE)
-	
+
 	buckle_max_mobs = new_buckmax
-	
+
 
 /mob/living/simple_mob/protean_blob/update_health()
 	if(humanform)
@@ -670,7 +670,7 @@
 			chosen_list = GLOB.clothing_ears
 		if("headsets")
 			chosen_list = GLOB.clothing_headsets
-			
+
 
 	var/picked = input(src,"What clothing would you like to mimic?","Mimic Clothes") as null|anything in chosen_list
 	if(!ispath(chosen_list[picked]))
@@ -748,17 +748,17 @@
 	set name = "Give Reins"
 	set desc = "Give or take the person riding on you control of your movement."
 	set category = VERB_CATEGORY_IC
-	var/datum/component/riding_filter/mob/animal/riding_filter = GetComponent(/datum/component/riding_filter/mob/animal)
+	var/datum/component/riding_filter/mob/animal/protean/riding_filter = GetComponent(/datum/component/riding_filter/mob/animal/protean)
 	if(!riding_filter)
 		to_chat(src, "<span class='warning'>Your form is incompatible with being ridden! Somehow. This is a bug.</warning>")
 		return
-	if(riding_filter.handler_typepath == /datum/component/riding_handler/mob/animal)
-		riding_filter.handler_typepath = /datum/component/riding_handler/mob/animal/controllable
+	if(riding_filter.handler_typepath == /datum/component/riding_handler/mob/protean)
+		riding_filter.handler_typepath = /datum/component/riding_handler/mob/protean/controllable
 		to_chat(src, "<span class='notice'>You can now be controlled!")
 	else
-		riding_filter.handler_typepath = /datum/component/riding_handler/mob/animal
+		riding_filter.handler_typepath = /datum/component/riding_handler/mob/protean
 		to_chat(src, "<span class='notice'>You can no longer be controlled!")
-	var/datum/component/riding_handler/mob/animal/riding_handler = GetComponent(/datum/component/riding_handler/mob/animal)
+	var/datum/component/riding_handler/mob/protean/riding_handler = GetComponent(/datum/component/riding_handler/mob/protean)
 	if(!riding_handler)
 		//No need to update the handler if it doesn't exist.
 		return
