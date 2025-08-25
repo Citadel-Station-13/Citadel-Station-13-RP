@@ -7135,7 +7135,7 @@
 /area/shuttle/emt/general)
 "fpW" = (
 /obj/machinery/door/airlock/command{
-	name = "Bridge Meeting Room";
+	name = Nanotrasen Official On-Site Office;
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/command/bridge,
@@ -14584,16 +14584,21 @@
 	dir = 4;
 	id = "captaindoor";
 	name = "Office Doors";
-	pixel_x = -28;
-	pixel_y = 23;
+	pixel_x = -30;
+	pixel_y = 27;
 	req_access = list(20)
 	},
 /obj/machinery/button/remote/blast_door{
 	dir = 4;
 	id = "cap_office";
 	name = "Security Shutters";
-	pixel_x = -28;
-	pixel_y = 12
+	pixel_x = -30;
+	pixel_y = 16
+	},
+/obj/machinery/button/windowtint{
+	pixel_x = 27;
+	pixel_y = -16;
+	id = "cap_office"
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
@@ -15611,13 +15616,6 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/endeavour/general)
 "lSg" = (
-/obj/machinery/requests_console{
-	announcementConsole = 1;
-	department = "Bridge";
-	departmentType = 5;
-	name = "Bridge RC";
-	pixel_x = -32
-	},
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
@@ -15628,6 +15626,10 @@
 	dir = 5
 	},
 /obj/structure/disposalpipe/segment,
+/obj/machinery/requests_console/preset/captain{
+	pixel_x = -32;
+	pixel_y = 0
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "lSt" = (
@@ -15968,12 +15970,6 @@
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "meS" = (
-/obj/machinery/door/blast/shutters{
-	dir = 8;
-	id = "cap_office";
-	layer = 3.1;
-	name = "Colony Director's Shutters"
-	},
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -19073,7 +19069,6 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/command{
-	id_tag = "captaindoor";
 	name = "Facility Director's Office";
 	req_one_access = null
 	},
@@ -21546,7 +21541,7 @@
 	req_one_access = null
 	},
 /turf/simulated/floor/tiled/dark,
-/area/bridge)
+/area/crew_quarters/captain)
 "quJ" = (
 /turf/simulated/open,
 /area/rnd/misc_lab)
@@ -25492,7 +25487,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/dark,
-/area/bridge/hallway)
+/area/crew_quarters/captain)
 "tuJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -30500,10 +30495,13 @@
 	layer = 3.1;
 	name = "Colony Director's Shutters"
 	},
-/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
 /obj/map_helper/paint/commandblue,
+/obj/map_helper/electrochromatic_linker{
+	id = "cap_office"
+	},
 /turf/simulated/floor/plating,
-/area/bridge)
+/area/crew_quarters/captain)
 "xfq" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -61357,7 +61355,7 @@ blv
 blv
 blv
 rJn
-iZH
+oJK
 oJK
 oJK
 oJK
@@ -61745,7 +61743,7 @@ meS
 meS
 iZH
 iZH
-iZH
+oJK
 fMf
 jUy
 qcd
@@ -62521,7 +62519,7 @@ tps
 iSC
 fJS
 nyK
-vDK
+oJK
 nfQ
 xxf
 aJz

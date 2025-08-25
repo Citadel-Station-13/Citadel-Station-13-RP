@@ -13231,7 +13231,7 @@
 	},
 /area/centcom/bathroom)
 "PU" = (
-/obj/machinery/computer/communications{
+/obj/machinery/computer/shuttle_control/emergency{
 	dir = 4
 	},
 /turf/simulated/shuttle/floor/white,

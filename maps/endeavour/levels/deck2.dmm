@@ -4435,8 +4435,7 @@
 /area/medical/medbay4)
 "dbE" = (
 /obj/machinery/door/airlock/research{
-	id_tag = "researchdoor";
-	name = "Robotics Lab"
+	id_tag = "researchdoor"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -9376,8 +9375,7 @@
 /area/endeavour/hallway/d2afthall)
 "gwr" = (
 /obj/machinery/door/airlock/research{
-	id_tag = "researchdoor";
-	name = "Robotics Lab"
+	id_tag = "researchdoor"
 	},
 /obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled,
@@ -24667,8 +24665,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/research{
-	id_tag = "researchdoor";
-	name = "Robotics Lab"
+	id_tag = "researchdoor"
 	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -28226,22 +28223,6 @@
 /obj/structure/table/reinforced,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/chemistry_lab)
-"uro" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 4
-	},
-/obj/machinery/door/airlock/research{
-	id_tag = "researchdoor";
-	name = "R&D Distribution Area"
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/map_helper/access_helper/airlock/station/science/department,
-/turf/simulated/floor/tiled,
-/area/rnd/research/researchdivision)
 "urC" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/storage/firstaid/o2,
@@ -46438,7 +46419,7 @@ icZ
 uMH
 hNX
 keB
-uro
+rKV
 qfo
 trs
 gDB
