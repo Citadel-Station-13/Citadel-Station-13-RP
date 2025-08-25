@@ -616,6 +616,15 @@
 "DF" = (
 /turf/template_noop,
 /area/template_noop)
+"En" = (
+/obj/machinery/atmospherics/pipe/simple/visible/green{
+	dir = 4
+	},
+/obj/machinery/camera/network/engine{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
 "EH" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
@@ -913,6 +922,13 @@
 	},
 /turf/template_noop,
 /area/space)
+"Vb" = (
+/obj/machinery/atmospherics/pipe/simple/visible/green{
+	dir = 4
+	},
+/obj/machinery/camera/network/engine,
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
 "Vh" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red,
 /obj/machinery/light{
@@ -1041,7 +1057,7 @@ xM
 xM
 xM
 jf
-Ab
+VX
 Qo
 Ua
 tw
@@ -1065,7 +1081,7 @@ Ie
 Ie
 jf
 jf
-VX
+Ab
 as
 wJ
 fN
@@ -1075,7 +1091,7 @@ VX
 as
 wJ
 fN
-pp
+En
 jf
 jf
 jf
@@ -1276,7 +1292,7 @@ dB
 (13,1,1) = {"
 DF
 DF
-pp
+Vb
 HR
 HR
 dB
