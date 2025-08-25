@@ -4934,6 +4934,7 @@
 /obj/item/clothing/accessory/storage/pouches/large/tan,
 /obj/item/clothing/accessory/armor/legguards/tan,
 /obj/item/clothing/accessory/storage/laconic,
+/obj/item/storage/belt/security/tactical,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/miaphus/sdf)
 "zV" = (
@@ -5806,6 +5807,7 @@
 /obj/item/clothing/accessory/storage/pouches/large/tan,
 /obj/item/clothing/accessory/armor/legguards/tan,
 /obj/item/clothing/accessory/storage/laconic,
+/obj/item/storage/belt/security/tactical,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/miaphus/sdf)
 "Ev" = (
