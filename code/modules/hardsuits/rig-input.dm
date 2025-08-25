@@ -16,11 +16,16 @@
 		return NONE
 
 	if(clickchain.performer != wearer)
-		#warn ...
+		if(!ai_can_move_suit(clickchain.performer, check_user_module = TRUE))
+			clickchain.chat_feedback(
+				SPAN_WARNING("The hardsuit rejects your input."),
+				target = src,
+			)
+			return NONE
 
 	//! legacy
-	#warn trigger module
-	selected_module.
+	clickchain.data[ACTOR_DATA_RIG_CLICK_LOG] = "[src]: [selected_module]"
+	selected_module.engage(clickchain.target)
 	clickchain.performer.setClickCooldownLegacy(wearer?.get_attack_speed_legacy() || 0.8 SECONDS)
 	//! end
 	return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING

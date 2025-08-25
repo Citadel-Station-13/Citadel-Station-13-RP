@@ -2,15 +2,21 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /obj/machinery/turretid/on_silicon_control_alt_click(mob/living/silicon/user, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
-	#warn lethals
+	lethals = !lethal
+	clickchain.chat_feedback(
+		SPAN_WARNING("You set [src] to <b>[lethal ? "lethal" : "stun"]</b>."),
+		target = src,
+	)
+	clickchain.data[ACTOR_DATA_SILICON_CONTROL_LOG] = "turret-control [COORD(src)] [REF(src)] lethal [lethal ? "on" : "off"]"
+	updateTurrets()
 	return TRUE
 
 /obj/machinery/turretid/on_silicon_control_ctrl_click(mob/living/silicon/user, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
-	#warn toggle
+	enabled = !enabled
+	clickchain.chat_feedback(
+		SPAN_WARNING("You turn [src] <font color='[enabled ? "green" : "red"]'><b>[enabled ? "on" : "off"]</b></font>."),
+		target = src,
+	)
+	clickchain.data[ACTOR_DATA_SILICON_CONTROL_LOG] = "turret-control [COORD(src)] [REF(src)] power [enabled ? "on" : "off"]"
+	updateTurrets()
 	return TRUE
-
-/obj/machinery/turretid/on_silicon_control_ctrl_shift_click(mob/living/silicon/user, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
-	return FALSE
-
-/obj/machinery/turretid/on_silicon_control_middle_click(mob/living/silicon/user, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
-	return FALSE

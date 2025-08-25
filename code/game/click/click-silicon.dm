@@ -2,6 +2,11 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /mob/living/silicon/click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
+	// first, the camera hook
+	if(aiCamera.in_camera_mode)
+		aiCamera.camera_mode_off()
+		aiCamera.captureimage(clickchain.target, src, clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	// The hooks to perform AI control are before 'ranged_interaction_chain'
 	// as I don't know if we will at some point add, oh, I don't know, modules that let AIs
 	// fire lasers out of their core or something.
@@ -40,6 +45,8 @@
 		executed_something = target.on_silicon_control_middle_click(src, actor, clickchain, clickchain_flags) && "middle"
 	if(executed_something)
 		clickchain.data[ACTOR_DATA_SILICON_CONTROL_LOG] ||= executed_something
+		// TODO: better hiddenprint/tracing system that's actor-aware
+		target?.add_hiddenprint(usr)
 		return clickchain_flags | CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	return clickchain_flags
 

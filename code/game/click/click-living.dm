@@ -4,6 +4,12 @@
 /mob/living/click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
 	if(!canClick())
 		return clickchain_flags
+	//! legacy-ish; is there a better way to do this?
+	if(istype(loc, /obj/vehicle))
+		var/obj/vehicle/in_vehicle = loc
+		if(in_vehicle.is_driver(src))
+			return in_vehicle.handle_vehicle_click(clickchain, clickchain_flags)
+	//! end
 	if(!IS_CONSCIOUS(src))
 		// only warn if they're trying to click Something
 		if(active_item || clickchain.target)

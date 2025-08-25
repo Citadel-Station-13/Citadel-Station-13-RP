@@ -127,7 +127,20 @@
 		//! legacy
 		trigger_aiming(TARGET_CAN_CLICK)
 		//! end
-		return clickchain_flags | CLICKCHAIN_DID_SOMETHING
+		return clickchain_flags | CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
+
+	if(restrained())
+		// TODO: should we warn them that they're restrained?
+		setClickCooldownLegacy(1 SECONDS)
+		return clickchain_flags | CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
+
+	if(throw_mode_check())
+		if(isturf(clickchain.target) || isturf(clickchain.target.loc))
+			throw_active_held_item(clickchain.target)
+			// TODO: pass in overhand arg so we can turn throw mode off immediately, not after the call
+			throw_mode_off()
+			return clickchain_flags | CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
+		throw_mode_off()
 
 	// check if we can click 'out' from our current location
 	// TODO: refactor this, maybe?
@@ -178,6 +191,16 @@
 	return FALSE
 
 /**
+ * * Will only be called from input of a client's mob. Remote control procs won't call this.
+ * @return TRUE to stop click propagation.
+ */
+/atom/proc/ctrl_shift_clicked_on(mob/user, location, control, list/params)
+	. = CtrlShiftClick(user) != "keep-going"
+	if(!.)
+		open_context_menu(new /datum/event_args/actor(user))
+		. = TRUE
+
+/**
  * * Nonstandard binding.
  * * Usually 'point-at'.
  * @return TRUE to break regular click handling logic.
@@ -188,7 +211,7 @@
 
 /**
  * * Nonstandard binding.
- * * Usually rigsuit activation.
+ * * Usually rigsuit activation, which isn't actually on this proc, so we generally just do nothing.
  * @return TRUE to break regular click handling logic.
  */
 /mob/proc/middle_click_on(atom/target, location, control, list/params)
@@ -206,7 +229,7 @@
  * @return TRUE to stop click propagation.
  */
 /atom/proc/shift_clicked_on(mob/user, location, control, list/params)
-	return FALSE
+	return ShiftClick(user) != "keep-going"
 
 /**
  * * Standard binding; usually 'pull'.

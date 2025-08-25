@@ -18,10 +18,6 @@
  * * clickchain_flags - see [code/__DEFINES/procs/clickcode.dm]
  */
 /obj/item/proc/melee_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
-	// todo: this should be not overridable but it's not right now for indirection handling. we should just have
-	//       an alternative indirection proc.
-	// SHOULD_NOT_OVERRIDE(TRUE)
-
 	// wow we have a lot of params
 	// if only this was ss14 so we could have the EntityEventArgs :pleading:
 

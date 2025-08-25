@@ -29,8 +29,6 @@
 			to_chat(src, "Somehow you bugged the system. Setting your hardsuit mode to middle-click.")
 			hardsuit_click_mode = MIDDLE_CLICK
 
-#warn this
-
 /mob/living/click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
 	if(!active_item)
 		var/route_to_rig = FALSE
@@ -49,7 +47,7 @@
 		var/obj/item/hardsuit/maybe_hardsuit = get_hardsuit(TRUE)
 		if(route_to_rig && maybe_hardsuit)
 			. = attempt_rigsuit_click(clickchain, clickchain_flags, maybe_hardsuit)
-			clickchain.data[ACTOR_DATA_RIG_CLICK_LOG] ||= "[ref(maybe_hardsuit)]"
+			clickchain.data[ACTOR_DATA_RIG_CLICK_LOG] ||= "[maybe_hardsuit]"
 			return
 	return ..()
 
@@ -70,22 +68,6 @@
 
 /mob/living/silicon/pai/can_use_hardsuit()
 	return loc == card
-
-/mob/living/proc/HardsuitClickOn(var/atom/A, var/alert_ai = 0)
-	if(!can_use_hardsuit() || !canClick())
-		return 0
-	var/obj/item/hardsuit/hardsuit = get_hardsuit(TRUE)
-	if(hardsuit?.selected_module)
-		if(src != hardsuit.wearer)
-			if(hardsuit.ai_can_move_suit(src, check_user_module = 1))
-				message_admins("[key_name_admin(src, include_name = 1)] is trying to force \the [key_name_admin(hardsuit.wearer, include_name = 1)] to use a hardsuit module.")
-			else
-				return 0
-		hardsuit.selected_module.engage(A, alert_ai)
-		if(ismob(A)) // No instant mob attacking - though modules have their own cooldowns
-			setClickCooldownLegacy(get_attack_speed_legacy())
-		return 1
-	return 0
 
 #undef MIDDLE_CLICK
 #undef ALT_CLICK

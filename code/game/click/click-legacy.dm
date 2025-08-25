@@ -1,25 +1,3 @@
-
-#warn obliterate
-
-/mob/proc/ClickOn(atom/A, params, clickchain_flags)
-	if(istype(loc, /obj/vehicle/sealed/mecha))
-		if(!locate(/turf) in list(A, A.loc)) // Prevents inventory from being drilled
-			return
-		var/obj/vehicle/sealed/mecha/M = loc
-		return M.click_action(A, src, params)
-
-	if(restrained())
-		setClickCooldownLegacy(10)
-		return 1
-
-	if(throw_mode_check())
-		if(isturf(A) || isturf(A.loc))
-			throw_active_held_item(A)
-			// todo: pass in overhand arg so we aren't stuck using throw mode off AFTER the call
-			throw_mode_off()
-			return 1
-		throw_mode_off()
-
 // todo: this is legacy because majority of calls to it are unaudited and unnecessary; new system
 //       handles melee cooldown at clickcode level.
 /mob/proc/setClickCooldownLegacy(var/timeout)
@@ -71,6 +49,7 @@
 /mob/proc/ShiftClickOn(var/atom/A)
 	A.ShiftClick(src)
 
+// LEGACY PROC, STOP USING THIS
 /atom/proc/ShiftClick(var/mob/user)
 	if(user.client && user.allow_examine(src))
 		user.examinate(src)
@@ -100,6 +79,7 @@
 		return
 	client.list_turf(T)
 
+// LEGACY PROC, STOP USING THIS
 /atom/proc/AltClick(var/mob/user)
 	if(open_context_menu(new /datum/event_args/actor(user)))
 		return TRUE
@@ -114,12 +94,9 @@
 /mob/proc/snowflake_ai_vision_adjacency(var/turf/T)
 	return T.AdjacentQuick(src)
 
-/mob/proc/CtrlShiftClickOn(var/atom/A)
-	A.CtrlShiftClick(src)
-	return
-
+// LEGACY PROC, STOP USING THIS
 /atom/proc/CtrlShiftClick(var/mob/user)
-	return
+	return "keep-going"
 
 /mob/proc/LaserEyes(atom/A, params)
 	return
