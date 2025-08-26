@@ -1,3 +1,8 @@
+/atom/proc/attack_ai(mob/user as mob)
+
+/atom/proc/attack_robot(mob/user as mob)
+	attack_ai(user)
+
 /*
 	AI ClickOn()
 
@@ -18,21 +23,9 @@
 	else
 		A.move_camera_by_click()
 
-/obj/machinery/door/airlock/AIShiftClick(mob/user)  // Opens and closes doors!
-	add_hiddenprint(user)
-	toggle_open(user)//instead of topic() procs
-	return TRUE
-
 /obj/machinery/door/airlock/AICtrlClick(mob/user) // Bolts doors
 	add_hiddenprint(user)
 	toggle_bolt(user)//apparently this is better than the topic function
-	return TRUE
-
-/obj/machinery/door/airlock/AIAltClick(mob/user) // Electrifies doors.
-	if(electrified_until)
-		electrify(0, 1)
-	else
-		electrify(-1,1)
 	return TRUE
 
 /mob/living/silicon/ai/snowflake_ai_vision_adjacency(var/turf/T)

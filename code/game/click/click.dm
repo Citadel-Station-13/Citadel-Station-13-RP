@@ -101,8 +101,19 @@
 		if(ctrl_click_on(target, location, control, params))
 			return TRUE
 
+	var/datum/event_args/actor/clickchain/clickchain = new
+	clickchain.initiator = src
+	clickchain.performer = src
+	clickchain.target = target
+	clickchain.target_zone = zone_sel?.selecting || BP_TORSO
+	clickchain.using_intent = a_intent
+	clickchain.using_hand_index = active_hand
 
-#warn impl
+	var/clickchain_flags = NONE
+	var/ret_clickchain_flags = click_interaction(clickchain, clickchain_flags)
+
+	if(ret_clickchain_flags & (CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_ALWAYS_LOG))
+		log_clickchain(clickchain, clickchain_flags)
 
 /**
  * Standard world-click interaction chain.
