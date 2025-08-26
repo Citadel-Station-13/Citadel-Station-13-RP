@@ -580,8 +580,7 @@
 		var/obj/item/I = locate(href_list["clickitem"])
 		if(get_dist(src, get_turf(I)) > 7)
 			return
-		if(src.client)
-			src.ClickOn(I)
+		click_on(I, inject_clickchain_flags = CLICKCHAIN_FROM_HREF)
 
 	if (href_list["flavor_change"])
 		if(usr != src)

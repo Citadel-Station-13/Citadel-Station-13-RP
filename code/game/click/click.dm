@@ -45,7 +45,6 @@
  * * This should never be called other than as a **verb** executed by our own client.
  */
 /mob/proc/click_on(atom/target, location, control, raw_params, inject_clickchain_flags)
-	SHOULD_NOT_OVERRIDE(TRUE)
 	// make sure no one's doing something insane
 	if(usr != src)
 		CRASH("non-src usr click_on in mob. someone is abusing the proc and likely incorrectly so.")
@@ -80,8 +79,6 @@
 	 * for this.
 	 * Generally, we consider the button being pressed/depressed as the active cilck button.
 	 */
-	if(click_on_special(target, location, control, params))
-		return TRUE
 	if(params["shift"])
 		if(params["button"] == "middle")
 			if(shift_middle_click_on(target, location, control, params))
@@ -100,6 +97,8 @@
 	else if(params["ctrl"])
 		if(ctrl_click_on(target, location, control, params))
 			return TRUE
+	if(click_on_special(target, location, control, params))
+		return TRUE
 
 	var/datum/event_args/actor/clickchain/clickchain = new
 	clickchain.initiator = src
@@ -108,12 +107,14 @@
 	clickchain.target_zone = zone_sel?.selecting || BP_TORSO
 	clickchain.using_intent = a_intent
 	clickchain.using_hand_index = active_hand
+	clickchain.click_params = params
 
 	var/clickchain_flags = inject_clickchain_flags
 	var/ret_clickchain_flags = click_interaction(clickchain, clickchain_flags)
 
 	if(ret_clickchain_flags & (CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_ALWAYS_LOG))
 		log_clickchain(clickchain, clickchain_flags)
+	return !!(ret_clickchain_flags & CLICKCHAIN_DID_SOMETHING)
 
 /**
  * Standard world-click interaction chain.
@@ -189,6 +190,14 @@
 //* Special modifiers; these are often routed per-mob. *//
 
 /**
+ * * Handled before atom procs.
+ * @return TRUE to break regular click handling logic.
+ */
+/mob/proc/click_on_override(atom/target, location, control, list/params)
+	return FALSE
+
+/**
+ * * Handled after atom procs.
  * @return TRUE to break regular click handling logic.
  */
 /mob/proc/click_on_special(atom/target, location, control, list/params)
@@ -283,8 +292,34 @@
 		CRASH("non-src usr double_click_on in mob. someone is abusing the proc and likely incorrectly so.")
 	// Throttle self outbound clicks to once per tick.
 	if(world.time < next_click)
-		return FALSE
+		return TRUE
 	next_click = world.time + world.tick_lag
+
+	var/list/params = params2list(raw_params)
+
+	if(double_click_on_override(target, location, control, params))
+		return TRUE
+	if(target.double_clicked_on(src, location, control, params))
+		return TRUE
+	if(double_click_on_special(target, location, control, params))
+		return TRUE
+	return TRUE
+
+/**
+ * * Handled before atom procs.
+ * @return TRUE to break regular click handling logic.
+ */
+/mob/proc/double_click_on_override(atom/target, location, control, list/params)
+	return FALSE
+
+/**
+ * * Handled after atom procs.
+ * @return TRUE to break regular click handling logic.
+ */
+/mob/proc/double_click_on_special(atom/target, location, control, list/params)
+	return FALSE
+
+/atom/proc/double_clicked_on(mob/user, location, control, list/params)
 	return FALSE
 
 //* Mouse Wheel *//
