@@ -935,7 +935,7 @@
 /obj/effect/floor_decal/corner/black/full{
 	dir = 1
 	},
-/obj/effect/floor_decal/industrial/outline/grey,
+/obj/effect/floor_decal/industrial/outline/red,
 /obj/structure/table/rack/shelf/steel,
 /obj/item/gun/projectile/ballistic/automatic/sts35,
 /obj/item/gun/projectile/ballistic/automatic/sts35,
@@ -953,9 +953,21 @@
 /area/security/tactical)
 "aIn" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/projectile/energy/laser,
-/obj/item/gun/projectile/energy/laser,
 /obj/effect/floor_decal/industrial/outline/red,
+/obj/item/storage/box/flashshells/large{
+	pixel_y = -8
+	},
+/obj/item/storage/box/stunshells/large{
+	pixel_y = -4
+	},
+/obj/item/storage/box/shotgunammo/large,
+/obj/item/storage/box/shotgunammo/large,
+/obj/item/storage/box/shotgunshells/large{
+	pixel_y = 4
+	},
+/obj/item/storage/box/shotgunshells/large{
+	pixel_y = 4
+	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
@@ -3375,10 +3387,17 @@
 /area/endeavour/hallway/d3fwdmaint)
 "cCM" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/effect/floor_decal/industrial/outline/red,
-/obj/item/gun/projectile/energy/ionrifle,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/item/gun/projectile/energy/ionrifle{
+	pixel_x = 0;
+	pixel_y = -5
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
+	},
+/obj/item/gun/projectile/energy/ionrifle{
+	pixel_y = 5;
+	pixel_x = 0
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
@@ -4661,6 +4680,13 @@
 	},
 /turf/simulated/floor/wood,
 /area/hydroponics/garden)
+"dyG" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/item/gun/projectile/energy/phasegun/rifle,
+/obj/item/gun/projectile/energy/phasegun/rifle,
+/turf/simulated/floor/tiled/dark,
+/area/security/armoury)
 "dyK" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
@@ -4760,20 +4786,16 @@
 "dBs" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/effect/floor_decal/industrial/outline/red,
-/obj/item/storage/box/flashshells,
-/obj/item/storage/box/shotgunammo,
-/obj/item/storage/box/shotgunshells{
-	pixel_x = 6;
-	pixel_y = -1
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat,
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat,
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat{
+	pixel_x = 0;
+	pixel_y = -8
 	},
-/obj/item/storage/box/shotgunshells{
-	pixel_x = 6;
-	pixel_y = -1
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat{
+	pixel_x = 0;
+	pixel_y = 8
 	},
-/obj/item/gun/projectile/ballistic/shotgun/pump/combat,
-/obj/item/gun/projectile/ballistic/shotgun/pump/combat,
-/obj/item/gun/projectile/ballistic/shotgun/pump/combat,
-/obj/item/gun/projectile/ballistic/shotgun/pump/combat,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -6295,23 +6317,8 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/belterdock)
 "eCc" = (
-/obj/effect/floor_decal/corner/red{
-	dir = 9
-	},
-/obj/effect/floor_decal/industrial/outline/red,
 /obj/structure/table/rack/shelf/steel,
-/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
-/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
-/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
-/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
-/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
-/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
-/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
-/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
-/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
-/obj/item/gun/projectile/ballistic/fiveseven,
-/obj/item/gun/projectile/ballistic/fiveseven,
-/obj/item/gun/projectile/ballistic/fiveseven,
+/obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "eDc" = (
@@ -7563,6 +7570,23 @@
 	},
 /turf/simulated/floor/wood,
 /area/endeavour/hallway/d3fwdhall)
+"fAy" = (
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/structure/table/rack/shelf/steel,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/gun/projectile/ballistic/fiveseven,
+/obj/item/gun/projectile/ballistic/fiveseven,
+/obj/item/gun/projectile/ballistic/fiveseven,
+/turf/simulated/floor/tiled/dark,
+/area/security/tactical)
 "fBD" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/secure_closet/freezer/money,
@@ -7828,7 +7852,7 @@
 	dir = 8
 	},
 /obj/machinery/camera/network/security,
-/obj/effect/floor_decal/industrial/outline/grey,
+/obj/effect/floor_decal/industrial/outline/red,
 /obj/structure/table/rack/shelf/steel,
 /obj/item/gun/projectile/ballistic/automatic/wt550{
 	pixel_y = 7
@@ -8288,7 +8312,7 @@
 /obj/effect/floor_decal/corner/black/full{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/outline/grey,
+/obj/effect/floor_decal/industrial/outline/red,
 /obj/item/clothing/head/helmet/ballistic{
 	pixel_x = -5;
 	pixel_y = 5
@@ -11752,9 +11776,15 @@
 /area/crew_quarters/game_room)
 "iDZ" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/effect/floor_decal/industrial/outline/red,
-/obj/item/gunbox/lethal,
-/obj/item/gunbox/lethal,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/item/gunbox/lethal{
+	pixel_x = 0;
+	pixel_y = -6
+	},
+/obj/item/gunbox/lethal{
+	pixel_x = 0;
+	pixel_y = 6
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -15573,6 +15603,8 @@
 	},
 /obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green,
+/obj/structure/table/rack/shelf/steel,
+/obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "lNv" = (
@@ -15932,6 +15964,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/hangar)
+"mel" = (
+/obj/machinery/light_switch{
+	dir = 4;
+	pixel_x = -24;
+	pixel_y = 6
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/tactical)
 "mfr" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -16096,10 +16136,16 @@
 "mkZ" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/effect/floor_decal/industrial/outline/red,
-/obj/item/gun/projectile/energy/phasegun/rifle,
-/obj/item/gun/projectile/energy/phasegun/rifle,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
+	},
+/obj/item/gun/projectile/energy/laser{
+	pixel_x = 1;
+	pixel_y = -10
+	},
+/obj/item/gun/projectile/energy/laser{
+	pixel_x = 0;
+	pixel_y = 5
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
@@ -19749,12 +19795,16 @@
 	pixel_x = -22
 	},
 /obj/item/storage/box/flashbangs{
-	pixel_y = 7
+	pixel_y = 7;
+	pixel_x = -3
 	},
 /obj/structure/table/steel,
 /obj/effect/floor_decal/corner/red/full,
-/obj/effect/floor_decal/industrial/outline/red,
-/obj/item/storage/box/flashbangs,
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/item/storage/box/flashbangs{
+	pixel_x = -3;
+	pixel_y = 0
+	},
 /obj/machinery/light{
 	dir = 8
 	},
@@ -22983,11 +23033,6 @@
 "rtF" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
-	},
-/obj/machinery/light_switch{
-	dir = 4;
-	pixel_x = -24;
-	pixel_y = 6
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -26710,20 +26755,21 @@
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/foyer)
 "tWm" = (
-/obj/structure/table/rack/steel,
-/obj/structure/window/reinforced,
 /obj/machinery/light,
 /obj/effect/floor_decal/corner/red{
 	dir = 10
 	},
-/obj/effect/floor_decal/industrial/outline/red,
+/obj/effect/floor_decal/industrial/outline/grey,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/red{
 	dir = 10
 	},
-/obj/item/storage/toolbox/syndicate,
+/obj/item/storage/toolbox/syndicate{
+	pixel_x = 0
+	},
+/obj/structure/table/steel,
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "tWr" = (
@@ -27142,8 +27188,14 @@
 	dir = 8
 	},
 /obj/structure/table/steel,
-/obj/item/storage/box/firingpins,
-/obj/item/storage/box/firingpins,
+/obj/item/storage/box/firingpins{
+	pixel_x = -6;
+	pixel_y = 9
+	},
+/obj/item/storage/box/firingpins{
+	pixel_x = 5;
+	pixel_y = 9
+	},
 /obj/machinery/recharger/wallcharger{
 	pixel_x = -22
 	},
@@ -27151,6 +27203,11 @@
 /obj/item/radio/intercom/department/security{
 	pixel_y = 24;
 	dir = 1
+	},
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/item/storage/box/empslite{
+	pixel_y = -3;
+	pixel_x = -6
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
@@ -28883,9 +28940,15 @@
 "vAE" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/gun/projectile/energy/gun,
-/obj/item/gun/projectile/energy/gun,
-/obj/item/gun/projectile/energy/gun,
-/obj/effect/floor_decal/industrial/outline/red,
+/obj/item/gun/projectile/energy/gun{
+	pixel_x = 0;
+	pixel_y = -6
+	},
+/obj/item/gun/projectile/energy/gun{
+	pixel_x = 0;
+	pixel_y = 6
+	},
+/obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
@@ -28971,11 +29034,7 @@
 /area/security/hallway)
 "vEy" = (
 /obj/effect/floor_decal/corner/black/full,
-/obj/effect/floor_decal/industrial/outline/grey,
-/obj/machinery/air_alarm{
-	dir = 1;
-	pixel_y = -22
-	},
+/obj/effect/floor_decal/industrial/outline/red,
 /obj/item/clothing/accessory/armor/armorplate/heavy{
 	pixel_x = -4;
 	pixel_y = -3
@@ -29025,6 +29084,7 @@
 	pixel_y = -3
 	},
 /obj/structure/table/rack/shelf/steel,
+/obj/machinery/air_alarm/east_mount,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "vEC" = (
@@ -31134,7 +31194,7 @@
 /obj/item/ammo_magazine/a7_62mm,
 /obj/item/ammo_magazine/a7_62mm,
 /obj/item/gun/projectile/ballistic/automatic/z8,
-/obj/effect/floor_decal/industrial/outline/grey,
+/obj/effect/floor_decal/industrial/outline/red,
 /obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
@@ -32741,17 +32801,11 @@
 /area/crew_quarters/heads/hop)
 "yiF" = (
 /obj/structure/table/steel,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced,
-/obj/item/storage/box/teargas{
-	pixel_y = 3
-	},
+/obj/item/storage/box/teargas,
 /obj/effect/floor_decal/corner/red{
 	dir = 10
 	},
-/obj/effect/floor_decal/industrial/outline/red,
+/obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "yiU" = (
@@ -39911,10 +39965,10 @@ cHK
 cZm
 nLm
 aId
-suZ
+fAy
 xad
-wyr
-wyr
+mel
+eCc
 wyr
 wyr
 wyr
@@ -42436,7 +42490,7 @@ cGi
 pNm
 vLc
 iQf
-pNm
+dyG
 pNm
 hvn
 eEQ
