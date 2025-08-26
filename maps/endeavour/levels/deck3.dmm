@@ -3308,6 +3308,12 @@
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/warehouse)
+"cyy" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/turf/simulated/floor/carpet,
+/area/security/warden)
 "cyG" = (
 /obj/machinery/status_display/supply_display{
 	pixel_x = -32
@@ -3452,6 +3458,10 @@
 /obj/structure/railing,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d3aftmaint)
+"cFw" = (
+/obj/machinery/air_alarm/south_mount,
+/turf/simulated/floor/tiled/dark,
+/area/security/warden)
 "cFH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -3927,8 +3937,12 @@
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/starboardsolar)
 "cUJ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/hop)
 "cUO" = (
@@ -6394,6 +6408,8 @@
 	name = "Private Quarters";
 	req_one_access = null
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
 "eFI" = (
@@ -7354,11 +7370,11 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
@@ -8043,6 +8059,18 @@
 	},
 /turf/simulated/floor/plating,
 /area/quartermaster/storage)
+"fSj" = (
+/obj/map_helper/paint/darkred,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/blue,
+/turf/simulated/floor/plating,
+/area/security/warden)
 "fSr" = (
 /obj/machinery/mineral/unloading_machine,
 /obj/structure/window/reinforced{
@@ -9287,6 +9315,9 @@
 	pixel_x = 24
 	},
 /obj/effect/floor_decal/spline/fancy/wood,
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 8
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/heads/hop)
 "gRa" = (
@@ -9947,6 +9978,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
 "hmC" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
 /turf/simulated/floor/carpet,
 /area/security/warden)
 "hmF" = (
@@ -11934,6 +11969,12 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/map_helper/access_helper/airlock/station/head_office/head_of_personnel,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/hop)
 "iMJ" = (
@@ -12203,6 +12244,7 @@
 /obj/machinery/camera/network/civilian{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/hop)
 "iZJ" = (
@@ -13430,6 +13472,9 @@
 	dir = 5
 	},
 /mob/living/simple_mob/animal/passive/dog/corgi/Ian,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hop)
 "jXZ" = (
@@ -16421,6 +16466,12 @@
 /obj/map_helper/access_helper/airlock/station/security/department,
 /turf/simulated/floor/tiled,
 /area/security/brig)
+"muU" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/crew_quarters/heads/hop)
 "muX" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -22023,6 +22074,7 @@
 /obj/structure/table/woodentable,
 /obj/item/toy/plushie/penguin_baby,
 /obj/machinery/recharger,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/heads/hop)
 "qBQ" = (
@@ -23703,16 +23755,9 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d3aftmaint)
 "rQE" = (
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/corner/red/border,
-/obj/machinery/fire_alarm/south_mount{
-	pixel_y = -24
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/dark,
-/area/security/hallway)
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/carpet/bcarpet,
+/area/crew_quarters/heads/hop)
 "rQK" = (
 /obj/landmark/spawnpoint/job/detective,
 /turf/simulated/floor/carpet,
@@ -23976,6 +24021,9 @@
 "rZv" = (
 /obj/structure/table/woodentable,
 /obj/item/handcuffs/fuzzy,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
 "rZG" = (
@@ -26482,6 +26530,15 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
+"tLY" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/red/border,
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/machinery/fire_alarm/south_mount,
+/turf/simulated/floor/tiled/dark,
+/area/security/hallway)
 "tMa" = (
 /obj/structure/cable/green{
 	icon_state = "0-8"
@@ -27508,6 +27565,8 @@
 /obj/effect/floor_decal/corner/red{
 	dir = 9
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
 "uvh" = (
@@ -27764,6 +27823,9 @@
 	},
 /obj/machinery/light/small{
 	dir = 8
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
 	},
 /turf/simulated/floor/carpet,
 /area/security/warden)
@@ -29402,6 +29464,12 @@
 /area/maintenance/dormitory)
 "vOS" = (
 /obj/effect/floor_decal/spline/fancy/wood,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/heads/hop)
 "vOT" = (
@@ -29616,6 +29684,8 @@
 /obj/effect/floor_decal/corner/red{
 	dir = 9
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
 "vWW" = (
@@ -43455,7 +43525,7 @@ fbJ
 xcs
 sma
 lKR
-llB
+fSj
 wku
 mWO
 pNN
@@ -43850,7 +43920,7 @@ uuE
 vWL
 eFC
 hmC
-hmC
+cyy
 eEQ
 eEQ
 dmg
@@ -44044,7 +44114,7 @@ eZL
 mKK
 srF
 rZv
-xEC
+cFw
 eEQ
 eEQ
 ueN
@@ -49271,7 +49341,7 @@ aWP
 vSG
 lQJ
 btf
-nnu
+tLY
 jwE
 jwE
 jwE
@@ -49465,7 +49535,7 @@ cEd
 jep
 lQJ
 jtn
-rQE
+nnu
 vOF
 jzh
 cjU
@@ -59529,9 +59599,9 @@ pty
 pty
 qCo
 syD
-fJl
-fJl
-fJl
+muU
+rQE
+rQE
 vOS
 wMW
 qVm

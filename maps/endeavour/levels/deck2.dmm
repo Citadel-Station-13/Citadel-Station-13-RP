@@ -7247,12 +7247,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "eYh" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 6
-	},
+/obj/machinery/atmospherics/pipe/tank,
 /turf/simulated/floor/plating,
 /area/medical/virologymaint)
 "eYr" = (
@@ -9930,10 +9925,10 @@
 /turf/simulated/floor/plating,
 /area/maintenance/research/port)
 "gSV" = (
-/obj/structure/table/rack/shelf,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
+/obj/machinery/vending/coffee,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/rnd/research/researchdivision)
 "gTW" = (
@@ -10949,13 +10944,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/morgue)
-"hFZ" = (
-/obj/effect/floor_decal/rust,
-/obj/machinery/atmospherics/component/binary/pump/high_power/on{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/medical/virologymaint)
 "hGa" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -13448,14 +13436,12 @@
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
 "jAc" = (
-/obj/machinery/button/remote{
-	dir = 4;
-	id = "emg_pump";
-	name = "EMERGENCY XENO-BIO KILL SWITCH";
-	pixel_x = -24
+/obj/structure/window/reinforced{
+	dir = 8
 	},
-/turf/simulated/wall/r_wall/prepainted/science,
-/area/rnd/workshop)
+/obj/machinery/vending/giftvendor,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/rnd/research/researchdivision)
 "jAy" = (
 /obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
@@ -13726,11 +13712,14 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "jKT" = (
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 9
+/obj/machinery/button/remote{
+	dir = 4;
+	id = "emg_pump";
+	name = "EMERGENCY XENO-BIO KILL SWITCH";
+	pixel_x = -24
 	},
-/turf/simulated/floor/plating,
-/area/medical/virologymaint)
+/turf/simulated/floor/tiled,
+/area/rnd/research_foyer_auxiliary)
 "jLg" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 5
@@ -25404,8 +25393,8 @@
 /turf/simulated/wall/r_wall/prepainted/medical,
 /area/medical/virology)
 "soK" = (
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 6
+/obj/machinery/atmospherics/component/binary/pump/high_power/on{
+	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/medical/virologymaint)
@@ -27352,12 +27341,6 @@
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d2aftmaint)
-"tHr" = (
-/obj/machinery/atmospherics/pipe/tank{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/medical/virologymaint)
 "tHz" = (
 /obj/structure/railing{
 	dir = 1
@@ -41389,7 +41372,7 @@ ilx
 uOW
 vLZ
 lzL
-rMF
+jKT
 eJA
 xSp
 qGt
@@ -46433,7 +46416,7 @@ gDB
 gDB
 gDB
 gSV
-gSV
+jAc
 uUl
 uUl
 vBg
@@ -48171,7 +48154,7 @@ fFG
 gEY
 mwF
 lTR
-jAc
+wiB
 gCd
 cXQ
 roh
@@ -53039,7 +53022,7 @@ ljG
 sCK
 qpK
 idr
-idr
+eYh
 soK
 pqK
 qpQ
@@ -53233,8 +53216,8 @@ iSQ
 mPg
 aXH
 idr
-eYh
-jKT
+pZh
+vAi
 vdS
 opn
 vAi
@@ -53427,7 +53410,7 @@ pmW
 mPg
 aXH
 idr
-hFZ
+kvC
 idr
 cac
 nHo
@@ -53621,7 +53604,7 @@ dNA
 viR
 idA
 idr
-tHr
+vAi
 idr
 loA
 huo

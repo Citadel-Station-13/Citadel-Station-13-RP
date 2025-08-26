@@ -18887,8 +18887,7 @@
 	id = "podbayouterhanger";
 	name = "Pod Bay Outer Hanger Door";
 	pixel_y = 32;
-	req_access = list(19,10,2);
-	req_one_access = list(19,10,2)
+	req_one_access = list(19,10,2,5)
 	},
 /obj/machinery/light{
 	dir = 1
