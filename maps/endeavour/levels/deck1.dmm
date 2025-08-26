@@ -7135,7 +7135,7 @@
 /area/shuttle/emt/general)
 "fpW" = (
 /obj/machinery/door/airlock/command{
-	name = Nanotrasen Official On-Site Office;
+	name = "Nanotrasen Official On-Site Office";
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/command/bridge,

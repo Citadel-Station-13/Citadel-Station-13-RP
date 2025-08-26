@@ -59,9 +59,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "acm" = (
 /obj/effect/floor_decal/corner/blue/diagonal,
 /obj/machinery/air_alarm/south_mount,
@@ -513,9 +511,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "awG" = (
 /obj/machinery/space_heater,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -1666,9 +1662,7 @@
 	},
 /obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "buV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -2053,9 +2047,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "bPS" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -2442,9 +2434,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "cgT" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -2688,9 +2678,7 @@
 	pixel_y = 28
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "cso" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 5
@@ -2866,9 +2854,7 @@
 	},
 /obj/item/radio/beacon,
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "cBS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 5
@@ -3237,9 +3223,7 @@
 	},
 /obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "cQu" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -3313,9 +3297,7 @@
 	},
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless/ceiling,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/space)
 "cSj" = (
 /obj/machinery/atmospherics/component/unary/outlet_injector{
 	dir = 8;
@@ -3658,9 +3640,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "dlT" = (
 /obj/structure/table/rack{
 	dir = 8;
@@ -4077,9 +4057,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "dCE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -4717,9 +4695,7 @@
 /area/tcommsat/entrance)
 "ekG" = (
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "ekS" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/black{
 	dir = 4
@@ -5040,9 +5016,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "eyA" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/lightorange/border,
@@ -5504,9 +5478,7 @@
 /area/tcommsat/computer)
 "eRS" = (
 /turf/simulated/wall/r_wall/prepainted/command,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "eSa" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/structure/disposalpipe/segment{
@@ -5669,9 +5641,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "eZb" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -5862,9 +5832,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "fiC" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 10
@@ -5879,9 +5847,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "fjk" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -6574,9 +6540,7 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/item/storage/toolbox/emergency,
 /turf/simulated/floor/plating,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "fRo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -7261,9 +7225,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "gtE" = (
 /obj/machinery/space_heater,
 /obj/effect/floor_decal/industrial/warning,
@@ -8030,9 +7992,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "hhc" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/engineering,
@@ -8153,9 +8113,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "hnd" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -8323,9 +8281,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "htI" = (
 /obj/structure/railing{
 	dir = 1
@@ -8675,15 +8631,11 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "hKh" = (
 /obj/machinery/light/no_nightshift,
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "hKP" = (
 /obj/effect/floor_decal/corner_oldtile/white/diagonal,
 /obj/machinery/appliance/mixer/cereal,
@@ -9650,9 +9602,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "iDP" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
@@ -9851,9 +9801,7 @@
 "iKE" = (
 /obj/structure/mirror/long/left,
 /turf/simulated/wall/r_wall/prepainted/civilian,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "iLk" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
@@ -10094,9 +10042,7 @@
 "iZE" = (
 /obj/structure/mirror/long/right,
 /turf/simulated/wall/r_wall/prepainted/civilian,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "iZT" = (
 /turf/simulated/wall/r_wall/prepainted/engineering,
 /area/storage/tech)
@@ -10190,9 +10136,7 @@
 /area/tcommsat/chamber)
 "jds" = (
 /turf/simulated/wall/r_wall/prepainted/civilian,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "jdF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 8
@@ -10274,9 +10218,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "jgS" = (
 /obj/machinery/door/blast/regular{
 	dir = 2;
@@ -10349,9 +10291,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "jip" = (
 /obj/structure/table/hardwoodtable,
 /obj/item/stamp/ce{
@@ -10406,9 +10346,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "jiY" = (
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -12073,9 +12011,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "kRL" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 10
@@ -12897,9 +12833,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "lDT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -13395,9 +13329,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "maS" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -14506,9 +14438,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "mTS" = (
 /obj/machinery/light,
 /turf/simulated/floor/tiled/dark,
@@ -14550,9 +14480,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "mWm" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/simulated/floor/tiled/techmaint,
@@ -14603,9 +14531,7 @@
 "naO" = (
 /obj/effect/floor_decal/corner/navgold/full,
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "nby" = (
 /obj/machinery/light{
 	dir = 1
@@ -14819,9 +14745,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "nmL" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
@@ -15140,9 +15064,7 @@
 /obj/machinery/air_alarm/north_mount,
 /obj/machinery/space_heater,
 /turf/simulated/floor/plating,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "nwJ" = (
 /turf/simulated/floor/carpet/patterened,
 /area/engineering/break_room/lower)
@@ -15515,9 +15437,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "nNv" = (
 /obj/machinery/power/smes/buildable/engine/rust,
 /obj/structure/cable/cyan{
@@ -15576,9 +15496,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "nRg" = (
 /obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/techfloor,
@@ -15870,9 +15788,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "oie" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/navblue/border,
@@ -16200,9 +16116,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "oyr" = (
 /obj/structure/railing{
 	dir = 1
@@ -16497,9 +16411,7 @@
 	faction = "neutral"
 	},
 /turf/simulated/floor/airless/ceiling,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/space)
 "oRx" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -16723,9 +16635,7 @@
 "pdB" = (
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "pea" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -18797,9 +18707,7 @@
 	},
 /obj/map_helper/access_helper/airlock/station/command/bridge,
 /turf/simulated/floor/plating,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "rfg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/visible/aux{
@@ -19163,9 +19071,7 @@
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "rAW" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
@@ -19355,9 +19261,7 @@
 	},
 /obj/machinery/suit_cycler,
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "rOO" = (
 /obj/machinery/air_alarm/east_mount,
 /turf/simulated/floor/tiled/techfloor,
@@ -19958,9 +19862,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "suV" = (
 /obj/machinery/atmospherics/pipe/vent{
 	dir = 1
@@ -20027,9 +19929,7 @@
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "szp" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/simple/visible/blue{
@@ -20412,9 +20312,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "sRs" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/storage/toolbox/emergency,
@@ -20906,9 +20804,7 @@
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "trA" = (
 /obj/effect/floor_decal/corner_oldtile/white/diagonal,
 /obj/structure/disposalpipe/segment{
@@ -22666,9 +22562,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "uXD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -22836,9 +22730,7 @@
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/shoes/magboots,
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "vdr" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -22864,9 +22756,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "vdL" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -23416,9 +23306,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "vDT" = (
 /obj/structure/table/rack{
 	dir = 8;
@@ -23656,9 +23544,7 @@
 	},
 /obj/machinery/camera/network/command,
 /turf/simulated/floor/plating,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "vMN" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -31
@@ -23923,9 +23809,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "vWy" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -24064,9 +23948,7 @@
 	},
 /obj/machinery/air_alarm/north_mount,
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "wbp" = (
 /obj/structure/closet/chefcloset,
 /obj/item/glass_jar,
@@ -24324,9 +24206,7 @@
 	},
 /obj/machinery/recharge_station,
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "wqa" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -24866,9 +24746,7 @@
 	},
 /obj/effect/floor_decal/corner/yellow,
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "wRN" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 10
@@ -25842,9 +25720,7 @@
 	},
 /obj/effect/floor_decal/corner/paleblue,
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "xKs" = (
 /obj/structure/catwalk,
 /obj/machinery/light/small{
@@ -26127,12 +26003,6 @@
 	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/hallway/d4starboardhall)
-"ycn" = (
-/obj/machinery/shield_diffuser,
-/turf/simulated/floor/airless/ceiling,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
 "ycr" = (
 /obj/machinery/status_display{
 	pixel_y = 30
@@ -26147,9 +26017,7 @@
 	},
 /obj/machinery/air_alarm/north_mount,
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "ycR" = (
 /obj/machinery/door/firedoor/glass{
 	dir = 8
@@ -26171,9 +26039,7 @@
 	},
 /obj/structure/bed/chair/bay/comfy,
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets{
-	name = "\improper Auxiliary Bridge"
-	})
+/area/endeavour/command/turrets)
 "ydV" = (
 /obj/machinery/porta_turret/ai_defense,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -30153,7 +30019,7 @@ jNg
 jNg
 jNg
 jNg
-ycn
+usG
 saA
 saA
 saA
@@ -30211,7 +30077,7 @@ heJ
 heJ
 heJ
 heJ
-ycn
+usG
 jNg
 jNg
 jNg
@@ -30541,7 +30407,7 @@ jNg
 jNg
 jNg
 xRj
-ycn
+usG
 saA
 saA
 saA
@@ -30599,7 +30465,7 @@ heJ
 heJ
 heJ
 heJ
-ycn
+usG
 jNg
 jNg
 jNg
@@ -33258,7 +33124,7 @@ jNg
 jNg
 jNg
 xRj
-ycn
+usG
 saA
 saA
 hZt
@@ -33314,7 +33180,7 @@ cce
 kqL
 heJ
 heJ
-ycn
+usG
 jNg
 jNg
 jNg
@@ -33646,7 +33512,7 @@ jNg
 jNg
 jNg
 xRj
-ycn
+usG
 saA
 saA
 hZt
@@ -33702,7 +33568,7 @@ lFU
 kqL
 heJ
 heJ
-ycn
+usG
 jNg
 jNg
 jNg
@@ -39142,7 +39008,7 @@ pcf
 pbv
 uUN
 uUN
-ycn
+usG
 jNg
 jNg
 jNg
@@ -39530,7 +39396,7 @@ vWo
 wGk
 ezz
 tqu
-ycn
+usG
 jNg
 jNg
 jNg
@@ -40619,7 +40485,7 @@ xRj
 jNg
 jNg
 jNg
-ycn
+usG
 uuN
 uuN
 uuN
@@ -41007,7 +40873,7 @@ xRj
 jNg
 jNg
 jNg
-ycn
+usG
 ovt
 mCW
 mCW
@@ -43918,7 +43784,7 @@ xRj
 xRj
 xRj
 xRj
-ycn
+usG
 lRH
 lRH
 kTE
@@ -43993,7 +43859,7 @@ rlQ
 xDH
 vsf
 tqu
-ycn
+usG
 jNg
 jNg
 jNg
@@ -44112,7 +43978,7 @@ xRj
 xRj
 xRj
 xRj
-ycn
+usG
 cRV
 lRH
 utm
@@ -44187,7 +44053,7 @@ rxy
 nsk
 vsf
 cRV
-ycn
+usG
 jNg
 jNg
 jNg
@@ -44307,7 +44173,7 @@ xRj
 jNg
 jNg
 jNg
-ycn
+usG
 lRH
 lRH
 lRH
@@ -44380,7 +44246,7 @@ vsf
 vsf
 vsf
 vsf
-ycn
+usG
 jNg
 jNg
 jNg
@@ -45483,7 +45349,7 @@ jNg
 jNg
 xRj
 xRj
-ycn
+usG
 owo
 owo
 tiO
@@ -45533,7 +45399,7 @@ xKI
 xKI
 xKI
 xKI
-ycn
+usG
 xRj
 xRj
 jNg
@@ -45677,7 +45543,7 @@ jNg
 jNg
 xRj
 xRj
-ycn
+usG
 cRV
 owo
 yeM
@@ -45727,7 +45593,7 @@ xKI
 xKI
 xKI
 cRV
-ycn
+usG
 xRj
 xRj
 jNg
@@ -45872,7 +45738,7 @@ jNg
 jNg
 xRj
 xRj
-ycn
+usG
 owo
 owo
 owo
@@ -45920,7 +45786,7 @@ ahp
 xKI
 xKI
 xKI
-ycn
+usG
 xRj
 xRj
 xRj
@@ -54807,7 +54673,7 @@ xRj
 xRj
 xRj
 jNg
-ycn
+usG
 owo
 uqd
 mcc
@@ -55027,7 +54893,7 @@ wso
 ipP
 mIL
 mIL
-ycn
+usG
 jNg
 jNg
 jNg
@@ -55195,7 +55061,7 @@ xRj
 xRj
 xRj
 jNg
-ycn
+usG
 owo
 owo
 owo
@@ -55415,7 +55281,7 @@ mIL
 mIL
 mIL
 mIL
-ycn
+usG
 xRj
 jNg
 jNg
@@ -55606,7 +55472,7 @@ wMU
 jsW
 mIL
 mIL
-ycn
+usG
 jNg
 mtv
 xRj
@@ -55800,7 +55666,7 @@ wSS
 lsS
 mIL
 cRV
-ycn
+usG
 jNg
 jNg
 jNg
@@ -55973,7 +55839,7 @@ xRj
 jNg
 xRj
 xRj
-ycn
+usG
 cRV
 owo
 owo
@@ -55992,8 +55858,8 @@ iUB
 iUB
 iUB
 iUB
-ycn
-ycn
+usG
+usG
 jNg
 jNg
 jNg
@@ -56168,7 +56034,7 @@ jNg
 xRj
 xRj
 jNg
-ycn
+usG
 owo
 owo
 eaj
@@ -56377,7 +56243,7 @@ jgS
 iUB
 iUB
 cRV
-ycn
+usG
 xRj
 jNg
 xRj
@@ -56569,8 +56435,8 @@ nJx
 nJx
 nJx
 iUB
-ycn
-ycn
+usG
+usG
 jNg
 xRj
 jNg

@@ -228,7 +228,7 @@
 /** Command
  */
 /area/endeavour/command/turrets
-	name = "\improper Point Defense Systems"
+	name = "\improper Auxiliary Bridge"
 	icon_state = "bridge"
 
 /** Science
