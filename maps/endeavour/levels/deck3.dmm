@@ -2418,7 +2418,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/endeavour/hallway/d3fwdhall)
 "bJy" = (
-/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/airlock/maintenance{
+	name = "Engineering Riser"
+	},
 /obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -7265,7 +7267,9 @@
 /turf/simulated/floor/tiled,
 /area/security/range)
 "flh" = (
-/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/airlock/maintenance{
+	name = "Engineering Riser"
+	},
 /obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -19658,7 +19662,9 @@
 "oSr" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/multi_tile,
+/obj/machinery/door/airlock/multi_tile{
+	name = "Engineering Riser"
+	},
 /obj/map_helper/access_helper/airlock/station/security/general,
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/substation/security)
@@ -27287,7 +27293,9 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d3fwdhall)
 "url" = (
-/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/airlock/maintenance{
+	name = "Engineering Riser"
+	},
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
@@ -27855,7 +27863,9 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
 	},
-/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/airlock/maintenance{
+	name = "Engineering Riser"
+	},
 /obj/map_helper/access_helper/airlock/station/engineering/department,
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/substation/security)
@@ -28885,7 +28895,9 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/airlock/maintenance{
+	name = "Engineering Riser"
+	},
 /obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/structure/disposalpipe/segment{
 	dir = 4

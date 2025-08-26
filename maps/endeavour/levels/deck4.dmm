@@ -5902,7 +5902,9 @@
 /obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/structure/catwalk,
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/multi_tile/glass,
+/obj/machinery/door/airlock/multi_tile/glass{
+	name = "Engineering Riser"
+	},
 /turf/simulated/floor/plating,
 /area/engineering/substation/deck4aft)
 "fos" = (
@@ -22773,7 +22775,9 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/endeavour/hallway/d4starboardhall)
 "veX" = (
-/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/airlock/maintenance{
+	name = "Engineering Riser"
+	},
 /obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/structure/catwalk,
 /obj/structure/cable/green{

@@ -2790,7 +2790,9 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/airlock/maintenance{
+	name = "Engineering Riser"
+	},
 /obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -9677,7 +9679,9 @@
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/test_area)
 "hvu" = (
-/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/airlock/maintenance{
+	name = "Engineering Riser"
+	},
 /obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
@@ -30750,7 +30754,9 @@
 /turf/simulated/wall/rthull,
 /area/shuttle/excursion/endeavour/general)
 "xrg" = (
-/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/airlock/maintenance{
+	name = "Engineering Riser"
+	},
 /obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,

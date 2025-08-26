@@ -25074,7 +25074,9 @@
 /area/medical/virology)
 "saQ" = (
 /obj/structure/disposalpipe/segment,
-/obj/machinery/door/airlock/maintenance/medical,
+/obj/machinery/door/airlock/maintenance/medical{
+	name = "Engineering Riser"
+	},
 /obj/map_helper/access_helper/airlock/station/head_office/chief_medical_officer,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical_science)
@@ -30493,7 +30495,9 @@
 /turf/simulated/floor/grass,
 /area/endeavour/hallway/d2afthall)
 "wcx" = (
-/obj/machinery/door/airlock/maintenance/medical,
+/obj/machinery/door/airlock/maintenance/medical{
+	name = "Engineering Riser"
+	},
 /obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -33565,7 +33569,9 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
 "yeL" = (
-/obj/machinery/door/airlock/maintenance/medical,
+/obj/machinery/door/airlock/maintenance/medical{
+	name = "Engineering Riser"
+	},
 /obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
