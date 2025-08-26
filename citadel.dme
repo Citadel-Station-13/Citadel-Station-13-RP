@@ -1133,6 +1133,7 @@
 #include "code\game\backend\world\world_location.dm"
 #include "code\game\click\adjacency.dm"
 #include "code\game\click\adjacency_legacy.dm"
+#include "code\game\click\click-human-legacy.dm"
 #include "code\game\click\click-legacy.dm"
 #include "code\game\click\click-living.dm"
 #include "code\game\click\click-new_player.dm"

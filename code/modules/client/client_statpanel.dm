@@ -329,7 +329,7 @@
 				return
 			// todo: admin token implementation
 			var/clickparams = params["params"]
-			mob.ClickOn(A, clickparams, CLICKCHAIN_FROM_HREF)
+			mob.click_on(A, null, null, clickparams, CLICKCHAIN_FROM_HREF)
 			return
 		// todo: mousedrag event
 

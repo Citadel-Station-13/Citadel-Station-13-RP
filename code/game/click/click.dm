@@ -44,7 +44,7 @@
  * Entrypoint of clickchain processing.
  * * This should never be called other than as a **verb** executed by our own client.
  */
-/mob/proc/click_on(atom/target, location, control, raw_params)
+/mob/proc/click_on(atom/target, location, control, raw_params, inject_clickchain_flags)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	// make sure no one's doing something insane
 	if(usr != src)
@@ -109,7 +109,7 @@
 	clickchain.using_intent = a_intent
 	clickchain.using_hand_index = active_hand
 
-	var/clickchain_flags = NONE
+	var/clickchain_flags = inject_clickchain_flags
 	var/ret_clickchain_flags = click_interaction(clickchain, clickchain_flags)
 
 	if(ret_clickchain_flags & (CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_ALWAYS_LOG))
