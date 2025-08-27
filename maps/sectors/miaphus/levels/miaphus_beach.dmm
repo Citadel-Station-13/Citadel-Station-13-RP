@@ -2000,6 +2000,14 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/miaphus/sdf)
+"jB" = (
+/obj/machinery/conveyor_switch/oneway{
+	id = "miaphus_cargo"
+	},
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/jungle)
 "jD" = (
 /obj/structure/toilet{
 	dir = 4
@@ -3228,6 +3236,16 @@
 	outdoors = 1
 	},
 /area/sector/miaphus/beach/resort)
+"ql" = (
+/obj/machinery/smuggling/input,
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "miaphus_cargo"
+	},
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/jungle)
 "qm" = (
 /obj/random/outcrop,
 /turf/simulated/mineral/floor/cave{
@@ -4730,6 +4748,12 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/wood/broken,
 /area/sector/miaphus/beach/station/terminal)
+"yw" = (
+/obj/machinery/point_redemption_vendor/smuggle/miaphus,
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/jungle)
 "yy" = (
 /obj/machinery/light,
 /obj/structure/catwalk,
@@ -5674,6 +5698,15 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/sdf)
+"DP" = (
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "miaphus_cargo"
+	},
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/jungle)
 "DQ" = (
 /obj/effect/floor_decal/tracks{
 	dir = 4
@@ -5921,6 +5954,12 @@
 "EZ" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/miaphus/sdf)
+"Fa" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/miaphus/beach/jungle)
 "Fb" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -7740,6 +7779,9 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/sdf)
+"Pm" = (
+/turf/simulated/wall,
+/area/sector/miaphus/beach/jungle)
 "Po" = (
 /obj/effect/floor_decal/tracks{
 	dir = 10
@@ -8021,6 +8063,9 @@
 /obj/structure/closet/jcloset,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/miaphus/beach/sdf)
+"QO" = (
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/miaphus/beach/jungle)
 "QP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 1
@@ -8729,6 +8774,12 @@
 	name = "dirt"
 	},
 /area/sector/miaphus/beach/mineshaft)
+"UW" = (
+/obj/machinery/smuggling/processing_unit/miaphus,
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/jungle)
 "UX" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Workroom"
@@ -21535,7 +21586,7 @@ bp
 bp
 SK
 bp
-aa
+bp
 aa
 aa
 aa
@@ -21729,10 +21780,10 @@ bp
 SK
 SK
 bp
-aa
-aa
-aa
-aa
+DP
+jB
+bp
+bp
 aa
 aa
 aa
@@ -21923,10 +21974,10 @@ bp
 bp
 Jm
 bp
-aa
-aa
-aa
-aa
+DP
+SK
+SK
+SK
 aa
 aa
 aa
@@ -22117,11 +22168,11 @@ aa
 bp
 Jm
 bp
+ql
+SK
+SK
+SK
 bp
-aa
-aa
-aa
-aa
 aa
 lI
 lI
@@ -22311,11 +22362,11 @@ aa
 bp
 Jm
 SK
-aa
-aa
-aa
-aa
-aa
+UW
+SK
+SK
+SK
+bp
 lI
 lI
 lI
@@ -22505,11 +22556,11 @@ aa
 bp
 SK
 bp
-bp
-aa
-aa
-aa
-pP
+Pm
+SK
+SK
+SK
+OK
 cC
 Le
 Le
@@ -22699,11 +22750,11 @@ aa
 bp
 Jm
 bp
-aa
-aa
-aa
-lI
-lI
+yw
+SK
+SK
+zw
+Nv
 Ia
 yX
 zb
@@ -22893,11 +22944,11 @@ aa
 SK
 Jm
 SK
-aa
-lI
-lI
-lI
-lI
+SK
+zw
+zw
+zw
+Nv
 Ia
 aT
 aV
@@ -43398,7 +43449,7 @@ DX
 wY
 Ll
 Pr
-ce
+Fa
 LC
 fV
 fV
@@ -43592,7 +43643,7 @@ Ea
 vw
 vn
 El
-ce
+QO
 BK
 hJ
 fD
