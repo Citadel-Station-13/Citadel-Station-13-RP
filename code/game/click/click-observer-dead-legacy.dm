@@ -1,18 +1,3 @@
-#warn obliterate
-/mob/observer/dead/DblClickOn(atom/A, params)
-	if(can_reenter_corpse && mind && mind.current)
-		if(A == mind.current || (mind.current in A)) // double click your corpse or whatever holds it
-			reenter_corpse()						// (cloning scanner, body bag, closet, mech, etc)
-			return
-
-	// Things you might plausibly want to follow
-	if(ismovable(A))
-		ManualFollow(A)
-
-	// Otherwise jump
-	else if(A.loc)
-		forceMove(get_turf(A))
-
 /client/var/inquisitive_ghost = 1
 /mob/observer/dead/verb/toggle_inquisition() // warning: unexpected inquisition
 	set name = "Toggle Inquisitiveness"

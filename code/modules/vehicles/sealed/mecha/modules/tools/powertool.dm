@@ -29,7 +29,7 @@
 		return FALSE
 
 	if(isliving(target))
-		my_tool.melee_interaction_chain(target, chassis.occupant_legacy, BP_TORSO)
+		my_tool.lazy_melee_interaction_chain(target, chassis.occupant_legacy, BP_TORSO)
 
 	target.attackby(my_tool,chassis.occupant_legacy)
 

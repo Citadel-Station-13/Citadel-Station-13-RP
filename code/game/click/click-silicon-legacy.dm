@@ -1,4 +1,5 @@
-#warn audit
+// TODO: IOU a better silicon control system.
+
 /atom/proc/attack_ai(mob/user as mob)
 
 /atom/proc/attack_robot(mob/user as mob)

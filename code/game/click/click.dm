@@ -23,6 +23,9 @@
 	if(!(atom_flags & ATOM_INITIALIZED))
 		to_chat(usr, SPAN_WARNING("[src] ([type]) not yet initialized; please contact a coder with this message."))
 		return
+	var/signal_returns = SEND_SIGNAL(src, COMSIG_ATOM_CLICK, usr, location, control, params)
+	if(signal_returns & RAISE_ATOM_CLICK_DROP)
+		return
 	usr.click_on(src, location, control, params)
 
 /atom/DblClick(location, control, params)
@@ -79,6 +82,8 @@
 	 * for this.
 	 * Generally, we consider the button being pressed/depressed as the active cilck button.
 	 */
+	if(click_on_override(target, location, control, params))
+		return TRUE
 	if(params["shift"])
 		if(params["button"] == "middle")
 			if(shift_middle_click_on(target, location, control, params))
@@ -235,6 +240,9 @@
  * @return TRUE to break regular click handling logic.
  */
 /mob/proc/middle_click_on(atom/target, location, control, list/params)
+	return target.middle_clicked_on(src, location, control, params)
+
+/atom/proc/middle_clicked_on(mob/user, location, control, list/params)
 	return FALSE
 
 /**
@@ -249,7 +257,11 @@
  * @return TRUE to stop click propagation.
  */
 /atom/proc/shift_clicked_on(mob/user, location, control, list/params)
-	return ShiftClick(user) != "keep-going"
+	// TODO: AI still can't examine.
+	if(user.should_client_shift_click_examine(src) && user.allow_examine(src))
+		user.examinate(src)
+		return TRUE
+	return FALSE
 
 /**
  * * Standard binding; usually 'pull'.
@@ -264,7 +276,6 @@
  */
 /atom/proc/ctrl_clicked_on(mob/user, location, control, list/params)
 	return CtrlClick(user) != "keep-going"
-	// return FALSE
 
 /**
  * * Standard binding; usually 'list turf'.
@@ -278,7 +289,7 @@
  * @return TRUE to stop click propagation.
  */
 /atom/proc/alt_clicked_on(mob/user, location, control, list/params)
-	return FALSE
+	return AltClick(user) != "keep-going"
 
 //* Double Click *//
 
@@ -334,3 +345,6 @@
 	if(usr != src)
 		CRASH("non-src usr mouse_wheel_on in mob. someone is abusing the proc and likely incorrectly so.")
 	return FALSE
+
+/atom/proc/mouse_wheeled_on(mob/user, delta_x, delta_y, location, control, raw_params)
+	return user.MouseWheelOn(src, delta_x, delta_y, raw_params)

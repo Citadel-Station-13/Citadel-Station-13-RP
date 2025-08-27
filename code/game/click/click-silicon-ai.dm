@@ -45,6 +45,3 @@
 	// TODO: better hiddenprint/tracing system that's actor-aware
 	clickchain.target.add_hiddenprint(usr)
 	return CLICKCHAIN_DO_NOT_PROPAGATE
-
-#warn impl all; double_click_on
-

@@ -5,10 +5,14 @@
 
 //? Click-Chain system - using an item in hand to "attack", whether in melee or ranged.
 
-// TODO: lazy_melee_interaction_chain
-
-// todo: refactor attack object/mob to just melee_attack_chain and a single melee attack system or something
-// todo: yeah most of this file needs re-evaluated again, especially for event_args/actor/clickchain support & right clicks
+/obj/item/proc/lazy_melee_interaction_chain(atom/target, mob/user, clickchain_flags, list/click_params)
+	var/datum/event_args/actor/clickchain/clickchain = new
+	clickchain.performer = clickchain.initiator = user
+	clickchain.using_intent = user.a_intent
+	clickchain.click_params = click_params || list()
+	clickchain.target = target
+	clickchain.target_zone = user.zone_sel?.selecting || BP_TORSO
+	return melee_interaction_chain(clickchain, clickchain_flags)
 
 /**
  * Called when trying to click something that the user can Reachability() to.
@@ -39,11 +43,11 @@
 	// - melee attack & receive melee attack (melee_interaction() on /atom? not item_melee_act directly?)
 	// - melee attack shouldn't require attackby() to allow it to, it should be automatic on harm intent (?)
 	// - the item should have final say but we need a way to allow click redirections so..
-	if(!(. & CLICKCHAIN_FLAGS_INTERACT_ABORT) && ((. |= resolve_attackby(clickchain.target, src, clickchain.click_params, null, ., clickchain)) & CLICKCHAIN_DO_NOT_PROPAGATE))
+	if(!(. & CLICKCHAIN_FLAGS_INTERACT_ABORT) && ((. |= resolve_attackby(clickchain.target, clickchain.performer, clickchain.click_params, null, ., clickchain)) & CLICKCHAIN_DO_NOT_PROPAGATE))
 		return
 
 	// todo: signal for afterattack here
-	return . | afterattack(clickchain.target, src, clickchain_flags, clickchain.click_params)
+	return . | afterattack(clickchain.target, clickchain.performer, clickchain_flags, clickchain.click_params)
 
 // TODO: lazy_ranged_interaction_chain
 

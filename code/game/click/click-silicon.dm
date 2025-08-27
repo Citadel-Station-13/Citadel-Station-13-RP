@@ -11,7 +11,7 @@
 	// as I don't know if we will at some point add, oh, I don't know, modules that let AIs
 	// fire lasers out of their core or something.
 	if(!active_item)
-		. = silicon_control_interaction_chain(clickchain, clickchain_flags)
+		. = silicon_control_interaction_chain(clickchain.target, clickchain, clickchain, clickchain_flags)
 		if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 			return
 	return . | ..()
@@ -28,6 +28,7 @@
  * in the first place, with all the AI reworks planned for this codebase.
  */
 /mob/living/silicon/proc/silicon_control_interaction_chain(atom/target, datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	SHOULD_NOT_SLEEP(TRUE)
 	if(!silicon_control_interaction_allowed(target, actor, clickchain, clickchain_flags))
 		return clickchain_flags | CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	var/list/click_params = clickchain.click_params
@@ -56,6 +57,7 @@
  * * Entities can still do their own checks down the line; this checks if we're allowed to interact at all.
  */
 /mob/living/silicon/proc/silicon_control_interaction_allowed(atom/target, datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	SHOULD_NOT_SLEEP(TRUE)
 	return TRUE
 
 /**

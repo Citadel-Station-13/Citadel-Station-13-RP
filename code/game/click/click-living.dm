@@ -24,6 +24,4 @@
 				SPAN_WARNING("You can't do that right now."),
 			)
 		return clickchain_flags | CLICKCHAIN_DO_NOT_PROPAGATE
-	. = ..()
-
-#warn impl
+	return ..()

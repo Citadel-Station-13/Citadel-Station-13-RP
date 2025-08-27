@@ -45,15 +45,6 @@
 			return
 		A.attack_tk(src)
 
-#warn deal with all of this
-/mob/proc/ShiftClickOn(var/atom/A)
-	A.ShiftClick(src)
-
-// LEGACY PROC, STOP USING THIS
-/atom/proc/ShiftClick(var/mob/user)
-	if(user.client && user.allow_examine(src))
-		user.examinate(src)
-
 // LEGACY PROC, STOP USING THIS
 /atom/proc/CtrlClick(var/mob/user)
 	. = "keep-going"
@@ -61,29 +52,30 @@
 /atom/movable/CtrlClick(var/mob/user)
 	if(Adjacent(user))
 		user.start_pulling(src)
-
-/mob/proc/AltClickOn(atom/A)
-	if(!A.AltClick(src))
-		altclick_listed_turf(A)
+	else
+		return ..()
 
 /mob/proc/altclick_listed_turf(atom/A)
 	var/turf/T = get_turf(A)
 	if(!T)
-		return
+		return FALSE
 	if(!snowflake_ai_vision_adjacency(T))
-		return
+		return FALSE
 	if(!client)
-		return
+		return FALSE
 	if(T == client.tgui_stat?.byond_stat_turf)
 		client.unlist_turf()
-		return
+		return TRUE
 	client.list_turf(T)
+	return TRUE
 
 // LEGACY PROC, STOP USING THIS
 /atom/proc/AltClick(var/mob/user)
-	if(open_context_menu(new /datum/event_args/actor(user)))
-		return TRUE
-	return FALSE
+	if(isAI(user) && !isitem(src) && !isturf(src))
+		return "keep-going"
+	if(!user.altclick_listed_turf(src))
+		return "keep-going"
+	return "keep-going"
 
 // todo: rework
 /**
@@ -121,7 +113,6 @@
 	else
 		to_chat(src, "<span class='warning'>You're out of energy!  You need food!</span>")
 
-#warn obliterate
 /// MouseWheelOn
 /mob/proc/MouseWheelOn(atom/A, delta_x, delta_y, params)
 	SEND_SIGNAL(src, COMSIG_MOUSE_SCROLL_ON, A, delta_x, delta_y, params)
