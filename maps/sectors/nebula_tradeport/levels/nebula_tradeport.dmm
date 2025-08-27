@@ -24390,12 +24390,38 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/sector/nebula_tradeport/motel/vip)
+"nME" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/catwalk,
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	frequency = 1380;
+	id_tag = "nebula_pump3f";
+	name = "Nebula Pump Controller";
+	pixel_x = -25
+	},
+/turf/simulated/floor,
+/area/tradeport/pads)
 "nNt" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/room2)
+"nNZ" = (
+/obj/effect/shuttle_landmark{
+	base_area = /area/tradeport/pads;
+	base_turf = /turf/simulated/floor/reinforced;
+	docking_controller = "nebula_pump4f";
+	landmark_tag = "nebula_pad_4f";
+	name = "Nebula Pad 4f"
+	},
+/turf/simulated/floor/reinforced,
+/area/tradeport/pads)
 "nOQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -25522,6 +25548,16 @@
 	},
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel)
+"rgD" = (
+/obj/structure/catwalk,
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	frequency = 1380;
+	id_tag = "nebula_pump4f";
+	name = "Nebula Pump Controller";
+	pixel_x = 25
+	},
+/turf/simulated/floor,
+/area/tradeport/pads)
 "rit" = (
 /obj/effect/floor_decal/corner/blue/border,
 /obj/structure/cable/yellow{
@@ -25550,6 +25586,16 @@
 	},
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/room2)
+"rqk" = (
+/obj/effect/shuttle_landmark{
+	base_area = /area/tradeport/pads;
+	base_turf = /turf/simulated/floor/reinforced;
+	docking_controller = "nebula_pump3f";
+	landmark_tag = "nebula_pad_3f";
+	name = "Nebula Pad 3f"
+	},
+/turf/simulated/floor/reinforced,
+/area/tradeport/pads)
 "rqL" = (
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 8
@@ -55287,7 +55333,7 @@ akf
 akf
 akf
 akf
-akf
+rqk
 akf
 akf
 akf
@@ -56267,7 +56313,7 @@ adn
 aRm
 aro
 aRm
-aRm
+nME
 aRm
 aFN
 awB
@@ -56461,7 +56507,7 @@ aur
 aur
 aHr
 aur
-aur
+rgD
 aur
 aur
 axm
@@ -61495,7 +61541,7 @@ akf
 akf
 akf
 akf
-akf
+nNZ
 akf
 akf
 akf
