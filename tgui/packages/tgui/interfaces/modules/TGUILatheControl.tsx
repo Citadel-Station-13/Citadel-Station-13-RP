@@ -462,9 +462,13 @@ const LatheDesign = (props: LatheDesignProps, context) => {
         if ((data.materialsContext.materials[matkey].tags !== null) && (props.design.autodetect_tags !== null)) {
           if (data.materialsContext.materials[matkey].tags.includes(props.design.autodetect_tags[name])) {
             let autodetectedMats = { ...mats };
-            autodetectedMats[name] = data.materialsContext.materials[matkey].name;
-            setMats(autodetectedMats);
-            break;
+            if ((data.materialsContext.materials[matkey] === null) || (data.materialsContext.materials[matkey] === undefined)) {
+              break;
+            } else {
+              autodetectedMats[name] = data.materialsContext.materials[matkey].name;
+              setMats(autodetectedMats);
+              break;
+            }
           }
         }
       }
