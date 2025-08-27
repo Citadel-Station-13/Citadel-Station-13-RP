@@ -91,7 +91,7 @@
 		if(params["ctrl"])
 			if(ctrl_shift_click_on(target, location, control, params))
 				return TRUE
-		if(shift_click_on(target, location, control, params))
+		else if(shift_click_on(target, location, control, params))
 			return TRUE
 	else if(params["button"] == "middle")
 		if(middle_click_on(target, location, control, params))
@@ -213,7 +213,7 @@
  * @return TRUE to break regular click handling logic.
  */
 /mob/proc/ctrl_shift_click_on(atom/target, location, control, list/params)
-	return FALSE
+	return target.ctrl_shift_clicked_on(src, location, control, params)
 
 /**
  * * Will only be called from input of a client's mob. Remote control procs won't call this.
