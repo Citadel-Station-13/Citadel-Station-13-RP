@@ -230,7 +230,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/cargo)
 "aZ" = (
-/obj/machinery/mecha_part_fabricator/pros{
+/obj/machinery/lathe/mecha_part_fabricator/pros{
 	dir = 8;
 	pixel_y = 3
 	},
@@ -10202,7 +10202,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/main)
 "IV" = (
-/obj/machinery/mecha_part_fabricator{
+/obj/machinery/lathe/mecha_part_fabricator{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -11705,7 +11705,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/xenobotany)
 "Ow" = (
-/obj/machinery/r_n_d/protolathe,
+/obj/machinery/lathe/r_n_d/protolathe,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/strelka/science/main)
 "Ox" = (
@@ -14567,7 +14567,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/strelka/upload)
 "YC" = (
-/obj/machinery/r_n_d/circuit_imprinter,
+/obj/machinery/lathe/r_n_d/circuit_imprinter,
 /obj/item/reagent_containers/glass/beaker/sulphuric,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/strelka/science/main)
