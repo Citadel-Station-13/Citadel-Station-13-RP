@@ -258,6 +258,7 @@
 #include "code\__DEFINES\items\hypospray.dm"
 #include "code\__DEFINES\items\inducer.dm"
 #include "code\__DEFINES\items\nifs.dm"
+#include "code\__DEFINES\items\voidsuit.dm"
 #include "code\__DEFINES\items\clothing\uniforms.dm"
 #include "code\__DEFINES\jobs\availability.dm"
 #include "code\__DEFINES\jobs\factions.dm"

@@ -248,6 +248,20 @@
 	if(right_slot)
 		wearer = user
 
+/obj/item/rig/proc/set_wearer(mob/new_wearer)
+	if(wearer)
+		UnregisterSignal(wearer, list(
+			COMSIG_MOB_STATPANEL_STATUS_INJECTION,
+		))
+	wearer = new_wearer
+	if(wearer)
+		RegisterSignal(wearer, COMSIG_MOB_STATPANEL_STATUS_INJECTION, PROC_REF(wearer_on_statpanel_status))
+
+/obj/item/rig/proc/wearer_on_statpanel_status(mob/source, list/data)
+	#warn add cell data
+	ADD_STATPANEL_DATA_ENTRY("[src] - Charge", "0")
+	SEND_SIGNAL(src, COMSIG_RIG_STATPANEL_STATUS_INJECTION, data)
+
 /obj/item/rig/proc/hard_reset()
 	deactivate(TRUE, TRUE, TRUE, TRUE)
 
