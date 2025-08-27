@@ -1361,8 +1361,12 @@
 /area/centcom/command)
 "dX" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/door/window/brigdoor/eastleft,
-/obj/machinery/door/window/brigdoor/westright,
+/obj/machinery/door/window/brigdoor/westright{
+	req_access = null
+	},
+/obj/machinery/door/window/brigdoor/eastleft{
+	req_access = null
+	},
 /turf/unsimulated/floor/techfloor_grid{
 	layer = 1
 	},
@@ -4988,6 +4992,18 @@
 	layer = 1
 	},
 /area/centcom/main_hall)
+"nt" = (
+/obj/structure/table/steel_reinforced,
+/obj/machinery/door/window/brigdoor/eastleft{
+	req_access = null
+	},
+/obj/machinery/door/window/brigdoor/westright{
+	req_access = null
+	},
+/turf/unsimulated/floor/techfloor_grid{
+	layer = 1
+	},
+/area/centcom/restaurant)
 "nu" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Teleporter";
@@ -14765,8 +14781,12 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/machinery/door/window/brigdoor/eastleft,
-/obj/machinery/door/window/brigdoor/westright,
+/obj/machinery/door/window/brigdoor/eastleft{
+	req_access = null
+	},
+/obj/machinery/door/window/brigdoor/westright{
+	req_access = null
+	},
 /turf/unsimulated/floor/techfloor_grid{
 	layer = 1
 	},
@@ -49298,7 +49318,7 @@ nI
 DC
 dX
 lV
-dX
+nt
 ME
 dX
 lV
