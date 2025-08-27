@@ -456,26 +456,6 @@ const LatheDesign = (props: LatheDesignProps, context) => {
   // ingredients: key = ingredient id/value
   let [inds, setInds] = useLocalState<Record<string, string>>(context, `${moduleID}-${props.design.id}-inds`, {});
 
-  if (!areMaterialsChosen(props.design.material_parts || {}, mats) && props.design.autodetect_tags && props.design.material_parts) {
-    Object.entries(props.design.material_parts).map(([name, amt]) => {
-      for (let matkey in data.materialsContext.materials) {
-        if ((data.materialsContext.materials[matkey].tags !== null) && (props.design.autodetect_tags !== null)) {
-          if (data.materialsContext.materials[matkey].tags.includes(props.design.autodetect_tags[name])) {
-            let autodetectedMats = { ...mats };
-            if ((data.materialsContext.materials[matkey] === null) || (data.materialsContext.materials[matkey] === undefined)) {
-              break;
-            } else {
-              autodetectedMats[name] = data.materialsContext.materials[matkey].name;
-              setMats(autodetectedMats);
-              break;
-            }
-          }
-        }
-      }
-    }
-    );
-  }
-
   // ingredients are currently unspported.
   let awaitingSelections = !areMaterialsChosen(props.design.material_parts || {}, mats)
   || !!props.design.ingredients;
