@@ -280,7 +280,7 @@
 /obj/item/switchtool/melee_interaction_chain(atom/target, mob/user, clickchain_flags, params)
 	if(!deployed)
 		return ..()
-	. = deployed.melee_interaction_chain(target, user, clickchain_flags | CLICKCHAIN_REDIRECTED, params)
+	. = deployed.lazy_melee_interaction_chain(target, user, clickchain_flags | CLICKCHAIN_REDIRECTED, params)
 	if(deployed && deployed.loc != src)
 		deployed.forceMove(src)
 		undeploy()

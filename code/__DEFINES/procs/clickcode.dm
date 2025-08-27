@@ -75,6 +75,8 @@
 #define CLICKCHAIN_REFLEX_COUNTER			(1<<9)
 /// put this in if we should entirely abort the attack
 #define CLICKCHAIN_FULL_BLOCKED				(1<<10)
+/// always log
+#define CLICKCHAIN_ALWAYS_LOG               (1<<11)
 
 /// check these for 'unconditional abort'
 #define CLICKCHAIN_FLAGS_UNCONDITIONAL_ABORT (CLICKCHAIN_DO_NOT_PROPAGATE)

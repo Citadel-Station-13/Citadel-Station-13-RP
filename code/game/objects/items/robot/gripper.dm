@@ -94,7 +94,7 @@
 
 /obj/item/gripper/melee_interaction_chain(atom/target, mob/user, clickchain_flags, list/params)
 	if(!isnull(wrapped))
-		return wrapped.melee_interaction_chain(target, user, clickchain_flags | CLICKCHAIN_DO_NOT_ATTACK, params)
+		return wrapped.lazy_melee_interaction_chain(target, user, clickchain_flags | CLICKCHAIN_DO_NOT_ATTACK, params)
 	return ..()
 
 /obj/item/gripper/verb/drop_item()
