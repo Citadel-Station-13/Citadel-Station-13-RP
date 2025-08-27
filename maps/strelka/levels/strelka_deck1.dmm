@@ -514,7 +514,10 @@
 /obj/machinery/light/small/old{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/dark,
+/obj/effect/floor_decal/wheelchairassist{
+	dir = 8
+	},
+/turf/simulated/floor/trap/wheelchair,
 /area/hallway/strelka/deck1)
 "cz" = (
 /obj/effect/floor_decal/rust,
@@ -1303,6 +1306,9 @@
 	pixel_y = -33
 	},
 /obj/machinery/light/small/old,
+/obj/effect/floor_decal/wheelchairassist{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck1)
 "gU" = (
@@ -3291,6 +3297,22 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/bridge/strelka/balista)
+"qV" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 8
+	},
+/obj/effect/floor_decal/grass_edge,
+/obj/structure/cable/white{
+	icon_state = "4-8"
+	},
+/obj/machinery/light/small/old{
+	dir = 1
+	},
+/obj/effect/floor_decal/wheelchairassist{
+	dir = 4
+	},
+/turf/simulated/floor/trap/wheelchair,
+/area/hallway/strelka/deck1)
 "qW" = (
 /obj/machinery/light/small/old{
 	dir = 8
@@ -3670,7 +3692,10 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/techfloor,
+/obj/structure/wheelchairassist{
+	dir = 8
+	},
+/turf/simulated/floor/trap/wheelchair,
 /area/hallway/strelka/deck1)
 "sT" = (
 /obj/machinery/door/airlock/glass/security{
@@ -3850,7 +3875,10 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/grass_edge,
-/turf/simulated/floor/tiled/techfloor,
+/obj/effect/floor_decal/wheelchairassist{
+	dir = 4
+	},
+/turf/simulated/floor/trap/wheelchair,
 /area/hallway/strelka/deck1)
 "tM" = (
 /obj/effect/floor_decal/corner/white/border,
@@ -4690,7 +4718,10 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/techfloor,
+/obj/structure/wheelchairassist{
+	dir = 8
+	},
+/turf/simulated/floor/trap/wheelchair,
 /area/hallway/strelka/deck1)
 "ym" = (
 /turf/simulated/floor/airless,
@@ -5032,7 +5063,10 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/techfloor,
+/obj/structure/wheelchairassist{
+	dir = 4
+	},
+/turf/simulated/floor/trap/wheelchair,
 /area/hallway/strelka/deck1)
 "zP" = (
 /obj/effect/floor_decal/grass_edge/corner{
@@ -7285,6 +7319,9 @@
 /obj/structure/sign/deck/first{
 	pixel_y = 31
 	},
+/obj/effect/floor_decal/wheelchairassist{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck1)
 "Mq" = (
@@ -7316,7 +7353,10 @@
 /obj/machinery/status_display{
 	pixel_y = 32
 	},
-/turf/simulated/floor/tiled/dark,
+/obj/effect/floor_decal/wheelchairassist{
+	dir = 8
+	},
+/turf/simulated/floor/trap/wheelchair,
 /area/hallway/strelka/deck1)
 "Mt" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -9161,7 +9201,8 @@
 /obj/effect/floor_decal/grass_edge{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/asteroid_steel,
+/obj/structure/ladder/teleporter/up,
+/turf/simulated/floor/tiled/monodark,
 /area/hallway/strelka/deck1)
 "VX" = (
 /turf/simulated/floor/airless,
@@ -31612,7 +31653,7 @@ dE
 dE
 Mk
 ji
-cy
+qV
 wX
 Hn
 VN
@@ -32582,7 +32623,7 @@ jH
 Xb
 Mk
 ji
-cy
+qV
 TN
 sE
 Rm

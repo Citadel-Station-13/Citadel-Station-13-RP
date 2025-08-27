@@ -991,6 +991,15 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/medical/strelka)
+"eo" = (
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
+/obj/structure/wheelchairassist{
+	dir = 4
+	},
+/turf/simulated/floor/trap/wheelchair,
+/area/hallway/strelka/deck3)
 "ep" = (
 /obj/machinery/light/small/old{
 	dir = 8
@@ -1788,7 +1797,7 @@
 	},
 /obj/machinery/turretid/stun{
 	check_synth = 1;
-	control_area = /area/ai;
+	control_area = /area/bridge/strelka/ai;
 	name = "AI Chamber turret control";
 	pixel_x = 30;
 	pixel_y = 17;
@@ -4472,7 +4481,10 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/turf/simulated/floor/wood/indoors,
+/obj/structure/wheelchairassist{
+	dir = 8
+	},
+/turf/simulated/floor/trap/wheelchair,
 /area/hallway/strelka/deck3)
 "pM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -4723,6 +4735,9 @@
 	name = "Surgery Cleaner";
 	pixel_x = 2;
 	pixel_y = 2
+	},
+/obj/item/storage/firstaid/surgery{
+	pixel_y = -4
 	},
 /turf/simulated/floor/wood/indoors,
 /area/medical/strelka/surgery)
@@ -7126,7 +7141,10 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/turf/simulated/floor/wood/indoors,
+/obj/structure/wheelchairassist{
+	dir = 4
+	},
+/turf/simulated/floor/trap/wheelchair,
 /area/hallway/strelka/deck3)
 "yN" = (
 /obj/effect/floor_decal/grass_edge{
@@ -11133,7 +11151,10 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/turf/simulated/floor/wood/indoors,
+/obj/structure/wheelchairassist{
+	dir = 8
+	},
+/turf/simulated/floor/trap/wheelchair,
 /area/hallway/strelka/deck3)
 "Ms" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -11912,6 +11933,9 @@
 	pixel_x = -8
 	},
 /obj/structure/table/reinforced,
+/obj/item/wheelchair{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/main)
 "Pp" = (
@@ -11982,6 +12006,12 @@
 /obj/item/cell/high{
 	pixel_x = 2;
 	pixel_y = -1
+	},
+/obj/item/wheelchair{
+	dir = 4
+	},
+/obj/item/wheelchair{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/emtroom)
@@ -12255,11 +12285,33 @@
 	pixel_x = -22
 	},
 /obj/item/defib_kit/compact/loaded,
+/obj/item/storage/firstaid/adv{
+	pixel_x = -8;
+	pixel_y = -18
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = 9;
+	pixel_y = -18
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/emtroom)
 "QE" = (
 /turf/simulated/wall/wood/hardwood,
 /area/quartermaster/strelka/cargo/mining)
+"QF" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/structure/ladder/teleporter/updown,
+/turf/simulated/floor/tiled/monodark,
+/area/hallway/strelka/deck3)
 "QI" = (
 /obj/machinery/computer/security{
 	dir = 8
@@ -14158,6 +14210,14 @@
 "WX" = (
 /obj/item/aiModule/teleporterOffline,
 /obj/structure/table/standard,
+/obj/machinery/turretid/stun{
+	check_synth = 1;
+	control_area = /area/bridge/strelka/ai;
+	name = "AI Chamber turret control";
+	pixel_x = 29;
+	pixel_y = 1;
+	uid = "core"
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/strelka/upload)
 "Xa" = (
@@ -36190,7 +36250,7 @@ uZ
 WK
 WK
 xh
-jM
+QF
 Zf
 LD
 gg
@@ -37159,9 +37219,9 @@ Lm
 lX
 nC
 lL
-pL
+eo
 ov
-pL
+eo
 Rl
 xj
 gW

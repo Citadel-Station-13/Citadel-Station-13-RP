@@ -154,7 +154,10 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/turf/simulated/floor/reinforced,
+/obj/structure/wheelchairassist{
+	dir = 4
+	},
+/turf/simulated/floor/trap/wheelchair,
 /area/hallway/strelka/deck2)
 "ay" = (
 /obj/structure/closet{
@@ -2357,6 +2360,9 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
+/obj/structure/wheelchairassist{
+	dir = 4
+	},
 /turf/simulated/open,
 /area/hallway/strelka/deck2)
 "gX" = (
@@ -3039,6 +3045,12 @@
 /obj/effect/floor_decal/corner/blue/border,
 /obj/item/roller,
 /obj/item/roller,
+/obj/item/wheelchair{
+	dir = 4
+	},
+/obj/item/wheelchair{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/old_cargo,
 /area/shuttle/emt/strelka/main)
 "jc" = (
@@ -3661,8 +3673,8 @@
 	desc = "This Securitron unit, called Commander Spout, arrested 23 clowns, Killed 242 Xenomorph, and might have boarded and destroyed 4 pirate cruisers.";
 	layer = 3.5
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/hallway/strelka/deck2)
@@ -6146,15 +6158,13 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 1
-	},
 /obj/effect/floor_decal/grass_edge{
 	dir = 4;
 	layer = 2.5;
 	name = "water grass edge"
 	},
-/turf/simulated/floor/tiled/techfloor/monogrid,
+/obj/structure/ladder/teleporter/updown,
+/turf/simulated/floor/tiled/monodark,
 /area/hallway/strelka/deck2)
 "rx" = (
 /obj/structure/cable/orange{
@@ -6598,7 +6608,10 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/turf/simulated/floor/reinforced,
+/obj/structure/wheelchairassist{
+	dir = 8
+	},
+/turf/simulated/floor/trap/wheelchair,
 /area/hallway/strelka/deck2)
 "sQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -9997,7 +10010,10 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/turf/simulated/floor/reinforced,
+/obj/structure/wheelchairassist{
+	dir = 8
+	},
+/turf/simulated/floor/trap/wheelchair,
 /area/hallway/strelka/deck2)
 "Co" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -12305,6 +12321,9 @@
 "JA" = (
 /obj/machinery/door/firedoor/glass{
 	dir = 8
+	},
+/obj/structure/wheelchairassist{
+	dir = 4
 	},
 /turf/simulated/open,
 /area/hallway/strelka/deck2)
@@ -39730,8 +39749,8 @@ ky
 PY
 eO
 bK
-cT
-VQ
+qw
+TA
 zr
 Ig
 OV
