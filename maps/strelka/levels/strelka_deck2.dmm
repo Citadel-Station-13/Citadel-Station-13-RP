@@ -3203,6 +3203,27 @@
 /obj/machinery/light/small/old{
 	dir = 4
 	},
+/obj/machinery/photocopier/faxmachine{
+	department = "Warden Office"
+	},
+/obj/structure/table/carbon/reinforced,
+/obj/item/paper_bin{
+	pixel_x = 6;
+	pixel_y = 7
+	},
+/obj/item/stamp/denied{
+	pixel_x = 5
+	},
+/obj/item/pen/blue{
+	pixel_x = -5;
+	pixel_y = -1
+	},
+/obj/item/pen,
+/obj/item/pen/red{
+	pixel_x = -1;
+	pixel_y = 3
+	},
+/obj/item/stamp/ward,
 /turf/simulated/floor/wood/indoors,
 /area/security/strelka/warden)
 "jF" = (
@@ -3454,30 +3475,9 @@
 /obj/structure/cable/blue{
 	icon_state = "1-2"
 	},
-/obj/structure/table/carbon/reinforced,
-/obj/item/stamp/ward,
-/obj/item/stamp/denied{
-	pixel_x = 5
-	},
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/obj/machinery/photocopier/faxmachine{
-	department = "Warden Office"
-	},
-/obj/item/paper_bin{
-	pixel_x = 6;
-	pixel_y = 7
-	},
-/obj/item/pen/blue{
-	pixel_x = -5;
-	pixel_y = -1
-	},
-/obj/item/pen/red{
-	pixel_x = -1;
-	pixel_y = 3
-	},
-/obj/item/pen,
 /turf/simulated/floor/carpet,
 /area/security/strelka/warden)
 "kz" = (
@@ -4841,6 +4841,12 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
+/obj/machinery/button/remote/blast_door{
+	id = "warden";
+	name = "Shutter Warden";
+	pixel_x = 15;
+	req_access = list(3)
+	},
 /turf/simulated/floor/carpet,
 /area/security/strelka/warden)
 "ok" = (
@@ -5078,7 +5084,10 @@
 /area/hallway/strelka/deck2)
 "oE" = (
 /obj/structure/stairs/spawner/south,
-/turf/simulated/floor/reinforced,
+/obj/structure/wheelchairassist{
+	dir = 1
+	},
+/turf/simulated/floor/trap/wheelchair,
 /area/strelka/explo/emt)
 "oF" = (
 /turf/simulated/wall/r_wall/prepainted,
@@ -5377,6 +5386,9 @@
 	},
 /obj/structure/cable/blue{
 	icon_state = "1-4"
+	},
+/obj/structure/wheelchairassist{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/explo/emt)
@@ -7503,6 +7515,10 @@
 	},
 /turf/simulated/wall/r_wall/prepainted/medical,
 /area/shuttle/emt/strelka/main)
+"vp" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless,
+/area/space)
 "vq" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 4
@@ -8043,6 +8059,7 @@
 /obj/structure/cable/white{
 	icon_state = "2-4"
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless,
 /area/space)
 "wV" = (
@@ -8569,6 +8586,7 @@
 /obj/machinery/camera/network/outside{
 	dir = 8
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless,
 /area/space)
 "yt" = (
@@ -9340,6 +9358,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
+/obj/structure/wheelchairassist{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/security/strelka/storage)
 "Av" = (
@@ -9714,6 +9735,16 @@
 /obj/structure/toilet,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/bridge/strelka/ce)
+"Bt" = (
+/obj/structure/cable/white{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/white{
+	icon_state = "2-4"
+	},
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless,
+/area/space)
 "Bu" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
@@ -9850,12 +9881,6 @@
 	dir = 4
 	},
 /obj/structure/table/carbon/reinforced,
-/obj/machinery/button/remote/blast_door{
-	id = "warden";
-	name = "Shutter Warden";
-	pixel_x = 15;
-	req_access = list(3)
-	},
 /turf/simulated/floor/carpet,
 /area/security/strelka/warden)
 "BM" = (
@@ -15508,6 +15533,11 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/security/strelka/reception)
+"To" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/structure/wheelchairassist,
+/turf/simulated/floor/trap/wheelchair,
+/area/strelka/explo/emt)
 "Tp" = (
 /obj/structure/cable/orange,
 /obj/machinery/power/apc/south_mount,
@@ -15899,11 +15929,10 @@
 /area/shuttle/emt/strelka/main)
 "UH" = (
 /obj/machinery/light/small/old,
-/obj/structure/closet/walllocker_double/east{
-	name = "Warden Wall Cabinet";
-	starts_with = list(/obj/item/storage/box/survival_knife,/obj/item/clothing/suit/storage/vest/warden,/obj/item/clothing/under/rank/warden,/obj/item/clothing/under/rank/warden/corp,/obj/item/clothing/under/rank/warden/skirt_pleated,/obj/item/clothing/suit/storage/vest/wardencoat,/obj/item/clothing/suit/storage/vest/wardencoat/alt,/obj/item/clothing/head/helmet/dermal,/obj/item/clothing/head/helmet/warden,/obj/item/clothing/head/helmet/warden/hat,/obj/item/cartridge/security,/obj/item/radio/headset/headset_sec,/obj/item/radio/headset/headset_sec/alt,/obj/item/clothing/accessory/armor/helmetcamera/security,/obj/item/clothing/accessory/armor/helmetcamera/security/body,/obj/item/clothing/glasses/sunglasses/sechud,/obj/item/barrier_tape_roll/police,/obj/item/clothing/accessory/badge/holo/warden,/obj/item/storage/box/flashbangs,/obj/item/storage/box/firingpins,/obj/item/storage/belt/security,/obj/item/reagent_containers/spray/pepper,/obj/item/melee/baton/loaded,/obj/item/cell/device/weapon,/obj/item/storage/box/holobadge,/obj/item/clothing/head/beret/sec/corporate/warden,/obj/item/clothing/suit/storage/hooded/wintercoat/security,/obj/item/clothing/shoes/boots/winter/security,/obj/item/gps/security,/obj/item/flashlight/maglight,/obj/item/megaphone,/obj/item/clothing/mask/gas/half,/obj/item/holowarrant)
-	},
 /obj/item/retail_scanner/security,
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat/warden,
+/obj/item/gun/projectile/energy/gun,
+/obj/structure/closet/secure_closet/warden,
 /turf/simulated/floor/wood/indoors,
 /area/security/strelka/warden)
 "UK" = (
@@ -29832,7 +29861,7 @@ KT
 KT
 KT
 KT
-FB
+vp
 hf
 lg
 jw
@@ -30024,7 +30053,7 @@ KT
 KT
 KT
 EP
-Yg
+Bt
 ys
 wU
 hW
@@ -34110,7 +34139,7 @@ oN
 PO
 SY
 po
-KS
+To
 oE
 Af
 gs

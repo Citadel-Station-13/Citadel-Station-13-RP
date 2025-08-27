@@ -12810,6 +12810,7 @@
 /obj/machinery/light/small/old{
 	dir = 4
 	},
+/obj/structure/wheelchairassist,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/emtroom)
 "Sx" = (

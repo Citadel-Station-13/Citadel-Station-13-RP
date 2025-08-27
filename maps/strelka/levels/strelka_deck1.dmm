@@ -3255,7 +3255,8 @@
 /area/security/strelka/armory)
 "qF" = (
 /obj/structure/stairs/spawner/north,
-/turf/simulated/floor/tiled/dark,
+/obj/structure/wheelchairassist,
+/turf/simulated/floor/trap/wheelchair,
 /area/strelka/pilot_EVA)
 "qH" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -4261,6 +4262,11 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/hangardeck)
+"wf" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/wheelchairassist,
+/turf/simulated/floor/tiled/dark,
+/area/strelka/pilot_EVA)
 "wg" = (
 /obj/structure/cable/blue{
 	icon_state = "0-8"
@@ -9602,6 +9608,12 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/strelka/hangardeck)
+"Xt" = (
+/obj/structure/wheelchairassist{
+	dir = 1
+	},
+/turf/simulated/floor/trap/wheelchair,
+/area/strelka/pilot_EVA)
 "Xz" = (
 /obj/structure/cable/white{
 	icon_state = "4-8"
@@ -29703,8 +29715,8 @@ xU
 eC
 qs
 qF
-Vi
-Im
+Xt
+wf
 Vi
 yi
 le

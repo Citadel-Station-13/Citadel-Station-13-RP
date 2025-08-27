@@ -5330,6 +5330,10 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/hallway/strelka/deck4)
+"wd" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/plating,
+/area/chapel/strelka/morgue)
 "wf" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
@@ -6448,6 +6452,7 @@
 	pixel_x = 21;
 	master_tag = "strelka_north_docking"
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/fitness/strelka)
 "BA" = (
@@ -7622,6 +7627,7 @@
 	},
 /obj/map_helper/access_helper/airlock/station/external_airlock,
 /obj/map_helper/airlock/door/ext_door,
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/fitness/strelka)
 "HE" = (
@@ -9993,6 +9999,7 @@
 	name = "Chapel Launcher Door"
 	},
 /obj/machinery/atmospheric_field_generator/perma,
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/plating,
 /area/chapel/strelka/morgue)
 "Su" = (
@@ -29861,8 +29868,8 @@ DL
 uI
 ta
 St
-jR
-jR
+wd
+wd
 jR
 jR
 jR
