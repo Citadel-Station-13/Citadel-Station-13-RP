@@ -42,6 +42,12 @@ DECLARE_RIG_THEME(/station/cargo/asteroid)
 	max_temperature_protect = HEAT_PROTECTION_INDUSTRIAL_VOIDSUIT
 	#warn encumbrance
 
+	preset_additional_descriptors = list(
+		/obj/item/rig_module/item_mount/single/pickaxe/plasma_cutter,
+		/obj/item/rig_module/item_mount/single/pickaxe/drill,
+		/obj/item/rig_module/item_mount/single/ore_scanner,
+	)
+
 /datum/armor/rigsuit/station/cargo/asteroid
 
 DECLARE_RIG_THEME(/station/cargo/mining)
@@ -61,6 +67,12 @@ DECLARE_RIG_THEME(/station/cargo/mining)
 	min_temperature_protect = COLD_PROTECTION_HEAVY_WINTER_CLOTHING
 	max_temperature_protect = HEAT_PROTECTION_LIGHT_FIRESUIT
 	#warn encumbrance
+
+	preset_additional_descriptors = list(
+		/obj/item/rig_module/item_mount/single/pickaxe/plasma_cutter,
+		/obj/item/rig_module/item_mount/single/pickaxe/drill,
+		/obj/item/rig_module/item_mount/single/ore_scanner,
+	)
 
 /datum/armor/rigsuit/station/cargo/mining
 	bullet = 0.35

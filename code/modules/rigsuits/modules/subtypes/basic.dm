@@ -21,6 +21,13 @@
 	/// * activation triggers on_trigger()
 	var/impl_trigger = FALSE
 
+	/// click cost in joules
+	var/click_power_cost = 0
+	/// click cd
+	var/click_cooldown = 1 SECONDS
+	/// next world.time click can be used
+	var/click_next_time
+
 	/// power use when triggered in joules
 	var/trigger_power_cost
 	/// cooldown between triggers
@@ -32,7 +39,7 @@
 	/// text for trigger button while on cd, if any
 	var/trigger_desc_cd
 
-	/// power use per second when toggled on
+	/// power use per second when toggled on in watts
 	var/toggle_active_power_cost
 	/// delay for toggling
 	var/toggle_cooldown = 0.5 SECONDS

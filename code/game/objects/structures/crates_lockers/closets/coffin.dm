@@ -149,8 +149,8 @@
 
 /obj/structure/closet/grave/return_air_for_internal_mob(mob/entity)
 	var/gasid = GAS_ID_CARBON_DIOXIDE
-	if(ishuman(L))
-		var/mob/living/carbon/human/H = L
+	if(ishuman(entity))
+		var/mob/living/carbon/human/H = entity
 		if(H.species && H.species.exhale_type)
 			gasid = H.species.exhale_type
 	var/datum/gas_mixture/grave_breath = new()

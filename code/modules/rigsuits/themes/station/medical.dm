@@ -52,6 +52,14 @@ DECLARE_RIG_THEME(/station/medical/standard)
 	)
 	#warn encumbrance
 
+	preset_additional_descriptors = list(
+		/obj/item/rig_module/item_mount/health_scanner,
+		/obj/item/rig_module/item_mount/access_tunneler,
+		/obj/item/rig_module/item_mount/defib_paddles,
+		/obj/item/rig_module/resource_store/reagent_tank/single_router/basic_meds,
+		/obj/item/rig_module/chem_injector,
+	)
+
 DECLARE_RIG_THEME(/station/medical/advanced)
 /datum/rig_theme/station/medical/advanced
 	name = "chief medical rig"
@@ -66,6 +74,14 @@ DECLARE_RIG_THEME(/station/medical/advanced)
 	armor = /datum/armor/rigsuit/station/medical/advanced
 	siemens_coefficient = 0.7
 	#warn encumbrance
+
+	preset_additional_descriptors = list(
+		/obj/item/rig_module/item_mount/health_scanner,
+		/obj/item/rig_module/item_mount/access_tunneler,
+		/obj/item/rig_module/item_mount/defib_paddles,
+		/obj/item/rig_module/resource_store/reagent_tank/single_router/basic_meds,
+		/obj/item/rig_module/chem_injector,
+	)
 
 /datum/armor/rigsuit/station/medical/advanced
 	melee = 0.35

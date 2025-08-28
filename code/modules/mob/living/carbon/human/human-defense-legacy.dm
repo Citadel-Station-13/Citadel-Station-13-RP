@@ -221,9 +221,9 @@
 	if(damage_type != DAMAGE_TYPE_BURN && damage_type != DAMAGE_TYPE_BRUTE) return
 
 	// The hardsuit might soak this hit, if we're wearing one.
-	if(back && istype(back,/obj/item/hardsuit))
-		var/obj/item/hardsuit/hardsuit = back
-		hardsuit.take_hit(damage)
+	// if(back && istype(back,/obj/item/hardsuit))
+	// 	var/obj/item/hardsuit/hardsuit = back
+	// 	hardsuit.take_hit(damage)
 
 	// We may also be taking a suit breach.
 	if(!wear_suit) return

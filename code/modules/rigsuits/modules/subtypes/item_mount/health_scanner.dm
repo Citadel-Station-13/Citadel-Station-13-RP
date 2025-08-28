@@ -4,6 +4,6 @@
 /**
  * Bindings for a health scanner.
  */
-/obj/item/rig_module/basic/health_scanner
+/obj/item/rig_module/item_mount/single/health_scanner
 	/// automatically mounts and sets everything
-	var/lazy_automount_path = /obj/item/healthanalyzer
+	lazy_automount_path = /obj/item/healthanalyzer

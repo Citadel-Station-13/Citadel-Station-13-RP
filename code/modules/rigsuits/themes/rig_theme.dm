@@ -186,5 +186,8 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	if(islist(preset_additional_descriptors))
 		. += preset_additional_descriptors
 
-/datum/rig_theme/proc/preset_instantiate_modules()
+/**
+ * @return list of rig modules to attach forcefully to rig
+ */
+/datum/rig_theme/proc/preset_instantiate_modules() as /list
 	#warn impl

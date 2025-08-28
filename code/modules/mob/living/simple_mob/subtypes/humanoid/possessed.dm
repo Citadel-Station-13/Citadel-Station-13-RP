@@ -145,10 +145,10 @@
 /obj/item/hardsuit/industrial/old
 	name = "old Industrial hardsuit"
 	desc = "A heavy, powerful hardsuit used by construction crews and mining corporations. It appears to be pretty old and worn down."
-	isTrapped = 1
+	// isTrapped = 1
 
-/obj/item/hardsuit/industrial/old/spring
-	springtrapped = 1
+/obj/item/hardsuit/industrial/old/springlocked
+	// springtrapped = 1
 
 /mob/living/simple_mob/humanoid/possessed/merc
 	name = "old crimson hardsuit"

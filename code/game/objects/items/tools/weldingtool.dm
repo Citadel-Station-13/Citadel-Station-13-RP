@@ -652,11 +652,11 @@
 	if(item_mount)
 		return item_mount.lazy_power_use_checked(src, joules = get_energy_cost(amount))
 	if(get_fuel() >= amount)
-		power_supply.checked_use(charge_cost)
+		power_supply.checked_use(DYNAMIC_J_TO_CELL_UNITS(get_energy_cost(amount)))
 		if(use_external_power)
 			var/obj/item/cell/external = get_external_power_supply()
-			if(!external || !external.use(charge_cost)) //Take power from the borg...
-				power_supply.give(charge_cost)	//Give it back to the cell.
+			if(!external || !external.use(DYNAMIC_J_TO_CELL_UNITS(get_energy_cost(amount)))) //Take power from the borg...
+				power_supply.give(DYNAMIC_J_TO_CELL_UNITS(get_energy_cost(amount)))	//Give it back to the cell.
 		if(M)
 			eyecheck(M)
 		update_icon()
@@ -745,7 +745,6 @@
 	icon = 'icons/obj/crystal_tools.dmi'
 	materials_base = list(MATERIAL_CRYSTAL = 1250)
 	cell_type = null
-	charge_cost = null
 	tool_speed = 0.2
 	use_external_power = 1
 

@@ -6,6 +6,12 @@
 	base_icon = 'icons/modules/rigsuits/suits/species/nepid.dmi'
 	armor = /datum/armor/rigsuit/species/nepid
 
+	preset_jetpack_type = /obj/item/rig_module/locomotion/jetpack/gas/ion
+	preset_additional_descriptors = list(
+		/obj/item/rig_module/item_deploy/simple/toolset/engineering/industrial,
+		/obj/item/rig_module/basic/power_sink,
+	)
+
 /datum/armor/rigsuit/species/nepid
 	melee = 0.5
 	melee_tier = 3
@@ -28,7 +34,7 @@
 
 DECLARE_RIG_THEME(/species/nepid/generic)
 /datum/rig_theme/species/nepid/generic
-	name = "Dnin-Nepid EVA harness"
+	name = "\improperDnin-Nepid EVA harness"
 	base_state = "generic"
 	desc = "A sleek, alien-looking hardsuit worn by nomadic spacefarers."
 	fluff_desc = "The standard EVA harness worn by Dnin-Nepids everywhere. Mass produced and stocked aboard practically \

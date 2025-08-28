@@ -7,6 +7,7 @@
 /obj/item/rig_module/locomotion/jetpack
 
 #warn impl
+#warn ion trail?
 
 /obj/item/rig_module/locomotion/jetpack/gas
 	name = /obj/item/rig_module::name + " (maneuvering jets)"

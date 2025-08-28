@@ -558,7 +558,7 @@
 /obj/structure/closet/return_air_for_internal_mob(mob/entity)
 	if(loc)
 		if(istype(loc, /obj/structure/closet))
-			return (loc.return_air_for_internal_mob(L))
+			return (loc.return_air_for_internal_mob(entity))
 	return return_air()
 
 /obj/structure/closet/CanReachOut(atom/movable/mover, atom/target, obj/item/tool, list/cache)

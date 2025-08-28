@@ -64,12 +64,12 @@
 
 //? Power (tier 2)
 
-// todo: powertools
+// todo: powertools, including welder
 
 /obj/item/rig_module/item_deploy/simple/engineering/industrial
 
 //? Hardlight (tier 3)
 
-// todo: hardlight
+// todo: hardlight, including welder
 
 /obj/item/rig_module/item_deploy/simple/engineering/hardlight

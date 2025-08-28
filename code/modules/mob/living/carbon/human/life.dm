@@ -1508,11 +1508,11 @@
 					var/obj/item/clothing/head/welding/O = head
 					if(!O.up)
 						found_welder = 1
-				if(!found_welder && istype(back, /obj/item/hardsuit))
-					var/obj/item/hardsuit/O = back
-					if(O.helmet && O.helmet == head && (O.helmet.body_cover_flags & EYES))
-						if((!O.is_online() && O.offline_vision_restriction == 1) || (O.is_online() && O.vision_restriction == 1))
-							found_welder = 1
+				// if(!found_welder && istype(back, /obj/item/hardsuit))
+				// 	var/obj/item/hardsuit/O = back
+				// 	if(O.helmet && O.helmet == head && (O.helmet.body_cover_flags & EYES))
+				// 		if((!O.is_online() && O.offline_vision_restriction == 1) || (O.is_online() && O.vision_restriction == 1))
+				// 			found_welder = 1
 				if(absorbed) found_welder = 1
 			if(found_welder)
 				client.screen |= GLOB.global_hud.darkMask

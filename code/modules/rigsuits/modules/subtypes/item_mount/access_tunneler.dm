@@ -4,7 +4,7 @@
 /**
  * bindings for an access tunneler
  */
-/obj/item/rig_module/basic/access_tunneler
+/obj/item/rig_module/item_mount/single/access_tunneler
 	name = /obj/item/rig_module/basic::name + " (access tunneler)"
 	desc = /obj/item/rig_module/basic::desc + " This one allows overriding some devices aboard the facility \
 	via pre-inserted access codes."
@@ -13,18 +13,14 @@
 	display_desc = "Allows overriding certain facility devices, including airlocks, at a mild power cost. \
 	This will emit an alert to command and security channels."
 
-	impl_click = TRUE
+	lazy_automount_path = /obj/item/access_tunneler
 
-	var/obj/item/access_tunneler/mounted
-	/// automatically sets everything as needed.
-	var/lazy_automount_path = /obj/item/access_tunneler
-
-/obj/item/rig_module/basic/access_tunneler/Initialize(mapload)
+/obj/item/rig_module/item_mount/single/access_tunneler/Initialize(mapload)
 	. = ..()
 	if(lazy_automount_path)
 		mounted = new lazy_automount_path
 
-/obj/item/rig_module/basic/access_tunneler/Destroy()
+/obj/item/rig_module/item_mount/single/access_tunneler/Destroy()
 	QDEL_NULL(mounted)
 	return ..()
 

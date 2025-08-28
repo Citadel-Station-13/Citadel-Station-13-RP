@@ -43,6 +43,11 @@ DECLARE_RIG_THEME(/station/engineering/standard)
 	armor = /datum/armor/rigsuit/station/engineering/standard
 	#warn encumbrance
 
+	preset_additional_descriptors = list(
+		/obj/item/rig_module/item_deploy/simple/engineering/industrial,
+		/obj/item/rig_module/item_mount/single/pickaxe/plasma_cutter,
+	)
+
 /datum/armor/rigsuit/station/engineering/standard
 	rad = 0.8
 
@@ -59,6 +64,11 @@ DECLARE_RIG_THEME(/station/engineering/atmospherics)
 	max_temperature_protect = HEAT_PROTECTION_ATMOS_VOIDSUIT
 	armor = /datum/armor/rigsuit/station/engineering/atmospherics
 	#warn encumbrance
+
+	preset_jetpack_type = /obj/item/rig_module/locomotion/jetpack/gas/ion
+	preset_additional_descriptors = list(
+		/obj/item/rig_module/item_deploy/simple/engineering/industrial,
+	)
 
 /datum/armor/rigsuit/station/engineering/atmospherics
 	fire = 1.0
@@ -78,6 +88,12 @@ DECLARE_RIG_THEME(/station/engineering/advanced)
 	max_temperature_protect = HEAT_PROTECTION_ATMOS_VOIDSUIT
 	armor = /datum/armor/rigsuit/station/engineering/advanced
 	#warn encumbrance
+
+	preset_jetpack_type = /obj/item/rig_module/locomotion/jetpack/gas/ion
+	preset_additional_descriptors = list(
+		/obj/item/rig_module/item_deploy/simple/engineering/industrial,
+		/obj/item/rig_module/item_mount/single/pickaxe/plasma_cutter,
+	)
 
 /datum/armor/rigsuit/station/engineering/advanced
 	fire = 1.0

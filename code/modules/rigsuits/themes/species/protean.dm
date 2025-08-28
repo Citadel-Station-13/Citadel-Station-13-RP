@@ -16,8 +16,9 @@ DECLARE_RIG_THEME(/species/protean)
 	armor = /datum/armor/rigsuit/species/protean
 	#warn encumbrance
 
-	preset_jetpack_type = /obj/item/rig_module/locomotion/jetpack/gas/ion
+	preset_jetpack_descriptor = /obj/item/rig_module/locomotion/jetpack/gas/ion
 	preset_additional_descriptors = list(
+		// TODO: nanite toolset
 		/obj/item/rig_module/item_deploy/simple/toolset/engineering/industrial,
 		/obj/item/rig_module/basic/power_sink,
 	)

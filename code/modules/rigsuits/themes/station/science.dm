@@ -15,6 +15,11 @@ DECLARE_RIG_THEME(/station/science/standard)
 	visible_name = "Prototype"
 	#warn impl
 
+	preset_additional_descriptors = list(
+		/obj/item/rig_module/item_mount/single/pickaxe/drill,
+		/obj/item/rig_module/item_deploy/simple/xenoarch_toolset,
+	)
+
 DECLARE_RIG_THEME(/station/science/anomaly)
 /datum/rig_theme/station/science/anomaly
 	name = "anomaly rig"
@@ -24,3 +29,10 @@ DECLARE_RIG_THEME(/station/science/anomaly)
 	display_name = "AMI"
 	visible_name = "AMI"
 	#warn impl
+
+	preset_jetpack_type = /obj/item/rig_module/locomotion/jetpack/gas/ion
+	preset_additional_descriptors = list(
+		/obj/item/rig_module/item_mount/single/pickaxe/plasma_cutter,
+		/obj/item/rig_module/item_mount/single/pickaxe/drill,
+		/obj/item/rig_module/item_deploy/simple/xenoarch_toolset,
+	)
