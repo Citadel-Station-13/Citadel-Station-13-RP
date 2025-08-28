@@ -280,7 +280,7 @@
 /obj/item/switchtool/melee_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	if(!deployed)
 		return ..()
-	. = deployed.lazy_melee_interaction_chain(clickchain, clickchain_flags | CLICKCHAIN_REDIRECTED)
+	. = deployed.melee_interaction_chain(clickchain, clickchain_flags | CLICKCHAIN_REDIRECTED)
 	if(deployed && deployed.loc != src)
 		deployed.forceMove(src)
 		undeploy()
