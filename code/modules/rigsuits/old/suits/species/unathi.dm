@@ -10,9 +10,6 @@
 	vision_restriction = 1
 	offline_vision_restriction = 2
 	siemens_coefficient = 0.75
-	chest_type = /obj/item/clothing/suit/space/hardsuit/breacher
-	helm_type = /obj/item/clothing/head/helmet/space/hardsuit/breacher
-	boot_type = /obj/item/clothing/shoes/magboots/hardsuit/breacher
 
 /datum/armor/hardsuit/breacher
 	melee = 0.45
@@ -41,10 +38,3 @@
 	melee = 0.55
 	bullet = 0.55
 	laser = 0.45
-
-/obj/item/clothing/head/helmet/space/hardsuit/breacher
-	damage_force = 5
-
-/obj/item/clothing/suit/space/hardsuit/breacher
-
-/obj/item/clothing/shoes/magboots/hardsuit/breacher

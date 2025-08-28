@@ -24,32 +24,15 @@
 	armor_type = /datum/armor/hardsuit/merc
 	encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_HEAVY
 	offline_encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_HEAVY * 2
-	offline_vision_restriction = 1
 	siemens_coefficient = 0.3
-	glove_type = /obj/item/clothing/gloves/gauntlets/hardsuit/eva
-	helm_type = /obj/item/clothing/head/helmet/space/hardsuit/merc
-	allowed = list(
-		/obj/item/flashlight,
-		/obj/item/tank,
-		/obj/item/suit_cooling_unit,
-		/obj/item/gun,
-		/obj/item/ammo_magazine,
-		/obj/item/ammo_casing,
-		/obj/item/melee/baton,
-		/obj/item/melee/transforming/energy/sword,
-		/obj/item/handcuffs,
-		/obj/item/bluespace_radio,
-	)
 
 	initial_modules = list(
 		/obj/item/rig_module/basic/mounted,
-		/obj/item/rig_module/basic/vision/thermal,
 		/obj/item/rig_module/basic/grenade_launcher,
 		/obj/item/rig_module/basic/ai_container,
 		/obj/item/rig_module/basic/power_sink,
 		/obj/item/rig_module/basic/electrowarfare_suite,
 		/obj/item/rig_module/basic/chem_dispenser/combat,
-		/obj/item/rig_module/basic/fabricator/energy_net
 		)
 
 //Has most of the modules removed

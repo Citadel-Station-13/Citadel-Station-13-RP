@@ -5,6 +5,7 @@
 	abstract_type = /datum/rig_theme/nanotrasen
 	// bye-bye security
 	siemens_coefficient = 0.5
+	preset_jetpack_descriptor = /obj/item/rig_module/locomotion/jetpack/gas/ion
 
 DECLARE_RIG_THEME(/nanotrasen/asset_protection)
 /datum/rig_theme/nanotrasen/asset_protection
@@ -23,6 +24,15 @@ DECLARE_RIG_THEME(/nanotrasen/asset_protection)
 	// bye-bye security
 	siemens_coefficient = 0.35
 	#warn encumbrance
+
+	preset_additional_descriptors = list(
+		/obj/item/rig_module/item_deploy/simple/armblade,
+		/obj/item/rig_module/item_mount/single/pickaxe/plasma_cutter,
+		/obj/item/rig_module/gun/energy_gun,
+		/obj/item/rig_module/launcher/grenade/container/loaded/combat,
+		/obj/item/rig_module/chem_injector,
+		/obj/item/rig_module/resource_store/reagent_tank/single_router/combat_meds,
+	)
 
 /datum/armor/rigsuit/nanotrasen/asset_protection
 	melee = 0.55
@@ -60,6 +70,13 @@ DECLARE_RIG_THEME(/nanotrasen/officer)
 	armor = /datum/armor/rigsuit/nanotrasen/officer
 	#warn encumbrance
 
+	preset_additional_descriptors = list(
+		/obj/item/rig_module/item_mount/single/pickaxe/plasma_cutter,
+		/obj/item/rig_module/gun/energy_gun,
+		/obj/item/rig_module/chem_injector,
+		/obj/item/rig_module/resource_store/reagent_tank/single_router/advanced_meds,
+	)
+
 /datum/armor/rigsuit/nanotrasen/officer
 	melee = 0.45
 	melee_tier = 3
@@ -80,22 +97,30 @@ DECLARE_RIG_THEME(/nanotrasen/officer)
 	fire = 0.75
 	acid = 1.0
 
-DECLARE_RIG_THEME(/nanotrasen/inquisition)
-/datum/rig_theme/nanotrasen/inquisition
-	name = "inquisition rig"
+// TODO: IOU adding antimagic module to this.
+DECLARE_RIG_THEME(/nanotrasen/paracausal)
+/datum/rig_theme/nanotrasen/paracausal
+	name = "\improperPARA rig"
 	base_state = "inquisitory"
 	base_icon = 'icons/modules/rigsuits/suits/factions/nanotrasen.dmi'
-	display_name = "pmd"
-	visible_name = "PMD"
+	display_name = "para"
+	visible_name = "PARA"
 	control_sealed_append = ""
 	desc = "A strange, modified officer hardsuit rigged with what looks like silver paneling."
 	fluff_desc = "This looks like a heavily modified officer's hardsuit. Perhaps whoever did it has a \
 	serious superstition of vampires and werewolves. There's silver paneling everywhere on it, including a \
 	rather gaudy cap on the top. How ridiculous."
-	armor = /datum/armor/rigsuit/nanotrasen/inquisition
+	armor = /datum/armor/rigsuit/nanotrasen/paracausal
 	#warn encumbrance
 
-/datum/armor/rigsuit/nanotrasen/inquisition
+	preset_additional_descriptors = list(
+		/obj/item/rig_module/item_deploy/simple/armblade,
+		/obj/item/rig_module/item_mount/single/pickaxe/plasma_cutter,
+		/obj/item/rig_module/chem_injector,
+		/obj/item/rig_module/resource_store/reagent_tank/single_router/combat_meds,
+	)
+
+/datum/armor/rigsuit/nanotrasen/paracausal
 	melee = 0.35
 	melee_tier = 4
 	melee_soak = 0
@@ -154,6 +179,15 @@ DECLARE_RIG_THEME(/nanotrasen/response/commander)
 	visible_name = "Command"
 	control_sealed_append = ""
 
+	preset_additional_descriptors = list(
+		/obj/item/rig_module/item_deploy/simple/armblade,
+		/obj/item/rig_module/item_mount/single/pickaxe/plasma_cutter,
+		/obj/item/rig_module/chem_injector,
+		/obj/item/rig_module/gun/energy_gun,
+		/obj/item/rig_module/resource_store/reagent_tank/single_router/basic_meds,
+		/obj/item/rig_module/item_deploy/simple/toolset/engineering/full,
+	)
+
 DECLARE_RIG_THEME(/nanotrasen/response/medic)
 /datum/rig_theme/nanotrasen/response/medic
 	name = "ert medic rig"
@@ -162,6 +196,17 @@ DECLARE_RIG_THEME(/nanotrasen/response/medic)
 	display_name = "rescue"
 	visible_name = "Rescue"
 	control_sealed_append = ""
+
+	preset_additional_descriptors = list(
+		/obj/item/rig_module/item_deploy/simple/armblade,
+		/obj/item/rig_module/item_mount/single/pickaxe/plasma_cutter,
+		/obj/item/rig_module/item_mount/single/defib_paddles,
+		/obj/item/rig_module/item_mount/single/access_tunneler,
+		/obj/item/rig_module/item_mount/single/health_scanner,
+		/obj/item/rig_module/chem_injector,
+		/obj/item/rig_module/resource_store/reagent_tank/single_router/advanced_meds,
+		/obj/item/rig_module/item_deploy/simple/toolset/engineering/full,
+	)
 
 DECLARE_RIG_THEME(/nanotrasen/response/engineer)
 /datum/rig_theme/nanotrasen/response/engineer
@@ -172,6 +217,15 @@ DECLARE_RIG_THEME(/nanotrasen/response/engineer)
 	visible_name = "Engineering"
 	control_sealed_append = ""
 
+	preset_additional_descriptors = list(
+		/obj/item/rig_module/item_deploy/simple/armblade,
+		/obj/item/rig_module/item_mount/single/pickaxe/plasma_cutter,
+		/obj/item/rig_module/item_mount/single/pickaxe/diamond_drill,
+		/obj/item/rig_module/chem_injector,
+		/obj/item/rig_module/resource_store/reagent_tank/single_router/basic_meds,
+		/obj/item/rig_module/item_deploy/simple/toolset/engineering/industrial,
+	)
+
 DECLARE_RIG_THEME(/nanotrasen/response/security)
 /datum/rig_theme/nanotrasen/response/security
 	name = "ert security rig"
@@ -180,3 +234,13 @@ DECLARE_RIG_THEME(/nanotrasen/response/security)
 	display_name = "officer"
 	visible_name = "Officer"
 	control_sealed_append = ""
+
+	preset_additional_descriptors = list(
+		/obj/item/rig_module/item_deploy/simple/armblade,
+		/obj/item/rig_module/item_mount/single/pickaxe/plasma_cutter,
+		/obj/item/rig_module/chem_injector,
+		/obj/item/rig_module/resource_store/reagent_tank/single_router/basic_meds,
+		/obj/item/rig_module/item_deploy/simple/toolset/engineering/full,
+		/obj/item/rig_module/gun/energy_gun,
+		/obj/item/rig_module/launcher/grenade/container/loaded/combat,
+	)

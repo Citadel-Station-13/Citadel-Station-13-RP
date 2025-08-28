@@ -96,9 +96,9 @@
 	/// TGUI route; this is handled by routes.tsx in the Rigsuit folder on TGUI!
 	var/tgui_interface = "Inert"
 	/// display name
-	var/display_name
+	var/display_name = "???"
 	/// display desc
-	var/display_desc
+	var/display_desc = "A module of some kind. Likely a prototype, for you have no clue what this is."
 
 	//* Zone *//
 	/// our zone define, e.g. RIG_ZONE_X

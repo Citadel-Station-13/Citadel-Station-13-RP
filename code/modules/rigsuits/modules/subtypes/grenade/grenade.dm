@@ -40,7 +40,7 @@
 	#warn contained
 	.["contained"] = contained
 
-/obj/item/rig_module/launcher/grenade/contained/rig_act(datum/event_args/actor/actor, control_flags, action, list/params)
+/obj/item/rig_module/launcher/grenade/container/rig_act(datum/event_args/actor/actor, control_flags, action, list/params)
 	. = ..()
 
 /obj/item/rig_module/launcher/grenade/container/loaded

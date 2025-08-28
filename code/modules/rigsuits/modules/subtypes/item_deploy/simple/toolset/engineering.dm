@@ -66,10 +66,10 @@
 
 // todo: powertools, including welder
 
-/obj/item/rig_module/item_deploy/simple/engineering/industrial
+/obj/item/rig_module/item_deploy/simple/toolset/engineering/industrial
 
 //? Hardlight (tier 3)
 
 // todo: hardlight, including welder
 
-/obj/item/rig_module/item_deploy/simple/engineering/hardlight
+/obj/item/rig_module/item_deploy/simple/toolset/engineering/hardlight
