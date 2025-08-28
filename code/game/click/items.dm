@@ -60,7 +60,7 @@
  */
 /obj/item/proc/ranged_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	// todo: signal for afterattack here
-	return clickchain_flags | afterattack(clickchain.target, src, clickchain_flags, clickchain.click_params)
+	return clickchain_flags | afterattack(clickchain.target, clickchain.performer, clickchain_flags, clickchain.click_params)
 
 /**
  * called at the start of melee attack chains
