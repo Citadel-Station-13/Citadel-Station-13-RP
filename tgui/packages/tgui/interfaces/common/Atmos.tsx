@@ -139,7 +139,7 @@ export const AtmosFilterList = (props: AtmosFilterListProps) => {
               <Button.Checkbox
                 key={id}
                 content={props.gasContext.gases[id].name}
-                checked={props.selectedIds.includes(id)}
+                selected={props.selectedIds.includes(id)}
                 onClick={() => props.selectId?.(id, !props.selectedIds.includes(id))} />
             ))}
           </>
@@ -152,7 +152,7 @@ export const AtmosFilterList = (props: AtmosFilterListProps) => {
           <Button.Checkbox
             key={gas.id}
             content={gas.name}
-            checked={props.selectedIds.includes(gas.id)}
+            selected={props.selectedIds.includes(gas.id)}
             onClick={() => props.selectId?.(gas.id, !props.selectedIds.includes(gas.id))} />
         ))}
       </Collapsible>
@@ -162,7 +162,7 @@ export const AtmosFilterList = (props: AtmosFilterListProps) => {
             <Button.Checkbox
               key={pos}
               content={AtmosGroupFlagNames[pos]}
-              checked={props.selectedGroups & (1 << pos)}
+              selected={props.selectedGroups & (1 << pos)}
               onClick={() => props.selectGroup?.(1 << pos, !(props.selectedGroups & (1 << pos)))} />
           ))}
         </LabeledList.Item>
