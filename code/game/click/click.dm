@@ -114,7 +114,7 @@
 	clickchain.using_hand_index = active_hand
 	clickchain.click_params = params
 
-	var/clickchain_flags = inject_clickchain_flags
+	var/clickchain_flags = inject_clickchain_flags || NONE
 	var/ret_clickchain_flags = click_interaction(clickchain, clickchain_flags)
 
 	if(ret_clickchain_flags & (CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_ALWAYS_LOG))
@@ -129,6 +129,8 @@
  */
 /mob/proc/click_interaction(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	var/obj/item/active_item = get_active_held_item()
+	if(clickchain.target && Reachability(clickchain.target, null, active_item?.reach, active_item))
+		clickchain_flags |= CLICKCHAIN_HAS_PROXIMITY
 	return click_interaction_chain(clickchain, clickchain_flags, active_item)
 
 /**
@@ -164,7 +166,7 @@
 	var/ranged_generics_allowed = loc?.AllowClick(src, clickchain.target, active_item)
 
 	// check if we should route to melee or ranged interaction chains
-	if(Reachability(clickchain.target, null, active_item?.reach, active_item))
+	if(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)
 		if(active_item)
 			. = active_item.melee_interaction_chain(clickchain, clickchain_flags)
 		else
