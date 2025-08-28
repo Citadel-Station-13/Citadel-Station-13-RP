@@ -193,7 +193,7 @@
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
 	)
-	base_turf = /turf/space
+	base_turf = /turf/simulated/open
 	link_above = /datum/map_level/strelka/ship/deck_two
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 
