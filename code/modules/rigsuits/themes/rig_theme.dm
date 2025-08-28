@@ -101,6 +101,15 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	/// cost in thalers, not including modules
 	var/worth = 300
 
+	//* Preset *//
+	var/preset_storage_descriptor = /obj/item/rig_module/storage/primary/default
+	var/preset_lamp_descriptor = /obj/item/rig_module/lamp
+	var/preset_magboots_descriptor = /obj/item/rig_module/magboots
+	var/preset_jetpack_descriptor = /obj/item/rig_module/locomotion/jetpack/gas
+	var/preset_jetpack_tank_descriptor = /obj/item/rig_module/resource_store/gas_tank/slotted/jetpack
+	var/preset_internals_tank_descriptor = /obj/item/rig_module/resource_store/gas_tank/slotted/breathing
+	var/list/preset_additional_descriptors
+
 	#warn values lmao
 
 /datum/rig_theme/New()
@@ -160,3 +169,22 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 /datum/rig_theme/proc/apply_piece(datum/component/rig_piece/piece)
 	#warn impl
 
+/datum/rig_theme/proc/preset_get_module_descriptors()
+	. = list()
+	if(preset_storage_descriptor)
+		. += preset_storage_descriptor
+	if(preset_magboots_descriptor)
+		. += preset_magboots_descriptor
+	if(preset_lamp_descriptor)
+		. += preset_lamp_descriptor
+	if(preset_jetpack_descriptor)
+		. += preset_jetpack_descriptor
+	if(preset_jetpack_tank_descriptor)
+		. += preset_jetpack_tank_descriptor
+	if(preset_internals_tank_descriptor)
+		. += preset_internals_tank_descriptor
+	if(islist(preset_additional_descriptors))
+		. += preset_additional_descriptors
+
+/datum/rig_theme/proc/preset_instantiate_modules()
+	#warn impl

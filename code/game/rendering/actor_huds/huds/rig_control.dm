@@ -22,6 +22,3 @@
 /atom/movable/screen/actor_hud/rig_control/active_mouse_module
 
 /atom/movable/screen/actor_hud/rig_control/selectable_mouse_module
-
-
-

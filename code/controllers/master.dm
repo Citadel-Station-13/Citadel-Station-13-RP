@@ -160,6 +160,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	//# 5. set up globals
 	if(!GLOB)
 		new /datum/controller/global_vars
+	if(!CVARS)
+		new /datum/controller/cvars
 
 	/**
 	 * # 6. call Preload() on all subsystems

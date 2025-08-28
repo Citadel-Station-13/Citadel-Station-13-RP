@@ -587,12 +587,14 @@
 	item_state = "ewelder"
 	worth_intrinsic = 70
 	var/obj/item/cell/power_supply //What type of power cell this uses
-	var/charge_cost = 24	//The rough equivalent of 1 unit of fuel, based on us wanting 10 welds per battery
 	var/cell_type = /obj/item/cell/device
 	var/use_external_power = 0	//If in a borg or hardsuit, this needs to = 1
 	flame_color = "#00CCFF"  // Blue-ish, to set it apart from the gas flames.
 	acti_sound = /datum/soundbyte/sparks
 	deac_sound = /datum/soundbyte/sparks
+
+	/// overall power efficiency multiplier
+	var/energy_cost_multiplier = 1
 
 /obj/item/weldingtool/electric/unloaded
 	cell_type = null
@@ -614,7 +616,7 @@
 	. = ..()
 	if(get_dist(src, user) > 1)
 		return
-	else					// The << need to stay, for some reason no they dont
+	else if(!item_mount)					// The << need to stay, for some reason no they dont
 		if(power_supply)
 			. += "[icon2html(thing = src, target = world)] The [src] has [get_fuel()] charge left."
 		else
@@ -630,7 +632,12 @@
 	else
 		return 0
 
+/**
+ * * If we're item mounted this returns null.
+ */
 /obj/item/weldingtool/electric/get_max_fuel()
+	if(item_mount)
+		return 0
 	if(use_external_power)
 		var/obj/item/cell/external = get_external_power_supply()
 		if(external)
@@ -641,7 +648,9 @@
 
 /obj/item/weldingtool/electric/remove_fuel(var/amount = 1, var/mob/M = null)
 	if(!welding)
-		return 0
+		return FALSE
+	if(item_mount)
+		return item_mount.lazy_power_use_checked(src, joules = get_energy_cost(amount))
 	if(get_fuel() >= amount)
 		power_supply.checked_use(charge_cost)
 		if(use_external_power)
@@ -651,12 +660,15 @@
 		if(M)
 			eyecheck(M)
 		update_icon()
-		return 1
+		return TRUE
 	else
 		if(M)
 			to_chat(M, "<span class='notice'>You need more energy to complete this task.</span>")
 		update_icon()
-		return 0
+		return FALSE
+
+/obj/item/weldingtool/electric/proc/get_energy_cost(units)
+	return units * CVARS.energy_cost_electric_welder * energy_cost_multiplier
 
 /obj/item/weldingtool/electric/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
@@ -692,14 +704,6 @@
 	if(isrobot(src.loc))
 		var/mob/living/silicon/robot/R = src.loc
 		return R.cell
-	if(istype(src.loc, /obj/item/rig_module/basic))
-		var/obj/item/rig_module/basic/module = src.loc
-		if(module.holder && module.holder.wearer)
-			var/mob/living/carbon/human/H = module.holder.wearer
-			if(istype(H) && H.back)
-				var/obj/item/hardsuit/suit = H.back
-				if(istype(suit))
-					return suit.cell
 	return null
 
 /obj/item/weldingtool/electric/mounted

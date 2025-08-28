@@ -143,6 +143,8 @@
 	//* Theme *//
 	/// default theme; set this to a datum path
 	var/theme_preset = /datum/rig_theme/station/civilian/standard
+	/// create default modules?
+	var/theme_preset_equipped = FALSE
 	/// Is our theme initialized?
 	var/theme_initialized = FALSE
 	/// theme name - this is the fluff/player facing name

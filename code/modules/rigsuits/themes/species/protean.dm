@@ -16,6 +16,12 @@ DECLARE_RIG_THEME(/species/protean)
 	armor = /datum/armor/rigsuit/species/protean
 	#warn encumbrance
 
+	preset_jetpack_type = /obj/item/rig_module/locomotion/jetpack/gas/ion
+	preset_additional_descriptors = list(
+		/obj/item/rig_module/item_deploy/simple/toolset/engineering/industrial,
+		/obj/item/rig_module/basic/power_sink,
+	)
+
 /datum/armor/rigsuit/species/protean
 	melee = 0.3
 	melee_tier = 3
@@ -35,15 +41,3 @@ DECLARE_RIG_THEME(/species/protean)
 	rad = 0.75
 	fire = 1.0
 	acid = 1.0
-
-/obj/item/rig/preset/species/protean/equipped
-	modules = list(
-		/obj/item/rig_module/item_deploy/simple/toolset/engineering/industrial,
-		/obj/item/rig_module/resource_store/gas_tank/slotted/breathing,
-		/obj/item/rig_module/resource_store/gas_tank/slotted/jetpack,
-		/obj/item/rig_module/basic/power_sink,
-		/obj/item/rig_module/magboots,
-		/obj/item/rig_module/lamp,
-		/obj/item/rig_module/storage/primary/default,
-		/obj/item/rig_module/locomotion/jetpack/gas/ion,
-	)

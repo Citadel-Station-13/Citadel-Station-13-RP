@@ -35,57 +35,6 @@
 /datum/mini_hud/proc/get_screen_objs(var/mob/M)
 	return screenobjs
 
-// Specific types
-/datum/mini_hud/hardsuit
-	var/obj/item/hardsuit/owner_rig
-	var/atom/movable/screen/hardsuit/power/power
-	var/atom/movable/screen/hardsuit/health/health
-	var/atom/movable/screen/hardsuit/air/air
-	var/atom/movable/screen/hardsuit/airtoggle/airtoggle
-
-	needs_processing = TRUE
-
-/datum/mini_hud/hardsuit/New(var/datum/hud/other, var/obj/item/hardsuit/owner)
-	owner_rig = owner
-	power = new ()
-	health = new ()
-	air = new ()
-	airtoggle = new ()
-
-	screenobjs = list(power, health, air, airtoggle)
-	screenobjs += new /atom/movable/screen/hardsuit/deco1
-	screenobjs += new /atom/movable/screen/hardsuit/deco2
-	screenobjs += new /atom/movable/screen/hardsuit/deco1_f
-	screenobjs += new /atom/movable/screen/hardsuit/deco2_f
-
-	for(var/scr in screenobjs)
-		var/atom/movable/screen/S = scr
-		S.master = owner_rig
-	..()
-
-/datum/mini_hud/hardsuit/Destroy()
-	if(owner_rig)
-		//owner_rig.minihud = null
-		owner_rig = null
-	return ..()
-
-/datum/mini_hud/hardsuit/process(delta_time)
-	if(!owner_rig)
-		qdel(src)
-		return
-
-	var/obj/item/cell/rigcell = owner_rig.cell
-	var/obj/item/tank/rigtank = owner_rig.air_supply
-
-	var/charge_percentage = rigcell ? rigcell.charge / rigcell.maxcharge : 0
-	var/air_percentage = rigtank ? clamp(rigtank.air_contents.total_moles / 17.4693, 0, 1) : 0
-	var/air_on = owner_rig.wearer?.internal ? 1 : 0
-
-	power.icon_state = "pwr[round(charge_percentage / 0.2, 1)]"
-	air.icon_state = "air[round(air_percentage / 0.2, 1)]"
-	health.icon_state = owner_rig.malfunctioning ? "health1" : "health5"
-	airtoggle.icon_state = "airon[air_on]"
-
 /datum/mini_hud/mech
 	var/obj/vehicle/sealed/mecha/owner_mech
 	var/atom/movable/screen/mech/power/power
@@ -136,59 +85,6 @@
 	air.icon_state = "air[round(air_percentage / 0.2, 1)]"
 	health.icon_state = "health[round(health_percentage / 0.2, 1)]"
 	airtoggle.icon_state = "airon[air_on]"
-
-// Screen objects
-/atom/movable/screen/hardsuit
-	icon = 'icons/mob/screen_rigmech.dmi'
-
-/atom/movable/screen/hardsuit/deco1
-	name = "RIG Status"
-	icon_state = "frame1_1"
-	screen_loc = ui_hardsuit_deco1
-
-/atom/movable/screen/hardsuit/deco2
-	name = "RIG Status"
-	icon_state = "frame1_2"
-	screen_loc = ui_hardsuit_deco2
-
-/atom/movable/screen/hardsuit/deco1_f
-	name = "RIG Status"
-	icon_state = "frame1_1_far"
-	screen_loc = ui_hardsuit_deco1_f
-
-/atom/movable/screen/hardsuit/deco2_f
-	name = "RIG Status"
-	icon_state = "frame1_2_far"
-	screen_loc = ui_hardsuit_deco2_f
-
-/atom/movable/screen/hardsuit/power
-	name = "Charge Level"
-	icon_state = "pwr5"
-	screen_loc = ui_hardsuit_pwr
-
-/atom/movable/screen/hardsuit/health
-	name = "Integrity Level"
-	icon_state = "health5"
-	screen_loc = ui_hardsuit_health
-
-/atom/movable/screen/hardsuit/air
-	name = "Air Storage"
-	icon_state = "air5"
-	screen_loc = ui_hardsuit_air
-
-/atom/movable/screen/hardsuit/airtoggle
-	name = "Toggle Air"
-	icon_state = "airoff"
-	screen_loc = ui_hardsuit_airtoggle
-
-/atom/movable/screen/hardsuit/airtoggle/Click()
-	var/mob/living/carbon/human/user = usr
-	if(!istype(user) || user.stat || user.incapacitated())
-		return
-	var/obj/item/hardsuit/owner_rig = master
-	if(user != owner_rig.wearer)
-		return
-	user.toggle_internals()
 
 /atom/movable/screen/mech
 	icon = 'icons/mob/screen_rigmech.dmi'
