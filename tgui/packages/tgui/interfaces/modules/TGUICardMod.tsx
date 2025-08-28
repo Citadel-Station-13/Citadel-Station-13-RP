@@ -80,7 +80,7 @@ export const TGUICardMod = (props: CardModProps, context) => {
             label="Account Number">
             {data.modify_account? (
               <Input
-                value={data.card_account}
+                value={`${data.card_account}`}
                 onChange={(e, val) => act('account', { set: val })} />
             ) : (
               data.card_account || "-----"

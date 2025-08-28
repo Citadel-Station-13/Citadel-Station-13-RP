@@ -15,6 +15,7 @@ export enum WindowTheme {
   Clockcult = "clockcult",
   Hackerman = "hackerman",
   Malfunction = "malfunction",
+  Nanotrasen = "nanotrasen",
   Neutral = "neutral",
   NTOS = "ntos",
   Paper = "paper",

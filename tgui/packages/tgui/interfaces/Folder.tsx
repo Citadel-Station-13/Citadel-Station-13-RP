@@ -1,9 +1,10 @@
 import { useBackend } from "../backend";
 import { Box, Button, Section, Stack } from "../components";
 import { Window } from "../layouts";
+import { WindowTheme } from "../styles/themes/typedef";
 
 type Data = {
-  theme: string;
+  theme: WindowTheme;
   bg_color: string;
   folder_name: string;
   contents: string[];

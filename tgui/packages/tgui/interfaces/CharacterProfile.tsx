@@ -63,10 +63,10 @@ export const CharacterProfile = (props, context) => {
     <Window resizable width={950} height={800}>
       <Window.Content scrollable>
         <Tabs>
-          <Tabs.Tab onClick={() => setSelectedTab(1)}>
+          <Tabs.Tab selected={0} onClick={() => setSelectedTab(1)}>
             Visual Overview / Description
           </Tabs.Tab>
-          <Tabs.Tab onClick={() => setSelectedTab(2)}>
+          <Tabs.Tab selected={0} onClick={() => setSelectedTab(2)}>
             Character Directory / Vore Preferences
           </Tabs.Tab>
         </Tabs>
