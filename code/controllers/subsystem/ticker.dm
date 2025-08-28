@@ -189,8 +189,6 @@ SUBSYSTEM_DEF(ticker)
 	var/start_wait = world.time
 	//UNTIL(round_end_sound_sent || (world.time - start_wait) > (delay * 2))	//don't wait forever
 	while(world.time - start_wait < delay)
-		if(delay_end)		//delayed, break loop.
-			break
 		var/timeleft = delay - (world.time - start_wait)
 		// If we have less than 10 seconds left.
 		if(timeleft <= 10 SECONDS)

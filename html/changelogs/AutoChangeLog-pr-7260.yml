@@ -1,0 +1,4 @@
+author: "ifanyoneme"
+delete-after: True
+changes:
+  - rscadd: "Added plastic demo charge to exploration vendor list @ 100 point cost"

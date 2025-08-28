@@ -44,7 +44,7 @@
 #define LAZYLISTDUPLICATE(L) (L ? L.Copy() : null )
 ///Remove an item from the list, set the list to null if empty
 #define LAZYREMOVE(L, I) if(L) { L -= I; if(!length(L)) { L = null; } }
-///Add an item to the list, if the list is null it will initialize it
+/// Adds I to L, initalizing L if necessary
 #define LAZYADD(L, I) if(!L) { L = list(); } L += I;
 ///Add an item to the list if not already present, if the list is null it will initialize it
 #define LAZYDISTINCTADD(L, I) if(!L) { L = list(); } L |= I;
@@ -116,7 +116,7 @@
 
 /// sanitize a lazy null-or-entry-or-list into always a list
 #define COERCE_OPTIONS_LIST(Entry) (islist(Entry)? Entry : (isnull(Entry)? list() : list(Entry)))
-/// COERCE_OPTIONS_LIST but does it to an existing variablew.
+/// COERCE_OPTIONS_LIST but does it to an existing variable.
 #define COERCE_OPTIONS_LIST_IN(Variable) Variable = COERCE_OPTIONS_LIST(Variable)
 
 /// Passed into BINARY_INSERT to compare keys

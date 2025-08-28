@@ -144,12 +144,18 @@
 	var/manips_rating = 0
 	var/bins_total = 0
 	var/bins_rating = 0
-	for(var/obj/item/stock_parts/manipulator/manip as anything in component_parts)
+	var/new_reagentcap = 0
+	for(var/obj/item/stock_parts/manipulator/manip in component_parts)
 		manips_rating += manip.rating
 		manips_total++
-	for(var/obj/item/stock_parts/matter_bin/bin as anything in component_parts)
+	for(var/obj/item/stock_parts/matter_bin/bin in component_parts)
 		bins_rating += bin.rating
 		bins_total++
+	for(var/obj/item/reagent_containers/R in component_parts)
+		if(R.reagents)
+			new_reagentcap += R.reagents.maximum_volume
+		else //what
+			new_reagentcap += R.volume
 	manips_rating /= manips_total
 	bins_rating /= bins_total
 	speed_factor = manips_rating * 0.5 + 0.5
@@ -159,6 +165,8 @@
 	power_multiplier = 1
 	storage_multiplier = storage_factor
 	efficiency_multiplier = efficiency_factor
+	reagents_max = new_reagentcap
+	update_reagent_holder()
 	update_active_power_usage(POWER_USAGE_LATHE_ACTIVE_SCALE(speed_factor))
 	stored_materials.set_multiplied_capacity(materials_max, storage_factor)
 	ui_controller?.update_static_data()
@@ -186,6 +194,10 @@
 			var/amt = RC.reagents?.trans_to_holder(stored_reagents, RC.amount_per_transfer_from_this)
 			if(amt)
 				user.action_feedback(SPAN_NOTICE("You transfer [amt] units of the solution from \the [I] to [src]."), src)
+				ui_controller?.ui_reagents_update()
+			else if(!RC.reagents.total_volume)
+				user.action_feedback(SPAN_WARNING("[RC] is empty!"), src)
+				return CLICKCHAIN_DO_NOT_PROPAGATE
 			else
 				user.action_feedback(SPAN_WARNING("[src] can't hold any more reagents!"), src)
 				return CLICKCHAIN_DO_NOT_PROPAGATE
@@ -221,9 +233,9 @@
 	LAZYREMOVE(stored_items, I)
 	ui_controller?.ui_ingredients_update()
 
-/obj/machinery/lathe/proc/recycle_item(obj/item/I, mob/user, efficiency_multiplier = 1)
-	efficiency_multiplier *= recycle_efficiency
-	var/list/materials = I.materials_base.Copy()
+/obj/machinery/lathe/proc/recycle_item(obj/item/I, mob/user, recycle_eff = 1)
+	recycle_eff *= recycle_efficiency
+	var/list/materials = I?.materials_base.Copy()
 	if(!isnull(user) && !user.temporarily_remove_from_inventory(I))
 		user.action_feedback(SPAN_WARNING("[I] is stuck to your hand!"), src)
 		return FALSE
@@ -233,10 +245,10 @@
 		if(insert_icon_state)
 			flick(insert_icon_state, src)
 		return TRUE
-	if(!stored_materials?.has_space(materials, efficiency_multiplier))
+	if(!stored_materials?.has_space(materials, recycle_eff))
 		user?.action_feedback(SPAN_WARNING("[src] has no space to store the materials in [I]."), src)
 		return FALSE
-	stored_materials.add(materials, efficiency_multiplier)
+	stored_materials.add(materials, recycle_eff)
 	user?.action_feedback(SPAN_NOTICE("You recycle [I] in [src]."), src)
 	qdel(I)
 	if(insert_icon_state)
@@ -249,11 +261,15 @@
 			stored_materials = new(materials_max)
 	else
 		stored_materials.set_multiplied_capacity(materials_max, storage_multiplier)
+	update_reagent_holder()
+
+/obj/machinery/lathe/proc/update_reagent_holder()
 	if(isnull(stored_reagents))
 		if(reagents_max != 0)
 			stored_reagents = new(reagents_max, src)
 	else
 		stored_reagents.maximum_volume = reagents_max
+
 
 /obj/machinery/lathe/proc/dump_storages()
 	var/atom/dump_location = drop_location()
@@ -301,7 +317,7 @@
 
 /**
  * uses materials with a multiplier
- * efficiency multiplier is *not* applied in this proc.
+ * efficiency multiplier var on /lathe is *not* applied in this proc.
  * ingredients will ignore multiplier. you have been warned.
  */
 /obj/machinery/lathe/proc/use_resources(list/materials, list/reagents, list/ingredients, list/ingredient_parts, multiplier = 1)
@@ -353,6 +369,7 @@
 	. = instance.lathe_print(drop_location(), amount, material_parts, ingredient_parts, null, src, efficiency_multiplier)
 	if(!isnull(print_icon_state))
 		flick(print_icon_state, src)
+	ui_controller?.ui_materials_update()
 
 /obj/machinery/lathe/process(delta_time)
 	if(!queue_active)
@@ -365,12 +382,11 @@
 /obj/machinery/lathe/proc/progress_queue(time, mult = 1)
 	if(!check_queue_head())
 		return
-	var/total = time * mult
+	var/total = time * (mult + speed_multiplier)
 	progress += total
 	var/datum/lathe_queue_entry/head = queue[1]
 	var/datum/prototype/design/D
 	var/left_this_tick = max_items_per_tick
-	var/printed_any = FALSE
 	while(!isnull(head))
 		D = RSdesigns.fetch(head.design_id)
 		var/resource_limited = has_resources_for(D, head.material_parts, head.ingredient_parts)
@@ -382,7 +398,6 @@
 		var/printed = min(head.amount, D.is_stack? (D.max_stack * left_this_tick) : left_this_tick, round(progress / D.work), resource_limited)
 		if(!printed)
 			break
-		printed_any = TRUE
 		left_this_tick -= D.is_stack? CEILING(D.max_stack / printed, 1) : printed
 		progress -= printed * D.work
 		head.amount -= printed
@@ -395,8 +410,6 @@
 			head = queue[1]
 		if(left_this_tick <= 0)
 			break
-	if(printed_any)
-		ui_controller?.ui_queue_update()
 
 /obj/machinery/lathe/proc/reconsider_queue(autostart, silent)
 	if(!length(queue))
@@ -548,7 +561,7 @@
 	return stored_materials.dump(drop_location(), id, amount)
 
 /obj/machinery/lathe/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
-	if(!has_interface)
+	if(!has_interface && !parent_ui) //We assume parent = contacting us remotely.
 		return
 	tgui_controller().ui_interact(user, ui, parent_ui)
 

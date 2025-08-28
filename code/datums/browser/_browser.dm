@@ -27,7 +27,9 @@
 	if (nref)
 		ref = WEAKREF(nref)
 
-	common_asset = SSassets.ready_asset_pack(/datum/asset_pack/simple/common)
+	spawn(0)
+		// i'm so sorry
+		common_asset = SSassets.ready_asset_pack(/datum/asset_pack/simple/common)
 
 /datum/browser/proc/user_deleted(datum/source)
 	SIGNAL_HANDLER
@@ -101,6 +103,10 @@
 	var/window_size = ""
 	if(width && height)
 		window_size = "size=[width]x[height];"
+	var/start_time = world.time
+	UNTIL(common_asset || (start_time < (world.time - 10 SECONDS)))
+	if(!common_asset)
+		CRASH("failed to resolve common asset in 10 seconds")
 	SSassets.send_asset_pack(user, common_asset)
 	SSassets.send_dynamic_item_by_name(user, stylesheets)
 	SSassets.send_dynamic_item_by_name(user, scripts)

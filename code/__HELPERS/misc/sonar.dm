@@ -94,9 +94,9 @@
 			MA = make_sonar_shape()
 	if(isnull(MA))
 		return
-	. = MA
 	MA.pixel_x = pixel_x - (icon_x_dimension == WORLD_ICON_SIZE)? 0 : ((icon_x_dimension - WORLD_ICON_SIZE) / 2) + step_x
 	MA.pixel_y = pixel_y - (icon_y_dimension == WORLD_ICON_SIZE)? 0 : ((icon_y_dimension - WORLD_ICON_SIZE) / 2) + step_y
+	. = MA
 
 /atom/proc/make_sonar_shape()
 	return

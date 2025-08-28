@@ -1358,12 +1358,23 @@
 		if(C.body_cover_flags & FEET)
 			feet_exposed = 0
 
-	flavor_text = ""
-	for (var/T in flavor_texts)
-		if(flavor_texts[T] && flavor_texts[T] != "")
-			if((T == "general") || (T == "head" && head_exposed) || (T == "face" && face_exposed) || (T == "eyes" && eyes_exposed) || (T == "torso" && torso_exposed) || (T == "arms" && arms_exposed) || (T == "hands" && hands_exposed) || (T == "legs" && legs_exposed) || (T == "feet" && feet_exposed))
-				flavor_text += flavor_texts[T]
-				flavor_text += "\n\n"
+	flavor_text = flavor_texts["general"]
+	if(head_exposed)
+		flavor_text += flavor_texts["head"]+"\n\n"
+	if(face_exposed)
+		flavor_text += flavor_texts["face"]+"\n\n"
+	if(eyes_exposed)
+		flavor_text += flavor_texts["eyes"]+"\n\n"
+	if(torso_exposed)
+		flavor_text += flavor_texts["torso"]+"\n\n"
+	if(arms_exposed)
+		flavor_text += flavor_texts["arms"]+"\n\n"
+	if(hands_exposed)
+		flavor_text += flavor_texts["hands"]+"\n\n"
+	if(legs_exposed)
+		flavor_text += flavor_texts["legs"]+"\n\n"
+	if(feet_exposed)
+		flavor_text += flavor_texts["feet"]+"\n\n"
 	if(!shrink)
 		return flavor_text
 	else

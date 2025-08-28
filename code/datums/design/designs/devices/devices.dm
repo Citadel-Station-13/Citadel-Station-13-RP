@@ -1,5 +1,6 @@
 /datum/prototype/design/device
 	abstract_type = /datum/prototype/design/device
+	category = "General"
 
 /datum/prototype/design/device/radio_headset
 	id = "DeviceRadioHeadset"

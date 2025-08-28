@@ -92,6 +92,7 @@
 		charging = G
 		update_icon()
 		clickchain.performer.visible_message("[clickchain.performer] inserts [charging] into [src].", "You insert [charging] into [src].")
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 
 	else if(portable && G.is_wrench())
 		if(charging)
