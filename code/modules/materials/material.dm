@@ -339,7 +339,7 @@
 		var/key = weak_alloy[i]
 		var/value = weak_alloy[key]
 		if(ispath(key))
-			var/datum/material/casted = key
+			var/datum/prototype/material/casted = key
 			key = initial(casted.id)
 			weak_alloy[i] = key
 			weak_alloy[key] = value
@@ -347,7 +347,7 @@
 		var/key = strong_alloy[i]
 		var/value = strong_alloy[key]
 		if(ispath(key))
-			var/datum/material/casted = key
+			var/datum/prototype/material/casted = key
 			key = initial(casted.id)
 			strong_alloy[i] = key
 			strong_alloy[key] = value

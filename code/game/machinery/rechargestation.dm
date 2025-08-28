@@ -1,3 +1,6 @@
+/**
+ * A generic recharging station meant to allow mobs (?) to enter.
+ */
 /obj/machinery/recharge_station
 	name = "cyborg recharging station"
 	desc = "A heavy duty rapid charging system, designed to quickly recharge cyborg power reserves."
@@ -38,6 +41,21 @@
 
 /obj/machinery/recharge_station/proc/has_cell_power()
 	return cell && cell.percent() > 0
+
+// TODO: move all of the old checks here
+/obj/machinery/recharge_station/proc/should_allow_entry(mob/entity)
+	if(isrobot(entity))
+		return TRUE
+	if(entity.legacy_get_rigsuit())
+		return TRUE
+	return FALSE
+
+/**
+ * @return amount used
+ */
+/obj/machinery/recharge_station/proc/provide_energy(mob/entity, kilojoules)
+	. = 0
+	#warn impl
 
 /obj/machinery/recharge_station/process(delta_time)
 	if(machine_stat & (BROKEN))
@@ -267,7 +285,7 @@
 
 	else if(istype(L,  /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = L
-		if(H.isSynthetic() || H.wearing_rig)
+		if(H.isSynthetic() || H.wearing_rig || should_allow_entry(H))
 			add_fingerprint(H)
 			H.forceMove(src)
 			H.update_perspective()

@@ -507,8 +507,8 @@
 		if(istype(thing, /obj/item/reagent_containers/hypospray/autoinjector)) //Don't know if I need to define autoinjectors too. Meh.
 			fear_amount += 3
 
-		if(istype(thing, /obj/item/rig_module/basic/chem_dispenser))
-			fear_amount += 5
+		// if(istype(thing, /obj/item/rig_module/basic/chem_dispenser))
+		// 	fear_amount += 5
 
 		if(istype(thing, /obj/item/storage/box/syringes))
 			fear_amount += 2

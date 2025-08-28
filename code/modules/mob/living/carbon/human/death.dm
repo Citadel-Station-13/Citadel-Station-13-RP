@@ -110,8 +110,8 @@
 			sql_report_death(src)
 		SSticker.mode.check_win()
 
-	if(wearing_rig)
-		wearing_rig.notify_ai("<span class='danger'>Warning: user death event. Mobility control passed to integrated intelligence system.</span>")
+	// if(wearing_rig)
+	// 	wearing_rig.notify_ai("<span class='danger'>Warning: user death event. Mobility control passed to integrated intelligence system.</span>")
 
 	// If the body is in VR, move the mind back to the real world
 	if(vr_holder)

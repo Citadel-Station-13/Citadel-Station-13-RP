@@ -555,10 +555,10 @@
 /obj/structure/closet/AllowDrop()
 	return !opened
 
-/obj/structure/closet/return_air_for_internal_lifeform(var/mob/living/L)
+/obj/structure/closet/return_air_for_internal_mob(mob/entity)
 	if(loc)
 		if(istype(loc, /obj/structure/closet))
-			return (loc.return_air_for_internal_lifeform(L))
+			return (loc.return_air_for_internal_mob(L))
 	return return_air()
 
 /obj/structure/closet/CanReachOut(atom/movable/mover, atom/target, obj/item/tool, list/cache)

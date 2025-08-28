@@ -35,7 +35,7 @@
 	)
 	WRITE_LOG(log__gun_firing_cycle, json_encode(.))
 
-/datum/world_event_logger/proc/log__rigsuit_raw(obj/item/rig/rig, datum/event_args/actor/actor, action, list/data)
+/datum/world_event_logger/json_flatfile/log__rigsuit_raw(obj/item/rig/rig, datum/event_args/actor/actor, action, list/data)
 	. = list(
 		"time" = world.time,
 		"ref_rig" = ref(rig),

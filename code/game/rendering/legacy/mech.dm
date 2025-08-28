@@ -137,24 +137,3 @@
 	if(user != owner_mech.occupant_legacy)
 		return
 	owner_mech.toggle_internal_tank()
-
-/*
-/mob/observer/dead/create_mob_hud(datum/hud/HUD, apply_to_client = TRUE)
-	..()
-	var/list/adding = list()
-	HUD.adding = adding
-
-	var/atom/movable/screen/using
-	using = new /atom/movable/screen/ghost/jumptomob()
-	using.screen_loc = ui_ghost_jumptomob
-	using.hud = src
-	adding += using
-	using = new /atom/movable/screen/ghost/orbit()
-	using.screen_loc = ui_ghost_orbit
-	using.hud = src
-	adding += using
-	using = new /atom/movable/screen/ghost/reenter_corpse()
-	using.screen_loc = ui_ghost_reenter_corpse
-	using.hud = src
-	adding += using
-*/

@@ -147,7 +147,7 @@
 	.=..()
 	alpha = 255	// Needed because of grave hiding
 
-/obj/structure/closet/grave/return_air_for_internal_lifeform(var/mob/living/L)
+/obj/structure/closet/grave/return_air_for_internal_mob(mob/entity)
 	var/gasid = GAS_ID_CARBON_DIOXIDE
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L

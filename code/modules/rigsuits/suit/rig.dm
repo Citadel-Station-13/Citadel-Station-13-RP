@@ -274,12 +274,7 @@
 		remove_piece(piece)
 	if(!skip_modules)
 		#warn annihilate modules
-	z_head.reset_state_after_wipe()
-	z_chest.reset_state_after_wipe()
-	z_left_arm.reset_state_after_wipe()
-	z_right_arm.reset_state_after_wipe()
-	z_left_leg.reset_state_after_wipe()
-	z_right_leg.reset_state_after_wipe()
+	reset_zones()
 	ui_queue_everything()
 
 /obj/item/rig/get_encumbrance()

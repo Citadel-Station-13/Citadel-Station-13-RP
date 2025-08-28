@@ -367,10 +367,10 @@
 			return
 		put_mob(L)
 
-/atom/proc/return_air_for_internal_lifeform(mob/living/lifeform)
+/atom/proc/return_air_for_internal_mob(mob/entity)
 	return return_air()
 
-/obj/machinery/atmospherics/component/unary/cryo_cell/return_air_for_internal_lifeform()
+/obj/machinery/atmospherics/component/unary/cryo_cell/return_air_for_internal_mob(mob/entity)
 	//assume that the cryo cell has some kind of breath mask or something that
 	//draws from the cryo tube's environment, instead of the cold internal air.
 	if(src.loc)

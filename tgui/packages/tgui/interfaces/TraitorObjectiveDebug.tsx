@@ -1,6 +1,7 @@
 import { useBackend, useLocalState } from "../backend";
 import { Box, LabeledList, Stack, Tabs, Tooltip } from "../components";
 import { Window } from "../layouts";
+import { WindowTheme } from "../styles/themes/typedef";
 import { getReputation } from "./Uplink/calculateReputationLevel";
 
 type Objective = {
@@ -197,7 +198,7 @@ export const TraitorObjectiveDebug = (props, context) => {
     <Window
       width={1000}
       height={1000}
-      theme="admin"
+      theme={WindowTheme.Admin}
     >
       <Window.Content
         scrollable

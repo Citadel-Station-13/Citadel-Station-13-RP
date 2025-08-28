@@ -1,4 +1,3 @@
-// TODO: reconcile this with screen/actor_hud type?
 /atom/movable/screen/hud
 
 /atom/movable/screen/hud/Initialize(mapload, datum/hud/master)

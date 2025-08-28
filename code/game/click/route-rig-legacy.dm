@@ -44,7 +44,7 @@
 				if(clickchain.click_params["ctrl"] && !clickchain.click_params["alt"] && !clickchain.click_params["shift"] )
 					route_to_rig = TRUE
 		// this is definitely shitcode.
-		var/obj/item/hardsuit/maybe_hardsuit = get_hardsuit(TRUE)
+		var/obj/item/hardsuit/maybe_hardsuit = legacy_get_rigsuit(TRUE)
 		if(route_to_rig && maybe_hardsuit)
 			. = attempt_rigsuit_click(clickchain, clickchain_flags, maybe_hardsuit)
 			clickchain.data[ACTOR_DATA_RIG_CLICK_LOG] ||= "[maybe_hardsuit]"

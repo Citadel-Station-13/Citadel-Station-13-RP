@@ -20,6 +20,6 @@
 	global.event_logger.log__rigsuit_raw(rig, actor, "piece-log", list("piece" = ref(piece), "msg" = msg))
 
 /proc/log_rigsuit_piece_seal_state_change(obj/item/rig/rig, datum/component/rig_piece/piece, datum/event_args/actor/actor, old_state, new_state)
-	global.event_logger.log__rigsuit_raw(rig, actor, "piece-activation", list("piece" = ref(piece), "msg" = msg, "old_state" = old_state, "new_state" = new_state))
+	global.event_logger.log__rigsuit_raw(rig, actor, "piece-activation", list("piece" = ref(piece), "old_state" = old_state, "new_state" = new_state))
 
 #warn call these from rig code???

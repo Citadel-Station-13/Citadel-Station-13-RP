@@ -50,7 +50,7 @@
 
 	else return ..()
 
-/turf/simulated/floor/water/return_air_for_internal_lifeform(var/mob/living/L)
+/turf/simulated/floor/water/return_air_for_internal_mob(mob/entity)
 	if(L && L.lying && !L.is_avoiding_ground())
 		if(L.can_breathe_water()) // For squid.
 			var/datum/gas_mixture/water_breath = new()

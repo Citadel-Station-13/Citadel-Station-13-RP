@@ -5,7 +5,7 @@ import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section, Tabs, Input
 import { Window } from '../layouts';
 
 const ResearchConsoleViewResearch = (props) => {
-  const { act, data } = useBackend<any>();
+  const { act, data } = useBackend<any>(context);
 
   const {
     tech,
@@ -37,7 +37,7 @@ const ResearchConsoleViewResearch = (props) => {
 };
 
 const PaginationTitle = (props) => {
-  const { data } = useBackend<any>();
+  const { data } = useBackend<any>(context);
 
   const {
     title,

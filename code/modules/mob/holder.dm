@@ -14,7 +14,7 @@
 	throw_range = 14
 	throw_force = 10
 	throw_speed = 3
-	
+
 	var/static/list/holder_mob_icon_cache = list()
 	var/mob/living/held_mob
 
@@ -149,10 +149,9 @@
 /obj/item/holder/holosphere_shell/relaymove(var/mob/user, var/direction)
 	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE))
 		return
-	var/obj/item/hardsuit/hardsuit = src.get_hardsuit()
-	if(istype(hardsuit))
-		hardsuit.forced_move(direction, user)
-
+	// var/obj/item/hardsuit/hardsuit = src.get_hardsuit()
+	// if(istype(hardsuit))
+	// 	hardsuit.forced_move(direction, user)
 
 /obj/item/holder/mouse
 	w_class = WEIGHT_CLASS_TINY
