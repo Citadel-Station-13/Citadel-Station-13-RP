@@ -83,6 +83,7 @@
 	current_location = "strelka_emt_hangar"
 	docking_controller_tag = "emtshuttle_docker"
 	move_time = 15
+	fuel_consumption = 3
 
 /area/shuttle/emt/strelka
 	name = "Hammerdart Interception and Rescue Shuttle"

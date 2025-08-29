@@ -132,6 +132,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck3)
+"aD" = (
+/obj/machinery/camera/network/security{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monowhite,
+/area/space)
 "aE" = (
 /obj/effect/floor_decal/corner/purple{
 	dir = 10
@@ -465,7 +471,7 @@
 /obj/structure/table/rack/shelf,
 /obj/item/clothing/suit/space/void/medical/alt,
 /obj/item/clothing/head/helmet/space/void/medical/alt,
-/obj/structure/curtain/black,
+/obj/structure/curtain/open/black,
 /turf/simulated/floor/wood,
 /area/bridge/strelka/md)
 "bZ" = (
@@ -1788,7 +1794,7 @@
 	},
 /obj/machinery/turretid/stun{
 	check_synth = 1;
-	control_area = /area/ai;
+	control_area = /area/bridge/strelka/ai;
 	name = "AI Chamber turret control";
 	pixel_x = 30;
 	pixel_y = 17;
@@ -2009,6 +2015,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck3)
+"ht" = (
+/obj/machinery/camera/network/security{
+	dir = 1
+	},
+/turf/space/basic,
+/area/space)
 "hu" = (
 /obj/machinery/computer/transhuman/resleeving{
 	dir = 1
@@ -3239,6 +3251,9 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
+/obj/structure/wheelchairassist{
+	dir = 4
+	},
 /turf/simulated/open,
 /area/hallway/strelka/deck3)
 "lN" = (
@@ -3979,6 +3994,15 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck3)
+"nY" = (
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
+/obj/structure/wheelchairassist{
+	dir = 4
+	},
+/turf/simulated/floor/trap/wheelchair,
+/area/hallway/strelka/deck3)
 "nZ" = (
 /turf/simulated/floor/carpet/purcarpet,
 /area/bridge/strelka/rd)
@@ -4472,7 +4496,10 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/turf/simulated/floor/wood/indoors,
+/obj/structure/wheelchairassist{
+	dir = 8
+	},
+/turf/simulated/floor/trap/wheelchair,
 /area/hallway/strelka/deck3)
 "pM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -4723,6 +4750,9 @@
 	name = "Surgery Cleaner";
 	pixel_x = 2;
 	pixel_y = 2
+	},
+/obj/item/storage/firstaid/surgery{
+	pixel_y = -4
 	},
 /turf/simulated/floor/wood/indoors,
 /area/medical/strelka/surgery)
@@ -6614,6 +6644,13 @@
 "xm" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/quartermaster/strelka/portal)
+"xn" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#B95A00"
+	},
+/obj/machinery/camera/network/security,
+/turf/simulated/floor/tiled/monowhite,
+/area/space)
 "xp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/blue{
@@ -7126,7 +7163,10 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/turf/simulated/floor/wood/indoors,
+/obj/structure/wheelchairassist{
+	dir = 4
+	},
+/turf/simulated/floor/trap/wheelchair,
 /area/hallway/strelka/deck3)
 "yN" = (
 /obj/effect/floor_decal/grass_edge{
@@ -7338,6 +7378,10 @@
 	},
 /turf/simulated/floor/fey/forest_grass,
 /area/rnd/strelka/xenobotany)
+"zz" = (
+/obj/machinery/camera/network/security,
+/turf/simulated/floor/tiled/monodark,
+/area/space)
 "zA" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -7901,6 +7945,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/emtroom)
+"Bu" = (
+/obj/machinery/camera/network/security{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/space)
 "Bv" = (
 /obj/item/slime_scanner,
 /obj/item/gun/projectile/energy/taser/xeno,
@@ -10274,6 +10324,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/strelka/deck3)
+"Jg" = (
+/obj/machinery/camera/network/security,
+/turf/simulated/floor/tiled/monowhite,
+/area/space)
 "Jh" = (
 /obj/structure/stairs/spawner/north,
 /obj/machinery/door/firedoor/glass,
@@ -10620,6 +10674,12 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/medical/strelka)
+"Ku" = (
+/obj/machinery/camera/network/security{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
 "Kv" = (
 /obj/machinery/holopad,
 /obj/effect/floor_decal/borderfloorblack{
@@ -10682,6 +10742,10 @@
 	id = "operating_theatre_2";
 	pixel_x = -24;
 	pixel_y = -2
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = 12;
+	pixel_y = 10
 	},
 /turf/simulated/floor/wood/indoors,
 /area/medical/strelka/surgery)
@@ -11133,7 +11197,10 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/turf/simulated/floor/wood/indoors,
+/obj/structure/wheelchairassist{
+	dir = 8
+	},
+/turf/simulated/floor/trap/wheelchair,
 /area/hallway/strelka/deck3)
 "Ms" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -11912,6 +11979,9 @@
 	pixel_x = -8
 	},
 /obj/structure/table/reinforced,
+/obj/item/wheelchair{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/main)
 "Pp" = (
@@ -11982,6 +12052,12 @@
 /obj/item/cell/high{
 	pixel_x = 2;
 	pixel_y = -1
+	},
+/obj/item/wheelchair{
+	dir = 4
+	},
+/obj/item/wheelchair{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/emtroom)
@@ -12255,6 +12331,10 @@
 	pixel_x = -22
 	},
 /obj/item/defib_kit/compact/loaded,
+/obj/item/storage/firstaid/adv{
+	pixel_x = -8;
+	pixel_y = -18
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/emtroom)
 "QE" = (
@@ -12370,6 +12450,20 @@
 	},
 /turf/simulated/floor/wood,
 /area/bridge/strelka/rd)
+"Rc" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/structure/ladder/teleporter/updown,
+/turf/simulated/floor/tiled/monodark,
+/area/hallway/strelka/deck3)
 "Rd" = (
 /obj/landmark/spawnpoint/job/ai/secondary,
 /turf/simulated/floor/plating,
@@ -12389,6 +12483,9 @@
 	dir = 1
 	},
 /obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
+/obj/structure/wheelchairassist{
 	dir = 4
 	},
 /turf/simulated/open,
@@ -12715,6 +12812,10 @@
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/strelka/servers)
+"Sp" = (
+/obj/machinery/camera/network/security,
+/turf/space/basic,
+/area/space)
 "Sq" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/spline/fancy/wood,
@@ -12758,6 +12859,7 @@
 /obj/machinery/light/small/old{
 	dir = 4
 	},
+/obj/structure/wheelchairassist,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/emtroom)
 "Sx" = (
@@ -14158,6 +14260,14 @@
 "WX" = (
 /obj/item/aiModule/teleporterOffline,
 /obj/structure/table/standard,
+/obj/machinery/turretid/stun{
+	check_synth = 1;
+	control_area = /area/bridge/strelka/ai;
+	name = "AI Chamber turret control";
+	pixel_x = 29;
+	pixel_y = 1;
+	uid = "core"
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/strelka/upload)
 "Xa" = (
@@ -14241,6 +14351,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/science)
+"Xo" = (
+/obj/machinery/camera/network/security,
+/turf/simulated/floor/reinforced,
+/area/space)
 "Xp" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -27091,7 +27205,7 @@ gc
 gc
 gc
 SI
-zn
+Xo
 zn
 zn
 zn
@@ -27246,7 +27360,7 @@ EP
 EP
 zn
 zn
-zn
+Ku
 zV
 su
 dh
@@ -28403,7 +28517,7 @@ EP
 EP
 lI
 EP
-zq
+aD
 mF
 mF
 mX
@@ -28844,7 +28958,7 @@ zD
 aT
 Er
 VA
-SV
+xn
 EP
 lI
 lI
@@ -32135,7 +32249,7 @@ fb
 nJ
 nS
 zV
-zq
+Jg
 EP
 EP
 EP
@@ -36190,7 +36304,7 @@ uZ
 WK
 WK
 xh
-jM
+Rc
 Zf
 LD
 gg
@@ -36366,7 +36480,7 @@ ae
 ae
 ae
 EP
-EP
+Bu
 mE
 Ph
 GY
@@ -36402,7 +36516,7 @@ ZK
 cZ
 Vs
 Vs
-EP
+zz
 ae
 ae
 ae
@@ -37159,9 +37273,9 @@ Lm
 lX
 nC
 lL
-pL
+nY
 ov
-pL
+nY
 Rl
 xj
 gW
@@ -38897,7 +39011,7 @@ ae
 ae
 ae
 ae
-ae
+ht
 cL
 we
 we
@@ -38915,7 +39029,7 @@ tG
 gT
 Od
 sn
-ae
+Sp
 ae
 ae
 ae
@@ -41035,7 +41149,7 @@ ae
 ae
 ae
 ae
-ae
+ht
 uM
 uM
 uM
@@ -41045,7 +41159,7 @@ pF
 uM
 uM
 uM
-ae
+Sp
 ae
 ae
 ae
