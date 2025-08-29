@@ -426,6 +426,8 @@
 
 		update_space(t)
 
+		playsound(src, pick('sound/items/pen1.ogg','sound/items/pen2.ogg'), 5)
+
 		SSassets.send_asset_pack(usr.client, /datum/asset_pack/simple/logos)
 		usr.client.asset_cache_flush_browse_queue()
 		usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info_links][stamps]</BODY></HTML>", "window=[name]") // Update the window
