@@ -2,7 +2,7 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /mob/living/silicon/ai/should_client_shift_click_examine(atom/entity)
-	if(!imob(entity) && !(entity in view(usr?.client?.view || world.view, src)))
+	if(!ismob(entity) && !(entity in view(usr?.client?.view || world.view, src)))
 		return FALSE
 	return ..()
 
