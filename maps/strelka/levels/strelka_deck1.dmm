@@ -1419,6 +1419,13 @@
 /obj/effect/floor_decal/spline/fancy/wood,
 /turf/simulated/floor/carpet/patterened/blue,
 /area/strelka/pilot)
+"hr" = (
+/obj/structure/stairs/spawner/west,
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/hallway/strelka/deck1)
 "hs" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -4742,10 +4749,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/obj/structure/wheelchairassist{
-	dir = 8
-	},
-/turf/simulated/floor/trap/wheelchair,
+/turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck1)
 "ym" = (
 /turf/simulated/floor/airless,
@@ -32881,7 +32885,7 @@ zN
 js
 dM
 UC
-zN
+hr
 RS
 Nd
 hV

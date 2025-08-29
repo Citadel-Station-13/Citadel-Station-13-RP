@@ -1484,6 +1484,7 @@
 	req_access = null
 	},
 /obj/machinery/door/window/southleft,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/wood/indoors,
 /area/security/strelka/reception)
 "en" = (
@@ -2368,9 +2369,6 @@
 /obj/machinery/air_alarm/south_mount,
 /obj/machinery/door/firedoor/glass{
 	dir = 8
-	},
-/obj/structure/wheelchairassist{
-	dir = 4
 	},
 /turf/simulated/open,
 /area/hallway/strelka/deck2)
@@ -3377,7 +3375,8 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/explo)
 "kg" = (
-/turf/simulated/wall/r_wall/prepainted/engineering)
+/turf/simulated/wall/r_wall/prepainted/engineering,
+/area/engineering/hallway/strelka/engineering)
 "kh" = (
 /obj/structure/cable/orange{
 	icon_state = "4-8"
@@ -10043,10 +10042,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/obj/structure/wheelchairassist{
-	dir = 8
-	},
-/turf/simulated/floor/trap/wheelchair,
+/turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck2)
 "Co" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -14923,6 +14919,7 @@
 	req_access = null
 	},
 /obj/machinery/door/window/southright,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/security/strelka/reception)
 "Ru" = (
@@ -15215,6 +15212,13 @@
 "Sl" = (
 /turf/simulated/wall/r_wall/prepainted/security,
 /area/bridge/strelka/hos)
+"Sn" = (
+/obj/structure/stairs/spawner/west,
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/hallway/strelka/deck2)
 "So" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/light/spot/no_nightshift{
@@ -40190,7 +40194,7 @@ aw
 fH
 OK
 il
-aw
+Sn
 WF
 xs
 jk
