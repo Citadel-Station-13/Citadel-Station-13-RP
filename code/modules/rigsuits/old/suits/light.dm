@@ -57,11 +57,6 @@
 	airtight = 1
 	seal_delay = 5 //Being straight out of a cyberpunk space movie has its perks.
 
-	helm_type = /obj/item/clothing/head/helmet/space/hardsuit/light/hacker
-	chest_type = /obj/item/clothing/suit/space/hardsuit/light/hacker
-	glove_type = /obj/item/clothing/gloves/gauntlets/hardsuit/light/hacker
-	boot_type = /obj/item/clothing/shoes/lightrig/hacker
-
 	initial_modules = list(
 		/obj/item/rig_module/basic/ai_container,
 		/obj/item/rig_module/basic/power_sink,

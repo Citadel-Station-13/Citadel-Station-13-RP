@@ -261,7 +261,7 @@
 
 /obj/item/rig/proc/wearer_on_statpanel_status(mob/source, list/data)
 	#warn add cell data
-	ADD_STATPANEL_DATA_ENTRY("[src] - Charge", "0")
+	INJECT_STATPANEL_DATA_ENTRY(data, "[src] - Charge", "0")
 	SEND_SIGNAL(src, COMSIG_RIG_STATPANEL_STATUS_INJECTION, data)
 
 /obj/item/rig/proc/hard_reset()

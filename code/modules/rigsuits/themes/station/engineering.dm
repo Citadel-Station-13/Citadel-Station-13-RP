@@ -65,7 +65,7 @@ DECLARE_RIG_THEME(/station/engineering/atmospherics)
 	armor = /datum/armor/rigsuit/station/engineering/atmospherics
 	#warn encumbrance
 
-	preset_jetpack_type = /obj/item/rig_module/locomotion/jetpack/gas/ion
+	preset_jetpack_descriptor = /obj/item/rig_module/locomotion/jetpack/gas/ion
 	preset_additional_descriptors = list(
 		/obj/item/rig_module/item_deploy/simple/engineering/industrial,
 	)
@@ -89,7 +89,7 @@ DECLARE_RIG_THEME(/station/engineering/advanced)
 	armor = /datum/armor/rigsuit/station/engineering/advanced
 	#warn encumbrance
 
-	preset_jetpack_type = /obj/item/rig_module/locomotion/jetpack/gas/ion
+	preset_jetpack_descriptor = /obj/item/rig_module/locomotion/jetpack/gas/ion
 	preset_additional_descriptors = list(
 		/obj/item/rig_module/item_deploy/simple/engineering/industrial,
 		/obj/item/rig_module/item_mount/single/pickaxe/plasma_cutter,
