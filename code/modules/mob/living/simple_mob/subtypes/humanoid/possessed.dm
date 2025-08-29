@@ -142,12 +142,14 @@
 	rig2 = /obj/item/rig/prefab/old_eva_hardsuit/springlocked
 	armor_legacy_mob = list(melee = 60, bullet = 50, laser = 30,energy = 15, bomb = 30, bio = 100, rad = 100)
 
-/obj/item/hardsuit/industrial/old
+/obj/item/prefab/old_industrial_hardsuit
+	#warn this isn't really the theme we want.
+	theme_preset = /datum/rig_theme/station/cargo/salvage
 	name = "old Industrial hardsuit"
 	desc = "A heavy, powerful hardsuit used by construction crews and mining corporations. It appears to be pretty old and worn down."
 	// isTrapped = 1
 
-/obj/item/hardsuit/industrial/old/springlocked
+/obj/item/prefab/old_industrial_hardsuit/springlocked
 	// springtrapped = 1
 
 /mob/living/simple_mob/humanoid/possessed/merc

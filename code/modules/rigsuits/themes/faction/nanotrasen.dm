@@ -36,15 +36,15 @@ DECLARE_RIG_THEME(/nanotrasen/asset_protection)
 
 /datum/armor/rigsuit/nanotrasen/asset_protection
 	melee = 0.55
-	melee_tier = 4
+	melee_tier = 4.5
 	melee_soak = 0
 	melee_deflect = 5
 	bullet = 0.55
-	bullet_tier = 4
+	bullet_tier = 4.5
 	bullet_soak = 0
 	bullet_deflect = 5
 	laser = 0.55
-	laser_tier = 4
+	laser_tier = 4.5
 	laser_soak = 0
 	laser_deflect = 5
 	energy = 0.45
@@ -83,11 +83,11 @@ DECLARE_RIG_THEME(/nanotrasen/officer)
 	melee_soak = 0
 	melee_deflect = 5
 	bullet = 0.45
-	bullet_tier = 3
+	bullet_tier = 4
 	bullet_soak = 0
 	bullet_deflect = 5
 	laser = 0.45
-	laser_tier = 3
+	laser_tier = 4.5
 	laser_soak = 0
 	laser_deflect = 5
 	energy = 0.35
@@ -151,15 +151,15 @@ DECLARE_RIG_THEME(/nanotrasen/paracausal)
 	#warn encumbrance
 
 /datum/armor/rigsuit/nanotrasen/response
-	melee = 0.35
+	melee = 0.45
 	melee_tier = 4
 	melee_soak = 0
 	melee_deflect = 5
-	bullet = 0.35
+	bullet = 0.45
 	bullet_tier = 4
 	bullet_soak = 0
 	bullet_deflect = 5
-	laser = 0.35
+	laser = 0.45
 	laser_tier = 4
 	laser_soak = 0
 	laser_deflect = 5

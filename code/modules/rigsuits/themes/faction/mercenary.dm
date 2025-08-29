@@ -24,6 +24,13 @@ DECLARE_RIG_THEME(/mercenary/gorlex/raider)
 	visible_name = "Operator"
 	#warn impl
 
+	preset_additional_descriptors = list(
+		/obj/item/rig_module/gun/energy_gun,
+		/obj/item/rig_module/chem_injector,
+		/obj/item/rig_module/resource_store/reagent_tank/single_router/advanced_meds,
+		/obj/item/rig_module/basic/power_sink,
+	)
+
 DECLARE_RIG_THEME(/mercenary/gorlex/infiltrator)
 /datum/rig_theme/mercenary/gorlex/infiltrator
 	name = "contractor rig"
@@ -34,6 +41,13 @@ DECLARE_RIG_THEME(/mercenary/gorlex/infiltrator)
 	visible_name = "Streamlined"
 	#warn impl
 
+	preset_additional_descriptors = list(
+		/obj/item/rig_module/gun/energy_gun,
+		/obj/item/rig_module/chem_injector,
+		/obj/item/rig_module/resource_store/reagent_tank/single_router/advanced_meds,
+		/obj/item/rig_module/basic/power_sink,
+	)
+
 DECLARE_RIG_THEME(/mercenary/gorlex/assault)
 /datum/rig_theme/mercenary/gorlex/assault
 	name = "elite nukeops rig"
@@ -43,6 +57,13 @@ DECLARE_RIG_THEME(/mercenary/gorlex/assault)
 	display_name = "battle"
 	visible_name = "Battle"
 	#warn impl
+
+	preset_additional_descriptors = list(
+		/obj/item/rig_module/gun/energy_gun,
+		/obj/item/rig_module/chem_injector,
+		/obj/item/rig_module/resource_store/reagent_tank/single_router/advanced_meds,
+		/obj/item/rig_module/basic/power_sink,
+	)
 
 DECLARE_RIG_THEME(/mercenary/marine)
 /datum/rig_theme/mercenary/marine
@@ -56,9 +77,31 @@ DECLARE_RIG_THEME(/mercenary/marine)
 	control_sealed_append = ""
 	#warn impl
 
+	preset_additional_descriptors = list(
+		/obj/item/rig_module/gun/energy_gun,
+		/obj/item/rig_module/chem_injector,
+		/obj/item/rig_module/resource_store/reagent_tank/single_router/advanced_meds,
+		/obj/item/rig_module/basic/power_sink,
+	)
+
+/datum/armor/rigsuit/pmc
+	melee = 0.45
+	melee_tier = 4
+	bullet = 0.325
+	bullet_tier = 4
+	laser = 0.35
+	laser_tier = 4
+	energy = 0.25
+	bomb = 0.5
+	bio = 1.0
+	rad = 0.95
+	fire = 0.7
+	acid = 0.9
+
 /datum/rig_theme/mercenary/pmc
 	abstract_type = /datum/rig_theme/mercenary/pmc
 	base_icon = 'icons/modules/rigsuits/suits/factions/military_pmc.dmi'
+	armor = /datum/armor/rigsuit/pmc
 	control_sealed_append = ""
 	pieces = list(
 		/datum/rig_theme_piece/helmet{
@@ -83,6 +126,14 @@ DECLARE_RIG_THEME(/mercenary/pmc/commander)
 	visible_name = "Leader"
 	#warn impl
 
+	preset_additional_descriptors = list(
+		/obj/item/rig_module/gun/energy_gun,
+		/obj/item/rig_module/chem_injector,
+		/obj/item/rig_module/resource_store/reagent_tank/single_router/basic_meds,
+		/obj/item/rig_module/item_deploy/simple/toolset/engineering/full,
+		/obj/item/rig_module/basic/power_sink,
+	)
+
 DECLARE_RIG_THEME(/mercenary/pmc/medic)
 /datum/rig_theme/mercenary/pmc/medic
 	name = "pmc medic rig"
@@ -92,6 +143,12 @@ DECLARE_RIG_THEME(/mercenary/pmc/medic)
 	display_name = "corpsman"
 	visible_name = "Corpsman"
 	#warn impl
+
+	preset_additional_descriptors = list(
+		/obj/item/rig_module/chem_injector,
+		/obj/item/rig_module/resource_store/reagent_tank/single_router/advanced_meds,
+		/obj/item/rig_module/basic/power_sink,
+	)
 
 
 DECLARE_RIG_THEME(/mercenary/pmc/engineer)
@@ -104,6 +161,13 @@ DECLARE_RIG_THEME(/mercenary/pmc/engineer)
 	visible_name = "Sapper"
 	#warn impl
 
+	preset_additional_descriptors = list(
+		/obj/item/rig_module/chem_injector,
+		/obj/item/rig_module/resource_store/reagent_tank/single_router/basic_meds,
+		/obj/item/rig_module/basic/power_sink,
+		/obj/item/rig_module/item_deploy/simple/toolset/engineering/industrial,
+	)
+
 
 DECLARE_RIG_THEME(/mercenary/pmc/security)
 /datum/rig_theme/mercenary/pmc/security
@@ -114,6 +178,13 @@ DECLARE_RIG_THEME(/mercenary/pmc/security)
 	display_name = "officer"
 	visible_name = "Officer"
 	#warn impl
+
+	preset_additional_descriptors = list(
+		/obj/item/rig_module/gun/energy_gun,
+		/obj/item/rig_module/chem_injector,
+		/obj/item/rig_module/resource_store/reagent_tank/single_router/basic_meds,
+		/obj/item/rig_module/basic/power_sink,
+	)
 
 DECLARE_RIG_THEME(/mercenary/sleek)
 /datum/rig_theme/mercenary/sleek
@@ -126,3 +197,10 @@ DECLARE_RIG_THEME(/mercenary/sleek)
 	visible_name = "Combat"
 	control_sealed_append = ""
 	#warn impl
+
+	preset_additional_descriptors = list(
+		/obj/item/rig_module/gun/energy_gun,
+		/obj/item/rig_module/chem_injector,
+		/obj/item/rig_module/resource_store/reagent_tank/single_router/advanced_meds,
+		/obj/item/rig_module/basic/power_sink,
+	)

@@ -35,22 +35,6 @@
 	return ..()
 
 /obj/item/rig_module/basic/power_sink/engage(atom/target)
-
-	if(!..())
-		return 0
-
-	//Target wasn't supplied or we're already draining.
-	if(interfaced_with)
-		return 0
-
-	if(!target)
-		return 1
-
-	// Are we close enough?
-	var/mob/living/carbon/human/H = holder.wearer
-	if(!target.Adjacent(H))
-		return 0
-
 	// Is it a valid power source?
 	if(!target.can_drain_energy(src))
 		return FALSE
@@ -64,18 +48,7 @@
 
 	return 1
 
-/obj/item/rig_module/basic/power_sink/accepts_item(var/obj/item/input_device, var/mob/living/user)
-	var/can_drain = input_device.can_drain_energy(src, NONE)
-	if(can_drain > 0)
-		engage(input_device)
-		return 1
-	return 0
-
 /obj/item/rig_module/basic/power_sink/process(delta_time)
-
-	if(!interfaced_with)
-		return ..()
-
 	var/mob/living/carbon/human/H
 	if(holder && holder.wearer)
 		H = holder.wearer

@@ -39,12 +39,6 @@
 		/obj/item/rig_module/basic/chem_dispenser/combat
 		)
 
-/obj/item/hardsuit/combat/empty
-	initial_modules = list(
-		/obj/item/rig_module/basic/ai_container,
-		/obj/item/rig_module/basic/electrowarfare_suite,
-		)
-
 /datum/armor/hardsuit/military
 	melee = 0.8
 	bullet = 0.7
@@ -76,10 +70,4 @@
 		/obj/item/rig_module/basic/power_sink,
 		/obj/item/rig_module/basic/electrowarfare_suite,
 		/obj/item/rig_module/basic/chem_dispenser/combat,
-		)
-
-/obj/item/hardsuit/military/empty
-	initial_modules = list(
-		/obj/item/rig_module/basic/ai_container,
-		/obj/item/rig_module/basic/electrowarfare_suite,
 		)

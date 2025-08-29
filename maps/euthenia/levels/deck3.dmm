@@ -7980,7 +7980,7 @@
 /area/rnd/test_area)
 "hBS" = (
 /obj/structure/largecrate,
-/obj/item/hardsuit/industrial/old/springlocked,
+/obj/item/prefab/old_industrial_hardsuit/springlocked,
 /obj/item/hardsuit_module/device/rigwelder,
 /obj/random/powercell,
 /obj/effect/spider/stickyweb,
@@ -20665,7 +20665,7 @@
 /area/engineering/gravity_gen)
 "trW" = (
 /obj/structure/largecrate,
-/obj/item/hardsuit/industrial/old/springlocked,
+/obj/item/prefab/old_industrial_hardsuit/springlocked,
 /obj/item/hardsuit_module/foam_sprayer,
 /obj/random/powercell,
 /obj/effect/spider/stickyweb,

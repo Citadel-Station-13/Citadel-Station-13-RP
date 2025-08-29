@@ -17,6 +17,11 @@ DECLARE_RIG_THEME(/station/security/standard)
 	visible_name = "Security"
 	#warn impl
 
+	preset_additional_descriptors = list(
+		/obj/item/rig_module/launcher/grenade/container/loaded/combat,
+		/obj/item/rig_module/gun/taser,
+	)
+
 DECLARE_RIG_THEME(/station/security/)
 /datum/rig_theme/station/security/safeguard
 	name = "safeguard rig"
@@ -26,3 +31,8 @@ DECLARE_RIG_THEME(/station/security/)
 	display_name = "safeguard"
 	visible_name = "Safeguard"
 	#warn impl
+
+	preset_additional_descriptors = list(
+		/obj/item/rig_module/launcher/grenade/container/loaded/combat,
+		/obj/item/rig_module/gun/energy_gun,
+	)
