@@ -369,11 +369,13 @@
 		return
 	return ..()
 
-/obj/item/stack/AltClick(mob/living/user)
+/obj/item/stack/alt_clicked_on(mob/user, location, control, list/params)
 	. = ..()
-	if(!istype(user) || !in_range(user, src) || !CHECK_MOBILITY(user, MOBILITY_CAN_PICKUP))
+	if(.)
 		return
-	attempt_split_stack(user)
+	if(user.Reachability(src) && CHECK_MOBILITY(user, MOBILITY_CAN_PICKUP))
+		attempt_split_stack(user)
+		return TRUE
 
 /obj/item/stack/proc/attempt_split_stack(mob/living/user)
 	if(uses_charge)

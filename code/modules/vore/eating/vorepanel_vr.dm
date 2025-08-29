@@ -467,7 +467,8 @@
 						to_chat(user,"<span class='warning'>You can't do that in your state!</span>")
 						return TRUE
 
-					user.ClickOn(T)
+					// wow this is shit, refactor when
+					user.click_on(T, null, null, "", CLICKCHAIN_FROM_HREF)
 					sleep(5) //Seems to exit too fast for the panel to update
 
 	if(href_list["insidepick"])

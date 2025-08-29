@@ -61,15 +61,10 @@
 
 /mob/living/carbon/proc/get_breath_from_environment(var/volume_needed=BREATH_VOLUME)
 	var/datum/gas_mixture/breath = null
-
-	var/datum/gas_mixture/environment
-	if(loc)
-		environment = loc.return_air_for_internal_lifeform(src)
-
+	var/datum/gas_mixture/environment = get_environment_gas_mixture(TRUE)
 	if(environment)
 		breath = environment.remove_volume(volume_needed)
 		handle_chemical_smoke(environment) //handle chemical smoke while we're at it
-
 	if(breath)
 		//handle mask filtering
 		if(istype(wear_mask, /obj/item/clothing/mask))

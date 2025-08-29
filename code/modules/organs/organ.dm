@@ -17,6 +17,11 @@
 	/// description for organ action; defaults to [desc]
 	var/organ_action_desc
 
+	//* Biology *//
+	/// biology type this is
+	/// * this will be replaced by proper datum on biology / organ update
+	var/biology_type = NONE
+
 	//* ## STRINGS VARS
 	/// Unique identifier.
 	var/organ_tag = "organ"
@@ -337,6 +342,7 @@
 /// Being used to make robutt hearts, etc
 /obj/item/organ/proc/robotize()
 	robotic = ORGAN_ROBOT
+	biology_type = BIOLOGY_TYPE_SYNTH
 	src.status &= ~ORGAN_BROKEN
 	src.status &= ~ORGAN_BLEEDING
 	src.status &= ~ORGAN_CUT_AWAY

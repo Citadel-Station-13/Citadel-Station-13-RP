@@ -150,7 +150,7 @@
 		// cut-down version of get_breath_from_environment - notably, gas masks provide no benefit
 		var/datum/gas_mixture/environment2
 		if(H.loc)
-			environment2 = H.loc.return_air_for_internal_lifeform(H)
+			environment2 = H.loc.return_air_for_internal_mob(H)
 
 		if(environment2)
 			breath = environment2.remove_volume(BREATH_VOLUME)

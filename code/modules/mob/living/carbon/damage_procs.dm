@@ -19,6 +19,24 @@
 	oxyloss -= amount
 	return . - oxyloss
 
+//* Damage *//
+
+/mob/living/carbon/heal_brute_loss(amount)
+	return heal_overall_damage(amount, 0)
+
+/mob/living/carbon/heal_fire_loss(amount)
+	return heal_overall_damage(0, amount)
+
+/mob/living/carbon/heal_tox_loss(amount)
+	. = toxloss
+	toxloss -= amount
+	return . - toxloss
+
+/mob/living/carbon/heal_oxy_loss(amount)
+	. = oxyloss
+	oxyloss -= amount
+	return . - oxyloss
+
 //* Raw Damage *//
 
 /mob/living/carbon/take_random_targeted_damage(brute, burn, damage_mode, weapon_descriptor, defer_updates)

@@ -122,8 +122,8 @@
 	var/obj/item/tank/internal = null//Human/Monkey
 	var/obj/item/clothing/mask/wear_mask = null//Carbon
 
-	//* Carry Weight
-	//  todo: put all this on /datum/inventory after s refactor
+	//* Carry Weight *//
+	//  todo: put all this on /datum/inventory after a refactor
 	/// cached carry weight of all items
 	var/cached_carry_weight = 0
 	/// cached encumbrance of all items

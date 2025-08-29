@@ -25,7 +25,7 @@
 
 	// Give them enough meth to be consumed in 2 metabolizations
 	pill.reagents.add_reagent(meth, initial(meth.metabolization_rate) * 1.9)
-	pill.melee_interaction_chain(user, user)
+	pill.lazy_melee_interaction_chain(user, user)
 
 	user.Life()
 

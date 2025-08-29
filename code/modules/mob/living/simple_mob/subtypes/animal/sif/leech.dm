@@ -116,8 +116,8 @@
 /mob/living/simple_mob/animal/sif/leech/statpanel_data(client/C)
 	. = ..()
 	if(C.statpanel_tab("Status"))
-		STATPANEL_DATA_LINE("")
-		STATPANEL_DATA_ENTRY("Chemicals", chemicals)
+		INJECT_STATPANEL_DATA_LINE(., "")
+		INJECT_STATPANEL_DATA_ENTRY(., "Chemicals", chemicals)
 
 /mob/living/simple_mob/animal/sif/leech/do_special_attack(atom/A)
 	. = TRUE

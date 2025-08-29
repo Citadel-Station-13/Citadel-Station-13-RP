@@ -29,7 +29,7 @@
 			return
 		else if(user.zone_sel.selecting == "r_hand" || user.zone_sel.selecting == "l_hand")
 			var/obj/item/sample/print/P = new /obj/item/sample/print(user.loc)
-			P.melee_interaction_chain(target, user)
+			P.lazy_melee_interaction_chain(target, user)
 			to_chat(user,"<span class='notice'>Done printing.</span>")
 	//		to_chat(user, "<span class='notice'>[target]'s Fingerprints: [md5(target.dna.uni_identity)]</span>")
 

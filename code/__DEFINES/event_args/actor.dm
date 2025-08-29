@@ -4,6 +4,10 @@
 //* Actor Data Keys *//
 
 /// logging only
+#define ACTOR_DATA_RIG_CLICK_LOG "rig-click-log"
+/// logging only
+#define ACTOR_DATA_SILICON_CONTROL_LOG "silicon-control-log"
+/// logging only
 #define ACTOR_DATA_UNARMED_LOG "unarmed-log"
 /// logging only
 #define ACTOR_DATA_STUNBATON_LOG "stunbaton-log"
@@ -16,6 +20,8 @@
 /// logging only
 /// * kinetic gauntlets
 #define ACTOR_DATA_KINETIC_IMPACT_LOG "kinetic-impact-log"
+/// logging only
+#define ACTOR_DATA_RIGSUIT_CLICK_LOG "rig-click-log"
 
 /// upon melee impact
 #define ACTOR_DATA_MELEE_DAMAGE_INSTANCE_RESULTS "melee-damage-instance-results"

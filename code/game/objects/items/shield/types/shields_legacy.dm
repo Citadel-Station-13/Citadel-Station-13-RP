@@ -53,7 +53,7 @@
 /obj/item/shield/riot/flash/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
-	embedded_flash.melee_interaction_chain(target, user, clickchain_flags, params)
+	embedded_flash.lazy_melee_interaction_chain(target, user, clickchain_flags, params)
 
 /obj/item/shield/riot/flash/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
@@ -74,7 +74,7 @@
 	// var/mob/attacker = clickchain?.performer
 	// if(attacker)
 	// 	log_attack(key_name(attacker), key_name(defending), "flash shield auto-invoke")
-	// 	embedded_flash.melee_interaction_chain(attacker, defending)
+	// 	embedded_flash.lazy_melee_interaction_chain(attacker, defending)
 	// else
 	log_attack(key_name(defending), "none (AoE)", "flash shield auto-invoke")
 	embedded_flash.attack_self(defending)

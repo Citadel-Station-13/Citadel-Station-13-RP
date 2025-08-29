@@ -5,6 +5,8 @@
 	organ_tag = O_CELL
 	parent_organ = BP_TORSO
 	vital = 1
+	biology_type = BIOLOGY_TYPE_SYNTH
+	robotic = ORGAN_ROBOT
 
 /obj/item/organ/internal/cell/Initialize(mapload)
 	. = ..()
@@ -37,6 +39,7 @@
 	var/obj/item/mmi/stored_mmi
 	robotic = ORGAN_ASSISTED
 	butcherable = FALSE
+	biology_type = BIOLOGY_TYPE_SYNTH
 
 /obj/item/organ/internal/mmi_holder/Destroy()
 	if(stored_mmi && (stored_mmi.loc == src))

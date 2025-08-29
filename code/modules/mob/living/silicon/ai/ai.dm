@@ -255,10 +255,10 @@ var/list/ai_verbs_default = list(
 /mob/living/silicon/ai/statpanel_data(client/C)
 	. = ..()
 	if(C.statpanel_tab("Status"))
-		STATPANEL_DATA_LINE("")
+		INJECT_STATPANEL_DATA_LINE(., "")
 		if(!stat) // Make sure we're not unconscious/dead.
-			STATPANEL_DATA_LINE("System integrity: [(health+100)/2]%")
-			STATPANEL_DATA_LINE("Connected synthetics: [connected_robots.len]")
+			INJECT_STATPANEL_DATA_LINE(., "System integrity: [(health+100)/2]%")
+			INJECT_STATPANEL_DATA_LINE(., "Connected synthetics: [connected_robots.len]")
 			for(var/mob/living/silicon/robot/R in connected_robots)
 				var/robot_status = "Nominal"
 				if(R.shell)
@@ -268,11 +268,11 @@ var/list/ai_verbs_default = list(
 				else if(!R.cell || R.cell.charge <= 0)
 					robot_status = "DEPOWERED"
 				//Name, Health, Battery, Module, Area, and Status! Everything an AI wants to know about its borgies!
-				STATPANEL_DATA_LINE("[R.name] | S.Integrity: [R.health]% | Cell: [R.cell ? "[R.cell.charge]/[R.cell.maxcharge]" : "Empty"] | \
+				INJECT_STATPANEL_DATA_LINE(., "[R.name] | S.Integrity: [R.health]% | Cell: [R.cell ? "[R.cell.charge]/[R.cell.maxcharge]" : "Empty"] | \
 				Module: [R.modtype] | Loc: [get_area_name(R, TRUE)] | Status: [robot_status]")
-			STATPANEL_DATA_LINE("AI shell beacons detected: [LAZYLEN(GLOB.available_ai_shells)]") //Count of total AI shells
+			INJECT_STATPANEL_DATA_LINE(., "AI shell beacons detected: [LAZYLEN(GLOB.available_ai_shells)]") //Count of total AI shells
 		else
-			STATPANEL_DATA_LINE("Systems nonfunctional")
+			INJECT_STATPANEL_DATA_LINE(., "Systems nonfunctional")
 
 
 /mob/living/silicon/ai/proc/setup_icon()
@@ -737,9 +737,9 @@ var/list/ai_verbs_default = list(
 	set category = VERB_CATEGORY_IC
 
 	resting = 0
-	var/obj/item/hardsuit/hardsuit = src.get_hardsuit()
-	if(hardsuit)
-		hardsuit.force_rest(src)
+	// var/obj/item/hardsuit/hardsuit = src.get_hardsuit()
+	// if(hardsuit)
+	// 	hardsuit.force_rest(src)
 
 /mob/living/silicon/ai/is_sentient()
 	// AI cores don't store what brain was used to build them so we're just gonna assume they can think to some degree.

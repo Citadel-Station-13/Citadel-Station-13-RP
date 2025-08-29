@@ -43,17 +43,16 @@
 		var/mob/owner = parent
 		if(screen_icon)
 			owner?.client?.screen -= screen_icon
-			UnregisterSignal(screen_icon, COMSIG_CLICK)
+			UnregisterSignal(screen_icon, COMSIG_ATOM_CLICK)
 			QDEL_NULL(screen_icon)
 		if(ishuman(parent))
 			remove_verb(owner, /mob/living/carbon/human/proc/nif_menu)
-
 
 /datum/component/nif_menu/proc/create_mob_button(mob/user)
 	var/datum/hud/HUD = user.hud_used
 	if(!screen_icon)
 		screen_icon = new()
-		RegisterSignal(screen_icon, COMSIG_CLICK, PROC_REF(nif_menu_click))
+		RegisterSignal(screen_icon, COMSIG_ATOM_CLICK, PROC_REF(nif_menu_click))
 	screen_icon.icon = HUD.ui_style
 	screen_icon.color = HUD.ui_color
 	screen_icon.alpha = HUD.ui_alpha
@@ -62,7 +61,7 @@
 
 	add_verb(user, /mob/living/carbon/human/proc/nif_menu)
 
-/datum/component/nif_menu/proc/nif_menu_click(mob/user)
+/datum/component/nif_menu/proc/nif_menu_click(datum/source, mob/user, location, control, params)
 	var/mob/living/carbon/human/H = user
 	if(istype(H) && H.nif)
 		INVOKE_ASYNC(H.nif, PROC_REF(ui_interact), user)

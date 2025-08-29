@@ -38,8 +38,7 @@
 /datum/event_args/actor/proc/actor_log_string()
 	return performer == initiator ? key_name(performer) : "[key_name(performer)] (via [key_name(initiator)])"
 
-//* Feedback *(//
-
+//* Feedback *//
 
 /datum/event_args/actor/proc/chat_feedback(msg, atom/target)
 	performer.action_feedback(msg, target)
@@ -51,7 +50,7 @@
 	if(performer != initiator)
 		initiator.bubble_action_feedback(msg, target)
 
-// todo: rework these awful ass feedback/message procs wtf
+// todo: rework these awful ass feedback/message procs below wtf
 
 // proposal:
 // visible_feedback(visible, audible, self, range, target)
