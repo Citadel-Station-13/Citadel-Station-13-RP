@@ -84,17 +84,17 @@
 		var/description_holders = C.description_holders
 		if(!description_holders)
 			return	// piece of shit don't update when it's not there
-		STATPANEL_DATA_LINE("[description_holders["icon"]]    <font size='5'>[description_holders["name"]]</font>") //The name, written in big letters.
-		STATPANEL_DATA_LINE("[description_holders["desc"]]") //the default examine text.
+		INJECT_STATPANEL_DATA_LINE(., "[description_holders["icon"]]    <font size='5'>[description_holders["name"]]</font>") //The name, written in big letters.
+		INJECT_STATPANEL_DATA_LINE(., "[description_holders["desc"]]") //the default examine text.
 		if(description_holders["info"])
-			STATPANEL_DATA_LINE("<font color='#084B8A'><b>[description_holders["info"]]</b></font>") //Blue, informative text.
+			INJECT_STATPANEL_DATA_LINE(., "<font color='#084B8A'><b>[description_holders["info"]]</b></font>") //Blue, informative text.
 		if(description_holders["interactions"])
 			for(var/line in description_holders["interactions"])
-				STATPANEL_DATA_LINE("<font color='#084B8A'><b>[line]</b></font>")
+				INJECT_STATPANEL_DATA_LINE(., "<font color='#084B8A'><b>[line]</b></font>")
 		if(description_holders["fluff"])
-			STATPANEL_DATA_LINE("<font color='#298A08'><b>[description_holders["fluff"]]</b></font>") //Yellow, fluff-related text.
+			INJECT_STATPANEL_DATA_LINE(., "<font color='#298A08'><b>[description_holders["fluff"]]</b></font>") //Yellow, fluff-related text.
 		if(description_holders["antag"])
-			STATPANEL_DATA_LINE("<font color='#8A0808'><b>[description_holders["antag"]]</b></font>") //Red, malicious antag-related text
+			INJECT_STATPANEL_DATA_LINE(., "<font color='#8A0808'><b>[description_holders["antag"]]</b></font>") //Red, malicious antag-related text
 
 //override examinate verb to update description holders when things are examined
 /mob/examinate(atom/A as mob|obj|turf in view())
