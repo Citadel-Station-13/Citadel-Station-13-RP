@@ -25,3 +25,24 @@
 		"Mining Shuttle" = list("endeavour_mining_port"),
 		"NDV Quicksilver" = list("endeavour_specops_dock")
 		)
+
+/obj/overmap/entity/visitable/ship/endeavour/Crossed(var/atom/movable/AM)
+	. = ..()
+	announce_atc(AM,going = FALSE)
+
+/obj/overmap/entity/visitable/ship/endeavour/Uncrossed(var/atom/movable/AM)
+	. = ..()
+	announce_atc(AM,going = TRUE)
+
+/obj/overmap/entity/visitable/ship/endeavour/proc/announce_atc(var/atom/movable/AM, var/going = FALSE)
+	var/message = "Sensor contact for vessel '[AM.name]' has [going ? "left" : "entered"] the NSV Endeavour's operation area."
+	//For landables, we need to see if their shuttle is cloaked
+	if(istype(AM, /obj/overmap/entity/visitable/ship/landable))
+		var/obj/overmap/entity/visitable/ship/landable/SL = AM //Phew
+		var/datum/shuttle/autodock/multi/shuttle = SSshuttle.shuttles[SL.shuttle]
+		if(!istype(shuttle) || !shuttle.cloaked) //Not a multishuttle (the only kind that can cloak) or not cloaked
+			SSlegacy_atc.msg(message)
+
+	//For ships, it's safe to assume they're big enough to not be sneaky
+	else if(istype(AM, /obj/overmap/entity/visitable/ship))
+		SSlegacy_atc.msg(message)

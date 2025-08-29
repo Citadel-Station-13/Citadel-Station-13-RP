@@ -110,6 +110,16 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
+"aR" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/manifold/visible/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
 "bd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -125,8 +135,11 @@
 /area/engineering/engine_room)
 "cH" = (
 /obj/machinery/light,
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
@@ -223,6 +236,12 @@
 /area/engineering/engine_room)
 "gr" = (
 /obj/machinery/air_alarm/south_mount,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "gs" = (
@@ -368,6 +387,12 @@
 /obj/machinery/camera/network/engine{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "oq" = (
@@ -433,10 +458,7 @@
 /area/engineering/engine_room)
 "pA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
+	dir = 5
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
@@ -463,8 +485,8 @@
 	},
 /area/engineering/engine_room)
 "ra" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
@@ -525,6 +547,13 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/purple,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
+"va" = (
+/obj/machinery/atmospherics/pipe/simple/visible/green{
+	dir = 4
+	},
+/obj/machinery/camera/network/engine,
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
 "vj" = (
 /obj/machinery/light{
 	dir = 4
@@ -559,10 +588,11 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "vY" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 5
+/obj/machinery/light{
+	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/visible/supply{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -621,6 +651,13 @@
 	},
 /turf/template_noop,
 /area/template_noop)
+"yp" = (
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/obj/machinery/fire_alarm/north_mount,
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
 "yr" = (
 /obj/machinery/power/apc/east_mount,
 /obj/structure/cable/cyan,
@@ -663,8 +700,11 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "zB" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
@@ -885,6 +925,15 @@
 	},
 /turf/simulated/floor/airless/ceiling,
 /area/engineering/engine_room)
+"Hi" = (
+/obj/machinery/atmospherics/pipe/simple/visible/red{
+	dir = 8
+	},
+/obj/machinery/camera/network/engine{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
 "Hq" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
@@ -1009,6 +1058,13 @@
 	},
 /turf/simulated/floor/airless/ceiling,
 /area/engineering/engine_room)
+"LK" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/visible/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
 "LQ" = (
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 4
@@ -1038,6 +1094,12 @@
 	dir = 8
 	},
 /turf/simulated/floor/reinforced/airless,
+/area/engineering/engine_room)
+"Nc" = (
+/obj/machinery/camera/network/engine{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "Nt" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
@@ -1339,9 +1401,13 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "XU" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 6
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/manifold/visible/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "Ye" = (
@@ -1380,8 +1446,12 @@
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/manifold/visible/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "YK" = (
@@ -1397,11 +1467,8 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "ZF" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
@@ -1453,7 +1520,7 @@ Ua
 dB
 dB
 vV
-dB
+Nc
 dB
 jf
 sH
@@ -1516,13 +1583,13 @@ dB
 fN
 GE
 vV
-oV
+Hi
 Iy
 Ua
 Ua
 Tm
 UA
-RC
+yp
 vK
 dB
 dB
@@ -1559,7 +1626,7 @@ ad
 (7,1,1) = {"
 Ll
 Ll
-pp
+va
 dB
 DD
 dB
@@ -1721,8 +1788,8 @@ xw
 ap
 Ab
 dB
-dB
-dB
+bo
+pA
 "}
 (14,1,1) = {"
 Ll
@@ -1745,7 +1812,7 @@ CC
 ai
 aB
 dB
-dB
+JR
 op
 "}
 (15,1,1) = {"
@@ -1755,8 +1822,8 @@ tr
 Vd
 dB
 dB
-JR
-ra
+dB
+dB
 dB
 HO
 YK
@@ -1779,8 +1846,8 @@ tb
 oq
 dB
 dB
-bo
-vY
+dB
+dB
 dB
 HO
 pp
@@ -1794,7 +1861,7 @@ ar
 Hw
 ad
 dB
-dB
+zB
 "}
 (17,1,1) = {"
 Ll
@@ -1804,7 +1871,7 @@ do
 dB
 dB
 dB
-vK
+dB
 dB
 HO
 pp
@@ -1817,7 +1884,7 @@ dA
 aI
 Hw
 ad
-XU
+dB
 cH
 "}
 (18,1,1) = {"
@@ -1828,7 +1895,7 @@ dB
 dB
 dB
 dB
-vK
+dB
 dB
 HO
 pp
@@ -1841,7 +1908,7 @@ Wy
 CL
 MW
 ad
-pA
+dB
 zB
 "}
 (19,1,1) = {"
@@ -1849,8 +1916,8 @@ Ll
 Ll
 kc
 kc
-kc
-kc
+XU
+aR
 kc
 YF
 ZY
@@ -1865,16 +1932,16 @@ dB
 Ak
 HK
 dB
-ZF
 dB
+zB
 "}
 (20,1,1) = {"
 Ll
 Ll
 dB
 dB
-dB
-dB
+ZF
+ra
 dB
 vK
 dB
@@ -1888,9 +1955,9 @@ dB
 Ht
 fD
 Ak
-dB
-ZF
-dB
+EF
+FZ
+zB
 "}
 (21,1,1) = {"
 Ll
@@ -1912,7 +1979,7 @@ eS
 eS
 Kb
 eS
-Qi
+vY
+LK
 bd
-dB
 "}
