@@ -8307,7 +8307,7 @@
 	},
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/pottedplant/hedge,
-/turf/space/basic,
+/turf/simulated/floor/fey/forest_grass,
 /area/hallway/strelka/deck1)
 "QE" = (
 /turf/simulated/wall/r_wall/prepainted,
