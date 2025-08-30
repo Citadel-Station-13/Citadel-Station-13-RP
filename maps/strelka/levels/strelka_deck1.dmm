@@ -20,6 +20,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor,
 /area/shuttle/civvie/strelka)
 "ae" = (
@@ -94,7 +95,7 @@
 /obj/machinery/camera/network/security{
 	dir = 8
 	},
-/obj/machinery/suit_cycler/exploration,
+/obj/machinery/suit_storage_unit/exploration,
 /turf/simulated/floor/tiled/techmaint,
 /area/strelka/gateway)
 "aN" = (
@@ -520,8 +521,9 @@
 /obj/machinery/light/small/old{
 	dir = 1
 	},
-/obj/effect/floor_decal/wheelchairassist{
-	dir = 8
+/obj/structure/wheelchairassist{
+	dir = 4;
+	layer = 2
 	},
 /turf/simulated/floor/trap/wheelchair,
 /area/hallway/strelka/deck1)
@@ -690,6 +692,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor,
 /area/shuttle/civvie/strelka)
 "dr" = (
@@ -1324,12 +1327,7 @@
 /obj/structure/lattice,
 /obj/structure/marker_beacon/green,
 /obj/machinery/shield_diffuser,
-/turf/simulated/floor/airless,
-/area/strelka/fighterbaysec)
-"gY" = (
-/obj/structure/lattice,
-/obj/structure/marker_beacon/green,
-/turf/space/basic,
+/turf/simulated/floor,
 /area/strelka/fighterbaysec)
 "gZ" = (
 /obj/effect/floor_decal/borderfloor{
@@ -2527,7 +2525,7 @@
 "mC" = (
 /obj/structure/marker_beacon/green,
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/simulated/floor,
 /area/space)
 "mD" = (
 /obj/machinery/fire_alarm/north_mount,
@@ -3515,7 +3513,7 @@
 /obj/structure/lattice,
 /obj/structure/marker_beacon/green,
 /obj/machinery/shield_diffuser,
-/turf/space/basic,
+/turf/simulated/floor,
 /area/space)
 "sb" = (
 /obj/effect/floor_decal/grass_edge{
@@ -3884,8 +3882,9 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/grass_edge,
-/obj/effect/floor_decal/wheelchairassist{
-	dir = 4
+/obj/structure/wheelchairassist{
+	dir = 8;
+	layer = 2
 	},
 /turf/simulated/floor/trap/wheelchair,
 /area/hallway/strelka/deck1)
@@ -4116,7 +4115,7 @@
 "vn" = (
 /obj/structure/lattice,
 /obj/machinery/shield_diffuser,
-/turf/space/basic,
+/turf/simulated/floor,
 /area/strelka/fighterbaysec)
 "vp" = (
 /obj/effect/floor_decal/grass_edge{
@@ -4281,8 +4280,9 @@
 /obj/machinery/light/small/old{
 	dir = 1
 	},
-/obj/effect/floor_decal/wheelchairassist{
-	dir = 4
+/obj/structure/wheelchairassist{
+	dir = 8;
+	layer = 2
 	},
 /turf/simulated/floor/trap/wheelchair,
 /area/hallway/strelka/deck1)
@@ -5147,7 +5147,7 @@
 /turf/simulated/floor/reinforced,
 /area/strelka/hangardeck)
 "As" = (
-/obj/machinery/computer/shuttle_control/explore/civvie{
+/obj/machinery/computer/shuttle_control/explore/civvie/strelka{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -5216,6 +5216,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor,
 /area/shuttle/civvie/strelka)
 "Bg" = (
@@ -5400,6 +5401,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor,
 /area/shuttle/civvie/strelka)
 "Co" = (
@@ -5469,6 +5471,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor,
 /area/shuttle/civvie/strelka)
 "CE" = (
@@ -5685,11 +5688,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/pilot/eva)
-"DM" = (
-/obj/structure/lattice,
-/obj/structure/marker_beacon/green,
-/turf/space/basic,
-/area/strelka/fighterbay)
 "DQ" = (
 /obj/structure/table/carbon/reinforced,
 /obj/random/toolbox,
@@ -6170,7 +6168,7 @@
 /area/space)
 "FI" = (
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/simulated/floor,
 /area/strelka/fighterbaysec)
 "FJ" = (
 /obj/effect/shuttle_landmark{
@@ -6980,7 +6978,7 @@
 /area/strelka/gateway)
 "Kb" = (
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/simulated/floor,
 /area/space)
 "Ke" = (
 /obj/machinery/light/small/old,
@@ -7395,8 +7393,9 @@
 /obj/machinery/status_display{
 	pixel_y = 32
 	},
-/obj/effect/floor_decal/wheelchairassist{
-	dir = 8
+/obj/structure/wheelchairassist{
+	dir = 4;
+	layer = 2
 	},
 /turf/simulated/floor/trap/wheelchair,
 /area/hallway/strelka/deck1)
@@ -7757,7 +7756,7 @@
 /obj/structure/marker_beacon/green,
 /obj/machinery/shield_diffuser,
 /obj/machinery/shield_diffuser,
-/turf/simulated/floor/airless,
+/turf/simulated/floor,
 /area/strelka/fighterbaysec)
 "Oj" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -7845,7 +7844,9 @@
 /area/strelka/pilot/eva)
 "Ov" = (
 /obj/structure/table/carbon/reinforced,
-/obj/item/multitool/strelka_buffered,
+/obj/item/multitool/strelka_buffered{
+	name = "pre-linked multitool (strelkahub)"
+	},
 /obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor/tiled/techmaint,
 /area/strelka/gateway)
@@ -8191,7 +8192,8 @@
 "Qs" = (
 /obj/structure/lattice,
 /obj/structure/marker_beacon/green,
-/turf/space/basic)
+/turf/simulated/floor,
+/area/strelka/fighterbaysec)
 "Qu" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -8423,6 +8425,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor,
 /area/shuttle/civvie/strelka)
 "RG" = (
@@ -8596,6 +8599,10 @@
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/shuttle/civvie/strelka)
+"SE" = (
+/obj/machinery/suit_storage_unit/exploration,
+/turf/simulated/floor/tiled/techmaint,
+/area/strelka/gateway)
 "SG" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 10
@@ -8646,7 +8653,7 @@
 "SW" = (
 /obj/structure/lattice,
 /obj/structure/marker_beacon/green,
-/turf/space/basic,
+/turf/simulated/floor,
 /area/space)
 "SY" = (
 /obj/machinery/camera/network/security,
@@ -8660,7 +8667,7 @@
 "Te" = (
 /obj/structure/lattice,
 /obj/structure/marker_beacon/green,
-/turf/simulated/floor/airless,
+/turf/simulated/floor,
 /area/strelka/fighterbay)
 "Tj" = (
 /obj/machinery/computer/security,
@@ -9925,7 +9932,7 @@
 /area/strelka/fighterbaysec)
 "YQ" = (
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/simulated/floor,
 /area/strelka/fighterbay)
 "YR" = (
 /obj/structure/cable/blue{
@@ -22413,7 +22420,7 @@ uO
 qc
 Kj
 jR
-Av
+SE
 QE
 QE
 vu
@@ -22607,7 +22614,7 @@ YR
 UZ
 YR
 EI
-Av
+SE
 QE
 QE
 vu
@@ -22799,7 +22806,7 @@ wm
 Zk
 cC
 qc
-aN
+Av
 me
 aI
 QE
@@ -31314,7 +31321,7 @@ FF
 Qs
 FF
 FF
-gY
+Qs
 FF
 FF
 JA
@@ -31351,7 +31358,7 @@ FF
 Qs
 FF
 FF
-DM
+Te
 FF
 FF
 rY

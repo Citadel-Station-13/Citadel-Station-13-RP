@@ -144,7 +144,7 @@
 	icon_state = "shuttle"
 	requires_power = 1
 
-/obj/machinery/computer/shuttle_control/explore/civvie
+/obj/machinery/computer/shuttle_control/explore/civvie/strelka
 	name = "civilian jump console"
 	shuttle_tag = "Decades Old civilian Transport"
 

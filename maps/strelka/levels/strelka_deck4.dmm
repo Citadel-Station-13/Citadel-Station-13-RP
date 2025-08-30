@@ -5043,15 +5043,6 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/nanite)
-"uL" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 4
-	},
-/obj/structure/wheelchairassist{
-	dir = 8
-	},
-/turf/simulated/open,
-/area/hallway/strelka/deck4)
 "uP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -9159,9 +9150,6 @@
 /area/hallway/strelka/dormhallway)
 "NQ" = (
 /obj/machinery/door/firedoor/glass{
-	dir = 4
-	},
-/obj/structure/wheelchairassist{
 	dir = 4
 	},
 /turf/simulated/open,
@@ -33932,9 +33920,9 @@ rr
 WB
 Zn
 MP
-uL
+NQ
 VX
-uL
+NQ
 VX
 wc
 Py

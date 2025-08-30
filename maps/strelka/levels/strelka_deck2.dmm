@@ -9357,9 +9357,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/obj/structure/wheelchairassist{
-	dir = 1
-	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/security/strelka/storage)
 "Av" = (
@@ -12344,9 +12341,6 @@
 "JA" = (
 /obj/machinery/door/firedoor/glass{
 	dir = 8
-	},
-/obj/structure/wheelchairassist{
-	dir = 4
 	},
 /turf/simulated/open,
 /area/hallway/strelka/deck2)

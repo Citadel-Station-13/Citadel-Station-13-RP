@@ -369,6 +369,13 @@
 /obj/structure/table/woodentable,
 /turf/simulated/floor/fey/forest_grass,
 /area/hallway/strelka/deck3)
+"bD" = (
+/obj/structure/stairs/spawner/east,
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/hallway/strelka/deck3)
 "bE" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -1946,6 +1953,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/strelka/science/main)
 "hj" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/morgue)
 "hn" = (
@@ -2550,6 +2560,12 @@
 "je" = (
 /turf/simulated/open,
 /area/rnd/strelka/xenobio)
+"jf" = (
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/hallway/strelka/deck3)
 "jh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -3249,9 +3265,6 @@
 "lL" = (
 /obj/structure/railing,
 /obj/machinery/door/firedoor/glass{
-	dir = 4
-	},
-/obj/structure/wheelchairassist{
 	dir = 4
 	},
 /turf/simulated/open,
@@ -7673,6 +7686,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/medical/strelka/main)
+"AD" = (
+/obj/structure/stairs/spawner/west,
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/hallway/strelka/deck3)
 "AF" = (
 /obj/spawner/window/low_wall/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -10693,7 +10713,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/strelka/robotics)
 "KA" = (
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/morgue)
 "KB" = (
@@ -12483,9 +12505,6 @@
 	dir = 1
 	},
 /obj/machinery/door/firedoor/glass{
-	dir = 4
-	},
-/obj/structure/wheelchairassist{
 	dir = 4
 	},
 /turf/simulated/open,
@@ -31067,7 +31086,7 @@ LI
 nC
 yM
 yI
-yM
+AD
 xj
 yN
 Wt
@@ -31261,7 +31280,7 @@ uZ
 ti
 pL
 yI
-pL
+jf
 td
 uZ
 dt
@@ -37275,7 +37294,7 @@ nC
 lL
 nY
 ov
-nY
+jf
 Rl
 xj
 gW
@@ -37469,7 +37488,7 @@ eW
 au
 Mr
 jC
-Mr
+bD
 au
 bt
 Hw
