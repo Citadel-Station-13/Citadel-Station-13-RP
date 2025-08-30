@@ -179,6 +179,7 @@
 
 /obj/structure/ladder/teleporter/up
 	allowed_directions = UP
+	icon = 'icons/obj/telescience.dmi'
 	icon_state = "qpad-idle"
 
 /obj/structure/ladder/teleporter/updown
