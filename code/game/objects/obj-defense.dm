@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
 
 /obj/is_melee_targetable(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	return obj_flags & OBJ_MELEE_TARGETABLE

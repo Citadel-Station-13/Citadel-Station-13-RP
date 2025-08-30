@@ -82,26 +82,54 @@
 	 * for this.
 	 * Generally, we consider the button being pressed/depressed as the active cilck button.
 	 */
+	var/resolved_action
 	if(click_on_override(target, location, control, params))
 		return TRUE
-	if(params["shift"])
-		if(params["button"] == "middle")
-			if(shift_middle_click_on(target, location, control, params))
+
+	switch(params["button"])
+		if("left")
+			if(params["ctrl"])
+				if(params["shift"])
+					resolved_action = CLICK_ACTION_CTRL_SHIFT_LMB
+				else
+					resolved_action = CLICK_ACTION_CTRL_LMB
+			else if(params["shift"])
+				resolved_action = CLICK_ACTION_SHIFT_LMB
+			else if(params["alt"])
+				resolved_action = CLICK_ACTION_ALT_LMB
+			else
+				resolved_action = CLICK_ACTION_LMB
+		if("middle")
+			if(params["shift"])
+				resolved_action = CLICK_ACTION_SHIFT_MMB
+			else
+				resolved_action = CLICK_ACTION_MMB
+		if("right")
+			if(params["shift"])
+				resolved_action = CLICK_ACTION_SHIFT_RMB
+			else
+				resolved_action = CLICK_ACTION_RMB
+
+	switch(resolved_action)
+		if(CLICK_ACTION_CTRL_LMB)
+			if(ctrl_click_on(target, location, control, params))
 				return TRUE
-		if(params["ctrl"])
+		if(CLICK_ACTION_CTRL_SHIFT_LMB)
 			if(ctrl_shift_click_on(target, location, control, params))
 				return TRUE
-		else if(shift_click_on(target, location, control, params))
-			return TRUE
-	else if(params["button"] == "middle")
-		if(middle_click_on(target, location, control, params))
-			return TRUE
-	else if(params["alt"])
-		if(alt_click_on(target, location, control, params))
-			return TRUE
-	else if(params["ctrl"])
-		if(ctrl_click_on(target, location, control, params))
-			return TRUE
+		if(CLICK_ACTION_SHIFT_LMB)
+			if(shift_click_on(target, location, control, params))
+				return TRUE
+		if(CLICK_ACTION_ALT_LMB)
+			if(alt_click_on(target, location, control, params))
+				return TRUE
+		if(CLICK_ACTION_MMB)
+			if(middle_click_on(target, location, control, params))
+				return TRUE
+		if(CLICK_ACTION_SHIFT_MMB)
+			if(shift_middle_click_on(target, location, control, params))
+				return TRUE
+
 	if(click_on_special(target, location, control, params))
 		return TRUE
 
@@ -112,6 +140,7 @@
 	clickchain.target_zone = zone_sel?.selecting || BP_TORSO
 	clickchain.using_intent = a_intent
 	clickchain.using_hand_index = active_hand
+	params["action"] = resolved_action
 	clickchain.click_params = params
 
 	var/clickchain_flags = inject_clickchain_flags || NONE
@@ -140,6 +169,30 @@
  */
 /mob/proc/click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
 	face_atom(clickchain.target)
+
+	. = click_interaction_chain_override(clickchain, clickchain_flags, active_item)
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
+
+	switch(clickchain.click_params[CLICK_PARAM_ACTION])
+		if(CLICK_ACTION_CTRL_LMB)
+			. = ctrl_click_interaction_chain(clickchain, clickchain_flags, active_item)
+		if(CLICK_ACTION_CTRL_SHIFT_LMB)
+			. = ctrl_shift_click_interaction_chain(clickchain, clickchain_flags, active_item)
+		if(CLICK_ACTION_SHIFT_LMB)
+			. = shift_click_interaction_chain(clickchain, clickchain_flags, active_item)
+		if(CLICK_ACTION_ALT_LMB)
+			. = alt_click_interaction_chain(clickchain, clickchain_flags, active_item)
+		if(CLICK_ACTION_MMB)
+			. = middle_click_interaction_chain(clickchain, clickchain_flags, active_item)
+		if(CLICK_ACTION_SHIFT_MMB)
+			. = shift_middle_click_interaction_chain(clickchain, clickchain_flags, active_item)
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
+
+	. = click_interaction_chain_special(clickchain, clickchain_flags, active_item)
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
 
 	if(active_item == clickchain.target)
 		active_item.attack_self(src, clickchain)
@@ -194,7 +247,8 @@
 		return TRUE
 	return FALSE
 
-//* Special modifiers; these are often routed per-mob. *//
+//* Special modifiers; these are often routed per-mob.                             *//
+//* This is done before clickchain, which means remote control doens't route here. *//
 
 /**
  * * Handled before atom procs.
@@ -259,10 +313,6 @@
  * @return TRUE to stop click propagation.
  */
 /atom/proc/shift_clicked_on(mob/user, location, control, list/params)
-	// TODO: AI still can't examine.
-	if(user.should_client_shift_click_examine(src) && user.allow_examine(src))
-		user.examinate(src)
-		return TRUE
 	return FALSE
 
 /**
@@ -292,6 +342,60 @@
  */
 /atom/proc/alt_clicked_on(mob/user, location, control, list/params)
 	return AltClick(user) != "keep-going"
+
+//* Clickchain special modifier handling; remote control can route here, *//
+
+/mob/proc/click_interaction_chain_override(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
+	return clickchain.target ? clickchain.target.on_click_interaction_chain_override(clickchain, clickchain_flags, active_item) : NONE
+
+/mob/proc/ctrl_click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
+	return clickchain.target ? clickchain.target.on_ctrl_click_interaction_chain(clickchain, clickchain_flags, active_item) : NONE
+
+/mob/proc/shift_click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
+	return clickchain.target ? clickchain.target.on_shift_click_interaction_chain(clickchain, clickchain_flags, active_item) : NONE
+
+/mob/proc/ctrl_shift_click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
+	return clickchain.target ? clickchain.target.on_ctrl_shift_click_interaction_chain(clickchain, clickchain_flags, active_item) : NONE
+
+/mob/proc/middle_click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
+	return clickchain.target ? clickchain.target.on_middle_click_interaction_chain(clickchain, clickchain_flags, active_item) : NONE
+
+/mob/proc/shift_middle_click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
+	return clickchain.target ? clickchain.target.on_shift_middle_click_interaction_chain(clickchain, clickchain_flags, active_item) : NONE
+
+/mob/proc/alt_click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
+	return clickchain.target ? clickchain.target.on_alt_click_interaction_chain(clickchain, clickchain_flags, active_item) : NONE
+
+/mob/proc/click_interaction_chain_special(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
+	return clickchain.target ? clickchain.target.on_click_interaction_chain_special(clickchain, clickchain_flags, active_item) : NONE
+
+/atom/proc/on_click_interaction_chain_override(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
+	return clickchain_flags
+
+/atom/proc/on_ctrl_click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
+	return clickchain_flags
+
+/atom/proc/on_shift_click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
+	// TODO: AI still can't examine.
+	if(clickchain.performer.should_client_shift_click_examine(src) && clickchain.performer.allow_examine(src))
+		clickchain.performer.examinate(src)
+		return clickchain_flags | CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
+	return clickchain_flags
+
+/atom/proc/on_ctrl_shift_click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
+	return clickchain_flags
+
+/atom/proc/on_middle_click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
+	return clickchain_flags
+
+/atom/proc/on_shift_middle_click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
+	return clickchain_flags
+
+/atom/proc/on_alt_click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
+	return clickchain_flags
+
+/atom/proc/on_click_interaction_chain_special(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
+	return clickchain_flags
 
 //* Double Click *//
 
