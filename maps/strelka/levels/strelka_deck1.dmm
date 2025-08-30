@@ -1200,6 +1200,12 @@
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/reinforced,
 /area/strelka/hangardeck)
+"gb" = (
+/obj/effect/shuttle_landmark/automatic{
+	name = "Hangar Section 2k"
+	},
+/turf/simulated/floor/reinforced,
+/area/strelka/hangardeck)
 "gc" = (
 /obj/machinery/vending/assist,
 /turf/simulated/floor/tiled/techfloor/monogrid,
@@ -1470,6 +1476,12 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
+/area/strelka/hangardeck)
+"hI" = (
+/obj/effect/shuttle_landmark/automatic{
+	name = "Hangar Section 4j"
+	},
+/turf/simulated/floor/reinforced,
 /area/strelka/hangardeck)
 "hK" = (
 /obj/effect/floor_decal/grass_edge{
@@ -2913,6 +2925,12 @@
 	name = "carpspawn"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
+/area/strelka/hangardeck)
+"ow" = (
+/obj/effect/shuttle_landmark/automatic{
+	name = "Hangar Section 4g"
+	},
+/turf/simulated/floor/reinforced,
 /area/strelka/hangardeck)
 "oy" = (
 /turf/simulated/floor/tiled/techfloor,
@@ -8161,6 +8179,12 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/strelka/hangardeck)
+"Qi" = (
+/obj/effect/shuttle_landmark/automatic{
+	name = "Hangar Section 4h"
+	},
+/turf/simulated/floor/reinforced,
+/area/strelka/hangardeck)
 "Qj" = (
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 1
@@ -8439,6 +8463,12 @@
 "RO" = (
 /obj/effect/shuttle_landmark/automatic{
 	name = "Hangar Section 1d"
+	},
+/turf/simulated/floor/reinforced,
+/area/strelka/hangardeck)
+"RQ" = (
+/obj/effect/shuttle_landmark/automatic{
+	name = "Hangar Section 2h"
 	},
 /turf/simulated/floor/reinforced,
 /area/strelka/hangardeck)
@@ -9853,6 +9883,12 @@
 	dir = 8
 	},
 /obj/structure/flora/ausbushes/fullgrass,
+/turf/simulated/floor/reinforced,
+/area/strelka/hangardeck)
+"YA" = (
+/obj/effect/shuttle_landmark/automatic{
+	name = "Hangar Section 2l"
+	},
 /turf/simulated/floor/reinforced,
 /area/strelka/hangardeck)
 "YB" = (
@@ -23599,7 +23635,7 @@ Nt
 Nv
 Nv
 Nv
-Nv
+XU
 Nv
 Nv
 su
@@ -24145,7 +24181,7 @@ Nv
 Nv
 Nv
 Nv
-Nv
+RQ
 Nv
 Nv
 Nv
@@ -25697,7 +25733,7 @@ Nv
 Nv
 Nv
 Nv
-Nv
+gb
 Nv
 Nv
 Nv
@@ -25732,7 +25768,7 @@ Nv
 Ar
 Nv
 Nv
-Nv
+ow
 Nv
 Nv
 Nv
@@ -27249,7 +27285,7 @@ Nv
 Nv
 Nv
 Nv
-Nv
+YA
 Nv
 Nv
 Nv
@@ -27479,10 +27515,10 @@ yr
 Nv
 Nv
 Nv
+Qi
 Nv
 Nv
-Nv
-XU
+hI
 Nv
 fy
 qL
