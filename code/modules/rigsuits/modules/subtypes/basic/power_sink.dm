@@ -35,16 +35,16 @@
 	interrupt()
 
 /obj/item/rig_module/basic/power_sink/proc/start_draining(atom/movable/target)
-	draining_entity = targt
+	draining_entity = target
 	draining_kj_so_far = 0
 
-	START_PROCESSING(src, SSprocessing)
+	START_PROCESSING(SSprocessing, src)
 
 /obj/item/rig_module/basic/power_sink/proc/stop_draining()
 	if(!draining_entity)
 		return
 
-	STOP_PROCESSING(src, SSprocessing)
+	STOP_PROCESSING(SSprocessing, src)
 
 /obj/item/rig_module/basic/power_sink/proc/interrupt()
 	stop_draining()
@@ -66,7 +66,7 @@
 
 /obj/item/rig_module/basic/power_sink/proc/siphon_power(atom/movable/target, dt)
 	var/kj_to_draw = min(drain_power * dt, predict_power_needed())
-	var/kj_drawn = target.drain_energy(src, kj_to_draw, DRAIN_ENERGY_SURGE)
+	var/kj_drawn = target.drain_energy(src, kj_to_draw, ENERGY_DRAIN_SURGE)
 
 	if(emit_sparks)
 		#warn emit sparks

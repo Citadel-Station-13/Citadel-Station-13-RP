@@ -6,7 +6,9 @@
  * * Unlike item_deploy, this doesn't actually deploy to hand.
  */
 /obj/item/rig_module/item_mount
-	impl_click = TRUE
+
+/obj/item/rig_module/item_mount/is_active_rig_click_module()
+	return TRUE
 
 #warn impl all
 
@@ -33,9 +35,15 @@
  * Mounts a single item.
  */
 /obj/item/rig_module/item_mount/single
+	tgui_interface = "ItemMountSingle"
+
 	var/expected_item_type = /obj/item
 	var/obj/item/mounted
 	var/lazy_automount_path
+
+	var/allow_attack_self = FALSE
+	var/allow_click_melee = FALSE
+	var/allow_click_ranged = FALSE
 
 #warn the item needs to be mounted on the rig's resource bus
 

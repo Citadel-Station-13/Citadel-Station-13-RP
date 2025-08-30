@@ -676,54 +676,6 @@
 		M.update_inv_belt() //so our overlays
 		M.update_inv_back()
 
-
-/mob/living/simple_mob/protean_blob/proc/chameleon_apperance_rig()
-	set name = "Chameleon Hardsuit Change"
-	set desc = "Allows a protean blob to change or reset its apperance when worn."
-	set category = "Abilities"
-
-	if(!istype(loc, /obj/item/hardsuit/protean))
-		to_chat(src, "<span class='notice'>You can't do that while not being held or worn as a hardsuit.</span>")
-		return
-
-	var/obj/item/hardsuit/protean/H = loc
-	var/chosen_list
-	var/obj/item/clothing/chosenpart
-
-	switch(input(src,"What type of clothing would you like to mimic or reset appearance?","Mimic Clothes") as null|anything in list("suit", "helmet", "gloves", "boots", "reset"))
-		if("reset")
-			H.boots.disguise(H.boots.type) //disguising it as itself just sets its vars back to initial which is what we want
-			H.chest.disguise(H.chest.type)
-			H.helmet.disguise(H.helmet.type)
-			H.gloves.disguise(H.gloves.type)
-			H.boots.update_worn_icon()
-			H.chest.update_worn_icon()
-			H.helmet.update_worn_icon()
-			H.gloves.update_worn_icon()
-			return
-		if("suit")
-			chosenpart = H.chest
-			chosen_list = GLOB.clothing_suit
-		if("helmet")
-			chosenpart = H.helmet
-			chosen_list = GLOB.clothing_head
-		if("gloves")
-			chosenpart = H.gloves
-			chosen_list = GLOB.clothing_gloves
-		if("boots")
-			chosenpart = H.boots
-			chosen_list = GLOB.clothing_shoes
-
-
-	var/picked = input(src,"What clothing would you like to mimic?","Mimic Clothes") as null|anything in chosen_list
-
-	if(!ispath(chosen_list[picked]))
-		return
-
-	chosenpart.disguise(chosen_list[picked])
-	chosenpart.update_worn_icon()
-
-
 /mob/living/simple_mob/protean_blob/proc/chameleon_color()
 	set name = "Chameleon Color"
 	set desc = "Allows a protean blob to change or reset its color."
