@@ -28,7 +28,7 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 	/// map buffer
 	var/datum/map/buffer
 	/// enable overmaps?
-	var/buffer_overmap_active
+	var/buffer_overmap_active = FALSE
 	/// overmap initializer to use with buffer
 	/// * stored separately for injection as we can toggle whether or not to use it
 	var/datum/overmap_initializer/map/buffer_overmap_initializer
@@ -241,12 +241,12 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 
 /datum/admin_modal/load_map_sector/proc/ui_map_data()
 	var/list/serialized_overmap_initializer = null
-	if(buffer_overmap_initializer)
-		serialized_overmap_initializer = list(
-			"x" = buffer_overmap_initializer.manual_position_x,
-			"y" = buffer_overmap_initializer.manual_position_y,
-			"forcePos" = buffer_overmap_initializer.manual_position_is_strong_suggestion,
-		)
+	serialized_overmap_initializer = list(
+		"x" = buffer_overmap_initializer.manual_position_x,
+		"y" = buffer_overmap_initializer.manual_position_y,
+		"forcePos" = buffer_overmap_initializer.manual_position_is_strong_suggestion,
+		"enabled" = buffer_overmap_active,
+	)
 	return list(
 		"name" = buffer.name,
 		"orientation" = buffer.load_orientation,

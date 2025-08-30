@@ -50,7 +50,7 @@ DEFINE_BITFIELD(turf_spawn_flags, list(
 ))
 
 /// for turfs that can be spawned by most turf spawners / renderers
-#define TURF_SPAWN_FLAGS_ALLOW_ALL ~(ALL)
+#define TURF_SPAWN_FLAGS_ALLOW_ALL ALL
 
 //* /turf_path_danger on /turf *//
 /// lava, fire, etc

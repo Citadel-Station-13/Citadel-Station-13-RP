@@ -5,8 +5,16 @@
 
 import { Component, InfernoNode } from "inferno";
 import { JsonMappings, resolveJsonAssetName } from "../bindings/json";
+import { resolveAsset } from "../assets";
 import { fetchRetry } from "../http";
 import { LoadingScreen } from "./LoadingScreen";
+
+interface JsonAssetLoaderState {
+  fetched: { [K in JsonMappings]?: Object };
+  waiting: JsonMappings[];
+  finished: JsonMappings[];
+  startTimeMillis: number;
+}
 
 /**
  * Loads JSON assets; can display a different set of contents while not loaded.
@@ -17,52 +25,93 @@ import { LoadingScreen } from "./LoadingScreen";
  */
 export class JsonAssetLoader extends Component<{
   loading?: (waiting: JsonMappings[], finished: JsonMappings[], elapsedMillis: number) => InfernoNode;
-  loaded: (json: {[K in JsonMappings]? : Object}) => InfernoNode;
+  loaded: (json: { [K in JsonMappings]?: Object }) => InfernoNode;
   assets: JsonMappings[];
-}, {
-  remaining: number;
-  fetched: {[K in JsonMappings]? : Object};
-}> {
-
-  // not in state; state update will trigger redraw
-  waiting: JsonMappings[];
-  // not in state; state update will trigger redraw
-  finished: JsonMappings[];
-  // start time
-  startTimeMillis: number;
+}, JsonAssetLoaderState> {
+  state: JsonAssetLoaderState;
 
   constructor() {
     super();
 
-    this.waiting = this.props.assets.slice();
-    this.finished = [];
-    this.startTimeMillis = Date.now();
     this.state = {
-      remaining: this.waiting.length,
+      waiting: [],
+      finished: [],
+      startTimeMillis: Date.now(),
       fetched: {},
     };
+  }
 
-    this.props.assets.forEach((mapping) => {
-      const assetUrl = resolveJsonAssetName(mapping);
-      fetchRetry(assetUrl).then((resp) => this.setState((curr) => {
-        let updatedFetched = { ...curr.fetched };
-        updatedFetched[mapping] = resp.json();
+  async fetchMapping(mapping: JsonMappings) {
+    let assetName = resolveJsonAssetName(mapping);
+    let assetUrl = resolveAsset(assetName);
+    let json = await fetchRetry(assetUrl).then((resp) => {
+      return resp.json();
+    });
 
-        this.finished.push(mapping);
-        this.waiting = this.waiting.filter((v) => `${v}` !== `${mapping}`);
-
-        return {
-          ...curr,
-          remaining: curr.remaining - 1,
-          fetched: updatedFetched,
-        };
-      }));
+    this.setState((last) => {
+      let updatedFetched = {
+        ...last.fetched,
+      };
+      updatedFetched[mapping] = json;
+      return {
+        ...last,
+        waiting: last.waiting.slice().filter((v) => `${v}` !== `${mapping}`),
+        finished: [...last.finished, mapping],
+        fetched: updatedFetched,
+      };
     });
   }
 
+  pushMappingRequest(mapping: JsonMappings) {
+    if (this.state.finished.includes(mapping) || this.state.waiting.includes(mapping)) {
+      return;
+    }
+    this.setState((curr) => {
+      return {
+        ...curr,
+        waiting: [...curr.waiting, mapping],
+      };
+    });
+    this.fetchMapping(mapping);
+  }
+
+  isReady(): boolean {
+    for(let i = 0; i < this.props.assets.length; i++) {
+      let asset = this.props.assets[i];
+      if(!this.state.finished.includes(asset)) {
+        return false;
+      }
+    }
+    return true;
+  }
+
   render() {
-    return this.waiting.length ? (this.props.loading ? this.props.loading(this.waiting, this.finished, Date.now() - this.startTimeMillis) : (
-      <LoadingScreen />
-    )) : this.props.loaded(this.state?.fetched || {});
+    let timeElapsed = Date.now() - this.state.startTimeMillis;
+    let isReady = this.isReady();
+
+    this.props.assets.forEach((a) => this.pushMappingRequest(a));
+    // return (
+    //   <div style={{}}>
+    //     {JSON.stringify(this.props)}
+    //     <br />
+    //     {JSON.stringify(this.state.finished)}
+    //     <br />
+    //     {JSON.stringify(this.state.waiting)}
+    //     <br />
+    //     {JSON.stringify(this.state.startTimeMillis)}
+    //     <br />
+    //     {JSON.stringify(this.isReady())}
+    //   </div>
+    // );
+    if(isReady) {
+      return this.props.loaded(this.state.fetched);
+    } else {
+      if(this.props.loading) {
+        return this.props.loading(this.state.waiting, this.state.finished, timeElapsed);
+      }
+      return (
+        <LoadingScreen />
+      );
+    }
   }
 }

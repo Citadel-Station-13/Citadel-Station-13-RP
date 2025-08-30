@@ -16,7 +16,7 @@
 	for(var/turf/turf_path as anything in typesof(/turf))
 		if(initial(turf_path.abstract_type) == turf_path)
 			continue
-		if(!initial(turf_path.atom_spawn_flags))
+		if(!initial(turf_path.turf_spawn_flags))
 			continue
 		var/path = "[turf_path]"
 		assembled_turfs[path] = list(
@@ -31,8 +31,6 @@
 	var/list/assembled_areas = list()
 	for(var/area/area_path as anything in typesof(/area))
 		if(initial(area_path.abstract_type) == area_path)
-			continue
-		if(!initial(area_path.atom_spawn_flags))
 			continue
 		var/path = "[area_path]"
 		assembled_areas[path] = list(

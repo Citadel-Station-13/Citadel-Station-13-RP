@@ -95,8 +95,8 @@ export class WorldTypepathDropdown extends Component<{
             // todo: better loading display
             <h1>Loading...</h1>
           )}
-          loaded={(json) => {
-            const typepathPack: Json_WorldTypepaths = json[JsonMappings.WorldTypepaths] as Json_WorldTypepaths;
+          loaded={(loaded) => {
+            const typepathPack: Json_WorldTypepaths = loaded[JsonMappings.WorldTypepaths] as Json_WorldTypepaths;
             let selectedIcon;
             let selectedName;
             let selectedTooltip;
