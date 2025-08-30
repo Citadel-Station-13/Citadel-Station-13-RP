@@ -94,6 +94,22 @@
 #define CLICKCHAIN_MELEE_ATTACK_ARG_CLICKCHAIN_FLAGS 2
 #define CLICKCHAIN_MELEE_ATTACK_ARG_STYLE 3
 
+//* Click param - Action. This is injected by CitRP code. *//
+
+#define CLICK_PARAM_ACTION "action"
+
+#define CLICK_ACTION_LMB "left"
+#define CLICK_ACTION_CTRL_LMB "ctrl-left"
+#define CLICK_ACTION_CTRL_SHIFT_LMB "ctrl-shift-left"
+#define CLICK_ACTION_SHIFT_LMB "shift-left"
+#define CLICK_ACTION_ALT_LMB "alt-left"
+
+#define CLICK_ACTION_MMB "middle"
+#define CLICK_ACTION_SHIFT_MMB "shift-middle"
+
+#define CLICK_ACTION_RMB "right"
+#define CLICK_ACTION_SHIFT_RMB "shift-rmb"
+
 //* Reachability Depths *//
 
 /// default reachability depth
