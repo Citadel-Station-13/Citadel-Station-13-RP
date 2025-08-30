@@ -150,7 +150,7 @@
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
 	)
-	base_turf = /turf/space
+	base_turf = /turf/simulated/open
 	struct_x = 0
 	struct_y = 0
 	struct_z = 3
@@ -165,6 +165,7 @@
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
+		ZTRAIT_LEGACY_BELTER_DOCK,
 	)
 	base_turf = /turf/simulated/open
 	struct_x = 0
@@ -181,7 +182,6 @@
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
-		ZTRAIT_LEGACY_BELTER_DOCK,
 	)
 	base_turf = /turf/simulated/open
 	struct_x = 0

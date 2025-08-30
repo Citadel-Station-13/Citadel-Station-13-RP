@@ -233,8 +233,6 @@
 	if(light)
 		QDEL_NULL(light)
 
-
-
 	if(smoothing_flags & SMOOTH_QUEUED)
 		SSicon_smooth.remove_from_queues(src)
 

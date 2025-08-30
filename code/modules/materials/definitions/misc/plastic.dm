@@ -22,6 +22,8 @@
 	absorption = MATERIAL_RESISTANCE_LOW
 	nullification = MATERIAL_RESISTANCE_NONE
 
+	material_constraints = MATERIAL_CONSTRAINT_RIGID
+
 /datum/prototype/material/plastic/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(

@@ -2317,7 +2317,7 @@
 	},
 /area/awaymission/labs/researchdivision)
 "hd" = (
-/obj/machinery/r_n_d/protolathe,
+/obj/machinery/lathe/r_n_d/protolathe,
 /turf/simulated/floor{
 	dir = 1;
 	icon_state = "bot"
@@ -2469,7 +2469,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/r_n_d/circuit_imprinter,
+/obj/machinery/lathe/r_n_d/circuit_imprinter,
 /turf/simulated/floor{
 	dir = 1;
 	icon_state = "bot"
@@ -2911,7 +2911,7 @@
 	},
 /area/awaymission/labs/researchdivision)
 "iE" = (
-/obj/machinery/mecha_part_fabricator,
+/obj/machinery/lathe/mecha_part_fabricator,
 /turf/simulated/floor{
 	temperature = 393.15
 	},
