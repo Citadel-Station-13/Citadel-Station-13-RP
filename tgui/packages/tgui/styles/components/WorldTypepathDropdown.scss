@@ -5,18 +5,14 @@
 
 @use '../base.scss';
 
-.WorldTypepathDropdown {
-  position: relative;
-}
+.WorldTypepathDropdown {}
 
 .WorldTypepathDropdown__menu {
   position: absolute;
-  overflow-y: auto;
-  height: 200px;
+  max-height: 400px;
+  width: "100%";
+  overflow: hidden;
   z-index: 5;
-  width: base.em(100px);
-  max-height: base.em(200px);
-  overflow-y: scroll;
   border-radius: 0 0 base.em(2px) base.em(2px);
   color: #fff;
   background-color: #000;

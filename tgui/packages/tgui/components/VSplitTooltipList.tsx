@@ -36,10 +36,10 @@ export const VSplitTooltipList = (props: {
 };
 
 const VSplitTooltipListEntry = (props: {
-    tooltip?: string;
-    label: InfernoNode;
-    labelProps?: TableCellProps;
-    valueProps?: TableCellProps;
+  tooltip?: string;
+  label: InfernoNode;
+  labelProps?: TableCellProps;
+  valueProps?: TableCellProps;
 } & BoxProps, context) => {
   const {
     tooltip,
@@ -52,7 +52,7 @@ const VSplitTooltipListEntry = (props: {
 
   return (
     <Table.Row {...rest}>
-      <Table.Cell {...labelProps}>{label}</Table.Cell>
+      <Table.Cell {...labelProps} >{label}</Table.Cell>
       <Table.Cell><Button icon="question" tooltip={tooltip} /></Table.Cell>
       <Table.Cell {...valueProps}>{children}</Table.Cell>
     </Table.Row>

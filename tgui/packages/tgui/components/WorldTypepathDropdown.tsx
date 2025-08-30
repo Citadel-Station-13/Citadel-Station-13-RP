@@ -3,7 +3,7 @@
  * @license MIT
  */
 
-import { BooleanLike, classes } from "common/react";
+import { BooleanLike } from "common/react";
 import { Json_WorldTypepaths, JsonMappings } from "../bindings/json";
 import { Box, BoxProps } from "./Box";
 import { JsonAssetLoader } from "./JsonAssetLoader";
@@ -13,7 +13,7 @@ import { Stack } from "./Stack";
 import { Button } from "./Button";
 import { Icon } from "./Icon";
 import { ByondIconRef } from "./ByondIconRef";
-import { Flex } from "./Flex";
+import { VStaticScrollingWindower } from "./VStaticScrollingWindower";
 import { Input } from "./Input";
 
 /**
@@ -54,7 +54,8 @@ export class WorldTypepathDropdown extends Component<{
       open: false,
       searchString: "",
     };
-    this.onUnfocusedClick = () => this.setState((prev) => ({ ...prev, open: false }));
+    this.onUnfocusedClick = () => {};
+    // this.onUnfocusedClick = () => this.setOpen(false);
   }
 
   componentWillUnmount() {
@@ -64,7 +65,7 @@ export class WorldTypepathDropdown extends Component<{
   setOpen(open) {
     this.setState((old) => ({ ...old, open: open }));
     if (open) {
-      setTimeout(() => window.addEventListener('click', this.onUnfocusedClick));
+      setTimeout(() => window.addEventListener('click', this.onUnfocusedClick), 0);
       // todo: maybe focus the search bar?
     }
     else {
@@ -97,6 +98,7 @@ export class WorldTypepathDropdown extends Component<{
           )}
           loaded={(loaded) => {
             const typepathPack: Json_WorldTypepaths = loaded[JsonMappings.WorldTypepaths] as Json_WorldTypepaths;
+
             let selectedIcon;
             let selectedName;
             let selectedTooltip;
@@ -119,15 +121,47 @@ export class WorldTypepathDropdown extends Component<{
               selectedName = "-- unknown --";
               selectedTooltip = `Somehow you selected ${selectedPath}, which wasn't in the path asset pack. What?`;
             }
+
+            let compiledTypepathEntries: WorldTypepathDropdownEntryData[] = [];
+            if (filter?.areas?.enabled) {
+              Object.entries(typepathPack.areas)
+                .filter(([path, descriptor]) => (!descriptor.unique || filter.areas?.allowUnique))
+                .filter(([path, descriptor]) => (!descriptor.special || filter.areas?.allowSpecial))
+                .filter(([path, descriptor]) => (
+                  !this.state.searchString?.length ||
+                  descriptor.name.indexOf(this.state.searchString) !== -1 ||
+                  descriptor.path.indexOf(this.state.searchString) !== -1
+                ))
+                .forEach(([path, descriptor]) => {
+                  compiledTypepathEntries.push({
+                    name: descriptor.name,
+                    path: path,
+                    iconRef: null,
+                    iconState: null,
+                  });
+                });
+            }
+            if (filter?.turfs?.enabled) {
+              Object.entries(typepathPack.turfs)
+                .filter(([path, descriptor]) => (descriptor.spawnFlags & (filter.turfs?.spawnFlags || 0)))
+                .filter(([path, descriptor]) => (
+                  !this.state.searchString?.length ||
+                  descriptor.name.indexOf(this.state.searchString) !== -1 ||
+                  descriptor.path.indexOf(this.state.searchString) !== -1
+                ))
+                .forEach(([path, descriptor]) => {
+                  compiledTypepathEntries.push({
+                    name: descriptor.name,
+                    path: path,
+                    iconRef: descriptor.iconRef,
+                    iconState: descriptor.iconState,
+                  });
+                });
+            }
+
             return (
-              <>
-                <Stack fill onClick={() => {
-                  if (disabled && !this.state.open) {
-                    return;
-                  }
-                  this.setOpen(!this.state.open);
-                }}
-                  className={classes(['Button', 'Button--color--' + color, disabled && 'Button--disabled', className])}>
+              <div>
+                <Stack fill>
                   <Stack.Item>
                     {selectedIcon}
                   </Stack.Item>
@@ -137,81 +171,37 @@ export class WorldTypepathDropdown extends Component<{
                   <Stack.Item>
                     <Button icon="question" tooltip={selectedTooltip} />
                   </Stack.Item>
-                  <Stack.Item>
-                    <Icon name={this.state.open ? 'chevron-up' : 'chevron-down'} />
+                  <Stack.Item onClick={() => {
+                    if (disabled && !this.state.open) {
+                      return;
+                    }
+                    this.setOpen(!this.state.open);
+                  }}>
+                    <Icon size={1.65} name={this.state.open ? 'chevron-up' : 'chevron-down'} />
                   </Stack.Item>
                 </Stack>
                 {this.state.open && (
                   <Box className="WorldTypepathDropdown__menu">
-                    <Stack fill vertical>
+                    <Stack vertical>
                       <Stack.Item>
-                        <Input onChange={(e, val) => this.setSearchString(val)}
+                        <Input onInput={(e, val) => this.setSearchString(val)}
                           value={this.state.searchString}
+                          width="100%"
                           placeholder="Search path/name substring" />
                       </Stack.Item>
                       <Stack.Item grow={1}>
-                        <Flex width="100%" height="100%" direction="column" overflowY="auto">
-                          {!!filter?.areas?.enabled && (
-                            <>
-                              {Object.entries(typepathPack.areas)
-                                .filter(([path, descriptor]) => (!descriptor.unique || filter.areas?.allowUnique))
-                                .filter(([path, descriptor]) => (!descriptor.special || filter.areas?.allowSpecial))
-                                .filter(([path, descriptor]) => (
-                                  this.state.searchString.length <= 3 ||
-                                  descriptor.name.indexOf(this.state.searchString) !== -1 ||
-                                  descriptor.path.indexOf(this.state.searchString) !== -1
-                                ))
-                                .map(([path, descriptor]) => (
-                                  <Flex.Item key={path} className="WorldTypepathDropdown__menuItem"
-                                    onClick={() => { onSelectPath(path); setTimeout(() => this.setOpen(false)); }}>
-                                    <Stack>
-                                      <Stack.Item>
-                                        {"<A>"}
-                                      </Stack.Item>
-                                      <Stack.Item grow={1}>
-                                        {descriptor.name}
-                                      </Stack.Item>
-                                      <Stack.Item>
-                                        <Button icon="question" tooltip={`Path: ${descriptor.path}`} />
-                                      </Stack.Item>
-                                    </Stack>
-                                  </Flex.Item>
-                                ))}
-                            </>
-                          )}
-                          {!!filter?.turfs?.enabled && (
-                            <>
-                              {Object.entries(typepathPack.turfs)
-                                .filter(([path, descriptor]) => (descriptor.spawnFlags & (filter.turfs?.spawnFlags || 0)))
-                                .filter(([path, descriptor]) => (
-                                  this.state.searchString.length <= 3 ||
-                                  descriptor.name.indexOf(this.state.searchString) !== -1 ||
-                                  descriptor.path.indexOf(this.state.searchString) !== -1
-                                ))
-                                .map(([path, descriptor]) => (
-                                  <Flex.Item key={path} className="WorldTypepathDropdown__menuItem"
-                                    onClick={() => { onSelectPath(path); setTimeout(() => this.setOpen(false)); }}>
-                                    <Stack>
-                                      <Stack.Item>
-                                        <ByondIconRef iconRef={descriptor.iconRef} iconState={descriptor.iconState} />
-                                      </Stack.Item>
-                                      <Stack.Item grow={1}>
-                                        {descriptor.name}
-                                      </Stack.Item>
-                                      <Stack.Item>
-                                        <Button icon="question" tooltip={`Path: ${descriptor.path}`} />
-                                      </Stack.Item>
-                                    </Stack>
-                                  </Flex.Item>
-                                ))}
-                            </>
-                          )}
-                        </Flex>
+                        <WorldTypepathDropdownScroller
+                          data={compiledTypepathEntries}
+                          transformer={(entry) => {
+                            return (
+                              <WorldTypepathDropdownEntry data={entry} />
+                            );
+                          }} />
                       </Stack.Item>
                     </Stack>
                   </Box>
                 )}
-              </>
+              </div>
             );
           }}
         />
@@ -220,3 +210,33 @@ export class WorldTypepathDropdown extends Component<{
   }
 }
 
+interface WorldTypepathDropdownEntryData {
+  name: string | null;
+  path: string;
+  iconRef: string | null;
+  iconState: string | null;
+}
+
+class WorldTypepathDropdownScroller extends VStaticScrollingWindower<WorldTypepathDropdownEntryData> { }
+
+const WorldTypepathDropdownEntry = (props: {
+  data: WorldTypepathDropdownEntryData,
+}, context) => {
+  return (
+    <Stack>
+      <Stack.Item>
+        {!!props.data.iconRef && !!props.data.iconState ? (
+          <ByondIconRef iconRef={props.data.iconRef} iconState={props.data.iconState} />
+        ) : (
+          "<A>"
+        )}
+      </Stack.Item>
+      <Stack.Item grow={1}>
+        {props.data.name}
+      </Stack.Item>
+      <Stack.Item>
+        <Button icon="question" tooltip={`Path: ${props.data.path}`} />
+      </Stack.Item>
+    </Stack>
+  );
+};

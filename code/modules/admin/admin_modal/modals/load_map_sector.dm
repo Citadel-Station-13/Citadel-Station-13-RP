@@ -133,6 +133,13 @@ ADMIN_VERB_DEF(load_map_sector, R_ADMIN, "Load Map Sector", "Load a custom map s
 			buffer_overmap_active = !!params["setTo"]
 			update_ui_map_data()
 			. = TRUE
+		if("overmapPosToggle")
+			if(params["setTo"])
+				buffer_overmap_initializer.manual_position_x = buffer_overmap_initializer.manual_position_y = 1
+			else
+				buffer_overmap_initializer.manual_position_x = buffer_overmap_initializer.manual_position_y = null
+			update_ui_map_data()
+			. = TRUE
 		if("overmapX")
 			if(!is_safe_number(params["setTo"]))
 				return

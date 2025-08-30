@@ -46,6 +46,6 @@ export { TrackOutsideClicks } from './TrackOutsideClicks';
 export { Tooltip } from './Tooltip';
 
 export { VSplitTooltipList } from './VSplitTooltipList';
-export { VScrollingWindower } from './VScrollingWindower';
+export { VStaticScrollingWindower as VScrollingWindower } from './VStaticScrollingWindower';
 export { WorldTypepathDropdown } from './WorldTypepathDropdown';
 

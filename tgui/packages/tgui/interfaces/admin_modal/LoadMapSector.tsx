@@ -56,8 +56,8 @@ interface ModalLevelData {
 }
 
 interface ModalOvermapData {
-  x: number;
-  y: number;
+  x: number | null;
+  y: number | null;
   forcePos: BooleanLike;
   enabled: BooleanLike;
 }
@@ -134,23 +134,25 @@ const MapOptions = (props: {}, context) => {
         </VSplitTooltipList.Entry>
         <VSplitTooltipList.Entry label="Orientation" tooltip='Load orientation for the levels on this map.'>
           <Stack>
-            <Stack.Item>
-              <Button content="(CW 0°)" icon="arrow-down"
+            <Stack.Item grow={1}>
+              <Button width="100%" content="(CW 0°)" icon="arrow-down"
                 color="transparent" onClick={() => act('mapOrientation', { 'setTo': 2 })}
                 selected={mapData.orientation === 2} />
             </Stack.Item>
-            <Stack.Item>
-              <Button content="(CW 90°)" icon="arrow-left"
+            <Stack.Item grow={1}>
+              <Button width="100%" content="(CW 90°)" icon="arrow-left"
                 color="transparent" onClick={() => act('mapOrientation', { 'setTo': 8 })}
                 selected={mapData.orientation === 8} />
             </Stack.Item>
-            <Stack.Item>
-              <Button content="(CW 180)" icon="arrow-up"
+          </Stack>
+          <Stack>
+            <Stack.Item grow={1}>
+              <Button width="100%" content="(CW 180)" icon="arrow-up"
                 color="transparent" onClick={() => act('mapOrientation', { 'setTo': 1 })}
                 selected={mapData.orientation === 1} />
             </Stack.Item>
-            <Stack.Item>
-              <Button content="(CW 270°)" icon="arrow-right"
+            <Stack.Item grow={1}>
+              <Button width="100%" content="(CW 270°)" icon="arrow-right"
                 color="transparent" onClick={() => act('mapOrientation', { 'setTo': 4 })}
                 selected={mapData.orientation === 4} />
             </Stack.Item>
@@ -175,16 +177,32 @@ const MapLevelOptions = (props: {
   levelIndex: number;
 }, context) => {
   const [levelTab, setLevelTab] = useLocalState<string>(context, 'levelTab', 'level');
+  let innerFrag;
+  switch(levelTab) {
+    case 'level':
+      innerFrag = (<MapLevelProperties levelIndex={props.levelIndex} />);
+      break;
+    case 'trait':
+      innerFrag = (<MapLevelTraits levelIndex={props.levelIndex} />);
+      break;
+    case 'attr':
+      innerFrag = (<MapLevelAttributes levelIndex={props.levelIndex} />);
+      break;
+  }
   return (
     <Section fill title="Level Options">
+      <Stack vertical fill>
+        <Stack.Item>
       <Tabs textAlign="center">
         <Tabs.Tab selected={levelTab === "level"} onClick={() => setLevelTab("level")}>Level</Tabs.Tab>
         <Tabs.Tab selected={levelTab === "trait"} onClick={() => setLevelTab("trait")}>Traits</Tabs.Tab>
         <Tabs.Tab selected={levelTab === "attr"} onClick={() => setLevelTab("attr")}>Attributes</Tabs.Tab>
       </Tabs>
-      {levelTab === 'level' && (<MapLevelProperties levelIndex={props.levelIndex} />)}
-      {levelTab === 'trait' && (<MapLevelTraits levelIndex={props.levelIndex} />)}
-      {levelTab === 'attr' && (<MapLevelAttributes levelIndex={props.levelIndex} />)}
+        </Stack.Item>
+        <Stack.Item grow={1}>
+          {innerFrag}
+        </Stack.Item>
+      </Stack>
     </Section>
   );
 };
@@ -305,6 +323,7 @@ const MapLevelTraits = (props: {
   const { act, data, nestedData } = useBackend<ModalData>(context);
   const levelData: ModalLevelData = nestedData[`level-${props.levelIndex}`];
   const [stagedTraitId, setStagedTraitId] = useLocalState<string | null>(context, 'stagedTrait', null);
+  const levelAct = (action: string, params?: Object) => act(action, { levelIndex: props.levelIndex, ...params });
 
   return (
     <Box width="100%" height="100%">
@@ -317,6 +336,23 @@ const MapLevelTraits = (props: {
           const maybeStagedTraitDesc: string | null = stagedTraitId ? mapSystemData.keyedLevelTraits[stagedTraitId]?.desc : null;
           return (
             <Stack fill vertical>
+              <Stack.Item>
+                <Stack fill>
+                  <Stack.Item grow={1}>
+                    <Dropdown color="transparent" width="100%" options={
+                      Object.keys(mapSystemData.keyedLevelTraits)
+                        .filter((k) => !levelData.traits?.includes(k))
+                        .filter((k) => mapSystemData.keyedLevelTraits[k]?.allowEdit)
+                    } selected={stagedTraitId} onSelect={(val) => setStagedTraitId(val)} />
+                  </Stack.Item>
+                  <Stack.Item>
+                    <Button icon="question" color={stagedTraitId ? "" : "transparent"} tooltip={maybeStagedTraitDesc} />
+                  </Stack.Item>
+                  <Stack.Item>
+                    <Button icon="plus" onClick={() => levelAct('levelAddTrait', { trait: stagedTraitId })} />
+                  </Stack.Item>
+                </Stack>
+              </Stack.Item>
               {levelData.traits?.map((traitId) => {
                 const maybeTraitDesc: string | null = traitId ? mapSystemData.keyedLevelTraits[traitId]?.desc : "Unknown trait; is this a legacy trait that is now removed from the code?";
                 return (
@@ -329,29 +365,12 @@ const MapLevelTraits = (props: {
                         <Button icon="question" tooltip={maybeTraitDesc} />
                       </Stack.Item>
                       <Stack.Item>
-                        <Button icon="minus" onClick={() => act('levelDelTrait', { trait: traitId })} />
+                        <Button icon="minus" onClick={() => levelAct('levelDelTrait', { trait: traitId })} />
                       </Stack.Item>
                     </Stack>
                   </Stack.Item>
                 );
               })}
-              <Stack.Item>
-                <Stack fill>
-                  <Stack.Item grow={1}>
-                    <Dropdown options={
-                      Object.keys(mapSystemData.keyedLevelTraits)
-                        .filter((k) => !levelData.traits?.includes(k))
-                        .filter((k) => mapSystemData.keyedLevelTraits[k]?.allowEdit)
-                    } selected={stagedTraitId} onSelect={(val) => setStagedTraitId(val)} />
-                  </Stack.Item>
-                  <Stack.Item>
-                    <Button icon="question" color={stagedTraitId ? "" : "transparent"} tooltip={maybeStagedTraitDesc} />
-                  </Stack.Item>
-                  <Stack.Item>
-                    <Button icon="plus" onClick={() => act('levelAddTrait', { trait: stagedTraitId })} />
-                  </Stack.Item>
-                </Stack>
-              </Stack.Item>
             </Stack>
           );
         }}
@@ -367,6 +386,7 @@ const MapLevelAttributes = (props: {
   const levelData: ModalLevelData = nestedData[`level-${props.levelIndex}`];
   const [stagedAttributeId, setStagedAttributeId] = useLocalState<string | null>(context, 'stagedAttribute', null);
   const [stagedAttributeVal, setStagedAttributeVal] = useLocalState<string | number | null>(context, 'stagedAttributeVal', null);
+  const levelAct = (action: string, params?: Object) => act(action, { levelIndex: props.levelIndex, ...params });
 
   return (
     <Box width="100%" height="100%">
@@ -379,39 +399,10 @@ const MapLevelAttributes = (props: {
           const maybeStagedAttribute: Game_MapLevelAttribute | null = stagedAttributeId && json[stagedAttributeId];
           return (
             <Stack fill vertical>
-              {Object.entries(levelData.attributes || {}).map((e) => {
-                const attributeId = e[0];
-                const value = e[1];
-                const maybeAttribute: Game_MapLevelAttribute | null = mapSystemData.keyedLevelAttributes[attributeId];
-                return (
-                  <Stack.Item key={attributeId}>
-                    <Stack fill>
-                      <Stack.Item grow={1}>
-                        {attributeId}
-                      </Stack.Item>
-                      <Stack.Item grow={1}>
-                        {!!maybeAttribute.allowEdit && (
-                          maybeAttribute.numeric ? (
-                            <NumberInput value={value} onChange={(e, val) => act('levelSetAttribute', { attribute: attributeId, value: val })} />
-                          ) : (
-                            <Input value={value} onChange={(e, val) => act('levelSetAttribute', { attribute: attributeId, value: val })} />
-                          )
-                        )}
-                      </Stack.Item>
-                      <Stack.Item>
-                        <Button icon="question" tooltip={maybeAttribute?.desc || "Unknown attribute. Was this removed from the game?"} />
-                      </Stack.Item>
-                      <Stack.Item>
-                        <Button icon="minus" onClick={() => act('levelDelAttribute', { attribute: attributeId })} />
-                      </Stack.Item>
-                    </Stack>
-                  </Stack.Item>
-                );
-              })}
               <Stack.Item>
                 <Stack fill>
                   <Stack.Item grow={1}>
-                    <Dropdown options={
+                    <Dropdown color="transparent" width="100%" options={
                       Object.keys(mapSystemData.keyedLevelAttributes)
                         .filter((k) => levelData.attributes?.[k] === null)
                         .filter((k) => mapSystemData.keyedLevelAttributes[k]?.allowEdit)
@@ -430,10 +421,39 @@ const MapLevelAttributes = (props: {
                     <Button icon="question" color={stagedAttributeId ? "" : "transparent"} tooltip={maybeStagedAttribute?.desc} />
                   </Stack.Item>
                   <Stack.Item>
-                    <Button icon="plus" onClick={() => act('levelSetAttribute', { attribute: stagedAttributeId, value: stagedAttributeVal })} />
+                    <Button icon="plus" onClick={() => levelAct('levelSetAttribute', { attribute: stagedAttributeId, value: stagedAttributeVal })} />
                   </Stack.Item>
                 </Stack>
               </Stack.Item>
+              {Object.entries(levelData.attributes || {}).map((e) => {
+                const attributeId = e[0];
+                const value = e[1];
+                const maybeAttribute: Game_MapLevelAttribute | null = mapSystemData.keyedLevelAttributes[attributeId];
+                return (
+                  <Stack.Item key={attributeId}>
+                    <Stack fill>
+                      <Stack.Item grow={1}>
+                        {attributeId}
+                      </Stack.Item>
+                      <Stack.Item grow={1}>
+                        {!!maybeAttribute.allowEdit && (
+                          maybeAttribute.numeric ? (
+                            <NumberInput value={value} onChange={(e, val) => levelAct('levelSetAttribute', { attribute: attributeId, value: val })} />
+                          ) : (
+                            <Input value={value} onChange={(e, val) => levelAct('levelSetAttribute', { attribute: attributeId, value: val })} />
+                          )
+                        )}
+                      </Stack.Item>
+                      <Stack.Item>
+                        <Button icon="question" tooltip={maybeAttribute?.desc || "Unknown attribute. Was this removed from the game?"} />
+                      </Stack.Item>
+                      <Stack.Item>
+                        <Button icon="minus" onClick={() => levelAct('levelDelAttribute', { attribute: attributeId })} />
+                      </Stack.Item>
+                    </Stack>
+                  </Stack.Item>
+                );
+              })}
             </Stack>
           );
         }}
@@ -445,6 +465,7 @@ const MapLevelAttributes = (props: {
 const OvermapOptions = (props: {}, context) => {
   const { act, data, nestedData } = useBackend<ModalData>(context);
   const mapData: ModalMapData = nestedData['map'];
+  let manualPositioningActive = mapData.overmap.x !== null && mapData.overmap.y !== null;
   return (
     <Section fill title="Overmap Binding">
       <VSplitTooltipList leftSideWidthPercent={40}>
@@ -458,22 +479,36 @@ const OvermapOptions = (props: {}, context) => {
             </Stack.Item>
           </Stack>
         </VSplitTooltipList.Entry>
-        <VSplitTooltipList.Entry label="X" tooltip="If set, try to set the sector at this X on the overmap.">
-          <NumberInput width="100%" value={mapData.overmap.x || 0} onChange={(e, val) => act('overmapX', { setTo: val })} />
-        </VSplitTooltipList.Entry>
-        <VSplitTooltipList.Entry label="Y" tooltip="If set, try to set the sector at this Y on the overmap.">
-          <NumberInput width="100%" value={mapData.overmap.y || 0} onChange={(e, val) => act('overmapY', { setTo: val })} />
-        </VSplitTooltipList.Entry>
-        <VSplitTooltipList.Entry label="Force Position" tooltip="If enabled, override overmap placement safety checks.">
+        <VSplitTooltipList.Entry label="Manual Positioning" tooltip="Place the sector at a specific coordinate spot?">
           <Stack>
             <Stack.Item grow={1}>
-              <Button width="100%" color="transparent" selected={!!mapData.overmap} content="Yes" onClick={() => act('overmapForcePosition', { setTo: true })} />
+              <Button width="100%" color="transparent" selected={manualPositioningActive} content="On" onClick={() => act('overmapPosToggle', { setTo: true })} />
             </Stack.Item>
             <Stack.Item grow={1}>
-              <Button width="100%" color="transparent" selected={!mapData.overmap} content="No" onClick={() => act('overmapForcePosition', { setTo: false })} />
+              <Button width="100%" color="transparent" selected={!manualPositioningActive} content="Off" onClick={() => act('overmapPosToggle', { setTo: false })} />
             </Stack.Item>
           </Stack>
         </VSplitTooltipList.Entry>
+        {manualPositioningActive && (
+          <>
+            <VSplitTooltipList.Entry label="X" tooltip="If set, try to set the sector at this X on the overmap.">
+              <NumberInput width="100%" value={mapData.overmap.x || 0} onChange={(e, val) => act('overmapX', { setTo: val })} />
+            </VSplitTooltipList.Entry>
+            <VSplitTooltipList.Entry label="Y" tooltip="If set, try to set the sector at this Y on the overmap.">
+              <NumberInput width="100%" value={mapData.overmap.y || 0} onChange={(e, val) => act('overmapY', { setTo: val })} />
+            </VSplitTooltipList.Entry>
+            <VSplitTooltipList.Entry label="Force Position" tooltip="If enabled, override overmap placement safety checks.">
+              <Stack>
+                <Stack.Item grow={1}>
+                  <Button width="100%" color="transparent" selected={!!mapData.overmap.forcePos} content="Yes" onClick={() => act('overmapForcePosition', { setTo: true })} />
+                </Stack.Item>
+                <Stack.Item grow={1}>
+                  <Button width="100%" color="transparent" selected={!mapData.overmap.forcePos} content="No" onClick={() => act('overmapForcePosition', { setTo: false })} />
+                </Stack.Item>
+              </Stack>
+            </VSplitTooltipList.Entry>
+          </>
+        )}
       </VSplitTooltipList>
     </Section>
   );
