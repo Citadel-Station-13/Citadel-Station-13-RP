@@ -201,6 +201,9 @@
 	},
 /obj/structure/flora/pottedplant/hedge,
 /obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
 /turf/simulated/floor/reinforced,
 /area/strelka/hangardeck)
 "bh" = (
@@ -841,6 +844,9 @@
 	dir = 1
 	},
 /obj/structure/flora/pottedplant/hedge,
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/hangardeck)
 "dM" = (
@@ -1132,6 +1138,9 @@
 	dir = 1
 	},
 /obj/structure/flora/pottedplant/hedge,
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/hangardeck)
 "fE" = (
@@ -1497,6 +1506,9 @@
 /obj/effect/floor_decal/industrial/danger{
 	dir = 8
 	},
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/hangardeck)
 "hI" = (
@@ -1799,6 +1811,17 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/bridge/strelka/balista)
+"iZ" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/floor_decal/borderfloorblack{
+	alpha = 255;
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/strelka/hangardeck)
 "ji" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/hallway/strelka/deck1)
@@ -2062,6 +2085,9 @@
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
 	dir = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 1
 	},
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/hangardeck)
@@ -2883,6 +2909,9 @@
 /obj/structure/railing{
 	dir = 1
 	},
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/hangardeck)
 "od" = (
@@ -3125,6 +3154,9 @@
 	},
 /obj/effect/floor_decal/industrial/danger{
 	dir = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/hangardeck)
@@ -3563,6 +3595,9 @@
 	dir = 1
 	},
 /obj/structure/flora/pottedplant/hedge,
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/hangardeck)
 "sc" = (
@@ -3909,6 +3944,9 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
 /turf/simulated/floor/reinforced,
 /area/strelka/hangardeck)
 "tL" = (
@@ -3987,6 +4025,9 @@
 	dir = 8
 	},
 /obj/structure/flora/pottedplant/hedge,
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/hangardeck)
 "uq" = (
@@ -4313,6 +4354,9 @@
 	},
 /obj/effect/floor_decal/borderfloorblack/corner{
 	dir = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/hangardeck)
@@ -5469,6 +5513,9 @@
 /obj/structure/railing{
 	dir = 1
 	},
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/hangardeck)
 "Cq" = (
@@ -5703,6 +5750,18 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/hangardeck)
+"DB" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
+/turf/simulated/floor/fey/forest_grass,
+/area/strelka/hangardeck)
 "DC" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/dark,
@@ -5728,11 +5787,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/fighterbaysec)
-"DI" = (
-/obj/effect/floor_decal/rust,
-/obj/structure/wheelchairassist,
-/turf/simulated/floor/tiled/dark,
-/area/strelka/pilot_EVA)
 "DJ" = (
 /obj/structure/table/rack/shelf,
 /obj/item/tank/jetpack/oxygen,
@@ -6274,8 +6328,18 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 1
 	},
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/gateway)
+"FR" = (
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/strelka/hangardeck)
 "FS" = (
 /obj/structure/railing{
 	dir = 8
@@ -6392,6 +6456,9 @@
 	},
 /obj/effect/floor_decal/rust,
 /obj/structure/flora/pottedplant/hedge,
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/hangardeck)
 "Gt" = (
@@ -6459,6 +6526,9 @@
 "GN" = (
 /obj/machinery/light{
 	dir = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/hangardeck)
@@ -7364,6 +7434,9 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
 /turf/simulated/floor/reinforced,
 /area/strelka/hangardeck)
 "Mk" = (
@@ -7422,6 +7495,9 @@
 	},
 /obj/effect/floor_decal/industrial/danger{
 	dir = 9
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 1
 	},
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/hangardeck)
@@ -7920,6 +7996,9 @@
 "OP" = (
 /obj/structure/flora/pottedplant/hedge,
 /obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
 /turf/simulated/floor/reinforced,
 /area/strelka/hangardeck)
 "OV" = (
@@ -8663,6 +8742,9 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 10
 	},
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/hangardeck)
 "SL" = (
@@ -9353,6 +9435,9 @@
 	},
 /obj/structure/flora/pottedplant/hedge,
 /obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
 /turf/simulated/floor/reinforced,
 /area/strelka/hangardeck)
 "Wk" = (
@@ -23836,7 +23921,7 @@ Nv
 Nv
 Nv
 Nv
-fX
+FR
 Nv
 BK
 Nv
@@ -24612,7 +24697,7 @@ Nv
 Nv
 Nv
 Nv
-fX
+FR
 Nv
 Nv
 Nv
@@ -24806,7 +24891,7 @@ Nv
 Nv
 Nv
 Nv
-fX
+FR
 Nv
 LZ
 Nv
@@ -25582,7 +25667,7 @@ Nv
 Nv
 NX
 Nv
-fX
+FR
 Nv
 Nv
 Nv
@@ -25776,7 +25861,7 @@ Nv
 Nv
 Nv
 Nv
-fX
+FR
 Nv
 hu
 Nv
@@ -28129,12 +28214,12 @@ rL
 uG
 Zg
 np
-fX
-fX
-fX
+FR
+FR
+FR
 qL
 Mq
-yn
+DB
 dJ
 qL
 qL
@@ -28516,7 +28601,7 @@ ZW
 rL
 WX
 bv
-RG
+iZ
 xY
 fl
 pi
@@ -29849,7 +29934,7 @@ eC
 qs
 qF
 Qo
-DI
+Im
 Vi
 yi
 le
