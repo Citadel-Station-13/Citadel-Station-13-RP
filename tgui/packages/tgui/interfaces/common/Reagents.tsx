@@ -7,14 +7,14 @@
  * @license MIT
  */
 
-import { InfernoNode } from "inferno";
-import { LabeledList, NoticeBox, Section } from "../../components";
-import { SectionProps } from "../../components/Section";
+import { LabeledList, NoticeBox, Section } from "tgui-core/components";
+import { SectionProps } from "../../components";
+import { ReactNode } from "react";
 
 export const REAGENT_STORAGE_UNIT_NAME = "u";
 
 interface ReagentContentsProps extends SectionProps {
-  readonly buttons?: InfernoNode;
+  readonly buttons?: ReactNode;
   readonly reagentButtons?: Function; // called to generate buttons with (id)
   readonly reagents: ReagentContentsData;
 }
@@ -27,7 +27,7 @@ interface ReagentContentsEntry {
   amount: number;
 }
 
-export const ReagentContents = (props: ReagentContentsProps, context) => {
+export const ReagentContents = (props: ReagentContentsProps) => {
   return (
     <Section {...props}>
       <LabeledList>

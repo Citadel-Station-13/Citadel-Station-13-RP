@@ -5,16 +5,17 @@
  * @license MIT
  */
 
-import { BooleanLike } from "common/react";
+import { BooleanLike } from "tgui-core/react";
 import { ModuleData, useLocalState, useModule } from "../../backend";
-import { Box, Button, Collapsible, Dropdown, Input, LabeledList, NoticeBox, NumberInput, ProgressBar, Stack, Table, Tabs } from "../../components";
-import { Section, SectionProps } from "../../components/Section";
+import { Box, Button, Collapsible, Dropdown, Input, LabeledList, NoticeBox, NumberInput, ProgressBar, Stack, Table, Tabs } from "tgui-core/components";
+import { Section, SectionProps } from "tgui-core/components/Section";
 import { Modular } from "../../layouts/Modular";
 import { WindowProps } from "../../layouts/Window";
 import { Design } from "../common/Design";
 import { IngredientsAvailable, IngredientsSelected } from "../common/Ingredients";
 import { MaterialRender, FullMaterialsContext, MaterialStorage, MATERIAL_STORAGE_UNIT_NAME, renderMaterialAmount } from "../common/Materials";
 import { ReagentContents, ReagentContentsData, REAGENT_STORAGE_UNIT_NAME } from "../common/Reagents";
+import { useState } from "react";
 
 export interface TGUILatheControlProps {
 
@@ -64,14 +65,12 @@ export const generateDynamicButton = (name, mode, actFunction) => {
   }
 };
 
-export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
-
+export const TGUILatheControl = (props: TGUILatheControlProps) => {
   const { data, act } = useModule<TGUILatheControlData>(context);
 
   const [category, setCategory] = useLocalState<string>(
-    context,
     `${data.$ref}-category`,
-    data.designs.categories.length? data.designs.categories[0] : "General"
+    data.designs.categories.length ? data.designs.categories[1] : "General"
   );
 
   const [subcategory, setSubCategory] = useLocalState<string>(
@@ -81,11 +80,10 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
   );
 
   const [resourcesSelect, setResourcesSelect] = useLocalState<string>(
-    context,
     `${data.$ref}-rSelect`,
     "Materials",
   );
-  const [searchText, setSearchText] = useLocalState<string>(context, `${data.$ref}-search`, "");
+  const [searchText, setSearchText] = useState<string>("");
 
   const windowProps: WindowProps = {
     title: data.latheName,
@@ -166,7 +164,7 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
     <Modular window={windowProps}>
       <Stack vertical fill>
         <Stack.Item>
-          <Stack fluid>
+          <Stack>
             <Stack.Item grow={1}>
               <Section title="Resources">
                 <Stack vertical>
@@ -227,7 +225,7 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
           </Stack>
         </Stack.Item>
         <Stack.Item grow>
-          <Stack fluid fill>
+          <Stack fill>
             <Stack.Item grow={0.3}>
               <Section fill title="Categories" scrollable>
                 <Tabs vertical>
@@ -250,7 +248,7 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
                     (Array.isArray(data.designs.subcategories[category])) ? (data.designs.subcategories[category].sort((c1, c2) => c1.localeCompare(c2)).map((subcat) => (
                       <Tabs.Tab key={subcat} fluid color="transparent"
                         selected={subcat === subcategory}
-                        onClick={() => subcategory===subcat ? setSubCategory("") : setSubCategory(subcat)}>
+                        onClick={() => subcategory === subcat ? setSubCategory("") : setSubCategory(subcat)}>
                         {subcat}
                       </Tabs.Tab>
                     ))) : (null)
@@ -263,7 +261,7 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
                 <Stack.Item>
                   <Section>
                     <Input placeholder="Search (3+ characters)"
-                      width="100%" value={searchText} onInput={(e, val) => setSearchText(val.toLowerCase())} />
+                      width="100%" value={searchText} onInput={(val) => setSearchText(val.toLowerCase())} />
                   </Section>
                 </Stack.Item>
                 <Stack.Item grow>
@@ -273,8 +271,8 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
                         (d) => searchText.length > 2
                           ? d.name.toLowerCase().includes(searchText) :
                           ((subcategory.length > 0) ?
-                          (d.categories.includes(category) && d.subcategories.includes(subcategory)) :
-                          d.categories.includes(category))
+                            (d.categories.includes(category) && d.subcategories.includes(subcategory)) :
+                            d.categories.includes(category))
                       ).sort((d1, d2) =>
                         d1.name.localeCompare(d2.name)
                       ).map((d) => (
@@ -295,11 +293,11 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
                       <>
                         <Button.Confirm icon="minus" content="Clear" onClick={() => act('clear')}
                           color="transparent" />
-                        <Button content={data.queueActive? "Stop" : "Start"}
-                          icon={data.queueActive? "stop" : "play"}
+                        <Button content={data.queueActive ? "Stop" : "Start"}
+                          icon={data.queueActive ? "stop" : "play"}
                           color="transparent"
                           selected={data.queueActive}
-                          onClick={() => act(data.queueActive? "stop" : "start")} />
+                          onClick={() => act(data.queueActive ? "stop" : "start")} />
                       </>
                     }>
                     {
@@ -353,7 +351,7 @@ interface LatheQueuedProps {
   readonly index: number;
 }
 
-const LatheQueued = (props: LatheQueuedProps, context) => {
+const LatheQueued = (props: LatheQueuedProps) => {
   let { data, act } = useModule<TGUILatheControlData>(context);
   let progressRender;
   if (props.index === 1 && data.queueActive && props.design !== undefined) {
@@ -373,7 +371,7 @@ const LatheQueued = (props: LatheQueuedProps, context) => {
       color="transparent"
       title={
         <>
-          {`${props.entry.amount}x ${props.design !== undefined? props.design.name : "Error - Design Unloaded"}`}
+          {`${props.entry.amount}x ${props.design !== undefined ? props.design.name : "Error - Design Unloaded"}`}
           {progressRender}
         </>
       }
@@ -422,7 +420,7 @@ const LatheQueued = (props: LatheQueuedProps, context) => {
           <LabeledList>
             {Object.entries(props.entry.materials).map(([k, v]) => (
               <LabeledList.Item key={k} label={k}>
-                {`${(props.design?.material_parts?.[k] ? props.design?.material_parts?.[k]*data.efficiencyMultiplier : "!ERROR!")}${MATERIAL_STORAGE_UNIT_NAME} of ${v}`}
+                {`${(props.design?.material_parts?.[k] ? props.design?.material_parts?.[k] * data.efficiencyMultiplier : "!ERROR!")}${MATERIAL_STORAGE_UNIT_NAME} of ${v}`}
               </LabeledList.Item>
             ))}
           </LabeledList>
@@ -447,14 +445,13 @@ const areMaterialsChosen = (mats: Record<string, number>, chosen: Record<string,
   return Object.keys(mats).every((mat) => (mat in chosen));
 };
 
-const LatheDesign = (props: LatheDesignProps, context) => {
+const LatheDesign = (props: LatheDesignProps) => {
   const { data, act, moduleID } = useModule<TGUILatheControlData>(context);
 
   // materials: key = material id
-  // mats maps parts to materials. i think? ask kevinz.
-  let [mats, setMats] = useLocalState<Record<string, string>>(context, `${moduleID}-${props.design.id}-mats`, {});
+  let [mats, setMats] = useState<Record<string, string>>({});
   // ingredients: key = ingredient id/value
-  let [inds, setInds] = useLocalState<Record<string, string>>(context, `${moduleID}-${props.design.id}-inds`, {});
+  let [inds, setInds] = useState<Record<string, string>>({});
 
   if (!areMaterialsChosen(props.design.material_parts || {}, mats) && props.design.autodetect_tags && props.design.material_parts) {
     Object.entries(props.design.material_parts).map(([name, amt]) => {
@@ -474,14 +471,14 @@ const LatheDesign = (props: LatheDesignProps, context) => {
 
   // ingredients are currently unspported.
   let awaitingSelections = !areMaterialsChosen(props.design.material_parts || {}, mats)
-  || !!props.design.ingredients;
+    || !!props.design.ingredients;
 
 
   return (
     <Collapsible
       title={props.design.name}
       color="transparent"
-      buttons={awaitingSelections? (
+      buttons={awaitingSelections ? (
         <Button
           color="transparent"
           textColor="red"
@@ -502,7 +499,7 @@ const LatheDesign = (props: LatheDesignProps, context) => {
               })} />
           ))}
           {
-            data.queueActive? (
+            data.queueActive ? (
               <Button
                 icon="play"
                 content="Busy"
@@ -522,7 +519,7 @@ const LatheDesign = (props: LatheDesignProps, context) => {
           }
         </>
       )}>
-      { (!!props.design.materials || !!props.design.material_parts || !!props.design.reagents) && (
+      {(!!props.design.materials || !!props.design.material_parts || !!props.design.reagents) && (
         <Table>
           <Table.Row>
             <Table.Cell width="33%" />
@@ -531,26 +528,26 @@ const LatheDesign = (props: LatheDesignProps, context) => {
           </Table.Row>
           {
             props.design.materials
-                    && Object.entries(props.design.materials).map(([id, amt]) => (
-                      <Table.Row key={id}>
-                        <Table.Cell />
-                        <Table.Cell>
-                          <div style={{
-                            "display": "inline-block",
-                            "padding-left": "0.5em",
-                            "width": "base em(100px)",
-                            "line-height": "base.em(17px)",
-                            "font-family": "Verdana, sans-serif",
-                            "font-size": "base.em(12px)",
-                          }}>
-                            {data.materialsContext.materials[id].name}
-                          </div>
-                        </Table.Cell>
-                        <Table.Cell textAlign="center" color={data.materials[id] >= amt? null : "bad"}>
-                          {`${amt*data.efficiencyMultiplier}${MATERIAL_STORAGE_UNIT_NAME}`}
-                        </Table.Cell>
-                      </Table.Row>
-                    ))
+            && Object.entries(props.design.materials).map(([id, amt]) => (
+              <Table.Row key={id}>
+                <Table.Cell />
+                <Table.Cell>
+                  <div style={{
+                    "display": "inline-block",
+                    "padding-left": "0.5em",
+                    "width": "base em(100px)",
+                    "line-height": "base.em(17px)",
+                    "font-family": "Verdana, sans-serif",
+                    "font-size": "base.em(12px)",
+                  }}>
+                    {data.materialsContext.materials[id].name}
+                  </div>
+                </Table.Cell>
+                <Table.Cell textAlign="center" color={data.materials[id] >= amt ? null : "bad"}>
+                  {`${amt * data.efficiencyMultiplier}${MATERIAL_STORAGE_UNIT_NAME}`}
+                </Table.Cell>
+              </Table.Row>
+            ))
           }
           {props.design.material_parts && Object.entries(props.design.material_parts).map(([name, amt]) => {
             let selected = mats[name];
@@ -572,17 +569,17 @@ const LatheDesign = (props: LatheDesignProps, context) => {
                     }}
                     options={
                       Object.keys(data.materials).flatMap((id) => ((props.design.material_constraints !== null) ?
-                      (data.materialsContext.materials[id].constraints.includes(
-                        (name in props.design.material_constraints) ?
-                        (((typeof props.design.material_constraints?.[name]) === 'number') ?
-                        props.design.material_constraints?.[name] :
-                        16777218) : 16777218) ?
-                        [data.materialsContext.materials[id].name] : []) :
+                        (data.materialsContext.materials[id].constraints.includes(
+                          (name in props.design.material_constraints) ?
+                            (((typeof props.design.material_constraints?.[name]) === 'number') ?
+                              props.design.material_constraints?.[name] :
+                              16777218) : 16777218) ?
+                          [data.materialsContext.materials[id].name] : []) :
                         [data.materialsContext.materials[id].name]))
                     } />
                 </Table.Cell>
                 <Table.Cell textAlign="center"
-                  color={!selected || data.materials[selected] >= amt? null : "bad"}>
+                  color={!selected || data.materials[selected] >= amt ? null : "bad"}>
                   {`${amt * data.efficiencyMultiplier}${MATERIAL_STORAGE_UNIT_NAME}`}
                 </Table.Cell>
               </Table.Row>
@@ -596,7 +593,7 @@ const LatheDesign = (props: LatheDesignProps, context) => {
                   {id}
                 </Table.Cell>
                 <Table.Cell textAlign="center"
-                  color={(data.reagents.find((r) => r.id === id)?.amount || 0) >= amt? null : "bad"}>
+                  color={(data.reagents.find((r) => r.id === id)?.amount || 0) >= amt ? null : "bad"}>
                   {`${amt}${REAGENT_STORAGE_UNIT_NAME}`}
                 </Table.Cell>
               </Table.Row>

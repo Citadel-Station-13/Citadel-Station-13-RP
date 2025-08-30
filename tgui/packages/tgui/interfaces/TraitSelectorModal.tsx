@@ -1,7 +1,8 @@
 import { InputButtons } from './common/InputButtons';
-import { Box, Button, Input, LabeledList, Section, Stack, Table } from '../components';
+import { Box, Button, Input, LabeledList, Section, Stack, Table } from 'tgui-core/components';
 import { useBackend, useLocalState } from '../backend';
 import { Window } from '../layouts';
+import { useState } from 'react';
 
 type TraitSelectorInputData = {
   initial_traits: string[],
@@ -49,8 +50,8 @@ type AvailableTraitData = {
   show_name?: boolean,
 };
 
-export const TraitSelectorModal = (_, context) => {
-  const { act, data } = useBackend<TraitSelectorInputData>(context);
+export const TraitSelectorModal = (_) => {
+  const { act, data } = useBackend<TraitSelectorInputData>();
 
   const containsLoosely = function (needle: string, haystack: string): boolean {
     if (needle === "") { return true; }
@@ -58,12 +59,12 @@ export const TraitSelectorModal = (_, context) => {
     return haystack.toLowerCase().indexOf(needle.toLowerCase().trim()) !== -1;
   };
 
-  const [submission, setSubmission] = useLocalState<TraitSelectorSubmissionData>(
-    context, "submission", { traits: data.initial_traits }
+  const [submission, setSubmission] = useState<TraitSelectorSubmissionData>(
+    { traits: data.initial_traits }
   );
 
-  const [searchQuery, setSearchQuery] = useLocalState<string>(
-    context, "searchQuery", ""
+  const [searchQuery, setSearchQuery] = useState<string>(
+    ""
   );
 
   const stringSubmission = JSON.stringify(submission);
@@ -107,9 +108,9 @@ export const TraitSelectorModal = (_, context) => {
           });
         }
         existing.items.push({
-          ...trait, 
-          display_name: trait.group_short_name ?? trait.name, 
-          sort_key: trait.sort_key ?? trait.name, 
+          ...trait,
+          display_name: trait.group_short_name ?? trait.name,
+          sort_key: trait.sort_key ?? trait.name,
           show_name: true,
         });
       } else {
@@ -118,9 +119,9 @@ export const TraitSelectorModal = (_, context) => {
           description: "",
           sort_key: trait.sort_key ?? trait.name,
           items: [{
-            ...trait, 
-            display_name: trait.name, 
-            sort_key: trait.sort_key ?? trait.name, 
+            ...trait,
+            display_name: trait.name,
+            sort_key: trait.sort_key ?? trait.name,
             show_name: false,
           }],
         };

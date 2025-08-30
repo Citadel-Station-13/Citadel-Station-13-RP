@@ -1,7 +1,7 @@
-import { Section, Flex, Box, Dropdown, ProgressBar, NumberInput } from "../components";
+import { Section, Flex, Box, Dropdown, ProgressBar, NumberInput } from "tgui-core/components";
 import { Window } from "../layouts";
 import { useBackend } from "../backend";
-import { toFixed } from 'common/math';
+import { toFixed } from 'tgui-core/math';
 
 interface TeleporterConsoleContext {
   "disabled",
@@ -13,8 +13,8 @@ interface TeleporterConsoleContext {
   "valid_destinations",
 }
 
-export const TeleporterConsole = (props, context) => {
-  const { act, data } = useBackend<TeleporterConsoleContext>(context);
+export const TeleporterConsole = (props) => {
+  const { act, data } = useBackend<TeleporterConsoleContext>();
   const {
     locked,
   } = data;
@@ -22,14 +22,14 @@ export const TeleporterConsole = (props, context) => {
     <Window
       width={600}
       height={400}
-      resizable>
-      {data.disabled ? (<Box color="bad">TELEPORTER PAD OR PROJECTOR NOT FOUND. PLEASE CONTACT YOUR SYSTEM ADMINISTRATOR.</Box>):(<TeleporterConsoleOperational locked={locked} />)}
+    >
+      {data.disabled ? (<Box color="bad">TELEPORTER PAD OR PROJECTOR NOT FOUND. PLEASE CONTACT YOUR SYSTEM ADMINISTRATOR.</Box>) : (<TeleporterConsoleOperational locked={locked} />)}
     </Window>
   );
 };
 
-export const TeleporterConsoleOperational = (props, context) => {
-  const { act, data } = useBackend<TeleporterConsoleContext>(context);
+export const TeleporterConsoleOperational = (props) => {
+  const { act, data } = useBackend<TeleporterConsoleContext>();
   const {
     locked,
     projector_charge,
@@ -64,10 +64,10 @@ export const TeleporterConsoleOperational = (props, context) => {
             value={projector_recharge_rate}
             unit="kW"
             width="100px"
+            step={0.01}
             minValue={0}
             maxValue={100000}
-            suppressFlicker={250}
-            onChange={(e, value) => act('set_recharge', {
+            onChange={(value) => act('set_recharge', {
               target: value,
             })} />
         </Section>

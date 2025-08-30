@@ -1,12 +1,12 @@
 import { NtosWindow } from "../layouts";
-import { Module } from "../components/Module";
+import { Module } from "tgui-core/components/Module";
 
-export const NtosIdentificationComputer = (props, context) => {
+export const NtosIdentificationComputer = (props) => {
   return (
     <NtosWindow
       width={870}
       height={708}
-      resizable>
+    >
       <NtosWindow.Content scrollable>
         <Module id="modify" />
       </NtosWindow.Content>

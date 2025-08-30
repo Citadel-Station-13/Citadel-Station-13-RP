@@ -1,7 +1,7 @@
-import { Color } from '../../common/colorLegacy';
 import { useBackend, useSharedState } from '../backend';
-import { AnimatedNumber, Box, Button, ColorBox, LabeledList, NumberInput, Section, Table } from '../components';
+import { AnimatedNumber, Box, Button, ColorBox, LabeledList, NumberInput, Section, Table } from 'tgui-core/components';
 import { Window } from '../layouts';
+import { Color } from 'tgui-core/color';
 
 type ChemMasterData = {
   // Generic Data
@@ -65,8 +65,8 @@ type StyleData = {
 };
 
 
-export const ChemMaster = (props, context) => {
-  const { data } = useBackend<ChemMasterData>(context);
+export const ChemMaster = (props) => {
+  const { data } = useBackend<ChemMasterData>();
   const { screen } = data;
   return (
     <Window width={465} height={550}>
@@ -77,8 +77,8 @@ export const ChemMaster = (props, context) => {
   );
 };
 
-const ChemMasterContent = (props, context) => {
-  const { act, data } = useBackend<ChemMasterData>(context);
+const ChemMasterContent = (props) => {
+  const { act, data } = useBackend<ChemMasterData>();
   const {
     screen,
     beaker_contents = [],
@@ -187,8 +187,8 @@ const ChemMasterContent = (props, context) => {
 
 const ChemicalBuffer = Table;
 
-const ChemicalBufferEntry = (props, context) => {
-  const { act } = useBackend<ChemMasterData>(context);
+const ChemicalBufferEntry = (props) => {
+  const { act } = useBackend<ChemMasterData>();
   const { chemical, transferTo } = props;
   return (
     <Table.Row key={chemical.id}>
@@ -198,77 +198,61 @@ const ChemicalBufferEntry = (props, context) => {
       </Table.Cell>
       <Table.Cell collapsing>
         <Button
-          content="1"
           onClick={() =>
             act('transfer', {
               id: chemical.id,
               amount: 1,
               to: transferTo,
-            })}
-        />
+            })}>1</Button>
         <Button
-          content="5"
           onClick={() =>
             act('transfer', {
               id: chemical.id,
               amount: 5,
               to: transferTo,
-            })}
-        />
+            })}>5</Button>
         <Button
-          content="10"
           onClick={() =>
             act('transfer', {
               id: chemical.id,
               amount: 10,
               to: transferTo,
-            })}
-        />
+            })}>10</Button>
         <Button
-          content="30"
           onClick={() =>
             act('transfer', {
               id: chemical.id,
               amount: 30,
               to: transferTo,
-            })}
-        />
+            })}>30</Button>
         <Button
-          content="60"
           onClick={() =>
             act('transfer', {
               id: chemical.id,
               amount: 60,
               to: transferTo,
-            })}
-        />
+            })}>60</Button>
         <Button
-          content="All"
           onClick={() =>
             act('transfer', {
               id: chemical.id,
               amount: 1000,
               to: transferTo,
-            })}
-        />
+            })}>All</Button>
         <Button
           icon="ellipsis-h"
-          title="Custom amount"
           onClick={() =>
             act('transfer', {
               id: chemical.id,
               amount: -1,
               to: transferTo,
-            })}
-        />
+            })}>Custom Amount</Button>
         <Button
           icon="question"
-          title="Analyze"
           onClick={() =>
             act('analyze', {
               id: chemical.id,
-            })}
-        />
+            })}>Analyze</Button>
       </Table.Cell>
     </Table.Row>
   );
@@ -297,21 +281,19 @@ const PackagingControlsItem = (props) => {
   );
 };
 
-const PackagingControls = (props, context) => {
-  const { act, data } = useBackend<ChemMasterData>(context);
-  const [pillAmount, setPillAmount] = useSharedState(context, 'pillAmount', 1);
+const PackagingControls = (props) => {
+  const { act, data } = useBackend<ChemMasterData>();
+  const [pillAmount, setPillAmount] = useSharedState('pillAmount', 1);
   const [patchAmount, setPatchAmount] = useSharedState(
-    context,
     'patchAmount',
     1
   );
   const [bottleAmount, setBottleAmount] = useSharedState(
-    context,
     'bottleAmount',
     1
   );
-  const [vialAmount, setVialAmount] = useSharedState(context, "vialAmount", 1);
-  const [packAmount, setPackAmount] = useSharedState(context, 'packAmount', 1);
+  const [vialAmount, setVialAmount] = useSharedState("vialAmount", 1);
+  const [packAmount, setPackAmount] = useSharedState('packAmount', 1);
   const {
     condi,
     chosen_pill_style,
@@ -496,8 +478,8 @@ const PackagingControls = (props, context) => {
   );
 };
 
-const AnalysisResults = (props, context) => {
-  const { act, data } = useBackend<ChemMasterData>(context);
+const AnalysisResults = (props) => {
+  const { act, data } = useBackend<ChemMasterData>();
   const { analyzeVars } = data;
   return (
     <Section
@@ -517,8 +499,8 @@ const AnalysisResults = (props, context) => {
         <LabeledList.Item label="State">{analyzeVars.state}</LabeledList.Item>
         {/* <LabeledList.Item label="pH">{analyzeVars.ph}</LabeledList.Item> */}
         <LabeledList.Item label="Color">
-          <ColorBox color={analyzeVars.color} mr={1} />
-          {analyzeVars.color}
+          <ColorBox color={analyzeVars.color.toString()} mr={1} />
+          {analyzeVars.color.toString()}
         </LabeledList.Item>
         <LabeledList.Item label="Description">
           {analyzeVars.description}

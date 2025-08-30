@@ -1,5 +1,5 @@
 import { useBackend } from "../../backend";
-import { Button, LabeledList, ProgressBar, Section, Stack } from "../../components";
+import { Button, LabeledList, ProgressBar, Section, Stack } from "tgui-core/components";
 import { Window } from "../../layouts";
 import { ByondAtomColor } from "../common/Color";
 
@@ -20,8 +20,8 @@ interface IcecreamCartData {
   scoopSource: number | null;
 }
 
-export const IcecreamCart = (props, context) => {
-  let { data, act } = useBackend<IcecreamCartData>(context);
+export const IcecreamCart = (props) => {
+  let { data, act } = useBackend<IcecreamCartData>();
 
   return (
     <Window title="Icecream Cart" width={450} height={600}>

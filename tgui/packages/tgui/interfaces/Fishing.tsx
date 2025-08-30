@@ -1,12 +1,12 @@
-import { clamp } from 'common/math';
+import { clamp } from 'tgui-core/math';
 import { randomInteger, randomNumber, randomPick, randomProb } from 'common/random';
 import { useDispatch } from 'common/redux';
-import { Component } from 'inferno';
+import { Component } from 'react';
 import { resolveAsset } from '../assets';
 import { backendSuspendStart, useBackend } from '../backend';
-import { Icon } from '../components';
-import { globalEvents } from '../events';
+import { Icon } from 'tgui-core/components';
 import { Window } from '../layouts';
+import { globalEvents } from 'tgui-core/events';
 
 type Bait = {
   position: number;
@@ -387,20 +387,20 @@ class FishingMinigame extends Component<
     const posToStyle = (value: number) => (value / this.area_height) * 100;
     const background_image = resolveAsset(this.props.background);
     return (
-      <div class="fishing">
-        <div class="main">
+      <div className="fishing">
+        <div className="main">
           <div
-            class="background"
+            className="background"
             style={{ 'background-image': `url("${background_image}")` }}>
             <div
-              class="bait"
+              className='bait'
               style={{
                 height: `${posToStyle(bait.height)}%`,
                 top: `${posToStyle(bait.position)}%`,
               }}
             />
             <div
-              class="fish"
+              className="fish"
               style={{
                 top: `${posToStyle(fish.position)}%`,
                 height: `${posToStyle(fish.height)}%`,
@@ -409,9 +409,9 @@ class FishingMinigame extends Component<
             </div>
           </div>
         </div>
-        <div class="completion">
-          <div class="background">
-            <div class="bar" style={{ height: `${Math.round(completion)}%` }} />
+        <div className="completion">
+          <div className="background">
+            <div className="bar" style={{ height: `${Math.round(completion)}%` }} />
           </div>
         </div>
       </div>
@@ -426,8 +426,8 @@ type FishingData = {
   background_image: string;
 };
 
-export const Fishing = (props, context) => {
-  const { act, data } = useBackend<FishingData>(context);
+export const Fishing = (props) => {
+  const { act, data } = useBackend<FishingData>();
   return (
     <Window width={180} height={600}>
       <Window.Content fitted>

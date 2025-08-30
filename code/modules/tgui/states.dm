@@ -1,10 +1,42 @@
-/**
+/*!
  * Base state and helpers for states. Just does some sanity checks,
  * implement a proper state for in-depth checks.
  *
- *! Copyright (c) 2020 Aleksej Komarov
- *! SPDX-License-Identifier: MIT
+ * Copyright (c) 2020 Aleksej Komarov
+ * SPDX-License-Identifier: MIT
  */
+
+/**
+ * public
+ *
+ * Checks the UI state for a mob.
+ *
+ * required user mob The mob who opened/is using the UI.
+ * required state datum/ui_state The state to check.
+ *
+ * return UI_state The state of the UI.
+ */
+/datum/proc/ui_status(mob/user, datum/ui_state/state)
+	var/src_object = ui_host(user)
+	. = UI_CLOSE
+	if(!state)
+		return
+
+	if(isobserver(user))
+		// If they turn on ghost AI control, admins can always interact.
+		if(IsAdminGhost(user))
+			. = max(., UI_INTERACTIVE)
+
+		// Regular ghosts can always at least view if in range.
+		if(user.client)
+			// todo: in view range for zooming
+			if(get_dist(src_object, user) < max(CEILING(user.client.current_viewport_width / 2, 1), CEILING(user.client.current_viewport_height / 2, 1)))
+				. = max(., UI_UPDATE)
+
+	// Check if the state allows interaction
+	var/result = state.can_use_topic(src_object, user)
+	. = max(., result)
+
 
 /**
  * private
@@ -32,20 +64,18 @@
 	// Close UIs if mindless.
 	if(!client)
 		return UI_CLOSE
-	// Disable UIs if unconcious.
+	// Disable UIs if unconscious.
 	else if(stat)
 		return UI_DISABLED
-	// Update UIs if incapicitated but concious.
+	// Update UIs if incapicitated but conscious.
 	else if(incapacitated())
 		return UI_UPDATE
 	return UI_INTERACTIVE
 
-/*
-/mob/living/shared_ui_interaction(src_object)
-	. = ..()
-	if(!(mobility_flags & MOBILITY_CAN_UI) && . == UI_INTERACTIVE)
-		return UI_UPDATE
-*/
+// /mob/living/shared_ui_interaction(atom/src_object)
+// 	. = ..()
+// 	if(!(mobility_flags & MOBILITY_UI) && !(src_object.interaction_flags_atom & INTERACT_ATOM_IGNORE_MOBILITY) && . == UI_INTERACTIVE)
+// 		return UI_UPDATE
 
 /mob/living/silicon/ai/shared_ui_interaction(src_object)
 	// Disable UIs if the AI is unpowered.
@@ -90,22 +120,5 @@
 
 /mob/living/carbon/human/shared_living_ui_distance(atom/movable/src_object, viewcheck = TRUE, allow_tk = TRUE)
 	if(allow_tk && (MUTATION_TELEKINESIS in mutations))
-	// if(allow_tk && dna.check_mutation(/datum/mutation/human/telekinesis) && tkMaxRangeCheck(src, src_object))
 		return UI_INTERACTIVE
 	return ..()
-
-/**
- * public
- *
- * Check the distance for a living mob.
- * Really only used for checks outside the context of a mob.
- * Otherwise, use shared_living_ui_distance().
- *
- * required src_object The object which owns the UI.
- * required user mob The mob who opened/is using the UI.
- *
- * return UI_state The state of the UI.
- */
-/atom/proc/contents_ui_distance(src_object, mob/living/user)
-	// Just call this mob's check.
-	return user.shared_living_ui_distance(src_object)
