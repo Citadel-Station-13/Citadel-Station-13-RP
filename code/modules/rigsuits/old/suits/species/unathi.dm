@@ -1,14 +1,8 @@
 /obj/item/hardsuit/breacher
 	name = "\improper NT breacher chassis control module"
 	desc = "A cheap NT knock-off of an Unathi battle-hardsuit. Looks like a fish, moves like a fish, steers like a cow."
-	suit_type = "\improper NT breacher"
 	icon_state = "breacher_hardsuit_cheap"
 	armor_type = /datum/armor/hardsuit/breacher
-	emp_protection = -20
-	encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_HEAVY * 2
-	offline_encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_HEAVY * 4
-	vision_restriction = 1
-	offline_vision_restriction = 2
 	siemens_coefficient = 0.75
 
 /datum/armor/hardsuit/breacher

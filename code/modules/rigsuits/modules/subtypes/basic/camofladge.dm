@@ -2,7 +2,7 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /obj/item/rig_module/basic/camofladge
-
+	impl_toggle = TRUE
 
 /obj/item/rig_module/basic/camofladge/anti_cameratrack
 

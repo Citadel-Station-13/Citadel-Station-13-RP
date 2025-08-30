@@ -104,7 +104,7 @@
 /obj/item/rig_module/basic/is_rig_click_module()
 	return impl_click
 
-/obj/item/rig_module/basic/rig_static_data()
+/obj/item/rig_module/basic/rig_data()
 	. = ..()
 	.["implToggle"] = impl_toggle
 	.["implClick"] = impl_click

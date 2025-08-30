@@ -15,10 +15,6 @@
 		/obj/item/bluespace_radio,
 	)
 	air_type = /obj/item/tank/vox
-	helm_type = /obj/item/clothing/head/helmet/space/hardsuit/vox
-	boot_type = /obj/item/clothing/shoes/magboots/hardsuit/vox
-	chest_type = /obj/item/clothing/suit/space/hardsuit/vox
-	glove_type = /obj/item/clothing/gloves/gauntlets/hardsuit/vox
 
 /datum/armor/hardsuit/vox
 	melee = 0.45

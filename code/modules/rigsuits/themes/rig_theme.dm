@@ -106,8 +106,8 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	var/preset_lamp_descriptor = /obj/item/rig_module/lamp
 	var/preset_magboots_descriptor = /obj/item/rig_module/magboots
 	var/preset_jetpack_descriptor = /obj/item/rig_module/locomotion/jetpack/gas
-	var/preset_jetpack_tank_descriptor = /obj/item/rig_module/resource_store/gas_tank/slotted/jetpack
-	var/preset_internals_tank_descriptor = /obj/item/rig_module/resource_store/gas_tank/slotted/breathing
+	var/preset_jetpack_tank_descriptor = /obj/item/rig_module/resource_store/gas_tank/slotted/jetpack/loaded/nitrogen
+	var/preset_internals_tank_descriptor = /obj/item/rig_module/resource_store/gas_tank/slotted/breathing/loaded/oxygen
 	var/list/preset_additional_descriptors
 
 	#warn values lmao

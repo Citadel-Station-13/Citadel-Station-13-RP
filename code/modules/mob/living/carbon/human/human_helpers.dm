@@ -180,12 +180,12 @@
 			compiled_vis |= O.enables_planes
 
 	// Check to see if we have a hardsuit (ugh, blame rigs, desnowflake this).
-	var/obj/item/hardsuit/hardsuit = back
-	if(istype(hardsuit) && hardsuit.visor)
-		if(!hardsuit.helmet || (head && hardsuit.helmet == head))
-			if(hardsuit.visor && hardsuit.visor.vision && hardsuit.visor.active && hardsuit.visor.vision.glasses)
-				var/obj/item/clothing/glasses/V = hardsuit.visor.vision.glasses
-				compiled_vis |= V.enables_planes
+	// var/obj/item/hardsuit/hardsuit = back
+	// if(istype(hardsuit) && hardsuit.visor)
+	// 	if(!hardsuit.helmet || (head && hardsuit.helmet == head))
+	// 		if(hardsuit.visor && hardsuit.visor.vision && hardsuit.visor.active && hardsuit.visor.vision.glasses)
+	// 			var/obj/item/clothing/glasses/V = hardsuit.visor.vision.glasses
+	// 			compiled_vis |= V.enables_planes
 
 	// NIF Support.
 	if(nif)

@@ -21,11 +21,6 @@
 	icon_state = "security_rig"
 	suit_type = "combat hardsuit"
 	armor_type = /datum/armor/hardsuit/combat
-	encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_HEAVY
-	offline_encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_HEAVY * 2
-	offline_vision_restriction = 1
-
-	helm_type = /obj/item/clothing/head/helmet/space/hardsuit/combat
 
 /obj/item/hardsuit/combat/equipped
 
@@ -54,9 +49,6 @@
 	icon_state = "military_rig"
 	suit_type = "military hardsuit"
 	armor_type = /datum/armor/hardsuit/military
-	encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_HEAVY
-	offline_encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_HEAVY * 2
-	offline_vision_restriction = 1
 
 /obj/item/clothing/head/helmet/space/hardsuit/military
 	light_overlay = "helmet_light_dual_green"

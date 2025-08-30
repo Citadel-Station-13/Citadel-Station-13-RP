@@ -71,7 +71,8 @@
 		O_BRAIN = /obj/item/organ/internal/mmi_holder/posibrain/nano,
 		O_ORCH = /obj/item/organ/internal/nano/orchestrator,
 		O_FACT = /obj/item/organ/internal/nano/refactory/loaded,
-		)
+		O_RIG_SUBCORE = /obj/item/organ/internal/rig_subcore/protean,
+	)
 
 	vision_organ = O_BRAIN
 	has_limbs = list(
@@ -178,9 +179,6 @@
 			new_nif.quick_implant(H)
 		else
 			H.nif.durability = rand(21,25)
-
-	var/obj/item/hardsuit/protean/prig = new /obj/item/hardsuit/protean(H)
-	prig.myprotean = H
 
 /datum/species/protean/apply_racial_gear(mob/living/carbon/for_target, list/into_box, list/into_inv)
 	var/obj/item/clothing/accessory/permit/nanotech/permit = new

@@ -25,7 +25,7 @@
 	for(var/id in host.piece_lookup)
 		assembled_ids += id
 	.["pieceIDs"] = assembled_ids
-	.["console"] = host.request_console().tgui_console_data()
+	// .["console"] = host.request_console().tgui_console_data()
 	.["theme"] = host.theme_name
 	// todo: b64 is shit
 	.["sprite64"] = host.cached_tgui_icon_b64 || (host.cached_tgui_icon_b64 = icon2base64(icon(host.icon, host.icon_state, SOUTH, 1, FALSE)))

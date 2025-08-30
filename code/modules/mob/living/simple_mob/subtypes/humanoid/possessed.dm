@@ -142,7 +142,7 @@
 	rig2 = /obj/item/rig/prefab/old_eva_hardsuit/springlocked
 	armor_legacy_mob = list(melee = 60, bullet = 50, laser = 30,energy = 15, bomb = 30, bio = 100, rad = 100)
 
-/obj/item/prefab/old_industrial_hardsuit
+/obj/item/rig/prefab/old_industrial_hardsuit
 	#warn this isn't really the theme we want.
 	theme_preset = /datum/rig_theme/station/cargo/salvage
 	name = "old Industrial hardsuit"

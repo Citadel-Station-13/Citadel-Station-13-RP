@@ -43,7 +43,6 @@
 
 /obj/item/hardsuit/light/ninja
 	name = "ominous suit control module"
-	suit_type = "ominous"
 	desc = "A unique suit of nano-enhanced armor designed for covert operations."
 	icon_state = "ninja_rig"
 

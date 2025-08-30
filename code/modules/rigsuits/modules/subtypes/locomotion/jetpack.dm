@@ -45,7 +45,7 @@
 	gas released through an ion thruster. Far more efficient than a normal gas maneuvering unit when powered, \
 	but significantly less efficient when ran unpowered."
 
-	jet_movement_mass = /obj/item/rig_module/locomotion/jetpack/gas::jet_movement_mas * 1.33 // less efficient when unpowered
+	jet_movement_mass = /obj/item/rig_module/locomotion/jetpack/gas::jet_movement_mass * 1.33 // less efficient when unpowered
 
 	/// is ion engine on
 	var/ion_assist_enabled = FALSE
