@@ -13,7 +13,7 @@ import { Stack } from "./Stack";
 import { Button } from "./Button";
 import { Icon } from "./Icon";
 import { ByondIconRef } from "./ByondIconRef";
-import { VStaticScrollingWindower } from "./VStaticScrollingWindower";
+import { VStaticScrollingWindower, VStaticScrollingWindowerEntry } from "./VStaticScrollingWindower";
 import { Input } from "./Input";
 
 /**
@@ -138,6 +138,7 @@ export class WorldTypepathDropdown extends Component<{
                     path: path,
                     iconRef: null,
                     iconState: null,
+                    key: path,
                   });
                 });
             }
@@ -155,6 +156,7 @@ export class WorldTypepathDropdown extends Component<{
                     path: path,
                     iconRef: descriptor.iconRef,
                     iconState: descriptor.iconState,
+                    key: path,
                   });
                 });
             }
@@ -210,7 +212,7 @@ export class WorldTypepathDropdown extends Component<{
   }
 }
 
-interface WorldTypepathDropdownEntryData {
+interface WorldTypepathDropdownEntryData extends VStaticScrollingWindowerEntry {
   name: string | null;
   path: string;
   iconRef: string | null;

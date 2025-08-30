@@ -6,11 +6,11 @@
 @use '../base.scss';
 
 .VStaticScrollingWindower {
-  position: relative;
+
 }
 
 .VStaticScrollingWindower__Inner {
-
+  overflow-y: scroll;
 }
 
 .VStaticScrollingWindower__Element {

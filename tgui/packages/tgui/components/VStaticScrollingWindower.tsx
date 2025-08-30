@@ -10,6 +10,10 @@ interface VStaticScrollingWindowerState {
 
 }
 
+export interface VStaticScrollingWindowerEntry {
+  key: string;
+}
+
 /**
  * Low-level vertical virtual scrolling window component.
  * Allows putting a ton of stuff in a single scrollable div by not actually rendering all of it.
@@ -17,7 +21,7 @@ interface VStaticScrollingWindowerState {
  * This is a static windower; technically, it can update, but since updates are controlled internally
  * you are forced to treat anything rendered as 'static' and immutable once rendered.
  */
-export class VStaticScrollingWindower<T> extends Component<{
+export class VStaticScrollingWindower<T extends VStaticScrollingWindowerEntry> extends Component<{
   data: T[],
   transformer: (entry: T) => InfernoNode,
 } & BoxProps, VStaticScrollingWindowerState> {
@@ -34,7 +38,13 @@ export class VStaticScrollingWindower<T> extends Component<{
     // sike, this doesn't actually do anything
     // make something actually laggy to render enough for me to care
     // and i'll finish this.
-    let innerContents = this.props.data.map((e) => this.props.transformer(e));
+    let innerContents = this.props.data.map((e) => {
+      return (
+        <div class='VStaticScrollingWindower__Element' key={e.key}>
+          {this.props.transformer(e)}
+        </div>
+      );
+    });
 
     return (
       <Box className="VStaticScrollingWindower">
