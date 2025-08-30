@@ -63,7 +63,7 @@
 	var/obj/item/I = user.get_inactive_held_item()
 	if(istype(I, /obj/item/material/knife/machete/hatchet/unathiknife))
 		hits ++
-		I.melee_interaction_chain(target, user, CLICKCHAIN_REDIRECTED, params)
+		I.lazy_melee_interaction_chain(target, user, CLICKCHAIN_REDIRECTED, params)
 	..()
 
 /obj/item/material/knife/machete/hatchet/unathiknife/afterattack(atom/target, mob/user, clickchain_flags, list/params)

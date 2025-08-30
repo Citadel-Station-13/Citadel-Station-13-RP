@@ -63,7 +63,7 @@
 
 	attacker.put_in_active_hand(toolbox, forced = TRUE)
 	attacker.set_combat_mode(TRUE)
-	toolbox.melee_interaction_chain(attacker, victim)
+	toolbox.lazy_melee_interaction_chain(attacker, victim)
 
 	TEST_ASSERT(pre_attack_hit, "Pre-attack signal was not fired")
 	TEST_ASSERT(attack_hit, "Attack signal was not fired")

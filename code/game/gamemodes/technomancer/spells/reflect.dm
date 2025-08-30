@@ -91,7 +91,7 @@
 		var/obj/item/W = clickchain.using_melee_weapon
 		attacker = clickchain.performer
 		if(attacker)
-			W.melee_interaction_chain(attacker, attacker)
+			W.lazy_melee_interaction_chain(attacker, attacker)
 			to_chat(attacker, "<span class='danger'>Your [damage_source] goes through \the [src] in one location, comes out \
 			on the same side, and hits you!</span>")
 

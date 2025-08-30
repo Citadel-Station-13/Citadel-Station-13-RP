@@ -105,3 +105,10 @@
 				to_chat(user, "<font color=#4F49AF><b>Recalibration successful!</b>:</font><font color='black'> This gate's systems have been fine tuned. Travel to this gate will now be on target.</font>")
 				calibrated = 1
 				return
+
+/obj/machinery/gateway/centeraway/attack_ghost(mob/user)
+	. = ..()
+	if(stationgate)
+		user.forceMove(stationgate.loc)
+	else
+		to_chat(user, "[src] has no destination.")

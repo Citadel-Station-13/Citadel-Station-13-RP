@@ -137,7 +137,7 @@
 		var/turf/n = D.loc
 		for(i in 1 to range)
 			ASSERT(isturf(n))
-			if(n.TurfAdjacency(th))
+			if(n.TurfAdjacency(th, target, src))
 				// succeeded
 				qdel(D)
 				return REACH_PHYSICAL

@@ -33,8 +33,3 @@
 		return
 
 	hologram.vore_someone(prey)
-
-/mob/living/AIShiftClick(mob/user) //Shift-click as AI overridden on mobs to examine.
-	if(user.client)
-		var/list/result = examine(user)
-		to_chat(user, "<blockquote class='info'>[result.Join("\n")]</blockquote>")

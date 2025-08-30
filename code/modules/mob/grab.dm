@@ -99,7 +99,7 @@
 	name = "grab"
 	icon = 'icons/mob/screen1.dmi'
 	icon_state = "reinforce"
-	item_flags = ITEM_ABSTRACT | ITEM_DROPDEL | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_ABSTRACT | ITEM_DROPDEL | ITEM_ENCUMBERS_WHILE_HELD | ITEM_NO_BLUDGEON
 	atom_flags = ATOM_ABSTRACT
 	drop_sound = null
 	pickup_sound = null
@@ -285,7 +285,7 @@
 						H.apply_pressure(assailant, hit_zone)
 					else
 						inspect_organ(affecting, assailant, hit_zone)
-						
+
 
 				if(INTENT_DISARM)
 					pin_down(affecting, assailant)

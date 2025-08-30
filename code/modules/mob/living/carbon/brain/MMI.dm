@@ -101,7 +101,7 @@
 			to_chat(user, "<span class='warning'>Access denied.</span>")
 		return
 	if(brainmob)
-		O.melee_interaction_chain(brainmob, user)//Oh noooeeeee
+		O.lazy_melee_interaction_chain(brainmob, user)//Oh noooeeeee
 		return
 	..()
 

@@ -4,6 +4,10 @@
 //* Actor Data Keys *//
 
 /// logging only
+#define ACTOR_DATA_RIG_CLICK_LOG "rig-click-log"
+/// logging only
+#define ACTOR_DATA_SILICON_CONTROL_LOG "silicon-control-log"
+/// logging only
 #define ACTOR_DATA_UNARMED_LOG "unarmed-log"
 /// logging only
 #define ACTOR_DATA_STUNBATON_LOG "stunbaton-log"

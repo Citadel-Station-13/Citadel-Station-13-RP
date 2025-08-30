@@ -105,6 +105,8 @@
 	/// allow opening when clicking from other hand
 	var/allow_open_via_offhand_click = TRUE
 	/// allow opening via alt click
+	var/allow_open_via_alt_click = TRUE
+	/// allow opening via context menu click
 	var/allow_open_via_context_click = TRUE
 	/// allow opening when clicking from hand if this is equipped
 	var/allow_open_via_equipped_click = TRUE

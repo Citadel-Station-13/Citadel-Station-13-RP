@@ -29,23 +29,27 @@
 			to_chat(src, "Somehow you bugged the system. Setting your hardsuit mode to middle-click.")
 			hardsuit_click_mode = MIDDLE_CLICK
 
-/mob/living/MiddleClickOn(atom/A)
-	if(client && client.hardsuit_click_mode == MIDDLE_CLICK)
-		if(HardsuitClickOn(A))
+/mob/living/click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
+	if(!active_item)
+		var/route_to_rig = FALSE
+		// this is shitcode but at some point we'll need to refactor how this works so it works for now
+		switch(client?.hardsuit_click_mode)
+			if(MIDDLE_CLICK)
+				if(clickchain.click_params["button"] == "middle" && !clickchain.click_params["ctrl"] && !clickchain.click_params["shift"] && !clickchain.click_params["alt"])
+					route_to_rig = TRUE
+			if(ALT_CLICK)
+				if(clickchain.click_params["alt"] && !clickchain.click_params["ctrl"] && !clickchain.click_params["shift"] )
+					route_to_rig = TRUE
+			if(CTRL_CLICK)
+				if(clickchain.click_params["ctrl"] && !clickchain.click_params["alt"] && !clickchain.click_params["shift"] )
+					route_to_rig = TRUE
+		// this is definitely shitcode.
+		var/obj/item/hardsuit/maybe_hardsuit = get_hardsuit(TRUE)
+		if(route_to_rig && maybe_hardsuit)
+			. = attempt_rigsuit_click(clickchain, clickchain_flags, maybe_hardsuit)
+			clickchain.data[ACTOR_DATA_RIG_CLICK_LOG] ||= "[maybe_hardsuit]"
 			return
-	..()
-
-/mob/living/AltClickOn(atom/A)
-	if(client && client.hardsuit_click_mode == ALT_CLICK)
-		if(HardsuitClickOn(A))
-			return
-	..()
-
-/mob/living/CtrlClickOn(atom/A)
-	if(client && client.hardsuit_click_mode == CTRL_CLICK)
-		if(HardsuitClickOn(A))
-			return
-	..()
+	return ..()
 
 /mob/living/proc/can_use_hardsuit()
 	return 0
@@ -64,22 +68,6 @@
 
 /mob/living/silicon/pai/can_use_hardsuit()
 	return loc == card
-
-/mob/living/proc/HardsuitClickOn(var/atom/A, var/alert_ai = 0)
-	if(!can_use_hardsuit() || !canClick())
-		return 0
-	var/obj/item/hardsuit/hardsuit = get_hardsuit(TRUE)
-	if(hardsuit?.selected_module)
-		if(src != hardsuit.wearer)
-			if(hardsuit.ai_can_move_suit(src, check_user_module = 1))
-				message_admins("[key_name_admin(src, include_name = 1)] is trying to force \the [key_name_admin(hardsuit.wearer, include_name = 1)] to use a hardsuit module.")
-			else
-				return 0
-		hardsuit.selected_module.engage(A, alert_ai)
-		if(ismob(A)) // No instant mob attacking - though modules have their own cooldowns
-			setClickCooldownLegacy(get_attack_speed_legacy())
-		return 1
-	return 0
 
 #undef MIDDLE_CLICK
 #undef ALT_CLICK

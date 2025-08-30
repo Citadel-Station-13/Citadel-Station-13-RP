@@ -12,7 +12,7 @@
 	C.alpha = H.ui_alpha
 	LAZYADD(H.other_important, C)
 	CL.screen += C
-	RegisterSignal(C, COMSIG_CLICK, PROC_REF(component_ui_interact))
+	RegisterSignal(C, COMSIG_ATOM_CLICK, PROC_REF(component_ui_interact))
 
 /datum/component/personal_crafting
 	registered_type = /datum/component/personal_crafting
@@ -300,7 +300,7 @@
 		Deletion.Cut(Deletion.len)
 		qdel(DL)
 
-/datum/component/personal_crafting/proc/component_ui_interact(source, location, control, params, user)
+/datum/component/personal_crafting/proc/component_ui_interact(datum/source, mob/user, location, control, params)
 	// SIGNAL_HANDLER
 
 	if(user == parent)

@@ -92,9 +92,6 @@
 	return (ui_interact(user) || nano_ui_interact(user))
 	// return FALSE
 
-/mob/living/carbon/human/RestrainedClickOn(var/atom/A)
-	return
-
 /mob/living/carbon/human/RangedAttack(atom/A)
 	. = ..()
 	if(.)
@@ -117,24 +114,9 @@
 	else if(spitting) //Only used by xenos right now, can be expanded.
 		Spit(A)
 
-/mob/living/RestrainedClickOn(var/atom/A)
-	return
-
-/*
-	Animals & All Unspecified
-*/
-// /mob/living/UnarmedAttack(atom/A)
-// 	A.attack_animal(src)
-
-// /atom/proc/attack_animal(mob/user)
-// 	SEND_SIGNAL(src, COMSIG_ATOM_ATTACK_ANIMAL, user)
-
 /*
 	Aliens
 */
-
-/mob/living/carbon/alien/RestrainedClickOn(var/atom/A)
-	return
 
 /mob/living/carbon/alien/UnarmedAttack(atom/A)
 	if(!..())
@@ -142,10 +124,3 @@
 
 	setClickCooldownLegacy(get_attack_speed_legacy())
 	A.attack_generic(src,rand(5,6),"bitten")
-
-/*
-	New Players:
-	Have no reason to click on anything at all.
-*/
-/mob/new_player/ClickOn()
-	return
