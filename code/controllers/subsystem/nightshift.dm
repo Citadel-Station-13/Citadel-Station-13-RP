@@ -47,8 +47,13 @@ SUBSYSTEM_DEF(nightshift)
 		return
 	var/emergency = GLOB.security_level > SEC_LEVEL_GREEN
 	var/announcing = TRUE
-	var/time = station_time() // more accurate since it counts for gametime offset
+
+	//station_time_in_ds = deciseconds after midnight in station time
+	//nightshift_start_time = 207,000 deciseconds after midnight (7:30 AM)
+	//nightshift_end_time = 702,000 deciseconds after midnight (7:30 PM)
+	var/time = station_time_in_ds	
 	var/night_time = (time < nightshift_end_time) || (time > nightshift_start_time)
+
 	if(high_security_mode != emergency)
 		high_security_mode = emergency
 		if(night_time)
@@ -78,7 +83,9 @@ SUBSYSTEM_DEF(nightshift)
 		currentrun -= APC
 		if (APC.area && (APC.z in (LEGACY_MAP_DATUM).station_levels))
 			APC.set_nightshift(nightshift_active && (APC.area.nightshift_level & nightshift_level), TRUE)
-		if(MC_TICK_CHECK && !forced) // subsystem will be in state SS_IDLE if forced by an admin
-			return
+		
+		//TODO: redo below logic: as-is, it does not allow the nightshift subsystem to actually finish processing
+		//if(MC_TICK_CHECK && !forced) // subsystem will be in state SS_IDLE if forced by an admin
+		//return
 
 	SSlighting.resume_instant()
