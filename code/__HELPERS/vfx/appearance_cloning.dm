@@ -2,7 +2,7 @@
  * clones us as a high-resolution outline
  */
 /atom/proc/vfx_clone_as_outline(alpha = 127, r = 1, g = 1, b = 1)
-	var/mutable_appearance/MA = new(src)
+	var/image/MA = image(src, dir = src.dir)
 	MA.filters = list(
 		filter(type = "outline", size = 1, color = "#000000", flags = OUTLINE_SHARP)
 	)
@@ -25,7 +25,7 @@
  */
 /atom/proc/vfx_clone_as_greyscale(alpha = 127)
 	var/static/list/static_greyscale_matrix = COLOR_MATRIX_GRAYSCALE
-	var/mutable_appearance/MA = new(src)
+	var/image/MA = image(src, dir = src.dir)
 	MA.color = static_greyscale_matrix
 	MA.vis_contents.len = 0	// y ea let's not copy those
 	MA.alpha = alpha

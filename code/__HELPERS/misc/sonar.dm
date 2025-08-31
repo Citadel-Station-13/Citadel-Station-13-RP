@@ -81,7 +81,7 @@
 		return
 	if(invisibility)
 		return
-	var/mutable_appearance/MA
+	var/image/MA
 	switch(resolution)
 		if(SONAR_RESOLUTION_VISIBLE)
 			if(ismob(src))
