@@ -2000,14 +2000,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/miaphus/sdf)
-"jB" = (
-/obj/machinery/conveyor_switch/oneway{
-	id = "miaphus_cargo"
-	},
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
-/area/sector/miaphus/beach/jungle)
 "jD" = (
 /obj/structure/toilet{
 	dir = 4
@@ -2257,6 +2249,15 @@
 	outdoors = 1
 	},
 /area/sector/miaphus/beach/resort)
+"kU" = (
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "miaphus_cargo"
+	},
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/jungle)
 "kW" = (
 /obj/structure/closet/cabinet{
 	density = 0;
@@ -2570,6 +2571,9 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/miaphus/beach/powershed)
+"mO" = (
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/miaphus/beach/jungle)
 "mQ" = (
 /obj/structure/girder,
 /turf/simulated/floor,
@@ -3236,16 +3240,6 @@
 	outdoors = 1
 	},
 /area/sector/miaphus/beach/resort)
-"ql" = (
-/obj/machinery/smuggling/input,
-/obj/machinery/conveyor{
-	dir = 4;
-	id = "miaphus_cargo"
-	},
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
-/area/sector/miaphus/beach/jungle)
 "qm" = (
 /obj/random/outcrop,
 /turf/simulated/mineral/floor/cave{
@@ -4286,6 +4280,12 @@
 /obj/random/empty_or_lootable_crate,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/desalinator)
+"vP" = (
+/obj/machinery/smuggling/processing_unit/miaphus,
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/jungle)
 "vR" = (
 /obj/structure/railing/grey,
 /obj/structure/railing/grey{
@@ -4748,12 +4748,6 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/wood/broken,
 /area/sector/miaphus/beach/station/terminal)
-"yw" = (
-/obj/machinery/point_redemption_vendor/smuggle/miaphus,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
-/area/sector/miaphus/beach/jungle)
 "yy" = (
 /obj/machinery/light,
 /obj/structure/catwalk,
@@ -4939,26 +4933,6 @@
 /obj/structure/catwalk,
 /obj/structure/railing/grey,
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/miaphus/sdf)
-"zS" = (
-/obj/structure/closet/walllocker_double/south,
-/obj/structure/table/bench/wooden,
-/obj/item/clothing/suit/armor/pcarrier/tan,
-/obj/item/clothing/head/helmet/tac,
-/obj/item/gps,
-/obj/item/handcuffs/cable,
-/obj/item/melee/baton/loaded/mini,
-/obj/item/radio,
-/obj/structure/railing/grey,
-/obj/structure/railing/grey,
-/obj/item/clothing/accessory/armor/armorplate/combat,
-/obj/item/book/manual/legal/sdf,
-/obj/item/pda,
-/obj/item/clothing/accessory/holster/hip,
-/obj/item/clothing/accessory/storage/pouches/large/tan,
-/obj/item/clothing/accessory/armor/legguards/tan,
-/obj/item/clothing/accessory/storage/laconic,
-/turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/miaphus/sdf)
 "zV" = (
 /turf/unsimulated/wall/mineral,
@@ -5205,6 +5179,9 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/shuttle/miaphus/sdf)
+"Bv" = (
+/turf/simulated/wall,
+/area/sector/miaphus/beach/jungle)
 "Bw" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/storage/wallet,
@@ -5698,15 +5675,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/sdf)
-"DP" = (
-/obj/machinery/conveyor{
-	dir = 4;
-	id = "miaphus_cargo"
-	},
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
-/area/sector/miaphus/beach/jungle)
 "DQ" = (
 /obj/effect/floor_decal/tracks{
 	dir = 4
@@ -5822,25 +5790,6 @@
 	outdoors = 1
 	},
 /area/sector/miaphus/beach/resort/bunk)
-"Et" = (
-/obj/structure/closet/walllocker_double/south,
-/obj/structure/table/bench/wooden,
-/obj/item/clothing/suit/armor/pcarrier/tan,
-/obj/item/clothing/head/helmet/tac,
-/obj/item/gps,
-/obj/item/handcuffs/cable,
-/obj/item/melee/baton/loaded/mini,
-/obj/item/radio,
-/obj/structure/railing/grey,
-/obj/item/clothing/accessory/armor/armorplate/combat,
-/obj/item/book/manual/legal/sdf,
-/obj/item/pda,
-/obj/item/clothing/accessory/holster/hip,
-/obj/item/clothing/accessory/storage/pouches/large/tan,
-/obj/item/clothing/accessory/armor/legguards/tan,
-/obj/item/clothing/accessory/storage/laconic,
-/turf/simulated/floor/tiled/monotechmaint,
-/area/shuttle/miaphus/sdf)
 "Ev" = (
 /obj/machinery/disperser/middle{
 	dir = 8
@@ -5940,6 +5889,16 @@
 	},
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/miaphus/beach/bunker/restroom)
+"ET" = (
+/obj/machinery/smuggling/input,
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "miaphus_cargo"
+	},
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/jungle)
 "EV" = (
 /obj/machinery/light,
 /obj/effect/floor_decal/techfloor/orange,
@@ -5954,12 +5913,6 @@
 "EZ" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/miaphus/sdf)
-"Fa" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/steel_dirty,
-/area/sector/miaphus/beach/jungle)
 "Fb" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -7430,6 +7383,27 @@
 	},
 /turf/simulated/floor/wood/broken,
 /area/sector/miaphus/beach/resort/canteen)
+"No" = (
+/obj/structure/closet/walllocker_double/south,
+/obj/structure/table/bench/wooden,
+/obj/item/clothing/suit/armor/pcarrier/tan,
+/obj/item/clothing/head/helmet/tac,
+/obj/item/gps,
+/obj/item/handcuffs/cable,
+/obj/item/melee/baton/loaded/mini,
+/obj/item/radio,
+/obj/structure/railing/grey,
+/obj/structure/railing/grey,
+/obj/item/clothing/accessory/armor/armorplate/combat,
+/obj/item/book/manual/legal/sdf,
+/obj/item/pda,
+/obj/item/clothing/accessory/holster/hip,
+/obj/item/clothing/accessory/storage/pouches/large/tan,
+/obj/item/clothing/accessory/armor/legguards/tan,
+/obj/item/clothing/accessory/storage/laconic,
+/obj/item/storage/belt/security/tactical,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/miaphus/sdf)
 "Nt" = (
 /obj/structure/cable{
 	icon_state = "2-4"
@@ -7585,6 +7559,26 @@
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
+/area/shuttle/miaphus/sdf)
+"Ol" = (
+/obj/structure/closet/walllocker_double/south,
+/obj/structure/table/bench/wooden,
+/obj/item/clothing/suit/armor/pcarrier/tan,
+/obj/item/clothing/head/helmet/tac,
+/obj/item/gps,
+/obj/item/handcuffs/cable,
+/obj/item/melee/baton/loaded/mini,
+/obj/item/radio,
+/obj/structure/railing/grey,
+/obj/item/clothing/accessory/armor/armorplate/combat,
+/obj/item/book/manual/legal/sdf,
+/obj/item/pda,
+/obj/item/clothing/accessory/holster/hip,
+/obj/item/clothing/accessory/storage/pouches/large/tan,
+/obj/item/clothing/accessory/armor/legguards/tan,
+/obj/item/clothing/accessory/storage/laconic,
+/obj/item/storage/belt/security/tactical,
+/turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/miaphus/sdf)
 "Om" = (
 /obj/random/multiple/underdark/miningdrills,
@@ -7779,9 +7773,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/sdf)
-"Pm" = (
-/turf/simulated/wall,
-/area/sector/miaphus/beach/jungle)
 "Po" = (
 /obj/effect/floor_decal/tracks{
 	dir = 10
@@ -8063,9 +8054,6 @@
 /obj/structure/closet/jcloset,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/miaphus/beach/sdf)
-"QO" = (
-/turf/simulated/floor/tiled/steel_dirty,
-/area/sector/miaphus/beach/jungle)
 "QP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 1
@@ -8457,6 +8445,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/lino,
 /area/shuttle/miaphus/sdf)
+"Td" = (
+/obj/machinery/point_redemption_vendor/smuggle/miaphus,
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/jungle)
 "Tg" = (
 /obj/machinery/door/blast/shutters{
 	dir = 2;
@@ -8525,6 +8519,14 @@
 /obj/effect/floor_decal/corner_steel_grid/full,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/miaphus/beach/sdf)
+"TB" = (
+/obj/machinery/conveyor_switch/oneway{
+	id = "miaphus_cargo"
+	},
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/jungle)
 "TC" = (
 /obj/structure/salvageable/computer,
 /turf/simulated/floor/tiled/steel_dirty,
@@ -8774,12 +8776,6 @@
 	name = "dirt"
 	},
 /area/sector/miaphus/beach/mineshaft)
-"UW" = (
-/obj/machinery/smuggling/processing_unit/miaphus,
-/turf/simulated/floor/tiled/asteroid_steel{
-	outdoors = 1
-	},
-/area/sector/miaphus/beach/jungle)
 "UX" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Workroom"
@@ -9141,6 +9137,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/sector/miaphus/beach/resort/dorm4)
+"WT" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/sector/miaphus/beach/jungle)
 "WU" = (
 /obj/machinery/scale,
 /turf/simulated/floor/tiled/old_tile/white,
@@ -21780,8 +21782,8 @@ bp
 SK
 SK
 bp
-DP
-jB
+kU
+TB
 bp
 bp
 aa
@@ -21974,7 +21976,7 @@ bp
 bp
 Jm
 bp
-DP
+kU
 SK
 SK
 SK
@@ -22168,7 +22170,7 @@ aa
 bp
 Jm
 bp
-ql
+ET
 SK
 SK
 SK
@@ -22362,7 +22364,7 @@ aa
 bp
 Jm
 SK
-UW
+vP
 SK
 SK
 SK
@@ -22556,7 +22558,7 @@ aa
 bp
 SK
 bp
-Pm
+Bv
 SK
 SK
 SK
@@ -22750,7 +22752,7 @@ aa
 bp
 Jm
 bp
-yw
+Td
 SK
 SK
 zw
@@ -42083,7 +42085,7 @@ Vu
 bL
 Vs
 nz
-Et
+Ol
 bL
 uN
 WQ
@@ -42277,7 +42279,7 @@ Wr
 bL
 nn
 nz
-Et
+Ol
 bL
 cK
 zQ
@@ -42471,7 +42473,7 @@ Jx
 bL
 UZ
 na
-zS
+No
 bL
 Gw
 zQ
@@ -43449,7 +43451,7 @@ DX
 wY
 Ll
 Pr
-Fa
+WT
 LC
 fV
 fV
@@ -43643,7 +43645,7 @@ Ea
 vw
 vn
 El
-QO
+mO
 BK
 hJ
 fD

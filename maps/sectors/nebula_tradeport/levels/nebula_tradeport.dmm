@@ -20045,15 +20045,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/sector/nebula_tradeport/medical/public)
-"cfC" = (
-/obj/machinery/conveyor_switch/oneway{
-	id = "ftu_cargo_transit";
-	name = "inbound conveyor";
-	pixel_y = -5;
-	pixel_x = 11
-	},
-/turf/simulated/floor/tiled/old_tile/yellow,
-/area/tradeport/spine)
 "cfJ" = (
 /obj/structure/closet/largecardboard,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -20103,6 +20094,16 @@
 	},
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/nebula_tradeport/motel/room6)
+"cmG" = (
+/obj/structure/catwalk,
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	frequency = 1380;
+	id_tag = "nebula_pump4f";
+	name = "Nebula Pump Controller";
+	pixel_x = 25
+	},
+/turf/simulated/floor,
+/area/tradeport/pads)
 "coN" = (
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
@@ -20852,10 +20853,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/tradeport/spine)
-"dZI" = (
-/obj/machinery/smuggling/processing_unit/ftu,
-/turf/simulated/floor/tiled/old_tile/yellow,
-/area/tradeport/spine)
 "dZV" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 4
@@ -21529,10 +21526,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport/commons)
-"fPC" = (
-/obj/structure/sign/department/cargo,
-/turf/simulated/wall/r_wall,
-/area/tradeport/spine)
 "fQy" = (
 /obj/structure/table/hardwoodtable,
 /obj/machinery/microwave{
@@ -21806,10 +21799,6 @@
 /obj/machinery/body_scanconsole,
 /turf/simulated/floor/tiled/white,
 /area/sector/nebula_tradeport/medical/public)
-"gPB" = (
-/obj/spawner/window/low_wall/nogrille/firelocks,
-/turf/simulated/floor/tiled/old_tile/yellow,
-/area/tradeport/cafeteria)
 "gPE" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -22359,10 +22348,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/tradeport/cafeteria)
-"iav" = (
-/obj/structure/cargotransitcrate/ftu,
-/turf/simulated/floor/tiled/old_tile/yellow,
-/area/tradeport/spine)
 "iaF" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -22436,6 +22421,16 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/shuttle/arrowhead)
+"iiU" = (
+/obj/effect/shuttle_landmark{
+	base_area = /area/tradeport/pads;
+	base_turf = /turf/simulated/floor/reinforced;
+	docking_controller = "nebula_pump4f";
+	landmark_tag = "nebula_pad_4f";
+	name = "Nebula Pad 4f"
+	},
+/turf/simulated/floor/reinforced,
+/area/tradeport/pads)
 "ijf" = (
 /obj/structure/bed/chair/sofa/black/left{
 	dir = 8
@@ -22669,6 +22664,13 @@
 	},
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/room6)
+"iZW" = (
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "ftu_cargo_transit"
+	},
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/tradeport/spine)
 "jbA" = (
 /obj/structure/curtain/open/shower,
 /obj/structure/simple_door/wood,
@@ -22980,10 +22982,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/tradeport/commons)
-"jRA" = (
-/obj/machinery/point_redemption_vendor/smuggle/ftu,
-/turf/simulated/floor/tiled/old_tile/yellow,
-/area/tradeport/spine)
 "jSR" = (
 /obj/structure/bed/chair/comfy/brown{
 	dir = 1
@@ -23149,6 +23147,12 @@
 	},
 /turf/simulated/floor/carpet/turcarpet,
 /area/sector/nebula_tradeport/motel)
+"kmm" = (
+/obj/machinery/smuggling/processing_unit_console{
+	pixel_x = 30
+	},
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/tradeport/spine)
 "koU" = (
 /obj/machinery/camera{
 	dir = 1
@@ -23553,6 +23557,14 @@
 /obj/structure/table/gamblingtable,
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/nebula_tradeport/motel/arcade)
+"loj" = (
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "ftu_cargo_transit"
+	},
+/obj/machinery/smuggling/input,
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/tradeport/spine)
 "lrC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -23778,6 +23790,15 @@
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/facility)
+"lSN" = (
+/obj/machinery/conveyor_switch/oneway{
+	id = "ftu_cargo_transit";
+	name = "inbound conveyor";
+	pixel_y = -5;
+	pixel_x = 11
+	},
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/tradeport/spine)
 "lTH" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
@@ -24780,6 +24801,10 @@
 /obj/machinery/atmospherics/pipe/cap/visible/supply,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/nebula_tradeport/motel)
+"oYk" = (
+/obj/structure/sign/department/cargo,
+/turf/simulated/wall/r_wall,
+/area/tradeport/spine)
 "oYn" = (
 /obj/machinery/light{
 	dir = 1
@@ -24829,14 +24854,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/shuttle/scoophead/cockpit)
-"pfo" = (
-/obj/machinery/conveyor{
-	dir = 4;
-	id = "ftu_cargo_transit"
-	},
-/obj/machinery/smuggling/input,
-/turf/simulated/floor/tiled/old_tile/yellow,
-/area/tradeport/spine)
 "pfv" = (
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
@@ -24968,6 +24985,22 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/tradeport/commons)
+"pvk" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/catwalk,
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	frequency = 1380;
+	id_tag = "nebula_pump3f";
+	name = "Nebula Pump Controller";
+	pixel_x = -25
+	},
+/turf/simulated/floor,
+/area/tradeport/pads)
 "pvG" = (
 /obj/structure/table/hardwoodtable,
 /obj/structure/flora/pottedplant/thinbush,
@@ -24984,12 +25017,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport/commons)
-"pzY" = (
-/obj/machinery/smuggling/processing_unit_console{
-	pixel_x = 30
-	},
-/turf/simulated/floor/tiled/old_tile/yellow,
-/area/tradeport/spine)
 "pAI" = (
 /obj/effect/floor_decal/corner/blue/border,
 /obj/machinery/holopad,
@@ -25157,6 +25184,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/commons)
+"qmm" = (
+/obj/machinery/smuggling/processing_unit/ftu,
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/tradeport/spine)
 "qmI" = (
 /obj/structure/simple_door/hardwood,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -25659,6 +25690,10 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/red,
 /area/shuttle/arrowhead)
+"rHO" = (
+/obj/spawner/window/low_wall/nogrille/firelocks,
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/tradeport/cafeteria)
 "rIw" = (
 /obj/structure/bed/chair/bay/chair/padded/teal{
 	dir = 4
@@ -26078,6 +26113,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/safarizoo)
+"sUD" = (
+/obj/structure/cargotransitcrate/ftu,
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/tradeport/spine)
 "sYJ" = (
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/tradeport/spine)
@@ -26140,6 +26179,16 @@
 /obj/structure/simple_door/hardwood,
 /turf/simulated/floor/tiled/dark,
 /area/sector/nebula_tradeport/motel/vip)
+"tgt" = (
+/obj/effect/shuttle_landmark{
+	base_area = /area/tradeport/pads;
+	base_turf = /turf/simulated/floor/reinforced;
+	docking_controller = "nebula_pump3f";
+	landmark_tag = "nebula_pad_3f";
+	name = "Nebula Pad 3f"
+	},
+/turf/simulated/floor/reinforced,
+/area/tradeport/pads)
 "tgB" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 6
@@ -26528,6 +26577,10 @@
 /obj/machinery/vending/coffee,
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel)
+"uoP" = (
+/obj/machinery/point_redemption_vendor/smuggle/ftu,
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/tradeport/spine)
 "upk" = (
 /obj/structure/bed/chair/sofa/brown/left{
 	dir = 1
@@ -27118,13 +27171,6 @@
 	},
 /turf/simulated/floor/carpet/patterened/red,
 /area/shuttle/scoophead/cockpit)
-"wkH" = (
-/obj/machinery/conveyor{
-	dir = 4;
-	id = "ftu_cargo_transit"
-	},
-/turf/simulated/floor/tiled/old_tile/yellow,
-/area/tradeport/spine)
 "wlu" = (
 /obj/machinery/shipsensors,
 /turf/simulated/floor/plating,
@@ -51998,7 +52044,7 @@ aDh
 aDh
 aDh
 snu
-iav
+sUD
 dYK
 doo
 bro
@@ -52192,7 +52238,7 @@ aDh
 aDh
 aDh
 snu
-iav
+sUD
 vGS
 ves
 fbx
@@ -52584,7 +52630,7 @@ sYJ
 sYJ
 tQG
 sYJ
-fPC
+oYk
 dtU
 aVa
 awX
@@ -52777,7 +52823,7 @@ abc
 fdo
 sYJ
 sYJ
-cfC
+lSN
 snu
 tRl
 awc
@@ -52971,7 +53017,7 @@ abc
 sDd
 sYJ
 sYJ
-wkH
+iZW
 snu
 bfK
 aHh
@@ -53165,7 +53211,7 @@ tSe
 sDd
 sYJ
 sYJ
-wkH
+iZW
 snu
 bNF
 aWh
@@ -53359,7 +53405,7 @@ tSe
 sDd
 sYJ
 sYJ
-pfo
+loj
 snu
 lkX
 aVa
@@ -53551,9 +53597,9 @@ aDh
 aDh
 abc
 sDd
-jRA
-pzY
-dZI
+uoP
+kmm
+qmm
 snu
 tRl
 awc
@@ -53745,7 +53791,7 @@ aDh
 aDa
 aDa
 aDa
-gPB
+rHO
 aDa
 aDa
 aDa
@@ -55337,7 +55383,7 @@ akf
 akf
 akf
 akf
-akf
+tgt
 akf
 akf
 akf
@@ -56317,7 +56363,7 @@ adn
 aRm
 aro
 aRm
-aRm
+pvk
 aRm
 aFN
 awB
@@ -56511,7 +56557,7 @@ aur
 aur
 aHr
 aur
-aur
+cmG
 aur
 aur
 axm
@@ -61545,7 +61591,7 @@ akf
 akf
 akf
 akf
-akf
+iiU
 akf
 akf
 akf
