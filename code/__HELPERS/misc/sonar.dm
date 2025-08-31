@@ -97,7 +97,7 @@
 		return
 	rendering.pixel_x = pixel_x - (icon_x_dimension == WORLD_ICON_SIZE)? 0 : ((icon_x_dimension - WORLD_ICON_SIZE) / 2) + step_x
 	rendering.pixel_y = pixel_y - (icon_y_dimension == WORLD_ICON_SIZE)? 0 : ((icon_y_dimension - WORLD_ICON_SIZE) / 2) + step_y
-	. = MA
+	. = rendering
 
 /atom/proc/make_sonar_shape()
 	return
