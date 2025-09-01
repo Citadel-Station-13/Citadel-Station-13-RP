@@ -73,8 +73,8 @@
 /atom/proc/AltClick(var/mob/user)
 	if(isAI(user) && !isitem(src) && !isturf(src))
 		return "keep-going"
-	if(!user.altclick_listed_turf(src))
-		return "keep-going"
+	if((isturf(src) || isturf(loc)) && user.altclick_listed_turf(src))
+		return TRUE
 	return "keep-going"
 
 // todo: rework
