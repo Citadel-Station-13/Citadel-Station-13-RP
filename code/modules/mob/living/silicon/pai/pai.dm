@@ -126,6 +126,7 @@
 									 /datum/action/pai/hologram_display,
 									 /datum/action/pai/place_hologram,
 									 /datum/action/pai/delete_holograms)
+	var/list/datum/action/actions_instanced
 
 	var/list/active_holograms = list()
 
@@ -159,6 +160,10 @@
 		pda.owner = "[src]"
 		pda.name = pda.owner + " (" + pda.ownjob + ")"
 		pda.toff = 1
+
+/mob/living/silicon/pai/Destroy()
+	QDEL_LIST(actions_instanced)
+	return ..()
 
 /mob/living/silicon/pai/Login()
 	..()
@@ -461,14 +466,18 @@
 		to_chat(src, "You must be in card form to do this!")
 
 /mob/living/silicon/pai/proc/generate_actions()
+	actions_instanced = list()
 	for(var/path in actions_to_grant)
-		var/datum/action/pai/A = new path()
+		if(locate(path) in actions_instanced)
+			continue
+		var/datum/action/pai/A = new path(src)
 		A.grant(actions_innate)
 		if(A.update_on_grant)
 			A.update_buttons()
+		actions_instanced += A
 
 /mob/living/silicon/pai/proc/update_chassis_actions()
-	for(var/datum/action/pai/A in actions_to_grant)
+	for(var/datum/action/pai/A in actions_instanced)
 		if(A.update_on_chassis_change)
 			A.update_buttons()
 
