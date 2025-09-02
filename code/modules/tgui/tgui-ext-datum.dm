@@ -65,32 +65,6 @@
 /**
  * public
  *
- * Forces an update on static data. Should be done manually whenever something
- * happens to change static data.
- *
- * required user the mob currently interacting with the ui
- * optional ui ui to be updated
- */
-/datum/proc/update_static_data(mob/user, datum/tgui/ui)
-	if(!ui)
-		ui = SStgui.get_open_ui(user, src)
-	if(ui)
-		ui.send_full_update()
-
-/**
- * public
- *
- * Will force an update on static data for all viewers.
- * Should be done manually whenever something happens to
- * change static data.
- */
-/datum/proc/update_static_data_for_all_viewers()
-	for (var/datum/tgui/window as anything in open_uis)
-		window.send_full_update()
-
-/**
- * public
- *
  * Called on an object when a tgui object is being created, allowing you to
  * push various assets to tgui, for examples spritesheets.
  *
@@ -286,17 +260,17 @@
  *
  * optional user the mob currently interacting with the ui
  * optional ui tgui to be updated
- * optional hard_refreshion use if you need to block the ui from showing if the refresh queues
+ * optional hard_refresh use if you need to block the ui from showing if the refresh queues
  */
 /datum/proc/update_static_data(mob/user, datum/tgui/ui, hard_refresh)
 	if(!user)
-		for (var/datum/tgui/window as anything in SStgui.open_uis_by_src[REF(src)])
-			window.send_full_update(hard_refresh = hard_refresh)
+		for(var/datum/tgui/window as anything in open_uis)
+			window.send_full_update()
 		return
 	if(!ui)
 		ui = SStgui.get_open_ui(user, src)
 	if(ui)
-		ui.send_full_update(hard_refresh = hard_refresh)
+		ui.send_full_update()
 
 //* Checks *//
 

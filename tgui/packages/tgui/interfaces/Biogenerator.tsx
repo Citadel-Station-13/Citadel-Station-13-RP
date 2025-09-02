@@ -177,11 +177,11 @@ const BiogeneratorItemsCategory = (properties) => {
       {items.map(item => (
         <Box key={item.name}>
           <Box
-            display="inline-block"
             verticalAlign="middle"
             lineHeight="20px"
             style={{
               float: 'left',
+              display: "inline-block",
             }}>
             {item.name}
           </Box>

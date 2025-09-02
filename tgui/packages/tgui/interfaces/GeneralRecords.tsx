@@ -8,7 +8,6 @@ import { LoginScreen } from './common/LoginScreen';
 import { TemporaryNotice } from './common/TemporaryNotice';
 import { createSearch } from 'tgui-core/string';
 import { filter } from 'common/collections';
-import { flow } from 'common/fp';
 
 const doEdit = (field) => {
   modalOpen('edit', {
@@ -72,13 +71,8 @@ const selectRecords = (records: any, searchText = '') => {
   const nameSearch = createSearch<any>(searchText, record => record.name);
   const idSearch = createSearch<any>(searchText, record => record.id);
   const dnaSearch = createSearch<any>(searchText, record => record.b_dna);
-  let fl = flow([
-    // Optional search term
-    searchText && filter(record => {
-      return (nameSearch(record) || idSearch(record) || dnaSearch(record));
-    }),
-  ])(records);
-  return fl;
+  return records
+    .filter((record) => !searchText || nameSearch(record) || idSearch(record) || dnaSearch(record));
 };
 
 const GeneralRecordsList = (_properties) => {

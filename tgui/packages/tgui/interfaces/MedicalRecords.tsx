@@ -332,7 +332,7 @@ const MedicalRecordsViewMedical = (_properties) => {
           color="good"
           mt="0.5rem"
           mb="0"
-          onClick={() => modalOpen(context, 'add_c')}
+          onClick={() => modalOpen('add_c')}
         />
       </Section>
     </Fragment>

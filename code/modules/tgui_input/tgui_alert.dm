@@ -1,4 +1,4 @@
-/proc/tgui_alert_aync(mob/user, message = "", title, list/buttons = list("Ok"), timeout = 0, autofocus = TRUE, ui_state = GLOB.always_state, datum/callback/on_finish)
+/proc/tgui_alert_async(mob/user, message = "", title, list/buttons = list("Ok"), timeout = 0, autofocus = TRUE, ui_state = GLOB.always_state, datum/callback/on_finish)
 	set waitfor = FALSE
 	var/result = tgui_alert(user, message, title, buttons, timeout, autofocus, ui_state)
 	on_finish?.Invoke(result)
@@ -6,7 +6,8 @@
 /**
  * Creates a TGUI alert window and returns the user's response.
  *
- * This proc should be used to create alerts that the caller will wait for a response from.
+ * * This proc should be used to create alerts that the caller will wait for a response from.
+ * * This proc will block until the user pressses something.
  * Arguments:
  * * user - The user to show the alert to.
  * * message - The content of the alert, shown in the body of the TGUI window.
@@ -34,6 +35,8 @@
 		return tgui_input_list(user, message, title, buttons, timeout, autofocus)
 	// Client does NOT have tgui_input on: Returns regular input
 	if(!user.client.preferences.get_entry(/datum/game_preference_entry/toggle/tgui_input))
+		if(length(buttons) == 1)
+			return alert(user, message, title, buttons[1])
 		if(length(buttons) == 2)
 			return alert(user, message, title, buttons[1], buttons[2])
 		if(length(buttons) == 3)

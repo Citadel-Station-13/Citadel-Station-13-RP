@@ -276,7 +276,7 @@ export const TraitSelectorModal = (_) => {
               autoFocus
               autoSelect
               fluid
-              onInput={(_, value) => setSearchQuery(value)}
+              onChange={(value) => setSearchQuery(value)}
               placeholder="Search..."
               value={searchQuery}
             />
@@ -294,7 +294,7 @@ export const TraitSelectorModal = (_) => {
               </LabeledList>
             </Stack.Item>
             <Stack.Item>
-              <InputButtons input={stringSubmission} goodDisabled={!satisfactory} />
+              <InputButtons input={stringSubmission} disabled={!satisfactory} />
             </Stack.Item>
           </Stack>
         </Section>

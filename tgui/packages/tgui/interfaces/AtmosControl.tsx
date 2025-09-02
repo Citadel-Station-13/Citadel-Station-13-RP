@@ -4,7 +4,6 @@ import { Fragment, useState } from 'react';
 import { Button, Box, Tabs, Icon, Section } from 'tgui-core/components';
 import { useBackend, useLocalState } from '../backend';
 import { createLogger } from '../logging';
-import { LegacyNanoMap } from '../components/NanoMap';
 const logger = createLogger("fuck");
 
 export const AtmosControl = (props) => {
@@ -23,9 +22,7 @@ export const AtmosControl = (props) => {
 export const AtmosControlContent = (props) => {
   const { act, data, config } = useBackend<any>();
 
-  let sortedAlarms = sortBy(
-    alarm => alarm.name
-  )(data.alarms || []);
+  let sortedAlarms = (data.alarms || []).sort((a, b) => a.name.localeCompare(b.name));
 
   // sortedAlarms = sortedAlarms.slice(1, 3);
 
@@ -56,7 +53,7 @@ export const AtmosControlContent = (props) => {
     // and change the @for scss to match.
     body = (
       <Box height="526px" mb="0.5rem" overflow="hidden">
-        <LegacyNanoMap onZoom={v => setZoom(v)}>
+        {/* <LegacyNanoMap onZoom={v => setZoom(v)}>
           {sortedAlarms
             .filter(x =>
               (~~x.z === ~~config.mapZLevel)
@@ -71,7 +68,7 @@ export const AtmosControlContent = (props) => {
                 color={cm.danger ? 'red' : 'green'}
                 onClick={() => act("alarm", { "alarm": cm.ref })} />
             ))}
-        </LegacyNanoMap>
+        </LegacyNanoMap> */}
       </Box>
     );
   }

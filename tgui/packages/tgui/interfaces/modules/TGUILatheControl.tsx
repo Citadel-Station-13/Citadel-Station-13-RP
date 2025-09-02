@@ -6,8 +6,7 @@
  */
 
 import { BooleanLike } from "tgui-core/react";
-import { Box, Button, Collapsible, Dropdown, Input, LabeledList, NoticeBox, NumberInput, ProgressBar, Stack, Table, Tabs } from "tgui-core/components";
-import { Section, SectionProps } from "tgui-core/components/Section";
+import { Box, Button, Collapsible, Dropdown, Input, LabeledList, NoticeBox, NumberInput, ProgressBar, Section, Stack, Table, Tabs } from "tgui-core/components";
 import { Modular } from "../../layouts/Modular";
 import { WindowProps } from "../../layouts/Window";
 import { Design } from "../common/Design";
@@ -17,6 +16,7 @@ import { ReagentContents, ReagentContentsData, REAGENT_STORAGE_UNIT_NAME } from 
 import { useState } from "react";
 import { ModuleData, useLegacyModule } from "../../legacyModuleSystem";
 import { useLocalState } from "../../backend";
+import { SectionProps } from "../../components";
 
 export interface TGUILatheControlProps {
 

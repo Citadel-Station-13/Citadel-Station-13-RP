@@ -33,7 +33,7 @@ export const selectCameras = (cameras: any[], searchText = '') => {
   const testSearch = createSearch(searchText, (camera: any) => camera.name);
   return cameras
     .filter(camera => !!camera?.name)
-    .filter(camera => (searchText && testSearch(camera)))
+    .filter(camera => (!searchText || testSearch(camera)))
     .sort((a, b) => a.name.localeCompare(b.name));
 };
 

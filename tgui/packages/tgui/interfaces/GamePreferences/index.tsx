@@ -10,7 +10,7 @@
  */
 import { BooleanLike } from "tgui-core/react";
 import { ReactNode, useState } from "react";
-import { getModuleData, useBackend, useLocalState } from "../../backend";
+import { useBackend, useLocalState } from "../../backend";
 import { Button, Flex, Section, Stack, Tooltip } from "tgui-core/components";
 import { Window } from "../../layouts";
 import { GamePreferenceEntry, GamePreferenceEntrySchema } from "./GamePreferenceEntry";

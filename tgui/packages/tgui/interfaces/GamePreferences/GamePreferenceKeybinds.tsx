@@ -5,7 +5,7 @@
 import { IEKeyboardEventKeycodeToBYOND } from "common/keyboard";
 import { KEY_ALT, KEY_CTRL, KEY_ESCAPE, KEY_SHIFT } from "common/keycodes";
 import { BooleanLike } from "tgui-core/react";
-import { Component, ReactNode } from "react";
+import { Component, ReactNode, useState } from "react";
 import { useLocalState } from "../../backend";
 import { Box, Button, Dimmer, Section, Stack, Table, Tooltip } from "tgui-core/components";
 import { KeyEvent } from "../../events";

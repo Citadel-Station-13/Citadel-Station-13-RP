@@ -9,6 +9,7 @@ import { Window } from "../../layouts";
 import { useState } from "react";
 import { ModuleData } from "../../legacyModuleSystem";
 import { Module } from "module";
+import { LegacyModule } from "../../components/LegacyModule";
 
 interface TGUIGuidebookContext {
   // module id to name
@@ -24,7 +25,7 @@ export const TGUIGuidebook = (props) => {
     <Window width={800} height={800} title="Guidebook">
       <Window.Content>
         {!!oneSectionMode && (
-          <Module id={sections[0]} />
+          <LegacyModule id={sections[0]} />
         )}
         {!oneSectionMode && (
           <Stack vertical>
@@ -40,7 +41,7 @@ export const TGUIGuidebook = (props) => {
             </Stack.Item>
             {activeSection !== null && (
               <Stack.Item grow={1}>
-                <Module id={activeSection} />
+                <LegacyModule id={activeSection} />
               </Stack.Item>
             )}
             {activeSection === null && (

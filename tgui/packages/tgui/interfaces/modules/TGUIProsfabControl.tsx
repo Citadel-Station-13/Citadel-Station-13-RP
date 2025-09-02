@@ -18,8 +18,8 @@ import { useLegacyModule } from "../../legacyModuleSystem";
 import { SectionProps } from "../../components";
 
 interface TGUIProsfabControlData extends TGUILatheControlData {
-  available_species: String[];
-  selected_species: String;
+  available_species: string[];
+  selected_species: string;
 }
 
 export const generateDynamicButton = (name, mode, actFunction) => {
@@ -331,7 +331,7 @@ interface LatheQueuedProps {
 }
 
 const LatheQueued = (props: LatheQueuedProps) => {
-  let { data, act } = useModule<TGUILatheControlData>();
+  let { data, act } = useLegacyModule<TGUILatheControlData>();
   let progressRender;
   if (props.index === 1 && data.queueActive && props.design !== undefined) {
     progressRender = (
@@ -361,7 +361,7 @@ const LatheQueued = (props: LatheQueuedProps) => {
             icon="plus"
             onClick={() => act('modqueue', { index: props.index, amount: props.entry.amount + 1 })} />
           <NumberInput minValue={1} maxValue={100} step={1} width={3}
-            value={props.entry.amount} onChange={(e, v) => act('modqueue', { index: props.index, amount: v })} />
+            value={props.entry.amount} onChange={(v) => act('modqueue', { index: props.index, amount: v })} />
           <Button
             color="transparent"
             icon="minus"
@@ -425,7 +425,7 @@ const areMaterialsChosen = (mats: Record<string, number>, chosen: Record<string,
 };
 
 const LatheDesign = (props: LatheDesignProps) => {
-  const { data, act, moduleID } = useModule<TGUILatheControlData>();
+  const { data, act, moduleID } = useLegacyModule<TGUILatheControlData>();
 
   // materials: key = material id
   // mats maps parts to materials. i think? ask kevinz.
@@ -514,11 +514,11 @@ const LatheDesign = (props: LatheDesignProps) => {
                 <Table.Cell>
                   <div style={{
                     "display": "inline-block",
-                    "padding-left": "0.5em",
+                    paddingLeft: "0.5em",
                     "width": "base em(100px)",
-                    "line-height": "base.em(17px)",
-                    "font-family": "Verdana, sans-serif",
-                    "font-size": "base.em(12px)",
+                    lineHeight: "base.em(17px)",
+                    fontFamily: "Verdana, sans-serif",
+                    fontSize: "base.em(12px)",
                   }}>
                     {data.materialsContext.materials[id].name}
                   </div>

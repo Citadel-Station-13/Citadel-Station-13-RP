@@ -132,7 +132,7 @@ const StringEntry = (props: {
   readonly setValue: (val: string) => void;
 }) => {
   return (
-    <Input fluid value={props.value} onInput={(val) => props.setValue(val)} />
+    <Input fluid value={props.value} onChange={(val) => props.setValue(val)} />
   );
 };
 
@@ -170,11 +170,11 @@ const SimpleColorEntry = (props: {
       <>
         <ColorBox color={props.value} /> {props.value}
       </>
-    ) : ""} contentFunction={() => (
+    ) : ""}>
       <Section>
         <ColorPicker currentColor={props.value || "#ffffff"} allowMatrix={false}
           setColor={(what) => props.setValue(what as ByondColorString)} />
       </Section>
-    )} />
+    </Collapsible>
   );
 };

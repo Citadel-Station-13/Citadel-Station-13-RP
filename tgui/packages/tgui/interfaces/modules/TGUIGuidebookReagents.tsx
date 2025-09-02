@@ -13,10 +13,10 @@
  */
 
 import { ReactNode, useState } from "react";
-import { useLocalState, useModule } from "../../backend";
 import { Input, Section, Stack, Tabs } from "tgui-core/components";
 import { Modular } from "../../layouts/Modular";
 import { TGUIGuidebookSectionData } from "./TGUIGuidebook";
+import { useLegacyModule } from "../../legacyModuleSystem";
 
 export interface TGUIGuidebookReagentsData extends TGUIGuidebookSectionData {
   // id to entry
@@ -75,7 +75,7 @@ interface TGUIGuidebookReaction {
 }
 
 export const TGUIGuidebookReagents = (props) => {
-  let { act, data } = useModule<TGUIGuidebookReagentsData>();
+  let { act, data } = useLegacyModule<TGUIGuidebookReagentsData>();
   const [activeTab, setActiveTab] = useState<string | null>(null);
   const [searchText, setSearchText] = useState<string | null>(null);
 
@@ -162,7 +162,7 @@ export const TGUIGuidebookReagents = (props) => {
               </Tabs>
             </Stack.Item>
             <Stack.Item>
-              Search <Input width="100px" onInput={(val) => setSearchText(val.toLowerCase())} />
+              Search <Input width="100px" onChange={(val) => setSearchText(val.toLowerCase())} />
             </Stack.Item>
           </Stack>
         </Stack.Item>
