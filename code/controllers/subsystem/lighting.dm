@@ -48,7 +48,7 @@ SUBSYSTEM_DEF(lighting)
 
 #ifdef USE_INTELLIGENT_LIGHTING_UPDATES
 
-/hook/roundstart/proc/lighting_init_roundstart()
+/legacy_hook/roundstart/proc/lighting_init_roundstart()
 	SSlighting.handle_roundstart()
 	return TRUE
 

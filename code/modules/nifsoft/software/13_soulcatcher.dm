@@ -582,7 +582,7 @@
 
 ///////////////////
 //The catching hook
-/hook/death/proc/nif_soulcatcher(var/mob/living/carbon/human/H)
+/legacy_hook/death/proc/nif_soulcatcher(var/mob/living/carbon/human/H)
 	if(!istype(H) || !H.mind) return TRUE //Hooks must return TRUE
 
 	if(isbelly(H.loc)) //Died in someone
