@@ -2,7 +2,7 @@
 	id = JOB_ID_OUTSIDER
 	title = "Traveler"
 	flag = OUTSIDER
-	departments = list(DEPARTMENT_TRADE)
+	departments = list(DEPARTMENT_CIVILIAN)
 	sorting_order = -1
 	department_flag = CIVILIAN
 	total_positions = -1
