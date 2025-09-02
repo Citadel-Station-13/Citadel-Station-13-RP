@@ -126,6 +126,7 @@ GLOBAL_LIST_EMPTY(sprite_accessory_icon_cache)
 		var/image/rendering
 		// front
 		rendering = image(icon, icon_sidedness > SPRITE_ACCESSORY_SIDEDNESS_NONE? "[state]-front" : "[state]", layer_front)
+		rendering.dir = NONE
 		if(do_colouration && length(colors) >= index)
 			rendering.color = colors[index]
 		// process add layer if needed
@@ -133,6 +134,7 @@ GLOBAL_LIST_EMPTY(sprite_accessory_icon_cache)
 			var/image/adding
 			adding = image(icon, icon_sidedness > SPRITE_ACCESSORY_SIDEDNESS_NONE? "[with_base_state]-add-front" : "[with_base_state]-add", layer_front)
 			adding.blend_mode = BLEND_ADD
+			adding.dir = NONE
 			rendering.overlays += adding
 		// add
 		layers += rendering
@@ -147,6 +149,7 @@ GLOBAL_LIST_EMPTY(sprite_accessory_icon_cache)
 				var/image/adding
 				adding = image(icon, "[with_base_state]-add-behind", layer_behind)
 				adding.blend_mode = BLEND_ADD
+				adding.dir = NONE
 				rendering.overlays += adding
 			// add
 			layers += rendering
