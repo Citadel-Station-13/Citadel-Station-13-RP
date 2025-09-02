@@ -3,7 +3,7 @@
 
 /mob/living/silicon/click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
 	// first, the camera hook
-	if(aiCamera.in_camera_mode)
+	if(aiCamera?.in_camera_mode)
 		aiCamera.camera_mode_off()
 		aiCamera.captureimage(clickchain.target, src, clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
