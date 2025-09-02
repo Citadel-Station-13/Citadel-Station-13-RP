@@ -13,7 +13,7 @@
 
 /datum/role/ghostrole/salvager/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
 	. = ..()
-	to_chat(created, "<i> Welcome on the Skyplanet, Lythios 43a. Occulum always had a small presence here. Now that the blockade is lifted, personal can now be send in this small safehouse. You have a ship available, the ORS (Occulum Radio Shuttle) Silaes, if your coworkers didn't move it. (If they did, feel free to take a voidline racing shuttle). </i>")
+	to_chat(created, "<i> The GCSS Vevalia is ready to roll. We have job guys, we find wreck, and we salvage them, repair them even. Ah, be carefull with larger companies like Nanotrasen, better not antagonise them, however they can make for good clients. Our standing with the FTU is also very good. </i>")
 
 /datum/ghostrole_instantiator/human/player_static/salvager
 	equip_loadout = TRUE
