@@ -234,7 +234,7 @@ export const TGUIProsfabControl = (props: TGUILatheControlProps) => {
                 <Stack.Item>
                   <Section title="Prosthetic Species Select">
                     <Dropdown
-                      options={data.available_species ? data.available_species.sort() : null}
+                      options={data.available_species ? data.available_species.sort() : []}
                       selected={data.selected_species}
                       width="100%"
                       onSelected={(val: any) => act("set_selected_species", { species: val })} />

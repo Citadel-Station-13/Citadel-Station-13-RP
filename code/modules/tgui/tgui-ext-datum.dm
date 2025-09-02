@@ -41,7 +41,23 @@
  * return list Data to be sent to the UI.
  */
 /datum/proc/ui_data(mob/user, datum/tgui/ui)
-	return list() // Not implemented.
+	return list()
+
+/**
+ * Gets nested data to be sent to the UI on first launch.
+ * * Nested data is 2-deep, instead of the usual data deep. The reducer operates on
+ *   lists of the given key, allowing you to replace data in nested lists
+ *   without updating the whole list at once.
+ * * Nested data is an advanced concept that the majority of UIs will never need.
+ *   As such, it is not updated automatically. Use `push_ui_nested_data()` to manually push updates.
+ *
+ * @params
+ * * user - (optional) the mob using the UI
+ * * ui - (optional) the host tgui
+ * @return list of data to send; "key" = list(data), as this is nested data.
+ */
+/datum/proc/ui_nested_data(mob/user, datum/tgui/ui)
+	return list()
 
 /**
  * public

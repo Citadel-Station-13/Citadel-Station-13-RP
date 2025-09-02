@@ -1,5 +1,5 @@
 import { decodeHtmlEntities } from 'tgui-core/string';
-import { Component, createRef, RefObject } from 'react';
+import { Component, createRef, MouseEvent, RefObject } from 'react';
 import { useBackend } from '../../backend';
 import { Box, Button, Flex } from 'tgui-core/components';
 import { Window } from '../../layouts';
@@ -94,7 +94,7 @@ class PaintCanvas extends Component<PaintCanvasProps> {
     }
   }
 
-  eventToCoords(event: MouseEvent) {
+  eventToCoords(event: MouseEvent<HTMLCanvasElement>) {
     const canvas = this.canvasRef.current!;
     const width = this.props.width || canvas.width || 360;
     const height = this.props.height || canvas.height || 360;
@@ -102,12 +102,13 @@ class PaintCanvas extends Component<PaintCanvasProps> {
     const y_resolution = this.props.imageHeight || 36;
     const x_scale = Math.round(width / x_resolution);
     const y_scale = Math.round(height / y_resolution);
-    const x = Math.floor(event.offsetX / x_scale);
-    const y = Math.floor(event.offsetY / y_scale);
+    const rect = canvas.getBoundingClientRect();
+    const x = Math.floor((event.clientX - rect.left) / x_scale);
+    const y = Math.floor((event.clientY - rect.top) / y_scale);
     return { x, y };
   }
 
-  handleStartDrawing(event: MouseEvent) {
+  handleStartDrawing(event: MouseEvent<HTMLCanvasElement>) {
     if (!this.props.editable
       || this.props.drawing_color === undefined
       || this.props.drawing_color === null) {
@@ -129,7 +130,7 @@ class PaintCanvas extends Component<PaintCanvasProps> {
     ctx.fillRect(x, y, 1, 1);
   }
 
-  handleDrawing(event: MouseEvent) {
+  handleDrawing(event: MouseEvent<HTMLCanvasElement>) {
     if (!this.drawing) {
       return;
     }
@@ -137,7 +138,7 @@ class PaintCanvas extends Component<PaintCanvasProps> {
     this.drawPoint(coords.x, coords.y, this.drawing_color);
   }
 
-  handleEndDrawing(event: MouseEvent) {
+  handleEndDrawing(event: MouseEvent<HTMLCanvasElement>) {
     if (!this.drawing) {
       return;
     }

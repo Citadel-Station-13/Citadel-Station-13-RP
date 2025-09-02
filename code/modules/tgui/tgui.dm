@@ -135,7 +135,7 @@
  *
  * * Separate from open() so that open() can be non-blocking.
  */
-/datum/tgui/proc/initialize(data, modules)
+/datum/tgui/proc/initialize(extra_data, extra_nested_data)
 	// todo: this is a blocking proc. src_object can be deleted at any time between the blocking procs.
 	//       we need sane handling of deletion order, of runtimes happen.
 	if(!window.is_ready())
@@ -155,7 +155,7 @@
 	var/list/assets_immediate = list()
 	var/list/assets_deferred = list()
 	// fetch wanted assets
-	// src_object.ui_asset_injection(src, assets_immediate, assets_deferred)
+	src_object.ui_asset_injection(src, assets_immediate, assets_deferred)
 	// send all immediate assets
 	for(var/datum/asset_pack/assetlike as anything in assets_immediate)
 		flush_queue |= window.send_asset(assetlike)
@@ -165,18 +165,18 @@
 	window.send_message("update", get_payload(
 		with_data = TRUE,
 		with_static_data = TRUE,
-		// force_data = data,
-		// force_modules = modules,
+		extra_data = data,
+		extra_nested_data = nested_data,
 	))
 	// if(mouse_hooked)
 	// 	window.set_mouse_macro()
 	// todo: should these hooks be here?
-	// src_object.on_ui_open(user, src)
-	// for(var/datum/module as anything in modules_registered)
-	// 	module.on_ui_open(user, src, TRUE)
-	// // now send deferred asets
-	// for(var/datum/asset_pack/assetlike as anything in assets_deferred)
-	// 	window.send_asset(assetlike)
+	src_object.on_ui_open(user, src)
+	for(var/datum/module as anything in modules_registered)
+		module.on_ui_open(user, src, TRUE)
+	// now send deferred asets
+	for(var/datum/asset_pack/assetlike as anything in assets_deferred)
+		window.send_asset(assetlike)
 	return TRUE
 
 /**
@@ -266,15 +266,14 @@
  *
  * Send a full update to the client (includes static data).
  *
- * optional custom_data list Custom data to send instead of ui_data.
  * optional force bool Send an update even if UI is not interactive.
  */
-/datum/tgui/proc/send_full_update(custom_data, force)
+/datum/tgui/proc/send_full_update(force)
 	if(!user.client || !initialized || closing)
 		return
 	if(!COOLDOWN_FINISHED(src, refresh_cooldown))
 		refreshing = TRUE
-		addtimer(CALLBACK(src, PROC_REF(send_full_update), custom_data, force), COOLDOWN_TIMELEFT(src, refresh_cooldown), TIMER_UNIQUE)
+		addtimer(CALLBACK(src, PROC_REF(send_full_update), force), COOLDOWN_TIMELEFT(src, refresh_cooldown), TIMER_UNIQUE)
 		return
 	refreshing = FALSE
 	var/should_update_data = force || status >= UI_UPDATE
@@ -289,16 +288,13 @@
  *
  * Send a partial update to the client (excludes static data).
  *
- * optional custom_data list Custom data to send instead of ui_data.
  * optional force bool Send an update even if UI is not interactive.
  */
-/datum/tgui/proc/send_update(custom_data, force)
+/datum/tgui/proc/send_update(force)
 	if(!user.client || !initialized || closing)
 		return
 	var/should_update_data = force || status >= UI_UPDATE
-	window.send_message("update", get_payload(
-		custom_data,
-		with_data = should_update_data))
+	window.send_message("update", get_payload(with_data = should_update_data))
 
 /**
  * private
@@ -307,7 +303,7 @@
  *
  * return list
  */
-/datum/tgui/proc/get_payload(custom_data, with_data, with_static_data)
+/datum/tgui/proc/get_payload(with_data, with_static_data, list/extra_data, list/extra_nested_data)
 	var/list/json_data = list()
 	json_data["config"] = list(
 		"title" = title,
@@ -333,35 +329,34 @@
 			"observer" = isobserver(user),
 		),
 	)
-	var/data = custom_data || with_data && src_object.ui_data(user)
+	var/data = custom_data || with_data && src_object.ui_data(user, src)
 	if(data)
 		json_data["data"] = data
-	var/static_data = with_static_data && src_object.ui_static_data(user)
+	var/static_data = with_static_data && src_object.ui_static_data(user, src)
 	if(static_data)
 		json_data["static_data"] = static_data
 	if(src_object.tgui_shared_states)
 		json_data["shared"] = src_object.tgui_shared_states
-	var/list/modules = list()
-	#warn below
+	var/list/nestedData = src_object.ui_nested_data(user, src)
 	// static first
 	if(with_static_data)
 		json_data["static"] = src_object.ui_static_data(user, src)
 		for(var/datum/module as anything in modules_registered)
 			var/id = modules_registered[module]
-			modules[id] = module.ui_static_data(user, src, TRUE)
+			nestedData[id] = module.ui_static_data(user, src, TRUE)
 	if(with_data)
 		json_data["data"] = src_object.ui_data(user, src)
 		for(var/datum/module as anything in (with_static_data? modules_registered : modules_processed))
 			var/id = modules_registered[module]
-			modules[id] = modules[id] | module.ui_data(user, src, TRUE)
-	if(modules)
-		json_data["modules"] = modules
+			nestedData[id] = nestedData[id] | module.ui_data(user, src, TRUE)
+	if(nestedData)
+		json_data["nestedData"] = nestedData
 	if(src_object.tgui_shared_states)
 		json_data["shared"] = src_object.tgui_shared_states
-	if(!isnull(force_data))
-		json_data["data"] = (json_data["data"] || list()) | force_data
-	if(!isnull(force_modules))
-		json_data["modules"] = (json_data["modules"] || list()) | force_modules
+	if(extra_data)
+		json_data["data"] = (json_data["data"] || list()) | extra_data
+	if(extra_nested_data)
+		json_data["nestedData"] = (json_data["nestedData"] || list()) | extra_nested_data
 		#warn ABOVE_HUD_PLANE
 	return json_data
 

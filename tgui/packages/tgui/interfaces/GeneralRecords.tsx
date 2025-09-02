@@ -179,7 +179,9 @@ const GeneralRecordsViewGeneral = (_properties) => {
   }
   return (
     <Fragment>
-      <Box width="50%" float="left">
+      <Box width="50%" style={{
+        float: "left"
+      }}>
         <LabeledList>
           {general.fields.map((field, i) => (
             <LabeledList.Item key={i} label={field.field}>

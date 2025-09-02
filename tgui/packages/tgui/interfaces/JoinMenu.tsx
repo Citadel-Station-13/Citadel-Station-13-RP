@@ -95,21 +95,21 @@ export const JoinMenu = (props) => {
                 {
                   data.ghostroles.map((role) => {
                     return (
-                      <Collapsible key={role.id} title={role.name} color="transparent" buttons={
-                        <>{(role.slots === -1) ? '' : role.slots} <Icon name="user-friends" />
-                          <Button.Confirm
-                            icon="sign-in-alt"
-                            content="Join"
-                            color="transparent"
-                            onClick={() => act('join', { id: role.id, type: "ghostrole" })} />
-                        </>
-                      } headerProps={{
-                        style: { paddingLeft: "5%" },
-                      }}>
-                        <Box>
-                          {role.desc}
-                        </Box>
-                      </Collapsible>
+                      <Box style={{ paddingLeft: "5%" }} >
+                        <Collapsible key={role.id} title={role.name} color="transparent" buttons={
+                          <>{(role.slots === -1) ? '' : role.slots} <Icon name="user-friends" />
+                            <Button.Confirm
+                              icon="sign-in-alt"
+                              content="Join"
+                              color="transparent"
+                              onClick={() => act('join', { id: role.id, type: "ghostrole" })} />
+                          </>
+                        }>
+                          <Box>
+                            {role.desc}
+                          </Box>
+                        </Collapsible>
+                      </Box>
                     );
                   })
                 }
@@ -149,31 +149,32 @@ const JoinFaction = (props: JoinFactionProps) => {
         ordered.map((depName) => {
           const jobs: JoinableJob[] = props.departments[depName];
           return (
-            <Collapsible color="transparent" key={depName} title={depName}
-              headerProps={{
-                style: { marginLeft: "2.5%" },
-              }}>
-              {
-                jobs.map((job) => {
-                  return (
-                    <Collapsible color="transparent" headerProps={{ style: { marginLeft: "7.5%" } }}
-                      key={job.id} title={job.name} buttons={
-                        <>{(job.slots === -1) ? 'Unlimited' : `${job.slots} left`} <Icon name="user-friends" />
-                          <Button.Confirm
-                            icon="sign-in-alt"
-                            content="Join"
-                            color="transparent"
-                            onClick={() => act('join', { id: job.id, type: "job" })} />
-                        </>
-                      }>
-                      <Section style={{ paddingLeft: "5%", paddingRight: "5%" }}>
-                        {job.desc}
-                      </Section>
-                    </Collapsible>
-                  );
-                })
-              }
-            </Collapsible>
+            <Box style={{ marginLeft: "2.5%" }}>
+              <Collapsible color="transparent" key={depName} title={depName}>
+                {
+                  jobs.map((job) => {
+                    return (
+                      <Box style={{ marginLeft: "7.5%" }}>
+                        <Collapsible color="transparent"
+                          key={job.id} title={job.name} buttons={
+                            <>{(job.slots === -1) ? 'Unlimited' : `${job.slots} left`} <Icon name="user-friends" />
+                              <Button.Confirm
+                                icon="sign-in-alt"
+                                content="Join"
+                                color="transparent"
+                                onClick={() => act('join', { id: job.id, type: "job" })} />
+                            </>
+                          }>
+                          <Section style={{ paddingLeft: "5%", paddingRight: "5%" }}>
+                            {job.desc}
+                          </Section>
+                        </Collapsible>
+                      </Box>
+                    );
+                  })
+                }
+              </Collapsible>
+            </Box>
           );
         })
       }

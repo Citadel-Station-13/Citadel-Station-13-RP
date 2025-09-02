@@ -253,7 +253,7 @@ const DataDisk = (props) => {
             fluid
             placeholder="Search for..."
             value={data.search}
-            onInput={(v) => act("search", { search: v })}
+            onChange={(v) => act("search", { search: v })}
             mb={1} />
           <LabeledList>
             {designs.map(item => (

@@ -1,6 +1,5 @@
 import { useBackend } from "../backend";
 import { NtosWindow } from "../layouts";
-import { IdentificationComputerRegions } from "./computers/IdentificationComputer";
 import { NoticeBox, Box, Section, Button } from "tgui-core/components";
 
 export const NtosAccessDecrypter = (props) => {
@@ -64,16 +63,16 @@ export const NtosAccessDecrypter = (props) => {
             </Button>
           </Section>
         ) || (
-          <Section title="Pick access code to decrypt">
-            {regions.length && (
+            <Section title="Pick access code to decrypt">
+              {/* {regions.length && (
               <IdentificationComputerRegions actName="PRG_execute" />
             ) || (
               <Box>
                 Please insert ID card.
               </Box>
-            )}
-          </Section>
-        )}
+            )} */}
+            </Section>
+          )}
       </NtosWindow.Content>
     </NtosWindow>
   );

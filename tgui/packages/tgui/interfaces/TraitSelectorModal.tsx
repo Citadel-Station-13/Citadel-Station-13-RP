@@ -268,7 +268,7 @@ export const TraitSelectorModal = (_) => {
         <Section className="ListInput__Section" fill>
           <Stack fill vertical>
             <Stack.Item grow>
-              <Section fill scrollable tabIndex={0}>
+              <Section fill scrollable>
                 {generateTraitCards()}
               </Section>
             </Stack.Item>
