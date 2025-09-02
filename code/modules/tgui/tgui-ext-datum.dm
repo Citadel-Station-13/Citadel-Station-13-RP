@@ -208,7 +208,6 @@
 	if(ui)
 		ui.push_ui_nested_data(updates)
 
-#warn this was removed in tgui update what do we do with this
 /**
  * public
  *
@@ -296,7 +295,7 @@
  * checks if UIs are open
  */
 /datum/proc/has_open_ui()
-	return length(SStgui.open_uis_by_src[REF(src)])
+	return length(open_uis)
 
 //* Hooks *//
 

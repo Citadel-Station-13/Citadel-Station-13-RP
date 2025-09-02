@@ -165,8 +165,8 @@
 	window.send_message("update", get_payload(
 		with_data = TRUE,
 		with_static_data = TRUE,
-		extra_data = data,
-		extra_nested_data = nested_data,
+		extra_data = extra_data,
+		extra_nested_data = extra_nested_data,
 	))
 	// if(mouse_hooked)
 	// 	window.set_mouse_macro()
@@ -278,7 +278,6 @@
 	refreshing = FALSE
 	var/should_update_data = force || status >= UI_UPDATE
 	window.send_message("update", get_payload(
-		custom_data,
 		with_data = should_update_data,
 		with_static_data = TRUE))
 	COOLDOWN_START(src, refresh_cooldown, TGUI_REFRESH_FULL_UPDATE_COOLDOWN)
@@ -329,7 +328,7 @@
 			"observer" = isobserver(user),
 		),
 	)
-	var/data = custom_data || with_data && src_object.ui_data(user, src)
+	var/data = with_data && src_object.ui_data(user, src)
 	if(data)
 		json_data["data"] = data
 	var/static_data = with_static_data && src_object.ui_static_data(user, src)
@@ -357,7 +356,6 @@
 		json_data["data"] = (json_data["data"] || list()) | extra_data
 	if(extra_nested_data)
 		json_data["nestedData"] = (json_data["nestedData"] || list()) | extra_nested_data
-		#warn ABOVE_HUD_PLANE
 	return json_data
 
 /**

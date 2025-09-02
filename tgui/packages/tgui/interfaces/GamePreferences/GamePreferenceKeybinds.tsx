@@ -8,6 +8,7 @@ import { Box, Button, Dimmer, Section, Stack, Table, Tooltip } from "tgui-core/c
 import { KeyEvent } from "tgui-core/events";
 import { KEY_ALT, KEY_CTRL, KEY_ESCAPE, KEY_SHIFT } from "tgui-core/keycodes";
 import { listenForKeyEvents } from "tgui-core/hotkeys";
+import { keyCodeToByond } from "common/keycodes";
 
 export interface GamePreferenceKeybindMiddlware {
   readonly hotkeyMode: BooleanLike;
@@ -222,10 +223,6 @@ export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenPr
       </Stack>
     </Section>
   );
-};
-
-const keyCodeToByond = (code: number): string => {
-  return IEKeyboardEventKeycodeToBYOND[code];
 };
 
 // todo: why are we not doing KeyListener?
