@@ -72,7 +72,7 @@ const BiogeneratorItems = (props) => {
 
   let has_contents = false;
   let contents = Object.entries(items).map((kv, _i) => {
-    let items_in_cat = Object.entries(kv[1])
+    let items_in_cat = Object.entries(kv[1] as Object)
       .filter(searcher)
       .map(kv2 => {
         kv2[1].affordable = points >= (kv2[1].price / data.build_eff);

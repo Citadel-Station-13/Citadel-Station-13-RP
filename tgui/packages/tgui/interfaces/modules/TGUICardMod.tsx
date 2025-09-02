@@ -3,16 +3,18 @@
  * @license MIT
  */
 
-import { BooleanLike } from "../../../tgui-core/react";
-import { capitalize } from "../../../common/string";
-import { ModuleProps, ModuleData, useModule, useLocalState } from "../../backend";
+import { useLocalState } from "../../backend";
 import { Button, Flex, Input, LabeledList, Section, Tabs } from "tgui-core/components";
-import { SectionProps } from "tgui-core/components/Section";
 import { AccessRegions, AccessTypes } from "../../constants/access";
 import { Modular } from "../../layouts/Modular";
 import { WindowProps } from "../../layouts/Window";
 import { Access, AccessId, AccessListMod } from "../common/Access";
 import { useState } from "react";
+import { ModuleData, useLegacyModule } from "../../legacyModuleSystem";
+import { BooleanLike } from "tgui-core/react";
+import { ModuleProps } from "../../components/LegacyModule";
+import { SectionProps } from "../../components";
+import { capitalize } from "tgui-core/string";
 
 
 interface CardModContext extends ModuleData {
@@ -43,7 +45,7 @@ interface CardModProps extends ModuleProps {
 }
 
 export const TGUICardMod = (props: CardModProps) => {
-  const { data, act } = useModule<CardModContext>();
+  const { data, act } = useLegacyModule<CardModContext>();
   const [mode, setMode] = useState<number>(0);
   const [department, setDepartment] = useState<string | null>(null);
   const windowProps: WindowProps = {

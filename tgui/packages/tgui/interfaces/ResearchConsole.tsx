@@ -1,7 +1,7 @@
 import { toTitleCase } from 'tgui-core/string';
 import { Fragment, useState } from 'react';
 import { useBackend, useLocalState } from '../backend';
-import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section, Tabs, Input, NumberInput, Table, Divider } from "tgui-core/components";
+import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section, Tabs, Input, NumberInput, Table, Divider, Stack } from "tgui-core/components";
 import { Window } from '../layouts';
 
 const ResearchConsoleViewResearch = (props) => {
@@ -253,7 +253,7 @@ const DataDisk = (props) => {
             fluid
             placeholder="Search for..."
             value={data.search}
-            onInput={(e, v) => act("search", { search: v })}
+            onInput={(v) => act("search", { search: v })}
             mb={1} />
           <LabeledList>
             {designs.map(item => (
@@ -278,7 +278,7 @@ const DataDisk = (props) => {
     <Section title={`Inserted Design Disk (${disk.design_count}/${disk.design_cap} stored)`}>
       <Box>
         {disk.stored && (
-          <Stack vertical fluid fill>
+          <Stack vertical fill>
             {disk.ids.map((disk_id) => (
               <Stack.Item key={disk_id}>
                 <Box>
@@ -326,22 +326,12 @@ const DataDisk = (props) => {
             ))}
           </Stack>
         ) || (
-                      <Box>
-                        <Box mb={0.5}>
-                          This disk has no data stored on it.
-                        </Box>
-                        <Button
-                          icon="save"
-                          onClick={() => setSaveDialog(true)}>
-                          Load Design To Disk
-                        </Button>
-                        <Button
-                          icon="eject"
-                          onClick={() => act("eject_design")}>
-                          Eject Disk
-                        </Button>
-                      </Box>
-          <Button
+            <Box>
+              <Box>
+                <Box mb={0.5}>
+                  This disk has no data stored on it.
+                </Box>
+                <Button
                   icon="save"
                   onClick={() => setSaveDialog(true)}>
                   Load Design To Disk
@@ -352,11 +342,22 @@ const DataDisk = (props) => {
                   Eject Disk
                 </Button>
               </Box>
-      )}
-    </Box>
-            </Section >
-          );
-  };
+              <Button
+                icon="save"
+                onClick={() => setSaveDialog(true)}>
+                Load Design To Disk
+              </Button>
+              <Button
+                icon="eject"
+                onClick={() => act("eject_design")}>
+                Eject Disk
+              </Button>
+            </Box>
+          )}
+      </Box>
+    </Section >
+  );
+};
 
 const ResearchConsoleDisk = (props) => {
   const { act, data } = useBackend<any>();
@@ -447,7 +448,7 @@ const ResearchConsoleDestructiveAnalyzer = (props) => {
 };
 
 const ResearchConsoleSettings = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     sync,
@@ -562,7 +563,7 @@ const ResearchConsoleSettings = (props) => {
 };
 
 export const ResearchConsoleProtolathe = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     sync,
@@ -592,7 +593,7 @@ export const ResearchConsoleProtolathe = (props) => {
 };
 
 export const ResearchConsoleImprinter = (props) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>();
 
   const {
     sync,

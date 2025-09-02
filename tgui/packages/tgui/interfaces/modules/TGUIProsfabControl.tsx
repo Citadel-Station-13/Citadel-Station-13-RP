@@ -139,7 +139,7 @@ export const TGUIProsfabControl = (props: TGUILatheControlProps) => {
     <Modular window={windowProps}>
       <Stack vertical fill>
         <Stack.Item>
-          <Stack fluid>
+          <Stack fill>
             <Stack.Item grow={1}>
               <Section title="Resources">
                 <Stack vertical>
@@ -219,7 +219,7 @@ export const TGUIProsfabControl = (props: TGUILatheControlProps) => {
                 <Tabs vertical>
                   {
                     (Array.isArray(data.designs.subcategories[category])) ? (data.designs.subcategories[category].sort((c1, c2) => c1.localeCompare(c2)).map((subcat) => (
-                      <Tabs.Tab key={subcat} fluid color="transparent"
+                      <Tabs.Tab key={subcat} color="transparent"
                         selected={subcat === subcategory}
                         onClick={() => subcategory === subcat ? setSubCategory("") : setSubCategory(subcat)}>
                         {subcat}
@@ -243,7 +243,7 @@ export const TGUIProsfabControl = (props: TGUILatheControlProps) => {
                 <Stack.Item>
                   <Section>
                     <Input placeholder="Search (3+ characters)"
-                      width="100%" value={searchText} onInput={(e, val) => setSearchText(val.toLowerCase())} />
+                      width="100%" value={searchText} onChange={(val) => setSearchText(val.toLowerCase())} />
                   </Section>
                 </Stack.Item>
                 <Stack.Item grow>

@@ -242,12 +242,12 @@ const MedicalRecordsViewGeneral = (_properties) => {
           ))}
         </LabeledList>
       </Box>
-      <Box width="50%" float="right" textAlign="right">
+      <Box width="50%" textAlign="right" style={{ float: "right" }}>
         {!!general.has_photos && (
           general.photos.map((p, i) => (
             <Box
               key={i}
-              display="inline-block"
+              style={{ display: "inline-block" }}
               textAlign="center"
               color="label">
               <img

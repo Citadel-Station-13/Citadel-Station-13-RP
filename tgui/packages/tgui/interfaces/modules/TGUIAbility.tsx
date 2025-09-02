@@ -4,8 +4,8 @@
  */
 
 import { BooleanLike } from "../../../tgui-core/react";
-import { ModuleData, useModule } from "../../backend";
 import { Modular } from "../../layouts/Modular";
+import { ModuleData, useLegacyModule } from "../../legacyModuleSystem";
 
 interface TGUIAbilityProps {
 
@@ -26,7 +26,7 @@ interface TGUIAbilityData extends ModuleData {
 }
 
 export const TGUIAbility = (props: TGUIAbilityProps) => {
-  const { data, act } = useModule<TGUIAbilityData>(context);
+  const { data, act } = useLegacyModule<TGUIAbilityData>();
 
   return (
     <Modular>

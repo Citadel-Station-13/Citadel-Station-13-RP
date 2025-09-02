@@ -101,7 +101,7 @@ const GeneralRecordsList = (_properties) => {
       <Input
         fluid
         placeholder="Search by Name, DNA, or ID"
-        onInput={(value) => setSearchText(value)} />
+        onChange={(value) => setSearchText(value)} />
       <Box mt="0.5rem">
         {records.map((record, i) => (
           <Button

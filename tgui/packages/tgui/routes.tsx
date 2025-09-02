@@ -53,7 +53,7 @@ function RefreshingWindow() {
 }
 
 // Get the component for the current route
-export function getRoutedComponent(): Component {
+export function getRoutedComponent() {
   const { suspended, config } = useBackend();
   const { kitchenSink = false } = useDebug();
 
@@ -74,7 +74,7 @@ export function getRoutedComponent(): Component {
   return getComponentForRoute(name);
 }
 
-export function getComponentForRoute(name: string): Component {
+export function getComponentForRoute(name: string) {
   const interfacePathBuilders = [
     (name: string) => `./${name}.tsx`,
     (name: string) => `./${name}.jsx`,

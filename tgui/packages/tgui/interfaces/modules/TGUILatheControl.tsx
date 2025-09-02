@@ -15,7 +15,8 @@ import { IngredientsAvailable, IngredientsSelected } from "../common/Ingredients
 import { MaterialRender, FullMaterialsContext, MaterialStorage, MATERIAL_STORAGE_UNIT_NAME, renderMaterialAmount } from "../common/Materials";
 import { ReagentContents, ReagentContentsData, REAGENT_STORAGE_UNIT_NAME } from "../common/Reagents";
 import { useState } from "react";
-import { ModuleData } from "../../legacyModuleSystem";
+import { ModuleData, useLegacyModule } from "../../legacyModuleSystem";
+import { useLocalState } from "../../backend";
 
 export interface TGUILatheControlProps {
 
@@ -66,7 +67,7 @@ export const generateDynamicButton = (name, mode, actFunction) => {
 };
 
 export const TGUILatheControl = (props: TGUILatheControlProps) => {
-  const { data, act } = useModule<TGUILatheControlData>(context);
+  const { data, act } = useLegacyModule<TGUILatheControlData>();
 
   const [category, setCategory] = useLocalState<string>(
     `${data.$ref}-category`,
@@ -172,7 +173,6 @@ export const TGUILatheControl = (props: TGUILatheControlProps) => {
                       {
                         !!data.storesMaterials && (
                           <Tabs.Tab
-                            content="Materials"
                             selected={resourcesSelect === "Materials"}
                             onClick={() => setResourcesSelect("Materials")}>
                             Materials
@@ -191,7 +191,6 @@ export const TGUILatheControl = (props: TGUILatheControlProps) => {
                       {
                         !!data.storesItems && (
                           <Tabs.Tab
-                            content="Items"
                             selected={resourcesSelect === "Items"}
                             onClick={() => setResourcesSelect("Items")}>
                             Items
@@ -230,7 +229,7 @@ export const TGUILatheControl = (props: TGUILatheControlProps) => {
                 <Tabs vertical>
                   {
                     data.designs.categories.sort((c1, c2) => c1.localeCompare(c2)).map((cat) => (
-                      <Tabs.Tab key={cat} fluid color="transparent"
+                      <Tabs.Tab key={cat} color="transparent"
                         selected={cat === category}
                         onClick={() => { setCategory(cat); setSubCategory(""); }}>
                         {cat}
@@ -245,7 +244,7 @@ export const TGUILatheControl = (props: TGUILatheControlProps) => {
                 <Tabs vertical>
                   {
                     (Array.isArray(data.designs.subcategories[category])) ? (data.designs.subcategories[category].sort((c1, c2) => c1.localeCompare(c2)).map((subcat) => (
-                      <Tabs.Tab key={subcat} fluid color="transparent"
+                      <Tabs.Tab key={subcat} color="transparent"
                         selected={subcat === subcategory}
                         onClick={() => subcategory === subcat ? setSubCategory("") : setSubCategory(subcat)}>
                         {subcat}
@@ -260,7 +259,7 @@ export const TGUILatheControl = (props: TGUILatheControlProps) => {
                 <Stack.Item>
                   <Section>
                     <Input placeholder="Search (3+ characters)"
-                      width="100%" value={searchText} onInput={(val) => setSearchText(val.toLowerCase())} />
+                      width="100%" value={searchText} onChange={(val) => setSearchText(val.toLowerCase())} />
                   </Section>
                 </Stack.Item>
                 <Stack.Item grow>
@@ -351,7 +350,7 @@ interface LatheQueuedProps {
 }
 
 const LatheQueued = (props: LatheQueuedProps) => {
-  let { data, act } = useModule<TGUILatheControlData>(context);
+  let { data, act } = useLegacyModule<TGUILatheControlData>();
   let progressRender;
   if (props.index === 1 && data.queueActive && props.design !== undefined) {
     progressRender = (
@@ -381,7 +380,7 @@ const LatheQueued = (props: LatheQueuedProps) => {
             icon="plus"
             onClick={() => act('modqueue', { index: props.index, amount: props.entry.amount + 1 })} />
           <NumberInput minValue={1} maxValue={100} step={1} width={3}
-            value={props.entry.amount} onChange={(e, v) => act('modqueue', { index: props.index, amount: v })} />
+            value={props.entry.amount} onChange={(v) => act('modqueue', { index: props.index, amount: v })} />
           <Button
             color="transparent"
             icon="minus"
@@ -445,7 +444,7 @@ const areMaterialsChosen = (mats: Record<string, number>, chosen: Record<string,
 };
 
 const LatheDesign = (props: LatheDesignProps) => {
-  const { data, act, moduleID } = useModule<TGUILatheControlData>(context);
+  const { data, act, moduleID } = useLegacyModule<TGUILatheControlData>();
 
   // materials: key = material id
   let [mats, setMats] = useState<Record<string, string>>({});

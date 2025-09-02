@@ -133,11 +133,11 @@ export const NtosNetChat = (props) => {
                   <Button.Input
                     fluid
                     mt={1}
-                    content={username + '...'}
-                    currentValue={username}
+                    value='username'
+                    buttonText={`${username}...`}
                     onCommit={(value) => act('PRG_changename', {
                       new_name: value,
-                    })} />
+                    })}></Button.Input>
                   {!!can_admin && (
                     <Button
                       fluid
