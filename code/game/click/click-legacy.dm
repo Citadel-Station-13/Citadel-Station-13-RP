@@ -69,11 +69,14 @@
 	client.list_turf(T)
 	return TRUE
 
+/atom/proc/should_list_turf_on_alt_click(mob/user)
+	return isturf(src) || isturf(loc)
+
 // LEGACY PROC, STOP USING THIS
 /atom/proc/AltClick(var/mob/user)
 	if(isAI(user) && !isitem(src) && !isturf(src))
 		return "keep-going"
-	if((isturf(src) || isturf(loc)) && user.altclick_listed_turf(src))
+	if(should_list_turf_on_alt_click(user) && user.altclick_listed_turf(src))
 		return TRUE
 	return "keep-going"
 
