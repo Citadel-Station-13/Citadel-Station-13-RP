@@ -36,7 +36,7 @@ export const Table = (props: TableProps) => {
 
 Table.defaultHooks = pureComponentHooks;
 
-interface TableRowProps extends BoxProps {
+export interface TableRowProps extends BoxProps {
   readonly header?: BooleanLike;
 }
 
@@ -60,7 +60,7 @@ export const TableRow = (props: TableRowProps) => {
 
 TableRow.defaultHooks = pureComponentHooks;
 
-interface TableCellProps extends BoxProps {
+export interface TableCellProps extends BoxProps {
   readonly header?: BooleanLike;
   readonly collapsing?: BooleanLike;
 }

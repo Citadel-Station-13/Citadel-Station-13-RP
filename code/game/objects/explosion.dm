@@ -35,7 +35,7 @@
 		far_dist += devastation_range * 10
 		var/frequency = get_rand_frequency()
 		var/creaking_explosion = FALSE
-		var/on_station = SSmapping.level_trait(epicenter.z, LEGACY_LEVEL_STATION)
+		var/on_station = SSmapping.level_has_trait(epicenter.z, LEGACY_LEVEL_STATION)
 		if(prob(devastation_range*30+heavy_impact_range*5) && on_station) // Huge explosions are near guaranteed to make the station creak and whine, smaller ones might.
 			creaking_explosion = TRUE // prob over 100 always returns true
 		var/far_volume = clamp(far_dist, 30, 50) // Volume is based on explosion size and dist
