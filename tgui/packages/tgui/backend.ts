@@ -397,8 +397,11 @@ const chunkSplitter = {
 /**
  * Sends an action to `ui_act` on `src_object` that this tgui window
  * is associated with.
+ *
+ * TODO: get rid of route_id param if possible otherwise figure out wtf we're doing
+ *       with tgui modules.
  */
-export const sendAct = (action: string, payload: object = {}) => {
+export const sendAct = (action: string, payload: object = {}, route_id?: string | null) => {
   // Validate that payload is an object
   // prettier-ignore
   const isObject = typeof payload === 'object'
@@ -409,9 +412,15 @@ export const sendAct = (action: string, payload: object = {}) => {
     return;
   }
 
+  let messageType = "act/" + action;
+  if (route_id) {
+    payload['$m_id'] = route_id;
+    messageType = "mod/" + action;
+  }
+
   const stringifiedPayload = JSON.stringify(payload);
   const urlSize = Object.entries({
-    type: 'act/' + action,
+    type: messageType,
     payload: stringifiedPayload,
     tgui: 1,
     windowId: Byond.windowId,
@@ -426,14 +435,14 @@ export const sendAct = (action: string, payload: object = {}) => {
     const id = `${Date.now()}`;
     globalStore?.dispatch(backendCreatePayloadQueue({ id, chunks }));
     Byond.sendMessage('oversizedPayloadRequest', {
-      type: 'act/' + action,
+      type: messageType,
       id,
       chunkCount: chunks.length,
     });
     return;
   }
 
-  Byond.sendMessage('act/' + action, payload);
+  Byond.sendMessage(messageType, payload);
 };
 
 type BackendState<TData, NData = {}> = {
