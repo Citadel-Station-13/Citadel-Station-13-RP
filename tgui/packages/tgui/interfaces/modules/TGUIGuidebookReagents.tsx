@@ -12,7 +12,7 @@
  * @license MIT
  */
 
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import { useLocalState, useModule } from "../../backend";
 import { Input, Section, Stack, Tabs } from "tgui-core/components";
 import { Modular } from "../../layouts/Modular";
@@ -75,7 +75,7 @@ interface TGUIGuidebookReaction {
 }
 
 export const TGUIGuidebookReagents = (props) => {
-  let { act, data } = useModule<TGUIGuidebookReagentsData>(context);
+  let { act, data } = useModule<TGUIGuidebookReagentsData>();
   const [activeTab, setActiveTab] = useState<string | null>(null);
   const [searchText, setSearchText] = useState<string | null>(null);
 

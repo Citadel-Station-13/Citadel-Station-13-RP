@@ -20,8 +20,7 @@ export const GasTemperatureSystem = (props) => {
   return (
     <Window
       width={270}
-      height={270}
-      resizeable>
+      height={270}>
       <Window.Content>
         <Section title="Controls" buttons={
           <Button
@@ -33,9 +32,9 @@ export const GasTemperatureSystem = (props) => {
           <LabeledControls>
             <LabeledControls.Item label="Power Level">
               <Knob
-                minValue="0"
-                maxValue="100"
-                stepPixelSize="1"
+                minValue={0}
+                maxValue={100}
+                stepPixelSize={1}
                 value={powerSetting}
                 onChange={(val) => act("setPower", { value: val })}
               />
@@ -61,7 +60,7 @@ export const GasTemperatureSystem = (props) => {
             maxValue={maxGasTemperature}
             fillValue={gasTemperature}
             value={targetGasTemperature}
-            format={value => (gasTemperature + " / " + round(value))}
+            format={value => (gasTemperature + " / " + round(value, 1))}
             unit="K"
             color={gasTemperatureClass}
             onChange={(val) => act("setGasTemperature", { temp: val })} />

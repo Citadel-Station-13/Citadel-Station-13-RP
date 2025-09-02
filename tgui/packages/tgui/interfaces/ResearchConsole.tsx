@@ -246,7 +246,7 @@ const DataDisk = (props) => {
                 icon="arrow-left"
                 content="Back"
                 onClick={() => setSaveDialog(false)} />
-              {<PaginationChevrons target={"design_page"} /> || null}
+              <PaginationChevrons target={"design_page"} />
             </Fragment>
           }>
           <Input
@@ -446,7 +446,7 @@ const ResearchConsoleDestructiveAnalyzer = (props) => {
   );
 };
 
-const ResearchConsoleSettings = (props, context) => {
+const ResearchConsoleSettings = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -561,7 +561,7 @@ const ResearchConsoleSettings = (props, context) => {
   );
 };
 
-export const ResearchConsoleProtolathe = (props, context) => {
+export const ResearchConsoleProtolathe = (props) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -591,7 +591,7 @@ export const ResearchConsoleProtolathe = (props, context) => {
   );
 };
 
-export const ResearchConsoleImprinter = (props, context) => {
+export const ResearchConsoleImprinter = (props) => {
   const { act, data } = useBackend(context);
 
   const {

@@ -55,7 +55,7 @@ export const GeneralRecords = (_properties) => {
         <LoginInfo />
         <TemporaryNotice />
         <GeneralRecordsNavigation />
-        <Section height="calc(100% - 5rem)" flexGrow="1">
+        <Section height="calc(100% - 5rem)" flexGrow={true}>
           {body}
         </Section>
       </Window.Content>
@@ -189,7 +189,7 @@ const GeneralRecordsViewGeneral = (_properties) => {
         <LabeledList>
           {general.fields.map((field, i) => (
             <LabeledList.Item key={i} label={field.field}>
-              <Box height="20px" display="inline-block">
+              <Box height="20px" style={{ display: "inline-block" }}>
                 {field.value}
               </Box>
               {!!field.edit && (

@@ -13,7 +13,7 @@ export interface ModuleData {
  * we're replacing this.
  */
 export const useLegacyModule = <T extends ModuleData>(): {
-  act: (action, params) => void,
+  act: (action, params?) => void,
   data: T,
   moduleID: string | null;
 } => {

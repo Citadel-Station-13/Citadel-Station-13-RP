@@ -16,7 +16,7 @@ const severities = {
 };
 
 const doEdit = (field) => {
-  modalOpen(context, 'edit', {
+  modalOpen('edit', {
     field: field.edit,
     value: field.value,
   });
@@ -128,7 +128,7 @@ const MedicalRecordsList = (_properties) => {
       <Input
         fluid
         placeholder="Search by Name, DNA, or ID"
-        onChange={(_event, value) => act('search', { t1: value })}
+        onChange={(value) => act('search', { t1: value })}
       />
       <Box mt="0.5rem">
         {records.map((record, i) => (

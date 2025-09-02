@@ -16,9 +16,9 @@ export const MiningUser = (props) => {
       {has_id ? (
         <Fragment>
           <Box
-            display="inline-block"
             verticalAlign="middle"
             style={{
+              display: "inline-block",
               float: 'left',
             }}>
             Logged in as {id.name}.<br />

@@ -79,7 +79,7 @@ export const GuestPass = (props) => {
                 content="Issue Pass"
                 onClick={() => act("issue")} />
               <Section title="Access">
-                {sortBy(a => a.area_name)(area).map(a => (
+                {area.sort((a, b) => a.area_name.localeCompare(b.area_name)).map(a => (
                   <Button.Checkbox
                     checked={a.on}
                     content={a.area_name}

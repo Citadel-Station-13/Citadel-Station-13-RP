@@ -1,5 +1,5 @@
+import { LegacyModule } from "../components/LegacyModule";
 import { NtosWindow } from "../layouts";
-import { Module } from "tgui-core/components/Module";
 
 export const NtosIdentificationComputer = (props) => {
   return (
@@ -8,7 +8,7 @@ export const NtosIdentificationComputer = (props) => {
       height={708}
     >
       <NtosWindow.Content scrollable>
-        <Module id="modify" />
+        <LegacyModule id="modify" />
       </NtosWindow.Content>
     </NtosWindow>
   );

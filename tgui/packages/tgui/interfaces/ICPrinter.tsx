@@ -71,14 +71,14 @@ const ICPrinterCategories = (props) => {
   const [categoryTarget, setcategoryTarget] = useSharedState("categoryTarget", null);
 
   const selectedCategory
-    = filter(cat => cat.name === categoryTarget)(categories)[0];
+    = categories.filter(cat => cat.name === categoryTarget)[0];
 
   return (
     <Section title="Circuits">
       <Stack fill>
         <Stack.Item mr={2}>
           <Tabs vertical>
-            {sortBy(cat => cat.name)(categories).map(cat => (
+            {categories.sort((a, b) => (a.name.localeCompare(b.name))).map(cat => (
               <Tabs.Tab
                 selected={categoryTarget === cat.name}
                 onClick={() => setcategoryTarget(cat.name)}

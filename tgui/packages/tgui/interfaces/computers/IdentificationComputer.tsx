@@ -10,6 +10,7 @@ import { Window } from "../../layouts";
 import { IDCard, IDCardOrDefault, IDSlot } from "../common/IDCard";
 import { CrewManifestContent } from "../CrewManifest";
 import { LegacyModule } from "../../components/LegacyModule";
+import { useState } from "react";
 
 interface IdentificationComputerContext {
   printing: BooleanLike;

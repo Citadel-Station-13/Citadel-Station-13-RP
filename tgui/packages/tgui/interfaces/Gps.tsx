@@ -60,7 +60,7 @@ export const Gps = (props) => {
             <LabeledList.Item label="Tag">
               <Input
                 value={data.tag}
-                onChange={(_, value) => act('tag', { tag: value })}
+                onChange={(value) => act('tag', { tag: value })}
               />
             </LabeledList.Item>
             <LabeledList.Item label="Range">

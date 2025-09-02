@@ -20,11 +20,10 @@
  * @license MIT
  */
 
-import React, { Component, createContext } from "react";
-import { useBackend } from "../backend";
-import { directlyRouteComponent } from "../routes";
+import React, { Component, createContext, useContext } from "react";
 import { SectionProps } from ".";
-import { T } from "vitest/dist/chunks/reporters.d.C-cu31ET.js";
+import { getComponentForRoute } from "../routes";
+import { useBackend } from "../backend";
 
 export const LegacyModuleContext = createContext<{
   isModule: boolean;
@@ -47,10 +46,14 @@ export interface ModuleProps {
 
 export class LegacyModule<T extends ModuleProps, S = {}> extends Component<T, S> {
   render() {
-    const routedComponent: Component;
+    const moduleData = useBackend().nestedData[this.props.id as string];
+    const routedComponent: Component = getComponentForRoute(moduleData["$tgui"]);
     return (
-      <LegacyModuleContext value={this.props.id}>
-        <routedComponent></routedComponent>
+      <LegacyModuleContext value={{
+        isModule: true,
+        moduleId: this.props.id,
+      }}>
+        {routedComponent.render()}
       </LegacyModuleContext>
     )
   }

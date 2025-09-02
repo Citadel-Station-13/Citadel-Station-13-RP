@@ -1,9 +1,8 @@
 import { clamp } from 'tgui-core/math';
 import { randomInteger, randomNumber, randomPick, randomProb } from 'common/random';
-import { useDispatch } from 'common/redux';
 import { Component } from 'react';
 import { resolveAsset } from '../assets';
-import { backendSuspendStart, useBackend } from '../backend';
+import { backendSuspendStart, useBackend, useDispatch } from '../backend';
 import { Icon } from 'tgui-core/components';
 import { Window } from '../layouts';
 import { globalEvents } from 'tgui-core/events';
@@ -351,7 +350,7 @@ class FishingMinigame extends Component<
       completion: newCompletion,
     };
 
-    const dispatch = useDispatch(this.context);
+    const dispatch = useDispatch();
 
     if (newCompletion <= 0) {
       this.props.lose();
@@ -391,7 +390,7 @@ class FishingMinigame extends Component<
         <div className="main">
           <div
             className="background"
-            style={{ 'background-image': `url("${background_image}")` }}>
+            style={{ backgroundImage: `url("${background_image}")` }}>
             <div
               className='bait'
               style={{

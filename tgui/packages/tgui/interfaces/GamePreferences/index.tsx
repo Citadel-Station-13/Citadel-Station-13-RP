@@ -122,7 +122,7 @@ export const GamePreferences = (props) => {
 };
 
 const GamePreferencesBody = (props) => {
-  const { act, data } = useBackend<GamePreferencesData>();
+  const { act, data, nestedData } = useBackend<GamePreferencesData>();
 
   let categoryCache = computeGamePreferenceCategoryCache(data.entries);
   let [activeCategory, setActiveCategory] = useState<string>(Object.keys(categoryCache)[0]);
@@ -130,7 +130,7 @@ const GamePreferencesBody = (props) => {
 
   // todo: this is so fucking awful bros please don't make the same mistake on character setup.
   if (activeMiddleware && (typeof activeMiddleware === 'string')) {
-    let middlewareData = getModuleData(context, activeMiddleware);
+    let middlewareData = nestedData[activeMiddleware];
     switch (activeMiddleware) {
       case 'keybindings':
         return (
@@ -189,7 +189,7 @@ const GamePreferenceHeader = (props) => {
 const GamePreferenceFooter = (props: {
   readonly activeCategory: string,
   readonly activeMiddleware: string | null
-}, context) => {
+}) => {
   const { act, data } = useBackend<GamePreferencesData>();
   return (
     <Section>

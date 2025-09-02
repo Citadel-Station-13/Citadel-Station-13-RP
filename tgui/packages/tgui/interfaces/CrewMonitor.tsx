@@ -1,8 +1,6 @@
-import { sortBy } from 'common/collections';
-import { flow } from 'common/fp';
 import { useBackend, useLocalState } from "../backend";
 import { Window } from "../layouts";
-import { NanoMap, Box, Table, Button, Tabs, Icon } from "tgui-core/components";
+import { Box, Table, Button, Tabs, Icon } from "tgui-core/components";
 import { Fragment, useState } from 'react';
 
 const getStatText = cm => {
@@ -42,12 +40,12 @@ export const CrewMonitorContent = (props) => {
   const { act, data, config } = useBackend<any>();
   const [tabIndex, setTabIndex] = useState(0);
 
-  const crew = flow([
-    sortBy(cm => cm.name),
-    sortBy(cm => cm?.x),
-    sortBy(cm => cm?.y),
-    sortBy(cm => cm?.realZ),
-  ])(data.crewmembers || []);
+  const crew = data.crewmembers
+    .filter((c) => !!c)
+    .sort((a, b) => a.name.localCompare(b.name))
+    .sort((a, b) => a.x - b.x)
+    .sort((a, b) => a.y - b.y)
+    .sort((a, b) => a.realZ - b.realZ);
 
   const [zoom, setZoom] = useState(1);
 
@@ -159,22 +157,23 @@ const CrewMonitorMapView = (props) => {
   const { act, config, data } = useBackend<any>();
   const [zoom, setZoom] = useState(1);
   return (
-    <Box height="526px" mb="0.5rem" overflow="hidden">
-      <NanoMap onZoom={v => setZoom(v)}>
-        {data.crewmembers.filter(x =>
-          (x.sensor_type === 3 && ~~x.realZ === ~~config.mapZLevel)
-        ).map(cm => (
-          <NanoMap.Marker
-            key={cm.ref}
-            x={cm.x}
-            y={cm.y}
-            zoom={zoom}
-            icon="circle"
-            tooltip={cm.name + " (" + cm.assignment + ")"}
-            color={getStatColor(cm)}
-          />
-        ))}
-      </NanoMap>
-    </Box>
+    <>Nanomap disabled until further notice.</>
+    // <Box height="526px" mb="0.5rem" overflow="hidden">
+    //   <NanoMap onZoom={v => setZoom(v)}>
+    //     {data.crewmembers.filter(x =>
+    //       (x.sensor_type === 3 && ~~x.realZ === ~~config)
+    //     ).map(cm => (
+    //       <NanoMap.Marker
+    //         key={cm.ref}
+    //         x={cm.x}
+    //         y={cm.y}
+    //         zoom={zoom}
+    //         icon="circle"
+    //         tooltip={cm.name + " (" + cm.assignment + ")"}
+    //         color={getStatColor(cm)}
+    //       />
+    //     ))}
+    //   </NanoMap>
+    // </Box>
   );
 };

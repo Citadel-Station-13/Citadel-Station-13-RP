@@ -509,7 +509,7 @@ const NumberPad = (props) => {
       onClick={() => act("add_hex", { add_hex: char })} />
   ));
 
-  let finalArray = [];
+  let finalArray: any[] = [];
 
   for (let i = 0; i < buttonArray.length; i += 4) {
     finalArray.push(
@@ -1006,17 +1006,17 @@ const WeatherTab = (props) => {
     <Section title="Weather">
       <Section title="Current Conditions">
         <LabeledList>
-          {filter(
-            i => (i.val !== "0") || i.entry === "Pressure" || i.entry === "Temperature"
-          )(aircontents)
-            .map(item => (
-              <LabeledList.Item
-                key={item.entry}
-                label={item.entry}
-                color={getItemColor(item.val, item.bad_low, item.poor_low, item.poor_high, item.bad_high)}>
-                {item.val}{decodeHtmlEntities(item.units)}
-              </LabeledList.Item>
-            ))}
+          {
+            aircontents.filter(i => (i.val !== "0") || i.entry === "Pressure" || i.entry === "Temperature")
+              .map(item => (
+                <LabeledList.Item
+                  key={item.entry}
+                  label={item.entry}
+                  color={getItemColor(item.val, item.bad_low, item.poor_low, item.poor_high, item.bad_high)}>
+                  {item.val}{decodeHtmlEntities(item.units)}
+                </LabeledList.Item>
+              ))
+          }
         </LabeledList>
       </Section>
       <Section title="Weather Reports">

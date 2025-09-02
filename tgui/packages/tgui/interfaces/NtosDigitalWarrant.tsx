@@ -67,7 +67,7 @@ const WarrantList = (props) => {
     allwarrants,
   } = data;
 
-  const ourWarrants = filter(w => w.arrestsearch === type)(allwarrants);
+  const ourWarrants = allwarrants.filter(w => w.arrestsearch === type);
 
   return (
     <Table>

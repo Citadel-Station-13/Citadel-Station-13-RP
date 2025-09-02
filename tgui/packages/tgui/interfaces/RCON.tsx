@@ -95,7 +95,7 @@ const SMESItem = (props) => {
     <Stack vertical>
       <Stack.Item>
         <Stack fill justify="space-between">
-          <Stack.Item flexBasis="40%" fontSize={1.2}>
+          <Stack.Item basis={40} fontSize={1.2}>
             {RCON_tag}
           </Stack.Item>
           <Stack.Item grow={1}>

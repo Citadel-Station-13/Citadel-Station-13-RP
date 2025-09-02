@@ -637,7 +637,7 @@ const DockingConsoleMulti = (props) => {
               <Icon
                 name="door-closed"
                 mb="0.5rem"
-                size="5"
+                size={5}
               /><br />
               No airlocks found.
             </Flex.Item>

@@ -12,6 +12,7 @@ import { AccessRegions, AccessTypes } from "../../constants/access";
 import { Modular } from "../../layouts/Modular";
 import { WindowProps } from "../../layouts/Window";
 import { Access, AccessId, AccessListMod } from "../common/Access";
+import { useState } from "react";
 
 
 interface CardModContext extends ModuleData {
@@ -42,7 +43,7 @@ interface CardModProps extends ModuleProps {
 }
 
 export const TGUICardMod = (props: CardModProps) => {
-  const { data, act } = useModule<CardModContext>(context);
+  const { data, act } = useModule<CardModContext>();
   const [mode, setMode] = useState<number>(0);
   const [department, setDepartment] = useState<string | null>(null);
   const windowProps: WindowProps = {

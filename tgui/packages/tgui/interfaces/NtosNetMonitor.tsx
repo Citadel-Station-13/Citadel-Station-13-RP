@@ -154,7 +154,7 @@ const MainPage = (props) => {
             <NoticeBox>
               NETWORK INCURSION DETECTED
             </NoticeBox>
-            <Box italics>
+            <Box italic>
               Abnormal activity has been detected in the network.
               Check system logs for more information
             </Box>
@@ -184,6 +184,7 @@ const MainPage = (props) => {
                 value={ntnetmaxlogs}
                 minValue={minlogs}
                 maxValue={maxlogs}
+                step={1}
                 width="39px"
                 onChange={(value) => act('updatemaxlogs', {
                   new_number: value,

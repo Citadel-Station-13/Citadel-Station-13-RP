@@ -1,5 +1,4 @@
 import { sortBy } from 'common/collections';
-import { flow } from 'common/fp';
 import { classes } from 'tgui-core/react';
 import { useBackend, useLocalState } from '../backend';
 import { Box, Button, LabeledList, Section, Stack } from 'tgui-core/components';
@@ -36,11 +35,9 @@ type FishCatalogData = {
 export const FishCatalog = (props) => {
   const { act, data } = useBackend<FishCatalogData>();
   const { fish_info, sponsored_by } = data;
-  const fish_by_name = flow([sortBy((fish: FishInfo) => fish.name)])(
-    fish_info || []
-  );
+  const fish_by_name = (fish_info || [])
+    .sort((a, b) => a.name.localeCompare(b.name));
   const [currentFish, setCurrentFish] = useLocalState<FishInfo | null>(
-    context,
     'currentFish',
     null
   );

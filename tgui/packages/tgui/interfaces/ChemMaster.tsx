@@ -437,9 +437,8 @@ const PackagingControls = (props) => {
               selected={style.id === chosen_condi_style}
               textAlign="center"
               color="transparent"
-              title={style.title}
               onClick={() => act('condiStyle', { id: style.id })}>
-              <Box mx={-1} className={style.className} />
+              <Box mx={-1} className={style.className}>{style.title}</Box>
             </Button>
           ))}
         </LabeledList.Item>

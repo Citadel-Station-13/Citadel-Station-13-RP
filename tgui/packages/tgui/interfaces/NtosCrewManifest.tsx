@@ -23,7 +23,7 @@ export const NtosCrewManifest = (props) => {
               disabled={!have_printer}
               onClick={() => act('PRG_print')} />
           )}>
-          {map((entries, department) => (
+          {manifest.map((entries, department) => (
             <Section
               key={department}
 
@@ -43,7 +43,7 @@ export const NtosCrewManifest = (props) => {
                 ))}
               </Table>
             </Section>
-          ))(manifest)}
+          ))}
         </Section>
       </NtosWindow.Content>
     </NtosWindow>

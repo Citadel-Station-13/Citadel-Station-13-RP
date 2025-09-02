@@ -4,6 +4,7 @@
  * @license MIT
  */
 
+import { Component } from 'react';
 import { useBackend } from './backend';
 import { useDebug } from './debug';
 import { LoadingScreen } from './interfaces/common/LoadingScreen';
@@ -52,7 +53,7 @@ function RefreshingWindow() {
 }
 
 // Get the component for the current route
-export function getRoutedComponent() {
+export function getRoutedComponent(): Component {
   const { suspended, config } = useBackend();
   const { kitchenSink = false } = useDebug();
 
@@ -69,8 +70,11 @@ export function getRoutedComponent() {
       return require('./debug').KitchenSink;
     }
   }
-
   const name = config?.interface?.name;
+  return getComponentForRoute(name);
+}
+
+export function getComponentForRoute(name: string): Component {
   const interfacePathBuilders = [
     (name: string) => `./${name}.tsx`,
     (name: string) => `./${name}.jsx`,

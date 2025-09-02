@@ -6,7 +6,6 @@
  */
 
 import { BooleanLike } from "tgui-core/react";
-import { ModuleData, useLocalState, useModule } from "../../backend";
 import { Box, Button, Collapsible, Dropdown, Input, LabeledList, NoticeBox, NumberInput, ProgressBar, Stack, Table, Tabs } from "tgui-core/components";
 import { Section, SectionProps } from "tgui-core/components/Section";
 import { Modular } from "../../layouts/Modular";
@@ -16,6 +15,7 @@ import { IngredientsAvailable, IngredientsSelected } from "../common/Ingredients
 import { MaterialRender, FullMaterialsContext, MaterialStorage, MATERIAL_STORAGE_UNIT_NAME, renderMaterialAmount } from "../common/Materials";
 import { ReagentContents, ReagentContentsData, REAGENT_STORAGE_UNIT_NAME } from "../common/Reagents";
 import { useState } from "react";
+import { ModuleData } from "../../legacyModuleSystem";
 
 export interface TGUILatheControlProps {
 
@@ -74,7 +74,6 @@ export const TGUILatheControl = (props: TGUILatheControlProps) => {
   );
 
   const [subcategory, setSubCategory] = useLocalState<string>(
-    context,
     `${data.$ref}-subcategory`,
     ""
   );

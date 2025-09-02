@@ -7,6 +7,7 @@ import { ModuleData, useBackend, useLocalState } from "../../backend";
 import { Stack, Tabs } from "tgui-core/components";
 import { Module } from "tgui-core/components/Module";
 import { Window } from "../../layouts";
+import { useState } from "react";
 
 interface TGUIGuidebookContext {
   // module id to name

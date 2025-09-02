@@ -1,6 +1,6 @@
 import { DmIcon, Icon } from 'tgui-core/components';
 
-import { JOB2ICON } from '../common/JobToIcon';
+// import { JOB2ICON } from '../common/JobToIcon';
 import { Antagonist, Observable } from './types';
 
 type Props = {
@@ -43,7 +43,8 @@ export function JobIcon(props: Props) {
   return (
     <div className="JobIcon">
       {icon === 'borg' ? (
-        <Icon color="lightblue" name={JOB2ICON[usedJob]} ml={0.3} mt={0.4} />
+        // <Icon color="lightblue" name={JOB2ICON[usedJob]} ml={0.3} mt={0.4} />
+        <Icon color="lightblue" name={"Assistant"} ml={0.3} mt={0.4} />
       ) : (
         <DmIcon
           icon={iconSettings.dmi}

@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { useBackend, useLocalState } from "../backend";
 import { Box, Button, LabeledList, ProgressBar, Modal, Section, Dropdown, AnimatedNumber, NoticeBox, Table } from "tgui-core/components";
 import { Window } from "../layouts";
@@ -31,7 +31,7 @@ export const NIF = (props) => {
   } = data;
 
   const [settingsOpen, setSettingsOpen] = useState(false);
-  const [viewingModule, setViewing] = useState(null);
+  const [viewingModule, setViewing] = useState<any>(null);
 
   return (
     <Window theme={theme} width={500} height={400}>

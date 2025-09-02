@@ -46,7 +46,7 @@ export const GasPump = (props) => {
               onClick={() => act("power")} />
           }>
           <LabeledControls>
-            <LabeledControls.Item>
+            <LabeledControls.Item label="Quick Controls">
               <Button
                 icon="compress-arrows-alt"
                 content="MIN"

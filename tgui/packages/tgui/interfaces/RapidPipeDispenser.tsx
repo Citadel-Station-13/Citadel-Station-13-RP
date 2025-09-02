@@ -210,7 +210,7 @@ const PipeTypeSection = (props) => {
   const [
     categoryName,
     setCategoryName,
-  ] = useLocalState('categoryName');
+  ] = useLocalState('categoryName', "");
   const shownCategory = categories
     .find(category => category.cat_name === categoryName)
     || categories[0];
@@ -234,11 +234,10 @@ const PipeTypeSection = (props) => {
           ellipsis
           checked={recipe.selected}
           content={recipe.pipe_name}
-          title={recipe.pipe_name}
           onClick={() => act('pipe_type', {
             pipe_type: recipe.pipe_index,
             category: shownCategory.cat_name,
-          })} />
+          })}>{recipe.pipe_name}</Button.Checkbox>
       ))}
     </Section>
   );
