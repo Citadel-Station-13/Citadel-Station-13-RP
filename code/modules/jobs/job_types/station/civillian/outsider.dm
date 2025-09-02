@@ -2,7 +2,7 @@
 	id = JOB_ID_OUTSIDER
 	title = "Traveler"
 	flag = OUTSIDER
-	departments = list(DEPARTMENT_CIVILIAN)
+	departments = list(DEPARTMENT_TRADE)
 	sorting_order = -1
 	department_flag = CIVILIAN
 	total_positions = -1
@@ -11,6 +11,7 @@
 	supervisors = "Nobody !"
 	selection_color = "#515151"
 	outfit_type = /datum/outfit/job/station/outsider
+	offmap_spawn = TRUE
 	alt_titles = list(
 		"Contractor" = /datum/prototype/struct/alt_title/contractor,
 		"Freelancer" = /datum/prototype/struct/alt_title/freelancer,
@@ -32,7 +33,7 @@
 	pda_slot = SLOT_ID_BELT
 	pda_type = /obj/item/pda
 	flags = OUTFIT_HAS_BACKPACK|OUTFIT_COMPREHENSIVE_SURVIVAL
-	backpack_contents = list(/obj/item/spacecash/c200 = 1)
+	backpack_contents = list(/obj/item/spacecash/c200 = 2)
 
 /datum/prototype/struct/alt_title/contractor
 	title = "Contractor"
