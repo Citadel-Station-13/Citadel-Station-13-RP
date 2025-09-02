@@ -539,7 +539,7 @@
  *
  * @return TRUE if data was sent, FALSE otherwise.
  */
-/datum/tgui/proc/push_nested_data(list/updates, force)
+/datum/tgui/proc/push_ui_nested_data(list/updates, force)
 	if(isnull(user.client) || !initialized || closing)
 		return FALSE
 	if(!force && status < UI_UPDATE)
@@ -590,7 +590,7 @@
 	if(!isnull(ui) && ui != src)
 		return
 	// todo: this is force because otherwise static data can be desynced. should static data be on another proc instead?
-	push_nested_data(
+	push_ui_nested_data(
 		updates = list(
 			(modules_registered[source]) = data,
 		),
