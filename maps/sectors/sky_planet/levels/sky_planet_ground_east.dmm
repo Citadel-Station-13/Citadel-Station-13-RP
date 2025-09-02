@@ -24,6 +24,12 @@
 /obj/machinery/mech_recharger,
 /turf/simulated/floor/holofloor/reinforced,
 /area/sector/sky_planet/rock)
+"bm" = (
+/obj/effect/floor_decal/industrial/danger{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
+/area/sector/sky_planet/ground)
 "bv" = (
 /obj/structure/shuttle/engine/propulsion{
 	dir = 8
@@ -55,6 +61,12 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/freezer,
 /area/sector/sky_planet/poi)
+"cG" = (
+/obj/effect/floor_decal/industrial/danger{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/dirt/outdoors,
+/area/sector/sky_planet/ground)
 "cU" = (
 /obj/effect/floor_decal/corner/navblue/border,
 /obj/machinery/body_scanconsole{
@@ -1363,7 +1375,7 @@ iV
 iV
 iV
 iV
-iV
+nf
 iV
 iV
 iV
@@ -1751,7 +1763,7 @@ iV
 iV
 iV
 rf
-iV
+nf
 iV
 iV
 iV
@@ -1944,8 +1956,8 @@ iV
 iV
 iV
 iV
-iV
-iV
+nf
+nf
 iV
 iV
 iV
@@ -2138,9 +2150,9 @@ iV
 iV
 iV
 iV
+nf
 iV
-iV
-iV
+nf
 iV
 iV
 je
@@ -2332,9 +2344,9 @@ iV
 iV
 iV
 iV
-iV
-iV
-iV
+nf
+nf
+nf
 iV
 iV
 je
@@ -2526,8 +2538,8 @@ iV
 iV
 KK
 iV
-iV
-iV
+nf
+nf
 iV
 iV
 je
@@ -2721,7 +2733,7 @@ iV
 iV
 iV
 iV
-iV
+nf
 iV
 iV
 je
@@ -2915,7 +2927,7 @@ iV
 iV
 iV
 iV
-iV
+nf
 iV
 iV
 je
@@ -3109,7 +3121,7 @@ iV
 iV
 iV
 iV
-iV
+nf
 iV
 iV
 je
@@ -3691,7 +3703,7 @@ nf
 nf
 nf
 Ma
-uT
+iV
 BO
 uT
 sA
@@ -3885,7 +3897,7 @@ rX
 rX
 rX
 nf
-nf
+cG
 nf
 iV
 iV
@@ -4079,7 +4091,7 @@ iV
 iV
 rX
 rX
-rX
+fC
 nf
 nf
 iV
@@ -4273,7 +4285,7 @@ iV
 nf
 nf
 nf
-nf
+bm
 rX
 nf
 nf
@@ -4467,7 +4479,7 @@ ot
 EF
 uT
 sA
-nf
+iV
 nf
 rX
 rX
@@ -5049,7 +5061,7 @@ je
 iV
 iV
 iV
-iV
+nf
 iV
 iV
 iV
@@ -5243,7 +5255,7 @@ je
 iV
 iV
 iV
-iV
+nf
 iV
 iV
 je
@@ -5436,8 +5448,8 @@ je
 je
 iV
 iV
-iV
-rf
+nf
+nf
 iV
 iV
 je
@@ -5630,8 +5642,8 @@ je
 je
 iV
 iV
-iV
-iV
+nf
+nf
 iV
 iV
 je
@@ -5824,8 +5836,8 @@ je
 je
 iV
 aH
-iV
-iV
+nf
+nf
 iV
 iV
 je
@@ -6019,7 +6031,7 @@ je
 iV
 iV
 iV
-iV
+nf
 iV
 iV
 je
@@ -6601,7 +6613,7 @@ iV
 iV
 iV
 iV
-iV
+je
 je
 je
 iV
@@ -6794,7 +6806,7 @@ iV
 iV
 iV
 iV
-iV
+je
 je
 je
 iV
@@ -7183,7 +7195,7 @@ iV
 iV
 je
 je
-iV
+fC
 iV
 iV
 iV
@@ -7378,7 +7390,7 @@ je
 je
 je
 iV
-iV
+nf
 iV
 iV
 iV
@@ -7571,8 +7583,8 @@ je
 je
 je
 iV
-iV
-iV
+nf
+nf
 iV
 iV
 iV
@@ -7765,8 +7777,8 @@ je
 je
 iV
 iV
-iV
-iV
+nf
+nf
 iV
 iV
 iV
@@ -7958,8 +7970,8 @@ je
 je
 iV
 iV
-iV
-iV
+nf
+nf
 iV
 KK
 iV
@@ -8152,8 +8164,8 @@ iV
 iV
 iV
 iV
-iV
-iV
+nf
+nf
 HG
 iV
 iV
@@ -8346,8 +8358,8 @@ iV
 iV
 iV
 iV
-iV
-iV
+nf
+nf
 iV
 iV
 iV
@@ -8540,8 +8552,8 @@ iV
 iV
 iV
 iV
-iV
-iV
+nf
+nf
 iV
 iV
 iV
@@ -8734,7 +8746,7 @@ iV
 iV
 iV
 KK
-iV
+nf
 iV
 iV
 rf
@@ -8928,9 +8940,9 @@ rf
 iV
 iV
 iV
+nf
 iV
-iV
-iV
+nf
 iV
 iV
 sy
@@ -9124,7 +9136,7 @@ iV
 iV
 iV
 iV
-iV
+nf
 iV
 iV
 iV

@@ -15088,8 +15088,8 @@
 	icon_state = "1-2"
 	},
 /obj/structure/catwalk,
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 1
 	},
 /turf/simulated/floor,
 /area/tradeport/pads)
@@ -15240,8 +15240,8 @@
 /area/shuttle/adventurer)
 "aOc" = (
 /obj/structure/catwalk,
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 1
 	},
 /turf/simulated/floor,
 /area/tradeport/pads)
@@ -18490,8 +18490,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "aWU" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 10
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 4
 	},
 /turf/simulated/floor,
 /area/tradeport/pads)
@@ -18993,10 +18993,8 @@
 "aYu" = (
 /obj/structure/cable/yellow,
 /obj/structure/catwalk,
-/obj/machinery/power/apc/alarms_hidden/south_mount{
-	cell_type = /obj/item/cell/super;
-	req_access = list(160)
-	},
+/obj/machinery/power/apc/alarms_hidden/west_mount,
+/obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor,
 /area/tradeport/pads)
 "aYv" = (
@@ -19241,6 +19239,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor,
 /area/tradeport/pads)
 "aZc" = (
@@ -19701,6 +19700,10 @@
 	},
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport/commons)
+"bll" = (
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/turf/simulated/floor,
+/area/tradeport/pads)
 "blL" = (
 /turf/simulated/wall/wood,
 /area/sector/nebula_tradeport/motel/sauna)
@@ -20020,6 +20023,15 @@
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/steel,
 /area/tradeport/commons)
+"cdC" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	dir = 1;
+	frequency = 1380;
+	id_tag = "trade_docks_3"
+	},
+/obj/map_helper/airlock/atmos/chamber_pump,
+/turf/simulated/floor,
+/area/tradeport/pads)
 "cer" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/curtain/open/black,
@@ -21423,6 +21435,11 @@
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/commons)
+"fEr" = (
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor,
+/area/tradeport/pads)
 "fES" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 8
@@ -21630,6 +21647,19 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cafeteria)
+"gjU" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	dir = 1;
+	frequency = 1380;
+	id_tag = "trade_docks_3"
+	},
+/obj/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/sensor/chamber_sensor,
+/obj/machinery/airlock_sensor{
+	pixel_x = -25
+	},
+/turf/simulated/floor,
+/area/tradeport/pads)
 "gkq" = (
 /obj/machinery/holosign/bar{
 	id = "tradersign2"
@@ -21662,6 +21692,15 @@
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/scoophead/main)
+"gsA" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/embedded_controller/radio/airlock/airlock_controller{
+	frequency = 1380;
+	id_tag = "trade_docks_3";
+	pixel_x = 26
+	},
+/turf/simulated/floor,
+/area/tradeport/pads)
 "gxH" = (
 /obj/structure/metal_edge,
 /obj/structure/railing/grey{
@@ -22615,6 +22654,14 @@
 /obj/machinery/meter,
 /turf/simulated/floor/plating,
 /area/tradeport/commons)
+"iQw" = (
+/obj/effect/shuttle_landmark{
+	docking_controller = "trade_docks_3";
+	landmark_tag = "nebula_dock_3";
+	name = "Nebula Pad South Dock (SDF)"
+	},
+/turf/space,
+/area/space)
 "iQK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -23130,6 +23177,19 @@
 	},
 /turf/simulated/floor/carpet/turcarpet,
 /area/sector/nebula_tradeport/motel)
+"kmw" = (
+/obj/machinery/door/airlock/glass_external{
+	name = "Nebula Gas - External Access"
+	},
+/obj/map_helper/airlock/door/ext_door,
+/obj/machinery/access_button/airlock_exterior{
+	frequency = 1380;
+	master_tag = "trade_docks_3";
+	name = "external access button";
+	pixel_x = -23
+	},
+/turf/simulated/floor,
+/area/tradeport/pads)
 "koU" = (
 /obj/machinery/camera{
 	dir = 1
@@ -23543,6 +23603,19 @@
 	},
 /turf/simulated/wall/wood/hardwood,
 /area/sector/nebula_tradeport/motel/room6)
+"lrO" = (
+/obj/machinery/door/airlock/glass_external{
+	name = "Nebula Gas - External Access"
+	},
+/obj/map_helper/airlock/door/ext_door,
+/obj/machinery/access_button/airlock_exterior{
+	frequency = 1380;
+	master_tag = "trade_docks_3";
+	name = "external access button";
+	pixel_x = 22
+	},
+/turf/simulated/floor,
+/area/tradeport/pads)
 "lsj" = (
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 8
@@ -24143,6 +24216,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/wood,
 /area/tradeport/cafeteria)
+"mTg" = (
+/obj/machinery/atmospherics/pipe/tank/air,
+/turf/simulated/floor,
+/area/tradeport/pads)
 "mUJ" = (
 /obj/structure/sink{
 	pixel_y = 19
@@ -24458,6 +24535,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/scoophead/engineering)
+"nSl" = (
+/obj/effect/shuttle_landmark{
+	landmark_tag = "nebula_dock_3sdf";
+	name = "Nebula Pad South Dock"
+	},
+/turf/space,
+/area/space)
 "nUT" = (
 /obj/structure/bed/chair/sofa/red/corner{
 	dir = 8
@@ -25568,6 +25652,14 @@
 	},
 /turf/simulated/floor,
 /area/tradeport/pads)
+"rgJ" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor,
+/area/tradeport/pads)
 "rit" = (
 /obj/effect/floor_decal/corner/blue/border,
 /obj/structure/cable/yellow{
@@ -26220,6 +26312,20 @@
 	},
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport/commons)
+"toB" = (
+/obj/machinery/door/airlock/glass_external{
+	name = "Nebula Gas - External Access"
+	},
+/obj/map_helper/airlock/door/int_door,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/access_button/airlock_interior{
+	frequency = 1380;
+	master_tag = "trade_docks_3";
+	name = "internal access button";
+	pixel_x = 25
+	},
+/turf/simulated/floor,
+/area/tradeport/pads)
 "trw" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 4
@@ -27735,6 +27841,20 @@
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/safarizoo)
+"xZJ" = (
+/obj/machinery/door/airlock/glass_external{
+	name = "Nebula Gas - External Access"
+	},
+/obj/map_helper/airlock/door/int_door,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/access_button/airlock_interior{
+	frequency = 1380;
+	master_tag = "trade_docks_3";
+	name = "internal access button";
+	pixel_x = -24
+	},
+/turf/simulated/floor,
+/area/tradeport/pads)
 "ycq" = (
 /obj/structure/bed/chair/sofa/right,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -34049,7 +34169,7 @@ aDh
 aDh
 aDh
 aDh
-aDh
+ahn
 aDh
 aDh
 aDh
@@ -47834,7 +47954,7 @@ aDh
 aDh
 aDh
 aDh
-aDh
+aiw
 aDh
 aDh
 aDh
@@ -55573,7 +55693,7 @@ asX
 aNk
 aDh
 aDh
-aYj
+aDh
 aDh
 aDh
 aDh
@@ -56151,9 +56271,9 @@ aNE
 aia
 aia
 aia
-aNk
-aNk
-aDh
+aia
+bll
+aia
 aDh
 aDh
 aDh
@@ -56342,10 +56462,14 @@ aVt
 aVt
 aVt
 aNG
-aVt
+rgJ
 aYu
-aia
-aNk
+xZJ
+gjU
+aTr
+kmw
+aDh
+iQw
 aDh
 aDh
 aDh
@@ -56363,11 +56487,7 @@ aDh
 aDh
 aDh
 aDh
-aDh
-aDh
-aDh
-aDh
-aDh
+nSl
 aDh
 aDh
 aDh
@@ -56536,12 +56656,12 @@ aur
 aur
 aur
 aOc
-aur
+fEr
 aZb
-aia
-aNk
-aDh
-aDh
+toB
+gsA
+cdC
+lrO
 aDh
 aDh
 aDh
@@ -56733,9 +56853,9 @@ aRZ
 aia
 aia
 aia
-aNk
-aDh
-aDh
+aia
+bll
+aia
 aDh
 aDh
 aDh
@@ -57311,7 +57431,7 @@ akf
 akf
 akf
 aia
-aTr
+mTg
 aWU
 aKb
 aia
@@ -59675,7 +59795,7 @@ aDh
 aDh
 aDh
 aDh
-aDh
+aYj
 aDh
 aDh
 aDh
