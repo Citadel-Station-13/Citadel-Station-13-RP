@@ -75,13 +75,12 @@
 		return CLICKCHAIN_FULL_BLOCKED | CLICKCHAIN_DID_SOMETHING
 
 	// mostly legacy code
-	var/mob/living/carbon/human/H = clickchain.performer
-	if(!istype(H))
-		return NONE
-	if(legacy_unarmed_miss_hook(H))
-		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_ATTACK_MISSED
-	var/mob/living/L = H
-	add_attack_logs(H,src,"Disarmed")
+	var/mob/living/L = clickchain.performer
+	if(istype(L, /mob/living/carbon/human))
+		var/mob/living/carbon/human/H = L
+		if(legacy_unarmed_miss_hook(H))
+			return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_ATTACK_MISSED
+	add_attack_logs(L,src,"Disarmed")
 	L.do_attack_animation(src)
 
 	if(w_uniform)
@@ -154,13 +153,12 @@
 		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_FULL_BLOCKED
 
 	// mostly legacy code
-	var/mob/living/carbon/human/H = clickchain.performer
-	if(!istype(H))
-		return NONE
-	if(legacy_unarmed_miss_hook(H))
-		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_ATTACK_MISSED
-	var/datum/gender/TT = GLOB.gender_datums[H.get_visible_gender()]
-	var/mob/living/L = H
+	var/mob/living/L = clickchain.performer
+	if(istype(L, /mob/living/carbon/human))
+		var/mob/living/carbon/human/H = L
+		if(legacy_unarmed_miss_hook(H))
+			return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_ATTACK_MISSED
+	var/datum/gender/TT = GLOB.gender_datums[L.get_visible_gender()]
 	if(L == src || anchored)
 		return NONE
 	for(var/obj/item/grab/G in src.grabbed_by)
@@ -179,7 +177,7 @@
 	L.put_in_active_hand(G)
 	LAssailant = L
 
-	H.do_attack_animation(src)
+	L.do_attack_animation(src)
 	playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 	visible_message("<span class='warning'>[L] has grabbed [src] [(L.zone_sel.selecting == BP_L_HAND || L.zone_sel.selecting == BP_R_HAND)? "by [(gender==FEMALE)? "her" : ((gender==MALE)? "his": "their")] hands": "passively"]!</span>")
 
