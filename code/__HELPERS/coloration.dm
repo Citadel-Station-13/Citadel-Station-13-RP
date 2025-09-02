@@ -1,9 +1,11 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 Citadel Station developers.          *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /proc/unpack_coloration_string(str)
 	RETURN_TYPE(/list)
 	var/list/fragments = splittext(str, "#")
+	if(!length(fragments))
+		return list()
 	fragments.Cut(1, 2)
 	return fragments
 

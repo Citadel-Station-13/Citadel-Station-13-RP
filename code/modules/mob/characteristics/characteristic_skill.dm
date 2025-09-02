@@ -83,9 +83,13 @@ GLOBAL_LIST_INIT(characteristics_skills, _create_characteristics_skills())
 
 /datum/characteristic_skill/proc/compute_caches()
 	var/total = 0
+	total += cost_novice
 	total_cost_novice = round(total, 1)
+	total += cost_trained
 	total_cost_trained = round(total, 1)
+	total += cost_experienced
 	total_cost_experienced = round(total, 1)
+	total += cost_professional
 	total_cost_professional = round(total, 1)
 
 /datum/characteristic_skill/proc/level_description(level)
