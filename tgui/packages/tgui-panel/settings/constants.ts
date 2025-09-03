@@ -18,10 +18,10 @@ export const SETTINGS_TABS = [
     id: 'chatPage',
     name: 'Chat Tabs',
   },
-  {
-    id: 'statPanel',
-    name: 'Stat Panel',
-  },
+  // {
+  //   id: 'statPanel',
+  //   name: 'Stat Panel',
+  // },
 ];
 
 export const FONTS_DISABLED = 'Default';

@@ -17,6 +17,8 @@
 	set instant = TRUE
 	set hidden = TRUE
 
+	to_chat(world, "keyDown [_key]")
+
 	if(!preferences.initialized)
 		return
 
@@ -98,6 +100,8 @@
 	set instant = TRUE
 	set hidden = TRUE
 
+	to_chat(world, "keyUp [_key]")
+
 	client_keysend_amount += 1
 
 	var/cache = client_keysend_amount
@@ -137,7 +141,7 @@
 
 	// We don't do full key for release, because for mod keys you
 	// can hold different keys and releasing any should be handled by the key binding specifically
-	for (var/kb_name in preferences?.keybindings[_key])
+	for (var/kb_name in preferences?.keybindings?[_key])
 		var/datum/keybinding/kb = GLOB.keybindings_by_name[kb_name]
 		if(kb.can_use(src) && kb.up(src))
 			break

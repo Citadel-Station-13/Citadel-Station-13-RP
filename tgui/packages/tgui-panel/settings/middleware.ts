@@ -124,7 +124,7 @@ export function settingsMiddleware(store) {
 
     const settings = selectSettings(store.getState());
 
-    if (importSettings.type) {
+    if (type === importSettings.type) {
       setClientTheme(settings.theme);
     }
 

@@ -58,7 +58,7 @@ function setupApp() {
     keyUpVerb: 'KeyUp',
     keyDownVerb: 'KeyDown',
     // In the future you could send a winget here to get mousepos/size from the map here if it's necessary
-    verbParamsFn: (verb, key) => `${verb} "${key}" 0 0 0 0`,
+    verbParamsFn: (verb, key) => `${verb} "${key}"`,
   });
   captureExternalLinks();
 
@@ -71,7 +71,13 @@ function setupApp() {
   if (import.meta.webpackHot) {
     setupHotReloading();
     import.meta.webpackHot.accept(
-      ['./debug', './layouts', './routes', './App'],
+      [
+        './backend',
+        './debug',
+        './layouts',
+        './routes',
+        './App',
+      ],
       () => {
         render(<App />);
       },

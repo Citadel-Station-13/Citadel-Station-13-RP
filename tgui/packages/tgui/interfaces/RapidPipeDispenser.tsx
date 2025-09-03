@@ -170,8 +170,8 @@ const PreviewSelect = (props) => {
           onClick={() => act('setdir', {
             dir: preview.dir,
             flipped: preview.flipped,
-          })}>
-          {preview.dir_name}
+          })}
+          tooltip={preview.dir_name}>
           <Box
             className={classes([
               'pipes32x32',

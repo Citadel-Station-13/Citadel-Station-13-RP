@@ -78,12 +78,12 @@ export const backendReducer = (state = initialState, action) => {
       ...payload.data,
     };
     // Merge nested data
-    const nestdData = {
+    const nestedData = {
       ...state.nestedData,
     };
-    if (payload.nestdData) {
+    if (payload.nestedData) {
       for (let id of Object.keys(payload.nestedData)) {
-        nestdData[id] = {
+        nestedData[id] = {
           ...state.nestedData[id],
           ...payload.nestedData[id],
         };
@@ -106,7 +106,7 @@ export const backendReducer = (state = initialState, action) => {
       ...state,
       config,
       data,
-      nestdData,
+      nestedData,
       shared,
       suspended: false,
     };
@@ -128,8 +128,8 @@ export const backendReducer = (state = initialState, action) => {
       ...state.nestedData,
     };
     for (let id of Object.keys(payload)) {
-      state[id] = {
-        ...state[id],
+      mergedNestedData[id] = {
+        ...mergedNestedData[id],
         ...payload[id],
       };
     }

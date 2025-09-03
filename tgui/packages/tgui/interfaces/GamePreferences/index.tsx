@@ -8,11 +8,11 @@
  * @file
  * @license MIT
  */
-import { ReactNode, useState } from "react";
+import { ReactNode } from "react";
 import { Button, Flex, Section, Stack, Tooltip } from "tgui-core/components";
 import { BooleanLike } from "tgui-core/react";
 
-import { useBackend } from "../../backend";
+import { useBackend, useLocalState } from "../../backend";
 import { Window } from "../../layouts";
 import { GamePreferenceEntry, GamePreferenceEntrySchema } from "./GamePreferenceEntry";
 import { GamePreferenceKeybindMiddlware, GamePreferenceKeybindScreen } from "./GamePreferenceKeybinds";
@@ -32,8 +32,8 @@ const GamePreferencesTabs = (props) => {
   const { act, data } = useBackend<GamePreferencesData>();
 
   let categoryCache = computeGamePreferenceCategoryCache(data.entries);
-  let [activeCategory, setActiveCategory] = useState<string>(Object.keys(categoryCache)[0]);
-  let [activeMiddleware, setActiveMiddleware] = useState<string | null>(null);
+  let [activeCategory, setActiveCategory] = useLocalState<string>('category', Object.keys(categoryCache)[0]);
+  let [activeMiddleware, setActiveMiddleware] = useLocalState<string | null>('middleware', null);
   let tabs: ReactNode[] = [];
   Object.keys(categoryCache).forEach((cat) => tabs.push(
     <Stack.Item grow={1}>
@@ -93,13 +93,13 @@ export const GamePreferences = (props) => {
   const { act, data } = useBackend<GamePreferencesData>();
 
   let categoryCache = computeGamePreferenceCategoryCache(data.entries);
-  let [activeCategory, setActiveCategory] = useState<string>(Object.keys(categoryCache)[0]);
-  let [activeMiddleware, setActiveMiddleware] = useState<string | null>(null);
+  let [activeCategory, setActiveCategory] = useLocalState<string>('category', Object.keys(categoryCache)[0]);
+  let [activeMiddleware, setActiveMiddleware] = useLocalState<string | null>('middleware', null);
 
   // sigh
   // this is shitcode
   // todo: refactor game prefs ui again
-  const [activeCapture, setActiveCapture] = useState<ReactNode | null>(null);
+  const [activeCapture, setActiveCapture] = useLocalState<ReactNode | null>('keybindCapture', null);
 
   return (
     <Window width={600} height={800} title="Game Preferences">
@@ -126,8 +126,8 @@ const GamePreferencesBody = (props) => {
   const { act, data, nestedData } = useBackend<GamePreferencesData>();
 
   let categoryCache = computeGamePreferenceCategoryCache(data.entries);
-  let [activeCategory, setActiveCategory] = useState<string>(Object.keys(categoryCache)[0]);
-  let [activeMiddleware, setActiveMiddleware] = useState<string | null>(null);
+  let [activeCategory, setActiveCategory] = useLocalState<string>('category', Object.keys(categoryCache)[0]);
+  let [activeMiddleware, setActiveMiddleware] = useLocalState<string | null>('middleware', null);
 
   // todo: this is so fucking awful bros please don't make the same mistake on character setup.
   if (activeMiddleware && (typeof activeMiddleware === 'string')) {

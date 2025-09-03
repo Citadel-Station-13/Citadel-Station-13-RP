@@ -45,6 +45,9 @@ const icons = {
 };
 
 export class Changelog extends Component {
+  dateChoices: any;
+  state: any;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -100,7 +103,7 @@ export class Changelog extends Component {
   componentDidMount() {
     const {
       data: { dates = [] },
-    } = useBackend();
+    } = useBackend<any>();
 
     if (dates) {
       dates.forEach((date) =>
@@ -115,7 +118,7 @@ export class Changelog extends Component {
     const { data, selectedDate, selectedIndex } = this.state;
     const {
       data: { dates },
-    } = useBackend();
+    } = useBackend<any>();
     const { dateChoices } = this;
 
     const dateDropdown = dateChoices.length > 0 && (
@@ -134,7 +137,7 @@ export class Changelog extends Component {
               window.scrollTo(
                 0,
                 document.body.scrollHeight ||
-                  document.documentElement.scrollHeight,
+                document.documentElement.scrollHeight,
               );
               return this.getData(dates[index]);
             }}
@@ -153,7 +156,7 @@ export class Changelog extends Component {
               window.scrollTo(
                 0,
                 document.body.scrollHeight ||
-                  document.documentElement.scrollHeight,
+                document.documentElement.scrollHeight,
               );
               return this.getData(dates[index]);
             }}
@@ -175,7 +178,7 @@ export class Changelog extends Component {
               window.scrollTo(
                 0,
                 document.body.scrollHeight ||
-                  document.documentElement.scrollHeight,
+                document.documentElement.scrollHeight,
               );
               return this.getData(dates[index]);
             }}
@@ -298,52 +301,56 @@ export class Changelog extends Component {
       </Section>
     );
 
+    let dataAnyCasted: () => any = () => Object.entries(data);
     const changes =
       typeof data === 'object' &&
       Object.keys(data).length > 0 &&
-      Object.entries(data)
+      dataAnyCasted()
         .reverse()
         .map(([date, authors]) => (
           <Section key={date} title={dateformat(date, 'd mmmm yyyy', true)}>
             <Box ml={3}>
-              {Object.entries(authors).map(([name, changes]) => (
-                <Fragment key={name}>
-                  <h4>{name} changed:</h4>
-                  <Box ml={3}>
-                    <Table>
-                      {changes.map((change) => {
-                        const changeType = Object.keys(change)[0];
-                        return (
-                          <Table.Row key={changeType + change[changeType]}>
-                            <Table.Cell
-                              className={classes([
-                                'Changelog__Cell',
-                                'Changelog__Cell--Icon',
-                              ])}
-                            >
-                              <Icon
-                                color={
-                                  icons[changeType]
-                                    ? icons[changeType].color
-                                    : icons['unknown'].color
-                                }
-                                name={
-                                  icons[changeType]
-                                    ? icons[changeType].icon
-                                    : icons['unknown'].icon
-                                }
-                              />
-                            </Table.Cell>
-                            <Table.Cell className="Changelog__Cell">
-                              {change[changeType]}
-                            </Table.Cell>
-                          </Table.Row>
-                        );
-                      })}
-                    </Table>
-                  </Box>
-                </Fragment>
-              ))}
+              {Object.entries(authors).map(([name, _changes]) => {
+                let changes: any = _changes;
+                return (
+                  <Fragment key={name}>
+                    <h4>{name} changed:</h4>
+                    <Box ml={3}>
+                      <Table>
+                        {changes.map((change) => {
+                          const changeType = Object.keys(change)[0];
+                          return (
+                            <Table.Row key={changeType + change[changeType]}>
+                              <Table.Cell
+                                className={classes([
+                                  'Changelog__Cell',
+                                  'Changelog__Cell--Icon',
+                                ])}
+                              >
+                                <Icon
+                                  color={
+                                    icons[changeType]
+                                      ? icons[changeType].color
+                                      : icons['unknown'].color
+                                  }
+                                  name={
+                                    icons[changeType]
+                                      ? icons[changeType].icon
+                                      : icons['unknown'].icon
+                                  }
+                                />
+                              </Table.Cell>
+                              <Table.Cell className="Changelog__Cell">
+                                {change[changeType]}
+                              </Table.Cell>
+                            </Table.Row>
+                          );
+                        })}
+                      </Table>
+                    </Box>
+                  </Fragment>
+                );
+              })}
             </Box>
           </Section>
         ));

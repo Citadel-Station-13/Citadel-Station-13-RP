@@ -3,12 +3,14 @@
  * @license MIT
  */
 import { keyCodeToByond } from "common/keycodes";
-import { Component, ReactNode, useState } from "react";
+import { Component, ReactNode } from "react";
 import { Box, Button, Dimmer, Section, Stack, Table, Tooltip } from "tgui-core/components";
 import { KeyEvent } from "tgui-core/events";
 import { listenForKeyEvents } from "tgui-core/hotkeys";
 import { KEY_ALT, KEY_CTRL, KEY_ESCAPE, KEY_SHIFT } from "tgui-core/keycodes";
 import { BooleanLike } from "tgui-core/react";
+
+import { useLocalState } from "../../backend";
 
 export interface GamePreferenceKeybindMiddlware {
   readonly hotkeyMode: BooleanLike;
@@ -106,7 +108,7 @@ export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenPr
   // that would probably be smart.
   // oh well! problems for later.
   // (we all know no one's touching this again)
-  const [activeCapture, setActiveCapture] = useState<ReactNode | null>(null);
+  const [activeCapture, setActiveCapture] = useLocalState<ReactNode | null>('keybindCapture', null);
 
   return (
     <Section fill scrollable>
