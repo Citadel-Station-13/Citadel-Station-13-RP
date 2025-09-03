@@ -354,7 +354,7 @@
 	// run post-init 'lint'-like checks
 	// this is on a spawn() to force a separate call chain
 	spawn(0)
-		on_new_hook_stability_checks()
+		invoke_hooks__client_stability_check(src)
 
 	// todo: fuck you voreprefs
 	spawn(0)
@@ -378,17 +378,6 @@
 	// update our hub label
 	// todo: this should be a global signal that the subsystem hooks
 	SSserver_maint.queue_hub_update()
-
-/**
- * Called in the middle of new, after everything critical
- * is loaded / initialized.
- *
- * This proc should all be async; it is where you hook to ensure things are properly
- * loaded.
- */
-/client/proc/on_new_hook_stability_checks()
-	SHOULD_CALL_PARENT(TRUE)
-	SHOULD_NOT_SLEEP(TRUE)
 
 	//////////////
 	//DISCONNECT//

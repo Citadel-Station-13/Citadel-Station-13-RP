@@ -277,19 +277,19 @@
 	update_icon()
 
 //? click redirection
-/obj/item/switchtool/melee_interaction_chain(atom/target, mob/user, clickchain_flags, params)
+/obj/item/switchtool/melee_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	if(!deployed)
 		return ..()
-	. = deployed.melee_interaction_chain(target, user, clickchain_flags | CLICKCHAIN_REDIRECTED, params)
+	. = deployed.melee_interaction_chain(clickchain, clickchain_flags | CLICKCHAIN_REDIRECTED)
 	if(deployed && deployed.loc != src)
 		deployed.forceMove(src)
 		undeploy()
 
 //? click redirection
-/obj/item/switchtool/ranged_interaction_chain(atom/target, mob/user, clickchain_flags, params)
+/obj/item/switchtool/ranged_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	if(!deployed)
 		return ..()
-	. = deployed.ranged_interaction_chain(target, user, clickchain_flags | CLICKCHAIN_REDIRECTED, params)
+	. = deployed.ranged_interaction_chain(clickchain, clickchain_flags | CLICKCHAIN_REDIRECTED)
 	if(deployed.loc != src)
 		deployed.forceMove(src)
 		undeploy()

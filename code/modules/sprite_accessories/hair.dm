@@ -78,6 +78,7 @@ GLOBAL_LIST_EMPTY(hair_gradient_icon_cache)
 			var/image/adding = image(icon_add_legacy, icon_state = icon_state)
 			adding.blend_mode = BLEND_ADD
 			adding.appearance_flags = RESET_COLOR
+			adding.dir = NONE
 			rendered.overlays += adding
 
 		// then deal with gradient if we have to
@@ -92,6 +93,7 @@ GLOBAL_LIST_EMPTY(hair_gradient_icon_cache)
 				)
 				gradient_icon.blend_mode = BLEND_OVERLAY
 				gradient_icon.appearance_flags = RESET_COLOR
+				gradient_icon.dir = NONE
 				rendered.overlays += gradient_icon
 
 	return layers
