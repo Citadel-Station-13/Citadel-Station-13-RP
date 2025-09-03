@@ -56,31 +56,3 @@ export class LegacyModule<T extends ModuleProps, S = {}> extends Component<T, S>
     );
   }
 }
-
-// export class LegacyModule<T extends ModuleProps> extends Component<T, {}> {
-//   getChildContext() {
-//     let { id } = this.props;
-//     let { nestedData } = useBackend();
-//     let data = modules[id];
-//     let ref = data['$src'];
-//     let ui_name = data['$tgui'];
-//     return {
-//       ...this.context,
-//       is_module: true,
-//       m_section: this.props.section,
-//       m_id: id,
-//       m_ref: ref,
-//       m_tgui: ui_name,
-//     };
-//   }
-
-//   render() {
-//     let { modules } = useBackend(this.context);
-//     let { id } = this.props;
-//     let ui_name = modules[id]['$tgui'];
-//     const Component = directlyRouteComponent(ui_name);
-//     return (
-//       <Component tgui_module={ui_name} />
-//     );
-//   }
-// }
