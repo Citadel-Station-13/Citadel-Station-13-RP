@@ -6,6 +6,8 @@
  * todo: /obj/item/gun/projectile vs /obj/item/gun/launcher,
  *       instead of have projectile be on /obj/item/gun
  *
+ * TODO: screentips - alt click is safety
+ *
  * ## Hotkey Priority
  *
  * The usable semantic hotkeys for guns are: Z, Spacebar, F, G.
@@ -430,7 +432,7 @@
 	if(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)
 		return
 
-	if(!user?.client?.get_preference_toggle(/datum/game_preference_toggle/game/help_intent_firing) && user.a_intent == INTENT_HELP)
+	if(user?.client?.get_preference_toggle(/datum/game_preference_toggle/game/help_intent_firing) && user.a_intent == INTENT_HELP)
 		to_chat(user, SPAN_WARNING("You refrain from firing [src] because your intent is set to help!"))
 		return
 
@@ -739,10 +741,13 @@
 
 //* Interaction *//
 
-/obj/item/gun/CtrlClick(mob/user)
+/obj/item/gun/on_alt_click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
 	. = ..()
-	if(user.is_holding(src))
-		toggle_safety(user)
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
+	if(clickchain.performer.is_holding(src))
+		toggle_safety(clickchain.performer)
+		return . | CLICKCHAIN_DID_SOMETHING
 
 //* Rendering *//
 

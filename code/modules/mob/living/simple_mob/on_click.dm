@@ -28,13 +28,13 @@
 
 		if(INTENT_GRAB)
 			if(has_hands())
-				A.attack_hand(src)
+				A.attack_hand(src, default_clickchain_event_args(A))
 			else
 				attack_target(A)
 
 		if(INTENT_DISARM)
 			if(has_hands())
-				A.attack_hand(src)
+				A.attack_hand(src, default_clickchain_event_args(A))
 			else
 				attack_target(A)
 

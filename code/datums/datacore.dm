@@ -1,5 +1,5 @@
 
-/hook/startup/proc/createDatacore()
+/legacy_hook/startup/proc/createDatacore()
 	data_core = new /datum/datacore()
 	return 1
 

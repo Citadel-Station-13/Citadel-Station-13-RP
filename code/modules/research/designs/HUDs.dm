@@ -3,37 +3,27 @@
 	subcategory = DESIGN_SUBCATEGORY_SCANNING
 	materials_base = list(MAT_STEEL = 50, MAT_GLASS = 50)
 
-/datum/prototype/design/science/hud/generate_name(template)
-	return "HUD glasses prototype ([..()])"
-
-/datum/prototype/design/science/hud/generate_desc(template_name, template_desc)
-	return "Allows for the construction of \a [template_name] HUD glasses."
-
 /datum/prototype/design/science/hud/health
-	design_name = "health scanner"
-	id = "health_hud"
+	id = "healthhud"
 	req_tech = list(TECH_BIO = 2, TECH_MAGNET = 3)
 	build_path = /obj/item/clothing/glasses/hud/health
 
 /datum/prototype/design/science/hud/security
-	design_name = "security records"
-	id = "security_hud"
+	id = "sechud"
 	req_tech = list(TECH_MAGNET = 3, TECH_COMBAT = 2)
 	build_path = /obj/item/clothing/glasses/hud/security
 
 /datum/prototype/design/science/hud/mesons
-	design_name = "optical meson scanner"
-	id = "mesons"
+	id = "mesonscanner"
 	req_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 2)
 	build_path = /obj/item/clothing/glasses/meson
-
+/*
 /datum/prototype/design/science/hud/material
-	design_name = "optical material scanner"
-	id = "material"
+	id = "RNDDesignMatScanner"
 	req_tech = list(TECH_MAGNET = 3, TECH_ENGINEERING = 3)
 	build_path = /obj/item/clothing/glasses/material
 
-/* Graviton't
+ Graviton't
 /datum/prototype/design/science/hud/graviton_visor
 	design_name = "graviton visor"
 	id = "graviton_goggles"
@@ -44,7 +34,7 @@
 
 /datum/prototype/design/science/hud/omni
 	design_name = "AR glasses"
-	id = "omnihud"
+	id = "arhud"
 	req_tech = list(TECH_MAGNET = 4, TECH_COMBAT = 3, TECH_BIO = 3)
-	materials_base = list(MAT_STEEL = 1000, MAT_GLASS = 1000)
+	materials_base = list(MAT_STEEL = 100, MAT_GLASS = 250)
 	build_path = /obj/item/clothing/glasses/omnihud

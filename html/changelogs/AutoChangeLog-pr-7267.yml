@@ -1,0 +1,4 @@
+author: "Putnam3145"
+delete-after: True
+changes:
+  - bugfix: "Various glass airlocks are now actually buildable"

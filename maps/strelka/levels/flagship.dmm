@@ -487,7 +487,7 @@
 	},
 /area/centcom/specops)
 "bA" = (
-/obj/machinery/r_n_d/circuit_imprinter,
+/obj/machinery/lathe/r_n_d/circuit_imprinter,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
@@ -1361,8 +1361,12 @@
 /area/centcom/command)
 "dX" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/door/window/brigdoor/eastleft,
-/obj/machinery/door/window/brigdoor/westright,
+/obj/machinery/door/window/brigdoor/westright{
+	req_access = null
+	},
+/obj/machinery/door/window/brigdoor/eastleft{
+	req_access = null
+	},
 /turf/unsimulated/floor/techfloor_grid{
 	layer = 1
 	},
@@ -1531,7 +1535,7 @@
 	},
 /area/centcom/specops/dock)
 "eu" = (
-/obj/machinery/mecha_part_fabricator,
+/obj/machinery/lathe/mecha_part_fabricator,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "ew" = (
@@ -2229,7 +2233,7 @@
 	},
 /area/centcom/command)
 "gk" = (
-/obj/machinery/r_n_d/protolathe,
+/obj/machinery/lathe/r_n_d/protolathe,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "gl" = (
@@ -4988,6 +4992,18 @@
 	layer = 1
 	},
 /area/centcom/main_hall)
+"nt" = (
+/obj/structure/table/steel_reinforced,
+/obj/machinery/door/window/brigdoor/eastleft{
+	req_access = null
+	},
+/obj/machinery/door/window/brigdoor/westright{
+	req_access = null
+	},
+/turf/unsimulated/floor/techfloor_grid{
+	layer = 1
+	},
+/area/centcom/restaurant)
 "nu" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Teleporter";
@@ -5983,7 +5999,7 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_checker)
 "qb" = (
-/obj/machinery/r_n_d/circuit_imprinter,
+/obj/machinery/lathe/r_n_d/circuit_imprinter,
 /obj/item/reagent_containers/glass/beaker/sulphuric,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
@@ -13314,7 +13330,7 @@
 	},
 /area/centcom/control)
 "IU" = (
-/obj/machinery/mecha_part_fabricator/pros,
+/obj/machinery/lathe/mecha_part_fabricator/pros,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "IW" = (
@@ -14765,8 +14781,12 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/machinery/door/window/brigdoor/eastleft,
-/obj/machinery/door/window/brigdoor/westright,
+/obj/machinery/door/window/brigdoor/eastleft{
+	req_access = null
+	},
+/obj/machinery/door/window/brigdoor/westright{
+	req_access = null
+	},
 /turf/unsimulated/floor/techfloor_grid{
 	layer = 1
 	},
@@ -49298,7 +49318,7 @@ nI
 DC
 dX
 lV
-dX
+nt
 ME
 dX
 lV

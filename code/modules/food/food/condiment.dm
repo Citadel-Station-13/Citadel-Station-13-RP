@@ -226,15 +226,6 @@
 	. = ..()
 	reagents.add_reagent("blackpepper", 5)
 
-/obj/item/reagent_containers/food/condiment/small/packet/sugar
-	name = "sugar packet"
-	desc = "Contains 5u of refined sugar."
-	icon_state = "packet_small_white"
-
-/obj/item/reagent_containers/food/condiment/small/packet/sugar/Initialize(mapload)
-	. = ..()
-	reagents.add_reagent("sugar", 5)
-
 /obj/item/reagent_containers/food/condiment/small/packet/jelly
 	name = "jelly packet"
 	desc = "Contains 10u of cherry jelly. Best used for spreading on crackers."
@@ -449,3 +440,27 @@
 /obj/item/reagent_containers/food/condiment/cursed/Initialize()
 	.  = ..()
 	reagents.add_reagent(pick("condensedcapsaicin_v", "hydrophoron"), 50)
+
+/obj/item/reagent_containers/food/condiment/small/packet/creamer
+	name = "creamer pack"
+	desc = "A small packet of coffee creamer."
+
+/obj/item/reagent_containers/food/condiment/small/packet/creamer/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("creamer", 5)
+
+/obj/item/reagent_containers/food/condiment/small/packet/sugar
+	name = "sugar pack"
+	desc = "A small packet of sugar."
+
+/obj/item/reagent_containers/food/condiment/small/packet/sugar/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("sugar", 5)
+
+/obj/item/reagent_containers/food/condiment/small/packet/astrotame
+	name = "astrotame pack"
+	desc = "A small packet of sweetener."
+
+/obj/item/reagent_containers/food/condiment/small/packet/astrotame/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("astrotame", 5)
