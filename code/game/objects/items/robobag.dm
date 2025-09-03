@@ -75,7 +75,7 @@
 		if(istype(W,/obj/item/robotanalyzer))
 			var/obj/item/robotanalyzer/analyzer = W
 			for(var/mob/living/L in contents)
-				analyzer.melee_interaction_chain(L,user)
+				analyzer.lazy_melee_interaction_chain(L,user)
 
 		else if(istype(W, /obj/item/clothing/accessory/badge))
 			if(corptag)

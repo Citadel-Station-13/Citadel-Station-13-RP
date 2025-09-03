@@ -317,23 +317,47 @@
 	var/shift_x = 0
 	var/shift_y = 0
 
+	// TODO: is KEEP_TOGETHER transitive? may need to pass it through the _get_flat_icon stack
+	var/is_keep_together = A.appearance_flags & KEEP_TOGETHER
+
 	// blend in layers
 	for(copying as anything in gathered)
 		// if invis, skip
 		if(copying.alpha == 0)
 			continue
 
+		// handle keep apart / together
+		var/is_effectively_keep_apart
 		// detect if it's literally ourselves
 		if(copying == self)
 			// blend in normally (no sense doing otherwise unless we're on map)
 			// we can't assume we're on map.
 			blend_mode = BLEND_OVERLAY
 			adding = icon(icon, state, ourdir)
+			// we can never keep ourselves apart from .. ourselves
+			is_effectively_keep_apart = FALSE
 		else
 			// use full get_flat_icon_with_offsets
 			blend_mode = copying.blend_mode
 			gfi_return = _get_flat_icon(copying, defdir, no_anim, icon)
 			adding = gfi_return?[1]
+			// check if it should be kept apart
+			is_effectively_keep_apart = !is_keep_together || (copying.appearance_flags & KEEP_APART)
+
+		// apply colors from parent if not resetting
+		if(is_effectively_keep_apart && (copying.appearance_flags & RESET_COLOR))
+		else
+			if(A.color)
+				if(islist(A.color))
+					adding.MapColors(arglist(A.color))
+				else
+					adding.Blend(A.color, ICON_MULTIPLY)
+
+		// apply alpha from parent if not resetting
+		if(is_effectively_keep_apart && (copying.appearance_flags & RESET_ALPHA))
+		else
+			if(A.alpha < 255)
+				adding.Blend(rgb(255, 255, 255, A.alpha), ICON_MULTIPLY)
 
 		// if we got nothing, skip
 		if(isnull(adding))
@@ -364,17 +388,6 @@
 
 		// blend the overlay/underlay in
 		flat.Blend(adding, blendMode2iconMode(blend_mode), shift_x + copying.pixel_x + 1, shift_y + copying.pixel_y + 1)
-
-	// apply colors
-	if(A.color)
-		if(islist(A.color))
-			flat.MapColors(arglist(A.color))
-		else
-			flat.Blend(A.color, ICON_MULTIPLY)
-
-	// apply alpha
-	if(A.alpha < 255)
-		flat.Blend(rgb(255, 255, 255, A.alpha), ICON_MULTIPLY)
 
 	// finalize
 	if(no_anim)

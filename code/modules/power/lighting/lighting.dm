@@ -487,6 +487,7 @@ var/global/list/light_type_cache = list()
 /obj/machinery/light/update_icon()
 	cut_overlays()
 
+	var/image/additional_overlay
 	switch(status) // set icon_states
 		if(LIGHT_OK)
 			if(shows_alerts && current_alert && on)
@@ -498,18 +499,20 @@ var/global/list/light_type_cache = list()
 						addcolor = COLOR_ORANGE
 				var/image/I = image(icon, "tube1")
 				I.color = addcolor
-				add_overlay(I)
-
+				additional_overlay = I
 			else
-				add_overlay("tube1")
+				additional_overlay = image(icon, "tube1")
 		if(LIGHT_EMPTY)
 			on = 0
 		if(LIGHT_BURNED)
-			add_overlay("tube_burned")
+			additional_overlay = image(icon, "tube_burned")
 			on = 0
 		if(LIGHT_BROKEN)
-			add_overlay("tube_broken")
+			additional_overlay = image(icon, "tube_broken")
 			on = 0
+	if(additional_overlay)
+		additional_overlay.dir = NONE
+		add_overlay(additional_overlay)
 
 /obj/machinery/light/setDir(ndir)
 	. = ..()
@@ -858,10 +861,6 @@ var/global/list/light_type_cache = list()
 	no_emergency = !no_emergency
 	to_chat(user, "<span class='notice'>Emergency lights for this fixture have been [no_emergency ? "disabled" : "enabled"].</span>")
 	update(FALSE)
-
-// ai alt click - Make light flicker.  Very important for atmosphere.
-/obj/machinery/light/AIAltClick(mob/user)
-	flicker(1)
 
 /obj/machinery/light/flamp/attack_ai(mob/user)
 	attack_hand()

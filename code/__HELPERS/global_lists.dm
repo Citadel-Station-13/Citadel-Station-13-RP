@@ -573,7 +573,7 @@ var/global/list/remainless_species = list(SPECIES_ID_PROMETHEAN,
 				SPECIES_ID_GOLEM, //Some special species that may or may not be ever used in event too,
 				SPECIES_ID_SHADEKIN) //Shadefluffers just poof away
 
-/hook/startup/proc/init_vore_datum_ref_lists()
+/legacy_hook/startup/proc/init_vore_datum_ref_lists()
 	var/paths
 
 	// Custom species traits

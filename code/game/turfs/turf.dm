@@ -264,6 +264,8 @@
 
 /turf/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
+	if(.)
+		return
 	//QOL feature, clicking on turf can toggle doors, unless pulling something
 	if(!user.pulling)
 		var/obj/machinery/door/airlock/AL = locate(/obj/machinery/door/airlock) in src.contents
@@ -276,11 +278,11 @@
 			return TRUE
 
 	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE) || user.restrained() || !(user.pulling))
-		return 0
+		return FALSE
 	if(user.pulling.anchored || !isturf(user.pulling.loc))
-		return 0
+		return FALSE
 	if(user.pulling.loc != user.loc && get_dist(user, user.pulling) > 1)
-		return 0
+		return FALSE
 	if(ismob(user.pulling))
 		var/mob/M = user.pulling
 		var/atom/movable/t = M.pulling
@@ -289,12 +291,13 @@
 		M.start_pulling(t, suppress_message = TRUE)
 	else
 		step(user.pulling, get_dir(user.pulling.loc, src))
-	return 1
+	return TRUE
 
 /turf/attack_ai(mob/user as mob) //this feels like a bad idea ultimately but this is the cheapest way to let cyborgs nudge things they're pulling around
 	. = ..()
 	if(Adjacent(user))
-		attack_hand(user, new /datum/event_args/actor/clickchain(user))
+		var/datum/event_args/actor/clickchain/clickchain = user.default_clickchain_event_args(src)
+		attack_hand(user, clickchain)
 
 /turf/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
 	if(I.obj_storage?.allow_mass_gather && I.obj_storage.allow_mass_gather_via_click)
