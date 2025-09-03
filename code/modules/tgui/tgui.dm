@@ -569,7 +569,7 @@
 	if(!isnull(ui) && ui != src)
 		return
 	// todo: this is force because otherwise static data can be desynced. should static data be on another proc instead?
-	push_ui_nested_data(
+	push_nested_data(
 		updates = list(
 			(modules_registered[source]) = data,
 		),

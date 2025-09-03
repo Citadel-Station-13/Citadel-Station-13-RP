@@ -170,15 +170,13 @@
 		// Toggles the cut/mend status
 		if("cut")
 			if((I && I.is_wirecutter()) || isAdminGhostAI(usr))
-				if(I && holder)
-
 				cut_color(target_wire)
 				. = TRUE
 			else
 				to_chat(user, SPAN_WARNING("You need wirecutters!"))
 		// Pulse a wire.
 		if("pulse")
-			if((I && !I.is_multitool()))
+			if((I && !I.is_multitool()) || isAdminGhostAI(usr))
 				if(I && holder)
 					playsound(holder, I.tool_sound, 20, 1)
 				pulse_color(target_wire)
