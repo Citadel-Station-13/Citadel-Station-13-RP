@@ -1,39 +1,58 @@
-/**
- * @file hooks.dm
- * Implements hooks, a simple way to run code on pre-defined events.
- */
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
 
-/** @page hooks Code hooks
- * @section hooks Hooks
- * A hook is defined under /hook in the type tree.
+/**
+ * Typed hooks system.
  *
- * To add some code to be called by the hook, define a proc under the type, as so:
- * @code
-/hook/foo/proc/bar()
-	if(1)
-		return 1 //Sucessful
-	else
-		return 0 //Error, or runtime.
- * @endcode
- * All hooks must return nonzero on success, as runtimes will force return null.
+ * Simply override a hook. This is more expensive than
+ * the old hooks system because it does involve creating datums
+ * (i cba to figure out using text2path to invoke instead)
+ * but is safer.
+ *
+ * * You are expected to know how 'waitfor' works in BYOND. Hooks are a relatively
+ *   low level system, and it's not always safe to mess with if you don't know what
+ *   you're doing.
  */
+/hook
+	abstract_type = /hook
+	parent_type = /datum
 
 /**
- * Calls a hook, executing every piece of code that's attached to it.
- * @param hook	Identifier of the hook to call.
- * @returns		1 if all hooked code runs successfully, 0 otherwise.
+ * Always invoked asynchronously.
+ * @return FALSE if failed invocation, which will be logged in debug logs / stack traces.
  */
-/proc/callHook(hook, list/args=null)
-	var/hook_path = text2path("/hook/[hook]")
-	if(!hook_path)
-		log_world("Invalid hook '/hook/[hook]' called.")
-		return 0
+/hook/proc/invoke()
+	return TRUE
 
-	var/delegate = new hook_path
-	var/status = 1
-	for(var/P in typesof("[hook_path]/proc"))
-		if(!call(delegate, P)(arglist(args)))
-			log_world("Hook '[P]' failed or runtimed.")
-			status = 0
+/**
+ * Low level proc, don't call unless you know what you're doing.
+ */
+/proc/invoke_hooks(path, list/arguments)
+	. = TRUE
+	var/list/failed_hook_paths
+	for(var/hook/hook_path as anything in typesof(path))
+		if(hook_path.abstract_type == hook_path)
+			continue
+		var/hook/hook_instance = new hook_path
+		if(!hook_instance.invoke(arglist(arguments)))
+			. = FALSE
+			if(!failed_hook_paths)
+				failed_hook_paths = list()
+			failed_hook_paths += hook_path
+	if(!.)
+		stack_trace("hook invocation failed for the following paths: [english_list(failed_hook_paths)]")
 
-	return status
+//* hooks - /client *//
+
+/hook/client_stability_check
+	abstract_type = /hook/client_stability_check
+
+/**
+ * Used for client stability checks.
+ * Anything running in this will run asynchronously.
+ */
+/hook/client_stability_check/invoke(client/joining)
+	return TRUE
+
+/proc/invoke_hooks__client_stability_check(client/joining)
+	invoke_hooks(/hook/client_stability_check, list(joining))

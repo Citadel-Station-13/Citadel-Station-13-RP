@@ -67,8 +67,45 @@ export const generateDynamicButton = (name, mode, actFunction) => {
   }
 };
 
-export const TGUILatheControl = (props: TGUILatheControlProps) => {
-  const { data, act } = useLegacyModule<TGUILatheControlData>();
+export const autodetectMaterials = (context) => {
+
+  const { data, act, moduleID } = useModule<TGUILatheControlData>(context);
+
+  let design: Design;
+
+  for (design of Object.values(data.designs.instances)) {
+    // materials: key = material id
+    // mats maps parts to materials. i think? ask kevinz.
+    let [mats, setMats] = useLocalState<Record<string, string>>(context, `${moduleID}-${design.id}-mats`, {});
+    // ingredients: key = ingredient id/value
+    let [inds, setInds] = useLocalState<Record<string, string>>(context, `${moduleID}-${design.id}-inds`, {});
+    if (!areMaterialsChosen(design.material_parts || {}, mats) && design.autodetect_tags && design.material_parts) {
+      Object.entries(design.material_parts).map(([name, amt]) => {
+        for (let matkey in data.materialsContext.materials) {
+          if ((data.materialsContext.materials[matkey].tags !== null) && (design.autodetect_tags !== null)) {
+            if (data.materialsContext.materials[matkey].tags.includes(design.autodetect_tags[name])) {
+              let autodetectedMats = { ...mats };
+              if ((data.materialsContext.materials[matkey] === null) || (data.materialsContext.materials[matkey] === undefined)) {
+                break;
+              } else if (data.materialsContext.materials[matkey].sheetAmount > 1) {
+                autodetectedMats[name] = data.materialsContext.materials[matkey].name;
+                setMats(autodetectedMats);
+                break;
+              } else {
+                break;
+              }
+            }
+          }
+        }
+      }
+      );
+    }
+  }
+};
+
+export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
+
+  const { data, act } = useModule<TGUILatheControlData>(context);
 
   const [category, setCategory] = useLocalState<string>(
     `${data.$ref}-category`,
@@ -98,6 +135,7 @@ export const TGUILatheControl = (props: TGUILatheControlProps) => {
 
   let resourceRender;
 
+  autodetectMaterials(context);
 
   switch (resourcesSelect) {
     case "Materials":
@@ -451,22 +489,6 @@ const LatheDesign = (props: LatheDesignProps) => {
   let [mats, setMats] = useState<Record<string, string>>({});
   // ingredients: key = ingredient id/value
   let [inds, setInds] = useState<Record<string, string>>({});
-
-  if (!areMaterialsChosen(props.design.material_parts || {}, mats) && props.design.autodetect_tags && props.design.material_parts) {
-    Object.entries(props.design.material_parts).map(([name, amt]) => {
-      for (let matkey in data.materialsContext.materials) {
-        if ((data.materialsContext.materials[matkey].tags !== null) && (props.design.autodetect_tags !== null)) {
-          if (data.materialsContext.materials[matkey].tags.includes(props.design.autodetect_tags[name])) {
-            let autodetectedMats = { ...mats };
-            autodetectedMats[name] = data.materialsContext.materials[matkey].name;
-            setMats(autodetectedMats);
-            break;
-          }
-        }
-      }
-    }
-    );
-  }
 
   // ingredients are currently unspported.
   let awaitingSelections = !areMaterialsChosen(props.design.material_parts || {}, mats)

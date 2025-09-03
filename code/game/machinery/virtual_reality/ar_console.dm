@@ -35,7 +35,7 @@
 	add_fingerprint(user)
 
 	if(occupant && (istype(I, /obj/item/healthanalyzer) || istype(I, /obj/item/robotanalyzer)))
-		I.melee_interaction_chain(occupant, user)
+		I.lazy_melee_interaction_chain(occupant, user)
 	return
 
 /obj/machinery/vr_sleeper/alien/eject()

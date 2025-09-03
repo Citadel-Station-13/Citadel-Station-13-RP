@@ -40,6 +40,12 @@
 	/// How are we intending to act? Help / harm / etc.
 	var/a_intent = INTENT_HELP
 
+	//* Input*//
+	/// next time we should allow a click being ingested into the click-chain handling sequence.
+	/// * This is effectively only from our client. Remote control should directly call clickchain
+	///   handlers, instead of 'click_on'.
+	var/next_click
+
 	//* Perspective & Vision *//
 	/// using perspective - if none, it'll be self - when client logs out, if using_perspective has reset_on_logout, this'll be unset.
 	var/datum/perspective/using_perspective
@@ -409,10 +415,6 @@
 	var/datum/key_focus
 	/// a singular thing that can intercept keyboard inputs
 	var/datum/key_intercept
-
-	//Moved from code\game\click\click.dm
-	// 1 decisecond click delay (above and beyond mob/next_move)
-	var/next_click = 0
 
 	//Moved from code\game\rendering\legacy\alert.dm
 	var/list/alerts = list() // contains /atom/movable/screen/alert only // On /mob so clientless mobs will throw alerts properly

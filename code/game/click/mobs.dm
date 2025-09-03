@@ -1,35 +1,34 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+// TODO: lazy_melee_interaction_chain
+
 /**
  * Called when trying to click on someone we can Reachability() to without an item in hand.
  *
- * todo: this should allow passing in a clickchain datum instead.
- * todo: lazy_melee_attack() for when you don't want to.
- *
  * @params
- * - target - thing we're clicking
- * - clickchain_flags - see [code/__DEFINES/procs/clickcode.dm]
- * - params - parameters of click, as list
+ * * clickchain - clickchain data
+ * * clickchain_flags - see [code/__DEFINES/procs/clickcode.dm]
  */
-/mob/proc/melee_interaction_chain(atom/target, clickchain_flags, list/params)
+/mob/proc/melee_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	// todo: refactor cooldown handling
-	if(ismob(target))
+	if(ismob(clickchain.target))
 		setClickCooldownLegacy(get_attack_speed_legacy())
-	UnarmedAttack(target, clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)
+	UnarmedAttack(clickchain.target, clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)
+
+// TODO: lazy_ranged_interaction_chain
 
 /**
  * Called when trying to click on someone we can't Reachability() to without an item in hand.
  *
  * @params
- * - target - thing we're clicking
- * - clickchain_flags - see [code/__DEFINES/procs/clickcode.dm]
- * - params - parameters of click, as list
+ * * clickchain - clickchain data
+ * * clickchain_flags - see [code/__DEFINES/procs/clickcode.dm]
  */
-/mob/proc/ranged_interaction_chain(atom/target, clickchain_flags, list/params)
+/mob/proc/ranged_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	// todo: NO. MORE. TEXT. PARAMS. WHY. ARE. WE. UNPACKING. THE. LIST. MULTIPLE. TIMES?
-	var/stupid_fucking_shim = list2params(params)
-	RangedAttack(target, stupid_fucking_shim)
+	var/stupid_fucking_shim = list2params(clickchain.click_params)
+	RangedAttack(clickchain.target, stupid_fucking_shim)
 
 /**
  * construct default event args for what we're doing to a target
