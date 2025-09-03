@@ -420,38 +420,24 @@
 		on_act_message(act_type, payload, state)
 		// DEFAULT_QUEUE_OR_CALL_VERB(VERB_CALLBACK(src, PROC_REF(on_act_message), act_type, payload, state))
 		return FALSE
-	#warn below
-	if(type)
-		// micro opt in that these routes are same length so we only copytext once
-		switch(copytext(type, 1, 5))
-			if("act/")	// normal act
-				var/action = copytext(type, 5)
-				log_tgui(user, "Action: [action] [href_list["payload"]]",
-					window = window,
-					src_object = src_object)
-				process_status()
-				if(src_object.ui_act(action, payload, src, new /datum/event_args/actor(usr)))
-					SStgui.update_uis(src_object)
-				return FALSE
-			if("mod/")	// module act
-				var/action = copytext(type, 5)
-				var/id = payload["$m_id"]
-				// log, update status
-				log_tgui(user, "Module: [action] [href_list["payload"]]",
-					window = window,
-					src_object = src_object)
-				process_status()
-				// tell it to route the call
-				// note: this is pretty awful code because raw locate()'s are
-				// almost never a good idea
-				// however given we don't have a way of just tracking a ui module list (yet)
-				// we're kind of stuck doing this
-				// maybe in the future we'll just have ui modules list but for now
-				// eh.
-				if(src_object.ui_route(action, payload, src, id))
-					SStgui.update_uis(src_object)
-				return FALSE
-	#warn above
+	// TODO: probably burn this (mod/) with fire
+	if(type && copytext(type, 1, 5) == "mod/")
+		var/act_type = copytext(type, 5)
+		var/mod_id = payload["$m_id"]
+		log_tgui(user, "Module: [act_type] - [mod_id] [href_list["payload"]]",
+			window = window,
+			src_object = src_object)
+		process_status()
+		// tell it to route the call
+		// note: this is pretty awful code because raw locate()'s are
+		// almost never a good idea
+		// however given we don't have a way of just tracking a ui module list (yet)
+		// we're kind of stuck doing this
+		// maybe in the future we'll just have ui modules list but for now
+		// eh.
+		if(src_object.ui_route(act_type, payload, src, mod_id))
+			SStgui.update_uis(src_object)
+		return FALSE
 	switch(type)
 		if("ready")
 			// Send a full update when the user manually refreshes the UI

@@ -28,14 +28,10 @@ import { useBackend } from "../backend";
 export const LegacyModuleContext = createContext<{
   isModule: boolean;
   moduleId: string | null;
-  moduleRef: string | null;
-  moduleTgui: string | null;
   moduleSection: SectionProps | null;
 }>({
   isModule: false,
   moduleId: null,
-  moduleRef: null,
-  moduleTgui: null,
   moduleSection: null,
 });
 
@@ -52,6 +48,7 @@ export class LegacyModule<T extends ModuleProps, S = {}> extends Component<T, S>
       <LegacyModuleContext value={{
         isModule: true,
         moduleId: this.props.id,
+        moduleSection: this.props.section || null,
       }}>
         {routedComponent.render()}
       </LegacyModuleContext>
