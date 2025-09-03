@@ -26,7 +26,7 @@
 		if(I && pay_energy(200))
 			var/prox = user.Adjacent(chosen_target)
 			if(prox) // Needed or else they can attack with melee from afar.
-				I.melee_interaction_chain(chosen_target,owner)
+				I.lazy_melee_interaction_chain(chosen_target,owner)
 			I.afterattack(chosen_target,owner, prox)
 			adjust_instability(2)
 

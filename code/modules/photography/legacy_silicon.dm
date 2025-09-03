@@ -70,7 +70,7 @@
 
 /obj/item/camera/siliconcam/ai_camera/can_capture_turf(turf/T, mob/user)
 	var/mob/living/silicon/ai = user
-	return ai.TurfAdjacent(T)
+	return ai.snowflake_ai_vision_adjacency(T)
 
 /obj/item/camera/siliconcam/proc/toggle_camera_mode()
 	if(in_camera_mode)
