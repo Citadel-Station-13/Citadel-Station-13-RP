@@ -50,6 +50,7 @@
  *   without updating the whole list at once.
  * * Nested data is an advanced concept that the majority of UIs will never need.
  *   As such, it is not updated automatically. Use `push_ui_nested_data()` to manually push updates.
+ * * This will only be called on initial opens and when static data is being updated.
  *
  * @params
  * * user - (optional) the mob using the UI

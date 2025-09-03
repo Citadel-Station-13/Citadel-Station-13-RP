@@ -85,7 +85,7 @@
 
 /datum/game_preference_entry/toggle/tgui_fancy/on_set(client/user, value, first_init)
 	. = ..()
-	INVOKE_ASYNC(user, TYPE_VERB_REF(/client, refresh_tgui))
+	INVOKE_ASYNC(user, TYPE_PROC_REF(/client, refresh_tgui))
 
 /datum/game_preference_entry/toggle/tgui_lock
 	name = "Lock TGUI to main monitor"
@@ -97,7 +97,7 @@
 
 /datum/game_preference_entry/toggle/tgui_lock/on_set(client/user, value, first_init)
 	. = ..()
-	INVOKE_ASYNC(user, TYPE_VERB_REF(/client, refresh_tgui))
+	INVOKE_ASYNC(user, TYPE_PROC_REF(/client, refresh_tgui))
 
 /datum/game_preference_entry/toggle/ui_scale
 	name = "Toggle UI scaling"
@@ -109,7 +109,7 @@
 
 /datum/game_preference_entry/toggle/ui_scale/on_set(client/user, value, first_init)
 	. = ..()
-	INVOKE_ASYNC(user, TYPE_VERB_REF(/client, refresh_tgui))
+	INVOKE_ASYNC(user, TYPE_PROC_REF(/client, refresh_tgui))
 
 /datum/game_preference_entry/toggle/tgui_input
 	name = "Toggle TGUI Input"

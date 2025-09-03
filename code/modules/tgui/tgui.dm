@@ -336,7 +336,7 @@
 		json_data["static_data"] = static_data
 	if(src_object.tgui_shared_states)
 		json_data["shared"] = src_object.tgui_shared_states
-	var/list/nestedData = src_object.ui_nested_data(user, src)
+	var/list/nestedData = with_static_data ? src_object.ui_nested_data(user, src) : list()
 	// static first
 	if(with_static_data)
 		json_data["static"] = src_object.ui_static_data(user, src)
