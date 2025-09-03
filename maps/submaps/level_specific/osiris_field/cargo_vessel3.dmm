@@ -360,8 +360,6 @@
 /area/submap/osiris_field/cargo_vessel3)
 "KR" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/disk/limb/dsi_teshari,
-/obj/item/disk/species/teshari,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/submap/osiris_field/cargo_vessel3)
 "MT" = (
