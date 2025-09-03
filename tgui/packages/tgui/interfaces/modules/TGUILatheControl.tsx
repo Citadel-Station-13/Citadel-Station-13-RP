@@ -69,16 +69,16 @@ export const generateDynamicButton = (name, mode, actFunction) => {
 
 export const autodetectMaterials = (context) => {
 
-  const { data, act, moduleID } = useModule<TGUILatheControlData>(context);
+  const { data, act, moduleID } = useLegacyModule<TGUILatheControlData>();
 
   let design: Design;
 
   for (design of Object.values(data.designs.instances)) {
     // materials: key = material id
     // mats maps parts to materials. i think? ask kevinz.
-    let [mats, setMats] = useLocalState<Record<string, string>>(context, `${moduleID}-${design.id}-mats`, {});
+    let [mats, setMats] = useLocalState<Record<string, string>>(`${moduleID}-${design.id}-mats`, {});
     // ingredients: key = ingredient id/value
-    let [inds, setInds] = useLocalState<Record<string, string>>(context, `${moduleID}-${design.id}-inds`, {});
+    let [inds, setInds] = useLocalState<Record<string, string>>(`${moduleID}-${design.id}-inds`, {});
     if (!areMaterialsChosen(design.material_parts || {}, mats) && design.autodetect_tags && design.material_parts) {
       Object.entries(design.material_parts).map(([name, amt]) => {
         for (let matkey in data.materialsContext.materials) {
@@ -105,7 +105,7 @@ export const autodetectMaterials = (context) => {
 
 export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
 
-  const { data, act } = useModule<TGUILatheControlData>(context);
+  const { data, act } = useLegacyModule<TGUILatheControlData>();
 
   const [category, setCategory] = useLocalState<string>(
     `${data.$ref}-category`,
