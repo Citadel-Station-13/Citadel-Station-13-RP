@@ -176,7 +176,7 @@
 	. = list()
 	if(src.silence_time)
 		var/timeleft = round((silence_time - world.timeofday)/10 ,1)
-		STATPANEL_DATA_LINE("Communications system reboot in -[(timeleft / 60) % 60]:[add_zero(num2text(timeleft % 60), 2)]")
+		INJECT_STATPANEL_DATA_LINE(., "Communications system reboot in -[(timeleft / 60) % 60]:[add_zero(num2text(timeleft % 60), 2)]")
 
 /mob/living/silicon/pai/statpanel_data(client/C)
 	. = ..()
@@ -337,7 +337,8 @@
 	if(initial(path.slot_flags) & SLOT_OCLOTHING)
 		return /obj/item/clothing/suit
 
-/mob/living/silicon/pai/AltClickOn(var/atom/A)
+/mob/living/silicon/pai/alt_click_on(atom/target, location, control, list/params)
+	var/atom/A = target
 	if((isobj(A) || ismob(A)) && in_range_of(src, A) && !istype(A, /obj/item/paicard) && !istype(A, /obj/effect/pai_hologram))
 		if(world.time > last_scanned_time + 600)
 			last_scanned_time = world.time
@@ -345,6 +346,8 @@
 			to_chat(src, "You scan the [A.name]")
 		else
 			to_chat(src, "You need to wait [((last_scanned_time+600) - world.time)/10] seconds to scan another object.")
+		return TRUE
+	return ..()
 
 /mob/living/silicon/pai/proc/scan_object(var/atom/A)
 	var/icon/hologram_icon = render_hologram_icon(A, 210, TRUE, TRUE, "_pai")

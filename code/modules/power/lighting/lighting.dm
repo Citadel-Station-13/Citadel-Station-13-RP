@@ -862,10 +862,6 @@ var/global/list/light_type_cache = list()
 	to_chat(user, "<span class='notice'>Emergency lights for this fixture have been [no_emergency ? "disabled" : "enabled"].</span>")
 	update(FALSE)
 
-// ai alt click - Make light flicker.  Very important for atmosphere.
-/obj/machinery/light/AIAltClick(mob/user)
-	flicker(1)
-
 /obj/machinery/light/flamp/attack_ai(mob/user)
 	attack_hand()
 	return

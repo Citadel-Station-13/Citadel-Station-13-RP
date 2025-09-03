@@ -103,7 +103,7 @@ const ButtonDisplay = (props, context) => {
       wrap>
       {buttons?.map((button, index) =>
         !!large_buttons && buttons.length < 3 ? (
-          <Flex.Item grow key={index}>
+          <Flex.Item grow={1} key={index}>
             <AlertButton
               button={button}
               id={index.toString()}

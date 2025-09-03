@@ -69,10 +69,10 @@
 
 			if(istype(I, /obj/item))
 				var/obj/item/W = I
-				W.melee_interaction_chain(chosen_target, user)
+				W.lazy_melee_interaction_chain(chosen_target, user)
 				W.afterattack(chosen_target, user)
 			else
-				I.melee_interaction_chain(chosen_target, user)
+				I.lazy_melee_interaction_chain(chosen_target, user)
 				I.afterattack(chosen_target, user)
 		else
 			chosen_target.attack_hand(user)

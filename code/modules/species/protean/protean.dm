@@ -71,7 +71,8 @@
 		O_BRAIN = /obj/item/organ/internal/mmi_holder/posibrain/nano,
 		O_ORCH = /obj/item/organ/internal/nano/orchestrator,
 		O_FACT = /obj/item/organ/internal/nano/refactory/loaded,
-		)
+		O_RIG_SUBCORE = /obj/item/organ/internal/rig_subcore/protean,
+	)
 
 	vision_organ = O_BRAIN
 	has_limbs = list(
@@ -179,9 +180,6 @@
 		else
 			H.nif.durability = rand(21,25)
 
-	var/obj/item/hardsuit/protean/prig = new /obj/item/hardsuit/protean(H)
-	prig.myprotean = H
-
 /datum/species/protean/apply_racial_gear(mob/living/carbon/for_target, list/into_box, list/into_inv)
 	var/obj/item/clothing/accessory/permit/nanotech/permit = new
 	permit.set_name(for_target.real_name)
@@ -234,19 +232,19 @@
 	. = ..()
 	var/obj/item/organ/internal/nano/refactory/refactory = H.nano_get_refactory()
 	if(refactory && !(refactory.status & ORGAN_DEAD))
-		STATPANEL_DATA_LINE("- -- --- Refactory Metal Storage --- -- -")
+		INJECT_STATPANEL_DATA_LINE(., "- -- --- Refactory Metal Storage --- -- -")
 		var/max = refactory.max_storage
 		for(var/material in refactory.stored_materials)
 			var/amount = refactory.get_stored_material(material)
-			STATPANEL_DATA_ENTRY("[capitalize(material)]", "[amount]/[max]")
+			INJECT_STATPANEL_DATA_ENTRY(., "[capitalize(material)]", "[amount]/[max]")
 	else
-		STATPANEL_DATA_LINE("- -- --- REFACTORY ERROR! --- -- -")
+		INJECT_STATPANEL_DATA_LINE(., "- -- --- REFACTORY ERROR! --- -- -")
 
-	STATPANEL_DATA_LINE("- -- --- Abilities (Shift+LMB Examines) --- -- -")
+	INJECT_STATPANEL_DATA_LINE(., "- -- --- Abilities (Shift+LMB Examines) --- -- -")
 	for(var/ability in protean_abilities)
 		var/obj/effect/protean_ability/A = ability
 		A.atom_button_text()
-		STATPANEL_DATA_CLICK("[icon2html(A, C)] [A.ability_name]", "[A.name]", "\ref[A]")
+		INJECT_STATPANEL_DATA_CLICK(., "[icon2html(A, C)] [A.ability_name]", "[A.name]", "\ref[A]")
 
 // Various modifiers
 /datum/modifier/protean

@@ -253,7 +253,7 @@ class CharacterLoadoutEntry extends Component<CharacterLoadoutEntryProps, Charac
               )}
               {this.state.editingName? (
                 <Input
-                  value={this.props.selected?.rename}
+                  value={this.props.selected?.rename || ""}
                   onChange={(e, val) => {
                     this.props.customizeNameAct?.(this.props.entry.id, val);
                     this.setState((prevState) => ({ ...prevState, editingName: false }));

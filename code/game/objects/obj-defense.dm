@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
 
 /obj/is_melee_targetable(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	return obj_flags & OBJ_MELEE_TARGETABLE
@@ -23,11 +23,14 @@
 	// todo: /atom/movable/proc/throw_impact_attack(atom/target)
 	if(temporary_legacy_dont_auto_handle_obj_damage_for_mechs)
 		return
+	var/inflicted_damage
 	if(isitem(AM))
 		var/obj/item/I = AM
-		inflict_atom_damage(I.throw_force * TT.get_damage_multiplier(src), TT.get_damage_tier(src), I.damage_flag, I.damage_mode, ATTACK_TYPE_THROWN, AM)
+		inflicted_damage = inflict_atom_damage(I.throw_force * TT.get_damage_multiplier(src), TT.get_damage_tier(src), I.damage_flag, I.damage_mode, ATTACK_TYPE_THROWN, AM)
 	else
-		inflict_atom_damage(AM.throw_force * TT.get_damage_multiplier(src), TT.get_damage_tier(src), ARMOR_MELEE, null, ATTACK_TYPE_THROWN, AM)
+		inflicted_damage = inflict_atom_damage(AM.throw_force * TT.get_damage_multiplier(src), TT.get_damage_tier(src), ARMOR_MELEE, null, ATTACK_TYPE_THROWN, AM)
+	if(inflicted_damage)
+		playsound(src, hitsound_throwhit(AM), 75)
 	// if we got destroyed
 	if(QDELETED(src) && (obj_flags & OBJ_ALLOW_THROW_THROUGH))
 		. |= COMPONENT_THROW_HIT_PIERCE
@@ -44,10 +47,18 @@
 			return
 	return ..()
 
-/obj/hitsound_throwhit(obj/item/I)
+/obj/hitsound_throwhit(atom/movable/impacting)
 	if(!isnull(material_primary))
 		var/datum/prototype/material/primary = get_primary_material()
-		. = I.damage_type == DAMAGE_TYPE_BURN? primary.sound_melee_burn : primary.sound_melee_brute
+
+		var/resolved_damage_type
+		if(isitem(impacting))
+			var/obj/item/casted_item = impacting
+			resolved_damage_type = casted_item.damage_type
+		else
+			resolved_damage_type = DAMAGE_TYPE_BRUTE
+
+		. = resolved_damage_type == DAMAGE_TYPE_BURN? primary.sound_melee_burn : primary.sound_melee_brute
 		if(!isnull(.))
 			return
 	return ..()

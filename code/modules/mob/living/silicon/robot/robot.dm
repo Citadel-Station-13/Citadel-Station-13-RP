@@ -515,23 +515,23 @@
 /mob/living/silicon/robot/statpanel_data(client/C)
 	. = ..()
 	if(C.statpanel_tab("Status"))
-		STATPANEL_DATA_LINE("")
+		INJECT_STATPANEL_DATA_LINE(., "")
 		if(cell)
-			STATPANEL_DATA_LINE("Charge Left: [round(cell.percent())]%")
-			STATPANEL_DATA_LINE("Cell Rating: [round(cell.maxcharge)]") // Round just in case we somehow get crazy values
-			STATPANEL_DATA_LINE("Power Cell Load: [round(used_power_this_tick)]W")
+			INJECT_STATPANEL_DATA_LINE(., "Charge Left: [round(cell.percent())]%")
+			INJECT_STATPANEL_DATA_LINE(., "Cell Rating: [round(cell.maxcharge)]") // Round just in case we somehow get crazy values
+			INJECT_STATPANEL_DATA_LINE(., "Power Cell Load: [round(used_power_this_tick)]W")
 		else
-			STATPANEL_DATA_LINE("No Cell Inserted!")
-		STATPANEL_DATA_LINE("Lights: [lights_on ? "ON" : "OFF"]")
-		STATPANEL_DATA_LINE("")
+			INJECT_STATPANEL_DATA_LINE(., "No Cell Inserted!")
+		INJECT_STATPANEL_DATA_LINE(., "Lights: [lights_on ? "ON" : "OFF"]")
+		INJECT_STATPANEL_DATA_LINE(., "")
 		// if you have a jetpack, show the internal tank pressure
 		var/obj/item/tank/jetpack/current_jetpack = installed_jetpack()
 		if (current_jetpack)
-			STATPANEL_DATA_ENTRY("Internal Atmosphere Info", current_jetpack.name)
-			STATPANEL_DATA_ENTRY("Tank Pressure", current_jetpack.air_contents.return_pressure())
+			INJECT_STATPANEL_DATA_ENTRY(., "Internal Atmosphere Info", current_jetpack.name)
+			INJECT_STATPANEL_DATA_ENTRY(., "Tank Pressure", current_jetpack.air_contents.return_pressure())
 		if(module)
 			for(var/datum/matter_synth/ms in module.synths)
-				STATPANEL_DATA_LINE("[ms.name]: [ms.energy]/[ms.max_energy]")
+				INJECT_STATPANEL_DATA_LINE(., "[ms.name]: [ms.energy]/[ms.max_energy]")
 
 /mob/living/silicon/robot/restrained()
 	return 0

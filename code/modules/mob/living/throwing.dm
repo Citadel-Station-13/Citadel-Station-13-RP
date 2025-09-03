@@ -28,7 +28,7 @@
 	if(!I.throw_resolve_override(throwing, src))
 		// drop item
 		if(is_in_inventory(I))
-			if(!drop_item_to_ground(I))
+			if(!drop_item_to_ground(I, INV_OP_SUPPRESS_SOUND))
 				to_chat(src, SPAN_WARNING("You fail to throw [I] at [target]."))
 				return FALSE
 		else

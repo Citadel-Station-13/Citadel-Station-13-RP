@@ -56,7 +56,7 @@ export const InputButtons = (props: InputButtonsProps, context) => {
       fill
       justify="space-around">
       {large_buttons ? (
-        <Flex.Item grow>{cancelButton}</Flex.Item>
+        <Flex.Item grow={1}>{cancelButton}</Flex.Item>
       ) : (
         <Flex.Item>{cancelButton}</Flex.Item>
       )}
@@ -68,7 +68,7 @@ export const InputButtons = (props: InputButtonsProps, context) => {
         </Flex.Item>
       )}
       {large_buttons ? (
-        <Flex.Item grow>{submitButton}</Flex.Item>
+        <Flex.Item grow={1}>{submitButton}</Flex.Item>
       ) : (
         <Flex.Item>{submitButton}</Flex.Item>
       )}

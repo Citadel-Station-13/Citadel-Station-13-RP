@@ -131,6 +131,19 @@
 /mob/living/proc/heal_oxy_loss(amount)
 	return 0
 
+// heal ONE external organ, organ gets randomly selected from damaged ones.
+/mob/living/proc/heal_organ_damage(var/brute, var/burn)
+	adjustBruteLoss(-brute)
+	adjustFireLoss(-burn)
+	src.update_health()
+
+// heal MANY external organs, in random order
+/mob/living/proc/heal_overall_damage(var/brute, var/burn)
+	adjustBruteLoss(-brute)
+	adjustFireLoss(-burn)
+	src.update_health()
+
+
 //* Raw Damage *//
 
 /**

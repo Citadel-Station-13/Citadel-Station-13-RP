@@ -5,44 +5,35 @@
 
 //? Click-Chain system - using an item in hand to "attack", whether in melee or ranged.
 
-// todo: refactor attack object/mob to just melee_attack_chain and a single melee attack system or something
-// todo: yeah most of this file needs re-evaluated again, especially for event_args/actor/clickchain support & right clicks
+/obj/item/proc/lazy_melee_interaction_chain(atom/target, mob/user, clickchain_flags, list/click_params)
+	var/datum/event_args/actor/clickchain/clickchain = new
+	clickchain.performer = clickchain.initiator = user
+	clickchain.using_intent = user.a_intent
+	clickchain.click_params = click_params || list()
+	clickchain.target = target
+	clickchain.target_zone = user.zone_sel?.selecting || BP_TORSO
+	return melee_interaction_chain(clickchain, clickchain_flags)
 
 /**
  * Called when trying to click something that the user can Reachability() to.
  *
- * todo: this should allow passing in a clickchain datum instead.
- * todo: lazy_melee_attack() for when you don't want to.
- *
  * @params
- * - target - thing hitting
- * - user - user using us
- * - clickchain_flags - see [code/__DEFINES/procs/clickcode.dm]
- * - params - params as list.
+ * * clickchain - clickchain data
+ * * clickchain_flags - see [code/__DEFINES/procs/clickcode.dm]
  */
-/obj/item/proc/melee_interaction_chain(atom/target, mob/user, clickchain_flags, list/params)
-	// todo: this should be not overridable but it's not right now for indirection handling. we should just have
-	//       an alternative indirection proc.
-	// SHOULD_NOT_OVERRIDE(TRUE)
-
+/obj/item/proc/melee_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	// wow we have a lot of params
 	// if only this was ss14 so we could have the EntityEventArgs :pleading:
 
 	. = clickchain_flags
-
-	var/datum/event_args/actor/clickchain/e_args = new(user)
-	e_args.target = target
-	e_args.click_params = params
-
-	if(!(. & CLICKCHAIN_FLAGS_INTERACT_ABORT) && ((. |= item_attack_chain(e_args, .)) & CLICKCHAIN_DO_NOT_PROPAGATE))
+	if(!(. & CLICKCHAIN_FLAGS_INTERACT_ABORT) && ((. |= item_attack_chain(clickchain, .)) & CLICKCHAIN_DO_NOT_PROPAGATE))
 		return
 
-	// todo: should only have e_args and clickchain_flags as params.
-	if(!(. & CLICKCHAIN_FLAGS_INTERACT_ABORT) && ((. |= tool_attack_chain(target, user, ., params)) & CLICKCHAIN_DO_NOT_PROPAGATE))
+	if(!(. & CLICKCHAIN_FLAGS_INTERACT_ABORT) && ((. |= tool_attack_chain(clickchain, .)) & CLICKCHAIN_DO_NOT_PROPAGATE))
 		return
 
 	// todo: is pre_attack really needed/justified?
-	if(!(. & (CLICKCHAIN_FLAGS_INTERACT_ABORT | CLICKCHAIN_FLAGS_ATTACK_ABORT)) && ((. |= pre_attack(target, user, ., params)) & CLICKCHAIN_DO_NOT_PROPAGATE))
+	if(!(. & (CLICKCHAIN_FLAGS_INTERACT_ABORT | CLICKCHAIN_FLAGS_ATTACK_ABORT)) && ((. |= pre_attack(clickchain.target, clickchain.performer, ., clickchain.click_params)) & CLICKCHAIN_DO_NOT_PROPAGATE))
 		return
 
 	// todo: refactor
@@ -52,27 +43,24 @@
 	// - melee attack & receive melee attack (melee_interaction() on /atom? not item_melee_act directly?)
 	// - melee attack shouldn't require attackby() to allow it to, it should be automatic on harm intent (?)
 	// - the item should have final say but we need a way to allow click redirections so..
-	if(!(. & CLICKCHAIN_FLAGS_INTERACT_ABORT) && ((. |= resolve_attackby(target, user, params, null, ., e_args)) & CLICKCHAIN_DO_NOT_PROPAGATE))
+	if(!(. & CLICKCHAIN_FLAGS_INTERACT_ABORT) && ((. |= resolve_attackby(clickchain.target, clickchain.performer, clickchain.click_params, null, ., clickchain)) & CLICKCHAIN_DO_NOT_PROPAGATE))
 		return
 
 	// todo: signal for afterattack here
-	return . | afterattack(target, user, clickchain_flags, params)
+	return . | afterattack(clickchain.target, clickchain.performer, clickchain_flags, clickchain.click_params)
+
+// TODO: lazy_ranged_interaction_chain
 
 /**
  * Called when trying to click something that the user can't Reachability() to.
  *
- * todo: this should allow passing in a clickchain datum instead.
- * todo: lazy_ranged_attack() for when you don't want to.
- *
  * @params
- * - target - thing hitting
- * - user - user using us
- * - clickchain_flags - see [code/__DEFINES/procs/clickcode.dm]
- * - params - params as list.
+ * * clickchain - clickchain data
+ * * clickchain_flags - see [code/__DEFINES/procs/clickcode.dm]
  */
-/obj/item/proc/ranged_interaction_chain(atom/target, mob/user, clickchain_flags, list/params)
+/obj/item/proc/ranged_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	// todo: signal for afterattack here
-	return clickchain_flags | afterattack(target, user, clickchain_flags, params)
+	return clickchain_flags | afterattack(clickchain.target, clickchain.performer, clickchain_flags, clickchain.click_params)
 
 /**
  * called at the start of melee attack chains

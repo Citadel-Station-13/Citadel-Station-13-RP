@@ -4,12 +4,10 @@
 /**
  * Called when trying to click something that the user can Reachability() to,
  * to allow for the tool system to intercept the attack as a tool action.
- *
- * todo: should only have e_args and clickchain_flags as params.
  */
-/obj/item/proc/tool_attack_chain(atom/target, mob/user, clickchain_flags, list/params)
+/obj/item/proc/tool_attack_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	// are we on harm intent? if so, lol no
-	if(user && (user.a_intent == INTENT_HARM))
+	if(clickchain.initiator?.a_intent == INTENT_HARM)
 		return NONE
-	return target.tool_interaction(src, new /datum/event_args/actor/clickchain(user, target = target, params = params), clickchain_flags | CLICKCHAIN_TOOL_ACT)
+	return clickchain.target.tool_interaction(src, clickchain, clickchain_flags | CLICKCHAIN_TOOL_ACT)

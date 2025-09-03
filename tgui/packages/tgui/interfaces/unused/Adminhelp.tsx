@@ -2,6 +2,7 @@ import { BooleanLike } from "common/react";
 import { useBackend, useLocalState } from "../../backend";
 import { TextArea, Stack, Button, NoticeBox, Input, Box } from "../../components";
 import { Window } from "../../layouts";
+import { WindowTheme } from "../../styles/themes/typedef";
 
 type AdminhelpData = {
   adminCount: number,
@@ -26,7 +27,7 @@ export const Adminhelp = (props, context) => {
   return (
     <Window
       title="Create Adminhelp"
-      theme="admin"
+      theme={WindowTheme.Admin}
       height={300}
       width={500}>
       <Window.Content style={{

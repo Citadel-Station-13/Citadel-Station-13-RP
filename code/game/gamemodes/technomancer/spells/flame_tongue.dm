@@ -54,7 +54,7 @@
 		var/resolved = hit_atom.attackby(welder, user)
 		if(!resolved && welder && hit_atom)
 			if(pay_energy(500))
-				welder.melee_interaction_chain(hit_atom, user, def_zone)
+				welder.lazy_melee_interaction_chain(hit_atom, user, def_zone)
 				adjust_instability(4)
 		if(welder && user && (welder.loc == user))
 			welder.loc = src

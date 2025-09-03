@@ -101,7 +101,7 @@
 			to_chat(user, "<span class='warning'>Access denied.</span>")
 		return
 	if(brainmob)
-		O.melee_interaction_chain(brainmob, user)//Oh noooeeeee
+		O.lazy_melee_interaction_chain(brainmob, user)//Oh noooeeeee
 		return
 	..()
 
@@ -153,10 +153,10 @@
 /obj/item/mmi/relaymove(var/mob/user, var/direction)
 	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE))
 		return
-	var/obj/item/hardsuit/hardsuit = src.get_hardsuit()
-	if(hardsuit)
-		if(istype(hardsuit,/obj/item/hardsuit))
-			hardsuit.forced_move(direction, user)
+	// var/obj/item/hardsuit/hardsuit = src.get_hardsuit()
+	// if(hardsuit)
+	// 	if(istype(hardsuit,/obj/item/hardsuit))
+	// 		hardsuit.forced_move(direction, user)
 
 /obj/item/mmi/Destroy()
 	if(isrobot(loc))

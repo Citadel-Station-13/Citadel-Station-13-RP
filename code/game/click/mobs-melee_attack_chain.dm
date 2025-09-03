@@ -11,7 +11,7 @@
  * todo: how to inject style?
  *
  * @params
- * * e_args - the clickchain data, including who's doing the interaction
+ * * clickchain - the clickchain data, including who's doing the interaction
  * * clickchain_flags - the clickchain flags given
  *
  * @return CLICKCHAIN_* flags. These are added / interpreted by the caller.
@@ -23,7 +23,7 @@
 
 	if(clickchain_flags & CLICKCHAIN_DO_NOT_ATTACK)
 		return clickchain_flags
-	if(!clickchain.target.is_melee_targetable(clickchain, clickchain_flags))
+	if(!clickchain.target?.is_melee_targetable(clickchain, clickchain_flags))
 		return clickchain_flags
 
 	var/datum/melee_attack/unarmed/using_style = default_unarmed_attack_style()

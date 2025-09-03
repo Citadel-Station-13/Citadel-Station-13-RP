@@ -18,12 +18,12 @@
 		if(istype(with_item, /obj/item/stack/material))
 			var/obj/item/stack/material/with_mat_stack = with_item
 			possible = RSflooring.build_material_lookup[with_mat_stack.material.id]
-			has_amount = with_mat_stack.amount
+			has_amount = with_mat_stack.get_amount()
 			using_stack = with_mat_stack
 		else
 			var/obj/item/stack/with_stack = with_item
 			possible = RSflooring.build_item_lookup[with_stack.get_use_as_type()]
-			has_amount = with_stack.amount
+			has_amount = with_stack.get_amount()
 			using_stack = with_stack
 	if(!possible)
 		return FALSE
