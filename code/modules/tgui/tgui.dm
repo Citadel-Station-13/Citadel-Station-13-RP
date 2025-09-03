@@ -518,7 +518,7 @@
  *
  * @return TRUE if data was sent, FALSE otherwise.
  */
-/datum/tgui/proc/push_ui_nested_data(list/updates, force)
+/datum/tgui/proc/push_nested_data(list/updates, force)
 	if(isnull(user.client) || !initialized || closing)
 		return FALSE
 	if(!force && status < UI_UPDATE)

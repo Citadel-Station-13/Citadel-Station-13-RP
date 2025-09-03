@@ -201,12 +201,12 @@
 /datum/proc/push_ui_nested_data(mob/user, datum/tgui/ui, list/updates)
 	if(!user)
 		for (var/datum/tgui/window as anything in open_uis)
-			window.push_ui_nested_data(updates)
+			window.push_nested_data(updates)
 		return
 	if(!ui)
 		ui = SStgui.get_open_ui(user, src)
 	if(ui)
-		ui.push_ui_nested_data(updates)
+		ui.push_nested_data(updates)
 
 /**
  * public
