@@ -1,14 +1,13 @@
 /datum/prototype/design/science/general
 	abstract_type = /datum/prototype/design/science/general
 
-/datum/prototype/design/science/general/generate_name(template)
-	return "General purpose design ([..()])"
+
 
 /datum/prototype/design/science/general/communicator
 	design_name = "Communicator"
 	id = "communicator"
 	req_tech = list(TECH_DATA = 2, TECH_MAGNET = 2)
-	materials_base = list(MAT_STEEL = 500, MAT_GLASS = 500)
+	materials_base = list(MAT_STEEL = 250, MAT_GLASS = 125)
 	category = DESIGN_CATEGORY_TELECOMMUNICATIONS
 	build_path = /obj/item/communicator
 
@@ -17,7 +16,7 @@
 	desc = "Don't shine it in your eyes!"
 	id = "laser_pointer"
 	req_tech = list(TECH_MAGNET = 3)
-	materials_base = list(MAT_STEEL = 100, MAT_GLASS = 50)
+	materials_base = list(MAT_STEEL = 75, MAT_GLASS = 50)
 	category = DESIGN_CATEGORY_RECREATION
 	build_path = /obj/item/laser_pointer
 
@@ -25,14 +24,14 @@
 	design_name = "handheld translator"
 	id = "translator"
 	req_tech = list(TECH_DATA = 3, TECH_ENGINEERING = 3)
-	materials_base = list(MAT_STEEL = 3000, MAT_GLASS = 3000)
+	materials_base = list(MAT_STEEL = 350, MAT_GLASS = 250)
 	build_path = /obj/item/universal_translator
 
 /datum/prototype/design/science/general/ear_translator
 	design_name = "earpiece translator"
 	id = "ear_translator"
 	req_tech = list(TECH_DATA = 5, TECH_ENGINEERING = 5)	//It's been hella miniaturized.
-	materials_base = list(MAT_STEEL = 2000, MAT_GLASS = 2000, MAT_GOLD = 1000)
+	materials_base = list(MAT_STEEL = 200, MAT_GLASS = 200, MAT_GOLD = 100)
 	build_path = /obj/item/universal_translator/ear
 
 /datum/prototype/design/science/general/light_replacer
@@ -40,7 +39,7 @@
 	desc = "A device to automatically replace lights. Refill with working lightbulbs."
 	id = "light_replacer"
 	req_tech = list(TECH_MAGNET = 3, TECH_MATERIAL = 4)
-	materials_base = list(MAT_STEEL = 1500, MAT_SILVER = 150, MAT_GLASS = 3000)
+	materials_base = list(MAT_STEEL = 500, MAT_SILVER = 150, MAT_GLASS = 250)
 	build_path = /obj/item/lightreplacer
 
 /datum/prototype/design/science/illegal
@@ -54,7 +53,7 @@
 	desc = "Allows for deciphering the binary channel on-the-fly."
 	id = "binaryencrypt"
 	req_tech = list(TECH_ILLEGAL = 2)
-	materials_base = list(MAT_STEEL = 300, MAT_GLASS = 300)
+	materials_base = list(MAT_STEEL = 75, MAT_GLASS = 25)
 	build_path = /obj/item/encryptionkey/binary
 
 /datum/prototype/design/science/illegal/chameleon
@@ -69,7 +68,7 @@
 	design_name = "Bluespace jumpsuit"
 	id = "bsjumpsuit"
 	req_tech = list(TECH_BLUESPACE = 2, TECH_MATERIAL = 3, TECH_POWER = 2)
-	materials_base = list(MAT_STEEL = 4000, MAT_GLASS = 4000)
+	materials_base = list(MAT_STEEL = 500, MAT_GLASS = 125)
 	category = DESIGN_CATEGORY_RECREATION
 	build_path = /obj/item/clothing/under/bluespace
 
@@ -78,7 +77,7 @@
 	id = "sizegun"
 	category = DESIGN_CATEGORY_RECREATION
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_POWER = 2)
-	materials_base = list(MAT_STEEL = 3000, MAT_GLASS = 2000, MAT_URANIUM = 2000)
+	materials_base = list(MAT_STEEL = 1500, MAT_GLASS = 750, MAT_URANIUM = 250)
 	build_path = /obj/item/gun/projectile/energy/sizegun
 
 /datum/prototype/design/science/general/inducer_sci
@@ -87,7 +86,7 @@
 	category = DESIGN_CATEGORY_POWER
 	subcategory = DESIGN_SUBCATEGORY_CHARGING
 	req_tech = list(TECH_BLUESPACE = 4, TECH_MATERIAL = 5, TECH_POWER = 6)
-	materials_base = list(MAT_STEEL = 8000, MAT_GLASS = 2000, MAT_URANIUM = 4000, MAT_PHORON = 4000)
+	materials_base = list(MAT_STEEL = 2000, MAT_GLASS = 1500, MAT_URANIUM = 750, MAT_PHORON = 250)
 	build_path = /obj/item/inducer/sci
 
 /datum/prototype/design/science/general/inducer_eng
@@ -96,21 +95,21 @@
 	category = DESIGN_CATEGORY_POWER
 	subcategory = DESIGN_SUBCATEGORY_CHARGING
 	req_tech = list(TECH_BLUESPACE = 5, TECH_MATERIAL = 7, TECH_POWER = 7)
-	materials_base = list(MAT_STEEL = 9000, MAT_GLASS = 3000, MAT_URANIUM = 5000, MAT_PHORON = 6000, MAT_DIAMOND = 1000) // Cit change until we have more of a need for titanium, MAT_TITANIUM = 2000)
+	materials_base = list(MAT_STEEL = 2000, MAT_GLASS = 1500, MAT_URANIUM = 1000, MAT_GOLD = 375, MAT_SILVER = 400, MAT_DIAMOND = 250)
 	build_path = /obj/item/inducer/unloaded
 
 /datum/prototype/design/science/general/translator_all
 	design_name = "handheld omni-translator"
 	id = "translator_all"
 	req_tech = list(TECH_DATA = 5, TECH_ENGINEERING = 5)
-	materials_base = list(MAT_STEEL = 3000, MAT_GLASS = 3000, MAT_GOLD = 500, MAT_SILVER = 500)
+	materials_base = list(MAT_STEEL = 500, MAT_GLASS = 250, MAT_GOLD = 250, MAT_SILVER = 250)
 	build_path = /obj/item/universal_translator/adaptive
 
 /datum/prototype/design/science/general/ear_translator_all
 	design_name = "earpiece omni-translator"
 	id = "ear_translator_all"
 	req_tech = list(TECH_DATA = 6, TECH_ENGINEERING = 6)	//dude what hte fuck lmao
-	materials_base = list(MAT_STEEL = 2000, MAT_GLASS = 2000, MAT_GOLD = 2000, MAT_SILVER = 2000)
+	materials_base = list(MAT_STEEL = 500, MAT_GLASS = 250, MAT_GOLD = 250, MAT_SILVER = 250)
 	build_path = /obj/item/universal_translator/ear/adaptive
 
 /datum/prototype/design/science/advmop
@@ -118,7 +117,7 @@
 	desc = "An upgraded mop with a large internal capacity for holding water or other cleaning chemicals."
 	id = "advmop"
 	req_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 4, TECH_POWER = 3)
-	materials_base = list(MAT_PLASTIC = 2500, MAT_STEEL = 500, MAT_COPPER = 200)
+	materials_base = list(MAT_PLASTIC = 1250, MAT_STEEL = 500, MAT_COPPER = 200)
 	build_path = /obj/item/mop/advanced
 
 /datum/prototype/design/science/holosign
@@ -126,7 +125,7 @@
 	desc = "A holograpic projector used to project various warning signs."
 	id = "holosign"
 	req_tech = list(TECH_ENGINEERING = 5, TECH_BLUESPACE = 4, TECH_POWER = 4)
-	materials_base = list(MAT_STEEL = 2000, MAT_GLASS = 1000)
+	materials_base = list(MAT_STEEL = 350, MAT_GLASS = 125)
 	build_path = /obj/item/holosign_creator
 
 /datum/prototype/design/science/blutrash
@@ -135,7 +134,7 @@
 	id = "blutrash"
 	category = DESIGN_CATEGORY_STORAGE
 	req_tech = list(TECH_BLUESPACE = 5, TECH_MATERIAL = 6)
-	materials_base = list(MAT_PLASTIC = 5000, MAT_GOLD = 1500, MAT_URANIUM = 250, MAT_PHORON = 1500)
+	materials_base = list(MAT_PLASTIC = 750, MAT_GOLD = 250, MAT_URANIUM = 375, MAT_PHORON = 500)
 	build_path = /obj/item/storage/bag/trash/bluespace
 
 /datum/prototype/design/science/reagent_synth_chemistry
@@ -144,7 +143,7 @@
 	id = "ReagentSynth"
 	subcategory = DESIGN_SUBCATEGORY_STATION
 	req_tech = list(TECH_BLUESPACE = 5, TECH_MATERIAL = 6, TECH_BIO = 5)
-	materials_base = list(MAT_STEEL = 4000, MAT_GLASS = 2000, MAT_URANIUM = 500, MAT_GOLD = 500, MAT_SILVER = 500)
+	materials_base = list(MAT_STEEL = 400, MAT_GLASS = 200, MAT_URANIUM = 500, MAT_GOLD = 500, MAT_SILVER = 500)
 	build_path = /obj/item/reagent_synth/chemistry
 
 /datum/prototype/design/science/size_standardization
@@ -153,7 +152,7 @@
 	id = "sizestandardbracelet"
 	category = DESIGN_CATEGORY_RECREATION
 	req_tech = list(TECH_BLUESPACE = 5, TECH_MATERIAL = 3, TECH_BIO = 4)
-	materials_base = list(MAT_STEEL = 1000)
+	materials_base = list(MAT_STEEL = 200)
 	build_path = /obj/item/clothing/gloves/size
 
 /datum/prototype/design/science/coffeepot_bluespace

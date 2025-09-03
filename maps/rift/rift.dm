@@ -93,7 +93,7 @@
 
 	station_name  = "NSB Atlas"
 	station_short = "Atlas"
-	dock_name     = "NTS Demeter"
+	dock_name     = "NCS Demeter"
 	dock_type     = "surface"
 	boss_name     = "Central Command"
 	boss_short    = "CentCom"

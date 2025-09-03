@@ -11,7 +11,7 @@ var/global/list/Holiday = list() //Holidays are lists now, so we can have more t
 //ALSO, MOST IMPORTANTLY: Don't add stupid stuff! Discuss bonus content with Project-Heads first please!//
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/hook/startup/proc/updateHoliday()
+/legacy_hook/startup/proc/updateHoliday()
 	Get_Holiday()
 	return 1
 

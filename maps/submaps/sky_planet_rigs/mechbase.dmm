@@ -249,7 +249,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/skyplanet/poi/mechbase)
 "Ow" = (
-/obj/machinery/mecha_part_fabricator,
+/obj/machinery/lathe/mecha_part_fabricator,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/submap/skyplanet/poi/mechbase)
 "OA" = (

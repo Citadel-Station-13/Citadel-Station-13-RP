@@ -8,24 +8,25 @@
  * gets an abstract sonar appearance
  */
 /datum/controller/subsystem/sonar/proc/get_shape_raw(type, color = "#ffffff")
-	RETURN_TYPE(/mutable_appearance)
-	var/mutable_appearance/MA = new
-	MA.icon = 'icons/screen/rendering/vfx/sonar.dmi'
-	MA.color = color
-	MA.alpha = 127
-	MA.plane = FLOAT_PLANE
-	MA.layer = FLOAT_LAYER
-	MA.appearance_flags = RESET_TRANSFORM | RESET_COLOR
+	RETURN_TYPE(/image)
+	var/image/rendering = new
+	rendering.icon = 'icons/screen/rendering/vfx/sonar.dmi'
+	rendering.color = color
+	rendering.alpha = 127
+	rendering.plane = FLOAT_PLANE
+	rendering.layer = FLOAT_LAYER
+	rendering.appearance_flags = RESET_TRANSFORM | RESET_COLOR
 	switch(type)
 		if(SONAR_IMAGE_CIRCLE)
-			MA.icon_state = "circle"
+			rendering.icon_state = "circle"
 		if(SONAR_IMAGE_HEXAGON)
-			MA.icon_state = "hexagon"
+			rendering.icon_state = "hexagon"
 		if(SONAR_IMAGE_SQUARE)
-			MA.icon_state = "square"
+			rendering.icon_state = "square"
 		if(SONAR_IMAGE_TRIANGLE)
-			MA.icon_state = "triangle"
+			rendering.icon_state = "triangle"
 		// SONAR_IMAGE_STATIC is not implemented.
+	return rendering
 
 // we don't use images because TILE_BOUND is awful
 // therefore we'll just use a plane directly for performance
@@ -81,22 +82,22 @@
 		return
 	if(invisibility)
 		return
-	var/mutable_appearance/MA
+	var/image/rendering
 	switch(resolution)
 		if(SONAR_RESOLUTION_VISIBLE)
 			if(ismob(src))
-				MA = vfx_clone_as_outline(127, 1, 0, 0)
+				rendering = vfx_clone_as_outline(127, 1, 0, 0)
 			else
-				MA = vfx_clone_as_outline(127)
+				rendering = vfx_clone_as_outline(127)
 		if(SONAR_RESOLUTION_WALLHACK)
-			MA = vfx_clone_as_greyscale()
+			rendering = vfx_clone_as_greyscale()
 		if(SONAR_RESOLUTION_BLOCKY)
-			MA = make_sonar_shape()
-	if(isnull(MA))
+			rendering = make_sonar_shape()
+	if(isnull(rendering))
 		return
-	. = MA
-	MA.pixel_x = pixel_x - (icon_x_dimension == WORLD_ICON_SIZE)? 0 : ((icon_x_dimension - WORLD_ICON_SIZE) / 2) + step_x
-	MA.pixel_y = pixel_y - (icon_y_dimension == WORLD_ICON_SIZE)? 0 : ((icon_y_dimension - WORLD_ICON_SIZE) / 2) + step_y
+	rendering.pixel_x = pixel_x - (icon_x_dimension == WORLD_ICON_SIZE)? 0 : ((icon_x_dimension - WORLD_ICON_SIZE) / 2) + step_x
+	rendering.pixel_y = pixel_y - (icon_y_dimension == WORLD_ICON_SIZE)? 0 : ((icon_y_dimension - WORLD_ICON_SIZE) / 2) + step_y
+	. = rendering
 
 /atom/proc/make_sonar_shape()
 	return
@@ -106,17 +107,17 @@
 		return
 	if(invisibility || !x)		// doing !x is turf or on turf check
 		return
-	var/mutable_appearance/MA
+	var/image/rendering
 	switch(resolution)
 		if(SONAR_RESOLUTION_VISIBLE)
-			MA = vfx_clone_as_outline(127)
+			rendering = vfx_clone_as_outline(127)
 		if(SONAR_RESOLUTION_WALLHACK)
-			MA = vfx_clone_as_greyscale()
+			rendering = vfx_clone_as_greyscale()
 		if(SONAR_RESOLUTION_BLOCKY)
-			MA = make_sonar_shape()
-	if(isnull(MA))
+			rendering = make_sonar_shape()
+	if(isnull(rendering))
 		return
-	. = MA
+	. = rendering
 
 /turf/make_sonar_shape()
 	if(!density)
@@ -124,7 +125,7 @@
 	return SSsonar.get_shape_raw(SONAR_IMAGE_SQUARE)
 
 /mob/make_sonar_shape()
-	var/mutable_appearance/MA = SSsonar.get_shape_raw(SONAR_IMAGE_SQUARE)
+	var/image/rendering = SSsonar.get_shape_raw(SONAR_IMAGE_SQUARE)
 	var/scale = 1
 	switch(mob_size)
 		if(MOB_TINY)
@@ -137,9 +138,9 @@
 			scale = 0.2
 		if(MOB_HUGE)
 			scale = 1.5
-	MA.transform = transform_matrix_construct(scale, 0, 0, scale, 0, 0)
-	MA.pixel_x = MA.pixel_y = round(WORLD_ICON_SIZE * (1 - scale) * 0.5, 1)
-	return MA
+	rendering.transform = transform_matrix_construct(scale, 0, 0, scale, 0, 0)
+	rendering.pixel_x = rendering.pixel_y = round(WORLD_ICON_SIZE * (1 - scale) * 0.5, 1)
+	return rendering
 
 /obj/vehicle/sealed/mecha/make_sonar_shape()
 	return SSsonar.get_shape_raw(SONAR_IMAGE_HEXAGON)
@@ -147,10 +148,10 @@
 /obj/make_sonar_shape()
 	if(!density)
 		return
-	var/mutable_appearance/MA = SSsonar.get_shape_raw(SONAR_IMAGE_SQUARE)
-	MA.transform = transform_matrix_construct(0.5, 0, 0, 0.5, 0, 0)
-	MA.pixel_x = MA.pixel_y = 8
-	return MA
+	var/image/rendering = SSsonar.get_shape_raw(SONAR_IMAGE_SQUARE)
+	rendering.transform = transform_matrix_construct(0.5, 0, 0, 0.5, 0, 0)
+	rendering.pixel_x = rendering.pixel_y = 8
+	return rendering
 
 // blacklist dumb things
 /obj/structure/catwalk/make_sonar_image(resolution)

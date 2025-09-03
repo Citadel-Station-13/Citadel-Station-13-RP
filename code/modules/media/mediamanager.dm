@@ -24,7 +24,7 @@
 	media.update_music()
 
 // Stop media when the round ends. I guess so it doesn't play forever or something (for some reason?)
-/hook/roundend/proc/stop_all_media()
+/legacy_hook/roundend/proc/stop_all_media()
 	log_debug(SPAN_DEBUG("Stopping all playing media..."))
 	// Stop all music.
 	for(var/mob/M in GLOB.mob_list)

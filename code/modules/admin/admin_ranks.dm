@@ -57,7 +57,7 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 	testing(msg)
 	#endif
 
-/hook/startup/proc/loadAdmins()
+/legacy_hook/startup/proc/loadAdmins()
 	load_admins()
 	return 1
 

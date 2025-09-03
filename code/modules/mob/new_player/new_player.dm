@@ -87,25 +87,25 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 /mob/new_player/statpanel_data(client/C)
 	. = ..()
 	if(C.statpanel_tab("Status"))
-		STATPANEL_DATA_LINE("")
+		INJECT_STATPANEL_DATA_LINE(., "")
 		if(SSticker.current_state == GAME_STATE_PREGAME)
 			if(SSticker.hide_mode)
-				STATPANEL_DATA_ENTRY("Game Mode:", "Secret")
+				INJECT_STATPANEL_DATA_ENTRY(., "Game Mode:", "Secret")
 			else
 				if(SSticker.hide_mode == 0)
-					STATPANEL_DATA_ENTRY("Game Mode:", "[config_legacy.mode_names[master_mode]]")	// Old setting for showing the game mode
+					INJECT_STATPANEL_DATA_ENTRY(., "Game Mode:", "[config_legacy.mode_names[master_mode]]")	// Old setting for showing the game mode
 			var/time_remaining = SSticker.GetTimeLeft()
 			if(time_remaining > 0)
-				STATPANEL_DATA_LINE("Time To Start: [round(time_remaining/10)]s")
+				INJECT_STATPANEL_DATA_LINE(., "Time To Start: [round(time_remaining/10)]s")
 			else if(time_remaining == -10)
-				STATPANEL_DATA_LINE("Time To Start: DELAYED")
+				INJECT_STATPANEL_DATA_LINE(., "Time To Start: DELAYED")
 			else
-				STATPANEL_DATA_LINE("Time To Start: SOON")
-			STATPANEL_DATA_ENTRY("Players: [totalPlayers]", "Players Ready: [totalPlayersReady]")
+				INJECT_STATPANEL_DATA_LINE(., "Time To Start: SOON")
+			INJECT_STATPANEL_DATA_ENTRY(., "Players: [totalPlayers]", "Players Ready: [totalPlayersReady]")
 			totalPlayers = 0
 			totalPlayersReady = 0
 			for(var/mob/new_player/player in GLOB.player_list)
-				STATPANEL_DATA_ENTRY("[player.key]", (player.ready)?("(Playing)"):(""))
+				INJECT_STATPANEL_DATA_ENTRY(., "[player.key]", (player.ready)?("(Playing)"):(""))
 				totalPlayers++
 				if(player.ready)totalPlayersReady++
 

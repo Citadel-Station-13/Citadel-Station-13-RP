@@ -115,7 +115,7 @@ var/list/gear_datums = list()
 
 	return spawned
 
-/hook/startup/proc/populate_gear_list()
+/legacy_hook/startup/proc/populate_gear_list()
 
 	// Create a list of gear datums to sort
 	for(var/geartype in typesof(/datum/loadout_entry)-/datum/loadout_entry)

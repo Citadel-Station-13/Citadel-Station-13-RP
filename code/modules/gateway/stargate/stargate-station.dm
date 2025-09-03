@@ -150,3 +150,10 @@
 	if(href_list[VV_HK_SETUP_GATEWAY] && check_rights(R_FUN))
 		admin_setup(usr)
 	. = ..()
+
+/obj/machinery/gateway/centerstation/attack_ghost(mob/user)
+	. = ..()
+	if(awaygate)
+		user.forceMove(awaygate.loc)
+	else
+		to_chat(user, "[src] has no destination.")

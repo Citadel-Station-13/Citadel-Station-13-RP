@@ -377,7 +377,7 @@
 /mob/living/simple_mob/statpanel_data(client/C)
 	. = ..()
 	if(C.statpanel_tab("Status") && show_stat_health)
-		STATPANEL_DATA_LINE("Health: [round((health / getMaxHealth()) * 100)]%")
+		INJECT_STATPANEL_DATA_LINE(., "Health: [round((health / getMaxHealth()) * 100)]%")
 
 /mob/living/simple_mob/set_resting(value)
 	. = ..()

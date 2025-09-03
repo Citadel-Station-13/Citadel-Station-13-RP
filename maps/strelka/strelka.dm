@@ -149,12 +149,12 @@
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
 	)
-	base_turf = /turf/space
+	base_turf = /turf/simulated/open
 	link_below = /datum/map_level/strelka/ship/deck_three
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 
 /datum/map_level/strelka/ship/deck_three
-	id = "EndeavourDeck3"
+	id = "StrelkaDeck3"
 	name = "strelka - Deck 3"
 	display_id = "strelka-deck-3"
 	display_name = "NSV strelka - Deck 3"
@@ -162,6 +162,7 @@
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
+		ZTRAIT_LEGACY_BELTER_DOCK,
 	)
 	base_turf = /turf/simulated/open
 	link_below = /datum/map_level/strelka/ship/deck_two
@@ -169,7 +170,7 @@
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 
 /datum/map_level/strelka/ship/deck_two
-	id = "EndeavourDeck2"
+	id = "StrelkaDeck2"
 	name = "strelka - Deck 2"
 	display_id = "strelka-deck-2"
 	display_name = "NSV strelka - Deck 2"
@@ -177,7 +178,6 @@
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
-		ZTRAIT_LEGACY_BELTER_DOCK,
 	)
 	base_turf = /turf/simulated/open
 	link_below = /datum/map_level/strelka/ship/deck_one
@@ -185,7 +185,7 @@
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 
 /datum/map_level/strelka/ship/deck_one
-	id = "EndeavourDeck1"
+	id = "StrelkaDeck1"
 	name = "strelka - Deck 1"
 	display_id = "strelka-deck-1"
 	display_name = "NSV strelka - Deck 1"
@@ -199,7 +199,7 @@
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 
 /datum/map_level/strelka/flagship
-	id = "EndeavourFlagship"
+	id = "StrelkaFlagship"
 	name = "strelka - Centcom / Flagship"
 	display_id = "strelka-flagship"
 	display_name = "NSV strelka - Flagship Offboarding"

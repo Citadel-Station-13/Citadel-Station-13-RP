@@ -515,6 +515,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/render/parry_frame)
 	bind_to.vis_contents += src
 	cycle(frame, single_deflect)
 	QDEL_IN(src, qdel_time)
+	atom_flags |= ATOM_INITIALIZED
 	return INITIALIZE_HINT_NORMAL
 
 /atom/movable/render/parry_frame/Destroy()

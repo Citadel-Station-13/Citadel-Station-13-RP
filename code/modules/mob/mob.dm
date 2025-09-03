@@ -193,10 +193,10 @@
 /mob/statpanel_data(client/C)
 	. = ..()
 	if(C.statpanel_tab("Status"))
-		STATPANEL_DATA_ENTRY("Ping", "[round(client.lastping,1)]ms (Avg: [round(client.avgping,1)]ms)")
-		STATPANEL_DATA_ENTRY("Map", "[(LEGACY_MAP_DATUM)?.name || "Loading..."]")
+		INJECT_STATPANEL_DATA_ENTRY(., "Ping", "[round(client.lastping,1)]ms (Avg: [round(client.avgping,1)]ms)")
+		INJECT_STATPANEL_DATA_ENTRY(., "Map", "[(LEGACY_MAP_DATUM)?.name || "Loading..."]")
 		if(!isnull(SSmapping.next_station) && !isnull(SSmapping.loaded_station) && (SSmapping.next_station.name != SSmapping.loaded_station.name))
-			STATPANEL_DATA_ENTRY("Next Map", "[SSmapping.next_station.name]")
+			INJECT_STATPANEL_DATA_ENTRY(., "Next Map", "[SSmapping.next_station.name]")
 
 /// Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
 // todo: refactor
@@ -1141,7 +1141,42 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/z_pass_out(atom/movable/AM, dir, turf/new_loc)
 	return TRUE
 
-//? Pixel Offsets
+//* Dir *//
+
+/**
+ * Tries to turn to face an atom.
+ */
+/mob/proc/face_atom(var/atom/atom_to_face)
+	if(buckled || stat != CONSCIOUS || !atom_to_face || !x || !y || !atom_to_face.x || !atom_to_face.y)
+		return
+	if(!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
+		return
+
+	var/dx = atom_to_face.x - x
+	var/dy = atom_to_face.y - y
+	if(!dx && !dy) // Wall items are graphically shifted but on the floor
+		if(atom_to_face.pixel_y > 16)
+			setDir(NORTH)
+		else if(atom_to_face.pixel_y < -16)
+			setDir(SOUTH)
+		else if(atom_to_face.pixel_x > 16)
+			setDir(EAST)
+		else if(atom_to_face.pixel_x < -16)
+			setDir(WEST)
+		return
+
+	if(abs(dx) < abs(dy))
+		if(dy > 0)
+			setDir(NORTH)
+		else
+			setDir(SOUTH)
+	else
+		if(dx > 0)
+			setDir(EAST)
+		else
+			setDir(WEST)
+
+//* Pixel Offsets *//
 
 /mob/proc/get_buckled_pixel_x_offset()
 	if(!buckled)
