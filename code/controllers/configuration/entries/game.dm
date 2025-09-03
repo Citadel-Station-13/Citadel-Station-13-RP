@@ -97,6 +97,5 @@
 	var/list/actual_bitfield = GLOB.bitfields[target_bitname]
 	var/new_flags = NONE
 	for(var/key in config_entry_value)
-		if(config_entry_value[key])
-			new_flags |= actual_bitfield[key]
+		new_flags |= actual_bitfield[key]
 	SSnightshift.nightshift_level = new_flags
