@@ -1,6 +1,7 @@
-import { decodeHtmlEntities } from 'tgui-core/string';
-import { useBackend } from "../../backend";
 import { Box, Button, NoticeBox } from "tgui-core/components";
+import { decodeHtmlEntities } from 'tgui-core/string';
+
+import { useBackend } from "../../backend";
 
 /**
  * Displays a notice box with text and style dictated by the

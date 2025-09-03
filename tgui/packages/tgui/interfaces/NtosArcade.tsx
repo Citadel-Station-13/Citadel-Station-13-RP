@@ -1,8 +1,9 @@
+import { AnimatedNumber, Box, Button, LabeledList, ProgressBar, Section } from 'tgui-core/components';
+
 import { resolveAsset } from '../assets';
 import { useBackend } from '../backend';
-import { AnimatedNumber, Box, Button, LabeledList, ProgressBar, Section } from 'tgui-core/components';
-import { NtosWindow } from '../layouts';
 import { Grid } from '../components/Grid';
+import { NtosWindow } from '../layouts';
 
 export const NtosArcade = (props) => {
   const { act, data } = useBackend<any>();

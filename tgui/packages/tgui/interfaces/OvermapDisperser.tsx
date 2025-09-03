@@ -1,5 +1,6 @@
+import { AnimatedNumber, Box, Button, Flex, LabeledList, Section } from "tgui-core/components";
+
 import { useBackend } from "../backend";
-import { Box, Button, Flex, LabeledList, Section, AnimatedNumber } from "tgui-core/components";
 import { Window } from "../layouts";
 import { OvermapPanControls } from './common/Overmap';
 

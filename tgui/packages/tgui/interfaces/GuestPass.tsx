@@ -1,7 +1,7 @@
 /* eslint react/no-danger: "off" */
-import { sortBy } from 'common/collections';
-import { useBackend } from "../backend";
 import { Box, Button, LabeledList, Section } from "tgui-core/components";
+
+import { useBackend } from "../backend";
 import { Window } from "../layouts";
 
 export const GuestPass = (props) => {

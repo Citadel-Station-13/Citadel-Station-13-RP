@@ -1,8 +1,9 @@
+
 import { Component } from 'react';
-import { useBackend } from "../backend";
 import { Box, Button, Icon, LabeledList, Section, Slider } from "tgui-core/components";
+
+import { useBackend } from "../backend";
 import { Window } from "../layouts";
-import { relative } from 'node:path';
 
 export const BombTester = (props) => {
   const { act, data } = useBackend<any>();

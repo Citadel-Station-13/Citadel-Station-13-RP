@@ -5,18 +5,19 @@
  * @license MIT
  */
 
-import { BooleanLike } from "tgui-core/react";
-import { Box, Button, Collapsible, Dropdown, Input, LabeledList, NoticeBox, NumberInput, ProgressBar, Section, Stack, Table, Tabs } from "tgui-core/components";
-import { Modular } from "../../layouts/Modular";
-import { WindowProps } from "../../layouts/Window";
-import { Design } from "../common/Design";
-import { IngredientsAvailable, IngredientsSelected } from "../common/Ingredients";
-import { MaterialRender, FullMaterialsContext, MaterialStorage, MATERIAL_STORAGE_UNIT_NAME, renderMaterialAmount } from "../common/Materials";
-import { ReagentContents, ReagentContentsData, REAGENT_STORAGE_UNIT_NAME } from "../common/Reagents";
 import { useState } from "react";
-import { ModuleData, useLegacyModule } from "../../legacyModuleSystem";
+import { Box, Button, Collapsible, Dropdown, Input, LabeledList, NoticeBox, NumberInput, ProgressBar, Section, Stack, Table, Tabs } from "tgui-core/components";
+import { BooleanLike } from "tgui-core/react";
+
 import { useLocalState } from "../../backend";
 import { SectionProps } from "../../components";
+import { Modular } from "../../layouts/Modular";
+import { WindowProps } from "../../layouts/Window";
+import { ModuleData, useLegacyModule } from "../../legacyModuleSystem";
+import { Design } from "../common/Design";
+import { IngredientsAvailable, IngredientsSelected } from "../common/Ingredients";
+import { FullMaterialsContext, MATERIAL_STORAGE_UNIT_NAME, MaterialRender, MaterialStorage, renderMaterialAmount } from "../common/Materials";
+import { REAGENT_STORAGE_UNIT_NAME, ReagentContents, ReagentContentsData } from "../common/Reagents";
 
 export interface TGUILatheControlProps {
 

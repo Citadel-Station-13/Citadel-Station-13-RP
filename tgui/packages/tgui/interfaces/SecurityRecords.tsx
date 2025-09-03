@@ -1,8 +1,9 @@
 import { Fragment } from 'react';
-import { useBackend } from "../backend";
 import { Box, Button, Flex, Input, LabeledList, Section, Tabs } from "tgui-core/components";
-import { ComplexModal, modalOpen } from "./common/ComplexModal";
+
+import { useBackend } from "../backend";
 import { Window } from "../layouts";
+import { ComplexModal, modalOpen } from "./common/ComplexModal";
 import { LoginInfo } from './common/LoginInfo';
 import { LoginScreen } from './common/LoginScreen';
 import { TemporaryNotice } from './common/TemporaryNotice';
@@ -66,7 +67,7 @@ const SecurityRecordsList = (_properties) => {
     records,
   } = data;
   return (
-    <Fragment>
+    <>
       <Input
         fluid
         placeholder="Search by Name, DNA, or ID"
@@ -84,14 +85,14 @@ const SecurityRecordsList = (_properties) => {
           />
         ))}
       </Box>
-    </Fragment>
+    </>
   );
 };
 
 const SecurityRecordsMaintenance = (_properties) => {
   const { act } = useBackend<any>();
   return (
-    <Fragment>
+    <>
       <Button
         icon="download"
         content="Backup to Disk"
@@ -108,7 +109,7 @@ const SecurityRecordsMaintenance = (_properties) => {
         content="Delete All Security Records"
         onClick={() => act('del_all')}
       />
-    </Fragment>
+    </>
   );
 };
 
@@ -119,7 +120,7 @@ const SecurityRecordsView = (_properties) => {
     printing,
   } = data;
   return (
-    <Fragment>
+    <>
       <Section title="General Data" mt="-6px">
         <SecurityRecordsViewGeneral />
       </Section>
@@ -156,7 +157,7 @@ const SecurityRecordsView = (_properties) => {
           onClick={() => act('screen', { screen: 2 })}
         />
       </Section>
-    </Fragment>
+    </>
   );
 };
 
@@ -244,7 +245,7 @@ const SecurityRecordsViewSecurity = (_properties) => {
     );
   }
   return (
-    <Fragment>
+    <>
       <LabeledList>
         {security.fields.map((field, i) => (
           <LabeledList.Item
@@ -294,7 +295,7 @@ const SecurityRecordsViewSecurity = (_properties) => {
           onClick={() => modalOpen('add_c')}
         />
       </Section>
-    </Fragment>
+    </>
   );
 };
 

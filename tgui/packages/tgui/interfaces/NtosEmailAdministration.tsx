@@ -1,5 +1,6 @@
-import { useBackend } from "../backend";
 import { Box, Button, LabeledList, Section, Table } from "tgui-core/components";
+
+import { useBackend } from "../backend";
 import { NtosWindow } from "../layouts";
 import { NtosEmailClientViewMessage } from './NtosEmailClient';
 

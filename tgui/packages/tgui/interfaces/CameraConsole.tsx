@@ -1,11 +1,10 @@
-import { flow } from 'tgui-core/fp';
+import { Fragment, useState } from 'react';
+import { Button, ByondUi, Flex, Input, Section } from 'tgui-core/components';
 import { classes } from 'tgui-core/react';
 import { createSearch } from 'tgui-core/string';
-import { Fragment, useState } from 'react';
-import { useBackend, useLocalState } from '../backend';
-import { Button, ByondUi, Flex, Input, Section } from 'tgui-core/components';
+
+import { useBackend } from '../backend';
 import { Window } from '../layouts';
-import { filter, sortBy } from 'common/collections';
 
 /**
  * Returns previous and next camera names relative to the currently
@@ -147,7 +146,7 @@ export const CameraConsoleNTOS = (props) => {
     nextCameraName,
   ] = prevNextCamera(cameras, activeCamera);
   return (
-    <Fragment>
+    <>
       <div className="CameraConsole__left">
         <Window.Content scrollable>
           <CameraConsoleContent />
@@ -181,6 +180,6 @@ export const CameraConsoleNTOS = (props) => {
             type: 'map',
           }} />
       </div>
-    </Fragment>
+    </>
   );
 };

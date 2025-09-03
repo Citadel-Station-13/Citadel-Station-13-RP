@@ -2,10 +2,11 @@
  * @file
  * @license MIT
  */
-import { useBackend } from "../../backend";
 import { Button, LabeledList, NoticeBox, Section } from "tgui-core/components";
-import { Window } from "../../layouts";
 import { BooleanLike } from "tgui-core/react";
+
+import { useBackend } from "../../backend";
+import { Window } from "../../layouts";
 
 interface NaniteChamberControlData {
   hasChamber: BooleanLike;

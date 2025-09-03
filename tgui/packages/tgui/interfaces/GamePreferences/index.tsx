@@ -8,10 +8,11 @@
  * @file
  * @license MIT
  */
-import { BooleanLike } from "tgui-core/react";
 import { ReactNode, useState } from "react";
-import { useBackend, useLocalState } from "../../backend";
 import { Button, Flex, Section, Stack, Tooltip } from "tgui-core/components";
+import { BooleanLike } from "tgui-core/react";
+
+import { useBackend } from "../../backend";
 import { Window } from "../../layouts";
 import { GamePreferenceEntry, GamePreferenceEntrySchema } from "./GamePreferenceEntry";
 import { GamePreferenceKeybindMiddlware, GamePreferenceKeybindScreen } from "./GamePreferenceKeybinds";

@@ -1,8 +1,9 @@
 import { Fragment } from 'react';
-import { useBackend } from "../backend";
-import { Box, Button, LabeledList, ProgressBar, Section, NoticeBox, Slider } from "tgui-core/components";
-import { Window } from "../layouts";
+import { Box, Button, LabeledList, NoticeBox, ProgressBar, Section, Slider } from "tgui-core/components";
 import { decodeHtmlEntities } from 'tgui-core/string';
+
+import { useBackend } from "../backend";
+import { Window } from "../layouts";
 
 export const XenoarchSpectrometer = (props) => {
   const { act, data } = useBackend<any>();
@@ -34,7 +35,7 @@ export const XenoarchSpectrometer = (props) => {
     <Window width={900} height={760}>
       <Window.Content scrollable>
         <Section title="Status" buttons={
-          <Fragment>
+          <>
             <Button
               icon="signal"
               selected={scanning}
@@ -47,7 +48,7 @@ export const XenoarchSpectrometer = (props) => {
               onClick={() => act("ejectItem")}>
               Eject Item
             </Button>
-          </Fragment>
+          </>
         }>
           <LabeledList>
             <LabeledList.Item label="Item">

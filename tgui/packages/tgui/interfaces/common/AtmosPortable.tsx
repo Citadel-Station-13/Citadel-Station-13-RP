@@ -1,10 +1,11 @@
-import { useBackend } from "../../backend";
-import { AnimatedNumber, Button, LabeledList, NumberInput, ProgressBar, Section, Stack } from "tgui-core/components";
-import { Window } from "../../layouts";
-import { AtmosTank, AtmosTankSlot } from "./Atmos";
 import { ReactNode } from "react";
+import { AnimatedNumber, Button, LabeledList, NumberInput, ProgressBar, Section, Stack } from "tgui-core/components";
 import { round } from "tgui-core/math";
 import { BooleanLike } from "tgui-core/react";
+
+import { useBackend } from "../../backend";
+import { Window } from "../../layouts";
+import { AtmosTank, AtmosTankSlot } from "./Atmos";
 
 enum AtmosPortableUIFlags {
   None = (0),

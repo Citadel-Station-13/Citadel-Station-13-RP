@@ -1,6 +1,7 @@
-import { useBackend } from "../backend";
 import { Fragment } from "react";
 import { Box, Button, LabeledList, Section, Table } from "tgui-core/components";
+
+import { useBackend } from "../backend";
 import { Window } from "../layouts";
 
 const getStatusText = port => {
@@ -30,7 +31,7 @@ export const OmniMixer = (props) => {
         <Section
           title={config ? "Configuration" : "Status"}
           buttons={
-            <Fragment>
+            <>
               <Button
                 icon="power-off"
                 content={power ? "On" : "Off"}
@@ -41,16 +42,16 @@ export const OmniMixer = (props) => {
                 icon="wrench"
                 selected={config}
                 onClick={() => act("configure")} />
-            </Fragment>
+            </>
           }>
           <Table>
             <Table.Row header>
               <Table.Cell textAlign="center">Port</Table.Cell>
               {config ? (
-                <Fragment>
+                <>
                   <Table.Cell textAlign="center">Input</Table.Cell>
                   <Table.Cell textAlign="center">Output</Table.Cell>
-                </Fragment>
+                </>
               ) : (
                 <Table.Cell textAlign="center">Mode</Table.Cell>
               )}
@@ -120,7 +121,7 @@ const PortRow = (props) => {
         ) : port.concentration * 100 + "%"}
       </Table.Cell>
       {config ? (
-        <Fragment>
+        <>
           <Table.Cell textAlign="center" width="20%">
             <Button
               width="100%"
@@ -141,7 +142,7 @@ const PortRow = (props) => {
                 "dir": port.dir,
               })} />
           </Table.Cell>
-        </Fragment>
+        </>
       ) : null}
     </Table.Row>
   );

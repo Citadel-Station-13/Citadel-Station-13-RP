@@ -1,8 +1,8 @@
-import { sortBy } from 'common/collections';
-import { Window } from '../layouts';
 import { Fragment, useState } from 'react';
-import { Button, Box, Tabs, Icon, Section } from 'tgui-core/components';
-import { useBackend, useLocalState } from '../backend';
+import { Box, Button, Icon, Section, Tabs } from 'tgui-core/components';
+
+import { useBackend } from '../backend';
+import { Window } from '../layouts';
 import { createLogger } from '../logging';
 const logger = createLogger("fuck");
 
@@ -74,7 +74,7 @@ export const AtmosControlContent = (props) => {
   }
 
   return (
-    <Fragment>
+    <>
       <Tabs>
         <Tabs.Tab
           key="AlarmView"
@@ -92,6 +92,6 @@ export const AtmosControlContent = (props) => {
       <Box m={2}>
         {body}
       </Box>
-    </Fragment>
+    </>
   );
 };

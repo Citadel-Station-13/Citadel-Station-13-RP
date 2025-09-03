@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
-import { useBackend } from "../backend";
 import { Box, Button, LabeledList, ProgressBar, Section } from "tgui-core/components";
+
+import { useBackend } from "../backend";
 import { Window } from "../layouts";
 
 export const DiseaseSplicer = (props) => {
@@ -18,10 +19,10 @@ export const DiseaseSplicer = (props) => {
             <center><Box color="bad">{busy}</Box></center>
           </Section>
         ) : (
-          <Fragment>
+          <>
             <DiseaseSplicerVirusDish />
             <DiseaseSplicerStorage />
-          </Fragment>
+          </>
         )}
       </Window.Content>
     </Window>
@@ -65,7 +66,7 @@ const DiseaseSplicerVirusDish = (props) => {
           <Box color="bad">{info}</Box>
         </Section>
       ) : (
-        <Fragment>
+        <>
           <Section title="Symptoms">
             {effects && effects.map(effect => (
               <Box color="label" key={effect.stage}>
@@ -91,7 +92,7 @@ const DiseaseSplicerVirusDish = (props) => {
               icon="exchange-alt"
               onClick={() => act("affected_species")} />
           </Section>
-        </Fragment>
+        </>
       )}
     </Section>
   );

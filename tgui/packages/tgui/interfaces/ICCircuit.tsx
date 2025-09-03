@@ -1,9 +1,10 @@
 import { Fragment } from 'react';
-import { useBackend } from "../backend";
 import { Box, Button, Flex, LabeledList, Section } from "tgui-core/components";
-import { Window } from "../layouts";
-import { decodeHtmlEntities } from 'tgui-core/string';
 import { formatPower } from "tgui-core/format";
+import { decodeHtmlEntities } from 'tgui-core/string';
+
+import { useBackend } from "../backend";
+import { Window } from "../layouts";
 
 export const ICCircuit = (props) => {
   const { act, data } = useBackend<any>();
@@ -27,11 +28,11 @@ export const ICCircuit = (props) => {
     <Window width={600} height={400} title={displayed_name}>
       <Window.Content scrollable>
         <Section title="Stats" buttons={
-          <Fragment>
+          <>
             <Button onClick={() => act("rename")}>Rename</Button>
             <Button onClick={() => act("scan")}>Scan with Device</Button>
             <Button onClick={() => act("remove")}>Remove</Button>
-          </Fragment>
+          </>
         }>
           <LabeledList>
             <LabeledList.Item label="Complexity">

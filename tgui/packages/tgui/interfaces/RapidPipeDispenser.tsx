@@ -1,6 +1,7 @@
-import { classes } from 'tgui-core/react';
-import { useBackend, useLocalState } from '../backend';
 import { Box, Button, ColorBox, LabeledList, Section, Stack, Tabs } from 'tgui-core/components';
+import { classes } from 'tgui-core/react';
+
+import { useBackend, useLocalState } from '../backend';
 import { Window } from '../layouts';
 
 const ROOT_CATEGORIES = [
@@ -237,7 +238,8 @@ const PipeTypeSection = (props) => {
           onClick={() => act('pipe_type', {
             pipe_type: recipe.pipe_index,
             category: shownCategory.cat_name,
-          })}>{recipe.pipe_name}</Button.Checkbox>
+          })}>{recipe.pipe_name}
+        </Button.Checkbox>
       ))}
     </Section>
   );

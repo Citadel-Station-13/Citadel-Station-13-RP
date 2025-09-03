@@ -1,7 +1,8 @@
-import { useBackend } from '../backend';
-import { Button, Icon, LabeledControls, NoticeBox, Section, Slider, Stack, Tooltip } from 'tgui-core/components';
-import { Window } from '../layouts';
 import { multiline } from 'common/string';
+import { Button, Icon, LabeledControls, NoticeBox, Section, Slider, Stack, Tooltip } from 'tgui-core/components';
+
+import { useBackend } from '../backend';
+import { Window } from '../layouts';
 
 type SimpleBotContext = {
   can_hack: number;

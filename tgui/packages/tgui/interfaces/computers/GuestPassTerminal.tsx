@@ -3,12 +3,13 @@
  * @license MIT
  */
 
-import { useBackend, useLocalState } from "../../backend";
+import { useState } from "react";
 import { Button, Input, LabeledList, NoticeBox, NumberInput, Section, Stack } from "tgui-core/components";
+
+import { useBackend } from "../../backend";
 import { Window } from "../../layouts";
 import { Access, AccessId, AccessListMod } from "../common/Access";
 import { IDCard, IDCardOrDefault, IDSlot } from "../common/IDCard";
-import { useState } from "react";
 
 interface GuestPassTerminalData {
   auth?: IDCard;

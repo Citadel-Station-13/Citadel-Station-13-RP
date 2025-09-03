@@ -6,7 +6,7 @@
 
 export const clamp = (value: number, low: number, high: number) => {
   return value < low ? low : (value > high ? high : value);
-}
+};
 
 /**
  * Return closest higher multiple of 'multiple' from value

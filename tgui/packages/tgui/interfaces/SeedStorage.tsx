@@ -1,8 +1,9 @@
-import { useBackend } from "../backend";
-import { Button, Flex, LabeledList, Section, Collapsible } from "tgui-core/components";
-import { Window } from "../layouts";
-import { toTitleCase } from 'tgui-core/string';
 import { sortBy } from 'common/collections';
+import { Button, Collapsible, Flex, LabeledList, Section } from "tgui-core/components";
+import { toTitleCase } from 'tgui-core/string';
+
+import { useBackend } from "../backend";
+import { Window } from "../layouts";
 
 export const SeedStorage = (props) => {
   const { act, data } = useBackend<any>();

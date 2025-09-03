@@ -3,14 +3,15 @@
  * @license MIT
  */
 
-import { BooleanLike } from "tgui-core/react";
-import { useBackend, useLocalState } from "../../backend";
+import { useState } from "react";
 import { Button, NoticeBox, Section, Tabs } from "tgui-core/components";
+import { BooleanLike } from "tgui-core/react";
+
+import { useBackend } from "../../backend";
+import { LegacyModule } from "../../components/LegacyModule";
 import { Window } from "../../layouts";
 import { IDCard, IDCardOrDefault, IDSlot } from "../common/IDCard";
 import { CrewManifestContent } from "../CrewManifest";
-import { LegacyModule } from "../../components/LegacyModule";
-import { useState } from "react";
 
 interface IdentificationComputerContext {
   printing: BooleanLike;

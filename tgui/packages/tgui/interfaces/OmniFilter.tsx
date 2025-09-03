@@ -1,6 +1,7 @@
-import { useBackend } from "../backend";
 import { Fragment } from "react";
 import { Box, Button, LabeledList, Section } from "tgui-core/components";
+
+import { useBackend } from "../backend";
 import { Window } from "../layouts";
 
 const getStatusText = port => {
@@ -30,7 +31,7 @@ export const OmniFilter = (props) => {
         <Section
           title={config ? "Configuration" : "Status"}
           buttons={
-            <Fragment>
+            <>
               <Button
                 icon="power-off"
                 content={power ? "On" : "Off"}
@@ -41,13 +42,13 @@ export const OmniFilter = (props) => {
                 icon="wrench"
                 selected={config}
                 onClick={() => act("configure")} />
-            </Fragment>
+            </>
           }>
           <LabeledList>
             {ports ? ports.map(port => (
               <LabeledList.Item key={port.dir} label={port.dir + " Port"}>
                 {config ? (
-                  <Fragment>
+                  <>
                     <Button
                       content="IN"
                       selected={port.input}
@@ -72,7 +73,7 @@ export const OmniFilter = (props) => {
                         "mode": port.f_type,
                         "dir": port.dir,
                       })} />
-                  </Fragment>
+                  </>
                 ) : getStatusText(port)}
               </LabeledList.Item>
             )) : <Box color="bad">No Ports Detected</Box>}

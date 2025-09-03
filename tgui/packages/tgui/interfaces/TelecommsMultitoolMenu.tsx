@@ -1,8 +1,9 @@
 import { Fragment } from 'react';
+import { Box, Button, LabeledList, NumberInput, Section } from "tgui-core/components";
+
 import { useBackend } from "../backend";
-import { Box, Button, LabeledList, Section, NumberInput } from "tgui-core/components";
-import { TemporaryNotice } from './common/TemporaryNotice';
 import { Window } from "../layouts";
+import { TemporaryNotice } from './common/TemporaryNotice';
 
 export const TelecommsMultitoolMenu = (props) => {
   const { act, data } = useBackend<any>();
@@ -86,9 +87,9 @@ const TelecommsMultitoolMenuStatus = (props) => {
         {multitool ? (
           <LabeledList.Item label="Multitool Buffer">
             {multitool_buffer ? (
-              <Fragment>{multitool_buffer.name}
+              <>{multitool_buffer.name}
                 ({multitool_buffer.id})
-              </Fragment>
+              </>
             ) : null}
             <Button
               color={multitool_buffer ? "green" : null}

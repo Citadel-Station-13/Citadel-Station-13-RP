@@ -1,8 +1,9 @@
 import { Fragment } from 'react';
-import { useBackend } from "../backend";
 import { Box, Button, Collapsible, Icon, Input, LabeledList, Section, Tabs } from "tgui-core/components";
-import { ComplexModal, modalOpen, modalRegisterBodyOverride } from "./common/ComplexModal";
+
+import { useBackend } from "../backend";
 import { Window } from "../layouts";
+import { ComplexModal, modalOpen, modalRegisterBodyOverride } from "./common/ComplexModal";
 import { LoginInfo } from './common/LoginInfo';
 import { LoginScreen } from './common/LoginScreen';
 import { TemporaryNotice } from './common/TemporaryNotice';
@@ -124,7 +125,7 @@ const MedicalRecordsList = (_properties) => {
     records,
   } = data;
   return (
-    <Fragment>
+    <>
       <Input
         fluid
         placeholder="Search by Name, DNA, or ID"
@@ -141,14 +142,14 @@ const MedicalRecordsList = (_properties) => {
           />
         ))}
       </Box>
-    </Fragment>
+    </>
   );
 };
 
 const MedicalRecordsMaintenance = (_properties) => {
   const { act } = useBackend<any>();
   return (
-    <Fragment>
+    <>
       <Button
         icon="download"
         content="Backup to Disk"
@@ -165,7 +166,7 @@ const MedicalRecordsMaintenance = (_properties) => {
         content="Delete All Medical Records"
         onClick={() => act('del_all')}
       />
-    </Fragment>
+    </>
   );
 };
 
@@ -176,7 +177,7 @@ const MedicalRecordsView = (_properties) => {
     printing,
   } = data;
   return (
-    <Fragment>
+    <>
       <Section title="General Data" mt="-6px">
         <MedicalRecordsViewGeneral />
       </Section>
@@ -206,7 +207,7 @@ const MedicalRecordsView = (_properties) => {
           onClick={() => act('screen', { screen: 2 })}
         />
       </Section>
-    </Fragment>
+    </>
   );
 };
 
@@ -223,7 +224,7 @@ const MedicalRecordsViewGeneral = (_properties) => {
     );
   }
   return (
-    <Fragment>
+    <>
       <Box width="50%" style={{ float: "left" }}>
         <LabeledList>
           {general.fields.map((field, i) => (
@@ -263,7 +264,7 @@ const MedicalRecordsViewGeneral = (_properties) => {
           ))
         )}
       </Box>
-    </Fragment>
+    </>
   );
 };
 
@@ -286,7 +287,7 @@ const MedicalRecordsViewMedical = (_properties) => {
     );
   }
   return (
-    <Fragment>
+    <>
       <LabeledList>
         {medical.fields.map((field, i) => (
           <LabeledList.Item
@@ -335,7 +336,7 @@ const MedicalRecordsViewMedical = (_properties) => {
           onClick={() => modalOpen('add_c')}
         />
       </Section>
-    </Fragment>
+    </>
   );
 };
 
@@ -382,7 +383,7 @@ const MedicalRecordsMedibots = (_properties) => {
           </LabeledList.Item>
           <LabeledList.Item label="Status">
             {medibot.on ? (
-              <Fragment>
+              <>
                 <Box color="good">
                   Online
                 </Box>
@@ -392,7 +393,7 @@ const MedicalRecordsMedibots = (_properties) => {
                       + medibot.total_volume + "/" + medibot.maximum_volume)
                     : "Using internal synthesizer."}
                 </Box>
-              </Fragment>
+              </>
             ) : (
               <Box color="average">
                 Offline

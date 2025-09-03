@@ -3,9 +3,10 @@
  * @license MIT
  */
 
-import { BooleanLike, classes } from "tgui-core/react";
-import { BoxProps } from ".";
 import { Box } from "tgui-core/components";
+import { BooleanLike, classes } from "tgui-core/react";
+
+import { BoxProps } from ".";
 
 interface SpriteProps extends BoxProps {
   readonly sheet: string;

@@ -3,13 +3,13 @@
  * @license MIT
  */
 
-import { useBackend, useLocalState } from "../../backend";
-import { Stack, Tabs } from "tgui-core/components";
-import { Window } from "../../layouts";
 import { useState } from "react";
-import { ModuleData } from "../../legacyModuleSystem";
-import { Module } from "module";
+import { Stack, Tabs } from "tgui-core/components";
+
+import { useBackend } from "../../backend";
 import { LegacyModule } from "../../components/LegacyModule";
+import { Window } from "../../layouts";
+import { ModuleData } from "../../legacyModuleSystem";
 
 interface TGUIGuidebookContext {
   // module id to name

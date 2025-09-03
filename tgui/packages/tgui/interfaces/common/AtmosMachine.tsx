@@ -1,9 +1,10 @@
-import { useBackend } from "../../backend";
+import { ReactNode } from "react";
 import { Button, LabeledList, NumberInput, ProgressBar, Section, Stack } from "tgui-core/components";
-import { Window } from "../../layouts";
-import { SectionProps } from "../../components";
-import { ComponentProps, ReactNode } from "react";
 import { BooleanLike } from "tgui-core/react";
+
+import { useBackend } from "../../backend";
+import { SectionProps } from "../../components";
+import { Window } from "../../layouts";
 
 export enum AtmosComponentUIFlags {
   None = 0,

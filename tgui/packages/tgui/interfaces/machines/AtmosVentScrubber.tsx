@@ -1,12 +1,13 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
-import { BooleanLike } from "tgui-core/react";
-import { useBackend } from "../../backend";
 import { Button, LabeledList, Section } from "tgui-core/components";
+import { BooleanLike } from "tgui-core/react";
+
+import { useBackend } from "../../backend";
+import { SectionProps } from "../../components";
 import { Window } from "../../layouts";
 import { AtmosFilterList, AtmosGasGroupFlags, AtmosGasID, AtmosGasIDs, GasContext } from "../common/Atmos";
-import { SectionProps } from "../../components";
 
 export interface AtmosVentScrubberState {
   // are we on siphon mode

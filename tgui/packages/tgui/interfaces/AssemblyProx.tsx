@@ -1,8 +1,9 @@
-import { useBackend } from "../backend";
 import { Button, LabeledList, NumberInput, Section } from "tgui-core/components";
-import { Window } from "../layouts";
 import { formatTime } from "tgui-core/format";
 import { round } from "tgui-core/math";
+
+import { useBackend } from "../backend";
+import { Window } from "../layouts";
 
 export const AssemblyProx = (props) => {
   const { act, data } = useBackend<any>();

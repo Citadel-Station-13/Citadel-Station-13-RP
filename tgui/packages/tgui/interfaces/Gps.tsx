@@ -1,8 +1,9 @@
-import { BooleanLike } from "tgui-core/react";
-import { useBackend, useLocalState } from "../backend";
-import { Window } from "../layouts";
-import { Section, Button, LabeledList, Table, Input, Box, Icon } from "tgui-core/components";
 import { useState } from "react";
+import { Box, Button, Icon, Input, LabeledList, Section, Table } from "tgui-core/components";
+import { BooleanLike } from "tgui-core/react";
+
+import { useBackend } from "../backend";
+import { Window } from "../layouts";
 
 type GpsContext = {
   on: BooleanLike,
@@ -108,7 +109,7 @@ export const Gps = (props) => {
                   icon="plus"
                   onClick={() => act('add_waypoint', {
                     name: addWaypointName, level_id: addWaypointLevel,
-                    x: addWaypointX, y: addWaypointY
+                    x: addWaypointX, y: addWaypointY,
                   })} />
               }>
               <Input placeholder="Waypoint" width="15rem"

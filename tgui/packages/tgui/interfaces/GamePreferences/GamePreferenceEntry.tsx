@@ -2,9 +2,10 @@
  * @file
  * @license MIT
  */
-import { BooleanLike } from "tgui-core/react";
 import { ReactNode } from "react";
 import { Button, Collapsible, ColorBox, Dropdown, Input, NumberInput, Section, Stack, Tooltip } from "tgui-core/components";
+import { BooleanLike } from "tgui-core/react";
+
 import { ByondAtomColor, ByondColorString, ColorPicker } from "../common/Color";
 
 interface GamePreferenceEntryProps {

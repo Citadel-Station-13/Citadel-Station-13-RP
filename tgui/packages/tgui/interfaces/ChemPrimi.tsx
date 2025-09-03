@@ -1,7 +1,8 @@
-import { useBackend } from '../backend';
-import { AnimatedNumber, Box, Button, Section, Table } from 'tgui-core/components';
-import { Window } from '../layouts';
 import { Color } from 'tgui-core/color';
+import { AnimatedNumber, Box, Button, Section, Table } from 'tgui-core/components';
+
+import { useBackend } from '../backend';
+import { Window } from '../layouts';
 
 type ChemMasterData = {
   // Generic Data

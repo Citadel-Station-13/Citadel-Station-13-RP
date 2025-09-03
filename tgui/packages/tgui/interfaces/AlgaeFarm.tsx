@@ -1,7 +1,8 @@
-import { useBackend } from '../backend';
-import { Box, Button, NoticeBox, LabeledList, ProgressBar, Section, Table } from 'tgui-core/components';
-import { Window } from '../layouts';
+import { Box, Button, LabeledList, NoticeBox, ProgressBar, Section, Table } from 'tgui-core/components';
 import { capitalize } from 'tgui-core/string';
+
+import { useBackend } from '../backend';
+import { Window } from '../layouts';
 
 export const AlgaeFarm = (props) => {
   const { act, data } = useBackend<any>();
@@ -25,7 +26,7 @@ export const AlgaeFarm = (props) => {
       <Window.Content>
         {errorText && (
           <NoticeBox>
-            <Box style={{display: "inline-block"}} verticalAlign="middle">
+            <Box style={{ display: "inline-block" }} verticalAlign="middle">
               {errorText}
             </Box>
           </NoticeBox>

@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
-import { useBackend } from "../backend";
 import { Button, LabeledList, Section } from "tgui-core/components";
+
+import { useBackend } from "../backend";
 import { Window } from "../layouts";
 import { OvermapFlightData } from "./common/Overmap";
 
@@ -24,7 +25,7 @@ export const OvermapNavigationContent = (props) => {
     viewing,
   } = data;
   return (
-    <Fragment>
+    <>
       <Section title="Current Location" buttons={
         <Button
           icon="eye"
@@ -48,6 +49,6 @@ export const OvermapNavigationContent = (props) => {
       <Section title="Flight Data">
         <OvermapFlightData disableLimiterControls />
       </Section>
-    </Fragment>
+    </>
   );
 };

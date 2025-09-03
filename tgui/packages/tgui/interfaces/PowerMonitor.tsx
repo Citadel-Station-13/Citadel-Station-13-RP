@@ -1,10 +1,9 @@
-import { map, sortBy } from 'common/collections';
-import { toFixed } from 'tgui-core/math';
 import { Fragment, useState } from 'react';
-import { useBackend, useLocalState } from '../backend';
 import { Box, Button, Chart, ColorBox, Flex, Icon, LabeledList, ProgressBar, Section, Table } from 'tgui-core/components';
+import { toFixed } from 'tgui-core/math';
+
+import { useBackend } from '../backend';
 import { Window } from '../layouts';
-import { flow } from 'tgui-core/fp';
 
 const PEAK_DRAW = 500;
 
@@ -94,7 +93,7 @@ export const PowerMonitorFocus = (props) => {
   const areas = (focus as any[])
     .map((area, i) => ({
       ...area,
-      id: area.name + i
+      id: area.name + i,
     }))
     .sort((a, b) => {
       if (sortByField === 'name') {
@@ -126,7 +125,7 @@ export const PowerMonitorFocus = (props) => {
     });
 
   return (
-    <Fragment>
+    <>
       <Section
         title={focus.name}
         buttons={
@@ -258,14 +257,14 @@ export const PowerMonitorFocus = (props) => {
           ))}
         </Table>
       </Section>
-    </Fragment>
+    </>
   );
 };
 
 export const AreaCharge = props => {
   const { charging, charge } = props;
   return (
-    <Fragment>
+    <>
       <Icon
         width="18px"
         textAlign="center"
@@ -294,7 +293,7 @@ export const AreaCharge = props => {
         textAlign="right">
         {toFixed(charge) + '%'}
       </Box>
-    </Fragment>
+    </>
   );
 };
 

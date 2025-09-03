@@ -1,10 +1,11 @@
-import { useBackend } from '../backend';
-import { Box, Button, LabeledList, ProgressBar, Section, Flex, AnimatedNumber, Chart, ColorBox }
+import { Fragment } from 'react';
+import { AnimatedNumber, Box, Button, Chart, ColorBox, Flex, LabeledList, ProgressBar, Section }
   from 'tgui-core/components';
-import { Window } from '../layouts';
 import { round } from 'tgui-core/math';
 import { toTitleCase } from 'tgui-core/string';
-import { Fragment } from 'react';
+
+import { useBackend } from '../backend';
+import { Window } from '../layouts';
 
 //  As of 2020-08-06 this isn't actually ever used, but it needs to exist
 //  because that's what tgui_modules expect
@@ -94,7 +95,7 @@ const SupermatterMonitorActive = (props) => {
   const EPRMax = Math.max(EPRSingleton) + 2;
 
   return (
-    <Fragment>
+    <>
       <Section
         title={toTitleCase(SM_area)}
         buttons={<Button icon="arrow-left" content="Return to Menu"
@@ -222,6 +223,6 @@ const SupermatterMonitorActive = (props) => {
           </LabeledList>
         </LabeledList.Item>
       </LabeledList>
-    </Fragment>
+    </>
   );
 };

@@ -1,7 +1,8 @@
-import { Section, Flex, Box, Button, Input, LabeledList, Collapsible, Divider, NumberInput } from "tgui-core/components";
-import { Window } from "../layouts";
-import { useBackend, useLocalState } from "../backend";
 import { useState } from "react";
+import { Box, Button, Collapsible, Divider, Flex, Input, LabeledList, NumberInput, Section } from "tgui-core/components";
+
+import { useBackend } from "../backend";
+import { Window } from "../layouts";
 
 const ACCOUNT_SECURITY_DESCRIPTIONS: AccountSecurityDescription[] = [{ "level": 0, "desc": "Only account number required, automatically scanned from ID in proximity." },
 { "level": 1, "desc": "Account number and PIN required; ID autoscan disabled." },

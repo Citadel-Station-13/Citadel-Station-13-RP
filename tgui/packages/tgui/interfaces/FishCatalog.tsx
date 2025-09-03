@@ -1,9 +1,9 @@
-import { sortBy } from 'common/collections';
-import { classes } from 'tgui-core/react';
-import { useBackend, useLocalState } from '../backend';
 import { Box, Button, LabeledList, Section, Stack } from 'tgui-core/components';
-import { Window } from '../layouts';
+import { classes } from 'tgui-core/react';
 import { capitalize } from 'tgui-core/string';
+
+import { useBackend, useLocalState } from '../backend';
+import { Window } from '../layouts';
 
 type FishingTips = {
   spots: string;

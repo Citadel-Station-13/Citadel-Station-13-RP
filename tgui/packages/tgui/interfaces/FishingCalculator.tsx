@@ -1,8 +1,9 @@
-import { round } from 'tgui-core/math';
-import { useBackend } from '../backend';
-import { Button, Dropdown, Input, Stack, Table } from 'tgui-core/components';
-import { Window } from '../layouts';
 import { useState } from 'react';
+import { Button, Dropdown, Input, Stack, Table } from 'tgui-core/components';
+import { round } from 'tgui-core/math';
+
+import { useBackend } from '../backend';
+import { Window } from '../layouts';
 
 type FishCalculatorEntry = {
   result: string;

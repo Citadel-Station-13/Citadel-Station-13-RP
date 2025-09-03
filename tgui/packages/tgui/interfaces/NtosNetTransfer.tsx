@@ -1,5 +1,6 @@
+import { Box, Button, Icon, LabeledList, ProgressBar, Section } from 'tgui-core/components';
+
 import { useBackend } from '../backend';
-import { Button, Box, LabeledList, ProgressBar, Section, Icon } from 'tgui-core/components';
 import { NtosWindow } from '../layouts';
 
 export const NtosNetTransfer = (props) => {

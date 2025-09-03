@@ -4,11 +4,12 @@
  */
 
 import { ReactNode, useContext } from "react";
-import { Window, WindowProps } from "./Window";
-import { BooleanLike } from "tgui-core/react";
-import { SectionProps } from "../components";
 import { Section } from "tgui-core/components";
+import { BooleanLike } from "tgui-core/react";
+
+import { SectionProps } from "../components";
 import { LegacyModuleContext } from "../components/LegacyModule";
+import { Window, WindowProps } from "./Window";
 
 export interface ModularProps {
   readonly direct?: ReactNode;

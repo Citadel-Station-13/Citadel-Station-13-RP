@@ -2,13 +2,13 @@
  * @file
  * @license MIT
  */
-import { BooleanLike } from "tgui-core/react";
+import { keyCodeToByond } from "common/keycodes";
 import { Component, ReactNode, useState } from "react";
 import { Box, Button, Dimmer, Section, Stack, Table, Tooltip } from "tgui-core/components";
 import { KeyEvent } from "tgui-core/events";
-import { KEY_ALT, KEY_CTRL, KEY_ESCAPE, KEY_SHIFT } from "tgui-core/keycodes";
 import { listenForKeyEvents } from "tgui-core/hotkeys";
-import { keyCodeToByond } from "common/keycodes";
+import { KEY_ALT, KEY_CTRL, KEY_ESCAPE, KEY_SHIFT } from "tgui-core/keycodes";
+import { BooleanLike } from "tgui-core/react";
 
 export interface GamePreferenceKeybindMiddlware {
   readonly hotkeyMode: BooleanLike;

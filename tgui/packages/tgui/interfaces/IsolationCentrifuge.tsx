@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
-import { useBackend } from "../backend";
 import { Box, Button, Flex, LabeledList, Section } from "tgui-core/components";
+
+import { useBackend } from "../backend";
 import { Window } from "../layouts";
 
 export const IsolationCentrifuge = (props) => {
@@ -21,7 +22,7 @@ export const IsolationCentrifuge = (props) => {
       blood_sample = <Box color="average">No antibodies or viral strains detected.</Box>;
     } else {
       blood_sample = (
-        <Fragment>
+        <>
           {antibodies ? (
             <Section title="Antibodies">
               {antibodies}
@@ -38,7 +39,7 @@ export const IsolationCentrifuge = (props) => {
               </LabeledList>
             </Section>
           ) : null}
-        </Fragment>
+        </>
       );
     }
   }
@@ -51,7 +52,7 @@ export const IsolationCentrifuge = (props) => {
             <center><Box color="bad">{busy}</Box></center>
           </Section>
         ) : (
-          <Fragment>
+          <>
             <Section title={is_antibody_sample ? "Antibody Sample" : "Blood Sample"}>
               <Flex spacing={1} mb={1}>
                 <Flex.Item grow={1}>
@@ -98,7 +99,7 @@ export const IsolationCentrifuge = (props) => {
                 </LabeledList>
               </Section>
             ) : null}
-          </Fragment>
+          </>
         )}
       </Window.Content>
     </Window>

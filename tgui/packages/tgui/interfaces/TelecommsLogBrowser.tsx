@@ -1,9 +1,10 @@
+import { Fragment } from 'react';
+import { Box, Button, Collapsible, Flex, LabeledList, NoticeBox, Section } from "tgui-core/components";
+import { formatTime } from "tgui-core/format";
 import { round } from 'tgui-core/math';
 import { BooleanLike } from 'tgui-core/react';
-import { Fragment } from 'react';
+
 import { useBackend } from "../backend";
-import { Box, Button, Flex, NoticeBox, LabeledList, Section, Collapsible } from "tgui-core/components";
-import { formatTime } from "tgui-core/format";
 import { Window } from "../layouts";
 
 interface TelecommsLogBrowserContext {
@@ -75,7 +76,7 @@ export const TelecommsLogBrowser = (props) => {
             <LabeledList.Item
               label="Current Network"
               buttons={(
-                <Fragment>
+                <>
                   <Button
                     icon="search"
                     content="Refresh"
@@ -86,7 +87,7 @@ export const TelecommsLogBrowser = (props) => {
                     content="Flush Buffer"
                     disabled={!!data.servers.length}
                     onClick={() => act('release')} />
-                </Fragment>
+                </>
               )}>
               <Button
                 content={data.network}

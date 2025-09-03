@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
+import { Box, Button, Dropdown, LabeledList, Section } from "tgui-core/components";
+
 import { useBackend } from "../backend";
-import { Box, Button, LabeledList, Section, Dropdown } from "tgui-core/components";
 import { Window } from "../layouts";
 
 export const DroneConsole = (props) => {
@@ -63,7 +64,7 @@ export const DroneConsole = (props) => {
                   key={drone.name}
                   label={drone.name}
                   buttons={
-                    <Fragment>
+                    <>
                       <Button
                         icon="sync"
                         content="Resync"
@@ -73,7 +74,7 @@ export const DroneConsole = (props) => {
                         color="red"
                         content="Shutdown"
                         onClick={() => act("shutdown", { ref: drone.ref })} />
-                    </Fragment>
+                    </>
                   }>
                   <LabeledList>
                     <LabeledList.Item label="Location">

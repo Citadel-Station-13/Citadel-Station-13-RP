@@ -1,17 +1,18 @@
-import { useBackend } from "../backend";
 import {
   Box,
-  Icon,
-  Stack,
   Button,
-  Section,
+  Collapsible,
+  Icon,
+  LabeledList,
   NoticeBox,
   NumberInput,
-  LabeledList,
-  Collapsible,
+  Section,
+  Stack,
 } from "tgui-core/components";
-import { Window } from "../layouts";
 import { BooleanLike } from "tgui-core/react";
+
+import { useBackend } from "../backend";
+import { Window } from "../layouts";
 
 interface VoteContext {
   admin: BooleanLike;

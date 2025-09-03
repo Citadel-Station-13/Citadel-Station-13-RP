@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
+import { AnimatedNumber, Button, LabeledList, Section } from "tgui-core/components";
+
 import { useBackend } from "../backend";
-import { Button, LabeledList, Section, AnimatedNumber } from "tgui-core/components";
 import { Window } from "../layouts";
 
 export const PressureRegulator = (props) => {
@@ -49,7 +50,7 @@ export const PressureRegulator = (props) => {
             <LabeledList.Item
               label="Pressure Regulation"
               buttons={
-                <Fragment>
+                <>
                   <Button
                     icon="power-off"
                     content="Off"
@@ -65,12 +66,12 @@ export const PressureRegulator = (props) => {
                     content="Output"
                     selected={regulate_mode === 2}
                     onClick={() => act("regulate_mode", { mode: "output" })} />
-                </Fragment>
+                </>
               } />
             <LabeledList.Item
               label="Desired Output Pressure"
               buttons={
-                <Fragment>
+                <>
                   <Button
                     icon="compress-arrows-alt"
                     content="MIN"
@@ -83,14 +84,14 @@ export const PressureRegulator = (props) => {
                     icon="wrench"
                     content="SET"
                     onClick={() => act("set_press", { press: "set" })} />
-                </Fragment>
+                </>
               }>
               {pressure_set / 100} kPa
             </LabeledList.Item>
             <LabeledList.Item
               label="Flow Rate Limit"
               buttons={
-                <Fragment>
+                <>
                   <Button
                     icon="compress-arrows-alt"
                     content="MIN"
@@ -103,7 +104,7 @@ export const PressureRegulator = (props) => {
                     icon="wrench"
                     content="SET"
                     onClick={() => act("set_flow_rate", { press: "set" })} />
-                </Fragment>
+                </>
               }>
               {set_flow_rate / 10} L/s
             </LabeledList.Item>

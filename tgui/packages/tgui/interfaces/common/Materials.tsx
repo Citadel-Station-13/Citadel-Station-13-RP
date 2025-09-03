@@ -2,14 +2,15 @@
  * @file
  * @license MIT
  */
-import { Box, Button, NumberInput, Section, Icon, Stack, Tooltip } from 'tgui-core/components';
-import { useSharedState } from '../../backend';
 import { ReactNode, useState } from 'react';
-import { SectionProps, Sprite } from '../../components';
+import { Box, Button, Icon, NumberInput, Section, Stack, Tooltip } from 'tgui-core/components';
+import { formatSiUnit } from 'tgui-core/format';
+import { toFixed } from 'tgui-core/math';
 import { BooleanLike } from 'tgui-core/react';
 import { toTitleCase } from 'tgui-core/string';
-import { toFixed } from 'tgui-core/math';
-import { formatSiUnit } from 'tgui-core/format';
+
+import { useSharedState } from '../../backend';
+import { SectionProps, Sprite } from '../../components';
 
 // the space is intentional
 export const MATERIAL_STORAGE_UNIT_NAME = " cm³";

@@ -1,6 +1,7 @@
+import { Box, Button, NoticeBox, Section } from "tgui-core/components";
+
 import { useBackend } from "../backend";
 import { NtosWindow } from "../layouts";
-import { NoticeBox, Box, Section, Button } from "tgui-core/components";
 
 export const NtosAccessDecrypter = (props) => {
   const { act, data } = useBackend<any>();

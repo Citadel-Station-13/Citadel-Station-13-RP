@@ -1,6 +1,7 @@
-import { toFixed, round } from 'tgui-core/math';
-import { useBackend } from '../backend';
 import { Box, Button, Icon, LabeledList, NumberInput, Section } from 'tgui-core/components';
+import { round, toFixed } from 'tgui-core/math';
+
+import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
 export const BeaconLocator = (props) => {

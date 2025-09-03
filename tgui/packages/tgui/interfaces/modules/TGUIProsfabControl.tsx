@@ -6,16 +6,17 @@
  */
 
 import { Box, Button, Collapsible, Dropdown, Input, LabeledList, NoticeBox, NumberInput, ProgressBar, Section, Stack, Table, Tabs } from "tgui-core/components";
+
+import { useLocalState } from "../../backend";
+import { SectionProps } from "../../components";
 import { Modular } from "../../layouts/Modular";
 import { WindowProps } from "../../layouts/Window";
+import { useLegacyModule } from "../../legacyModuleSystem";
 import { Design } from "../common/Design";
 import { IngredientsSelected } from "../common/Ingredients";
-import { MaterialRender, MaterialStorage, MATERIAL_STORAGE_UNIT_NAME, renderMaterialAmount } from "../common/Materials";
-import { ReagentContents, REAGENT_STORAGE_UNIT_NAME } from "../common/Reagents";
+import { MATERIAL_STORAGE_UNIT_NAME, MaterialRender, MaterialStorage, renderMaterialAmount } from "../common/Materials";
+import { REAGENT_STORAGE_UNIT_NAME, ReagentContents } from "../common/Reagents";
 import { TGUILatheControlData, TGUILatheControlProps } from "../modules/TGUILatheControl";
-import { useLocalState } from "../../backend";
-import { useLegacyModule } from "../../legacyModuleSystem";
-import { SectionProps } from "../../components";
 
 interface TGUIProsfabControlData extends TGUILatheControlData {
   available_species: string[];

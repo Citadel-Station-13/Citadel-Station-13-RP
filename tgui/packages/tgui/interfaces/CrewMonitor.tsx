@@ -1,7 +1,8 @@
-import { useBackend, useLocalState } from "../backend";
-import { Window } from "../layouts";
-import { Box, Table, Button, Tabs, Icon } from "tgui-core/components";
 import { Fragment, useState } from 'react';
+import { Box, Button, Icon, Table, Tabs } from "tgui-core/components";
+
+import { useBackend } from "../backend";
+import { Window } from "../layouts";
 
 const getStatText = cm => {
   if (cm.dead) {
@@ -131,7 +132,7 @@ export const CrewMonitorContent = (props) => {
   }
 
   return (
-    <Fragment>
+    <>
       <Tabs>
         <Tabs.Tab
           key="DataView"
@@ -149,7 +150,7 @@ export const CrewMonitorContent = (props) => {
       <Box m={2}>
         {body}
       </Box>
-    </Fragment>
+    </>
   );
 };
 

@@ -1,6 +1,7 @@
 import { Fragment } from "react";
+import { Box, Button, Flex, LabeledList, Section, Slider } from "tgui-core/components";
+
 import { useBackend } from "../backend";
-import { Box, Button, Flex, LabeledList, Slider, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
 export const GeneralAtmoControl = (props) => {
@@ -204,7 +205,7 @@ const AtmoControlTankCoreControl = (props) => {
     <Section
       title={name}
       buttons={
-        <Fragment>
+        <>
           <Button
             content="Refresh"
             icon="sync"
@@ -216,7 +217,7 @@ const AtmoControlTankCoreControl = (props) => {
             selected={info ? info.power : false}
             disabled={!info}
             onClick={() => actions.power()} />
-        </Fragment>
+        </>
       }>
       <LabeledList>
         {info && (
@@ -268,7 +269,7 @@ const AtmoControlFuel = (props) => {
     <Section
       title="Fuel Injection System"
       buttons={
-        <Fragment>
+        <>
           <Button
             icon="syringe"
             content="Inject"
@@ -284,7 +285,7 @@ const AtmoControlFuel = (props) => {
             onClick={() => act("toggle_injector")}
             selected={device_info ? device_info.power : false}
             disabled={automation || !device_info} />
-        </Fragment>
+        </>
       }>
       {device_info ? (
         <LabeledList>
@@ -303,7 +304,7 @@ const AtmoControlFuel = (props) => {
           </LabeledList.Item>
         </LabeledList>
       ) : (
-        <Fragment>
+        <>
           <Box color="bad">
             ERROR: Cannot Find Device
           </Box>
@@ -311,7 +312,7 @@ const AtmoControlFuel = (props) => {
             icon="search"
             content="Search"
             onClick={() => act("refresh_status")} />
-        </Fragment>
+        </>
       )}
     </Section>
   );

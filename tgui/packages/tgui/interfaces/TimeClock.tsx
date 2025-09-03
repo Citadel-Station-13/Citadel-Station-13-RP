@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
+import { Box, Button, Flex, LabeledList, NoticeBox, Section } from "tgui-core/components";
+
 import { useBackend } from "../backend";
-import { Box, Button, Flex, LabeledList, Section, NoticeBox } from "tgui-core/components";
 import { Window } from "../layouts";
 import { RankIcon } from "./common/RankIcon";
 
@@ -37,7 +38,7 @@ export const TimeClock = (props) => {
               </Button>
             </LabeledList.Item>
             {!!job_datum && (
-              <Fragment>
+              <>
                 <LabeledList.Item label="Rank">
                   <Box
                     backgroundColor={job_datum.selection_color}
@@ -77,7 +78,7 @@ export const TimeClock = (props) => {
                       </Box>
                     )}
                 </LabeledList.Item>
-              </Fragment>
+              </>
             )}
           </LabeledList>
         </Section>

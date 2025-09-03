@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
-import { useBackend } from "../backend";
 import { Box, Button, Flex, LabeledList, Section, Table } from "tgui-core/components";
+
+import { useBackend } from "../backend";
 import { Window } from "../layouts";
 import { OvermapFlightData, OvermapPanControls } from './common/Overmap';
 
@@ -16,7 +17,7 @@ export const OvermapHelm = (props) => {
 
 export const OvermapHelmContent = (props) => {
   return (
-    <Fragment>
+    <>
       <Flex>
         <Flex.Item basis="40%" height="180px">
           <OvermapFlightDataWrap />
@@ -29,7 +30,7 @@ export const OvermapHelmContent = (props) => {
         </Flex.Item>
       </Flex>
       <OvermapNavComputer />
-    </Fragment>
+    </>
   );
 };
 
@@ -121,14 +122,14 @@ const OvermapAutopilot = (props) => {
       <LabeledList>
         <LabeledList.Item label="Target">
           {dest && (
-            <Fragment>
+            <>
               <Button onClick={() => act("setcoord", { setx: true })}>
                 {d_x}
               </Button>
               <Button onClick={() => act("setcoord", { sety: true })}>
                 {d_y}
               </Button>
-            </Fragment>
+            </>
           ) || (
               <Button icon="pen" onClick={() => act("setcoord", { setx: true, sety: true })}>
                 None

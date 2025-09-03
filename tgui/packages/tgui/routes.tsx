@@ -4,7 +4,6 @@
  * @license MIT
  */
 
-import { Component } from 'react';
 import { useBackend } from './backend';
 import { useDebug } from './debug';
 import { LoadingScreen } from './interfaces/common/LoadingScreen';

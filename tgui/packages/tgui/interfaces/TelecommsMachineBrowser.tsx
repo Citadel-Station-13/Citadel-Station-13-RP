@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
+import { Box, Button, LabeledList, NoticeBox, Section } from "tgui-core/components";
+
 import { useBackend } from "../backend";
-import { Box, Button, NoticeBox, LabeledList, Section } from "tgui-core/components";
 import { Window } from "../layouts";
 
 export const TelecommsMachineBrowser = (props) => {
@@ -36,7 +37,7 @@ export const TelecommsMachineBrowser = (props) => {
             <LabeledList.Item
               label="Current Network"
               buttons={(
-                <Fragment>
+                <>
                   <Button
                     icon="search"
                     content="Probe Network"
@@ -47,7 +48,7 @@ export const TelecommsMachineBrowser = (props) => {
                     content="Flush Buffer"
                     disabled={machinelist.length === 0}
                     onClick={() => act('release')} />
-                </Fragment>
+                </>
               )}>
               <Button
                 content={network}

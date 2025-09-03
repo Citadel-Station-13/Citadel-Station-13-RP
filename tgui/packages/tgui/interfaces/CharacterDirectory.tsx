@@ -1,6 +1,7 @@
 import { Fragment, useState } from 'react';
-import { useBackend, useLocalState } from "../backend";
 import { Box, Button, Icon, LabeledList, Section, Table } from "tgui-core/components";
+
+import { useBackend } from "../backend";
 import { Window } from "../layouts";
 
 const getTagColor = erptag => {
@@ -35,7 +36,7 @@ export const CharacterDirectory = (props) => {
         {overlay && (
           <ViewCharacter overlay={overlay} setOverlay={setOverlay} />
         ) || (
-            <Fragment>
+            <>
               <Section title="Controls">
                 <LabeledList>
                   <LabeledList.Item label="Visibility">
@@ -65,7 +66,7 @@ export const CharacterDirectory = (props) => {
                 </LabeledList>
               </Section>
               <CharacterDirectoryList overlay={overlay} setOverlay={setOverlay} />
-            </Fragment>
+            </>
           )}
       </Window.Content>
     </Window>

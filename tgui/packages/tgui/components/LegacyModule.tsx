@@ -20,10 +20,11 @@
  * @license MIT
  */
 
-import React, { Component, createContext, useContext } from "react";
-import { SectionProps } from ".";
-import { getComponentForRoute } from "../routes";
+import React, { Component, createContext } from "react";
+
 import { useBackend } from "../backend";
+import { getComponentForRoute } from "../routes";
+import { SectionProps } from ".";
 
 export const LegacyModuleContext = createContext<{
   isModule: boolean;
@@ -52,7 +53,7 @@ export class LegacyModule<T extends ModuleProps, S = {}> extends Component<T, S>
       }}>
         {routedComponent.render()}
       </LegacyModuleContext>
-    )
+    );
   }
 }
 

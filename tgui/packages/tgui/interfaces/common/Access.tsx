@@ -5,10 +5,10 @@
  * @license MIT
  */
 
-import { useLocalState } from "../../backend";
-import { Button, Flex, LabeledList, Section, Tabs } from "tgui-core/components";
-import { AccessRegions, AccessTypes } from "../../constants/access";
 import { useState } from "react";
+import { Button, Flex, LabeledList, Section, Tabs } from "tgui-core/components";
+
+import { AccessRegions, AccessTypes } from "../../constants/access";
 
 export enum AccessListMode {
   AuthMode = "auth", // req, req_one

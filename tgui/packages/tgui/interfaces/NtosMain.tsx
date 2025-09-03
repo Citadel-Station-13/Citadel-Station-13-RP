@@ -1,5 +1,6 @@
+import { Button, ColorBox, Section, Stack, Table } from 'tgui-core/components';
+
 import { useBackend } from '../backend';
-import { Button, ColorBox, Stack, Section, Table } from 'tgui-core/components';
 import { NtosWindow } from '../layouts';
 
 export const NtosMain = (props) => {

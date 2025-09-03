@@ -1,9 +1,10 @@
-import { BooleanLike } from "tgui-core/react";
 import { Fragment } from "react";
-import { useBackend } from "../backend";
-import { Button, LabeledList, Section, AnimatedNumber } from "tgui-core/components";
-import { Window } from '../layouts';
+import { AnimatedNumber, Button, LabeledList, Section } from "tgui-core/components";
+import { BooleanLike } from "tgui-core/react";
 import { capitalize } from "tgui-core/string";
+
+import { useBackend } from "../backend";
+import { Window } from '../layouts';
 
 enum MaterialProcessorMode {
   None = 0,
@@ -90,7 +91,7 @@ export const MaterialProcessor = (props) => {
           </LabeledList>
         </Section>
         <Section title="Ore Processing" buttons={
-          <Fragment>
+          <>
             <Button
               icon="forward"
               tooltip="Toggle High-Speed Processing"
@@ -106,7 +107,7 @@ export const MaterialProcessor = (props) => {
               selected={on}
               onClick={() => act("toggle_power", {})}
             />
-          </Fragment>
+          </>
         }>
           <LabeledList>
             {ores.map(ore => (
@@ -115,7 +116,7 @@ export const MaterialProcessor = (props) => {
                 key={ore.ref}
                 color={COLOR_PROCESSING[ore.processing]}
                 buttons={
-                  <Fragment>
+                  <>
                     <Button
                       icon="layer-group"
                       tooltip={"Alloy " + ore.displayName}
@@ -144,7 +145,7 @@ export const MaterialProcessor = (props) => {
                       selected={ore.processing === MaterialProcessorMode.None}
                       onClick={() => act("change_mode", { ore: ore.name, mode: MaterialProcessorMode.None })}
                     />
-                  </Fragment>
+                  </>
                 }>
                 <AnimatedNumber value={ore.amount} />
               </LabeledList.Item>

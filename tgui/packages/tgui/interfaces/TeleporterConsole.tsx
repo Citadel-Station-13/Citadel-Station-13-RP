@@ -1,7 +1,8 @@
-import { Section, Flex, Box, Dropdown, ProgressBar, NumberInput } from "tgui-core/components";
-import { Window } from "../layouts";
-import { useBackend } from "../backend";
+import { Box, Dropdown, Flex, NumberInput, ProgressBar, Section } from "tgui-core/components";
 import { toFixed } from 'tgui-core/math';
+
+import { useBackend } from "../backend";
+import { Window } from "../layouts";
 
 interface TeleporterConsoleContext {
   "disabled",

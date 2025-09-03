@@ -1,9 +1,10 @@
-import { decodeHtmlEntities } from 'tgui-core/string';
 import { Component, createRef, MouseEvent, RefObject } from 'react';
-import { useBackend } from '../../backend';
-import { Box, Button, Flex } from 'tgui-core/components';
-import { Window } from '../../layouts';
 import { Color } from 'tgui-core/color';
+import { Box, Button, Flex } from 'tgui-core/components';
+import { decodeHtmlEntities } from 'tgui-core/string';
+
+import { useBackend } from '../../backend';
+import { Window } from '../../layouts';
 
 type PaintCanvasProps = Partial<{
   onCanvasModifiedHandler: (data: PointData[]) => void,

@@ -1,8 +1,9 @@
-import { round } from 'tgui-core/math';
-import { useBackend } from "../backend";
 import { Box, Flex, LabeledList, ProgressBar, Section } from "tgui-core/components";
+import { formatPower, formatSiUnit } from "tgui-core/format";
+import { round } from 'tgui-core/math';
+
+import { useBackend } from "../backend";
 import { Window } from "../layouts";
-import { formatSiUnit, formatPower } from "tgui-core/format";
 
 export const TEGenerator = (props) => {
   const { data } = useBackend<any>();

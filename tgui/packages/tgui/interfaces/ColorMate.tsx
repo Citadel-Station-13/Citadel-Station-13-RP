@@ -9,8 +9,8 @@ import {
   Tabs,
 } from 'tgui-core/components';
 
-import { Window } from '../layouts';
 import { useBackend } from '../backend';
+import { Window } from '../layouts';
 
 export const ColorMate = (props) => {
   const { act, data } = useBackend<any>();

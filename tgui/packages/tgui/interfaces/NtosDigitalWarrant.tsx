@@ -1,8 +1,8 @@
-import { useBackend } from '../backend';
-import { Button, LabeledList, Section, Table } from 'tgui-core/components';
-import { NtosWindow } from '../layouts';
-import { filter } from 'common/collections';
 import { Fragment } from 'react';
+import { Button, LabeledList, Section, Table } from 'tgui-core/components';
+
+import { useBackend } from '../backend';
+import { NtosWindow } from '../layouts';
 
 export const NtosDigitalWarrant = (props) => {
   const { act, data } = useBackend<any>();
@@ -116,7 +116,7 @@ const ActiveWarrant = (props) => {
 
   return (
     <Section title={isArrest ? "Editing Arrest Warrant" : "Editing Search Warrant"} buttons={
-      <Fragment>
+      <>
         <Button
           icon="save"
           onClick={() => act("savewarrant")}>
@@ -133,18 +133,18 @@ const ActiveWarrant = (props) => {
           onClick={() => act("back")}>
           Back
         </Button>
-      </Fragment>
+      </>
     }>
       <LabeledList>
         <LabeledList.Item label={warrantnameLabel} buttons={isArrest && (
-          <Fragment>
+          <>
             <Button
               icon="search"
               onClick={() => act("editwarrantname")} />
             <Button
               icon="pen"
               onClick={() => act("editwarrantnamecustom")} />
-          </Fragment>
+          </>
         ) || (
             <Button
               icon="pen"

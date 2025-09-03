@@ -1,7 +1,7 @@
-import { toTitleCase } from 'tgui-core/string';
 import { Fragment, useState } from 'react';
-import { useBackend, useLocalState } from '../backend';
-import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section, Tabs, Input, NumberInput, Table, Divider, Stack } from "tgui-core/components";
+import { Box, Button, Input, LabeledList, Section, Stack, Table, Tabs } from "tgui-core/components";
+
+import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
 const ResearchConsoleViewResearch = (props) => {
@@ -60,7 +60,7 @@ const PaginationChevrons = (props) => {
   } = props;
 
   return (
-    <Fragment>
+    <>
       <Button
         icon="undo"
         onClick={() => act(target, { reset: true })} />
@@ -70,7 +70,7 @@ const PaginationChevrons = (props) => {
       <Button
         icon="chevron-right"
         onClick={() => act(target, { reverse: 1 })} />
-    </Fragment>
+    </>
   );
 };
 
@@ -83,14 +83,14 @@ const ResearchConsoleViewDesigns = (props) => {
 
   return (
     <Section title={<PaginationTitle title="Researched Technologies & Designs" target="design_page" />} buttons={
-      <Fragment>
+      <>
         <Button
           icon="print"
           onClick={() => act("print", { print: 2 })}>
           Print This Page
         </Button>
         <PaginationChevrons target={"design_page"} />
-      </Fragment>
+      </>
     }>
       <Input
         fluid
@@ -241,13 +241,13 @@ const DataDisk = (props) => {
         <Section
           title={<PaginationTitle title="Load Design to Disk" target="design_page" />}
           buttons={
-            <Fragment>
+            <>
               <Button
                 icon="arrow-left"
                 content="Back"
                 onClick={() => setSaveDialog(false)} />
               <PaginationChevrons target={"design_page"} />
-            </Fragment>
+            </>
           }>
           <Input
             fluid
@@ -478,7 +478,7 @@ const ResearchConsoleSettings = (props) => {
       {settingsTab === 0 && (
         <Box>
           {sync && (
-            <Fragment>
+            <>
               <Button
                 fluid
                 icon="sync"
@@ -491,7 +491,7 @@ const ResearchConsoleSettings = (props) => {
                 onClick={() => act("togglesync")}>
                 Disconnect from Research Network
               </Button>
-            </Fragment>
+            </>
           ) || (
               <Button
                 fluid

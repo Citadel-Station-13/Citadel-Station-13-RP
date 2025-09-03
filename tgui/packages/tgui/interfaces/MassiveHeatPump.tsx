@@ -1,7 +1,8 @@
-import { useBackend } from "../backend";
-import { Button, LabeledList, ProgressBar, Section, AnimatedNumber } from "tgui-core/components";
-import { formatPower, formatSiUnit } from "tgui-core/format";
 import { Fragment } from 'react';
+import { AnimatedNumber, Button, LabeledList, ProgressBar, Section } from "tgui-core/components";
+import { formatPower, formatSiUnit } from "tgui-core/format";
+
+import { useBackend } from "../backend";
 import { Window } from "../layouts";
 
 export const MassiveHeatPump = (props) => {
@@ -61,7 +62,7 @@ export const MassiveHeatPump = (props) => {
           <LabeledList>
             <LabeledList.Item label="Target Temperature"
               buttons={(
-                <Fragment>
+                <>
                   <Button
                     icon="compress-arrows-alt"
                     content="MIN"
@@ -74,13 +75,13 @@ export const MassiveHeatPump = (props) => {
                     icon="wrench"
                     content="SET"
                     onClick={() => act("set_temp", { temp: "set" })} />
-                </Fragment>
+                </>
               )}>
               {formatSiUnit(target_temp, 0, 'K')}
             </LabeledList.Item>
             <LabeledList.Item label="Power Level"
               buttons={(
-                <Fragment>
+                <>
                   <Button
                     icon="compress-arrows-alt"
                     content="MIN"
@@ -93,7 +94,7 @@ export const MassiveHeatPump = (props) => {
                     icon="wrench"
                     content="SET"
                     onClick={() => act("set_pow", { pow: "set" })} />
-                </Fragment>
+                </>
               )}>
               {formatPower(power_level)}
             </LabeledList.Item>

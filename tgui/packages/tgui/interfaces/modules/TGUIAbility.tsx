@@ -4,6 +4,7 @@
  */
 
 import { BooleanLike } from "tgui-core/react";
+
 import { Modular } from "../../layouts/Modular";
 import { ModuleData, useLegacyModule } from "../../legacyModuleSystem";
 

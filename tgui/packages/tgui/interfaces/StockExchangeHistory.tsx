@@ -1,4 +1,5 @@
 import { Box, Button, Divider } from "tgui-core/components";
+
 import { useBackend } from "../backend";
 
 const StockExchangeHistory = (props) => {

@@ -1,12 +1,13 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
-import { useBackend } from "../../backend";
 import { LabeledList, NumberInput } from "tgui-core/components";
 import { Section } from "tgui-core/components";
-import { AtmosGasGroups, AtmosGasID, AtmosGasGroupFlags, GasContext, AtmosFilterList } from "../common/Atmos";
-import { AtmosComponent, AtmosComponentData } from "../common/AtmosMachine";
+
+import { useBackend } from "../../backend";
 import { SectionProps } from "../../components";
+import { AtmosFilterList, AtmosGasGroupFlags, AtmosGasGroups, AtmosGasID, GasContext } from "../common/Atmos";
+import { AtmosComponent, AtmosComponentData } from "../common/AtmosMachine";
 
 interface AtmosTrinaryFilterControlProps extends SectionProps {
   readonly atmosContext: GasContext;

@@ -1,5 +1,6 @@
+import { Box, Button, Icon, LabeledList, NoticeBox, NumberInput, Section, Stack, Tabs } from 'tgui-core/components';
+
 import { useBackend, useSharedState } from '../backend';
-import { Box, Button, LabeledList, NoticeBox, NumberInput, Icon, Section, Stack, Tabs } from 'tgui-core/components';
 import { NtosWindow } from '../layouts';
 
 export const NtosNetMonitor = (props) => {

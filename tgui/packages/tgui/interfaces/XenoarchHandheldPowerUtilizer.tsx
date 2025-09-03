@@ -1,5 +1,6 @@
+import { Box, Button, LabeledList, NumberInput, ProgressBar, Section } from 'tgui-core/components';
+
 import { useBackend } from '../backend';
-import { Box, Button, LabeledList, NumberInput, Section, ProgressBar } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 export const XenoarchHandheldPowerUtilizer = (props) => {

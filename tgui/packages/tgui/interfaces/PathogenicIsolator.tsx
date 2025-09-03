@@ -1,8 +1,9 @@
 import { Fragment, useState } from 'react';
-import { useBackend, useLocalState } from "../backend";
-import { ComplexModal, modalRegisterBodyOverride } from "./common/ComplexModal";
 import { Box, Button, Flex, LabeledList, Section, Tabs } from "tgui-core/components";
+
+import { useBackend } from "../backend";
 import { Window } from "../layouts";
+import { ComplexModal, modalRegisterBodyOverride } from "./common/ComplexModal";
 
 const virusModalBodyOverride = (modal) => {
   const { act, data } = useBackend<any>();
@@ -16,7 +17,7 @@ const virusModalBodyOverride = (modal) => {
       m="-1rem"
       title={virus.name || "Virus"}
       buttons={
-        <Fragment>
+        <>
           <Button
             disabled={!can_print}
             icon="print"
@@ -26,7 +27,7 @@ const virusModalBodyOverride = (modal) => {
             icon="times"
             color="red"
             onClick={() => act('modal_close')} />
-        </Fragment>
+        </>
       }>
       <Box mx="0.5rem">
         <LabeledList>
@@ -109,7 +110,7 @@ const PathogenicIsolatorTabHome = (props) => {
   } = data;
   return (
     <Section title="Pathogens" buttons={
-      <Fragment>
+      <>
         <Button
           icon="print"
           content="Print"
@@ -120,7 +121,7 @@ const PathogenicIsolatorTabHome = (props) => {
           content="Eject Syringe"
           disabled={!syringe_inserted}
           onClick={() => act("eject")} />
-      </Fragment>
+      </>
     }>
       {pathogen_pool.length && pathogen_pool.map(pathogen => (
         <Section key={pathogen.unique_id}>

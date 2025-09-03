@@ -1,13 +1,13 @@
 import { Fragment, useState } from 'react';
-import { useBackend, useLocalState } from '../backend';
 import { Box, Button, Icon, Input, LabeledList, Section, Tabs } from "tgui-core/components";
-import { ComplexModal, modalOpen } from "./common/ComplexModal";
+import { createSearch } from 'tgui-core/string';
+
+import { useBackend } from '../backend';
 import { Window } from "../layouts";
+import { ComplexModal, modalOpen } from "./common/ComplexModal";
 import { LoginInfo } from './common/LoginInfo';
 import { LoginScreen } from './common/LoginScreen';
 import { TemporaryNotice } from './common/TemporaryNotice';
-import { createSearch } from 'tgui-core/string';
-import { filter } from 'common/collections';
 
 const doEdit = (field) => {
   modalOpen('edit', {
@@ -54,7 +54,7 @@ export const GeneralRecords = (_properties) => {
         <LoginInfo />
         <TemporaryNotice />
         <GeneralRecordsNavigation />
-        <Section height="calc(100% - 5rem)" flexGrow={true}>
+        <Section height="calc(100% - 5rem)" flexGrow>
           {body}
         </Section>
       </Window.Content>
@@ -85,7 +85,7 @@ const GeneralRecordsList = (_properties) => {
 
   const records = selectRecords(data.records, searchText);
   return (
-    <Fragment>
+    <>
       <Box mb="0.2rem">
         <Button
           icon="pen"
@@ -107,7 +107,7 @@ const GeneralRecordsList = (_properties) => {
           />
         ))}
       </Box>
-    </Fragment>
+    </>
   );
 };
 
@@ -129,7 +129,7 @@ const GeneralRecordsView = (_properties) => {
     printing,
   } = data;
   return (
-    <Fragment>
+    <>
       <Section title="General Data" mt="-6px">
         <GeneralRecordsViewGeneral />
       </Section>
@@ -156,7 +156,7 @@ const GeneralRecordsView = (_properties) => {
           onClick={() => act('screen', { screen: 2 })}
         />
       </Section>
-    </Fragment>
+    </>
   );
 };
 
@@ -178,9 +178,9 @@ const GeneralRecordsViewGeneral = (_properties) => {
     );
   }
   return (
-    <Fragment>
+    <>
       <Box width="50%" style={{
-        float: "left"
+        float: "left",
       }}>
         <LabeledList>
           {general.fields.map((field, i) => (
@@ -253,7 +253,7 @@ const GeneralRecordsViewGeneral = (_properties) => {
           ))
         )}
       </Box>
-    </Fragment>
+    </>
   );
 };
 

@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { useBackend, useLocalState } from '../backend';
+import { Button, Section, Stack } from 'tgui-core/components';
+
+import { useBackend } from '../backend';
 import { Window } from '../layouts';
-import { Section, Stack, Button } from 'tgui-core/components';
 
 type LanguagePickerContext = {
   categories: string[],

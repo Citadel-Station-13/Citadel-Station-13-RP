@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { useBackend, useLocalState } from "../../backend";
 import { Box, Button, Dropdown, Flex, Input, Modal } from 'tgui-core/components';
+
+import { useBackend } from "../../backend";
 
 let bodyOverrides = {};
 

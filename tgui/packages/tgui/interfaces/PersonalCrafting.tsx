@@ -1,6 +1,7 @@
-import { BooleanLike, classes } from 'tgui-core/react';
-import { useBackend } from '../backend';
 import { Button, Dimmer, Icon, Section, Stack, Table } from 'tgui-core/components';
+import { BooleanLike, classes } from 'tgui-core/react';
+
+import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
 type RawRecipe = {

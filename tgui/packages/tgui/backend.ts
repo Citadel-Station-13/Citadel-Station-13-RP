@@ -80,12 +80,12 @@ export const backendReducer = (state = initialState, action) => {
     // Merge nested data
     const nestdData = {
       ...state.nestedData,
-    }
+    };
     for (let id of Object.keys(payload.nestedData)) {
       nestdData[id] = {
         ...state.nestedData[id],
         ...payload.nestedData[id],
-      }
+      };
     }
     // Merge shared states
     const shared = { ...state.shared };
@@ -114,27 +114,27 @@ export const backendReducer = (state = initialState, action) => {
     const mergedData = {
       ...state.data,
       ...payload,
-    }
+    };
     return {
       ...state,
       data: mergedData,
-    }
+    };
   }
 
   if (type === 'backend/pushNestedData') {
     const mergedNestedData = {
       ...state.nestedData,
-    }
+    };
     for (let id of Object.keys(payload)) {
       state[id] = {
         ...state[id],
         ...payload[id],
-      }
+      };
     }
     return {
       ...state,
       nestedData: mergedNestedData,
-    }
+    };
   }
 
   if (type === 'backend/setSharedState') {

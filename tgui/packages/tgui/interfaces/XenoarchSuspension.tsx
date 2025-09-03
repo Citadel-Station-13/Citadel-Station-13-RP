@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
-import { useBackend } from "../backend";
 import { Box, Button, LabeledList, ProgressBar, Section } from "tgui-core/components";
+
+import { useBackend } from "../backend";
 import { Window } from "../layouts";
 
 export const XenoarchSuspension = (props) => {
@@ -30,7 +31,7 @@ export const XenoarchSuspension = (props) => {
               This interface is locked. Swipe an ID card to unlock it.
             </Box>
           ) || (
-              <Fragment>
+              <>
                 <LabeledList>
                   <LabeledList.Item label="Cell Charge">
                     {cell && (
@@ -55,7 +56,7 @@ export const XenoarchSuspension = (props) => {
                   onClick={() => act("toggle_field")}>
                   {suspension_field ? "Disengage Suspension Field" : "Engage Suspension Field"}
                 </Button>
-              </Fragment>
+              </>
             )}
         </Section>
       </Window.Content>

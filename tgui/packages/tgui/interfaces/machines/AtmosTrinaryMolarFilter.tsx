@@ -1,12 +1,13 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
-import { BooleanLike } from "tgui-core/react";
-import { useBackend } from "../../backend";
 import { Button, LabeledList, NumberInput } from "tgui-core/components";
 import { Section } from "tgui-core/components";
-import { AtmosComponent, AtmosComponentData } from "../common/AtmosMachine";
+import { BooleanLike } from "tgui-core/react";
+
+import { useBackend } from "../../backend";
 import { SectionProps } from "../../components";
+import { AtmosComponent, AtmosComponentData } from "../common/AtmosMachine";
 
 interface AtmosTrinaryMolarFilterControlProps extends SectionProps {
   readonly invert: BooleanLike;

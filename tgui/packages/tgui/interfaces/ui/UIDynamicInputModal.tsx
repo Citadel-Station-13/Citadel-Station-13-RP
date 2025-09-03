@@ -1,9 +1,10 @@
-import { useBackend, useLocalState } from "../../backend";
-import { Button, Dropdown, Input, NumberInput, Section, Stack, Tooltip } from "tgui-core/components";
-import { Window } from "../../layouts";
-import { BooleanLike } from "tgui-core/react";
 import { useState } from "react";
+import { Button, Dropdown, Input, NumberInput, Section, Stack, Tooltip } from "tgui-core/components";
 import { round } from "tgui-core/math";
+import { BooleanLike } from "tgui-core/react";
+
+import { useBackend } from "../../backend";
+import { Window } from "../../layouts";
 
 interface UIDynamicInputContext {
   title: string;

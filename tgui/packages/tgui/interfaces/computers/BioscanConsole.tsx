@@ -2,10 +2,11 @@
  * @file
  * @license MIT
  */
-import { useBackend } from "../../backend";
 import { Button, Collapsible, Input, LabeledList, Section } from "tgui-core/components";
-import { Window } from "../../layouts";
 import { BooleanLike } from "tgui-core/react";
+
+import { useBackend } from "../../backend";
+import { Window } from "../../layouts";
 
 interface BioscanConsoleData {
   network: string;

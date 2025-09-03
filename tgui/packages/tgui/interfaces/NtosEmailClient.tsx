@@ -1,9 +1,10 @@
 /* eslint react/no-danger: "off" */
 import { Fragment } from 'react';
-import { useBackend } from '../backend';
-import { Button, Box, Section, Table, LabeledList, Input, Tabs, Flex, AnimatedNumber, ProgressBar } from 'tgui-core/components';
-import { NtosWindow } from '../layouts';
+import { AnimatedNumber, Box, Button, Flex, Input, LabeledList, ProgressBar, Section, Table, Tabs } from 'tgui-core/components';
 import { round } from 'tgui-core/math';
+
+import { useBackend } from '../backend';
+import { NtosWindow } from '../layouts';
 
 export const NtosEmailClient = (props) => {
   const { act, data } = useBackend<any>();
@@ -89,7 +90,7 @@ const NtosEmailClientContent = (props) => {
 
   return (
     <Section title={"Logged in as: " + current_account} buttons={
-      <Fragment>
+      <>
         <Button
           icon="plus"
           tooltip="New Message"
@@ -105,7 +106,7 @@ const NtosEmailClientContent = (props) => {
           tooltip="Log Out"
           tooltipPosition="left"
           onClick={() => act("logout")} />
-      </Fragment>
+      </>
     }>
       {content}
     </Section>
@@ -209,7 +210,7 @@ export const NtosEmailClientViewMessage = (props) => {
         icon="times"
         onClick={() => act("back")} />
     ) : (
-      <Fragment>
+      <>
         <Button
           icon="share"
           tooltip="Reply"
@@ -238,7 +239,7 @@ export const NtosEmailClientViewMessage = (props) => {
           tooltip="Close"
           tooltipPosition="left"
           onClick={() => act("cancel", { cancel: cur_uid })} />
-      </Fragment>
+      </>
     )}>
       <LabeledList>
         <LabeledList.Item label="From">
@@ -306,7 +307,7 @@ const NtosEmailClientNewMessage = (props) => {
 
   return (
     <Section title="New Message" buttons={
-      <Fragment>
+      <>
         <Button
           icon="share"
           onClick={() => act("send")}>
@@ -316,7 +317,7 @@ const NtosEmailClientNewMessage = (props) => {
           color="bad"
           icon="times"
           onClick={() => act("cancel")} />
-      </Fragment>
+      </>
     }>
       <LabeledList>
         <LabeledList.Item label="Title">

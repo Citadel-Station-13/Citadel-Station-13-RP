@@ -1,7 +1,8 @@
-import { useBackend, useSharedState } from '../backend';
-import { AnimatedNumber, Box, Button, ColorBox, LabeledList, NumberInput, Section, Table } from 'tgui-core/components';
-import { Window } from '../layouts';
 import { Color } from 'tgui-core/color';
+import { AnimatedNumber, Box, Button, ColorBox, LabeledList, NumberInput, Section, Table } from 'tgui-core/components';
+
+import { useBackend, useSharedState } from '../backend';
+import { Window } from '../layouts';
 
 type ChemMasterData = {
   // Generic Data
@@ -203,42 +204,48 @@ const ChemicalBufferEntry = (props) => {
               id: chemical.id,
               amount: 1,
               to: transferTo,
-            })}>1</Button>
+            })}>1
+        </Button>
         <Button
           onClick={() =>
             act('transfer', {
               id: chemical.id,
               amount: 5,
               to: transferTo,
-            })}>5</Button>
+            })}>5
+        </Button>
         <Button
           onClick={() =>
             act('transfer', {
               id: chemical.id,
               amount: 10,
               to: transferTo,
-            })}>10</Button>
+            })}>10
+        </Button>
         <Button
           onClick={() =>
             act('transfer', {
               id: chemical.id,
               amount: 30,
               to: transferTo,
-            })}>30</Button>
+            })}>30
+        </Button>
         <Button
           onClick={() =>
             act('transfer', {
               id: chemical.id,
               amount: 60,
               to: transferTo,
-            })}>60</Button>
+            })}>60
+        </Button>
         <Button
           onClick={() =>
             act('transfer', {
               id: chemical.id,
               amount: 1000,
               to: transferTo,
-            })}>All</Button>
+            })}>All
+        </Button>
         <Button
           icon="ellipsis-h"
           onClick={() =>
@@ -246,13 +253,15 @@ const ChemicalBufferEntry = (props) => {
               id: chemical.id,
               amount: -1,
               to: transferTo,
-            })}>Custom Amount</Button>
+            })}>Custom Amount
+        </Button>
         <Button
           icon="question"
           onClick={() =>
             act('analyze', {
               id: chemical.id,
-            })}>Analyze</Button>
+            })}>Analyze
+        </Button>
       </Table.Cell>
     </Table.Row>
   );

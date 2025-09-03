@@ -1,7 +1,7 @@
+import { Button, Flex, LabeledList, ProgressBar, Section, Stack, Tabs } from "tgui-core/components";
+
 import { useBackend, useSharedState } from "../backend";
-import { Button, Flex, LabeledList, ProgressBar, Section, Tabs, Stack } from "tgui-core/components";
 import { Window } from "../layouts";
-import { sortBy, filter } from 'common/collections';
 
 export const ICPrinter = (props) => {
   const { act, data } = useBackend<any>();

@@ -3,18 +3,18 @@
  * @license MIT
  */
 
-import { useLocalState } from "../../backend";
+import { useState } from "react";
 import { Button, Flex, Input, LabeledList, Section, Tabs } from "tgui-core/components";
+import { BooleanLike } from "tgui-core/react";
+import { capitalize } from "tgui-core/string";
+
+import { SectionProps } from "../../components";
+import { ModuleProps } from "../../components/LegacyModule";
 import { AccessRegions, AccessTypes } from "../../constants/access";
 import { Modular } from "../../layouts/Modular";
 import { WindowProps } from "../../layouts/Window";
-import { Access, AccessId, AccessListMod } from "../common/Access";
-import { useState } from "react";
 import { ModuleData, useLegacyModule } from "../../legacyModuleSystem";
-import { BooleanLike } from "tgui-core/react";
-import { ModuleProps } from "../../components/LegacyModule";
-import { SectionProps } from "../../components";
-import { capitalize } from "tgui-core/string";
+import { Access, AccessId, AccessListMod } from "../common/Access";
 
 
 interface CardModContext extends ModuleData {

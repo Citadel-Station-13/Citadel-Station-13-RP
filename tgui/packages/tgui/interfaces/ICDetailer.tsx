@@ -1,7 +1,8 @@
-import { useBackend } from "../backend";
 import { Button, Section } from "tgui-core/components";
-import { Window } from "../layouts";
 import { toTitleCase } from 'tgui-core/string';
+
+import { useBackend } from "../backend";
+import { Window } from "../layouts";
 
 export const ICDetailer = (props) => {
   const { act, data } = useBackend<any>();

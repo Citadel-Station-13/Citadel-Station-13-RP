@@ -1,10 +1,11 @@
-import { round } from 'tgui-core/math';
-import { formatPower } from "tgui-core/format";
 import { Fragment, useState } from 'react';
-import { useBackend, useLocalState } from "../backend";
-import { Box, Button, Icon, LabeledList, ProgressBar, Stack, Section, Tabs, Slider } from "tgui-core/components";
-import { Window } from "../layouts";
+import { Box, Button, Icon, LabeledList, ProgressBar, Section, Slider, Stack, Tabs } from "tgui-core/components";
+import { formatPower } from "tgui-core/format";
+import { round } from 'tgui-core/math';
 import { capitalize } from 'tgui-core/string';
+
+import { useBackend } from "../backend";
+import { Window } from "../layouts";
 
 export const RCON = (props) => {
   return (
@@ -30,7 +31,7 @@ export const RCONContent = (props) => {
   }
 
   return (
-    <Fragment>
+    <>
       <Tabs>
         <Tabs.Tab
           key="SMESs"
@@ -48,7 +49,7 @@ export const RCONContent = (props) => {
       <Box m={2}>
         {body}
       </Box>
-    </Fragment>
+    </>
   );
 };
 

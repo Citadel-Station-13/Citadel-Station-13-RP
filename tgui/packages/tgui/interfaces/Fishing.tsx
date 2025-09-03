@@ -1,11 +1,12 @@
-import { clamp } from 'tgui-core/math';
 import { randomInteger, randomNumber, randomPick, randomProb } from 'common/random';
 import { Component } from 'react';
+import { Icon } from 'tgui-core/components';
+import { globalEvents } from 'tgui-core/events';
+import { clamp } from 'tgui-core/math';
+
 import { resolveAsset } from '../assets';
 import { backendSuspendStart, useBackend, useDispatch } from '../backend';
-import { Icon } from 'tgui-core/components';
 import { Window } from '../layouts';
-import { globalEvents } from 'tgui-core/events';
 
 type Bait = {
   position: number;

@@ -3,10 +3,11 @@
  * @license MIT
  */
 
-import { useBackend } from "../../backend";
 import { LabeledList, NoticeBox, ProgressBar, Section } from "tgui-core/components";
-import { Window } from "../../layouts";
 import { round } from "tgui-core/math";
+
+import { useBackend } from "../../backend";
+import { Window } from "../../layouts";
 
 interface ClientPlaytimeData {
   playtime: Record<string, number> | null;

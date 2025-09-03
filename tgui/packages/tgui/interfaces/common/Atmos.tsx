@@ -3,10 +3,11 @@
  * @license MIT
 */
 
-import { Box, Button, Collapsible, LabeledList, Section } from "tgui-core/components";
-import { SectionProps } from "../../components";
 import { bitfieldToPositions } from "common/math";
+import { Box, Button, Collapsible, LabeledList, Section } from "tgui-core/components";
 import { round } from "tgui-core/math";
+
+import { SectionProps } from "../../components";
 
 //* Context
 

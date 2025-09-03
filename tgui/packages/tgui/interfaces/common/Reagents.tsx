@@ -7,9 +7,10 @@
  * @license MIT
  */
 
-import { LabeledList, NoticeBox, Section } from "tgui-core/components";
-import { SectionProps } from "../../components";
 import { ReactNode } from "react";
+import { LabeledList, NoticeBox, Section } from "tgui-core/components";
+
+import { SectionProps } from "../../components";
 
 export const REAGENT_STORAGE_UNIT_NAME = "u";
 

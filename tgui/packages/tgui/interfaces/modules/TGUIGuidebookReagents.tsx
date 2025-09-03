@@ -14,9 +14,10 @@
 
 import { ReactNode, useState } from "react";
 import { Input, Section, Stack, Tabs } from "tgui-core/components";
+
 import { Modular } from "../../layouts/Modular";
-import { TGUIGuidebookSectionData } from "./TGUIGuidebook";
 import { useLegacyModule } from "../../legacyModuleSystem";
+import { TGUIGuidebookSectionData } from "./TGUIGuidebook";
 
 export interface TGUIGuidebookReagentsData extends TGUIGuidebookSectionData {
   // id to entry

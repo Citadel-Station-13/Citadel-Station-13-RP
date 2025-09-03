@@ -1,6 +1,7 @@
-import { round } from 'tgui-core/math';
-import { useBackend } from '../backend';
 import { Box, Button, Flex, Icon, LabeledList, NoticeBox, ProgressBar, Section } from 'tgui-core/components';
+import { round } from 'tgui-core/math';
+
+import { useBackend } from '../backend';
 import { NtosWindow } from '../layouts';
 
 export const NtosNetDownloader = (props) => {

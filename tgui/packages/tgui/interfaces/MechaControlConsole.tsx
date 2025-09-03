@@ -1,8 +1,9 @@
 import { Fragment } from 'react';
+import { Box, Button, LabeledList, Modal, NoticeBox, ProgressBar, Section } from "tgui-core/components";
+import { decodeHtmlEntities, toTitleCase } from 'tgui-core/string';
+
 import { useBackend } from "../backend";
-import { Box, Button, Modal, LabeledList, ProgressBar, Section, NoticeBox } from "tgui-core/components";
 import { Window } from "../layouts";
-import { toTitleCase, decodeHtmlEntities } from 'tgui-core/string';
 
 export const MechaControlConsole = (props) => {
   const { act, data } = useBackend<any>();
@@ -31,7 +32,7 @@ export const MechaControlConsole = (props) => {
         ) || null}
         {beacons.length && beacons.map(beacon => (
           <Section key={beacon.name} title={beacon.name} buttons={
-            <Fragment>
+            <>
               <Button
                 icon="comment"
                 onClick={() => act("send_message", { mt: beacon.ref })}>
@@ -47,7 +48,7 @@ export const MechaControlConsole = (props) => {
                 content="EMP"
                 icon="bomb"
                 onClick={() => act("shock", { mt: beacon.ref })} />
-            </Fragment>
+            </>
           }>
             <LabeledList>
               <LabeledList.Item label="Health">

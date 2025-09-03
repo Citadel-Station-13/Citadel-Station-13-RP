@@ -1,9 +1,10 @@
 /* eslint react/no-danger: "off" */
-import { useBackend } from '../backend';
-import { Button, LabeledList, ProgressBar, Section, NoticeBox } from 'tgui-core/components';
-import { NtosWindow } from '../layouts';
-import { resolveAsset } from '../assets';
 import { Fragment } from 'react';
+import { Button, LabeledList, NoticeBox, ProgressBar, Section } from 'tgui-core/components';
+
+import { resolveAsset } from '../assets';
+import { useBackend } from '../backend';
+import { NtosWindow } from '../layouts';
 
 export const NtosNewsBrowser = (props) => {
   const { act, data } = useBackend<any>();
@@ -55,7 +56,7 @@ const SelectedArticle = (props) => {
 
   return (
     <Section title={"Viewing: " + title} buttons={
-      <Fragment>
+      <>
         <Button
           icon="save"
           onClick={() => act("PRG_savearticle")}>
@@ -66,7 +67,7 @@ const SelectedArticle = (props) => {
           onClick={() => act("PRG_reset")}>
           Close
         </Button>
-      </Fragment>
+      </>
     }>
       {!!cover && <img src={resolveAsset(cover)} />}
       {/* News articles are written in premade .html files and cannot be

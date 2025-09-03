@@ -1,10 +1,11 @@
 /* eslint-disable unused-imports/no-unused-imports */
 /* eslint-disable max-len */
 import { filter } from 'common/collections';
-import { decodeHtmlEntities, toTitleCase } from 'tgui-core/string';
 import { Fragment, useState } from 'react';
+import { Box, Button, ByondUi, Flex, Icon, Input, LabeledList, ProgressBar, Section, Table } from "tgui-core/components";
+import { decodeHtmlEntities, toTitleCase } from 'tgui-core/string';
+
 import { useBackend, useLocalState } from "../backend";
-import { Box, ByondUi, Button, Flex, Icon, LabeledList, Input, ProgressBar, Section, Table } from "tgui-core/components";
 import { Window } from "../layouts";
 import { CrewManifestContent } from './CrewManifest';
 
@@ -41,7 +42,7 @@ export const Communicator = (props) => {
       <Window.Content>
         {video_comm && <VideoComm videoSetting={videoSetting} setVideoSetting={setVideoSetting} />}
         {(!video_comm || videoSetting !== 0) && (
-          <Fragment>
+          <>
             <CommunicatorHeader />
             <Box height="88%" mb={1} style={{
               overflowY: "auto",
@@ -51,7 +52,7 @@ export const Communicator = (props) => {
             <CommunicatorFooter
               videoSetting={videoSetting}
               setVideoSetting={setVideoSetting} />
-          </Fragment>
+          </>
         )}
       </Window.Content>
     </Window>
@@ -910,7 +911,7 @@ const NewsFeed = (props) => {
   } = data;
 
   return (
-    <Fragment>
+    <>
       <Section title="Recent News">
         <Section>
           {latest_news.map(news => (
@@ -947,7 +948,7 @@ const NewsFeed = (props) => {
             content={feed.name} />
         ))}
       </Section>
-    </Fragment>
+    </>
   );
 };
 

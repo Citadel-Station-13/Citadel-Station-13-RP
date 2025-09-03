@@ -1,7 +1,8 @@
-import { createSearch } from 'tgui-core/string';
 import { Fragment, useState } from 'react';
-import { useBackend, useLocalState } from "../backend";
 import { Box, Button, Collapsible, Dropdown, Flex, Input, Section } from 'tgui-core/components';
+import { createSearch } from 'tgui-core/string';
+
+import { useBackend } from "../backend";
 import { Window } from "../layouts";
 
 const sortTypes = {
@@ -20,7 +21,7 @@ export const Biogenerator = (props) => {
             The biogenerator is processing reagents!
           </Section>
         ) || (
-            <Fragment>
+            <>
               <Section>
                 {data.points} points available.
                 <Button
@@ -39,7 +40,7 @@ export const Biogenerator = (props) => {
               </Section>
               <BiogeneratorSearch />
               <BiogeneratorItems />
-            </Fragment>
+            </>
           )}
       </Window.Content>
     </Window>

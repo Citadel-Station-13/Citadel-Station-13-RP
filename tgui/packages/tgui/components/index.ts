@@ -11,4 +11,4 @@ export type SectionProps = React.ComponentProps<typeof Section>;
  * Re-exports everything from this folder
  */
 
-export { Sprite } from './Sprite'
+export { Sprite } from './Sprite';

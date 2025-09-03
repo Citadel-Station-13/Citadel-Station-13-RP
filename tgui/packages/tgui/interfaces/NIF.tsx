@@ -1,6 +1,7 @@
 import { Fragment, useState } from 'react';
-import { useBackend, useLocalState } from "../backend";
-import { Box, Button, LabeledList, ProgressBar, Modal, Section, Dropdown, AnimatedNumber, NoticeBox, Table } from "tgui-core/components";
+import { AnimatedNumber, Box, Button, Dropdown, LabeledList, Modal, NoticeBox, ProgressBar, Section, Table } from "tgui-core/components";
+
+import { useBackend } from "../backend";
 import { Window } from "../layouts";
 
 const NIF_WORKING = 0;
@@ -56,7 +57,7 @@ export const NIF = (props) => {
         {!!viewingModule && (
           <Modal m={1} p={0} color="label">
             <Section m={0} title={viewingModule.name} buttons={
-              <Fragment>
+              <>
                 <Button.Confirm
                   icon="ban"
                   color="bad"
@@ -70,7 +71,7 @@ export const NIF = (props) => {
                 <Button
                   icon="window-close"
                   onClick={() => setViewing(null)} />
-              </Fragment>
+              </>
             }>
               <Box>{viewingModule.desc}</Box>
               <Box>
@@ -201,7 +202,7 @@ const NIFMain = (props) => {
               label={module.name}
               key={module.ref}
               buttons={
-                <Fragment>
+                <>
                   <Button.Confirm
                     icon="trash"
                     color="bad"
@@ -215,7 +216,7 @@ const NIFMain = (props) => {
                     onClick={() => setViewing(module)}
                     tooltip="View Information"
                     tooltipPosition="left" />
-                </Fragment>
+                </>
               }>
               {module.activates && (
                 <Button

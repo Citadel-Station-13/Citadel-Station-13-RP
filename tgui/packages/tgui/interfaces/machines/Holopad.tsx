@@ -2,11 +2,12 @@
  * @file
  * @license MIT
  */
-import { BooleanLike } from "tgui-core/react";
-import { useBackend, useLocalState } from "../../backend";
-import { Button, LabeledList, NoticeBox, Section, Stack, Table, Tabs } from "tgui-core/components";
-import { Window } from "../../layouts";
 import { useState } from "react";
+import { Button, LabeledList, NoticeBox, Section, Stack, Table, Tabs } from "tgui-core/components";
+import { BooleanLike } from "tgui-core/react";
+
+import { useBackend } from "../../backend";
+import { Window } from "../../layouts";
 
 enum HolopadCalling {
   None = "none",

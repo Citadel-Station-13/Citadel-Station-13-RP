@@ -1,8 +1,9 @@
-import { Fragment } from 'react';
-import { useBackend, useSharedState } from "../backend";
-import { Box, Button, LabeledList, Section, Tabs } from "tgui-core/components";
-import { Window } from "../layouts";
 import { filter } from 'common/collections';
+import { Fragment } from 'react';
+import { Box, Button, LabeledList, Section, Tabs } from "tgui-core/components";
+
+import { useBackend, useSharedState } from "../backend";
+import { Window } from "../layouts";
 
 export const ResearchServerController = (props) => {
   const { act, data } = useBackend<any>();
@@ -151,7 +152,7 @@ const ResearchServerData = (props) => {
   } = props;
 
   return (
-    <Fragment>
+    <>
       <Section title="Research Levels">
         {server.tech.map(tech => (
           <LabeledList.Item label={tech.name} key={tech.name} buttons={
@@ -176,7 +177,7 @@ const ResearchServerData = (props) => {
           } />
         ))}
       </Section>
-    </Fragment>
+    </>
   );
 };
 

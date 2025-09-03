@@ -1,5 +1,6 @@
+import { Box, Button, LabeledList, NumberInput, Section } from 'tgui-core/components';
+
 import { useBackend } from '../backend';
-import { Box, Button, NumberInput, LabeledList, Section } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 export const IVDrip = (props) => {

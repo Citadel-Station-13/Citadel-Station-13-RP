@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
+import { AnimatedNumber, Box, Button, Collapsible, Flex, LabeledList, Section } from "tgui-core/components";
+
 import { useBackend } from "../backend";
-import { Box, Button, Flex, LabeledList, Section, AnimatedNumber, Collapsible } from "tgui-core/components";
 import { Window } from "../layouts";
 
 export const OvermapEngines = (props) => {
@@ -22,7 +23,7 @@ export const OvermapEnginesContent = (props) => {
     total_thrust, // Total thrust of all engines together
   } = data;
   return (
-    <Fragment>
+    <>
       <Section title="Status">
         <LabeledList>
           <LabeledList.Item label="Engines">
@@ -114,6 +115,6 @@ export const OvermapEnginesContent = (props) => {
           </Flex>
         ))}
       </Section>
-    </Fragment>
+    </>
   );
 };

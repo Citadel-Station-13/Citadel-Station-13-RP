@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
-import { useBackend } from "../../backend";
 import { Box, Button, NoticeBox } from 'tgui-core/components';
+
+import { useBackend } from "../../backend";
 
 export const MiningUser = (props) => {
   const { act, data } = useBackend<any>();
@@ -14,7 +15,7 @@ export const MiningUser = (props) => {
   return (
     <NoticeBox success={has_id}>
       {has_id ? (
-        <Fragment>
+        <>
           <Box
             verticalAlign="middle"
             style={{
@@ -37,7 +38,7 @@ export const MiningUser = (props) => {
               clear: "both",
             }}
           />
-        </Fragment>
+        </>
       ) : insertIdText}
     </NoticeBox>
   );

@@ -1,5 +1,6 @@
-import { useBackend, useLocalState } from '../backend';
 import { Box, Button, Section, Tabs } from 'tgui-core/components';
+
+import { useBackend, useLocalState } from '../backend';
 import { Window } from '../layouts';
 import { ICON_BY_CATEGORY_NAME } from './RapidPipeDispenser';
 
@@ -64,7 +65,8 @@ export const PipeDispenser = (props) => {
                 ref: recipe.ref,
                 bent: recipe.bent,
                 category: shownCategory.cat_name,
-              })}>{recipe.pipe_name}</Button>
+              })}>{recipe.pipe_name}
+            </Button>
           ))}
         </Section>
       </Window.Content>

@@ -1,8 +1,9 @@
+import { Fragment } from 'react';
+import { Box, Button, LabeledList, NumberInput, Section, Stack } from 'tgui-core/components';
 import { round } from 'tgui-core/math';
 import { BooleanLike } from 'tgui-core/react';
-import { Fragment, useState } from 'react';
+
 import { useBackend, useLocalState } from '../../backend';
-import { Box, Button, LabeledList, NumberInput, Section, Stack } from 'tgui-core/components';
 import { Window } from '../../layouts';
 import { AtmosAnalyzerResults, AtmosGasGroupFlags, AtmosGasID, GasContext } from '../common/Atmos';
 import { InterfaceLockNoticeBox } from '../common/InterfaceLockNoticeBox';

@@ -1,5 +1,6 @@
-import { useBackend } from '../../backend';
 import { Box, Button, NoticeBox } from 'tgui-core/components';
+
+import { useBackend } from '../../backend';
 
 /**
  * Displays a notice box showing the

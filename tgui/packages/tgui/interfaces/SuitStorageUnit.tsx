@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
+import { Box, Button, Flex, Icon, Knob, LabeledList, NoticeBox, Section } from 'tgui-core/components';
+
 import { useBackend } from '../backend';
-import { Box, Button, Icon, LabeledList, Knob, NoticeBox, Section, Flex } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 export const SuitStorageUnit = (props) => {
@@ -51,7 +52,7 @@ const SuitStorageUnitContent = (props) => {
       title="Storage"
       minHeight="260px"
       buttons={(
-        <Fragment>
+        <>
           {!open && (
             <Button
               icon={locked ? 'unlock' : 'lock'}
@@ -64,7 +65,7 @@ const SuitStorageUnitContent = (props) => {
               content={open ? 'Close' : 'Open'}
               onClick={() => act('door')} />
           )}
-        </Fragment>
+        </>
       )}>
       {!!(occupied && safeties) && (
         <NoticeBox>

@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
-import { useBackend } from "../backend";
 import { Box, Button, LabeledList, ProgressBar, Section } from "tgui-core/components";
+
+import { useBackend } from "../backend";
 import { Window } from "../layouts";
 
 export const OvermapShipSensors = (props) => {
@@ -28,9 +29,9 @@ export const OvermapShipSensorsContent = (props) => {
   } = data;
 
   return (
-    <Fragment>
+    <>
       <Section title="Status" buttons={(
-        <Fragment>
+        <>
           <Button
             icon="eye"
             selected={viewing}
@@ -43,7 +44,7 @@ export const OvermapShipSensorsContent = (props) => {
             onClick={() => act("toggle_sensor")}>
             {on ? "Sensors Enabled" : "Sensors Disabled"}
           </Button>
-        </Fragment>
+        </>
       )}>
         <LabeledList>
           <LabeledList.Item label="Status">
@@ -115,6 +116,6 @@ export const OvermapShipSensorsContent = (props) => {
           </Button>
         </Section>
       ) || null}
-    </Fragment>
+    </>
   );
 };

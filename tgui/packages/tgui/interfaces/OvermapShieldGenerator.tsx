@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
+import { AnimatedNumber, Box, Button, LabeledList, ProgressBar, Section } from "tgui-core/components";
+
 import { useBackend } from "../backend";
-import { Box, Button, LabeledList, ProgressBar, Section, AnimatedNumber } from "tgui-core/components";
 import { Window } from "../layouts";
 
 export const OvermapShieldGenerator = (props) => {
@@ -31,7 +32,7 @@ const OvermapShieldGeneratorContent = (props) => {
   }
 
   return (
-    <Fragment>
+    <>
       <OvermapShieldGeneratorStatus />
       <OvermapShieldGeneratorControls />
       <Section title="Field Calibration">
@@ -53,7 +54,7 @@ const OvermapShieldGeneratorContent = (props) => {
           </Section>
         ))}
       </Section>
-    </Fragment>
+    </>
   );
 };
 
@@ -163,7 +164,7 @@ const OvermapShieldGeneratorControls = (props) => {
 
   return (
     <Section title="Controls" buttons={
-      <Fragment>
+      <>
         {running >= 2 && (
           <Box>
             <Button icon="power-off" onClick={() => act("begin_shutdown")} selected>Turn off</Button>
@@ -183,7 +184,7 @@ const OvermapShieldGeneratorControls = (props) => {
             EMERGENCY SHUTDOWN
           </Button>
         ) || null}
-      </Fragment>
+      </>
     }>
       <Button
         icon="expand-arrows-alt"

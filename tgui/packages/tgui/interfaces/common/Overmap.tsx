@@ -1,6 +1,7 @@
 import { Fragment } from "react";
-import { useBackend } from "../../backend";
 import { Box, Button, LabeledList } from "tgui-core/components";
+
+import { useBackend } from "../../backend";
 
 export const OvermapFlightData = (props) => {
   const { act, data } = useBackend<any>();
@@ -55,7 +56,7 @@ export const OvermapPanControls = (props) => {
   } = props;
 
   return (
-    <Fragment>
+    <>
       <Box>
         <Button
           disabled={disabled}
@@ -111,6 +112,6 @@ export const OvermapPanControls = (props) => {
           icon="arrow-down"
           iconRotation={-45} />
       </Box>
-    </Fragment>
+    </>
   );
 };

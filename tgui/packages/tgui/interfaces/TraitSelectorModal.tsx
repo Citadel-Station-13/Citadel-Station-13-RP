@@ -1,8 +1,9 @@
-import { InputButtons } from './common/InputButtons';
-import { Box, Button, Input, LabeledList, Section, Stack, Table } from 'tgui-core/components';
-import { useBackend, useLocalState } from '../backend';
-import { Window } from '../layouts';
 import { useState } from 'react';
+import { Box, Button, Input, LabeledList, Section, Stack, Table } from 'tgui-core/components';
+
+import { useBackend } from '../backend';
+import { Window } from '../layouts';
+import { InputButtons } from './common/InputButtons';
 
 type TraitSelectorInputData = {
   initial_traits: string[],

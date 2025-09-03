@@ -1,11 +1,12 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
-import { useBackend } from "../../backend";
 import { LabeledList, Section } from "tgui-core/components";
+
+import { useBackend } from "../../backend";
+import { SectionProps } from "../../components";
 import { AtmosFilterList, AtmosGasGroupFlags, AtmosGasIDs, GasContext } from "../common/Atmos";
 import { AtmosPortable } from "../common/AtmosPortable";
-import { SectionProps } from "../../components";
 
 interface AtmosPortableScrubberControlProps extends SectionProps {
   readonly atmosContext: GasContext;

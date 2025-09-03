@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
-import { useBackend } from "../backend";
 import { Box, Button, LabeledList, Section } from "tgui-core/components";
+
+import { useBackend } from "../backend";
 import { Window } from "../layouts";
 
 export const PlantAnalyzer = (props) => {
@@ -44,7 +45,7 @@ const PlantAnalyzerContent = (props) => {
 
   return (
     <Section title="Plant Information" buttons={
-      <Fragment>
+      <>
         <Button
           icon="print"
           onClick={() => act("print")}>
@@ -54,7 +55,7 @@ const PlantAnalyzerContent = (props) => {
           icon="window-close"
           color="red"
           onClick={() => act("close")} />
-      </Fragment>
+      </>
     }>
       <LabeledList>
         <LabeledList.Item label="Plant Name">

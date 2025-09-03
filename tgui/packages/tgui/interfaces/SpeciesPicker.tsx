@@ -1,9 +1,10 @@
-import { useBackend, useLocalState } from '../backend';
-import { Section, Stack, Button, Box, NoticeBox } from 'tgui-core/components';
+import { useState } from 'react';
+import { Box, Button, NoticeBox, Section, Stack } from 'tgui-core/components';
+import { BooleanLike } from 'tgui-core/react';
+
+import { useBackend } from '../backend';
 import { Window } from '../layouts';
 import { sanitizeText } from '../sanitize';
-import { useState } from 'react';
-import { BooleanLike } from 'tgui-core/react';
 
 // todo: this stuff should be generic constants somewhere for species manip
 

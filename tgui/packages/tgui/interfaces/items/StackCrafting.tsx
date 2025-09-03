@@ -3,12 +3,13 @@
  * @license MIT
  */
 
-import { useBackend, useLocalState } from "../../backend";
+import { ceiling, floor } from "common/math";
+import { useState } from "react";
 import { Button, Collapsible, Input, NumberInput, Section, Stack } from "tgui-core/components";
+
+import { useBackend } from "../../backend";
 import { Window } from "../../layouts";
 import { StackRecipeData } from "../common/StackRecipe";
-import { useState } from "react";
-import { ceiling, floor } from "common/math";
 
 interface StackCraftingData {
   recipes: StackRecipeData[];

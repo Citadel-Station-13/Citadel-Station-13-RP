@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
+import { Box, Button, LabeledList, Section } from 'tgui-core/components';
+
 import { useBackend } from '../backend';
-import { Button, LabeledList, Box, Section } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 export const CommunicationsConsole = (props) => {
@@ -39,10 +40,10 @@ export const CommunicationsConsoleContent = (props) => {
   }
 
   return (
-    <Fragment>
+    <>
       <CommunicationsConsoleAuth />
       {mainTemplate}
-    </Fragment>
+    </>
   );
 };
 
@@ -88,7 +89,7 @@ const CommunicationsConsoleMain = (props) => {
   });
 
   return (
-    <Fragment>
+    <>
       <Section title="Site Manager-Only Actions">
         <LabeledList>
           <LabeledList.Item label="Announcement">
@@ -156,7 +157,7 @@ const CommunicationsConsoleMain = (props) => {
           </LabeledList.Item>
         </LabeledList>
       </Section>
-    </Fragment>
+    </>
   );
 };
 
@@ -185,7 +186,7 @@ const CommunicationsConsoleAuth = (props) => {
   }
 
   return (
-    <Fragment>
+    <>
       <Section title="Authentication">
         <LabeledList>
           {is_ai && (
@@ -232,7 +233,7 @@ const CommunicationsConsoleAuth = (props) => {
           )}
         </LabeledList>
       </Section>
-    </Fragment>
+    </>
   );
 };
 

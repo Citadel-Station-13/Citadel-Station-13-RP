@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
-import { useBackend } from "../backend";
 import { Box, Button, LabeledList, ProgressBar, Section } from "tgui-core/components";
+
+import { useBackend } from "../backend";
 import { Window } from "../layouts";
 
 export const DNAForensics = (props) => {
@@ -15,7 +16,7 @@ export const DNAForensics = (props) => {
     <Window width={540} height={326}>
       <Window.Content>
         <Section title="Status" buttons={
-          <Fragment>
+          <>
             <Button
               selected={scanning}
               disabled={!bloodsamp}
@@ -29,7 +30,7 @@ export const DNAForensics = (props) => {
               onClick={() => act("ejectItem")}>
               Eject Bloodsample
             </Button>
-          </Fragment>
+          </>
         }>
           <LabeledList>
             <LabeledList.Item label="Scan Progress">

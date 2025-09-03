@@ -1,7 +1,8 @@
-import { useBackend } from "../backend";
-import { Button, LabeledList, ProgressBar, Section, AnimatedNumber } from "tgui-core/components";
-import { formatPower } from "tgui-core/format";
 import { Fragment } from 'react';
+import { AnimatedNumber, Button, LabeledList, ProgressBar, Section } from "tgui-core/components";
+import { formatPower } from "tgui-core/format";
+
+import { useBackend } from "../backend";
 import { Window } from "../layouts";
 
 export const MassiveGasPump = (props) => {
@@ -50,7 +51,7 @@ export const MassiveGasPump = (props) => {
           <LabeledList>
             <LabeledList.Item label="Output Pressure"
               buttons={(
-                <Fragment>
+                <>
                   <Button
                     icon="compress-arrows-alt"
                     content="MIN"
@@ -63,13 +64,13 @@ export const MassiveGasPump = (props) => {
                     icon="wrench"
                     content="SET"
                     onClick={() => act("set_press", { press: "set" })} />
-                </Fragment>
+                </>
               )}>
               {pressure_set / 100} kPa
             </LabeledList.Item>
             <LabeledList.Item label="Power Level"
               buttons={(
-                <Fragment>
+                <>
                   <Button
                     icon="compress-arrows-alt"
                     content="MIN"
@@ -82,7 +83,7 @@ export const MassiveGasPump = (props) => {
                     icon="wrench"
                     content="SET"
                     onClick={() => act("set_pow", { pow: "set" })} />
-                </Fragment>
+                </>
 
               )}>
               {formatPower(power_level)}

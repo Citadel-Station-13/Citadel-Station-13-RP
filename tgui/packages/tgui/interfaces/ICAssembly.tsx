@@ -1,8 +1,9 @@
-import { round } from 'tgui-core/math';
-import { useBackend } from "../backend";
-import { Box, Button, LabeledList, ProgressBar, Section, AnimatedNumber, Flex } from "tgui-core/components";
-import { Window } from "../layouts";
+import { AnimatedNumber, Box, Button, Flex, LabeledList, ProgressBar, Section } from "tgui-core/components";
 import { formatPower } from "tgui-core/format";
+import { round } from 'tgui-core/math';
+
+import { useBackend } from "../backend";
+import { Window } from "../layouts";
 
 export const ICAssembly = (props) => {
   const { act, data } = useBackend<any>();
