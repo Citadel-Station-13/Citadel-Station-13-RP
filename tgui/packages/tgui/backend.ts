@@ -81,11 +81,13 @@ export const backendReducer = (state = initialState, action) => {
     const nestdData = {
       ...state.nestedData,
     };
-    for (let id of Object.keys(payload.nestedData)) {
-      nestdData[id] = {
-        ...state.nestedData[id],
-        ...payload.nestedData[id],
-      };
+    if (payload.nestdData) {
+      for (let id of Object.keys(payload.nestedData)) {
+        nestdData[id] = {
+          ...state.nestedData[id],
+          ...payload.nestedData[id],
+        };
+      }
     }
     // Merge shared states
     const shared = { ...state.shared };

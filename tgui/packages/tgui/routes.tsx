@@ -51,6 +51,29 @@ function RefreshingWindow() {
   );
 }
 
+const interfaceSubdirectories = [
+  `.`,
+  `./computers`,
+  `./items`,
+  `./machines`,
+  `./modules`,
+  `./ui`,
+];
+
+const interfacePaths = (name: string) => {
+  let built: [string?] = [
+    name,
+  ];
+  for (let i = 0; i < interfaceSubdirectories.length; i++) {
+    let dir = interfaceSubdirectories[i];
+    built.push(`${dir}/${name}.js`);
+    built.push(`${dir}/${name}.tsx`);
+    built.push(`${dir}/${name}/index.js`);
+    built.push(`${dir}/${name}/index.tsx`);
+  }
+  return built;
+};
+
 // Get the component for the current route
 export function getRoutedComponent() {
   const { suspended, config } = useBackend();
@@ -74,17 +97,12 @@ export function getRoutedComponent() {
 }
 
 export function getComponentForRoute(name: string) {
-  const interfacePathBuilders = [
-    (name: string) => `./${name}.tsx`,
-    (name: string) => `./${name}.jsx`,
-    (name: string) => `./${name}/index.tsx`,
-    (name: string) => `./${name}/index.jsx`,
-  ];
+  const interfacePathBuilders = interfacePaths(name);
 
   let esModule;
   while (!esModule && interfacePathBuilders.length > 0) {
     const interfacePathBuilder = interfacePathBuilders.shift()!;
-    const interfacePath = interfacePathBuilder(name);
+    const interfacePath = interfacePathBuilder;
     try {
       esModule = requireInterface(interfacePath);
     } catch (err) {

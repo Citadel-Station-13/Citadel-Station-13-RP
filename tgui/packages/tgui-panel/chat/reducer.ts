@@ -23,7 +23,7 @@ import { Page } from './types';
 const mainPage = createMainPage();
 
 export const initialState = {
-  version: 5,
+  version: 6,
   currentPageId: mainPage.id,
   scrollTracking: true,
   pages: [mainPage.id],

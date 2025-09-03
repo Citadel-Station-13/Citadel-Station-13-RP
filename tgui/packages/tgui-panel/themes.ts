@@ -6,25 +6,30 @@
 
 export const THEMES = ['light', 'dark', 'default'];
 
-const COLORS = {
+const COLORS: Record<string, {
+  BG_BASE: string,
+  BG_SECOND: string,
+  BUTTON: string,
+  TEXT: string,
+}> = {
   DARK: {
-    BG_BASE: '#202020',
-    BG_SECOND: '#151515',
-    BUTTON: '#404040',
-    TEXT: '#A6A6A6',
+    BG_BASE: '#272727',
+    BG_SECOND: '#242424',
+    BUTTON: '#40628A',
+    TEXT: '#E0E0E0',
   },
   LIGHT: {
-    BG_BASE: '#EEEEEE',
-    BG_SECOND: '#FFFFFF',
-    BUTTON: '#FFFFFF',
+    BG_BASE: '#F0F0F0',
+    BG_SECOND: '#E6E6E6',
+    BUTTON: '#90B3DD',
     TEXT: '#000000',
   },
   // dark theme (ui) light theme (chat)
   DEFAULT: {
-    BG_BASE: '#202020',
-    BG_SECOND: '#151515',
-    BUTTON: '#404040',
-    TEXT: '#A6A6A6',
+    BG_BASE: '#272727',
+    BG_SECOND: '#242424',
+    BUTTON: '#40628A',
+    TEXT: "#E0E0E0",
   },
 };
 
@@ -56,18 +61,15 @@ export const setClientTheme = (name) => {
 
   return Byond.winset({
     // Main windows
-    // 'infobuttons.background-color': themeColor.BG_BASE,
-    // 'infobuttons.text-color': themeColor.TEXT,
-    'infowindow.background-color': themeColor.BG_BASE,
+    'infowindow.background-color': themeColor.BG_SECOND,
     'infowindow.text-color': themeColor.TEXT,
-    // 'info_and_buttons.background-color': themeColor.BG_BASE,
     'info.background-color': themeColor.BG_BASE,
     'info.text-color': themeColor.TEXT,
-    'browseroutput.background-color': themeColor.BG_BASE,
+    'browseroutput.background-color': themeColor.BG_SECOND,
     'browseroutput.text-color': themeColor.TEXT,
-    'outputwindow.background-color': themeColor.BG_BASE,
+    'outputwindow.background-color': themeColor.BG_SECOND,
     'outputwindow.text-color': themeColor.TEXT,
-    'mainwindow.background-color': themeColor.BG_BASE,
+    'mainwindow.background-color': themeColor.BG_SECOND,
     'split.background-color': themeColor.BG_BASE,
     // Buttons
     'changelog.background-color': themeColor.BUTTON,
@@ -82,34 +84,26 @@ export const setClientTheme = (name) => {
     'github.text-color': themeColor.TEXT,
     'report-issue.background-color': themeColor.BUTTON,
     'report-issue.text-color': themeColor.TEXT,
-    'fullscreen-toggle.background-color': themeColor.BUTTON,
-    'fullscreen-toggle.text-color': themeColor.TEXT,
     // Status and verb tabs
     'output.background-color': themeColor.BG_BASE,
     'output.text-color': themeColor.TEXT,
     // Oldstat
-    'statwindow.background-color': themeColor.BG_BASE,
+    'statwindow.background-color': themeColor.BG_SECOND,
     'statwindow.text-color': themeColor.TEXT,
-    'stat_tab.background-color': themeColor.BG_BASE,
+    'stat_tab.background-color': themeColor.BG_SECOND,
     'stat_tab.text-color': themeColor.TEXT,
     'statpanel.background-color': themeColor.BG_BASE,
-    'statpanel.tab-background-color': themeColor.BG_BASE,
+    'statpanel.tab-background-color': themeColor.BG_SECOND,
     'statpanel.text-color': themeColor.TEXT,
     'statpanel.tab-text-color': themeColor.TEXT,
     'statpanel.prefix-color': themeColor.TEXT,
     'statpanel.suffix-color': themeColor.TEXT,
     // Say, OOC, me Buttons etc.
-    'saybutton.background-color': themeColor.BG_BASE,
+    'saybutton.background-color': themeColor.BG_SECOND,
     'saybutton.text-color': themeColor.TEXT,
-    'oocbutton.background-color': themeColor.BG_BASE,
-    'oocbutton.text-color': themeColor.TEXT,
-    'mebutton.background-color': themeColor.BG_BASE,
-    'mebutton.text-color': themeColor.TEXT,
-    'asset_cache_browser.background-color': themeColor.BG_BASE,
+    'asset_cache_browser.background-color': themeColor.BG_SECOND,
     'asset_cache_browser.text-color': themeColor.TEXT,
     'tooltip.background-color': themeColor.BG_BASE,
     'tooltip.text-color': themeColor.TEXT,
-    'input.background-color': themeColor.BG_SECOND,
-    'input.text-color': themeColor.TEXT,
   });
 };
