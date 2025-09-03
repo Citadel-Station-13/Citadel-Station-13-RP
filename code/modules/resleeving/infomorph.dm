@@ -120,10 +120,10 @@ var/list/infomorph_emotions = list(
 /mob/living/silicon/infomorph/statpanel_data(client/C)
 	. = ..()
 	if(C.statpanel_tab("Status"))
-		STATPANEL_DATA_LINE("")
+		INJECT_STATPANEL_DATA_LINE(., "")
 		if(src.silence_time)
 			var/timeleft = round((silence_time - world.timeofday)/10 ,1)
-			STATPANEL_DATA_LINE("Communications system reboot in -[(timeleft / 60) % 60]:[add_zero(num2text(timeleft % 60), 2)]")
+			INJECT_STATPANEL_DATA_LINE(., "Communications system reboot in -[(timeleft / 60) % 60]:[add_zero(num2text(timeleft % 60), 2)]")
 
 /////////// CHECKERS
 /mob/living/silicon/infomorph/check_eye(var/mob/user as mob)

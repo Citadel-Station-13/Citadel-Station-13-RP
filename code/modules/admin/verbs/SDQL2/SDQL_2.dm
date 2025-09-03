@@ -406,12 +406,12 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 	. = list()
 	if(!allow_admin_interact)
 		return
-	STATPANEL_DATA_CLICK("[id]", "DELETE QUERY | STATE : [text_state()] | ALL/ELIG/FIN \
+	INJECT_STATPANEL_DATA_CLICK(., "[id]", "DELETE QUERY | STATE : [text_state()] | ALL/ELIG/FIN \
 	[islist(obj_count_all)? length(obj_count_all) : (isnull(obj_count_all)? "0" : obj_count_all)]/\
 	[islist(obj_count_eligible)? length(obj_count_eligible) : (isnull(obj_count_eligible)? "0" : obj_count_eligible)]/\
 	[islist(obj_count_finished)? length(obj_count_finished) : (isnull(obj_count_finished)? "0" : obj_count_finished)] - [get_query_text()]", \
 	"\ref[delete_click]")
-	STATPANEL_DATA_CLICK("", "[SDQL2_IS_RUNNING? "HALT" : "RUN"]", "\ref[action_click]")
+	INJECT_STATPANEL_DATA_CLICK(., "", "[SDQL2_IS_RUNNING? "HALT" : "RUN"]", "\ref[action_click]")
 
 /datum/SDQL2_query/proc/delete_click()
 	admin_del(usr)
