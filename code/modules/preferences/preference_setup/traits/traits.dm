@@ -2,7 +2,7 @@ var/list/trait_datums = list() // Assoc list using name = instance.  Traits are 
 var/list/trait_type_to_ref = list() // Similar to above but uses paths, which is more reliable but more risky to save.
 var/list/trait_categories = list() // The categories available for the trait menu.
 
-/hook/startup/proc/populate_trait_list()
+/legacy_hook/startup/proc/populate_trait_list()
 
 	//create a list of trait datums
 	for(var/trait_type in typesof(/datum/trait) - list(/datum/trait, /datum/trait/modifier))
