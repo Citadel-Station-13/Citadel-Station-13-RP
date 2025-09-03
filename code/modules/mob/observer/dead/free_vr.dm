@@ -1,6 +1,6 @@
 var/global/list/prevent_respawns = list()
 
-/hook/death/proc/quit_notify(mob/dead)
+/legacy_hook/death/proc/quit_notify(mob/dead)
 	if(ishuman(dead))
 		to_chat(dead,"<span class='notice'>You're dead! If you don't intend to continue playing this round as this character, please use the <b>Quit This Round</b> verb in the OOC tab to free your job slot.</span>")
 

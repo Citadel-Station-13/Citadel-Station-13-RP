@@ -45,3 +45,7 @@ GLOBAL_LIST_BOILERPLATE(all_portals, /obj/effect/portal)
 	if (istype(M, /atom/movable))
 		do_teleport(M, target, 1) ///You will appear adjacent to the beacon
 
+/obj/effect/portal/attack_ghost(mob/user)
+	. = ..()
+	if(target)
+		user.forceMove(get_turf(target))
