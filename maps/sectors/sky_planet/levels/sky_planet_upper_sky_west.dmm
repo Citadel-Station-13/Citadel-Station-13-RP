@@ -2728,7 +2728,9 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/police)
 "my" = (
-/obj/machinery/door/blast/shutters,
+/obj/machinery/door/blast/shutters{
+	id = "oculum"
+	},
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/occulum)
 "mz" = (
@@ -3262,6 +3264,14 @@
 /obj/machinery/appliance/cooker/oven,
 /turf/simulated/floor/wood/indoors,
 /area/sector/sky_planet/station_city/appartement)
+"oS" = (
+/obj/machinery/button/remote/blast_door{
+	dir = 1;
+	pixel_y = -23;
+	id = "oculum"
+	},
+/turf/simulated/floor/wood/indoors,
+/area/sector/sky_planet/occulum)
 "oU" = (
 /obj/structure/table/marble{
 	color = "#555555";
@@ -7174,6 +7184,9 @@
 	icon_state = "2-8"
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
+/obj/structure/ghost_role_spawner/occulum{
+	role_spawns = 2
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/crescend)
 "Gb" = (
@@ -7601,6 +7614,13 @@
 /turf/simulated/floor/carpet/patterened/green,
 /area/sector/sky_planet/station_city/offices)
 "HV" = (
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/occulum)
+"Ib" = (
+/obj/machinery/button/remote/blast_door{
+	pixel_y = 22;
+	id = "oculum"
+	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/occulum)
 "Ic" = (
@@ -19543,9 +19563,9 @@ qr
 ng
 DO
 rA
-rA
+oS
 ng
-HV
+Ib
 Jp
 eG
 Xq
