@@ -1,0 +1,574 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/floor/plating/indoors,
+/area/template_noop)
+"d" = (
+/turf/simulated/floor/tiled/steel_dirty/red,
+/area/submap/osiris_field/cargo_shuttle1)
+"e" = (
+/obj/machinery/portable_atmospherics/canister/empty/phoron,
+/turf/simulated/floor/plating/indoors,
+/area/submap/osiris_field/cargo_shuttle1)
+"f" = (
+/turf/simulated/floor/tiled/steel_dirty/red,
+/area/template_noop)
+"h" = (
+/obj/structure/table/steel,
+/turf/simulated/floor/tiled/steel_dirty/red,
+/area/submap/osiris_field/cargo_shuttle1)
+"i" = (
+/obj/random/triumph,
+/turf/simulated/floor/tiled/steel_dirty/red,
+/area/submap/osiris_field/cargo_shuttle1)
+"j" = (
+/obj/spawner/corpse/tajara/dra_soldier,
+/obj/machinery/light/small/poi{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/red,
+/area/submap/osiris_field/cargo_shuttle1)
+"m" = (
+/obj/random/multiple/corp_crate,
+/turf/simulated/floor/plating/indoors,
+/area/template_noop)
+"o" = (
+/turf/simulated/floor/plating/indoors,
+/area/submap/osiris_field/cargo_shuttle1)
+"p" = (
+/obj/structure/bed/chair/bay/comfy/brown{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/red,
+/area/submap/osiris_field/cargo_shuttle1)
+"q" = (
+/obj/structure/table/steel,
+/obj/item/book/codex/lore/news,
+/turf/simulated/floor/tiled/steel_dirty/red,
+/area/submap/osiris_field/cargo_shuttle1)
+"s" = (
+/obj/structure/salvageable/console_broken_os{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/red,
+/area/submap/osiris_field/cargo_shuttle1)
+"w" = (
+/obj/random/multiple/corp_crate/no_weapons,
+/turf/simulated/floor/plating/indoors,
+/area/template_noop)
+"y" = (
+/obj/structure/table/steel,
+/obj/machinery/light/small/poi{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/red,
+/area/submap/osiris_field/cargo_shuttle1)
+"A" = (
+/obj/machinery/door/airlock/external,
+/turf/simulated/floor/plating/indoors,
+/area/submap/osiris_field/cargo_shuttle1)
+"D" = (
+/obj/machinery/door/airlock,
+/turf/simulated/floor/plating/indoors,
+/area/submap/osiris_field/cargo_shuttle1)
+"E" = (
+/obj/random/multiple/minevault,
+/turf/simulated/floor/tiled/steel_dirty/red,
+/area/submap/osiris_field/cargo_shuttle1)
+"F" = (
+/obj/machinery/door/airlock/external,
+/turf/simulated/floor/tiled/steel_dirty/red,
+/area/submap/osiris_field/cargo_shuttle1)
+"G" = (
+/obj/random/multiple/large_corp_crate/no_weapons,
+/turf/simulated/floor/tiled/steel_dirty/red,
+/area/submap/osiris_field/cargo_shuttle1)
+"J" = (
+/obj/machinery/atmospherics/component/unary/engine/bigger{
+	dir = 8
+	},
+/turf/template_noop,
+/area/template_noop)
+"L" = (
+/turf/simulated/wall/r_wall/prepainted/cargo,
+/area/template_noop)
+"M" = (
+/obj/random/triumph,
+/turf/simulated/floor/plating/indoors,
+/area/submap/osiris_field/cargo_shuttle1)
+"Q" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/template_noop)
+"R" = (
+/turf/template_noop,
+/area/template_noop)
+"U" = (
+/turf/simulated/wall/r_wall/prepainted/cargo,
+/area/submap/osiris_field/cargo_shuttle1)
+"X" = (
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/turf/simulated/floor/plating/indoors,
+/area/submap/osiris_field/cargo_shuttle1)
+"Y" = (
+/obj/structure/toilet{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/red,
+/area/submap/osiris_field/cargo_shuttle1)
+
+(1,1,1) = {"
+R
+R
+R
+X
+X
+X
+X
+X
+X
+R
+R
+R
+R
+R
+R
+R
+R
+"}
+(2,1,1) = {"
+R
+R
+X
+X
+s
+s
+s
+s
+X
+X
+R
+R
+R
+R
+R
+R
+R
+"}
+(3,1,1) = {"
+R
+R
+X
+q
+d
+p
+p
+d
+h
+X
+R
+R
+R
+R
+R
+R
+R
+"}
+(4,1,1) = {"
+R
+R
+X
+y
+d
+d
+d
+d
+y
+X
+R
+R
+R
+R
+R
+R
+R
+"}
+(5,1,1) = {"
+R
+R
+U
+U
+U
+U
+U
+F
+U
+U
+R
+R
+R
+R
+R
+R
+R
+"}
+(6,1,1) = {"
+R
+R
+U
+o
+d
+D
+d
+d
+o
+U
+R
+R
+R
+R
+R
+R
+R
+"}
+(7,1,1) = {"
+R
+R
+U
+Y
+j
+U
+d
+o
+d
+U
+R
+R
+R
+R
+R
+a
+R
+"}
+(8,1,1) = {"
+R
+R
+U
+U
+U
+U
+o
+d
+o
+U
+R
+R
+R
+R
+R
+R
+R
+"}
+(9,1,1) = {"
+R
+R
+R
+Q
+a
+f
+a
+a
+a
+a
+R
+R
+R
+Q
+w
+L
+R
+"}
+(10,1,1) = {"
+R
+R
+R
+R
+a
+f
+a
+a
+a
+Q
+Q
+a
+a
+R
+R
+R
+R
+"}
+(11,1,1) = {"
+R
+R
+R
+R
+Q
+a
+a
+Q
+Q
+R
+Q
+a
+a
+R
+R
+R
+R
+"}
+(12,1,1) = {"
+R
+R
+R
+R
+R
+Q
+Q
+R
+R
+R
+a
+Q
+R
+R
+Q
+a
+R
+"}
+(13,1,1) = {"
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+a
+L
+R
+R
+R
+"}
+(14,1,1) = {"
+R
+R
+R
+R
+R
+R
+R
+R
+Q
+m
+L
+R
+R
+R
+Q
+a
+R
+"}
+(15,1,1) = {"
+R
+R
+R
+R
+R
+a
+a
+Q
+Q
+R
+R
+Q
+a
+R
+Q
+m
+L
+"}
+(16,1,1) = {"
+R
+R
+R
+R
+Q
+f
+f
+a
+a
+R
+R
+R
+R
+R
+Q
+a
+L
+"}
+(17,1,1) = {"
+R
+R
+Q
+U
+a
+f
+f
+a
+a
+a
+R
+R
+R
+R
+R
+R
+R
+"}
+(18,1,1) = {"
+R
+U
+o
+d
+a
+a
+a
+f
+a
+a
+R
+R
+R
+Q
+a
+R
+R
+"}
+(19,1,1) = {"
+R
+U
+G
+o
+o
+d
+o
+d
+d
+M
+U
+R
+R
+R
+R
+R
+R
+"}
+(20,1,1) = {"
+R
+U
+E
+o
+U
+A
+A
+U
+o
+i
+U
+R
+R
+R
+R
+R
+R
+"}
+(21,1,1) = {"
+U
+U
+e
+e
+U
+o
+o
+U
+e
+e
+U
+U
+R
+R
+R
+R
+R
+"}
+(22,1,1) = {"
+U
+U
+U
+U
+U
+A
+A
+U
+U
+U
+U
+U
+R
+R
+R
+R
+R
+"}
+(23,1,1) = {"
+R
+J
+R
+J
+R
+R
+R
+R
+R
+J
+R
+J
+R
+R
+R
+R
+R
+"}
+(24,1,1) = {"
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+"}

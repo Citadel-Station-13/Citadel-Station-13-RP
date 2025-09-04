@@ -29,6 +29,7 @@
 		/datum/map/sector/sky_planet,
 		/datum/map/sector/solars_station,
 		/datum/map/sector/ice_comet,
+		/datum/map/sector/osiris_field,
 	)
 
 	// todo: remove after dev is done
