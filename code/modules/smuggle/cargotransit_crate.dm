@@ -1,3 +1,82 @@
+GLOBAL_LIST_INIT(cargotransit_data, initialize_cargotransit_data())
+
+/proc/initialize_cargotransit_data()
+	. = list()
+	for(var/cargotransittype in subtypesof(/datum/cargotransit))
+		var/datum/cargotransit/OD = new cargotransittype
+		.[OD.name] = OD
+
+/datum/cargotransit
+	var/name
+	var/display_name
+	var/cargotransit
+	var/crate
+
+/datum/cargotransit/New()
+	. = ..()
+	if(!display_name)
+		display_name = name
+
+/datum/cargotransit/cargotransitcrate
+	name = "Cargo Transit crate"
+	crate = /obj/structure/cargotransitcrate
+
+/datum/cargotransit/cargotransitcrate/ftu
+	name = "Cargo Transit crate ftu"
+	crate = /obj/structure/cargotransitcrate/ftu
+
+/datum/cargotransit/cargotransitcrate/nt
+	name = "Cargo Transit crate nt"
+	crate = /obj/structure/cargotransitcrate/nt
+
+/datum/cargotransit/cargotransitcrate/miaphus
+	name = "Cargo Transit crate"
+	crate = /obj/structure/cargotransitcrate/miaphus
+
+/datum/cargotransit/cargotransitcrate/gaia
+	name = "Cargo Transit crate"
+	crate = /obj/structure/cargotransitcrate/gaia
+
+/datum/cargotransit/cargotransitcrate/sky
+	name = "Cargo Transit crate"
+	crate = /obj/structure/cargotransitcrate/sky
+
+/datum/cargotransit/cargotransitcrate/atlas
+	name = "Cargo Transit crate"
+	crate = /obj/structure/cargotransitcrate/atlas
+
+/datum/cargotransit/cargotransitcrate/illegal
+	name = "Cargo Transit crate"
+	crate = /obj/structure/cargotransitcrate/illegal
+
+/datum/cargotransit/cargotransitcrate/illegal/ftu
+	name = "Cargo Transit crate"
+	crate = /obj/structure/cargotransitcrate/illegal/ftu
+
+/datum/cargotransit/cargotransitcrate/illegal/merc
+	name = "Cargo Transit crate"
+	crate = /obj/structure/cargotransitcrate/illegal/merc
+
+/datum/cargotransit/cargotransitcrate/illegal/drugs
+	name = "Cargo Transit crate"
+	crate = /obj/structure/cargotransitcrate/illegal/drugs
+
+/datum/cargotransit/cargotransitcrate/illegal/nka
+	name = "Cargo Transit crate"
+	crate = /obj/structure/cargotransitcrate/illegal/nka
+
+/datum/cargotransit/cargotransitcrate/illegal/pirate
+	name = "Cargo Transit crate"
+	crate = /obj/structure/cargotransitcrate/illegal/pirate
+
+/datum/cargotransit/cargotransitcrate/illegal/rebel
+	name = "Cargo Transit crate"
+	crate = /obj/structure/cargotransitcrate/illegal/rebel
+
+/datum/cargotransit/cargotransitcrate/illegal/operative
+	name = "Cargo Transit crate"
+	crate = /obj/structure/cargotransitcrate/illegal/operative
+
 /obj/structure/cargotransitcrate
 	name = "Cargo Transit crate"
 	desc = "A rectangular cardboard box, with an layer of steel underneath it, can't be opened with normal means."

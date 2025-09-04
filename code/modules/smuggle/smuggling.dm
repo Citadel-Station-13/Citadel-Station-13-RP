@@ -1,6 +1,4 @@
 /**********************Cargo transit unit console**************************/
-#define PROCESS_NONE		0
-#define PROCESS_CARGOACTIVE		1
 
 /obj/machinery/smuggling/processing_unit_console
 	name = "Cargo transit processing console"
@@ -48,7 +46,7 @@
 /obj/machinery/smuggling/processing_unit_console/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "MaterialProcessor", name)
+		ui = new(user, src, "CargoTransit", name)
 		ui.open()
 
 /obj/machinery/smuggling/processing_unit_console/ui_data(mob/user, datum/tgui/ui)
@@ -57,15 +55,15 @@
 	var/list/cargotransit = list()
 	for(var/cargotransitname in GLOB.cargotransit_data)
 		var/datum/cargotransit/O = GLOB.cargotransit_data[cargotransitname]
-		cargotransits.Add(list(list(
+		cargotransit.Add(list(list(
 			"name" = O.name,
 			"displayName" = O.display_name,
-			"processing" = machine.cargotransits_processing[O.name],
-			"amount" = machine.cargotransits_stored[O.name],
+			"processing" = machine.cargotransit_processing[O.name],
+			"amount" = machine.cargotransit_stored[O.name],
 			"ref" = REF(O)
 		)))
 
-	data["cargotransits"] = cargotransits
+	data["cargotransit"] = cargotransit
 	data["on"] = machine.active
 	data["fast"] = machine.speed_process
 	data["unclaimedPoints"] = machine.points
@@ -91,7 +89,7 @@
 
 	switch(action)
 		if("change_mode")
-			machine.cargotransits_processing[params["cargotransit"]] = params["mode"]
+			machine.cargotransit_processing[params["cargotransit"]] = params["mode"]
 			return TRUE
 
 		if("toggle_power")
@@ -143,10 +141,19 @@
 	var/obj/machinery/smuggling/input = null
 	var/obj/machinery/smuggling/console = null
 	var/sheets_per_tick = 20
-	var/cargotransits_per_tick = 30
-	var/list/cargotransits_processing = list()
-	var/list/cargotransits_stored = list()
+	var/cargotransit_per_tick = 30
+	var/list/cargotransit_processing = list()
+	var/list/cargotransit_stored = list()
+	var/list/nt = list()
+	var/list/ftu = list()
+	var/list/classd = list()
+	var/list/gaia = list()
+	var/list/casino = list()
+	var/list/miaphus = list()
+	var/list/sky = list()
+
 	var/active = FALSE
+	var/cargotransit_data
 
 	var/points = 0
 	var/static/list/cargotransit_values = list(
@@ -173,39 +180,33 @@
 
 /obj/machinery/smuggling/processing_unit/process(delta_time)
 
-	if (!src.output || !src.input)
+	if (!src.input)
 		return
 
 	if(panel_open || !powered())
 		return
 
-	var/list/tick_alloys = list()
-	tick++
+
 
 	//Grab some more cargotransit to process this tick.
-	//Takes cargotransits_per_tick per tick from the various stacks of cargotransits nearby. It'll likely loop at least 0-2 times per tick.
-	for(var/i = 0, i < cargotransits_per_tick, i++)
-		var/obj/item/stack/cargotransit/O = locate() in input.loc
+	//Takes cargotransit_per_tick per tick from the various stacks of cargotransit nearby. It'll likely loop at least 0-2 times per tick.
+	for(var/i = 0, i < cargotransit_per_tick, i++)
+		var/obj/structure/cargotransitcrate/O = locate() in input.loc
 		if(!O)
 			break
-		var/taking = min(cargotransits_per_tick - i, O.amount)
-		if(!isnull(cargotransits_stcargotransitd[O.material]))
-			cargotransits_stcargotransitd[O.material] += taking
-			points += cargotransit_values[O.material] * taking // Give Points!
+		var/taking = min(cargotransit_per_tick - i, )
+		if(!isnull(cargotransit_values))
+			cargotransit_values += taking
+			points += cargotransit_values * taking // Give Points!
 		i += taking
-		O.use(taking)
+
 
 	if(!active)
 		return
 
-
-
-#undef PROCESS_NONE
-#undef PROCESS_CARGOACTIVE
-
 /obj/machinery/smuggling/processing_unit/nt
 	name = "NT Cargo transit processor"
-	var/static/list/cargotransit_values = list(
+	var/static/list/cargotransit_values_nt = list(
 		"/obj/structure/cargotransitcrate/ftu" = 260,
 		"/obj/structure/cargotransitcrate/miaphus" = 275,
 		"/obj/structure/cargotransitcrate/gaia" = 275,
@@ -213,10 +214,45 @@
 		"/obj/structure/cargotransitcrate/atlas" = 105
 		)
 
+/obj/machinery/smuggling/processing_unit/nt/Initialize(mapload)
+	. = ..()
+	// TODO - Eschew input/output machinery and just use dirs ~Leshana
+	//Locate our output and input machinery.
+	for (var/dir in GLOB.cardinal)
+		src.input = locate(/obj/machinery/smuggling/input, get_step(src, dir))
+		if(src.input) break
+	return
+
+
+/obj/machinery/smuggling/processing_unit/nt/process(delta_time)
+
+	if (!src.input)
+		return
+
+	if(panel_open || !powered())
+		return
+
+
+
+	//Grab some more cargotransit to process this tick.
+	//Takes cargotransit_per_tick per tick from the various stacks of cargotransit nearby. It'll likely loop at least 0-2 times per tick.
+	for(var/i = 0, i < cargotransit_per_tick, i++)
+		var/obj/structure/cargotransitcrate/O = locate() in input.loc
+		if(!O)
+			break
+		var/taking = min(cargotransit_per_tick - i, )
+		if(!isnull(cargotransit_values_nt))
+			cargotransit_values_nt += taking
+			points += cargotransit_values-nt * taking // Give Points!
+		i += taking
+
+
+	if(!active)
+		return
 
 /obj/machinery/smuggling/processing_unit/ftu
 	name = "FTU Cargo transit processor"
-	var/static/list/cargotransit_values = list(
+	var/static/list/cargotransit_values_ftu = list(
 		"/obj/structure/cargotransitcrate/nt" = 270,
 		"/obj/structure/cargotransitcrate/miaphus" = 285,
 		"/obj/structure/cargotransitcrate/gaia" = 260,
@@ -230,9 +266,43 @@
 		"/obj/structure/cargotransitcrate/illegal/operative" = 500,
 		)
 
+/obj/machinery/smuggling/processing_unit/ftu/Initialize(mapload)
+	. = ..()
+	// TODO - Eschew input/output machinery and just use dirs ~Leshana
+	//Locate our output and input machinery.
+	for (var/dir in GLOB.cardinal)
+		src.input = locate(/obj/machinery/smuggling/input, get_step(src, dir))
+		if(src.input) break
+	return
+
+
+/obj/machinery/smuggling/processing_unit/ftu/process(delta_time)
+
+	if (!src.input)
+		return
+
+	if(panel_open || !powered())
+		return
+
+	//Grab some more cargotransit to process this tick.
+	//Takes cargotransit_per_tick per tick from the various stacks of cargotransit nearby. It'll likely loop at least 0-2 times per tick.
+	for(var/i = 0, i < cargotransit_per_tick, i++)
+		var/obj/structure/cargotransitcrate/O = locate() in input.loc
+		if(!O)
+			break
+		var/taking = min(cargotransit_per_tick - i, )
+		if(!isnull(cargotransit_values_ftu))
+			cargotransit_values_ftu += taking
+			points += cargotransit_values-ftu * taking // Give Points!
+		i += taking
+
+
+	if(!active)
+		return
+
 /obj/machinery/smuggling/processing_unit/miaphus
 	name = "Miaphus Cargo transit processor"
-	var/static/list/cargotransit_values = list(
+	var/static/list/cargotransit_values_miaphus = list(
 		"/obj/structure/cargotransitcrate/nt" = 250,
 		"/obj/structure/cargotransitcrate/ftu" = 250,
 		"/obj/structure/cargotransitcrate/gaia" = 250,
@@ -246,9 +316,45 @@
 		"/obj/structure/cargotransitcrate/illegal/operative" = 500,
 		)
 
+/obj/machinery/smuggling/processing_unit/miaphus/Initialize(mapload)
+	. = ..()
+	// TODO - Eschew input/output machinery and just use dirs ~Leshana
+	//Locate our output and input machinery.
+	for (var/dir in GLOB.cardinal)
+		src.input = locate(/obj/machinery/smuggling/input, get_step(src, dir))
+		if(src.input) break
+	return
+
+
+/obj/machinery/smuggling/processing_unit/miaphus/process(delta_time)
+
+	if (!src.input)
+		return
+
+	if(panel_open || !powered())
+		return
+
+
+
+	//Grab some more cargotransit to process this tick.
+	//Takes cargotransit_per_tick per tick from the various stacks of cargotransit nearby. It'll likely loop at least 0-2 times per tick.
+	for(var/i = 0, i < cargotransit_per_tick, i++)
+		var/obj/structure/cargotransitcrate/O = locate() in input.loc
+		if(!O)
+			break
+		var/taking = min(cargotransit_per_tick - i, )
+		if(!isnull(cargotransit_values_miaphus))
+			cargotransit_values_miaphus += taking
+			points += cargotransit_values-miaphus * taking // Give Points!
+		i += taking
+
+
+	if(!active)
+		return
+
 /obj/machinery/smuggling/processing_unit/gaia
 	name = "Gaia Cargo transit processor"
-	var/static/list/cargotransit_values = list(
+	var/static/list/cargotransit_values_gaia = list(
 		"/obj/structure/cargotransitcrate/nt" = 250,
 		"/obj/structure/cargotransitcrate/ftu" = 300,
 		"/obj/structure/cargotransitcrate/miaphus" = 250,
@@ -263,9 +369,45 @@
 		"/obj/structure/cargotransitcrate/illegal/ftu" = 500,
 		)
 
+/obj/machinery/smuggling/processing_unit/gaia/Initialize(mapload)
+	. = ..()
+	// TODO - Eschew input/output machinery and just use dirs ~Leshana
+	//Locate our output and input machinery.
+	for (var/dir in GLOB.cardinal)
+		src.input = locate(/obj/machinery/smuggling/input, get_step(src, dir))
+		if(src.input) break
+	return
+
+
+/obj/machinery/smuggling/processing_unit/gaia/process(delta_time)
+
+	if (!src.input)
+		return
+
+	if(panel_open || !powered())
+		return
+
+
+
+	//Grab some more cargotransit to process this tick.
+	//Takes cargotransit_per_tick per tick from the various stacks of cargotransit nearby. It'll likely loop at least 0-2 times per tick.
+	for(var/i = 0, i < cargotransit_per_tick, i++)
+		var/obj/structure/cargotransitcrate/O = locate() in input.loc
+		if(!O)
+			break
+		var/taking = min(cargotransit_per_tick - i, )
+		if(!isnull(cargotransit_values_gaia))
+			cargotransit_values_gaia += taking
+			points += cargotransit_values-gaia * taking // Give Points!
+		i += taking
+
+
+	if(!active)
+		return
+
 /obj/machinery/smuggling/processing_unit/sky
 	name = "Sky Planet Cargo transit processor"
-	var/static/list/cargotransit_values = list(
+	var/static/list/cargotransit_values_sky = list(
 		"/obj/structure/cargotransitcrate/nt" = 250,
 		"/obj/structure/cargotransitcrate/ftu" = 250,
 		"/obj/structure/cargotransitcrate/miaphus" = 300,
@@ -279,9 +421,45 @@
 		"/obj/structure/cargotransitcrate/illegal/operative" = 500,
 		)
 
+/obj/machinery/smuggling/processing_unit/sky/Initialize(mapload)
+	. = ..()
+	// TODO - Eschew input/output machinery and just use dirs ~Leshana
+	//Locate our output and input machinery.
+	for (var/dir in GLOB.cardinal)
+		src.input = locate(/obj/machinery/smuggling/input, get_step(src, dir))
+		if(src.input) break
+	return
+
+
+/obj/machinery/smuggling/processing_unit/sky/process(delta_time)
+
+	if (!src.input)
+		return
+
+	if(panel_open || !powered())
+		return
+
+
+
+	//Grab some more cargotransit to process this tick.
+	//Takes cargotransit_per_tick per tick from the various stacks of cargotransit nearby. It'll likely loop at least 0-2 times per tick.
+	for(var/i = 0, i < cargotransit_per_tick, i++)
+		var/obj/structure/cargotransitcrate/O = locate() in input.loc
+		if(!O)
+			break
+		var/taking = min(cargotransit_per_tick - i,)
+		if(!isnull(cargotransit_values_sky))
+			cargotransit_values_sky += taking
+			points += cargotransit_values-sky * taking // Give Points!
+		i += taking
+
+
+	if(!active)
+		return
+
 /obj/machinery/smuggling/processing_unit/casino
 	name = "Casino Cargo transit processor"
-	var/static/list/cargotransit_values = list(
+	var/static/list/cargotransit_values_casino = list(
 		"/obj/structure/cargotransitcrate/nt" = 285,
 		"/obj/structure/cargotransitcrate/ftu" = 270,
 		"/obj/structure/cargotransitcrate/miaphus" = 250,
@@ -296,9 +474,45 @@
 		"/obj/structure/cargotransitcrate/illegal/operative" = 550,
 		)
 
+/obj/machinery/smuggling/processing_unit/casino/Initialize(mapload)
+	. = ..()
+	// TODO - Eschew input/output machinery and just use dirs ~Leshana
+	//Locate our output and input machinery.
+	for (var/dir in GLOB.cardinal)
+		src.input = locate(/obj/machinery/smuggling/input, get_step(src, dir))
+		if(src.input) break
+	return
+
+
+/obj/machinery/smuggling/processing_unit/casino/process(delta_time)
+
+	if (!src.input)
+		return
+
+	if(panel_open || !powered())
+		return
+
+
+
+	//Grab some more cargotransit to process this tick.
+	//Takes cargotransit_per_tick per tick from the various stacks of cargotransit nearby. It'll likely loop at least 0-2 times per tick.
+	for(var/i = 0, i < cargotransit_per_tick, i++)
+		var/obj/structure/cargotransitcrate/O = locate() in input.loc
+		if(!O)
+			break
+		var/taking = min(cargotransit_per_tick - i, )
+		if(!isnull(cargotransit_values_casino))
+			cargotransit_values_casino += taking
+			points += cargotransit_values-casino * taking // Give Points!
+		i += taking
+
+
+	if(!active)
+		return
+
 /obj/machinery/smuggling/processing_unit/classd
 	name = "Class D transit processor"
-	var/static/list/cargotransit_values = list(
+	var/static/list/cargotransit_values_classd = list(
 		"/obj/structure/cargotransitcrate/nt" = 285,
 		"/obj/structure/cargotransitcrate/ftu" = 285,
 		"/obj/structure/cargotransitcrate/miaphus" = 285,
@@ -311,3 +525,41 @@
 		"/obj/structure/cargotransitcrate/illegal/nka" = 550,
 		"/obj/structure/cargotransitcrate/illegal/ftu" = 600,
 		)
+
+/obj/machinery/smuggling/processing_unit/classd/Initialize(mapload)
+	. = ..()
+	// TODO - Eschew input/output machinery and just use dirs ~Leshana
+	//Locate our output and input machinery.
+	for (var/dir in GLOB.cardinal)
+		src.input = locate(/obj/machinery/smuggling/input, get_step(src, dir))
+		if(src.input) break
+	return
+
+/obj/machinery/smuggling/processing_unit/classd/process(delta_time)
+
+	if (!src.input)
+		return
+
+	if(panel_open || !powered())
+		return
+
+
+
+	//Grab some more cargotransit to process this tick.
+	//Takes cargotransit_per_tick per tick from the various stacks of cargotransit nearby. It'll likely loop at least 0-2 times per tick.
+	for(var/i = 0, i < cargotransit_per_tick, i++)
+		var/obj/structure/cargotransitcrate/O = locate() in input.loc
+		if(!O)
+			break
+		var/taking = min(cargotransit_per_tick - i, )
+		if(!isnull(cargotransit_values_classd))
+			cargotransit_values_classd += taking
+			points += cargotransit_values-classd * taking // Give Points!
+		i += taking
+
+
+	if(!active)
+		return
+
+#undef PROCESS_NONE
+#undef PROCESS_CARGOACTIVE

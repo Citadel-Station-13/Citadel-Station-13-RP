@@ -1383,6 +1383,7 @@
 	dir = 4;
 	id = "nt_cargo_transit"
 	},
+/obj/machinery/smuggling/input,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/hangardeck)
 "hP" = (
