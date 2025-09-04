@@ -25,7 +25,7 @@
 	name = "Salvager's Telepad"
 	desc = "You arrived from here."
 	role_type = /datum/role/ghostrole/salvager
-	role_spawns = 2
+	role_spawns = 1
 	icon = 'icons/obj/furniture.dmi'
 	icon_state = "bed"
 

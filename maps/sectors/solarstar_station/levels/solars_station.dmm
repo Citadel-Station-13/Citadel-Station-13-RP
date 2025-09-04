@@ -277,9 +277,6 @@
 /turf/simulated/floor/plating/outdoors,
 /area/shuttle/salvager)
 "fv" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 4
-	},
 /turf/simulated/floor/plating/outdoors,
 /area/shuttle/salvager)
 "fz" = (
@@ -674,6 +671,8 @@
 	},
 /obj/item/clothing/suit/space/void/engineering/salvage,
 /obj/item/clothing/head/helmet/space/void/engineering/alt,
+/obj/item/tank/emergency/phoron,
+/obj/item/tank/carbon_dioxide,
 /turf/simulated/floor/carpet/patterened/blue,
 /area/shuttle/salvager)
 "nu" = (
@@ -845,6 +844,9 @@
 "qN" = (
 /obj/machinery/computer/shuttle_control/trade/salvager{
 	dir = 4
+	},
+/obj/structure/panic_button{
+	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/salvager)
@@ -1066,12 +1068,6 @@
 "ug" = (
 /obj/machinery/portable_atmospherics/canister/phoron,
 /obj/machinery/atmospherics/portables_connector{
-	dir = 4
-	},
-/turf/simulated/floor/plating/outdoors,
-/area/shuttle/salvager)
-"uk" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
 /turf/simulated/floor/plating/outdoors,
@@ -1751,6 +1747,15 @@
 /obj/spawner/window/borosillicate/full/firelocks,
 /turf/simulated/floor/event/derelict_wall_floor,
 /area/sector/solar_station/deck1)
+"Ge" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden,
+/obj/item/tank/air,
+/obj/item/tank/air,
+/obj/item/tank/carbon_dioxide,
+/obj/item/tank/carbon_dioxide,
+/obj/structure/closet/walllocker_double/south,
+/turf/simulated/floor/plating/outdoors,
+/area/shuttle/salvager)
 "Gn" = (
 /obj/structure/cable/blue{
 	icon_state = "1-8"
@@ -1890,7 +1895,9 @@
 /turf/simulated/wall/r_lead,
 /area/sector/solar_station/deck1)
 "Je" = (
-/obj/machinery/atmospherics/pipe/manifold4w/hidden,
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
+	},
 /turf/simulated/floor/plating/outdoors,
 /area/shuttle/salvager)
 "Jl" = (
@@ -1973,6 +1980,8 @@
 	},
 /obj/item/clothing/suit/space/void/engineering/salvage,
 /obj/item/clothing/head/helmet/space/void/engineering/alt,
+/obj/item/tank/emergency/phoron,
+/obj/item/tank/carbon_dioxide,
 /turf/simulated/floor/carpet/patterened/blue,
 /area/shuttle/salvager)
 "KO" = (
@@ -2375,13 +2384,6 @@
 "SJ" = (
 /turf/simulated/floor/lino,
 /area/sector/solar_station/deck1)
-"SP" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/turf/simulated/floor/plating/outdoors,
-/area/shuttle/salvager)
 "Tf" = (
 /obj/structure/cable{
 	icon_state = "2-5"
@@ -21447,7 +21449,7 @@ aY
 wJ
 Cg
 AA
-uk
+fv
 Yh
 ko
 ko
@@ -21641,7 +21643,7 @@ ko
 iF
 XK
 Um
-SP
+eI
 Qm
 Bl
 ko
@@ -22029,7 +22031,7 @@ ko
 ko
 sX
 Tn
-AA
+Ge
 ko
 ko
 ko

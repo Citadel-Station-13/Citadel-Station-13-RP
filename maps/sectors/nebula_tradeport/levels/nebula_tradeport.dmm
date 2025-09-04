@@ -18719,8 +18719,9 @@
 /area/shuttle/trade_ship/general)
 "baB" = (
 /obj/effect/shuttle_landmark{
+	docking_controller = "trade_docks_3";
 	landmark_tag = "nebula_dock_3sdf";
-	name = "Nebula Pad South Dock"
+	name = "Nebula Pad South Dock (SDF)"
 	},
 /turf/space/basic,
 /area/space)
@@ -19595,6 +19596,15 @@
 	},
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport/commons)
+"cYm" = (
+/obj/effect/shuttle_landmark{
+	base_area = /area/space;
+	base_turf = /turf/space;
+	landmark_tag = "nebula_space_S2";
+	name = "Near Nebulous Gas (S2)"
+	},
+/turf/space/basic,
+/area/space)
 "cZd" = (
 /turf/simulated/floor/plating,
 /area/shuttle/scoophead/main)
@@ -20781,15 +20791,6 @@
 	name = "external access button";
 	pixel_x = -23
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/machinery/door/airlock/glass_external{
-	name = "Nebula Gas - External Access"
-	},
-/obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor,
 /area/tradeport/pads)
 "fAe" = (
@@ -21425,27 +21426,7 @@
 /obj/machinery/airlock_sensor{
 	pixel_x = -25
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 6
-	},
-/obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/effect/floor_decal/rust,
-/obj/machinery/airlock_sensor{
-	pixel_x = -25;
-	pixel_y = 25
-	},
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	dir = 4;
-	frequency = 1380;
-	id_tag = "trade_docks3";
-	pixel_x = -26;
-	pixel_y = 1
-	},
 /turf/simulated/floor,
 /area/tradeport/pads)
 "hhS" = (
@@ -23799,15 +23780,6 @@
 	name = "internal access button";
 	pixel_x = -24
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/machinery/door/airlock/glass_external{
-	name = "Nebula Gas - External Access"
-	},
-/obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor,
 /area/tradeport/pads)
 "mUJ" = (
@@ -24010,22 +23982,6 @@
 	name = "internal access button";
 	pixel_x = 25
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/door/airlock/glass_external{
-	name = "Nebula Gas - External Access"
-	},
-/obj/map_helper/airlock/door/int_door,
-/obj/machinery/access_button/airlock_interior{
-	frequency = 1380;
-	master_tag = "trade_docks3";
-	name = "internal access button";
-	pixel_x = 22
-	},
 /turf/simulated/floor,
 /area/tradeport/pads)
 "nwb" = (
@@ -24050,9 +24006,8 @@
 /area/shuttle/scoophead/main)
 "nBb" = (
 /obj/effect/shuttle_landmark{
-	docking_controller = "trade_docks_3";
 	landmark_tag = "nebula_dock_3";
-	name = "Nebula Pad South Dock (SDF)"
+	name = "Nebula Pad South Dock"
 	},
 /turf/space/basic,
 /area/space)
@@ -24246,17 +24201,6 @@
 	dir = 1;
 	frequency = 1380;
 	id_tag = "trade_docks_3"
-	},
-/obj/map_helper/airlock/atmos/chamber_pump,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
-	dir = 1;
-	frequency = 1380;
-	id_tag = "trade_docks3"
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor,
@@ -25337,14 +25281,6 @@
 /obj/structure/catwalk,
 /obj/machinery/power/apc/alarms_hidden/west_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/cable/yellow,
-/obj/structure/catwalk,
-/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor,
 /area/tradeport/pads)
 "rai" = (
@@ -25432,16 +25368,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/tradeport/facility)
-"rnd" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
-	dir = 1;
-	frequency = 1380;
-	id_tag = "trade_docks3"
-	},
-/obj/map_helper/airlock/atmos/chamber_pump,
-/obj/effect/floor_decal/rust,
-/turf/simulated/floor,
-/area/tradeport/pads)
 "rnU" = (
 /obj/effect/floor_decal/corner/red/border{
 	dir = 10
@@ -25875,15 +25801,6 @@
 	},
 /turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/spine)
-"sGT" = (
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/turf/simulated/floor,
-/area/tradeport/pads)
 "sHj" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
@@ -25996,21 +25913,6 @@
 	master_tag = "trade_docks_3";
 	name = "external access button";
 	pixel_x = 22
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/machinery/door/airlock/glass_external{
-	name = "Nebula Gas - External Access"
-	},
-/obj/map_helper/airlock/door/ext_door,
-/obj/machinery/access_button/airlock_exterior{
-	frequency = 1380;
-	master_tag = "trade_docks3";
-	name = "external access button";
-	pixel_x = 24
 	},
 /turf/simulated/floor,
 /area/tradeport/pads)
@@ -26861,14 +26763,6 @@
 	id_tag = "trade_docks_3";
 	pixel_x = 26
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 4
-	},
 /obj/machinery/light/small{
 	dir = 1
 	},
@@ -26930,6 +26824,15 @@
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/nebula_tradeport/motel/room4)
+"vtH" = (
+/obj/effect/shuttle_landmark{
+	base_area = /area/space;
+	base_turf = /turf/space;
+	landmark_tag = "nebula_space_SW2";
+	name = "Near Nebulous Gas (SW2)"
+	},
+/turf/space/basic,
+/area/space)
 "vtL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -34221,7 +34124,7 @@ acd
 acd
 acd
 acd
-wpq
+vtH
 acd
 acd
 acd
@@ -48006,7 +47909,7 @@ acd
 acd
 acd
 acd
-ddr
+cYm
 acd
 acd
 acd
@@ -56324,7 +56227,7 @@ aia
 aia
 aia
 aia
-sGT
+uvG
 aia
 acd
 acd
@@ -56518,7 +56421,7 @@ xUm
 qZI
 mRJ
 hhK
-rnd
+aTg
 fyO
 acd
 nBb
