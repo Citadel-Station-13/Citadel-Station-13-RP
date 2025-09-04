@@ -276,6 +276,12 @@
 	},
 /turf/simulated/floor/plating/outdoors,
 /area/shuttle/salvager)
+"fv" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/plating/outdoors,
+/area/shuttle/salvager)
 "fz" = (
 /obj/structure/table/reinforced,
 /turf/simulated/floor/plating/eris/under,
@@ -558,7 +564,6 @@
 /turf/simulated/floor/plating/outdoors,
 /area/shuttle/salvager)
 "kC" = (
-/obj/machinery/mech_recharger,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -668,7 +673,7 @@
 	dir = 5
 	},
 /obj/item/clothing/suit/space/void/engineering/salvage,
-/obj/item/clothing/head/helmet/space/void/engineering/salvage,
+/obj/item/clothing/head/helmet/space/void/engineering/alt,
 /turf/simulated/floor/carpet/patterened/blue,
 /area/shuttle/salvager)
 "nu" = (
@@ -1453,25 +1458,12 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /turf/simulated/floor/plating/outdoors,
 /area/shuttle/salvager)
-"AG" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden,
-/obj/machinery/mech_recharger,
-/obj/vehicle/sealed/mecha/working/ripley/geiger,
-/turf/simulated/floor/plating/outdoors,
-/area/shuttle/salvager)
 "AL" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/simulated/floor/event/derelict_wall_floor,
 /area/sector/solar_station/deck1)
-"AP" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 4
-	},
-/turf/simulated/floor/plating/outdoors,
-/area/shuttle/salvager)
 "AW" = (
 /obj/structure/cable/blue,
 /turf/simulated/floor/plating/outdoors,
@@ -1980,7 +1972,7 @@
 	dir = 6
 	},
 /obj/item/clothing/suit/space/void/engineering/salvage,
-/obj/item/clothing/head/helmet/space/void/engineering/salvage,
+/obj/item/clothing/head/helmet/space/void/engineering/alt,
 /turf/simulated/floor/carpet/patterened/blue,
 /area/shuttle/salvager)
 "KO" = (
@@ -2437,7 +2429,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
-/obj/structure/cable/orange,
 /turf/simulated/floor/plating/outdoors,
 /area/shuttle/salvager)
 "UT" = (
@@ -2560,16 +2551,14 @@
 /turf/simulated/floor/plating/indoors,
 /area/sector/solar_station/deck1)
 "XK" = (
-/obj/machinery/power/smes/buildable/offmap_spawn,
-/obj/structure/cable/orange{
-	icon_state = "0-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 4
 	},
+/obj/vehicle/sealed/mecha/working/ripley/geiger,
+/obj/machinery/mech_recharger,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/salvager)
 "Yh" = (
@@ -21070,7 +21059,7 @@ cP
 ko
 yt
 kC
-AP
+eI
 vM
 DM
 cP
@@ -21264,7 +21253,7 @@ aY
 Vy
 Xw
 fr
-uk
+fv
 WM
 ko
 ko
@@ -21457,7 +21446,7 @@ Yy
 aY
 wJ
 Cg
-AG
+AA
 uk
 Yh
 ko
