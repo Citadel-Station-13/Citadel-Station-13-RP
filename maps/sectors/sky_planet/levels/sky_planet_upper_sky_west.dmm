@@ -6245,7 +6245,6 @@
 /obj/effect/floor_decal/rust/mono_rusted3{
 	color = "#b88a3b"
 	},
-/obj/vehicle/ridden/bike,
 /obj/machinery/mech_recharger,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/occulum)
@@ -6480,6 +6479,13 @@
 	},
 /turf/simulated/floor/wood/sif/indoors,
 /area/sector/sky_planet/racing_station/lounge)
+"Dr" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/obj/vehicle/sealed/mecha/combat/fighter/pinnace/loaded,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/occulum)
 "Ds" = (
 /obj/structure/window/reinforced/survival_pod{
 	dir = 4
@@ -6865,7 +6871,6 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/sky_planet/station_city/offices)
 "EQ" = (
-/obj/vehicle/ridden/bike,
 /obj/machinery/mech_recharger,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/occulum)
@@ -10942,6 +10947,10 @@
 /obj/machinery/door/blast/regular,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
+"Wn" = (
+/obj/item/spell/construct/mend_occult,
+/turf/simulated/floor/airless,
+/area/sector/sky_planet/occulum)
 "Wo" = (
 /obj/spawner/window/low_wall/firelocks,
 /turf/simulated/floor/tiled/monotechmaint,
@@ -18435,7 +18444,7 @@ ng
 cz
 ng
 zR
-zR
+Wn
 BR
 ng
 uk
@@ -19201,7 +19210,7 @@ eP
 ng
 Uc
 EQ
-tC
+Dr
 my
 Xq
 CE
