@@ -26,8 +26,8 @@
 	desc = "You arrived from here."
 	role_type = /datum/role/ghostrole/salvager
 	role_spawns = 2
-	icon = 'icons/obj/machines/teleporter.dmi'
-	icon_state = "pad_idle"
+	icon = 'icons/obj/furniture.dmi'
+	icon_state = "bed"
 
 //salvager CRYO
 /obj/machinery/cryopod/robot/door/travel/salvager
@@ -38,8 +38,8 @@
 	announce_channel = "Trade"
 	base_icon_state = "pad"
 	occupied_icon_state = "pad_active"
-	on_store_message = "has departed and his heading back to the nearest Occulum HQ."
-	on_store_name = "Oculum Travel Oversight"
+	on_store_message = "has departed and his heading back to the mothership."
+	on_store_name = "Guardian Travel Oversight"
 	on_enter_occupant_message = "The gateway activates, and you step into the swirling portal."
 	on_store_visible_message_1 = "'s portal disappears just after"
 	on_store_visible_message_2 = "finishes walking across it."

@@ -65,7 +65,7 @@
 "bL" = (
 /obj/machinery/atmospherics/component/unary/engine/biggest,
 /turf/space/basic,
-/area/sector/solar_station/space)
+/area/space)
 "bV" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -225,7 +225,7 @@
 "jy" = (
 /obj/structure/lattice,
 /turf/space/basic,
-/area/sector/solar_station/space)
+/area/space)
 "jH" = (
 /obj/machinery/portable_atmospherics/canister/empty/nitrous_oxide,
 /turf/simulated/floor/tiled/techfloor/monogrid,
@@ -430,7 +430,7 @@
 /area/sector/solar_station/deck0)
 "tm" = (
 /turf/space/basic,
-/area/sector/solar_station/space)
+/area/space)
 "tv" = (
 /obj/structure/table/rack/steel,
 /obj/item/storage/box/handcuffs,
@@ -482,7 +482,7 @@
 "vC" = (
 /obj/effect/meteor/dust,
 /turf/space/basic,
-/area/sector/solar_station/space)
+/area/space)
 "vI" = (
 /obj/machinery/appliance/cooker/fryer,
 /turf/simulated/floor/tiled/techfloor/monogrid,
@@ -1011,7 +1011,7 @@
 	name = "THE SUN"
 	},
 /turf/space/basic,
-/area/sector/solar_station/space)
+/area/space)
 "VK" = (
 /obj/structure/closet/secure_closet/guncabinet,
 /turf/simulated/floor/tiled/monotechmaint,

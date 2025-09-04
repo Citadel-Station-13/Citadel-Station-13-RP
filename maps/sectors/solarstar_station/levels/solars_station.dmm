@@ -63,7 +63,7 @@
 	name = "THE SUN"
 	},
 /turf/space/basic,
-/area/sector/solar_station/space)
+/area/space)
 "aY" = (
 /obj/machinery/atmospherics/pipe/tank/air,
 /turf/simulated/floor/plating/outdoors,
@@ -130,7 +130,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "bI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -144,7 +144,7 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/reinforced,
-/area/sector/solar_station/space)
+/area/space)
 "cm" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -170,7 +170,7 @@
 /area/sector/solar_station/deck1)
 "cP" = (
 /turf/space/basic,
-/area/sector/solar_station/space)
+/area/space)
 "di" = (
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/solar_station/deck1)
@@ -185,7 +185,7 @@
 /obj/structure/frame2/solar_panel/anchored,
 /obj/structure/cable,
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "dG" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -220,13 +220,13 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "ex" = (
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "eA" = (
 /obj/effect/floor_decal/borderfloorblack,
 /mob/living/simple_mob/animal/passive/maint_drone{
@@ -361,7 +361,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "hm" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /obj/structure/shuttle/engine/heater{
@@ -403,7 +403,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "iF" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
@@ -501,7 +501,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/monotechmaint,
-/area/sector/solar_station/space)
+/area/space)
 "jE" = (
 /obj/structure/cable{
 	icon_state = "4-9"
@@ -516,7 +516,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "jL" = (
 /obj/structure/salvageable/bliss{
 	name = "solar ray sensor terminal";
@@ -543,7 +543,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/wall/r_wall/prepainted,
-/area/sector/solar_station/space)
+/area/space)
 "kn" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
@@ -631,7 +631,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "lT" = (
 /obj/structure/cable{
 	icon_state = "1-6"
@@ -640,7 +640,7 @@
 	icon_state = "6-8"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "lX" = (
 /obj/spawner/window/low_wall/firelocks,
 /turf/simulated/floor/tiled/techfloor,
@@ -691,7 +691,7 @@
 	desc = "A small, normal-looking drone. Those models manage automated stations."
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "nz" = (
 /obj/machinery/shipsensors,
 /turf/simulated/floor/plating/outdoors,
@@ -716,7 +716,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "ok" = (
 /obj/structure/cable/blue{
 	icon_state = "0-4"
@@ -753,7 +753,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/reinforced,
-/area/sector/solar_station/space)
+/area/space)
 "oH" = (
 /obj/structure/flora/pottedplant/hedge,
 /obj/structure/cable/blue{
@@ -770,7 +770,7 @@
 	icon_state = "6-9"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "pa" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -782,7 +782,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "pe" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/storage/toolbox/electrical,
@@ -816,7 +816,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "qj" = (
 /obj/structure/cable/blue{
 	icon_state = "1-2"
@@ -859,7 +859,7 @@
 	icon_state = "4-10"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "rI" = (
 /obj/structure/table/reinforced,
 /obj/item/paper_bin{
@@ -891,7 +891,7 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "rZ" = (
 /obj/structure/cable/blue{
 	icon_state = "2-4"
@@ -1007,7 +1007,7 @@
 	icon_state = "6-8"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "tz" = (
 /obj/machinery/door/airlock/engineering{
 	req_one_access = null
@@ -1200,7 +1200,7 @@
 "wG" = (
 /obj/effect/shuttle_landmark/automatic,
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "wH" = (
 /obj/machinery/drone_fabricator,
 /obj/effect/floor_decal/techfloor,
@@ -1214,7 +1214,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "wJ" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /turf/simulated/wall/r_wall/prepainted,
@@ -1352,14 +1352,14 @@
 	icon_state = "4-10"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "ze" = (
 /obj/structure/frame2/solar_panel/anchored,
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "zl" = (
 /obj/machinery/power/smes/buildable/offmap_spawn/empty,
 /obj/structure/cable/blue{
@@ -1397,7 +1397,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "zS" = (
 /obj/structure/ghost_role_spawner/salvager,
 /obj/structure/curtain/open/bed,
@@ -1418,7 +1418,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "Af" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -1430,7 +1430,7 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "Al" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -1446,7 +1446,7 @@
 	desc = "A small, normal-looking drone. Those models manage automated stations."
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "Am" = (
 /obj/machinery/light/small,
 /obj/effect/floor_decal/techfloor{
@@ -1467,7 +1467,7 @@
 "AW" = (
 /obj/structure/cable/blue,
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "Bl" = (
 /obj/machinery/atmospherics/pipe/tank/phoron{
 	dir = 1
@@ -1508,7 +1508,7 @@
 	icon_state = "2-5"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "BC" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -1529,7 +1529,7 @@
 "BF" = (
 /obj/overmap/entity/visitable/sector/solar_station,
 /turf/space/basic,
-/area/sector/solar_station/space)
+/area/space)
 "BN" = (
 /obj/spawner/window/low_wall/firelocks,
 /turf/simulated/floor/plating/outdoors,
@@ -1545,7 +1545,7 @@
 	icon_state = "6-8"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "Cb" = (
 /obj/effect/floor_decal/techfloor/corner{
 	dir = 1
@@ -1585,7 +1585,7 @@
 	icon_state = "4-10"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "CA" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
@@ -1654,7 +1654,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "Ee" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -1672,7 +1672,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "Ey" = (
 /obj/machinery/atmospherics/component/unary/heater,
 /turf/simulated/floor/plating/outdoors,
@@ -1746,7 +1746,7 @@
 	desc = "A small, normal-looking drone. Those models manage automated stations."
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "FX" = (
 /obj/spawner/window/borosillicate/full/firelocks,
 /turf/simulated/floor/event/derelict_wall_floor,
@@ -1756,14 +1756,14 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/wall/r_wall/prepainted,
-/area/sector/solar_station/space)
+/area/space)
 "Gs" = (
 /obj/structure/marker_beacon/red,
 /turf/simulated/floor/tiled/monotechmaint,
-/area/sector/solar_station/space)
+/area/space)
 "Gz" = (
 /turf/simulated/floor/tiled/monotechmaint,
-/area/sector/solar_station/space)
+/area/space)
 "GE" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
@@ -1797,7 +1797,7 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/wall/r_wall/prepainted,
-/area/sector/solar_station/space)
+/area/space)
 "Ha" = (
 /obj/machinery/door/airlock/glass_external,
 /obj/structure/cable{
@@ -1824,7 +1824,7 @@
 	icon_state = "6-8"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "Hu" = (
 /obj/structure/flora/pottedplant/hedge,
 /turf/simulated/floor/event/derelict_wall_floor,
@@ -1835,7 +1835,7 @@
 /area/sector/solar_station/deck1)
 "HD" = (
 /turf/simulated/wall/r_wall/prepainted,
-/area/sector/solar_station/space)
+/area/space)
 "HL" = (
 /obj/spawner/window/borosillicate/full/firelocks,
 /turf/simulated/floor/plating/eris/under,
@@ -1910,7 +1910,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/reinforced,
-/area/sector/solar_station/space)
+/area/space)
 "Kf" = (
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -1928,7 +1928,7 @@
 	icon_state = "4-10"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "Kq" = (
 /obj/machinery/door/airlock/glass_external,
 /obj/map_helper/airlock/door/ext_door,
@@ -1946,13 +1946,13 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "Kx" = (
 /obj/structure/cable{
 	icon_state = "5-10"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "KA" = (
 /obj/structure/cable/blue{
 	icon_state = "1-2"
@@ -2012,15 +2012,15 @@
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "Lq" = (
 /obj/structure/lattice,
 /turf/space/basic,
-/area/sector/solar_station/space)
+/area/space)
 "Ls" = (
 /obj/effect/meteor/dust,
 /turf/space/basic,
-/area/sector/solar_station/space)
+/area/space)
 "LC" = (
 /obj/structure/closet/crate/solar,
 /obj/machinery/door/window/brigdoor/southleft,
@@ -2034,7 +2034,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/wall/r_wall/prepainted,
-/area/sector/solar_station/space)
+/area/space)
 "LL" = (
 /obj/item/barrier_tape_segment/police{
 	name = "SDF tape";
@@ -2083,11 +2083,11 @@
 /area/sector/solar_station/deck1)
 "Me" = (
 /turf/simulated/floor/reinforced,
-/area/sector/solar_station/space)
+/area/space)
 "MQ" = (
 /obj/machinery/atmospherics/component/unary/engine/biggest,
 /turf/space/basic,
-/area/sector/solar_station/space)
+/area/space)
 "Ng" = (
 /obj/structure/table/rack/shelf,
 /turf/simulated/floor/plating/eris/under,
@@ -2129,7 +2129,7 @@
 	icon_state = "4-6"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "OO" = (
 /obj/machinery/computer/ship/engines{
 	dir = 1
@@ -2144,7 +2144,7 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "Pa" = (
 /turf/simulated/open,
 /area/sector/solar_station/deck1)
@@ -2176,13 +2176,13 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "PB" = (
 /obj/structure/cable{
 	icon_state = "2-9"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "PE" = (
 /obj/machinery/door/airlock/maintenance_hatch{
 	req_one_access = null
@@ -2231,7 +2231,7 @@
 	desc = "A small, normal-looking drone. Those models manage automated stations."
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "PQ" = (
 /obj/structure/bed/chair/bay/chair/padded/yellow{
 	dir = 8
@@ -2273,7 +2273,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "Qs" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -2282,7 +2282,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "Qv" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -2316,7 +2316,7 @@
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "Rt" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -2352,7 +2352,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/wall/r_wall/prepainted,
-/area/sector/solar_station/space)
+/area/space)
 "Sv" = (
 /obj/structure/cable/blue{
 	icon_state = "4-8"
@@ -2396,7 +2396,7 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "Th" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -2446,13 +2446,13 @@
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "Vs" = (
 /obj/structure/cable/blue{
 	icon_state = "1-2"
 	},
 /turf/simulated/wall/r_wall/prepainted,
-/area/sector/solar_station/space)
+/area/space)
 "Vy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
@@ -2470,7 +2470,7 @@
 	icon_state = "6-8"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "VL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -2485,7 +2485,7 @@
 	icon_state = "8-10"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "Wl" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating/indoors,
@@ -2516,7 +2516,7 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "Xw" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/storage/toolbox/mechanical,
@@ -2570,7 +2570,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "Yl" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -2579,7 +2579,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "Ys" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -2600,7 +2600,7 @@
 "Yy" = (
 /obj/spawner/window/borosillicate/full/firelocks,
 /turf/simulated/floor/tiled/monotechmaint,
-/area/sector/solar_station/space)
+/area/space)
 "YC" = (
 /obj/machinery/door/airlock/glass_external,
 /obj/map_helper/airlock/door/int_door,
@@ -2630,7 +2630,7 @@
 /area/sector/solar_station/deck1)
 "Zs" = (
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 "Zu" = (
 /obj/structure/cable{
 	icon_state = "5-10"
@@ -2642,7 +2642,7 @@
 	icon_state = "4-10"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/sector/solar_station/space)
+/area/space)
 
 (1,1,1) = {"
 cP
