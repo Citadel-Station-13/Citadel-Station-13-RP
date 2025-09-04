@@ -37,3 +37,6 @@
 	frequency = FREQ_ENTERTAINMENT
 	anchored = TRUE
 	can_be_unanchored = TRUE
+	canhear_range = 5
+	broadcasting = 1
+	listening = 0
