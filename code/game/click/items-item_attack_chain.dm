@@ -8,27 +8,27 @@
  * * Called before melee_attack_chain()
  *
  * @params
- * * e_args - the clickchain data, including who's doing the interaction
+ * * clickchain - the clickchain data, including who's doing the interaction
  * * clickchain_flags - the clickchain flags given
  *
  * @return CLICKCHAIN_* flags. These are added / interpreted by the caller.
  */
-/obj/item/proc/item_attack_chain(datum/event_args/actor/clickchain/e_args, clickchain_flags)
+/obj/item/proc/item_attack_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	SHOULD_NOT_OVERRIDE(TRUE)
 
 	. = clickchain_flags
 
-	. |= SEND_SIGNAL(src, COMSIG_ITEM_USING_AS_ITEM, e_args, clickchain_flags)
+	. |= SEND_SIGNAL(src, COMSIG_ITEM_USING_AS_ITEM, clickchain, clickchain_flags)
 	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return
-	. |= using_as_item(e_args.target, e_args, clickchain_flags)
+	. |= using_as_item(clickchain.target, clickchain, clickchain_flags)
 	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return
 
-	. |= SEND_SIGNAL(e_args.target, COMSIG_ATOM_USING_ITEM_ON, src, e_args, clickchain_flags)
+	. |= SEND_SIGNAL(clickchain.target, COMSIG_ATOM_USING_ITEM_ON, src, clickchain, clickchain_flags)
 	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return
-	. |= e_args.target.using_item_on(src, e_args, clickchain_flags)
+	. |= clickchain.target.using_item_on(src, clickchain, clickchain_flags)
 	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return
 

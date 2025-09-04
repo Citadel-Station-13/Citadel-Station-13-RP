@@ -14,7 +14,7 @@
 	var/loaded_from_slot = null
 
 // Handle people leaving due to round ending.
-/hook/roundend/proc/persist_locations()
+/legacy_hook/roundend/proc/persist_locations()
 	for(var/mob/Player in human_mob_list)
 		if(!Player.mind || isnewplayer(Player))
 			continue // No mind we can do nothing, new players we care not for
@@ -66,7 +66,7 @@
 /**
  * Called when mob despawns early (via cryopod)!
  */
-/hook/despawn/proc/persist_despawned_mob(var/mob/occupant, var/obj/machinery/cryopod/pod)
+/legacy_hook/despawn/proc/persist_despawned_mob(var/mob/occupant, var/obj/machinery/cryopod/pod)
 	ASSERT(istype(pod))
 	ASSERT(ispath(pod.spawnpoint_type, /datum/spawnpoint))
 	persist_interround_data(occupant, pod.spawnpoint_type)

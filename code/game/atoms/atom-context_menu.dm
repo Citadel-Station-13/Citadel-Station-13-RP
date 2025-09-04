@@ -94,6 +94,9 @@
 		transformed[data[1]] = I
 		inverse_lookup[data[1]] = key
 
+	if(!length(transformed))
+		return null
+
 	var/datum/radial_menu/context_menu/menu = new
 	var/id = "context_[REF(e_args.initiator)]"
 	GLOB.radial_menus[id] = menu

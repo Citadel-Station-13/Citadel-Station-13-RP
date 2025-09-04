@@ -247,7 +247,7 @@
 			material_constraints = get_typelist(material_constraints)
 		else
 			material_constraints = typelist(NAMEOF(src, material_constraints), material_constraints)
-			
+
 	// initialize material parts system
 	if(material_parts != MATERIAL_DEFAULT_DISABLED)
 		// process material parts only if it wasn't set already
@@ -452,6 +452,12 @@
 		things_to_induce += obj_cell_slot.cell
 
 //* Climbing *//
+
+/obj/alt_clicked_on(mob/user, location, control, list/params)
+	if(obj_storage?.allow_open_via_alt_click && user.Reachability(src))
+		obj_storage.auto_handle_interacted_open(new /datum/event_args/actor(user))
+		return TRUE
+	return ..()
 
 /obj/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
 	if(drag_drop_climb_interaction(user, dropping))

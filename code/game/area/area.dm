@@ -696,7 +696,7 @@ var/list/teleportlocs = list()
 
 var/list/ghostteleportlocs = list()
 
-/hook/startup/proc/setupGhostTeleportLocs()
+/legacy_hook/startup/proc/setupGhostTeleportLocs()
 	for(var/area/AR in GLOB.sortedAreas)
 		if(ghostteleportlocs.Find(AR.name)) continue
 		if(istype(AR, /area/aisat) || istype(AR, /area/derelict) || istype(AR, /area/tdome) || istype(AR, /area/shuttle/specops/centcom))

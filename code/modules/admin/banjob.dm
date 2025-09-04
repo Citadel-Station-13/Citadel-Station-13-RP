@@ -50,7 +50,7 @@ DEBUG
 	jobban_loadbanfile()
 */
 
-/hook/startup/proc/loadJobBans()
+/legacy_hook/startup/proc/loadJobBans()
 	jobban_loadbanfile()
 	return 1
 
