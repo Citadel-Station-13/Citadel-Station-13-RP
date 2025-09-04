@@ -24,7 +24,7 @@
 	name = "Guardian Company Salvage Docking spot"
 	landmark_tag = "solar_salvage"
 	base_turf = /turf/space/basic
-	base_area = /area/sector/solar_station
+	base_area = /area/space
 
 /obj/item/radio/phone/laptop
 	icon = 'icons/obj/computer.dmi'

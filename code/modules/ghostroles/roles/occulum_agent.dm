@@ -25,7 +25,7 @@
 	name = "Operator's teleporter"
 	desc = "Arrived from here."
 	role_type = /datum/role/ghostrole/occulum
-	role_spawns = 1
+	role_spawns = 2
 	icon = 'icons/obj/machines/teleporter.dmi'
 	icon_state = "pad_idle"
 

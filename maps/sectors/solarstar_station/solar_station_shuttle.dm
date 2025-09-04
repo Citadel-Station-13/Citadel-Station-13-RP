@@ -21,7 +21,7 @@
 	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "GCSS Vevalia Salvage Shuttle"
 
-/obj/machinery/computer/shuttle_control/explore/salvager
+/obj/machinery/computer/shuttle_control/trade/salvager
 	name = "short jump console"
 	shuttle_tag = "GCSS Vevalia Salvage Shuttle"
 

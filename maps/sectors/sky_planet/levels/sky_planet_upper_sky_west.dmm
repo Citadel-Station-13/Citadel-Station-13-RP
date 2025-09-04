@@ -4783,9 +4783,8 @@
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/sky_planet/station_city/restaurant)
 "vQ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
+/obj/machinery/atmospherics/pipe/manifold/hidden,
+/obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/crescend)
 "vR" = (
@@ -5898,6 +5897,7 @@
 	dir = 4
 	},
 /obj/machinery/air_alarm/alarms_hidden/east_mount,
+/obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/crescend)
 "AU" = (
@@ -6037,6 +6037,10 @@
 	},
 /obj/machinery/light/small/old{
 	dir = 1
+	},
+/obj/machinery/cryopod/robot/door/travel/occulum,
+/obj/machinery/computer/cryopod/travel/occulum{
+	pixel_y = 30
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/crescend)
@@ -11539,10 +11543,26 @@
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/sky)
 "YS" = (
+/obj/item/clothing/under/suit_jacket/charcoal/skirt,
+/obj/item/clothing/under/suit_jacket/charcoal,
+/obj/item/clothing/under/suit_jacket/navy,
+/obj/item/clothing/under/suit_jacket/navy/skirt,
+/obj/item/clothing/under/dress/tajaran/blue,
+/obj/item/clothing/head/soft/blue,
+/obj/item/clothing/suit/storage/hooded/wintercoat,
+/obj/item/clothing/suit/storage/hooded/wintercoat/olive,
+/obj/item/gun/projectile/energy/taser,
+/obj/item/cell/device/weapon,
+/obj/item/cell/device/weapon,
+/obj/item/storage/backpack/dufflebag,
+/obj/item/storage/backpack/messenger,
+/obj/item/clothing/accessory/badge/corporate_tag/press,
+/obj/item/clothing/accessory/badge/corporate_tag/press,
+/obj/structure/closet/walllocker_double/west,
+/obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/structure/cable/white{
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/crescend)
 "YT" = (
