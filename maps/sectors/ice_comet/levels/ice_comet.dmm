@@ -1128,6 +1128,11 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/ice_comet/facility)
+"HK" = (
+/obj/structure/lattice,
+/obj/effect/shuttle_landmark/automatic,
+/turf/space/basic,
+/area/space)
 "HR" = (
 /obj/structure/event/prop/wire,
 /turf/simulated/floor/outdoors/safeice/lythios43c,
@@ -1290,6 +1295,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/ice_comet/facility)
+"Qh" = (
+/obj/effect/shuttle_landmark/automatic,
+/turf/space/basic,
+/area/space)
 "Qm" = (
 /turf/space/basic,
 /area/space)
@@ -10701,6 +10710,7 @@ Rn
 cY
 cY
 cY
+HK
 cY
 cY
 cY
@@ -10709,7 +10719,7 @@ cY
 cY
 cY
 cY
-cY
+Qh
 Qm
 Qm
 Qm
@@ -10717,8 +10727,7 @@ Qm
 Qm
 Qm
 Qm
-Qm
-Qm
+Qh
 Qm
 Qm
 Qm
@@ -13029,6 +13038,7 @@ cY
 cY
 cY
 cY
+HK
 cY
 cY
 cY
@@ -13037,7 +13047,7 @@ cY
 cY
 cY
 cY
-cY
+Qh
 Qm
 Qm
 Qm
@@ -13045,8 +13055,7 @@ Qm
 Qm
 Qm
 Qm
-Qm
-Qm
+Qh
 Qm
 Qm
 Qm
@@ -15357,6 +15366,7 @@ cY
 cY
 cY
 cY
+HK
 cY
 cY
 cY
@@ -15365,7 +15375,7 @@ cY
 cY
 cY
 cY
-cY
+Qh
 Qm
 Qm
 Qm
@@ -15373,8 +15383,7 @@ Qm
 Qm
 Qm
 Qm
-Qm
-Qm
+Qh
 Qm
 Qm
 Qm
