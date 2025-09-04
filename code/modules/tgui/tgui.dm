@@ -328,14 +328,6 @@
 			"observer" = isobserver(user),
 		),
 	)
-	var/data = with_data && src_object.ui_data(user, src)
-	if(data)
-		json_data["data"] = data
-	var/static_data = with_static_data && src_object.ui_static_data(user, src)
-	if(static_data)
-		json_data["static_data"] = static_data
-	if(src_object.tgui_shared_states)
-		json_data["shared"] = src_object.tgui_shared_states
 	var/list/nestedData = with_static_data ? src_object.ui_nested_data(user, src) : list()
 	// static first
 	if(with_static_data)

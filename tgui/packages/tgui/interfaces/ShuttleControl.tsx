@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, ReactNode } from 'react';
 import { Box, Button, Flex, LabeledList, ProgressBar, Section } from "tgui-core/components";
 import { toTitleCase } from 'tgui-core/string';
 
@@ -458,24 +458,32 @@ const ShuttleControlConsoleWeb = (props) => {
   );
 };
 
-// This may look tempting to convert to require() or some kind of dynamic call
-// Don't do it. XSS abound.
-const SubtemplateList = {
-  "ShuttleControlConsoleDefault": <ShuttleControlConsoleDefault />,
-  "ShuttleControlConsoleMulti": <ShuttleControlConsoleMulti />,
-  "ShuttleControlConsoleExploration": <ShuttleControlConsoleExploration />,
-  "ShuttleControlConsoleWeb": <ShuttleControlConsoleWeb />,
-};
-
 export const ShuttleControl = (props) => {
   const { act, data } = useBackend<any>();
   const {
     subtemplate,
   } = data;
+  let rendering: (props) => ReactNode = () => (<>
+    Something broke.
+                                               </>);
+  switch (subtemplate) {
+    case "ShuttleControlConsoleDefault":
+      rendering = ShuttleControlConsoleDefault;
+      break;
+    case "ShuttleControlConsoleMulti":
+      rendering = ShuttleControlConsoleMulti;
+      break;
+    case "ShuttleControlConsoleExploration":
+      rendering = ShuttleControlConsoleExploration;
+      break;
+    case "ShuttleControlConsoleWeb":
+      rendering = ShuttleControlConsoleWeb;
+      break;
+  }
   return (
     <Window width={470} height={(subtemplate === "ShuttleControlConsoleWeb") ? 560 : 370}>
       <Window.Content>
-        {SubtemplateList[subtemplate]}
+        {rendering({})}
       </Window.Content>
     </Window>
   );

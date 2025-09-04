@@ -36,6 +36,7 @@
 	winset(src, "output", "is-disabled=1&is-visible=0")
 	winset(src, "browseroutput", "is-disabled=0;is-visible=1")
 
+// TODO: this .. breaks shit. lol.
 /client/verb/reinitialize_tgui()
 	set name = "Refresh TGUI"
 	set category = VERB_CATEGORY_OOC
