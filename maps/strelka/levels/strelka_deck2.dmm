@@ -154,7 +154,10 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/turf/simulated/floor/reinforced,
+/obj/structure/wheelchairassist{
+	dir = 4
+	},
+/turf/simulated/floor/trap/wheelchair,
 /area/hallway/strelka/deck2)
 "ay" = (
 /obj/structure/closet{
@@ -1310,6 +1313,11 @@
 	name = "Security Front Desk"
 	},
 /obj/map_helper/access_helper/airlock/station/security/department,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/blue{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/security/strelka/reception)
 "dO" = (
@@ -1476,6 +1484,7 @@
 	req_access = null
 	},
 /obj/machinery/door/window/southleft,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/wood/indoors,
 /area/security/strelka/reception)
 "en" = (
@@ -1528,11 +1537,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/bridge)
 "eu" = (
-/obj/structure/cable/blue{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
@@ -2239,6 +2243,15 @@
 /obj/machinery/power/apc/west_mount,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/emt/strelka/cockpit)
+"gD" = (
+/obj/structure/cable/white{
+	icon_state = "1-2"
+	},
+/obj/machinery/camera/network/security{
+	dir = 4
+	},
+/turf/simulated/floor/airless,
+/area/space)
 "gE" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -2399,6 +2412,14 @@
 	},
 /turf/simulated/floor/carpet/patterened/orange,
 /area/engineering/strelka/storage)
+"hc" = (
+/obj/machinery/power/solar,
+/obj/structure/cable/pink,
+/obj/machinery/camera/network/security{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/space)
 "he" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
@@ -3039,6 +3060,12 @@
 /obj/effect/floor_decal/corner/blue/border,
 /obj/item/roller,
 /obj/item/roller,
+/obj/item/wheelchair{
+	dir = 4
+	},
+/obj/item/wheelchair{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/old_cargo,
 /area/shuttle/emt/strelka/main)
 "jc" = (
@@ -3120,8 +3147,6 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/light_switch{
 	dir = 4;
 	pixel_x = 23
@@ -3191,6 +3216,27 @@
 /obj/machinery/light/small/old{
 	dir = 4
 	},
+/obj/machinery/photocopier/faxmachine{
+	department = "Warden Office"
+	},
+/obj/structure/table/carbon/reinforced,
+/obj/item/paper_bin{
+	pixel_x = 6;
+	pixel_y = 7
+	},
+/obj/item/stamp/denied{
+	pixel_x = 5
+	},
+/obj/item/pen/blue{
+	pixel_x = -5;
+	pixel_y = -1
+	},
+/obj/item/pen,
+/obj/item/pen/red{
+	pixel_x = -1;
+	pixel_y = 3
+	},
+/obj/item/stamp/ward,
 /turf/simulated/floor/wood/indoors,
 /area/security/strelka/warden)
 "jF" = (
@@ -3329,7 +3375,8 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/explo)
 "kg" = (
-/turf/simulated/wall/r_wall/prepainted/engineering)
+/turf/simulated/wall/r_wall/prepainted/engineering,
+/area/engineering/hallway/strelka/engineering)
 "kh" = (
 /obj/structure/cable/orange{
 	icon_state = "4-8"
@@ -3442,30 +3489,9 @@
 /obj/structure/cable/blue{
 	icon_state = "1-2"
 	},
-/obj/structure/table/carbon/reinforced,
-/obj/item/stamp/ward,
-/obj/item/stamp/denied{
-	pixel_x = 5
-	},
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/obj/machinery/photocopier/faxmachine{
-	department = "Warden Office"
-	},
-/obj/item/paper_bin{
-	pixel_x = 6;
-	pixel_y = 7
-	},
-/obj/item/pen/blue{
-	pixel_x = -5;
-	pixel_y = -1
-	},
-/obj/item/pen/red{
-	pixel_x = -1;
-	pixel_y = 3
-	},
-/obj/item/pen,
 /turf/simulated/floor/carpet,
 /area/security/strelka/warden)
 "kz" = (
@@ -3565,17 +3591,6 @@
 	},
 /turf/simulated/floor/carpet,
 /area/security/strelka/warden)
-"kM" = (
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
-	},
-/obj/effect/floor_decal/spline/fancy/wood,
-/obj/effect/floor_decal/grass_edge{
-	dir = 8
-	},
-/obj/machinery/atmospherics/component/unary/vent_pump/on,
-/turf/simulated/floor/tiled/techfloor/monogrid,
-/area/hallway/strelka/deck2)
 "kN" = (
 /obj/structure/table/marble,
 /obj/structure/statue/marble/corgi{
@@ -3661,8 +3676,8 @@
 	desc = "This Securitron unit, called Commander Spout, arrested 23 clowns, Killed 242 Xenomorph, and might have boarded and destroyed 4 pirate cruisers.";
 	layer = 3.5
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/hallway/strelka/deck2)
@@ -4829,6 +4844,12 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
+/obj/machinery/button/remote/blast_door{
+	id = "warden";
+	name = "Shutter Warden";
+	pixel_x = 15;
+	req_access = list(3)
+	},
 /turf/simulated/floor/carpet,
 /area/security/strelka/warden)
 "ok" = (
@@ -5066,7 +5087,10 @@
 /area/hallway/strelka/deck2)
 "oE" = (
 /obj/structure/stairs/spawner/south,
-/turf/simulated/floor/reinforced,
+/obj/structure/wheelchairassist{
+	dir = 1
+	},
+/turf/simulated/floor/trap/wheelchair,
 /area/strelka/explo/emt)
 "oF" = (
 /turf/simulated/wall/r_wall/prepainted,
@@ -5366,6 +5390,9 @@
 /obj/structure/cable/blue{
 	icon_state = "1-4"
 	},
+/obj/structure/wheelchairassist{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/explo/emt)
 "pp" = (
@@ -5618,11 +5645,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/eva)
 "qd" = (
-/obj/structure/cable/blue{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
@@ -5676,6 +5698,11 @@
 	},
 /obj/machinery/light/small/old{
 	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/blue{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/security/strelka/reception)
@@ -5878,6 +5905,12 @@
 "qK" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/spline/fancy/wood,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/security/strelka/main)
 "qL" = (
@@ -5903,6 +5936,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/strelka)
+"qP" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless,
+/area/space)
 "qQ" = (
 /obj/machinery/atmospheric_field_generator/perma,
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -6146,15 +6183,8 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 1
-	},
-/obj/effect/floor_decal/grass_edge{
-	dir = 4;
-	layer = 2.5;
-	name = "water grass edge"
-	},
-/turf/simulated/floor/tiled/techfloor/monogrid,
+/obj/structure/ladder/teleporter/updown,
+/turf/simulated/floor/tiled/monodark,
 /area/hallway/strelka/deck2)
 "rx" = (
 /obj/structure/cable/orange{
@@ -6259,22 +6289,6 @@
 /obj/machinery/telecomms/server/presets/common,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/strelka/coms)
-"rQ" = (
-/obj/structure/cable/blue{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/effect/floor_decal/grass_edge{
-	dir = 1;
-	layer = 2.5
-	},
-/turf/simulated/floor/tiled/asteroid_steel,
-/area/hallway/strelka/deck2)
 "rR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/red{
 	dir = 5
@@ -6598,7 +6612,10 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/turf/simulated/floor/reinforced,
+/obj/structure/wheelchairassist{
+	dir = 8
+	},
+/turf/simulated/floor/trap/wheelchair,
 /area/hallway/strelka/deck2)
 "sQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -6703,6 +6720,11 @@
 	},
 /obj/machinery/light/small/old{
 	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/blue{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/security/strelka/reception)
@@ -8030,6 +8052,7 @@
 /obj/structure/cable/white{
 	icon_state = "2-4"
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless,
 /area/space)
 "wV" = (
@@ -8096,10 +8119,8 @@
 /obj/machinery/light/small/old{
 	dir = 8
 	},
-/obj/structure/sink{
-	dir = 8;
-	pixel_x = -12;
-	pixel_y = 2
+/obj/structure/toilet{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/bridge/strelka/hos)
@@ -8270,6 +8291,8 @@
 /obj/machinery/light/small/old{
 	dir = 8
 	},
+/obj/structure/closet/secure_closet/hos2,
+/obj/item/megaphone,
 /turf/simulated/floor/wood,
 /area/bridge/strelka/hos)
 "xG" = (
@@ -8556,6 +8579,7 @@
 /obj/machinery/camera/network/outside{
 	dir = 8
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless,
 /area/space)
 "yt" = (
@@ -8566,7 +8590,8 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/security{
-	name = "Cockpit"
+	name = "Cockpit";
+	req_one_access = null
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -9190,6 +9215,11 @@
 /obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/hallway/strelka/deck2)
+"Ae" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/structure/wheelchairassist,
+/turf/simulated/floor/trap/wheelchair,
+/area/strelka/explo/emt)
 "Af" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/engineering/strelka/storage)
@@ -9645,6 +9675,14 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/hallway/strelka/deck2)
+"Bh" = (
+/obj/machinery/power/solar,
+/obj/structure/cable/white{
+	icon_state = "0-2"
+	},
+/obj/machinery/camera/network/security,
+/turf/simulated/floor/tiled/monodark,
+/area/space)
 "Bi" = (
 /obj/landmark/spawnpoint/job/lawyer,
 /obj/structure/bed/chair/office/dark{
@@ -9749,6 +9787,16 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/anomaly)
+"Bz" = (
+/obj/structure/cable/white{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/white{
+	icon_state = "2-4"
+	},
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless,
+/area/space)
 "BA" = (
 /obj/item/stamp/internalaffairs,
 /obj/item/stamp/denied{
@@ -9837,12 +9885,6 @@
 	dir = 4
 	},
 /obj/structure/table/carbon/reinforced,
-/obj/machinery/button/remote/blast_door{
-	id = "warden";
-	name = "Shutter Warden";
-	pixel_x = 15;
-	req_access = list(3)
-	},
 /turf/simulated/floor/carpet,
 /area/security/strelka/warden)
 "BM" = (
@@ -9997,7 +10039,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck2)
 "Co" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -10601,6 +10643,14 @@
 /obj/machinery/air_alarm/north_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/strelka/shield)
+"Ea" = (
+/obj/machinery/power/solar,
+/obj/structure/cable/white,
+/obj/machinery/camera/network/security{
+	dir = 1
+	},
+/turf/simulated/floor/airless,
+/area/space)
 "Eb" = (
 /obj/effect/floor_decal/borderfloorblack/full,
 /obj/machinery/light/small/old,
@@ -10615,15 +10665,10 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
-/obj/structure/cable/blue{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/poster/preset/polaris/pol_3{
 	pixel_y = 32
 	},
-/turf/simulated/floor/wood/broken,
+/turf/simulated/floor/wood/indoors,
 /area/security/strelka/reception)
 "Eg" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
@@ -10733,9 +10778,6 @@
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/effect/floor_decal/corner/red/border{
 	dir = 1
-	},
-/obj/structure/cable/blue{
-	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/security/strelka/reception)
@@ -10858,6 +10900,10 @@
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_x = 30
 	},
+/obj/machinery/light_switch{
+	dir = 1;
+	pixel_y = 20
+	},
 /turf/simulated/floor/wood,
 /area/bridge/strelka/hos)
 "EZ" = (
@@ -10957,13 +11003,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/strelka/engine)
-"Fj" = (
-/obj/structure/closet/walllocker_double/south{
-	starts_with = list(/obj/item/cartridge/hos,/obj/item/storage/belt/security,/obj/item/radio/headset/heads/hos,/obj/item/radio/headset/heads/hos/alt,/obj/item/clothing/accessory/armor/helmetcamera/security,/obj/item/clothing/accessory/armor/helmetcamera/security/body,/obj/item/shield/transforming/telescopic,/obj/item/storage/box/holobadge/hos,/obj/item/clothing/accessory/badge/holo/hos,/obj/item/reagent_containers/spray/pepper,/obj/item/tool/crowbar/red,/obj/item/flash,/obj/item/melee/baton/loaded,/obj/item/gun/projectile/energy/nt_isd/multiphase,/obj/item/melee/telebaton,/obj/item/storage/box/survival_knife,/obj/item/gps/security/hos,/obj/item/flashlight/maglight,/obj/item/storage/box/flashbangs,/obj/item/barrier_tape_roll/police,/obj/item/megaphone,/obj/item/holowarrant)
-	},
-/obj/item/megaphone,
-/turf/simulated/floor/wood,
-/area/bridge/strelka/hos)
 "Fl" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-8"
@@ -11252,6 +11291,10 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled/old_cargo,
 /area/shuttle/excursion/strelka)
+"Ga" = (
+/obj/machinery/camera/network/security,
+/turf/simulated/floor/airless,
+/area/space)
 "Gb" = (
 /obj/structure/closet/secure_closet/engineering_chief,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -11818,6 +11861,9 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/strelka/nacelle2)
+"HZ" = (
+/turf/simulated/floor/wood,
+/area/bridge/strelka/hos)
 "Ib" = (
 /obj/machinery/camera/network/security{
 	dir = 4
@@ -11931,20 +11977,11 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/strelka/coms)
 "Iw" = (
-/obj/structure/cable/blue{
-	icon_state = "1-2"
-	},
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
-	},
 /obj/structure/cable/blue{
-	icon_state = "2-4"
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/wood/indoors,
 /area/security/strelka/reception)
@@ -12014,6 +12051,9 @@
 "IH" = (
 /obj/machinery/power/tracker,
 /obj/structure/cable/white,
+/obj/machinery/camera/network/security{
+	dir = 1
+	},
 /turf/simulated/floor/airless,
 /area/space)
 "II" = (
@@ -12227,10 +12267,6 @@
 /area/security/strelka/interogation)
 "Jn" = (
 /obj/landmark/spawnpoint/job/head_of_security,
-/obj/machinery/light_switch{
-	dir = 1;
-	pixel_y = 20
-	},
 /turf/simulated/floor/wood,
 /area/bridge/strelka/hos)
 "Jo" = (
@@ -12365,7 +12401,9 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/engineering/strelka/coms)
 "JP" = (
-/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
+	id = "vicDetOffice"
+	},
 /turf/simulated/floor/wood/indoors,
 /area/security/strelka/detective)
 "JQ" = (
@@ -12929,11 +12967,17 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/obj/structure/cable/blue{
+	icon_state = "2-4"
+	},
+/obj/structure/cable/blue{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/security/strelka/reception)
@@ -13213,6 +13257,10 @@
 /obj/item/stock_parts/manipulator,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/strelka/board)
+"Mt" = (
+/obj/structure/simple_door/wood,
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/bridge/strelka/hos)
 "Mu" = (
 /obj/effect/floor_decal/carpet{
 	dir = 1
@@ -13441,16 +13489,20 @@
 /turf/simulated/floor/reinforced,
 /area/engineering/strelka/nacelle2)
 "Ng" = (
-/obj/structure/cable/blue{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/red/border,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/obj/structure/cable/blue{
+	icon_state = "2-8"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/security/strelka/reception)
 "Nh" = (
@@ -14861,6 +14913,7 @@
 	req_access = null
 	},
 /obj/machinery/door/window/southright,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/security/strelka/reception)
 "Ru" = (
@@ -15093,6 +15146,15 @@
 /obj/structure/closet/walllocker/emergsuit_wall{
 	pixel_x = -26
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/obj/structure/cable/blue{
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/security/strelka/reception)
 "RZ" = (
@@ -15102,7 +15164,9 @@
 /turf/simulated/floor/reinforced,
 /area/engineering/strelka/nacelle)
 "Sa" = (
-/obj/structure/toilet,
+/obj/structure/sink{
+	pixel_y = 23
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/bridge/strelka/hos)
 "Sb" = (
@@ -15142,6 +15206,13 @@
 "Sl" = (
 /turf/simulated/wall/r_wall/prepainted/security,
 /area/bridge/strelka/hos)
+"Sn" = (
+/obj/structure/stairs/spawner/west,
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/hallway/strelka/deck2)
 "So" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/light/spot/no_nightshift{
@@ -15218,6 +15289,11 @@
 	},
 /obj/effect/floor_decal/corner/red/border{
 	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/blue{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/security/strelka/reception)
@@ -15468,12 +15544,15 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/security/strelka/main)
-"Tn" = (
-/obj/structure/cable/blue{
-	icon_state = "1-2"
+"Tm" = (
+/obj/machinery/power/solar,
+/obj/structure/cable/white{
+	icon_state = "0-4"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/camera/network/security,
+/turf/simulated/floor/airless,
+/area/space)
+"Tn" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
@@ -15880,11 +15959,10 @@
 /area/shuttle/emt/strelka/main)
 "UH" = (
 /obj/machinery/light/small/old,
-/obj/structure/closet/walllocker_double/east{
-	name = "Warden Wall Cabinet";
-	starts_with = list(/obj/item/storage/box/survival_knife,/obj/item/clothing/suit/storage/vest/warden,/obj/item/clothing/under/rank/warden,/obj/item/clothing/under/rank/warden/corp,/obj/item/clothing/under/rank/warden/skirt_pleated,/obj/item/clothing/suit/storage/vest/wardencoat,/obj/item/clothing/suit/storage/vest/wardencoat/alt,/obj/item/clothing/head/helmet/dermal,/obj/item/clothing/head/helmet/warden,/obj/item/clothing/head/helmet/warden/hat,/obj/item/cartridge/security,/obj/item/radio/headset/headset_sec,/obj/item/radio/headset/headset_sec/alt,/obj/item/clothing/accessory/armor/helmetcamera/security,/obj/item/clothing/accessory/armor/helmetcamera/security/body,/obj/item/clothing/glasses/sunglasses/sechud,/obj/item/barrier_tape_roll/police,/obj/item/clothing/accessory/badge/holo/warden,/obj/item/storage/box/flashbangs,/obj/item/storage/box/firingpins,/obj/item/storage/belt/security,/obj/item/reagent_containers/spray/pepper,/obj/item/melee/baton/loaded,/obj/item/cell/device/weapon,/obj/item/storage/box/holobadge,/obj/item/clothing/head/beret/sec/corporate/warden,/obj/item/clothing/suit/storage/hooded/wintercoat/security,/obj/item/clothing/shoes/boots/winter/security,/obj/item/gps/security,/obj/item/flashlight/maglight,/obj/item/megaphone,/obj/item/clothing/mask/gas/half,/obj/item/holowarrant)
-	},
 /obj/item/retail_scanner/security,
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat/warden,
+/obj/item/gun/projectile/energy/gun,
+/obj/structure/closet/secure_closet/warden,
 /turf/simulated/floor/wood/indoors,
 /area/security/strelka/warden)
 "UK" = (
@@ -16058,7 +16136,7 @@
 	dir = 9
 	},
 /obj/structure/cable/blue{
-	icon_state = "4-8"
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/security/strelka/reception)
@@ -17002,17 +17080,6 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/excursion/strelka)
-"Xv" = (
-/obj/structure/flora/pottedplant/minitree{
-	pixel_y = 13
-	},
-/obj/structure/table/bench/marble,
-/obj/structure/flora/grass/event/bright_flowers1,
-/obj/structure/flora/grass/event/purple_flowers1,
-/obj/structure/flora/grass/event/yellow_flowers1,
-/obj/structure/marker_beacon/yellow,
-/turf/simulated/floor/fey/forest_grass,
-/area/hallway/strelka/deck2)
 "Xw" = (
 /obj/structure/table/rack/shelf,
 /obj/item/tank/oxygen,
@@ -29083,7 +29150,7 @@ tK
 tK
 tK
 ff
-FB
+Ga
 Gx
 KT
 KT
@@ -29813,7 +29880,7 @@ KT
 KT
 KT
 KT
-FB
+qP
 hf
 lg
 jw
@@ -30005,7 +30072,7 @@ KT
 KT
 KT
 EP
-Yg
+Bz
 ys
 wU
 hW
@@ -32132,7 +32199,7 @@ KT
 KT
 KT
 Sx
-VE
+hc
 Wf
 Wf
 lc
@@ -32197,7 +32264,7 @@ bG
 NF
 CK
 CK
-SB
+Bh
 fN
 KT
 KT
@@ -34091,7 +34158,7 @@ oN
 PO
 SY
 po
-KS
+Ae
 oE
 Af
 gs
@@ -39342,9 +39409,9 @@ oj
 pj
 zW
 Ba
-sF
-Xv
-rQ
+cT
+VQ
+vU
 jX
 JP
 Be
@@ -39537,7 +39604,7 @@ ZP
 Lq
 MS
 cT
-kM
+NP
 gz
 Lo
 fb
@@ -39730,8 +39797,8 @@ ky
 PY
 eO
 bK
-cT
-VQ
+qw
+TA
 zr
 Ig
 OV
@@ -40105,7 +40172,7 @@ KT
 KT
 RU
 nJ
-lg
+Ea
 pa
 YB
 mL
@@ -40121,7 +40188,7 @@ aw
 fH
 OK
 il
-aw
+Sn
 WF
 xs
 jk
@@ -40133,7 +40200,7 @@ Vx
 pl
 UY
 UY
-xT
+Tm
 hf
 hW
 KT
@@ -42248,9 +42315,9 @@ Sx
 lg
 QN
 xi
-pR
+Sl
 xF
-Er
+HZ
 tI
 aL
 OZ
@@ -42442,9 +42509,9 @@ Sx
 lg
 QN
 Sa
-Sl
+Mt
 Jn
-Fj
+Er
 tI
 qf
 OZ
@@ -44969,7 +45036,7 @@ KT
 KT
 RU
 kB
-PS
+gD
 kB
 hW
 KT
