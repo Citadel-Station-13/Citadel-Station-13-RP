@@ -1,0 +1,142 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/template_noop,
+/area/template_noop)
+"b" = (
+/turf/simulated/floor,
+/area/template_noop)
+"d" = (
+/turf/simulated/floor/wood,
+/area/template_noop)
+"j" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/template_noop)
+"D" = (
+/turf/simulated/wall/r_wall/prepainted,
+/area/template_noop)
+"M" = (
+/obj/structure/bed/chair/shuttle,
+/turf/simulated/floor/wood,
+/area/template_noop)
+
+(1,1,1) = {"
+a
+a
+a
+D
+D
+D
+D
+a
+a
+a
+a
+D
+b
+"}
+(2,1,1) = {"
+a
+a
+a
+b
+b
+b
+j
+j
+j
+j
+j
+b
+a
+"}
+(3,1,1) = {"
+a
+a
+a
+j
+j
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(4,1,1) = {"
+a
+D
+D
+j
+a
+a
+a
+j
+b
+b
+j
+a
+a
+"}
+(5,1,1) = {"
+D
+D
+D
+D
+j
+j
+j
+j
+b
+b
+b
+j
+a
+"}
+(6,1,1) = {"
+D
+D
+D
+D
+a
+a
+a
+M
+d
+d
+b
+b
+j
+"}
+(7,1,1) = {"
+a
+D
+D
+D
+a
+a
+D
+M
+d
+M
+d
+a
+a
+"}
+(8,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+D
+D
+D
+D
+a
+a
+"}
