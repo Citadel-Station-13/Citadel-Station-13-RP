@@ -330,11 +330,13 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
                       <>
                         <Button.Confirm icon="minus" content="Clear" onClick={() => act('clear')}
                           color="transparent" />
-                        <Button content={data.queueActive ? "Stop" : "Start"}
+                        <Button
                           icon={data.queueActive ? "stop" : "play"}
                           color="transparent"
                           selected={data.queueActive}
-                          onClick={() => act(data.queueActive ? "stop" : "start")} />
+                          onClick={() => act(data.queueActive ? "stop" : "start")}>
+                          {data.queueActive ? "Stop" : "Start"}
+                        </Button>
                       </>
                     }>
                     {

@@ -54,7 +54,7 @@ export const Radio = (props) => {
                 maxValue={maxFrequency / 10}
                 value={rawfreq / 10}
                 format={value => toFixed(value, 1)}
-                onDrag={(value) => act('setFrequency', {
+                onChange={(value) => act('setFrequency', {
                   freq: round(value * 10, 1),
                 })} />
               {tunedChannel && (

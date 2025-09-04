@@ -17,8 +17,6 @@
 	set instant = TRUE
 	set hidden = TRUE
 
-	to_chat(world, "keyDown [_key]")
-
 	if(!preferences.initialized)
 		return
 
@@ -99,8 +97,6 @@
 /client/verb/keyUp(_key as text)
 	set instant = TRUE
 	set hidden = TRUE
-
-	to_chat(world, "keyUp [_key]")
 
 	client_keysend_amount += 1
 

@@ -63,7 +63,7 @@ export const XenoarchHandheldPowerUtilizer = (props) => {
                   value={duration}
                   stepPixelSize={4}
                   maxValue={30}
-                  onDrag={(val) => act("changeduration", { duration: val * 10 })} />
+                  onChange={(val) => act("changeduration", { duration: val * 10 })} />
               </LabeledList.Item>
               <LabeledList.Item label="Activation Interval">
                 <NumberInput
@@ -74,7 +74,7 @@ export const XenoarchHandheldPowerUtilizer = (props) => {
                   value={interval}
                   stepPixelSize={10}
                   maxValue={10}
-                  onDrag={(val) => act("changeinterval", { interval: val * 10 })} />
+                  onChange={(val) => act("changeinterval", { interval: val * 10 })} />
               </LabeledList.Item>
             </LabeledList>
           ) || (

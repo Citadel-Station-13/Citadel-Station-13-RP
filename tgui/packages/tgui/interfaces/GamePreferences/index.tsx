@@ -69,7 +69,7 @@ const GamePreferencesTab = (props: {
   readonly selected: BooleanLike;
 }) => {
   return (
-    <Button color="transparent"
+    <Button color={props.selected ? null : "transparent"}
       fluid selected={props.selected} onClick={props.onClick} textAlign="center">{props.name}
     </Button>
   );
