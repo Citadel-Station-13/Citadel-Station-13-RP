@@ -19,7 +19,7 @@
 	"git.branchProtection": ["master"],
 	"gitlens.advanced.blame.customArguments": ["-w"],
 	"tgstationTestExplorer.project.resultsType": "json",
-	"[javascript][typescript][typescriptreact][javascriptreact][html][scss][css][json][jsonc][markdown][yaml]": {
+	"[html][scss][css][json][jsonc][markdown][yaml]": {
 		"editor.rulers": [80],
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.formatOnSave": true
@@ -27,11 +27,7 @@
 	"workbench.editorAssociations": {
 		"*.dmi": "dmiEditor.dmiEditor"
 	},
-	"Lua.diagnostics.enable": false,
-	"[typescriptreact]": {
-		"editor.defaultFormatter": "vscode.typescript-language-features"
-	},
-	"[typescript]": {
+	"[javascript][typescript][typescriptreact][javascriptreact]": {
 		"editor.defaultFormatter": "vscode.typescript-language-features"
 	}
 }
