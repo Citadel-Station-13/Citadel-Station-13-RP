@@ -8,6 +8,7 @@
 
 .theme-light:root {
   --chat-text-color: var(--color-black);
+  --chat-blockquote-bg-color: hsla(203, 29%, 31%, 0.065);
 
   // Base
   --color-base: hsl(0, 0%, 93%);

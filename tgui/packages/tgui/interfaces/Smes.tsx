@@ -102,7 +102,7 @@ export const Smes = (props) => {
                     format={(value) => formatPower(value * POWER_MUL, 1)}
                     onChange={(e, value) =>
                       act('input', {
-                        target: value * POWER_MUL,
+                        target: value,
                       })
                     }
                   />
@@ -173,7 +173,7 @@ export const Smes = (props) => {
                     disabled={outputLevel === 0}
                     onClick={() =>
                       act('output', {
-                        adjust: -10000,
+                        adjust: -10,
                       })
                     }
                   />
@@ -188,7 +188,7 @@ export const Smes = (props) => {
                     format={(value) => formatPower(value * POWER_MUL, 1)}
                     onChange={(e, value) =>
                       act('output', {
-                        target: value * POWER_MUL,
+                        target: value,
                       })
                     }
                   />
@@ -199,7 +199,7 @@ export const Smes = (props) => {
                     disabled={outputLevel === outputLevelMax}
                     onClick={() =>
                       act('output', {
-                        adjust: 10000,
+                        adjust: 10,
                       })
                     }
                   />
