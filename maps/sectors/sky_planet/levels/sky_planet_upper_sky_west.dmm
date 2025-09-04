@@ -1,4 +1,10 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ab" = (
+/obj/machinery/telecomms/hub{
+	idle_power_usage = 1
+	},
+/turf/simulated/floor/airless,
+/area/sector/sky_planet/occulum)
 "ac" = (
 /obj/structure/cable/white{
 	icon_state = "0-4"
@@ -2758,6 +2764,14 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/office)
+"mB" = (
+/obj/machinery/light,
+/obj/machinery/telecomms/broadcaster{
+	id = "OCULUM";
+	idle_power_usage = 1
+	},
+/turf/simulated/floor/airless,
+/area/sector/sky_planet/occulum)
 "mC" = (
 /obj/structure/table/wooden_reinforced,
 /obj/structure/flora/pottedplant/flower,
@@ -3057,6 +3071,14 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/sector/sky_planet/station_city/school)
+"nQ" = (
+/obj/machinery/light,
+/obj/machinery/telecomms/receiver{
+	id = "OCULUM";
+	idle_power_usage = 1
+	},
+/turf/simulated/floor/airless,
+/area/sector/sky_planet/occulum)
 "nR" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4;
@@ -3112,9 +3134,11 @@
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/sector/sky_planet/outpost/office)
 "of" = (
-/obj/machinery/power/rtg/advanced,
 /obj/structure/cable/orange{
 	icon_state = "0-8"
+	},
+/obj/machinery/power/rtg/advanced{
+	power_gen = 100
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/occulum)
@@ -4087,9 +4111,12 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/office)
 "sv" = (
-/obj/item/pda/multicaster,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
+	},
+/obj/machinery/telecomms/relay/preset{
+	id = "OCULUM";
+	idle_power_usage = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/crescend)
@@ -6171,10 +6198,6 @@
 "BQ" = (
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/shuttle/paripari)
-"BR" = (
-/obj/machinery/light,
-/turf/simulated/floor/airless,
-/area/sector/sky_planet/occulum)
 "BS" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/effect/floor_decal/corner/red/border{
@@ -6352,9 +6375,11 @@
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/occulum)
 "CF" = (
-/obj/machinery/power/rtg/advanced,
 /obj/structure/cable/orange{
 	icon_state = "0-4"
+	},
+/obj/machinery/power/rtg/advanced{
+	power_gen = 100
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/occulum)
@@ -6672,6 +6697,10 @@
 "Eb" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
+	},
+/obj/machinery/telecomms/receiver{
+	id = "OCULUM";
+	idle_power_usage = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/crescend)
@@ -7885,7 +7914,9 @@
 /turf/simulated/floor/fey/forest_grass,
 /area/sector/sky_planet/station_city/appartement)
 "Je" = (
-/obj/machinery/power/rtg/advanced,
+/obj/machinery/power/rtg/advanced{
+	power_gen = 100
+	},
 /obj/structure/cable/orange{
 	icon_state = "0-8"
 	},
@@ -8245,11 +8276,13 @@
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
 "KG" = (
-/obj/machinery/power/rtg/advanced,
 /obj/structure/cable/orange{
 	icon_state = "0-4"
 	},
 /obj/machinery/light,
+/obj/machinery/power/rtg/advanced{
+	power_gen = 100
+	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/occulum)
 "KI" = (
@@ -8353,7 +8386,9 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/police)
 "Lo" = (
-/obj/machinery/telecomms/relay,
+/obj/machinery/telecomms/relay{
+	id = "OCULUM"
+	},
 /turf/simulated/floor/airless,
 /area/sector/sky_planet/occulum)
 "Lp" = (
@@ -10003,6 +10038,10 @@
 /area/sector/sky_planet/station_city/shop)
 "So" = (
 /obj/machinery/light/small/old,
+/obj/machinery/telecomms/broadcaster{
+	id = "OCULUM";
+	idle_power_usage = 1
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/crescend)
 "Sq" = (
@@ -10934,6 +10973,13 @@
 /obj/structure/bed/double,
 /turf/simulated/floor/carpet/patterened,
 /area/sector/sky_planet/station_city/appartement)
+"Wj" = (
+/obj/machinery/telecomms/relay/preset{
+	id = "OCULUM";
+	idle_power_usage = 1
+	},
+/turf/simulated/floor/airless,
+/area/sector/sky_planet/occulum)
 "Wk" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 1
@@ -10947,10 +10993,6 @@
 /obj/machinery/door/blast/regular,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
-"Wn" = (
-/obj/item/spell/construct/mend_occult,
-/turf/simulated/floor/airless,
-/area/sector/sky_planet/occulum)
 "Wo" = (
 /obj/spawner/window/low_wall/firelocks,
 /turf/simulated/floor/tiled/monotechmaint,
@@ -11670,6 +11712,13 @@
 "Zg" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/sector/sky_planet/outpost/medical)
+"Zi" = (
+/obj/machinery/telecomms/bus{
+	id = "OCULUM";
+	idle_power_usage = 1
+	},
+/turf/simulated/floor/airless,
+/area/sector/sky_planet/occulum)
 "Zm" = (
 /obj/structure/bed/chair/office/dark,
 /turf/simulated/floor/carpet/turcarpet,
@@ -17865,7 +17914,7 @@ ow
 Lo
 iv
 ng
-uk
+ng
 uk
 uk
 uk
@@ -18057,9 +18106,9 @@ ng
 ng
 zR
 zR
-BR
+zR
+mB
 ng
-uk
 uk
 uk
 uk
@@ -18250,10 +18299,10 @@ yT
 oc
 kG
 zR
-zR
-zR
+Zi
+ab
+Wj
 ng
-uk
 uk
 uk
 uk
@@ -18444,10 +18493,10 @@ ng
 cz
 ng
 zR
-Wn
-BR
+zR
+zR
+nQ
 ng
-uk
 uk
 uk
 uk
@@ -18641,7 +18690,7 @@ sO
 hO
 Ju
 ng
-uk
+ng
 uk
 uk
 uk
