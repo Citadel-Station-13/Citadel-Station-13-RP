@@ -16,7 +16,7 @@ import { Window } from '../layouts';
 const POWER_MUL = 1e3;
 
 export const Smes = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<any>();
   const {
     capacityPercent,
     capacity,
@@ -100,7 +100,7 @@ export const Smes = (props) => {
                     step={5}
                     stepPixelSize={4}
                     format={(value) => formatPower(value * POWER_MUL, 1)}
-                    onDrag={(value) =>
+                    onChange={(e, value) =>
                       act('input', {
                         target: value * POWER_MUL,
                       })
@@ -186,7 +186,7 @@ export const Smes = (props) => {
                     step={5}
                     stepPixelSize={4}
                     format={(value) => formatPower(value * POWER_MUL, 1)}
-                    onDrag={(value) =>
+                    onChange={(e, value) =>
                       act('output', {
                         target: value * POWER_MUL,
                       })

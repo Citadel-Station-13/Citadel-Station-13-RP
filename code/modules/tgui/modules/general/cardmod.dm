@@ -433,8 +433,7 @@
 /datum/tgui_module/card_mod/admin
 
 /datum/tgui_module/card_mod/admin/ui_state()
-	return GLOB.admin_states
-
+	return ADMIN_STATE(NONE)
 
 /datum/tgui_module/card_mod/admin/query_access_ids(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, list/direct)
 	return SSjob.access_ids()

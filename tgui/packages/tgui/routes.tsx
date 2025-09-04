@@ -66,9 +66,9 @@ const interfacePaths = (name: string) => {
   ];
   for (let i = 0; i < interfaceSubdirectories.length; i++) {
     let dir = interfaceSubdirectories[i];
-    built.push(`${dir}/${name}.js`);
+    built.push(`${dir}/${name}.jsx`);
     built.push(`${dir}/${name}.tsx`);
-    built.push(`${dir}/${name}/index.js`);
+    built.push(`${dir}/${name}/index.jsx`);
     built.push(`${dir}/${name}/index.tsx`);
   }
   return built;
