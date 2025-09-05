@@ -3381,10 +3381,7 @@
 /area/sector/nebula_tradeport/engineering)
 "ajl" = (
 /obj/structure/catwalk,
-/obj/machinery/door/blast/regular{
-	id = "salv3"
-	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/salvager)
 "ajm" = (
 /obj/structure/bed/chair/comfy{
@@ -11520,8 +11517,7 @@
 "aFh" = (
 /obj/structure/lattice,
 /obj/structure/catwalk,
-/obj/structure/fans/tiny,
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/salvager)
 "aFi" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
@@ -18203,7 +18199,14 @@
 "aYr" = (
 /obj/structure/lattice,
 /obj/structure/catwalk,
-/turf/simulated/floor/plating/outdoors,
+/obj/machinery/door/blast/regular{
+	id = "salv3"
+	},
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 4
+	},
+/obj/structure/fans/tiny,
+/turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/salvager)
 "aYs" = (
 /obj/structure/cable/yellow,
@@ -18878,15 +18881,6 @@
 "bjA" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 6
-	},
-/obj/machinery/recharger/wallcharger{
-	pixel_y = -24
-	},
-/obj/machinery/recharger/wallcharger{
-	pixel_y = -32
-	},
-/obj/machinery/recharger/wallcharger{
-	pixel_y = -40
 	},
 /turf/simulated/floor/carpet/patterened/blue,
 /area/shuttle/salvager)
@@ -20660,7 +20654,6 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
 	},
-/obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/salvager)
 "eRa" = (
@@ -23193,6 +23186,7 @@
 /area/shuttle/arrowhead)
 "kMy" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
+/obj/machinery/mech_recharger,
 /turf/simulated/floor/plating/outdoors,
 /area/shuttle/salvager)
 "kPw" = (
@@ -24208,6 +24202,9 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/tradeport/commons)
 "nfm" = (
@@ -24336,6 +24333,12 @@
 	name = "Clerk Shutters"
 	},
 /turf/simulated/floor/tiled/steel,
+/area/tradeport/commons)
+"ntC" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/old_tile/gray,
 /area/tradeport/commons)
 "ntY" = (
 /obj/structure/lattice,
@@ -24777,13 +24780,10 @@
 /area/shuttle/scoophead/main)
 "otq" = (
 /obj/structure/catwalk,
-/obj/machinery/door/blast/regular{
-	id = "salv3"
-	},
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/salvager)
 "owp" = (
 /obj/machinery/sleeper/survival_pod,
@@ -25270,6 +25270,9 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/tradeport/commons)
 "pYe" = (
@@ -25451,8 +25454,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/obj/structure/fans/tiny,
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/salvager)
 "qAM" = (
 /obj/structure/bed/chair/comfy/black{
@@ -26236,7 +26238,6 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
 	},
-/obj/structure/fans/tiny,
 /obj/machinery/button/remote/blast_door{
 	pixel_y = 24;
 	id = "salv3"
@@ -26418,7 +26419,14 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/plating/outdoors,
+/obj/machinery/door/blast/regular{
+	id = "salv3"
+	},
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 4
+	},
+/obj/structure/fans/tiny,
+/turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/salvager)
 "sRG" = (
 /obj/effect/floor_decal/rust,
@@ -26974,9 +26982,6 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/structure/railing{
-	dir = 4
-	},
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
 	},
@@ -26987,7 +26992,9 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/structure/table/reinforced,
+/obj/structure/bed/chair/bay/chair/padded/yellow{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/salvager)
 "umb" = (
@@ -27415,6 +27422,12 @@
 	},
 /turf/simulated/floor/bmarble,
 /area/tradeport/commons)
+"vov" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/tradeport/commons)
 "vpu" = (
 /obj/machinery/atmospherics/component/unary/heater,
 /turf/simulated/floor/plating/outdoors,
@@ -27503,6 +27516,7 @@
 /obj/machinery/atmospherics/component/binary/pump/high_power{
 	dir = 8
 	},
+/obj/machinery/mech_recharger,
 /turf/simulated/floor/plating/outdoors,
 /area/shuttle/salvager)
 "vyh" = (
@@ -27531,6 +27545,18 @@
 /obj/item/gun/projectile/energy/phasegun/rifle,
 /obj/item/gun/projectile/energy/phasegun/rifle,
 /obj/item/gun/projectile/energy/phasegun/rifle,
+/obj/machinery/recharger/wallcharger{
+	pixel_x = -21;
+	pixel_y = 5
+	},
+/obj/machinery/recharger/wallcharger{
+	pixel_x = -21;
+	pixel_y = -11
+	},
+/obj/machinery/recharger/wallcharger{
+	pixel_x = -21;
+	pixel_y = -3
+	},
 /turf/simulated/floor/carpet/patterened/blue,
 /area/shuttle/salvager)
 "vzd" = (
@@ -59957,7 +59983,7 @@ agq
 aCM
 anq
 pWI
-abG
+ntC
 anq
 akf
 akf
@@ -60151,7 +60177,7 @@ acd
 acd
 aCM
 nev
-aDW
+vov
 anq
 akf
 akf

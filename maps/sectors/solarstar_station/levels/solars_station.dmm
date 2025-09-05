@@ -103,7 +103,7 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "bT" = (
 /obj/structure/cable/blue{
@@ -150,7 +150,7 @@
 "dF" = (
 /obj/structure/frame2/solar_panel/anchored,
 /obj/structure/cable,
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "dG" = (
 /obj/machinery/light/small{
@@ -185,13 +185,13 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "ex" = (
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "eA" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -255,7 +255,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/sector/solar_station/deck1)
 "gi" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -283,7 +283,7 @@
 	icon_state = "1-2"
 	},
 /obj/map_helper/airlock/door/ext_door,
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/sector/solar_station/deck1)
 "hk" = (
 /obj/structure/cable{
@@ -292,7 +292,7 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "hD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -327,7 +327,7 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "iL" = (
 /obj/machinery/door/airlock/glass_external,
@@ -371,7 +371,7 @@
 	pixel_y = -22;
 	master_tag = "solar_docks_3"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/sector/solar_station/deck1)
 "jc" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -426,7 +426,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "jL" = (
 /obj/structure/salvageable/bliss{
@@ -515,7 +515,7 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "lT" = (
 /obj/structure/cable{
@@ -524,7 +524,7 @@
 /obj/structure/cable{
 	icon_state = "6-8"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "mE" = (
 /turf/simulated/floor/plating/eris/under,
@@ -559,7 +559,7 @@
 	name = "Hadiis Folley Drone worker";
 	desc = "A small, normal-looking drone. Those models manage automated stations."
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "oe" = (
 /obj/structure/bed/chair/modern_chair{
@@ -580,7 +580,7 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "ok" = (
 /obj/structure/cable/blue{
@@ -634,7 +634,7 @@
 /obj/structure/cable{
 	icon_state = "6-9"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "pa" = (
 /obj/structure/cable{
@@ -646,7 +646,7 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "pe" = (
 /obj/structure/table/rack/shelf/steel,
@@ -680,7 +680,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "qj" = (
 /obj/structure/cable/blue{
@@ -717,7 +717,7 @@
 /obj/structure/cable{
 	icon_state = "4-10"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "rI" = (
 /obj/structure/table/reinforced,
@@ -738,7 +738,7 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "rZ" = (
 /obj/structure/cable/blue{
@@ -775,7 +775,7 @@
 /area/sector/solar_station/deck1)
 "sw" = (
 /obj/spawner/window/borosillicate/full/firelocks,
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/sector/solar_station/deck1)
 "sD" = (
 /obj/machinery/atmospherics/pipe/tank/air{
@@ -799,7 +799,7 @@
 /obj/structure/cable{
 	icon_state = "6-8"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "tz" = (
 /obj/machinery/door/airlock/engineering{
@@ -854,7 +854,7 @@
 	pixel_x = 22;
 	master_tag = "solar_docks_4"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/sector/solar_station/deck1)
 "un" = (
 /obj/structure/cable/blue{
@@ -946,7 +946,7 @@
 /area/sector/solar_station/deck1)
 "wG" = (
 /obj/effect/shuttle_landmark/automatic,
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "wH" = (
 /obj/machinery/drone_fabricator,
@@ -960,7 +960,7 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "xb" = (
 /obj/structure/salvageable/console_os{
@@ -1076,14 +1076,14 @@
 /obj/structure/cable{
 	icon_state = "4-10"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "ze" = (
 /obj/structure/frame2/solar_panel/anchored,
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "zl" = (
 /obj/machinery/power/smes/buildable/offmap_spawn/empty,
@@ -1121,7 +1121,7 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "zZ" = (
 /obj/structure/cable{
@@ -1136,7 +1136,7 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "Af" = (
 /obj/structure/cable{
@@ -1148,7 +1148,7 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "Al" = (
 /obj/structure/cable{
@@ -1164,7 +1164,7 @@
 	name = "Hadiis Folley Drone worker";
 	desc = "A small, normal-looking drone. Those models manage automated stations."
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "Am" = (
 /obj/machinery/light/small,
@@ -1181,7 +1181,7 @@
 /area/sector/solar_station/deck1)
 "AW" = (
 /obj/structure/cable/blue,
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "Bt" = (
 /obj/structure/flora/pottedplant/hedge,
@@ -1212,7 +1212,7 @@
 /obj/structure/cable{
 	icon_state = "2-5"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "BC" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -1245,7 +1245,7 @@
 /obj/structure/cable{
 	icon_state = "6-8"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "Cb" = (
 /obj/effect/floor_decal/techfloor/corner{
@@ -1278,7 +1278,7 @@
 /obj/structure/cable{
 	icon_state = "4-10"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "CA" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
@@ -1327,7 +1327,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "Ee" = (
 /obj/structure/cable{
@@ -1345,7 +1345,7 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "EJ" = (
 /obj/structure/table/rack/shelf,
@@ -1394,7 +1394,7 @@
 /area/sector/solar_station/deck1)
 "FI" = (
 /obj/machinery/shield_gen/external/advanced,
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/sector/solar_station/deck1)
 "FS" = (
 /obj/structure/cable{
@@ -1410,7 +1410,7 @@
 	name = "Hadiis Folley Drone worker";
 	desc = "A small, normal-looking drone. Those models manage automated stations."
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "FX" = (
 /obj/spawner/window/borosillicate/full/firelocks,
@@ -1466,7 +1466,7 @@
 /obj/structure/cable{
 	icon_state = "6-8"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "Hu" = (
 /obj/structure/flora/pottedplant/hedge,
@@ -1548,7 +1548,7 @@
 /obj/structure/cable{
 	icon_state = "4-10"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "Kq" = (
 /obj/machinery/door/airlock/glass_external,
@@ -1557,7 +1557,7 @@
 	pixel_x = -22;
 	master_tag = "solar_docks_3"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/sector/solar_station/deck1)
 "Kv" = (
 /obj/structure/cable{
@@ -1566,13 +1566,13 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "Kx" = (
 /obj/structure/cable{
 	icon_state = "5-10"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "KA" = (
 /obj/structure/cable/blue{
@@ -1620,7 +1620,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "Lq" = (
 /obj/structure/lattice,
@@ -1636,7 +1636,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/sector/solar_station/deck1)
 "LJ" = (
 /obj/structure/cable/blue{
@@ -1724,7 +1724,7 @@
 /obj/structure/cable{
 	icon_state = "4-6"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "OP" = (
 /obj/structure/cable{
@@ -1733,7 +1733,7 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "Pa" = (
 /turf/simulated/open,
@@ -1765,13 +1765,13 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "PB" = (
 /obj/structure/cable{
 	icon_state = "2-9"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "PE" = (
 /obj/machinery/door/airlock/maintenance_hatch{
@@ -1798,7 +1798,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/sector/solar_station/deck1)
 "PL" = (
 /obj/structure/bed/chair/modern_chair{
@@ -1820,7 +1820,7 @@
 	name = "Hadiis Folley Drone worker";
 	desc = "A small, normal-looking drone. Those models manage automated stations."
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "Qe" = (
 /obj/structure/cable/blue{
@@ -1840,7 +1840,7 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "Qs" = (
 /obj/structure/cable{
@@ -1849,7 +1849,7 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "Qv" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -1883,7 +1883,7 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "Rt" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -1952,7 +1952,7 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "Th" = (
 /obj/machinery/light/small{
@@ -1983,14 +1983,14 @@
 	},
 /obj/map_helper/airlock/door/ext_door,
 /obj/structure/catwalk,
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/sector/solar_station/deck1)
 "UV" = (
 /obj/structure/frame2/solar_panel/anchored,
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "Vs" = (
 /obj/structure/cable/blue{
@@ -2008,7 +2008,7 @@
 /obj/structure/cable{
 	icon_state = "6-8"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "VO" = (
 /obj/structure/cable{
@@ -2017,7 +2017,7 @@
 /obj/structure/cable{
 	icon_state = "8-10"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "Wl" = (
 /obj/structure/catwalk,
@@ -2037,7 +2037,7 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "XA" = (
 /obj/structure/cable/blue{
@@ -2062,7 +2062,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "Yl" = (
 /obj/structure/cable{
@@ -2071,7 +2071,7 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "Ys" = (
 /obj/machinery/light/small{
@@ -2122,7 +2122,7 @@
 /turf/simulated/floor/event/derelict_wall_floor,
 /area/sector/solar_station/deck1)
 "Zs" = (
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 "Zu" = (
 /obj/structure/cable{
@@ -2134,7 +2134,7 @@
 /obj/structure/cable{
 	icon_state = "4-10"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/steel_dirty/dark,
 /area/space)
 
 (1,1,1) = {"
