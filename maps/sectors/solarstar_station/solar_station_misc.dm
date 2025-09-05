@@ -17,14 +17,8 @@
 	color = "#ffeb85"
 
 	initial_restricted_waypoints = list(
-		"GCSS Vevalia Salvage Shuttle" = list ("solar_salvage"),
+		"GCSS Vevalia Salvage Shuttle" = list ("solarsalvage"),
 	)
-
-/obj/effect/shuttle_landmark/solar_station_salvage
-	name = "Guardian Company Salvage Docking spot"
-	landmark_tag = "solar_salvage"
-	base_turf = /turf/space/basic
-	base_area = /area/space
 
 /obj/item/radio/phone/laptop
 	icon = 'icons/obj/computer.dmi'

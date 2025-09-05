@@ -64,17 +64,6 @@
 	},
 /turf/space/basic,
 /area/space)
-"aY" = (
-/obj/machinery/atmospherics/pipe/tank/air,
-/turf/simulated/floor/plating/outdoors,
-/area/shuttle/salvager)
-"ba" = (
-/obj/machinery/holopad/ship/starts_inactive,
-/obj/effect/floor_decal/spline/plain{
-	dir = 1
-	},
-/turf/simulated/floor/carpet/patterened/blue,
-/area/shuttle/salvager)
 "bd" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -93,21 +82,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating/indoors,
 /area/sector/solar_station/deck1)
-"bn" = (
-/obj/machinery/power/terminal{
-	dir = 8
-	},
-/obj/machinery/power/terminal{
-	dir = 4
-	},
-/obj/structure/cable/blue,
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 10
-	},
-/obj/effect/floor_decal/industrial/warning/dust,
-/obj/structure/fans/tiny,
-/turf/simulated/floor/tiled/techfloor/monogrid,
-/area/shuttle/salvager)
 "bq" = (
 /obj/structure/salvageable/console_os{
 	dir = 8;
@@ -131,14 +105,6 @@
 	},
 /turf/simulated/floor/plating/outdoors,
 /area/space)
-"bI" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 1
-	},
-/obj/structure/fans/tiny,
-/turf/simulated/floor/tiled/techfloor/monogrid,
-/area/shuttle/salvager)
 "bT" = (
 /obj/structure/cable/blue{
 	icon_state = "2-4"
@@ -235,28 +201,6 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/solar_station/deck1)
-"eI" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/floor/plating/outdoors,
-/area/shuttle/salvager)
-"eO" = (
-/obj/machinery/door/airlock/maintenance_hatch{
-	req_one_access = null
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salvager)
-"eP" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 10
-	},
-/obj/structure/shuttle/engine/heater{
-	dir = 8
-	},
-/turf/simulated/wall/r_wall/prepainted,
-/area/shuttle/salvager)
 "fd" = (
 /obj/effect/floor_decal/techfloor,
 /obj/effect/floor_decal/techfloor,
@@ -270,15 +214,6 @@
 	},
 /turf/simulated/floor/plating/indoors,
 /area/sector/solar_station/deck1)
-"fr" = (
-/obj/machinery/atmospherics/component/binary/pump/high_power{
-	dir = 8
-	},
-/turf/simulated/floor/plating/outdoors,
-/area/shuttle/salvager)
-"fv" = (
-/turf/simulated/floor/plating/outdoors,
-/area/shuttle/salvager)
 "fz" = (
 /obj/structure/table/reinforced,
 /turf/simulated/floor/plating/eris/under,
@@ -359,13 +294,6 @@
 	},
 /turf/simulated/floor/plating/outdoors,
 /area/space)
-"hm" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden,
-/obj/structure/shuttle/engine/heater{
-	dir = 8
-	},
-/turf/simulated/wall/r_wall/prepainted,
-/area/shuttle/salvager)
 "hD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
@@ -401,12 +329,6 @@
 	},
 /turf/simulated/floor/plating/outdoors,
 /area/space)
-"iF" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 1
-	},
-/turf/simulated/wall/r_wall/prepainted,
-/area/shuttle/salvager)
 "iL" = (
 /obj/machinery/door/airlock/glass_external,
 /obj/structure/cable/blue{
@@ -457,14 +379,6 @@
 	},
 /turf/simulated/floor/plating/eris/under,
 /area/sector/solar_station/deck1)
-"ji" = (
-/obj/effect/floor_decal/spline/plain{
-	dir = 9
-	},
-/obj/structure/closet/walllocker_double/kitchen/west,
-/obj/item/storage/box/sinpockets,
-/turf/simulated/floor/carpet/patterened/blue,
-/area/shuttle/salvager)
 "jl" = (
 /obj/machinery/door/airlock/science{
 	req_one_access = null
@@ -547,26 +461,9 @@
 	},
 /turf/simulated/floor/event/derelict_wall_floor,
 /area/sector/solar_station/deck1)
-"ko" = (
-/turf/simulated/wall/r_wall/prepainted,
-/area/shuttle/salvager)
 "ks" = (
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/solar_station/deck1)
-"kz" = (
-/obj/structure/catwalk,
-/obj/machinery/door/blast/regular{
-	id = "salv3"
-	},
-/turf/simulated/floor/plating/outdoors,
-/area/shuttle/salvager)
-"kC" = (
-/obj/machinery/light{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/manifold4w/hidden,
-/turf/simulated/floor/plating/outdoors,
-/area/shuttle/salvager)
 "kF" = (
 /obj/structure/salvageable/computer{
 	desc = "Hey, that solar data must go somewhere !.";
@@ -584,15 +481,6 @@
 	},
 /turf/simulated/floor/plating/indoors,
 /area/sector/solar_station/deck1)
-"kW" = (
-/obj/machinery/computer/ship/helm{
-	dir = 8
-	},
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/salvager)
 "ll" = (
 /obj/structure/table/reinforced,
 /obj/item/folder/white_rd,
@@ -638,10 +526,6 @@
 	},
 /turf/simulated/floor/plating/outdoors,
 /area/space)
-"lX" = (
-/obj/spawner/window/low_wall/firelocks,
-/turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salvager)
 "mE" = (
 /turf/simulated/floor/plating/eris/under,
 /area/sector/solar_station/deck1)
@@ -661,20 +545,6 @@
 /obj/structure/flora/pottedplant/hedge,
 /turf/simulated/floor/plating/eris/under,
 /area/sector/solar_station/deck1)
-"nk" = (
-/obj/structure/closet/walllocker_double/north,
-/obj/item/communicator,
-/obj/item/tank/jetpack,
-/obj/item/tank/oxygen,
-/obj/effect/floor_decal/spline/plain{
-	dir = 5
-	},
-/obj/item/clothing/suit/space/void/engineering/salvage,
-/obj/item/clothing/head/helmet/space/void/engineering/alt,
-/obj/item/tank/emergency/phoron,
-/obj/item/tank/carbon_dioxide,
-/turf/simulated/floor/carpet/patterened/blue,
-/area/shuttle/salvager)
 "nu" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -691,10 +561,6 @@
 	},
 /turf/simulated/floor/plating/outdoors,
 /area/space)
-"nz" = (
-/obj/machinery/shipsensors,
-/turf/simulated/floor/plating/outdoors,
-/area/shuttle/salvager)
 "oe" = (
 /obj/structure/bed/chair/modern_chair{
 	dir = 8
@@ -841,15 +707,6 @@
 /obj/item/clothing/glasses/sunglasses/big,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/sector/solar_station/deck1)
-"qN" = (
-/obj/machinery/computer/shuttle_control/trade/salvager{
-	dir = 4
-	},
-/obj/structure/panic_button{
-	pixel_y = 32
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/salvager)
 "qR" = (
 /obj/structure/cable{
 	icon_state = "5-10"
@@ -871,17 +728,6 @@
 /obj/item/pen,
 /turf/simulated/floor/plating/eris/under,
 /area/sector/solar_station/deck1)
-"rM" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 4
-	},
-/obj/structure/fans/tiny,
-/obj/machinery/button/remote/blast_door{
-	pixel_y = 24;
-	id = "salv3"
-	},
-/turf/simulated/floor/tiled/techfloor/monogrid,
-/area/shuttle/salvager)
 "rS" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -912,26 +758,6 @@
 	},
 /turf/simulated/floor/plating/indoors,
 /area/sector/solar_station/deck1)
-"sm" = (
-/obj/structure/table/reinforced,
-/obj/machinery/photocopier/faxmachine{
-	pixel_y = 16;
-	layer = 4;
-	department = "Guardian Salvager"
-	},
-/obj/machinery/microwave,
-/obj/item/paper_bin{
-	pixel_y = 27;
-	pixel_x = 5;
-	layer = 4.1
-	},
-/obj/structure/flora/pottedplant/shoot{
-	pixel_y = 31;
-	pixel_x = -6;
-	layer = 4.3
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salvager)
 "su" = (
 /obj/structure/cable/blue{
 	icon_state = "4-8"
@@ -960,41 +786,6 @@
 	},
 /turf/simulated/floor/event/derelict_wall_floor,
 /area/sector/solar_station/deck1)
-"sQ" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/structure/curtain/open/bed,
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/salvager)
-"sR" = (
-/obj/machinery/computer/ship/sensors{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/salvager)
-"sX" = (
-/obj/machinery/power/smes/buildable/offmap_spawn,
-/obj/structure/cable/orange{
-	icon_state = "0-2"
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salvager)
 "tf" = (
 /obj/machinery/atmospherics/pipe/tank/air{
 	dir = 8
@@ -1065,13 +856,6 @@
 	},
 /turf/simulated/floor/plating/outdoors,
 /area/sector/solar_station/deck1)
-"ug" = (
-/obj/machinery/portable_atmospherics/canister/phoron,
-/obj/machinery/atmospherics/portables_connector{
-	dir = 4
-	},
-/turf/simulated/floor/plating/outdoors,
-/area/shuttle/salvager)
 "un" = (
 /obj/structure/cable/blue{
 	icon_state = "2-4"
@@ -1101,14 +885,6 @@
 	},
 /turf/simulated/floor/plating/indoors,
 /area/sector/solar_station/deck1)
-"uN" = (
-/obj/structure/lattice,
-/obj/structure/catwalk,
-/obj/machinery/door/blast/regular{
-	id = "salv2"
-	},
-/turf/simulated/floor/plating/outdoors,
-/area/shuttle/salvager)
 "vb" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -1130,31 +906,6 @@
 /obj/structure/table/reinforced,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/sector/solar_station/deck1)
-"vM" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/stack/cable_coil{
-	amount = 50
-	},
-/obj/item/stack/material/glass/reinforced{
-	amount = 50
-	},
-/obj/item/stack/material/plasteel{
-	amount = 50
-	},
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/steel/full_stack,
-/obj/item/stack/material/uranium{
-	amount = 50
-	},
-/obj/item/stack/material/phoron{
-	amount = 50
-	},
-/obj/item/stack/material/plastic{
-	amount = 50
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/floor/plating/outdoors,
-/area/shuttle/salvager)
 "wj" = (
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -1211,10 +962,6 @@
 	},
 /turf/simulated/floor/plating/outdoors,
 /area/space)
-"wJ" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden,
-/turf/simulated/wall/r_wall/prepainted,
-/area/shuttle/salvager)
 "xb" = (
 /obj/structure/salvageable/console_os{
 	dir = 8;
@@ -1293,15 +1040,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating/indoors,
 /area/sector/solar_station/deck1)
-"yt" = (
-/obj/structure/fuel_port{
-	pixel_y = 30
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 10
-	},
-/turf/simulated/floor/plating/outdoors,
-/area/shuttle/salvager)
 "yy" = (
 /obj/structure/table/reinforced,
 /obj/item/paper_bin{
@@ -1331,15 +1069,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating/indoors,
 /area/sector/solar_station/deck1)
-"yL" = (
-/obj/effect/floor_decal/spline/plain{
-	dir = 10
-	},
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 8
-	},
-/turf/simulated/floor/carpet/patterened/blue,
-/area/shuttle/salvager)
 "yU" = (
 /obj/structure/cable{
 	icon_state = "1-10"
@@ -1394,12 +1123,6 @@
 	},
 /turf/simulated/floor/plating/outdoors,
 /area/space)
-"zS" = (
-/obj/structure/ghost_role_spawner/salvager,
-/obj/structure/curtain/open/bed,
-/obj/item/bedsheet/orange,
-/turf/simulated/floor/carpet/patterened/blue,
-/area/shuttle/salvager)
 "zZ" = (
 /obj/structure/cable{
 	icon_state = "5-8"
@@ -1450,10 +1173,6 @@
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/solar_station/deck1)
-"AA" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden,
-/turf/simulated/floor/plating/outdoors,
-/area/shuttle/salvager)
 "AL" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -1464,16 +1183,6 @@
 /obj/structure/cable/blue,
 /turf/simulated/floor/plating/outdoors,
 /area/space)
-"Bl" = (
-/obj/machinery/atmospherics/pipe/tank/phoron{
-	dir = 1
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 4
-	},
-/obj/machinery/light,
-/turf/simulated/floor/plating/outdoors,
-/area/shuttle/salvager)
 "Bt" = (
 /obj/structure/flora/pottedplant/hedge,
 /obj/structure/cable/blue{
@@ -1526,10 +1235,6 @@
 /obj/overmap/entity/visitable/sector/solar_station,
 /turf/space/basic,
 /area/space)
-"BN" = (
-/obj/spawner/window/low_wall/firelocks,
-/turf/simulated/floor/plating/outdoors,
-/area/shuttle/salvager)
 "BU" = (
 /obj/structure/cable{
 	icon_state = "6-9"
@@ -1557,13 +1262,6 @@
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/solar_station/deck1)
-"Cg" = (
-/obj/machinery/atmospherics/pipe/tank/phoron,
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/floor/plating/outdoors,
-/area/shuttle/salvager)
 "Cp" = (
 /obj/structure/cable/blue{
 	icon_state = "1-2"
@@ -1594,11 +1292,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/sector/solar_station/deck1)
-"CC" = (
-/obj/effect/floor_decal/industrial/halfstair,
-/obj/structure/curtain/open/bed,
-/turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salvager)
 "CI" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/storage/toolbox/electrical,
@@ -1617,15 +1310,6 @@
 	},
 /turf/simulated/floor/plating/indoors,
 /area/sector/solar_station/deck1)
-"Dd" = (
-/obj/structure/shuttle/engine/heater{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/turf/simulated/wall/r_wall/prepainted,
-/area/shuttle/salvager)
 "Dv" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -1636,12 +1320,6 @@
 	},
 /turf/simulated/floor/plating/indoors,
 /area/sector/solar_station/deck1)
-"DM" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 9
-	},
-/turf/simulated/wall/r_wall/prepainted,
-/area/shuttle/salvager)
 "DN" = (
 /obj/structure/cable{
 	icon_state = "2-4"
@@ -1669,10 +1347,6 @@
 	},
 /turf/simulated/floor/plating/outdoors,
 /area/space)
-"Ey" = (
-/obj/machinery/atmospherics/component/unary/heater,
-/turf/simulated/floor/plating/outdoors,
-/area/shuttle/salvager)
 "EJ" = (
 /obj/structure/table/rack/shelf,
 /obj/structure/cable/blue{
@@ -1722,11 +1396,6 @@
 /obj/machinery/shield_gen/external/advanced,
 /turf/simulated/floor/plating/outdoors,
 /area/sector/solar_station/deck1)
-"FN" = (
-/obj/structure/lattice,
-/obj/structure/catwalk,
-/turf/simulated/floor/plating/outdoors,
-/area/shuttle/salvager)
 "FS" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -1747,15 +1416,6 @@
 /obj/spawner/window/borosillicate/full/firelocks,
 /turf/simulated/floor/event/derelict_wall_floor,
 /area/sector/solar_station/deck1)
-"Ge" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden,
-/obj/item/tank/air,
-/obj/item/tank/air,
-/obj/item/tank/carbon_dioxide,
-/obj/item/tank/carbon_dioxide,
-/obj/structure/closet/walllocker_double/south,
-/turf/simulated/floor/plating/outdoors,
-/area/shuttle/salvager)
 "Gn" = (
 /obj/structure/cable/blue{
 	icon_state = "1-8"
@@ -1775,28 +1435,6 @@
 	},
 /turf/simulated/floor/event/derelict_wall_floor,
 /area/sector/solar_station/deck1)
-"GY" = (
-/obj/structure/cable/blue{
-	icon_state = "1-2"
-	},
-/obj/structure/lattice,
-/obj/structure/catwalk,
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 8
-	},
-/obj/overmap/entity/visitable/ship/landable/trade/salvager,
-/obj/effect/shuttle_landmark/solar_station_salvage,
-/obj/machinery/button/remote/blast_door{
-	dir = 8;
-	pixel_x = 27;
-	id = "salv1"
-	},
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	pixel_x = -24;
-	tag = "solar_salvage_docker"
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salvager)
 "GZ" = (
 /obj/structure/cable/blue{
 	icon_state = "2-4"
@@ -1894,18 +1532,6 @@
 "IZ" = (
 /turf/simulated/wall/r_lead,
 /area/sector/solar_station/deck1)
-"Je" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 8
-	},
-/turf/simulated/floor/plating/outdoors,
-/area/shuttle/salvager)
-"Jl" = (
-/obj/machinery/atmospherics/component/unary/engine{
-	dir = 4
-	},
-/turf/simulated/shuttle/plating/airless/carry,
-/area/shuttle/salvager)
 "Jt" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -1918,18 +1544,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/space)
-"Kf" = (
-/obj/structure/catwalk,
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 1
-	},
-/obj/machinery/button/remote/blast_door{
-	dir = 8;
-	pixel_x = 27;
-	id = "salv2"
-	},
-/turf/simulated/floor/plating/outdoors,
-/area/shuttle/salvager)
 "Ko" = (
 /obj/structure/cable{
 	icon_state = "4-10"
@@ -1970,20 +1584,6 @@
 	},
 /turf/simulated/floor/plating/indoors,
 /area/sector/solar_station/deck1)
-"KL" = (
-/obj/structure/closet/walllocker_double/south,
-/obj/item/communicator,
-/obj/item/tank/jetpack,
-/obj/item/tank/oxygen,
-/obj/effect/floor_decal/spline/plain{
-	dir = 6
-	},
-/obj/item/clothing/suit/space/void/engineering/salvage,
-/obj/item/clothing/head/helmet/space/void/engineering/alt,
-/obj/item/tank/emergency/phoron,
-/obj/item/tank/carbon_dioxide,
-/turf/simulated/floor/carpet/patterened/blue,
-/area/shuttle/salvager)
 "KO" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
@@ -2051,12 +1651,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/sector/solar_station/deck1)
-"LM" = (
-/obj/structure/bed/chair/bay/chair/padded/yellow{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/salvager)
 "LN" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -2107,13 +1701,6 @@
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/solar_station/deck1)
-"Ol" = (
-/obj/machinery/computer/cryopod/travel/salvager{
-	pixel_x = -30
-	},
-/obj/machinery/cryopod/robot/door/travel/salvager,
-/turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salvager)
 "Ow" = (
 /obj/machinery/power/terminal{
 	dir = 8
@@ -2139,12 +1726,6 @@
 	},
 /turf/simulated/floor/plating/outdoors,
 /area/space)
-"OO" = (
-/obj/machinery/computer/ship/engines{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/salvager)
 "OP" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -2241,12 +1822,6 @@
 	},
 /turf/simulated/floor/plating/outdoors,
 /area/space)
-"PQ" = (
-/obj/structure/bed/chair/bay/chair/padded/yellow{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/salvager)
 "Qe" = (
 /obj/structure/cable/blue{
 	icon_state = "1-4"
@@ -2255,22 +1830,6 @@
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /turf/simulated/floor/plating/indoors,
 /area/sector/solar_station/deck1)
-"Qj" = (
-/obj/structure/cable/blue{
-	icon_state = "1-2"
-	},
-/obj/structure/lattice,
-/obj/structure/catwalk,
-/obj/machinery/door/blast/regular{
-	id = "salv1"
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salvager)
-"Qm" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/power/port_gen/pacman/mrs,
-/turf/simulated/floor/plating/outdoors,
-/area/shuttle/salvager)
 "Qn" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -2352,10 +1911,6 @@
 	},
 /turf/simulated/floor/plating/indoors,
 /area/sector/solar_station/deck1)
-"RL" = (
-/obj/effect/floor_decal/spline/plain,
-/turf/simulated/floor/carpet/patterened/blue,
-/area/shuttle/salvager)
 "RS" = (
 /obj/structure/cable/blue{
 	icon_state = "2-8"
@@ -2416,23 +1971,11 @@
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/sector/solar_station/deck1)
-"Tn" = (
-/obj/structure/cable/orange,
-/obj/machinery/power/apc/high/east_mount,
-/obj/machinery/atmospherics/component/unary/vent_pump/on,
-/turf/simulated/floor/plating/outdoors,
-/area/shuttle/salvager)
 "Uc" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/solar_station/deck1)
-"Um" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 10
-	},
-/turf/simulated/floor/plating/outdoors,
-/area/shuttle/salvager)
 "UT" = (
 /obj/machinery/door/airlock/glass_external,
 /obj/structure/cable{
@@ -2455,12 +1998,6 @@
 	},
 /turf/simulated/wall/r_wall/prepainted,
 /area/space)
-"Vy" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5
-	},
-/turf/simulated/wall/r_wall/prepainted,
-/area/shuttle/salvager)
 "VC" = (
 /obj/structure/cable{
 	icon_state = "1-6"
@@ -2473,12 +2010,6 @@
 	},
 /turf/simulated/floor/plating/outdoors,
 /area/space)
-"VL" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/turf/simulated/wall/r_wall/prepainted,
-/area/shuttle/salvager)
 "VO" = (
 /obj/structure/cable{
 	icon_state = "1-10"
@@ -2499,17 +2030,6 @@
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/solar_station/deck1)
-"WM" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/vehicle_module/tool/powertool,
-/obj/item/vehicle_module/tool/powertool/cutter,
-/obj/item/vehicle_module/tool/powertool/inflatables,
-/obj/item/vehicle_module/tool/powertool/prybar,
-/obj/item/vehicle_module/tool/powertool/screwdriver,
-/obj/item/vehicle_module/tool/powertool/welding,
-/obj/item/rcd/electric/mounted/mecha,
-/turf/simulated/floor/plating/outdoors,
-/area/shuttle/salvager)
 "Xu" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -2519,20 +2039,6 @@
 	},
 /turf/simulated/floor/plating/outdoors,
 /area/space)
-"Xw" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/storage/toolbox/mechanical,
-/obj/item/storage/toolbox/mechanical,
-/obj/item/storage/toolbox/electrical{
-	pixel_y = 16
-	},
-/obj/item/storage/toolbox/electrical{
-	pixel_y = 16
-	},
-/obj/item/storage/toolbox/syndicate/powertools,
-/obj/item/rcd/loaded,
-/turf/simulated/floor/plating/outdoors,
-/area/shuttle/salvager)
 "XA" = (
 /obj/structure/cable/blue{
 	icon_state = "2-8"
@@ -2552,21 +2058,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating/indoors,
 /area/sector/solar_station/deck1)
-"XK" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 4
-	},
-/obj/vehicle/sealed/mecha/working/ripley/geiger,
-/obj/machinery/mech_recharger,
-/turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salvager)
-"Yh" = (
-/obj/machinery/portable_atmospherics/canister/oxygen,
-/turf/simulated/floor/plating/outdoors,
-/area/shuttle/salvager)
 "Yj" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -20282,10 +19773,10 @@ Zs
 Me
 HD
 cP
-ko
-Jl
-Jl
-FN
+cP
+cP
+cP
+cP
 cP
 cP
 cP
@@ -20476,10 +19967,10 @@ Zs
 Me
 Yy
 cP
-ko
-eP
-hm
-FN
+cP
+cP
+cP
+cP
 cP
 cP
 cP
@@ -20670,12 +20161,12 @@ Zs
 Me
 Yy
 cP
-ko
-Ey
-wJ
-kz
-ko
-Jl
+cP
+cP
+cP
+cP
+cP
+cP
 cP
 cP
 cP
@@ -20864,12 +20355,12 @@ Zs
 Me
 Yy
 cP
-ko
-ug
-VL
-rM
-ko
-Dd
+cP
+cP
+cP
+cP
+cP
+cP
 cP
 cP
 cP
@@ -21058,12 +20549,12 @@ Zs
 Me
 HD
 cP
-ko
-yt
-kC
-eI
-vM
-DM
+cP
+cP
+cP
+cP
+cP
+cP
 cP
 cP
 cP
@@ -21251,14 +20742,14 @@ Zs
 Zs
 Me
 Yy
-aY
-Vy
-Xw
-fr
-fv
-WM
-ko
-ko
+cP
+cP
+cP
+cP
+cP
+cP
+cP
+cP
 cP
 cP
 cP
@@ -21445,15 +20936,15 @@ Zs
 Zs
 Me
 Yy
-aY
-wJ
-Cg
-AA
-fv
-Yh
-ko
-ko
-nz
+cP
+cP
+cP
+cP
+cP
+cP
+cP
+cP
+cP
 cP
 cP
 cP
@@ -21639,15 +21130,15 @@ Zs
 Zs
 Me
 HD
-ko
-iF
-XK
-Um
-eI
-Qm
-Bl
-ko
-ko
+cP
+cP
+cP
+cP
+cP
+cP
+cP
+cP
+cP
 cP
 cP
 cP
@@ -21833,15 +21324,15 @@ Zs
 Zs
 bT
 jA
-Qj
-GY
-bn
-eI
-Je
-eI
-bI
-Kf
-uN
+cP
+cP
+cP
+cP
+cP
+cP
+cP
+cP
+cP
 cP
 cP
 cP
@@ -22027,15 +21518,15 @@ Zs
 Zs
 oG
 HD
-ko
-ko
-sX
-Tn
-Ge
-ko
-ko
-ko
-ko
+cP
+cP
+cP
+cP
+cP
+cP
+cP
+cP
+cP
 cP
 cP
 cP
@@ -22222,14 +21713,14 @@ Zs
 oG
 Yy
 cP
-ko
-ko
-ko
-eO
-ko
-qN
-ko
-ko
+cP
+cP
+cP
+cP
+cP
+cP
+cP
+cP
 cP
 cP
 cP
@@ -22416,14 +21907,14 @@ Zs
 oG
 Yy
 cP
-lX
-Ol
-ji
-yL
-sQ
-PQ
-sR
-lX
+cP
+cP
+cP
+cP
+cP
+cP
+cP
+cP
 cP
 cP
 cP
@@ -22610,14 +22101,14 @@ Zs
 oG
 HD
 cP
-lX
-sm
-ba
-RL
-CC
-LM
-OO
-lX
+cP
+cP
+cP
+cP
+cP
+cP
+cP
+cP
 cP
 cP
 cP
@@ -22804,14 +22295,14 @@ Zs
 oG
 Yy
 cP
-ko
-ko
-nk
-KL
-ko
-kW
-lX
-lX
+cP
+cP
+cP
+cP
+cP
+cP
+cP
+cP
 cP
 cP
 cP
@@ -22998,13 +22489,13 @@ Zs
 oG
 Yy
 cP
-ko
-ko
-zS
-zS
-ko
-lX
-lX
+cP
+cP
+cP
+cP
+cP
+cP
+cP
 cP
 cP
 cP
@@ -23193,11 +22684,11 @@ oG
 Yy
 cP
 cP
-ko
-ko
-ko
-ko
-BN
+cP
+cP
+cP
+cP
+cP
 cP
 cP
 cP

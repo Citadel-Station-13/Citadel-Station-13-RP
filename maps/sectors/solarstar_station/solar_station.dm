@@ -8,10 +8,6 @@
 		/datum/map_level/sector/solars_station/under,
 	)
 
-	legacy_assert_shuttle_datums = list(
-		/datum/shuttle/autodock/overmap/trade/salvager,
-	)
-
 /datum/map_level/sector/solars_station
 	id = "Solar_station"
 	name = "Sector - Lythios 43 Star"
