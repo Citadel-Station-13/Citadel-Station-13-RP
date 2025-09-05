@@ -1045,7 +1045,8 @@
 /obj/machinery/access_button/airlock_exterior{
 	pixel_y = -19;
 	master_tag = "cresend";
-	dir = 8
+	dir = 8;
+	frequency = 8018
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/crescend)
@@ -7024,15 +7025,17 @@
 "Fo" = (
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	pixel_y = 27;
-	id_tag = "cresend"
+	id_tag = "cresend";
+	frequency = 8018
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1;
-	id_tag = "cresend"
+	id_tag = "cresend";
+	frequency = 8018
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/airlock_sensor/airlock_exterior/shuttle{
-	frequency = 1380;
+	frequency = 8018;
 	master_tag = "cresend";
 	pixel_x = 24;
 	pixel_y = -20
@@ -11015,7 +11018,7 @@
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button/airlock_interior{
 	dir = 4;
-	frequency = 1380;
+	frequency = 8018;
 	master_tag = "cresend";
 	pixel_y = -22
 	},

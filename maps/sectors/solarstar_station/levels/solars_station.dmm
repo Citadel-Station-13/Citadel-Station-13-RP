@@ -9,7 +9,8 @@
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
-	id_tag = "solar_docks_4"
+	id_tag = "solar_docks_4";
+	frequency = 5202
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/monotechmaint,
@@ -338,7 +339,8 @@
 /obj/structure/catwalk,
 /obj/machinery/access_button/airlock_exterior{
 	pixel_x = 22;
-	master_tag = "solar_docks_2"
+	master_tag = "solar_docks_2";
+	frequency = 5202
 	},
 /obj/structure/cable/blue{
 	icon_state = "1-4"
@@ -369,7 +371,8 @@
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button/airlock_interior{
 	pixel_y = -22;
-	master_tag = "solar_docks_3"
+	master_tag = "solar_docks_3";
+	frequency = 5202
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/sector/solar_station/deck1)
@@ -813,7 +816,8 @@
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
-	id_tag = "solar_docks_3"
+	id_tag = "solar_docks_3";
+	frequency = 5202
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/monotechmaint,
@@ -834,7 +838,8 @@
 /obj/structure/catwalk,
 /obj/machinery/access_button/airlock_exterior{
 	pixel_x = -22;
-	master_tag = "solar_docks_1"
+	master_tag = "solar_docks_1";
+	frequency = 5202
 	},
 /turf/simulated/floor/plating/indoors,
 /area/sector/solar_station/deck1)
@@ -852,7 +857,8 @@
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button/airlock_exterior{
 	pixel_x = 22;
-	master_tag = "solar_docks_4"
+	master_tag = "solar_docks_4";
+	frequency = 5202
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/sector/solar_station/deck1)
@@ -881,7 +887,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/access_button/airlock_interior{
 	pixel_x = 22;
-	master_tag = "solar_docks_2"
+	master_tag = "solar_docks_2";
+	frequency = 5202
 	},
 /turf/simulated/floor/plating/indoors,
 /area/sector/solar_station/deck1)
@@ -891,7 +898,8 @@
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1;
-	id_tag = "solar_docks_3"
+	id_tag = "solar_docks_3";
+	frequency = 5202
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/monotechmaint,
@@ -922,11 +930,13 @@
 	},
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
 	pixel_x = -21;
-	id_tag = "solar_docks_3"
+	id_tag = "solar_docks_3";
+	frequency = 5202
 	},
 /obj/machinery/airlock_sensor{
 	pixel_y = -21;
-	id_tag = "solar_docks_3"
+	id_tag = "solar_docks_3";
+	frequency = 5202
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/monotechmaint,
@@ -1204,7 +1214,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/access_button/airlock_interior{
 	pixel_x = -22;
-	master_tag = "solar_docks_1"
+	master_tag = "solar_docks_1";
+	frequency = 5202
 	},
 /turf/simulated/floor/plating/indoors,
 /area/sector/solar_station/deck1)
@@ -1253,11 +1264,13 @@
 	},
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
 	pixel_x = 24;
-	tag = "solar_docks_4"
+	tag = "solar_docks_4";
+	frequency = 5202
 	},
 /obj/machinery/airlock_sensor{
 	pixel_y = -21;
-	id_tag = "solar_docks_4"
+	id_tag = "solar_docks_4";
+	frequency = 5202
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/monotechmaint,
@@ -1283,12 +1296,14 @@
 "CA" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
-	id_tag = "solar_docks_2"
+	id_tag = "solar_docks_2";
+	frequency = 5202
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
 	pixel_x = -21;
-	id_tag = "solar_docks_2"
+	id_tag = "solar_docks_2";
+	frequency = 5202
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/sector/solar_station/deck1)
@@ -1555,7 +1570,8 @@
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button/airlock_exterior{
 	pixel_x = -22;
-	master_tag = "solar_docks_3"
+	master_tag = "solar_docks_3";
+	frequency = 5202
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/sector/solar_station/deck1)
@@ -1744,7 +1760,8 @@
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1;
-	id_tag = "solar_docks_4"
+	id_tag = "solar_docks_4";
+	frequency = 5202
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/monotechmaint,
@@ -1752,12 +1769,14 @@
 "Po" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
-	id_tag = "solar_docks_1"
+	id_tag = "solar_docks_1";
+	frequency = 5202
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
 	pixel_x = 24;
-	id_tag = "solar_docks_1"
+	id_tag = "solar_docks_1";
+	frequency = 5202
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/sector/solar_station/deck1)
@@ -1960,13 +1979,15 @@
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
-	id_tag = "solar_docks_1"
+	id_tag = "solar_docks_1";
+	frequency = 5202
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/airlock_sensor{
 	pixel_x = 21;
 	pixel_y = 5;
-	id_tag = "solar_docks_1"
+	id_tag = "solar_docks_1";
+	frequency = 5202
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/techfloor/monogrid,
@@ -2079,13 +2100,15 @@
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
-	id_tag = "solar_docks_2"
+	id_tag = "solar_docks_2";
+	frequency = 5202
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/airlock_sensor{
 	pixel_x = -21;
 	pixel_y = 5;
-	id_tag = "solar_docks_2"
+	id_tag = "solar_docks_2";
+	frequency = 5202
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/techfloor/monogrid,
@@ -2099,7 +2122,8 @@
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button/airlock_interior{
 	pixel_y = -22;
-	master_tag = "solar_docks_4"
+	master_tag = "solar_docks_4";
+	frequency = 5202
 	},
 /turf/simulated/floor/plating,
 /area/sector/solar_station/deck1)

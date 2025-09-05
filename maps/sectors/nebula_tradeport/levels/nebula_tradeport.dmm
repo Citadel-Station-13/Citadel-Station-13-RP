@@ -6340,12 +6340,6 @@
 /turf/simulated/floor/wmarble,
 /area/sector/nebula_tradeport/motel/vip)
 "arF" = (
-/obj/machinery/embedded_controller/radio/airlock/airlock_controller{
-	frequency = 1380;
-	id_tag = "trade_docks_4";
-	pixel_x = 16;
-	pixel_y = -24
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
 	},
@@ -6353,7 +6347,14 @@
 /obj/machinery/airlock_sensor{
 	pixel_x = -8;
 	pixel_y = -23;
-	master_tag = "trade_docks_4"
+	master_tag = "trade_docks_4";
+	frequency = 1380
+	},
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	pixel_y = -24;
+	pixel_x = 5;
+	id_tag = "tradeport_scavenging";
+	frequency = 1380
 	},
 /turf/simulated/floor/plating,
 /area/tradeport/commons)
@@ -17117,7 +17118,8 @@
 "aVj" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
-	id_tag = "trade_docks_4"
+	id_tag = "trade_docks_4";
+	frequency = 1380
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/plating,
@@ -21565,7 +21567,8 @@
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/airlock_sensor{
-	pixel_x = -25
+	pixel_x = -25;
+	frequency = 1380
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor,
@@ -23047,7 +23050,8 @@
 "kCd" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
-	id_tag = "trade_docks_4"
+	id_tag = "trade_docks_4";
+	frequency = 1380
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/structure/cable/yellow{
@@ -24369,12 +24373,6 @@
 	},
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/access_button/airlock_interior{
-	frequency = 1380;
-	master_tag = "trade_docks_3";
-	name = "internal access button";
-	pixel_x = 25
-	},
 /turf/simulated/floor,
 /area/tradeport/pads)
 "nwb" = (
@@ -26472,12 +26470,6 @@
 	name = "Nebula Gas - External Access"
 	},
 /obj/map_helper/airlock/door/ext_door,
-/obj/machinery/access_button/airlock_exterior{
-	frequency = 1380;
-	master_tag = "trade_docks_3";
-	name = "external access button";
-	pixel_x = 22
-	},
 /turf/simulated/floor,
 /area/tradeport/pads)
 "sVw" = (
@@ -27384,13 +27376,13 @@
 /area/tradeport/commons)
 "viG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/embedded_controller/radio/airlock/airlock_controller{
-	frequency = 1380;
-	id_tag = "trade_docks_3";
-	pixel_x = 26
-	},
 /obj/machinery/light/small{
 	dir = 1
+	},
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	pixel_x = 27;
+	frequency = 1380;
+	id_tag = "trade_docks_3"
 	},
 /turf/simulated/floor,
 /area/tradeport/pads)
