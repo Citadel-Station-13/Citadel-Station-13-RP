@@ -1,7 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ab" = (
 /obj/machinery/telecomms/hub{
-	idle_power_usage = 1
+	idle_power_usage = 1;
+	id = "OCULUM"
 	},
 /turf/simulated/floor/airless,
 /area/sector/sky_planet/occulum)
@@ -131,7 +132,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/techfloor,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/crescend)
 "aG" = (
 /mob/living/simple_mob/mechanical/hivebot,
@@ -2721,7 +2722,7 @@
 	pixel_y = 33;
 	pixel_x = -59
 	},
-/obj/item/radio/phone/laptop,
+/obj/item/radio/intercom/entertainment/laptop,
 /turf/simulated/floor/carpet/turcarpet,
 /area/sector/sky_planet/occulum)
 "mu" = (
@@ -3217,7 +3218,10 @@
 /turf/simulated/floor/carpet/turcarpet,
 /area/sector/sky_planet/occulum)
 "ow" = (
-/obj/machinery/telecomms/server,
+/obj/machinery/telecomms/server/presets/common{
+	id = "OCULUM";
+	idle_power_usage = 1
+	},
 /turf/simulated/floor/airless,
 /area/sector/sky_planet/occulum)
 "oy" = (
@@ -5188,7 +5192,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/machinery/telecomms/allinone/occulum,
+/obj/machinery/telecomms/allinone/occulum{
+	id = "OCULUM"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/crescend)
 "xv" = (
@@ -6564,7 +6570,7 @@
 /obj/effect/floor_decal/carpet/blue{
 	dir = 1
 	},
-/obj/item/radio/phone/laptop,
+/obj/item/radio/intercom/entertainment/laptop,
 /turf/simulated/floor/carpet/bcarpet,
 /area/shuttle/crescend)
 "DE" = (
@@ -6696,12 +6702,21 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/sky_planet/racing_station/dock)
 "Eb" = (
+/obj/structure/closet/crate/corporate/oculum,
+/obj/item/binoculars,
+/obj/item/tvcamera,
+/obj/item/tvcamera,
+/obj/item/clothing/accessory/armor/helmetcamera/body,
+/obj/item/clothing/accessory/armor/helmetcamera,
+/obj/item/clothing/suit/storage/vest/press,
+/obj/item/clothing/suit/armor/pcarrier/press,
+/obj/item/clothing/accessory/armor/tag/press,
+/obj/item/clothing/accessory/armor/tag/press,
+/obj/item/clothing/accessory/badge/corporate_tag/press,
+/obj/item/clothing/accessory/badge/corporate_tag/press,
+/obj/item/cassette_tape,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
-	},
-/obj/machinery/telecomms/receiver{
-	id = "OCULUM";
-	idle_power_usage = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/crescend)
@@ -6727,20 +6742,10 @@
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/outpost/office)
 "Ei" = (
-/obj/structure/closet/crate/corporate/oculum,
-/obj/item/binoculars,
-/obj/item/tvcamera,
-/obj/item/tvcamera,
-/obj/item/clothing/accessory/armor/helmetcamera/body,
-/obj/item/clothing/accessory/armor/helmetcamera,
-/obj/item/clothing/suit/storage/vest/press,
-/obj/item/clothing/suit/armor/pcarrier/press,
-/obj/item/clothing/accessory/armor/tag/press,
-/obj/item/clothing/accessory/armor/tag/press,
-/obj/item/clothing/accessory/badge/corporate_tag/press,
-/obj/item/clothing/accessory/badge/corporate_tag/press,
-/obj/item/cassette_tape,
-/obj/item/cassette_tape,
+/obj/machinery/telecomms/receiver{
+	id = "OCULUM";
+	idle_power_usage = 1
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/crescend)
 "Ek" = (
@@ -7034,18 +7039,13 @@
 	frequency = 8018
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
-/obj/machinery/airlock_sensor/airlock_exterior/shuttle{
-	frequency = 8018;
-	master_tag = "cresend";
-	pixel_x = 24;
-	pixel_y = -20
-	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/airlock_sensor{
 	frequency = 8018;
 	pixel_x = 10;
 	pixel_y = 24;
-	master_tag = "cresend"
+	master_tag = "cresend";
+	id_tag = "cresend"
 	},
 /obj/structure/cable/white{
 	icon_state = "4-8"
@@ -8390,7 +8390,8 @@
 /area/sector/sky_planet/station_city/police)
 "Lo" = (
 /obj/machinery/telecomms/relay{
-	id = "OCULUM"
+	id = "OCULUM";
+	idle_power_usage = 1
 	},
 /turf/simulated/floor/airless,
 /area/sector/sky_planet/occulum)
@@ -9320,11 +9321,6 @@
 /obj/effect/floor_decal/carpet/blue{
 	dir = 10
 	},
-/obj/item/radio/intercom/entertainment{
-	dir = 8;
-	pixel_x = -22;
-	canhear_range = 4
-	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/shuttle/crescend)
 "Pk" = (
@@ -9985,6 +9981,13 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/sky_planet/outpost/office)
+"RZ" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/wood/indoors,
+/area/shuttle/crescend)
 "Sb" = (
 /obj/effect/floor_decal/rust/mono_rusted3{
 	color = "#b88a3b"
@@ -17916,7 +17919,7 @@ ng
 ow
 Lo
 iv
-ng
+zR
 ng
 uk
 uk
@@ -18277,7 +18280,7 @@ Cq
 dx
 Jt
 Jt
-yC
+RZ
 Jt
 Jt
 dx
@@ -18692,7 +18695,7 @@ yX
 sO
 hO
 Ju
-ng
+zR
 ng
 uk
 uk
