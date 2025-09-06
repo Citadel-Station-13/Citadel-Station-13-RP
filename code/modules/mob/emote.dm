@@ -17,7 +17,8 @@
 		input = message
 	if(input)
 		log_emote(message,src) //Log before we add junk
-		message = "<span class='emote'><B>[src]</B> [input]</span>"
+		//If the message starts with a comma, no space after the name.
+		message = "<span class='emote'><B>[src]</B>[copytext(input, 1, 2) == "," ? "" : " "][input]</span>"
 	else
 		return
 
