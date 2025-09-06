@@ -94,8 +94,8 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/item/radio/intercom, 28)
 	canhear_range = 5
 	broadcasting = 1
 	listening = 0
-	plane = PLANT_LAYER
-	layer = OBJ_PLANE
+	plane = TURF_PLANE
+	layer = PLANT_LAYER
 
 
 /obj/item/radio/intercom/omni
