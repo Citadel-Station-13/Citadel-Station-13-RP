@@ -130,7 +130,7 @@
 			continue
 		if(((hand.is_broken() || hand.is_dislocated()) && !hand.splinted) || ((arm.is_broken() || arm.is_dislocated()) && !arm.splinted))
 			var/emote_scream = pick("screams in pain and ", "lets out a sharp cry and ", "cries out and ")
-			emote("me", 1, "[(can_feel_pain()) ? "" : emote_scream ]drops what they were holding in their [hand.name]!")
+			emote("me", 1, "[(can_feel_pain()) ? emote_scream : ""]drops what they were holding in their [hand.name]!")
 			drop_item_to_ground(held, INV_OP_FORCE)
 			continue
 		else if(hand.is_malfunctioning())
