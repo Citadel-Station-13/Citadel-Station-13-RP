@@ -28,7 +28,7 @@
 	var/list/data = ..()
 
 	data["beacons"] = list()
-	for(var/obj/item/vehicle_tracking_beacon/TR in world)
+	for(var/obj/item/vehicle_tracking_beacon/TR as anything in GLOB.vehicle_tracking_beacons)
 		var/list/tr_data = TR.ui_data(user)
 		if(tr_data)
 			data["beacons"] += list(tr_data)
