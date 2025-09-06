@@ -76,7 +76,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/color_matrix_proxy_view)
 	return ..()
 
 /datum/color_matrix_editor/ui_state()
-	return GLOB.admin_state
+	return ADMIN_STATE(NONE)
 
 /datum/color_matrix_editor/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/data = list()

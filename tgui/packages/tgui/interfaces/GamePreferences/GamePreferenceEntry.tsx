@@ -2,9 +2,10 @@
  * @file
  * @license MIT
  */
-import { BooleanLike } from "common/react";
-import { InfernoNode } from "inferno";
-import { Button, Collapsible, ColorBox, Dropdown, Input, NumberInput, Section, Stack, Tooltip } from "../../components";
+import { ReactNode } from "react";
+import { Button, Collapsible, ColorBox, Dropdown, Input, NumberInput, Section, Stack, Tooltip } from "tgui-core/components";
+import { BooleanLike } from "tgui-core/react";
+
 import { ByondAtomColor, ByondColorString, ColorPicker } from "../common/Color";
 
 interface GamePreferenceEntryProps {
@@ -63,8 +64,8 @@ interface PreferenceSimpleColorEntrySchema extends PreferenceBaseEntrySchema {
   defaultValue: ByondAtomColor;
 }
 
-export const GamePreferenceEntry = (props: GamePreferenceEntryProps, context) => {
-  let innerContent: InfernoNode = null;
+export const GamePreferenceEntry = (props: GamePreferenceEntryProps) => {
+  let innerContent: ReactNode = null;
   switch (props.schema.type) {
     case 'number':
       innerContent = (
@@ -117,11 +118,11 @@ const NumberEntry = (props: {
   readonly schema: PreferenceNumberEntrySchema;
   readonly value: number;
   readonly setValue: (val: number) => void;
-}, context) => {
+}) => {
   return (
     <NumberInput fluid value={props.value}
       minValue={props.schema.minValue || -Infinity} maxValue={props.schema.maxValue || Infinity}
-      step={props.schema.roundTo || undefined} onChange={(e, val) => props.setValue(val)} />
+      step={props.schema.roundTo || 1} onChange={(val) => props.setValue(val)} />
   );
 };
 
@@ -130,9 +131,9 @@ const StringEntry = (props: {
   readonly schema: PreferenceStringEntrySchema;
   readonly value: string;
   readonly setValue: (val: string) => void;
-}, context) => {
+}) => {
   return (
-    <Input fluid value={props.value} onInput={(e, val) => props.setValue(val)} />
+    <Input fluid value={props.value} onChange={(val) => props.setValue(val)} />
   );
 };
 
@@ -141,9 +142,9 @@ const ToggleEntry = (props: {
   readonly schema: PreferenceToggleEntrySchema;
   readonly value: BooleanLike;
   readonly setValue: (val: BooleanLike) => void;
-}, context) => {
+}) => {
   return (
-    <Button.Checkbox fluid color="transparent" content={props.value? props.schema.enabledName : props.schema.disabledName}
+    <Button.Checkbox fluid color="transparent" content={props.value ? props.schema.enabledName : props.schema.disabledName}
       checked={props.value} onClick={() => props.setValue(!props.value)} />
   );
 };
@@ -152,7 +153,7 @@ const DropdownEntry = (props: {
   readonly schema: PreferenceDropdownEntrySchema;
   readonly value: string;
   readonly setValue: (val: string) => void;
-}, context) => {
+}) => {
   return (
     <Dropdown selected={props.value} options={props.schema.options}
       onSelected={(v) => props.setValue(v)} width="100%" />
@@ -164,17 +165,17 @@ const SimpleColorEntry = (props: {
   readonly schema: PreferenceSimpleColorEntrySchema;
   readonly value: ByondColorString;
   readonly setValue: (val: ByondColorString) => void;
-}, context) => {
+}) => {
   return (
-    <Collapsible color="transparent" title={props.value? (
+    <Collapsible color="transparent" title={props.value ? (
       <>
         <ColorBox color={props.value} /> {props.value}
       </>
-    ) : ""} contentFunction={() => (
+    ) : ""}>
       <Section>
         <ColorPicker currentColor={props.value || "#ffffff"} allowMatrix={false}
           setColor={(what) => props.setValue(what as ByondColorString)} />
       </Section>
-    )} />
+    </Collapsible>
   );
 };

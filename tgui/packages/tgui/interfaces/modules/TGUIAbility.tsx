@@ -3,9 +3,10 @@
  * @license MIT
  */
 
-import { BooleanLike } from "../../../common/react";
-import { ModuleData, useModule } from "../../backend";
+import { BooleanLike } from "tgui-core/react";
+
 import { Modular } from "../../layouts/Modular";
+import { ModuleData, useLegacyModule } from "../../legacyModuleSystem";
 
 interface TGUIAbilityProps {
 
@@ -25,8 +26,8 @@ interface TGUIAbilityData extends ModuleData {
   can_bind: BooleanLike;
 }
 
-export const TGUIAbility = (props: TGUIAbilityProps, context) => {
-  const { data, act } = useModule<TGUIAbilityData>(context);
+export const TGUIAbility = (props: TGUIAbilityProps) => {
+  const { data, act } = useLegacyModule<TGUIAbilityData>();
 
   return (
     <Modular>

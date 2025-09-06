@@ -1,7 +1,8 @@
 
-import { BooleanLike } from "../../common/react";
+import { Button, LabeledList, NoticeBox, NumberInput, ProgressBar, Section, Stack } from "tgui-core/components";
+import { BooleanLike } from "tgui-core/react";
+
 import { useBackend, useSharedState } from "../backend";
-import { Button, LabeledList, NoticeBox, NumberInput, ProgressBar, Section, Stack } from "../components";
 import { Window } from "../layouts";
 import { ReagentContents, ReagentContentsData } from "./common/Reagents";
 
@@ -44,9 +45,9 @@ interface DispenserMacro {
   index: number;
 }
 
-export const ChemDispenser = (props, context) => {
-  const { act, data } = useBackend<ChemDispenserData>(context);
-  const [macro, setMacro] = useSharedState<Array<[string, number]> | undefined>(context, 'recording', undefined);
+export const ChemDispenser = (props) => {
+  const { act, data } = useBackend<ChemDispenserData>();
+  const [macro, setMacro] = useSharedState<Array<[string, number]> | undefined>('recording', undefined);
   const isRecording = () => (macro !== undefined);
   const sortedMacros = data.macros.sort((a, b) => a.name.localeCompare(b.name));
   const sortedReagents = data.reagents.sort((a, b) => a.name.localeCompare(b.name));
@@ -90,8 +91,8 @@ export const ChemDispenser = (props, context) => {
             }>
               <ProgressBar
                 minValue={0}
-                maxValue={data.has_cell? data.cell_capacity : 100}
-                value={data.has_cell? data.cell_charge : 0}>
+                maxValue={data.has_cell ? data.cell_capacity : 100}
+                value={data.has_cell ? data.cell_charge : 0}>
                 {data.has_cell ? (
                   `${Math.round(data.cell_charge / data.cell_capacity * 100)}%`
                 ) : (
@@ -101,12 +102,12 @@ export const ChemDispenser = (props, context) => {
             </LabeledList.Item>
             <LabeledList.Item label="Charging" buttons={
               <Button
-                content={data.recharging? "On" : "Off"}
+                content={data.recharging ? "On" : "Off"}
                 icon="power-off"
-                color={data.recharging? "good" : "bad"}
+                color={data.recharging ? "good" : "bad"}
                 onClick={() => act('toggle_charge')} />
             }>
-              {data.recharging? `Drawing ${data.recharge_rate}kW` : ``}
+              {data.recharging ? `Drawing ${data.recharge_rate}kW` : ``}
             </LabeledList.Item>
           </LabeledList>
         </Section>
@@ -130,7 +131,7 @@ export const ChemDispenser = (props, context) => {
                   step={1}
                   minValue={1}
                   maxValue={data.amount_max}
-                  onChange={(_, val) => act('amount', { set: val })} />
+                  onChange={(val) => act('amount', { set: val })} />
               </>
             } />
           </LabeledList>
@@ -138,10 +139,10 @@ export const ChemDispenser = (props, context) => {
         <Section title="Macros"
           buttons={
             <Button
-              content={macro === undefined? "Record" : "Stop"}
-              onClick={() => macro === undefined? setMacro(new Array<[string, number]>()) : finalizeMacro()}
-              icon={macro === undefined? "circle" : "square"}
-              color={macro === undefined? "good" : "bad"} />
+              content={macro === undefined ? "Record" : "Stop"}
+              onClick={() => macro === undefined ? setMacro(new Array<[string, number]>()) : finalizeMacro()}
+              icon={macro === undefined ? "circle" : "square"}
+              color={macro === undefined ? "good" : "bad"} />
           }>
           {
             sortedMacros.map((macro) => (
@@ -163,7 +164,7 @@ export const ChemDispenser = (props, context) => {
           }
         </Section>
         <Section title="Synthesis" buttons={
-          <Button icon="question"onClick={() =>
+          <Button icon="question" onClick={() =>
             act('guide')} />
         }>
           {sortedReagents.map((reagent) => (
@@ -214,7 +215,7 @@ export const ChemDispenser = (props, context) => {
               disabled={!data.has_beaker}
               onClick={() => act('eject')} />
           }>
-          {data.has_beaker? (
+          {data.has_beaker ? (
             <Section title={`${data.beaker.name} - ${data.beaker.volume} / ${data.beaker.capacity}`}>
               <ReagentContents
                 reagents={data.beaker.data}

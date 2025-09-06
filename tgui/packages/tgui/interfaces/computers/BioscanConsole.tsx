@@ -2,9 +2,10 @@
  * @file
  * @license MIT
  */
-import { BooleanLike } from "../../../common/react";
+import { Button, Collapsible, Input, LabeledList, Section } from "tgui-core/components";
+import { BooleanLike } from "tgui-core/react";
+
 import { useBackend } from "../../backend";
-import { Button, Collapsible, Input, LabeledList, Section } from "../../components";
 import { Window } from "../../layouts";
 
 interface BioscanConsoleData {
@@ -35,8 +36,8 @@ interface BioscanLevel {
   complex_dead: number;
 }
 
-export const BioscanConsole = (props, context) => {
-  let { act, data } = useBackend<BioscanConsoleData>(context);
+export const BioscanConsole = (props) => {
+  let { act, data } = useBackend<BioscanConsoleData>();
   return (
     <Window
       title="Bioscan Control Console"
@@ -46,11 +47,11 @@ export const BioscanConsole = (props, context) => {
         <Section title="Controls">
           <LabeledList>
             <LabeledList.Item label="Network Key">
-              <Input value={data.network} onEnter={(_, val) => act('set_network', { network: val })} />
+              <Input value={data.network} onEnter={(val) => act('set_network', { network: val })} />
             </LabeledList.Item>
             <LabeledList.Item label="Scan">
               <Button
-                content={data.scan_ready? "Scan" : "Charging"}
+                content={data.scan_ready ? "Scan" : "Charging"}
                 icon="undo"
                 disabled={!data.scan_ready}
                 onClick={() => act('scan')} />
@@ -70,7 +71,7 @@ export const BioscanConsole = (props, context) => {
                       {antenna.level}
                     </LabeledList.Item>
                     <LabeledList.Item label="Floor Bolts">
-                      {antenna.anchor? "Anchored" : "Unanchored"}
+                      {antenna.anchor ? "Anchored" : "Unanchored"}
                     </LabeledList.Item>
                   </LabeledList>
                 </Collapsible>
@@ -79,7 +80,7 @@ export const BioscanConsole = (props, context) => {
           </Collapsible>
         </Section>
         <Section title="Results">
-          {data.scan? (
+          {data.scan ? (
             data.scan.levels.map((level) => (
               <Collapsible title={level.id} key={level.id} color="transparent">
                 <Section>

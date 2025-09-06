@@ -2,8 +2,8 @@
  * @file
  * @license MIT
  */
-import { BooleanLike } from "common/react";
-import { Button, Section, Stack, Table } from "../../components";
+import { Button, Section, Stack, Table } from "tgui-core/components";
+import { BooleanLike } from "tgui-core/react";
 
 export interface GamePreferenceTogglesMiddleware {
   readonly toggles: Record<string, GamePreferenceToggleSchema>;
@@ -29,15 +29,15 @@ const collectPreferenceToggles = (toggles: Record<string, GamePreferenceToggleSc
   let collected: Record<string, string[]> = {};
   Object.values(toggles).sort((a, b) => a.priority === b.priority
     ? a.name.localeCompare(b.name) : (b.priority - a.priority)).forEach((toggle) => {
-    if (!collected[toggle.category]) {
-      collected[toggle.category] = [];
-    }
-    collected[toggle.category].push(toggle.key);
-  });
+      if (!collected[toggle.category]) {
+        collected[toggle.category] = [];
+      }
+      collected[toggle.category].push(toggle.key);
+    });
   return collected;
 };
 
-export const GamePreferenceToggleScreen = (props: GamePreferenceToggleScreenProps, context) => {
+export const GamePreferenceToggleScreen = (props: GamePreferenceToggleScreenProps) => {
   const collected: Record<string, string[]> = collectPreferenceToggles(props.toggles);
   return (
     <Section fill scrollable>
@@ -48,7 +48,7 @@ export const GamePreferenceToggleScreen = (props: GamePreferenceToggleScreenProp
           )
         ).map(([category, keys]) => (
           <Stack.Item key={category}>
-            <h2 style={{ "text-align": "center" }}>{category}</h2>
+            <h2 style={{ textAlign: "center" }}>{category}</h2>
             <hr />
             <Table>
               {keys.map((key) => {
@@ -61,7 +61,7 @@ export const GamePreferenceToggleScreen = (props: GamePreferenceToggleScreenProp
                     <Table.Cell>
                       <Button.Checkbox checked={props.states[toggle.key]}
                         onClick={() => props.toggleAct(toggle.key, !props.states[toggle.key])}
-                        content={props.states[toggle.key]? toggle.enabled : toggle.disabled}
+                        content={props.states[toggle.key] ? toggle.enabled : toggle.disabled}
                         color="transparent" fluid />
                       {/* <Stack fill>
                         <Stack.Item grow={1}>

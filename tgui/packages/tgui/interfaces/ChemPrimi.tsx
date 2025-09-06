@@ -1,6 +1,7 @@
-import { Color } from '../../common/colorLegacy';
+import { Color } from 'tgui-core/color';
+import { AnimatedNumber, Box, Button, Section, Table } from 'tgui-core/components';
+
 import { useBackend } from '../backend';
-import { AnimatedNumber, Box, Button, Section, Table } from '../components';
 import { Window } from '../layouts';
 
 type ChemMasterData = {
@@ -65,8 +66,8 @@ type StyleData = {
 };
 
 
-export const ChemPrimi = (props, context) => {
-  const { data } = useBackend<ChemMasterData>(context);
+export const ChemPrimi = (props) => {
+  const { data } = useBackend<ChemMasterData>();
   const { screen } = data;
   return (
     <Window width={465} height={550}>
@@ -77,8 +78,8 @@ export const ChemPrimi = (props, context) => {
   );
 };
 
-const ChemPrimiContent = (props, context) => {
-  const { act, data } = useBackend<ChemMasterData>(context);
+const ChemPrimiContent = (props) => {
+  const { act, data } = useBackend<ChemMasterData>();
   const {
     screen,
     beaker_contents = [],
@@ -164,8 +165,8 @@ const ChemPrimiContent = (props, context) => {
 
 const ChemicalBuffer = Table;
 
-const ChemicalBufferEntry = (props, context) => {
-  const { act } = useBackend<ChemMasterData>(context);
+const ChemicalBufferEntry = (props) => {
+  const { act } = useBackend<ChemMasterData>();
   const { chemical, transferTo } = props;
   return (
     <Table.Row key={chemical.id}>

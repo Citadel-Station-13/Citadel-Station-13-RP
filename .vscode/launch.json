@@ -7,14 +7,15 @@
 			"name": "Launch DreamDaemon",
 			"preLaunchTask": "Build All",
 			"dmb": "${workspaceFolder}/${command:CurrentDMB}",
-			"dreamDaemon": false
+			"dreamDaemon": true
 		},
 		{
 			"type": "byond",
 			"request": "launch",
 			"name": "Launch DreamSeeker",
 			"preLaunchTask": "Build All",
-			"dmb": "${workspaceFolder}/${command:CurrentDMB}"
+			"dmb": "${workspaceFolder}/${command:CurrentDMB}",
+			"dreamDaemon": false
 		},
 		{
 			"type": "opendream",

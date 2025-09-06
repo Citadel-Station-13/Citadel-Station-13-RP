@@ -24,7 +24,7 @@
 
 /// Returns a UI status such that the dead will be able to watch, but not interact.
 /proc/ui_status_only_living(mob/user, source)
-	if(isliving(user))
+	if (isliving(user))
 		return UI_INTERACTIVE
 
 	if(isobserver(user))
@@ -35,6 +35,7 @@
 		// Regular ghosts can always at least view if in range.
 		var/datum/client_interface/client = GET_CLIENT(user)
 		if(client)
+			// todo: in view range for zooming
 			if(get_dist(source, user) < max(client.current_viewport_width, client.current_viewport_height))
 				return UI_UPDATE
 
@@ -49,7 +50,9 @@
 
 /// Returns a UI status such that those without blocked hands will be able to interact,
 /// but everyone else can only watch.
-// /proc/ui_status_user_has_free_hands(mob/user, atom/source)
+// /proc/ui_status_user_has_free_hands(mob/user, atom/source, allowed_source)
+// 	if(allowed_source)
+// 		return HAS_TRAIT_NOT_FROM(user, TRAIT_HANDS_BLOCKED, allowed_source) ? UI_UPDATE : UI_INTERACTIVE
 // 	return HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) ? UI_UPDATE : UI_INTERACTIVE
 
 /// Returns a UI status such that advanced tool users will be able to interact,
@@ -98,7 +101,7 @@
 		return UI_UPDATE
 
 	var/mob/living/living_user = user
-	return (living_user.lying == TRUE && living_user.stat == CONSCIOUS) \
+	return (living_user.lying && living_user.stat == CONSCIOUS) \
 		? UI_INTERACTIVE \
 		: UI_UPDATE
 
@@ -107,4 +110,13 @@
 /proc/ui_status_user_strictly_adjacent(mob/user, atom/target)
 	if(get_dist(target, user) > 1)
 		return UI_CLOSE
+
 	return UI_INTERACTIVE
+
+/// Return UI_INTERACTIVE if the user is inside the target atom, whether they can see it or not.
+/// Return UI_CLOSE otherwise.
+/proc/ui_status_user_inside(mob/user, atom/target)
+	if(target.contains(user))
+		return UI_INTERACTIVE
+
+	return UI_CLOSE
