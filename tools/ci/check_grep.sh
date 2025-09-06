@@ -49,6 +49,12 @@ part() {
 
 section "map issues"
 
+part "merge conflicts"
+if $grep -U '/obj/merge_conflict_marker' $map_files;    then
+    echo
+    echo -e "${RED}ERROR: Merge conflict markers in maps. Fix it."
+	st=1
+fi;
 part "TGM"
 if $grep -U '^".+" = \(.+\)' $map_files;	then
 	echo
