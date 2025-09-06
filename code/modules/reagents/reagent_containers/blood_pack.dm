@@ -1,6 +1,6 @@
 /obj/item/storage/box/bloodpacks
-	name = "blood packs bags"
-	desc = "This box contains blood packs."
+	name = "empty blood packs bags"
+	desc = "This box contains empty blood packs."
 	icon_state = "sterile"
 
 /obj/item/storage/box/bloodpacks/Initialize(mapload)
@@ -12,6 +12,22 @@
 		new /obj/item/reagent_containers/blood/empty(src)
 		new /obj/item/reagent_containers/blood/empty(src)
 		new /obj/item/reagent_containers/blood/empty(src)
+
+/obj/item/storage/box/bloodpacks_filled
+	name = "blood packs bags"
+	desc = "This box contains blood packs."
+	icon_state = "sterile"
+
+/obj/item/storage/box/bloodpacks_filled/Initialize(mapload)
+		. = ..()
+		new /obj/item/reagent_containers/blood/APlus(src)
+		new /obj/item/reagent_containers/blood/AMinus(src)
+		new /obj/item/reagent_containers/blood/BPlus(src)
+		new /obj/item/reagent_containers/blood/BMinus(src)
+		new /obj/item/reagent_containers/blood/ABMinus(src)
+		new /obj/item/reagent_containers/blood/OPlus(src)
+		new /obj/item/reagent_containers/blood/OMinus(src)
+
 
 /obj/item/reagent_containers/blood
 	name = "IV pack"
