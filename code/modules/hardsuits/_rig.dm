@@ -835,7 +835,7 @@
 			to_chat(user, "<span class='danger'>Unauthorized user. Access denied.</span>")
 			return 0
 
-	else if(!ai_override_enabled)
+	else if(!ai_override_enabled && !control_overridden)
 		to_chat(user, "<span class='danger'>Synthetic access disabled. Please consult hardware provider.</span>")
 		return 0
 
