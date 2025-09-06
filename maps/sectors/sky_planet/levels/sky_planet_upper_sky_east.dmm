@@ -122,16 +122,6 @@
 /obj/effect/floor_decal/techfloor/hole,
 /turf/simulated/floor/outdoors/rocks,
 /area/sector/sky_planet/rock)
-"en" = (
-/obj/effect/floor_decal/rust/mono_rusted3{
-	color = "#b88a3b"
-	},
-/obj/effect/floor_decal/industrial/warning/dust{
-	pixel_y = 13
-	},
-/obj/structure/table/bench/wooden,
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/sky)
 "ev" = (
 /turf/simulated/floor/reinforced/outdoors,
 /area/sector/sky_planet/sky)
@@ -254,16 +244,6 @@
 "jr" = (
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/rock)
-"jK" = (
-/obj/effect/floor_decal/rust/mono_rusted3{
-	color = "#b88a3b"
-	},
-/obj/effect/floor_decal/industrial/warning/dust{
-	pixel_y = 13
-	},
-/obj/structure/table/bench/wooden,
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/rock)
 "jT" = (
 /obj/item/clothing/accessory/collar/fluff/goldenstring,
 /turf/simulated/floor/outdoors/ash_sand/indoors,
@@ -301,9 +281,6 @@
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/sky)
 "li" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	pixel_y = 13
-	},
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/rock)
@@ -365,13 +342,6 @@
 /obj/random/unidentified_medicine,
 /turf/simulated/floor/plating/indoors,
 /area/sector/sky_planet/sky)
-"nD" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	pixel_y = 13
-	},
-/obj/structure/sandbag,
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/sky)
 "nW" = (
 /obj/item/digestion_remains/ribcage,
 /turf/simulated/floor/outdoors/ash_sand/indoors,
@@ -381,9 +351,6 @@
 /turf/simulated/floor/outdoors/rocks,
 /area/sector/sky_planet/rock)
 "om" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	pixel_y = 13
-	},
 /obj/structure/reagent_dispensers/fueltank/high,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/sector/sky_planet/sky)
@@ -708,16 +675,6 @@
 "Af" = (
 /turf/simulated/floor/carpet/patterened/green,
 /area/sector/sky_planet/rock)
-"Al" = (
-/obj/effect/floor_decal/rust/mono_rusted3{
-	color = "#b88a3b"
-	},
-/obj/effect/floor_decal/industrial/warning/dust{
-	pixel_y = 13
-	},
-/obj/structure/sandbag,
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/sky)
 "At" = (
 /obj/effect/floor_decal/rust/mono_rusted3{
 	color = "#b88a3b"
@@ -737,9 +694,6 @@
 /turf/simulated/floor/tiled/techfloor/lythios43c/indoors,
 /area/sector/sky_planet/sky)
 "AK" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	pixel_y = 13
-	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/sector/sky_planet/sky)
 "AQ" = (
@@ -1018,12 +972,6 @@
 	},
 /turf/simulated/floor/tiled/eris/cafe,
 /area/sector/sky_planet/sky)
-"MF" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	pixel_y = 13
-	},
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/sky)
 "MM" = (
 /obj/machinery/light/small/old{
 	dir = 8
@@ -1083,12 +1031,6 @@
 /turf/simulated/floor/tiled/techfloor/monogrid{
 	outdoors = 1
 	},
-/area/sector/sky_planet/rock)
-"Pb" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	pixel_y = 13
-	},
-/turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/rock)
 "Ph" = (
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -1243,15 +1185,6 @@
 /obj/item/trash/rust_can,
 /turf/simulated/floor/plating/indoors,
 /area/sector/sky_planet/sky)
-"Vf" = (
-/obj/effect/floor_decal/rust/mono_rusted3{
-	color = "#b88a3b"
-	},
-/obj/effect/floor_decal/industrial/warning/dust{
-	pixel_y = 13
-	},
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/rock)
 "Vv" = (
 /obj/random/multiple/large_corp_crate,
 /turf/simulated/floor/carpet/patterened/brown,
@@ -1261,15 +1194,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood/sif/broken,
-/area/sector/sky_planet/sky)
-"Vy" = (
-/obj/effect/floor_decal/rust/mono_rusted3{
-	color = "#b88a3b"
-	},
-/obj/effect/floor_decal/industrial/warning/dust{
-	pixel_y = 13
-	},
-/turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/sky)
 "Wg" = (
 /obj/structure/bed/holobed,
@@ -1282,9 +1206,6 @@
 "Wu" = (
 /obj/effect/floor_decal/rust/mono_rusted3{
 	color = "#b88a3b"
-	},
-/obj/effect/floor_decal/industrial/warning/dust{
-	pixel_y = 13
 	},
 /mob/living/simple_mob/humanoid/taj_guerilla/insurgent/dual_pistols,
 /turf/simulated/floor/tiled/monodark,
@@ -1393,7 +1314,7 @@ Oh
 Oh
 ev
 El
-MF
+El
 El
 ev
 Oh
@@ -1587,7 +1508,7 @@ Oh
 Oh
 ev
 BE
-Vy
+BE
 BE
 ev
 Oh
@@ -1781,7 +1702,7 @@ Oh
 Oh
 ev
 BE
-Vy
+BE
 BE
 ev
 Oh
@@ -1975,7 +1896,7 @@ Oh
 Oh
 Sz
 Sz
-MF
+El
 El
 ev
 Oh
@@ -2169,7 +2090,7 @@ Oh
 Oh
 Oh
 AF
-Vy
+BE
 BE
 ev
 Oh
@@ -2751,7 +2672,7 @@ Oh
 Oh
 Oh
 AF
-Vy
+BE
 BE
 ev
 Oh
@@ -2945,7 +2866,7 @@ Oh
 Oh
 Sz
 Sz
-MF
+El
 BE
 ev
 Oh
@@ -3139,7 +3060,7 @@ Oh
 Oh
 ev
 El
-MF
+El
 BE
 ev
 Oh
@@ -3333,7 +3254,7 @@ bV
 bV
 ev
 BE
-Vy
+BE
 El
 ev
 Oh
@@ -3527,7 +3448,7 @@ BE
 El
 El
 El
-MF
+El
 BE
 ev
 Oh
@@ -3721,7 +3642,7 @@ El
 BE
 BE
 BE
-MF
+El
 El
 ev
 Oh
@@ -3915,7 +3836,7 @@ bV
 bV
 ev
 BE
-Vy
+BE
 El
 ev
 Oh
@@ -4109,7 +4030,7 @@ Sz
 Sz
 ev
 BE
-Vy
+BE
 BE
 ev
 Oh
@@ -4303,7 +4224,7 @@ Oh
 Oh
 ev
 El
-MF
+El
 El
 ev
 Oh
@@ -4497,7 +4418,7 @@ Oh
 Oh
 ev
 BE
-Vy
+BE
 BE
 ev
 Oh
@@ -4691,7 +4612,7 @@ Oh
 Oh
 ev
 El
-MF
+El
 El
 ev
 Oh
@@ -4885,7 +4806,7 @@ Oh
 Oh
 ev
 El
-MF
+El
 El
 Sz
 Oh
@@ -5079,7 +5000,7 @@ Oh
 Oh
 ev
 BE
-Vy
+BE
 AF
 Sz
 Oh
@@ -5273,7 +5194,7 @@ Oh
 Oh
 ev
 BE
-Vy
+BE
 BE
 Sz
 Oh
@@ -5467,7 +5388,7 @@ Oh
 Oh
 ev
 BE
-Vy
+BE
 El
 Sz
 Oh
@@ -5661,7 +5582,7 @@ Oh
 Sz
 ev
 BE
-Vy
+BE
 BE
 Sz
 Oh
@@ -5855,7 +5776,7 @@ Oh
 Oh
 ev
 El
-MF
+El
 El
 ev
 Oh
@@ -6049,7 +5970,7 @@ bV
 bV
 ev
 BE
-Vy
+BE
 El
 ev
 Oh
@@ -6243,7 +6164,7 @@ El
 El
 Sz
 El
-MF
+El
 BE
 ev
 Oh
@@ -6437,7 +6358,7 @@ El
 Sz
 Oh
 Sz
-MF
+El
 BE
 ev
 Oh
@@ -6631,7 +6552,7 @@ bV
 bV
 Sz
 BE
-Vy
+BE
 El
 ev
 Oh
@@ -6825,7 +6746,7 @@ Oh
 Oh
 Sz
 BE
-Vy
+BE
 BE
 ev
 Oh
@@ -7019,7 +6940,7 @@ Oh
 Oh
 ev
 El
-MF
+El
 El
 ev
 Oh
@@ -7213,7 +7134,7 @@ Oh
 Oh
 ev
 El
-MF
+El
 El
 ev
 Oh
@@ -7407,7 +7328,7 @@ Oh
 Oh
 ev
 BE
-Vy
+BE
 BE
 ev
 Oh
@@ -7601,7 +7522,7 @@ Oh
 Oh
 ev
 BE
-Vy
+BE
 BE
 ev
 Oh
@@ -7795,7 +7716,7 @@ Oh
 Oh
 ev
 El
-MF
+El
 El
 ev
 Oh
@@ -7989,7 +7910,7 @@ Oh
 Oh
 ev
 BE
-Vy
+BE
 BE
 ev
 Oh
@@ -8183,7 +8104,7 @@ Oh
 Oh
 ev
 El
-MF
+El
 El
 ev
 Oh
@@ -8377,7 +8298,7 @@ Oh
 Oh
 ev
 El
-MF
+El
 El
 ev
 Oh
@@ -8571,7 +8492,7 @@ Oh
 Oh
 ev
 BE
-Vy
+BE
 BE
 ev
 Oh
@@ -8765,7 +8686,7 @@ Oh
 Oh
 ev
 BE
-Vy
+BE
 BE
 ev
 Oh
@@ -8959,7 +8880,7 @@ Oh
 Oh
 ev
 El
-MF
+El
 El
 ev
 Oh
@@ -9153,7 +9074,7 @@ Oh
 Oh
 ev
 BE
-Vy
+BE
 BE
 ev
 Oh
@@ -9347,7 +9268,7 @@ Oh
 Oh
 ev
 El
-MF
+El
 El
 ev
 Oh
@@ -9541,7 +9462,7 @@ Oh
 Oh
 ev
 jr
-Pb
+jr
 jr
 ev
 Oh
@@ -9735,7 +9656,7 @@ dq
 dq
 YW
 vf
-Vf
+vf
 vf
 YW
 dq
@@ -9929,7 +9850,7 @@ dq
 dq
 YW
 vf
-Vf
+vf
 vf
 YW
 dq
@@ -10123,7 +10044,7 @@ dq
 dq
 YW
 jr
-Pb
+jr
 jr
 YW
 Lq
@@ -10317,7 +10238,7 @@ dq
 dq
 YW
 vf
-Vf
+vf
 vf
 YW
 Lq
@@ -10511,7 +10432,7 @@ dq
 dq
 YW
 jr
-Pb
+jr
 jr
 YW
 Lq
@@ -10705,7 +10626,7 @@ dq
 dq
 YW
 jr
-Pb
+jr
 jr
 YW
 Lq
@@ -10899,7 +10820,7 @@ dq
 Lq
 YW
 jr
-Pb
+jr
 jr
 QO
 YW
@@ -11681,7 +11602,7 @@ YW
 Sb
 pM
 jr
-Pb
+jr
 El
 bV
 Oh
@@ -11875,7 +11796,7 @@ Lq
 Lq
 pM
 jr
-MF
+El
 El
 bV
 Oh
@@ -12069,7 +11990,7 @@ dq
 dq
 pM
 vf
-Vy
+BE
 BE
 bV
 Oh
@@ -12263,7 +12184,7 @@ dq
 dq
 pM
 BE
-Vy
+BE
 BE
 bV
 Oh
@@ -12457,7 +12378,7 @@ dq
 dq
 pM
 El
-MF
+El
 El
 bV
 Oh
@@ -12651,7 +12572,7 @@ dq
 dq
 pM
 BE
-Vy
+BE
 BE
 bV
 Oh
@@ -12845,7 +12766,7 @@ dq
 dq
 pM
 El
-MF
+El
 El
 bV
 Oh
@@ -13039,7 +12960,7 @@ dq
 dq
 pM
 jr
-MF
+El
 El
 bV
 Oh
@@ -13233,7 +13154,7 @@ dq
 dq
 pM
 BE
-Vy
+BE
 BE
 bV
 Oh
@@ -13427,7 +13348,7 @@ dq
 dq
 pM
 BE
-Vy
+BE
 BE
 bV
 Oh
@@ -13621,7 +13542,7 @@ dq
 dq
 bV
 El
-MF
+El
 El
 bV
 Oh
@@ -13815,7 +13736,7 @@ dq
 dq
 bV
 BE
-Vy
+BE
 BE
 bV
 Oh
@@ -14009,7 +13930,7 @@ dq
 dq
 bV
 El
-MF
+El
 El
 bV
 Oh
@@ -14203,7 +14124,7 @@ dq
 dq
 bV
 El
-MF
+El
 El
 bV
 Oh
@@ -14397,7 +14318,7 @@ dq
 dq
 pM
 El
-MF
+El
 El
 bV
 Oh
@@ -14591,7 +14512,7 @@ dq
 dq
 pM
 BE
-Vy
+BE
 BE
 bV
 Oh
@@ -14785,7 +14706,7 @@ dq
 dq
 pM
 BE
-Vy
+BE
 BE
 bV
 Oh
@@ -14979,7 +14900,7 @@ dq
 dq
 pM
 El
-MF
+El
 El
 bV
 Oh
@@ -15173,7 +15094,7 @@ dq
 dq
 pM
 BE
-Vy
+BE
 BE
 bV
 Oh
@@ -15367,7 +15288,7 @@ dq
 dq
 pM
 jr
-MF
+El
 El
 bV
 Oh
@@ -15561,7 +15482,7 @@ dq
 dq
 pM
 jr
-MF
+El
 El
 bV
 Oh
@@ -15755,7 +15676,7 @@ dq
 dq
 pM
 vf
-Vy
+BE
 BE
 bV
 Oh
@@ -15949,7 +15870,7 @@ dq
 dq
 pM
 vf
-Vf
+vf
 BE
 bV
 Oh
@@ -16143,7 +16064,7 @@ dq
 dq
 pM
 jr
-Pb
+jr
 El
 bV
 Oh
@@ -16337,7 +16258,7 @@ dq
 dq
 pM
 vf
-Vf
+vf
 vf
 bV
 Oh
@@ -16531,7 +16452,7 @@ dq
 dq
 pM
 jr
-Pb
+jr
 jr
 bV
 Oh
@@ -16725,7 +16646,7 @@ dq
 dq
 pM
 jr
-Pb
+jr
 jr
 bV
 Oh
@@ -16919,7 +16840,7 @@ dq
 dq
 pM
 jr
-Pb
+jr
 jr
 bV
 Oh
@@ -17113,7 +17034,7 @@ dq
 dq
 pM
 vf
-Vf
+vf
 vf
 bV
 Oh
@@ -17307,7 +17228,7 @@ dq
 dq
 pM
 vf
-Vf
+vf
 vf
 bV
 Oh
@@ -17501,7 +17422,7 @@ dq
 dq
 pM
 jr
-Pb
+jr
 jr
 bV
 Oh
@@ -17695,7 +17616,7 @@ dq
 dq
 pM
 vf
-Vf
+vf
 BE
 bV
 Oh
@@ -17889,7 +17810,7 @@ dq
 dq
 pM
 jr
-Pb
+jr
 El
 bV
 Oh
@@ -18083,7 +18004,7 @@ dq
 dq
 pM
 jr
-Pb
+jr
 El
 bV
 Oh
@@ -18277,7 +18198,7 @@ dq
 dq
 pM
 vf
-Vf
+vf
 BE
 bV
 Oh
@@ -18471,7 +18392,7 @@ dq
 dq
 PB
 Xm
-Al
+FT
 BE
 bV
 Oh
@@ -18665,7 +18586,7 @@ dq
 dq
 fI
 kg
-nD
+cA
 El
 bV
 Oh
@@ -18859,7 +18780,7 @@ dq
 dq
 pM
 vf
-Vy
+BE
 BE
 bV
 Oh
@@ -19053,7 +18974,7 @@ dq
 dq
 pM
 jr
-MF
+El
 El
 bV
 Oh
@@ -19247,7 +19168,7 @@ dq
 dq
 pM
 El
-nD
+cA
 cA
 eC
 Oh
@@ -19441,7 +19362,7 @@ dq
 dq
 pM
 El
-MF
+El
 El
 eC
 Oh
@@ -19635,7 +19556,7 @@ dq
 dq
 pM
 BE
-Vy
+BE
 Mn
 eC
 Oh
@@ -19829,7 +19750,7 @@ dq
 dq
 pM
 BE
-Vy
+BE
 gi
 eC
 Oh
@@ -20023,7 +19944,7 @@ Lq
 Ef
 pM
 El
-MF
+El
 FH
 eC
 Oh
@@ -20217,7 +20138,7 @@ Lq
 Lq
 pM
 BE
-en
+gi
 gi
 eC
 Oh
@@ -20411,7 +20332,7 @@ Lf
 Lf
 px
 jr
-MF
+El
 sg
 eC
 Oh
@@ -20993,7 +20914,7 @@ Ac
 aN
 BW
 vf
-Vf
+vf
 uM
 eC
 Oh
@@ -21187,7 +21108,7 @@ FY
 aN
 BW
 jr
-Pb
+jr
 Rz
 eC
 Oh
@@ -21381,7 +21302,7 @@ cY
 cY
 OS
 vf
-Vf
+vf
 Zy
 eC
 Oh
@@ -21575,7 +21496,7 @@ oe
 Lq
 pM
 jr
-Pb
+jr
 jr
 eC
 Oh
@@ -21769,7 +21690,7 @@ Lq
 oe
 pM
 jr
-Pb
+jr
 jr
 eC
 Oh
@@ -21963,7 +21884,7 @@ Lf
 Lf
 px
 jr
-Pb
+jr
 SG
 eC
 Oh
@@ -22157,7 +22078,7 @@ Ac
 Hp
 Wv
 vf
-Vf
+vf
 vf
 eC
 Oh
@@ -22351,7 +22272,7 @@ Af
 Kk
 BW
 vf
-jK
+At
 At
 eC
 Oh
@@ -22545,7 +22466,7 @@ kk
 EG
 BW
 jr
-Pb
+jr
 XS
 eC
 Oh
@@ -22739,7 +22660,7 @@ Hp
 EG
 BW
 vf
-jK
+At
 gi
 eC
 Oh
@@ -22933,7 +22854,7 @@ Vv
 xE
 BW
 jr
-Pb
+jr
 El
 eC
 Oh
@@ -23127,7 +23048,7 @@ cY
 cY
 OS
 SG
-Pb
+jr
 El
 eC
 Oh
@@ -23321,7 +23242,7 @@ bl
 bl
 BJ
 vf
-Vf
+vf
 BE
 eC
 Oh
@@ -23515,7 +23436,7 @@ dq
 bl
 BJ
 vf
-Vy
+BE
 BE
 eC
 Oh
@@ -23709,7 +23630,7 @@ dq
 dq
 pM
 XO
-MF
+El
 El
 eC
 Oh
@@ -23903,7 +23824,7 @@ dq
 dq
 YW
 BE
-Vy
+BE
 BE
 eC
 Oh
@@ -24097,7 +24018,7 @@ dq
 dq
 ev
 El
-MF
+El
 El
 eC
 Oh
@@ -24291,7 +24212,7 @@ dq
 Oh
 ev
 El
-MF
+El
 El
 eC
 Oh
@@ -24485,7 +24406,7 @@ dq
 Oh
 ev
 El
-MF
+El
 xo
 eC
 Oh
@@ -24679,7 +24600,7 @@ Oh
 Oh
 ev
 BE
-Vy
+BE
 gi
 Yk
 Oh
@@ -24873,7 +24794,7 @@ Oh
 Oh
 Yk
 BE
-Vy
+BE
 gi
 Yk
 Oh
@@ -25067,7 +24988,7 @@ Oh
 Oh
 Yk
 xo
-MF
+El
 El
 Yk
 Oh
@@ -25261,7 +25182,7 @@ Oh
 Oh
 Yk
 Mn
-Vy
+BE
 BE
 Yk
 Oh
@@ -25455,7 +25376,7 @@ Oh
 Oh
 Yk
 cA
-MF
+El
 El
 Yk
 Oh
@@ -25649,7 +25570,7 @@ Oh
 Oh
 ev
 El
-MF
+El
 El
 Yk
 Oh
@@ -25843,7 +25764,7 @@ Oh
 Oh
 ev
 BE
-Vy
+BE
 Mn
 Yk
 Oh
@@ -26037,7 +25958,7 @@ bV
 Oh
 ev
 BE
-Vy
+BE
 FT
 Yk
 Oh
@@ -26231,7 +26152,7 @@ bV
 bV
 ev
 El
-MF
+El
 El
 ev
 Sz
@@ -26425,7 +26346,7 @@ xU
 bV
 ev
 BE
-Vy
+BE
 BE
 ev
 Oh
@@ -26619,7 +26540,7 @@ mb
 mb
 ev
 El
-MF
+El
 El
 ev
 bV
@@ -26813,7 +26734,7 @@ xU
 xU
 ev
 El
-MF
+El
 El
 ev
 bV
@@ -27007,7 +26928,7 @@ mb
 mb
 ev
 El
-MF
+El
 El
 ev
 ev
@@ -27201,7 +27122,7 @@ xU
 xU
 ev
 BE
-Vy
+BE
 BE
 ev
 ev
@@ -27395,7 +27316,7 @@ mb
 mb
 ev
 BE
-Vy
+BE
 BE
 ev
 bV
@@ -27589,7 +27510,7 @@ xU
 xU
 ev
 El
-MF
+El
 El
 ev
 bV
@@ -27783,7 +27704,7 @@ bV
 bV
 ev
 BE
-Vy
+BE
 BE
 ev
 ev
@@ -27977,7 +27898,7 @@ bV
 hv
 ev
 El
-MF
+El
 El
 ev
 ev
@@ -28171,7 +28092,7 @@ bV
 hv
 ev
 El
-MF
+El
 El
 ev
 ev
@@ -28365,7 +28286,7 @@ bV
 bV
 ev
 BE
-Vy
+BE
 BE
 ev
 ev
@@ -28559,7 +28480,7 @@ mb
 mb
 ev
 BE
-Vy
+BE
 BE
 ev
 bV
@@ -28753,7 +28674,7 @@ xU
 xU
 ev
 El
-MF
+El
 El
 ev
 bV
@@ -28947,7 +28868,7 @@ mb
 mb
 ev
 BE
-Vy
+BE
 BE
 ev
 ev
@@ -29141,7 +29062,7 @@ xU
 xU
 ev
 El
-MF
+El
 El
 ev
 ev
@@ -29335,7 +29256,7 @@ mb
 mb
 ev
 El
-MF
+El
 El
 ev
 bV
@@ -29529,7 +29450,7 @@ xU
 xU
 ev
 El
-MF
+El
 El
 ev
 bV
@@ -29723,7 +29644,7 @@ mb
 bV
 ev
 BE
-Vy
+BE
 BE
 ev
 Oh
@@ -29917,7 +29838,7 @@ bV
 bV
 ev
 BE
-Vy
+BE
 BE
 ev
 Sz
@@ -30111,7 +30032,7 @@ bV
 Oh
 ev
 El
-MF
+El
 El
 ev
 Oh
@@ -30305,7 +30226,7 @@ Oh
 Oh
 ev
 BE
-Vy
+BE
 BE
 ev
 Oh
@@ -30499,7 +30420,7 @@ Oh
 Oh
 ev
 El
-MF
+El
 El
 ev
 Oh
@@ -30693,7 +30614,7 @@ Oh
 Oh
 ev
 El
-MF
+El
 El
 ev
 Oh
@@ -30887,7 +30808,7 @@ Oh
 Oh
 ev
 BE
-Vy
+BE
 BE
 ev
 Oh
@@ -31081,7 +31002,7 @@ Oh
 Oh
 ev
 BE
-Vy
+BE
 BE
 ev
 Oh
@@ -31275,7 +31196,7 @@ Oh
 Oh
 ev
 El
-MF
+El
 El
 ev
 Oh
@@ -31469,7 +31390,7 @@ Oh
 Oh
 ev
 BE
-Vy
+BE
 BE
 ev
 Oh
@@ -31663,7 +31584,7 @@ Oh
 Oh
 ev
 El
-MF
+El
 El
 ev
 Oh
@@ -31857,7 +31778,7 @@ Oh
 Oh
 ev
 El
-MF
+El
 El
 ev
 Oh
@@ -32051,7 +31972,7 @@ Oh
 Oh
 ev
 El
-MF
+El
 El
 ev
 Oh
@@ -32245,7 +32166,7 @@ Oh
 Oh
 Sz
 BE
-Vy
+BE
 BE
 ev
 Oh
@@ -32439,7 +32360,7 @@ Oh
 Oh
 Sz
 BE
-Vy
+BE
 BE
 ev
 Oh
