@@ -16,6 +16,7 @@
 		/datum/shuttle/autodock/overmap/trade/tug,
 		/datum/shuttle/autodock/overmap/trade/utilitymicro,
 		/datum/shuttle/autodock/overmap/trade/runabout,
+		/datum/shuttle/autodock/overmap/trade/salvager,
 	)
 
 /datum/map_level/sector/nebula_tradeport

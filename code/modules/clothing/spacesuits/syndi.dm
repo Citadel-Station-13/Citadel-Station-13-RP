@@ -134,3 +134,15 @@
 	name = "black engineering space suit"
 	desc = "A black spacesuit sporting red and yellow stripes and durable plating. Robust, reliable, and slightly suspicious."
 	icon_state = "syndicate-black-engie"
+
+/obj/item/clothing/head/helmet/space/syndicate/orange/sdf
+	name = "SDF space helmet"
+	desc = "An orange helmet sporting clean lines and durable plating."
+	icon_state = "syndicate-helm-orange"
+	armor_type = /datum/armor/pirate/medium
+
+/obj/item/clothing/suit/space/syndicate/orange/sdf
+	name = "SDF space suit"
+	desc = "An orange spacesuit sporting clean lines and durable plating."
+	icon_state = "syndicate-orange"
+	armor_type = /datum/armor/pirate/medium

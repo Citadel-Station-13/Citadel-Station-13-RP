@@ -1,4 +1,18 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ab" = (
+/obj/machinery/telecomms/hub{
+	idle_power_usage = 1;
+	id = "OCULUM"
+	},
+/turf/simulated/floor/airless,
+/area/sector/sky_planet/occulum)
+"ac" = (
+/obj/structure/cable/white{
+	icon_state = "0-4"
+	},
+/obj/machinery/power/smes/buildable/offmap_spawn,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/occulum)
 "ad" = (
 /obj/structure/bed/pod,
 /obj/item/bedsheet/medical,
@@ -48,6 +62,12 @@
 /obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
+"al" = (
+/obj/machinery/atmospherics/component/unary/engine{
+	dir = 8
+	},
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/crescend)
 "am" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -76,16 +96,13 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/shop)
-"as" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
+"aq" = (
+/obj/effect/floor_decal/industrial/hatch,
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
 	},
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/outpost/office)
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/sky)
 "av" = (
 /obj/structure/bed/chair/office{
 	dir = 4
@@ -111,6 +128,12 @@
 /obj/item/bedsheet/medical,
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/sky_planet/station_city/shop)
+"aF" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/crescend)
 "aG" = (
 /mob/living/simple_mob/mechanical/hivebot,
 /obj/effect/floor_decal/corner/red/border{
@@ -138,6 +161,16 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/shop)
+"aL" = (
+/obj/structure/fuel_port{
+	pixel_y = -27
+	},
+/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/atmospherics/portables_connector{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/crescend)
 "aN" = (
 /obj/machinery/power/terminal,
 /obj/structure/cable/green,
@@ -158,12 +191,23 @@
 "aS" = (
 /turf/simulated/floor/reinforced,
 /area/sector/sky_planet/outpost/docking_port2)
+"aT" = (
+/obj/effect/floor_decal/techfloor/corner,
+/turf/simulated/floor/carpet/patterened/red,
+/area/sector/sky_planet/racing_station/dock)
 "aV" = (
 /obj/structure/bed/chair/comfy/brown{
 	dir = 1
 	},
 /turf/simulated/floor/wood/sif/indoors,
 /area/sector/sky_planet/racing_station/lounge)
+"aW" = (
+/obj/structure/table/steel_reinforced,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/occulum)
 "aX" = (
 /obj/effect/floor_decal/rust/mono_rusted3{
 	color = "#b88a3b"
@@ -239,6 +283,12 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/sector/sky_planet/station_city/offices)
+"bo" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 4
+	},
+/turf/simulated/wall/r_wall,
+/area/shuttle/crescend)
 "bp" = (
 /obj/structure/window/reinforced/full{
 	dir = 1
@@ -256,6 +306,15 @@
 	},
 /turf/simulated/floor/wood/sif/indoors,
 /area/sector/sky_planet/racing_station/lounge)
+"bt" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/patterened/red,
+/area/sector/sky_planet/racing_station/dock)
 "bv" = (
 /obj/effect/floor_decal/industrial/hatch,
 /obj/effect/floor_decal/rust/mono_rusted3{
@@ -263,6 +322,15 @@
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
+"bw" = (
+/obj/effect/floor_decal/carpet/blue{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/shuttle/crescend)
 "bx" = (
 /obj/effect/floor_decal/industrial/hatch,
 /obj/structure/flora/ausbushes/fullgrass,
@@ -307,15 +375,6 @@
 /obj/structure/table/bench/steel,
 /turf/simulated/floor/lino,
 /area/sector/sky_planet/outpost/office)
-"bH" = (
-/obj/structure/railing/grey{
-	dir = 4
-	},
-/obj/structure/window/reinforced/full{
-	dir = 4
-	},
-/turf/simulated/open/skyplanet,
-/area/sector/sky_planet/sky)
 "bI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/techfloor,
@@ -337,6 +396,10 @@
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
+"bQ" = (
+/obj/structure/lightpost/urban,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/sky)
 "bS" = (
 /obj/structure/bed/chair/office{
 	dir = 4
@@ -398,12 +461,26 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
+"cg" = (
+/obj/spawner/window/low_wall/firelocks,
+/obj/structure/curtain/open/black,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/occulum)
 "ci" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/racing_station/dock)
+"cj" = (
+/obj/structure/cable/green,
+/obj/machinery/power/port_gen/pacman{
+	anchored = 1
+	},
+/obj/item/stack/material/phoron,
+/obj/item/stack/material/phoron,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/outpost/engineering)
 "ck" = (
 /obj/structure/bed/pod,
 /obj/structure/bed{
@@ -442,6 +519,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
+"cs" = (
+/obj/machinery/door/airlock,
+/turf/simulated/floor/wood/indoors,
+/area/sector/sky_planet/occulum)
 "ct" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -459,6 +540,12 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/shuttle/paripari)
+"cz" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/wall/r_wall,
+/area/sector/sky_planet/occulum)
 "cD" = (
 /mob/living/simple_mob/mechanical/hivebot,
 /turf/simulated/floor/reinforced,
@@ -480,9 +567,6 @@
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/outpost/office)
 "cK" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	pixel_y = 13
-	},
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
@@ -524,13 +608,6 @@
 	},
 /turf/simulated/floor/wood/sif/indoors,
 /area/sector/sky_planet/racing_station/lounge)
-"cX" = (
-/obj/structure/metal_edge{
-	layer = 1
-	},
-/obj/structure/lattice,
-/turf/simulated/open,
-/area/sector/sky_planet/station_city/street)
 "da" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
@@ -579,6 +656,18 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/racing_station/dock)
+"dj" = (
+/obj/machinery/recharger/wallcharger{
+	pixel_x = -24;
+	pixel_y = 7
+	},
+/obj/machinery/recharger/wallcharger{
+	pixel_x = -24;
+	pixel_y = -3
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/crescend)
 "dl" = (
 /obj/structure/flora/fey/grass/grass8,
 /turf/simulated/floor/fey/forest_grass,
@@ -621,12 +710,29 @@
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/station_city/street)
+"dr" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/structure/bed/chair,
+/obj/machinery/light/poi{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/patterened/red,
+/area/sector/sky_planet/racing_station/dock)
 "ds" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/shop)
+"dt" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/crescend)
 "dv" = (
 /obj/structure/table/standard,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -637,6 +743,9 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/sector/sky_planet/station_city/offices)
+"dx" = (
+/turf/simulated/wall/r_wall/prepainted/medical,
+/area/shuttle/crescend)
 "dz" = (
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/sky_planet/outpost/medical)
@@ -655,6 +764,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/reinforced,
 /area/sector/sky_planet/racing_station/dock)
+"dJ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/wall/r_wall,
+/area/shuttle/crescend)
+"dK" = (
+/obj/structure/lightpost/urban,
+/turf/simulated/floor/reinforced/outdoors,
+/area/sector/sky_planet/sky)
 "dL" = (
 /turf/simulated/floor/reinforced,
 /area/sector/sky_planet/station_city/dock)
@@ -687,13 +804,21 @@
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/reinforced,
 /area/sector/sky_planet/racing_station/dock)
-"dR" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
+"dQ" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
 	},
-/obj/item/paper/pamphlet/voidlinedebut,
-/turf/simulated/floor/tiled/kafel_full/beige,
-/area/sector/sky_planet/racing_station/dock)
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/sky)
+"dW" = (
+/obj/structure/table/hardwoodtable,
+/obj/item/storage/box/donkpockets,
+/obj/item/storage/box/donkpockets,
+/turf/simulated/floor/carpet/turcarpet,
+/area/sector/sky_planet/occulum)
 "dX" = (
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/dock)
@@ -701,27 +826,12 @@
 /obj/structure/bed/double,
 /turf/simulated/floor/carpet/patterened,
 /area/sector/sky_planet/station_city/appartement2)
-"ec" = (
-/obj/effect/floor_decal/corner/red/bordercorner{
-	dir = 4
-	},
-/obj/effect/floor_decal/rust/mono_rusted3{
-	color = "#b88a3b"
-	},
-/turf/simulated/floor/tiled/monotechmaint,
-/area/sector/sky_planet/station_city/street)
 "ed" = (
 /obj/structure/bed/chair/bay/chair/padded/brown{
 	dir = 8
 	},
 /turf/simulated/floor/wood/sif/indoors,
 /area/sector/sky_planet/racing_station/lounge)
-"ee" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 9
-	},
-/turf/simulated/floor/tiled/kafel_full/beige,
-/area/sector/sky_planet/racing_station/dock)
 "ef" = (
 /obj/item/duct_tape_roll,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -746,18 +856,24 @@
 /mob/living/simple_mob/mechanical/hivebot,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
+"en" = (
+/obj/effect/floor_decal/industrial/danger/corner{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/tank/air{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/racing_station/dock)
+"ep" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/station_city/dock)
 "er" = (
 /obj/effect/floor_decal/corner/red/diagonal,
 /obj/item/ammo_casing/a45,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/police)
-"es" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
-/obj/structure/closet/firecloset/full,
-/turf/simulated/floor/tiled/kafel_full/beige,
-/area/sector/sky_planet/racing_station/dock)
 "et" = (
 /obj/machinery/door/airlock/multi_tile{
 	dir = 4
@@ -807,17 +923,35 @@
 "eD" = (
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/sky_planet/station_city/appartement)
-"eH" = (
-/obj/structure/railing/grey{
-	dir = 8
+"eF" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 4
 	},
-/turf/simulated/open,
-/area/sector/sky_planet/station_city/street)
+/obj/item/stack/material/glass,
+/obj/machinery/light/poi{
+	dir = 4
+	},
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	id_tag = "voidline_redcomet_dock";
+	dir = 8;
+	pixel_x = 26
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/racing_station/dock)
 "eI" = (
 /obj/machinery/chemical_dispenser/full,
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/sky_planet/station_city/shop)
+"eJ" = (
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c,
+/area/shuttle/crescend)
 "eL" = (
 /obj/structure/table/bench/steel,
 /obj/effect/floor_decal/spline/plain{
@@ -825,9 +959,6 @@
 	},
 /turf/simulated/floor/lino,
 /area/sector/sky_planet/outpost/office)
-"eO" = (
-/turf/simulated/open,
-/area/sector/sky_planet/station_city/street)
 "eP" = (
 /obj/structure/lattice,
 /turf/simulated/open/skyplanet,
@@ -844,6 +975,21 @@
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/station_city/street)
+"eU" = (
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
+/obj/machinery/power/port_gen/pacman{
+	anchored = 1
+	},
+/obj/item/stack/material/phoron,
+/obj/item/stack/material/phoron,
+/obj/item/stack/material/phoron,
+/obj/item/stack/material/phoron,
+/obj/item/stack/material/phoron,
+/obj/item/stack/material/phoron,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/racing_station/dock)
 "eV" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/light/small{
@@ -851,6 +997,37 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/office)
+"eW" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/door/airlock/voidcraft/vertical,
+/obj/map_helper/airlock/door/ext_door,
+/obj/structure/cable/white{
+	icon_state = "4-8"
+	},
+/obj/machinery/access_button/airlock_exterior{
+	pixel_y = -19;
+	master_tag = "cresend";
+	dir = 8;
+	frequency = 8018
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/crescend)
+"eY" = (
+/obj/machinery/computer/ship/helm/adv{
+	dir = 4;
+	req_one_access = null
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/crescend)
+"eZ" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 4
+	},
+/obj/structure/cable/white{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/crescend)
 "fb" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -864,6 +1041,21 @@
 /mob/living/simple_mob/mechanical/hivebot,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/station_city/street)
+"ff" = (
+/obj/effect/floor_decal/borderfloorwhite/full,
+/obj/machinery/shower{
+	dir = 4
+	},
+/obj/structure/toilet{
+	dir = 4
+	},
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 11
+	},
+/obj/machinery/light/small/old,
+/turf/simulated/floor/tiled/old_tile,
+/area/shuttle/crescend)
 "fg" = (
 /obj/effect/floor_decal/grass_edge/corner{
 	dir = 10
@@ -893,6 +1085,15 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
+"fn" = (
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/obj/structure/lightpost/urban,
+/turf/simulated/floor/tiled/techfloor/monogrid{
+	outdoors = 1
+	},
+/area/sector/sky_planet/sky)
 "fp" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/photocopier/faxmachine{
@@ -909,12 +1110,26 @@
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/sky_planet/station_city/shop)
-"fx" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 9
+"fs" = (
+/obj/structure/cable/orange{
+	icon_state = "2-8"
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/sector/sky_planet/racing_station/dock)
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/occulum)
+"ft" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-8"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "2-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/structure/table/bench/steel,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/outpost/office)
 "fz" = (
 /obj/structure/bed/chair/office/dark,
 /turf/simulated/floor/tiled/steel_dirty,
@@ -922,17 +1137,6 @@
 "fA" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/security)
-"fB" = (
-/obj/effect/floor_decal/industrial/warning/dust,
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 8
-	},
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 4
-	},
-/obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/kafel_full/beige,
-/area/sector/sky_planet/racing_station/dock)
 "fE" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner{
 	dir = 1
@@ -956,6 +1160,13 @@
 	},
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/sky_planet/racing_station/lounge)
+"fI" = (
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/obj/structure/railing/grey,
+/turf/simulated/open/lythios43c/indoors,
+/area/sector/sky_planet/station_city/street)
 "fJ" = (
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/carpet/patterened/blue,
@@ -1039,6 +1250,17 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/sky_planet/outpost/office)
+"ga" = (
+/obj/structure/catwalk,
+/obj/structure/railing/grey{
+	dir = 4
+	},
+/turf/simulated/open/skyplanet,
+/area/sector/sky_planet/sky)
+"gc" = (
+/obj/structure/flora/fey/grass/grass3,
+/turf/simulated/floor/fey/forest_grass,
+/area/sector/sky_planet/sky)
 "gd" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
@@ -1097,6 +1319,22 @@
 /obj/structure/catwalk,
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/outpost/docking_port1)
+"go" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/obj/effect/floor_decal/industrial/hatch,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/station_city/dock)
+"gq" = (
+/obj/overmap/entity/visitable/ship/landable/trade/paripari,
+/obj/effect/shuttle_landmark/skyplanet/voidline/udang,
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	id_tag = "voidline_udang_docker";
+	pixel_x = -28
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/shuttle/paripari)
 "gr" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/item/stack/material/glass,
@@ -1141,6 +1379,15 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/shuttle/paripari)
+"gB" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/shuttle/crescend)
 "gC" = (
 /obj/structure/table/hardwoodtable,
 /turf/simulated/floor/carpet/patterened/green,
@@ -1151,11 +1398,26 @@
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
+"gG" = (
+/obj/effect/shuttle_landmark/skyplanet/voidline/bonnethead,
+/obj/overmap/entity/visitable/ship/landable/trade/bonnethead,
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	id_tag = "voidline_bonnethead_docker";
+	pixel_x = -28
+	},
+/turf/simulated/floor/tiled/steel_dirty/yellow,
+/area/shuttle/bonnethead)
 "gH" = (
 /obj/structure/table/steel_reinforced,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/police)
+"gM" = (
+/obj/structure/railing/grey,
+/turf/simulated/floor/tiled/techfloor/monogrid{
+	outdoors = 1
+	},
+/area/sector/sky_planet/sky)
 "gO" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -1175,6 +1437,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/shop)
+"gR" = (
+/obj/structure/bed/chair/comfy/blue{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/turcarpet,
+/area/sector/sky_planet/occulum)
 "gS" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 4
@@ -1195,6 +1463,14 @@
 	},
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/sky_planet/station_city/shop)
+"gV" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/head/helmet/space/void,
+/obj/item/clothing/suit/space/void,
+/obj/item/tank/emergency,
+/obj/item/tank/emergency,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/racing_station/dock)
 "gX" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
@@ -1204,6 +1480,11 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/police)
+"gY" = (
+/obj/effect/floor_decal/corner/paleblue/border,
+/obj/effect/floor_decal/corner/paleblue/border,
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/crescend)
 "hc" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
@@ -1222,15 +1503,13 @@
 "he" = (
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
-"hf" = (
-/obj/structure/railing/grey{
-	dir = 8
+"hh" = (
+/obj/structure/table/hardwoodtable,
+/obj/machinery/photocopier/faxmachine{
+	department = "Oculum Radio Shuttle"
 	},
-/obj/structure/window/reinforced/full{
-	dir = 8
-	},
-/turf/simulated/open/skyplanet,
-/area/sector/sky_planet/sky)
+/turf/simulated/floor/carpet/turcarpet,
+/area/sector/sky_planet/occulum)
 "hj" = (
 /obj/structure/window/reinforced/survival_pod{
 	dir = 8
@@ -1238,6 +1517,16 @@
 /obj/structure/flora/pottedplant/stoutbush,
 /turf/simulated/floor/wood/sif/indoors,
 /area/sector/sky_planet/racing_station/lounge)
+"hk" = (
+/obj/effect/floor_decal/corner/red/bordercorner{
+	dir = 4
+	},
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/obj/structure/lightpost/urban,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/station_city/street)
 "hl" = (
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/sky_planet/station_city/shop)
@@ -1264,6 +1553,13 @@
 /obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
+"hs" = (
+/obj/structure/lattice,
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/turf/simulated/open/skyplanet,
+/area/sector/sky_planet/sky)
 "hv" = (
 /obj/effect/floor_decal/corner/yellow/full{
 	dir = 1
@@ -1288,14 +1584,6 @@
 /obj/structure/flora/fey/grass/grass4,
 /turf/simulated/floor/fey/forest_grass,
 /area/sector/sky_planet/station_city/appartement)
-"hB" = (
-/obj/effect/floor_decal/rust,
-/obj/machinery/button/remote/blast_door{
-	pixel_x = 22;
-	id = "voidline"
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/racing_station/dock)
 "hD" = (
 /obj/structure/table/hardwoodtable,
 /turf/simulated/floor/carpet/patterened/brown,
@@ -1332,14 +1620,9 @@
 /turf/simulated/floor/reinforced/outdoors,
 /area/sector/sky_planet/sky)
 "hO" = (
-/obj/effect/floor_decal/corner/red/bordercorner{
-	dir = 8
-	},
-/obj/effect/floor_decal/rust/mono_rusted3{
-	color = "#b88a3b"
-	},
-/turf/simulated/floor/tiled/monotechmaint,
-/area/sector/sky_planet/station_city/street)
+/obj/machinery/telecomms/allinone/sdf,
+/turf/simulated/floor/airless,
+/area/sector/sky_planet/occulum)
 "hP" = (
 /obj/structure/table/bench/steel,
 /obj/effect/floor_decal/spline/plain{
@@ -1364,6 +1647,15 @@
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/station_city/street)
+"hS" = (
+/obj/effect/floor_decal/corner/red/full{
+	dir = 4
+	},
+/obj/item/ammo_casing/a45,
+/obj/machinery/light,
+/mob/living/simple_mob/mechanical/hivebot/sword,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/police)
 "hU" = (
 /obj/machinery/atmospherics/portables_connector,
 /obj/machinery/light{
@@ -1486,10 +1778,27 @@
 /mob/living/simple_mob/mechanical/hivebot,
 /turf/simulated/floor/wood/indoors,
 /area/sector/sky_planet/station_city/offices)
+"iv" = (
+/obj/item/pda/multicaster,
+/turf/simulated/floor/airless,
+/area/sector/sky_planet/occulum)
 "iw" = (
 /obj/machinery/photocopier,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/police)
+"iy" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/structure/table/rack/shelf/steel,
+/obj/structure/window/phoronbasic{
+	dir = 8
+	},
+/obj/structure/window/phoronbasic{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/kafel_full/beige,
+/area/sector/sky_planet/racing_station/dock)
 "iz" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/sector/sky_planet/outpost/docking_port1)
@@ -1550,6 +1859,12 @@
 	},
 /turf/simulated/floor/carpet/patterened/brown,
 /area/sector/sky_planet/station_city/appartement)
+"iM" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/wall/r_wall/prepainted/medical,
+/area/shuttle/crescend)
 "iO" = (
 /obj/item/stack/material/plasteel,
 /turf/simulated/floor/tiled/techfloor,
@@ -1602,6 +1917,15 @@
 /mob/living/simple_mob/aggressive/dragoon,
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
+"jf" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/machinery/light/poi{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/patterened/red,
+/area/sector/sky_planet/racing_station/dock)
 "jh" = (
 /obj/effect/floor_decal/techfloor,
 /obj/structure/railing,
@@ -1639,6 +1963,10 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/police)
+"jl" = (
+/obj/spawner/window/full,
+/turf/simulated/floor/fey/forest_grass,
+/area/sector/sky_planet/sky)
 "jm" = (
 /obj/structure/filingcabinet{
 	name = "mailbox"
@@ -1653,12 +1981,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/appartement)
-"jn" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	pixel_y = 13
-	},
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/dock)
 "jo" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/air_alarm/north_mount,
@@ -1691,6 +2013,17 @@
 /obj/item/storage/toolbox/lunchbox/cat,
 /turf/simulated/floor/carpet/patterened/brown,
 /area/sector/sky_planet/station_city/school)
+"jy" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/structure/table/bench/steel,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/outpost/office)
 "jz" = (
 /obj/effect/floor_decal/corner/green/diagonal,
 /turf/simulated/floor/tiled/old_tile/white,
@@ -1699,6 +2032,19 @@
 /obj/machinery/telecomms/relay/preset/telecomms,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/paripari)
+"jC" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/structure/bed/chair/bay/chair/padded/brown{
+	dir = 1
+	},
+/obj/machinery/button/remote/blast_door{
+	pixel_x = -27;
+	id = "voidline"
+	},
+/turf/simulated/floor/wood/sif/indoors,
+/area/sector/sky_planet/racing_station/dock)
 "jF" = (
 /obj/machinery/door/airlock/glass_external/public,
 /obj/map_helper/access_helper/airlock/station/external_airlock,
@@ -1736,18 +2082,6 @@
 "jK" = (
 /turf/simulated/wall/prepainted,
 /area/sector/sky_planet/station_city/appartement2)
-"jL" = (
-/obj/effect/floor_decal/corner/red/bordercorner{
-	dir = 1
-	},
-/obj/effect/floor_decal/rust/mono_rusted3{
-	color = "#b88a3b"
-	},
-/obj/effect/floor_decal/rust/mono_rusted3{
-	color = "#b88a3b"
-	},
-/turf/simulated/floor/tiled/monotechmaint,
-/area/sector/sky_planet/station_city/street)
 "jM" = (
 /obj/structure/bed/chair/sofa/beige/right{
 	dir = 4
@@ -1778,6 +2112,31 @@
 "jR" = (
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/sky_planet/outpost/office)
+"jS" = (
+/obj/structure/fence{
+	pixel_x = 18;
+	layer = 4
+	},
+/obj/structure/fence{
+	pixel_x = 46;
+	layer = 4
+	},
+/turf/simulated/wall/wood/hardwood,
+/area/shuttle/crescend)
+"jU" = (
+/obj/effect/floor_decal/corner/red/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/sky)
+"jV" = (
+/obj/structure/table/steel_reinforced,
+/obj/structure/flora/pottedplant/fern{
+	pixel_x = 18;
+	pixel_y = 17
+	},
+/turf/simulated/floor/wood/indoors,
+/area/sector/sky_planet/occulum)
 "jW" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/atmospherics/pipe/manifold/hidden,
@@ -1800,17 +2159,17 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/sky_planet/racing_station/dock)
-"kd" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 6
+"kc" = (
+/obj/machinery/computer/ship/sensors/adv,
+/obj/machinery/light/small/old{
+	dir = 4
 	},
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	id_tag = "voidline_udang_dock";
-	dir = 8;
+/obj/structure/panic_button{
 	pixel_x = 26
 	},
+/obj/machinery/air_alarm/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/racing_station/dock)
+/area/shuttle/crescend)
 "ke" = (
 /obj/machinery/holopad/ship/starts_inactive,
 /turf/simulated/floor/tiled/steel_dirty/dark,
@@ -1838,6 +2197,23 @@
 	},
 /turf/simulated/wall/r_wall/prepainted/security,
 /area/shuttle/redcomet)
+"km" = (
+/obj/effect/floor_decal/corner/red/bordercorner{
+	dir = 1
+	},
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/obj/structure/lightpost/urban,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/station_city/street)
+"ko" = (
+/obj/machinery/light,
+/turf/simulated/floor/wood/indoors,
+/area/sector/sky_planet/occulum)
 "kp" = (
 /obj/effect/floor_decal/corner/red/border,
 /obj/effect/floor_decal/corner/red/border{
@@ -1858,6 +2234,23 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
+"ks" = (
+/obj/effect/floor_decal/industrial/danger{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/racing_station/dock)
+"kt" = (
+/obj/machinery/door/blast/regular,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/rock)
+"ku" = (
+/obj/machinery/door/airlock,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/occulum)
 "kw" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/old_tile/white,
@@ -1877,16 +2270,49 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/racing_station/dock)
+"kB" = (
+/obj/effect/floor_decal/borderfloorwhite,
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/crescend)
 "kD" = (
 /obj/structure/bed/chair/sofa/beige/right{
 	dir = 4
 	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/sector/sky_planet/station_city/appartement)
+"kE" = (
+/obj/structure/bed/chair/bay/shuttle{
+	dir = 4
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -33
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	id_tag = "voidline_redcomet_docker";
+	pixel_x = -28
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/shuttle/redcomet)
+"kG" = (
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
+/obj/structure/fans/tiny,
+/turf/simulated/floor/reinforced,
+/area/sector/sky_planet/occulum)
 "kH" = (
 /obj/structure/table/standard,
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/sky_planet/station_city/restaurant)
+"kJ" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/sky)
 "kK" = (
 /obj/item/stack/material/cardboard,
 /turf/simulated/floor/tiled/techfloor,
@@ -1910,6 +2336,15 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/security)
+"kR" = (
+/obj/structure/cable/white{
+	icon_state = "1-4"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/crescend)
 "kS" = (
 /turf/simulated/mineral/cave,
 /area/sector/sky_planet/station_city/street)
@@ -1961,6 +2396,12 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/shuttle/redcomet)
+"lg" = (
+/obj/effect/floor_decal/borderfloorwhite/corner{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/crescend)
 "lh" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/street)
@@ -1974,6 +2415,16 @@
 /obj/structure/closet,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/security)
+"ll" = (
+/obj/structure/closet/secure_closet/freezer/fridge,
+/obj/item/storage/single_use/mre/menu6,
+/obj/item/storage/single_use/mre/menu6,
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 11
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/occulum)
 "lm" = (
 /obj/effect/decal/mecha_wreckage/cludge{
 	dir = 1
@@ -2008,6 +2459,15 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/appartement)
+"lr" = (
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/crescend)
 "ls" = (
 /obj/structure/table/bench/steel,
 /obj/effect/floor_decal/spline/plain{
@@ -2015,24 +2475,6 @@
 	},
 /turf/simulated/floor/lino,
 /area/sector/sky_planet/outpost/office)
-"lu" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	pixel_y = 13
-	},
-/obj/effect/floor_decal/rust/mono_rusted3{
-	color = "#b88a3b"
-	},
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/dock)
-"lv" = (
-/obj/effect/floor_decal/techfloor/corner{
-	dir = 1
-	},
-/obj/machinery/door/airlock/multi_tile,
-/turf/simulated/floor/tiled/techfloor/monogrid{
-	outdoors = 1
-	},
-/area/sector/sky_planet/racing_station/dock)
 "ly" = (
 /turf/simulated/floor/carpet/patterened/brown,
 /area/sector/sky_planet/station_city/appartement)
@@ -2078,16 +2520,27 @@
 /obj/machinery/door/blast/regular,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/station_city/street)
+"lP" = (
+/obj/structure/curtain/open/shower,
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
+/turf/simulated/floor/wood/indoors,
+/area/shuttle/crescend)
+"lQ" = (
+/obj/machinery/computer/shuttle_control/explore/redcomet,
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/structure/panic_button{
+	pixel_x = 32
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark,
+/area/shuttle/redcomet)
 "lS" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/sector/sky_planet/outpost/engineering)
-"lT" = (
-/obj/effect/floor_decal/industrial/danger/corner{
-	dir = 8
-	},
-/obj/machinery/light/poi,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/sector/sky_planet/racing_station/dock)
 "lV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/kafel_full/beige,
@@ -2098,15 +2551,6 @@
 	req_access = null
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/racing_station/dock)
-"lY" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
-/obj/machinery/light/poi{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/kafel_full/beige,
 /area/sector/sky_planet/racing_station/dock)
 "lZ" = (
 /obj/structure/bed/chair/sofa/brown/left{
@@ -2125,6 +2569,10 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/shuttle/redcomet)
+"mf" = (
+/obj/structure/bed/padded,
+/turf/simulated/floor/carpet/turcarpet,
+/area/sector/sky_planet/occulum)
 "mj" = (
 /obj/structure/poster/preset/nanotrasen/nt_6,
 /turf/simulated/wall/r_wall/prepainted/command,
@@ -2156,6 +2604,28 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/sector/sky_planet/station_city/school)
+"mq" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/structure/table/rack/shelf/steel,
+/obj/structure/window/phoronbasic{
+	dir = 4
+	},
+/obj/structure/window/phoronbasic{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/kafel_full/beige,
+/area/sector/sky_planet/racing_station/dock)
+"mr" = (
+/obj/structure/table/hardwoodtable,
+/obj/machinery/newscaster{
+	pixel_y = 33;
+	pixel_x = -59
+	},
+/obj/item/radio/intercom/entertainment/laptop,
+/turf/simulated/floor/carpet/turcarpet,
+/area/sector/sky_planet/occulum)
 "mu" = (
 /obj/effect/floor_decal/corner/red/border{
 	dir = 8
@@ -2171,6 +2641,12 @@
 /obj/item/evidencebag,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/police)
+"my" = (
+/obj/machinery/door/blast/shutters{
+	id = "oculum"
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/occulum)
 "mz" = (
 /obj/machinery/door/airlock/glass_external,
 /obj/map_helper/access_helper/airlock/station/external_airlock,
@@ -2191,6 +2667,14 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/office)
+"mB" = (
+/obj/machinery/light,
+/obj/machinery/telecomms/broadcaster{
+	id = "OCULUM";
+	idle_power_usage = 1
+	},
+/turf/simulated/floor/airless,
+/area/sector/sky_planet/occulum)
 "mC" = (
 /obj/structure/table/wooden_reinforced,
 /obj/structure/flora/pottedplant/flower,
@@ -2213,6 +2697,15 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/police)
+"mG" = (
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/crescend)
 "mH" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 8
@@ -2286,15 +2779,6 @@
 /obj/structure/catwalk,
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
-"mZ" = (
-/obj/overmap/entity/visitable/ship/landable/trade/paripari,
-/obj/effect/shuttle_landmark/skyplanet/voidline/udang,
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	id_tag = "voidline_udang_docker";
-	pixel_x = -28
-	},
-/turf/simulated/floor/tiled/steel_dirty/dark,
-/area/shuttle/paripari)
 "nb" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -2302,6 +2786,15 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/sky_planet/outpost/docking_port2)
+"nc" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/obj/structure/atmospheric_retention_field{
+	color = "#b88a3b"
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/station_city/street)
 "nd" = (
 /obj/effect/floor_decal/corner/blue/diagonal,
 /obj/effect/floor_decal/rust,
@@ -2313,17 +2806,18 @@
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/station_city/street)
-"nj" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 4;
-	pixel_x = -12
+"ng" = (
+/turf/simulated/wall/r_wall,
+/area/sector/sky_planet/occulum)
+"nh" = (
+/obj/effect/floor_decal/techfloor/corner{
+	dir = 1
 	},
-/obj/machinery/door/blast/regular/open,
-/obj/effect/floor_decal/rust/mono_rusted3{
-	color = "#b88a3b"
+/obj/machinery/door/airlock/multi_tile/glass,
+/turf/simulated/floor/tiled/techfloor/monogrid{
+	outdoors = 1
 	},
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
+/area/sector/sky_planet/racing_station/dock)
 "nk" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -2364,6 +2858,18 @@
 "nt" = (
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/sky_planet/station_city/street)
+"nu" = (
+/obj/machinery/light/poi{
+	dir = 1
+	},
+/obj/structure/table/wooden_reinforced,
+/obj/structure/flora/pottedplant/stoutbush{
+	pixel_y = 15
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid{
+	outdoors = 1
+	},
+/area/sector/sky_planet/racing_station/dock)
 "nw" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
@@ -2386,14 +2892,21 @@
 /obj/effect/floor_decal/corner/red/border,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
-"nA" = (
-/obj/machinery/atmospherics/pipe/tank/air,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/sector/sky_planet/racing_station/dock)
 "nB" = (
 /obj/item/trash/candy/proteinbar,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/shop)
+"nC" = (
+/obj/structure/catwalk,
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/turf/simulated/open/skyplanet,
+/area/sector/sky_planet/sky)
+"nD" = (
+/obj/structure/sandbag,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/sky)
 "nE" = (
 /obj/machinery/light/poi,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -2434,6 +2947,14 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/sky_planet/racing_station/dock)
+"nO" = (
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid{
+	outdoors = 1
+	},
+/area/sector/sky_planet/sky)
 "nP" = (
 /obj/structure/table/standard,
 /obj/item/event/prop/laptop2,
@@ -2442,14 +2963,14 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/sector/sky_planet/station_city/school)
-"nR" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 4;
-	pixel_x = -12
+"nQ" = (
+/obj/machinery/light,
+/obj/machinery/telecomms/receiver{
+	id = "OCULUM";
+	idle_power_usage = 1
 	},
-/mob/living/simple_mob/mechanical/hivebot,
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
+/turf/simulated/floor/airless,
+/area/sector/sky_planet/occulum)
 "nT" = (
 /obj/effect/floor_decal/rust/mono_rusted3{
 	color = "#b88a3b"
@@ -2461,18 +2982,18 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/street)
-"nX" = (
-/obj/structure/metal_edge{
-	layer = 1
-	},
-/turf/simulated/open,
-/area/sector/sky_planet/station_city/street)
 "nY" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/racing_station/dock)
+"nZ" = (
+/obj/structure/atmospheric_retention_field{
+	color = "#b88a3b"
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/station_city/dock)
 "oa" = (
 /obj/machinery/vending/boozeomat{
 	req_access = null;
@@ -2487,9 +3008,24 @@
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/sky_planet/racing_station/atc)
+"oc" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/sky_planet/occulum)
 "oe" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/sector/sky_planet/outpost/office)
+"of" = (
+/obj/structure/cable/orange{
+	icon_state = "0-8"
+	},
+/obj/machinery/power/rtg/advanced{
+	power_gen = 100
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/occulum)
 "oh" = (
 /obj/effect/floor_decal/grass_edge/corner{
 	dir = 1
@@ -2502,13 +3038,12 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
 /area/shuttle/bonnethead)
-"oj" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	pixel_y = 13
+"ol" = (
+/obj/structure/cable/white{
+	icon_state = "1-4"
 	},
-/mob/living/simple_mob/mechanical/hivebot,
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
+/turf/simulated/floor/reinforced/outdoors,
+/area/sector/sky_planet/sky)
 "om" = (
 /obj/structure/bed/chair/office{
 	dir = 4
@@ -2520,6 +3055,13 @@
 /obj/machinery/atmospherics/pipe/tank/air,
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/sky_planet/outpost/office)
+"oo" = (
+/obj/machinery/door/airlock,
+/obj/structure/cable/white{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/occulum)
 "op" = (
 /obj/machinery/atmospherics/pipe/tank/air,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
@@ -2537,6 +3079,26 @@
 /obj/machinery/portable_atmospherics/canister/empty/phoron,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
 /area/shuttle/bonnethead)
+"ou" = (
+/obj/structure/lightpost/urban,
+/turf/simulated/floor/tiled/techfloor/monogrid{
+	outdoors = 1
+	},
+/area/sector/sky_planet/sky)
+"ov" = (
+/obj/structure/bed/chair/comfy/blue,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/turcarpet,
+/area/sector/sky_planet/occulum)
+"ow" = (
+/obj/machinery/telecomms/server/presets/common{
+	id = "OCULUM";
+	idle_power_usage = 1
+	},
+/turf/simulated/floor/airless,
+/area/sector/sky_planet/occulum)
 "oy" = (
 /obj/machinery/appliance/cooker/grill,
 /turf/simulated/floor/tiled/old_tile/white,
@@ -2545,21 +3107,22 @@
 /obj/machinery/light/spot,
 /turf/simulated/floor/carpet/patterened,
 /area/sector/sky_planet/station_city/appartement2)
-"oA" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 8
-	},
-/obj/machinery/light/poi{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/kafel_full/beige,
-/area/sector/sky_planet/racing_station/dock)
 "oE" = (
 /obj/structure/fence/corner{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/station_city/street)
+"oF" = (
+/obj/structure/catwalk,
+/obj/structure/railing/grey{
+	dir = 4
+	},
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/turf/simulated/open/skyplanet,
+/area/sector/sky_planet/sky)
 "oG" = (
 /obj/structure/metal_edge{
 	layer = 1
@@ -2570,6 +3133,12 @@
 "oI" = (
 /obj/item/stack/material/glass,
 /turf/simulated/floor/reinforced,
+/area/sector/sky_planet/racing_station/dock)
+"oJ" = (
+/obj/machinery/door/airlock,
+/turf/simulated/floor/tiled/techfloor/monogrid{
+	outdoors = 1
+	},
 /area/sector/sky_planet/racing_station/dock)
 "oK" = (
 /obj/effect/floor_decal/techfloor,
@@ -2600,22 +3169,18 @@
 /obj/structure/closet/firecloset/full,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/office)
-"oO" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/obj/effect/floor_decal/rust,
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/outpost/office)
 "oP" = (
 /obj/machinery/appliance/cooker/oven,
 /turf/simulated/floor/wood/indoors,
 /area/sector/sky_planet/station_city/appartement)
-"oQ" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/sector/sky_planet/racing_station/dock)
+"oS" = (
+/obj/machinery/button/remote/blast_door{
+	dir = 1;
+	pixel_y = -23;
+	id = "oculum"
+	},
+/turf/simulated/floor/wood/indoors,
+/area/sector/sky_planet/occulum)
 "oU" = (
 /obj/structure/table/marble{
 	color = "#555555";
@@ -2631,6 +3196,12 @@
 /obj/machinery/door/airlock/multi_tile/glass/civilian,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/police)
+"oX" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 10
+	},
+/turf/simulated/wall/r_wall,
+/area/sector/sky_planet/occulum)
 "pa" = (
 /obj/spawner/window/full,
 /turf/simulated/floor/tiled/techfloor,
@@ -2661,12 +3232,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/dock)
-"po" = (
-/obj/effect/floor_decal/rust/mono_rusted3{
-	color = "#b88a3b"
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/sector/sky_planet/station_city/dock)
 "pp" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1379;
@@ -2688,6 +3253,15 @@
 "pr" = (
 /turf/simulated/wall/log_ironwood,
 /area/sector/sky_planet/station_city/appartement)
+"ps" = (
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/obj/structure/railing/grey{
+	dir = 4
+	},
+/turf/simulated/open/lythios43c/indoors,
+/area/sector/sky_planet/station_city/street)
 "pt" = (
 /turf/simulated/floor/tiled/techfloor/monogrid{
 	outdoors = 1
@@ -2714,15 +3288,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/security)
-"pz" = (
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 8
-	},
-/obj/effect/floor_decal/borderfloor/corner{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/station_city/dock)
 "pB" = (
 /obj/structure/filingcabinet/chestdrawer,
 /obj/effect/floor_decal/corner/red/border{
@@ -2730,19 +3295,11 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/police)
-"pE" = (
-/obj/spawner/window/full/firelocks,
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
-"pF" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 4
-	},
-/obj/machinery/light/poi{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/kafel_full/beige,
-/area/sector/sky_planet/racing_station/dock)
+"pC" = (
+/obj/structure/curtain/open/bed,
+/obj/machinery/light,
+/turf/simulated/floor/wood/indoors,
+/area/sector/sky_planet/occulum)
 "pG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/red{
 	dir = 4
@@ -2757,10 +3314,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/sky_planet/outpost/medical)
-"pI" = (
-/obj/structure/flora/fey/grass/grass8,
-/turf/simulated/floor/tiled/monotechmaint,
-/area/sector/sky_planet/station_city/street)
 "pJ" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/vehicle/sealed/mecha/combat/fighter/pinnace/loaded{
@@ -2782,13 +3335,6 @@
 /obj/machinery/optable,
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/sky_planet/station_city/shop)
-"pL" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 4;
-	pixel_x = -12
-	},
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
 "pM" = (
 /obj/structure/metal_edge{
 	layer = 1
@@ -2843,8 +3389,24 @@
 	},
 /turf/simulated/floor/wood/sif/indoors,
 /area/sector/sky_planet/racing_station/lounge)
+"pX" = (
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/mob/living/simple_mob/humanoid/taj_guerilla/guerilla/sniper/neutral,
+/turf/simulated/floor/tiled/techfloor/monogrid{
+	outdoors = 1
+	},
+/area/sector/sky_planet/sky)
 "pY" = (
 /turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/racing_station/dock)
+"pZ" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/machinery/power/apc/north_mount,
+/turf/simulated/floor/carpet/patterened/red,
 /area/sector/sky_planet/racing_station/dock)
 "qa" = (
 /obj/structure/table/rack/shelf/steel,
@@ -2869,13 +3431,6 @@
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/station_city/street)
-"qf" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/machinery/light/poi,
-/turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/racing_station/dock)
 "qh" = (
 /obj/machinery/door/blast/regular{
 	id = "Redcomet Airlock"
@@ -2886,6 +3441,14 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/shuttle/redcomet)
+"qi" = (
+/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/atmospherics/portables_connector,
+/obj/machinery/light/small/old{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/crescend)
 "qj" = (
 /obj/effect/floor_decal/rust/mono_rusted3{
 	color = "#b88a3b"
@@ -2903,12 +3466,28 @@
 /obj/machinery/atmospherics/valve,
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/shuttle/redcomet)
+"qm" = (
+/obj/machinery/door/airlock/maintenance_hatch{
+	req_one_access = null
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/crescend)
 "qn" = (
 /obj/structure/window/reinforced/full{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/shop)
+"qp" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/turf/simulated/wall/r_wall,
+/area/sector/sky_planet/station_city/street)
 "qr" = (
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
@@ -2929,6 +3508,17 @@
 /obj/machinery/light/poi,
 /turf/simulated/floor/wood/sif/indoors,
 /area/sector/sky_planet/racing_station/dock)
+"qv" = (
+/obj/machinery/computer/ship/engines/adv,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/crescend)
+"qw" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 5
+	},
+/obj/structure/bed/chair,
+/turf/simulated/floor/carpet/patterened/red,
+/area/sector/sky_planet/racing_station/dock)
 "qx" = (
 /obj/machinery/door/blast/regular{
 	id = "voidline"
@@ -2941,6 +3531,13 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/sky_planet/racing_station/dock)
+"qy" = (
+/obj/machinery/media/jukebox{
+	state_base = "darkjuke";
+	pixel_x = -26
+	},
+/turf/simulated/floor/carpet/turcarpet,
+/area/sector/sky_planet/occulum)
 "qz" = (
 /obj/structure/table/steel_reinforced,
 /obj/effect/floor_decal/spline/plain,
@@ -2974,10 +3571,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port2)
-"qH" = (
-/mob/living/simple_mob/mechanical/hivebot,
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/dock)
 "qI" = (
 /obj/structure/table/bench/steel,
 /turf/simulated/floor/tiled/techfloor,
@@ -3036,14 +3629,19 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/engineering)
-"rc" = (
-/obj/structure/railing/grey{
-	dir = 1
+"qV" = (
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 11
 	},
-/obj/structure/railing/grey{
-	dir = 4
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/occulum)
+"qX" = (
+/obj/structure/metal_edge{
+	layer = 1
 	},
-/turf/simulated/open,
+/obj/structure/lattice,
+/turf/simulated/open/lythios43c/indoors,
 /area/sector/sky_planet/station_city/street)
 "re" = (
 /obj/item/stack/material/cardboard,
@@ -3068,6 +3666,19 @@
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/dock)
+"ri" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/structure/table/rack/shelf/steel,
+/obj/structure/window/phoronbasic{
+	dir = 1
+	},
+/obj/structure/window/phoronbasic{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/kafel_full/beige,
+/area/sector/sky_planet/racing_station/dock)
 "rj" = (
 /obj/structure/table/marble{
 	color = "#555555";
@@ -3076,6 +3687,22 @@
 /obj/effect/floor_decal/corner/green/diagonal,
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/sky_planet/station_city/restaurant)
+"rk" = (
+/obj/structure/table/hardwoodtable,
+/obj/effect/floor_decal/carpet/blue{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/shuttle/crescend)
+"rl" = (
+/obj/structure/cable/orange{
+	icon_state = "0-4"
+	},
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/occulum)
 "rm" = (
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/sky_planet/station_city/offices)
@@ -3091,13 +3718,6 @@
 "ro" = (
 /turf/simulated/floor/wood/sif/indoors,
 /area/sector/sky_planet/racing_station/lounge)
-"rq" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	pixel_y = 13
-	},
-/obj/machinery/door/blast/regular/open,
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
 "rs" = (
 /obj/effect/floor_decal/rust/mono_rusted3{
 	color = "#b88a3b"
@@ -3139,6 +3759,9 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/sky_planet/racing_station/atc)
+"rA" = (
+/turf/simulated/floor/wood/indoors,
+/area/sector/sky_planet/occulum)
 "rB" = (
 /obj/spawner/window/full,
 /turf/simulated/floor/tiled/techfloor,
@@ -3157,6 +3780,13 @@
 /obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/shop)
+"rF" = (
+/obj/machinery/shower{
+	dir = 4
+	},
+/obj/structure/curtain/open/shower,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/occulum)
 "rG" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -3176,6 +3806,15 @@
 /obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
+"rJ" = (
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
+/obj/structure/curtain/open/black,
+/turf/simulated/floor/tiled,
+/area/shuttle/crescend)
+"rK" = (
+/obj/structure/catwalk,
+/turf/simulated/open/lythios43c/indoors,
+/area/sector/sky_planet/station_city/street)
 "rL" = (
 /obj/structure/filingcabinet,
 /obj/structure/filingcabinet{
@@ -3186,6 +3825,10 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/sector/sky_planet/station_city/offices)
+"rM" = (
+/obj/structure/lightpost/urban,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/occulum)
 "rO" = (
 /obj/spawner/window/full,
 /turf/simulated/floor/tiled/old_tile/white,
@@ -3194,6 +3837,26 @@
 /obj/effect/shuttle_landmark/skyplanet/eastrig3,
 /turf/simulated/floor/reinforced/outdoors,
 /area/sector/sky_planet/sky)
+"rR" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/structure/bed/chair/bay/chair/padded/brown{
+	dir = 1
+	},
+/turf/simulated/floor/wood/sif/indoors,
+/area/sector/sky_planet/racing_station/dock)
+"rS" = (
+/obj/item/radio/intercom/entertainment{
+	dir = 8;
+	pixel_x = -22;
+	canhear_range = 4
+	},
+/obj/structure/bed/chair/comfy/blue{
+	dir = 4
+	},
+/turf/simulated/floor/wood/indoors,
+/area/sector/sky_planet/occulum)
 "rT" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/tank/oxygen,
@@ -3215,6 +3878,14 @@
 /obj/item/gps,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/racing_station/dock)
+"rY" = (
+/obj/structure/railing/grey{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid{
+	outdoors = 1
+	},
+/area/sector/sky_planet/sky)
 "rZ" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 4
@@ -3248,6 +3919,13 @@
 /obj/structure/closet,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/security)
+"sg" = (
+/obj/effect/floor_decal/industrial/danger,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/racing_station/dock)
 "sh" = (
 /obj/structure/table/standard,
 /obj/machinery/light/spot{
@@ -3289,15 +3967,16 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/office)
-"su" = (
-/obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
-"sx" = (
-/obj/effect/floor_decal/industrial/hatch,
-/obj/structure/sandbag,
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
+"sv" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/machinery/telecomms/relay/preset{
+	id = "OCULUM";
+	idle_power_usage = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/crescend)
 "sz" = (
 /mob/living/simple_mob/mechanical/hivebot,
 /turf/simulated/floor/tiled/techfloor,
@@ -3318,6 +3997,23 @@
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/station_city/street)
+"sH" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/turcarpet,
+/area/sector/sky_planet/occulum)
+"sJ" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 6
+	},
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	id_tag = "voidline_udang_dock";
+	dir = 8;
+	pixel_x = 26
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/racing_station/dock)
 "sK" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 6
@@ -3337,6 +4033,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/lino,
 /area/sector/sky_planet/outpost/office)
+"sO" = (
+/obj/machinery/telecomms/allinone,
+/turf/simulated/floor/airless,
+/area/sector/sky_planet/occulum)
 "sP" = (
 /obj/structure/bed/pod,
 /obj/item/bedsheet/medical,
@@ -3432,18 +4132,26 @@
 	},
 /turf/simulated/wall/r_wall/prepainted/engineering,
 /area/shuttle/bonnethead)
-"ti" = (
-/obj/effect/floor_decal/corner/red/full{
+"th" = (
+/obj/structure/shuttle/engine/heater{
 	dir = 4
 	},
-/obj/item/ammo_casing/a45,
-/obj/machinery/light,
-/turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/station_city/police)
+/obj/machinery/atmospherics/pipe/manifold/hidden,
+/turf/simulated/wall/r_wall,
+/area/shuttle/crescend)
 "tj" = (
 /obj/machinery/lathe/autolathe,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/security)
+"tm" = (
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/turf/simulated/open/lythios43c/indoors,
+/area/sector/sky_planet/station_city/street)
 "tn" = (
 /mob/living/simple_mob/mechanical/hivebot,
 /obj/effect/floor_decal/corner/red/border{
@@ -3468,10 +4176,6 @@
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/outpost/office)
-"tq" = (
-/obj/structure/catwalk,
-/turf/simulated/open,
-/area/sector/sky_planet/station_city/street)
 "ts" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/cable/yellow{
@@ -3491,6 +4195,21 @@
 /mob/living/simple_mob/aggressive/dragoon,
 /turf/simulated/floor/reinforced/outdoors,
 /area/sector/sky_planet/sky)
+"tx" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 8
+	},
+/obj/machinery/light/poi{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/patterened/red,
+/area/sector/sky_planet/racing_station/dock)
+"tz" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c,
+/area/shuttle/crescend)
 "tB" = (
 /obj/effect/floor_decal/corner/green/diagonal,
 /obj/effect/floor_decal/rust,
@@ -3499,6 +4218,18 @@
 	},
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/sky_planet/station_city/restaurant)
+"tC" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/occulum)
+"tE" = (
+/obj/machinery/light/small/old{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/turcarpet,
+/area/sector/sky_planet/occulum)
 "tF" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -3521,13 +4252,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/sky_planet/racing_station/dock)
-"tI" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	pixel_y = 13
-	},
-/obj/structure/sandbag,
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
 "tJ" = (
 /obj/effect/floor_decal/corner/red/border{
 	dir = 4
@@ -3537,6 +4261,11 @@
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/station_city/street)
+"tL" = (
+/obj/structure/flora/tree/fey/large_tree/tree6,
+/obj/structure/flora/fey/grass/grass3,
+/turf/simulated/floor/fey/forest_grass,
+/area/sector/sky_planet/sky)
 "tN" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/effect/floor_decal/rust,
@@ -3554,14 +4283,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/sky_planet/station_city/dock)
-"tQ" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 4;
-	pixel_x = -12
-	},
-/obj/item/ammo_casing/a5_56mm,
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
 "tR" = (
 /obj/structure/sandbag,
 /obj/effect/floor_decal/rust/mono_rusted3{
@@ -3582,11 +4303,13 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /turf/simulated/floor/wood/sif/indoors,
 /area/sector/sky_planet/racing_station/dock)
-"tW" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 4;
-	pixel_x = -12
+"tU" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
 	},
+/turf/simulated/floor/carpet/patterened/red,
+/area/sector/sky_planet/racing_station/dock)
+"tW" = (
 /obj/effect/floor_decal/rust/mono_rusted3{
 	color = "#b88a3b"
 	},
@@ -3622,6 +4345,11 @@
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/station_city/street)
+"ui" = (
+/obj/structure/table/hardwoodtable,
+/obj/item/flashlight/lamp/on,
+/turf/simulated/floor/carpet/turcarpet,
+/area/sector/sky_planet/occulum)
 "uj" = (
 /obj/item/stack/cable_coil{
 	amount = 5
@@ -3658,6 +4386,10 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/sky_planet/outpost/docking_port2)
+"uq" = (
+/mob/living/simple_mob/mechanical/hivebot,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/station_city/dock)
 "ur" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
@@ -3680,10 +4412,6 @@
 	},
 /turf/simulated/floor/wood/sif/indoors,
 /area/sector/sky_planet/racing_station/dock)
-"uu" = (
-/obj/structure/railing/grey,
-/turf/simulated/open,
-/area/sector/sky_planet/station_city/street)
 "uv" = (
 /obj/effect/floor_decal/corner/red/border{
 	dir = 1
@@ -3766,17 +4494,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/shop)
-"uV" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 4
-	},
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	id_tag = "voidline_bonnethead_dock";
-	dir = 8;
-	pixel_x = 26
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/racing_station/dock)
 "uW" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 1
@@ -3808,12 +4525,25 @@
 /obj/effect/floor_decal/corner/red/border,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/station_city/street)
-"vo" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 8
-	},
+"vh" = (
+/obj/machinery/air_alarm/east_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/racing_station/dock)
+"vm" = (
+/obj/spawner/window/low_wall/firelocks,
+/obj/structure/curtain/black,
+/turf/simulated/floor/wood/indoors,
+/area/sector/sky_planet/occulum)
+"vp" = (
+/obj/machinery/power/smes/buildable/offmap_spawn,
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/obj/structure/cable/green{
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/crescend)
 "vr" = (
 /turf/simulated/floor/wood/sif/indoors,
 /area/sector/sky_planet/racing_station/dock)
@@ -3822,10 +4552,27 @@
 /obj/effect/floor_decal/corner/red/border,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
+"vw" = (
+/obj/structure/cable/white{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/occulum)
 "vx" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
+"vy" = (
+/obj/structure/railing/grey{
+	dir = 4
+	},
+/obj/structure/window/reinforced/full{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid{
+	outdoors = 1
+	},
+/area/sector/sky_planet/sky)
 "vz" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 10
@@ -3870,6 +4617,16 @@
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
+"vI" = (
+/obj/effect/floor_decal/techfloor/corner{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/item/paper/pamphlet/voidlineend,
+/turf/simulated/floor/carpet/patterened/red,
+/area/sector/sky_planet/racing_station/dock)
 "vL" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/sector/sky_planet/outpost/security)
@@ -3889,10 +4646,24 @@
 	},
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/sky_planet/station_city/restaurant)
+"vQ" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden,
+/obj/item/storage/toolbox/mechanical,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/crescend)
+"vR" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/flora/pottedplant/hedge,
+/obj/machinery/light/poi,
+/turf/simulated/floor/tiled/kafel_full/beige,
+/area/sector/sky_planet/racing_station/dock)
 "vS" = (
 /obj/item/ammo_casing/a5_56mm,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/police)
+"vT" = (
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/sky)
 "vU" = (
 /obj/machinery/appliance/cooker/grill,
 /obj/machinery/light/poi{
@@ -3900,15 +4671,13 @@
 	},
 /turf/simulated/floor/tiled/old_cargo/white,
 /area/sector/sky_planet/racing_station/lounge)
-"vW" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	pixel_y = 13
+"vY" = (
+/obj/machinery/light{
+	dir = 1
 	},
-/obj/effect/floor_decal/rust/mono_rusted3{
-	color = "#b88a3b"
-	},
+/obj/structure/closet/secure_closet/guncabinet,
 /turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
+/area/sector/sky_planet/occulum)
 "vZ" = (
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/tiled/techfloor,
@@ -3947,19 +4716,6 @@
 /obj/machinery/shipsensors,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/redcomet)
-"wf" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-8"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "2-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/outpost/office)
 "wg" = (
 /obj/structure/bed/chair/sofa/brown/left{
 	dir = 8
@@ -3976,6 +4732,15 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/appartement)
+"wi" = (
+/obj/machinery/light/poi{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/tank/air{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/racing_station/dock)
 "wj" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -4055,12 +4820,6 @@
 /obj/item/paper/pamphlet/voidlinedebut,
 /turf/simulated/floor/tiled/kafel_full/beige,
 /area/sector/sky_planet/racing_station/dock)
-"wB" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/racing_station/dock)
 "wE" = (
 /obj/machinery/power/tracker,
 /obj/structure/cable/green{
@@ -4083,6 +4842,16 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/police)
+"wH" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/obj/structure/lattice,
+/turf/simulated/open/skyplanet,
+/area/sector/sky_planet/sky)
 "wI" = (
 /obj/machinery/computer/ship/helm{
 	dir = 4
@@ -4106,6 +4875,13 @@
 /obj/effect/shuttle_landmark/skyplanet/northrig3,
 /turf/simulated/floor/reinforced/outdoors,
 /area/sector/sky_planet/sky)
+"wN" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/structure/lightpost/urban,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/station_city/dock)
 "wO" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /turf/simulated/floor/tiled/techfloor,
@@ -4174,12 +4950,6 @@
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/station_city/street)
-"xc" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/kafel_full/beige,
-/area/sector/sky_planet/racing_station/dock)
 "xd" = (
 /obj/structure/table/bench/steel,
 /obj/effect/floor_decal/spline/plain{
@@ -4187,6 +4957,31 @@
 	},
 /turf/simulated/floor/lino,
 /area/sector/sky_planet/outpost/office)
+"xe" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/rock)
+"xg" = (
+/obj/structure/closet/walllocker_double/north,
+/obj/item/clothing/under/suit_jacket/charcoal/skirt,
+/obj/item/clothing/under/suit_jacket/charcoal,
+/obj/item/clothing/under/suit_jacket/navy,
+/obj/item/clothing/under/suit_jacket/navy/skirt,
+/obj/item/clothing/under/dress/tajaran/blue,
+/obj/item/clothing/head/soft/blue,
+/obj/item/clothing/suit/storage/hooded/wintercoat,
+/obj/item/clothing/suit/storage/hooded/wintercoat/olive,
+/obj/item/gun/projectile/energy/taser,
+/obj/item/cell/device/weapon,
+/obj/item/cell/device/weapon,
+/obj/item/storage/backpack/dufflebag,
+/obj/item/storage/backpack/messenger,
+/obj/item/clothing/accessory/badge/corporate_tag/press,
+/obj/item/clothing/accessory/badge/corporate_tag/press,
+/turf/simulated/floor/wood/indoors,
+/area/sector/sky_planet/occulum)
 "xk" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -4194,9 +4989,35 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/sky_planet/racing_station/dock)
+"xm" = (
+/obj/structure/table/bench/steel,
+/turf/simulated/floor/wood/indoors,
+/area/sector/sky_planet/occulum)
 "xn" = (
 /turf/simulated/wall/r_wall,
 /area/sector/sky_planet/station_city/school)
+"xp" = (
+/obj/structure/flora/pottedplant/hedge,
+/turf/simulated/floor/tiled/kafel_full/beige,
+/area/sector/sky_planet/racing_station/dock)
+"xq" = (
+/obj/machinery/light{
+	dir = 2
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/station_city/dock)
+"xs" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/machinery/telecomms/allinone/occulum{
+	id = "OCULUM"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/crescend)
+"xv" = (
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/rock)
 "xy" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
@@ -4206,6 +5027,23 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/office)
+"xD" = (
+/obj/structure/curtain/open/bed,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/obj/machinery/air_alarm/alarms_hidden/east_mount,
+/turf/simulated/floor/wood/indoors,
+/area/shuttle/crescend)
+"xG" = (
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/obj/structure/window/reinforced/full{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid{
+	outdoors = 1
+	},
+/area/sector/sky_planet/sky)
 "xI" = (
 /obj/structure/bed/chair/office{
 	dir = 4
@@ -4252,13 +5090,6 @@
 	outdoors = 1
 	},
 /area/sector/sky_planet/sky)
-"yb" = (
-/obj/structure/cable/green,
-/obj/machinery/power/port_gen/pacman{
-	anchored = 1
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/outpost/engineering)
 "yc" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/reinforced,
@@ -4269,12 +5100,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
-"yf" = (
-/obj/effect/floor_decal/industrial/danger{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/sector/sky_planet/racing_station/dock)
 "yg" = (
 /obj/machinery/door/airlock/glass_external/public,
 /obj/map_helper/access_helper/airlock/station/external_airlock,
@@ -4299,6 +5124,15 @@
 /obj/item/stack/material/steel,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/racing_station/dock)
+"yl" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/tank/air{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c,
+/area/shuttle/crescend)
 "ym" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
@@ -4346,6 +5180,14 @@
 	},
 /turf/simulated/floor/tiled/old_cargo/white,
 /area/sector/sky_planet/racing_station/lounge)
+"yv" = (
+/obj/machinery/portable_atmospherics/canister/air/airlock,
+/obj/machinery/atmospherics/portables_connector,
+/obj/machinery/light/small/old{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/crescend)
 "yw" = (
 /obj/effect/floor_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled/techfloor,
@@ -4362,6 +5204,12 @@
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
+"yz" = (
+/obj/effect/floor_decal/borderfloorwhite/corner{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/crescend)
 "yA" = (
 /obj/structure/closet/cabinet,
 /turf/simulated/floor/wood/indoors,
@@ -4372,6 +5220,16 @@
 	outdoors = 1
 	},
 /area/sector/sky_planet/station_city/street)
+"yC" = (
+/obj/machinery/door/airlock/maintenance_hatch{
+	req_one_access = null
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/wood/indoors,
+/area/shuttle/crescend)
 "yD" = (
 /obj/machinery/light/spot{
 	dir = 8
@@ -4379,10 +5237,6 @@
 /turf/simulated/floor/wood/indoors,
 /area/sector/sky_planet/station_city/appartement)
 "yG" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 4;
-	pixel_x = -12
-	},
 /obj/effect/floor_decal/rust/mono_rusted3{
 	color = "#b88a3b"
 	},
@@ -4412,6 +5266,12 @@
 /obj/item/gps,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/racing_station/dock)
+"yJ" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/turf/simulated/floor/reinforced/outdoors,
+/area/sector/sky_planet/sky)
 "yK" = (
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/tiled/monotechmaint,
@@ -4445,12 +5305,20 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/dock)
-"yT" = (
-/obj/effect/floor_decal/industrial/danger/corner{
-	dir = 4
+"yS" = (
+/obj/effect/floor_decal/corner/red/bordercorner,
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/sector/sky_planet/racing_station/dock)
+/obj/structure/lightpost/urban,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/station_city/street)
+"yT" = (
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/sky_planet/occulum)
 "yV" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/light{
@@ -4461,6 +5329,12 @@
 "yW" = (
 /turf/simulated/wall/r_wall,
 /area/sector/sky_planet/station_city/offices)
+"yX" = (
+/obj/machinery/atmospherics/pipe/tank/air{
+	dir = 1
+	},
+/turf/simulated/floor/airless,
+/area/sector/sky_planet/occulum)
 "za" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/cable/yellow{
@@ -4470,12 +5344,10 @@
 /obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
-"zc" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/kafel_full/beige,
-/area/sector/sky_planet/racing_station/dock)
+"zb" = (
+/obj/machinery/door/airlock,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/occulum)
 "zd" = (
 /obj/effect/floor_decal/industrial/hatch,
 /obj/item/ammo_casing/a9mm,
@@ -4521,15 +5393,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/sky_planet/outpost/medical)
-"zo" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/kafel_full/beige,
-/area/sector/sky_planet/racing_station/dock)
 "zs" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/vehicle/sealed/mecha/combat/fighter/cludge,
@@ -4539,10 +5402,6 @@
 /obj/effect/floor_decal/industrial/warning/dust,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
-"zu" = (
-/obj/structure/lattice,
-/turf/simulated/open,
-/area/sector/sky_planet/station_city/street)
 "zA" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
@@ -4576,6 +5435,19 @@
 "zF" = (
 /turf/simulated/wall/solidrock,
 /area/sector/sky_planet/rock)
+"zG" = (
+/obj/structure/metal_edge{
+	layer = 1
+	},
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/sky_planet/racing_station/dock)
 "zI" = (
 /turf/simulated/floor/carpet/patterened/brown,
 /area/sector/sky_planet/station_city/school)
@@ -4607,6 +5479,9 @@
 	},
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/sky_planet/station_city/offices)
+"zR" = (
+/turf/simulated/floor/airless,
+/area/sector/sky_planet/occulum)
 "zT" = (
 /obj/effect/floor_decal/corner/blue/diagonal,
 /obj/machinery/door/airlock,
@@ -4627,6 +5502,9 @@
 /mob/living/simple_mob/mechanical/hivebot,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/sky_planet/station_city/offices)
+"zW" = (
+/turf/simulated/mineral/cave,
+/area/sector/sky_planet/occulum)
 "zX" = (
 /obj/structure/railing/grey,
 /obj/structure/lattice,
@@ -4636,12 +5514,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/outpost/office)
-"Aa" = (
-/obj/structure/railing/grey{
-	dir = 4
-	},
-/turf/simulated/open,
-/area/sector/sky_planet/station_city/street)
 "Ab" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -4718,6 +5590,12 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/dock)
+"An" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/patterened/red,
+/area/sector/sky_planet/racing_station/dock)
 "Ao" = (
 /turf/simulated/wall/prepainted/cargo,
 /area/sector/sky_planet/station_city/appartement)
@@ -4788,6 +5666,13 @@
 /obj/item/trash/punctured_can,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/shop)
+"AB" = (
+/obj/machinery/holopad/ship,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/crescend)
 "AE" = (
 /obj/effect/floor_decal/borderfloorblack/full,
 /turf/simulated/floor/tiled/techfloor,
@@ -4824,18 +5709,13 @@
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/outpost/office)
-"AO" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
+"AP" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
 	},
-/obj/structure/cable/green{
-	icon_state = "2-8"
-	},
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/outpost/engineering)
+/obj/structure/lightpost/urban,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/station_city/dock)
 "AQ" = (
 /obj/structure/filingcabinet,
 /obj/structure/filingcabinet{
@@ -4856,6 +5736,14 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
+"AS" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/machinery/air_alarm/alarms_hidden/east_mount,
+/obj/item/storage/toolbox/mechanical,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/crescend)
 "AU" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner{
 	dir = 1
@@ -4876,6 +5764,15 @@
 /obj/machinery/air_alarm/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/steel_dirty/yellow,
 /area/shuttle/bonnethead)
+"AX" = (
+/obj/effect/floor_decal/industrial/danger/corner{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/racing_station/dock)
 "AY" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-8"
@@ -4885,12 +5782,36 @@
 "Ba" = (
 /turf/simulated/wall/r_wall/prepainted/engineering,
 /area/shuttle/bonnethead)
+"Bb" = (
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorwhite/corner{
+	dir = 2
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c,
+/area/shuttle/crescend)
 "Bc" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
+"Bd" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 1
+	},
+/obj/structure/cable/white{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/crescend)
 "Be" = (
 /obj/structure/closet/largecardboard,
 /turf/simulated/floor/carpet/patterened/green,
@@ -4899,6 +5820,29 @@
 /obj/effect/floor_decal/corner/red/border,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/security)
+"Bj" = (
+/obj/structure/table/hardwoodtable,
+/obj/structure/flora/pottedplant/flower{
+	pixel_y = 19;
+	pixel_x = -7
+	},
+/obj/effect/floor_decal/carpet/blue{
+	dir = 8
+	},
+/obj/effect/floor_decal/carpet/blue{
+	dir = 1
+	},
+/obj/effect/floor_decal/carpet/blue{
+	dir = 9
+	},
+/obj/item/pda/librarian,
+/obj/machinery/media/jukebox{
+	state_base = "darkjuke";
+	pixel_x = -26
+	},
+/obj/item/flashlight/lamp/on,
+/turf/simulated/floor/carpet/bcarpet,
+/area/shuttle/crescend)
 "Bl" = (
 /obj/structure/closet/walllocker_double/north,
 /obj/effect/floor_decal/rust,
@@ -4918,32 +5862,29 @@
 	},
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/sky_planet/outpost/office)
-"Bp" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	pixel_y = 13
+"Bs" = (
+/obj/machinery/power/terminal{
+	dir = 8
 	},
-/obj/item/ammo_casing/a5_56mm,
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/obj/structure/cable/white{
+	icon_state = "0-4"
+	},
+/obj/machinery/light/small/old{
+	dir = 1
+	},
+/obj/machinery/cryopod/robot/door/travel/occulum,
+/obj/machinery/computer/cryopod/travel/occulum{
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/crescend)
 "Bu" = (
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/tiled/old_cargo/white,
 /area/sector/sky_planet/station_city/appartement2)
-"Bv" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 4
-	},
-/obj/item/stack/material/glass,
-/obj/machinery/light/poi{
-	dir = 4
-	},
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	id_tag = "voidline_redcomet_dock";
-	dir = 8;
-	pixel_x = 26
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/racing_station/dock)
 "Bw" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/mech_recharger,
@@ -5020,6 +5961,19 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/sky_planet/racing_station/dock)
+"BK" = (
+/obj/structure/metal_edge{
+	layer = 1
+	},
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/sky_planet/racing_station/dock)
 "BM" = (
 /obj/structure/table/steel,
 /obj/structure/window/basic{
@@ -5034,13 +5988,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/police)
-"BO" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 4;
-	pixel_x = -12
-	},
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/dock)
 "BP" = (
 /obj/structure/table/steel,
 /obj/effect/floor_decal/rust,
@@ -5072,6 +6019,17 @@
 	outdoors = 1
 	},
 /area/sector/sky_planet/sky)
+"BW" = (
+/obj/machinery/light/poi,
+/obj/structure/cable/green{
+	dir = 1;
+	icon_state = "0-8"
+	},
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/racing_station/dock)
 "BY" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -5086,6 +6044,25 @@
 /obj/machinery/light/spot,
 /turf/simulated/floor/wood/indoors,
 /area/sector/sky_planet/station_city/offices)
+"Cb" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 1
+	},
+/turf/simulated/wall/r_wall,
+/area/shuttle/crescend)
+"Cc" = (
+/turf/simulated/wall/r_wall,
+/area/shuttle/crescend)
+"Cd" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/obj/machinery/mech_recharger,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/occulum)
 "Ce" = (
 /obj/machinery/washing_machine,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -5098,6 +6075,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/kafel_full/beige,
 /area/sector/sky_planet/racing_station/lounge)
+"Cg" = (
+/obj/structure/railing/grey,
+/turf/simulated/open/lythios43c/indoors,
+/area/sector/sky_planet/station_city/street)
 "Ci" = (
 /obj/structure/bed/roller,
 /obj/effect/floor_decal/corner_techfloor_grid/full{
@@ -5118,6 +6099,12 @@
 /obj/effect/floor_decal/borderfloorblack,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/shop)
+"Co" = (
+/obj/structure/railing/grey,
+/turf/simulated/floor/tiled/techfloor/monogrid{
+	outdoors = 1
+	},
+/area/sector/sky_planet/racing_station/dock)
 "Cp" = (
 /obj/item/modular_computer/console/preset/civilian{
 	dir = 4
@@ -5127,6 +6114,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/sky_planet/racing_station/atc)
+"Cq" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/crescend)
 "Cr" = (
 /obj/machinery/vending/cigarette,
 /turf/simulated/floor/wood/sif/indoors,
@@ -5148,13 +6141,43 @@
 /obj/machinery/computer/ship/engines,
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/shuttle/redcomet)
-"CH" = (
-/mob/living/simple_mob/mechanical/hivebot,
+"CB" = (
+/obj/structure/bed/chair/bay/shuttle{
+	dir = 8
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/station_city/dock)
-"CJ" = (
-/turf/level_border,
-/area/sector/sky_planet/sky)
+/area/shuttle/crescend)
+"CE" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/obj/structure/cable/white{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/occulum)
+"CF" = (
+/obj/structure/cable/orange{
+	icon_state = "0-4"
+	},
+/obj/machinery/power/rtg/advanced{
+	power_gen = 100
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/occulum)
+"CG" = (
+/obj/structure/curtain/open/bed,
+/turf/simulated/floor/wood/indoors,
+/area/sector/sky_planet/occulum)
+"CI" = (
+/obj/structure/cable/white{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/occulum)
 "CL" = (
 /obj/structure/table/hardwoodtable,
 /obj/item/event/prop/laptop2,
@@ -5192,22 +6215,19 @@
 	},
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/redcomet)
-"CX" = (
-/obj/structure/table/bench/steel,
-/turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/outpost/office)
 "CY" = (
 /turf/simulated/wall/r_wall/prepainted/security,
 /area/shuttle/redcomet)
 "Da" = (
-/obj/effect/floor_decal/industrial/halfstair,
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	id_tag = "voidline_arrowhead_dock";
-	dir = 8;
-	pixel_x = 26
+/obj/structure/catwalk,
+/obj/structure/railing/grey{
+	dir = 8
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/sector/sky_planet/racing_station/dock)
+/obj/structure/cable/white{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/reinforced/outdoors,
+/area/sector/sky_planet/sky)
 "Db" = (
 /obj/structure/bed/chair/comfy/brown{
 	dir = 4
@@ -5247,12 +6267,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/sky_planet/station_city/offices)
-"Di" = (
-/obj/effect/floor_decal/borderfloorwhite/corner{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/station_city/dock)
 "Dk" = (
 /obj/item/stack/material/plasteel,
 /turf/simulated/floor/tiled/monodark,
@@ -5275,6 +6289,13 @@
 	},
 /turf/simulated/floor/wood/sif/indoors,
 /area/sector/sky_planet/racing_station/lounge)
+"Dr" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/obj/vehicle/sealed/mecha/combat/fighter/pinnace/loaded,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/occulum)
 "Ds" = (
 /obj/structure/window/reinforced/survival_pod{
 	dir = 4
@@ -5293,6 +6314,17 @@
 /obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/sky_planet/outpost/office)
+"Dx" = (
+/obj/structure/table/hardwoodtable,
+/obj/effect/floor_decal/carpet/blue{
+	dir = 8
+	},
+/obj/machinery/microwave,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/turcarpet,
+/area/sector/sky_planet/occulum)
 "Dz" = (
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
@@ -5311,19 +6343,14 @@
 /obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
-"DC" = (
-/obj/machinery/air_alarm/east_mount,
-/turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/racing_station/dock)
-"DD" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/railing{
+"DB" = (
+/obj/structure/table/hardwoodtable,
+/obj/effect/floor_decal/carpet/blue{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/racing_station/dock)
+/obj/item/radio/intercom/entertainment/laptop,
+/turf/simulated/floor/carpet/bcarpet,
+/area/shuttle/crescend)
 "DE" = (
 /obj/structure/closet/largecardboard,
 /turf/simulated/floor/carpet/patterened/blue,
@@ -5390,10 +6417,23 @@
 	outdoors = 1
 	},
 /area/sector/sky_planet/station_city/street)
+"DO" = (
+/obj/machinery/recharger/wallcharger{
+	pixel_y = 25
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/wood/indoors,
+/area/sector/sky_planet/occulum)
 "DP" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
+"DQ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/crescend)
 "DR" = (
 /obj/effect/shuttle_landmark/skyplanet/voidline5,
 /turf/simulated/floor/reinforced/outdoors,
@@ -5402,6 +6442,12 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/kafel_full/beige,
 /area/sector/sky_planet/racing_station/dock)
+"DT" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/wood/indoors,
+/area/sector/sky_planet/occulum)
 "DU" = (
 /mob/living/simple_mob/mechanical/hivebot,
 /turf/simulated/floor/carpet/bcarpet,
@@ -5416,6 +6462,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
+"DW" = (
+/obj/structure/lightpost/urban,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/station_city/dock)
 "DX" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/kafel_full/beige,
@@ -5429,12 +6479,25 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/sky_planet/racing_station/dock)
-"Ec" = (
-/obj/structure/railing/grey{
+"Eb" = (
+/obj/structure/closet/crate/corporate/oculum,
+/obj/item/binoculars,
+/obj/item/tvcamera,
+/obj/item/tvcamera,
+/obj/item/clothing/accessory/armor/helmetcamera/body,
+/obj/item/clothing/accessory/armor/helmetcamera,
+/obj/item/clothing/suit/storage/vest/press,
+/obj/item/clothing/suit/armor/pcarrier/press,
+/obj/item/clothing/accessory/armor/tag/press,
+/obj/item/clothing/accessory/armor/tag/press,
+/obj/item/clothing/accessory/badge/corporate_tag/press,
+/obj/item/clothing/accessory/badge/corporate_tag/press,
+/obj/item/cassette_tape,
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/turf/simulated/open,
-/area/sector/sky_planet/station_city/street)
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/crescend)
 "Ee" = (
 /obj/structure/bed/chair/office/dark,
 /obj/machinery/light/small{
@@ -5456,6 +6519,13 @@
 /obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/outpost/office)
+"Ei" = (
+/obj/machinery/telecomms/receiver{
+	id = "OCULUM";
+	idle_power_usage = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/crescend)
 "Ek" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
@@ -5478,6 +6548,16 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/sky_planet/racing_station/dock)
+"En" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/racing_station/dock)
+"Eo" = (
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/wood/sif/indoors,
+/area/sector/sky_planet/racing_station/dock)
 "Ep" = (
 /obj/machinery/atmospherics/portables_connector,
 /obj/machinery/portable_atmospherics/canister/empty/phoron,
@@ -5488,6 +6568,23 @@
 /mob/living/simple_mob/mechanical/hivebot,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/dock)
+"Er" = (
+/obj/structure/sandbag,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/rock)
+"Et" = (
+/obj/structure/table/hardwoodtable,
+/obj/machinery/newscaster{
+	pixel_y = 33;
+	pixel_x = 56
+	},
+/obj/item/tape_recorder,
+/obj/item/cassette_tape,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/shuttle/crescend)
 "Eu" = (
 /obj/machinery/shower{
 	dir = 8
@@ -5495,6 +6592,12 @@
 /obj/structure/curtain/open/shower,
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/sky_planet/outpost/office)
+"Ev" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/station_city/dock)
 "Ew" = (
 /obj/machinery/door/airlock/multi_tile/glass,
 /turf/simulated/floor/tiled/techfloor,
@@ -5580,6 +6683,10 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/sky_planet/station_city/offices)
+"EQ" = (
+/obj/machinery/mech_recharger,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/occulum)
 "ER" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/item/paper/pamphlet/arrowhead,
@@ -5611,6 +6718,19 @@
 "EX" = (
 /turf/simulated/floor/wood/indoors,
 /area/sector/sky_planet/station_city/offices)
+"EY" = (
+/mob/living/simple_mob/humanoid/taj_guerilla/guerilla/uzi/neutral,
+/obj/structure/cable/white{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/occulum)
+"EZ" = (
+/obj/structure/closet/crate/corporate/oculum,
+/obj/item/storage/single_use/mre/menu2,
+/obj/item/storage/single_use/mre/menu2,
+/turf/simulated/floor/wood/indoors,
+/area/sector/sky_planet/occulum)
 "Fa" = (
 /obj/structure/table/wooden_reinforced,
 /obj/machinery/computer/security/telescreen{
@@ -5621,6 +6741,9 @@
 	},
 /turf/simulated/floor/wood/sif/indoors,
 /area/sector/sky_planet/racing_station/lounge)
+"Fb" = (
+/turf/simulated/open/lythios43c/indoors,
+/area/sector/sky_planet/outpost/docking_port1)
 "Fc" = (
 /obj/machinery/lathe/autolathe,
 /turf/simulated/floor/tiled/techfloor,
@@ -5633,6 +6756,12 @@
 /obj/structure/sandbag,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/street)
+"Fe" = (
+/obj/structure/cable/white{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/occulum)
 "Ff" = (
 /obj/machinery/door/airlock,
 /turf/simulated/floor/tiled/techfloor,
@@ -5650,6 +6779,12 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/old_cargo/blue,
 /area/sector/sky_planet/outpost/medical)
+"Fj" = (
+/obj/structure/railing/grey{
+	dir = 4
+	},
+/turf/simulated/open/lythios43c/indoors,
+/area/sector/sky_planet/station_city/street)
 "Fl" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/effect/floor_decal/rust/mono_rusted3{
@@ -5664,6 +6799,39 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/shop)
+"Fn" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/occulum)
+"Fo" = (
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	pixel_y = 27;
+	id_tag = "cresend";
+	frequency = 8018
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	dir = 1;
+	id_tag = "cresend";
+	frequency = 8018
+	},
+/obj/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/sensor/chamber_sensor,
+/obj/machinery/airlock_sensor{
+	frequency = 8018;
+	pixel_x = 10;
+	pixel_y = 24;
+	master_tag = "cresend";
+	id_tag = "cresend"
+	},
+/obj/structure/cable/white{
+	icon_state = "4-8"
+	},
+/obj/effect/shuttle_landmark/skyplanet/voidline/crescend,
+/obj/overmap/entity/visitable/ship/landable/trade/crescend,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/crescend)
 "Fq" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 8
@@ -5672,19 +6840,20 @@
 /obj/item/stack/material/steel,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/racing_station/dock)
+"Fs" = (
+/obj/machinery/atmospherics/component/unary/heater{
+	dir = 1;
+	icon_state = "heater_1";
+	use_power = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/crescend)
 "Fu" = (
 /obj/machinery/door/airlock/glass_external,
 /obj/map_helper/access_helper/airlock/station/external_airlock,
 /obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/sky_planet/outpost/office)
-"Fv" = (
-/obj/machinery/computer/shuttle_control/explore/redcomet,
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/steel_dirty/dark,
-/area/shuttle/redcomet)
 "Fw" = (
 /obj/structure/closet/largecardboard,
 /turf/simulated/floor/carpet/purcarpet,
@@ -5710,6 +6879,11 @@
 /obj/structure/closet,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/security)
+"FC" = (
+/obj/structure/bed/padded,
+/obj/item/bedsheet/brown,
+/turf/simulated/floor/carpet/turcarpet,
+/area/sector/sky_planet/occulum)
 "FD" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
@@ -5737,6 +6911,22 @@
 	},
 /turf/simulated/floor/tiled/old_cargo/blue,
 /area/sector/sky_planet/outpost/medical)
+"FH" = (
+/obj/structure/table/hardwoodtable,
+/turf/simulated/floor/carpet/turcarpet,
+/area/sector/sky_planet/occulum)
+"FI" = (
+/obj/effect/floor_decal/corner/paleblue/border,
+/obj/effect/floor_decal/corner/paleblue/border,
+/obj/effect/floor_decal/borderfloorwhite/corner{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c,
+/area/shuttle/crescend)
+"FJ" = (
+/obj/structure/closet/secure_closet/guncabinet,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/occulum)
 "FL" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -5765,22 +6955,51 @@
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
-"FQ" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 4;
-	pixel_x = -12
-	},
-/obj/structure/sandbag,
+"FO" = (
 /obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/mob/living/simple_mob/humanoid/taj_guerilla/guerilla/uzi/neutral,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/occulum)
+"FT" = (
+/obj/structure/atmospheric_retention_field{
 	color = "#b88a3b"
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
+"FX" = (
+/obj/structure/fuel_port{
+	dir = 4;
+	pixel_x = 29
+	},
+/obj/machinery/camera/network/thunder{
+	invisibility = 101
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/structure/bed/chair/bay/shuttle,
+/obj/structure/panic_button{
+	pixel_y = 33
+	},
+/turf/simulated/floor/tiled/steel_dirty/yellow,
+/area/shuttle/bonnethead)
 "FZ" = (
 /obj/structure/window/reinforced/tinted,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/old_cargo/white,
 /area/sector/sky_planet/racing_station/lounge)
+"Ga" = (
+/obj/structure/cable/white{
+	icon_state = "2-8"
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/obj/structure/ghost_role_spawner/occulum{
+	role_spawns = 2
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/crescend)
 "Gb" = (
 /obj/effect/floor_decal/rust/mono_rusted3{
 	color = "#b88a3b"
@@ -5833,6 +7052,15 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/police)
+"Gl" = (
+/obj/structure/cable/orange{
+	icon_state = "1-4"
+	},
+/obj/structure/cable/orange{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/occulum)
 "Gm" = (
 /obj/effect/floor_decal/borderfloorblack/full,
 /obj/machinery/door/airlock/multi_tile/glass/civilian,
@@ -5858,6 +7086,18 @@
 	},
 /turf/simulated/floor/tiled/old_cargo/blue,
 /area/sector/sky_planet/outpost/medical)
+"Gq" = (
+/obj/structure/cable/orange{
+	icon_state = "1-4"
+	},
+/obj/structure/cable/orange{
+	icon_state = "1-8"
+	},
+/obj/structure/cable/orange{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/occulum)
 "Gr" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 8
@@ -5881,6 +7121,11 @@
 /obj/structure/closet/largecardboard,
 /turf/simulated/floor/carpet/patterened,
 /area/sector/sky_planet/station_city/appartement2)
+"Gv" = (
+/obj/machinery/power/smes/buildable/offmap_spawn,
+/obj/structure/cable/green,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/racing_station/dock)
 "Gx" = (
 /obj/structure/toilet{
 	desc = "The HT-42069 HEPHAESTUS is a toilet reinforced with durasteel applique armor to handle the toughest shit.";
@@ -5937,6 +7182,16 @@
 	},
 /turf/simulated/wall/r_wall/prepainted/engineering,
 /area/shuttle/bonnethead)
+"GF" = (
+/obj/structure/cable/white{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/white{
+	icon_state = "0-2"
+	},
+/obj/machinery/power/apc/alarms_hidden/west_mount,
+/turf/simulated/floor/wood/indoors,
+/area/sector/sky_planet/occulum)
 "GG" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -27
@@ -6019,13 +7274,47 @@
 	},
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/sector/sky_planet/station_city/offices)
-"Hm" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 4;
-	pixel_x = -12
+"Hh" = (
+/obj/effect/floor_decal/corner/paleblue/border,
+/obj/effect/floor_decal/corner/paleblue/border,
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
 	},
-/obj/machinery/door/blast/regular,
-/turf/simulated/floor/tiled/monodark,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c,
+/area/shuttle/crescend)
+"Hi" = (
+/obj/structure/table/hardwoodtable,
+/obj/structure/flora/pottedplant/flower{
+	pixel_y = 19;
+	pixel_x = -7
+	},
+/obj/item/paper_bin,
+/obj/item/pen/fountain,
+/turf/simulated/floor/carpet/turcarpet,
+/area/sector/sky_planet/occulum)
+"Hl" = (
+/obj/structure/cable/white{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/reinforced/outdoors,
+/area/sector/sky_planet/sky)
+"Ho" = (
+/obj/effect/floor_decal/industrial/danger/corner{
+	dir = 8
+	},
+/obj/machinery/light/poi,
+/obj/structure/cable/green{
+	dir = 1;
+	icon_state = "0-4"
+	},
+/obj/machinery/power/apc/alarms_hidden/east_mount,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/racing_station/dock)
+"Hp" = (
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/turf/simulated/open/lythios43c/indoors,
 /area/sector/sky_planet/station_city/street)
 "Hq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -6092,27 +7381,6 @@
 "HF" = (
 /turf/simulated/wall/r_wall,
 /area/sector/sky_planet/station_city/appartement)
-"HG" = (
-/obj/structure/railing/grey{
-	dir = 8
-	},
-/obj/structure/railing/grey,
-/turf/simulated/open,
-/area/sector/sky_planet/station_city/street)
-"HH" = (
-/obj/structure/fuel_port{
-	dir = 4;
-	pixel_x = 29
-	},
-/obj/machinery/camera/network/thunder{
-	invisibility = 101
-	},
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/structure/bed/chair/bay/shuttle,
-/turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/shuttle/bonnethead)
 "HI" = (
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/sky_planet/station_city/offices)
@@ -6127,6 +7395,10 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/paripari)
+"HR" = (
+/obj/structure/flora/fey/grass/grass8,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/station_city/street)
 "HS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/red{
 	dir = 4
@@ -6144,16 +7416,16 @@
 	},
 /turf/simulated/floor/carpet/patterened/green,
 /area/sector/sky_planet/station_city/offices)
-"HX" = (
-/obj/structure/sandbag,
-/obj/effect/floor_decal/rust/mono_rusted3{
-	color = "#b88a3b"
+"HV" = (
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/occulum)
+"Ib" = (
+/obj/machinery/button/remote/blast_door{
+	pixel_y = 22;
+	id = "oculum"
 	},
-/obj/effect/floor_decal/corner/red/border{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/occulum)
 "Ic" = (
 /mob/living/simple_mob/mechanical/hivebot/ranged_damage,
 /turf/simulated/floor/tiled/monodark,
@@ -6188,16 +7460,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/police)
-"Il" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 4;
-	pixel_x = -12
-	},
-/obj/effect/floor_decal/rust/mono_rusted3{
-	color = "#b88a3b"
-	},
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/dock)
 "Im" = (
 /obj/effect/shuttle_landmark/skyplanet/voidline6,
 /turf/simulated/floor/reinforced/outdoors,
@@ -6280,6 +7542,16 @@
 /obj/machinery/door/airlock,
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/sky_planet/station_city/shop)
+"IA" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
+	},
+/obj/structure/table/bench/steel,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/outpost/office)
 "IC" = (
 /mob/living/simple_mob/mechanical/hivebot,
 /obj/effect/floor_decal/corner/red/border,
@@ -6309,13 +7581,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/sector/sky_planet/station_city/offices)
-"IK" = (
-/obj/structure/table/bench/steel,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/outpost/office)
 "IL" = (
 /obj/structure/fireplace{
 	pixel_y = 25;
@@ -6323,11 +7588,6 @@
 	},
 /turf/simulated/floor/carpet/patterened/red,
 /area/sector/sky_planet/station_city/appartement)
-"IM" = (
-/obj/effect/floor_decal/rust,
-/obj/structure/table/bench/wooden,
-/turf/simulated/floor/tiled/kafel_full/beige,
-/area/sector/sky_planet/racing_station/dock)
 "IN" = (
 /obj/structure/bed/chair/office/dark,
 /turf/simulated/floor/tiled/techfloor,
@@ -6362,18 +7622,15 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/lino,
 /area/sector/sky_planet/outpost/office)
-"IV" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/outpost/office)
 "IW" = (
 /turf/simulated/wall/r_wall,
 /area/sector/sky_planet/racing_station/atc)
+"IY" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/crescend)
 "IZ" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 4
@@ -6405,6 +7662,16 @@
 "Jd" = (
 /turf/simulated/floor/fey/forest_grass,
 /area/sector/sky_planet/station_city/appartement)
+"Je" = (
+/obj/machinery/power/rtg/advanced{
+	power_gen = 100
+	},
+/obj/structure/cable/orange{
+	icon_state = "0-8"
+	},
+/obj/machinery/light,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/occulum)
 "Jf" = (
 /obj/spawner/window/full,
 /turf/simulated/floor/wood/indoors,
@@ -6441,10 +7708,23 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/police)
+"Jl" = (
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/rock)
+"Jn" = (
+/obj/structure/curtain/open/bed,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/occulum)
 "Jo" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /turf/simulated/floor/fey/forest_grass,
 /area/sector/sky_planet/station_city/appartement)
+"Jp" = (
+/obj/structure/cable/white{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/occulum)
 "Jq" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 1
@@ -6461,16 +7741,19 @@
 "Js" = (
 /turf/simulated/floor/tiled/kafel_full/beige,
 /area/sector/sky_planet/racing_station/lounge)
+"Jt" = (
+/turf/simulated/wall/wood/hardwood,
+/area/shuttle/crescend)
+"Ju" = (
+/obj/machinery/telecomms/allinone/occulum,
+/turf/simulated/floor/airless,
+/area/sector/sky_planet/occulum)
 "Jv" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
-"Jw" = (
-/obj/effect/decal/mecha_wreckage/cludge,
-/turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/racing_station/dock)
 "Jz" = (
 /obj/structure/bed/chair/sofa/brown{
 	dir = 4
@@ -6484,6 +7767,12 @@
 /obj/effect/floor_decal/industrial/warning/dust/corner,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
+"JD" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/turf/simulated/open/skyplanet,
+/area/sector/sky_planet/sky)
 "JF" = (
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/tiled/techfloor,
@@ -6547,13 +7836,6 @@
 /obj/overmap/entity/visitable/sector/skyplanet,
 /turf/simulated/mineral/cave,
 /area/sector/sky_planet/rock)
-"JU" = (
-/obj/effect/floor_decal/corner/red/bordercorner,
-/obj/effect/floor_decal/rust/mono_rusted3{
-	color = "#b88a3b"
-	},
-/turf/simulated/floor/tiled/monotechmaint,
-/area/sector/sky_planet/station_city/street)
 "JV" = (
 /obj/machinery/light/spot,
 /turf/simulated/floor/wood/indoors,
@@ -6568,10 +7850,26 @@
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/station_city/street)
+"JY" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/crescend)
 "Kc" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/sky_planet/station_city/restaurant)
+"Kd" = (
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorwhite,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c,
+/area/shuttle/crescend)
 "Ke" = (
 /obj/structure/bed/double,
 /obj/machinery/light/spot{
@@ -6579,6 +7877,10 @@
 	},
 /turf/simulated/floor/carpet/patterened,
 /area/sector/sky_planet/station_city/appartement)
+"Kf" = (
+/obj/machinery/appliance/cooker/oven,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/occulum)
 "Kh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
@@ -6599,6 +7901,12 @@
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/wood/indoors,
 /area/sector/sky_planet/station_city/school)
+"Kj" = (
+/obj/machinery/computer/shuttle_control/explore/crescend{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/crescend)
 "Km" = (
 /obj/structure/window/reinforced/survival_pod{
 	dir = 4
@@ -6716,6 +8024,16 @@
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
+"KG" = (
+/obj/structure/cable/orange{
+	icon_state = "0-4"
+	},
+/obj/machinery/light,
+/obj/machinery/power/rtg/advanced{
+	power_gen = 100
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/occulum)
 "KI" = (
 /obj/structure/window/reinforced/survival_pod{
 	dir = 4
@@ -6730,6 +8048,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
+"KN" = (
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/tiled,
+/area/shuttle/crescend)
 "KP" = (
 /obj/machinery/door/airlock/multi_tile{
 	dir = 1
@@ -6741,6 +8063,25 @@
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
+"KT" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/sky)
+"KV" = (
+/obj/machinery/telecomms/relay/preset/telecomms,
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/crescend)
 "KX" = (
 /obj/structure/bed,
 /obj/machinery/light/spot{
@@ -6762,21 +8103,44 @@
 /mob/living/simple_mob/mechanical/hivebot,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/offices)
+"Ld" = (
+/obj/structure/railing/grey,
+/obj/structure/railing/grey{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid{
+	outdoors = 1
+	},
+/area/sector/sky_planet/sky)
 "Le" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/offices)
+"Lf" = (
+/obj/item/stack/material/plasteel,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/station_city/street)
 "Li" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/office)
+"Lj" = (
+/turf/simulated/floor/carpet/turcarpet,
+/area/sector/sky_planet/occulum)
 "Ln" = (
 /obj/structure/table/steel_reinforced,
 /obj/effect/floor_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/police)
+"Lo" = (
+/obj/machinery/telecomms/relay{
+	id = "OCULUM";
+	idle_power_usage = 1
+	},
+/turf/simulated/floor/airless,
+/area/sector/sky_planet/occulum)
 "Lp" = (
 /obj/item/ammo_casing/a5_56mm,
 /obj/effect/floor_decal/rust/mono_rusted3{
@@ -6784,6 +8148,15 @@
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
+"Lq" = (
+/obj/effect/floor_decal/carpet/blue{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/shuttle/crescend)
 "Lr" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
@@ -6824,6 +8197,17 @@
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/sky_planet/station_city/shop)
+"Ly" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/obj/item/clothing/head/helmet/space/void,
+/obj/item/clothing/suit/space/void,
+/obj/item/tank/emergency,
+/obj/item/tank/emergency,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/racing_station/dock)
 "LA" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -6853,6 +8237,11 @@
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
+"LI" = (
+/obj/effect/floor_decal/corner/paleblue/border,
+/obj/effect/floor_decal/corner/paleblue/border,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c,
+/area/shuttle/crescend)
 "LJ" = (
 /obj/structure/table/wooden_reinforced,
 /obj/machinery/light/fairy{
@@ -6892,6 +8281,14 @@
 "LZ" = (
 /turf/simulated/floor/tiled/old_cargo/white,
 /area/sector/sky_planet/racing_station/lounge)
+"Ma" = (
+/obj/structure/cable/green,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/crescend)
 "Mc" = (
 /obj/machinery/door/blast/regular/open,
 /obj/effect/floor_decal/corner/red/border,
@@ -6903,6 +8300,15 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/office)
+"Mg" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/obj/structure/cable/white{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/occulum)
 "Mh" = (
 /obj/structure/bed,
 /turf/simulated/floor/carpet/blue,
@@ -6910,6 +8316,12 @@
 "Mj" = (
 /turf/simulated/wall/r_wall,
 /area/sector/sky_planet/racing_station/lounge)
+"Mk" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 9
+	},
+/turf/simulated/floor/carpet/patterened/red,
+/area/sector/sky_planet/racing_station/dock)
 "Ml" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -6923,6 +8335,19 @@
 /obj/machinery/suit_storage_unit/exploration,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/office)
+"Mn" = (
+/obj/structure/catwalk,
+/obj/structure/railing/grey,
+/obj/structure/cable/white{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/reinforced/outdoors,
+/area/sector/sky_planet/sky)
+"Mp" = (
+/obj/effect/floor_decal/industrial/halfstair,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/crescend)
 "Mq" = (
 /obj/machinery/light{
 	dir = 1
@@ -7000,13 +8425,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
-"MN" = (
-/obj/effect/floor_decal/rust,
-/obj/machinery/light/poi{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/racing_station/dock)
 "MO" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -7027,25 +8445,20 @@
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/sky_planet/racing_station/dock)
-"MS" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/kafel_full/beige,
-/area/sector/sky_planet/racing_station/dock)
 "MT" = (
 /turf/simulated/wall/log_ironwood,
 /area/sector/sky_planet/station_city/appartement2)
+"MU" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/obj/structure/sandbag,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/rock)
 "MV" = (
 /obj/structure/sign/greencross,
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/sector/sky_planet/outpost/medical)
-"MY" = (
-/obj/machinery/light/poi{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/sector/sky_planet/racing_station/dock)
 "MZ" = (
 /obj/structure/railing{
 	dir = 1
@@ -7058,6 +8471,15 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/sky_planet/racing_station/dock)
+"Na" = (
+/obj/structure/cable/white{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/crescend)
 "Nb" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/kafel_full/beige,
@@ -7102,6 +8524,18 @@
 	},
 /turf/simulated/floor/plating,
 /area/sector/sky_planet/outpost/engineering)
+"Nh" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/outpost/engineering)
 "Ni" = (
 /obj/machinery/door/airlock,
 /turf/simulated/floor/tiled/old_tile/white,
@@ -7133,6 +8567,13 @@
 /obj/machinery/photocopier,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/offices)
+"Nn" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/obj/structure/lightpost/urban,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/sky)
 "No" = (
 /obj/effect/floor_decal/techfloor,
 /obj/structure/railing,
@@ -7144,16 +8585,6 @@
 	},
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/sector/sky_planet/outpost/docking_port1)
-"Nq" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 4;
-	pixel_x = -12
-	},
-/obj/effect/floor_decal/rust/mono_rusted3{
-	color = "#b88a3b"
-	},
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
 "Nr" = (
 /obj/structure/cable/green{
 	icon_state = "2-4"
@@ -7272,6 +8703,15 @@
 /obj/spawner/window/low_wall/firelocks,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/outpost/office)
+"NR" = (
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/obj/structure/sandbag,
+/turf/simulated/floor/tiled/techfloor/monogrid{
+	outdoors = 1
+	},
+/area/sector/sky_planet/sky)
 "NS" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -7304,6 +8744,21 @@
 	},
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/sky_planet/station_city/shop)
+"NW" = (
+/obj/structure/flora/tree/fey/large_tree/tree6,
+/turf/simulated/floor/fey/forest_grass,
+/area/sector/sky_planet/sky)
+"NY" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	id_tag = "voidline_bonnethead_dock";
+	dir = 8;
+	pixel_x = 26
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/racing_station/dock)
 "NZ" = (
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/sky_planet/station_city/appartement)
@@ -7321,13 +8776,6 @@
 /obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/sky_planet/outpost/docking_port1)
-"Og" = (
-/obj/machinery/light/poi{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/tank/air,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/sector/sky_planet/racing_station/dock)
 "Oh" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -7389,12 +8837,27 @@
 /obj/machinery/light/spot,
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/sky_planet/outpost/medical)
+"Ou" = (
+/obj/structure/cable/white{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/wood/indoors,
+/area/sector/sky_planet/occulum)
 "Ov" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
 /turf/simulated/wall/r_wall/prepainted/civilian,
 /area/shuttle/paripari)
+"Ow" = (
+/obj/effect/floor_decal/industrial/halfstair,
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	id_tag = "voidline_arrowhead_dock";
+	dir = 8;
+	pixel_x = 26
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/racing_station/dock)
 "Oy" = (
 /obj/structure/table/hardwoodtable,
 /obj/item/storage/box/glasses/meta,
@@ -7411,6 +8874,15 @@
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
+"OE" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/sky)
 "OG" = (
 /obj/machinery/light/poi{
 	dir = 4
@@ -7433,13 +8905,6 @@
 /obj/structure/table/hardwoodtable,
 /turf/simulated/floor/wood/indoors,
 /area/sector/sky_planet/station_city/appartement)
-"OK" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
-/obj/machinery/power/apc/north_mount,
-/turf/simulated/floor/tiled/kafel_full/beige,
-/area/sector/sky_planet/racing_station/dock)
 "OL" = (
 /obj/item/stack/material/steel,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -7502,6 +8967,10 @@
 /obj/effect/floor_decal/corner_techfloor_grid/full,
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/sky_planet/outpost/medical)
+"OW" = (
+/obj/effect/floor_decal/industrial/halfstair,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/racing_station/dock)
 "OX" = (
 /obj/effect/floor_decal/corner/red/border{
 	dir = 4
@@ -7509,6 +8978,17 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/police)
+"OY" = (
+/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/atmospherics/portables_connector,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/crescend)
+"Pc" = (
+/obj/structure/cable/white{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/reinforced/outdoors,
+/area/sector/sky_planet/sky)
 "Pe" = (
 /obj/machinery/light{
 	dir = 2
@@ -7537,6 +9017,16 @@
 /obj/machinery/vending/dinnerware,
 /turf/simulated/floor/tiled/old_cargo/white,
 /area/sector/sky_planet/racing_station/lounge)
+"Pj" = (
+/obj/effect/floor_decal/carpet/blue{
+	dir = 8
+	},
+/obj/effect/floor_decal/carpet/blue,
+/obj/effect/floor_decal/carpet/blue{
+	dir = 10
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/shuttle/crescend)
 "Pk" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -7592,15 +9082,16 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/kafel_full/beige,
 /area/sector/sky_planet/racing_station/dock)
-"Pw" = (
-/obj/effect/shuttle_landmark/skyplanet/voidline/bonnethead,
-/obj/overmap/entity/visitable/ship/landable/trade/bonnethead,
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	id_tag = "voidline_bonnethead_docker";
-	pixel_x = -28
+"Pv" = (
+/obj/structure/bed/chair/bay/shuttle{
+	dir = 8;
+	name = "Pilot's Seat"
 	},
-/turf/simulated/floor/tiled/steel_dirty/yellow,
-/area/shuttle/bonnethead)
+/obj/structure/panic_button{
+	pixel_y = 33
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/paripari)
 "Px" = (
 /obj/structure/fuel_port{
 	pixel_x = -27
@@ -7639,6 +9130,11 @@
 /obj/spawner/window/full,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/restaurant)
+"PC" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/paper/pamphlet/voidlinedebut,
+/turf/simulated/floor/wood/sif/indoors,
+/area/sector/sky_planet/racing_station/dock)
 "PD" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/sector/sky_planet/outpost/docking_port2)
@@ -7648,6 +9144,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/sky_planet/racing_station/dock)
+"PF" = (
+/obj/effect/floor_decal/industrial/hatch,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/sky)
 "PG" = (
 /obj/structure/bed/chair/sofa/brown/right,
 /turf/simulated/floor/carpet/patterened/blue,
@@ -7663,22 +9163,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/sky_planet/outpost/medical)
-"PI" = (
-/obj/structure/bed/chair/bay/shuttle{
-	dir = 4
-	},
-/obj/machinery/computer/ship/navigation/telescreen{
-	pixel_y = -33
-	},
-/obj/machinery/light{
-	dir = 8
-	},
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	id_tag = "voidline_redcomet_docker";
-	pixel_x = -28
-	},
-/turf/simulated/floor/tiled/steel_dirty/dark,
-/area/shuttle/redcomet)
 "PJ" = (
 /obj/structure/table/standard,
 /turf/simulated/floor/wood/indoors,
@@ -7694,9 +9178,20 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
+"PL" = (
+/obj/structure/metal_edge{
+	layer = 1
+	},
+/turf/simulated/open/lythios43c/indoors,
+/area/sector/sky_planet/station_city/street)
 "PN" = (
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/paripari)
+"PP" = (
+/obj/effect/floor_decal/spline/fancy/wood/three_quarters,
+/obj/machinery/atmospherics/pipe/manifold4w/hidden,
+/turf/simulated/floor/wood/indoors,
+/area/shuttle/crescend)
 "PQ" = (
 /obj/structure/table/marble{
 	color = "#555555";
@@ -7710,6 +9205,21 @@
 /obj/random/multiple/corp_crate/no_weapons,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/dock)
+"PW" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/mob/living/simple_mob/humanoid/taj_guerilla/guerilla/fal/neutral,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/sky)
+"PY" = (
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid{
+	outdoors = 1
+	},
+/area/sector/sky_planet/racing_station/dock)
 "PZ" = (
 /obj/effect/floor_decal/rust,
 /mob/living/simple_mob/mechanical/hivebot,
@@ -7786,6 +9296,13 @@
 "Qp" = (
 /turf/simulated/floor/reinforced/outdoors,
 /area/sector/sky_planet/sky)
+"Qu" = (
+/obj/structure/railing/grey,
+/obj/structure/sandbag,
+/turf/simulated/floor/tiled/techfloor/monogrid{
+	outdoors = 1
+	},
+/area/sector/sky_planet/sky)
 "Qv" = (
 /obj/machinery/door/airlock/glass_external/public,
 /obj/map_helper/access_helper/airlock/station/external_airlock,
@@ -7802,6 +9319,10 @@
 	amount = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/racing_station/dock)
+"Qy" = (
+/obj/effect/floor_decal/techfloor,
+/turf/simulated/floor/carpet/patterened/red,
 /area/sector/sky_planet/racing_station/dock)
 "Qz" = (
 /obj/effect/shuttle_landmark/skyplanet/voidline/redcomet,
@@ -7821,6 +9342,15 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/street)
+"QE" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
+	},
+/turf/simulated/wall/r_wall,
+/area/shuttle/crescend)
 "QF" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
@@ -7828,6 +9358,28 @@
 /obj/item/ammo_casing/a5_56mm,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/police)
+"QG" = (
+/obj/machinery/newscaster{
+	pixel_x = 25
+	},
+/obj/structure/table/steel_reinforced,
+/obj/machinery/photocopier/faxmachine{
+	department = "Oculum Radio Shuttle"
+	},
+/obj/structure/flora/pottedplant/tall{
+	pixel_y = 15;
+	pixel_x = 7
+	},
+/obj/item/paper_bin{
+	pixel_y = 10;
+	pixel_x = -6
+	},
+/obj/item/pen/fountain{
+	pixel_y = 10;
+	pixel_x = -6
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/crescend)
 "QI" = (
 /obj/structure/table/wooden_reinforced,
 /obj/machinery/computer/security/telescreen{
@@ -7860,27 +9412,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/office)
-"QP" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/kafel_full/beige,
-/area/sector/sky_planet/racing_station/dock)
 "QS" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
-"QT" = (
-/obj/structure/railing/grey{
-	dir = 8
-	},
-/obj/structure/railing/grey{
-	dir = 1
-	},
-/turf/simulated/open,
-/area/sector/sky_planet/station_city/street)
 "QV" = (
 /obj/structure/table/standard,
 /obj/item/storage/firstaid/fire{
@@ -7970,16 +9507,14 @@
 	},
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/sky_planet/station_city/offices)
-"Rm" = (
-/obj/effect/floor_decal/techfloor/corner{
-	dir = 1
+"Rk" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/obj/item/paper/pamphlet/voidlineend,
-/turf/simulated/floor/tiled/kafel_full/beige,
-/area/sector/sky_planet/racing_station/dock)
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/structure/table/bench/steel,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/outpost/office)
 "Rn" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 1
@@ -7990,7 +9525,9 @@
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/station_city/street)
-"Rq" = (
+"Ro" = (
+/obj/structure/flora/pottedplant/hedge,
+/obj/machinery/light/poi,
 /turf/simulated/floor/tiled/kafel_full/beige,
 /area/sector/sky_planet/racing_station/dock)
 "Rs" = (
@@ -8014,6 +9551,12 @@
 	outdoors = 1
 	},
 /area/sector/sky_planet/sky)
+"Rw" = (
+/turf/simulated/floor/fey/forest_grass,
+/area/sector/sky_planet/sky)
+"Rx" = (
+/turf/simulated/open/lythios43c/indoors,
+/area/sector/sky_planet/station_city/street)
 "Ry" = (
 /turf/simulated/mineral/cave,
 /area/sector/sky_planet/station_city/dock)
@@ -8037,6 +9580,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/lino,
 /area/sector/sky_planet/outpost/office)
+"RC" = (
+/obj/structure/lattice,
+/turf/simulated/open/lythios43c/indoors,
+/area/sector/sky_planet/station_city/street)
 "RD" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/light{
@@ -8072,6 +9619,15 @@
 	outdoors = 1
 	},
 /area/sector/sky_planet/station_city/street)
+"RL" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/structure/table/bench/steel,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/outpost/office)
 "RM" = (
 /obj/structure/salvageable/computer,
 /obj/machinery/light{
@@ -8088,6 +9644,15 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/office)
+"RR" = (
+/obj/structure/cable/white{
+	icon_state = "1-2"
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/wood/indoors,
+/area/sector/sky_planet/occulum)
 "RT" = (
 /obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/wood/indoors,
@@ -8111,6 +9676,20 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/sky_planet/outpost/office)
+"RZ" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/wood/indoors,
+/area/shuttle/crescend)
+"Sb" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/obj/structure/lattice,
+/turf/simulated/open/skyplanet,
+/area/sector/sky_planet/sky)
 "Sc" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor,
@@ -8144,6 +9723,11 @@
 	},
 /turf/simulated/floor/tiled/old_cargo/white,
 /area/sector/sky_planet/station_city/appartement)
+"Sl" = (
+/obj/structure/table/steel_reinforced,
+/obj/machinery/microwave,
+/turf/simulated/floor/wood/indoors,
+/area/sector/sky_planet/occulum)
 "Sn" = (
 /obj/effect/floor_decal/corner/blue/border,
 /obj/machinery/holopad,
@@ -8153,6 +9737,14 @@
 	},
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/sky_planet/station_city/shop)
+"So" = (
+/obj/machinery/light/small/old,
+/obj/machinery/telecomms/broadcaster{
+	id = "OCULUM";
+	idle_power_usage = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/crescend)
 "Sq" = (
 /obj/machinery/door/blast/regular{
 	id = "voidline"
@@ -8190,6 +9782,16 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
+"Sw" = (
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c,
+/area/shuttle/crescend)
 "Sx" = (
 /obj/machinery/door/airlock/voidcraft/survival_pod,
 /obj/machinery/atmospherics/pipe/simple/hidden/red{
@@ -8201,6 +9803,10 @@
 /obj/structure/flora/tree/fey/large_tree/tree1,
 /turf/simulated/floor/fey/forest_grass,
 /area/sector/sky_planet/station_city/appartement)
+"Sz" = (
+/obj/effect/floor_decal/carpet/blue,
+/turf/simulated/floor/carpet/bcarpet,
+/area/shuttle/crescend)
 "SB" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/effect/floor_decal/techfloor/orange{
@@ -8244,10 +9850,26 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/appartement)
+"SH" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c,
+/area/shuttle/crescend)
 "SI" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /turf/simulated/floor/tiled/kafel_full/beige,
 /area/sector/sky_planet/racing_station/dock)
+"SJ" = (
+/mob/living/simple_mob/mechanical/hivebot/sword,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/police)
 "SK" = (
 /obj/machinery/bodyscanner{
 	dir = 4
@@ -8257,6 +9879,13 @@
 	},
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/sky_planet/outpost/medical)
+"SM" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/obj/machinery/deployable/barrier,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/rock)
 "SN" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 9
@@ -8282,6 +9911,20 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/reinforced,
 /area/sector/sky_planet/racing_station/dock)
+"SR" = (
+/obj/structure/bed/pod{
+	name = "bunk bed"
+	},
+/obj/structure/bed/pod{
+	pixel_y = 16;
+	layer = 4;
+	name = "bunk bed"
+	},
+/obj/machinery/light/small/old{
+	dir = 4
+	},
+/turf/simulated/floor/wood/indoors,
+/area/shuttle/crescend)
 "SS" = (
 /obj/structure/fence,
 /turf/simulated/floor/tiled/monotechmaint,
@@ -8351,6 +9994,12 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/shuttle/redcomet)
+"Th" = (
+/obj/structure/reagent_dispensers/water_cooler/full,
+/turf/simulated/floor/tiled/techfloor/monogrid{
+	outdoors = 1
+	},
+/area/sector/sky_planet/racing_station/dock)
 "Ti" = (
 /turf/simulated/floor/carpet/patterened/brown,
 /area/sector/sky_planet/station_city/offices)
@@ -8389,6 +10038,16 @@
 /obj/structure/catwalk,
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
+"Tp" = (
+/obj/effect/floor_decal/corner/red/bordercorner{
+	dir = 8
+	},
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/obj/structure/lightpost/urban,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/station_city/street)
 "Tq" = (
 /obj/structure/table/glass,
 /obj/structure/flora/pottedplant/unusual{
@@ -8398,6 +10057,10 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/sky_planet/station_city/shop)
+"Tr" = (
+/obj/machinery/atmospherics/component/unary/heater,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/crescend)
 "Ts" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /obj/machinery/light{
@@ -8476,13 +10139,6 @@
 /obj/structure/fans/tiny,
 /turf/simulated/floor/reinforced,
 /area/sector/sky_planet/station_city/dock)
-"TK" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
-/obj/structure/closet/emcloset/legacy,
-/turf/simulated/floor/tiled/kafel_full/beige,
-/area/sector/sky_planet/racing_station/dock)
 "TM" = (
 /obj/structure/closet/largecardboard,
 /turf/simulated/floor/tiled/techfloor,
@@ -8498,6 +10154,20 @@
 /obj/machinery/door/blast/regular,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/sky_planet/station_city/street)
+"TR" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/obj/effect/floor_decal/industrial/hatch,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/station_city/dock)
+"TU" = (
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/wood/indoors,
+/area/sector/sky_planet/occulum)
 "TY" = (
 /obj/structure/table/bench/steel,
 /obj/effect/floor_decal/spline/plain{
@@ -8505,6 +10175,22 @@
 	},
 /turf/simulated/floor/lino,
 /area/sector/sky_planet/outpost/office)
+"TZ" = (
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/turf/simulated/open/lythios43c/indoors,
+/area/sector/sky_planet/station_city/street)
+"Ub" = (
+/obj/machinery/door/airlock,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/racing_station/dock)
+"Uc" = (
+/obj/structure/poster/preset/baystation/bay_33{
+	pixel_y = 31
+	},
+/turf/simulated/floor/wood/indoors,
+/area/sector/sky_planet/occulum)
 "Ud" = (
 /obj/machinery/shipsensors,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -8516,6 +10202,20 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/office)
+"Ug" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/obj/machinery/door/blast/regular,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/rock)
+"Ui" = (
+/obj/structure/cable/green{
+	dir = 1;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/racing_station/dock)
 "Uj" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -8550,11 +10250,11 @@
 /obj/effect/floor_decal/corner/blue/border,
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/sky_planet/station_city/shop)
-"Ur" = (
+"Uv" = (
 /obj/effect/floor_decal/techfloor{
-	dir = 6
+	dir = 8
 	},
-/turf/simulated/floor/tiled/kafel_full/beige,
+/turf/simulated/floor/carpet/patterened/red,
 /area/sector/sky_planet/racing_station/dock)
 "Uw" = (
 /obj/effect/shuttle_landmark/skyplanet/voidline3,
@@ -8583,6 +10283,12 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/wood/sif/indoors,
 /area/sector/sky_planet/racing_station/dock)
+"UB" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/crescend)
 "UD" = (
 /obj/machinery/door/airlock/glass_external/public,
 /obj/map_helper/access_helper/airlock/station/external_airlock,
@@ -8686,6 +10392,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port2)
+"Vb" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 6
+	},
+/turf/simulated/floor/carpet/patterened/red,
+/area/sector/sky_planet/racing_station/dock)
 "Vc" = (
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 1
@@ -8746,6 +10458,11 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/reinforced,
 /area/sector/sky_planet/racing_station/dock)
+"Vm" = (
+/obj/effect/floor_decal/corner/paleblue/border,
+/obj/effect/floor_decal/corner/paleblue/border,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/crescend)
 "Vn" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/light/spot{
@@ -8788,6 +10505,10 @@
 	outdoors = 1
 	},
 /area/sector/sky_planet/sky)
+"Vw" = (
+/obj/structure/flora/ausbushes/fullgrass,
+/turf/simulated/floor/fey/forest_grass,
+/area/sector/sky_planet/sky)
 "Vx" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 1
@@ -8797,6 +10518,13 @@
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/station_city/street)
+"Vy" = (
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/crescend)
 "VA" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/simulated/floor/fey/forest_grass,
@@ -8854,12 +10582,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
 /area/shuttle/bonnethead)
-"VN" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	pixel_y = 13
-	},
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
 "VO" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 4
@@ -8867,22 +10589,12 @@
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /turf/simulated/wall/r_wall/prepainted/engineering,
 /area/shuttle/bonnethead)
-"VP" = (
-/obj/effect/floor_decal/industrial/danger,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/sector/sky_planet/racing_station/dock)
 "VQ" = (
 /obj/machinery/computer/ship/engines{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
 /area/shuttle/bonnethead)
-"VR" = (
-/obj/effect/floor_decal/industrial/danger/corner{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/sector/sky_planet/racing_station/dock)
 "VS" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -8917,14 +10629,10 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/sky_planet/station_city/restaurant)
-"Wb" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 4;
-	pixel_x = -12
-	},
-/obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
+"Wa" = (
+/obj/machinery/door/airlock,
+/turf/simulated/floor/tiled/kafel_full/beige,
+/area/sector/sky_planet/racing_station/dock)
 "Wd" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
@@ -8952,6 +10660,13 @@
 /obj/structure/bed/double,
 /turf/simulated/floor/carpet/patterened,
 /area/sector/sky_planet/station_city/appartement)
+"Wj" = (
+/obj/machinery/telecomms/relay/preset{
+	id = "OCULUM";
+	idle_power_usage = 1
+	},
+/turf/simulated/floor/airless,
+/area/sector/sky_planet/occulum)
 "Wk" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 1
@@ -8965,6 +10680,10 @@
 /obj/machinery/door/blast/regular,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
+"Wo" = (
+/obj/spawner/window/low_wall/firelocks,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/occulum)
 "Wp" = (
 /obj/machinery/atmospherics/portables_connector,
 /obj/machinery/portable_atmospherics/canister/empty/phoron,
@@ -8978,6 +10697,20 @@
 /obj/machinery/light/fairy,
 /turf/simulated/floor/wood/sif/indoors,
 /area/sector/sky_planet/racing_station/lounge)
+"Ws" = (
+/obj/machinery/door/airlock/voidcraft/vertical,
+/obj/map_helper/airlock/door/int_door,
+/obj/machinery/access_button/airlock_interior{
+	dir = 4;
+	frequency = 8018;
+	master_tag = "cresend";
+	pixel_y = -22
+	},
+/obj/structure/cable/white{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/crescend)
 "Wt" = (
 /obj/structure/bed,
 /turf/simulated/floor/carpet/oracarpet,
@@ -9011,6 +10744,10 @@
 /obj/effect/shuttle_landmark/skyplanet/voidline2,
 /turf/simulated/floor/reinforced/outdoors,
 /area/sector/sky_planet/sky)
+"WC" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/wood/sif/indoors,
+/area/sector/sky_planet/racing_station/dock)
 "WD" = (
 /obj/structure/closet,
 /turf/simulated/floor/wood/indoors,
@@ -9022,6 +10759,17 @@
 /obj/item/stack/material/steel,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/racing_station/dock)
+"WF" = (
+/obj/machinery/shipsensors,
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/crescend)
 "WH" = (
 /obj/effect/floor_decal/corner/red/border,
 /turf/simulated/floor/tiled/techfloor,
@@ -9149,16 +10897,6 @@
 /obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/sky_planet/outpost/medical)
-"Xg" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
-/obj/machinery/light/poi{
-	dir = 1
-	},
-/obj/structure/closet/firecloset/full,
-/turf/simulated/floor/tiled/kafel_full/beige,
-/area/sector/sky_planet/racing_station/dock)
 "Xh" = (
 /obj/machinery/atmospherics/pipe/tank/air{
 	dir = 1
@@ -9186,10 +10924,6 @@
 /obj/structure/sandbag,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
-"Xm" = (
-/obj/structure/table/bench/wooden,
-/turf/simulated/floor/tiled/kafel_full/beige,
-/area/sector/sky_planet/racing_station/dock)
 "Xn" = (
 /obj/structure/closet/secure_closet/medical3,
 /obj/item/storage/belt/medical,
@@ -9202,16 +10936,9 @@
 	},
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/sky_planet/outpost/medical)
-"Xr" = (
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 8
-	},
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 4
-	},
-/obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/kafel_full/beige,
-/area/sector/sky_planet/racing_station/dock)
+"Xq" = (
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/occulum)
 "Xx" = (
 /obj/structure/table/steel_reinforced,
 /obj/structure/flora/pottedplant/small{
@@ -9232,6 +10959,12 @@
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/station_city/street)
+"XA" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/wall/r_wall,
+/area/shuttle/crescend)
 "XE" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 4
@@ -9299,6 +11032,17 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/shuttle/redcomet)
+"XR" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 8
+	},
+/obj/effect/floor_decal/rust,
+/obj/machinery/button/remote/blast_door{
+	pixel_x = 22;
+	id = "voidline"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/racing_station/dock)
 "XS" = (
 /obj/effect/floor_decal/corner/red/border{
 	dir = 5
@@ -9340,6 +11084,13 @@
 /obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
+"Yd" = (
+/obj/item/barrier_tape_segment/police{
+	name = "SDF tape";
+	desc = "A length of police tape.  The other side seem to have been judged dangerous."
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/rock)
 "Ye" = (
 /obj/effect/floor_decal/techfloor,
 /obj/structure/railing,
@@ -9364,6 +11115,23 @@
 /obj/machinery/door/blast/regular,
 /turf/simulated/floor/reinforced,
 /area/sector/sky_planet/racing_station/dock)
+"Yi" = (
+/obj/effect/floor_decal/carpet/blue{
+	dir = 4
+	},
+/obj/effect/floor_decal/carpet/blue,
+/obj/effect/floor_decal/carpet/blue{
+	dir = 6
+	},
+/obj/machinery/light/small/old{
+	dir = 4
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/machinery/air_alarm/alarms_hidden/east_mount,
+/turf/simulated/floor/carpet/bcarpet,
+/area/shuttle/crescend)
 "Yj" = (
 /obj/random/multiple/large_corp_crate,
 /obj/machinery/light{
@@ -9388,9 +11156,6 @@
 	},
 /turf/simulated/floor/wood/sif/indoors,
 /area/sector/sky_planet/racing_station/dock)
-"Yr" = (
-/turf/simulated/open,
-/area/sector/sky_planet/outpost/docking_port1)
 "Ys" = (
 /obj/machinery/vending/coffee,
 /turf/simulated/floor/tiled/steel_dirty,
@@ -9479,6 +11244,12 @@
 	},
 /turf/simulated/floor/wood/sif/indoors,
 /area/sector/sky_planet/racing_station/lounge)
+"YJ" = (
+/obj/structure/cable/white{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/occulum)
 "YK" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /turf/simulated/floor/tiled/steel_dirty/dark,
@@ -9495,11 +11266,49 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/sky_planet/outpost/docking_port2)
-"YR" = (
+"YN" = (
+/obj/structure/fireplace{
+	pixel_x = 11
+	},
+/obj/structure/flora/pottedplant/fern{
+	pixel_x = 18;
+	pixel_y = 17
+	},
+/turf/simulated/floor/wood/indoors,
+/area/sector/sky_planet/occulum)
+"YO" = (
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 4
+	},
 /obj/effect/floor_decal/techfloor,
-/obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/kafel_full/beige,
+/turf/simulated/floor/carpet/patterened/red,
 /area/sector/sky_planet/racing_station/dock)
+"YQ" = (
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/sky)
+"YS" = (
+/obj/item/clothing/under/suit_jacket/charcoal/skirt,
+/obj/item/clothing/under/suit_jacket/charcoal,
+/obj/item/clothing/under/suit_jacket/navy,
+/obj/item/clothing/under/suit_jacket/navy/skirt,
+/obj/item/clothing/under/dress/tajaran/blue,
+/obj/item/clothing/head/soft/blue,
+/obj/item/clothing/suit/storage/hooded/wintercoat,
+/obj/item/clothing/suit/storage/hooded/wintercoat/olive,
+/obj/item/gun/projectile/energy/taser,
+/obj/item/cell/device/weapon,
+/obj/item/cell/device/weapon,
+/obj/item/storage/backpack/dufflebag,
+/obj/item/storage/backpack/messenger,
+/obj/item/clothing/accessory/badge/corporate_tag/press,
+/obj/item/clothing/accessory/badge/corporate_tag/press,
+/obj/structure/closet/walllocker_double/west,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/structure/cable/white{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/crescend)
 "YT" = (
 /obj/machinery/light/spot{
 	dir = 8
@@ -9556,6 +11365,27 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/sector/sky_planet/station_city/school)
+"Zc" = (
+/obj/effect/floor_decal/carpet/blue{
+	dir = 4
+	},
+/obj/effect/floor_decal/carpet/blue{
+	dir = 1
+	},
+/obj/effect/floor_decal/carpet/blue{
+	dir = 5
+	},
+/obj/structure/bed/chair/office/dark{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/shuttle/crescend)
+"Zd" = (
+/obj/structure/toilet{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/occulum)
 "Zf" = (
 /obj/structure/closet/crate/trashcart,
 /obj/item/trash/rkibble,
@@ -9569,6 +11399,17 @@
 "Zg" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/sector/sky_planet/outpost/medical)
+"Zi" = (
+/obj/machinery/telecomms/bus{
+	id = "OCULUM";
+	idle_power_usage = 1
+	},
+/turf/simulated/floor/airless,
+/area/sector/sky_planet/occulum)
+"Zm" = (
+/obj/structure/bed/chair/office/dark,
+/turf/simulated/floor/carpet/turcarpet,
+/area/sector/sky_planet/occulum)
 "Zn" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/mech_recharger,
@@ -9711,12 +11552,23 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
 /area/shuttle/bonnethead)
+"ZO" = (
+/obj/structure/table/bench/steel,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/occulum)
 "ZP" = (
 /obj/structure/bed/chair/sofa/beige{
 	dir = 1
 	},
 /turf/simulated/floor/carpet/patterened/brown,
 /area/sector/sky_planet/station_city/appartement)
+"ZQ" = (
+/obj/structure/catwalk,
+/obj/structure/cable/white{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/reinforced/outdoors,
+/area/sector/sky_planet/sky)
 "ZR" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -9730,12 +11582,6 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/reinforced,
-/area/sector/sky_planet/racing_station/dock)
-"ZZ" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 5
-	},
-/turf/simulated/floor/tiled/kafel_full/beige,
 /area/sector/sky_planet/racing_station/dock)
 
 (1,1,1) = {"
@@ -10110,9 +11956,9 @@ uk
 uk
 uk
 uk
-uk
-uk
-uk
+Ug
+kt
+kt
 uk
 uk
 uk
@@ -10304,9 +12150,9 @@ uk
 uk
 uk
 uk
-uk
-uk
-uk
+Jl
+Jl
+Jl
 uk
 uk
 uk
@@ -10498,9 +12344,9 @@ uk
 uk
 uk
 uk
-uk
-uk
-uk
+xe
+xe
+xe
 uk
 uk
 uk
@@ -10692,9 +12538,9 @@ uk
 uk
 uk
 uk
-uk
-uk
-uk
+Jl
+Jl
+Jl
 uk
 uk
 uk
@@ -10886,9 +12732,9 @@ uk
 uk
 uk
 uk
-uk
-uk
-uk
+SM
+SM
+SM
 uk
 uk
 uk
@@ -11080,9 +12926,9 @@ uk
 uk
 uk
 uk
-uk
-uk
-uk
+SM
+SM
+SM
 uk
 uk
 uk
@@ -11274,9 +13120,9 @@ uk
 uk
 uk
 uk
-uk
-uk
-uk
+Er
+Er
+Er
 uk
 uk
 uk
@@ -11468,9 +13314,9 @@ uk
 uk
 uk
 uk
-uk
-uk
-uk
+MU
+MU
+MU
 uk
 uk
 uk
@@ -11662,9 +13508,9 @@ uk
 uk
 uk
 uk
-uk
-uk
-uk
+MU
+MU
+MU
 uk
 uk
 uk
@@ -11856,9 +13702,9 @@ uk
 uk
 uk
 uk
-uk
-uk
-uk
+Yd
+Yd
+Yd
 uk
 uk
 uk
@@ -12050,9 +13896,9 @@ uk
 uk
 uk
 uk
-uk
-uk
-uk
+xe
+xe
+xe
 uk
 uk
 uk
@@ -12244,9 +14090,9 @@ uk
 uk
 uk
 uk
-uk
-uk
-uk
+xe
+xe
+xe
 uk
 uk
 uk
@@ -12438,9 +14284,9 @@ uk
 uk
 uk
 uk
-uk
-uk
-uk
+Jl
+Jl
+Jl
 uk
 uk
 uk
@@ -12632,9 +14478,9 @@ qr
 qr
 uk
 uk
-uk
-uk
-uk
+xe
+xe
+xe
 uk
 uk
 uk
@@ -12826,9 +14672,9 @@ qr
 qr
 uk
 uk
-uk
-uk
-uk
+xe
+xe
+xe
 uk
 uk
 uk
@@ -13019,10 +14865,10 @@ qr
 qr
 qr
 qr
-qr
-uk
-uk
-uk
+Qp
+Jl
+Jl
+Jl
 uk
 uk
 uk
@@ -13213,10 +15059,10 @@ qr
 qr
 qr
 qr
-qr
-uk
-uk
-uk
+Qp
+xe
+xe
+xe
 uk
 uk
 uk
@@ -13385,6 +15231,17 @@ qr
 qr
 qr
 qr
+eP
+os
+eP
+eP
+os
+eP
+eP
+eP
+eP
+eP
+eP
 qr
 qr
 qr
@@ -13396,21 +15253,10 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-uk
-uk
+Qp
+KT
+xe
+xe
 uk
 uk
 uk
@@ -13578,6 +15424,19 @@ qr
 qr
 qr
 qr
+eP
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+eP
 qr
 qr
 qr
@@ -13588,23 +15447,10 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-uk
-uk
+Qp
+vT
+Jl
+Jl
 uk
 uk
 uk
@@ -13771,6 +15617,21 @@ qr
 qr
 qr
 qr
+eP
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+eP
 qr
 qr
 qr
@@ -13780,25 +15641,10 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-uk
-uk
+Qp
+KT
+xe
+xe
 uk
 uk
 uk
@@ -13964,6 +15810,23 @@ qr
 qr
 qr
 qr
+eP
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+KN
+KN
+KN
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+os
 qr
 qr
 qr
@@ -13972,27 +15835,10 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-uk
-uk
+Qp
+KT
+Jl
+Jl
 uk
 uk
 uk
@@ -14158,6 +16004,23 @@ qr
 qr
 qr
 qr
+eP
+Qp
+Qp
+Qp
+Kd
+Qp
+KN
+KN
+eY
+KN
+KN
+Qp
+Hh
+Qp
+Qp
+Qp
+os
 qr
 qr
 qr
@@ -14166,27 +16029,10 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-nn
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-uk
-uk
+Qp
+Jl
+Jl
+Jl
 uk
 uk
 uk
@@ -14352,6 +16198,23 @@ qr
 qr
 qr
 qr
+eP
+Qp
+Qp
+Bb
+Sw
+Qp
+KN
+qv
+CB
+Kj
+KN
+Qp
+SH
+FI
+Qp
+Qp
+os
 qr
 qr
 qr
@@ -14360,27 +16223,10 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-uk
-uk
+Qp
+xe
+xe
+xe
 uk
 uk
 uk
@@ -14546,6 +16392,23 @@ qr
 qr
 qr
 qr
+eP
+Qp
+eJ
+kB
+Qp
+Qp
+Jt
+kc
+AB
+QG
+Jt
+Qp
+Qp
+UB
+LI
+Qp
+eP
 qr
 qr
 qr
@@ -14554,27 +16417,10 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-uk
-uk
-uk
+Qp
+Jl
+Jl
+Jl
 uk
 uk
 uk
@@ -14740,23 +16586,23 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
+eP
+Qp
+lr
+kB
+Qp
+Qp
+Jt
+Jt
+qm
+Jt
+Jt
+Qp
+Qp
+UB
+Vm
+Qp
+eP
 qr
 qr
 qr
@@ -14765,17 +16611,17 @@ qr
 uk
 uk
 uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+zW
+tC
+tC
+tC
+ng
+ng
+ng
+ng
+ng
+ng
+ng
 uk
 uk
 uk
@@ -14934,23 +16780,23 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
+os
+Qp
+lr
+kB
+Qp
+Qp
+rJ
+Bj
+Lq
+Pj
+rJ
+Qp
+Qp
+UB
+Vm
+Qp
+eP
 qr
 qr
 qr
@@ -14959,17 +16805,17 @@ qr
 uk
 uk
 uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+zW
+Xq
+Xq
+Xq
+ng
+ac
+rl
+CF
+CF
+KG
+ng
 uk
 uk
 uk
@@ -15128,23 +16974,23 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
+os
+Qp
+eJ
+kB
+Qp
+Qp
+rJ
+DB
+gB
+Sz
+rJ
+Qp
+Qp
+UB
+LI
+Qp
+eP
 qr
 qr
 qr
@@ -15153,17 +16999,17 @@ qr
 uk
 uk
 uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+zW
+CI
+YJ
+YJ
+Fe
+vw
+fs
+Gq
+Gq
+Gl
+ng
 uk
 uk
 uk
@@ -15322,42 +17168,42 @@ qr
 qr
 qr
 qr
+os
+Qp
+mG
+kB
+Qp
+Qp
+rJ
+rk
+Et
+Sz
+rJ
+Qp
+Qp
+tz
+gY
+Qp
+eP
 qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
+ng
+ng
+ng
 uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+zW
+CE
+tC
+tC
+ng
+ng
+HV
+of
+of
+Je
+ng
 uk
 uk
 uk
@@ -15516,42 +17362,42 @@ qr
 qr
 qr
 qr
+os
+Qp
+mG
+yz
+yl
+WF
+rJ
+Zc
+bw
+Yi
+rJ
+KV
+yl
+lg
+gY
+Qp
+eP
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+ng
+ng
+Zd
+ng
+ng
+rM
+CE
+tC
+tC
+rM
+ng
+ng
+ng
+ng
+ng
+ng
 uk
 uk
 uk
@@ -15710,43 +17556,43 @@ qr
 qr
 qr
 qr
+eP
+Qp
+dx
+dx
+iM
+dx
+jS
+Jt
+yC
+Jt
+Jt
+dx
+iM
+dx
+dx
+Qp
+eP
 qr
 qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+eP
+ng
+HV
+qV
+rF
+ng
+HV
+EY
+Xq
+Xq
+HV
+ng
+ng
+ow
+Lo
+iv
+zR
+ng
 uk
 uk
 uk
@@ -15904,43 +17750,43 @@ qr
 qr
 qr
 qr
+eP
+Qp
+Cc
+vp
+Ma
+dx
+SR
+xD
+PP
+lP
+ff
+dx
+xs
+Ei
+Cc
+Qp
+eP
 qr
 qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+eP
+ng
+cs
+ng
+ng
+ng
+HV
+CE
+tC
+tC
+ng
+ng
+ng
+zR
+zR
+zR
+mB
+ng
 uk
 uk
 uk
@@ -16098,43 +17944,43 @@ qr
 qr
 qr
 qr
+eP
+Qp
+Cc
+Bs
+Cq
+dx
+Jt
+Jt
+RZ
+Jt
+Jt
+dx
+sv
+So
+Cc
+Qp
+eP
 qr
 qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+eP
+ng
+xg
+Lj
+mf
+ng
+HV
+CE
+tC
+tC
+yT
+oc
+kG
+zR
+Zi
+ab
+Wj
+ng
 uk
 uk
 uk
@@ -16292,43 +18138,43 @@ qr
 qr
 qr
 qr
+eP
+Qp
+Cc
+Ga
+Na
+YS
+YS
+Bd
+kR
+Mp
+dj
+DQ
+aF
+Eb
+Cc
+Qp
+eP
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+Wo
+rA
+CG
+pC
+ng
+HV
+Jp
+Xq
+Xq
+ng
+cz
+ng
+zR
+zR
+zR
+nQ
+ng
 uk
 uk
 uk
@@ -16486,43 +18332,43 @@ qr
 qr
 qr
 qr
+eP
+Qp
+dx
+dx
+Tr
+JY
+aL
+XA
+Ws
+Cc
+OY
+JY
+Fs
+dx
+dx
+Qp
+eP
 qr
 qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+eP
+ng
+xg
+Lj
+mf
+ng
+HV
+CE
+tC
+tC
+HV
+oX
+yX
+sO
+hO
+Ju
+zR
+ng
 uk
 uk
 uk
@@ -16680,42 +18526,42 @@ qr
 qr
 qr
 qr
+eP
+Qp
+Qp
+dx
+dx
+AS
+yv
+bo
+Fo
+Cc
+qi
+vQ
+dx
+dx
+Qp
+Qp
+eP
 qr
 qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+eP
+ng
+cs
+ng
+ng
+ng
+HV
+CE
+tC
+tC
+HV
+ng
+ng
+ng
+ng
+ng
+ng
 uk
 uk
 uk
@@ -16874,42 +18720,42 @@ qr
 qr
 qr
 qr
+eP
+Qp
+Qp
+Vy
+dx
+Cb
+QE
+dJ
+eW
+dJ
+QE
+th
+dx
+dt
+Qp
+Qp
+eP
 qr
 qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+eP
+ng
+DO
+rA
+EZ
+ng
+rM
+Jp
+Xq
+Xq
+rM
+ng
+rA
+Jn
+gR
+FH
+ng
 uk
 uk
 uk
@@ -17068,42 +18914,42 @@ qr
 qr
 qr
 qr
+os
+Qp
+Qp
+Qp
+Qp
+al
+al
+IY
+eZ
+IY
+al
+al
+Qp
+Qp
+Qp
+Qp
+eP
 qr
 qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+eP
+ng
+Uc
+EQ
+Dr
+my
+Xq
+CE
+tC
+tC
+HV
+ng
+rA
+Jn
+Lj
+FC
+ng
 uk
 uk
 uk
@@ -17263,41 +19109,41 @@ qr
 qr
 qr
 qr
+eP
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Hl
+ol
+Qp
+Qp
+Qp
+Qp
+Qp
+eP
+os
 qr
 qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+eP
+ng
+rA
+Cd
+Xq
+my
+tC
+CE
+tC
+tC
+HV
+ng
+DT
+ng
+ng
+ng
+ng
 uk
 uk
 uk
@@ -17458,40 +19304,40 @@ qr
 qr
 qr
 qr
+eP
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Pc
+Qp
+Qp
+Qp
+Qp
+eP
 qr
 qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+ng
+DO
+rA
+oS
+ng
+Ib
+Jp
+Xq
+Xq
+HV
+ng
+rA
+Jn
+gR
+FH
+ng
 uk
 uk
 uk
@@ -17653,39 +19499,39 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+os
+eP
+eP
+eP
+os
+nC
+Mn
+eP
+eP
+eP
+eP
+eP
+eP
+eP
+eP
+eP
+eP
+ng
+ng
+ng
+cs
+ng
+HV
+CE
+tC
+tC
+HV
+ng
+rA
+Jn
+Lj
+FC
+ng
 uk
 uk
 uk
@@ -17852,34 +19698,34 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+nC
+ZQ
+Da
+Da
+Da
+Da
+Da
+Da
+Da
+Da
+Da
+Da
+oo
+GF
+RR
+Ou
+oo
+Fe
+Mg
+tC
+tC
+HV
+ng
+DT
+ng
+ng
+ng
+ng
 uk
 uk
 uk
@@ -17977,9 +19823,9 @@ qr
 qr
 qr
 lS
-AO
+Nh
 nk
-yb
+cj
 lS
 vL
 kP
@@ -18046,34 +19892,34 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+oF
+ga
+ga
+ga
+ga
+ga
+ga
+ga
+ga
+ga
+ga
+ga
+ng
+ng
+zb
+ng
+ng
+rM
+Xq
+Xq
+Xq
+rM
+ng
+rA
+Jn
+gR
+FH
+ng
 uk
 uk
 uk
@@ -18252,22 +20098,22 @@ qr
 qr
 qr
 qr
-qr
-qr
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+cg
+Dx
+Lj
+rS
+ng
+HV
+tC
+tC
+tC
+HV
+ng
+rA
+Jn
+Lj
+FC
+ng
 uk
 uk
 uk
@@ -18445,23 +20291,23 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+eP
+cg
+dW
+Lj
+rA
+vm
+HV
+tC
+Xq
+Xq
+HV
+ng
+DT
+ng
+ng
+ng
+ng
 uk
 uk
 uk
@@ -18639,23 +20485,23 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+eP
+cg
+Lj
+Lj
+rA
+vm
+HV
+Xq
+Xq
+Xq
+HV
+ng
+rA
+Jn
+gR
+FH
+ng
 uk
 uk
 uk
@@ -18834,22 +20680,22 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+cg
+ov
+Lj
+YN
+ng
+HV
+tC
+FO
+tC
+HV
+ng
+rA
+Jn
+Lj
+FC
+ng
 uk
 uk
 uk
@@ -19027,24 +20873,24 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
-qr
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+Wo
+ng
+ng
+zb
+ng
+ng
+zW
+Xq
+Xq
+Xq
+HV
+ng
+DT
+ng
+ng
+ng
+ng
+ng
 uk
 uk
 uk
@@ -19221,24 +21067,24 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+cg
+Zm
+qy
+Lj
+tE
+ng
+zW
+tC
+Xq
+Xq
+rM
+cs
+rA
+rA
+TU
+TU
+Sl
+ng
 uk
 uk
 uk
@@ -19337,14 +21183,14 @@ cx
 uI
 uI
 Md
-IK
-CX
+Kq
 uI
-CX
-CX
 uI
-CX
-CX
+uI
+uI
+uI
+uI
+uI
 Kq
 eL
 bG
@@ -19415,24 +21261,24 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+cg
+Hi
+mr
+ui
+Lj
+ng
+zW
+Xq
+Xq
+Xq
+zW
+ng
+Kf
+rA
+rA
+rA
+ko
+ng
 uk
 uk
 uk
@@ -19531,14 +21377,14 @@ DM
 gt
 gt
 ai
-wf
+ft
+Rk
 gt
+Rk
+RL
 gt
-gt
-oO
-gt
-IV
-as
+IA
+jy
 pc
 yi
 RB
@@ -19609,24 +21455,24 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
+cg
+hh
+sH
+Lj
+Lj
+ng
+zW
+xe
+xe
+xe
 uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+ng
+aW
+rA
+xm
+jV
+xm
+ng
 uk
 uk
 uk
@@ -19711,8 +21557,8 @@ xy
 xy
 xy
 mj
-Yr
-Yr
+Fb
+Fb
 mj
 ln
 ln
@@ -19803,24 +21649,24 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
+Wo
+cg
+cg
+cg
+cg
+Wo
+fn
+Jl
+Jl
+Jl
 uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+ng
+ll
+rA
+xm
+TU
+xm
+ng
 uk
 uk
 uk
@@ -19905,8 +21751,8 @@ xy
 xy
 WL
 iz
-Yr
-Yr
+Fb
+Fb
 iz
 qr
 qr
@@ -20003,19 +21849,19 @@ qr
 qr
 qr
 qr
-qr
+nO
+xe
+xe
+xe
 uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+ng
+ng
+ku
+ng
+ng
+ng
+ng
+ng
 uk
 uk
 zF
@@ -20198,18 +22044,18 @@ qr
 qr
 qr
 uk
+xe
+xe
+xe
 uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+ng
+FJ
+Xq
+ZO
+ng
+Fn
+Zd
+ng
 uk
 uk
 zF
@@ -20392,18 +22238,18 @@ qr
 qr
 qr
 uk
+Jl
+Jl
+Jl
 uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+ng
+vY
+Xq
+Xq
+zb
+HV
+HV
+ng
 uk
 uk
 zF
@@ -20585,19 +22431,19 @@ qr
 qr
 qr
 qr
-qr
+nO
+xe
+xe
+xe
 uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+ng
+FJ
+Xq
+ZO
+ng
+qV
+rF
+ng
 uk
 uk
 zF
@@ -20779,19 +22625,19 @@ qr
 qr
 qr
 qr
-qr
-qr
+nO
+KT
+xe
+xe
 uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+ng
+ng
+ng
+ng
+ng
+ng
+ng
+ng
 uk
 uk
 zF
@@ -20973,10 +22819,10 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-uk
+nO
+vT
+vT
+Jl
 uk
 uk
 uk
@@ -21167,11 +23013,11 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
+He
+KT
+KT
+KT
+He
 qr
 uk
 uk
@@ -21361,11 +23207,11 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
+fn
+KT
+KT
+PW
+Qu
 qr
 uk
 uk
@@ -21555,11 +23401,11 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
+nO
+vT
+vT
+nD
+Qu
 qr
 uk
 uk
@@ -21749,11 +23595,11 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
+pX
+KT
+KT
+KT
+gM
 qr
 uk
 uk
@@ -21943,11 +23789,11 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
+NR
+KT
+KT
+KT
+gM
 qr
 uk
 uk
@@ -22137,11 +23983,11 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
+eP
+vT
+vT
+vT
+eP
 qr
 qr
 uk
@@ -22332,9 +24178,9 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
+Sb
+KT
+Sb
 qr
 qr
 qr
@@ -22526,9 +24372,9 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
+Sb
+Sb
+Sb
 qr
 qr
 qr
@@ -22720,9 +24566,9 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
+eP
+vT
+vT
 qr
 qr
 qr
@@ -22913,14 +24759,14 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
+eP
+KT
+KT
+KT
+os
+eP
+eP
+eP
 uk
 uk
 uk
@@ -23107,11 +24953,11 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
+ou
+KT
+vT
+vT
+eP
 qr
 qr
 qr
@@ -23301,11 +25147,11 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
+eP
+vT
+vT
+vT
+os
 qr
 qr
 qr
@@ -23495,11 +25341,11 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
+eP
+KT
+KT
+KT
+os
 qr
 qr
 qr
@@ -23689,11 +25535,11 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
+os
+vT
+vT
+vT
+os
 qr
 qr
 qr
@@ -23883,11 +25729,11 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
+os
+KT
+KT
+KT
+os
 qr
 qr
 qr
@@ -24077,11 +25923,11 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
+os
+KT
+KT
+KT
+os
 qr
 qr
 qr
@@ -24271,11 +26117,11 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
+os
+vT
+vT
+vT
+os
 qr
 qr
 qr
@@ -24465,11 +26311,11 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
+os
+KT
+KT
+KT
+os
 qr
 qr
 qr
@@ -24659,11 +26505,11 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
+ou
+KT
+KT
+KT
+eP
 qr
 qr
 qr
@@ -24853,11 +26699,11 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
+eP
+vT
+vT
+vT
+eP
 qr
 qr
 qr
@@ -25048,10 +26894,10 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
+Sb
+KT
+KT
+os
 qr
 qr
 qr
@@ -25242,17 +27088,17 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
+Sb
+vT
+vT
+os
+eP
+eP
+eP
+eP
+eP
+eP
+eP
 uk
 uk
 uk
@@ -25436,9 +27282,9 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
+eP
+vT
+vT
 qr
 qr
 qr
@@ -25630,9 +27476,9 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
+KT
+KT
+KT
 qr
 qr
 qr
@@ -25823,10 +27669,10 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
+hs
+vT
+vT
+eP
 qr
 qr
 qr
@@ -26017,10 +27863,10 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
+nO
+vT
+vT
+eP
 qr
 qr
 qr
@@ -26211,10 +28057,10 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
+fn
+KT
+KT
+KT
 qr
 qr
 qr
@@ -26406,10 +28252,10 @@ rg
 rg
 rg
 TG
-TG
-qr
-qr
-qr
+rh
+KT
+KT
+He
 qr
 qr
 qr
@@ -26600,10 +28446,10 @@ dL
 dL
 dL
 TG
+nZ
+nZ
+nZ
 TG
-rg
-rg
-rg
 rg
 rg
 rg
@@ -26793,11 +28639,11 @@ dL
 dL
 dL
 dL
-UX
-JR
-dL
-dL
-dL
+Ev
+rh
+rh
+rh
+Tx
 dL
 dL
 dL
@@ -26987,11 +28833,11 @@ dL
 dL
 dL
 dL
-UX
-JR
-dL
-dL
-dL
+Ev
+rh
+rh
+rh
+Tx
 dL
 dL
 dL
@@ -27181,11 +29027,11 @@ dL
 dL
 dL
 dL
-UX
-JR
-dL
-dL
-dL
+Ev
+dX
+dX
+dX
+Tx
 dL
 dL
 dL
@@ -27355,6 +29201,7 @@ dL
 dL
 dL
 dL
+cD
 dL
 dL
 dL
@@ -27374,16 +29221,15 @@ dL
 dL
 dL
 dL
-dL
-UX
-JR
-dL
-dL
-dL
-dL
+Ev
+rh
+rh
+rh
+Tx
 dL
 dL
 dL
+cD
 UX
 Ry
 uk
@@ -27565,15 +29411,15 @@ dL
 dL
 dL
 dL
+cD
 dL
 dL
 dL
-dL
-UX
-Di
-CO
-CO
-CO
+Ev
+rh
+rh
+rh
+Tx
 CO
 CO
 CO
@@ -27763,13 +29609,13 @@ dL
 dL
 dL
 dL
-UX
-um
-um
+Ev
+dX
+dX
+dX
+ep
 kf
-kf
-kf
-kf
+Eq
 um
 jY
 um
@@ -27916,7 +29762,7 @@ Wl
 RW
 tc
 Gf
-fO
+SJ
 qa
 RW
 Wl
@@ -27957,11 +29803,11 @@ dL
 dL
 dL
 dL
-UX
-um
-um
-um
-um
+Ev
+rh
+rh
+rh
+Tx
 um
 um
 TG
@@ -28124,6 +29970,7 @@ dL
 dL
 dL
 dL
+cD
 dL
 dL
 dL
@@ -28150,12 +29997,11 @@ dL
 dL
 dL
 dL
-dL
-UX
-um
-um
-um
-um
+wN
+rh
+rh
+rh
+DW
 um
 pN
 uk
@@ -28345,11 +30191,11 @@ dL
 dL
 dL
 dL
-UX
-um
-kf
-um
-um
+Ev
+dX
+dX
+dX
+Tx
 um
 uk
 uk
@@ -28524,6 +30370,7 @@ dL
 dL
 dL
 dL
+cD
 dL
 dL
 dL
@@ -28538,12 +30385,11 @@ dL
 dL
 dL
 dL
-dL
-UX
-CH
-kf
-um
-um
+Ev
+rh
+rh
+rh
+Tx
 XM
 uk
 uk
@@ -28733,11 +30579,11 @@ dL
 dL
 dL
 dL
-UX
-um
-um
-kf
-um
+Ev
+rh
+dX
+dX
+Tx
 um
 uk
 uk
@@ -28927,11 +30773,11 @@ dL
 dL
 dL
 dL
-UX
-um
-um
-kf
-um
+Ev
+dX
+dX
+dX
+Tx
 um
 uk
 uk
@@ -29121,11 +30967,11 @@ dL
 dL
 dL
 dL
-UX
-um
-um
-kf
-um
+Ev
+rh
+rh
+rh
+Tx
 uk
 uk
 uk
@@ -29315,11 +31161,11 @@ dL
 dL
 dL
 dL
-UX
-um
-um
-kf
-um
+Ev
+dX
+dX
+dX
+Tx
 uk
 uk
 uk
@@ -29509,11 +31355,11 @@ dL
 dL
 dL
 dL
-UX
-um
-um
-kf
-XM
+Ev
+rh
+rh
+rh
+xq
 uk
 uk
 uk
@@ -29694,20 +31540,20 @@ ym
 ym
 ym
 ym
-pz
-CO
-CO
-CO
-CO
-CO
-CO
-CO
-CO
-GO
-um
-um
-kf
-um
+ym
+ym
+ym
+ym
+ym
+ym
+ym
+ym
+ym
+Tx
+rh
+dX
+dX
+Tx
 uk
 uk
 uk
@@ -29860,11 +31706,11 @@ Py
 Xi
 Py
 Wl
-Tx
+DW
 ZI
 ZI
 ZI
-ZI
+AP
 ZI
 ZI
 BD
@@ -29873,7 +31719,7 @@ Tx
 ZI
 ZI
 Tx
-ZI
+AP
 ZI
 ZI
 ZI
@@ -29883,25 +31729,25 @@ Tx
 ZI
 ZI
 Tx
+DW
 Tx
+ZI
+ZI
+DW
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
 Tx
 ZI
 ZI
-ZI
-UH
-kf
-kf
-kf
-kf
-kf
-kf
-kf
-um
-kf
-kf
-um
-um
-um
+DW
+Vg
+Vg
+Vg
+DW
 uk
 uk
 uk
@@ -30048,7 +31894,7 @@ Ag
 gX
 Vs
 OX
-ti
+hS
 RW
 yw
 Qo
@@ -30081,21 +31927,21 @@ rh
 rh
 dX
 dX
-BD
-UH
-kf
-um
-um
-um
-um
-um
-kf
-kf
-kf
-um
-kf
-um
-um
+dX
+rh
+rh
+rh
+rh
+rh
+rh
+rh
+rh
+dX
+go
+rh
+rh
+rh
+Tx
 uk
 uk
 uk
@@ -30261,7 +32107,7 @@ dX
 dX
 rh
 rh
-qH
+uq
 dX
 rh
 rh
@@ -30275,21 +32121,21 @@ dX
 rh
 rh
 rh
-ZI
-UH
-um
-um
-um
-kf
-kf
-kf
-um
-um
-um
-um
-kf
-um
-XM
+rh
+uq
+dX
+rh
+rh
+rh
+rh
+rh
+dX
+dX
+go
+dX
+dX
+dX
+xq
 uk
 uk
 uk
@@ -30469,21 +32315,21 @@ rh
 dX
 rh
 dX
-ZI
-UH
-um
-um
-kf
-um
-um
-Eq
-um
-um
-um
-kf
-kf
-um
-um
+dX
+rh
+rh
+dX
+dX
+rh
+dX
+DJ
+rh
+rh
+TR
+rh
+rh
+rh
+Tx
 uk
 uk
 uk
@@ -30536,7 +32382,7 @@ sD
 sD
 iS
 Lb
-Fv
+lQ
 ke
 BA
 Lb
@@ -30636,19 +32482,34 @@ RW
 Ij
 Ln
 pa
-Tx
+DW
 YW
 Vg
 Vg
-ZI
-ZI
-ZI
-Tx
-Tx
+AP
 ZI
 ZI
 Tx
 Tx
+ZI
+ZI
+Tx
+Tx
+DW
+ZI
+ZI
+ZI
+ZI
+Tx
+ZI
+Tx
+Tx
+ZI
+AP
+go
+go
+Vg
+DW
 Tx
 ZI
 ZI
@@ -30658,26 +32519,11 @@ Tx
 ZI
 Tx
 Tx
-ZI
-ZI
-po
-po
-VC
-ZI
-UH
-um
-kf
-kf
-um
-um
-kf
-um
-um
-kf
-kf
-um
-um
-uk
+AP
+Tx
+Tx
+Tx
+xv
 uk
 uk
 uk
@@ -30832,7 +32678,7 @@ er
 pa
 Tx
 gi
-jn
+dX
 if
 Tx
 gk
@@ -30857,20 +32703,20 @@ Tx
 VC
 Wg
 VC
-ZI
-UH
-kf
-kf
-kf
-um
-um
-kf
-kf
-kf
-kf
-um
-um
-XM
+yR
+yR
+QW
+yR
+yR
+yR
+yR
+yR
+yR
+yR
+yR
+yR
+yR
+yR
 uk
 uk
 uk
@@ -31026,7 +32872,7 @@ jj
 wR
 fQ
 gi
-lu
+rh
 if
 Tx
 UH
@@ -31220,7 +33066,7 @@ mv
 pa
 fQ
 bK
-lu
+rh
 TO
 Tx
 Oh
@@ -31314,7 +33160,7 @@ CY
 CY
 Px
 Ck
-PI
+kE
 CY
 CY
 iS
@@ -31414,7 +33260,7 @@ Wl
 zE
 bb
 gF
-VN
+he
 XF
 bb
 zE
@@ -31608,7 +33454,7 @@ qr
 gm
 bb
 gF
-VN
+he
 XF
 bb
 gm
@@ -31802,7 +33648,7 @@ qr
 gm
 bb
 gF
-Bp
+hX
 uY
 bb
 gm
@@ -31824,9 +33670,9 @@ qr
 qr
 qr
 zE
-nt
-nt
-nt
+Lf
+Lf
+TQ
 zE
 qr
 qr
@@ -31996,7 +33842,7 @@ qr
 gm
 bb
 gF
-VN
+he
 uY
 DY
 gm
@@ -32018,9 +33864,9 @@ qr
 qr
 qr
 zE
-TQ
-TQ
-TQ
+Lf
+nt
+Lf
 zE
 qr
 qr
@@ -32190,7 +34036,7 @@ qr
 zE
 cO
 vB
-rq
+qk
 Mc
 cO
 zE
@@ -32212,9 +34058,9 @@ qr
 qr
 zE
 zE
-TQ
-TQ
-TQ
+nt
+nt
+nt
 zE
 zE
 qr
@@ -32384,7 +34230,7 @@ zE
 zE
 cO
 vB
-rq
+qk
 Mc
 cO
 zE
@@ -32578,7 +34424,7 @@ zE
 zE
 qe
 gF
-VN
+he
 uY
 Ks
 zE
@@ -32772,7 +34618,7 @@ lh
 VW
 xb
 bT
-VN
+he
 yQ
 vf
 QC
@@ -32966,7 +34812,7 @@ lh
 VW
 xb
 yt
-VN
+he
 uY
 vf
 QC
@@ -33160,7 +35006,7 @@ lh
 zE
 uv
 Xb
-VN
+he
 XF
 Rc
 zE
@@ -33181,11 +35027,11 @@ lh
 lh
 lh
 lh
-tq
-tq
-tq
-tq
-tq
+rK
+rK
+rK
+rK
+rK
 lh
 lh
 lh
@@ -33352,11 +35198,11 @@ sS
 mu
 mu
 Xz
-jL
+km
 bv
 Rf
 Rf
-hO
+Tp
 Xz
 mu
 EL
@@ -33374,13 +35220,13 @@ jq
 lh
 lh
 lh
-tq
-QT
-eH
-eH
-eH
-HG
-tq
+rK
+tm
+Hp
+Hp
+Hp
+fI
+rK
 lh
 lh
 lh
@@ -33568,13 +35414,13 @@ jq
 lh
 lh
 lh
-tq
-Ec
-eO
-eO
-eO
-uu
-tq
+rK
+TZ
+Rx
+Rx
+Rx
+Cg
+rK
 lh
 nU
 lh
@@ -33721,54 +35567,54 @@ ZI
 dX
 rh
 dX
-BO
-BO
-Il
-BO
-BO
-Il
-Nq
-pL
-Nq
-Nq
-Nq
-pL
-pL
-nj
-nj
-pL
-Nq
-Nq
-tQ
+dX
+dX
+rh
+dX
+dX
+rh
+yy
+he
+yy
+yy
+yy
+he
+he
+wL
+wL
+he
+yy
+yy
+hX
 bv
 yy
 he
 hX
 Rf
-pL
-Nq
-FQ
-pL
-Hm
-Hm
-pL
-Nq
-pL
-Nq
-yG
-pL
-Hm
+he
+yy
+tR
+he
+Wm
+Wm
+he
+yy
+he
+yy
+yy
+he
+Wm
 jq
 lh
 lh
 lh
-tq
-Ec
-eO
-eO
-eO
-uu
-tq
+rK
+TZ
+Rx
+Rx
+Rx
+Cg
+rK
 lh
 nU
 lh
@@ -33956,13 +35802,13 @@ jq
 lh
 lh
 lh
-tq
-Ec
-eO
-eO
-eO
-uu
-tq
+rK
+TZ
+Rx
+Rx
+Rx
+Cg
+rK
 lh
 nU
 lh
@@ -34028,7 +35874,7 @@ bD
 sD
 Ba
 Ba
-HH
+FX
 Vt
 mX
 Ba
@@ -34128,11 +35974,11 @@ tJ
 lz
 nf
 tJ
-ec
+hk
 bv
-sx
 Rf
-JU
+Rf
+yS
 tJ
 nf
 nf
@@ -34150,13 +35996,13 @@ jq
 lh
 nU
 lh
-tq
-Ec
-eO
-eO
-eO
-eO
-tq
+rK
+TZ
+Rx
+Rx
+Rx
+Rx
+rK
 lh
 nU
 uk
@@ -34324,7 +36170,7 @@ nU
 zE
 uv
 bT
-tI
+he
 nz
 UO
 zE
@@ -34345,11 +36191,11 @@ lh
 lh
 nU
 lh
-rc
-Aa
-Aa
-Aa
-Aa
+ps
+Fj
+Fj
+Fj
+Fj
 lh
 lh
 nU
@@ -34406,7 +36252,7 @@ sD
 sD
 iS
 lG
-QL
+Pv
 lA
 Df
 lG
@@ -34518,7 +36364,7 @@ nU
 VW
 sF
 ae
-VN
+he
 uY
 tY
 Fd
@@ -34711,8 +36557,8 @@ zE
 lh
 VW
 Az
-HX
-tI
+ae
+he
 XF
 vf
 Fd
@@ -34798,7 +36644,7 @@ Ep
 wJ
 pG
 BQ
-mZ
+gq
 Kr
 sD
 sD
@@ -34807,7 +36653,7 @@ tu
 LS
 IO
 VL
-Pw
+gG
 Yg
 iS
 sD
@@ -34906,7 +36752,7 @@ zE
 zE
 uv
 ae
-VN
+he
 XF
 Ks
 zE
@@ -35100,7 +36946,7 @@ zE
 zE
 cO
 vB
-rq
+qk
 Mc
 cO
 zE
@@ -35294,7 +37140,7 @@ qr
 zE
 cO
 vB
-rq
+qk
 Mc
 cO
 zE
@@ -35488,7 +37334,7 @@ qr
 gm
 bb
 gF
-VN
+he
 uY
 bb
 gm
@@ -35682,7 +37528,7 @@ qr
 gm
 bb
 ae
-VN
+he
 uY
 bb
 gm
@@ -35876,7 +37722,7 @@ qr
 gm
 bb
 ae
-VN
+he
 uY
 bb
 gm
@@ -35899,7 +37745,7 @@ uk
 uk
 EB
 gF
-VN
+he
 XF
 bb
 Vq
@@ -36070,7 +37916,7 @@ qr
 gm
 bb
 gF
-vW
+yy
 uY
 bb
 gm
@@ -36093,7 +37939,7 @@ uk
 uk
 bb
 gF
-vW
+yy
 XF
 Gg
 Vq
@@ -36559,10 +38405,10 @@ sD
 sD
 sD
 ze
-Bv
-uV
-kd
-Da
+eF
+NY
+sJ
+Ow
 iE
 MJ
 co
@@ -36655,24 +38501,24 @@ gF
 hn
 he
 Rf
-pL
-pL
-Nq
-Nq
-pL
-nR
-pL
-pL
-pL
-Nq
-Nq
+he
+he
+yy
+yy
+he
+em
+he
+he
+he
+yy
+yy
 yG
-Nq
-pL
-pL
-Nq
-pL
-pL
+yy
+he
+he
+yy
+he
+he
 Rf
 yy
 he
@@ -36948,16 +38794,16 @@ pY
 nY
 yP
 zK
-ee
-xc
-oA
-Rm
-oK
+Mk
+Uv
+tx
+vI
+Qy
 AH
 mR
 ry
 pY
-Jw
+pY
 zK
 eP
 eP
@@ -37140,13 +38986,13 @@ LQ
 iG
 pY
 Pr
-DC
+vh
 zK
-OK
-DS
-DS
-zc
-oK
+pZ
+aT
+An
+bt
+Vb
 AH
 gd
 SP
@@ -37234,7 +39080,7 @@ pr
 pr
 ue
 ae
-VN
+he
 XF
 bb
 Si
@@ -37257,7 +39103,7 @@ cp
 cp
 bb
 OC
-VN
+he
 uY
 bb
 Vq
@@ -37336,10 +39182,10 @@ pY
 gg
 zK
 zK
-Xg
-Rq
-Xm
-zc
+jf
+Qy
+Ro
+iy
 ON
 dO
 zs
@@ -37428,7 +39274,7 @@ ns
 pr
 ue
 ae
-VN
+he
 uY
 bb
 Gm
@@ -37451,7 +39297,7 @@ Lx
 cp
 bb
 gF
-vW
+yy
 uY
 Gg
 Vq
@@ -37530,10 +39376,10 @@ pY
 Up
 Kw
 zK
-TK
-DS
-Xm
-zc
+tU
+Qy
+xp
+mq
 ON
 pM
 QX
@@ -37645,7 +39491,7 @@ fq
 cp
 bb
 tn
-vW
+yy
 uY
 bb
 yW
@@ -37724,8 +39570,8 @@ ki
 wO
 As
 zK
-MS
-DS
+tU
+Qy
 ld
 SI
 oK
@@ -37816,7 +39662,7 @@ OO
 Jf
 Vx
 tn
-VN
+he
 XF
 bb
 Si
@@ -37839,7 +39685,7 @@ qC
 cp
 EB
 tn
-vW
+yy
 vu
 bb
 rB
@@ -37918,10 +39764,10 @@ Ad
 Ad
 Ad
 zK
-TK
-DS
-Xm
-zc
+jf
+Qy
+Ro
+iy
 Pu
 hw
 xQ
@@ -38010,7 +39856,7 @@ wF
 pr
 Vx
 gF
-VN
+he
 XF
 bb
 YH
@@ -38033,7 +39879,7 @@ nd
 cp
 EB
 gF
-vW
+yy
 uY
 bb
 rB
@@ -38112,10 +39958,10 @@ zK
 zK
 zK
 zK
-es
-DS
-Xm
-zc
+tU
+Qy
+xp
+mq
 wz
 pM
 QX
@@ -38204,7 +40050,7 @@ pr
 pr
 ue
 GK
-VN
+he
 uY
 bb
 YH
@@ -38227,7 +40073,7 @@ zT
 cp
 EB
 gF
-VN
+he
 uY
 bb
 yW
@@ -38306,8 +40152,8 @@ qr
 qr
 qr
 zK
-lY
-DS
+tU
+Qy
 DS
 Jg
 oK
@@ -38398,7 +40244,7 @@ Wi
 pr
 ue
 ae
-VN
+he
 XF
 EB
 Si
@@ -38421,7 +40267,7 @@ iV
 cp
 nT
 ae
-VN
+he
 uY
 XT
 Ew
@@ -38500,10 +40346,10 @@ qr
 qr
 qr
 DX
-MS
-Rq
-IM
-zc
+tU
+Qy
+vR
+ri
 BC
 ji
 tH
@@ -38592,7 +40438,7 @@ de
 pr
 Kp
 ae
-vW
+yy
 uY
 nT
 YH
@@ -38615,7 +40461,7 @@ Vn
 cp
 EB
 ae
-VN
+he
 uY
 EB
 HE
@@ -38694,10 +40540,10 @@ qr
 qr
 qr
 DX
-MS
-Rq
-Xm
-zc
+tU
+Qy
+xp
+mq
 BC
 pM
 QX
@@ -38786,7 +40632,7 @@ pr
 pr
 ue
 jb
-VN
+he
 uY
 EB
 YH
@@ -38809,7 +40655,7 @@ iV
 cp
 EB
 ae
-VN
+he
 uY
 EB
 yW
@@ -38888,8 +40734,8 @@ qr
 qr
 qr
 DX
-MS
-Rq
+tU
+Qy
 Pf
 SI
 oK
@@ -38980,7 +40826,7 @@ Zp
 pr
 ue
 gF
-VN
+he
 uY
 EB
 Si
@@ -39003,7 +40849,7 @@ nd
 cp
 bb
 ae
-VN
+he
 uY
 EB
 rB
@@ -39082,10 +40928,10 @@ qr
 qr
 qr
 DX
-MS
-Rq
-IM
-zc
+tU
+Qy
+vR
+iy
 BC
 hw
 tH
@@ -39174,7 +41020,7 @@ ZP
 Jf
 ue
 gF
-VN
+he
 uY
 EB
 Si
@@ -39197,7 +41043,7 @@ qC
 cp
 bb
 ae
-VN
+he
 uY
 EB
 rB
@@ -39276,10 +41122,10 @@ qr
 qr
 qr
 zK
-lY
-Rq
-Xm
-zc
+tU
+YO
+zK
+mq
 BC
 pM
 QX
@@ -39368,7 +41214,7 @@ iL
 Jf
 ue
 gF
-VN
+he
 uY
 mP
 YH
@@ -39391,7 +41237,7 @@ eI
 cp
 bb
 ae
-VN
+he
 uY
 EB
 yW
@@ -39462,23 +41308,23 @@ Qp
 Qp
 Qp
 He
-bH
-bH
-bH
-bH
-bH
-bH
-bH
+vy
+vy
+He
+vy
+vy
+vy
+vy
 zK
-MS
-Rq
-Rq
-zc
-oK
-Xr
-fB
-MZ
-iS
+jf
+Qy
+zK
+gg
+Wa
+zK
+zK
+zK
+zK
 iS
 zK
 qr
@@ -39562,7 +41408,7 @@ UU
 pr
 ue
 gF
-VN
+he
 uY
 EB
 YH
@@ -39585,26 +41431,26 @@ EV
 cp
 bb
 gF
-VN
+he
 uY
 EB
 eS
-cX
-zu
-zu
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
+qX
+RC
+RC
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
 uk
 uk
 uk
@@ -39663,16 +41509,16 @@ aR
 aR
 aR
 aR
-lv
-dR
-DS
-Xm
-zc
-BC
-hw
-xQ
-iS
-iS
+nh
+tU
+Qy
+Eo
+jC
+vr
+vr
+vr
+BK
+tH
 iS
 Sq
 qr
@@ -39756,7 +41602,7 @@ pr
 pr
 uW
 gF
-VN
+he
 uY
 EB
 Si
@@ -39779,27 +41625,27 @@ cp
 cp
 bb
 gF
-VN
+he
 XF
 bb
 eS
-cX
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
+qX
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
 uk
 uk
 uk
@@ -39858,15 +41704,15 @@ aR
 aR
 aR
 pt
-MS
-Rq
-Xm
-Jg
-Pu
-dO
+tU
+Qy
+PC
+fT
+vr
+zK
+WC
+zG
 fk
-iS
-iS
 iS
 NA
 qr
@@ -39950,7 +41796,7 @@ Wi
 pr
 ue
 gF
-VN
+he
 uY
 EB
 jQ
@@ -39973,28 +41819,28 @@ jQ
 jQ
 bb
 gF
-VN
+he
 XF
 bb
 eS
-nX
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
+PL
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
 uk
 uk
 uk
@@ -40044,24 +41890,24 @@ Qp
 Qp
 Qp
 He
-hf
-hf
-hf
-hf
-hf
-hf
-hf
+xG
+xG
+He
+xG
+xG
+xG
+xG
 zK
-MS
-Rq
-Rq
-zc
-YR
-AH
-vo
+dr
+Qy
+Eo
+rR
+vr
+zK
+vr
+OW
 iU
-iU
-iU
+XR
 zK
 qr
 qr
@@ -40167,29 +42013,29 @@ yB
 jQ
 XT
 gF
-VN
+he
 XF
 XT
 eS
-nX
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
+PL
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
 uk
 uk
 uk
@@ -40237,25 +42083,25 @@ Qp
 Qp
 Qp
 Qp
-He
-qr
-qr
-qr
-qr
-qr
-qr
-qr
+os
+os
+ou
+os
+os
+os
+os
+os
 zK
-ZZ
-pF
-QP
-zo
-Ur
-AH
-fP
-fP
-MN
-hB
+qw
+Vb
+zK
+gg
+Ub
+zK
+zK
+zK
+zK
+zK
 zK
 qr
 qr
@@ -40338,7 +42184,7 @@ pr
 pr
 ue
 ae
-VN
+he
 uY
 EB
 PB
@@ -40361,30 +42207,30 @@ jQ
 jQ
 bb
 gF
-VN
+he
 XF
 bb
 eS
-nX
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
+PL
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
 uk
 uk
 uk
@@ -40432,23 +42278,23 @@ Qp
 Qp
 Qp
 os
-qr
-qr
-qr
-qr
-qr
-qr
-qr
+os
+os
+wP
+wP
+wP
+wP
+wP
 zK
-zK
-zK
-Og
-oQ
+Th
+pt
+oJ
+iE
 MJ
-DD
-wB
-qf
-zK
+gV
+Ly
+Ui
+Gv
 zK
 zK
 qr
@@ -40532,7 +42378,7 @@ DE
 pr
 Ph
 ae
-VN
+he
 uY
 EB
 PB
@@ -40555,30 +42401,30 @@ jQ
 DN
 bb
 gF
-VN
+he
 IC
 bb
 eS
-nX
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
+PL
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
 uk
 uk
 uk
@@ -40626,23 +42472,23 @@ Qp
 Qp
 Qp
 os
-qr
-qr
-qr
-qr
-qr
-qr
-qr
+os
+os
+wP
+jl
+jl
+jl
+jl
 zK
+nu
+pt
 zK
-zK
-nA
-oQ
+iE
 kh
 PE
-yT
+AX
 MJ
-zK
+BW
 zK
 zK
 qr
@@ -40726,7 +42572,7 @@ NZ
 Jf
 ue
 ae
-VN
+he
 XF
 EB
 GV
@@ -40749,31 +42595,31 @@ jQ
 jQ
 bb
 gF
-vW
+yy
 uY
 bb
 eS
-nX
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
+PL
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
 uk
 uk
 zF
@@ -40820,25 +42666,25 @@ Qp
 Qp
 Qp
 os
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
+os
+os
+wP
+jl
+Vw
+Vw
+jl
 zK
+pt
+PY
 zK
-nA
-fx
-VP
+En
+sg
 il
-yf
+ks
 MJ
+eU
 zK
 zK
-qr
 qr
 qr
 qr
@@ -40920,7 +42766,7 @@ NZ
 Jf
 ue
 ae
-VN
+he
 XF
 bb
 Ni
@@ -40943,31 +42789,31 @@ jQ
 jQ
 bb
 gF
-vW
+yy
 uY
 bb
 eS
-nX
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
+PL
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
 uk
 uk
 zF
@@ -41014,24 +42860,24 @@ Qp
 Qp
 Qp
 os
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
+os
+os
+wP
+jl
+Vw
+tL
+jl
+wP
+pt
+Co
 zK
-zK
-MY
-VR
+wi
+en
 Em
-lT
+Ho
 zK
 zK
-qr
+zK
 qr
 qr
 qr
@@ -41114,7 +42960,7 @@ NZ
 pr
 ue
 GK
-VN
+he
 XF
 bb
 GV
@@ -41137,31 +42983,31 @@ UZ
 jQ
 bb
 gF
-VN
+he
 uY
 bb
 eS
-nX
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
+PL
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
 uk
 uk
 zF
@@ -41208,23 +43054,23 @@ Qp
 Qp
 Qp
 os
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
+os
+os
+wP
+jl
+Rw
+Vw
+jl
+wP
+os
+Co
 zK
 zK
 zK
 zK
 zK
 zK
-qr
+zK
 qr
 qr
 qr
@@ -41308,7 +43154,7 @@ pr
 pr
 ue
 gF
-vW
+yy
 XF
 bb
 xn
@@ -41331,31 +43177,31 @@ xn
 xn
 bb
 gF
-VN
+he
 uY
 bb
 eS
-nX
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
+PL
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
 uk
 uk
 zF
@@ -41401,17 +43247,17 @@ Qp
 Qp
 Qp
 Qp
-He
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
+os
+os
+os
+wP
+jl
+gc
+Vw
+jl
+wP
+os
+gM
 zK
 zK
 zK
@@ -41502,7 +43348,7 @@ Wi
 pr
 Kp
 ae
-oj
+em
 XF
 nT
 EM
@@ -41525,31 +43371,31 @@ Rd
 xn
 XT
 gF
-VN
+he
 XF
 nT
 eS
-nX
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
+PL
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
 uk
 uk
 zF
@@ -41596,16 +43442,16 @@ Qp
 Qp
 Qp
 os
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
+os
+os
+wP
+jl
+NW
+Vw
+jl
+wP
+os
+gM
 qr
 qr
 qr
@@ -41696,7 +43542,7 @@ de
 pr
 ue
 ae
-VN
+he
 uY
 EB
 EM
@@ -41719,31 +43565,31 @@ EO
 xn
 bb
 gF
-VN
+he
 XF
 bb
 eS
-nX
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
+PL
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
 uk
 uk
 zF
@@ -41790,16 +43636,16 @@ Qp
 Qp
 Qp
 os
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
+os
+os
+wP
+jl
+Rw
+gc
+jl
+wP
+os
+gM
 qr
 qr
 qr
@@ -41890,7 +43736,7 @@ pr
 pr
 ue
 Fl
-VN
+he
 uY
 EB
 xn
@@ -41913,31 +43759,31 @@ EO
 xn
 bb
 gF
-vW
+yy
 uY
 bb
 eS
-cX
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-zu
+qX
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+RC
 uk
 uk
 zF
@@ -41984,16 +43830,16 @@ Qp
 Qp
 Qp
 os
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
+os
+os
+wP
+jl
+jl
+jl
+jl
+wP
+os
+gM
 qr
 qr
 qr
@@ -42084,7 +43930,7 @@ hy
 Jd
 ue
 ae
-VN
+he
 XF
 bb
 xn
@@ -42107,30 +43953,30 @@ EO
 xn
 bb
 ae
-vW
+yy
 uY
 bb
 eS
-cX
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-zu
+qX
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+RC
 uk
 uk
 uk
@@ -42178,16 +44024,16 @@ Qp
 Qp
 Qp
 os
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
+os
+os
+wP
+wP
+wP
+wP
+wP
+wP
+os
+gM
 qr
 qr
 qr
@@ -42278,7 +44124,7 @@ Jd
 Jd
 Ph
 gF
-VN
+he
 XF
 bb
 SF
@@ -42301,30 +44147,30 @@ EO
 xn
 bb
 ae
-VN
+he
 uY
 bb
 eS
-cX
-zu
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-zu
-zu
+qX
+RC
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+RC
+RC
 uk
 uk
 uk
@@ -42371,17 +44217,17 @@ Qp
 Qp
 Qp
 Qp
-He
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
+os
+os
+ou
+os
+os
+os
+os
+os
+os
+ou
+gM
 qr
 qr
 qr
@@ -42472,7 +44318,7 @@ Jd
 Jd
 ue
 gF
-VN
+he
 XF
 bb
 SF
@@ -42495,29 +44341,29 @@ EO
 xn
 bb
 yt
-VN
+he
 uY
 bb
 eS
-cX
-zu
-zu
-zu
-zu
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-zu
-zu
+qX
+RC
+RC
+RC
+RC
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+RC
+RC
 uk
 uk
 uk
@@ -42566,16 +44412,16 @@ Qp
 Qp
 Qp
 os
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
+os
+os
+os
+rY
+rY
+rY
+rY
+rY
+rY
+Ld
 qr
 qr
 qr
@@ -42666,7 +44512,7 @@ Jd
 VA
 ue
 gF
-VN
+he
 uY
 bb
 xn
@@ -42689,7 +44535,7 @@ xn
 xn
 bb
 ae
-VN
+he
 uY
 bb
 oE
@@ -42759,88 +44605,88 @@ Qp
 Qp
 Qp
 os
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-zE
+kJ
+kJ
+kJ
+kJ
+Qp
+Qp
+Qp
+Qp
+Qp
+yJ
+dK
+eP
+qr
+qr
+eP
+yJ
+Qp
+Qp
+Qp
+Qp
+Qp
+yJ
+Qp
+Qp
+Qp
+eP
+eP
+JD
+qr
+qr
+qr
+qr
+qr
+JD
+eP
+eP
+Qp
+Qp
+Qp
+yJ
+Qp
+Qp
+Qp
+Qp
+Qp
+yJ
+Qp
+Qp
+Qp
+Qp
+Qp
+yJ
+Qp
+Qp
+Qp
+Qp
+Qp
+yJ
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+eP
+eP
+eP
+eP
+Sb
+qr
+eP
+eP
+eP
+eP
+Sb
+Qp
+Qp
+Qp
+Qp
+Qp
+yJ
+qp
 DL
 wm
 wm
@@ -42952,90 +44798,90 @@ Qp
 Qp
 Qp
 os
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-pE
-pI
+kJ
+OE
+vT
+vT
+PF
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+Sb
+Sb
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+Sb
+Sb
+JD
+JD
+JD
+JD
+Sb
+Sb
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+Sb
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+FT
+HR
 yq
 LX
 BS
@@ -43145,158 +44991,158 @@ os
 os
 He
 os
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-pE
-EB
+os
+kJ
+jU
+KT
+KT
+aq
+KT
+KT
+KT
+KT
+KT
+vT
+KT
+KT
+KT
+KT
+KT
+vT
+KT
+KT
+KT
+KT
+KT
+vT
+KT
+KT
+KT
+KT
+KT
+eP
+Sb
+JD
+Sb
+Sb
+KT
+vT
+KT
+KT
+KT
+KT
+KT
+vT
+KT
+KT
+KT
+KT
+KT
+vT
+KT
+KT
+KT
+KT
+KT
+eP
+KT
+KT
+KT
+KT
+KT
+vT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+KT
+vT
+KT
+KT
+KT
+KT
+KT
+vT
+KT
+KT
+KT
+KT
+KT
+vT
+FT
 yy
-su
-pL
-pL
-pL
-Wb
-pL
-pL
-pL
-pL
-pL
-pL
-pL
-Wb
-pL
-Nq
+yy
+cK
+he
+he
+he
+cK
+he
+he
+he
+he
+he
+he
+he
+cK
+he
+yy
 bv
 yy
 he
 he
 Rf
-pL
-pL
-pL
-pL
-pL
-pL
-pL
-pL
-pL
-pL
-pL
-pL
-pL
-Nq
-Nq
-Nq
-Nq
-pL
+he
+he
+he
+he
+he
+he
+he
+he
+he
+he
+he
+he
+he
+yy
+yy
+yy
+yy
+he
 Rf
 he
 Ic
 he
 bv
 tW
-Nq
-pL
-pL
-pL
-pL
-Nq
-Nq
-pL
-Nq
-Nq
+yy
+he
+he
+he
+he
+yy
+yy
+he
+yy
+yy
 yG
-nR
-pL
-pL
-Nq
-Nq
-Nq
-Nq
-Nq
-pL
-pL
-pL
+em
+he
+he
+yy
+yy
+yy
+yy
+yy
+he
+he
+he
 lD
 zF
 "}
@@ -43340,90 +45186,90 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-pE
-EB
+YQ
+OE
+vT
+vT
+aq
+vT
+vT
+KT
+vT
+dQ
+Sb
+eP
+qr
+JD
+qr
+wH
+KT
+vT
+vT
+KT
+vT
+dQ
+KT
+vT
+vT
+KT
+vT
+dQ
+Sb
+eP
+eP
+KT
+vT
+dQ
+KT
+vT
+vT
+KT
+vT
+dQ
+KT
+vT
+vT
+KT
+vT
+dQ
+KT
+vT
+vT
+KT
+vT
+eP
+eP
+eP
+vT
+KT
+vT
+dQ
+KT
+vT
+vT
+KT
+vT
+dQ
+vT
+vT
+KT
+vT
+dQ
+KT
+vT
+vT
+KT
+eP
+wH
+Sb
+vT
+vT
+KT
+vT
+dQ
+KT
+nc
+yy
 zm
 zm
 zm
@@ -43534,88 +45380,88 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
-qr
+bQ
+aq
+PF
+PF
+Nn
+yJ
+yJ
+Qp
+eP
+Sb
+qr
+JD
+JD
+qr
+qr
+JD
+eP
+Sb
+yJ
+Qp
+Qp
+yJ
+Qp
+yJ
+yJ
+Qp
+Qp
+yJ
+Qp
+yJ
+yJ
+Qp
+Qp
+yJ
+Qp
+yJ
+yJ
+Qp
+Qp
+yJ
+Qp
+yJ
+yJ
+Qp
+Qp
+yJ
+Qp
+yJ
+yJ
+Qp
+Qp
+yJ
+Qp
+yJ
+yJ
+Qp
+Qp
+yJ
+Qp
+yJ
+yJ
+Qp
+Qp
+yJ
+yJ
+yJ
+Qp
+Qp
+yJ
+Qp
+Sb
+Sb
+eP
+qr
+JD
+eP
+Sb
+Sb
+Qp
+Qp
+yJ
+Qp
 zE
 XT
 bb
@@ -43728,11 +45574,11 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
+eP
+vT
+vT
+vT
+Qp
 qr
 qr
 qr
@@ -43853,7 +45699,7 @@ ge
 hR
 EB
 ae
-vW
+yy
 XF
 EB
 Ip
@@ -43922,11 +45768,11 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
+eP
+KT
+KT
+KT
+Qp
 qr
 qr
 qr
@@ -44029,47 +45875,47 @@ lJ
 NG
 MT
 Xy
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-zu
-zu
-zu
-zu
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+RC
+RC
+RC
+RC
 eS
 bb
 gF
-VN
+he
 uY
 bb
 eS
-cX
-zu
-zu
-zu
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-zu
-zu
+qX
+RC
+RC
+RC
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+RC
+RC
 uk
 uk
 uk
@@ -44116,11 +45962,11 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
+Qp
+vT
+vT
+vT
+Qp
 qr
 qr
 qr
@@ -44224,47 +46070,47 @@ Bu
 MT
 Xy
 uk
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-zu
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+RC
 Kz
 bb
 Wv
-VN
+he
 uY
 bb
 Kz
-cX
-zu
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-zu
-zu
+qX
+RC
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+RC
+RC
 uk
 uk
 uk
@@ -44310,11 +46156,11 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
+Qp
+KT
+KT
+KT
+Qp
 qr
 qr
 qr
@@ -44418,48 +46264,48 @@ JK
 MT
 Xy
 uk
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-zu
-zu
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+RC
+RC
 uk
 uk
 zF
@@ -44504,11 +46350,11 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
+Qp
+KT
+KT
+KT
+Qp
 qr
 qr
 qr
@@ -44612,48 +46458,48 @@ MT
 MT
 Xy
 uk
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-zu
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+RC
 uk
 uk
 zF
@@ -44698,11 +46544,11 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
+Qp
+vT
+vT
+vT
+Qp
 qr
 qr
 qr
@@ -44807,47 +46653,47 @@ Xy
 Xy
 uk
 uk
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-zu
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+RC
 uk
 uk
 zF
@@ -44892,11 +46738,11 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
+Qp
+KT
+KT
+KT
+Qp
 qr
 qr
 qr
@@ -45002,46 +46848,46 @@ uk
 uk
 uk
 uk
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
 uk
 uk
 zF
@@ -45086,11 +46932,11 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
+Qp
+KT
+KT
+KT
+eP
 qr
 qr
 qr
@@ -45196,46 +47042,46 @@ uk
 uk
 uk
 uk
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
 uk
 uk
 zF
@@ -45280,11 +47126,11 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
+eP
+vT
+vT
+vT
+eP
 qr
 qr
 qr
@@ -45391,43 +47237,43 @@ uk
 uk
 uk
 uk
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
 uk
 uk
 uk
@@ -45474,11 +47320,11 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
+eP
+vT
+vT
+vT
+Qp
 qr
 qr
 qr
@@ -45587,28 +47433,28 @@ uk
 uk
 uk
 uk
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
 uk
 uk
 uk
@@ -45668,11 +47514,11 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
+eP
+KT
+KT
+KT
+Qp
 qr
 qr
 qr
@@ -45782,18 +47628,18 @@ uk
 uk
 uk
 uk
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
-eO
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
 uk
 uk
 uk
@@ -45862,11 +47708,11 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
+Qp
+vT
+vT
+vT
+Qp
 qr
 qr
 qr
@@ -45979,10 +47825,10 @@ uk
 uk
 uk
 uk
-eO
-eO
-eO
-eO
+Rx
+Rx
+Rx
+Rx
 uk
 uk
 uk
@@ -46056,11 +47902,11 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
+Qp
+KT
+KT
+KT
+Qp
 qr
 qr
 qr
@@ -46250,11 +48096,11 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
+Qp
+KT
+KT
+KT
+Qp
 qr
 qr
 qr
@@ -46444,11 +48290,11 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
+Qp
+vT
+vT
+vT
+Qp
 qr
 qr
 qr
@@ -46638,11 +48484,11 @@ qr
 qr
 qr
 qr
-qr
-qr
-qr
-qr
-qr
+Qp
+KT
+KT
+KT
+Qp
 qr
 qr
 qr
@@ -46796,153 +48642,153 @@ zF
 zF
 uk
 uk
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
-CJ
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+Qp
+vT
+vT
+vT
+Qp
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
 zF
 zF
 zF

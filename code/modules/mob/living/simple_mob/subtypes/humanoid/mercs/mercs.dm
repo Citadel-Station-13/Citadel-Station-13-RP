@@ -499,7 +499,7 @@
 
 /mob/living/simple_mob/humanoid/merc/ranged/space/suppressor // adminspawn only, and also Probably Going To Kill The Unprepared
 	name = "mercenary suppressor"
-	desc = "Geeze, weren't shotgun ops bad enough? At least when you fade these jerks you get a flashbang to the face."
+	desc = "Geeze, weren't shotgun ops bad enough? At least when you face these jerks you get a flashbang to the face."
 	icon_state = "syndi-ranged-space-sup"
 	icon_living = "syndi-ranged-space-sup"
 	armor_legacy_mob = list(melee = 80, bullet = 65, laser = 50, energy = 15, bomb = 80, bio = 100, rad = 100) // this is the merc rig's stats
@@ -528,7 +528,7 @@
 
 /mob/living/simple_mob/humanoid/merc/ranged/space/suppressor/elite // really reconsider why you're spawning this dude
 	name = "mercenary elite suppressor"
-	desc = "Geeze, weren't normal suppressors bad enough? At least if you fade this jerk, you'll have an awful time anyway."
+	desc = "Geeze, weren't normal suppressors bad enough? At least if you face this jerk, you'll have an awful time anyway."
 	icon_state = "syndi-ranged-space-sup-elite"
 	icon_living = "syndi-ranged-space-sup-elite"
 	armor_legacy_mob = list(melee = 80, bullet = 70, laser = 55, energy = 15, bomb = 80, bio = 100, rad = 100) // see code for military hardsuit

@@ -16,6 +16,7 @@
 		/datum/shuttle/autodock/overmap/voidline/redcomet,
 		/datum/shuttle/autodock/overmap/voidline/bonnethead,
 		/datum/shuttle/autodock/overmap/voidline/paripari,
+		/datum/shuttle/autodock/overmap/voidline/crescend,
 	)
 
 /datum/map_level/sector/sky_planet

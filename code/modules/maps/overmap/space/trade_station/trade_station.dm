@@ -39,7 +39,8 @@
 		"Spacena Adventurer Shuttle" = list("tradeport_adventurer"),
 		"Cargo Tug Hauler Shuttle" = list("tradeport_tug"),
 		"Utility Micro Shuttle" = list("tradeport_utilitymicro"),
-		"Teshari Runabout Shuttle" = list("tradeport_runabout")
+		"Teshari Runabout Shuttle" = list("tradeport_runabout"),
+		"GCSS Vevalia Salvage Shuttle" = list("tradeport_scavenging")
 		)
 
 /* // Old Restricted list. Leaving commented out for reference - Bloop
@@ -200,9 +201,9 @@
 	base_area = /area/sector/nebula_tradeport/dock2
 
 /obj/effect/shuttle_landmark/triumph/trade/scavenger
-	name = "FTV Adala dock"
+	name = "GCSS Vevalia Salvage dock"
 	landmark_tag = "tradeport_scavenging"
-	docking_controller = "trade_docks3"
+	docking_controller = "trade_docks_4"
 	base_turf = /turf/space
 	base_area = /area/space
 
