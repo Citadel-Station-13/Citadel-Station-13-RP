@@ -17,8 +17,10 @@
 		input = message
 	if(input)
 		log_emote(message,src) //Log before we add junk
-		//If the message starts with a comma, no space after the name.
-		message = "<span class='emote'><B>[src]</B>[copytext(input, 1, 2) == "," ? "" : " "][input]</span>"
+		//If the message starts with a comma or apostrophe, no space after the name.
+		//We have to account for sanitization so we take the whole first word to see if it's a character code.
+		var/nospace = GLOB.valid_starting_punctuation.Find(input)
+		message = "<span class='emote'><B>[src]</B>[nospace ? "" : " "][input]</span>"
 	else
 		return
 
