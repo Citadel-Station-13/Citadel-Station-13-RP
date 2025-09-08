@@ -111,10 +111,6 @@
 	if(alien != IS_DIONA)
 		M.add_chemical_effect(CE_BLOODRESTORE, 8 * removed)
 
-/datum/reagent/iron/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
-	if(alien != IS_DIONA)
-		M.add_chemical_effect(CE_BLOODRESTORE, 12 * removed)
-
 /datum/reagent/lithium
 	name = "Lithium"
 	id = "lithium"

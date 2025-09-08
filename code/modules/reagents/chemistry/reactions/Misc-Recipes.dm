@@ -35,6 +35,7 @@
 	id = "water"
 	result = "water"
 	required_reagents = list("oxygen" = 1, "hydrogen" = 2)
+	inhibitors = list("iron" = 1) // for Ferric
 	result_amount = 1
 
 /datum/chemical_reaction/thermite

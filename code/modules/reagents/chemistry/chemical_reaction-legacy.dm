@@ -391,6 +391,13 @@
 	required_reagents = list("protein" = 1, "sugar" = 1, MAT_PHORON = 1)
 	result_amount = 6	// Roughly 120u per phoron sheet
 
+/datum/chemical_reaction/ferric
+	// Injectable iron for blood restoration
+	name = "Ferric carboxymaltose"
+	id = "ferric"
+	result = "ferric"
+	required_reagents = list("iron" = 1, "oxygen" = 1, "hydrogen" = 2, MAT_CARBON = 1)
+	result_amount = 5
 
 //Boosters
 
