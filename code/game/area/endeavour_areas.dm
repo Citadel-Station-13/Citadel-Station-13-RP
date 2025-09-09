@@ -228,7 +228,7 @@
 /** Command
  */
 /area/endeavour/command/turrets
-	name = "\improper Point Defense Systems"
+	name = "\improper Auxiliary Bridge"
 	icon_state = "bridge"
 
 /** Science
@@ -268,8 +268,12 @@
 	name = "\improper Virology Aft Access"
 	icon_state = "virology"
 
-/area/medical/oncall_room
-	name = "\improper On-Call Room"
+/area/medical/cmo_dorm
+	name = "\improper CMO Dormitory"
+	icon_state = "medbay"
+
+/area/medical/locker_room
+	name = "\improper Medical Locker Room"
 	icon_state = "medbay"
 
 /** Substations

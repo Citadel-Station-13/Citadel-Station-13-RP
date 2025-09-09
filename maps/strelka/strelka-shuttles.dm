@@ -83,6 +83,7 @@
 	current_location = "strelka_emt_hangar"
 	docking_controller_tag = "emtshuttle_docker"
 	move_time = 15
+	fuel_consumption = 3
 
 /area/shuttle/emt/strelka
 	name = "Hammerdart Interception and Rescue Shuttle"
@@ -143,7 +144,7 @@
 	icon_state = "shuttle"
 	requires_power = 1
 
-/obj/machinery/computer/shuttle_control/explore/civvie
+/obj/machinery/computer/shuttle_control/explore/civvie_strelka
 	name = "civilian jump console"
 	shuttle_tag = "Decades Old civilian Transport"
 
