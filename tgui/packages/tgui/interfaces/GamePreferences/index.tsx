@@ -76,7 +76,6 @@ const GamePreferencesTab = (props: {
 };
 
 const computeGamePreferenceCategoryCache = (entries: GamePreferenceEntrySchema[]): Record<string, string[]> => {
-  return {};
   let computed: Record<string, string[]> = {};
   entries.forEach((entry) => {
     if (!computed[entry.category]) {
@@ -115,8 +114,7 @@ export const GamePreferences = (props) => {
             <GamePreferencesBody />
           </Stack.Item>
           <Stack.Item>
-            {JSON.stringify(data)}
-            {/* <GamePreferenceFooter activeCategory={activeCategory} activeMiddleware={activeMiddleware} /> */}
+            <GamePreferenceFooter activeCategory={activeCategory} activeMiddleware={activeMiddleware} />
           </Stack.Item>
         </Stack>
       </Window.Content>

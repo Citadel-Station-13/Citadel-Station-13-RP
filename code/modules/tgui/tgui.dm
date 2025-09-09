@@ -331,7 +331,7 @@
 	var/list/nestedData = with_static_data ? src_object.ui_nested_data(user, src) : list()
 	// static first
 	if(with_static_data)
-		json_data["static"] = src_object.ui_static_data(user, src)
+		json_data["staticData"] = src_object.ui_static_data(user, src)
 		for(var/datum/module as anything in modules_registered)
 			var/id = modules_registered[module]
 			nestedData[id] = module.ui_static_data(user, src, TRUE)

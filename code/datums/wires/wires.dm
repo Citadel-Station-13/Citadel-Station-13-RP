@@ -56,7 +56,7 @@
 	SIGNAL_HANDLER
 
 	// don't just silently qdel self this isn't a catch-all it's supposed to yell at you if you forget to delete
-	addtiemr(CALLBACK(src, PROC_REF(still_not_qdeled), REF(source), source.type), 0)
+	addtimer(CALLBACK(src, PROC_REF(still_not_qdeled), REF(source), source.type), 0)
 
 /datum/wires/proc/still_not_qdeled(source_ref, source_type)
 	if(QDELETED(src))
@@ -179,14 +179,14 @@
 	switch(action)
 		// Toggles the cut/mend status
 		if("cut")
-			if((I && I.is_wirecutter()) || isAdminGhostAI(usr))
+			if(I?.is_wirecutter() || isAdminGhostAI(usr))
 				cut_color(target_wire)
 				. = TRUE
 			else
 				to_chat(user, SPAN_WARNING("You need wirecutters!"))
 		// Pulse a wire.
 		if("pulse")
-			if((I && !I.is_multitool()) || isAdminGhostAI(usr))
+			if(I?.is_multitool() || isAdminGhostAI(usr))
 				if(I && holder)
 					playsound(holder, I.tool_sound, 20, 1)
 				pulse_color(target_wire)
