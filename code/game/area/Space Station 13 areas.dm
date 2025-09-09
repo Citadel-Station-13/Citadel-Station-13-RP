@@ -997,7 +997,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Tool Storage Maintenance"
 	icon_state = "maint_tool_storage"
 	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
-	
+
 /area/maintenance/locker_room
 	name = "\improper Locker Room Maintenance"
 
@@ -1763,18 +1763,18 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /area/crew_quarters/visitor_lodging
- 	name = "\improper Visitor Lodging"
- 	icon_state = "visitor_lodging"
+	name = "\improper Visitor Lodging"
+	icon_state = "visitor_lodging"
 	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /area/crew_quarters/visitor_dining
- 	name = "\improper Visitor Dining"
- 	icon_state = "visitor_dinning"
+	name = "\improper Visitor Dining"
+	icon_state = "visitor_dinning"
 	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /area/crew_quarters/visitor_laundry
- 	name = "\improper Visitor Laundry"
- 	icon_state = "visitor_laundry"
+	name = "\improper Visitor Laundry"
+	icon_state = "visitor_laundry"
 	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /area/crew_quarters/lounge
@@ -1817,8 +1817,8 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /area/library_conference_room
- 	name = "\improper Library Conference Room"
- 	icon_state = "library_conference_room"
+	name = "\improper Library Conference Room"
+	icon_state = "library_conference_room"
 	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /area/chapel
