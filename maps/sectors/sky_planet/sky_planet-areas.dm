@@ -69,6 +69,7 @@
 	name = "Voidline racing club station"
 	icon_state = "blue"
 	ambience = AMBIENCE_HANGAR
+	requires_power = 1
 
 /area/sector/sky_planet/racing_station/dock
 	name = "Voidline racing club station racers"

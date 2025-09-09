@@ -165,8 +165,7 @@
 /obj/structure/fuel_port{
 	pixel_y = -27
 	},
-/obj/machinery/portable_atmospherics/canister/phoron,
-/obj/machinery/atmospherics/portables_connector{
+/obj/machinery/atmospherics/pipe/tank/phoron{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -215,6 +214,13 @@
 /mob/living/simple_mob/mechanical/hivebot,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/dock)
+"aZ" = (
+/obj/effect/floor_decal/techfloor,
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/carpet/patterened/red,
+/area/sector/sky_planet/racing_station/dock)
 "ba" = (
 /obj/machinery/door/airlock/glass_external/public,
 /obj/map_helper/access_helper/airlock/station/external_airlock,
@@ -306,6 +312,19 @@
 	},
 /turf/simulated/floor/wood/sif/indoors,
 /area/sector/sky_planet/racing_station/lounge)
+"bs" = (
+/obj/structure/catwalk,
+/obj/structure/railing/grey{
+	dir = 4
+	},
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	cycle_to_external_air = null;
+	frequency = 1380;
+	id_tag = "occulum_safehouse_dock";
+	pixel_y = -27
+	},
+/turf/simulated/open/skyplanet,
+/area/sector/sky_planet/sky)
 "bt" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -529,6 +548,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
+"cu" = (
+/obj/structure/cable/cyan{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/racing_station/dock)
 "cx" = (
 /obj/machinery/door/airlock/multi_tile/glass,
 /turf/simulated/floor/tiled/techmaint,
@@ -657,15 +682,33 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/racing_station/dock)
 "dj" = (
-/obj/machinery/recharger/wallcharger{
-	pixel_x = -24;
-	pixel_y = 7
-	},
-/obj/machinery/recharger/wallcharger{
-	pixel_x = -24;
-	pixel_y = -3
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/effect/floor_decal/industrial/hatch,
+/obj/structure/closet/walllocker_double/west,
+/obj/item/clothing/shoes/magboots,
+/obj/item/clothing/shoes/magboots,
+/obj/item/tank/jetpack,
+/obj/item/tank/jetpack,
+/obj/item/tank/oxygen,
+/obj/item/tank/oxygen,
+/obj/item/tank/oxygen,
+/obj/item/tank/oxygen,
+/obj/item/tank/emergency/oxygen/double,
+/obj/item/tank/emergency/oxygen/double,
+/obj/item/tank/emergency/nitrogen/double,
+/obj/item/tank/emergency/nitrogen/double,
+/obj/item/clothing/suit/space/void/pilot/alt{
+	name = "Oculum voidsuit"
+	},
+/obj/item/clothing/suit/space/void/pilot/alt{
+	name = "Oculum voidsuit"
+	},
+/obj/item/clothing/head/helmet/space/void/pilot/alt{
+	name = "Oculum voidsuit helmet"
+	},
+/obj/item/clothing/head/helmet/space/void/pilot/alt{
+	name = "Oculum voidsuit helmet"
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/crescend)
 "dl" = (
@@ -976,9 +1019,6 @@
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/station_city/street)
 "eU" = (
-/obj/structure/cable/green{
-	icon_state = "0-8"
-	},
 /obj/machinery/power/port_gen/pacman{
 	anchored = 1
 	},
@@ -988,6 +1028,9 @@
 /obj/item/stack/material/phoron,
 /obj/item/stack/material/phoron,
 /obj/item/stack/material/phoron,
+/obj/structure/cable/cyan{
+	icon_state = "0-8"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/sky_planet/racing_station/dock)
 "eV" = (
@@ -1006,7 +1049,7 @@
 	},
 /obj/machinery/access_button/airlock_exterior{
 	pixel_y = -19;
-	master_tag = "cresend";
+	master_tag = "occulum_safehouse_docker";
 	dir = 8;
 	frequency = 8018
 	},
@@ -1469,6 +1512,9 @@
 /obj/item/clothing/suit/space/void,
 /obj/item/tank/emergency,
 /obj/item/tank/emergency,
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/sky_planet/racing_station/dock)
 "gX" = (
@@ -1917,6 +1963,15 @@
 /mob/living/simple_mob/aggressive/dragoon,
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
+"je" = (
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/obj/structure/cable/cyan{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/racing_station/dock)
 "jf" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -2088,6 +2143,12 @@
 	},
 /turf/simulated/floor/carpet/patterened/purple,
 /area/sector/sky_planet/station_city/appartement)
+"jN" = (
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/racing_station/atc)
 "jO" = (
 /obj/structure/bed/chair/sofa/beige/left{
 	dir = 4
@@ -2238,7 +2299,7 @@
 /obj/effect/floor_decal/industrial/danger{
 	dir = 1
 	},
-/obj/structure/cable/green{
+/obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -2307,6 +2368,15 @@
 /obj/structure/table/standard,
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/sky_planet/station_city/restaurant)
+"kI" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/wood/sif/indoors,
+/area/sector/sky_planet/racing_station/dock)
 "kJ" = (
 /obj/effect/floor_decal/rust/mono_rusted3{
 	color = "#b88a3b"
@@ -2490,6 +2560,12 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/paripari)
+"lB" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
+/obj/structure/cable/cyan,
+/turf/simulated/floor/tiled/kafel_full/beige,
+/area/sector/sky_planet/racing_station/lounge)
 "lD" = (
 /obj/machinery/door/blast/regular,
 /turf/simulated/wall/solidrock,
@@ -2851,6 +2927,15 @@
 	},
 /turf/simulated/floor/carpet/patterened/brown,
 /area/sector/sky_planet/station_city/appartement)
+"nr" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 6
+	},
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/carpet/patterened/red,
+/area/sector/sky_planet/racing_station/dock)
 "ns" = (
 /obj/structure/closet/largecardboard,
 /turf/simulated/floor/wood/indoors,
@@ -2945,6 +3030,9 @@
 /obj/machinery/light/poi{
 	dir = 8
 	},
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/sky_planet/racing_station/dock)
 "nO" = (
@@ -2971,6 +3059,12 @@
 	},
 /turf/simulated/floor/airless,
 /area/sector/sky_planet/occulum)
+"nR" = (
+/obj/structure/cable/cyan{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/racing_station/dock)
 "nT" = (
 /obj/effect/floor_decal/rust/mono_rusted3{
 	color = "#b88a3b"
@@ -3107,6 +3201,15 @@
 /obj/machinery/light/spot,
 /turf/simulated/floor/carpet/patterened,
 /area/sector/sky_planet/station_city/appartement2)
+"oC" = (
+/obj/machinery/light/poi{
+	dir = 4
+	},
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/racing_station/dock)
 "oE" = (
 /obj/structure/fence/corner{
 	dir = 5
@@ -3142,6 +3245,9 @@
 /area/sector/sky_planet/racing_station/dock)
 "oK" = (
 /obj/effect/floor_decal/techfloor,
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/kafel_full/beige,
 /area/sector/sky_planet/racing_station/dock)
 "oL" = (
@@ -3400,13 +3506,6 @@
 /area/sector/sky_planet/sky)
 "pY" = (
 /turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/racing_station/dock)
-"pZ" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
-/obj/machinery/power/apc/north_mount,
-/turf/simulated/floor/carpet/patterened/red,
 /area/sector/sky_planet/racing_station/dock)
 "qa" = (
 /obj/structure/table/rack/shelf/steel,
@@ -3878,6 +3977,16 @@
 /obj/item/gps,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/racing_station/dock)
+"rV" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
+	},
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/racing_station/dock)
 "rY" = (
 /obj/structure/railing/grey{
 	dir = 4
@@ -4088,6 +4197,9 @@
 /obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
+	},
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/sky_planet/racing_station/dock)
@@ -4301,6 +4413,9 @@
 /area/sector/sky_planet/racing_station/dock)
 "tT" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/wood/sif/indoors,
 /area/sector/sky_planet/racing_station/dock)
 "tU" = (
@@ -4818,6 +4933,9 @@
 /obj/effect/floor_decal/techfloor/orange,
 /obj/effect/floor_decal/rust,
 /obj/item/paper/pamphlet/voidlinedebut,
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/kafel_full/beige,
 /area/sector/sky_planet/racing_station/dock)
 "wE" = (
@@ -4973,13 +5091,8 @@
 /obj/item/clothing/head/soft/blue,
 /obj/item/clothing/suit/storage/hooded/wintercoat,
 /obj/item/clothing/suit/storage/hooded/wintercoat/olive,
-/obj/item/gun/projectile/energy/taser,
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
-/obj/item/storage/backpack/dufflebag,
-/obj/item/storage/backpack/messenger,
-/obj/item/clothing/accessory/badge/corporate_tag/press,
-/obj/item/clothing/accessory/badge/corporate_tag/press,
 /turf/simulated/floor/wood/indoors,
 /area/sector/sky_planet/occulum)
 "xk" = (
@@ -5027,6 +5140,19 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/office)
+"xA" = (
+/obj/structure/window/phoronreinforced,
+/obj/structure/window/phoronreinforced{
+	dir = 8
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 4
+	},
+/obj/machinery/suit_cycler{
+	req_access = null
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/crescend)
 "xD" = (
 /obj/structure/curtain/open/bed,
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
@@ -5243,6 +5369,15 @@
 /mob/living/simple_mob/mechanical/hivebot,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
+"yH" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-8"
+	},
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/racing_station/dock)
 "yI" = (
 /obj/effect/floor_decal/techfloor,
 /obj/structure/railing,
@@ -5667,10 +5802,10 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/shop)
 "AB" = (
-/obj/machinery/holopad/ship,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
+/obj/machinery/holopad/ship/starts_inactive,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/crescend)
 "AE" = (
@@ -5768,7 +5903,7 @@
 /obj/effect/floor_decal/industrial/danger/corner{
 	dir = 4
 	},
-/obj/structure/cable/green{
+/obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -5841,6 +5976,8 @@
 	pixel_x = -26
 	},
 /obj/item/flashlight/lamp/on,
+/obj/item/spacecash/c1000,
+/obj/item/spacecash/c1000,
 /turf/simulated/floor/carpet/bcarpet,
 /area/shuttle/crescend)
 "Bl" = (
@@ -5921,6 +6058,9 @@
 /area/sector/sky_planet/station_city/appartement2)
 "BC" = (
 /obj/effect/floor_decal/techfloor/orange,
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/kafel_full/beige,
 /area/sector/sky_planet/racing_station/dock)
 "BD" = (
@@ -5958,6 +6098,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
+	},
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/sky_planet/racing_station/dock)
@@ -6021,12 +6164,11 @@
 /area/sector/sky_planet/sky)
 "BW" = (
 /obj/machinery/light/poi,
-/obj/structure/cable/green{
-	dir = 1;
-	icon_state = "0-8"
-	},
 /obj/machinery/power/terminal{
 	dir = 8
+	},
+/obj/structure/cable/cyan{
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/sky_planet/racing_station/dock)
@@ -6432,6 +6574,32 @@
 /area/sector/sky_planet/outpost/docking_port1)
 "DQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/structure/closet/walllocker_double/west,
+/obj/effect/floor_decal/industrial/hatch,
+/obj/item/clothing/under/victorianblackdress,
+/obj/item/clothing/under/victorianreddress,
+/obj/item/clothing/under/sundress_white,
+/obj/item/clothing/under/sundress,
+/obj/item/clothing/under/suit_jacket/navy/skirt,
+/obj/item/clothing/under/suit_jacket/navy,
+/obj/item/clothing/under/suit_jacket/charcoal,
+/obj/item/clothing/under/suit_jacket/charcoal/skirt,
+/obj/item/clothing/under/dress/tajaran/blue,
+/obj/item/clothing/under/dress/tajaran/blue,
+/obj/item/clothing/head/soft/blue,
+/obj/item/clothing/head/soft/blue,
+/obj/item/clothing/shoes/boots/jackboots,
+/obj/item/clothing/shoes/boots/jackboots,
+/obj/item/clothing/shoes/antediluvian/heels,
+/obj/item/clothing/shoes/antediluvian/heels,
+/obj/item/clothing/suit/storage/hooded/wintercoat,
+/obj/item/clothing/suit/storage/hooded/wintercoat,
+/obj/item/clothing/suit/storage/hooded/wintercoat/olive,
+/obj/item/clothing/suit/storage/hooded/wintercoat/olive,
+/obj/item/storage/backpack/dufflebag,
+/obj/item/storage/backpack/dufflebag,
+/obj/item/storage/backpack/messenger,
+/obj/item/storage/backpack/messenger,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/crescend)
 "DR" = (
@@ -6496,6 +6664,19 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
+/obj/item/camera,
+/obj/item/camera,
+/obj/item/camera,
+/obj/item/camera,
+/obj/item/camera_film,
+/obj/item/camera_film,
+/obj/item/camera_film,
+/obj/item/camera_film,
+/obj/item/clothing/accessory/armor/helmetcamera,
+/obj/item/clothing/accessory/armor/helmetcamera,
+/obj/item/clothing/accessory/armor/helmetcamera/body,
+/obj/item/clothing/accessory/armor/helmetcamera/body,
+/obj/item/storage/box/camerabug,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/crescend)
 "Ee" = (
@@ -6769,6 +6950,12 @@
 "Fg" = (
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/paripari)
+"Fh" = (
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/wood/sif/indoors,
+/area/sector/sky_planet/racing_station/dock)
 "Fi" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /obj/item/reagent_containers/blood/prelabeled/OMinus,
@@ -6808,7 +6995,7 @@
 "Fo" = (
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	pixel_y = 27;
-	id_tag = "cresend";
+	id_tag = "occulum_safehouse_docker";
 	frequency = 8018
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
@@ -6822,8 +7009,8 @@
 	frequency = 8018;
 	pixel_x = 10;
 	pixel_y = 24;
-	master_tag = "cresend";
-	id_tag = "cresend"
+	master_tag = "occulum_safehouse_docker";
+	id_tag = "occulum_safehouse_docker"
 	},
 /obj/structure/cable/white{
 	icon_state = "4-8"
@@ -7123,7 +7310,7 @@
 /area/sector/sky_planet/station_city/appartement2)
 "Gv" = (
 /obj/machinery/power/smes/buildable/offmap_spawn,
-/obj/structure/cable/green,
+/obj/structure/cable/cyan,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/sky_planet/racing_station/dock)
 "Gx" = (
@@ -7290,6 +7477,9 @@
 	},
 /obj/item/paper_bin,
 /obj/item/pen/fountain,
+/obj/item/spacecash/c1000,
+/obj/item/spacecash/c1000,
+/obj/item/spacecash/c1000,
 /turf/simulated/floor/carpet/turcarpet,
 /area/sector/sky_planet/occulum)
 "Hl" = (
@@ -7303,11 +7493,10 @@
 	dir = 8
 	},
 /obj/machinery/light/poi,
-/obj/structure/cable/green{
-	dir = 1;
-	icon_state = "0-4"
-	},
 /obj/machinery/power/apc/alarms_hidden/east_mount,
+/obj/structure/cable/cyan{
+	icon_state = "0-8"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/sky_planet/racing_station/dock)
 "Hp" = (
@@ -7767,6 +7956,13 @@
 /obj/effect/floor_decal/industrial/warning/dust/corner,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost/docking_port1)
+"JC" = (
+/obj/structure/cable/cyan{
+	icon_state = "0-4"
+	},
+/obj/machinery/power/apc/alarms_hidden/north_mount,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/racing_station/atc)
 "JD" = (
 /obj/effect/floor_decal/rust/mono_rusted3{
 	color = "#b88a3b"
@@ -8056,6 +8252,9 @@
 /obj/machinery/door/airlock/multi_tile{
 	dir = 1
 	},
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/sky_planet/racing_station/lounge)
 "KS" = (
@@ -8199,13 +8398,16 @@
 /area/sector/sky_planet/station_city/shop)
 "Ly" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/structure/cable/green{
-	icon_state = "2-4"
-	},
 /obj/item/clothing/head/helmet/space/void,
 /obj/item/clothing/suit/space/void,
 /obj/item/tank/emergency,
 /obj/item/tank/emergency,
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/cyan{
+	icon_state = "2-4"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/sky_planet/racing_station/dock)
 "LA" = (
@@ -8346,6 +8548,14 @@
 "Mp" = (
 /obj/effect/floor_decal/industrial/halfstair,
 /obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/recharger/wallcharger{
+	pixel_x = -24;
+	pixel_y = 7
+	},
+/obj/machinery/recharger/wallcharger{
+	pixel_x = -24;
+	pixel_y = -3
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/crescend)
 "Mq" = (
@@ -8375,6 +8585,8 @@
 /obj/item/stack/cable_coil{
 	amount = 5
 	},
+/obj/structure/cable/cyan,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/sky_planet/racing_station/dock)
 "ME" = (
@@ -8921,6 +9133,9 @@
 "ON" = (
 /obj/effect/floor_decal/techfloor/orange,
 /obj/structure/railing,
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/kafel_full/beige,
 /area/sector/sky_planet/racing_station/dock)
 "OO" = (
@@ -9025,6 +9240,11 @@
 /obj/effect/floor_decal/carpet/blue{
 	dir = 10
 	},
+/obj/item/radio/intercom/entertainment{
+	dir = 8;
+	pixel_x = -22;
+	canhear_range = 4
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/shuttle/crescend)
 "Pk" = (
@@ -9080,6 +9300,9 @@
 "Pu" = (
 /obj/effect/floor_decal/techfloor/orange,
 /obj/effect/floor_decal/rust,
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/kafel_full/beige,
 /area/sector/sky_planet/racing_station/dock)
 "Pv" = (
@@ -9271,6 +9494,13 @@
 	},
 /turf/simulated/floor/lino,
 /area/sector/sky_planet/outpost/office)
+"Ql" = (
+/obj/item/radio/intercom/entertainment{
+	pixel_y = -56
+	},
+/obj/machinery/holopad/ship/starts_inactive,
+/turf/simulated/floor/carpet/turcarpet,
+/area/sector/sky_planet/occulum)
 "Qn" = (
 /obj/machinery/power/smes/buildable{
 	charge = 1.5e+007;
@@ -10183,6 +10413,9 @@
 /area/sector/sky_planet/station_city/street)
 "Ub" = (
 /obj/machinery/door/airlock,
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/sky_planet/racing_station/dock)
 "Uc" = (
@@ -10210,8 +10443,7 @@
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/rock)
 "Ui" = (
-/obj/structure/cable/green{
-	dir = 1;
+/obj/structure/cable/cyan{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -10357,6 +10589,9 @@
 /area/sector/sky_planet/station_city/street)
 "UR" = (
 /obj/effect/floor_decal/rust,
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/sky_planet/racing_station/dock)
 "US" = (
@@ -10631,6 +10866,9 @@
 /area/sector/sky_planet/station_city/restaurant)
 "Wa" = (
 /obj/machinery/door/airlock,
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/kafel_full/beige,
 /area/sector/sky_planet/racing_station/dock)
 "Wd" = (
@@ -10703,7 +10941,7 @@
 /obj/machinery/access_button/airlock_interior{
 	dir = 4;
 	frequency = 8018;
-	master_tag = "cresend";
+	master_tag = "occulum_safehouse_docker";
 	pixel_y = -22
 	},
 /obj/structure/cable/white{
@@ -11227,6 +11465,9 @@
 	name = "sdf tape";
 	desc = "A length of police tape, used by teh SDF.  Do not cross."
 	},
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/kafel_full/beige,
 /area/sector/sky_planet/racing_station/dock)
 "YH" = (
@@ -11287,19 +11528,9 @@
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/sky)
 "YS" = (
-/obj/item/clothing/under/suit_jacket/charcoal/skirt,
-/obj/item/clothing/under/suit_jacket/charcoal,
-/obj/item/clothing/under/suit_jacket/navy,
-/obj/item/clothing/under/suit_jacket/navy/skirt,
-/obj/item/clothing/under/dress/tajaran/blue,
-/obj/item/clothing/head/soft/blue,
-/obj/item/clothing/suit/storage/hooded/wintercoat,
-/obj/item/clothing/suit/storage/hooded/wintercoat/olive,
 /obj/item/gun/projectile/energy/taser,
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
-/obj/item/storage/backpack/dufflebag,
-/obj/item/storage/backpack/messenger,
 /obj/item/clothing/accessory/badge/corporate_tag/press,
 /obj/item/clothing/accessory/badge/corporate_tag/press,
 /obj/structure/closet/walllocker_double/west,
@@ -11307,6 +11538,9 @@
 /obj/structure/cable/white{
 	icon_state = "1-2"
 	},
+/obj/item/cell/device/weapon,
+/obj/item/cell/device/weapon,
+/obj/effect/floor_decal/industrial/hatch,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/crescend)
 "YT" = (
@@ -18535,7 +18769,7 @@ AS
 yv
 bo
 Fo
-Cc
+xA
 qi
 vQ
 dx
@@ -19903,7 +20137,7 @@ ga
 ga
 ga
 ga
-ga
+bs
 ng
 ng
 zb
@@ -21458,7 +21692,7 @@ qr
 cg
 hh
 sH
-Lj
+Ql
 Lj
 ng
 zW
@@ -35502,7 +35736,7 @@ qr
 qr
 qr
 IW
-Gy
+JC
 Gy
 MQ
 yL
@@ -35696,7 +35930,7 @@ MR
 MR
 MR
 IW
-Gy
+jN
 Wh
 ih
 IW
@@ -35888,14 +36122,14 @@ Gr
 ci
 Nd
 MJ
-MJ
+cu
 nN
-MJ
+yH
 UR
 BJ
 UR
 KP
-Sj
+lB
 tG
 ro
 sU
@@ -36082,7 +36316,7 @@ Tn
 fl
 DZ
 kb
-Pk
+rV
 kb
 kb
 kb
@@ -36276,7 +36510,7 @@ XK
 wb
 Hu
 vr
-fT
+kI
 vr
 JW
 Mj
@@ -36470,7 +36704,7 @@ dh
 No
 te
 Vo
-fT
+kI
 Rs
 QA
 Mj
@@ -36664,7 +36898,7 @@ fP
 Ye
 Jj
 Yp
-fT
+kI
 Yp
 qu
 Mj
@@ -36858,7 +37092,7 @@ dN
 jh
 oG
 lZ
-fT
+kI
 ut
 Qd
 Mj
@@ -37246,7 +37480,7 @@ fP
 Ae
 yo
 vr
-fT
+kI
 vr
 vr
 Mj
@@ -37440,7 +37674,7 @@ ST
 yI
 te
 Vo
-fT
+kI
 Rs
 QA
 Mj
@@ -37634,7 +37868,7 @@ pY
 kz
 Jj
 Yp
-fT
+kI
 Yp
 qu
 Mj
@@ -37828,7 +38062,7 @@ Qw
 No
 oG
 lZ
-fT
+kI
 ut
 Qd
 Mj
@@ -38022,7 +38256,7 @@ rT
 SE
 Hu
 vr
-fT
+kI
 vr
 JW
 Mj
@@ -38410,8 +38644,8 @@ NY
 sJ
 Ow
 iE
-MJ
-co
+je
+oC
 MC
 MJ
 co
@@ -38798,7 +39032,7 @@ Mk
 Uv
 tx
 vI
-Qy
+aZ
 AH
 mR
 ry
@@ -38988,11 +39222,11 @@ pY
 Pr
 vh
 zK
-pZ
+tU
 aT
 An
 bt
-Vb
+nr
 AH
 gd
 SP
@@ -41514,7 +41748,7 @@ tU
 Qy
 Eo
 jC
-vr
+Fh
 vr
 vr
 BK
@@ -41708,7 +41942,7 @@ tU
 Qy
 PC
 fT
-vr
+Fh
 zK
 WC
 zG
@@ -41902,7 +42136,7 @@ dr
 Qy
 Eo
 rR
-vr
+Fh
 zK
 vr
 OW
@@ -42290,7 +42524,7 @@ Th
 pt
 oJ
 iE
-MJ
+nR
 gV
 Ly
 Ui

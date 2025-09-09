@@ -17,17 +17,22 @@
 		"nebula_pad_3b",
 		"nebula_pad_3c",
 		"nebula_pad_3d",
+		"nebula_pad_4e",
 		"nebula_pad_4a",
 		"nebula_pad_4b",
 		"nebula_pad_4c",
 		"nebula_pad_4d",
+		"nebula_pad_4e",
 		"nebula_pad_5a",
 		"nebula_pad_5b",
 		"nebula_pad_6a",
 		"nebula_pad_6b",
 		"nebula_space_SE",
 		"nebula_space_S",
-		"nebula_space_SW"
+		"nebula_space_S2",
+		"nebula_space_SW",
+		"nebula_space_SW2",
+		"nebula_space_SDF",
 		)
 
 	initial_restricted_waypoints = list(

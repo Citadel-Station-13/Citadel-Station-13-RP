@@ -274,6 +274,7 @@
 	landmark_tag = "occulum_safehouse"
 	base_turf = /turf/simulated/floor/reinforced
 	base_area = /area/sector/sky_planet/sky
+	docking_controller = "occulum_safehouse_dock"
 
 //mobs
 

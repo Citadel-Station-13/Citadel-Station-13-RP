@@ -118,7 +118,7 @@
 /datum/outfit/occulum
 	name = "Occulum operator"
 	uniform = /obj/item/clothing/under/office_worker
-	shoes = /obj/item/clothing/shoes/flats
+	shoes = /obj/item/clothing/shoes/boots/jackboots
 	l_ear = /obj/item/radio/headset/trader/outsider
 	back = /obj/item/storage/backpack
 	id_slot = SLOT_ID_WORN_ID
