@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(nightshift)
 	name = "Night Shift"
-	wait = 10 MINUTES
+	wait = 5 MINUTES
 
 	/// Set from configuration - enabled nightshift flags.
 	var/nightshift_level = NONE
@@ -8,9 +8,10 @@ SUBSYSTEM_DEF(nightshift)
 	//! legacy below
 
 	var/nightshift_active = FALSE
+
 	var/nightshift_start_time = 19 HOURS + 30 MINUTES		//7:30 PM, station time
 	var/nightshift_end_time = 7 HOURS + 30 MINUTES		//7:30 AM, station time
-	var/nightshift_first_check = 30 SECONDS
+	var/nightshift_first_check = 5 MINUTES // Wait 5 minutes after roundstart to turn on nightshift
 
 	var/high_security_mode = FALSE
 	var/list/currentrun
@@ -27,7 +28,7 @@ SUBSYSTEM_DEF(nightshift)
 	if(resumed)
 		update_nightshift(resumed = TRUE)
 		return
-	if(world.time - SSticker.round_start_time < nightshift_first_check)
+	if(round_duration_in_ds < nightshift_first_check)
 		return
 	check_nightshift()
 
@@ -45,10 +46,12 @@ SUBSYSTEM_DEF(nightshift)
 	var/announcing = TRUE
 
 	//station_time_in_ds = deciseconds after midnight in station time
-	//nightshift_start_time = 207,000 deciseconds after midnight (7:30 AM)
-	//nightshift_end_time = 702,000 deciseconds after midnight (7:30 PM)
+	//nightshift_start_time = 702,000 deciseconds after midnight (7:30 PM)
+	//nightshift_end_time = 207,000 deciseconds after midnight (7:30 AM)
+	//if time is greater than start time (between 7:30pm and 11:59pm) OR less than end time (between midnight and 7:29am) it should turn on.
+	//If time rolls over to midnight, station_time will keep incrementing so there is no need for a special case.
 	var/time = station_time_in_ds	
-	var/night_time = (time < nightshift_end_time) || (time > nightshift_start_time)
+	var/night_time = (time > nightshift_start_time) || (time < nightshift_end_time)
 
 	if(high_security_mode != emergency)
 		high_security_mode = emergency
@@ -81,6 +84,7 @@ SUBSYSTEM_DEF(nightshift)
 			APC.set_nightshift(nightshift_active && (APC.area.nightshift_level & nightshift_level), TRUE)
 		
 		//TODO: redo below logic: as-is, it does not allow the nightshift subsystem to actually finish processing
+
 		//if(MC_TICK_CHECK && !forced) // subsystem will be in state SS_IDLE if forced by an admin
 		//return
 
