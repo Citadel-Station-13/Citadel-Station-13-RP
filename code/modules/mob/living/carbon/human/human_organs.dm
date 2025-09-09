@@ -112,8 +112,9 @@
 	// standing is poor
 	if(stance_damage >= 4 || (stance_damage >= 2 && prob(5)))
 		if(!(lying || resting) && !buckled && !isbelly(loc))
-			if(limb_pain)
+			if(limb_pain && can_feel_pain())
 				emote_nosleep("scream")
+				adjustHalLoss(10) //Attempting to use a broken bone hurts.
 			custom_emote(1, "collapses!")
 		afflict_paralyze(20 * 5) //can't emote while weakened, apparently.
 
@@ -130,7 +131,8 @@
 			continue
 		if(((hand.is_broken() || hand.is_dislocated()) && !hand.splinted) || ((arm.is_broken() || arm.is_dislocated()) && !arm.splinted))
 			var/emote_scream = pick("screams in pain and ", "lets out a sharp cry and ", "cries out and ")
-			emote("me", 1, "[(can_feel_pain()) ? "" : emote_scream ]drops what they were holding in their [hand.name]!")
+			emote("me", 1, "[(can_feel_pain()) ? emote_scream : ""]drops what they were holding in their [hand.name]!")
+			adjustHalLoss(10) //Attempting to use a broken bone hurts.
 			drop_item_to_ground(held, INV_OP_FORCE)
 			continue
 		else if(hand.is_malfunctioning())
