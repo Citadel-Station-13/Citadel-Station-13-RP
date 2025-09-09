@@ -32,7 +32,10 @@
 	if(wire_len < wire_count) // If the amount of "real" wires is less than the total we're suppose to have...
 		add_duds(wire_count - wire_len) // Add in the appropriate amount of duds to reach `wire_count`.
 
+	// TODO: compile flag this, this is effectively a runtime sanity lint for gc. this shouldn't be needed, and should only be on when
+	//       debugging GC issues.
 	RegisterSignal(holder, COMSIG_PARENT_QDELETING, PROC_REF(on_holder_qdel))
+
 	// If the randomize is true, we need to generate a new set of wires and ignore any wire color directories.
 	if(randomize)
 		randomize()
@@ -49,11 +52,18 @@
 		detach_assembly(color)
 	return ..()
 
-///Called when holder is qdeleted for us to clean ourselves as not to leave any unlawful references.
 /datum/wires/proc/on_holder_qdel(atom/source, force)
 	SIGNAL_HANDLER
 
-	qdel(src)
+	// don't just silently qdel self this isn't a catch-all it's supposed to yell at you if you forget to delete
+	addtiemr(CALLBACK(src, PROC_REF(still_not_qdeled), REF(source), source.type), 0)
+
+/datum/wires/proc/still_not_qdeled(source_ref, source_type)
+	if(QDELETED(src))
+		CRASH("why is the qdel leak timer still firing after self-del?")
+	else
+		stack_trace("qdel leak timer fired on wire datum associated to [source_ref] ([source_type]). this means it didn't delete its wires immediately.")
+		qdel(src)
 
 /**
  * Randomly generates a new set of wires. and corresponding colors from the given pool. Assigns the information as an associative list, to `colors`.
