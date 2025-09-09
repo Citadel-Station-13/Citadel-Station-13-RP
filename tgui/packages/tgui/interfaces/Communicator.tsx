@@ -877,7 +877,6 @@ const NewsTargetFeed = (props) => {
   return (
     <Section
       title={decodeHtmlEntities(target_feed.name) + " by " + decodeHtmlEntities(target_feed.author)}
-
       buttons={
         <Button
           content="Back"

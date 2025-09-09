@@ -96,7 +96,7 @@ export const JoinMenu = (props) => {
                 {
                   data.ghostroles.map((role) => {
                     return (
-                      <Box style={{ paddingLeft: "5%" }} >
+                      <Box style={{ paddingLeft: "5%" }} key={role.name}>
                         <Collapsible key={role.id} title={role.name} color="transparent" buttons={
                           <>{(role.slots === -1) ? '' : role.slots} <Icon name="user-friends" />
                             <Button.Confirm
@@ -150,12 +150,12 @@ const JoinFaction = (props: JoinFactionProps) => {
         ordered.map((depName) => {
           const jobs: JoinableJob[] = props.departments[depName];
           return (
-            <Box style={{ marginLeft: "2.5%" }}>
-              <Collapsible color="transparent" key={depName} title={depName}>
+            <Box style={{ marginLeft: "2.5%" }} key={depName}>
+              <Collapsible color="transparent" title={depName}>
                 {
                   jobs.map((job) => {
                     return (
-                      <Box style={{ marginLeft: "7.5%" }}>
+                      <Box style={{ marginLeft: "7.5%" }} key={job.real_name}>
                         <Collapsible color="transparent"
                           key={job.id} title={job.name} buttons={
                             <>{(job.slots === -1) ? 'Unlimited' : `${job.slots} left`} <Icon name="user-friends" />

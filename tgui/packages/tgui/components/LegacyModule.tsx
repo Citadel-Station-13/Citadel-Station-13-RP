@@ -41,6 +41,7 @@ export interface ModuleProps {
   section?: SectionProps;
 }
 
+// eslint-disable-next-line react/prefer-stateless-function
 export class LegacyModule<T extends ModuleProps, S = {}> extends Component<T, S> {
   render() {
     const moduleData = useBackend().nestedData[this.props.id as string];

@@ -13,7 +13,6 @@ const virusModalBodyOverride = (modal) => {
   const virus = modal.args;
   return (
     <Section
-
       m="-1rem"
       title={virus.name || "Virus"}
       buttons={

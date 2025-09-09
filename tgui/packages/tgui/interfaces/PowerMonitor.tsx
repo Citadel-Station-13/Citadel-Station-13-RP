@@ -103,21 +103,21 @@ export const PowerMonitorFocus = (props) => {
       } else if (sortByField === 'draw') {
         const rankA = powerRank(a.load);
         const rankB = powerRank(b.load);
-        if (rankA != rankB) {
+        if (rankA !== rankB) {
           return rankA - rankB;
         }
         return parseFloat(a.load) - parseFloat(b.load);
       } else if (sortByField === 'problems') {
-        if (a.eqp != b.eqp) {
+        if (a.eqp !== b.eqp) {
           return a.eqp - b.eqp;
         }
-        if (a.lgt != b.lgt) {
+        if (a.lgt !== b.lgt) {
           return a.lgt - b.lgt;
         }
-        if (a.env != b.env) {
+        if (a.env !== b.env) {
           return a.env - b.env;
         }
-        if (a.charge != b.charge) {
+        if (a.charge !== b.charge) {
           return a.charge - b.charge;
         }
         return a.name.localeCompare(b.name);
