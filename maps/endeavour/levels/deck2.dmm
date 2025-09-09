@@ -14671,6 +14671,21 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/fpmaint2)
+"kAG" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/navgold/border,
+/obj/machinery/computer/guestpass{
+	dir = 1;
+	pixel_y = -28
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2afthall)
 "kBc" = (
 /obj/machinery/door/firedoor/glass{
 	dir = 4
@@ -25605,6 +25620,10 @@
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
+	},
+/obj/machinery/computer/guestpass{
+	dir = 4;
+	pixel_x = -28
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2afthall)
@@ -51856,7 +51875,7 @@ whs
 jFo
 cPI
 yfn
-bTF
+kAG
 viJ
 gao
 gao
