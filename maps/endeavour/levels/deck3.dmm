@@ -4247,6 +4247,16 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/brig)
+"dgb" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/door/window/brigdoor/westright{
+	dir = 4;
+	name = "Firing Range Door"
+	},
+/turf/simulated/floor/tiled,
+/area/security/range)
 "dgn" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -4272,18 +4282,10 @@
 /turf/simulated/floor/tiled,
 /area/security/range)
 "dhp" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/clothing/ears/earmuffs,
-/obj/item/clothing/glasses/goggles,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/machinery/door/firedoor,
-/obj/item/gun/projectile/energy/laser/practice,
-/obj/machinery/light_switch{
-	pixel_y = -26
-	},
-/turf/simulated/floor/tiled/old_tile/gray,
+/turf/simulated/floor/tiled,
 /area/security/range)
 "dhG" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -12919,9 +12921,6 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/item/clothing/ears/earmuffs,
 /obj/item/clothing/glasses/goggles,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
 /obj/machinery/door/firedoor,
 /obj/item/gun/projectile/energy/laser/practice,
 /turf/simulated/floor/tiled/old_tile/gray,
@@ -17491,6 +17490,9 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/machinery/light_switch{
+	pixel_y = 21
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/range)
 "njC" = (
@@ -18104,10 +18106,6 @@
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "nGI" = (
-/obj/machinery/door/window/brigdoor/westright{
-	dir = 4;
-	name = "Firing Range Door"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -21473,6 +21471,10 @@
 "qfY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
+	},
+/obj/machinery/door/window/brigdoor/westright{
+	dir = 4;
+	name = "Firing Range Door"
 	},
 /turf/simulated/floor/tiled,
 /area/security/range)
@@ -29321,10 +29323,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
 "vKG" = (
-/obj/machinery/door/window/brigdoor/westright{
-	dir = 4;
-	name = "Firing Range Door"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -47790,12 +47788,12 @@ dXl
 dRP
 kCT
 nzu
-aSN
-dfi
-aSN
-aSN
+dhp
+dgb
+dhp
+dhp
 qfY
-aSN
+dhp
 nzu
 iBG
 uoa
@@ -47989,7 +47987,7 @@ nGI
 jCV
 jCV
 vKG
-dhp
+jCV
 nzu
 iBG
 gsR
