@@ -23,6 +23,6 @@
 	min_pressure_protection = 0 * ONE_ATMOSPHERE
 	max_pressure_protection = 20* ONE_ATMOSPHERE
 	integrity_flags = INTEGRITY_ACIDPROOF
-	encumbrance = 55
+	encumbrance = 40
 	worth_intrinsic = 350
 	helmet_type = /obj/item/clothing/head/helmet/space/void/science
