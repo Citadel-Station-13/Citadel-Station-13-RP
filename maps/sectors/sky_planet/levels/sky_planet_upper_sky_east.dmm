@@ -309,7 +309,7 @@
 /turf/simulated/floor/wood/indoors,
 /area/sector/sky_planet/sky)
 "mb" = (
-/obj/structure/frame2/solar_panel/anchored,
+/obj/machinery/power/solar,
 /turf/simulated/floor/tiled/steel_grid,
 /area/sector/sky_planet/sky)
 "mq" = (
