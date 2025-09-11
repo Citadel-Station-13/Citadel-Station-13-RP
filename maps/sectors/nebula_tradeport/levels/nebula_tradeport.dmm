@@ -6349,7 +6349,7 @@
 /obj/machinery/airlock_sensor{
 	pixel_x = -8;
 	pixel_y = -23;
-	master_tag = "trade_docks_4";
+	master_tag = "tradeport_scavenging";
 	frequency = 1380
 	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
@@ -8605,7 +8605,7 @@
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button/airlock_exterior{
 	frequency = 1380;
-	master_tag = "trade_docks_4";
+	master_tag = "tradeport_scavenging";
 	name = "external access button";
 	pixel_y = -24
 	},
@@ -17120,7 +17120,7 @@
 "aVj" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
-	id_tag = "trade_docks_4";
+	id_tag = "tradeport_scavenging";
 	frequency = 1380
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
@@ -23052,7 +23052,7 @@
 "kCd" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
-	id_tag = "trade_docks_4";
+	id_tag = "tradeport_scavenging";
 	frequency = 1380
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
@@ -26450,7 +26450,7 @@
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button/airlock_interior{
 	frequency = 1380;
-	master_tag = "trade_docks_4";
+	master_tag = "tradeport_scavenging";
 	name = "internal access button";
 	pixel_x = 3;
 	pixel_y = -22
