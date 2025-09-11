@@ -154,7 +154,7 @@
 	if(!total)
 		return null
 	amount = min(amount, total)
-	if(amount <= 0) return null
+	if(amount < 0) return null
 	var/multiplier = max(0, 1 - (amount / total))
 
 	var/datum/blood_mixture/creating = new
