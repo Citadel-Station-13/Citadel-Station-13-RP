@@ -279,6 +279,8 @@
 /obj/machinery/coffeemaker/ui_interact(mob/user) // The microwave Menu //I am reasonably certain that this is not a microwave //I am positively certain that this is not a microwave
 	. = ..()
 
+	if(!can_interact(user) || !user.canUseTopic(src, !issilicon(user)))
+		return FALSE
 	if(brewing)
 		return
 
