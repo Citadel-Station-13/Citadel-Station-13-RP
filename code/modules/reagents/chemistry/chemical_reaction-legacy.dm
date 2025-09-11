@@ -398,6 +398,7 @@
 	result = "ferric"
 	required_reagents = list("iron" = 1, "oxygen" = 1, "hydrogen" = 2, MAT_CARBON = 1)
 	result_amount = 5
+	priority = 1 //Should hopefully stop the conflict with hydorgen oxygen reaction
 
 //Boosters
 
