@@ -3395,15 +3395,13 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/item/gun/projectile/energy/ionrifle{
-	pixel_x = 0;
 	pixel_y = -5
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /obj/item/gun/projectile/energy/ionrifle{
-	pixel_y = 5;
-	pixel_x = 0
+	pixel_y = 5
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
@@ -4114,7 +4112,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
 "dbM" = (
 /turf/simulated/floor/reinforced,
@@ -4249,6 +4247,16 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/brig)
+"dgb" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/door/window/brigdoor/westright{
+	dir = 4;
+	name = "Firing Range Door"
+	},
+/turf/simulated/floor/tiled,
+/area/security/range)
 "dgn" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -4274,18 +4282,10 @@
 /turf/simulated/floor/tiled,
 /area/security/range)
 "dhp" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/clothing/ears/earmuffs,
-/obj/item/clothing/glasses/goggles,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/machinery/door/firedoor,
-/obj/item/gun/projectile/energy/laser/practice,
-/obj/machinery/light_switch{
-	pixel_y = -26
-	},
-/turf/simulated/floor/tiled/old_tile/gray,
+/turf/simulated/floor/tiled,
 /area/security/range)
 "dhG" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -4803,11 +4803,9 @@
 /obj/item/gun/projectile/ballistic/shotgun/pump/combat,
 /obj/item/gun/projectile/ballistic/shotgun/pump/combat,
 /obj/item/gun/projectile/ballistic/shotgun/pump/combat{
-	pixel_x = 0;
 	pixel_y = -8
 	},
 /obj/item/gun/projectile/ballistic/shotgun/pump/combat{
-	pixel_x = 0;
 	pixel_y = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -5073,8 +5071,8 @@
 	mode = 99;
 	pixel_y = 32
 	},
-/obj/structure/table/wooden_reinforced,
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
+/obj/structure/filingcabinet/tall,
 /turf/simulated/floor/wood,
 /area/quartermaster/office)
 "dKV" = (
@@ -11813,11 +11811,9 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/item/gunbox/lethal{
-	pixel_x = 0;
 	pixel_y = -6
 	},
 /obj/item/gunbox/lethal{
-	pixel_x = 0;
 	pixel_y = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -12907,7 +12903,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
 "jAY" = (
 /obj/machinery/floodlight,
@@ -12925,9 +12921,6 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/item/clothing/ears/earmuffs,
 /obj/item/clothing/glasses/goggles,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
 /obj/machinery/door/firedoor,
 /obj/item/gun/projectile/energy/laser/practice,
 /turf/simulated/floor/tiled/old_tile/gray,
@@ -16189,7 +16182,6 @@
 	pixel_y = -10
 	},
 /obj/item/gun/projectile/energy/laser{
-	pixel_x = 0;
 	pixel_y = 5
 	},
 /turf/simulated/floor/tiled/dark,
@@ -17498,6 +17490,9 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/machinery/light_switch{
+	pixel_y = 21
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/range)
 "njC" = (
@@ -18111,10 +18106,6 @@
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "nGI" = (
-/obj/machinery/door/window/brigdoor/westright{
-	dir = 4;
-	name = "Firing Range Door"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -19853,8 +19844,7 @@
 /obj/effect/floor_decal/corner/red/full,
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/item/storage/box/flashbangs{
-	pixel_x = -3;
-	pixel_y = 0
+	pixel_x = -3
 	},
 /obj/machinery/light{
 	dir = 8
@@ -21481,6 +21471,10 @@
 "qfY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
+	},
+/obj/machinery/door/window/brigdoor/westright{
+	dir = 4;
+	name = "Firing Range Door"
 	},
 /turf/simulated/floor/tiled,
 /area/security/range)
@@ -26143,7 +26137,7 @@
 /area/quartermaster/delivery)
 "tsS" = (
 /obj/machinery/atmospherics/portables_connector,
-/obj/machinery/portable_atmospherics/canister/air,
+/obj/machinery/portable_atmospherics/canister/air/airlock,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -26823,9 +26817,7 @@
 /obj/effect/floor_decal/corner/red{
 	dir = 10
 	},
-/obj/item/storage/toolbox/syndicate{
-	pixel_x = 0
-	},
+/obj/item/storage/toolbox/syndicate,
 /obj/structure/table/steel,
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
@@ -28299,6 +28291,9 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/foyer)
 "vdU" = (
@@ -29003,11 +28998,9 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/item/gun/projectile/energy/gun,
 /obj/item/gun/projectile/energy/gun{
-	pixel_x = 0;
 	pixel_y = -6
 	},
 /obj/item/gun/projectile/energy/gun{
-	pixel_x = 0;
 	pixel_y = 6
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -29330,10 +29323,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
 "vKG" = (
-/obj/machinery/door/window/brigdoor/westright{
-	dir = 4;
-	name = "Firing Range Door"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -47799,12 +47788,12 @@ dXl
 dRP
 kCT
 nzu
-aSN
-dfi
-aSN
-aSN
+dhp
+dgb
+dhp
+dhp
 qfY
-aSN
+dhp
 nzu
 iBG
 uoa
@@ -47998,7 +47987,7 @@ nGI
 jCV
 jCV
 vKG
-dhp
+jCV
 nzu
 iBG
 gsR

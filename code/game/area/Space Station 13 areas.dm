@@ -996,6 +996,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/maintenance/tool_storage
 	name = "Tool Storage Maintenance"
 	icon_state = "maint_tool_storage"
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /area/maintenance/locker_room
 	name = "\improper Locker Room Maintenance"
@@ -1033,7 +1034,8 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "substation"
 	sound_env = SMALL_ENCLOSED
 	ambience = AMBIENCE_SUBSTATION
-
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
+	
 /area/maintenance/substation/engineering // Probably will be connected to engineering SMES room, as wires cannot be crossed properly without them sharing powernets.
 	name = "Engineering Substation"
 
@@ -1622,15 +1624,18 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Engineering Washroom"
 	icon_state = "toilet"
 	sound_env = SMALL_ENCLOSED
-
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
+	
 /area/crew_quarters/sleep/bedrooms
 	name = "\improper Dormitory Bedroom One"
 	icon_state = "crew_quarters"
 	sound_env = SMALL_SOFTFLOOR
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /area/crew_quarters/sleep/cryo
 	name = "\improper Cryogenic Storage"
 	icon_state = "crew_quarters"
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /area/crew_quarters/sleep/elevator
 	name = "\improper Main Elevator"
@@ -1639,44 +1644,54 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/crew_quarters/sleep_male
 	name = "\improper Male Dorm"
 	icon_state = "crew_quarters"
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /area/crew_quarters/sleep_male/toilet_male
 	name = "\improper Male Toilets"
 	icon_state = "toilet"
 	sound_env = SMALL_ENCLOSED
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /area/crew_quarters/sleep_female
 	name = "\improper Female Dorm"
 	icon_state = "crew_quarters"
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /area/crew_quarters/sleep_female/toilet_female
 	name = "\improper Female Toilets"
 	icon_state = "toilet"
 	sound_env = SMALL_ENCLOSED
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /area/crew_quarters/locker
 	name = "\improper Locker Room"
 	icon_state = "locker"
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /area/crew_quarters/locker/locker_toilet
 	name = "\improper Locker Toilets"
 	icon_state = "toilet"
 	sound_env = SMALL_ENCLOSED
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /area/crew_quarters/locker/laundry_arrival
 	name = "\improper Arrivals Laundry"
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /area/crew_quarters/fitness
 	name = "\improper Fitness Room"
 	icon_state = "fitness"
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /area/crew_quarters/longue_area
 	name = "\improper Lounge"
 	icon_state = "recreation_area"
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /area/crew_quarters/recreation_area
 	name = "\improper Recreation Area"
 	icon_state = "recreation_area"
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /area/crew_quarters/recreation_area_hallway
 	name = "\improper Recreation Area Hallway"
@@ -1687,100 +1702,124 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Recreation Area Restroom"
 	icon_state = "recreation_area_restroom"
 	sound_env = SMALL_ENCLOSED
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_LEISURE
 
 /area/crew_quarters/pool
 	name = "\improper Pool"
 	icon_state = "pool"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_LEISURE
 
 /area/crew_quarters/pool/changing_room
 	name = "\improper Pool Changing Room"
 	icon_state = "pool"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_LEISURE
 
 /area/crew_quarters/pool/emergency_closet
 	name = "\improper Poolside Emergency Closet"
 	icon_state = "maint_locker"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/crew_quarters/cafeteria
 	name = "\improper Cafeteria"
 	icon_state = "cafeteria"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_LEISURE
 
 /area/crew_quarters/coffee_shop
 	name = "\improper Coffee Shop"
 	icon_state = "coffee_shop"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_LEISURE
 
 /area/crew_quarters/kitchen
 	name = "\improper Kitchen"
 	icon_state = "kitchen"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/crew_quarters/freezer
 	name = "\improper Kitchen Freezer"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/crew_quarters/bar
 	name = "\improper Bar"
 	icon_state = "bar"
 	sound_env = LARGE_SOFTFLOOR
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /area/crew_quarters/bar/lounge
 	name = "\improper Bar Lounge"
 	icon_state = "bar"
 	sound_env = LARGE_SOFTFLOOR
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /area/crew_quarters/barrestroom
 	name = "\improper Cafeteria Restroom"
 	icon_state = "bar"
 	sound_env = SMALL_ENCLOSED
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /area/crew_quarters/theatre
 	name = "\improper Theatre"
 	icon_state = "Theatre"
 	sound_env = LARGE_SOFTFLOOR
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /area/crew_quarters/visitor_lodging
- 	name = "\improper Visitor Lodging"
- 	icon_state = "visitor_lodging"
+	name = "\improper Visitor Lodging"
+	icon_state = "visitor_lodging"
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /area/crew_quarters/visitor_dining
- 	name = "\improper Visitor Dining"
- 	icon_state = "visitor_dinning"
+	name = "\improper Visitor Dining"
+	icon_state = "visitor_dinning"
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /area/crew_quarters/visitor_laundry
- 	name = "\improper Visitor Laundry"
- 	icon_state = "visitor_laundry"
+	name = "\improper Visitor Laundry"
+	icon_state = "visitor_laundry"
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /area/crew_quarters/lounge
 	name = "\improper Lounge"
 	icon_state = "bar"
 	sound_env = LARGE_SOFTFLOOR
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /area/crew_quarters/lounge/kitchen
 	name = "\improper Lounge Kitchen"
 	icon_state = "kitchen"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/crew_quarters/lounge/kitchen_freezer
 	name = "\improper Lounge Kitchen Freezer"
 	icon_state = "kitchen"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/crew_quarters/panic_shelter
 	name = "\improper Panic Shelter"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_SENSITIVE
 
 /area/crew_quarters/clownoffice
 	name = "\improper Clown Office"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/crew_quarters/mimeoffice
 	name = "\improper Mime Office"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/library
 	name = "\improper Library"
 	icon_state = "library"
 	sound_env = LARGE_SOFTFLOOR
 	lightswitch = 0
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /area/library/study
 	name = "\improper Library Private Study"
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /area/library_conference_room
- 	name = "\improper Library Conference Room"
- 	icon_state = "library_conference_room"
+	name = "\improper Library Conference Room"
+	icon_state = "library_conference_room"
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /area/chapel
 	ambience = AMBIENCE_CHAPEL
@@ -1789,22 +1828,27 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Chapel"
 	icon_state = "chapel"
 	sound_env = LARGE_ENCLOSED
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/chapel/office
 	name = "\improper Chapel Office"
 	icon_state = "chapeloffice"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/chapel/chapel_morgue
 	name = "\improper Chapel Morgue"
 	icon_state = "chapel_morgue"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/lawoffice
 	name = "\improper Internal Affairs"
 	icon_state = "law"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/holodeck_control
 	name = "\improper Holodeck Control"
 	icon_state = "holodeck_control"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/vacant
 	area_flags = AREA_RAD_SHIELDED
@@ -1812,10 +1856,12 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/vacant/vacant_shop
 	name = "\improper Vacant Shop"
 	icon_state = "vacant_shop"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/vacant/vacant_site
 	name = "\improper Vacant Site"
 	icon_state = "vacant_site"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/vacant/vacant_site2
 	name = "\improper Abandoned Locker Room"

@@ -3907,6 +3907,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/computer/guestpass{
+	pixel_y = 32
+	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/hallway/d4starboardhall)
 "dvP" = (
@@ -4722,6 +4725,9 @@
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 8
+	},
+/obj/machinery/computer/guestpass{
+	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/endeavour/hallway/d4starboardamidhall)
@@ -11458,6 +11464,22 @@
 /obj/structure/table/reinforced,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/maintenance/security/lower)
+"kmd" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/computer/timeclock/premade/north,
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d4starboardhall)
 "kmf" = (
 /obj/machinery/air_alarm/north_mount,
 /turf/simulated/floor/plating,
@@ -16600,6 +16622,18 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
+"pbO" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/navgold/border{
+	dir = 1
+	},
+/obj/machinery/computer/guestpass{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/endeavour/station/stairs_four)
 "pbP" = (
 /obj/machinery/light/small/flicker{
 	dir = 1
@@ -17635,6 +17669,9 @@
 	},
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 1
+	},
+/obj/machinery/computer/guestpass{
+	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d4starboardforhall)
@@ -19649,6 +19686,16 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/starboardnacelle)
+"sfE" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 1
+	},
+/obj/machinery/computer/timeclock/premade/north,
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d4starboardamidhall)
 "sfK" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
@@ -23049,6 +23096,9 @@
 /obj/effect/floor_decal/corner/navblue/border{
 	dir = 1
 	},
+/obj/machinery/computer/guestpass{
+	pixel_y = 32
+	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d4starboardamidhall)
 "vto" = (
@@ -24163,13 +24213,6 @@
 	},
 /obj/machinery/light{
 	dir = 1
-	},
-/obj/machinery/media/jukebox{
-	pixel_x = -32;
-	pixel_y = 32;
-	name = "wall mounted space jukebox";
-	density = 0;
-	hacked = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ai)
@@ -25799,6 +25842,24 @@
 	},
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4fwdmaint)
+"xOI" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/corner/navblue/border{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/computer/guestpass{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/endeavour/hallway/d4starboardhall)
 "xPL" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/machinery/door/firedoor/glass,
@@ -38011,7 +38072,7 @@ tFG
 wYf
 uqm
 tFG
-nTD
+pbO
 kXA
 gZX
 qzJ
@@ -39951,7 +40012,7 @@ eHS
 eHS
 xSM
 seC
-voR
+xOI
 lOL
 kNq
 iZT
@@ -41115,7 +41176,7 @@ seC
 seC
 seC
 seC
-gkC
+kmd
 lOL
 shN
 mmZ
@@ -49263,7 +49324,7 @@ hzk
 qyh
 kav
 kaa
-vsA
+sfE
 lRz
 dln
 kdV
