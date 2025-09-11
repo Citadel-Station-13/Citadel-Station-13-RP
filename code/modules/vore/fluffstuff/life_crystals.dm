@@ -37,13 +37,14 @@
 	. = ..()
 	if(.)
 		return
-	if(state > 0) //Can't re-pair, one time only, for security reasons. But you can prematurely deactivate it so you can take it off freely.
+	if(state > 0) //Can't re-pair, one time only, for security reasons. But you can prematurely deactivate it if you're the owner, so you can take it off freely.
 		if(alert(user, "Would you like to permanently deactivate \the [name]?",, "Yes", "No") == "Yes")
-			to_chat(user, SPAN_NOTICE("\The [name] quietly crumbles into dust in your hand as its connection to you is severed."))
-			update_state(3)
-			name = "broken [initial(name)]"
-			desc = "This seems like a necklace, but the actual pendant is missing."
-			return
+			if(user == owner)
+				to_chat(user, SPAN_NOTICE("\The [name] quietly crumbles into dust in your hand as its connection to you is severed."))
+				update_state(3)
+				name = "broken [initial(name)]"
+				desc = "This seems like a necklace, but the actual pendant is missing."
+				return
 		to_chat(user, SPAN_NOTICE("The [name] doesn't do anything."))
 		return 0
 
