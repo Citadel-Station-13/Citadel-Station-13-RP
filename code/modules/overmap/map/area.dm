@@ -9,7 +9,7 @@
 	name = "Overmap Zone"
 	icon = 'icons/modules/overmap/area.dmi'
 	icon_state = "map"
-	icon_state = "start"
+	//icon_state = "start"
 	// todo: sensor update
 	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
 
