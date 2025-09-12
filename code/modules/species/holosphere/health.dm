@@ -39,7 +39,7 @@
 			H.nutrition -= (heal_nutrition_multiplier * nutrition_cost) //Costs Nutrition when damage is being repaired, corresponding to the amount of damage being repaired.
 			H.nutrition = max(0, H.nutrition) //Ensure it's not below 0.
 	try_revive(H, TRUE)
-	..()
+	// don't call /datum/species/shapeshifter/handle_environment_special because it will heal them a second time
 
 /datum/species/shapeshifter/holosphere/proc/get_revive_cost()
 	return total_health * heal_rate * heal_nutrition_multiplier

@@ -129,7 +129,7 @@
 	var/list/slots_used = list()
 
 	var/actively_healing = TRUE
-	var/heal_rate = 1 // this is pretty high but they have 20 health and it costs nutrition to heal
+	heal_rate = 1 // this is pretty high but they have 20 health and it costs nutrition to heal
 
 	var/heal_nutrition_multiplier = 10 // 10 nutrition per hp healed
 
@@ -176,13 +176,13 @@
 	set desc = "Disable your hologram."
 	set category = VERB_CATEGORY_IC
 
-	var/datum/species/holosphere/holosphere_species = species
+	var/datum/species/shapeshifter/holosphere/holosphere_species = species
 	if(!istype(holosphere_species))
 		return
 
 	holosphere_species.try_transform()
 
-/datum/species/holosphere/apply_survival_gear(mob/living/carbon/for_target, list/into_box, list/into_inv)
+/datum/species/shapeshifter/holosphere/apply_survival_gear(mob/living/carbon/for_target, list/into_box, list/into_inv)
 	into_box?.Add(/obj/item/tool/prybar/red)
 	into_box?.Add(/obj/item/flashlight/flare/survival)
 	into_box?.Add(/obj/item/fbp_backup_cell)
@@ -192,7 +192,7 @@
 	if(H)
 		return blood_color
 
-/datum/species/holosphere/get_bodytype_legacy()
+/datum/species/shapeshifter/holosphere/get_bodytype_legacy()
 	return base_species
 
 /datum/species/shapeshifter/holosphere/get_worn_legacy_bodytype()
