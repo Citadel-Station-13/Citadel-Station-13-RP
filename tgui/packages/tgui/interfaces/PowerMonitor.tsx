@@ -90,7 +90,7 @@ export const PowerMonitorFocus = (props) => {
     ...history.supply,
     ...history.demand);
   // Process area data
-  const areas = (focus as any[])
+  const areas = (focus.areas as any[])
     .map((area, i) => ({
       ...area,
       id: area.name + i,

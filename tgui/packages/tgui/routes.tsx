@@ -116,7 +116,11 @@ export function getComponentForRoute(name: string) {
     return routingError('notFound', name);
   }
 
-  const Component = esModule[name];
+  // citadel edit: we prefer using folders and therefore directly /route/to/Folder.tsx,
+  //               so it needs to remove the path segments.
+  const nameHasABackslash = name.lastIndexOf("/");
+  const realName = nameHasABackslash === -1 ? name : name.substring(nameHasABackslash + 1);
+  const Component = esModule[realName];
   if (!Component) {
     return routingError('missingExport', name);
   }

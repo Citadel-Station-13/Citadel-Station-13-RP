@@ -96,11 +96,12 @@ const SMESItem = (props) => {
     <Stack vertical>
       <Stack.Item>
         <Stack fill justify="space-between">
-          <Stack.Item basis={40} fontSize={1.2}>
+          <Stack.Item fontSize={1.2}>
             {RCON_tag}
           </Stack.Item>
-          <Stack.Item grow={1}>
+          <Stack.Item>
             <ProgressBar
+              width={20}
               value={capacityPercent * 0.01}
               ranges={{
                 good: [0.5, Infinity],

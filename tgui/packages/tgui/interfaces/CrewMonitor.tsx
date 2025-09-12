@@ -43,7 +43,7 @@ export const CrewMonitorContent = (props) => {
 
   const crew = data.crewmembers
     .filter((c) => !!c)
-    .sort((a, b) => a.name.localCompare(b.name))
+    .sort((a, b) => a.name.localeCompare(b.name))
     .sort((a, b) => a.x - b.x)
     .sort((a, b) => a.y - b.y)
     .sort((a, b) => a.realZ - b.realZ);

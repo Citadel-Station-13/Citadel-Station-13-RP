@@ -130,7 +130,7 @@ export const Smes = (props) => {
               </Flex>
             </LabeledList.Item>
             <LabeledList.Item label="Available">
-              {formatPower(inputAvailable)}
+              {formatPower(inputAvailable * 1000)}
             </LabeledList.Item>
           </LabeledList>
         </Section>
@@ -216,7 +216,7 @@ export const Smes = (props) => {
               </Flex>
             </LabeledList.Item>
             <LabeledList.Item label="Outputting">
-              {formatPower(outputUsed)}
+              {formatPower(outputUsed * 1000)}
             </LabeledList.Item>
           </LabeledList>
         </Section>

@@ -78,7 +78,7 @@
 /datum/game_preference_entry/toggle/tgui_fancy
 	name = "Enable fancy TGUI"
 	description = "Makes TGUI windows look better, at the cost of compatibility."
-	key = "tgui_fancy"
+	key = "tgui-fancy"
 	category = GAME_PREFERENCE_CATEGORY_GAME
 	subcategory = "UI"
 	default_value = TRUE
@@ -90,7 +90,7 @@
 /datum/game_preference_entry/toggle/tgui_lock
 	name = "Lock TGUI to main monitor"
 	description = "Locks TGUI windows to your main monitor."
-	key = "tgui_lock"
+	key = "tgui-monitor-lock"
 	category = GAME_PREFERENCE_CATEGORY_GAME
 	subcategory = "UI"
 	default_value = FALSE
@@ -102,7 +102,7 @@
 /datum/game_preference_entry/toggle/ui_scale
 	name = "Toggle UI scaling"
 	description = "If UIs should scale up to match your monitor scaling."
-	key = "ui_scale"
+	key = "tgui-scaling"
 	category = GAME_PREFERENCE_CATEGORY_GAME
 	subcategory = "UI"
 	default_value = TRUE
@@ -114,7 +114,7 @@
 /datum/game_preference_entry/toggle/tgui_input
 	name = "Toggle TGUI Input"
 	description = "Toggle TGUI Input."
-	key = "tgui_input"
+	key = "tgui-input"
 	category = GAME_PREFERENCE_CATEGORY_GAME
 	subcategory = "UI"
 	default_value = TRUE
