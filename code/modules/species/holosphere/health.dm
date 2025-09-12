@@ -1,4 +1,4 @@
-/datum/species/holosphere/handle_death(var/mob/living/carbon/human/H, gibbed)
+/datum/species/shapeshifter/holosphere/handle_death(var/mob/living/carbon/human/H, gibbed)
 	last_death_time = world.time
 	if(gibbed)
 		QDEL_NULL(holosphere_shell)
@@ -12,7 +12,7 @@
 		try_revive(H)
 
 /// same way shapeshifter species heals but it does not work if you have no nutrition
-/datum/species/holosphere/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
+/datum/species/shapeshifter/holosphere/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	if(!actively_healing || H.nutrition <= 0)
 		return
 	if(H.fire_stacks >= 0 && heal_rate > 0)
@@ -41,10 +41,10 @@
 	try_revive(H, TRUE)
 	..()
 
-/datum/species/holosphere/proc/get_revive_cost()
+/datum/species/shapeshifter/holosphere/proc/get_revive_cost()
 	return total_health * heal_rate * heal_nutrition_multiplier
 
-/datum/species/holosphere/proc/can_revive(mob/living/carbon/human/H, revive_cost)
+/datum/species/shapeshifter/holosphere/proc/can_revive(mob/living/carbon/human/H, revive_cost)
 	if(H.stat != DEAD)
 		return FALSE
 	if(world.time - last_death_time < hologram_death_duration)
@@ -53,7 +53,7 @@
 		return FALSE
 	return TRUE
 
-/datum/species/holosphere/proc/try_revive(mob/living/carbon/human/H, silent_failure = FALSE)
+/datum/species/shapeshifter/holosphere/proc/try_revive(mob/living/carbon/human/H, silent_failure = FALSE)
 	var/revive_cost = get_revive_cost()
 	if(can_revive(H, revive_cost))
 		// kick them out of a recharge station if they're in one

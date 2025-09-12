@@ -6,7 +6,7 @@
  * their clothing is copied from their loadout onto a set of chameleon clothing that cannot be taken off
  */
 
-/datum/species/holosphere
+/datum/species/shapeshifter/holosphere
 	name = SPECIES_HOLOSPHERE
 	uid = SPECIES_ID_HOLOSPHERE
 	id = SPECIES_ID_HOLOSPHERE
@@ -72,6 +72,7 @@
 		/mob/living/carbon/human/proc/shapeshifter_select_ears,
 		/mob/living/carbon/human/proc/shapeshifter_select_horns,
 		/mob/living/carbon/human/proc/hologram_reset_to_slot,
+		/mob/living/carbon/human/proc/shapeshifter_select_shape,
 		/mob/living/proc/set_size,
 	)
 
@@ -134,7 +135,7 @@
 
 	var/last_death_time
 
-/datum/species/holosphere/on_apply(mob/living/carbon/human/H)
+/datum/species/shapeshifter/holosphere/on_apply(mob/living/carbon/human/H)
 	. = ..()
 	RegisterSignal(H, COMSIG_CARBON_UPDATING_OVERLAY, PROC_REF(handle_hologram_overlays))
 	RegisterSignal(H, COMSIG_HUMAN_EQUIPPING_LOADOUT, PROC_REF(handle_hologram_loadout))
@@ -148,14 +149,14 @@
 	holosphere_shell.hologram = H
 	holosphere_shell.copy_iff_factions(H)
 
-/datum/species/holosphere/on_remove(mob/living/carbon/human/H)
+/datum/species/shapeshifter/holosphere/on_remove(mob/living/carbon/human/H)
 	. = ..()
 	UnregisterSignal(H, COMSIG_CARBON_UPDATING_OVERLAY)
 	UnregisterSignal(H, COMSIG_HUMAN_EQUIPPING_LOADOUT)
 
 	remove_chameleon_gear()
 
-/datum/species/holosphere/proc/try_transform(force = FALSE)
+/datum/species/shapeshifter/holosphere/proc/try_transform(force = FALSE)
 	if(force || !IS_DEAD(holosphere_shell))
 		if(holosphere_shell.hologram.incapacitated(INCAPACITATION_ALL))
 			to_chat(holosphere_shell.hologram, SPAN_WARNING("You can't do that right now!"))
@@ -166,7 +167,7 @@
 			holosphere_shell.hologram.drop_held_items()
 			holosphere_shell.regenerate_icons()
 
-/datum/species/holosphere/proc/try_untransform(force = FALSE)
+/datum/species/shapeshifter/holosphere/proc/try_untransform(force = FALSE)
 	if(force || !IS_DEAD(holosphere_shell.hologram))
 		transform_component.try_untransform()
 
@@ -187,18 +188,18 @@
 	into_box?.Add(/obj/item/fbp_backup_cell)
 
 // hotfix: they're synthetic without synthetic parts, oops!
-/datum/species/holosphere/get_blood_colour(mob/living/carbon/human/H)
+/datum/species/shapeshifter/holosphere/get_blood_colour(mob/living/carbon/human/H)
 	if(H)
 		return blood_color
 
 /datum/species/holosphere/get_bodytype_legacy()
 	return base_species
 
-/datum/species/holosphere/get_worn_legacy_bodytype()
+/datum/species/shapeshifter/holosphere/get_worn_legacy_bodytype()
 	var/datum/species/real = SScharacters.resolve_species_name(base_species)
 	// infinite loop guard
 	return istype(real, src)? base_species : real.get_worn_legacy_bodytype()
 
-/datum/species/holosphere/get_race_key(mob/living/carbon/human/H)
+/datum/species/shapeshifter/holosphere/get_race_key(mob/living/carbon/human/H)
 	var/datum/species/real = SScharacters.resolve_species_name(base_species)
 	return real.real_race_key(H)
