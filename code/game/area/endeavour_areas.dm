@@ -1,5 +1,7 @@
 /** Endeavour Hallways
  */
+/area/endeavour/hallway
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_HALLWAYS
 
 /** Deck 4
  */
@@ -7,11 +9,13 @@
 	name = "\improper Deck 4 Aft Maintenance"
 	icon_state = "amaint"
 	ambience = AMBIENCE_MAINTENANCE
+	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
 /area/endeavour/hallway/d4fwdmaint
 	name = "\improper Deck 4 Forward Maintenance"
 	icon_state = "fmaint"
 	ambience = AMBIENCE_MAINTENANCE
+	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
 /area/endeavour/hallway/d4fwdhall
 	name = "\improper Deck 4 Forward Hallway"
@@ -59,11 +63,13 @@
 	name = "\improper Deck 3 Aft Maintenance"
 	icon_state = "amaint"
 	ambience = AMBIENCE_MAINTENANCE
+	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
 /area/endeavour/hallway/d3fwdmaint
 	name = "\improper Deck 3 Forward Maintenance"
 	icon_state = "fmaint"
 	ambience = AMBIENCE_MAINTENANCE
+	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
 /area/endeavour/hallway/d3fwdhall
 	name = "\improper Deck 3 Forward Hallway"
@@ -111,11 +117,13 @@
 	name = "\improper Deck 2 Aft Maintenance"
 	icon_state = "amaint"
 	ambience = AMBIENCE_MAINTENANCE
+	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
 /area/endeavour/hallway/d2fwdmaint
 	name = "\improper Deck 2 Forward Maintenance"
 	icon_state = "fmaint"
 	ambience = AMBIENCE_MAINTENANCE
+	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
 /area/endeavour/hallway/d2fwdhall
 	name = "\improper Deck 2 Forward Hallway"
@@ -159,6 +167,7 @@
 
 /area/endeavour/hallway/reservehanger
 	name = "\improper Reserve Forward Hanger"
+	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
 /** Deck 1
  */
@@ -166,11 +175,13 @@
 	name = "\improper Deck 1 Aft Maintenance"
 	icon_state = "amaint"
 	ambience = AMBIENCE_MAINTENANCE
+	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
 /area/endeavour/hallway/d1fwdmaint
 	name = "\improper Deck 1 Forward Maintenance"
 	icon_state = "fmaint"
 	ambience = AMBIENCE_MAINTENANCE
+	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
 /area/endeavour/hallway/d1fwdhall
 	name = "\improper Deck 1 Forward Hallway"
@@ -215,31 +226,37 @@
 /area/endeavour/cryo
 	name = "\improper Cryogenic Storage"
 	icon_state = "crew_quarters"
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /area/crew_quarters/cryo/recovery
 	name = "\improper Cryogenics Recovery"
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /** Civillian
  */
 /area/endeavour/civillian/evastorage
 	name = "\improper Public EVA Storage"
 	icon_state = "purple"
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /** Command
  */
 /area/endeavour/command/turrets
 	name = "\improper Auxiliary Bridge"
 	icon_state = "bridge"
+	nightshift_level = NIGHTSHIFT_LEVEL_COMMAND_FACILITIES
 
 /** Science
  */
 /area/rnd/robotics/morgue
 	name = "\improper Robotics Morgue"
 	icon_state = "robotics"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/rnd/robotics/smallcraft
 	name = "\improper Small Craft and Probe Assembly"
 	icon_state = "robotics"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /** Exploration
  */
@@ -247,6 +264,7 @@
 	name = "\improper Exploration Department"
 	icon_state = "purple"
 	holomap_color = HOLOMAP_AREACOLOR_SCIENCE
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_HALLWAYS
 
 /area/endeavour/exploration/hallway_fore
 	name = "\improper Exploration Fore Hallway"
@@ -256,6 +274,7 @@
 
 /area/endeavour/exploration/aux_hanger
 	name = "\improper Exploration Auxilliary Hanger"
+	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
 /** Medical
  */
@@ -263,90 +282,85 @@
 /area/medical/virology_fore_access
 	name = "\improper Virology Fore Access"
 	icon_state = "virology"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/medical/virology_aft_access
 	name = "\improper Virology Aft Access"
 	icon_state = "virology"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/medical/cmo_dorm
 	name = "\improper CMO Dormitory"
 	icon_state = "medbay"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_LEISURE
 
 /area/medical/locker_room
 	name = "\improper Medical Locker Room"
 	icon_state = "medbay"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /** Substations
  */
+
+/area/engineering/substation
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/engineering/substation/deck1forward
 	name = "\improper Deck 1 Foreward Substation"
 	icon_state = "engineering"
 	ambience = AMBIENCE_SUBSTATION
-	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/engineering/substation/deck1amidships
 	name = "\improper Deck 1 Amidships Substation"
 	icon_state = "engineering"
 	ambience = AMBIENCE_SUBSTATION
-	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/engineering/substation/deck1aft
 	name = "\improper Deck 1 Aft Substation"
 	icon_state = "engineering"
 	ambience = AMBIENCE_SUBSTATION
-	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/engineering/substation/deck2forward
 	name = "\improper Deck 2 Foreward Substation"
 	icon_state = "engineering"
 	ambience = AMBIENCE_SUBSTATION
-	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/engineering/substation/deck2amidships
 	name = "\improper Deck 2 Amidships Substation"
 	icon_state = "engineering"
 	ambience = AMBIENCE_SUBSTATION
-	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/engineering/substation/deck2aft
 	name = "\improper Deck 2 Aft Substation"
 	icon_state = "engineering"
 	ambience = AMBIENCE_SUBSTATION
-	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/engineering/substation/deck3forward
 	name = "\improper Deck 3 Foreward Substation"
 	icon_state = "engineering"
 	ambience = AMBIENCE_SUBSTATION
-	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/engineering/substation/deck3amidships
 	name = "\improper Deck 3 Amidships Substation"
 	icon_state = "engineering"
 	ambience = AMBIENCE_SUBSTATION
-	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/engineering/substation/deck3aft
 	name = "\improper Deck 3 Aft Substation"
 	icon_state = "engineering"
 	ambience = AMBIENCE_SUBSTATION
-	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/engineering/substation/deck4forward
 	name = "\improper Deck 4 Foreward Substation"
 	icon_state = "engineering"
 	ambience = 'sound/ambience/engineering/engineering3.ogg'
-	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/engineering/substation/deck4amidships
 	name = "\improper Deck 4 Amidships Substation"
 	icon_state = "engineering"
 	ambience = AMBIENCE_SUBSTATION
-	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/engineering/substation/deck4aft
 	name = "\improper Deck 4 Aft Substation"
 	icon_state = "engineering"
 	ambience = AMBIENCE_SUBSTATION
-	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
