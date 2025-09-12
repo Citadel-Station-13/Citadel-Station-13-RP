@@ -12,10 +12,11 @@
  * @license MIT
  */
 
-import { InfernoNode } from "inferno";
-import { useLocalState, useModule } from "../../backend";
-import { Input, Section, Stack, Tabs } from "../../components";
+import { ReactNode, useState } from "react";
+import { Input, Section, Stack, Tabs } from "tgui-core/components";
+
 import { Modular } from "../../layouts/Modular";
+import { useLegacyModule } from "../../legacyModuleSystem";
 import { TGUIGuidebookSectionData } from "./TGUIGuidebook";
 
 export interface TGUIGuidebookReagentsData extends TGUIGuidebookSectionData {
@@ -26,13 +27,13 @@ export interface TGUIGuidebookReagentsData extends TGUIGuidebookSectionData {
 }
 
 enum ReagentGuidebookFlags {
-  Unlisted = (1<<0),
-  Hidden = (1<<1),
+  Unlisted = (1 << 0),
+  Hidden = (1 << 1),
 }
 
 enum ReactionGuidebookFlags {
-  Unlisted = (1<<0),
-  Hidden = (1<<1),
+  Unlisted = (1 << 0),
+  Hidden = (1 << 1),
 }
 
 interface TGUIGuidebookReagent {
@@ -74,12 +75,12 @@ interface TGUIGuidebookReaction {
   resultAmount: number;
 }
 
-export const TGUIGuidebookReagents = (props, context) => {
-  let { act, data } = useModule<TGUIGuidebookReagentsData>(context);
-  const [activeTab, setActiveTab] = useLocalState<string | null>(context, 'activeReagentsTab', null);
-  const [searchText, setSearchText] = useLocalState<string | null>(context, 'activeReagentsSearch', null);
+export const TGUIGuidebookReagents = (props) => {
+  let { act, data } = useLegacyModule<TGUIGuidebookReagentsData>();
+  const [activeTab, setActiveTab] = useState<string | null>(null);
+  const [searchText, setSearchText] = useState<string | null>(null);
 
-  let rendered: InfernoNode | null = null;
+  let rendered: ReactNode | null = null;
   let categorizedReagents: Record<string, TGUIGuidebookReagent[]> = {};
   let categorizedReactions: Record<string, TGUIGuidebookReaction[]> = {};
 
@@ -87,12 +88,12 @@ export const TGUIGuidebookReagents = (props, context) => {
     case 'reagents':
       Object.values(data.reagents).filter(
         (reagent) => !searchText || reagent.name.toLowerCase().includes(searchText)).forEach(
-        (reagent) => {
-          if (categorizedReagents[reagent.category] === undefined) {
-            categorizedReagents[reagent.category] = [];
-          }
-          categorizedReagents[reagent.category].push(reagent);
-        });
+          (reagent) => {
+            if (categorizedReagents[reagent.category] === undefined) {
+              categorizedReagents[reagent.category] = [];
+            }
+            categorizedReagents[reagent.category].push(reagent);
+          });
       rendered = (
         <Stack vertical>
           {Object.entries(categorizedReagents).sort(([cat1, a1], [cat2, a2]) => cat1.localeCompare(cat2)).map(
@@ -116,12 +117,12 @@ export const TGUIGuidebookReagents = (props, context) => {
     case 'reactions':
       Object.values(data.reactions).filter(
         (reaction) => !searchText || reaction.name.toLowerCase().includes(searchText)).forEach(
-        (reaction) => {
-          if (categorizedReactions[reaction.category] === undefined) {
-            categorizedReactions[reaction.category] = [];
-          }
-          categorizedReactions[reaction.category].push(reaction);
-        });
+          (reaction) => {
+            if (categorizedReactions[reaction.category] === undefined) {
+              categorizedReactions[reaction.category] = [];
+            }
+            categorizedReactions[reaction.category].push(reaction);
+          });
       rendered = (
         <Stack vertical>
           {Object.entries(categorizedReactions).sort(([cat1, a1], [cat2, a2]) => cat1.localeCompare(cat2)).map(
@@ -162,7 +163,7 @@ export const TGUIGuidebookReagents = (props, context) => {
               </Tabs>
             </Stack.Item>
             <Stack.Item>
-              Search <Input width="100px" onInput={(e, val) => setSearchText(val.toLowerCase())} />
+              Search <Input width="100px" onChange={(val) => setSearchText(val.toLowerCase())} />
             </Stack.Item>
           </Stack>
         </Stack.Item>

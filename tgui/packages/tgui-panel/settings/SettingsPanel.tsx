@@ -4,18 +4,19 @@
  * @license MIT
  */
 
-import { useDispatch, useSelector } from 'common/redux';
-import { Section, Stack, Tabs } from 'tgui/components';
+import { useDispatch, useSelector } from 'tgui/backend';
+import { Section, Stack, Tabs } from 'tgui-core/components';
+
 import { ChatPageSettings } from '../chat';
 import { changeSettingsTab } from './actions';
 import { SETTINGS_TABS } from './constants';
 import { selectActiveTab } from './selectors';
-import { TextHighlightSettings } from './TextHighlight';
 import { SettingsGeneral } from './SettingsGeneral';
+import { TextHighlightSettings } from './TextHighlight';
 
-export function SettingsPanel(props, context) {
-  const activeTab = useSelector(context, selectActiveTab);
-  const dispatch = useDispatch(context);
+export function SettingsPanel(props) {
+  const activeTab = useSelector(selectActiveTab);
+  const dispatch = useDispatch();
 
   return (
     <Stack fill>
@@ -44,6 +45,7 @@ export function SettingsPanel(props, context) {
         {activeTab === 'general' && <SettingsGeneral />}
         {activeTab === 'chatPage' && <ChatPageSettings />}
         {activeTab === 'textHighlight' && <TextHighlightSettings />}
+        {/* {activeTab === 'statPanel' && <SettingsStatPanel />} */}
       </Stack.Item>
     </Stack>
   );
