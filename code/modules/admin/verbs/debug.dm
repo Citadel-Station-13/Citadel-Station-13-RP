@@ -379,10 +379,10 @@
 
 	if(findtext(browser_options, "devtools"))
 		winset(src, null, list("browser-options" = "-devtools"))
-		to_chat(src, SPAN_NOTICE("You can now right click to use inspect on browsers."))
+		to_chat(src, SPAN_NOTICE("You can no longer right click to use inspect on browsers."))
 	else
 		winset(src, null, list("browser-options" = "+devtools"))
-		to_chat(src, SPAN_NOTICE("You can no longer right click to use inspect on browsers."))
+		to_chat(src, SPAN_NOTICE("You can now right click to use inspect on browsers."))
 
 
 /client/proc/cmd_admin_clear_mobs()

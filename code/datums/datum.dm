@@ -9,7 +9,20 @@
  * use of variables at this level
  */
 /datum
-	//* Data *//
+	/**
+	 * Tick count time when this object was destroyed.
+	 *
+	 * If this is non zero then the object has been garbage collected and is awaiting either
+	 * a hard del by the GC subsystme, or to be autocollected (if it has no references)
+	 */
+	var/gc_destroyed
+
+	/// Open uis owned by this datum
+	/// Lazy, since this case is semi rare
+	var/list/datum/tgui/open_uis
+
+	/// Active timers with this datum as the target
+	var/list/active_timers
 	/// Status traits attached to this datum. associative list of the form: list(trait name (string) = list(source1, source2, source3,...))
 	var/list/status_traits
 	/// Datum level flags
