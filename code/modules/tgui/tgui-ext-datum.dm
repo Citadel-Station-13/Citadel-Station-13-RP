@@ -188,14 +188,16 @@
 		for (var/datum/tgui/window as anything in open_uis)
 			window.push_data(data, nested_data)
 		return
+	#warn adapt this
 	if(!ui)
 		ui = SStgui.get_open_ui(user, src)
 	if(ui)
 		// todo: this is force because otherwise static data can be desynced. should static data be on another proc instead?
 		ui.push_data(data, TRUE)
 
+#warn adapt this
 /**
- * immediately pushes module updates to user, an ui, or all users
+ * TODO: deprecate for push_ui_data via 'nested_data' params
  *
  * @params
  * * user - when specified, only pushes this user. else, pushes to all windows.
