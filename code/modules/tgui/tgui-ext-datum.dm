@@ -49,7 +49,7 @@
  *   lists of the given key, allowing you to replace data in nested lists
  *   without updating the whole list at once.
  * * Nested data is an advanced concept that the majority of UIs will never need.
- *   As such, it is not updated automatically. Use `push_ui_nested_data()` to manually push updates.
+ *   As such, it is not updated automatically. Use `push_ui_data()` to manually push updates.
  * * This will only be called on initial opens and when static data is being updated.
  *
  * @params
@@ -194,25 +194,6 @@
 	if(ui)
 		// todo: this is force because otherwise static data can be desynced. should static data be on another proc instead?
 		ui.push_data(data, TRUE)
-
-#warn adapt this
-/**
- * TODO: deprecate for push_ui_data via 'nested_data' params
- *
- * @params
- * * user - when specified, only pushes this user. else, pushes to all windows.
- * * ui - when specified, only pushes this ui for a given user.
- * * updates - list(id = list(data...), ...) for modules. the reducer on tgui-side will only overwrite provided data keys.
- */
-/datum/proc/push_ui_nested_data(mob/user, datum/tgui/ui, list/updates)
-	if(!user)
-		for (var/datum/tgui/window as anything in open_uis)
-			window.push_nested_data(updates)
-		return
-	if(!ui)
-		ui = SStgui.get_open_ui(user, src)
-	if(ui)
-		ui.push_nested_data(updates)
 
 /**
  * public
