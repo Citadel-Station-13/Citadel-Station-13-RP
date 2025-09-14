@@ -193,7 +193,7 @@
 		ui = SStgui.get_open_ui(user, src)
 	if(ui)
 		// todo: this is force because otherwise static data can be desynced. should static data be on another proc instead?
-		ui.push_data(data, TRUE)
+		ui.push_data(data, nested_data, TRUE)
 
 /**
  * public
