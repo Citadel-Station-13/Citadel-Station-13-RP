@@ -217,15 +217,15 @@ const SMESControls = (props) => {
           </Stack.Item>
           <Stack.Item grow={1}>
             <Slider
-              value={level}
-              fillValue={available}
+              value={level * 0.001}
+              fillValue={available * 0.001}
               minValue={0}
-              maxValue={levelMax}
+              maxValue={levelMax * 0.001}
               step={5}
               stepPixelSize={4}
-              format={value => formatPower(available, 1) + "/" + formatPower(value, 1)}
+              format={value => formatPower(available * 1000, 1) + "/" + formatPower(value * 1000, 1)}
               onChange={(e, value) => act(changeAmountAct, {
-                target: value * 0.001,
+                target: value,
                 smes: RCON_tag,
               })} />
           </Stack.Item>
