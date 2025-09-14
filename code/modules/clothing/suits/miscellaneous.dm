@@ -1645,3 +1645,9 @@
 	name = "Supercropped Leather Jacket"
 	desc = "For when the crop just isn't cropped enough."
 	icon_state = "leather_supercropped"
+
+//Taur clothes
+/obj/item/clothing/suit/storage/caparison
+	name = "caparison"
+	desc = "A fancy name for what is almost just a big sheet designed to cover a quadruped body. For anyone else, it can still work as an awkward to wear poncho."
+	icon_state = "caparison"

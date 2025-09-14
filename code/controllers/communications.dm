@@ -175,7 +175,7 @@ var/const/RADIO_MAGNETS = "radio_magnet"
 
 var/global/datum/controller/radio/radio_controller
 
-/hook/startup/proc/createRadioController()
+/legacy_hook/startup/proc/createRadioController()
 	radio_controller = new /datum/controller/radio()
 	return 1
 

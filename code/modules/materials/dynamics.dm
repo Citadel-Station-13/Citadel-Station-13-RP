@@ -4,6 +4,9 @@
 //? Page has all balancing parameters + algorithms for dynamic attribute computations for things like armor ?//
 //? Prefix subsystem procs with 'dynamic_', please!                                                         ?//
 
+// TODO: redo pretty much this entire file, all the calculations are horrible
+//       lohikar was right i should've used a straight line man
+
 //* Armor *//
 
 /**
@@ -282,7 +285,7 @@
  * * nullification_weight : weight of material nulli (0-1), should sum with all other weights to 1
  * * initial_toolspeed : speed of the tool to begin with
  * * significance - a modifier that determines how well materials scale; less significant tools scale less. we assume baseline for most tools.
- * 
+ *
  * https://www.desmos.com/calculator/m4gtk3aabl
  * @return new_toolspeed
  */

@@ -107,7 +107,7 @@
 /mob/living/simple_mob/animal/borer/statpanel_data(client/C)
 	. = ..()
 	if(C.statpanel_tab("Status"))
-		STATPANEL_DATA_ENTRY("Chemicals", "[chemicals]")
+		INJECT_STATPANEL_DATA_ENTRY(., "Chemicals", "[chemicals]")
 
 /mob/living/simple_mob/animal/borer/proc/detatch()
 	if(!host || !controlling)
