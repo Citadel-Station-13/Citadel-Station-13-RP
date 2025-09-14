@@ -3,18 +3,16 @@
  * @license MIT
  */
 
-import { BooleanLike } from "common/react";
-import { Json_WorldTypepaths, JsonMappings } from "../bindings/json";
-import { Box, BoxProps } from "./Box";
-import { JsonAssetLoader } from "./JsonAssetLoader";
+import { Component } from "react";
+import { Box, Button, Icon, Input, Stack } from "tgui-core/components";
+import { BooleanLike } from "tgui-core/react";
+
 import { DM_TurfSpawnFlags } from "../bindings/game";
-import { Component } from "inferno";
-import { Stack } from "./Stack";
-import { Button } from "./Button";
-import { Icon } from "./Icon";
+import { Json_WorldTypepaths, JsonMappings } from "../bindings/json";
+import { BoxProps } from ".";
 import { ByondIconRef } from "./ByondIconRef";
+import { JsonAssetLoader } from "./JsonAssetLoader";
 import { VStaticScrollingWindower, VStaticScrollingWindowerEntry } from "./VStaticScrollingWindower";
-import { Input } from "./Input";
 
 /**
  * WARNING: HERE BE DRAGONS
@@ -186,7 +184,7 @@ export class WorldTypepathDropdown extends Component<{
                   <Box className="WorldTypepathDropdown__menu">
                     <Stack vertical>
                       <Stack.Item>
-                        <Input onInput={(e, val) => this.setSearchString(val)}
+                        <Input onChange={(val) => this.setSearchString(val)}
                           value={this.state.searchString}
                           width="100%"
                           placeholder="Search path/name substring" />
@@ -223,7 +221,7 @@ class WorldTypepathDropdownScroller extends VStaticScrollingWindower<WorldTypepa
 
 const WorldTypepathDropdownEntry = (props: {
   data: WorldTypepathDropdownEntryData,
-}, context) => {
+}) => {
   return (
     <Stack>
       <Stack.Item>

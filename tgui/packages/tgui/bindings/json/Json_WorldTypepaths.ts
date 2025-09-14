@@ -3,9 +3,10 @@
  * @license MIT
  */
 
-import { BooleanLike } from "common/react";
-import { Json_AssetPackBase } from ".";
+import { BooleanLike } from "tgui-core/react";
+
 import { DM_TurfSpawnFlags } from "../game";
+import { Json_AssetPackBase } from ".";
 
 export interface Json_WorldTypepaths extends Json_AssetPackBase {
   areas: Record<string, AreaDescriptor>;

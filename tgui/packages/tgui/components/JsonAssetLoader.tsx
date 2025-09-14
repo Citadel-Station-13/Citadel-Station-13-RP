@@ -3,11 +3,12 @@
  * @license MIT
  */
 
-import { Component, InfernoNode } from "inferno";
-import { JsonMappings, resolveJsonAssetName } from "../bindings/json";
+import { Component, ReactNode } from "react";
+import { fetchRetry } from "tgui-core/http";
+
 import { resolveAsset } from "../assets";
-import { fetchRetry } from "../http";
-import { LoadingScreen } from "./LoadingScreen";
+import { JsonMappings, resolveJsonAssetName } from "../bindings/json";
+import { LoadingScreen } from "../interfaces/common/LoadingScreen";
 
 interface JsonAssetLoaderState {
   fetched: { [K in JsonMappings]?: Object };
@@ -24,14 +25,14 @@ interface JsonAssetLoaderState {
  *   use cases, but said just in case.
  */
 export class JsonAssetLoader extends Component<{
-  loading?: (waiting: JsonMappings[], finished: JsonMappings[], elapsedMillis: number) => InfernoNode;
-  loaded: (json: { [K in JsonMappings]?: Object }) => InfernoNode;
+  loading?: (waiting: JsonMappings[], finished: JsonMappings[], elapsedMillis: number) => ReactNode;
+  loaded: (json: { [K in JsonMappings]?: Object }) => ReactNode;
   assets: JsonMappings[];
 }, JsonAssetLoaderState> {
   state: JsonAssetLoaderState;
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       waiting: [],

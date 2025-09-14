@@ -3,7 +3,7 @@
  * @license MIT
  */
 
-import { Stack } from "./Stack";
+import { Stack } from "tgui-core/components";
 
 export const LoadingScreen = (props: {}, context) => {
   return (
@@ -11,7 +11,7 @@ export const LoadingScreen = (props: {}, context) => {
       {/* TODO: actually good icon */}
       <Stack.Item grow={1} />
       <Stack.Item>
-        <h1 style={{ "text-align": "center" }}>
+        <h1 style={{ textAlign: "center" }}>
           Loading...
         </h1>
       </Stack.Item>

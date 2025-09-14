@@ -3,8 +3,10 @@
  * @license MIT
  */
 
-import { Component, InfernoNode } from "inferno";
-import { Box, BoxProps } from "./Box";
+import { Component, ReactNode } from "react";
+import { Box } from "tgui-core/components";
+
+import { BoxProps } from ".";
 
 interface VStaticScrollingWindowerState {
 
@@ -23,7 +25,7 @@ export interface VStaticScrollingWindowerEntry {
  */
 export class VStaticScrollingWindower<T extends VStaticScrollingWindowerEntry> extends Component<{
   data: T[],
-  transformer: (entry: T) => InfernoNode,
+  transformer: (entry: T) => ReactNode,
 } & BoxProps, VStaticScrollingWindowerState> {
   state: VStaticScrollingWindowerState;
 
@@ -40,7 +42,7 @@ export class VStaticScrollingWindower<T extends VStaticScrollingWindowerEntry> e
     // and i'll finish this.
     let innerContents = this.props.data.map((e) => {
       return (
-        <div class='VStaticScrollingWindower__Element' key={e.key}>
+        <div className='VStaticScrollingWindower__Element' key={e.key}>
           {this.props.transformer(e)}
         </div>
       );

@@ -15,5 +15,5 @@ export interface Json_AssetPackBase {}
 
 export const resolveJsonAssetName = (jsonType: JsonMappings) => `${jsonType}.json`;
 
-export { Json_WorldTypepaths } from './Json_WorldTypepaths';
-export { Json_MapSystem } from './Json_MapSystem';
+export type { Json_MapSystem } from './Json_MapSystem';
+export type { Json_WorldTypepaths } from './Json_WorldTypepaths';

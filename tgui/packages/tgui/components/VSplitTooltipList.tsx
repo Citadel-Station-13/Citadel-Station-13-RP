@@ -3,10 +3,10 @@
  * @license MIT
  */
 
-import { InfernoNode } from "inferno";
-import { BoxProps } from "./Box";
-import { Table, TableCellProps } from "./Table";
-import { Button } from "./Button";
+import { ReactNode } from "react";
+import { Button, Table } from "tgui-core/components";
+
+import { BoxProps, TableCellProps } from ".";
 
 /**
  * A vertical list to render a split left-right set of options, with an optional
@@ -14,7 +14,7 @@ import { Button } from "./Button";
  */
 export const VSplitTooltipList = (props: {
   leftSideWidthPercent: number;
-} & BoxProps, context) => {
+} & BoxProps) => {
   const {
     leftSideWidthPercent,
     children,
@@ -37,10 +37,10 @@ export const VSplitTooltipList = (props: {
 
 const VSplitTooltipListEntry = (props: {
   tooltip?: string;
-  label: InfernoNode;
+  label: ReactNode;
   labelProps?: TableCellProps;
   valueProps?: TableCellProps;
-} & BoxProps, context) => {
+} & BoxProps) => {
   const {
     tooltip,
     label,

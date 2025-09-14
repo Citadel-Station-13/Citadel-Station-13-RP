@@ -80,7 +80,7 @@ export function getRoutedComponent() {
   const { kitchenSink = false } = useDebug();
 
   if (suspended) {
-    return UIWindowSuspended;
+    return SuspendedWindow;
   }
   if (config?.refreshing) {
     return RefreshingWindow;

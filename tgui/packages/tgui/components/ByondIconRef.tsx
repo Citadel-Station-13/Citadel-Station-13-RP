@@ -1,6 +1,7 @@
-import { InfernoNode } from 'inferno';
-import type { BoxProps } from './Box';
-import { Image } from './Image';
+import { ReactNode } from "react";
+import { Image } from "tgui-core/components";
+
+import { BoxProps } from ".";
 
 enum Direction {
   NORTH = 1,
@@ -22,7 +23,7 @@ type Props = {
   /** Facing direction. See direction enum. Default is South */
   direction?: Direction;
   /** Fallback icon. */
-  fallback?: InfernoNode;
+  fallback?: ReactNode;
   /** Frame number. Default is 1 */
   frame?: number;
   /** Movement state. Default is false */

@@ -3,17 +3,17 @@
  * @license MIT
  */
 
-import { BooleanLike } from "common/react";
-import { useBackend, useLocalState } from "tgui/backend";
-import { Box, Button, Dropdown, Flex, Input, NumberInput, Section, Stack, Tabs } from "tgui/components";
-import { Window } from "tgui/layouts";
-import { VSplitTooltipList } from "../../components/VSplitTooltipList";
-import { WorldTypepathDropdown } from "../../components/WorldTypepathDropdown";
-import { JsonAssetLoader } from "../../components/JsonAssetLoader";
-import { Json_MapSystem, JsonMappings } from "../../bindings/json";
-import { LoadingScreen } from "../../components/LoadingScreen";
+import { Box, Button, Dropdown, Flex, Input, NumberInput, Section, Stack, Tabs } from "tgui-core/components";
+import { BooleanLike } from "tgui-core/react";
+
+import { useBackend, useLocalState } from "../../backend";
 import { DM_TurfSpawnFlags } from "../../bindings/game";
 import { Game_MapLevelAttribute } from "../../bindings/game/Game_MapLevelAttribute";
+import { Json_MapSystem, JsonMappings } from "../../bindings/json";
+import { VSplitTooltipList, WorldTypepathDropdown } from "../../components";
+import { JsonAssetLoader } from "../../components/JsonAssetLoader";
+import { Window } from "../../layouts";
+import { LoadingScreen } from "../common/LoadingScreen";
 
 enum LoadMapSectorStatus {
   Waiting = "waiting",
@@ -65,9 +65,9 @@ interface ModalOvermapData {
 // TODO: atmosphere modification system
 // TODO: procedural generation support
 
-export const LoadMapSector = (props, context) => {
-  const { act, data, nestedData } = useBackend<ModalData>(context);
-  const [currentTab, setCurrentTab] = useLocalState<string>(context, 'currentTab', 'map');
+export const LoadMapSector = (props) => {
+  const { act, data, nestedData } = useBackend<ModalData>();
+  const [currentTab, setCurrentTab] = useLocalState<string>('currentTab', 'map');
 
   return (
     <Window width={700} height={800} title="Upload Map Sector">
@@ -123,14 +123,14 @@ export const LoadMapSector = (props, context) => {
   );
 };
 
-const MapOptions = (props: {}, context) => {
-  const { act, data, nestedData } = useBackend<ModalData>(context);
+const MapOptions = (props: {}) => {
+  const { act, data, nestedData } = useBackend<ModalData>();
   const mapData: ModalMapData = nestedData['map'];
   return (
     <Section fill title="Map Options" overflow="wrap">
       <VSplitTooltipList leftSideWidthPercent={33}>
         <VSplitTooltipList.Entry label="Name" tooltip="Name of the map.">
-          <Input width="100%" value={mapData.name} onChange={(e, val) => act('mapName', { 'setTo': val })} />
+          <Input width="100%" value={mapData.name} onChange={(val) => act('mapName', { 'setTo': val })} />
         </VSplitTooltipList.Entry>
         <VSplitTooltipList.Entry label="Orientation" tooltip='Load orientation for the levels on this map.'>
           <Stack>
@@ -175,10 +175,10 @@ const MapOptions = (props: {}, context) => {
 
 const MapLevelOptions = (props: {
   levelIndex: number;
-}, context) => {
-  const [levelTab, setLevelTab] = useLocalState<string>(context, 'levelTab', 'level');
+}) => {
+  const [levelTab, setLevelTab] = useLocalState<string>('levelTab', 'level');
   let innerFrag;
-  switch(levelTab) {
+  switch (levelTab) {
     case 'level':
       innerFrag = (<MapLevelProperties levelIndex={props.levelIndex} />);
       break;
@@ -193,11 +193,11 @@ const MapLevelOptions = (props: {
     <Section fill title="Level Options">
       <Stack vertical fill>
         <Stack.Item>
-      <Tabs textAlign="center">
-        <Tabs.Tab selected={levelTab === "level"} onClick={() => setLevelTab("level")}>Level</Tabs.Tab>
-        <Tabs.Tab selected={levelTab === "trait"} onClick={() => setLevelTab("trait")}>Traits</Tabs.Tab>
-        <Tabs.Tab selected={levelTab === "attr"} onClick={() => setLevelTab("attr")}>Attributes</Tabs.Tab>
-      </Tabs>
+          <Tabs textAlign="center">
+            <Tabs.Tab selected={levelTab === "level"} onClick={() => setLevelTab("level")}>Level</Tabs.Tab>
+            <Tabs.Tab selected={levelTab === "trait"} onClick={() => setLevelTab("trait")}>Traits</Tabs.Tab>
+            <Tabs.Tab selected={levelTab === "attr"} onClick={() => setLevelTab("attr")}>Attributes</Tabs.Tab>
+          </Tabs>
         </Stack.Item>
         <Stack.Item grow={1}>
           {innerFrag}
@@ -209,8 +209,8 @@ const MapLevelOptions = (props: {
 
 const MapLevelProperties = (props: {
   levelIndex: number;
-}, context) => {
-  const { act, data, nestedData } = useBackend<ModalData>(context);
+}) => {
+  const { act, data, nestedData } = useBackend<ModalData>();
   const levelData: ModalLevelData = nestedData[`level-${props.levelIndex}`];
   const levelAct = (action: string, params?: Object) => act(action, { levelIndex: props.levelIndex, ...params });
 
@@ -236,27 +236,27 @@ const MapLevelProperties = (props: {
         tooltip="The position on the map's structure. Adjacent levels will automatically join their edges (as well as up/down).">
         <Flex width="100%">
           <Flex.Item>
-            X: <NumberInput value={levelData.structX} onChange={(e, val) => levelAct('levelStructX', { val: val })} />
+            X: <NumberInput value={levelData.structX || ""} minValue={-1000} maxValue={1000} step={1} onChange={(val) => levelAct('levelStructX', { val: val })} />
           </Flex.Item>
           <Flex.Item>
-            Y: <NumberInput value={levelData.structY} onChange={(e, val) => levelAct('levelStructY', { val: val })} />
+            Y: <NumberInput value={levelData.structY|| ""} minValue={-1000} maxValue={1000} step={1} onChange={(val) => levelAct('levelStructY', { val: val })} />
           </Flex.Item>
           <Flex.Item>
-            Z: <NumberInput value={levelData.structZ} onChange={(e, val) => levelAct('levelStructZ', { val: val })} />
+            Z: <NumberInput value={levelData.structZ|| ""} minValue={-1000} maxValue={1000} step={1} onChange={(val) => levelAct('levelStructZ', { val: val })} />
           </Flex.Item>
         </Flex>
       </VSplitTooltipList.Entry>
       <VSplitTooltipList.Entry label="Name">
-        <Input onChange={(e, val) => levelAct('levelName', { setTo: val })} width="100%" value={levelData.name} />
+        <Input onChange={(val) => levelAct('levelName', { setTo: val })} width="100%" value={levelData.name} />
       </VSplitTooltipList.Entry>
       <VSplitTooltipList.Entry label="ID">
-        <Input onChange={(e, val) => levelAct('levelId', { setTo: val })} width="100%" value={levelData.id} />
+        <Input onChange={(val) => levelAct('levelId', { setTo: val })} width="100%" value={levelData.id} />
       </VSplitTooltipList.Entry>
       <VSplitTooltipList.Entry label="Display Name (IC)">
-        <Input onChange={(e, val) => levelAct('levelDisplayName', { setTo: val })} width="100%" value={levelData.displayName} />
+        <Input onChange={(val) => levelAct('levelDisplayName', { setTo: val })} width="100%" value={levelData.displayName} />
       </VSplitTooltipList.Entry>
       <VSplitTooltipList.Entry label="Display ID (IC)">
-        <Input onChange={(e, val) => levelAct('levelDisplayId', { setTo: val })} width="100%" value={levelData.displayId} />
+        <Input onChange={(val) => levelAct('levelDisplayId', { setTo: val })} width="100%" value={levelData.displayId} />
       </VSplitTooltipList.Entry>
       <VSplitTooltipList.Entry label="Base Turf">
         <WorldTypepathDropdown
@@ -283,7 +283,7 @@ const MapLevelProperties = (props: {
       <VSplitTooltipList.Entry label="Air - Indoors">
         <Stack>
           <Stack.Item>
-            <Input onChange={(e, val) => levelAct('levelAirIndoors', { air: val })}
+            <Input onChange={(val) => levelAct('levelAirIndoors', { air: val })}
               width="100%"
               value={levelData.airIndoors} />
           </Stack.Item>
@@ -298,7 +298,7 @@ const MapLevelProperties = (props: {
       <VSplitTooltipList.Entry label="Air - Outdoors">
         <Stack>
           <Stack.Item>
-            <Input onChange={(e, val) => levelAct('levelAirOutdoors', { air: val })}
+            <Input onChange={(val) => levelAct('levelAirOutdoors', { air: val })}
               width="100%"
               value={levelData.airOutdoors} />
           </Stack.Item>
@@ -311,7 +311,7 @@ const MapLevelProperties = (props: {
         </Stack>
       </VSplitTooltipList.Entry>
       <VSplitTooltipList.Entry label="Ceiling Height">
-        <NumberInput value={levelData.ceilingHeight} minValue={1} onChange={(e, val) => { levelAct('levelCeilingHeight', { height: val }); }} width="100%" />
+        <NumberInput value={levelData.ceilingHeight || ""} minValue={1} maxValue={100000} step={1} onChange={(val) => { levelAct('levelCeilingHeight', { height: val }); }} width="100%" />
       </VSplitTooltipList.Entry>
     </VSplitTooltipList>
   );
@@ -319,10 +319,10 @@ const MapLevelProperties = (props: {
 
 const MapLevelTraits = (props: {
   levelIndex: number;
-}, context) => {
-  const { act, data, nestedData } = useBackend<ModalData>(context);
+}) => {
+  const { act, data, nestedData } = useBackend<ModalData>();
   const levelData: ModalLevelData = nestedData[`level-${props.levelIndex}`];
-  const [stagedTraitId, setStagedTraitId] = useLocalState<string | null>(context, 'stagedTrait', null);
+  const [stagedTraitId, setStagedTraitId] = useLocalState<string | null>('stagedTrait', null);
   const levelAct = (action: string, params?: Object) => act(action, { levelIndex: props.levelIndex, ...params });
 
   return (
@@ -343,7 +343,7 @@ const MapLevelTraits = (props: {
                       Object.keys(mapSystemData.keyedLevelTraits)
                         .filter((k) => !levelData.traits?.includes(k))
                         .filter((k) => mapSystemData.keyedLevelTraits[k]?.allowEdit)
-                    } selected={stagedTraitId} onSelect={(val) => setStagedTraitId(val)} />
+                    } selected={stagedTraitId} onSelected={(val) => setStagedTraitId(val)} />
                   </Stack.Item>
                   <Stack.Item>
                     <Button icon="question" color={stagedTraitId ? "" : "transparent"} tooltip={maybeStagedTraitDesc} />
@@ -381,11 +381,11 @@ const MapLevelTraits = (props: {
 
 const MapLevelAttributes = (props: {
   levelIndex: number;
-}, context) => {
-  const { act, data, nestedData } = useBackend<ModalData>(context);
+}) => {
+  const { act, data, nestedData } = useBackend<ModalData>();
   const levelData: ModalLevelData = nestedData[`level-${props.levelIndex}`];
-  const [stagedAttributeId, setStagedAttributeId] = useLocalState<string | null>(context, 'stagedAttribute', null);
-  const [stagedAttributeVal, setStagedAttributeVal] = useLocalState<string | number | null>(context, 'stagedAttributeVal', null);
+  const [stagedAttributeId, setStagedAttributeId] = useLocalState<string | null>('stagedAttribute', null);
+  const [stagedAttributeVal, setStagedAttributeVal] = useLocalState<string | number | null>('stagedAttributeVal', null);
   const levelAct = (action: string, params?: Object) => act(action, { levelIndex: props.levelIndex, ...params });
 
   return (
@@ -406,14 +406,14 @@ const MapLevelAttributes = (props: {
                       Object.keys(mapSystemData.keyedLevelAttributes)
                         .filter((k) => levelData.attributes?.[k] === null)
                         .filter((k) => mapSystemData.keyedLevelAttributes[k]?.allowEdit)
-                    } selected={stagedAttributeId} onSelect={(val) => setStagedAttributeId(val)} />
+                    } selected={stagedAttributeId} onSelected={(val) => setStagedAttributeId(val)} />
                   </Stack.Item>
                   <Stack.Item grow={1}>
                     {!!maybeStagedAttribute?.allowEdit && (
                       maybeStagedAttribute.numeric ? (
-                        <NumberInput value={stagedAttributeVal} onChange={(e, val) => setStagedAttributeVal(val)} />
+                        <NumberInput value={stagedAttributeVal || ""} minValue={-Infinity} maxValue={Infinity} step={1} onChange={(val) => setStagedAttributeVal(val)} />
                       ) : (
-                        <Input value={stagedAttributeVal} onChange={(e, val) => setStagedAttributeVal(val)} />
+                        <Input value={`${stagedAttributeVal}`} onChange={(val) => setStagedAttributeVal(val)} />
                       )
                     )}
                   </Stack.Item>
@@ -438,9 +438,9 @@ const MapLevelAttributes = (props: {
                       <Stack.Item grow={1}>
                         {!!maybeAttribute.allowEdit && (
                           maybeAttribute.numeric ? (
-                            <NumberInput value={value} onChange={(e, val) => levelAct('levelSetAttribute', { attribute: attributeId, value: val })} />
+                            <NumberInput value={value} minValue={-Infinity} maxValue={Infinity} step={1} onChange={(val) => levelAct('levelSetAttribute', { attribute: attributeId, value: val })} />
                           ) : (
-                            <Input value={value} onChange={(e, val) => levelAct('levelSetAttribute', { attribute: attributeId, value: val })} />
+                            <Input value={`${value}`} onChange={(val) => levelAct('levelSetAttribute', { attribute: attributeId, value: val })} />
                           )
                         )}
                       </Stack.Item>
@@ -462,8 +462,8 @@ const MapLevelAttributes = (props: {
   );
 };
 
-const OvermapOptions = (props: {}, context) => {
-  const { act, data, nestedData } = useBackend<ModalData>(context);
+const OvermapOptions = (props: {}) => {
+  const { act, data, nestedData } = useBackend<ModalData>();
   const mapData: ModalMapData = nestedData['map'];
   let manualPositioningActive = mapData.overmap.x !== null && mapData.overmap.y !== null;
   return (
@@ -492,10 +492,10 @@ const OvermapOptions = (props: {}, context) => {
         {manualPositioningActive && (
           <>
             <VSplitTooltipList.Entry label="X" tooltip="If set, try to set the sector at this X on the overmap.">
-              <NumberInput width="100%" value={mapData.overmap.x || 0} onChange={(e, val) => act('overmapX', { setTo: val })} />
+              <NumberInput width="100%" minValue={-Infinity} maxValue={Infinity} step={1} value={mapData.overmap.x || 0} onChange={(val) => act('overmapX', { setTo: val })} />
             </VSplitTooltipList.Entry>
             <VSplitTooltipList.Entry label="Y" tooltip="If set, try to set the sector at this Y on the overmap.">
-              <NumberInput width="100%" value={mapData.overmap.y || 0} onChange={(e, val) => act('overmapY', { setTo: val })} />
+              <NumberInput width="100%" minValue={-Infinity} maxValue={Infinity} step={1} value={mapData.overmap.y || 0} onChange={(val) => act('overmapY', { setTo: val })} />
             </VSplitTooltipList.Entry>
             <VSplitTooltipList.Entry label="Force Position" tooltip="If enabled, override overmap placement safety checks.">
               <Stack>
