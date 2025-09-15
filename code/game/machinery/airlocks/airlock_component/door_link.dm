@@ -9,6 +9,8 @@
  * * Used to link the airlock to doors.
  */
 /obj/machinery/airlock_component/door_linker
+	name = "airlock door linker"
+	desc = "An underfloor controller for a full cycling airlock. This will control doors placed above it."
 	#warn impl
 
 	/// are we indoors? if not, we're outdoors
@@ -29,25 +31,25 @@
 /obj/machinery/airlock_component/door_linker/outdoors
 	is_indoors = FALSE
 
-/datum/airlock_task/peripheral/door_linker
+/datum/airlock_task/component/door_linker
 
-/datum/airlock_task/peripheral/door_linker/operate
+/datum/airlock_task/component/door_linker/operate
 	var/target_opened
 	var/target_locked
 	var/backoff_until
 
-/datum/airlock_task/peripheral/door_linker/operate/New(datum/airlock_cycle/cycle, obj/machinery/airlock_component/component, set_opened, set_locked)
+/datum/airlock_task/component/door_linker/operate/New(datum/airlock_cycle/cycle, obj/machinery/airlock_component/component, set_opened, set_locked)
 	src.target_opened = set_opened
 	src.target_locked = set_locked
 	return ..()
 
-/datum/airlock_task/peripheral/door_linker/operate/describe_state()
+/datum/airlock_task/component/door_linker/operate/describe_state()
 	return "Waiting on linked door"
 
-/datum/airlock_task/peripheral/door_linker/operate/begin()
+/datum/airlock_task/component/door_linker/operate/begin()
 	poll()
 
-/datum/airlock_task/peripheral/door_linker/operate/poll()
+/datum/airlock_task/component/door_linker/operate/poll()
 	if(check_airlock())
 		complete()
 	if(world.time < backoff_until)
@@ -59,7 +61,7 @@
 	else
 		backoff_until = world.time + 2 SECONDS
 
-/datum/airlock_task/peripheral/door_linker/operate/proc/check_airlock()
+/datum/airlock_task/component/door_linker/operate/proc/check_airlock()
 	if(!isnull(target_opened))
 	if(!isnull(target_locked))
 	#warn impl all

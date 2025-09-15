@@ -46,7 +46,8 @@
 
 /obj/machinery/airlock_component/handler/Initialize(mapload)
 	. = ..()
-	air_contents = new(air_storage)
+	air_buffer_clean = new(air_buffer_volume_clean)
+	air_buffer_dirty = new(air_buffer_volume_dirty)
 
 #warn impl
 

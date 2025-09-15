@@ -26,15 +26,6 @@
 
 	/// last status during cycling
 	var/last_op_status
-	/// when calling the same proc (e.g. 'siphon gas'),
-	/// we will set a state that we can compare to later to see if things changed
-	var/last_dynamic_state_1
-	/// when calling the same proc (e.g. 'siphon gas'),
-	/// we will set a state that we can compare to later to see if things changed
-	var/last_dynamic_state_2
-	/// when calling the same proc (e.g. 'siphon gas'),
-	/// we will set a state that we can compare to later to see if things changed
-	var/last_dynamic_state_3
 
 #warn impl
 

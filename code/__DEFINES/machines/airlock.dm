@@ -9,18 +9,18 @@
 
 #warn DEFINE_ENUM for sensor and controller
 
-//* /obj/machinery/airlock_component/controller/(interior|exterior)_environment_mode
+//* Airlock Program - Dynamic *//
 
-/// detect atmos on tile; autodetects and sets to manual after
-#define AIRLOCK_ENVIRONMENT_AUTODETECT "detect"
-/// manually specify environment
-#define AIRLOCK_ENVIRONMENT_MANUAL "manual"
-/// adaptive; continually matches the environment when possible.
-#define AIRLOCK_ENVIRONMENT_ADAPTIVE "adaptive"
-/// ignore the atmos entirely
-#define AIRLOCK_ENVIRONMENT_IGNORE "ignore"
+/// vacuum mode only
+#define AIRLOCK_DYNAMIC_PROGRAM_PHASE_VACUUM_DRAIN_TO_
 
-#warn DEFINE_ENUM
+#define AIRLOCK_DYNAMIC_PROGRAM_PHASE_SEALING "sealing"
+#define AIRLOCK_DYNAMIC_PROGRAM_PHASE_UNSEALING "unsealing"
+
+#define AIRLOCK_DYNAMIC_PROGRAM_PHASE_CURTAIN_RECONCILE "reconcile"
+
+
+#warn below
 
 //* /obj/machinery/airlock_component/controller/(interior|exterior)_state
 
@@ -59,21 +59,3 @@
 #define AIRLOCK_CYCLER_OP_HIGH_RESISTANCE 5
 /// fatal error
 #define AIRLOCK_CYCLER_OP_FATAL 6
-
-//  todo: /datum/airlock_program/dynamic_reconcile  //
-//*          below defines are for that.           *//
-//  todo: DEFINE_BITFIELD and DEFINE_ENUM as needed //
-
-/// cycle gas ratios; implies EXPEL_UNWANTED_GAS
-#define AIRLOCK_DYNAMIC_RECONCILE_MATCH_GAS_RATIOS (1<<0)
-/// expel bad gases
-#define AIRLOCK_DYNAMIC_RECONCILE_EXPEL_UNWANTED_GAS (1<<1)
-/// match pressure; implies REGULATE_PRESSURE
-#define AIRLOCK_DYNAMIC_RECONCILE_MATCH_PRESSURE (1<<2)
-/// prevent pressure mismatches that result in people dying/flying around
-#define AIRLOCK_DYNAMIC_RECONCILE_REGULATE_PRESSURE (1<<3)
-/// match temperature; implies REGULATE_TEMPERATURE
-#define AIRLOCK_DYNAMIC_RECONCILE_MATCH_TEMPERATURE (1<<4)
-/// prevent temperature mismatches that result in people dying/severe area temperature changes
-#define AIRLOCK_DYNAMIC_RECONCILE_REGULATE_TEMPERATURE (1<<5)
-

@@ -22,43 +22,20 @@
 	/// panels can still be used to control it.
 	var/config_security_lockdown = FALSE
 
-	//* Environments *//
-	/// interior environment settings
-	///
-	/// * Mappers: Set mode to MANUAL and set this to an atmosphere path to force it to something.
-	/// * You cannot have this be a gas string! That support hasn't been coded yet.
-	/// * This is used by airlock programs that care about it to determine nominal environment.
-	var/datum/airlock_environment/interior_environment
-	/// exterior environment settings
-	///
-	/// * Mappers: Set mode to MANUAL and set this to an atmosphere path to force it to something.
-	/// * You cannot have this be a gas string! That support hasn't been coded yet.
-	/// * This is used by airlock programs that care about it to determine nominal environment.
-	var/datum/airlock_environment/exterior_environment
-	/// interior environment mode
-	var/interior_environment_mode = AIRLOCK_ENVIRONMENT_AUTODETECT
-	/// exterior environment mode
-	var/exterior_environment_mode = AIRLOCK_ENVIRONMENT_ADAPTIVE
-
 	//* Network *//
 	/// our connected gasnet
 	var/datum/airlock_gasnet/network
 
 	//* State *//
+	/// currently cycled to side
+	var/state_current_side = AIRLOCK_SIDE_NEUTRAL
 	/// interior door state
-	var/interior_state = AIRLOCK_STATE_UNLOCKED
+	var/state_door_interior = AIRLOCK_STATE_UNLOCKED
 	/// exterior door state
-	var/exterior_state = AIRLOCK_STATE_UNLOCKED
+	var/state_door_exterior = AIRLOCK_STATE_UNLOCKED
 
 	//* Cycling *//
-	/// which side are we cycled to?
-	///
-	/// * NEUTRAL if neither, or a cycle got aborted
-	var/cycled_to_side = AIRLOCK_SIDE_NEUTRAL
-	/// last side we were cycling towards; this allows for resumes
-	var/cycling_last_side = AIRLOCK_SIDE_NEUTRAL
 	/// current airlock cycle struct
-	///
 	/// * if this exists, we are cycling right now
 	var/datum/airlock_cycle/cycle
 
@@ -86,24 +63,6 @@
 
 /obj/machinery/airlock_component/controller/LateInitialize()
 	. = ..()
-	switch(interior_environment_mode)
-		if(AIRLOCK_ENVIRONMENT_MANUAL)
-			interior_environment = new /datum/airlock_environment(interior_environment)
-		if(AIRLOCK_ENVIRONMENT_ADAPTIVE)
-			interior_environment = null
-		if(AIRLOCK_ENVIRONMENT_IGNORE)
-			interior_environment = null
-		if(AIRLOCK_ENVIRONMENT_AUTODETECT)
-			interior_environment = new /datum/airlock_environment(probe_indoors_gas())
-	switch(exterior_environment_mode)
-		if(AIRLOCK_ENVIRONMENT_MANUAL)
-			exterior_environment = new /datum/airlock_environment(exterior_environment)
-		if(AIRLOCK_ENVIRONMENT_ADAPTIVE)
-			exterior_environment = null
-		if(AIRLOCK_ENVIRONMENT_IGNORE)
-			exterior_environment = null
-		if(AIRLOCK_ENVIRONMENT_AUTODETECT)
-			exterior_environment = new /datum/airlock_environment(probe_outdoors_gas())
 
 /obj/machinery/airlock_component/controller/preloading_instance(with_id)
 	. = ..()
@@ -113,6 +72,7 @@
 /obj/machinery/airlock_component/controller/proc/set_interior_state(state)
 	src.interior_state = state
 
+	var/list/obj/machinery/door/interior = get_interior_doors()
 	switch(state)
 		if(AIRLOCK_STATE_LOCKED_OPEN)
 			for(var/obj/machinery/door/door as anything in interior)
@@ -126,6 +86,8 @@
 
 /obj/machinery/airlock_component/controller/proc/set_exterior_state(state)
 	src.exterior_state = state
+
+	var/list/obj/machinery/door/exterior = get_exterior_doors()
 	switch(state)
 		if(AIRLOCK_STATE_LOCKED_OPEN)
 			for(var/obj/machinery/door/door as anything in exterior)
@@ -174,25 +136,3 @@
 
 /obj/machinery/airlock_component/controller/proc/probe_outdoors_gas()
 	return exterior_sensor?.probe_gas()
-
-/**
- * Automatically builds its airlock by calculating the necessary geometry.
- * * Only works with relatively plain, rectangular airlocks.
- * * An /obj/map_helper/airlock_interior must be placed on the interior airlock set.
- * * Defaults to being indestructible, as there's no in-game way to build new airlocks right now.
- */
-/obj/machinery/airlock_component/controller/autodetect
-
-#warn impl - set indestructible on everything
-
-/**
- * Automatically builds its airlock by calculating the necessary geometry.
- * * Only works with relatively plain, rectangular airlocks.
- * * An /obj/map_helper/airlock_interior must be placed on the interior airlock set.
- * * Links to an /obj/shuttle_dock if one is detected on sitting next to its border.
- * * Defaults to being indestructible, as there's no in-game way to interact with a dock right now.
- */
-/obj/machinery/airlock_component/controller/autodetect/docking
-	integrity_flags = INTEGRITY_INDESTRUCTIBLE
-
-#warn impl
