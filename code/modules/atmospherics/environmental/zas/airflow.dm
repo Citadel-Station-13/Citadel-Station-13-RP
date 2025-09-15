@@ -2,9 +2,6 @@
 Contains helper procs for airflow, handled in /connection_group.
 */
 
-/mob
-	var/tmp/last_airflow_stun = 0
-
 /mob/proc/airflow_stun()
 	if(stat == 2)
 		return 0

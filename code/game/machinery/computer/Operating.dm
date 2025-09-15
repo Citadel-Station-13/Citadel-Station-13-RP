@@ -54,7 +54,7 @@
 	ui_interact(user)
 	..()
 
-/obj/machinery/computer/operating/ui_interact(mob/user, datum/tgui/ui = null)
+/obj/machinery/computer/operating/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "OperatingComputer", "Patient Monitor")
@@ -63,7 +63,10 @@
 /obj/machinery/computer/operating/ui_data(mob/user, datum/tgui/ui)
 	var/data[0]
 	var/mob/living/carbon/human/occupant
-	if(table)
+	if(!table)
+		data["table"] = 0
+	else
+		data["table"] = 1
 		occupant = table.victim
 	data["hasOccupant"] = occupant ? 1 : 0
 	var/occupantData[0]
@@ -73,7 +76,7 @@
 		occupantData["stat"] = occupant.stat
 		occupantData["health"] = occupant.health
 		occupantData["maxHealth"] = occupant.maxHealth
-		occupantData["minHealth"] = config_legacy.health_threshold_dead
+		occupantData["minHealth"] = occupant.getMinHealth()
 		occupantData["bruteLoss"] = occupant.getBruteLoss()
 		occupantData["oxyLoss"] = occupant.getOxyLoss()
 		occupantData["toxLoss"] = occupant.getToxLoss()
@@ -110,18 +113,18 @@
 		occupantData["btCelsius"] = occupant.bodytemperature - T0C
 		occupantData["btFaren"] = ((occupant.bodytemperature - T0C) * (9.0/5.0))+ 32
 
-		if(ishuman(occupant) && !(NO_BLOOD in occupant.species.species_flags) && occupant.vessel)
+		if(ishuman(occupant) && !(NO_BLOOD in occupant.species.species_flags) && occupant.blood_holder)
 			occupantData["pulse"] = occupant.get_pulse(GETPULSE_TOOL)
 			occupantData["hasBlood"] = 1
-			var/blood_volume = round(occupant.vessel.get_reagent_amount("blood"))
+			var/blood_volume = round(occupant.blood_holder.get_total_volume())
 			occupantData["bloodLevel"] = blood_volume
 			occupantData["bloodMax"] = occupant.species.blood_volume
 			occupantData["bloodPercent"] = round(100*(blood_volume/occupant.species.blood_volume), 0.01) //copy pasta ends here
 
 			occupantData["bloodType"] = occupant.dna.b_type
-			occupantData["surgery"] = build_surgery_list(user)
+			occupantData["procedures"] = build_surgery_list(user)
 
-	data["occupant"] = occupantData
+	data["patient"] = occupantData
 	data["verbose"]=verbose
 	data["oxyAlarm"]=oxyAlarm
 	data["choice"]=choice
@@ -302,7 +305,19 @@
  */
 /obj/machinery/computer/operating/proc/find_next_steps(mob/user, zone)
 	. = list()
-	for(var/datum/surgery_step/S in get_surgery_steps_without_basetypes())
+	var/list/possible_next_steps = get_surgery_steps_without_basetypes()
+	// these steps prompt the player in can_use, don't call them every ui update
+	var/list/prompting_surgery_steps = list(
+			/datum/surgery_step/internal/detatch_organ,
+			/datum/surgery_step/internal/remove_organ,
+			/datum/surgery_step/internal/attach_organ,
+			/datum/surgery_step/internal/rip_organ,
+			/datum/surgery_step/robotics/detatch_organ_robotic,
+			/datum/surgery_step/robotics/attach_organ_robotic,
+		)
+	for(var/datum/surgery_step/S in possible_next_steps)
+		if (S.type in prompting_surgery_steps)
+			continue
 		if(S.can_use(user, victim, zone, null) && S.is_valid_target(victim))
 			var/allowed_tools_by_name = list()
 			for(var/tool in S.allowed_tools)
@@ -311,6 +326,4 @@
 					continue
 				var/obj/tool_path = tool
 				allowed_tools_by_name += capitalize(initial(tool_path.name))
-			// Please for the love of all that is holy, someone make surgery steps
-			// have names so I don't have to do this stupid pretty_type shit.
-			. += "[pretty_type(S)]: [english_list(allowed_tools_by_name)]"
+			. += list(S.step_name = english_list(allowed_tools_by_name))

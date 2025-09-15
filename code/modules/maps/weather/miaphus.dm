@@ -4,7 +4,6 @@
 /datum/planet/miaphus
 	name = "Miaphus'irra"
 	desc = "Former Tajaran Penal Colony. Scorching hot with little rain and planet covering deserts,"
-	planetary_wall_type = /turf/unsimulated/wall/planetary/normal
 	weather_holder = /datum/weather_holder/miaphus
 
 /datum/planet/miaphus/update_sun()
@@ -498,7 +497,7 @@
 	if(T.outdoors)
 		radiation_pulse(T, rand(fallout_rad_low, fallout_rad_high))
 
-/turf/unsimulated/wall/planetary/normal/miaphus
+/turf/unsimulated/wall/planetary/miaphus
 	name = "deep ocean"
 	alpha = 0
 

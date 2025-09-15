@@ -1425,7 +1425,7 @@
 /area/awaymission/labs/militarydivision)
 "eH" = (
 /obj/structure/table/reinforced,
-/obj/item/gun/launcher/syringe{
+/obj/item/gun/projectile/ballistic/syringe{
 	pixel_x = 1;
 	pixel_y = 4
 	},
@@ -1953,7 +1953,7 @@
 /area/awaymission/labs/researchdivision)
 "gc" = (
 /obj/structure/table/reinforced,
-/obj/item/gun/energy/xray,
+/obj/item/gun/projectile/energy/xray,
 /turf/simulated/floor{
 	icon_state = "white"
 	},
@@ -2317,7 +2317,7 @@
 	},
 /area/awaymission/labs/researchdivision)
 "hd" = (
-/obj/machinery/r_n_d/protolathe,
+/obj/machinery/lathe/r_n_d/protolathe,
 /turf/simulated/floor{
 	dir = 1;
 	icon_state = "bot"
@@ -2469,7 +2469,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/r_n_d/circuit_imprinter,
+/obj/machinery/lathe/r_n_d/circuit_imprinter,
 /turf/simulated/floor{
 	dir = 1;
 	icon_state = "bot"
@@ -2911,18 +2911,13 @@
 	},
 /area/awaymission/labs/researchdivision)
 "iE" = (
-/obj/machinery/mecha_part_fabricator,
+/obj/machinery/lathe/mecha_part_fabricator,
 /turf/simulated/floor{
 	temperature = 393.15
 	},
 /area/awaymission/labs/researchdivision)
 "iF" = (
 /obj/structure/closet/secure_closet/cargotech,
-/turf/simulated/floor{
-	temperature = 393.15
-	},
-/area/awaymission/labs/researchdivision)
-"iG" = (
 /turf/simulated/floor{
 	temperature = 393.15
 	},
@@ -3345,7 +3340,7 @@
 /area/awaymission/labs/militarydivision)
 "jQ" = (
 /obj/effect/debris/cleanable/blood/splatter,
-/obj/item/gun/ballistic/silenced{
+/obj/item/gun/projectile/ballistic/silenced{
 	desc = "A sidearm commonly favored by terrestrial security forces.";
 	icon_state = "g115 Pistol";
 	name = "Pistol";
@@ -5581,7 +5576,7 @@
 /area/awaymission/labs/command)
 "pQ" = (
 /obj/structure/closet/cabinet,
-/obj/item/gun/energy/nt_pulse/carbine,
+/obj/item/gun/projectile/energy/nt_pulse/carbine,
 /obj/item/clothing/accessory/medal/gold/heroism,
 /obj/item/clothing/under/rank/head_of_security/navyblue,
 /obj/item/clothing/accessory/holster/armpit,
@@ -6761,7 +6756,7 @@
 	},
 /area/awaymission/labs/medical)
 "tE" = (
-/obj/item/gun/launcher/syringe/rapid,
+/obj/item/gun/projectile/ballistic/syringe/rapid,
 /obj/structure/table/standard,
 /turf/simulated/floor{
 	icon_state = "white"
@@ -6858,7 +6853,7 @@
 	},
 /area/awaymission/labs/security)
 "tS" = (
-/obj/item/gun/ballistic/shotgun/pump,
+/obj/item/gun/projectile/ballistic/shotgun/pump,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -6974,7 +6969,7 @@
 /area/awaymission/labs/security)
 "uk" = (
 /obj/item/ammo_magazine/a45/clip,
-/obj/item/gun/ballistic/silenced{
+/obj/item/gun/projectile/ballistic/silenced{
 	desc = "A sidearm commonly favored by terrestrial security forces.";
 	icon_state = "g115 Pistol";
 	name = "Pistol";
@@ -7005,7 +7000,7 @@
 /area/awaymission/labs/security)
 "uo" = (
 /obj/structure/table/standard,
-/obj/item/gun/launcher/syringe/rapid,
+/obj/item/gun/projectile/ballistic/syringe/rapid,
 /turf/simulated/floor{
 	icon_state = "white"
 	},
@@ -7169,7 +7164,7 @@
 "uO" = (
 /obj/structure/table/standard,
 /obj/machinery/recharger,
-/obj/item/gun/energy/stunrevolver{
+/obj/item/gun/projectile/energy/stunrevolver{
 	pixel_y = 6
 	},
 /turf/simulated/floor{
@@ -30995,7 +30990,7 @@ bG
 iA
 iA
 jD
-iG
+iD
 iY
 bG
 bS
@@ -31509,7 +31504,7 @@ bG
 iB
 iY
 jD
-iG
+iD
 iY
 iI
 bS
@@ -32278,7 +32273,7 @@ hb
 hL
 bG
 iE
-iG
+iD
 iY
 iY
 kd
@@ -32535,7 +32530,7 @@ dI
 hM
 bG
 iF
-iG
+iD
 iY
 iY
 kc
@@ -32792,7 +32787,7 @@ bN
 hN
 bG
 iF
-iG
+iD
 iY
 iY
 iY
@@ -33048,9 +33043,9 @@ bN
 hu
 hO
 il
-iG
-iG
-iG
+iD
+iD
+iD
 iY
 ke
 iI
@@ -33307,7 +33302,7 @@ hP
 ek
 iH
 iZ
-iG
+iD
 iY
 kf
 bG

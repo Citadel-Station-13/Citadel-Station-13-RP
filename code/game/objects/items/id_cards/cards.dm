@@ -80,7 +80,7 @@
 /obj/item/card_fluff
 	name = "fluff card"
 	desc = "A tiny plaque of plastic. Purely decorative?"
-	description_fluff = "This permit was not issued by any branch of NanoTrasen, and as such it is not formally recognized at any NanoTrasen-operated installations. The bearer is not - under any circumstances - entitled to ownership of any items or allowed to perform any acts that would normally be restricted or illegal for their current position, regardless of what they or this permit may claim."
+	description_fluff = "This permit was not issued by any branch of Nanotrasen, and as such it is not formally recognized at any Nanotrasen-operated installations. The bearer is not - under any circumstances - entitled to ownership of any items or allowed to perform any acts that would normally be restricted or illegal for their current position, regardless of what they or this permit may claim."
 	icon = 'icons/obj/card_fluff.dmi'
 	item_state = "card-id"
 	item_state_slots = list(
@@ -101,6 +101,7 @@
 	update_icon()
 
 /obj/item/card_fluff/update_icon()
+	. = ..()
 	if(!sprite_stack || !istype(sprite_stack) || sprite_stack == list(""))
 		icon = base_icon
 		icon_state = initial(icon_state)

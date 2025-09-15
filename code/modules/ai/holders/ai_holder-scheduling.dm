@@ -19,5 +19,6 @@
  * * arguments - a list of arguments to use with the call
  */
 /datum/ai_holder/proc/schedule(time, proc_ref, list/arguments)
+	SHOULD_NOT_SLEEP(TRUE)
 	var/datum/ai_callback/ai_callback = new(proc_ref, arguments, src)
 	SSai_scheduling.schedule_callback(ai_callback, time)

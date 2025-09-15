@@ -19,10 +19,6 @@
 	req_access = list(ACCESS_SCIENCE_RD) //Only the R&D can change server settings.
 	circuit = /obj/item/circuitboard/rdserver
 
-/obj/machinery/r_n_d/server/Destroy()
-	griefProtection()
-	..()
-
 /obj/machinery/r_n_d/server/RefreshParts()
 	var/tot_rating = 0
 	for(var/obj/item/stock_parts/SP in src)
@@ -55,8 +51,7 @@
 		if((T20C + 20) to (T0C + 70))
 			health = max(0, health - 1)
 	if(health <= 0)
-		griefProtection() //I dont like putting this in process() but it's the best I can do without re-writing a chunk of rd servers.
-		files.known_designs = list()
+		files.known_design_ids = list()
 		for(var/datum/tech/T in files.known_tech)
 			if(prob(1))
 				T.level--
@@ -66,23 +61,6 @@
 	else
 		produce_heat()
 		delay = initial(delay)
-
-/obj/machinery/r_n_d/server/emp_act(severity)
-	griefProtection()
-	..()
-
-/obj/machinery/r_n_d/server/legacy_ex_act(severity)
-	griefProtection()
-	..()
-
-//Backup files to CentCom to help admins recover data after greifer attacks
-/obj/machinery/r_n_d/server/proc/griefProtection()
-	for(var/obj/machinery/r_n_d/server/centcom/C in GLOB.machines)
-		for(var/datum/tech/T in files.known_tech)
-			C.files.AddTech2Known(T)
-		for(var/datum/design/D in files.known_designs)
-			C.files.AddDesign2Known(D)
-		C.files.RefreshResearch()
 
 /obj/machinery/r_n_d/server/proc/produce_heat()
 	if(!produces_heat)
@@ -193,7 +171,7 @@
 				"name" = T.name,
 				"id" = T.id,
 			)))
-		for(var/datum/design/D in S.files.known_designs)
+		for(var/datum/prototype/design/D in S.files.legacy_all_design_datums())
 			designs.Add(list(list(
 				"name" = D.name,
 				"id" = D.id,
@@ -261,11 +239,7 @@
 				return FALSE
 			var/choice = alert("Design Data Deletion", "Are you sure you want to delete this design? If you still have the prerequisites for the design, it'll reset to its base reliability. Data lost cannot be recovered.", "Continue", "Cancel")
 			if(choice == "Continue")
-				for(var/datum/design/D in target.files.known_designs)
-					if(D.id == params["design"])
-						target.files.known_design_ids -= D.id
-						target.files.known_designs -= D
-						break
+				target.files.known_design_ids -= params["design"]
 			target.files.RefreshResearch()
 			return TRUE
 
@@ -281,7 +255,7 @@
 			var/obj/machinery/r_n_d/server/target = locate(params["target"])
 			if(!istype(target))
 				return
-			target.files.known_designs |= from.files.known_designs
+			target.files.known_design_ids |= from.files.known_design_ids
 			target.files.known_tech |= from.files.known_tech
 			return TRUE
 
@@ -292,7 +266,7 @@
 
 /obj/machinery/computer/rdservercontrol/emag_act(var/remaining_charges, var/mob/user)
 	if(!emagged)
-		playsound(src.loc, /datum/soundbyte/grouped/sparks, 75, TRUE)
+		playsound(src.loc, /datum/soundbyte/sparks, 75, TRUE)
 		emagged = TRUE
 		to_chat(user, SPAN_NOTICE("You you disable the security protocols."))
 		SStgui.update_uis(src)

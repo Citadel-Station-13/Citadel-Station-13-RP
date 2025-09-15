@@ -34,11 +34,6 @@
 	remove_verb(user, /mob/living/proc/shred_limb_temp)
 	..()
 
-/obj/item/beartrap/suicide_act(mob/user)
-	var/datum/gender/T = GLOB.gender_datums[user.get_visible_gender()]
-	user.visible_message("<span class='danger'>[user] is putting the [src.name] on [T.his] head! It looks like [T.hes] trying to commit suicide.</span>")
-	return (BRUTELOSS)
-
 /obj/item/beartrap/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
@@ -141,7 +136,7 @@
 	deployed = FALSE
 
 /obj/item/beartrap/Crossed(atom/movable/AM as mob|obj)
-	if(AM.is_incorporeal())
+	if(AM.is_incorporeal() || AM.is_avoiding_ground())
 		return
 	if(deployed && isliving(AM))
 		var/mob/living/L = AM

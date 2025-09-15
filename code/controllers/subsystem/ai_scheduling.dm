@@ -14,6 +14,7 @@ SUBSYSTEM_DEF(ai_scheduling)
 	subsystem_flags = NONE
 	priority = FIRE_PRIORITY_AI_SCHEDULING
 	init_order = INIT_ORDER_AI_SCHEDULING
+	init_stage = INIT_STAGE_EARLY
 	wait = 0
 
 	/// rolling bucket list; these hold the head node of linked ai_holders.
@@ -34,7 +35,7 @@ SUBSYSTEM_DEF(ai_scheduling)
 
 /datum/controller/subsystem/ai_scheduling/Initialize()
 	rebuild()
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/ai_scheduling/on_ticklag_changed(old_ticklag, new_ticklag)
 	rebuild()
@@ -116,6 +117,10 @@ SUBSYSTEM_DEF(ai_scheduling)
  * List of things allowed to use this:
  * * /datum/ai_holder
  * * /datum/ai_network
+ *
+ * Quirks:
+ * * This will never sleep on invocation. If the called proc sleeps, we blow right past.
+ * * Try to not have the called proc be ridiculously expensive as we are on a very fast-firing subsystem.
  */
 /datum/ai_callback
 	var/proc_ref
@@ -143,4 +148,5 @@ SUBSYSTEM_DEF(ai_scheduling)
 
 /datum/ai_callback/proc/invoke()
 	SHOULD_NOT_SLEEP(TRUE)
+	set waitfor = FALSE
 	call(parent, proc_ref)(arglist(arguments))

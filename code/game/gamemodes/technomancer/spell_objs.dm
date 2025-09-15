@@ -176,23 +176,32 @@
 // Parameters: 0
 // Description: Terrible code to check if a scepter is in the offhand, returns 1 if yes.
 /obj/item/spell/proc/check_for_scepter()
-	if(!src || !owner) return 0
-	if(owner.r_hand == src)
-		if(istype(owner.l_hand, /obj/item/scepter))
-			return 1
-	else
-		if(istype(owner.r_hand, /obj/item/scepter))
-			return 1
-	return 0
+	if(isnull(owner))
+		return FALSE
+	var/our_index = owner.get_held_index(src)
+	if(!our_index)
+		return FALSE
+	for(var/i in 1 to length(owner.inventory.held_items))
+		if(i == our_index)
+			continue
+		if(!istype(owner.inventory.held_items[i], /obj/item/scepter))
+			continue
+		return TRUE
+	return FALSE
 
 // Proc: get_other_hand()
 // Parameters: 1 (I - item being compared to determine what the offhand is)
 // Description: Helper for Aspect spells.
 /mob/living/carbon/human/proc/get_other_hand(var/obj/item/I)
-	if(r_hand == I)
-		return l_hand
-	else
-		return r_hand
+	var/our_index = get_held_index(src)
+	if(!our_index)
+		return FALSE
+	for(var/i in 1 to length(inventory.held_items))
+		if(i == our_index)
+			continue
+		if(isnull(inventory.held_items[i]))
+			continue
+		return inventory.held_items[i]
 
 // Proc: attack_self()
 // Parameters: 1 (user - the Technomancer that invoked this proc)
@@ -239,7 +248,7 @@
 			on_ranged_cast(target, user)
 	if(cooldown)
 		var/effective_cooldown = round(cooldown * core.cooldown_modifier, 5)
-		user.setClickCooldown(effective_cooldown)
+		user.setClickCooldownLegacy(effective_cooldown)
 		flick("cooldown_[effective_cooldown]",src)
 
 // Proc: place_spell_in_hand()
@@ -263,6 +272,9 @@
 		if(S.run_checks())
 			S.on_innate_cast(src)
 
+	// todo: shitcode, doesn't properly support multihanding
+	var/obj/item/l_hand = get_left_held_item()
+	var/obj/item/r_hand = get_right_held_item()
 	if(l_hand && r_hand) //Make sure our hands aren't full.
 		if(istype(r_hand, /obj/item/spell)) //If they are full, perhaps we can still be useful.
 			var/obj/item/spell/r_spell = r_hand

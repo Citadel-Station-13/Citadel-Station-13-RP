@@ -83,7 +83,7 @@
 		dat += locked ? "<br>" : "<a href='?src=\ref[src];choice=reset_log'>Reset Log</a><br>"
 		dat += "<br>"
 	dat += "<i>Device ID:</i> [machine_id]"
-	user << browse(dat, "window=cash_register;size=350x500")
+	user << browse(HTML_SKELETON(dat), "window=cash_register;size=350x500")
 	onclose(user, "cash_register")
 
 
@@ -505,7 +505,7 @@
 /obj/machinery/cash_register/emag_act(var/remaining_charges, var/mob/user)
 	if(!emagged)
 		src.visible_message("<span class='danger'>The [src]'s cash box springs open as [user] swipes the card through the scanner!</span>")
-		playsound(src, /datum/soundbyte/grouped/sparks, 50, 1)
+		playsound(src, /datum/soundbyte/sparks, 50, 1)
 		req_access = list()
 		emagged = 1
 		locked = 0

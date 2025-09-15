@@ -1,6 +1,13 @@
-/datum/material/steel
+GENERATE_MATERIAL_STACKS(/steel)
+DECLARE_MATERIAL(/steel)
 	id = MAT_STEEL
 	name = MAT_STEEL
+
+	display_name = "steel"
+
+	icon = 'icons/materials/metals/steel.dmi'
+	icon_stack_count = 3
+
 	stack_type = /obj/item/stack/material/steel
 	icon_base = 'icons/turf/walls/solid_wall.dmi'
 	icon_reinf = 'icons/turf/walls/solid_wall_reinforced.dmi'
@@ -23,7 +30,10 @@
 	absorption = MATERIAL_RESISTANCE_MODERATE
 	nullification = MATERIAL_RESISTANCE_NONE
 
-/datum/material/steel/generate_recipes()
+	material_constraints = MATERIAL_CONSTRAINT_RIGID
+	material_tags = list(MATERIAL_TAG_BASIC_STRUCTURAL)
+
+/datum/prototype/material/steel/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(
 		name = "dark office chair",
@@ -226,7 +236,7 @@
 	)
 	. += create_stack_recipe_datum(
 		category = "weapons",
-		product = /obj/item/grenade/chem_grenade,
+		product = /obj/item/grenade/simple/chemical,
 		name = "grenade casing",
 		cost = 2,
 	)
@@ -265,7 +275,7 @@
 		cost = 4,
 	)
 
-/datum/material/steel/hull
+/datum/prototype/material/steel/hull
 	id = "steel_hull"
 	name = MAT_STEELHULL
 	stack_type = /obj/item/stack/material/steel/hull
@@ -273,10 +283,10 @@
 	explosion_resistance = 10
 	icon_colour = "#666677"
 
-/datum/material/steel/hull/place_sheet(var/turf/target) //Deconstructed into normal steel sheets.
+/datum/prototype/material/steel/hull/place_sheet(var/turf/target) //Deconstructed into normal steel sheets.
 	new /obj/item/stack/material/steel(target)
 
-/datum/material/steel/holographic
+/datum/prototype/material/steel/holographic
 	id = "steel_holo"
 	name = "holo" + MAT_STEEL
 	display_name = "steel"

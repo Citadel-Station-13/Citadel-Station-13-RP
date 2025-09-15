@@ -59,7 +59,7 @@ SUBSYSTEM_DEF(supply)
 	for(var/key in legacy_supply_categories)
 		flattened += key
 	legacy_supply_categories = flattened
-	return ..()
+	return SS_INIT_SUCCESS
 
 // Supply shuttle SSticker - handles supply point regeneration
 // This is called by the process scheduler every thirty seconds
@@ -379,11 +379,11 @@ SUBSYSTEM_DEF(supply)
  * * typepath
  * * ~~anonymous typepath~~ Waiting on BYOND fix.
  *
- * clone(include_contents = TRUE)'d
+ * clone()'d
  * * an /atom/movable
  *
  * instantiated with special handling
- * * /datum/material typepath or instance
+ * * /datum/prototype/material typepath or instance
  * * /obj/item/stack typepath or instance
  * * /datum/gas typepath or instance - container_hint can be:
  * ** /obj/machinery/portable_atmospherics/canister
@@ -426,8 +426,8 @@ SUBSYSTEM_DEF(supply)
 		var/obj/item/stack/material/casted_material_stack = descriptor
 		descriptor = initial(casted_material_stack.material)
 	// handle material
-	if(descriptor_hint == SUPPLY_DESCRIPTOR_HINT_MATERIAL || ispath(descriptor, /datum/material))
-		var/datum/material/resolved_material = SSmaterials.resolve_material(descriptor)
+	if(descriptor_hint == SUPPLY_DESCRIPTOR_HINT_MATERIAL || ispath(descriptor, /datum/prototype/material))
+		var/datum/prototype/material/resolved_material = RSmaterials.fetch(descriptor)
 		resolved_material.place_sheet(location, amount)
 		return
 	// handle gas
@@ -496,8 +496,8 @@ SUBSYSTEM_DEF(supply)
 		var/obj/item/stack/material/casted_material_stack = descriptor
 		descriptor = initial(casted_material_stack.material)
 	// handle material
-	if(descriptor_hint == SUPPLY_DESCRIPTOR_HINT_MATERIAL || ispath(descriptor, /datum/material))
-		var/datum/material/resolved_material = SSmaterials.resolve_material(descriptor)
+	if(descriptor_hint == SUPPLY_DESCRIPTOR_HINT_MATERIAL || ispath(descriptor, /datum/prototype/material))
+		var/datum/prototype/material/resolved_material = RSmaterials.fetch(descriptor)
 		return "[amount] [resolved_material.sheet_plural_name] of [resolved_material.display_name]"
 	// handle gas
 	if(descriptor_hint == SUPPLY_DESCRIPTOR_HINT_GAS || ispath(descriptor, /datum/gas))
@@ -543,8 +543,8 @@ SUBSYSTEM_DEF(supply)
 		var/obj/item/stack/material/casted_material_stack = descriptor
 		descriptor = initial(casted_material_stack.material)
 	// handle material
-	if(descriptor_hint == SUPPLY_DESCRIPTOR_HINT_MATERIAL || ispath(descriptor, /datum/material))
-		var/datum/material/resolved_material = SSmaterials.resolve_material(descriptor)
+	if(descriptor_hint == SUPPLY_DESCRIPTOR_HINT_MATERIAL || ispath(descriptor, /datum/prototype/material))
+		var/datum/prototype/material/resolved_material = RSmaterials.fetch(descriptor)
 		return amount * resolved_material.worth
 	// handle gas
 	if(descriptor_hint == SUPPLY_DESCRIPTOR_HINT_GAS || ispath(descriptor, /datum/gas))

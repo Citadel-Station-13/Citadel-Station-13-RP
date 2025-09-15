@@ -96,5 +96,5 @@
 
 	else if(istype(AM,/obj/vehicle/sealed/mecha))
 		var/obj/vehicle/sealed/mecha/M = AM
-		if(istype(M.selected,/obj/item/mecha_parts/mecha_equipment/tool/drill))
+		if(istype(M.selected,/obj/item/vehicle_module/tool/drill))
 			M.selected.action(src)

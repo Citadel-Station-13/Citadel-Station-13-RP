@@ -214,7 +214,7 @@ GLOBAL_LIST_EMPTY(limb_icon_cache)
 	else if(s_col && s_col.len >= 3)
 		// Support for species.color_mult
 		if(species.color_force_greyscale)
-			applying.MapColors(arglist(color_matrix_greyscale()))
+			applying.MapColors(arglist(COLOR_MATRIX_GRAYSCALE))
 			icon_cache_key += "_ags"
 		if(species && species.color_mult)
 			applying.Blend(rgb(s_col[1], s_col[2], s_col[3]), ICON_MULTIPLY)

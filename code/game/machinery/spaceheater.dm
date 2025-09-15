@@ -20,6 +20,7 @@
 
 /obj/machinery/space_heater/update_icon()
 	cut_overlays()
+	. = ..()
 	icon_state = "sheater[on]"
 	if(panel_open)
 		add_overlay("sheater-open")
@@ -287,6 +288,7 @@
 
 /obj/machinery/power/thermoregulator/update_icon()
 	cut_overlays()
+	. = ..()
 	var/list/overlays_to_add = list()
 	if(on)
 		overlays_to_add += "lasergen-on"

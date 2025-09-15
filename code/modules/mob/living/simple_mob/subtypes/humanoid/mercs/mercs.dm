@@ -55,7 +55,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/human)
 
 	iff_factions = MOB_IFF_FACTION_MERCENARY
-	movement_cooldown = 2
+	movement_base_speed = 10 / 2
 
 	status_flags = 0
 
@@ -78,7 +78,7 @@
 	say_list_type = /datum/say_list/merc
 
 	// Grenade special attack vars
-	var/grenade_type = /obj/item/grenade/concussion
+	var/grenade_type = /obj/item/grenade/simple/concussion
 	var/grenade_timer = 50
 	special_attack_cooldown = 45 SECONDS
 	special_attack_min_range = 2
@@ -110,11 +110,11 @@
 	set waitfor = FALSE
 	set_AI_busy(TRUE)
 
-	var/obj/item/grenade/G = new grenade_type(get_turf(src))
+	var/obj/item/grenade/simple/G = new grenade_type(get_turf(src))
 	if(istype(G))
 		G.throw_at_old(A, G.throw_range, G.throw_speed, src)
-		G.det_time = grenade_timer
-		G.activate(src)
+		G.activation_detonate_delay = grenade_timer
+		G.activate(new /datum/event_args/actor(src))
 		special_attack_charges = max(special_attack_charges-1, 0)
 
 	set_AI_busy(FALSE)
@@ -198,7 +198,7 @@
 	projectiletype = /obj/projectile/bullet/pistol/medium
 //	casingtype = /obj/item/ammo_casing/spent	//Makes infinite stacks of bullets when put in PoIs.
 	projectilesound = 'sound/weapons/Gunshot_light.ogg'
-	loot_list = list(/obj/item/gun/ballistic/colt = 100)
+	loot_list = list(/obj/item/gun/projectile/ballistic/colt = 100)
 
 	needs_reload = TRUE
 	reload_max = 7		// Not the best default, but it fits the pistol
@@ -211,7 +211,7 @@
 	icon_state = "syndicateranged_smg"
 	icon_living = "syndicateranged_smg"
 
-	loot_list = list(/obj/item/gun/ballistic/automatic/c20r = 100)
+	loot_list = list(/obj/item/gun/projectile/ballistic/automatic/c20r = 100)
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc/ranged/surpressor
 
@@ -233,7 +233,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/human/peacekeeper)
 
 	corpse = /obj/spawner/corpse/solarpeacekeeper
-	loot_list = list(/obj/item/gun/ballistic/automatic/c20r = 100)
+	loot_list = list(/obj/item/gun/projectile/ballistic/automatic/c20r = 100)
 
 	base_attack_cooldown = 5 // Two attacks a second or so.
 	reload_max = 20
@@ -247,7 +247,7 @@
 	projectiletype = /obj/projectile/beam/midlaser
 	projectilesound = 'sound/weapons/Laser.ogg'
 
-	loot_list = list(/obj/item/gun/energy/laser = 100)
+	loot_list = list(/obj/item/gun/projectile/energy/laser = 100)
 
 	reload_max = 10
 
@@ -260,7 +260,7 @@
 	projectiletype = /obj/projectile/ion
 	projectilesound = 'sound/weapons/Laser.ogg'
 
-	loot_list = list(/obj/item/gun/energy/ionrifle = 100)
+	loot_list = list(/obj/item/gun/projectile/energy/ionrifle = 100)
 
 	reload_max = 10
 
@@ -273,7 +273,7 @@
 	projectiletype = /obj/projectile/bullet/rifle/a762
 	projectilesound = 'sound/weapons/Gunshot_heavy.ogg'
 
-	loot_list = list(/obj/item/gun/ballistic/garand = 100)
+	loot_list = list(/obj/item/gun/projectile/ballistic/garand = 100)
 
 	reload_max = 8
 	reload_time = 2 // It takes a bit to jam a stripper clip into the rifle.
@@ -286,7 +286,7 @@
 	icon_living = "syndicate_handcannon"
 	projectiletype = /obj/projectile/bullet/pistol/strong
 	projectilesound = 'sound/weapons/Gunshot_deagle.ogg'
-	loot_list = list(/obj/item/gun/ballistic/deagle = 100)
+	loot_list = list(/obj/item/gun/projectile/ballistic/deagle = 100)
 
 	needs_reload = TRUE
 	reload_max = 7		// Deagle Reload
@@ -310,7 +310,7 @@
 	projectilesound = 'sound/weapons/Gunshot_shotgun.ogg'
 	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/human/grenadier)
 
-	loot_list = list(/obj/item/gun/ballistic/shotgun/pump = 100)
+	loot_list = list(/obj/item/gun/projectile/ballistic/shotgun/pump = 100)
 
 	reload_max = 4
 	reload_time = 1.5 SECONDS	// It's a shotgun, it takes a moment
@@ -326,7 +326,7 @@
 	icon_state = "syndicateranged_sniper"
 	icon_living = "syndicateranged_sniper"
 
-	loot_list = list(/obj/item/gun/ballistic/garand/sniper = 100, /obj/item/clothing/head/cowboy_hat = 100)
+	loot_list = list(/obj/item/gun/projectile/ballistic/garand/sniper = 100, /obj/item/clothing/head/cowboy_hat = 100)
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting/sniper
 
@@ -351,7 +351,7 @@
 	icon_living = "syndicatespace-melee"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/human/space)
 
-	movement_cooldown = 0
+	movement_base_speed = 6.66
 
 	armor_legacy_mob = list(melee = 60, bullet = 50, laser = 30, energy = 15, bomb = 35, bio = 100, rad = 100)	// Same armor as their voidsuit
 
@@ -377,7 +377,7 @@
 	icon_state = "syndicatespace-ranged"
 	icon_living = "syndicatespceace-ranged"
 
-	movement_cooldown = 0
+	movement_base_speed = 6.66
 
 	armor_legacy_mob = list(melee = 60, bullet = 50, laser = 30, energy = 15, bomb = 35, bio = 100, rad = 100)	// Same armor as their voidsuit. This should already have been here when polaris patched these guys in.
 
@@ -396,7 +396,7 @@
 	base_attack_cooldown = 5 // Two attacks a second or so.
 	reload_max = 20
 
-	loot_list = list(/obj/item/gun/ballistic/automatic/c20r = 100)
+	loot_list = list(/obj/item/gun/projectile/ballistic/automatic/c20r = 100)
 
 /mob/living/simple_mob/humanoid/merc/ranged/space/Process_Spacemove(var/check_drift = 0)
 	return
@@ -415,7 +415,7 @@
 	projectiletype = /obj/projectile/bullet/pellet/shotgun		// Buckshot
 	projectilesound = 'sound/weapons/Gunshot_shotgun.ogg'
 
-	loot_list = list(/obj/item/gun/ballistic/shotgun/pump/combat = 100)
+	loot_list = list(/obj/item/gun/projectile/ballistic/shotgun/pump/combat = 100)
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc/ranged/shotgun
 
@@ -432,7 +432,7 @@
 	projectiletype = /obj/projectile/bullet/pellet/shotgun		// Buckshot
 	projectilesound = 'sound/weapons/Gunshot_shotgun.ogg'
 
-	loot_list = list(/obj/item/gun/ballistic/automatic/as24 = 100)
+	loot_list = list(/obj/item/gun/projectile/ballistic/automatic/as24 = 100)
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc/ranged/sweeper
 
@@ -449,7 +449,7 @@
 	projectiletype = /obj/projectile/bullet/rifle/a556
 	projectilesound = 'sound/weapons/Gunshot_light.ogg'
 
-	loot_list = list(/obj/item/gun/ballistic/automatic/lmg = 100)
+	loot_list = list(/obj/item/gun/projectile/ballistic/automatic/lmg = 100)
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc/ranged/surpressor
 
@@ -467,7 +467,7 @@
 	projectiletype = /obj/projectile/beam/weaklaser
 	projectilesound = 'sound/weapons/Laser.ogg'
 
-	loot_list = list(/obj/item/gun/energy/tommylaser = 100)
+	loot_list = list(/obj/item/gun/projectile/energy/tommylaser = 100)
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc/ranged/surpressor
 
@@ -479,7 +479,7 @@
 	projectiletype = /obj/projectile/bullet/rifle/a762
 	projectilesound = 'sound/weapons/Gunshot_heavy.ogg'
 
-	loot_list = list(/obj/item/gun/ballistic/automatic/fal = 100)
+	loot_list = list(/obj/item/gun/projectile/ballistic/automatic/fal = 100)
 
 	reload_max = 20
 
@@ -499,7 +499,7 @@
 
 /mob/living/simple_mob/humanoid/merc/ranged/space/suppressor // adminspawn only, and also Probably Going To Kill The Unprepared
 	name = "mercenary suppressor"
-	desc = "Geeze, weren't shotgun ops bad enough? At least when you fade these jerks you get a flashbang to the face."
+	desc = "Geeze, weren't shotgun ops bad enough? At least when you face these jerks you get a flashbang to the face."
 	icon_state = "syndi-ranged-space-sup"
 	icon_living = "syndi-ranged-space-sup"
 	armor_legacy_mob = list(melee = 80, bullet = 65, laser = 50, energy = 15, bomb = 80, bio = 100, rad = 100) // this is the merc rig's stats
@@ -513,7 +513,7 @@
 	loot_list = list() // oh, you killed him?
 	corpse = null // well, sorry, buddy, he doesn't drop shit
 	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/human/space/suppressor)
-// 	var/deathnade_path = /obj/item/grenade/flashbang/stingbang
+// 	var/deathnade_path = /obj/item/grenade/simple/flashbang/stingbang
 
 /* far too fun for the codebase at the moment
 /mob/living/simple_mob/humanoid/merc/ranged/space/suppressor/death()
@@ -528,14 +528,14 @@
 
 /mob/living/simple_mob/humanoid/merc/ranged/space/suppressor/elite // really reconsider why you're spawning this dude
 	name = "mercenary elite suppressor"
-	desc = "Geeze, weren't normal suppressors bad enough? At least if you fade this jerk, you'll have an awful time anyway."
+	desc = "Geeze, weren't normal suppressors bad enough? At least if you face this jerk, you'll have an awful time anyway."
 	icon_state = "syndi-ranged-space-sup-elite"
 	icon_living = "syndi-ranged-space-sup-elite"
 	armor_legacy_mob = list(melee = 80, bullet = 70, laser = 55, energy = 15, bomb = 80, bio = 100, rad = 100) // see code for military hardsuit
 	projectiletype = /obj/projectile/bullet/pistol/medium/ap/suppressor/turbo // fuck it, fast bullets
-	grenade_type = /obj/item/grenade/shooter/rubber // don't group up
+	grenade_type = /obj/item/grenade/simple/shooter/rubber // don't group up
 	grenade_timer = 30 // well, look what you've done, you've grouped up
-// 	deathnade_path = /obj/item/grenade/flashbang/stingbang/shredbang // REALLY don't group up
+// 	deathnade_path = /obj/item/grenade/simple/flashbang/stingbang/shredbang // REALLY don't group up
 
 // being Actual Professionals, they have better (read: player-level) blocking chances
 /mob/living/simple_mob/humanoid/merc/ranged/space/suppressor/attackby(var/obj/item/O, var/mob/user)
@@ -608,7 +608,7 @@
 	icon_dead = "voxpirate_dead"
 
 	iff_factions = MOB_IFF_FACTION_PIRATE
-	movement_cooldown = 4
+	movement_base_speed = 10 / 4
 
 	status_flags = 0
 
@@ -635,7 +635,7 @@
 	minbodytemp = 0
 
 	corpse = /obj/spawner/corpse/vox/pirate
-	loot_list = list(/obj/item/gun/ballistic/shotgun/pump/rifle/vox_hunting = 100,
+	loot_list = list(/obj/item/gun/projectile/ballistic/shotgun/pump/rifle/vox_hunting = 100,
 					/obj/item/ammo_magazine/a7_62mm/clip = 30,
 					/obj/item/ammo_magazine/a7_62mm/clip = 30
 					)
@@ -719,7 +719,7 @@
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc/ranged/shotgun
 	corpse = /obj/spawner/corpse/vox/boarder_r
-	loot_list = list(/obj/item/gun/ballistic/shotgun/pump/combat = 100,
+	loot_list = list(/obj/item/gun/projectile/ballistic/shotgun/pump/combat = 100,
 					/obj/item/ammo_magazine/a12g/drum = 30,
 					/obj/item/ammo_magazine/a12g/drum = 30
 					)
@@ -750,7 +750,7 @@
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
 	corpse = /obj/spawner/corpse/vox/boarder_t
-	loot_list = list(/obj/item/gun/energy/ionrifle)
+	loot_list = list(/obj/item/gun/projectile/energy/ionrifle)
 
 	needs_reload = TRUE
 	reload_max = 25 //Suppressive tech weapon.
@@ -782,7 +782,7 @@
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/destructive
 	corpse = /obj/spawner/corpse/vox/suppressor
-	loot_list = list(/obj/item/gun/energy/sonic = 100)
+	loot_list = list(/obj/item/gun/projectile/energy/sonic = 100)
 
 	base_attack_cooldown = 5 // Two attacks a second or so.
 	needs_reload = TRUE
@@ -814,7 +814,7 @@
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/destructive
 	corpse = /obj/spawner/corpse/vox/captain
-	loot_list = list(/obj/item/gun/energy/darkmatter = 100)
+	loot_list = list(/obj/item/gun/projectile/energy/darkmatter = 100)
 
 	needs_reload = TRUE
 	reload_max = 15 //Other Vox should be carrying ammo.

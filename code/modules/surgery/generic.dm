@@ -7,6 +7,7 @@
 	can_infect = 1
 
 /datum/surgery_step/generic/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
+	if(!..()) return FALSE
 	if (isslime(target))
 		return 0
 	if (target_zone == O_EYES)	//there are specific steps for eye surgery
@@ -27,8 +28,11 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/generic/cut_open
+	step_name = "Incise"
+
 	allowed_tools = list(
 		/obj/item/surgical/scalpel = 100,
+		/obj/item/surgical/scalpel_bronze = 90,
 		/obj/item/surgical/scalpel_primitive = 80,
 		/obj/item/material/knife = 75,
 		/obj/item/material/shard = 50,
@@ -72,6 +76,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/generic/cut_with_laser
+	step_name = "Laser incision"
+
 	allowed_tools = list(
 		/obj/item/surgical/scalpel/laser3 = 95, \
 		/obj/item/surgical/scalpel/laser2 = 85, \
@@ -118,6 +124,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/generic/incision_manager
+	step_name = "Prepared incision"
+
 	allowed_tools = list(
 		/obj/item/surgical/scalpel/manager = 100,
 	)
@@ -164,6 +172,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/generic/clamp_bleeders
+	step_name = "Clamp bleeders"
+
 	allowed_tools = list(
 		/obj/item/surgical/hemostat = 100,
 		/obj/item/stack/cable_coil = 75,
@@ -204,6 +214,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/generic/retract_skin
+	step_name = "Retract skin"
+
 	allowed_tools = list(
 		/obj/item/surgical/retractor = 100,
 		/obj/item/surgical/retractor_primitive = 75,
@@ -265,6 +277,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/generic/cauterize
+	step_name = "Cauterize"
+
 	allowed_tools = list(
 		/obj/item/surgical/cautery = 100,
 		/obj/item/clothing/mask/smokable/cigarette = 75,
@@ -307,9 +321,12 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/generic/amputate
+	step_name = "Amputate limb"
+
 	allowed_tools = list(
 		/obj/item/surgical/circular_saw = 100,
 		/obj/item/material/knife/machete/hatchet = 75,
+		/obj/item/surgical/saw_bronze = 75,
 		/obj/item/surgical/saw_primitive = 60,
 	)
 	req_open = 0

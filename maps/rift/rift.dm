@@ -23,10 +23,15 @@
 		/datum/map/sector/gaia_192,
 		/datum/map/sector/frozen_192,
 		/datum/map/sector/wasteland_192,
-		/datum/map/sector/tradeport_192,
-		/datum/map/sector/lavaland_192,
-		/datum/map/sector/miaphus_192,
+		/datum/map/sector/nebula_tradeport,
+		/datum/map/sector/delerict_casino,
+		/datum/map/sector/surt,
+		/datum/map/sector/miaphus,
 		/datum/map/sector/roguemining_192/one,
+		/datum/map/sector/sky_planet,
+		/datum/map/sector/solars_station,
+		/datum/map/sector/ice_comet,
+		/datum/map/sector/osiris_field,
 	)
 
 	//* LEGACY BELOW *//
@@ -90,7 +95,7 @@
 
 	station_name  = "NSB Atlas"
 	station_short = "Atlas"
-	dock_name     = "NTS Demeter"
+	dock_name     = "NCS Demeter"
 	dock_type     = "surface"
 	boss_name     = "Central Command"
 	boss_short    = "CentCom"
@@ -142,7 +147,7 @@
 
 	bot_patrolling = FALSE
 
-	allowed_spawns = list(LATEJOIN_METHOD_ARRIVALS_SHUTTLE,"Beruang Trading Corp Cryo","Cryogenic Storage")
+	allowed_spawns = list(LATEJOIN_METHOD_ARRIVALS_SHUTTLE,"Beruang Trading Corp Cryo","Cryogenic Storage","Nebula Visitor Arrival")
 	spawnpoint_died = /datum/spawnpoint/arrivals
 	spawnpoint_left = /datum/spawnpoint/arrivals
 	spawnpoint_stayed = /datum/spawnpoint/cryo
@@ -177,7 +182,7 @@
 	name = "Rift - East Canyon"
 	display_id = "atlas-underground-3"
 	display_name = "NSB Atlas Underground -3 (Canyon)"
-	absolute_path = "maps/rift/levels/rift-01-underground3.dmm"
+	path = "maps/rift/levels/rift-01-underground3.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -198,7 +203,7 @@
 	name = "Rift - Underground 2"
 	display_id = "atlas-underground-2"
 	display_name = "NSB Atlas Underground -2 (Engineering Deck)"
-	absolute_path = "maps/rift/levels/rift-02-underground2.dmm"
+	path = "maps/rift/levels/rift-02-underground2.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -221,7 +226,7 @@
 	name = "Rift - Underground 1"
 	display_id = "atlas-underground-1"
 	display_name = "NSB Atlas Underground -1 (Maintenance Deck)"
-	absolute_path = "maps/rift/levels/rift-03-underground1.dmm"
+	path = "maps/rift/levels/rift-03-underground1.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -244,7 +249,7 @@
 	name = "Rift - Surface 1"
 	display_id = "atlas-surface-1"
 	display_name = "NSB Atlas Surface 1 (Logistics Deck)"
-	absolute_path = "maps/rift/levels/rift-04-surface1.dmm"
+	path = "maps/rift/levels/rift-04-surface1.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -267,7 +272,7 @@
 	name = "Rift - Surface 2"
 	display_id = "atlas-surface-2"
 	display_name = "NSB Atlas Surface 2 (Operations Deck)"
-	absolute_path = "maps/rift/levels/rift-05-surface2.dmm"
+	path = "maps/rift/levels/rift-05-surface2.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -289,7 +294,7 @@
 	name = "Rift - Surface 3"
 	display_id = "atlas-surface-3"
 	display_name = "NSB Atlas Surface 3 (Command Deck)"
-	absolute_path = "maps/rift/levels/rift-06-surface3.dmm"
+	path = "maps/rift/levels/rift-06-surface3.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -310,7 +315,7 @@
 	name = "Rift - West Canyon"
 	display_id = "atlas-west-canyon"
 	display_name = "NSB Atlas Western Canyons"
-	absolute_path = "maps/rift/levels/rift-07-west_base.dmm"
+	path = "maps/rift/levels/rift-07-west_base.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_GRAVITY,
@@ -340,7 +345,7 @@
 	name = "Rift - West Caves (Deep)"
 	display_id = "atlas-west-deep"
 	display_name = "NSB Atlas Western Caves - Deep"
-	absolute_path = "maps/rift/levels/rift-08-west_deep.dmm"
+	path = "maps/rift/levels/rift-08-west_deep.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_GRAVITY,
@@ -360,7 +365,7 @@
 			GLOBAL_PROC,
 			GLOBAL_PROC_REF(seed_submaps),
 			list(z_index),
-			50,
+			75,
 			/area/rift/surfacebase/outside/west_deep/submap_seedzone,
 			/datum/map_template/submap/level_specific/rift/west_deep,
 		)
@@ -372,7 +377,7 @@
 	name = "Rift - West Caves (Shallow)"
 	display_id = "atlas-west-caves"
 	display_name = "NSB Atlas Western Caves - Shallow"
-	absolute_path = "maps/rift/levels/rift-09-west_caves.dmm"
+	path = "maps/rift/levels/rift-09-west_caves.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_GRAVITY,
@@ -391,7 +396,7 @@
 			GLOBAL_PROC,
 			GLOBAL_PROC_REF(seed_submaps),
 			list(z_index),
-			50,
+			80,
 			/area/rift/surfacebase/outside/west_caves/submap_seedzone,
 			/datum/map_template/submap/level_specific/rift/west_caves,
 		)
@@ -403,7 +408,7 @@
 	name = "Rift - Western Plains"
 	display_id = "atlas-west-plains"
 	display_name = "NSB Atlas Western Plains"
-	absolute_path = "maps/rift/levels/rift-10-west_plains.dmm"
+	path = "maps/rift/levels/rift-10-west_plains.dmm"
 	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER
 	planet_path = /datum/planet/lythios43c
@@ -415,7 +420,7 @@
 	name = "Rift - Orbital Relay"
 	display_id = "atlas-relay"
 	display_name = "NSB Atlas Orbital Relay"
-	absolute_path = "maps/rift/levels/rift-11-orbital.dmm"
+	path = "maps/rift/levels/rift-11-orbital.dmm"
 	flags = LEGACY_LEVEL_ADMIN|LEGACY_LEVEL_CONTACT
 	traits = list(
 		ZTRAIT_LEGACY_BELTER_TRANSIT,

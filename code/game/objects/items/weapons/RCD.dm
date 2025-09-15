@@ -11,7 +11,7 @@
 		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand.dmi',
 		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand.dmi',
 	)
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	damage_force = 10
 	throw_force = 10
 	throw_speed = 1
@@ -134,7 +134,7 @@
 			"Change Window Type" = image(icon = 'icons/mob/radial.dmi', icon_state = "windowtype")
 		)
 	*/
-	var/choice = show_radial_menu(user, src, choices, custom_check = CALLBACK(src, PROC_REF(check_menu), user), require_near = TRUE, tooltips = TRUE)
+	var/choice = show_radial_menu(user, user.is_holding(src) ? user : src, choices, custom_check = CALLBACK(src, PROC_REF(check_menu), user), require_near = TRUE, tooltips = TRUE)
 	if(!check_menu(user))
 		return
 	switch(choice)
@@ -334,8 +334,8 @@
 		var/obj/item/hardsuit_module/module = loc
 		if(module.holder) // Is it attached to a HARDSUIT?
 			return module.holder.cell
-	if(istype(loc, /obj/item/mecha_parts/mecha_equipment)) // In a mech.
-		var/obj/item/mecha_parts/mecha_equipment/ME = loc
+	if(istype(loc, /obj/item/vehicle_module)) // In a mech.
+		var/obj/item/vehicle_module/ME = loc
 		if(ME.chassis) // Is the part attached to a mech?
 			return ME.chassis.cell
 	return null
@@ -473,6 +473,7 @@
 		update_icon()
 
 /obj/effect/constructing_effect/update_icon()
+	. = ..()
 	icon_state = "rcd"
 	if (delay < 10)
 		icon_state += "_shortest"

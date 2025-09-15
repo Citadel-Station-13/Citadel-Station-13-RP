@@ -82,13 +82,13 @@
 		/obj/item/mining_scanner,
 		/obj/item/gps/mining,
 		/obj/item/survivalcapsule,
-		/obj/item/clothing/glasses/material,
+		/obj/item/clothing/glasses/meson,
 		/obj/item/clothing/suit/storage/hooded/miner,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/miner,
 		/obj/item/clothing/shoes/boots/winter/mining,
 		/obj/item/reagent_containers/portable_fuelcan/miniature,
 		/obj/item/stack/marker_beacon/thirty,
-		/obj/item/gun/energy/kinetic_accelerator)
+		/obj/item/gun/projectile/energy/kinetic_accelerator)
 
 /obj/structure/closet/secure_closet/miner/Initialize(mapload)
 	if(prob(50))

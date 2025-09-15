@@ -1,0 +1,1425 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ab" = (
+/obj/machinery/door/blast/regular/open{
+	dir = 4
+	},
+/obj/machinery/atmospheric_field_generator/perma,
+/turf/simulated/floor/reinforced,
+/area/submap/osiris_field/pirate_wreck1)
+"an" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"ba" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/washing_machine,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/pirate_wreck1)
+"bD" = (
+/obj/structure/bed/double/padded,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/pirate_wreck1)
+"bH" = (
+/obj/machinery/light/small/emergency,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"cz" = (
+/obj/structure/bed/pod,
+/obj/machinery/light/small/emergency{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"dU" = (
+/obj/structure/closet/walllocker_double/south,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/pirate_wreck1)
+"es" = (
+/obj/structure/closet/walllocker_double/east,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/pirate_wreck1)
+"eX" = (
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/pirate_wreck1)
+"fc" = (
+/obj/machinery/light/small/emergency{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/pirate_wreck1)
+"gw" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"gR" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"hg" = (
+/obj/machinery/light/small/emergency{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/submap/osiris_field/pirate_wreck1)
+"hq" = (
+/turf/template_noop,
+/area/submap/osiris_field/pirate_wreck1)
+"hu" = (
+/obj/effect/floor_decal/techfloor,
+/obj/effect/floor_decal/industrial/warning/dust,
+/obj/machinery/door/blast/regular{
+	dir = 4
+	},
+/turf/simulated/floor/maglev{
+	dir = 4
+	},
+/area/submap/osiris_field/pirate_wreck1)
+"hv" = (
+/mob/living/simple_mob/humanoid/pirate/ranged,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/pirate_wreck1)
+"in" = (
+/obj/structure/table/steel_reinforced,
+/obj/machinery/light/small/emergency{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"iI" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/light/small/emergency{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/pirate_wreck1)
+"iJ" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 1
+	},
+/obj/machinery/door/blast/regular{
+	dir = 4
+	},
+/turf/simulated/floor/maglev{
+	dir = 4
+	},
+/area/submap/osiris_field/pirate_wreck1)
+"iK" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"iY" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/table/bench/wooden,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/pirate_wreck1)
+"lt" = (
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
+/turf/simulated/floor/reinforced,
+/area/submap/osiris_field/pirate_wreck1)
+"lP" = (
+/obj/effect/floor_decal/rust,
+/obj/random/trash_pile,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"mf" = (
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/pirate_wreck1)
+"mp" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/table/bench/wooden,
+/obj/machinery/light/small/emergency{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"mE" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/table/steel_reinforced,
+/obj/machinery/microwave{
+	pixel_y = 13
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/pirate_wreck1)
+"oe" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/window/reinforced/survival_pod,
+/obj/structure/table/bench/wooden,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"oA" = (
+/obj/structure/table/bench/wooden,
+/obj/machinery/light/small/emergency{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/pirate_wreck1)
+"oG" = (
+/turf/simulated/wall/r_wall/prepainted,
+/area/submap/osiris_field/pirate_wreck1)
+"qf" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"qq" = (
+/obj/structure/window/reinforced/survival_pod{
+	dir = 4
+	},
+/obj/machinery/door/window/brigdoor/southleft,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"qz" = (
+/obj/machinery/door/window/brigdoor/southright,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"qY" = (
+/obj/random/trash_pile,
+/obj/machinery/light/small/emergency,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"qZ" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/machinery/door/blast/regular/open{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 1
+	},
+/turf/simulated/floor/maglev{
+	dir = 4
+	},
+/area/submap/osiris_field/pirate_wreck1)
+"rD" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/submap/osiris_field/pirate_wreck1)
+"rG" = (
+/obj/machinery/door/airlock,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/pirate_wreck1)
+"rI" = (
+/mob/living/simple_mob/humanoid/pirate/ranged,
+/turf/simulated/floor/reinforced,
+/area/submap/osiris_field/pirate_wreck1)
+"ss" = (
+/mob/living/simple_mob/humanoid/pirate/shield/machete/armored,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"sH" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 1
+	},
+/turf/simulated/floor/maglev{
+	dir = 4
+	},
+/area/submap/osiris_field/pirate_wreck1)
+"sX" = (
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"tv" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/random/energy,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"tL" = (
+/obj/effect/floor_decal/techfloor/orange/corner{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"ua" = (
+/obj/effect/decal/mecha_wreckage/gunpod,
+/turf/simulated/floor/reinforced,
+/area/submap/osiris_field/pirate_wreck1)
+"uh" = (
+/obj/structure/closet/walllocker_double/south,
+/obj/machinery/light/small/emergency,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/pirate_wreck1)
+"uy" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/salvageable/console_os,
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/pirate_wreck1)
+"wK" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 1
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/pirate_wreck1)
+"xy" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/obj/machinery/light/small/emergency{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"yi" = (
+/obj/effect/decal/mecha_wreckage/duke/cw,
+/turf/simulated/floor/reinforced,
+/area/submap/osiris_field/pirate_wreck1)
+"yD" = (
+/obj/structure/curtain/open/bed,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"zk" = (
+/obj/effect/floor_decal/rust,
+/obj/spawner/corpse/vintage/pilot,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"As" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/pirate_wreck1)
+"BM" = (
+/mob/living/simple_mob/humanoid/pirate/ranged/armored,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"BX" = (
+/obj/structure/salvageable/bliss,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/pirate_wreck1)
+"Cu" = (
+/obj/random/trash_pile,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"CO" = (
+/obj/structure/table/sifwooden_reinforced,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/pirate_wreck1)
+"Dv" = (
+/obj/effect/floor_decal/techfloor/orange,
+/obj/machinery/light/small/emergency{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"EE" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/template_noop)
+"FP" = (
+/obj/structure/salvageable/console_os{
+	dir = 4
+	},
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/pirate_wreck1)
+"GA" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/light/small/emergency{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"Ha" = (
+/obj/effect/floor_decal/techfloor/orange,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"Hi" = (
+/obj/machinery/light/small/emergency,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/pirate_wreck1)
+"HB" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"HN" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/random/multiple/gun/projectile/rifle,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"IN" = (
+/turf/simulated/wall/r_wall/prepainted,
+/area/template_noop)
+"JH" = (
+/mob/living/simple_mob/humanoid/pirate/captain,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/pirate_wreck1)
+"KU" = (
+/obj/machinery/door/airlock,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"LR" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/random/multiple/gun/projectile/shotgun,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"Nr" = (
+/obj/structure/table/rack/shelf/steel,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"Oo" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/portable_atmospherics/canister/empty/phoron,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/osiris_field/pirate_wreck1)
+"Oz" = (
+/obj/structure/salvageable/console_os,
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/pirate_wreck1)
+"Pn" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/kafel_full/gray,
+/area/submap/osiris_field/pirate_wreck1)
+"Po" = (
+/turf/simulated/floor/reinforced,
+/area/submap/osiris_field/pirate_wreck1)
+"PM" = (
+/obj/machinery/door/airlock/external/glass,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/pirate_wreck1)
+"PN" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/pirate_wreck1)
+"Qu" = (
+/mob/living/simple_mob/mechanical/mecha/fighter/baron/manned,
+/turf/simulated/floor/reinforced,
+/area/submap/osiris_field/pirate_wreck1)
+"Rv" = (
+/mob/living/simple_mob/humanoid/pirate,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/pirate_wreck1)
+"RN" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/table/steel_reinforced,
+/obj/machinery/light/small/emergency,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/pirate_wreck1)
+"Sa" = (
+/obj/structure/window/reinforced/survival_pod,
+/obj/structure/table/bench/wooden,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"Te" = (
+/obj/structure/bed/pod,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"Ts" = (
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/pirate_wreck1)
+"TV" = (
+/mob/living/simple_mob/mechanical/mecha/fighter/baron/manned,
+/turf/template_noop,
+/area/template_noop)
+"Vn" = (
+/turf/template_noop,
+/area/template_noop)
+"VL" = (
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"VU" = (
+/obj/machinery/air_alarm/alarms_hidden/west_mount,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"VW" = (
+/mob/living/simple_mob/humanoid/pirate/ranged/armored,
+/turf/simulated/floor/reinforced,
+/area/submap/osiris_field/pirate_wreck1)
+"We" = (
+/obj/machinery/door/airlock/glass,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/pirate_wreck1)
+"WH" = (
+/obj/machinery/light/small/emergency{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"WL" = (
+/obj/machinery/suit_cycler/pirate,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"Xe" = (
+/obj/effect/floor_decal/techfloor/orange,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"Xt" = (
+/obj/structure/table/bench/wooden,
+/obj/machinery/light/small/emergency{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"XM" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/loot_pile/maint/trash,
+/obj/machinery/light/small/emergency,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"XW" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"YV" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/random/energy,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"Ze" = (
+/obj/effect/floor_decal/techfloor,
+/obj/effect/floor_decal/industrial/warning/dust,
+/turf/simulated/floor/maglev{
+	dir = 4
+	},
+/area/submap/osiris_field/pirate_wreck1)
+"Zs" = (
+/obj/structure/table/bench/wooden,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/pirate_wreck1)
+"Zt" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/obj/machinery/light/small/emergency{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+"Zy" = (
+/obj/effect/floor_decal/techfloor,
+/obj/machinery/door/blast/regular/open{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/warning/dust,
+/turf/simulated/floor/maglev{
+	dir = 4
+	},
+/area/submap/osiris_field/pirate_wreck1)
+"ZK" = (
+/obj/structure/window/reinforced/survival_pod{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/pirate_wreck1)
+
+(1,1,1) = {"
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+"}
+(2,1,1) = {"
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+TV
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+"}
+(3,1,1) = {"
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+"}
+(4,1,1) = {"
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+"}
+(5,1,1) = {"
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+TV
+Vn
+Vn
+Vn
+Vn
+Vn
+"}
+(6,1,1) = {"
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+"}
+(7,1,1) = {"
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+"}
+(8,1,1) = {"
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+"}
+(9,1,1) = {"
+Vn
+Vn
+Vn
+Vn
+Vn
+Ts
+Ts
+Ts
+oG
+Vn
+Vn
+oG
+oG
+oG
+oG
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+"}
+(10,1,1) = {"
+Vn
+Vn
+Vn
+Vn
+Vn
+Ts
+mf
+FP
+oG
+Vn
+Vn
+oG
+oG
+oG
+oG
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+"}
+(11,1,1) = {"
+Vn
+Vn
+Vn
+Vn
+Ts
+Ts
+uy
+Rv
+oG
+iJ
+hu
+oG
+mf
+PN
+oG
+oG
+Vn
+Vn
+Vn
+Vn
+Vn
+"}
+(12,1,1) = {"
+Vn
+Vn
+Vn
+Vn
+Ts
+Oz
+hv
+eX
+Ts
+sH
+Ze
+Ts
+Oz
+wK
+BX
+oG
+Vn
+Vn
+Vn
+Vn
+Vn
+"}
+(13,1,1) = {"
+Vn
+Vn
+Vn
+Vn
+Ts
+Oz
+iI
+As
+Ts
+sH
+Ze
+Ts
+JH
+iI
+bD
+oG
+Vn
+Vn
+Vn
+Vn
+Vn
+"}
+(14,1,1) = {"
+Vn
+Vn
+Vn
+Vn
+oG
+oG
+oG
+We
+oG
+qZ
+Zy
+oG
+We
+oG
+oG
+oG
+Vn
+Vn
+Vn
+Vn
+Vn
+"}
+(15,1,1) = {"
+Vn
+Vn
+Vn
+Vn
+Vn
+rD
+oG
+WH
+Ha
+Po
+Po
+XW
+bH
+oG
+rD
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+"}
+(16,1,1) = {"
+Vn
+Vn
+Vn
+Vn
+Vn
+rD
+lt
+VL
+Ha
+Po
+Po
+XW
+an
+lt
+rD
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+"}
+(17,1,1) = {"
+Vn
+Vn
+Vn
+Vn
+Vn
+rD
+oG
+gw
+Xe
+Po
+Po
+XW
+an
+oG
+rD
+Vn
+EE
+Vn
+Vn
+Vn
+Vn
+"}
+(18,1,1) = {"
+Vn
+Vn
+Vn
+EE
+Vn
+rD
+lt
+gw
+Xe
+Po
+rI
+XW
+an
+lt
+rD
+Vn
+EE
+Vn
+Vn
+Vn
+Vn
+"}
+(19,1,1) = {"
+Vn
+Vn
+Vn
+EE
+EE
+rD
+oG
+in
+Xe
+Po
+Po
+XW
+bH
+oG
+rD
+Vn
+EE
+Vn
+Vn
+Vn
+Vn
+"}
+(20,1,1) = {"
+Vn
+Vn
+Vn
+oG
+Po
+Po
+oG
+sX
+Ha
+Po
+Po
+XW
+oG
+oG
+oG
+oG
+oG
+Vn
+Vn
+Vn
+Vn
+"}
+(21,1,1) = {"
+Vn
+Vn
+Vn
+rD
+rD
+Po
+oG
+WL
+Ha
+Po
+Po
+XW
+an
+lP
+VU
+XM
+oG
+Vn
+Vn
+Vn
+Vn
+"}
+(22,1,1) = {"
+Vn
+Vn
+Vn
+oG
+ab
+ab
+oG
+WL
+Ha
+Po
+Po
+XW
+an
+an
+an
+an
+oG
+Vn
+Vn
+Vn
+Vn
+"}
+(23,1,1) = {"
+Vn
+Vn
+Vn
+oG
+Po
+Po
+oG
+oG
+Dv
+Po
+Po
+gR
+an
+VL
+lP
+an
+oG
+Vn
+Vn
+Vn
+Vn
+"}
+(24,1,1) = {"
+Vn
+Vn
+Vn
+oG
+Po
+Po
+qf
+Zt
+iK
+Po
+Qu
+gR
+an
+an
+VL
+VL
+oG
+Vn
+Vn
+Vn
+Vn
+"}
+(25,1,1) = {"
+Vn
+Vn
+Vn
+oG
+hg
+Po
+Po
+Po
+Po
+Po
+Po
+XW
+Cu
+an
+an
+bH
+oG
+Vn
+Vn
+Vn
+Vn
+"}
+(26,1,1) = {"
+Vn
+Vn
+Vn
+oG
+Po
+Po
+Po
+Po
+VW
+Po
+Po
+XW
+an
+an
+VL
+lP
+oG
+Vn
+Vn
+Vn
+Vn
+"}
+(27,1,1) = {"
+Vn
+Vn
+Vn
+oG
+Po
+Po
+Po
+Po
+Po
+Po
+Po
+XW
+an
+VL
+an
+an
+oG
+Vn
+Vn
+Vn
+Vn
+"}
+(28,1,1) = {"
+Vn
+Vn
+Vn
+oG
+Po
+yi
+Po
+Po
+ua
+Po
+Po
+XW
+an
+lP
+an
+an
+oG
+Vn
+Vn
+Vn
+Vn
+"}
+(29,1,1) = {"
+Vn
+Vn
+Vn
+oG
+xy
+HB
+HB
+HB
+HB
+HB
+HB
+tL
+an
+VL
+VL
+qY
+oG
+IN
+Vn
+Vn
+Vn
+"}
+(30,1,1) = {"
+Vn
+oG
+oG
+oG
+oG
+oG
+oG
+oG
+oG
+VL
+VL
+VL
+VL
+VL
+VL
+an
+oG
+oG
+oG
+oG
+Vn
+"}
+(31,1,1) = {"
+oG
+oG
+Te
+yD
+iY
+CO
+Zs
+eX
+rG
+VL
+VL
+GA
+an
+VL
+GA
+VL
+KU
+VL
+oG
+oG
+oG
+"}
+(32,1,1) = {"
+oG
+cz
+VL
+yD
+Zs
+CO
+Zs
+uh
+oG
+fc
+Hi
+oG
+oG
+oG
+oG
+KU
+oG
+VL
+VL
+HN
+oG
+"}
+(33,1,1) = {"
+oG
+Te
+VL
+yD
+eX
+As
+As
+dU
+oG
+eX
+As
+oG
+Xt
+oe
+VL
+VL
+oG
+YV
+ss
+Nr
+oG
+"}
+(34,1,1) = {"
+oG
+Te
+VL
+yD
+Zs
+iY
+eX
+ba
+oG
+As
+eX
+oG
+ZK
+qq
+an
+BM
+oG
+Nr
+an
+Nr
+oG
+"}
+(35,1,1) = {"
+oG
+cz
+VL
+yD
+CO
+CO
+eX
+RN
+oG
+fc
+Hi
+oG
+zk
+qz
+an
+VL
+oG
+LR
+GA
+tv
+oG
+"}
+(36,1,1) = {"
+oG
+oG
+Te
+yD
+oA
+iY
+es
+mE
+oG
+oG
+PM
+oG
+mp
+Sa
+VL
+VL
+oG
+oG
+oG
+oG
+oG
+"}
+(37,1,1) = {"
+Vn
+oG
+oG
+oG
+oG
+oG
+oG
+oG
+oG
+Oo
+Pn
+oG
+oG
+oG
+oG
+oG
+oG
+oG
+oG
+oG
+Vn
+"}
+(38,1,1) = {"
+Vn
+Vn
+Vn
+Vn
+Vn
+oG
+oG
+oG
+oG
+Pn
+rD
+oG
+oG
+oG
+oG
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+"}
+(39,1,1) = {"
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+oG
+oG
+rD
+hq
+oG
+oG
+hq
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+Vn
+"}

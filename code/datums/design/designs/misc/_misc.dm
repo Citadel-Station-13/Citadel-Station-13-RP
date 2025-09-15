@@ -1,52 +1,69 @@
-/datum/design/misc
-	abstract_type = /datum/design/misc
+/datum/prototype/design/misc
+	abstract_type = /datum/prototype/design/misc
 	category = "General"
 
-/datum/design/misc/bucket
+/datum/prototype/design/misc/bucket
 	id = "ChemistryBucket"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/reagent_containers/glass/bucket
 
-/datum/design/misc/floor_light
+/datum/prototype/design/misc/floor_light
 	id = "MiscFloorLight"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/machinery/floor_light
 
-/datum/design/misc/glass_jar
+/datum/prototype/design/misc/glass_jar
 	id = "MiscGlassJar"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/glass_jar
 
-/datum/design/misc/kitchen_knife
+/datum/prototype/design/misc/kitchen_knife
 	id = "MiscKitchenKnife"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/material/knife
 
-/datum/design/misc/light_tube
+/datum/prototype/design/misc/light_tube
 	id = "MiscLightTube"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/light/tube
 
-/datum/design/misc/light_bulb
+/datum/prototype/design/misc/light_bulb
 	id = "MiscLightBulb"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/light/bulb
 
-
-/datum/design/misc/light_fairy
+/datum/prototype/design/misc/light_fairy
 	id = "MiscLightFairy"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/light/bulb/fairy
 
-/datum/design/misc/glass_ashtray
-	id = "MiscGlassAshtray"
+/datum/prototype/design/misc/ashtray
+	id = "MiscAshtray"
+	build_name = "ashtray"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	materials_base = list()
+	build_path = /obj/item/material/ashtray
+	material_autodetect_tags = list(
+		"structure" = MATERIAL_TAG_BASIC_STRUCTURAL,
+	)
 	build_path = /obj/item/material/ashtray/glass
+
+/datum/prototype/design/misc/coffeepot
+	id = "Coffeepot"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/reagent_containers/food/drinks/coffeepot
+
+/datum/prototype/design/misc/coffee_cartridge
+	id = "CoffeeCartridge"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/blank_coffee_cartridge

@@ -91,17 +91,17 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 /datum/admin_help_tickets/proc/stat_data()
 	. = list()
 	var/num_disconnected = 0
-	STATPANEL_DATA_CLICK("Active Tickets:", "[active_tickets.len]", "\ref[astatclick]")
+	INJECT_STATPANEL_DATA_CLICK(., "Active Tickets:", "[active_tickets.len]", "\ref[astatclick]")
 	for(var/I in active_tickets)
 		var/datum/admin_help/AH = I
 		if(AH.initiator)
-			STATPANEL_DATA_CLICK("#[AH.id]. [AH.initiator_key_name]:", "[AH.statclick.update()]", "\ref[AH.statclick]")
+			INJECT_STATPANEL_DATA_CLICK(., "#[AH.id]. [AH.initiator_key_name]:", "[AH.statclick.update()]", "\ref[AH.statclick]")
 		else
 			++num_disconnected
 	if(num_disconnected)
-		STATPANEL_DATA_CLICK("Disconnected:", "[num_disconnected]", "\ref[astatclick]")
-	STATPANEL_DATA_CLICK("Closed Tickets:", "[closed_tickets.len]", "\ref[cstatclick]")
-	STATPANEL_DATA_CLICK("Resolved Tickets:", "[resolved_tickets.len]", "\ref[rstatclick]")
+		INJECT_STATPANEL_DATA_CLICK(., "Disconnected:", "[num_disconnected]", "\ref[astatclick]")
+	INJECT_STATPANEL_DATA_CLICK(., "Closed Tickets:", "[closed_tickets.len]", "\ref[cstatclick]")
+	INJECT_STATPANEL_DATA_CLICK(., "Resolved Tickets:", "[resolved_tickets.len]", "\ref[rstatclick]")
 
 //Reassociate still open ticket if one exists
 /datum/admin_help_tickets/proc/ClientLogin(client/C)

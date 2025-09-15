@@ -20,7 +20,6 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/structure/largecrate/LateInitialize()
-	. = ..()
 	if(starts_with)
 		create_objects_in_loc(src, starts_with)
 		starts_with = null
@@ -94,12 +93,12 @@
 
 /obj/structure/largecrate/hoverpod/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_crowbar())
-		var/obj/item/mecha_parts/mecha_equipment/ME
+		var/obj/item/vehicle_module/ME
 		var/obj/vehicle/sealed/mecha/working/hoverpod/H = new (loc)
 
-		ME = new /obj/item/mecha_parts/mecha_equipment/tool/hydraulic_clamp
+		ME = new /obj/item/vehicle_module/tool/hydraulic_clamp
 		ME.attach(H)
-		ME = new /obj/item/mecha_parts/mecha_equipment/tool/passenger
+		ME = new /obj/item/vehicle_module/tool/passenger
 		ME.attach(H)
 	..()
 

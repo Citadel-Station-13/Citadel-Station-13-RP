@@ -40,7 +40,7 @@
 	. = ..()
 	var/turf/T = parent
 	T.set_opacity(TRUE)
-	RegisterSignal(parent, COMSIG_ATOM_ENTERED, .proc/transit)
+	RegisterSignal(parent, COMSIG_ATOM_ENTERED, PROC_REF(transit))
 	rebuild()
 
 /datum/component/reservation_border/UnregisterFromParent()

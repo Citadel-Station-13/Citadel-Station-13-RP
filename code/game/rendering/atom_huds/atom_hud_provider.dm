@@ -242,7 +242,7 @@ GLOBAL_LIST_INIT(atom_hud_providers, initialize_atom_hud_providers())
 	if(M.stat == DEAD)
 		I.icon_state = "-100"
 	else
-		I.icon_state = RoundHealth((M.health-config_legacy.health_threshold_crit)/(M.getMaxHealth()-config_legacy.health_threshold_crit)*100)
+		I.icon_state = RoundHealth((M.health-M.getCritHealth())/(M.getMaxHealth()-M.getCritHealth())*100)
 
 /datum/atom_hud_provider/security_implant
 	icon = 'icons/screen/atom_hud/implant.dmi'

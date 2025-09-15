@@ -91,7 +91,7 @@
 	. = ..()
 	update_icons()
 
-	default_language = SScharacters.resolve_language_name(LANGUAGE_GALCOM)
+	default_language = RSlanguages.legacy_resolve_language_name(LANGUAGE_GALCOM)
 
 	botcard = new /obj/item/card/id(src)
 	botcard.access = botcard_access.Copy()
@@ -192,7 +192,7 @@
 /mob/living/bot/attack_ai(var/mob/user)
 	return attack_hand(user)
 
-/mob/living/bot/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
+/mob/living/bot/say(var/message, var/datum/prototype/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	verb = "beeps"
 
 	message = sanitize(message)

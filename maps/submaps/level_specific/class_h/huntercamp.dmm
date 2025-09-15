@@ -5,29 +5,29 @@
 "f" = (
 /obj/structure/bed,
 /turf/simulated/mineral/floor/cave,
-/area/tether_away/beach/desert/poi/huntercamp)
+/area/sector/miaphus/beach/desert/poi/huntercamp)
 "g" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/huntercamp)
+/area/sector/miaphus/beach/desert/poi/huntercamp)
 "j" = (
 /turf/simulated/mineral/floor/cave,
-/area/tether_away/beach/desert/poi/huntercamp)
+/area/sector/miaphus/beach/desert/poi/huntercamp)
 "o" = (
 /obj/random/trash,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/huntercamp)
+/area/sector/miaphus/beach/desert/poi/huntercamp)
 "p" = (
 /obj/random/junk,
 /turf/simulated/mineral/floor/cave,
-/area/tether_away/beach/desert/poi/huntercamp)
+/area/sector/miaphus/beach/desert/poi/huntercamp)
 "r" = (
 /obj/random/junk,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/huntercamp)
+/area/sector/miaphus/beach/desert/poi/huntercamp)
 "t" = (
 /obj/effect/debris/cleanable/blood/gibs,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/huntercamp)
+/area/sector/miaphus/beach/desert/poi/huntercamp)
 "u" = (
 /obj/structure/closet/crate/freezer,
 /obj/item/reagent_containers/food/snacks/xenomeat/spidermeat,
@@ -37,39 +37,39 @@
 /obj/item/reagent_containers/food/snacks/xenomeat/spidermeat,
 /obj/item/reagent_containers/food/snacks/xenomeat/spidermeat,
 /turf/simulated/mineral/floor/cave,
-/area/tether_away/beach/desert/poi/huntercamp)
+/area/sector/miaphus/beach/desert/poi/huntercamp)
 "x" = (
 /obj/structure/simple_door/wood,
 /turf/simulated/mineral/floor/cave,
-/area/tether_away/beach/desert/poi/huntercamp)
+/area/sector/miaphus/beach/desert/poi/huntercamp)
 "y" = (
 /obj/item/flame/lighter/zippo/taj,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/huntercamp)
+/area/sector/miaphus/beach/desert/poi/huntercamp)
 "z" = (
 /obj/structure/table/standard,
 /obj/item/material/knife/butch,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/huntercamp)
+/area/sector/miaphus/beach/desert/poi/huntercamp)
 "B" = (
 /obj/structure/closet/crate/freezer/rations,
 /turf/simulated/mineral/floor/cave,
-/area/tether_away/beach/desert/poi/huntercamp)
+/area/sector/miaphus/beach/desert/poi/huntercamp)
 "D" = (
 /obj/structure/bonfire,
 /obj/item/reagent_containers/cooking_container/grill,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/huntercamp)
+/area/sector/miaphus/beach/desert/poi/huntercamp)
 "I" = (
 /obj/structure/table/rack,
 /obj/fiftyspawner/log,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/huntercamp)
+/area/sector/miaphus/beach/desert/poi/huntercamp)
 "K" = (
 /obj/structure/kitchenspike,
 /obj/effect/debris/cleanable/blood/gibs,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/huntercamp)
+/area/sector/miaphus/beach/desert/poi/huntercamp)
 "L" = (
 /obj/structure/table/woodentable,
 /obj/random/firstaid,
@@ -79,37 +79,37 @@
 /obj/item/material/twohanded/spear,
 /obj/item/material/twohanded/spear,
 /turf/simulated/mineral/floor/cave,
-/area/tether_away/beach/desert/poi/huntercamp)
+/area/sector/miaphus/beach/desert/poi/huntercamp)
 "P" = (
 /obj/structure/sandbag,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/huntercamp)
+/area/sector/miaphus/beach/desert/poi/huntercamp)
 "R" = (
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/huntercamp)
+/area/sector/miaphus/beach/desert/poi/huntercamp)
 "V" = (
 /turf/simulated/wall/wood,
-/area/tether_away/beach/desert/poi/huntercamp)
+/area/sector/miaphus/beach/desert/poi/huntercamp)
 "W" = (
 /obj/structure/table/woodentable,
 /obj/item/flashlight/lantern,
 /obj/item/material/knife/tacknife/survival,
 /obj/item/material/knife/tacknife/survival,
-/obj/item/gun/ballistic/bow,
+/obj/item/gun/projectile/ballistic/bow,
 /obj/item/storage/belt/quiver/full,
 /turf/simulated/mineral/floor/cave,
-/area/tether_away/beach/desert/poi/huntercamp)
+/area/sector/miaphus/beach/desert/poi/huntercamp)
 "Z" = (
 /obj/structure/table/woodentable,
-/obj/item/gun/ballistic/contender/taj/a762,
+/obj/item/gun/projectile/ballistic/contender/taj/a762,
 /obj/item/ammo_magazine/a7_62mm/clip/hunter,
 /obj/item/storage/firstaid/toxin,
 /obj/item/storage/fancy/cigar/taj,
 /obj/random/junk,
 /obj/item/ammo_magazine/a7_62mm/clip/hunter,
 /turf/simulated/mineral/floor/cave,
-/area/tether_away/beach/desert/poi/huntercamp)
+/area/sector/miaphus/beach/desert/poi/huntercamp)
 
 (1,1,1) = {"
 a

@@ -1,4 +1,4 @@
-/datum/material/alienalloy/derelictalloy
+/datum/prototype/material/alienalloy/derelictalloy
 	id = "derelictalloy"
 	name = "derelictalloy"
 
@@ -15,7 +15,7 @@
 
 /turf/simulated/wall/event/derelict_wall
 	icon = 'code/game/content/factions/derelict/derelict.dmi/derelict_walls.dmi'
-	material_outer = /datum/material/alienalloy/derelictalloy
+	material_outer = /datum/prototype/material/alienalloy/derelictalloy
 	name = "derelict wall"
 	desc = "A wall made up of some sort of strange alloy... It has lots of pipes, tubes and other utility structure on full display."
 	description_info = "Maybe it's best NOT to compromise a excavation site due to curiosity?"
@@ -95,7 +95,7 @@
 // Doors
 
 /obj/structure/simple_door/derelict
-	material_parts = /datum/material/alienalloy/derelictalloy
+	material_parts = /datum/prototype/material/alienalloy/derelictalloy
 	icon = 'code/game/content/factions/derelict/derelict.dmi/derelict_doors.dmi'
 	integrity_enabled = 0
 

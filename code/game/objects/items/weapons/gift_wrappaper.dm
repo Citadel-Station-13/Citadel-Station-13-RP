@@ -89,9 +89,9 @@
 		/obj/item/pickaxe/silver,
 		/obj/item/pen/invisible,
 		/obj/item/lipstick/random,
-		/obj/item/grenade/smokebomb,
+		/obj/item/grenade/simple/smoke,
 		/obj/item/corncob,
-		/obj/item/contraband/poster,
+		/obj/item/poster,
 		/obj/item/book/manual/barman_recipes,
 		/obj/item/book/manual/chef_recipes,
 		/obj/item/bikehorn,
@@ -100,7 +100,7 @@
 		/obj/item/toy/balloon,
 		/obj/item/toy/blink,
 		/obj/item/toy/crossbow,
-		/obj/item/gun/ballistic/revolver/capgun,
+		/obj/item/gun/projectile/ballistic/revolver/capgun,
 		/obj/item/toy/katana,
 		/obj/item/toy/prize/deathripley,
 		/obj/item/toy/prize/durand,
@@ -204,9 +204,9 @@
 		/obj/item/clothing/mask/gas/skeleton,
 		/obj/fiftyspawner/bananium,
 		/obj/item/storage/backpack/holding,
-		/obj/item/grenade/smokebomb,
+		/obj/item/grenade/simple/smoke,
 		/obj/item/toy/crossbow,
-		/obj/item/gun/ballistic/revolver/capgun,
+		/obj/item/gun/projectile/ballistic/revolver/capgun,
 		/obj/item/toy/katana,
 		/obj/item/toy/sword,
 		/obj/item/storage/belt/utility/full)
@@ -271,12 +271,12 @@
 	. = ..()
 	. += "There is about [src.amount] square units of paper left!"
 
-/obj/item/wrapping_paper/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/wrapping_paper/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if (!istype(target, /mob/living/carbon/human))
 		return
 	var/mob/living/carbon/human/H = target
 
-	if (istype(H.wear_suit, /obj/item/clothing/suit/straight_jacket) || H.stat)
+	if (istype(H.inventory.get_slot_single(/datum/inventory_slot/inventory/suit), /obj/item/clothing/suit/straight_jacket) || H.stat)
 		if (src.amount > 2)
 			var/obj/effect/spresent/present = new /obj/effect/spresent (H.loc)
 			src.amount -= 2

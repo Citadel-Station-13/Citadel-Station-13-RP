@@ -10,10 +10,7 @@
 	..()
 
 	var/severity_range = 0
-	severity = pickweight(EVENT_LEVEL_MUNDANE = 10,
-		EVENT_LEVEL_MODERATE = 5,
-		EVENT_LEVEL_MAJOR = 1
-		)
+	severity = pick_weight(mundande_weight = 10, moderate_weight = 5, major_weight = 1)
 
 	switch(severity)
 		if(EVENT_LEVEL_MUNDANE)

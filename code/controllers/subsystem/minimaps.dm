@@ -9,7 +9,7 @@ SUBSYSTEM_DEF(minimaps)
 		to_chat(world, "<span class='boldwarning'>Minimaps disabled! Skipping init.</span>")
 		return ..()
 	build_minimaps()
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/minimaps/proc/build_minimaps()
 	station_minimaps = list()

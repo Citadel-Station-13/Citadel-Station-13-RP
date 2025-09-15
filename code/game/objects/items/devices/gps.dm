@@ -69,6 +69,7 @@
 
 /obj/item/gps/update_icon()
 	cut_overlays()
+	. = ..()
 	if(emped)
 		add_overlay("emp")
 	else if(on)

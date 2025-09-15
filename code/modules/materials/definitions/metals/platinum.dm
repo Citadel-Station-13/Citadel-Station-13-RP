@@ -1,4 +1,4 @@
-/datum/material/platinum
+/datum/prototype/material/platinum
 	name = "platinum"
 	id = MAT_PLATINUM
 	stack_type = /obj/item/stack/material/platinum
@@ -21,3 +21,5 @@
 	refraction = MATERIAL_RESISTANCE_MODERATE
 	absorption = MATERIAL_RESISTANCE_LOW
 	nullification = MATERIAL_RESISTANCE_HIGH
+
+	material_constraints = MATERIAL_CONSTRAINT_RIGID

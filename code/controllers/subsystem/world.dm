@@ -41,7 +41,7 @@ SUBSYSTEM_DEF(game_world)
 	initialize_locations()
 	initialize_factions()
 	initialize_map()
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/game_world/proc/initialize_locations()
 	location_lookup = list()

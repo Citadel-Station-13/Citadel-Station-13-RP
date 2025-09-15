@@ -38,8 +38,8 @@
 	if(!isnull(duration))
 		src.duration = duration
 	started = world.time
-	rebuild_decay_timer()
 	on_apply(arglist(arguments))
+	rebuild_decay_timer()
 
 /datum/status_effect/Destroy()
 	owner?.status_effects?.Remove(identifier)
@@ -50,6 +50,12 @@
 		decay_timer = null
 	return ..()
 
+/**
+ * Called on tick
+ *
+ * @params
+ * * dt - seconds elapsed
+ */
 /datum/status_effect/proc/tick(dt)
 	SHOULD_NOT_SLEEP(TRUE)
 

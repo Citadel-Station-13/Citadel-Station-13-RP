@@ -3,8 +3,7 @@
  */
 SUBSYSTEM_DEF(ipintel)
 	name = "IPIntel"
-	init_order = INIT_ORDER_IPINTEL
-	subsystem_flags = SS_NO_FIRE
+	subsystem_flags = SS_NO_FIRE | SS_NO_INIT
 
 	/// is ipintel enabled?
 	var/enabled = FALSE
@@ -21,7 +20,7 @@ SUBSYSTEM_DEF(ipintel)
 	/// max retries
 	var/max_retries = 1
 
-/datum/controller/subsystem/ipintel/OnConfigLoad()
+/datum/controller/subsystem/ipintel/on_config_loaded()
 	. = ..()
 	enabled = !!CONFIG_GET(flag/ipintel_enabled)
 	consequetive_errors = 0
@@ -140,7 +139,7 @@ SUBSYSTEM_DEF(ipintel)
 /datum/controller/subsystem/ipintel/proc/ipintel_cache_fetch_impl(address)
 	PRIVATE_PROC(TRUE)
 	var/datum/db_query/fetch = SSdbcore.NewQuery(
-		"SELECT date, intel, TIMESTAMPDIFF(MINUTE,date,NOW()) FROM [format_table_name("ipintel")] WHERE ip = INET_ATON(:ip)",
+		"SELECT date, intel, TIMESTAMPDIFF(MINUTE,date,NOW()) FROM [DB_PREFIX_TABLE_NAME("ipintel")] WHERE ip = INET_ATON(:ip)",
 		list(
 			"ip" = address,
 		)
@@ -168,7 +167,7 @@ SUBSYSTEM_DEF(ipintel)
 /datum/controller/subsystem/ipintel/proc/ipintel_cache_store_impl(datum/ipintel/entry)
 	PRIVATE_PROC(TRUE)
 	var/datum/db_query/update = SSdbcore.NewQuery(
-		"INSERT INTO [format_table_name("ipintel")] (ip, intel) VALUES (INET_ATON(:ip), :intel) \
+		"INSERT INTO [DB_PREFIX_TABLE_NAME("ipintel")] (ip, intel) VALUES (INET_ATON(:ip), :intel) \
 		ON DUPLICATE KEY UPDATE intel = VALUES(intel), date = NOW()",
 		list(
 			"ip" = entry.address,

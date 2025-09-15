@@ -91,16 +91,16 @@
 /obj/item/ammo_magazine/a5_56mm/ap,
 /obj/item/ammo_magazine/a5_56mm/ap,
 /obj/item/ammo_magazine/a5_56mm/ap,
-/obj/item/gun/ballistic/automatic/sts35,
-/obj/item/gun/ballistic/automatic/sts35,
+/obj/item/gun/projectile/ballistic/automatic/sts35,
+/obj/item/gun/projectile/ballistic/automatic/sts35,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
 "al" = (
 /obj/structure/table/rack,
-/obj/item/gun/energy/plasmastun,
-/obj/item/gun/energy/plasmastun,
+/obj/item/gun/projectile/energy/plasmastun,
+/obj/item/gun/projectile/energy/plasmastun,
 /obj/effect/floor_decal/corner/red{
 	dir = 5
 	},
@@ -110,8 +110,8 @@
 /area/antag/antag_base)
 "am" = (
 /obj/structure/table/rack,
-/obj/item/gun/energy/darkmatter,
-/obj/item/gun/energy/darkmatter,
+/obj/item/gun/projectile/energy/darkmatter,
+/obj/item/gun/projectile/energy/darkmatter,
 /obj/effect/floor_decal/corner/red{
 	dir = 5
 	},
@@ -124,7 +124,7 @@
 	dir = 5
 	},
 /obj/structure/table/rack,
-/obj/item/gun/ballistic/rocket,
+/obj/item/gun/projectile/ballistic/rocket,
 /obj/item/ammo_casing/rocket,
 /obj/item/ammo_casing/rocket,
 /obj/item/ammo_casing/rocket,
@@ -155,7 +155,7 @@
 	dir = 6
 	},
 /obj/item/storage/box/sniperammo,
-/obj/item/gun/ballistic/heavysniper,
+/obj/item/gun/projectile/ballistic/heavysniper,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -175,8 +175,8 @@
 /area/antag/antag_base)
 "as" = (
 /obj/structure/table/rack,
-/obj/item/gun/energy/xray,
-/obj/item/gun/energy/xray,
+/obj/item/gun/projectile/energy/xray,
+/obj/item/gun/projectile/energy/xray,
 /obj/effect/floor_decal/corner/red{
 	dir = 6
 	},
@@ -252,7 +252,7 @@
 /obj/item/ammo_magazine/a44/speedloader,
 /obj/item/ammo_magazine/a44/speedloader,
 /obj/item/ammo_magazine/a44/speedloader,
-/obj/item/gun/ballistic/revolver/consul,
+/obj/item/gun/projectile/ballistic/revolver/consul,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -264,8 +264,8 @@
 	},
 /obj/item/storage/box/shotgunshells/large,
 /obj/item/storage/box/shotgunammo/large,
-/obj/item/gun/ballistic/shotgun/pump/combat,
-/obj/item/gun/ballistic/shotgun/pump/combat,
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat,
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -283,8 +283,8 @@
 /obj/item/ammo_magazine/a9mm,
 /obj/item/ammo_magazine/a9mm,
 /obj/item/ammo_magazine/a9mm,
-/obj/item/gun/ballistic/luger,
-/obj/item/gun/ballistic/luger/brown,
+/obj/item/gun/projectile/ballistic/luger,
+/obj/item/gun/projectile/ballistic/luger/brown,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -294,8 +294,8 @@
 /obj/effect/floor_decal/corner/red{
 	dir = 10
 	},
-/obj/item/gun/energy/lasercannon,
-/obj/item/gun/energy/lasercannon,
+/obj/item/gun/projectile/energy/lasercannon,
+/obj/item/gun/projectile/energy/lasercannon,
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
@@ -306,8 +306,8 @@
 /area/antag/antag_base)
 "aA" = (
 /obj/structure/table/rack,
-/obj/item/gun/energy/sniperrifle,
-/obj/item/gun/energy/sniperrifle,
+/obj/item/gun/projectile/energy/sniperrifle,
+/obj/item/gun/projectile/energy/sniperrifle,
 /obj/effect/floor_decal/corner/red{
 	dir = 10
 	},
@@ -511,11 +511,11 @@
 /area/antag/antag_base)
 "aQ" = (
 /obj/structure/table/rack,
-/obj/item/gun/energy/sizegun,
-/obj/item/gun/energy/sizegun,
-/obj/item/gun/energy/sizegun,
-/obj/item/gun/energy/sizegun,
-/obj/item/gun/energy/sizegun,
+/obj/item/gun/projectile/energy/sizegun,
+/obj/item/gun/projectile/energy/sizegun,
+/obj/item/gun/projectile/energy/sizegun,
+/obj/item/gun/projectile/energy/sizegun,
+/obj/item/gun/projectile/energy/sizegun,
 /obj/effect/floor_decal/corner/purple{
 	dir = 5
 	},
@@ -687,12 +687,12 @@
 /obj/item/ammo_magazine/a10mm,
 /obj/item/ammo_magazine/a10mm,
 /obj/item/ammo_magazine/a10mm,
-/obj/item/gun/ballistic/automatic/c20r,
-/obj/item/gun/ballistic/automatic/c20r,
-/obj/item/gun/ballistic/automatic/c20r,
-/obj/item/gun/ballistic/automatic/c20r,
-/obj/item/gun/ballistic/automatic/c20r,
-/obj/item/gun/ballistic/automatic/c20r,
+/obj/item/gun/projectile/ballistic/automatic/c20r,
+/obj/item/gun/projectile/ballistic/automatic/c20r,
+/obj/item/gun/projectile/ballistic/automatic/c20r,
+/obj/item/gun/projectile/ballistic/automatic/c20r,
+/obj/item/gun/projectile/ballistic/automatic/c20r,
+/obj/item/gun/projectile/ballistic/automatic/c20r,
 /obj/effect/floor_decal/corner/red{
 	dir = 9
 	},
@@ -705,13 +705,13 @@
 /area/antag/antag_base)
 "bf" = (
 /obj/structure/table/rack,
-/obj/item/gun/ballistic/silenced,
-/obj/item/gun/ballistic/silenced,
-/obj/item/gun/ballistic/silenced,
-/obj/item/gun/ballistic/silenced,
-/obj/item/gun/ballistic/silenced,
-/obj/item/gun/ballistic/silenced,
-/obj/item/gun/ballistic/silenced,
+/obj/item/gun/projectile/ballistic/silenced,
+/obj/item/gun/projectile/ballistic/silenced,
+/obj/item/gun/projectile/ballistic/silenced,
+/obj/item/gun/projectile/ballistic/silenced,
+/obj/item/gun/projectile/ballistic/silenced,
+/obj/item/gun/projectile/ballistic/silenced,
+/obj/item/gun/projectile/ballistic/silenced,
 /obj/effect/floor_decal/corner/red{
 	dir = 9
 	},
@@ -814,19 +814,19 @@
 /area/antag/antag_base)
 "bn" = (
 /obj/structure/table/rack,
-/obj/item/ammo_magazine/a45/rubber,
-/obj/item/ammo_magazine/a45/rubber,
-/obj/item/ammo_magazine/a45/rubber,
-/obj/item/ammo_magazine/a45/rubber,
-/obj/item/ammo_magazine/a45/rubber,
-/obj/item/ammo_magazine/a45/rubber,
-/obj/item/ammo_magazine/a45,
-/obj/item/ammo_magazine/a45,
-/obj/item/ammo_magazine/a45,
-/obj/item/ammo_magazine/a45,
-/obj/item/ammo_magazine/a45,
-/obj/item/ammo_magazine/a45,
-/obj/item/ammo_magazine/a45,
+/obj/item/ammo_magazine/a45/doublestack/rubber,
+/obj/item/ammo_magazine/a45/doublestack/rubber,
+/obj/item/ammo_magazine/a45/doublestack/rubber,
+/obj/item/ammo_magazine/a45/doublestack/rubber,
+/obj/item/ammo_magazine/a45/doublestack/rubber,
+/obj/item/ammo_magazine/a45/doublestack/rubber,
+/obj/item/ammo_magazine/a45/doublestack,
+/obj/item/ammo_magazine/a45/doublestack,
+/obj/item/ammo_magazine/a45/doublestack,
+/obj/item/ammo_magazine/a45/doublestack,
+/obj/item/ammo_magazine/a45/doublestack,
+/obj/item/ammo_magazine/a45/doublestack,
+/obj/item/ammo_magazine/a45/doublestack,
 /obj/effect/floor_decal/corner/red{
 	dir = 9
 	},
@@ -839,10 +839,10 @@
 /area/antag/antag_base)
 "bo" = (
 /obj/structure/table/rack,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
+/obj/item/gun/projectile/energy/laser,
+/obj/item/gun/projectile/energy/laser,
+/obj/item/gun/projectile/energy/laser,
+/obj/item/gun/projectile/energy/laser,
 /obj/effect/floor_decal/corner/red{
 	dir = 9
 	},
@@ -896,12 +896,12 @@
 /area/antag/antag_base)
 "bu" = (
 /obj/structure/table/rack,
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
+/obj/item/gun/projectile/energy/gun,
+/obj/item/gun/projectile/energy/gun,
+/obj/item/gun/projectile/energy/gun,
+/obj/item/gun/projectile/energy/gun,
+/obj/item/gun/projectile/energy/gun,
+/obj/item/gun/projectile/energy/gun,
 /obj/effect/floor_decal/corner/yellow{
 	dir = 6
 	},
@@ -914,10 +914,10 @@
 /area/antag/antag_base)
 "bv" = (
 /obj/structure/table/rack,
-/obj/item/gun/energy/ionrifle/pistol,
-/obj/item/gun/energy/ionrifle/pistol,
-/obj/item/gun/energy/ionrifle,
-/obj/item/gun/energy/ionrifle,
+/obj/item/gun/projectile/energy/ionrifle/pistol,
+/obj/item/gun/projectile/energy/ionrifle/pistol,
+/obj/item/gun/projectile/energy/ionrifle,
+/obj/item/gun/projectile/energy/ionrifle,
 /obj/effect/floor_decal/corner/yellow{
 	dir = 6
 	},
@@ -999,8 +999,8 @@
 /area/antag/antag_base)
 "bE" = (
 /obj/structure/table/rack,
-/obj/item/gun/energy/netgun,
-/obj/item/gun/energy/netgun,
+/obj/item/gun/projectile/energy/netgun,
+/obj/item/gun/projectile/energy/netgun,
 /obj/effect/floor_decal/corner/blue{
 	dir = 6
 	},
@@ -1013,17 +1013,17 @@
 /area/antag/antag_base)
 "bF" = (
 /obj/structure/table/rack,
-/obj/item/gun/energy/taser,
-/obj/item/gun/energy/taser,
-/obj/item/gun/energy/taser,
-/obj/item/gun/energy/taser,
-/obj/item/gun/energy/taser,
-/obj/item/gun/energy/taser,
-/obj/item/gun/energy/stunrevolver,
-/obj/item/gun/energy/stunrevolver,
-/obj/item/gun/energy/stunrevolver,
-/obj/item/gun/energy/stunrevolver,
-/obj/item/gun/energy/stunrevolver,
+/obj/item/gun/projectile/energy/taser,
+/obj/item/gun/projectile/energy/taser,
+/obj/item/gun/projectile/energy/taser,
+/obj/item/gun/projectile/energy/taser,
+/obj/item/gun/projectile/energy/taser,
+/obj/item/gun/projectile/energy/taser,
+/obj/item/gun/projectile/energy/stunrevolver,
+/obj/item/gun/projectile/energy/stunrevolver,
+/obj/item/gun/projectile/energy/stunrevolver,
+/obj/item/gun/projectile/energy/stunrevolver,
+/obj/item/gun/projectile/energy/stunrevolver,
 /obj/effect/floor_decal/corner/blue{
 	dir = 6
 	},
@@ -2241,8 +2241,8 @@
 	},
 /area/antag/antag_base)
 "dD" = (
-/obj/item/gun/energy/sizegun,
-/obj/item/gun/energy/sizegun,
+/obj/item/gun/projectile/energy/sizegun,
+/obj/item/gun/projectile/energy/sizegun,
 /obj/structure/table/steel,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -2310,8 +2310,8 @@
 	pixel_x = 5;
 	pixel_y = -32
 	},
-/obj/item/gun/energy/taser,
-/obj/item/gun/energy/taser,
+/obj/item/gun/projectile/energy/taser,
+/obj/item/gun/projectile/energy/taser,
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
 /obj/structure/table/steel,
@@ -2464,9 +2464,9 @@
 	name = "Grenade Crate";
 	opened = 1
 	},
-/obj/item/grenade/chem_grenade,
-/obj/item/grenade/chem_grenade,
-/obj/item/grenade/chem_grenade,
+/obj/item/grenade/simple/chemical,
+/obj/item/grenade/simple/chemical,
+/obj/item/grenade/simple/chemical,
 /obj/item/assembly/igniter,
 /obj/item/assembly/igniter,
 /obj/item/assembly/igniter,
@@ -3351,7 +3351,7 @@
 /obj/item/ammo_magazine/a38,
 /obj/item/ammo_magazine/a38,
 /obj/item/ammo_magazine/a38,
-/obj/item/gun/ballistic/giskard,
+/obj/item/gun/projectile/ballistic/giskard,
 /obj/item/clothing/accessory/holster,
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_red"

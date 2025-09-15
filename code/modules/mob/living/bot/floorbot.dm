@@ -31,7 +31,7 @@
 	var/eattiles = FALSE
 	var/maketiles = FALSE
 	var/targetdirection = null
-	var/floor_build_type = /singleton/flooring/tiling // Basic steel floor.
+	var/floor_build_type = /datum/prototype/flooring/tiling // Basic steel floor.
 	var/toolbox = /obj/item/storage/toolbox/mechanical
 	skin = "blue" // Blue Toolbox is the default
 
@@ -279,8 +279,7 @@
 			update_icons()
 			visible_message("<span class='notice'>\The [src] begins to remove the broken floor.</span>")
 			if(do_after(src, 50, F))
-				if(F.broken || F.burnt)
-					F.make_plating()
+				F.auto_dismantle_flooring()
 			target = null
 			busy = 0
 			update_icons()
@@ -290,7 +289,7 @@
 			visible_message("<span class='notice'>\The [src] begins to improve the floor.</span>")
 			if(do_after(src, 50))
 				if(!F.flooring)
-					F.set_flooring(get_flooring_data(floor_build_type))
+					F.set_flooring(RSflooring.fetch(floor_build_type))
 					addTiles(-1)
 			target = null
 			busy = 0
@@ -322,7 +321,7 @@
 /mob/living/bot/floorbot/explode()
 	turn_off()
 	visible_message("<span class='danger'>\The [src] blows apart!</span>")
-	playsound(src.loc, /datum/soundbyte/grouped/sparks, 50, 1)
+	playsound(src.loc, /datum/soundbyte/sparks, 50, 1)
 	var/turf/Tsec = get_turf(src)
 
 	var/obj/item/storage/toolbox/mechanical/N = new /obj/item/storage/toolbox/mechanical(Tsec)

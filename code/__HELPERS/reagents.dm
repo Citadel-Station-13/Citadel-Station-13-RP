@@ -1,32 +1,27 @@
-// todo: this doesn't entirely work. see recipe for peridaxon requiring priority.
 /proc/chem_recipes_do_conflict(datum/chemical_reaction/r1, datum/chemical_reaction/r2)
-	// do the non-list tests first, because they are cheaper
-	if(r1.required_container != r2.required_container)
+	// we can only conflict with something that requires the same container
+	if(r1.required_container_path != r2.required_container_path)
 		return FALSE
-	// if(r1.is_cold_recipe == r2.is_cold_recipe)
-	// 	if(r1.required_temp != r2.required_temp)
-	// 		//one reaction requires a more extreme temperature than the other, so there is no conflict
-	// 		return FALSE
-	// else
-	// 	var/datum/chemical_reaction/cold_one = r1.is_cold_recipe ? r1 : r2
-	// 	var/datum/chemical_reaction/warm_one = r1.is_cold_recipe ? r2 : r1
-	// 	if(cold_one.required_temp < warm_one.required_temp)
-	// 		//the range of temperatures does not overlap, so there is no conflict
-	// 		return FALSE
+
+	// we cannot conflict with a non-overlapping temperature range
+	if(r1.temperature_low >= r2.temperature_high || r1.temperature_high <= r2.temperature_low)
+		return FALSE
+
+	// todo: legacy below
 
 	//find the reactions with the shorter and longer required_reagents list
 	var/datum/chemical_reaction/long_req
 	var/datum/chemical_reaction/short_req
-	if(r1.required_reagents.len > r2.required_reagents.len)
+	if(length(r1.required_reagents) > length(r2.required_reagents))
 		long_req = r1
 		short_req = r2
-	else if(r1.required_reagents.len < r2.required_reagents.len)
+	else if(length(r1.required_reagents) < length(r2.required_reagents))
 		long_req = r2
 		short_req = r1
 	else
 		//if they are the same length, sort instead by the length of the catalyst list
 		//this is important if the required_reagents lists are the same
-		if(r1.catalysts.len > r2.catalysts.len)
+		if(length(r1.catalysts) > length(r2.catalysts))
 			long_req = r1
 			short_req = r2
 		else
@@ -35,7 +30,7 @@
 
 
 	//check if the shorter reaction list is a subset of the longer one
-	var/list/overlap = r1.required_reagents & r2.required_reagents
+	var/list/overlap = (r1.required_reagents || list()) & (r2.required_reagents || list())
 	if(overlap.len != short_req.required_reagents.len)
 		//there is at least one reagent in the short list that is not in the long list, so there is no conflict
 		return FALSE
@@ -43,7 +38,7 @@
 	//check to see if the shorter reaction's catalyst list is also a subset of the longer reaction's catalyst list
 	//if the longer reaction's catalyst list is a subset of the shorter ones, that is fine
 	//if the reaction lists are the same, the short reaction will have the shorter required_catalysts list, so it will register as a conflict
-	var/list/short_minus_long_catalysts = short_req.catalysts - long_req.catalysts
+	var/list/short_minus_long_catalysts = (short_req.catalysts || list()) - (long_req.catalysts || list())
 	if(short_minus_long_catalysts.len)
 		//there is at least one unique catalyst for the short reaction, so there is no conflict
 		return FALSE

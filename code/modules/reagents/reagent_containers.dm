@@ -6,32 +6,58 @@
 	w_class = WEIGHT_CLASS_SMALL
 	item_flags = ITEM_CAREFUL_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 
-	/// start reagent list. overrides reagent/volume. list(id = volume); volume must be specified.
-	var/list/start_with
+	/// start reagent list. list(id = volume); volume must be specified.
+	/// * overrides [start_with_single_reagent], [start_with_single_volume], and [start_with_single_data_initializer]
+	var/list/start_with_reagents
+	/// start reagent datas. only checked if [start_with_reagents] is set. list(id = data). this is optional.
+	var/list/start_with_reagents_data_initializers
+
 	/// start reagent id or path
-	var/start_reagent
+	var/start_with_single_reagent
 	/// start reagent amount. null for max.
-	var/start_volume
+	var/start_with_single_volume
+	/// start reagent data initializer
+	var/start_with_single_data_initializer
+
 	/// volume of our default reagents holder
+	//  todo: rename to something else
 	var/volume = 30
-	/// automatically rename to [[start_reagent]]
+	/// automatically rename to [[start_with_single_reagent]]
+	//  todo: rename to something else
 	var/start_rename = FALSE
 
+	// todo: shouldn't be settable for drinking / feeding
 	var/amount_per_transfer_from_this = 5
+	// todo: typelist?
 	var/possible_transfer_amounts = list(5,10,15,25,30)
+
+	// At what point we apply the different icon states
+	var/list/fill_icon_thresholds = null
+	/// The optional custom name for the reagent fill icon_state prefix
+	/// If not set, uses the current icon state.
+	var/fill_icon_state = null
+	/// The icon file to take fill icon appearances from
+	var/fill_icon = 'icons/obj/medical/reagentfillings.dmi'
 
 /obj/item/reagent_containers/Initialize(mapload)
 	. = ..()
+	// todo: shouldn't be a verb
 	if(!possible_transfer_amounts)
 		remove_obj_verb(src, /obj/item/reagent_containers/verb/set_APTFT)
+	// create reagents
 	create_reagents(volume)
-	if(!isnull(start_with))
-		for(var/id in start_with)
-			reagents.add_reagent(id, start_with[id])
-	else if(!isnull(start_reagent))
-		reagents.add_reagent(start_reagent, isnull(start_volume)? volume : start_volume)
+	// use multi if provided
+	if(start_with_reagents)
+		for(var/id in start_with_reagents)
+			reagents.add_reagent(id, start_with_reagents[id], start_with_reagents_data_initializers?[id])
+		start_with_reagents = null
+		if(start_with_reagents_data_initializers)
+			start_with_reagents_data_initializers = null
+	// else use single if provided
+	else if(start_with_single_reagent)
+		reagents.add_reagent(start_with_single_reagent, isnull(start_with_single_volume)? volume : start_with_single_volume, start_with_single_data_initializer)
 		if(start_rename)
-			var/datum/reagent/R = start_reagent
+			var/datum/reagent/R = start_with_single_reagent
 			name = "[name] ([initial(R.name)])"
 
 /obj/item/reagent_containers/verb/set_APTFT() //set amount_per_transfer_from_this
@@ -118,7 +144,7 @@
 				to_chat(user, "<span class='warning'>\The [blocked] is in the way!</span>")
 				return
 
-		user.setClickCooldown(user.get_attack_speed(src)) //puts a limit on how fast people can eat/drink things
+		user.setClickCooldownLegacy(user.get_attack_speed_legacy(src)) //puts a limit on how fast people can eat/drink things
 		self_feed_message(user)
 		reagents.trans_to_mob(user, issmall(user) ? CEILING(amount_per_transfer_from_this/2, 1) : amount_per_transfer_from_this, CHEM_INGEST)
 		feed_sound(user)
@@ -136,7 +162,7 @@
 
 		other_feed_message_start(user, target)
 
-		user.setClickCooldown(user.get_attack_speed(src))
+		user.setClickCooldownLegacy(user.get_attack_speed_legacy(src))
 		if(!do_mob(user, target))
 			return
 
@@ -163,3 +189,28 @@
 	var/trans = reagents.trans_to(target, amount_per_transfer_from_this)
 	to_chat(user, "<span class='notice'>You transfer [trans] units of the solution to [target].</span>")
 	return 1
+
+/obj/item/reagent_containers/update_overlays()
+	. = ..()
+	if(!fill_icon_thresholds)
+		return
+	if(!reagents.total_volume)
+		return
+
+	var/fill_name = fill_icon_state ? fill_icon_state : icon_state
+	var/mutable_appearance/filling = mutable_appearance(fill_icon, "[fill_name][fill_icon_thresholds[1]]")
+
+	var/percent = round((reagents.total_volume / volume) * 100)
+	for(var/i in 1 to fill_icon_thresholds.len)
+		var/threshold = fill_icon_thresholds[i]
+		var/threshold_end = (i == fill_icon_thresholds.len) ? INFINITY : fill_icon_thresholds[i+1]
+		if(threshold <= percent && percent < threshold_end)
+			filling.icon_state = "[fill_name][fill_icon_thresholds[i]]"
+
+	filling.color = reagents.get_color()
+
+	. += filling
+
+/obj/item/reagent_containers/on_reagent_change()
+	if(fill_icon_thresholds)
+		update_icon()

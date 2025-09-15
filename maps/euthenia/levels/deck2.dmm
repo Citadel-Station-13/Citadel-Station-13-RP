@@ -1021,7 +1021,7 @@
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck2/starboard_fore)
 "aIF" = (
-/obj/machinery/mineral/equipment_vendor/engineering,
+/obj/machinery/point_redemption_vendor/engineering,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "aIM" = (
@@ -2180,7 +2180,7 @@
 /obj/structure/railing/grey{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rnd/research/researchdivision)
 "btX" = (
 /obj/structure/mopbucket,
@@ -5776,7 +5776,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_y = 32
 	},
 /obj/structure/disposalpipe/trunk,
@@ -6455,7 +6455,7 @@
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_two/aft/starboard)
 "eAU" = (
-/obj/machinery/mecha_part_fabricator/pros,
+/obj/machinery/lathe/mecha_part_fabricator/pros,
 /obj/structure/sign/deck/second{
 	pixel_y = 32
 	},
@@ -9413,7 +9413,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/main_map/hallway/deck2)
 "gOn" = (
-/obj/machinery/mecha_part_fabricator,
+/obj/machinery/lathe/mecha_part_fabricator,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics)
 "gOJ" = (
@@ -10228,7 +10228,7 @@
 /area/main_map/maintenance/deck_two/forward/port)
 "hyB" = (
 /obj/structure/bed/chair/sofa/black/corner{
-	dir = 1
+	dir = 4
 	},
 /obj/effect/floor_decal/techfloor{
 	dir = 9
@@ -11738,7 +11738,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/station/fighter_bay)
 "iKu" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/rift/station/fighter_bay)
 "iKz" = (
@@ -15172,7 +15172,7 @@
 /obj/machinery/light/no_nightshift{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/medical/patient_wing)
 "lkm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -18575,7 +18575,7 @@
 /turf/simulated/floor/plating,
 /area/space)
 "nIA" = (
-/obj/machinery/r_n_d/circuit_imprinter,
+/obj/machinery/lathe/r_n_d/circuit_imprinter,
 /obj/item/reagent_containers/glass/beaker/sulphuric,
 /obj/structure/reagent_dispensers/acid{
 	pixel_y = 30
@@ -20118,7 +20118,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/obj/structure/sign/poster/nanotrasen{
+/obj/structure/poster/nanotrasen{
 	pixel_x = -32
 	},
 /turf/simulated/floor/wood,
@@ -21226,7 +21226,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_two/starboard)
 "pDC" = (
-/obj/machinery/mecha_part_fabricator,
+/obj/machinery/lathe/mecha_part_fabricator,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/station/fighter_bay/hangar)
 "pDF" = (
@@ -24129,7 +24129,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/mecha_part_fabricator,
+/obj/machinery/lathe/mecha_part_fabricator,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay/maintenance)
 "rOI" = (
@@ -24607,7 +24607,7 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rnd/research/researchdivision)
 "skY" = (
 /obj/machinery/atmospherics/pipe/simple/visible/purple{
@@ -28950,7 +28950,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 6
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/medical/patient_wing)
 "vxb" = (
 /obj/machinery/light/small{
@@ -30648,7 +30648,7 @@
 "wCb" = (
 /obj/structure/bed/chair/sofa/black/corner,
 /obj/machinery/light/no_nightshift{
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/security/observation)
@@ -32178,7 +32178,7 @@
 	dir = 10
 	},
 /obj/structure/flora/ausbushes/ppflowers,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/medical/patient_wing)
 "xEX" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{

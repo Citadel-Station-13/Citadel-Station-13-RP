@@ -17,7 +17,7 @@
 	name = "New Kingdom of Ahdomai"
 	id = "citizenship_tajaran_nka"
 	innate_languages = list(
-		/datum/language/tajaranakhani
+		/datum/prototype/language/tajaranakhani
 	)
 	desc = "New Kingdom of Ahdomai (NKA), a state led by the noble lines that survived the previous Revolution by remaining in hiding. The lofty titles of the nobles disguise that most of the nobility's financial situation remains only marginally better than the peasants. The NKA finds itself struggling to function with its limited constitutional powers, factional in-fighting between the military and the civilian government, and technological stagnation. Tajara under this banner are for religious and noble supremacy, revenge, and minor luddism."
 

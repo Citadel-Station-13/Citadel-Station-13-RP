@@ -1,0 +1,3290 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"al" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/osiris/colonial)
+"au" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"aW" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/event/derelict_floor6,
+/area/shuttle/osiris/colonial)
+"ba" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"bf" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/osiris/colonial)
+"bq" = (
+/obj/structure/bed/chair/sofa/beige{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/osiris/colonial)
+"by" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 10
+	},
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/osiris/colonial)
+"bC" = (
+/obj/effect/floor_decal/spline/plain,
+/obj/item/clothing/suit/colonial_redcoat,
+/obj/structure/closet/walllocker_double/west,
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/osiris/colonial)
+"bH" = (
+/obj/effect/floor_decal/spline/fancy/wood,
+/turf/simulated/floor/glass/reinforced,
+/area/shuttle/osiris/colonial)
+"bR" = (
+/turf/simulated/wall/r_lead,
+/area/shuttle/osiris/colonial)
+"bV" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 9
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/osiris/colonial)
+"ca" = (
+/obj/effect/floor_decal/borderfloorblack/full,
+/obj/structure/table/steel_reinforced,
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/osiris/colonial)
+"cc" = (
+/obj/effect/floor_decal/borderfloorblack/full,
+/obj/machinery/computer/ship/engines/adv{
+	dir = 4
+	},
+/obj/item/gps/internal/base{
+	gps_tag = "COLONIAL-II"
+	},
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/colonial)
+"cf" = (
+/mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/osiris/colonial)
+"cl" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 10
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"cA" = (
+/obj/effect/floor_decal/spline/plain,
+/obj/structure/bed/chair/sofa/beige/left{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/osiris/colonial)
+"cF" = (
+/obj/structure/simple_door/wood,
+/turf/simulated/floor/event/derelict_floor6,
+/area/shuttle/osiris/colonial)
+"cL" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"cP" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/cyan,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"cW" = (
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"dC" = (
+/obj/effect/floor_decal/spline/plain,
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/osiris/colonial)
+"dO" = (
+/obj/machinery/atmospherics/component/unary/heater,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"dX" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/obj/machinery/air_alarm/alarms_hidden/west_mount,
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"dY" = (
+/obj/machinery/door/airlock/silver,
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/osiris/colonial)
+"eD" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 5
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"eW" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"fe" = (
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/structure/bed/chair/comfy/beige{
+	dir = 1
+	},
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"fF" = (
+/obj/machinery/atmospherics/portables_connector{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/osiris/colonial)
+"fM" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/obj/structure/bed/chair/sofa/beige/corner{
+	dir = 1
+	},
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"ga" = (
+/obj/structure/table/hardwoodtable,
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"gb" = (
+/turf/simulated/floor/plating,
+/area/shuttle/osiris/colonial)
+"gA" = (
+/obj/structure/filingcabinet/chestdrawer,
+/obj/structure/flora/pottedplant/orientaltree{
+	pixel_y = 20
+	},
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/osiris/colonial)
+"gJ" = (
+/obj/effect/floor_decal/borderfloorblack,
+/mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/osiris/colonial)
+"gP" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/wall/r_wall/prepainted,
+/area/shuttle/osiris/colonial)
+"gU" = (
+/obj/effect/floor_decal/borderfloorblack/full,
+/obj/machinery/door/airlock/vault,
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"hl" = (
+/obj/machinery/atmospherics/component/unary/engine/bigger{
+	dir = 8
+	},
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/osiris/colonial)
+"hn" = (
+/obj/effect/floor_decal/borderfloorblack/full,
+/obj/structure/table/rack/shelf/steel,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/colonial)
+"hy" = (
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/structure/bed/chair/comfy/beige{
+	dir = 1
+	},
+/mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison,
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"hD" = (
+/obj/effect/floor_decal/borderfloorblack/full,
+/obj/structure/event/prop/server1,
+/obj/machinery/air_alarm/alarms_hidden/west_mount,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/colonial)
+"ii" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/machinery/door/airlock/silver,
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/osiris/colonial)
+"ip" = (
+/obj/effect/floor_decal/borderfloorblack/full,
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/osiris/colonial)
+"iG" = (
+/obj/structure/bed/chair/bay/comfy/captain{
+	dir = 8
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/event/derelict_floor6,
+/area/shuttle/osiris/colonial)
+"iK" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack,
+/obj/machinery/door/airlock/voidcraft/vertical,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/map_helper/airlock/door/int_door,
+/obj/machinery/access_button/airlock_interior{
+	frequency = 1380;
+	master_tag = "colonial_docker3";
+	name = "internal access button";
+	pixel_x = -2;
+	pixel_y = 26
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/osiris/colonial)
+"jn" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/obj/structure/table/bench/wooden,
+/obj/structure/flora/pottedplant/flower{
+	pixel_y = 12
+	},
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/osiris/colonial)
+"jV" = (
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"kp" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"kw" = (
+/obj/machinery/power/smes/buildable/offmap_spawn,
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"kA" = (
+/obj/structure/closet/secure_closet/personal,
+/obj/item/storage/box/donkpockets,
+/obj/item/storage/box/glasses/meta,
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"kN" = (
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"kQ" = (
+/obj/machinery/shower{
+	dir = 8
+	},
+/turf/simulated/floor/event/derelict_floor6,
+/area/shuttle/osiris/colonial)
+"lf" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold4w/hidden,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"ln" = (
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -14
+	},
+/turf/simulated/floor/event/derelict_floor6,
+/area/shuttle/osiris/colonial)
+"lB" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/obj/structure/table/hardwoodtable,
+/obj/effect/floor_decal/spline/fancy/wood/corner{
+	dir = 8
+	},
+/obj/structure/flora/pottedplant/bamboo{
+	pixel_y = 17
+	},
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/event/derelict_floor6,
+/area/shuttle/osiris/colonial)
+"lC" = (
+/obj/effect/floor_decal/borderfloorblack/full,
+/obj/machinery/computer/ship/sensors/adv{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/colonial)
+"lK" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"lW" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/obj/structure/bookcase/lore,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"lZ" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/structure/table/marble,
+/obj/machinery/chemical_dispenser/catering/bar_alc,
+/turf/simulated/floor/event/derelict_floor6,
+/area/shuttle/osiris/colonial)
+"ma" = (
+/obj/machinery/door/airlock,
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/osiris/colonial)
+"mq" = (
+/obj/effect/floor_decal/borderfloorblack/full,
+/obj/machinery/computer/ship/sensors,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/colonial)
+"mw" = (
+/obj/structure/table/hardwoodtable,
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"mx" = (
+/obj/effect/floor_decal/borderfloorblack/full,
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 11
+	},
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/osiris/colonial)
+"mN" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/machinery/air_alarm/alarms_hidden/west_mount,
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"mX" = (
+/obj/structure/undies_wardrobe,
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/osiris/colonial)
+"nl" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"nr" = (
+/obj/structure/simple_door/wood,
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/turf/simulated/floor/wood,
+/area/shuttle/osiris/colonial)
+"nM" = (
+/obj/structure/bed/double/padded,
+/obj/item/bedsheet/browndouble,
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/osiris/colonial)
+"ok" = (
+/turf/simulated/floor/event/derelict_floor6,
+/area/shuttle/osiris/colonial)
+"ot" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 5
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"oG" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/obj/structure/bed/chair/sofa/beige/corner{
+	dir = 8
+	},
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"oI" = (
+/obj/map_helper/airlock/atmos/chamber_pump,
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	dir = 1;
+	frequency = 1380;
+	id_tag = "colonial_docker2"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"oV" = (
+/obj/machinery/atmospherics/portables_connector{
+	dir = 4
+	},
+/obj/machinery/portable_atmospherics/canister/phoron,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"pa" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/machinery/door/airlock/silver,
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"pc" = (
+/obj/structure/closet/walllocker_double/west,
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"pv" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"pK" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 5
+	},
+/obj/effect/floor_decal/spline/fancy/wood/corner{
+	dir = 8
+	},
+/obj/machinery/vending/cafe,
+/turf/simulated/floor/event/derelict_floor6,
+/area/shuttle/osiris/colonial)
+"pR" = (
+/obj/effect/floor_decal/spline/plain,
+/obj/structure/table/bench/wooden,
+/obj/structure/flora/pottedplant/small{
+	pixel_y = 12;
+	pixel_x = 4
+	},
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/osiris/colonial)
+"pW" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"pZ" = (
+/turf/simulated/floor/plasteel,
+/area/shuttle/osiris/colonial)
+"qr" = (
+/obj/map_helper/airlock/atmos/chamber_pump,
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	frequency = 1380;
+	id_tag = "colonial_docker"
+	},
+/obj/overmap/entity/visitable/ship/landable/osiris/colonial,
+/obj/effect/shuttle_landmark/shuttle_initializer/colonial,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"qA" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"rL" = (
+/obj/structure/flora/pottedplant/minitree,
+/obj/effect/floor_decal/spline/fancy/wood/cee{
+	dir = 8
+	},
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"sa" = (
+/obj/structure/simple_door/wood,
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/osiris/colonial)
+"sr" = (
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/cyan,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"sC" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/fancy/wood/corner{
+	dir = 8
+	},
+/obj/machinery/media/jukebox,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"sP" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"sS" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/component/binary/pump{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"sT" = (
+/obj/structure/bed/chair/sofa/beige{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/osiris/colonial)
+"tb" = (
+/obj/effect/floor_decal/borderfloorblack/full,
+/obj/item/modular_computer/console/preset/civilian,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/colonial)
+"td" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"tv" = (
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/structure/table/marble,
+/obj/machinery/chemical_dispenser/catering/bar_soft,
+/turf/simulated/floor/event/derelict_floor6,
+/area/shuttle/osiris/colonial)
+"tw" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"tH" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 6
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 6
+	},
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"tL" = (
+/obj/machinery/door/airlock/glass_external,
+/obj/map_helper/airlock/door/ext_door,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"tM" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"tO" = (
+/obj/structure/bed/chair/sofa/beige/corner{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/osiris/colonial)
+"uH" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 9
+	},
+/obj/structure/bookcase/lore,
+/turf/simulated/floor/glass/reinforced,
+/area/shuttle/osiris/colonial)
+"uL" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"vf" = (
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/colonial)
+"vl" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/obj/structure/bookcase/lore,
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"vr" = (
+/obj/structure/flora/pottedplant/minitree,
+/obj/effect/floor_decal/spline/fancy/wood/cee{
+	dir = 4
+	},
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"vt" = (
+/obj/machinery/door/airlock/glass_external,
+/obj/map_helper/airlock/door/ext_door,
+/obj/machinery/access_button/airlock_exterior{
+	frequency = 1380;
+	master_tag = "colonial_docker2";
+	name = "external access button";
+	pixel_x = 25
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"vA" = (
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/machinery/vending/boozeomat,
+/turf/simulated/floor/event/derelict_floor6,
+/area/shuttle/osiris/colonial)
+"vD" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 10
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 10
+	},
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"vF" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/osiris/colonial)
+"vM" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/turf/simulated/floor/plating,
+/area/shuttle/osiris/colonial)
+"vW" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/turf/simulated/floor/event/derelict_floor6,
+/area/shuttle/osiris/colonial)
+"vY" = (
+/mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison,
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"wa" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor,
+/area/shuttle/osiris/colonial)
+"ws" = (
+/obj/structure/fuel_port/empty_tank{
+	pixel_y = -29
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"wz" = (
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/osiris/colonial)
+"wL" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/obj/structure/bed/chair/comfy/beige,
+/turf/simulated/floor/glass/reinforced,
+/area/shuttle/osiris/colonial)
+"wN" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 9
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/cyan,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"wX" = (
+/obj/machinery/shipsensors,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"xa" = (
+/obj/structure/table/hardwoodtable,
+/obj/effect/floor_decal/spline/fancy/wood,
+/turf/simulated/floor/event/derelict_floor6,
+/area/shuttle/osiris/colonial)
+"xA" = (
+/obj/effect/floor_decal/borderfloorblack/full,
+/obj/machinery/computer/ship/engines{
+	dir = 1
+	},
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/colonial)
+"xM" = (
+/turf/simulated/floor/water/pool,
+/area/shuttle/osiris/colonial)
+"xP" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
+	},
+/turf/simulated/wall/r_wall/prepainted,
+/area/shuttle/osiris/colonial)
+"xR" = (
+/obj/structure/bookcase/lore,
+/obj/structure/flora/pottedplant/decorative{
+	pixel_y = 29;
+	pixel_x = 8
+	},
+/obj/item/reagent_containers/food/drinks/bottle/champagne/jericho{
+	pixel_y = 29;
+	pixel_x = -7;
+	layer = 3.3
+	},
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/osiris/colonial)
+"yW" = (
+/obj/structure/table/bench/wooden,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 10
+	},
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/glass/reinforced,
+/area/shuttle/osiris/colonial)
+"yZ" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 9
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"zh" = (
+/obj/structure/bed/chair/sofa/beige/right{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/osiris/colonial)
+"zi" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/machinery/door/airlock/silver,
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"zr" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/osiris/colonial)
+"zL" = (
+/obj/effect/floor_decal/borderfloorblack/full,
+/obj/structure/toilet{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/osiris/colonial)
+"zO" = (
+/obj/structure/bed/chair/sofa/beige/right{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/osiris/colonial)
+"Ah" = (
+/obj/effect/floor_decal/spline/fancy/wood,
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"Ar" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 8
+	},
+/obj/structure/simple_door/wood,
+/turf/simulated/floor/event/derelict_floor6,
+/area/shuttle/osiris/colonial)
+"Ay" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/osiris/colonial)
+"AM" = (
+/turf/simulated/floor/glass/reinforced,
+/area/shuttle/osiris/colonial)
+"Ba" = (
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"Bb" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack,
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	dir = 8;
+	frequency = 1380;
+	id_tag = "colonial_docker3"
+	},
+/obj/machinery/embedded_controller/radio/airlock/airlock_controller{
+	frequency = 1380;
+	id_tag = "colonial_docker3";
+	pixel_y = 25
+	},
+/obj/machinery/airlock_sensor{
+	frequency = 1380;
+	id_tag = "colonial_docker3";
+	pixel_x = 1;
+	pixel_y = -22
+	},
+/obj/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/sensor/chamber_sensor,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/osiris/colonial)
+"Bc" = (
+/turf/template_noop,
+/area/template_noop)
+"Be" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 8
+	},
+/obj/machinery/light/small,
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/osiris/colonial)
+"Bp" = (
+/turf/simulated/wall/r_wall/prepainted,
+/area/shuttle/osiris/colonial)
+"Bq" = (
+/obj/machinery/atmospherics/portables_connector{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"Ce" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/obj/structure/table/hardwoodtable,
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"Cf" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/osiris/colonial)
+"Cg" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 6
+	},
+/obj/machinery/light/small,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor,
+/area/shuttle/osiris/colonial)
+"CA" = (
+/obj/effect/floor_decal/borderfloorblack/full,
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 11
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/osiris/colonial)
+"CQ" = (
+/obj/machinery/door/airlock/glass_external,
+/obj/map_helper/airlock/door/int_door,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"CW" = (
+/obj/structure/bed/chair/sofa/beige/right{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/osiris/colonial)
+"Db" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/obj/structure/table/bench/wooden,
+/obj/structure/flora/pottedplant/large{
+	pixel_y = 13
+	},
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/osiris/colonial)
+"Dc" = (
+/obj/machinery/embedded_controller/radio/airlock/airlock_controller{
+	frequency = 1380;
+	id_tag = "colonial_docker";
+	pixel_x = 25
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	dir = 8;
+	frequency = 1380;
+	id_tag = "colonial_docker"
+	},
+/obj/map_helper/airlock/atmos/chamber_pump,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"Dd" = (
+/obj/machinery/microwave{
+	pixel_y = 6
+	},
+/obj/structure/table/hardwoodtable,
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"DM" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 6
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 6
+	},
+/obj/structure/cable,
+/obj/machinery/power/apc/critical/east_mount,
+/turf/simulated/floor/event/derelict_floor6,
+/area/shuttle/osiris/colonial)
+"Ec" = (
+/obj/map_helper/airlock/sensor/chamber_sensor,
+/obj/machinery/airlock_sensor{
+	frequency = 1380;
+	id_tag = "colonial_docker";
+	pixel_x = 25
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"Eo" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/lattice,
+/turf/template_noop,
+/area/shuttle/osiris/colonial)
+"EJ" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/spline/fancy/wood,
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"EU" = (
+/obj/structure/toilet{
+	dir = 8
+	},
+/turf/simulated/floor/event/derelict_floor6,
+/area/shuttle/osiris/colonial)
+"Fb" = (
+/obj/effect/floor_decal/borderfloorblack,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/osiris/colonial)
+"Fc" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"Fd" = (
+/obj/machinery/embedded_controller/radio/airlock/airlock_controller{
+	frequency = 1380;
+	id_tag = "colonial_docker2";
+	pixel_x = 25
+	},
+/obj/map_helper/airlock/atmos/chamber_pump,
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	dir = 1;
+	frequency = 1380;
+	id_tag = "colonial_docker2"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"Fo" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/turf/simulated/wall/r_wall/prepainted,
+/area/shuttle/osiris/colonial)
+"FI" = (
+/obj/machinery/door/airlock/glass_external,
+/obj/map_helper/airlock/door/int_door,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"FW" = (
+/obj/structure/bed/chair/sofa/beige/left{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/osiris/colonial)
+"Gf" = (
+/obj/structure/bed/chair/sofa/beige/corner,
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/osiris/colonial)
+"GQ" = (
+/turf/template_noop,
+/area/shuttle/osiris/colonial)
+"GT" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 1
+	},
+/obj/structure/lattice,
+/turf/template_noop,
+/area/shuttle/osiris/colonial)
+"Hh" = (
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/osiris/colonial)
+"HC" = (
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/structure/table/marble,
+/obj/machinery/chemical_dispenser/catering/bar_coffee,
+/turf/simulated/floor/event/derelict_floor6,
+/area/shuttle/osiris/colonial)
+"HF" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 10
+	},
+/turf/simulated/floor,
+/area/shuttle/osiris/colonial)
+"HQ" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/machinery/atmospherics/portables_connector{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"HY" = (
+/obj/machinery/door/airlock,
+/obj/machinery/door/firedoor,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/osiris/colonial)
+"HZ" = (
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"Ik" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 6
+	},
+/turf/simulated/wall/r_wall/prepainted,
+/area/shuttle/osiris/colonial)
+"It" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/fancy/wood/cee{
+	dir = 4
+	},
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"Iy" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack,
+/obj/machinery/door/airlock/voidcraft/vertical,
+/obj/map_helper/airlock/door/ext_door,
+/obj/machinery/access_button/airlock_exterior{
+	frequency = 1380;
+	master_tag = "colonial_docker3";
+	name = "external access button";
+	pixel_x = -2;
+	pixel_y = 26
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/osiris/colonial)
+"IP" = (
+/obj/structure/table/hardwoodtable,
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/osiris/colonial)
+"Jn" = (
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/osiris/colonial)
+"JB" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"JI" = (
+/obj/structure/bed/chair/comfy/brown{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/osiris/colonial)
+"JM" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/obj/structure/bookcase/lore,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"JT" = (
+/obj/effect/floor_decal/borderfloorwhite/full,
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 11
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/osiris/colonial)
+"JU" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"Ko" = (
+/obj/structure/undies_wardrobe,
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"Kr" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 9
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"KQ" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold4w/hidden,
+/turf/simulated/wall/r_wall/prepainted,
+/area/shuttle/osiris/colonial)
+"KZ" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/obj/structure/bookcase/lore,
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"Lh" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/shuttle/osiris/colonial)
+"Lo" = (
+/obj/structure/table/hardwoodtable,
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/structure/flora/pottedplant/bamboo{
+	pixel_y = 17
+	},
+/turf/simulated/floor/event/derelict_floor6,
+/area/shuttle/osiris/colonial)
+"LD" = (
+/obj/machinery/door/airlock/glass_external,
+/obj/map_helper/airlock/door/ext_door,
+/obj/machinery/access_button/airlock_exterior{
+	frequency = 1380;
+	master_tag = "colonial_docker";
+	name = "external access button";
+	pixel_x = 25
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"LE" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/machinery/door/airlock/silver,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"Mg" = (
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"MA" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 10
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 10
+	},
+/obj/structure/bed/chair/bay/comfy/beige{
+	dir = 8
+	},
+/turf/simulated/floor/event/derelict_floor6,
+/area/shuttle/osiris/colonial)
+"MC" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/machinery/air_alarm/alarms_hidden/west_mount,
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"MD" = (
+/obj/structure/table/bench/wooden,
+/obj/structure/flora/pottedplant/tall{
+	pixel_y = 13;
+	pixel_x = 4
+	},
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/osiris/colonial)
+"MQ" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/obj/machinery/holopad/ship/starts_inactive,
+/turf/simulated/floor/event/derelict_floor6,
+/area/shuttle/osiris/colonial)
+"MY" = (
+/obj/machinery/door/airlock/glass_external,
+/obj/map_helper/airlock/door/int_door,
+/obj/machinery/access_button/airlock_interior{
+	frequency = 1380;
+	master_tag = "colonial_docker";
+	name = "internal access button";
+	pixel_x = 22
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"Nl" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/event/derelict_floor6,
+/area/shuttle/osiris/colonial)
+"Nn" = (
+/obj/structure/bed/chair/sofa/beige/right,
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/osiris/colonial)
+"Np" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 10
+	},
+/obj/machinery/air_alarm/alarms_hidden/west_mount,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/osiris/colonial)
+"NN" = (
+/obj/effect/floor_decal/borderfloorblack/full,
+/obj/machinery/computer/ship/helm/adv{
+	dir = 4;
+	req_one_access = null
+	},
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/colonial)
+"NT" = (
+/obj/effect/floor_decal/borderfloorblack/corner,
+/obj/effect/floor_decal/borderfloorblack/corner{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor,
+/area/shuttle/osiris/colonial)
+"NV" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 10
+	},
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"Oa" = (
+/obj/structure/toilet{
+	dir = 8
+	},
+/obj/machinery/shower{
+	pixel_y = 15
+	},
+/turf/simulated/floor/event/derelict_floor6,
+/area/shuttle/osiris/colonial)
+"Ob" = (
+/obj/structure/table/hardwoodtable,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/fancy/wood,
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"Ot" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"OG" = (
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/osiris/colonial)
+"OM" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"OP" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/osiris/colonial)
+"Pl" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"Pv" = (
+/obj/effect/floor_decal/borderfloorblack/full,
+/obj/machinery/shower{
+	dir = 4
+	},
+/obj/structure/curtain/open/shower,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/osiris/colonial)
+"Px" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/obj/structure/bed/chair/sofa/beige/right{
+	dir = 8
+	},
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"PG" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/osiris/colonial)
+"Qk" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/osiris/colonial)
+"Qx" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/turf/simulated/floor/event/derelict_floor6,
+/area/shuttle/osiris/colonial)
+"QA" = (
+/obj/structure/simple_door/wood,
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"QB" = (
+/obj/effect/floor_decal/spline/fancy/wood/corner,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/obj/structure/bed/chair/comfy/beige{
+	dir = 1
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"QN" = (
+/obj/structure/table/bench/wooden,
+/obj/machinery/light/small,
+/turf/simulated/floor/wood,
+/area/shuttle/osiris/colonial)
+"QP" = (
+/obj/machinery/air_alarm/east_mount,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"QQ" = (
+/obj/structure/bed/chair/office/light,
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/osiris/colonial)
+"QY" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"Rw" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/cyan,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"RO" = (
+/obj/structure/table/hardwoodtable,
+/obj/item/storage/lockbox/colonial,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/osiris/colonial)
+"RQ" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/spline/fancy/wood,
+/turf/simulated/floor/event/derelict_floor6,
+/area/shuttle/osiris/colonial)
+"RZ" = (
+/obj/map_helper/airlock/sensor/chamber_sensor,
+/obj/machinery/airlock_sensor{
+	frequency = 1380;
+	id_tag = "colonial_docker2";
+	pixel_x = 25
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"Sy" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/fancy/wood/cee{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 1
+	},
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"SQ" = (
+/obj/structure/table/bench/wooden,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/turf/simulated/floor/wood,
+/area/shuttle/osiris/colonial)
+"Tk" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
+	dir = 1
+	},
+/obj/structure/lattice,
+/turf/template_noop,
+/area/shuttle/osiris/colonial)
+"TI" = (
+/obj/structure/table/bench/wooden,
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/osiris/colonial)
+"TJ" = (
+/turf/simulated/wall/wood/hardwood,
+/area/shuttle/osiris/colonial)
+"TO" = (
+/obj/structure/bed/chair/sofa/beige/left,
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/osiris/colonial)
+"TT" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 8
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/osiris/colonial)
+"TV" = (
+/obj/machinery/atmospherics/portables_connector{
+	dir = 4
+	},
+/obj/machinery/portable_atmospherics/canister/empty/phoron,
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"UE" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 9
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 9
+	},
+/obj/structure/bed/chair/bay/comfy/beige{
+	dir = 8
+	},
+/turf/simulated/floor/event/derelict_floor6,
+/area/shuttle/osiris/colonial)
+"UN" = (
+/obj/effect/floor_decal/borderfloorblack/full,
+/obj/structure/event/prop/server2,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/colonial)
+"UU" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/obj/structure/table/bench/wooden,
+/obj/structure/flora/pottedplant/fern{
+	pixel_y = 13
+	},
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/osiris/colonial)
+"UV" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 9
+	},
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/osiris/colonial)
+"UX" = (
+/obj/machinery/power/port_gen/pacman/mrs{
+	name = "B.U.S.T.E.D.P.A.C.M.A.N.- Broken Portable Generator";
+	power_gen = 5
+	},
+/obj/structure/cable,
+/turf/simulated/floor/plating,
+/area/shuttle/osiris/colonial)
+"Vt" = (
+/obj/structure/bed/chair/sofa/beige/left{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/osiris/colonial)
+"VB" = (
+/obj/machinery/door/airlock/glass_external,
+/obj/map_helper/airlock/door/int_door,
+/obj/machinery/access_button/airlock_interior{
+	frequency = 1380;
+	master_tag = "colonial_docker2";
+	name = "internal access button";
+	pixel_x = 22
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"WK" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/obj/structure/bed/chair/sofa/beige/left{
+	dir = 4
+	},
+/obj/machinery/air_alarm/alarms_hidden/west_mount,
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"WL" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/lattice,
+/turf/template_noop,
+/area/shuttle/osiris/colonial)
+"WR" = (
+/turf/simulated/floor/tiled/monodark,
+/area/shuttle/osiris/colonial)
+"Xd" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/osiris/colonial)
+"XH" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"XV" = (
+/obj/machinery/door/airlock,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor,
+/area/shuttle/osiris/colonial)
+"Yf" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/osiris/colonial)
+"Yz" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 5
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor,
+/area/shuttle/osiris/colonial)
+"Zc" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/obj/structure/table/hardwoodtable,
+/turf/simulated/floor/wood/sif,
+/area/shuttle/osiris/colonial)
+"Ze" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 5
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 5
+	},
+/mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison,
+/turf/simulated/floor/event/derelict_floor6,
+/area/shuttle/osiris/colonial)
+"Zk" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/structure/bookcase/lore,
+/turf/simulated/floor/glass/reinforced,
+/area/shuttle/osiris/colonial)
+"ZL" = (
+/obj/effect/floor_decal/borderfloorwhite/full,
+/obj/machinery/shower{
+	dir = 4
+	},
+/obj/structure/curtain/open/shower,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/osiris/colonial)
+"ZS" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/osiris/colonial)
+"ZY" = (
+/obj/effect/floor_decal/borderfloorblack/full,
+/obj/machinery/computer/shuttle_control/explore/colonial{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/shuttle/osiris/colonial)
+
+(1,1,1) = {"
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+"}
+(2,1,1) = {"
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+vf
+vf
+vf
+vf
+vf
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+"}
+(3,1,1) = {"
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+vf
+vf
+cc
+lC
+NN
+vf
+vf
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+"}
+(4,1,1) = {"
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+vf
+mq
+UE
+MQ
+MA
+ZY
+vf
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+"}
+(5,1,1) = {"
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bp
+Bp
+tb
+Qx
+iG
+RQ
+xA
+Bp
+Bp
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+"}
+(6,1,1) = {"
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bp
+UN
+hn
+Ze
+aW
+DM
+hn
+hD
+Bp
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+"}
+(7,1,1) = {"
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bp
+Bp
+Bp
+bR
+gU
+bR
+Bp
+Bp
+Bp
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+"}
+(8,1,1) = {"
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+wX
+Bp
+zL
+bR
+pv
+Np
+ip
+Bp
+Mg
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+"}
+(9,1,1) = {"
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bp
+Bp
+CA
+ii
+kp
+gJ
+ca
+Bp
+Bp
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+"}
+(10,1,1) = {"
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bp
+TJ
+TJ
+Bp
+bR
+kp
+Fb
+Bp
+Bp
+Bp
+Bp
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+"}
+(11,1,1) = {"
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Jn
+xM
+SQ
+nr
+al
+Kr
+Fb
+Bp
+Pv
+ZL
+Bp
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+"}
+(12,1,1) = {"
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Jn
+xM
+QN
+TJ
+PG
+jV
+Fb
+dY
+JT
+mx
+Bp
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+"}
+(13,1,1) = {"
+Bc
+Bc
+Bc
+Bc
+Bc
+bR
+Bp
+TJ
+TJ
+bR
+QA
+bR
+bR
+bR
+Bp
+Bp
+Bp
+bR
+Bc
+Bc
+Bc
+Bc
+Bc
+"}
+(14,1,1) = {"
+Bc
+Bc
+Bc
+Bc
+Bc
+bR
+uH
+wL
+yW
+QB
+cP
+WK
+fM
+Zc
+KZ
+JM
+KZ
+bR
+Bc
+Bc
+Bc
+Bc
+Bc
+"}
+(15,1,1) = {"
+Bc
+Bc
+Bc
+Bc
+Bc
+vf
+Zk
+AM
+bH
+Ah
+zr
+TI
+zO
+mw
+tO
+bq
+zh
+vf
+Bc
+Bc
+Bc
+Bc
+Bc
+"}
+(16,1,1) = {"
+Bc
+Bc
+Bc
+Bc
+Bc
+vf
+vA
+ok
+Lo
+fe
+zr
+Hh
+Hh
+vr
+TO
+TI
+TI
+vf
+Bc
+Bc
+Bc
+Bc
+Bc
+"}
+(17,1,1) = {"
+Bc
+Bc
+Bc
+Bc
+Bc
+vf
+HC
+ok
+xa
+hy
+zr
+Hh
+Hh
+Hh
+Hh
+Hh
+Hh
+vf
+Bc
+Bc
+Bc
+Bc
+Bc
+"}
+(18,1,1) = {"
+Bc
+Bc
+Bc
+Bc
+Bc
+vf
+tv
+ok
+xa
+fe
+zr
+Hh
+Hh
+rL
+Nn
+TI
+TI
+vf
+Bc
+Bc
+Bc
+Bc
+Bc
+"}
+(19,1,1) = {"
+Bc
+Bc
+Bc
+Bc
+Bc
+vf
+lZ
+ok
+xa
+fe
+zr
+TI
+Vt
+Ob
+Gf
+sT
+FW
+vf
+Bc
+Bc
+Bc
+Bc
+Bc
+"}
+(20,1,1) = {"
+Bc
+Bc
+Bc
+Bc
+Bc
+bR
+pK
+vW
+lB
+sC
+Rw
+Px
+oG
+Ce
+vl
+lW
+vl
+bR
+Bc
+Bc
+Bc
+Bc
+Bc
+"}
+(21,1,1) = {"
+Bc
+Bc
+Bc
+Bc
+bR
+TJ
+TJ
+TJ
+TJ
+bR
+QA
+bR
+bR
+bR
+Bp
+Bp
+Bp
+bR
+GQ
+Bc
+Bc
+Bc
+Bc
+"}
+(22,1,1) = {"
+Bc
+Bc
+Bc
+Bc
+vf
+Ko
+pc
+dX
+tM
+zi
+wN
+MC
+cl
+pa
+JU
+mN
+gb
+Lh
+Lh
+Bc
+Bc
+Bc
+Bc
+"}
+(23,1,1) = {"
+Bc
+Bc
+Bc
+Bc
+vf
+UV
+Be
+TJ
+Ar
+bR
+OM
+QY
+EJ
+bR
+gb
+Lh
+Lh
+Lh
+GQ
+Bc
+Bc
+Bc
+Bc
+"}
+(24,1,1) = {"
+Bc
+Bc
+Bc
+Bc
+vf
+UU
+nM
+TJ
+Oa
+bR
+ot
+td
+tH
+bR
+ok
+Lh
+Lh
+GQ
+GQ
+Bc
+Bc
+Bc
+Bc
+"}
+(25,1,1) = {"
+Bc
+Bc
+Bc
+Bc
+bR
+TJ
+TJ
+TJ
+TJ
+bR
+uL
+Mg
+tw
+bR
+TJ
+Lh
+Lh
+GQ
+GQ
+Bc
+Bc
+Bc
+Bc
+"}
+(26,1,1) = {"
+Bc
+Bc
+Bc
+Bc
+vf
+Ko
+pc
+dX
+tM
+zi
+wN
+eW
+cl
+pa
+JU
+Lh
+Lh
+GQ
+GQ
+Bc
+Bc
+Bc
+Bc
+"}
+(27,1,1) = {"
+Bc
+Bc
+Bc
+Bc
+vf
+UV
+Be
+TJ
+Ar
+bR
+pW
+vY
+EJ
+bR
+ok
+Lh
+Lh
+Lh
+GQ
+Bc
+Bc
+Bc
+Bc
+"}
+(28,1,1) = {"
+Bc
+Bc
+Bc
+Bc
+vf
+jn
+nM
+TJ
+Oa
+bR
+ot
+td
+tH
+bR
+ok
+TJ
+gb
+Lh
+Lh
+Bc
+Bc
+Bc
+Bc
+"}
+(29,1,1) = {"
+Bc
+Bc
+Bc
+pZ
+bR
+TJ
+TJ
+TJ
+TJ
+bR
+uL
+Mg
+tw
+bR
+TJ
+TJ
+TJ
+TJ
+bR
+pZ
+Bc
+Bc
+Bc
+"}
+(30,1,1) = {"
+Bc
+Bc
+Bc
+pZ
+vf
+Ko
+pc
+dX
+tM
+zi
+wN
+eW
+cl
+pa
+tM
+mN
+pc
+Ko
+vf
+pZ
+Bc
+Bc
+Bc
+"}
+(31,1,1) = {"
+Bc
+Bc
+pZ
+WR
+vf
+UV
+Be
+TJ
+Ar
+bR
+pW
+kN
+EJ
+bR
+Ar
+TJ
+TT
+by
+vf
+WR
+pZ
+Bc
+Bc
+"}
+(32,1,1) = {"
+Bc
+pZ
+WR
+WR
+vf
+Db
+nM
+TJ
+Oa
+bR
+ot
+td
+tH
+bR
+Oa
+TJ
+nM
+pR
+vf
+WR
+WR
+pZ
+Bc
+"}
+(33,1,1) = {"
+Bc
+pZ
+bR
+Bp
+Bp
+TJ
+TJ
+TJ
+TJ
+bR
+uL
+Mg
+tw
+bR
+TJ
+TJ
+TJ
+TJ
+Bp
+Bp
+bR
+pZ
+Bc
+"}
+(34,1,1) = {"
+Bc
+pZ
+HZ
+gA
+RO
+JI
+bC
+dX
+tM
+zi
+wN
+eW
+cl
+LE
+vM
+Qk
+kN
+Hh
+Hh
+gb
+gb
+pZ
+Bc
+"}
+(35,1,1) = {"
+Bc
+pZ
+HZ
+QQ
+IP
+JI
+dC
+kN
+Dd
+bR
+pW
+kN
+EJ
+bR
+kN
+Lh
+Lh
+Hh
+gb
+gb
+Lh
+Lh
+Bc
+"}
+(36,1,1) = {"
+Bc
+pZ
+HZ
+Hh
+Hh
+Hh
+dC
+kN
+ga
+bR
+ot
+td
+tH
+bR
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+pZ
+Bc
+"}
+(37,1,1) = {"
+pZ
+WR
+HZ
+xR
+Hh
+CW
+cA
+kN
+kA
+bR
+uL
+Mg
+tw
+bR
+Lh
+gb
+gb
+Lh
+Lh
+GQ
+GQ
+WR
+pZ
+"}
+(38,1,1) = {"
+pZ
+WR
+bR
+TJ
+sa
+TJ
+TJ
+cF
+TJ
+bR
+yZ
+lK
+vD
+bR
+gb
+Lh
+Lh
+Lh
+GQ
+GQ
+Lh
+WR
+pZ
+"}
+(39,1,1) = {"
+pZ
+WR
+HZ
+Hh
+Hh
+bf
+TJ
+Nl
+ln
+bR
+OM
+QY
+EJ
+bR
+ok
+gb
+gb
+Lh
+Lh
+Lh
+Mg
+WR
+pZ
+"}
+(40,1,1) = {"
+pZ
+WR
+HZ
+MD
+nM
+mX
+TJ
+kQ
+EU
+bR
+ot
+td
+tH
+bR
+gb
+gb
+ok
+gb
+gb
+Hh
+Mg
+WR
+pZ
+"}
+(41,1,1) = {"
+Bp
+Bp
+Bp
+Bp
+Bp
+Bp
+Bp
+Bp
+Bp
+bR
+JB
+Mg
+tw
+bR
+Bp
+Bp
+Bp
+Bp
+Bp
+Bp
+Bp
+Bp
+Bp
+"}
+(42,1,1) = {"
+tL
+qr
+sP
+FI
+Xd
+Cf
+Cf
+Cf
+Cf
+Ay
+sr
+Sy
+cL
+Xd
+Cf
+Cf
+Cf
+Cf
+Ay
+CQ
+sP
+oI
+tL
+"}
+(43,1,1) = {"
+LD
+Ec
+Dc
+MY
+Yf
+wz
+wz
+wz
+wz
+Fb
+Fc
+It
+Mg
+Yf
+cf
+wz
+wz
+wz
+Fb
+VB
+RZ
+Fd
+vt
+"}
+(44,1,1) = {"
+Bp
+Bp
+Bp
+Bp
+Bp
+Jn
+Jn
+Jn
+Bp
+Bp
+NV
+eD
+tw
+Bp
+Bp
+Jn
+Jn
+Jn
+Bp
+Bp
+Bp
+Bp
+Bp
+"}
+(45,1,1) = {"
+pZ
+WR
+bR
+kw
+nl
+TV
+oV
+Bq
+HQ
+Bp
+Bp
+au
+Bp
+Bp
+HQ
+fF
+Lh
+Lh
+Lh
+Lh
+bR
+WR
+pZ
+"}
+(46,1,1) = {"
+pZ
+WR
+HZ
+dO
+qA
+lf
+ZS
+ZS
+ws
+Bp
+Eo
+WL
+HF
+Bp
+OP
+OP
+Lh
+Lh
+GQ
+Lh
+bR
+WR
+pZ
+"}
+(47,1,1) = {"
+Bc
+pZ
+HZ
+Ba
+Ot
+sS
+Ot
+Ot
+Ot
+HY
+wa
+Tk
+GT
+ma
+Pl
+bV
+gb
+Lh
+Lh
+Lh
+Lh
+Lh
+Bc
+"}
+(48,1,1) = {"
+Bc
+pZ
+bR
+QP
+Mg
+cW
+XH
+XH
+ba
+XV
+Yz
+NT
+Cg
+XV
+Ot
+vF
+Ot
+vF
+UX
+Mg
+Lh
+pZ
+Bc
+"}
+(49,1,1) = {"
+Bc
+Bc
+bR
+Bp
+Ik
+KQ
+KQ
+KQ
+KQ
+xP
+gP
+iK
+gP
+xP
+xP
+xP
+xP
+xP
+Fo
+Bp
+bR
+Bc
+Bc
+"}
+(50,1,1) = {"
+Bc
+Bc
+Bc
+Bc
+OG
+hl
+OG
+hl
+OG
+hl
+Bp
+Bb
+Bp
+OG
+hl
+OG
+hl
+OG
+hl
+Bc
+Bc
+Bc
+Bc
+"}
+(51,1,1) = {"
+Bc
+Bc
+Bc
+Bc
+OG
+OG
+OG
+OG
+OG
+OG
+Bp
+Iy
+Bp
+OG
+OG
+OG
+OG
+OG
+OG
+Bc
+Bc
+Bc
+Bc
+"}
+(52,1,1) = {"
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+"}

@@ -1,4 +1,4 @@
-/datum/material/verdantium
+/datum/prototype/material/verdantium
 	name = MAT_VERDANTIUM
 	id = MAT_VERDANTIUM
 	stack_type = /obj/item/stack/material/verdantium
@@ -25,3 +25,5 @@
 	nullification = MATERIAL_RESISTANCE_MODERATE
 
 	worth = 35
+
+	material_constraints = MATERIAL_CONSTRAINT_RIGID

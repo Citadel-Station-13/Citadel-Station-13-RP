@@ -1,4 +1,4 @@
-/datum/material/morphium
+/datum/prototype/material/morphium
 	name = MAT_MORPHIUM
 	id = MAT_MORPHIUM
 	stack_type = /obj/item/stack/material/morphium
@@ -25,7 +25,9 @@
 
 	worth = 100
 
-/datum/material/morphium/hull
+	material_constraints = MATERIAL_CONSTRAINT_RIGID
+
+/datum/prototype/material/morphium/hull
 	name = MAT_MORPHIUMHULL
 	id = "morphium_hull"
 	stack_type = /obj/item/stack/material/morphium/hull

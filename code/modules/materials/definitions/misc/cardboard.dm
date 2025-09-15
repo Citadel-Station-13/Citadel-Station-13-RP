@@ -1,4 +1,4 @@
-/datum/material/cardboard
+/datum/prototype/material/cardboard
 	id = "cardboard"
 	name = "cardboard"
 	stack_type = /obj/item/stack/material/cardboard
@@ -26,7 +26,7 @@
 	absorption = MATERIAL_RESISTANCE_LOW
 	nullification = MATERIAL_RESISTANCE_NONE
 
-/datum/material/cardboard/generate_recipes()
+/datum/prototype/material/cardboard/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(
 		name = "box",

@@ -1,3 +1,3 @@
-/datum/design/tool
-	abstract_type = /datum/design/tool
+/datum/prototype/design/tool
+	abstract_type = /datum/prototype/design/tool
 	category = "Tools"

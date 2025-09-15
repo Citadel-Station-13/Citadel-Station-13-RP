@@ -1,11 +1,12 @@
 /datum/ammo_caliber/a5_56mm
+	id = "a5_56mm"
 	caliber = "5.56mm"
 
 //* Casings
 
 /obj/item/ammo_casing/a5_56mm
 	desc = "A 5.56mm bullet casing."
-	caliber = /datum/ammo_caliber/a5_56mm
+	casing_caliber = /datum/ammo_caliber/a5_56mm
 	icon = 'icons/modules/projectiles/casings/slim.dmi'
 	icon_state = "large"
 	projectile_type = /obj/projectile/bullet/rifle/a556
@@ -38,6 +39,11 @@
 	icon_state = "large-white"
 	desc = "A 5.56mm hunting bullet casing."
 	projectile_type = /obj/projectile/bullet/rifle/a556/hunter
+
+/obj/item/ammo_casing/a5_56mm/silver
+	icon_state = "large-silver"
+	desc = "A 5.56mm silver bullet casing."
+	projectile_type = /obj/projectile/bullet/rifle/a556/silver
 
 //* Magazines
 
@@ -88,6 +94,20 @@
 
 /obj/item/ammo_magazine/a5_56mm/hunter/ext
 	name = "extended magazine (5.56mm hunting)"
+	ammo_max = 30
+
+/obj/item/ammo_magazine/a5_56mm/silver
+	name = "magazine (5.56mm silver)"
+	icon_state = "m556ag-1"
+	base_icon_state = "m556ag"
+	ammo_preload = /obj/item/ammo_casing/a5_56mm/silver
+	ammo_max = 20
+
+/obj/item/ammo_magazine/a5_56mm/ext/silver
+	name = "extended magazine (5.56mm silver)"
+	icon_state = "m556ag-1"
+	base_icon_state = "m556ag"
+	ammo_preload = /obj/item/ammo_casing/a5_56mm/silver
 	ammo_max = 30
 
 /obj/item/ammo_magazine/a5_56mm/small

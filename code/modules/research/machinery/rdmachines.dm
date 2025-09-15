@@ -20,7 +20,7 @@
 	return
 
 /obj/machinery/r_n_d/proc/getMaterialType(var/name)
-	var/datum/material/M = get_material_by_name(name)
+	var/datum/prototype/material/M = get_material_by_name(name)
 	if(M && M.stack_type)
 		return M.stack_type
 	return null
@@ -43,3 +43,11 @@
 	var/obj/item/stack/material/S = new sheetType(loc)
 	S.amount = eject
 	stored_materials[material] -= eject * perUnit
+
+
+
+/obj/machinery/lathe/r_n_d
+	var/design_type
+	var/obj/machinery/computer/rdconsole/linked_console
+
+/obj/machinery/lathe/r_n_d

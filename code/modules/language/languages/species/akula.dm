@@ -1,4 +1,4 @@
-/datum/language/akula
+/datum/prototype/language/akula
 	id = LANGUAGE_ID_AKULA
 	name = LANGUAGE_AKULA
 	translation_class = TRANSLATION_CLASS_DEFAULT_STANDARD_RACE

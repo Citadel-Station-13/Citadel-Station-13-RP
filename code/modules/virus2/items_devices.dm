@@ -7,7 +7,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	item_state = "electronic"
 
-/obj/item/antibody_scanner/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/antibody_scanner/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
@@ -26,7 +26,7 @@
 		report("Scan Complete: No antibodies detected.", user)
 		return
 
-	if (MUTATION_CLUMSY in user.mutations && prob(50))
+	if ((MUTATION_CLUMSY in user.mutations) && prob(50))
 		// I was tempted to be really evil and rot13 the output.
 		report("Antibodies detected: [reverse_text(antigens2string(C.antibodies))]", user)
 	else

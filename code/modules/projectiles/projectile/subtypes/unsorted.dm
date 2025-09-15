@@ -186,7 +186,7 @@
 	embed_chance = 0 // nope
 	nodamage = 1
 	damage_type = DAMAGE_TYPE_HALLOSS
-	muzzle_type = /obj/effect/projectile/muzzle/bullet
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/bullet
 
 /obj/projectile/bola
 	name = "bola"
@@ -194,7 +194,7 @@
 	damage_force = 5
 	embed_chance = 0 //Nada.
 	damage_type = DAMAGE_TYPE_HALLOSS
-	muzzle_type = null
+	legacy_muzzle_type = null
 
 	combustion = FALSE
 
@@ -215,7 +215,7 @@
 	damage_force = 10
 	embed_chance = 0 //Nada.
 	damage_type = DAMAGE_TYPE_BRUTE
-	muzzle_type = null
+	legacy_muzzle_type = null
 
 	combustion = FALSE
 
@@ -242,9 +242,9 @@
 	light_power = 3
 	light_color = "#3300ff"
 
-	muzzle_type = /obj/effect/projectile/tungsten/muzzle
-	tracer_type = /obj/effect/projectile/tungsten/tracer
-	impact_type = /obj/effect/projectile/tungsten/impact
+	legacy_muzzle_type = /obj/effect/projectile/tungsten/muzzle
+	legacy_tracer_type = /obj/effect/projectile/tungsten/tracer
+	legacy_impact_type = /obj/effect/projectile/tungsten/impact
 
 /obj/projectile/beam/tungsten/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
@@ -304,7 +304,7 @@
 /obj/projectile/bullet/honker
 	damage_force = 0
 	nodamage = TRUE
-	impact_sounds = 'sound/items/bikehorn.ogg'
+	impact_sound = 'sound/items/bikehorn.ogg'
 	icon = 'icons/obj/items.dmi'
 	icon_state = "banana"
 	range = WORLD_ICON_SIZE * 200
@@ -333,7 +333,7 @@
 	damage_force = 10
 	damage_type = DAMAGE_TYPE_BRUTE
 	damage_flag = ARMOR_BULLET
-	impact_sounds = 'sound/effects/splat.ogg'
+	impact_sound = 'sound/effects/splat.ogg'
 	icon_state = "organic"
 
 /obj/projectile/bullet/organic/wax
@@ -344,36 +344,23 @@
 /obj/projectile/bullet/organic/stinger
 	damage_force = 15
 	damage_type = DAMAGE_TYPE_TOX
-	impact_sounds = 'sound/weapons/bladeslice.ogg'
+	impact_sound = 'sound/weapons/bladeslice.ogg'
 	icon_state = "SpearFlight"
 
 //Plasma Burst
 /obj/projectile/plasma
-	name ="plasma bolt"
+	name = "plasma bolt"
 	icon_state= "fuel-tritium"
-	damage_force = 50
+	damage_force = 30
 	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_ENERGY
 	light_range = 4
 	light_power = 3
 	light_color = "#00ccff"
-	var/heavy = FALSE
-
-/obj/projectile/plasma/on_impact(atom/target, impact_flags, def_zone, efficiency)
-	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
-		return
-
-	var/blast_dir = src.dir
-	target.visible_message("<span class='danger'>\The [target] is engulfed in roiling plasma!</span>")
-	var/blastloc = get_step(target, blast_dir)
-	if(blastloc)
-		explosion(blastloc, -1, 0, heavy? 2 : 1, heavy? 3 : 2)
 
 /obj/projectile/plasma/hot
-	name ="heavy plasma bolt"
-	damage_force = 75
+	name = "heavy plasma bolt"
+	damage_force = 50
 	light_range = 5
 	light_power = 4
 	light_color = "#00ccff"
-	heavy = TRUE

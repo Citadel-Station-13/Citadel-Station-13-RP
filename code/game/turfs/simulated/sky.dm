@@ -2,7 +2,7 @@
 // Generic skyfall turf
 // Really only works well if the map doesn't have 'indoor' areas otherwise they can fall into one.
 // TODO: Fix that.
-/turf/simulated/floor/sky
+/turf/simulated/sky
 	name = "the sky"
 	desc = "It's the sky! Be careful!"
 	icon = 'icons/turf/sky.dmi'
@@ -11,14 +11,14 @@
 	var/does_skyfall = TRUE
 	var/list/skyfall_levels
 
-/turf/simulated/floor/sky/Initialize(mapload)
+/turf/simulated/sky/Initialize(mapload)
 	. = ..()
 	if(does_skyfall && !LAZYLEN(skyfall_levels))
 		log_world("[x],[y],[z], [get_area(src)] doesn't have skyfall_levels defined! Can't skyfall!")
 	if(locate(/turf/simulated) in orange(src,1))
 		set_light(2, 2, color)
 
-/turf/simulated/floor/sky/Entered(atom/movable/AM,atom/oldloc)
+/turf/simulated/sky/Entered(atom/movable/AM,atom/oldloc)
 	..()
 	if(!does_skyfall)
 		return //We don't do that
@@ -33,21 +33,18 @@
 	if(istype(AM, /obj/effect/projectile))
 		return // ...neither should the effects be falling
 
-	var/mob/living/L
-	if(isliving(AM))
-		L = AM
-		if(L.is_floating || L.flying)
-			return //Flyers/nograv can ignore it
+	if(AM.is_avoiding_ground())
+		return //Either flying/hovering or buckled that at least has long legs. If that falls, they'll follow
 
 	do_fall(AM)
 
-/turf/simulated/floor/sky/throw_landed(atom/movable/AM, datum/thrownthing/TT)
+/turf/simulated/sky/throw_landed(atom/movable/AM, datum/thrownthing/TT)
 	. = ..()
 	if(!does_skyfall)
 		return //We don't do that
 	do_fall(AM)
 
-/turf/simulated/floor/sky/proc/do_fall(atom/movable/AM)
+/turf/simulated/sky/proc/do_fall(atom/movable/AM)
 	//Bye
 	var/attempts = 100
 	var/turf/simulated/T
@@ -69,33 +66,33 @@
 		message_admins("\The [AM] fell out of the sky.")
 		L.fall_impact(T, 42, 90, FALSE, TRUE)	//You will not be defibbed from this.
 
-/turf/simulated/floor/sky/virgo2_sky
+/turf/simulated/sky/virgo2_sky
 	name = "virgo 2 atmosphere"
 	desc = "Be careful where you step!"
 	color = "#eacd7c"
 	initial_gas_mix = ATMOSPHERE_ID_VIRGO2
 
-/turf/simulated/floor/sky/virgo2_sky/Initialize(mapload)
+/turf/simulated/sky/virgo2_sky/Initialize(mapload)
 	skyfall_levels = list(z+1)
 	. = ..()
 
-/turf/simulated/floor/sky/depths
+/turf/simulated/sky/depths
 	name = "darkness"
 	desc = "A straight drop down into the depths below."
 	skyfall_levels = "Eastern Canyon"
 	color ="#303030"
 	var/target_turf = /turf/simulated/floor/outdoors/snow/lythios43c
 
-/turf/simulated/floor/sky/depths/Initialize(mapload)
+/turf/simulated/sky/depths/Initialize(mapload)
 	. = ..()
 	set_light(0, 0, "#FFFFFF")
 
-/turf/simulated/floor/sky/depths/Initialize(mapload)
+/turf/simulated/sky/depths/Initialize(mapload)
 	skyfall_levels = list(z - 1)
 	. = ..()
 
 //This is a test adjustment to the do_fall proc to see if I can get it to land in the Lythios canyon turfs specifically. This is a RIFT ONLY edit until someone more skilled can find an elegant solution.
-/turf/simulated/floor/sky/depths/do_fall(atom/movable/AM)
+/turf/simulated/sky/depths/do_fall(atom/movable/AM)
 	//Bye
 	var/attempts = 100
 	var/turf/simulated/T
@@ -119,15 +116,14 @@
 		message_admins("\The [AM] fell out of the sky.")
 		L.fall_impact(T, 42, 90, FALSE, TRUE)	//You will not be defibbed from this.
 
-
-/turf/simulated/floor/sky/depths/west
+/turf/simulated/sky/depths/west
 	skyfall_levels = "Western Canyon"
 
-/turf/simulated/floor/sky/depths/west/Initialize(mapload)
+/turf/simulated/sky/depths/west/Initialize(mapload)
 	skyfall_levels = list(z - 1)
 	. = ..()
 
-/turf/simulated/floor/sky/depths/west/do_fall(atom/movable/AM)
+/turf/simulated/sky/depths/west/do_fall(atom/movable/AM)
 	//Bye
 	var/attempts = 100
 	var/turf/simulated/T

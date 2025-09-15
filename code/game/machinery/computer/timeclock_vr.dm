@@ -34,13 +34,14 @@
 		card = null
 	. = ..()
 
-/obj/machinery/computer/timeclock/update_icon()
+/obj/machinery/computer/timeclock/update_icon_state()
 	if(inoperable())
 		icon_state = "[initial(icon_state)]_off"
 	else if(card)
 		icon_state = "[initial(icon_state)]_card"
 	else
 		icon_state = "[initial(icon_state)]"
+	return ..()
 
 /obj/machinery/computer/timeclock/power_change()
 	var/old_stat = machine_stat
@@ -102,10 +103,11 @@
 				"pto_department" = job.pto_type,
 				"is_off_duty" = job.is_off_duty,
 			)
-		if(config_legacy.time_off)
-			data["allow_change_job"] = TRUE
-			if(job?.is_off_duty) // Currently are Off Duty, so gotta lookup what on-duty jobs are open
-				data["job_choices"] = getOpenOnDutyJobs(user, job.pto_type)
+		// nah i don't care for configs worker's rights are human rights too bad
+		// if(config_legacy.time_off)
+		data["allow_change_job"] = TRUE
+		if(job?.is_off_duty) // Currently are Off Duty, so gotta lookup what on-duty jobs are open
+			data["job_choices"] = getOpenOnDutyJobs(user, job.pto_type)
 
 	return data
 

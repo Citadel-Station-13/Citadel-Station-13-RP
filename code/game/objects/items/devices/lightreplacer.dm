@@ -71,7 +71,7 @@
 /obj/item/lightreplacer/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/stack/material))
 		var/obj/item/stack/material/G = W
-		if(G.material.type == /datum/material/glass)
+		if(G.material.type == /datum/prototype/material/glass)
 			if(uses >= max_uses)
 				to_chat(user, "<span class='warning'>[src.name] is full.</span>")
 				return
@@ -161,8 +161,8 @@
 	return new_bulbs
 
 /obj/item/lightreplacer/update_icon()
+	. = ..()
 	icon_state = "lightreplacer[emagged]"
-
 
 /obj/item/lightreplacer/proc/Use(var/mob/user)
 
@@ -199,7 +199,7 @@
 
 /obj/item/lightreplacer/emag_act(var/remaining_charges, var/mob/user)
 	emagged = !emagged
-	playsound(src.loc, /datum/soundbyte/grouped/sparks, 100, 1)
+	playsound(src.loc, /datum/soundbyte/sparks, 100, 1)
 	update_icon()
 	return 1
 

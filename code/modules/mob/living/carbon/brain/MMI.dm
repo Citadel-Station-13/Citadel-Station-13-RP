@@ -60,10 +60,7 @@
 	if(istype(O,/obj/item/organ/internal/brain) && !brainmob) //Time to stick a brain in it --NEO
 
 		var/obj/item/organ/internal/brain/B = O
-		if(B.health <= 0)
-			to_chat(user, SPAN_WARNING("That brain is well and truly dead."))
-			return
-		else if(!B.brainmob)
+		if(!B.brainmob)
 			to_chat(user, SPAN_WARNING("You aren't sure where this brain came from, but you're pretty sure it's useless."))
 			return
 
@@ -104,7 +101,7 @@
 			to_chat(user, "<span class='warning'>Access denied.</span>")
 		return
 	if(brainmob)
-		O.melee_interaction_chain(brainmob, user)//Oh noooeeeee
+		O.lazy_melee_interaction_chain(brainmob, user)//Oh noooeeeee
 		return
 	..()
 
@@ -199,11 +196,13 @@
 
 /obj/item/mmi/digital/Initialize(mapload)
 	. = ..()
+	// HACK: if we're in repository subsystem load, skip brainmob
+	if(!SSrepository.initialized)
+		return
 	brainmob = new(src)
 //	brainmob.add_language("Robot Talk")//No binary without a binary communication device
 	brainmob.add_language(LANGUAGE_GALCOM)
 	brainmob.add_language(LANGUAGE_EAL)
-	brainmob.loc = src
 	brainmob.container = src
 	brainmob.set_stat(CONSCIOUS)
 	brainmob.silent = FALSE
@@ -308,8 +307,8 @@
 
 /obj/item/mmi/digital/robot/Initialize(mapload)
 	. = ..()
-	brainmob.name = "[pick(list("ADA","DOS","GNU","MAC","WIN","NJS","SKS","DRD","IOS","CRM","IBM","TEX","LVM","BSD",))]-[rand(1000, 9999)]"
-	brainmob.real_name = brainmob.name
+	brainmob?.name = "[pick(list("ADA","DOS","GNU","MAC","WIN","NJS","SKS","DRD","IOS","CRM","IBM","TEX","LVM","BSD",))]-[rand(1000, 9999)]"
+	brainmob?.real_name = brainmob.name
 
 /obj/item/mmi/digital/robot/transfer_identity(var/mob/living/carbon/H)
 	..()
@@ -361,8 +360,8 @@
 
 /obj/item/mmi/digital/posibrain/Initialize(mapload)
 	. = ..()
-	brainmob.name = "[pick(list("PBU","HIU","SINA","ARMA","OSI"))]-[rand(100, 999)]"
-	brainmob.real_name = brainmob.name
+	brainmob?.name = "[pick(list("PBU","HIU","SINA","ARMA","OSI"))]-[rand(100, 999)]"
+	brainmob?.real_name = brainmob.name
 
 // This type shouldn't care about brainmobs.
 /obj/item/mmi/inert

@@ -75,6 +75,8 @@
 		J.toggle_valve()
 
 /datum/outfit/proc/equip(mob/living/carbon/human/H, rank, assignment)
+	H.species?.handle_species_job_outfit(H, src)
+
 	equip_base(H)
 
 	rank = rank || id_pda_assignment
@@ -141,8 +143,59 @@
 		for(var/i=0,i<number,i++)
 			H.equip_to_slot_or_del(new path(H), /datum/inventory_slot/abstract/attach_as_accessory, INV_OP_FLUFFLESS | INV_OP_SILENT)
 
-	if(H.species)
-		H.species.equip_survival_gear(H, flags&OUTFIT_EXTENDED_SURVIVAL, flags&OUTFIT_COMPREHENSIVE_SURVIVAL)
+	// deal with racial & survival gear
+	var/list/to_inject_box = list()
+	var/list/to_inject_inv = list()
+	H.species.apply_survival_gear(H, to_inject_box, to_inject_inv)
+	H.species.apply_racial_gear(H, to_inject_box, to_inject_inv)
+
+	if(length(to_inject_box))
+		var/obj/item/survival_box = new /obj/item/storage/box/survival
+		for(var/descriptor in to_inject_box)
+			if(ispath(descriptor))
+				new descriptor(survival_box)
+			else if(IS_ANONYMOUS_TYPEPATH(descriptor))
+				new descriptor(survival_box)
+			else if(isitem(descriptor))
+				var/obj/item/moving = descriptor
+				moving.forceMove(survival_box)
+			else
+				stack_trace("invalid descriptor '[descriptor]' encountered")
+		survival_box.obj_storage.fit_to_contents(no_shrink = TRUE)
+
+		if(!H.inventory.equip_to_slot_if_possible(survival_box, /datum/inventory_slot/abstract/put_in_backpack))
+			if(!H.inventory.put_in_hands(survival_box))
+				survival_box.forceMove(H.drop_location())
+
+	if(length(to_inject_inv))
+		var/list/atom/movable/arbitrary_instantiated_gear = list()
+		for(var/descriptor in to_inject_inv)
+			if(ispath(descriptor))
+				arbitrary_instantiated_gear += new descriptor
+			else if(IS_ANONYMOUS_TYPEPATH(descriptor))
+				arbitrary_instantiated_gear += new descriptor
+			else if(ismovable(descriptor))
+				arbitrary_instantiated_gear += descriptor
+			else
+				stack_trace("invalid descriptor '[descriptor]' encountered")
+		for(var/atom/movable/gear as anything in arbitrary_instantiated_gear)
+			if(isitem(gear))
+				// try to put into inv, then hands, then nearby
+				var/obj/item/gear_item = gear
+				if(!H.equip_to_slots_if_possible(
+					gear_item,
+					list(
+						/datum/inventory_slot/abstract/put_in_backpack,
+						/datum/inventory_slot/abstract/put_in_belt,
+						/datum/inventory_slot/abstract/put_in_hands,
+						/datum/inventory_slot/inventory/pocket/left,
+						/datum/inventory_slot/inventory/pocket/right,
+					),
+				))
+					gear_item.forceMove(H.drop_location())
+			else
+				// put nearby
+				gear.forceMove(H.drop_location())
 
 /datum/outfit/proc/equip_id(mob/living/carbon/human/H, rank, assignment)
 	if(!id_slot || !id_type)
@@ -196,7 +249,7 @@
 	l_pocket = /obj/item/ammo_magazine/m95
 	l_hand = /obj/item/ammo_magazine/m95
 	r_hand = /obj/item/ammo_magazine/m95
-	back = /obj/item/gun/ballistic/automatic/battlerifle
+	back = /obj/item/gun/projectile/ballistic/automatic/battlerifle
 	backpack_contents = list(/obj/item/storage/box = 1)
 	abstract_type = /datum/outfit/wizard
 	head = /obj/item/clothing/head/helmet/combat/JSDF
@@ -217,7 +270,7 @@
 	shoes = /obj/item/clothing/shoes/boots/jackboots
 	uniform = /obj/item/clothing/under/oricon/mildress/marine/command
 	back = /obj/item/storage/backpack/satchel
-	belt = /obj/item/gun/ballistic/revolver/consul
+	belt = /obj/item/gun/projectile/ballistic/revolver/consul
 	l_pocket = /obj/item/ammo_magazine/a44/speedloader
 	r_pocket = /obj/item/ammo_magazine/a44/speedloader
 	r_hand = /obj/item/clothing/accessory/holster/hip
@@ -265,7 +318,7 @@
 	r_pocket = /obj/item/cell/device/weapon
 	r_hand = /obj/item/melee/transforming/energy/sword/imperial
 	l_hand = /obj/item/shield/transforming/energy/imperial
-	suit_store = /obj/item/gun/energy/imperial
+	suit_store = /obj/item/gun/projectile/energy/imperial
 
 /datum/outfit/imperial/officer
 	name = "Imperial officer"
@@ -281,4 +334,4 @@
 	r_pocket = /obj/item/cell/device/weapon
 	r_hand = /obj/item/melee/transforming/energy/sword/imperial
 	l_hand = /obj/item/shield/transforming/energy/imperial
-	suit_store = /obj/item/gun/energy/imperial
+	suit_store = /obj/item/gun/projectile/energy/imperial

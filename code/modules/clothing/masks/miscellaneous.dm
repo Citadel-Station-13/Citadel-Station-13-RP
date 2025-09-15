@@ -44,13 +44,13 @@
 		src.hanging = !src.hanging
 		if (src.hanging)
 			gas_transfer_coefficient = 1
-			body_cover_flags = body_cover_flags & ~FACE
+			set_body_cover_flags(body_cover_flags & ~FACE)
 			set_armor(/datum/armor/none)
 			icon_state = "steriledown"
 			to_chat(usr, "You pull the mask below your chin.")
 		else
 			gas_transfer_coefficient = initial(gas_transfer_coefficient)
-			body_cover_flags = initial(body_cover_flags)
+			set_body_cover_flags(initial(body_cover_flags))
 			icon_state = initial(icon_state)
 			reset_armor()
 			to_chat(usr, "You pull the mask up to cover your face.")
@@ -216,12 +216,12 @@
 	if(src.icon_state == initial(icon_state))
 		src.icon_state = "[icon_state]_up"
 		to_chat(user, "You fold the bandana into a cap.")
-		body_cover_flags = HEAD
+		set_body_cover_flags(HEAD)
 	else
 		src.icon_state = initial(icon_state)
 		to_chat(user, "You untie the bandana and spread it out.")
 		slot_flags = initial(slot_flags)
-		body_cover_flags = initial(body_cover_flags)
+		set_body_cover_flags(initial(body_cover_flags))
 	update_worn_icon()	//so our mob-overlays update
 
 /*

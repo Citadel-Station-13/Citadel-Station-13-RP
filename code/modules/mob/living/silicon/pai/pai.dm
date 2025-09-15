@@ -28,8 +28,6 @@
 	pass_flags = 1
 	mob_size = MOB_SMALL
 
-	var/speed = 1 // We move slightly slower than normal living things
-
 	catalogue_data = list(/datum/category_item/catalogue/fauna/silicon/pai)
 
 	holder_type = /obj/item/holder/pai
@@ -114,7 +112,7 @@
 	var/last_space_movement = 0
 
 	// transformation component
-	var/datum/component/object_transform/transform_component
+	var/datum/component/custom_transform/transform_component
 
 	var/icon/last_rendered_hologram_icon
 
@@ -128,8 +126,13 @@
 									 /datum/action/pai/hologram_display,
 									 /datum/action/pai/place_hologram,
 									 /datum/action/pai/delete_holograms)
+	var/list/datum/action/actions_instanced
 
 	var/list/active_holograms = list()
+
+	//* Movement *//
+	/// Base speed in tiles/second
+	var/movement_base_speed = 4
 
 /mob/living/silicon/pai/Initialize(mapload)
 	. = ..()
@@ -139,7 +142,7 @@
 	sradio = new(src)
 	communicator = new(src)
 	if(shell)
-		transform_component = AddComponent(/datum/component/object_transform, shell, "neatly folds inwards, compacting down to a rectangular card", "folds outwards, expanding into a mobile form.")
+		transform_component = AddComponent(/datum/component/custom_transform, shell, "neatly folds inwards, compacting down to a rectangular card", "folds outwards, expanding into a mobile form.")
 	if(card && !card.radio)
 		card.radio = new /obj/item/radio(src.card)
 		radio = card.radio
@@ -158,6 +161,10 @@
 		pda.name = pda.owner + " (" + pda.ownjob + ")"
 		pda.toff = 1
 
+/mob/living/silicon/pai/Destroy()
+	QDEL_LIST(actions_instanced)
+	return ..()
+
 /mob/living/silicon/pai/Login()
 	..()
 	// Meta Info for pAI
@@ -169,7 +176,7 @@
 	. = list()
 	if(src.silence_time)
 		var/timeleft = round((silence_time - world.timeofday)/10 ,1)
-		STATPANEL_DATA_LINE("Communications system reboot in -[(timeleft / 60) % 60]:[add_zero(num2text(timeleft % 60), 2)]")
+		INJECT_STATPANEL_DATA_LINE(., "Communications system reboot in -[(timeleft / 60) % 60]:[add_zero(num2text(timeleft % 60), 2)]")
 
 /mob/living/silicon/pai/statpanel_data(client/C)
 	. = ..()
@@ -245,9 +252,9 @@
 /mob/living/silicon/pai/proc/switch_shell(obj/item/new_shell)
 	// setup transform text
 	if(istype(new_shell, /obj/item/paicard))
-		transform_component.to_object_text = "neatly folds inwards, compacting down to a rectangular card"
+		transform_component.transform_text = "neatly folds inwards, compacting down to a rectangular card"
 	else
-		transform_component.to_object_text = "neatly folds inwards, compacting down into their shell"
+		transform_component.transform_text = "neatly folds inwards, compacting down into their shell"
 
 	// if our shell is clothing, drop any accessories first
 	if(istype(shell, /obj/item/clothing))
@@ -257,7 +264,7 @@
 
 	// swap the shell, if the old shell is our card we keep it, otherwise we delete it because it's not important
 	shell = new_shell
-	var/obj/item/old_shell = transform_component.swap_object(new_shell)
+	var/obj/item/old_shell = transform_component.swap(new_shell)
 	if(istype(old_shell, /obj/item/paicard))
 		old_shell.forceMove(src)
 	else
@@ -330,7 +337,8 @@
 	if(initial(path.slot_flags) & SLOT_OCLOTHING)
 		return /obj/item/clothing/suit
 
-/mob/living/silicon/pai/AltClickOn(var/atom/A)
+/mob/living/silicon/pai/alt_click_on(atom/target, location, control, list/params)
+	var/atom/A = target
 	if((isobj(A) || ismob(A)) && in_range_of(src, A) && !istype(A, /obj/item/paicard) && !istype(A, /obj/effect/pai_hologram))
 		if(world.time > last_scanned_time + 600)
 			last_scanned_time = world.time
@@ -338,6 +346,8 @@
 			to_chat(src, "You scan the [A.name]")
 		else
 			to_chat(src, "You need to wait [((last_scanned_time+600) - world.time)/10] seconds to scan another object.")
+		return TRUE
+	return ..()
 
 /mob/living/silicon/pai/proc/scan_object(var/atom/A)
 	var/icon/hologram_icon = render_hologram_icon(A, 210, TRUE, TRUE, "_pai")
@@ -438,7 +448,7 @@
 				new_clothing.desc = src.desc
 				new_clothing.icon = icon
 				new_clothing.icon_state = state
-				new_clothing.add_atom_colour(uploaded_color, FIXED_COLOUR_PRIORITY)
+				new_clothing.add_atom_color(uploaded_color)
 
 				var/obj/item/clothing/under/U = new_clothing
 				if(istype(U))
@@ -459,14 +469,18 @@
 		to_chat(src, "You must be in card form to do this!")
 
 /mob/living/silicon/pai/proc/generate_actions()
+	actions_instanced = list()
 	for(var/path in actions_to_grant)
-		var/datum/action/pai/A = new path()
+		if(locate(path) in actions_instanced)
+			continue
+		var/datum/action/pai/A = new path(src)
 		A.grant(actions_innate)
 		if(A.update_on_grant)
 			A.update_buttons()
+		actions_instanced += A
 
 /mob/living/silicon/pai/proc/update_chassis_actions()
-	for(var/datum/action/pai/A in actions)
+	for(var/datum/action/pai/A in actions_instanced)
 		if(A.update_on_chassis_change)
 			A.update_buttons()
 

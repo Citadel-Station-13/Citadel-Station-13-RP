@@ -43,8 +43,7 @@ SUBSYSTEM_DEF(mapping)
 	// finalize
 	// todo: refactor
 	repopulate_sorted_areas()
-
-	return ..()
+	return SS_INIT_SUCCESS
 
 //
 // Mapping subsystem handles initialization of random map elements at server start

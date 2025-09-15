@@ -23,6 +23,7 @@
 		/obj/item/reagent_containers/food/drinks/h_chocolate = 3,
 		/obj/item/reagent_containers/food/drinks/cans/robustexpress = 2,
 		/obj/item/reagent_containers/food/drinks/cans/robustexpresslatte = 2,
+		/obj/item/reagent_containers/food/drinks/ice = 1
 	)
 
 /obj/machinery/vending/cola
@@ -83,8 +84,8 @@
 		/obj/item/reagent_containers/food/drinks/cans/battery = 5,
 		/obj/item/reagent_containers/food/drinks/cans/crystalgibb = 2,
 		/obj/item/reagent_containers/food/drinks/cans/gondola_energy = 5,
-		/obj/item/reagent_containers/food/drinks/bludbox = 25,
-		/obj/item/reagent_containers/food/drinks/bludboxlight = 35,
+		/obj/item/reagent_containers/food/drinks/bludbox = 10, //vetalan care package costs 30 in Cargo.
+		/obj/item/reagent_containers/food/drinks/bludboxlight = 15,
 		/obj/item/reagent_containers/food/drinks/cans/coconutwater = 6,
 		/obj/item/reagent_containers/food/drinks/cans/kyocola = 2,
 		/obj/item/reagent_containers/food/drinks/cans/kyocola_fire = 2,
@@ -94,12 +95,16 @@
 		/obj/item/reagent_containers/food/drinks/cans/cola_cherry = 2,
 		/obj/item/reagent_containers/food/drinks/cans/cola_coffee = 2,
 		/obj/item/reagent_containers/food/drinks/cans/robustexpressiced = 2,
+		/obj/item/reagent_containers/food/drinks/cans/thirteenloko = 8,
+		/obj/item/reagent_containers/food/snacks/liquid = 8, //SweatMAX LiquidFood costs 15. Making the contraband version cheaper can be rewarding.
+		/obj/item/reagent_containers/food/drinks/cans/dumbjuice = 1,
+		/obj/item/reagent_containers/food/drinks/cans/geometer = 15, //Geometer Energy contains actual blood.
 	)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 
 /obj/machinery/vending/sovietsoda
 	name = "BODA"
-	desc = "An old sweet water vending machine,how did this end up here?"
+	desc = "An old sweet water vending machine. How did this end up here?"
 	icon_state = "sovietsoda"
 	product_ads = "For Tsar and Country.;Have you fulfilled your nutrition quota today?;Very nice!;We are simple people, for this is all we eat.;If there is a person, there is a problem. If there is no person, then there is no problem."
 	products = list(

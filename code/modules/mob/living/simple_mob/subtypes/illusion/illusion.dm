@@ -4,13 +4,12 @@
 	name = "illusion"
 	desc = "If you can read me, the game broke. Please report this to a coder."
 
-	resistance = 1000 // Holograms are tough.
 	heat_resist = 1
 	cold_resist = 1
 	shock_resist = 1
 	poison_resist = 1
 
-	movement_cooldown = 0
+	movement_base_speed = 6.66
 	mob_bump_flag = 0 // If the illusion can't be swapped it will be obvious.
 
 	response_help   = "pushes a hand through"
@@ -40,10 +39,7 @@
 // Because we can't perfectly duplicate some examine() output, we directly examine the AM it is copying.  It's messy but
 // this is to prevent easy checks from the opposing force.
 /mob/living/simple_mob/illusion/examine(mob/user, dist)
-	if(copying)
-		copying.examine(user)
-		return
-
+	return copying?.examine(user) || ..() // ugh
 
 /mob/living/simple_mob/illusion/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	if(realistic)
@@ -81,13 +77,14 @@
 				M.visible_message(SPAN_DANGER("\The [M] [response_harm] \the [src]"))
 				M.do_attack_animation(src)
 
-/mob/living/simple_mob/illusion/hit_with_weapon(obj/item/I, mob/living/user, effective_force, hit_zone)
+/mob/living/simple_mob/illusion/melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/weapon/style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	if(realistic)
 		return ..()
-
-	playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
-	visible_message(SPAN_WARNING( "\The [user]'s [I] goes through \the [src]!"))
-	return FALSE
+	// TODO: proper feedback procs
+	attacker?.visible_message(
+		SPAN_WARNING("[attacker]'s [weapon] passes right through [src]!"),
+	)
+	return clickchain_flags | CLICKCHAIN_ATTACK_MISSED
 
 /mob/living/simple_mob/illusion/legacy_ex_act()
 	return

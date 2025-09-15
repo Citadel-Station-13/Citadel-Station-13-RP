@@ -38,8 +38,8 @@ var/global/list/datum/supply_drop_loot/supply_drop
 		/obj/item/clothing/accessory/storage/black_drop_pouches,
 		/obj/item/storage/backpack/dufflebag/sec,
 		/obj/item/shield/transforming/energy,
-		/obj/item/gun/energy/ionrifle,
-		/obj/item/gun/energy/xray,
+		/obj/item/gun/projectile/energy/ionrifle,
+		/obj/item/gun/projectile/energy/xray,
 		/obj/item/storage/box/emps,
 		/obj/item/storage/box/flashbangs,
 		/obj/item/material/knife/tacknife/combatknife)
@@ -61,11 +61,11 @@ var/global/list/datum/supply_drop_loot/supply_drop
 		/obj/item/shield/transforming/telescopic,
 		/obj/item/storage/box/emps,
 		/obj/item/storage/box/flashbangs,
-		/obj/item/gun/ballistic/automatic/sts35,
+		/obj/item/gun/projectile/ballistic/automatic/sts35,
 		/obj/item/ammo_magazine/a7_62mm/ap,
 		/obj/item/ammo_magazine/a7_62mm/ap,
-		/obj/item/gun/ballistic/colt,
-		/obj/item/ammo_magazine/a45,
+		/obj/item/gun/projectile/ballistic/colt,
+		/obj/item/ammo_magazine/a45/singlestack,
 		/obj/item/material/knife/tacknife/combatknife)
 
 /datum/supply_drop_loot/heavy_warfare
@@ -82,18 +82,18 @@ var/global/list/datum/supply_drop_loot/supply_drop
 		/obj/item/storage/belt/security/tactical/bandolier,
 		/obj/item/clothing/accessory/storage/black_drop_pouches,
 		/obj/item/storage/backpack/dufflebag/sec,
-		/obj/item/gun/ballistic/automatic/bullpup,
+		/obj/item/gun/projectile/ballistic/automatic/bullpup,
 		/obj/item/ammo_magazine/a7_62mm/ap,
 		/obj/item/ammo_magazine/a7_62mm,
 		/obj/item/shield/transforming/energy,
-		/obj/item/grenade/explosive/frag,
-		/obj/item/grenade/explosive/frag,
-		/obj/item/grenade/smokebomb,
-		/obj/item/grenade/smokebomb,
-		/obj/item/grenade/flashbang,
-		/obj/item/grenade/flashbang,
-		/obj/item/grenade/empgrenade,
-		/obj/item/grenade/empgrenade,
+		/obj/item/grenade/simple/explosive/frag,
+		/obj/item/grenade/simple/explosive/frag,
+		/obj/item/grenade/simple/smoke,
+		/obj/item/grenade/simple/smoke,
+		/obj/item/grenade/simple/flashbang,
+		/obj/item/grenade/simple/flashbang,
+		/obj/item/grenade/simple/emp,
+		/obj/item/grenade/simple/emp,
 		/obj/item/material/knife/tacknife/combatknife)
 
 /datum/supply_drop_loot/riot
@@ -115,8 +115,8 @@ var/global/list/datum/supply_drop_loot/supply_drop
 		/obj/item/storage/belt/security,
 		/obj/item/clothing/shoes/boots/jackboots,
 		/obj/item/clothing/gloves/black,
-		/obj/item/gun/ballistic/shotgun/pump,
-		/obj/item/gun/energy/gun,
+		/obj/item/gun/projectile/ballistic/shotgun/pump,
+		/obj/item/gun/projectile/energy/gun,
 		/obj/item/clothing/accessory/holster,
 		/obj/item/gun/launcher/grenade,
 		/obj/item/storage/backpack/dufflebag/sec)
@@ -267,9 +267,9 @@ var/global/list/datum/supply_drop_loot/supply_drop
 /datum/supply_drop_loot/materials/New()
 	..()
 	contents = list(
-		/obj/fiftyspawner/steel,
-		/obj/fiftyspawner/steel,
-		/obj/fiftyspawner/steel,
+		/obj/item/stack/material/steel/full_stack,
+		/obj/item/stack/material/steel/full_stack,
+		/obj/item/stack/material/steel/full_stack,
 		/obj/fiftyspawner/glass,
 		/obj/fiftyspawner/glass,
 		/obj/fiftyspawner/wood,
@@ -283,7 +283,7 @@ var/global/list/datum/supply_drop_loot/supply_drop
 /datum/supply_drop_loot/materials_advanced/New()
 	..()
 	contents = list(
-		/obj/fiftyspawner/steel,
+		/obj/item/stack/material/steel/full_stack,
 		/obj/fiftyspawner/glass,
 		/obj/fiftyspawner/wood,
 		/obj/fiftyspawner/plastic,

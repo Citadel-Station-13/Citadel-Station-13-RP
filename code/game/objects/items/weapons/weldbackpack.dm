@@ -14,7 +14,7 @@
 
 /obj/item/weldpack/Initialize(mapload)
 	. = ..()
-	var/datum/reagents/R = new/datum/reagents(max_fuel) //Lotsa refills
+	var/datum/reagent_holder/R = new/datum/reagent_holder(max_fuel) //Lotsa refills
 	reagents = R
 	R.my_atom = src
 	R.add_reagent("fuel", max_fuel)
@@ -38,7 +38,7 @@
 
 	var/mob/living/carbon/human/H = user
 
-	if(H.hands_full()) //Make sure our hands aren't full.
+	if(H.are_usable_hands_full()) //Make sure our hands aren't full.
 		to_chat(H, "<span class='warning'>Your hands are full.  Drop something first.</span>")
 		return 0
 

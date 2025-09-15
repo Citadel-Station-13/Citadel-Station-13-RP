@@ -29,7 +29,6 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/power/geothermal_controller/prepared/LateInitialize()
-	. = ..()
 	scan_for_collectors(scanner?.range)
 
 /obj/machinery/power/geothermal_controller/examine(mob/user, dist)

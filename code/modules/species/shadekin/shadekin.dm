@@ -21,28 +21,27 @@
 	informal name. After a few hundred years of living side by side, it's by now widely known that
 	Shadekin culture revolves around tribes with various levels of technology, with some tribes
 	integrating into other cultures and cities, as well as some Shadekin leaving their tribe to
-	travel alone. NanoTrasen is one of the biggest employers of Shadekin.
+	travel alone. Nanotrasen is one of the biggest employers of Shadekin.
 	"}
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Shadekin"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/shadekin)
-	//rarity_value = 15 //INTERDIMENSIONAL FLUFFERS
 
 	max_additional_languages = 3
 	intrinsic_languages = LANGUAGE_ID_SHADEKIN_HIVEMIND
 	name_language = LANGUAGE_ID_SHADEKIN_HIVEMIND
 
 	unarmed_types = list(
-		/datum/unarmed_attack/stomp,
-		/datum/unarmed_attack/kick,
-		/datum/unarmed_attack/claws/shadekin,
-		/datum/unarmed_attack/bite/sharp/shadekin,
+		/datum/melee_attack/unarmed/stomp,
+		/datum/melee_attack/unarmed/kick,
+		/datum/melee_attack/unarmed/claws/shadekin,
+		/datum/melee_attack/unarmed/bite/sharp/shadekin,
 	)
 
-	siemens_coefficient = 1
+	siemens_coefficient = 0
 	vision_innate = /datum/vision/baseline/species_tier_3/for_snowflake_ocs
 	vision_organ = O_EYES
-	
-	slowdown = -0.5
+
+	movement_base_speed = 6
 	item_slowdown_mod = 0.5
 
 	brute_mod = 0.7 // Naturally sturdy.
@@ -75,7 +74,6 @@
 
 	has_glowing_eyes = TRUE
 
-	death_message = "phases to somewhere far away!"
 	male_cough_sounds   = null
 	female_cough_sounds = null
 	male_sneeze_sound   = null
@@ -120,9 +118,6 @@
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right),
 	)
 
-	vision_innate = /datum/vision/baseline/species_tier_3/for_snowflake_ocs
-
-	//SHADEKIN-UNIQUE STUFF GOES HERE
 	var/list/shadekin_abilities = list(
 		/datum/power/shadekin/phase_shift,
 		/datum/power/shadekin/regenerate_other,
@@ -142,11 +137,6 @@
 
 /datum/species/shadekin/get_bodytype_legacy()
 	return SPECIES_SHADEKIN
-
-/datum/species/shadekin/handle_death(mob/living/carbon/human/H)
-	spawn(1)
-		H.drop_inventory(TRUE, TRUE, TRUE)
-		qdel(H)
 
 /datum/species/shadekin/get_random_name()
 	return "shadekin"
@@ -189,6 +179,8 @@
 	var/brightness = T.get_lumcount() //Brightness in 0.0 to 1.0
 	darkness = 1-brightness //Invert
 	var/is_dark = (darkness >= 0.5)
+	if(isspaceturf(T))
+		is_dark = 1
 
 	if(H.ability_flags & AB_PHASE_SHIFTED)
 		dark_gains = 0
@@ -267,13 +259,13 @@
 					l_icon = 4
 
 		switch(get_energy(H))
-			if(0 to 24)
+			if(0 to 24.99)
 				e_icon = 0
-			if(25 to 49)
+			if(25 to 49.99)
 				e_icon = 1
-			if(50 to 74)
+			if(50 to 74.99)
 				e_icon = 2
-			if(75 to 99)
+			if(75 to 99.99)
 				e_icon = 3
 			if(100 to INFINITY)
 				e_icon = 4

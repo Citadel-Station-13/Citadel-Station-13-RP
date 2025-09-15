@@ -17,13 +17,13 @@
 
 	// i'm going to trust people aren't stupid and won't put the name of a regular panel in spells.
 	if(!length(spell_list))
-		if(C.statpanel_spell_last)
+		if(C.tgui_stat.spell_last)
 			// dispose
-			for(var/tab in C.statpanel_spell_last)
+			for(var/tab in C.tgui_stat.spell_last)
 				C.statpanel_tab(tab, FALSE)
-			C.statpanel_spell_last = null
+			C.tgui_stat.spell_last = null
 		return
-	LAZYINITLIST(C.statpanel_spell_last)
+	LAZYINITLIST(C.tgui_stat.spell_last)
 	var/list/collected = list()
 	for(var/spell/S in spell_list)
 		if(!S.panel || !S.connected_button)
@@ -33,20 +33,20 @@
 			continue
 		switch(S.charge_type)
 			if(Sp_RECHARGE)
-				STATPANEL_DATA_CLICK("[S.charge_counter/10.0]/[S.charge_max/10]", "[S.connected_button]", "\ref[S.connected_button]")
+				INJECT_STATPANEL_DATA_CLICK(., "[S.charge_counter/10.0]/[S.charge_max/10]", "[S.connected_button]", "\ref[S.connected_button]")
 			if(Sp_CHARGES)
-				STATPANEL_DATA_CLICK("[S.charge_counter]/[S.charge_max]", "[S.connected_button]", "\ref[S.connected_button]")
+				INJECT_STATPANEL_DATA_CLICK(., "[S.charge_counter]/[S.charge_max]", "[S.connected_button]", "\ref[S.connected_button]")
 			if(Sp_HOLDVAR)
-				STATPANEL_DATA_CLICK("[S.holder_var_type] [S.holder_var_amount]", "[S.connected_button]", "\ref[S.connected_button]")
+				INJECT_STATPANEL_DATA_CLICK(., "[S.holder_var_type] [S.holder_var_amount]", "[S.connected_button]", "\ref[S.connected_button]")
 	// process tabs
-	var/list/removing = C.statpanel_spell_last - collected
-	var/list/adding = collected - C.statpanel_spell_last
+	var/list/removing = C.tgui_stat.spell_last - collected
+	var/list/adding = collected - C.tgui_stat.spell_last
 	for(var/tab in adding)
 		C.statpanel_tab(adding, TRUE)
 	for(var/tab in removing)
 		C.statpanel_tab(removing, TRUE)
 
-/hook/clone/proc/restore_spells(var/mob/H)
+/legacy_hook/clone/proc/restore_spells(var/mob/H)
 	if(H.mind && H.mind.learned_spells)
 		for(var/spell/spell_to_add in H.mind.learned_spells)
 			H.add_spell(spell_to_add)

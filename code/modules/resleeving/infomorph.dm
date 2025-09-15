@@ -85,7 +85,7 @@ var/list/infomorph_emotions = list(
 
 /mob/living/silicon/infomorph/Initialize(mapload, obj/item/sleevecard/SC, name = "Unknown")
 	ASSERT(SC)
-	name = "[initial(name)] ([name])"
+	name = "Unknown ([name])"
 	src.forceMove(SC)
 	card = SC
 	sradio = new(src)
@@ -120,10 +120,10 @@ var/list/infomorph_emotions = list(
 /mob/living/silicon/infomorph/statpanel_data(client/C)
 	. = ..()
 	if(C.statpanel_tab("Status"))
-		STATPANEL_DATA_LINE("")
+		INJECT_STATPANEL_DATA_LINE(., "")
 		if(src.silence_time)
 			var/timeleft = round((silence_time - world.timeofday)/10 ,1)
-			STATPANEL_DATA_LINE("Communications system reboot in -[(timeleft / 60) % 60]:[add_zero(num2text(timeleft % 60), 2)]")
+			INJECT_STATPANEL_DATA_LINE(., "Communications system reboot in -[(timeleft / 60) % 60]:[add_zero(num2text(timeleft % 60), 2)]")
 
 /////////// CHECKERS
 /mob/living/silicon/infomorph/check_eye(var/mob/user as mob)
@@ -411,7 +411,7 @@ var/list/infomorph_emotions = list(
 	else
 		to_chat(src,"<span class='warning'>You don't have a radio!</span>")
 
-/mob/living/silicon/infomorph/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
+/mob/living/silicon/infomorph/say(var/message, var/datum/prototype/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	if(silence_time)
 		to_chat(src, "<font color=green>Communication circuits remain uninitialized.</font>")
 	else
@@ -432,7 +432,7 @@ var/list/infomorph_emotions = list(
 /////////////// SOFTWARE DOWNLOADS
 var/global/list/infomorph_software_by_key = list()
 var/global/list/default_infomorph_software = list()
-/hook/startup/proc/populate_infomorph_software_list()
+/legacy_hook/startup/proc/populate_infomorph_software_list()
 	var/r = 1 // I would use ., but it'd sacrifice runtime detection
 	for(var/type in typesof(/datum/infomorph_software) - /datum/infomorph_software)
 		var/datum/infomorph_software/P = new type()

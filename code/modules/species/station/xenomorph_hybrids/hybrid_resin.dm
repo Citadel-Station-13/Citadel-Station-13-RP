@@ -1,6 +1,6 @@
 //contains the relavant data for the xenohybrid resin, a more versitile, and legaly distinct material.
 
-/datum/material/hybrid_resin
+/datum/prototype/material/hybrid_resin
 	id = "xenoresin_hybrid"
 	name = "resin compound"
 	icon_colour = "#321a49"
@@ -30,13 +30,13 @@
 /obj/item/stack/material/hybrid_resin
 	name = "resin compound"
 	icon_state = "sheet-resin"
-	material = /datum/material/hybrid_resin
+	material = /datum/prototype/material/hybrid_resin
 	no_variants = TRUE
 	apply_colour = TRUE
 	pass_color = TRUE
 	strict_color_stacking = TRUE
 
-/datum/material/hybrid_resin/generate_recipes()
+/datum/prototype/material/hybrid_resin/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(
 		name = "resin nest",
@@ -97,7 +97,6 @@
 	desc = "It's a gruesome pile of thick, sticky resin shaped like a nest."
 	icon = 'icons/mob/alien.dmi'
 	icon_state = "nest"
-	color = "#321a49"
 	material = "xenoresin_hybrid"
 	padding_material = "xenoresin_hybrid"
 	hit_sound_brute = 'sound/effects/attackblob.ogg'

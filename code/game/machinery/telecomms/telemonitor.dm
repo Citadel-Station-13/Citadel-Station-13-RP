@@ -99,7 +99,7 @@
 
 		if("network")
 			var/newnet = input(usr, "Which network do you want to view?", "Comm Monitor", network) as null|text
-			if(newnet && ((usr in range(1, src) || issilicon(usr))))
+			if(newnet && ((usr in range(1, src)) || issilicon(usr)))
 				if(length(newnet) > 15)
 					set_temp("FAILED: NETWORK TAG STRING TOO LENGTHY", "bad")
 					return TRUE
@@ -116,7 +116,7 @@
 
 /obj/machinery/computer/telecomms/monitor/emag_act(var/remaining_charges, var/mob/user)
 	if(!emagged)
-		playsound(src, /datum/soundbyte/grouped/sparks, 75, 1)
+		playsound(src, /datum/soundbyte/sparks, 75, 1)
 		emagged = 1
 		to_chat(user, "<span class='notice'>You you disable the security protocols</span>")
 		src.updateUsrDialog()

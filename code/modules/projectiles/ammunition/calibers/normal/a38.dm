@@ -1,9 +1,10 @@
 /datum/ammo_caliber/a38
+	id = "a38"
 	caliber = ".38"
 
 /obj/item/ammo_casing/a38
 	desc = "A .38 bullet casing."
-	caliber = /datum/ammo_caliber/a38
+	casing_caliber = /datum/ammo_caliber/a38
 	icon = 'icons/modules/projectiles/casings/slim.dmi'
 	icon_state = "small"
 	projectile_type = /obj/projectile/bullet/pistol
@@ -15,18 +16,16 @@
 	projectile_type = /obj/projectile/bullet/pistol/rubber
 
 /obj/item/ammo_casing/a38/emp
-	name = ".38 haywire round"
 	desc = "A .38 bullet casing fitted with a single-use ion pulse generator."
 	icon_state = "small-tech"
 	projectile_type = /obj/projectile/ion/small
 	materials_base = list(MAT_STEEL = 130, MAT_URANIUM = 100)
 
 /obj/item/ammo_casing/a38/silver
-	desc = "A .38 silver bullet casing. Bless and Sancitfied to banish otherworlds entities."
+	desc = "A .38 silver bullet casing."
 	icon_state = "small-silver"
 	projectile_type = /obj/projectile/bullet/pistol/silver
-	materials_base = list(MAT_STEEL = 130, MAT_SILVER = 100)
-
+	materials_base = list(MAT_STEEL = 40, MAT_SILVER = 30)
 //* Magazines *//
 
 /obj/item/ammo_magazine/a38
@@ -63,8 +62,8 @@
 
 /obj/item/ammo_magazine/a38/speedloader/emp
 	name = "speedloader (.38 haywire)"
-	icon_state = "bluetip-6"
-	base_icon_state = "bluetip"
+	icon_state = "tech-6"
+	base_icon_state = "tech"
 	ammo_preload = /obj/item/ammo_casing/a38/emp
 
 /obj/item/ammo_magazine/a38/speedloader/silver
@@ -72,4 +71,3 @@
 	icon_state = "holy-6"
 	base_icon_state = "holy"
 	ammo_preload = /obj/item/ammo_casing/a38/silver
-	materials_base = list(MAT_STEEL = 780, MAT_SILVER = 600)

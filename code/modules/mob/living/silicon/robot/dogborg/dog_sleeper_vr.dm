@@ -5,7 +5,7 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "sleeper"
 	w_class = WEIGHT_CLASS_TINY
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	var/mob/living/carbon/patient = null
 	var/mob/living/silicon/robot/hound = null
 	var/inject_amount = 10
@@ -282,9 +282,10 @@
 			dat += "<div class='line'><span class='average'>Significant brain damage detected.</span></div><br>"
 		if(patient.getCloneLoss())
 			dat += "<div class='line'><span class='average'>Patient may be improperly cloned.</span></div><br>"
-		if(patient.reagents.reagent_list.len)
-			for(var/datum/reagent/R in patient.reagents.reagent_list)
-				dat += "<div class='line'><div style='width: 170px;' class='statusLabel'>[R.name]:</div><div class='statusValue'>[round(R.volume, 0.1)] units</div></div><br>"
+		for(var/id in patient.reagents.reagent_volumes)
+			var/datum/reagent/R = SSchemistry.fetch_reagent(id)
+			var/volume = patient.reagents.reagent_volumes[id]
+			dat += "<div class='line'><div style='width: 170px;' class='statusLabel'>[R.name]:</div><div class='statusValue'>[round(volume, 0.1)] units</div></div><br>"
 	dat += "</div>"
 
 	var/datum/browser/popup = new(user, "sleeper_b", "[name] Console", 400, 500, src)
@@ -391,7 +392,7 @@
 
 /obj/item/dogborg/sleeper/proc/inject_chem(mob/user, chem)
 	if(patient && patient.reagents)
-		if(chem in injection_chems + "inaprovaline")
+		if(chem in (injection_chems + "inaprovaline"))
 			if(hound.cell.charge < 800) //This is so borgs don't kill themselves with it.
 				to_chat(hound, "<span class='notice'>You don't have enough power to synthesize fluids.</span>")
 				return

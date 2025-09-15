@@ -243,10 +243,10 @@
 
 	var/beaker_contents[0]
 	if(beaker)
-		for(var/datum/reagent/R in beaker.reagents.reagent_list)
+		for(var/datum/reagent/R in beaker.reagents.get_reagent_datums())
 			beaker_contents.Add(list(list( //! list in a list because Byond merges the first list...
 				"name"        = R.name,
-				"volume"      = round(R.volume, 0.01),
+				"volume"      = round(beaker.reagents.reagent_volumes[R.id], 0.01),
 				"description" = R.description,
 				"id"          = R.id,
 			)))
@@ -254,10 +254,10 @@
 
 	var/buffer_contents[0]
 	if(reagents.total_volume)
-		for(var/datum/reagent/R in reagents.reagent_list)
+		for(var/datum/reagent/R in reagents.get_reagent_datums())
 			buffer_contents.Add(list(list( //! ^
 				"name"        = R.name,
-				"volume"      = round(R.volume, 0.01),
+				"volume"      = round(reagents.reagent_volumes[R.id], 0.01),
 				"description" = R.description,
 				"id"          = R.id,
 			)))
@@ -382,7 +382,7 @@
 				if (style && style["name"] && !style["generate_name"])
 					name_default = style["name"]
 				else
-					name_default = reagents.get_master_reagent_name()
+					name_default = reagents.get_majority_reagent_name()
 				if (name_has_units)
 					name_default += " ([vol_each]u)"
 				name = tgui_input_text(usr,
@@ -494,7 +494,7 @@
 					state = "Liquid"
 				else if(initial(analyzed_reagent.reagent_state) == REAGENT_GAS)
 					state = "Gas"
-				var/metabolization_rate = initial(analyzed_reagent.metabolism)// * (60 / SSMOBS_DT)
+				var/metabolization_rate = initial(analyzed_reagent.metabolism_rate)// * (60 / SSMOBS_DT)
 				analyze_vars = list(
 					"name" = initial(analyzed_reagent.name),
 					"state" = state,
@@ -544,7 +544,7 @@
 	else
 		return FALSE
 
-// /obj/machinery/chem_master/proc/chemical_safety_check(datum/reagents/R)
+// /obj/machinery/chem_master/proc/chemical_safety_check(datum/reagent_holder/R)
 // 	var/all_safe = TRUE
 // 	for(var/datum/reagent/A in R.reagent_list)
 // 		if(!GLOB.safe_chem_list.Find(A.id))
@@ -771,10 +771,10 @@
  * If not available returns fallback style, or null if no such thing.
  * Returns list that is one of condibottle styles from [/obj/machinery/chem_master/proc/get_condi_styles]
  */
-/obj/machinery/chem_master/proc/guess_condi_style(datum/reagents/reagents)
+/obj/machinery/chem_master/proc/guess_condi_style(datum/reagent_holder/reagents)
 	var/list/styles = get_condi_styles()
-	if (reagents.reagent_list.len > 0)
-		var/main_reagent = reagents.get_master_reagent_id()
+	if (reagents.total_volume)
+		var/main_reagent = reagents.get_majority_reagent_id()
 		if (main_reagent)
 			var/list/path = splittext("[main_reagent]", "/")
 			main_reagent = path[path.len]

@@ -18,7 +18,7 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	var/atom/movable/screen/holomap
 
 /atom/movable/screen/global_screen
-	screen_loc = ui_entire_screen
+	screen_loc = SCREEN_LOC_FULLSCREEN
 	plane = FULLSCREEN_PLANE
 	mouse_opacity = 0
 
@@ -105,8 +105,6 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	var/atom/movable/screen/wiz_energy_display
 	var/atom/movable/screen/blobpwrdisplay
 	var/atom/movable/screen/blobhealthdisplay
-	var/atom/movable/screen/r_hand_hud_object
-	var/atom/movable/screen/l_hand_hud_object
 	var/atom/movable/screen/action_intent
 	var/atom/movable/screen/move_intent
 
@@ -119,11 +117,6 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	var/list/other_important
 	var/list/miniobjs
 	var/list/atom/movable/screen/hotkeybuttons
-
-	/// screen_loc's of slots, by slot id. hands are not slots.
-	var/list/slot_info = list()
-	/// screen_loc's of hands, by index - index is associative NUMBER AS TEXT.
-	var/list/hand_info = list()
 
 	// pending hardsync
 	var/icon/ui_style
@@ -148,8 +141,6 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	wiz_energy_display = null
 	blobpwrdisplay = null
 	blobhealthdisplay = null
-	r_hand_hud_object = null
-	l_hand_hud_object = null
 	action_intent = null
 	move_intent = null
 	adding = null
@@ -161,92 +152,6 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	minihuds = null
 
 	QDEL_LIST(static_inventory)
-
-/datum/hud/proc/hidden_inventory_update()
-	if(!mymob) return
-	if(ishuman(mymob))
-		var/mob/living/carbon/human/H = mymob
-		for(var/gear_slot in H.species.hud.gear)
-			var/list/hud_data = H.species.hud.gear[gear_slot]
-			if(inventory_shown && hud_shown)
-				switch(hud_data["slot"])
-					if(SLOT_ID_HEAD)
-						if(H.head)      H.head.screen_loc =      hud_data["loc"]
-					if(SLOT_ID_SHOES)
-						if(H.shoes)     H.shoes.screen_loc =     hud_data["loc"]
-					if(SLOT_ID_LEFT_EAR)
-						if(H.l_ear)     H.l_ear.screen_loc =     hud_data["loc"]
-					if(SLOT_ID_RIGHT_EAR)
-						if(H.r_ear)     H.r_ear.screen_loc =     hud_data["loc"]
-					if(SLOT_ID_GLOVES)
-						if(H.gloves)    H.gloves.screen_loc =    hud_data["loc"]
-					if(SLOT_ID_GLASSES)
-						if(H.glasses)   H.glasses.screen_loc =   hud_data["loc"]
-					if(SLOT_ID_UNIFORM)
-						if(H.w_uniform) H.w_uniform.screen_loc = hud_data["loc"]
-					if(SLOT_ID_SUIT)
-						if(H.wear_suit) H.wear_suit.screen_loc = hud_data["loc"]
-					if(SLOT_ID_MASK)
-						if(H.wear_mask) H.wear_mask.screen_loc = hud_data["loc"]
-			else
-				switch(hud_data["slot"])
-					if(SLOT_ID_HEAD)
-						if(H.head)      H.head.screen_loc =      null
-					if(SLOT_ID_SHOES)
-						if(H.shoes)     H.shoes.screen_loc =     null
-					if(SLOT_ID_LEFT_EAR)
-						if(H.l_ear)     H.l_ear.screen_loc =     null
-					if(SLOT_ID_RIGHT_EAR)
-						if(H.r_ear)     H.r_ear.screen_loc =     null
-					if(SLOT_ID_GLOVES)
-						if(H.gloves)    H.gloves.screen_loc =    null
-					if(SLOT_ID_GLASSES)
-						if(H.glasses)   H.glasses.screen_loc =   null
-					if(SLOT_ID_UNIFORM)
-						if(H.w_uniform) H.w_uniform.screen_loc = null
-					if(SLOT_ID_SUIT)
-						if(H.wear_suit) H.wear_suit.screen_loc = null
-					if(SLOT_ID_MASK)
-						if(H.wear_mask) H.wear_mask.screen_loc = null
-
-
-/datum/hud/proc/persistant_inventory_update()
-	if(!mymob)
-		return
-
-	if(ishuman(mymob))
-		var/mob/living/carbon/human/H = mymob
-		for(var/gear_slot in H.species.hud.gear)
-			var/list/hud_data = H.species.hud.gear[gear_slot]
-			if(hud_shown)
-				switch(hud_data["slot"])
-					if(SLOT_ID_SUIT_STORAGE)
-						if(H.s_store) H.s_store.screen_loc = hud_data["loc"]
-					if(SLOT_ID_WORN_ID)
-						if(H.wear_id) H.wear_id.screen_loc = hud_data["loc"]
-					if(SLOT_ID_BELT)
-						if(H.belt)    H.belt.screen_loc =    hud_data["loc"]
-					if(SLOT_ID_BACK)
-						if(H.back)    H.back.screen_loc =    hud_data["loc"]
-					if(SLOT_ID_LEFT_POCKET)
-						if(H.l_store) H.l_store.screen_loc = hud_data["loc"]
-					if(SLOT_ID_RIGHT_POCKET)
-						if(H.r_store) H.r_store.screen_loc = hud_data["loc"]
-			else
-				switch(hud_data["slot"])
-					if(SLOT_ID_SUIT_STORAGE)
-						if(H.s_store) H.s_store.screen_loc = null
-					if(SLOT_ID_WORN_ID)
-						if(H.wear_id) H.wear_id.screen_loc = null
-					if(SLOT_ID_BELT)
-						if(H.belt)    H.belt.screen_loc =    null
-					if(SLOT_ID_BACK)
-						if(H.back)    H.back.screen_loc =    null
-					if(SLOT_ID_LEFT_POCKET)
-						if(H.l_store) H.l_store.screen_loc = null
-					if(SLOT_ID_RIGHT_POCKET)
-						if(H.r_store) H.r_store.screen_loc = null
-
 
 /datum/hud/proc/instantiate()
 	if(!ismob(mymob))
@@ -323,8 +228,6 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 		//Due to some poor coding some things need special treatment:
 		//These ones are a part of 'adding', 'other' or 'hotkeybuttons' but we want them to stay
 		if(!full)
-			src.client.screen += src.hud_used.l_hand_hud_object	//we want the hands to be visible
-			src.client.screen += src.hud_used.r_hand_hud_object	//we want the hands to be visible
 			src.client.screen += src.hud_used.action_intent		//we want the intent swticher visible
 			src.hud_used.action_intent.screen_loc = ui_acti_alt	//move this to the alternative position, where zone_select usually is.
 		else
@@ -334,6 +237,9 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 
 		//These ones are not a part of 'adding', 'other' or 'hotkeybuttons' but we want them gone.
 		src.client.screen -= src.zone_sel	//zone_sel is a mob variable for some reason.
+
+		client.actor_huds.inventory?.remove_hidden_class(INVENTORY_HUD_CLASS_ALWAYS, INVENTORY_HUD_HIDE_SOURCE_F12)
+		client.actor_huds.inventory?.remove_hidden_class(INVENTORY_HUD_CLASS_DRAWER, INVENTORY_HUD_HIDE_SOURCE_F12)
 
 	else
 		hud_used.hud_shown = 1
@@ -353,8 +259,8 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 		src.hud_used.action_intent.screen_loc = ui_acti //Restore intent selection to the original position
 		src.client.screen += src.zone_sel				//This one is a special snowflake
 
-	hud_used.hidden_inventory_update()
-	hud_used.persistant_inventory_update()
+		client.actor_huds.inventory?.add_hidden_class(INVENTORY_HUD_CLASS_ALWAYS, INVENTORY_HUD_HIDE_SOURCE_F12)
+		client.actor_huds.inventory?.add_hidden_class(INVENTORY_HUD_CLASS_DRAWER, INVENTORY_HUD_HIDE_SOURCE_F12)
 
 //Similar to button_pressed_F12() but keeps zone_sel, gun_setting_icon, and healths.
 /mob/proc/toggle_zoom_hud()
@@ -379,6 +285,9 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 			src.client.screen -= src.hud_used.other_important
 		src.client.screen -= src.internals
 		src.client.screen += src.hud_used.action_intent		//we want the intent swticher visible
+
+		client.actor_huds.inventory?.remove_hidden_class(INVENTORY_HUD_CLASS_ALWAYS, INVENTORY_HUD_HIDE_SOURCE_F12)
+		client.actor_huds.inventory?.remove_hidden_class(INVENTORY_HUD_CLASS_DRAWER, INVENTORY_HUD_HIDE_SOURCE_F12)
 	else
 		hud_used.hud_shown = 1
 		if(src.hud_used.adding)
@@ -393,5 +302,5 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 			src.client.screen |= src.internals
 		src.hud_used.action_intent.screen_loc = ui_acti //Restore intent selection to the original position
 
-	hud_used.hidden_inventory_update()
-	hud_used.persistant_inventory_update()
+		client.actor_huds.inventory?.add_hidden_class(INVENTORY_HUD_CLASS_ALWAYS, INVENTORY_HUD_HIDE_SOURCE_F12)
+		client.actor_huds.inventory?.add_hidden_class(INVENTORY_HUD_CLASS_DRAWER, INVENTORY_HUD_HIDE_SOURCE_F12)

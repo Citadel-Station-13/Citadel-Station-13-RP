@@ -1,4 +1,4 @@
-/datum/language/corgi
+/datum/prototype/language/corgi
 	id = LANGUAGE_ID_DOG
 	name = "Dog"
 	translation_class = TRANSLATION_CLASS_ANIMAL
@@ -12,7 +12,7 @@
 	syllables = list("bark", "woof", "bowwow", "yap", "arf")
 	shorthand = "DOG"
 
-/datum/language/cat
+/datum/prototype/language/cat
 	id = LANGUAGE_ID_CAT
 	name = "Cat"
 	translation_class = TRANSLATION_CLASS_ANIMAL
@@ -26,7 +26,7 @@
 	syllables = list("meow", "mrowl", "purr", "meow", "meow", "meow")
 	shorthand = "CAT"
 
-/datum/language/mouse
+/datum/prototype/language/mouse
 	id = LANGUAGE_ID_MOUSE
 	name = "Mouse"
 	translation_class = TRANSLATION_CLASS_ANIMAL
@@ -40,7 +40,7 @@
 	syllables = list("squeak")	// , "gripes", "oi", "meow")
 	shorthand = "MSE"
 
-/datum/language/bird
+/datum/prototype/language/bird
 	id = LANGUAGE_ID_BIRD
 	name = "Bird"
 	translation_class = TRANSLATION_CLASS_ANIMAL

@@ -113,6 +113,13 @@
 	size = 8
 	w_class = 1
 
+/obj/item/reagent_containers/food/snacks/variable/pettreat
+	name = "pet treat"
+	desc = "TREAT?!!?!"
+	icon_state = "treat"
+	size = 6
+	w_class = 2 // weight class small
+
 /obj/item/reagent_containers/food/snacks/variable/jawbreaker
 	name = "flavored jawbreaker"
 	desc = "It's like cracking a molar on a rainbow."

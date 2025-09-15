@@ -1,10 +1,10 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/action/organ_action
-	target_type = /obj/item
-
+	target_type = /obj/item/organ
 	button_icon_state = null
+
 	/// automatically set button_additional_overlay to the organ
 	var/render_organ_as_button = TRUE
 

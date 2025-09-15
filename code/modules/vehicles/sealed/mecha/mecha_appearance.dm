@@ -13,13 +13,13 @@
 	// How many pixels do we bump the pilot upward?
 	var/pilot_lift = 0
 
-/obj/vehicle/sealed/mecha/update_transform()
-	// Now for the regular stuff.
-	var/matrix/M = matrix()
-	M.Scale(icon_scale_x, icon_scale_y)
-	M.Translate(0, 16*(icon_scale_y-1))
-	animate(src, transform = M, time = 10)
-	return
+/obj/vehicle/sealed/mecha/apply_transform(matrix/to_apply)
+	animate(src, transform = to_apply, time = 1 SECONDS)
+
+/obj/vehicle/sealed/mecha/base_transform(matrix/applying)
+	var/matrix/base_matrix = ..()
+	base_matrix.Translate(0, 16 * (icon_scale_y - 1))
+	return base_matrix
 
 /obj/vehicle/sealed/mecha/update_icon()
 	if(!initial_icon)
@@ -60,6 +60,6 @@
 	if(face_overlay)
 		add_overlay(face_overlay)
 
-	for(var/obj/item/mecha_parts/mecha_equipment/ME in equipment)
+	for(var/obj/item/vehicle_module/ME in equipment)
 
 		ME.add_equip_overlay(src)

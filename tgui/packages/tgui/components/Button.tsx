@@ -7,7 +7,7 @@
 import { Placement } from '@popperjs/core';
 import { KEY_ENTER, KEY_ESCAPE, KEY_SPACE } from 'common/keycodes';
 import { BooleanLike, classes, pureComponentHooks, StrictlyStringLike } from 'common/react';
-import { Component, createRef } from 'inferno';
+import { ChangeEvent, Component, createRef } from 'inferno';
 import { createLogger } from '../logging';
 import { Box, BoxProps, computeBoxClassName, computeBoxProps } from './Box';
 import { Icon } from './Icon';
@@ -16,6 +16,8 @@ import { Tooltip } from './Tooltip';
 const logger = createLogger('Button');
 
 export type ButtonProps = BoxProps & {
+  // when button is selected, any keypress should press the button.
+  readonly captureKeys?: BooleanLike;
   readonly fluid?: BooleanLike;
   readonly icon?: string | BooleanLike;
   readonly iconRotation?: number;
@@ -68,14 +70,14 @@ export const Button = (props: ButtonProps) => {
       + `'onClick' instead and read: `
       + `https://infernojs.org/docs/guides/event-handling`);
   }
-  rest.onClick = e => {
+  rest['onClick'] = e => {
     if (!disabled && onClick) {
       onClick(e);
     }
   };
   // IE8: Use "unselectable" because "user-select" doesn't work.
   if (Byond.IS_LTE_IE8) {
-    rest.unselectable = true;
+    rest['unselectable'] = true;
   }
   let buttonContent = (
     <div
@@ -352,3 +354,40 @@ export class ButtonInput<T extends ButtonInputProps> extends Component<T, {}> {
 }
 
 Button.Input = ButtonInput;
+
+type FileProps = {
+  accept: string;
+  multiple?: boolean;
+  onSelectFiles: (files: FileList) => void;
+} & ButtonProps;
+
+/**  Accepts file input */
+function ButtonFile(props: FileProps) {
+  const { accept, multiple, onSelectFiles, ...rest } = props;
+
+  const inputRef = createRef<HTMLInputElement>();
+
+  async function handleChange(event: ChangeEvent<HTMLInputElement>) {
+    const files = event.target.files;
+    if (files?.length) {
+      onSelectFiles(files);
+      event.target.value = '';
+    }
+  }
+
+  return (
+    <>
+      <Button onClick={() => inputRef.current?.click()} {...rest} />
+      <input
+        hidden
+        type="file"
+        ref={inputRef}
+        accept={accept}
+        multiple={multiple}
+        onChange={handleChange}
+      />
+    </>
+  );
+}
+
+Button.File = ButtonFile;

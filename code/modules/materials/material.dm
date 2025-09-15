@@ -2,16 +2,10 @@
 // todo: put everything into their own files
 
 // Material definition and procs follow.
-/datum/material
-	abstract_type = /datum/material
+/datum/prototype/material
+	abstract_type = /datum/prototype/material
 
-	//* Core
-	/**
-	 * ID.
-	 * Must be unique.
-	 * Hardcoded materials can be looked up by typepath too and must never have their ids changed under the current implementation.
-	 */
-	var/id
+	//* Core *//
 	/// Name for debugging purposes; not player-facing.
 	var/name
 
@@ -138,11 +132,25 @@
 	/// material constraint flags - what we are considered
 	var/material_constraints = NONE
 
+	//* Icon *//
+	/// Icon file. This is used for many miscellaneous states defined here.
+	var/icon
+	/// Count, from 1 to N, of stack states.
+	/// * If 3, and there's a stack of 50, we'll be `stack-1` from 1 to around 17, `stack-2`
+	///   from 18 to around 35, and `stack-3` for the rest.
+	/// * If null, no stack states are provided.
+	/// * If provided, a raw `stack` state should always be provided for on-map and in-UI previews.
+	var/icon_stack_count
+
 	//* Traits
 	/// Material traits - set to list of paths to instance on New / register; associate them to their initial data.
 	var/list/material_traits
 	/// Material trait sensitivity hooks - total
 	var/material_trait_flags
+	/// String material tags - used for autoselect/UI things, mostly
+	/// e.g material_tags = list("my epic material")
+	/// some common ones are defined in \__DEFINES\materials\misc.dm
+	var/list/material_tags
 
 	//! Attributes - legacy
 	/// Delay in ticks when cutting through this wall.
@@ -202,7 +210,7 @@
 	var/tgui_icon_key = "unknown"
 
 /// Placeholders for light tiles and rglass.
-/datum/material/proc/build_rod_product(mob/user, obj/item/stack/used_stack, obj/item/stack/target_stack)
+/datum/prototype/material/proc/build_rod_product(mob/user, obj/item/stack/used_stack, obj/item/stack/target_stack)
 	if(!rod_product)
 		to_chat(user, SPAN_WARNING("You cannot make anything out of \the [target_stack]."))
 		return
@@ -215,7 +223,7 @@
 	S.add_fingerprint(user)
 	S.add_to_stacks(user)
 
-/datum/material/proc/build_wired_product(mob/living/user, obj/item/stack/used_stack, obj/item/stack/target_stack)
+/datum/prototype/material/proc/build_wired_product(mob/living/user, obj/item/stack/used_stack, obj/item/stack/target_stack)
 	if(!wire_product)
 		to_chat(user, SPAN_WARNING("You cannot make anything out of \the [target_stack]."))
 		return
@@ -235,7 +243,7 @@
  * Arugments:
  * - _id: The ID the material should use. Overrides the existing ID.
  */
-/datum/material/proc/Initialize(_id, ...)
+/datum/prototype/material/proc/Initialize(_id, ...)
 	if(_id)
 		id = _id
 	else if(isnull(id))
@@ -252,70 +260,70 @@
 
 	return TRUE
 
-/datum/material/serialize()
+/datum/prototype/material/serialize()
 	. = ..()
 	var/list/serialized_traits = list()
 	// use type directly - we don't care about update stability.
-	for(var/datum/material_trait/trait in material_traits)
+	for(var/datum/prototype/material_trait/trait in material_traits)
 		serialized_traits[trait.type] = list(
 			"trait" = trait.serialize(),
 			"data" = material_traits[trait],
 		)
 	.["traits"] = serialized_traits
 
-/datum/material/deserialize(list/data)
+/datum/prototype/material/deserialize(list/data)
 	. = ..()
 	var/list/deserializing_traits = .["traits"]
 	for(var/path in deserializing_traits)
 		var/resolved = text2path(path)
-		if(!ispath(resolved, /datum/material_trait))
+		if(!ispath(resolved, /datum/prototype/material_trait))
 			continue
 		var/list/data_list = deserializing_traits[path]
-		var/datum/material_trait/trait = new resolved
+		var/datum/prototype/material_trait/trait = new resolved
 		trait.deserialize(data_list["trait"])
 		material_traits[trait] = data_list["data"]
 
 /// This is a placeholder for proper integration of windows/windoors into the system.
-/datum/material/proc/build_windows(mob/living/user, obj/item/stack/used_stack)
+/datum/prototype/material/proc/build_windows(mob/living/user, obj/item/stack/used_stack)
 	return FALSE
 
 /// Snowflakey, only checked for alien doors at the moment.
-/datum/material/proc/can_open_material_door(mob/living/user)
+/datum/prototype/material/proc/can_open_material_door(mob/living/user)
 	return 1
 
 /// Places a girder object when a wall is dismantled, also applies reinforced material.
-/datum/material/proc/place_dismantled_girder(turf/target, datum/material/material_reinf, datum/material/material_girder)
+/datum/prototype/material/proc/place_dismantled_girder(turf/target, datum/prototype/material/material_reinf, datum/prototype/material/material_girder)
 	var/obj/structure/girder/G = new(target, material_girder, material_reinf)
 	return G
 
 /// General wall debris product placement.
 /// Not particularly necessary aside from snowflakey cult girders.
-/datum/material/proc/place_dismantled_product(turf/target, amount)
+/datum/prototype/material/proc/place_dismantled_product(turf/target, amount)
 	place_sheet(target, amount)
 
 /// Debris product. Used ALL THE TIME.
-/datum/material/proc/place_sheet(turf/target, amount)
+/datum/prototype/material/proc/place_sheet(turf/target, amount)
 	if(stack_type)
 		return new stack_type(target, ispath(stack_type, /obj/item/stack)? amount : null)
 
 // As above.
-/datum/material/proc/place_shard(turf/target)
+/datum/prototype/material/proc/place_shard(turf/target)
 	if(shard_type)
 		return new /obj/item/material/shard(target, src.name)
 
-/datum/material/proc/combustion_effect(turf/T, temperature)
+/datum/prototype/material/proc/combustion_effect(turf/T, temperature)
 	return
 
-/datum/material/proc/wall_touch_special(turf/simulated/wall/W, mob/living/L)
+/datum/prototype/material/proc/wall_touch_special(turf/simulated/wall/W, mob/living/L)
 	return
 
 //* traits & trait hooks *//
 
-/datum/material/proc/init_traits()
+/datum/prototype/material/proc/init_traits()
 	for(var/i in 1 to length(material_traits))
 		var/key = material_traits[i]
 		var/val = material_traits[key]
 		if(ispath(key))
-			ASSERT(SSmaterials.material_traits[key])
-			material_traits[i] = SSmaterials.material_traits[key]
-			material_traits[material_traits[i]] = val
+			var/datum/prototype/material_trait/fetched = RSmaterial_traits.fetch(key)
+			material_traits[i] = fetched
+			material_traits[fetched] = val

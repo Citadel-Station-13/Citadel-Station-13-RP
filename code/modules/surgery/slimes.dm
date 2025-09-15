@@ -12,8 +12,10 @@
 
 
 /datum/surgery_step/slime/cut_flesh
+	step_name = "Incise"
 	allowed_tools = list(
 	/obj/item/surgical/scalpel = 100,
+	/obj/item/surgical/scalpel_bronze = 90,
 	/obj/item/surgical/scalpel_primitive = 80,
 	/obj/item/material/knife = 75,
 	/obj/item/material/shard = 50,
@@ -41,8 +43,11 @@
 
 
 /datum/surgery_step/slime/cut_innards
+	step_name = "Expose core"
+
 	allowed_tools = list(
 	/obj/item/surgical/scalpel = 100,		\
+	/obj/item/surgical/scalpel_bronze = 90,	\
 	/obj/item/surgical/scalpel_primitive = 80,	\
 	/obj/item/material/knife = 75,	\
 	/obj/item/material/shard = 50, 		\
@@ -70,8 +75,11 @@
 
 
 /datum/surgery_step/slime/saw_core
+	step_name = "Extract core"
+
 	allowed_tools = list(
 	/obj/item/surgical/circular_saw = 100, \
+	/obj/item/surgical/saw_bronze = 90, \
 	/obj/item/surgical/saw_primitive = 80, \
 	/obj/item/material/knife/machete/hatchet = 75
 	)

@@ -1,0 +1,1008 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aL" = (
+/obj/effect/debris/cleanable/blood/gibs/body,
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/shuttlecrash)
+"aV" = (
+/turf/template_noop,
+/area/template_noop)
+"bj" = (
+/turf/simulated/floor/tiled/techfloor/monogrid{
+	outdoors = 1
+	},
+/area/template_noop)
+"ck" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/submap/skyplanet/poi/shuttlecrash)
+"cC" = (
+/obj/structure/lattice,
+/mob/living/simple_mob/mechanical/viscerator{
+	iff_factions = "!bind-map"
+	},
+/turf/template_noop,
+/area/submap/skyplanet/poi/shuttlecrash)
+"gx" = (
+/obj/spawner/window/low_wall/borosillicate/reinforced,
+/obj/machinery/door/blast/regular,
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/shuttlecrash)
+"hK" = (
+/obj/effect/debris/cleanable/blood/gibs/core,
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/shuttlecrash)
+"ip" = (
+/obj/structure/salvageable/console_broken_os{
+	dir = 4
+	},
+/obj/item/gps/internal/poi,
+/turf/template_noop,
+/area/submap/skyplanet/poi/shuttlecrash)
+"iE" = (
+/obj/structure/salvageable/console_broken_os{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/shuttlecrash)
+"ll" = (
+/obj/structure/lattice,
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
+/area/template_noop)
+"lU" = (
+/obj/item/melee/transforming/energy/sword,
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/shuttlecrash)
+"lV" = (
+/mob/living/simple_mob/mechanical/viscerator{
+	iff_factions = "!bind-map"
+	},
+/turf/simulated/floor/water/blood/deep,
+/area/submap/skyplanet/poi/shuttlecrash)
+"lX" = (
+/turf/template_noop,
+/area/submap/skyplanet/poi/shuttlecrash)
+"nM" = (
+/obj/effect/debris/cleanable/blood,
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
+/area/template_noop)
+"oU" = (
+/mob/living/simple_mob/humanoid/possessed/merc,
+/turf/template_noop,
+/area/submap/skyplanet/poi/shuttlecrash)
+"pl" = (
+/obj/spawner/window/low_wall/borosillicate/reinforced,
+/obj/machinery/door/blast/regular/open,
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/shuttlecrash)
+"qt" = (
+/obj/machinery/sleeper/survival_pod,
+/turf/template_noop,
+/area/submap/skyplanet/poi/shuttlecrash)
+"re" = (
+/mob/living/simple_mob/humanoid/possessed/merc,
+/turf/template_noop,
+/area/template_noop)
+"rA" = (
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/shuttlecrash)
+"sl" = (
+/obj/effect/debris/cleanable/blood/gibs,
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/shuttlecrash)
+"sB" = (
+/obj/effect/debris/cleanable/blood/gibs/limb,
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/shuttlecrash)
+"tc" = (
+/mob/living/simple_mob/humanoid/possessed/merc,
+/turf/simulated/floor/water/blood,
+/area/submap/skyplanet/poi/shuttlecrash)
+"td" = (
+/mob/living/simple_mob/mechanical/viscerator{
+	iff_factions = "!bind-map"
+	},
+/turf/template_noop,
+/area/submap/skyplanet/poi/shuttlecrash)
+"tJ" = (
+/obj/effect/debris/cleanable/blood/gibs/down,
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/shuttlecrash)
+"tY" = (
+/obj/effect/debris/cleanable/blood,
+/turf/template_noop,
+/area/submap/skyplanet/poi/shuttlecrash)
+"uk" = (
+/obj/effect/debris/cleanable/blood/gibs/limb,
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
+/area/submap/skyplanet/poi/shuttlecrash)
+"uz" = (
+/mob/living/simple_mob/mechanical/viscerator{
+	iff_factions = "!bind-map"
+	},
+/turf/simulated/floor/water/blood,
+/area/submap/skyplanet/poi/shuttlecrash)
+"wa" = (
+/obj/machinery/suit_storage_unit/syndicate,
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/shuttlecrash)
+"wJ" = (
+/obj/item/hardsuit_module/armblade,
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/shuttlecrash)
+"wP" = (
+/obj/structure/lattice,
+/obj/machinery/sleeper/survival_pod,
+/turf/template_noop,
+/area/submap/skyplanet/poi/shuttlecrash)
+"xh" = (
+/mob/living/simple_mob/humanoid/possessed/merc,
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/shuttlecrash)
+"Ak" = (
+/obj/effect/debris/cleanable/blood/gibs,
+/mob/living/simple_mob/mechanical/viscerator{
+	iff_factions = "!bind-map"
+	},
+/turf/template_noop,
+/area/submap/skyplanet/poi/shuttlecrash)
+"An" = (
+/obj/machinery/sleeper/survival_pod,
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/shuttlecrash)
+"Ap" = (
+/turf/simulated/floor/water/blood,
+/area/submap/skyplanet/poi/shuttlecrash)
+"BO" = (
+/turf/simulated/floor/water/blood/deep,
+/area/submap/skyplanet/poi/shuttlecrash)
+"CY" = (
+/obj/structure/salvageable/console_broken_os,
+/turf/template_noop,
+/area/submap/skyplanet/poi/shuttlecrash)
+"CZ" = (
+/obj/effect/debris/cleanable/blood/gibs/limb,
+/turf/simulated/floor/plating,
+/area/template_noop)
+"EX" = (
+/turf/simulated/wall/r_wall/prepainted,
+/area/template_noop)
+"Fx" = (
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
+/area/submap/skyplanet/poi/shuttlecrash)
+"KS" = (
+/mob/living/simple_mob/mechanical/viscerator{
+	iff_factions = "!bind-map"
+	},
+/turf/simulated/floor/plating,
+/area/template_noop)
+"MZ" = (
+/obj/machinery/suit_cycler/syndicate,
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/shuttlecrash)
+"NW" = (
+/obj/effect/debris/cleanable/blood,
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/shuttlecrash)
+"Oi" = (
+/obj/structure/lattice,
+/turf/simulated/floor/water/blood,
+/area/submap/skyplanet/poi/shuttlecrash)
+"Rx" = (
+/mob/living/simple_mob/humanoid/possessed/merc/feral,
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/shuttlecrash)
+"Sq" = (
+/obj/machinery/optable,
+/obj/spawner/corpse/tajara,
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/shuttlecrash)
+"St" = (
+/obj/effect/debris/cleanable/blood/gibs/core,
+/mob/living/simple_mob/mechanical/viscerator{
+	iff_factions = "!bind-map"
+	},
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/shuttlecrash)
+"Sv" = (
+/turf/simulated/wall/r_wall/prepainted,
+/area/submap/skyplanet/poi/shuttlecrash)
+"Tf" = (
+/obj/item/soap/syndie,
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/shuttlecrash)
+"TB" = (
+/obj/item/hardsuit/merc/old/spring,
+/obj/item/clothing/shoes/magboots/syndicate,
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/shuttlecrash)
+"Xw" = (
+/obj/machinery/optable,
+/obj/spawner/corpse/vox,
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/shuttlecrash)
+"Yd" = (
+/turf/simulated/floor/plating,
+/area/template_noop)
+"Yg" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/template_noop)
+"YE" = (
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
+/area/template_noop)
+"Zv" = (
+/obj/machinery/door/blast/regular,
+/obj/spawner/window/low_wall/borosillicate/reinforced,
+/turf/template_noop,
+/area/submap/skyplanet/poi/shuttlecrash)
+
+(1,1,1) = {"
+aV
+aV
+aV
+aV
+aV
+aV
+YE
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+"}
+(2,1,1) = {"
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+YE
+aV
+YE
+YE
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+"}
+(3,1,1) = {"
+aV
+aV
+aV
+aV
+YE
+YE
+YE
+YE
+YE
+YE
+YE
+aV
+YE
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+"}
+(4,1,1) = {"
+aV
+aV
+YE
+YE
+YE
+Zv
+gx
+gx
+gx
+Sv
+Sv
+Sv
+YE
+YE
+YE
+aV
+aV
+aV
+aV
+aV
+"}
+(5,1,1) = {"
+aV
+aV
+YE
+YE
+YE
+gx
+iE
+ip
+iE
+Sv
+MZ
+Sv
+Sv
+YE
+YE
+YE
+YE
+aV
+aV
+aV
+"}
+(6,1,1) = {"
+aV
+YE
+YE
+YE
+aV
+gx
+wJ
+NW
+Rx
+Sv
+NW
+wa
+Sv
+Sv
+YE
+YE
+YE
+YE
+aV
+aV
+"}
+(7,1,1) = {"
+aV
+YE
+YE
+aV
+bj
+gx
+lX
+Tf
+rA
+Ap
+Ap
+rA
+rA
+Sv
+YE
+bj
+YE
+YE
+YE
+aV
+"}
+(8,1,1) = {"
+aV
+YE
+aV
+bj
+bj
+Sv
+CY
+lU
+NW
+Sv
+BO
+Oi
+Oi
+Sv
+Sv
+bj
+bj
+aV
+YE
+aV
+"}
+(9,1,1) = {"
+aV
+aV
+bj
+bj
+bj
+Sv
+Sv
+Sv
+Sv
+Sv
+BO
+Oi
+Oi
+rA
+Sv
+bj
+bj
+bj
+YE
+aV
+"}
+(10,1,1) = {"
+aV
+aV
+bj
+bj
+bj
+Sv
+Oi
+Oi
+Ap
+Ap
+BO
+lV
+tc
+Ap
+Sv
+bj
+bj
+bj
+YE
+aV
+"}
+(11,1,1) = {"
+aV
+aV
+bj
+bj
+bj
+Sv
+Sq
+Ap
+Ap
+Sv
+BO
+BO
+BO
+Ap
+Sv
+bj
+bj
+bj
+YE
+aV
+"}
+(12,1,1) = {"
+aV
+aV
+bj
+bj
+bj
+Sv
+tJ
+Ap
+Oi
+pl
+BO
+BO
+Oi
+Ap
+Sv
+bj
+bj
+bj
+YE
+aV
+"}
+(13,1,1) = {"
+aV
+aV
+aV
+bj
+bj
+Sv
+Xw
+Ap
+uz
+pl
+BO
+Ap
+Oi
+rA
+Sv
+bj
+bj
+bj
+YE
+aV
+"}
+(14,1,1) = {"
+YE
+aV
+aV
+aV
+bj
+Sv
+Ap
+TB
+Ap
+gx
+Ap
+Ap
+Ap
+rA
+Sv
+bj
+bj
+aV
+YE
+aV
+"}
+(15,1,1) = {"
+YE
+YE
+aV
+aV
+bj
+Sv
+Sv
+Sv
+Sv
+Sv
+Sv
+Sv
+rA
+Ap
+Sv
+bj
+aV
+YE
+aV
+YE
+"}
+(16,1,1) = {"
+aV
+YE
+aV
+aV
+bj
+Sv
+qt
+qt
+wP
+An
+rA
+sl
+rA
+Ap
+Sv
+bj
+aV
+YE
+aV
+YE
+"}
+(17,1,1) = {"
+aV
+YE
+YE
+aV
+aV
+Sv
+Ak
+hK
+ck
+oU
+aL
+Sv
+Ap
+rA
+Sv
+aV
+YE
+YE
+YE
+aV
+"}
+(18,1,1) = {"
+aV
+YE
+YE
+YE
+aV
+Sv
+wP
+An
+wP
+An
+rA
+Sv
+uz
+Ap
+Sv
+YE
+YE
+aV
+aV
+aV
+"}
+(19,1,1) = {"
+aV
+YE
+bj
+YE
+YE
+Sv
+ck
+aL
+ck
+NW
+rA
+Sv
+Ap
+Oi
+Sv
+YE
+aV
+bj
+aV
+aV
+"}
+(20,1,1) = {"
+aV
+YE
+bj
+bj
+YE
+Sv
+An
+wP
+qt
+An
+rA
+Sv
+Ap
+Ap
+Sv
+aV
+aV
+bj
+bj
+aV
+"}
+(21,1,1) = {"
+YE
+YE
+bj
+bj
+aV
+Sv
+NW
+ck
+St
+rA
+NW
+Sv
+Ap
+rA
+Sv
+aV
+bj
+bj
+bj
+aV
+"}
+(22,1,1) = {"
+YE
+YE
+bj
+bj
+bj
+Sv
+wP
+An
+wP
+An
+tJ
+Sv
+rA
+rA
+Sv
+bj
+bj
+bj
+bj
+aV
+"}
+(23,1,1) = {"
+aV
+YE
+bj
+bj
+bj
+Sv
+Sv
+Sv
+Sv
+Sv
+Sv
+Sv
+sB
+NW
+Sv
+bj
+bj
+bj
+bj
+aV
+"}
+(24,1,1) = {"
+aV
+YE
+YE
+bj
+bj
+Sv
+ck
+td
+lX
+rA
+NW
+rA
+xh
+rA
+Sv
+bj
+bj
+bj
+YE
+aV
+"}
+(25,1,1) = {"
+aV
+aV
+YE
+bj
+bj
+lX
+ck
+Fx
+rA
+lX
+Sv
+Sv
+Sv
+Sv
+Sv
+bj
+bj
+bj
+YE
+aV
+"}
+(26,1,1) = {"
+aV
+aV
+YE
+bj
+bj
+Sv
+lX
+uk
+lX
+ck
+lX
+cC
+ck
+lX
+lX
+bj
+bj
+bj
+YE
+aV
+"}
+(27,1,1) = {"
+aV
+aV
+YE
+bj
+bj
+Sv
+lX
+Fx
+ck
+tY
+lX
+lX
+lX
+sB
+Sv
+bj
+bj
+aV
+YE
+aV
+"}
+(28,1,1) = {"
+aV
+aV
+aV
+aV
+bj
+ck
+Fx
+rA
+rA
+lX
+Sv
+rA
+ck
+lX
+Sv
+bj
+Yg
+YE
+aV
+aV
+"}
+(29,1,1) = {"
+aV
+aV
+aV
+Yg
+aV
+aV
+nM
+KS
+CZ
+aV
+aV
+aV
+YE
+YE
+aV
+Yg
+ll
+YE
+aV
+aV
+"}
+(30,1,1) = {"
+aV
+aV
+aV
+aV
+aV
+EX
+aV
+aV
+aV
+ll
+EX
+YE
+YE
+YE
+EX
+YE
+YE
+aV
+aV
+aV
+"}
+(31,1,1) = {"
+aV
+YE
+aV
+aV
+aV
+aV
+YE
+Yd
+YE
+ll
+aV
+nM
+YE
+YE
+re
+YE
+aV
+aV
+aV
+aV
+"}
+(32,1,1) = {"
+aV
+YE
+aV
+aV
+aV
+aV
+YE
+aV
+YE
+aV
+EX
+YE
+YE
+YE
+YE
+YE
+aV
+aV
+aV
+aV
+"}
+(33,1,1) = {"
+aV
+YE
+aV
+aV
+aV
+EX
+YE
+YE
+nM
+aV
+aV
+YE
+aV
+YE
+YE
+aV
+aV
+aV
+aV
+aV
+"}
+(34,1,1) = {"
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+YE
+YE
+aV
+aV
+aV
+aV
+"}
+(35,1,1) = {"
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+YE
+YE
+aV
+aV
+aV
+aV
+aV
+YE
+YE
+YE
+YE
+aV
+"}

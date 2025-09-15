@@ -17,15 +17,10 @@
 	}
 
 /obj/item/material/sword/plasteel
-	material_parts = /datum/material/plasteel
+	material_parts = /datum/prototype/material/plasteel
 
 /obj/item/material/sword/durasteel
-	material_parts = /datum/material/durasteel
-
-/obj/item/material/sword/suicide_act(mob/user)
-	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-	viewers(user) << "<span class='danger'>[user] is falling on the [src.name]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>"
-	return(BRUTELOSS)
+	material_parts = /datum/prototype/material/durasteel
 
 /obj/item/material/sword/katana
 	name = "katana"
@@ -33,16 +28,11 @@
 	icon_state = "katana"
 	slot_flags = SLOT_BELT | SLOT_BACK
 
-/obj/item/material/sword/katana/suicide_act(mob/user)
-	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-	visible_message(SPAN_DANGER("[user] is slitting [TU.his] stomach open with \the [src.name]! It looks like [TU.hes] trying to commit seppuku."), SPAN_DANGER("You slit your stomach open with \the [src.name]!"), SPAN_DANGER("You hear the sound of flesh tearing open.")) // gory, but it gets the point across
-	return(BRUTELOSS)
-
 /obj/item/material/sword/katana/plasteel
-	material_parts = /datum/material/plasteel
+	material_parts = /datum/prototype/material/plasteel
 
 /obj/item/material/sword/katana/durasteel
-	material_parts = /datum/material/durasteel
+	material_parts = /datum/prototype/material/durasteel
 
 /obj/item/material/sword/sabre
 	name = "officer's sabre"
@@ -53,7 +43,7 @@
 	pickup_sound = 'sound/items/pickup/knife.ogg'
 	drop_sound = 'sound/items/drop/knife.ogg'
 	//initially damage was at 30. Damage now starts at around 25 until someone messes with material code again (hi Sili)
-	material_parts = /datum/material/plasteel
+	material_parts = /datum/prototype/material/plasteel
 	material_color = FALSE
 	origin_tech = list(TECH_COMBAT = 4)
 	item_icons = list(
@@ -75,8 +65,3 @@
 /obj/item/material/sword/sabre/on_exit_storage(datum/object_system/storage/storage)
 	. = ..()
 	playsound(loc, 'sound/effects/holster/sheathout.ogg', 50, 1)
-
-/obj/item/material/sword/sabre/suicide_act(mob/user)
-	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-	visible_message(SPAN_DANGER("[user] is slitting [TU.his] stomach open with \the [src.name]! It looks like [TU.hes] trying to commit seppuku."), SPAN_DANGER("You slit your stomach open with \the [src.name]!"), SPAN_DANGER("You hear the sound of flesh tearing open.")) // gory, but it gets the point across
-	return(BRUTELOSS)

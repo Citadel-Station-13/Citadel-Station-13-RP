@@ -1,5 +1,3 @@
-//* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
 
 // when writing atmos machinery, prefer using these procs
 // this lets us somewhat separate API from implemenetation of the environmental module.

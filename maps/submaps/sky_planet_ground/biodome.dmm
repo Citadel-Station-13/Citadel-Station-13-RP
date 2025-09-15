@@ -1,0 +1,738 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"am" = (
+/obj/structure/flora/tree/fey/large_tree/tree5,
+/turf/simulated/floor/fey/forest_grass,
+/area/submap/skyplanet/poi/bio)
+"an" = (
+/obj/machinery/door/airlock,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+"aE" = (
+/obj/structure/flora/ausbushes/lavendergrass,
+/turf/simulated/floor/fey/forest_grass,
+/area/submap/skyplanet/poi/bio)
+"aL" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
+	},
+/turf/simulated/wall/r_wall,
+/area/submap/skyplanet/poi/bio)
+"eD" = (
+/obj/spawner/window/low_wall/firelocks,
+/turf/template_noop,
+/area/submap/skyplanet/poi/bio)
+"fH" = (
+/obj/machinery/sleeper/survival_pod,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+"fL" = (
+/obj/structure/table/steel,
+/obj/item/pda/botanist,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+"hm" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+"hx" = (
+/obj/machinery/light/poi{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+"jJ" = (
+/obj/structure/bed/pod,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+"kE" = (
+/turf/simulated/floor/fey/forest_grass,
+/area/submap/skyplanet/poi/bio)
+"lu" = (
+/obj/effect/floor_decal/grass_edge{
+	dir = 1
+	},
+/obj/machinery/light/poi,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+"lz" = (
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+"mD" = (
+/obj/effect/floor_decal/grass_edge{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+"pK" = (
+/obj/machinery/light/poi,
+/obj/machinery/light/poi{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+"pL" = (
+/obj/effect/floor_decal/grass_edge,
+/obj/machinery/light/poi{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+"pX" = (
+/obj/spawner/window/low_wall/firelocks,
+/turf/simulated/floor/outdoors/ash_sand,
+/area/submap/skyplanet/poi/bio)
+"qX" = (
+/obj/effect/floor_decal/grass_edge{
+	dir = 10
+	},
+/obj/structure/fans,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+"rz" = (
+/turf/simulated/wall/r_wall,
+/area/submap/skyplanet/poi/bio)
+"se" = (
+/obj/effect/floor_decal/grass_edge{
+	dir = 8
+	},
+/obj/machinery/light/poi{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+"sX" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+"ta" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/machinery/door/airlock,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+"tc" = (
+/obj/machinery/atmospherics/pipe/tank/air,
+/turf/simulated/floor/outdoors/ash_sand,
+/area/template_noop)
+"uQ" = (
+/obj/machinery/light/poi,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+"vb" = (
+/obj/effect/floor_decal/grass_edge{
+	dir = 4
+	},
+/obj/machinery/light/poi{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+"xi" = (
+/obj/effect/floor_decal/grass_edge{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+"xk" = (
+/obj/machinery/botany/editor,
+/obj/machinery/light/poi,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+"xP" = (
+/obj/structure/table/steel,
+/obj/structure/sign/botany{
+	pixel_y = -28
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+"yf" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+"yM" = (
+/obj/machinery/door/airlock,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+"zc" = (
+/obj/structure/bed/pod,
+/obj/machinery/light/poi{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+"Au" = (
+/obj/structure/flora/tree/fey/small_tree/tree4,
+/turf/simulated/floor/fey/forest_grass,
+/area/submap/skyplanet/poi/bio)
+"Az" = (
+/turf/template_noop,
+/area/template_noop)
+"AZ" = (
+/obj/structure/flora/tree/fey/large_tree/tree3,
+/turf/simulated/floor/fey/forest_grass,
+/area/submap/skyplanet/poi/bio)
+"BV" = (
+/obj/structure/flora/tree/fey/large_tree/tree4,
+/turf/simulated/floor/fey/forest_grass,
+/area/submap/skyplanet/poi/bio)
+"CE" = (
+/obj/structure/table/steel,
+/obj/machinery/light/poi,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+"Dg" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 9
+	},
+/turf/simulated/wall/r_wall,
+/area/submap/skyplanet/poi/bio)
+"DN" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+"EJ" = (
+/obj/effect/floor_decal/grass_edge{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+"GM" = (
+/turf/simulated/floor/outdoors/ash_sand,
+/area/template_noop)
+"Ih" = (
+/obj/effect/floor_decal/grass_edge{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+"JX" = (
+/obj/effect/floor_decal/grass_edge,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+"KM" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/door/airlock,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+"Lt" = (
+/obj/machinery/light/poi{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+"LQ" = (
+/obj/effect/floor_decal/grass_edge{
+	dir = 4
+	},
+/obj/structure/flora/fey/grass/grass9,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+"MC" = (
+/obj/effect/floor_decal/grass_edge{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+"Ol" = (
+/obj/structure/flora/fey/grass/grass4,
+/turf/simulated/floor/fey/forest_grass,
+/area/submap/skyplanet/poi/bio)
+"OG" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+"QP" = (
+/obj/effect/floor_decal/grass_edge{
+	dir = 1
+	},
+/obj/structure/flora/fey/grass/grass9,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+"Se" = (
+/obj/machinery/seed_storage/xenobotany,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+"Ug" = (
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/simulated/floor/fey/forest_grass,
+/area/submap/skyplanet/poi/bio)
+"Us" = (
+/obj/structure/fans,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+"Ve" = (
+/obj/effect/floor_decal/grass_edge{
+	dir = 1
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+"Vo" = (
+/obj/structure/flora/fey/grass/grass2,
+/turf/simulated/floor/fey/forest_grass,
+/area/submap/skyplanet/poi/bio)
+"Xb" = (
+/obj/effect/floor_decal/grass_edge{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+"ZE" = (
+/obj/structure/table/steel,
+/obj/item/storage/box/botanydisk,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/skyplanet/poi/bio)
+
+(1,1,1) = {"
+Az
+Az
+Az
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+"}
+(2,1,1) = {"
+Az
+Az
+GM
+GM
+eD
+eD
+eD
+eD
+eD
+GM
+GM
+GM
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+"}
+(3,1,1) = {"
+GM
+GM
+GM
+eD
+vb
+MC
+LQ
+MC
+vb
+eD
+GM
+GM
+GM
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+"}
+(4,1,1) = {"
+GM
+GM
+eD
+Xb
+Ol
+kE
+kE
+kE
+Ug
+EJ
+eD
+GM
+GM
+GM
+GM
+Az
+Az
+Az
+Az
+Az
+"}
+(5,1,1) = {"
+GM
+pX
+pL
+Au
+kE
+kE
+kE
+am
+kE
+kE
+lu
+eD
+GM
+GM
+GM
+GM
+GM
+Az
+Az
+Az
+"}
+(6,1,1) = {"
+GM
+eD
+JX
+kE
+aE
+kE
+kE
+kE
+aE
+Vo
+xi
+rz
+rz
+rz
+rz
+rz
+rz
+GM
+Az
+Az
+"}
+(7,1,1) = {"
+GM
+eD
+JX
+kE
+Ol
+kE
+kE
+kE
+Au
+kE
+Ve
+KM
+hx
+DN
+DN
+pK
+rz
+GM
+Az
+Az
+"}
+(8,1,1) = {"
+GM
+eD
+JX
+kE
+AZ
+kE
+kE
+kE
+kE
+kE
+QP
+rz
+rz
+rz
+rz
+OG
+rz
+GM
+Az
+Az
+"}
+(9,1,1) = {"
+GM
+pX
+pL
+kE
+kE
+Ug
+kE
+kE
+BV
+kE
+lu
+pX
+GM
+tc
+aL
+hm
+rz
+GM
+Az
+Az
+"}
+(10,1,1) = {"
+Az
+GM
+pX
+qX
+Au
+Ol
+kE
+kE
+Vo
+mD
+pX
+GM
+GM
+tc
+Dg
+OG
+rz
+GM
+GM
+Az
+"}
+(11,1,1) = {"
+Az
+Az
+GM
+pX
+se
+Ih
+Ih
+Ih
+se
+pX
+GM
+GM
+GM
+GM
+rz
+uQ
+rz
+GM
+GM
+GM
+"}
+(12,1,1) = {"
+Az
+Az
+Az
+GM
+pX
+pX
+pX
+pX
+pX
+GM
+GM
+GM
+rz
+rz
+rz
+ta
+rz
+rz
+rz
+GM
+"}
+(13,1,1) = {"
+Az
+Az
+Az
+Az
+Az
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+rz
+Us
+Us
+OG
+ZE
+xP
+rz
+GM
+"}
+(14,1,1) = {"
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+GM
+GM
+rz
+rz
+rz
+fH
+fH
+OG
+lz
+CE
+rz
+GM
+"}
+(15,1,1) = {"
+Az
+Az
+GM
+Az
+Az
+Az
+Az
+Az
+Az
+GM
+yM
+yf
+an
+DN
+DN
+hm
+lz
+fL
+rz
+GM
+"}
+(16,1,1) = {"
+Az
+Az
+Az
+Az
+GM
+Az
+Az
+GM
+Az
+GM
+rz
+rz
+rz
+lz
+lz
+sX
+lz
+xk
+rz
+GM
+"}
+(17,1,1) = {"
+Az
+Az
+GM
+Az
+Az
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+rz
+jJ
+zc
+jJ
+Lt
+Se
+rz
+GM
+"}
+(18,1,1) = {"
+Az
+Az
+Az
+Az
+GM
+Az
+GM
+Az
+Az
+Az
+GM
+GM
+rz
+rz
+rz
+rz
+rz
+rz
+rz
+GM
+"}
+(19,1,1) = {"
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+"}
+(20,1,1) = {"
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+GM
+GM
+GM
+GM
+GM
+Az
+Az
+Az
+"}

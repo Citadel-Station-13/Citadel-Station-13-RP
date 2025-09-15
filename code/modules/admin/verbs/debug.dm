@@ -1,76 +1,16 @@
 /client/proc/Debug2()
-	set category = "Debug"
+	set category = ADMIN_CATEGORY_DEBUG
 	set name = "Debug-Game"
+	set desc = "Toggles game debugging."
+
 	if(!check_rights(R_DEBUG))	return
 
-	if(GLOB.Debug2)
-		GLOB.Debug2 = 0
-		message_admins("[key_name(src)] toggled debugging off.")
-		log_admin("[key_name(src)] toggled debugging off.")
-	else
-		GLOB.Debug2 = 1
-		message_admins("[key_name(src)] toggled debugging on.")
-		log_admin("[key_name(src)] toggled debugging on.")
+	GLOB.Debug2 = !GLOB.Debug2
+	var/message = "toggled debugging [(GLOB.Debug2 ? "ON" : "OFF")]"
+	message_admins("[key_name_admin(src)] [message].")
+	log_admin("[key_name(src)] [message].")
 
 	feedback_add_details("admin_verb","DG2") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-// callproc moved to code/modules/admin/callproc
-
-/client/proc/simple_DPS()
-	set name = "Simple DPS"
-	set category = "Debug"
-	set desc = "Gives a really basic idea of how much hurt something in-hand does."
-
-	var/obj/item/I = null
-	var/mob/living/user = null
-	if(isliving(usr))
-		user = usr
-		I = user.get_active_held_item()
-		if(!I || !istype(I))
-			to_chat(user, "<span class='warning'>You need to have something in your active hand, to use this verb.</span>")
-			return
-		var/weapon_attack_speed = user.get_attack_speed(I) / 10
-		var/weapon_damage = I.damage_force
-		var/modified_damage_percent = 1
-
-		for(var/datum/modifier/M in user.modifiers)
-			if(!isnull(M.outgoing_melee_damage_percent))
-				weapon_damage *= M.outgoing_melee_damage_percent
-				modified_damage_percent *= M.outgoing_melee_damage_percent
-
-		if(istype(I, /obj/item/gun))
-			var/obj/item/gun/G = I
-			var/obj/projectile/P
-
-			if(istype(I, /obj/item/gun/energy))
-				var/obj/item/gun/energy/energy_gun = G
-				P = new energy_gun.projectile_type()
-
-			else if(istype(I, /obj/item/gun/ballistic))
-				var/obj/item/gun/ballistic/projectile_gun = G
-				var/obj/item/ammo_casing/ammo = projectile_gun.chambered
-				P = ammo.get_projectile()
-
-			else
-				to_chat(user, "<span class='warning'>DPS calculation by this verb is not supported for \the [G]'s type. Energy or Ballistic only, sorry.</span>")
-
-			weapon_damage = P.damage_force
-			weapon_attack_speed = G.fire_delay / 10
-			qdel(P)
-
-		var/DPS = weapon_damage / weapon_attack_speed
-		to_chat(user, "<span class='notice'>Damage: [weapon_damage][modified_damage_percent != 1 ? " (Modified by [modified_damage_percent*100]%)":""]</span>")
-		to_chat(user, "<span class='notice'>Attack Speed: [weapon_attack_speed]/s</span>")
-		to_chat(user, "<span class='notice'>\The [I] does <b>[DPS]</b> damage per second.</span>")
-		if(DPS > 0)
-			to_chat(user, "<span class='notice'>At your maximum health ([user.getMaxHealth()]), it would take approximately;</span>")
-			to_chat(user, "<span class='notice'>[(user.getMaxHealth() - config_legacy.health_threshold_softcrit) / DPS] seconds to softcrit you. ([config_legacy.health_threshold_softcrit] health)</span>")
-			to_chat(user, "<span class='notice'>[(user.getMaxHealth() - config_legacy.health_threshold_crit) / DPS] seconds to hardcrit you. ([config_legacy.health_threshold_crit] health)</span>")
-			to_chat(user, "<span class='notice'>[(user.getMaxHealth() - config_legacy.health_threshold_dead) / DPS] seconds to kill you. ([config_legacy.health_threshold_dead] health)</span>")
-
-	else
-		to_chat(user, "<span class='warning'>You need to be a living mob, with hands, and for an object to be in your active hand, to use this verb.</span>")
-		return
 
 /client/proc/Cell()
 	set category = "Debug"
@@ -163,29 +103,287 @@
 	else
 		alert("Invalid mob")
 
-//TODO: merge the vievars version into this or something maybe mayhaps
-/client/proc/cmd_debug_del_all(object as text)
-	set category = "Debug"
-	set name = "Del-All"
+/client/proc/poll_type_to_del(search_string)
+	var/list/types = get_fancy_list_of_atom_types()
+	if (!isnull(search_string) && search_string != "")
+		types = filter_fancy_list(types, search_string)
 
-	var/list/matches = get_fancy_list_of_atom_types()
-	if (!isnull(object) && object!="")
-		matches = filter_fancy_list(matches, object)
-
-	if(matches.len==0)
+	if(!length(types))
 		return
-	var/hsbitem = input(usr, "Choose an object to delete. Use clear-mobs instead on LIVE.", "Delete:") as null|anything in matches
-	if(hsbitem)
-		hsbitem = matches[hsbitem]
-		var/counter = 0
+
+	var/key = input(usr, "Choose an object to delete.", "Delete:") as null|anything in sortList(types)
+
+	if(!key)
+		return
+	return types[key]
+
+/client/proc/cmd_del_all(object as text)
+	set category = ADMIN_CATEGORY_DEBUG
+	set name = "Del-All"
+	set desc = "Delete all datums with the specified type."
+
+	if(!check_rights(R_DEBUG|R_SPAWN))	return
+
+	var/type_to_del = src.poll_type_to_del(object)
+	if(!type_to_del)
+		return
+
+	var/counter = 0
+	for(var/atom/O in world)
+		if(istype(O, type_to_del))
+			counter++
+			qdel(O)
+		CHECK_TICK
+	log_admin("[key_name(src)] has deleted all ([counter]) instances of [type_to_del].")
+	message_admins("[key_name_admin(src)] has deleted all ([counter]) instances of [type_to_del].")
+
+/client/proc/cmd_del_all_force(object as text)
+	set category = ADMIN_CATEGORY_DEBUG
+	set name = "Force-Del-All"
+	set desc = "Forcibly delete all datums with the specified type."
+
+	if(!check_rights(R_DEBUG|R_SPAWN))	return
+
+	var/type_to_del = src.poll_type_to_del(object)
+	if(!type_to_del)
+		return
+
+	var/counter = 0
+	for(var/atom/O in world)
+		if(istype(O, type_to_del))
+			counter++
+			qdel(O, force = TRUE)
+		CHECK_TICK
+	log_admin("[key_name(src)] has force-deleted all ([counter]) instances of [type_to_del].")
+	message_admins("[key_name_admin(src)] has force-deleted all ([counter]) instances of [type_to_del].")
+
+/client/proc/cmd_del_all_hard(object as text)
+	set category = ADMIN_CATEGORY_DEBUG
+	set name = "Hard-Del-All"
+	set desc = "Hard delete all datums with the specified type."
+
+	if(!check_rights(R_DEBUG|R_SPAWN))	return
+
+	var/type_to_del = src.poll_type_to_del(object)
+	if(!type_to_del)
+		return
+
+	var/choice = alert(src, "ARE YOU SURE that you want to hard delete this type? It will cause MASSIVE lag.", "Hoooo lad what happen?", "Yes", "No")
+	if(choice != "Yes")
+		return
+
+	choice = alert(src, "Do you want to pre qdelete the atom? This will speed things up significantly, but may break depending on your level of fuckup.", "How do you even get it that bad", "Yes", "No")
+	var/should_pre_qdel = TRUE
+	if(choice == "No")
+		should_pre_qdel = FALSE
+
+	choice = alert(src, "Ok one last thing, do you want to yield to the game? or do it all at once. These are hard deletes remember.", "Jesus christ man", "Yield", "Ignore the server")
+	var/should_check_tick = TRUE
+	if(choice == "Ignore the server")
+		should_check_tick = FALSE
+
+	var/counter = 0
+	if(should_check_tick)
 		for(var/atom/O in world)
-			if(istype(O, hsbitem))
+			if(istype(O, type_to_del))
 				counter++
-				qdel(O)
+				if(should_pre_qdel)
+					qdel(O)
+				del(O)
 			CHECK_TICK
-		log_admin("[key_name(src)] has deleted all ([counter]) instances of [hsbitem].")
-		message_admins("[key_name_admin(src)] has deleted all ([counter]) instances of [hsbitem].")
-		// SSblackbox.record_feedback("tally", "admin_verb", 1, "Delete All") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	else
+		for(var/atom/O in world)
+			if(istype(O, type_to_del))
+				counter++
+				if(should_pre_qdel)
+					qdel(O)
+				del(O)
+
+	log_admin("[key_name(src)] has hard deleted all ([counter]) instances of [type_to_del].")
+	message_admins("[key_name_admin(src)] has hard deleted all ([counter]) instances of [type_to_del].")
+
+/client/proc/cmd_debug_make_powernets()
+	set category = ADMIN_CATEGORY_DEBUG
+	set name = "Make Powernets"
+	set desc = "Regenerates all powernets for all cables."
+
+	if(!check_rights(R_DEBUG|R_SERVER))	return
+
+	SSmachines.makepowernets()
+	log_admin("[key_name(src)] has remade the powernet. SSmachines.makepowernets() called.")
+	message_admins("[key_name_admin(src)] has remade the powernets. SSmachines.makepowernets() called.", 0)
+	feedback_add_details("admin_verb","MPWN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+/client/proc/cmd_admin_grantfullaccess(var/mob/M in GLOB.mob_list)
+	set category = ADMIN_CATEGORY_DEBUG
+	set name = "Grant Full Access"
+	set desc = "Grant full access to a mob."
+
+	if(!check_rights(R_DEBUG))	return
+
+	if(!SSticker.HasRoundStarted())
+		tgui_alert(src, "Wait until the game starts")
+		return
+	if (ishuman(M))
+		var/mob/living/carbon/human/H = M
+
+		if (H.wear_id)
+			var/obj/item/card/id/id = H.wear_id
+			if(istype(H.wear_id, /obj/item/pda))
+				var/obj/item/pda/pda = H.wear_id
+				id = pda.id
+			id.icon_state = "gold"
+			id.access = get_all_accesses().Copy()
+		else
+			var/obj/item/card/id/id = new/obj/item/card/id(M);
+			id.icon_state = "gold"
+			id.access = get_all_accesses().Copy()
+			id.registered_name = H.real_name
+			id.assignment = "Facility Director"
+			id.name = "[id.registered_name]'s ID Card ([id.assignment])"
+			H.equip_to_slot_or_del(id, SLOT_ID_WORN_ID)
+			H.update_inv_wear_id()
+	else
+		alert("Invalid mob")
+	feedback_add_details("admin_verb","GFA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	log_admin("[key_name(src)] has granted [M.key] full access.")
+	message_admins(SPAN_ADMINNOTICE("[key_name_admin(usr)] has granted [M.key] full access."))
+
+/client/proc/cmd_debug_mob_lists()
+	set category = ADMIN_CATEGORY_DEBUG
+	set name = "Debug Mob Lists"
+	set desc = "For when you just gotta know"
+
+	if(!check_rights(R_DEBUG))	return
+
+	var/chosen_list = input("Which list?") in list("Players","Admins","Mobs","Living Mobs","Dead Mobs","Clients")
+	if(isnull(chosen_list))
+		return
+	switch(chosen_list)
+		if("Players")
+			to_chat(usr, jointext(GLOB.player_list,","), confidential = TRUE)
+		if("Admins")
+			to_chat(usr, jointext(GLOB.admins,","), confidential = TRUE)
+		if("Mobs")
+			to_chat(usr, jointext(GLOB.mob_list,","), confidential = TRUE)
+		if("Living Mobs")
+			to_chat(usr, jointext(living_mob_list,","), confidential = TRUE)
+		if("Dead Mobs")
+			to_chat(usr, jointext(dead_mob_list,","), confidential = TRUE)
+		if("Clients")
+			to_chat(usr, jointext(GLOB.clients,","), confidential = TRUE)
+
+/client/proc/cmd_display_del_log()
+	set category = ADMIN_CATEGORY_DEBUG
+	set name = "Display del() Log"
+	set desc = "Display del's log of everything that's passed through it."
+
+	if(!check_rights(R_DEBUG))	return
+
+	var/list/dellog = list("<B>List of things that have gone through qdel this round</B><BR><BR><ol>")
+	tim_sort(SSgarbage.items, cmp=GLOBAL_PROC_REF(cmp_qdel_item_time), associative = TRUE)
+	for(var/path in SSgarbage.items)
+		var/datum/qdel_item/I = SSgarbage.items[path]
+		dellog += "<li><u>[path]</u><ul>"
+		if (I.failures)
+			dellog += "<li>Failures: [I.failures]</li>"
+		dellog += "<li>qdel() Count: [I.qdels]</li>"
+		dellog += "<li>Destroy() Cost: [I.destroy_time]ms</li>"
+		if (I.hard_deletes)
+			dellog += "<li>Total Hard Deletes [I.hard_deletes]</li>"
+			dellog += "<li>Time Spent Hard Deleting: [I.hard_delete_time]ms</li>"
+		if (I.slept_destroy)
+			dellog += "<li>Sleeps: [I.slept_destroy]</li>"
+		if (I.no_respect_force)
+			dellog += "<li>Ignored force: [I.no_respect_force]</li>"
+		if (I.no_hint)
+			dellog += "<li>No hint: [I.no_hint]</li>"
+		dellog += "</ul></li>"
+
+	dellog += "</ol>"
+
+	var/datum/browser/browser = new(usr, "dellog", "Del Log", 200, 400)
+	browser.set_content(dellog.Join())
+	browser.open()
+
+/client/proc/cmd_display_overlay_log()
+	set category = ADMIN_CATEGORY_DEBUG
+	set name = "Display overlay Log"
+	set desc = "Display SSoverlays log of everything that's passed through it."
+
+	if(!check_rights(R_DEBUG)) return
+
+	render_stats(SSoverlays.stats, src)
+
+/client/proc/cmd_display_init_log()
+	set category = ADMIN_CATEGORY_DEBUG
+	set name = "Display Initialize() Log"
+	set desc = "Displays a list of things that didn't handle Initialize() properly"
+
+	if(!check_rights(R_DEBUG)) return
+
+	var/datum/browser/browser = new(usr, "initlog", "Initialize Log", 500, 500)
+	browser.set_content(replacetext(SSatoms.InitLog(), "\n", "<br>"))
+	browser.open()
+
+/datum/admins/proc/view_runtimes()
+	set category = ADMIN_CATEGORY_DEBUG
+	set name = "View Runtimes"
+	set desc = "Open the Runtime Viewer"
+
+	if(!check_rights(R_DEBUG)) return
+
+	GLOB.error_cache.show_to(usr)
+
+	// The runtime viewer has the potential to crash the server if there's a LOT of runtimes
+	// this has happened before, multiple times, so we'll just leave an alert on it
+	if(GLOB.total_runtimes >= 50000) // arbitrary number, I don't know when exactly it happens
+		var/warning = "There are a lot of runtimes, clicking any button (especially \"linear\") can have the potential to lag or crash the server"
+		if(GLOB.total_runtimes >= 100000)
+			warning = "There are a TON of runtimes, clicking any button (especially \"linear\") WILL LIKELY crash the server"
+		// Not using TGUI alert, because it's view runtimes, stuff is probably broken
+		alert(src, "[warning]. Proceed with caution. If you really need to see the runtimes, download the runtime log and view it in a text editor.", "HEED THIS WARNING CAREFULLY MORTAL")
+
+/client/proc/check_timer_sources()
+	set category = ADMIN_CATEGORY_DEBUG
+	set name = "Check Timer Sources"
+	set desc = "Checks the sources of running timers."
+
+	if(!check_rights(R_DEBUG)) return
+
+	var/bucket_list_output = generate_timer_source_output(SStimer.bucket_list)
+	var/second_queue = generate_timer_source_output(SStimer.second_queue)
+
+	var/datum/browser/browser = new(src, "check_timer_sources", "Timer Sources", 700, 700)
+	browser.set_content({"
+		<h3>bucket_list</h3>
+		[bucket_list_output]
+
+		<h3>second_queue</h3>
+		[second_queue]
+	"})
+	browser.open()
+
+/client/proc/toggle_browser_inspect()
+	set category = ADMIN_CATEGORY_DEBUG
+	set name = "Toggle Browser Inspect"
+	set desc = "Toggle browser debugging via inspect"
+
+	if(!check_rights(R_DEBUG)) return
+
+	if(src.byond_version < 516)
+		to_chat(src, SPAN_WARNING("Browser Inspection is not supported in this version of BYOND, please update to 516 or later."))
+		return
+
+	var/browser_options = winget(src, null, "browser-options")
+
+	if(findtext(browser_options, "devtools"))
+		winset(src, null, list("browser-options" = "-devtools"))
+		to_chat(src, SPAN_NOTICE("You can now right click to use inspect on browsers."))
+	else
+		winset(src, null, list("browser-options" = "+devtools"))
+		to_chat(src, SPAN_NOTICE("You can no longer right click to use inspect on browsers."))
+
 
 /client/proc/cmd_admin_clear_mobs()
 	set category = "Admin"
@@ -210,15 +408,6 @@
 			message_admins("[key_name_admin(src)] has deleted all instances of [hsbitem] in a range of [range] tiles.", 0)
 	feedback_add_details("admin_verb","CLRM") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-
-/client/proc/cmd_debug_make_powernets()
-	set category = "Debug"
-	set name = "Make Powernets"
-	SSmachines.makepowernets()
-	log_admin("[key_name(src)] has remade the powernet. SSmachines.makepowernets() called.")
-	message_admins("[key_name_admin(src)] has remade the powernets. SSmachines.makepowernets() called.", 0)
-	feedback_add_details("admin_verb","MPWN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
 /client/proc/cmd_debug_tog_aliens()
 	set category = "Server"
 	set name = "Toggle Aliens"
@@ -227,103 +416,6 @@
 	log_admin("[key_name(src)] has turned aliens [config_legacy.aliens_allowed ? "on" : "off"].")
 	message_admins("[key_name_admin(src)] has turned aliens [config_legacy.aliens_allowed ? "on" : "off"].", 0)
 	feedback_add_details("admin_verb","TAL") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/client/proc/cmd_display_del_log()
-	set category = "Debug"
-	set name = "Display del() Log"
-	set desc = "Display del's log of everything that's passed through it."
-
-	if(!check_rights(R_DEBUG))	return
-	var/list/dellog = list("<B>List of things that have gone through qdel this round</B><BR><BR><ol>")
-	tim_sort(SSgarbage.items, cmp=GLOBAL_PROC_REF(cmp_qdel_item_time), associative = TRUE)
-	for(var/path in SSgarbage.items)
-		var/datum/qdel_item/I = SSgarbage.items[path]
-		dellog += "<li><u>[path]</u><ul>"
-		if (I.failures)
-			dellog += "<li>Failures: [I.failures]</li>"
-		dellog += "<li>qdel() Count: [I.qdels]</li>"
-		dellog += "<li>Destroy() Cost: [I.destroy_time]ms</li>"
-		if (I.hard_deletes)
-			dellog += "<li>Total Hard Deletes [I.hard_deletes]</li>"
-			dellog += "<li>Time Spent Hard Deleting: [I.hard_delete_time]ms</li>"
-		if (I.slept_destroy)
-			dellog += "<li>Sleeps: [I.slept_destroy]</li>"
-		if (I.no_respect_force)
-			dellog += "<li>Ignored force: [I.no_respect_force]</li>"
-		if (I.no_hint)
-			dellog += "<li>No hint: [I.no_hint]</li>"
-		dellog += "</ul></li>"
-
-	dellog += "</ol>"
-
-	usr << browse(dellog.Join(), "window=dellog")
-
-/client/proc/cmd_display_init_log()
-	set category = "Debug"
-	set name = "Display Initialize() Log"
-	set desc = "Displays a list of things that didn't handle Initialize() properly"
-
-	if(!check_rights(R_DEBUG))
-		return
-	var/rendered = replacetext(SSatoms.InitLog(), "\n", "<br>")
-	if(!length(rendered))
-		to_chat(usr, SPAN_BOLDNOTICE("There were no bad init calls so far! Yay :)"))
-		return
-	src << browse(rendered, "window=initlog")
-
-/client/proc/cmd_display_overlay_log()
-	set category = "Debug"
-	set name = "Display overlay Log"
-	set desc = "Display SSoverlays log of everything that's passed through it."
-
-	if(!check_rights(R_DEBUG))
-		return
-	render_stats(SSoverlays.stats, src)
-
-// Render stats list for round-end statistics.
-/proc/render_stats(list/stats, user, sort = GLOBAL_PROC_REF(cmp_generic_stat_item_time))
-	tim_sort(stats, sort, TRUE)
-
-	var/list/lines = list()
-	for (var/entry in stats)
-		var/list/data = stats[entry]
-		lines += "[entry] => [num2text(data[STAT_ENTRY_TIME], 10)]ms ([data[STAT_ENTRY_COUNT]]) (avg:[num2text(data[STAT_ENTRY_TIME]/(data[STAT_ENTRY_COUNT] || 1), 99)])"
-
-	if (user)
-		user << browse("<ol><li>[lines.Join("</li><li>")]</li></ol>", "window=[url_encode("stats:\ref[stats]")]")
-	else
-		. = lines.Join("\n")
-
-/client/proc/cmd_admin_grantfullaccess(var/mob/M in GLOB.mob_list)
-	set category = "Admin"
-	set name = "Grant Full Access"
-
-	if (!SSticker)
-		alert("Wait until the game starts")
-		return
-	if (istype(M, /mob/living/carbon/human))
-		var/mob/living/carbon/human/H = M
-		if (H.wear_id)
-			var/obj/item/card/id/id = H.wear_id
-			if(istype(H.wear_id, /obj/item/pda))
-				var/obj/item/pda/pda = H.wear_id
-				id = pda.id
-			id.icon_state = "gold"
-			id.access = get_all_accesses().Copy()
-		else
-			var/obj/item/card/id/id = new/obj/item/card/id(M);
-			id.icon_state = "gold"
-			id.access = get_all_accesses().Copy()
-			id.registered_name = H.real_name
-			id.assignment = "Facility Director"
-			id.name = "[id.registered_name]'s ID Card ([id.assignment])"
-			H.equip_to_slot_or_del(id, SLOT_ID_WORN_ID)
-			H.update_inv_wear_id()
-	else
-		alert("Invalid mob")
-	feedback_add_details("admin_verb","GFA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-	log_admin("[key_name(src)] has granted [M.key] full access.")
-	message_admins("<font color=#4F49AF>[key_name_admin(usr)] has granted [M.key] full access.</font>", 1)
 
 /client/proc/cmd_assume_direct_control(var/mob/M in GLOB.mob_list)
 	set category = "Admin"
@@ -551,6 +643,7 @@
 				var/obj/item/tank/phoron/Phoron = new/obj/item/tank/phoron(Rad)
 
 				Phoron.air_contents.gas[GAS_ID_PHORON] = 29.1154	//This is a full tank if you filled it from a canister
+				Phoron.air_contents.update_values()
 				Rad.P = Phoron
 
 				Phoron.loc = Rad
@@ -600,25 +693,6 @@
 	message_admins("<font color=#4F49AF>[key_name_admin(usr)] setup the supermatter engine  [response == "Setup except coolant" ? "without coolant": ""]</font>", 1)
 	return
 
-/client/proc/cmd_debug_mob_lists()
-	set category = "Debug"
-	set name = "Debug Mob Lists"
-	set desc = "For when you just gotta know"
-
-	switch(input("Which list?") in list("Players","Admins","Mobs","Living Mobs","Dead Mobs", "Clients"))
-		if("Players")
-			to_chat(usr, jointext(GLOB.player_list,","))
-		if("Admins")
-			to_chat(usr, jointext(GLOB.admins,","))
-		if("Mobs")
-			to_chat(usr, jointext(GLOB.mob_list,","))
-		if("Living Mobs")
-			to_chat(usr, jointext(living_mob_list,","))
-		if("Dead Mobs")
-			to_chat(usr, jointext(dead_mob_list,","))
-		if("Clients")
-			to_chat(usr, jointext(GLOB.clients,","))
-
 // DNA2 - Admin Hax
 /client/proc/cmd_admin_toggle_block(var/mob/M,var/block)
 	if(istype(M, /mob/living/carbon))
@@ -631,16 +705,6 @@
 		log_admin("[key_name(src)] has toggled [M.key]'s [blockname] block [state]!")
 	else
 		alert("Invalid mob")
-
-/datum/admins/proc/view_runtimes()
-	set category = "Debug"
-	set name = "View Runtimes"
-	set desc = "Open the Runtime Viewer"
-
-	if(!check_rights(R_DEBUG))
-		return
-
-	GLOB.error_cache.show_to(usr)
 
 /datum/admins/proc/change_weather()
 	set category = "Debug"
@@ -685,16 +749,6 @@
 			var/log = "[key_name(src)] changed [planet.name]'s time to [planet.current_time.show_time("hh:mm")]."
 			message_admins(log)
 			log_admin(log)
-
-/client/proc/reload_configuration()
-	set category = "Debug"
-	set name = "Reload Configuration"
-	set desc = "Force config reload to world default"
-	if(!check_rights(R_DEBUG))
-		return
-	if(alert(usr, "Are you absolutely sure you want to reload the configuration from the default path on the disk, wiping any in-round modificatoins?", "Really reset?", "No", "Yes") == "Yes")
-		config.admin_reload()
-		load_configuration()		//for legacy
 
 /datum/admins/proc/quick_nif()
 	set category = "Fun"
@@ -743,3 +797,44 @@
 
 	log_and_message_admins("[key_name(src)] Quick NIF'd [H.real_name] with a [input_NIF].")
 	feedback_add_details("admin_verb","QNIF") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+/proc/generate_timer_source_output(list/datum/timedevent/events)
+	var/list/per_source = list()
+
+	// Collate all events and figure out what sources are creating the most
+	for (var/_event in events)
+		if (!_event)
+			continue
+		var/datum/timedevent/event = _event
+
+		do
+			if (event.source)
+				if (per_source[event.source] == null)
+					per_source[event.source] = 1
+				else
+					per_source[event.source] += 1
+			event = event.next
+		while (event && event != _event)
+
+	// Now, sort them in order
+	var/list/sorted = list()
+	for (var/source in per_source)
+		sorted += list(list("source" = source, "count" = per_source[source]))
+	tim_sort(sorted, GLOBAL_PROC_REF(cmp_timer_data))
+
+	// Now that everything is sorted, compile them into an HTML output
+	var/output = "<table border='1'>"
+
+	for (var/_timer_data in sorted)
+		var/list/timer_data = _timer_data
+		output += {"<tr>
+			<td><b>[timer_data["source"]]</b></td>
+			<td>[timer_data["count"]]</td>
+		</tr>"}
+
+	output += "</table>"
+
+	return output
+
+/proc/cmp_timer_data(list/a, list/b)
+	return b["count"] - a["count"]

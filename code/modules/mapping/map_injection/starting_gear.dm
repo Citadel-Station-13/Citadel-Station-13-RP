@@ -68,7 +68,7 @@
 	/// list of typepaths associated to amounts
 	///
 	/// special handling:
-	/// * /datum/material = amount
+	/// * /datum/prototype/material = amount
 	/// * /obj/item/stack = amount
 	var/list/gear = list()
 	/// gear tags to target
@@ -122,7 +122,7 @@
 
 	for(var/typepath in gear)
 		// no splitting stacks
-		if(ispath(typepath, /datum/material) || ispath(typepath, /obj/item/stack))
+		if(ispath(typepath, /datum/prototype/material) || ispath(typepath, /obj/item/stack))
 			fill_paths[typepath] = gear[typepath]
 			continue
 		// cleanly split
@@ -152,7 +152,7 @@
 	/// list of typepaths associated to amounts
 	///
 	/// special handling:
-	/// * /datum/material = amount
+	/// * /datum/prototype/material = amount
 	/// * /obj/item/stack = amount
 	var/list/gear = list()
 	/// copies to spawn

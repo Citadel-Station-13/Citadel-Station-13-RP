@@ -62,6 +62,7 @@
 
 /obj/machinery/bomb_tester/update_icon()
 	cut_overlays()
+	. = ..()
 	var/list/overlays_to_add = list()
 	if(tank1)
 		overlays_to_add += image(icon, "[icon_name]-tank1")

@@ -79,7 +79,8 @@
 	if(node4)
 		node4.update_underlays()
 
-/obj/machinery/atmospherics/pipe/manifold4w/update_icon(safety = 0)
+/obj/machinery/atmospherics/pipe/manifold4w/update_icon()
+	. = ..()
 	if(!check_icon_cache())
 		return
 

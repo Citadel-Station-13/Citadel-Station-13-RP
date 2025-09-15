@@ -10,6 +10,18 @@ TYPE_REGISTER_SPATIAL_GRID(/mob/living, SSspatial_grids.living)
 
 	selected_image = image(icon = 'icons/mob/screen1.dmi', loc = src, icon_state = "centermarker")
 
+	//* ~~~~~~~VORE~~~~~~~ *//
+	add_verb(src, /mob/living/proc/escapeOOC)
+	add_verb(src, /mob/living/proc/lick)
+	add_verb(src, /mob/living/proc/smell)
+	add_verb(src, /mob/living/proc/switch_scaling)
+	if(!no_vore) //If the mob isn't supposed to have a stomach, let's not give it an insidepanel so it can make one for itself, or a stomach.
+		add_verb(src, /mob/living/proc/insidePanel)
+		//Tries to load prefs if a client is present otherwise gives freebie stomach
+		spawn(2 SECONDS)
+			init_vore()
+	//*        END         *//
+
 /mob/living/Destroy()
 	if(nest) //Ew.
 		if(istype(nest, /obj/structure/prop/nest))
@@ -331,6 +343,15 @@ default behaviour is:
 	health = (health/maxHealth) * (newMaxHealth) // Adjust existing health
 	maxHealth = newMaxHealth
 
+// Use this to get a mob's min health whenever possible. (modifiers for minHealth don't exist currently!)
+/mob/living/proc/getMinHealth()
+	return minHealth
+
+/mob/living/proc/getCritHealth()
+	return critHealth
+
+/mob/living/proc/getSoftCritHealth()
+	return softCritHealth
 
 /mob/living/Confuse(amount)
 	for(var/datum/modifier/M in modifiers)
@@ -360,8 +381,8 @@ default behaviour is:
 		adjustFireLoss(amount)
 
 // and one for electricity because why not
-/mob/living/proc/inflict_shock_damage(amount)
-	electrocute_act(amount, null, 1 - get_shock_protection(), pick(BP_HEAD, BP_TORSO, BP_GROIN))
+/mob/living/proc/inflict_shock_damage_legacy(amount)
+	electrocute(0, amount, 0, NONE, pick(BP_TORSO, BP_HEAD, BP_GROIN))
 
 // also one for water (most things resist it entirely, except for slimes)
 /mob/living/proc/inflict_water_damage(amount)
@@ -583,19 +604,21 @@ default behaviour is:
 		if(!isnull(M.icon_scale_y_percent))
 			. *= M.icon_scale_y_percent
 
-/mob/living/update_transform()
-	var/matrix/old_matrix = transform
-	// First, get the correct size.
+/mob/living/base_transform(matrix/applying)
+	SHOULD_CALL_PARENT(FALSE)
+
 	var/desired_scale_x = size_multiplier * icon_scale_x
 	var/desired_scale_y = size_multiplier * icon_scale_y
 
-	// Now for the regular stuff.
-	var/matrix/M = matrix()
-	M.Scale(desired_scale_x, desired_scale_y)
-	M.Translate(0, 16*(desired_scale_y-1))
+	applying.Scale(desired_scale_x, desired_scale_y)
+	applying.Translate(0, 16 * (desired_scale_y - 1))
+
+	SEND_SIGNAL(src, COMSIG_MOVABLE_BASE_TRANSFORM, applying)
+	return applying
+
+/mob/living/apply_transform(matrix/to_apply)
+	animate(src, transform = to_apply, time = 1 SECONDS, flags = ANIMATION_LINEAR_TRANSFORM | ANIMATION_PARALLEL)
 	update_ssd_overlay()
-	animate(src, transform = M, time = 10)
-	SEND_SIGNAL(src, COMSIG_MOB_UPDATE_TRANSFORM, old_matrix, M)
 
 // This handles setting the client's color variable, which makes everything look a specific color.
 // This proc is here so it can be called without needing to check if the client exists, or if the client relogs.
@@ -635,49 +658,6 @@ default behaviour is:
 
 	else // No colors, so remove the client's color.
 		animate(client, color = null, time = 10)
-
-/mob/living/swap_hand()
-	src.hand = !( src.hand )
-	if(hud_used.l_hand_hud_object && hud_used.r_hand_hud_object)
-		if(hand)	//This being 1 means the left hand is in use
-			hud_used.l_hand_hud_object.icon_state = "l_hand_active"
-			hud_used.r_hand_hud_object.icon_state = "r_hand_inactive"
-		else
-			hud_used.l_hand_hud_object.icon_state = "l_hand_inactive"
-			hud_used.r_hand_hud_object.icon_state = "r_hand_active"
-
-	// We just swapped hands, so the thing in our inactive hand will notice it's not the focus
-	var/obj/item/I = get_inactive_held_item()
-	if(I)
-		if(I.zoom)
-			I.zoom()
-	return
-
-/mob/proc/activate_hand(selhand)
-
-/mob/living/activate_hand(selhand) //0 or "r" or "right" for right hand; 1 or "l" or "left" for left hand.
-
-	if(istext(selhand))
-		selhand = lowertext(selhand)
-
-		if(selhand == "right" || selhand == "r")
-			selhand = 0
-		if(selhand == "left" || selhand == "l")
-			selhand = 1
-
-	if(selhand != src.hand)
-		swap_hand()
-
-// todo: multihands
-
-/mob/proc/activate_hand_of_index(index)
-
-/mob/living/activate_hand_of_index(index)
-	switch(index)
-		if(1)
-			activate_hand("l")
-		if(2)
-			activate_hand("r")
 
 /mob/living/get_sound_env(var/pressure_factor)
 	if (hallucination)
@@ -735,7 +715,7 @@ default behaviour is:
 /mob/living/get_centering_pixel_y_offset(dir)
 	. = ..()
 	// since we're shifted up by transforms..
-	. -= ((size_multiplier * icon_scale_y) - 1) * 16
+	. -= (size_multiplier * icon_scale_y - 1) * 16
 
 /mob/living/get_managed_pixel_y()
 	. = ..()

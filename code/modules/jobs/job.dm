@@ -115,7 +115,7 @@
  */
 /datum/role/job/proc/check_client_availability(client/C, check_char, latejoin)
 	. = NONE
-	if(whitelist_only && !config.check_job_whitelist(ckey(title), C.ckey))
+	if(whitelist_only && !Configuration.check_role_whitelist(id, C.ckey))
 		. |= ROLE_UNAVAILABLE_WHITELIST
 	if(!slots_remaining())
 		. |= ROLE_UNAVAILABLE_SLOTS_FULL
@@ -146,7 +146,7 @@
  */
 /datum/role/job/proc/check_client_availability_one(client/C, check_char, latejoin)
 	. = NONE
-	if(whitelist_only && !config.check_job_whitelist(ckey(title), C.ckey))
+	if(whitelist_only && !Configuration.check_role_whitelist(id, C.ckey))
 		return ROLE_UNAVAILABLE_WHITELIST
 	else if(latejoin && !slots_remaining(TRUE))
 		return ROLE_UNAVAILABLE_SLOTS_FULL
@@ -242,7 +242,7 @@
 	. = list()
 	// todo: why do we do assoc list? why don't we just cache? why why why????
 	for(var/title in alt_titles)
-		var/datum/prototype/struct/alt_title/alt_datum = RCstructs.fetch(alt_titles[title])
+		var/datum/prototype/struct/alt_title/alt_datum = RSstructs.fetch(alt_titles[title])
 		if(!alt_datum)
 			continue
 		. += alt_datum
@@ -287,7 +287,7 @@
 			if(alt_datum.background_enforce && alt_datum.check_background_ids(background_ids))
 				enforced += alt_datum.title
 		return !length(enforced) || (alt_title in enforced)
-	var/datum/prototype/struct/alt_title/alt_datum = RCstructs.fetch(alt_titles?[alt_title])
+	var/datum/prototype/struct/alt_title/alt_datum = RSstructs.fetch(alt_titles?[alt_title])
 	return alt_datum?.check_background_ids(background_ids)
 
 /**

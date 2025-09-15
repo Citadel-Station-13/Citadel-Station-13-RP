@@ -23,6 +23,7 @@
  * correct bucket for our target cycle.
  */
 /datum/ai_holder/proc/set_ticking(delay)
+	SHOULD_NOT_SLEEP(TRUE)
 	ASSERT(delay > 0)
 	ASSERT(delay <= AI_SCHEDULING_LIMIT)
 	if(ticking > 0)
@@ -39,6 +40,7 @@
  * Unregister us from the doubly linked list we're in and removes us from the ai_holders subsystem.
  */
 /datum/ai_holder/proc/stop_ticking()
+	SHOULD_NOT_SLEEP(TRUE)
 	if(!ticking)
 		return
 	SSai_holders.bucket_evict(src)
@@ -50,6 +52,7 @@
  * Called by subsystem to tick this holder.
  */
 /datum/ai_holder/proc/tick(cycles)
+	SHOULD_NOT_SLEEP(TRUE)
 	return
 
 /**

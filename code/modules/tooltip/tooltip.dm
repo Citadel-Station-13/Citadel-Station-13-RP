@@ -32,30 +32,45 @@ Notes:
 
 
 /datum/tooltip
-	var/client/owner
+	var/client/client
 	var/control = "mainwindow.tooltip"
 	var/showing = 0
 	var/queueHide = 0
 	var/init = 0
 
-
 /datum/tooltip/New(client/C)
 	if(!C)
 		return
-	owner = C
-	addtimer(CALLBACK(src, PROC_REF(init)), 0)
+	client = C
 
-/datum/tooltip/proc/init()
-	SSassets.send_asset_pack(owner, /datum/asset_pack/simple/jquery)
-	owner << browse(file2text('code/modules/tooltip/tooltip.html'), "window=[control]")
+/datum/tooltip/Destroy()
+	client = null
+	return ..()
+
+/datum/tooltip/proc/initialize()
+	if(!client.initialized)
+		// todo: this should be a timer, but current MC doesn't really support that until we have
+		//       MC init stages
+		spawn(1 SECONDS)
+			UNTIL(!client || client.initialized)
+			if(!client)
+				return
+			boot()
+	else
+		spawn(0)
+			boot()
+
+/datum/tooltip/proc/boot()
+	SSassets.send_asset_pack(client, /datum/asset_pack/simple/jquery)
+	client << browse(file2text('code/modules/tooltip/tooltip.html'), "window=[control]")
 
 /datum/tooltip/proc/show(atom/movable/thing, params = null, title = null, content = null, theme = "default", special = "none")
-	if (!thing || !params || (!title && !content) || !owner || !isnum(world.icon_size))
+	if (!thing || !params || (!title && !content) || !client || !isnum(world.icon_size))
 		return FALSE
 	if (!init)
 		//Initialize some vars
 		init = 1
-		owner << output(list2params(list(world.icon_size, control)), "[control]:tooltip.init")
+		client << output(list2params(list(world.icon_size, control)), "[control]:tooltip.init")
 
 	showing = 1
 
@@ -75,7 +90,7 @@ Notes:
 	params = {"{ "cursor": "[params]", "screenLoc": "[thing.screen_loc]" }"}
 
 	//Send stuff to the tooltip
-	owner << output(list2params(list(params, owner.current_viewport_width, owner.current_viewport_height, "[title][content]", theme, special)), "[control]:tooltip.update")
+	client << output(list2params(list(params, client.current_viewport_width, client.current_viewport_height, "[title][content]", theme, special)), "[control]:tooltip.update")
 
 	//If a hide() was hit while we were showing, run hide() again to avoid stuck tooltips
 	showing = 0
@@ -95,7 +110,7 @@ Notes:
 	return TRUE
 
 /datum/tooltip/proc/do_hide()
-	winshow(owner, control, FALSE)
+	winshow(client, control, FALSE)
 
 /* TG SPECIFIC CODE */
 

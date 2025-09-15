@@ -56,7 +56,7 @@
 
 	mob_class = MOB_CLASS_ANIMAL
 	taser_kill = FALSE
-	movement_cooldown = 6
+	movement_base_speed = 10 / 6
 	movement_sound = 'sound/effects/spider_loop.ogg'
 	legacy_melee_damage_lower = 5
 	legacy_melee_damage_upper = 10
@@ -72,7 +72,7 @@
 	say_list_type = /datum/say_list/gutshank
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
-	var/datum/reagents/shank_gland = null
+	var/datum/reagent_holder/shank_gland = null
 	var/growing = 0
 	var/amount_grown = 1
 	var/list/grow_as = list(/mob/living/simple_mob/animal/shank)
@@ -139,7 +139,7 @@
 /mob/living/simple_mob/animal/gutshank/proc/blood_drink(var/mob/living/carbon/human/M)
 	if(istype(M))
 		to_chat(M, "<span class='warning'>The [src] pierces your flesh! You feel a sickening suction!</span>")
-		M.vessel.remove_reagent("blood",rand(10,20))
+		M.take_blood_mixture(rand(10, 20))
 
 /mob/living/simple_mob/animal/gutshank/death()
 	STOP_PROCESSING(SSobj, src)
@@ -179,7 +179,7 @@
 
 	mob_class = MOB_CLASS_ANIMAL
 	taser_kill = FALSE
-	movement_cooldown = 4
+	movement_base_speed = 10 / 4
 	legacy_melee_damage_lower = 10
 	legacy_melee_damage_upper = 15
 	attacktext = list ("bitten", "pierced", "mauled")
@@ -200,22 +200,26 @@
 	buckle_allowed = TRUE
 	buckle_flags = BUCKLING_NO_USER_BUCKLE_OTHER_TO_SELF|BUCKLING_GROUND_HOIST
 
-	var/rideable = 0
+	var/obj/item/saddle/saddled = null
 
 /mob/living/simple_mob/animal/shank/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	. = ..()
-	if(istype(O, /obj/item/saddle/shank) && !rideable)
+	if(istype(O, /obj/item/saddle/shank) && !saddled)
 		to_chat(user, "<span class='danger'>You sling the [O] onto the [src]! It may now be ridden safely!</span>")
-		rideable = 1
-		AddComponent(/datum/component/riding_handler/shank)
-		qdel(O)
-	if(istype(O, /obj/item/tool/wirecutters) && rideable)
-		to_chat(user, "<span class='danger'>You nip the straps of the [O]! It falls off of the [src].</span>")
-		rideable = 0
-		DelComponent(/datum/component/riding_handler, /datum/component/riding_handler/shank)
+		saddled = O
+		var/datum/component/riding_filter/mob/animal/filter_component = LoadComponent(/datum/component/riding_filter/mob/animal)
+		filter_component.handler_typepath = /datum/component/riding_handler/shank
+		DelComponent(/datum/component/riding_handler) //Delete to let it recreate as required
+		saddled.forceMove(src)
+	if(O.is_wirecutter() && saddled)
+		to_chat(user, "<span class='danger'>You nip the straps of the [saddled]! It falls off of the [src].</span>")
+		var/datum/component/riding_filter/mob/animal/filter_component = LoadComponent(/datum/component/riding_filter/mob/animal)
+		filter_component.handler_typepath = initial(filter_component.handler_typepath)
+		DelComponent(/datum/component/riding_handler)
 		var/turf/T = get_turf(src)
-		new /obj/item/saddle/shank(T)
-	if(istype(O, /obj/item/pen/charcoal) && rideable)
+		saddled.forceMove(T)
+		saddled = null
+	if(istype(O, /obj/item/pen/charcoal) && saddled)
 		RenameMount()
 	update_icon()
 
@@ -265,10 +269,10 @@
 /mob/living/simple_mob/animal/shank/proc/blood_drink(var/mob/living/carbon/human/M)
 	if(istype(M))
 		to_chat(M, "<span class='warning'>The [src] pierces your flesh! You feel a sickening suction!</span>")
-		M.vessel.remove_reagent("blood",rand(20,25))
+		M.take_blood_mixture(rand(20, 25))
 
 /mob/living/simple_mob/animal/shank/update_icon()
-	if(rideable)
+	if(saddled)
 		add_overlay("shank_saddled")
-	else if(!rideable)
+	else if(!saddled)
 		cut_overlays()

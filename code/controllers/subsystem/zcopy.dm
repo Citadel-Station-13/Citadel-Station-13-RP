@@ -180,7 +180,7 @@ SUBSYSTEM_DEF(zcopy)
 	calculate_zstack_limits()
 	// Flush the queue.
 	fire(FALSE, TRUE)
-	return ..()
+	return SS_INIT_SUCCESS
 
 // If you add a new Zlevel or change Z-connections, call this.
 /datum/controller/subsystem/zcopy/proc/calculate_zstack_limits()

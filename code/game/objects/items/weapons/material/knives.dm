@@ -78,13 +78,6 @@
 	origin_tech = list(TECH_MATERIAL = 1)
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
-/obj/item/material/knife/suicide_act(mob/user)
-	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-	user.visible_message(pick("<span class='danger'>\The [user] is slitting [TU.his] wrists with \the [src]! It looks like [TU.hes] trying to commit suicide.</span>", \
-	                      "<span class='danger'>\The [user] is slitting [TU.his] throat with \the [src]! It looks like [TU.hes] trying to commit suicide.</span>", \
-	                      "<span class='danger'>\The [user] is slitting [TU.his] stomach open with \the [src]! It looks like [TU.hes] trying to commit seppuku.</span>"))
-	return (BRUTELOSS)
-
 // These no longer inherit from hatchets.
 /obj/item/material/knife/tacknife
 	name = "tactical knife"
@@ -92,6 +85,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "tacknife"
 	item_state = "knife"
+	material_primary = "blade"
 	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_LIGHT
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	attack_verb = list("stabbed", "chopped", "cut")
@@ -121,7 +115,7 @@
 
 /obj/item/material/knife/tacknife/combatknife/bone
 	icon_state = "boneknife"
-	material_parts = /datum/material/bone
+	material_parts = /datum/prototype/material/bone
 
 // Identical to the tactical knife but nowhere near as stabby.
 // Kind of like the toy esword compared to the real thing.
@@ -161,7 +155,7 @@
 	can_cleave = TRUE //Now hatchets inherit from the machete, and thus knives. Tables turned.
 	slot_flags = SLOT_BELT | SLOT_HOLSTER
 	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_HEAVY
-	material_parts = /datum/material/plasteel
+	material_parts = /datum/prototype/material/plasteel
 	force_multiplier = 1.3
 
 /obj/item/material/knife/machete/armblade
@@ -200,13 +194,13 @@
 	icon_state = "survivalknife"
 	item_state = "knife"
 	material_color = FALSE
-	material_parts = /datum/material/plasteel
+	material_parts = /datum/prototype/material/plasteel
 	tool_speed = 2 // Use a real axe if you want to chop logs.
 
 /obj/item/material/knife/tacknife/survival/bone
 	name = "primitive survival knife"
 	desc = "A hunting grade survival knife with a sleek leather grip."
-	material_parts = /datum/material/bone
+	material_parts = /datum/prototype/material/bone
 
 /obj/item/material/knife/machete/deluxe
 	name = "deluxe machete"
@@ -217,58 +211,58 @@
 
 // Knife Material Variants
 /obj/item/material/butterfly/plasteel
-	material_parts = /datum/material/plasteel
+	material_parts = /datum/prototype/material/plasteel
 
 /obj/item/material/butterfly/durasteel
-	material_parts = /datum/material/durasteel
+	material_parts = /datum/prototype/material/durasteel
 
 /obj/item/material/butterfly/switchblade/plasteel
-	material_parts = /datum/material/plasteel
+	material_parts = /datum/prototype/material/plasteel
 
 /obj/item/material/butterfly/switchblade/durasteel
-	material_parts = /datum/material/durasteel
+	material_parts = /datum/prototype/material/durasteel
 
 /obj/item/material/butterfly/boxcutter/plasteel
-	material_parts = /datum/material/plasteel
+	material_parts = /datum/prototype/material/plasteel
 
 /obj/item/material/butterfly/boxcutter/durasteel
-	material_parts = /datum/material/durasteel
+	material_parts = /datum/prototype/material/durasteel
 
 /obj/item/material/knife/tacknife/plasteel
-	material_parts = /datum/material/plasteel
+	material_parts = /datum/prototype/material/plasteel
 
 /obj/item/material/knife/tacknife/durasteel
-	material_parts = /datum/material/durasteel
+	material_parts = /datum/prototype/material/durasteel
 
 /obj/item/material/knife/tacknife/combatknife/plasteel
-	material_parts = /datum/material/plasteel
+	material_parts = /datum/prototype/material/plasteel
 
 /obj/item/material/knife/tacknife/combatknife/durasteel
-	material_parts = /datum/material/durasteel
+	material_parts = /datum/prototype/material/durasteel
 
 /obj/item/material/knife/hook/plasteel
-	material_parts = /datum/material/plasteel
+	material_parts = /datum/prototype/material/plasteel
 
 /obj/item/material/knife/hook/durasteel
-	material_parts = /datum/material/durasteel
+	material_parts = /datum/prototype/material/durasteel
 
 /obj/item/material/knife/ritual/plasteel
-	material_parts = /datum/material/plasteel
+	material_parts = /datum/prototype/material/plasteel
 
 /obj/item/material/knife/ritual/durasteel
-	material_parts = /datum/material/durasteel
+	material_parts = /datum/prototype/material/durasteel
 
 /obj/item/material/knife/butch/plasteel
-	material_parts = /datum/material/plasteel
+	material_parts = /datum/prototype/material/plasteel
 
 /obj/item/material/knife/butch/durasteel
-	material_parts = /datum/material/durasteel
+	material_parts = /datum/prototype/material/durasteel
 
 /obj/item/material/knife/machete/durasteel
-	material_parts = /datum/material/durasteel
+	material_parts = /datum/prototype/material/durasteel
 
 /obj/item/material/knife/machete/deluxe/durasteel
-	material_parts = /datum/material/durasteel
+	material_parts = /datum/prototype/material/durasteel
 
 /obj/item/material/knife/tacknife/survival/durasteel
-	material_parts = /datum/material/durasteel
+	material_parts = /datum/prototype/material/durasteel

@@ -11,7 +11,7 @@
 
 /obj/item/material/gravemarker/attackby(obj/item/W, mob/user as mob)
 	if(W.is_screwdriver())
-		var/datum/material/material = get_primary_material()
+		var/datum/prototype/material/material = get_primary_material()
 		var/time_mult = (material.hardness > 0)? material.hardness / 100 : 1 / (material.hardness / 100)
 		var/carving_1 = sanitizeSafe(input(user, "Who is \the [src.name] for?", "Gravestone Naming", null)  as text, MAX_NAME_LEN)
 		if(carving_1)
@@ -28,7 +28,7 @@
 				epitaph += carving_2
 				update_icon()
 	if(W.is_wrench())
-		var/datum/material/material = get_primary_material()
+		var/datum/prototype/material/material = get_primary_material()
 		var/time_mult = (material.hardness > 0)? material.hardness / 100 : 1 / (material.hardness / 100)
 		user.visible_message("[user] starts carving \the [src.name].", "You start carving \the [src.name].")
 		if(do_after(user, time_mult * 1 SECONDS * W.tool_speed))

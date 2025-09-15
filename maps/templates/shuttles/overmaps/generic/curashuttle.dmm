@@ -144,8 +144,8 @@
 /area/shuttle/curabitur/curashuttle/med)
 "at" = (
 /obj/structure/closet/crate/large,
-/obj/item/gun/energy/particle/cannon,
-/obj/item/gun/energy/particle/cannon,
+/obj/item/gun/projectile/energy/particle/cannon,
+/obj/item/gun/projectile/energy/particle/cannon,
 /turf/simulated/floor/carpet/bcarpet,
 /area/shuttle/curabitur/curashuttle/cockpit)
 "au" = (
@@ -287,7 +287,7 @@
 /obj/item/storage/secure/safe{
 	pixel_x = 31
 	},
-/obj/item/gun/ballistic/automatic/mini_uzi,
+/obj/item/gun/projectile/ballistic/automatic/mini_uzi,
 /obj/item/card/id/syndicate{
 	access = list(616);
 	assignment = "Curabitur Contractor";
@@ -352,7 +352,7 @@
 /area/shuttle/curabitur/curashuttle/med)
 "aM" = (
 /obj/structure/table/rack,
-/obj/item/defib_kit/jumper_kit/loaded,
+/obj/item/defib_kit/loaded,
 /obj/item/defib_kit/compact/combat/loaded,
 /obj/item/defib_kit/compact/combat/loaded,
 /obj/item/mmi/radio_enabled{
@@ -1073,14 +1073,14 @@
 /area/shuttle/curabitur/curashuttle/eng)
 "cc" = (
 /obj/structure/table/rack,
-/obj/item/mecha_parts/mecha_equipment/crisis_drone,
-/obj/item/mecha_parts/mecha_equipment/crisis_drone/rad,
-/obj/item/mecha_parts/mecha_equipment/tool/syringe_gun,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/medigun,
-/obj/item/mecha_parts/mecha_equipment/tool/powertool/inflatables,
-/obj/item/mecha_parts/mecha_equipment/tool/powertool/medanalyzer,
-/obj/item/mecha_parts/mecha_equipment/tool/powertool/prybar,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/taser,
+/obj/item/vehicle_module/crisis_drone,
+/obj/item/vehicle_module/crisis_drone/rad,
+/obj/item/vehicle_module/tool/syringe_gun,
+/obj/item/vehicle_module/weapon/energy/medigun,
+/obj/item/vehicle_module/tool/powertool/inflatables,
+/obj/item/vehicle_module/tool/powertool/medanalyzer,
+/obj/item/vehicle_module/tool/powertool/prybar,
+/obj/item/vehicle_module/weapon/energy/taser,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/curabitur/curashuttle/hangar)
 "cd" = (
@@ -1153,11 +1153,11 @@
 /area/shuttle/curabitur/curashuttle/hangar)
 "cm" = (
 /obj/structure/table/rack,
-/obj/item/mecha_parts/mecha_equipment/tool/passenger,
-/obj/item/mecha_parts/mecha_equipment/tool/sleeper,
-/obj/item/mecha_parts/mecha_equipment/tool/sleeper,
-/obj/item/mecha_parts/mecha_equipment/tool/sleeper,
-/obj/item/mecha_parts/mecha_equipment/tool/sleeper,
+/obj/item/vehicle_module/tool/passenger,
+/obj/item/vehicle_module/tool/sleeper,
+/obj/item/vehicle_module/tool/sleeper,
+/obj/item/vehicle_module/tool/sleeper,
+/obj/item/vehicle_module/tool/sleeper,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
@@ -1356,12 +1356,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/curabitur/curashuttle/hangar)
-"cO" = (
-/obj/machinery/atmospherics/component/unary/engine{
-	dir = 1
-	},
-/turf/simulated/shuttle/plating/airless/carry,
-/area/shuttle/curabitur/curashuttle/eng)
 "cP" = (
 /obj/machinery/ion_engine{
 	dir = 1
@@ -1522,7 +1516,7 @@ ce
 co
 cv
 cD
-cO
+cM
 aa
 aa
 "}
@@ -1722,7 +1716,7 @@ cl
 cr
 cB
 cJ
-cO
+cM
 aa
 aa
 "}

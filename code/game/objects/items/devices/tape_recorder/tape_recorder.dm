@@ -186,7 +186,7 @@
 		return
 	var/msg = got[CASSETTE_TAPE_DATA_MESSAGE]
 	if(msg)
-		var/datum/language/L = got[CASSETTE_TAPE_DATA_LANGUAGE]
+		var/datum/prototype/language/L = got[CASSETTE_TAPE_DATA_LANGUAGE]
 		var/speaker = got[CASSETTE_TAPE_DATA_NAME]
 		var/opcode = got[CASSETTE_TAPE_DATA_OPCODE]
 		switch(opcode)
@@ -284,7 +284,7 @@
 	writer.tick(delta_time)
 
 //! todo : saycode refactor
-/obj/item/tape_recorder/hear_talk(mob/living/M as mob, msg, var/verb="says", datum/language/speaking=null)
+/obj/item/tape_recorder/hear_talk(mob/living/M as mob, msg, var/verb="says", datum/prototype/language/speaking=null)
 	if(!recording)
 		return
 	var/datum/cassette_tape_iterator/write/writer = tape_iterator
@@ -408,7 +408,7 @@
 	var/datum/cassette_tape_iterator/reader = tape_iterator
 	var/msg
 	var/name
-	var/datum/language/lang
+	var/datum/prototype/language/lang
 	var/delay
 	var/current_time = 0
 	var/opcode

@@ -60,6 +60,7 @@
 
 #define MOB_IFF_FACTION_HIVEBOT "ai-hivebot"
 #define MOB_IFF_FACTION_SWARMER "ai-swarmer"
+#define MOB_IFF_FACTION_CASINO "ai-casino"
 
 //? Alien factions
 
@@ -107,3 +108,14 @@
 
 #define MOB_IFF_FACTION_CLOCKWORK_CULT "clock-cult"
 #define MOB_IFF_FACTION_SANGUINE_CULT "blood-cult"
+
+//? Tajara Factions ?//
+
+#define MOB_IFF_FACTION_TAJARA_NKA "tajara-nka_brigands-"
+#define MOB_IFF_FACTION_TAJARA_NKA_GROUP(GROUP) ("tajara-nka_brigands-" + GROUP)
+
+#define MOB_IFF_FACTION_TAJARA_DRA "tajara-dra_guerillas-"
+#define MOB_IFF_FACTION_TAJARA_DRA_GROUP(GROUP) ("tajara-dra_guerillas-" + GROUP)
+
+#define MOB_IFF_FACTION_TAJARA_PRA "tajara-pra_insurgents"
+#define MOB_IFF_FACTION_TAJARA_PRA_GROUP(GROUP) ("tajara-pra_insurgents-" + GROUP)

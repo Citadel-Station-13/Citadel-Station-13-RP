@@ -25,11 +25,11 @@
 
 /datum/uplink_item/item/ammo/c45m
 	name = "Pistol Magazine (.45)"
-	path = /obj/item/ammo_magazine/a45
+	path = /obj/item/ammo_magazine/a45/doublestack
 
 /datum/uplink_item/item/ammo/c45map
 	name = "Pistol Magazine (.45 AP)"
-	path = /obj/item/ammo_magazine/a45/ap
+	path = /obj/item/ammo_magazine/a45/doublestack/ap
 
 /datum/uplink_item/item/ammo/s45m
 	name = "Speedloader (.45)"

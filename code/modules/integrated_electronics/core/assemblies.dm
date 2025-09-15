@@ -7,7 +7,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	icon = 'icons/obj/integrated_electronics/electronic_setups.dmi'
 	icon_state = "setup_small"
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	show_messages = TRUE
 	datum_flags = DF_USE_TAG
 	var/list/assembly_components = list()
@@ -32,7 +32,6 @@
 	/// Time until circuit cn perform another external action
 	var/ext_next_use = 0
 	var/atom/collw
-	var/obj/item/card/id/access_card
 	/// Which circuit flags are allowed
 	var/allowed_circuit_action_flags = IC_ACTION_COMBAT | IC_ACTION_LONG_RANGE
 	/// Number of combat cicuits in the assembly, used for diagnostic hud
@@ -107,15 +106,13 @@
 	diag_hud_set_circuitstat()
 	diag_hud_set_circuittracking()
 */
-	access_card = new /obj/item/card/id(src)
-	. =..()
+	return ..()
 
 /obj/item/electronic_assembly/Destroy()
 	battery = null // It will be qdel'd by ..() if still in our contents
 	STOP_PROCESSING(SSobj, src)
 //	for(var/datum/atom_hud/data/diagnostic/diag_hud in GLOB.huds)
 // TBI		diag_hud.remove_from_hud(src)
-	QDEL_NULL(access_card)
 	return ..()
 
 /obj/item/electronic_assembly/process(delta_time)
@@ -505,7 +502,7 @@
 		var/saved = "[src.name] analyzed! On circuit printers with cloning enabled, you may use the code below to clone the circuit:<br><br><code>[save]</code>"
 		if(save)
 			to_chat(usr, SPAN_WARNING("You scan [src]."))
-			user << browse(saved, "window=circuit_scan;size=500x600;border=1;can_resize=1;can_close=1;can_minimize=1")
+			user << browse(HTML_SKELETON(saved), "window=circuit_scan;size=500x600;border=1;can_resize=1;can_close=1;can_minimize=1")
 		else
 			to_chat(usr, SPAN_WARNING("[src] is not complete enough to be encoded!"))
 		return TRUE
@@ -540,32 +537,32 @@
 	if(battery)
 		var/lost = battery.use(DYNAMIC_W_TO_CELL_UNITS(amount, 1))
 		net_power -= lost
-		return lost > 0
-	return FALSE
+		return lost
+	return 0
 
 // Ditto for giving.
 /obj/item/electronic_assembly/proc/give_power(amount)
 	if(battery)
 		var/gained = battery.give(DYNAMIC_W_TO_CELL_UNITS(amount, 1))
 		net_power += gained
-		return TRUE
-	return FALSE
+		return gained
+	return 0
 
 // Returns true if power was successfully drawn.
 /obj/item/electronic_assembly/proc/draw_power_kw(amount)
 	if(battery)
 		var/lost = battery.use(DYNAMIC_KW_TO_CELL_UNITS(amount, 1))
 		net_power -= lost
-		return lost > 0
-	return FALSE
+		return lost
+	return 0
 
 // Ditto for giving.
 /obj/item/electronic_assembly/proc/give_power_kw(amount)
 	if(battery)
 		var/gained = battery.give(DYNAMIC_KW_TO_CELL_UNITS(amount, 1))
 		net_power += gained
-		return TRUE
-	return FALSE
+		return gained
+	return 0
 
 /obj/item/electronic_assembly/on_loc_moved(oldloc)
 	. = ..()

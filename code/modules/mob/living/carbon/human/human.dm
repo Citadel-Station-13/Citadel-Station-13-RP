@@ -57,7 +57,6 @@
 
 //! WARNING SHITCODE REMOVE LATER
 /mob/living/carbon/human/LateInitialize()
-	. = ..()
 	regenerate_icons()
 	update_transform()
 
@@ -72,24 +71,24 @@
 /mob/living/carbon/human/statpanel_data(client/C)
 	. = ..()
 	if(C.statpanel_tab("Status"))
-		STATPANEL_DATA_ENTRY("Intent:", "[a_intent]")
-		STATPANEL_DATA_ENTRY("Move Mode:", "[m_intent]")
+		INJECT_STATPANEL_DATA_ENTRY(., "Intent:", "[a_intent]")
+		INJECT_STATPANEL_DATA_ENTRY(., "Move Mode:", "[m_intent]")
 		if(SSemergencyshuttle)
 			var/eta_status = SSemergencyshuttle.get_status_panel_eta()
 			if(eta_status)
-				STATPANEL_DATA_LINE(eta_status)
+				INJECT_STATPANEL_DATA_LINE(., eta_status)
 
 		if (internal)
 			if (!internal.air_contents)
 				qdel(internal)
 			else
-				STATPANEL_DATA_ENTRY("Internal Atmosphere Info", internal.name)
-				STATPANEL_DATA_ENTRY("Tank Pressure", internal.air_contents.return_pressure())
-				STATPANEL_DATA_ENTRY("Distribution Pressure", internal.distribute_pressure)
+				INJECT_STATPANEL_DATA_ENTRY(., "Internal Atmosphere Info", internal.name)
+				INJECT_STATPANEL_DATA_ENTRY(., "Tank Pressure", internal.air_contents.return_pressure())
+				INJECT_STATPANEL_DATA_ENTRY(., "Distribution Pressure", internal.distribute_pressure)
 
 		var/obj/item/organ/internal/xenos/plasmavessel/P = internal_organs_by_name[O_PLASMA] //Xenomorphs. Mech.
 		if(P)
-			STATPANEL_DATA_LINE("Phoron Stored: [P.stored_plasma]/[P.max_plasma]")
+			INJECT_STATPANEL_DATA_LINE(., "Phoron Stored: [P.stored_plasma]/[P.max_plasma]")
 
 
 		if(back && istype(back,/obj/item/hardsuit))
@@ -97,13 +96,13 @@
 			var/cell_status = "ERROR"
 			if(suit.cell)
 				cell_status = "[suit.cell.charge]/[suit.cell.maxcharge]"
-			STATPANEL_DATA_ENTRY("Suit charge", "[cell_status]")
+			INJECT_STATPANEL_DATA_ENTRY(., "Suit charge", "[cell_status]")
 
 		if(mind)
 			if(mind.changeling)
-				STATPANEL_DATA_ENTRY("Chemical Storage", mind.changeling.chem_charges)
-				STATPANEL_DATA_ENTRY("Genetic Damage Time", mind.changeling.geneticdamage)
-				STATPANEL_DATA_ENTRY("Re-Adaptations", "[mind.changeling.readapts]/[mind.changeling.max_readapts]")
+				INJECT_STATPANEL_DATA_ENTRY(., "Chemical Storage", mind.changeling.chem_charges)
+				INJECT_STATPANEL_DATA_ENTRY(., "Genetic Damage Time", mind.changeling.geneticdamage)
+				INJECT_STATPANEL_DATA_ENTRY(., "Re-Adaptations", "[mind.changeling.readapts]/[mind.changeling.max_readapts]")
 	if(C.statpanel_tab("Species", species?.species_statpanel))
 		. += species.statpanel_status(C, src, C.statpanel_tab("Species"))
 
@@ -188,8 +187,6 @@
 				)
 
 /mob/living/carbon/human/proc/implant_loyalty(override = FALSE) // Won't override by default.
-	if(!config_legacy.use_loyalty_implants && !override) return // Nuh-uh.
-
 	var/obj/item/implant/loyalty/L = new/obj/item/implant/loyalty(src)
 	if(L.handle_implant(src, BP_HEAD))
 		L.post_implant(src)
@@ -304,29 +301,6 @@
 /mob/living/carbon/human/proc/get_idcard()
 	if(wear_id)
 		return wear_id.GetID()
-
-//Removed the horrible safety parameter. It was only being used by ninja code anyways.
-//Now checks siemens_coefficient of the affected area by default
-/mob/living/carbon/human/electrocute_act(var/shock_damage, var/obj/source, var/base_siemens_coeff = 1.0, var/def_zone = null)
-
-	if(status_flags & STATUS_GODMODE)	return 0	//godmode
-
-	if (!def_zone)
-		def_zone = pick("l_hand", "r_hand")
-
-	if(species.siemens_coefficient == -1)
-		if(stored_shock_by_ref["\ref[src]"])
-			stored_shock_by_ref["\ref[src]"] += shock_damage
-		else
-			stored_shock_by_ref["\ref[src]"] = shock_damage
-		return
-
-	var/obj/item/organ/external/affected_organ = get_organ(check_zone(def_zone))
-	var/siemens_coeff = base_siemens_coeff * get_siemens_coefficient_organ(affected_organ)
-	if(fire_stacks < 0) // Water makes you more conductive.
-		siemens_coeff *= 1.5
-
-	return ..(shock_damage, source, siemens_coeff, def_zone)
 
 /mob/living/carbon/human/Topic(href, href_list)
 	if (href_list["mach_close"])
@@ -606,8 +580,7 @@
 		var/obj/item/I = locate(href_list["clickitem"])
 		if(get_dist(src, get_turf(I)) > 7)
 			return
-		if(src.client)
-			src.ClickOn(I)
+		click_on(I, inject_clickchain_flags = CLICKCHAIN_FROM_HREF)
 
 	if (href_list["flavor_change"])
 		if(usr != src)
@@ -914,6 +887,18 @@
 	if(L)
 		L.rupture()
 
+/mob/living/carbon/human/proc/asbestos_lung()
+	var/obj/item/organ/internal/lungs/L = internal_organs_by_name[O_LUNGS]
+
+	if(L)
+		L.damage_lung()
+
+/mob/living/carbon/human/proc/heart_attack()
+	var/obj/item/organ/internal/heart/H = internal_organs_by_name[O_HEART]
+
+	if(H)
+		H.heart_attack()
+
 /*
 /mob/living/carbon/human/verb/simulate()
 	set name = "sim"
@@ -999,12 +984,12 @@
 
 	return(visible_implants)
 
-/mob/living/carbon/human/embedded_needs_process()
-	for(var/obj/item/organ/external/organ in src.organs)
-		for(var/obj/item/O in organ.implants)
-			if(!istype(O, /obj/item/implant)) //implant type items do not cause embedding effects, see handle_embedded_objects()
-				return 1
-	return 0
+// /mob/living/carbon/human/embedded_needs_process()
+// 	for(var/obj/item/organ/external/organ in src.organs)
+// 		for(var/obj/item/O in organ.implants)
+// 			if(!istype(O, /obj/item/implant)) //implant type items do not cause embedding effects, see handle_embedded_objects()
+// 				return 1
+// 	return 0
 
 /mob/living/carbon/human/proc/handle_embedded_objects()
 
@@ -1130,8 +1115,8 @@
 	// i seriously hate vorecode
 	species.on_apply(src)
 
-	// set our has hands
-	has_hands = (species && species.hud)? species.hud.has_hands : TRUE
+	inventory.set_inventory_slots(species.inventory_slots)
+	inventory.set_hand_count(species.hud? (species.hud.has_hands ? 2 : 0) : 2)
 
 	// until we unfuck hud datums, this will force reload our entire hud
 	if(hud_used)
@@ -1139,6 +1124,7 @@
 	hud_used = new /datum/hud(src)
 	reload_rendering()
 	update_vision()
+	update_movespeed_base()
 
 	//! FUCK FUCK FUCK FUCK FUCK FUCK FUCK
 	for(var/key in species.sprite_accessory_defaults)
@@ -1326,6 +1312,9 @@
 	else if (affecting.thick_skin && prob(70 - round(affecting.brute_dam + affecting.burn_dam / 2)))	// Allows transplanted limbs with thick skin to maintain their resistance.
 		. = 0
 		fail_msg = "Your needle fails to penetrate \the [affecting]'s thick hide..."
+	else if (affecting.behaviour_flags & BODYPART_NO_INJECT)
+		. = 0
+		fail_msg = "That limb is unable to be penetrated."
 	else
 		switch(target_zone)
 			if(BP_HEAD) //If targeting head, check helmets
@@ -1368,12 +1357,23 @@
 		if(C.body_cover_flags & FEET)
 			feet_exposed = 0
 
-	flavor_text = ""
-	for (var/T in flavor_texts)
-		if(flavor_texts[T] && flavor_texts[T] != "")
-			if((T == "general") || (T == "head" && head_exposed) || (T == "face" && face_exposed) || (T == "eyes" && eyes_exposed) || (T == "torso" && torso_exposed) || (T == "arms" && arms_exposed) || (T == "hands" && hands_exposed) || (T == "legs" && legs_exposed) || (T == "feet" && feet_exposed))
-				flavor_text += flavor_texts[T]
-				flavor_text += "\n\n"
+	flavor_text = flavor_texts["general"]
+	if(head_exposed)
+		flavor_text += flavor_texts["head"]+"\n\n"
+	if(face_exposed)
+		flavor_text += flavor_texts["face"]+"\n\n"
+	if(eyes_exposed)
+		flavor_text += flavor_texts["eyes"]+"\n\n"
+	if(torso_exposed)
+		flavor_text += flavor_texts["torso"]+"\n\n"
+	if(arms_exposed)
+		flavor_text += flavor_texts["arms"]+"\n\n"
+	if(hands_exposed)
+		flavor_text += flavor_texts["hands"]+"\n\n"
+	if(legs_exposed)
+		flavor_text += flavor_texts["legs"]+"\n\n"
+	if(feet_exposed)
+		flavor_text += flavor_texts["feet"]+"\n\n"
 	if(!shrink)
 		return flavor_text
 	else
@@ -1416,7 +1416,7 @@
 	if(!isliving(usr) || !usr.canClick())
 		return
 
-	usr.setClickCooldown(20)
+	usr.setClickCooldownLegacy(20)
 
 	if(usr.stat > 0)
 		to_chat(usr, "You are unconcious and cannot do that!")
@@ -1600,12 +1600,12 @@
 
 /mob/living/carbon/human/inducer_scan(obj/item/inducer/I, list/things_to_induce = list(), inducer_flags)
 	. = ..()
-	if(isSynthetic())
+	if(isSynthetic() || fast_is_species_type(src, /datum/species/holosphere)) // for code reasons holospheres are not 'synthetic'
 		things_to_induce += src
 
 /mob/living/carbon/human/inducer_act(obj/item/inducer/I, amount, inducer_flags)
 	. = ..()
-	if(!isSynthetic())
+	if(!isSynthetic() && !fast_is_species_type(src, /datum/species/holosphere))
 		return
 	var/needed = (species.max_nutrition - nutrition)
 	if(needed <= 0)
@@ -1614,23 +1614,8 @@
 	adjust_nutrition(got)
 	return (got * SYNTHETIC_NUTRITION_KJ_PER_UNIT) / GLOB.cellrate / SYNTHETIC_NUTRITION_INDUCER_CHEAT_FACTOR
 
-/mob/living/carbon/human/can_wield_item(obj/item/W)
-	//Since teshari are small by default, they have different logic to allow them to use certain guns despite that.
-	//If any other species need to adapt for this, you can modify this proc with a list instead
-	if(istype(species, /datum/species/teshari))
-		return !W.heavy //return true if it is not heavy, false if it is heavy
-	else return ..()
-
 /mob/living/carbon/human/set_nutrition(amount)
 	nutrition = clamp(amount, 0, species.max_nutrition * 1.5)
-
-/mob/living/carbon/human/get_bullet_impact_effect_type(var/def_zone)
-	var/obj/item/organ/external/E = get_organ(def_zone)
-	if(!E || E.is_stump())
-		return BULLET_IMPACT_NONE
-	if(BP_IS_ROBOTIC(E))
-		return BULLET_IMPACT_METAL
-	return BULLET_IMPACT_MEAT
 
 /mob/living/carbon/human/reduce_cuff_time()
 	if(istype(gloves, /obj/item/clothing/gloves/gauntlets/hardsuit))
@@ -1650,13 +1635,6 @@
 //! Pixel Offsets
 /mob/living/carbon/human/get_centering_pixel_x_offset(dir)
 	. = ..()
-	// uh oh stinky
 	if(!isTaurTail(tail_style) || !(dir & (EAST|WEST)))
 		return
-	// groan
-	. += ((size_multiplier * icon_scale_x) - 1) * ((dir & EAST)? -16 : 16)
-
-/mob/living/carbon/human/ClickOn(var/atom/A)
-	if(ab_handler?.process_click(src, A))
-		return
-	..()
+	. += (size_multiplier * icon_scale_x) * ((dir & EAST)? 8 : -8)

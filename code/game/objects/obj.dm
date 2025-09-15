@@ -4,7 +4,6 @@
 	pass_flags_self = ATOM_PASS_OVERHEAD_THROW
 	animate_movement = SLIDE_STEPS
 	rad_flags = NONE
-	atom_colouration_system = TRUE
 	integrity_enabled = TRUE
 	armor_type = /datum/armor/object/default
 
@@ -115,6 +114,15 @@
 	/// * This var should never be changed from a list to a normal value or vice versa at runtime,
 	///   as we use this to detect which material update proc to call!
 	var/list/material_parts = MATERIAL_DEFAULT_DISABLED
+	/// part constraints - lets us track what we need to be made of
+	/// this is either a lazy key-value list of material keys to floats (representing constraint bitfields)
+	/// or a single float (representing constraint bitfield).
+	/// or null, if we don't care about constraints
+	/// ! This is what determines what constraints are used by the material parts system.
+	/// * Use null if something doesn't use material parts system, or if something uses the abstraction API to implement material parts themselves.
+	/// * This var should never be changed from a list to a normal value or vice versa at runtime, again, like material_parts
+	/// * as it is closely linked to material_parts
+	var/list/material_constraints = null
 	/// material costs - lets us track the costs of what we're made of.
 	/// this is either a lazy key-value list of material keys to cost in cm3,
 	/// or a single number.
@@ -175,7 +183,7 @@
 	/// * gets set_underfloor(is_underfloor = TRUE | FALSE) called on init or turf init
 	/// * we are assumed to not be underfloor when we are first made
 	/// * if you want a var to track this make one yourself; we don't have one for memory concerns.
-	var/hides_underfloor = OBJ_UNDERFLOOR_DISABLED
+	var/hides_underfloor = OBJ_UNDERFLOOR_UNSUPPORTED
 	/// call update icon after update_hiding_underfloor()
 	///
 	/// * update_icon() called regardless of [hides_underfloor_defaulting] if TRUE
@@ -206,8 +214,6 @@
 	var/pry = 0			//Used in attackby() to open doors
 	//! LEGACY: DO NOT USE
 	var/in_use = 0 // If we have a user using us, this will be set on. We will check if the user has stopped using us, and thus stop updating and LAGGING EVERYTHING!
-	// todo: /obj/item level, /obj/projectile level, how to deal with armor?
-	var/armor_penetration = 0
 	var/show_messages
 	var/preserve_item = 0 //whether this object is preserved when its owner goes into cryo-storage, gateway, etc
 	var/can_speak = 0 //For MMIs and admin trickery. If an object has a brainmob in its contents, set this to 1 to allow it to speak.
@@ -235,6 +241,13 @@
 			// preprocess
 			material_costs = SSmaterials.preprocess_kv_keys_to_ids(material_costs)
 			material_costs = typelist(NAMEOF(src, material_costs), material_costs)
+	// cache material constraints if it's not modified
+	if(islist(material_constraints))
+		if(has_typelist(material_constraints))
+			material_constraints = get_typelist(material_constraints)
+		else
+			material_constraints = typelist(NAMEOF(src, material_constraints), material_constraints)
+
 	// initialize material parts system
 	if(material_parts != MATERIAL_DEFAULT_DISABLED)
 		// process material parts only if it wasn't set already
@@ -249,7 +262,7 @@
 		// init material parts only if it wasn't initialized already
 		if(!(obj_flags & OBJ_MATERIAL_INITIALIZED))
 			init_material_parts()
-	if(hides_underfloor != OBJ_UNDERFLOOR_NEVER && isturf(loc))
+	if(hides_underfloor != OBJ_UNDERFLOOR_UNSUPPORTED && isturf(loc))
 		initialize_hiding_underfloor(mapload)
 	if (set_obj_flags)
 		var/flagslist = splittext(set_obj_flags,";")
@@ -262,7 +275,7 @@
 				obj_flags |= string_to_objflag[flag]
 
 /obj/Destroy()
-	for(var/datum/material_trait/trait as anything in material_traits)
+	for(var/datum/prototype/material_trait/trait as anything in material_traits)
 		trait.on_remove(src, material_traits[trait])
 	if(IS_TICKING_MATERIALS(src))
 		STOP_TICKING_MATERIALS(src)
@@ -332,7 +345,8 @@
 
 /obj/attack_ghost(mob/user)
 	nano_ui_interact(user)
-	..()
+	ui_interact(user)
+	. = ..()
 
 /mob/proc/unset_machine()
 	machine = null
@@ -349,7 +363,7 @@
 	if(istype(M) && M.client && M.machine == src)
 		src.attack_self(M)
 
-/obj/proc/hear_talk(mob/M as mob, text, verb, datum/language/speaking)
+/obj/proc/hear_talk(mob/M as mob, text, verb, datum/prototype/language/speaking)
 	if(talking_atom)
 		talking_atom.catchMessage(text, M)
 /*
@@ -360,7 +374,7 @@
 		*/
 	return
 
-/obj/proc/hear_signlang(mob/M as mob, text, verb, datum/language/speaking) // Saycode gets worse every day.
+/obj/proc/hear_signlang(mob/M as mob, text, verb, datum/prototype/language/speaking) // Saycode gets worse every day.
 	return FALSE
 
 /obj/proc/see_emote(mob/M as mob, text, var/emote_type)
@@ -404,21 +418,21 @@
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	return ..()
 
-/obj/on_attack_hand(datum/event_args/actor/clickchain/e_args)
+/obj/on_attack_hand(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
-	if(.)
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
-	if(!isnull(obj_cell_slot?.cell) && obj_cell_slot.remove_yank_offhand && e_args.performer.is_holding_inactive(src) && obj_cell_slot.interaction_active(e_args.performer))
-		e_args.performer.visible_action_feedback(
+	if(!isnull(obj_cell_slot?.cell) && obj_cell_slot.remove_yank_offhand && clickchain.performer.is_holding_inactive(src) && obj_cell_slot.interaction_active(clickchain.performer))
+		clickchain.performer.visible_action_feedback(
 			target = src,
 			hard_range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
-			visible_hard = SPAN_NOTICE("[e_args.performer] removes the cell from [src]."),
+			visible_hard = SPAN_NOTICE("[clickchain.performer] removes the cell from [src]."),
 			audible_hard = SPAN_NOTICE("You hear fasteners falling out and something being removed."),
 			visible_self = SPAN_NOTICE("You remove the cell from [src]."),
 		)
-		log_construction(e_args, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
-		e_args.performer.put_in_hands_or_drop(obj_cell_slot.remove_cell(e_args.performer))
-		return TRUE
+		log_construction(clickchain, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
+		clickchain.performer.put_in_hands_or_drop(obj_cell_slot.remove_cell(clickchain.performer))
+		return CLICKCHAIN_DID_SOMETHING
 
 //* Cells / Inducers *//
 
@@ -438,6 +452,12 @@
 		things_to_induce += obj_cell_slot.cell
 
 //* Climbing *//
+
+/obj/alt_clicked_on(mob/user, location, control, list/params)
+	if(obj_storage?.allow_open_via_alt_click && user.Reachability(src))
+		obj_storage.auto_handle_interacted_open(new /datum/event_args/actor(user))
+		return TRUE
+	return ..()
 
 /obj/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
 	if(drag_drop_climb_interaction(user, dropping))
@@ -620,8 +640,8 @@
 			color = colors[1]
 		if(COLORATION_MODE_RG_MATRIX)
 			ASSERT(length(colors) == 2)
-			var/list/red_decoded = ReadRGB(colors[1])
-			var/list/green_decoded = ReadRGB(colors[2])
+			var/list/red_decoded = rgb2num(colors[1])
+			var/list/green_decoded = rgb2num(colors[2])
 			color = list(
 				red_decoded[1] / 255, red_decoded[2] / 255, red_decoded[3] / 255, 0,
 				green_decoded[1] / 255, green_decoded[2] / 255, green_decoded[3] / 255, 0,
@@ -630,8 +650,8 @@
 			)
 		if(COLORATION_MODE_GB_MATRIX)
 			ASSERT(length(colors) == 2)
-			var/list/green_decoded = ReadRGB(colors[1])
-			var/list/blue_decoded = ReadRGB(colors[2])
+			var/list/green_decoded = rgb2num(colors[1])
+			var/list/blue_decoded = rgb2num(colors[2])
 			color = list(
 				0, 0, 0, 0,
 				green_decoded[1] / 255, green_decoded[2] / 255, green_decoded[3] / 255, 0,
@@ -640,8 +660,8 @@
 			)
 		if(COLORATION_MODE_RB_MATRIX)
 			ASSERT(length(colors) == 2)
-			var/list/red_decoded = ReadRGB(colors[1])
-			var/list/blue_decoded = ReadRGB(colors[2])
+			var/list/red_decoded = rgb2num(colors[1])
+			var/list/blue_decoded = rgb2num(colors[2])
 			color = list(
 				red_decoded[1] / 255, red_decoded[2] / 255, red_decoded[3] / 255, 0,
 				0, 0, 0, 0,
@@ -650,9 +670,9 @@
 			)
 		if(COLORATION_MODE_RGB_MATRIX)
 			ASSERT(length(colors) == 3)
-			var/list/red_decoded = ReadRGB(colors[1])
-			var/list/green_decoded = ReadRGB(colors[2])
-			var/list/blue_decoded = ReadRGB(colors[3])
+			var/list/red_decoded = rgb2num(colors[1])
+			var/list/green_decoded = rgb2num(colors[2])
+			var/list/blue_decoded = rgb2num(colors[3])
 			color = list(
 				red_decoded[1] / 255, red_decoded[2] / 255, red_decoded[3] / 255, 0,
 				green_decoded[1] / 255, green_decoded[2] / 255, green_decoded[3] / 255, 0,
@@ -698,18 +718,18 @@
 
 //* Context *//
 
-/obj/context_query(datum/event_args/actor/e_args)
+/obj/context_menu_query(datum/event_args/actor/e_args)
 	. = ..()
 	if(!isnull(obj_cell_slot?.cell) && obj_cell_slot.remove_yank_context && obj_cell_slot.interaction_active(e_args.performer))
 		var/image/rendered = image(obj_cell_slot.cell)
-		.["obj_cell_slot"] = atom_context_tuple("remove cell", rendered, mobility = MOBILITY_CAN_USE, defaultable = TRUE)
+		.["obj_cell_slot"] = create_context_menu_tuple("remove cell", rendered, mobility = MOBILITY_CAN_USE, defaultable = TRUE)
 	if(obj_storage?.allow_open_via_context_click)
 		var/image/rendered = image(src)
-		.["obj_storage"] = atom_context_tuple("open storage", rendered, mobility = MOBILITY_CAN_STORAGE, defaultable = TRUE)
+		.["obj_storage"] = create_context_menu_tuple("open storage", rendered, mobility = MOBILITY_CAN_STORAGE, defaultable = TRUE)
 	if(obj_rotation_flags & OBJ_ROTATION_ENABLED)
 		if(obj_rotation_flags & OBJ_ROTATION_BIDIRECTIONAL)
 			var/image/rendered = image(src) // todo: sprite
-			.["rotate_cw"] = atom_context_tuple(
+			.["rotate_cw"] = create_context_menu_tuple(
 				"Rotate Clockwise",
 				rendered,
 				1,
@@ -717,7 +737,7 @@
 				!!(obj_rotation_flags & OBJ_ROTATION_DEFAULTING),
 			)
 			rendered = image(src) // todo: sprite
-			.["rotate_ccw"] = atom_context_tuple(
+			.["rotate_ccw"] = create_context_menu_tuple(
 				"Rotate Counterclockwise",
 				rendered,
 				1,
@@ -726,7 +746,7 @@
 			)
 		else
 			var/image/rendered = image(src) // todo: sprite
-			.["rotate_[obj_rotation_flags & OBJ_ROTATION_CCW? "ccw" : "cw"]"] = atom_context_tuple(
+			.["rotate_[obj_rotation_flags & OBJ_ROTATION_CCW? "ccw" : "cw"]"] = create_context_menu_tuple(
 				"Rotate [obj_rotation_flags & OBJ_ROTATION_CCW? "Counterclockwise" : "Clockwise"]",
 				rendered,
 				1,
@@ -734,7 +754,7 @@
 				!!(obj_rotation_flags & OBJ_ROTATION_DEFAULTING),
 			)
 
-/obj/context_act(datum/event_args/actor/e_args, key)
+/obj/context_menu_act(datum/event_args/actor/e_args, key)
 	switch(key)
 		if("obj_cell_slot")
 			var/reachability = e_args.performer.Reachability(src)
@@ -845,7 +865,7 @@
 		. += examine_integrity(user)
 	var/list/parts = get_material_parts()
 	for(var/key in parts)
-		var/datum/material/mat = parts[key]
+		var/datum/prototype/material/mat = parts[key]
 		if(isnull(mat)) // 'none' option
 			continue
 		. += "Its [key] is made out of [mat.display_name]"
@@ -1059,7 +1079,7 @@
 		if(OBJ_UNDERFLOOR_IF_CREATED_UNCOVERED, OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP)
 			var/turf/where_we_are = loc
 			if(istype(where_we_are) && where_we_are.hides_underfloor_objects())
-				new_value = OBJ_UNDERFLOOR_ALWAYS
+				new_value = OBJ_UNDERFLOOR_INACTIVE
 			else
 				new_value = OBJ_UNDERFLOOR_NEVER
 	hides_underfloor = new_value
@@ -1068,7 +1088,7 @@
 /**
  * called to inform us we should / shouldn't be underfloor
  *
- * * this must be idempotent. we can get called at will by reconsider_hiding_underfloor() as we do not track if we are currently underfloor.
+ * * this must be idempotent. we can get called at will by reconsider_hiding_underfloor().
  * * we are assumed to not be underfloor when we are first made
  * * that means this is called during Initialize() if and only if we need to be hiding underfloor
  */
@@ -1077,20 +1097,29 @@
 		invisibility = new_value? (hides_underfloor_invisibility_abstract? INVISIBILITY_ABSTRACT : INVISIBILITY_UNDERFLOOR) : 0
 	if(hides_underfloor_update_icon)
 		update_icon()
+	if(hides_underfloor != OBJ_UNDERFLOOR_NEVER)
+		hides_underfloor = new_value ? OBJ_UNDERFLOOR_ACTIVE : OBJ_UNDERFLOOR_INACTIVE
 	return TRUE
 
 /**
- * **guesses** if we're hidden underfloor
- * this is not the actual state!
+ * Checks if we will hide underfloor if covered
+ *
+ * * Only valid after Initialize().
  */
-/obj/proc/is_probably_hidden_underfloor()
+/obj/proc/will_hide_underfloor()
 	switch(hides_underfloor)
-		if(OBJ_UNDERFLOOR_ALWAYS)
-			var/turf/where_we_are = loc
-			return where_we_are.hides_underfloor_objects()
-		if(OBJ_UNDERFLOOR_NEVER)
+		if(OBJ_UNDERFLOOR_ACTIVE, OBJ_UNDERFLOOR_INACTIVE)
+			return TRUE
+		if(OBJ_UNDERFLOOR_UNSUPPORTED, OBJ_UNDERFLOOR_NEVER)
 			return FALSE
-	return FALSE
+		else
+			CRASH("Proc will_hide_underfloor() called witohut a valid underfloor value. Are you calling it too early in init?")
+
+/**
+ * Checks if we're hiding underfloor
+ */
+/obj/proc/is_hidden_underfloor()
+	return hides_underfloor == OBJ_UNDERFLOOR_ACTIVE
 
 /**
  * called at init
@@ -1105,15 +1134,18 @@
 			var/hide_anyways = (hides_underfloor == OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP) && mapload
 			var/we_are_hidden = where_we_are?.hides_underfloor_objects()
 			if(istype(where_we_are) && (hide_anyways || !we_are_hidden))
-				hides_underfloor = OBJ_UNDERFLOOR_ALWAYS
 				if(!mapload && we_are_hidden)
 					update_hiding_underfloor(TRUE)
+				else
+					hides_underfloor = OBJ_UNDERFLOOR_INACTIVE
 			else
 				hides_underfloor = OBJ_UNDERFLOOR_NEVER
-		if(OBJ_UNDERFLOOR_ALWAYS)
+		if(OBJ_UNDERFLOOR_ACTIVE, OBJ_UNDERFLOOR_INACTIVE)
 			var/turf/where_we_are = loc
 			if(!mapload && istype(where_we_are) && where_we_are.hides_underfloor_objects())
 				update_hiding_underfloor(TRUE)
+			else
+				hides_underfloor = OBJ_UNDERFLOOR_INACTIVE
 
 /**
  * called to re-call update_hiding_underfloor
@@ -1122,13 +1154,13 @@
 	var/turf/where_we_are = loc
 	var/turf_will_cover = istype(where_we_are) && where_we_are.hides_underfloor_objects()
 	switch(hides_underfloor)
-		if(OBJ_UNDERFLOOR_ALWAYS)
+		if(OBJ_UNDERFLOOR_INACTIVE, OBJ_UNDERFLOOR_ACTIVE)
 			update_hiding_underfloor(turf_will_cover)
 		if(OBJ_UNDERFLOOR_NEVER)
 			update_hiding_underfloor(FALSE)
 		else
 			// we're way beyond initialize, so..
-			hides_underfloor = OBJ_UNDERFLOOR_DISABLED
+			hides_underfloor = OBJ_UNDERFLOOR_UNSUPPORTED
 
 //* VV hooks *//
 

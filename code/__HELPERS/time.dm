@@ -80,7 +80,7 @@ GLOBAL_VAR_INIT(roundstart_hour, pick(2,7,12,17))
  * Returns 1 if it is the selected month and day.
  */
 /proc/isDay(var/month, var/day)
-	if(isnum(month) && isnum(day))\
+	if(isnum(month) && isnum(day))
 		/// Get the current month.
 		var/MM = text2num(time2text(world.timeofday, "MM"))
 		/// Get the current day.
@@ -143,7 +143,7 @@ GLOBAL_VAR_INIT(roundstart_hour, pick(2,7,12,17))
  * Returns a text value of that number in hours, minutes, or seconds.
  */
 /proc/DisplayTimeText(time_value, round_seconds_to = 0.1)
-	var/second = round(time_value * 0.1, round_seconds_to)
+	var/second = FLOOR(time_value * 0.1, round_seconds_to)
 	if(!second)
 		return "right now"
 	if(second < 60)

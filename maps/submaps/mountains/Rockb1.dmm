@@ -25,7 +25,7 @@
 	icon_opened = "cabinet_open";
 	icon_state = "cabinet_closed"
 	},
-/obj/item/gun/ballistic/pistol,
+/obj/item/gun/projectile/ballistic/pistol,
 /obj/item/ammo_magazine/a9mm/compact,
 /turf/simulated/floor/lino,
 /area/submap/Rockb1)

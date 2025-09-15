@@ -14,7 +14,7 @@
 
 	var/mob/living/silicon/ai/carded_ai
 
-/obj/item/aicard/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/aicard/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(!istype(target, /mob/living/silicon/decoy))
 		return ..()
 	target.death()
@@ -90,6 +90,7 @@
 
 /obj/item/aicard/update_icon()
 	cut_overlays()
+	. = ..()
 	if(carded_ai)
 		if (!carded_ai.control_disabled)
 			add_overlay("aicard-on")
@@ -174,6 +175,7 @@
 
 /obj/item/aicard/aitater/update_icon()
 	cut_overlays()
+	. = ..()
 	if(carded_ai)
 		if (!carded_ai.control_disabled)
 			add_overlay("aitater-on")
@@ -191,6 +193,7 @@
 
 /obj/item/aicard/aispook/update_icon()
 	cut_overlays()
+	. = ..()
 	if(carded_ai)
 		if (!carded_ai.control_disabled)
 			add_overlay("aispook-on")

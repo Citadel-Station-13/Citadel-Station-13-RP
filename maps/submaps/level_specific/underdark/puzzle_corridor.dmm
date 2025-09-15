@@ -3,7 +3,7 @@
 /turf/simulated/mineral/floor/ignore_cavegen/virgo3b,
 /area/mine/explored/underdark)
 "b" = (
-/turf/unsimulated/mineral/virgo3b,
+/turf/unsimulated/wall/mineral,
 /area/mine/explored/underdark)
 "c" = (
 /obj/tether_away_spawner/underdark_normal,

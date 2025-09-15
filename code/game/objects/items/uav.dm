@@ -304,7 +304,7 @@
 		var/rendered = "<i><span class='game say'>UAV received: <span class='name'>[name_used]</span> [message]</span></i>"
 		master.show_message(rendered, 2)
 
-/obj/item/radio/hear_talk(mob/M as mob, msg, var/verb = "says", var/datum/language/speaking = null)
+/obj/item/radio/hear_talk(mob/M as mob, msg, var/verb = "says", var/datum/prototype/language/speaking = null)
 	if (broadcasting)
 		if(get_dist(src, M) <= canhear_range)
 			talk_into(M, msg,null,verb,speaking)

@@ -4,7 +4,7 @@
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored)
 "aS" = (
-/turf/simulated/mineral/virgo3b,
+/turf/simulated/mineral,
 /area/mine/explored)
 "bh" = (
 /obj/structure/cable{
@@ -26,7 +26,7 @@
 /turf/simulated/wall/r_wall/prepainted/cargo,
 /area/outpost/mining_main/secondary_gear_storage)
 "bC" = (
-/obj/spawner/window/low_wall/borosillicate/full,
+/obj/spawner/window/low_wall/borosillicate,
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
@@ -323,7 +323,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/spawner/window/low_wall/borosillicate/full,
+/obj/spawner/window/low_wall/borosillicate,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/break_room)
 "if" = (
@@ -547,7 +547,7 @@
 "ns" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/machinery/door/firedoor/glass,
-/obj/spawner/window/low_wall/borosillicate/full,
+/obj/spawner/window/low_wall/borosillicate,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/airlock)
 "nR" = (
@@ -941,7 +941,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/borosillicate/full,
+/obj/spawner/window/low_wall/borosillicate,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/maintenance)
 "xE" = (
@@ -1192,7 +1192,7 @@
 /area/outpost/mining_main/drill_equipment)
 "DF" = (
 /obj/machinery/door/firedoor/glass,
-/obj/spawner/window/low_wall/borosillicate/full,
+/obj/spawner/window/low_wall/borosillicate,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/break_room)
 "DO" = (
@@ -1288,7 +1288,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/maintenance)
 "Hq" = (
-/turf/simulated/mineral/virgo3b,
+/turf/simulated/mineral,
 /area/mine/unexplored)
 "Hs" = (
 /obj/structure/reagent_dispensers/water_cooler/full,
@@ -1443,7 +1443,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/borosillicate/full,
+/obj/spawner/window/low_wall/borosillicate,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/maintenance)
 "KZ" = (
@@ -1475,12 +1475,12 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
 	},
-/obj/spawner/window/low_wall/borosillicate/full,
+/obj/spawner/window/low_wall/borosillicate,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/maintenance)
 "Mr" = (
 /obj/machinery/door/firedoor/glass,
-/obj/spawner/window/low_wall/borosillicate/full,
+/obj/spawner/window/low_wall/borosillicate,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/maintenance)
 "MT" = (
@@ -1594,7 +1594,7 @@
 /turf/simulated/wall/r_wall,
 /area/mine/explored)
 "Se" = (
-/turf/unsimulated/mineral/virgo3b,
+/turf/unsimulated/wall/mineral,
 /area/mine/explored)
 "Sm" = (
 /obj/structure/cable/green{
@@ -1813,7 +1813,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/break_room)
 "VY" = (
-/turf/unsimulated/wall/planetary/virgo3b,
+/turf/unsimulated/wall/planetary/facility_wall,
 /area/mine/explored)
 "Wb" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
@@ -1835,7 +1835,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/borosillicate/full,
+/obj/spawner/window/low_wall/borosillicate,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/break_room)
 "Wz" = (
@@ -1935,7 +1935,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/borosillicate/full,
+/obj/spawner/window/low_wall/borosillicate,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/secondary_gear_storage)
 "ZO" = (

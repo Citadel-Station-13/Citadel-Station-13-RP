@@ -12,7 +12,7 @@
 	throw_range = 10
 	materials_base = list(MAT_STEEL = 4000, MAT_GLASS = 6000)
 	origin_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5, TECH_MATERIAL = 5, TECH_ENGINEERING = 5, TECH_DATA = 5)
-	var/datum/reagents/supply
+	var/datum/reagent_holder/supply
 	var/efficiency = 15 //How many units reagent per 1 unit nanopaste
 
 
@@ -32,6 +32,7 @@
 			return
 
 /obj/item/nifrepairer/update_icon()
+	. = ..()
 	if(supply.total_volume)
 		icon_state = "[initial(icon_state)]2"
 	else

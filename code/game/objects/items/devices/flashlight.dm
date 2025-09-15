@@ -54,7 +54,7 @@
 		if(cell.use(power_usage) != power_usage) //We weren't able to use our full power_usage amount!
 			visible_message(SPAN_WARNING("\The [src] flickers before going dull."))
 			set_light(FALSE)
-			playsound(src.loc, /datum/soundbyte/grouped/sparks, 10, 1, -3) //Small cue that your light went dull in your pocket.
+			playsound(src.loc, /datum/soundbyte/sparks, 10, 1, -3) //Small cue that your light went dull in your pocket.
 			on = FALSE
 			update_appearance()
 			return PROCESS_KILL
@@ -140,7 +140,7 @@
 		O.emp_act(severity)
 	..()
 
-/obj/item/flashlight/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/flashlight/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	if(on && user.zone_sel.selecting == O_EYES && isliving(target))
@@ -150,10 +150,9 @@
 
 		var/mob/living/carbon/human/H = L	//mob has protective eyewear
 		if(istype(H))
-			for(var/obj/item/clothing/C in list(H.head,H.wear_mask,H.glasses))
-				if(istype(C) && (C.body_cover_flags & EYES))
-					to_chat(user, SPAN_WARNING("You're going to need to remove [C.name] first."))
-					return
+			for(var/obj/item/C in H.inventory.query_coverage(EYES))
+				to_chat(user, SPAN_WARNING("You're going to need to remove [C.name] first."))
+				return
 
 			var/obj/item/organ/vision
 			if(H.species.vision_organ)
@@ -176,16 +175,23 @@
 				if(L.getBrainLoss() > 15)
 					to_chat(user, SPAN_NOTICE("There's visible lag between left and right pupils' reactions."))
 
-				var/list/pinpoint = list("oxycodone"=1,"tramadol"=5)
-				var/list/dilating = list("space_drugs"=5,"mindbreaker"=1)
-				if(L.reagents.has_any_reagent(pinpoint) || H.ingested.has_any_reagent(pinpoint))
+				// todo: reagent effects.
+				var/static/list/reagents_that_cause_constriction = list(
+					/datum/reagent/tramadol,
+					/datum/reagent/oxycodone,
+				)
+				var/static/list/reagents_that_cause_dilation = list(
+					/datum/reagent/space_drugs,
+					/datum/reagent/mindbreaker,
+				)
+				if(L.reagents.has_any(reagents_that_cause_constriction) || H.ingested.has_any(reagents_that_cause_constriction))
 					to_chat(user, SPAN_NOTICE("\The [L]'s pupils are already pinpoint and cannot narrow any more."))
-				else if(L.reagents.has_any_reagent(dilating) || H.ingested.has_any_reagent(dilating))
+				else if(L.reagents.has_any(reagents_that_cause_dilation) || H.ingested.has_any(reagents_that_cause_dilation))
 					to_chat(user, SPAN_NOTICE("\The [L]'s pupils narrow slightly, but are still very dilated."))
 				else
 					to_chat(user, SPAN_NOTICE("\The [L]'s pupils narrow."))
 
-			user.setClickCooldown(user.get_attack_speed(src)) //can be used offensively
+			user.setClickCooldownLegacy(user.get_attack_speed_legacy(src)) //can be used offensively
 			L.flash_eyes()
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
@@ -269,6 +275,33 @@
 	materials_base = list(MAT_STEEL = 200, MAT_GLASS = 50)
 	light_color = LIGHT_COLOR_FLUORESCENT_FLASHLIGHT
 	light_wedge = LIGHT_NARROW
+
+	/// the gun attachment used for testing if we can attach
+	var/static/obj/item/gun_attachment/flashlight/maglight/test_attachment
+
+/obj/item/flashlight/maglight/proc/get_test_attachment() as /obj/item/gun_attachment/flashlight/maglight
+	if(!test_attachment)
+		test_attachment = new
+	return test_attachment
+
+/obj/item/flashlight/maglight/using_as_item(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	. = ..()
+	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
+		return
+	if(istype(target, /obj/item/gun))
+		var/obj/item/gun/gun_target = target
+		var/obj/item/gun_attachment/flashlight/maglight/test_attach = get_test_attachment()
+		if(gun_target.can_install_attachment(test_attach, clickchain))
+			if(!clickchain.performer.temporarily_remove_from_inventory(src))
+				clickchain.chat_feedback(SPAN_WARNING("[src] is stuck to your hands!"), src)
+				return CLICKCHAIN_DO_NOT_PROPAGATE
+			var/obj/item/gun_attachment/flashlight/maglight/attaching = new
+			if(!gun_target.install_attachment(attaching, clickchain))
+				CRASH("install failed after check")
+			else
+				attaching.our_maglight = src
+				forceMove(attaching)
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/flashlight/drone
 	name = "low-power flashlight"
@@ -357,6 +390,7 @@
 	on = FALSE
 	src.damage_force = initial(src.damage_force)
 	src.damage_type = initial(src.damage_type)
+	set_light(FALSE)
 	update_appearance()
 
 /obj/item/flashlight/flare/attack_self(mob/user, datum/event_args/actor/actor)
@@ -383,6 +417,9 @@
 	damage_type = DAMAGE_TYPE_BURN
 	START_PROCESSING(SSobj, src)
 	return TRUE
+
+/obj/item/flashlight/flare/survival
+	fuel = 15 MINUTES
 
 //Glowsticks
 

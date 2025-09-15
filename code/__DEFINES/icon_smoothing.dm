@@ -24,9 +24,7 @@ DEFINE_BITFIELD(smoothing_flags, list(
 #define IS_SMOOTH(A) (A.smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK|SMOOTH_CUSTOM))
 
 #define QUEUE_SMOOTH(thing_to_queue) if(IS_SMOOTH(thing_to_queue)) {SSicon_smooth.add_to_queue(thing_to_queue)}
-
 #define QUEUE_SMOOTH_NEIGHBORS(thing_to_queue) for(var/neighbor in orange(1, thing_to_queue)) {var/atom/atom_neighbor = neighbor; QUEUE_SMOOTH(atom_neighbor)}
-
 
 //! Smoothing Internals
 
@@ -82,7 +80,7 @@ DEFINE_BITFIELD(smoothing_junction, list(
 
 #define SMOOTH_GROUP_TURF_OPEN                    S_TURF(0)  ///? /turf/simulated/floor
 #define SMOOTH_GROUP_TURF_CHASM                   S_TURF(1)  // /turf/open/chasm, /turf/open/floor/fakepit
-#define SMOOTH_GROUP_FLOOR_LAVA                   S_TURF(2)  ///? /turf/simulated/floor/outdoors/lava
+#define SMOOTH_GROUP_FLOOR_LAVA                   S_TURF(2)  ///? /turf/simulated/lava
 #define SMOOTH_GROUP_FLOOR_TRANSPARENT_GLASS      S_TURF(3)  // /turf/open/floor/glass
 
 #define SMOOTH_GROUP_OPEN_FLOOR                   S_TURF(4)  ///? /turf/simulated/floor
@@ -110,7 +108,7 @@ DEFINE_BITFIELD(smoothing_junction, list(
 #define SMOOTH_GROUP_CLOSED_TURFS                 S_TURF(23) ///? /turf/simulated/wall
 #define SMOOTH_GROUP_SURVIVAL_TITANIUM_WALLS      S_TURF(24) // /turf/closed/wall/mineral/titanium/survival
 #define SMOOTH_GROUP_HOTEL_WALLS                  S_TURF(25) // /turf/closed/indestructible/hotelwall
-#define SMOOTH_GROUP_MINERAL_WALLS                S_TURF(26) ///? /turf/simulated/mineral, /turf/unsimulated/mineral
+#define SMOOTH_GROUP_MINERAL_WALLS                S_TURF(26) ///? /turf/simulated/mineral, /turf/unsimulated/wall/mineral
 #define SMOOTH_GROUP_BOSS_WALLS                   S_TURF(27) // /turf/closed/indestructible/riveted/boss
 
 #define MAX_S_TURF 27 //!Always match this value with the one above it.

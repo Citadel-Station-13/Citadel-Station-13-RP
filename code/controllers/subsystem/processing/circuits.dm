@@ -23,7 +23,7 @@ PROCESSING_SUBSYSTEM_DEF(circuit)
 /datum/controller/subsystem/processing/circuit/Initialize(timeofday)
 	SScircuit.cipherkey = uppertext(random_string(2000+rand(0,10), GLOB.alphabet))
 	circuits_init()
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/processing/circuit/proc/circuits_init()
 	//Cached lists for free performance

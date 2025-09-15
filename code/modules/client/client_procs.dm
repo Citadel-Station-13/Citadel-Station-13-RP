@@ -171,15 +171,17 @@
 	C.New()
 
 /client/New(TopicData)
-	//* pre-connect-ish
-	// set appadmin for profiling or it might not work (?) (this is old code we just assume it's here for a reason)
+	//* pre-connect-ish *//
+
+	// Byond only populates whether or not you can profile at connect. You have to give someone this
+	// before their client loads/whatever. This cannot be behind a spawn(). We will remove it from non-admins later.
 	world.SetConfig("APP/admin", ckey, "role=admin")
-	// block client.Topic() calls from connect
+	// Block client.Topic() calls from connect.
 	TopicData = null
-	// kick out invalid connections
+	// Kick invalid connections.
 	if(connection != "seeker" && connection != "web")
 		return null
-	// kick out guests
+	//! legacy: kick out guests !//
 	if(!config_legacy.guests_allowed && is_guest() && !is_localhost())
 		security_kick(
 			message = "This server doesn't allow guest accounts to play. Please go to http://www.byond.com/ and register for a key.",
@@ -187,9 +189,10 @@
 			immediate = TRUE,
 		)
 		return null
-	// pre-connect greeting
-	to_chat(src, "<font color='red'>If the title screen is black, resources are still downloading. Please be patient until the title screen appears.</font>")
-	// register in globals
+	// Queue pre-connect greeting
+	spawn(0.5 SECONDS)
+		to_chat(src, "<font color='red'>If the title screen is black, resources are still downloading. Please be patient until the title screen appears.</font>")
+	// Register in globals.
 	GLOB.clients += src
 	GLOB.directory[ckey] = src
 
@@ -203,43 +206,35 @@
 	// log to player lookup
 	update_lookup_in_db()
 
-	//* Resolve storage datums
-	// resolve persistent data
+	//* Resolve storage datums *//
+
 	persistent = resolve_client_data(ckey, key)
-	//* Resolve database data
 	player = resolve_player_data(ckey, key)
 	player.log_connect()
-	//* Resolve preferences
 	preferences = SSpreferences.resolve_game_preferences(key, ckey)
 	//? WARNING: SHITCODE ALERT ?//
-	// We allow a client/New sleep because preferences is currently required for
-	// everything else to work
-	// todo: maybe don't do this?
-	if(!UNLINT(preferences.block_on_initialized(5 SECONDS)))
-		security_kick("A fatal error occurred while attempting to load: preferences not initialized. Please notify a coder.")
-		stack_trace("we just kicked a client due to prefs not loading; something is horribly wrong!")
-		return
 	// we wait until it inits to do this
 	// todo: is there a better way this is kind of awful
 	preferences.active = src
 	preferences.on_reconnect()
 	//? END ?//
 
-	//* Setup user interface
+	//* Create interface UI *//
+
+	if(byond_version >= 516)
+		winset(src, null, list("browser-options" = "find,refresh,byondstorage"))
+
 	// todo: move top level menu here, for now it has to be under prefs.
-	// Instantiate statpanel
-	spawn(1)
-		statpanel_boot()
-	// Instantiate tgui panel
-	tgui_panel = new(src, "browseroutput")
+	tgui_stat = new(src, SKIN_BROWSER_ID_STAT)
+	tgui_panel = new(src, SKIN_BROWSER_ID_CHAT)
 	// Instantiate cutscene system
 	spawn(1)
 		init_cutscene_system()
-	// instantiate tooltips
 	tooltips = new(src)
-	// start action drawer
+
+	//* Setup on-map HUDs *//
 	action_drawer = new(src)
-	// make action holder
+	actor_huds = new(src)
 	action_holder = new /datum/action_holder/client_actor(src)
 	action_drawer.register_holder(action_holder)
 
@@ -298,48 +293,36 @@
 	//* therefore, DO NOT PUT ANYTHING YOU WILL RELY ON LATER IN THIS PROC IN LOGIN!
 	. = ..()	//calls mob.Login()
 
-	//* Connection Security
+	//* Connection Security *//
 	// start caching it immediately
 	INVOKE_ASYNC(SSipintel, TYPE_PROC_REF(/datum/controller/subsystem/ipintel, vpn_connection_check), address, ckey)
 	// run onboarding gauntlet
 	INVOKE_ASYNC(src, PROC_REF(onboarding))
 
-	//* Initialize Input
+	//* Initialize Input *//
 	if(SSinput.initialized)
 		set_macros()
 		update_movement_keys()
 
-	//* Initialize UI
+	//* Initialize UI *//
 	// initialize statbrowser
-	// (we don't, the JS does it for us. by signalling statpanel_ready().)
+	tgui_stat.initialize()
 	// Initialize tgui panel
-	INVOKE_ASYNC(tgui_panel, TYPE_PROC_REF(/datum/tgui_panel, initialize))
+	tgui_panel.initialize()
 	// initialize cutscene browser
-	// (we don't, the JS does it for us.)
-
-	//if(alert_mob_dupe_login)
-	//	spawn()
-	//		alert(mob, "You have logged in already with another key this round, please log out of this one NOW or risk being banned!")
+	// - (we don't, the JS does it for us.) -
+	// Initialize tooltips
+	tooltips.initialize()
 
 	connection_time = world.time
 	connection_realtime = world.realtime
 	connection_timeofday = world.timeofday
-	winset(src, null, "command=\".configure graphics-hwmode on\"")
-	/*
-	if (connection == "web" && !connecting_admin)
-		if (!CONFIG_GET(flag/allow_webclient))
-			to_chat(src, "Web client is disabled")
-			qdel(src)
-			return 0
-		if (CONFIG_GET(flag/webclient_only_byond_members) && !IsByondMember())
-			to_chat(src, "Sorry, but the web client is restricted to byond members only.")
-			qdel(src)
-			return 0
 
-	if( (world.address == address || !address) && !GLOB.host )
-		GLOB.host = key
-		world.update_status()
-	*/
+	//* Misc *//
+	// force hardware graphics on
+	spawn(5)
+		winset(src, null, "command=\".configure graphics-hwmode on\"")
+
 	if(holder)
 		add_admin_verbs()
 		admin_memo_show()
@@ -352,7 +335,10 @@
 		to_chat(src, "<span class='alert'>[custom_event_msg]</span>")
 		to_chat(src, "<br>")
 
-	send_resources()
+	// Preload resources.
+	// todo: re-evaluate this
+	spawn(0)
+		send_resources()
 
 	//? Startup rendering
 	pre_init_viewport()
@@ -366,10 +352,13 @@
 	// 		changelog_async()
 
 	// run post-init 'lint'-like checks
-	on_new_hook_stability_checks()
+	// this is on a spawn() to force a separate call chain
+	spawn(0)
+		invoke_hooks__client_stability_check(src)
 
 	// todo: fuck you voreprefs
-	prefs_vr = new /datum/vore_preferences(src)
+	spawn(0)
+		prefs_vr = new /datum/vore_preferences(src)
 
 	if(config_legacy.paranoia_logging)
 		if(isnum(player.player_age) && player.player_age == -1)
@@ -377,27 +366,18 @@
 		if(isnum(persistent.account_age) && persistent.account_age <= 2)
 			log_and_message_admins("PARANOIA: [key_name(src)] has a very new BYOND account ([persistent.account_age] days).")
 
-	//? We are done
+	//* Finalize *//
 	// set initialized if we're not queued for a security kick
 	if(!queued_security_kick || panic_bunker_pending)
 		initialized = TRUE
 	else
 		addtimer(CALLBACK(src, PROC_REF(deferred_initialization_block)), 0)
 	// show any migration errors
+	// todo: this shouldn't be here
 	prefs.auto_flush_errors()
 	// update our hub label
-	SSserver_maint.UpdateHubStatus()
-
-/**
- * Called in the middle of new, after everything critical
- * is loaded / initialized.
- *
- * This proc should all be async; it is where you hook to ensure things are properly
- * loaded.
- */
-/client/proc/on_new_hook_stability_checks()
-	SHOULD_CALL_PARENT(TRUE)
-	SHOULD_NOT_SLEEP(TRUE)
+	// todo: this should be a global signal that the subsystem hooks
+	SSserver_maint.queue_hub_update()
 
 	//////////////
 	//DISCONNECT//
@@ -441,34 +421,28 @@
 		holder.owner = null
 		GLOB.admins -= src //delete them on the managed one too
 
-	active_mousedown_item = null
-
-	//* cleanup rendering
-	// clear perspective
+	//* Cleanup rendering *//
 	if(using_perspective)
 		set_perspective(null)
-	// clear HUDs
 	clear_atom_hud_providers()
 
-	//* cleanup UI
-	// cleanup statbrowser
-	statpanel_dispose()
-	// cleanup cutscene system
+	//* Cleanup interface UI *//
+	QDEL_NULL(tgui_stat)
 	cleanup_cutscene_system()
-	// cleanup tgui panel
 	QDEL_NULL(tgui_panel)
-	// cleanup tooltips
 	QDEL_NULL(tooltips)
-	// cleanup actions
+
+	//* Cleanup on-map HUDs *//
+	QDEL_NULL(actor_huds)
 	QDEL_NULL(action_holder)
 	QDEL_NULL(action_drawer)
 
-	//* logout
+	//* logout *//
 	mob?.pre_logout(src)
 
-	//* cleanup from SSinput
+	//* cleanup from SSinput *//
 	SSinput.currentrun?.Remove(src)
-	//* cleanup from SSping
+	//* cleanup from SSping *//
 	SSping.currentrun?.Remove(src)
 
 	. = ..() //Even though we're going to be hard deleted there are still some things that want to know the destroy is happening
@@ -482,7 +456,7 @@
 	var/sql_system_ckey = sanitizeSQL(system_ckey)
 	var/sql_ckey = sanitizeSQL(ckey)
 	//check to see if we noted them in the last day.
-	var/datum/DBQuery/query_get_notes = SSdbcore.NewQuery("SELECT id FROM [format_table_name("messages")] WHERE type = 'note' AND targetckey = '[sql_ckey]' AND adminckey = '[sql_system_ckey]' AND timestamp + INTERVAL 1 DAY < NOW() AND deleted = 0 AND expire_timestamp > NOW()")
+	var/datum/DBQuery/query_get_notes = SSdbcore.NewQuery("SELECT id FROM [DB_PREFIX_TABLE_NAME("messages")] WHERE type = 'note' AND targetckey = '[sql_ckey]' AND adminckey = '[sql_system_ckey]' AND timestamp + INTERVAL 1 DAY < NOW() AND deleted = 0 AND expire_timestamp > NOW()")
 	if(!query_get_notes.Execute())
 		qdel(query_get_notes)
 		return
@@ -491,7 +465,7 @@
 		return
 	qdel(query_get_notes)
 	//regardless of above, make sure their last note is not from us, as no point in repeating the same note over and over.
-	query_get_notes = SSdbcore.NewQuery("SELECT adminckey FROM [format_table_name("messages")] WHERE targetckey = '[sql_ckey]' AND deleted = 0 AND expire_timestamp > NOW() ORDER BY timestamp DESC LIMIT 1")
+	query_get_notes = SSdbcore.NewQuery("SELECT adminckey FROM [DB_PREFIX_TABLE_NAME("messages")] WHERE targetckey = '[sql_ckey]' AND deleted = 0 AND expire_timestamp > NOW() ORDER BY timestamp DESC LIMIT 1")
 	if(!query_get_notes.Execute())
 		qdel(query_get_notes)
 		return
@@ -617,4 +591,3 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 
 /client/proc/AnnouncePR(announcement)
 	to_chat(src, announcement)
-

@@ -144,6 +144,8 @@
 	var/impersonate_bodytype_legacy
 	/// for impersonating a bodytype but actually.
 	var/impersonate_bodytype
+	/// for impersonating a species
+	var/datum/species/impersonate_species_for_iconbase
 	/// Shadekin abilities/potentially other species-based?
 	var/ability_flags = NONE
 	/// Suit sensor loadout pref.
@@ -217,8 +219,6 @@
 	/// Instead of new say code calling GetVoice() over and over and over, we're just going to ask this variable, which gets updated in Life()
 	var/voice = ""
 
-	/// Toggle for the mime's abilities. //TODO Readd mime stuff :(
-	//var/miming = null
 	/// For changing our voice. Used by a symptom.
 	var/special_voice = ""
 
@@ -277,3 +277,6 @@
 	var/hiding_horns = FALSE
 
 	var/datum/ability_handler/ab_handler
+
+	var/body_alpha = 255
+	var/hair_alpha = 255

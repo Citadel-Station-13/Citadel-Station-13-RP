@@ -9,6 +9,7 @@
 	can_infect = 0
 
 /datum/surgery_step/face/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
+	if(!..()) return FALSE
 	if (!hasorgans(target))
 		return 0
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
@@ -21,9 +22,12 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/generic/cut_face
+	step_name = "Cut face"
+
 	allowed_tools = list(
 	/obj/item/surgical/scalpel = 100,		\
 	/obj/item/surgical/scalpel_primitive = 80,	\
+	/obj/item/surgical/scalpel_bronze = 90,	\
 	/obj/item/material/knife = 75,	\
 	/obj/item/material/shard = 50, 		\
 	)
@@ -56,6 +60,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/face/mend_vocal
+	step_name = "Fix vocal cords"
+
 	allowed_tools = list(
 	/obj/item/surgical/hemostat = 100, 	\
 	/obj/item/stack/cable_coil = 75, 	\
@@ -89,6 +95,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/face/fix_face
+	step_name = "Fix face"
+
 	allowed_tools = list(
 		/obj/item/surgical/retractor = 100, 	\
 		/obj/item/surgical/retractor_primitive = 75,	\
@@ -124,6 +132,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/face/cauterize
+	step_name = "Cauterize"
+
 	allowed_tools = list(
 	/obj/item/surgical/cautery = 100,			\
 	/obj/item/clothing/mask/smokable/cigarette = 75,	\

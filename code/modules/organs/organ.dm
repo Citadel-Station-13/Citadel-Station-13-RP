@@ -76,7 +76,7 @@
 
 	//* ## LANGUAGE VARS - For organs that assist with certain languages.
 	var/list/will_assist_languages = list()
-	var/list/datum/language/assists_languages = list()
+	var/list/datum/prototype/language/assists_languages = list()
 
 
 	//* ## VERB VARS
@@ -95,6 +95,10 @@
 /obj/item/organ/Initialize(mapload, internal)
 	. = ..(mapload)
 	create_reagents(5)
+
+	// HACK: if we're in repository subsystem load, skip brainmob
+	if(!SSrepository.initialized)
+		return
 
 	if(isliving(loc))
 		owner = loc
@@ -327,6 +331,9 @@
 /obj/item/organ/proc/bruise()
 	damage = max(damage, min_bruised_damage)
 
+/obj/item/organ/proc/break_organ()
+	damage = max(damage, min_broken_damage)
+
 /// Being used to make robutt hearts, etc
 /obj/item/organ/proc/robotize()
 	robotic = ORGAN_ROBOT
@@ -346,7 +353,7 @@
 /obj/item/organ/proc/digitize()
 	robotize()
 
-/obj/item/organ/proc/removed(var/mob/living/user)
+/obj/item/organ/proc/removed(var/mob/living/user, var/ignore_vital = FALSE)
 	if(owner)
 		owner.internal_organs_by_name[organ_tag] = null
 		owner.internal_organs_by_name -= organ_tag
@@ -360,11 +367,11 @@
 		rejecting = null
 
 	if(istype(owner))
-		var/datum/reagent/blood/organ_blood = locate(/datum/reagent/blood) in reagents.reagent_list
-		if(!organ_blood || !organ_blood.data["blood_DNA"])
-			owner.vessel.trans_to(src, 5, 1, 1)
+		if(!reagents.has_reagent(/datum/reagent/blood::id))
+			var/datum/blood_mixture/owner_mixture = owner.take_blood_mixture(5, TRUE)
+			reagents.add_reagent(/datum/reagent/blood::id, 5, owner_mixture)
 
-		if(owner && vital)
+		if(owner && vital && !ignore_vital)
 			if(user)
 				add_attack_logs(user, owner, "Removed vital organ [src.name]")
 			if(owner.stat != DEAD)
@@ -376,19 +383,20 @@
 	reconsider_processing()
 
 /obj/item/organ/proc/replaced(var/mob/living/carbon/human/target,var/obj/item/organ/external/affected)
+	if(!istype(target))
+		return
 
-	if(!istype(target)) return
-
-	var/datum/reagent/blood/transplant_blood = locate(/datum/reagent/blood) in reagents.reagent_list
+	var/datum/blood_mixture/mixture_data = reagents.get_reagent_data(/datum/reagent/blood)
 	transplant_data = list()
-	if(!transplant_blood)
+	if(!mixture_data?.unsafe_get_fragment_ref(1))
 		transplant_data["species"] =    target?.species.name
 		transplant_data["blood_type"] = target?.dna.b_type
 		transplant_data["blood_DNA"] =  target?.dna.unique_enzymes
 	else
-		transplant_data["species"] =    transplant_blood?.data["species"]
-		transplant_data["blood_type"] = transplant_blood?.data["blood_type"]
-		transplant_data["blood_DNA"] =  transplant_blood?.data["blood_DNA"]
+		var/datum/blood_fragment/use_fragment = mixture_data.unsafe_get_fragment_ref(1)
+		transplant_data["species"] =    use_fragment.legacy_species
+		transplant_data["blood_type"] = use_fragment.legacy_blood_type
+		transplant_data["blood_DNA"] =  use_fragment.legacy_blood_dna
 
 	owner = target
 	loc = owner
@@ -467,10 +475,9 @@
 
 	//Process infections
 	if(reagents)
-		var/datum/reagent/blood/B = locate(/datum/reagent/blood) in reagents.reagent_list
-		if(B && prob(40))
-			reagents.remove_reagent("blood",0.1)
-			blood_splatter(src,B,1)
+		if(reagents.has_reagent(/datum/reagent/blood::id) && prob(40) && get_turf(src))
+			blood_splatter_legacy(get_turf(src), reagents.reagent_datas[/datum/reagent/blood::id], FALSE)
+			reagents.remove_reagent(/datum/reagent/blood, 0.1)
 		adjust_germ_level(rand(2,6))
 		if(germ_level >= INFECTION_LEVEL_TWO)
 			adjust_germ_level(rand(2,6))
@@ -623,7 +630,7 @@
 	// immunosuppressant that changes transplant data to make it match.
 	if(dna && can_reject)
 		if(!rejecting)
-			if(blood_incompatible(dna.b_type, owner.dna.b_type, species.name, owner.species.name)) // Process species by name.
+			if(!legacy_blood_compatible_with_self(owner.dna.b_type, dna.b_type, owner.species.name, species.name))
 				rejecting = 1
 		else
 			rejecting++ //Rejection severity increases over time.
@@ -644,9 +651,13 @@
 	if(robotic >= ORGAN_ROBOT)
 		return
 
-	to_chat(user, SPAN_NOTICE("You take an experimental bite out of \the [src]."))
-	var/datum/reagent/blood/B = locate(/datum/reagent/blood) in reagents.reagent_list
-	blood_splatter(src,B,1)
+	user.visible_message(
+		SPAN_BOLDWARNING("[user] takes an experimental bite out of \the [src]!"),
+		SPAN_BOLDWARNING("You take an experimental bite out of \the [src]!"),
+		SPAN_WARNING("You hear a sickening chewing sound."),
+		MESSAGE_RANGE_INVENTORY_HARD,
+	)
+	blood_splatter_legacy(get_turf(src), reagents.reagent_datas?[/datum/reagent/blood::id], TRUE)
 
 	user.temporarily_remove_from_inventory(src, INV_OP_FORCE)
 

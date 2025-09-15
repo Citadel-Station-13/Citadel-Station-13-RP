@@ -82,7 +82,7 @@
 	return SScharacters.resolve_culture(/datum/lore/character_background/culture/custom).id
 
 /datum/category_item/player_setup_item/background/culture/informed_default_value(datum/preferences/prefs, randomizing)
-	var/datum/character_species/S = SScharacters.resolve_character_species(prefs.character_species_id())
+	var/datum/species/S = SScharacters.resolve_character_species(prefs.character_species_id())
 	if(!S)
 		return ..()
 	return S.get_default_culture_id()

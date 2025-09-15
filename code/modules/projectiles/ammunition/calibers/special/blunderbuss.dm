@@ -1,4 +1,5 @@
 /datum/ammo_caliber/blunderbuss
+	id = "blunderbuss"
 	caliber = "blunderbuss"
 
 /obj/item/ammo_casing/blunderbuss
@@ -6,13 +7,13 @@
 	desc = "A bundle of lead balls and other assorted shrapnel."
 	icon = 'icons/modules/projectiles/casings/blunderbuss.dmi'
 	icon_state = "blunderbuss"
-	caliber = /datum/ammo_caliber/blunderbuss
+	casing_caliber = /datum/ammo_caliber/blunderbuss
 	projectile_type = /obj/projectile/bullet/pellet/blunderbuss
 	materials_base = list("lead" = 500)
 
 /obj/item/ammo_casing/blunderbuss/silver
 	name = "sliver shot"
-	desc = "A bundle of silver lead allow balls and other assorted bits of silver."
+	desc = "A bundle of silver-lead alloy balls and other assorted bits of silver."
 	icon_state = "silverbuss"
 	projectile_type = /obj/projectile/bullet/pellet/blunderbuss/silver
-	materials_base = list("lead" = 500, "silver" = 500)
+	materials_base = list("lead" = 250, "silver" = 250)

@@ -9,7 +9,6 @@
 	climb_allowed = FALSE
 
 	//* Actions *//
-
 	/// cached action descriptors
 	///
 	/// this can be:
@@ -28,6 +27,18 @@
 	var/item_action_mobility_flags = MOBILITY_CAN_HOLD | MOBILITY_CAN_USE
 
 	//* Combat *//
+	/// Amount of damage we do on melee.
+	var/damage_force = 0
+	/// armor flag for melee attacks
+	var/damage_flag = ARMOR_MELEE
+	/// damage tier
+	var/damage_tier = 3
+	/// damage_mode bitfield - see [code/__DEFINES/combat/damage.dm]
+	var/damage_mode = NONE
+	/// DAMAGE_TYPE_* enum
+	///
+	/// * This is the primary damage type this object does on usage as a melee / thrown weapon.
+	var/damage_type = DAMAGE_TYPE_BRUTE
 	/// passive parry data / frame
 	///
 	/// * anonymous typepath is allowed
@@ -37,6 +48,14 @@
 	/// note that the component will not be modified while held;
 	/// if this is changed, the component needs to be remade.
 	var/passive_parry
+	/// base melee click cooldown
+	var/melee_click_cd_base = 0.8 SECONDS
+	/// base melee click cooldown multiplier
+	var/melee_click_cd_multiply = 1
+
+	//* Economy
+	/// economic category for items
+	var/economic_category_item = ECONOMIC_CATEGORY_ITEM_DEFAULT
 
 	//* Flags *//
 	/// Item flags.
@@ -49,8 +68,10 @@
 	/// As of right now, some flags only work in some slots.
 	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
 	var/inv_hide_flags = NONE
-	/// flags for the bodyparts this item covers when worn.
+	/// Flags for the bodyparts this item covers when worn.
 	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
+	///
+	/// * Do not set these directly, use set_body_cover_flags()!
 	var/body_cover_flags = NONE
 	/// Flags which determine which body parts are protected from heat. Use the HEAD, UPPER_TORSO, LOWER_TORSO, etc. flags. See setup.dm
 	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
@@ -68,9 +89,34 @@
 	/// These flags are listed in [code/__DEFINES/_flags/interaction_flags.dm]
 	var/interaction_flags_item = INTERACT_ITEM_ATTACK_SELF
 
-	//? Economy
-	/// economic category for items
-	var/economic_category_item = ECONOMIC_CATEGORY_ITEM_DEFAULT
+	//* Inventory *//
+	/// Currently equipped slot ID or hand index if held in hand
+	var/inv_slot_or_index
+	/// The inventory datum we're in.
+	///
+	/// * This also doubles as an 'is in inventory' check, as this will always be set if we are in inventory.
+	/// * This also doubles as 'get worn mob' by doing `inv_inside?.owner`.
+	var/datum/inventory/inv_inside
+	/// currently equipped slot id
+	///
+	/// todo: `worn_slot_or_index`
+	var/worn_slot
+	/// current hand index, if held in hand
+	///
+	/// todo: `worn_slot_or_index`
+	var/held_index
+	/**
+	 * current item we fitted over
+	 * ! DANGER: While this is more or less bug-free for "won't lose the item when you unequip/won't get stuck", we
+	 * ! do not promise anything for functionality - this is a SNOWFLAKE SYSTEM.
+	 */
+	var/obj/item/worn_over
+	/**
+	 * current item we're fitted in.
+	 */
+	var/obj/item/worn_inside
+	/// suppress auto inventory hooks in forceMove
+	var/worn_hook_suppressed = FALSE
 
 	//* Environmentals *//
 	/// Set this variable to determine up to which temperature (IN KELVIN) the item protects against heat damage. Keep at null to disable protection. Only protects areas set by heat_protection flags.
@@ -83,7 +129,7 @@
 	/// Set this variable if the item protects its wearer against low pressures above a lower bound. Keep at null to disable protection. 0 represents protection against hard vacuum.
 	var/min_pressure_protection
 
-	//? Carry Weight
+	//* Carry Weight *//
 	/// encumberance.
 	/// calculated as max() of all encumbrance
 	/// result is calculated into slowdown value
@@ -101,20 +147,6 @@
 	/// Hard slowdown. Applied before carry weight.
 	/// This affects multiplicative movespeed.
 	var/slowdown = 0
-
-	//? Combat
-	/// Amount of damage we do on melee.
-	var/damage_force = 0
-	/// armor flag for melee attacks
-	var/damage_flag = ARMOR_MELEE
-	/// damage tier
-	var/damage_tier = MELEE_TIER_MEDIUM
-	/// damage_mode bitfield - see [code/__DEFINES/combat/damage.dm]
-	var/damage_mode = NONE
-	/// DAMAGE_TYPE_* enum
-	///
-	/// * This is the primary damage type this object does on usage as a melee / thrown weapon.
-	var/damage_type = DAMAGE_TYPE_BRUTE
 
 	//* Storage *//
 	/// storage cost for volumetric storage
@@ -158,8 +190,6 @@
 	/// 0 won't embed, and 100 will always embed
 	var/embed_chance = EMBED_CHANCE_UNSET
 
-	/// How long click delay will be when using this, in 1/10ths of a second. Checked in the user's get_attack_speed().
-	var/attackspeed = DEFAULT_ATTACK_COOLDOWN
 	/// Length of tiles it can reach, 1 is adjacent.
 	var/reach = 1
 	/// Icon overlay for ADD highlights when applicable.
@@ -199,43 +229,22 @@
 		else
 			embed_chance = max(5, round(damage_force/(w_class*3)))
 
+/obj/item/Destroy()
+	// run inventory hooks
+	if(worn_slot && !worn_hook_suppressed)
+		var/mob/M = get_worn_mob()
+		if(!ismob(M))
+			stack_trace("invalid current equipped slot [worn_slot] on an item not on a mob.")
+			return ..()
+		M.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_DELETING)
+	return ..()
+
 /// Check if target is reasonable for us to operate on.
 /obj/item/proc/check_allowed_items(atom/target, not_inside, target_self)
 	if(((src in target) && !target_self) || ((!istype(target.loc, /turf)) && (!istype(target, /turf)) && (not_inside)))
 		return FALSE
 	else
 		return TRUE
-
-/obj/item/proc/update_twohanding()
-	update_held_icon()
-
-/obj/item/proc/is_held_twohanded(mob/living/M)
-	var/check_hand
-	if(M.l_hand == src && !M.r_hand)
-		check_hand = BP_R_HAND //item in left hand, check right hand
-	else if(M.r_hand == src && !M.l_hand)
-		check_hand = BP_L_HAND //item in right hand, check left hand
-	else
-		return FALSE
-
-	//would check is_broken() and is_malfunctioning() here too but is_malfunctioning()
-	//is probabilistic so we can't do that and it would be unfair to just check one.
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/external/hand = H.organs_by_name[check_hand]
-		if(istype(hand) && hand.is_usable())
-			return TRUE
-	return FALSE
-
-
-///Checks if the item is being held by a mob, and if so, updates the held icons
-/obj/item/proc/update_held_icon()
-	if(isliving(src.loc))
-		var/mob/living/M = src.loc
-		if(M.l_hand == src)
-			M.update_inv_l_hand()
-		else if(M.r_hand == src)
-			M.update_inv_r_hand()
 
 /obj/item/legacy_ex_act(severity)
 	switch(severity)
@@ -251,16 +260,6 @@
 				qdel(src)
 				return
 		else
-	return
-
-//user: The mob that is suiciding
-//damagetype: The type of damage the item will inflict on the user
-//BRUTELOSS = 1
-//FIRELOSS = 2
-//TOXLOSS = 4
-//OXYLOSS = 8
-///Output a creative message and then return the damagetype done
-/obj/item/proc/suicide_act(mob/user)
 	return
 
 /obj/item/verb/move_to_top()
@@ -430,12 +429,9 @@
 
 	attempt_pickup(usr)
 
-/**
- *This proc is executed when someone clicks the on-screen UI button.
- *The default action is attack_self().
- */
 /obj/item/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	attack_self(usr)
+	return TRUE
 
 /obj/item/proc/get_loc_turf()
 	var/atom/L = loc
@@ -470,7 +466,7 @@
 
 	add_attack_logs(user,M,"Attack eyes with [name]")
 
-	user.setClickCooldown(user.get_attack_speed())
+	user.setClickCooldownLegacy(user.get_attack_speed_legacy())
 	user.do_attack_animation(M)
 
 	src.add_fingerprint(user)
@@ -722,10 +718,10 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
  * * null
  */
 /obj/item/proc/set_actions_to(descriptor)
-	var/mob/worn_mob = worn_mob()
+	var/mob/get_worn_mob = get_worn_mob()
 
-	if(worn_mob)
-		unregister_item_actions(worn_mob)
+	if(get_worn_mob)
+		unregister_item_actions(get_worn_mob)
 
 	if(ispath(descriptor, /datum/action))
 		descriptor = new descriptor(src)
@@ -739,8 +735,8 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	else
 		item_actions = descriptor
 
-	if(worn_mob)
-		register_item_actions(worn_mob)
+	if(get_worn_mob)
+		register_item_actions(get_worn_mob)
 
 /**
  * handles action granting
@@ -828,6 +824,12 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /obj/item/proc/reload_passive_parry()
 	load_passive_parry()
 
+//* Flags *//
+
+/obj/item/proc/set_body_cover_flags(new_body_cover_flags)
+	body_cover_flags = new_body_cover_flags
+	inv_inside.invalidate_coverage_cache()
+
 //* Interactions *//
 
 /obj/item/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
@@ -875,14 +877,14 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 //* Materials *//
 
 /obj/item/material_trait_brittle_shatter()
-	var/datum/material/material = get_primary_material()
+	var/datum/prototype/material/material = get_primary_material()
 	var/turf/T = get_turf(src)
 	T.visible_message("<span class='danger'>\The [src] [material.destruction_desc]!</span>")
-	if(istype(loc, /mob/living))
-		var/mob/living/M = loc
-		if(material.shard_type == SHARD_SHARD) // Wearing glass armor is a bad idea.
-			var/obj/item/material/shard/S = material.place_shard(T)
-			M.embed(S)
+	// if(istype(loc, /mob/living))
+	// 	var/mob/living/M = loc
+	// 	if(material.shard_type == SHARD_SHARD) // Wearing glass armor is a bad idea.
+	// 		var/obj/item/material/shard/S = material.place_shard(T)
+	// 		M.embed(S)
 
 	playsound(src, "shatter", 70, 1)
 	qdel(src)
@@ -957,8 +959,8 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 			var/requires_update = (item_flags & (ITEM_ENCUMBERS_WHILE_HELD | ITEM_ENCUMBERS_ONLY_HELD)) != (var_value & (ITEM_ENCUMBERS_WHILE_HELD | ITEM_ENCUMBERS_ONLY_HELD))
 			. = ..()
 			if(. && requires_update)
-				var/mob/living/L = worn_mob()
-				// check, as worn_mob() returns /mob, not /living
+				var/mob/living/L = get_worn_mob()
+				// check, as get_worn_mob() returns /mob, not /living
 				if(istype(L))
 					L.recalculate_carry()
 					L.update_carry()
@@ -966,15 +968,15 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 			// todo: introspection system update - this should be 'handled', as opposed to hooked.
 			. = ..()
 			if(. )
-				var/mob/living/L = worn_mob()
-				// check, as worn_mob() returns /mob, not /living
+				var/mob/living/L = get_worn_mob()
+				// check, as get_worn_mob() returns /mob, not /living
 				if(istype(L))
 					L.update_carry_slowdown()
 		if(NAMEOF(src, slowdown))
 			. = ..()
 			if(.)
-				var/mob/living/L = worn_mob()
-				// check, as worn_mob() returns /mob, not /living
+				var/mob/living/L = get_worn_mob()
+				// check, as get_worn_mob() returns /mob, not /living
 				if(istype(L))
 					L.update_item_slowdown()
 		if(NAMEOF(src, w_class))

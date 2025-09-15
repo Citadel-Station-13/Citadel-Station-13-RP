@@ -8,6 +8,7 @@
 	blood_level = 1
 
 /datum/surgery_step/open_encased/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
+	if(!..()) return FALSE
 	if (!hasorgans(target))
 		return 0
 
@@ -19,8 +20,11 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/open_encased/saw
+	step_name = "Saw bones"
+
 	allowed_tools = list(
 		/obj/item/surgical/circular_saw = 100, \
+		/obj/item/surgical/saw_bronze = 75, \
 		/obj/item/material/knife/machete/hatchet = 75,	\
 		/obj/item/surgical/saw_primitive = 60
 	)
@@ -69,6 +73,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/open_encased/retract
+	step_name = "Retract bones"
+
 	allowed_tools = list(
 		/obj/item/surgical/retractor = 100,
 		/obj/item/surgical/retractor_primitive = 75
@@ -123,6 +129,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/open_encased/close
+	step_name = "Close bones"
+
 	allowed_tools = list(
 		/obj/item/surgical/retractor = 100,
 		/obj/item/surgical/retractor_primitive = 75
@@ -182,6 +190,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/open_encased/mend
+	step_name = "Mend bones"
+
 	allowed_tools = list(
 		/obj/item/surgical/bonegel = 100
 	)
@@ -223,6 +233,8 @@
 // Saw/Retractor/Gel Combi-open and close.
 ///////////////////////////////////////////////////////////////
 /datum/surgery_step/open_encased/advancedsaw_open
+	step_name = "Divert bones"
+
 	allowed_tools = list(
 		/obj/item/surgical/circular_saw/manager = 100
 	)
@@ -272,6 +284,8 @@
 
 
 /datum/surgery_step/open_encased/advancedsaw_mend
+	step_name = "Seal bones"
+
 	allowed_tools = list(
 		/obj/item/surgical/circular_saw/manager = 100
 	)

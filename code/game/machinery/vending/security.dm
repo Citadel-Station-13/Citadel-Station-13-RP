@@ -7,13 +7,13 @@
 	req_access = list(ACCESS_SECURITY_EQUIPMENT)
 	products = list(
 		/obj/item/handcuffs = 8,
-		/obj/item/grenade/flashbang = 4,
+		/obj/item/grenade/simple/flashbang = 4,
 		/obj/item/flash = 5,
 		/obj/item/reagent_containers/spray/pepper = 6,
 		/obj/item/reagent_containers/food/snacks/donut/normal = 12,
 		/obj/item/storage/box/evidence = 6,
-		/obj/item/gun/ballistic/sec = 2,
-		/obj/item/ammo_magazine/a45/rubber = 6,
+		/obj/item/gun/projectile/ballistic/sec = 2,
+		/obj/item/ammo_magazine/a45/doublestack/rubber = 6,
 		/obj/item/clothing/mask/gas/half = 6,
 		/obj/item/clothing/glasses/omnihud/sec = 6,
 		/obj/item/hailer = 6,

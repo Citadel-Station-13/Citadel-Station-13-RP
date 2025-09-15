@@ -13,9 +13,10 @@
 		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/vasilissan,
 	)
 
+	movement_base_speed = 5.25
+
 	vision_innate = /datum/vision/baseline/species_tier_2
 	vision_organ = O_EYES
-	slowdown  = -0.15  // Small speedboost, as they've got a bunch of legs. Or something. I dunno.
 	brute_mod = 0.8    // 20% brute damage reduction
 	burn_mod  = 1.15   // 15% burn damage increase. They're spiders. Aerosol can+lighter = dead spiders.
 
@@ -78,11 +79,11 @@
 	blood_color = "#0952EF" //Spiders have blue blood.
 
 	unarmed_types = list(
-		/datum/unarmed_attack/stomp,
-		/datum/unarmed_attack/kick,
-		/datum/unarmed_attack/claws,
-		/datum/unarmed_attack/bite/sharp,
-		/datum/unarmed_attack/bite/sharp/numbing,
+		/datum/melee_attack/unarmed/stomp,
+		/datum/melee_attack/unarmed/kick,
+		/datum/melee_attack/unarmed/claws,
+		/datum/melee_attack/unarmed/bite/sharp,
+		/datum/melee_attack/unarmed/bite/sharp/numbing,
 	)
 
 /datum/species/vasilissan/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)

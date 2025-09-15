@@ -13,7 +13,7 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "locator"
 	var/temp = null
-	var/frequency = 1451
+	var/frequency = FREQ_LOCATOR_IMPLANT
 	var/broadcasting = null
 	var/listening = 1.0
 	w_class = WEIGHT_CLASS_SMALL
@@ -41,7 +41,7 @@ Frequency:
 <A href='byond://?src=\ref[src];freq=10'>+</A><BR>
 
 <A href='?src=\ref[src];refresh=1'>Refresh</A>"}
-	user << browse(dat, "window=radio")
+	user << browse(HTML_SKELETON(dat), "window=radio")
 	onclose(user, "radio")
 	return
 

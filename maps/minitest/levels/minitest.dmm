@@ -2931,6 +2931,11 @@
 	},
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/airlock/main)
+"jN" = (
+/obj/structure/table/reinforced,
+/obj/machinery/reagentgrinder,
+/turf/simulated/floor/tiled,
+/area/bridge)
 "kU" = (
 /obj/structure/shuttle,
 /turf/simulated/shuttle/wall/voidcraft/green,
@@ -3099,12 +3104,15 @@
 /turf/simulated/mineral,
 /area/storage/surface_eva/external)
 "sv" = (
-/turf/unsimulated/mineral/virgo3b,
+/turf/unsimulated/wall/mineral,
 /area/space)
 "sA" = (
 /obj/structure/shuttle/engine/heater,
 /turf/simulated/shuttle/plating/carry,
 /area/shuttle/multidemo)
+"tm" = (
+/turf/space,
+/area/space)
 "ts" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -3117,6 +3125,27 @@
 	},
 /turf/simulated/floor/tiled,
 /area/medical/medbay)
+"uz" = (
+/obj/structure/table/reinforced,
+/obj/item/reagent_containers/glass/beaker/bluespace{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/reagent_containers/glass/beaker/bluespace{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/reagent_containers/glass/beaker/bluespace,
+/obj/item/reagent_containers/glass/beaker/bluespace{
+	pixel_y = -2;
+	pixel_x = -2
+	},
+/obj/item/reagent_containers/glass/beaker/bluespace{
+	pixel_y = -4;
+	pixel_x = -4
+	},
+/turf/simulated/floor/tiled,
+/area/bridge)
 "vl" = (
 /obj/machinery/access_button/airlock_exterior{
 	master_tag = "civ_airlock";
@@ -3287,6 +3316,11 @@
 /obj/random/junk,
 /turf/simulated/floor/tiled,
 /area/bridge)
+"AP" = (
+/obj/spawner/window/low_wall,
+/obj/map_helper/paint_stripe/bottlegreen,
+/turf/simulated/floor/tiled,
+/area/crew_quarters/bar)
 "AT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/aux{
 	dir = 9
@@ -3296,6 +3330,11 @@
 "Bg" = (
 /turf/simulated/wall,
 /area/storage/surface_eva/external)
+"BB" = (
+/obj/spawner/window/low_wall,
+/obj/map_helper/paint_stripe/beige,
+/turf/simulated/floor/tiled,
+/area/crew_quarters/bar)
 "BU" = (
 /obj/structure/railing,
 /obj/machinery/embedded_controller/radio/airlock/phoron{
@@ -3374,6 +3413,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/medical/medbay)
+"DH" = (
+/obj/structure/wall_frame,
+/obj/map_helper/paint_stripe/commandblue,
+/turf/simulated/floor/tiled,
+/area/crew_quarters/bar)
 "Eh" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -3450,7 +3494,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/medbay)
 "GR" = (
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark"
 	},
@@ -3490,6 +3534,32 @@
 "JD" = (
 /turf/simulated/wall,
 /area/space)
+"Kz" = (
+/obj/spawner/window/low_wall,
+/turf/space,
+/area/bridge)
+"Li" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/bridge)
+"Ln" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/bridge)
 "Lo" = (
 /obj/machinery/embedded_controller/radio/airlock/phoron{
 	dir = 8;
@@ -3510,6 +3580,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/storage/surface_eva/external)
+"Ly" = (
+/obj/machinery/chem_master,
+/turf/simulated/floor/tiled,
+/area/bridge)
 "LC" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 6
@@ -3542,6 +3616,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/bridge)
+"Mq" = (
+/obj/structure/wall_frame/prepainted,
+/obj/map_helper/paint_stripe/cyanblue,
+/turf/simulated/floor/tiled,
+/area/crew_quarters/bar)
 "Mz" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 6
@@ -3608,6 +3687,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
+"OQ" = (
+/obj/structure/table/reinforced,
+/obj/fiftyspawner/phoron,
+/turf/simulated/floor/tiled,
+/area/bridge)
 "Pa" = (
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/storage/surface_eva/external)
@@ -3808,6 +3892,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/medical/medbay)
+"WH" = (
+/obj/machinery/chemical_dispenser/full,
+/turf/simulated/floor/tiled,
+/area/bridge)
+"XI" = (
+/obj/spawner/window/low_wall,
+/obj/map_helper/paint_stripe/black,
+/turf/simulated/floor/tiled,
+/area/crew_quarters/bar)
 "XU" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -3831,12 +3924,22 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/storage/surface_eva/external)
+"Yx" = (
+/obj/structure/wall_frame,
+/obj/map_helper/paint_stripe/copper,
+/turf/simulated/floor/tiled,
+/area/crew_quarters/bar)
 "YO" = (
 /obj/machinery/atmospherics/pipe/tank{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/medical/medbay)
+"YU" = (
+/obj/machinery/light,
+/obj/structure/table/reinforced,
+/turf/simulated/floor/tiled,
+/area/bridge)
 
 (1,1,1) = {"
 aa
@@ -5460,11 +5563,11 @@ gf
 gf
 gf
 gf
-fY
-aa
-aa
-aa
-aa
+Li
+Kz
+Kz
+Kz
+Kz
 aa
 aa
 aa
@@ -5562,11 +5665,11 @@ gf
 gf
 gf
 gf
-fY
-aa
-aa
-aa
-aa
+gf
+uz
+gf
+OQ
+Kz
 aa
 aa
 aa
@@ -5663,12 +5766,12 @@ gf
 gf
 hA
 hB
-gE
-fY
-aa
-aa
-aa
-aa
+gf
+gf
+gf
+gf
+YU
+Kz
 aa
 aa
 aa
@@ -5766,11 +5869,11 @@ gN
 hw
 gf
 gf
-fY
-aa
-aa
-aa
-aa
+gf
+jN
+WH
+Ly
+Kz
 aa
 aa
 aa
@@ -5868,11 +5971,11 @@ ht
 gN
 gf
 gf
-fY
-aa
-aa
-aa
-aa
+Ln
+Kz
+Kz
+Kz
+Kz
 aa
 aa
 aa
@@ -11026,7 +11129,7 @@ cR
 cW
 cK
 cK
-cK
+BB
 cK
 cK
 cK
@@ -11128,7 +11231,7 @@ cR
 cK
 cK
 cK
-cK
+XI
 cK
 cK
 cK
@@ -11230,7 +11333,7 @@ cR
 cR
 cR
 cK
-cK
+AP
 cK
 cK
 cK
@@ -11332,7 +11435,7 @@ cK
 cK
 cK
 cK
-cK
+DH
 cK
 cK
 cK
@@ -11434,7 +11537,7 @@ cJ
 cJ
 dc
 cK
-cK
+Yx
 cK
 cK
 cK
@@ -11536,7 +11639,7 @@ aa
 aa
 cC
 cW
-cK
+Mq
 cK
 cK
 ej

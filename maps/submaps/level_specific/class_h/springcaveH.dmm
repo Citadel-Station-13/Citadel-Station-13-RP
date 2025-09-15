@@ -3,42 +3,42 @@
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/class_h/explored)
 "d" = (
-/turf/simulated/mineral/classh,
+/turf/simulated/mineral,
 /area/class_h/explored)
 "i" = (
 /obj/random/outcrop,
-/turf/simulated/floor/water/classh,
+/turf/simulated/floor/water,
 /area/class_h/explored)
 "o" = (
 /obj/random/outcrop,
-/turf/simulated/floor/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline{
 	dir = 1
 	},
 /area/class_h/explored)
 "v" = (
-/turf/simulated/floor/water/shoreline/corner/classh{
+/turf/simulated/floor/water/shoreline/corner{
 	dir = 4
 	},
 /area/class_h/explored)
 "B" = (
-/turf/simulated/floor/water/classh,
+/turf/simulated/floor/water,
 /area/class_h/explored)
 "C" = (
-/turf/simulated/mineral/floor/classh,
+/turf/simulated/mineral/floor,
 /area/class_h/explored)
 "S" = (
 /obj/random/outcrop,
-/turf/simulated/floor/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline{
 	dir = 9
 	},
 /area/class_h/explored)
 "V" = (
-/turf/simulated/floor/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline{
 	dir = 9
 	},
 /area/class_h/explored)
 "Y" = (
-/turf/simulated/floor/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline{
 	dir = 1
 	},
 /area/class_h/explored)

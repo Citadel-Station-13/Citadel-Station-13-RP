@@ -58,7 +58,7 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 			if(src.client && src.client.holder)
 				isadmin = 1
 			var/datum/db_query/query = SSdbcore.ExecuteQuery(
-				"SELECT id FROM [format_table_name("poll_question")] WHERE [isadmin? "" : "adminonly = false AND"] Now() BETWEEN starttime AND endtime AND id NOT IN (SELECT pollid FROM [format_table_name("poll_vote")] WHERE ckey = :ckey) AND id NOT IN (SELECT pollid FROM [format_table_name("poll_textreply")] WHERE ckey = :ckey)",
+				"SELECT id FROM [DB_PREFIX_TABLE_NAME("poll_question")] WHERE [isadmin? "" : "adminonly = false AND"] Now() BETWEEN starttime AND endtime AND id NOT IN (SELECT pollid FROM [DB_PREFIX_TABLE_NAME("poll_vote")] WHERE ckey = :ckey) AND id NOT IN (SELECT pollid FROM [DB_PREFIX_TABLE_NAME("poll_textreply")] WHERE ckey = :ckey)",
 				list("ckey" = ckey)
 			)
 			var/newpoll = 0
@@ -83,31 +83,29 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 	panel.set_window_options("can_close=0")
 	panel.set_content(output)
 	panel.open()
-	return
-
 
 /mob/new_player/statpanel_data(client/C)
 	. = ..()
 	if(C.statpanel_tab("Status"))
-		STATPANEL_DATA_LINE("")
+		INJECT_STATPANEL_DATA_LINE(., "")
 		if(SSticker.current_state == GAME_STATE_PREGAME)
 			if(SSticker.hide_mode)
-				STATPANEL_DATA_ENTRY("Game Mode:", "Secret")
+				INJECT_STATPANEL_DATA_ENTRY(., "Game Mode:", "Secret")
 			else
 				if(SSticker.hide_mode == 0)
-					STATPANEL_DATA_ENTRY("Game Mode:", "[config_legacy.mode_names[master_mode]]")	// Old setting for showing the game mode
+					INJECT_STATPANEL_DATA_ENTRY(., "Game Mode:", "[config_legacy.mode_names[master_mode]]")	// Old setting for showing the game mode
 			var/time_remaining = SSticker.GetTimeLeft()
 			if(time_remaining > 0)
-				STATPANEL_DATA_LINE("Time To Start: [round(time_remaining/10)]s")
+				INJECT_STATPANEL_DATA_LINE(., "Time To Start: [round(time_remaining/10)]s")
 			else if(time_remaining == -10)
-				STATPANEL_DATA_LINE("Time To Start: DELAYED")
+				INJECT_STATPANEL_DATA_LINE(., "Time To Start: DELAYED")
 			else
-				STATPANEL_DATA_LINE("Time To Start: SOON")
-			STATPANEL_DATA_ENTRY("Players: [totalPlayers]", "Players Ready: [totalPlayersReady]")
+				INJECT_STATPANEL_DATA_LINE(., "Time To Start: SOON")
+			INJECT_STATPANEL_DATA_ENTRY(., "Players: [totalPlayers]", "Players Ready: [totalPlayersReady]")
 			totalPlayers = 0
 			totalPlayersReady = 0
 			for(var/mob/new_player/player in GLOB.player_list)
-				STATPANEL_DATA_ENTRY("[player.key]", (player.ready)?("(Playing)"):(""))
+				INJECT_STATPANEL_DATA_ENTRY(., "[player.key]", (player.ready)?("(Playing)"):(""))
 				totalPlayers++
 				if(player.ready)totalPlayersReady++
 
@@ -253,7 +251,7 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 
 		//First check if the person has not voted yet.
 		var/datum/db_query/query = SSdbcore.NewQuery(
-			"SELECT * FROM [format_table_name("privacy")] WHERE ckey = :ckey",
+			"SELECT * FROM [DB_PREFIX_TABLE_NAME("privacy")] WHERE ckey = :ckey",
 			list("ckey" = ckey)
 		)
 		query.Execute()
@@ -282,7 +280,7 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 
 		if(!voted)
 			SSdbcore.RunQuery(
-				"INSERT INTO [format_table_name("privacy")] VALUES (null, NOW(), :ckey, :option)",
+				"INSERT INTO [DB_PREFIX_TABLE_NAME("privacy")] VALUES (null, NOW(), :ckey, :option)",
 				list(
 					"ckey" = ckey,
 					"option" = option
@@ -522,7 +520,7 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 
 	if(chosen_species && use_species_name)
 		// Have to recheck admin due to no usr at roundstart. Latejoins are fine though.
-		if(!(chosen_species.species_spawn_flags & SPECIES_SPAWN_WHITELISTED) || config.check_alien_whitelist(ckey(chosen_species.species_spawn_flags & SPECIES_SPAWN_WHITELIST_FLEXIBLE ? chosen_species.id : chosen_species.uid), ckey))
+		if(!(chosen_species.species_spawn_flags & SPECIES_SPAWN_WHITELISTED) || chosen_species.check_whitelist_for_ckey(ckey) || has_admin_rights())
 			new_character = new(T, use_species_name)
 
 	if(!new_character)
@@ -612,7 +610,7 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 	if(!chosen_species)
 		return SPECIES_HUMAN
 
-	if(!(chosen_species.species_spawn_flags & SPECIES_SPAWN_WHITELISTED) || config.check_alien_whitelist(ckey(chosen_species.id), ckey))
+	if(!(chosen_species.species_spawn_flags & SPECIES_SPAWN_WHITELISTED) || chosen_species.check_whitelist_for_ckey(ckey) || has_admin_rights())
 		return chosen_species.name
 
 	return SPECIES_HUMAN
@@ -625,7 +623,7 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 	return ready && ..()
 
 // Prevents lobby players from seeing say, even with ghostears
-/mob/new_player/hear_say(var/message, var/verb = "says", var/datum/language/language = null, var/alt_name = "",var/italics = 0, var/mob/speaker = null)
+/mob/new_player/hear_say(var/message, var/verb = "says", var/datum/prototype/language/language = null, var/alt_name = "",var/italics = 0, var/mob/speaker = null)
 	return
 
 // Prevents lobby players from seeing emotes, even with ghosteyes

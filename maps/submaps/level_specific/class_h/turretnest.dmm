@@ -2,49 +2,49 @@
 "a" = (
 /obj/structure/sandbag,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desert/poi/turretnest)
+/area/sector/miaphus/beach/desert/poi/turretnest)
 "c" = (
 /obj/structure/closet/crate/freezer/rations,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desert/poi/turretnest)
+/area/sector/miaphus/beach/desert/poi/turretnest)
 "e" = (
 /obj/machinery/porta_turret/stationary/syndie,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desert/poi/turretnest)
+/area/sector/miaphus/beach/desert/poi/turretnest)
 "i" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/turretnest)
+/area/sector/miaphus/beach/desert/poi/turretnest)
 "k" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/template_noop)
 "p" = (
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desert/poi/turretnest)
+/area/sector/miaphus/beach/desert/poi/turretnest)
 "s" = (
 /obj/machinery/door/airlock/maintenance/engi{
 	req_one_access = null
 	},
 /obj/effect/debris/cleanable/liquid_fuel,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desert/poi/turretnest)
+/area/sector/miaphus/beach/desert/poi/turretnest)
 "u" = (
 /turf/simulated/wall/dungeon,
-/area/tether_away/beach/desert/poi/turretnest)
+/area/sector/miaphus/beach/desert/poi/turretnest)
 "A" = (
-/turf/simulated/mineral/ignore_mapgen/classh,
-/area/tether_away/beach/desert/poi/turretnest)
+/turf/simulated/mineral/ignore_mapgen,
+/area/sector/miaphus/beach/desert/poi/turretnest)
 "I" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/random/multiple/gun/projectile/handgun,
 /obj/random/firstaid,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desert/poi/turretnest)
+/area/sector/miaphus/beach/desert/poi/turretnest)
 "N" = (
 /obj/machinery/power/rtg/fake_gen,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desert/poi/turretnest)
+/area/sector/miaphus/beach/desert/poi/turretnest)
 "O" = (
-/turf/simulated/mineral/ignore_mapgen/classh,
+/turf/simulated/mineral/ignore_mapgen,
 /area/template_noop)
 "V" = (
 /turf/template_noop,
@@ -54,10 +54,10 @@
 /obj/random/multiple/gun/projectile/rifle,
 /obj/random/firstaid,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/desert/poi/turretnest)
+/area/sector/miaphus/beach/desert/poi/turretnest)
 "Z" = (
 /turf/simulated/wall,
-/area/tether_away/beach/desert/poi/turretnest)
+/area/sector/miaphus/beach/desert/poi/turretnest)
 
 (1,1,1) = {"
 V

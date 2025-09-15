@@ -86,7 +86,7 @@
 	update_icon()
 
 
-/obj/item/tape_recorder/hear_talk(mob/living/M as mob, msg, var/verb="says", datum/language/speaking=null)
+/obj/item/tape_recorder/hear_talk(mob/living/M as mob, msg, var/verb="says", datum/prototype/language/speaking=null)
 	if(mytape && recording)
 
 		if(speaking)

@@ -31,7 +31,7 @@
 	if(LAZYLEN(req_access) || LAZYLEN(req_one_access.len))
 		req_access = req_access ? list() : null
 		req_one_access = req_one_access ? list() : null // if it's not set keep it not set
-		playsound(src.loc, /datum/soundbyte/grouped/sparks, 100, TRUE)
+		playsound(src.loc, /datum/soundbyte/sparks, 100, TRUE)
 		return 1
 
 /obj/machinery/button/remote/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
@@ -60,11 +60,12 @@
 	..()
 	update_icon()
 
-/obj/machinery/button/remote/update_icon()
+/obj/machinery/button/remote/update_icon_state()
 	if(machine_stat & NOPOWER)
 		icon_state = "doorctrl-p"
 	else
 		icon_state = "doorctrl0"
+	return ..()
 
 /*
 	Airlock remote control
@@ -200,8 +201,9 @@
 
 	return
 
-/obj/machinery/button/remote/driver/update_icon()
+/obj/machinery/button/remote/driver/update_icon_state()
 	if(!active || (machine_stat & NOPOWER))
 		icon_state = "launcherbtt"
 	else
 		icon_state = "launcheract"
+	return ..()

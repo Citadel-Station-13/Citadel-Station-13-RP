@@ -55,7 +55,7 @@
 	icon_state = "nose"
 	desc = "The BOOP module, a simple reagent and atmosphere sniffer."
 	damage_force = 0
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	throw_force = 0
 	attack_verb = list("nuzzled", "nosed", "booped")
 	w_class = WEIGHT_CLASS_TINY
@@ -72,7 +72,7 @@
 	var/pressure = environment.return_pressure()
 	var/total_moles = environment.total_moles
 
-	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+	user.setClickCooldownLegacy(DEFAULT_ATTACK_COOLDOWN)
 	user.visible_message("<span class='notice'>[user] sniffs the air.</span>", "<span class='notice'>You sniff the air...</span>")
 
 	to_chat(user, "<span class='notice'><B>Smells like:</B></span>")
@@ -93,7 +93,7 @@
 	if(!istype(target) && !ismob(target))
 		return
 
-	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+	user.setClickCooldownLegacy(DEFAULT_ATTACK_COOLDOWN)
 
 
 	if(ismob(target))
@@ -103,9 +103,9 @@
 		user.visible_message("<span class='notice'>[user] sniffs at \the [target.name].</span>", "<span class='notice'>You sniff \the [target.name]...</span>")
 		if(!isnull(target.reagents))
 			var/dat = ""
-			if(target.reagents.reagent_list.len > 0)
-				for (var/datum/reagent/R in target.reagents.reagent_list)
-					dat += "\n \t <span class='notice'>[R]</span>"
+			for(var/id in target.reagents.reagent_volumes)
+				var/datum/reagent/R = SSchemistry.fetch_reagent(id)
+				dat += "\n \t <span class='notice'>[R]</span>"
 			if(dat)
 				to_chat(user, "<span class='notice'>Your BOOP module indicates: [dat]</span>")
 			else
@@ -143,11 +143,6 @@
 	attack_verb = list("batted", "pawed", "bopped", "whapped")
 	chargecost = 500
 
-/obj/item/shockpaddles/robot/hound/jumper
-	name = "jumper paws"
-	desc = "Zappy paws. For rebooting a full body prostetic."
-	use_on_synthetic = 1
-
 /obj/item/reagent_containers/borghypo/hound
 	name = "MediHound hypospray"
 	desc = "An advanced chemical synthesizer and injection system utilizing carrier's reserves, designed for heavy-duty medical equipment."
@@ -179,7 +174,7 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "synthtongue"
 	attack_sound = 'sound/effects/attackblob.ogg'
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	var/emagged = 0
 	var/datum/matter_synth/water = null
 
@@ -213,7 +208,7 @@
 	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 
-	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+	user.setClickCooldownLegacy(DEFAULT_ATTACK_COOLDOWN)
 	if(user.client && (target in user.client.screen))
 		to_chat(user, "<span class='warning'>You need to take [target] off before cleaning it!</span>")
 	if(istype(target, /obj/structure/sink) || istype(target, /obj/structure/toilet)) //Dog vibes.
@@ -301,7 +296,7 @@
 	desc = "Toggles floor scrubbing."
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "scrub0"
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	var/enabled = FALSE
 
 /obj/item/pupscrubber/attack_self(mob/user, datum/event_args/actor/actor)
@@ -318,7 +313,7 @@
 		enabled = FALSE
 		icon_state = "scrub0"
 
-/obj/item/gun/energy/taser/mounted/cyborg/ertgun //Not a taser, but it's being used as a base so it takes energy and actually works.
+/obj/item/gun/projectile/energy/taser/mounted/cyborg/ertgun //Not a taser, but it's being used as a base so it takes energy and actually works.
 	name = "disabler"
 	desc = "A small and nonlethal gun produced by NT.."
 	icon = 'icons/mob/dogborg_vr.dmi'
@@ -379,7 +374,7 @@
 	icon_state = "pounce"
 	desc = "Leap at your target to momentarily stun them."
 	damage_force = 0
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	throw_force = 0
 
 /obj/item/dogborg/pounce/attack_self(mob/user, datum/event_args/actor/actor)
@@ -459,7 +454,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	var/obj/item/implant/mirror/imp = null
 
-/obj/item/dogborg/mirrortool/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/dogborg/mirrortool/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/carbon/human/H = target
 	if(!istype(H))
 		return
@@ -468,7 +463,7 @@
 			for(var/obj/item/implant/mirror/MI in I.contents)
 				if(imp == null)
 					H.visible_message("<span class='warning'>[user] is attempting remove [H]'s mirror!</span>")
-					user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
+					user.setClickCooldownLegacy(DEFAULT_QUICK_COOLDOWN)
 					user.do_attack_animation(H)
 					var/turf/T1 = get_turf(H)
 					if (T1 && ((H == user) || do_after(user, 20)))
@@ -480,7 +475,7 @@
 	else if (target_zone == BP_TORSO && imp != null)
 		if (imp)
 			H.visible_message("<span class='warning'>[user] is attempting to implant [H] with a mirror.</span>")
-			user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
+			user.setClickCooldownLegacy(DEFAULT_QUICK_COOLDOWN)
 			user.do_attack_animation(H)
 			var/turf/T1 = get_turf(H)
 			if (T1 && ((H == user) || do_after(user, 20)))

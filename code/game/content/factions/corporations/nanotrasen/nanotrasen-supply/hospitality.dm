@@ -191,3 +191,29 @@
 			)
 	worth = 150
 	container_name = "Fish crate"
+
+/datum/supply_pack/nanotrasen/hospitality/donuts
+	contains = list(
+		/obj/item/storage/box/donut = 3,
+	)
+	name = "Donut resupply crate"
+	container_type = /obj/structure/closet/crate/corporate/centauri
+	container_name = "Donut Resupply Crate"
+	container_desc = "For all your emergency donut resupply needs, Centauri Provision's got you."
+
+/datum/supply_pack/nanotrasen/hospitality/condiments
+	contains = list(
+		/obj/item/reagent_containers/food/condiment/enzyme,
+		/obj/item/reagent_containers/food/condiment/ketchup = 2,
+		/obj/item/reagent_containers/food/condiment/sugar,
+		/obj/item/reagent_containers/food/condiment/hotsauce,
+		/obj/item/reagent_containers/food/condiment/coldsauce,
+		/obj/item/reagent_containers/food/condiment/soysauce,
+		/obj/item/reagent_containers/food/condiment/small/saltshaker = 3,
+		/obj/item/reagent_containers/food/condiment/small/peppermill = 3,
+		/obj/item/reagent_containers/food/condiment/spacespice = 3,
+	)
+	worth = 50 // todo: autodetect
+	name = "Condiment crate"
+	container_type = /obj/structure/closet/crate/corporate/centauri
+	container_name = "Condiment crate"

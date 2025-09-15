@@ -1,4 +1,4 @@
-/datum/material/copper
+/datum/prototype/material/copper
 	id = MAT_COPPER
 	name = "copper"
 	icon_colour = "#b45c13"
@@ -17,3 +17,5 @@
 	refraction = MATERIAL_RESISTANCE_NONE
 	absorption = MATERIAL_RESISTANCE_HIGH
 	nullification = MATERIAL_RESISTANCE_NONE
+
+	material_constraints = MATERIAL_CONSTRAINT_RIGID | MATERIAL_CONSTRAINT_CONDUCTIVE

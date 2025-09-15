@@ -25,7 +25,7 @@
 	max_additional_languages = 3
 	intrinsic_languages = LANGUAGE_ID_VERNAL
 
-	slowdown = 1 //slow, they're plants. Not as slow as full diona.
+	movement_base_speed = 4.5
 	snow_movement  = -1 // Alraune can still wear shoes. Combined with winter boots, negates light snow slowdown but still slowed on ice.
 	water_movement = -1 // Combined with swimming fins, negates shallow water slowdown.
 	total_health = 100 //standard
@@ -73,10 +73,10 @@
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	unarmed_types = list(
-		/datum/unarmed_attack/stomp,
-		/datum/unarmed_attack/kick,
-		/datum/unarmed_attack/punch,
-		/datum/unarmed_attack/bite,
+		/datum/melee_attack/unarmed/stomp,
+		/datum/melee_attack/unarmed/kick,
+		/datum/melee_attack/unarmed/punch,
+		/datum/melee_attack/unarmed/bite,
 	)
 
 	inherent_verbs = list(
@@ -164,7 +164,7 @@
 
 	if(!breath || (breath.total_moles == 0))
 		H.failed_last_breath = 1
-		if(H.health > config_legacy.health_threshold_crit)
+		if(H.health > H.getCritHealth())
 			H.adjustOxyLoss(ALRAUNE_MAX_OXYLOSS)
 		else
 			H.adjustOxyLoss(ALRAUNE_CRIT_MAX_OXYLOSS)
@@ -361,7 +361,7 @@
 
 /mob/living/carbon/human/proc/alraune_fruit_pick()
 	set name = "Pick Fruit"
-	set desc = "Pick fruit off of [src]."
+	set desc = "Pick fruit."
 	set category = VERB_CATEGORY_OBJECT
 	set src in view(1)
 

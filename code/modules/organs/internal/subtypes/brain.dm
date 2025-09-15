@@ -13,14 +13,12 @@
 	throw_range = 5
 	origin_tech = list(TECH_BIO = 3)
 	attack_verb = list("attacked", "slapped", "whacked")
-	var/health = 400 //They need to live awhile longer than other organs. Is this even used by organ code anymore?
 	var/clone_source = FALSE
 	var/mob/living/carbon/brain/brainmob = null
 	var/can_assist = TRUE
 
 /obj/item/organ/internal/brain/Initialize(mapload, ...)
 	. = ..()
-	health = config_legacy.default_brain_health
 	addtimer(CALLBACK(src, PROC_REF(clear_brainmob_hud)), 15)
 
 /obj/item/organ/internal/brain/Destroy()
@@ -267,7 +265,7 @@
 	for(var/modifier_type in R.genetic_modifiers)
 		H.add_modifier(modifier_type)
 
-	for(var/datum/language/L in R.languages)
+	for(var/datum/prototype/language/L in R.languages)
 		H.add_language(L.name)
 	H.flavor_texts = R.flavor.Copy()
 	qdel(src)
@@ -276,14 +274,13 @@
 /datum/chemical_reaction/promethean_brain_revival
 	name = "Promethean Revival"
 	id = "prom_revival"
-	result = null
 	required_reagents = list(
 		/datum/reagent/toxin/phoron = 40,
 	)
-	result_amount = 1
-	required_container = /obj/item/organ/internal/brain/slime
+	required_container_path = /obj/item/organ/internal/brain/slime
 
-/datum/chemical_reaction/promethean_brain_revival/on_reaction(datum/reagents/holder)
+/datum/chemical_reaction/promethean_brain_revival/on_reaction_instant(datum/reagent_holder/holder, multiplier)
+	. = ..()
 	var/obj/item/organ/internal/brain/slime/brain = holder.my_atom
 	if(brain.reviveBody())
 		brain.visible_message(SPAN_NOTICE("[brain] bubbles, surrounding itself with a rapidly expanding mass of slime!"))
@@ -309,3 +306,16 @@
 	if(ishuman(owner))
 		var/mob/living/carbon/human/H = owner
 		color = H.species.blood_color
+
+/obj/item/organ/internal/brain/holosphere
+	decays = FALSE
+
+/obj/item/organ/internal/brain/holosphere/take_damage(amount, var/silent=0)
+	return
+
+/obj/item/organ/internal/brain/holosphere/can_die()
+	return FALSE
+
+/obj/item/organ/internal/brain/holosphere/removed(var/mob/living/user)
+	. = ..()
+	QDEL_NULL(src)

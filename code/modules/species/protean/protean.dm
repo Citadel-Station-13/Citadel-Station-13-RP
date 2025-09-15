@@ -19,7 +19,7 @@
 	remains_type = /obj/effect/debris/cleanable/ash
 	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/protean
 
-	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite) // Regular human attack verbs are enough.
+	unarmed_types = list(/datum/melee_attack/unarmed/stomp, /datum/melee_attack/unarmed/kick, /datum/melee_attack/unarmed/punch, /datum/melee_attack/unarmed/bite) // Regular human attack verbs are enough.
 
 	blood_color = "#505050" //This is the same as the 80,80,80 below, but in hex
 	flesh_color = "#505050"
@@ -70,8 +70,9 @@
 	has_organ = list(
 		O_BRAIN = /obj/item/organ/internal/mmi_holder/posibrain/nano,
 		O_ORCH = /obj/item/organ/internal/nano/orchestrator,
-		O_FACT = /obj/item/organ/internal/nano/refactory
+		O_FACT = /obj/item/organ/internal/nano/refactory/loaded,
 		)
+
 	vision_organ = O_BRAIN
 	has_limbs = list(
 		BP_TORSO =  list("path" = /obj/item/organ/external/chest/unbreakable/nano),
@@ -87,7 +88,7 @@
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/unbreakable/nano)
 		)
 
-	//These verbs are hidden, for hotkey use only
+	//Some of these verbs are hidden, for hotkey use only
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/nano_regenerate, //These verbs are hidden so you can macro them,
 		/mob/living/carbon/human/proc/nano_partswap,
@@ -95,6 +96,7 @@
 		/mob/living/carbon/human/proc/nano_blobform,
 		/mob/living/carbon/human/proc/nano_set_size,
 		/mob/living/carbon/human/proc/nano_change_fitting, //These verbs are displayed normally,
+		/mob/living/carbon/human/proc/nano_copy_appearance,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair_colors,
 		/mob/living/carbon/human/proc/shapeshifter_select_colour,
@@ -104,6 +106,7 @@
 		/mob/living/carbon/human/proc/shapeshifter_select_tail,
 		/mob/living/carbon/human/proc/shapeshifter_select_ears,
 		/mob/living/carbon/human/proc/shapeshifter_select_horns,
+		/mob/living/carbon/human/proc/nano_reset_to_slot,
 		/mob/living/proc/eat_trash,
 		/mob/living/carbon/human/proc/succubus_drain,
 		/mob/living/carbon/human/proc/succubus_drain_finalize,
@@ -158,6 +161,12 @@
 /datum/species/protean/get_worn_legacy_bodytype(mob/living/carbon/human/H)
 	return H?.impersonate_bodytype_legacy || ..()
 
+/datum/species/protean/get_icobase(mob/living/carbon/human/H, get_deform)
+	// TODO: rework this entire thing in bodysets update this is godawful
+	if(H && !isnull(H.impersonate_species_for_iconbase) && !istype(H.impersonate_species_for_iconbase, /datum/species/protean))
+		return H.impersonate_species_for_iconbase.get_icobase(H, get_deform)
+	return ..()
+
 /datum/species/protean/create_organs(mob/living/carbon/human/H)
 	H.synth_color = TRUE
 	. = ..()
@@ -173,18 +182,11 @@
 	var/obj/item/hardsuit/protean/prig = new /obj/item/hardsuit/protean(H)
 	prig.myprotean = H
 
-/datum/species/protean/equip_survival_gear(var/mob/living/carbon/human/H)
-	var/obj/item/storage/box/box = new /obj/item/storage/box/survival/synth(H)
-	var/obj/item/stack/material/steel/metal_stack = new(box)
-	metal_stack.amount = 3 // Less starting steel due to regen changes
-	new /obj/item/fbp_backup_cell(box)
-	var/obj/item/clothing/accessory/permit/nanotech/permit = new(box)
-	permit.set_name(H.real_name)
-
-	if(H.backbag == 1) //Somewhat misleading, 1 == no bag (not boolean)
-		H.equip_to_slot_or_del(box, /datum/inventory_slot/abstract/hand/left)
-	else
-		H.equip_to_slot_or_del(box, /datum/inventory_slot/abstract/put_in_backpack)
+/datum/species/protean/apply_racial_gear(mob/living/carbon/for_target, list/into_box, list/into_inv)
+	var/obj/item/clothing/accessory/permit/nanotech/permit = new
+	permit.set_name(for_target.real_name)
+	into_box?.Add(permit)
+	return ..()
 
 /datum/species/protean/get_blood_colour(var/mob/living/carbon/human/H)
 	return rgb(80,80,80,230)
@@ -232,19 +234,19 @@
 	. = ..()
 	var/obj/item/organ/internal/nano/refactory/refactory = H.nano_get_refactory()
 	if(refactory && !(refactory.status & ORGAN_DEAD))
-		STATPANEL_DATA_LINE("- -- --- Refactory Metal Storage --- -- -")
+		INJECT_STATPANEL_DATA_LINE(., "- -- --- Refactory Metal Storage --- -- -")
 		var/max = refactory.max_storage
 		for(var/material in refactory.stored_materials)
 			var/amount = refactory.get_stored_material(material)
-			STATPANEL_DATA_ENTRY("[capitalize(material)]", "[amount]/[max]")
+			INJECT_STATPANEL_DATA_ENTRY(., "[capitalize(material)]", "[amount]/[max]")
 	else
-		STATPANEL_DATA_LINE("- -- --- REFACTORY ERROR! --- -- -")
+		INJECT_STATPANEL_DATA_LINE(., "- -- --- REFACTORY ERROR! --- -- -")
 
-	STATPANEL_DATA_LINE("- -- --- Abilities (Shift+LMB Examines) --- -- -")
+	INJECT_STATPANEL_DATA_LINE(., "- -- --- Abilities (Shift+LMB Examines) --- -- -")
 	for(var/ability in protean_abilities)
 		var/obj/effect/protean_ability/A = ability
 		A.atom_button_text()
-		STATPANEL_DATA_CLICK("[icon2html(A, C)] [A.ability_name]", "[A.name]", "\ref[A]")
+		INJECT_STATPANEL_DATA_CLICK(., "[icon2html(A, C)] [A.ability_name]", "[A.name]", "\ref[A]")
 
 // Various modifiers
 /datum/modifier/protean

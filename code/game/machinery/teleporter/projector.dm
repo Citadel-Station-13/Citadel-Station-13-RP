@@ -58,7 +58,6 @@
 
 
 /obj/machinery/tele_projector/LateInitialize()
-	. = ..()
 	for(var/target_dir in GLOB.cardinal)
 		var/obj/machinery/tele_pad/found_pad = locate() in get_step(src, target_dir)
 		if(found_pad)
@@ -78,6 +77,7 @@
 
 /obj/machinery/tele_projector/update_icon()
 	cut_overlays()
+	. = ..()
 	if(engaged)
 		var/image/I = image(icon, src, "[initial(icon_state)]_active_overlay")
 		I.plane = ABOVE_LIGHTING_PLANE

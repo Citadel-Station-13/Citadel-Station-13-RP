@@ -29,7 +29,7 @@
 	butchery_loot = list(/obj/item/stack/animalhide = 6)
 	var/charge_damage_mode = DAMAGE_MODE_PIERCE | DAMAGE_MODE_SHARP
 	var/charge_damage_flag = ARMOR_MELEE
-	var/charge_damage_tier = MELEE_TIER_HEAVY
+	var/charge_damage_tier = 4.5
 	var/charge_damage = 60
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/horing
@@ -96,7 +96,7 @@
 			M.throw_at_old(get_step(src.loc, throwdir), 1, 1, src)
 			runOver(M) // Actually should not use this, placeholder
 		else if(isobj(AM))
-			AM.inflict_atom_damage(charge_damage, charge_damage_tier, charge_damage_flag, charge_damage_mode, ATTACK_TYPE_UNARMED, src)
+			AM.inflict_atom_damage(charge_damage, charge_damage_tier, charge_damage_flag, charge_damage_mode, ATTACK_TYPE_MELEE)
 	..()
 
 /mob/living/simple_mob/animal/horing/proc/runOver(var/mob/living/M)
@@ -111,7 +111,11 @@
 		M.apply_damage(0.5 * damage, DAMAGE_TYPE_BRUTE, BP_R_LEG)
 		M.apply_damage(0.5 * damage, DAMAGE_TYPE_BRUTE, BP_L_ARM)
 		M.apply_damage(0.5 * damage, DAMAGE_TYPE_BRUTE, BP_R_ARM)
-		blood_splatter(src, M, 1)
+		var/datum/blood_mixture/using_blood_mixture
+		if(iscarbon(M))
+			var/mob/living/carbon/carbon_victim = M
+			using_blood_mixture = carbon_victim.get_blood_mixture()
+		blood_splatter_legacy(get_turf(src), using_blood_mixture, TRUE)
 
 /mob/living/simple_mob/animal/horing/handle_special()
 	if(ai_holder)
@@ -191,7 +195,7 @@
 		//playsound(target, holder.say_list.threaten_sound, 50, 1) // Actual aim-mode also does that so at least it's consistant.
 	else // Otherwise we are waiting for them to go away or to wait long enough for escalate.
 		var/threatlevel = target.get_threat(holder)
-		if(target in list_targets() && checkthreatened(target, threatlevel)) // Are they still visible and threatening ?
+		if((target in list_targets()) && checkthreatened(target, threatlevel)) // Are they still visible and threatening ?
 			var/should_escalate = FALSE
 
 			if(threaten_delay && last_threaten_time + threaten_delay < world.time) // Waited too long.

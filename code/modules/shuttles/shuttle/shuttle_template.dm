@@ -9,12 +9,12 @@
 /datum/shuttle_template
 	abstract_type = /datum/shuttle_template
 
-	//* Basics
+	//* Basics *//
 	/// unique ID - use snake_case, must be unique & stable, including across rounds.
 	/// this means hardcoded ones shouldn't be changed willy-nilly.
 	var/id
 
-	//* Identity
+	//* Identity *//
 	/// Full name
 	var/name
 	/// Full description
@@ -22,11 +22,13 @@
 	/// lore fluff
 	var/fluff
 
-	//* File
-	/// absolute path to file
-	var/absolute_path
-	/// relative path to file from current directory
-	var/relative_path
+	//* File *//
+	/// Absolute path to the map .dmm file.
+	///
+	/// This is determined with regards to the context of the load.
+	///
+	/// * Hardcoded shuttle templates will be the path from the server's working directory.
+	var/path
 
 	//* Functionality
 	/// our shuttle typepath
@@ -54,19 +56,14 @@
 
 /datum/shuttle_template/New(map_resource, use_dir)
 	if(map_resource)
-		absolute_path = map_resource
+		path = map_resource
 		facing_dir = use_dir || NORTH
-	else
-		if(relative_path && !absolute_path)
-			var/our_file = __FILE__
-			var/our_directory = copytext_char(our_file, 1, findlasttext_char(our_file, "/"))
-			absolute_path = "[our_directory]/[relative_path]"
 
 	if(cache_parsed_map)
 		parsed_map = new(get_file())
 
 /datum/shuttle_template/proc/get_file()
-	return isfile(absolute_path)? absolute_path : file(absolute_path)
+	return isfile(path)? path : file(path)
 
 /**
  * Do not directly use. Use create_shuttle() on SSshuttles!

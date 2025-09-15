@@ -1,30 +1,30 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/unsimulated/mineral/classg,
+/turf/unsimulated/wall/mineral,
 /area/class_g/explored)
 "b" = (
 /obj/effect/shuttle_landmark/automatic{
 	docking_controller = "mining_planet"
 	},
-/turf/simulated/mineral/floor/ignore_cavegen/classg,
+/turf/simulated/mineral/floor/ignore_cavegen,
 /area/class_g/explored)
 "c" = (
-/turf/simulated/mineral/triumph/classg,
+/turf/simulated/mineral,
 /area/class_g/explored)
 "e" = (
-/turf/simulated/mineral/triumph/classg,
+/turf/simulated/mineral,
 /area/class_g/unexplored)
 "n" = (
-/turf/simulated/mineral/rich/triumph/classg,
+/turf/simulated/mineral/rich,
 /area/class_g/unexplored)
 "q" = (
-/turf/simulated/mineral/floor/ignore_cavegen/classg,
+/turf/simulated/mineral/floor/ignore_cavegen,
 /area/class_g/unexplored)
 "s" = (
-/turf/simulated/wall/classg,
+/turf/simulated/wall,
 /area/class_g/explored)
 "v" = (
-/turf/simulated/mineral/floor/classg,
+/turf/simulated/mineral/floor,
 /area/class_g/unexplored)
 "z" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
@@ -33,23 +33,23 @@
 	name = "Mining Dock Controller";
 	pixel_y = 30
 	},
-/turf/simulated/mineral/rich/triumph/classg,
+/turf/simulated/mineral/rich,
 /area/class_g/explored)
 "B" = (
 /obj/overmap/entity/visitable/sector/mining_planet,
-/turf/unsimulated/mineral/classg,
+/turf/unsimulated/wall/mineral,
 /area/class_g/explored)
 "E" = (
 /obj/effect/shuttle_landmark/automatic{
 	docking_controller = "airless"
 	},
-/turf/simulated/mineral/floor/ignore_cavegen/classg,
+/turf/simulated/mineral/floor/ignore_cavegen,
 /area/class_g/explored)
 "H" = (
-/turf/simulated/mineral/floor/ignore_cavegen/classg,
+/turf/simulated/mineral/floor/ignore_cavegen,
 /area/class_g/explored)
 "K" = (
-/turf/simulated/mineral/rich/triumph/classg,
+/turf/simulated/mineral/rich,
 /area/class_g/explored)
 
 (1,1,1) = {"

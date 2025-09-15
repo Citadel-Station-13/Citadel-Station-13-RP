@@ -1,15 +1,15 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/simulated/mineral/virgo3b/rich,
+/turf/simulated/mineral/rich,
 /area/mine/unexplored)
 "b" = (
-/turf/unsimulated/wall/planetary/virgo3b,
+/turf/unsimulated/wall/planetary/facility_wall,
 /area/mine/explored)
 "d" = (
 /turf/simulated/floor/outdoors/dirt/virgo3b,
 /area/tether/outpost/exploration_plains)
 "g" = (
-/turf/simulated/mineral/virgo3b,
+/turf/simulated/mineral,
 /area/mine/unexplored)
 "h" = (
 /obj/effect/floor_decal/rust,
@@ -70,22 +70,22 @@
 /turf/simulated/floor/outdoors/dirt/virgo3b,
 /area/tether/outpost/exploration_shed)
 "u" = (
-/turf/simulated/mineral/virgo3b/rich,
+/turf/simulated/mineral/rich,
 /area/mine/explored)
 "w" = (
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/tether/outpost/exploration_plains)
 "x" = (
-/turf/simulated/mineral/virgo3b,
+/turf/simulated/mineral,
 /area/mine/explored)
 "y" = (
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/tether/outpost/exploration_shed)
 "z" = (
-/turf/simulated/mineral/virgo3b,
+/turf/simulated/mineral,
 /area/tether/outpost/exploration_shed)
 "A" = (
-/turf/unsimulated/wall/planetary/virgo3b,
+/turf/unsimulated/wall/planetary/facility_wall,
 /area/tether/outpost/exploration_shed)
 "D" = (
 /mob/living/simple_mob/animal/passive/gaslamp,
@@ -134,7 +134,7 @@
 /turf/simulated/floor/outdoors/dirt/virgo3b,
 /area/mine/unexplored)
 "V" = (
-/turf/simulated/mineral/virgo3b,
+/turf/simulated/mineral,
 /area/tether/outpost/exploration_plains)
 "Y" = (
 /obj/structure/sign/hostilefauna,

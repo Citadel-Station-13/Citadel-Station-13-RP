@@ -1,12 +1,37 @@
+/mob/living/carbon
+	//* Organs, Reagents, Biologies *//
+
+	/// Our blood holder.
+	var/datum/blood_holder/blood_holder
+
 /mob/living/carbon/Initialize(mapload)
 	. = ..()
 	//setup reagent holders
-	bloodstr = new/datum/reagents/metabolism/bloodstream(500, src)
-	ingested = new/datum/reagents/metabolism/ingested(500, src)
-	touching = new/datum/reagents/metabolism/touch(500, src)
+	bloodstr = new/datum/reagent_holder/metabolism/bloodstream(500, src)
+	ingested = new/datum/reagent_holder/metabolism/ingested(500, src)
+	touching = new/datum/reagent_holder/metabolism/touch(500, src)
 	reagents = bloodstr
 	if (!default_language && species_language)
-		default_language = SScharacters.resolve_language_name(species_language)
+		default_language = RSlanguages.legacy_resolve_language_name(species_language)
+
+/mob/living/carbon/Destroy()
+	QDEL_NULL(blood_holder)
+	qdel(ingested)
+	qdel(touching)
+	// We don't qdel(bloodstr) because it's the same as qdel(reagents)
+	for(var/guts in internal_organs)
+		qdel(guts)
+	for(var/food in stomach_contents)
+		qdel(food)
+	return ..()
+
+/mob/living/carbon/init_inventory()
+	if(inventory)
+		return
+	inventory = new(src)
+	inventory.set_hand_count(2)
+	if(species) // todo: sigh we need to talk about init order; this shouldn't be needed
+		inventory.set_inventory_slots(species.inventory_slots)
 
 /mob/living/carbon/BiologicalLife(seconds, times_fired)
 	if((. = ..()))
@@ -18,16 +43,6 @@
 	if(germ_level < GERM_LEVEL_AMBIENT && prob(30))	//if you're just standing there, you shouldn't get more germs beyond an ambient level
 		germ_level++
 
-/mob/living/carbon/Destroy()
-	qdel(ingested)
-	qdel(touching)
-	// We don't qdel(bloodstr) because it's the same as qdel(reagents)
-	for(var/guts in internal_organs)
-		qdel(guts)
-	for(var/food in stomach_contents)
-		qdel(food)
-	return ..()
-
 /mob/living/carbon/gib()
 	for(var/mob/M in src)
 		if(M in src.stomach_contents)
@@ -38,22 +53,8 @@
 				N.show_message("<font color='red'><B>[M] bursts out of [src]!</B></font>", 2)
 	..()
 
-/mob/living/carbon/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
-	var/mob/living/carbon/M = user
-	if(!istype(M))
-		return ..()
-	if (ishuman(M))
-		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
-		if (H.hand)
-			temp = H.organs_by_name["l_hand"]
-		if(temp && !temp.is_usable())
-			to_chat(H, "<font color='red'>You can't use your [temp.name]</font>")
-			return
-	return ..()
-
 /mob/living/carbon/proc/help_shake_act(mob/living/carbon/M)
-	if(src.health >= config_legacy.health_threshold_crit)
+	if(src.health >= getCritHealth())
 		if(src == M && istype(src, /mob/living/carbon/human))
 
 			var/mob/living/carbon/human/H = src
@@ -269,12 +270,12 @@
 		if(can_speak(default_language))
 			return default_language
 		else
-			return SScharacters.resolve_language_name(LANGUAGE_GIBBERISH)
+			return RSlanguages.legacy_resolve_language_name(LANGUAGE_GIBBERISH)
 
 	if(!species)
 		return null
 
-	return species.default_language ? SScharacters.resolve_language(species.default_language) : null
+	return species.default_language ? RSlanguages.fetch(species.default_language) : null
 
 /mob/living/carbon/proc/should_have_organ(var/organ_check)
 	return 0
@@ -303,7 +304,7 @@
 
 /mob/living/carbon/proc/update_handcuffed()
 	if(handcuffed)
-		drop_all_held_items()
+		drop_held_items()
 		stop_pulling()
 	update_inv_handcuffed()
 	update_mobility()

@@ -15,7 +15,7 @@
 	. = ..()
 	wax -= rand(800, 1000) // Enough for 27-33 minutes. 30 minutes on average.
 
-/obj/item/flame/candle/update_icon()
+/obj/item/flame/candle/update_icon_state()
 	var/i
 	if(wax > 1500)
 		i = 1
@@ -23,6 +23,7 @@
 		i = 2
 	else i = 3
 	icon_state = "[icon_type][i][lit ? "_lit" : ""]"
+	return ..()
 
 /obj/item/flame/candle/attackby(obj/item/W as obj, mob/user as mob)
 	..()
@@ -103,6 +104,7 @@
 	wax = 20000
 
 /obj/item/flame/candle/candelabra/update_icon()
+	. = ..()
 	if(wax == 0)
 		icon_state = "candelabra_melted"
 	else

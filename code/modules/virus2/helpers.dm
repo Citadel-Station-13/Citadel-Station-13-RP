@@ -17,7 +17,7 @@
 			var/obj/item/I = M.wear_mask
 			//masks provide a small bonus and can replace overall bio protection
 			if(I)
-				score = max(score, round(0.06*100*I.fetch_armor().raw(ARMOR_BIO)))
+				score = max(score, round(0.06*100*I.fetch_armor().get_mitigation(ARMOR_BIO)))
 				if (istype(I, /obj/item/clothing/mask))
 					score += 1 //this should be added after
 
@@ -51,7 +51,7 @@
 	if (vector == "Airborne")
 		var/obj/item/I = M.wear_mask
 		if (istype(I))
-			protection = max(protection, 100 * I.fetch_armor().raw(ARMOR_BIO))
+			protection = max(protection, 100 * I.fetch_armor().get_mitigation(ARMOR_BIO))
 
 	return prob(protection)
 
@@ -178,3 +178,7 @@
 				if(V && V.spreadtype != vector) continue
 				if(!infection_spreading_check(victim, V.spreadtype)) continue
 				infect_virus2(src,V)
+
+/proc/legacy_virus2_access_blood_mixture(datum/reagent_holder/reagents) as /datum/blood_mixture
+	RETURN_TYPE(/datum/blood_mixture)
+	return reagents?.reagent_datas?[/datum/reagent/blood::id]

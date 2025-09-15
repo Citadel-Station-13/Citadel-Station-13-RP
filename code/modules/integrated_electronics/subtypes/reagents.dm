@@ -140,7 +140,7 @@
 		return
 
 	if(direction_mode == SYRINGE_INJECT)
-		if(!reagents.total_volume || !AM.can_be_injected_by(src) || AM.reagents.holder_full())
+		if(!reagents.total_volume || (!AM.can_be_injected_by(src) && !isliving(AM)) || AM.reagents.holder_full())
 			activate_pin(3)
 			return
 		if(isliving(AM))
@@ -160,7 +160,7 @@
 			L.visible_message("<span class='danger'>[acting_object] is trying to inject [L]!</span>", \
 								"<span class='userdanger'>[acting_object] is trying to inject you!</span>")
 			busy = TRUE
-			if(do_atom(src, L, extra_checks=CALLBACK(L, TYPE_PROC_REF(/mob/living, can_inject),null,0,BP_TORSO,bypass)))
+			if(do_atom(src, L, extra_checks=CALLBACK(L, TYPE_PROC_REF(/mob/living, can_inject),null,0,BP_TORSO,bypass),uninterruptible = bypass))
 				reagents.trans_to_mob(L, transfer_amount)
 				log_attack(src, L, "attempted to inject [L] which had [contained]")
 				L.visible_message("<span class='danger'>[acting_object] injects [L] with its needle!</span>", \
@@ -194,15 +194,9 @@
 			L.visible_message("<span class='danger'>[acting_object] is trying to take a blood sample from [L]!</span>", \
 								"<span class='userdanger'>[acting_object] is trying to take a blood sample from you!</span>")
 			busy = TRUE
-			if(do_atom(src, L, extra_checks=CALLBACK(L, TYPE_PROC_REF(/mob/living, can_inject),null,0,BP_TORSO,bypass)))
+			if(do_atom(src, L, extra_checks=CALLBACK(L, TYPE_PROC_REF(/mob/living, can_inject),null,0,BP_TORSO,bypass),uninterruptible = bypass))
 				var/mob/living/carbon/LB = L
-				var/datum/reagent/B
-				B = LB.take_blood(src, tramount)
-				if(B)
-					reagents.reagent_list += B
-					reagents.update_total()
-					AM.on_reagent_change()
-					reagents.handle_reactions()
+				if(LB.take_blood_legacy(src, tramount) > 0)
 					L.visible_message("<span class='danger'>[acting_object] takes a blood sample from [L]!</span>", \
 					"<span class='userdanger'>[acting_object] takes a blood sample from you!</span>")
 				else
@@ -569,7 +563,7 @@
 	var/obj/item/I = get_pin_data_as_type(IC_INPUT, 1, /obj/item)
 	if(istype(I) && (I.reagents?.total_volume) && check_target(I))
 		var/list/reagent_names_list = list()
-		for(var/datum/reagent/R in reagents?.reagent_list)
+		for(var/datum/reagent/R in reagents?.get_reagent_datums())
 			reagent_names_list.Add(R.name)
 		var/atom/AM = get_object()
 		AM.investigate_log("ground reagents: [jointext(reagent_names_list, ", ")] with [src].", INVESTIGATE_CIRCUIT)
@@ -595,7 +589,7 @@
 
 /obj/item/integrated_circuit/reagent/storage/scan/do_work()
 	var/cont[0]
-	for(var/datum/reagent/RE in reagents.reagent_list)
+	for(var/datum/reagent/RE in reagents.get_reagent_datums())
 		cont += RE.id
 	set_pin_data(IC_OUTPUT, 3, cont)
 	push_data()
@@ -611,10 +605,20 @@
 	how much reagent is moved per pulse, between 0 and 50.  Amount is given for each separate reagent."
 	atom_flags = OPENCONTAINER
 	complexity = 8
-	inputs = list("source" = IC_PINTYPE_REF, "target" = IC_PINTYPE_REF, "injection amount" = IC_PINTYPE_NUMBER, "list of reagents" = IC_PINTYPE_LIST)
-	inputs_default = list("3" = 5)
+	inputs = list(
+		"source" = IC_PINTYPE_REF,
+		"target" = IC_PINTYPE_REF,
+		"injection amount" = IC_PINTYPE_NUMBER,
+		"list of reagents" = IC_PINTYPE_LIST
+		)
+	inputs_default = list(
+		"3" = 5
+		)
 	outputs = list()
-	activators = list("transfer reagents" = IC_PINTYPE_PULSE_IN, "on transfer" = IC_PINTYPE_PULSE_OUT)
+	activators = list(
+		"transfer reagents" = IC_PINTYPE_PULSE_IN,
+		"on transfer" = IC_PINTYPE_PULSE_OUT
+		)
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 	origin_tech = list(TECH_ENGINEERING = 2, TECH_DATA = 2, TECH_BIO = 2)
 	var/transfer_amount = 10
@@ -636,27 +640,23 @@
 	var/atom/movable/source = get_pin_data_as_type(IC_INPUT, 1, /atom/movable)
 	var/atom/movable/target = get_pin_data_as_type(IC_INPUT, 2, /atom/movable)
 	var/list/demand = get_pin_data(IC_INPUT, 4)
-	if(!istype(source) || !istype(target)) //Invalid input
+	// Check for invalid input.
+	if(!check_target(source) || !check_target(target))
 		return
-	var/turf/T = get_turf(src)
-	if(source.Adjacent(T) && target.Adjacent(T))
-		if(!source.reagents || !target.reagents)
-			return
-		if(ismob(source) || ismob(target))
-			return
-		if(!source.is_open_container() || !target.is_open_container())
-			return
-		if(!target.reagents.available_volume())
-			return
-		for(var/datum/reagent/G in source.reagents.reagent_list)
-			if (!direc)
-				if(G.id in demand)
-					source.reagents.trans_id_to(target, G.id, transfer_amount)
-			else
-				if(!(G.id in demand))
-					source.reagents.trans_id_to(target, G.id, transfer_amount)
-		activate_pin(2)
-		push_data()
+	if(!source.reagents || !target.reagents)
+		return
+	// FALSE in those procs makes mobs invalid targets.
+	if(!source.is_open_container(FALSE) || istype(source, /mob))
+		return
+	if(target.reagents.maximum_volume - target.reagents.total_volume <= 0)
+		return
+	source.reagents.transfer_to_holder(
+		target,
+		direc ? source.reagents.reagent_volumes - demand : demand,
+		transfer_amount,
+	)
+	activate_pin(2)
+	push_data()
 
 /obj/item/integrated_circuit/reagent/extinguisher
 	name = "integrated extinguisher"
@@ -712,3 +712,79 @@
 	activate_pin(2)
 
 
+/obj/item/integrated_circuit/reagent/purger
+	name = "reagent purger"
+	desc = "A safe way to dispose of unwanted fluids."
+	icon_state = "smoke"
+	extended_desc = "The purger clears its storage when pulsed."
+	atom_flags = OPENCONTAINER
+	volume = 60
+	complexity = 4
+	cooldown_per_use = 1
+	inputs = list()
+	outputs = list(
+		"volume used" = IC_PINTYPE_NUMBER,
+		"self reference" = IC_PINTYPE_SELFREF
+		)
+	activators = list(
+		"purge" = IC_PINTYPE_PULSE_IN,
+		"on purged" = IC_PINTYPE_PULSE_OUT
+		)
+	spawn_flags = IC_SPAWN_RESEARCH
+	power_draw_per_use = 2
+
+/obj/item/integrated_circuit/reagent/purger/on_reagent_change()
+	push_vol()
+
+/obj/item/integrated_circuit/reagent/purger/do_work()
+	reagents.clear_reagents()
+	activate_pin(2)
+
+/obj/item/integrated_circuit/reagent/sink
+	name = "water sink siphon"
+	desc = "Siphons water from nearby sinks and stores it inside its own storage."
+	icon_state = "reagent_pump"
+	atom_flags = OPENCONTAINER
+	complexity = 16
+	inputs = list()
+	outputs = list("volume used" = IC_PINTYPE_NUMBER,"self reference" = IC_PINTYPE_SELFREF)
+	activators = list(
+		"push ref" = 	IC_PINTYPE_PULSE_IN,
+		"siphon sink" = IC_PINTYPE_PULSE_IN,
+		"on success" =	IC_PINTYPE_PULSE_OUT,
+		"on fail"	=	IC_PINTYPE_PULSE_OUT
+		)
+	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
+	origin_tech = list(TECH_ENGINEERING = 2, TECH_DATA = 2, TECH_BIO = 2)
+	volume = 180
+	power_draw_per_use = 10
+
+/obj/item/integrated_circuit/reagent/sink/on_reagent_change()
+	set_pin_data(IC_OUTPUT, 1, reagents.total_volume)
+	push_data()
+
+/obj/item/integrated_circuit/reagent/sink/do_work(ord)
+	switch(ord)
+		if(1)
+			var/list/nearby_things = range(1, get_turf(src))
+			var/list/valid_things = list()
+			for(var/atom/thing in nearby_things)
+				if(thing.type == /obj/structure/sink)
+					valid_things.Add(thing)
+					break
+			if(valid_things.len)
+				reagents.add_reagent("water", volume - reagents.total_volume)
+				set_pin_data(IC_OUTPUT, 1, reagents.total_volume)
+				push_data()
+				activate_pin(3)
+			else
+				activate_pin(4)
+		if(2)
+			set_pin_data(IC_OUTPUT, 2, WEAKREF(src))
+			push_data()
+
+
+/obj/item/integrated_circuit/reagent/sink/interact(mob/user)
+	set_pin_data(IC_OUTPUT, 2, WEAKREF(src))
+	push_data()
+	..()

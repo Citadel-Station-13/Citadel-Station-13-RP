@@ -141,7 +141,7 @@
 
 	if(istype(thing, /obj/item/stack/material) && construction_stage == 5)
 		var/obj/item/stack/material/reinforcing = thing
-		var/datum/material/reinforcing_with = reinforcing.material
+		var/datum/prototype/material/reinforcing_with = reinforcing.material
 		if(reinforcing_with.name == MAT_STEEL) // Steel
 			if(reinforcing.get_amount() < 3)
 				to_chat(user, "<span class='warning'>You need at least 3 [reinforcing.singular_name]\s for this task.</span>")

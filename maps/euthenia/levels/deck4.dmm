@@ -289,7 +289,7 @@
 /obj/machinery/light/fairy{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/main_map/maintenance/deck_four/starboard)
 "bb" = (
 /obj/effect/floor_decal/borderfloor{
@@ -706,7 +706,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rnd/research)
 "cz" = (
 /obj/machinery/light/no_nightshift{
@@ -775,7 +775,7 @@
 /area/main_map/maintenance/deck_four/starboard)
 "cN" = (
 /obj/structure/table/standard,
-/obj/item/gun/energy/taser/xeno,
+/obj/item/gun/projectile/energy/taser/xeno,
 /obj/item/melee/baton/slime/loaded,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
@@ -1043,10 +1043,10 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/item/gun/energy/kinetic_accelerator,
-/obj/item/gun/energy/kinetic_accelerator,
-/obj/item/gun/energy/kinetic_accelerator,
-/obj/item/gun/energy/kinetic_accelerator,
+/obj/item/gun/projectile/energy/kinetic_accelerator,
+/obj/item/gun/projectile/energy/kinetic_accelerator,
+/obj/item/gun/projectile/energy/kinetic_accelerator,
+/obj/item/gun/projectile/energy/kinetic_accelerator,
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "dF" = (
@@ -2023,7 +2023,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rnd/research)
 "gZ" = (
 /obj/structure/closet/emcloset,
@@ -2037,7 +2037,7 @@
 /area/rnd/secure_storage/lower)
 "hb" = (
 /obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/main_map/maintenance/deck_four/starboard)
 "hh" = (
 /obj/machinery/light/no_nightshift{
@@ -2349,8 +2349,8 @@
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck4/fore)
 "im" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab/chamber)
 "in" = (
@@ -2729,7 +2729,7 @@
 	pressure_resistance = 750;
 	target_pressure = 750
 	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab)
 "jt" = (
@@ -5450,7 +5450,7 @@
 /area/main_map/maintenance/deck_four/forward)
 "sM" = (
 /obj/structure/flora/ausbushes/palebush,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/main_map/maintenance/deck_four/starboard)
 "sN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -5581,7 +5581,7 @@
 "tm" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/ausbushes/lavendergrass,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/main_map/maintenance/deck_four/starboard)
 "tn" = (
 /obj/machinery/door/airlock/maintenance/cargo,
@@ -6011,7 +6011,7 @@
 /area/library)
 "uE" = (
 /obj/structure/flora/ausbushes/leafybush,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/main_map/maintenance/deck_four/starboard)
 "uH" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -6752,8 +6752,8 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "xj" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab)
 "xk" = (
@@ -6909,7 +6909,7 @@
 "xI" = (
 /obj/structure/flora/ausbushes/leafybush,
 /obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/main_map/maintenance/deck_four/starboard)
 "xJ" = (
 /obj/effect/floor_decal/industrial/loading{
@@ -7012,8 +7012,8 @@
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology)
 "yd" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab/foyer)
 "yg" = (
@@ -7230,7 +7230,7 @@
 /area/main_map/maintenance/deck_four/aft)
 "yT" = (
 /obj/structure/bed/chair/sofa/brown/corner{
-	dir = 4
+	dir = 1
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/main_map/hallway/deck4/fore)
@@ -7475,8 +7475,8 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/xenobiology)
 "zD" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/effect/paint/purplegray,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/map_helper/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab)
 "zE" = (
@@ -7554,7 +7554,7 @@
 /area/quartermaster/miningdock)
 "zW" = (
 /obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/main_map/maintenance/deck_four/starboard)
 "zX" = (
 /obj/item/storage/excavation,
@@ -8324,7 +8324,7 @@
 /turf/simulated/floor/reinforced/outdoors,
 /area/space)
 "CB" = (
-/obj/machinery/mineral/equipment_vendor,
+/obj/machinery/point_redemption_vendor/mining,
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
 	},
@@ -8990,7 +8990,7 @@
 /turf/simulated/floor/reinforced/overhang,
 /area/space)
 "EF" = (
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rnd/research)
 "EG" = (
 /obj/structure/table/reinforced,
@@ -9322,7 +9322,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rnd/research)
 "FR" = (
 /obj/machinery/light/small/emergency{
@@ -10020,7 +10020,7 @@
 "Iw" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/ausbushes/ppflowers,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rnd/research)
 "Iy" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -10484,7 +10484,7 @@
 /area/rnd/secure_storage/critical)
 "JR" = (
 /obj/machinery/portable_atmospherics/hydroponics/soil,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/main_map/maintenance/deck_four/starboard)
 "JT" = (
 /obj/spawner/window/borosillicate/reinforced/full/firelocks,
@@ -11051,7 +11051,7 @@
 /turf/simulated/floor/wood,
 /area/library)
 "LR" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab/storage)
 "LT" = (
@@ -11249,7 +11249,7 @@
 "MC" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/ausbushes/ywflowers,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/main_map/maintenance/deck_four/starboard)
 "MD" = (
 /turf/simulated/floor/reinforced/outdoors,
@@ -11335,7 +11335,7 @@
 	dir = 4
 	},
 /obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/main_map/maintenance/deck_four/starboard)
 "MS" = (
 /obj/structure/transit_tube/high_velocity{
@@ -11658,8 +11658,8 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/secure_storage/critical/records)
 "NS" = (
-/obj/spawner/window/low_wall/full/nogrille/firelocks,
-/obj/effect/paint/violet,
+/obj/spawner/window/low_wall/nogrille/firelocks,
+/obj/map_helper/paint/violet,
 /turf/simulated/floor/plating,
 /area/exploration/explorer_prep)
 "NU" = (
@@ -12149,7 +12149,7 @@
 "PF" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/ausbushes/pointybush,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/main_map/maintenance/deck_four/starboard)
 "PG" = (
 /obj/machinery/ai_slipper,
@@ -12457,7 +12457,7 @@
 /area/main_map/hallway/deck4)
 "QB" = (
 /obj/structure/flora/ausbushes/pointybush,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/main_map/maintenance/deck_four/starboard)
 "QC" = (
 /obj/structure/railing{
@@ -12876,7 +12876,7 @@
 "Sb" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/main_map/maintenance/deck_four/starboard)
 "Sc" = (
 /obj/structure/table/standard,
@@ -13214,7 +13214,7 @@
 /area/exploration/explorer_prep)
 "Tg" = (
 /obj/structure/table/standard,
-/obj/item/gun/energy/taser/xeno,
+/obj/item/gun/projectile/energy/taser/xeno,
 /obj/item/multitool,
 /obj/structure/window/reinforced{
 	dir = 8
@@ -13664,7 +13664,7 @@
 /area/library)
 "UA" = (
 /obj/structure/bed/chair/sofa/brown/corner{
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/main_map/hallway/deck4/fore)
@@ -14372,7 +14372,7 @@
 /obj/machinery/light/no_nightshift{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rnd/research)
 "Xc" = (
 /obj/machinery/door/airlock/maintenance/rnd{
@@ -14823,7 +14823,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rnd/research)
 "YB" = (
 /obj/effect/floor_decal/techfloor,
@@ -14888,7 +14888,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/anomaly_lab/containment_two)
 "YR" = (
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/main_map/maintenance/deck_four/starboard)
 "YS" = (
 /obj/machinery/light/no_nightshift,
@@ -15013,7 +15013,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/rnd/research)
 "Zu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{

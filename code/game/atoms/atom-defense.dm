@@ -5,6 +5,14 @@
 
 // todo: everything needs comsigs comsigs comsigs
 
+//* Targeting *//
+
+/**
+ * Checks if we should be targetable in melee.
+ */
+/atom/proc/is_melee_targetable(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	return FALSE
+
 //* External API / Damage Receiving *//
 
 /**
@@ -28,40 +36,70 @@
 	SEND_SIGNAL(src, COMSIG_ATOM_EX_ACT, power, dir, E)
 	return power
 
-/**
- * called on melee hit
- *
- * todo: add clickchain datum, instead of multiplier
- *
- * * check CLICKCHAIN_FLAGS_* as needed, especially UNCONDITIONAL_ABORT and ATTACK_ABORT
- * * clickchain flags are sent down through parent calls.
- *
- * @params
- * * user - person attacking
- * * weapon - weapon used
- * * target_zone - zone targeted
- * * mult - damage multiplier
- *
- * @return clickchain flags to append
- */
-/atom/proc/melee_act(mob/user, obj/item/weapon, target_zone, datum/event_args/actor/clickchain/clickchain)
-	return CLICKCHAIN_DO_NOT_ATTACK
+//* External API / Damage Receiving - Melee *//
 
 /**
- * called on unarmed melee hit
+ * called on incoming item melee
  *
- * todo: add clickchain datum, instead of multiplier
+ * * At this point, the item is processing a hit on us.
+ * * check CLICKCHAIN_FLAGS_* as needed, especially MISSED, UNCONDITIONAL_ABORT, and ATTACK_ABORT
+ * * clickchain flags are sent down through parent calls, so check `.` after `..()`
  *
  * @params
- * * user - person attacking
- * * style - unarmed attack datum
+ * * attacker - person attacking
+ * * weapon - weapon used, if any
+ * * style - attack style
  * * target_zone - zone targeted
- * * mult - damage multiplier
+ * * clickchain - (optional) clickchain used
+ * * clickchain_flags - (optional) clickchain flags used
  *
- * @return clickchain flags to append
+ * @return clickchain flags
  */
-/atom/proc/unarmed_act(mob/attacker, datum/unarmed_attack/style, target_zone, datum/event_args/actor/clickchain/clickchain)
-	return CLICKCHAIN_DO_NOT_ATTACK
+/atom/proc/melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/weapon/style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	. = clickchain_flags
+	var/shieldcall_returns = atom_shieldcall_handle_melee(clickchain, ., weapon, style, FALSE, NONE)
+	if(shieldcall_returns & SHIELDCALL_FLAGS_BLOCK_ATTACK)
+		. |= CLICKCHAIN_FULL_BLOCKED
+	// todo: shieldcall being able to force a miss
+
+/**
+ * Called on a melee going through, whether or not it was blocked
+ *
+ * * This is in charge of calling the actual attack impact.
+ *
+ * @params
+ * * attacker - person attacking
+ * * weapon - weapon used, if any
+ * * style - attack style
+ * * target_zone - zone targeted
+ * * clickchain - (optional) clickchain used
+ * * clickchain_flags - (optional) clickchain flags used
+ *
+ * @return clickchain flags
+ */
+/atom/proc/on_melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/attack_style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	. = attack_style.perform_attack_impact(attacker, src, clickchain_flags & CLICKCHAIN_ATTACK_MISSED, weapon, clickchain, clickchain_flags)
+
+/**
+ * Called to react to a melee damage instance.
+ *
+ * * Treated as an optional call; legacy code will generally not call this.
+ * * Normally called from attack_style's standard damage instance handling
+ * * This is called after the damage instance is applied; this means 'damage instance reuslts' are read only.
+ *
+ * @params
+ * * attacker - person attacking
+ * * weapon - (optional) weapon used, if any
+ * * style - attack style
+ * * target_zone - zone targeted
+ * * clickchain - (optional) clickchain used
+ * * clickchain_flags - (optional) clickchain flags used
+ * * damage_instance_results - (optional) (read-only) SHIELDCALL_ARG_* indexed arg returns from the damage instance resolving
+ */
+/atom/proc/on_melee_impact(mob/attacker, obj/item/weapon, datum/melee_attack/attack_style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags, list/damage_instance_results)
+	return
+
+//* External API / Damage Receiving - Projectiles *//
 
 /**
  * Because this is the proc that calls on_impact(), handling is necessarily
@@ -123,7 +161,7 @@
  *
  * * This basically semantically means 'we are being hit, do effects for it'.
  * * This is called before the projectile-side impact, which is where the damage is usually inflicted.
- * * Modify `impact_flags` directly before ..(), and `.` after ..()
+ * * Modify `impact_flags` directly before ..(), and via the `.` variable after ..()
  * * Check `.` after ..() if it isn't the last call so you know when to abort the processing as needed.
  * * Args will propagate **up** (closer to /atom) `..()` calls, but not back down (if base `/atom` changes something you won't get it on your sub-type)
  * * For this reason `bullet_act_args` is provided so you can mutably edit it. Do **not** edit the projectile or the impact flags; return the impact flags for automatic addition.
@@ -132,9 +170,135 @@
  * * proj - hitting projectile; immutable
  * * impact_flags - impact flags; immutable. edit directly before ..() call, return edited values after.
  * * bullet_act_args - access to the rest of the args in `bullet_act`. Mutable, except for the projectile and the impact flags.
+ *
+ * @return mutated impact flags
  */
 /atom/proc/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	SHOULD_NOT_SLEEP(TRUE)
+	var/resolved_impact_sound = hitsound_projectile(proj, impact_flags, bullet_act_args)
+	if(resolved_impact_sound)
+		playsound(src, resolved_impact_sound, 75, TRUE)
+	if(!(impact_flags & (PROJECTILE_IMPACT_BLOCKED | PROJECTILE_IMPACT_SKIP_STANDARD_DAMAGE)))
+		impact_flags |= proj.inflict_impact_damage(src, bullet_act_args[BULLET_ACT_ARG_EFFICIENCY], impact_flags, bullet_act_args[BULLET_ACT_ARG_ZONE])
 	return impact_flags
+
+//* External API / Damage Receiving - Electric *//
+
+/**
+ * Called to inflict an electrical shock on this atom.
+ *
+ * * Passing in no damage / stun power is perfectly valid; you can get calculated 'efficiency' / energy used
+ *   by getting returned args.
+ *
+ * @params
+ * * energy - energy, in **kilojoules**
+ * * damage - 'intended' burn damage.
+ *            this should be scaled to an intent of being used on a carbon-type.
+ *            do not scale this to things like walls / high-hp structures. most structures
+ *            don't get damaged by electric shocks anyways.
+ * * stun_power - 'intended' agony / pain / stun force
+ *            this should be scaled to an intent of being used on a carbon-type as pain damage.
+ *            that said, not only carbon-types are allowed to use this.
+ * * flags - ELECTROCUTE_ACT_* flags
+ * * hit_zone - if specified and non-internal, this zone will be used to check armor.
+ * * source - the source of the electric shock, if provided.
+ *            any movable is a valid value; you are expected to handle touch (unspecified / obj / mob),
+ *            and projectile sources if you are using this.
+ * * shared_blackboard - (optional) list to both inject into and retrieve data from.
+ *                as a word of warning, this list **will** be a shared list if being used
+ *                in things like multi-hit lightning bolts; we do not make a new list per atom.
+ *
+ * @return modified `electrocute_act` args list, indiced with `ELECTROCUTE_ACT_ARG_*` #define indices.
+ */
+/atom/proc/electrocute(energy, damage, stun_power, flags, hit_zone, atom/movable/source, list/shared_blackboard)
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	return electrocute_act(1, energy, damage, stun_power, flags, hit_zone, source, shared_blackboard, 0)
+
+/**
+ * Called upon receiving an electrical shock of any kind
+ *
+ * * This proc-chain should modify arguments directly before calling ..()
+ * * Effects are handled at the base by calling on_electrocute_act()
+ *
+ * @params
+ * * efficiency - effect multiplier. this should be multiplied to damage / agony / energy / etc
+ *                to get the approximate amount that actually hit us.
+ * * energy - energy, in **kilojoules**
+ * * damage - 'intended' burn damage.
+ *            this should be scaled to an intent of being used on a carbon-type.
+ *            do not scale this to things like walls / high-hp structures. most structures
+ *            don't get damaged by electric shocks anyways.
+ * * stun_power - 'intended' agony / pain / stun force
+ *            this should be scaled to an intent of being used on a carbon-type as pain damage.
+ *            that said, not only carbon-types are allowed to use this.
+ * * flags - ELECTROCUTE_ACT_* flags
+ * * hit_zone - if specified and non-internal, this zone will be used to check armor.
+ * * source - the source of the electric shock, if provided.
+ *            any movable is a valid value; you are expected to handle touch (unspecified / obj / mob),
+ *            and projectile sources if you are using this.
+ * * shared_blackboard - (optional) list to both inject into and retrieve data from.
+ *                as a word of warning, this list **will** be a shared list if being used
+ *                in things like multi-hit lightning bolts; we do not make a new list per atom.
+ * * out_energy_consumed - This will be set to the return value of `on_electrocute_act()`.
+ *
+ * @return modified args
+ */
+/atom/proc/electrocute_act(efficiency, energy, damage, stun_power, flags, hit_zone, atom/movable/source, list/shared_blackboard, out_energy_consumed)
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+	PROTECTED_PROC(TRUE)
+	out_energy_consumed = on_electrocute_act(efficiency, energy, damage, stun_power, flags, hit_zone, source, shared_blackboard, out_energy_consumed)
+	return args.Copy()
+
+/**
+ * Called to handle effects of receiving an electrical shock.
+ *
+ * * This is called by `electrocute_act` to inflict effects.
+ * * Modifying args is still allowed here, but will **not** be returned to the caller.
+ *
+ * @params
+ * * efficiency - effect multiplier. this should be multiplied to damage / agony / energy / etc
+ *                to get the approximate amount that actually hit us.
+ * * energy - energy, in **kilojoules**
+ * * damage - 'intended' burn damage.
+ *            this should be scaled to an intent of being used on a carbon-type as pain damage.
+ *            do not scale this to things like walls / high-hp structures. most structures
+ *            don't get damaged by electric shocks anyways.
+ * * stun_power - 'intended' agony / pain / stun force
+ *            this should be scaled to an intent of being used on a carbon-type.
+ *            that said, not only carbon-types are allowed to use this.
+ * * flags - ELECTROCUTE_ACT_* flags
+ * * hit_zone - if specified and non-internal, this zone will be used to check armor.
+ * * source - the source of the electric shock, if provided.
+ *            any movable is a valid value; you are expected to handle touch (unspecified / obj / mob),
+ *            and projectile sources if you are using this.
+ * * shared_blackboard - (optional) list to both inject into and retrieve data from.
+ *                as a word of warning, this list **will** be a shared list if being used
+ *                in things like multi-hit lightning bolts; we do not make a new list per atom.
+ *
+ * @return used energy in kilojoules
+ */
+/atom/proc/on_electrocute_act(efficiency, energy, damage, stun_power, flags, hit_zone, atom/movable/source, list/shared_blackboard)
+	SHOULD_CALL_PARENT(TRUE)
+	PROTECTED_PROC(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+	return 0
+
+//* FX API *//
+
+/**
+ * Gets the COMBAT_FX_* enum that we count as for a given hit
+ *
+ * @params
+ * * attack_type - ATTACK_TYPE_* enum
+ * * weapon - (optional) the value of this depends on the attack type; check defines folder for attack type
+ * * target_zone - (optional) where were we hit
+ *
+ * @return COMBAT_IMPACT_FX_* classifier
+ */
+/atom/proc/get_combat_fx_classifier(attack_type, datum/attack_source, target_zone)
+	return COMBAT_IMPACT_FX_GENERIC
 
 //* Hitsound API *//
 
@@ -150,14 +314,14 @@
  * * attack_type - attack type enum like melee / projectile / thrown / unarmed / etc
  * * weapon - attacking /obj/item for melee / thrown, /obj/projectile for ranged, /mob for unarmed
  */
-/atom/proc/hitsound_override(damage_type, damage_mode, attack_type, datum/weapon)
+/atom/proc/hitsound_override(damage_type, damage_mode, attack_type, datum/attack_source)
 	return // default is null
 
 /atom/proc/hitsound_melee(obj/item/I)
 	. = I.attacksound_override(src, ATTACK_TYPE_MELEE)
 	if(!isnull(.))
 		return
-	. = hitsound_override(I.damage_type, I.damage_mode, ATTACK_TYPE_MELEE, I)
+	. = hitsound_override(I.damage_type, I.damage_mode, ATTACK_TYPE_MELEE)
 	if(.)
 		return
 	. = (I.damage_type == DAMAGE_TYPE_BURN? hit_sound_burn : hit_sound_brute) || I.attack_sound
@@ -171,24 +335,32 @@
 		else
 			return "swing_hit"
 
-/atom/proc/hitsound_projectile(obj/projectile/P)
+/atom/proc/hitsound_projectile(obj/projectile/P, impact_flags, list/bullet_act_args)
 	//? todo: projectile gets final say
 	. = hitsound_override(P.damage_type, P.damage_mode, ATTACK_TYPE_PROJECTILE, P)
 	if(.)
 		return
-	return islist(P.impact_sounds)? pick(P.impact_sounds) : P.impact_sounds
+	return P.resolve_impact_sfx(get_combat_fx_classifier(ATTACK_TYPE_PROJECTILE, P, bullet_act_args[BULLET_ACT_ARG_ZONE]), src)
 
-/atom/proc/hitsound_throwhit(obj/item/I)
-	. = I.attacksound_override(src, ATTACK_TYPE_THROWN)
+/atom/proc/hitsound_throwhit(atom/movable/impacting)
+	var/resolved_damage_type = DAMAGE_TYPE_BRUTE
+	var/resolved_damage_mode = NONE
+	var/resolved_impacting_attack_sound
+	if(isitem(impacting))
+		var/obj/item/casted_item = impacting
+		resolved_damage_type = casted_item.damage_type
+		resolved_damage_mode = casted_item.damage_mode
+		resolved_impacting_attack_sound = casted_item.attack_sound
+		. = casted_item.attacksound_override(src, ATTACK_TYPE_THROWN)
 	if(!isnull(.))
 		return
-	. = hitsound_override(I.damage_type, I.damage_mode, ATTACK_TYPE_THROWN, I)
+	. = hitsound_override(resolved_damage_type, resolved_damage_mode, ATTACK_TYPE_THROWN, impacting)
 	if(.)
 		return
-	. = (I.damage_type == DAMAGE_TYPE_BURN? hit_sound_burn : hit_sound_brute)  || I.attack_sound
+	. = (resolved_damage_type == DAMAGE_TYPE_BURN? hit_sound_burn : hit_sound_brute) || resolved_impacting_attack_sound
 	if(.)
 		return
-	switch(I.damage_type)
+	switch(resolved_damage_type)
 		if(DAMAGE_TYPE_BRUTE)
 			return "swing_hit"
 		if(DAMAGE_TYPE_BURN)
@@ -196,9 +368,9 @@
 		else
 			return "swing_hit"
 
-/atom/proc/hitsound_unarmed(mob/M, datum/unarmed_attack/style)
+/atom/proc/hitsound_unarmed(mob/M, datum/melee_attack/unarmed/style)
 	//? todo: style gets final say
-	. = hitsound_override(M, style.damage_mode, ATTACK_TYPE_UNARMED, style)
+	. = hitsound_override(M, style.damage_mode, ATTACK_TYPE_MELEE)
 	if(.)
 		return
 	// todo: way to override this from style side? we don't just want hitsound brute/burn.
@@ -296,6 +468,20 @@
 	run_armorcalls(args, FALSE)
 	return args.Copy()
 
+/**
+ * Runs a damage instance against armor
+ *
+ * * This is a low level proc. Make sure you undersatnd how shieldcalls work [__DEFINES/combat/shieldcall.dm].
+ */
+/atom/proc/run_armorcalls(list/shieldcall_args, fake_attack)
+	SHOULD_NOT_SLEEP(TRUE)
+	PROTECTED_PROC(TRUE)
+	SEND_SIGNAL(src, COMSIG_ATOM_ARMORCALL, shieldcall_args, fake_attack)
+	if(shieldcall_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAG_TERMINATE)
+		return
+	var/datum/armor/our_armor = fetch_armor()
+	our_armor.handle_shieldcall(shieldcall_args, fake_attack)
+
 //* Shieldcalls *//
 
 /**
@@ -371,10 +557,11 @@
 /**
  * Runs a damage instance against shieldcalls
  *
- * * This is a low level proc. Make sure you undersatnd how shieldcalls work [__DEFINES/combat/shieldcall.dm].
+ * * This is a low level proc. Make sure you understand how shieldcalls work [__DEFINES/combat/shieldcall.dm].
  */
 /atom/proc/run_shieldcalls(list/shieldcall_args, fake_attack)
 	SHOULD_NOT_SLEEP(TRUE)
+	PROTECTED_PROC(TRUE)
 	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCALL, shieldcall_args, fake_attack)
 	if(shieldcall_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAG_TERMINATE)
 		return
@@ -384,19 +571,6 @@
 		calling.handle_shieldcall(src, args, fake_attack)
 		if(shieldcall_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAG_TERMINATE)
 			break
-
-/**
- * Runs a damage instance against armor
- *
- * * This is a low level proc. Make sure you undersatnd how shieldcalls work [__DEFINES/combat/shieldcall.dm].
- */
-/atom/proc/run_armorcalls(list/shieldcall_args, fake_attack)
-	SHOULD_NOT_SLEEP(TRUE)
-	SEND_SIGNAL(src, COMSIG_ATOM_ARMORCALL, shieldcall_args, fake_attack)
-	if(shieldcall_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAG_TERMINATE)
-		return
-	var/datum/armor/our_armor = fetch_armor()
-	our_armor.handle_shieldcall(shieldcall_args, fake_attack)
 
 /atom/proc/register_shieldcall(datum/shieldcall/delegate)
 	SHOULD_NOT_SLEEP(TRUE)
@@ -415,75 +589,51 @@
  * * Use this instead of manually looping, as it fires a signal that makes things like /datum/passive_parry spin up.
  *
  * @params
- * * e_args (optional) the clickchain event, if any; **This is mutable.**
+ * * clickchain (optional) the clickchain event, if any; **This is mutable.**
+ * * clickchain_flags (optional) the clickchain flags being used
  * * contact_flags - SHIELDCALL_CONTACT_FLAG_*
  * * contact_specific - SHIELDCALL_CONTACT_SPECIFIC_*
  * * fake_attack - just checking!
  * * shieldcall_flags - shieldcall flags. [code/__DEFINES/combat/shieldcall.dm]
- * * clickchain_flags - clickchain flags. [code/__DEFINES/procs/clickcode.dm]
  *
  * @return SHIELDCALL_FLAG_* flags
  */
-/atom/proc/atom_shieldcall_handle_touch(datum/event_args/actor/clickchain/e_args, contact_flags, contact_specific, fake_attack, shieldcall_flags)
+/atom/proc/atom_shieldcall_handle_touch(datum/event_args/actor/clickchain/clickchain, clickchain_flags, contact_flags, contact_specific, fake_attack, shieldcall_flags)
 	SHOULD_NOT_SLEEP(TRUE)
 	// cannot parry yourself
-	if(e_args.performer == src)
+	if(clickchain?.performer == src)
 		return shieldcall_flags
 	// send query signal
 	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCALL_ITERATION, ATOM_SHIELDCALL_ITERATING_TOUCH)
 	. = shieldcall_flags
 	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
-		. |= shieldcall.handle_touch(src, ., fake_attack, e_args, contact_flags, contact_specific)
+		. |= shieldcall.handle_touch(src, ., fake_attack, clickchain, clickchain_flags, contact_flags, contact_specific)
 
 /**
- * Runs shieldcalls for handle_unarmed_melee
+ * Runs shieldcalls for handle_melee
  *
  * * Use this instead of manually looping, as it fires a signal that makes things like /datum/passive_parry spin up.
  *
  * @params
- * * style - the unarmed_attack datum being used
- * * e_args (optional) the clickchain event, if any; **This is mutable.**
+ * * clickchain (optional) the clickchain event, if any; **This is mutable.**
+ * * clickchain_flags (optional) the clickchain flags being used
+ * * weapon - (optional) the item being used to swing with
+ * * style - the melee_attack/weapon datum being used
  * * fake_attack - (optional) just checking!
  * * shieldcall_flags - (optional) shieldcall flags. [code/__DEFINES/combat/shieldcall.dm]
- * * clickchain_flags - (optional) clickchain flags. [code/__DEFINES/procs/clickcode.dm]
  *
  * @return SHIELDCALL_FLAG_* flags
  */
-/atom/proc/atom_shieldcall_handle_unarmed_melee(datum/unarmed_attack/style, datum/event_args/actor/clickchain/e_args, fake_attack, shieldcall_flags, clickchain_flags)
+/atom/proc/atom_shieldcall_handle_melee(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/weapon, datum/melee_attack/weapon/style, fake_attack, shieldcall_flags)
 	SHOULD_NOT_SLEEP(TRUE)
 	// cannot parry yourself
-	if(e_args.performer == src)
+	if(clickchain.performer == src)
 		return shieldcall_flags
 	// send query signal
-	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCALL_ITERATION, ATOM_SHIELDCALL_ITERATING_UNARMED_MELEE)
+	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCALL_ITERATION, ATOM_SHIELDCALL_ITERATING_MELEE)
 	. = shieldcall_flags
 	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
-		. |= shieldcall.handle_unarmed_melee(src, ., fake_attack, style, e_args)
-
-/**
- * Runs shieldcalls for handle_item_melee
- *
- * * Use this instead of manually looping, as it fires a signal that makes things like /datum/passive_parry spin up.
- *
- * @params
- * * weapon - the item being used to swing with
- * * e_args - (optional) the clickchain event, if any; **This is mutable.**
- * * fake_attack - (optional) just checking!
- * * shieldcall_flags - (optional) shieldcall flags. [code/__DEFINES/combat/shieldcall.dm]
- * * clickchain_flags - (optional) clickchain flags. [code/__DEFINES/procs/clickcode.dm]
- *
- * @return SHIELDCALL_FLAG_* flags
- */
-/atom/proc/atom_shieldcall_handle_item_melee(obj/item/weapon, datum/event_args/actor/clickchain/e_args, fake_attack, shieldcall_flags, clickchain_flags)
-	SHOULD_NOT_SLEEP(TRUE)
-	// cannot parry yourself
-	if(e_args.performer == src)
-		return shieldcall_flags
-	// send query signal
-	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCALL_ITERATION, ATOM_SHIELDCALL_ITERATING_ITEM_MELEE)
-	. = shieldcall_flags
-	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
-		. |= shieldcall.handle_item_melee(src, ., fake_attack, weapon, e_args)
+		. |= shieldcall.handle_melee(src, ., fake_attack, clickchain, clickchain_flags, weapon, style)
 
 /**
  * Runs shieldcalls for handle_bullet
@@ -492,7 +642,6 @@
  *
  * @params
  * * bullet_act_args - indexed list of bullet_act args.
- * * shieldcall_returns - existing returns from other shieldcalls
  * * fake_attack - just checking!
  * * shieldcall_flags - shieldcall flags. [code/__DEFINES/combat/shieldcall.dm]
  *

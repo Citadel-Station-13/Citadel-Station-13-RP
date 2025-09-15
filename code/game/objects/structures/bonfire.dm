@@ -22,7 +22,7 @@
 	var/next_fuel_consumption = 0
 	/// If the bonfire has a grill attached.
 	var/grill = FALSE
-	var/datum/material/material
+	var/datum/prototype/material/material
 	var/set_temperature = T0C + 30	//K
 	var/heating_power = 80000
 
@@ -200,6 +200,7 @@
 
 /obj/structure/bonfire/update_icon()
 	cut_overlays()
+	. = ..()
 	var/list/overlays_to_add = list()
 	if(burning)
 		var/state
@@ -373,6 +374,7 @@
 
 /obj/structure/fireplace/update_icon()
 	cut_overlays()
+	. = ..()
 	if(burning)
 		var/state
 		switch(get_fuel_amount())

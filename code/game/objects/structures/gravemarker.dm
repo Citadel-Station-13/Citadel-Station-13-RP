@@ -18,7 +18,7 @@
 	var/epitaph = ""		//A quick little blurb
 //	var/dir_locked = 0		//Can it be spun?	Not currently implemented
 
-	var/datum/material/material
+	var/datum/prototype/material/material
 
 /obj/structure/gravemarker/Initialize(mapload, material_name)
 	. = ..()
@@ -28,7 +28,7 @@
 	if(!material)
 		qdel(src)
 		return
-	add_atom_colour(material.icon_colour, FIXED_COLOUR_PRIORITY)
+	add_atom_color(material.icon_colour)
 
 /obj/structure/gravemarker/examine(mob/user, dist)
 	. = ..()
@@ -53,7 +53,7 @@
 
 /obj/structure/gravemarker/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(I.is_screwdriver())
-		var/datum/material/material = get_primary_material()
+		var/datum/prototype/material/material = get_primary_material()
 		var/time_mult = (material.hardness > 0)? material.hardness / 100 : 1 / (material.hardness / 100)
 		var/carving_1 = sanitizeSafe(input(user, "Who is \the [src.name] for?", "Gravestone Naming", null)  as text, MAX_NAME_LEN)
 		if(carving_1)
@@ -71,7 +71,7 @@
 				update_icon()
 		return
 	if(I.is_wrench())
-		var/datum/material/material = get_primary_material()
+		var/datum/prototype/material/material = get_primary_material()
 		var/time_mult = (material.hardness > 0)? material.hardness / 100 : 1 / (material.hardness / 100)
 		user.visible_message("[user] starts taking down \the [src.name].", "You start taking down \the [src.name].")
 		if(do_after(user, time_mult * 2 SECONDS * I.tool_speed))

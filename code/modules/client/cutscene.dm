@@ -1,5 +1,6 @@
 // todo: if byond ever gets threaded browsers, we're standardizing tgui.html and tgui_window.dm
 //       because manually reimplementing this shit is driving me nuts.
+// todo: the cutscene system is kinda jank; we should just do lobbybrowser instead of using it for that.
 
 /client/proc/init_cutscene_system()
 	set waitfor = FALSE
@@ -146,6 +147,11 @@
 	push_dispose(C)
 	C.cutscene_browser = FALSE
 	winset(C, SKIN_BROWSER_ID_CUTSCENE, "is-visible=0")
+	// just in case
+	spawn(2 SECONDS)
+		// no QDELETED check because we'll already be deleted
+		if(winget(C, "[SKIN_BROWSER_ID_CUTSCENE]", "is-visible") == "true")
+			winset(C, SKIN_BROWSER_ID_CUTSCENE, "is-visible=0")
 
 /datum/cutscene/browser/proc/push_build(client/C, raw_html = build_inner_html())
 	C << output("[url_encode(json_encode(list("raw_html" = raw_html)))]", "[SKIN_BROWSER_ID_CUTSCENE]:build")

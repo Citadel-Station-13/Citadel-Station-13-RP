@@ -1,5 +1,3 @@
-//* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /proc/generate_procedural_gas(path, list/arguments)
 	var/datum/procedural_gas/instance = new path(arglist(arguments))

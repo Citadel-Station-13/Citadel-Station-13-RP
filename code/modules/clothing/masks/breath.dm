@@ -17,13 +17,13 @@
 		hanging = !hanging
 		if (hanging)
 			gas_transfer_coefficient = 1
-			body_cover_flags = body_cover_flags & ~FACE
+			set_body_cover_flags(body_cover_flags & ~FACE)
 			clothing_flags = clothing_flags & ~ALLOWINTERNALS
 			icon_state = "breathdown"
 			to_chat(user, "Your mask is now hanging on your neck.")
 		else
 			gas_transfer_coefficient = initial(gas_transfer_coefficient)
-			body_cover_flags = initial(body_cover_flags)
+			set_body_cover_flags(initial(body_cover_flags))
 			clothing_flags = initial(clothing_flags)
 			icon_state = initial(icon_state)
 			to_chat(user, "You pull the mask up to cover your face.")

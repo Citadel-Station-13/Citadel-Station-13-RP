@@ -189,7 +189,6 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/newscaster/LateInitialize()
-	. = ..()
 	node = get_exonet_node()
 
 /obj/machinery/newscaster/Destroy()
@@ -197,13 +196,14 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 	return ..()
 
 /obj/machinery/newscaster/update_icon()
+	cut_overlays()
+	. = ..()
+
 	if(!ispowered || isbroken)
 		icon_state = "newscaster_off"
 		if(isbroken) //If the thing is smashed, add crack overlay on top of the unpowered sprite.
 			set_overlays("crack3")
 		return
-
-	cut_overlays() //reset overlays
 
 	if(news_network.wanted_issue) //wanted icon state, there can be no overlays on it as it's a priority message
 		icon_state = "newscaster_wanted"
@@ -216,7 +216,6 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 		add_overlay("crack[hitstaken]")
 
 	icon_state = "newscaster_normal"
-	return
 
 /obj/machinery/newscaster/power_change()
 	if(isbroken) //Broken shit can't be powered.

@@ -51,9 +51,19 @@
 	var/list/datum/modules_processed
 
 /**
+ * Linter check, do not call.
+ */
+/proc/lint__check_tgui_new_doesnt_sleep()
+	SHOULD_NOT_SLEEP(TRUE)
+	var/datum/tgui/tgui
+	tgui.New()
+
+/**
  * public
  *
  * Create a new UI.
+ *
+ * * Does not block.
  *
  * required user mob The mob who opened/is using the UI.
  * required src_object datum The object or datum which owns the UI.
@@ -91,6 +101,8 @@
  *
  * Open this UI (and initialize it with data).
  *
+ * This proc does not block.
+ *
  * @params
  * * data - force certain data sends
  * * modules - force certain module sends
@@ -98,6 +110,7 @@
  * return bool - TRUE if a new pooled window is opened, FALSE in all other situations including if a new pooled window didn't open because one already exists.
  */
 /datum/tgui/proc/open(data, modules)
+	SHOULD_NOT_SLEEP(TRUE)
 	if(!user.client)
 		return FALSE
 	if(window)
@@ -108,8 +121,23 @@
 	window = SStgui.request_pooled_window(user)
 	if(!window)
 		return FALSE
+	// point of no return; call initialize() asynchronously.
 	opened_at = world.time
 	window.acquire_lock(src)
+	SStgui.on_open(src)
+	// defer initialize() to after current call chain.
+	spawn(0)
+		initialize(data, modules)
+	return TRUE
+
+/**
+ * Initializes the window.
+ *
+ * * Separate from open() so that open() can be non-blocking.
+ */
+/datum/tgui/proc/initialize(data, modules)
+	// todo: this is a blocking proc. src_object can be deleted at any time between the blocking procs.
+	//       we need sane handling of deletion order, of runtimes happen.
 	if(!window.is_ready())
 		window.initialize(
 			strict_mode = TRUE,
@@ -144,7 +172,6 @@
 	))
 	if(mouse_hooked)
 		window.set_mouse_macro()
-	SStgui.on_open(src)
 	// todo: should these hooks be here?
 	src_object.on_ui_open(user, src)
 	for(var/datum/module as anything in modules_registered)
@@ -165,6 +192,7 @@
 	if(closing)
 		return
 	closing = TRUE
+	SStgui.on_close(src)
 	// If we don't have window_id, open proc did not have the opportunity
 	// to finish, therefore it's safe to skip this whole block.
 	if(window)
@@ -173,7 +201,6 @@
 		// the error message properly.
 		window.release_lock()
 		window.close(can_be_suspended)
-		SStgui.on_close(src)
 	state = null
 	if(parent_ui)
 		parent_ui.children -= src
@@ -385,7 +412,7 @@
 					window = window,
 					src_object = src_object)
 				process_status()
-				if(src_object.ui_act(action, payload, src))
+				if(src_object.ui_act(action, payload, src, new /datum/event_args/actor(usr)))
 					SStgui.update_uis(src_object)
 				return FALSE
 			if("mod/")	// module act
@@ -440,13 +467,16 @@
  *
  * required data The data to send
  * optional force bool Send an update even if UI is not interactive.
+ *
+ * @return TRUE if data was sent, FALSE otherwise.
  */
 /datum/tgui/proc/push_data(data, force)
 	if(!user.client || !initialized || closing)
-		return
+		return FALSE
 	if(!force && status < UI_UPDATE)
-		return
+		return FALSE
 	window.send_message("data", data)
+	return TRUE
 
 /**
  * public
@@ -461,13 +491,16 @@
  * @params
  * * updates - list(id = list(data...), ...) of modules to update.
  * * force - (optional) send update even if UI is not interactive
+ *
+ * @return TRUE if data was sent, FALSE otherwise.
  */
 /datum/tgui/proc/push_modules(list/updates, force)
 	if(isnull(user.client) || !initialized || closing)
-		return
+		return FALSE
 	if(!force && status < UI_UPDATE)
-		return
+		return FALSE
 	window.send_message("modules", updates)
+	return TRUE
 
 //* Module System *//
 
@@ -526,3 +559,8 @@
  */
 /datum/tgui/proc/still_interactive()
 	return status == UI_INTERACTIVE
+
+//* Setters *//
+
+/datum/tgui/proc/set_title(string)
+	title = string

@@ -34,7 +34,7 @@
 	projectiletype = /obj/projectile/beam/gamma
 	projectilesound = 'sound/items/geiger/ext3.ogg'
 
-	base_attack_cooldown = 30 //As the projectile is AP Hitscan it fires relatively slowly
+	base_attack_cooldown = 7.5 //The damage is so low it needs to fire fast to actually be effective at killing anything
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged
 
 /datum/category_item/catalogue/fauna/nuclear_spirits/gammawraith
@@ -46,7 +46,7 @@
 /mob/living/simple_mob/construct/nuclear/gammawraith/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/horror_aura)
-	AddComponent(/datum/component/radioactive, 500 , 0, TRUE, RAD_FALLOFF_CONTAMINATION_NORMAL)
+	AddComponent(/datum/component/radioactive, 750 , 0, TRUE, RAD_FALLOFF_CONTAMINATION_NORMAL)
 
 /mob/living/simple_mob/construct/nuclear/gammawraith/handle_light()
 	. = ..()

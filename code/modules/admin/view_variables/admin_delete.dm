@@ -16,9 +16,9 @@
 		//SSblackbox.record_feedback("tally", "admin_verb", 1, "Delete") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 		if(isturf(D))
 			var/turf/T = D
-			T.ScrapeAway()
+			T.vv_delete()
 		else
 			vv_update_display(D, "deleted", VV_MSG_DELETED)
-			qdel(D)
+			D.vv_delete()
 			if(!QDELETED(D))
 				vv_update_display(D, "deleted", "")

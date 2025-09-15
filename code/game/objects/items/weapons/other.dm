@@ -110,7 +110,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "whitecane"
 
-/obj/item/cane/whitecane/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/cane/whitecane/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HELP)
 		user.visible_message(SPAN_NOTICE("\The [user] has lightly tapped [target] on the ankle with their white cane!"))
 		return
@@ -160,14 +160,9 @@
 		damage_force = 3
 		attack_verb = list("hit", "poked", "prodded")
 
-	if(istype(user,/mob/living/carbon/human))
-		var/mob/living/carbon/human/H = user
-		H.update_inv_l_hand()
-		H.update_inv_r_hand()
-
+	update_worn_icon()
 	playsound(src, 'sound/weapons/empty.ogg', 50, 1)
 	add_fingerprint(user)
-	return TRUE
 
 /obj/item/cane/crutch
 	name ="crutch"
@@ -420,7 +415,7 @@
 
 //Code isn't working. Figure it out tomorrow.
 
-/obj/item/bitterash/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/bitterash/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
 	if(user.a_intent == INTENT_HARM)
 		return ..()

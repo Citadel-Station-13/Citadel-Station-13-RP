@@ -118,7 +118,7 @@ CREATE_WALL_MOUNTING_TYPES(/obj/machinery/camera)
 	if(L.species.can_shred(L))
 		set_status(0)
 		L.do_attack_animation(src)
-		L.setClickCooldown(L.get_attack_speed())
+		L.setClickCooldownLegacy(L.get_attack_speed_legacy())
 		visible_message("<span class='warning'>\The [L] slashes at [src]!</span>")
 		playsound(src.loc, 'sound/weapons/slash.ogg', 100, 1)
 		add_hiddenprint(L)
@@ -129,7 +129,7 @@ CREATE_WALL_MOUNTING_TYPES(/obj/machinery/camera)
 		var/mob/living/simple_mob/S = user
 		set_status(0)
 		S.do_attack_animation(src)
-		S.setClickCooldown(user.get_attack_speed())
+		S.setClickCooldownLegacy(user.get_attack_speed_legacy())
 		visible_message("<span class='warning'>\The [user] [pick(S.attacktext)] \the [src]!</span>")
 		playsound(src.loc, S.attack_sound, 100, 1)
 		add_hiddenprint(user)
@@ -239,7 +239,7 @@ CREATE_WALL_MOUNTING_TYPES(/obj/machinery/camera)
 	var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 	spark_system.set_up(5, 0, loc)
 	spark_system.start()
-	playsound(loc, /datum/soundbyte/grouped/sparks, 50, 1)
+	playsound(loc, /datum/soundbyte/sparks, 50, 1)
 
 /obj/machinery/camera/proc/set_status(var/newstatus)
 	if (status != newstatus)
@@ -257,13 +257,14 @@ CREATE_WALL_MOUNTING_TYPES(/obj/machinery/camera)
 	if(isXRay())
 		P.SetSight(SEE_TURFS | SEE_MOBS | SEE_OBJS)
 
-/obj/machinery/camera/update_icon()
+/obj/machinery/camera/update_icon_state()
 	if (!status || (machine_stat & BROKEN))
 		icon_state = "[initial(icon_state)]1"
 	else if (machine_stat & EMPED)
 		icon_state = "[initial(icon_state)]emp"
 	else
 		icon_state = initial(icon_state)
+	return ..()
 
 /obj/machinery/camera/proc/triggerCameraAlarm(duration = 0)
 	alarm_on = 1

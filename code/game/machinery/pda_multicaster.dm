@@ -29,11 +29,12 @@
 		qdel(AM)
 	return ..()
 
-/obj/machinery/pda_multicaster/update_icon()
+/obj/machinery/pda_multicaster/update_icon_state()
 	if(on)
 		icon_state = initial(icon_state)
 	else
 		icon_state = "[initial(icon_state)]-p"
+	return ..()
 
 /obj/machinery/pda_multicaster/attackby(obj/item/I, mob/user)
 	if(I.is_screwdriver())

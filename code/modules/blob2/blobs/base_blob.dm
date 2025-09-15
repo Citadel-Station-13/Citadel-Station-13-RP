@@ -28,6 +28,10 @@ var/list/blobs = list()
 		integrity = integrity_max
 	setDir(pick(GLOB.cardinal))
 	blobs += src
+	return INITIALIZE_HINT_LATELOAD
+
+// since this WILL cause qdels (on other atoms) to be invoked
+/obj/structure/blob/LateInitialize()
 	consume_tile()
 
 /obj/structure/blob/Destroy()
@@ -37,6 +41,7 @@ var/list/blobs = list()
 	return ..()
 
 /obj/structure/blob/update_icon() //Updates color based on overmind color if we have an overmind.
+	. = ..()
 	if(overmind)
 		name = "[overmind.blob_type.name] [base_name]" // This is in update_icon() because inert blobs can turn into other blobs with magic if another blob core claims it with pulsing.
 		color = overmind.blob_type.color
@@ -190,7 +195,7 @@ var/list/blobs = list()
 /obj/structure/blob/proc/consume_tile()
 	for(var/atom/A in loc)
 		A.blob_act(src)
-	if(loc && loc.density)
+	if(loc?.density)
 		loc.blob_act(src) //don't ask how a wall got on top of the core, just eat it
 
 /obj/structure/blob/proc/blob_glow_animation()
@@ -222,7 +227,7 @@ var/list/blobs = list()
 	return B
 
 /obj/structure/blob/attackby(var/obj/item/W, var/mob/user)
-	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+	user.setClickCooldownLegacy(DEFAULT_ATTACK_COOLDOWN)
 	playsound(loc, 'sound/effects/attackblob.ogg', 50, 1)
 	visible_message("<span class='danger'>\The [src] has been attacked with \the [W][(user ? " by [user]." : ".")]</span>")
 	var/damage = W.damage_force

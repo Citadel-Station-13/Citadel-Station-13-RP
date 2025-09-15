@@ -18,14 +18,15 @@
 
 /obj/structure/flora/tree/Initialize(mapload)
 	icon_state = choose_icon_state()
-
 	return ..()
 
-/obj/structure/flora/tree/update_transform()
-	var/matrix/M = matrix()
-	M.Scale(icon_scale_x, icon_scale_y)
-	M.Translate(0, 16*(icon_scale_y-1))
-	animate(src, transform = M, time = 10)
+/obj/structure/flora/tree/apply_transform(matrix/to_apply)
+	animate(src, transform = to_apply, time = 1 SECONDS)
+
+/obj/structure/flora/tree/base_transform(matrix/applying)
+	var/matrix/base_matrix = ..()
+	base_matrix.Translate(0, 16 * (icon_scale_y - 1))
+	return base_matrix
 
 // Override this for special icons.
 /obj/structure/flora/tree/proc/choose_icon_state()
@@ -65,7 +66,7 @@
 	animate(src, transform=turn(M, shake_animation_degrees * shake_dir), pixel_x=init_px + 2*shake_dir, time=1)
 	animate(transform=M, pixel_x=init_px, time=6, easing=ELASTIC_EASING)
 
-/obj/structure/flora/tree/inflict_atom_damage(damage, damage_type, damage_tier, damage_flag, damage_mode, hit_zone, attack_type, datum/weapon)
+/obj/structure/flora/tree/inflict_atom_damage(damage, damage_type, damage_tier, damage_flag, damage_mode, hit_zone, attack_type, datum/attack_source)
 	. = ..()
 	// ruins some of the wood if you use high power modes or types
 	if(. > 5 && ((damage_mode & (DAMAGE_MODE_ABLATING | DAMAGE_MODE_PIERCE | DAMAGE_MODE_SHRED)) || (damage_flag == ARMOR_BOMB)))

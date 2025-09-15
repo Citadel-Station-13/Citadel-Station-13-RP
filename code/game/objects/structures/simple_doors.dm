@@ -15,12 +15,17 @@
 	var/isSwitchingStates = 0
 	var/oreAmount = 7
 
-/obj/structure/simple_door/Initialize(mapload, material)
-	if(!isnull(material))
-		set_primary_material(SSmaterials.resolve_material(material))
+/obj/structure/simple_door/Initialize(mapload, datum/prototype/material/material_like)
+	if(!isnull(material_like))
+		var/resolved_material = RSmaterials.fetch_or_defer(material_like)
+		switch(resolved_material)
+			if(REPOSITORY_FETCH_DEFER)
+				// todo: handle
+			else
+				set_primary_material(resolved_material)
 	return ..()
 
-/obj/structure/simple_door/update_material_single(datum/material/material)
+/obj/structure/simple_door/update_material_single(datum/prototype/material/material)
 	. = ..()
 	if(isnull(material))
 		name = initial(name)
@@ -63,7 +68,7 @@
 /obj/structure/simple_door/proc/TryToSwitchState(atom/user)
 	if(isSwitchingStates)
 		return
-	var/datum/material/material = get_primary_material()
+	var/datum/prototype/material/material = get_primary_material()
 	if(ismob(user))
 		var/mob/M = user
 		if(!material.can_open_material_door(user))
@@ -88,7 +93,7 @@
 
 /obj/structure/simple_door/proc/Open()
 	isSwitchingStates = 1
-	var/datum/material/material = get_primary_material()
+	var/datum/prototype/material/material = get_primary_material()
 	playsound(loc, material.dooropen_noise, 100, 1)
 	flick("[material.door_icon_base]opening",src)
 	sleep(10)
@@ -101,7 +106,7 @@
 
 /obj/structure/simple_door/proc/Close()
 	isSwitchingStates = 1
-	var/datum/material/material = get_primary_material()
+	var/datum/prototype/material/material = get_primary_material()
 	playsound(loc, material.dooropen_noise, 100, 1)
 	flick("[material.door_icon_base]closing",src)
 	sleep(10)
@@ -112,8 +117,8 @@
 	isSwitchingStates = 0
 	update_nearby_tiles()
 
-/obj/structure/simple_door/update_icon()
-	var/datum/material/material = get_primary_material()
+/obj/structure/simple_door/update_icon_state()
+	var/datum/prototype/material/material = get_primary_material()
 	if(isnull(material))
 		icon_state = state? "open" : "closed"
 		return
@@ -121,13 +126,14 @@
 		icon_state = "[material.door_icon_base]open"
 	else
 		icon_state = material.door_icon_base
+	return ..()
 
 /obj/structure/simple_door/attackby(obj/item/W as obj, mob/user as mob)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	if(istype(W,/obj/item/pickaxe))
-		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-		var/datum/material/material = get_primary_material()
+		user.setClickCooldownLegacy(DEFAULT_ATTACK_COOLDOWN)
+		var/datum/prototype/material/material = get_primary_material()
 		var/obj/item/pickaxe/digTool = W
 		visible_message("<span class='danger'>[user] starts digging [src]!</span>")
 		if(do_after(user, digTool.digspeed * material.relative_integrity, src))
@@ -136,44 +142,44 @@
 
 /obj/structure/simple_door/drop_products(method, atom/where)
 	. = ..()
-	var/datum/material/material = get_primary_material()
+	var/datum/prototype/material/material = get_primary_material()
 	material?.place_dismantled_product(where, method == ATOM_DECONSTRUCT_DISASSEMBLED? 10 : 6)
 
 /obj/structure/simple_door/iron
-	material_parts = /datum/material/iron
+	material_parts = /datum/prototype/material/iron
 
 /obj/structure/simple_door/silver
-	material_parts = /datum/material/silver
+	material_parts = /datum/prototype/material/silver
 
 /obj/structure/simple_door/gold
-	material_parts = /datum/material/gold
+	material_parts = /datum/prototype/material/gold
 
 /obj/structure/simple_door/uranium
-	material_parts = /datum/material/uranium
+	material_parts = /datum/prototype/material/uranium
 
 /obj/structure/simple_door/sandstone
-	material_parts = /datum/material/sandstone
+	material_parts = /datum/prototype/material/sandstone
 
 /obj/structure/simple_door/phoron
-	material_parts = /datum/material/phoron
+	material_parts = /datum/prototype/material/phoron
 
 /obj/structure/simple_door/diamond
-	material_parts = /datum/material/diamond
+	material_parts = /datum/prototype/material/diamond
 
 /obj/structure/simple_door/wood
-	material_parts = /datum/material/wood_plank
+	material_parts = /datum/prototype/material/wood_plank
 
 /obj/structure/simple_door/sifwood
-	material_parts = /datum/material/wood_plank/sif
+	material_parts = /datum/prototype/material/wood_plank/sif
 
 /obj/structure/simple_door/hardwood
-	material_parts = /datum/material/wood_plank/hardwood
+	material_parts = /datum/prototype/material/wood_plank/hardwood
 
 /obj/structure/simple_door/resin
-	material_parts = /datum/material/resin
+	material_parts = /datum/prototype/material/resin
 
 /obj/structure/simple_door/cult
-	material_parts = /datum/material/cult
+	material_parts = /datum/prototype/material/cult
 
 /obj/structure/simple_door/cult/TryToSwitchState(atom/user)
 	if(isliving(user))

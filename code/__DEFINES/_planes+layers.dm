@@ -329,6 +329,7 @@
  */
 #define DEBUG_PLANE 23
 #define DEBUG_LAYER_AREA_OVERLAYS 100
+#define DEBUG_LAYER_MAP_HELPERS 250
 #define DEBUG_LAYER_SHUTTLE_MARKERS 500
 
 /**
@@ -380,29 +381,32 @@
  *! -- Player HUD Plane
  *? Client UI HUD stuff.
  *? The character's UI is on this plane.
- *
- * todo: some layers are unused?
  */
 #define HUD_PLANE 90
 
 #define HUD_LAYER_UNDER 1 /// Under the HUD items.
 #define HUD_LAYER_BASE  2 /// The HUD items themselves.
-#define HUD_LAYER_ITEM  3 /// Things sitting on HUD items (largely irrelevant because INVENTORY_PLANE).
-#define HUD_LAYER_ABOVE 4 /// Things that reside above items (highlights).
+
+/// inventory objects sit here
+#define HUD_LAYER_INVENTORY 3
+/// storage objects sit here
+#define HUD_LAYER_STORAGE 4
+/// storage object item borders sit here
+#define HUD_LAYER_STORAGE_ITEM_BOUNDING 5
+
+// todo: deprecate
+#define HUD_LAYER_ITEM  7 /// Things sitting on HUD items (largely irrelevant because INVENTORY_PLANE).
+// todo: deprecate
+#define HUD_LAYER_ABOVE 8 /// Things that reside above items (highlights).
 
 /**
- *! -- Storage Plane
+ *! -- Player HUD Plane - Items
+ *? Anything rendering in HUD as itself instead of as part of HUD is here.
+ *? Example: items in your inventory.
  */
-#define STORAGE_PLANE 95
-#define STORAGE_LAYER_CONTAINER 1
-#define STORAGE_LAYER_ITEM_INACTIVE 2
-#define STORAGE_LAYER_ITEM_ACTIVE 3
-
-/**
- *! -- Player HUD Items Plane
- *? Separate layer with which to apply colorblindness.
- */
-#define INVENTORY_PLANE 96
+#define HUD_ITEM_PLANE 91
+#define HUD_ITEM_LAYER_BASE 0
+#define HUD_ITEM_LAYER_ACTIVE 1
 
 /**
  *! -- Above HUD Plane

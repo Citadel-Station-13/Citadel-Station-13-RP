@@ -179,7 +179,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 						var/vmask, var/vmessage, var/obj/item/radio/radio,
 						var/message, var/name, var/job, var/realname, var/vname,
 						var/data, var/compression, var/list/level, var/freq, var/verbage = "says",
-						datum/language/speaking, var/list/forced_radios)
+						datum/prototype/language/speaking, var/list/forced_radios)
 
   /* ###### Prepare the radio connection ###### */
 
@@ -292,7 +292,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 		var/part_b_extra = ""
 		if(data == DATA_ANTAG) // intercepted radio message
 			part_b_extra = " <i>(Intercepted)</i>"
-		var/part_a = "<span class='[frequency_span_class(display_freq)]'>[icon2html(radio, world)]<b>\[[freq_text]\][part_b_extra]</b> <span class='name'>" // goes in the actual output
+		var/part_a = "<span class='[get_radio_span(display_freq)]'>[icon2html(radio, world)]<b>\[[freq_text]\][part_b_extra]</b> <span class='name'>" // goes in the actual output
 
 		// --- Some more pre-message formatting ---
 		var/part_b = "</span> <span class='message'>" // Tweaked for security headsets -- TLE
@@ -315,29 +315,29 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 		//BR.messages_admin += blackbox_admin_msg
 		if(istype(blackbox))
 			switch(display_freq)
-				if(PUB_FREQ)
+				if(FREQ_COMMON)
 					blackbox.msg_common += blackbox_msg
-				if(SCI_FREQ)
+				if(FREQ_SCIENCE)
 					blackbox.msg_science += blackbox_msg
-				if(COMM_FREQ)
+				if(FREQ_COMMAND)
 					blackbox.msg_command += blackbox_msg
-				if(MED_FREQ)
+				if(FREQ_MEDICAL)
 					blackbox.msg_medical += blackbox_msg
-				if(ENG_FREQ)
+				if(FREQ_ENGINEERING)
 					blackbox.msg_engineering += blackbox_msg
-				if(SEC_FREQ)
+				if(FREQ_SECURITY)
 					blackbox.msg_security += blackbox_msg
-				if(DTH_FREQ)
+				if(FREQ_DEATH_SQUAD)
 					blackbox.msg_deathsquad += blackbox_msg
-				if(SYND_FREQ)
+				if(FREQ_SYNDICATE)
 					blackbox.msg_syndicate += blackbox_msg
-				if(RAID_FREQ)
+				if(FREQ_RAIDER)
 					blackbox.msg_raider += blackbox_msg
-				if(SUP_FREQ)
+				if(FREQ_SUPPLY)
 					blackbox.msg_cargo += blackbox_msg
-				if(SRV_FREQ)
+				if(FREQ_SERVICE)
 					blackbox.msg_service += blackbox_msg
-				if(EXP_FREQ)
+				if(FREQ_EXPLORER)
 					blackbox.msg_explorer += blackbox_msg
 				else
 					blackbox.messages += blackbox_msg
@@ -468,7 +468,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 	if(length(heard_normal) || length(heard_garbled) || length(heard_gibberish))
 
 	  /* --- Some miscellaneous variables to format the string output --- */
-		var/part_a = "<span class='[frequency_span_class(display_freq)]'><span class='name'>" // goes in the actual output
+		var/part_a = "<span class='[get_radio_span(display_freq)]'><span class='name'>" // goes in the actual output
 		var/freq_text = get_frequency_name(display_freq)
 
 		// --- Some more pre-message formatting ---
@@ -489,27 +489,27 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 		//BR.messages_admin += blackbox_admin_msg
 		if(istype(blackbox))
 			switch(display_freq)
-				if(PUB_FREQ)
+				if(FREQ_COMMON)
 					blackbox.msg_common += blackbox_msg
-				if(SCI_FREQ)
+				if(FREQ_SCIENCE)
 					blackbox.msg_science += blackbox_msg
-				if(COMM_FREQ)
+				if(FREQ_COMMAND)
 					blackbox.msg_command += blackbox_msg
-				if(MED_FREQ)
+				if(FREQ_MEDICAL)
 					blackbox.msg_medical += blackbox_msg
-				if(ENG_FREQ)
+				if(FREQ_ENGINEERING)
 					blackbox.msg_engineering += blackbox_msg
-				if(SEC_FREQ)
+				if(FREQ_SECURITY)
 					blackbox.msg_security += blackbox_msg
-				if(DTH_FREQ)
+				if(FREQ_DEATH_SQUAD)
 					blackbox.msg_deathsquad += blackbox_msg
-				if(SYND_FREQ)
+				if(FREQ_SYNDICATE)
 					blackbox.msg_syndicate += blackbox_msg
-				if(RAID_FREQ)
+				if(FREQ_RAIDER)
 					blackbox.msg_raider += blackbox_msg
-				if(SUP_FREQ)
+				if(FREQ_SUPPLY)
 					blackbox.msg_cargo += blackbox_msg
-				if(SRV_FREQ)
+				if(FREQ_SERVICE)
 					blackbox.msg_service += blackbox_msg
 				else
 					blackbox.messages += blackbox_msg
@@ -551,7 +551,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 /atom/proc/test_telecomms()
 	var/datum/signal/signal = src.telecomms_process()
 	var/pos_z = get_z(src)
-	return (pos_z in signal.data["level"] && signal.data["done"])
+	return ((pos_z in signal.data["level"]) && signal.data["done"])
 
 /atom/proc/telecomms_process(var/do_sleep = 1)
 
@@ -571,7 +571,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 		"done" = 0,
 		"level" = pos_z // The level it is being broadcasted at.
 	)
-	signal.frequency = PUB_FREQ// Common channel
+	signal.frequency = FREQ_COMMON// Common channel
 
   //#### Sending the signal to all subspace receivers ####//
 	for(var/obj/machinery/telecomms/receiver/R in GLOB.telecomms_list)

@@ -1,3 +1,4 @@
+// todo: rebalance combat stats
 /obj/item/nullrod
 	name = "null rod"
 	desc = "A rod of pure obsidian, its very presence disrupts and dampens the powers of paranormal phenomenae."
@@ -68,7 +69,7 @@
 
 	nullrod_icons = sortList(nullrod_icons)
 
-	var/choice = show_radial_menu(L, src , nullrod_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), L), radius = 42, require_near = TRUE)
+	var/choice = show_radial_menu(L, inv_inside ? get_turf(L) : src, nullrod_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), L), radius = 42, require_near = TRUE)
 	if(!choice || !check_menu(L))
 		return
 
@@ -182,7 +183,7 @@
 	item_state = "multiverse"
 	slot_flags = SLOT_BELT
 
-/obj/item/nullrod/claymore/multiverse/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/nullrod/claymore/multiverse/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	damage_force = rand(1, 30)
 	return ..()
 
@@ -222,7 +223,6 @@
 	item_state = "rscythe"
 	name = "reaper scythe"
 	desc = "Ask not for whom the bell tolls..."
-	armor_penetration = 35
 	slot_flags = SLOT_BACK
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	attack_verb = list("chopped", "sliced", "cut", "reaped")
@@ -374,7 +374,7 @@
 	icon_state = "bostaff0"
 	item_state = "bostaff0"
 
-/obj/item/nullrod/claymore/bostaff/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/nullrod/claymore/bostaff/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	add_fingerprint(user)
 	if(!issilicon(target))
 		return ..()
@@ -444,7 +444,7 @@
 	if(GLOB.deity)
 		deity_name = GLOB.deity
 
-/obj/item/nullrod/rosary/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/nullrod/rosary/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	if(!isliving(target))

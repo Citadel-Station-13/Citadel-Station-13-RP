@@ -240,7 +240,7 @@
 	name = "Winter Coat"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat
 
-/datum/loadout_entry/suit/wintercoat
+/datum/loadout_entry/suit/wintercoat/formal
 	name = "Winter Coat - Assistant Formal"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/aformal
 
@@ -488,6 +488,10 @@
 	name = "Brown Fancy Coat"
 	path = /obj/item/clothing/suit/storage/toggle/brown_fancycoat
 
+/datum/loadout_entry/suit/blackfancycoat
+	name = "Black Fancy Coat"
+	path = /obj/item/clothing/suit/storage/toggle/brown_fancycoat/black
+
 /datum/loadout_entry/suit/motojacket
 	name = "Motorcycle Jacket"
 	path = /obj/item/clothing/suit/storage/toggle/moto_jacket
@@ -519,6 +523,10 @@
 /datum/loadout_entry/suit/overcoat_fancy
 	name = "Fancy Overcoat Brown"
 	path = /obj/item/clothing/suit/storage/overcoat_fancy
+
+/datum/loadout_entry/suit/overcoat_fancy/black
+	name = "Fancy Overcoat Black"
+	path = /obj/item/clothing/suit/storage/overcoat_fancy/black
 
 /datum/loadout_entry/suit/drive
 	name = "Relatable Jacket"
@@ -612,6 +620,10 @@
 /datum/loadout_entry/suit/sweater_cropped_f
 	name = "Cropped Sweater (Female)"
 	path = /obj/item/clothing/suit/cropped_sweater/female
+
+/datum/loadout_entry/suit/cybersun_jacket
+	name = "Cybersun Jacket"
+	path = /obj/item/clothing/suit/storage/toggle/cybersun_paramedic
 
 /datum/loadout_entry/suit/aureate_kimono
 	name = "Aureate Kimono"

@@ -3,13 +3,18 @@
 #define SEAL_DELAY 30
 
 /datum/armor/hardsuit
-	melee = 0.4
+	melee = 0.275
+	melee_tier = 3.5
 	bullet = 0.05
-	laser = 0.2
+	bullet_tier = 3
+	laser = 0.175
+	laser_tier = 3.5
 	energy = 0.05
 	bomb = 0.35
 	bio = 1.0
 	rad = 0.2
+	fire = 0.5
+	acid = 0.7
 
 /*
  * Defines the behavior of hardsuits/rigs/power armour.
@@ -448,7 +453,7 @@
 					if(seal_delay && !instant && !do_self(M, seal_delay, DO_AFTER_IGNORE_ACTIVE_ITEM | DO_AFTER_IGNORE_MOVEMENT, NONE))
 						failed_to_seal = 1
 
-					piece.copy_atom_colour(src)
+					piece.copy_atom_color(src)
 					piece.icon_state = "[suit_state][is_sealing ? "_sealed" : ""]"
 					piece.update_worn_icon()
 					switch(msg_type)
@@ -467,7 +472,7 @@
 					if (is_sealing)
 						piece.set_armor(piece.fetch_armor().boosted(list(ARMOR_BIO = 100)))
 					else
-						piece.set_armor(piece.fetch_armor().overwritten(list(ARMOR_BIO = fetch_armor().raw(ARMOR_BIO))))
+						piece.set_armor(piece.fetch_armor().overwritten(list(ARMOR_BIO = fetch_armor().get_mitigation(ARMOR_BIO))))
 				else
 					failed_to_seal = 1
 
@@ -484,7 +489,7 @@
 			if(!piece)
 				continue
 			piece.icon_state = "[suit_state][is_activated() ? "_sealed" : ""]"
-			piece.copy_atom_colour(src)
+			piece.copy_atom_color(src)
 			piece.update_worn_icon()
 
 		if(is_activated())
@@ -842,11 +847,11 @@
 		return 0
 
 	if(href_list["toggle_piece"])
-		if(ishuman(usr) && !CHECK_MOBILITY(usr, MOBILITY_CAN_STORAGE))
+		if(ishuman(wearer) && !CHECK_MOBILITY(usr, MOBILITY_CAN_STORAGE))
 			return 0
-		toggle_piece(href_list["toggle_piece"], usr)
+		toggle_piece(href_list["toggle_piece"], wearer)
 	else if(href_list["toggle_seals"])
-		toggle_seals(usr)
+		toggle_seals(wearer)
 	else if(href_list["interact_module"])
 
 		var/module_index = text2num(href_list["interact_module"])
@@ -956,8 +961,8 @@
 		else if (deploy_mode != ONLY_RETRACT)
 			if(check_slot && check_slot == use_obj)
 				return
-			use_obj.copy_atom_colour(src)
-			if(!H.equip_to_slot_if_possible(use_obj, equip_to, null, INV_OP_FORCE))
+			use_obj.copy_atom_color(src)
+			if(!H.equip_to_slot_if_possible(use_obj, equip_to, INV_OP_FORCE))
 				if(check_slot && warn == 1)
 					to_chat(H, "<span class='danger'>You are unable to deploy \the [piece] as \the [check_slot] [check_slot.gender == PLURAL ? "are" : "is"] in the way.</span>")
 					return
@@ -1161,9 +1166,9 @@
 					else
 						M.stop_pulling()
 
-	if(wearer.pinned.len)
-		to_chat(src, "<span class='notice'>Your host is pinned to a wall by [wearer.pinned[1]]</span>!")
-		return 0
+	// if(wearer.pinned.len)
+	// 	to_chat(src, "<span class='notice'>Your host is pinned to a wall by [wearer.pinned[1]]</span>!")
+	// 	return 0
 
 	// AIs are a bit slower than regular and ignore move intent.
 	wearer_move_delay = world.time + ai_controlled_move_delay

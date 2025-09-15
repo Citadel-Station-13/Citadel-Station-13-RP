@@ -33,7 +33,7 @@
 		/obj/item/storage,
 		/obj/machinery/atmospherics/component/unary/cryo_cell,
 		/obj/machinery/dna_scannernew,
-		/obj/item/grenade/chem_grenade,
+		/obj/item/grenade/simple/chemical,
 		/mob/living/bot/medibot,
 		/obj/item/storage/secure/safe,
 		/obj/machinery/iv_drip,
@@ -74,7 +74,7 @@
 		atom_flags |= OPENCONTAINER
 	update_icon()
 
-/obj/item/reagent_containers/glass/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/reagent_containers/glass/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	standard_feed_mob(user, target)
@@ -128,7 +128,7 @@
 		return
 	if(W && W.get_weight_class() <= get_weight_class() && (atom_flags & OPENCONTAINER))
 		to_chat(user, "<span class='notice'>You dip \the [W] into \the [src].</span>")
-		reagents.touch_obj(W, reagents.total_volume)
+		reagents.perform_entity_dip(W, 1)
 
 /obj/item/reagent_containers/glass/proc/update_name_label()
 	if(label_text == "")
@@ -292,7 +292,7 @@
 		user.put_in_hands_or_drop(new /obj/item/clothing/head/helmet/bucket)
 		qdel(src)
 		return
-	else if(D.is_material_stack_of(/datum/material/steel))
+	else if(D.is_material_stack_of(/datum/prototype/material/steel))
 		var/obj/item/stack/material/M = D
 		if (M.use(1))
 			var/obj/item/secbot_assembly/edCLN_assembly/B = new /obj/item/secbot_assembly/edCLN_assembly(get_turf(src))
@@ -375,9 +375,9 @@
 
 /obj/item/reagent_containers/glass/bucket/sandstone/examine(mob/user, dist)
 	. = ..()
-	if(reagents && reagents.reagent_list.len)
-		for(var/datum/reagent/R in reagents.reagent_list)
-			. += "[icon2html(thing = src, target = world)] The [src.name] currently contains [R.volume] units of [R.name]!"
+	if(reagents?.total_volume)
+		for(var/datum/reagent/R in reagents.get_reagent_datums())
+			. += "[icon2html(thing = src, target = world)] The [src.name] currently contains [reagents.reagent_volumes[R.id]] units of [R.name]!"
 	else
 		. += "<span class='notice'>It is empty.</span>"
 
@@ -420,7 +420,7 @@
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(10,20,50,100)
 	volume = 60
-	start_reagent = /datum/reagent/fuel
+	start_with_single_reagent = /datum/reagent/fuel
 
 /obj/item/reagent_containers/portable_fuelcan/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
@@ -462,9 +462,9 @@
 
 /obj/item/reagent_containers/glass/stone/examine(mob/user, dist)
 	. = ..()
-	if(reagents && reagents.reagent_list.len)
-		for(var/datum/reagent/R in reagents.reagent_list)
-			. += "[icon2html(thing = src, target = world)] The [src.name] currently contains [R.volume] units of [R.name]!"
+	if(reagents?.total_volume)
+		for(var/datum/reagent/R in reagents.get_reagent_datums())
+			. += "[icon2html(thing = src, target = world)] The [src.name] currently contains [reagents.reagent_volumes[R.id]] units of [R.name]!"
 	else
 		. += "<span class='notice'>It is empty.</span>"
 

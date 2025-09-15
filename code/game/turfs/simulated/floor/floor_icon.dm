@@ -12,8 +12,6 @@ GLOBAL_DATUM_INIT(no_ceiling_image, /image, generate_no_ceiling_image())
 
 GLOBAL_LIST_EMPTY(turf_edge_cache)
 
-var/list/flooring_cache = list()
-
 /turf/simulated/floor/update_appearance(updates)
 	cut_overlays()
 
@@ -28,17 +26,13 @@ var/list/flooring_cache = list()
 /turf/simulated/floor/custom_smooth(junctions)
 	if(flooring)
 		// Set initial icon and strings.
-		name = flooring.name
-		desc = flooring.desc
-		icon = flooring.icon
-
-		if(flooring_override)
-			icon_state = flooring_override
+		if(flooring_legacy_override_state)
+			icon_state = flooring_legacy_override_state
 		else
 			icon_state = flooring.icon_base
 			if(flooring.has_base_range)
 				icon_state = "[icon_state][rand(0,flooring.has_base_range)]"
-				flooring_override = icon_state
+				flooring_legacy_override_state = icon_state
 
 			// Apply edges, corners, and inner corners.
 			if(flooring.flooring_flags & TURF_HAS_EDGES)
@@ -137,7 +131,7 @@ var/list/flooring_cache = list()
 
 //Tests whether this flooring will smooth with the specified turf
 //You can override this if you want a flooring to have super special snowflake smoothing behaviour
-/singleton/flooring/proc/test_link(var/turf/origin, var/turf/T, var/countercheck = FALSE)
+/datum/prototype/flooring/proc/test_link(var/turf/origin, var/turf/T, var/countercheck = FALSE)
 
 	var/is_linked = FALSE
 	if (countercheck)
@@ -282,10 +276,3 @@ var/list/flooring_cache = list()
 							is_linked = FALSE
 
 	return is_linked
-
-/turf/simulated/floor/proc/get_flooring_overlay(var/cache_key, var/icon_base, var/icon_dir = 0)
-	if(!flooring_cache[cache_key])
-		var/image/I = image(icon = flooring.icon, icon_state = icon_base, dir = icon_dir)
-		I.layer = layer
-		flooring_cache[cache_key] = I
-	return flooring_cache[cache_key]

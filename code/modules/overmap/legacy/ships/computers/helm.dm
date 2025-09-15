@@ -45,7 +45,6 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/computer/ship/helm/LateInitialize()
-	. = ..()
 	get_known_sectors()
 
 /obj/machinery/computer/ship/helm/proc/get_known_sectors()

@@ -144,6 +144,7 @@
 
 /obj/machinery/media/jukebox/update_icon()
 	cut_overlays()
+	. = ..()
 	if(machine_stat & (NOPOWER|BROKEN) || !anchored)
 		if(machine_stat & BROKEN)
 			icon_state = "[state_base]-broken"

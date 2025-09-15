@@ -1,0 +1,390 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/template_noop,
+/area/template_noop)
+"c" = (
+/obj/structure/salvageable/console_broken_os{
+	dir = 4
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/shuttlecrash4)
+"f" = (
+/obj/structure/barricade,
+/obj/structure/inflatable,
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/shuttlecrash4)
+"h" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/tank/carbon_dioxide,
+/obj/item/tank/carbon_dioxide,
+/obj/item/tank/carbon_dioxide,
+/obj/item/clothing/mask/breath/emergency,
+/obj/item/clothing/mask/breath/emergency,
+/obj/item/clothing/mask/breath/emergency,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/shuttlecrash4)
+"i" = (
+/obj/structure/lattice,
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
+/area/submap/skyplanet/poi/shuttlecrash4)
+"j" = (
+/obj/structure/salvageable/console_broken_os{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/shuttlecrash4)
+"k" = (
+/obj/structure/inflatable,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/shuttlecrash4)
+"m" = (
+/mob/living/simple_mob/humanoid/merc/voxpirate/technician,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/shuttlecrash4)
+"o" = (
+/obj/structure/salvageable/console_broken_os{
+	dir = 4
+	},
+/obj/item/gps/internal/poi{
+	gps_tag = "Vox Pirate SOS"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/shuttlecrash4)
+"p" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/random/medical/pillbottle,
+/obj/random/multiple/underdark/treasure,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/shuttlecrash4)
+"s" = (
+/obj/structure/inflatable/door,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/shuttlecrash4)
+"u" = (
+/obj/structure/lattice,
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
+/area/template_noop)
+"v" = (
+/obj/structure/lattice,
+/obj/structure/inflatable/door,
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
+/area/submap/skyplanet/poi/shuttlecrash4)
+"w" = (
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/shuttlecrash4)
+"z" = (
+/obj/structure/lattice,
+/obj/structure/inflatable,
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
+/area/submap/skyplanet/poi/shuttlecrash4)
+"F" = (
+/obj/structure/bed,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/shuttlecrash4)
+"H" = (
+/turf/simulated/wall/iron,
+/area/submap/skyplanet/poi/shuttlecrash4)
+"K" = (
+/obj/structure/inflatable,
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/shuttlecrash4)
+"O" = (
+/obj/spawner/window/low_wall/firelocks,
+/obj/structure/barricade,
+/turf/simulated/floor/plating,
+/area/submap/skyplanet/poi/shuttlecrash4)
+"P" = (
+/mob/living/simple_mob/humanoid/merc/voxpirate/captain,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/shuttlecrash4)
+"Q" = (
+/obj/item/storage/single_use/mre/menu10,
+/obj/item/storage/single_use/mre/menu13,
+/obj/item/storage/single_use/mre/menu3,
+/obj/structure/closet/crate,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/shuttlecrash4)
+"R" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/shuttlecrash4)
+"S" = (
+/obj/structure/bed,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/shuttlecrash4)
+"T" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/random/gun/random,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/shuttlecrash4)
+"U" = (
+/mob/living/simple_mob/humanoid/merc/voxpirate/pirate,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/shuttlecrash4)
+"X" = (
+/turf/simulated/floor/outdoors/ash_sand/outdoors,
+/area/template_noop)
+"Z" = (
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c,
+/area/template_noop)
+
+(1,1,1) = {"
+a
+a
+X
+X
+X
+X
+X
+X
+X
+X
+X
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+X
+X
+X
+K
+O
+O
+f
+f
+f
+X
+X
+a
+a
+a
+"}
+(3,1,1) = {"
+a
+X
+X
+X
+K
+o
+c
+j
+Q
+O
+X
+X
+X
+a
+a
+"}
+(4,1,1) = {"
+a
+X
+X
+X
+K
+R
+P
+w
+w
+K
+X
+X
+X
+a
+a
+"}
+(5,1,1) = {"
+a
+a
+X
+X
+H
+R
+S
+S
+F
+H
+X
+X
+X
+a
+a
+"}
+(6,1,1) = {"
+a
+a
+X
+X
+H
+s
+H
+H
+H
+H
+X
+X
+X
+a
+a
+"}
+(7,1,1) = {"
+a
+a
+X
+X
+z
+w
+w
+w
+T
+z
+X
+X
+X
+a
+a
+"}
+(8,1,1) = {"
+a
+a
+X
+X
+K
+R
+U
+R
+p
+H
+X
+X
+X
+a
+a
+"}
+(9,1,1) = {"
+a
+X
+X
+X
+H
+w
+R
+m
+h
+K
+X
+X
+X
+a
+a
+"}
+(10,1,1) = {"
+a
+a
+a
+X
+K
+k
+v
+z
+z
+H
+X
+X
+X
+a
+a
+"}
+(11,1,1) = {"
+a
+a
+X
+X
+i
+Z
+s
+u
+Z
+i
+X
+X
+X
+a
+a
+"}
+(12,1,1) = {"
+a
+a
+X
+X
+H
+u
+u
+u
+Z
+H
+X
+X
+a
+a
+a
+"}
+(13,1,1) = {"
+a
+X
+X
+X
+u
+u
+Z
+X
+u
+X
+X
+X
+a
+a
+a
+"}
+(14,1,1) = {"
+a
+a
+X
+X
+u
+Z
+u
+X
+X
+X
+a
+a
+a
+a
+a
+"}
+(15,1,1) = {"
+a
+a
+a
+X
+X
+u
+X
+X
+a
+X
+a
+a
+a
+a
+a
+"}

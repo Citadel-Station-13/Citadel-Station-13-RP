@@ -1,40 +1,52 @@
+#define MAX_NOTICES 8
+
 /obj/structure/noticeboard
 	name = "notice board"
 	desc = "A board for pinning important notices upon."
 	icon = 'icons/obj/stationobjs.dmi'
-	icon_state = "nboard00"
-	density = 0
-	anchored = 1
+	icon_state = "noticeboard"
+	density = FALSE
+	anchored = TRUE
+	integrity_max = 150
+	/// Current number of a pinned notices
 	var/notices = 0
 
 /obj/structure/noticeboard/Initialize(mapload, dir, building = FALSE)
+	. = ..()
+
 	if(building)
 		pixel_x = (dir & 3)? 0 : (dir == 4 ? -32 : 32)
 		pixel_y = (dir & 3)? (dir ==1 ? -27 : 27) : 0
-		update_icon()
-	if(mapload)
-		for(var/obj/item/I in loc)
-			if(notices > 4)
-				break
-			if(istype(I, /obj/item/paper))
-				I.forceMove(src)
-				notices++
-	icon_state = "nboard0[notices]"
-	. = ..()
+		update_appearance(UPDATE_ICON)
+
+	if(!mapload)
+		return
+
+	for(var/obj/item/I in loc)
+		if(notices > MAX_NOTICES)
+			break
+		if(istype(I, /obj/item/paper))
+			I.forceMove(src)
+			notices++
+	update_appearance(UPDATE_ICON)
 
 //attaching papers!!
-/obj/structure/noticeboard/attackby(var/obj/item/O as obj, var/mob/user as mob)
-	if(istype(O, /obj/item/paper))
-		if(notices < 5)
-			if(!user.attempt_insert_item_for_installation(O, src))
+/obj/structure/noticeboard/attackby(obj/item/O, mob/user, params)
+	if(istype(O, /obj/item/paper) || istype(O, /obj/item/photo))
+		if(!allowed(user))
+			to_chat(user, SPAN_WARNING("You are not authorized to add notices!"))
+			return
+		if(notices < MAX_NOTICES)
+			if(!user.transfer_item_to_loc(O, src))
 				return
-			O.add_fingerprint(user)
-			add_fingerprint(user)
 			notices++
-			icon_state = "nboard0[notices]"	//update sprite
-			to_chat(user, "<span class='notice'>You pin the paper to the noticeboard.</span>")
+			update_appearance(UPDATE_ICON)
+			to_chat(user, SPAN_NOTICE("You pin the [O] to the noticeboard."))
 		else
-			to_chat(user, "<span class='notice'>You reach to pin your paper to the board but hesitate. You are certain your paper will not be seen among the many others already attached.</span>")
+			to_chat(user, SPAN_WARNING("The notice board is full!"))
+	// else
+	// 	return ..()
+
 	if(O.is_wrench())
 		to_chat(user, "<span class='notice'>You start to unwrench the noticeboard.</span>")
 		playsound(src.loc, O.tool_sound, 50, 1)
@@ -43,52 +55,77 @@
 			new /obj/item/frame/noticeboard( src.loc )
 			qdel(src)
 
-/obj/structure/noticeboard/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
-	user.do_examinate(src)
+/obj/structure/noticeboard/ui_state(mob/user)
+	return GLOB.physical_state
 
-// Since Topic() never seems to interact with usr on more than a superficial
-// level, it should be fine to let anyone mess with the board other than ghosts.
-/obj/structure/noticeboard/examine(mob/user, dist) //why the fuck is this shit on examine
-	if(!user)
-		user = usr
-	if(user.Adjacent(src))
-		var/dat = "<B>Noticeboard</B><BR>"
-		for(var/obj/item/paper/P in src)
-			dat += "<A href='?src=\ref[src];read=\ref[P]'>[P.name]</A> <A href='?src=\ref[src];write=\ref[P]'>Write</A> <A href='?src=\ref[src];remove=\ref[P]'>Remove</A><BR>"
-		user << browse("<HEAD><TITLE>Notices</TITLE></HEAD>[dat]","window=noticeboard")
-		onclose(user, "noticeboard")
+/obj/structure/noticeboard/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "NoticeBoard", name)
+		ui.open()
+
+/obj/structure/noticeboard/ui_data(mob/user)
+	var/list/data = list()
+	data["allowed"] = allowed(user)
+	data["items"] = list()
+	for(var/obj/item/content in contents)
+		var/list/content_data = list(
+			name = content.name,
+			ref = REF(content)
+		)
+		data["items"] += list(content_data)
+	return data
+
+/obj/structure/noticeboard/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+
+	var/obj/item/item = locate(params["ref"]) in contents
+	if(!istype(item) || item.loc != src)
+		return
+
+	var/mob/user = usr
+
+	switch(action)
+		if("examine")
+			// if(istype(item, /obj/item/paper))
+			// 	item.ui_interact(user) // not using tguipaper
+			// else
+			user.examinate(item)
+			return TRUE
+		if("remove")
+			if(!allowed(user))
+				return
+			remove_item(item, user)
+			return TRUE
+
+/obj/structure/noticeboard/update_overlays()
+	. = ..()
+	if(notices)
+		. += "notices_[notices]"
+
+/**
+ * Removes an item from the notice board
+ *
+ * Arguments:
+ * * item - The item that is to be removed
+ * * user - The mob that is trying to get the item removed, if there is one
+ */
+/obj/structure/noticeboard/proc/remove_item(obj/item/item, mob/user)
+	item.forceMove(drop_location())
+	if(user)
+		user.put_in_hands(item)
+		to_chat(user, SPAN_NOTICE("Removed from board."))
+	notices--
+	update_appearance(UPDATE_ICON)
+
+/obj/structure/noticeboard/deconstructed(disassembled = TRUE)
+	if(!disassembled)
+		new /obj/item/stack/material/wood(loc)
 	else
-		..()
+		new /obj/item/frame/noticeboard(loc)
+	for(var/obj/item/content in contents)
+		remove_item(content)
 
-/obj/structure/noticeboard/Topic(href, href_list)
-	..()
-	usr.set_machine(src)
-	if(href_list["remove"])
-		if((usr.stat || usr.restrained()))	//For when a player is handcuffed while they have the notice window open
-			return
-		var/obj/item/P = locate(href_list["remove"])
-		if(P && P.loc == src)
-			P.loc = get_turf(src)	//dump paper on the floor because you're a clumsy fuck
-			P.add_fingerprint(usr)
-			add_fingerprint(usr)
-			notices--
-			icon_state = "nboard0[notices]"
-	if(href_list["write"])
-		if((usr.stat || usr.restrained())) //For when a player is handcuffed while they have the notice window open
-			return
-		var/obj/item/P = locate(href_list["write"])
-		if((P && P.loc == src)) //ifthe paper's on the board
-			var/mob/living/M = usr
-			if(istype(M))
-				var/obj/item/pen/E = M.get_held_item_of_type(/obj/item/pen)
-				if(E)
-					add_fingerprint(M)
-					P.attackby(E, usr)
-				else
-					to_chat(M, "<span class='notice'>You'll need something to write with!</span>")
-	if(href_list["read"])
-		var/obj/item/paper/P = locate(href_list["read"])
-		if((P && P.loc == src))
-			usr << browse("<HTML><HEAD><TITLE>[P.name]</TITLE></HEAD><BODY><TT>[P.info]</TT></BODY></HTML>", "window=[P.name]")
-			onclose(usr, "[P.name]")
-	return
+#undef MAX_NOTICES

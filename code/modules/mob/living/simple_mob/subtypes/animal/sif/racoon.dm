@@ -28,14 +28,14 @@
 	maxHealth = 50
 	health = 50
 	randomized = TRUE
-	has_hands = TRUE
+	hand_count = 2
 	humanoid_hands = TRUE
 
 	pass_flags = ATOM_PASS_TABLE
 
 	universal_understand = 1
 
-	movement_cooldown = 0
+	movement_base_speed = 6.66
 
 	legacy_melee_damage_lower = 5
 	legacy_melee_damage_upper = 15

@@ -13,7 +13,7 @@
 	var/visual = 1		//If you need to see to get the message
 	var/audio = 0		//If you need to hear to get the message
 	var/listening = 0
-	var/datum/language/langset
+	var/datum/prototype/language/langset
 	/// allow us to translate tapes
 	var/cassette_translation = TRUE
 	/// allow knowledge transfering
@@ -40,7 +40,7 @@
 		var/datum/translation_context/variable/learning/CTX = context
 		CTX.on_train = CALLBACK(src, PROC_REF(on_learn))
 
-/obj/item/universal_translator/proc/on_learn(datum/translation_context/context, datum/language/L, old_efficiency)
+/obj/item/universal_translator/proc/on_learn(datum/translation_context/context, datum/prototype/language/L, old_efficiency)
 	if(old_efficiency)
 		return
 	if(!ismob(loc))
@@ -68,7 +68,7 @@
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
-/obj/item/universal_translator/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/universal_translator/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	if(!isrobot(target))
@@ -94,7 +94,7 @@
 		return
 	if(!listening) //Turning ON
 		var/list/allowed = list()
-		for(var/datum/language/L in user.languages)
+		for(var/datum/prototype/language/L in user.languages)
 			if(L.language_flags & (LANGUAGE_NONVERBAL | LANGUAGE_HIVEMIND))
 				continue
 			if(!context.can_translate(L))
@@ -118,7 +118,7 @@
 		icon_state = "[initial(icon_state)]"
 		to_chat(user, "<span class='notice'>You disable \the [src].</span>")
 
-/obj/item/universal_translator/hear_talk(var/mob/speaker, var/message, var/vrb, var/datum/language/language)
+/obj/item/universal_translator/hear_talk(var/mob/speaker, var/message, var/vrb, var/datum/prototype/language/language)
 	if(!listening || !istype(speaker))
 		return
 
@@ -141,14 +141,16 @@
 	if (visual && L.has_status_effect(/datum/status_effect/sight/blindness))
 		return //Can't see the screen, don't get the message
 
-	if (audio && ((L.sdisabilities & SDISABILITY_DEAF) || L.ear_deaf))
+	var/is_deaf = (L.sdisabilities & SDISABILITY_DEAF) || L.ear_deaf
+
+	if (audio && is_deaf)
 		return //Can't hear the translation, don't get the message
 
 	//Only translate if they can't understand, otherwise pointlessly spammy
 	//I'll just assume they don't look at the screen in that case
 
 	//They don't understand the spoken language we're translating FROM
-	if(!L.say_understands(speaker, language))
+	if(!L.say_understands(speaker, language) || (visual && is_deaf))
 		//They understand the output language
 		if(L.say_understands(null,langset))
 			to_chat(L, "<i><b>[src]</b> translates, </i>\"<span class='[langset.colour]'>[context.attempt_translation(language, speaker, message)]</span>\"")

@@ -56,7 +56,7 @@
 
 /obj/machinery/biogenerator/Initialize(mapload, newdir)
 	. = ..()
-	var/datum/reagents/R = new/datum/reagents(1000)
+	var/datum/reagent_holder/R = new/datum/reagent_holder(1000)
 	reagents = R
 	R.my_atom = src
 
@@ -102,6 +102,7 @@
 		BIOGEN_ITEM("Leather Coat", /obj/item/clothing/suit/leathercoat, 1, 500),
 		BIOGEN_ITEM("Leather Jacket", /obj/item/clothing/suit/storage/toggle/brown_jacket, 1, 500),
 		BIOGEN_ITEM("Winter Coat", /obj/item/clothing/suit/storage/hooded/wintercoat, 1, 500),
+		BIOGEN_ITEM("Winter Boots", /obj/item/clothing/shoes/boots/winter, 1, 250),
 		BIOGEN_ITEM("4 Algae Sheets", /obj/item/stack/material/algae, 4, 400),
 		BIOGEN_ITEM("50 Algae Sheets", /obj/item/stack/material/algae, 50, 5000),
 	)
@@ -249,6 +250,7 @@
 
 /obj/machinery/biogenerator/update_icon()
 	cut_overlays()
+	. = ..()
 	if(beaker)
 		add_overlay("[base_icon_state]-standby")
 		if(processing)

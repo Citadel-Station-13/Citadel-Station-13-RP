@@ -716,7 +716,7 @@
 	},
 /area/wizard_station)
 "bJ" = (
-/obj/machinery/mecha_part_fabricator,
+/obj/machinery/lathe/mecha_part_fabricator,
 /obj/machinery/status_display{
 	layer = 4;
 	pixel_x = 0;
@@ -790,7 +790,7 @@
 	pixel_y = 32
 	},
 /obj/structure/table/steel_reinforced,
-/obj/item/gun/energy/laser/practice,
+/obj/item/gun/projectile/energy/laser/practice,
 /turf/unsimulated/floor{
 	icon_state = "dark";
 	dir = 5

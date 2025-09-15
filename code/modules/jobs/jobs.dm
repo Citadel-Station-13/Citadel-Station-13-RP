@@ -55,6 +55,7 @@ var/const/BRIDGE			=(1<<12)
 var/const/PILOT 			=(1<<13)
 var/const/ENTERTAINER		=(1<<14)
 var/const/TRADER			=(1<<15)
+var/const/OUTSIDER			=(1<<16)
 
 
 /proc/guest_jobbans(job)
