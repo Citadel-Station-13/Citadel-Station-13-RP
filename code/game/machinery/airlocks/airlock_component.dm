@@ -4,7 +4,7 @@
 /**
  * gasnet connected machinery
  */
-/obj/machinery/airlock_comopnent
+/obj/machinery/airlock_component
 	/// conencted gasnet
 	var/datum/airlock_gasnet/network
 	/// connected interconnect: something to note here is that
@@ -12,8 +12,8 @@
 	/// connect to each other directly.
 	var/obj/structure/airlock_interconnect/interconnect
 
-/obj/machinery/airlock_comopnent/proc/on_connect(datum/airlock_gasnet/network)
+/obj/machinery/airlock_component/proc/on_connect(datum/airlock_gasnet/network)
 	return
 
-/obj/machinery/airlock_comopnent/proc/on_disconnect(datum/airlock_gasnet/network)
+/obj/machinery/airlock_component/proc/on_disconnect(datum/airlock_gasnet/network)
 	return

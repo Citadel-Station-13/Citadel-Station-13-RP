@@ -9,8 +9,6 @@
 	var/obj/machinery/airlock_component/controller/controller
 	/// airlock ID to link to; will be automatically mangled
 	var/airlock_id
-	/// do we link to a controller?
-	var/controller_linking = FALSE
 
 /obj/machinery/airlock_peripheral/vv_edit_var(var_name, new_value, mass_edit, raw_edit)
 	switch(var_name)
@@ -18,10 +16,10 @@
 			return FALSE
 	return ..()
 
-/obj/machinery/airlock_peripheral/preloading_instance(with_id)
+/obj/machinery/airlock_peripheral/preloading_instance(datum/dmm_context/context)
 	. = ..()
 	if(airlock_id)
-		airlock_id = SSmapping.mangled_round_local_id(airlock_id, with_id)
+		airlock_id = SSmapping.mangled_round_local_id(airlock_id, context.mangling_id)
 
 /obj/machinery/airlock_peripheral/Initialize(mapload)
 	. = ..()

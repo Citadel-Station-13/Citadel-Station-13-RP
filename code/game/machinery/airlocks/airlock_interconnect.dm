@@ -20,7 +20,7 @@
 	/// our pipenet
 	var/datum/airlock_gasnet/network
 	/// connected machinery
-	var/list/obj/machinery/airlock_comopnent/peripherals
+	var/list/obj/machinery/airlock_component/peripherals
 	/// connected interconnects
 	var/list/obj/structure/airlock_interconnect/interconnects
 	/// rebuild queued

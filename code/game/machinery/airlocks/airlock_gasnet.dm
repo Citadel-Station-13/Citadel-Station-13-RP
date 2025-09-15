@@ -8,9 +8,7 @@
  * separate from the wirenet and pipenet APIs, which are
  * used for datanet/conduits/powernets and atmospherics respectively
  *
- * here's the general lifecycle of airlock handling:
- *
- * * airlock_handler will draw power from grid, and also handle gas operations on standalone buffers independently
+ * * the gasnet itself is stateless.
  */
 /datum/airlock_gasnet
 	/// all interconnects
@@ -18,38 +16,25 @@
 	/// all components
 	var/list/obj/machinery/airlock_component/components = list()
 
-	/// controller; there can only be one, otherwise things won't operate properly
-	///
-	/// * nulled out if there's more than one controller
+	/// controller; there can only be one
 	var/obj/machinery/airlock_component/controller/controller
-	/// all controllers
-	///
-	/// * only initialized if there's more than one controller
-	/// * while there's more than one controller, the gasnet will not function
-	var/list/obj/machinery/airlock_component/controller/extraneous_controllers
+	/// handler; there can only be one
+	var/obj/machinery/airlock_component/handler/handler
+	/// cycler; there can only be one
+	var/obj/machinery/airlock_component/cycler/cycler
+	/// vent; there can only be one
+	var/obj/machinery/airlock_component/vent/vent
 
-	/// handlers
-	var/list/obj/machinery/airlock_comopnent/handler/handlers = list()
-	/// cyclers
-	var/list/obj/machinery/airlock_comopnent/cycler/cyclers = list()
-	/// vents
-	var/list/obj/machinery/airlock_comopnent/vent/vents = list()
 	/// doors
-	var/list/obj/machinery/airlock_component/door_link/doors = list()
-	#warn hook
+	var/list/obj/machinery/airlock_component/door_linker/doors
 
-	/// total power storage in kj
-	var/power_capacity = 0
-	/// total power stored in kj
-	var/power_stored = 0
+	/// invalid setup
+	var/invalid = FALSE
+	/// invalid setup reasons
+	/// * as plaintext
+	var/list/invalid_reasons
 
-	/// total handler pumping power in kw; used to handle our buffer reshuffling
-	var/pumping_power = 0
-
-	/// injection buffer
-	var/datum/gas_mixture/injection_buffer
-	/// buffer for dumping out of handlers / vents; this should be waste gas.
-	var/datum/gas_mixture/dumping_buffer
+	#warn hook all
 
 /datum/airlock_gasnet/New(obj/structure/airlock_interconnect/origin)
 	if(origin)

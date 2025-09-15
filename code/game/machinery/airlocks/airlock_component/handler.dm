@@ -7,7 +7,7 @@
  * interface nodes of airlock networks
  * they handle the buffering of gas and power.
  */
-/obj/machinery/airlock_comopnent/handler
+/obj/machinery/airlock_component/handler
 	name = "airlock handler"
 	desc = "A set of underfloor machinery used to interface with an atmospherics and power network."
 	#warn sprite
@@ -15,51 +15,59 @@
 	/// pipenet connectors
 	var/list/obj/machinery/atmospherics/component/unary/airlock_connector/connectors
 	/// layer used for ejection
+	//  todo: vv hooks
 	var/layer_eject = PIPING_LAYER_SCRUBBER
 	/// layer used for intake
+	//  todo: vv hooks
 	var/layer_intake = PIPING_LAYER_SUPPLY
 	/// layer used for heat exchange
+	//  todo: vv hooks
 	var/layer_heat = PIPING_LAYER_AUX
 
-	/// power storage in kilojoules
-	var/power_storage = 1000
-	/// power draw in kilowatts; used for charging.
-	var/power_draw = 75
+	/// power storage in joules
+	var/power_capacity = 1000000
+	/// max power draw in kilowatts
+	var/power_io = 75
+	/// power stored in joules
+	var/power_stored = 1000000
 
-	/// liters of gas this can store
 	//  todo: vv hooks
-	var/air_storage = CELL_VOLUME * 4
+	var/air_buffer_volume_clean = CELL_VOLUME * 4
+	//  todo: vv hooks
+	var/air_buffer_volume_dirty = CELL_VOLUME * 4
 
 	/// pumping power in kilowatts
-	var/pumping_power = 30
+	var/pumping_power = 30000
 
-	/// our gas mixture; only exists if we're not on a network
-	var/datum/gas_mixture/air_contents
+	/// our clean gas mixture
+	var/datum/gas_mixture/air_buffer_clean
+	/// our dirty gas mixture
+	var/datum/gas_mixture/air_buffer_dirty
 
-/obj/machinery/airlock_comopnent/handler/Initialize(mapload)
+/obj/machinery/airlock_component/handler/Initialize(mapload)
 	. = ..()
 	air_contents = new(air_storage)
 
 #warn impl
 
-/obj/machinery/airlock_comopnent/handler/process(delta_time)
+/obj/machinery/airlock_component/handler/process(delta_time)
 	. = ..()
 	#warn impl - power, atmos
 
-/obj/machinery/airlock_comopnent/handler/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/airlock_component/handler/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return
 
 	#warn impl
 
-/obj/machinery/airlock_comopnent/handler/ui_static_data(mob/user, datum/tgui/ui)
+/obj/machinery/airlock_component/handler/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 
-/obj/machinery/airlock_comopnent/handler/ui_data(mob/user, datum/tgui/ui)
+/obj/machinery/airlock_component/handler/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 
-/obj/machinery/airlock_comopnent/handler/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+/obj/machinery/airlock_component/handler/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "AirlockHandler")

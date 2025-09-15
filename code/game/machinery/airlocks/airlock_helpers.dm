@@ -18,8 +18,8 @@
  * @return power used
  */
 /proc/airlock_adaptive_reconcile(
-	list/obj/machinery/airlock_comopnent/cycler/cyclers,
-	list/obj/machinery/airlock_comopnent/vent/vents,
+	list/obj/machinery/airlock_component/cycler/cyclers,
+	list/obj/machinery/airlock_component/vent/vents,
 	datum/gas_mixture/target,
 	datum/gas_mixture/supply,
 	datum/gas_mixture/waste,
@@ -48,8 +48,8 @@
  * @return power used
  */
 /proc/airlock_fixed_reconcile(
-	list/obj/machinery/airlock_comopnent/cycler/cyclers,
-	list/obj/machinery/airlock_comopnent/vent/vents,
+	list/obj/machinery/airlock_component/cycler/cyclers,
+	list/obj/machinery/airlock_component/vent/vents,
 	datum/airlock_environment/target,
 	datum/gas_mixture/supply,
 	datum/gas_mixture/waste,

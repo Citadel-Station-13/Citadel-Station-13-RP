@@ -8,9 +8,6 @@
 	desc = "A multi-purpose environment analyzer for an airlock. Doubles as a button for when you need to get in or out."
 
 	#warn sprite
-
-	controller_linking = TRUE
-
 	#warn impl
 
 	/// if set, autodetect airlocks will consider this to be the authoritative sensor for that side.
@@ -45,7 +42,7 @@
 	. = ..()
 
 /obj/machinery/airlock_peripheral/sensor/sensor_only
-	name = "airlock sensor"
+	name = "airlock reader"
 	desc = "An environment analyzer for an airlock. Don't block the front!"
 	is_button = FALSE
 	is_sensor = TRUE

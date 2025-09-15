@@ -3,7 +3,7 @@
 
 // todo: buildable
 
-/obj/machinery/airlock_comopnent/cycler
+/obj/machinery/airlock_component/cycler
 	name = "airlock cycler"
 	desc = "A set of machinery used for manipulating the atmosphere inside of an airlock. Doubles as a gas sensor."
 	#warn sprite
@@ -48,7 +48,7 @@
  *
  * @return op status
  */
-/obj/machinery/airlock_comopnent/cycler/proc/siphon_gas(wanted_pressure, tolerance, no_gas_venting)
+/obj/machinery/airlock_component/cycler/proc/siphon_gas(wanted_pressure, tolerance, no_gas_venting)
 	var/datum/gas_mixture/manipulating = loc.return_air_mutable()
 	if(!manipulating || !manipulating.total_moles)
 		return AIRLOCK_CYCLER_OP_FINISHED
@@ -63,7 +63,7 @@
  *
  * @return op status
  */
-/obj/machinery/airlock_comopnent/cycler/proc/inject_gas_naive(wanted_pressure, tolerance)
+/obj/machinery/airlock_component/cycler/proc/inject_gas_naive(wanted_pressure, tolerance)
 
 /**
  * vents gas from injection buffers with temperature taken into account
@@ -76,7 +76,7 @@
  *
  * @return op status
  */
-/obj/machinery/airlock_comopnent/cycler/proc/inject_gas_smart(wanted_pressure, wanted_temperature, pressure_tolerance, temperature_tolerance)
+/obj/machinery/airlock_component/cycler/proc/inject_gas_smart(wanted_pressure, wanted_temperature, pressure_tolerance, temperature_tolerance)
 
 /**
  * dynamic cycle stabilization
@@ -84,7 +84,7 @@
  * we will automatically expel bad gases, stabilize temperature, and inject wanted gas as necessary
  * dynamic injection will occur (we will inject missing gases to stabilize the ratio directly)
  */
-/obj/machinery/airlock_comopnent/cycler/proc/dynamic_cycle(
+/obj/machinery/airlock_component/cycler/proc/dynamic_cycle(
 	towards,
 	config_toggles,
 	pressure_tolerance,
