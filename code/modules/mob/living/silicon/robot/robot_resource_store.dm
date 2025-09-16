@@ -27,7 +27,7 @@
 	/// * Reagent id to `/datum/robot_resource/provisioned`
 	/// * Lazylist outside of provisioning. Lists are always formed during provisioning.
 	var/list/provisioned_reagent_store
-	/// Provisioned store for resources.
+	/// Provisioned store for misc string-key resources.
 	/// * String key to `/datum/robot_resource/provisioned`
 	/// * Lazylist outside of provisioning. Lists are always formed during provisioning.
 	var/list/provisioned_resource_store

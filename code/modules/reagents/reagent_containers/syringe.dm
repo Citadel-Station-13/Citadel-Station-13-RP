@@ -22,6 +22,9 @@
 	drop_sound = 'sound/items/drop/glass.ogg'
 	pickup_sound = 'sound/items/pickup/glass.ogg'
 
+	/// can be broken?
+	var/breakable = TRUE
+
 /obj/item/reagent_containers/syringe/on_reagent_change()
 	update_icon()
 
@@ -274,6 +277,10 @@
 	break_syringe(target, user)
 
 /obj/item/reagent_containers/syringe/proc/break_syringe(mob/living/carbon/target, mob/living/carbon/user)
+	if(!breakable)
+		return FALSE
+	if(mode == SYRINGE_BROKEN)
+		return TRUE
 	desc += " It is broken."
 	mode = SYRINGE_BROKEN
 	if(target)
@@ -281,6 +288,7 @@
 	if(user)
 		add_fingerprint(user)
 	update_icon()
+	return TRUE
 
 /obj/item/reagent_containers/syringe/proc/handle_impact_as_projectile(atom/target, impact_flags, def_zone, efficiency, injected_ptr)
 	if(impact_flags & (PROJECTILE_IMPACT_BLOCKED | PROJECTILE_IMPACT_FLAGS_SHOULD_GO_THROUGH))
@@ -292,3 +300,8 @@
 			*injected_ptr = reagents.trans_to_mob(casted, reagents.total_volume, CHEM_INJECT)
 	break_syringe(iscarbon(target) ? target : null)
 	return impact_flags
+
+//* subtypes - do not put pre-fill types in here! *//
+
+/obj/item/reagent_containers/syringe/unbreakable
+	breakable = FALSE

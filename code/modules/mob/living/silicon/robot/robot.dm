@@ -78,11 +78,9 @@
 	/// set to instance to init as that instance
 	#warn impl
 	var/datum/prototype/robot_chassis/chassis
-	var/datum/robot_provisioning/chassis_provisioning
 	/// set to instance to init as that instance
 	#warn impl
 	var/datum/prototype/robot_module/module
-	var/datum/robot_provisioning/module_provisioning
 
 	/// all installed upgrades
 	/// * some upgrades are consumed on install, and therefore won't be in here

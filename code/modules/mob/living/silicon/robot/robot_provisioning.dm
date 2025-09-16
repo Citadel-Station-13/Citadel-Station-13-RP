@@ -7,6 +7,7 @@
  * state.
  */
 /datum/robot_provisioning
+
 	/// provisioned items / modules
 	/// * lazy list
 	var/list/obj/item/items
