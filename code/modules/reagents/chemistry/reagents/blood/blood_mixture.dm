@@ -181,6 +181,8 @@
 	var/total_ratio = 0
 	for(var/key in fragment_ratios)
 		total_ratio += fragment_ratios[key]
+	if(total_ratio == 0)
+		total_ratio = 1
 	var/fixup_multiplier = 1 / total_ratio
 	for(var/key in fragment_ratios)
 		fragment_ratios[key] *= fixup_multiplier

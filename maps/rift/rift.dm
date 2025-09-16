@@ -29,6 +29,9 @@
 		/datum/map/sector/miaphus,
 		/datum/map/sector/roguemining_192/one,
 		/datum/map/sector/sky_planet,
+		/datum/map/sector/solars_station,
+		/datum/map/sector/ice_comet,
+		/datum/map/sector/osiris_field,
 	)
 
 	//* LEGACY BELOW *//
@@ -92,7 +95,7 @@
 
 	station_name  = "NSB Atlas"
 	station_short = "Atlas"
-	dock_name     = "NTS Demeter"
+	dock_name     = "NCS Demeter"
 	dock_type     = "surface"
 	boss_name     = "Central Command"
 	boss_short    = "CentCom"
@@ -362,7 +365,7 @@
 			GLOBAL_PROC,
 			GLOBAL_PROC_REF(seed_submaps),
 			list(z_index),
-			50,
+			75,
 			/area/rift/surfacebase/outside/west_deep/submap_seedzone,
 			/datum/map_template/submap/level_specific/rift/west_deep,
 		)
@@ -393,7 +396,7 @@
 			GLOBAL_PROC,
 			GLOBAL_PROC_REF(seed_submaps),
 			list(z_index),
-			50,
+			80,
 			/area/rift/surfacebase/outside/west_caves/submap_seedzone,
 			/datum/map_template/submap/level_specific/rift/west_caves,
 		)

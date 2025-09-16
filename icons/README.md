@@ -15,7 +15,7 @@ Yes, this currently includes all turfs, mobs, objs, and misc things. Sorry. We'l
   - /clothing - general, non-module clothing items placed in here
     - /{type} - uniform, head, shoes, suit, etc
       - /costumes - vanity costumes like kilts, mime outfits, clown outfits, cueball outfits, etc
-      - /formal - formalwear like siuts, dresses, etc
+      - /formal - formalwear like suits, dresses, etc
       - /job - basic job uniforms
       - /misc - unsorted things
       - /rank - "formal" "rank"-wear like flight suits, military/naval, etc

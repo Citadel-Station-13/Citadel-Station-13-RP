@@ -10,3 +10,6 @@
 	material_costs = list(
 		"blade" = 3000,
 	)
+	material_autodetect_tags = list(
+		"blade" = MATERIAL_TAG_BASIC_STRUCTURAL,
+	)

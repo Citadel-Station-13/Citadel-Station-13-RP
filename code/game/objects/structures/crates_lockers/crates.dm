@@ -144,12 +144,13 @@
 	desc = "A secure crate."
 	name = "Secure crate"
 	icon_state = "securecrate"
+	broken = FALSE
+	locked = TRUE
+	secure = TRUE
 	var/redlight = "securecrater"
 	var/greenlight = "securecrateg"
 	var/sparks = "securecratesparks"
 	var/emag = "securecrateemag"
-	broken = 0
-	locked = 1
 	//closet_appearance = /singleton/closet_appearance/crate/secure
 	var/tamper_proof = 0
 

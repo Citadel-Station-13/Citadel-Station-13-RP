@@ -1,3 +1,5 @@
+GLOBAL_LIST_BOILERPLATE(vehicle_tracking_beacons, /obj/item/vehicle_tracking_beacon)
+
 // todo: this is neither a component nor a module and it's weird, deal with it somehow
 /obj/item/vehicle_tracking_beacon
 	name = "Exosuit tracking beacon"

@@ -20,6 +20,8 @@
 	absorption = MATERIAL_RESISTANCE_LOW
 	nullification = MATERIAL_RESISTANCE_NONE
 
+	material_constraints = MATERIAL_CONSTRAINT_RIGID
+
 /datum/prototype/material/plasteel/titanium/hull
 	id = "titanium_hull"
 	name = MAT_TITANIUMHULL

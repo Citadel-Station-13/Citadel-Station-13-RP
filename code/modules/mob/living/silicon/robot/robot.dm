@@ -511,34 +511,34 @@
 /mob/living/silicon/robot/statpanel_data(client/C)
 	. = ..()
 	if(C.statpanel_tab("Status"))
-		STATPANEL_DATA_LINE("")
+		INJECT_STATPANEL_DATA_LINE(., "")
 		if(cell)
-			STATPANEL_DATA_LINE("Charge Left: [round(cell.percent())]%")
-			STATPANEL_DATA_LINE("Cell Rating: [round(cell.maxcharge)]") // Round just in case we somehow get crazy values
-			STATPANEL_DATA_LINE("Power Cell Load: [round(used_power_this_tick)]W")
+			INJECT_STATPANEL_DATA_LINE(., "Charge Left: [round(cell.percent())]%")
+			INJECT_STATPANEL_DATA_LINE(., "Cell Rating: [round(cell.maxcharge)]") // Round just in case we somehow get crazy values
+			INJECT_STATPANEL_DATA_LINE(., "Power Cell Load: [round(used_power_this_tick)]W")
 		else
-			STATPANEL_DATA_LINE("No Cell Inserted!")
-		STATPANEL_DATA_LINE("Lights: [lights_on ? "ON" : "OFF"]")
-		STATPANEL_DATA_LINE("")
+			INJECT_STATPANEL_DATA_LINE(., "No Cell Inserted!")
+		INJECT_STATPANEL_DATA_LINE(., "Lights: [lights_on ? "ON" : "OFF"]")
+		INJECT_STATPANEL_DATA_LINE(., "")
 		// if you have a jetpack, show the internal tank pressure
 		var/obj/item/tank/jetpack/current_jetpack = installed_jetpack()
 		if (current_jetpack)
-			STATPANEL_DATA_ENTRY("Internal Atmosphere Info", current_jetpack.name)
-			STATPANEL_DATA_ENTRY("Tank Pressure", current_jetpack.air_contents.return_pressure())
+			INJECT_STATPANEL_DATA_ENTRY(., "Internal Atmosphere Info", current_jetpack.name)
+			INJECT_STATPANEL_DATA_ENTRY(., "Tank Pressure", current_jetpack.air_contents.return_pressure())
 		// todo: robot panel; this shouldn't be in statpanel, it's not critical data
 		if(resources)
 			for(var/key in resources.provisioned_stack_store)
 				var/datum/robot_resource/resource = resources.provisioned_stack_store
-				STATPANEL_DATA_LINE("[resource.name]: [resource.amount]/[resource.amount_max]")
+				INJECT_STATPANEL_DATA_LINE(., "[resource.name]: [resource.amount]/[resource.amount_max]")
 			for(var/key in resources.provisioned_material_store)
 				var/datum/robot_resource/resource = resources.provisioned_material_store
-				STATPANEL_DATA_LINE("[resource.name]: [resource.amount]/[resource.amount_max]")
+				INJECT_STATPANEL_DATA_LINE(., "[resource.name]: [resource.amount]/[resource.amount_max]")
 			for(var/key in resources.provisioned_reagent_store)
 				var/datum/robot_resource/resource = resources.provisioned_reagent_store
-				STATPANEL_DATA_LINE("[resource.name]: [resource.amount]/[resource.amount_max]")
+				INJECT_STATPANEL_DATA_LINE(., "[resource.name]: [resource.amount]/[resource.amount_max]")
 			for(var/key in resources.provisioned_resource_store)
 				var/datum/robot_resource/resource = resources.provisioned_resource_store
-				STATPANEL_DATA_LINE("[resource.name]: [resource.amount]/[resource.amount_max]")
+				INJECT_STATPANEL_DATA_LINE(., "[resource.name]: [resource.amount]/[resource.amount_max]")
 
 /mob/living/silicon/robot/restrained()
 	return 0
@@ -930,6 +930,13 @@
 							cleaned_human.update_inv_shoes(0)
 						cleaned_human.clean_blood(1)
 						to_chat(cleaned_human, "<font color='red'>[src] cleans your face!</font>")
+
+	for(var/obj/item/storage/bag/ore/ore_bag in inventory.get_held_items())
+		if(ore_bag)
+			if(isturf(loc))
+				var/turf/tile = loc
+				ore_bag.obj_storage?.interacted_mass_pickup(new /datum/event_args/actor(src), tile)
+			break
 
 /mob/living/silicon/robot/proc/self_destruct()
 	gib()

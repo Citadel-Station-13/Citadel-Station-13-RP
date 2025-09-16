@@ -1,0 +1,329 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/wall/r_wall/prepainted,
+/area/submap/osiris_field/transport_shuttle1)
+"c" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/transport_shuttle1)
+"d" = (
+/obj/structure/salvageable/machine_os,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/transport_shuttle1)
+"e" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/template_noop)
+"f" = (
+/turf/simulated/floor/tiled/dark,
+/area/submap/osiris_field/transport_shuttle1)
+"k" = (
+/obj/structure/salvageable/computer_os,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/transport_shuttle1)
+"m" = (
+/obj/random/cigarettes,
+/turf/simulated/floor/tiled/dark,
+/area/submap/osiris_field/transport_shuttle1)
+"p" = (
+/obj/structure/table/standard,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/transport_shuttle1)
+"q" = (
+/obj/structure/table/standard,
+/obj/random/contraband,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/transport_shuttle1)
+"u" = (
+/obj/item/flashlight/flare{
+	on = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/submap/osiris_field/transport_shuttle1)
+"v" = (
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/transport_shuttle1)
+"x" = (
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/transport_shuttle1)
+"y" = (
+/obj/structure/bed/chair/bay/comfy/red{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/submap/osiris_field/transport_shuttle1)
+"z" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/transport_shuttle1)
+"A" = (
+/obj/random/trash_pile,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/transport_shuttle1)
+"B" = (
+/obj/structure/table,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/transport_shuttle1)
+"D" = (
+/obj/structure/table/standard,
+/obj/item/storage/wallet/random,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/transport_shuttle1)
+"G" = (
+/obj/structure/table/standard,
+/obj/item/poster,
+/obj/item/poster,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/transport_shuttle1)
+"H" = (
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/transport_shuttle1)
+"I" = (
+/obj/item/lipstick/random,
+/obj/item/flashlight/flare{
+	on = 1
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/transport_shuttle1)
+"J" = (
+/obj/structure/table,
+/obj/item/flashlight/flare{
+	on = 1
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/transport_shuttle1)
+"N" = (
+/obj/structure/salvageable/console_broken_os{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/submap/osiris_field/transport_shuttle1)
+"O" = (
+/obj/structure/table/standard,
+/obj/random/cash,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/transport_shuttle1)
+"Q" = (
+/obj/item/flashlight/flare{
+	on = 1
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/transport_shuttle1)
+"R" = (
+/obj/random/tetheraid,
+/obj/structure/table/standard,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/transport_shuttle1)
+"S" = (
+/obj/item/flashlight/flare{
+	on = 1
+	},
+/obj/structure/table/standard,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/transport_shuttle1)
+"T" = (
+/obj/structure/table,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/transport_shuttle1)
+"U" = (
+/turf/simulated/floor/plating,
+/area/template_noop)
+"V" = (
+/obj/item/flashlight/flare{
+	on = 1
+	},
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/transport_shuttle1)
+"X" = (
+/turf/template_noop,
+/area/template_noop)
+"Y" = (
+/obj/structure/salvageable/implant_container_os,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/transport_shuttle1)
+
+(1,1,1) = {"
+X
+e
+X
+X
+X
+X
+X
+"}
+(2,1,1) = {"
+e
+U
+e
+e
+X
+X
+e
+"}
+(3,1,1) = {"
+x
+x
+x
+e
+X
+e
+e
+"}
+(4,1,1) = {"
+x
+A
+x
+e
+e
+x
+x
+"}
+(5,1,1) = {"
+H
+A
+x
+x
+x
+v
+a
+"}
+(6,1,1) = {"
+a
+v
+x
+V
+x
+A
+a
+"}
+(7,1,1) = {"
+H
+c
+z
+x
+z
+c
+H
+"}
+(8,1,1) = {"
+a
+B
+B
+f
+T
+O
+a
+"}
+(9,1,1) = {"
+H
+c
+c
+f
+c
+c
+H
+"}
+(10,1,1) = {"
+a
+J
+I
+f
+B
+B
+a
+"}
+(11,1,1) = {"
+H
+c
+c
+f
+c
+c
+H
+"}
+(12,1,1) = {"
+a
+q
+B
+f
+B
+D
+a
+"}
+(13,1,1) = {"
+H
+c
+c
+m
+c
+c
+H
+"}
+(14,1,1) = {"
+a
+B
+p
+f
+Q
+B
+a
+"}
+(15,1,1) = {"
+a
+a
+a
+f
+a
+a
+a
+"}
+(16,1,1) = {"
+a
+R
+f
+f
+f
+Y
+a
+"}
+(17,1,1) = {"
+H
+G
+u
+f
+f
+S
+H
+"}
+(18,1,1) = {"
+a
+d
+y
+f
+y
+k
+a
+"}
+(19,1,1) = {"
+a
+a
+N
+N
+N
+a
+a
+"}
+(20,1,1) = {"
+X
+a
+H
+H
+H
+a
+X
+"}

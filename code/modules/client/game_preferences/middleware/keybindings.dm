@@ -13,14 +13,8 @@
 /datum/game_preference_middleware/keybindings/handle_reset(datum/game_preferences/prefs)
 	. = ..()
 
-	prefs.keybindings = list()
-	// don't change their hotkey mode.. unless it was never there.
-	prefs.misc_by_key[GAME_PREFERENCE_MISC_KEY_HOTKEY_MODE] = \
-		isnull(prefs.misc_by_key[GAME_PREFERENCE_MISC_KEY_HOTKEY_MODE])? TRUE : !!prefs.misc_by_key[GAME_PREFERENCE_MISC_KEY_HOTKEY_MODE]
-	var/hotkey_mode = prefs.misc_by_key[GAME_PREFERENCE_MISC_KEY_HOTKEY_MODE]
-	var/list/defaults = deep_copy_list(hotkey_mode? GLOB.hotkey_keybinding_list_by_key : GLOB.classic_keybinding_list_by_key)
-	prefs.keybindings = defaults
-
+	prefs.misc_by_key[GAME_PREFERENCE_MISC_KEY_HOTKEY_MODE] = TRUE
+	prefs.keybindings = deep_copy_list(GLOB.hotkey_keybinding_list_by_key)
 	prefs.push_ui_modules(updates = list((src.key) = list(
 		"bindings" = prefs.keybindings,
 		"hotkeyMode" = prefs.misc_by_key[GAME_PREFERENCE_MISC_KEY_HOTKEY_MODE],

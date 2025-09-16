@@ -105,7 +105,7 @@
 			for(var/mob/living/M in neighbor)
 				if(seed.get_trait(TRAIT_SPREAD) >= 2 && (M.lying || prob(round(seed.get_trait(TRAIT_POTENCY)))))
 					entangle(M)
-	if(is_mature() && seed.get_trait(TRAIT_CARNIVOROUS))
+	if(is_mature())
 		for(var/obj/effect/plant/thing in loc)
 			if(thing != src)
 				if(thing.seed != seed)

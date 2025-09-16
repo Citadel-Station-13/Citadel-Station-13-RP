@@ -141,6 +141,7 @@
 	item_state = "miniFE"
 	attack_sound = null	//it is much lighter, after all.
 	throw_force = 2
+	materials_base = list(MAT_PLASTIC = 90)
 	w_class = WEIGHT_CLASS_SMALL
 	damage_force = 3.0
 	max_water = 150
