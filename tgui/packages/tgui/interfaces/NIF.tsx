@@ -61,13 +61,13 @@ export const NIF = (props) => {
                 <Button.Confirm
                   icon="ban"
                   color="bad"
-                  content="Uninstall"
                   confirmIcon="ban"
                   confirmContent={"Uninstall " + viewingModule.name + "?"}
                   onClick={() => {
                     act("uninstall", { module: viewingModule.ref });
                     setViewing(null);
-                  }} />
+                  }}>Uninstall
+                </Button.Confirm>
                 <Button
                   icon="window-close"
                   onClick={() => setViewing(null)} />

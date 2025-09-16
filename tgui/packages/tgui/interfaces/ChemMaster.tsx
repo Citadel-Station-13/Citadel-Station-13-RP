@@ -194,7 +194,7 @@ const ChemicalBufferEntry = (props) => {
   return (
     <Table.Row key={chemical.id}>
       <Table.Cell color="label">
-        <AnimatedNumber value={chemical.volume} initial={0} />
+        <AnimatedNumber value={chemical.volume} />
         {` units of ${chemical.name}`}
       </Table.Cell>
       <Table.Cell collapsing>
@@ -253,8 +253,7 @@ const ChemicalBufferEntry = (props) => {
               id: chemical.id,
               amount: -1,
               to: transferTo,
-            })}>Custom Amount
-        </Button>
+            })} />
         <Button
           icon="question"
           onClick={() =>
@@ -327,7 +326,7 @@ const PackagingControls = (props) => {
               verticalAlignContent="middle"
               textAlign="center"
               selected={pill.id === chosen_pill_style}
-              color="transparent"
+              color={pill.id === chosen_pill_style ? null : "transparent"}
               onClick={() => act('change_pill_style', { id: pill.id })}>
               <Box mx={-1} mb={0} mt={1} className={pill.className} />
             </Button>
@@ -356,7 +355,7 @@ const PackagingControls = (props) => {
               key={patch.id}
               selected={patch.id === chosen_patch_style}
               textAlign="center"
-              color="transparent"
+              color={patch.id === chosen_patch_style ? null : "transparent"}
               onClick={() =>
                 act('change_patch_style', { chosen_patch_style: patch.id })}>
               <Box mb={0} mt={1} className={patch.className} />
@@ -387,7 +386,7 @@ const PackagingControls = (props) => {
               width="30px"
               selected={bottle.id === chosen_bottle_style}
               textAlign="center"
-              color="transparent"
+              color={bottle.id === chosen_bottle_style ? null : "transparent"}
               onClick={() => act('change_bottle_style', { id: bottle.id })}>
               <Box mx={-1} mb={0} mt={1} className={bottle.className} />
             </Button>
@@ -502,27 +501,29 @@ const AnalysisResults = (props) => {
             })}
         />
       }>
-      <LabeledList>
-        <LabeledList.Item label="Name">{analyzeVars.name}</LabeledList.Item>
-        <LabeledList.Item label="State">{analyzeVars.state}</LabeledList.Item>
-        {/* <LabeledList.Item label="pH">{analyzeVars.ph}</LabeledList.Item> */}
-        <LabeledList.Item label="Color">
-          <ColorBox color={analyzeVars.color.toString()} mr={1} />
-          {analyzeVars.color.toString()}
-        </LabeledList.Item>
-        <LabeledList.Item label="Description">
-          {analyzeVars.description}
-        </LabeledList.Item>
-        <LabeledList.Item label="Metabolization Rate">
-          {analyzeVars.metaRate}
-        </LabeledList.Item>
-        <LabeledList.Item label="Overdose Threshold">
-          {analyzeVars.overD}
-        </LabeledList.Item>
-        {/* <LabeledList.Item label="Addiction Threshold">
+      {analyzeVars && (
+        <LabeledList>
+          <LabeledList.Item label="Name">{analyzeVars.name}</LabeledList.Item>
+          <LabeledList.Item label="State">{analyzeVars.state}</LabeledList.Item>
+          {/* <LabeledList.Item label="pH">{analyzeVars.ph}</LabeledList.Item> */}
+          <LabeledList.Item label="Color">
+            <ColorBox color={analyzeVars.color?.toString()} mr={1} />
+            {analyzeVars.color.toString()}
+          </LabeledList.Item>
+          <LabeledList.Item label="Description">
+            {analyzeVars.description}
+          </LabeledList.Item>
+          <LabeledList.Item label="Metabolization Rate">
+            {analyzeVars.metaRate}
+          </LabeledList.Item>
+          <LabeledList.Item label="Overdose Threshold">
+            {analyzeVars.overD}
+          </LabeledList.Item>
+          {/* <LabeledList.Item label="Addiction Threshold">
           {analyzeVars.addicD}
         </LabeledList.Item> */}
-      </LabeledList>
+        </LabeledList>
+      )}
     </Section>
   );
 };
