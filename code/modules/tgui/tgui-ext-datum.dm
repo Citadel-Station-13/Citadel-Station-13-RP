@@ -188,7 +188,6 @@
 		for (var/datum/tgui/window as anything in open_uis)
 			window.push_data(data, nested_data)
 		return
-	#warn adapt this
 	if(!ui)
 		ui = SStgui.get_open_ui(user, src)
 	if(ui)
