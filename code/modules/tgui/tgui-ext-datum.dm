@@ -113,7 +113,7 @@
  *
  * return bool If the user's input has been handled and the UI should update.
  */
-/datum/proc/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/e_args)
+/datum/proc/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	SHOULD_CALL_PARENT(TRUE)
 	// If UI is not interactive or usr calling Topic is not the UI user, bail.
 	if(!ui || ui.status != UI_INTERACTIVE)
@@ -160,7 +160,7 @@
 	// this basically matches the useModule<>() hook used on the UI side, because id is null if
 	// we're a host window, and not an act call from an embedded component.
 	if(!id)
-		return ui_act(action, params, ui, new /datum/event_args/actor(usr))
+		return ui_act(action, params, ui, ui.state, new /datum/event_args/actor(usr))
 	return FALSE
 
 /**

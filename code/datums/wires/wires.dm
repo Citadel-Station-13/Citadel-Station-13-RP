@@ -166,7 +166,7 @@
 	data["proper_name"] = (proper_name != "Unknown") ? proper_name : null
 	return data
 
-/datum/wires/ui_act(action, list/params, datum/tgui/ui)
+/datum/wires/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return
 	if(. || !interactable(usr))

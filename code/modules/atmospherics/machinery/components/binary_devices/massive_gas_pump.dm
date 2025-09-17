@@ -157,7 +157,7 @@
 		return
 	ui_interact(user)
 
-/obj/machinery/atmospherics/component/binary/massive_gas_pump/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/atmospherics/component/binary/massive_gas_pump/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 

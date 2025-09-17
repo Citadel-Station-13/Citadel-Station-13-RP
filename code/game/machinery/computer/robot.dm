@@ -150,7 +150,7 @@
 	data["show_detonate_all"] = (data["auth"] && length(data["cyborgs"]) > 0 && ishuman(user))
 	return data
 
-/obj/machinery/computer/robotics/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/robotics/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 	. = FALSE

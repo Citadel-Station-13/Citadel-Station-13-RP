@@ -15,7 +15,7 @@ GLOBAL_DATUM_INIT(orbit_menu, /datum/orbit_menu, new)
 		ui = new(user, src, "Orbit")
 		ui.open()
 
-/datum/orbit_menu/ui_act(action, list/params, datum/tgui/ui)
+/datum/orbit_menu/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 
 	if(.)
