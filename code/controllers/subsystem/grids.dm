@@ -316,7 +316,7 @@ SUBSYSTEM_DEF(grids)
 	var/list/from_turfs = get_ordered_turfs(S_LL[1], S_TR[1], S_LL[2], S_TR[2], S_LL[3], SOUTH)
 	var/list/to_turfs = get_ordered_turfs(T_LL[1], T_TR[1], T_LL[2], T_TR[2], T_LL[3], turn(SOUTH, turn_angle))
 
-	ASSERT(length(from_turfs) == length(to_turfs)code/modules/sectors/air_support/orbital_deployment)
+	ASSERT(length(from_turfs) == length(to_turfs))
 
 	translate(from_turfs, to_turfs, SOUTH, turn(SOUTH, turn_angle))
 
