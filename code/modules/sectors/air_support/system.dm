@@ -23,8 +23,11 @@
 /datum/controller/subsystem/map_sectors/proc/laser_designation_query(z, check_los = TRUE, for_weapons = FALSE)
 	. = list()
 	for(var/atom/movable/laser_designator_target/target as anything in SSspatial_grids.laser_designations.all_atoms(z))
-		if(check_los)
-			#warn check los
+		var/turf/effective_turf = target.get_effective_turf()
+		if(!effective_turf)
+			continue
+		if(check_los && !is_turf_visible_from_high_altitude(effective_turf))
+			continue
 		if(for_weapons && !target.allow_weapons_guidance)
 			continue
 		. += target

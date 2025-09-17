@@ -255,6 +255,8 @@
  * @return TRUE to break regular click handling logic.
  */
 /mob/proc/click_on_override(atom/target, location, control, list/params)
+	if(SEND_SIGNAL(COMSIG_MOB_CLICK_ON_OVERRIDE, target, location, control, params) & SIGNAL_RAISE_MOB_CLICK_HANDLED)
+		return TRUE
 	return FALSE
 
 /**
@@ -262,6 +264,8 @@
  * @return TRUE to break regular click handling logic.
  */
 /mob/proc/click_on_special(atom/target, location, control, list/params)
+	if(SEND_SIGNAL(COMSIG_MOB_CLICK_ON_SPECIAL, target, location, control, params) & SIGNAL_RAISE_MOB_CLICK_HANDLED)
+		return TRUE
 	return FALSE
 
 /**
@@ -344,30 +348,127 @@
 	return AltClick(user) != "keep-going"
 
 //* Clickchain special modifier handling; remote control can route here, *//
+//* item has first say, target has second, we have first and la          *//
 
 /mob/proc/click_interaction_chain_override(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
-	return clickchain.target ? clickchain.target.on_click_interaction_chain_override(clickchain, clickchain_flags, active_item) : NONE
+	SHOULD_CALL_PARENT(TRUE)
+	if(active_item)
+		clickchain_flags = active_item.item_click_interaction_chain_override(clickchain, clickchain_flags)
+		if(clickchain_flags & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+			return clickchain_flags
+	if(clickchain.target)
+		clickchain_flags = clickchain.target.on_click_interaction_chain_override(clickchain, clickchain_flags, active_item)
+		if(clickchain_flags & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+			return clickchain_flags
+	return clickchain_flags
 
 /mob/proc/ctrl_click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
-	return clickchain.target ? clickchain.target.on_ctrl_click_interaction_chain(clickchain, clickchain_flags, active_item) : NONE
+	SHOULD_CALL_PARENT(TRUE)
+	if(active_item)
+		clickchain_flags = active_item.item_ctrl_click_interaction_chain(clickchain, clickchain_flags)
+		if(clickchain_flags & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+			return clickchain_flags
+	if(clickchain.target)
+		clickchain_flags = clickchain.target.on_ctrl_click_interaction_chain(clickchain, clickchain_flags, active_item)
+		if(clickchain_flags & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+			return clickchain_flags
+	return clickchain_flags
 
 /mob/proc/shift_click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
-	return clickchain.target ? clickchain.target.on_shift_click_interaction_chain(clickchain, clickchain_flags, active_item) : NONE
+	SHOULD_CALL_PARENT(TRUE)
+	if(active_item)
+		clickchain_flags = active_item.item_shift_click_interaction_chain(clickchain, clickchain_flags)
+		if(clickchain_flags & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+			return clickchain_flags
+	if(clickchain.target)
+		clickchain_flags = clickchain.target.on_shift_click_interaction_chain(clickchain, clickchain_flags, active_item)
+		if(clickchain_flags & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+			return clickchain_flags
+	return clickchain_flags
 
 /mob/proc/ctrl_shift_click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
-	return clickchain.target ? clickchain.target.on_ctrl_shift_click_interaction_chain(clickchain, clickchain_flags, active_item) : NONE
+	SHOULD_CALL_PARENT(TRUE)
+	if(active_item)
+		clickchain_flags = active_item.item_ctrl_shift_click_interaction_chain(clickchain, clickchain_flags)
+		if(clickchain_flags & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+			return clickchain_flags
+	if(clickchain.target)
+		clickchain_flags = clickchain.target.on_ctrl_shift_click_interaction_chain(clickchain, clickchain_flags, active_item)
+		if(clickchain_flags & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+			return clickchain_flags
+	return clickchain_flags
 
 /mob/proc/middle_click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
-	return clickchain.target ? clickchain.target.on_middle_click_interaction_chain(clickchain, clickchain_flags, active_item) : NONE
+	SHOULD_CALL_PARENT(TRUE)
+	if(active_item)
+		clickchain_flags = active_item.item_middle_click_interaction_chain(clickchain, clickchain_flags)
+		if(clickchain_flags & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+			return clickchain_flags
+	if(clickchain.target)
+		clickchain_flags = clickchain.target.on_middle_click_interaction_chain(clickchain, clickchain_flags, active_item)
+		if(clickchain_flags & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+			return clickchain_flags
+	return clickchain_flags
 
 /mob/proc/shift_middle_click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
-	return clickchain.target ? clickchain.target.on_shift_middle_click_interaction_chain(clickchain, clickchain_flags, active_item) : NONE
+	SHOULD_CALL_PARENT(TRUE)
+	if(active_item)
+		clickchain_flags = active_item.item_shift_middle_click_interaction_chain(clickchain, clickchain_flags)
+		if(clickchain_flags & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+			return clickchain_flags
+	if(clickchain.target)
+		clickchain_flags = clickchain.target.on_shift_middle_click_interaction_chain(clickchain, clickchain_flags, active_item)
+		if(clickchain_flags & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+			return clickchain_flags
+	return clickchain_flags
 
 /mob/proc/alt_click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
-	return clickchain.target ? clickchain.target.on_alt_click_interaction_chain(clickchain, clickchain_flags, active_item) : NONE
+	SHOULD_CALL_PARENT(TRUE)
+	if(active_item)
+		clickchain_flags = active_item.item_alt_click_interaction_chain(clickchain, clickchain_flags)
+		if(clickchain_flags & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+			return clickchain_flags
+	if(clickchain.target)
+		clickchain_flags = clickchain.target.on_alt_click_interaction_chain(clickchain, clickchain_flags, active_item)
+		if(clickchain_flags & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+			return clickchain_flags
+	return clickchain_flags
 
 /mob/proc/click_interaction_chain_special(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
-	return clickchain.target ? clickchain.target.on_click_interaction_chain_special(clickchain, clickchain_flags, active_item) : NONE
+	SHOULD_CALL_PARENT(TRUE)
+	if(active_item)
+		clickchain_flags = active_item.item_click_interaction_chain_special(clickchain, clickchain_flags)
+		if(clickchain_flags & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+			return clickchain_flags
+	if(clickchain.target)
+		clickchain_flags = clickchain.target.on_click_interaction_chain_special(clickchain, clickchain_flags, active_item)
+		if(clickchain_flags & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+			return clickchain_flags
+	return clickchain_flags
+
+/obj/item/proc/item_click_interaction_chain_override(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	return clickchain_flags
+
+/obj/item/proc/item_ctrl_click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	return clickchain_flags
+
+/obj/item/proc/item_shift_click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	return clickchain_flags
+
+/obj/item/proc/item_ctrl_shift_click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	return clickchain_flags
+
+/obj/item/proc/item_middle_click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	return clickchain_flags
+
+/obj/item/proc/item_shift_middle_click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	return clickchain_flags
+
+/obj/item/proc/item_alt_click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	return clickchain_flags
+
+/obj/item/proc/item_click_interaction_chain_special(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	return clickchain_flags
 
 /atom/proc/on_click_interaction_chain_override(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
 	return clickchain_flags

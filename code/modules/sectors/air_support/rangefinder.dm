@@ -5,15 +5,12 @@
 	#warn sprite
 	/// allow weapons guidance
 	var/allow_weapons_guidance = FALSE
-	/// projecting rangefinder
-	var/obj/item/rangefinder/projector
 	/// we are visible
 	var/visible_dot
 
-/atom/movable/laser_designator_target/Initialize(mapload, obj/item/rangefinder/projector)
-	src.projector = projector
-	src.allow_weapons_guidance = projector.laser_weapons_guidance
-	src.visible_dot = projector.laser_visible
+/atom/movable/laser_designator_target/Initialize(mapload, allow_weapons_guidance, visible_dot)
+	src.allow_weapons_guidance = allow_weapons_guidance
+	src.visible_dot = visible_dot
 	AddComponent(/datum/component/spatial_grid, SSspatial_grids.laser_designations)
 	if(ismovable(loc))
 		var/atom/movable/thingy = loc
@@ -26,7 +23,12 @@
 		thingy.vis_contents -= src
 	return ..()
 
-#warn impl this shit
+/atom/movable/laser_designator_target/proc/get_effective_turf()
+	if(isturf(loc))
+		return loc
+	if(ismovable(loc) && isturf(loc.loc))
+		return loc.loc
+	return null
 
 /atom/movable/laser_designator_target/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
 	..()
@@ -60,15 +62,52 @@
 	/// can be used as a laser designator
 	var/is_designator = FALSE
 
-	/// laser designation is not visible to target
-	var/laser_visible = FALSE
+	/// laser designation is visible to target
+	///
+	/// TODO: laser designation should be visible to user if this is off
+	var/laser_visible = TRUE
 	/// allow weapon guidance - if you turn this on without turning on laser_visible i will replace your eyelids with lemons
-	var/laser_weapons_guidance = FALSE
+	var/laser_weapons_guidance = TRUE
 
-	/// currently tracking target for laser designator
-	var/datum/laser_designator_target/laser_target
+	/// active laser designator target
+	var/atom/movable/laser_designator_target/active_laser_target
 
 #warn impl
+
+/obj/item/rangefinder/Destroy()
+	QDEL_NULL(active_laser_target)
+	return ..()
+
+/obj/item/rangefinder/on_attack_self(datum/event_args/actor/e_args)
+	. = ..()
+	if(.)
+		return
+	#warn zoom mode
+
+/obj/item/rangefinder/proc/create_laser_designator_target(atom/target)
+	#warn impl
+
+/obj/item/rangefinder/proc/destroy_laser_designator_target()
+	if(!QDELETED(active_laser_target))
+		qdel(active_laser_target)
+	active_laser_target = null
+
+/obj/item/rangefinder/proc/on_laser_designator_target_deleted(datum/source)
+	destroy_laser_designator_target()
+
+/obj/item/rangefinder/item_ctrl_click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
+	. = ..()
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
+	if(!is_designator)
+		return .
+	attempt_clickchain_laser_designate(clickchain, clickchain_flags)
+	return . | CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
+
+/**
+ * this doesn't check if we're a laser designator!
+ */
+/obj/item/rangefinder/proc/attempt_clickchain_laser_designate(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 
 /obj/item/rangefinder/laser_designator
 	name = "laser designator"
