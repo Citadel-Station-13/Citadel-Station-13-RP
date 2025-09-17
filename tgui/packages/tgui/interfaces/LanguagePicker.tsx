@@ -1,7 +1,6 @@
-import { useState } from 'react';
 import { Button, Section, Stack } from 'tgui-core/components';
 
-import { useBackend } from '../backend';
+import { useBackend, useLocalState } from '../backend';
 import { Window } from '../layouts';
 
 type LanguagePickerContext = {
@@ -40,7 +39,7 @@ export const LanguagePicker = (props) => {
 
 const LanguageInfo = (props) => {
   const { act, data } = useBackend<LanguagePickerContext>();
-  const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
+  const [selectedLanguage, setSelectedLanguage] = useLocalState<string | null>("selectedLanguage", null);
   let lang = data.languages.find((l) => l.id === selectedLanguage);
   if (lang === undefined) {
     return (<Section fill />);
@@ -71,7 +70,7 @@ const LanguageInfo = (props) => {
 const LanguageCategories = (props) => {
   const { act, data } = useBackend<LanguagePickerContext>();
   const { categories } = data;
-  let [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  let [selectedCategory, setSelectedCategory] = useLocalState<string | null>("selectedCategory", null);
   return (
     <Section fill scrollable title="Categories">
       {
@@ -95,8 +94,8 @@ const LanguageCategories = (props) => {
 
 const LanguageSelect = (props) => {
   const { act, data } = useBackend<LanguagePickerContext>();
-  let [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
-  let [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  let [selectedLanguage, setSelectedLanguage] = useLocalState<string | null>("selectedLanguage", null);
+  let [selectedCategory, setSelectedCategory] = useLocalState<string | null>("selectedCategory", null);
   if (selectedCategory === null) {
     return (
       <Section fill />
