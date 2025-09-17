@@ -114,6 +114,15 @@
 	/// * This var should never be changed from a list to a normal value or vice versa at runtime,
 	///   as we use this to detect which material update proc to call!
 	var/list/material_parts = MATERIAL_DEFAULT_DISABLED
+	/// part constraints - lets us track what we need to be made of
+	/// this is either a lazy key-value list of material keys to floats (representing constraint bitfields)
+	/// or a single float (representing constraint bitfield).
+	/// or null, if we don't care about constraints
+	/// ! This is what determines what constraints are used by the material parts system.
+	/// * Use null if something doesn't use material parts system, or if something uses the abstraction API to implement material parts themselves.
+	/// * This var should never be changed from a list to a normal value or vice versa at runtime, again, like material_parts
+	/// * as it is closely linked to material_parts
+	var/list/material_constraints = null
 	/// material costs - lets us track the costs of what we're made of.
 	/// this is either a lazy key-value list of material keys to cost in cm3,
 	/// or a single number.
@@ -232,6 +241,13 @@
 			// preprocess
 			material_costs = SSmaterials.preprocess_kv_keys_to_ids(material_costs)
 			material_costs = typelist(NAMEOF(src, material_costs), material_costs)
+	// cache material constraints if it's not modified
+	if(islist(material_constraints))
+		if(has_typelist(material_constraints))
+			material_constraints = get_typelist(material_constraints)
+		else
+			material_constraints = typelist(NAMEOF(src, material_constraints), material_constraints)
+
 	// initialize material parts system
 	if(material_parts != MATERIAL_DEFAULT_DISABLED)
 		// process material parts only if it wasn't set already
@@ -436,6 +452,12 @@
 		things_to_induce += obj_cell_slot.cell
 
 //* Climbing *//
+
+/obj/alt_clicked_on(mob/user, location, control, list/params)
+	if(obj_storage?.allow_open_via_alt_click && user.Reachability(src))
+		obj_storage.auto_handle_interacted_open(new /datum/event_args/actor(user))
+		return TRUE
+	return ..()
 
 /obj/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
 	if(drag_drop_climb_interaction(user, dropping))

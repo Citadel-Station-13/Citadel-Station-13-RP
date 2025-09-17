@@ -1,5 +1,6 @@
 /datum/prototype/design/sheet
 	abstract_type = /datum/prototype/design/sheet
+	category = DESIGN_CATEGORY_ENGINEERING
 
 /datum/prototype/design/sheet/reinforced_glass
 	id = "SheetReinforcedGlass"

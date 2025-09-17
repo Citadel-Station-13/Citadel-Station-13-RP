@@ -481,3 +481,24 @@
 	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
 	inhand_state = "grey"
 
+/obj/item/clothing/under/medicalold
+	name = "Old times Nurse Dress"
+	desc = "A dress worn by nurses way before space travel was a thing."
+	icon = 'icons/clothing/uniform/formal/dress/old_medical_dress.dmi'
+	icon_state = "nursesuit"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"
+
+/obj/item/clothing/under/medicalatlantic
+	name = "Old Atlantic Nurse Dress"
+	desc = "Major wars on Earth always saw ships transformed into hospitals. This one dress was made for nurses on board."
+	icon = 'icons/clothing/uniform/formal/dress/medical_dress.dmi'
+	icon_state = "medical_dress"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
+	inhand_state = "grey"

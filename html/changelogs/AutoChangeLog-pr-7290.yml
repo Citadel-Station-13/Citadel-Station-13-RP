@@ -1,0 +1,5 @@
+author: "Shadowtail117"
+delete-after: True
+changes:
+  - rscadd: "The nightshift will now work again, both automatically and manually."
+  - bugfix: "Fixed wrong usage of the station name when a shuttle bumps into the screaming signals overmap hazard."

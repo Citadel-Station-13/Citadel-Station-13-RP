@@ -1,3 +1,7 @@
+/hook/client_stability_check/check_asset_cache/invoke(client/joining)
+	INVOKE_ASYNC(joining, TYPE_PROC_REF(/client, warn_if_no_asset_cache_browser))
+	return TRUE
+
 /client
 	/// asset cache: filename = md5, for things already sent to the client
 	/// this is only for browse_rsc()'d assets.
@@ -6,11 +10,6 @@
 	var/list/asset_flush_jobs = list()
 	/// last flush job id
 	var/asset_flush_last_id
-
-/client/on_new_hook_stability_checks()
-	// ensure asset cache is there
-	INVOKE_ASYNC(src, PROC_REF(warn_if_no_asset_cache_browser))
-	return ..()
 
 /client/proc/warn_if_no_asset_cache_browser()
 	if(!winexists(src, "asset_cache_browser")) // The client is using a custom skin, tell them.

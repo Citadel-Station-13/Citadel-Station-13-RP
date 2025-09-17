@@ -347,7 +347,7 @@
 /turf/simulated/floor/plating/indoors,
 /area/shuttle/nanotrasen/sci_vector/crew)
 "QF" = (
-/obj/machinery/r_n_d/circuit_imprinter,
+/obj/machinery/lathe/r_n_d/circuit_imprinter,
 /obj/structure/window/reinforced,
 /turf/simulated/floor/plating/indoors,
 /area/shuttle/nanotrasen/sci_vector/excursion)
@@ -369,7 +369,7 @@
 /turf/simulated/floor/plating/indoors,
 /area/shuttle/nanotrasen/sci_vector/crew)
 "RX" = (
-/obj/machinery/r_n_d/protolathe,
+/obj/machinery/lathe/r_n_d/protolathe,
 /obj/structure/window/reinforced{
 	dir = 1
 	},

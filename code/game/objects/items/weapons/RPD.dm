@@ -343,7 +343,7 @@
 	playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
 
 /obj/item/pipe_dispenser/proc/do_wrench(var/atom/target, mob/user)
-	tool.melee_interaction_chain(target, user, CLICKCHAIN_HAS_PROXIMITY)
+	tool.lazy_melee_interaction_chain(target, user, CLICKCHAIN_HAS_PROXIMITY)
 
 /obj/item/pipe_dispenser/proc/mouse_wheeled(mob/user, atom/A, delta_x, delta_y, params)
 	SIGNAL_HANDLER

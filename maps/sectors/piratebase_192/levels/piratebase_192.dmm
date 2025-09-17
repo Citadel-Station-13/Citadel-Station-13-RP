@@ -578,9 +578,8 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/piratebase/mess)
 "fe" = (
-/obj/machinery/mecha_part_fabricator/pros{
+/obj/machinery/lathe/mecha_part_fabricator/pros{
 	dir = 8;
-	part_sets = list("Prosthetics","Prosthetics, Internal");
 	pixel_y = 3;
 	req_access = null
 	},

@@ -145,3 +145,8 @@
 	icon_state = "green"
 
 /area/sector/nebula_tradeport/expansion
+
+/area/submap/nebula_tradeport
+	name = "Submap Area"
+	icon_state = "submap"
+	dynamic_lighting = TRUE

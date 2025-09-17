@@ -1,0 +1,5 @@
+author: "AlphaM01"
+delete-after: True
+changes:
+  - rscadd: "Added Field Medic Voidsuit."
+  - tweak: "Old Exploration Voidsuit no longer spawns in the Search and Rescue Suit Storage unit."

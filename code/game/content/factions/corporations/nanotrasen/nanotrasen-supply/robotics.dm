@@ -30,34 +30,26 @@
 /datum/supply_pack/nanotrasen/robotics/some_robolimbs
 	name = "Basic Robolimb Blueprints"
 	contains = list(
-		/obj/item/disk/limb/morpheus,
-		/obj/item/disk/limb/xion,
-		/obj/item/disk/limb/talon,
+		/obj/item/disk/design_disk/limbs/morpheus,
+		/obj/item/disk/design_disk/limbs/xion,
+		/obj/item/disk/design_disk/limbs/talon,
 	)
 	worth = 500
 
 /datum/supply_pack/nanotrasen/robotics/all_robolimbs
 	name = "Advanced Robolimb Blueprints (No Basic)"
 	contains = list(
-		/obj/item/disk/limb/bishop,
-		/obj/item/disk/limb/hephaestus,
-		/obj/item/disk/limb/veymed,
-		/obj/item/disk/limb/wardtakahashi,
-		/obj/item/disk/limb/zenghu,
-		/obj/item/disk/limb/dsi_tajaran,
-		/obj/item/disk/limb/dsi_lizard,
-		/obj/item/disk/limb/dsi_sergal,
-		/obj/item/disk/limb/dsi_nevrean,
-		/obj/item/disk/limb/dsi_vulpkanin,
-		/obj/item/disk/limb/dsi_akula,
-		/obj/item/disk/limb/dsi_spider,
-		/obj/item/disk/limb/dsi_teshari,
-		/obj/item/disk/limb/eggnerdltd,
-		/obj/item/disk/limb/eggnerdltdred,
-		/obj/item/disk/limb/antares,
-		/obj/item/disk/limb/grayson,
-		/obj/item/disk/limb/cybersolutions,
-		/obj/item/disk/limb/cenilimicybernetics,
+		/obj/item/disk/design_disk/limbs/bishop,
+		/obj/item/disk/design_disk/limbs/hephaestus,
+		/obj/item/disk/design_disk/limbs/veymed,
+		/obj/item/disk/design_disk/limbs/ward_takahashi,
+		/obj/item/disk/design_disk/limbs/zenghu,
+		/obj/item/disk/design_disk/limbs/oss,
+		/obj/item/disk/design_disk/limbs/eggnerd,
+		/obj/item/disk/design_disk/limbs/antares,
+		/obj/item/disk/design_disk/limbs/grayson,
+		/obj/item/disk/design_disk/limbs/cyber_solutions,
+		/obj/item/disk/design_disk/limbs/cenilimi,
 	)
 	worth = 2500
 	container_type = /obj/structure/closet/crate/secure

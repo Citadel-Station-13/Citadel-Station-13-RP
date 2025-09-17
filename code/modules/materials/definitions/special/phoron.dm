@@ -26,6 +26,8 @@
 
 	worth = 20
 
+	material_constraints = MATERIAL_CONSTRAINT_RIGID //yeah, ok
+
 // Commenting this out while fires are so spectacularly lethal, as I can't seem to get this balanced appropriately.
 /*
 /datum/prototype/material/phoron/combustion_effect(var/turf/T, var/temperature, var/effect_multiplier)

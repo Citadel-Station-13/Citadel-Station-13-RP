@@ -172,6 +172,13 @@
  */
 //#define DO_NOT_DEFER_ASSETS
 
+// ## Atoms
+
+/**
+ * Trace Destroy() before Initialize().
+ */
+// #define CF_ATOM_TRACE_INIT_EARLY_QDEL
+
 // ## AI Holders
 
 /**

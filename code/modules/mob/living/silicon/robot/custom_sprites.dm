@@ -4,7 +4,7 @@
 //While it might be possible for a ckey to use that custom sprite for several real_names, it seems rather pointless to support it. ~Mech: We found it wasn't pointless.
 GLOBAL_LIST_EMPTY(robot_custom_icons)
 
-/hook/startup/proc/load_robot_custom_sprites()
+/legacy_hook/startup/proc/load_robot_custom_sprites()
 	var/config_file = file2text("config/custom_sprites.txt")
 	var/list/lines = splittext(config_file, "\n")
 

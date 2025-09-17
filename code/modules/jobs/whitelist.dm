@@ -2,7 +2,7 @@
 
 var/list/whitelist = list()
 
-/hook/startup/proc/loadWhitelist()
+/legacy_hook/startup/proc/loadWhitelist()
 	if(config_legacy.usewhitelist)
 		load_whitelist()
 	return 1
