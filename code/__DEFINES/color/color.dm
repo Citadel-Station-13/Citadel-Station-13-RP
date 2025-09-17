@@ -93,6 +93,8 @@
 #define COLOR_SECURITY_RED				"#b3363c"
 #define COLOR_ATMOSPHERICS_CYAN			"#73a6bf"
 #define COLOR_CARGO_BROWN				"#805f40"
+#define COLOR_NAV_BLUE					"#5b5bc2"
+#define COLOR_NAV_GOLD					"#f3bc4f"
 
 #define WOOD_COLOR_GENERIC     "#d5a66e"
 #define WOOD_COLOR_RICH        "#792f27"
@@ -101,6 +103,7 @@
 #define WOOD_COLOR_BLACK       "#332521"
 #define WOOD_COLOR_CHOCOLATE   "#543c30"
 #define WOOD_COLOR_YELLOW      "#e3994e"
+#define WOOD_COLOR_HARDWOOD	   "#42291a"
 
 // Color defines used by the assembly detailer.
 #define COLOR_ASSEMBLY_BLACK			"#545454"

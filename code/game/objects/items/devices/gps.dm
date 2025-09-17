@@ -26,6 +26,7 @@
 	slot_flags = SLOT_BELT
 	origin_tech = list(TECH_MATERIAL = 2, TECH_BLUESPACE = 2, TECH_MAGNET = 1)
 	materials_base = list(MAT_STEEL = 500)
+	worth_intrinsic = 40
 
 	/// our GPS tag
 	var/gps_tag = "GEN0"
@@ -68,6 +69,7 @@
 
 /obj/item/gps/update_icon()
 	cut_overlays()
+	. = ..()
 	if(emped)
 		add_overlay("emp")
 	else if(on)
@@ -161,7 +163,7 @@
 	update_icon()
 	visible_message(SPAN_WARNING("[src] clicks, resetting itself from the electromagnetic interference."))
 
-/obj/item/gps/attack_self(mob/user)
+/obj/item/gps/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -211,7 +213,7 @@
 		hud_bound?.add_screen(hud_arrow)
 	hud_arrow.set_disabled(FALSE)
 	update_tracking()
-	START_PROCESSING(SSfastprocess, src)
+	START_PROCESSING(SSprocess_5fps, src)
 	return TRUE
 
 /**
@@ -224,7 +226,7 @@
 	tracking = null
 	// just kick it out
 	hud_arrow?.set_disabled(TRUE)
-	STOP_PROCESSING(SSfastprocess, src)
+	STOP_PROCESSING(SSprocess_5fps, src)
 	return TRUE
 
 /obj/item/gps/process(delta_time)
@@ -599,8 +601,7 @@
 	item_state = "knife"
 	damage_force = 15
 	throw_force = 10
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_COMBAT = 4, TECH_ILLEGAL = 4)
 	attack_verb = list("sliced", "chopped", "stabbed", "pierced")

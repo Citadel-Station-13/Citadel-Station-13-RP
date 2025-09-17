@@ -1,4 +1,4 @@
-/datum/language/binary
+/datum/prototype/language/binary
 	id = LANGUAGE_ID_SILICON_BINARY
 	name = "Robot Talk"
 	desc = "Most human stations support free-use communications protocols and routing hubs for synthetic use."
@@ -10,7 +10,7 @@
 	language_flags = LANGUAGE_RESTRICTED | LANGUAGE_HIVEMIND
 	var/drone_only
 
-/datum/language/binary/broadcast(var/mob/living/speaker,var/message,var/speaker_mask)
+/datum/prototype/language/binary/broadcast(var/mob/living/speaker,var/message,var/speaker_mask)
 
 	if(!speaker.binarycheck())
 		return
@@ -57,7 +57,7 @@
 		var/datum/robot_component/C = R.components["comms"]
 		R.cell_use_power(C.active_usage)
 
-/datum/language/binary/drone
+/datum/prototype/language/binary/drone
 	id = LANGUAGE_ID_DRONE_BINARY
 	name = "Drone Talk"
 	desc = "A heavily encoded damage control coordination stream."

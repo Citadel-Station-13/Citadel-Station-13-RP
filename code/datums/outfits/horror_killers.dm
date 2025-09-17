@@ -41,7 +41,7 @@
 	gloves = /obj/item/clothing/gloves/black
 	l_ear = /obj/item/radio/headset
 	glasses = /obj/item/clothing/glasses/sunglasses
-	l_pocket = /obj/item/melee/energy/sword
+	l_pocket = /obj/item/melee/transforming/energy/sword
 	mask = /obj/item/clothing/mask/gas/clown_hat
 
 	id_slot = SLOT_ID_WORN_ID
@@ -55,9 +55,9 @@
 		qdel(briefcase_item)
 	for(var/i=3, i>0, i--)
 		sec_briefcase.contents += new /obj/item/spacecash/c1000
-	sec_briefcase.contents += new /obj/item/gun/energy/crossbow
-	sec_briefcase.contents += new /obj/item/gun/ballistic/revolver/mateba
-	sec_briefcase.contents += new /obj/item/ammo_magazine/s357
+	sec_briefcase.contents += new /obj/item/gun/projectile/energy/crossbow
+	sec_briefcase.contents += new /obj/item/gun/projectile/ballistic/revolver/mateba
+	sec_briefcase.contents += new /obj/item/ammo_magazine/a357/speedloader
 	sec_briefcase.contents += new /obj/item/plastique
 	H.equip_to_slot_or_del(sec_briefcase, /datum/inventory_slot/abstract/hand/left)
 

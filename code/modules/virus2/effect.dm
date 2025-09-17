@@ -143,7 +143,7 @@
 	var/datum/gender/TM = GLOB.gender_datums[mob.get_visible_gender()]
 	if(prob(25))
 		mob.visible_message("<font color='red'><b>[mob.name] is holding [TM.his] breath. It looks like [TM.his] ability to breath [TM.is] constricted!</b></font>")
-		mob.apply_damage(15, OXY)
+		mob.apply_damage(15, DAMAGE_TYPE_OXY)
 
 // Nerfing from 15 to 10
 /datum/disease2/effect/killertoxins
@@ -163,7 +163,7 @@
 /datum/disease2/effect/dna/activate(var/mob/living/carbon/mob,var/multiplier)
 	mob.bodytemperature = max(mob.bodytemperature, 350)
 	scramble(0,mob,10)
-	mob.apply_damage(10, CLONE)
+	mob.apply_damage(10, DAMAGE_TYPE_CLONE)
 
 /datum/disease2/effect/organs
 	name = "Limb Paralysis"
@@ -366,7 +366,7 @@
 	stage = 3
 
 /datum/disease2/effect/hallucinations/activate(var/mob/living/carbon/mob,var/multiplier)
-	mob.hallucination += 25
+	mob.adjustHallucination(25)
 
 /datum/disease2/effect/minordeaf
 	name = "Hearing Loss"
@@ -399,7 +399,7 @@
 	stage = 3
 
 /datum/disease2/effect/mutation/activate(var/mob/living/carbon/mob,var/multiplier)
-	mob.apply_damage(2, CLONE)
+	mob.apply_damage(2, DAMAGE_TYPE_CLONE)
 
 /datum/disease2/effect/groan
 	name = "Phantom Aches"

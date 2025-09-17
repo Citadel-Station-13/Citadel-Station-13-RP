@@ -104,74 +104,74 @@
 			if(prob(50))
 				var/new_gun = pick( // Copied from Random.dm
 					prob(11);/obj/random/ammo_all,\
-					prob(11);/obj/item/gun/energy/laser,\
-					prob(11);/obj/item/gun/ballistic/pirate,\
+					prob(11);/obj/item/gun/projectile/energy/laser,\
+					prob(11);/obj/item/gun/projectile/ballistic/pirate,\
 					prob(10);/obj/item/material/twohanded/spear,\
-					prob(10);/obj/item/gun/energy/stunrevolver,\
-					prob(10);/obj/item/gun/energy/taser,\
+					prob(10);/obj/item/gun/projectile/energy/stunrevolver,\
+					prob(10);/obj/item/gun/projectile/energy/taser,\
 					prob(10);/obj/item/gun/launcher/crossbow,\
-					prob(10);/obj/item/gun/ballistic/shotgun/doublebarrel/pellet,\
+					prob(10);/obj/item/gun/projectile/ballistic/shotgun/doublebarrel/pellet,\
 					prob(10);/obj/item/material/knife,\
 					prob(10);/obj/item/material/knife/tacknife/combatknife,\
 					prob(10);/obj/item/material/butterfly/switchblade,\
-					prob(10);/obj/item/gun/ballistic/luger,\
-					prob(10);/obj/item/gun/ballistic/luger/brown,\
-				/*	prob(10);/obj/item/gun/ballistic/pipegun,\ */
-					prob(10);/obj/item/gun/ballistic/revolver,\
-					prob(10);/obj/item/gun/ballistic/revolver/detective,\
-					prob(10);/obj/item/gun/ballistic/revolver/mateba,\
-					prob(10);/obj/item/gun/ballistic/revolver/judge,\
-					prob(10);/obj/item/gun/ballistic/colt,\
-					prob(10);/obj/item/gun/ballistic/shotgun/pump,\
-					prob(10);/obj/item/gun/ballistic/shotgun/pump/rifle,\
-				/*	prob(10);/obj/item/gun/ballistic/shotgun/pump/rifle/mosin,\ */
+					prob(10);/obj/item/gun/projectile/ballistic/luger,\
+					prob(10);/obj/item/gun/projectile/ballistic/luger/brown,\
+				/*	prob(10);/obj/item/gun/projectile/ballistic/pipegun,\ */
+					prob(10);/obj/item/gun/projectile/ballistic/revolver,\
+					prob(10);/obj/item/gun/projectile/ballistic/revolver/detective,\
+					prob(10);/obj/item/gun/projectile/ballistic/revolver/mateba,\
+					prob(10);/obj/item/gun/projectile/ballistic/revolver/judge,\
+					prob(10);/obj/item/gun/projectile/ballistic/colt,\
+					prob(10);/obj/item/gun/projectile/ballistic/shotgun/pump,\
+					prob(10);/obj/item/gun/projectile/ballistic/shotgun/pump/rifle,\
+				/*	prob(10);/obj/item/gun/projectile/ballistic/shotgun/pump/rifle/mosin,\ */
 					prob(10);/obj/item/melee/baton,\
 					prob(10);/obj/item/melee/telebaton,\
 					prob(10);/obj/item/melee/classic_baton,\
-					prob(10);/obj/item/melee/energy/sword,\
-					prob(9);/obj/item/gun/ballistic/automatic/wt550/lethal,\
-					prob(9);/obj/item/gun/ballistic/automatic/pdw,\
-					prob(9);/obj/item/gun/ballistic/derringer,\
-					prob(9);/obj/item/gun/energy/crossbow/largecrossbow,\
-					prob(9);/obj/item/gun/ballistic/automatic/mini_uzi,\
-					prob(9);/obj/item/gun/ballistic/pistol,\
-					prob(9);/obj/item/gun/ballistic/shotgun/pump/combat,\
+					prob(10);/obj/item/melee/transforming/energy/sword,\
+					prob(9);/obj/item/gun/projectile/ballistic/automatic/wt550/lethal,\
+					prob(9);/obj/item/gun/projectile/ballistic/automatic/pdw,\
+					prob(9);/obj/item/gun/projectile/ballistic/derringer,\
+					prob(9);/obj/item/gun/projectile/energy/crossbow/largecrossbow,\
+					prob(9);/obj/item/gun/projectile/ballistic/automatic/mini_uzi,\
+					prob(9);/obj/item/gun/projectile/ballistic/pistol,\
+					prob(9);/obj/item/gun/projectile/ballistic/shotgun/pump/combat,\
 					prob(9);/obj/item/material/twohanded/fireaxe,\
 					prob(9);/obj/item/cane/concealed,\
-					prob(9);/obj/item/gun/energy/gun,\
-					prob(8);/obj/item/gun/energy/ionrifle,\
-					prob(8);/obj/item/gun/energy/retro,\
-					prob(8);/obj/item/gun/energy/gun/eluger,\
-					prob(8);/obj/item/gun/energy/xray,\
-					prob(8);/obj/item/gun/ballistic/automatic/c20r,\
-					prob(8);/obj/item/gun/ballistic/automatic/stg,\
-					prob(8);/obj/item/melee/energy/sword,\
-				/*	prob(8);/obj/item/gun/ballistic/automatic/m41a,\ */
-					prob(7);/obj/item/gun/energy/captain,\
-					prob(7);/obj/item/gun/energy/sniperrifle,\
-					prob(7);/obj/item/gun/ballistic/automatic/p90,\
-					prob(7);/obj/item/gun/ballistic/automatic/as24,\
-					prob(7);/obj/item/gun/ballistic/automatic/sts35,\
-					prob(7);/obj/item/gun/ballistic/automatic/z8,\
-					prob(7);/obj/item/gun/energy/gun/burst,\
-					prob(7);/obj/item/gun/ballistic/shotgun/pump/JSDF,\
-					prob(7);/obj/item/gun/ballistic/deagle,\
+					prob(9);/obj/item/gun/projectile/energy/gun,\
+					prob(8);/obj/item/gun/projectile/energy/ionrifle,\
+					prob(8);/obj/item/gun/projectile/energy/retro,\
+					prob(8);/obj/item/gun/projectile/energy/gun/eluger,\
+					prob(8);/obj/item/gun/projectile/energy/xray,\
+					prob(8);/obj/item/gun/projectile/ballistic/automatic/c20r,\
+					prob(8);/obj/item/gun/projectile/ballistic/automatic/stg,\
+					prob(8);/obj/item/melee/transforming/energy/sword,\
+				/*	prob(8);/obj/item/gun/projectile/ballistic/automatic/m41a,\ */
+					prob(7);/obj/item/gun/projectile/energy/captain,\
+					prob(7);/obj/item/gun/projectile/energy/sniperrifle,\
+					prob(7);/obj/item/gun/projectile/ballistic/automatic/p90,\
+					prob(7);/obj/item/gun/projectile/ballistic/automatic/as24,\
+					prob(7);/obj/item/gun/projectile/ballistic/automatic/sts35,\
+					prob(7);/obj/item/gun/projectile/ballistic/automatic/z8,\
+					prob(7);/obj/item/gun/projectile/energy/gun/burst,\
+					prob(7);/obj/item/gun/projectile/ballistic/shotgun/pump/JSDF,\
+					prob(7);/obj/item/gun/projectile/ballistic/deagle,\
 					prob(7);/obj/item/gun/launcher/grenade,\
-				/*	prob(6);/obj/item/gun/ballistic/SVD,\*/
-					prob(6);/obj/item/gun/ballistic/automatic/lmg,\
-					prob(6);/obj/item/gun/energy/lasercannon,\
-					prob(5);/obj/item/gun/ballistic/automatic/bullpup,\
-					prob(5);/obj/item/gun/energy/pulse_rifle,\
-				/*	prob(4);/obj/item/gun/ballistic/automatic/battlerifle,\ */
-					prob(3);/obj/item/gun/ballistic/deagle/camo,\
-					prob(3);/obj/item/gun/energy/gun/nuclear,\
-					prob(2);/obj/item/gun/ballistic/deagle/gold,\
-					prob(2);/obj/item/gun/ballistic/automatic/lmg/mg42,\
-					prob(2);/obj/item/gun/ballistic/automatic/lmg/m60,\
-					prob(1);/obj/item/gun/ballistic/rocket,\
+				/*	prob(6);/obj/item/gun/projectile/ballistic/SVD,\*/
+					prob(6);/obj/item/gun/projectile/ballistic/automatic/lmg,\
+					prob(6);/obj/item/gun/projectile/energy/lasercannon,\
+					prob(5);/obj/item/gun/projectile/ballistic/automatic/bullpup,\
+					prob(5);/obj/item/gun/projectile/energy/nt_pulse/rifle,\
+				/*	prob(4);/obj/item/gun/projectile/ballistic/automatic/battlerifle,\ */
+					prob(3);/obj/item/gun/projectile/ballistic/deagle/camo,\
+					prob(3);/obj/item/gun/projectile/energy/gun/nuclear,\
+					prob(2);/obj/item/gun/projectile/ballistic/deagle/gold,\
+					prob(2);/obj/item/gun/projectile/ballistic/automatic/lmg/mg42,\
+					prob(2);/obj/item/gun/projectile/ballistic/automatic/lmg/m60,\
+					prob(1);/obj/item/gun/projectile/ballistic/rocket,\
 					prob(1);/obj/item/gun/launcher/grenade,\
-					prob(1);/obj/item/gun/ballistic/gyropistol,\
-					prob(1);/obj/item/gun/ballistic/heavysniper,\
+					prob(1);/obj/item/gun/projectile/ballistic/gyropistol,\
+					prob(1);/obj/item/gun/projectile/ballistic/heavysniper,\
 					prob(1);/obj/item/plastique,\
 					prob(1);/obj/item/material/sword,\
 					prob(1);/obj/item/cane/concealed,\
@@ -181,35 +181,35 @@
 				var/new_ammo = pick( // Copied from Random.dm
 					prob(5);/obj/item/storage/box/shotgunammo,\
 					prob(5);/obj/item/storage/box/shotgunshells,\
-					prob(5);/obj/item/ammo_magazine/s357,\
-					prob(5);/obj/item/ammo_magazine/clip/c762,\
-					prob(5);/obj/item/ammo_magazine/m45,\
-					prob(5);/obj/item/ammo_magazine/m45/rubber,\
-					prob(5);/obj/item/ammo_magazine/s38,\
-					prob(5);/obj/item/ammo_magazine/s38/rubber,\
+					prob(5);/obj/item/ammo_magazine/a357/speedloader,\
+					prob(5);/obj/item/ammo_magazine/a7_62mm/clip,\
+					prob(5);/obj/item/ammo_magazine/a45/doublestack,\
+					prob(5);/obj/item/ammo_magazine/a45/doublestack/rubber,\
+					prob(5);/obj/item/ammo_magazine/a38/speedloader,\
+					prob(5);/obj/item/ammo_magazine/a38/speedloader/rubber,\
 					prob(5);/obj/item/storage/box/flashbangs,\
-					prob(5);/obj/item/ammo_magazine/m556,\
-					prob(4);/obj/item/ammo_magazine/clip/c545,\
-					prob(4);/obj/item/ammo_magazine/clip/c45,\
-					prob(4);/obj/item/ammo_magazine/clip/c9mm,\
-					prob(4);/obj/item/ammo_magazine/m45uzi,\
-					prob(4);/obj/item/ammo_magazine/m556/ext,\
-					prob(4);/obj/item/ammo_magazine/m9mm,\
-					prob(4);/obj/item/ammo_magazine/m9mml,\
-					prob(4);/obj/item/ammo_magazine/m9mmt,\
-					prob(4);/obj/item/ammo_magazine/m9mmt/rubber,\
-					prob(4);/obj/item/ammo_magazine/m10mm,\
-					prob(4);/obj/item/ammo_magazine/m57x28mmp90,\
+					prob(5);/obj/item/ammo_magazine/a5_56mm,\
+					prob(4);/obj/item/ammo_magazine/a5_56mm/clip,\
+					prob(4);/obj/item/ammo_magazine/a45/clip,\
+					prob(4);/obj/item/ammo_magazine/a9mm/clip,\
+					prob(4);/obj/item/ammo_magazine/a45/uzi,\
+					prob(4);/obj/item/ammo_magazine/a5_56mm/ext,\
+					prob(4);/obj/item/ammo_magazine/a9mm,\
+					prob(4);/obj/item/ammo_magazine/a9mm/advanced_smg,\
+					prob(4);/obj/item/ammo_magazine/a9mm/top_mount,\
+					prob(4);/obj/item/ammo_magazine/a9mm/top_mount/rubber,\
+					prob(4);/obj/item/ammo_magazine/a10mm,\
+					prob(4);/obj/item/ammo_magazine/a5_7mm/p90,\
 				/*	prob(4);/obj/item/ammo_magazine/m14,\
 					prob(4);/obj/item/ammo_magazine/m14/large,\*/
-					prob(4);/obj/item/ammo_magazine/m556/ext,
-					prob(4);/obj/item/ammo_magazine/m762,\
-					prob(4);/obj/item/ammo_magazine/m556/ext,\
-					prob(3);/obj/item/ammo_magazine/clip/c10mm,\
-					prob(3);/obj/item/ammo_magazine/clip/c44,\
-					prob(3);/obj/item/ammo_magazine/m556,\
-					prob(2);/obj/item/ammo_magazine/m44,\
-					prob(2);/obj/item/ammo_magazine/m556,\
+					prob(4);/obj/item/ammo_magazine/a5_56mm/ext,
+					prob(4);/obj/item/ammo_magazine/a7_62mm,\
+					prob(4);/obj/item/ammo_magazine/a5_56mm/ext,\
+					prob(3);/obj/item/ammo_magazine/a10mm/clip,\
+					prob(3);/obj/item/ammo_magazine/a44/clip,\
+					prob(3);/obj/item/ammo_magazine/a5_56mm,\
+					prob(2);/obj/item/ammo_magazine/a44,\
+					prob(2);/obj/item/ammo_magazine/a5_56mm,\
 					prob(1);/obj/item/storage/box/frags,\
 				/*	prob(1);/obj/item/ammo_magazine/m95,\ */
 					prob(1);/obj/item/ammo_casing/rocket,\
@@ -219,9 +219,9 @@
 					prob(1);/obj/item/storage/box/practiceshells,\
 					prob(1);/obj/item/storage/box/stunshells,\
 					prob(1);/obj/item/storage/box/blanks,\
-					prob(1);/obj/item/ammo_magazine/mtg,\
-					prob(1);/obj/item/ammo_magazine/m45tommydrum,\
-					prob(1);/obj/item/ammo_magazine/m45tommy)
+					prob(1);/obj/item/ammo_magazine/a7_92mm,\
+					prob(1);/obj/item/ammo_magazine/a45/tommy/drum,\
+					prob(1);/obj/item/ammo_magazine/a45/tommy)
 				new new_ammo(C)
 		if("spacesuit")
 			var/obj/structure/closet/syndicate/C = new(src.loc)
@@ -273,7 +273,7 @@
 			/obj/item/reagent_containers/food/snacks/cookie, \
 			/obj/item/reagent_containers/food/snacks/meatball, \
 			/obj/item/reagent_containers/food/snacks/plump_pie, \
-			/obj/item/reagent_containers/food/snacks/liquidfood)
+			/obj/item/reagent_containers/food/snacks/liquid)
 			for(var/i=0,i<num,i++)
 				new new_type(C)
 		if("alien")
@@ -288,7 +288,7 @@
 					new /obj/item/clothing/suit/storage/hooded/carp_costume(C)
 			else if(prob(50))
 				if(live_cargo) // Something else very much alive and angry.
-					var/spawn_type = pick(/mob/living/simple_mob/animal/space/alien, /mob/living/simple_mob/animal/space/alien/drone, /mob/living/simple_mob/animal/space/alien/sentinel)
+					var/spawn_type = pick(/mob/living/simple_mob/animal/space/xenomorph/warrior, /mob/living/simple_mob/animal/space/xenomorph/drone, /mob/living/simple_mob/animal/space/xenomorph/neurotoxin_spitter)
 					new spawn_type(C)
 				else // Just a costume.
 					new /obj/item/clothing/head/xenos(C)

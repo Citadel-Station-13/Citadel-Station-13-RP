@@ -1,6 +1,6 @@
 // At minimum every mob has a hear_say proc.
 
-/mob/proc/hear_say(var/message, var/verb = "says", var/datum/language/language = null, var/alt_name = "",var/italics = 0, var/mob/speaker = null, var/sound/speech_sound, var/sound_vol)
+/mob/proc/hear_say(var/message, var/verb = "says", var/datum/prototype/language/language = null, var/alt_name = "",var/italics = 0, var/mob/speaker = null, var/sound/speech_sound, var/sound_vol)
 	if(!client && !teleop)
 		return
 
@@ -81,19 +81,19 @@
 			src.playsound_local(source, speech_sound, sound_vol, 1)
 
 // Done here instead of on_hear_say() since that is NOT called if the mob is clientless (which includes most AI mobs).
-/mob/living/hear_say(var/message, var/verb = "says", var/datum/language/language = null, var/alt_name = "",var/italics = 0, var/mob/speaker = null, var/sound/speech_sound, var/sound_vol)
+/mob/living/hear_say(var/message, var/verb = "says", var/datum/prototype/language/language = null, var/alt_name = "",var/italics = 0, var/mob/speaker = null, var/sound/speech_sound, var/sound_vol)
 	..()
 	if(has_polaris_AI()) // Won't happen if no ai_holder exists or there's a player inside w/o autopilot active.
 		var/datum/ai_holder/polaris/ai_holder = src.ai_holder
 		ai_holder.on_hear_say(speaker, message)
 
-/mob/proc/language_scramble(datum/language/L, str)
+/mob/proc/language_scramble(datum/prototype/language/L, str)
 	return L.scramble(str, languages)
 
 //! "silicons, why are you putting this here?"
 //? Because saycode needs a full rewrite so I'm shoving stuff in here until we do
 //? as if I don't, it's just harder to find later.
-/mob/living/silicon/language_scramble(datum/language/L, str)
+/mob/living/silicon/language_scramble(datum/prototype/language/L, str)
 	// todo: this still does the "unknown language" highlighting potentially, oops
 	var/translated = translation_context.attempt_translation(L, msg = str)
 	return isnull(translated)? L.scramble(str, languages) : translated
@@ -150,7 +150,7 @@
 	input = replacetext_char(input, underline, "$1")
 	return input
 
-/mob/proc/hear_radio(var/message, var/verb="says", var/datum/language/language=null, var/part_a, var/part_b, var/part_c, var/mob/speaker = null, var/hard_to_hear = 0, var/vname ="")
+/mob/proc/hear_radio(var/message, var/verb="says", var/datum/prototype/language/language=null, var/part_a, var/part_b, var/part_c, var/mob/speaker = null, var/hard_to_hear = 0, var/vname ="")
 
 	if(!client)
 		return
@@ -299,7 +299,7 @@
 		final_message = "[time][final_message]"
 	to_chat(src, final_message)
 
-/mob/proc/hear_signlang(var/message, var/verb = "gestures", var/datum/language/language, var/mob/speaker = null)
+/mob/proc/hear_signlang(var/message, var/verb = "gestures", var/datum/prototype/language/language, var/mob/speaker = null)
 	if(!client)
 		return
 

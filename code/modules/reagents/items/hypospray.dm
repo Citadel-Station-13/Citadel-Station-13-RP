@@ -60,7 +60,15 @@
 	icon_state = "[initial(icon_state)][vial_state]"
 	return ..()
 
-/obj/item/hypospray/attack_hand(mob/user, list/params)
+/obj/item/hypospray/update_overlays()
+	. = ..()
+	switch(inject_mode)
+		if(HYPOSPRAY_MODE_INJECT)
+			. += "inject"
+		if(HYPOSPRAY_MODE_SPRAY)
+			. += "spray"
+
+/obj/item/hypospray/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.is_holding_inactive(src))
 		if(isnull(loaded))
 			user.action_feedback(SPAN_WARNING("[src] has no vial loaded."), src)
@@ -110,7 +118,7 @@
 	inject_amount = amount
 	usr.action_feedback(SPAN_NOTICE("[src] is now set to inject [amount] per use."), src)
 
-/obj/item/hypospray/attack_self(mob/user)
+/obj/item/hypospray/attack_self(mob/user, datum/event_args/actor/actor)
 	switch(inject_mode)
 		if(HYPOSPRAY_MODE_INJECT)
 			inject_mode = HYPOSPRAY_MODE_SPRAY
@@ -131,7 +139,7 @@
 	inject_amount = (inject_amount + 5 > inject_max)? min(5, inject_max) : inject_amount + 5
 	user.action_feedback(SPAN_NOTICE("[src] is now set to inject [inject_amount] per use."), src)
 
-/obj/item/hypospray/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/hypospray/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(injection_checks(target, user, target_zone))
 		do_inject(target, user)
 		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
@@ -159,7 +167,7 @@
 			inject_verb = "spray"
 	inject_message = "[user] starts to [inject_verb] [target] with \the [src]."
 	var/block_flags = NONE
-	for(var/obj/item/I as anything in target.inventory.items_that_cover(limb.body_part_flags))
+	for(var/obj/item/I as anything in target.inventory.query_coverage(limb.body_part_flags))
 		block_flags |= (I.clothing_flags & (CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT))
 	// got all coverage, proceed.
 	var/delay = injection_time

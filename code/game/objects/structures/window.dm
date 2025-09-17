@@ -207,11 +207,11 @@
 	user.visible_message(SPAN_NOTICE("Something knocks on [src]."))
 	playsound(loc, 'sound/effects/Glasshit.ogg', 50, TRUE)
 
-/obj/structure/window/attack_hand(mob/user, list/params)
+/obj/structure/window/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 
-	user.setClickCooldown(user.get_attack_speed())
+	user.setClickCooldownLegacy(user.get_attack_speed_legacy())
 
 	playsound(loc, 'sound/effects/glassknock.ogg', 80, TRUE)
 	user.visible_message(
@@ -243,7 +243,7 @@
 	else if (istype(object, /obj/item/stack/cable_coil) && considered_reinforced && construction_state == WINDOW_STATE_UNSECURED && !istype(src, /obj/structure/window/reinforced/polarized))
 		var/obj/item/stack/cable_coil/C = object
 		if (C.use(1))
-			playsound(src.loc, /datum/soundbyte/grouped/sparks, 75, TRUE)
+			playsound(src.loc, /datum/soundbyte/sparks, 75, TRUE)
 			user.visible_message(
 				message = SPAN_NOTICE("\The [user] begins to wire \the [src] for electrochromic tinting."),
 				self_message = SPAN_NOTICE("You begin to wire \the [src] for electrochromic tinting."),
@@ -291,7 +291,7 @@
 /obj/structure/window/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	. = ..()
 	if (exposed_temperature > maximal_heat)
-		inflict_atom_damage(damage_per_fire_tick, flag = ARMOR_FIRE, gradual = TRUE)
+		inflict_atom_damage(damage_per_fire_tick, damage_flag = ARMOR_FIRE, damage_mode = DAMAGE_MODE_GRADUAL)
 
 /obj/structure/window/drop_products(method, atom/where)
 	. = ..()

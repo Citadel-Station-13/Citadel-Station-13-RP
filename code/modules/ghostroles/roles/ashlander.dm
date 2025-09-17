@@ -112,9 +112,9 @@
 
 /datum/ghostrole_instantiator/human/player_static/ashlander/AfterSpawn(mob/created, list/params)
 	. = ..()
-	created.faction = "lavaland"
+	created.set_iff_factions(MOB_IFF_FACTION_BIND_TO_MAP)
 	created.mind.teach_crafting_recipe(ashlander_crafting)
-	created.remove_language(/datum/language/common)
+	created.remove_language(/datum/prototype/language/common)
 
 /obj/structure/ghost_role_spawner/ashlander
 	name = "ashlander yurt"

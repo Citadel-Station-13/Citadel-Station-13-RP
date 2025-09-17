@@ -201,7 +201,7 @@ GLOBAL_LIST_EMPTY(observer_list)
 		var/mob/observer/dead/ghost = new(src)	//Transfer safety to observer spawning proc.
 		ghost.can_reenter_corpse = can_reenter_corpse
 		ghost.timeofdeath = src.timeofdeath //BS12 EDIT
-		ghost.key = key
+		transfer_client_to(ghost)
 		if(istype(loc, /obj/structure/morgue))
 			var/obj/structure/morgue/M = loc
 			M.update()
@@ -280,7 +280,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			to_chat(usr, "<span class='warning'>The astral cord that ties your body and your spirit has been severed. You are likely to wander the realm beyond until your body is finally dead and thus reunited with you.</span>")
 			return
 	mind.current.ajourn=0
-	mind.current.key = key
+	transfer_client_to(mind.current)
 	mind.current.teleop = null
 	if(istype(mind.current.loc, /obj/structure/morgue))
 		var/obj/structure/morgue/M = mind.current.loc
@@ -492,7 +492,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		if(config_legacy.uneducated_mice)
 			host.universal_understand = 0
 		announce_ghost_joinleave(src, 0, "They are now a mouse.")
-		host.ckey = src.ckey
+		transfer_client_to(host)
 		host.add_ventcrawl(vent_found)
 		host.update_perspective()
 		to_chat(host, "<span class='info'>You are now a mouse. Try to avoid interaction with players, and do not give hints away that you are more than a simple rodent.</span>")
@@ -505,7 +505,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	dat += "<h4>Crew Manifest</h4>"
 	dat += data_core.get_manifest()
 
-	src << browse(dat, "window=manifest;size=370x420;can_close=1")
+	src << browse(HTML_SKELETON(dat), "window=manifest;size=370x420;can_close=1")
 
 //This is called when a ghost is drag clicked to something.
 /mob/observer/dead/OnMouseDropLegacy(atom/over)

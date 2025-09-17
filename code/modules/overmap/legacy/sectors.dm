@@ -44,32 +44,32 @@
 	find_z_levels() // This populates map_z and assigns z levels to the ship.
 	register_z_levels() // This makes external calls to update global z level information.
 
-	ASSERT((LEGACY_MAP_DATUM).overmap_z)
-
-	start_x = start_x || rand(OVERMAP_EDGE, (LEGACY_MAP_DATUM).overmap_size - OVERMAP_EDGE)
-	start_y = start_y || rand(OVERMAP_EDGE, (LEGACY_MAP_DATUM).overmap_size - OVERMAP_EDGE)
-
-	forceMove(locate(start_x, start_y, (LEGACY_MAP_DATUM).overmap_z))
-
 	docking_codes = "[ascii2text(rand(65,90))][ascii2text(rand(65,90))][ascii2text(rand(65,90))][ascii2text(rand(65,90))]"
 
-	testing("Located sector \"[name]\" at [start_x],[start_y], containing Z [english_list(map_z)]")
+	// todo: This is shitcode but sue me tbh we gotta refactor this shit anyways to be overmap_initializer's
+	spawn(-1)
+		var/datum/overmap/legacy_bind_overmap = SSovermaps.get_or_load_default_overmap()
+		var/turf/where_to_go = free_overmap_space(legacy_bind_overmap)
+		start_x = where_to_go.x
+		start_y = where_to_go.y
 
-	LAZYADD(SSshuttle.sectors_to_initialize, src) //Queued for further init. Will populate the waypoint lists; waypoints not spawned yet will be added in as they spawn.
-	SSshuttle.process_init_queues()
+		forceMove(where_to_go)
+		testing("Located sector \"[name]\" at [start_x],[start_y], containing Z [english_list(map_z)]")
 
-	if(known)
-		plane = ABOVE_LIGHTING_PLANE
-		for(var/obj/machinery/computer/ship/helm/H in GLOB.machines)
-			H.get_known_sectors()
-	else
-		real_appearance = image(icon, src, icon_state)
-		real_appearance.override = TRUE
-		name = unknown_name
-		icon_state = unknown_state
-		color = null
-		desc = "Scan this to find out more information."
+		if(known)
+			plane = ABOVE_LIGHTING_PLANE
+			for(var/obj/machinery/computer/ship/helm/H in GLOB.machines)
+				H.get_known_sectors()
+		else
+			real_appearance = image(icon, src, icon_state)
+			real_appearance.override = TRUE
+			name = unknown_name
+			icon_state = unknown_state
+			color = null
+			desc = "Scan this to find out more information."
 
+		LAZYADD(SSshuttle.sectors_to_initialize, src) //Queued for further init. Will populate the waypoint lists; waypoints not spawned yet will be added in as they spawn.
+		SSshuttle.process_init_queues()
 
 // You generally shouldn't destroy these.
 /obj/overmap/entity/visitable/Destroy()
@@ -190,17 +190,13 @@
 	icon_state = "sector"
 	anchored = TRUE
 
-// Because of the way these are spawned, they will potentially have their invisibility adjusted by the turfs they are mapped on
-// 	prior to being moved to the overmap. This blocks that. Use set_invisibility to adjust invisibility as needed instead.
-/obj/overmap/entity/visitable/sector/hide()
-
 /obj/overmap/entity/visitable/proc/distress(mob/user)
 	if(has_distress_beacon)
 		return FALSE
 	has_distress_beacon = TRUE
 
 	admin_chat_message(message = "Overmap panic button hit on z[z] ([name]) by '[user?.ckey || "Unknown"]'", color = "#FF2222")
-	var/message = "This is an automated distress signal from a MIL-DTL-93352-compliant beacon transmitting on [PUB_FREQ*0.1]kHz. \
+	var/message = "This is an automated distress signal from a MIL-DTL-93352-compliant beacon transmitting on [FREQ_COMMON*0.1]kHz. \
 	This beacon was launched from '[initial(name)]'. I can provide this additional information to rescuers: [get_distress_info()]. \
 	Per the Interplanetary Convention on Space SAR, those receiving this message must attempt rescue, \
 	or relay the message to those who can. This message will repeat one time in 5 minutes. Thank you for your urgent assistance."
@@ -226,25 +222,18 @@
 
 	priority_announcement.Announce(message, new_title = "Automated Distress Signal", new_sound = 'sound/AI/sos.ogg', zlevel = -1)
 
-/proc/build_overmap()
-	if(!(LEGACY_MAP_DATUM).use_overmap)
-		return 1
-
-	ASSERT(!(LEGACY_MAP_DATUM).overmap_z)
-	testing("Building overmap...")
-	(LEGACY_MAP_DATUM).overmap_z = SSmapping.allocate_level().z_index
-
-	testing("Putting overmap on [(LEGACY_MAP_DATUM).overmap_z]")
-	var/area/overmap/A = new
-	for (var/square in block(locate(1,1,(LEGACY_MAP_DATUM).overmap_z), locate((LEGACY_MAP_DATUM).overmap_size,(LEGACY_MAP_DATUM).overmap_size,(LEGACY_MAP_DATUM).overmap_z)))
-		var/turf/T = square
-		if(T.x == 1 || T.y == 1 || T.x == (LEGACY_MAP_DATUM).overmap_size || T.y == (LEGACY_MAP_DATUM).overmap_size)
-			T = T.ChangeTurf(/turf/overmap/edge)
-		else
-			T = T.ChangeTurf(/turf/overmap)
-		ChangeArea(T, A)
-
-	(LEGACY_MAP_DATUM).sealed_levels |= (LEGACY_MAP_DATUM).overmap_z
-
-	testing("Overmap build complete.")
-	return 1
+/obj/overmap/entity/visitable/proc/free_overmap_space(datum/overmap/map)
+	var/list/turf/potential_turfs = map.reservation.unordered_inner_turfs()
+	var/safety = 1000
+	var/turf/potential
+	while((potential = pick_n_take(potential_turfs)))
+		if(length(potential.contents))
+			// something already here
+			continue
+		if(safety-- < 0)
+			stack_trace("safety ran out, that shouldn't really happen but okay")
+			break
+		break
+	if(!potential)
+		potential = locate(map.lower_left_x, map.lower_left_y, map.reservation.bottom_left_coords[3])
+	return potential

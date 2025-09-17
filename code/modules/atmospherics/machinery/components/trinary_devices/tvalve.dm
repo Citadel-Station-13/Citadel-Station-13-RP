@@ -7,9 +7,9 @@
 	name = "manual switching valve"
 	desc = "A pipe valve"
 
-	level = 1
 	dir = SOUTH
 	initialize_directions = SOUTH|NORTH|WEST
+	hides_underfloor_underlays = TRUE
 
 	var/state = 0 // 0 = go straight, 1 = go to side
 
@@ -27,8 +27,9 @@
 	icon_state = "map_tvalve1"
 	state = 1
 
-/obj/machinery/atmospherics/tvalve/update_icon(animation)
+/obj/machinery/atmospherics/tvalve/update_icon_state()
 	icon_state = "tvalve[mirrored ? "m" : ""][state]"
+	return ..()
 
 /obj/machinery/atmospherics/tvalve/proc/animation()
 	flick("tvalve[mirrored ? "m" : ""][src.state][!src.state]",src)
@@ -43,9 +44,6 @@
 		add_underlay(T, node1, node_connects[1])
 		add_underlay(T, node2, node_connects[2])
 		add_underlay(T, node3, node_connects[3])
-
-/obj/machinery/atmospherics/tvalve/hide(var/i)
-	update_underlays()
 
 /obj/machinery/atmospherics/tvalve/init_dir()
 	initialize_directions = get_initialize_directions_trinary(dir, mirrored)
@@ -160,7 +158,7 @@
 /obj/machinery/atmospherics/tvalve/attack_ai(mob/user as mob)
 	return
 
-/obj/machinery/atmospherics/tvalve/attack_hand(mob/user, list/params)
+/obj/machinery/atmospherics/tvalve/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	src.add_fingerprint(usr)
 	animation()
 	sleep(10)
@@ -284,7 +282,7 @@
 /obj/machinery/atmospherics/tvalve/digital/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/atmospherics/tvalve/digital/attack_hand(mob/user, list/params)
+/obj/machinery/atmospherics/tvalve/digital/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(!powered())
 		return
 	if(!src.allowed(user))

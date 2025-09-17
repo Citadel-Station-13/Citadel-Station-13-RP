@@ -29,7 +29,7 @@
 	else
 		return ..()
 
-/obj/structure/target_stake/attack_hand(mob/user, list/params)
+/obj/structure/target_stake/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	// taking pinned targets off!
 	if(pinned_target)
 		pinned_target.layer = OBJ_LAYER
@@ -47,8 +47,7 @@
 	else
 		return ..()
 
-/obj/structure/target_stake/bullet_act(obj/projectile/P, def_zone)
+/obj/structure/target_stake/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	if(pinned_target)
-		return pinned_target.bullet_act(P, def_zone)
-	else
-		return ..()
+		return proj.impact_redirect(pinned_target, args)
+	return ..()

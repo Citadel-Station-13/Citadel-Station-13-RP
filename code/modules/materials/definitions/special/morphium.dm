@@ -1,8 +1,8 @@
-/datum/material/morphium
+/datum/prototype/material/morphium
 	name = MAT_MORPHIUM
 	id = MAT_MORPHIUM
 	stack_type = /obj/item/stack/material/morphium
-	icon_base = 'icons/turf/walls/metal.dmi'
+	icon_base = 'icons/turf/walls/metal_wall.dmi'
 	icon_reinf = 'icons/turf/walls/reinforced_metal.dmi'
 	door_icon_base = "metal"
 	icon_colour = "#37115A"
@@ -23,9 +23,13 @@
 	absorption = MATERIAL_RESISTANCE_MODERATE
 	nullification = MATERIAL_RESISTANCE_MODERATE
 
-/datum/material/morphium/hull
+	worth = 100
+
+	material_constraints = MATERIAL_CONSTRAINT_RIGID
+
+/datum/prototype/material/morphium/hull
 	name = MAT_MORPHIUMHULL
 	id = "morphium_hull"
 	stack_type = /obj/item/stack/material/morphium/hull
-	icon_base = 'icons/turf/walls/hull.dmi'
+	icon_base = 'icons/turf/walls/metal_wall.dmi'
 	icon_reinf = 'icons/turf/walls/reinforced_mesh.dmi'

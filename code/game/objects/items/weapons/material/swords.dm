@@ -11,23 +11,16 @@
 	pickup_sound = 'sound/items/pickup/sword.ogg'
 	force_multiplier = 1.5
 
+	passive_parry = /datum/passive_parry/melee{
+		parry_chance_default = 50;
+		parry_chance_projectile = 10;
+	}
+
 /obj/item/material/sword/plasteel
-	material_parts = /datum/material/plasteel
+	material_parts = /datum/prototype/material/plasteel
 
 /obj/item/material/sword/durasteel
-	material_parts = /datum/material/durasteel
-
-/obj/item/material/sword/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	if(unique_parry_check(user, attacker, damage_source) && prob(50))
-		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
-		playsound(user.loc, 'sound/weapons/punchmiss.ogg', 50, 1)
-		return 1
-	return 0
-
-/obj/item/material/sword/suicide_act(mob/user)
-	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-	viewers(user) << "<span class='danger'>[user] is falling on the [src.name]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>"
-	return(BRUTELOSS)
+	material_parts = /datum/prototype/material/durasteel
 
 /obj/item/material/sword/katana
 	name = "katana"
@@ -35,13 +28,40 @@
 	icon_state = "katana"
 	slot_flags = SLOT_BELT | SLOT_BACK
 
-/obj/item/material/sword/katana/suicide_act(mob/user)
-	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-	visible_message(SPAN_DANGER("[user] is slitting [TU.his] stomach open with \the [src.name]! It looks like [TU.hes] trying to commit seppuku."), SPAN_DANGER("You slit your stomach open with \the [src.name]!"), SPAN_DANGER("You hear the sound of flesh tearing open.")) // gory, but it gets the point across
-	return(BRUTELOSS)
-
 /obj/item/material/sword/katana/plasteel
-	material_parts = /datum/material/plasteel
+	material_parts = /datum/prototype/material/plasteel
 
 /obj/item/material/sword/katana/durasteel
-	material_parts = /datum/material/durasteel
+	material_parts = /datum/prototype/material/durasteel
+
+/obj/item/material/sword/sabre
+	name = "officer's sabre"
+	desc = "An elegant weapon, its monomolecular edge is capable of cutting through flesh and bone with ease."
+	attack_sound = "swing_hit"
+	icon_state = "sabre"
+	attack_sound = 'sound/weapons/rapierhit.ogg'
+	pickup_sound = 'sound/items/pickup/knife.ogg'
+	drop_sound = 'sound/items/drop/knife.ogg'
+	//initially damage was at 30. Damage now starts at around 25 until someone messes with material code again (hi Sili)
+	material_parts = /datum/prototype/material/plasteel
+	material_color = FALSE
+	origin_tech = list(TECH_COMBAT = 4)
+	item_icons = list(
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
+			)
+
+	passive_parry = /datum/passive_parry/melee{
+		parry_chance_default = 50;
+	}
+
+// meant to play when unsheathing the blade from the sabre sheath.
+// todo: -_- this should be on the sheath
+// todo: we need a better way to do unsheath sounds for weapons and storage...
+/obj/item/material/sword/sabre/on_enter_storage(datum/object_system/storage/storage)
+	. = ..()
+	playsound(loc, 'sound/effects/holster/sheathin.ogg', 50, 1)
+
+/obj/item/material/sword/sabre/on_exit_storage(datum/object_system/storage/storage)
+	. = ..()
+	playsound(loc, 'sound/effects/holster/sheathout.ogg', 50, 1)

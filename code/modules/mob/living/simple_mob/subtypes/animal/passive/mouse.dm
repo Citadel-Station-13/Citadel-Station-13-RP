@@ -145,7 +145,7 @@
 	emote_hear = list("squeeks","squeaks","squiks")
 	emote_see = list("runs in a circle", "shakes", "scritches at something")
 
-/mob/living/simple_mob/animal/passive/mouse/attack_hand(mob/user, list/params)
+/mob/living/simple_mob/animal/passive/mouse/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	var/mob/living/hander = user
 	if(!istype(hander))
 		return
@@ -154,11 +154,11 @@
 	else
 		..()
 
-/obj/item/holder/mouse/attack_self(mob/user)
+/obj/item/holder/mouse/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
 	for(var/mob/living/simple_mob/M in src.contents)
 		if((INTENT_HELP) && user.canClick()) //a little snowflakey, but makes it use the same cooldown as interacting with non-inventory objects
-			user.setClickCooldown(user.get_attack_speed()) //if there's a cleaner way in baycode, I'll change this
+			user.setClickCooldownLegacy(user.get_attack_speed_legacy()) //if there's a cleaner way in baycode, I'll change this
 			user.visible_message("<span class='notice'>[user] [M.response_help] \the [M].</span>")

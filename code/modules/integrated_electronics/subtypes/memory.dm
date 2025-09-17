@@ -22,22 +22,16 @@
 	. = ..()
 	var/i
 	for(i = 1, i <= outputs.len, i++)
-		var/datum/integrated_io/O = outputs[i]
+		var/O = get_pin_data(IC_OUTPUT, i)
 		var/data = "nothing"
-		if(isweakref(O.data))
-			var/datum/d = O.data_as_type(/datum)
-			if(d)
-				data = "[d]"
-		else if(!isnull(O.data))
-			data = O.data
+		if(!isnull(O))
+			data = O
 		. += "\The [src] has [data] saved to address [i]."
 
 /obj/item/integrated_circuit/memory/do_work()
 	for(var/i = 1 to inputs.len)
-		var/datum/integrated_io/I = inputs[i]
-		var/datum/integrated_io/O = outputs[i]
-		O.data = I.data
-		push_data()
+		set_pin_data(IC_OUTPUT, i, get_pin_data(IC_INPUT, i))
+	push_data()
 	activate_pin(2)
 
 /obj/item/integrated_circuit/memory/tiny
@@ -86,7 +80,7 @@
 	var/datum/integrated_io/O = outputs[1]
 	O.push_data()
 
-/obj/item/integrated_circuit/memory/constant/attack_self(mob/user)
+/obj/item/integrated_circuit/memory/constant/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -101,26 +95,26 @@
 			accepting_refs = 0
 			new_data = input(usr, "Now type in a string.","[src] string writing") as null|text
 			if(istext(new_data) && CanInteract(user, GLOB.physical_state))
-				O.data = new_data
+				O.write_data_to_pin(new_data)
 				to_chat(user, "<span class='notice'>You set \the [src]'s memory to [O.display_data(O.data)].</span>")
 		if("number")
 			accepting_refs = 0
 			new_data = input(usr, "Now type in a number.","[src] number writing") as null|num
 			if(isnum(new_data) && CanInteract(user, GLOB.physical_state))
-				O.data = new_data
+				O.write_data_to_pin(new_data)
 				to_chat(user, "<span class='notice'>You set \the [src]'s memory to [O.display_data(O.data)].</span>")
 		if("ref")
 			accepting_refs = 1
 			to_chat(user, "<span class='notice'>You turn \the [src]'s ref scanner on.  Slide it across \
 			an object for a ref of that object to save it in memory.</span>")
 		if("null")
-			O.data = null
+			O.write_data_to_pin(null)
 			to_chat(user, "<span class='notice'>You set \the [src]'s memory to absolutely nothing.</span>")
 
 /obj/item/integrated_circuit/memory/constant/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(accepting_refs && (clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		var/datum/integrated_io/O = outputs[1]
-		O.data = WEAKREF(target)
+		O.write_data_to_pin(target)
 		visible_message("<span class='notice'>[user] slides \a [src]'s over \the [target].</span>")
 		to_chat(user, "<span class='notice'>You set \the [src]'s memory to a reference to [O.display_data(O.data)].  The ref scanner is \
 		now off.</span>")

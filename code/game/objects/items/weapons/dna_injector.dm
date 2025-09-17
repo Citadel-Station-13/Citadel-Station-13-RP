@@ -68,7 +68,7 @@
 	if(istype(M,/mob/living))
 		var/mob/living/L = M
 		L.afflict_radiation(RAD_MOB_AFFLICT_DNA_INJECTOR)
-		L.apply_damage(max(2,L.getCloneLoss()), CLONE)
+		L.apply_damage(max(2,L.getCloneLoss()), DAMAGE_TYPE_CLONE)
 
 	if (!(MUTATION_NOCLONE in M.mutations)) // prevents drained people from having their DNA changed
 		if (buf.types & DNA2_BUF_UI)
@@ -98,7 +98,7 @@
 			qdel(src)
 	return uses
 
-/obj/item/dnainjector/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/dnainjector/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	if(!user.IsAdvancedToolUser())
 		user.action_feedback(SPAN_WARNING("You have no clue what to do with [src]."), src)
@@ -115,7 +115,7 @@
 	if(!do_after(user,50))
 		return
 
-	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
+	user.setClickCooldownLegacy(DEFAULT_QUICK_COOLDOWN)
 	user.do_attack_animation(target)
 
 	target.visible_message("<span class='danger'>\The [target] has been injected with \the [src] by \the [user].</span>")

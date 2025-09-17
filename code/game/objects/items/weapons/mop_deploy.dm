@@ -52,7 +52,7 @@
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
-/obj/item/mop_deploy/attack_self(mob/user)
+/obj/item/mop_deploy/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -72,8 +72,6 @@
 					for(var/obj/item/O in organ.implants)
 						if(O == src)
 							organ.implants -= src
-			host.pinned -= src
-			host.embedded -= src
 			host._handle_inventory_hud_remove(src)
 		qdel(src)
 		spawn(1) if(!QDELETED(src)) qdel(src)

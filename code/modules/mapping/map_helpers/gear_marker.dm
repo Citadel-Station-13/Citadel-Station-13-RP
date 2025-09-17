@@ -77,7 +77,7 @@
 				CRASH("ran out of safety")
 			if(ispath(path, /obj/item/stack))
 				safety -= max(spawn_stacks_at(where, path, amount), 1)
-			else if(ispath(path, /datum/material))
+			else if(ispath(path, /datum/prototype/material))
 				safety -= max(spawn_stacks_at(where, path, amount), 1)
 			else
 				safety -= 1

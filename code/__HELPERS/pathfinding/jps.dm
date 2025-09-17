@@ -112,7 +112,7 @@ GLOBAL_VAR_INIT(jps_visualization_resolve, TRUE)
 	if(src.start == src.goal)
 		return list()
 	// too far away
-	if(get_chebyshev_dist(src.start, src.goal) > max_path_length)
+	if(get_turf_chebyshev_dist(src.start, src.goal) > max_path_length)
 		return null
 	#ifdef JPS_DEBUGGING
 	//* set up debugging vars

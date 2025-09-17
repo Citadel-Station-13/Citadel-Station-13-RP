@@ -16,8 +16,7 @@
 	default_multitool_hijack = TRUE
 	tgui_interface = "AtmosVentPump"
 	atmos_component_ui_flags = NONE
-
-	level = 1
+	hides_underfloor_underlays = TRUE
 
 	/// registered area
 	var/area/registered_area
@@ -89,11 +88,13 @@
 	//QDEL_NULL(soundloop)
 	return ..()
 
-/obj/machinery/atmospherics/component/unary/vent_pump/update_icon(safety = 0)
+/obj/machinery/atmospherics/component/unary/vent_pump/update_icon()
+	cut_overlays()
+	. = ..()
+
 	if(!check_icon_cache())
 		return
 
-	cut_overlays()
 
 	var/vent_icon = "vent"
 
@@ -101,7 +102,7 @@
 	if(!istype(T))
 		return
 
-	if(!T.is_plating() && node && node.level == 1 && istype(node, /obj/machinery/atmospherics/pipe))
+	if(is_hidden_underfloor() && istype(node, /obj/machinery/atmospherics/pipe) && node.will_hide_underfloor())
 		vent_icon += "h"
 
 	if(welded)
@@ -119,7 +120,7 @@
 		var/turf/T = get_turf(src)
 		if(!istype(T))
 			return
-		if(!T.is_plating() && node && node.level == 1 && istype(node, /obj/machinery/atmospherics/pipe))
+		if(is_hidden_underfloor() && istype(node, /obj/machinery/atmospherics/pipe) && node.will_hide_underfloor())
 			return
 		else
 			if(node)
@@ -127,9 +128,9 @@
 			else
 				add_underlay(T,, dir)
 
-/obj/machinery/atmospherics/component/unary/vent_pump/hide()
+/obj/machinery/atmospherics/component/unary/vent_pump/update_hiding_underfloor(new_value)
+	. = ..()
 	update_icon()
-	update_underlays()
 
 /obj/machinery/atmospherics/component/unary/vent_pump/proc/can_pump()
 	if(machine_stat & (NOPOWER|BROKEN))
@@ -277,8 +278,7 @@
 	if (!(machine_stat & NOPOWER) && on)
 		to_chat(user, "<span class='warning'>You cannot unwrench \the [src], turn it off first.</span>")
 		return 1
-	var/turf/T = src.loc
-	if (node && node.level==1 && isturf(T) && !T.is_plating())
+	if(is_hidden_underfloor() && node?.will_hide_underfloor())
 		to_chat(user, "<span class='warning'>You must remove the plating first.</span>")
 		return 1
 	if(unsafe_pressure())
@@ -499,7 +499,7 @@
 	if(!istype(T))
 		return
 
-	if(!T.is_plating() && node && node.level == 1 && istype(node, /obj/machinery/atmospherics/pipe))
+	if(T.hides_underfloor_objects() && istype(node, /obj/machinery/atmospherics/pipe) && node.will_hide_underfloor())
 		vent_icon += "h"
 
 	if(welded)

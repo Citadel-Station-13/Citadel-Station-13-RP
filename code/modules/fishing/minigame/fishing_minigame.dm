@@ -37,7 +37,7 @@
 	var/max_distance = 5
 
 	/// Fishing line visual
-	var/datum/beam/fishing_line
+	var/datum/beam_legacy/fishing_line
 
 /datum/fishing_challenge/New(atom/spot, reward_path, obj/item/fishing_rod/rod, mob/user)
 	src.user = user

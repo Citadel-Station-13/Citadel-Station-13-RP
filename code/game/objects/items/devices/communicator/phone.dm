@@ -71,12 +71,12 @@
 	message_admins(msg)
 	log_game(msg)
 	new_voice.mind = candidate.mind			//Transfer the mind, if any.
-	new_voice.ckey = candidate.ckey			//Finally, bring the client over.
+	candidate.transfer_client_to(new_voice)
 	voice_mobs.Add(new_voice)
 	listening_objects |= src
 
 	var/atom/movable/screen/blackness = new() 	//Makes a black screen, so the candidate can't see what's going on before actually 'connecting' to the communicator.
-	blackness.screen_loc = ui_entire_screen
+	blackness.screen_loc = SCREEN_LOC_FULLSCREEN
 	blackness.icon = 'icons/effects/effects.dmi'
 	blackness.icon_state = "1"
 	blackness.mouse_opacity = 2			//Can't see anything!

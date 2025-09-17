@@ -7,8 +7,9 @@
 	icon_state = "base"
 	use_power = USE_POWER_IDLE
 	initialize_directions = 0
+	pipe_flags = PIPING_DEFAULT_LAYER_ONLY | PIPING_ONE_PER_TURF
 	construction_type = /obj/item/pipe/quaternary
-	level = 1
+	hides_underfloor_underlays = TRUE
 
 	var/configuring = 0
 	//var/target_pressure = ONE_ATMOSPHERE	//a base type as abstract as this should NOT be making these kinds of assumptions
@@ -48,6 +49,7 @@
 	build_icons()
 
 /obj/machinery/atmospherics/component/quaternary/update_icon()
+	. = ..()
 	if(machine_stat & NOPOWER)
 		set_overlays(overlays_off.Copy())
 	else if(error_check())
@@ -61,6 +63,7 @@
 	return
 
 /obj/machinery/atmospherics/component/quaternary/process(delta_time)
+	..()
 	last_power_draw_legacy = 0
 	last_flow_rate_legacy = 0
 
@@ -102,7 +105,7 @@
 		return TRUE
 	return FALSE
 
-/obj/machinery/atmospherics/component/quaternary/attack_hand(mob/user, list/params)
+/obj/machinery/atmospherics/component/quaternary/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(..())
 		return
 
@@ -191,7 +194,7 @@
 		var/turf/T = get_turf(src)
 		if(!istype(T))
 			return
-		if(!T.is_plating() && istype(P.node, /obj/machinery/atmospherics/pipe) && P.node.level == 1 )
+		if(T.hides_underfloor_objects() && istype(P.node, /obj/machinery/atmospherics/pipe) && P.node.will_hide_underfloor())
 			//pipe_state = icon_manager.get_atmos_icon("underlay_down", P.dir, color_cache_name(P.node))
 			pipe_state = icon_manager.get_atmos_icon("underlay", P.dir, color_cache_name(P.node), "down")
 		else
@@ -204,9 +207,6 @@
 	for(var/datum/omni_port/P in ports)
 		P.update = 1
 	update_ports()
-
-/obj/machinery/atmospherics/component/quaternary/hide(var/i)
-	update_underlays()
 
 /obj/machinery/atmospherics/component/quaternary/proc/update_ports()
 	sort_ports()

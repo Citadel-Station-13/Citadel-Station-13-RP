@@ -4,7 +4,6 @@
 /datum/planet/miaphus
 	name = "Miaphus'irra"
 	desc = "Former Tajaran Penal Colony. Scorching hot with little rain and planet covering deserts,"
-	planetary_wall_type = /turf/unsimulated/wall/planetary/normal
 	weather_holder = /datum/weather_holder/miaphus
 
 /datum/planet/miaphus/update_sun()
@@ -375,7 +374,7 @@
 			if(amount_soaked >= damage)
 				continue // No need to apply damage.
 
-			H.apply_damage(damage, BRUTE, target_zone, amount_blocked, amount_soaked, used_weapon = "hail")
+			H.apply_damage(damage, DAMAGE_TYPE_BRUTE, target_zone, amount_blocked, amount_soaked, used_weapon = "hail")
 			if(show_message)
 				to_chat(H, effect_message)
 
@@ -498,7 +497,7 @@
 	if(T.outdoors)
 		radiation_pulse(T, rand(fallout_rad_low, fallout_rad_high))
 
-/turf/unsimulated/wall/planetary/normal/miaphus
+/turf/unsimulated/wall/planetary/miaphus
 	name = "deep ocean"
 	alpha = 0
 

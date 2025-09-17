@@ -3,6 +3,7 @@
 	initialize_directions = SOUTH|NORTH|WEST
 	use_power = USE_POWER_OFF
 	pipe_flags = PIPING_DEFAULT_LAYER_ONLY|PIPING_ONE_PER_TURF
+	hides_underfloor_underlays = TRUE
 
 	var/mirrored = FALSE
 	var/tee = FALSE
@@ -37,9 +38,6 @@
 		add_underlay(T, node1, node_connects[1])
 		add_underlay(T, node2, node_connects[2])
 		add_underlay(T, node3, node_connects[3])
-
-/obj/machinery/atmospherics/component/trinary/hide(var/i)
-	update_underlays()
 
 /obj/machinery/atmospherics/component/trinary/power_change()
 	var/old_stat = machine_stat

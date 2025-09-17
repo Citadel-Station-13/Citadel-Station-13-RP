@@ -1,28 +1,37 @@
 SUBSYSTEM_DEF(turbolifts)
 	name = "Turbolifts"
-	subsystem_flags = SS_NO_TICK_CHECK
+	subsystem_flags = SS_NO_INIT
 	wait = 10
 	var/static/list/moving_lifts = list()
+	var/list/currentrun
 
 /datum/controller/subsystem/turbolifts/fire(resumed)
-	for(var/liftref in moving_lifts)
-		if(world.time < moving_lifts[liftref])
+	if (!resumed)
+		currentrun = moving_lifts.Copy()
+
+	for(var/liftref in currentrun)
+		currentrun -= liftref
+		if(world.time < currentrun[liftref])
 			continue
 		var/datum/turbolift/lift = locate(liftref)
-		if(lift.busy)
+		if(lift.busy) // shouldn't happen as currentrun should contain valid, non-busy ones
 			continue
-		spawn(0)
-			lift.busy = 1
-			var/floor_delay
-			if(!(floor_delay = lift.do_move()))
-				moving_lifts[liftref] = null
-				moving_lifts -= liftref
-				if(lift.target_floor)
-					lift.target_floor.ext_panel.reset()
-					lift.target_floor = null
-			else
-				lift_is_moving(lift,floor_delay)
-			lift.busy = 0
 
-/datum/controller/subsystem/turbolifts/proc/lift_is_moving(var/datum/turbolift/lift,var/floor_delay)
-	moving_lifts["\ref[lift]"] = world.time + floor_delay
+		lift.busy = TRUE
+		var/floor_delay
+		if(!(floor_delay = lift.do_move()))
+			// we are done, remove ourself from the lift queue
+			moving_lifts[liftref] = null
+			moving_lifts -= liftref
+			if(lift.target_floor)
+				lift.target_floor.ext_panel.reset()
+				lift.target_floor = null
+		else
+			lift_is_moving(lift,floor_delay)
+		lift.busy = FALSE
+
+		if (MC_TICK_CHECK)
+			return
+
+/datum/controller/subsystem/turbolifts/proc/lift_is_moving(datum/turbolift/lift, floor_delay)
+	moving_lifts["[REF(lift)]"] = world.time + floor_delay

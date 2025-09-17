@@ -136,17 +136,18 @@ two tiles on initialization, and which way a cliff is facing may change during m
 /obj/structure/cliff/CanAllowThrough(atom/movable/mover, turf/target)
 	if(isliving(mover))
 		var/mob/living/L = mover
-		if(L.hovering) // Flying mobs can always pass.
+		if(L.is_avoiding_ground()) // Flying mobs can always pass.
 			return TRUE
 		return ..()
 
 	// Projectiles and objects flying 'upward' have a chance to hit the cliff instead, wasting the shot.
-	else if(istype(mover, /obj))
-		var/obj/O = mover
-		if(check_shield_arc(src, dir, O)) // This is actually for mobs but it will work for our purposes as well.
+	else if(istype(mover, /obj/projectile) || mover.throwing)
+		if(get_dir(mover, src) & dir)
 			if(prob(uphill_penalty / (1 + is_double_cliff) )) // Firing upwards facing NORTH means it will likely have to pass through two cliffs, so the chance is halved.
 				return FALSE
 		return TRUE
+
+	return ..()
 
 /obj/structure/cliff/Bumped(atom/A)
 	if(isliving(A))
@@ -210,7 +211,7 @@ two tiles on initialization, and which way a cliff is facing may change during m
 		var/blocked = L.run_armor_check(target_zone, "melee") * harm
 		var/soaked = L.get_armor_soak(target_zone, "melee") * harm
 
-		L.apply_damage(damage * harm, BRUTE, target_zone, blocked, soaked, used_weapon=src)
+		L.apply_damage(damage * harm, DAMAGE_TYPE_BRUTE, target_zone, blocked, soaked, used_weapon=src)
 
 		// Now fall off more cliffs below this one if they exist.
 		var/obj/structure/cliff/bottom_cliff = locate() in T
@@ -228,8 +229,8 @@ two tiles on initialization, and which way a cliff is facing may change during m
 	// Cliff climbing requires climbing gear.
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-		var/obj/item/clothing/shoes/shoes = H.shoes
-		if(shoes && shoes.rock_climbing)
+		var/obj/item/clothing/shoes/shoes = H.inventory.get_slot(/datum/inventory_slot/inventory/shoes)
+		if(istype(shoes) && shoes.rock_climbing)
 			return TRUE
 		var/obj/item/held = H.get_active_held_item()
 		if(held && istype(held, /obj/item/pickaxe/icepick))

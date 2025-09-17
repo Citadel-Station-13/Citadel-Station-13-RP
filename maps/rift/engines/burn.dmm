@@ -43,7 +43,7 @@
 /area/engineering/engine_room)
 "bZ" = (
 /obj/machinery/computer/general_air_control/supermatter_core{
-	dir = 1;
+	dir = 4;
 	frequency = 1438;
 	input_tag = "cooling_in";
 	name = "Engine Pressure Control";
@@ -125,7 +125,6 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber{
 	tag = null;
 	dir = 1;
-	id_tag = "engine_out";
 	frequency = 1437
 	},
 /turf/simulated/floor/reinforced/airless,
@@ -133,6 +132,18 @@
 "eU" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/yellow,
 /obj/machinery/meter,
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"fH" = (
+/obj/machinery/atmospherics/pipe/simple/visible/black{
+	dir = 4
+	},
+/obj/machinery/air_alarm{
+	dir = 1;
+	pixel_y = -25;
+	frequency = 1437;
+	name = "Burn Chamber Vent Control"
+	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "fU" = (
@@ -159,7 +170,6 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor,
-/turf/simulated/floor,
 /area/template_noop)
 "gK" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
@@ -168,8 +178,8 @@
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "gL" = (
-/obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
-/obj/machinery/atmospherics/pipe/manifold/visible/supply{
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
 /obj/machinery/light{
@@ -194,9 +204,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "ho" = (
-/obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	dir = 4
-	},
+/obj/machinery/atmospherics/pipe/simple/visible/cyan,
 /obj/machinery/meter,
 /turf/simulated/floor,
 /area/engineering/engine_room)
@@ -257,15 +265,6 @@
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
 /turf/simulated/floor,
 /area/engineering/engine_room)
-"mb" = (
-/obj/machinery/atmospherics/pipe/simple/visible/purple{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/visible/purple{
-	dir = 4
-	},
-/turf/simulated/floor,
-/area/engineering/engine_room)
 "mv" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-4"
@@ -291,7 +290,6 @@
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor,
 /turf/simulated/floor,
 /area/template_noop)
 "nL" = (
@@ -341,7 +339,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "pM" = (
-/obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/light{
 	dir = 4
@@ -464,7 +462,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "vO" = (
-/obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
@@ -534,17 +532,15 @@
 /area/engineering/engine_room)
 "Ab" = (
 /turf/simulated/floor,
-/turf/simulated/floor,
 /area/template_noop)
 "Ao" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor,
-/turf/simulated/floor,
 /area/template_noop)
 "AP" = (
-/obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -555,21 +551,16 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
+"Bq" = (
+/obj/structure/closet/firecloset/full/double,
+/turf/template_noop,
+/area/template_noop)
 "Bu" = (
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "Bz" = (
 /obj/machinery/light,
 /turf/simulated/floor,
-/area/engineering/engine_room)
-"BR" = (
-/obj/machinery/atmospherics/component/unary/vent_scrubber{
-	id_tag = "engine_out";
-	tag = null;
-	dir = 1;
-	frequency = 1437
-	},
-/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "BU" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/black,
@@ -580,15 +571,15 @@
 	dir = 8
 	},
 /obj/machinery/air_sensor{
-	frequency = 1438;
+	frequency = 1437;
 	id_tag = "engine_sensor";
 	output = 63
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "Cy" = (
-/obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	dir = 6
+/obj/machinery/atmospherics/pipe/manifold/visible/cyan{
+	dir = 1
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
@@ -666,7 +657,9 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "Gg" = (
-/obj/machinery/atmospherics/pipe/manifold/visible/cyan,
+/obj/machinery/atmospherics/pipe/simple/visible/cyan{
+	dir = 5
+	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "Hh" = (
@@ -760,7 +753,7 @@
 /area/engineering/engine_room)
 "JS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/manifold/visible/scrubbers{
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -1088,7 +1081,7 @@
 /turf/template_noop,
 /area/template_noop)
 "Zw" = (
-/obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -1453,7 +1446,7 @@ hp
 JK
 KE
 sq
-BR
+eO
 gK
 gK
 gK
@@ -1499,7 +1492,7 @@ iV
 Bu
 Bu
 Bu
-mb
+JK
 JK
 dH
 gB
@@ -1526,7 +1519,7 @@ QG
 HU
 Nz
 uE
-iV
+fH
 Yg
 pt
 JM
@@ -1540,7 +1533,7 @@ Bu
 xQ
 Bu
 Bu
-ho
+HF
 Zn
 "}
 (18,1,1) = {"
@@ -1636,10 +1629,10 @@ rW
 iv
 iv
 iv
-iv
-fU
+ho
 ZN
 iv
+fU
 cm
 Zn
 "}
@@ -1804,7 +1797,7 @@ Zn
 WA
 kh
 It
-Zn
+bZ
 Zn
 Zn
 Zn
@@ -1829,7 +1822,32 @@ Zn
 Zn
 Zn
 Zn
-bZ
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+"}
+(30,1,1) = {"
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Bq
 Zn
 Zn
 Zn

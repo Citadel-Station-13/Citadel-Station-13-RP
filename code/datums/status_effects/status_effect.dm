@@ -6,6 +6,9 @@
  *
  * each effect potentially has its own amount of variable arguments that
  * can be passed into apply_status_effect. they will be detailed per-file.
+ *
+ * todo: /datum/prototype/status_effect
+ * todo: /datum/prototype/status_effect/simple for normal ones.
  */
 /datum/status_effect
 	abstract_type = /datum/status_effect
@@ -35,8 +38,8 @@
 	if(!isnull(duration))
 		src.duration = duration
 	started = world.time
-	rebuild_decay_timer()
 	on_apply(arglist(arguments))
+	rebuild_decay_timer()
 
 /datum/status_effect/Destroy()
 	owner?.status_effects?.Remove(identifier)
@@ -47,6 +50,12 @@
 		decay_timer = null
 	return ..()
 
+/**
+ * Called on tick
+ *
+ * @params
+ * * dt - seconds elapsed
+ */
 /datum/status_effect/proc/tick(dt)
 	SHOULD_NOT_SLEEP(TRUE)
 
@@ -196,9 +205,11 @@
 /**
  * remove a status effect
  *
+ * * will remove grouped effects entirely.
+ *
  * @params
  * * path - path to effect
- * * stacks - stacks to remove for grouped and stacking, default is all.
+ * * stacks - stacks to remove for stacking, default is all.
  *
  * @return stacks **left**. for single effects this is probably 0.
  */

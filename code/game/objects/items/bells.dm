@@ -18,7 +18,7 @@
 	if(broken)
 		. += "<span class = 'danger'>It looks damaged, the ringer is stuck firmly inside.</span>"
 
-/obj/item/deskbell/attack_hand(mob/user, list/params)
+/obj/item/deskbell/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 
 	//This defines the radials and what call we're assiging to them.
 	var/list/options = list()
@@ -67,13 +67,6 @@
 
 /obj/item/deskbell/proc/check_ability(mob/user)
 	if (ishuman(user))
-		var/mob/living/carbon/human/H = user
-		var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
-		if (H.hand)
-			temp = H.organs_by_name["l_hand"]
-		if(temp && !temp.is_usable())
-			to_chat(H,"<span class='notice'>You try to move your [temp.name], but cannot!</span>")
-			return 0
 		return 1
 	else
 		to_chat(user,"<span class='notice'>You are not able to ring [src].</span>")

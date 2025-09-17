@@ -1,5 +1,6 @@
+
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station developers.          *//
 
 /**
  * AI holders
@@ -46,6 +47,10 @@
 /datum/ai_holder/New(atom/movable/agent)
 	ASSERT(!agent.ai_holder)
 	set_agent(agent)
+	if(!disabled)
+		on_enable()
+	else
+		on_disable()
 
 /datum/ai_holder/Destroy()
 	stop_ticking()
@@ -75,3 +80,36 @@
  */
 /datum/ai_holder/proc/unregister_agent(atom/movable/agent)
 	return
+
+/**
+ * set if we're enabled
+ */
+/datum/ai_holder/proc/set_enabled(value)
+	if(disabled == !value)
+		return
+	disabled = !value
+	if(disabled)
+		on_disable()
+	else
+		on_enable()
+
+/**
+ * called on disable
+ *
+ * * called once on init if we default to disabled
+ * * this should be idempotent
+ * * ticking will automatically be dropped on disable
+ */
+/datum/ai_holder/proc/on_disable()
+	SHOULD_CALL_PARENT(TRUE)
+	stop_ticking()
+
+/**
+ * called on re-enable
+ *
+ * * called once on init if we default to enabled
+ * * this should be idempotent
+ * * you should resume ticking here
+ */
+/datum/ai_holder/proc/on_enable()
+	SHOULD_CALL_PARENT(TRUE)

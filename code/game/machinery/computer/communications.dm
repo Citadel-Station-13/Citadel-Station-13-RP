@@ -296,7 +296,7 @@
 /obj/machinery/computer/communications/attack_ai(var/mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/computer/communications/attack_hand(mob/user, list/params)
+/obj/machinery/computer/communications/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(..())
 		return
 	if ((LEGACY_MAP_DATUM) && !(src.z in (LEGACY_MAP_DATUM).contact_levels))
@@ -411,6 +411,7 @@
 			dat += "<A HREF='?src=\ref[src];operation=swipeidseclevel'>OK</A> to confirm change.<BR>"
 
 	dat += "<BR>\[ [(src.state != STATE_DEFAULT) ? "<A HREF='?src=\ref[src];operation=main'>Main Menu</A> | " : ""]<A HREF='?src=\ref[user];mach_close=communications'>Close</A> \]"
+	dat += "</body>"
 	user << browse(dat, "window=communications;size=400x500")
 	onclose(user, "communications")
 
@@ -574,7 +575,7 @@
 
 /obj/machinery/computer/communications/proc/post_status(command, data1, data2)
 
-	var/datum/radio_frequency/frequency = radio_controller.return_frequency(1435)
+	var/datum/radio_frequency/frequency = radio_controller.return_frequency(FREQ_STATUS_DISPLAYS)
 
 	if(!frequency) return
 

@@ -27,7 +27,7 @@
 		return
 	switch(id)
 		if("modify")
-			return tgui_cardmod.ui_act(action, params, ui)
+			return tgui_cardmod.ui_act(action, params, ui, new /datum/event_args/actor(usr))
 
 /**
  * for later use: authorized to change slots
@@ -97,7 +97,7 @@
 /obj/machinery/computer/card/attack_ai(var/mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/computer/card/attack_hand(mob/user, list/params)
+/obj/machinery/computer/card/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(..())
 		return
 	if(machine_stat & (NOPOWER|BROKEN))

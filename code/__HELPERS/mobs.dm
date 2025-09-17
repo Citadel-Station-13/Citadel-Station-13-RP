@@ -1,11 +1,11 @@
 /atom/movable/proc/get_mob()
 	return
 
-/obj/mecha/get_mob()
-	return occupant
+/obj/vehicle/get_mob()
+	return SAFEPICK(occupants)
 
 /obj/vehicle_old/train/get_mob()
-	return buckled_mobs
+	return SAFEPICK(buckled_mobs)
 
 /mob/get_mob()
 	return src
@@ -14,24 +14,6 @@
 	if(load && istype(load, /mob/living))
 		return list(src, load)
 	return src
-
-/proc/mobs_in_view(range, source)
-	var/list/mobs = list()
-	for(var/atom/movable/AM in view(range, source))
-		var/M = AM.get_mob()
-		if(M)
-			mobs += M
-
-	return mobs
-
-/proc/mobs_in_xray_view(range, source)
-	var/list/mobs = list()
-	for(var/atom/movable/AM in orange(range, source))
-		var/M = AM.get_mob()
-		if(M)
-			mobs += M
-
-	return mobs
 
 /proc/random_hair_style(gender, species = SPECIES_HUMAN)
 	var/list/valid = list()
@@ -182,3 +164,13 @@
 /// Gets the client of the mob, allowing for mocking of the client.
 /// You only need to use this if you know you're going to be mocking clients somewhere else.
 #define GET_CLIENT(mob) (##mob.client || ##mob.mock_client)
+
+///Makes a call in the context of a different usr. Use sparingly
+/world/proc/push_usr(mob/user_mob, datum/callback/invoked_callback, ...)
+	var/temp = usr
+	usr = user_mob
+	if (length(args) > 2)
+		. = invoked_callback.Invoke(arglist(args.Copy(3)))
+	else
+		. = invoked_callback.Invoke()
+	usr = temp

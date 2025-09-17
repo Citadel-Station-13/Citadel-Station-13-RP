@@ -34,11 +34,12 @@
 	icon_dead = "carp_dead"
 	icon_gib = "carp_gib"
 
-	faction = "carp"
+	iff_factions = MOB_IFF_FACTION_CARP
+
 	maxHealth = 25
 	health = 25
 	randomized = TRUE
-	movement_cooldown = 0 // Carp go fast
+	movement_base_speed = 6.66 // Carp go fast
 	hovering = TRUE
 
 	response_help = "pets the"
@@ -84,7 +85,7 @@
 
 	maxHealth = 50
 	health = 50
-	movement_cooldown = 5 // Slower than the younger carp.
+	movement_base_speed = 10 / 5 // Slower than the younger carp.
 	mob_size = MOB_LARGE
 
 	base_pixel_x = -16
@@ -107,7 +108,7 @@
 
 	maxHealth = 230
 	health = 230
-	movement_cooldown = 10
+	movement_base_speed = 10 / 10
 
 	legacy_melee_damage_lower = 15 // About 20 DPS.
 	legacy_melee_damage_upper = 25

@@ -57,7 +57,7 @@
 
 	attack_hand(user)
 
-/obj/machinery/account_database/attack_hand(mob/user, list/params)
+/obj/machinery/account_database/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	nano_ui_interact(user)

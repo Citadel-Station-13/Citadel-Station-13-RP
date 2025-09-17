@@ -11,6 +11,7 @@ fi
 
 mkdir -p \
 	$1/_mapload \
+	$1/config.default \
     $1/maps \
     $1/icons \
     $1/sound \
@@ -26,6 +27,8 @@ fi
 cp citadel.dmb citadel.rsc $1/
 # mapload: has basemap.dmm, runtime loaded
 cp -r _mapload/* $1/_mapload/
+# default configs. self-explanatory.
+cp -r config.default/* $1/config.default/
 # maps: map .dmms and potential assets, runtime loaded
 cp -r maps/* $1/maps/
 # icons: .dmi assets, runtime loaded

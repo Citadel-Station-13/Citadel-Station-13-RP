@@ -9,8 +9,7 @@
 	permit_ao = FALSE
 
 	initial_gas_mix = GAS_STRING_VACUUM
-	thermal_conductivity = OPEN_HEAT_TRANSFER_COEFFICIENT
-	temperature = 2.7
+	temperature = TCMB
 	can_build_into_floor = TRUE
 	z_eventually_space = TRUE
 
@@ -29,23 +28,17 @@
 	// turn preloader off so it doesn't hit something else
 	global.dmm_preloader_active = FALSE
 
+/**
+ * Space Initialize
+ *
+ * Doesn't call parent, see [/atom/proc/Initialize].
+ * When adding new stuff to /atom/Initialize, /turf/Initialize, etc
+ * don't just add it here unless space actually needs it.
+ */
 /turf/space/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE)
+
 	atom_flags |= ATOM_INITIALIZED
-
-	// we have parallax and don't need this anymore
-	// icon_state = SPACE_ICON_STATE(x, y, z)
-
-	// We might be an edge
-	if(y == world.maxy || forced_dirs & NORTH)
-		edge |= NORTH
-	else if(y == 1 || forced_dirs & SOUTH)
-		edge |= SOUTH
-
-	if(x == 1 || forced_dirs & WEST)
-		edge |= WEST
-	else if(x == world.maxx || forced_dirs & EAST)
-		edge |= EAST
 
 	if (CONFIG_GET(flag/starlight))
 		update_starlight()
@@ -54,21 +47,6 @@
 	// tl;dr given we load maps at runtime now, the maploader will do changeturfing, which means
 	// we don't need to manually check all this in initialize
 	return INITIALIZE_HINT_NORMAL
-
-	// var/turf/below = below()
-	// if(isnull(below))
-	// 	return INITIALIZE_HINT_NORMAL
-
-	// if(isspaceturf(below))
-	// 	return INITIALIZE_HINT_NORMAL
-
-	// var/area/A = below.loc
-	// if(!below.density && (A.area_flags & AREA_FLAG_EXTERNAL))
-	// 	return INITIALIZE_HINT_NORMAL
-
-	// return INITIALIZE_HINT_NORMAL
-	// todo: wtf happened there..?
-	// return INITIALIZE_HINT_LATELOAD // oh no! we need to switch to being a different kind of turf!
 
 /turf/space/Destroy()
 	// Cleanup cached z_eventually_space values above us.
@@ -84,10 +62,11 @@
 /turf/space/is_open()
 	return TRUE
 
-// Override for space turfs, since they should never hide anything
-/turf/space/levelupdate()
-	for(var/obj/O in src)
-		O.hide(0)
+/turf/space/is_plating()
+	return FALSE
+
+/turf/space/hides_underfloor_objects()
+	return FALSE
 
 /turf/space/is_solid_structure()
 	return locate(/obj/structure/lattice, src)	// Counts as solid structure if it has a lattice
@@ -161,16 +140,6 @@
 		// Space shouldn't have weather of the sort planets with atmospheres do.
 		// If that's changed, then you'll want to swipe the rest of the roofing code from code/game/turfs/simulated/floor_attackby.dm
 	return
-
-/turf/space/Entered(var/atom/movable/A)
-	. = ..()
-
-	if(edge)
-		addtimer(CALLBACK(src, PROC_REF(on_atom_edge_touch), A), 0)
-
-/turf/space/proc/on_atom_edge_touch(atom/movable/AM)
-	if(!QDELETED(AM) && (AM.loc == src))
-		AM.touch_map_edge()
 
 
 //// Special variants used in various maps ////

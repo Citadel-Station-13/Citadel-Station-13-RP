@@ -25,83 +25,6 @@
 	var/mode = 1
 	w_class = WEIGHT_CLASS_NORMAL
 
-/obj/item/soap
-	name = "soap"
-	desc = "A cheap bar of soap. Doesn't smell."
-	gender = PLURAL
-	icon = 'icons/obj/items.dmi'
-	icon_state = "soap"
-	atom_flags = NOCONDUCT
-	w_class = WEIGHT_CLASS_SMALL
-	slot_flags = SLOT_HOLSTER
-	throw_force = 0
-	throw_speed = 4
-	throw_range = 20
-
-/obj/item/soap/nanotrasen
-	desc = "A Nanotrasen-brand bar of soap. Smells of phoron."
-	icon_state = "soapnt"
-
-/obj/item/soap/deluxe
-	icon_state = "soapdeluxe"
-
-/obj/item/soap/deluxe/Initialize(mapload)
-	. = ..()
-	desc = "A deluxe Waffle Co. brand bar of soap. Smells of [pick("lavender", "vanilla", "strawberry", "chocolate" ,"space")]."
-
-/obj/item/soap/syndie
-	desc = "An untrustworthy bar of soap. Smells of fear."
-	icon_state = "soapsyndie"
-
-/obj/item/soap/primitive
-	desc = "Lye and fat processed into a solid state. This hand crafted bar is unscented and uneven."
-	icon_state = "soapprim"
-
-/obj/item/bikehorn
-	name = "bike horn"
-	desc = "A horn off of a bicycle."
-	icon = 'icons/obj/items.dmi'
-	icon_state = "bike_horn"
-	item_state = "bike_horn"
-	throw_force = 3
-	w_class = WEIGHT_CLASS_SMALL
-	slot_flags = SLOT_HOLSTER
-	throw_speed = 3
-	throw_range = 15
-	attack_verb = list("HONKED")
-	var/spam_flag = 0
-
-/obj/item/bikehorn/golden
-	name = "golden bike horn"
-	desc = "Golden? Clearly, it's made with bananium! Honk!"
-	icon_state = "gold_horn"
-	item_state = "gold_horn"
-	var/flip_cooldown = 0
-
-/*
-/obj/item/bikehorn/golden/attack()
-	if(flip_cooldown < world.time)
-		flip_mobs()
-	return ..()
-
-/obj/item/bikehorn/golden/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
-	if(flip_cooldown < world.time)
-		flip_mobs()
-	..()
-
-/obj/item/bikehorn/golden/proc/flip_mobs(mob/living/carbon/M, mob/user)
-	var/turf/T = get_turf(src)
-	for(M in ohearers(7, T))
-		if(ishuman(M) && M.can_hear())
-			var/mob/living/carbon/human/H = M
-			if(istype(H.ears, /obj/item/clothing/ears/earmuffs))
-				continue
-		M.emote("flip")
-	flip_cooldown = world.time + 7
-*/
 
 /obj/item/c_tube
 	name = "cardboard tube"
@@ -138,7 +61,7 @@
 	temp_blade.set_active(TRUE)
 	concealed_blade = temp_blade
 
-/obj/item/cane/concealed/attack_self(mob/user)
+/obj/item/cane/concealed/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -187,7 +110,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "whitecane"
 
-/obj/item/cane/whitecane/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/cane/whitecane/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HELP)
 		user.visible_message(SPAN_NOTICE("\The [user] has lightly tapped [target] on the ankle with their white cane!"))
 		return
@@ -208,7 +131,7 @@
 	damage_force = 3
 	var/on = 0
 
-/obj/item/cane/whitecane/collapsible/attack_self(mob/user)
+/obj/item/cane/whitecane/collapsible/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -237,14 +160,9 @@
 		damage_force = 3
 		attack_verb = list("hit", "poked", "prodded")
 
-	if(istype(user,/mob/living/carbon/human))
-		var/mob/living/carbon/human/H = user
-		H.update_inv_l_hand()
-		H.update_inv_r_hand()
-
+	update_worn_icon()
 	playsound(src, 'sound/weapons/empty.ogg', 50, 1)
 	add_fingerprint(user)
-	return TRUE
 
 /obj/item/cane/crutch
 	name ="crutch"
@@ -497,18 +415,18 @@
 
 //Code isn't working. Figure it out tomorrow.
 
-/obj/item/bitterash/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/bitterash/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	if(!target.mind)
 		return
-	if(target.faction == user.faction)
+	if(target.shares_iff_faction(user))
 		to_chat(target, "<span class='notice'>You are graced by the familiar gaze of the Mother for a brief moment.</span>")
 
 	to_chat(user, "<span class='notice'>You smear the Mark of the Mother on [target]'s forehead using the [src].</span>")
 	to_chat(target, "<span class='notice'>You sense an unfamiliar presence looming over you. It encases you in a gentle, all-encompassing warmth.</span>")
-	target.faction = user.faction
+	target.copy_iff_factions(user)
 	playsound(src, pick(use_sound), 25)
 	qdel(src)

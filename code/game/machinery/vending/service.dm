@@ -77,6 +77,57 @@
 	req_log_access = ACCESS_GENERAL_BAR
 	has_logs = 1
 
+/obj/machinery/vending/cafe
+	name = "Cafe vendor"
+	desc = "A vendor with glasses, cups, juice, pastries, and so on."
+	icon_state = "cafe"
+	icon_deny = "boozeomat-deny"
+	products = list(
+		/obj/item/reagent_containers/food/drinks/glass2/square = 10,
+		/obj/item/reagent_containers/food/drinks/glass2/rocks = 10,
+		/obj/item/reagent_containers/food/drinks/glass2/shake = 10,
+		/obj/item/reagent_containers/food/drinks/glass2/cocktail = 10,
+		/obj/item/reagent_containers/food/drinks/glass2/shot = 10,
+		/obj/item/reagent_containers/food/drinks/glass2/pint = 10,
+		/obj/item/reagent_containers/food/drinks/glass2/mug = 10,
+		/obj/item/reagent_containers/food/drinks/glass2/wine = 10,
+		/obj/item/reagent_containers/food/drinks/glass2/pitcher = 10,
+		/obj/item/reagent_containers/food/drinks/cup = 10,
+		/obj/item/reagent_containers/food/drinks/metaglass = 25,
+		/obj/item/reagent_containers/food/drinks/bottle/grenadine = 5,
+		/obj/item/reagent_containers/food/drinks/bottle/orangejuice = 5,
+		/obj/item/reagent_containers/food/drinks/bottle/tomatojuice = 5,
+		/obj/item/reagent_containers/food/drinks/bottle/limejuice = 5,
+		/obj/item/reagent_containers/food/drinks/bottle/lemonjuice = 5,
+		/obj/item/reagent_containers/food/drinks/bottle/applejuice = 5,
+		/obj/item/reagent_containers/food/drinks/bottle/milk = 5,
+		/obj/item/reagent_containers/food/drinks/bottle/cream = 5,
+		/obj/item/reagent_containers/food/drinks/bottle/cola = 5,
+		/obj/item/reagent_containers/food/drinks/bottle/space_up = 5,
+		/obj/item/reagent_containers/food/drinks/bottle/space_mountain_wind = 5,
+		/obj/item/reagent_containers/food/drinks/bottle/coconutmilk = 5,
+		/obj/item/reagent_containers/food/drinks/bottle/unathijuice = 2,
+		/obj/item/reagent_containers/food/drinks/cans/sodawater = 15,
+		/obj/item/reagent_containers/food/drinks/cans/tonic = 15,
+		/obj/item/reagent_containers/food/drinks/cans/gingerale = 15,
+		/obj/item/reagent_containers/food/drinks/flask/barflask = 5,
+		/obj/item/reagent_containers/food/drinks/flask/vacuumflask = 5,
+		/obj/item/reagent_containers/food/drinks/ice = 10,
+		/obj/item/reagent_containers/food/drinks/tea = 15,
+		/obj/item/reagent_containers/food/condiment/small/packet/matchapowder = 5,
+		/obj/item/reagent_containers/food/condiment/small/packet/taropowder = 5,
+		/obj/item/glass_extra/stick = 30,
+		/obj/item/glass_extra/straw = 30,
+		/obj/item/storage/single_use/med_pouch/overdose = 2,
+		/obj/item/reagent_containers/food/drinks/coffee_cup = 10,
+		/obj/item/reagent_containers/food/condiment/small/packet/creamer = 20,
+		/obj/item/reagent_containers/food/condiment/small/packet/sugar = 20,
+		/obj/item/reagent_containers/food/condiment/small/packet/astrotame = 20,
+	)
+	contraband = list()
+	vend_delay = 15
+	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
+
 /obj/machinery/vending/dinnerware
 	name = "Dinnerware"
 	desc = "A kitchen and restaurant equipment vendor."

@@ -19,7 +19,7 @@
 	tt_desc = "S Choeros hirtus" //diyaab and shantak are technically reletives!
 	catalogue_data = list(/datum/category_item/catalogue/fauna/diyaab)
 
-	faction = "diyaab"
+	iff_factions = MOB_IFF_FACTION_BIND_TO_MAP
 
 	icon_state = "diyaab"
 	icon_living = "diyaab"
@@ -30,7 +30,7 @@
 	health = 25
 	randomized = TRUE
 
-	movement_cooldown = 0
+	movement_base_speed = 6.66
 
 	legacy_melee_damage_lower = 2
 	legacy_melee_damage_upper = 6

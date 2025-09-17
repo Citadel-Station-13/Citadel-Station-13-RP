@@ -11,7 +11,7 @@
 	var/skip_act = FALSE
 	var/tgui_subtemplate = "ShuttleControlConsoleDefault"
 
-/obj/machinery/computer/shuttle_control/attack_hand(mob/user, list/params)
+/obj/machinery/computer/shuttle_control/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(..(user))
 		return
 	if(!allowed(user))
@@ -136,18 +136,8 @@
 		to_chat(user, "You short out the console's ID checking system. It's now available to everyone!")
 		return 1
 
-/obj/machinery/computer/shuttle_control/bullet_act(var/obj/projectile/Proj)
-	visible_message("\The [Proj] ricochets off \the [src]!")
-
-/obj/machinery/computer/shuttle_control/legacy_ex_act()
-	return
-
-/obj/machinery/computer/shuttle_control/emp_act()
-	return
-
-
 GLOBAL_LIST_BOILERPLATE(papers_dockingcode, /obj/item/paper/dockingcodes)
-/hook/roundstart/proc/populate_dockingcodes()
+/legacy_hook/roundstart/proc/populate_dockingcodes()
 	for(var/paper in GLOB.papers_dockingcode)
 		var/obj/item/paper/dockingcodes/dcp = paper
 		dcp.populate_info()

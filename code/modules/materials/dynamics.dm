@@ -1,7 +1,13 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
-//* Page has all balancing parameters + algorithms for dynamic attribute computations for things like armor
+//? Page has all balancing parameters + algorithms for dynamic attribute computations for things like armor ?//
+//? Prefix subsystem procs with 'dynamic_', please!                                                         ?//
+
+// TODO: redo pretty much this entire file, all the calculations are horrible
+//       lohikar was right i should've used a straight line man
+
+//* Armor *//
 
 /**
  * creates an armor datum based off of our stats
@@ -12,7 +18,7 @@
  *
  * @return /datum/armor instance
  */
-/datum/material/proc/create_armor(significance = MATERIAL_SIGNIFICANCE_BASELINE, mob_armor)
+/datum/prototype/material/proc/create_armor(significance = MATERIAL_SIGNIFICANCE_BASELINE, mob_armor)
 	RETURN_TYPE(/datum/armor)
 	var/cache_key = "[significance]_[!!mob_armor]"
 	if(!isnull(armor_cache[cache_key]))
@@ -85,16 +91,16 @@
  *
  * @return /datum/armor instance
  */
-/datum/controller/subsystem/materials/proc/combined_materials_armor(list/datum/material/materials)
+/datum/controller/subsystem/materials/proc/combined_materials_armor(list/datum/prototype/material/materials)
 	var/list/cache_key = list()
-	for(var/datum/material/mat as anything in materials)
+	for(var/datum/prototype/material/mat as anything in materials)
 		cache_key += "[mat.id]-[materials[mat]]"
 	cache_key = jointext(cache_key, ";")
 	var/datum/armor/resolved = combined_armor_cache[cache_key]
 	if(!isnull(resolved))
 		return resolved
 	var/list/datum/armor/collected = list()
-	for(var/datum/material/mat as anything in materials)
+	for(var/datum/prototype/material/mat as anything in materials)
 		collected[mat.create_armor(materials[mat]).to_list()] = materials[mat]
 
 	// todo: this is shitty but we just do the best of all
@@ -118,9 +124,9 @@
  *
  * @return /datum/armor instance
  */
-/datum/controller/subsystem/materials/proc/reinforcing_materials_armor(list/datum/material/materials)
+/datum/controller/subsystem/materials/proc/reinforcing_materials_armor(list/datum/prototype/material/materials)
 	var/list/cache_key = list()
-	for(var/datum/material/mat as anything in materials)
+	for(var/datum/prototype/material/mat as anything in materials)
 		if(isnull(mat))
 			continue
 		cache_key += "[mat.id]-[materials[mat]]"
@@ -129,7 +135,7 @@
 	if(!isnull(resolved))
 		return resolved
 	var/list/datum/armor/collected = list()
-	for(var/datum/material/mat as anything in materials)
+	for(var/datum/prototype/material/mat as anything in materials)
 		if(isnull(mat))
 			continue
 		collected[mat.create_armor(materials[mat]).to_list()] = materials[mat]
@@ -157,9 +163,9 @@
  *
  * @return /datum/armor instance
  */
-/datum/controller/subsystem/materials/proc/wall_materials_armor(list/datum/material/materials)
+/datum/controller/subsystem/materials/proc/wall_materials_armor(list/datum/prototype/material/materials)
 	var/list/cache_key = list()
-	for(var/datum/material/mat as anything in materials)
+	for(var/datum/prototype/material/mat as anything in materials)
 		if(isnull(mat))
 			continue
 		cache_key += "[mat.id]-[materials[mat]]"
@@ -168,7 +174,7 @@
 	if(!isnull(resolved))
 		return resolved
 	var/list/datum/armor/collected = list()
-	for(var/datum/material/mat as anything in materials)
+	for(var/datum/prototype/material/mat as anything in materials)
 		if(isnull(mat))
 			continue
 		collected[mat.create_armor(materials[mat]).to_list()] = materials[mat]
@@ -188,6 +194,25 @@
 	wall_armor_cache[cache_key] = resolved
 	return resolved
 
+//* Integrity *//
+
+/**
+ * gets overall integrity multiplier from a list of materials associated to significances
+ */
+/datum/controller/subsystem/materials/proc/dynamic_calculate_relative_integrity(list/datum/prototype/material/materials)
+	var/total = 0
+	var/pieces = 0
+
+	for(var/datum/prototype/material/material as anything in materials)
+		var/significance = materials[material]
+
+		pieces += significance
+		total += material.relative_integrity * significance
+
+	return total / pieces
+
+//* Melee *//
+
 /**
  * get melee stats
  * autodetect with initial damage modes of item
@@ -199,7 +224,7 @@
  *
  * @return list(damage, armorflag, tier, mode)
  */
-/datum/material/proc/melee_stats(initial_modes, significance = MATERIAL_SIGNIFICANCE_BASELINE)
+/datum/prototype/material/proc/melee_stats(initial_modes, significance = MATERIAL_SIGNIFICANCE_BASELINE)
 	var/cache_key = "[initial_modes]_[significance]"
 	if(!isnull(melee_cache[cache_key]))
 		return melee_cache[cache_key]
@@ -245,3 +270,33 @@
 	damage_flag = melee_stats[MATERIAL_MELEE_STATS_FLAG]
 	damage_mode = melee_stats[MATERIAL_MELEE_STATS_MODE]
 	damage_tier = base_tier + melee_stats[MATERIAL_MELEE_STATS_TIERMOD]
+
+
+//* Tools *//
+
+/**
+ * Get toolspeed
+ *
+ * @params
+ * * hardness_weight : weight of material hardness (0-1), should sum with all other weights to 1
+ * * toughness_weight : weight of material tougness (0-1), should sum with all other weights to 1
+ * * refraction_weight : weight of material refr (0-1), should sum with all other weights to 1
+ * * absorption_weight : weight of material absorp (0-1), should sum with all other weights to 1
+ * * nullification_weight : weight of material nulli (0-1), should sum with all other weights to 1
+ * * initial_toolspeed : speed of the tool to begin with
+ * * significance - a modifier that determines how well materials scale; less significant tools scale less. we assume baseline for most tools.
+ *
+ * https://www.desmos.com/calculator/m4gtk3aabl
+ * @return new_toolspeed
+ */
+/datum/prototype/material/proc/tool_stats(hardness_weight = 0.5, toughness_weight = 0.5, refraction_weight = 0, absorption_weight = 0, nullification_weight = 0, initial_toolspeed = 1, significance = MATERIAL_SIGNIFICANCE_BASELINE)
+	//-80-80 value for the tool.
+	//20 is the 'baseline' value. Anything worse than 20 will reduce stats, anything better than 20 will improve it.
+	var/tool_score = ((hardness_weight * hardness)+(toughness_weight*toughness)+(refraction_weight*refraction)+(absorption_weight*absorption)+(nullification_weight*nullification))/10
+
+
+	//amount toolspeed will be adjusted by
+	var/toolspeed_adjust = (-1 * ( (2*MATERIAL_DYNAMICS_TOOLSPEED_BOUND)/(1+(NUM_E**( (MATERIAL_DYNAMICS_TOOLSPEED_GRADIENT) * (tool_score - MATERIAL_DYNAMICS_TOOLSPEED_X_INTERCEPT) ) ) ) ) ) + MATERIAL_DYNAMICS_TOOLSPEED_BOUND
+
+	return round(1/((1/initial_toolspeed) + toolspeed_adjust),MATERIAL_DYNAMICS_TOOLSPEED_PRECISION)
+

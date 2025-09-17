@@ -77,7 +77,7 @@ var/global/list/light_type_cache = list()
 	else
 		to_chat(user, "<span class='danger'>This casing doesn't support power cells for backup power.</span>")
 
-/obj/machinery/light_construct/attack_hand(mob/user, list/params)
+/obj/machinery/light_construct/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return . // obj/machinery/attack_hand returns 1 if user can't use the machine
@@ -259,6 +259,8 @@ var/global/list/light_type_cache = list()
 	 * This is used to calc the probability the light burns out
 	 */
 	var/switchcount = 0
+	///Does not reset pixel adjustments (best used in mapmaker only)
+	var/custom_placement = FALSE
 
 
 	/// TRUE if rigged to explode.
@@ -346,6 +348,10 @@ var/global/list/light_type_cache = list()
 /obj/machinery/light/small/poi
 	start_with_cell = FALSE
 
+/obj/machinery/light/small/old
+	color = "#f6a820"
+	brightness_color = "#e99a11"
+
 /obj/machinery/light/fairy
 	name = "fairy lights"
 	icon = 'icons/obj/lighting.dmi'
@@ -384,6 +390,7 @@ var/global/list/light_type_cache = list()
 	light_type = /obj/item/light/bulb/strong
 	construct_type = /obj/machinery/light_construct/flamp
 	shows_alerts = FALSE
+	custom_placement = TRUE
 	var/lamp_shade = 1
 
 /obj/machinery/light/flamp/update_icon()
@@ -480,6 +487,7 @@ var/global/list/light_type_cache = list()
 /obj/machinery/light/update_icon()
 	cut_overlays()
 
+	var/image/additional_overlay
 	switch(status) // set icon_states
 		if(LIGHT_OK)
 			if(shows_alerts && current_alert && on)
@@ -491,18 +499,20 @@ var/global/list/light_type_cache = list()
 						addcolor = COLOR_ORANGE
 				var/image/I = image(icon, "tube1")
 				I.color = addcolor
-				add_overlay(I)
-
+				additional_overlay = I
 			else
-				add_overlay("tube1")
+				additional_overlay = image(icon, "tube1")
 		if(LIGHT_EMPTY)
 			on = 0
 		if(LIGHT_BURNED)
-			add_overlay("tube_burned")
+			additional_overlay = image(icon, "tube_burned")
 			on = 0
 		if(LIGHT_BROKEN)
-			add_overlay("tube_broken")
+			additional_overlay = image(icon, "tube_broken")
 			on = 0
+	if(additional_overlay)
+		additional_overlay.dir = NONE
+		add_overlay(additional_overlay)
 
 /obj/machinery/light/setDir(ndir)
 	. = ..()
@@ -521,7 +531,8 @@ var/global/list/light_type_cache = list()
 				base_pixel_x = 10
 			if(WEST)
 				base_pixel_x = -10
-	reset_pixel_offsets()
+	if(!custom_placement)
+		reset_pixel_offsets()
 
 /obj/machinery/light/flamp/update_icon()
 	if(lamp_shade)
@@ -851,17 +862,13 @@ var/global/list/light_type_cache = list()
 	to_chat(user, "<span class='notice'>Emergency lights for this fixture have been [no_emergency ? "disabled" : "enabled"].</span>")
 	update(FALSE)
 
-// ai alt click - Make light flicker.  Very important for atmosphere.
-/obj/machinery/light/AIAltClick(mob/user)
-	flicker(1)
-
 /obj/machinery/light/flamp/attack_ai(mob/user)
 	attack_hand()
 	return
 
 // attack with hand - remove tube/bulb
 // if hands aren't protected and the light is on, burn the player
-/obj/machinery/light/attack_hand(mob/user, list/params)
+/obj/machinery/light/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 
 	add_fingerprint(user)
 
@@ -872,7 +879,7 @@ var/global/list/light_type_cache = list()
 	if(istype(user,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
 		if(H.species.can_shred(H))
-			user.setClickCooldown(user.get_attack_speed())
+			user.setClickCooldownLegacy(user.get_attack_speed_legacy())
 			for(var/mob/M in viewers(src))
 				M.show_message("<font color='red'>[user.name] smashed the light!</font>", 3, "You hear a tinkle of breaking glass", 2)
 			broken()
@@ -907,7 +914,7 @@ var/global/list/light_type_cache = list()
 	// create a light tube/bulb item and put it in the user's hand
 	user.put_in_active_hand(remove_bulb())	//puts it in our active hand
 
-/obj/machinery/light/flamp/attack_hand(mob/user, list/params)
+/obj/machinery/light/flamp/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(lamp_shade)
 		if(status == LIGHT_EMPTY)
 			to_chat(user, "There is no [get_fitting_name()] in this light.")

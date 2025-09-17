@@ -98,7 +98,7 @@
 	if(prob(50))
 		secured_wires = 0
 
-/obj/mecha/combat/honker/cluwne // What have I done?
+/obj/vehicle/sealed/mecha/combat/honker/cluwne // What have I done?
 	desc = "Mechanized Assault Device for Juggernaughting Against Clown Killers. You've only heard legends about this exosuit..."
 	name = "M.A.D. J.A.C.K."
 	icon = 'icons/mecha/mecha_vr.dmi'
@@ -115,18 +115,18 @@
 	wreckage = /obj/effect/decal/mecha_wreckage/honker/cluwne
 	max_equip = 4
 
-/obj/mecha/combat/honker/cluwne/Initialize(mapload)
+/obj/vehicle/sealed/mecha/combat/honker/cluwne/Initialize(mapload)
 	. = ..()
-	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/pulse
+	var/obj/item/vehicle_module/ME = new /obj/item/vehicle_module/weapon/energy/pulse
 	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/explosive
+	ME = new /obj/item/vehicle_module/weapon/ballistic/missile_rack/explosive
 	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/banana_mortar
+	ME = new /obj/item/vehicle_module/weapon/ballistic/missile_rack/banana_mortar
 	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/honker
+	ME = new /obj/item/vehicle_module/weapon/honker
 	ME.attach(src)
 
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/banana_mortar
+/obj/item/vehicle_module/weapon/ballistic/missile_rack/banana_mortar
 	name = "Banana Mortar"
 	icon = 'icons/mecha/mecha_equipment_vr.dmi'
 	icon_state = "mecha_bananamrtr"
@@ -137,12 +137,12 @@
 	projectile_energy_cost = 100
 	equip_cooldown = 20
 
-	can_attach(obj/mecha/combat/honker/M as obj)
+	can_attach(obj/vehicle/sealed/mecha/combat/honker/M as obj)
 		if(!istype(M))
 			return 0
 		return ..()
 
-/obj/item/mecha_parts/mecha_equipment/weapon/honker
+/obj/item/vehicle_module/weapon/honker
 	name = "\improper HoNkER BlAsT 5000"
 	icon = 'icons/mecha/mecha_equipment_vr.dmi'
 	icon_state = "mecha_honker"
@@ -150,7 +150,7 @@
 	equip_cooldown = 150
 	range = MELEE|RANGED
 
-	can_attach(obj/mecha/combat/honker/M as obj)
+	can_attach(obj/vehicle/sealed/mecha/combat/honker/M as obj)
 		if(!istype(M))
 			return 0
 		return ..()

@@ -54,6 +54,7 @@
 	qdel(power_machine)
 
 /obj/machinery/atmospherics/component/binary/massive_gas_pump/process(delta_time)
+	..()
 	if(!network1 || !network2)
 		build_network()//built networks if we are missing them
 		network1?.update = 1
@@ -147,7 +148,7 @@
 
 	return data
 
-/obj/machinery/atmospherics/component/binary/massive_gas_pump/attack_hand(mob/user, list/params)
+/obj/machinery/atmospherics/component/binary/massive_gas_pump/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(..())
 		return
 	add_fingerprint(usr)

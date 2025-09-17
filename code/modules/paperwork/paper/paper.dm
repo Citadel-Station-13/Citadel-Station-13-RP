@@ -9,14 +9,6 @@
 #define MODE_WRITING 1
 #define MODE_STAMPING 2
 
-/**
- * Paper is now using markdown (like in github pull notes) for ALL rendering
- * so we do loose a bit of functionality but we gain in easy of use of
- * paper and getting rid of that crashing bug
- */
-/obj/item/paper
-
-
 /obj/item/paper
 	name = "sheet of paper"
 	gender = NEUTER
@@ -82,12 +74,11 @@
 			updateinfolinks()
 
 /obj/item/paper/update_icon()
-	if(icon_state == "paper_talisman")
-		return
+	cut_overlays()
+	. = ..()
 	if(info)
-		icon_state = "paper_words"
-		return
-	icon_state = "paper"
+		// todo: be like, `-content` or something not `_words`
+		add_overlay("[icon_state]_words")
 
 /obj/item/paper/proc/update_space(var/new_text)
 	if(!new_text)
@@ -103,8 +94,17 @@
 		. += "<span class='notice'>You have to go closer if you want to read it.</span>"
 	return
 
-/obj/item/paper/proc/show_content(var/mob/user, var/forceshow=0)
-	if(!(istype(user, /mob/living/carbon/human) || istype(user, /mob/observer/dead) || istype(user, /mob/living/silicon)) && !forceshow)
+/obj/item/paper/proc/show_content(mob/user, forceshow=0)
+	var/client/C
+	if (istype(user))
+		C = user.client
+	if (istype(user, /client))
+		C = user
+	if(C)
+		SSassets.send_asset_pack(C, /datum/asset_pack/simple/logos)
+		C.asset_cache_flush_browse_queue()
+
+	if(!(ishuman(user) || istype(user, /mob/observer/dead) || istype(user, /mob/living/silicon)) && !forceshow)
 		user << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[stars(info)][stamps]</BODY></HTML>", "window=[name]")
 		onclose(user, "[name]")
 	else
@@ -130,7 +130,7 @@
 		add_fingerprint(usr)
 	return
 
-/obj/item/paper/attack_self(mob/user)
+/obj/item/paper/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -158,6 +158,8 @@
 		dist = get_dist(src, user.camera)
 	else //cyborg or AI not seeing through a camera
 		dist = get_dist(src, user)
+	SSassets.send_asset_pack(user.client, /datum/asset_pack/simple/logos)
+	user.client.asset_cache_flush_browse_queue()
 	if(dist < 2)
 		usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info][stamps]</BODY></HTML>", "window=[name]")
 		onclose(usr, "[name]")
@@ -166,7 +168,7 @@
 		onclose(usr, "[name]")
 	return
 
-/obj/item/paper/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/paper/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	if(user.zone_sel.selecting == O_EYES)
 		user.visible_message("<span class='notice'>You show the paper to [target]. </span>", \
@@ -296,8 +298,8 @@
 		t = replacetext(t, "\[/grid\]", "</td></tr></table>")
 		t = replacetext(t, "\[row\]", "</td><tr>")
 		t = replacetext(t, "\[cell\]", "<td>")
-		t = replacetext(t, "\[logo\]", "<img src = ntlogo.png>")
-		t = replacetext(t, "\[sglogo\]", "<img src = sglogo.png>")
+		t = replacetext(t, "\[logo\]", "<img src = nanotrasen-blue.png>")
+		t = replacetext(t, "\[sglogo\]", "<img src = solgov-logo.png>")
 
 		t = "<font face=\"[deffont]\" color=[P ? P.pen_color : "black"]>[t]</font>"
 	else // If it is a crayon, and he still tries to use these, make them empty!
@@ -424,6 +426,10 @@
 
 		update_space(t)
 
+		playsound(src, pick('sound/items/pen1.ogg','sound/items/pen2.ogg'), 5)
+
+		SSassets.send_asset_pack(usr.client, /datum/asset_pack/simple/logos)
+		usr.client.asset_cache_flush_browse_queue()
 		usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info_links][stamps]</BODY></HTML>", "window=[name]") // Update the window
 
 		update_icon()
@@ -474,6 +480,8 @@
 		if ( istype(RP) && RP.mode == 2 )
 			RP.RenamePaper(user,src)
 		else
+			SSassets.send_asset_pack(user.client, /datum/asset_pack/simple/logos)
+			user.client.asset_cache_flush_browse_queue()
 			user << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info_links][stamps]</BODY></HTML>", "window=[name]")
 		return
 

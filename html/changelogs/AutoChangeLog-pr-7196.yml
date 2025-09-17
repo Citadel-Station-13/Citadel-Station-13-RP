@@ -1,0 +1,4 @@
+author: "Bhijn and Myr, plus Keekenox for sprites"
+delete-after: True
+changes:
+  - rscadd: "Added pallet jacks! These have fairly peculiar movement quirks, being fairly reminiscent of push/pull sokoban puzzles."

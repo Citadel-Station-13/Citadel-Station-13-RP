@@ -74,14 +74,14 @@ GLOBAL_LIST_EMPTY(all_beam_points)
 // Used to make sure two points don't have more than one beam.
 /obj/effect/map_effect/beam_point/proc/has_active_beam(var/obj/effect/map_effect/beam_point/them)
 	// First, check our beams.
-	for(var/datum/beam/B in my_beams)
+	for(var/datum/beam_legacy/B in my_beams)
 		if(B.target == them)
 			return TRUE
 		if(B.origin == them) // This shouldn't be needed unless the beam gets built backwards but why not.
 			return TRUE
 
 	// Now check theirs, to see if they have a beam on us.
-	for(var/datum/beam/B in them.my_beams)
+	for(var/datum/beam_legacy/B in them.my_beams)
 		if(B.target == src)
 			return TRUE
 		if(B.origin == src) // Same story as above.
@@ -94,14 +94,14 @@ GLOBAL_LIST_EMPTY(all_beam_points)
 		log_debug(SPAN_DEBUG("[src] ([src.type] \[[x],[y],[z]\])[ADMIN_JMP(src)] failed to build its beam due to not having a target."))
 		return FALSE
 
-	var/datum/beam/new_beam = Beam(beam_target, beam_icon_state, beam_icon, beam_time, beam_max_distance, beam_type, beam_sleep_time)
+	var/datum/beam_legacy/new_beam = Beam(beam_target, beam_icon_state, beam_icon, beam_time, beam_max_distance, beam_type, beam_sleep_time)
 	my_beams += new_beam
 	if(beam_creation_sound)
 		playsound(src, beam_creation_sound, 70, 1)
 
 	return TRUE
 
-/obj/effect/map_effect/beam_point/proc/destroy_beam(var/datum/beam/B)
+/obj/effect/map_effect/beam_point/proc/destroy_beam(var/datum/beam_legacy/B)
 	if(!B)
 		log_debug(SPAN_DEBUG("[src] ([src.type] \[[x],[y],[z]\])[ADMIN_JMP(src)] was asked to destroy a beam that does not exist."))
 		return FALSE
@@ -118,7 +118,7 @@ GLOBAL_LIST_EMPTY(all_beam_points)
 	return TRUE
 
 /obj/effect/map_effect/beam_point/proc/destroy_all_beams()
-	for(var/datum/beam/B in my_beams)
+	for(var/datum/beam_legacy/B in my_beams)
 		destroy_beam(B)
 	return TRUE
 
@@ -168,7 +168,7 @@ GLOBAL_LIST_EMPTY(all_beam_points)
 	beam_icon_state = "nzcrentrs_power"
 	beam_type = /obj/effect/ebeam/reactive/electric
 	beam_creation_sound = 'sound/effects/lightningshock.ogg'
-	beam_destruction_sound = /datum/soundbyte/grouped/sparks
+	beam_destruction_sound = /datum/soundbyte/sparks
 
 // Turns on and off on a timer.
 /obj/effect/map_effect/beam_point/timer
@@ -179,7 +179,7 @@ GLOBAL_LIST_EMPTY(all_beam_points)
 	beam_icon_state = "nzcrentrs_power"
 	beam_type = /obj/effect/ebeam/reactive/electric
 	beam_creation_sound = 'sound/effects/lightningshock.ogg'
-	beam_destruction_sound = /datum/soundbyte/grouped/sparks
+	beam_destruction_sound = /datum/soundbyte/sparks
 	seek_range = 3
 
 // Is only a target for other beams to connect to.

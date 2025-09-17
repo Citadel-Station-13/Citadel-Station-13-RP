@@ -16,7 +16,7 @@
 /turf/simulated/mineral/cave,
 /area/tether_away/cave/explored/normal)
 "j" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/wall/mineral,
 /area/tether_away/cave/explored/normal)
 "r" = (
 /obj/tether_away_spawner/beach_cave,

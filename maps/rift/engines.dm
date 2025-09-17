@@ -15,8 +15,12 @@
 	suffix = "sme.dmm"
 	display_name = list("Angry Rock", "The Forbidden Rock Candy", "Death Crystal", "Spicy Crystal", "Hypnotizing Stone")
 
+// disabled because it only worked at all due to an atmos bug
+// todo: proper simulation and math this shit out for joules released in total fuel
+/*
 /datum/map_template/engine/rift/burnchamber
 	name = "ProcEngine_Rift_Burn"
 	desc = "Burn Chamber Engine"
 	suffix = "burn.dmm"
 	display_name = list("Toxins Lab", "Build a Campfire", "100 Solarmoths", "Teshari's Bane", "Casting Fireball!")
+*/

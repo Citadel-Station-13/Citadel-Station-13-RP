@@ -20,7 +20,7 @@
 	. = ..()
 	camera = new camtype(src)
 
-/obj/item/camerabug/attack_self(mob/user)
+/obj/item/camerabug/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -109,14 +109,15 @@
 			qdel(src)
 		..()
 
-/obj/item/camerabug/bullet_act()
+/obj/item/camerabug/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
 	visible_message("The [src] lens shatters!")
 	new brokentype(get_turf(src))
 	if(linkedmonitor)
 		linkedmonitor.unpair(src)
 	linkedmonitor = null
-	spawn(0)
-	qdel(src)
 
 /obj/item/camerabug/Destroy()
 	if(linkedmonitor)
@@ -137,7 +138,7 @@
 	var/obj/machinery/camera/bug/selected_camera
 	var/list/obj/machinery/camera/bug/cameras = new()
 
-/obj/item/bug_monitor/attack_self(mob/user)
+/obj/item/bug_monitor/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

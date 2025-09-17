@@ -103,7 +103,7 @@
  *
  * @return effect datum
  */
-/mob/proc/apply_grouped_effect(datum/status_effect/grouped/path, source, value, duration, ...)
+/mob/proc/apply_grouped_status_effect(datum/status_effect/grouped/path, source, value, duration, ...)
 	if(!ispath(path, /datum/status_effect/grouped))
 		CRASH("[path] is not a grouped effect.")
 	return apply_status_effect(path, additional = args.Copy(2))
@@ -115,7 +115,7 @@
  *
  * @return TRUE if a source was removed
  */
-/mob/proc/remove_grouped_effect(datum/status_effect/grouped/path, source)
+/mob/proc/remove_grouped_status_effect(datum/status_effect/grouped/path, source)
 	if(!ispath(path, /datum/status_effect/grouped))
 		CRASH("[path] is not a grouped effect.")
 	var/datum/status_effect/grouped/effect = has_status_effect(path)

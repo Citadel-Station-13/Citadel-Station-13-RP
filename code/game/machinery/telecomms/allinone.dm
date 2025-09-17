@@ -40,7 +40,7 @@
 		return
 
 	// Where are we able to hear from (and talk to, since we're AIO) anyway?
-	var/map_levels = (LEGACY_MAP_DATUM).get_map_levels(z, TRUE, overmap_range)
+	var/map_levels = (LEGACY_MAP_DATUM).get_map_levels(z, TRUE, overmap_range * WORLD_ICON_SIZE + DEFAULT_OVERMAP_RANGE)
 
 	//Bluespace can skip this check
 	if(signal.transmission_method != TRANSMISSION_BLUESPACE)

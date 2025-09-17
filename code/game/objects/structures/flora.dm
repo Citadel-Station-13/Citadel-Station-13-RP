@@ -83,6 +83,36 @@
 	. = ..()
 	icon_state = "snowbush[rand(1, 6)]"
 
+/obj/structure/flora/snow_berry
+	name = "Ashomarr Tree"
+	desc = "Ashomarr or 'Adhomai Holly' is a berry bush know to thrive in extreme cold. Unlike earth holly, the berries are non-toxic."
+	icon = 'icons/obj/flora/snowflora.dmi'
+	icon_state = "holly"
+
+/obj/structure/flora/snow_berry/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
+	var/harvest_amount = rand(1, 5)
+	visible_message("[user] begins to pick berries from the Bush.", "You begin picking the berries from the bush.")
+	if(do_after(user, 5 SECONDS))
+		for(var/i in 1 to harvest_amount)
+			new /obj/item/reagent_containers/food/snacks/ashomarr(src.loc)
+		visible_message("[user] harvests the berries from the Ashomarr Tree.", "You finish harvesting the berries from the tree.")
+	qdel(src)
+
+/obj/structure/flora/taj_tuber
+	name = "Guskaroot"
+	desc = "A tuber native to Adhomai known for its unnatural resillence to cold and its ability to grow in the wild."
+	icon = 'icons/obj/flora/snowflora.dmi'
+	icon_state = "tajtuber"
+
+/obj/structure/flora/taj_tuber/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
+	var/harvest_amount = rand(1, 3)
+	visible_message("[user] begins to pull the tubers from the earth.", "You begin pulling up the tubers.")
+	if(do_after(user, 5 SECONDS))
+		for(var/i in 1 to harvest_amount)
+			new /obj/item/reagent_containers/food/snacks/guska(src.loc)
+		visible_message("[user] pull the tubers clean from the frozen earth", "You finish harvesting the tubers.")
+	qdel(src)
+
 /obj/structure/flora/pottedplant
 	name = "potted plant"
 	desc = "Really ties the room together."
@@ -100,6 +130,8 @@
 
 /obj/structure/flora/ausbushes/attackby(obj/item/W as obj, mob/user as mob)
 	// Dismantle
+	if(user.a_intent == INTENT_HARM) // who said you CAN'T touch grass (violently)?
+		return ..()
 	if(istype(W, /obj/item/shovel))
 		playsound(src.loc, W.tool_sound, 50, 1)
 		if(do_after(user, 10, src))
@@ -392,10 +424,15 @@
 	desc = "This is a tiny well lit decorative christmas tree."
 	icon_state = "plant-xmas"
 
+/obj/structure/flora/pottedplant/hedge
+	name = "potted hedge"
+	desc = "A well maintained hedge."
+	icon_state = "plant-27"
+
 /obj/structure/flora/sif
 	icon = 'icons/obj/flora/sifflora.dmi'
 
-/obj/structure/flora/sif/attack_hand(mob/user, list/params)
+/obj/structure/flora/sif/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if (user.a_intent == INTENT_HARM)
 		if(do_after(user, 5 SECONDS))
 			user.visible_message("\The [user] digs up \the [src.name].", "You dig up \the [src.name].")
@@ -516,7 +553,7 @@
 	var/gift_type = /obj/item/b_gift
 	var/list/ckeys_that_took = list()
 
-/obj/structure/flora/pumpkin/pumpkin_patch/presents/attack_hand(mob/user, list/params)
+/obj/structure/flora/pumpkin/pumpkin_patch/presents/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

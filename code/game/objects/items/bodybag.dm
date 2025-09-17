@@ -9,7 +9,7 @@
 
 	var/bag_type = /obj/structure/closet/body_bag
 
-/obj/item/bodybag/attack_self(mob/user)
+/obj/item/bodybag/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -114,7 +114,7 @@
 		var/obj/structure/morgue/M = loc
 		M.update(broadcast)
 
-/obj/structure/closet/body_bag/update_icon()
+/obj/structure/closet/body_bag/update_icon_state()
 	if(opened)
 		icon_state = icon_opened
 	else
@@ -122,7 +122,7 @@
 			icon_state = "bodybag_closed1"
 		else
 			icon_state = icon_closed
-
+	return ..()
 
 /obj/item/bodybag/cryobag
 	name = "stasis bag"
@@ -223,7 +223,7 @@
 		if(istype(W,/obj/item/healthanalyzer))
 			var/obj/item/healthanalyzer/analyzer = W
 			for(var/mob/living/L in contents)
-				analyzer.melee_interaction_chain(L,user)
+				analyzer.lazy_melee_interaction_chain(L,user)
 
 		else if(istype(W,/obj/item/reagent_containers/syringe))
 			if(syringe)

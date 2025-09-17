@@ -25,7 +25,7 @@
 /obj/machinery/meter/proc/select_target()
 	var/obj/machinery/atmospherics/pipe/P
 	for(P in loc)
-		if(!P.hides_under_flooring())
+		if(!P.is_hidden_underfloor())
 			break
 	if(!P)
 		P = locate(/obj/machinery/atmospherics/pipe) in loc

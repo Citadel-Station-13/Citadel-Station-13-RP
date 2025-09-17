@@ -15,7 +15,7 @@
 	var/selfdestructing = FALSE
 	var/charges = 1
 
-/obj/machinery/syndicate_beacon/attack_hand(mob/user, list/params)
+/obj/machinery/syndicate_beacon/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	usr.set_machine(src)
 	var/dat = "<font color=#005500><i>Scanning [pick("retina pattern", "voice print", "fingerprints", "dna sequence")]...<br>Identity confirmed,<br></i></font>"
 	if(istype(user, /mob/living/carbon/human) || istype(user, /mob/living/silicon/ai))
@@ -31,7 +31,7 @@
 			if(!selfdestructing)
 				dat += "<br><br><A href='?src=\ref[src];betraitor=1;traitormob=\ref[user]'>\"[pick("I want to switch teams.", "I want to work for you.", "Let me join you.", "I can be of use to you.", "You want me working for you, and here's why...", "Give me an objective.", "How's the 401k over at the Syndicate?")]\"</A><BR>"
 	dat += temptext
-	user << browse(dat, "window=syndbeacon")
+	user << browse(HTML_SKELETON(dat), "window=syndbeacon")
 	onclose(user, "syndbeacon")
 
 /obj/machinery/syndicate_beacon/Topic(href, href_list)
@@ -108,7 +108,7 @@
 /obj/machinery/power/singularity_beacon/attack_ai(mob/user)
 	return
 
-/obj/machinery/power/singularity_beacon/attack_hand(mob/user, list/params)
+/obj/machinery/power/singularity_beacon/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(anchored)
 		return active ? Deactivate(user) : Activate(user)
 	else
@@ -159,7 +159,7 @@
 //! ## VR FILE MERGE ## !//
 //  Virgo modified syndie beacon, does not give objectives
 
-/obj/machinery/syndicate_beacon/virgo/attack_hand(mob/user, list/params)
+/obj/machinery/syndicate_beacon/virgo/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	usr.set_machine(src)
 	var/dat = "<font color=#005500><i>Scanning [pick("retina pattern", "voice print", "fingerprints", "dna sequence")]...<br>Identity confirmed,<br></i></font>"
 	if(istype(user, /mob/living/carbon/human) || istype(user, /mob/living/silicon/ai))
@@ -175,7 +175,7 @@
 			if(!selfdestructing)
 				dat += "<br><br><A href='?src=\ref[src];betraitor=1;traitormob=\ref[user]'>\"[pick("Send me some supplies!", "Transfer supplies.")]\"</A><BR>"
 	dat += temptext
-	user << browse(dat, "window=syndbeacon")
+	user << browse(HTML_SKELETON(dat), "window=syndbeacon")
 	onclose(user, "syndbeacon")
 
 /obj/machinery/syndicate_beacon/virgo/Topic(href, href_list)

@@ -23,7 +23,7 @@
 		if(SLOT_ID_BELT)
 			sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/belt.dmi')
 
-/obj/item/towel/attack_self(mob/user)
+/obj/item/towel/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -39,4 +39,4 @@
 
 /obj/item/towel/random/Initialize(mapload)
 	. = ..()
-	add_atom_colour("#"+get_random_colour(), FIXED_COLOUR_PRIORITY)
+	add_atom_color("#"+get_random_colour())

@@ -7,9 +7,11 @@ var/list/lunchables_lunches_ = list(/obj/item/reagent_containers/food/snacks/san
                                   /obj/item/reagent_containers/food/snacks/slice/mushroompizza/filled,
                                   /obj/item/reagent_containers/food/snacks/slice/vegetablepizza/filled,
                                   /obj/item/reagent_containers/food/snacks/tastybread,
-                                  /obj/item/reagent_containers/food/snacks/liquidfood,
+                                  /obj/item/reagent_containers/food/snacks/liquid,
+								  /obj/item/reagent_containers/food/snacks/liquid/protein,
                                   /obj/item/reagent_containers/food/snacks/jellysandwich/cherry,
                                   /obj/item/reagent_containers/food/snacks/tossedsalad,
+								  /obj/item/reagent_containers/food/snacks/riztizkzi_sea/include_blood,
                                   /obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose)
 
 var/list/lunchables_snacks_ = list(/obj/item/reagent_containers/food/snacks/donut/jelly,
@@ -39,6 +41,7 @@ var/list/lunchables_snacks_ = list(/obj/item/reagent_containers/food/snacks/donu
                                    /obj/item/reagent_containers/food/snacks/watermelonslice,
                                    /obj/item/reagent_containers/food/snacks/slice/applecake/filled,
                                    /obj/item/reagent_containers/food/snacks/slice/pumpkinpie/filled,
+								   /obj/item/reagent_containers/food/snacks/bloodsausage,
                                    /obj/item/reagent_containers/food/snacks/wrapped/skrellsnacks)
 
 var/list/lunchables_drinks_ = list(/obj/item/reagent_containers/food/drinks/cans/cola,
@@ -52,8 +55,14 @@ var/list/lunchables_drinks_ = list(/obj/item/reagent_containers/food/drinks/cans
                                    /obj/item/reagent_containers/food/drinks/cans/grape_juice,
                                    /obj/item/reagent_containers/food/drinks/cans/tonic,
                                    /obj/item/reagent_containers/food/drinks/cans/sodawater,
+								   /obj/item/reagent_containers/food/drinks/cans/dumbjuice,
                                    /obj/item/reagent_containers/food/drinks/bottle/small/sassafras,
-                                   /obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla)
+                                   /obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla,
+								   /obj/item/reagent_containers/food/drinks/smallmilk,
+								   /obj/item/reagent_containers/food/drinks/smallchocmilk,
+								   /obj/item/reagent_containers/food/drinks/bludbox,
+								   /obj/item/reagent_containers/food/drinks/bludboxlight,
+								   )
 
 // This default list is a bit different, it contains items we don't want
 var/list/lunchables_drink_reagents_ = list(/datum/reagent/drink/nothing,
@@ -61,7 +70,8 @@ var/list/lunchables_drink_reagents_ = list(/datum/reagent/drink/nothing,
                                            /datum/reagent/drink/dry_ramen,
                                            /datum/reagent/drink/hell_ramen,
                                            /datum/reagent/drink/hot_ramen,
-                                           /datum/reagent/drink/soda/nuka_cola)
+                                           /datum/reagent/drink/soda/nuka_cola,
+                                           /datum/reagent/drink/nuclearwaste)
 
 
 // This default list is a bit different, it contains items we don't want
@@ -79,7 +89,8 @@ var/list/lunchables_ethanol_reagents_ = list(/datum/reagent/ethanol/acid_spit,
                                              /datum/reagent/ethanol/toxins_special,
 											 /datum/reagent/ethanol/voxdelight,
 											 /datum/reagent/ethanol/soemmerfire,
-											 /datum/reagent/ethanol/slimeshot)
+											 /datum/reagent/ethanol/slimeshot,
+                                             /datum/reagent/ethanol/desiretodie)
 
 /proc/lunchables_lunches()
 	if(!(lunchables_lunches_[lunchables_lunches_[1]]))

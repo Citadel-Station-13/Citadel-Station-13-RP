@@ -21,7 +21,7 @@
 /obj/structure/door_assembly/command
 	base_icon_state = "com"
 	base_name = "Command airlock"
-	glass_type = "/glass_command"
+	glass_type = "/glass/command"
 	airlock_type = "/command"
 
 /obj/structure/door_assembly/security
@@ -33,37 +33,37 @@
 /obj/structure/door_assembly/engi
 	base_icon_state = "eng"
 	base_name = "Engineering airlock"
-	glass_type = "/glass_engineering"
+	glass_type = "/glass/engineering"
 	airlock_type = "/engineering"
 
 /obj/structure/door_assembly/engi_atmos
 	base_icon_state = "eat"
 	base_name = "Engineering atmos airlock"
-	glass_type = "/glass_engineeringatmos"
+	glass_type = "/glass/engineeringatmos"
 	airlock_type = "/engineering"
 
 /obj/structure/door_assembly/mining
 	base_icon_state = "min"
 	base_name = "Mining airlock"
-	glass_type = "/glass_mining"
+	glass_type = "/glass/mining"
 	airlock_type = "/mining"
 
 /obj/structure/door_assembly/atmos
 	base_icon_state = "atmo"
 	base_name = "Atmospherics airlock"
-	glass_type = "/glass_atmos"
+	glass_type = "/glass/atmos"
 	airlock_type = "/atmos"
 
 /obj/structure/door_assembly/research
 	base_icon_state = "res"
 	base_name = "Research airlock"
-	glass_type = "/glass_research"
+	glass_type = "/glass/research"
 	airlock_type = "/research"
 
 /obj/structure/door_assembly/door_assembly_science
 	base_icon_state = "sci"
 	base_name = "Science airlock"
-	glass_type = "/glass_science"
+	glass_type = "/glass/science"
 	airlock_type = "/science"
 
 /obj/structure/door_assembly/medical
@@ -75,7 +75,7 @@
 /obj/structure/door_assembly/external
 	base_icon_state = "ext"
 	base_name = "External airlock"
-	glass_type = "/glass_external"
+	glass_type = "/glass/external"
 	airlock_type = "/external"
 
 /obj/structure/door_assembly/maint
@@ -324,7 +324,7 @@
 
 // Airlock frames are indestructable, so bullets hitting them would always be stopped.
 // To fix this, airlock assemblies will sometimes let bullets pass through, since generally the sprite shows them partially open.
-/obj/structure/door_assembly/bullet_act(var/obj/projectile/P)
-	if(prob(40)) // Chance for the frame to let the bullet keep going.
-		return PROJECTILE_CONTINUE
+/obj/structure/door_assembly/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	if(prob(40))
+		return PROJECTILE_IMPACT_PASSTHROUGH
 	return ..()

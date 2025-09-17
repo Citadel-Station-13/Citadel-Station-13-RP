@@ -6,7 +6,7 @@
 	icon_state = "white"
 	icon_living = "white"
 	attacktext = list("prodded")
-	movement_cooldown = 5
+	movement_base_speed = 10 / 5
 	legacy_melee_damage_lower = 2
 	legacy_melee_damage_upper = 2
 
@@ -54,7 +54,7 @@
 	for(var/mob/living/L in hearers(7, src))
 		if(!L.ai_holder)
 			continue
-		if(L.faction != src.faction)
+		if(!L.shares_iff_faction(src))
 			continue
 		var/datum/ai_holder/polaris/AI = L.ai_holder
 		AI.set_follow(src)

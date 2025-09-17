@@ -4,7 +4,6 @@
 	construction_type = /obj/item/pipe/trinary/flippable
 	pipe_state = "mixer"
 	density = 0
-	level = 1
 
 	name = "Gas mixer"
 
@@ -21,7 +20,8 @@
 
 	//node 3 is the outlet, nodes 1 & 2 are intakes
 
-/obj/machinery/atmospherics/component/trinary/mixer/update_icon(var/safety = 0)
+/obj/machinery/atmospherics/component/trinary/mixer/update_icon()
+	. = ..()
 	if(tee)
 		icon_state = "t"
 	else if(mirrored)
@@ -95,7 +95,7 @@
 	data["node2_dir"] = dir_name(node_connects[2],TRUE)
 	return data
 
-/obj/machinery/atmospherics/component/trinary/mixer/attack_hand(mob/user, list/params)
+/obj/machinery/atmospherics/component/trinary/mixer/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(..())
 		return
 	ui_interact(user)

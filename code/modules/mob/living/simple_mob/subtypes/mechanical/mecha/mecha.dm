@@ -7,8 +7,9 @@
 	desc = "A big stompy mech!"
 	icon = 'icons/mecha/mecha.dmi'
 
-	faction = "syndicate"
-	movement_cooldown = 5
+	iff_factions = MOB_IFF_FACTION_MERCENARY
+
+	movement_base_speed = 10 / 5
 	movement_sound = "mechstep" // This gets fed into playsound(), which can also take strings as a 'group' of sound files.
 	turn_sound = 'sound/mecha/mechturn.ogg'
 	maxHealth = 300
@@ -70,7 +71,7 @@
 	// 'Eject' our pilot, if one exists.
 	if(pilot_type)
 		var/mob/living/L = new pilot_type(loc)
-		L.faction = src.faction
+		L.copy_iff_factions(src)
 
 	new wreckage(loc) // Leave some wreckage.
 
@@ -90,7 +91,7 @@
 	if(has_repair_droid)
 		add_overlay(image(icon = 'icons/mecha/mecha_equipment.dmi', icon_state = "repair_droid"))
 
-/mob/living/simple_mob/mechanical/mecha/bullet_act()
+/mob/living/simple_mob/mechanical/mecha/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	. = ..()
 	sparks.start()
 
@@ -111,11 +112,12 @@
 	return ..()
 */
 
-/mob/living/simple_mob/mechanical/mecha/bullet_act(obj/projectile/P)
+/mob/living/simple_mob/mechanical/mecha/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	if(prob(deflect_chance))
-		visible_message(SPAN_WARNING( "\The [P] is deflected by \the [src]'s armor!"))
-		deflect_sprite()
-		return 0
+		visible_message(SPAN_WARNING( "\The [proj] is deflected by \the [src]'s armor!"))
+		spawn(-1)
+			deflect_sprite()
+		return PROJECTILE_IMPACT_BLOCKED
 	return ..()
 
 /mob/living/simple_mob/mechanical/mecha/proc/deflect_sprite()
@@ -129,7 +131,7 @@
 	if(prob(deflect_chance))
 		visible_message(SPAN_WARNING( "\The [user]'s [I] bounces off \the [src]'s armor!"))
 		deflect_sprite()
-		user.setClickCooldown(user.get_attack_speed(I))
+		user.setClickCooldownLegacy(user.get_attack_speed_legacy(I))
 		return
 	..()
 

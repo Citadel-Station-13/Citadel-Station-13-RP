@@ -35,7 +35,8 @@
 	icon_living = "mouse_gray"
 	icon_dead = "mouse_gray_dead"
 	icon_rest = "mouse_gray_sleep"
-	faction = "mouse_army"
+
+	iff_factions = MOB_IFF_FACTION_FARM_PEST
 
 	maxHealth = 50
 	health = 50
@@ -416,15 +417,11 @@
 	unstealth()
 	..() // For the poison.
 
-// Force unstealthing if attacked.
-/mob/living/simple_mob/animal/space/mouse_army/stealth/bullet_act(obj/projectile/P)
+/mob/living/simple_mob/animal/space/mouse_army/stealth/on_melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/attack_style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
+	if(. & CLICKCHAIN_ATTACK_MISSED)
+		return
 	break_cloak()
-
-/mob/living/simple_mob/animal/space/mouse_army/stealth/hit_with_weapon(obj/item/O, mob/living/user, effective_force, hit_zone)
-	. = ..()
-	break_cloak()
-
 
 // Mouse noises
 /datum/say_list/mouse

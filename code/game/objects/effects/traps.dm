@@ -73,9 +73,9 @@ Add those other swinging traps you mentioned above!
 
 /obj/effect/trap/Initialize(mapload)
 	. = ..()
-	RegisterSimpleNetwork(id)
+	simple_network_register(id)
 
-/obj/effect/trap/SimpleNetworkReceive(id, message, list/data, datum/sender)
+/obj/effect/trap/simple_network_receive(id, message, list/data, datum/sender)
 	. = ..()
 	trip()
 
@@ -106,11 +106,12 @@ Add those other swinging traps you mentioned above!
 	. = ..()
 	update_icon()
 
-/obj/effect/trap/update_icon()
+/obj/effect/trap/update_icon_state()
 	if(!tripped)
 		icon_state = "[initial(icon_state)]"
 	else if (tripped)
 		icon_state = "[initial(icon_state)]_visible"
+	return ..()
 
 //////////////////
 /// Pit Traps
@@ -183,8 +184,10 @@ Add those other swinging traps you mentioned above!
 
 	else if(istype(AM, /mob/living))
 		var/mob/living/M = AM
+		if(M.is_avoiding_ground())
+			return
 		var/damage = rand(min_damage, max_damage)
-		M.apply_damage(damage, BRUTE)
+		M.apply_damage(damage, DAMAGE_TYPE_BRUTE)
 		M.visible_message("<span class='danger'>[M] falls onto a punji stake!</span>", \
 						"<span class='userdanger'>You slide onto a punji stake!</span>")
 
@@ -221,6 +224,9 @@ Add those other swinging traps you mentioned above!
 		return
 
 	else if(istype(AM, /mob/living))
+		var/mob/living/M = AM
+		if(M.is_avoiding_ground())
+			return
 		break_legs(AM)
 		AM.visible_message("<span class='danger'>[AM] falls into the path of the piston!</span>", \
 						"<span class='userdanger'>Your leg is crushed by the piston!</span>")
@@ -281,8 +287,10 @@ Add those other swinging traps you mentioned above!
 
 	else if(istype(AM, /mob/living))
 		var/mob/living/M = AM
+		if(M.is_avoiding_ground())
+			return
 		var/damage = rand(min_damage, max_damage)
-		M.apply_damage(damage, TOX)
+		M.apply_damage(damage, DAMAGE_TYPE_TOX)
 		M.set_stunned(20 * 15)
 		M.visible_message("<span class='danger'>[M] falls into a writhing mass of tentacles!</span>", \
 						"<span class='userdanger'>You are entwined by a writhing mass of tentacles!</span>")
@@ -335,7 +343,7 @@ Add those other swinging traps you mentioned above!
 
 /obj/effect/trap/launcher/Initialize(mapload)
 	. = ..()
-	RegisterSimpleNetwork(id)
+	simple_network_register(id)
 	START_PROCESSING(SSobj, src)
 
 /obj/effect/trap/launcher/fire()
@@ -396,13 +404,14 @@ Add those other swinging traps you mentioned above!
 		else
 			to_chat(user, "<span class='warning'>You can't pry this sculpture off of the wall.</span>")
 
-/obj/effect/trap/launcher/update_icon()
+/obj/effect/trap/launcher/update_icon_state()
 	if(!tripped)
 		icon_state = "[initial(icon_state)]"
 	else if (tripped && !(atom_flags & ATOM_BROKEN))
 		icon_state = "[initial(icon_state)]_visible"
 	else if (tripped && (atom_flags & ATOM_BROKEN))
 		icon_state = "[initial(icon_state)]_jammed"
+	return ..()
 
 //Stake Launcher
 /obj/effect/trap/launcher/stake
@@ -473,13 +482,14 @@ Add those other swinging traps you mentioned above!
 	. = ..()
 	visible_message(SPAN_DANGER("\The [src] breaks! It was a trap!"))
 
-/obj/effect/trap/pop_up/update_icon()
+/obj/effect/trap/pop_up/update_icon_state()
 	if(!tripped)
 		icon_state = "[initial(icon_state)]"
 	else if(tripped && !(atom_flags & ATOM_BROKEN))
 		icon_state = "[initial(icon_state)]_visible"
 	else if (tripped && (atom_flags & ATOM_BROKEN))
 		icon_state = "[initial(icon_state)]_broken"
+	return ..()
 
 //Spear Trap
 
@@ -509,7 +519,7 @@ Add those other swinging traps you mentioned above!
 	else if(istype(AM, /mob/living))
 		var/mob/living/M = AM
 		var/damage = rand(min_damage, max_damage)
-		M.apply_damage(damage, BRUTE)
+		M.apply_damage(damage, DAMAGE_TYPE_BRUTE)
 		M.visible_message("<span class='danger'>[M] is stabbed by the rising spears!</span>", \
 						"<span class='userdanger'>You are impaled by a thrusting spear!</span>")
 
@@ -546,7 +556,7 @@ Add those other swinging traps you mentioned above!
 		var/list/target_limbs = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
 		var/selected = pick(target_limbs)
 		var/obj/item/organ/external/target = M.get_organ(selected)
-		M.apply_damage(damage, BRUTE)
+		M.apply_damage(damage, DAMAGE_TYPE_BRUTE)
 		target.droplimb()
 		M.visible_message("<span class='danger'>[M] is slashed by the spinning blades!</span>", \
 						"<span class='userdanger'>You are slashed by the spinning blades!</span>")
@@ -554,7 +564,7 @@ Add those other swinging traps you mentioned above!
 /* This is all per-tick processing stuff. It isn't working the way I want, so I'm reverting it.
 
 if (istype(AM, /mob/living))
-		START_PROCESSING(SSfastprocess, src)
+		START_PROCESSING(SSprocess_5fps, src)
 		var/mob/living/M = AM
 		M.visible_message("<span class='danger'>[M] is slashed by the spinning blades!</span>", \
 						"<span class='userdanger'>You are slashed by the spinning blades!</span>")
@@ -562,10 +572,10 @@ if (istype(AM, /mob/living))
 /obj/effect/trap/pop_up/pillar/process(atom/AM as mob|obj)
 	var/mob/living/M = AM
 	var/damage = rand(min_damage, max_damage)
-	M.apply_damage(damage, BRUTE)
+	M.apply_damage(damage, DAMAGE_TYPE_BRUTE)
 
 /obj/effect/trap/pop_up/pillar/Destroy()
-	STOP_PROCESSING(SSfastprocess, src)
+	STOP_PROCESSING(SSprocess_5fps, src)
 	return ..()
 */
 
@@ -602,7 +612,7 @@ if (istype(AM, /mob/living))
 		var/list/target_limbs = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
 		var/selected = pick(target_limbs)
 		var/obj/item/organ/external/target = M.get_organ(selected)
-		M.apply_damage(damage, BRUTE)
+		M.apply_damage(damage, DAMAGE_TYPE_BRUTE)
 		target.droplimb()
 		M.visible_message("<span class='danger'>[M] is ripped by the whirling sawblades!</span>", \
 						"<span class='userdanger'>You are ripped open by the whirling sawblades!</span>")
@@ -637,7 +647,7 @@ if (istype(AM, /mob/living))
 	else if(istype(AM, /mob/living))
 		var/mob/living/M = AM
 		var/damage = rand(min_damage, max_damage)
-		M.apply_damage(damage, BURN)
+		M.apply_damage(damage, DAMAGE_TYPE_BURN)
 		M.adjust_fire_stacks(2)
 		M.IgniteMob()
 		M.visible_message("<span class='danger'>[M] is engulfed in flames!</span>", \
@@ -708,13 +718,14 @@ if (istype(AM, /mob/living))
 	name = "crooked tile"
 	desc = "The edges of this tile are lifted slightly."
 
-/obj/effect/trap/pop_up/thrower/update_icon()
+/obj/effect/trap/pop_up/thrower/update_icon_state()
 	if(!tripped)
 		icon_state = "[initial(icon_state)]"
 	else if (tripped && !(atom_flags & ATOM_BROKEN))
 		icon_state = "[initial(icon_state)]_visible"
 	else if (tripped && (atom_flags & ATOM_BROKEN))
 		icon_state = "[initial(icon_state)]_jammed"
+	return ..()
 
 //////////////////
 // Falling Traps
@@ -743,13 +754,14 @@ if (istype(AM, /mob/living))
 			to_chat(user, "<span class='notice'>You cut the ropes suspending the [src], breaking it.</span>")
 			update_icon()
 
-/obj/effect/trap/falling/update_icon()
+/obj/effect/trap/falling/update_icon_state()
 	if(!tripped)
 		icon_state = "[initial(icon_state)]"
 	else if (tripped && !(atom_flags & ATOM_BROKEN))
 		icon_state = "[initial(icon_state)]_visible"
 	else if (tripped && (atom_flags & ATOM_BROKEN))
 		icon_state = "[initial(icon_state)]_jammed"
+	return ..()
 
 //Falling Log
 /obj/effect/trap/falling/log
@@ -789,7 +801,7 @@ if (istype(AM, /mob/living))
 		var/selected = pick(bone_sites)
 		var/obj/item/organ/external/target = M.get_organ(selected)
 		var/head_slot = SLOT_HEAD
-		M.apply_damage(damage, BRUTE)
+		M.apply_damage(damage, DAMAGE_TYPE_BRUTE)
 		target.fracture()
 		M.throw_at_old(T2, 1, 1, src)
 		if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
@@ -808,10 +820,11 @@ if (istype(AM, /mob/living))
 	desc = "There's something strange about the lighting around this tile."
 	update_icon()
 
-/obj/effect/trap/falling/log/update_icon()
+/obj/effect/trap/falling/log/update_icon_state()
 	if(!tripped)
 		icon_state = "[initial(icon_state)]"
 	else if (tripped && !(atom_flags & ATOM_BROKEN))
 		icon_state = "[initial(icon_state)]_visible"
 	else if (tripped && (atom_flags & ATOM_BROKEN))
 		icon_state = "[initial(icon_state)]_jammed"
+	return ..()

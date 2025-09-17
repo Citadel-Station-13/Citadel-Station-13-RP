@@ -15,7 +15,6 @@
 	icon_living = "otie"
 	icon_dead = "otie-dead"
 	icon_rest = "otie_rest"
-	faction = "otie"
 	maxHealth = 150
 	health = 150
 	randomized = TRUE
@@ -44,10 +43,6 @@
 // Activate Noms!
 
 /mob/living/simple_mob/otie
-	vore_active = 1
-	vore_capacity = 1
-	vore_pounce_chance = 20
-	vore_icons = SA_ICON_LIVING | SA_ICON_REST
 
 /mob/living/simple_mob/otie/feral //gets the pet2tame feature. starts out hostile tho so get gamblin'
 	name = "mutated feral otie"
@@ -57,7 +52,6 @@
 	icon_living = "photie"
 	icon_dead = "photie-dead"
 	icon_rest = "photie_rest"
-	faction = "virgo3b"
 	tame_chance = 5 // Only a 1 in 20 chance of success. It's feral. What do you expect?
 	// Lazy way of making sure this otie survives outside.
 	min_oxy = 0
@@ -78,7 +72,6 @@
 	icon_living = "hotie"
 	icon_dead = "hotie-dead"
 	icon_rest = "hotie_rest"
-	faction = "cult"
 	tame_chance = 20
 	// Lazy way of making sure this otie survives outside.
 	min_oxy = 0
@@ -95,13 +88,13 @@
 /mob/living/simple_mob/otie/red/friendly //gets the pet2tame feature and doesn't kill you right away
 	name = "red otie"
 	desc = "Seems this ominous looking longdog has been infused with wicked infernal forces. This one seems rather peaceful though."
-	faction = "neutral"
+	iff_factions = MOB_IFF_FACTION_NEUTRAL
 	tamed = 1
 
 /mob/living/simple_mob/otie/friendly //gets the pet2tame feature and doesn't kill you right away
 	name = "otie"
 	desc = "The classic bioengineered longdog. This one might even tolerate you!"
-	faction = "neutral"
+	iff_factions = MOB_IFF_FACTION_NEUTRAL
 	tamed = 1
 
 /mob/living/simple_mob/otie/cotie //same as above but has a little collar :v
@@ -110,7 +103,7 @@
 	icon_state = "cotie"
 	icon_living = "cotie"
 	icon_rest = "cotie_rest"
-	faction = "neutral"
+	iff_factions = MOB_IFF_FACTION_NEUTRAL
 	tamed = 1
 
 /mob/living/simple_mob/otie/cotie/phoron //friendly phoron pup with collar
@@ -138,16 +131,11 @@
 	icon_living = "sotie"
 	icon_rest = "sotie_rest"
 	icon_dead = "sotie-dead"
-	faction = "neutral"
+	iff_factions = MOB_IFF_FACTION_NEUTRAL
 	maxHealth = 200 //armored or something
 	health = 200
 	tamed = 1
 	has_eye_glow = TRUE
-	loot_list = list(/obj/item/clothing/glasses/sunglasses/sechud,/obj/item/clothing/suit/armor/vest/alt)
-	vore_pounce_chance = 60 // Good boys don't do too much police brutality.
-
-	var/check_records = 0 // If true, arrests people without a record.
-	var/check_arrest = 1 // If true, arrests people who are set to arrest.
 
 /mob/living/simple_mob/otie/security/phoron
 	name = "mutated guard otie"
@@ -182,44 +170,9 @@
 	mod_min = 150
 	mod_max = 150
 
-/mob/living/simple_mob/otie/attackby(var/obj/item/O, var/mob/user) // Trade donuts for bellybrig victims.
-	if(istype(O, /obj/item/reagent_containers/food))
-		qdel(O)
-		playsound(src.loc,'sound/items/eatfood.ogg', rand(10,50), 1)
-		if(!has_polaris_AI())//No autobarf on player control.
-			return
-		if(istype(O, /obj/item/reagent_containers/food/snacks/donut) && istype(src, /mob/living/simple_mob/otie/security))
-			to_chat(user,"<span class='notice'>The guard pup accepts your offer for their catch.</span>")
-			release_vore_contents()
-		else if(prob(2)) //Small chance to get prey out from non-sec oties.
-			to_chat(user,"<span class='notice'>The pup accepts your offer for their catch.</span>")
-			release_vore_contents()
-		return
-	. = ..()
-
-/mob/living/simple_mob/otie/security/feed_grabbed_to_self(var/mob/living/user, var/mob/living/prey) // Make the gut start out safe for bellybrigging.
-	if(ishuman(prey))
-		vore_selected.digest_mode = DM_HOLD
-		if(check_threat(prey) >= 4)
-			GLOB.global_announcer.autosay("[src] has detained suspect <b>[target_name(prey)]</b> in <b>[get_area(src)]</b>.", "SmartCollar oversight", "Security")
-	if(istype(prey,/mob/living/simple_mob/animal/passive/mouse))
-		vore_selected.digest_mode = DM_DIGEST
-	. = ..()
-
-/mob/living/simple_mob/otie/security/proc/check_threat(var/mob/living/M)
-	if(!M || !ishuman(M) || M.stat == DEAD || src == M)
-		return 0
-	return M.assess_perp(0, 0, 0, check_records, check_arrest)
-
-/mob/living/simple_mob/otie/security/proc/target_name(mob/living/T)
-	if(ishuman(T))
-		var/mob/living/carbon/human/H = T
-		return H.get_id_name("unidentified person")
-	return "unidentified lifeform"
-
 //Pet 4 friendly
 
-/mob/living/simple_mob/otie/attack_hand(mob/user, list/params)
+/mob/living/simple_mob/otie/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 
 	var/mob/living/M = user
 	if(!istype(M))
@@ -237,7 +190,7 @@
 						AI.set_follow(friend)
 						if(tamed != 1)
 							tamed = 1
-							faction = M.faction
+							copy_iff_factions(M)
 					sleep(1 SECOND)
 
 		if(INTENT_GRAB)

@@ -11,6 +11,7 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 	/turf/simulated/wall,
 	)))
 
+// todo: either this file should be wall_frame or this structure should be /low_wall, not both
 /obj/structure/wall_frame
 	name = "low wall"
 	desc = "A low wall, with space to mount windows or grilles on top of it."
@@ -31,11 +32,10 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 	climb_delay = 2.0 SECONDS
 	plane = OBJ_PLANE
 	obj_flags = OBJ_MELEE_TARGETABLE | OBJ_RANGE_TARGETABLE | OBJ_ALLOW_THROW_THROUGH
-	material_parts = /datum/material/steel
+	material_parts = /datum/prototype/material/steel
 	material_primary = MATERIAL_PART_DEFAULT
 	material_costs = SHEET_MATERIAL_AMOUNT * 2
 
-	var/paint_color
 	var/stripe_color
 	var/str
 	var/static/list/airlock_typecache
@@ -45,16 +45,20 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 	var/material_color = TRUE
 
 /obj/structure/wall_frame/prepainted
-	paint_color = COLOR_WALL_GUNMETAL
 	stripe_color = COLOR_WALL_GUNMETAL
 
-/obj/structure/wall_frame/Initialize(mapload, material)
-	if(!isnull(material))
-		set_primary_material(SSmaterials.resolve_material(material))
+/obj/structure/wall_frame/Initialize(mapload, datum/prototype/material/material_like)
+	if(!isnull(material_like))
+		var/resolved_material = RSmaterials.fetch_or_defer(material_like)
+		switch(resolved_material)
+			if(REPOSITORY_FETCH_DEFER)
+				// todo: handle
+			else
+				set_primary_material(resolved_material)
 	. = ..()
 	update_overlays()
 
-/obj/structure/wall_frame/update_material_single(datum/material/material)
+/obj/structure/wall_frame/update_material_single(datum/prototype/material/material)
 	. = ..()
 	name = "[material.display_name] [initial(name)]"
 	set_multiplied_integrity(material.relative_integrity)
@@ -62,7 +66,7 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 /obj/structure/wall_frame/update_overlays()
 	cut_overlays()
 
-	var/datum/material/const_material = get_primary_material()
+	var/datum/prototype/material/const_material = get_primary_material()
 	color = const_material.icon_colour
 
 	var/image/smoothed_stripe = image(const_material.wall_stripe_icon, icon_state, layer = ABOVE_WINDOW_LAYER)
@@ -134,5 +138,5 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 
 /obj/structure/wall_frame/drop_products(method, atom/where)
 	. = ..()
-	var/datum/material/made_of = get_primary_material()
+	var/datum/prototype/material/made_of = get_primary_material()
 	made_of?.place_sheet(where, 2)

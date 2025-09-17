@@ -18,7 +18,7 @@
 
 	randomized = TRUE
 
-	movement_cooldown = 5
+	movement_base_speed = 10 / 5
 
 	harm_intent_damage = 5
 	legacy_melee_damage_lower = 5
@@ -30,15 +30,13 @@
 
 // Activate Noms!
 /mob/living/simple_mob/animal/wolf
-	vore_active = 1
-	vore_icons = SA_ICON_LIVING
 
 
 // Adds Phoron Wolf
 /mob/living/simple_mob/animal/wolf/phoron
+	iff_factions = MOB_IFF_FACTION_BIND_TO_LEVEL
 
-	faction = "underdark"
-	movement_cooldown = 0
+	movement_base_speed = 6.66
 
 	harm_intent_damage = 5
 	legacy_melee_damage_lower = 5

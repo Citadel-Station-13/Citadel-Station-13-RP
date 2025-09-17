@@ -251,10 +251,9 @@ GLOBAL_REAL_VAR(list/gzn_check) = list(NORTH, SOUTH, EAST, WEST)
 	connections?.update_all()
 
 /turf/proc/make_air()
-	air = new /datum/gas_mixture
+	// group_multiplier defaults to 1
+	air = new /datum/gas_mixture(CELL_VOLUME)
 	air.copy_from_turf(src)
-	air.group_multiplier = 1
-	air.volume = CELL_VOLUME
 
 /turf/simulated/proc/c_copy_air()
 	if(!air)

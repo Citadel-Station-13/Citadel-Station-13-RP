@@ -1,4 +1,4 @@
-/datum/material/plastic
+/datum/prototype/material/plastic
 	name = "plastic"
 	id = "plastic"
 	stack_type = /obj/item/stack/material/plastic
@@ -7,6 +7,8 @@
 	icon_colour = "#CCCCCC"
 	melting_point = T0C+371 //assuming heat resistant plastic
 	stack_origin_tech = list(TECH_MATERIAL = 3)
+
+	worth = 3.5
 
 	relative_integrity = 0.65
 	weight_multiplier = 0.75
@@ -20,7 +22,9 @@
 	absorption = MATERIAL_RESISTANCE_LOW
 	nullification = MATERIAL_RESISTANCE_NONE
 
-/datum/material/plastic/generate_recipes()
+	material_constraints = MATERIAL_CONSTRAINT_RIGID
+
+/datum/prototype/material/plastic/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(
 		name = "plastic crate",
@@ -106,7 +110,7 @@
 		amount = 4,
 	)
 
-/datum/material/plastic/holographic
+/datum/prototype/material/plastic/holographic
 	name = "holoplastic"
 	id = "plastic_holo"
 	display_name = "plastic"

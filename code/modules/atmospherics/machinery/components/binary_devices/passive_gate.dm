@@ -8,10 +8,10 @@
 	icon_state = "map"
 	construction_type = /obj/item/pipe/directional
 	pipe_state = "passivegate"
-	level = 1
 
 	name = "pressure regulator"
 	desc = "A one-way air valve that can be used to regulate input or output pressure, and flow rate. Does not require power."
+	hides_underfloor_underlays = TRUE
 
 	use_power = USE_POWER_OFF
 
@@ -47,9 +47,6 @@
 			return
 		add_underlay(T, node1, turn(dir, 180))
 		add_underlay(T, node2, dir)
-
-/obj/machinery/atmospherics/component/binary/passive_gate/hide(var/i)
-	update_underlays()
 
 /obj/machinery/atmospherics/component/binary/passive_gate/process(delta_time)
 	..()
@@ -168,7 +165,7 @@
 	update_icon()
 	return
 
-/obj/machinery/atmospherics/component/binary/passive_gate/attack_hand(mob/user, list/params)
+/obj/machinery/atmospherics/component/binary/passive_gate/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(..())
 		return
 	add_fingerprint(usr)

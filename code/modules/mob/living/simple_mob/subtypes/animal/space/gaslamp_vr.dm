@@ -32,13 +32,14 @@ TODO: Make them light up and heat the air when exposed to oxygen.
 	icon_dead = "gaslamp-dead"
 	icon = 'icons/mob/vore32x64.dmi'
 
-	faction = "virgo3b"
+	iff_factions = MOB_IFF_FACTION_BIND_TO_MAP
+
 	maxHealth = 100
 	health = 100
 	randomized = TRUE
 	mod_min = 90
 	mod_max = 140
-	movement_cooldown = 12
+	movement_base_speed = 10 / 12
 
 	say_list_type = /datum/say_list/gaslamp
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/gaslamp

@@ -4,83 +4,83 @@
 /area/template_noop)
 "b" = (
 /obj/effect/floor_decal/asteroid,
-/turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/outdoors/ash_sand,
+/area/sector/surt/idleruins)
 "c" = (
 /obj/structure/table/bench/wooden,
-/turf/simulated/floor/wood/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/wood,
+/area/sector/surt/idleruins)
 "d" = (
-/turf/simulated/floor/wood/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/wood,
+/area/sector/surt/idleruins)
 "j" = (
 /mob/living/simple_mob/mechanical/cyber_horror/corgi/surt,
-/turf/simulated/floor/wood/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/wood,
+/area/sector/surt/idleruins)
 "k" = (
 /obj/effect/debris/cleanable/blood/gibs,
 /obj/structure/table/bench/wooden,
-/turf/simulated/floor/wood/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/wood,
+/area/sector/surt/idleruins)
 "l" = (
 /obj/effect/debris/cleanable/blood,
-/turf/simulated/floor/wood/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/wood,
+/area/sector/surt/idleruins)
 "q" = (
 /obj/structure/trash_pile,
-/turf/simulated/floor/wood/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/wood,
+/area/sector/surt/idleruins)
 "t" = (
 /obj/structure/table/woodentable,
-/turf/simulated/floor/wood/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/wood,
+/area/sector/surt/idleruins)
 "v" = (
 /obj/effect/floor_decal/asteroid,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/mineral/floor/ignore_mapgen,
+/area/sector/surt/idleruins)
 "w" = (
 /turf/simulated/wall/wood,
-/area/lavaland/idleruins)
+/area/sector/surt/idleruins)
 "x" = (
 /obj/item/bone,
 /obj/effect/debris/cleanable/blood,
 /obj/item/material/shard/shrapnel,
 /obj/structure/table,
-/turf/simulated/floor/wood/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/wood,
+/area/sector/surt/idleruins)
 "y" = (
 /obj/item/bone,
 /obj/effect/debris/cleanable/blood,
-/turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/outdoors/ash_sand,
+/area/sector/surt/idleruins)
 "D" = (
 /mob/living/simple_mob/mechanical/cyber_horror/cat_cyber_horror/surt,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/mineral/floor/ignore_mapgen,
+/area/sector/surt/idleruins)
 "E" = (
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/mineral/floor/ignore_mapgen,
+/area/sector/surt/idleruins)
 "I" = (
 /obj/structure/barricade,
-/turf/simulated/floor/wood/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/wood,
+/area/sector/surt/idleruins)
 "M" = (
-/turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/outdoors/ash_sand,
+/area/sector/surt/idleruins)
 "N" = (
 /obj/structure/loot_pile/surface/bones,
 /obj/effect/debris/cleanable/blood,
-/turf/simulated/floor/wood/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/wood,
+/area/sector/surt/idleruins)
 "P" = (
 /obj/structure/loot_pile/surface/bones,
 /obj/effect/debris/cleanable/blood,
-/turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/outdoors/ash_sand,
+/area/sector/surt/idleruins)
 "T" = (
 /obj/effect/debris/cleanable/blood/gibs,
-/turf/simulated/floor/wood/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/wood,
+/area/sector/surt/idleruins)
 
 (1,1,1) = {"
 a

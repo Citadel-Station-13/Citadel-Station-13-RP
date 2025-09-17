@@ -41,7 +41,7 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 	QDEL_NULL(radio)
 	return ..()
 
-/obj/item/paicard/attack_self(mob/user)
+/obj/item/paicard/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -292,13 +292,15 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 	setEmotion("null")
 	src.forceMove(get_turf(src))
 	pai.open_up()
-	pai.update_action_buttons()
 
 /obj/item/paicard/proc/removePersonality()
+	// TODO: this should just be owned by us and handled directly if it's projected from us, not handled by the pai
 	if(pai)
 		pai.delete_all_holograms()
-	QDEL_NULL(pai)
-	pai = null
+	if(!QDELING(pai))
+		QDEL_NULL(pai)
+	else
+		pai = null
 	cached_holo_image = null
 	displaying_hologram = FALSE
 	displayed_hologram = null

@@ -44,19 +44,20 @@
 /// EMPs are similar to explosions, but don't cause physical damage to the casing. Instead they screw up the components
 /obj/item/modular_computer/emp_act(severity)
 	. = ..()
-	take_damage_legacy(rand(100,200) / severity, 50 / severity, 0)
+	spawn(-1)
+		take_damage_legacy(rand(100,200) / severity, 50 / severity, 0)
 
 /**
  * "Stun" weapons can cause minor damage to components (short-circuits?)
  * "Burn" damage is equally strong against internal components and exterior casing
  * "Brute" damage mostly damages the casing.
  */
-/obj/item/modular_computer/bullet_act(obj/projectile/Proj)
+/obj/item/modular_computer/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	. = ..()
-	switch(Proj.damage_type)
-		if(BRUTE)
-			take_damage_legacy(Proj.damage, Proj.damage / 2)
-		if(HALLOSS)
-			take_damage_legacy(Proj.damage, Proj.damage / 3, 0)
-		if(BURN)
-			take_damage_legacy(Proj.damage, Proj.damage / 1.5)
+	switch(proj.damage_type)
+		if(DAMAGE_TYPE_BRUTE)
+			take_damage_legacy(proj.damage_force, proj.damage_force / 2)
+		if(DAMAGE_TYPE_HALLOSS)
+			take_damage_legacy(proj.damage_force, proj.damage_force / 3, 0)
+		if(DAMAGE_TYPE_BURN)
+			take_damage_legacy(proj.damage_force, proj.damage_force / 1.5)

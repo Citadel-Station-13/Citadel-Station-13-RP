@@ -137,7 +137,7 @@
 		var/turf/n = D.loc
 		for(i in 1 to range)
 			ASSERT(isturf(n))
-			if(n.TurfAdjacency(th))
+			if(n.TurfAdjacency(th, target, src))
 				// succeeded
 				qdel(D)
 				return REACH_PHYSICAL
@@ -187,7 +187,8 @@
  * checks what we can directly reach
  */
 /atom/movable/proc/DirectAccess()
-	return list(src, loc)
+	. = list(src, loc)
+	SEND_SIGNAL(src, COMSIG_ATOM_REACHABILITY_DIRECTACCESS, .)
 
 /mob/DirectAccess()
 	return ..() + get_equipped_items()

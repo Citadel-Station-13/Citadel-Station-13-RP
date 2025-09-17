@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
+
 /// global slot meta cache - all ids must be string!
 /// initialized by SSearly_init
 GLOBAL_LIST_EMPTY(inventory_slot_meta)
@@ -66,11 +69,11 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		CRASH("Failed to do type lookup for [type].")
 
 /**
- * inventory slot meta
+ * inventory slot metadata
  * stores all the required information for an inventory slot
  *
- * **Typepaths for these are used directly in most circumstances of slot IDs**
- * **Use get_inventory_slot_meta(id) to automatically translate anything to the static datum.**
+ * **Typepaths for these are used directly in many circumstances instead of their slot IDs**
+ * **Use resolve_inventory_slot(id) to automatically translate anything to the static datum.**
  *
  * ABSTRACT SLOTS:
  * Abstract slots attempts to do something special, based on mob.
@@ -90,12 +93,29 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	var/static/id_next = 0
 	/// flags
 	var/inventory_slot_flags = INV_SLOT_IS_RENDERED
+	/// filter flags
+	var/inventory_filter_flags = INV_FILTER_UNKNOWN
+	/// semantic layer
+	///
+	/// * higher = outer, lower = inner
+	/// * outer ones intercept hits/whatnot first
+	var/semantic_layer = 0
 	/// display order - higher is upper. a <hr> is applied on 0.
 	var/sort_order = 0
 
-	//* HUD
-	/// our screen loc
-	var/hud_position
+	//* HUD *//
+	/// do we render on hud at all?
+	var/inventory_hud_rendered = FALSE
+	/// our anchoring enum
+	var/inventory_hud_anchor = INVENTORY_HUD_ANCHOR_AUTOMATIC
+	/// our hiding class
+	var/inventory_hud_class = INVENTORY_HUD_CLASS_ALWAYS
+	/// preferred main axis offset
+	var/inventory_hud_main_axis = 0
+	/// preferred cross axis offset
+	var/inventory_hud_cross_axis = 0
+	/// hud icon state in hud style
+	var/inventory_hud_icon_state = ""
 
 	//* Grammar
 	/// player friendly name
@@ -209,7 +229,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 			render_default_icons -= bodytype_str
 			continue
 		var/icon/I = render_default_icons[bodytype_str]
-		render_state_cache[bodytype_str] = fast_icon_states(I)
+		render_state_cache[bodytype_str] = icon_states(I)
 		// turn into hash
 		for(var/state in render_state_cache[bodytype_str])
 			render_state_cache[bodytype_str][state] = TRUE
@@ -235,9 +255,12 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	if(istype(equipped, /obj/item/clothing/shoes))
 		var/obj/item/clothing/shoes/S = equipped
 		index = (S.shoes_under_pants == 1)? 2 : 1
-	else if(istype(equipped, /obj/item/storage/belt))
-		var/obj/item/storage/belt/B = equipped
-		index = (B.show_above_suit == 1)? 2 : 1
+	else if(istype(equipped, /obj/item/storage/backpack))
+		var/obj/item/storage/backpack/B = equipped
+		index = (B.hide_under_tail == 1)? 1 : 2
+	else if(istype(equipped, /obj/item/clothing/shoes))
+		var/obj/item/clothing/shoes/S = equipped
+		index = (S.shoes_under_pants == 1)? 2 : 1
 	return render_layer[clamp(index, 1, length(render_layer))]
 
 /datum/inventory_slot/proc/handle_worn_fallback(bodytype, list/worn_data)
@@ -255,15 +278,23 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 /datum/inventory_slot/inventory
 	abstract_type = /datum/inventory_slot/inventory
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_HUD_REQUIRES_EXPAND | INV_SLOT_CONSIDERED_WORN
+	inventory_filter_flags = INV_FILTER_EQUIPMENT
+	inventory_hud_rendered = TRUE
 
 /datum/inventory_slot/inventory/back
 	name = "back"
 	render_key = "back"
 	id = SLOT_ID_BACK
+	semantic_layer = 100
 	sort_order = 2000
 	display_name = "back"
 	display_preposition = "on"
-	hud_position = ui_back
+
+	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_HANDS
+	inventory_hud_main_axis = -1
+	inventory_hud_cross_axis = 0
+	inventory_hud_icon_state = "back"
+
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_CONSIDERED_WORN
 	slot_flags_required = SLOT_BACK
@@ -276,16 +307,23 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	render_fallback = list(
 		BODYTYPE_STRING_TESHARI = "_fallback_"
 	)
-	render_layer = HUMAN_LAYER_SLOT_BACKPACK
+	render_layer = list(HUMAN_LAYER_SLOT_BACKPACK, HUMAN_LAYER_SLOT_BACKPACK_ALT)
 
 /datum/inventory_slot/inventory/uniform
 	name = "uniform"
 	render_key = "under"
 	id = SLOT_ID_UNIFORM
+	semantic_layer = 0
 	sort_order = 5000
 	display_name = "body"
 	display_preposition = "on"
-	hud_position = ui_iclothing
+
+	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
+	inventory_hud_main_axis = 1
+	inventory_hud_cross_axis = 0
+	inventory_hud_icon_state = "uniform"
+	inventory_hud_class = INVENTORY_HUD_CLASS_DRAWER
+
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_ICLOTHING
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_HUD_REQUIRES_EXPAND | INV_SLOT_CONSIDERED_WORN
@@ -331,7 +369,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 			render_rolldown_icons -= bodytype_str
 			continue
 		var/icon/I = render_rolldown_icons[bodytype_str]
-		render_rolldown_states[bodytype_str] = fast_icon_states(I)
+		render_rolldown_states[bodytype_str] = icon_states(I)
 		// turn into hash
 		for(var/state in render_rolldown_states[bodytype_str])
 			render_rolldown_states[bodytype_str][state] = TRUE
@@ -343,7 +381,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 			render_rollsleeve_icons -= bodytype_str
 			continue
 		var/icon/I = render_rollsleeve_icons[bodytype_str]
-		render_rollsleeve_states[bodytype_str] = fast_icon_states(I)
+		render_rollsleeve_states[bodytype_str] = icon_states(I)
 		// turn into hash
 		for(var/state in render_rollsleeve_states[bodytype_str])
 			render_rollsleeve_states[bodytype_str][state] = TRUE
@@ -376,7 +414,6 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		return FALSE
 	return ..()
 
-
 /datum/inventory_slot/inventory/uniform/render(mob/wearer, obj/item/item, bodytype)
 	. = ..()
 	if(!ishuman(wearer))
@@ -406,10 +443,17 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	name = "head"
 	render_key = "head"
 	id = SLOT_ID_HEAD
+	semantic_layer = /datum/inventory_slot/inventory/uniform::semantic_layer + 1
 	sort_order = 10000
 	display_name = "head"
 	display_preposition = "on"
-	hud_position = ui_head
+
+	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
+	inventory_hud_main_axis = 4
+	inventory_hud_cross_axis = 1
+	inventory_hud_icon_state = "head"
+	inventory_hud_class = INVENTORY_HUD_CLASS_DRAWER
+
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_HEAD
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_HUD_REQUIRES_EXPAND | INV_SLOT_CONSIDERED_WORN
@@ -441,11 +485,17 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	name = "outerwear"
 	render_key = "suit"
 	id = SLOT_ID_SUIT
+	semantic_layer = /datum/inventory_slot/inventory/uniform::semantic_layer + 10
 	sort_order = 7000
 	display_name = "suit"
 	display_preposition = "over"
 
-	hud_position = ui_oclothing
+	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
+	inventory_hud_main_axis = 1
+	inventory_hud_cross_axis = 1
+	inventory_hud_icon_state = "suit"
+	inventory_hud_class = INVENTORY_HUD_CLASS_DRAWER
+
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_OCLOTHING
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_HUD_REQUIRES_EXPAND | INV_SLOT_CONSIDERED_WORN
@@ -510,10 +560,16 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	name = "belt"
 	render_key = "belt"
 	id = SLOT_ID_BELT
+	semantic_layer = /datum/inventory_slot/inventory/uniform::semantic_layer + 15
 	sort_order = 6000
 	display_name = "waist"
 	display_preposition = "on"
-	hud_position = ui_belt
+
+	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_HANDS
+	inventory_hud_main_axis = -2
+	inventory_hud_cross_axis = 0
+	inventory_hud_icon_state = "belt"
+
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_BELT
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_CONSIDERED_WORN
@@ -545,14 +601,24 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	id = SLOT_ID_LEFT_POCKET
 	display_name = "left pocket"
 	display_preposition = "in"
-	hud_position = ui_storage1
+	semantic_layer = /datum/inventory_slot/inventory/uniform::semantic_layer + 1
+
+	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_HANDS
+	inventory_hud_main_axis = 1
+	inventory_hud_cross_axis = 0
+	inventory_hud_icon_state = "pocket"
 
 /datum/inventory_slot/inventory/pocket/right
 	name = "right pocket"
 	id = SLOT_ID_RIGHT_POCKET
 	display_name = "right pocket"
 	display_preposition = "in"
-	hud_position = ui_storage2
+	semantic_layer = /datum/inventory_slot/inventory/uniform::semantic_layer + 1
+
+	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_HANDS
+	inventory_hud_main_axis = 2
+	inventory_hud_cross_axis = 0
+	inventory_hud_icon_state = "pocket"
 
 /datum/inventory_slot/inventory/id
 	name = "id"
@@ -561,7 +627,13 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	sort_order = 3000
 	display_name = "badge"
 	display_preposition = "as"
-	hud_position = ui_id
+	semantic_layer = /datum/inventory_slot/inventory/uniform::semantic_layer + 1
+
+	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_HANDS
+	inventory_hud_main_axis = -3
+	inventory_hud_cross_axis = 0
+	inventory_hud_icon_state = "id"
+
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_ID
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_CONSIDERED_WORN
@@ -589,10 +661,16 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	name = "shoes"
 	render_key = "shoes"
 	id = SLOT_ID_SHOES
+	semantic_layer = /datum/inventory_slot/inventory/uniform::semantic_layer + 3
 	sort_order = 4000
 	display_name = "feet"
 	display_preposition = "on"
-	hud_position = ui_shoes
+
+	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
+	inventory_hud_cross_axis = 1
+	inventory_hud_icon_state = "shoes"
+	inventory_hud_class = INVENTORY_HUD_CLASS_DRAWER
+
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_FEET
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_CONSIDERED_WORN | INV_SLOT_HUD_REQUIRES_EXPAND
@@ -625,10 +703,17 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	name = "gloves"
 	render_key = "gloves"
 	id = SLOT_ID_GLOVES
+	semantic_layer = /datum/inventory_slot/inventory/uniform::semantic_layer + 3
 	sort_order = 6500
 	display_name = "hands"
 	display_preposition = "on"
-	hud_position = ui_gloves
+
+	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
+	inventory_hud_main_axis = 1
+	inventory_hud_cross_axis = 2
+	inventory_hud_icon_state = "gloves"
+	inventory_hud_class = INVENTORY_HUD_CLASS_DRAWER
+
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_GLOVES
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_CONSIDERED_WORN | INV_SLOT_HUD_REQUIRES_EXPAND
@@ -648,10 +733,17 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	name = "glasses"
 	render_key = "glasses"
 	id = SLOT_ID_GLASSES
+	semantic_layer = /datum/inventory_slot/inventory/uniform::semantic_layer + 3
 	sort_order = 7500
 	display_name = "eyes"
 	display_preposition = "over"
-	hud_position = ui_glasses
+
+	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
+	inventory_hud_main_axis = 2
+	inventory_hud_cross_axis = 0
+	inventory_hud_icon_state = "glasses"
+	inventory_hud_class = INVENTORY_HUD_CLASS_DRAWER
+
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_EYES
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_CONSIDERED_WORN | INV_SLOT_HUD_REQUIRES_EXPAND
@@ -671,10 +763,16 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	name = "suit storage"
 	render_key = "suit-store"
 	id = SLOT_ID_SUIT_STORAGE
+	semantic_layer = /datum/inventory_slot/inventory/uniform::semantic_layer + 20
 	sort_order = 500
 	display_name = "suit"
 	display_preposition = "on"
-	hud_position = ui_sstore1
+
+	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
+	inventory_hud_main_axis = 0
+	inventory_hud_cross_axis = 2
+	inventory_hud_icon_state = "suit-store"
+
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_PROC
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE
 	render_layer = HUMAN_LAYER_SLOT_SUITSTORE
@@ -704,6 +802,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	sort_order = 9500
 	abstract_type = /datum/inventory_slot/inventory/ears
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_CONSIDERED_WORN | INV_SLOT_HUD_REQUIRES_EXPAND
+	semantic_layer = /datum/inventory_slot/inventory/uniform::semantic_layer + 3
 	render_default_icons = list(
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/ears.dmi',
 		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/ears.dmi',
@@ -723,7 +822,13 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	id = SLOT_ID_LEFT_EAR
 	display_name = "left ear"
 	display_preposition = "on"
-	hud_position = ui_l_ear
+
+	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
+	inventory_hud_main_axis = 3
+	inventory_hud_cross_axis = 2
+	inventory_hud_icon_state = "ears"
+	inventory_hud_class = INVENTORY_HUD_CLASS_DRAWER
+
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_EARS
 
@@ -733,7 +838,13 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	id = SLOT_ID_RIGHT_EAR
 	display_name = "right ear"
 	display_preposition = "on"
-	hud_position = ui_r_ear
+
+	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
+	inventory_hud_main_axis = 4
+	inventory_hud_cross_axis = 2
+	inventory_hud_icon_state = "ears"
+	inventory_hud_class = INVENTORY_HUD_CLASS_DRAWER
+
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_EARS
 	render_layer = HUMAN_LAYER_SLOT_EARS
@@ -742,10 +853,17 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	name = "mask"
 	render_key = "mask"
 	id = SLOT_ID_MASK
+	semantic_layer = /datum/inventory_slot/inventory/uniform::semantic_layer + 3
 	sort_order = 9250
 	display_name = "face"
 	display_preposition = "on"
-	hud_position = ui_mask
+
+	inventory_hud_anchor = INVENTORY_HUD_ANCHOR_TO_DRAWER
+	inventory_hud_main_axis = 3
+	inventory_hud_cross_axis = 1
+	inventory_hud_icon_state = "mask"
+	inventory_hud_class = INVENTORY_HUD_CLASS_DRAWER
+
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_MASK
 	render_default_icons = list(
@@ -781,6 +899,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	always_show_on_strip_menu = FALSE
 	abstract_type = /datum/inventory_slot/restraints
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_STRIPPABLE | INV_SLOT_STRIP_ONLY_REMOVES | INV_SLOT_STRIP_SIMPLE_LINK
+	inventory_filter_flags = INV_FILTER_RESTRAINTS
 
 /datum/inventory_slot/restraints/handcuffs
 	name = "handcuffed"
@@ -789,6 +908,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	display_name = "hands"
 	display_preposition = "around"
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_PROC
+	semantic_layer = /datum/inventory_slot/inventory/uniform::semantic_layer + 30
 	render_default_icons = list(
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/mob.dmi',
 		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/handcuffs.dmi',
@@ -806,6 +926,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	display_name = "legs"
 	display_preposition = "around"
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_PROC
+	semantic_layer = /datum/inventory_slot/inventory/uniform::semantic_layer + 30
 	render_default_icons = list(
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/mob.dmi',
 		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/handcuffs.dmi',

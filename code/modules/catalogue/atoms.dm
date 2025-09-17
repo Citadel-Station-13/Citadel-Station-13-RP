@@ -5,8 +5,6 @@
 	// Also you should use get_catalogue_data() to access this instead of doing so directly, so special behavior can be enabled.
 	var/list/catalogue_data = null
 
-/mob
-	catalogue_delay = 10 SECONDS
 
 // Tests if something can be catalogued.
 // If something goes wrong and a mob was supplied, the mob will be told why they can't catalogue it.

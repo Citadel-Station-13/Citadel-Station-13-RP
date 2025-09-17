@@ -1,3 +1,3 @@
-/datum/design/weapon
-	abstract_type = /datum/design/weapon
+/datum/prototype/design/weapon
+	abstract_type = /datum/prototype/design/weapon
 	category = "Weapons"

@@ -87,7 +87,7 @@
 	icon_state = "explosion_particle"
 	modifier_type_to_apply = /datum/modifier/fire
 	modifier_duration = 6 SECONDS // About 15 damage per stack, as Life() ticks every two seconds.
-	damage = 0
+	damage_force = 0
 	nodamage = TRUE
 
 
@@ -125,8 +125,9 @@
 /obj/projectile/arc/blue_energy
 	name = "energy missile"
 	icon_state = "force_missile"
-	damage = 15 // A bit stronger since arcing projectiles are much easier to avoid than traditional ones.
-	damage_type = BURN
+	// A bit stronger since arcing projectiles are much easier to avoid than traditional ones.
+	damage_force = 15 // A bit stronger since arcing projectiles are much easier to avoid than traditional ones.
+	damage_type = DAMAGE_TYPE_BURN
 
 // Very long ranged hivebot that rains down hell.
 // Their projectiles arc, meaning they go over everything until it hits the ground.
@@ -169,15 +170,23 @@
 /obj/projectile/arc/emp_blast
 	name = "emp blast"
 	icon_state = "bluespace"
+	var/emp_dev = 2
+	var/emp_heavy = 4
+	var/emp_med = 7
+	var/emp_light = 10
 
-/obj/projectile/arc/emp_blast/on_impact(turf/T)
-	empulse(T, 2, 4, 7, 10) // Normal EMP grenade.
-	return ..()
+/obj/projectile/arc/emp_blast/on_impact(atom/target, impact_flags, def_zone, efficiency)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
+	empulse(target, emp_dev, emp_heavy, emp_med, emp_light) // Normal EMP grenade.
+	return . | PROJECTILE_IMPACT_DELETE
 
-/obj/projectile/arc/emp_blast/weak/on_impact(turf/T)
-	empulse(T, 1, 2, 3, 4) // Sec EMP grenade.
-	return ..()
-
+/obj/projectile/arc/emp_blast/weak
+	emp_dev = 1
+	emp_heavy = 2
+	emp_med = 3
+	emp_light = 4
 
 // Fires shots that irradiate the tile hit.
 /mob/living/simple_mob/mechanical/hivebot/ranged_damage/siege/radiation
@@ -213,7 +222,7 @@
 	icon_state = "lurker"
 	icon_living = "lurker"
 	alpha = 200
-	movement_cooldown = 0.7 SECONDS
+	movement_base_speed = 10 / 0.7 SECONDS
 
 	projectiletype = /obj/projectile/beam/xray
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting/sniper
@@ -231,7 +240,7 @@
 	icon_living = "suppressor"
 	icon_state = "suppressor"
 	base_attack_cooldown = 6
-	movement_cooldown = 0.5 SECONDS
+	movement_base_speed = 10 / 0.5 SECONDS
 	projectiletype = /obj/projectile/beam/smalllaser/hivebot
 
 	maxHealth = 4 LASERS_TO_KILL
@@ -241,11 +250,11 @@
 
 
 /obj/projectile/beam/smalllaser/hivebot
-	damage = 25
-	agony = 20
-	muzzle_type = /obj/effect/projectile/muzzle/lightning
-	tracer_type = /obj/effect/projectile/tracer/lightning
-	impact_type = /obj/effect/projectile/impact/lightning
+	damage_force = 25
+	damage_inflict_agony = 20
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/lightning
+	legacy_tracer_type = /obj/effect/projectile/tracer/lightning
+	legacy_impact_type = /obj/effect/projectile/impact/lightning
 
 
 // stronker hivey, rare but very visible
@@ -265,5 +274,5 @@
 
 
 /obj/projectile/beam/cyan/hivebot
-	damage = 45
-	armor_penetration = 15
+	damage_force = 45
+	damage_tier = 4

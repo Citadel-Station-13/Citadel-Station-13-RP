@@ -2,7 +2,7 @@
 	name = "mysterious pod"
 	desc = "It's full of a viscous liquid, but appears dark and silent."
 	icon = 'icons/obj/medical/cryogenics.dmi'
-	icon_state = "cellold0"
+	icon_state = "cell-off"
 	var/spawn_type
 	var/time_spent_spawning = 0
 	var/time_per_spawn = 0
@@ -22,7 +22,7 @@
 	if(prob(33))
 		spawn_type = pick(
 		/mob/living/simple_mob/animal/giant_spider/nurse,
-		/mob/living/simple_mob/animal/space/alien,
+		/mob/living/simple_mob/animal/space/xenomorph,
 		/mob/living/simple_mob/animal/space/bear,
 		/mob/living/simple_mob/creature,
 		/mob/living/simple_mob/slime/xenobio,
@@ -44,7 +44,7 @@
 	if(powered(power_channel))
 		if(!previous_power_state)
 			previous_power_state = 1
-			icon_state = "cellold1"
+			icon_state = "cell-on"
 			visible_message("<span class='notice'>[icon2html(thing = src, target = world)] [src] suddenly comes to life!</span>")
 
 		//slowly grow a mob
@@ -56,7 +56,7 @@
 			time_spent_spawning = 0
 			update_use_power(USE_POWER_IDLE)
 			visible_message("<span class='notice'>[icon2html(thing = src, target = world)] [src] pings!</span>")
-			icon_state = "cellold1"
+			icon_state = "cell-on"
 			desc = "It's full of a bubbling viscous liquid, and is lit by a mysterious glow."
 			if(spawn_type)
 				new spawn_type(loc)
@@ -64,18 +64,18 @@
 		//if we're getting close to finished, kick into overdrive power usage
 		if(time_spent_spawning / time_per_spawn > 0.75)
 			update_use_power(USE_POWER_ACTIVE)
-			icon_state = "cellold2"
+			icon_state = "cell-occupied"
 			desc = "It's full of a bubbling viscous liquid, and is lit by a mysterious glow. A dark shape appears to be forming inside..."
 		else
 			update_use_power(USE_POWER_IDLE)
-			icon_state = "cellold1"
+			icon_state = "cell-on"
 			desc = "It's full of a bubbling viscous liquid, and is lit by a mysterious glow."
 
 		time_spent_spawning = time_spent_spawning + world.time - last_process
 	else
 		if(previous_power_state)
 			previous_power_state = 0
-			icon_state = "cellold0"
+			icon_state = "cell-off"
 			visible_message("<span class='notice'>[icon2html(thing = src, target = world)] [src] suddenly shuts down.</span>")
 
 		//cloned mob slowly breaks down

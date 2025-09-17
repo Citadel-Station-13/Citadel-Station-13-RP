@@ -58,12 +58,12 @@
 	silicon_mob_list |= src
 	. = ..()
 	add_language(LANGUAGE_GALCOM)
-	set_default_language(SScharacters.resolve_language_name(LANGUAGE_GALCOM))
+	set_default_language(RSlanguages.fetch_local_or_throw(/datum/prototype/language/common))
 	create_translation_context()
 	init_id()
 	init_subsystems()
 
-	for(var/datum/language/L as anything in SScharacters.all_languages())
+	for(var/datum/prototype/language/L as anything in RSlanguages.fetch_subtypes_immutable(/datum/prototype/language))
 		if(L.translation_class & TRANSLATION_CLASS_LEVEL_1)
 			add_language(L)
 	add_language(LANGUAGE_EAL)
@@ -112,61 +112,8 @@
 			else
 				src.bodytemp.icon_state = "temp-2"
 
-/mob/living/silicon/emp_act(severity)
-	switch(severity)
-		if(1)
-			src.take_random_targeted_damage(brute = 0, burn = 20, damage_mode = DAMAGE_MODE_INTERNAL, weapon_descriptor = "electromagnetic surge")
-			Confuse(5)
-		if(2)
-			src.take_random_targeted_damage(brute = 0, burn = 15, damage_mode = DAMAGE_MODE_INTERNAL, weapon_descriptor = "electromagnetic surge")
-			Confuse(4)
-		if(3)
-			src.take_random_targeted_damage(brute = 0, burn = 10, damage_mode = DAMAGE_MODE_INTERNAL, weapon_descriptor = "electromagnetic surge")
-			Confuse(3)
-		if(4)
-			src.take_random_targeted_damage(brute = 0, burn = 5, damage_mode = DAMAGE_MODE_INTERNAL, weapon_descriptor = "electromagnetic surge")
-			Confuse(2)
-	flash_eyes(affect_silicon = 1)
-	to_chat(src, "<span class='danger'><B>*BZZZT*</B></span>")
-	to_chat(src, "<span class='danger'>Warning: Electromagnetic pulse detected.</span>")
-	..()
-
-/mob/living/silicon/stun_effect_act(var/stun_amount, var/agony_amount, var/def_zone, var/used_weapon=null)
-	return	//immune
-
-/mob/living/silicon/electrocute_act(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0, var/def_zone = null, var/stun = 1)
-	if(shock_damage > 0)
-		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-		s.set_up(5, 1, loc)
-		s.start()
-
-		shock_damage *= siemens_coeff	//take reduced damage
-		take_overall_damage(0, shock_damage)
-		visible_message("<span class='warning'>[src] was shocked by \the [source]!</span>", \
-			"<span class='danger'>Energy pulse detected, system damaged!</span>", \
-			"<span class='warning'>You hear an electrical crack.</span>")
-		if(prob(20))
-			afflict_stun(20 * 2)
-		return
-
-/mob/living/silicon/proc/damage_mob(var/brute = 0, var/fire = 0, var/tox = 0)
-	return
-
 /mob/living/silicon/IsAdvancedToolUser()
 	return 1
-
-/mob/living/silicon/bullet_act(var/obj/projectile/Proj)
-
-	if(!Proj.nodamage)
-		switch(Proj.damage_type)
-			if(BRUTE)
-				adjustBruteLoss(Proj.get_final_damage(src))
-			if(BURN)
-				adjustFireLoss(Proj.get_final_damage(src))
-
-	Proj.on_hit(src,2)
-	update_health()
-	return 2
 
 /mob/living/silicon/apply_effect(var/effect = 0,var/effecttype = STUN, var/blocked = 0, var/check_protection = 1)
 	return 0//The only effect that can hit them atm is flashes and they still directly edit so this works for now
@@ -182,9 +129,9 @@
 /mob/living/silicon/proc/show_system_integrity()
 	. = list()
 	if(!src.stat)
-		STATPANEL_DATA_LINE("System integrity: [round((health/getMaxHealth())*100)]%")
+		INJECT_STATPANEL_DATA_LINE(., "System integrity: [round((health/getMaxHealth())*100)]%")
 	else
-		STATPANEL_DATA_LINE("Systems nonfunctional")
+		INJECT_STATPANEL_DATA_LINE(., "Systems nonfunctional")
 
 // This is a pure virtual function, it should be overwritten by all subclasses
 /mob/living/silicon/proc/show_malf_ai()
@@ -194,7 +141,7 @@
 /mob/living/silicon/statpanel_data(client/C)
 	. = ..()
 	if(C.statpanel_tab("Status"))
-		STATPANEL_DATA_LINE("")
+		INJECT_STATPANEL_DATA_LINE(., "")
 		. += show_system_integrity()
 		. += show_malf_ai()
 
@@ -218,11 +165,11 @@
 
 //Silicon mob language procs
 
-/mob/living/silicon/can_speak(datum/language/speaking)
+/mob/living/silicon/can_speak(datum/prototype/language/speaking)
 	return universal_speak || (speaking in src.speech_synthesizer_langs) || (speaking.name == "Noise")	//need speech synthesizer support to vocalize a language
 
 /mob/living/silicon/add_language(var/language, var/can_speak=1)
-	var/datum/language/added_language = SScharacters.resolve_language_name(language)
+	var/datum/prototype/language/added_language = RSlanguages.legacy_resolve_language_name(language)
 	if(!added_language)
 		return
 
@@ -232,7 +179,7 @@
 		return 1
 
 /mob/living/silicon/remove_language(var/rem_language)
-	var/datum/language/removed_language = SScharacters.resolve_language_name(rem_language)
+	var/datum/prototype/language/removed_language = RSlanguages.legacy_resolve_language_name(rem_language)
 	if(!removed_language)
 		return
 
@@ -249,7 +196,7 @@
 	if(default_language)
 		dat += "Current default language: [default_language] - <a href='byond://?src=\ref[src];default_lang=reset'>reset</a><br/><br/>"
 
-	for(var/datum/language/L in languages)
+	for(var/datum/prototype/language/L in languages)
 		if(!(L.language_flags & LANGUAGE_NONGLOBAL))
 			var/default_str
 			if(L == default_language)
@@ -299,27 +246,6 @@
 
 /mob/living/silicon/binarycheck()
 	return 1
-
-/mob/living/silicon/legacy_ex_act(severity)
-	if(!has_status_effect(/datum/status_effect/sight/blindness))
-		flash_eyes()
-
-	switch(severity)
-		if(1.0)
-			if (stat != 2)
-				adjustBruteLoss(100)
-				adjustFireLoss(100)
-				if(!anchored)
-					gib()
-		if(2.0)
-			if (stat != 2)
-				adjustBruteLoss(60)
-				adjustFireLoss(60)
-		if(3.0)
-			if (stat != 2)
-				adjustBruteLoss(30)
-
-	update_health()
 
 /mob/living/silicon/proc/receive_alarm(var/datum/alarm_handler/alarm_handler, var/datum/alarm/alarm, was_raised)
 	if(!next_alarm_notice)
@@ -418,9 +344,6 @@
 
 /mob/living/silicon/has_vision()
 	return 0 //NOT REAL EYES
-
-/mob/living/silicon/get_bullet_impact_effect_type(var/def_zone)
-	return BULLET_IMPACT_METAL
 
 //! Topic
 /mob/living/silicon/Topic(href, href_list)

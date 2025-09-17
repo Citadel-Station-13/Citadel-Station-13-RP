@@ -31,8 +31,6 @@
 		"Apprentice Engineer" = /datum/prototype/struct/alt_title/apprentice_engineer,
 		"Construction Engineer" = /datum/prototype/struct/alt_title/construction_engi,
 		"Damage Control Technician" = /datum/prototype/struct/alt_title/damage_tech,
-		"Artificer-Apprentice" = /datum/prototype/struct/alt_title/artificer_apprentice,
-		"Artificer" = /datum/prototype/struct/alt_title/artificer
 		)
 
 	minimal_player_age = 3
@@ -68,19 +66,6 @@
 	title = "Damage Control Technician"
 	title_blurb = "A Damage Control Technician specializes in repairing a damaged facility as quickly as possible, usually possessing good skills with both atmospherics and quick repair work."
 
-/datum/prototype/struct/alt_title/artificer_apprentice
-	title = "Artificer-Apprentice"
-	background_allow = list(
-		/datum/lore/character_background/faction/naramadiguilds
-	)
-	background_enforce = TRUE
-
-/datum/prototype/struct/alt_title/artificer
-	title = "Artificer"
-	background_allow = list(
-		/datum/lore/character_background/faction/naramadiguilds
-	)
-	background_enforce = TRUE
 
 /datum/outfit/job/station/station_engineer
 	name = OUTFIT_JOB_NAME("Engineer")

@@ -19,12 +19,12 @@
 	icon_rest = "fox2_rest"
 	icon = 'icons/mob/fox_vr.dmi'
 
-	movement_cooldown = 0.5
+	movement_base_speed = 10 / 0.5
 	see_in_dark = 6
 	mob_size = MOB_SMALL //Foxes are not smaller than cats so bumping them up to small
 	randomized = TRUE
 
-	faction = "fox"
+	iff_factions = MOB_IFF_FACTION_BIND_TO_MAP
 
 	response_help = "scritches"
 	response_disarm = "gently pushes aside"
@@ -61,28 +61,6 @@
 	speak_chance = 1 // If the mob's saylist is empty, nothing will happen.
 	wander = TRUE
 	base_wander_delay = 4
-
-/mob/living/simple_mob/animal/passive/fox/init_vore()
-	..()
-	var/obj/belly/B = vore_selected
-	B.name = "Stomach"
-	B.desc = "Slick foxguts. Cute on the outside, slimy on the inside!"
-
-	B.emote_lists[DM_HOLD] = list(
-		"The foxguts knead and churn around you harmlessly.",
-		"With a loud glorp, some air shifts inside the belly.",
-		"A thick drop of warm bellyslime drips onto you from above.",
-		"The fox turns suddenly, causing you to shift a little.",
-		"During a moment of relative silence, you can hear the fox breathing.",
-		"The slimey stomach walls squeeze you lightly, then relax.")
-
-	B.emote_lists[DM_DIGEST] = list(
-		"The guts knead at you, trying to work you into thick soup.",
-		"You're ground on by the slimey walls, treated like a mouse.",
-		"The acrid air is hard to breathe, and stings at your lungs.",
-		"You can feel the acids coating you, ground in by the slick walls.",
-		"The fox's stomach churns hungrily over your form, trying to take you.",
-		"With a loud glorp, the stomach spills more acids onto you.")
 
 /mob/living/simple_mob/animal/passive/fox/apply_melee_effects(var/atom/A)
 	if(ismouse(A))
@@ -144,58 +122,6 @@
 		var/datum/ai_holder/polaris/AI = ai_holder
 		AI.set_follow(friend)
 
-/* Old fox friend AI, I'm not sure how to add the fancy "friend is dead" stuff so I'm commenting it out for someone else to figure it out, this is just baseline stuff.
-//Basic friend AI
-/mob/living/simple_mob/animal/passive/fox/fluff
-	var/mob/living/carbon/human/friend
-	var/befriend_job = null
-
-/mob/living/simple_mob/animal/passive/fox/fluff/Life(seconds, times_fired)
-	. = ..()
-	if(!. || !friend) return
-
-	var/friend_dist = get_dist(src,friend)
-
-	if (friend_dist <= 4)
-		if(stance == STANCE_IDLE)
-			if(set_follow(friend))
-				handle_stance(STANCE_FOLLOW)
-
-	if (friend_dist <= 1)
-		if (friend.stat >= DEAD || friend.health <= config_legacy.health_threshold_softcrit)
-			if (prob((friend.stat < DEAD)? 50 : 15))
-				var/verb = pick("yaps", "howls", "whines")
-				audible_emote(pick("[verb] in distress.", "[verb] anxiously."))
-		else
-			if (prob(5))
-				visible_emote(pick("nips [friend].",
-								   "brushes against [friend].",
-								   "tugs on [friend].",
-								   "chrrrrs."))
-	else if (friend.health <= 50)
-		if (prob(10))
-			var/verb = pick("yaps", "howls", "whines")
-			audible_emote("[verb] anxiously.")
-
-/mob/living/simple_mob/animal/passive/fox/fluff/verb/friend()
-	set name = "Become Friends"
-	set category = VERB_CATEGORY_IC
-	set src in view(1)
-
-	if(friend && usr == friend)
-		setDir(get_dir(src, friend))
-		say("Yap!")
-		return
-
-	if (!(ishuman(usr) && befriend_job && usr.job == befriend_job))
-		to_chat(usr, "<span class='notice'>[src] ignores you.</span>")
-		return
-
-	friend = usr
-
-	setDir(get_dir(src, friend))
-	say("Yap!")
-*/
 /obj/item/reagent_containers/food/snacks/meat/fox
 	name = "Fox meat"
 	desc = "The fox doesn't say a goddamn thing, now."
@@ -211,28 +137,6 @@
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/passive
 	makes_dirt = FALSE	// No more dirt
 	randomized = FALSE
-
-/mob/living/simple_mob/animal/passive/fox/renault/init_vore()
-	..()
-	var/obj/belly/B = vore_selected
-	B.name = "Stomach"
-	B.desc = "Slick foxguts. They seem somehow more regal than perhaps other foxes!"
-
-	B.emote_lists[DM_HOLD] = list(
-		"Renault's stomach walls squeeze around you more tightly for a moment, before relaxing, as if testing you a bit.",
-		"There's a sudden squeezing as Renault presses a forepaw against his gut over you, squeezing you against the slick walls.",
-		"The 'head fox' has a stomach that seems to think you belong to it. It might be hard to argue, as it kneads at your form.",
-		"If being in the captain's fox is a promotion, it might not feel like one. The belly just coats you with more thick foxslime.",
-		"It doesn't seem like Renault wants to let you out. The stomach and owner possessively squeeze around you.",
-		"Renault's stomach walls squeeze closer, as he belches quietly, before swallowing more air. Does he do that on purpose?")
-
-	B.emote_lists[DM_DIGEST] = list(
-		"Renault's stomach walls grind hungrily inwards, kneading acids against your form, and treating you like any other food.",
-		"The captain's fox impatiently kneads and works acids against you, trying to claim your body for fuel.",
-		"The walls knead in firmly, squeezing and tossing you around briefly in disorienting aggression.",
-		"Renault belches, letting the remaining air grow more acrid. It burns your lungs with each breath.",
-		"A thick glob of acids drip down from above, adding to the pool of caustic fluids in Renault's belly.",
-		"There's a loud gurgle as the stomach declares the intent to make you a part of Renault.")
 
 /mob/living/simple_mob/animal/passive/fox/syndicate
 	name = "syndi-fox"

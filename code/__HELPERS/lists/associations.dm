@@ -1,10 +1,3 @@
-#if DM_VERSION > 515
-// this is just a warn now, we give up
-#warn Remie said that lummox was adding a way to get a lists
-#warn contents via list.values, if that is true remove this
-#warn otherwise, update the version and bug lummox
-#endif
-
 /**
  * Flattens a keyed list into a list of it's contents.
  */
@@ -32,6 +25,7 @@
 		flat_list[flat_list[i]] = TRUE
 	return flat_list
 
+//! WARNING: this no longer works; byond will NEVER de-assoc a list for json_encode purposes even if this is called!
 /proc/assoc_list_strip_value_inplace(list/input)
 	for(var/i in 1 to length(input))
 		input[input[i]] = null

@@ -160,7 +160,8 @@
 
 	//* transfer player if necessary
 	if(active)
-		new_character.ckey = ckey //now transfer the ckey to link the client to our new body
+		var/client/found = GLOB.directory[ckey]
+		found.transfer_to(new_character)
 
 /datum/mind/proc/transfer(mob/new_character)
 	if(isnull(current))

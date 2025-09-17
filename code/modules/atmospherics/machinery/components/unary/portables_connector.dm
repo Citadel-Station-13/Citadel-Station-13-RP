@@ -10,6 +10,7 @@
 	construction_type = /obj/item/pipe/directional
 	pipe_state = "connector"
 	pipe_flags = PIPING_DEFAULT_LAYER_ONLY|PIPING_ONE_PER_TURF
+	hides_underfloor_underlays = TRUE
 
 	var/obj/machinery/portable_atmospherics/connected_device
 
@@ -19,7 +20,6 @@
 
 	var/on = 0
 	use_power = USE_POWER_OFF
-	level = 1
 
 /obj/machinery/atmospherics/portables_connector/fuel
 	icon_state = "map_connector-fuel"
@@ -38,8 +38,9 @@
 /obj/machinery/atmospherics/portables_connector/init_dir()
 	initialize_directions = dir
 
-/obj/machinery/atmospherics/portables_connector/update_icon()
+/obj/machinery/atmospherics/portables_connector/update_icon_state()
 	icon_state = "connector"
+	return ..()
 
 /obj/machinery/atmospherics/portables_connector/update_underlays()
 	if(..())
@@ -48,9 +49,6 @@
 		if(!istype(T))
 			return
 		add_underlay(T, node, dir, node?.icon_connect_type)
-
-/obj/machinery/atmospherics/portables_connector/hide(var/i)
-	update_underlays()
 
 /obj/machinery/atmospherics/portables_connector/process(delta_time)
 	..()

@@ -1,5 +1,5 @@
 // todo: this is just a placeholder
-/datum/material/bronze
+/datum/prototype/material/bronze
 	id = "bronze"
 	name = "bronze"
 	icon_colour = "#EDD12F"
@@ -19,3 +19,7 @@
 	refraction = MATERIAL_RESISTANCE_NONE
 	absorption = MATERIAL_RESISTANCE_LOW
 	nullification = MATERIAL_RESISTANCE_NONE
+
+	worth = 7.5
+
+	material_constraints = MATERIAL_CONSTRAINT_RIGID

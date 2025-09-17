@@ -14,7 +14,6 @@ Buildable meters
 	icon_state = "simple"
 	item_state = "buildpipe"
 	w_class = WEIGHT_CLASS_TINY
-	level = 2
 	var/piping_layer = PIPING_LAYER_DEFAULT
 	var/dispenser_class // Tells the dispenser what orientations we support, so RPD can show previews.
 
@@ -159,7 +158,7 @@ Buildable meters
 	if(dir in GLOB.cornerdirs)
 		setDir(turn(dir, 45))
 
-/obj/item/pipe/attack_self(mob/user)
+/obj/item/pipe/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

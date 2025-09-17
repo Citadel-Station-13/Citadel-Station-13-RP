@@ -1,4 +1,4 @@
-/datum/material/glass
+/datum/prototype/material/glass
 	id = MAT_GLASS
 	name = "glass"
 	stack_type = /obj/item/stack/material/glass
@@ -22,7 +22,7 @@
 	relative_integrity = 0.75
 	relative_reactivity = 0
 	relative_permeability = 0
-	hardness = MATERIAL_RESISTANCE_HIGH
+	hardness = MATERIAL_RESISTANCE_ABOVE_MODERATE(0.5)
 	toughness = MATERIAL_RESISTANCE_VERY_VULNERABLE
 	refraction = MATERIAL_RESISTANCE_NONE
 	absorption = MATERIAL_RESISTANCE_NONE
@@ -30,7 +30,9 @@
 	density = 8 * 1
 	relative_conductivity = 0
 
-/datum/material/glass/build_windows(var/mob/living/user, var/obj/item/stack/used_stack)
+	worth = 0.5
+
+/datum/prototype/material/glass/build_windows(var/mob/living/user, var/obj/item/stack/used_stack)
 
 	if(!user || !used_stack || !created_window || !created_fulltile_window || !window_options.len)
 		return 0
@@ -103,10 +105,10 @@
 	new build_path(T, build_dir, 1)
 	return 1
 
-/datum/material/glass/proc/is_reinforced()
+/datum/prototype/material/glass/proc/is_reinforced()
 	return FALSE
 
-/datum/material/glass/reinforced
+/datum/prototype/material/glass/reinforced
 	id = "glass_reinf"
 	name = "rglass"
 	display_name = "reinforced glass"
@@ -133,10 +135,10 @@
 	nullification = MATERIAL_RESISTANCE_NONE
 	density = 8 * 1.15
 
-/datum/material/glass/reinforced/is_reinforced()
+/datum/prototype/material/glass/reinforced/is_reinforced()
 	return TRUE
 
-/datum/material/glass/phoron
+/datum/prototype/material/glass/phoron
 	id = "glass_boro"
 	name = "borosilicate glass"
 	display_name = "borosilicate glass"
@@ -159,7 +161,7 @@
 	nullification = MATERIAL_RESISTANCE_NONE
 	density = 8 * 1.3
 
-/datum/material/glass/phoron/reinforced
+/datum/prototype/material/glass/phoron/reinforced
 	id = "glass_boro_reinf"
 	name = "reinforced borosilicate glass"
 	display_name = "reinforced borosilicate glass"
@@ -183,5 +185,5 @@
 	nullification = MATERIAL_RESISTANCE_NONE
 	density = 8 * 1.6
 
-/datum/material/glass/phoron/reinforced/is_reinforced()
+/datum/prototype/material/glass/phoron/reinforced/is_reinforced()
 	return TRUE

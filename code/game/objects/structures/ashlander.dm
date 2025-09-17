@@ -21,19 +21,27 @@
 	. = ..()
 	var/msg = insert_msg_override[I.type] || default_message
 	if(istype(I, /obj/item/stack/ore))
-		to_chat(user, "<span class='danger'>You pour the [I] into the [src]! [msg]</span>")
-		attempt_consume()
+		var/obj/item/stack/ore/O = I
+		if(O.amount > 1)
+			to_chat(user, "<span class='danger'>You pour all [O.amount] of [O] into [src]! [msg]</span>")
+		else
+			to_chat(user, "<span class='danger'>You pour [O] into [src]! [msg]</span>")
+		attempt_consume(O, user, O.amount)
+
+
 	if(istype(I, /obj/item/storage/bag))
 		var/obj/item/storage/bag/B = I
 		var/inserted = 0
 		for(I in B)
-			if(attempt_consume(I, user))
-				inserted++
+			if(istype(I, /obj/item/stack/ore))
+				var/obj/item/stack/ore/O = I
+				if(attempt_consume(O, user, O.amount))
+					inserted += O.amount
 		if(inserted)
 			user.action_feedback(SPAN_NOTICE("You insert [inserted] units of material from [B] into [src]. [msg]"), src)
 		else
 			user.action_feedback(SPAN_WARNING("You fail to insert anything from [B] into [src]."), src)
-	else if(attempt_consume(I, user))
+	else if(attempt_consume(I, user)) //is this really needed when attempt_consume only asks for ores???
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	return ..()
 
@@ -47,21 +55,25 @@
  * @return TRUE / FALSE based on success / failure.
  */
 
-/obj/structure/ashlander/production/proc/attempt_consume(obj/item/stack/ore/O, mob/user)
+/obj/structure/ashlander/production/proc/attempt_consume(obj/item/stack/ore/O, mob/user, amount = 1)
 	if (!istype(O))
 		return FALSE
 
     /// Ensure the ore is able to be put in if it's being held / in inventory
-	if(!isnull(user) && user.is_holding(O) && !user.transfer_item_to_loc(O, src))
-		user.action_feedback(SPAN_WARNING("[O] is stuck to your hand!"), src)
+	if(!isnull(user) && user.is_holding(O) && !O.use(amount))
+		user.action_feedback(SPAN_WARNING("[O] doesn't exist! Likely some stack bug. Yell at coderbus."), src)
 		return FALSE
 
 	for (var/ty in ore_mapping)
 		if (istype(O, ty))
 			var/target_type = ore_mapping[ty]
-			new target_type(get_turf(src))
-			if(!O.use(1))
-				return FALSE
+			if(istype(target_type, /obj/item/stack))
+				var/obj/item/stack/ttstack = target_type
+				new ttstack(get_turf(src),	amount)
+			else //I sure hope nobody DOES make production machines that results in non-stackable objects.
+				var/i = 0
+				for(i = 0; i < amount, ++i)
+					new target_type(get_turf(src))
 			return TRUE
 
 	return FALSE
@@ -88,17 +100,6 @@
 	ore_mapping = list(
 		/obj/item/stack/ore/glass = /obj/item/stack/material/sandstone
 	)
-
-/obj/structure/ashlander/production/brickmaker/attackby(obj/item/I, mob/user)
-	. = ..()
-	if(istype(I, /obj/item/stack/ore/glass))
-		var/obj/item/stack/ore/glass/O = I
-		if(O.use(1))
-			to_chat(user, "<span class='danger'>You pour the [O] into [src]! After some work you compress it into a sturdy brick.</span>")
-			var/turf/T = get_turf(src)
-			new /obj/item/stack/material/sandstone(T)
-		else
-			to_chat(user, SPAN_WARNING("You try to pour the [O] into [src], but realize [O] didn't actually exist. (you somehow had zero or less of a stack??? yell at coders how you did that.)"))
 
 //This is a child of the Hydroponics seed extractor, and was originally in that file. But I've moved it here since it's an Ashlander "machine".
 /obj/machinery/seed_extractor/press
@@ -298,7 +299,7 @@
 	src.updateUsrDialog()
 	return 0
 
-/obj/structure/ashlander/calcinator/attack_hand(mob/user, list/params)
+/obj/structure/ashlander/calcinator/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	interact(user)
 
 /obj/structure/ashlander/calcinator/AltClick(mob/user)
@@ -386,7 +387,7 @@
 	. = ..()
 	set_light(3, 2, "#9463bb")
 
-/obj/structure/ashlander/statue/attack_hand(mob/user, list/params)
+/obj/structure/ashlander/statue/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	var/choice = tgui_alert(user, "Do you wish to pray to the statue?", "Interact With the Statue", list("Yes", "No"))
 	if(choice != "Yes")
 		return
@@ -396,10 +397,10 @@
 
 /obj/structure/ashlander/statue/proc/Bless(mob/user)
 	var/mob/living/carbon/human/H = usr
-	if(!H.faction == "lavaland")
-		to_chat(user, "<span class='danger'>You feel as if an eye briefly regards you, and then turns away.</span>")
-	else
-		H.add_modifier(/datum/modifier/ashlander_blessing, 15 MINUTES)
+	// if(!H.faction == "lavaland")
+	//		to_chat(user, "<span class='danger'>You feel as if an eye briefly regards you, and then turns away.</span>")
+	// else
+	H.add_modifier(/datum/modifier/ashlander_blessing, 15 MINUTES)
 
 /datum/modifier/ashlander_blessing
 	name = "The Mother's Blessing"

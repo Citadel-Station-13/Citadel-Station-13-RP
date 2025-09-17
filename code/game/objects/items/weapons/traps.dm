@@ -34,12 +34,7 @@
 	remove_verb(user, /mob/living/proc/shred_limb_temp)
 	..()
 
-/obj/item/beartrap/suicide_act(mob/user)
-	var/datum/gender/T = GLOB.gender_datums[user.get_visible_gender()]
-	user.visible_message("<span class='danger'>[user] is putting the [src.name] on [T.his] head! It looks like [T.hes] trying to commit suicide.</span>")
-	return (BRUTELOSS)
-
-/obj/item/beartrap/attack_self(mob/user)
+/obj/item/beartrap/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -85,7 +80,7 @@
 	if(!has_buckled_mobs())
 		anchored = FALSE
 
-/obj/item/beartrap/attack_hand(mob/user, list/params)
+/obj/item/beartrap/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	// check unbuckle first
 	if(click_unbuckle_interaction(user))
 		return CLICKCHAIN_DO_NOT_PROPAGATE
@@ -128,7 +123,7 @@
 	if(soaked >= 30)
 		return
 
-	if(!L.apply_damage(trap_damage, BRUTE, target_zone, blocked, soaked, used_weapon=src))
+	if(!L.apply_damage(trap_damage, DAMAGE_TYPE_BRUTE, target_zone, blocked, soaked, used_weapon=src))
 		return 0
 
 	//trap the victim in place
@@ -141,7 +136,7 @@
 	deployed = FALSE
 
 /obj/item/beartrap/Crossed(atom/movable/AM as mob|obj)
-	if(AM.is_incorporeal())
+	if(AM.is_incorporeal() || AM.is_avoiding_ground())
 		return
 	if(deployed && isliving(AM))
 		var/mob/living/L = AM

@@ -49,20 +49,20 @@
 	if(W.damage_force)
 		adjust_strength(-W.damage_force / 20)
 		user.do_attack_animation(src)
-		user.setClickCooldown(user.get_attack_speed(W))
+		user.setClickCooldownLegacy(user.get_attack_speed_legacy(W))
 	..()
 
 /obj/effect/energy_field/attack_generic(mob/user, damage)
 	if(damage)
 		adjust_strength(-damage / 20)
 		user.do_attack_animation(src)
-		user.setClickCooldown(user.get_attack_speed())
+		user.setClickCooldownLegacy(user.get_attack_speed_legacy())
 
-/obj/effect/energy_field/inflict_atom_damage(damage, tier, flag, mode, attack_type, datum/weapon, gradual)
+/obj/effect/energy_field/inflict_atom_damage(damage, damage_type, damage_tier, damage_flag, damage_mode, hit_zone, attack_type, datum/attack_source)
 	adjust_strength(damage / 20)
 	return damage
 
-/obj/effect/energy_field/attack_hand(mob/user, list/params)
+/obj/effect/energy_field/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	impact_effect(3) // Harmless, but still produces the 'impact' effect.
 	..()
 

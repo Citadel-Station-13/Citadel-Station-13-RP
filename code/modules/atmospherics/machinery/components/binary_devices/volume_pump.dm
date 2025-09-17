@@ -3,7 +3,6 @@
 	icon_state = "map_off"
 	construction_type = /obj/item/pipe/directional
 	pipe_state = "volumepump"
-	level = 1
 
 	name = "high power gas pump"
 	desc = "A pump. Has double the power rating of the standard gas pump."
@@ -14,7 +13,9 @@
 	use_power = USE_POWER_IDLE
 	icon_state = "map_on"
 
-/obj/machinery/atmospherics/component/binary/pump/high_power/update_icon()
+/obj/machinery/atmospherics/component/binary/pump/high_power/update_icon_state()
+	// todo: no don't do this
+	SHOULD_CALL_PARENT(FALSE)
 	if(!powered())
 		icon_state = "off"
 	else

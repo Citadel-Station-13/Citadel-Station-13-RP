@@ -116,7 +116,7 @@
 /turf/unsimulated/wall,
 /area/space)
 "aC" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/wall/mineral,
 /area/space)
 "aD" = (
 /turf/unsimulated/wall,
@@ -312,6 +312,31 @@
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_emptycourt)
+"bg" = (
+/obj/structure/bed/chair/shuttle,
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 9
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 10
+	},
+/obj/structure/closet/hydrant{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
+"bh" = (
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
+	id = "emergency_medical"
+	},
+/turf/simulated/floor,
+/area/shuttle/escape)
 "bi" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -2268,7 +2293,7 @@
 /obj/structure/table/reinforced,
 /obj/machinery/keycard_auth{
 	pixel_x = -24;
-	pixel_y = -8
+	pixel_y = 10
 	},
 /obj/item/storage/secure/briefcase,
 /obj/item/multitool,
@@ -2310,7 +2335,7 @@
 /obj/structure/table/reinforced,
 /obj/machinery/keycard_auth{
 	pixel_x = 24;
-	pixel_y = -8
+	pixel_y = 11
 	},
 /obj/item/folder/blue,
 /obj/item/radio{
@@ -2326,7 +2351,7 @@
 "hn" = (
 /obj/structure/closet/secure_closet/nanotrasen_security,
 /obj/item/storage/box/handcuffs,
-/obj/item/gun/energy/gun,
+/obj/item/gun/projectile/energy/gun,
 /obj/item/shield/riot,
 /turf/simulated/floor/tiled,
 /area/centcom/simulated/security)
@@ -2350,7 +2375,7 @@
 /obj/structure/table/reinforced,
 /obj/item/melee/baton/loaded,
 /obj/item/melee/baton/loaded,
-/obj/item/gun/energy/taser,
+/obj/item/gun/projectile/energy/taser,
 /obj/machinery/camera/network/crescent,
 /turf/simulated/floor/tiled,
 /area/centcom/simulated/security)
@@ -2513,10 +2538,13 @@
 /obj/structure/bed/chair/bay/comfy/black{
 	dir = 8
 	},
+/obj/structure/closet/walllocker/autolok_wall{
+	pixel_y = 30;
+	pixel_x = -24
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "hY" = (
-/obj/structure/closet/walllocker/autolok_wall,
 /obj/structure/handrail{
 	dir = 1
 	},
@@ -2528,6 +2556,10 @@
 "ib" = (
 /obj/structure/bed/chair/bay/comfy/black{
 	dir = 4
+	},
+/obj/structure/closet/walllocker/autolok_wall{
+	pixel_y = 30;
+	pixel_x = 24
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
@@ -3077,7 +3109,7 @@
 /turf/simulated/floor/holofloor/reinforced,
 /area/space)
 "jM" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/specops/cockpit)
 "jN" = (
@@ -3306,6 +3338,7 @@
 "kw" = (
 /obj/structure/table/standard,
 /obj/item/material/ashtray/glass,
+/obj/random/action_figure,
 /turf/simulated/floor/tiled/monotile,
 /area/shuttle/escape)
 "kx" = (
@@ -3602,6 +3635,10 @@
 /obj/effect/floor_decal/corner/lightgrey/bordercorner2{
 	dir = 8
 	},
+/obj/structure/closet/hydrant{
+	dir = 4;
+	pixel_x = -32
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "lm" = (
@@ -3691,6 +3728,10 @@
 	},
 /obj/effect/floor_decal/corner/lightgrey/bordercorner2{
 	dir = 6
+	},
+/obj/structure/closet/hydrant{
+	dir = 4;
+	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
@@ -3982,13 +4023,17 @@
 /area/shuttle/escape)
 "mp" = (
 /obj/structure/table/glass,
-/obj/random/action_figure,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 8
 	},
+/obj/item/radio{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/radio,
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "mq" = (
@@ -4167,6 +4212,9 @@
 /obj/effect/floor_decal/corner/lightgrey/bordercorner2{
 	dir = 5
 	},
+/obj/machinery/vending/wallmed1/public{
+	pixel_x = 26
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "mM" = (
@@ -4272,7 +4320,7 @@
 	name = "Shuttle Security";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/security,
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/simulated/floor/tiled/monotile,
 /area/shuttle/escape)
 "mZ" = (
@@ -4280,7 +4328,7 @@
 	name = "Shuttle Medical";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/medical,
+/obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/simulated/floor/tiled/monotile,
 /area/shuttle/escape)
 "na" = (
@@ -4306,7 +4354,9 @@
 	id = "emergency_shuttle_lockdown";
 	name = "Emergency Shuttle Blast Door"
 	},
-/obj/spawner/window/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
+	id = "emergency_security"
+	},
 /turf/simulated/floor/reinforced,
 /area/shuttle/escape)
 "nd" = (
@@ -4402,6 +4452,9 @@
 "nr" = (
 /obj/item/handcuffs,
 /obj/structure/table/standard,
+/obj/structure/closet/hydrant{
+	pixel_y = -26
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "ns" = (
@@ -4531,7 +4584,13 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "nM" = (
-/obj/spawner/window/full/firelocks,
+/obj/machinery/door/blast/regular/open{
+	id = "emergency_shuttle_lockdown";
+	name = "Emergency Shuttle Blast Door"
+	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
+	id = "emergency_cockpit"
+	},
 /turf/simulated/floor,
 /area/shuttle/escape)
 "nN" = (
@@ -4656,6 +4715,9 @@
 	dir = 1
 	},
 /obj/structure/handrail,
+/obj/structure/closet/hydrant{
+	pixel_y = 32
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "og" = (
@@ -6222,7 +6284,7 @@
 /obj/item/clothing/suit/armor/tdome/red,
 /obj/item/clothing/head/helmet/thunderdome,
 /obj/item/melee/baton/loaded,
-/obj/item/melee/energy/sword,
+/obj/item/melee/transforming/energy/sword,
 /turf/unsimulated/floor/dark,
 /area/tdome/tdome1)
 "tj" = (
@@ -6285,14 +6347,18 @@
 /obj/item/clothing/glasses/welding/superior,
 /obj/structure/table/steel_reinforced,
 /obj/item/clothing/glasses/welding/superior,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
+"un" = (
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/turf/simulated/floor,
+/area/shuttle/escape)
 "ur" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -6381,7 +6447,7 @@
 /obj/structure/table/rack,
 /obj/item/clothing/under/color/green,
 /obj/item/clothing/shoes/brown,
-/obj/item/melee/energy/axe,
+/obj/item/melee/transforming/energy/axe,
 /turf/unsimulated/floor/dark,
 /area/tdome/tdome1)
 "vT" = (
@@ -6393,8 +6459,8 @@
 	},
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/gun/energy/taser,
-/obj/item/gun/energy/taser,
+/obj/item/gun/projectile/energy/taser,
+/obj/item/gun/projectile/energy/taser,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
@@ -6504,7 +6570,7 @@
 /obj/item/clothing/suit/armor/tdome/green,
 /obj/item/clothing/head/helmet/thunderdome,
 /obj/item/melee/baton/loaded,
-/obj/item/melee/energy/sword,
+/obj/item/melee/transforming/energy/sword,
 /turf/unsimulated/floor/dark,
 /area/tdome/tdome1)
 "xw" = (
@@ -6819,6 +6885,15 @@
 	icon_state = "lino"
 	},
 /area/tdome/tdomeobserve)
+"yJ" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 4
+	},
+/obj/structure/closet/hydrant{
+	pixel_y = -26
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "yO" = (
 /obj/structure/table/standard,
 /obj/machinery/computer/skills{
@@ -7480,10 +7555,10 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/gun/ballistic/revolver/combat,
-/obj/item/gun/ballistic/revolver/combat,
-/obj/item/gun/ballistic/revolver/combat,
-/obj/item/gun/ballistic/revolver/combat,
+/obj/item/gun/projectile/ballistic/revolver/combat,
+/obj/item/gun/projectile/ballistic/revolver/combat,
+/obj/item/gun/projectile/ballistic/revolver/combat,
+/obj/item/gun/projectile/ballistic/revolver/combat,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "AP" = (
@@ -7676,6 +7751,12 @@
 /obj/item/clothing/glasses/sunglasses/sechud/tactical,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
+"BW" = (
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
+	id = "emergency_cockpit"
+	},
+/turf/simulated/floor,
+/area/shuttle/escape)
 "Cb" = (
 /obj/machinery/lathe/autolathe{
 	desc = "Your typical Autolathe. It appears to have much more options than your regular one, however...";
@@ -7769,7 +7850,7 @@
 /area/centcom/specops)
 "CC" = (
 /obj/effect/step_trigger/teleporter/planetary_fall/lythios43c,
-/turf/simulated/sky/lythios43c/moving/west,
+/turf/simulated/fake_sky/lythios43c/moving/west,
 /area/space)
 "CH" = (
 /obj/machinery/light{
@@ -7812,18 +7893,18 @@
 /area/centcom/specops)
 "Dh" = (
 /obj/structure/closet/crate/medical,
-/obj/item/reagent_containers/food/snacks/liquidfood,
-/obj/item/reagent_containers/food/snacks/liquidfood,
-/obj/item/reagent_containers/food/snacks/liquidfood,
-/obj/item/reagent_containers/food/snacks/liquidfood,
-/obj/item/reagent_containers/food/snacks/liquidfood,
-/obj/item/reagent_containers/food/snacks/liquidfood,
-/obj/item/reagent_containers/food/snacks/liquidfood,
-/obj/item/reagent_containers/food/snacks/liquidfood,
-/obj/item/reagent_containers/food/snacks/liquidfood,
-/obj/item/reagent_containers/food/snacks/liquidfood,
-/obj/item/reagent_containers/food/snacks/liquidfood,
-/obj/item/reagent_containers/food/snacks/liquidfood,
+/obj/item/reagent_containers/food/snacks/liquid,
+/obj/item/reagent_containers/food/snacks/liquid,
+/obj/item/reagent_containers/food/snacks/liquid,
+/obj/item/reagent_containers/food/snacks/liquid,
+/obj/item/reagent_containers/food/snacks/liquid,
+/obj/item/reagent_containers/food/snacks/liquid,
+/obj/item/reagent_containers/food/snacks/liquid,
+/obj/item/reagent_containers/food/snacks/liquid,
+/obj/item/reagent_containers/food/snacks/liquid,
+/obj/item/reagent_containers/food/snacks/liquid,
+/obj/item/reagent_containers/food/snacks/liquid,
+/obj/item/reagent_containers/food/snacks/liquid,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "Dk" = (
@@ -7928,8 +8009,8 @@
 /obj/item/clothing/accessory/storage/black_drop_pouches,
 /obj/item/clothing/accessory/storage/black_drop_pouches,
 /obj/item/clothing/accessory/storage/black_drop_pouches,
-/obj/item/gun/energy/gun/combat,
-/obj/item/gun/energy/gun/combat,
+/obj/item/gun/projectile/energy/gun/combat,
+/obj/item/gun/projectile/energy/gun/combat,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "Ei" = (
@@ -7941,12 +8022,12 @@
 /area/tdome/tdome1)
 "En" = (
 /obj/structure/table/rack,
-/obj/item/gun/energy/pulse_rifle,
-/obj/item/gun/energy/pulse_rifle,
-/obj/item/gun/energy/pulse_rifle,
-/obj/item/gun/energy/pulse_rifle,
-/obj/item/gun/energy/pulse_rifle,
-/obj/item/gun/energy/pulse_rifle,
+/obj/item/gun/projectile/energy/nt_pulse/rifle,
+/obj/item/gun/projectile/energy/nt_pulse/rifle,
+/obj/item/gun/projectile/energy/nt_pulse/rifle,
+/obj/item/gun/projectile/energy/nt_pulse/rifle,
+/obj/item/gun/projectile/energy/nt_pulse/rifle,
+/obj/item/gun/projectile/energy/nt_pulse/rifle,
 /obj/item/storage/secure/briefcase/nsfw_pack,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
@@ -7978,6 +8059,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/centcom/specops/dock)
+"Ey" = (
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
+	id = "emergency_security"
+	},
+/turf/simulated/floor,
+/area/shuttle/escape)
 "EC" = (
 /obj/machinery/vending/tool,
 /turf/unsimulated/floor/dark,
@@ -7997,10 +8084,10 @@
 	},
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/gun/ballistic/automatic/combat,
-/obj/item/gun/ballistic/automatic/combat,
-/obj/item/gun/ballistic/automatic/combat,
-/obj/item/gun/ballistic/automatic/combat,
+/obj/item/gun/projectile/ballistic/automatic/combat,
+/obj/item/gun/projectile/ballistic/automatic/combat,
+/obj/item/gun/projectile/ballistic/automatic/combat,
+/obj/item/gun/projectile/ballistic/automatic/combat,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
@@ -8105,7 +8192,7 @@
 /obj/item/clothing/shoes/brown,
 /obj/item/clothing/suit/armor/vest,
 /obj/item/clothing/head/helmet/swat,
-/obj/item/gun/energy/laser,
+/obj/item/gun/projectile/energy/laser,
 /turf/unsimulated/floor/dark,
 /area/tdome/tdome1)
 "GA" = (
@@ -8202,8 +8289,8 @@
 	dir = 1
 	},
 /obj/structure/table/rack,
-/obj/item/gun/energy/ionrifle,
-/obj/item/gun/energy/ionrifle,
+/obj/item/gun/projectile/energy/ionrifle,
+/obj/item/gun/projectile/energy/ionrifle,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/window/reinforced{
 	dir = 8
@@ -8295,6 +8382,15 @@
 /obj/item/storage/belt/security/tactical,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
+"Jr" = (
+/obj/machinery/atmospherics/pipe/simple/visible/fuel,
+/obj/machinery/door/blast/regular/open{
+	id = "emergency_shuttle_lockdown";
+	name = "Emergency Shuttle Blast Door"
+	},
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/turf/simulated/floor/reinforced,
+/area/shuttle/escape)
 "Jx" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/storage/firstaid/combat,
@@ -8356,7 +8452,7 @@
 /obj/item/flash,
 /obj/item/melee/baton/loaded,
 /obj/item/storage/belt/security/tactical,
-/obj/item/gun/energy/stunrevolver,
+/obj/item/gun/projectile/energy/stunrevolver,
 /obj/item/clothing/glasses/sunglasses/sechud/tactical,
 /obj/item/material/knife/tacknife/combatknife,
 /turf/unsimulated/floor/wood,
@@ -8425,6 +8521,25 @@
 /obj/effect/shuttle_landmark/shuttle_initializer/specops,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/general)
+"Kv" = (
+/obj/structure/bed/chair/shuttle,
+/obj/effect/floor_decal/borderfloor{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 5
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 5
+	},
+/obj/structure/closet/hydrant{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "Ky" = (
 /obj/item/radio/intercom{
 	dir = 1;
@@ -8437,7 +8552,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/cockpit)
 "KE" = (
-/turf/simulated/sky/lythios43c/moving/west,
+/turf/simulated/fake_sky/lythios43c/moving/west,
 /area/space)
 "KU" = (
 /obj/machinery/vending/security,
@@ -8559,14 +8674,14 @@
 "Lh" = (
 /obj/structure/table/rack,
 /obj/structure/window/reinforced,
-/obj/item/ammo_magazine/s44,
-/obj/item/ammo_magazine/s44,
-/obj/item/ammo_magazine/s44,
-/obj/item/ammo_magazine/s44,
-/obj/item/ammo_magazine/s44,
-/obj/item/ammo_magazine/s44,
-/obj/item/ammo_magazine/s44,
-/obj/item/ammo_magazine/s44,
+/obj/item/ammo_magazine/a44/speedloader,
+/obj/item/ammo_magazine/a44/speedloader,
+/obj/item/ammo_magazine/a44/speedloader,
+/obj/item/ammo_magazine/a44/speedloader,
+/obj/item/ammo_magazine/a44/speedloader,
+/obj/item/ammo_magazine/a44/speedloader,
+/obj/item/ammo_magazine/a44/speedloader,
+/obj/item/ammo_magazine/a44/speedloader,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "Lk" = (
@@ -8594,7 +8709,7 @@
 /area/centcom/command)
 "LF" = (
 /obj/structure/table/reinforced,
-/obj/item/gun/energy/gun/nuclear,
+/obj/item/gun/projectile/energy/gun/nuclear,
 /obj/item/hand_tele,
 /turf/unsimulated/floor/wood,
 /area/centcom/specops)
@@ -8640,7 +8755,7 @@
 /area/centcom/specops)
 "Mb" = (
 /obj/effect/shuttle_landmark/rift/deck4/excursion_sky,
-/turf/simulated/sky/lythios43c/moving/west,
+/turf/simulated/fake_sky/lythios43c/moving/west,
 /area/space)
 "Me" = (
 /obj/item/clothing/accessory/holster/armpit,
@@ -8671,7 +8786,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/gun/energy/sniperrifle,
+/obj/item/gun/projectile/energy/sniperrifle,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "Mr" = (
@@ -8691,8 +8806,8 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/gun/energy/ionrifle/pistol,
-/obj/item/gun/energy/ionrifle/pistol,
+/obj/item/gun/projectile/energy/ionrifle/pistol,
+/obj/item/gun/projectile/energy/ionrifle/pistol,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "MA" = (
@@ -8709,7 +8824,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/spawner/window/low_wall/borosillicate/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/specops/engine)
 "MJ" = (
@@ -8769,27 +8884,27 @@
 /area/space)
 "NL" = (
 /obj/effect/shuttle_landmark/rift/deck4/northeast,
-/turf/simulated/sky/lythios43c/moving/south,
+/turf/simulated/fake_sky/lythios43c/moving/south,
 /area/space)
 "NP" = (
 /obj/structure/table/rack,
-/obj/item/gun/ballistic/automatic/lmg,
-/obj/item/gun/ballistic/automatic/lmg,
-/obj/item/ammo_magazine/m556saw,
-/obj/item/ammo_magazine/m556saw,
-/obj/item/ammo_magazine/m556saw,
-/obj/item/ammo_magazine/m556saw,
-/obj/item/ammo_magazine/m556saw,
-/obj/item/ammo_magazine/m556saw,
-/obj/item/ammo_magazine/m556saw/ap,
-/obj/item/ammo_magazine/m556saw/ap,
+/obj/item/gun/projectile/ballistic/automatic/lmg,
+/obj/item/gun/projectile/ballistic/automatic/lmg,
+/obj/item/ammo_magazine/a5_56mm/saw,
+/obj/item/ammo_magazine/a5_56mm/saw,
+/obj/item/ammo_magazine/a5_56mm/saw,
+/obj/item/ammo_magazine/a5_56mm/saw,
+/obj/item/ammo_magazine/a5_56mm/saw,
+/obj/item/ammo_magazine/a5_56mm/saw,
+/obj/item/ammo_magazine/a5_56mm/saw/ap,
+/obj/item/ammo_magazine/a5_56mm/saw/ap,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "NU" = (
 /obj/structure/table/rack,
 /obj/structure/window/reinforced,
-/obj/item/gun/ballistic/shotgun/pump/combat,
-/obj/item/gun/ballistic/shotgun/pump/combat,
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat,
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "NV" = (
@@ -8858,7 +8973,7 @@
 /obj/item/clothing/shoes/brown,
 /obj/item/clothing/suit/armor/vest,
 /obj/item/clothing/head/helmet/swat,
-/obj/item/gun/energy/laser,
+/obj/item/gun/projectile/energy/laser,
 /turf/unsimulated/floor/dark,
 /area/tdome/tdome1)
 "OG" = (
@@ -8974,7 +9089,7 @@
 /turf/space/transit/east,
 /area/space)
 "Qc" = (
-/turf/simulated/sky/lythios43c/moving/south,
+/turf/simulated/fake_sky/lythios43c/moving/south,
 /area/space)
 "Qd" = (
 /obj/structure/cable/green{
@@ -8984,7 +9099,7 @@
 /area/shuttle/specops/cockpit)
 "Qg" = (
 /obj/effect/shuttle_landmark/rift/deck4/north,
-/turf/simulated/sky/lythios43c/moving/south,
+/turf/simulated/fake_sky/lythios43c/moving/south,
 /area/space)
 "Ql" = (
 /obj/effect/shuttle_landmark/transit/rift/pirate,
@@ -9024,7 +9139,7 @@
 	dir = 1
 	},
 /obj/structure/table/rack,
-/obj/item/gun/energy/netgun,
+/obj/item/gun/projectile/energy/netgun,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/window/reinforced{
 	dir = 4
@@ -9075,6 +9190,17 @@
 "Rn" = (
 /turf/unsimulated/wall,
 /area/centcom/specops/dock)
+"Ro" = (
+/obj/machinery/atmospherics/pipe/simple/visible/fuel,
+/obj/machinery/door/blast/regular/open{
+	id = "emergency_shuttle_lockdown";
+	name = "Emergency Shuttle Blast Door"
+	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
+	id = "emergency_medical"
+	},
+/turf/simulated/floor/reinforced,
+/area/shuttle/escape)
 "Rs" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -9183,7 +9309,7 @@
 "SA" = (
 /obj/effect/blocker,
 /obj/effect/step_trigger/teleporter/planetary_fall/lythios43c,
-/turf/simulated/sky/lythios43c/moving/west,
+/turf/simulated/fake_sky/lythios43c/moving/west,
 /area/space)
 "SB" = (
 /obj/structure/table/reinforced,
@@ -9358,7 +9484,7 @@
 /obj/structure/table/rack,
 /obj/item/clothing/under/color/red,
 /obj/item/clothing/shoes/brown,
-/obj/item/melee/energy/axe,
+/obj/item/melee/transforming/energy/axe,
 /turf/unsimulated/floor/dark,
 /area/tdome/tdome1)
 "Uk" = (
@@ -9426,9 +9552,9 @@
 "UL" = (
 /obj/structure/table/reinforced,
 /obj/item/clothing/accessory/holster/hip,
-/obj/item/ammo_magazine/m44,
-/obj/item/ammo_magazine/m44,
-/obj/item/gun/ballistic/deagle,
+/obj/item/ammo_magazine/a44,
+/obj/item/ammo_magazine/a44,
+/obj/item/gun/projectile/ballistic/deagle,
 /turf/unsimulated/floor/wood,
 /area/centcom/specops)
 "UT" = (
@@ -9447,14 +9573,14 @@
 /area/centcom/specops)
 "Vb" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/storage/box/survival/comp,
-/obj/item/storage/box/survival/comp,
-/obj/item/storage/box/survival/comp,
-/obj/item/storage/box/survival/comp,
-/obj/item/storage/box/survival/comp,
-/obj/item/storage/box/survival/comp,
-/obj/item/storage/box/survival/comp,
-/obj/item/storage/box/survival/comp,
+/obj/item/storage/box/legacy_survival/comp,
+/obj/item/storage/box/legacy_survival/comp,
+/obj/item/storage/box/legacy_survival/comp,
+/obj/item/storage/box/legacy_survival/comp,
+/obj/item/storage/box/legacy_survival/comp,
+/obj/item/storage/box/legacy_survival/comp,
+/obj/item/storage/box/legacy_survival/comp,
+/obj/item/storage/box/legacy_survival/comp,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "Vd" = (
@@ -9516,8 +9642,8 @@
 /obj/item/clothing/accessory/storage/brown_drop_pouches,
 /obj/item/clothing/accessory/storage/brown_drop_pouches,
 /obj/item/clothing/accessory/storage/brown_drop_pouches,
-/obj/item/gun/energy/gun/combat,
-/obj/item/gun/energy/gun/combat,
+/obj/item/gun/projectile/energy/gun/combat,
+/obj/item/gun/projectile/energy/gun/combat,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "Vz" = (
@@ -9668,7 +9794,7 @@
 /area/centcom/specops)
 "XP" = (
 /obj/effect/step_trigger/teleporter/planetary_fall/lythios43c,
-/turf/simulated/sky/lythios43c/moving/south,
+/turf/simulated/fake_sky/lythios43c/moving/south,
 /area/space)
 "XQ" = (
 /obj/structure/table/rack,
@@ -9772,10 +9898,10 @@
 	},
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/gun/energy/combat,
-/obj/item/gun/energy/combat,
-/obj/item/gun/energy/combat,
-/obj/item/gun/energy/combat,
+/obj/item/gun/projectile/energy/combat,
+/obj/item/gun/projectile/energy/combat,
+/obj/item/gun/projectile/energy/combat,
+/obj/item/gun/projectile/energy/combat,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
@@ -9799,14 +9925,14 @@
 "Yw" = (
 /obj/structure/table/rack,
 /obj/structure/window/reinforced,
-/obj/item/ammo_magazine/m57x28mm/smg/ap,
-/obj/item/ammo_magazine/m57x28mm/smg/ap,
-/obj/item/ammo_magazine/m57x28mm/smg/ap,
-/obj/item/ammo_magazine/m57x28mm/smg/ap,
-/obj/item/ammo_magazine/m57x28mm/smg/ap,
-/obj/item/ammo_magazine/m57x28mm/smg/ap,
-/obj/item/ammo_magazine/m57x28mm/smg/ap,
-/obj/item/ammo_magazine/m57x28mm/smg/ap,
+/obj/item/ammo_magazine/a5_7mm/harpy_smg/ap,
+/obj/item/ammo_magazine/a5_7mm/harpy_smg/ap,
+/obj/item/ammo_magazine/a5_7mm/harpy_smg/ap,
+/obj/item/ammo_magazine/a5_7mm/harpy_smg/ap,
+/obj/item/ammo_magazine/a5_7mm/harpy_smg/ap,
+/obj/item/ammo_magazine/a5_7mm/harpy_smg/ap,
+/obj/item/ammo_magazine/a5_7mm/harpy_smg/ap,
+/obj/item/ammo_magazine/a5_7mm/harpy_smg/ap,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "Yy" = (
@@ -9919,8 +10045,8 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/gun/energy/stunrevolver,
-/obj/item/gun/energy/stunrevolver,
+/obj/item/gun/projectile/energy/stunrevolver,
+/obj/item/gun/projectile/energy/stunrevolver,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "ZG" = (
@@ -9932,10 +10058,10 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/gun/energy/gun/combat,
-/obj/item/gun/energy/gun/combat,
-/obj/item/gun/energy/gun/combat,
-/obj/item/gun/energy/gun/combat,
+/obj/item/gun/projectile/energy/gun/combat,
+/obj/item/gun/projectile/energy/gun/combat,
+/obj/item/gun/projectile/energy/gun/combat,
+/obj/item/gun/projectile/energy/gun/combat,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "ZH" = (
@@ -9944,12 +10070,12 @@
 	dir = 8
 	},
 /obj/structure/table/rack,
-/obj/item/ammo_magazine/m556,
-/obj/item/ammo_magazine/m556,
-/obj/item/ammo_magazine/m556,
-/obj/item/ammo_magazine/m556,
-/obj/item/gun/ballistic/automatic/sts35,
-/obj/item/gun/ballistic/automatic/sts35,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/gun/projectile/ballistic/automatic/sts35,
+/obj/item/gun/projectile/ballistic/automatic/sts35,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "ZN" = (
@@ -11580,7 +11706,7 @@ gx
 ji
 jP
 kt
-nc
+Jr
 kt
 kt
 kt
@@ -11965,7 +12091,7 @@ gy
 gz
 nM
 gy
-jk
+bg
 jR
 rY
 ia
@@ -12352,7 +12478,7 @@ gz
 gz
 hi
 hX
-nM
+BW
 jm
 ia
 ku
@@ -12362,7 +12488,7 @@ lL
 gz
 gy
 mY
-nM
+Ey
 iE
 gz
 of
@@ -12546,7 +12672,7 @@ nM
 ha
 hj
 hY
-nM
+BW
 jn
 jT
 jT
@@ -12558,7 +12684,7 @@ mK
 ia
 nf
 ns
-nM
+un
 og
 oI
 px
@@ -12934,7 +13060,7 @@ nM
 hc
 hl
 hY
-nM
+BW
 jo
 jV
 jV
@@ -12946,7 +13072,7 @@ mL
 ia
 ng
 nu
-nM
+un
 oi
 oK
 gz
@@ -13128,7 +13254,7 @@ gz
 gz
 hm
 ib
-nM
+BW
 jp
 ia
 kx
@@ -13138,7 +13264,7 @@ lO
 gz
 gy
 mZ
-nM
+bh
 iE
 gz
 of
@@ -13333,7 +13459,7 @@ gy
 mM
 ia
 Cx
-Cx
+yJ
 gy
 oj
 oM
@@ -13517,7 +13643,7 @@ gy
 gz
 nM
 gy
-jF
+Kv
 jW
 rY
 ia
@@ -13908,7 +14034,7 @@ gx
 js
 jY
 kt
-nc
+Jr
 kt
 kt
 kt
@@ -14108,8 +14234,8 @@ lJ
 mr
 mP
 nb
-nc
-nc
+Ro
+Ro
 nb
 ok
 gx

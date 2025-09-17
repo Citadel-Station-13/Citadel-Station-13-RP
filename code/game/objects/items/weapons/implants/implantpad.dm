@@ -21,7 +21,7 @@
 	return
 
 
-/obj/item/implantpad/attack_hand(mob/user, list/params)
+/obj/item/implantpad/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if ((src.case && user.is_holding(src)))
 		user.put_in_active_hand(case)
 
@@ -48,7 +48,7 @@
 	return
 
 
-/obj/item/implantpad/attack_self(mob/user)
+/obj/item/implantpad/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -68,7 +68,7 @@
 			dat += "The implant casing is empty."
 	else
 		dat += "Please insert an implant casing!"
-	user << browse(dat, "window=implantpad")
+	user << browse(HTML_SKELETON(dat), "window=implantpad")
 	onclose(user, "implantpad")
 	return
 

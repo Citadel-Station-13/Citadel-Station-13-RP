@@ -48,7 +48,6 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/door_timer/LateInitialize()
-	. = ..()
 	if(id != null)
 		for(var/obj/machinery/door/window/brigdoor/M in urange(20, src))
 			if (M.id == id)
@@ -160,7 +159,7 @@
 /obj/machinery/door_timer/attack_ai(mob/user)
 	return src.attack_hand(user)
 
-/obj/machinery/door_timer/attack_hand(mob/user, list/params)
+/obj/machinery/door_timer/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(..())
 		return TRUE
 	ui_interact(user)

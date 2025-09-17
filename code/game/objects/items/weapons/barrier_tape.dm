@@ -40,6 +40,7 @@ var/list/tape_roll_applications = list()
 	var/icon_base = "tape"
 
 /obj/item/barrier_tape_segment/update_icon()
+	. = ..()
 	//Possible directional bitflags: 0 (AIRLOCK), 1 (NORTH), 2 (SOUTH), 4 (EAST), 8 (WEST), 3 (VERTICAL), 12 (HORIZONTAL)
 	switch (tape_dir)
 		if(0)  // AIRLOCK
@@ -50,7 +51,7 @@ var/list/tape_roll_applications = list()
 			icon_state = "[icon_base]_h_[crumpled]"
 		else   // END POINT (1|2|4|8)
 			icon_state = "[icon_base]_dir_[crumpled]"
-			dir = tape_dir
+			setDir(tape_dir)
 
 /obj/item/barrier_tape_segment/Initialize(mapload)
 	. = ..()
@@ -115,6 +116,7 @@ var/list/tape_roll_applications = list()
 
 /obj/item/barrier_tape_roll/update_icon()
 	cut_overlays()
+	. = ..()
 	var/image/overlay = image(icon = src.icon)
 	overlay.appearance_flags = RESET_COLOR
 	if(ismob(loc))
@@ -124,7 +126,6 @@ var/list/tape_roll_applications = list()
 			overlay.icon_state = "stop"
 		add_overlay(overlay)
 
-
 /obj/item/barrier_tape_roll/dropped(mob/user, flags, atom/newLoc)
 	update_icon()
 	return ..()
@@ -133,11 +134,11 @@ var/list/tape_roll_applications = list()
 	update_icon()
 	return ..()
 
-/obj/item/barrier_tape_roll/attack_hand(mob/user, list/params)
+/obj/item/barrier_tape_roll/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	update_icon()
 	return ..()
 
-/obj/item/barrier_tape_roll/attack_self(mob/user)
+/obj/item/barrier_tape_roll/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -334,7 +335,7 @@ var/list/tape_roll_applications = list()
 /obj/item/barrier_tape_segment/attackby(obj/item/W as obj, mob/user as mob)
 	breaktape(user)
 
-/obj/item/barrier_tape_segment/attack_hand(mob/user, list/params)
+/obj/item/barrier_tape_segment/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if (user.a_intent == INTENT_HELP && src.allowed(user))
 		user.show_viewers("<span class='notice'>\The [user] lifts \the [src], allowing passage.</span>")
 		for(var/obj/item/barrier_tape_segment/T in gettapeline())

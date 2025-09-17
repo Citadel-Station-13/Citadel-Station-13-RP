@@ -83,3 +83,5 @@
 	name = OUTFIT_JOB_NAME("Server")
 	uniform = /obj/item/clothing/under/waiter
 	l_ear = /obj/item/radio/headset/headset_service
+
+

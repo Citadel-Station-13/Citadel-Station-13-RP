@@ -143,8 +143,6 @@
 	var/lockcharge
 	/// Controls whether or not the borg is actually locked down.
 	var/lockdown = FALSE
-	/// Cause sec borgs gotta go fast //No they dont!
-	var/speed = 0
 	/// Used to determine if a borg shows up on the robotics console.  Setting to one hides them.
 	var/scrambledcodes = FALSE
 	/// The number of known entities currently accessing the internal camera
@@ -173,6 +171,10 @@
 	var/sitting = FALSE
 	var/bellyup = FALSE
 
+	//* Movement *//
+	/// Base movement speed in tiles / second
+	var/movement_base_speed = 4
+
 /mob/living/silicon/robot/Initialize(mapload, unfinished = FALSE)
 	spark_system = new /datum/effect_system/spark_spread()
 	spark_system.set_up(5, 0, src)
@@ -182,7 +184,7 @@
 	add_language(LANGUAGE_EAL, TRUE)
 	// todo: translation contexts on language holder?
 	// this is messy
-	for(var/datum/language/L as anything in SScharacters.all_languages())
+	for(var/datum/prototype/language/L as anything in RSlanguages.fetch_subtypes_immutable(/datum/prototype/language))
 		if(!(L.translation_class & TRANSLATION_CLASSES_CYBORG_SPEAKS))
 			continue
 		add_language(L, TRUE)
@@ -190,6 +192,7 @@
 	wires = new(src)
 
 	robot_modules_background = new()
+	robot_modules_background.icon = 'icons/screen/hud/common/storage.dmi'
 	robot_modules_background.icon_state = "block"
 	ident = rand(1, 999)
 	module_sprites["Basic"] = "robot"
@@ -512,32 +515,34 @@
 /mob/living/silicon/robot/statpanel_data(client/C)
 	. = ..()
 	if(C.statpanel_tab("Status"))
-		STATPANEL_DATA_LINE("")
+		INJECT_STATPANEL_DATA_LINE(., "")
 		if(cell)
-			STATPANEL_DATA_LINE("Charge Left: [round(cell.percent())]%")
-			STATPANEL_DATA_LINE("Cell Rating: [round(cell.maxcharge)]") // Round just in case we somehow get crazy values
-			STATPANEL_DATA_LINE("Power Cell Load: [round(used_power_this_tick)]W")
+			INJECT_STATPANEL_DATA_LINE(., "Charge Left: [round(cell.percent())]%")
+			INJECT_STATPANEL_DATA_LINE(., "Cell Rating: [round(cell.maxcharge)]") // Round just in case we somehow get crazy values
+			INJECT_STATPANEL_DATA_LINE(., "Power Cell Load: [round(used_power_this_tick)]W")
 		else
-			STATPANEL_DATA_LINE("No Cell Inserted!")
-		STATPANEL_DATA_LINE("Lights: [lights_on ? "ON" : "OFF"]")
-		STATPANEL_DATA_LINE("")
+			INJECT_STATPANEL_DATA_LINE(., "No Cell Inserted!")
+		INJECT_STATPANEL_DATA_LINE(., "Lights: [lights_on ? "ON" : "OFF"]")
+		INJECT_STATPANEL_DATA_LINE(., "")
 		// if you have a jetpack, show the internal tank pressure
 		var/obj/item/tank/jetpack/current_jetpack = installed_jetpack()
 		if (current_jetpack)
-			STATPANEL_DATA_ENTRY("Internal Atmosphere Info", current_jetpack.name)
-			STATPANEL_DATA_ENTRY("Tank Pressure", current_jetpack.air_contents.return_pressure())
+			INJECT_STATPANEL_DATA_ENTRY(., "Internal Atmosphere Info", current_jetpack.name)
+			INJECT_STATPANEL_DATA_ENTRY(., "Tank Pressure", current_jetpack.air_contents.return_pressure())
 		if(module)
 			for(var/datum/matter_synth/ms in module.synths)
-				STATPANEL_DATA_LINE("[ms.name]: [ms.energy]/[ms.max_energy]")
+				INJECT_STATPANEL_DATA_LINE(., "[ms.name]: [ms.energy]/[ms.max_energy]")
 
 /mob/living/silicon/robot/restrained()
 	return 0
 
-/mob/living/silicon/robot/bullet_act(var/obj/projectile/Proj)
-	..(Proj)
-	if(prob(75) && Proj.damage > 0)
+/mob/living/silicon/robot/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
+	// todo: why is this in bullet act and not where we take damage maybe?
+	if(prob(75) && proj.damage_force > 0)
 		spark_system.start()
-	return 2
 
 /mob/living/silicon/robot/attackby(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/handcuffs)) // fuck i don't even know why isrobot() in handcuff code isn't working so this will have to do
@@ -596,7 +601,7 @@
 			return
 		var/obj/item/weldingtool/WT = W
 		if (WT.remove_fuel(0))
-			user.setClickCooldown(user.get_attack_speed(WT))
+			user.setClickCooldownLegacy(user.get_attack_speed_legacy(WT))
 			adjustBruteLoss(-30)
 			update_health()
 			add_fingerprint(user)
@@ -612,7 +617,7 @@
 			return
 		var/obj/item/stack/cable_coil/coil = W
 		if (coil.use(1))
-			user.setClickCooldown(user.get_attack_speed(W))
+			user.setClickCooldownLegacy(user.get_attack_speed_legacy(W))
 			adjustFireLoss(-30)
 			update_health()
 			for(var/mob/O in viewers(user, null))
@@ -830,7 +835,7 @@
 	module = null
 	updatename("Default")
 
-/mob/living/silicon/robot/attack_hand(mob/user, list/params)
+/mob/living/silicon/robot/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return
@@ -969,11 +974,11 @@
 			if(sleeper_r)
 				add_overlay("[module_sprites[icontype]]-sleeper_r")
 
-			if(istype(module_active, /obj/item/gun/energy/taser/mounted/cyborg))
+			if(istype(module_active, /obj/item/gun/projectile/energy/taser/mounted/cyborg))
 				add_overlay("taser")
-			else if(istype(module_active, /obj/item/gun/energy/laser/mounted))
+			else if(istype(module_active, /obj/item/gun/projectile/energy/laser/mounted))
 				add_overlay("laser")
-			else if(istype(module_active, /obj/item/gun/energy/taser/xeno/robot))
+			else if(istype(module_active, /obj/item/gun/projectile/energy/taser/xeno/robot))
 				add_overlay("taser")
 
 			if(lights_on)
@@ -1107,9 +1112,11 @@
 /mob/living/silicon/robot/Moved()
 	. = ..()
 	if(module)
-		if(module.type == /obj/item/robot_module/robot/janitor)
+		if(module.type == /obj/item/robot_module/robot/janitor || scrubbing)
 			var/turf/tile = loc
-			if(isturf(tile))
+			var/datum/matter_synth/water = water_res
+			if(isturf(tile) && ((!scrubbing) || (water && water.use_charge(1))))
+			//Got a tile to clean, and we use the simple logic, or we check and use water
 				tile.clean_blood()
 				if (istype(tile, /turf/simulated))
 					var/turf/simulated/S = tile
@@ -1139,50 +1146,17 @@
 							cleaned_human.clean_blood(1)
 							to_chat(cleaned_human, "<font color='red'>[src] cleans your face!</font>")
 
-		if(istype(module_state_1, /obj/item/storage/bag/ore) || istype(module_state_2, /obj/item/storage/bag/ore) || istype(module_state_3, /obj/item/storage/bag/ore)) //Borgs and drones can use their mining bags ~automagically~ if they're deployed in a slot. Only mining bags, as they're optimized for mass use.
-			var/obj/item/storage/bag/ore/B = null
-			if(istype(module_state_1, /obj/item/storage/bag/ore)) //First orebag has priority, if they for some reason have multiple.
-				B = module_state_1
-			else if(istype(module_state_2, /obj/item/storage/bag/ore))
-				B = module_state_2
-			else if(istype(module_state_3, /obj/item/storage/bag/ore))
-				B = module_state_3
-			var/turf/tile = loc
-			if(isturf(tile))
-				B.obj_storage.interacted_mass_pickup(new /datum/event_args/actor(src), tile)
-		return
-
-	if(scrubbing)
-		var/datum/matter_synth/water = water_res
-		if(water && water.energy >= 1)
-			var/turf/tile = loc
-			if(isturf(tile))
-				water.use_charge(1)
-				tile.clean_blood()
-				if(istype(tile, /turf/simulated))
-					var/turf/simulated/T = tile
-					T.dirt = 0
-				for(var/A in tile)
-					if(istype(A,/obj/effect/rune) || istype(A,/obj/effect/debris/cleanable) || istype(A,/obj/effect/overlay))
-						qdel(A)
-					else if(istype(A, /mob/living/carbon/human))
-						var/mob/living/carbon/human/cleaned_human = A
-						if(cleaned_human.lying)
-							if(cleaned_human.head)
-								cleaned_human.head.clean_blood()
-								cleaned_human.update_inv_head(0)
-							if(cleaned_human.wear_suit)
-								cleaned_human.wear_suit.clean_blood()
-								cleaned_human.update_inv_wear_suit(0)
-							else if(cleaned_human.w_uniform)
-								cleaned_human.w_uniform.clean_blood()
-								cleaned_human.update_inv_w_uniform(0)
-							if(cleaned_human.shoes)
-								cleaned_human.shoes.clean_blood()
-								cleaned_human.update_inv_shoes(0)
-							cleaned_human.clean_blood(1)
-							to_chat(cleaned_human, "<span class='warning'>[src] cleans your face!</span>")
-	return
+		//Borgs and drones can use their mining bags ~automagically~ if they're deployed in a slot. Only mining bags, as they're optimized for mass use.
+		var/obj/item/storage/bag/ore/B = null
+		if(istype(module_state_1, /obj/item/storage/bag/ore)) //First orebag has priority, if they for some reason have multiple.
+			B = module_state_1
+		else if(istype(module_state_2, /obj/item/storage/bag/ore))
+			B = module_state_2
+		else if(istype(module_state_3, /obj/item/storage/bag/ore))
+			B = module_state_3
+		var/turf/tile = loc
+		if(B && isturf(tile))
+			B.obj_storage.interacted_mass_pickup(new /datum/event_args/actor(src), tile)
 
 /mob/living/silicon/robot/proc/self_destruct()
 	gib()
@@ -1220,22 +1194,6 @@
 	lockdown = state
 	lockcharge = state
 	update_mobility()
-
-/mob/living/silicon/robot/mode()
-	set name = "Activate Held Object"
-	set category = VERB_CATEGORY_IC
-	set src = usr
-
-	if(world.time <= next_click) // Hard check, before anything else, to avoid crashing
-		return
-
-	next_click = world.time + 1
-
-	var/obj/item/W = get_active_held_item()
-	if (W)
-		W.attack_self(src)
-
-	return
 
 /mob/living/silicon/robot/proc/choose_icon(var/triesleft, var/list/module_sprites)
 	if(!module_sprites.len)

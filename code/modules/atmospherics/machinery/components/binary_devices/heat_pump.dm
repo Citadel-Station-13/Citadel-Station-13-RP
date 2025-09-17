@@ -5,14 +5,13 @@
 	name = "heat pump"
 	desc = "A heat pump, used to transfer heat between two pipe systems."
 
-	level = 1
-
 	icon = 'icons/atmos/heat_pump.dmi'
 	icon_state = "map_off"
 	construction_type = /obj/item/pipe/directional
 	pipe_state = "pump"
 
 	connect_types = CONNECT_TYPE_REGULAR|CONNECT_TYPE_AUX
+	hides_underfloor_underlays = TRUE
 
 	use_power = USE_POWER_OFF
 	//Internal circuitry, friction losses and stuff
@@ -89,9 +88,6 @@
 		add_underlay(T, node1, turn(dir, 180))
 		add_underlay(T, node2, dir)
 
-/obj/machinery/atmospherics/component/binary/heat_pump/hide(var/i)
-	update_underlays()
-
 /obj/machinery/atmospherics/component/binary/heat_pump/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/pen))
 		var/new_name = input(user, "Please enter the new name for this device:", "New Name")  as text|null
@@ -113,7 +109,7 @@
 			"You hear ratchet.")
 		deconstruct()
 
-/obj/machinery/atmospherics/component/binary/heat_pump/attack_hand(mob/user, list/params)
+/obj/machinery/atmospherics/component/binary/heat_pump/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(..())
 		return
 	src.add_fingerprint(usr)
@@ -125,6 +121,7 @@
 	return
 
 /obj/machinery/atmospherics/component/binary/heat_pump/process(delta_time)
+	..()
 	update_icon()
 	if((machine_stat & (NOPOWER|BROKEN)) || !use_power)
 		return

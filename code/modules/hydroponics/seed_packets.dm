@@ -362,3 +362,13 @@ GLOBAL_LIST_BOILERPLATE(all_seed_packs, /obj/item/seeds)
 
 /obj/item/seeds/ashlander/pokalea
 	seed_type = "pokalea"
+
+//Alien Plants
+/obj/item/seeds/fungiwheat
+	seed_type = "fungiwheat"
+
+/obj/item/seeds/ironwood
+	seed_type = "ironwood"
+
+/obj/item/seeds/creepermoss
+	seed_type = "creepermoss"

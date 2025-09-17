@@ -52,7 +52,6 @@
 	if(density)
 		layer = closed_layer
 		explosion_resistance = initial(explosion_resistance)
-		update_heat_protection(get_turf(src))
 	else
 		layer = open_layer
 		explosion_resistance = 0
@@ -97,7 +96,7 @@
 
 /obj/machinery/door/Bumped(atom/AM)
 	. = ..()
-	if(panel_open || operating)
+	if(operating)
 		return
 	if(ismob(AM))
 		var/mob/M = AM
@@ -119,14 +118,6 @@
 				open()
 		return
 
-	if(istype(AM, /obj/mecha))
-		var/obj/mecha/mecha = AM
-		if(density)
-			if(mecha.occupant && (src.allowed(mecha.occupant) || src.check_access_list(mecha.operation_req_access)))
-				open()
-			else
-				do_animate(DOOR_ANIMATION_DENY)
-		return
 	if(istype(AM, /obj/structure/bed/chair/wheelchair))
 		var/obj/structure/bed/chair/wheelchair/wheel = AM
 		if(density)
@@ -163,7 +154,7 @@
 /obj/machinery/door/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/door/attack_hand(mob/user, list/params)
+/obj/machinery/door/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	return src.attackby(user, user)
@@ -231,7 +222,7 @@
 			return
 
 		if(repairing && I.is_crowbar())
-			var/datum/material/M = SSmaterials.resolve_material(mineral)
+			var/datum/prototype/material/M = RSmaterials.fetch(mineral)
 			var/obj/item/stack/material/repairing_sheet = M.place_sheet(loc)
 			repairing_sheet.amount += repairing-1
 			repairing = 0
@@ -299,11 +290,12 @@
 			open()
 	..()
 
-/obj/machinery/door/update_icon()
+/obj/machinery/door/update_icon_state()
 	if(density)
 		icon_state = "door1"
 	else
 		icon_state = "door0"
+	return ..()
 
 /obj/machinery/door/proc/do_animate(animation)
 	switch(animation)
@@ -333,7 +325,7 @@
 	do_animate(DOOR_ANIMATION_OPEN)
 	set_opacity(0)
 	sleep(3)
-	src.density = 0
+	set_density(FALSE)
 	update_nearby_tiles()
 	sleep(7)
 	src.layer = open_layer
@@ -359,7 +351,7 @@
 	close_door_at = 0
 	do_animate(DOOR_ANIMATION_CLOSE)
 	sleep(3)
-	src.density = 1
+	set_density(TRUE)
 	explosion_resistance = initial(explosion_resistance)
 	src.layer = closed_layer
 	update_nearby_tiles()
@@ -397,15 +389,7 @@
 
 /obj/machinery/door/update_nearby_tiles(need_rebuild)
 	for(var/turf/simulated/turf in locs)
-		update_heat_protection(turf)
 		turf.queue_zone_update()
-
-/obj/machinery/door/proc/update_heat_protection(var/turf/simulated/source)
-	if(istype(source))
-		if(src.density && (src.opacity || (heat_resistance > initial(heat_resistance))))
-			source.thermal_conductivity = DOOR_HEAT_TRANSFER_COEFFICIENT
-		else
-			source.thermal_conductivity = initial(source.thermal_conductivity)
 
 /obj/machinery/door/Move(new_loc, new_dir)
 	//update_nearby_tiles()

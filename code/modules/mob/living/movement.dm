@@ -1,12 +1,9 @@
-/mob/living/movement_delay()
+/mob/living/legacy_movement_delay()
 	. = ..()
 	switch(m_intent)
 		if(MOVE_INTENT_RUN)
 			if(drowsyness > 0)
 				. += 6
-			. += config_legacy.run_speed
-		if(MOVE_INTENT_WALK)
-			. += config_legacy.walk_speed
 
 // todo: all this depth staged stuff is stupid and it should all be on /turf and cached someday
 //       this is however, faster, so that'll be a very long 'someday'.
@@ -396,7 +393,7 @@
 			// riding same thing, don't block each other
 			return TRUE
 	// can't throw blob stuff through blob stuff
-	if(istype(mover, /obj/structure/blob) && faction == "blob" && !mover.throwing) //Blobs should ignore things on their faction.
+	if(istype(mover, /obj/structure/blob) && has_iff_faction(MOB_IFF_FACTION_BLOB) && !mover.throwing) //Blobs should ignore things on their faction.
 		return TRUE
 
 /mob/living/CheckExit(atom/movable/AM, atom/newLoc)

@@ -22,6 +22,11 @@
 // todo: recover()
 // todo: zclear system will be in this later, for now, this is just a wrapper
 
+/datum/controller/subsystem/mapping/on_max_z_changed(old_z_count, new_z_count)
+	. = ..()
+	// just to make sure order of ops / assumptions are right
+	ASSERT(length(ordered_levels) == world.maxz)
+
 /**
  * gets an reusable level, or increments world.maxz
  * WARNING: AFTER THIS, YOU NEED TO USE THE LEVEL, OR READD TO REUSABLE, OR THIS IS A MEMORY LEAK!

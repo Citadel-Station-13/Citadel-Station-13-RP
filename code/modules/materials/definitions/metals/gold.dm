@@ -1,4 +1,4 @@
-/datum/material/gold
+/datum/prototype/material/gold
 	id = MAT_GOLD
 	name = "gold"
 	stack_type = /obj/item/stack/material/gold
@@ -7,6 +7,8 @@
 	sheet_singular_name = "ingot"
 	sheet_plural_name = "ingots"
 	tgui_icon_key = "gold"
+
+	worth = 15
 
 	relative_integrity = 0.8
 	density = 8 * 1.75
@@ -19,7 +21,9 @@
 	absorption = MATERIAL_RESISTANCE_LOW
 	nullification = MATERIAL_RESISTANCE_MODERATE
 
-/datum/material/gold/generate_recipes()
+	material_constraints = MATERIAL_CONSTRAINT_RIGID | MATERIAL_CONSTRAINT_CONDUCTIVE
+
+/datum/prototype/material/gold/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(category = "statues", name = "head of security statue", product = /obj/structure/statue/gold/hos, cost = 10, time = 2 SECONDS)
 	. += create_stack_recipe_datum(category = "statues", name = "head of personnel statue", product = /obj/structure/statue/gold/hop, cost = 10, time = 2 SECONDS)

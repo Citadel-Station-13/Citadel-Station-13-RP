@@ -24,7 +24,7 @@
 	permeability_coefficient = 0.02
 	clothing_flags = 0
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	allowed = list(/obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy, /obj/item/gun/ballistic, /obj/item/ammo_magazine, /obj/item/ammo_casing, /obj/item/melee/baton,/obj/item/handcuffs)
+	allowed = list(/obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/projectile/energy, /obj/item/gun/projectile/ballistic, /obj/item/ammo_magazine, /obj/item/ammo_casing, /obj/item/melee/baton,/obj/item/handcuffs)
 	encumbrance = ITEM_ENCUMBRANCE_VOIDSUIT
 	weight = ITEM_WEIGHT_VOIDSUIT
 	armor_type = /datum/armor/station/tactical
@@ -108,6 +108,7 @@
 	flash_protection = FLASH_PROTECTION_NONE
 	encumbrance = ITEM_ENCUMBRANCE_EMERGENCY_SOFTSUIT_HELMET
 	weight = ITEM_WEIGHT_EMERGENCY_SOFTSUIT_HELMET
+	worth_intrinsic = 75
 
 /obj/item/clothing/suit/space/emergency
 	name = "Emergency Softsuit"
@@ -115,6 +116,7 @@
 	desc = "A thin, ungainly softsuit colored in blaze orange for rescuers to easily locate, looks pretty fragile."
 	encumbrance = ITEM_ENCUMBRANCE_EMERGENCY_SOFTSUIT
 	weight = ITEM_WEIGHT_EMERGENCY_SOFTSUIT
+	worth_intrinsic = 200
 
 //Russian Emergency Suit
 /obj/item/clothing/head/helmet/space/emergency/russian

@@ -294,6 +294,8 @@
 	update_icon()
 
 /obj/structure/frame/attackby(obj/item/P, mob/user)
+	if(user.a_intent == INTENT_HARM) //anti-snowflake melee measures
+		return ..()
 	if(P.is_wrench())
 		if(state == FRAME_PLACED && !anchored)
 			to_chat(user, SPAN_NOTICE("You start to wrench the frame into place."))
@@ -542,7 +544,7 @@
 				state = FRAME_FASTENED
 				new /obj/item/stack/cable_coil(loc, 5)
 
-	else if(P.is_material_stack_of(/datum/material/glass))
+	else if(P.is_material_stack_of(/datum/prototype/material/glass))
 		if(state == FRAME_WIRED)
 			if(frame_type.frame_class == FRAME_CLASS_COMPUTER)
 				var/obj/item/stack/G = P
@@ -567,37 +569,31 @@
 					if(G.use(2))
 						to_chat(user, SPAN_NOTICE("You put in the glass panel."))
 						state = FRAME_PANELED
-
-	else if(istype(P, /obj/item))
-		if(state == FRAME_WIRED)
-			if(frame_type.frame_class == FRAME_CLASS_MACHINE)
-				for(var/I in req_components)
-					if(istype(P, I) && (req_components[I] > 0))
-						if(istype(P, /obj/item/stack))
-							var/obj/item/stack/ST = P
-							if(ST.get_amount() > 1)
-								var/camt = min(ST.amount, req_components[I]) // amount of stack to take, idealy amount required, but limited by amount provided
-								var/obj/item/stack/NS = new ST.stacktype(src)
-								NS.amount = camt
-								NS.update_icon()
-								ST.use(camt)
-								components += NS
-								req_components[I] -= camt
-								update_desc()
-								playsound(src, 'sound/items/Deconstruct.ogg', 50, TRUE)
-								break
-						if(!user.attempt_insert_item_for_installation(P, src))
-							return
-						playsound(src, 'sound/items/Deconstruct.ogg', 50, TRUE)
-						components += P
-						req_components[I]--
-						update_desc()
-						break
-				to_chat(user, desc)
-				if(P && P.loc != src && !istype(P, /obj/item/stack/material))
-					to_chat(user, SPAN_WARNING("You cannot add that component to the machine!"))
-					return
-
+	else if(istype(P, /obj/item/storage/part_replacer) && state == FRAME_WIRED && frame_type.frame_class == FRAME_CLASS_MACHINE)
+		var/obj/item/storage/part_replacer/partreplacer = P
+		var/addedparts = FALSE
+		for(var/obj/item/I in partreplacer.contents)
+			var/index = get_valid_part_index(I)
+			if(index != null)
+				partreplacer.obj_storage.remove(I)
+				take_part(I, index)
+				addedparts = TRUE
+		if(addedparts)
+			playsound(src.loc, partreplacer.part_replacement_sound, 50, TRUE)
+			to_chat(user, desc)
+		else
+			to_chat(user, SPAN_NOTICE("There doesn't seem to be any components in [partreplacer] that can be added."))
+	else if(istype(P, /obj/item) && state == FRAME_WIRED && frame_type.frame_class == FRAME_CLASS_MACHINE)
+		var/index = get_valid_part_index(P)
+		if(index == null)
+			to_chat(user, SPAN_WARNING("You cannot add that component to the machine!"))
+			return
+		if(!user.attempt_insert_item_for_installation(P, src))
+			to_chat(user, SPAN_WARNING("[P] appears to be stuck to your hand!"))
+			return
+		playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, TRUE)
+		take_part(P, index)
+		to_chat(user, desc)
 	update_appearance()
 
 /obj/structure/frame/verb/rotate_counterclockwise()
@@ -636,3 +632,30 @@
 	to_chat(usr, SPAN_NOTICE("You rotate \the [src] to face [dir2text(dir)]!"))
 
 	return
+
+/obj/structure/frame/proc/get_valid_part_index(obj/item/P)
+	for(var/I in req_components)
+		if(istype(P, I) && (req_components[I] > 0))
+			return I
+	return null
+
+/obj/structure/frame/proc/take_part(obj/item/P, index)
+	if(istype(P, /obj/item/stack)) //usually for cable coil. can support other stacks.
+		var/obj/item/stack/S = P
+		if(S.get_amount() > 1)
+			var/camt = min(S.amount, req_components[index]) // amount of the stack to take, ideally amount required, but limited by amount provided
+			var/obj/item/stack/SP = new S.type(src)
+			SP.amount = camt
+			SP.update_icon()
+			S.use(camt)
+			components += SP
+			req_components[index] -= camt
+			update_desc()
+			return TRUE
+		else
+			return FALSE
+	P.forceMove(src)
+	components += P
+	req_components[index]--
+	update_desc()
+	return TRUE

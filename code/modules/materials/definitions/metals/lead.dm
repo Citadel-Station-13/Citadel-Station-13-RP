@@ -1,4 +1,4 @@
-/datum/material/lead
+/datum/prototype/material/lead
 	name = MAT_LEAD
 	id = MAT_LEAD
 	stack_type = /obj/item/stack/material/lead
@@ -6,6 +6,8 @@
 	sheet_singular_name = "ingot"
 	sheet_plural_name = "ingots"
 	tgui_icon_key = "ingots"
+
+	worth = 5
 
 	relative_integrity = 1
 	density = 8 * 3
@@ -17,3 +19,5 @@
 	refraction = MATERIAL_RESISTANCE_LOW
 	absorption = MATERIAL_RESISTANCE_MODERATE
 	nullification = MATERIAL_RESISTANCE_LOW
+
+	material_constraints = MATERIAL_CONSTRAINT_RIGID

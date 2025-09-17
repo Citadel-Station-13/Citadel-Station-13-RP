@@ -20,7 +20,7 @@
 	id = "Virgo4Beach140"
 	name = "Sector - Virgo 4: Beach"
 	display_name = "Virgo 4 - Beach"
-	absolute_path = "maps/sectors/virgo4_140/levels/virgo4_140_beach.dmm"
+	path = "maps/sectors/virgo4_140/levels/virgo4_140_beach.dmm"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand
 	link_north = /datum/map_level/sector/virgo4_140/cave
 
@@ -28,7 +28,7 @@
 	id = "Virgo4Caves140"
 	name = "Sector - Virgo 4: Caves"
 	display_name = "Virgo 4 - Caves"
-	absolute_path = "maps/sectors/virgo4_140/levels/virgo4_140_cave.dmm"
+	path = "maps/sectors/virgo4_140/levels/virgo4_140_cave.dmm"
 	base_turf = /turf/simulated/floor/outdoors/rocks/caves
 	link_south = /datum/map_level/sector/virgo4_140/beach
 	link_west = /datum/map_level/sector/virgo4_140/desert
@@ -53,7 +53,7 @@
 	id = "Virgo4Desert140"
 	name = "Sector - Virgo 4: Desert"
 	display_name = "Virgo 4 - Desert"
-	absolute_path = "maps/sectors/virgo4_140/levels/virgo4_140_desert.dmm"
+	path = "maps/sectors/virgo4_140/levels/virgo4_140_desert.dmm"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/lowdesert
 	link_east = /datum/map_level/sector/virgo4_140/cave
 

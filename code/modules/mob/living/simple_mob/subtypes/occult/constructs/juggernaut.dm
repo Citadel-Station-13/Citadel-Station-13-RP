@@ -31,7 +31,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/construct/juggernaut)
 
 
-	movement_cooldown = 6 //Not super fast, but it might catch up to someone in armor who got punched once or twice.
+	movement_base_speed = 10 / 6 //Not super fast, but it might catch up to someone in armor who got punched once or twice.
 
 //	environment_smash = 2	// Whatever this gets renamed to, Juggernauts need to break things
 
@@ -40,7 +40,6 @@
 
 	attack_sound = 'sound/weapons/heavysmash.ogg'
 	status_flags = 0
-	resistance = 10
 	construct_spells = list(/spell/aoe_turf/conjure/forcewall/lesser,
 							/spell/targeted/fortify,
 							/spell/targeted/construct_advanced/slam
@@ -63,46 +62,45 @@
 	. = ..()
 	AddComponent(/datum/component/horror_aura/strong)
 
-/mob/living/simple_mob/construct/juggernaut/bullet_act(var/obj/projectile/P)
-	var/reflectchance = 80 - round(P.damage/3)
-	if(prob(reflectchance))
+/mob/living/simple_mob/construct/juggernaut/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	var/reflectchance = 80 - round(proj.damage_force/3)
+	if(prob(reflectchance) && !istype(src, /mob/living/simple_mob/construct/juggernaut/behemoth))
 		var/damage_mod = rand(2,4)
-		var/projectile_dam_type = P.damage_type
-		var/incoming_damage = (round(P.damage / damage_mod) - (round((P.damage / damage_mod) * 0.3)))
-		var/armorcheck = run_armor_check(null, P.damage_flag)
-		var/soakedcheck = get_armor_soak(null, P.damage_flag)
-		if(!(istype(P, /obj/projectile/energy) || istype(P, /obj/projectile/beam)))
-			visible_message("<span class='danger'>The [P.name] bounces off of [src]'s shell!</span>", \
-						"<span class='userdanger'>The [P.name] bounces off of [src]'s shell!</span>")
+		var/projectile_dam_type = proj.damage_type
+		var/incoming_damage = (round(proj.damage_force / damage_mod) - (round((proj.damage_force / damage_mod) * 0.3)))
+		var/armorcheck = run_armor_check(null, proj.damage_flag)
+		var/soakedcheck = get_armor_soak(null, proj.damage_flag)
+		if(!(istype(proj, /obj/projectile/energy) || istype(proj, /obj/projectile/beam)))
+			visible_message("<span class='danger'>The [proj.name] bounces off of [src]'s shell!</span>", \
+						"<span class='userdanger'>The [proj.name] bounces off of [src]'s shell!</span>")
 			new /obj/item/material/shard/shrapnel(src.loc)
-			if(!(P.damage_type == BRUTE || P.damage_type == BURN))
-				projectile_dam_type = BRUTE
+			if(!(proj.damage_type == DAMAGE_TYPE_BRUTE || proj.damage_type == DAMAGE_TYPE_BURN))
+				projectile_dam_type = DAMAGE_TYPE_BRUTE
 				incoming_damage = round(incoming_damage / 4) //Damage from strange sources is converted to brute for physical projectiles, though severely decreased.
-			apply_damage(incoming_damage, projectile_dam_type, null, armorcheck, soakedcheck, is_sharp(P), has_edge(P), P)
-			return -1 //Doesn't reflect non-beams or non-energy projectiles. They just smack and drop with little to no effect.
+			apply_damage(incoming_damage, projectile_dam_type, null, armorcheck, soakedcheck, is_sharp(proj), has_edge(proj), proj)
+			return ..()
 		else
-			visible_message("<span class='danger'>The [P.name] gets reflected by [src]'s shell!</span>", \
-						"<span class='userdanger'>The [P.name] gets reflected by [src]'s shell!</span>")
+			visible_message("<span class='danger'>The [proj.name] gets reflected by [src]'s shell!</span>", \
+						"<span class='userdanger'>The [proj.name] gets reflected by [src]'s shell!</span>")
 			damage_mod = rand(3,5)
-			incoming_damage = (round(P.damage / damage_mod) - (round((P.damage / damage_mod) * 0.3)))
-			if(!(P.damage_type == BRUTE || P.damage_type == BURN))
-				projectile_dam_type = BURN
+			incoming_damage = (round(proj.damage_force / damage_mod) - (round((proj.damage_force / damage_mod) * 0.3)))
+			if(!(proj.damage_type == DAMAGE_TYPE_BRUTE || proj.damage_type == DAMAGE_TYPE_BURN))
+				projectile_dam_type = DAMAGE_TYPE_BURN
 				incoming_damage = round(incoming_damage / 4) //Damage from strange sources is converted to burn for energy-type projectiles, though severely decreased.
-			apply_damage(incoming_damage, P.damage_type, null, armorcheck, soakedcheck, is_sharp(P), has_edge(P), P)
+			apply_damage(incoming_damage, proj.damage_type, null, armorcheck, soakedcheck, is_sharp(proj), has_edge(proj), proj)
 
 		// Find a turf near or on the original location to bounce to
-		if(P.starting)
-			var/new_x = P.starting.x + pick(0, 0, -1, 1, -2, 2, -2, 2, -2, 2, -3, 3, -3, 3)
-			var/new_y = P.starting.y + pick(0, 0, -1, 1, -2, 2, -2, 2, -2, 2, -3, 3, -3, 3)
+		if(proj.starting)
+			var/new_x = proj.starting.x + pick(0, 0, -1, 1, -2, 2, -2, 2, -2, 2, -3, 3, -3, 3)
+			var/new_y = proj.starting.y + pick(0, 0, -1, 1, -2, 2, -2, 2, -2, 2, -3, 3, -3, 3)
 			var/turf/curloc = get_turf(src)
 
 			// redirect the projectile
-			P.redirect(new_x, new_y, curloc, src)
-			P.reflected = 1
+			proj.legacy_redirect(new_x, new_y, curloc, src)
+			proj.reflected = 1
 
-		return -1 // complete projectile permutation
-
-	return (..(P))
+		return PROJECTILE_IMPACT_REFLECT
+	return ..()
 
 /*
  * The Behemoth. Admin-allowance only, still try to keep it in some guideline of 'Balanced', even if it means Security has to be fully geared to be so.
@@ -120,7 +118,6 @@
 	attacktext = list("brutally crushed")
 	friendly = list("pokes") //Anything nice the Behemoth would do would still Kill the Human. Leave it at poke.
 	attack_sound = 'sound/weapons/heavysmash.ogg'
-	resistance = 10
 	icon_scale_x = 2
 	icon_scale_y = 2
 	var/energy = 0
@@ -138,22 +135,21 @@
 							/spell/targeted/construct_advanced/slam
 							)
 
-/mob/living/simple_mob/construct/juggernaut/behemoth/bullet_act(var/obj/projectile/P)
-	var/reflectchance = 80 - round(P.damage/3)
+/mob/living/simple_mob/construct/juggernaut/behemoth/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	var/reflectchance = 80 - round(proj.damage_force/3)
 	if(prob(reflectchance))
-		visible_message("<span class='danger'>The [P.name] gets reflected by [src]'s shell!</span>", \
-						"<span class='userdanger'>The [P.name] gets reflected by [src]'s shell!</span>")
+		visible_message("<span class='danger'>The [proj.name] gets reflected by [src]'s shell!</span>", \
+						"<span class='userdanger'>The [proj.name] gets reflected by [src]'s shell!</span>")
 
 		// Find a turf near or on the original location to bounce to
-		if(P.starting)
-			var/new_x = P.starting.x + pick(0, 0, -1, 1, -2, 2, -2, 2, -2, 2, -3, 3, -3, 3)
-			var/new_y = P.starting.y + pick(0, 0, -1, 1, -2, 2, -2, 2, -2, 2, -3, 3, -3, 3)
+		if(proj.starting)
+			var/new_x = proj.starting.x + pick(0, 0, -1, 1, -2, 2, -2, 2, -2, 2, -3, 3, -3, 3)
+			var/new_y = proj.starting.y + pick(0, 0, -1, 1, -2, 2, -2, 2, -2, 2, -3, 3, -3, 3)
 			var/turf/curloc = get_turf(src)
 
 			// redirect the projectile
-			P.redirect(new_x, new_y, curloc, src)
-			P.reflected = 1
+			proj.legacy_redirect(new_x, new_y, curloc, src)
+			proj.reflected = 1
 
-		return -1 // complete projectile permutation
-
-	return (..(P))
+		return PROJECTILE_IMPACT_REFLECT
+	return ..()

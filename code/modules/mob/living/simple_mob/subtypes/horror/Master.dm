@@ -12,7 +12,6 @@
 	icon_living = "Helix"
 	icon_dead = "m_dead"
 	icon_rest = "Helix"
-	faction = "horror"
 	icon = 'icons/mob/horror_show/master.dmi'
 	icon_gib = "generic_gib"
 	anchored = 1
@@ -49,11 +48,11 @@
 	playsound(src, 'sound/h_sounds/imbeciles.ogg', 50, 1)
 	..()
 
-/mob/living/simple_mob/horror/Master/bullet_act()
+/mob/living/simple_mob/horror/Master/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	. = ..()
 	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
-	..()
 
-/mob/living/simple_mob/horror/Master/attack_hand(mob/user, list/params)
+/mob/living/simple_mob/horror/Master/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
 	..()
 

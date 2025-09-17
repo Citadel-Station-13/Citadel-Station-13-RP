@@ -9,14 +9,19 @@
 	integrity = 200
 	integrity_max = 200
 
-	material_parts = /datum/material/wood_plank
+	material_parts = /datum/prototype/material/wood_plank
 
-/obj/structure/barricade/Initialize(mapload, datum/material/material_like)
+/obj/structure/barricade/Initialize(mapload, datum/prototype/material/material_like)
 	if(!isnull(material_like))
-		set_primary_material(SSmaterials.resolve_material(material_like))
+		var/resolved_material = RSmaterials.fetch_or_defer(material_like)
+		switch(resolved_material)
+			if(REPOSITORY_FETCH_DEFER)
+				// todo: handle
+			else
+				set_primary_material(resolved_material)
 	return ..()
 
-/obj/structure/barricade/update_material_single(datum/material/material)
+/obj/structure/barricade/update_material_single(datum/prototype/material/material)
 	. = ..()
 	name = "[material.display_name] barricade"
 	desc = "This space is blocked off by a barricade made of [material.display_name]."
@@ -62,5 +67,5 @@
 
 /obj/structure/barricade/drop_products(method, atom/where)
 	. = ..()
-	var/datum/material/primary = get_primary_material()
+	var/datum/prototype/material/primary = get_primary_material()
 	primary.place_dismantled_product(where, method == ATOM_DECONSTRUCT_DISASSEMBLED? 5 : 3)

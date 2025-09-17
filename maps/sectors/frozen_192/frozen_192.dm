@@ -11,9 +11,9 @@
 	id = "FrozenWorld192"
 	name = "Sector - Frozen World"
 	display_name = "Class-P Frozen World"
-	absolute_path = "maps/sectors/frozen_192/levels/frozen_192.dmm"
+	path = "maps/sectors/frozen_192/levels/frozen_192.dmm"
 	base_area = /area/class_p/ruins
-	base_turf = /turf/simulated/floor/outdoors/ice/classp
+	base_turf = /turf/simulated/floor/outdoors/ice
 	traits = list(
 		ZTRAIT_GRAVITY,
 	)

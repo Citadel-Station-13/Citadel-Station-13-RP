@@ -4,6 +4,8 @@
 /**
  * Obfuscation module
  *
+ * todo: should this be mapping? this is a lot more important than just mapping
+ *
  * * Generates **mangled** IDs; these are either persistently-unique or round-local IDs that are separate per map / map template.
  * * Generates **obfuscated** IDs; these are mangled and obfuscated IDs that are safe to reveal to players.
  *
@@ -14,6 +16,7 @@
  */
 /datum/controller/subsystem/mapping
 	/// used to ensure global-ness
+	//  todo: should this be here? this is used literally everywhere
 	var/static/round_global_descriptor
 	/// round-local hash storage for specific map ids
 	var/static/round_local_mangling_cache = list()

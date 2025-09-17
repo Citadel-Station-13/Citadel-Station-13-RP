@@ -8,14 +8,14 @@
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	item_state = "shard-glass"
 	attack_verb = list("stabbed", "slashed", "sliced", "cut")
-	material_parts = /datum/material/glass
+	material_parts = /datum/prototype/material/glass
 
 /obj/item/material/shard/Initialize(mapload, material)
 	pixel_x = rand(-8, 8)
 	pixel_y = rand(-8, 8)
 	. = ..()
 
-/obj/item/material/shard/update_material_single(datum/material/material)
+/obj/item/material/shard/update_material_single(datum/prototype/material/material)
 	. = ..()
 	icon_state = "[material.shard_icon][pick("large", "medium", "small")]"
 	if(material_color)
@@ -38,14 +38,8 @@
 		desc = "material [material.id] shard - which shouldn't exist. contact a coder."
 		gender = NEUTER
 
-/obj/item/material/shard/suicide_act(mob/user)
-	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-	viewers(user) << pick("<span class='danger'>\The [user] is slitting [TU.his] wrists with \the [src]! It looks like [TU.hes] trying to commit suicide.</span>",
-	                      "<span class='danger'>\The [user] is slitting [TU.his] throat with \the [src]! It looks like [TU.hes] trying to commit suicide.</span>")
-	return (BRUTELOSS)
-
 /obj/item/material/shard/attackby(obj/item/W as obj, mob/user as mob)
-	var/datum/material/material = get_material_part(MATERIAL_PART_DEFAULT)
+	var/datum/prototype/material/material = get_material_part(MATERIAL_PART_DEFAULT)
 	if(istype(W, /obj/item/weldingtool) && material.shard_can_repair)
 		var/obj/item/weldingtool/WT = W
 		if(WT.remove_fuel(0, user))
@@ -89,11 +83,11 @@
 
 	if(gloves && !protected_hands)
 		to_chat(user, "<span class='warning'>\The [src] partially cuts into your hand through your gloves as you hit \the [target]!</span>")
-		user.apply_damage(light_glove_d + will_break ? break_damage : 0, BRUTE, active_hand, 0, 0, src, src.sharp || (damage_mode & DAMAGE_MODE_SHARP), src.edge || (damage_mode & DAMAGE_MODE_EDGE)) // Ternary to include break damage
+		user.apply_damage(light_glove_d + will_break ? break_damage : 0, DAMAGE_TYPE_BRUTE, active_hand, 0, 0, src,  (damage_mode & DAMAGE_MODE_SHARP), (damage_mode & DAMAGE_MODE_EDGE)) // Ternary to include break damage
 
 	else if(!gloves)
 		to_chat(user, "<span class='warning'>\The [src] cuts into your hand as you hit \the [target]!</span>")
-		user.apply_damage(no_glove_d + will_break ? break_damage : 0, BRUTE, active_hand, 0, 0, src, src.sharp || (damage_mode & DAMAGE_MODE_SHARP), src.edge || (damage_mode & DAMAGE_MODE_EDGE))
+		user.apply_damage(no_glove_d + will_break ? break_damage : 0, DAMAGE_TYPE_BRUTE, active_hand, 0, 0, src, (damage_mode & DAMAGE_MODE_SHARP), (damage_mode & DAMAGE_MODE_EDGE))
 
 	if(will_break && src.loc == user) // If it's not in our hand anymore
 		user.visible_message("<span class='danger'>[user] hit \the [target] with \the [src], shattering it!</span>", "<span class='warning'>You shatter \the [src] in your hand!</span>")
@@ -103,7 +97,7 @@
 
 /obj/item/material/shard/Crossed(atom/movable/AM as mob|obj)
 	..()
-	if(AM.is_incorporeal())
+	if(AM.is_incorporeal() || AM.is_avoiding_ground())
 		return
 	if(isliving(AM))
 		var/mob/M = AM
@@ -118,7 +112,7 @@
 			if(H.species.siemens_coefficient<0.5) //Thick skin.
 				return
 
-			if( H.shoes || ( H.wear_suit && (H.wear_suit.body_cover_flags & FEET) ) )
+			if(length(H.inventory.query_coverage(FEET)))
 				return
 
 			if(H.species.species_flags & NO_MINOR_CUT)
@@ -144,10 +138,10 @@
 
 // Preset types - left here for the code that uses them
 /obj/item/material/shard/shrapnel
-	material_parts = /datum/material/steel
+	material_parts = /datum/prototype/material/steel
 
 /obj/item/material/shard/phoron
-	material_parts = /datum/material/glass/phoron
+	material_parts = /datum/prototype/material/glass/phoron
 
 /obj/item/material/shard/wood
-	material_parts = /datum/material/wood_plank
+	material_parts = /datum/prototype/material/wood_plank

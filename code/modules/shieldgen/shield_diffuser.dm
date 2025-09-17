@@ -10,24 +10,10 @@
 	active_power_usage = 500	// Previously 2000
 	anchored = TRUE
 	density = FALSE
-	level = 1
+	hides_underfloor = OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP
+	hides_underfloor_update_icon = TRUE
 	var/alarm = FALSE
 	var/enabled = TRUE
-
-/obj/machinery/shield_diffuser/Initialize(mapload)
-	. = ..()
-
-	var/turf/T = get_turf(src)
-	hide(!T.is_plating())
-
-//If underfloor, hide the cable^H^H diffuser
-/obj/machinery/shield_diffuser/hide(var/i)
-	if(istype(loc, /turf))
-		invisibility = i ? 101 : 0
-	update_icon()
-
-/obj/machinery/shield_diffuser/hides_under_flooring()
-	return TRUE
 
 /obj/machinery/shield_diffuser/process(delta_time)
 	if(alarm)
@@ -55,7 +41,7 @@
 	else
 		icon_state = "fdiffuser_on"
 
-/obj/machinery/shield_diffuser/attack_hand(mob/user, list/params)
+/obj/machinery/shield_diffuser/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if((. = ..()))
 		return
 	if(alarm)

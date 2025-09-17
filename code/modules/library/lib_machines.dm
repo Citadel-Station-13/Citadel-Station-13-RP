@@ -31,7 +31,7 @@
 	var/category = "Any"
 	var/author
 
-/obj/machinery/librarypubliccomp/attack_hand(mob/user, list/params)
+/obj/machinery/librarypubliccomp/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	usr.set_machine(src)
 	var/dat = "<HEAD><TITLE>Library Visitor</TITLE></HEAD><BODY>\n" // <META HTTP-EQUIV='Refresh' CONTENT='10'>
 	switch(screenstate)
@@ -49,7 +49,7 @@
 				<tr><td>AUTHOR</td><td>TITLE</td><td>CATEGORY</td><td>SS<sup>13</sup>BN</td></tr>"}
 
 				var/datum/db_query/query = SSdbcore.RunQuery(
-					"SELECT author, title, category, id FROM [format_table_name("library")] WHERE author LIKE '%:author%' AND title LIKE '%:title%'[category == "Any"? "" : " AND category = :category"]",
+					"SELECT author, title, category, id FROM [DB_PREFIX_TABLE_NAME("library")] WHERE author LIKE '%:author%' AND title LIKE '%:title%'[category == "Any"? "" : " AND category = :category"]",
 					category == "Any"? list("author" = author, "title" = title) : list("author" = author, "title" = title, "category" = category)
 				)
 
@@ -160,7 +160,7 @@
 			var/obj/item/book/M = new path(null)
 			all_books[M.title] = M
 
-/obj/machinery/librarycomp/attack_hand(mob/user, list/params)
+/obj/machinery/librarycomp/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	usr.set_machine(src)
 	var/dat = "<HEAD><TITLE>Book Inventory Management</TITLE></HEAD><BODY>\n" // <META HTTP-EQUIV='Refresh' CONTENT='10'>
 	switch(screenstate)
@@ -229,7 +229,7 @@
 				<table>
 				<tr><td><A href='?src=\ref[src];sort=author>AUTHOR</A></td><td><A href='?src=\ref[src];sort=title>TITLE</A></td><td><A href='?src=\ref[src];sort=category>CATEGORY</A></td><td></td></tr>"}
 				var/datum/db_query/query = SSdbcore.RunQuery(
-					"SELECT id, author, title, category FROM [format_table_name("library")] ORDER BY :sortby",
+					"SELECT id, author, title, category FROM [DB_PREFIX_TABLE_NAME("library")] ORDER BY :sortby",
 					list(
 						"sortby" = sortby
 					)
@@ -398,7 +398,7 @@
 							var/sqlcontent = sanitizeSQL(scanner.cache.dat)
 							var/sqlcategory = sanitizeSQL(upload_category)
 							var/datum/db_query/query = SSdbcore.NewQuery(
-								"INSERT INTO [format_table_name("library")] (author, title, content, category) VALUES (:author, :title, :content, :category)",
+								"INSERT INTO [DB_PREFIX_TABLE_NAME("library")] (author, title, content, category) VALUES (:author, :title, :content, :category)",
 								list(
 									"author" = sqlauthor,
 									"title" = sqltitle,
@@ -425,7 +425,7 @@
 			spawn(6)
 				bibledelay = 0
 			var/datum/db_query/query = SSdbcore.RunQuery(
-				"SELECT * FROM [format_table_name("library")] WHERE id = :id",
+				"SELECT * FROM [DB_PREFIX_TABLE_NAME("library")] WHERE id = :id",
 				list(
 					"id" = sqlid
 				)
@@ -476,7 +476,7 @@
 		if(!user.attempt_insert_item_for_installation(I, src))
 			return
 
-/obj/machinery/libraryscanner/attack_hand(mob/user, list/params)
+/obj/machinery/libraryscanner/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	usr.set_machine(src)
 	var/dat = "<HEAD><TITLE>Scanner Control Interface</TITLE></HEAD><BODY>\n" // <META HTTP-EQUIV='Refresh' CONTENT='10'>
 	if(cache)

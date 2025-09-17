@@ -133,10 +133,10 @@
 /obj/item/clothing/shoes/black,
 /obj/item/clothing/shoes/black,
 /obj/item/clothing/shoes/black,
-/obj/item/gun/ballistic/shotgun/pump/rifle,
-/obj/item/ammo_magazine/clip/c762,
-/obj/item/ammo_magazine/clip/c762,
-/obj/item/ammo_magazine/clip/c762,
+/obj/item/gun/projectile/ballistic/shotgun/pump/rifle,
+/obj/item/ammo_magazine/a7_62mm/clip,
+/obj/item/ammo_magazine/a7_62mm/clip,
+/obj/item/ammo_magazine/a7_62mm/clip,
 /turf/simulated/floor/wood,
 /area/class_d/POIs/landing_pad)
 "v" = (

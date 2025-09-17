@@ -40,3 +40,8 @@ ALLOW_ADMIN_OOCCOLOR
 ## Even if this is enabled, a notification will only be sent if there are no clients connected.
 TOAST_NOTIFICATION_ON_INIT
 
+## How long in seconds after which a hard delete is treated as causing lag. This can be a float and supports a precision as low as nanoseconds.
+#HARD_DELETES_OVERRUN_THRESHOLD 0.5
+
+## Once a typepath causes overrun from hard deletes this many times, stop hard deleting it on garbage collection failures. (set to 0 to disable)
+#HARD_DELETES_OVERRUN_LIMIT 0

@@ -54,22 +54,26 @@
 	always_available = FALSE
 
 /datum/crafting_recipe/bonespear
-	name = "Bone Spear"
-	result = /obj/item/material/twohanded/spear/bone
+	name = "Bronze Spear"
+	result = /obj/item/material/twohanded/spear/bronze
 	time = 30
-	reqs = list(/obj/item/stack/material/bone = 4,
+	reqs = list(/obj/item/stack/material/copper = 2,
+				 /obj/item/stack/material/bone = 4,
 				 /obj/item/stack/sinew = 1)
 	category = CAT_PRIMAL
 	always_available = FALSE
+	tools = list(TOOL_WELDER, TOOL_SCREWDRIVER)
 
 /datum/crafting_recipe/boneaxe
-	name = "Bone Axe"
-	result = /obj/item/material/twohanded/fireaxe/bone
+	name = "Bronze Battleaxe"
+	result = /obj/item/material/twohanded/fireaxe/bronze
 	time = 50
-	reqs = list(/obj/item/stack/material/bone = 6,
+	reqs = list(/obj/item/stack/material/copper = 8,
+				/obj/item/stack/material/bone = 4,
 				 /obj/item/stack/sinew = 3)
 	category = CAT_PRIMAL
 	always_available = FALSE
+	tools = list(TOOL_WELDER, TOOL_SCREWDRIVER)
 
 /datum/crafting_recipe/bonesword
 	name = "Bone Sword"
@@ -166,7 +170,7 @@
 
 /datum/crafting_recipe/bone_bow
 	name = "Bone Bow"
-	result = /obj/item/gun/ballistic/bow/ashen
+	result = /obj/item/gun/projectile/ballistic/bow/ashen
 	time = 120 // 80+120 = 200
 	reqs = list(/obj/item/stack/material/bone = 8,
 				 /obj/item/stack/sinew = 4)
@@ -218,32 +222,38 @@
 	always_available = FALSE
 
 /datum/crafting_recipe/bonepickaxe
-	name = "Bone Pickaxe"
+	name = "Bronze Pickaxe"
 	reqs = list(
-            /obj/item/stack/material/bone = 3,
+			/obj/item/stack/material/copper = 5,
+            /obj/item/stack/material/bone = 2,
             /obj/item/stack/sinew = 1)
-	result = /obj/item/pickaxe/bone
+	result = /obj/item/pickaxe/bronze
 	category = CAT_PRIMAL
 	always_available = FALSE
+	tools = list(TOOL_WELDER, TOOL_SCREWDRIVER)
 
 /datum/crafting_recipe/boneshovel
-	name = "Serrated Bone Shovel"
+	name = "Bronze Shovel"
 	reqs = list(
-            /obj/item/stack/material/bone = 4,
+			/obj/item/stack/material/copper = 3,
+            /obj/item/stack/material/bone = 3,
             /obj/item/stack/sinew = 1)
-	result = /obj/item/shovel/bone
+	result = /obj/item/shovel/bronze
 	category = CAT_PRIMAL
 	always_available = FALSE
+	tools = list(TOOL_WELDER, TOOL_SCREWDRIVER)
 
 /datum/crafting_recipe/bonehatchet
-	name = "Bone Hatchet"
+	name = "Bronze Hatchet"
 	//always_available = FALSE
 	reqs = list(
-            /obj/item/stack/material/bone = 6,
+			/obj/item/stack/material/copper = 4,
+            /obj/item/stack/material/bone = 2,
             /obj/item/stack/sinew = 2)
-	result = /obj/item/material/knife/machete/hatchet/bone
+	result = /obj/item/material/knife/machete/hatchet/bronze
 	category = CAT_PRIMAL
 	always_available = FALSE
+	tools = list(TOOL_WELDER, TOOL_SCREWDRIVER)
 
 /datum/crafting_recipe/boneknife
 	name = "Bone Knife"
@@ -251,7 +261,8 @@
             /obj/item/stack/material/bone = 5)
 	result = /obj/item/material/knife/tacknife/combatknife/bone
 	category = CAT_PRIMAL
-	always_available = TRUE //Everyone can craft this one.
+	always_available = TRUE
+	tools = list(TOOL_SCREWDRIVER) //Everyone can craft this one.
 
 //Surgical Tools - I've added these to this crafting menu after I found the sprites on Main and brought them over for the novelty.
 /datum/crafting_recipe/primalretractor
@@ -275,35 +286,36 @@
 	always_available = FALSE
 
 /datum/crafting_recipe/primalcautery
-	name = "Primitive Cautery"
+	name = "Elder's Sealer (Cautery)"
 	//always_available = FALSE
 	reqs = list(
             /obj/item/stack/material/bone = 3,
             /obj/item/stack/sinew = 2,
 			/obj/item/elderstone = 1)
-	result = /obj/item/surgical/cautery_primitive
+	result = /obj/item/surgical/cautery_scori
 	category = CAT_PRIMAL
 	always_available = FALSE
 
 /datum/crafting_recipe/primalscalpel
-	name = "Primitive Scalpel"
+	name = "Bronze Scalpel"
+	//always_available = FALSE
+	reqs = list(
+            /obj/item/stack/material/copper = 2,
+            /obj/item/stack/material/bone = 3,
+            /obj/item/stack/sinew = 1)
+	result = /obj/item/surgical/scalpel_bronze
+	category = CAT_PRIMAL
+	always_available = FALSE
+	tools = list(TOOL_WELDER, TOOL_SCREWDRIVER)
+
+/datum/crafting_recipe/primalsaw
+	name = "Bronze Saw"
 	//always_available = FALSE
 	reqs = list(
             /obj/item/stack/material/bone = 3,
-            /obj/item/stack/sinew = 1,
-			/obj/item/material/shard = 1)
-	result = /obj/item/surgical/scalpel_primitive
-	category = CAT_PRIMAL
-	always_available = FALSE
-
-/datum/crafting_recipe/primalsaw
-	name = "Primitive Bone Saw"
-	//always_available = FALSE
-	reqs = list(
-            /obj/item/stack/material/bone = 6,
             /obj/item/stack/sinew = 4,
-			/obj/item/material/shard = 3)
-	result = /obj/item/surgical/saw_primitive
+			/obj/item/stack/material/copper = 5)
+	result = /obj/item/surgical/saw_bronze
 	category = CAT_PRIMAL
 	always_available = FALSE
 
@@ -318,50 +330,57 @@
 	always_available = FALSE
 
 /datum/crafting_recipe/bone_crowbar
-	name = "Primitive Crowbar"
-	result = /obj/item/tool/crowbar/bone
+	name = "Bronze Crowbar"
+	result = /obj/item/tool/crowbar/bronze
 	time = 50
-	reqs = list(/obj/item/stack/material/bone = 8
+	reqs = list(
+			/obj/item/stack/material/copper = 6,
+			/obj/item/stack/sinew = 2
 				)
 	category = CAT_PRIMAL
 	always_available = FALSE
+	tools = list(TOOL_WELDER)
 
 /datum/crafting_recipe/bone_screwdriver
-	name = "Primitive Screwdriver"
-	result = /obj/item/tool/screwdriver/bone
+	name = "Bronze Chisel (Screwdriver)"
+	result = /obj/item/tool/screwdriver/bronze
 	time = 50
-	reqs = list(/obj/item/stack/material/bone = 4,
+	reqs = list(/obj/item/stack/material/copper = 2,
+				/obj/item/stack/material/bone = 2,
 				/obj/item/stack/sinew = 2
 				)
 	category = CAT_PRIMAL
 	always_available = FALSE
 
 /datum/crafting_recipe/bone_wrench
-	name = "Primitive Wrench"
-	result = /obj/item/tool/wrench/bone
+	name = "Bronze Wrench"
+	result = /obj/item/tool/wrench/bronze
 	time = 50
 	reqs = list(/obj/item/stack/material/bone = 3,
 				/obj/item/stack/sinew = 1
 				)
 	category = CAT_PRIMAL
 	always_available = FALSE
+	tools = list(TOOL_WELDER, TOOL_SCREWDRIVER)
 
 /datum/crafting_recipe/bone_wirecutters
-	name = "Primitive Wirecutters"
-	result = /obj/item/tool/wirecutters/bone
+	name = "Bronze Shears (Wirecutters/Clippers)"
+	result = /obj/item/tool/wirecutters/bronze
 	time = 50
-	reqs = list(/obj/item/stack/material/bone = 4,
+	reqs = list(/obj/item/stack/material/copper = 4,
 				/obj/item/stack/sinew = 2
 				)
 	category = CAT_PRIMAL
 	always_available = FALSE
+	tools = list(TOOL_WELDER)
 
 /datum/crafting_recipe/bone_welder
-	name = "Primitive Welding Tool"
+	name = "Elder's Bellows (Welder)"
 	result = /obj/item/weldingtool/bone
 	time = 50
-	reqs = list(/obj/item/stack/material/bone = 6,
-				/obj/item/stack/sinew = 4,
+	reqs = list(/obj/item/stack/material/bone = 4,
+				/obj/item/stack/animalhide/goliath_hide = 2,
+				/obj/item/stack/sinew = 2,
 				/obj/item/elderstone = 1
 				)
 	category = CAT_PRIMAL
@@ -490,11 +509,10 @@
 	always_available = FALSE
 
 /datum/crafting_recipe/stone_dropper
-	name = "Stone Dropper"
+	name = "Primitive Dropper"
 	result = /obj/item/reagent_containers/dropper/ashlander
 	time = 40
-	reqs = list(/obj/item/stack/ore/slag = 1,
-				/obj/item/stack/material/bone = 1
+	reqs = list(/obj/item/stack/material/copper = 2
 				)
 	category = CAT_PRIMAL
 	always_available = FALSE
@@ -539,6 +557,7 @@
 				)
 	category = CAT_PRIMAL
 	always_available = FALSE
+	tools = list(TOOL_WELDER, TOOL_WIRECUTTER)
 
 /datum/crafting_recipe/ashlander_helmet
 	name = "Ashen Lamellar Helmet"
@@ -550,6 +569,7 @@
 				)
 	category = CAT_PRIMAL
 	always_available = FALSE
+	tools = list(TOOL_WELDER, TOOL_WIRECUTTER)
 
 /datum/crafting_recipe/ashlander_tunic
 	name = "Coarse Tunic"
@@ -568,6 +588,7 @@
 				)
 	category = CAT_PRIMAL
 	always_available = FALSE
+	tools = list(TOOL_WIRECUTTER)
 
 /datum/crafting_recipe/goliath_plant_bag
 	name = "Goliath Hide Plant Bag"
@@ -579,6 +600,7 @@
 				)
 	category = CAT_PRIMAL
 	always_available = FALSE
+	tools = list(TOOL_WIRECUTTER)
 
 /datum/crafting_recipe/goliath_halfcloak
 	name = "Goliath Hide Half Cloak"
@@ -588,6 +610,7 @@
 				/obj/item/stack/animalhide/goliath_hide = 2)
 	category = CAT_PRIMAL
 	always_available = FALSE
+	tools = list(TOOL_WIRECUTTER)
 
 /datum/crafting_recipe/sand_whetstone
 	name = "Ashen Whetstone"
@@ -597,6 +620,7 @@
 				/obj/item/stack/ore/slag = 1)
 	category = CAT_PRIMAL
 	always_available = FALSE
+	tools = list(TOOL_WIRECUTTER)
 
 /datum/crafting_recipe/ashen_vestment
 	name = "Ashen Vestments"
@@ -607,6 +631,7 @@
 				/obj/item/elderstone = 1)
 	category = CAT_PRIMAL
 	always_available = FALSE
+	tools = list(TOOL_WIRECUTTER)
 
 /datum/crafting_recipe/ashen_tabard
 	name = "Ashen Tabard"
@@ -617,10 +642,11 @@
 				/obj/item/stack/animalhide/goliath_hide = 1)
 	category = CAT_PRIMAL
 	always_available = FALSE
+	tools = list(TOOL_WIRECUTTER)
 
 /datum/crafting_recipe/heaven_shaker
 	name = "Heaven Shaker"
-	result = /obj/item/grenade/explosive/ashlander
+	result = /obj/item/grenade/simple/explosive/ashlander
 	time = 300
 	reqs = list(/obj/item/reagent_containers/glass/bucket/sandstone = 1,
 				/obj/item/condensedphlogiston = 3,
@@ -630,7 +656,7 @@
 
 /datum/crafting_recipe/heaven_shaker_frag
 	name = "Heaven Shaker (fragmentation)"
-	result = /obj/item/grenade/explosive/ashlander/fragmentation
+	result = /obj/item/grenade/simple/explosive/ashlander/fragmentation
 	time = 300
 	reqs = list(/obj/item/reagent_containers/glass/bucket/sandstone = 1,
 				/obj/item/condensedphlogiston = 3,
@@ -647,6 +673,7 @@
 				/obj/item/stack/animalhide/goliath_hide = 2)
 	category = CAT_PRIMAL
 	always_available = FALSE
+	tools = list(TOOL_WIRECUTTER)
 
 /datum/crafting_recipe/primitive_splint
 	name = "Primitive Splints"
@@ -656,15 +683,16 @@
 				/obj/item/stack/material/bone = 10)
 	category = CAT_PRIMAL
 	always_available = FALSE
+	tools = list(TOOL_WIRECUTTER)
 
 /datum/crafting_recipe/bone_pipe
 	name = "Bone Pipe"
 	result = /obj/item/clothing/mask/smokable/pipe/bonepipe
 	time = 30
-	tools = list(/obj/item/material/knife)
 	reqs = list(/obj/item/stack/material/bone = 1)
 	category = CAT_PRIMAL
 	always_available = FALSE
+	tools = list(TOOL_SCREWDRIVER)
 
 /datum/crafting_recipe/spark_striker
 	name = "Spark Striker"
@@ -695,6 +723,7 @@
 				/obj/item/stack/sinew = 2)
 	category = CAT_PRIMAL
 	always_available = FALSE
+	tools = list(TOOL_WIRECUTTER)
 
 /datum/crafting_recipe/ashlander_sandals
 	name = "Leather Sandals"
@@ -703,6 +732,7 @@
 	reqs = list(/obj/item/stack/animalhide/goliath_hide = 4)
 	category = CAT_PRIMAL
 	always_available = FALSE
+	tools = list(TOOL_WIRECUTTER)
 
 //Make this one cloth once I give Ashies a cloth plant? If I do??
 /datum/crafting_recipe/ashlander_wraps
@@ -712,3 +742,4 @@
 	reqs = list(/obj/item/stack/animalhide/goliath_hide = 2)
 	category = CAT_PRIMAL
 	always_available = FALSE
+	tools = list(TOOL_WIRECUTTER)

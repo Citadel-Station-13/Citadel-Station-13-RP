@@ -1,4 +1,4 @@
-/mob/proc/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
+/mob/proc/say(var/message, var/datum/prototype/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	return
 
 
@@ -70,7 +70,7 @@
 
 	say_dead_direct("[pick("complains","moans","whines","laments","blubbers")], <span class='message'>\"<span class='linkify'>[message]</span>\"</span>", src)
 
-/mob/proc/say_understands(var/mob/other,var/datum/language/speaking = null)
+/mob/proc/say_understands(var/mob/other,var/datum/prototype/language/speaking = null)
 
 	if (src.stat == DEAD)
 		return 1
@@ -95,7 +95,7 @@
 		return 1
 
 	//Language check.
-	for(var/datum/language/L in src.languages)
+	for(var/datum/prototype/language/L in src.languages)
 		if(speaking.name == L.name)
 			return 1
 
@@ -110,7 +110,7 @@
    for it but just ignore it.
 */
 
-/mob/proc/say_quote(var/message, var/datum/language/speaking = null)
+/mob/proc/say_quote(var/message, var/datum/prototype/language/speaking = null)
 	var/verb = "says"
 	var/ending = copytext_char(message, length_char(message))
 	if(ending=="!")
@@ -158,11 +158,11 @@
 	var/prefix = copytext_char(message,1,2)
 	// This is for audible emotes
 	if(length_char(message) >= 1 && prefix == "!")
-		return SScharacters.resolve_language_name("Noise")
+		return RSlanguages.legacy_resolve_language_name("Noise")
 
 	if(length_char(message) >= 2 && is_language_prefix(prefix))
 		var/language_prefix = copytext_char(message, 2 ,3)
-		var/datum/language/L = SScharacters.resolve_language_key(language_prefix)
+		var/datum/prototype/language/L = RSlanguages.legacy_resolve_language_key(language_prefix)
 		if (can_speak(L))
 			return L
 		else
@@ -170,10 +170,10 @@
 			switch(alert_result)
 				if("Default Language")
 					if(isliving(src))
-						var/mob/living/caller = src
-						return SScharacters.resolve_language_name(caller.default_language)
+						var/mob/living/living_src = src
+						return RSlanguages.legacy_resolve_language_name(living_src.default_language)
 				if("Gibberish")
-					return SScharacters.resolve_language_name(LANGUAGE_GIBBERISH)
+					return RSlanguages.legacy_resolve_language_name(LANGUAGE_GIBBERISH)
 				if("Whoops I made a typo!")
 					return -1
 	return null

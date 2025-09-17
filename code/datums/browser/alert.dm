@@ -2,15 +2,15 @@
 	if (!User)
 		return
 
-	var/output =  {"<center><b>[Message]</b></center><br />
+	var/output = {"<center><b>[Message]</b></center><br />
 		<div style="text-align:center">
-		<a style="font-size:large;float:[( Button2 ? "left" : "right" )]" href="?src=[REF(src)];button=1">[Button1]</a>"}
+		<a style="font-size:large;float:[( Button2 ? "left" : "right" )]" href='byond://?src=[REF(src)];button=1'>[Button1]</a>"}
 
 	if (Button2)
-		output += {"<a style="font-size:large;[( Button3 ? "" : "float:right" )]" href="?src=[REF(src)];button=2">[Button2]</a>"}
+		output += {"<a style="font-size:large;[( Button3 ? "" : "float:right" )]" href='byond://?src=[REF(src)];button=2'>[Button2]</a>"}
 
 	if (Button3)
-		output += {"<a style="font-size:large;float:right" href="?src=[REF(src)];button=3">[Button3]</a>"}
+		output += {"<a style="font-size:large;float:right" href='byond://?src=[REF(src)];button=3'>[Button3]</a>"}
 
 	output += {"</div>"}
 
@@ -28,8 +28,21 @@
 	opentime = 0
 	close()
 
-//designed as a drop in replacement for alert(); functions the same. (outside of needing User specified)
-/proc/tgalert(var/mob/User, Message, Title, Button1="Ok", Button2, Button3, StealFocus = 1, Timeout = 6000)
+/**
+ * **DEPRECATED: USE tgui_alert(...) INSTEAD**
+ *
+ * Designed as a drop in replacement for alert(); functions the same. (outside of needing User specified)
+ * Arguments:
+ * * User - The user to show the alert to.
+ * * Message - The textual body of the alert.
+ * * Title - The title of the alert's window.
+ * * Button1 - The first button option.
+ * * Button2 - The second button option.
+ * * Button3 - The third button option.
+ * * StealFocus - Boolean operator controlling if the alert will steal the user's window focus.
+ * * Timeout - The timeout of the window, after which no responses will be valid.
+ */
+/proc/tgalert(mob/User, Message, Title, Button1="Ok", Button2, Button3, StealFocus = TRUE, Timeout = 6000)
 	if (!User)
 		User = usr
 	switch(askuser(User, Message, Title, Button1, Button2, Button3, StealFocus, Timeout))
@@ -41,7 +54,7 @@
 			return Button3
 
 //Same shit, but it returns the button number, could at some point support unlimited button amounts.
-/proc/askuser(var/mob/User,Message, Title, Button1="Ok", Button2, Button3, StealFocus = 1, Timeout = 6000)
+/proc/askuser(mob/User,Message, Title, Button1="Ok", Button2, Button3, StealFocus = 1, Timeout = 6000)
 	if (!istype(User))
 		if (istype(User, /client/))
 			var/client/C = User

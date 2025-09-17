@@ -17,8 +17,6 @@
 
 	var/obj/machinery/atmospherics/node3
 
-	level = 1
-
 /obj/machinery/atmospherics/pipe/manifold/Initialize(mapload)
 	. = ..()
 	alpha = 255
@@ -81,7 +79,8 @@
 	if(node3)
 		node3.update_underlays()
 
-/obj/machinery/atmospherics/pipe/manifold/update_icon(safety = 0)
+/obj/machinery/atmospherics/pipe/manifold/update_icon()
+	. = ..()
 	if(!check_icon_cache())
 		return
 
@@ -153,13 +152,11 @@
 		qdel(src)
 		return
 
-	var/turf/T = get_turf(src)
-	if(level == 1 && !T.is_plating()) hide(1)
 	update_icon()
 
 /obj/machinery/atmospherics/pipe/manifold/visible
 	icon_state = "map"
-	level = 2
+	hides_underfloor = OBJ_UNDERFLOOR_NEVER
 
 /obj/machinery/atmospherics/pipe/manifold/visible/scrubbers
 	name="Scrubbers pipe manifold"
@@ -224,7 +221,6 @@
 
 /obj/machinery/atmospherics/pipe/manifold/hidden
 	icon_state = "map"
-	level = 1
 	alpha = 128		//set for the benefit of mapping - this is reset to opaque when the pipe is spawned in game
 
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers

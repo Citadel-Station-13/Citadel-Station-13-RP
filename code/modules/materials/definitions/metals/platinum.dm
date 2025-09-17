@@ -1,4 +1,4 @@
-/datum/material/platinum
+/datum/prototype/material/platinum
 	name = "platinum"
 	id = MAT_PLATINUM
 	stack_type = /obj/item/stack/material/platinum
@@ -7,6 +7,8 @@
 	sheet_singular_name = "ingot"
 	sheet_plural_name = "ingots"
 	tgui_icon_key = "ingots"
+
+	worth = 25
 
 	relative_integrity = 0.8
 	weight_multiplier = 1
@@ -19,3 +21,5 @@
 	refraction = MATERIAL_RESISTANCE_MODERATE
 	absorption = MATERIAL_RESISTANCE_LOW
 	nullification = MATERIAL_RESISTANCE_HIGH
+
+	material_constraints = MATERIAL_CONSTRAINT_RIGID

@@ -15,11 +15,6 @@
 /proc/mob_size_difference(var/mob_size_A, var/mob_size_B)
 	return round(log(2, mob_size_A/mob_size_B), 1)
 
-/mob/proc/can_wield_item(obj/item/W)
-	if(W.w_class >= WEIGHT_CLASS_BULKY && issmall(src))
-		return FALSE //M is too small to wield this
-	return TRUE
-
 /proc/istiny(A)
 	if(A && istype(A, /mob/living))
 		var/mob/living/L = A
@@ -285,7 +280,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 	var/keyname
 	if(subject && subject.client)
 		var/client/C = subject.client
-		keyname = (C.holder && C.holder.fakekey) ? C.holder.fakekey : C.key
+		keyname = C.get_public_key()
 		if(C.mob) //Most of the time this is the observer/dead mob; we can totally use him if there is no better name
 			var/mindname
 			var/realname = C.mob.real_name
@@ -363,7 +358,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 			C = M.original.client
 
 	if(C)
-		if(!isnull(C.holder?.fakekey) || !C.get_preference_toggle(/datum/game_preference_toggle/presence/announce_ghost_joinleave))
+		if(C.is_under_stealthmin() || !C.get_preference_toggle(/datum/game_preference_toggle/presence/announce_ghost_joinleave))
 			return
 		var/name
 		if(C.mob)
@@ -376,7 +371,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 				else
 					name = M.real_name
 		if(!name)
-			name = (C.holder && C.holder.fakekey) ? C.holder.fakekey : C.key
+			name = C.get_public_key()
 		if(joined_ghosts)
 			say_dead_direct("The ghost of <span class='name'>[name]</span> now [pick("skulks","lurks","prowls","creeps","stalks")] among [pick("the dead","the spirits","the graveyard","the deceased","us")]. [message]")
 		else
@@ -389,7 +384,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
  */
 /proc/notify_ghosts(message, ghost_sound, enter_link, atom/source, mutable_appearance/alert_overlay, action = NOTIFY_JUMP, flashwindow = TRUE, ignore_mapload = TRUE, ignore_key, ignore_dnr_observers = FALSE, header) //Easy notification of ghosts.
 	// Don't notify for objects created during a mapload.
-	if(ignore_mapload && SSatoms.initialized != INITIALIZATION_INNEW_REGULAR)
+	if(ignore_mapload && SSatoms.atom_init_status != ATOM_INIT_IN_NEW_REGULAR)
 		return
 	for(var/mob/observer/dead/O in GLOB.player_list)
 		if(!O.client)
@@ -465,11 +460,11 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 		threatcount += 4
 
 	if(auth_weapons && !access_obj.allowed(src))
-		if(istype(l_hand, /obj/item/gun) || istype(l_hand, /obj/item/melee))
-			threatcount += 4
-
-		if(istype(r_hand, /obj/item/gun) || istype(r_hand, /obj/item/melee))
-			threatcount += 4
+		for(var/obj/item/held as anything in get_held_items())
+			if(istype(held, /obj/item/melee))
+				threatcount += 4
+			if(istype(held, /obj/item/gun))
+				threatcount += 4
 
 		if(istype(belt, /obj/item/gun) || istype(belt, /obj/item/melee))
 			threatcount += 2
@@ -500,7 +495,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 	if(!istype(src.ai_holder, /datum/ai_holder/polaris))
 		return SAFE_PERP
 	var/datum/ai_holder/polaris/ai_holder = src.ai_holder
-	if(has_polaris_AI() && ai_holder.hostile && faction != "neutral")
+	if(has_polaris_AI() && ai_holder.hostile && !has_iff_faction(MOB_IFF_FACTION_NEUTRAL))
 		threatcount += 4
 	return threatcount
 
@@ -568,6 +563,8 @@ var/list/global/organ_rel_size = list(
 	BP_L_FOOT = 10,
 	BP_R_FOOT = 10,
 )
+//* Keep this up to date with organ_rel_size. This is all of them added together.
+GLOBAL_VAR_INIT(organ_combined_size, 25 + 70 + 30 + 25 + 25 + 25 + 25 + 10 + 10 + 10 + 10)
 
 /mob/proc/flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /atom/movable/screen/fullscreen/tiled/flash)
 	return
@@ -590,35 +587,6 @@ var/list/global/organ_rel_size = list(
 	else
 		var/area/A = get_area(src)
 		return A.sound_env
-
-/mob/proc/position_hud_item(obj/item/item, slot)
-	var/held = is_holding(item)
-
-	if(!slot)
-		slot = slot_id_by_item(item)
-
-	if(!istype(hud_used) || !slot || !LAZYLEN(hud_used.slot_info))
-		return
-
-	// They may have hidden their entire hud but the hands.
-	if(!hud_used.hud_shown && held)
-		item.screen_loc = null
-		return
-
-	// They may have hidden the icons in the bottom left with the hide button.
-	if(!hud_used.inventory_shown && !held && (resolve_inventory_slot(slot)?.inventory_slot_flags & INV_SLOT_HUD_REQUIRES_EXPAND))
-		item.screen_loc = null
-		return
-
-	var/screen_place = held? hud_used.hand_info["[get_held_index(item)]"] : hud_used.slot_info["[slot]"]
-	if(!screen_place)
-		item.screen_loc = null
-		return
-
-	if(item.base_pixel_x || item.base_pixel_y)
-		screen_place = pixel_shift_screen_loc(screen_place, item.base_pixel_x, item.base_pixel_y)
-
-	item.screen_loc = screen_place
 
 /mob/proc/can_see_reagents()
 	// Dead guys and silicons can always see reagents.
@@ -646,3 +614,24 @@ var/list/global/organ_rel_size = list(
 		return TRUE
 	else
 		return FALSE
+
+// asks ghosts to take control of a mob, ported from cit main
+/proc/offer_control(mob/M,ignore_category=null)
+	if(usr)
+		log_admin("[key_name(usr)] has offered control of ([key_name(M)]) to ghosts.")
+		message_admins("[key_name_admin(usr)] has offered control of ([ADMIN_LOOKUPFLW(M)]) to ghosts")
+
+	var/datum/ghost_query/admin/query = new()
+	query.wait_time = 15 SECONDS
+	var/mob_name = M.real_name ? M.real_name : M.name
+	query.role_name = mob_name
+	query.question = "Do you want to play as [mob_name]?"
+	spawn(0)
+		query.query()
+		if(LAZYLEN(query.candidates))
+			var/mob/C = pick(query.candidates)
+			message_admins("[key_name_admin(C)] has taken control of ([key_name_admin(M)])")
+			M.ghostize(FALSE, TRUE)
+			C.transfer_client_to(M, FALSE)
+		else
+			message_admins("No ghosts were willing to take control of [ADMIN_LOOKUPFLW(M)])")

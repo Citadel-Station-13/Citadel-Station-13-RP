@@ -11,7 +11,7 @@ It also serves the purposes of portraying the Lore accurate effect of "Acausal L
 /datum/component/horror_aura/Initialize(radius)
 	if(radius)
 		src.radius = radius
-	if(. & COMPONENT_INCOMPATIBLE)
+	if(. == COMPONENT_INCOMPATIBLE)
 		return
 	else if(!istype(parent))
 		return COMPONENT_INCOMPATIBLE
@@ -23,17 +23,19 @@ It also serves the purposes of portraying the Lore accurate effect of "Acausal L
 	return ..()
 
 /datum/component/horror_aura/process()
-	if(ismob(parent) && !remain_while_dead)
+	var/atom/A = parent //Not bothering to check if it's an atom. If someone attaches a horror aura component to a mere datum, they're out of their mind.
+	if(ismob(A) && !remain_while_dead)
 		var/mob/M = parent
 		if(IS_DEAD(M))
 			qdel(src)
 			return
-	aura_effect()
+	if(A.z in SSmobs.busy_z_levels) //don't spam EMP admin logs when nobody's around. :^)
+		aura_effect()
 
 /datum/component/horror_aura/proc/aura_effect()
 	for(var/mob/living/carbon/human/H in range(radius, parent))
 		if(!iscultist(H) && !istype(H.head, /obj/item/clothing/head/helmet/para))
-			H.hallucination += 15
+			H.adjustHallucination(15)
 	var/turf/T = get_turf(parent)
 	empulse(T, 0, 0, 0, emp_radius)
 

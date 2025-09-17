@@ -18,12 +18,16 @@
 	// rotated
 	var/got_rotated_by_maploader
 
-/obj/turbolift_map_holder/preloading_dir(datum/dmm_preloader/preloader)
+/obj/turbolift_map_holder/preloading_dir(datum/dmm_context/context)
 	. = ..()
-	got_rotated_by_maploader = preloader.loading_orientation
+	got_rotated_by_maploader = context.loaded_orientation
 
 /obj/turbolift_map_holder/Initialize(mapload)
 	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+// since this WILL cause qdels (on other atoms) to be invoked
+/obj/turbolift_map_holder/LateInitialize()
 	// Create our system controller.
 	var/datum/turbolift/lift = new()
 
@@ -162,7 +166,7 @@
 					return
 
 				// Update path appropriately if needed.
-				var/swap_to = /turf/simulated/open
+				var/swap_to = /turf/baseturf_bottom
 				if(cz == uz)                                                                       // Elevator.
 					if(wall_type && (tx == ux || ty == uy || tx == ex || ty == ey) && !(tx >= door_x1 && tx <= door_x2 && ty >= door_y1 && ty <= door_y2))
 						swap_to = wall_type
@@ -249,4 +253,3 @@
 			light2.setDir(NORTH)
 
 	lift.open_doors()
-	return INITIALIZE_HINT_QDEL

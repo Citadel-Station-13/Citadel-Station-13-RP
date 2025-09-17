@@ -1,4 +1,5 @@
 // These get to go at the top, because they're special
+
 //You can use these defines to get the typepath of the currently running proc/verb (yes procs + verbs are objects)
 /* eg:
 /mob/living/carbon/human/death()
@@ -11,12 +12,25 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define THIS_PROC_TYPE_STR_WITH_ARGS "[THIS_PROC_TYPE]([args.Join(",")])"
 /// This one is WEIRD, in some cases (When used in certain defines? (eg: ASSERT)) THIS_PROC_TYPE will fail to work, but THIS_PROC_TYPE_WEIRD will work instead
 #define THIS_PROC_TYPE_WEIRD ......
-//define THIS_PROC_TYPE_WEIRD_STR "[THIS_PROC_TYPE_WEIRD]" //Included for completeness
-//define THIS_PROC_TYPE_WEIRD_STR_WITH_ARGS "[THIS_PROC_TYPE_WEIRD]([args.Join(",")])" //Ditto
+#define THIS_PROC_TYPE_WEIRD_STR "[THIS_PROC_TYPE_WEIRD]"
+#define THIS_PROC_TYPE_WEIRD_STR_WITH_ARGS "[THIS_PROC_TYPE_WEIRD]([args.Join(",")])"
 
-#define NOT_IMPLEMENTED	"NOT_IMPLEMENTED"
+/// Invisibility constants. These should only be used for TRUE invisibility, AKA nothing living players touch
+///
+/// * Invisibility is different from just hiding something via plane masters.
+/// * They're more akin to images, where we actively block the client from seeing it if they don't have it
+/// * They're not as secure as images, because invisibility is still a client-side check
+/// * Invisibility completely hides objects from view() queries, verb queries, and more.
+///
+/// That said, this is nowhere near as granular and arbitrarily controllable as planes, so,
+/// the only things we use invisibility on are
+///
+/// * Lighting (TODO: should we remove this? we use planes now)
+/// * Fullscreens (piggybacks off lighting)
+/// * Observers / Ghosts (we don't want them to be interactable at all)
+/// * Underfloor objects (we don't want them to be interactable at all)
+/// * Abstract objects (we don't want them to be interactable at all)
 
-// Invisibility constants. These should only be used for TRUE invisibility, AKA nothing living players touch
 #define INVISIBILITY_LIGHTING		20
 #define INVISIBILITY_LEVEL_ONE		35
 #define INVISIBILITY_LEVEL_TWO		45
@@ -25,15 +39,22 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 /// for various map helpers that should be able to be seen in certain cases
 #define INVISIBILITY_MAP_HELPER     70
 
-#define SEE_INVISIBLE_LIVING		25
+#define SEE_INVISIBLE_MINIMUM		5
 #define SEE_INVISIBLE_NOLIGHTING	15
+#define SEE_INVISIBLE_LIVING		25
 #define SEE_INVISIBLE_LEVEL_ONE		35
 #define SEE_INVISIBLE_LEVEL_TWO		45
 #define SEE_INVISIBLE_CULT			60
 #define SEE_INVISIBLE_OBSERVER		61
 
-#define SEE_INVISIBLE_MINIMUM		5
+/// Underfloor things are by default, this invisibility.
+#define INVISIBILITY_UNDERFLOOR		90
+/// Maximum invisibility without being abstract.
 #define INVISIBILITY_MAXIMUM		100
+/// At this invisibility, some weird things happen.
+///
+/// * The thing basically isn't a real object anymore for some contexts.
+/// * view(), range(), etc, won't pick the atom up.
 #define INVISIBILITY_ABSTRACT		101
 
 /// Pseudo-Invis, like Ninja, Ling, Etc.
@@ -96,8 +117,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define MAX_BOOK_MESSAGE_LEN	24576
 #define MAX_RECORD_LENGTH		24576
 #define MAX_LNAME_LEN			64
-#define MAX_NAME_LEN			64
-
+#define MAX_NAME_LEN			52
 /// 512GQ file
 #define MAX_TEXTFILE_LENGTH		128000
 // Event defines.
@@ -174,14 +194,6 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define NTOS_EMAIL_NOTIFALREADY		1
 #define NTOS_EMAIL_NEWMESSAGE		2
 
-
-// Special return values from bullet_act(). Positive return values are already used to indicate the blocked level of the projectile.
-/// If the projectile should continue flying after calling bullet_act()
-#define PROJECTILE_CONTINUE		-1
-/// If the projectile should treat the attack as a miss (suppresses attack and admin logs) - only applies to mobs.
-#define PROJECTILE_FORCE_MISS	-2
-
-
 // Vending stuff
 #define CAT_NORMAL	1
 #define CAT_HIDDEN	2
@@ -257,8 +269,6 @@ var/list/economy_station_departments = list(
 ///The number of deciseconds in a day
 #define MIDNIGHT_ROLLOVER		864000
 
-///Needed for the R-UST port
-#define PIXEL_MULTIPLIER WORLD_ICON_SIZE/32
 /// Maximum effective value of client.view (According to DM references)
 #define MAX_CLIENT_VIEW	34
 
@@ -379,10 +389,6 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 #define MR_NORMAL	0
 #define MR_UNSURE	1
 #define MR_DEAD		2
-
-//Holy Weapon defines from Main. Lists null rod weapons and classifies them as HOLY.
-#define HOLY_WEAPONS /obj/item/nullrod
-#define HOLY_ICONS /obj/item/godfig
 
 // Used by radios to indicate that they have sent a message via something other than subspace
 #define RADIO_CONNECTION_FAIL 0
@@ -512,3 +518,6 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 #error T_BOARD already defined elsewhere, we can't use it.
 #endif
 #define T_BOARD(name) "circuit board (" + (name) + ")"
+
+//name for blank icon states for clothing
+#define CLOTHING_BLANK_ICON_STATE "blank"

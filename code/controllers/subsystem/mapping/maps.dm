@@ -158,6 +158,7 @@
 	instance.prime()
 
 	subsystem_log("Loading map [instance] ([instance.id]) with [length(instance.levels)] levels...")
+	log_world("Loading map [instance] ([instance.id]) with [length(instance.levels)] levels...")
 
 	var/list/area_cache = instance.bundle_area_cache? list() : null
 
@@ -221,7 +222,7 @@
 			var/datum/map/station/map = keyed_maps[id]
 			if(!istype(map, /datum/map/station))
 				continue
-			if(map.allow_random_draw)
+			if(!map.allow_random_draw)
 				continue
 			valid += map
 		instance = pick(valid)
@@ -234,6 +235,8 @@
 	// mark
 	world_is_loaded = TRUE
 	loaded_station = instance
+	// pick gateway level - this must happen after the station is picked as it's added to the lateload list
+	createRandomGatewayLevel()
 	// load
 	load_map(instance)
 	return TRUE

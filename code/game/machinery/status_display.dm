@@ -33,7 +33,7 @@
 	var/index2
 	var/picture = null
 
-	var/frequency = 1435	// Radio frequency
+	var/frequency = FREQ_STATUS_DISPLAYS	// Radio frequency
 
 	var/friendc = 0			// Track if Friend Computer mode
 	var/ignore_friendc = 0

@@ -17,10 +17,7 @@
 
 // Decide which area will be targeted!
 /datum/gm_action/atmos_leak/set_up()
-	severity = pickweight(EVENT_LEVEL_MUNDANE = 8,
-	EVENT_LEVEL_MODERATE = 5,
-	EVENT_LEVEL_MAJOR = 3
-	)
+	severity = pick_weight(mundande_weight = 8, moderate_weight = 5, major_weight = 3)
 
 	var/gas_choices = list(GAS_ID_CARBON_DIOXIDE, GAS_ID_NITROUS_OXIDE) // Annoying
 	if(severity >= EVENT_LEVEL_MODERATE)
@@ -70,6 +67,7 @@
 		var/datum/gas_mixture/air_contents = new
 		air_contents.temperature = T20C + ((severity - 1) * rand(-50, 50))
 		air_contents.gas[gas_type] = 10 * CELL_MOLES
+		air_contents.update_values()
 		target_turf.assume_air(air_contents)
 		playsound(target_turf, 'sound/effects/smoke.ogg', 50, 1)
 

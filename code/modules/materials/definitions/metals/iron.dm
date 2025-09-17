@@ -1,4 +1,4 @@
-/datum/material/iron
+/datum/prototype/material/iron
 	name = "iron"
 	id = MAT_IRON
 	stack_type = /obj/item/stack/material/iron
@@ -6,6 +6,8 @@
 	sheet_singular_name = "ingot"
 	sheet_plural_name = "ingots"
 	tgui_icon_key = "ingots"
+
+	worth = 1
 
 	relative_integrity = 0.7
 	density = 8 * 0.7
@@ -17,3 +19,5 @@
 	refraction = MATERIAL_RESISTANCE_NONE
 	absorption = MATERIAL_RESISTANCE_LOW
 	nullification = MATERIAL_RESISTANCE_NONE
+
+	material_constraints = MATERIAL_CONSTRAINT_RIGID

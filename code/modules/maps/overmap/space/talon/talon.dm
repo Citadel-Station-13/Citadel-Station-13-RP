@@ -112,7 +112,7 @@
 ///////////////////////////
 //// The Various Machines
 /obj/machinery/telecomms/allinone/talon
-	freq_listening = list(PUB_FREQ, TALON_FREQ)
+	freq_listening = list(FREQ_COMMON, FREQ_TALON)
 
 /obj/item/paper/talon_shields
 	name = "To whatever asshole"
@@ -273,7 +273,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm/talon, 26)
 		/obj/item/clothing/shoes/boots/jackboots,
 		/obj/item/clothing/shoes/boots/jackboots/toeless,
 		/obj/item/handcuffs = 2,
-		/obj/item/gun/energy/stunrevolver,
+		/obj/item/gun/projectile/energy/stunrevolver,
 		/obj/item/clothing/accessory/armor/tag/civsec,
 		/obj/item/flash,
 		/obj/item/flashlight/maglight,
@@ -347,7 +347,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm/talon, 26)
 		/obj/item/clothing/under/rank/pilot1,
 		/obj/item/clothing/suit/storage/toggle/bomber/pilot,
 		/obj/item/clothing/gloves/fingerless,
-		/obj/item/reagent_containers/food/snacks/liquidfood,
+		/obj/item/reagent_containers/food/snacks/liquid,
 		/obj/item/reagent_containers/food/drinks/cans/waterbottle,
 		/obj/item/radio,
 		/obj/item/clothing/under/utility/blue,

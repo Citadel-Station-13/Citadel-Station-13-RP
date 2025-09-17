@@ -30,11 +30,11 @@ GLOBAL_VAR_INIT(default_glide_size, 0)
 /// Enables smooth movement
 #define SMOOTH_MOVEMENT
 
-/// Set appearance flags in vars
+/// Set appearance flags in vars to the appearance flags to be used for a tile mover.
 #ifdef SMOOTH_MOVEMENT
 	#define SET_APPEARANCE_FLAGS(_flags) appearance_flags = (_flags | LONG_GLIDE | TILE_MOVER)
 #else
-	#define SET_APPEARANCE_FLAGS(_flags) appearance_flags = _flags
+	#define SET_APPEARANCE_FLAGS(_flags) appearance_flags = (_flags | TILE_MOVER)
 #endif
 
 /// set glide size of atom based on if smooth movement is on or not

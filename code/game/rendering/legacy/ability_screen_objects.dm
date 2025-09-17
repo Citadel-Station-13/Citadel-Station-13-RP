@@ -101,10 +101,12 @@
 	for(var/atom/movable/screen/ability/ability in ability_objects)
 		ability.update_icon(forced)
 		ability.index = i
-		ability.maptext = "[ability.index]" // Slot number
+		ability.maptext = MAPTEXT("[ability.index]") // Slot number
 		i++
 
+// todo: what the fuck?
 /atom/movable/screen/movable/ability_master/update_icon()
+	. = ..()
 	if(ability_objects.len)
 		invisibility = 0
 	else
@@ -249,6 +251,7 @@
 //	else
 //		icon_state = "[spell_base]_spell_ready"
 	cut_overlays()
+	. = ..()
 	icon_state = "[background_base_state]_spell_base"
 
 	add_overlay(ability_icon_state)

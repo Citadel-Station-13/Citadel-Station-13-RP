@@ -24,7 +24,7 @@
 	..()
 	add_implants()
 
-/obj/machinery/implantchair/attack_hand(mob/user, list/params)
+/obj/machinery/implantchair/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	user.set_machine(src)
 	var/health_text = ""
 	if(src.occupant)
@@ -42,7 +42,7 @@
 	if(src.occupant)
 		dat += "[src.ready ? "<A href='?src=\ref[src];implant=1'>Implant</A>" : "Recharging"]<BR>"
 	user.set_machine(src)
-	user << browse(dat, "window=implant")
+	user << browse(HTML_SKELETON(dat), "window=implant")
 	onclose(user, "implant")
 
 

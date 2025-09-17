@@ -34,19 +34,11 @@
 
 	alt_titles = list(
 		"Engineering Training Specialist" = /datum/prototype/struct/alt_title/engi_trainer,
-		"Artificer-Adept" = /datum/prototype/struct/alt_title/artificer_adept
 		)
 
 /datum/prototype/struct/alt_title/engi_trainer
 	title = "Engineering Training Specialist"
 	title_blurb = "An Engineering Training Specialist is an experienced engineer who dedicates their time and expertise to the training of those who are less knowledgeable."
-
-/datum/prototype/struct/alt_title/artificer_adept
-	title = "Artificer-Adept"
-	background_allow = list(
-		/datum/lore/character_background/faction/naramadiguilds
-	)
-	background_enforce = TRUE
 
 /datum/outfit/job/station/station_engineer/senior
 	name = OUTFIT_JOB_NAME("Senior Engineer")

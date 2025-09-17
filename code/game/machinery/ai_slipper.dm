@@ -22,11 +22,12 @@
 	..()
 	update_icon()
 
-/obj/machinery/ai_slipper/update_icon()
+/obj/machinery/ai_slipper/update_icon_state()
 	if(machine_stat & (NOPOWER|BROKEN))
 		icon_state = "motion0"
 	else
 		icon_state = disabled ? "motion0" : "motion3"
+	return ..()
 
 /obj/machinery/ai_slipper/proc/setState(var/enabled, var/uses)
 	disabled = disabled
@@ -57,7 +58,7 @@
 /obj/machinery/ai_slipper/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/ai_slipper/attack_hand(mob/user, list/params)
+/obj/machinery/ai_slipper/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	if((get_dist(src, user) > 1))

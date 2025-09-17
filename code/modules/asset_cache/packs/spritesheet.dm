@@ -40,6 +40,12 @@
 	/// "foo_bar" -> list("32x32", 5)
 	var/list/sprites = list()
 
+/datum/asset_pack/spritesheet/unload()
+	..()
+	to_generate = list()
+	sizes = list()
+	sprites = list()
+
 /datum/asset_pack/spritesheet/register(generation)
 	return construct()
 

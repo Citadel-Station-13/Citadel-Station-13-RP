@@ -156,7 +156,7 @@
 	///Volume of interface sounds.
 	var/clickvol = 40
 	var/obj/item/circuitboard/circuit = null
-	///If false, SSmachines. If true, SSfastprocess.
+	///If false, SSmachines. If true, SSprocess_5fps.
 	var/speed_process = FALSE
 
 	var/interaction_flags_machine = INTERACT_MACHINE_WIRES_IF_OPEN | INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OPEN_SILICON | INTERACT_MACHINE_SET_MACHINE
@@ -176,7 +176,7 @@
 	if(!speed_process)
 		START_MACHINE_PROCESSING(src)
 	else
-		START_PROCESSING(SSfastprocess, src)
+		START_PROCESSING(SSprocess_5fps, src)
 
 	if(!mapload)	// area handles this
 		power_change()
@@ -186,7 +186,7 @@
 	if(!speed_process)
 		STOP_MACHINE_PROCESSING(src)
 	else
-		STOP_PROCESSING(SSfastprocess, src)
+		STOP_PROCESSING(SSprocess_5fps, src)
 	if(component_parts)
 		for(var/atom/A in component_parts)
 			if(A.loc == src) // If the components are inside the machine, delete them.
@@ -235,22 +235,6 @@
 /obj/machinery/proc/set_panel_open(panel_opened)
 	panel_open = panel_opened
 	update_appearance()
-
-/obj/machinery/legacy_ex_act(severity)
-	switch(severity)
-		if(1.0)
-			qdel(src)
-			return
-		if(2.0)
-			if(prob(50))
-				qdel(src)
-				return
-		if(3.0)
-			if(prob(25))
-				qdel(src)
-				return
-		else
-	return
 
 /obj/machinery/vv_edit_var(var_name, new_value)
 	if(var_name == NAMEOF(src, use_power))
@@ -304,12 +288,12 @@
 		return attack_hand(user)
 
 // todo: refactor
-/obj/machinery/attack_hand(mob/user, list/params)
+/obj/machinery/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	if(IsAdminGhost(user))
 		return FALSE
-	if(!(istype(user, /mob/living/carbon/human) || istype(user, /mob/living/silicon)))
+	if(!user.IsAdvancedToolUser())
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return TRUE
 	if(ishuman(user))
@@ -424,6 +408,7 @@
 	if(panel_open || !R.panel_req)
 		var/obj/item/circuitboard/CB = circuit
 		var/P
+		var/replaced = FALSE //simply to play a sound for feedback for now.
 		for(var/obj/item/A in component_parts)
 			var/our_rating = A.rped_rating()
 			if(isnull(our_rating))
@@ -444,10 +429,14 @@
 						component_parts += B
 						B.loc = null
 						to_chat(user, "<span class='notice'>[A.name] replaced with [B.name].</span>")
+						replaced = TRUE
 						break
 		R.obj_storage.ui_queue_refresh()
+		if(replaced)
+			playsound(src.loc, R.part_replacement_sound, 50, TRUE)
 		update_appearance()
 		RefreshParts()
+
 	return 1
 
 // todo: refactor

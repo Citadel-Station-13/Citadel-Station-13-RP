@@ -58,7 +58,7 @@ For now this is still usable but bad.
 		my_mob.low_priority = TRUE
 
 		if(faction)
-			my_mob.faction = faction
+			my_mob.set_iff_factions(faction)
 
 		if(atmos_comp)
 			var/turf/T = get_turf(src)
@@ -91,22 +91,6 @@ For now this is still usable but bad.
 		STOP_PROCESSING(SSobj, src)
 		depleted = TRUE
 		return
-
-//Shadekin spawner. Could have them show up on any mission, so it's here.
-//Make sure to put them away from others, so they don't get demolished by rude mobs.
-/obj/tether_away_spawner/shadekin
-	name = "Shadekin Spawner"
-	icon = 'icons/mob/vore_shadekin.dmi'
-	icon_state = "spawner"
-
-	faction = "shadekin"
-	prob_spawn = 1
-	prob_fall = 1
-	//guard = 10 //Don't wander too far, to stay alive.
-	mobs_to_pick_from = list(
-		/mob/living/simple_mob/shadekin
-	)
-
 
 // Underdark mob spawners
 /obj/tether_away_spawner/underdark_drone_swarm

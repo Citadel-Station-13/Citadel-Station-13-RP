@@ -134,10 +134,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/mining_airlock)
 "hP" = (
-/obj/machinery/door/airlock/maintenance/common{
-	locked = 1;
-	name = "SM delam chamber"
-	},
 /obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/plating/lythios43c{
 	outdoors = 0
@@ -181,7 +177,7 @@
 "ky" = (
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark";
 	name = "glacier wall"
@@ -200,7 +196,7 @@
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark";
 	name = "glacier wall"
@@ -245,7 +241,7 @@
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark";
 	name = "glacier wall"
@@ -380,7 +376,7 @@
 /area/rift/surfacebase/underground/under1)
 "wV" = (
 /obj/effect/zone_divider,
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark";
 	name = "glacier wall"
@@ -566,7 +562,7 @@
 /turf/simulated/floor/plating,
 /area/quartermaster/mining_airlock)
 "Hk" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/quartermaster/mining_airlock)
 "Ho" = (
@@ -632,7 +628,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/mining_airlock)
 "Nd" = (
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark"
 	},
@@ -691,7 +687,7 @@
 /turf/simulated/wall/prepainted/cargo,
 /area/quartermaster/mining_airlock)
 "Ro" = (
-/turf/unsimulated/wall/planetary/lythios43c{
+/turf/unsimulated/wall/planetary/permafrost{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark";
 	name = "glacier wall"
@@ -10688,13 +10684,13 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+xK
+xK
+xK
+xK
+xK
+xK
+xK
 dq
 dq
 dq
@@ -10881,15 +10877,15 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+xK
+xK
+xK
+xK
+xK
+xK
+xK
+xK
+xK
 dq
 dq
 dq
@@ -11075,15 +11071,15 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+xK
+xK
+xK
+xK
+xK
+xK
+xK
+xK
+xK
 dq
 dq
 dq
@@ -11269,15 +11265,15 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+xK
+xK
+xK
+xo
+xo
+xo
+xK
+xK
+xK
 dq
 dq
 dq
@@ -11464,13 +11460,13 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+xK
+xK
+xo
+tz
+xo
+xK
+xK
 dq
 dq
 dq
@@ -11658,13 +11654,13 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+xK
+xK
+xo
+gu
+xo
+xK
+xK
 dq
 dq
 dq
@@ -11848,16 +11844,16 @@ dq
 dq
 dq
 dq
-xK
-xK
-xK
-xK
-xK
-xK
-xK
 dq
 dq
 dq
+dq
+dq
+xK
+xo
+hP
+xo
+xK
 dq
 dq
 dq
@@ -12041,16 +12037,16 @@ dq
 dq
 dq
 dq
-xK
-xK
-xK
-xK
-xK
-xK
-xK
-xK
-xK
 dq
+dq
+dq
+dq
+dq
+dq
+dq
+pd
+KS
+pd
 dq
 dq
 dq
@@ -12235,15 +12231,15 @@ KS
 dq
 dq
 dq
-xK
-xK
-xK
-xK
-xK
-xK
-xK
-xK
-xK
+dq
+dq
+dq
+dq
+dq
+dq
+dq
+KS
+KS
 dq
 dq
 dq
@@ -12429,15 +12425,15 @@ KS
 KS
 dq
 dq
-xK
-xK
-xK
-xo
-xo
-xo
-xK
-xK
-xK
+dq
+dq
+dq
+dq
+dq
+dq
+dq
+KS
+KS
 dq
 dq
 dq
@@ -12624,14 +12620,14 @@ KS
 dq
 dq
 dq
-xK
-xK
-xo
-tz
-xo
-xK
-xK
 dq
+dq
+dq
+dq
+dq
+dq
+KS
+KS
 dq
 dq
 dq
@@ -12818,14 +12814,14 @@ KS
 dq
 dq
 dq
-xK
-xK
-xo
-gu
-xo
-xK
-xK
 dq
+dq
+dq
+dq
+dq
+dq
+KS
+KS
 dq
 dq
 dq
@@ -13013,13 +13009,13 @@ dq
 dq
 dq
 dq
-xK
-xo
-hP
-xo
-xK
 dq
 dq
+dq
+dq
+dq
+KS
+KS
 dq
 dq
 dq
@@ -13208,12 +13204,12 @@ KS
 dq
 dq
 dq
-pd
+dq
+dq
+dq
 KS
-pd
-dq
-dq
-dq
+KS
+KS
 dq
 dq
 dq
@@ -13405,8 +13401,8 @@ KS
 KS
 KS
 KS
-dq
-dq
+KS
+KS
 dq
 dq
 dq
@@ -13599,7 +13595,7 @@ KS
 KS
 KS
 KS
-dq
+KS
 dq
 dq
 dq

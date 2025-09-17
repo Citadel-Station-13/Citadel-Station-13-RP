@@ -44,6 +44,8 @@
 		var/pix_Y = text2num(screen_loc_Y[2]) - 16
 		screen_loc = "[screen_loc_X[1]]:[pix_X],[screen_loc_Y[1]]:[pix_Y]"
 
+	moved = TRUE
+
 /atom/movable/screen/movable/proc/encode_screen_X(X)
 	var/view_dist = world.view
 	if(view_dist)
@@ -101,6 +103,29 @@
 	else if(findtext(Y,"CENTER"))
 		. = view_dist+1
 
+/**
+ * call to try to reset position
+ *
+ * subtypes must implement this!
+ */
+/atom/movable/screen/movable/proc/request_position_reset()
+	screen_loc = initial(screen_loc)
+
+/**
+ * use in Click() to allow ctrl shift click resetting of position
+ * like so:
+ *
+ * /atom/movable/screen/movable/action_button/Click(location, contrl, params)
+ * var/list/decoded_params = params2list(params)
+ * if(ctrl_shift_click_reset_hook(decoded_params))
+ * 	 return
+ */
+/atom/movable/screen/movable/proc/ctrl_shift_click_reset_hook(list/params)
+	if(params["ctrl"] && params["shift"])
+		request_position_reset()
+		return TRUE
+	return FALSE
+
 //Debug procs
 /client/proc/test_movable_UI()
 	set category = "Debug"
@@ -109,7 +134,7 @@
 	var/atom/movable/screen/movable/M = new()
 	M.name = "Movable UI Object"
 	M.icon_state = "block"
-	M.maptext = "Movable"
+	M.maptext = MAPTEXT("Movable")
 	M.maptext_width = 64
 
 	var/screen_l = input(usr,"Where on the screen? (Formatted as 'X,Y' e.g: '1,1' for bottom left)","Spawn Movable UI Object") as text
@@ -128,7 +153,7 @@
 	var/atom/movable/screen/movable/snap/S = new()
 	S.name = "Snap UI Object"
 	S.icon_state = "block"
-	S.maptext = "Snap"
+	S.maptext = MAPTEXT("Snap")
 	S.maptext_width = 64
 
 	var/screen_l = input(usr,"Where on the screen? (Formatted as 'X,Y' e.g: '1,1' for bottom left)","Spawn Snap UI Object") as text

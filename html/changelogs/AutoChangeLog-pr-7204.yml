@@ -1,0 +1,4 @@
+author: "Zandario"
+delete-after: True
+changes:
+  - bugfix: "Ghosts can no longer screw with TGUI panels they shouldn't be able to."

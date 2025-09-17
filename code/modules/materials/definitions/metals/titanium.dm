@@ -1,4 +1,4 @@
-/datum/material/plasteel/titanium
+/datum/prototype/material/plasteel/titanium
 	id = MAT_TITANIUM
 	name = MAT_TITANIUM
 	stack_type = /obj/item/stack/material/titanium
@@ -9,6 +9,8 @@
 	table_icon_base = "metal"
 	tgui_icon_key = "titanium"
 
+	worth = 3
+
 	relative_integrity = 1
 	density = 8 * 0.5
 	relative_conductivity = 1.27
@@ -18,7 +20,9 @@
 	absorption = MATERIAL_RESISTANCE_LOW
 	nullification = MATERIAL_RESISTANCE_NONE
 
-/datum/material/plasteel/titanium/hull
+	material_constraints = MATERIAL_CONSTRAINT_RIGID
+
+/datum/prototype/material/plasteel/titanium/hull
 	id = "titanium_hull"
 	name = MAT_TITANIUMHULL
 	stack_type = null

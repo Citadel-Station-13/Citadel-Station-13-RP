@@ -40,7 +40,7 @@
 */
 //! End ofNon-implemented Subtypes
 
-/obj/item/reagent_containers/pill/patch/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/reagent_containers/pill/patch/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/L = user
 
 	if(target == L)
@@ -52,6 +52,9 @@
 				return
 			if(affecting.robotic >= ORGAN_ROBOT)
 				to_chat(user, SPAN_WARNING("\The [src] won't work on a robotic limb!"))
+				return
+			if(affecting.behaviour_flags & BODYPART_NO_PATCH)
+				to_chat(user, SPAN_WARNING("\The [src] won't work on this limb!"))
 				return
 
 			if(!H.can_inject(user, FALSE, L.zone_sel.selecting, pierce_material))
@@ -99,7 +102,7 @@
 
 		user.visible_message(SPAN_WARNING("[user] attempts to place \the [src] onto [H]`s [affecting]."))
 
-		user.setClickCooldown(user.get_attack_speed(src))
+		user.setClickCooldownLegacy(user.get_attack_speed_legacy(src))
 		if(!do_mob(user, target))
 			return
 

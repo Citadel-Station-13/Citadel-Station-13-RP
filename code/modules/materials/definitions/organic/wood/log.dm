@@ -1,7 +1,7 @@
-/datum/material/wood_log
+/datum/prototype/material/wood_log
 	id = "log"
 	name = "log"
-	icon_base = 'icons/turf/walls/log.dmi'
+	icon_base = 'icons/turf/walls/wood_wall.dmi' // TODO: make a log wall sprites
 	stack_type = /obj/item/stack/material/log
 	sheet_singular_name = null
 	sheet_plural_name = "pile"
@@ -35,7 +35,11 @@
 	absorption = MATERIAL_RESISTANCE_MODERATE
 	nullification = MATERIAL_RESISTANCE_VULNERABLE
 
-/datum/material/wood_log/generate_recipes()
+	worth = 5
+
+	material_constraints = MATERIAL_CONSTRAINT_RIGID
+
+/datum/prototype/material/wood_log/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(
 		name = "bonfire",
@@ -43,15 +47,34 @@
 		cost = 5,
 	)
 
-/datum/material/wood_log/sif
+/datum/prototype/material/wood_log/sif
 	id = "log_sif"
 	name = MAT_SIFLOG
 	icon_colour = "#0099cc" // Cyan-ish
 	stack_origin_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2)
 	stack_type = /obj/item/stack/material/log/sif
 
-/datum/material/wood_log/hard
+/datum/prototype/material/wood_log/hard
 	id = "log_hardwood"
 	name = MAT_HARDLOG
 	icon_colour = "#6f432a"
 	stack_type = /obj/item/stack/material/log/hard
+
+/datum/prototype/material/wood_log/ironwood
+	id = "log_ironwood"
+	name = MAT_IRONLOG
+	icon_colour = "#5C5454"
+	sheet_singular_name = "log"
+	stack_type = /obj/item/stack/material/log/ironwood
+
+	relative_integrity = 0.9
+	weight_multiplier = 0.8
+	density = 8 * 0.8
+	relative_conductivity = 0.1
+	relative_permeability = 0.05
+	relative_reactivity = 1 //Not quite as reactive as regular wood
+	hardness = MATERIAL_RESISTANCE_MODERATE
+	toughness = MATERIAL_RESISTANCE_HIGH
+	refraction = MATERIAL_RESISTANCE_NONE
+	absorption = MATERIAL_RESISTANCE_MODERATE
+	nullification = MATERIAL_RESISTANCE_NONE

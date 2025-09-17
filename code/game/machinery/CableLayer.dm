@@ -17,7 +17,7 @@
 	. = ..()
 	layCable(new_turf,M_Dir)
 
-/obj/machinery/cablelayer/attack_hand(mob/user, list/params)
+/obj/machinery/cablelayer/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(!cable&&!on)
 		to_chat(user, SPAN_WARNING("\The [src] doesn't have any cable loaded."))
 		return
@@ -84,7 +84,7 @@
 	if(istype(new_turf, /turf/simulated/floor))
 		var/turf/simulated/floor/T = new_turf
 		if(!T.is_plating())
-			T.make_plating(!(T.broken || T.burnt))
+			T.auto_dismantle_flooring()
 	return new_turf.is_plating()
 
 /obj/machinery/cablelayer/proc/layCable(var/turf/new_turf,var/M_Dir)

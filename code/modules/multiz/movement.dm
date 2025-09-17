@@ -16,8 +16,8 @@
 	if(eyeobj)
 		return eyeobj.zMove(direction)
 
-	if(istype(loc,/obj/mecha))
-		var/obj/mecha/mech = loc
+	if(istype(loc,/obj/vehicle/sealed/mecha))
+		var/obj/vehicle/sealed/mecha/mech = loc
 		return mech.relaymove(src,direction)
 
 	if(!can_ztravel())
@@ -276,7 +276,7 @@
 	return FALSE
 
 // Mechas are anchored, so we need to override.
-/obj/mecha/can_fall()
+/obj/vehicle/sealed/mecha/can_fall()
 	return TRUE
 
 /mob/can_fall()
@@ -309,18 +309,12 @@
 	var/obj/structure/stairs/stairs = locate() in landing
 	if(!stairs)
 		// Now lets move there!
-		// todo: this should not use Move
-		if(!Move(landing))
+		if(!forceMove(landing))
 			return 1
 
 		var/atom/A = find_fall_target(oldloc, landing)
-		if(special_fall_handle(A) || !A || !A.check_impact(src))
+		if(special_fall_handle(A) || !A || !A.check_z_impact(src))
 			return
-		var/mob/drop_mob = locate(/mob, landing)
-		if(drop_mob && !(drop_mob == src) && ismob(drop_mob) && isliving(drop_mob)) //Shitload of checks. This is because the game finds various ways to screw me over.
-			var/mob/living/drop_living = drop_mob
-			if(drop_living.dropped_onto(src))
-				return
 		fall_impact(A)
 	else
 		locationTransitForceMove(landing)
@@ -343,6 +337,8 @@
 
 	// First hit objects in the turf!
 	for(var/atom/movable/A in landing)
+		if(A.atom_flags & (ATOM_NONWORLD | ATOM_ABSTRACT))
+			continue
 		if(A != src && A.CheckFall(src))
 			return A
 
@@ -360,7 +356,7 @@
 // CheckFall landing.fall_impact(src)
 
 //! ## THE FALLING PROCS ###
-
+// todo: rework falling :/
 
 /**
  * Called on everything that falling_atom might hit.
@@ -371,15 +367,15 @@
 		return TRUE
 	return prevent_z_fall(falling_atom, 0, NONE) & (FALL_TERMINATED | FALL_BLOCKED)
 
-
 /**
  * If you are hit: how is it handled.
  * Return TRUE if the generic fall_impact should be called.
  * Return FALSE if you handled it yourself or if there's no effect from hitting you.
+ *
+ * todo: this is a legacy proc
  */
-/atom/proc/check_impact(atom/movable/falling_atom)
+/atom/proc/check_z_impact(atom/movable/falling_atom)
 	return TRUE
-
 
 /**
  * Called by CheckFall when we actually hit something. Various Vars will be described below.
@@ -388,15 +384,18 @@
  * damage_max is the largest amount of damage a thing (currently only mobs and mechs) will take from falling.
  * If silent is True, the proc won't play sound or give a message.
  * If planetary is True, it's harder to stop the fall damage.
+ *
+ *  todo: rework everything lmao
  */
 /atom/movable/proc/fall_impact(atom/hit_atom, damage_min = 0, damage_max = 10, silent = FALSE, planetary = FALSE)
 	if(!silent)
 		visible_message("\The [src] falls from above and slams into \the [hit_atom]!", "You hear something slam into \the [hit_atom].")
 	for(var/atom/movable/A in src.contents)
+		if(A.atom_flags & (ATOM_NONWORLD | ATOM_ABSTRACT))
+			continue
 		A.fall_impact(hit_atom, damage_min, damage_max, silent = TRUE)
 	for(var/mob/M in buckled_mobs)
 		M.fall_impact(hit_atom, damage_min, damage_max, silent, planetary)
-
 
 /// Take damage from falling and hitting the ground.
 /mob/living/fall_impact(atom/hit_atom, damage_min = 0, damage_max = 5, silent = FALSE, planetary = FALSE)
@@ -421,15 +420,15 @@
 		if(!silent)
 			if(planetary)
 				visible_message(
-					SPAN_USERDANGER("\A [src] falls out of the sky and crashes into \the [landing]!"),
-					SPAN_USERDANGER("You fall out of the sky and crash into \the [landing]!"),
+					SPAN_USERDANGER("\A [src] falls out of the sky and crashes into [landing]!"),
+					SPAN_USERDANGER("You fall out of the sky and crash into [landing]!"),
 					SPAN_HEAR("You hear something slam into \the [landing]."),
 				)
 				var/turf/T = get_turf(landing)
 				explosion(T, 0, 1, 2)
 			else
 				visible_message(
-					SPAN_WARNING("\The [src] falls from above and slams into \the [landing]!"),
+					SPAN_WARNING("\The [src] falls from above and slams into [landing]!"),
 					SPAN_DANGER("You fall off and hit \the [landing]!"),
 					SPAN_HEAR("You hear something slam into \the [landing]."),
 				)
@@ -439,7 +438,7 @@
 		// Hits 10 times, because apparently targeting individual limbs lets certain species survive the fall from atmosphere
 		for(var/i = 1 to 10)
 			adjustBruteLoss(rand(damage_min, damage_max))
-		afflict_paralyze(20 * 4)
+		afflict_paralyze(8 SECONDS)
 		update_health()
 
 /mob/living/carbon/human/fall_impact(atom/hit_atom, damage_min, damage_max, silent, planetary)
@@ -498,7 +497,7 @@
 		return parachuting
 
 // Mech Code
-/obj/mecha/handle_fall(turf/landing)
+/obj/vehicle/sealed/mecha/handle_fall(turf/landing)
 	// First things first, break any lattice
 	var/obj/structure/lattice/lattice = locate(/obj/structure/lattice, loc)
 	if(lattice)
@@ -509,7 +508,7 @@
 	// Then call parent to have us actually fall
 	return ..()
 
-/obj/mecha/fall_impact(var/atom/hit_atom, var/damage_min = 15, var/damage_max = 30, var/silent = FALSE, var/planetary = FALSE)
+/obj/vehicle/sealed/mecha/fall_impact(var/atom/hit_atom, var/damage_min = 15, var/damage_max = 30, var/silent = FALSE, var/planetary = FALSE)
 	// Anything on the same tile as the landing tile is gonna have a bad day.
 	for(var/mob/living/L in hit_atom.contents)
 		L.visible_message(SPAN_DANGER("\The [src] crushes \the [L] as it lands on them!"))
@@ -565,12 +564,9 @@
 		var/turf/simulated/floor/ground = hit_atom
 		ground.break_tile()
 
-
+// todo: rewrite this entire file
 /mob/CheckFall(atom/movable/falling_atom)
 	return falling_atom.fall_impact(src)
 
-//! I didn't feel like removing @silicons' check in handle_fall(). @Zandario
-/mob/living/proc/dropped_onto(atom/hit_atom)
-	if(!isliving(hit_atom))
-		return FALSE
-	return TRUE
+/mob/observer/CheckFall(atom/movable/falling_atom)
+	return FALSE

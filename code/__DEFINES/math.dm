@@ -2,13 +2,22 @@
 // This file is quadruple wrapped for your pleasure
 // (
 
+/// The value of the mathematical constant 'e', also known as Euler's number. Not to be confused with Euler's constant.
 #define NUM_E 2.71828183
-
+/// The value of sqrt(2); defined for speed
 #define SQRT_2 1.414214
+/// The value of the mathematical constant 'Pi'
+#define M_PI 3.14159265
 
-#define M_PI						(3.14159265)
-///closer then enough
-#define INFINITY				(1.#INF)
+/// A quick way to write (1.#INF)
+#define INFINITY (1.#INF)
+
+/// the highest number that does not lose precision when only using the one's place
+///
+/// * floating point has serious inaccuracies; after this limit, we can no longer track to one's place
+/// * you usually don't have to worry about this if you're not writing anything that requires accuracy
+/// * if you are, note that accuracy is lost even below this limit for fractionals.
+/// * please look up how IEEE single precision floats work for more details.
 #define SHORT_REAL_LIMIT 16777216
 
 //"fancy" math for calculating time in ms from tick_usage percentage and the length of ticks
@@ -28,31 +37,37 @@
 #define SIGN(x) ( (x)!=0 ? (x) / abs(x) : 0 )
 
 /// ceil()
+//
+// todo: get rid of this, this is native now
 #define ROUND_UP(x) ( -round(-(x)))
 /// floor()
+//
+// todo: get rid of this, this is native now
 #define ROUND_DOWN(x) (round(x))
 
-// x to the nearest higher multiple of y
+/// x to the nearest higher multiple of y
+///
+/// * This is not replaced by native ceil(), as that is always CEILING(x, 1)!
 #define CEILING(x, y) ( -round(-(x) / (y)) * (y) )
-// x to the nearest lower multiple of y
+
+/// round() acts like floor(x, 1) by default but can't handle other values
 #define FLOOR(x, y) ( round((x) / (y)) * (y) )
 
 // Similar to clamp but the bottom rolls around to the top and vice versa. min is inclusive, max is exclusive
 #define WRAP(val, min, max) ( min == max ? min : (val) - (round(((val) - (min))/((max) - (min))) * ((max) - (min))) )
 
 // Real modulus that handles decimals
-#define MODULUS(x, y) ( (x) - (y) * round((x) / (y)) )
+#define MODULUS_F(x, y) ( (x) - (y) * round((x) / (y)) )
 
-// Cotangent
+/// Cotangent
 #define COT(x) (1 / tan(x))
-
-// Secant
+/// Secant
 #define SEC(x) (1 / cos(x))
-
-// Cosecant
+/// Cosecant
 #define CSC(x) (1 / sin(x))
 
 // ArcTan2. Returns the degree between two points in an x and y system.
+// todo: get rid of this, this is native now
 /proc/arctantwo(x1,y1,x2,y2)
   var/dx = x2-x1
   var/dy = y2-y1
@@ -128,12 +143,13 @@
 
 // Will filter out extra rotations and negative rotations
 // E.g: 540 becomes 180. -180 becomes 180.
-#define SIMPLIFY_DEGREES(degrees) (MODULUS((degrees), 360))
+#define SIMPLIFY_DEGREES(degrees) (MODULUS_F((degrees), 360))
 
-#define GET_ANGLE_OF_INCIDENCE(face, input) (MODULUS((face) - (input), 360))
+#define GET_ANGLE_OF_INCIDENCE(face, input) (MODULUS_F((face) - (input), 360))
 
 //Finds the shortest angle that angle A has to change to get to angle B. Aka, whether to move clock or counterclockwise.
 /proc/closer_angle_difference(a, b)
+	// todo: optimize this shit
 	if(!isnum(a) || !isnum(b))
 		return
 	a = SIMPLIFY_DEGREES(a)

@@ -21,6 +21,8 @@ field_generator power level display
 	anchored = 0
 	density = 1
 	use_power = USE_POWER_OFF
+	armor = /datum/armor/object/heavy
+	worth_intrinsic = 350
 	var/const/num_power_levels = 6	// Total number of power level icon has
 	var/Varedit_start = 0
 	var/Varpower = 0
@@ -73,7 +75,7 @@ field_generator power level display
 	return
 
 
-/obj/machinery/field_generator/attack_hand(mob/user, list/params)
+/obj/machinery/field_generator/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(state == 2)
 		if(get_dist(src, user) <= 1)//Need to actually touch the thing to turn it on
 			if(src.active >= 1)
@@ -150,22 +152,19 @@ field_generator power level display
 		..()
 		return
 
-
 /obj/machinery/field_generator/emp_act()
 	return 0
 
-/obj/machinery/field_generator/bullet_act(var/obj/projectile/Proj)
-	if(istype(Proj, /obj/projectile/beam))
-		power += Proj.damage * EMITTER_DAMAGE_POWER_TRANSFER
+/obj/machinery/field_generator/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	if(istype(proj, /obj/projectile/beam))
+		power += proj.damage_force * EMITTER_DAMAGE_POWER_TRANSFER
 		update_icon()
-	return 0
-
+		return PROJECTILE_IMPACT_DELETE
+	return ..()
 
 /obj/machinery/field_generator/Destroy()
 	src.cleanup()
 	. = ..()
-
-
 
 /obj/machinery/field_generator/proc/turn_off()
 	active = 0

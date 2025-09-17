@@ -50,8 +50,9 @@
 		visible_message("<span class='warning'>\The [src] sounds an alarm, swinging its hatch open.</span>")
 		go_out()
 
-/obj/machinery/vr_sleeper/update_icon()
+/obj/machinery/vr_sleeper/update_icon_state()
 	icon_state = "[base_state][occupant ? "1" : "0"]"
+	return ..()
 
 /obj/machinery/vr_sleeper/Topic(href, href_list)
 	if(..())
@@ -72,7 +73,7 @@
 	add_fingerprint(user)
 
 	if(occupant && (istype(I, /obj/item/healthanalyzer) || istype(I, /obj/item/robotanalyzer)))
-		I.melee_interaction_chain(occupant, user)
+		I.lazy_melee_interaction_chain(occupant, user)
 		return
 
 	if(default_deconstruction_screwdriver(user, I))
@@ -114,7 +115,7 @@
 			visible_message("<span class='danger'>\The [src]'s internal lighting flashes rapidly, before the hatch swings open with a cloud of smoke.</span>")
 			smoke.set_up(severity, 0, src)
 			smoke.start("#202020")
-		go_out()
+		INVOKE_ASYNC(src, PROC_REF(go_out))
 
 	..(severity)
 

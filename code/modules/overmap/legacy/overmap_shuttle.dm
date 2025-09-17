@@ -3,7 +3,8 @@
 /datum/shuttle/autodock/overmap
 	warmup_time = 10
 
-	var/range = 0	//how many overmap tiles can shuttle go, for picking destinations and returning.
+	// additional bounds range we can jump to
+	var/range = 3
 	var/fuel_consumption = 0 //Amount of moles of gas consumed per trip; If zero, then shuttle is magic and does not need fuel
 	var/list/obj/structure/fuel_port/fuel_ports //the fuel ports of the shuttle (but usually just one)
 	var/obj/overmap/entity/visitable/ship/landable/myship //my overmap ship object
@@ -60,11 +61,14 @@
 	if(!our_sector && myship?.landmark)
 		res["Perform Test Jump"] = myship.landmark
 		return res //We're not on the overmap, maybe an admin spawned us on a non-sector map. We're broken until we connect to our space z-level.
-	for (var/obj/overmap/entity/visitable/S in range(get_turf(our_sector), range))
+	var/obj/overmap/entity/top_ship = myship
+	while(!isturf(top_ship.loc) && istype(top_ship.loc, /obj/overmap/entity))
+		top_ship = top_ship.loc
+	for (var/obj/overmap/entity/visitable/S in bounds(top_ship, range))
 		var/list/waypoints = S.get_waypoints(name)
 		for(var/obj/effect/shuttle_landmark/LZ in waypoints)
 			if(LZ.is_valid(src))
-				res["[waypoints[LZ]] - [LZ.name]"] = LZ
+				res[LZ.name] = LZ
 	return res
 
 /datum/shuttle/autodock/overmap/get_location_name()
@@ -134,7 +138,7 @@
 	opened = 1	//shows open so you can diagnose 'oops, no gas' easily
 	icon_state = "fuel_port_empty"	//set the default state just to be safe
 
-/obj/structure/fuel_port/attack_hand(mob/user, list/params)
+/obj/structure/fuel_port/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(!opened)
 		to_chat(user, "<spawn class='notice'>The door is secured tightly. You'll need a crowbar to open it.")
 		return
@@ -171,7 +175,3 @@
 				return
 			to_chat(user, SPAN_WARNING("You install [W] in [src]."))
 	update_icon()
-
-// Walls hide stuff inside them, but we want to be visible.
-/obj/structure/fuel_port/hide()
-	return

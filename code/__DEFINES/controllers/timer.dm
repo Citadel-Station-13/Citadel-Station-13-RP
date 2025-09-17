@@ -1,4 +1,14 @@
 //! ## Timing subsystem
+
+/**
+ * Create a new timer and add it to the queue.
+ * Arguments:
+ * * callback the callback to call on timer finish
+ * * wait deciseconds to run the timer for
+ * * atom_flags atom_flags for this timer, see: code\__DEFINES\subsystems.dm
+ */
+#define addtimer(args...) _addtimer(args, file = __FILE__, line = __LINE__)
+
 /**
  * Don't run if there is an identical unique timer active
  *

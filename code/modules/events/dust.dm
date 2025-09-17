@@ -10,7 +10,7 @@
 	if(victim)
 		command_announcement.Announce("The [location_name()] is now passing through a belt of space dust.", "[location_name()] Sensor Array")
 	else
-		command_announcement.Announce("Debris resulting from activity on another nearby asteroid is approaching \the [location_name()]", "Dust Alert")
+		command_announcement.Announce("A micrometeoroid cloud has been detected approaching \the [location_name()]", "Dust Alert")
 
 /datum/event/dust/tick()
 	if(prob(10))

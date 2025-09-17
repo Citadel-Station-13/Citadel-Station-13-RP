@@ -36,9 +36,6 @@
 			if(ispath(thing, /datum/species))
 				var/datum/species/access = thing
 				resolved = initial(access.uid)
-			else if(ispath(thing, /datum/character_species))
-				var/datum/character_species/access = thing
-				resolved = initial(access.uid)
 			allow_species -= thing
 			allow_species += resolved
 		else if(istext(thing))
@@ -53,9 +50,6 @@
 			if(ispath(thing, /datum/species))
 				var/datum/species/access = thing
 				resolved = initial(access.uid)
-			else if(ispath(thing, /datum/character_species))
-				var/datum/character_species/access = thing
-				resolved = initial(access.uid)
 			allow_species -= thing
 			allow_species += resolved
 		else if(istext(thing))
@@ -66,20 +60,20 @@
 		CRASH("innate languages not a list; fix your shit.")
 	for(var/thing in innate_languages)
 		if(ispath(thing))
-			innate_languages += SScharacters.resolve_language_path(thing).id
+			innate_languages += RSlanguages.fetch(thing).id
 			innate_languages -= thing
 		else if(istext(thing))
-			ASSERT(!!SScharacters.resolve_language_id(thing))
+			ASSERT(!!RSlanguages.fetch(thing))
 		else
 			CRASH("you didn't put a valid path or text; fix your shit.")
 
 /**
- * id passed in is for a /datum/character_species, NOT a /datum/speices!
+ * id passed in is for a /datum/species, NOT a /datum/speices!
  */
 /datum/lore/character_background/proc/check_species_id(id)
-	return check_character_species(SScharacters.resolve_character_species(id))
+	return check_species(SScharacters.resolve_character_species(id))
 
-/datum/lore/character_background/proc/check_character_species(datum/character_species/S)
+/datum/lore/character_background/proc/check_species(datum/species/S)
 	if(allow_species)
 		return (S.uid in allow_species) || (subspecies_included && S.is_subspecies && (S.superspecies_id in allow_species))
 	else if(forbid_species)

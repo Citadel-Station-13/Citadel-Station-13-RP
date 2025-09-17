@@ -28,9 +28,11 @@
 	else
 		icon_state = "[initial(icon_state)]"
 
+// todo: this is shitcode rework this
 /obj/structure/prop/lock/projectile
 	name = "beam lock"
 	desc = "An esoteric object that responds to high intensity light."
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 	var/projectile_key = /obj/projectile/beam
 	var/timed = 0
@@ -39,11 +41,14 @@
 
 	interaction_message = "<span class='notice'>The object remains inert to your touch.</span>"
 
-/obj/structure/prop/lock/projectile/bullet_act(var/obj/projectile/Proj)
-	if(!istype(Proj, projectile_key) || timing)
-		return
+/obj/structure/prop/lock/projectile/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	if(!istype(proj, projectile_key))
+		return ..()
 
-	if(istype(Proj, /obj/projectile/beam/heavylaser/cannon) || istype(Proj, /obj/projectile/beam/emitter) || (Proj.damage >= 80 && Proj.damtype == BURN))
+	if(timing)
+		return PROJECTILE_IMPACT_DELETE
+
+	if(istype(proj, /obj/projectile/beam/heavylaser/cannon) || istype(proj, /obj/projectile/beam/emitter) || (proj.damage_force >= 80 && proj.damage_type == DAMAGE_TYPE_BURN))
 		toggle_lock()
 		visible_message("<span class='notice'>\The [src] [enabled ? "disengages" : "engages"] its locking mechanism.</span>")
 
@@ -51,3 +56,5 @@
 			timing = 1
 			spawn(time_limit)
 				toggle_lock()
+
+	return PROJECTILE_IMPACT_DELETE

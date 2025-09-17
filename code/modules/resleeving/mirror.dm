@@ -8,9 +8,10 @@
 	catalogue_data = /datum/category_item/catalogue/technology/resleeving
 	icon = 'icons/obj/mirror.dmi'
 	icon_state = "mirror_implant_f"
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	var/stored_mind = null
 	var/tmp/mob/living/carbon/human/human
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 
 //holder to prevent having to find it each time
 /mob/living/carbon/human/var/obj/item/implant/mirror/mirror
@@ -80,6 +81,10 @@
 				forceMove(MT)
 				MT.imp = src
 
+/obj/item/implant/mirror/surgically_remove(mob/living/carbon/human/target, obj/item/organ/external/chest/removing_from)
+	. = ..()
+	target.mirror = null
+
 /obj/item/implant/mirror/positronic
 	name = "Synthetic Mirror"
 	desc = "An altered form of the common mirror designed to work with synthetic brains."
@@ -107,7 +112,7 @@
 	throw_range = 10
 	materials_base = list(MAT_STEEL = 200)
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 
 /obj/item/mirrortool
 	name = "Mirror Installation Tool"
@@ -122,7 +127,7 @@
 	throw_range = 10
 	materials_base = list(MAT_STEEL = 200)
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	var/obj/item/implant/mirror/imp = null
 
 /obj/item/mirrortool/afterattack(atom/target, mob/user, clickchain_flags, list/params)
@@ -132,7 +137,7 @@
 	if(user.zone_sel.selecting == BP_TORSO && imp == null)
 		if(imp == null && H.mirror)
 			H.visible_message("<span class='warning'>[user] is attempting remove [H]'s mirror!</span>")
-			user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
+			user.setClickCooldownLegacy(DEFAULT_QUICK_COOLDOWN)
 			user.do_attack_animation(H)
 			var/turf/T1 = get_turf(H)
 			if (T1 && ((H == user) || do_after(user, 20)))
@@ -155,7 +160,7 @@
 				return
 			if(!H.mirror)
 				H.visible_message("<span class='warning'>[user] is attempting to implant [H] with a mirror.</span>")
-				user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
+				user.setClickCooldownLegacy(DEFAULT_QUICK_COOLDOWN)
 				user.do_attack_animation(H)
 				var/turf/T1 = get_turf(H)
 				if (T1 && ((H == user) || do_after(user, 20)))
@@ -170,7 +175,7 @@
 		to_chat(usr, "You must target the torso.")
 	return CLICKCHAIN_DO_NOT_PROPAGATE
 
-/obj/item/mirrortool/attack_self(mob/user)
+/obj/item/mirrortool/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -181,7 +186,7 @@
 		imp = null
 		update_icon()
 
-/obj/item/mirrortool/attack_hand(mob/user as mob)
+/obj/item/mirrortool/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		user.put_in_hands_or_drop(imp)
 		imp = null
@@ -205,5 +210,5 @@
 		imp = I
 		user.visible_message("[user] inserts the [I] into the [src].", "You insert the [I] into the [src].")
 	update_icon()
-	update_held_icon()
+	update_worn_icon()
 	return

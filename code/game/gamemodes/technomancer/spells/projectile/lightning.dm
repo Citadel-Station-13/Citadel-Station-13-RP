@@ -24,19 +24,20 @@
 	name = "lightning"
 	icon_state = "lightning"
 	nodamage = 1
-	damage_type = HALLOSS
+	damage_type = DAMAGE_TYPE_HALLOSS
 
-	muzzle_type = /obj/effect/projectile/muzzle/lightning
-	tracer_type = /obj/effect/projectile/tracer/lightning
-	impact_type = /obj/effect/projectile/impact/lightning
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/lightning
+	legacy_tracer_type = /obj/effect/projectile/tracer/lightning
+	legacy_impact_type = /obj/effect/projectile/impact/lightning
 
 	var/power = 60				//How hard it will hit for with electrocute_act().
 
-/obj/projectile/beam/lightning/projectile_attack_mob(var/mob/living/target_mob, var/distance, var/miss_modifier=0)
-	if(ishuman(target_mob))
-		var/mob/living/carbon/human/H = target_mob
-		var/obj/item/organ/external/affected = H.get_organ(check_zone(BP_TORSO))
-		H.electrocute_act(power, src, H.get_siemens_coefficient_organ(affected), affected, 0)
-	else
-		target_mob.electrocute_act(power, src, 0.75, BP_TORSO)
+/obj/projectile/beam/lightning/on_impact(atom/target, impact_flags, def_zone, efficiency)
+	. = ..()
+	if(. & (PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT | PROJECTILE_IMPACT_BLOCKED))
+		return
+	var/mob/living/target_mob = target
+	if(!isliving(target_mob))
+		return
+	target_mob.electrocute(power * 10, power, 0, NONE, def_zone, src)
 	return 1

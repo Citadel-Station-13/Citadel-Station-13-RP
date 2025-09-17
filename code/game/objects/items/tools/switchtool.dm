@@ -104,7 +104,7 @@
 			module_string += "\a [module.name], "
 	return module_string
 
-/obj/item/switchtool/attack_self(mob/user)
+/obj/item/switchtool/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -161,18 +161,13 @@
 		to_chat(user, "\The [src] doesn't have any available modules!")
 		return
 	var/obj/item/choice
-	choice = show_radial_menu(user, src, options)
+	choice = show_radial_menu(user, user, options, require_near = TRUE)
 	if(deploy(choice))
 		to_chat(user, "You deploy \the [deployed].")
 		return TRUE
 
 /obj/item/switchtool/proc/get_switchtool_enum(obj/item/I)
 	return tools[I]
-
-/obj/item/switchtool/handle_shield(mob/user)
-	if(get_switchtool_enum(deployed) == SWITCHTOOL_SHIELD)
-		return TRUE
-	return FALSE
 
 /obj/item/switchtool/update_overlays()
 	. = ..()
@@ -282,19 +277,19 @@
 	update_icon()
 
 //? click redirection
-/obj/item/switchtool/melee_interaction_chain(atom/target, mob/user, clickchain_flags, params)
+/obj/item/switchtool/melee_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	if(!deployed)
 		return ..()
-	. = deployed.melee_interaction_chain(target, user, clickchain_flags | CLICKCHAIN_REDIRECTED, params)
+	. = deployed.melee_interaction_chain(clickchain, clickchain_flags | CLICKCHAIN_REDIRECTED)
 	if(deployed && deployed.loc != src)
 		deployed.forceMove(src)
 		undeploy()
 
 //? click redirection
-/obj/item/switchtool/ranged_interaction_chain(atom/target, mob/user, clickchain_flags, params)
+/obj/item/switchtool/ranged_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	if(!deployed)
 		return ..()
-	. = deployed.ranged_interaction_chain(target, user, clickchain_flags | CLICKCHAIN_REDIRECTED, params)
+	. = deployed.ranged_interaction_chain(clickchain, clickchain_flags | CLICKCHAIN_REDIRECTED)
 	if(deployed.loc != src)
 		deployed.forceMove(src)
 		undeploy()
@@ -344,8 +339,8 @@
 		/obj/item/multitool/holoswitch = SWITCHTOOL_MULTITOOL,
 		/obj/item/flashlight/holoswitch = SWITCHTOOL_LIGHT,
 		/obj/item/soap/holoswitch = SWITCHTOOL_SOAP,
-		/obj/item/melee/energy/sword/holoswitch = SWITCHTOOL_SWORD,
-		/obj/item/shield/holoswitch = SWITCHTOOL_SHIELD
+		/obj/item/melee/transforming/energy/sword/holoswitch = SWITCHTOOL_SWORD,
+		// /obj/item/shield/holoswitch = SWITCHTOOL_SHIELD
 	)
 	tool_functions = list(
 		TOOL_SCALPEL,
@@ -364,7 +359,7 @@
 
 /obj/item/switchtool/holo/Initialize(mapload)
 	. = ..()
-	add_atom_colour(light_color, FIXED_COLOUR_PRIORITY)
+	add_atom_color(light_color)
 
 /obj/item/switchtool/holo/deploy(var/obj/item/module) //We lightin' it up in here
 	..()
@@ -484,7 +479,7 @@
 	desc = "This should not exist."
 	tool_speed = 0.9
 
-/obj/item/melee/energy/sword/holoswitch
+/obj/item/melee/transforming/energy/sword/holoswitch
 	name = "hardlight blade"
 	desc = "This should not exist."
 

@@ -12,6 +12,9 @@
 	show_messages = 1
 	blood_sprite_state = "uniformblood"
 	attack_hand_auto_unequip = FALSE
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_ALLOW_DEFAULT
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+
 
 	//! Suit Sensors
 	/// do we have suit sensors?
@@ -27,13 +30,13 @@
 	//? If you are using new rendering, you must NOT use autodetection.
 	//? Read the procs for these in the rendering section to know why.
 	/// if true, we assume *all* bodytypes have rolldown states, and to use the new system.
-	var/worn_has_rolldown = UNIFORM_AUTODETECT_ROLL
+	var/worn_has_rolldown = UNIFORM_HAS_ROLL
 	/// if true, we assume *all* bodytypes have rollsleeve states, and to use the new system.
-	var/worn_has_rollsleeve = UNIFORM_AUTODETECT_ROLL
+	var/worn_has_rollsleeve = UNIFORM_HAS_ROLL
 	/// these bodytypes have rolldown if not autodetecting
-	var/datum/bodytypes/worn_rolldown_bodytypes = BODYTYPES_ALL
+	var/datum/bodytypes/worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	/// these bodytypes have rollsleeve if not autodetecting
-	var/datum/bodytypes/worn_rollsleeve_bodytypes = BODYTYPES_ALL
+	var/datum/bodytypes/worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	/// rolldown status
 	var/worn_rolled_down = UNIFORM_ROLL_NULLED
 	/// rollsleeve status
@@ -96,7 +99,7 @@
 
 //? Styles
 
-/obj/item/clothing/under/available_styles(mob/user)
+/obj/item/clothing/under/style_repick_query(mob/user)
 	. = list()
 	var/old_roll = worn_rolled_down
 	var/old_sleeves = worn_rolled_sleeves
@@ -114,7 +117,7 @@
 	worn_rolled_down = old_roll
 	worn_rolled_sleeves = old_sleeves
 
-/obj/item/clothing/under/set_style(style, mob/user)
+/obj/item/clothing/under/style_repick_set(style, mob/user)
 	. = ..()
 	if(.)
 		return
@@ -122,21 +125,21 @@
 		if("normal")
 			worn_rolled_down = UNIFORM_ROLL_FALSE
 			worn_rolled_sleeves = UNIFORM_ROLL_FALSE
-			body_cover_flags = initial(body_cover_flags)
+			set_body_cover_flags(initial(body_cover_flags))
 			update_worn_icon()
 			to_chat(user, SPAN_NOTICE("You roll [src] back to normal."))
 			return TRUE
 		if("rolled down")
 			worn_rolled_down = UNIFORM_ROLL_TRUE
 			worn_rolled_sleeves = UNIFORM_ROLL_FALSE
-			body_cover_flags = (initial(body_cover_flags) & ~(UPPER_TORSO | ARMS | HANDS))
+			set_body_cover_flags(initial(body_cover_flags) & ~(UPPER_TORSO | ARMS | HANDS))
 			update_worn_icon()
 			to_chat(user, SPAN_NOTICE("You roll [src] down."))
 			return TRUE
 		if("rolled sleeves")
 			worn_rolled_down = UNIFORM_ROLL_FALSE
 			worn_rolled_sleeves = UNIFORM_ROLL_TRUE
-			body_cover_flags = (initial(body_cover_flags) & ~(ARMS | HANDS))
+			set_body_cover_flags(initial(body_cover_flags) & ~(ARMS | HANDS))
 			update_worn_icon()
 			to_chat(user, SPAN_NOTICE("You roll [src]'s sleeves."))
 			return TRUE
@@ -170,12 +173,12 @@
 /obj/item/clothing/under/proc/update_rolldown(updating)
 	var/has_roll
 	var/detected_bodytype = BODYTYPE_DEFAULT
-	var/mob/living/carbon/human/H = worn_mob()
+	var/mob/living/carbon/human/H = get_worn_mob()
 	if(istype(H))
 		detected_bodytype = H.species.get_effective_bodytype(H, src, worn_slot)
 	switch(worn_has_rolldown)
 		if(UNIFORM_HAS_ROLL)
-			has_roll = CHECK_BODYTYPE(worn_rolldown_bodytypes, detected_bodytype)
+			has_roll = worn_rolldown_bodytypes?.contains(detected_bodytype)
 		if(UNIFORM_HAS_NO_ROLL)
 			has_roll = FALSE
 		if(UNIFORM_AUTODETECT_ROLL)
@@ -192,12 +195,12 @@
 /obj/item/clothing/under/proc/update_rollsleeve(updating)
 	var/has_sleeves
 	var/detected_bodytype = BODYTYPE_DEFAULT
-	var/mob/living/carbon/human/H = worn_mob()
+	var/mob/living/carbon/human/H = get_worn_mob()
 	if(istype(H))
 		detected_bodytype = H.species.get_effective_bodytype(H, src, worn_slot)
 	switch(worn_has_rollsleeve)
 		if(UNIFORM_HAS_ROLL)
-			has_sleeves = CHECK_BODYTYPE(worn_rollsleeve_bodytypes, detected_bodytype)
+			has_sleeves = worn_rolldown_bodytypes?.contains(detected_bodytype)
 		if(UNIFORM_HAS_NO_ROLL)
 			has_sleeves = FALSE
 		if(UNIFORM_AUTODETECT_ROLL)
@@ -286,11 +289,11 @@
 				SPAN_WARNING("[user] is trying to set \the [src]'s sensors!"),
 				SPAN_WARNING("[user] is trying to set your sensors!")
 			)
-			var/mob/M = worn_mob()
+			var/mob/M = get_worn_mob()
 			if(do_after(user, HUMAN_STRIP_DELAY, M, DO_AFTER_IGNORE_ACTIVE_ITEM))
 				. = strip_menu_sensor_interact(user, M)
 
-/obj/item/clothing/under/proc/strip_menu_sensor_interact(mob/user, mob/wearer = worn_mob())
+/obj/item/clothing/under/proc/strip_menu_sensor_interact(mob/user, mob/wearer = get_worn_mob())
 	add_attack_logs(user, wearer, "Adjusted suit sensor level")
 	set_sensors(user)
 

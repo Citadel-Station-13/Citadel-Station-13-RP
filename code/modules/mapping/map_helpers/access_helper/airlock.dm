@@ -43,6 +43,7 @@
 		ACCESS_SECURITY_MAIN,
 		ACCESS_SCIENCE_MAIN,
 		ACCESS_SUPPLY_MAIN,
+		ACCESS_MEDICAL_MAIN,
 		ACCESS_COMMAND_IAA,
 	)
 
@@ -410,12 +411,12 @@
 /obj/map_helper/access_helper/airlock/station/science/research_lab
 	req_one_access = list(
 		ACCESS_GENERAL_PATHFINDER,
-		ACCESS_SCIENCE_MAIN,
+		ACCESS_SCIENCE_FABRICATION,
 	)
 
 /obj/map_helper/access_helper/airlock/station/science/shared_xenoflora
 	req_one_access = list(
-		ACCESS_SCIENCE_MAIN,
+		ACCESS_SCIENCE_XENOBOTANY,
 		ACCESS_GENERAL_BOTANY,
 	)
 
@@ -527,6 +528,14 @@
 		ACCESS_GENERAL_EXPLORER,
 	)
 
+/obj/map_helper/access_helper/airlock/station/exploration/auxillerysci
+	req_one_access = list(
+		ACCESS_GENERAL_EXPLORER,
+		ACCESS_SCIENCE_ROBOTICS,
+		ACCESS_SCIENCE_MAIN,
+	)
+
+
 /obj/map_helper/access_helper/airlock/station/exploration/shuttle
 	req_one_access = list(
 		ACCESS_GENERAL_PILOT,
@@ -540,6 +549,13 @@
 	req_access = list(
 		ACCESS_COMMAND_BRIDGE,
 	)
+
+/obj/map_helper/access_helper/airlock/station/command/strelka
+	req_one_access = list(
+		ACCESS_COMMAND_BRIDGE,
+		ACCESS_GENERAL_PATHFINDER,
+	)
+//Basically, the pathfinder gets bridge acces since the Strelka is a NEV
 
 /obj/map_helper/access_helper/airlock/station/command/ai_upload
 	req_access = list(
@@ -662,6 +678,21 @@
 		ACCESS_FACTION_TRADER,
 	)
 
+/obj/map_helper/access_helper/airlock/disconnected/gaia
+	req_access = list(
+		ACCESS_GAIA_GUEST,
+	)
+
+/obj/map_helper/access_helper/airlock/disconnected/gaia/premium
+	req_access = list(
+		ACCESS_GAIA_VIP,
+	)
+
+/obj/map_helper/access_helper/airlock/disconnected/gaia/staff
+	req_access = list(
+		ACCESS_GAIA_STAFF,
+	)
+
 /obj/map_helper/access_helper/airlock/disconnected/pirate
 	req_access = list(
 		ACCESS_FACTION_PIRATE,
@@ -675,4 +706,9 @@
 /obj/map_helper/access_helper/airlock/disconnected/talon
 	req_access = list(
 		ACCESS_FACTION_TALON,
+	)
+
+/obj/map_helper/access_helper/airlock/disconnected/sdf
+	req_access = list(
+		ACCESS_FACTION_SDF,
 	)

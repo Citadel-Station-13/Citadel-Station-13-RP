@@ -7,7 +7,9 @@ GLOBAL_PROTECT(href_token)
 	var/rank			= "Temporary Admin"
 	var/client/owner	= null
 	var/rights = 0
-	var/fakekey			= null
+	// todo: rework
+	/// If set, we are under stealth-mode with this as our public ckey.
+	var/fakekey = null
 
 	var/datum/marked_datum
 

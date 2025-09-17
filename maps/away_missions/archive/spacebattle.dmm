@@ -5,7 +5,6 @@
 /turf/space,
 /area)
 "ac" = (
-/turf/simulated/shuttle/wall/dark,
 /turf/space,
 /area/awaymission/spacebattle/syndicate2)
 "ad" = (
@@ -60,21 +59,15 @@
 /area/awaymission/spacebattle/syndicate2)
 "as" = (
 /obj/structure/table/reinforced,
-/obj/item/grenade/empgrenade,
-/turf/simulated/floor,
-/area/awaymission/spacebattle/syndicate2)
-"at" = (
-/obj/structure/table/reinforced,
-/obj/item/ammo_magazine/m10x24mm,
+/obj/item/grenade/simple/emp,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/syndicate2)
 "au" = (
 /obj/structure/table/reinforced,
-/obj/item/gun/ballistic/automatic/c20r,
+/obj/item/gun/projectile/ballistic/automatic/c20r,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/syndicate2)
 "av" = (
-/turf/simulated/shuttle/wall/dark,
 /turf/space,
 /area/awaymission/spacebattle/syndicate3)
 "aw" = (
@@ -85,7 +78,7 @@
 /area/awaymission/spacebattle/syndicate3)
 "aA" = (
 /obj/structure/table/reinforced,
-/obj/item/gun/ballistic/silenced,
+/obj/item/gun/projectile/ballistic/silenced,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/syndicate2)
 "aB" = (
@@ -125,7 +118,7 @@
 /area/awaymission/spacebattle/syndicate3)
 "aL" = (
 /obj/structure/table/reinforced,
-/obj/item/gun/ballistic/deagle,
+/obj/item/gun/projectile/ballistic/deagle,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/syndicate3)
 "aM" = (
@@ -133,7 +126,6 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/syndicate2)
 "aP" = (
-/turf/simulated/shuttle/wall/dark,
 /turf/space,
 /area/awaymission/spacebattle/syndicate1)
 "aQ" = (
@@ -194,7 +186,7 @@
 /obj/machinery/porta_turret{
 	dir = 8;
 	emagged = 1;
-	installation = /obj/item/gun/energy/lasercannon
+	installation = /obj/item/gun/projectile/energy/lasercannon
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/syndicate2)
@@ -257,7 +249,7 @@
 /area/awaymission/spacebattle/syndicate1)
 "br" = (
 /obj/structure/table/reinforced,
-/obj/item/grenade/spawnergrenade/manhacks,
+/obj/item/grenade/simple/spawner/manhacks,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/syndicate1)
 "bs" = (
@@ -271,7 +263,7 @@
 /area/awaymission/spacebattle/syndicate3)
 "bw" = (
 /obj/structure/table/reinforced,
-/obj/item/melee/energy/sword,
+/obj/item/melee/transforming/energy/sword,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/syndicate1)
 "bx" = (
@@ -287,7 +279,7 @@
 /obj/machinery/porta_turret{
 	dir = 8;
 	emagged = 1;
-	installation = /obj/item/gun/energy/lasercannon
+	installation = /obj/item/gun/projectile/energy/lasercannon
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/syndicate3)
@@ -303,12 +295,11 @@
 /obj/machinery/porta_turret{
 	dir = 8;
 	emagged = 1;
-	installation = /obj/item/gun/energy/lasercannon
+	installation = /obj/item/gun/projectile/energy/lasercannon
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/syndicate1)
 "bJ" = (
-/turf/simulated/shuttle/wall/dark,
 /turf/space,
 /area/awaymission/spacebattle/cruiser)
 "bK" = (
@@ -669,25 +660,25 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "dN" = (
-/obj/mecha/medical/odysseus,
+/obj/vehicle/sealed/mecha/medical/odysseus,
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/cruiser)
 "dO" = (
-/obj/mecha/working/ripley/firefighter,
+/obj/vehicle/sealed/mecha/working/ripley/firefighter,
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/cruiser)
 "dP" = (
 /obj/structure/closet/crate{
 	name = "Gold Crate"
 	},
-/obj/item/mecha_parts/mecha_equipment/tool/hydraulic_clamp,
+/obj/item/vehicle_module/tool/hydraulic_clamp,
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/cruiser)
 "dQ" = (
 /obj/structure/closet/crate{
 	name = "Gold Crate"
 	},
-/obj/item/mecha_parts/mecha_equipment/tool/drill,
+/obj/item/vehicle_module/tool/drill,
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/cruiser)
 "dR" = (
@@ -724,7 +715,7 @@
 /obj/machinery/porta_turret{
 	dir = 8;
 	emagged = 1;
-	installation = /obj/item/gun/energy/lasercannon
+	installation = /obj/item/gun/projectile/energy/lasercannon
 	},
 /area/awaymission/spacebattle/cruiser)
 "ed" = (
@@ -766,14 +757,14 @@
 /obj/structure/closet/crate{
 	name = "Gold Crate"
 	},
-/obj/item/mecha_parts/mecha_equipment/tool/syringe_gun,
+/obj/item/vehicle_module/tool/syringe_gun,
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/cruiser)
 "ej" = (
 /obj/structure/closet/crate{
 	name = "Gold Crate"
 	},
-/obj/item/mecha_parts/mecha_equipment/repair_droid,
+/obj/item/vehicle_module/repair_droid,
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/cruiser)
 "el" = (
@@ -813,7 +804,6 @@
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/cruiser)
 "et" = (
-/turf/simulated/shuttle/wall/dark,
 /turf/space,
 /area/awaymission/spacebattle/syndicate4)
 "eu" = (
@@ -840,7 +830,7 @@
 	mobname = "Davis Hume";
 	name = "Davis Hume"
 	},
-/obj/item/gun/ballistic/shotgun/pump/combat,
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "eC" = (
@@ -889,7 +879,7 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "eR" = (
-/obj/item/shield/energy,
+/obj/item/shield/transforming/energy,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "eT" = (
@@ -930,7 +920,7 @@
 /area/awaymission/spacebattle/cruiser)
 "fa" = (
 /obj/spawner/corpse/syndicatesoldier,
-/obj/item/melee/energy/sword,
+/obj/item/melee/transforming/energy/sword,
 /obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
@@ -939,7 +929,7 @@
 	mobname = "Kurt Kliest";
 	name = "Kurt Kliest"
 	},
-/obj/item/gun/ballistic/shotgun/pump/combat,
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat,
 /obj/item/ammo_casing/a12g/pellet,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
@@ -996,7 +986,7 @@
 /area/awaymission/spacebattle/cruiser)
 "ft" = (
 /obj/spawner/corpse/syndicatesoldier,
-/obj/item/gun/ballistic/automatic/c20r,
+/obj/item/gun/projectile/ballistic/automatic/c20r,
 /obj/item/ammo_casing/a10mm,
 /obj/item/ammo_casing/a10mm,
 /obj/effect/debris/cleanable/blood,
@@ -1007,7 +997,7 @@
 	mobname = "Walter Strider";
 	name = "Walter Strider"
 	},
-/obj/item/gun/ballistic/shotgun/pump/combat,
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat,
 /obj/item/ammo_casing/a10mm,
 /obj/item/ammo_casing/a10mm,
 /obj/effect/debris/cleanable/blood,
@@ -1016,7 +1006,7 @@
 "fx" = (
 /obj/item/ammo_casing/a357,
 /obj/item/ammo_casing/a357,
-/obj/item/gun/ballistic/revolver/mateba,
+/obj/item/gun/projectile/ballistic/revolver/mateba,
 /obj/spawner/corpse/commander{
 	mobname = "Aaron Bowden";
 	name = "Aaron Bowden"
@@ -1049,7 +1039,7 @@
 /area/awaymission/spacebattle/cruiser)
 "gg" = (
 /obj/structure/closet/crate,
-/obj/item/contraband/poster,
+/obj/item/poster,
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/cruiser)
 "gh" = (
@@ -1070,7 +1060,7 @@
 /area/awaymission/spacebattle/cruiser)
 "gt" = (
 /obj/structure/closet/crate/secure/weapon,
-/obj/item/ammo_magazine/s357,
+/obj/item/ammo_magazine/a357/speedloader,
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/cruiser)
 "gu" = (
@@ -1125,12 +1115,12 @@
 /turf/simulated/floor/wood,
 /area/awaymission/spacebattle/cruiser)
 "gE" = (
-/obj/item/gun/ballistic/shotgun/pump/combat,
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "gH" = (
 /obj/structure/closet/crate/secure/weapon,
-/obj/item/gun/energy/laser,
+/obj/item/gun/projectile/energy/laser,
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/cruiser)
 "gI" = (
@@ -1193,11 +1183,10 @@
 /obj/machinery/porta_turret{
 	dir = 8;
 	emagged = 1;
-	installation = /obj/item/gun/energy/lasercannon
+	installation = /obj/item/gun/projectile/energy/lasercannon
 	},
 /area/awaymission/spacebattle/syndicate7)
 "gV" = (
-/turf/simulated/shuttle/wall/dark,
 /turf/space,
 /area/awaymission/spacebattle/syndicate7)
 "gW" = (
@@ -1539,7 +1528,7 @@
 /area/awaymission/spacebattle/cruiser)
 "iy" = (
 /obj/spawner/corpse/syndicatesoldier,
-/obj/item/gun/ballistic/automatic/c20r,
+/obj/item/gun/projectile/ballistic/automatic/c20r,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "iA" = (
@@ -1560,10 +1549,6 @@
 /area)
 "iD" = (
 /turf/simulated/shuttle/wall/dark,
-/area)
-"iE" = (
-/turf/simulated/shuttle/wall/dark,
-/turf/space,
 /area)
 "iF" = (
 /obj/machinery/sleeper,
@@ -1595,7 +1580,6 @@
 	},
 /area)
 "iL" = (
-/turf/simulated/shuttle/wall/dark,
 /turf/space,
 /area/awaymission/spacebattle/syndicate5)
 "iM" = (
@@ -1645,7 +1629,6 @@
 /turf/space,
 /area/awaymission/spacebattle/syndicate5)
 "jc" = (
-/turf/simulated/shuttle/wall/dark,
 /turf/space,
 /area/awaymission/spacebattle/syndicate6)
 "jd" = (
@@ -36686,7 +36669,7 @@ aj
 aj
 ah
 an
-at
+an
 an
 an
 aj
@@ -37971,7 +37954,7 @@ aj
 aj
 ah
 an
-at
+an
 an
 an
 aj
@@ -38227,7 +38210,7 @@ aj
 aj
 aj
 ah
-at
+an
 aj
 aj
 aj
@@ -44524,7 +44507,7 @@ iJ
 iJ
 iD
 iD
-iE
+ab
 ab
 ab
 ab
@@ -44782,7 +44765,7 @@ iG
 iG
 iO
 iD
-iE
+ab
 ab
 ab
 ab
@@ -45040,7 +45023,7 @@ iG
 iG
 iF
 iD
-iE
+ab
 ab
 ab
 ab
@@ -45298,7 +45281,7 @@ iG
 iG
 iF
 iD
-iE
+ab
 ab
 ab
 ab
@@ -46583,7 +46566,7 @@ iG
 iG
 iF
 iD
-iE
+ab
 ab
 ab
 ab
@@ -46839,7 +46822,7 @@ iG
 iG
 iF
 iD
-iE
+ab
 ab
 ab
 ab
@@ -47086,7 +47069,7 @@ ab
 ab
 ab
 ab
-iE
+ab
 iD
 iG
 iG
@@ -47095,7 +47078,7 @@ iG
 iG
 iF
 iD
-iE
+ab
 ab
 ab
 ab
@@ -47344,14 +47327,14 @@ ab
 ab
 ab
 ab
-iE
+ab
 iD
 iD
 iJ
 iJ
 iD
 iD
-iE
+ab
 ab
 ab
 ab

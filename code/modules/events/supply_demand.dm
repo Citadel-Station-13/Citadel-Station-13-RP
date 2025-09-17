@@ -1,6 +1,6 @@
 /var/global/running_demand_events = list()
 
-/hook/sell_shuttle/proc/supply_demand_sell_shuttle(var/area/area_shuttle)
+/legacy_hook/sell_shuttle/proc/supply_demand_sell_shuttle(var/area/area_shuttle)
 	for(var/datum/event/supply_demand/E in running_demand_events)
 		E.handle_sold_shuttle(area_shuttle)
 	return 1 // All hooks must return one to show success.
@@ -101,7 +101,7 @@
 
 	for(var/atom/movable/MA in area_shuttle)
 		// Special case to allow us to count mechs!
-		if(MA.anchored && !istype(MA, /obj/mecha))	continue // Ignore anchored stuff
+		if(MA.anchored && !istype(MA, /obj/vehicle/sealed/mecha))	continue // Ignore anchored stuff
 
 		// If its a crate, search inside of it for matching items.
 		if(istype(MA, /obj/structure/closet/crate))
@@ -210,7 +210,7 @@
 		return
 	var/amount_to_take = min(I.reagents.get_reagent_amount(reagent_id), qty_need)
 	if(amount_to_take >= 1)
-		I.reagents.remove_reagent(reagent_id, amount_to_take, safety = 1)
+		I.reagents.remove_reagent(reagent_id, amount_to_take)
 		qty_need = CEILING((qty_need - amount_to_take), 1)
 		return 1
 	else
@@ -268,9 +268,9 @@
 	return
 
 /datum/event/supply_demand/proc/choose_research_items(var/differentTypes)
-	var/list/types = typesof(/datum/design) - /datum/design
+	var/list/types = typesof(/datum/prototype/design) - /datum/prototype/design
 	for(var/i in 1 to differentTypes)
-		var/datum/design/D = pick(types)
+		var/datum/prototype/design/D = pick(types)
 		types -= D // Don't pick the same thing twice
 		var/chosen_path = initial(D.build_path)
 		var/chosen_qty = rand(1, 3)
@@ -309,10 +309,10 @@
 /datum/event/supply_demand/proc/choose_robotics_items(var/differentTypes)
 	// Do not make mechs dynamic, its too silly
 	var/list/types = list(
-		/obj/mecha/combat/durand,
-		/obj/mecha/combat/gygax,
-		/obj/mecha/medical/odysseus,
-		/obj/mecha/working/ripley)
+		/obj/vehicle/sealed/mecha/combat/durand,
+		/obj/vehicle/sealed/mecha/combat/gygax,
+		/obj/vehicle/sealed/mecha/medical/odysseus,
+		/obj/vehicle/sealed/mecha/working/ripley)
 	for(var/i in 1 to differentTypes)
 		var/T = pick(types)
 		types -= T // Don't pick the same thing twice

@@ -19,9 +19,14 @@ Pipelines + Other Objects -> Pipe network
 	obj_flags = OBJ_ON_BLUEPRINTS | OBJ_MELEE_TARGETABLE
 	// why block contents? so you ventcrawling little fucks don't pull a 2020 Citadel Main.
 	rad_flags = RAD_BLOCK_CONTENTS | RAD_NO_CONTAMINATE
-	atom_colouration_system = FALSE
 	climb_allowed = FALSE
 	depth_projected = FALSE
+	hides_underfloor = OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP
+	hides_underfloor_defaulting = FALSE
+
+	//* Underfloor *//
+	/// automatically update_underlays() during update_underfloor
+	var/hides_underfloor_underlays = FALSE
 
 	///The color of the pipe
 	var/pipe_color
@@ -99,7 +104,7 @@ Pipelines + Other Objects -> Pipe network
 
 /obj/machinery/atmospherics/proc/add_underlay(var/turf/T, var/obj/machinery/atmospherics/node, var/direction, var/icon_connect_type)
 	if(node)
-		if(!T.is_plating() && node.level == 1 && istype(node, /obj/machinery/atmospherics/pipe))
+		if(istype(node, /obj/machinery/atmospherics/pipe) && (node.will_hide_underfloor()) && T.hides_underfloor_objects())
 			//underlays += icon_manager.get_atmos_icon("underlay_down", direction, color_cache_name(node))
 			underlays += icon_manager.get_atmos_icon("underlay", direction, color_cache_name(node), "down" + icon_connect_type)
 		else
@@ -174,10 +179,12 @@ Pipelines + Other Objects -> Pipe network
 
 // Deconstruct into a pipe item.
 /obj/machinery/atmospherics/drop_products(method, atom/where)
-	if(construction_type)
+	if(construction_type && !circuit)
 		var/obj/item/pipe/I = new construction_type(loc, null, null, src)
 		I.setPipingLayer(piping_layer)
 		transfer_fingerprints_to(I)
+		return
+	return ..()
 
 // Return a list of nodes which we should call atmos_init() and build_network() during on_construction()
 /obj/machinery/atmospherics/proc/get_neighbor_nodes_for_init()
@@ -188,8 +195,6 @@ Pipelines + Other Objects -> Pipe network
 	pipe_color = obj_color
 	setPipingLayer(set_layer)
 	// TODO - M.connect_types = src.connect_types - Or otherwise copy from item? Or figure it out from piping layer?
-	var/turf/T = get_turf(src)
-	level = !T.is_plating() ? 2 : 1
 	atmos_init()
 	if(QDELETED(src))
 		return // TODO - Eventually should get rid of the need for this.
@@ -234,20 +239,33 @@ Pipelines + Other Objects -> Pipe network
 	// pixel_y = PIPE_PIXEL_OFFSET_Y(piping_layer)
 	// layer = initial(layer) + PIPE_LAYER_OFFSET(piping_layer)
 
-/obj/machinery/atmospherics/hide(do_hide)
-	if(do_hide && level == 1)
-		layer = PIPE_LAYER
+/obj/machinery/atmospherics/proc/get_standard_layer(underfloor)
+	if(underfloor)
+		switch(piping_layer)
+			if(PIPING_LAYER_SCRUBBER)
+				return PIPES_SCRUBBER_LAYER
+			if(PIPING_LAYER_SUPPLY)
+				return PIPES_SUPPLY_LAYER
+			if(PIPING_LAYER_FUEL)
+				return PIPES_FUEL_LAYER
+			if(PIPING_LAYER_AUX)
+				return PIPES_AUX_LAYER
+			else
+				return PIPE_LAYER
 	else
-		reset_plane_and_layer()
+		return EXPOSED_PIPE_LAYER
 
-// todo: refactor
+/obj/machinery/atmospherics/reset_plane_and_layer()
+	set_plane(TURF_PLANE)
+	set_base_layer(get_standard_layer())
 
-/obj/machinery/atmospherics/is_hidden_underfloor()
-	var/turf/T = loc
-	return istype(T) && (level == 1) && !T.is_plating()
-
-/obj/machinery/atmospherics/should_hide_underfloor()
-	return level == 1
+/obj/machinery/atmospherics/update_hiding_underfloor(new_value)
+	. = ..()
+	if(!.)
+		return
+	reset_plane_and_layer()
+	if(hides_underfloor_underlays)
+		update_underlays()
 
 /**
  * currently unimplemented

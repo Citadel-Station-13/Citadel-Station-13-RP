@@ -8,6 +8,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/glue_bone
+	step_name = "Glue bone"
+
 	allowed_tools = list(
 		/obj/item/surgical/bonegel = 100
 	)
@@ -21,6 +23,7 @@
 	max_duration = 60
 
 /datum/surgery_step/glue_bone/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
+	if(!..()) return FALSE
 	if (!hasorgans(target))
 		return 0
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
@@ -50,6 +53,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/set_bone
+	step_name = "Set bone"
+
 	allowed_tools = list(
 		/obj/item/surgical/bonesetter = 100,
 		/obj/item/surgical/bonesetter_primitive = 60
@@ -88,13 +93,15 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, damaging the bone in [target]'s [affected.name] with \the [tool]!</font>" , \
 		"<font color='red'>Your hand slips, damaging the bone in [target]'s [affected.name] with \the [tool]!</font>")
-	affected.create_wound(BRUISE, 5)
+	affected.create_wound(WOUND_TYPE_BRUISE, 5)
 
 ///////////////////////////////////////////////////////////////
 // Skull Mending Surgery
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/mend_skull
+	step_name = "Mend skull"
+
 	allowed_tools = list(
 		/obj/item/surgical/bonesetter = 100,
 		/obj/item/surgical/bonesetter_primitive = 60
@@ -127,7 +134,7 @@
 	user.visible_message("<font color='red'>[user]'s hand slips, damaging [target]'s face with \the [tool]!</font>"  , \
 		"<font color='red'>Your hand slips, damaging [target]'s face with \the [tool]!</font>")
 	var/obj/item/organ/external/head/h = affected
-	h.create_wound(BRUISE, 10)
+	h.create_wound(WOUND_TYPE_BRUISE, 10)
 	h.disfigured = 1
 
 ///////////////////////////////////////////////////////////////
@@ -135,6 +142,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/finish_bone
+	step_name = "Finish bone"
+
 	allowed_tools = list(
 		/obj/item/surgical/bonegel = 100
 	)
@@ -176,6 +185,8 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/clamp_bone
+	step_name = "Clamp bone"
+
 	allowed_tools = list(
 		/obj/item/surgical/bone_clamp = 100
 		)
@@ -210,4 +221,4 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, damaging the bone in [target]'s [affected.name] with \the [tool]!</font>" , \
 		"<font color='red'>Your hand slips, damaging the bone in [target]'s [affected.name] with \the [tool]!</font>")
-	affected.create_wound(BRUISE, 5)
+	affected.create_wound(WOUND_TYPE_BRUISE, 5)

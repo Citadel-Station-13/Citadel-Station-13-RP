@@ -2,14 +2,6 @@
 "aa" = (
 /turf/space,
 /area/space/debrisfield/explored)
-"af" = (
-/obj/structure/door_assembly/door_assembly_alien,
-/turf/simulated/floor/plating/external,
-/area/debrisfield/derelict)
-"ag" = (
-/obj/machinery/door/airlock/alien,
-/turf/simulated/floor/plating/external,
-/area/debrisfield/derelict)
 "al" = (
 /obj/structure/shuttle/engine/propulsion{
 	dir = 8;
@@ -33,7 +25,7 @@
 /area/debrisfield/derelict)
 "ap" = (
 /mob/living/simple_mob/mechanical/infectionbot{
-	faction = "derelict"
+	iff_factions = "derelict"
 	},
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/debrisfield/derelict)
@@ -52,7 +44,7 @@
 /area/debrisfield/derelict)
 "at" = (
 /obj/random/humanoidremains,
-/obj/item/gun/energy/ionrifle,
+/obj/item/gun/projectile/energy/ionrifle,
 /turf/simulated/floor/tiled/airless,
 /area/debrisfield/derelict)
 "au" = (
@@ -90,7 +82,7 @@
 /area/debrisfield/derelict)
 "aA" = (
 /mob/living/simple_mob/mechanical/infectionbot{
-	faction = "derelict"
+	iff_factions = "derelict"
 	},
 /turf/simulated/floor/tiled/airless,
 /area/debrisfield/derelict)
@@ -105,13 +97,6 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/steel/airless,
-/area/debrisfield/derelict)
-"aF" = (
-/obj/machinery/porta_turret/alien{
-	faction = "derelict";
-	use_power = 0
-	},
-/turf/simulated/floor/plating/external,
 /area/debrisfield/derelict)
 "aH" = (
 /obj/structure/cable{
@@ -138,10 +123,6 @@
 	},
 /turf/simulated/floor/tiled/steel/airless,
 /area/debrisfield/derelict)
-"aM" = (
-/obj/structure/catwalk,
-/turf/simulated/floor/plating/external,
-/area/debrisfield/derelict)
 "aN" = (
 /obj/machinery/transhuman/synthprinter,
 /turf/simulated/floor/tiled/airless,
@@ -152,13 +133,13 @@
 /area/debrisfield/derelict)
 "aQ" = (
 /obj/machinery/vr_sleeper/alien,
-/obj/item/grenade/empgrenade,
+/obj/item/grenade/simple/emp,
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/debrisfield/derelict)
 "aR" = (
 /obj/mob_spawner/derelict/corrupt_maint_swarm,
 /mob/living/simple_mob/mechanical/corrupt_maint_drone{
-	faction = "derelict"
+	iff_factions = "derelict"
 	},
 /turf/simulated/floor/tiled/airless,
 /area/debrisfield/derelict)
@@ -265,7 +246,7 @@
 "bo" = (
 /obj/mob_spawner/derelict/corrupt_maint_swarm,
 /mob/living/simple_mob/mechanical/corrupt_maint_drone{
-	faction = "derelict"
+	iff_factions = "derelict"
 	},
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/debrisfield/derelict)
@@ -302,7 +283,7 @@
 /area/debrisfield/derelict)
 "bu" = (
 /mob/living/simple_mob/mechanical/infectionbot{
-	faction = "derelict"
+	iff_factions = "derelict"
 	},
 /turf/simulated/floor/tiled/white/airless,
 /area/debrisfield/derelict)
@@ -365,13 +346,6 @@
 /area/debrisfield/derelict)
 "bI" = (
 /obj/structure/prop/prism,
-/turf/simulated/floor/tiled/asteroid_steel/airless,
-/area/debrisfield/derelict)
-"bJ" = (
-/obj/structure/cable,
-/obj/machinery/power/apc/south_mount{
-	alarms_hidden = 1
-	},
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/debrisfield/derelict)
 "bL" = (
@@ -453,18 +427,9 @@
 	},
 /turf/simulated/floor/tiled/white/airless,
 /area/debrisfield/derelict)
-"ce" = (
-/obj/structure/alien/egg,
-/obj/structure/alien/weeds,
-/turf/simulated/floor/tiled/asteroid_steel/airless,
-/area/debrisfield/derelict)
 "cf" = (
 /obj/machinery/dna_scannernew,
 /turf/simulated/floor/tiled/white/airless,
-/area/debrisfield/derelict)
-"cg" = (
-/obj/item/gun/energy/ionrifle,
-/turf/simulated/floor/plating/external,
 /area/debrisfield/derelict)
 "ch" = (
 /obj/structure/cable{
@@ -494,12 +459,6 @@
 /obj/structure/ghost_pod/manual/lost_drone,
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/debrisfield/derelict)
-"cm" = (
-/obj/item/grenade/empgrenade,
-/obj/item/grenade/empgrenade,
-/obj/item/grenade/empgrenade,
-/turf/simulated/floor/plating/external,
-/area/debrisfield/derelict)
 "co" = (
 /obj/random/humanoidremains,
 /turf/simulated/floor/tiled/asteroid_steel/airless,
@@ -513,10 +472,6 @@
 "cq" = (
 /obj/structure/ghost_pod/manual/lost_drone/dogborg,
 /turf/simulated/floor/tiled/asteroid_steel/airless,
-/area/debrisfield/derelict)
-"cr" = (
-/obj/machinery/door/airlock/alien/locked,
-/turf/simulated/floor/plating/external,
 /area/debrisfield/derelict)
 "ct" = (
 /obj/random/humanoidremains,
@@ -537,130 +492,27 @@
 	},
 /turf/simulated/floor/tiled/white/airless,
 /area/debrisfield/derelict)
-"cy" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/plating/external,
-/area/debrisfield/derelict)
-"cz" = (
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/obj/machinery/power/apc/east_mount{
-	alarms_hidden = 1
-	},
-/turf/simulated/floor/tiled/asteroid_steel/airless,
-/area/debrisfield/derelict)
 "cA" = (
 /turf/simulated/floor/tiled/airless,
-/area/debrisfield/derelict)
-"cB" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/turf/simulated/floor/plating/external,
 /area/debrisfield/derelict)
 "cE" = (
 /obj/mob_spawner/derelict/corrupt_maint_swarm,
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/debrisfield/derelict)
-"cF" = (
-/obj/structure/ghost_pod/manual/lost_drone/dogborg,
-/turf/simulated/floor/plating/external,
-/area/debrisfield/derelict)
-"cG" = (
-/obj/machinery/door/airlock/hatch{
-	icon_state = "door_locked";
-	id_tag = null;
-	locked = 1;
-	name = "AI Core";
-	req_access = list(16)
-	},
-/turf/simulated/floor/plating/external,
-/area/debrisfield/derelict)
-"cH" = (
-/obj/machinery/door/airlock/hatch{
-	icon_state = "door_locked";
-	id_tag = null;
-	locked = 1;
-	name = "AI Core";
-	req_access = list(16)
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/plating/external,
-/area/debrisfield/derelict)
 "cI" = (
 /obj/structure/shuttle/engine/propulsion,
 /turf/space,
-/area/debrisfield/derelict)
-"cJ" = (
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
-/obj/machinery/power/apc/north_mount{
-	alarms_hidden = 1
-	},
-/turf/simulated/floor/greengrid/airless,
-/area/debrisfield/derelict)
-"cK" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/machinery/power/fractal_reactor{
-	alpha = 0;
-	invisibility = 101
-	},
-/turf/simulated/floor/plating/external,
-/area/debrisfield/derelict)
-"cL" = (
-/obj/mob_spawner/derelict/mech_wizard,
-/turf/simulated/floor/plating/external,
 /area/debrisfield/derelict)
 "cM" = (
 /obj/structure/prop/alien/computer,
 /turf/simulated/floor/greengrid/airless,
 /area/debrisfield/derelict)
-"cN" = (
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/obj/machinery/power/apc/east_mount{
-	alarms_hidden = 1
-	},
-/turf/simulated/floor/plating/external,
-/area/debrisfield/derelict)
 "cO" = (
 /obj/structure/prop/fake_ai,
 /turf/simulated/floor/greengrid/airless,
 /area/debrisfield/derelict)
-"cR" = (
-/obj/structure/catwalk,
-/obj/machinery/porta_turret/alien{
-	faction = "derelict";
-	use_power = 0
-	},
-/turf/simulated/floor/plating/external,
-/area/debrisfield/derelict)
 "cV" = (
 /turf/simulated/floor/greengrid/airless,
-/area/debrisfield/derelict)
-"cW" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/plating/external,
-/area/debrisfield/derelict)
-"cX" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/turf/simulated/floor/plating/external,
 /area/debrisfield/derelict)
 "cZ" = (
 /obj/structure/cable{
@@ -683,22 +535,84 @@
 /obj/structure/prop/prism,
 /turf/simulated/floor/greengrid/airless,
 /area/debrisfield/derelict)
-"dZ" = (
-/obj/effect/decal/mecha_wreckage/gygax/adv,
-/turf/simulated/floor/plating/external,
-/area/debrisfield/derelict)
 "fl" = (
 /obj/machinery/door/airlock/alien,
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/debrisfield/derelict)
+"kc" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/plating/outdoors,
+/area/debrisfield/derelict)
+"kY" = (
+/obj/structure/door_assembly/door_assembly_alien,
+/turf/simulated/floor/plating/outdoors,
+/area/debrisfield/derelict)
 "mG" = (
 /turf/space,
+/area/debrisfield/derelict)
+"nC" = (
+/obj/structure/ghost_pod/manual/lost_drone/dogborg,
+/turf/simulated/floor/plating/outdoors,
+/area/debrisfield/derelict)
+"oJ" = (
+/obj/machinery/door/airlock/alien/locked,
+/turf/simulated/floor/plating/outdoors,
+/area/debrisfield/derelict)
+"sb" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating/outdoors,
+/area/debrisfield/derelict)
+"tx" = (
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/obj/machinery/power/apc/east_mount{
+	alarms_hidden = 1
+	},
+/turf/simulated/floor/tiled/asteroid_steel/airless,
+/area/debrisfield/derelict)
+"uQ" = (
+/obj/machinery/door/airlock/hatch{
+	icon_state = "door_locked";
+	id_tag = null;
+	locked = 1;
+	name = "AI Core";
+	req_access = list(16)
+	},
+/turf/simulated/floor/plating/outdoors,
+/area/debrisfield/derelict)
+"vb" = (
+/obj/structure/cable,
+/obj/machinery/power/apc/south_mount{
+	alarms_hidden = 1
+	},
+/turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/debrisfield/derelict)
 "vL" = (
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/asteroid_steel/airless,
+/area/debrisfield/derelict)
+"wj" = (
+/obj/item/gun/projectile/energy/ionrifle,
+/turf/simulated/floor/plating/outdoors,
+/area/debrisfield/derelict)
+"yE" = (
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/obj/machinery/power/apc/east_mount{
+	alarms_hidden = 1
+	},
+/turf/simulated/floor/plating/outdoors,
 /area/debrisfield/derelict)
 "yZ" = (
 /obj/machinery/door/airlock/alien,
@@ -707,16 +621,97 @@
 	},
 /turf/simulated/floor/tiled/white/airless,
 /area/debrisfield/derelict)
-"JC" = (
-/turf/simulated/floor/plating/external,
+"Ad" = (
+/obj/machinery/door/airlock/alien,
+/turf/simulated/floor/plating/outdoors,
+/area/debrisfield/derelict)
+"BD" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/power/fractal_reactor{
+	alpha = 0;
+	invisibility = 101
+	},
+/turf/simulated/floor/plating/outdoors,
+/area/debrisfield/derelict)
+"CR" = (
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/plating/outdoors,
+/area/debrisfield/derelict)
+"Di" = (
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/obj/machinery/power/apc/north_mount{
+	alarms_hidden = 1
+	},
+/turf/simulated/floor/greengrid/airless,
+/area/debrisfield/derelict)
+"HS" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating/outdoors,
+/area/debrisfield/derelict)
+"HX" = (
+/obj/mob_spawner/derelict/mech_wizard,
+/turf/simulated/floor/plating/outdoors,
+/area/debrisfield/derelict)
+"Lz" = (
+/obj/structure/catwalk,
+/obj/machinery/porta_turret/alien{
+	faction = "derelict";
+	use_power = 0
+	},
+/turf/simulated/floor/plating/outdoors,
 /area/debrisfield/derelict)
 "LM" = (
 /obj/structure/shuttle/engine/heater,
 /turf/simulated/wall,
 /area/debrisfield/derelict)
+"NQ" = (
+/obj/structure/catwalk,
+/turf/simulated/floor/plating/outdoors,
+/area/debrisfield/derelict)
+"Qq" = (
+/obj/effect/decal/mecha_wreckage/gygax/adv,
+/turf/simulated/floor/plating/outdoors,
+/area/debrisfield/derelict)
 "TG" = (
 /obj/machinery/door/airlock/alien,
 /turf/simulated/floor/tiled/white/airless,
+/area/debrisfield/derelict)
+"Wc" = (
+/obj/machinery/porta_turret/alien{
+	faction = "derelict";
+	use_power = 0
+	},
+/turf/simulated/floor/plating/outdoors,
+/area/debrisfield/derelict)
+"Wt" = (
+/obj/machinery/door/airlock/hatch{
+	icon_state = "door_locked";
+	id_tag = null;
+	locked = 1;
+	name = "AI Core";
+	req_access = list(16)
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating/outdoors,
+/area/debrisfield/derelict)
+"Xl" = (
+/turf/simulated/floor/plating/outdoors,
+/area/debrisfield/derelict)
+"Zu" = (
+/obj/item/grenade/simple/emp,
+/obj/item/grenade/simple/emp,
+/obj/item/grenade/simple/emp,
+/turf/simulated/floor/plating/outdoors,
 /area/debrisfield/derelict)
 
 (1,1,1) = {"
@@ -1409,9 +1404,9 @@ ch
 ch
 ct
 bv
-JC
-cG
-JC
+Xl
+uQ
+Xl
 ao
 ao
 aa
@@ -1462,11 +1457,11 @@ bT
 bT
 bT
 bT
-cz
-JC
+tx
+Xl
 ao
-JC
-JC
+Xl
+Xl
 ao
 ao
 aa
@@ -1479,7 +1474,7 @@ aa
 aa
 aa
 aq
-ag
+Ad
 aq
 aa
 ao
@@ -1514,14 +1509,14 @@ cA
 aq
 bT
 aq
-JC
-JC
+Xl
+Xl
 aq
-JC
+Xl
 ao
-JC
-JC
-aF
+Xl
+Xl
+Wc
 ao
 ao
 aa
@@ -1533,7 +1528,7 @@ aa
 aa
 al
 aq
-JC
+Xl
 aq
 al
 ao
@@ -1568,10 +1563,10 @@ cA
 aq
 cl
 aq
-JC
-JC
+Xl
+Xl
 aq
-cF
+nC
 ao
 cV
 cV
@@ -1587,7 +1582,7 @@ aa
 aa
 aq
 aq
-af
+kY
 aq
 aq
 ao
@@ -1622,8 +1617,8 @@ ao
 ao
 ao
 ao
-cr
-cr
+oJ
+oJ
 ao
 ao
 ao
@@ -1640,9 +1635,9 @@ aa
 (18,1,1) = {"
 aa
 aq
-JC
-JC
-JC
+Xl
+Xl
+Xl
 aq
 ao
 aU
@@ -1669,17 +1664,17 @@ bT
 bI
 bX
 ao
-cR
-aM
-aM
-aM
-aM
-aM
-aM
-aM
-aM
-aM
-cR
+Lz
+NQ
+NQ
+NQ
+NQ
+NQ
+NQ
+NQ
+NQ
+NQ
+Lz
 ao
 cV
 cV
@@ -1694,9 +1689,9 @@ aa
 (19,1,1) = {"
 aa
 aq
-dZ
-JC
-JC
+Qq
+Xl
+Xl
 aq
 ao
 co
@@ -1723,17 +1718,17 @@ ch
 bv
 bT
 ao
-aM
-JC
-JC
-JC
-JC
-JC
-JC
-JC
-JC
-JC
-aM
+NQ
+Xl
+Xl
+Xl
+Xl
+Xl
+Xl
+Xl
+Xl
+Xl
+NQ
 ao
 cV
 cV
@@ -1749,7 +1744,7 @@ aa
 ao
 aq
 aq
-ag
+Ad
 aq
 aq
 ao
@@ -1777,17 +1772,17 @@ aq
 cp
 bT
 ao
-aM
-JC
-JC
-JC
-JC
-JC
-JC
-JC
-JC
-JC
-aM
+NQ
+Xl
+Xl
+Xl
+Xl
+Xl
+Xl
+Xl
+Xl
+Xl
+NQ
 ao
 cV
 cV
@@ -1829,19 +1824,19 @@ cZ
 cZ
 bA
 ci
-bJ
+vb
 ao
-aM
-JC
-JC
-JC
-cg
-cm
-cm
-JC
-JC
-JC
-aM
+NQ
+Xl
+Xl
+Xl
+wj
+Zu
+Zu
+Xl
+Xl
+Xl
+NQ
 ao
 cV
 cM
@@ -1885,17 +1880,17 @@ bA
 ch
 bv
 ao
-aM
-JC
-JC
-JC
-JC
-cm
-cm
-JC
-JC
-JC
-aM
+NQ
+Xl
+Xl
+Xl
+Xl
+Zu
+Zu
+Xl
+Xl
+Xl
+NQ
 ao
 cV
 cM
@@ -1911,7 +1906,7 @@ aa
 ao
 aq
 aq
-ag
+Ad
 aq
 aq
 ao
@@ -1939,17 +1934,17 @@ aq
 co
 cp
 ao
-aM
-JC
-JC
-JC
-JC
-JC
-JC
-JC
-JC
-JC
-aM
+NQ
+Xl
+Xl
+Xl
+Xl
+Xl
+Xl
+Xl
+Xl
+Xl
+NQ
 ao
 cV
 cV
@@ -1964,9 +1959,9 @@ aa
 (24,1,1) = {"
 aa
 aq
-dZ
-JC
-JC
+Qq
+Xl
+Xl
 aq
 ao
 ap
@@ -1993,17 +1988,17 @@ ch
 ch
 bL
 ao
-aM
-JC
-JC
-JC
-JC
-JC
-JC
-JC
-JC
-JC
-aM
+NQ
+Xl
+Xl
+Xl
+Xl
+Xl
+Xl
+Xl
+Xl
+Xl
+NQ
 ao
 cV
 cV
@@ -2018,9 +2013,9 @@ aa
 (25,1,1) = {"
 aa
 aq
-JC
-JC
-JC
+Xl
+Xl
+Xl
 aq
 ao
 ap
@@ -2047,17 +2042,17 @@ bT
 bI
 bX
 ao
-cR
-aM
-aM
-aM
-aM
-aM
-aM
-aM
-aM
-aM
-cR
+Lz
+NQ
+NQ
+NQ
+NQ
+NQ
+NQ
+NQ
+NQ
+NQ
+Lz
 ao
 cV
 cV
@@ -2073,7 +2068,7 @@ aa
 aa
 aq
 aq
-ag
+Ad
 aq
 aq
 ao
@@ -2108,8 +2103,8 @@ ao
 ao
 ao
 ao
-cr
-cr
+oJ
+oJ
 ao
 ao
 ao
@@ -2127,7 +2122,7 @@ aa
 aa
 am
 aq
-JC
+Xl
 aq
 am
 ao
@@ -2158,7 +2153,7 @@ bw
 bw
 ch
 bv
-ce
+bT
 aq
 bT
 bT
@@ -2167,7 +2162,7 @@ bT
 bT
 az
 ao
-cJ
+Di
 cV
 cV
 dc
@@ -2181,7 +2176,7 @@ aa
 aa
 aa
 aq
-ag
+Ad
 aq
 aa
 ao
@@ -2221,9 +2216,9 @@ bT
 bT
 bT
 ao
-cK
-JC
-aF
+BD
+Xl
+Wc
 ao
 ao
 aa
@@ -2275,8 +2270,8 @@ aq
 aq
 aq
 ao
-cW
-JC
+HS
+Xl
 ao
 ao
 aa
@@ -2325,11 +2320,11 @@ aq
 bT
 ca
 aZ
-cy
-cB
-cy
-cH
-cX
+sb
+kc
+sb
+Wt
+CR
 ao
 ao
 aa
@@ -2379,9 +2374,9 @@ aq
 bT
 bT
 aq
-JC
-cW
-JC
+Xl
+HS
+Xl
 ao
 ao
 ao
@@ -2433,9 +2428,9 @@ aq
 cq
 bT
 aq
-JC
-cN
-cL
+Xl
+yE
+HX
 ao
 ao
 aa

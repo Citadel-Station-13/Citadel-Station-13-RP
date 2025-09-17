@@ -35,7 +35,6 @@
 		"Life Support Technician" = /datum/prototype/struct/alt_title/life_support,
 		"Pipe Network Specialist" = /datum/prototype/struct/alt_title/pipe_spec,
 		"Disposals Technician" = /datum/prototype/struct/alt_title/disposals_tech,
-"Artificer" = /datum/prototype/struct/alt_title/atmos_artificer
 		)
 
 // Atmos Tech Alt Titles
@@ -50,13 +49,6 @@
 /datum/prototype/struct/alt_title/disposals_tech
 	title = "Disposals Technician"
 	title_blurb = "A Disposals Technician is an Atmospheric Technician still and can fulfill all the same duties, although specializes more in disposals delivery system's operations and configurations."
-
-/datum/prototype/struct/alt_title/atmos_artificer
-	title = "Artificer-Climatic"
-	background_allow = list(
-		/datum/lore/character_background/faction/naramadiguilds
-	)
-	background_enforce = TRUE
 
 /datum/outfit/job/station/atmospherics_technician
 	name = OUTFIT_JOB_NAME("Atmospheric technician")

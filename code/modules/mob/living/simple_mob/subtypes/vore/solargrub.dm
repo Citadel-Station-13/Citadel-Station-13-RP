@@ -35,14 +35,15 @@ GLOBAL_LIST_EMPTY(solargrubs)
 	//var/adult_forms = "/mob/living/simple_mob/vore/solarmoth" // CHOMPEDIT VAR that decides what mob the queen form is. ex /mob/living/simple_mob/subtypes/vore/solarmoth; CitRP: Without lunarmoth, quoted out for fun;
 	// CHOMPEDIT End, Rykka waz here. *pawstamp*
 
-	faction = "grubs"
+	iff_factions = MOB_IFF_FACTION_GRUB
+
 	maxHealth = 50 //grubs can take a lot of harm
 	health = 50
 
 	legacy_melee_damage_lower = 1
 	legacy_melee_damage_upper = 3	//low damage, but poison and stuns are strong
 
-	movement_cooldown = 8
+	movement_base_speed = 10 / 8
 
 	meat_amount = 3
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/grubmeat
@@ -120,8 +121,6 @@ GLOBAL_LIST_EMPTY(solargrubs)
 			if(prob(1) && charge >= 32000 && can_evolve == 1) // CitRP: We can quote this out and see what happens; && moth_amount <= 1) //it's reading from the moth_amount global list to determine if it can evolve. There should only ever be a maxcap of 1 existing solar moth alive at any time. TODO: make the code decrease the list after 1 has spawned this shift.
 				anchored = 0
 				PN = attached.powernet
-				release_vore_contents()
-				prey_excludes.Cut()
 				GLOB.moth_amount += 1 //CitRP: There was some magic going on around this here part, it might actualy be working.
 				death_star()
 
@@ -130,14 +129,6 @@ GLOBAL_LIST_EMPTY(solargrubs)
 	var/chosen_form = pickweight(adult_forms)
 	new chosen_form(get_turf(src))
 	qdel(src)
-
-/mob/living/simple_mob/vore/solargrub //active noms
-	vore_bump_chance = 50
-	vore_bump_emote = "applies minimal effort to try and slurp up"
-	vore_active = 1
-	vore_capacity = 1
-	vore_pounce_chance = 0 //grubs only eat incapacitated targets
-	vore_default_mode = DM_DIGEST
 
 /mob/living/simple_mob/vore/solargrub/apply_melee_effects(var/atom/A)
 	if(isliving(A))

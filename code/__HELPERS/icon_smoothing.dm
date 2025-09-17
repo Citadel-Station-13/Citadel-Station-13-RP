@@ -165,7 +165,7 @@
 	update_appearance(~UPDATE_SMOOTHING)
 
 
-/atom/proc/custom_smooth()
+/atom/proc/custom_smooth(junctions)
 	CRASH("based custom_smooth called on atom")
 
 /atom/proc/corners_diagonal_smooth(adjacencies)

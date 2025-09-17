@@ -29,11 +29,12 @@
 		qdel(AM)
 	return ..()
 
-/obj/machinery/pda_multicaster/update_icon()
+/obj/machinery/pda_multicaster/update_icon_state()
 	if(on)
 		icon_state = initial(icon_state)
 	else
 		icon_state = "[initial(icon_state)]-p"
+	return ..()
 
 /obj/machinery/pda_multicaster/attackby(obj/item/I, mob/user)
 	if(I.is_screwdriver())
@@ -46,7 +47,7 @@
 /obj/machinery/pda_multicaster/attack_ai(mob/user)
 	attack_hand(user)
 
-/obj/machinery/pda_multicaster/attack_hand(mob/user, list/params)
+/obj/machinery/pda_multicaster/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	toggle_power(user)
 
 /obj/machinery/pda_multicaster/proc/toggle_power(mob/user)

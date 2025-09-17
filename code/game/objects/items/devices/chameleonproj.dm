@@ -24,7 +24,7 @@
 	. = ..()
 	disrupt()
 
-/obj/item/chameleon/attack_self(mob/user)
+/obj/item/chameleon/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -110,7 +110,7 @@
 		to_chat(M, "<span class='warning'>Your chameleon-projector deactivates.</span>")
 	master.disrupt()
 
-/obj/effect/dummy/chameleon/attack_hand(mob/user, list/params)
+/obj/effect/dummy/chameleon/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	for(var/mob/M in src)
 		to_chat(M, "<span class='warning'>Your chameleon-projector deactivates.</span>")
 	master.disrupt()
@@ -120,10 +120,10 @@
 		to_chat(M, "<span class='warning'>Your chameleon-projector deactivates.</span>")
 	master.disrupt()
 
-/obj/effect/dummy/chameleon/bullet_act()
+/obj/effect/dummy/chameleon/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	. = ..()
 	for(var/mob/M in src)
 		to_chat(M, "<span class='warning'>Your chameleon-projector deactivates.</span>")
-	..()
 	master.disrupt()
 
 /obj/effect/dummy/chameleon/relaymove(var/mob/user, direction)

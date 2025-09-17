@@ -14,7 +14,7 @@
 /turf/simulated/floor/wmarble,
 /area/class_h/POIs/tomb)
 "e" = (
-/turf/simulated/wall/sandstone/classh,
+/turf/simulated/wall/sandstone,
 /area/class_h/POIs/tomb)
 "k" = (
 /obj/structure/table/marble,
@@ -39,7 +39,7 @@
 /turf/simulated/floor/wmarble,
 /area/class_h/POIs/tomb)
 "n" = (
-/turf/simulated/mineral/classh,
+/turf/simulated/mineral,
 /area/class_h/explored)
 "o" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
@@ -49,7 +49,7 @@
 /turf/simulated/floor/wmarble,
 /area/class_h/POIs/tomb)
 "q" = (
-/turf/simulated/wall/sandstone/classh,
+/turf/simulated/wall/sandstone,
 /area/class_h/explored)
 "w" = (
 /obj/structure/table/marble,
@@ -75,7 +75,7 @@
 /turf/simulated/floor/wmarble,
 /area/class_h/POIs/tomb)
 "L" = (
-/turf/simulated/wall/sandstonediamond/classh,
+/turf/simulated/wall/sandstonediamond,
 /area/class_h/POIs/tomb)
 "N" = (
 /obj/effect/spider/stickyweb,
@@ -111,7 +111,7 @@
 /turf/simulated/floor/wmarble,
 /area/class_h/POIs/tomb)
 "W" = (
-/turf/simulated/wall/sandstone/classh{
+/turf/simulated/wall/sandstone{
 	can_open = 1
 	},
 /area/class_h/POIs/tomb)

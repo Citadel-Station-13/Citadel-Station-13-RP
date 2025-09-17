@@ -4,6 +4,7 @@
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "ano00"
 	var/icon_num = 0
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	density = TRUE
 	var/datum/artifact_effect/my_effect
 	var/datum/artifact_effect/secondary_effect
@@ -174,7 +175,7 @@
 		if(secondary_effect && secondary_effect.trigger == TRIGGER_NITRO && !secondary_effect.activated)
 			secondary_effect.ToggleActivate(0)
 
-/obj/machinery/artifact/attack_hand(mob/user, list/params)
+/obj/machinery/artifact/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if (get_dist(user, src) > 1)
 		to_chat(user, "<font color='red'>You can't reach [src] from here.</font>")
 		return
@@ -223,7 +224,7 @@
 			if(secondary_effect && secondary_effect.trigger == TRIGGER_TOXIN && prob(25))
 				secondary_effect.ToggleActivate(0)
 	else if(istype(W,/obj/item/melee/baton) && W:status ||\
-			istype(W,/obj/item/melee/energy) ||\
+			istype(W,/obj/item/melee/transforming/energy) ||\
 			istype(W,/obj/item/melee/cultblade) ||\
 			istype(W,/obj/item/card/emag) ||\
 			istype(W,/obj/item/multitool))
@@ -274,16 +275,17 @@
 			to_chat(M, "<b>You accidentally touch [src].</b>")
 	..()
 
-/obj/machinery/artifact/bullet_act(var/obj/projectile/P)
-	if(istype(P,/obj/projectile/bullet))
+/obj/machinery/artifact/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	. = ..()
+	if(istype(proj,/obj/projectile/bullet))
 		if(my_effect.trigger == TRIGGER_FORCE)
 			my_effect.ToggleActivate()
 		if(secondary_effect && secondary_effect.trigger == TRIGGER_FORCE && prob(25))
 			secondary_effect.ToggleActivate(0)
 
-	else if(istype(P,/obj/projectile/beam) ||\
-		istype(P,/obj/projectile/ion) ||\
-		istype(P,/obj/projectile/energy))
+	else if(istype(proj,/obj/projectile/beam) ||\
+		istype(proj,/obj/projectile/ion) ||\
+		istype(proj,/obj/projectile/energy))
 		if(my_effect.trigger == TRIGGER_ENERGY)
 			my_effect.ToggleActivate()
 		if(secondary_effect && secondary_effect.trigger == TRIGGER_ENERGY && prob(25))

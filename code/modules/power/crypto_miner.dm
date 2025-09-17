@@ -53,16 +53,17 @@ GLOBAL_VAR_INIT(power_per_point, 1000 KILOWATTS)
         temperature_damage++
         src.visible_message(SPAN_NOTICE("[src] beeps as it is unable to work in this atmosphere."))
 
-    var/new_power_drawn = draw_power(power_level * 0.001) * 1000
-    power_drawn += new_power_drawn
-    heat_environ(new_power_drawn)//Converts the used power into heat, will probably overheat the room fairly quick.
+    power_level=clamp(power_level,0,1e30) // sorry bud we're capping you at a quettawatt
     process_thermal_properties()//calculates damage and efficiency
+    var/new_power_drawn = draw_power(power_level * 0.001 * efficiency) * 1000
+    power_drawn += new_power_drawn*efficiency
+    heat_environ(new_power_drawn)//Converts the used power into heat, will probably overheat the room fairly quick.
 
     if(!power_drawn)
         return
 
     if (power_drawn > GLOB.power_per_point)
-        var/newpoints = round((power_drawn / GLOB.power_per_point) * efficiency)
+        var/newpoints = round(power_drawn / GLOB.power_per_point)
         power_drawn -= newpoints*(GLOB.power_per_point)
         points_stored += newpoints
         GLOB.points_mined += newpoints
@@ -72,7 +73,7 @@ GLOBAL_VAR_INIT(power_per_point, 1000 KILOWATTS)
 
     if(istype(W, /obj/item/card/id))
         var/obj/item/card/id/used_id = W
-        used_id.engineer_points += points_stored
+        used_id.adjust_redemption_points(POINT_REDEMPTION_TYPE_ENGINEERING, points_stored)
         to_chat(user, SPAN_NOTICE("You transfer [points_stored] points to your ID"))
         points_stored = 0
         return
@@ -85,10 +86,10 @@ GLOBAL_VAR_INIT(power_per_point, 1000 KILOWATTS)
     if(W.is_screwdriver())
         default_deconstruction_screwdriver(user, W)
     if(W.is_multitool())
-        var/new_power_level = input("What Power would you like to draw from the network?", "Power level Controls", power_level) as num|null
+        var/new_power_level = input("What's the max power you would like to draw from the network?", "Power level Controls", power_level) as num|null
         if(new_power_level != null)
             power_level = max(new_power_level, 0)
-            to_chat(user, "You set the Power Level to [power_level] Watts.")
+            to_chat(user, "You set the Max Power Level to [power_level] Watts.")
         return
     return ..()
 

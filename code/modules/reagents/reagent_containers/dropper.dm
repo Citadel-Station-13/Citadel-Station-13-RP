@@ -17,7 +17,7 @@
 
 /obj/item/reagent_containers/dropper/examine(mob/user, dist)
 	. = ..()
-	if(reagents && reagents.reagent_list.len)
+	if(length(reagents?.reagent_volumes))
 		. += "<span class='notice'>It contains [reagents.total_volume] units of liquid.</span>"
 	else
 		. += "<span class='notice'>It is empty.</span>"

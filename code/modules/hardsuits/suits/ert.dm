@@ -4,12 +4,17 @@
 
 /datum/armor/hardsuit/ert
 	melee = 0.6
+	melee_tier = 4
 	bullet = 0.5
-	laser = 0.3
+	bullet_tier = 4
+	laser = 0.5
+	laser_tier = 4.5
 	energy = 0.15
 	bomb = 0.3
 	bio = 1.0
 	rad = 1.0
+	fire = 0.7
+	acid = 1.0
 
 /obj/item/hardsuit/ert
 	name = "ERT-C hardsuit control module"
@@ -103,12 +108,11 @@
 		)
 
 /datum/armor/hardsuit/ert/deathsquad
-	melee = 0.8
-	bullet = 0.65
-	laser = 0.5
-	energy = 0.25
+	melee_tier = 5
+	bullet_tier = 6
+	laser_tier = 6
 	bomb = 0.8
-	bio = 1.0
+	energy = 0.45
 
 /obj/item/hardsuit/ert/assetprotection
 	name = "Heavy Asset Protection suit control module"
@@ -136,7 +140,7 @@
 	desc = "A sleek module decorated with intricate glyphs and alien wards. When worn by a trained agent, the various glyphs faintly glow."
 	suit_type = "PMD agent"
 	icon_state = "para_ert_rig"
-	action_button_name = "Enable RIG Sigils"
+	item_action_name = "Enable RIG Sigils"
 
 	var/anti_magic = FALSE
 	var/blessed = FALSE
@@ -153,7 +157,7 @@
 		/obj/item/hardsuit_module/self_destruct
 		)
 
-/obj/item/hardsuit/ert/para/attack_self(mob/user)
+/obj/item/hardsuit/ert/para/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

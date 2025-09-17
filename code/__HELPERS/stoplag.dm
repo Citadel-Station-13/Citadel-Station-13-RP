@@ -18,8 +18,9 @@
 	. = 0
 	var/i = DS2TICKS(initial_delay)
 	do
-		. += CEILING(i*DELTA_CALC, 1)
-		sleep(i*world.tick_lag*DELTA_CALC)
+		var/delta = DELTA_CALC
+		. += ceil(i * delta)
+		sleep(i * world.tick_lag * delta)
 		i *= 2
 	while (TICK_USAGE > min(TICK_LIMIT_TO_RUN, Master.current_ticklimit))
 

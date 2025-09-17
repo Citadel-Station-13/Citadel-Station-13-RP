@@ -35,15 +35,8 @@
 	alt_titles = list(
 		"Supply Chief" = /datum/prototype/struct/alt_title/supply_chief,
 		"Logistics Manager" = /datum/prototype/struct/alt_title/logi_man,
-		"Logisticai-Adept" = /datum/prototype/struct/alt_title/logisticai_adept
 		)
 
-/datum/prototype/struct/alt_title/logisticai_adept
-	title = "Logisticai-Adept"
-	background_allow = list(
-		/datum/lore/character_background/faction/naramadiguilds
-	)
-	background_enforce = TRUE
 
 /datum/prototype/struct/alt_title/supply_chief
 	title = "Supply Chief"

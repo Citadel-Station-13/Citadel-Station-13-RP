@@ -18,7 +18,6 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/structure/bed/chair/LateInitialize()
-	. = ..()
 	update_layer()
 
 /obj/structure/bed/chair/OnMouseDrop(atom/over, mob/user)
@@ -51,7 +50,7 @@
 	qdel(src)
 	return CLICKCHAIN_DO_NOT_PROPAGATE
 
-/obj/structure/bed/chair/attack_hand(mob/user)
+/obj/structure/bed/chair/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(!stacked_size)
 		return ..()
 	var/obj/item/material/twohanded/folded_metal_chair/F = new(loc)
@@ -290,7 +289,7 @@
 			occupant.apply_effect(6, STUN, blocked)
 			occupant.apply_effect(6, WEAKEN, blocked)
 			occupant.apply_effect(6, STUTTER, blocked)
-			occupant.apply_damage(10, BRUTE, def_zone, blocked, soaked)
+			occupant.apply_damage(10, DAMAGE_TYPE_BRUTE, def_zone, blocked, soaked)
 			playsound(src.loc, 'sound/weapons/punch1.ogg', 50, 1, -1)
 			if(istype(A, /mob/living))
 				var/mob/living/victim = A
@@ -300,7 +299,7 @@
 				victim.apply_effect(6, STUN, blocked)
 				victim.apply_effect(6, WEAKEN, blocked)
 				victim.apply_effect(6, STUTTER, blocked)
-				victim.apply_damage(10, BRUTE, def_zone, blocked, soaked)
+				victim.apply_damage(10, DAMAGE_TYPE_BRUTE, def_zone, blocked, soaked)
 			occupant.visible_message("<span class='danger'>[occupant] crashed into \the [A]!</span>")
 
 /obj/structure/bed/chair/office/light
@@ -345,7 +344,7 @@
 
 /obj/structure/bed/chair/sofa/update_icon()
 	if(material_color && sofa_material)
-		var/datum/material/color_material = get_material_by_name(sofa_material)
+		var/datum/prototype/material/color_material = get_material_by_name(sofa_material)
 		color = color_material.icon_colour
 
 		if(sofa_material == "carpet")
@@ -355,7 +354,7 @@
 
 /obj/structure/bed/chair/update_layer()
 	// Corner east/west should be on top of mobs, any other state's north should be.
-	if((icon_state == "sofacorner" && ((dir & EAST) || (dir & WEST))) || (icon_state != "sofacorner" && (dir & NORTH)))
+	if((icon_state == "sofacorner" && ((dir & NORTH) || (dir & WEST))) || (icon_state != "sofacorner" && (dir & NORTH)))
 		plane = MOB_PLANE
 		layer = MOB_LAYER + 0.1
 	else

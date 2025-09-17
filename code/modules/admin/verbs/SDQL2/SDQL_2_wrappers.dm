@@ -5,6 +5,8 @@
 
 /proc/_animate(atom/A, set_vars, time = 10, loop = 1, easing = LINEAR_EASING, flags = null)
 	var/mutable_appearance/MA = new()
+	// mutable appearance is not FLOAT_PLANE by default
+	MA.plane = FLOAT_PLANE
 	for(var/v in set_vars)
 		MA.vars[v] = set_vars[v]
 	animate(A, appearance = MA, time, loop, easing, flags)
@@ -153,9 +155,6 @@
 /proc/_roll(dice)
 	return roll(dice)
 
-/proc/_round(A, B = 1)
-	return round(A, B)
-
 /proc/_sin(X)
 	return sin(X)
 
@@ -239,8 +238,6 @@
 
 /proc/_has_trait(datum/thing,trait)
 	return HAS_TRAIT(thing,trait)
-/proc/_instantiate_at(thing, location)
-	new thing(location)
 
 /// Locating turfs
 /proc/_turf_in_offset(s = usr, x = 0, y = 0, z = 0)
@@ -260,6 +257,12 @@
 	for(var/turf/T in v)
 		. += T
 	return pick(.)
+
+/proc/_filter(...)
+	return filter(arglist(args))
+
+/proc/_generator(...)
+	return generator(arglist(args))
 
 /proc/_url_encode(str)
 	return url_encode(str)

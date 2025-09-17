@@ -1,4 +1,4 @@
-//! /datum/language/var/language_flags
+//! /datum/prototype/language/var/language_flags
 /// Language is available if the speaker is whitelisted, or if granted by a species.
 #define LANGUAGE_WHITELISTED  (1<<0)
 /// Language can only be acquired by spawning or an admin.
@@ -33,7 +33,7 @@ DEFINE_BITFIELD(language_flags, list(
 	BITFIELD(LANGUAGE_ALT_TRANSMIT),
 ))
 
-//! translation_class on /datum/language and /datum/translation_context as well as all translation operations
+//! translation_class on /datum/prototype/language and /datum/translation_context as well as all translation operations
 /// common galactic languages; most translators can instantly translate this
 #define TRANSLATION_CLASS_LEVEL_1 (1<<0)
 /// high end translators can translate these; you're looking at science/cargo; low level learning translators learn this

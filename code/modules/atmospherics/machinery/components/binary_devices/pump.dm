@@ -17,7 +17,7 @@ Thus, the two variables affect pump operation are set in New():
 	icon_state = "map_off"
 	construction_type = /obj/item/pipe/directional
 	pipe_state = "pump"
-	level = 1
+	hides_underfloor_underlays = TRUE
 	var/base_icon = "pump"
 
 	name = "gas pump"
@@ -101,11 +101,12 @@ Thus, the two variables affect pump operation are set in New():
 	icon_state = "map_on-aux"
 	use_power = 1
 
-/obj/machinery/atmospherics/component/binary/pump/update_icon()
+/obj/machinery/atmospherics/component/binary/pump/update_icon_state()
 	if(!powered())
 		icon_state = "[base_icon]-off"
 	else
 		icon_state = "[use_power ? "[base_icon]-on" : "[base_icon]-off"]"
+	return ..()
 
 /obj/machinery/atmospherics/component/binary/pump/update_underlays()
 	if(..())
@@ -116,10 +117,8 @@ Thus, the two variables affect pump operation are set in New():
 		add_underlay(T, node1, turn(dir, -180), node1?.icon_connect_type)
 		add_underlay(T, node2, dir, node2?.icon_connect_type)
 
-/obj/machinery/atmospherics/component/binary/pump/hide(var/i)
-	update_underlays()
-
 /obj/machinery/atmospherics/component/binary/pump/process(delta_time)
+	..()
 	last_power_draw_legacy = 0
 	last_flow_rate_legacy = 0
 
@@ -231,7 +230,7 @@ Thus, the two variables affect pump operation are set in New():
 	. = ..()
 	ui_interact(user)
 
-/obj/machinery/atmospherics/component/binary/pump/attack_hand(mob/user, list/params)
+/obj/machinery/atmospherics/component/binary/pump/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(..())
 		return
 	add_fingerprint(usr)

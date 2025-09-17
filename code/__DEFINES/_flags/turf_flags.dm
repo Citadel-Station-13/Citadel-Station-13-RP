@@ -2,7 +2,7 @@
 /// This is used in literally one place, turf.dm, to block ethwereal jaunt.
 #define NO_JAUNT						(1<<0)
 /// Unused reservation turf
-#define UNUSED_RESERVATION_TURF			(1<<2)
+#define TURF_FLAG_UNUSED_RESERVATION			(1<<2)
 /// queued for planet turf addition
 #define TURF_PLANET_QUEUED				(1<<3)
 /// registered to a planet
@@ -13,6 +13,8 @@
 #define TURF_SEMANTICALLY_BOTTOMLESS	(1<<6)
 /// considered a volatile-changing area by persistence, which means things like trash and debris won't stay here
 #define TURF_FLAG_ERODING				(1<<7)
+/// The slowdown affects a physical person, even if they aren't walking on the tile the turf represents.
+#define TURF_SLOWDOWN_INCLUDE_FLYING	(1<<8)
 
 ///CITMAIN TURF FLAGS - Completely unused
 /*
@@ -28,12 +30,13 @@
 
 DEFINE_BITFIELD(turf_flags, list(
 	BITFIELD(NO_JAUNT),
-	BITFIELD(UNUSED_RESERVATION_TURF),
+	BITFIELD(TURF_FLAG_UNUSED_RESERVATION),
 	BITFIELD(TURF_PLANET_QUEUED),
 	BITFIELD(TURF_PLANET_REGISTERED),
 	BITFIELD(TURF_ZONE_REBUILD_QUEUED),
 	BITFIELD(TURF_SEMANTICALLY_BOTTOMLESS),
 	BITFIELD(TURF_FLAG_ERODING),
+	BITFIELD(TURF_SLOWDOWN_INCLUDE_FLYING),
 ))
 
 //* /turf_path_danger var on /turf

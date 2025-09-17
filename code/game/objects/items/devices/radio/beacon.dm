@@ -9,6 +9,7 @@
 	var/functioning = TRUE
 	var/identifier
 	origin_tech = list(TECH_BLUESPACE = 1)
+	worth_intrinsic = 50
 
 GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 
@@ -19,6 +20,7 @@ GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 
 /obj/item/radio/beacon/update_icon()
 	cut_overlays()
+	. = ..()
 	if(!functioning)
 		add_overlay("[base_icon_state]_malfunction")
 	else
@@ -45,16 +47,9 @@ GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 	desc = "A beacon used by a teleporter. This one appears to be bolted to the ground."
 	anchored = TRUE
 	w_class = WEIGHT_CLASS_HUGE
-	//randpixel = 0
+	hides_underfloor = OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP
 
 	var/repair_fail_chance = 35
-
-
-/obj/item/radio/beacon/anchored/Initialize(mapload)
-	. = ..()
-	var/turf/T = get_turf(src)
-	hide(hides_under_flooring() && !T.is_plating())
-
 
 /obj/item/radio/beacon/anchored/attackby(obj/item/I, mob/living/user)
 	..()
@@ -88,7 +83,7 @@ GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 	desc = "A label on it reads: <i>Activate to have a singularity beacon teleported to your location</i>."
 	origin_tech = list(TECH_BLUESPACE = 1, TECH_ILLEGAL = 7)
 
-/obj/item/radio/beacon/syndicate/attack_self(mob/user)
+/obj/item/radio/beacon/syndicate/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

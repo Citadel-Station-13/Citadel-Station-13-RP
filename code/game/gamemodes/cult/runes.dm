@@ -149,14 +149,14 @@ var/list/sacrificed = list()
 					//broken mind - 5000 may seem like a lot I wanted the effect to really stand out for maxiumum losing-your-mind-spooky
 					//hallucination is reduced when the step off as well, provided they haven't hit the last stage...
 
-					//5000 is waaaay too much, in practice.
-					target.hallucination = min(target.hallucination + 100, 500)
+					//5000 is waaaay too much, in practice. (what the actual fuck were these coders thinking?!)
+					target.adjustHallucination(100)
 					target.apply_effect(10, STUTTER)
 					target.adjustBrainLoss(1)
 				if(100 to INFINITY)
 					to_chat(target, "<span class='cult'>Your entire broken soul and being is engulfed in corruption and flames as your mind shatters away into nothing.</span>")
 					//5000 is waaaay too much, in practice.
-					target.hallucination = min(target.hallucination + 100, 500)
+					target.adjustHallucination(100)
 					target.apply_effect(15, STUTTER)
 					target.adjustBrainLoss(1)
 
@@ -181,7 +181,7 @@ var/list/sacrificed = list()
 				if(choice == "Submit") //choosing 'Resist' does nothing of course.
 					cult.add_antagonist(target.mind)
 					converting -= target
-					target.hallucination = 0 //sudden clarity
+					target.setHallucination(0) //sudden clarity
 
 		sleep(100) //proc once every 10 seconds
 	return 1
@@ -477,7 +477,7 @@ var/list/sacrificed = list()
 	D.g_eyes = 200
 	D.update_eyes()
 	D.all_underwear.Cut()
-	D.key = ghost.key
+	ghost.transfer_client_to(D)
 	cult.add_antagonist(D.mind)
 
 	if(!chose_name)

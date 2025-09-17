@@ -60,7 +60,7 @@
 		general.fields["rank"] = I.assignment
 		general.fields["real_rank"] = I.assignment
 		general.fields["name"] = I.registered_name
-		general.fields["sex"] = I.sex
+		general.fields["sex"] = capitalize(user.gender)
 	else
 		var/mob/living/carbon/human/H
 		if(istype(user,/mob/living/carbon/human))
@@ -89,8 +89,6 @@
 		medical.fields["b_dna"]			= random_medical_record.fields["b_type"]
 
 	if(I)
-		general.fields["fingerprint"] 	= I.fingerprint_hash
-		medical.fields["b_type"]	= I.blood_type
 		medical.fields["b_dna"]		= I.dna_hash
 
 	AnnounceArrivalSimple(general.fields["name"], general.fields["rank"])

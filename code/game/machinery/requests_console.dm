@@ -78,13 +78,14 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 	..()
 	update_icon()
 
-/obj/machinery/requests_console/update_icon()
+/obj/machinery/requests_console/update_icon_state()
 	if(machine_stat & NOPOWER)
 		if(icon_state != "req_comp_off")
 			icon_state = "req_comp_off"
 	else
 		if(icon_state == "req_comp_off")
 			icon_state = "req_comp[newmessagepriority]"
+	return ..()
 
 /obj/machinery/requests_console/Initialize(mapload, newdir)
 	. = ..()
@@ -119,7 +120,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 			req_console_information -= department
 	return ..()
 
-/obj/machinery/requests_console/attack_hand(mob/user, list/params)
+/obj/machinery/requests_console/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(..(user))
 		return
 	nano_ui_interact(user)

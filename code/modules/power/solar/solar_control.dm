@@ -52,7 +52,7 @@
 		set_panels(cdir)
 
 // This would use LateInitialize(), however the powernet does not appear to exist during that time.
-/hook/roundstart/proc/auto_start_solars()
+/legacy_hook/roundstart/proc/auto_start_solars()
 	for(var/a in GLOB.solars_list)
 		var/obj/machinery/power/solar_control/SC = a
 		SC.auto_start()
@@ -116,7 +116,7 @@
 		add_overlay(image('icons/obj/computer.dmi', "solcon-o", FLY_LAYER, angle2dir(cdir)))
 	return
 
-/obj/machinery/power/solar_control/attack_hand(mob/user, list/params)
+/obj/machinery/power/solar_control/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(!..())
 		interact(user)
 

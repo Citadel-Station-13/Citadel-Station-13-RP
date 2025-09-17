@@ -1,5 +1,5 @@
 //? This is here because the linter will explode if this isn't here. Don't believe me? Remove it. I dare you.
-/datum/language_server_error_blocker
+/datum/prototype/language_server_error_blocker
 
 //## Core settings
 //! Fastboot flags - useful for debugging
@@ -64,6 +64,14 @@
  */
 // #define UNIT_TESTS
 
+/**
+ * If this is uncommented, we will compile in the unit test code without actually running them.
+ */
+// #define INCLUDE_UNIT_TESTS
+
+#ifdef INCLUDE_UNIT_TESTS
+	#warn Unit tests are compiled in manually. This shouldn't be on in live.
+#endif
 
 /**
  * If this is uncommented, will attempt to load and initialize prof.dll/libprof.so.
@@ -72,17 +80,9 @@
 // #define USE_BYOND_TRACY
 
 /**
- * If this is uncommented, Autowiki will generate edits and shut down the server.
- * Prefer the autowiki build target instead.
- */
-// #define AUTOWIKI
-
-
-/**
  * If this is uncommented, will profile mapload atom initializations.
  */
 // #define PROFILE_MAPLOAD_INIT_ATOM
-
 
 /**
  * If this is uncommented, force our verb processing into just the 2% of a tick.
@@ -113,26 +113,42 @@
 #endif
 
 // ## CBT BUILD DEFINES
-
-#ifdef CIBUILDING
-	#define UNIT_TESTS
+#if defined(CIBUILDING) && !defined(OPENDREAM)
+#define UNIT_TESTS
 #endif
 
 #ifdef CITESTING
-	#define TESTING
+#define TESTING
 #endif
 
+#if defined(UNIT_TESTS)
+	//Hard del testing defines
+	#define REFERENCE_TRACKING
+	#define REFERENCE_TRACKING_DEBUG
+	#define FIND_REF_NO_CHECK_TICK
+	#define GC_FAILURE_HARD_LOOKUP
+	//Ensures all early assets can actually load early
+	#define DO_NOT_DEFER_ASSETS
+	//Test at full capacity, the extra cost doesn't matter
+	#define TIMER_DEBUG
+#endif
 
 #ifdef TGS
 // TGS performs its own build of dm.exe, but includes a prepended TGS define.
 #define CBT
 #endif
 
-// ## LEGACY WARNING
-#if !defined(CBT) && !defined(SPACEMAN_DMM)
-	#warn Building with Dream Maker is no longer supported and will result in errors.
-	#warn In order to build, run BUILD.bat in the root directory.
-	#warn Consider switching to VSCode editor instead, where you can press Ctrl+Shift+B to build.
+#if defined(OPENDREAM)
+	#if !defined(CIBUILDING)
+		#warn You are building with OpenDream. Remember to build TGUI manually.
+		#warn You can do this by running tgui-build.cmd from the bin directory.
+	#endif
+#else
+	#if !defined(CBT) && !defined(SPACEMAN_DMM)
+		#warn Building with Dream Maker is no longer supported and will result in errors.
+		#warn In order to build, run BUILD.cmd in the root directory.
+		#warn Consider switching to VSCode editor instead, where you can press Ctrl+Shift+B to build.
+	#endif
 #endif
 
 /**
@@ -156,14 +172,48 @@
  */
 //#define DO_NOT_DEFER_ASSETS
 
+// ## Atoms
+
+/**
+ * Trace Destroy() before Initialize().
+ */
+// #define CF_ATOM_TRACE_INIT_EARLY_QDEL
+
+// ## AI Holders
+
+/**
+ * Enables high-overhead debug assertions.
+ */
+#define CF_AI_HOLDER_DEBUG_ASSERTIONS
+
 // ## Atmospherics
 
-//? Gasmixtures
-/// Enable general assertions.
-#define GASMIXTURE_ASSERTIONS
+/// Enable this if you're doing weird atmos things.
+///
+/// * This helps bad behaviors get caught in testmerge.
+/// * This only enables basic debug assertions. If you're touching zones, go to the ZAS section and set flags accordingly.
+#define CF_ATMOS_IM_DOING_WACKY_THINGS_TODAY
 
+#ifdef CF_ATMOS_IM_DOING_WACKY_THINGS_TODAY
+	#define CF_ATMOS_XGM_DEBUG_ASSERTIONS
+	#define CF_ATMOS_ZAS_DEBUG_ASSERTIONS
+#endif
+
+//? Gasmixtures
+
+/// Enable general gasmixture assertions.
+// #define CF_ATMOS_XGM_DEBUG_ASSERTIONS
+
+/// Ensures update_values() is enforced
+///
+/// * VERY. VERY. LAGGY.
+#define CF_ATMOS_XGM_UPDATE_VALUES_ASSERTIONS
 
 //? ZAS (Environmental)
+
+/// Enable general environmental assertions.
+// #define CF_ATMOS_ZAS_DEBUG_ASSERTIONS
+
 /// Uncomment to turn on Multi-Z ZAS Support!
 #define MULTIZAS
 
@@ -179,7 +229,6 @@
 /// Uncomment to enable some otherwise useless hook points for zas debugging.
 // #define ZAS_BREAKPOINT_HOOKS
 
-
 #ifdef ZAS_DEBUG_GRAPHICS
 	#define ZAS_BREAKPOINT_HOOKS
 #endif
@@ -189,12 +238,35 @@
 // #define AO_USE_LIGHTING_OPACITY
 
 // ## Overlays
+
 /**
  * A reasonable number of maximum overlays an object needs.
  * If you think you need more, rethink it.
  */
 #define MAX_ATOM_OVERLAYS 100
 
+// ## Projectiles
+
+/**
+ * Enable raycast visuals
+ */
+// #define CF_PROJECTILE_RAYCAST_VISUALS
+
+#ifdef CF_PROJECTILE_RAYCAST_VISUALS
+	#warn Visualization of projectile raycast algorithm enabled.
+#endif
+
 // ## Timers
 
 // #define TIMER_LOOP_DEBUGGING
+
+// ## Misc visualizations
+
+/**
+ * terraria-like damage bubble toasts every time something takes significant damage
+*/
+// #define CF_VISUALIZE_DAMAGE_TICKS
+
+#ifdef CF_VISUALIZE_DAMAGE_TICKS
+	#warn Visualization of atom damage ticks enabled.
+#endif

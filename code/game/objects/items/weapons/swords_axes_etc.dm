@@ -19,14 +19,14 @@
 	drop_sound = 'sound/items/drop/crowbar.ogg'
 	pickup_sound = 'sound/items/pickup/crowbar.ogg'
 
-/obj/item/melee/classic_baton/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/melee/classic_baton/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if ((MUTATION_CLUMSY in user.mutations) && prob(50) && isliving(user))
 		var/mob/living/L = user
 		to_chat(user, "<span class='warning'>You club yourself over the head.</span>")
 		user.afflict_paralyze(20 * 3 * damage_force)
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
-			H.apply_damage(2*damage_force, BRUTE, BP_HEAD)
+			H.apply_damage(2*damage_force, DAMAGE_TYPE_BRUTE, BP_HEAD)
 		else
 			L.take_random_targeted_damage(brute = 2*damage_force)
 		return
@@ -38,7 +38,9 @@
 	icon_state = "tonfa"
 	item_state = "tonfa"
 	atom_flags = NOBLOODY
-	defend_chance = 15
+	passive_parry = /datum/passive_parry{
+		parry_chance_melee = 15;
+	}
 
 //Telescopic baton
 /obj/item/melee/telebaton
@@ -57,7 +59,7 @@
 	drop_sound = 'sound/items/drop/crowbar.ogg'
 	pickup_sound = 'sound/items/pickup/crowbar.ogg'
 
-/obj/item/melee/telebaton/attack_self(mob/user)
+/obj/item/melee/telebaton/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -81,10 +83,7 @@
 		set_weight_class(WEIGHT_CLASS_SMALL)
 		damage_force = off_force //not so robust now
 		attack_verb = list("poked", "jabbed")
-	if(istype(user,/mob/living/carbon/human))
-		var/mob/living/carbon/human/H = user
-		H.update_inv_l_hand()
-		H.update_inv_r_hand()
+	update_worn_icon()
 	playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)
 	add_fingerprint(user)
 	if(blood_overlay && blood_DNA && (blood_DNA.len >= 1)) //updates blood overlay, if any
@@ -96,27 +95,27 @@
 		add_overlay(blood_overlay)
 	return
 
-/obj/item/melee/telebaton/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/melee/telebaton/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(on)
 		if ((MUTATION_CLUMSY in user.mutations) && prob(50))
 			to_chat(user, "<span class='warning'>You club yourself over the head.</span>")
 			user.afflict_paralyze(20 * 3 * damage_force)
 			if(ishuman(user))
 				var/mob/living/carbon/human/H = user
-				H.apply_damage(2*damage_force, BRUTE, BP_HEAD)
+				H.apply_damage(2*damage_force, DAMAGE_TYPE_BRUTE, BP_HEAD)
 			else if(isliving(user))
 				var/mob/living/L = user
 				L.take_random_targeted_damage(brute = 2*damage_force)
 			return
-		var/old_damtype = damtype
+		var/old_damage_type = damage_type
 		var/old_attack_verb = attack_verb
 		var/old_force = damage_force
 		if(user.a_intent != INTENT_HARM)
-			damtype = HALLOSS
+			damage_type = DAMAGE_TYPE_HALLOSS
 			attack_verb = list("suppressed")
 			damage_force = on_pain_force
 		. = ..()
-		damtype = old_damtype
+		damage_type = old_damage_type
 		attack_verb = old_attack_verb
 		damage_force = old_force
 	else
@@ -136,7 +135,7 @@
 /obj/item/melee/disruptor
 	name = "disruptor blade"
 	desc = "A long, machete-like blade, designed to mount onto the arm or some rough equivalent. Electricity courses through it."
-	description_info = "This blade deals bonus damage against animals (space bears, carp) and aberrations (xenomorphs)."
+	description_info = "This blade deals bonus damage against animals (space bears, carp) and aberrations."
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "armblade"
 	item_icons = list(
@@ -145,11 +144,13 @@
 			)
 	item_state = "armblade"
 	damage_force = 15 // same damage_force as a drill
-	defend_chance = 20 // did you know melee weapons have a default 5% chance to block frontal melee?
-	sharp = TRUE
-	edge = TRUE
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	var/SA_bonus_damage = 35 // 50 total against animals and aberrations.
 	var/SA_vulnerability = MOB_CLASS_ANIMAL | MOB_CLASS_ABERRATION
+
+	passive_parry = /datum/passive_parry{
+		parry_chance_melee = 20;
+	}
 
 /obj/item/melee/disruptor/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	. = ..()
@@ -168,8 +169,7 @@
 	damage_force = 5 // HAVING A STICK JAMMED INTO YOU IS LIKELY BAD FOR YOUR HEALTH // well to be fair most of the damage comes from the embed not the stab
 	w_class = WEIGHT_CLASS_SMALL
 	materials_base = list(MAT_STEEL = 2500)
-	sharp = TRUE
-	edge = TRUE
+	damage_mode = DAMAGE_MODE_EDGE | DAMAGE_MODE_SHARP
 	icon_state = "embed_spike"
 	item_icons = list(
 			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_material.dmi',
@@ -193,7 +193,7 @@
 	damage_force = 0
 	attack_sound = "sound/items/bikehorn.ogg"
 
-/obj/item/melee/stool/faiza/attack_self(mob/user)
+/obj/item/melee/stool/faiza/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -216,7 +216,7 @@
 	desc = "A training sword made of wood and shaped like a katana."
 	icon_state = "bokken"
 	slot_flags = SLOT_BELT | SLOT_BACK
-	damtype = HALLOSS
+	damage_type = DAMAGE_TYPE_HALLOSS
 	damage_force = 5
 	throw_force = 5
 	attack_verb = list("whacked", "smacked", "struck")
@@ -305,15 +305,19 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "wakibokken_blade_h"
 	damage_force = 15
-	damage_tier = MELEE_TIER_MEDIUM
+	damage_tier = 3
 	slot_flags = SLOT_BACK
-	sharp = 1
 	attack_sound = "swing_hit"
 	attack_verb = list("smashed", "slammed", "whacked", "thwacked")
 	icon_state = "bostaff0"
 	item_state = "bostaff0"
 	var/defend_chance = 40
 	var/projectile_parry_chance = 0
+
+	item_icons = list(
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
+			)
 
 /obj/item/bo_staff/proc/jedi_spin(mob/living/user)
 	for(var/i in list(NORTH,SOUTH,EAST,WEST,EAST,SOUTH,NORTH,SOUTH,EAST,WEST,EAST,SOUTH))
@@ -322,23 +326,24 @@
 			user.emote("flip")
 		sleep(1)
 
-/obj/item/bo_staff/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	. = ..()
-	var/mob/living/L = target
-	if(!istype(L))
-		return
-	var/mob/living/carbon/human/H = L
-	var/list/fluffmessages = list("[user] clubs [H] with [src]!", \
-									"[user] smacks [H] with the butt of [src]!", \
-									"[user] broadsides [H] with [src]!", \
-									"[user] smashes [H]'s head with [src]!", \
-									"[user] beats [H] with front of [src]!", \
-									"[user] twirls and slams [H] with [src]!")
-	H.visible_message("<span class='warning'>[pick(fluffmessages)]</span>", \
-							"<span class='userdanger'>[pick(fluffmessages)]</span>")
-	playsound(get_turf(user), 'sound/effects/woodhit.ogg', 75, 1, -1)
-	if(prob(25))
-		INVOKE_ASYNC(src, PROC_REF(jedi_spin), user)
+// todo: sigh
+// /obj/item/bo_staff/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+// 	. = ..()
+// 	var/mob/living/L = target
+// 	if(!istype(L))
+// 		return
+// 	var/mob/living/carbon/human/H = L
+// 	var/list/fluffmessages = list("[user] clubs [H] with [src]!",
+// 									"[user] smacks [H] with the butt of [src]!",
+// 									"[user] broadsides [H] with [src]!",
+// 									"[user] smashes [H]'s head with [src]!",
+// 									"[user] beats [H] with front of [src]!",
+// 									"[user] twirls and slams [H] with [src]!")
+// 	H.visible_message("<span class='warning'>[pick(fluffmessages)]</span>",
+// 							"<span class='userdanger'>[pick(fluffmessages)]</span>")
+// 	playsound(get_turf(user), 'sound/effects/woodhit.ogg', 75, 1, -1)
+// 	if(prob(25))
+// 		INVOKE_ASYNC(src, PROC_REF(jedi_spin), user)
 
 //Kanabo
 /obj/item/melee/kanabo // parrying stick
@@ -346,7 +351,7 @@
 	desc = "A heavy wooden club reinforced with metal studs. Ancient Terran Oni were often depicted carrying this weapon."
 	icon_state = "kanabo"
 	slot_flags = SLOT_BACK
-	damtype = BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 	damage_force = 15
 	throw_force = 5
 	attack_verb = list("battered", "hammered", "struck")

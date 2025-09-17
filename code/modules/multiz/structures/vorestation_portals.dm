@@ -27,7 +27,7 @@
 		return	//do not send ghosts, zshadows, ai eyes, etc
 	teleport(AM)
 
-/obj/structure/portal_subtle/attack_hand(mob/user, list/params)
+/obj/structure/portal_subtle/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(istype(user) && !(istype(user,/mob/living)))
 		return	//do not send ghosts, zshadows, ai eyes, etc
 	spawn(0)
@@ -38,7 +38,7 @@
 /obj/structure/portal_subtle/proc/teleport(atom/movable/M as mob|obj)
 	if(istype(M, /obj/effect)) //sparks don't teleport
 		return
-	if (M.anchored&&istype(M, /obj/mecha))
+	if (M.anchored&&istype(M, /obj/vehicle/sealed/mecha))
 		return
 	if (icon_state == "portal1")
 		return

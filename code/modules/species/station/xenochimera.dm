@@ -22,7 +22,6 @@
 
 	vision_innate = /datum/vision/baseline/species_tier_3
 	vision_organ = O_EYES
-	slowdown      = -0.2  //scuttly, but not as scuttly as a tajara or a teshari.
 	brute_mod     = 0.8   //About as tanky to brute as a Unathi. They'll probably snap and go feral when hurt though.
 	burn_mod      = 1.15  //As vulnerable to burn as a Tajara.
 	radiation_mod = 1.15  //To help simulate the volatility of a living 'viral' cluster.
@@ -40,6 +39,7 @@
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_The_Xenochimera"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/xenochimera)
 
+	movement_base_speed = 5.5
 	hazard_low_pressure = -1 //Prevents them from dying normally in space. Special code handled below.
 
 	cold_level_1 = -1 // All cold debuffs are handled below in handle_environment_special
@@ -78,14 +78,17 @@
 		O_BRAIN =    /obj/item/organ/internal/brain/xenochimera,
 		O_EYES =     /obj/item/organ/internal/eyes/xenochimera,
 		O_STOMACH =		/obj/item/organ/internal/stomach/xenochimera,
-		O_INTESTINE =	/obj/item/organ/internal/intestine/xenochimera
+		O_INTESTINE =	/obj/item/organ/internal/intestine/xenochimera,
+		O_WEAVER = 		/obj/item/organ/internal/weaver/weak/xenochimera
 		)
 
+
+
 	unarmed_types = list(
-		/datum/unarmed_attack/stomp,
-		/datum/unarmed_attack/kick,
-		/datum/unarmed_attack/claws,
-		/datum/unarmed_attack/bite/sharp,
+		/datum/melee_attack/unarmed/stomp,
+		/datum/melee_attack/unarmed/kick,
+		/datum/melee_attack/unarmed/claws,
+		/datum/melee_attack/unarmed/bite/sharp,
 	)
 
 	abilities = list(
@@ -117,6 +120,7 @@
 		/mob/living/carbon/human/proc/resp_biomorph,
 		/mob/living/carbon/human/proc/biothermic_adapt,
 		/mob/living/carbon/human/proc/atmos_biomorph,
+		/mob/living/carbon/human/proc/hemophagic_biomorph,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair_colors,
 		/mob/living/carbon/human/proc/shapeshifter_select_colour,
@@ -127,6 +131,12 @@
 		/mob/living/carbon/human/proc/shapeshifter_select_ears,
 		/mob/living/carbon/human/proc/shapeshifter_select_horns,
 		/mob/living/carbon/human/proc/shapeshifter_select_shape,
+		/mob/living/carbon/human/proc/shapeshifter_reset_to_slot,
+		/mob/living/carbon/human/proc/check_silk_amount,
+		/mob/living/carbon/human/proc/toggle_silk_production,
+		/mob/living/carbon/human/proc/weave_structure,
+		/mob/living/carbon/human/proc/weave_item,
+		/mob/living/carbon/human/proc/set_silk_color,
 	)
 
 	var/has_feral_abilities = FALSE
@@ -144,7 +154,12 @@
 	else
 		//Cold hurts and gives them pain messages, eventually weakening and paralysing, but doesn't damage or trigger feral.
 		//NB: 'body_temperature' used here is the 'setpoint' species var
-		var/temp_diff = body_temperature - H.bodytemperature
+		var/effective_goal_temperature
+		if(body_temperature)
+			effective_goal_temperature = body_temperature
+		else //They have no internal body heating from being cold blooded, so let them freeze upon hitting 0C
+			effective_goal_temperature = T0C + 51
+		var/temp_diff = effective_goal_temperature - H.bodytemperature
 		if(temp_diff >= 50)
 			H.shock_stage = min(H.shock_stage + (temp_diff/20), 160) // Divided by 20 is the same as previous numbers, but a full scale
 			H.eye_blurry = max(5,H.eye_blurry)
@@ -369,7 +384,7 @@
 		to_chat(src,"<span class = 'Notice'>We begin modifying our internal structure.</span>")
 	else
 		target.visible_message("<span class = 'danger'>[src] begins to burrow their digits into [target], slithering down their throat!</span>", "<span class = 'warning'>You feel an extremely uncomfortable slithering sensation going through your throat and into your chest...</span>")
-	if(do_after(src,15 SECONDS))
+	if(do_after(src,15 SECONDS, flags = ((target == src)? DO_AFTER_IGNORE_MOVEMENT : NONE )))
 		switch(resp_biomorph)
 			if(GAS_ID_OXYGEN)
 				target.species.breath_type = GAS_ID_OXYGEN
@@ -377,16 +392,18 @@
 				target.species.exhale_type = GAS_ID_CARBON_DIOXIDE
 			if(GAS_ID_PHORON)
 				target.species.breath_type = GAS_ID_PHORON
-				target.species.poison_type = null
-				target.species.exhale_type = GAS_ID_NITROGEN
+				target.species.poison_type = GAS_ID_OXYGEN //If there's no poison type, it defaults to phoron
+				target.species.exhale_type = GAS_ID_CARBON_DIOXIDE //Other phoron breathers also exhale it
 			if(GAS_ID_NITROGEN)
 				target.species.breath_type = GAS_ID_NITROGEN
-				target.species.poison_type = null
+				target.species.poison_type = GAS_ID_PHORON
+				target.species.exhale_type = GAS_ID_CARBON_DIOXIDE
 			if(GAS_ID_CARBON_DIOXIDE)
 				target.species.breath_type = GAS_ID_CARBON_DIOXIDE
+				target.species.poison_type = GAS_ID_PHORON
 				target.species.exhale_type = GAS_ID_OXYGEN
 		if(target == src)
-			to_chat("<span class = 'Notice'>It is done.</span>")
+			to_chat(src, "<span class = 'Notice'>It is done.</span>")
 		else
 			if(prob(10))
 				var/datum/disease2/disease/virus2 = new /datum/disease2/disease
@@ -425,62 +442,69 @@
 		to_chat(src, "<span class = 'Notice'>We begin modifying our internal biothermic structure.</span>")
 	else
 		target.visible_message("<span class = 'danger'>[src] has fleshy tendrils emerge and begin slither inside the veins of [target]!</span>", "<span class = 'warning'>You feel an extremely uncomfortable slithering sensation going through your skin, your veins suddenly feeling as if they have bugs crawling inside...</span>")
-	if(do_after(src,15 SECONDS))
+	if(do_after(src,15 SECONDS, flags = ((target == src)? DO_AFTER_IGNORE_MOVEMENT : NONE )))
 		switch(biothermic_adapt)
 			if("warm-blooded")	//reverts to default
-				target.species.cold_discomfort_level = 285
-				target.species.cold_level_1 = 260
-				target.species.cold_level_2 = 180
-				target.species.cold_level_3 = 100
+				if(target.species.cold_discomfort_level != -1) target.species.cold_discomfort_level = 285
+				if(target.species.cold_level_1 != -1) target.species.cold_level_1 = 260
+				if(target.species.cold_level_2 != -1) target.species.cold_level_2 = 180
+				if(target.species.cold_level_3 != -1) target.species.cold_level_3 = 100
 
-				target.species.breath_cold_level_1 = 240
-				target.species.breath_cold_level_2 = 160
-				target.species.breath_cold_level_3 = 80
+				if(target.species.breath_cold_level_1 != -1) target.species.breath_cold_level_1 = 240
+				if(target.species.breath_cold_level_2 != -1) target.species.breath_cold_level_2 = 160
+				if(target.species.breath_cold_level_3 != -1) target.species.breath_cold_level_3 = 80
 
-				target.species.heat_level_1 = 360
-				target.species.heat_level_2 = 400
-				target.species.heat_level_3 = 1000
+				if(target.species.heat_level_1 != -1) target.species.heat_level_1 = 360
+				if(target.species.heat_level_2 != -1) target.species.heat_level_2 = 400
+				if(target.species.heat_level_3 != -1) target.species.heat_level_3 = 1000
 
-				target.species.breath_heat_level_1 = 380
-				target.species.breath_heat_level_2 = 450
-				target.species.breath_heat_level_3 = 1250
+				if(target.species.breath_heat_level_1 != -1) target.species.breath_heat_level_1 = 380
+				if(target.species.breath_heat_level_2 != -1) target.species.breath_heat_level_2 = 450
+				if(target.species.breath_heat_level_3 != -1) target.species.breath_heat_level_3 = 1250
 
-				target.species.heat_discomfort_level = 315
+				if(target.species.heat_discomfort_level != -1) target.species.heat_discomfort_level = 315
+
+				target.species.body_temperature = T0C+37 //Default target body temperature the body tries to reach
+
 			if("cold-blooded")
-				target.species.cold_discomfort_level = T0C+21
+				if(target.species.cold_discomfort_level != -1) target.species.cold_discomfort_level = T0C+21
 
-				target.species.cold_level_1 = T0C+19
-				target.species.cold_level_2 = T0C
-				target.species.cold_level_3 = T0C - 15
+				if(target.species.cold_level_1 != -1) target.species.cold_level_1 = T0C+19
+				if(target.species.cold_level_2 != -1) target.species.cold_level_2 = T0C
+				if(target.species.cold_level_3 != -1) target.species.cold_level_3 = T0C - 15
 
-				target.species.breath_cold_level_1 = T0C + 5
-				target.species.breath_cold_level_2 = T0C - 10
-				target.species.breath_cold_level_3 = T0C - 25
+				if(target.species.breath_cold_level_1 != -1) target.species.breath_cold_level_1 = T0C + 5
+				if(target.species.breath_cold_level_2 != -1) target.species.breath_cold_level_2 = T0C - 10
+				if(target.species.breath_cold_level_3 != -1) target.species.breath_cold_level_3 = T0C - 25
+				//Extremely resistant, but that how it was before (besides decimal points, so technically nerfed)
+				if(target.species.heat_level_1 != -1) target.species.heat_level_1 = T0C+726
+				if(target.species.heat_level_2 != -1) target.species.heat_level_2 = T0C+926
+				if(target.species.heat_level_3 != -1) target.species.heat_level_3 = T0C+1126
 
-				target.species.heat_level_1 = 1000
-				target.species.heat_level_2 = 1200
-				target.species.heat_level_3 = 1400
+				if(target.species.breath_heat_level_1 != -1) target.species.breath_heat_level_1 = T0C+526
+				if(target.species.breath_heat_level_2 != -1) target.species.breath_heat_level_2 = T0C+726
+				if(target.species.breath_heat_level_3 != -1) target.species.breath_heat_level_3 = T0C+926
 
-				target.species.breath_heat_level_1 = 800
-				target.species.breath_heat_level_2 = 1000
-				target.species.breath_heat_level_3 = 1200
+				target.species.body_temperature = null //cold-blooded like unathi
 
 			if("hot-blooded")
-				target.species.cold_level_1 = T0C - 75
-				target.species.cold_level_2 = T0C - 100
-				target.species.cold_level_3 = T0C - 125
+				if(target.species.cold_level_1 != -1) target.species.cold_level_1 = T0C - 75
+				if(target.species.cold_level_2 != -1) target.species.cold_level_2 = T0C - 100
+				if(target.species.cold_level_3 != -1) target.species.cold_level_3 = T0C - 125
 
-				target.species.breath_cold_level_1 = T0C - 75
-				target.species.breath_cold_level_2 = T0C - 100
-				target.species.breath_cold_level_3 = T0C - 125
+				if(target.species.breath_cold_level_1 != -1) target.species.breath_cold_level_1 = T0C - 75
+				if(target.species.breath_cold_level_2 != -1) target.species.breath_cold_level_2 = T0C - 100
+				if(target.species.breath_cold_level_3 != -1) target.species.breath_cold_level_3 = T0C - 125
 
-				target.species.heat_level_1 = T0C + 25
-				target.species.heat_level_2 = T0C + 50
-				target.species.heat_level_3 = T0C + 100
+				//The body aims for 37 degrees C, so already damaging itself there. It also should be noticeably warmer, so one can be detected as being hot blooded, so we need to be able to tolerate at least that.
+				target.species.body_temperature = T0C+40
+				if(target.species.heat_level_1 != -1) target.species.heat_level_1 = T0C + 41 //If we get warmed at all, that'll suck
+				if(target.species.heat_level_2 != -1) target.species.heat_level_2 = T0C + 61
+				if(target.species.heat_level_3 != -1) target.species.heat_level_3 = T0C + 100
 
-				target.species.breath_heat_level_1 = T0C + 50
-				target.species.breath_heat_level_2 = T0C + 75
-				target.species.breath_heat_level_3 = T0C + 100
+				if(target.species.breath_heat_level_1 != -1) target.species.breath_heat_level_1 = T0C + 50
+				if(target.species.breath_heat_level_2 != -1) target.species.breath_heat_level_2 = T0C + 75
+				if(target.species.breath_heat_level_3 != -1) target.species.breath_heat_level_3 = T0C + 100
 
 				target.species.heat_discomfort_level = T0C+19
 		if(target == src)
@@ -518,26 +542,26 @@
 		to_chat(src,"<span class = 'Notice'>We cannot change a being of metal!</span>")
 		return
 	if(target == src)
-		to_chat("<span class = 'Notice'>We begin modifying our skin...</span>")
+		to_chat(src, "<span class = 'Notice'>We begin modifying our skin...</span>")
 	else
 		target.visible_message("<span class = 'danger'>[src] has fleshy tendrils emerge and begin to merge and mold with [target]!</span>", "<span class = 'warning'>You feel an extremely uncomfortable slithering sensation going through your skin, it begins to feel foreign and dead, emanating from them...</span>")
-	if(do_after(src,15 SECONDS))
+	if(do_after(src,15 SECONDS, flags = ((target == src)? DO_AFTER_IGNORE_MOVEMENT : NONE )))
 		switch(atmos_biomorph)
 			if("flexible")
-				target.species.warning_low_pressure = WARNING_LOW_PRESSURE
-				target.species.hazard_low_pressure = HAZARD_LOW_PRESSURE
-				target.species.warning_high_pressure = WARNING_HIGH_PRESSURE
-				target.species.hazard_high_pressure = HAZARD_HIGH_PRESSURE
+				if(target.species.warning_low_pressure != -1) target.species.warning_low_pressure = WARNING_LOW_PRESSURE
+				if(target.species.hazard_low_pressure != -1) target.species.hazard_low_pressure = HAZARD_LOW_PRESSURE
+				if(target.species.warning_high_pressure != -1) target.species.warning_high_pressure = WARNING_HIGH_PRESSURE
+				if(target.species.hazard_high_pressure != -1) target.species.hazard_high_pressure = HAZARD_HIGH_PRESSURE
 			if("compact")
-				target.species.warning_low_pressure = 50
-				target.species.hazard_low_pressure = 0
-				target.species.warning_high_pressure = WARNING_HIGH_PRESSURE
-				target.species.hazard_high_pressure = HAZARD_HIGH_PRESSURE
+				if(target.species.warning_low_pressure != -1) target.species.warning_low_pressure = 50
+				if(target.species.hazard_low_pressure != -1) target.species.hazard_low_pressure = 0
+				if(target.species.warning_high_pressure != -1) target.species.warning_high_pressure = WARNING_HIGH_PRESSURE
+				if(target.species.hazard_high_pressure != -1) target.species.hazard_high_pressure = HAZARD_HIGH_PRESSURE
 			if("elastic")
-				target.species.warning_low_pressure = WARNING_LOW_PRESSURE
-				target.species.hazard_low_pressure = HAZARD_LOW_PRESSURE
-				target.species.warning_high_pressure = WARNING_HIGH_PRESSURE + 200
-				target.species.hazard_high_pressure = HAZARD_HIGH_PRESSURE + 400
+				if(target.species.warning_low_pressure != -1) target.species.warning_low_pressure = WARNING_LOW_PRESSURE
+				if(target.species.hazard_low_pressure != -1) target.species.hazard_low_pressure = HAZARD_LOW_PRESSURE
+				if(target.species.warning_high_pressure != -1) target.species.warning_high_pressure = WARNING_HIGH_PRESSURE + 200
+				if(target.species.hazard_high_pressure != -1) target.species.hazard_high_pressure = HAZARD_HIGH_PRESSURE + 400
 
 		if(target == src)
 			to_chat(src, "<span class = 'notice'>It is done.</span>")
@@ -551,6 +575,25 @@
 				SPAN_DANGER("[src] pulls the tendrils out!"),
 				SPAN_WARNING("The sensation fades. You feel made anew."),
 			)
+
+/mob/living/carbon/human/proc/hemophagic_biomorph() //just toggle the is_vampire flag.
+	set name = "Hemophagic Biomorph"
+	set desc = "Changes our digestion focus between blood and general proteins."
+	set category = "Abilities"
+	//No option to change others as that probably would need to go through the whole vetalan infection thing, and a chimera could only mimic it
+	var/list/food_options = list("carnivorous","hemophagous")
+	var/selected_food
+	selected_food = input(src, "How should we modify our diet?") as null|anything in food_options
+	if(!selected_food)
+		return
+	to_chat(src, "<span class = 'Notice'>We begin refocusing our harvesting fronds...</span>") //Saying the intestines are getting modified.
+	if(do_after(src,10 SECONDS, flags = DO_AFTER_IGNORE_MOVEMENT))
+		switch(selected_food)
+			if("carnivorous")
+				src.species.is_vampire = 0
+			if("hemophagous")
+				src.species.is_vampire = 1
+		to_chat(src, "<span class = 'notice'>It is done.</span>")
 
 //? Abilities
 
@@ -625,13 +668,32 @@
 		return
 	var/mob/living/carbon/human/H = owner
 	H.restore_blood()
-	H.species.create_organs(H, TRUE)
-	H.restore_all_organs()
-	H.adjustBruteLoss(-healing_amount)
-	H.adjustFireLoss(-healing_amount)
+	//Go through all the organs and limbs we should have, if one's missing, grow it.
+	for(var/organ_tag in H.species.has_organ)
+		var/obj/item/organ/I = H.internal_organs_by_name[name]
+		if(!I)
+			var/organ_type = H.species.has_organ[organ_tag]
+			var/obj/item/organ/O = new organ_type(H,1)
+			if(organ_tag != O.organ_tag)
+				warning("[O.type] has a default organ tag \"[O.organ_tag]\" that differs from the species' organ tag \"[organ_tag]\". Updating organ_tag to match.")
+				O.organ_tag = organ_tag
+			H.internal_organs_by_name[organ_tag] = O
+	for(var/limb_type in H.species.has_limbs)
+		var/obj/item/organ/I = H.organs_by_name[limb_type]
+		if(istype(I, /obj/item/organ/external/stump))
+			I.removed(null, TRUE)//Shouldn't have a vital stump that can be removed, but no need to kill if that somehow is the case, as it'll be replaced.
+			I = null
+		if(!I)
+			var/list/organ_data = H.species.has_limbs[limb_type]
+			var/limb_path = organ_data["path"]
+			var/obj/item/organ/O = new limb_path(H)
+			organ_data["descriptor"] = O.name
+			if(O.parent_organ)
+				organ_data = H.species.has_limbs[O.parent_organ]
+				organ_data["has_children"] = organ_data["has_children"]+1
+	H.restore_all_organs(ignore_prosthetic_prefs=TRUE) //A chimera couldn't make a limb robotic by this, shouldn't remove robotic parts, though.
 	H.adjustOxyLoss(-healing_amount)
 	H.adjustCloneLoss(-healing_amount)
-	H.adjustBrainLoss(-healing_amount)
 	H.remove_status_effect(/datum/status_effect/sight/blindness)
 	H.eye_blurry = FALSE
 	H.ear_deaf = FALSE
@@ -664,22 +726,25 @@
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/H = owner
-	toggle_sight(owner)
-	addtimer(CALLBACK(src, PROC_REF(toggle_sight),H), duration, TIMER_UNIQUE)
+	var/toggle = !H.species.has_glowing_eyes //Only toggle the eye glow if we aren't already glowing with them
+	toggle_sight(owner, toggle)
+	addtimer(CALLBACK(src, PROC_REF(toggle_sight), H, toggle), duration, TIMER_UNIQUE)
 
-/datum/ability/species/xenochimera/thermal_sight/proc/toggle_sight(mob/living/carbon/human/H)
+/datum/ability/species/xenochimera/thermal_sight/proc/toggle_sight(mob/living/carbon/human/H, toggle_eye_glow)
 	if(!active)
 		to_chat(H, "<span class='notice'>We focus outward, gaining a keen sense of all those around us.</span>")
 		H.species.vision_flags |= SEE_MOBS
 		H.species.vision_flags &= ~SEE_BLACKNESS
-		H.species.has_glowing_eyes = TRUE
+		if(toggle_eye_glow)
+			H.species.has_glowing_eyes = TRUE
 		H.add_vision_modifier(/datum/vision/augmenting/legacy_ghetto_nvgs)
 		active = TRUE
 	else
 		to_chat(H, "<span class='notice'>Our senses dull.</span>")
 		H.species.vision_flags &= ~SEE_MOBS
 		H.species.vision_flags |= SEE_BLACKNESS
-		H.species.has_glowing_eyes = FALSE
+		if(toggle_eye_glow)
+			H.species.has_glowing_eyes = FALSE
 		H.remove_vision_modifier(/datum/vision/augmenting/legacy_ghetto_nvgs)
 		active = FALSE
 	H.update_eyes()

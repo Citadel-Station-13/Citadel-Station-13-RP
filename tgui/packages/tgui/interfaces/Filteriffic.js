@@ -166,7 +166,7 @@ const FilterDataEntry = (props, context) => {
     radius: 'float',
     falloff: 'float',
     density: 'int',
-    threshold: 'float',
+    threshold: 'string',
     factor: 'float',
     repeat: 'int',
   };
@@ -265,7 +265,7 @@ export const Filteriffic = (props, context) => {
               <Input
                 value={massApplyPath}
                 width="100px"
-                onInput={(e, value) => setMassApplyPath(value)} />
+                onChange={(e, value) => setMassApplyPath(value)} />
               <Button.Confirm
                 content="Apply"
                 confirmContent="ARE YOU SURE?"

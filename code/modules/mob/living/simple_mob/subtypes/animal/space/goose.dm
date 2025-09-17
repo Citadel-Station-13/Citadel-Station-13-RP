@@ -14,7 +14,7 @@
 	icon_dead = "goose_dead"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/goose)
 
-	faction = "geese"
+	iff_factions = MOB_IFF_FACTION_BIND_TO_MAP
 
 	maxHealth = 30
 	health = 30
@@ -52,6 +52,3 @@
 	set category = "Abilities"
 
 	add_modifier(/datum/modifier/berserk, 30 SECONDS)
-
-/mob/living/simple_mob/animal/space/goose/virgo3b
-	faction = "virgo3b"

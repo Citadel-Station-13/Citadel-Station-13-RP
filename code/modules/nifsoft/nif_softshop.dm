@@ -24,13 +24,13 @@
 	opacity = 0
 
 /obj/machinery/vending/nifsoft_shop/Initialize(mapload)
+	var/mutable_appearance/A = new(src)
+	A.icon_state = "beacon"
+	ar_image_holder = new(null, src, A)
 	. = ..()
 	if(wires)
 		qdel(wires)
 	wires = new /datum/wires/vending/no_contraband(src) //These wires can't be hacked for contraband.
-	var/mutable_appearance/A = new(src)
-	A.icon_state = "beacon"
-	ar_image_holder = new(null, src, A)
 
 /obj/machinery/vending/nifsoft_shop/Destroy()
 	QDEL_NULL(ar_image_holder)

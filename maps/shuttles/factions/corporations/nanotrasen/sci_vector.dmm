@@ -1,0 +1,1233 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aA" = (
+/obj/machinery/door/blast/regular,
+/obj/structure/atmospheric_retention_field,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/service)
+"aU" = (
+/obj/structure/handrail,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/service)
+"aZ" = (
+/obj/structure/handrail,
+/turf/space/basic,
+/area/shuttle/nanotrasen/sci_vector/excursion)
+"bF" = (
+/obj/machinery/power/smes,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/engineering)
+"ch" = (
+/obj/machinery/atmospherics/pipe/tank{
+	dir = 4
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/engineering)
+"cv" = (
+/obj/effect/decal/warning_stripes,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/engineering)
+"cW" = (
+/obj/structure/bed/chair/bay/comfy{
+	dir = 8
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/excursion)
+"dl" = (
+/obj/structure/handrail{
+	dir = 8
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/excursion)
+"du" = (
+/obj/machinery/door/airlock/glass/research,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/excursion)
+"dw" = (
+/obj/machinery/power/apc/east_mount,
+/obj/machinery/recharge_station,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/cockpit)
+"eh" = (
+/obj/machinery/telecomms/server,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/engineering)
+"eu" = (
+/obj/structure/table/rack/shelf/steel,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/crew)
+"fc" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/computer/shuttle_control{
+	dir = 4
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/cockpit)
+"fX" = (
+/turf/simulated/wall/r_wall/prepainted/science,
+/area/shuttle/nanotrasen/sci_vector/excursion)
+"fY" = (
+/obj/structure/bed/chair/bay/comfy,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/crew)
+"hA" = (
+/obj/effect/decal/warning_stripes,
+/obj/effect/decal/warning_stripes,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/service)
+"jw" = (
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/service)
+"kn" = (
+/obj/spawner/window/reinforced/full,
+/obj/spawner/window/reinforced/full,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/excursion)
+"kR" = (
+/obj/effect/decal/warning_stripes,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/service)
+"lE" = (
+/obj/machinery/atmospherics/component/unary/engine/bigger,
+/turf/space/basic,
+/area/shuttle/nanotrasen/sci_vector/service)
+"mY" = (
+/obj/structure/closet/secure_closet/engineering_welding,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/excursion)
+"oj" = (
+/obj/structure/closet/secure_closet/xenoarchaeologist,
+/obj/machinery/power/apc/east_mount,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/excursion)
+"oy" = (
+/obj/spawner/window/reinforced/full,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/crew)
+"oG" = (
+/turf/space/basic,
+/area/shuttle/nanotrasen/sci_vector/service)
+"pj" = (
+/obj/structure/closet/secure_closet/xenoarchaeologist,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/excursion)
+"ps" = (
+/obj/machinery/door/airlock/external/glass,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/airlock)
+"pu" = (
+/obj/structure/handrail{
+	dir = 1
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/engineering)
+"qA" = (
+/obj/machinery/suit_storage_unit/exploration,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/cockpit)
+"rb" = (
+/obj/structure/bed/chair/bay/comfy{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/crew)
+"rw" = (
+/obj/structure/window/reinforced,
+/obj/machinery/suit_storage_unit/exploration,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/airlock)
+"rQ" = (
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/airlock)
+"sl" = (
+/obj/structure/table/rack/shelf,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/crew)
+"tF" = (
+/obj/machinery/power/apc/north_mount,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/airlock)
+"uA" = (
+/obj/machinery/atmospherics/pipe/tank/air{
+	dir = 8
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/engineering)
+"vU" = (
+/obj/structure/bed/chair/bay/comfy{
+	dir = 8
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/cockpit)
+"wr" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/table/rack/shelf,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/cockpit)
+"xj" = (
+/obj/machinery/artifact_scanpad,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/crew)
+"xr" = (
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/cockpit)
+"xv" = (
+/obj/machinery/computer/rdconsole{
+	dir = 4
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/excursion)
+"xK" = (
+/obj/machinery/r_n_d/server,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/engineering)
+"xO" = (
+/obj/effect/decal/warning_stripes,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/airlock)
+"yR" = (
+/turf/simulated/wall/r_wall/prepainted/science,
+/area/shuttle/nanotrasen/sci_vector/crew)
+"zu" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/effect/decal/warning_stripes,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/service)
+"zV" = (
+/obj/structure/handrail{
+	dir = 1
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/airlock)
+"Ce" = (
+/obj/structure/handrail{
+	dir = 4
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/airlock)
+"CI" = (
+/obj/machinery/suit_storage_unit/exploration,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/airlock)
+"CP" = (
+/obj/machinery/computer/nanite_chamber{
+	dir = 4
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/service)
+"DK" = (
+/obj/structure/bed/chair/bay/comfy{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/crew)
+"DR" = (
+/obj/structure/dispenser/oxygen{
+	dir = 8
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/excursion)
+"DS" = (
+/obj/structure/handrail,
+/obj/machinery/power/apc/north_mount,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/service)
+"EC" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/turf/simulated/floor/plating,
+/area/shuttle/nanotrasen/sci_vector/service)
+"EG" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/machinery/door/window{
+	dir = 8
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/engineering)
+"EQ" = (
+/obj/machinery/mech_recharger,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/service)
+"EX" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/effect/decal/warning_stripes,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/service)
+"Fx" = (
+/obj/spawner/window/reinforced/full,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/cockpit)
+"Gt" = (
+/obj/effect/decal/warning_stripes,
+/turf/space/basic,
+/area/shuttle/nanotrasen/sci_vector/engineering)
+"GQ" = (
+/obj/machinery/artifact_harvester,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/crew)
+"Hs" = (
+/obj/machinery/nanite_chamber,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/service)
+"HY" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/table/reinforced,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/cockpit)
+"Ib" = (
+/obj/machinery/door/airlock/glass/research,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/cockpit)
+"Jr" = (
+/obj/machinery/exonet_node,
+/obj/machinery/power/apc/west_mount,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/engineering)
+"KS" = (
+/obj/machinery/atmospherics/pipe/tank/phoron{
+	dir = 8
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/service)
+"Lv" = (
+/obj/effect/decal/warning_stripes,
+/turf/space/basic,
+/area/shuttle/nanotrasen/sci_vector/service)
+"LZ" = (
+/obj/spawner/window/reinforced/full,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/excursion)
+"Mz" = (
+/turf/space/basic,
+/area/space)
+"Ps" = (
+/turf/simulated/wall/r_wall/prepainted/science,
+/area/shuttle/nanotrasen/sci_vector/service)
+"Pt" = (
+/obj/structure/handrail,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/airlock)
+"PP" = (
+/obj/structure/handrail{
+	dir = 1
+	},
+/turf/space/basic,
+/area/shuttle/nanotrasen/sci_vector/service)
+"Qc" = (
+/obj/structure/table/reinforced,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/crew)
+"QF" = (
+/obj/machinery/lathe/r_n_d/circuit_imprinter,
+/obj/structure/window/reinforced,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/excursion)
+"Rk" = (
+/obj/machinery/atmospherics/component/binary/pump/fuel{
+	dir = 4
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/service)
+"RH" = (
+/obj/structure/closet/crate/freezer/rations,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/crew)
+"RR" = (
+/obj/machinery/artifact_analyser,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/crew)
+"RX" = (
+/obj/machinery/lathe/r_n_d/protolathe,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/excursion)
+"Su" = (
+/turf/simulated/wall/r_wall/prepainted/science,
+/area/shuttle/nanotrasen/sci_vector/cockpit)
+"Ti" = (
+/turf/simulated/wall/r_wall/prepainted/science,
+/area/shuttle/nanotrasen/sci_vector/engineering)
+"Vu" = (
+/obj/effect/decal/warning_stripes,
+/turf/space/basic,
+/area/shuttle/nanotrasen/sci_vector/excursion)
+"Wl" = (
+/obj/machinery/door/airlock/external/glass,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/engineering)
+"WQ" = (
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/crew)
+"Xm" = (
+/obj/machinery/door/airlock/glass/research,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/service)
+"Yh" = (
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/excursion)
+"Yj" = (
+/obj/machinery/door/airlock/glass/research,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/engineering)
+"Yl" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/simulated/floor/plating,
+/area/shuttle/nanotrasen/sci_vector/service)
+"YQ" = (
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/engineering)
+"Zt" = (
+/obj/spawner/window/reinforced/full,
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/service)
+"ZP" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/effect/decal/warning_stripes,
+/obj/machinery/atmospherics/component/binary/pump/fuel{
+	dir = 8
+	},
+/turf/simulated/floor/plating/indoors,
+/area/shuttle/nanotrasen/sci_vector/service)
+
+(1,1,1) = {"
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+"}
+(2,1,1) = {"
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+"}
+(3,1,1) = {"
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+"}
+(4,1,1) = {"
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+"}
+(5,1,1) = {"
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+"}
+(6,1,1) = {"
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Vu
+Vu
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Lv
+Lv
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+"}
+(7,1,1) = {"
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+yR
+oy
+fX
+fX
+LZ
+LZ
+kn
+fX
+fX
+aZ
+Mz
+Mz
+PP
+Ps
+Ps
+Ps
+lE
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+"}
+(8,1,1) = {"
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+oy
+Qc
+sl
+fX
+mY
+RX
+xv
+QF
+DR
+pj
+fX
+ps
+ps
+Ps
+Hs
+CP
+Ps
+oG
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+"}
+(9,1,1) = {"
+Mz
+Mz
+Mz
+Mz
+Mz
+yR
+Qc
+WQ
+WQ
+du
+Yh
+Yh
+cW
+Yh
+Yh
+pj
+LZ
+Pt
+zV
+Ps
+jw
+hA
+kR
+Ps
+lE
+Mz
+Mz
+Mz
+Mz
+Mz
+"}
+(10,1,1) = {"
+Mz
+Mz
+Mz
+Mz
+Mz
+oy
+fY
+WQ
+DK
+LZ
+Yh
+Yh
+Yh
+dl
+Yh
+oj
+LZ
+Pt
+zV
+Ps
+jw
+zu
+zu
+Ps
+oG
+Mz
+Mz
+Mz
+Mz
+Mz
+"}
+(11,1,1) = {"
+Mz
+Mz
+Mz
+Mz
+Mz
+oy
+fY
+WQ
+rb
+Su
+Fx
+Fx
+Fx
+Su
+du
+fX
+fX
+ps
+ps
+Ps
+aU
+EQ
+EQ
+aA
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+"}
+(12,1,1) = {"
+Mz
+Mz
+Mz
+Mz
+Mz
+yR
+RR
+WQ
+RH
+Su
+HY
+fc
+wr
+Su
+tF
+Ce
+Ce
+rQ
+rQ
+Xm
+jw
+EQ
+EQ
+aA
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+"}
+(13,1,1) = {"
+Mz
+Mz
+Mz
+Mz
+Mz
+oy
+xj
+WQ
+WQ
+Fx
+xr
+vU
+xr
+Ib
+rQ
+rQ
+rQ
+rQ
+xO
+Zt
+jw
+EC
+Yl
+Ps
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+"}
+(14,1,1) = {"
+Mz
+Mz
+Mz
+Mz
+Mz
+yR
+GQ
+WQ
+eu
+Su
+qA
+xr
+dw
+Su
+CI
+CI
+rw
+rQ
+rQ
+Xm
+jw
+EQ
+EQ
+aA
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+"}
+(15,1,1) = {"
+Mz
+Mz
+Mz
+Mz
+Mz
+oy
+fY
+WQ
+DK
+Su
+Su
+Ib
+Su
+Su
+Ti
+Ti
+Ti
+Yj
+Ti
+Ps
+DS
+EQ
+EQ
+aA
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+"}
+(16,1,1) = {"
+Mz
+Mz
+Mz
+Mz
+Mz
+oy
+fY
+WQ
+rb
+Ti
+ch
+YQ
+YQ
+Ti
+Jr
+eh
+bF
+YQ
+xK
+Ps
+Rk
+ZP
+EX
+Ps
+lE
+Mz
+Mz
+Mz
+Mz
+Mz
+"}
+(17,1,1) = {"
+Mz
+Mz
+Mz
+Mz
+Mz
+yR
+Qc
+WQ
+WQ
+Yj
+YQ
+YQ
+YQ
+Yj
+YQ
+YQ
+YQ
+YQ
+YQ
+Xm
+jw
+kR
+kR
+Ps
+oG
+Mz
+Mz
+Mz
+Mz
+Mz
+"}
+(18,1,1) = {"
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+oy
+Qc
+sl
+Ti
+uA
+Ti
+Wl
+Ti
+bF
+EG
+cv
+cv
+cv
+Ps
+KS
+KS
+Ps
+lE
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+"}
+(19,1,1) = {"
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+yR
+oy
+Ti
+Ti
+Ti
+pu
+Ti
+Ti
+Ti
+Ti
+Ti
+Ti
+Ps
+Ps
+Ps
+Ps
+oG
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+"}
+(20,1,1) = {"
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Gt
+Gt
+Ti
+Wl
+Ti
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Lv
+Lv
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+"}
+(21,1,1) = {"
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+"}
+(22,1,1) = {"
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+"}
+(23,1,1) = {"
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+"}
+(24,1,1) = {"
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+"}
+(25,1,1) = {"
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+"}

@@ -11,15 +11,9 @@ STARLIGHT
 ## Set to 0 to disable holidays (you monster)
 ALLOW_HOLIDAYS
 
-## Engine submap probabilities
-## Supermatter
-ENGINE_SUBMAP EngineSubmap_SM 40
-## R-UST Fusion
-ENGINE_SUBMAP EngineSubmap_RUST 40
-## Tesla
-ENGINE_SUBMAP EngineSubmap_Tesla 20
-## Singulo
-ENGINE_SUBMAP EngineSubmap_Singulo 20
+## Engine submap probabilities by name
+# todo: add the rest once names are standardized
+# ENGINE_SUBMAP ProcEngine_Triumph_RUST
 
 ## Alert Levels
 # ALERT_DESC_GREEN TEXT HERE

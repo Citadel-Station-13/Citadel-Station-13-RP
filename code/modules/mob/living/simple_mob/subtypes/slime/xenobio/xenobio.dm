@@ -175,14 +175,13 @@
 		var/datum/ai_holder/polaris/simple_mob/xenobio_slime/AI = ai_holder
 		AI.pacify()
 
-	faction = "neutral"
+	set_iff_factions(MOB_IFF_FACTION_NEUTRAL)
 
 	// If for whatever reason the mob AI (or player) decides to try to attack something anyways.
 	legacy_melee_damage_upper = 0
 	legacy_melee_damage_lower = 0
 
 	update_mood()
-
 
 // These are verbs so that player slimes can evolve/split.
 /mob/living/simple_mob/slime/xenobio/verb/evolve()
@@ -252,7 +251,7 @@
 			if(src.mind)
 				src.mind.transfer(new_slime)
 			else
-				new_slime.key = src.key
+				transfer_client_to(new_slime)
 			qdel(src)
 		else
 			to_chat(src, SPAN_WARNING( "I am not ready to reproduce yet..."))
@@ -279,7 +278,7 @@
 	if(untamable_inherit)
 		baby.untamable = untamable
 	baby.untamable_inherit = untamable_inherit
-	baby.faction = faction
+	baby.copy_iff_factions(src)
 	baby.friends = friends.Copy()
 
 	if(no_step != 1)

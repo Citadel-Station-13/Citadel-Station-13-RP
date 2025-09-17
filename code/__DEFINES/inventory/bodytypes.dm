@@ -62,16 +62,14 @@
 #define BODYTYPE_UNATHI_DIGI        "unathi-digi"
 /// krisitik
 #define BODYTYPE_KRISITIK			"krisitik"
+/// IPC; unused in game; only used in sprites for now
+#define BODYTYPE_IPC				"ipc"
 
 //! keep this number (count) up to date
-#define BODYTYPES_TOTAL 19
+#define BODYTYPES_TOTAL 21
 
-//? automatically typelist bodytypes if it's a list
-#define CONSTRUCT_BODYTYPES(LIST) LIST = fetch_bodytypes_struct(LIST)
-//? check bodytype lists matching
-#define COMPARE_BODYTYPES(L1, L2) L1.compare(L2)
-//? check bodytype list membership
-#define CHECK_BODYTYPE(L, BT) L.contains(BT)
+/// Constructs a bodytype struct from a variable.
+#define CONSTRUCT_BODYTYPES(BODYTYPES) BODYTYPES = fetch_bodytypes_struct(BODYTYPES)
 
 // todo: what are we going to do with these?
 //? we should probably standardize bodytypes as entirely different sprites, and also
@@ -115,6 +113,8 @@
 #define BODYTYPE_STRING_WEREBEAST "werebeast"
 #define BODYTYPE_STRING_XENOHYBRID "xenohybrid"
 #define BODYTYPE_STRING_KRISITIK "krisitik" //Currently Unused until I can do Suit Sprites
+/// currently unused; only in sprites
+#define BODYTYPE_STRING_IPC "ipc"
 
 /proc/bodytype_to_string(bodytype)
 	// todo: assoc list lookup
@@ -159,5 +159,7 @@
 			return BODYTYPE_STRING_XENOHYBRID
 		if(BODYTYPE_KRISITIK)
 			return BODYTYPE_STRING_VULPKANIN //Borrowing Vulp Sprites until I can sprite all the space suits.
+		if(BODYTYPE_IPC)
+			return BODYTYPE_STRING_IPC
 		else
 			CRASH("unknown bodytype: [bodytype]")

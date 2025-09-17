@@ -177,19 +177,18 @@
 		else
 			. += SPAN_INFO("[icon2html(back, user)] [T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(back)] on [T.his] back.")
 
-	//left hand
-	if(l_hand && l_hand.show_examine)
-		if(l_hand.blood_DNA)
-			. += SPAN_WARNING("[icon2html(l_hand, user)] [T.He] [T.is] holding [l_hand.gender == PLURAL ? "some" : "a"] [(l_hand.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(l_hand)] in [T.his] left hand!")
+	// hands
+	for(var/i in 1 to length(inventory?.held_items))
+		if(isnull(inventory.held_items[i]))
+			continue
+		var/obj/item/held = inventory.held_items[i]
+		if(!held.show_examine)
+			continue
+		var/hand_str = (i % 2)? "left hand[i > 2? " #[round(i / 2)]" : ""]" : "right hand[i > 2? " #[round(i / 2)]" : ""]"
+		if(held.blood_DNA)
+			. += SPAN_WARNING("[icon2html(held, user)] [T.He] [T.is] holding [held.gender == PLURAL ? "some" : "a"] [(held.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(held)] in [T.his] [hand_str]!")
 		else
-			. += SPAN_INFO("[icon2html(l_hand, user)] [T.He] [T.is] holding \a [FORMAT_TEXT_LOOKITEM(l_hand)] in [T.his] left hand.")
-
-	//right hand
-	if(r_hand && r_hand.show_examine)
-		if(r_hand.blood_DNA)
-			. += SPAN_WARNING("[icon2html(r_hand, user)] [T.He] [T.is] holding [r_hand.gender == PLURAL ? "some" : "a"] [(r_hand.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(r_hand)] in [T.his] right hand!")
-		else
-			. += SPAN_INFO("[icon2html(r_hand, user)] [T.He] [T.is] holding \a [FORMAT_TEXT_LOOKITEM(r_hand)] in [T.his] right hand.")
+			. += SPAN_INFO("[icon2html(held, user)] [T.He] [T.is] holding \a [FORMAT_TEXT_LOOKITEM(held)] in [T.his] [hand_str].")
 
 	//gloves
 	if(gloves && !(skip_gear & EXAMINE_SKIPGLOVES) && gloves.show_examine)
@@ -274,11 +273,12 @@
 
 	//Jitters
 	if(is_jittery)
-		if(jitteriness >= 300)
+		var/effective_jitteriness = get_effective_impairment_power_jitter()
+		if(effective_jitteriness >= 300)
 			. += SPAN_DANGER("[T.He] [T.is] convulsing violently!")
-		else if(jitteriness >= 200)
+		else if(effective_jitteriness >= 200)
 			. += SPAN_WARNING("[T.He] [T.is] extremely jittery.")
-		else if(jitteriness >= 100)
+		else if(effective_jitteriness >= 100)
 			. += SPAN_WARNING("[T.He] [T.is] twitching ever so slightly.")
 
 	//splints

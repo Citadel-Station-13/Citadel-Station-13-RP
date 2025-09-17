@@ -13,6 +13,8 @@
 	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 50
+	hides_underfloor = OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP
+	hides_underfloor_update_icon = TRUE
 
 	/// Radio frequency.
 	var/freq = 1449
@@ -35,7 +37,6 @@
 /obj/machinery/magnetic_module/Initialize(mapload, newdir)
 	. = ..()
 	var/turf/T = loc
-	hide(!T.is_plating())
 	center = T
 
 	spawn(10)	// must wait for map loading to finish
@@ -45,13 +46,9 @@
 	spawn()
 		magnetic_process()
 
-// update the invisibility and icon
-/obj/machinery/magnetic_module/hide(intact)
-	invisibility = intact ? 101 : 0
-	updateicon()
-
 // update the icon_state
-/obj/machinery/magnetic_module/proc/updateicon()
+/obj/machinery/magnetic_module/update_icon()
+	. = ..()
 	var/state="floor_magnet"
 	var/onstate=""
 	if(!on)
@@ -162,7 +159,7 @@
 					qdel(src)
 	*/
 
-	updateicon()
+	update_icon()
 
 /obj/machinery/magnetic_module/proc/magnetic_process() // proc that actually does the pull_active
 	if(pull_active)
@@ -251,7 +248,7 @@
 /obj/machinery/magnetic_controller/attack_ai(mob/user)
 	return attack_hand(user)
 
-/obj/machinery/magnetic_controller/attack_hand(mob/user, list/params)
+/obj/machinery/magnetic_controller/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	user.set_machine(src)
@@ -276,7 +273,7 @@
 	dat += "Moving: <a href='?src=\ref[src];operation=togglemoving'>[moving ? "Enabled":"Disabled"]</a>"
 
 
-	user << browse(dat, "window=magnet;size=400x500")
+	user << browse(HTML_SKELETON(dat), "window=magnet;size=400x500")
 	onclose(user, "magnet")
 
 /obj/machinery/magnetic_controller/Topic(href, href_list)

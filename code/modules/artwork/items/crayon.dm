@@ -10,6 +10,7 @@
 	pen_color = "#FF0000" //RGB
 	clickable = FALSE
 
+	// todo: reorganize vars
 	/// color name
 	var/crayon_color_name = "red"
 	/// what we show as; e.g. 'crayon', 'marker'
@@ -35,6 +36,7 @@
 	/// can eat
 	var/crayon_edible = TRUE
 
+	// todo: per user this so you can't see what someone else was about to do lmao
 	/// currently picked datapack string path
 	var/current_graffiti_icon_string_path
 	/// currently picked datapack icon state
@@ -211,7 +213,9 @@
 
 	playsound(src, crayon_sound, 50, TRUE, -1)
 
-	return make_graffiti(target, datapack, state, angle, pixel_x, pixel_y)
+	. = make_graffiti(target, datapack, state, angle, pixel_x, pixel_y)
+	if(.)
+		log_construction(actor, ., "created graffiti ([datapack] - [state])")
 
 /obj/item/pen/crayon/proc/attempt_color_entity(atom/target, datum/event_args/actor/actor)
 	// todo: implement attempt_color_entity
@@ -231,7 +235,7 @@
 /obj/item/pen/crayon/proc/switch_color(new_color)
 	crayon_color = new_color
 
-/obj/item/pen/crayon/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/pen/crayon/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return ..()
 	if(crayon_edible && iscarbon(user) && target == user)

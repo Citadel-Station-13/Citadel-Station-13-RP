@@ -11,7 +11,7 @@ var/global/list/grub_machine_overlays = list()
 
 	health = 5
 	maxHealth = 5
-	movement_cooldown = 3
+	movement_base_speed = 10 / 3
 
 	legacy_melee_damage_lower = 1	// This is a tiny worm. It will nibble and thats about it.
 	legacy_melee_damage_upper = 1
@@ -19,7 +19,7 @@ var/global/list/grub_machine_overlays = list()
 	meat_amount = 2
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/grubmeat
 
-	faction = "grubs"
+	iff_factions = MOB_IFF_FACTION_GRUB
 
 	response_help = "pats"
 	response_disarm = "nudges"

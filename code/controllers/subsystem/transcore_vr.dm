@@ -32,8 +32,8 @@ SUBSYSTEM_DEF(transcore)
 /datum/controller/subsystem/transcore/fire(resumed = 0)
 	var/timer = TICK_USAGE
 
-	INTERNAL_PROCESS_STEP(SSTRANSCORE_IMPLANTS,TRUE,process_implants,cost_implants,SSTRANSCORE_BACKUPS)
-//	INTERNAL_PROCESS_STEP(SSTRANSCORE_BACKUPS,FALSE,process_backups,cost_backups,SSTRANSCORE_IMPLANTS)
+	INTERNAL_SUBSYSTEM_PROCESS_STEP(SSTRANSCORE_IMPLANTS,TRUE,process_implants,cost_implants,SSTRANSCORE_BACKUPS)
+//	INTERNAL_SUBSYSTEM_PROCESS_STEP(SSTRANSCORE_BACKUPS,FALSE,process_backups,cost_backups,SSTRANSCORE_IMPLANTS)
 
 /datum/controller/subsystem/transcore/proc/process_implants(resumed = 0)
 	if (!resumed)

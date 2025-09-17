@@ -1,5 +1,5 @@
 // Alraune language that's literally just bushes rubbing together.
-/datum/language/vernal
+/datum/prototype/language/vernal
 	id = LANGUAGE_ID_VERNAL
 	name = LANGUAGE_VERNAL
 	translation_class = TRANSLATION_CLASS_DEFAULT_STANDARD_RACE

@@ -1,3 +1,10 @@
+/**
+ * Called when an admin attempts to delete us with introspection tools.
+ */
+/datum/proc/vv_delete()
+	. = TRUE
+	qdel(src)
+
 /datum/proc/CanProcCall(procname)
 	return TRUE
 
@@ -11,7 +18,12 @@
 	datum_flags |= DF_VAR_EDITED
 	return TRUE
 
-/datum/proc/vv_get_var(var_name)
+/**
+ * @params
+ * * var_name - name of the variable
+ * * resolve - automatically resolve the variable if it's lazy loaded?
+ */
+/datum/proc/vv_get_var(var_name, resolve)
 	switch(var_name)
 		if ("vars")
 			return debug_variable(var_name, list(), 0, src)

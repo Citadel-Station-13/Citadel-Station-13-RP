@@ -13,6 +13,7 @@
 	use_power = USE_POWER_OFF
 	idle_power_usage = 150		//internal circuitry, friction losses and stuff
 	power_rating = 15000	//15000 W ~ 20 HP
+	hides_underfloor_underlays = TRUE
 
 	var/injecting = 0
 
@@ -22,8 +23,6 @@
 	var/id = null
 	var/datum/radio_frequency/radio_connection
 
-	level = 1
-
 /obj/machinery/atmospherics/component/unary/outlet_injector/Initialize(mapload)
 	. = ..()
 	air_contents.volume = ATMOS_DEFAULT_VOLUME_PUMP + 500	//Give it a small reservoir for injecting. Also allows it to have a higher flow rate limit than vent pumps, to differentiate injectors a bit more.
@@ -32,11 +31,12 @@
 	unregister_radio(src, frequency)
 	. = ..()
 
-/obj/machinery/atmospherics/component/unary/outlet_injector/update_icon()
+/obj/machinery/atmospherics/component/unary/outlet_injector/update_icon_state()
 	if(!powered())
 		icon_state = "off"
 	else
 		icon_state = "[use_power ? "on" : "off"]"
+	return ..()
 
 /obj/machinery/atmospherics/component/unary/outlet_injector/update_underlays()
 	if(..())
@@ -194,10 +194,7 @@
 		broadcast_status()
 	update_icon()
 
-/obj/machinery/atmospherics/component/unary/outlet_injector/hide(var/i)
-	update_underlays()
-
-/obj/machinery/atmospherics/component/unary/outlet_injector/attack_hand(mob/user, list/params)
+/obj/machinery/atmospherics/component/unary/outlet_injector/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	ui_interact(user)
 
 /obj/machinery/atmospherics/component/unary/outlet_injector/proc/toggle_injecting()

@@ -9,12 +9,13 @@ type InputButtonsData = {
 type InputButtonsProps = {
   readonly input: string | number;
   readonly message?: string;
+  readonly goodDisabled?: boolean;
 };
 
 export const InputButtons = (props: InputButtonsProps, context) => {
   const { act, data } = useBackend<InputButtonsData>(context);
   const { large_buttons, swapped_buttons } = data;
-  const { input, message } = props;
+  const { input, message, goodDisabled } = props;
   const submitButton = (
     <Button
       color="good"
@@ -27,7 +28,8 @@ export const InputButtons = (props: InputButtonsProps, context) => {
       pt={large_buttons ? 0.33 : 0}
       textAlign="center"
       tooltip={large_buttons && message}
-      width={!large_buttons && 6}>
+      width={!large_buttons && 6}
+      disabled={goodDisabled}>
       {large_buttons ? 'SUBMIT' : 'Submit'}
     </Button>
   );

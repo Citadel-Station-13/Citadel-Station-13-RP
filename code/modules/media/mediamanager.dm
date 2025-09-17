@@ -24,7 +24,7 @@
 	media.update_music()
 
 // Stop media when the round ends. I guess so it doesn't play forever or something (for some reason?)
-/hook/roundend/proc/stop_all_media()
+/legacy_hook/roundend/proc/stop_all_media()
 	log_debug(SPAN_DEBUG("Stopping all playing media..."))
 	// Stop all music.
 	for(var/mob/M in GLOB.mob_list)
@@ -35,7 +35,8 @@
 
 // Update when moving between areas.
 // TODO - While this direct override might technically be faster, probably better code to use observer or hooks ~Leshana
-/area/Entered(var/mob/living/M)
+/area/Entered(atom/movable/AM, atom/oldLoc)
+	var/mob/M = AM
 	// Note, we cannot call ..() first, because it would update lastarea.
 	if(!istype(M))
 		return ..()

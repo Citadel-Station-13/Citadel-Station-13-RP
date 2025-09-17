@@ -22,7 +22,7 @@
 	randomized = TRUE
 	mod_min = 100
 	mod_max = 150
-	movement_cooldown = 5
+	movement_base_speed = 10 / 5
 	see_in_dark = 3
 
 	armor_legacy_mob = list(
@@ -55,19 +55,6 @@
 
 // Activate Noms!
 /mob/living/simple_mob/vore/hippo //I don't know why it's in a seperate line but everyone does it so i do it
-	vore_active = 1
-	vore_capacity = 1
-	vore_bump_chance = 15
-	vore_bump_emote = "lazily wraps its tentacles around"
-	vore_standing_too = 1
-	vore_ignores_undigestable = 0
-	vore_default_mode = DM_HOLD
-	vore_digest_chance = 10
-	vore_escape_chance = 20
-	vore_pounce_chance = 35 //it's hippo sized it doesn't care it just eats you
-	vore_stomach_name = "rumen" //First stomach of a ruminant. It's where the pre digestion bacteria stuff happens. Very warm.
-	vore_stomach_flavor	= "You are squeezed into the sweltering insides of the herbivore rumen."
-	vore_icons = SA_ICON_LIVING
 
 /mob/living/simple_mob/vore/hippo/MouseDroppedOnLegacy(mob/living/M, mob/living/user)
 	return

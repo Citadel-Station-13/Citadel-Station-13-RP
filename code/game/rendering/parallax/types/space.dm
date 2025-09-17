@@ -35,15 +35,3 @@
 
 /atom/movable/screen/parallax_layer/space/random/asteroids
 	icon_state = "asteroids"
-
-// /atom/movable/screen/parallax_layer/space/planet
-// 	icon_state = "planet"
-// 	blend_mode = BLEND_OVERLAY
-// 	absolute = TRUE //Status of seperation
-// 	speed = 3
-// 	layer = 30
-// 	dynamic_self_tile = FALSE
-
-// /atom/movable/screen/parallax_layer/space/planet/ShouldSee(client/C, atom/location)
-// 	var/turf/T = get_turf(location)
-// 	return ..() && T && is_station_level(T.z)

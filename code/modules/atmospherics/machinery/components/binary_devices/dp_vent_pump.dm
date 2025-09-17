@@ -18,14 +18,14 @@
 	name = "Dual Port Air Vent"
 	desc = "Has a valve and pump attached to it. There are two ports."
 
-	level = 1
-
 	use_power = USE_POWER_OFF
 	idle_power_usage = 150		//internal circuitry, friction losses and stuff
 	power_rating = 7500			//7500 W ~ 10 HP
 
 	pipe_flags = PIPING_ALL_LAYER
 	connect_types = CONNECT_TYPE_REGULAR|CONNECT_TYPE_SUPPLY|CONNECT_TYPE_SCRUBBER //connects to regular, supply and scrubbers pipes
+
+	hides_underfloor_underlays = TRUE
 
 	var/pump_direction = 1 //0 = siphoning, 1 = releasing
 
@@ -72,7 +72,7 @@
 	if(!istype(T))
 		return
 
-	if(!T.is_plating() && node1 && node2 && node1.level == 1 && node2.level == 1 && istype(node1, /obj/machinery/atmospherics/pipe) && istype(node2, /obj/machinery/atmospherics/pipe))
+	if(T.hides_underfloor_objects() && istype(node1, /obj/machinery/atmospherics/pipe) && istype(node2, /obj/machinery/atmospherics/pipe) && node1.will_hide_underfloor() && node2.will_hide_underfloor())
 		vent_icon += "h"
 
 	if(!powered())
@@ -88,7 +88,7 @@
 		var/turf/T = get_turf(src)
 		if(!istype(T))
 			return
-		if(!T.is_plating() && node1 && node2 && node1.level == 1 && node2.level == 1 && istype(node1, /obj/machinery/atmospherics/pipe) && istype(node2, /obj/machinery/atmospherics/pipe))
+		if(T.hides_underfloor_objects() && istype(node1, /obj/machinery/atmospherics/pipe) && istype(node2, /obj/machinery/atmospherics/pipe) && node1.will_hide_underfloor() && node2.will_hide_underfloor())
 			return
 		else
 			if (node1)
@@ -100,9 +100,9 @@
 			else
 				add_underlay(T, node2, dir)
 
-/obj/machinery/atmospherics/component/binary/dp_vent_pump/hide(var/i)
+/obj/machinery/atmospherics/component/binary/dp_vent_pump/update_hiding_underfloor(new_value)
+	. = ..()
 	update_icon()
-	update_underlays()
 
 /obj/machinery/atmospherics/component/binary/dp_vent_pump/process(delta_time)
 	..()

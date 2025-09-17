@@ -197,7 +197,6 @@
 	dir = 4;
 	icon_state = "propulsion_r"
 	},
-/turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/specops/centcom)
 "ax" = (
@@ -212,7 +211,7 @@
 "az" = (
 /obj/structure/closet/wardrobe/ert,
 /obj/item/modular_computer/laptop/preset/custom_loadout/elite,
-/obj/item/storage/box/survival/comp{
+/obj/item/storage/box/legacy_survival/comp{
 	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
 /turf/simulated/shuttle/floor/black,
@@ -223,7 +222,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/item/storage/box/survival/comp{
+/obj/item/storage/box/legacy_survival/comp{
 	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
 /turf/simulated/shuttle/floor/black,
@@ -255,7 +254,6 @@
 /obj/structure/shuttle/engine/propulsion{
 	dir = 4
 	},
-/turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/specops/centcom)
 "aF" = (
@@ -431,19 +429,19 @@
 /area/shuttle/specops/centcom)
 "aW" = (
 /obj/structure/table/rack/steel,
-/obj/item/gun/energy/netgun,
-/obj/item/gun/energy/sniperrifle,
-/obj/item/gun/energy/gun/martin{
-	battery_lock = 0
+/obj/item/gun/projectile/energy/netgun,
+/obj/item/gun/projectile/energy/sniperrifle,
+/obj/item/gun/projectile/energy/gun/martin{
+	legacy_battery_lock = 0
 	},
-/obj/item/gun/energy/gun/martin{
-	battery_lock = 0
+/obj/item/gun/projectile/energy/gun/martin{
+	legacy_battery_lock = 0
 	},
-/obj/item/gun/energy/gun/martin{
-	battery_lock = 0
+/obj/item/gun/projectile/energy/gun/martin{
+	legacy_battery_lock = 0
 	},
-/obj/item/gun/energy/gun/martin{
-	battery_lock = 0
+/obj/item/gun/projectile/energy/gun/martin{
+	legacy_battery_lock = 0
 	},
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
@@ -453,19 +451,19 @@
 /area/shuttle/specops/centcom)
 "aX" = (
 /obj/structure/table/rack/steel,
-/obj/item/gun/energy/gun/nuclear,
-/obj/item/gun/energy/gun/nuclear,
-/obj/item/gun/energy/gun/nuclear,
-/obj/item/gun/energy/gun/nuclear,
-/obj/item/gun/energy/gun/nuclear,
+/obj/item/gun/projectile/energy/gun/nuclear,
+/obj/item/gun/projectile/energy/gun/nuclear,
+/obj/item/gun/projectile/energy/gun/nuclear,
+/obj/item/gun/projectile/energy/gun/nuclear,
+/obj/item/gun/projectile/energy/gun/nuclear,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "aY" = (
 /obj/structure/table/rack/steel,
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
+/obj/item/gun/projectile/energy/gun,
+/obj/item/gun/projectile/energy/gun,
+/obj/item/gun/projectile/energy/gun,
+/obj/item/gun/projectile/energy/gun,
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
@@ -482,8 +480,8 @@
 /area/shuttle/specops/centcom)
 "aZ" = (
 /obj/structure/table/rack/steel,
-/obj/item/gun/ballistic/shotgun/pump/combat,
-/obj/item/gun/ballistic/shotgun/pump/combat,
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat,
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat,
 /obj/item/storage/box/shotgunshells,
 /obj/item/storage/box/shotgunshells,
 /obj/item/storage/box/shotgunshells,
@@ -499,17 +497,17 @@
 /area/shuttle/specops/centcom)
 "ba" = (
 /obj/structure/table/rack/steel,
-/obj/item/gun/ballistic/automatic/advanced_smg,
-/obj/item/ammo_magazine/m9mmAdvanced,
-/obj/item/ammo_magazine/m9mmAdvanced,
-/obj/item/ammo_magazine/m9mmAdvanced,
-/obj/item/ammo_magazine/m9mmAdvanced,
-/obj/item/gun/ballistic/revolver/detective45,
-/obj/item/gun/ballistic/revolver/detective45,
-/obj/item/ammo_magazine/s45,
-/obj/item/ammo_magazine/s45,
-/obj/item/ammo_magazine/s45,
-/obj/item/ammo_magazine/s45,
+/obj/item/gun/projectile/ballistic/automatic/advanced_smg,
+/obj/item/ammo_magazine/a9mm/advanced_smg,
+/obj/item/ammo_magazine/a9mm/advanced_smg,
+/obj/item/ammo_magazine/a9mm/advanced_smg,
+/obj/item/ammo_magazine/a9mm/advanced_smg,
+/obj/item/gun/projectile/ballistic/revolver/detective45,
+/obj/item/gun/projectile/ballistic/revolver/detective45,
+/obj/item/ammo_magazine/a45/speedloader,
+/obj/item/ammo_magazine/a45/speedloader,
+/obj/item/ammo_magazine/a45/speedloader,
+/obj/item/ammo_magazine/a45/speedloader,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "bb" = (
@@ -552,7 +550,6 @@
 	dir = 4;
 	icon_state = "propulsion_l"
 	},
-/turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/specops/centcom)
 "bh" = (
@@ -572,9 +569,9 @@
 /area/shuttle/specops/centcom)
 "bj" = (
 /obj/structure/table/rack/steel,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
+/obj/item/gun/projectile/energy/laser,
+/obj/item/gun/projectile/energy/laser,
+/obj/item/gun/projectile/energy/laser,
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
@@ -609,14 +606,14 @@
 /area/shuttle/specops/centcom)
 "bn" = (
 /obj/structure/table/rack/steel,
-/obj/item/gun/ballistic/automatic/sts35,
-/obj/item/gun/ballistic/automatic/sts35,
-/obj/item/ammo_magazine/m556,
-/obj/item/ammo_magazine/m556,
-/obj/item/ammo_magazine/m556,
-/obj/item/ammo_magazine/m556,
-/obj/item/ammo_magazine/m556,
-/obj/item/ammo_magazine/m556,
+/obj/item/gun/projectile/ballistic/automatic/sts35,
+/obj/item/gun/projectile/ballistic/automatic/sts35,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a5_56mm,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "bo" = (
@@ -674,10 +671,10 @@
 "bu" = (
 /obj/structure/window/reinforced,
 /obj/structure/table/rack/steel,
-/obj/item/gun/energy/ionrifle,
-/obj/item/gun/energy/ionrifle,
-/obj/item/gun/energy/ionrifle/pistol,
-/obj/item/gun/energy/ionrifle/pistol,
+/obj/item/gun/projectile/energy/ionrifle,
+/obj/item/gun/projectile/energy/ionrifle,
+/obj/item/gun/projectile/energy/ionrifle/pistol,
+/obj/item/gun/projectile/energy/ionrifle/pistol,
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
@@ -694,18 +691,18 @@
 "bw" = (
 /obj/structure/window/reinforced,
 /obj/structure/table/rack/steel,
-/obj/item/ammo_magazine/m9mm/large/licensed,
-/obj/item/ammo_magazine/m9mm/large/licensed,
-/obj/item/ammo_magazine/m9mm/large/licensed,
-/obj/item/ammo_magazine/m9mm/large/licensed,
-/obj/item/ammo_magazine/m9mm/large/licensed,
-/obj/item/ammo_magazine/m9mm/large/licensed,
-/obj/item/ammo_magazine/m9mm/large/licensed,
-/obj/item/ammo_magazine/m9mm/large/licensed,
-/obj/item/gun/ballistic/p92x,
-/obj/item/gun/ballistic/p92x,
-/obj/item/gun/ballistic/p92x,
-/obj/item/gun/ballistic/p92x,
+/obj/item/ammo_magazine/a9mm/large,
+/obj/item/ammo_magazine/a9mm/large,
+/obj/item/ammo_magazine/a9mm/large,
+/obj/item/ammo_magazine/a9mm/large,
+/obj/item/ammo_magazine/a9mm/large,
+/obj/item/ammo_magazine/a9mm/large,
+/obj/item/ammo_magazine/a9mm/large,
+/obj/item/ammo_magazine/a9mm/large,
+/obj/item/gun/projectile/ballistic/p92x,
+/obj/item/gun/projectile/ballistic/p92x,
+/obj/item/gun/projectile/ballistic/p92x,
+/obj/item/gun/projectile/ballistic/p92x,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "bx" = (
@@ -718,14 +715,14 @@
 "by" = (
 /obj/structure/window/reinforced,
 /obj/structure/table/rack/steel,
-/obj/item/gun/ballistic/automatic/sts35,
-/obj/item/gun/ballistic/automatic/sts35,
-/obj/item/ammo_magazine/m556,
-/obj/item/ammo_magazine/m556,
-/obj/item/ammo_magazine/m556,
-/obj/item/ammo_magazine/m556,
-/obj/item/ammo_magazine/m556,
-/obj/item/ammo_magazine/m556,
+/obj/item/gun/projectile/ballistic/automatic/sts35,
+/obj/item/gun/projectile/ballistic/automatic/sts35,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a5_56mm,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "bz" = (
@@ -1152,14 +1149,14 @@
 /area/shuttle/specops/centcom)
 "ct" = (
 /obj/structure/table/rack/steel,
-/obj/item/gun/energy/stunrevolver,
-/obj/item/gun/energy/stunrevolver,
-/obj/item/gun/energy/stunrevolver,
-/obj/item/gun/energy/stunrevolver,
-/obj/item/gun/energy/taser,
-/obj/item/gun/energy/taser,
-/obj/item/gun/energy/taser,
-/obj/item/gun/energy/taser,
+/obj/item/gun/projectile/energy/stunrevolver,
+/obj/item/gun/projectile/energy/stunrevolver,
+/obj/item/gun/projectile/energy/stunrevolver,
+/obj/item/gun/projectile/energy/stunrevolver,
+/obj/item/gun/projectile/energy/taser,
+/obj/item/gun/projectile/energy/taser,
+/obj/item/gun/projectile/energy/taser,
+/obj/item/gun/projectile/energy/taser,
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/specops/centcom)
 "cu" = (
@@ -1357,16 +1354,16 @@
 /area/shuttle/specops/centcom)
 "cL" = (
 /obj/structure/table/rack/steel,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "cM" = (
@@ -1555,12 +1552,12 @@
 /obj/item/stack/cable_coil,
 /obj/item/stack/cable_coil,
 /obj/item/stack/cable_coil,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "dm" = (
@@ -1621,7 +1618,7 @@
 	dir = 1
 	},
 /obj/structure/table/glass,
-/obj/item/storage/secure/briefcase/nsfw_pack_hybrid,
+/obj/item/storage/secure/briefcase/nsfw_pack,
 /obj/item/binoculars,
 /obj/item/survivalcapsule,
 /obj/item/survivalcapsule,
@@ -1907,9 +1904,9 @@
 /obj/machinery/computer/security/telescreen/entertainment{
 	pixel_y = -35
 	},
-/obj/item/gun/ballistic/deagle,
-/obj/item/ammo_magazine/m44,
-/obj/item/ammo_magazine/m44,
+/obj/item/gun/projectile/ballistic/deagle,
+/obj/item/ammo_magazine/a44,
+/obj/item/ammo_magazine/a44,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "dS" = (

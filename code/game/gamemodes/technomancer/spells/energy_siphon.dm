@@ -170,32 +170,19 @@
 /obj/projectile/beam/lightning/energy_siphon
 	name = "energy stream"
 	icon_state = "lightning"
-	range = 6 // Backup plan in-case the effect somehow misses the Technomancer.
+	range = WORLD_ICON_SIZE * 6
 	power = 5 // This fires really fast, so this may add up if someone keeps standing in the beam.
-	penetrating = 5
+	legacy_penetrating = 5
 
-/obj/projectile/beam/lightning/energy_siphon/Bump(atom/A as mob|obj|turf|area, forced=0)
-	if(A == firer) // For this, you CAN shoot yourself.
-		on_impact(A)
-
-		density = 0
-		invisibility = 101
-
-		qdel(src)
-		return 1
-	..()
-
-/obj/projectile/beam/lightning/energy_siphon/projectile_attack_mob(var/mob/living/target_mob, var/distance, var/miss_modifier=0)
-	if(target_mob == firer) // This shouldn't actually occur due to Bump(), but just in-case.
-		return 1
-	if(ishuman(target_mob)) // Otherwise someone else stood in the beam and is going to pay for it.
-		var/mob/living/carbon/human/H = target_mob
-		var/obj/item/organ/external/affected = H.get_organ(check_zone(BP_TORSO))
-		H.electrocute_act(power, src, H.get_siemens_coefficient_organ(affected), affected, 0)
-	else
-		target_mob.electrocute_act(power, src, 0.75, BP_TORSO)
-	return 0 // Since this is a continous beam, it needs to keep flying until it hits the Technomancer.
-
+/obj/projectile/beam/lightning/energy_siphon/on_impact(atom/target, impact_flags, def_zone, efficiency)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
+	var/mob/living/target_mob = target
+	if(!isliving(target_mob))
+		return
+	target_mob.electrocute(power * 10, power, 0, NONE, def_zone, src)
+	return PROJECTILE_IMPACT_PIERCE
 
 #undef SIPHON_CELL_TO_ENERGY
 #undef SIPHON_FBP_TO_ENERGY

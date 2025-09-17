@@ -67,6 +67,6 @@
 	for(var/obj/machinery/porta_turret/T in GLOB.machines)
 		T.integrity_max = T.integrity_max * 2
 		T.integrity += T.integrity_max / 2
-		T.shot_delay = round(initial(T.shot_delay) / 2)
+		T.fire_delay *= 0.5
 		T.auto_repair = 1
 		T.active_power_usage = round(initial(T.active_power_usage) * 5)

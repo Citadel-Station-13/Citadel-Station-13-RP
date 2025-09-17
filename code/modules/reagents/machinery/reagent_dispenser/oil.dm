@@ -20,15 +20,3 @@
 		/datum/reagent/nutriment/triglyceride/oil/tallow = 5000,
 	)
 	starting_capacity = 5000
-
-/obj/structure/reagent_dispensers/cookingoil/bullet_act(var/obj/projectile/Proj)
-	if(Proj.get_structure_damage())
-		explode()
-
-/obj/structure/reagent_dispensers/cookingoil/legacy_ex_act()
-	explode()
-
-/obj/structure/reagent_dispensers/cookingoil/proc/explode()
-	reagents.splash_area(get_turf(src), 3)
-	visible_message(SPAN_DANGER("The [src] bursts open, spreading oil all over the area."))
-	qdel(src)

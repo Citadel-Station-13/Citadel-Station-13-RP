@@ -34,7 +34,7 @@
 	wires = null
 	return ..()
 
-/obj/machinery/particle_accelerator/control_box/attack_hand(mob/user, list/params)
+/obj/machinery/particle_accelerator/control_box/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(construction_state >= 3)
 		interact(user)
 	else if(construction_state == 2) // Wires exposed
@@ -252,6 +252,6 @@
 		dat += "Particle Strength: [src.strength] "
 		dat += "<A href='?src=\ref[src];strengthdown=1'>--</A>|<A href='?src=\ref[src];strengthup=1'>++</A><BR><BR>"
 
-	user << browse(dat, "window=pacontrol;size=420x500")
+	user << browse(HTML_SKELETON(dat), "window=pacontrol;size=420x500")
 	onclose(user, "pacontrol")
 	return

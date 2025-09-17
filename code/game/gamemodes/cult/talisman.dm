@@ -5,7 +5,7 @@
 	var/uses = 0
 	info = "<center><img src='talisman.png'></center><br/><br/>"
 
-/obj/item/paper/talisman/attack_self(mob/user)
+/obj/item/paper/talisman/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -46,7 +46,7 @@
 	else
 		to_chat(user, "You see strange symbols on the paper. Are they supposed to mean something?")
 
-/obj/item/paper/talisman/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/paper/talisman/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(isliving(user) && iscultist(user))
 		var/mob/living/L = user
 		if(imbue == "runestun")
@@ -74,7 +74,7 @@
 	dat += "<A href='?src=\ref[src];rune=armor'>Sa tatha najin</A> - Allows you to summon armoured robes and an unholy blade<BR>"
 	dat += "<A href='?src=\ref[src];rune=soulstone'>Kal om neth</A> - Summons a soul stone<BR>"
 	dat += "<A href='?src=\ref[src];rune=construct'>Da A'ig Osk</A> - Summons a construct shell for use with captured souls. It is too large to carry on your person.<BR>"
-	usr << browse(dat, "window=id_com;size=350x200")
+	usr << browse(HTML_SKELETON(dat), "window=id_com;size=350x200")
 	return
 
 

@@ -8,18 +8,24 @@
 //? 1. You only need one material
 //? - set material_parts to MATERIAL_DEFAULT_NONE or a material typepath / id
 //? - set material_costs to a number to indicate how much cm3 of the material is in there
+//? - for items that can be made of multiple materials (most items), set material_constraints to a set of MATERIAL_CONSTRAINT flags that indicate the required constraint_flags on the material. combined flags are stricter
 //? - on update, update_material_single will be called; hook modifications to this
 //? - on init, the system will call update_material_single for you.
+//
 //?
 //? 2. You need multiple materials, and your item is rare enough there isn't more than a few hundred of it
 //? - set material_parts to a k-v list.
 //?   note that the key needs to be player-readable
 //?
-//?   example: material_parts = list("structure" = /datum/material/steel, "reinforcement" = /datum/material/wood)
+//?   example: material_parts = list("structure" = /datum/prototype/material/steel, "reinforcement" = /datum/prototype/material/wood)
 //?
 //? - set material_costs to an ordered list of costs
 //?
 //?   example: list(2000, 1000) = 1 sheet of steel and 0.5 sheets of wood as per above
+//?
+//? - set material_constraints to an ordered list of constraints corresponding to the parts
+//?
+//?   example: list(MATERIAL_CONSTRAINT_RIGID, MATERIAL_CONSTRAINT_UNCONSTRAINED)
 //?
 //? - update_material_multi will be called with list of keys to instances as values
 //?   so you can implement your behaviors there
@@ -41,17 +47,17 @@
 	. = isnull(materials_base)? list() : materials_base.Copy()
 	if(islist(material_parts))
 		for(var/i in 1 to length(material_parts))
-			var/datum/material/mat = material_parts[material_parts[i]]
+			var/datum/prototype/material/mat = material_parts[material_parts[i]]
 			.[mat.id] += material_costs[i]
 	else if(material_parts == MATERIAL_DEFAULT_DISABLED)
 	else if(material_parts == MATERIAL_DEFAULT_ABSTRACTED)
 		var/list/got = material_get_parts()
 		for(var/i in 1 to length(got))
 			var/key = got[i]
-			var/datum/material/mat = got[key]
+			var/datum/prototype/material/mat = got[key]
 			.[mat.id] += material_costs[i]
 	else
-		var/datum/material/mat = material_parts
+		var/datum/prototype/material/mat = material_parts
 		.[mat.id] += material_costs
 	if(respect_multiplier && material_multiplier != 1)
 		for(var/key in .)
@@ -91,7 +97,12 @@
 	if(islist(material_parts))
 		var/list/parts = list()
 		for(var/key in material_parts)
-			parts[key] = SSmaterials.resolve_material(key)
+			var/datum/prototype/material/result = RSmaterials.fetch_or_defer(key)
+			switch(result)
+				if(REPOSITORY_FETCH_DEFER)
+					// todo: handle this
+					result = null
+			parts[key] = result
 		update_material_multi(parts)
 	else if(material_parts == MATERIAL_DEFAULT_DISABLED)
 	else if(material_parts == MATERIAL_DEFAULT_ABSTRACTED)
@@ -99,7 +110,12 @@
 		// skip specifying parts because abstracted
 		update_material_multi()
 	else
-		update_material_single((material_parts = SSmaterials.resolve_material(material_parts)))
+		var/datum/prototype/material/result = RSmaterials.fetch_or_defer(material_parts)
+		switch(result)
+			if(REPOSITORY_FETCH_DEFER)
+				// todo: handle this
+				result = null
+		update_material_single((material_parts = result))
 
 /**
  * forces a material update
@@ -120,7 +136,7 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 	. = material_get_parts()
 	for(var/key in .)
-		var/datum/material/mat = .[key]
+		var/datum/prototype/material/mat = .[key]
 		if(isnull(mat))
 			continue
 		.[key] = mat.id
@@ -130,7 +146,7 @@
  */
 /obj/proc/get_material_part_id(part)
 	SHOULD_NOT_OVERRIDE(TRUE)
-	var/datum/material/mat = material_get_part(part)
+	var/datum/prototype/material/mat = material_get_part(part)
 	return mat?.id
 
 /**
@@ -145,7 +161,7 @@
  */
 /obj/proc/get_material_part(part)
 	SHOULD_NOT_OVERRIDE(TRUE)
-	RETURN_TYPE(/datum/material)
+	RETURN_TYPE(/datum/prototype/material)
 	return material_get_part(part)
 
 /**
@@ -155,7 +171,7 @@
  * * part - part key. **undefined behavior if it does not exist.**
  * * material - material. ids and paths are not allowed for performance reasons.
  */
-/obj/proc/set_material_part(part, datum/material/material)
+/obj/proc/set_material_part(part, datum/prototype/material/material)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	obj_flags |= OBJ_MATERIAL_PARTS_MODIFIED
 	material_set_part(part, material)
@@ -189,7 +205,7 @@
  */
 /obj/proc/get_primary_material()
 	SHOULD_NOT_OVERRIDE(TRUE)
-	RETURN_TYPE(/datum/material)
+	RETURN_TYPE(/datum/prototype/material)
 	return isnull(material_primary)? null : material_get_part(material_primary)
 
 /**
@@ -211,7 +227,7 @@
  *
  * ids and typepaths are not allowed in part_instances for performance reasons.
  */
-/obj/proc/set_primary_material(datum/material/material)
+/obj/proc/set_primary_material(datum/prototype/material/material)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	if(isnull(material_primary))
 		return
@@ -271,7 +287,7 @@
  * @return material instance
  */
 /obj/proc/material_get_part(part)
-	RETURN_TYPE(/datum/material)
+	RETURN_TYPE(/datum/prototype/material)
 	PROTECTED_PROC(TRUE) // Do not ever call directly.
 	if(islist(material_parts))
 		return material_parts[part]
@@ -286,13 +302,16 @@
  * * part - part key
  * * material - material. ids and paths are not allowed for performance reasons.
  */
-/obj/proc/material_set_part(part, datum/material/material)
+/obj/proc/material_set_part(part, datum/prototype/material/material)
 	PROTECTED_PROC(TRUE) // Do not ever call directly.
-	var/datum/material/old
+	var/datum/prototype/material/old
 	if(islist(material_parts))
 		old = material_parts[part]
 		material_parts[part] = material
 	else if(part == MATERIAL_PART_DEFAULT)
+		old = material_parts
+		material_parts = material
+	else if(part == material_primary) //if we're not MATERIAL_PART_DEFAULT but our primary isn't MATERIAL_PART_DEFAULT, we need to check for that.
 		old = material_parts
 		material_parts = material
 	if(material != old)
@@ -329,7 +348,7 @@
  *
  * only called if material_parts is in singleton format
  */
-/obj/proc/update_material_single(datum/material/material)
+/obj/proc/update_material_single(datum/prototype/material/material)
 	return
 
 //* Lathe Autodetect

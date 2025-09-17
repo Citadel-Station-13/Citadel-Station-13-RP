@@ -103,6 +103,7 @@ var/list/blob_cores = list()
 
 /obj/structure/blob/core/update_icon()
 	cut_overlays()
+	. = ..()
 	var/list/overlays_to_add = list()
 	color = null
 	var/mutable_appearance/blob_overlay = mutable_appearance('icons/mob/blob.dmi', "blob")
@@ -158,7 +159,7 @@ var/list/blob_cores = list()
 			if(!desired_blob_type && !isnull(difficulty_threshold))
 				desired_blob_type = get_random_blob_type()
 			var/mob/observer/blob/B = new(loc, TRUE, 60, desired_blob_type)
-			B.key = C.key
+			C.transfer_to(B)
 			B.blob_core = src
 			src.overmind = B
 			update_icon()

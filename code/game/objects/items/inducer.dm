@@ -119,7 +119,7 @@
 	user.visible_message(SPAN_NOTICE("[user] starts recharging [A] with [src]."), SPAN_NOTICE("You start recharging [A] with [src]."))
 	A.add_filter("inducer_outline", 1, outline_filter(1, "#22aaFF"))
 
-	var/datum/beam/charge_beam = user.Beam(A, icon_state = "rped_upgrade", time = 20 SECONDS)
+	var/datum/beam_legacy/charge_beam = user.Beam(A, icon_state = "rped_upgrade", time = 20 SECONDS)
 	var/datum/effect_system/spark_spread/spark_system = new
 	spark_system.set_up(5, 0, get_turf(A))
 	spark_system.attach(A)
@@ -138,14 +138,14 @@
 				break
 			if(charged <= 0)
 				break
-			obj_cell_slot.cell.use(charged)
+			obj_cell_slot.use(charged)
 			used += charged
 
 	qdel(spark_system)
 	qdel(charge_beam)
 	A.remove_filter("inducer_outline")
 	inducing = FALSE
-	user.visible_message(SPAN_NOTICE("[user] recharged [A]."), SPAN_NOTICE("Rechraged [A] with [used] units of power."))
+	user.visible_message(SPAN_NOTICE("[user] recharged [A]."), SPAN_NOTICE("Recharged [A] with [used] units of power."))
 
 /obj/item/inducer/object_cell_slot_removed(obj/item/cell/cell, datum/object_system/cell_slot/slot)
 	. = ..()

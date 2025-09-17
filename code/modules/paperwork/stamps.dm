@@ -19,7 +19,7 @@
 		'sound/items/stamp3.ogg'
 		)
 
-/obj/item/stamp/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/stamp/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
 	playsound(target, pick(stamp_sounds), 30, 1, -1)
 
@@ -81,7 +81,7 @@
 
 
 // Syndicate stamp to forge documents.
-/obj/item/stamp/chameleon/attack_self(mob/user)
+/obj/item/stamp/chameleon/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

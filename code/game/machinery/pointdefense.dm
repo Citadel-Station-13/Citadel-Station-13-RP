@@ -39,7 +39,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 		ui = new(user, src, "PointDefenseControl") // 400, 600
 		ui.open()
 
-/obj/machinery/pointdefense_control/attack_hand(mob/user, list/params)
+/obj/machinery/pointdefense_control/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(..())
 		return TRUE
 	ui_interact(user)
@@ -96,7 +96,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 			// Check for duplicate controllers with this ID
 			for(var/thing in GLOB.pointdefense_controllers)
 				var/obj/machinery/pointdefense_control/PC = thing
-				if(PC != src && PC.id_tag == id_tag)
+				if(PC != src && PC.id_tag == new_ident)
 					to_chat(user, "<span class='warning'>The [new_ident] network already has a controller.</span>")
 					return
 			to_chat(user, "<span class='notice'>You register [src] with the [new_ident] network.</span>")
@@ -117,7 +117,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 /obj/machinery/power/pointdefense
 	name = "\improper point defense battery"
 	icon = 'icons/obj/pointdefense.dmi'
-	icon_state = "pointdefense2"
+	icon_state = "pointdefense"
 	desc = "A Kuiper pattern anti-meteor battery. Capable of destroying most threats in a single salvo."
 	description_info = "Must have the same ident tag as a fire assist mainframe on the same facility. Use a multitool to set the ident tag."
 	density = TRUE
@@ -153,11 +153,12 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 	if(!id_tag)
 		. += "[desc_panel_image("multitool", user)]to set ident tag and connect to a mainframe."
 
-/obj/machinery/power/pointdefense/update_icon()
+/obj/machinery/power/pointdefense/update_icon_state()
 	if(!active || !id_tag || inoperable())
 		icon_state = "[initial(icon_state)]_off"
 	else
 		icon_state = initial(icon_state)
+	return ..()
 
 /obj/machinery/power/pointdefense/default_unfasten_wrench(var/mob/user, var/obj/item/W, var/time)
 	if((. = ..()))
@@ -208,11 +209,6 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 	if(W?.is_multitool())
 		var/new_ident = input(user, "Enter a new ident tag.", "[src]", id_tag) as null|text
 		if(new_ident && new_ident != id_tag && user.Adjacent(src) && CanInteract(user, GLOB.physical_state))
-			// Check for duplicate controllers with this ID
-			for(var/obj/machinery/pointdefense_control/PC as anything in GLOB.pointdefense_controllers)
-				if(PC != src && PC.id_tag == id_tag)
-					to_chat(user, SPAN_WARNING("\The [new_ident] network already has a controller!"))
-					return
 			to_chat(user, SPAN_NOTICE("You register [src] with \the [new_ident] network."))
 			id_tag = new_ident
 		return
@@ -267,7 +263,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 	//We throw a laser but it doesnt have to hit for meteor to explode
 	var/obj/projectile/beam/pointdefense/beam = new(get_turf(src))
 	playsound(src, 'sound/weapons/mandalorian.ogg', 75, 1)
-	beam.launch_projectile(target = M.loc, user = src)
+	beam.launch_projectile_legacy(target = M.loc, user = src)
 
 /obj/machinery/power/pointdefense/process()
 	..()

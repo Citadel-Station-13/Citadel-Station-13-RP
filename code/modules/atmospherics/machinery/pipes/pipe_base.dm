@@ -4,8 +4,11 @@
 /obj/machinery/atmospherics/pipe
 	buckle_allowed = TRUE
 	buckle_flags = BUCKLING_REQUIRES_RESTRAINTS
+	buckle_lying = TRUE
 
 	use_power = USE_POWER_OFF
+	hides_underfloor_update_icon = TRUE
+	hides_underfloor_defaulting = TRUE
 
 	pipe_flags = NONE // Does not have PIPING_DEFAULT_LAYER_ONLY flag.
 
@@ -21,12 +24,11 @@
 		//minimum pressure before check_pressure(...) should be called
 
 /obj/machinery/atmospherics/pipe/Initialize(mapload, newdir)
-	if(istype(get_turf(src), /turf/simulated/wall) || istype(get_turf(src), /turf/simulated/shuttle/wall) || istype(get_turf(src), /turf/unsimulated/wall))
-		level = 1
+	// pipes are always underfloor if inside a wall
+	// we just check for loc.density 'cause speed lmao
+	if(loc?.density)
+		hides_underfloor = OBJ_UNDERFLOOR_ACTIVE
 	return ..()
-
-/obj/machinery/atmospherics/pipe/hides_under_flooring()
-	return level != 2
 
 /obj/machinery/atmospherics/pipe/proc/pipeline_expansion()
 	return null
@@ -89,8 +91,7 @@
 
 	if (!W.is_wrench())
 		return ..()
-	var/turf/T = src.loc
-	if (level==1 && isturf(T) && !T.is_plating())
+	if (is_hidden_underfloor())
 		to_chat(user, "<span class='warning'>You must remove the plating first.</span>")
 		return 1
 	if(unsafe_pressure())
@@ -126,11 +127,6 @@
 		return node.pipe_color
 	else
 		return pipe_color
-
-/obj/machinery/atmospherics/pipe/hide(var/i)
-	if(istype(loc, /turf/simulated))
-		invisibility = i ? 100 : 0
-	update_icon()
 
 /obj/machinery/atmospherics/pipe/process(delta_time)
 	if(!parent) //This should cut back on the overhead calling build_network thousands of times per cycle
