@@ -41,7 +41,7 @@
 	.["sArmed"] = s_armed
 	.["cMinArmingTime"] = conf_minimum_arming_time
 	.["cMaxOvermapsDist"] = OVERMAP_PIXEL_TO_DIST(conf_max_overmap_pixel_dist)
-	. += ui_signal_data
+	. += ui_signal_data()
 
 /obj/machinery/orbital_deployment_controller/proc/ui_signal_data()
 	. = list()
@@ -51,7 +51,7 @@
 	var/list/assembled_flares = list()
 
 	if(our_overmap_entity)
-		var/list/obj/overmap/entity/overmap_query_results = entity_pixel_dist_query(our_overmap_entity, conf_max_overmap_pixel_dist)
+		var/list/obj/overmap/entity/overmap_query_results = SSovermaps.entity_pixel_dist_query(our_overmap_entity, conf_max_overmap_pixel_dist)
 		for(var/obj/overmap/entity/entity_in_range as anything in overmap_query_results)
 			if(!istype(entity_in_range, /obj/overmap/entity/visitable))
 				continue
@@ -78,10 +78,14 @@
 	if(.)
 		return
 	switch(action)
-		if("refresh")
+		if("refreshSignals")
+			#warn throttle
 			push_ui_data(data = ui_signal_data())
+			return TRUE
 		if("arm")
+			#warn impl
 		if("disarm")
+			#warn impl
 		if("launch")
 			var/atom/movable/target_ref
 			if(params["targetType"] == "laser")
@@ -90,7 +94,7 @@
 					return TRUE
 				if(!check_target_laser_validity(dangerously_unchecked_target))
 					return TRUE
-				target_type = dangerously_unchecked_target
+				target_ref = dangerously_unchecked_target
 			else if(params["targetType" == "flare"])
 				var/obj/item/signal_flare/dangerously_unchecked_target = locate(params["targetRef"])
 				if(!istype(dangerously_unchecked_target))
@@ -98,6 +102,7 @@
 				if(!check_target_flare_validity(dangerously_unchecked_target))
 					return TRUE
 				target_ref = dangerously_unchecked_target
+			#warn impl
 
 /obj/machinery/orbital_deployment_controller/proc/check_target_laser_validity(atom/movable/laser_designator_target/target)
 	if(!isturf(target.loc))

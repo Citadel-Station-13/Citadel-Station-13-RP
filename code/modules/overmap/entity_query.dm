@@ -11,4 +11,4 @@
  * get all entities within overmap distance between bounding boxes
  */
 /datum/controller/subsystem/overmaps/proc/entity_dist_query(obj/overmap/entity/center_entity, dist)
-	return entity_get_all_within_pixel_dist_of(center_entity, OVERMAP_DIST_TO_PIXEL(dist))
+	return entity_pixel_dist_query(center_entity, OVERMAP_DIST_TO_PIXEL(dist))
