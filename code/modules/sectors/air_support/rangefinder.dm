@@ -1,34 +1,41 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
 
-/datum/component/laser_designator_target
+/atom/movable/laser_designator_target
+	#warn sprite
 	/// allow weapons guidance
 	var/allow_weapons_guidance = FALSE
 	/// projecting rangefinder
 	var/obj/item/rangefinder/projector
 	/// we are visible
-	var/visible
+	var/visible_dot
 
-/datum/component/laser_designator_target/Initialize(obj/item/rangefinder/projector)
-	if(!isatom(parent))
-		return COMPONENT_INCOMPATIBLE
-	. = ..()
-	if(. & COMPONENT_INCOMPATIBLE)
-		return
+/atom/movable/laser_designator_target/Initialize(mapload, obj/item/rangefinder/projector)
 	src.projector = projector
 	src.allow_weapons_guidance = projector.laser_weapons_guidance
-	src.visible = projector.laser_visible
+	src.visible_dot = projector.laser_visible
+	AddComponent(/datum/component/spatial_grid, SSspatial_grids.laser_designations)
+	if(ismovable(loc))
+		var/atom/movable/thingy = loc
+		thingy.vis_contents += src
+	return ..()
 
-/datum/component/laser_designator_target/RegisterWithParent()
-	parent.AddComponent(/datum/component/spatial_grid, SSspatial_grids.laser_designations)
+/atom/movable/laser_designator_target/Destroy()
+	if(ismovable(loc))
+		var/atom/movable/thingy = loc
+		thingy.vis_contents -= src
+	return ..()
 
-/datum/component/laser_designator_target/UnregisterFromParent()
-	for(var/datum/component/spatial_grid/grid_component in parent.GetComponents(/datum/component/spatial_grid))
-		if(grid_component.grid == SSspatial_grids.laser_designations)
-			qdel(grid_component)
-			break
+#warn impl this shit
 
-#warn impl - visibile dot if visible
+/atom/movable/laser_designator_target/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
+	..()
+	if(ismovable(old_loc))
+		var/atom/movable/old_thingy = old_loc
+		old_thingy.vis_contents -= src
+	if(ismovable(loc))
+		var/atom/movable/new_thingy = loc
+		new_thingy.vis_contents += src
 
 /**
  * citadel rp's rangefinders / LDs work somewhat differently from CM's

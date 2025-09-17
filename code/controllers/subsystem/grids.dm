@@ -103,7 +103,6 @@ SUBSYSTEM_DEF(grids)
  * * turfs can contain nulls
  * * input turf lists are edited
  * * area_cache must have truthy associations.
- * * the same index in from_turfs that are nulled are nulled in to_turfs
  */
 /datum/controller/subsystem/grids/proc/filter_ordered_turfs_via_area(list/area/area_cache, list/turf/ordered_turfs)
 	. = list()
@@ -317,7 +316,7 @@ SUBSYSTEM_DEF(grids)
 	var/list/from_turfs = get_ordered_turfs(S_LL[1], S_TR[1], S_LL[2], S_TR[2], S_LL[3], SOUTH)
 	var/list/to_turfs = get_ordered_turfs(T_LL[1], T_TR[1], T_LL[2], T_TR[2], T_LL[3], turn(SOUTH, turn_angle))
 
-	ASSERT(length(from_turfs) == length(to_turfs))
+	ASSERT(length(from_turfs) == length(to_turfs)code/modules/sectors/air_support/orbital_deployment)
 
 	translate(from_turfs, to_turfs, SOUTH, turn(SOUTH, turn_angle))
 
