@@ -177,7 +177,10 @@ var/list/wrapped_species_by_ref = list()
 	if(!new_species)
 		return
 
-	wrapped_species_by_ref["\ref[src]"] = new_species
+	if(fast_is_species_type(src, /datum/species/shapeshifter))
+		wrapped_species_by_ref["\ref[src]"] = new_species
+	else
+		species.base_species = SScharacters.resolve_species_name(new_species).name
 	visible_message("<span class='notice'>\The [src] shifts and contorts, taking the form of \a [new_species]!</span>")
 	regenerate_icons()
 
