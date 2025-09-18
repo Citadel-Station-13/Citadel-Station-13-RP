@@ -253,7 +253,7 @@ class CharacterLoadoutEntry extends Component<CharacterLoadoutEntryProps, Charac
               {this.state.editingName ? (
                 <Input
                   value={this.props.selected?.rename || undefined}
-                  onChange={(val) => {
+                  onBlur={(val) => {
                     this.props.customizeNameAct?.(this.props.entry.id, val);
                     this.setState((prevState) => ({ ...prevState, editingName: false }));
                   }} />
@@ -292,7 +292,7 @@ class CharacterLoadoutEntry extends Component<CharacterLoadoutEntryProps, Charac
                 {this.state.editingDesc ? (
                   <Input
                     value={this.props.selected?.redesc || undefined}
-                    onChange={(val) => {
+                    onBlur={(val) => {
                       this.props.customizeDescAct?.(this.props.entry.id, val);
                       this.setState((prevState) => ({ ...prevState, editingDesc: false }));
                     }} />
