@@ -95,7 +95,7 @@
 
 /// The key for xenomorph hive nodes.
 /// * Type: /obj/item/organ/internal/xenomorph/hivenode
-#define ORGAN_KEY_XENOMORPH_HIVE_NODE "xeno-hive-node
+#define ORGAN_KEY_XENOMORPH_HIVE_NODE "xeno-hive-node"
 /// The key for xenomorph plasma vessels.
 /// * Type: /obj/item/organ/internal/xenomorph/plasmavessel
 #define ORGAN_KEY_XENOMORPH_PLASMA_VESSEL "xeno-plasma-vessel"

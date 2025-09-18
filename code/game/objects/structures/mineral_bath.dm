@@ -160,7 +160,7 @@
 		var/obj/item/organ/external/E = thing
 		if(BP_IS_CRYSTAL(E))
 			for(var/obj/implanted_object in E.implants)
-				if(!istype(implanted_object,/obj/item/implant) && !istype(implanted_object,/obj/item/organ/internal/augment) && prob(25))	// We don't want to remove REAL implants. Just shrapnel etc.
+				if(!istype(implanted_object,/obj/item/implant) && !istype(implanted_object,/obj/item/organ/internal/augment_legacy) && prob(25))	// We don't want to remove REAL implants. Just shrapnel etc.
 					E.implants -= implanted_object
 					to_chat(patient, "<span class='notice'>The mineral-rich bath dissolves the [implanted_object.name] in your [E.name].</span>")
 					qdel(implanted_object)

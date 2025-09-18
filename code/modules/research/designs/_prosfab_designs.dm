@@ -306,63 +306,63 @@
 	design_name = "resonant analyzer"
 	id = "aug_hand"
 	materials_base = list(MAT_STEEL = 1000, MAT_GLASS = 500, MAT_PLASTIC = 500)
-	build_path = /obj/item/organ/internal/augment/armmounted/hand
+	build_path = /obj/item/organ/internal/augment_legacy/armmounted/hand
 
 /datum/prototype/design/science/prosfab/augment/shoulder
 	design_name = "rotary toolkit"
 	id = "aug_shoulder"
 	req_tech = list(TECH_BIO = 3, TECH_MATERIAL = 4, TECH_ENGINEERING = 4, TECH_DATA = 3)
 	materials_base = list(MAT_STEEL = 1500, MAT_GLASS = 500, MAT_PLASTIC = 750)
-	build_path = /obj/item/organ/internal/augment/armmounted/shoulder/multiple
+	build_path = /obj/item/organ/internal/augment_legacy/armmounted/shoulder/multiple
 
 /datum/prototype/design/science/prosfab/augment/arm
 	design_name = "implanted taser"
 	id = "aug_arm"
 	req_tech = list(TECH_BIO = 4, TECH_COMBAT = 4, TECH_MATERIAL = 4)
 	materials_base = list(MAT_STEEL = 1500, MAT_GLASS = 500, MAT_PLASTIC = 1250)
-	build_path = /obj/item/organ/internal/augment/armmounted/taser
+	build_path = /obj/item/organ/internal/augment_legacy/armmounted/taser
 
 /datum/prototype/design/science/prosfab/augment/shoulder_med
 	design_name = "rotary medical kit"
 	id = "aug_shouldermed"
 	req_tech = list(TECH_BIO = 5, TECH_MATERIAL = 4, TECH_DATA = 3)
 	materials_base = list(MAT_STEEL = 1500, MAT_GLASS = 1000, MAT_PLASTIC = 750)
-	build_path = /obj/item/organ/internal/augment/armmounted/shoulder/multiple/medical
+	build_path = /obj/item/organ/internal/augment_legacy/armmounted/shoulder/multiple/medical
 
 /datum/prototype/design/science/prosfab/augment/shoulder_combat
 	design_name = "muscular overclocker"
 	id = "aug_shouldercombat"
 	req_tech = list(TECH_BIO = 5, TECH_COMBAT = 5, TECH_MATERIAL = 4, TECH_ENGINEERING = 4)
 	materials_base = list(MAT_STEEL = 2000, MAT_PLASTIC = 3000, MAT_SILVER = 1000, MAT_GOLD = 500)
-	build_path = /obj/item/organ/internal/augment/armmounted/shoulder/surge
+	build_path = /obj/item/organ/internal/augment_legacy/armmounted/shoulder/surge
 
 /datum/prototype/design/science/prosfab/augment/pelvis
 	design_name = "locomotive optimizer"
 	id = "aug_pelvis"
 	req_tech = list(TECH_BIO = 5, TECH_MATERIAL = 5, TECH_ENGINEERING = 5)
 	materials_base = list(MAT_STEEL = 1500, MAT_PLASTIC = 2000, MAT_SILVER = 500, MAT_GOLD = 1000)
-	build_path = /obj/item/organ/internal/augment/bioaugment/sprint_enhance
+	build_path = /obj/item/organ/internal/augment_legacy/bioaugment/sprint_enhance
 
 /datum/prototype/design/science/prosfab/augment/arm_laser
 	design_name = "implanted laser rifle"
 	id = "aug_armlaser"
 	req_tech = list(TECH_BIO = 5, TECH_COMBAT = 5, TECH_MATERIAL = 5)
 	materials_base = list(MAT_STEEL = 3000, MAT_GLASS = 1000, MAT_PLASTIC = 2000, MAT_GOLD = 2000)
-	build_path = /obj/item/organ/internal/augment/armmounted
+	build_path = /obj/item/organ/internal/augment_legacy/armmounted
 
 /datum/prototype/design/science/prosfab/augment/eyes
 	design_name = "thermolensing sunglasses"
 	id = "aug_eyes"
 	req_tech = list(TECH_BIO = 6, TECH_ILLEGAL = 4, TECH_MATERIAL = 4, TECH_DATA = 5)
 	materials_base = list(MAT_STEEL = 500, MAT_GLASS = 1000, MAT_PLASTIC = 1500, MAT_GOLD = 1000, MAT_DIAMOND = 2000)
-	build_path = /obj/item/organ/internal/augment/bioaugment/thermalshades
+	build_path = /obj/item/organ/internal/augment_legacy/bioaugment/thermalshades
 
 /datum/prototype/design/science/prosfab/augment/hand_sword
 	design_name = "implanted energy blade"
 	id = "aug_handsword"
 	req_tech = list(TECH_BIO = 6, TECH_COMBAT = 6, TECH_ILLEGAL = 4, TECH_MATERIAL = 4)
 	materials_base = list(MAT_STEEL = 1500, MAT_GLASS = 500, MAT_PLASTIC = 2000, MAT_GOLD = 2000, MAT_URANIUM = 1500, MAT_DIAMOND = 2500)
-	build_path = /obj/item/organ/internal/augment/armmounted/hand/sword
+	build_path = /obj/item/organ/internal/augment_legacy/armmounted/hand/sword
 
 //////////////////// Cyborg Parts ////////////////////
 /datum/prototype/design/science/prosfab/cyborg

@@ -8,7 +8,7 @@
 	icon_state = "implant_evil"
 	origin_tech = list(TECH_MATERIAL = 5, TECH_BIO = 2, TECH_ILLEGAL = 2)
 
-	var/organ_to_implant = /obj/item/organ/internal/augment/bioaugment/thermalshades
+	var/organ_to_implant = /obj/item/organ/internal/augment_legacy/bioaugment/thermalshades
 	var/organ_display_name = "unknown organ"
 
 /obj/item/implant/organ/get_data()
@@ -49,7 +49,7 @@
 /obj/item/implant/organ/limbaugment
 	name = "nanite implant"
 
-	organ_to_implant = /obj/item/organ/internal/augment/armmounted/taser
+	organ_to_implant = /obj/item/organ/internal/augment_legacy/armmounted/taser
 	organ_display_name = "physiological augment"
 
 	var/list/possible_targets = list(O_AUG_L_FOREARM, O_AUG_R_FOREARM)
@@ -83,7 +83,7 @@
 			qdel(NewOrgan)
 			to_chat(H, "<span class='warning'>You feel a pinching sensation in your [part]. The implant remains.</span>")
 
-/obj/item/implant/organ/limbaugment/proc/setup_augment_slots(var/mob/living/carbon/human/H, var/obj/item/organ/internal/augment/armmounted/I)
+/obj/item/implant/organ/limbaugment/proc/setup_augment_slots(var/mob/living/carbon/human/H, var/obj/item/organ/internal/augment_legacy/armmounted/I)
 	var/list/Choices = possible_targets.Copy()
 
 	for(var/targ in possible_targets)
@@ -136,13 +136,13 @@
  */
 
 /obj/item/implant/organ/limbaugment/upperarm
-	organ_to_implant = /obj/item/organ/internal/augment/armmounted/shoulder/multiple
+	organ_to_implant = /obj/item/organ/internal/augment_legacy/armmounted/shoulder/multiple
 	organ_display_name = "multi-use augment"
 
 	possible_targets = list(O_AUG_R_UPPERARM,O_AUG_L_UPPERARM)
 
 /obj/item/implant/organ/limbaugment/wrist
-	organ_to_implant = /obj/item/organ/internal/augment/armmounted/hand
+	organ_to_implant = /obj/item/organ/internal/augment_legacy/armmounted/hand
 	organ_display_name = "wrist augment"
 
 	possible_targets = list(O_AUG_R_HAND,O_AUG_L_HAND)
@@ -153,24 +153,24 @@
 
 // Wrist
 /obj/item/implant/organ/limbaugment/wrist/sword
-	organ_to_implant = /obj/item/organ/internal/augment/armmounted/hand/sword
+	organ_to_implant = /obj/item/organ/internal/augment_legacy/armmounted/hand/sword
 	organ_display_name = "weapon augment"
 
 // Fore-arm
 /obj/item/implant/organ/limbaugment/laser
-	organ_to_implant = /obj/item/organ/internal/augment/armmounted
+	organ_to_implant = /obj/item/organ/internal/augment_legacy/armmounted
 	organ_display_name = "weapon augment"
 
 /obj/item/implant/organ/limbaugment/dart
-	organ_to_implant = /obj/item/organ/internal/augment/armmounted/dartbow
+	organ_to_implant = /obj/item/organ/internal/augment_legacy/armmounted/dartbow
 	organ_display_name = "weapon augment"
 
 // Upper-arm.
 /obj/item/implant/organ/limbaugment/upperarm/medkit
-	organ_to_implant = /obj/item/organ/internal/augment/armmounted/shoulder/multiple/medical
+	organ_to_implant = /obj/item/organ/internal/augment_legacy/armmounted/shoulder/multiple/medical
 
 /obj/item/implant/organ/limbaugment/upperarm/surge
-	organ_to_implant = /obj/item/organ/internal/augment/armmounted/shoulder/surge
+	organ_to_implant = /obj/item/organ/internal/augment_legacy/armmounted/shoulder/surge
 
 /*
  * Others
@@ -179,5 +179,5 @@
 /obj/item/implant/organ/pelvic
 	name = "nanite fabrication implant"
 
-	organ_to_implant = /obj/item/organ/internal/augment/bioaugment/sprint_enhance
+	organ_to_implant = /obj/item/organ/internal/augment_legacy/bioaugment/sprint_enhance
 	organ_display_name = "pelvic augment"

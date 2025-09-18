@@ -121,6 +121,7 @@
 
 
 	//* ## VERB VARS
+	#warn deal with this nightmare
 	/// Verbs added by the organ when present in the body.
 	var/list/organ_verbs
 	/// Is the parent supposed to be organic, robotic, assisted?
