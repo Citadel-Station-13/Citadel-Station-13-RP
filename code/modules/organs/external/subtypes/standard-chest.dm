@@ -6,7 +6,6 @@
 	min_broken_damage = 35
 	w_class = WEIGHT_CLASS_HUGE
 	body_part_flags = UPPER_TORSO
-	vital = TRUE
 	amputation_point = "spine"
 	joint = "neck"
 	dislocated = -1

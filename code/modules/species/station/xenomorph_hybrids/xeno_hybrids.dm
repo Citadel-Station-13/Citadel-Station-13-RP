@@ -94,6 +94,13 @@
 	heat_level_2 = 400
 	heat_level_3 = 700
 
+	biology = /datum/biology/organic
+
+	use_internal_organs = list(
+		ORGAN_KEY_XENOMORPH_PLASMA_VESSEL = /obj/item/organ/internal/xenomorph/plasmavessel/hunter,
+		ORGAN_KEY_XENOMORPH_RESIN_SPINNER = /obj/item/organ/internal/xenomorph/resinspinner/hybrid,
+	)
+
 	//Organ-List to remove need to breath(?)
 	has_organ = list(
 		O_HEART =		/obj/item/organ/internal/heart,
@@ -101,11 +108,10 @@
 		O_LIVER =		/obj/item/organ/internal/liver,
 		O_KIDNEYS =		/obj/item/organ/internal/kidneys,
 		O_BRAIN =		/obj/item/organ/internal/brain,
-		O_PLASMA =		/obj/item/organ/internal/xenomorph/plasmavessel/hunter,//Important for the xenomorph abilities, hunter to have a pretty small plasma capacity
 		O_STOMACH =		/obj/item/organ/internal/stomach,
 		O_INTESTINE =	/obj/item/organ/internal/intestine,
-		O_RESIN =		/obj/item/organ/internal/xenomorph/resinspinner/hybrid,
 		)
+
 	vision_organ = O_BRAIN//Neomorphs have no (visible) Eyes, seeing without them should be possible.
 
 	reagent_tag = IS_XENOHYBRID

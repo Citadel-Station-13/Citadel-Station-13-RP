@@ -19,7 +19,7 @@
 	interests, rampant cyber and bio-augmentation initiatives, and secretive factions make life on most human \
 	worlds tumultous at best."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/humans)
-	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/human
+	intrinsic_physiology_modifier = /datum/physiology_modifier/intrinsic/species/human
 
 	max_additional_languages = 3
 	intrinsic_languages = list(

@@ -6,7 +6,6 @@
 	organ_tag = "brain"
 	desc = "A disgusting space slug."
 	parent_organ = BP_HEAD
-	vital = 1
 
 /obj/item/organ/internal/borer/tick_life(dt)
 	. = ..()
@@ -48,7 +47,6 @@
 	parent_organ = BP_HEAD
 	icon_state = "brain-prosthetic"
 	organ_tag = "stack"
-	vital = 1
 	var/backup_time = 0
 	var/datum/mind/backup
 

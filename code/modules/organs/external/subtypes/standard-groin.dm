@@ -6,7 +6,6 @@
 	min_broken_damage = 35
 	w_class = WEIGHT_CLASS_BULKY
 	body_part_flags = LOWER_TORSO
-	vital = TRUE
 	parent_organ = BP_TORSO
 	amputation_point = "lumbar"
 	joint = "hip"

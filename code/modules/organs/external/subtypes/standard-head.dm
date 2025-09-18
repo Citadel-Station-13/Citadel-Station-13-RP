@@ -7,7 +7,6 @@
 	min_broken_damage = 35
 	w_class = WEIGHT_CLASS_NORMAL
 	body_part_flags = HEAD
-	vital = TRUE
 	parent_organ = BP_TORSO
 	joint = "jaw"
 	amputation_point = "neck"

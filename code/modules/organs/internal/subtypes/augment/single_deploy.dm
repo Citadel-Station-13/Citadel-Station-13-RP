@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 Citadel Station Developers           *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
 
 /**
  * simple single-item deployer augments
@@ -34,8 +34,6 @@
 /obj/item/organ/internal/augment/single_deploy/laser_array
 
 /obj/item/organ/internal/augment/single_deploy/laser_array/gamma
-
-/obj/item/organ/internal/augment/single_deploy/discharge_array
 
 /obj/item/organ/internal/augment/single_deploy/engineering_multitool
 

@@ -391,8 +391,7 @@
 	target.op_stage.current_organ = null
 
 	var/list/removable_organs = list()
-	for(var/organ in target.internal_organs_by_name)
-		var/obj/item/organ/I = target.internal_organs_by_name[organ]
+	for(var/obj/item/organ/internal/I as anything in target.get_internal_organs())
 		if(I && (I.status & ORGAN_CUT_AWAY) && (I.robotic >= ORGAN_ROBOT) && I.parent_organ == target_zone)
 			removable_organs |= organ
 
@@ -400,6 +399,7 @@
 	if(!organ_to_replace)
 		return 0
 
+	#warn set organ properly?
 	target.op_stage.current_organ = organ_to_replace
 	return ..()
 

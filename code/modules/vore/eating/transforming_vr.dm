@@ -217,7 +217,7 @@
 	remove_verb(M, M.species.inherent_verbs)	//Take away their unique stuff
 
 	var/list/backup_implants = list()
-	for(var/obj/item/organ/I in M.organs)
+	for(var/obj/item/organ/I in M.get_organs())
 		for(var/obj/item/implant/backup/BI in I.contents)
 			backup_implants += BI
 	if(backup_implants.len)

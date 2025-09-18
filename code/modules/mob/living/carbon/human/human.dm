@@ -876,19 +876,19 @@
 		germ_level += n
 
 /mob/living/carbon/human/proc/is_lung_ruptured()
-	var/obj/item/organ/internal/lungs/L = internal_organs_by_name[O_LUNGS]
+	var/obj/item/organ/internal/lungs/L = legacy_organ_by_type(/obj/item/organ/internal/lungs)
 	return L && L.is_bruised()
 
 /mob/living/carbon/human/proc/rupture_lung()
-	var/obj/item/organ/internal/lungs/L = internal_organs_by_name[O_LUNGS]
+	var/obj/item/organ/internal/lungs/L = legacy_organ_by_type(/obj/item/organ/internal/lungs)
 	L?.rupture()
 
 /mob/living/carbon/human/proc/asbestos_lung()
-	var/obj/item/organ/internal/lungs/L = internal_organs_by_name[O_LUNGS]
+	var/obj/item/organ/internal/lungs/L = legacy_organ_by_type(/obj/item/organ/internal/lungs)
 	L?.damage_lung()
 
 /mob/living/carbon/human/proc/heart_attack()
-	var/obj/item/organ/internal/heart/H = internal_organs_by_name[O_HEART]
+	var/obj/item/organ/internal/heart/H = legacy_organ_by_type(/obj/item/organ/internal/heart)
 	H?.heart_attack()
 
 //returns 1 if made bloody, returns 0 otherwise

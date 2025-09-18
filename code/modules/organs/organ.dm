@@ -6,6 +6,13 @@
 	drop_sound = 'sound/items/drop/flesh.ogg'
 	pickup_sound = 'sound/items/pickup/flesh.ogg'
 
+	//* Core *//
+
+	/// Our organ key to register as.
+	///
+	/// * This is **not** arbitrary. Keys have type semantics.
+	var/organ_key
+
 	//* Actions *//
 
 	/// actions to give the owner of this organ
@@ -51,10 +58,6 @@
 	/// * Implies [always_drop_on_gib]
 	var/always_drop_on_everything = FALSE
 	#warn hook
-	/// Our organ key to register as.
-	///
-	/// * This is **not** arbitrary. Keys have type semantics.
-	var/organ_key
 
 	//! legacy below !//
 
@@ -68,12 +71,6 @@
 	//* STATUS VARS
 	/// Various status flags
 	var/status = 0
-	/**
-	 * Is this organ vital? If so, this being amputated / removed / dying will immediately kill someone.
-	 *
-	 * todo: some species shouldn't have the same organs vital as others (?)
-	 */
-	var/vital = FALSE
 	/// Current damage to the organ
 	var/damage = 0
 	/// What kind of robotic organ, if valid.

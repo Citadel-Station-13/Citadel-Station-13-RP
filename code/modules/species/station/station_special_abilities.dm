@@ -779,13 +779,13 @@
 	var/obj/item/organ/external/T_ext = input(src,"What do you wish to severely damage?") as null|anything in T.external_organs //D for destroy.
 	if(!T_ext) //Picking something here is critical.
 		return
-	if(T_ext.vital)
+	if(get_organ_is_vital(T_ext))
 		if(alert("Are you sure you wish to severely damage their [T_ext]? It will likely kill [T]...",,"Yes", "No") != "Yes")
 			return //If they reconsider, don't continue.
 
 	//Any internal organ, if there are any
 	var/obj/item/organ/internal/T_int = input(src,"Do you wish to severely damage an internal organ, as well? If not, click 'cancel'") as null|anything in T_ext.internal_organs
-	if(T_int && T_int.vital)
+	if(T_int, get_organ_is_vital(T_int))
 		if(alert("Are you sure you wish to severely damage their [T_int]? It will likely kill [T]...",,"Yes", "No") != "Yes")
 			return //If they reconsider, don't continue.
 

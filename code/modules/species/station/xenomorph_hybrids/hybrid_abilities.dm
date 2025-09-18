@@ -61,8 +61,8 @@
 		O.active_regen = TRUE
 
 	if (O.getBruteLoss() == 0) //If we have no flat damage remaining, fix internal issues, and not running around
-		for(var/limb_type in O.species.has_limbs)
-			var/obj/item/organ/external/E = O.organs_by_name[limb_type]
+		// TODO: this should only work for xenomorph biology limbs maybe?
+		for(var/obj/item/organ/external/E as anything in O.get_external_organs())
 			if((E.status & ORGAN_BROKEN))
 				E.status &= ~ORGAN_BROKEN
 				to_chat(O, SPAN_NOTICEALIEN("You mend the bone in your [E]"))

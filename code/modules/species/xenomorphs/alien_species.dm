@@ -67,6 +67,10 @@
 		MOB_IFF_FACTION_XENOMORPH,
 	)
 
+	use_internal_organs = list(
+		ORGAN_KEY_XENOMORPH_HIVE_NODE,
+	)
+
 /datum/species/xenomorph/get_bodytype_legacy()
 	return SPECIES_XENO
 
@@ -164,6 +168,7 @@
 	deform =  'icons/mob/species/xenomorph/drone.dmi'
 
 	use_internal_organs = list(
+		ORGAN_KEY_XENOMORPH_HIVE_NODE,
 		ORGAN_KEY_XENOMORPH_PLASMA_VESSEL = /obj/item/organ/internal/xenomorph/plasmavessel/queen,
 		ORGAN_KEY_XENOMORPH_RESIN_SPINNER,
 		ORGAN_KEY_XENOMORPH_ACID_GLAND,
@@ -203,6 +208,7 @@
 	movement_base_speed = 10
 
 	use_internal_organs = list(
+		ORGAN_KEY_XENOMORPH_HIVE_NODE,
 		ORGAN_KEY_XENOMORPH_PLASMA_VESSEL = /obj/item/organ/internal/xenomorph/plasmavessel/hunter,
 	)
 
@@ -232,6 +238,7 @@
 	deform =  'icons/mob/species/xenomorph/sentinel.dmi'
 
 	use_internal_organs = list(
+		ORGAN_KEY_XENOMORPH_HIVE_NODE,
 		ORGAN_KEY_XENOMORPH_PLASMA_VESSEL = /obj/item/organ/internal/xenomorph/plasmavessel/sentinel,
 		ORGAN_KEY_XENOMORPH_ACID_GLAND,
 	)
@@ -266,6 +273,7 @@
 	unarmed_types = list(/datum/melee_attack/unarmed/claws/strong/xeno/queen, /datum/melee_attack/unarmed/bite/strong/xeno)
 
 	use_internal_organs = list(
+		ORGAN_KEY_XENOMORPH_HIVE_NODE,
 		ORGAN_KEY_XENOMORPH_PLASMA_VESSEL = /obj/item/organ/internal/xenomorph/plasmavessel/queen,
 		ORGAN_KEY_XENOMORPH_RESIN_SPINNER,
 		ORGAN_KEY_XENOMORPH_ACID_GLAND,

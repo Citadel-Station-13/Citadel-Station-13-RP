@@ -111,8 +111,8 @@
 /proc/apply_organs_to_prefs(var/mob/living/carbon/human/character, var/datum/preferences/prefs)
 	if(!istype(character) || !character.species) return
 	// Checkify the limbs!
-	for(var/name in character.species.has_limbs)
-		var/obj/item/organ/external/O = character.organs_by_name[name]
+	for(var/organ_key in character.species.has_external_organs)
+		var/obj/item/organ/external/O = character.get_organ_by_key(organ_key)
 		if(!O)
 			prefs.organ_data[name] = "amputated"
 		else if(O.robotic >= ORGAN_ROBOT)
@@ -125,8 +125,9 @@
 			prefs.organ_data.Remove(name) // Misisng organ_data entry means normal
 
 	// Internal organs also
-	for(var/name in character.species.has_organ)
-		var/obj/item/organ/I = character.internal_organs_by_name[name]
+	// this doesn't include additional organs but whatever lol
+	for(var/organ_key in character.species.use_internal_organs | character.species.biology.default_internal_organ_keys)
+		var/obj/item/organ/I = character.get_organ_by_key(organ_key)
 		if(I)
 			if(istype(I, /obj/item/organ/internal/mmi_holder/robot))
 				prefs.organ_data[name] = "digital" // Need a better way to detect this special type
@@ -142,10 +143,7 @@
 /proc/apply_markings_to_prefs(var/mob/living/carbon/human/character, var/datum/preferences/prefs)
 	if(!istype(character)) return
 	var/list/new_body_markings = list()
-	for(var/N in character.organs_by_name)
-		var/obj/item/organ/external/O = character.organs_by_name[N]
-		if(!O) continue // Skip missing limbs!
-
+	for(var/obj/item/organ/external/O as anything in character.get_external_organs())
 		for(var/name in O.markings)
 			// Expected to be list("color" = mark_color, "datum" = mark_datum). Sanity checks to ensure it.
 			var/list/ML = O.markings[name]

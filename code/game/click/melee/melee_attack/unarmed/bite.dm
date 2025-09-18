@@ -40,7 +40,7 @@
 	attack_name = "numbing bite"
 
 /datum/melee_attack/unarmed/bite/sharp/numbing/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
-	var/obj/item/organ/external/affecting = target.get_organ(zone)
+	var/obj/item/organ/external/affecting = target.get_organ_for_zone(zone)
 
 	attack_damage = clamp(attack_damage, 1, 5)
 	if(target == user)

@@ -61,6 +61,12 @@
 	var/obj/item/organ/external/fetched = keyed_organs[target_zone_rewrites[target_zone]]
 	return (fetched && !fetched.is_stump()) ? fetched : null
 
+/mob/living/carbon/get_organ_key_default_type(key)
+	#warn impl
+
+/mob/living/carbon/get_organ_key_is_vital(key)
+	#warn impl
+
 //* API - Insert / Remove *//
 
 /**

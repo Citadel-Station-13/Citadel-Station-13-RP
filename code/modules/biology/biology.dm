@@ -32,6 +32,17 @@
 	/// * Anything in this must be in [default_organ_mappings].
 	/// * `ORGAN_KEY_BRAIN` is implicitly in this list.
 	var/list/default_internal_organ_keys = list()
+	/// Half-legacy 'vital' organ key list.
+	///
+	/// * Organ keys in this list are considered vital. Their removal, death, or destruction will
+	///   result in the death of the host.
+	/// * It's very possible and even sometimes needed to have nothing be vital.
+	///   As an example, in a synth, nothing but the brain is vital, and brain is already
+	///   implicitly vital.
+	var/list/vital_organ_keys = list(
+		ORGAN_KEY_BRAIN,
+	)
+	#warn hook
 
 	//* Ticking *//
 

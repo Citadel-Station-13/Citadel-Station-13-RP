@@ -4,7 +4,6 @@
 	organ_tag = "brain"
 	organ_key = ORGAN_KEY_BRAIN
 	parent_organ = BP_HEAD
-	vital = 1
 	decay_rate = ORGAN_DECAY_PER_SECOND_BRAIN
 	icon_state = "brain2"
 	damage_force = 1.0
@@ -145,7 +144,6 @@
 	parent_organ = BP_HEAD
 	icon = 'icons/mob/alien.dmi'
 	icon_state = "chitin"
-	vital = 1
 	can_assist = FALSE
 
 /obj/item/organ/internal/brain/xeno

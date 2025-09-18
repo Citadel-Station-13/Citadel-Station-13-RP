@@ -23,7 +23,7 @@
 
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-		var/obj/item/organ/external/affecting = H.legacy_organ_by_zone(zone)
+		var/obj/item/organ/external/affecting = H.legacy_organ_by_zone(target_zone)
 		to_chat(user, "<span class='danger'>An inexplicable force rips through your [affecting.name], tearing the sword from your grasp!</span>")
 		//random amount of damage between half of the blade's force and the full force of the blade.
 		H.apply_damage(rand(damage_force/2, damage_force), DAMAGE_TYPE_BRUTE, held_index % 2? BP_L_HAND : BP_R_HAND, 0, sharp=1, edge=1)

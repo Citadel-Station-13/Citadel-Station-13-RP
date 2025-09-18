@@ -10,6 +10,8 @@
 
 	biology = /datum/biology/synthetic
 
+	/// biology types that we are functional on
+	var/biology_function_type = BIOLOGY_TYPES_ALL
 	/// biology types that can control us
 	var/biology_control_type = BIOLOGY_TYPES_ALL
 
