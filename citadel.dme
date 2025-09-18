@@ -3811,6 +3811,7 @@
 #include "code\modules\mob\mob-melee_attack_chain.dm"
 #include "code\modules\mob\mob-movement.dm"
 #include "code\modules\mob\mob-movespeed.dm"
+#include "code\modules\mob\mob-organs.dm"
 #include "code\modules\mob\mob-status_procs.dm"
 #include "code\modules\mob\mob.dm"
 #include "code\modules\mob\mob_defines.dm"

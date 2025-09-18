@@ -3,44 +3,26 @@
 
 //* API - Get *//
 
-/**
- * Get all organs.
- */
-/mob/living/carbon/proc/get_organs()
+/mob/living/carbon/get_organs()
 	return external_organs + internal_organs
 
-/**
- * Get all internal organs.
- */
-/mob/living/carbon/proc/get_internal_organs()
+/mob/living/carbon/get_internal_organs()
 	return internal_organs.Copy()
 
-/**
- * Get all external organs
- */
-/mob/living/carbon/proc/get_external_organs()
+/mob/living/carbon/get_external_organs()
 	return external_organs.Copy()
 
-/**
- * Get **an** organ of a key.
- */
-/mob/living/carbon/proc/get_organ_by_key(key) as /obj/item/organ
+/mob/living/carbon/get_organ_by_key(key)
 	RETURN_TYPE(/obj/item/organ)
 	return keyed_organs[key]
 
-/**
- * Get **all** organs of a key.
- */
-/mob/living/carbon/proc/get_organs_by_key(key) as /list
+/mob/living/carbon/get_organs_by_key(key)
 	RETURN_TYPE(/list)
 	. = list()
 	if(keyed_organs[key])
 		. += keyed_organs[key]
 
-/**
- * Get an external organ by target zone.
- */
-/mob/living/carbon/proc/get_organ_for_zone(target_zone) as /obj/item/organ/external
+/mob/living/carbon/get_organ_for_zone(target_zone)
 	var/static/list/target_zone_rewrites = list(
 		TARGET_ZONE_HEAD = ORGAN_KEY_EXT_HEAD,
 		TARGET_ZONE_EYES = ORGAN_KEY_EXT_HEAD,
@@ -57,18 +39,11 @@
 	)
 	return keyed_organs[target_zone_rewrites[target_zone]]
 
-/**
- * Get internal organs by target zone.
- */
-/mob/living/carbon/proc/get_internal_organs_for_zone(target_zone) as /list
+/mob/living/carbon/get_internal_organs_for_zone(target_zone)
 	var/obj/item/organ/external/bodypart = get_organ_for_zone(target_zone)
 	return bodypart ? bodypart.get_internal_organs() : list()
 
-/**
- * Get an external organ by target zone, if that organ is not a stump and is otherwise physically
- * still that organ by shape.
- */
-/mob/living/carbon/proc/get_non_stump_organ_for_zone(target_zone) as /obj/item/organ/external
+/mob/living/carbon/get_non_stump_organ_for_zone(target_zone)
 	var/static/list/target_zone_rewrites = list(
 		TARGET_ZONE_HEAD = ORGAN_KEY_EXT_HEAD,
 		TARGET_ZONE_EYES = ORGAN_KEY_EXT_HEAD,

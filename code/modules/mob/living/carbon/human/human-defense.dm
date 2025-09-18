@@ -31,7 +31,7 @@
 		return
 
 	// todo: this shit shouldn't be here
-	var/obj/item/organ/external/organ = legacy_organ_by_zone(bullet_act_args[BULLET_ACT_ARG_ZONE] || BP_TORSO)
+	var/obj/item/organ/external/organ = legacy_organ_by_zone(bullet_act_args[BULLET_ACT_ARG_ZONE] || BODY_ZONE_TORSO)
 
 	if(!proj.nodamage)
 		organ.add_autopsy_data("[proj.name]", proj.damage_force)
