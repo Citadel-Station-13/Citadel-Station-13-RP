@@ -178,6 +178,7 @@
 	///
 	/// Accepts a list of:
 	/// * External bodypart organ keys without associations
+	/// * External bodypart organ keys associated to a typepath for a quick type override
 	/// * External bodypart organ keys associated to a /datum/species_organ_entry
 	var/list/has_external_organs = list(
 		ORGAN_KEY_EXT_HEAD,
@@ -201,6 +202,7 @@
 	///
 	/// Accepts a list of:
 	/// * Organ key associated to an ORGAN_DEFAULT_* value.
+	/// * Organ key associated to an organ typepath for a quick type override
 	/// * Organ key without association to include something not included by default with the biology
 	/// * Organ key associated to a /datum/species_organ_entry value.
 	var/list/use_internal_organs = list()

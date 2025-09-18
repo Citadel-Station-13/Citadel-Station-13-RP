@@ -11,11 +11,19 @@
 
 //* Organ Discovery Flags *//
 
-/// Does not show up on simple scanners like cyborg analyzers.
-#define ORGAN_DISCOVERY_NO_SIMPLE_SCAN (1<<0)
-/// Does not show up on advanced imaging like body scanners.
-#define ORGAN_DISCOVERY_NO_ADVANCED_SCAN (1<<1)
+/// Shows up on 'probing' scanners like cyborg analyzers that query the organ
+/// * this makes sense for a given biology is a scanner has that biology.
+/// * as an example most organic organs have this, but cyborg analyzers can't scan them because they
+///   don't actually probe organic biology.
+#define ORGAN_DISCOVERY_DATA_QUERY (1<<0)
+/// Shows up on basic tissue scanners like phasic health analyzers, xrays, etc
+#define ORGAN_DISCOVERY_MASS_SCAN (1<<1)
+/// Shows up on body scanners and advanced imaging machines
+#define ORGAN_DISCOVERY_RESONANCE_IMAGING (1<<2)
+
 #warn impl
+
+#define ORGAN_DISCOVERY_DEFAULTS (ORGAN_DISCOVERY_DATA_QUERY | ORGAN_DISCOVERY_MASS_SCAN | ORGAN_DISCOVERY_RESONANCE_IMAGIG)
 
 #warn DEFINE_BITFIELD
 
@@ -85,9 +93,21 @@
 
 //* Species - Xenomorph *//
 
+/// The key for xenomorph hive nodes.
+/// * Type: /obj/item/organ/internal/xenomorph/hivenode
+#define ORGAN_KEY_XENOMORPH_HIVE_NODE "xeno-hive-node
 /// The key for xenomorph plasma vessels.
 /// * Type: /obj/item/organ/internal/xenomorph/plasmavessel
 #define ORGAN_KEY_XENOMORPH_PLASMA_VESSEL "xeno-plasma-vessel"
+/// The key for xenomorph acid glands.
+/// * Type: /obj/item/organ/internal/xenomorph/acidgland
+#define ORGAN_KEY_XENOMORPH_ACID_GLAND "xeno-acid-gland"
+/// The key for xenomorph resin spinners.
+/// * Type: /obj/item/organ/internal/xenomorph/resinspinner
+#define ORGAN_KEY_XENOMORPH_RESIN_SPINNER "xeno-resin-spinner"
+/// The key for xenomorph egg sacs.
+/// * Type: /obj/item/organ/internal/xenomorph/eggsac
+#define ORGAN_KEY_XENOMORPH_EGG_SAC "xeno-egg-sac"
 
 #warn hook / implement
 
