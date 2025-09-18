@@ -255,9 +255,12 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	if(istype(equipped, /obj/item/clothing/shoes))
 		var/obj/item/clothing/shoes/S = equipped
 		index = (S.shoes_under_pants == 1)? 2 : 1
-	else if(istype(equipped, /obj/item/storage/belt))
-		var/obj/item/storage/belt/B = equipped
-		index = (B.show_above_suit == 1)? 2 : 1
+	else if(istype(equipped, /obj/item/storage/backpack))
+		var/obj/item/storage/backpack/B = equipped
+		index = (B.hide_under_tail == 1)? 1 : 2
+	else if(istype(equipped, /obj/item/clothing/shoes))
+		var/obj/item/clothing/shoes/S = equipped
+		index = (S.shoes_under_pants == 1)? 2 : 1
 	return render_layer[clamp(index, 1, length(render_layer))]
 
 /datum/inventory_slot/proc/handle_worn_fallback(bodytype, list/worn_data)
@@ -304,7 +307,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	render_fallback = list(
 		BODYTYPE_STRING_TESHARI = "_fallback_"
 	)
-	render_layer = HUMAN_LAYER_SLOT_BACKPACK
+	render_layer = list(HUMAN_LAYER_SLOT_BACKPACK, HUMAN_LAYER_SLOT_BACKPACK_ALT)
 
 /datum/inventory_slot/inventory/uniform
 	name = "uniform"

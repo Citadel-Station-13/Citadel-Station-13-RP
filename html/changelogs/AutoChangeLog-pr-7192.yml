@@ -1,0 +1,5 @@
+author: "MediHound"
+delete-after: True
+changes:
+  - rscadd: "Check to see if the turf is a space turf."
+  - tweak: "Degeneration values replaced with minor regeneration. (Only affects Admin Shadekin.)"

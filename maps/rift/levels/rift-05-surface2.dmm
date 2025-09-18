@@ -669,7 +669,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar/lounge)
 "axz" = (
-/obj/item/grenade/chem_grenade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "axE" = (
@@ -4000,7 +4000,7 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 10
 	},
-/obj/machinery/r_n_d/circuit_imprinter,
+/obj/machinery/lathe/r_n_d/circuit_imprinter,
 /obj/item/reagent_containers/glass/beaker/sulphuric,
 /obj/structure/reagent_dispensers/acid{
 	pixel_x = -32
@@ -10636,7 +10636,7 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 4
 	},
-/obj/machinery/r_n_d/protolathe,
+/obj/machinery/lathe/r_n_d/protolathe,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research)
@@ -13171,7 +13171,7 @@
 /area/assembly/robotics)
 "iiw" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Northwestern Outpost Substation Bypass"
+	RCon_tag = "Surface 2 - Northwestern Outpost Substation Bypass"
 	},
 /turf/simulated/floor,
 /area/maintenance/substation/cafeteria_dock)
@@ -14937,7 +14937,7 @@
 /area/maintenance/security/upper)
 "jsh" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Research Main";
+	RCon_tag = "Surface 2 - Research Main Subgrid";
 	output_attempt = 0
 	},
 /obj/structure/cable/green,
@@ -19032,10 +19032,10 @@
 /obj/structure/closet/crate{
 	name = "Grenade Crate"
 	},
-/obj/item/grenade/chem_grenade,
-/obj/item/grenade/chem_grenade,
-/obj/item/grenade/chem_grenade,
-/obj/item/grenade/chem_grenade,
+/obj/item/grenade/simple/chemical,
+/obj/item/grenade/simple/chemical,
+/obj/item/grenade/simple/chemical,
+/obj/item/grenade/simple/chemical,
 /obj/item/assembly/igniter,
 /obj/item/assembly/igniter,
 /obj/item/assembly/igniter,
@@ -19055,7 +19055,7 @@
 	pixel_x = -30
 	},
 /obj/item/storage/box/syringegun,
-/obj/item/gun/launcher/syringe,
+/obj/item/gun/projectile/ballistic/syringe,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_primary_storage)
 "lQo" = (
@@ -20413,7 +20413,7 @@
 /area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "mDo" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Surface 2"
+	RCon_tag = "Surface 2 - Main Substation"
 	},
 /obj/structure/cable/green,
 /obj/structure/cable/green{
@@ -24466,7 +24466,7 @@
 	dir = 4
 	},
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Surface 2 Substation Bypass"
+	RCon_tag = "Surface 2 - Main Substation Bypass"
 	},
 /turf/simulated/floor,
 /area/maintenance/substation/surface_two)
@@ -32890,7 +32890,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "uKi" = (
-/obj/machinery/r_n_d/circuit_imprinter,
+/obj/machinery/lathe/r_n_d/circuit_imprinter,
 /obj/item/reagent_containers/glass/beaker/sulphuric,
 /obj/structure/reagent_dispensers/acid{
 	pixel_x = -32
@@ -33525,7 +33525,7 @@
 /area/crew_quarters/showers)
 "uWX" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Security";
+	RCon_tag = "Surface 2 - Security Substation";
 	output_attempt = 0
 	},
 /obj/structure/cable/green{
@@ -33743,7 +33743,7 @@
 /area/maintenance/asmaint2)
 "vcn" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Northwestern Outpost";
+	RCon_tag = "Surface 2 - Northwestern Outpost Substation";
 	output_attempt = 0
 	},
 /obj/structure/cable/green,
@@ -35829,7 +35829,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/mecha_part_fabricator{
+/obj/machinery/lathe/mecha_part_fabricator{
 	dir = 8
 	},
 /obj/machinery/camera/network/research{
@@ -36134,7 +36134,7 @@
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "wMk" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Security Substation Bypass"
+	RCon_tag = "Surface 2 - Security Substation Bypass"
 	},
 /turf/simulated/floor,
 /area/maintenance/substation/security)
@@ -37782,7 +37782,7 @@
 /area/security/hallway)
 "xNq" = (
 /obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Research Main Substation Bypass"
+	RCon_tag = "Surface 2 - Research Main Subgrid Bypass"
 	},
 /turf/simulated/floor,
 /area/maintenance/substation/research)
@@ -37906,7 +37906,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/mecha_part_fabricator/pros{
+/obj/machinery/lathe/mecha_part_fabricator/pros{
 	dir = 8;
 	pixel_y = 3
 	},

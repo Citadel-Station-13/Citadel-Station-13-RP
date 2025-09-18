@@ -83,7 +83,7 @@
 
 	genders = list(MALE, FEMALE, NEUTER, PLURAL)
 
-	unarmed_types = list(/datum/unarmed_attack/slime_glomp)
+	unarmed_types = list(/datum/melee_attack/unarmed/slime_glomp)
 
 	has_organ = list(
 		O_BRAIN    = /obj/item/organ/internal/brain/slime,

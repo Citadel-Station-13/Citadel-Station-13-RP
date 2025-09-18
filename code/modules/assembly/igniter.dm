@@ -12,8 +12,8 @@
 	if(!..())
 		return FALSE
 
-	if(holder && istype(holder.loc,/obj/item/grenade/chem_grenade))
-		var/obj/item/grenade/chem_grenade/grenade = holder.loc
+	if(holder && istype(holder.loc,/obj/item/grenade/simple/chemical))
+		var/obj/item/grenade/simple/chemical/grenade = holder.loc
 		grenade.detonate()
 	else
 		var/turf/location = get_turf(loc)
@@ -28,16 +28,12 @@
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(3, 1, src)
 		s.start()
-
 	return TRUE
 
-
 /obj/item/assembly/igniter/attack_self(mob/user, datum/event_args/actor/actor)
-	. = ..()
-	if(.)
-		return
 	activate()
 	add_fingerprint(user)
+	return TRUE
 
 /obj/item/assembly/igniter/is_hot()
 	return TRUE

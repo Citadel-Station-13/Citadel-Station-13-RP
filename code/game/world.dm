@@ -121,7 +121,6 @@ GLOBAL_LIST(topic_status_cache)
 	#ifdef UNIT_TESTS
 	HandleTestRun()
 	#endif
-
 	if(config_legacy.ToRban)
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(ToRban_autoupdate)), 5 MINUTES)
 
@@ -251,9 +250,17 @@ GLOBAL_LIST(topic_status_cache)
 	sleep(0) //yes, 0, this'll let Reboot finish and prevent byond memes
 	qdel(src) //shut it down
 
+/**
+ * byond reboot proc
+ *
+ * @params
+ * * reason - this will be non-0 if initiated via byond admin tooling. we will always block this if a 'usr' exists and we are not OOM'd,
+ *            as we want to force admin verb usage
+ * * fast_track - skip normal shutdown processes, immediately reboot. data will be lost.
+ */
 /world/Reboot(reason = 0, fast_track = FALSE)
 	if (reason || fast_track) //special reboot, do none of the normal stuff
-		if (usr && Master && GLOB) // why && Master / GLOB? if OOM, MC gets erased :D
+		if (reason && usr && Master && GLOB) // why && Master / GLOB? if OOM, MC gets erased :D
 			message_admins("Blocked reboot request from [key_name_admin(usr)]. Please use the Reboot World verb.")
 			return // no thank you
 			// log_admin("[key_name(usr)] Has requested an immediate world restart via client side debugging tools")
@@ -310,7 +317,7 @@ GLOBAL_LIST(topic_status_cache)
 		call_ext(debug_server, "auxtools_shutdown")()
 	. = ..()
 
-/hook/startup/proc/loadMode()
+/legacy_hook/startup/proc/loadMode()
 	world.load_mode()
 	return 1
 
@@ -330,7 +337,7 @@ GLOBAL_LIST(topic_status_cache)
 	fdel(F)
 	F << the_mode
 
-/hook/startup/proc/loadMods()
+/legacy_hook/startup/proc/loadMods()
 	world.load_mods()
 	world.load_mentors() // no need to write another hook.
 	return 1

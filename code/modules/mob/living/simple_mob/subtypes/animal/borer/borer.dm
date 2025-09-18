@@ -32,7 +32,7 @@
 
 	status_flags = STATUS_CAN_PUSH
 	pass_flags = ATOM_PASS_TABLE
-	movement_cooldown = 5
+	movement_base_speed = 10 / 5
 
 	universal_understand = TRUE
 	can_be_antagged = TRUE
@@ -107,7 +107,7 @@
 /mob/living/simple_mob/animal/borer/statpanel_data(client/C)
 	. = ..()
 	if(C.statpanel_tab("Status"))
-		STATPANEL_DATA_ENTRY("Chemicals", "[chemicals]")
+		INJECT_STATPANEL_DATA_ENTRY(., "Chemicals", "[chemicals]")
 
 /mob/living/simple_mob/animal/borer/proc/detatch()
 	if(!host || !controlling)

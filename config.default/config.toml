@@ -1,19 +1,30 @@
-[[backend.logging.toggles]]
-	access = true
-	admin = true
-	adminchat = true
-	adminwarn = true
-	attack = true
-	debug = true
-	emote = true
-	game = true
-	ooc = true
-	pda = true
-	runtime = true
-	say = true
-	topic = true
-	vote = true
-	whisper = true
+[backend]
 
-[[backend.repository]]
-	persistence = true
+[backend.logging]
+
+[backend.logging.toggles]
+access = true
+admin = true
+adminchat = true
+adminwarn = true
+attack = true
+debug = true
+emote = true
+game = true
+ooc = true
+pda = true
+runtime = true
+say = true
+topic = true
+vote = true
+whisper = true
+
+[backend.repository]
+persistence = true
+
+[game]
+
+[game.movement]
+# Speed players are slowed down to if they are above this when they are walking.
+# - This is in tiles per second.
+walk_speed = 2

@@ -715,7 +715,7 @@
 			activate_pin(3)
 			return
 		src.assembly.visible_message(SPAN_DANGER("[assembly] starts to drill [target]!"), null, SPAN_WARNING("You hear a drill."))
-		drill_delay = isturf(target)? digspeed : isliving(target) ? issimple(target) ? 2 SECONDS : 3 SECONDS : 4 SECONDS
+		drill_delay = isturf(target)? digspeed : isliving(target) ? issimplemob(target) ? 2 SECONDS : 3 SECONDS : 4 SECONDS
 		busy = TRUE
 		targetlock = target
 		usedx = assembly.loc.x
@@ -738,7 +738,7 @@
 			var/mob/living/carbon/human/S = target
 			S.apply_damage(drill_force, DAMAGE_TYPE_BRUTE)
 			return
-		else if(issimple(target))
+		else if(issimplemob(target))
 			var/mob/living/simple_mob/S = target
 			if(S.stat == DEAD)
 				if(S.meat_amount > 0)
@@ -961,7 +961,7 @@
 
 		if(!T)
 			return
-		installed_gun.start_firing_cycle_async(assembly, get_centered_entity_tile_angle(assembly, T))
+		installed_gun.start_firing_cycle_async(get_atom_before_turf(assembly), get_centered_entity_tile_angle(get_atom_before_turf(assembly), T))
 
 /obj/item/integrated_circuit/manipulation/grenade
 	name = "grenade primer"
@@ -978,7 +978,7 @@
 	activators = list("prime grenade" = IC_PINTYPE_PULSE_IN)
 	spawn_flags = IC_SPAWN_RESEARCH
 	origin_tech = list(TECH_ENGINEERING = 3, TECH_DATA = 3, TECH_COMBAT = 4)
-	var/obj/item/grenade/attached_grenade
+	var/obj/item/grenade/simple/attached_grenade
 	var/pre_attached_grenade_type
 
 /obj/item/integrated_circuit/manipulation/grenade/Initialize(mapload)
@@ -988,17 +988,15 @@
 		attach_grenade(grenade)
 
 /obj/item/integrated_circuit/manipulation/grenade/Destroy()
-	if(attached_grenade && !attached_grenade.active)
-		attached_grenade.dropInto(loc)
-	detach_grenade()
-	. =..()
+	QDEL_NULL(attached_grenade)
+	return ..()
 
 /obj/item/integrated_circuit/manipulation/grenade/proc/ask_for_input(mob/living/user, obj/item/I,  a_intent)
 	if(!isobj(I))
 		return FALSE
 	attackby_react(I, user, a_intent)
 
-/obj/item/integrated_circuit/manipulation/grenade/attackby_react(var/obj/item/grenade/G, var/mob/user)
+/obj/item/integrated_circuit/manipulation/grenade/attackby_react(var/obj/item/grenade/simple/G, var/mob/user)
 	if(istype(G))
 		. = CLICKCHAIN_DO_NOT_PROPAGATE
 		if(attached_grenade)
@@ -1025,10 +1023,10 @@
 		return ..()
 
 /obj/item/integrated_circuit/manipulation/grenade/do_work()
-	if(attached_grenade && !attached_grenade.active)
+	if(attached_grenade && !attached_grenade.activated)
 		var/datum/integrated_io/detonation_time = inputs[1]
 		if(isnum(detonation_time.data) && detonation_time.data > 0)
-			attached_grenade.det_time = between(1, detonation_time.data, 12) SECONDS
+			attached_grenade.activation_detonate_delay = between(1, detonation_time.data, 12) SECONDS
 		attached_grenade.activate()
 		var/atom/holder = loc
 		log_and_message_admins("activated a grenade assembly.  Last touches: Assembly: [holder.fingerprintslast] Circuit: [fingerprintslast] Grenade: [attached_grenade.fingerprintslast]")

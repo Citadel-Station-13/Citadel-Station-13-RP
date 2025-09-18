@@ -36,15 +36,6 @@
 			L.visible_message("<span class='warning'>\The [L] has grabbed [src] passively!</span>")
 			L.do_attack_animation(src)
 
-		if(INTENT_HARM)
-			var/armor = run_armor_check(def_zone = null, attack_flag = "melee")
-			apply_damage(damage = harm_intent_damage, damagetype = DAMAGE_TYPE_BURN, def_zone = null, blocked = armor, blocked = resistance, used_weapon = null, sharp = FALSE, edge = FALSE)
-			L.visible_message("<span class='warning'>\The [L] [response_harm] \the [src]!</span>")
-			L.do_attack_animation(src)
-
-	return
-
-
 // When somoene clicks us with an item in hand
 /mob/living/simple_mob/attackby(var/obj/item/O, var/mob/user)
 	if(istype(O, /obj/item/stack/medical))
@@ -68,24 +59,6 @@
 
 	return ..()
 
-
-// Handles the actual harming by a melee weapon.
-/mob/living/simple_mob/hit_with_weapon(obj/item/O, mob/living/user, var/effective_force, var/hit_zone)
-	effective_force = O.damage_force
-
-	//Animals can't be stunned(?)
-	if(O.damage_type == DAMAGE_TYPE_HALLOSS)
-		effective_force = 0
-	if(supernatural && istype(O,/obj/item/nullrod))
-		effective_force *= 2
-		purge = 3
-	if(O.damage_force <= resistance)
-		to_chat(user,"<span class='danger'>This weapon is ineffective, it does no damage.</span>")
-		return 2 //???
-
-	. = ..()
-
-
 // Exploding.
 /mob/living/simple_mob/legacy_ex_act(severity)
 	if(!has_status_effect(/datum/status_effect/sight/blindness))
@@ -100,7 +73,7 @@
 		if (3.0)
 			bombdam = 30
 
-	apply_damage(damage = bombdam, damagetype = DAMAGE_TYPE_BRUTE, def_zone = null, blocked = armor, blocked = resistance, used_weapon = null, sharp = FALSE, edge = FALSE)
+	apply_damage(damage = bombdam, damagetype = DAMAGE_TYPE_BRUTE, def_zone = null, blocked = armor, used_weapon = null, sharp = FALSE, edge = FALSE)
 
 	if(bombdam > maxHealth)
 		gib()
@@ -174,14 +147,14 @@
 
 // Armor
 /mob/living/simple_mob/legacy_mob_armor(def_zone, type)
-	var/armorval = fetch_armor().raw(type) * 100
+	var/armorval = fetch_armor().get_mitigation(type) * 100
 	if(!armorval)
 		return 0
 	else
 		return armorval
 
 /mob/living/simple_mob/legacy_mob_soak(def_zone, attack_flag)
-	var/armorval = fetch_armor().soak(attack_flag) * 100
+	var/armorval = fetch_armor().get_soak(attack_flag) * 100
 	if(!armorval)
 		return 0
 	else

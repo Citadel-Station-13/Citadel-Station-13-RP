@@ -73,27 +73,6 @@
 /datum/inventory/proc/invalidate_cache()
 	cache = list()
 
-//* Queries *//
-
-/**
- * returns list() of items with body_cover_flags
- */
-/datum/inventory/proc/query_body_cover_items(body_cover_flags)
-	if(body_cover_flags == NONE)
-		return list()
-	. = list()
-	for(var/obj/item/I as anything in owner.get_equipped_items())
-		if(I.body_cover_flags & body_cover_flags)
-			. += I
-
-/**
- * gets all body_cover_flag's covered by clothing
- */
-/datum/inventory/proc/query_body_cover()
-	. = NONE
-	for(var/obj/item/I as anything in owner.get_equipped_items())
-		. |= I.body_cover_flags
-
 //* Slots *//
 
 /**

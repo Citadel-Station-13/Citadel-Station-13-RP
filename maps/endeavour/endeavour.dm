@@ -27,6 +27,9 @@
 		/datum/map/sector/miaphus,
 		/datum/map/sector/roguemining_192/one,
 		/datum/map/sector/sky_planet,
+		/datum/map/sector/solars_station,
+		/datum/map/sector/ice_comet,
+		/datum/map/sector/osiris_field,
 	)
 
 	// todo: remove after dev is done
@@ -64,7 +67,7 @@
 	company_short	= "NT"
 	starsys_name	= "Lythios-43"
 
-	shuttle_docked_message = "This is the %dock_name% calling to the NSV Endeavour. The scheduled NCS Herrera II shuttle flight has docked with the NSV Endeavour. Departing crew should board the shuttle within %ETD%."
+	shuttle_docked_message = "This is the %dock_name% calling to the NSV Endeavour. The scheduled NTV Hermes shuttle flight has docked with the NSV Endeavour. Departing crew should board the shuttle within %ETD%."
 	shuttle_leaving_dock = "The transfer shuttle has left the ship. Estimate %ETA% until the shuttle arrives at the %dock_name%."
 	shuttle_called_message = "This is the %dock_name% calling to the NSV Endeavour. A scheduled crew transfer to the %dock_name% is commencing. Those departing should proceed to the shuttle bay within %ETA%."
 	shuttle_recall_message = "The scheduled crew transfer has been cancelled."

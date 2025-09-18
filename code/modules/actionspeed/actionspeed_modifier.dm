@@ -45,7 +45,7 @@ can next move
 	if(!id)
 		id = "[type]" //We turn the path into a string.
 
-GLOBAL_LIST_EMPTY(actionspeed_modification_cache)
+GLOBAL_LIST_EMPTY(actionspeed_modifiers_cache)
 
 /// Grabs a STATIC MODIFIER datum from cache. YOU MUST NEVER EDIT THESE DATUMS, OR IT WILL AFFECT ANYTHING ELSE USING IT TOO!
 /proc/get_cached_actionspeed_modifier(modtype)
@@ -54,9 +54,9 @@ GLOBAL_LIST_EMPTY(actionspeed_modification_cache)
 	var/datum/actionspeed_modifier/actionspeed_mod = modtype
 	if(initial(actionspeed_mod.variable))
 		CRASH("[modtype] is a variable modifier, and can never be cached.")
-	actionspeed_mod = GLOB.actionspeed_modification_cache[modtype]
+	actionspeed_mod = GLOB.actionspeed_modifiers_cache[modtype]
 	if(!actionspeed_mod)
-		actionspeed_mod = GLOB.actionspeed_modification_cache[modtype] = new modtype
+		actionspeed_mod = GLOB.actionspeed_modifiers_cache[modtype] = new modtype
 	return actionspeed_mod
 
 ///Add a action speed modifier to a mob. If a variable subtype is passed in as the first argument, it will make a new datum. If ID conflicts, it will overwrite the old ID.
@@ -66,14 +66,14 @@ GLOBAL_LIST_EMPTY(actionspeed_modification_cache)
 			type_or_datum = get_cached_actionspeed_modifier(type_or_datum)
 		else
 			type_or_datum = new type_or_datum
-	var/datum/actionspeed_modifier/existing = LAZYACCESS(actionspeed_modification, type_or_datum.id)
+	var/datum/actionspeed_modifier/existing = LAZYACCESS(actionspeed_modifiers, type_or_datum.id)
 	if(existing)
 		if(existing == type_or_datum)		//same thing don't need to touch
 			return TRUE
 		remove_actionspeed_modifier(existing, FALSE)
-	if(length(actionspeed_modification))
-		BINARY_INSERT(type_or_datum.id, actionspeed_modification, /datum/actionspeed_modifier, type_or_datum, priority, COMPARE_VALUE)
-	LAZYSET(actionspeed_modification, type_or_datum.id, type_or_datum)
+	if(length(actionspeed_modifiers))
+		BINARY_INSERT(type_or_datum.id, actionspeed_modifiers, /datum/actionspeed_modifier, type_or_datum, priority, COMPARE_VALUE)
+	LAZYSET(actionspeed_modifiers, type_or_datum.id, type_or_datum)
 	if(update)
 		update_actionspeed()
 	return TRUE
@@ -87,9 +87,9 @@ GLOBAL_LIST_EMPTY(actionspeed_modification_cache)
 		key = type_id_datum.id
 	else								//assume it's an id
 		key = type_id_datum
-	if(!LAZYACCESS(actionspeed_modification, key))
+	if(!LAZYACCESS(actionspeed_modifiers, key))
 		return FALSE
-	LAZYREMOVE(actionspeed_modification, key)
+	LAZYREMOVE(actionspeed_modifiers, key)
 	if(update)
 		update_actionspeed(FALSE)
 	return TRUE
@@ -107,13 +107,13 @@ GLOBAL_LIST_EMPTY(actionspeed_modification_cache)
 	var/inject = FALSE
 	var/datum/actionspeed_modifier/final
 	if(istext(type_id_datum))
-		final = LAZYACCESS(actionspeed_modification, type_id_datum)
+		final = LAZYACCESS(actionspeed_modifiers, type_id_datum)
 		if(!final)
 			CRASH("Couldn't find existing modification when provided a text ID.")
 	else if(ispath(type_id_datum))
 		if(!initial(type_id_datum.variable))
 			CRASH("Not a variable modifier")
-		final = LAZYACCESS(actionspeed_modification, initial(type_id_datum.id) || "[type_id_datum]")
+		final = LAZYACCESS(actionspeed_modifiers, initial(type_id_datum.id) || "[type_id_datum]")
 		if(!final)
 			final = new type_id_datum
 			inject = TRUE
@@ -122,7 +122,7 @@ GLOBAL_LIST_EMPTY(actionspeed_modification_cache)
 		if(!initial(type_id_datum.variable))
 			CRASH("Not a variable modifier")
 		final = type_id_datum
-		if(!LAZYACCESS(actionspeed_modification, final.id))
+		if(!LAZYACCESS(actionspeed_modifiers, final.id))
 			inject = TRUE
 			modified = TRUE
 	if(!isnull(multiplicative_slowdown))
@@ -143,7 +143,7 @@ GLOBAL_LIST_EMPTY(actionspeed_modification_cache)
 		key = datum_type_id
 	else
 		key = datum_type_id.id
-	return LAZYACCESS(actionspeed_modification, key)
+	return LAZYACCESS(actionspeed_modifiers, key)
 
 /// Go through the list of actionspeed modifiers and calculate a final actionspeed. ANY ADD/REMOVE DONE IN UPDATE_actionspeed MUST HAVE THE UPDATE ARGUMENT SET AS FALSE!
 /mob/proc/update_actionspeed()
@@ -152,7 +152,7 @@ GLOBAL_LIST_EMPTY(actionspeed_modification_cache)
 	. = 0
 	var/list/conflict_tracker = list()
 	for(var/key in get_actionspeed_modifiers())
-		var/datum/actionspeed_modifier/M = actionspeed_modification[key]
+		var/datum/actionspeed_modifier/M = actionspeed_modifiers[key]
 		var/conflict = M.conflicts_with
 		var/amt = M.multiplicative_slowdown
 		if(conflict)
@@ -181,15 +181,15 @@ GLOBAL_LIST_EMPTY(actionspeed_modification_cache)
 
 /// Get the action speed modifier datums on the mob
 /mob/proc/get_actionspeed_modifiers()
-	for(var/id in actionspeed_modification)
-		if(id in actionspeed_mod_immunities)
+	for(var/id in actionspeed_modifiers)
+		if(id in actionspeed_modifier_immunities)
 			continue
-		. += actionspeed_modification[id]
+		. += actionspeed_modifiers[id]
 
 /// Get the action speed modifier datum ids on the mob
 /mob/proc/get_actionspeed_modifier_ids()
-	. = LAZYCOPY(actionspeed_modification)
-	for(var/id in actionspeed_mod_immunities)
+	. = LAZYCOPY(actionspeed_modifiers)
+	for(var/id in actionspeed_modifier_immunities)
 		. -= id
 
 /// Checks if a action speed modifier is valid and not missing any data

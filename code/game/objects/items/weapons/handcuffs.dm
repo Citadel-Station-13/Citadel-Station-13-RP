@@ -23,7 +23,7 @@
 	var/cuff_type = "handcuffs"
 	var/use_time = 30
 
-/obj/item/handcuffs/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/handcuffs/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/carbon/C = target
 	if(!istype(C))
 		return
@@ -216,10 +216,15 @@ var/last_chew = 0
 	worn_state = "disruptorcuff"
 	desc = "These cutting edge handcuffs were originally designed by the PMD. Commonly deployed to restrain anomalous lifeforms, disruptor cuffs employ a form of acausal logic engine disruption, in tandem with morphogenic resonance, to neutralize the abilities of technological and biological threats."
 
-/obj/item/handcuffs/disruptor/equipped(var/mob/living/user,var/slot)
+/obj/item/handcuffs/disruptor/equipped(var/mob/living/user, var/slot)
 	. = ..()
 	if(slot == SLOT_ID_HANDCUFFED)
 		ADD_TRAIT(user, TRAIT_DISRUPTED, CLOTHING_TRAIT)
+
+/obj/item/handcuffs/disruptor/unequipped(mob/user, slot, flags)
+	. = ..()
+	if(slot == SLOT_ID_HANDCUFFED)
+		REMOVE_TRAIT(user, TRAIT_DISRUPTED, CLOTHING_TRAIT)
 
 //Legcuffs. Not /really/ handcuffs, but its close enough.
 /obj/item/handcuffs/legcuffs
@@ -236,7 +241,7 @@ var/last_chew = 0
 	elastic = 0
 	cuff_sound = 'sound/weapons/handcuffs.ogg' //This shold work for now.
 
-/obj/item/handcuffs/legcuffs/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/handcuffs/legcuffs/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/carbon/C = target
 	if(!istype(C))
 		return

@@ -801,3 +801,20 @@
 	desc = "An ID issued to the non-noble commoners of the New Kingdom of Adhomai. In some regions, adults must legally carry it on their person at all times."
 	icon_state = "nka"
 	job_access_type = null
+
+/obj/item/card/id/external/id_sdf
+	name = "haddi's folley SDF ID"
+	desc = "An ID issued to members of the system defence force of haddi's folley."
+	icon_state = "sdf"
+	job_access_type = null
+	access = list(155)
+
+/obj/item/card/id/external/id_occulum
+	name = "Occulum Operator ID"
+	desc = "An ID issued to operators of Occulum. Radio host, reporter, journalist, contacts, technician, spies... All get one. It also counts as a Press document, valid in this system."
+	icon_state = "occulum"
+
+/obj/item/card/id/external/id_slavager
+	name = "Guardian Salvaging Inc ID"
+	desc = "An ID issued to workers of the Guardian Salvaging Inc. It looks generic and cheap."
+	icon_state = "generic"

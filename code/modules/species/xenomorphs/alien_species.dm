@@ -11,7 +11,7 @@
 		LANGUAGE_ID_XENOMORPH_HIVEMIND
 	)
 	assisted_langs = list()
-	unarmed_types = list(/datum/unarmed_attack/claws/strong/xeno, /datum/unarmed_attack/bite/strong/xeno)
+	unarmed_types = list(/datum/melee_attack/unarmed/claws/strong/xeno, /datum/melee_attack/unarmed/bite/strong/xeno)
 	hud_type = /datum/hud_data/alien
 	//rarity_value = 3
 
@@ -177,7 +177,6 @@
 	name = SPECIES_XENO_DRONE
 	caste_name = "drone"
 	weeds_plasma_rate = 15
-	slowdown = 1
 
 	sprite_accessory_defaults = list(
 		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/xenomorph/drone,
@@ -197,6 +196,8 @@
 		O_STOMACH =		/obj/item/organ/internal/stomach/xeno,
 		O_INTESTINE =	/obj/item/organ/internal/intestine/xeno
 		)
+
+	movement_base_speed = 5.5
 
 	inherent_verbs = list(
 		/mob/living/proc/ventcrawl,
@@ -218,7 +219,6 @@
 	name = SPECIES_XENO_HUNTER
 	weeds_plasma_rate = 5
 	caste_name = "hunter"
-	slowdown = -2
 	total_health = 150
 
 	sprite_accessory_defaults = list(
@@ -227,6 +227,8 @@
 
 	icobase = 'icons/mob/species/xenomorph/hunter.dmi'
 	deform =  'icons/mob/species/xenomorph/hunter.dmi'
+
+	movement_base_speed = 10
 
 	has_organ = list(
 		O_HEART =    /obj/item/organ/internal/heart,
@@ -252,12 +254,13 @@
 	name = SPECIES_XENO_SENTINEL
 	weeds_plasma_rate = 10
 	caste_name = "sentinel"
-	slowdown = 0
 	total_health = 200
 
 	sprite_accessory_defaults = list(
 		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/xenomorph/sentinel,
 	)
+
+	movement_base_speed = 6.66
 
 	icobase = 'icons/mob/species/xenomorph/sentinel.dmi'
 	deform =  'icons/mob/species/xenomorph/sentinel.dmi'
@@ -290,16 +293,17 @@
 	weeds_heal_rate = 5
 	weeds_plasma_rate = 20
 	caste_name = "queen"
-	slowdown = 4
 
 	sprite_accessory_defaults = list(
 		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/xenomorph/queen,
 	)
 
+	movement_base_speed = 3
+
 	icobase = 'icons/mob/species/xenomorph/queen.dmi'
 	deform =  'icons/mob/species/xenomorph/queen.dmi'
 
-	unarmed_types = list(/datum/unarmed_attack/claws/strong/xeno/queen, /datum/unarmed_attack/bite/strong/xeno)
+	unarmed_types = list(/datum/melee_attack/unarmed/claws/strong/xeno/queen, /datum/melee_attack/unarmed/bite/strong/xeno)
 
 	has_organ = list(
 		O_HEART =    /obj/item/organ/internal/heart,

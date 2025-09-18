@@ -114,6 +114,15 @@
 	/// * This var should never be changed from a list to a normal value or vice versa at runtime,
 	///   as we use this to detect which material update proc to call!
 	var/list/material_parts = MATERIAL_DEFAULT_DISABLED
+	/// part constraints - lets us track what we need to be made of
+	/// this is either a lazy key-value list of material keys to floats (representing constraint bitfields)
+	/// or a single float (representing constraint bitfield).
+	/// or null, if we don't care about constraints
+	/// ! This is what determines what constraints are used by the material parts system.
+	/// * Use null if something doesn't use material parts system, or if something uses the abstraction API to implement material parts themselves.
+	/// * This var should never be changed from a list to a normal value or vice versa at runtime, again, like material_parts
+	/// * as it is closely linked to material_parts
+	var/list/material_constraints = null
 	/// material costs - lets us track the costs of what we're made of.
 	/// this is either a lazy key-value list of material keys to cost in cm3,
 	/// or a single number.
@@ -205,8 +214,6 @@
 	var/pry = 0			//Used in attackby() to open doors
 	//! LEGACY: DO NOT USE
 	var/in_use = 0 // If we have a user using us, this will be set on. We will check if the user has stopped using us, and thus stop updating and LAGGING EVERYTHING!
-	// todo: /obj/item level, /obj/projectile level, how to deal with armor?
-	var/armor_penetration = 0
 	var/show_messages
 	var/preserve_item = 0 //whether this object is preserved when its owner goes into cryo-storage, gateway, etc
 	var/can_speak = 0 //For MMIs and admin trickery. If an object has a brainmob in its contents, set this to 1 to allow it to speak.
@@ -234,6 +241,13 @@
 			// preprocess
 			material_costs = SSmaterials.preprocess_kv_keys_to_ids(material_costs)
 			material_costs = typelist(NAMEOF(src, material_costs), material_costs)
+	// cache material constraints if it's not modified
+	if(islist(material_constraints))
+		if(has_typelist(material_constraints))
+			material_constraints = get_typelist(material_constraints)
+		else
+			material_constraints = typelist(NAMEOF(src, material_constraints), material_constraints)
+
 	// initialize material parts system
 	if(material_parts != MATERIAL_DEFAULT_DISABLED)
 		// process material parts only if it wasn't set already
@@ -331,7 +345,8 @@
 
 /obj/attack_ghost(mob/user)
 	nano_ui_interact(user)
-	..()
+	ui_interact(user)
+	. = ..()
 
 /mob/proc/unset_machine()
 	machine = null
@@ -403,21 +418,21 @@
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	return ..()
 
-/obj/on_attack_hand(datum/event_args/actor/clickchain/e_args)
+/obj/on_attack_hand(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
-	if(.)
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
-	if(!isnull(obj_cell_slot?.cell) && obj_cell_slot.remove_yank_offhand && e_args.performer.is_holding_inactive(src) && obj_cell_slot.interaction_active(e_args.performer))
-		e_args.performer.visible_action_feedback(
+	if(!isnull(obj_cell_slot?.cell) && obj_cell_slot.remove_yank_offhand && clickchain.performer.is_holding_inactive(src) && obj_cell_slot.interaction_active(clickchain.performer))
+		clickchain.performer.visible_action_feedback(
 			target = src,
 			hard_range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
-			visible_hard = SPAN_NOTICE("[e_args.performer] removes the cell from [src]."),
+			visible_hard = SPAN_NOTICE("[clickchain.performer] removes the cell from [src]."),
 			audible_hard = SPAN_NOTICE("You hear fasteners falling out and something being removed."),
 			visible_self = SPAN_NOTICE("You remove the cell from [src]."),
 		)
-		log_construction(e_args, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
-		e_args.performer.put_in_hands_or_drop(obj_cell_slot.remove_cell(e_args.performer))
-		return TRUE
+		log_construction(clickchain, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
+		clickchain.performer.put_in_hands_or_drop(obj_cell_slot.remove_cell(clickchain.performer))
+		return CLICKCHAIN_DID_SOMETHING
 
 //* Cells / Inducers *//
 
@@ -437,6 +452,12 @@
 		things_to_induce += obj_cell_slot.cell
 
 //* Climbing *//
+
+/obj/alt_clicked_on(mob/user, location, control, list/params)
+	if(obj_storage?.allow_open_via_alt_click && user.Reachability(src))
+		obj_storage.auto_handle_interacted_open(new /datum/event_args/actor(user))
+		return TRUE
+	return ..()
 
 /obj/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
 	if(drag_drop_climb_interaction(user, dropping))
@@ -697,18 +718,18 @@
 
 //* Context *//
 
-/obj/context_query(datum/event_args/actor/e_args)
+/obj/context_menu_query(datum/event_args/actor/e_args)
 	. = ..()
 	if(!isnull(obj_cell_slot?.cell) && obj_cell_slot.remove_yank_context && obj_cell_slot.interaction_active(e_args.performer))
 		var/image/rendered = image(obj_cell_slot.cell)
-		.["obj_cell_slot"] = atom_context_tuple("remove cell", rendered, mobility = MOBILITY_CAN_USE, defaultable = TRUE)
+		.["obj_cell_slot"] = create_context_menu_tuple("remove cell", rendered, mobility = MOBILITY_CAN_USE, defaultable = TRUE)
 	if(obj_storage?.allow_open_via_context_click)
 		var/image/rendered = image(src)
-		.["obj_storage"] = atom_context_tuple("open storage", rendered, mobility = MOBILITY_CAN_STORAGE, defaultable = TRUE)
+		.["obj_storage"] = create_context_menu_tuple("open storage", rendered, mobility = MOBILITY_CAN_STORAGE, defaultable = TRUE)
 	if(obj_rotation_flags & OBJ_ROTATION_ENABLED)
 		if(obj_rotation_flags & OBJ_ROTATION_BIDIRECTIONAL)
 			var/image/rendered = image(src) // todo: sprite
-			.["rotate_cw"] = atom_context_tuple(
+			.["rotate_cw"] = create_context_menu_tuple(
 				"Rotate Clockwise",
 				rendered,
 				1,
@@ -716,7 +737,7 @@
 				!!(obj_rotation_flags & OBJ_ROTATION_DEFAULTING),
 			)
 			rendered = image(src) // todo: sprite
-			.["rotate_ccw"] = atom_context_tuple(
+			.["rotate_ccw"] = create_context_menu_tuple(
 				"Rotate Counterclockwise",
 				rendered,
 				1,
@@ -725,7 +746,7 @@
 			)
 		else
 			var/image/rendered = image(src) // todo: sprite
-			.["rotate_[obj_rotation_flags & OBJ_ROTATION_CCW? "ccw" : "cw"]"] = atom_context_tuple(
+			.["rotate_[obj_rotation_flags & OBJ_ROTATION_CCW? "ccw" : "cw"]"] = create_context_menu_tuple(
 				"Rotate [obj_rotation_flags & OBJ_ROTATION_CCW? "Counterclockwise" : "Clockwise"]",
 				rendered,
 				1,
@@ -733,7 +754,7 @@
 				!!(obj_rotation_flags & OBJ_ROTATION_DEFAULTING),
 			)
 
-/obj/context_act(datum/event_args/actor/e_args, key)
+/obj/context_menu_act(datum/event_args/actor/e_args, key)
 	switch(key)
 		if("obj_cell_slot")
 			var/reachability = e_args.performer.Reachability(src)

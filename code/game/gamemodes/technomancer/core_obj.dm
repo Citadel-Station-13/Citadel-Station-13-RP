@@ -168,10 +168,10 @@
 	([round(core.energy_delta)]/s)"
 	var/instability_delta = instability - last_instability
 	var/instability_status = "[src.instability] ([round(instability_delta, 0.1)]/s)"
-	STATPANEL_DATA_ENTRY("Core charge", charge_status)
-	STATPANEL_DATA_ENTRY("User instability", instability_status)
+	INJECT_STATPANEL_DATA_ENTRY(., "Core charge", charge_status)
+	INJECT_STATPANEL_DATA_ENTRY(., "User instability", instability_status)
 	for(var/obj/spellbutton/button in core.spells)
-		STATPANEL_DATA_CLICK(button.name, "Trigger", "\ref[button]")
+		INJECT_STATPANEL_DATA_CLICK(., button.name, "Trigger", "\ref[button]")
 
 /obj/item/technomancer_core/proc/add_spell(var/path, var/new_name, var/ability_icon_state)
 	if(!path || !ispath(path))

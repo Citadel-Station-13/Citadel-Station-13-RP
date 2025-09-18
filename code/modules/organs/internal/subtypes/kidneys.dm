@@ -41,8 +41,7 @@
 	if (. >= 2)
 		if(prob(1))
 			owner.custom_pain("You feel extremely tired, like you can't move!",1)
-			owner.m_intent = "walk"
-			owner.hud_used.move_intent.icon_state = "walking"
+			owner.set_move_intent(MOVE_INTENT_WALK)
 
 /obj/item/organ/internal/kidneys/grey
 	icon_state = "kidneys_grey"

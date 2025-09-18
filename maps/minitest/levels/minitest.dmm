@@ -3111,7 +3111,6 @@
 /turf/simulated/shuttle/plating/carry,
 /area/shuttle/multidemo)
 "tm" = (
-/obj/map_helper/paint_stripe/cyanblue,
 /turf/space,
 /area/space)
 "ts" = (
@@ -12349,7 +12348,7 @@ aa
 aa
 aa
 aa
-tm
+aa
 aa
 aa
 aa

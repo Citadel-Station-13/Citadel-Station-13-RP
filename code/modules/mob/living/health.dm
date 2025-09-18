@@ -27,7 +27,7 @@
 		return
 	GLOB.cultnet.updateVisibility(src, FALSE)
 
-/mob/living/revive(force, full_heal)
+/mob/living/revive(force, full_heal, restore_nutrition = TRUE)
 	. = ..()
 	if(!.)
 		return
@@ -41,7 +41,7 @@
 	reload_fullscreen() // LEAVE THIS AT THE END UNTIL WE REWORK HUD RENDERING
 	//! END
 
-/mob/living/rejuvenate(fix_missing, reset_to_slot)
+/mob/living/rejuvenate(fix_missing, reset_to_slot, restore_nutrition = TRUE)
 	. = ..()
 	if(!.)
 		return
@@ -63,7 +63,8 @@
 	radiation = 0
 	// fix nutrition
 	// todo: species?
-	nutrition = 400
+	if(restore_nutrition)
+		nutrition = 400
 	// deal with temperature
 	set_bodytemperature(nominal_bodytemperature())
 	// extinguish fires

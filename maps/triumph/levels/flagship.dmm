@@ -997,7 +997,7 @@
 	},
 /area/centcom/security)
 "dd" = (
-/obj/machinery/r_n_d/circuit_imprinter,
+/obj/machinery/lathe/r_n_d/circuit_imprinter,
 /obj/item/reagent_containers/glass/beaker/sulphuric,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
@@ -2388,12 +2388,12 @@
 /obj/item/clothing/glasses/welding/superior,
 /obj/structure/table/steel_reinforced,
 /obj/item/clothing/glasses/welding/superior,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -3700,7 +3700,7 @@
 /turf/unsimulated/floor/steel,
 /area/space)
 "lE" = (
-/obj/machinery/r_n_d/circuit_imprinter,
+/obj/machinery/lathe/r_n_d/circuit_imprinter,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
@@ -8084,7 +8084,7 @@
 	},
 /area/centcom/medical)
 "yW" = (
-/obj/item/grenade/supermatter,
+/obj/item/grenade/simple/supermatter,
 /obj/structure/table/rack/steel,
 /obj/machinery/door/window/brigdoor{
 	req_access = list(109)
@@ -9711,13 +9711,6 @@
 	icon_state = "carpet"
 	},
 /area/centcom/command)
-"Et" = (
-/obj/spawner/window/low_wall/firelocks,
-/obj/spawner/window/low_wall/firelocks,
-/turf/unsimulated/floor{
-	name = "plating"
-	},
-/area/centcom/security)
 "Ev" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 10
@@ -10260,7 +10253,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/escape)
 "Gh" = (
-/obj/machinery/mecha_part_fabricator,
+/obj/machinery/lathe/mecha_part_fabricator,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "Gi" = (
@@ -10394,7 +10387,6 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
 	name = "Ship Hatch";
 	req_one_access = null
 	},
@@ -10883,7 +10875,6 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
 	name = "Ship Hatch";
 	req_one_access = null
 	},
@@ -11307,7 +11298,7 @@
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/escape)
 "Js" = (
-/obj/machinery/r_n_d/protolathe,
+/obj/machinery/lathe/r_n_d/protolathe,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "Jt" = (
@@ -14873,7 +14864,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "Us" = (
-/obj/machinery/mecha_part_fabricator/pros,
+/obj/machinery/lathe/mecha_part_fabricator/pros,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "Uu" = (
@@ -47229,7 +47220,7 @@ WK
 WK
 WK
 zm
-Et
+zm
 WK
 wp
 Xd

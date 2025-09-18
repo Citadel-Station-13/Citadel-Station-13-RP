@@ -20,37 +20,39 @@ DEFINE_BITFIELD(material_flags, list(
 //* /datum/prototype/material material_constraints
 //* /datum/prototype/design material_constraints list values
 
-// None yet
+
+
+#define MATERIAL_CONSTRAINT_NONE ~0 //all on. NEVER GIVE A MATERIAL THIS. THIS SHOULD BE ON material_constraints ONLY.
+#define MATERIAL_CONSTRAINT_RIGID (1<<0)//can be used for structure. walls, floors, etc
+#define MATERIAL_CONSTRAINT_TRANSPARENT (1<<1) //transparent: glass and stuff
+#define MATERIAL_CONSTRAINT_CONDUCTIVE (1<<2) //conducts electricity
 
 DEFINE_BITFIELD(material_constraints, list(
-	// none yet
+	BITFIELD(MATERIAL_CONSTRAINT_RIGID),
+	BITFIELD(MATERIAL_CONSTRAINT_TRANSPARENT),
+	BITFIELD(MATERIAL_CONSTRAINT_CONDUCTIVE),
 ))
 
 //* /datum/prototype/material_trait material_trait_flags
 
-/// used to attack
-#define MATERIAL_TRAIT_ATTACK (1<<0)
+/// hook melees
+#define MATERIAL_TRAIT_MELEE (1<<0)
 /// hook shieldcalls
+//  todo: not implemented; maybe rework?
 #define MATERIAL_TRAIT_SHIELD (1<<1)
 /// reqiures passive ticking
+//  todo: re-evaluate
 #define MATERIAL_TRAIT_TICKING (1<<2)
 /// has examine text
 #define MATERIAL_TRAIT_EXAMINE (1<<3)
 /// requires setup/teardown
+//  todo: not implemented; maybe rework?
 #define MATERIAL_TRAIT_REGISTRATION (1<<4)
 
 DEFINE_BITFIELD(material_trait_flags, list(
-	BITFIELD(MATERIAL_TRAIT_ATTACK),
+	BITFIELD(MATERIAL_TRAIT_MELEE),
 	BITFIELD(MATERIAL_TRAIT_SHIELD),
 	BITFIELD(MATERIAL_TRAIT_TICKING),
 	BITFIELD(MATERIAL_TRAIT_EXAMINE),
 	BITFIELD(MATERIAL_TRAIT_REGISTRATION),
 ))
-
-//! WARNING: CONSIDERED LEGACY CODE !//
-// Flags returned from material defense hooks
-// eventually we want to transition all of this to the atom shieldcall system.
-
-#define MATERIAL_DEFEND_FORCE_MISS (1<<0)
-#define MATERIAL_DEFEND_FULL_BLOCK (1<<1)
-#define MATERIAL_DEFEND_REFLECT (1<<2)

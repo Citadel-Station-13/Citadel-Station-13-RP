@@ -45,7 +45,7 @@
 		remove_item(drop_location())
 	wrapped = I
 	I.forceMove(src)
-	RegisterSignal(I, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_MOVED), PROC_REF(unwrap_hook))
+	RegisterSignals(I, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_MOVED), PROC_REF(unwrap_hook))
 
 /**
  * newloc false to not move
@@ -92,9 +92,9 @@
 		return clickchain_flags | I.afterattack(src, user, clickchain_flags, params)
 	return ..()
 
-/obj/item/gripper/melee_interaction_chain(atom/target, mob/user, clickchain_flags, list/params)
+/obj/item/gripper/melee_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	if(!isnull(wrapped))
-		return wrapped.melee_interaction_chain(target, user, clickchain_flags | CLICKCHAIN_DO_NOT_ATTACK, params)
+		return wrapped.melee_interaction_chain(clickchain, clickchain_flags | CLICKCHAIN_REDIRECTED)
 	return ..()
 
 /obj/item/gripper/verb/drop_item()

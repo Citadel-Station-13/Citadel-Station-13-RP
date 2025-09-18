@@ -7,7 +7,7 @@
 /turf/template_noop,
 /area/template_noop)
 "ac" = (
-/obj/item/grenade/chem_grenade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
 /turf/template_noop,
 /area/template_noop)
 "ad" = (
@@ -275,9 +275,9 @@
 /area/submap/Rockybase)
 "bb" = (
 /obj/structure/table/standard,
-/obj/item/grenade/chem_grenade/cleaner,
-/obj/item/grenade/chem_grenade/cleaner,
-/obj/item/grenade/chem_grenade/cleaner,
+/obj/item/grenade/simple/chemical/premade/cleaner,
+/obj/item/grenade/simple/chemical/premade/cleaner,
+/obj/item/grenade/simple/chemical/premade/cleaner,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -630,7 +630,7 @@
 /area/submap/Rockybase)
 "ci" = (
 /obj/structure/table/standard,
-/obj/item/grenade/spawnergrenade/manhacks,
+/obj/item/grenade/simple/spawner/manhacks,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "cj" = (
@@ -801,7 +801,7 @@
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "cN" = (
-/obj/machinery/mecha_part_fabricator,
+/obj/machinery/lathe/mecha_part_fabricator,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "cP" = (

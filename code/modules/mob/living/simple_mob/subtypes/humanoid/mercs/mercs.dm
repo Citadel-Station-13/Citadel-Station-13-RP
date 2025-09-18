@@ -55,7 +55,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/human)
 
 	iff_factions = MOB_IFF_FACTION_MERCENARY
-	movement_cooldown = 2
+	movement_base_speed = 10 / 2
 
 	status_flags = 0
 
@@ -78,7 +78,7 @@
 	say_list_type = /datum/say_list/merc
 
 	// Grenade special attack vars
-	var/grenade_type = /obj/item/grenade/concussion
+	var/grenade_type = /obj/item/grenade/simple/concussion
 	var/grenade_timer = 50
 	special_attack_cooldown = 45 SECONDS
 	special_attack_min_range = 2
@@ -110,11 +110,11 @@
 	set waitfor = FALSE
 	set_AI_busy(TRUE)
 
-	var/obj/item/grenade/G = new grenade_type(get_turf(src))
+	var/obj/item/grenade/simple/G = new grenade_type(get_turf(src))
 	if(istype(G))
 		G.throw_at_old(A, G.throw_range, G.throw_speed, src)
-		G.det_time = grenade_timer
-		G.activate(src)
+		G.activation_detonate_delay = grenade_timer
+		G.activate(new /datum/event_args/actor(src))
 		special_attack_charges = max(special_attack_charges-1, 0)
 
 	set_AI_busy(FALSE)
@@ -351,7 +351,7 @@
 	icon_living = "syndicatespace-melee"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/human/space)
 
-	movement_cooldown = 0
+	movement_base_speed = 6.66
 
 	armor_legacy_mob = list(melee = 60, bullet = 50, laser = 30, energy = 15, bomb = 35, bio = 100, rad = 100)	// Same armor as their voidsuit
 
@@ -377,7 +377,7 @@
 	icon_state = "syndicatespace-ranged"
 	icon_living = "syndicatespceace-ranged"
 
-	movement_cooldown = 0
+	movement_base_speed = 6.66
 
 	armor_legacy_mob = list(melee = 60, bullet = 50, laser = 30, energy = 15, bomb = 35, bio = 100, rad = 100)	// Same armor as their voidsuit. This should already have been here when polaris patched these guys in.
 
@@ -499,7 +499,7 @@
 
 /mob/living/simple_mob/humanoid/merc/ranged/space/suppressor // adminspawn only, and also Probably Going To Kill The Unprepared
 	name = "mercenary suppressor"
-	desc = "Geeze, weren't shotgun ops bad enough? At least when you fade these jerks you get a flashbang to the face."
+	desc = "Geeze, weren't shotgun ops bad enough? At least when you face these jerks you get a flashbang to the face."
 	icon_state = "syndi-ranged-space-sup"
 	icon_living = "syndi-ranged-space-sup"
 	armor_legacy_mob = list(melee = 80, bullet = 65, laser = 50, energy = 15, bomb = 80, bio = 100, rad = 100) // this is the merc rig's stats
@@ -513,7 +513,7 @@
 	loot_list = list() // oh, you killed him?
 	corpse = null // well, sorry, buddy, he doesn't drop shit
 	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/human/space/suppressor)
-// 	var/deathnade_path = /obj/item/grenade/flashbang/stingbang
+// 	var/deathnade_path = /obj/item/grenade/simple/flashbang/stingbang
 
 /* far too fun for the codebase at the moment
 /mob/living/simple_mob/humanoid/merc/ranged/space/suppressor/death()
@@ -528,14 +528,14 @@
 
 /mob/living/simple_mob/humanoid/merc/ranged/space/suppressor/elite // really reconsider why you're spawning this dude
 	name = "mercenary elite suppressor"
-	desc = "Geeze, weren't normal suppressors bad enough? At least if you fade this jerk, you'll have an awful time anyway."
+	desc = "Geeze, weren't normal suppressors bad enough? At least if you face this jerk, you'll have an awful time anyway."
 	icon_state = "syndi-ranged-space-sup-elite"
 	icon_living = "syndi-ranged-space-sup-elite"
 	armor_legacy_mob = list(melee = 80, bullet = 70, laser = 55, energy = 15, bomb = 80, bio = 100, rad = 100) // see code for military hardsuit
 	projectiletype = /obj/projectile/bullet/pistol/medium/ap/suppressor/turbo // fuck it, fast bullets
-	grenade_type = /obj/item/grenade/shooter/rubber // don't group up
+	grenade_type = /obj/item/grenade/simple/shooter/rubber // don't group up
 	grenade_timer = 30 // well, look what you've done, you've grouped up
-// 	deathnade_path = /obj/item/grenade/flashbang/stingbang/shredbang // REALLY don't group up
+// 	deathnade_path = /obj/item/grenade/simple/flashbang/stingbang/shredbang // REALLY don't group up
 
 // being Actual Professionals, they have better (read: player-level) blocking chances
 /mob/living/simple_mob/humanoid/merc/ranged/space/suppressor/attackby(var/obj/item/O, var/mob/user)
@@ -608,7 +608,7 @@
 	icon_dead = "voxpirate_dead"
 
 	iff_factions = MOB_IFF_FACTION_PIRATE
-	movement_cooldown = 4
+	movement_base_speed = 10 / 4
 
 	status_flags = 0
 

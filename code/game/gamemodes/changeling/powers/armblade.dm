@@ -108,8 +108,6 @@
 					for(var/obj/item/O in organ.implants)
 						if(O == src)
 							organ.implants -= src
-			host.pinned -= src
-			host.embedded -= src
 		qdel(src)
 
 /obj/item/melee/changeling/arm_blade
@@ -117,7 +115,7 @@
 	desc = "A grotesque blade made out of bone and flesh that cleaves through people as a hot knife through butter."
 	icon_state = "arm_blade"
 	damage_force = 40
-	armor_penetration = 15
+	damage_tier = 4
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	pry = 1
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
@@ -131,7 +129,7 @@
 /obj/item/melee/changeling/arm_blade/greater
 	name = "arm greatblade"
 	desc = "A grotesque blade made out of bone and flesh that cleaves through people and armor as a hot knife through butter."
-	armor_penetration = 30
+	damage_tier = 4.5
 
 	passive_parry = /datum/passive_parry/melee{
 		parry_chance_default = 70;
@@ -143,6 +141,7 @@
 	name = "hand claw"
 	desc = "A grotesque claw made out of bone and flesh that cleaves through people as a hot knife through butter."
 	icon_state = "ling_claw"
+	damage_tier = 4
 	damage_force = 15
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
@@ -156,7 +155,7 @@
 /obj/item/melee/changeling/claw/greater
 	name = "hand greatclaw"
 	damage_force = 20
-	armor_penetration = 20
+	damage_tier = 4.5
 	pry = 1
 
 	passive_parry = /datum/passive_parry/melee{

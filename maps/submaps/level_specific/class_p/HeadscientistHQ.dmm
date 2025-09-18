@@ -238,7 +238,7 @@
 /turf/simulated/shuttle/floor,
 /area/submap/HeadscientistHQ)
 "jG" = (
-/obj/machinery/r_n_d/protolathe,
+/obj/machinery/lathe/r_n_d/protolathe,
 /turf/simulated/shuttle/floor/purple,
 /area/submap/HeadscientistHQ)
 "kh" = (
@@ -448,7 +448,7 @@
 /turf/simulated/shuttle/floor/red,
 /area/submap/HeadscientistHQ)
 "uq" = (
-/obj/item/grenade/spawnergrenade/manhacks/mercenary,
+/obj/item/grenade/simple/spawner/manhacks/mercenary,
 /turf/simulated/shuttle/floor/red,
 /area/submap/HeadscientistHQ)
 "uz" = (
@@ -659,7 +659,7 @@
 /turf/simulated/shuttle/floor,
 /area/submap/HeadscientistHQ)
 "Ek" = (
-/obj/machinery/mecha_part_fabricator,
+/obj/machinery/lathe/mecha_part_fabricator,
 /turf/simulated/shuttle/floor/purple,
 /area/submap/HeadscientistHQ)
 "EF" = (
@@ -978,7 +978,7 @@
 /turf/simulated/shuttle/floor,
 /area/submap/HeadscientistHQ)
 "RG" = (
-/obj/machinery/r_n_d/circuit_imprinter,
+/obj/machinery/lathe/r_n_d/circuit_imprinter,
 /turf/simulated/shuttle/floor/purple,
 /area/submap/HeadscientistHQ)
 "Sb" = (

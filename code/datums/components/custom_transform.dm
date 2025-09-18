@@ -100,5 +100,5 @@
 			)))
 				S.mob_radio.forceMove(get_turf(H))
 			S.mob_radio = null
-
+	H.forceMove(get_turf(M))
 	M.transfer_client_to(H)

@@ -69,24 +69,24 @@
 /mob/living/carbon/human/statpanel_data(client/C)
 	. = ..()
 	if(C.statpanel_tab("Status"))
-		STATPANEL_DATA_ENTRY("Intent:", "[a_intent]")
-		STATPANEL_DATA_ENTRY("Move Mode:", "[m_intent]")
+		INJECT_STATPANEL_DATA_ENTRY(., "Intent:", "[a_intent]")
+		INJECT_STATPANEL_DATA_ENTRY(., "Move Mode:", "[m_intent]")
 		if(SSemergencyshuttle)
 			var/eta_status = SSemergencyshuttle.get_status_panel_eta()
 			if(eta_status)
-				STATPANEL_DATA_LINE(eta_status)
+				INJECT_STATPANEL_DATA_LINE(., eta_status)
 
 		if (internal)
 			if (!internal.air_contents)
 				qdel(internal)
 			else
-				STATPANEL_DATA_ENTRY("Internal Atmosphere Info", internal.name)
-				STATPANEL_DATA_ENTRY("Tank Pressure", internal.air_contents.return_pressure())
-				STATPANEL_DATA_ENTRY("Distribution Pressure", internal.distribute_pressure)
+				INJECT_STATPANEL_DATA_ENTRY(., "Internal Atmosphere Info", internal.name)
+				INJECT_STATPANEL_DATA_ENTRY(., "Tank Pressure", internal.air_contents.return_pressure())
+				INJECT_STATPANEL_DATA_ENTRY(., "Distribution Pressure", internal.distribute_pressure)
 
 		var/obj/item/organ/internal/xenomorph/plasmavessel/P = keyed_organs[ORGAN_KEY_XENOMORPH_PLASMA_VESSEL] //Xenomorphs. Mech.
 		if(P)
-			STATPANEL_DATA_LINE("Phoron Stored: [P.stored_plasma]/[P.max_plasma]")
+			INJECT_STATPANEL_DATA_LINE(., "Phoron Stored: [P.stored_plasma]/[P.max_plasma]")
 
 
 		if(back && istype(back,/obj/item/hardsuit))
@@ -94,13 +94,13 @@
 			var/cell_status = "ERROR"
 			if(suit.cell)
 				cell_status = "[suit.cell.charge]/[suit.cell.maxcharge]"
-			STATPANEL_DATA_ENTRY("Suit charge", "[cell_status]")
+			INJECT_STATPANEL_DATA_ENTRY(., "Suit charge", "[cell_status]")
 
 		if(mind)
 			if(mind.changeling)
-				STATPANEL_DATA_ENTRY("Chemical Storage", mind.changeling.chem_charges)
-				STATPANEL_DATA_ENTRY("Genetic Damage Time", mind.changeling.geneticdamage)
-				STATPANEL_DATA_ENTRY("Re-Adaptations", "[mind.changeling.readapts]/[mind.changeling.max_readapts]")
+				INJECT_STATPANEL_DATA_ENTRY(., "Chemical Storage", mind.changeling.chem_charges)
+				INJECT_STATPANEL_DATA_ENTRY(., "Genetic Damage Time", mind.changeling.geneticdamage)
+				INJECT_STATPANEL_DATA_ENTRY(., "Re-Adaptations", "[mind.changeling.readapts]/[mind.changeling.max_readapts]")
 	if(C.statpanel_tab("Species", species?.species_statpanel))
 		. += species.statpanel_status(C, src, C.statpanel_tab("Species"))
 
@@ -578,8 +578,7 @@
 		var/obj/item/I = locate(href_list["clickitem"])
 		if(get_dist(src, get_turf(I)) > 7)
 			return
-		if(src.client)
-			src.ClickOn(I)
+		click_on(I, inject_clickchain_flags = CLICKCHAIN_FROM_HREF)
 
 	if (href_list["flavor_change"])
 		if(usr != src)
@@ -946,12 +945,12 @@
 
 	return(visible_implants)
 
-/mob/living/carbon/human/embedded_needs_process()
-	for(var/obj/item/organ/external/organ as anything in src.external_organs)
-		for(var/obj/item/O in organ.implants)
-			if(!istype(O, /obj/item/implant)) //implant type items do not cause embedding effects, see handle_embedded_objects()
-				return 1
-	return 0
+// /mob/living/carbon/human/embedded_needs_process()
+// 	for(var/obj/item/organ/external/organ in src.organs)
+// 		for(var/obj/item/O in organ.implants)
+// 			if(!istype(O, /obj/item/implant)) //implant type items do not cause embedding effects, see handle_embedded_objects()
+// 				return 1
+// 	return 0
 
 /mob/living/carbon/human/proc/handle_embedded_objects()
 
@@ -1086,6 +1085,7 @@
 	hud_used = new /datum/hud(src)
 	reload_rendering()
 	update_vision()
+	update_movespeed_base()
 
 	//! FUCK FUCK FUCK FUCK FUCK FUCK FUCK
 	for(var/key in species.sprite_accessory_defaults)
@@ -1318,12 +1318,23 @@
 		if(C.body_cover_flags & FEET)
 			feet_exposed = 0
 
-	flavor_text = ""
-	for (var/T in flavor_texts)
-		if(flavor_texts[T] && flavor_texts[T] != "")
-			if((T == "general") || (T == "head" && head_exposed) || (T == "face" && face_exposed) || (T == "eyes" && eyes_exposed) || (T == "torso" && torso_exposed) || (T == "arms" && arms_exposed) || (T == "hands" && hands_exposed) || (T == "legs" && legs_exposed) || (T == "feet" && feet_exposed))
-				flavor_text += flavor_texts[T]
-				flavor_text += "\n\n"
+	flavor_text = flavor_texts["general"]
+	if(head_exposed)
+		flavor_text += flavor_texts["head"]+"\n\n"
+	if(face_exposed)
+		flavor_text += flavor_texts["face"]+"\n\n"
+	if(eyes_exposed)
+		flavor_text += flavor_texts["eyes"]+"\n\n"
+	if(torso_exposed)
+		flavor_text += flavor_texts["torso"]+"\n\n"
+	if(arms_exposed)
+		flavor_text += flavor_texts["arms"]+"\n\n"
+	if(hands_exposed)
+		flavor_text += flavor_texts["hands"]+"\n\n"
+	if(legs_exposed)
+		flavor_text += flavor_texts["legs"]+"\n\n"
+	if(feet_exposed)
+		flavor_text += flavor_texts["feet"]+"\n\n"
 	if(!shrink)
 		return flavor_text
 	else
@@ -1580,13 +1591,6 @@
 //! Pixel Offsets
 /mob/living/carbon/human/get_centering_pixel_x_offset(dir)
 	. = ..()
-	// uh oh stinky
 	if(!isTaurTail(tail_style) || !(dir & (EAST|WEST)))
 		return
-	// groan
-	. += ((size_multiplier * icon_scale_x) - 1) * ((dir & EAST)? -16 : 16)
-
-/mob/living/carbon/human/ClickOn(var/atom/A)
-	if(ab_handler?.process_click(src, A))
-		return
-	..()
+	. += (size_multiplier * icon_scale_x) * ((dir & EAST)? 8 : -8)

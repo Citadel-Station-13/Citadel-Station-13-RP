@@ -1,4 +1,3 @@
-
 /atom/movable/screen/zone_sel
 	name = "damage zone"
 	icon_state = "zone_sel"
@@ -74,4 +73,5 @@
 
 /atom/movable/screen/zone_sel/update_icon()
 	cut_overlays()
+	. = ..()
 	add_overlay(image('icons/mob/zone_sel.dmi', "[selecting]"))

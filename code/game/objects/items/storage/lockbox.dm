@@ -78,7 +78,7 @@
 	name = "lockbox of clusterbangs"
 	desc = "You have a bad feeling about opening this."
 	req_access = list(ACCESS_SECURITY_EQUIPMENT)
-	starts_with = list(/obj/item/grenade/flashbang/clusterbang)
+	starts_with = list(/obj/item/grenade/simple/flashbang/clusterbang)
 
 /obj/item/storage/lockbox/medal
 	name = "lockbox of medals"

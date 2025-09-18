@@ -2,7 +2,7 @@
 	name = "Slowdown"
 	desc = "Slower."
 	cost = -2
-	var_changes = list("slowdown" = 0.5)
+	var_changes = list("movement_base_speed" = 4.5)
 
 	group = /datum/trait_group/speed
 	group_short_name = "Slowdown"
@@ -12,7 +12,7 @@
 	name = "Major Slowdown"
 	desc = "MUCH slower."
 	cost = -3
-	var_changes = list("slowdown" = 1.0)
+	var_changes = list("movement_base_speed" = 4)
 
 	group = /datum/trait_group/speed
 	group_short_name = "Major Slowdown"

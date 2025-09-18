@@ -121,7 +121,11 @@
 				src.occupant_message("You hit [T].")
 				src.visible_message("<font color='red'><b>[src.name] hits [T]</b></font>")
 				playsound(src, 'sound/weapons/heavysmash.ogg', 50, 1)
-				T.inflict_atom_damage(force, MELEE_TIER_HEAVY, ARMOR_MELEE, weapon = src)
+				T.inflict_atom_damage(
+					force,
+					4,
+					ARMOR_MELEE,
+				)
 
 				melee_can_hit = 0
 

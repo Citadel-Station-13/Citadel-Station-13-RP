@@ -1163,12 +1163,12 @@
 
 	var/old_pose = pose
 
-	var/new_pose =  input(usr, "This is [src]. [T.he]...", "Pose", null)  as text|null
+	var/new_pose =  input(usr, "This is [src]. [T.He]...", "Pose", null)  as text|null
 
 	set_pose(new_pose)
 
 	if (length(pose)>0 && pose != old_pose)
-		visible_emote("adjusts [T.his] posture.")
+		visible_emote("adjusts [T.his] posture. [T.He] [pose]")
 
 /mob/living/carbon/human/verb/timed_pose()
 	set name = "Set Pose (Temporary)"
@@ -1178,14 +1178,14 @@
 
 	var/old_pose = pose
 
-	var/new_pose =  input(usr, "This is [src]. [T.he]...", "Pose", null)  as text|null
+	var/new_pose =  input(usr, "This is [src]. [T.He]...", "Pose", null)  as text|null
 
 	var/time = input(usr, "How long should the pose be visible (in seconds)?","Pose",60) as num|null
 
 	set_pose(new_pose)
 
 	if (length(pose)>0 && pose != old_pose)
-		visible_emote("adjusts [T.his] posture.")
+		visible_emote("adjusts [T.his] posture. [T.He] [pose]")
 		addtimer(CALLBACK(src,PROC_REF(set_pose),""),time SECONDS)
 
 
@@ -1431,7 +1431,7 @@
 			playsound(loc, 'sound/machines/clockcult/steam_whoosh.ogg', 30, 1, 1)
 			spam_flag = TRUE
 			addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 18)
-		
+
 	if (message)
 		custom_emote(m_type,message)
 		return 1

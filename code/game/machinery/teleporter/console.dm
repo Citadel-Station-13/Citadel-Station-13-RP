@@ -108,6 +108,10 @@
 	return data
 
 /obj/machinery/computer/teleporter/ui_act(action, list/params, datum/tgui/ui)
+	. = ..()
+	if(.)
+		return
+
 	switch(action)
 		if("set_destination")
 			set_destination(compare_beacon_to_identifier(params["new_locked"], beacon_uuid_assoc.Copy()))

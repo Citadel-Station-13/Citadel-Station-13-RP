@@ -19,13 +19,19 @@ export NODE_VERSION_LTS=20.13.0
 export NODE_VERSION_COMPAT=20.2.0
 
 # SpacemanDMM git tag
-export SPACEMAN_DMM_VERSION=suite-1.9
+export SPACEMAN_DMM_VERSION=suite-1.10
 
 # Python version for mapmerge and other tools
 export PYTHON_VERSION=3.12.0
 
 # MariaDB version
-export MARIADB_VERSION=11.4.4
+export MARIADB_VERSION=11.8.2
 
 # Flyway version
 export FLYWAY_VERSION=11.0.1
+
+#hypnagogic repo
+export CUTTER_REPO=spacestation13/hypnagogic
+
+#hypnagogic git tag
+export CUTTER_VERSION=v4.0.0

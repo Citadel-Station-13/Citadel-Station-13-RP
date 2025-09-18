@@ -124,7 +124,7 @@
 	. = ..()
 	create_reagents(30)
 
-/obj/item/pen/reagent/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/pen/reagent/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
 	var/mob/living/L = target
 	if(istype(L))
@@ -153,7 +153,7 @@
 	w_class = WEIGHT_CLASS_TINY
 	throw_speed = 7
 	throw_range = 15
-	armor_penetration = 20
+	damage_tier = 5
 
 	var/active = 0
 	var/active_embed_chance = 0

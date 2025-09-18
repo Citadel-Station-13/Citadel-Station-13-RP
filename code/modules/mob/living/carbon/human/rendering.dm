@@ -199,6 +199,9 @@
 	if(isnull(rendering))
 		remove_standing_overlay(HUMAN_OVERLAY_TAIL)
 		return
+	if(wear_suit?.inv_hide_flags & HIDETAIL)
+		remove_standing_overlay(HUMAN_OVERLAY_TAIL)
+		return
 	if(hiding_tail && rendering.can_be_hidden)
 		//! legacy code
 		remove_standing_overlay(HUMAN_OVERLAY_TAIL)

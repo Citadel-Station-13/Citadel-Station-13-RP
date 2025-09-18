@@ -1,0 +1,5 @@
+author: "AlphaM01"
+delete-after: True
+changes:
+  - rscadd: "Added several new pieces of PMD uniform and accessories"
+  - bugfix: "Corrected a few typos in existing PMD items"

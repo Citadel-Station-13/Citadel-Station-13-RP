@@ -19,7 +19,7 @@
 	blurb = {"This species is testmerged and currently being tested - things might break, and everything about it is subject to change!
 	"}
 
-	//selects_bodytype = TRUE
+	selects_bodytype = TRUE
 
 	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR | HAS_BODY_ALPHA | HAS_HAIR_ALPHA
@@ -71,6 +71,9 @@
 		/mob/living/carbon/human/proc/shapeshifter_select_tail,
 		/mob/living/carbon/human/proc/shapeshifter_select_ears,
 		/mob/living/carbon/human/proc/shapeshifter_select_horns,
+		/mob/living/carbon/human/proc/shapeshifter_select_shape,
+		/mob/living/carbon/human/proc/hologram_reset_to_slot,
+		/mob/living/proc/set_size,
 	)
 
 	minimum_hair_alpha = MINIMUM_HOLOGRAM_HAIR_ALPHA
@@ -130,6 +133,8 @@
 
 	var/heal_nutrition_multiplier = 10 // 10 nutrition per hp healed
 
+	var/last_death_time
+
 /datum/species/holosphere/on_apply(mob/living/carbon/human/H)
 	. = ..()
 	RegisterSignal(H, COMSIG_CARBON_UPDATING_OVERLAY, PROC_REF(handle_hologram_overlays))
@@ -181,3 +186,31 @@
 	into_box?.Add(/obj/item/tool/prybar/red)
 	into_box?.Add(/obj/item/flashlight/flare/survival)
 	into_box?.Add(/obj/item/fbp_backup_cell)
+
+// hotfix: they're synthetic without synthetic parts, oops!
+/datum/species/holosphere/get_blood_colour(mob/living/carbon/human/H)
+	if(H)
+		return blood_color
+
+/datum/species/holosphere/get_bodytype_legacy()
+	return base_species
+
+/datum/species/holosphere/get_worn_legacy_bodytype()
+	var/datum/species/real = SScharacters.resolve_species_name(base_species)
+	// infinite loop guard
+	return istype(real, src)? base_species : real.get_worn_legacy_bodytype()
+
+/datum/species/holosphere/get_race_key(mob/living/carbon/human/H)
+	var/datum/species/real = SScharacters.resolve_species_name(base_species)
+	return real.real_race_key(H)
+
+/datum/species/holosphere/get_valid_shapeshifter_forms()
+	return list(
+		SPECIES_HUMAN, SPECIES_UNATHI, SPECIES_UNATHI_DIGI, SPECIES_TAJ, SPECIES_SKRELL,
+		SPECIES_DIONA, SPECIES_TESHARI, SPECIES_MONKEY, SPECIES_SERGAL,
+		SPECIES_AKULA, SPECIES_NEVREAN, SPECIES_ZORREN_HIGH,
+		SPECIES_ZORREN_FLAT, SPECIES_VULPKANIN, SPECIES_VASILISSAN,
+		SPECIES_RAPALA, SPECIES_MONKEY_SKRELL, SPECIES_MONKEY_UNATHI,
+		SPECIES_MONKEY_TAJ, SPECIES_MONKEY_AKULA, SPECIES_MONKEY_VULPKANIN,
+		SPECIES_MONKEY_SERGAL, SPECIES_MONKEY_NEVREAN,
+	)

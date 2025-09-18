@@ -25,7 +25,7 @@
 	if(istype(G) && G.Touch(A,1))
 		return
 
-	A.attack_hand(src, new /datum/event_args/actor/clickchain(src))
+	A.attack_hand(src, default_clickchain_event_args(A))
 
 /// Return TRUE to cancel other attack hand effects that respect it.
 //  todo: better desc
@@ -35,23 +35,23 @@
 	if(isnull(e_args))
 		e_args = user.default_clickchain_event_args(src, TRUE)
 	// end
-	if(on_attack_hand(e_args))
+	if(on_attack_hand(e_args, NONE))
 		return TRUE
 	if(user.a_intent == INTENT_HARM)
-		return user.melee_attack_chain(src, e_args)
+		return user.melee_attack_chain(e_args)
 	. = _try_interact(user)
 
 /**
  * Override this instead of attack_hand.
  * This happens before melee attack chain checks.
  *
- * Return TRUE to cancel other attack hand effects that respect it.
- *
  * @params
  * * e_args - click data
+ *
+ * @return clickchain flags
  */
-/atom/proc/on_attack_hand(datum/event_args/actor/clickchain/e_args)
-	return FALSE
+/atom/proc/on_attack_hand(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	return NONE
 
 //Return a non FALSE value to cancel whatever called this from propagating, if it respects it.
 /atom/proc/_try_interact(mob/user)
@@ -92,9 +92,6 @@
 	return (ui_interact(user) || nano_ui_interact(user))
 	// return FALSE
 
-/mob/living/carbon/human/RestrainedClickOn(var/atom/A)
-	return
-
 /mob/living/carbon/human/RangedAttack(atom/A)
 	. = ..()
 	if(.)
@@ -117,24 +114,9 @@
 	else if(spitting) //Only used by xenos right now, can be expanded.
 		Spit(A)
 
-/mob/living/RestrainedClickOn(var/atom/A)
-	return
-
-/*
-	Animals & All Unspecified
-*/
-// /mob/living/UnarmedAttack(atom/A)
-// 	A.attack_animal(src)
-
-// /atom/proc/attack_animal(mob/user)
-// 	SEND_SIGNAL(src, COMSIG_ATOM_ATTACK_ANIMAL, user)
-
 /*
 	Aliens
 */
-
-/mob/living/carbon/alien/RestrainedClickOn(var/atom/A)
-	return
 
 /mob/living/carbon/alien/UnarmedAttack(atom/A)
 	if(!..())
@@ -142,10 +124,3 @@
 
 	setClickCooldownLegacy(get_attack_speed_legacy())
 	A.attack_generic(src,rand(5,6),"bitten")
-
-/*
-	New Players:
-	Have no reason to click on anything at all.
-*/
-/mob/new_player/ClickOn()
-	return

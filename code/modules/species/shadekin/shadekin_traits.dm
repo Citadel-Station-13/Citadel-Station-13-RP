@@ -10,11 +10,11 @@
 		"energy_light" = 0.5,
 		"energy_dark" = 1,
 		"unarmed_types" = list(
-			/datum/unarmed_attack/stomp,
-			/datum/unarmed_attack/kick,
-			/datum/unarmed_attack/claws/shadekin,
-			/datum/unarmed_attack/bite/sharp/shadekin,
-			/datum/unarmed_attack/shadekinharmbap,
+			/datum/melee_attack/unarmed/stomp,
+			/datum/melee_attack/unarmed/kick,
+			/datum/melee_attack/unarmed/claws/shadekin,
+			/datum/melee_attack/unarmed/bite/sharp/shadekin,
+			/datum/melee_attack/unarmed/shadekinharmbap,
 		)
 	)
 
@@ -31,11 +31,11 @@
 		"energy_light" = 1,
 		"energy_dark" = 0.25,
 		"unarmed_types" = list(
-			/datum/unarmed_attack/stomp,
-			/datum/unarmed_attack/kick,
-			/datum/unarmed_attack/claws/shadekin,
-			/datum/unarmed_attack/bite/sharp/shadekin,
-			/datum/unarmed_attack/shadekinharmbap
+			/datum/melee_attack/unarmed/stomp,
+			/datum/melee_attack/unarmed/kick,
+			/datum/melee_attack/unarmed/claws/shadekin,
+			/datum/melee_attack/unarmed/bite/sharp/shadekin,
+			/datum/melee_attack/unarmed/shadekinharmbap
 		)
 	)
 
@@ -46,17 +46,17 @@
 /datum/trait/kintype/purple
 	name = "Shadekin Purple Adaptation"
 	color = PURPLE_EYES
-	desc = "Very good energy regeneration in darkness, minor degeneration in the light and increased health!"
+	desc = "Very good energy regeneration in darkness, minor regeneration in the light and increased health!"
 	var_changes = list(
 		"total_health" = 150,
-		"energy_light" = -0.5,
+		"energy_light" = 0.25,
 		"energy_dark" = 1.5,
 		"unarmed_types" = list(
-			/datum/unarmed_attack/stomp,
-			/datum/unarmed_attack/kick,
-			/datum/unarmed_attack/claws/shadekin,
-			/datum/unarmed_attack/bite/sharp/shadekin,
-			/datum/unarmed_attack/shadekinharmbap
+			/datum/melee_attack/unarmed/stomp,
+			/datum/melee_attack/unarmed/kick,
+			/datum/melee_attack/unarmed/claws/shadekin,
+			/datum/melee_attack/unarmed/bite/sharp/shadekin,
+			/datum/melee_attack/unarmed/shadekinharmbap
 		)
 	)
 
@@ -67,17 +67,17 @@
 /datum/trait/kintype/yellow
 	name = "Shadekin Yellow Adaptation"
 	color = YELLOW_EYES
-	desc = "Highest energy regeneration in darkness, high degeneration in the light and unchanged health!"
+	desc = "Highest energy regeneration in darkness, minor regeneration in the light and unchanged health!"
 	var_changes = list(
 		"total_health" = 100,
-		"energy_light" = -1,
+		"energy_light" = 0.25,
 		"energy_dark" = 3,
 		"unarmed_types" = list(
-			/datum/unarmed_attack/stomp,
-			/datum/unarmed_attack/kick,
-			/datum/unarmed_attack/claws/shadekin,
-			/datum/unarmed_attack/bite/sharp/shadekin,
-			/datum/unarmed_attack/shadekinharmbap
+			/datum/melee_attack/unarmed/stomp,
+			/datum/melee_attack/unarmed/kick,
+			/datum/melee_attack/unarmed/claws/shadekin,
+			/datum/melee_attack/unarmed/bite/sharp/shadekin,
+			/datum/melee_attack/unarmed/shadekinharmbap
 		)
 	)
 
@@ -94,11 +94,11 @@
 		"energy_light" = 0.25,
 		"energy_dark" = 2,
 		"unarmed_types" = list(
-			/datum/unarmed_attack/stomp,
-			/datum/unarmed_attack/kick,
-			/datum/unarmed_attack/claws/shadekin,
-			/datum/unarmed_attack/bite/sharp/shadekin,
-			/datum/unarmed_attack/shadekinharmbap
+			/datum/melee_attack/unarmed/stomp,
+			/datum/melee_attack/unarmed/kick,
+			/datum/melee_attack/unarmed/claws/shadekin,
+			/datum/melee_attack/unarmed/bite/sharp/shadekin,
+			/datum/melee_attack/unarmed/shadekinharmbap
 		)
 	)
 
@@ -109,17 +109,17 @@
 /datum/trait/kintype/orange
 	name = "Shadekin Orange Adaptation"
 	color = ORANGE_EYES
-	desc = "Good energy regeneration in darkness, small degeneration in the light and increased health!"
+	desc = "Good energy regeneration in darkness, minor regeneration in the light and increased health!"
 	var_changes = list(
 		"total_health" = 175,
-		"energy_light" = -0.5,
+		"energy_light" = 0.25,
 		"energy_dark" = 1,
 		"unarmed_types" = list(
-			/datum/unarmed_attack/stomp,
-			/datum/unarmed_attack/kick,
-			/datum/unarmed_attack/claws/shadekin,
-			/datum/unarmed_attack/bite/sharp/shadekin,
-			/datum/unarmed_attack/shadekinharmbap
+			/datum/melee_attack/unarmed/stomp,
+			/datum/melee_attack/unarmed/kick,
+			/datum/melee_attack/unarmed/claws/shadekin,
+			/datum/melee_attack/unarmed/bite/sharp/shadekin,
+			/datum/melee_attack/unarmed/shadekinharmbap
 		)
 	)
 
@@ -147,14 +147,14 @@
 					H.shapeshifter_set_eye_color("FFA500")
 
 
-/datum/unarmed_attack/shadekinharmbap
+/datum/melee_attack/unarmed/shadekinharmbap
 	verb_past_participle = list("slashed", "clawed", "scratched")
 	attack_name = "syphon strike"
 	attack_verb_legacy = list("hit", "clawed", "slashed", "scratched")
 	attack_sound = 'sound/weapons/slice.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
 
-/datum/unarmed_attack/shadekinharmbap/apply_effects(mob/living/carbon/human/shadekin/user, mob/living/carbon/human/target, armour, attack_damage, zone)
+/datum/melee_attack/unarmed/shadekinharmbap/apply_effects(mob/living/carbon/human/shadekin/user, mob/living/carbon/human/target, armour, attack_damage, zone)
 	..()
 	if(user == target) //Prevent self attack to gain energy
 		return

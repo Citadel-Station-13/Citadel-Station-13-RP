@@ -1,0 +1,1960 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/table/standard,
+/turf/simulated/floor/wood,
+/area/submap/osiris_field/cargo_vessel1)
+"aJ" = (
+/turf/simulated/floor/tiled/monodark,
+/area/submap/osiris_field/cargo_vessel1)
+"bp" = (
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/obj/structure/metal_edge,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/cargo_vessel1)
+"bq" = (
+/obj/structure/bed/pod,
+/turf/simulated/floor/wood,
+/area/submap/osiris_field/cargo_vessel1)
+"bD" = (
+/obj/random/multiple/underdark/treasure,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel1)
+"bY" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/cargo_vessel1)
+"bZ" = (
+/obj/machinery/computer/ship/helm{
+	dir = 1
+	},
+/obj/structure/table/steel,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/cargo_vessel1)
+"cG" = (
+/obj/structure/inflatable/door,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/cargo_vessel1)
+"dF" = (
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/structure/railing/grey,
+/obj/structure/salvageable/server,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/cargo_vessel1)
+"dR" = (
+/turf/simulated/floor/wood,
+/area/submap/osiris_field/cargo_vessel1)
+"dW" = (
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/cargo_vessel1)
+"dY" = (
+/obj/item/stack/material/steel,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/cargo_vessel1)
+"eR" = (
+/obj/machinery/computer/ship/navigation{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack/corner{
+	dir = 4
+	},
+/obj/structure/table/steel,
+/obj/structure/table/steel,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/cargo_vessel1)
+"eT" = (
+/obj/structure/salvageable/console_os{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/cargo_vessel1)
+"fn" = (
+/obj/structure/bed/chair/modern_chair{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack/corner{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/cargo_vessel1)
+"fp" = (
+/obj/random/multiple/underdark/mechtool,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel1)
+"fI" = (
+/obj/structure/bed/chair/office/light{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/submap/osiris_field/cargo_vessel1)
+"fV" = (
+/obj/structure/salvageable/console_os{
+	dir = 8
+	},
+/obj/structure/table/steel,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/cargo_vessel1)
+"ga" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/submap/osiris_field/cargo_vessel1)
+"hb" = (
+/obj/structure/railing/grey,
+/obj/structure/alien/weeds,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/cargo_vessel1)
+"hc" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 6
+	},
+/obj/structure/table/steel,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/cargo_vessel1)
+"he" = (
+/obj/structure/inflatable/door,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/cargo_vessel1)
+"hr" = (
+/obj/random/multiple/underdark/ores,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel1)
+"hK" = (
+/obj/machinery/door/airlock,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/cargo_vessel1)
+"hX" = (
+/obj/machinery/door/blast/regular,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/cargo_vessel1)
+"iz" = (
+/obj/random/gun/random,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel1)
+"iP" = (
+/obj/structure/table/steel,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/cargo_vessel1)
+"jl" = (
+/obj/random/handgun,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel1)
+"jq" = (
+/turf/simulated/wall/r_wall/prepainted/science,
+/area/submap/osiris_field/cargo_vessel1)
+"jx" = (
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/cargo_vessel1)
+"jA" = (
+/obj/machinery/atmospherics/component/unary/engine/bigger{
+	dir = 4
+	},
+/turf/template_noop,
+/area/template_noop)
+"jJ" = (
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/cargo_vessel1)
+"jM" = (
+/obj/structure/salvageable/console_os{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/cargo_vessel1)
+"ke" = (
+/obj/effect/floor_decal/carpet/blue{
+	dir = 1
+	},
+/obj/effect/floor_decal/carpet/blue{
+	dir = 8
+	},
+/obj/effect/floor_decal/carpet/blue{
+	dir = 9
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/submap/osiris_field/cargo_vessel1)
+"kg" = (
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/obj/structure/railing/grey,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/cargo_vessel1)
+"kl" = (
+/obj/machinery/computer/ship/engines,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/cargo_vessel1)
+"ln" = (
+/obj/structure/railing/grey{
+	dir = 4
+	},
+/obj/structure/simple_door/iron,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel1)
+"lo" = (
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel1)
+"lr" = (
+/obj/structure/railing/grey,
+/turf/simulated/wall/r_wall/prepainted/engineering,
+/area/submap/osiris_field/cargo_vessel1)
+"ms" = (
+/obj/structure/alien/weeds,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/cargo_vessel1)
+"mx" = (
+/obj/effect/floor_decal/carpet/blue{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/submap/osiris_field/cargo_vessel1)
+"mL" = (
+/obj/structure/inflatable,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/cargo_vessel1)
+"mW" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/cargo_vessel1)
+"nO" = (
+/obj/structure/inflatable,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/cargo_vessel1)
+"nZ" = (
+/obj/structure/alien/weeds,
+/mob/living/simple_mob/animal/space/xenomorph/monarch,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel1)
+"oh" = (
+/obj/effect/floor_decal/borderfloorblack/corner{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/cargo_vessel1)
+"pj" = (
+/obj/random/energy,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel1)
+"pl" = (
+/mob/living/simple_mob/animal/space/xenomorph/acid_spitter,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/cargo_vessel1)
+"pY" = (
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/turf/simulated/wall/prepainted,
+/area/submap/osiris_field/cargo_vessel1)
+"qC" = (
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/obj/structure/railing/grey,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 10
+	},
+/obj/structure/event/prop/server1,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/cargo_vessel1)
+"qI" = (
+/turf/simulated/wall/r_wall/prepainted/command,
+/area/submap/osiris_field/cargo_vessel1)
+"rp" = (
+/obj/random/mre,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel1)
+"rF" = (
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/structure/salvageable/server,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/cargo_vessel1)
+"rU" = (
+/obj/structure/railing/grey,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/cargo_vessel1)
+"sc" = (
+/obj/item/modular_computer/console/preset/civilian{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 6
+	},
+/obj/structure/table/steel,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/cargo_vessel1)
+"st" = (
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/structure/salvageable/bliss,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/cargo_vessel1)
+"sO" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/template_noop)
+"tK" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/submap/osiris_field/cargo_vessel1)
+"tL" = (
+/obj/random/tool,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel1)
+"uj" = (
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/obj/structure/metal_edge,
+/obj/structure/event/prop/server2,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/cargo_vessel1)
+"un" = (
+/obj/structure/railing/grey{
+	dir = 4
+	},
+/obj/structure/railing/grey,
+/turf/simulated/wall/r_wall/prepainted/engineering,
+/area/submap/osiris_field/cargo_vessel1)
+"uB" = (
+/obj/structure/alien/weeds,
+/mob/living/simple_mob/animal/space/xenomorph/acid_spitter,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel1)
+"uE" = (
+/obj/random/medical/lite,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel1)
+"uF" = (
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/structure/bed/chair/modern_chair{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/cargo_vessel1)
+"uO" = (
+/obj/random/paintkit,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel1)
+"vz" = (
+/obj/effect/floor_decal/industrial/halfstair,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/cargo_vessel1)
+"wf" = (
+/obj/structure/alien/weeds,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel1)
+"wh" = (
+/obj/structure/bed/chair/modern_chair{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/cargo_vessel1)
+"wi" = (
+/obj/structure/railing/grey,
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 10
+	},
+/obj/structure/salvageable/bliss,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/cargo_vessel1)
+"xR" = (
+/obj/effect/floor_decal/industrial/halfstair,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/cargo_vessel1)
+"ye" = (
+/turf/simulated/wall/r_wall/prepainted/engineering,
+/area/submap/osiris_field/cargo_vessel1)
+"yi" = (
+/obj/structure/railing/grey{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/cargo_vessel1)
+"zw" = (
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/cargo_vessel1)
+"zS" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/submap/osiris_field/cargo_vessel1)
+"Ao" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/submap/osiris_field/cargo_vessel1)
+"AW" = (
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/obj/structure/metal_edge,
+/obj/structure/salvageable/server,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/cargo_vessel1)
+"AX" = (
+/turf/simulated/wall/prepainted,
+/area/submap/osiris_field/cargo_vessel1)
+"Bj" = (
+/obj/machinery/door/airlock{
+	name = "Restroom"
+	},
+/turf/simulated/floor/wood,
+/area/submap/osiris_field/cargo_vessel1)
+"BJ" = (
+/obj/effect/floor_decal/carpet/blue{
+	dir = 1
+	},
+/obj/effect/floor_decal/carpet/blue{
+	dir = 4
+	},
+/obj/effect/floor_decal/carpet/blue{
+	dir = 5
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/submap/osiris_field/cargo_vessel1)
+"DR" = (
+/obj/random/tool/power,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel1)
+"DT" = (
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/obj/structure/metal_edge,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/cargo_vessel1)
+"Er" = (
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/obj/structure/metal_edge,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 9
+	},
+/obj/structure/salvageable/server,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/cargo_vessel1)
+"EB" = (
+/obj/effect/floor_decal/borderfloorblack/corner{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/cargo_vessel1)
+"EK" = (
+/obj/structure/table/bench/padded,
+/obj/machinery/light/small/emergency/flicker{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/submap/osiris_field/cargo_vessel1)
+"EO" = (
+/obj/structure/bed/chair/modern_chair,
+/turf/simulated/floor/wood,
+/area/submap/osiris_field/cargo_vessel1)
+"FE" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/cargo_vessel1)
+"FK" = (
+/obj/structure/simple_door/iron,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel1)
+"GO" = (
+/obj/structure/railing/grey,
+/obj/effect/floor_decal/borderfloorblack,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/cargo_vessel1)
+"Hv" = (
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/obj/structure/metal_edge,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/structure/salvageable/server,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/cargo_vessel1)
+"HD" = (
+/obj/structure/table/bench/padded,
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/submap/osiris_field/cargo_vessel1)
+"HG" = (
+/obj/structure/table/standard,
+/obj/machinery/microwave{
+	pixel_y = 8
+	},
+/turf/simulated/floor/wood,
+/area/submap/osiris_field/cargo_vessel1)
+"HI" = (
+/obj/machinery/light/small/emergency/flicker,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/cargo_vessel1)
+"Ik" = (
+/turf/simulated/wall/r_wall/prepainted/civilian,
+/area/submap/osiris_field/cargo_vessel1)
+"JG" = (
+/obj/structure/metal_edge,
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/cargo_vessel1)
+"Kn" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/structure/table/steel,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/cargo_vessel1)
+"Kz" = (
+/obj/machinery/portable_atmospherics/canister/phoron,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/cargo_vessel1)
+"KE" = (
+/obj/random/rigsuit,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel1)
+"KG" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/cargo_vessel1)
+"Ll" = (
+/obj/item/modular_computer/console/preset/civilian,
+/obj/structure/table/steel,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/cargo_vessel1)
+"Lv" = (
+/turf/simulated/wall/r_wall/prepainted/exploration,
+/area/submap/osiris_field/cargo_vessel1)
+"LO" = (
+/obj/machinery/portable_atmospherics/canister/empty/phoron,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/cargo_vessel1)
+"LQ" = (
+/obj/structure/table/steel,
+/obj/item/flashlight/lamp,
+/turf/simulated/floor/wood,
+/area/submap/osiris_field/cargo_vessel1)
+"LR" = (
+/obj/machinery/washing_machine,
+/turf/simulated/floor/wood,
+/area/submap/osiris_field/cargo_vessel1)
+"Mp" = (
+/obj/machinery/computer/ship/helm{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack/corner,
+/obj/structure/table/steel,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/cargo_vessel1)
+"MP" = (
+/obj/random/multiple/voidsuit/vintage,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel1)
+"Nj" = (
+/mob/living/simple_mob/animal/space/xenomorph/acid_spitter,
+/obj/machinery/light/small/emergency/flicker{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/cargo_vessel1)
+"Nz" = (
+/obj/structure/railing/grey,
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/cargo_vessel1)
+"ND" = (
+/obj/effect/floor_decal/borderfloorblack/corner{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/cargo_vessel1)
+"NX" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/submap/osiris_field/cargo_vessel1)
+"On" = (
+/mob/living/simple_mob/animal/space/xenomorph/drone,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/cargo_vessel1)
+"Ou" = (
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/cargo_vessel1)
+"OZ" = (
+/obj/effect/floor_decal/carpet/blue{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/submap/osiris_field/cargo_vessel1)
+"Pd" = (
+/turf/template_noop,
+/area/template_noop)
+"PB" = (
+/mob/living/simple_mob/animal/space/xenomorph/drone,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/cargo_vessel1)
+"PQ" = (
+/obj/machinery/door/airlock,
+/turf/simulated/floor/wood,
+/area/submap/osiris_field/cargo_vessel1)
+"Qu" = (
+/obj/structure/table/bench/padded,
+/turf/simulated/floor/wood,
+/area/submap/osiris_field/cargo_vessel1)
+"QA" = (
+/turf/simulated/wall/r_wall/prepainted/security,
+/area/submap/osiris_field/cargo_vessel1)
+"QO" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/submap/osiris_field/cargo_vessel1)
+"QY" = (
+/obj/machinery/light/small/emergency/flicker,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/cargo_vessel1)
+"RT" = (
+/obj/structure/railing/grey{
+	dir = 4
+	},
+/turf/simulated/wall/r_wall/prepainted/engineering,
+/area/submap/osiris_field/cargo_vessel1)
+"Sb" = (
+/obj/structure/salvageable/console_os{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 6
+	},
+/obj/structure/table/steel,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/cargo_vessel1)
+"So" = (
+/obj/structure/metal_edge,
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/cargo_vessel1)
+"Sq" = (
+/obj/structure/table/steel,
+/obj/item/flashlight/lamp,
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/submap/osiris_field/cargo_vessel1)
+"SD" = (
+/obj/effect/floor_decal/carpet/blue,
+/obj/effect/floor_decal/carpet/blue{
+	dir = 8
+	},
+/obj/effect/floor_decal/carpet/blue{
+	dir = 10
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/submap/osiris_field/cargo_vessel1)
+"SP" = (
+/obj/effect/floor_decal/carpet/blue,
+/obj/effect/floor_decal/carpet/blue{
+	dir = 4
+	},
+/obj/effect/floor_decal/carpet/blue{
+	dir = 6
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/submap/osiris_field/cargo_vessel1)
+"SU" = (
+/obj/structure/table/rack/shelf/steel,
+/turf/simulated/floor/wood,
+/area/submap/osiris_field/cargo_vessel1)
+"TR" = (
+/mob/living/simple_mob/animal/space/xenomorph/acid_spitter,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/cargo_vessel1)
+"Un" = (
+/turf/template_noop,
+/area/submap/osiris_field/cargo_vessel1)
+"Up" = (
+/obj/structure/metal_edge,
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/obj/structure/railing/grey{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/cargo_vessel1)
+"Vi" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/cargo_vessel1)
+"VW" = (
+/obj/structure/bed/chair/modern_chair{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack/corner,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/cargo_vessel1)
+"Wf" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/cargo_vessel1)
+"Wi" = (
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/cargo_vessel1)
+"WJ" = (
+/obj/structure/closet/secure_closet/freezer/kitchen,
+/turf/simulated/floor/wood,
+/area/submap/osiris_field/cargo_vessel1)
+"WT" = (
+/obj/structure/railing/grey,
+/obj/structure/alien/weeds,
+/mob/living/simple_mob/animal/space/xenomorph/acid_spitter,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/cargo_vessel1)
+"Xa" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 5
+	},
+/obj/structure/table/steel,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/cargo_vessel1)
+"Xh" = (
+/obj/effect/floor_decal/borderfloorblack/corner,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/cargo_vessel1)
+"Yg" = (
+/obj/structure/closet/cabinet,
+/turf/simulated/floor/wood,
+/area/submap/osiris_field/cargo_vessel1)
+"ZO" = (
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/cargo_vessel1)
+
+(1,1,1) = {"
+Pd
+Pd
+Pd
+Pd
+Pd
+Pd
+Pd
+Pd
+Pd
+jA
+Pd
+Pd
+Pd
+Pd
+Pd
+Pd
+jA
+Pd
+jA
+Pd
+Pd
+Pd
+Pd
+Pd
+Pd
+"}
+(2,1,1) = {"
+Pd
+Pd
+Pd
+Pd
+Pd
+Pd
+Pd
+Pd
+Pd
+Pd
+Pd
+Pd
+Pd
+Pd
+Pd
+Pd
+Pd
+Pd
+Pd
+Pd
+Pd
+Pd
+Pd
+Pd
+Pd
+"}
+(3,1,1) = {"
+Pd
+Pd
+Pd
+Pd
+Pd
+Pd
+Pd
+ZO
+ZO
+AX
+mL
+nO
+nO
+he
+cG
+AX
+AX
+ZO
+AX
+AX
+Pd
+Pd
+Pd
+Pd
+Pd
+"}
+(4,1,1) = {"
+Pd
+Pd
+Pd
+Pd
+Pd
+Pd
+Pd
+Un
+jx
+ga
+Ou
+jJ
+nO
+jJ
+Ou
+AX
+LO
+LO
+LO
+pY
+Pd
+Pd
+Pd
+Pd
+Pd
+"}
+(5,1,1) = {"
+Pd
+Pd
+Pd
+Pd
+Pd
+Pd
+Pd
+Un
+Un
+Un
+ga
+jJ
+nO
+jJ
+QY
+AX
+Kz
+LO
+LO
+AX
+AX
+Pd
+Pd
+Pd
+Pd
+"}
+(6,1,1) = {"
+Pd
+Pd
+Pd
+Pd
+Pd
+sO
+sO
+Un
+Un
+Un
+Un
+ga
+nO
+jJ
+Ou
+AX
+aJ
+aJ
+aJ
+aJ
+AX
+AX
+Pd
+Pd
+Pd
+"}
+(7,1,1) = {"
+Pd
+Pd
+Pd
+sO
+sO
+aJ
+aJ
+ga
+ga
+ga
+ga
+ga
+nO
+jJ
+Ou
+AX
+tK
+aJ
+aJ
+tK
+aJ
+AX
+AX
+Pd
+Pd
+"}
+(8,1,1) = {"
+Pd
+Pd
+AX
+AX
+AX
+AX
+AX
+AX
+nO
+AX
+mL
+nO
+nO
+he
+cG
+AX
+AX
+hK
+AX
+AX
+AX
+AX
+AX
+Pd
+Pd
+"}
+(9,1,1) = {"
+Pd
+Pd
+AX
+Ou
+Ou
+KG
+jJ
+jJ
+jJ
+jJ
+jJ
+jJ
+jJ
+jJ
+jJ
+jJ
+jJ
+jJ
+jJ
+vz
+Ou
+Ou
+AX
+Pd
+Pd
+"}
+(10,1,1) = {"
+Pd
+Pd
+hX
+On
+Ou
+zw
+zw
+zw
+zw
+zw
+kg
+jJ
+jJ
+jJ
+JG
+zw
+zw
+zw
+zw
+zw
+Ou
+On
+hX
+Pd
+Pd
+"}
+(11,1,1) = {"
+Pd
+Pd
+hX
+Ou
+jq
+jq
+jq
+jq
+jq
+jq
+rU
+HI
+AX
+Nj
+So
+QA
+QA
+QA
+QA
+QA
+Ou
+Ou
+hX
+Pd
+Pd
+"}
+(12,1,1) = {"
+Pd
+Pd
+hX
+Ou
+FK
+MP
+uE
+KE
+rp
+FK
+rU
+jJ
+jJ
+jJ
+So
+FK
+lo
+iz
+lo
+FK
+Ou
+Ou
+hX
+Pd
+Pd
+"}
+(13,1,1) = {"
+Pd
+Pd
+hX
+Ou
+FK
+lo
+rp
+MP
+uE
+FK
+rU
+jJ
+jJ
+jJ
+So
+FK
+pj
+lo
+jl
+FK
+Ou
+TR
+hX
+Pd
+Pd
+"}
+(14,1,1) = {"
+Pd
+Pd
+hX
+Ou
+jq
+jq
+jq
+jq
+jq
+jq
+rU
+PB
+jJ
+jJ
+So
+QA
+QA
+QA
+QA
+QA
+Ou
+Ou
+hX
+Pd
+Pd
+"}
+(15,1,1) = {"
+Pd
+Pd
+hX
+Ou
+Ou
+Ou
+Ou
+Ou
+Ou
+Ou
+rU
+HI
+AX
+Wf
+So
+Ou
+Ou
+Ou
+Ou
+Ou
+Ou
+Ou
+hX
+Pd
+Pd
+"}
+(16,1,1) = {"
+Pd
+Pd
+hX
+Ou
+dY
+On
+Ou
+ms
+Ou
+Ou
+rU
+jJ
+jJ
+jJ
+So
+Ou
+Ou
+Ou
+Lv
+FK
+FK
+Lv
+hX
+Pd
+Pd
+"}
+(17,1,1) = {"
+Pd
+Pd
+hX
+ms
+ms
+Ou
+Ou
+ms
+Ou
+Ou
+FE
+jJ
+jJ
+jJ
+xR
+Ou
+Ou
+Ou
+Lv
+fp
+lo
+Lv
+hX
+Pd
+Pd
+"}
+(18,1,1) = {"
+Pd
+Pd
+hX
+Ik
+wf
+wf
+Ik
+Ou
+Ou
+dY
+FE
+jJ
+jJ
+jJ
+xR
+Ou
+On
+Ou
+Lv
+bD
+fp
+Lv
+hX
+Pd
+Pd
+"}
+(19,1,1) = {"
+Pd
+Pd
+hX
+Ik
+wf
+wf
+Ik
+Ou
+ms
+Ou
+hb
+jJ
+jJ
+pl
+So
+Ou
+Ou
+Ou
+Lv
+hr
+uO
+Lv
+hX
+Pd
+Pd
+"}
+(20,1,1) = {"
+Pd
+Pd
+hX
+Ik
+wf
+uB
+Ik
+Ou
+dY
+ms
+WT
+HI
+AX
+Wf
+So
+Ou
+Ou
+Ou
+Lv
+FK
+FK
+Lv
+hX
+Pd
+Pd
+"}
+(21,1,1) = {"
+Pd
+Pd
+hX
+Ik
+wf
+wf
+Ik
+ye
+wf
+wf
+lr
+jJ
+jJ
+jJ
+So
+qI
+qI
+qI
+qI
+qI
+qI
+Ou
+hX
+Pd
+Pd
+"}
+(22,1,1) = {"
+Pd
+Pd
+hX
+Ik
+wf
+wf
+Ik
+ye
+nZ
+wf
+lr
+jJ
+jJ
+jJ
+So
+FK
+tL
+DR
+DR
+lo
+FK
+Ou
+hX
+Pd
+Pd
+"}
+(23,1,1) = {"
+Pd
+Pd
+hX
+Ik
+FK
+FK
+Ik
+ye
+wf
+wf
+lr
+jJ
+jJ
+jJ
+So
+FK
+lo
+DR
+lo
+DR
+FK
+Ou
+hX
+Pd
+Pd
+"}
+(24,1,1) = {"
+Pd
+Pd
+hX
+Ou
+Ou
+Ou
+Ou
+ye
+wf
+wf
+lr
+HI
+AX
+Wf
+So
+qI
+qI
+qI
+qI
+qI
+qI
+Ou
+hX
+Pd
+Pd
+"}
+(25,1,1) = {"
+Pd
+Pd
+hX
+Ou
+Ou
+yi
+yi
+RT
+ln
+ln
+un
+jJ
+jJ
+jJ
+Up
+yi
+yi
+yi
+yi
+yi
+Ou
+Ou
+hX
+Pd
+Pd
+"}
+(26,1,1) = {"
+Pd
+Pd
+AX
+Ou
+Ou
+KG
+jJ
+jJ
+jJ
+jJ
+jJ
+jJ
+jJ
+jJ
+jJ
+jJ
+jJ
+jJ
+jJ
+vz
+Ou
+Ou
+AX
+Pd
+Pd
+"}
+(27,1,1) = {"
+Pd
+Pd
+AX
+AX
+AX
+AX
+AX
+AX
+AX
+AX
+AX
+AX
+PQ
+AX
+AX
+AX
+AX
+AX
+AX
+AX
+AX
+AX
+AX
+Pd
+Pd
+"}
+(28,1,1) = {"
+Pd
+Pd
+AX
+dR
+dR
+Yg
+AX
+Wf
+jJ
+jJ
+AX
+HG
+dR
+EK
+aa
+Qu
+zS
+PQ
+dR
+dR
+dR
+bq
+AX
+Pd
+Pd
+"}
+(29,1,1) = {"
+Pd
+Pd
+AX
+dR
+dR
+Yg
+AX
+AX
+Bj
+AX
+AX
+WJ
+dR
+Qu
+aa
+Qu
+dR
+AX
+EO
+Sq
+fI
+SU
+AX
+Pd
+Pd
+"}
+(30,1,1) = {"
+Pd
+Pd
+AX
+Ao
+dR
+dR
+PQ
+dR
+ke
+mx
+mx
+SD
+dR
+dR
+dR
+dR
+dR
+AX
+AX
+AX
+AX
+AX
+AX
+Pd
+Pd
+"}
+(31,1,1) = {"
+Pd
+Pd
+AX
+dR
+dR
+Yg
+AX
+dR
+BJ
+OZ
+OZ
+SP
+dR
+Qu
+aa
+Qu
+dR
+AX
+EO
+LQ
+fI
+SU
+AX
+Pd
+Pd
+"}
+(32,1,1) = {"
+Pd
+Pd
+AX
+dR
+dR
+Yg
+AX
+dR
+QO
+LR
+aa
+aa
+dR
+HD
+aa
+Qu
+NX
+PQ
+dR
+NX
+dR
+bq
+AX
+Pd
+Pd
+"}
+(33,1,1) = {"
+Pd
+Pd
+AX
+AX
+AX
+AX
+AX
+hK
+AX
+Wi
+Wi
+AX
+PQ
+AX
+Wi
+Wi
+AX
+AX
+AX
+AX
+AX
+AX
+AX
+Pd
+Pd
+"}
+(34,1,1) = {"
+Pd
+Pd
+Pd
+AX
+jJ
+jJ
+jJ
+jJ
+bY
+jJ
+jJ
+jJ
+jJ
+jJ
+jJ
+jJ
+bY
+jJ
+jJ
+jJ
+jJ
+AX
+Pd
+Pd
+Pd
+"}
+(35,1,1) = {"
+Pd
+Pd
+Pd
+AX
+Wf
+Er
+rF
+dF
+Vi
+uj
+wi
+jJ
+jJ
+jJ
+Hv
+dF
+Vi
+AW
+st
+qC
+HI
+AX
+Pd
+Pd
+Pd
+"}
+(36,1,1) = {"
+Pd
+Pd
+Pd
+AX
+ZO
+bp
+oh
+jx
+jx
+jx
+GO
+Ll
+wh
+bZ
+DT
+jx
+jx
+jx
+Xh
+Nz
+ZO
+AX
+Pd
+Pd
+Pd
+"}
+(37,1,1) = {"
+Pd
+Pd
+Pd
+Pd
+ZO
+ZO
+kl
+fn
+jx
+jx
+GO
+iP
+fV
+iP
+DT
+jx
+jx
+VW
+sc
+ZO
+ZO
+Pd
+Pd
+Pd
+Pd
+"}
+(38,1,1) = {"
+Pd
+Pd
+Pd
+Pd
+Pd
+ZO
+ZO
+eT
+eR
+jx
+ND
+uF
+dW
+uF
+EB
+jx
+Mp
+Sb
+ZO
+ZO
+Pd
+Pd
+Pd
+Pd
+Pd
+"}
+(39,1,1) = {"
+Pd
+Pd
+Pd
+Pd
+Pd
+Pd
+ZO
+ZO
+Xa
+Kn
+mW
+jM
+jM
+jM
+mW
+Kn
+hc
+ZO
+ZO
+Pd
+Pd
+Pd
+Pd
+Pd
+Pd
+"}
+(40,1,1) = {"
+Pd
+Pd
+Pd
+Pd
+Pd
+Pd
+Pd
+ZO
+ZO
+ZO
+AX
+ZO
+ZO
+ZO
+AX
+ZO
+ZO
+ZO
+Pd
+Pd
+Pd
+Pd
+Pd
+Pd
+Pd
+"}

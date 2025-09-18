@@ -36,8 +36,8 @@
 	biology = /datum/biology/simple/pretend_organic
 
 	unarmed_types = list(
-		/datum/unarmed_attack/claws/strong,
-		/datum/unarmed_attack/bite/sharp,
+		/datum/melee_attack/unarmed/claws/strong,
+		/datum/melee_attack/unarmed/bite/sharp,
 	)
 
 /datum/species/shadow/handle_death(var/mob/living/carbon/human/H)
