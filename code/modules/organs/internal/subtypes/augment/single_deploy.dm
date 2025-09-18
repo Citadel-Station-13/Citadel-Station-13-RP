@@ -40,3 +40,5 @@
 /obj/item/organ/internal/augment/single_deploy/engineering_multitool
 
 /obj/item/organ/internal/augment/single_deploy/surgical_multitool
+
+/obj/item/organ/internal/augment/single_deploy/hardlight_shield
