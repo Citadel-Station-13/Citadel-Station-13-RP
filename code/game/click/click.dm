@@ -255,7 +255,7 @@
  * @return TRUE to break regular click handling logic.
  */
 /mob/proc/click_on_override(atom/target, location, control, list/params)
-	if(SEND_SIGNAL(COMSIG_MOB_CLICK_ON_OVERRIDE, target, location, control, params) & SIGNAL_RAISE_MOB_CLICK_HANDLED)
+	if(SEND_SIGNAL(src, COMSIG_MOB_CLICK_ON_OVERRIDE, target, location, control, params) & SIGNAL_RAISE_MOB_CLICK_HANDLED)
 		return TRUE
 	return FALSE
 
@@ -264,7 +264,7 @@
  * @return TRUE to break regular click handling logic.
  */
 /mob/proc/click_on_special(atom/target, location, control, list/params)
-	if(SEND_SIGNAL(COMSIG_MOB_CLICK_ON_SPECIAL, target, location, control, params) & SIGNAL_RAISE_MOB_CLICK_HANDLED)
+	if(SEND_SIGNAL(src, COMSIG_MOB_CLICK_ON_SPECIAL, target, location, control, params) & SIGNAL_RAISE_MOB_CLICK_HANDLED)
 		return TRUE
 	return FALSE
 
