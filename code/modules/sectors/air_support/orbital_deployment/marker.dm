@@ -7,7 +7,7 @@
  */
 /obj/orbital_deployment_marker
 	plane = DEBUG_PLANE
-	layer = DEBUG_
+	layer = DEBUG_LAYER_MAP_HELPERS
 	invisibility = INVISIBILITY_MAP_HELPER
 
 	var/tmp/bit = 0
