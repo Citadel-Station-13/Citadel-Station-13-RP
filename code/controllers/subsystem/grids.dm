@@ -459,7 +459,8 @@ SUBSYSTEM_DEF(grids)
 /area/grid_orphaned
 	name = "orphaned grid area"
 	desc = "someone fucked up"
-	icon = 'icons/turf/area/debug.dmi'
+	#warn put in debug sprite
+	// icon = 'icons/turf/area/debug.dmi'
 	icon_state = "grid-orphan"
 	plane = DEBUG_PLANE
 	layer = DEBUG_LAYER_AREA_OVERLAYS

@@ -27,7 +27,7 @@
 /datum/component/client_freezoom_handler/Initialize(max_zoom_x, max_zoom_y, detection_x, detection_y, scrolling_mode)
 	if((. = ..()) == COMPONENT_INCOMPATIBLE)
 		return
-	if(!isclient(parent))
+	if(!istype(parent, /client))
 		return COMPONENT_INCOMPATIBLE
 	if(!isnull(max_zoom_x))
 		src.max_zoom_x = max_zoom_x
@@ -37,8 +37,8 @@
 		src.detection_x = detection_x
 	if(!isnull(detection_y))
 		src.detection_y = detection_y
-	if(!isnull(scrolling_mode))
-		src.scrolling_mode = scrolling_mode
+	// if(!isnull(scrolling_mode))
+	// 	src.scrolling_mode = scrolling_mode
 
 /datum/component/client_freezoom_handler/RegisterWithParent()
 	..()
@@ -69,19 +69,24 @@
 	var/scr_x = s_x * WORLD_ICON_SIZE + s_px
 	var/scr_y = s_y * WORLD_ICON_SIZE + s_py
 
-	// normal mode
+	// normal mode: scroll to % of max zoom with % determined by
+	//              the cursor's position from the edge of no-detection box
+	//              to 100% of the screen's edge
+	// TODO: make it 95% instead
 	var/halfway_x = client.current_viewport_width * 0.5
 	var/halfway_y = client.current_viewport_height * 0.5
 	var/ranging_x = max(0, halfway_x - detection_x)
 	var/ranging_y = max(0, halfway_y - detection_y)
-	if(scr_x > halfway_x)
-		calc_x = abs(abs((scr_x - halfway_x) - detection_x) / ranging_x) * max_zoom_x
-	else
-		calc_x = abs(abs((scr_x - halfway_x) + detection_x) / ranging_x) * max_zoom_x
-	if(scr_y < halfway_y)
-		calc_y = abs(abs((scr_y - halfway_y) - detection_y) / ranging_y) * max_zoom_y
-	else
-		calc_y = abs(abs((scr_y - halfway_y) + detection_y) / ranging_y) * max_zoom_y
+	if(ranging_x)
+		if(scr_x > halfway_x)
+			calc_x = abs(abs((scr_x - halfway_x) - detection_x) / ranging_x) * max_zoom_x
+		else
+			calc_x = abs(abs((scr_x - halfway_x) + detection_x) / ranging_x) * max_zoom_x
+	if(ranging_y)
+		if(scr_y < halfway_y)
+			calc_y = abs(abs((scr_y - halfway_y) - detection_y) / ranging_y) * max_zoom_y
+		else
+			calc_y = abs(abs((scr_y - halfway_y) + detection_y) / ranging_y) * max_zoom_y
 
 	// TODO: scrolling mode
 
