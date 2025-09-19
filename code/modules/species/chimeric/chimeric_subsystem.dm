@@ -82,7 +82,6 @@
 
 /datum/chimeric_subsystem/proc/on_chimeric_tick(dt)
 
-
 //* TGUI Panel *//
 
 /datum/chimeric_subsystem/proc/panel_push_data(list/data)
@@ -130,11 +129,11 @@
 /**
  * Get generalized suppression amount.
  */
-/datum/chimeric_suppression/proc/get_generalized_suppression_via_add_tally()
+/datum/chimeric_subsystem/proc/get_generalized_suppression_via_add_tally()
 	#warn impl
 
 /**
  * Get generalized suppression amount.
  */
-/datum/chimeric_suppression/proc/get_generalized_suppression_via_max_tally()
+/datum/chimeric_subsystem/proc/get_generalized_suppression_via_max_tally()
 	#warn impl

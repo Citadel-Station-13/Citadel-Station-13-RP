@@ -2612,6 +2612,7 @@
 #include "code\modules\biology\biology_mob_state.dm"
 #include "code\modules\biology\biology_organ_state.dm"
 #include "code\modules\biology\types\crystalline.dm"
+#include "code\modules\biology\types\holographic.dm"
 #include "code\modules\biology\types\organic.dm"
 #include "code\modules\biology\types\simple.dm"
 #include "code\modules\biology\types\synthetic.dm"

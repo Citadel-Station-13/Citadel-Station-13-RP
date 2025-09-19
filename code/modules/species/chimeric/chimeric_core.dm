@@ -22,10 +22,14 @@
 
 	/**
 	 * Core variable - Agitation
+	 * * goes up as
 	 */
 	var/c_agitation = 0
 	/**
 	 * Core variable - Attrition
+	 * * goes up as we take certain kinds of damage
+	 * * goes up as we invoke our abilities more
+	 * * falls off slower the higher it is
 	 */
 	var/c_attrition = 0
 

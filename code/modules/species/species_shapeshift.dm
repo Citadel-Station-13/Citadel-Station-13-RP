@@ -750,8 +750,7 @@ var/list/wrapped_species_by_ref = list()
 	character.b_gradwing		= pref.b_gradwing
 
 
-	for(var/N in character.organs_by_name)
-		var/obj/item/organ/external/O = character.organs_by_name[N]
+	for(var/obj/item/organ/external/O as anything in character.external_organs)
 		if(!istype(O))
 			continue
 		O.markings.Cut()
@@ -762,6 +761,6 @@ var/list/wrapped_species_by_ref = list()
 		var/mark_color = "[pref.body_marking_ids[id]]"
 
 		for(var/BP in mark_datum.body_parts)
-			var/obj/item/organ/external/O = character.organs_by_name[BP]
+			var/obj/item/organ/external/O = character.legacy_organ_by_tag[BP]
 			if(O)
 				O.markings[id] = list("color" = mark_color, "datum" = mark_datum)

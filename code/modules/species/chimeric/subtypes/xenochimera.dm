@@ -9,7 +9,7 @@
 	name = SPECIES_XENOCHIMERA
 	name_plural = "Xenochimeras"
 
-	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/xenochimera
+	intrinsic_physiology_modifier = /datum/physiology_modifier/intrinsic/species/xenochimera
 	base_species = SPECIES_XENOCHIMERA
 	category = "Special"
 
@@ -22,16 +22,13 @@
 
 	max_additional_languages = 5
 
+	// TODO: adaptation instead
 	vision_innate = /datum/vision/baseline/species_tier_3
 	vision_organ = O_EYES
 	brute_mod     = 0.8   //About as tanky to brute as a Unathi. They'll probably snap and go feral when hurt though.
 	burn_mod      = 1.15  //As vulnerable to burn as a Tajara.
 	radiation_mod = 1.15  //To help simulate the volatility of a living 'viral' cluster.
 
-	//color_mult = 1 //It seemed to work fine in testing, but I've been informed it's unneeded.
-
-	virus_immune = TRUE // They practically ARE one.
-	max_age = 200
 
 	blurb = {"
 	Some amalgamation of different species from across the universe,with extremely unstable DNA, making them unfit for regular cloners.
@@ -57,16 +54,6 @@
 
 	reagent_tag = IS_CHIMERA
 
-	valid_transform_species = list(
-		SPECIES_HUMAN, SPECIES_UNATHI, SPECIES_UNATHI_DIGI, SPECIES_TAJ, SPECIES_SKRELL,
-		SPECIES_DIONA, SPECIES_TESHARI, SPECIES_MONKEY,SPECIES_SERGAL,
-		SPECIES_AKULA,SPECIES_NEVREAN,SPECIES_ZORREN_HIGH,
-		SPECIES_ZORREN_FLAT, SPECIES_VULPKANIN, SPECIES_VASILISSAN,
-		SPECIES_RAPALA, SPECIES_MONKEY_SKRELL, SPECIES_MONKEY_UNATHI,
-		SPECIES_MONKEY_TAJ, SPECIES_MONKEY_AKULA, SPECIES_MONKEY_VULPKANIN,
-		SPECIES_MONKEY_SERGAL, SPECIES_MONKEY_NEVREAN, SPECIES_VOX,
-	)
-
 	species_flags = NO_SCAN | NO_INFECT | NO_DEFIB //Dying as a chimera is, quite literally, a death sentence. Well, if it wasn't for their revive, that is.
 	species_spawn_flags = SPECIES_SPAWN_CHARACTER | SPECIES_SPAWN_WHITELISTED  //Whitelisted as restricted is broken.
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
@@ -83,8 +70,6 @@
 		O_INTESTINE =	/obj/item/organ/internal/intestine/xenochimera,
 		O_WEAVER = 		/obj/item/organ/internal/weaver/weak/xenochimera
 		)
-
-
 
 	unarmed_types = list(
 		/datum/melee_attack/unarmed/stomp,

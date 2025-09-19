@@ -3,12 +3,15 @@
 
 /**
  * Suppression sources.
- *
  * * These are instanced per chimeric core.
  */
 /datum/chimeric_suppression
-	/// Unused, but should be set for future use.
+	/// unique id
 	var/id
+	/// current amount
+	var/amount = 0
+	/// general susceptibility multiplier
+	var/multiplier = 1
 
 /**
  * From burns
