@@ -84,7 +84,7 @@
 /**
  * called directly, if operating standalone.
  */
-/datum/tgui_module/ui_act(action, list/params, datum/tgui/ui)
+/datum/tgui_module/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	return ..()
 
 /**

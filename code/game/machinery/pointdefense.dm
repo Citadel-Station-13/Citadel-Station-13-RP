@@ -45,7 +45,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 	ui_interact(user)
 	return TRUE
 
-/obj/machinery/pointdefense_control/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/pointdefense_control/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 

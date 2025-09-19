@@ -190,7 +190,7 @@
 		ui.set_autoupdate(FALSE)
 		ui.open()
 
-/datum/tgui_dynamic_input/ui_act(action, list/params, datum/tgui/ui)
+/datum/tgui_dynamic_input/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

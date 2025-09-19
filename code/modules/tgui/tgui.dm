@@ -90,10 +90,11 @@
  * required src_object datum The object or datum which owns the UI.
  * required interface string The interface used to render the UI.
  * optional title string The title of the UI.
+ * * (optional) parent_ui - the UI we spawned off of as a child window.
  *
  * return datum/tgui The requested UI.
  */
-/datum/tgui/New(mob/user, datum/src_object, interface, title)
+/datum/tgui/New(mob/user, datum/src_object, interface, title, datum/tgui/parent_ui)
 	log_tgui(user,
 		"new [interface] fancy [user?.client?.preferences.get_entry(/datum/game_preference_entry/toggle/tgui_fancy)]",
 		src_object = src_object)
@@ -105,8 +106,8 @@
 		src.title = title
 	src.state = src_object.ui_state(user)
 	src.parent_ui = parent_ui
-	if(parent_ui)
-		parent_ui.children += src
+	if(src.parent_ui)
+		src.parent_ui.children += src
 
 /datum/tgui/Destroy()
 	user = null
@@ -487,7 +488,7 @@
 /datum/tgui/proc/on_act_message(act_type, payload, state)
 	if(QDELETED(src) || QDELETED(src_object))
 		return
-	if(src_object.ui_act(act_type, payload, src, state))
+	if(src_object.ui_act(act_type, payload, src, state, new /datum/event_args/actor(usr)))
 		SStgui.update_uis(src_object)
 
 //* Advanced API - Updates *//

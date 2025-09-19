@@ -181,7 +181,7 @@
 		ui_status_user_is_abled(user, lure),
 	)
 
-/datum/fishing_challenge/ui_act(action, list/params, datum/tgui/ui)
+/datum/fishing_challenge/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

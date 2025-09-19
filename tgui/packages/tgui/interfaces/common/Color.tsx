@@ -214,7 +214,7 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
   state: ColorPickerState = this.assembleState();
 
   render() {
-    let colorAsString = () => this.props.allowAlpha ? EncodeRGBAString(
+    let stateColorAsString = () => this.props.allowAlpha ? EncodeRGBAString(
       this.state.cRed,
       this.state.cGreen,
       this.state.cBlue,
@@ -265,7 +265,13 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
                               ...prev,
                               cRed: val,
                             }));
-                            this.props.setColor(colorAsString());
+                            this.props.setColor(EncodeRGBAString(
+                              val,
+                              this.state.cGreen,
+                              this.state.cBlue,
+                              this.state.cAlpha,
+                              true,
+                            ));
                           }} />
                       </Stack.Item>
                       <Stack.Item>
@@ -280,7 +286,13 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
                               ...prev,
                               cGreen: val,
                             }));
-                            this.props.setColor(colorAsString());
+                            this.props.setColor(EncodeRGBAString(
+                              this.state.cRed,
+                              val,
+                              this.state.cBlue,
+                              this.state.cAlpha,
+                              true,
+                            ));
                           }} />
                       </Stack.Item>
                       <Stack.Item>
@@ -295,7 +307,13 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
                               ...prev,
                               cBlue: val,
                             }));
-                            this.props.setColor(colorAsString());
+                            this.props.setColor(EncodeRGBAString(
+                              this.state.cRed,
+                              this.state.cGreen,
+                              val,
+                              this.state.cAlpha,
+                              true,
+                            ));
                           }} />
                       </Stack.Item>
                     </Stack>
@@ -317,7 +335,13 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
                               cGreen: g,
                               cBlue: b,
                             }));
-                            this.props.setColor(colorAsString());
+                            this.props.setColor(EncodeRGBAString(
+                              r,
+                              g,
+                              b,
+                              this.state.cAlpha,
+                              true,
+                            ));
                           }} />
                       </Stack.Item>
                       <Stack.Item textAlign="center">
@@ -335,7 +359,13 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
                               cGreen: g,
                               cBlue: b,
                             }));
-                            this.props.setColor(colorAsString());
+                            this.props.setColor(EncodeRGBAString(
+                              r,
+                              g,
+                              b,
+                              this.state.cAlpha,
+                              true,
+                            ));
                           }} />
                       </Stack.Item>
                       <Stack.Item textAlign="center">
@@ -353,7 +383,13 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
                               cGreen: g,
                               cBlue: b,
                             }));
-                            this.props.setColor(colorAsString());
+                            this.props.setColor(EncodeRGBAString(
+                              r,
+                              g,
+                              b,
+                              this.state.cAlpha,
+                              true,
+                            ));
                           }} />
                       </Stack.Item>
                     </Stack>
@@ -373,12 +409,18 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
                                 ...prev,
                                 cAlpha: val,
                               }));
-                              this.props.setColor(colorAsString());
+                              this.props.setColor(EncodeRGBAString(
+                                this.state.cRed,
+                                this.state.cBlue,
+                                this.state.cGreen,
+                                this.state.cAlpha,
+                                true,
+                              ));
                             }} />
                         </Stack.Item>
                       )}
                       <Stack.Item>
-                        <Input value={colorAsString()} onChange={(val) => {
+                        <Input value={stateColorAsString()} onChange={(val) => {
                           try {
                             let [r, g, b, a] = DecodeRGBString(val);
                             this.setState((prev) => ({
@@ -394,7 +436,7 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
                         }} width="90px" />
                       </Stack.Item>
                       <Stack.Item>
-                        <ColorBox width="90px" height="90px" color={colorAsString()} />
+                        <ColorBox width="90px" height="90px" color={stateColorAsString()} />
                       </Stack.Item>
                     </Stack>
                   </Stack.Item>
@@ -420,15 +462,15 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
                               minValue={-10} maxValue={10}
                               step={0.01} value={this.state.cMatrix[ifull]}
                               onChange={(val) => {
+                                let modified = this.state.cMatrix.slice() as ByondColorMatrixRGBAC;
+                                modified[ifull] = val;
                                 this.setState((prev) => {
-                                  let modified = prev.cMatrix.slice();
-                                  modified[ifull] = val;
                                   return {
                                     ...prev,
-                                    cMatrix: modified as ByondColorMatrixRGBAC,
+                                    cMatrix: modified,
                                   };
                                 });
-                                this.props.setColor(this.state.cMatrix);
+                                this.props.setColor(modified);
                               }} />
                           </Table.Cell>
                         );
@@ -449,15 +491,15 @@ export class ColorPicker extends Component<ColorPickerProps, ColorPickerState> {
                               minValue={-10} maxValue={10}
                               step={0.01} value={round(this.state.cMatrix[ifull], 4)}
                               onChange={(val) => {
+                                let modified = this.state.cMatrix.slice() as ByondColorMatrixRGBAC;
+                                modified[ifull] = val;
                                 this.setState((prev) => {
-                                  let modified = prev.cMatrix.slice();
-                                  modified[ifull] = val;
                                   return {
                                     ...prev,
                                     cMatrix: modified as ByondColorMatrixRGBAC,
                                   };
                                 });
-                                this.props.setColor(ConvertByondColorMatrixRGBACToRGBC(this.state.cMatrix));
+                                this.props.setColor(ConvertByondColorMatrixRGBACToRGBC(modified));
                               }} />
                           </Table.Cell>
                         );
