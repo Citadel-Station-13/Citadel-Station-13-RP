@@ -412,6 +412,26 @@
 		prig.forceMove(humanform)
 		return
 
+	if(istype(loc, /obj/item/holder))
+		var/obj/item/holder/blobholder = loc
+		if(istype(blobholder.loc, /mob/living/carbon/human))
+			var/mob/living/carbon/human/H = blobholder.loc
+			var/back = FALSE
+			if(blobholder == H.item_by_slot_id(SLOT_ID_BACK))
+				back = TRUE
+			var/obj/item/hardsuit/protean/prig
+			for(var/obj/item/hardsuit/protean/O in humanform.contents)
+				prig = O
+				break
+			if(prig)
+				prig.forceMove(get_turf(src))
+				forceMove(prig)
+				blobholder.update_state()
+				if(back)
+					H.equip_to_slot_if_possible(prig,SLOT_ID_BACK, INV_OP_FORCE | INV_OP_DIRECTLY_EQUIPPING | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
+				return
+				
+
 	if(isturf(loc))
 		var/obj/item/hardsuit/protean/prig
 		for(var/obj/item/hardsuit/protean/O in humanform.contents)
