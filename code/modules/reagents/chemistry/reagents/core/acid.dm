@@ -61,7 +61,7 @@
 	if(metabolism.legacy_volume_remaining < meltdose) // Not enough to melt anything
 		M.take_random_targeted_damage(brute = 0, burn = removed * power * 0.2) //burn damage, since it causes chemical burns. Acid doesn't make bones shatter, like brute trauma would.
 		return
-	if(!M.unacidable && removed > 0)
+	if(&& removed > 0)
 		if(istype(M, /mob/living/carbon/human) && metabolism.legacy_volume_remaining >= meltdose)
 			var/mob/living/carbon/human/H = M
 			var/obj/item/organ/external/affecting = H.get_organ(BP_HEAD)

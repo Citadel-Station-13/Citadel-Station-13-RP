@@ -1,5 +1,57 @@
+/**
+ * ## Carbon Mobs
+ *
+ * One of the base-types of 'real' (living) mobs.
+ *
+ * ## Composition:
+ * * Organs: Comprises our internals, able to hook onto events, life processing, etc.
+ *           Organs can be internal or external. External organs are bodyparts.
+ *           All organs, minus root organs, have a parent organ.
+ *           We can have one or many root organs.
+ * * Biologies: Our life handling. Organs can have separate biologies.
+ *              See `code/modules/biology` for details.
+ * * Species: Our template. Determines what we start with and should have.
+ */
 /mob/living/carbon
-	//* Organs, Reagents, Biologies *//
+	//* Biologies *//
+
+	#warn impl
+
+	//* Organs *//
+
+	/// All /obj/item/organ/internal.
+	var/list/obj/item/organ/internal/internal_organs = list()
+	/// All /obj/item/organ/external.
+	var/list/obj/item/organ/external/external_organs = list()
+	/// Keyed organs.
+	///
+	/// Things to keep in mind:
+	/// * An organ being in this list usually but not always means it's the only organ of that key in us.
+	///   This is why you shouldn't use this instead of helper procs; organ semnatics are complex and is definitely
+	///   handled by the organ itself. Global rules for what can/can't happen are rare.
+	///
+	/// Allowed usages:
+	/// * Directly accessing an organ by key.
+	///   If you do this, you must know what the semantics of that key is. It doesn't necessarily
+	///   even need to be a single organ!
+	///
+	/// Disallowed usages:
+	/// * Accessing an organ by **targeting zone.** Despite targeting zone being the same BP_* keys as
+	///   the ones we're using here, we do internal transforms and translations to translate from the
+	///   targeting doll to the real organ.
+	/// * Pretty much any other use case.
+	///
+	/// If you're using it for some other reason, you should consider using or making a helper instead.
+	var/list/keyed_organs = list()
+	/// Same as `keyed_organs`, but also includes `legacy_organ_tag`.
+	///
+	/// * This is so we don't have to rewrite the whole codebase, instead of gradually converting
+	///   organs over to keys once we verify their behavior and ensure that there's a point
+	///   to continuing to key said organ.
+	var/list/legacy_organ_by_tag = list()
+	#warn impl; make sure organ_key gets put in here anyways
+
+	//* Reagents, *//
 
 	/// Our blood holder.
 	var/datum/blood_holder/blood_holder
@@ -15,12 +67,18 @@
 		default_language = RSlanguages.legacy_resolve_language_name(species_language)
 
 /mob/living/carbon/Destroy()
+	QDEL_LIST(internal_organs)
+	QDEL_LIST(external_organs)
+	//! REMOVE THESE WHEN ORGANS ARE FULLY REFACTORED
+	if(!length(keyed_organs))
+		stack_trace("keyed organs wasn't cleared")
+	if(!length(legacy_organ_by_tag))
+		stack_trace("legacy organ lookup waasn't cleared")
+	//! END
+	QDEL_NULL(ingested)
+	QDEL_NULL(touching)
 	QDEL_NULL(blood_holder)
-	qdel(ingested)
-	qdel(touching)
 	// We don't qdel(bloodstr) because it's the same as qdel(reagents)
-	for(var/guts in internal_organs)
-		qdel(guts)
 	for(var/food in stomach_contents)
 		qdel(food)
 	return ..()
@@ -32,16 +90,6 @@
 	inventory.set_hand_count(2)
 	if(species) // todo: sigh we need to talk about init order; this shouldn't be needed
 		inventory.set_inventory_slots(species.inventory_slots)
-
-/mob/living/carbon/BiologicalLife(seconds, times_fired)
-	if((. = ..()))
-		return
-
-	handle_viruses()
-
-	// Increase germ_level regularly
-	if(germ_level < GERM_LEVEL_AMBIENT && prob(30))	//if you're just standing there, you shouldn't get more germs beyond an ambient level
-		germ_level++
 
 /mob/living/carbon/gib()
 	for(var/mob/M in src)
@@ -63,7 +111,7 @@
 			src.visible_message("[src] examines [T.himself].", \
 				SPAN_NOTICE("You check yourself for injuries."))
 
-			for(var/obj/item/organ/external/org in H.organs)
+			for(var/obj/item/organ/external/org as anything in H.external_organs)
 				var/list/status = list()
 				var/brutedamage = org.brute_dam
 				var/burndamage = org.burn_dam

@@ -283,7 +283,7 @@
 
 	//splints
 	for(var/organ in BP_ALL)
-		var/obj/item/organ/external/o = get_organ(organ)
+		var/obj/item/organ/external/o = legacy_organ_by_zone(organ)
 		if(o && o.splinted && o.splinted.loc == o)
 			. += SPAN_WARNING("[T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(o.splinted)] on [T.his] [o.name]!")
 

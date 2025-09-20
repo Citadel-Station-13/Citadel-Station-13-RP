@@ -82,7 +82,7 @@ var/list/wrapped_species_by_ref = list()
 		H.g_facial = H.g_skin
 		H.b_facial = H.b_skin
 
-	for(var/obj/item/organ/external/E in H.organs)
+	for(var/obj/item/organ/external/E as anything in H.external_organs)
 		E.sync_colour_to_human(H)
 
 // Verbs follow.
@@ -214,7 +214,7 @@ var/list/wrapped_species_by_ref = list()
 		g_facial = g_skin
 		b_facial = b_skin
 
-	for(var/obj/item/organ/external/E in organs)
+	for(var/obj/item/organ/external/E in external_organs)
 		E.sync_colour_to_human(src)
 
 	regenerate_icons()
@@ -275,7 +275,7 @@ var/list/wrapped_species_by_ref = list()
 	g_eyes = new_color_rgb_list[2]
 	b_eyes = new_color_rgb_list[3]
 	// Now sync the organ's eye_colour list, if possible
-	var/obj/item/organ/internal/eyes/eyes = internal_organs_by_name[O_EYES]
+	var/obj/item/organ/internal/eyes/eyes = keyed_organs[ORGAN_KEY_EYES]
 	if(istype(eyes))
 		eyes.update_colour()
 
@@ -504,7 +504,7 @@ var/list/wrapped_species_by_ref = list()
 
 	last_special = world.time + 50
 
-	for(var/limb in src.organs)
+	for(var/limb in src.external_organs)
 		var/obj/item/organ/external/L = limb
 		L.transparent = !L.transparent
 	visible_message(SPAN_NOTICE("\The [src]'s internal composition seems to change."))
@@ -523,7 +523,7 @@ var/list/wrapped_species_by_ref = list()
 	var/new_transparency = input("Pick a number between 100 and 255, 255 being no transparency.", "Change Transparency") as num|null
 	if(new_transparency)
 		new_transparency = clamp(new_transparency,100,255)
-		var/obj/item/organ/external/head/H = src.get_organ(BP_HEAD)
+		var/obj/item/organ/external/head/H = src.legacy_organ_by_zone(BP_HEAD)
 		H.hair_opacity = new_transparency
 		visible_message(SPAN_NOTICE("\The [src]'s \"hair\" composition seems to change."))
 		update_hair()
