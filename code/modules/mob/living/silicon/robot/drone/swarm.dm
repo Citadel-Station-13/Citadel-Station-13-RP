@@ -30,8 +30,8 @@
 
 	mob_size = MOB_LARGE
 
-	law_type = /datum/ai_laws/swarm_drone
-	module_type = /obj/item/robot_module/drone/swarm
+	law_type = /datum/ai_lawset/swarmer
+	module_type = /obj/item/robot_module_legacy/drone/swarm
 
 	hat_x_offset = 0
 	hat_y_offset = -10
@@ -71,8 +71,8 @@
 	icon_state = "swarmer_ranged"
 	iff_factions = MOB_IFF_FACTION_SWARMER
 
-	law_type = /datum/ai_laws/swarm_drone/soldier
-	module_type = /obj/item/robot_module/drone/swarm/ranged
+	law_type = /datum/ai_lawset/swarmer/soldier
+	module_type = /obj/item/robot_module_legacy/drone/swarm/ranged
 
 	spell_setup = list(
 		/spell/aoe_turf/conjure/swarmer,
@@ -87,8 +87,8 @@
 	icon_state = "swarmer_melee"
 	iff_factions = MOB_IFF_FACTION_SWARMER
 
-	law_type = /datum/ai_laws/swarm_drone/soldier
-	module_type = /obj/item/robot_module/drone/swarm/melee
+	law_type = /datum/ai_lawset/swarmer/soldier
+	module_type = /obj/item/robot_module_legacy/drone/swarm/melee
 
 	spell_setup = list(
 		/spell/aoe_turf/conjure/swarmer,

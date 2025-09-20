@@ -165,7 +165,7 @@
 
 	for(var/mob/living/silicon/robot/robot in GLOB.mob_list)
 		// No combat/syndicate cyborgs, no drones, and no AI shells.
-		if(!robot.scrambledcodes && !robot.shell && !(robot.module && robot.module.hide_on_manifest))
+		if(!robot.scrambledcodes && !robot.shell && robot.module?.legacy_show_on_manifest)
 			silicons[robot.name] = "[robot.modtype] [robot.braintype]"
 
 	. = list()

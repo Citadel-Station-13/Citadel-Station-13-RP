@@ -33,3 +33,8 @@
 	id = "mob-move_intent"
 	variable = TRUE
 	priority = MOVESPEED_PRIORITY_MOVEMENT_INTENT
+
+/datum/movespeed_modifier/mob_vtec_upgrade
+	id = "mob-vtec_upgrade"
+	variable = TRUE
+	movespeed_modifier_flags = MOVESPEED_MODIFIER_REQUIRES_GRAVITY

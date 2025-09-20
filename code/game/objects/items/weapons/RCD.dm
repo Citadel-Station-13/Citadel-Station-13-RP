@@ -1,4 +1,3 @@
-// Contains the rapid construction device.
 /obj/item/rcd
 	name = "rapid construction device"
 	desc = "A device used to rapidly build and deconstruct. Reload with compressed matter cartridges."
