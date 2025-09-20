@@ -1,5 +1,6 @@
+import { Button, Section } from 'tgui-core/components';
+
 import { useBackend } from '../backend';
-import { Button, Section } from '../components';
 import { Window } from '../layouts';
 
 interface AtmosAlertConsoleData {
@@ -12,8 +13,8 @@ interface AtmosAlert {
   ref: string;
 }
 
-export const AtmosAlertConsole = (props, context) => {
-  const { act, data } = useBackend<AtmosAlertConsoleData>(context);
+export const AtmosAlertConsole = (props) => {
+  const { act, data } = useBackend<AtmosAlertConsoleData>();
   return (
     <Window
       width={350}

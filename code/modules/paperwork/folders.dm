@@ -89,7 +89,7 @@
 
 	return data
 
-/obj/item/folder/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/item/folder/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

@@ -189,7 +189,7 @@
 // Calls beginning with "PRG_" are reserved for programs handling.
 // Calls beginning with "PC_" are reserved for computer handling (by whatever runs the program)
 // ALWAYS INCLUDE PARENT CALL ..() OR DIE IN FIRE.
-/datum/computer_file/program/ui_act(action, list/params, datum/tgui/ui)
+/datum/computer_file/program/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return 1
 	if(computer)

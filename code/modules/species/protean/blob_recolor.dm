@@ -65,7 +65,7 @@
 	.["item"]["sprite"] = icon2base64(get_flat_icon(color_target,dir=SOUTH,no_anim=TRUE))
 	.["item"]["preview"] = icon2base64(build_preview())
 
-/datum/protean_blob_recolor/ui_act(action, list/params, datum/tgui/ui)
+/datum/protean_blob_recolor/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

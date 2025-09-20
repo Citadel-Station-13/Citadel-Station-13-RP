@@ -194,7 +194,7 @@
 
 	frequency.post_signal(null, status_signal)
 
-/datum/tgui_module_old/communications/ui_act(action, list/params, datum/tgui/ui)
+/datum/tgui_module_old/communications/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 	if((LEGACY_MAP_DATUM) && !(get_z(usr) in (LEGACY_MAP_DATUM).contact_levels))

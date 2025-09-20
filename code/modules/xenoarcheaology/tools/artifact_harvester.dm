@@ -72,7 +72,7 @@
 				data["info"]["inserted_battery"]["artifact_id"] = "N/A"
 	return data
 
-/obj/machinery/artifact_harvester/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/artifact_harvester/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 

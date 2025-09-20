@@ -1,13 +1,14 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
+import { LabeledList, Section } from "tgui-core/components";
+
 import { useBackend } from "../../backend";
-import { LabeledList, Section } from "../../components";
-import { SectionProps } from "../../components/Section";
+import { SectionProps } from "../../components";
 import { AtmosFilterList, AtmosGasGroupFlags, AtmosGasIDs, GasContext } from "../common/Atmos";
 import { AtmosPortable } from "../common/AtmosPortable";
 
-interface AtmosPortableScrubberControlProps extends SectionProps{
+interface AtmosPortableScrubberControlProps extends SectionProps {
   readonly atmosContext: GasContext;
   readonly scrubbingIds: AtmosGasIDs;
   readonly scrubbingGroups: AtmosGasGroupFlags;
@@ -15,7 +16,7 @@ interface AtmosPortableScrubberControlProps extends SectionProps{
   readonly toggleGroup?: (group) => void;
 }
 
-export const AtmosPortableScrubberControl = (props: AtmosPortableScrubberControlProps, context) => {
+export const AtmosPortableScrubberControl = (props: AtmosPortableScrubberControlProps) => {
   return (
     <Section title="Scrubbing" {...props}>
       <AtmosFilterList
@@ -35,8 +36,8 @@ export interface AtmosPortableScubberData {
   moleRate: number;
 }
 
-export const AtmosPortableScrubber = (props, context) => {
-  const { data, act } = useBackend<AtmosPortableScubberData>(context);
+export const AtmosPortableScrubber = (props) => {
+  const { data, act } = useBackend<AtmosPortableScubberData>();
   return (
     <AtmosPortable
       minimumWidth={430}

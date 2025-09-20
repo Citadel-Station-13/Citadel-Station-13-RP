@@ -1,7 +1,9 @@
-import { round } from "common/math";
-import { BooleanLike } from "common/react";
-import { useBackend, useLocalState } from "../../backend";
-import { Button, Dropdown, Input, NumberInput, Section, Stack, Tooltip } from "../../components";
+import { useState } from "react";
+import { Button, Dropdown, Input, NumberInput, Section, Stack, Tooltip } from "tgui-core/components";
+import { round } from "tgui-core/math";
+import { BooleanLike } from "tgui-core/react";
+
+import { useBackend } from "../../backend";
 import { Window } from "../../layouts";
 
 interface UIDynamicInputContext {
@@ -64,9 +66,9 @@ type NumberOption = number | null | undefined;
 type ListOption = string | null | undefined;
 type ToggleOption = BooleanLike;
 
-export const UIDynamicInputModal = (props, context) => {
-  const { data, act } = useBackend<UIDynamicInputContext>(context);
-  const [options, setOptions] =useLocalState<Record<string, any>>(context, 'options', {});
+export const UIDynamicInputModal = (props) => {
+  const { data, act } = useBackend<UIDynamicInputContext>();
+  const [options, setOptions] = useState<Record<string, any>>({});
   return (
     <Window title={data.title}>
       <Window.Content>
@@ -137,7 +139,7 @@ export const UIDynamicInputModal = (props, context) => {
 const preprocessOptions = (picked: Record<string, any>, query: Record<string, UIDynamicInputEntry>) => {
   let built = {};
   for (let key in Object.keys(query)) {
-    built[key] = picked[key] === undefined? query[key].default : picked[key];
+    built[key] = picked[key] === undefined ? query[key].default : picked[key];
   }
   return built;
 };
@@ -150,7 +152,7 @@ interface DynamicEntryProps {
   readonly pick: (val: any) => void;
 }
 
-const DynamicEntry = (props: DynamicEntryProps, context) => {
+const DynamicEntry = (props: DynamicEntryProps) => {
   switch (props.entry.type) {
     case UIDynamicInputType.ListSingle:
       return (
@@ -176,12 +178,12 @@ interface DynamicEntryNumberProps extends DynamicEntryProps {
   current: NumberOption;
 }
 
-const DynamicEntryNumber = (props: DynamicEntryNumberProps, context) => {
-  let current = props.current === undefined? props.entry.default === null? 0 : props.entry.default : props.current;
+const DynamicEntryNumber = (props: DynamicEntryNumberProps) => {
+  let current = props.current === undefined ? props.entry.default === null ? 0 : props.entry.default : props.current;
   return (
-    <NumberInput value={current} minValue={props.entry.constraints[0]} maxValue={props.entry.constraints[1]}
-      onChange={(e, val) => props.pick(
-        props.entry.constraints[2] === null? val : round(val, props.entry.constraints[2])
+    <NumberInput value={current || "---"} step={0.0001} minValue={props.entry.constraints[0]} maxValue={props.entry.constraints[1]}
+      onChange={(val) => props.pick(
+        props.entry.constraints[2] === null ? val : round(val, props.entry.constraints[2])
       )} width="100%" />
   );
 };
@@ -191,11 +193,11 @@ interface DynamicEntryStringProps extends DynamicEntryProps {
   current: StringOption;
 }
 
-const DynamicEntryString = (props: DynamicEntryStringProps, context) => {
-  let current = props.current === undefined? props.entry.default === null? "" : props.entry.default : props.current;
+const DynamicEntryString = (props: DynamicEntryStringProps) => {
+  let current = props.current === undefined ? props.entry.default === null ? "" : props.entry.default : props.current;
   return (
-    <Input value={current} maxLength={props.entry.constraints[0]}
-      onInput={(e, val) => props.pick(
+    <Input value={current || undefined} maxLength={props.entry.constraints[0]}
+      onChange={(val) => props.pick(
         val
       )} width="100%" />
   );
@@ -206,9 +208,9 @@ interface DynamicEntryPickProps extends DynamicEntryProps {
   current: ListOption;
 }
 
-const DynamicEntryPick = (props: DynamicEntryPickProps, context) => {
-  let current = props.current === undefined? (
-    props.entry.constraints.length > 0? props.entry.constraints[0] : ""
+const DynamicEntryPick = (props: DynamicEntryPickProps) => {
+  let current = props.current === undefined ? (
+    props.entry.constraints.length > 0 ? props.entry.constraints[0] : ""
   ) : props.current;
   return (
     <Dropdown
@@ -223,8 +225,8 @@ interface DynamicEntryToggleProps extends DynamicEntryProps {
   current: ToggleOption;
 }
 
-const DynamicEntryToggle = (props: DynamicEntryToggleProps, context) => {
-  let current = props.current === undefined? !!props.entry.default : props.current;
+const DynamicEntryToggle = (props: DynamicEntryToggleProps) => {
+  let current = props.current === undefined ? !!props.entry.default : props.current;
   return (
     <Button.Checkbox
       selected={current}

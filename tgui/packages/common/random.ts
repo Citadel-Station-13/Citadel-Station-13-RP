@@ -27,6 +27,6 @@ export const randomPick = <T>(array: T[]) => {
  * Return 1 with probability P percent; otherwise 0
  */
 export const randomProb = (probability: number) => {
-  const normalized = clamp(probability, 0, 100)/100;
+  const normalized = clamp(probability, 0, 100) / 100;
   return Math.random() <= normalized;
 };

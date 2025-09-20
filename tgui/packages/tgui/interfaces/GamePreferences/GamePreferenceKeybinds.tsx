@@ -2,14 +2,15 @@
  * @file
  * @license MIT
  */
-import { IEKeyboardEventKeycodeToBYOND } from "common/keyboard";
-import { KEY_ALT, KEY_CTRL, KEY_ESCAPE, KEY_SHIFT } from "common/keycodes";
-import { BooleanLike } from "common/react";
-import { Component, InfernoNode } from "inferno";
+import { keyCodeToByond } from "common/keycodes";
+import { Component, ReactNode } from "react";
+import { Box, Button, Dimmer, Section, Stack, Table, Tooltip } from "tgui-core/components";
+import { KeyEvent } from "tgui-core/events";
+import { listenForKeyEvents } from "tgui-core/hotkeys";
+import { KEY_ALT, KEY_CTRL, KEY_ESCAPE, KEY_SHIFT } from "tgui-core/keycodes";
+import { BooleanLike } from "tgui-core/react";
+
 import { useLocalState } from "../../backend";
-import { Box, Button, Dimmer, Section, Stack, Table, Tooltip } from "../../components";
-import { KeyEvent } from "../../events";
-import { listenForKeyEvents } from "../../hotkeys";
 
 export interface GamePreferenceKeybindMiddlware {
   readonly hotkeyMode: BooleanLike;
@@ -94,7 +95,7 @@ const HOTKEY_MODE_DESCRIPTION = (
   </>
 );
 
-export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenProps, context) => {
+export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenProps) => {
   // keybinds are naturally sorted by compile order thanks to typesof()
   // let's not unnecessarily smash that.
   const sortedByCategory = preprocessKeybinds(props.keybinds);
@@ -107,7 +108,7 @@ export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenPr
   // that would probably be smart.
   // oh well! problems for later.
   // (we all know no one's touching this again)
-  const [activeCapture, setActiveCapture] = useLocalState<InfernoNode | null>(context, 'activeKeyCapture', null);
+  const [activeCapture, setActiveCapture] = useLocalState<ReactNode | null>('keybindCapture', null);
 
   return (
     <Section fill scrollable>
@@ -117,7 +118,7 @@ export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenPr
             <Stack>
               <Stack.Item grow>
                 <Tooltip content={HOTKEY_MODE_DESCRIPTION}>
-                  <Box width="100%" height="100%" style={{ display: "flex", "align-content": "center" }}>
+                  <Box width="100%" height="100%" style={{ display: "flex", alignContent: "center" }}>
                     <Box>
                       Hotkey Mode
                     </Box>
@@ -140,9 +141,9 @@ export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenPr
             ([c1, k1], [c2, k2]) => c1.localeCompare(c2)
           ).map(([category, keybinds]) => (
             <Stack.Item key={category}>
-              <h2 style={{ "text-align": "center" }}>{category}</h2>
+              <h2 style={{ textAlign: "center" }}>{category}</h2>
               <Table style={{
-                "border-bottom": "1px solid #999999",
+                borderBottom: "1px solid #999999",
               }}>
                 {keybinds.map((keybind) => {
                   let boundKeys: string[] = keysByKeybind[keybind.id] || [];
@@ -150,7 +151,7 @@ export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenPr
                     <Table.Row key={keybind.id}
                       height={KEYBIND_ROW_HEIGHT_I_FUCKING_HATE_TABLES_WEBVIEW_WHEN}
                       style={{
-                        "border-top": "1px solid #999999",
+                        borderTop: "1px solid #999999",
                       }}>
                       <Table.Cell width="40%" maxWidth="40%">
                         <Tooltip content={keybind.desc}>
@@ -158,12 +159,12 @@ export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenPr
                             height={KEYBIND_ROW_HEIGHT_I_FUCKING_HATE_TABLES_WEBVIEW_WHEN}
                             style={{
                               display: "flex",
-                              "align-items": "center",
+                              alignItems: "center",
                               margin: "0 0",
                               padding: "0 0",
                             }}>
                             <Box bold overflowX="hidden" style={{
-                              "white-space": "nowrap",
+                              whiteSpace: "nowrap",
                             }}>
                               {keybind.name}
                             </Box>
@@ -200,19 +201,20 @@ export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenPr
                               }}
                               style={{
                                 display: "flex",
-                                "align-items": "center",
-                                "justify-content": "center",
+                                alignItems: "center",
+                                justifyContent: "center",
                                 margin: "0 0",
                                 padding: "0, 0",
                               }}>
                               <Box width="100%" overflowX="hidden"
                                 italic={!bind}
-                                textColor={bind? undefined : "#777777"}>
+                                textColor={bind ? undefined : "#777777"}>
                                 {bind || "Add Bind..."}
                               </Box>
                             </Box>
                           </Table.Cell>
-                        ); })}
+                        );
+                      })}
                     </Table.Row>
                   );
                 })}
@@ -223,10 +225,6 @@ export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenPr
       </Stack>
     </Section>
   );
-};
-
-const keyCodeToByond = (code: number): string => {
-  return IEKeyboardEventKeycodeToBYOND[code];
 };
 
 // todo: why are we not doing KeyListener?
@@ -254,8 +252,8 @@ class GamePreferenceKeybindCapture extends Component<{
   };
   unmountHook?: Function;
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.keydownHandler = (e) => {
       e.event.preventDefault();
       this.setState((prev) => {
@@ -292,7 +290,7 @@ class GamePreferenceKeybindCapture extends Component<{
         shift: this.state.shift,
         ctrl: this.state.ctrl,
         numpad: this.state.numpad,
-        key: this.state.terminal? keyCodeToByond(this.state.terminal) : null,
+        key: this.state.terminal ? keyCodeToByond(this.state.terminal) : null,
       });
     };
   }
@@ -324,12 +322,12 @@ class GamePreferenceKeybindCapture extends Component<{
                     Existing keybind is <b>{this.props.existing}.</b><br />
                   </>
                 )}
-                Press <b>Esc</b> to {this.props.existing? "removing existing bind" : "cancel"}.
+                Press <b>Esc</b> to {this.props.existing ? "removing existing bind" : "cancel"}.
               </Box>
             </Stack.Item>
             <Stack.Item>
               {this.state.alt && "Alt-"}{this.state.ctrl && "Ctrl-"}{this.state.shift && "Shift-"}
-              {this.state.numpad && "Numpad"}{this.state.terminal? keyCodeToByond(this.state.terminal) : ""}
+              {this.state.numpad && "Numpad"}{this.state.terminal ? keyCodeToByond(this.state.terminal) : ""}
             </Stack.Item>
           </Stack>
         </Section>

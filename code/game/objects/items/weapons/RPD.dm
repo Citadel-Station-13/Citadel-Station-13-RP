@@ -156,7 +156,7 @@
 	data["init_directions"] = init_directions
 	return data
 
-/obj/item/pipe_dispenser/ui_act(action, list/params, datum/tgui/ui)
+/obj/item/pipe_dispenser/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

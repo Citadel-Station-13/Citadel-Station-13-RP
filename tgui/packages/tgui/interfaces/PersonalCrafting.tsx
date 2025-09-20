@@ -1,8 +1,7 @@
-import { filter, sortBy } from 'common/collections';
-import { flow } from 'common/fp';
-import { BooleanLike, classes } from 'common/react';
+import { Button, Dimmer, Icon, Section, Stack, Table } from 'tgui-core/components';
+import { BooleanLike, classes } from 'tgui-core/react';
+
 import { useBackend } from '../backend';
-import { Button, Dimmer, Icon, Section, Stack, Table } from '../components';
 import { Window } from '../layouts';
 
 type RawRecipe = {
@@ -139,8 +138,8 @@ const isCategorySelected = (data: Data, item: Category | Recipe) => (
   && (!data.dm_subcategory || data.dm_subcategory === item.dm_subcategory)
 );
 
-export const PersonalCrafting = (props, context) => {
-  const { act, data: rawData } = useBackend<RawData>(context);
+export const PersonalCrafting = (props) => {
+  const { act, data: rawData } = useBackend<RawData>();
   const data = remapData(rawData);
 
   const {
@@ -151,18 +150,17 @@ export const PersonalCrafting = (props, context) => {
     groups,
   } = data;
 
-  const shownRecipes = flow([
-    filter<Recipe>((recipe) => (
-      // Show selected category only
-      isCategorySelected(data, recipe)
-      // If craftable only is selected, then filter by craftability
-      && (!display_craftable_only || recipe.craftable)
-    )),
-    sortBy<Recipe>((recipe) => [
-      -recipe.craftable,
-      recipe.name,
-    ]),
-  ])(recipes);
+  const shownRecipes = recipes
+    .filter(recipe => isCategorySelected(data, recipe) && (!display_craftable_only || recipe.craftable))
+    .sort((a, b) => {
+      if (a.craftable && !b.craftable) {
+        return -1;
+      } else if (b.craftable && !a.craftable) {
+        return 1;
+      } else {
+        return a.name.localeCompare(b.name);
+      }
+    });
 
   return (
     <Window title="Crafting Menu" width={700} height={700}>
@@ -233,9 +231,9 @@ type CraftingListProps = {
   readonly compact?: boolean;
 };
 
-const CraftingList = (props: CraftingListProps, context) => {
+const CraftingList = (props: CraftingListProps) => {
   const { recipes = [], compact } = props;
-  const { act } = useBackend<RawData>(context);
+  const { act } = useBackend<RawData>();
 
   if (compact) {
     return <CompactCraftingList recipes={recipes} />;
@@ -284,9 +282,9 @@ const CraftingList = (props: CraftingListProps, context) => {
   )) as any;
 };
 
-const CompactCraftingList = (props: CraftingListProps, context) => {
+const CompactCraftingList = (props: CraftingListProps) => {
   const { recipes = [] } = props;
-  const { act } = useBackend<RawData>(context);
+  const { act } = useBackend<RawData>();
 
   return (
     <table>

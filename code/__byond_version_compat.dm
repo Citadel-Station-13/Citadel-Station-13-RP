@@ -15,6 +15,11 @@
 #error Please consider downgrading to 514.1575 or lower.
 #endif
 
+// 516.1660 broke (x in vars), which breaks a lot of things.
+#if (DM_VERSION == 516 && DM_BUILD == 1660)
+#error This version of BYOND (516.1660) has a bug which prevents this codebase from loading properly. If possible, update your BYOND version. Otherwise, visit www.byond.com/download/build to download an older release.
+#endif
+
 // Keep savefile compatibilty at minimum supported level
 #if DM_VERSION >= 515
 /savefile/byond_version = MIN_COMPILER_VERSION
@@ -36,10 +41,16 @@
 /// Call by name proc reference, checks if the proc is existing global proc
 #define GLOBAL_PROC_REF(X) (/proc/##X)
 #else
-/// Call by name proc reference, checks if the proc exists on this type or as a global proc
+/// Call by name proc references, checks if the proc exists on either this type () (AND ONLY THIS TYPE) or as a global proc.
 #define PROC_REF(X) (nameof(.proc/##X))
-/// Call by name proc reference, checks if the proc exists on given type or as a global proc
+/// Call by name verb references, checks if the verb exists on either this type or as a global verb.
+#define VERB_REF(X) (nameof(.verb/##X))
+
+/// Call by name proc reference, checks if the proc exists on either the given type or as a global proc
 #define TYPE_PROC_REF(TYPE, X) (nameof(##TYPE.proc/##X))
+/// Call by name verb reference, checks if the verb exists on either the given type or as a global verb
+#define TYPE_VERB_REF(TYPE, X) (nameof(##TYPE.verb/##X))
+
 /// Call by name proc reference, checks if the proc is existing global proc
 #define GLOBAL_PROC_REF(X) (/proc/##X)
 #endif

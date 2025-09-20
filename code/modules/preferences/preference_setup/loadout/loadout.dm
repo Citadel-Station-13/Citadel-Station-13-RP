@@ -164,7 +164,7 @@
 	.["slot"] = tgui_loadout_selected(the_slot)
 	.["slotIndex"] = slot_index
 
-/datum/category_item/player_setup_item/loadout/gear/ui_act(action, list/params, datum/tgui/ui)
+/datum/category_item/player_setup_item/loadout/gear/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

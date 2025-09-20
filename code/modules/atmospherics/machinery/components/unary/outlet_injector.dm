@@ -109,7 +109,7 @@
 	data["max_rate"] = round(air_contents.volume)
 	return data
 
-/obj/machinery/atmospherics/component/unary/outlet_injector/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/atmospherics/component/unary/outlet_injector/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return
 

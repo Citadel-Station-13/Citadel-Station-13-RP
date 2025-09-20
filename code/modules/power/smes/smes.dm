@@ -59,6 +59,11 @@ GLOBAL_LIST_EMPTY(smeses)
 	var/should_be_mapped = 0 		// If this is set to 0 it will send out warning on New()
 	var/grid_check = FALSE 			// If true, suspends all I/O.
 
+/obj/machinery/power/smes/examine(user)
+	. = ..()
+	if(!terminal)
+		. += SPAN_WARNING("This [src] has no power terminal!")
+
 /obj/machinery/power/smes/drain_energy(datum/actor, amount, flags)
 	var/wanted = min(charge, KJ_TO_KWM(amount))
 	charge -= wanted
@@ -311,35 +316,38 @@ GLOBAL_LIST_EMPTY(smeses)
 		ui = new(user, src, "Smes", name)
 		ui.open()
 
-/obj/machinery/power/smes/ui_data(mob/user, datum/tgui/ui)
+/obj/machinery/power/smes/ui_data()
 	var/list/data = list(
 		"capacity" = capacity,
-		"capacityPercent" = round(100.0*charge/capacity, 0.1),
+		"capacityPercent" = round(100*charge/capacity, 0.1),
 		"charge" = charge,
 		"inputAttempt" = input_attempt,
 		"inputting" = inputting,
-		"inputLevel" = input_level,
-		"inputLevelMax" = input_level_max,
+		// HEY! units here were scaled since ui assumes its in KILO WATTS
+		"inputLevel" = input_level * 1000,
+		"inputLevel_text" = display_power(input_level * 1000, convert = FALSE),
+		"inputLevelMax" = input_level_max  * 1000,
 		"inputAvailable" = getTerminalPower(),
 		"outputAttempt" = output_attempt,
-		"outputting" = outputting,
-		"outputLevel" = round(output_level, 0.1),
-		"outputLevelMax" = round(output_level_max),
-		"outputUsed" = round(output_used, 0.1),
+		"outputting" = energy_to_power(outputting),
+		"outputLevel" = output_level * 1000,
+		"outputLevel_text" = display_power(output_level * 1000, convert = FALSE),
+		"outputLevelMax" = output_level_max  * 1000,
+		"outputUsed" = energy_to_power(output_used),
 	)
 	return data
 
-/obj/machinery/power/smes/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/power/smes/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 	switch(action)
 		if("tryinput")
 			inputting(!input_attempt)
-			update_icon()
+			update_appearance()
 			. = TRUE
 		if("tryoutput")
 			outputting(!output_attempt)
-			update_icon()
+			update_appearance()
 			. = TRUE
 		if("input")
 			var/target = params["target"]
@@ -375,59 +383,6 @@ GLOBAL_LIST_EMPTY(smeses)
 				. = TRUE
 			if(.)
 				output_level = clamp(target, 0, output_level_max)
-
-/*
-/obj/machinery/power/smes/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-
-	if(machine_stat & BROKEN)
-		return
-
-	// this is the data which will be sent to the ui
-	var/data[0]
-	data["nameTag"] = name_tag
-	data["storedCapacity"] = round(100.0*charge/capacity, 0.1)
-	data["storedCapacityAbs"] = round(charge/(1000*60), 0.1)
-	data["storedCapacityMax"] = round(capacity/(1000*60))
-	data["charging"] = inputting
-	data["chargeMode"] = input_attempt
-	data["chargeLevel"] = round(input_level/1000, 0.1)
-	data["chargeMax"] = round(input_level_max/1000)
-	if (terminal && terminal.powernet)
-		data["chargeLoad"] = round(terminal.powernet.avail/1000, 0.1)
-	else
-		data["chargeLoad"] = 0
-	data["outputOnline"] = output_attempt
-	data["outputLevel"] = round(output_level/1000, 0.1)
-	data["outputMax"] = round(output_level_max/1000)
-	data["outputLoad"] = round(output_used/1000, 0.1)
-
-	if(outputting)
-		data["outputting"] = 2			// smes is outputting
-	else if(!outputting && output_attempt)
-		data["outputting"] = 1			// smes is online but not outputting because it's charge level is too low
-	else
-		data["outputting"] = 0			// smes is not outputting
-
-	// update the ui if it exists, returns null if no ui is passed/found
-	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if (!ui)
-		// the ui does not exist, so we'll create a new() one
-        // for a list of parameters and their descriptions see the code docs in \code\modules\nano\nanoui.dm
-		ui = new(user, src, ui_key, "smes.tmpl", "SMES Unit", 540, 380)
-		// when the ui is first opened this is the data it will use
-		ui.set_initial_data(data)
-		// open the new ui window
-		ui.open()
-		// auto update every Master Controller tick
-		ui.set_auto_update(1)
-
-/obj/machinery/power/smes/buildable/main/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-
-	if (!ui)
-		ui = new(user, src, ui_key, "smesmain.tmpl", "SMES Unit", 540, 405)
-		ui.set_auto_update(1)
-	..()
-*/
 
 /**
  * returns available terminal power in watts

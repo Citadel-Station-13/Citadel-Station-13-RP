@@ -435,7 +435,7 @@
 
 	//Moved from code\modules\nano\nanoexternal.dm
 	// Used by the Nano UI Manager (/datum/nanomanager) to track UIs opened by this mob
-	var/list/open_uis = list()
+	var/list/open_nano_uis = list()
 
 	///List of progress bars this mob is currently seeing for actions
 	var/list/progressbars = null //for stacking do_after bars

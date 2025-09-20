@@ -1,16 +1,16 @@
-import { InfernoNode } from "inferno";
-import { BooleanLike } from "../../../common/react";
+import { ReactNode } from "react";
+import { Button, LabeledList, NumberInput, ProgressBar, Section, Stack } from "tgui-core/components";
+import { BooleanLike } from "tgui-core/react";
+
 import { useBackend } from "../../backend";
-import { Button, LabeledList, NumberInput, ProgressBar, Section, Stack } from "../../components";
-import { ComponentProps } from "../../components/Component";
-import { SectionProps } from "../../components/Section";
+import { SectionProps } from "../../components";
 import { Window } from "../../layouts";
 
 export enum AtmosComponentUIFlags {
   None = 0,
-  TogglePower = (1<<0),
-  SetPowerLimit = (1<<1),
-  SeePowerUsage = (1<<2),
+  TogglePower = (1 << 0),
+  SetPowerLimit = (1 << 1),
+  SeePowerUsage = (1 << 2),
 }
 
 export interface AtmosComponentControlProps extends SectionProps {
@@ -21,25 +21,25 @@ export interface AtmosComponentControlProps extends SectionProps {
   // set target maximum power draw
   readonly setPowerLimitAct?: (watts: number) => void;
   // additional entries
-  readonly additionalListItems?: InfernoNode;
+  readonly additionalListItems?: ReactNode;
 }
 
-export const AtmosComponentControl = (props: AtmosComponentControlProps, context) => {
+export const AtmosComponentControl = (props: AtmosComponentControlProps) => {
   return (
     <Section title="Flow" {...props}>
       <LabeledList>
         {!!(props.data.controlFlags & AtmosComponentUIFlags.TogglePower) && (
           <LabeledList.Item label="Enabled">
             <Button
-              content={props.data.on? "On" : "Off"}
+              content={props.data.on ? "On" : "Off"}
               selected={props.data.on}
               onClick={() => props.togglePowerAct?.(!props.data.on)} />
           </LabeledList.Item>
         )}
         {!!(props.data.controlFlags & AtmosComponentUIFlags.SetPowerLimit) && (
           <LabeledList.Item label="Power">
-            <NumberInput minValue={0} maxValue={props.data.powerRating}
-              value={props.data.powerSetting} onChange={(e, val) => props.setPowerLimitAct?.(val)} />
+            <NumberInput step={1} minValue={0} maxValue={props.data.powerRating}
+              value={props.data.powerSetting} onChange={(val) => props.setPowerLimitAct?.(val)} />
           </LabeledList.Item>
         )}
         {!!(props.data.controlFlags & AtmosComponentUIFlags.SeePowerUsage) && (
@@ -67,16 +67,17 @@ export interface AtmosComponentData {
   powerUsage: number;
 }
 
-export interface AtmosComponentProps extends ComponentProps {
+export interface AtmosComponentProps {
   readonly minumumHeight?: number;
   readonly minumumWidth?: number;
-  readonly additionalListItems?: InfernoNode;
+  readonly additionalListItems?: ReactNode;
+  readonly children?: ReactNode;
   // title
   readonly title: string;
 }
 
-export const AtmosComponent = (props: AtmosComponentProps, context) => {
-  const { data, act } = useBackend<AtmosComponentData>(context);
+export const AtmosComponent = (props: AtmosComponentProps) => {
+  const { data, act } = useBackend<AtmosComponentData>();
   return (
     <Window
       width={Math.max(300, props.minumumWidth || 0)}
