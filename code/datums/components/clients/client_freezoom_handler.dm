@@ -43,10 +43,13 @@
 /datum/component/client_freezoom_handler/RegisterWithParent()
 	..()
 	RegisterSignal(parent, COMSIG_CLIENT_MOUSE_MOVED, PROC_REF(on_mouse_moved))
+	on_mouse_moved(parent)
 
 /datum/component/client_freezoom_handler/UnregisterFromParent()
 	..()
-	UnregisterSignal(parent)
+	UnregisterSignal(parent, COMSIG_CLIENT_MOUSE_MOVED)
+	var/client/client = parent
+	client.pixel_x = client.pixel_y = 0
 
 /datum/component/client_freezoom_handler/proc/on_mouse_moved(client/source)
 	update_zoom(source.mouse_last_move_params)

@@ -74,8 +74,9 @@
  * * progress_anchor - override progressbar anchor location
  * * progress_instance - override progressbar instance; this progressbar instance will be **deleted** when we are finished,
  *                       and should have a goal number equal to the delay.
+ * * status_indicator - /datum/status_indicator type
  */
-/proc/do_after(mob/user, delay, atom/target, flags, mobility_flags = MOBILITY_CAN_USE, max_distance, datum/callback/additional_checks, atom/progress_anchor, datum/progressbar/progress_instance)
+/proc/do_after(mob/user, delay, atom/target, flags, mobility_flags = MOBILITY_CAN_USE, max_distance, datum/callback/additional_checks, atom/progress_anchor, datum/progressbar/progress_instance, status_indicator)
 	if(isnull(user) || QDELETED(user))
 		progress_instance?.end_progress()
 		return FALSE
@@ -111,6 +112,14 @@
 	if(isnull(progress) && !(flags & DO_AFTER_NO_PROGRESS) && (!isnull(progress_anchor || !isnull(target))))
 		progress = new(user, delay, progress_anchor || target)
 	var/start_time = world.time
+
+	var/static/status_indicator_notch = 0
+	var/status_indicator_source
+	if(status_indicator)
+		status_indicator_source = "do_after-[++status_indicator_notch]"
+		if(status_indicator_notch >= SHORT_REAL_LIMIT)
+			status_indicator_notch = -SHORT_REAL_LIMIT
+		user.add_status_indicator(status_indicator, status_indicator_source)
 
 	//* loop
 
@@ -184,6 +193,9 @@
 
 	if(!isnull(target))
 		STOP_INTERACTING_WITH(user, target, INTERACTING_FOR_DO_AFTER)
+
+	if(status_indicator_source)
+		user.remove_status_indicator(status_indicator, status_indicator_source)
 
 /**
  * Does an action to ourselves after a delay.

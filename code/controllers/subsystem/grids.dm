@@ -454,13 +454,12 @@ SUBSYSTEM_DEF(grids)
 	SHOULD_NOT_SLEEP(TRUE)
 	return FALSE
 
-//* grid area left behind if a grid move is not given an area to leave
+//* grid area left behind if a grid move is not given an area to leave *//
 
 /area/grid_orphaned
 	name = "orphaned grid area"
 	desc = "someone fucked up"
-	#warn put in debug sprite
-	// icon = 'icons/turf/area/debug.dmi'
+	icon = 'icons/turf/area/debug.dmi'
 	icon_state = "grid-orphan"
 	plane = DEBUG_PLANE
 	layer = DEBUG_LAYER_AREA_OVERLAYS

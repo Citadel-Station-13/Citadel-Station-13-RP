@@ -54,8 +54,9 @@
 /obj/item/rangefinder
 	name = "rangefinder"
 	desc = "A handy pair of binoculars used to perform rangefinding."
-
-	#warn sprite
+	icon = 'icons/items/rangefinder.dmi'
+	icon_state = "rangefinder"
+	base_icon_state = "rangefinder"
 
 	/// can be used as a rangefinder
 	var/is_rangefinder = TRUE
@@ -72,11 +73,26 @@
 	/// active laser designator target
 	var/atom/movable/laser_designator_target/active_laser_target
 
+	/// active icon dot color
+	var/icon_dot_color
+
 #warn impl
 
 /obj/item/rangefinder/Destroy()
 	QDEL_NULL(active_laser_target)
 	return ..()
+
+/obj/item/rangefinder/proc/update_icon()
+	cut_overlays()
+	. = ..()
+	if(icon_dot_color)
+		var/image/dot_overlay = image(icon, "[base_icon_state]-dot")
+		dot_overlay.color = icon_dot_color
+		add_overlay(dot_overlay)
+
+/obj/item/rangefinder/proc/set_icon_dot_color(new_color)
+	icon_dot_color = new_color
+	update_icon()
 
 /obj/item/rangefinder/on_attack_self(datum/event_args/actor/e_args)
 	. = ..()

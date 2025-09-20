@@ -17,6 +17,8 @@
 
 #warn impl
 
+/datum/orbital_deployment_zone/New(obj/orbital_deployment_marker/lower_left, obj/orbital_deployment_marker/upper_right)
+
 /datum/orbital_deployment_zone/proc/construct()
 
 /datum/orbital_deployment_zone
