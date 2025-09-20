@@ -5,8 +5,12 @@
 Atmopshere: Mix of Oxygen, Nitrogen and Phoron. DANGER
 Lifesigns: No immediate life-signs detected."}
 	in_space = 0
-	icon_state = "globe"
-	color = "#8F6E4C"
+	icon = 'icons/modules/overmap/huge_worlds.dmi'
+	bound_width = 96
+	bound_height = 96
+	icon_state = "Gray"
+	//icon_state = "globe"
+	//color = "#8F6E4C"
 	initial_generic_waypoints = list("mining_outpost")
 
 
