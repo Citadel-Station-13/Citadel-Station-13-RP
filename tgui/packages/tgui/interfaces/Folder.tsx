@@ -1,6 +1,7 @@
-import { useBackend } from "../backend";
-import { Box, Button, Section, Stack } from "../components";
-import { Window } from "../layouts";
+import { Box, Button, Section, Stack } from 'tgui-core/components';
+
+import { useBackend } from '../backend';
+import { Window } from '../layouts';
 
 type Data = {
   theme: string;
@@ -10,8 +11,8 @@ type Data = {
   contents_ref: string;
 };
 
-export const Folder = (props, context) => {
-  const { act, data } = useBackend<Data>(context);
+export const Folder = (props) => {
+  const { act, data } = useBackend<Data>();
   const { theme, bg_color, folder_name, contents, contents_ref } = data;
 
   return (

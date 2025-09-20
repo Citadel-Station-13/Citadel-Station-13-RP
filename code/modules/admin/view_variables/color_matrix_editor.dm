@@ -76,7 +76,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/color_matrix_proxy_view)
 	return ..()
 
 /datum/color_matrix_editor/ui_state()
-	return GLOB.admin_state
+	return ADMIN_STATE(NONE)
 
 /datum/color_matrix_editor/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
@@ -96,7 +96,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/color_matrix_proxy_view)
 		ui = new(user, src, "ColorMatrixEditor")
 		ui.open()
 
-/datum/color_matrix_editor/ui_act(action, list/params, datum/tgui/ui)
+/datum/color_matrix_editor/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

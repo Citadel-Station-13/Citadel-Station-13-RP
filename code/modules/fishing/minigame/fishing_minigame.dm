@@ -152,7 +152,7 @@
 	if(!ui)
 		ui = new(user, src, "Fishing")
 		ui.set_autoupdate(FALSE)
-		ui.set_mouse_hook(TRUE)
+		// ui.set_mouse_hook(TRUE)
 		ui.open()
 
 /datum/fishing_challenge/ui_host()
@@ -181,7 +181,7 @@
 		ui_status_user_is_abled(user, lure),
 	)
 
-/datum/fishing_challenge/ui_act(action, list/params, datum/tgui/ui)
+/datum/fishing_challenge/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

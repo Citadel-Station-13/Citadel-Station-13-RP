@@ -65,7 +65,7 @@
 	if(HDD.store_file(F))
 		return F
 
-/datum/computer_file/program/wordprocessor/ui_act(action, list/params, datum/tgui/ui)
+/datum/computer_file/program/wordprocessor/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 

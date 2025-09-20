@@ -131,7 +131,7 @@
 		data["occupied"] = FALSE
 	return data
 
-/obj/machinery/suit_storage_unit/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/suit_storage_unit/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..() || isUV || isbroken)
 		return TRUE
 

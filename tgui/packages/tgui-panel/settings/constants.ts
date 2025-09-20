@@ -9,6 +9,7 @@ export const SETTINGS_TABS = [
     id: 'general',
     name: 'General',
   },
+
   {
     id: 'textHighlight',
     name: 'Text Highlights',
@@ -17,10 +18,13 @@ export const SETTINGS_TABS = [
     id: 'chatPage',
     name: 'Chat Tabs',
   },
+  // {
+  //   id: 'statPanel',
+  //   name: 'Stat Panel',
+  // },
 ];
 
-
-export const FONTS_DISABLED = "Default";
+export const FONTS_DISABLED = 'Default';
 
 export const FONTS = [
   FONTS_DISABLED,

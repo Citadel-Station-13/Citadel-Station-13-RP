@@ -30,7 +30,7 @@
 
 //! ## MAIN TGUI SCREEN ## !//
 
-/obj/machinery/computer/stockexchange/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/stockexchange/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 
@@ -210,7 +210,7 @@
 	//data["var"] = var
 	return data
 
-/obj/machinery/computer/stockexchange/history/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/stockexchange/history/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return
 	switch(action)
@@ -233,7 +233,7 @@
 	//data["var"] = var
 	return data
 
-/obj/machinery/computer/stockexchange/archive/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/stockexchange/archive/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return
 

@@ -50,7 +50,7 @@
 		message = "Successfully decrypted and saved operational key codes. Downloaded access codes for: [target_access.access_name]"
 		target_access = null
 
-/datum/computer_file/program/access_decrypter/ui_act(action, list/params, datum/tgui/ui)
+/datum/computer_file/program/access_decrypter/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 	switch(action)

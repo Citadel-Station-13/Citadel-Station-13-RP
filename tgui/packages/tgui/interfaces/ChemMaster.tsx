@@ -1,6 +1,7 @@
-import { Color } from '../../common/colorLegacy';
+import { Color } from 'tgui-core/color';
+import { AnimatedNumber, Box, Button, ColorBox, LabeledList, NumberInput, Section, Table } from 'tgui-core/components';
+
 import { useBackend, useSharedState } from '../backend';
-import { AnimatedNumber, Box, Button, ColorBox, LabeledList, NumberInput, Section, Table } from '../components';
 import { Window } from '../layouts';
 
 type ChemMasterData = {
@@ -65,8 +66,8 @@ type StyleData = {
 };
 
 
-export const ChemMaster = (props, context) => {
-  const { data } = useBackend<ChemMasterData>(context);
+export const ChemMaster = (props) => {
+  const { data } = useBackend<ChemMasterData>();
   const { screen } = data;
   return (
     <Window width={465} height={550}>
@@ -77,8 +78,8 @@ export const ChemMaster = (props, context) => {
   );
 };
 
-const ChemMasterContent = (props, context) => {
-  const { act, data } = useBackend<ChemMasterData>(context);
+const ChemMasterContent = (props) => {
+  const { act, data } = useBackend<ChemMasterData>();
   const {
     screen,
     beaker_contents = [],
@@ -187,88 +188,79 @@ const ChemMasterContent = (props, context) => {
 
 const ChemicalBuffer = Table;
 
-const ChemicalBufferEntry = (props, context) => {
-  const { act } = useBackend<ChemMasterData>(context);
+const ChemicalBufferEntry = (props) => {
+  const { act } = useBackend<ChemMasterData>();
   const { chemical, transferTo } = props;
   return (
     <Table.Row key={chemical.id}>
       <Table.Cell color="label">
-        <AnimatedNumber value={chemical.volume} initial={0} />
+        <AnimatedNumber value={chemical.volume} />
         {` units of ${chemical.name}`}
       </Table.Cell>
       <Table.Cell collapsing>
         <Button
-          content="1"
           onClick={() =>
             act('transfer', {
               id: chemical.id,
               amount: 1,
               to: transferTo,
-            })}
-        />
+            })}>1
+        </Button>
         <Button
-          content="5"
           onClick={() =>
             act('transfer', {
               id: chemical.id,
               amount: 5,
               to: transferTo,
-            })}
-        />
+            })}>5
+        </Button>
         <Button
-          content="10"
           onClick={() =>
             act('transfer', {
               id: chemical.id,
               amount: 10,
               to: transferTo,
-            })}
-        />
+            })}>10
+        </Button>
         <Button
-          content="30"
           onClick={() =>
             act('transfer', {
               id: chemical.id,
               amount: 30,
               to: transferTo,
-            })}
-        />
+            })}>30
+        </Button>
         <Button
-          content="60"
           onClick={() =>
             act('transfer', {
               id: chemical.id,
               amount: 60,
               to: transferTo,
-            })}
-        />
+            })}>60
+        </Button>
         <Button
-          content="All"
           onClick={() =>
             act('transfer', {
               id: chemical.id,
               amount: 1000,
               to: transferTo,
-            })}
-        />
+            })}>All
+        </Button>
         <Button
           icon="ellipsis-h"
-          title="Custom amount"
           onClick={() =>
             act('transfer', {
               id: chemical.id,
               amount: -1,
               to: transferTo,
-            })}
-        />
+            })} />
         <Button
           icon="question"
-          title="Analyze"
           onClick={() =>
             act('analyze', {
               id: chemical.id,
-            })}
-        />
+            })}>Analyze
+        </Button>
       </Table.Cell>
     </Table.Row>
   );
@@ -284,7 +276,7 @@ const PackagingControlsItem = (props) => {
         unit={amountUnit}
         step={1}
         stepPixelSize={15}
-        value={amount}
+        value={amount || "Something Broke!"}
         minValue={1}
         maxValue={10}
         onChange={onChangeAmount}
@@ -297,21 +289,19 @@ const PackagingControlsItem = (props) => {
   );
 };
 
-const PackagingControls = (props, context) => {
-  const { act, data } = useBackend<ChemMasterData>(context);
-  const [pillAmount, setPillAmount] = useSharedState(context, 'pillAmount', 1);
+const PackagingControls = (props) => {
+  const { act, data } = useBackend<ChemMasterData>();
+  const [pillAmount, setPillAmount] = useSharedState('pillAmount', 1);
   const [patchAmount, setPatchAmount] = useSharedState(
-    context,
     'patchAmount',
     1
   );
   const [bottleAmount, setBottleAmount] = useSharedState(
-    context,
     'bottleAmount',
     1
   );
-  const [vialAmount, setVialAmount] = useSharedState(context, "vialAmount", 1);
-  const [packAmount, setPackAmount] = useSharedState(context, 'packAmount', 1);
+  const [vialAmount, setVialAmount] = useSharedState("vialAmount", 1);
+  const [packAmount, setPackAmount] = useSharedState('packAmount', 1);
   const {
     condi,
     chosen_pill_style,
@@ -336,7 +326,7 @@ const PackagingControls = (props, context) => {
               verticalAlignContent="middle"
               textAlign="center"
               selected={pill.id === chosen_pill_style}
-              color="transparent"
+              color={pill.id === chosen_pill_style ? null : "transparent"}
               onClick={() => act('change_pill_style', { id: pill.id })}>
               <Box mx={-1} mb={0} mt={1} className={pill.className} />
             </Button>
@@ -349,7 +339,7 @@ const PackagingControls = (props, context) => {
           amount={pillAmount}
           amountUnit="pills"
           sideNote="max 50u"
-          onChangeAmount={(e, value) => setPillAmount(value)}
+          onChangeAmount={(value) => setPillAmount(value)}
           onCreate={() =>
             act('create', {
               type: 'pill',
@@ -365,7 +355,7 @@ const PackagingControls = (props, context) => {
               key={patch.id}
               selected={patch.id === chosen_patch_style}
               textAlign="center"
-              color="transparent"
+              color={patch.id === chosen_patch_style ? null : "transparent"}
               onClick={() =>
                 act('change_patch_style', { chosen_patch_style: patch.id })}>
               <Box mb={0} mt={1} className={patch.className} />
@@ -379,7 +369,7 @@ const PackagingControls = (props, context) => {
           amount={patchAmount}
           amountUnit="patches"
           sideNote="max 40u"
-          onChangeAmount={(e, value) => setPatchAmount(value)}
+          onChangeAmount={(value) => setPatchAmount(value)}
           onCreate={() =>
             act('create', {
               type: 'patch',
@@ -396,7 +386,7 @@ const PackagingControls = (props, context) => {
               width="30px"
               selected={bottle.id === chosen_bottle_style}
               textAlign="center"
-              color="transparent"
+              color={bottle.id === chosen_bottle_style ? null : "transparent"}
               onClick={() => act('change_bottle_style', { id: bottle.id })}>
               <Box mx={-1} mb={0} mt={1} className={bottle.className} />
             </Button>
@@ -409,7 +399,7 @@ const PackagingControls = (props, context) => {
           amount={bottleAmount}
           amountUnit="bottles"
           sideNote="max 60u"
-          onChangeAmount={(e, value) => setBottleAmount(value)}
+          onChangeAmount={(value) => setBottleAmount(value)}
           onCreate={() =>
             act('create', {
               type: 'bottle',
@@ -424,7 +414,7 @@ const PackagingControls = (props, context) => {
           amount={vialAmount}
           amountUnit="vials"
           sideNote="max 60u"
-          onChangeAmount={(e, value) => setVialAmount(value)}
+          onChangeAmount={(value) => setVialAmount(value)}
           onCreate={() =>
             act('create', {
               type: 'hypovial',
@@ -455,9 +445,8 @@ const PackagingControls = (props, context) => {
               selected={style.id === chosen_condi_style}
               textAlign="center"
               color="transparent"
-              title={style.title}
               onClick={() => act('condiStyle', { id: style.id })}>
-              <Box mx={-1} className={style.className} />
+              <Box mx={-1} className={style.className}>{style.title}</Box>
             </Button>
           ))}
         </LabeledList.Item>
@@ -468,7 +457,7 @@ const PackagingControls = (props, context) => {
           amount={bottleAmount}
           amountUnit="bottles"
           sideNote="max 50u"
-          onChangeAmount={(e, value) => setBottleAmount(value)}
+          onChangeAmount={(value) => setBottleAmount(value)}
           onCreate={() =>
             act('create', {
               type: 'condiment_bottle',
@@ -483,7 +472,7 @@ const PackagingControls = (props, context) => {
           amount={packAmount}
           amountUnit="packs"
           sideNote="max 10u"
-          onChangeAmount={(e, value) => setPackAmount(value)}
+          onChangeAmount={(value) => setPackAmount(value)}
           onCreate={() =>
             act('create', {
               type: 'condiment_pack',
@@ -496,8 +485,8 @@ const PackagingControls = (props, context) => {
   );
 };
 
-const AnalysisResults = (props, context) => {
-  const { act, data } = useBackend<ChemMasterData>(context);
+const AnalysisResults = (props) => {
+  const { act, data } = useBackend<ChemMasterData>();
   const { analyzeVars } = data;
   return (
     <Section
@@ -512,27 +501,29 @@ const AnalysisResults = (props, context) => {
             })}
         />
       }>
-      <LabeledList>
-        <LabeledList.Item label="Name">{analyzeVars.name}</LabeledList.Item>
-        <LabeledList.Item label="State">{analyzeVars.state}</LabeledList.Item>
-        {/* <LabeledList.Item label="pH">{analyzeVars.ph}</LabeledList.Item> */}
-        <LabeledList.Item label="Color">
-          <ColorBox color={analyzeVars.color} mr={1} />
-          {analyzeVars.color}
-        </LabeledList.Item>
-        <LabeledList.Item label="Description">
-          {analyzeVars.description}
-        </LabeledList.Item>
-        <LabeledList.Item label="Metabolization Rate">
-          {analyzeVars.metaRate}
-        </LabeledList.Item>
-        <LabeledList.Item label="Overdose Threshold">
-          {analyzeVars.overD}
-        </LabeledList.Item>
-        {/* <LabeledList.Item label="Addiction Threshold">
+      {analyzeVars && (
+        <LabeledList>
+          <LabeledList.Item label="Name">{analyzeVars.name}</LabeledList.Item>
+          <LabeledList.Item label="State">{analyzeVars.state}</LabeledList.Item>
+          {/* <LabeledList.Item label="pH">{analyzeVars.ph}</LabeledList.Item> */}
+          <LabeledList.Item label="Color">
+            <ColorBox color={analyzeVars.color?.toString()} mr={1} />
+            {analyzeVars.color.toString()}
+          </LabeledList.Item>
+          <LabeledList.Item label="Description">
+            {analyzeVars.description}
+          </LabeledList.Item>
+          <LabeledList.Item label="Metabolization Rate">
+            {analyzeVars.metaRate}
+          </LabeledList.Item>
+          <LabeledList.Item label="Overdose Threshold">
+            {analyzeVars.overD}
+          </LabeledList.Item>
+          {/* <LabeledList.Item label="Addiction Threshold">
           {analyzeVars.addicD}
         </LabeledList.Item> */}
-      </LabeledList>
+        </LabeledList>
+      )}
     </Section>
   );
 };

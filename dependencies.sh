@@ -14,9 +14,7 @@ export BYOND_MINOR=1659
 export RUST_G_VERSION=3.0.0-experimental-graph-ops
 
 #node version
-export NODE_VERSION_LTS=20.13.0
-# compatiblility mode MUST work with windows 7
-export NODE_VERSION_COMPAT=20.2.0
+export NODE_VERSION_LTS=22.19.0
 
 # SpacemanDMM git tag
 export SPACEMAN_DMM_VERSION=suite-1.10

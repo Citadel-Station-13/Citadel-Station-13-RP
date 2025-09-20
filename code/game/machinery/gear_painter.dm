@@ -176,7 +176,7 @@
 	else
 		.["item"] = null
 
-/obj/machinery/gear_painter/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/gear_painter/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

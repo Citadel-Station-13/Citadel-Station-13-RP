@@ -4,8 +4,8 @@
 /datum/filter_editor/New(atom/target)
 	src.target = target
 
-/datum/filter_editor/ui_state()
-	return GLOB.admin_state
+/datum/filter_editor/ui_state(mob/user)
+	return ADMIN_STATE(R_VAREDIT)
 
 /datum/filter_editor/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -24,7 +24,7 @@
 	data["target_filter_data"] = target.filter_data
 	return data
 
-/datum/filter_editor/ui_act(action, list/params, datum/tgui/ui)
+/datum/filter_editor/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

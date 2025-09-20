@@ -349,7 +349,7 @@
 
 	return data
 
-/obj/machinery/power/port_gen/pacman/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/power/port_gen/pacman/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return
 

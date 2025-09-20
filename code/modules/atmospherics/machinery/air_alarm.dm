@@ -556,7 +556,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm, 26)
 /obj/machinery/air_alarm/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui, datum/ui_state/state)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "AirAlarm", name, parent_ui)
+		ui = new(user, src, "AirAlarm", name, parent_ui = parent_ui)
 		if(state)
 			ui.set_state(state)
 		ui.open()
@@ -611,7 +611,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm, 26)
 	data["temperatureTLV"] = tlv_temperature
 	push_ui_data(data = data)
 
-/obj/machinery/air_alarm/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/air_alarm/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

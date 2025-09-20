@@ -38,7 +38,7 @@
 		if(!T)
 			continue
 		. += list(list(
-			"level" = SSmapping.fluff_level_id(get_z(A)),
+			"level" = SSmapping.level_get_fluff_id(get_z(A)),
 			"id" = "[A.id]",
 			"anchor" = A.anchored,
 			"name" = A.name,
@@ -51,7 +51,7 @@
 	.["scan_ready"] = !on_cooldown()
 	.["network"] = network_key || ""
 
-/obj/machinery/computer/bioscan/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/bioscan/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -105,7 +105,7 @@
 	var/list/assembled = list()
 	for(var/z_str in indices)
 		var/list/gottem = list()
-		gottem["id"] = SSmapping.fluff_level_id(text2num(z_str))
+		gottem["id"] = SSmapping.level_get_fluff_id(text2num(z_str))
 		var/mobs_all = 0
 		var/mobs_complex = 0
 		var/mobs_complex_alive = 0

@@ -16,18 +16,6 @@
 /// The slowdown affects a physical person, even if they aren't walking on the tile the turf represents.
 #define TURF_SLOWDOWN_INCLUDE_FLYING	(1<<8)
 
-///CITMAIN TURF FLAGS - Completely unused
-/*
-/// If a turf can be made dirty at roundstart. This is also used in areas.
-#define CAN_BE_DIRTY				(1<<3)
-/// Should this tile be cleaned up and reinserted into an excited group?
-#define EXCITED_CLEANUP				(1<<4)
-/// Blocks lava rivers being generated on the turf
-#define NO_LAVA_GEN					(1<<5)
-/// Blocks ruins spawning on the turf
-#define NO_RUINS					(1<<6)
-*/
-
 DEFINE_BITFIELD(turf_flags, list(
 	BITFIELD(NO_JAUNT),
 	BITFIELD(TURF_FLAG_UNUSED_RESERVATION),
@@ -39,7 +27,32 @@ DEFINE_BITFIELD(turf_flags, list(
 	BITFIELD(TURF_SLOWDOWN_INCLUDE_FLYING),
 ))
 
-//* /turf_path_danger var on /turf
+
+//* /turf_spawn_flags on /turf *//
+
+/// allow fill
+#define TURF_SPAWN_FLAG_FILLABLE (1<<0)
+/// allow admin buildmode
+#define TURF_SPAWN_FLAG_BUILDMODE (1<<1)
+/// allow ai holodeck and similar (**player accessible**)
+#define TURF_SPAWN_FLAG_HOLODECK (1<<2)
+/// allow vr and similar (**player accessible**)
+#define TURF_SPAWN_FLAG_VR (1<<3)
+/// valid for the base turf of a zlevel
+#define TURF_SPAWN_FLAG_LEVEL_TURF (1<<4)
+
+DEFINE_BITFIELD(turf_spawn_flags, list(
+	BITFIELD_NEW("Allow Mass Fill", TURF_SPAWN_FLAG_FILLABLE),
+	BITFIELD_NEW("Allow Admin Buildmode", TURF_SPAWN_FLAG_BUILDMODE),
+	BITFIELD_NEW("Allow Holographic Render", TURF_SPAWN_FLAG_HOLODECK),
+	BITFIELD_NEW("Allow Virtual Reality", TURF_SPAWN_FLAG_VR),
+	BITFIELD_NEW("Allow as Level Baseturf", TURF_SPAWN_FLAG_LEVEL_TURF),
+))
+
+/// for turfs that can be spawned by most turf spawners / renderers
+#define TURF_SPAWN_FLAGS_ALLOW_ALL ALL
+
+//* /turf_path_danger on /turf *//
 /// lava, fire, etc
 #define TURF_PATH_DANGER_BURN (1<<0)
 /// openspace, chasms, etc

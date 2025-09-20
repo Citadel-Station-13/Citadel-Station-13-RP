@@ -161,7 +161,7 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 
 	return data
 
-/obj/machinery/atm/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/atm/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

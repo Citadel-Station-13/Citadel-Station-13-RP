@@ -61,11 +61,11 @@
 		drop_product(inserted_id, where)
 		inserted_id = null
 
-/obj/machinery/point_redemption_vendor/using_item_on(obj/item/using, datum/event_args/actor/clickchain/e_args, clickchain_flags)
+/obj/machinery/point_redemption_vendor/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
 	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
-	if(handle_id_insertion(using, e_args))
+	if(handle_id_insertion(using, clickchain))
 		// in either case they wouldn't do anything because the id is either not on them anymore
 		// or is not going to touch the machine
 		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
@@ -91,7 +91,7 @@
 	inserted_id = maybe_id
 	return TRUE
 
-/obj/machinery/point_redemption_vendor/ui_act(action, list/params, datum/tgui/ui, datum/event_args/actor/e_args)
+/obj/machinery/point_redemption_vendor/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -99,16 +99,16 @@
 	switch(action)
 		if("idcard")
 			if(inserted_id)
-				e_args.visible_feedback(
+				actor.visible_feedback(
 					target = src,
 					range = MESSAGE_RANGE_INVENTORY_SOFT,
-					visible = SPAN_NOTICE("[e_args.performer] retrieves [inserted_id] from [src]."),
+					visible = SPAN_NOTICE("[actor.performer] retrieves [inserted_id] from [src]."),
 				)
-				e_args.performer.put_in_hands_or_drop(inserted_id)
+				actor.performer.put_in_hands_or_drop(inserted_id)
 				inserted_id = null
 			else if(!inserted_id)
-				var/obj/item/active_held = e_args.performer.get_active_held_item()
-				handle_id_insertion(active_held, e_args)
+				var/obj/item/active_held = actor.performer.get_active_held_item()
+				handle_id_insertion(active_held, actor)
 			return TRUE
 		if("vend")
 			if(!inserted_id)

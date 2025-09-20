@@ -27,7 +27,7 @@
 		return
 	switch(id)
 		if("modify")
-			return tgui_cardmod.ui_act(action, params, ui, new /datum/event_args/actor(usr))
+			return tgui_cardmod.ui_act(action, params, ui, ui.state, new /datum/event_args/actor(usr))
 
 /**
  * for later use: authorized to change slots
@@ -140,7 +140,7 @@
 	.["authed_cardmod"] = authed_for_edit()
 	.["authed_slotmod"] = authed_for_slotmod()
 
-/obj/machinery/computer/card/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/card/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 
