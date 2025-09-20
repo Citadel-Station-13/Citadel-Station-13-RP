@@ -22,29 +22,65 @@
 	var/collapsible = TRUE
 
 	/// in degrees std-dev
-	var/standard_azimuth_error = 1
+	var/standard_azimuth_error = 3.5
 	/// in degrees, to add or subtract, going clockwise
 	var/standard_azimuth_error_static = 0
 	/// in degrees std-dev
-	var/standard_elevation_error = 1
+	var/standard_altitude_error = 3.5
 	/// in degrees, to add or subtract, going upwards towards the zenith
-	var/standard_elevation_error_static = 0
+	var/standard_altitude_error_static = 0
+	/// in m/s std-dev
+	var/standard_velocity_error = 0
+	/// in m/s to add/subtract
+	var/standard_velocity_error_static = 0
 
 	/// apply standard error?
 	var/use_standard_error = TRUE
 
 	#warn time to dest, inaccuracy
 
-/obj/machinery/mortar/proc/fire_round()
+/obj/machinery/mortar/context_menu_query(datum/event_args/actor/e_args)
+	. = ..()
+	if(collapsible)
+		.["collapse"] = create_context_menu_tuple()
+		#warn tuple
 
-/obj/machinery/mortar/proc/launch_round()
+/obj/machinery/mortar/context_menu_act(datum/event_args/actor/e_args, key)
+	. = ..()
+	if(.)
+		return
+	switch(key)
+		if("collapse")
+			#warn impl
 
 /obj/machinery/mortar/proc/collapse(atom/new_loc) as /obj/item/mortar_kit
 
 /obj/machinery/mortar/proc/expand(obj/item/mortar_kit/from_kit)
 
-/obj/machinery/mortar/proc/calculate_standard_error(turf/real_Target)
-	#warn impl
+/obj/machinery/mortar/proc/run_firing_cycle(obj/item/ammo_casing/mortar/shell, x_offset, y_offset)
+	var/list/k_solved = math__solve_kinematic_trajectory(x_offset, y_offset, 0, 9.8)
+	var/list/k_altered = run_firing_kinematics(arglist(k_solved))
+	var/list/k_results = math__run_kinematic_trajectory(arglist(k_altered))
+
+	launch(shell, k_results[1], k_results[2], k_results[3])
+
+/**
+ * @return list(azimuth, altitude, velocity)
+ */
+/obj/machinery/mortar/proc/run_firing_kinematics(azimuth, altitude, velocity)
+	if(use_standard_error)
+		azimuth += gaussian(0, standard_azimuth_error)
+		azimuth += standard_azimuth_error_static
+		altitude += gaussian(0, standard_altitude_error)
+		altitude += standard_altitude_error_static
+		velocity += gaussian(0, standard_velocity_error)
+		velocity += standard_velocity_error_static
+	return list(azimuth, altitude, velocity)
+
+/obj/machinery/mortar/proc/launch(obj/item/ammo_casing/mortar/shell, x_offset, y_offset, travel_time, silent)
+
+	if(!silent)
+		#warn play sound
 
 #warn impl
 

@@ -54,7 +54,7 @@
 /obj/item/rangefinder
 	name = "rangefinder"
 	desc = "A handy pair of binoculars used to perform rangefinding."
-	icon = 'icons/items/rangefinder.dmi'
+	icon = 'icons/modules/sectors/air_support/rangefinder.dmi'
 	icon_state = "rangefinder"
 	base_icon_state = "rangefinder"
 

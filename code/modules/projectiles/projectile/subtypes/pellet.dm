@@ -3,6 +3,7 @@
 // todo: target still makes message of being hit even if they weren't
 // todo: just handle message in this file lmao
 // todo: better description; this type does have an excuse to have special behavior.
+// TODO: move to subtypes/bullet
 /obj/projectile/bullet/pellet
 	name = "shrapnel" //'shrapnel' sounds more dangerous (i.e. cooler) than 'pellet'
 

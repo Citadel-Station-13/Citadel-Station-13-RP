@@ -14,3 +14,8 @@
 /obj/projectile/mortar
 	name = "mortar round"
 	desc = "You really, <i>really</i> shouldn't be close enough to see this."
+
+	/// stored internally as it has on_detonate() called when we hit
+	var/obj/item/ammo_casing/mortar/mortar_round
+
+#warn impl

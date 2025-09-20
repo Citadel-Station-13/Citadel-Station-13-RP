@@ -8,7 +8,7 @@
 /obj/item/signal_flare
 	name = "signal flare"
 	desc = "A specialized flare used for signalling. Burns at specific frequency and projects a signal visible from high altitudes."
-	icon = 'icons/items/signal_flare.dmi'
+	icon = 'icons/modules/sectors/air_support/signal_flare.dmi'
 	icon_state = "signal_flare"
 	base_icon_state = "signal_flare"
 
