@@ -6,13 +6,15 @@
  * @license MIT
  */
 
+const STORAGE_PREFIX = "citadel-rp-";
+
 export const IMPL_MEMORY = 0;
 export const IMPL_HUB_STORAGE = 1;
 
 type StorageImplementation = typeof IMPL_MEMORY | typeof IMPL_HUB_STORAGE;
 
 type StorageBackend = {
-  impl: StorageImplementation;
+  impl(): Promise<StorageImplementation>;
   get(key: string): Promise<any>;
   set(key: string, value: any): Promise<void>;
   remove(key: string): Promise<void>;
@@ -33,11 +35,13 @@ const testHubStorage = testGeneric(
 
 class MemoryBackend implements StorageBackend {
   private store: Record<string, any>;
-  public impl: StorageImplementation;
 
   constructor() {
-    this.impl = IMPL_MEMORY;
     this.store = {};
+  }
+
+  async impl(): Promise<StorageImplementation> {
+    return IMPL_MEMORY;
   }
 
   async get(key: string): Promise<any> {
@@ -58,10 +62,9 @@ class MemoryBackend implements StorageBackend {
 }
 
 class HubStorageBackend implements StorageBackend {
-  public impl: StorageImplementation;
 
-  constructor() {
-    this.impl = IMPL_HUB_STORAGE;
+  async impl(): Promise<StorageImplementation> {
+    return IMPL_HUB_STORAGE;
   }
 
   async get(key: string): Promise<any> {
@@ -91,7 +94,6 @@ class HubStorageBackend implements StorageBackend {
  */
 class StorageProxy implements StorageBackend {
   private backendPromise: Promise<StorageBackend>;
-  public impl: StorageImplementation = IMPL_MEMORY;
 
   constructor() {
     this.backendPromise = (async () => {
@@ -105,6 +107,11 @@ class StorageProxy implements StorageBackend {
 
       return new MemoryBackend();
     })();
+  }
+
+  async impl(): Promise<StorageImplementation> {
+    const backend = await this.backendPromise;
+    return backend.impl();
   }
 
   async get(key: string): Promise<any> {
@@ -128,4 +135,29 @@ class StorageProxy implements StorageBackend {
   }
 }
 
-export const storage = new StorageProxy();
+class StoragePrefixer implements StorageBackend {
+  private backend: StorageBackend;
+  private prefix: string;
+  constructor(backend: StorageBackend, prefix: string) {
+    this.backend = backend;
+    this.prefix = prefix;
+  }
+
+  impl(): Promise<StorageImplementation> {
+    return this.backend.impl();
+  }
+  get(key: string): Promise<any> {
+    return this.backend.get(`${this.prefix}${key}`);
+  }
+  set(key: string, value: any): Promise<void> {
+    return this.backend.set(`${this.prefix}${key}`, value);
+  }
+  remove(key: string): Promise<void> {
+    return this.backend.remove(`${this.prefix}${key}`);
+  }
+  clear(): Promise<void> {
+    return this.backend.clear();
+  }
+}
+
+export const storage = new StoragePrefixer(new StorageProxy, STORAGE_PREFIX);
