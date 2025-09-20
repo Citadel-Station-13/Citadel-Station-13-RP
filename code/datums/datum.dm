@@ -9,20 +9,6 @@
  * use of variables at this level
  */
 /datum
-	/**
-	 * Tick count time when this object was destroyed.
-	 *
-	 * If this is non zero then the object has been garbage collected and is awaiting either
-	 * a hard del by the GC subsystme, or to be autocollected (if it has no references)
-	 */
-	var/gc_destroyed
-
-	/// Open uis owned by this datum
-	/// Lazy, since this case is semi rare
-	var/list/datum/tgui/open_uis
-
-	/// Active timers with this datum as the target
-	var/list/active_timers
 	/// Status traits attached to this datum. associative list of the form: list(trait name (string) = list(source1, source2, source3,...))
 	var/list/status_traits
 	/// Datum level flags
@@ -48,7 +34,6 @@
 	var/signal_enabled = FALSE
 
 	//* Cooldown System *//
-
 	/*
 	* Lazy associative list of currently active cooldowns.
 	*
@@ -65,10 +50,18 @@
 	 * a hard del by the GC subsystme, or to be autocollected (if it has no references)
 	 */
 	var/gc_destroyed
+	// If we have called dump_harddel_info already. Used to avoid duped calls (since we call it immediately in some cases on failure to process)
+	// Create and destroy is weird and I wanna cover my bases
+	var/harddel_deets_dumped = FALSE
 
 	//* Subsystem - Timer *//
 	/// Active timers with this datum as the target
 	var/list/active_timers
+
+	//* Subsystem - TGUI *//
+	/// Open uis owned by this datum
+	/// Lazy, since this case is semi rare
+	var/list/datum/tgui/open_uis
 
 	//* misc - filters *//
 	/// List for handling persistent filters.
@@ -89,10 +82,6 @@
 	var/list/found_refs
 	#endif
 #endif
-
-	// If we have called dump_harddel_info already. Used to avoid duped calls (since we call it immediately in some cases on failure to process)
-	// Create and destroy is weird and I wanna cover my bases
-	var/harddel_deets_dumped = FALSE
 
 /**
  * Default implementation of clean-up code.
