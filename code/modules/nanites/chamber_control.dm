@@ -57,7 +57,7 @@
 /obj/machinery/computer/nanite_chamber/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "NaniteChamberControl")
+		ui = new(user, src, "computers/NaniteChamberControl")
 		ui.open()
 
 /obj/machinery/computer/nanite_chamber/ui_act(action, list/params, datum/tgui/ui)

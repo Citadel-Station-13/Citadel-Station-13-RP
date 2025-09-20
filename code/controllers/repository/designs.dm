@@ -9,13 +9,13 @@ REPOSITORY_DEF(designs)
 	//* caches *//
 
 	/// cached autolathe desgin ids
-	var/tmp/list/autolathe_design_ids
+	var/tmp/list/datum/prototype/design/c_autolathe_designs
 	/// cached medical mini autolathe desgin ids
-	var/tmp/list/medical_mini_design_ids
+	var/tmp/list/datum/prototype/design/c_medlathe_designs
 
 /datum/controller/repository/designs/Create()
-	autolathe_design_ids = list()
-	medical_mini_design_ids = list()
+	c_autolathe_designs = list()
+	c_medlathe_designs = list()
 	return ..()
 
 /datum/controller/repository/designs/load(datum/prototype/design/instance)
@@ -23,13 +23,13 @@ REPOSITORY_DEF(designs)
 	if(!.)
 		return
 	if(instance.lathe_type & LATHE_TYPE_AUTOLATHE)
-		autolathe_design_ids += instance.id
+		c_autolathe_designs += instance
 	if(istype(instance, /datum/prototype/design/medical))
-		medical_mini_design_ids += instance.id
+		c_medlathe_designs += instance
 
 /datum/controller/repository/designs/unload(datum/prototype/design/instance)
 	. = ..()
 	if(instance.lathe_type & LATHE_TYPE_AUTOLATHE)
-		autolathe_design_ids -= instance.id
+		c_autolathe_designs -= instance
 	if(istype(instance, /datum/prototype/design/medical))
-		medical_mini_design_ids -= instance.id
+		c_medlathe_designs -= instance
