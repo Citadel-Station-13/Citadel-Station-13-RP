@@ -555,6 +555,7 @@
 		/obj/item/clothing/under/blueshift = 5,
 		/obj/item/clothing/under/office_worker = 5,
 		/obj/item/clothing/under/pants = 5,
+		/obj/item/clothing/under/rippedpunk = 5,
 		/obj/item/clothing/under/pants/white = 5,
 		/obj/item/clothing/under/pants/red = 5,
 		/obj/item/clothing/under/pants/black = 5,
