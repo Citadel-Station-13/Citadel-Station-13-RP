@@ -361,8 +361,8 @@
 	if(client)
 		result = A.examine(src, game_range_to(src, A)) // if a tree is examined but no client is there to see it, did the tree ever really exist?
 
+	SEND_SIGNAL(src, COMSIG_MOB_EXAMINATE, A, result, game_range_to(src, A))
 	to_chat(src, "<blockquote class='info'>[result.Join("\n")]</blockquote>")
-	SEND_SIGNAL(src, COMSIG_MOB_EXAMINATE, A)
 
 /**
  * Point at an atom

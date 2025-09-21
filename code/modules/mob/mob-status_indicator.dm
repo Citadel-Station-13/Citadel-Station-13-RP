@@ -44,7 +44,7 @@
 /mob/proc/reload_status_indicators()
 	cut_overlay(status_indicator_overlays, TRUE)
 	status_indicator_overlays = list()
-	for(var/datum/mob_status_indicator/indicator_path as anything in status_indicators)
+	for(var/datum/status_indicator/indicator_path as anything in status_indicators)
 		var/image/indicator_image = image(indicator_path.icon, indicator_path.icon_state)
 		#warn impl
 	add_overlay(status_indicator_overlays)

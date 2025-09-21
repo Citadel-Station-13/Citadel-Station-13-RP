@@ -13,7 +13,6 @@
 	var/size_x = 16
 	var/size_y = 16
 
-
 #warn impl
 
 /datum/status_indicator/busy

@@ -111,6 +111,28 @@
 /obj/item/rangefinder/proc/on_laser_designator_target_deleted(datum/source)
 	destroy_laser_designator_target()
 
+/obj/item/rangefinder/on_attack_self(datum/event_args/actor/e_args)
+	. = ..()
+	#warn impl
+
+/obj/item/rangefinder/on_inv_equipped(mob/wearer, datum/inventory/inventory, slot_id_or_index, inv_op_flags, datum/event_args/actor/actor)
+	..()
+	RegisterSignal(wearer, COMSIG_MOB_EXAMINATE, PROC_REF(on_user_examine))
+	#warn impl
+
+
+/obj/item/rangefinder/on_inv_unequipped(mob/wearer, datum/inventory/inventory, slot_id_or_index, inv_op_flags, datum/event_args/actor/actor)
+	..()
+	UnregisterSignal(wearer, COMSIG_MOB_EXAMINATE)
+	#warn impl
+
+/obj/item/rangefinder/proc/on_user_examine(mob/source, atom/target, list/examine_list)
+	SIGNAL_HANDLER
+	if(!examine_list)
+		return
+	#warn impl
+	examine_list += SPAN_NOTICE("[icon2html(src, source)]: Its ")
+
 /obj/item/rangefinder/item_ctrl_click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
 	. = ..()
 	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
@@ -128,7 +150,4 @@
 /obj/item/rangefinder/laser_designator
 	name = "laser designator"
 	desc = "An upgraded rangefinder that can mark an entity with a laser beam visible from high altitude."
-
-	#warn sprite
-
 	is_designator = TRUE

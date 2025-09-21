@@ -57,14 +57,15 @@
 	#warn impl
 
 /**
+ * * This should never delete self.
+ *
  * @params
  * * epicenter - where we hit
- * * projectile - (optional) if we were simmed via projectile, this is the projectile
  */
-/obj/item/ammo_casing/mortar/proc/on_detonate(turf/epicenter, obj/projectile/mortar/projectile)
+/obj/item/ammo_casing/mortar/proc/on_detonate(turf/epicenter)
 	var/list/datum/mortar_effect/effects = resolve_mortar_effects()
 	for(var/datum/mortar_effect/effect as anything in effects)
-		effect.on_detonate(epicenter, projectile)
+		effect.on_detonate(epicenter)
 
 /**
  * @return /datum/mortar_effect instance list; DO NOT MUTATE RETURNED LIST OR CONTENTS.

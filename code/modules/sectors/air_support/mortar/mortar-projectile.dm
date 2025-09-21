@@ -15,7 +15,13 @@
 	name = "mortar round"
 	desc = "You really, <i>really</i> shouldn't be close enough to see this."
 
+	// TODO: sprite
+
 	/// stored internally as it has on_detonate() called when we hit
 	var/obj/item/ammo_casing/mortar/mortar_round
 
-#warn impl
+/obj/projectile/mortar/on_impact(atom/target, impact_flags, def_zone, efficiency)
+	. = ..()
+	var/turf/target_turf = get_turf(target)
+	if(target_turf)
+		mortar_round?.on_detonate(get_turf(target))
