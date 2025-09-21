@@ -1680,16 +1680,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/hallway)
 "blV" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
-/obj/machinery/door/blast/regular{
-	density = 0;
-	dir = 4;
-	icon_state = "pdoor0";
-	id = "bridge_lockdown";
-	name = "Bridge Lockdown";
-	opacity = 0
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 9
 	},
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/bridge)
 "bmz" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -2101,15 +2095,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/gateway)
 "bCo" = (
-/obj/machinery/button/remote/blast_door{
-	dir = 1;
-	id = "bridge_lockdown";
-	name = "Bridge Lockdown";
-	pixel_y = -28;
-	req_access = list(19)
-	},
-/turf/simulated/floor/tiled/techfloor/lythios43c,
-/area/bridge)
+/obj/effect/floor_decal/corner/navblue/diagonal,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "bCL" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
@@ -5588,7 +5578,7 @@
 	dir = 8;
 	pixel_x = 24
 	},
-/turf/simulated/floor/tiled/techfloor/lythios43c,
+/turf/simulated/floor/tiled/techfloor,
 /area/bridge)
 "ebA" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
@@ -5800,10 +5790,19 @@
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
 "ekB" = (
-/obj/effect/floor_decal/corner/navblue/diagonal,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/techfloor/lythios43c,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/obj/machinery/computer/skills{
+	pixel_y = 1;
+	layer = 3.1;
+	dir = 1;
+	pixel_x = 9
+	},
+/turf/simulated/floor/tiled/monodark,
 /area/bridge)
 "ekF" = (
 /obj/structure/table/standard,
@@ -6866,7 +6865,7 @@
 /obj/structure/disposalpipe/trunk,
 /obj/machinery/disposal,
 /turf/simulated/floor/tiled/techfloor/monogrid,
-/area/bridge)
+/area/space)
 "eYG" = (
 /turf/simulated/wall/prepainted,
 /area/endeavour/cryo)
@@ -7801,7 +7800,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/navblue/diagonal,
-/turf/simulated/floor/tiled/techfloor/lythios43c,
+/turf/simulated/floor/tiled/techfloor,
 /area/bridge)
 "fEv" = (
 /obj/structure/cable/green{
@@ -7956,16 +7955,17 @@
 /turf/simulated/floor/tiled,
 /area/rnd/misc_lab)
 "fJS" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
-/obj/machinery/door/blast/regular{
-	density = 0;
-	dir = 4;
-	icon_state = "pdoor0";
-	id = "bridge_lockdown";
-	name = "Bridge Lockdown";
-	opacity = 0
+/obj/structure/railing/grey{
+	dir = 8
 	},
-/turf/simulated/floor/tiled/techfloor/lythios43c,
+/obj/structure/window/phoronreinforced{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled/techfloor,
 /area/bridge)
 "fKd" = (
 /obj/structure/railing/grey{
@@ -8081,9 +8081,13 @@
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/endeavour/cockpit)
 "fND" = (
-/obj/machinery/fire_alarm/north_mount,
-/turf/simulated/floor/tiled/techfloor/lythios43c,
-/area/bridge)
+/obj/item/folder/blue_captain{
+	pixel_y = 33;
+	pixel_x = 6;
+	layer = 3.2
+	},
+/turf/space/basic,
+/area/space)
 "fNJ" = (
 /obj/machinery/camera/network/security{
 	dir = 1
@@ -8154,10 +8158,23 @@
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
 "fQt" = (
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 8
+	},
 /obj/effect/floor_decal/spline/fancy/wood{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/techfloor/lythios43c,
+/obj/structure/bed/chair/bay/comfy/blue{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
 /area/bridge)
 "fQT" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -8271,7 +8288,7 @@
 /obj/structure/bed/chair/bay/comfy/blue{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/techfloor/lythios43c,
+/turf/simulated/floor/tiled/techfloor,
 /area/bridge)
 "fXA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -9568,7 +9585,7 @@
 	dir = 8;
 	pixel_x = 24
 	},
-/turf/simulated/floor/tiled/techfloor/lythios43c,
+/turf/simulated/floor/tiled/techfloor,
 /area/bridge)
 "hbb" = (
 /obj/structure/disposalpipe/segment{
@@ -13503,7 +13520,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/navblue/diagonal,
-/turf/simulated/floor/tiled/techfloor/lythios43c,
+/turf/simulated/floor/tiled/techfloor,
 /area/bridge)
 "jUZ" = (
 /obj/effect/floor_decal/spline/plain,
@@ -13530,6 +13547,20 @@
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
+"jVM" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/obj/machinery/computer/med_data/laptop{
+	pixel_x = -8;
+	pixel_y = -31;
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/bridge)
 "jWs" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -15400,7 +15431,7 @@
 /area/hallway/secondary/docking_hallway2)
 "lnW" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
-/turf/simulated/floor/tiled/techfloor/lythios43c,
+/turf/simulated/floor/tiled/techfloor,
 /area/bridge)
 "loh" = (
 /obj/structure/table/woodentable,
@@ -15459,7 +15490,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/techfloor/lythios43c,
+/turf/simulated/floor/tiled/techfloor,
 /area/bridge)
 "lrd" = (
 /turf/simulated/wall/r_wall/prepainted,
@@ -15544,8 +15575,22 @@
 /turf/simulated/floor/wood,
 /area/endeavour/surfacebase/sauna)
 "ltQ" = (
-/obj/effect/floor_decal/spline/fancy/wood,
-/turf/simulated/floor/tiled/techfloor/lythios43c,
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 10
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/structure/bed/chair/bay/comfy/blue{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
 /area/bridge)
 "luf" = (
 /obj/structure/table/bench/wooden,
@@ -15995,11 +16040,6 @@
 /obj/structure/metal_edge,
 /obj/structure/table/marble{
 	layer = 3.1
-	},
-/obj/item/folder/blue_hop{
-	pixel_y = -4;
-	layer = 3.2;
-	pixel_x = 8
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/bridge)
@@ -17165,7 +17205,7 @@
 /obj/structure/bed/chair/bay/comfy/blue{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/techfloor/lythios43c,
+/turf/simulated/floor/tiled/techfloor,
 /area/bridge)
 "mBH" = (
 /obj/effect/floor_decal/borderfloor/corner{
@@ -17201,7 +17241,7 @@
 	dir = 8;
 	pixel_x = 24
 	},
-/turf/simulated/floor/tiled/techfloor/lythios43c,
+/turf/simulated/floor/tiled/techfloor,
 /area/bridge)
 "mEr" = (
 /turf/simulated/wall/prepainted,
@@ -18454,7 +18494,7 @@
 "nyK" = (
 /obj/machinery/computer/ship/engines/adv,
 /obj/effect/floor_decal/corner/navblue/diagonal,
-/turf/simulated/floor/tiled/techfloor/lythios43c,
+/turf/simulated/floor/tiled/techfloor,
 /area/bridge)
 "nzo" = (
 /obj/structure/closet,
@@ -19474,7 +19514,7 @@
 	name = "Bridge Lockdown";
 	opacity = 0
 	},
-/turf/simulated/floor/tiled/techfloor/lythios43c,
+/turf/simulated/floor/tiled/techfloor,
 /area/bridge)
 "oit" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -20362,13 +20402,13 @@
 /turf/simulated/floor,
 /area/shuttle/civvie/general)
 "oVe" = (
-/obj/structure/railing/grey,
-/obj/machinery/computer/aifixer{
-	dir = 8
+/obj/item/folder/blue_hop{
+	pixel_y = -4;
+	layer = 3.2;
+	pixel_x = 8
 	},
-/obj/structure/window/phoronreinforced,
-/turf/simulated/floor/tiled/techfloor/monogrid,
-/area/bridge)
+/turf/space/basic,
+/area/space)
 "oVm" = (
 /obj/structure/bedsheetbin,
 /obj/structure/table/reinforced,
@@ -20389,13 +20429,12 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/exploration/meeting)
 "oWz" = (
-/obj/effect/floor_decal/spline/fancy/wood,
-/obj/machinery/computer/med_data/laptop{
-	pixel_x = -8;
-	pixel_y = -31;
-	dir = 1
+/obj/structure/railing/grey,
+/obj/structure/window/phoronreinforced,
+/obj/machinery/computer/ship/sensors{
+	dir = 8
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/techfloor/monogrid,
 /area/bridge)
 "oWB" = (
 /turf/simulated/floor/tiled,
@@ -20817,7 +20856,7 @@
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
 "piy" = (
-/turf/simulated/floor/tiled/techfloor/lythios43c,
+/turf/simulated/floor/tiled/techfloor,
 /area/bridge)
 "piB" = (
 /obj/structure/bed/chair/sofa/black/right,
@@ -20996,13 +21035,15 @@
 /turf/simulated/floor/wood,
 /area/exploration/pilot_Office)
 "ppC" = (
-/obj/effect/floor_decal/spline/fancy/wood/three_quarters,
-/obj/overmap/entity/visitable/ship/endeavour,
-/obj/structure/bed/chair/bay/comfy/captain{
-	dir = 4
+/obj/machinery/button/remote/blast_door{
+	dir = 1;
+	id = "bridge_lockdown";
+	name = "Bridge Lockdown";
+	pixel_y = -28;
+	req_access = list(19)
 	},
-/turf/simulated/floor/tiled/techfloor/lythios43c,
-/area/bridge)
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "ppR" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -22006,12 +22047,6 @@
 "qib" = (
 /obj/effect/floor_decal/spline/plain,
 /obj/structure/table/marble,
-/obj/machinery/computer/skills{
-	pixel_y = 1;
-	layer = 3.1;
-	dir = 1;
-	pixel_x = 9
-	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/bridge)
 "qii" = (
@@ -22140,23 +22175,13 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portamidhall)
 "qnv" = (
-/obj/structure/railing/grey{
-	dir = 8
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
 /obj/effect/floor_decal/spline/fancy/wood{
-	dir = 9
+	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 1
+/obj/machinery/computer/communications{
+	dir = 8
 	},
-/obj/structure/bed/chair/bay/comfy/blue{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor/lythios43c,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/bridge)
 "qnH" = (
 /obj/machinery/light,
@@ -22592,7 +22617,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/navblue/diagonal,
-/turf/simulated/floor/tiled/techfloor/lythios43c,
+/turf/simulated/floor/tiled/techfloor,
 /area/bridge)
 "qBE" = (
 /obj/machinery/light{
@@ -25199,7 +25224,7 @@
 "syp" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/modular_computer/laptop/preset/custom_loadout/advanced,
-/turf/simulated/floor/tiled/techfloor/lythios43c,
+/turf/simulated/floor/tiled/techfloor,
 /area/bridge)
 "syE" = (
 /obj/effect/floor_decal/rust,
@@ -25459,10 +25484,6 @@
 /turf/simulated/wall/r_wall/prepainted/exploration,
 /area/shuttle/courser/cockpit)
 "sGh" = (
-/obj/structure/flora/pottedplant/shoot{
-	pixel_y = 15;
-	pixel_x = 13
-	},
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -25472,7 +25493,7 @@
 	name = "Bridge Lockdown";
 	opacity = 0
 	},
-/turf/simulated/floor/tiled/techfloor/lythios43c,
+/turf/simulated/floor/tiled/techfloor,
 /area/bridge)
 "sGq" = (
 /obj/structure/catwalk,
@@ -28095,23 +28116,9 @@
 /turf/simulated/wall/rthull,
 /area/shuttle/excursion/endeavour/cargo)
 "uwI" = (
-/obj/structure/railing/grey{
-	dir = 8
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 10
-	},
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 1
-	},
-/obj/structure/bed/chair/bay/comfy/blue{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor/lythios43c,
-/area/bridge)
+/obj/machinery/fire_alarm/north_mount,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "uwW" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
@@ -28376,18 +28383,9 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d1fwdhall)
 "uCX" = (
-/obj/structure/railing/grey{
-	dir = 8
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/tiled/techfloor/lythios43c,
-/area/bridge)
+/obj/effect/floor_decal/corner/navblue/diagonal,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "uCZ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -29975,15 +29973,14 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portamidhall)
 "vIH" = (
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 9
+/obj/machinery/door/airlock/command{
+	id_tag = "captaindoor";
+	name = "Facility Director's Office";
+	req_one_access = null
 	},
-/obj/item/folder/blue_captain{
-	pixel_y = 33;
-	pixel_x = 6;
-	layer = 3.2
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/obj/map_helper/access_helper/airlock/station/command/bridge,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/techfloor/lythios43c/indoors,
 /area/bridge)
 "vIN" = (
 /turf/simulated/wall/prepainted,
@@ -31091,8 +31088,12 @@
 /turf/simulated/floor/tiled/monowhite,
 /area/endeavour/hallway/d1fwdmaint)
 "wDz" = (
-/obj/effect/floor_decal/corner/navblue/diagonal,
-/turf/simulated/floor/tiled/techfloor/lythios43c,
+/obj/effect/floor_decal/spline/fancy/wood/three_quarters,
+/obj/overmap/entity/visitable/ship/endeavour,
+/obj/structure/bed/chair/bay/comfy/captain{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
 /area/bridge)
 "wDI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -32632,7 +32633,7 @@
 	},
 /obj/map_helper/access_helper/airlock/station/command/bridge,
 /obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor,
 /area/bridge)
 "xLn" = (
 /obj/machinery/door/blast/regular,
@@ -62987,7 +62988,7 @@ lAw
 aek
 ilb
 teT
-eYD
+gfA
 jDd
 aVK
 bbX
@@ -63179,11 +63180,11 @@ fbC
 jpf
 grq
 lKq
-vIH
-wUh
-wUh
-wUh
-tNT
+gfA
+eex
+wDz
+eYk
+gfA
 fDI
 svq
 qPJ
@@ -63373,11 +63374,11 @@ yiZ
 gnm
 ylz
 bRa
-eex
-plZ
-iWy
-lgJ
-eYk
+blV
+wUh
+qnv
+wUh
+tNT
 mXI
 keH
 myt
@@ -63568,14 +63569,14 @@ fSZ
 xPl
 lNp
 eex
-plZ
-ejQ
-lgJ
+gfA
+gfA
+gfA
 eYk
 lNp
 uFn
-fSZ
-fSZ
+jVM
+ekB
 pOh
 ukf
 xfk
@@ -63762,10 +63763,10 @@ wus
 nAT
 bHy
 eex
-gfA
-kEl
-gfA
-oWz
+plZ
+iWy
+lgJ
+eYk
 qib
 hai
 tps
@@ -63955,11 +63956,11 @@ lhf
 vtD
 rqe
 pbo
-uBH
-fka
-jJL
-fka
-oQJ
+eex
+plZ
+ejQ
+lgJ
+eYk
 xPG
 pob
 hfQ
@@ -64149,11 +64150,11 @@ ivY
 qHq
 mYb
 aek
-llA
-hMD
-tvS
-oVe
-llA
+gfA
+gfA
+kEl
+gfA
+gfA
 dMq
 fKd
 snk
@@ -64343,11 +64344,11 @@ cMQ
 qOI
 gMZ
 aZE
-ekB
-qnv
-uCX
-uwI
-wDz
+uBH
+fka
+jJL
+fka
+oQJ
 jwq
 gMk
 nuL
@@ -64537,11 +64538,11 @@ vDK
 vDK
 vDK
 vDK
-fND
-fQt
-ppC
-ltQ
-bCo
+llA
+hMD
+tvS
+oWz
+llA
 vDK
 vDK
 vDK
@@ -64730,10 +64731,10 @@ vDK
 piy
 piy
 piy
-xKC
+vIH
 piy
 fQt
-piy
+fJS
 ltQ
 piy
 xKC
@@ -65115,19 +65116,19 @@ xRj
 xRj
 qqr
 vDK
-fJS
+sGh
 vDK
 vDK
-fJS
-fJS
+sGh
+sGh
 jUV
 ebq
 qBy
-fJS
-blV
+sGh
+sGh
 vDK
 vDK
-fJS
+sGh
 vDK
 qqr
 xRj
@@ -65312,13 +65313,13 @@ qqr
 qqr
 wki
 vDK
-blV
-fJS
+sGh
+sGh
 sGh
 vDK
 oio
-fJS
-blV
+sGh
+sGh
 vDK
 wki
 qqr
@@ -65709,8 +65710,8 @@ qqr
 ayx
 xRj
 xRj
-xRj
-xRj
+oVe
+fND
 xRj
 xRj
 xRj
@@ -66091,7 +66092,7 @@ xRj
 xRj
 xRj
 xRj
-xRj
+eYD
 xRj
 xRj
 xRj
@@ -66478,11 +66479,11 @@ xRj
 xRj
 xRj
 xRj
+bCo
 xRj
 xRj
 xRj
-xRj
-xRj
+uCX
 xRj
 xRj
 xRj
@@ -66672,11 +66673,11 @@ xRj
 xRj
 xRj
 xRj
+uwI
 xRj
 xRj
 xRj
-xRj
-xRj
+ppC
 xRj
 xRj
 xRj
