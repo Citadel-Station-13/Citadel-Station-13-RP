@@ -90,3 +90,7 @@ DATUM_TRAIT(/mob, TRAIT_DEAF)
 // This mob can breathe water
 #define TRAIT_MOB_WATER_BREATHER		"mob_water_breather"
 DATUM_TRAIT(/mob, TRAIT_MOB_WATER_BREATHER)
+
+// Mob AI interaction Traits
+#define TRAIT_IGNORED_BY_AI				"Ignored by AI"
+DATUM_TRAIT(/mob, TRAIT_IGNORED_BY_AI)

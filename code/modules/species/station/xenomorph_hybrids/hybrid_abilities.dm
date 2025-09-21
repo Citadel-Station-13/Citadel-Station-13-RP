@@ -68,8 +68,44 @@
 				to_chat(O, SPAN_NOTICEALIEN("You mend the bone in your [E]"))
 				return//fix one then stop, trigger again to mend more
 
+/datum/ability/species/xenomorph_hybrid/sneak
+	name = "Sneak around"
+	desc = "Sneak around using your ancestores affinity for stealth"
+	action_state = "alien-default"
+	windup = 3 SECOND
+	interact_type = ABILITY_INTERACT_TOGGLE
+	always_bind = TRUE
+	ability_check_flags = ABILITY_CHECK_STANDING
+	mobility_check_flags = MOBILITY_CAN_MOVE
+	var/move_speed_mod = /datum/movespeed_modifier/sneaky_xenohybrid
+	var/action_speed_mod = /datum/actionspeed_modifier/sneaky_xenohybrid
 
+/datum/movespeed_modifier/sneaky_xenohybrid
+	id = "sneaking_xenomorph_hybrid"
+	mod_multiply_speed = 0.25 //apparent we divide by this value????
+	variable = TRUE
 
+/datum/actionspeed_modifier/sneaky_xenohybrid
+	multiplicative_slowdown = 2 // You take care to work silently
 
+/datum/ability/species/xenomorph_hybrid/sneak/on_enable()
+	var/mob/living/carbon/human/O = owner
+	if(istype(O))
+		O.visible_emote("fades into the shadows.")
+		O.mouse_opacity = 0
+		animate(O, alpha = 10, time = 3 SECOND)
+		ADD_TRAIT(O, TRAIT_IGNORED_BY_AI, "Species_Ability")
+		O.update_movespeed_modifier(move_speed_mod)
+		O.add_actionspeed_modifier(action_speed_mod)
+		O.base_attack_cooldown = initial(O.base_attack_cooldown) * 5
 
-
+/datum/ability/species/xenomorph_hybrid/sneak/on_disable()
+	var/mob/living/carbon/human/O = owner
+	if(istype(O))
+		O.visible_emote("appears out of the shadows")
+		O.mouse_opacity = 1
+		animate(O, alpha = 255, time = 1 SECOND)
+		REMOVE_TRAIT(O, TRAIT_IGNORED_BY_AI, "Species_Ability")
+		O.remove_movespeed_modifier(move_speed_mod)
+		O.remove_actionspeed_modifier(action_speed_mod)
+		O.base_attack_cooldown = initial(O.base_attack_cooldown)
