@@ -21,6 +21,10 @@
 	/// can collapse
 	var/collapsible = TRUE
 
+	/// launch velocity in m/s
+	/// * this should be on the shell but idgaf lol
+	var/launch_velocity = 73
+
 	/// in degrees std-dev
 	var/standard_azimuth_error = 3.5
 	/// in degrees, to add or subtract, going clockwise
@@ -58,11 +62,26 @@
 /obj/machinery/mortar/proc/expand(obj/item/mortar_kit/from_kit)
 
 /obj/machinery/mortar/proc/run_firing_cycle(obj/item/ammo_casing/mortar/shell, x_offset, y_offset)
-	var/list/k_solved = math__solve_kinematic_trajectory(x_offset, y_offset, 0, 9.8)
-	var/list/k_altered = run_firing_kinematics(arglist(k_solved))
-	var/list/k_results = math__run_kinematic_trajectory(arglist(k_altered))
+	// clockwise from north
+	var/k_azimuth
+	#warn azimuth
 
-	launch(shell, k_results[1], k_results[2], k_results[3])
+	var/k_distance = sqrt(x_offset ** 2 + y_offset ** 2)
+	var/k_velocity = launch_velocity
+
+	var/gravity_on_target_planet = 9.8
+
+	var/list/k_optimal = math__solve_kinematic_trajectory(null, k_velocity, k_distance, 0, gravity_on_target_planet)
+	var/list/k_inaccurate = run_firing_kinematics(k_azimuth, k_optimal[1], k_velocity)
+	var/list/k_final = math__solve_kinematic_trajectory(k_inaccurate[2], k_inaccurate[3], null, 0, gravity_on_target_planet)
+
+	var/final_distance = k_final[3]
+
+	var/final_dx
+	var/final_dy
+	#warn solve dx/dy
+
+	launch(shell, dx, dy, k_final[4])
 
 /**
  * @return list(azimuth, altitude, velocity)
