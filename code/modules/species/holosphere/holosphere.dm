@@ -191,18 +191,6 @@
 	if(H)
 		return blood_color
 
-/datum/species/holosphere/get_bodytype_legacy()
-	return base_species
-
-/datum/species/holosphere/get_worn_legacy_bodytype()
-	var/datum/species/real = SScharacters.resolve_species_name(base_species)
-	// infinite loop guard
-	return istype(real, src)? base_species : real.get_worn_legacy_bodytype()
-
-/datum/species/holosphere/get_race_key(mob/living/carbon/human/H)
-	var/datum/species/real = SScharacters.resolve_species_name(base_species)
-	return real.real_race_key(H)
-
 /datum/species/holosphere/get_valid_shapeshifter_forms()
 	return list(
 		SPECIES_HUMAN, SPECIES_UNATHI, SPECIES_UNATHI_DIGI, SPECIES_TAJ, SPECIES_SKRELL,
@@ -213,3 +201,54 @@
 		SPECIES_MONKEY_TAJ, SPECIES_MONKEY_AKULA, SPECIES_MONKEY_VULPKANIN,
 		SPECIES_MONKEY_SERGAL, SPECIES_MONKEY_NEVREAN,
 	)
+
+/datum/species/holosphere/get_icobase(mob/living/carbon/human/H, get_deform)
+	if(!H) return ..(null, get_deform)
+	var/datum/species/S = SScharacters.resolve_species_name(H.species.base_species)
+	return S.get_icobase(H, get_deform)
+
+/datum/species/holosphere/real_race_key(mob/living/carbon/human/H)
+	return "[..()]-[H.species.base_species]"
+
+/datum/species/holosphere/get_effective_bodytype(mob/living/carbon/human/H, obj/item/I, slot_id)
+	if(!H) return ..(H, I, slot_id)
+	var/datum/species/S = SScharacters.resolve_species_name(H.species.base_species)
+	return S.get_effective_bodytype(H, I, slot_id)
+
+/datum/species/holosphere/get_bodytype_legacy(mob/living/carbon/human/H)
+	if(!H) return ..()
+	var/datum/species/S = SScharacters.resolve_species_name(H.species.base_species)
+	return S.get_bodytype_legacy(H)
+
+/datum/species/holosphere/get_worn_legacy_bodytype(mob/living/carbon/human/H)
+	if(!H) return ..()
+	var/datum/species/S = SScharacters.resolve_species_name(H.species.base_species)
+	return S.get_worn_legacy_bodytype(H)
+
+/datum/species/holosphere/get_blood_mask(mob/living/carbon/human/H)
+	if(!H) return ..()
+	var/datum/species/S = SScharacters.resolve_species_name(H.species.base_species)
+	return S.get_blood_mask(H)
+
+/datum/species/holosphere/get_damage_mask(mob/living/carbon/human/H)
+	if(!H) return ..()
+	var/datum/species/S = SScharacters.resolve_species_name(H.species.base_species)
+	return S.get_damage_mask(H)
+
+/datum/species/holosphere/get_damage_overlays(mob/living/carbon/human/H)
+	if(!H) return ..()
+	var/datum/species/S = SScharacters.resolve_species_name(H.species.base_species)
+	return S.get_damage_overlays(H)
+
+/datum/species/holosphere/get_default_sprite_accessory(mob/living/carbon/human/character, slot)
+	if(!character)
+		return ..()
+	var/datum/species/S = SScharacters.resolve_species_name(character.species.base_species)
+	return S.get_default_sprite_accessory(arglist(args))
+
+/datum/species/holosphere/get_husk_icon(mob/living/carbon/human/H)
+	if(H)
+		var/datum/species/S = SScharacters.resolve_species_name(H.species.base_species)
+		if(S)
+			return S.get_husk_icon(H)
+	 return ..()
