@@ -12,7 +12,6 @@
 	id = SPECIES_ID_HOLOSPHERE
 	category = SPECIES_CAEGORY_HOLOSPHERE
 	name_plural   = "Holospheres"
-	override_worn_legacy_bodytype = SPECIES_HUMAN
 	icobase = 'icons/mob/species/human/body_greyscale.dmi'
 	deform  = 'icons/mob/species/human/deformed_body_greyscale.dmi'
 
