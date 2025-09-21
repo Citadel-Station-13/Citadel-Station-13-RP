@@ -23,8 +23,8 @@
 		return TRUE
 	if(status_indicators[path])
 		status_indicators -= path
-		if(!length(status_indicators)
-			status_indicators = null)
+		if(!length(status_indicators))
+			status_indicators = null
 		remove_status_indicator_internal(path)
 	return TRUE
 

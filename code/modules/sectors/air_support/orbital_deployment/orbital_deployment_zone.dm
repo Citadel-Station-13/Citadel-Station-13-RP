@@ -24,6 +24,8 @@
 	construct_zone()
 
 /datum/orbital_deployment_zone/proc/construct_zone()
+	if(lower_left.z != upper_left.z)
+		CRASH("LL/UR not on same z?")
 	if(!isturf(lower_left.loc))
 		CRASH("LL not on turf")
 	if(!isturf(upper_right.loc))
@@ -32,10 +34,10 @@
 		CRASH("LL/UR markers swapped")
 
 	var/turf/test_turf = get_step(lower_left, NORTHEAST)
-	if(istype(test_turf.loc, /area/orbital_deployment))
+	if(istype(test_turf.loc, /area/orbital_deployment_area))
 		CRASH("tried to write-over a zone (lower-left test failed)")
 	var/list/turf/inside_zone = block(get_step(lower_left, NORTHEAST), get_step(upper_right, SOUTHWEST))
-	var/area/orbital_deployment/deployment_area = new(null)
+	var/area/orbital_deployment_area/deployment_area = new(null)
 
 
 	#warn impl
@@ -62,6 +64,32 @@
 		target_lower_left.z,
 	)
 
+	var/list/out_motion_flags = list()
+	var/list/out_moved_atoms = list()
+
+	var/datum/orbital_deployment_translation/translation = new
+
+	var/datum/bound_proc/turf_overlap_handler = BOUND_PROC(translation, PROC_REF(on_turf_overlap))
+	var/datum/bound_proc/movable_overlap_handler = BOUND_PROC(translation, PROC_REF(on_movable_overlap))
+
+	SSgrids.translate(
+		from_turfs,
+		to_turfs,
+		NORTH,
+		wanted_dir,
+		GRID_MOVE_AREA | GRID_MOVE_MOVABLES | GRID_MOVE_TURF,
+		null,
+		base_area,
+		out_motion_flags,
+		out_moved_atoms,
+		turf_overlap_handler,
+		movable_overlap_handler,
+	)
+
+
+
 /datum/orbital_deployment_zone/proc/get_width()
 
 /datum/orbital_deployment_zone/proc/get_height()
+
+/datum/orbital_deployment_zone/proc/on_launch()
