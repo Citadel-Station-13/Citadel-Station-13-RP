@@ -1693,6 +1693,9 @@
 /obj/structure/table/standard,
 /obj/item/storage/box/glasses/square,
 /obj/effect/floor_decal/spline/fancy/wood,
+/obj/item/radio/entertainement{
+	pixel_y = 17
+	},
 /turf/simulated/floor/carpet,
 /area/shuttle/trade_ship/general)
 "aeS" = (
@@ -8116,7 +8119,7 @@
 /area/tradeport/safari)
 "awk" = (
 /obj/machinery/door/blast/regular,
-/turf/simulated/floor/reinforced,
+/turf/simulated/wall/r_wall,
 /area/sector/nebula_tradeport/dock2)
 "awl" = (
 /obj/machinery/vending/coffee,
@@ -13355,6 +13358,10 @@
 /obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 8
+	},
+/obj/item/radio/entertainement{
+	pixel_y = 14;
+	pixel_x = 15
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/nebula_tradeport/engineering)
@@ -19173,6 +19180,7 @@
 "bXs" = (
 /obj/structure/table/hardwoodtable,
 /obj/random/alcohol,
+/obj/item/radio/entertainement,
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/room3)
 "bXG" = (
@@ -21338,6 +21346,11 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
+/obj/item/radio/entertainement{
+	layer = 4;
+	pixel_y = 19;
+	pixel_x = -5
+	},
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/room6)
 "gPc" = (
@@ -21578,6 +21591,9 @@
 "hhS" = (
 /obj/item/material/ashtray/plastic,
 /obj/structure/table/hardwoodtable,
+/obj/item/radio/entertainement{
+	pixel_y = 6
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/commons)
 "hhX" = (
@@ -22161,6 +22177,10 @@
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/nebula_tradeport/motel/arcade)
+"irf" = (
+/obj/machinery/door/blast/regular,
+/turf/simulated/wall/r_wall,
+/area/tradeport/pads)
 "irm" = (
 /obj/effect/floor_decal/spline/fancy{
 	dir = 5
@@ -22894,6 +22914,11 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
+/obj/item/radio/entertainement{
+	layer = 4;
+	pixel_y = 19;
+	pixel_x = -5
+	},
 /turf/simulated/floor/airless,
 /area/sector/nebula_tradeport/motel/room8)
 "kge" = (
@@ -23346,6 +23371,17 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
 /area/tradeport/commhall)
+"ldT" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/obj/item/radio/entertainement{
+	layer = 4;
+	pixel_y = 19;
+	pixel_x = -5
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/sector/nebula_tradeport/comroom)
 "ldW" = (
 /obj/machinery/atmospherics/portables_connector,
 /obj/machinery/portable_atmospherics/canister/phoron,
@@ -24012,6 +24048,7 @@
 	pixel_x = 9;
 	pixel_y = 2
 	},
+/obj/item/radio/entertainement,
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/room1)
 "mHd" = (
@@ -24102,6 +24139,7 @@
 	pixel_x = 9;
 	pixel_y = 2
 	},
+/obj/item/radio/entertainement,
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/room2)
 "mOl" = (
@@ -24854,6 +24892,9 @@
 /obj/item/paper_bin,
 /obj/item/pen/fountain,
 /obj/item/pen,
+/obj/item/radio/entertainement{
+	pixel_y = 17
+	},
 /turf/simulated/floor/carpet/patterened/red,
 /area/shuttle/scoophead/cockpit)
 "oFP" = (
@@ -25226,6 +25267,18 @@
 	},
 /turf/simulated/floor,
 /area/tradeport/pads)
+"pOg" = (
+/obj/structure/table/hardwoodtable,
+/obj/structure/flora/pottedplant/stoutbush{
+	pixel_y = 12
+	},
+/obj/item/radio/entertainement{
+	layer = 4;
+	pixel_y = 2;
+	pixel_x = 5
+	},
+/turf/simulated/floor/carpet/turcarpet,
+/area/sector/nebula_tradeport/motel)
 "pPL" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
@@ -25421,6 +25474,7 @@
 "qrf" = (
 /obj/structure/table/hardwoodtable,
 /obj/random/alcohol,
+/obj/item/radio/entertainement,
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/room4)
 "qtX" = (
@@ -26064,6 +26118,9 @@
 	pixel_x = 22;
 	req_one_access = list(160)
 	},
+/obj/item/radio/entertainement{
+	layer = 4
+	},
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/nebula_tradeport/motel/room5)
 "rQl" = (
@@ -26210,6 +26267,14 @@
 "sqY" = (
 /turf/simulated/wall/wood/hardwood,
 /area/sector/nebula_tradeport/motel/room5)
+"sri" = (
+/obj/effect/floor_decal/spline/plain,
+/obj/structure/table/wooden_reinforced,
+/obj/item/radio/entertainement{
+	pixel_y = 17
+	},
+/turf/simulated/floor/carpet/patterened/red,
+/area/sector/nebula_tradeport/motel/vip)
 "suE" = (
 /obj/structure/table/hardwoodtable,
 /obj/structure/flora/pottedplant/decorative,
@@ -26848,6 +26913,16 @@
 	},
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/tradeport/spine)
+"tUG" = (
+/obj/structure/table/hardwoodtable,
+/obj/machinery/door/blast/shutters{
+	dir = 4;
+	id = "nebulacafe";
+	name = "Nebula Cafe Shutters"
+	},
+/obj/item/radio/entertainement,
+/turf/simulated/floor/wood,
+/area/tradeport/cafeteria)
 "tVG" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
@@ -28060,6 +28135,11 @@
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
+	},
+/obj/item/radio/entertainement{
+	layer = 4;
+	pixel_y = 19;
+	pixel_x = -5
 	},
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/room7)
@@ -35526,7 +35606,7 @@ alM
 aja
 aug
 aom
-aDS
+sri
 aMf
 aVE
 aXl
@@ -37266,7 +37346,7 @@ xIp
 qLC
 cXs
 cXs
-cWD
+pOg
 aFw
 aDn
 afP
@@ -42127,7 +42207,7 @@ ajr
 aSn
 aBN
 azy
-ajr
+ldT
 awG
 aQG
 aLj
@@ -51454,29 +51534,29 @@ acd
 aRT
 aia
 aia
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
 aia
 aia
 avV
@@ -53226,17 +53306,17 @@ akf
 akf
 aia
 aia
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
 aia
 aia
 avV
@@ -55502,7 +55582,7 @@ lMf
 mmr
 mmr
 mmr
-mmr
+tUG
 keP
 aqz
 aau
@@ -60952,11 +61032,11 @@ apt
 axr
 anq
 aia
-ajD
-ajD
-ajD
-ajD
-ajD
+irf
+irf
+irf
+irf
+irf
 aia
 aia
 aqd
@@ -61180,17 +61260,17 @@ akf
 akf
 aia
 aia
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
 aia
 aia
 acd
@@ -62900,29 +62980,29 @@ acd
 acd
 aia
 aia
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
-ajD
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
+irf
 aia
 aia
 acd

@@ -575,7 +575,6 @@
 /obj/machinery/porta_turret/stationary{
 	uid = "gateway"
 	},
-/obj/structure/marker_beacon/green,
 /turf/simulated/floor/tiled/techmaint,
 /area/strelka/gateway)
 "cD" = (
@@ -9417,8 +9416,7 @@
 /obj/effect/floor_decal/grass_edge{
 	dir = 4
 	},
-/obj/structure/ladder/teleporter/up,
-/turf/simulated/floor/tiled/monodark,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/hallway/strelka/deck1)
 "VX" = (
 /turf/simulated/floor/airless,

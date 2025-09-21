@@ -2675,7 +2675,7 @@
 	pixel_y = 33;
 	pixel_x = -59
 	},
-/obj/item/radio/phone/laptop,
+/obj/item/radio/laptop,
 /turf/simulated/floor/carpet/turcarpet,
 /area/sector/sky_planet/occulum)
 "mu" = (
@@ -6481,7 +6481,7 @@
 /obj/effect/floor_decal/carpet/blue{
 	dir = 1
 	},
-/obj/item/radio/phone/laptop,
+/obj/item/radio/laptop,
 /turf/simulated/floor/carpet/bcarpet,
 /area/shuttle/crescend)
 "DE" = (
@@ -6657,6 +6657,10 @@
 	pixel_y = 10;
 	pixel_x = -6
 	},
+/obj/item/clothing/mask/gas/voice,
+/obj/item/clothing/mask/gas/voice,
+/obj/item/card/id/syndicate,
+/obj/item/card/id/syndicate,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/crescend)
 "Ee" = (

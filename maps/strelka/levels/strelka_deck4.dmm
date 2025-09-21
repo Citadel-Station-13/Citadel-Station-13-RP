@@ -68,6 +68,9 @@
 	dir = 4
 	},
 /obj/machinery/air_alarm/west_mount,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 4
+	},
 /turf/simulated/floor/fey/forest_grass,
 /area/hydroponics/strelka/hallway/botany)
 "al" = (
@@ -266,30 +269,10 @@
 /turf/simulated/floor/wood/broken,
 /area/hallway/strelka/deck4)
 "aW" = (
-/obj/structure/closet/chefcloset,
-/obj/item/glass_jar,
-/obj/item/retail_scanner/civilian,
-/obj/item/soap/nanotrasen,
-/obj/item/destTagger{
-	pixel_x = 4;
-	pixel_y = 3
-	},
-/obj/item/packageWrap,
-/obj/item/packageWrap,
-/obj/item/packageWrap,
-/obj/effect/floor_decal/corner/grey{
-	dir = 5
-	},
-/obj/effect/floor_decal/corner/grey{
-	dir = 10
-	},
 /obj/effect/floor_decal/spline/fancy/wood{
-	dir = 9
+	dir = 8
 	},
-/obj/machinery/camera/network/security{
-	dir = 4
-	},
-/obj/machinery/fire_alarm/west_mount,
+/obj/machinery/air_alarm/west_mount,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/crew_quarters/kitchen/strelka)
 "aX" = (
@@ -1018,8 +1001,13 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
-/obj/machinery/air_alarm/west_mount,
-/obj/machinery/appliance/cooker/grill,
+/obj/structure/table/hardwoodtable,
+/obj/machinery/chemical_dispenser/catering/bar_soft{
+	dir = 4;
+	pixel_x = -6;
+	pixel_y = -4;
+	layer = 3.1
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/crew_quarters/kitchen/strelka)
 "es" = (
@@ -1125,7 +1113,7 @@
 	dir = 1
 	},
 /obj/effect/mist,
-/turf/simulated/floor/water/pool,
+/turf/simulated/floor/water/deep/pool,
 /area/strelka/dormhallway/pool/sauna/room2)
 "eL" = (
 /obj/structure/window/reinforced,
@@ -1141,6 +1129,32 @@
 	},
 /turf/simulated/floor/wood,
 /area/bridge/strelka/hop/room)
+"eR" = (
+/obj/structure/closet/chefcloset,
+/obj/item/glass_jar,
+/obj/item/retail_scanner/civilian,
+/obj/item/soap/nanotrasen,
+/obj/item/destTagger{
+	pixel_x = 4;
+	pixel_y = 3
+	},
+/obj/item/packageWrap,
+/obj/item/packageWrap,
+/obj/item/packageWrap,
+/obj/effect/floor_decal/corner/grey{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/grey{
+	dir = 10
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 9
+	},
+/obj/machinery/camera/network/security{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/crew_quarters/kitchen/strelka)
 "eS" = (
 /obj/structure/window/reinforced,
 /obj/machinery/portable_atmospherics/hydroponics{
@@ -1588,6 +1602,7 @@
 /obj/machinery/light/small/old{
 	dir = 8
 	},
+/obj/item/soap/nanotrasen,
 /turf/simulated/floor/wood,
 /area/strelka/janitor)
 "gF" = (
@@ -1751,7 +1766,7 @@
 /area/hydroponics/strelka/hallway/botany)
 "hl" = (
 /obj/effect/mist,
-/turf/simulated/floor/water/pool,
+/turf/simulated/floor/water/deep/pool,
 /area/strelka/dormhallway/pool/sauna)
 "hm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -2228,9 +2243,6 @@
 /area/hallway/strelka/deck4)
 "js" = (
 /obj/effect/floor_decal/spline/fancy/wood,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
@@ -2238,6 +2250,9 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/computer/timeclock/premade/north,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
+	},
 /turf/simulated/floor/wood/indoors,
 /area/hallway/strelka/deck4)
 "jt" = (
@@ -2286,6 +2301,9 @@
 /obj/item/deck/cards{
 	pixel_y = -3;
 	pixel_x = 13
+	},
+/obj/item/radio/entertainement{
+	pixel_x = -7
 	},
 /turf/simulated/floor/bmarble,
 /area/crew_quarters/bar/strelka)
@@ -3033,6 +3051,7 @@
 	dir = 4;
 	pixel_x = 22
 	},
+/obj/structure/table/bench/wooden,
 /turf/simulated/floor/wood,
 /area/strelka/dormhallway/pool/sauna/room2)
 "mw" = (
@@ -3112,6 +3131,8 @@
 /area/chapel/strelka/office)
 "mH" = (
 /obj/structure/closet/athletic_mixed,
+/obj/item/soap/nanotrasen,
+/obj/item/soap/nanotrasen,
 /turf/simulated/floor/wood/indoors,
 /area/hallway/strelka/dormhallway)
 "mK" = (
@@ -3401,6 +3422,9 @@
 /obj/structure/sign/hydro{
 	pixel_x = 30
 	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 8
+	},
 /turf/simulated/floor/fey/forest_grass,
 /area/hydroponics/strelka/hallway/botany)
 "nN" = (
@@ -3479,13 +3503,6 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/dormhallway/Dorm)
-"oc" = (
-/obj/structure/disposaloutlet{
-	dir = 1
-	},
-/obj/structure/disposalpipe/trunk,
-/turf/simulated/shuttle/floor/glass,
-/area/crew_quarters/kitchen/strelka)
 "od" = (
 /obj/structure/bed/chair/comfy/brown{
 	dir = 1
@@ -3807,6 +3824,7 @@
 /obj/machinery/vending/dinnerware{
 	dir = 1
 	},
+/obj/machinery/fire_alarm/south_mount,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/crew_quarters/kitchen/strelka)
 "pq" = (
@@ -3845,6 +3863,10 @@
 /obj/machinery/air_alarm/east_mount,
 /turf/simulated/floor/carpet/patterened/blue/alt,
 /area/bridge/strelka/hop/office)
+"pv" = (
+/obj/structure/grille,
+/turf/simulated/floor/plating,
+/area/space)
 "px" = (
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -3853,9 +3875,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
@@ -3863,6 +3882,9 @@
 	icon_state = "2-4"
 	},
 /obj/machinery/light/small/old{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
 /turf/simulated/floor/wood/indoors,
@@ -3990,13 +4012,6 @@
 	},
 /turf/simulated/floor/glass/reinforced/indoors,
 /area/hydroponics/strelka/hallway/botany)
-"qf" = (
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
-	},
-/obj/structure/table/hardwoodtable,
-/turf/simulated/floor/tiled/asteroid_steel,
-/area/crew_quarters/kitchen/strelka)
 "qm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -4063,6 +4078,11 @@
 /obj/structure/lattice,
 /turf/simulated/floor/holofloor/reinforced,
 /area/space)
+"qv" = (
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/hallway/strelka/deck4)
 "qy" = (
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/item/stool,
@@ -4913,6 +4933,13 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/strelka)
+"ur" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/machinery/appliance/cooker/grill,
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/crew_quarters/kitchen/strelka)
 "uy" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/strelka/dormhallway/Dorm/Room3)
@@ -5643,6 +5670,7 @@
 /area/bridge/strelka)
 "xY" = (
 /obj/structure/closet/secure_closet/personal,
+/obj/item/soap/nanotrasen,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/dormhallway/pool)
 "yb" = (
@@ -6189,6 +6217,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/hallway/strelka/deck4)
 "AD" = (
@@ -6701,6 +6730,9 @@
 	pixel_x = -8
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
 /turf/simulated/floor/fey/forest_grass,
 /area/hydroponics/strelka/hallway/botany)
 "CK" = (
@@ -6722,6 +6754,13 @@
 /obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/plating,
 /area/maintenance/strelka)
+"CO" = (
+/obj/structure/disposaloutlet{
+	dir = 1
+	},
+/obj/structure/disposalpipe/trunk,
+/turf/simulated/shuttle/floor/glass,
+/area/space)
 "CP" = (
 /obj/spawner/window/low_wall/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
@@ -6851,6 +6890,10 @@
 /obj/item/pen,
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/strelka)
+"DH" = (
+/obj/structure/table/hardwoodtable,
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/crew_quarters/kitchen/strelka)
 "DI" = (
 /obj/spawner/window/low_wall/firelocks,
 /obj/structure/curtain/open/black,
@@ -7143,6 +7186,7 @@
 /obj/structure/flora/grass/event/bright_flowers1,
 /obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/wheelchairassist,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/trap/wheelchair,
 /area/hallway/strelka/deck4)
 "Fg" = (
@@ -7170,9 +7214,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
-	},
-/obj/machinery/camera/network/security{
-	dir = 8
 	},
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_x = 31
@@ -7305,6 +7346,18 @@
 /obj/landmark/spawnpoint/latejoin/station/gateway,
 /turf/simulated/floor/wood/indoors,
 /area/arrival/strelka)
+"FO" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/obj/machinery/requests_console{
+	department = "Kitchen";
+	departmentType = 2;
+	name = "Kitchen requests console";
+	pixel_x = 30
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/crew_quarters/kitchen/strelka)
 "FZ" = (
 /obj/machinery/light/small/old{
 	dir = 1
@@ -7522,6 +7575,7 @@
 	dir = 4;
 	pixel_x = 22
 	},
+/obj/structure/table/bench/wooden,
 /turf/simulated/floor/wood,
 /area/strelka/dormhallway/pool/sauna)
 "Hf" = (
@@ -7586,6 +7640,10 @@
 /obj/map_helper/access_helper/airlock/station/service/botany,
 /obj/structure/flora/grass/event/full_grass3,
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/window{
+	name = "Hydroponics";
+	req_access = list(35)
+	},
 /turf/simulated/floor/fey/forest_grass,
 /area/hydroponics/strelka/hallway/botany)
 "Hx" = (
@@ -7799,6 +7857,7 @@
 	dir = 4
 	},
 /obj/machinery/air_alarm/south_mount,
+/obj/item/soap/nanotrasen,
 /turf/simulated/floor/wood,
 /area/strelka/janitor)
 "Io" = (
@@ -8745,6 +8804,11 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/hallway/strelka/deck4)
+"Mt" = (
+/obj/structure/table/bench/marble,
+/obj/item/radio/entertainement,
+/turf/simulated/floor/carpet/bcarpet,
+/area/crew_quarters/bar/strelka)
 "Mv" = (
 /turf/simulated/wall/wood/hardwood,
 /area/hallway/strelka/dormhallway)
@@ -8897,6 +8961,7 @@
 /obj/machinery/light/small/old{
 	dir = 4
 	},
+/obj/item/soap/nanotrasen,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/dormhallway/pool)
 "MU" = (
@@ -9421,6 +9486,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
+/obj/item/soap/nanotrasen,
 /turf/simulated/floor/wood,
 /area/strelka/janitor)
 "Pj" = (
@@ -10095,7 +10161,7 @@
 "SS" = (
 /obj/machinery/light/small,
 /obj/effect/mist,
-/turf/simulated/floor/water/pool,
+/turf/simulated/floor/water/deep/pool,
 /area/strelka/dormhallway/pool/sauna)
 "ST" = (
 /obj/structure/curtain/open/shower,
@@ -10186,6 +10252,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck4)
 "Tl" = (
@@ -10342,7 +10409,7 @@
 /area/crew_quarters/kitchen/strelka)
 "TR" = (
 /obj/effect/mist,
-/turf/simulated/floor/water/pool,
+/turf/simulated/floor/water/deep/pool,
 /area/strelka/dormhallway/pool/sauna/room2)
 "TS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -10548,17 +10615,6 @@
 "Va" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/chapel/strelka)
-"Vb" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced,
-/obj/structure/ladder/teleporter,
-/turf/simulated/floor/tiled/monodark,
-/area/hallway/strelka/deck4)
 "Vh" = (
 /obj/machinery/cryopod/robot/door/gateway,
 /turf/simulated/floor/wood/indoors,
@@ -11290,6 +11346,9 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
 /turf/simulated/floor/fey/forest_grass,
 /area/hydroponics/strelka/hallway/botany)
 "Zc" = (
@@ -28663,9 +28722,9 @@ jR
 jR
 jR
 jR
-jR
 Vl
 Es
+AU
 AU
 AU
 AU
@@ -28857,9 +28916,9 @@ jR
 jR
 jR
 jR
-jR
 eh
 HG
+eR
 aW
 er
 pm
@@ -29051,10 +29110,10 @@ jR
 jR
 jR
 jR
-jR
 eh
 HG
 Ng
+VA
 VA
 sI
 wg
@@ -29089,7 +29148,7 @@ IA
 IA
 aL
 lb
-jR
+Vl
 jR
 jR
 jR
@@ -29245,11 +29304,11 @@ jR
 jR
 jR
 jR
-jR
 eh
 HG
 yU
 Rp
+VA
 Lw
 AU
 bC
@@ -29283,7 +29342,7 @@ Jf
 tq
 Jk
 IW
-jR
+Vl
 jR
 jR
 jR
@@ -29439,10 +29498,10 @@ jR
 jR
 jR
 jR
-jR
 Vl
 AU
 Ki
+DH
 CS
 he
 AU
@@ -29633,10 +29692,10 @@ jR
 jR
 jR
 jR
-jR
 eh
 HG
 Jl
+VA
 yW
 WM
 Al
@@ -29671,8 +29730,8 @@ hz
 ZF
 cs
 Lb
+pv
 gd
-jR
 jR
 jR
 jR
@@ -29827,10 +29886,10 @@ jR
 jR
 jR
 jR
-jR
 eh
 dR
 MJ
+VA
 QD
 LD
 fo
@@ -29843,7 +29902,7 @@ Ci
 Ci
 XO
 js
-Lc
+qv
 Fe
 CJ
 Ae
@@ -30021,11 +30080,11 @@ jR
 jR
 jR
 jR
-jR
 eh
 HG
-qf
+ur
 VA
+DH
 wv
 mZ
 wP
@@ -30059,8 +30118,8 @@ xT
 NB
 am
 Lb
+pv
 gd
-jR
 jR
 jR
 jR
@@ -30215,11 +30274,11 @@ jR
 jR
 jR
 jR
-jR
-AU
+Vl
 AU
 sH
 VA
+DH
 LD
 XI
 VJ
@@ -30408,11 +30467,11 @@ jR
 jR
 jR
 jR
-jR
-oc
+CO
 To
 Vu
 hw
+FO
 TO
 Ja
 lR
@@ -30447,7 +30506,7 @@ rD
 rV
 HQ
 IW
-jR
+Vl
 jR
 jR
 jR
@@ -30603,10 +30662,10 @@ jR
 jR
 jR
 jR
-jR
+Vl
 AU
 AU
-AU
+lR
 lR
 UT
 AU
@@ -30641,7 +30700,7 @@ IA
 Tl
 IA
 lb
-jR
+Vl
 jR
 jR
 jR
@@ -31770,7 +31829,7 @@ jR
 jR
 eh
 oP
-qW
+Mt
 oR
 hQ
 Cy
@@ -32757,7 +32816,7 @@ kQ
 tB
 bL
 bL
-Vb
+bL
 bL
 bL
 ez

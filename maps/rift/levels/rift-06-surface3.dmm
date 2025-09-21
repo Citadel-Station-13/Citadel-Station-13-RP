@@ -27589,6 +27589,9 @@
 /obj/item/flame/lighter/zippo/cowgirl{
 	pixel_y = 4
 	},
+/obj/item/radio/entertainement{
+	pixel_x = -7
+	},
 /turf/simulated/floor/glass/reinforced,
 /area/crew_quarters/bar)
 "vgY" = (

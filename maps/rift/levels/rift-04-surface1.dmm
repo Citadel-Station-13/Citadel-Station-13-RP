@@ -12842,6 +12842,9 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/item/radio/entertainement{
+	pixel_x = -7
+	},
 /turf/simulated/floor/tiled/steel,
 /area/tether/station/public_meeting_room)
 "ikv" = (

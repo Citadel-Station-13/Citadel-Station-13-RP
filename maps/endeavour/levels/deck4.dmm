@@ -25534,6 +25534,18 @@
 /obj/structure/salvageable/autolathe,
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d4aftmaint)
+"xBI" = (
+/obj/structure/table/marble,
+/obj/machinery/door/blast/shutters{
+	dir = 8;
+	id = "bar";
+	name = "Bar Shutters"
+	},
+/obj/item/radio/entertainement{
+	pixel_x = -7
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/bar)
 "xCw" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 9
@@ -45242,7 +45254,7 @@ dlu
 qxt
 ddZ
 tHx
-ddZ
+xBI
 tHx
 lkR
 azA

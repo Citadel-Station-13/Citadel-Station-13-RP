@@ -49,7 +49,6 @@
 	name = "Anomaly Research"
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/firedoor/glass,
 /obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/plating,
 /area/rnd/strelka/anomaly)
@@ -171,6 +170,7 @@
 /area/security/strelka/detective/lab)
 "az" = (
 /obj/landmark/spawnpoint/job/field_medic,
+/obj/machinery/air_alarm/west_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/explo/emt)
 "aA" = (
@@ -2365,13 +2365,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/hallway/strelka/engineering)
-"gW" = (
-/obj/machinery/air_alarm/south_mount,
-/obj/machinery/door/firedoor/glass{
-	dir = 8
-	},
-/turf/simulated/open,
-/area/hallway/strelka/deck2)
 "gX" = (
 /obj/machinery/holopad,
 /turf/simulated/floor/wood/indoors,
@@ -3186,14 +3179,14 @@
 /obj/structure/cable/blue{
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
 /obj/structure/sign/kiddieplaque{
 	pixel_y = -12;
 	layer = 2.6;
 	name = "\improper Strelka Gallery plaque";
 	desc = "Lythios 43a is the base of operation of the Voidline Shuttle Race. It stopped after one successfull edition, the planet being blockaded by the SDF for safety reasons. This suit was given by the Pilot, as a souvenir of the race."
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/hallway/strelka/deck2)
@@ -3677,7 +3670,7 @@
 	layer = 3.5
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
+	dir = 6
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/hallway/strelka/deck2)
@@ -5090,6 +5083,7 @@
 /obj/structure/wheelchairassist{
 	dir = 1
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/trap/wheelchair,
 /area/strelka/explo/emt)
 "oF" = (
@@ -5267,17 +5261,17 @@
 /obj/structure/cable/blue{
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
 /obj/structure/sign/kiddieplaque{
 	pixel_y = -12;
 	layer = 2.6;
 	name = "\improper Strelka Gallery plaque";
 	desc = "This Bible was a gift from a unknow passenger after the ships first blockade run away from a war zone. Its open on a passage that was highlight by said passenger, on Psalm 107. "
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
+	dir = 5
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/hallway/strelka/deck2)
@@ -5600,6 +5594,15 @@
 /obj/map_helper/paint_stripe/purple,
 /turf/simulated/wall/r_wall/prepainted,
 /area/shuttle/excursion/strelka)
+"pX" = (
+/obj/machinery/atmospherics/component/binary/pump/high_power/on{
+	id = "mainfuel";
+	name = "main fuel pump";
+	target_pressure = 15000;
+	dir = 8
+	},
+/turf/simulated/wall/r_wall/prepainted,
+/area/engineering/strelka/nacelle2)
 "pZ" = (
 /obj/machinery/atmospherics/component/binary/pump{
 	dir = 8;
@@ -6183,8 +6186,13 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
-/obj/structure/ladder/teleporter/updown,
-/turf/simulated/floor/tiled/monodark,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
 /area/hallway/strelka/deck2)
 "rx" = (
 /obj/structure/cable/orange{
@@ -6606,6 +6614,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
+/obj/machinery/air_alarm/east_mount,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/hallway/strelka/deck2)
 "sP" = (
@@ -7532,9 +7541,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/strelka/atmos/storage)
 "vu" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
 /turf/simulated/floor/reinforced,
 /area/hallway/strelka/deck2)
 "vv" = (
@@ -8852,6 +8858,16 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/wood/indoors,
 /area/security/strelka/detective)
+"ze" = (
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/hallway/strelka/deck2)
 "zf" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -9118,9 +9134,6 @@
 /obj/structure/cable/blue{
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
 /obj/machinery/door/firedoor/glass,
 /obj/structure/sign/deck/second{
 	pixel_y = -32
@@ -9204,9 +9217,6 @@
 "Ac" = (
 /obj/structure/cable{
 	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
 	},
 /obj/effect/floor_decal/rust,
 /obj/machinery/status_display{
@@ -9743,9 +9753,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
+/obj/machinery/air_alarm/east_mount,
 /turf/simulated/floor/wood/indoors,
 /area/hallway/strelka/deck2)
 "Bw" = (
@@ -9950,7 +9958,6 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/obj/machinery/air_alarm/south_mount,
 /obj/machinery/power/sensor{
 	name = "Powernet Sensor - Engine Output";
 	name_tag = "Engine Output"
@@ -10321,6 +10328,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
+/obj/machinery/air_alarm/east_mount,
 /turf/simulated/floor/wood/indoors,
 /area/engineering/hallway/strelka/engineering)
 "CW" = (
@@ -10363,6 +10371,9 @@
 /obj/effect/floor_decal/rust,
 /obj/structure/closet/crate/bin{
 	anchored = 1
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/engineering/hallway/strelka/engineering)
@@ -10877,6 +10888,15 @@
 /obj/machinery/holopad/ship,
 /turf/simulated/floor/wood,
 /area/bridge/strelka/ce)
+"ER" = (
+/obj/machinery/atmospherics/component/binary/pump/high_power/on{
+	id = "mainfuel";
+	name = "main fuel pump";
+	target_pressure = 15000;
+	dir = 8
+	},
+/turf/simulated/wall/r_wall/prepainted,
+/area/engineering/strelka/nacelle)
 "ET" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/map_helper/paint_stripe/sun,
@@ -11554,6 +11574,18 @@
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/explo)
+"GZ" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/rust,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/sign/deck/second{
+	pixel_y = 30
+	},
+/obj/machinery/door/airlock/glass,
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/hallway/strelka/deck2)
 "Hb" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -11939,9 +11971,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/rust,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 1
-	},
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/hallway/strelka/deck2)
 "Ij" = (
@@ -12394,6 +12424,12 @@
 	},
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/hallway/strelka/deck2)
 "JO" = (
@@ -12453,6 +12489,17 @@
 "JY" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/rnd/strelka/anomaly)
+"Ka" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/hallway/strelka/deck2)
 "Kb" = (
 /obj/structure/cable/blue{
 	icon_state = "4-8"
@@ -12559,6 +12606,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/strelka/engine)
+"Kr" = (
+/obj/machinery/air_alarm/east_mount,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/rnd/strelka/anomaly)
 "Ks" = (
 /obj/structure/cable/blue{
 	icon_state = "1-2"
@@ -13194,9 +13245,6 @@
 /area/security/strelka/warden)
 "Mn" = (
 /obj/effect/floor_decal/spline/fancy/wood,
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
 /turf/simulated/floor/wood/indoors,
 /area/hallway/strelka/deck2)
 "Mo" = (
@@ -13808,9 +13856,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 4
-	},
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
 /turf/simulated/floor/plating,
 /area/engineering/hallway/strelka/engineering)
 "Of" = (
@@ -14131,8 +14177,10 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/light/small/old{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
@@ -14809,15 +14857,15 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /obj/effect/floor_decal/rust,
 /obj/structure/sign/kiddieplaque{
 	pixel_y = 19;
 	name = "\improper Strelka Gallery plaque";
 	desc = "The legend wants that this cookie fell from the sky.";
 	layer = 3.5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/hallway/strelka/deck2)
@@ -14958,6 +15006,9 @@
 /turf/simulated/floor/wood/indoors,
 /area/engineering/hallway/strelka/engineering)
 "Ry" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/engineering/hallway/strelka/engineering)
 "Rz" = (
@@ -15008,6 +15059,19 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/strelka/engineering/atmos)
+"RE" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/hallway/strelka/deck2)
 "RF" = (
 /obj/structure/window/phoronreinforced,
 /obj/machinery/atmospherics/component/unary/vent_pump{
@@ -15437,9 +15501,6 @@
 /area/security/strelka/detective)
 "ST" = (
 /obj/machinery/air_alarm/west_mount,
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
 /turf/simulated/floor/reinforced,
 /area/hallway/strelka/deck2)
 "SV" = (
@@ -15691,11 +15752,8 @@
 /obj/structure/cable/blue{
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/hallway/strelka/deck2)
@@ -16127,6 +16185,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/excursion/strelka)
+"Vm" = (
+/obj/machinery/air_alarm/south_mount,
+/turf/simulated/floor/reinforced,
+/area/rnd/strelka/tele)
 "Vn" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 9
@@ -17365,6 +17427,7 @@
 	dir = 1
 	},
 /obj/machinery/space_heater,
+/obj/machinery/air_alarm/west_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/strelka/atmos/storage)
 "Yx" = (
@@ -17405,9 +17468,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
 	},
 /obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/asteroid_steel,
@@ -17783,6 +17843,11 @@
 /obj/structure/bed/chair/bay/shuttle,
 /turf/simulated/floor/tiled/old_cargo,
 /area/shuttle/emt/strelka/main)
+"ZA" = (
+/obj/machinery/suspension_gen,
+/obj/machinery/air_alarm/west_mount,
+/turf/simulated/floor/wood/indoors,
+/area/rnd/strelka/tele)
 "ZB" = (
 /obj/effect/shuttle_landmark/strelka/deck2/emt,
 /obj/overmap/entity/visitable/ship/landable/emt/strelka,
@@ -30701,7 +30766,7 @@ Up
 qJ
 NK
 sc
-hy
+pX
 xQ
 xQ
 CK
@@ -30856,7 +30921,7 @@ VU
 rG
 OA
 rG
-jw
+ER
 zb
 YA
 BD
@@ -30897,7 +30962,7 @@ VC
 lx
 KE
 Fd
-Fd
+ZA
 wK
 XI
 fX
@@ -31485,7 +31550,7 @@ Fo
 EE
 NF
 NF
-NF
+Vm
 CK
 CK
 SB
@@ -33423,7 +33488,7 @@ PA
 Tu
 wV
 nO
-nO
+Kr
 JY
 eV
 fN
@@ -38440,7 +38505,7 @@ lE
 cm
 cu
 Rd
-VQ
+RE
 jz
 Lz
 Gi
@@ -38633,8 +38698,8 @@ FF
 Qy
 cM
 Yt
-CF
-vJ
+GZ
+ze
 zO
 Yt
 cM
@@ -38828,7 +38893,7 @@ sD
 La
 Mn
 Ii
-MC
+Ka
 TO
 Bu
 iv
@@ -40770,7 +40835,7 @@ JA
 Rw
 cj
 rf
-gW
+JA
 WF
 gi
 MO
