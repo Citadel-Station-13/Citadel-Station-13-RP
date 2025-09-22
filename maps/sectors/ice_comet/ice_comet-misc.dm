@@ -31,7 +31,7 @@
 
 //New mobs
 
-/mob/living/simple_mob/aggressive/whaleshark
+/mob/living/simple_mob/animal/space/whaleshark
 	name = "Welnada Whaleshark"
 	desc = "A whaleshark like creature."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/whaleshark)
@@ -79,7 +79,7 @@
 		/turf/simulated/floor/water
 	)
 
-/mob/living/simple_mob/aggressive/whaleshark/hostile
+/mob/living/simple_mob/animal/space/whaleshark/hostile
 	name = "Welnada Shark"
 	desc = "A Shark like creature, hostile."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/whaleshark)

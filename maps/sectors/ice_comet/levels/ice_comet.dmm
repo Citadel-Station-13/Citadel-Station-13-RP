@@ -241,10 +241,6 @@
 	color = "#6A97B0"
 	},
 /area/sector/ice_comet)
-"hU" = (
-/obj/machinery/crypod,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/sector/ice_comet/facility)
 "id" = (
 /obj/structure/event/prop/yellow_barrel,
 /turf/simulated/floor/outdoors/rocks{
@@ -614,6 +610,11 @@
 /obj/structure/fans,
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/ice_comet/facility)
+"tp" = (
+/obj/machinery/door/airlock/voidcraft/survival_pod,
+/obj/structure/fans/tiny,
+/turf/simulated/floor/tiled/techmaint,
+/area/sector/ice_comet/facility)
 "tA" = (
 /obj/structure/metal_edge,
 /obj/structure/bookcase/manuals/research_and_development,
@@ -664,12 +665,8 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/ice_comet/facility)
 "vh" = (
-/mob/living/simple_mob/animal/giant_spider/frost{
-	iff_factions = "mutant"
-	},
-/mob/living/simple_mob/animal/giant_spider/frost{
-	iff_factions = "mutant"
-	},
+/mob/living/simple_mob/animal/space/bear/polar,
+/mob/living/simple_mob/animal/space/bear/polar,
 /turf/simulated/floor/outdoors/rocks{
 	color = "#6A97B0"
 	},
@@ -677,6 +674,11 @@
 "vC" = (
 /obj/effect/floor_decal/corner/purple/border,
 /turf/simulated/floor/tiled/techmaint,
+/area/sector/ice_comet/facility)
+"vD" = (
+/obj/machinery/door/airlock/voidcraft/survival_pod,
+/obj/structure/fans/tiny,
+/turf/simulated/floor,
 /area/sector/ice_comet/facility)
 "vL" = (
 /obj/structure/bed/chair/bay/chair/padded/blue{
@@ -761,13 +763,6 @@
 	},
 /turf/simulated/floor/outdoors/safeice/lythios43c,
 /area/sector/ice_comet)
-"ym" = (
-/obj/machinery/crypod,
-/obj/machinery/light/spot{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/sector/ice_comet/facility)
 "yS" = (
 /obj/structure/metal_edge,
 /obj/structure/cryofeed{
@@ -1169,15 +1164,8 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/ice_comet/facility)
-"Jf" = (
-/obj/machinery/crypod,
-/obj/machinery/light/spot{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/sector/ice_comet/facility)
 "Jo" = (
-/mob/living/simple_mob/aggressive/whaleshark/hostile,
+/mob/living/simple_mob/animal/space/whaleshark/hostile,
 /turf/simulated/floor/water/deep/indoors/lythios43c,
 /area/sector/ice_comet)
 "Jt" = (
@@ -1269,10 +1257,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/sector/ice_comet/facility)
-"Oi" = (
-/obj/machinery/crypod,
-/turf/simulated/floor/tiled/techmaint,
-/area/sector/ice_comet/facility)
 "OM" = (
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/ice_comet/facility)
@@ -1300,11 +1284,6 @@
 "Qm" = (
 /turf/space/basic,
 /area/space)
-"QU" = (
-/obj/machinery/crypod,
-/obj/machinery/crypod,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/sector/ice_comet/facility)
 "Ri" = (
 /obj/structure/event/prop/measure,
 /turf/simulated/floor/outdoors/rocks{
@@ -1418,13 +1397,11 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/ice_comet/facility)
 "Uw" = (
-/mob/living/simple_mob/aggressive/whaleshark,
+/mob/living/simple_mob/animal/space/whaleshark,
 /turf/simulated/floor/water/deep/indoors/lythios43c,
 /area/sector/ice_comet)
 "UU" = (
-/mob/living/simple_mob/animal/giant_spider/frost{
-	iff_factions = "mutant"
-	},
+/mob/living/simple_mob/animal/space/bear/polar,
 /turf/simulated/floor/outdoors/rocks{
 	color = "#6A97B0"
 	},
@@ -1565,9 +1542,7 @@
 /turf/simulated/floor,
 /area/sector/ice_comet/facility)
 "XE" = (
-/mob/living/simple_mob/animal/giant_spider/frost{
-	iff_factions = "mutant"
-	},
+/mob/living/simple_mob/animal/space/bear/polar,
 /turf/simulated/floor/outdoors/safeice/lythios43c,
 /area/sector/ice_comet)
 "XQ" = (
@@ -13714,9 +13689,9 @@ lm
 Rn
 Rn
 nz
-po
+tp
 nz
-po
+tp
 nz
 Rn
 lm
@@ -15744,7 +15719,7 @@ pG
 Vr
 Er
 FQ
-Er
+vD
 Rn
 Rn
 Qm
@@ -17209,9 +17184,9 @@ mR
 AQ
 CQ
 mO
-Jf
+Ta
 YL
-Oi
+Vr
 YL
 nz
 nz
@@ -17983,9 +17958,9 @@ MT
 OM
 OM
 OM
-hU
-hU
-hU
+OM
+OM
+OM
 OM
 OM
 OM
@@ -18369,13 +18344,13 @@ CE
 Ai
 qd
 OM
-hU
+OM
 XQ
 BH
 lR
 BH
 GI
-QU
+OM
 GG
 er
 OM
@@ -18391,7 +18366,7 @@ rP
 po
 Ta
 Vr
-po
+tp
 FX
 YE
 YE
@@ -18563,13 +18538,13 @@ CE
 Ai
 tA
 OM
-hU
+OM
 SN
 lR
 lR
 lR
 eB
-hU
+OM
 GG
 OM
 OM
@@ -18757,13 +18732,13 @@ CE
 Ai
 qd
 OM
-hU
+OM
 zm
 BH
 lR
 BH
 GI
-hU
+OM
 GG
 er
 OM
@@ -18779,7 +18754,7 @@ uS
 po
 ZG
 Vr
-po
+tp
 FX
 YE
 YE
@@ -19147,9 +19122,9 @@ MT
 OM
 OM
 OM
-hU
-hU
-QU
+OM
+OM
+OM
 OM
 OM
 OM
@@ -19925,9 +19900,9 @@ VI
 Vg
 Vu
 rP
-ym
+ZG
 YL
-Oi
+Vr
 YL
 nz
 nz
@@ -24572,9 +24547,9 @@ Rn
 TB
 Rn
 nz
-po
+tp
 nz
-po
+tp
 nz
 YE
 YE
