@@ -2,14 +2,14 @@
  * @file
  * @license MIT
  */
-import { ReactNode, useState } from 'react';
+import { ReactNode } from 'react';
 import { Box, Button, Icon, NumberInput, Section, Stack, Tooltip } from 'tgui-core/components';
 import { formatSiUnit } from 'tgui-core/format';
 import { toFixed } from 'tgui-core/math';
 import { BooleanLike } from 'tgui-core/react';
 import { toTitleCase } from 'tgui-core/string';
 
-import { useSharedState } from '../../backend';
+import { useLocalState, useSharedState } from '../../backend';
 import { SectionProps, Sprite } from '../../components';
 
 // the space is intentional
@@ -67,7 +67,8 @@ export const MaterialStorage = (props: MaterialStorageProps) => {
     <MaterialRender
       {...props}
       materialButtons={(id) => {
-        const [ejectAmt, setEjectAmt] = useState<number>(1);
+        // TODO: we can't use react hooks, which are ordered, because if an additional material is inserted we'll be rendering more hooks than the last invocation.
+        const [ejectAmt, setEjectAmt] = useLocalState<number>(`mat-ejectAmt-${id}`, 1);
         return (
           <>
             {props.materialButtons}

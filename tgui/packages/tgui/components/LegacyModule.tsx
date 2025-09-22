@@ -45,14 +45,14 @@ export interface ModuleProps {
 export class LegacyModule<T extends ModuleProps, S = {}> extends Component<T, S> {
   render() {
     const moduleData = useBackend().nestedData[this.props.id as string];
-    const routedComponent: Component = getComponentForRoute(moduleData["$tgui"]);
+    const RoutedComponent = getComponentForRoute(moduleData["$tgui"]);
     return (
       <LegacyModuleContext value={{
         isModule: true,
         moduleId: this.props.id,
         moduleSection: this.props.section || null,
       }}>
-        {routedComponent.render()}
+        <RoutedComponent />
       </LegacyModuleContext>
     );
   }

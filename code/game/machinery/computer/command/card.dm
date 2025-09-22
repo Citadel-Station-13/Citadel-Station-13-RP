@@ -21,6 +21,15 @@
 	QDEL_NULL(tgui_cardmod)
 	return ..()
 
+/obj/machinery/computer/card/drop_products(method, atom/where)
+	. = ..()
+	if(authing)
+		drop_product(authing, where)
+		authing = null
+	if(editing)
+		drop_product(editing, where)
+		editing = null
+
 /obj/machinery/computer/card/ui_route(action, list/params, datum/tgui/ui, id)
 	. = ..()
 	if(.)
