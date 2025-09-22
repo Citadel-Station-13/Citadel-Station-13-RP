@@ -25,6 +25,9 @@
 		/datum/map/sector/miaphus,
 		/datum/map/sector/roguemining_192/one,
 		/datum/map/sector/sky_planet,
+		/datum/map/sector/solars_station,
+		/datum/map/sector/ice_comet,
+		/datum/map/sector/osiris_field,
 	)
 
 	// todo: remove after dev is done
@@ -139,7 +142,7 @@
 	persistence_allowed = TRUE
 
 /datum/map_level/strelka/ship/deck_four
-	id = "StrelkaDeck1"
+	id = "StrelkaDeck4"
 	name = "strelka - Deck 4"
 	display_id = "strelka-deck-4"
 	display_name = "NSV strelka - Deck 4"

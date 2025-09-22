@@ -876,6 +876,14 @@ Swimsuits
 	name = "Baroness Dress"
 	path = /obj/item/clothing/under/baroness
 
+/datum/loadout_entry/uniform/medical_old
+	name = "Old times Nurse Dress"
+	path = /obj/item/clothing/under/medicalold
+
+/datum/loadout_entry/uniform/medical_atlantic
+	name = "Old Atlantic Nurse Dress"
+	path = /obj/item/clothing/under/medicalatlantic
+
 /datum/loadout_entry/uniform/yoko
 	name = "Scavenging Sniper Set"
 	path = /obj/item/clothing/under/yoko
@@ -1026,3 +1034,11 @@ Swimsuits
 /datum/loadout_entry/uniform/tajaran/dpra/alt
 	name = "DPRA laborer clothes, alternate"
 	path = /obj/item/clothing/under/tajaran/dpra/alt
+
+/datum/loadout_entry/uniform/tajaran/hadii
+	name = "Hadii's Folley Civilian Uniform"
+	path = /obj/item/clothing/under/tajaran/hadiifolly
+
+/datum/loadout_entry/uniform/punk
+	name = "Ripped pants and fishnets"
+	path = /obj/item/clothing/under/rippedpunk

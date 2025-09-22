@@ -685,12 +685,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/medical/virologymaint)
-"aAf" = (
-/obj/structure/closet/secure_closet/psych,
-/obj/item/clothing/suit/straight_jacket,
-/obj/item/handcuffs/disruptor,
-/turf/simulated/floor/wood,
-/area/tether/surfacebase/medical/mentalhealth)
 "aAu" = (
 /obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/borderfloor{
@@ -3086,6 +3080,11 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
+"cdJ" = (
+/obj/structure/closet/secure_closet/psych,
+/obj/item/clothing/suit/straight_jacket,
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/medical/mentalhealth)
 "cdP" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/ausbushes/brflowers,
@@ -4840,21 +4839,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
-"dmW" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/brown/border{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/machinery/computer/supplycomp{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/quartermaster/garage)
 "dnl" = (
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
@@ -5093,6 +5077,20 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/security/prison)
+"dtL" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 10
+	},
+/obj/machinery/conveyor_switch/oneway{
+	id = "nt_cargo_transit";
+	pixel_y = -10;
+	pixel_x = -10
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/quartermaster/garage)
 "duq" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -7996,6 +7994,15 @@
 /obj/structure/closet/crate,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/warehouse)
+"fmX" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/brown/border,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/smuggling/processing_unit_console{
+	pixel_y = -37
+	},
+/turf/simulated/floor/tiled/steel_ridged,
+/area/quartermaster/garage)
 "fnp" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
@@ -8234,6 +8241,21 @@
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/outside1)
+"fvs" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/computer/supplycomp{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/quartermaster/garage)
 "fvO" = (
 /obj/structure/cable/green{
 	icon_state = "16-0"
@@ -9444,18 +9466,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/quartermaster/garage)
-"gox" = (
-/obj/machinery/air_alarm{
-	dir = 1;
-	pixel_y = -24
-	},
-/obj/machinery/conveyor{
-	dir = 4;
-	id = "nt_cargo_transit"
-	},
-/obj/machinery/smuggling/input,
-/turf/simulated/floor/tiled/steel_ridged,
-/area/quartermaster/garage)
 "goE" = (
 /obj/structure/table/standard,
 /obj/item/gun/projectile/energy/taser/xeno,
@@ -10249,10 +10259,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/medical/mentalhealth)
-"gNP" = (
-/obj/structure/sign/department/cargo,
-/turf/simulated/wall/prepainted/cargo,
-/area/quartermaster/garage)
 "gOa" = (
 /obj/structure/bed/chair,
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -12694,6 +12700,18 @@
 "icL" = (
 /turf/simulated/floor/tiled/white,
 /area/rnd/chemistry_lab)
+"ide" = (
+/obj/machinery/air_alarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "nt_cargo_transit"
+	},
+/obj/machinery/smuggling/input,
+/turf/simulated/floor/tiled/steel_ridged,
+/area/quartermaster/garage)
 "idF" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 8
@@ -17392,15 +17410,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/xenobiology/xenoflora)
-"kTR" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/brown/border,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/smuggling/processing_unit_console{
-	pixel_y = -37
-	},
-/turf/simulated/floor/tiled/steel_ridged,
-/area/quartermaster/garage)
 "kTX" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -18328,6 +18337,13 @@
 /obj/map_helper/access_helper/airlock/disconnected/trader,
 /turf/simulated/floor/tiled/steel,
 /area/rift/trade_shop)
+"lxq" = (
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "nt_cargo_transit"
+	},
+/turf/simulated/floor/tiled/steel_ridged,
+/area/quartermaster/garage)
 "lxw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -19002,6 +19018,9 @@
 	},
 /turf/simulated/floor/lino,
 /area/security/detectives_office)
+"lSI" = (
+/turf/simulated/wall/r_wall/prepainted,
+/area/quartermaster/garage)
 "lTj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -19603,20 +19622,6 @@
 	},
 /turf/simulated/floor/carpet/gaycarpet,
 /area/tether/surfacebase/funny/clownoffice)
-"mmU" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 10
-	},
-/obj/effect/floor_decal/corner/brown/border{
-	dir = 10
-	},
-/obj/machinery/conveyor_switch/oneway{
-	id = "nt_cargo_transit";
-	pixel_y = -10;
-	pixel_x = -10
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/quartermaster/garage)
 "mmZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 6
@@ -20262,6 +20267,11 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/maintenance/maint_bar)
+"mFt" = (
+/obj/machinery/light,
+/obj/machinery/smuggling/processing_unit/nt,
+/turf/simulated/floor/tiled/steel_ridged,
+/area/quartermaster/garage)
 "mGx" = (
 /obj/structure/grille,
 /obj/structure/foamedmetal,
@@ -20402,9 +20412,6 @@
 /obj/machinery/camera/network/medbay,
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyisolation)
-"mII" = (
-/turf/simulated/wall/r_wall/prepainted,
-/area/quartermaster/garage)
 "mJi" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/catwalk,
@@ -20901,11 +20908,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfaceone)
-"mXQ" = (
-/obj/machinery/light,
-/obj/machinery/smuggling/processing_unit/nt,
-/turf/simulated/floor/tiled/steel_ridged,
-/area/quartermaster/garage)
 "mXR" = (
 /obj/structure/lattice,
 /obj/machinery/door/firedoor/glass,
@@ -25795,13 +25797,6 @@
 /obj/machinery/camera/network/cargo,
 /turf/simulated/floor/plating,
 /area/quartermaster/hallway)
-"pKi" = (
-/obj/machinery/conveyor{
-	dir = 4;
-	id = "nt_cargo_transit"
-	},
-/turf/simulated/floor/tiled/steel_ridged,
-/area/quartermaster/garage)
 "pKq" = (
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/delivery)
@@ -33597,6 +33592,10 @@
 "ubp" = (
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/outside/outside1)
+"ubV" = (
+/obj/structure/sign/department/cargo,
+/turf/simulated/wall/prepainted/cargo,
+/area/quartermaster/garage)
 "ucf" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/portable_atmospherics/powered/scrubber,
@@ -34987,10 +34986,6 @@
 /obj/map_helper/access_helper/airlock/station/science/maintenance,
 /turf/simulated/floor/plating,
 /area/engineering/engine_eva)
-"uLM" = (
-/obj/machinery/point_redemption_vendor/smuggle/nt,
-/turf/simulated/floor/tiled/steel_ridged,
-/area/quartermaster/garage)
 "uLP" = (
 /obj/machinery/air_alarm{
 	dir = 8;
@@ -39736,6 +39731,10 @@
 /obj/map_helper/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/medbay_emt_bay)
+"xDm" = (
+/obj/machinery/point_redemption_vendor/smuggle/nt,
+/turf/simulated/floor/tiled/steel_ridged,
+/area/quartermaster/garage)
 "xEb" = (
 /obj/effect/floor_decal/borderfloor/shifted{
 	dir = 4
@@ -50495,8 +50494,8 @@ oFp
 vuL
 gTL
 gTL
-gNP
-mII
+ubV
+lSI
 iFN
 jZZ
 rPE
@@ -50688,9 +50687,9 @@ cHI
 vuL
 rtL
 xRu
-mmU
-pKi
-mII
+dtL
+lxq
+lSI
 iFN
 jZZ
 pqd
@@ -50883,8 +50882,8 @@ wRf
 ciq
 vzJ
 ahB
-gox
-mII
+ide
+lSI
 iFN
 gXe
 rgY
@@ -51074,11 +51073,11 @@ jfd
 sew
 mnh
 vuL
-dmW
+fvs
 nDb
 ahB
-mXQ
-mII
+mFt
+lSI
 hgE
 cqY
 nbg
@@ -51270,7 +51269,7 @@ gQY
 aMg
 vGT
 bcB
-kTR
+fmX
 oFp
 fNU
 fNU
@@ -51465,7 +51464,7 @@ cbL
 tJX
 uGl
 krD
-uLM
+xDm
 fNU
 dgp
 bhT
@@ -53937,7 +53936,7 @@ cVJ
 cVJ
 cVJ
 fVw
-aAf
+cdJ
 cXS
 fsO
 fDV
