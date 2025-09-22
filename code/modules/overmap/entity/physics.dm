@@ -129,6 +129,8 @@
 /obj/overmap/entity/proc/get_heading()
 	return (arctan(vel_y, vel_x) + 360) % 360
 
+//* Entity Ops *//
+
 /**
  * gets distance in overmap distance to other entity
  */

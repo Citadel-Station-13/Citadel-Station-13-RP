@@ -63,6 +63,8 @@
 	/// can be used as a laser designator
 	var/is_designator = FALSE
 
+	/// laser designation time
+	var/laser_time = 7.5 SECONDS
 	/// laser designation is visible to target
 	///
 	/// TODO: laser designation should be visible to user if this is off

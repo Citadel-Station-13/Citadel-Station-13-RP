@@ -33,7 +33,23 @@
 	else
 		qdel(victim)
 
+/datum/orbital_deployment_translation/proc/get_unordered_dest_turfs()
+	return block(dest_lower_left, dest_upper_right)
+
 /datum/orbital_deployment_translation/proc/run_aftereffects()
+	// First, gather, as this doesn't CHECK_TICK
+	var/list/obj/to_damage_objs = list()
+	var/list/mob/to_damage_mobs = list()
+	for(var/turf/T as anything in get_dest_turfs())
+		for(var/obj/O in T)
+			to_damage_objs += O
+			if(isvehicle(O))
+				var/obj/vehicle/no_cheating = O
+				for(var/mob/in_vehicle in no_cheating)
+					to_damage_mobs += in_vehicle
+		for(var/mob/M in T)
+			to_damage_mobs += M
+
 	// turfs that shouldn't be there result in a small explosion
 	for(var/tuple_i in 1 to length(turf_overlap_coord_x))
 		var/turf/impacted_turf = locate(
@@ -42,6 +58,8 @@
 			dest_lower_left.z,
 		)
 		explosion(impacted_turf, 0, rand(1, 2), 3)
+		CHECK_TICK
+
 	// movables that shouldn't be there and weren't immediately deleted
 	// will be pushed out of the way and obliterated
 	// -- this is not 'as anything' as some movables can be obliterated by being moved to nullspace --
@@ -55,7 +73,7 @@
 			for(var/i in 1 to 15)
 				// TODO: it's probably faster to run damage instance all at once and apply it over 15 areas,
 				//       rather than treat it as 15 instances
-				living_victim.inflict_damage_instance(
+				living_victim.run_damage_instance(
 					500 / 15,
 					DAMAGE_TYPE_BRUTE,
 					5,
@@ -64,12 +82,36 @@
 					hit_zone = pick(global.all_body_zones),
 				)
 		else
-			victim.inflict_damage_instance(
+			victim.run_damage_instance(
 				500,
 				DAMAGE_TYPE_BRUTE,
 				6,
 				ARMOR_MELEE,
 			)
+		CHECK_TICK
+
+	// surely you didn't ride an orbital drop.
+	// TODO: these should be `/atom/movable/proc/on_orbital_drop()`, this is shitcode
+	// TODO: when this is done make sure you can't escape it by exiting vehicle during
+	//       the CHECK_TICK
+	for(var/obj/O as anything in to_damage_objs)
+		O.run_damage_instance(rand(15, 70), DAMAGE_TYPE_BRUTE, 4, ARMOR_BOMB)
+		CHECK_TICK
+	for(var/mob/M as anything in to_damage_mobs)
+		if(isliving(M))
+			var/mob/living/L = M
+			for(var/i in 1 to 15)
+				// probably should've thought it through
+				L.run_damage_instance(
+					rand(10, 30),
+					DAMAGE_TYPE_BRUTE,
+					5,
+					DAMAGE_MODE_REQUEST_ARMOR_BLUNTING | DAMAGE_MODE_REQUEST_ARMOR_RANDOMIZATION,
+					ARMOR_BOMB,
+					hit_zone = pick(global.all_body_zones),
+				)
+				CHECK_TICK
+
 
 /**
  * get random turf outside of edge

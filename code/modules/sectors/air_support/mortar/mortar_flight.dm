@@ -25,8 +25,8 @@
 
 /datum/mortar_flight/proc/set_target(datum/map_level/level, virtual_x, virtual_y)
 	src.flight_level = level
-	src.arrive_x = virtual_x
-	src.arrive_y = virtual_y
+	src.flight_x = virtual_x
+	src.flight_y = virtual_y
 
 /datum/mortar_flight/proc/set_duration(time)
 	src.flight_duration = time

@@ -1,6 +1,8 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
+GLOBAL_LIST_EMPTY(orbital_deployment_zones)
+
 /**
  * * markers are used instead of turfs because we can be put on a shuttle, which will translate markers
  *   but turf refs would stay behind
@@ -10,21 +12,56 @@
 	var/id
 	#warn impl id
 
-	/// lower left marker
 	var/obj/orbital_deployment_marker/lower_left
-	/// upper right marker
+	var/obj/orbital_deployment_marker/lower_right
 	var/obj/orbital_deployment_marker/upper_right
+	var/obj/orbital_deployment_marker/upper_left
+
+	/// linked consoles
+	var/list/obj/machinery/orbital_deployment_controller/controllers
+
+	/// are we armed?
+	var/armed = FALSE
+	/// when were we armed?
+	var/armed_time
 
 #warn impl
 
-/datum/orbital_deployment_zone/New(obj/orbital_deployment_marker/lower_left, obj/orbital_deployment_marker/upper_right)
+/datum/orbital_deployment_zone/New(
+	obj/orbital_deployment_marker/lower_left,
+	obj/orbital_deployment_marker/lower_right,
+	obj/orbital_deployment_marker/upper_right,
+	obj/orbital_deployment_marker/upper_left,
+)
+	src.lower_left = lower_left
+	src.lower_right = lower_right
+	src.upper_right = upper_right
+	src.upper_left = upper_left
+	GLOB.orbital_deployment_zones += src
+
+/datum/orbital_deployment_zone/Destroy()
+	for(var/obj/machinery/orbital_deployment_controller/controller in controllers)
+		controller.unlink_zone()
+	GLOB.orbital_deployment_zones -= src
+	for(var/obj/orbital_deployment_marker/marker in list(
+		lower_left,
+		lower_right,
+		upper_right,
+		upper_left,
+	))
+		if(marker.zone != src)
+			stack_trace("uh oh! marker zone mismatch; this should never happen!")
+		else
+			marker.zone = null
+	lower_left = lower_right = upper_right = upper_left = null
+	return ..()
 
 /datum/orbital_deployment_zone/proc/construct_initial()
 
 	construct_zone()
 
 /datum/orbital_deployment_zone/proc/construct_zone()
-	if(lower_left.z != upper_left.z)
+	if(lower_left.z != upper_right.z)
 		CRASH("LL/UR not on same z?")
 	if(!isturf(lower_left.loc))
 		CRASH("LL not on turf")
@@ -41,6 +78,12 @@
 
 
 	#warn impl
+
+/**
+ * TODO: This shouldn't be instant, it should blast the pod out as an overmap entity, like a shuttle.
+ */
+/datum/orbital_deployment_zone/proc/launch()
+	#warn params
 
 /**
  * input dir is with NORTH as 'do not rotate'

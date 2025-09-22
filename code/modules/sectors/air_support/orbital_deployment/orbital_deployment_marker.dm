@@ -4,6 +4,7 @@
 /**
  * 4 corners = auto create zone
  * * corners are on the outside, meaning everything *inside* the corners is the zone
+ * * The lower left marker is responsible for building the zone
  */
 /obj/orbital_deployment_marker
 	plane = DEBUG_PLANE
@@ -14,6 +15,12 @@
 	var/tmp/d1 = NONE
 	var/tmp/d2 = NONE
 	var/tmp/zone_built = FALSE
+	var/datum/orbital_deployment_zone/zone
+
+/obj/orbital_deployment_marker/Destroy()
+	if(zone)
+		QDEL_NULL(zone)
+	return ..()
 
 /obj/orbital_deployment_marker/lower_left
 	bit = (1<<0)
@@ -22,6 +29,9 @@
 
 /obj/orbital_deployment_marker/lower_left/Initialize(mapload)
 	. = ..()
+	build_zone_or_throw
+
+/obj/orbital_deployment_marker/lower_left/proc/build_zone_or_throw()
 
 /obj/orbital_deployment_marker/upper_right
 	bit = (1<<1)

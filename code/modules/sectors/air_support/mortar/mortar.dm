@@ -121,12 +121,15 @@
 	/// loaded shell about to be fired
 	var/obj/item/ammo_casing/mortar/firing_shell
 
-	var/target_offset_x
-	var/target_offset_y
+	var/target_x
+	var/target_y
 	var/target_adjust_x
 	var/target_adjust_y
 	/// max you can do quick adjustments in any direction
 	var/adjust_offset_max = 15
+
+	var/adjust_time_major = 7 SECONDS
+	var/adjust_time_minor = 1.5 SECONDS
 
 /obj/machinery/mortar/basic/proc/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
@@ -156,12 +159,31 @@
 		return
 	switch(action)
 		if("setTarget")
+			var/x = params["x"]
+			var/y = params["y"]
+			if(!attempt_user_adjust_doafter(actor, adjust_time_major, "a major adjustment"))
+				return TRUE
+			#warn log
+			src.target_x = x
+			src.target_y = y
+			return TRUE
 		if("setAdjust")
+			var/x = params["x"]
+			var/y = params["y"]
+			if(!attempt_user_adjust_doafter(actor, adjust_time_minor, "a minor adjustment"))
+				return TRUE
+			#warn log
+			src.target_adjust_x = x
+			src.target_adjust_y = y
+			return TRUE
+
+/obj/machinery/mortar/basic/proc/attempt_user_adjust_doafter(datum/event_args/actor/actor, delay, phrase = "adjusting")
+	#warn impl
 
 /obj/machinery/mortar/basic/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "")
+		ui = new(user, src, "machines/MortarBasic.tsx")
 		ui.open()
 
 /obj/machinery/mortar/basic/ui_static_data(mob/user, datum/tgui/ui)
@@ -170,8 +192,8 @@
 
 /obj/machinery/mortar/basic/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
-	.["targetX"] = target_offset_x
-	.["targetY"] = target_offset_y
+	.["targetX"] = target_x
+	.["targetY"] = target_y
 	.["adjustX"] = target_adjust_x
 	.["adjustY"] = target_adjust_y
 

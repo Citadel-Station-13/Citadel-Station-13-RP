@@ -5,12 +5,6 @@
  * Procs here are namespaced on SSmap_sectors
  */
 
-/**
- * @return list(x, y, z)
- */
-/datum/controller/subsystem/map_sectors/proc/rangefinding_coordinates_to_real(x, y, z)
-	return list(x, y, z)
-
 /datum/controller/subsystem/map_sectors/proc/signal_flare_query(z, requires_active = TRUE, requires_on_ground = TRUE)
 	. = list()
 	for(var/obj/item/signal_flare/flare as anything in SSspatial_grids.signal_flares.all_atoms(z))

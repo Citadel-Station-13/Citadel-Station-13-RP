@@ -17,28 +17,55 @@
 	/// max overmap bounds dist we can launch at
 	var/conf_max_overmap_pixel_dist = WORLD_ICON_SIZE * 3
 
-	//* State *//
-	/// armed?
-	var/s_armed = FALSE
+	//* Linkage *//
+	/// Our linked zone
+	var/datum/orbital_deployment_zone/linked_zone
 
 /obj/machinery/orbital_deployment_controller/Initialize(mapload)
-	. = ..()
-
+	..()
 	return INITIALIZE_HINT_LATELOAD
 
+/obj/machinery/orbital_deployment_controller/Destroy()
+	unlink_zone()
+	return ..()
+
 /obj/machinery/orbital_deployment_controller/LateInitialize()
+
+/obj/machinery/orbital_deployment_controller/proc/link_zone(datum/orbital_deployment_zone/zone)
+	if(linked_zone)
+		if(linked_zone == zone)
+			return TRUE
+		unlink_zone()
+	linked_zone = zone
+	LAZYADD(linked_zone.controllers, src)
+	update_static_data()
+	return TRUE
+
+/obj/machinery/orbital_deployment_controller/proc/unlink_zone()
+	if(!linked_zone)
+		return TRUE
+	LAZYREMOVE(linked_zone.controllers, src)
+	linked_zone = null
+	update_static_data()
+	return TRUE
 
 #warn impl
 
 /obj/machinery/orbital_deployment_controller/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
-	. = ..()
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "machines/OrbitalDeploymentController.tsx")
+		ui.open()
 
 /obj/machinery/orbital_deployment_controller/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 
 /obj/machinery/orbital_deployment_controller/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
-	.["sArmed"] = s_armed
+	.["zone"] = linked_zone ? list(
+		"armed" = linked_zone.armed,
+		"armedTime" = linked_zone.armed_time,
+	) : null
 	.["cMinArmingTime"] = conf_minimum_arming_time
 	.["cMaxOvermapsDist"] = OVERMAP_PIXEL_TO_DIST(conf_max_overmap_pixel_dist)
 	. += ui_signal_data()
@@ -56,22 +83,32 @@
 			if(!istype(entity_in_range, /obj/overmap/entity/visitable))
 				continue
 			var/obj/overmap/entity/visitable/visitable = entity_in_range
+			var/overmap_distance = visitable.entity_overmap_distance(our_overmap_entity)
+			// TODO: overmaps sensor update
+			var/overmap_name = visitable.name
 			for(var/z in visitable.map_z)
 				var/list/atom/movable/laser_designator_target/lasers = SSmap_sectors.laser_designation_query(z)
 				var/list/obj/item/signal_flare/flares = SSmap_sectors.signal_flare_query(z)
 
 				for(var/atom/movable/laser_designator_target/laser as anything in lasers)
+					// TODO: better name identification
 					assembled_lasers[++assembled_lasers.len] = list(
+						"name" = "targeting laser",
+						"coords" = SSmapping.get_virtual_coords(get_turf(laser)),
+						"overmapDist" = overmap_distance,
+						"overmapName" = overmap_name,
 					)
-					#warn impl
 				for(var/obj/item/signal_flare/flare as anything in flares)
+					// TODO: better name identification
 					assembled_flares[++assembled_flares.len] = list(
+						"name" = "signal flare",
+						"coords" = SSmapping.get_virtual_coords(get_turf(laser)),
+						"overmapDist" = overmap_distance,
+						"overmapName" = overmap_name,
 					)
-					#warn impl
 
 	.["lasers"] = assembled_lasers
 	.["flares"] = assembled_flares
-
 
 /obj/machinery/orbital_deployment_controller/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
