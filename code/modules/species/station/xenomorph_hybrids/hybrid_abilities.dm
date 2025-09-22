@@ -104,20 +104,20 @@
 /datum/ability/species/xenomorph_hybrid/sneak/proc/register_signals()
 	RegisterSignal(owner, COMSIG_MOB_ON_THROW, PROC_REF(on_potential_attack))
 	RegisterSignal(owner, COMSIG_MOB_MELEE_IMPACT_HOOK, PROC_REF(on_potential_attack))
-	RegisterSignal(owner, COMSIG_MOB_MELEE_INTENTFUL_HOOK, PROC_REF(on_potential_attack))
+	RegisterSignal(owner, COMSIG_MOB_ON_ITEM_MELEE_ATTACK, PROC_REF(on_potential_attack))
 	RegisterSignal(owner, COMSIG_MOB_WEAPON_FIRE_ATTEMPT, PROC_REF(on_potential_attack))
 
 /datum/ability/species/xenomorph_hybrid/sneak/proc/unregister_signals()
 	UnregisterSignal(owner, COMSIG_MOB_ON_THROW)
 	UnregisterSignal(owner, COMSIG_MOB_MELEE_IMPACT_HOOK)
-	UnregisterSignal(owner, COMSIG_MOB_MELEE_INTENTFUL_HOOK)
+	UnregisterSignal(owner, COMSIG_MOB_ON_ITEM_MELEE_ATTACK)
 	UnregisterSignal(owner, COMSIG_MOB_WEAPON_FIRE_ATTEMPT)
 
 // Throwing, shooting and punching all are decloak actions
 /datum/ability/species/xenomorph_hybrid/sneak/proc/on_potential_attack()
 	SIGNAL_HANDLER
 	disable(TRUE)
-	
+
 /datum/ability/species/xenomorph_hybrid/sneak/on_disable()
 	var/mob/living/carbon/human/O = owner
 	if(istype(O))

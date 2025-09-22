@@ -13,3 +13,6 @@
 
 /// Sent before the safety of the gun is checked
 #define COMSIG_MOB_WEAPON_FIRE_ATTEMPT "mob_on_gunfire_attempt"
+
+/// Sent on human/break_cloak()
+#define COMSIG_MOB_ON_ITEM_MELEE_ATTACK "mob_on_item_melee"
