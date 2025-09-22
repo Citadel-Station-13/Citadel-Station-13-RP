@@ -76,6 +76,10 @@
 	/// active icon dot color
 	var/icon_dot_color
 
+	/// currently being zoomed
+	/// * THIS IS NOT NECESSARILY THE PERSON HOLDING US.
+	var/mob/currently_zoomed_in
+
 #warn impl
 
 /obj/item/rangefinder/Destroy()
@@ -84,6 +88,10 @@
 
 /obj/item/rangefinder/proc/update_icon()
 	cut_overlays()
+	if(active_laser_target)
+		#warn dot color
+	else if(is_rangefinder || is_designator)
+		#warn dot color
 	. = ..()
 	if(icon_dot_color)
 		var/image/dot_overlay = image(icon, "[base_icon_state]-dot")
@@ -125,6 +133,10 @@
 	..()
 	UnregisterSignal(wearer, COMSIG_MOB_EXAMINATE)
 	#warn impl
+
+/obj/item/rangefinder/proc/start_zooming(mob/viewing)
+
+/obj/item/rangefinder/proc/stop_zooming()
 
 /obj/item/rangefinder/proc/on_user_examine(mob/source, atom/target, list/examine_list)
 	SIGNAL_HANDLER
