@@ -70,7 +70,7 @@
 
 /datum/ability/species/xenomorph_hybrid/sneak
 	name = "Sneak around"
-	desc = "Sneak around using your ancestores affinity for stealth"
+	desc = "Sneak around using your natural affinity to stealth."
 	action_state = "alien-default"
 	windup = 3 SECOND
 	interact_type = ABILITY_INTERACT_TOGGLE
@@ -82,7 +82,8 @@
 
 /datum/movespeed_modifier/sneaky_xenohybrid
 	id = "sneaking_xenomorph_hybrid"
-	mod_multiply_speed = 0.25 //apparent we divide by this value????
+	mod_multiply_speed = 0.25
+	limit_tiles_per_second_max = 0.01
 	variable = TRUE
 
 /datum/actionspeed_modifier/sneaky_xenohybrid
@@ -92,8 +93,8 @@
 	var/mob/living/carbon/human/O = owner
 	if(istype(O))
 		O.visible_emote("fades into the shadows.")
-		O.mouse_opacity = 0
 		animate(O, alpha = 10, time = 3 SECOND)
+		O.mouse_opacity = 0
 		ADD_TRAIT(O, TRAIT_IGNORED_BY_AI, "Species_Ability")
 		O.update_movespeed_modifier(move_speed_mod)
 		O.add_actionspeed_modifier(action_speed_mod)
@@ -102,10 +103,10 @@
 /datum/ability/species/xenomorph_hybrid/sneak/on_disable()
 	var/mob/living/carbon/human/O = owner
 	if(istype(O))
-		O.visible_emote("appears out of the shadows")
+		O.visible_emote("appears out of the shadows.")
 		O.mouse_opacity = 1
-		animate(O, alpha = 255, time = 1 SECOND)
 		REMOVE_TRAIT(O, TRAIT_IGNORED_BY_AI, "Species_Ability")
 		O.remove_movespeed_modifier(move_speed_mod)
 		O.remove_actionspeed_modifier(action_speed_mod)
 		O.base_attack_cooldown = initial(O.base_attack_cooldown)
+		animate(O, alpha = 255, time = 0.5 SECOND)
