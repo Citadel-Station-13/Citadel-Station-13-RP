@@ -5161,6 +5161,7 @@
 #include "code\modules\species\species_organ_entry.dm"
 #include "code\modules\species\species_shapeshift.dm"
 #include "code\modules\species\chimeric\chimeric.dm"
+#include "code\modules\species\chimeric\chimeric_agitation_stage.dm"
 #include "code\modules\species\chimeric\chimeric_core.dm"
 #include "code\modules\species\chimeric\chimeric_subsystem.dm"
 #include "code\modules\species\chimeric\chimeric_suppression.dm"
