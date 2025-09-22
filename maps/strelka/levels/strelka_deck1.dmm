@@ -3348,7 +3348,6 @@
 /area/security/strelka/armory)
 "qF" = (
 /obj/structure/stairs/spawner/north,
-/obj/structure/wheelchairassist,
 /turf/simulated/floor/trap/wheelchair,
 /area/strelka/pilot_EVA)
 "qH" = (
@@ -5186,9 +5185,6 @@
 /obj/structure/stairs/spawner/west,
 /obj/machinery/door/firedoor/glass{
 	dir = 8
-	},
-/obj/structure/wheelchairassist{
-	dir = 4
 	},
 /turf/simulated/floor/trap/wheelchair,
 /area/hallway/strelka/deck1)
@@ -8312,9 +8308,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck1)
 "Qo" = (
-/obj/structure/wheelchairassist{
-	dir = 1
-	},
 /turf/simulated/floor/trap/wheelchair,
 /area/strelka/pilot_EVA)
 "Qs" = (

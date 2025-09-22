@@ -311,6 +311,15 @@
 /obj/machinery/air_alarm/west_mount,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/strelka/test)
+"br" = (
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
+/obj/structure/wheelchairassist{
+	dir = 1
+	},
+/turf/simulated/floor/event/grass/grass1,
+/area/hallway/strelka/deck3)
 "bs" = (
 /obj/effect/floor_decal/grass_edge,
 /obj/machinery/light/spot{
@@ -4530,15 +4539,6 @@
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/strelka/test)
-"pL" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 4
-	},
-/obj/structure/wheelchairassist{
-	dir = 8
-	},
-/turf/simulated/floor/trap/wheelchair,
-/area/hallway/strelka/deck3)
 "pM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -6819,6 +6819,12 @@
 /obj/item/reagent_containers/food/drinks/drinkingglass/shotglass,
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/cargo)
+"xG" = (
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
+/turf/simulated/floor/trap/wheelchair,
+/area/hallway/strelka/deck3)
 "xH" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/quartermaster/strelka/reception)
@@ -7191,16 +7197,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/science)
-"yM" = (
-/obj/structure/stairs/spawner/west,
-/obj/machinery/door/firedoor/glass{
-	dir = 4
-	},
-/obj/structure/wheelchairassist{
-	dir = 4
-	},
-/turf/simulated/floor/trap/wheelchair,
-/area/hallway/strelka/deck3)
 "yN" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 5
@@ -11254,9 +11250,6 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/obj/structure/wheelchairassist{
-	dir = 8
-	},
 /turf/simulated/floor/trap/wheelchair,
 /area/hallway/strelka/deck3)
 "Ms" = (
@@ -12549,6 +12542,13 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/medical/strelka/surgery)
+"Rq" = (
+/obj/structure/stairs/spawner/north,
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
+/turf/simulated/floor/trap/wheelchair,
+/area/hallway/strelka/deck3)
 "Rs" = (
 /obj/machinery/transhuman/resleever,
 /turf/simulated/floor/tiled/dark,
@@ -12892,7 +12892,6 @@
 /obj/machinery/light/small/old{
 	dir = 4
 	},
-/obj/structure/wheelchairassist,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/emtroom)
 "Sx" = (
@@ -31106,7 +31105,7 @@ aV
 lA
 LI
 nC
-yM
+AD
 yI
 AD
 xj
@@ -31300,7 +31299,7 @@ rP
 LI
 uZ
 ti
-pL
+jf
 yI
 jf
 td
@@ -32850,8 +32849,8 @@ yd
 KG
 jT
 mT
-EK
-Kk
+Rq
+xG
 pS
 UU
 pS
@@ -35761,7 +35760,7 @@ ri
 hN
 rO
 EK
-Kk
+br
 pS
 Ui
 pS

@@ -2074,7 +2074,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/floor_decal/wheelchairassist{
+/obj/structure/wheelchairassist{
 	dir = 8
 	},
 /turf/simulated/floor/trap/wheelchair,
@@ -3715,10 +3715,7 @@
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 4
 	},
-/obj/effect/floor_decal/wheelchairassist{
-	dir = 8
-	},
-/turf/simulated/floor/trap/wheelchair,
+/turf/simulated/floor/tiled/techfloor/monogrid,
 /area/bridge/strelka)
 "oR" = (
 /obj/structure/table/bench/marble,
@@ -6962,10 +6959,8 @@
 	},
 /obj/structure/flora/grass/event/full_grass1,
 /obj/machinery/door/firedoor/glass,
-/obj/effect/floor_decal/wheelchairassist{
-	dir = 1
-	},
-/turf/simulated/floor/trap/wheelchair,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/hallway/strelka/deck4)
 "DX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -7185,8 +7180,10 @@
 /obj/effect/floor_decal/grass_edge,
 /obj/structure/flora/grass/event/bright_flowers1,
 /obj/machinery/door/firedoor/glass,
-/obj/effect/floor_decal/wheelchairassist,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/wheelchairassist{
+	dir = 1
+	},
 /turf/simulated/floor/trap/wheelchair,
 /area/hallway/strelka/deck4)
 "Fg" = (
