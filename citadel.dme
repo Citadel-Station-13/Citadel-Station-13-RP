@@ -1146,6 +1146,7 @@
 #include "code\game\click\click-observer.dm"
 #include "code\game\click\click-silicon-ai.dm"
 #include "code\game\click\click-silicon-legacy.dm"
+#include "code\game\click\click-silicon-pai.dm"
 #include "code\game\click\click-silicon-robot.dm"
 #include "code\game\click\click-silicon.dm"
 #include "code\game\click\click.dm"
