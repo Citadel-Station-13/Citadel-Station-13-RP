@@ -466,7 +466,7 @@
 		return ..()
 	// point blank shooting
 
-	SEND_SIGNAL(user, COMSIG_MOB_WEAPON_FIRE_ATTEMPT, src, target, clickchain_flags)
+	SEND_SIGNAL(clickchain.performer, COMSIG_MOB_WEAPON_FIRE_ATTEMPT, src, click_chain, clickchain_flags)
 
 	// legacy aiming code
 	var/mob/user = clickchain.performer
