@@ -1211,3 +1211,7 @@ Do this eventually. */
 
 /area/rift/exterior/mineshaft
 	name = "\improper Abandoned Mineshaft"
+
+/area/rift/exterior/hangar
+	name = "\improper Abandoned Hangar"
+
