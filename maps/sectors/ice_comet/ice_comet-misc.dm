@@ -79,6 +79,11 @@
 		/turf/simulated/floor/water
 	)
 
+/mob/living/simple_mob/animal/space/whaleshark/IMove(turf/newloc, safety = TRUE)
+	if(is_type_in_list(newloc, suitable_turf_types))
+		return ..() // Procede as normal.
+	return MOVEMENT_FAILED // Don't leave the water!
+
 /mob/living/simple_mob/animal/space/whaleshark/hostile
 	name = "Welnada Shark"
 	desc = "A Shark like creature, hostile."

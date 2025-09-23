@@ -631,6 +631,10 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/ice_comet/facility)
+"uo" = (
+/mob/living/simple_mob/aggressive/whaleshark,
+/turf/simulated/floor/water/deep/indoors/lythios43c,
+/area/sector/ice_comet/facility)
 "up" = (
 /obj/structure/table/bench/steel,
 /turf/simulated/floor/tiled/techmaint,
@@ -664,13 +668,6 @@
 /obj/machinery/space_heater,
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/ice_comet/facility)
-"vh" = (
-/mob/living/simple_mob/animal/space/bear/polar,
-/mob/living/simple_mob/animal/space/bear/polar,
-/turf/simulated/floor/outdoors/rocks{
-	color = "#6A97B0"
-	},
-/area/sector/ice_comet)
 "vC" = (
 /obj/effect/floor_decal/corner/purple/border,
 /turf/simulated/floor/tiled/techmaint,
@@ -690,6 +687,10 @@
 /obj/effect/floor_decal/borderfloorblack,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/ice_comet/facility)
+"vS" = (
+/mob/living/simple_mob/aggressive/whaleshark,
+/turf/simulated/floor/water/deep/indoors/lythios43c,
+/area/sector/ice_comet)
 "vZ" = (
 /obj/structure/fans,
 /obj/machinery/light/spot{
@@ -1164,10 +1165,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/ice_comet/facility)
-"Jo" = (
-/mob/living/simple_mob/animal/space/whaleshark/hostile,
-/turf/simulated/floor/water/deep/indoors/lythios43c,
-/area/sector/ice_comet)
 "Jt" = (
 /obj/structure/bed,
 /obj/item/fishing_hook,
@@ -1335,6 +1332,10 @@
 	color = "#6A97B0"
 	},
 /area/sector/ice_comet)
+"SE" = (
+/mob/living/simple_mob/aggressive/whaleshark/hostile,
+/turf/simulated/floor/water/deep/indoors/lythios43c,
+/area/sector/ice_comet)
 "SN" = (
 /obj/structure/railing/grey,
 /obj/structure/cryofeed{
@@ -1396,10 +1397,6 @@
 /obj/structure/filingcabinet/chestdrawer,
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/ice_comet/facility)
-"Uw" = (
-/mob/living/simple_mob/animal/space/whaleshark,
-/turf/simulated/floor/water/deep/indoors/lythios43c,
-/area/sector/ice_comet)
 "UU" = (
 /mob/living/simple_mob/animal/space/bear/polar,
 /turf/simulated/floor/outdoors/rocks{
@@ -10782,7 +10779,7 @@ YE
 Wq
 YE
 YE
-UU
+YE
 YE
 YE
 lm
@@ -11366,7 +11363,7 @@ Gt
 YE
 lm
 lm
-Uw
+lm
 YE
 lm
 lm
@@ -11755,7 +11752,7 @@ YE
 lm
 YE
 lm
-Jo
+lm
 lm
 lm
 lm
@@ -12135,7 +12132,7 @@ HR
 YE
 YE
 ut
-UU
+YE
 YE
 YE
 lm
@@ -12396,7 +12393,7 @@ lm
 lm
 lm
 lm
-Uw
+lm
 lm
 lm
 lm
@@ -13760,7 +13757,7 @@ Rn
 Rn
 SR
 lm
-Uw
+lm
 lm
 lm
 lm
@@ -13956,7 +13953,7 @@ Rn
 lm
 lm
 lm
-lm
+vS
 lm
 Rn
 lm
@@ -14116,7 +14113,7 @@ lm
 lm
 lm
 lm
-lm
+vS
 lm
 lm
 lm
@@ -14304,7 +14301,7 @@ lm
 Rn
 lm
 lm
-Jo
+lm
 lm
 lm
 lm
@@ -14490,7 +14487,7 @@ Rn
 Rn
 lm
 lm
-Jo
+lm
 lm
 Rn
 lm
@@ -14846,7 +14843,7 @@ Rn
 lm
 lm
 lm
-lm
+SE
 lm
 lm
 lm
@@ -15107,7 +15104,7 @@ lm
 lm
 lm
 lm
-lm
+vS
 lm
 lm
 lm
@@ -15306,7 +15303,7 @@ lm
 lm
 Rn
 lm
-Uw
+lm
 lm
 Rn
 lm
@@ -16204,7 +16201,7 @@ Rn
 lm
 lm
 lm
-Uw
+lm
 lm
 lm
 lm
@@ -16424,7 +16421,7 @@ lm
 lm
 lm
 lm
-lm
+vS
 lm
 lm
 TB
@@ -17646,7 +17643,7 @@ lm
 lm
 lm
 lm
-Uw
+lm
 lm
 lm
 lm
@@ -18347,7 +18344,7 @@ OM
 OM
 XQ
 BH
-lR
+uo
 BH
 GI
 OM
@@ -18412,8 +18409,8 @@ Rn
 lm
 lm
 lm
+vS
 lm
-Uw
 lm
 lm
 lm
@@ -18768,7 +18765,7 @@ YE
 YE
 YE
 lm
-lm
+SE
 lm
 lm
 lm
@@ -18913,9 +18910,9 @@ lm
 lm
 lm
 Rn
-Uw
 lm
 lm
+SE
 lm
 Rn
 pt
@@ -19186,7 +19183,7 @@ Rn
 lm
 lm
 lm
-Uw
+lm
 lm
 lm
 lm
@@ -20178,7 +20175,7 @@ Rn
 lm
 lm
 lm
-lm
+vS
 lm
 lm
 lm
@@ -20877,7 +20874,7 @@ Rn
 lm
 lm
 lm
-Uw
+lm
 lm
 lm
 lm
@@ -21073,7 +21070,7 @@ lm
 lm
 lm
 lm
-lm
+SE
 lm
 Rn
 Rn
@@ -21145,7 +21142,7 @@ Rn
 lm
 lm
 lm
-Uw
+lm
 lm
 lm
 Rn
@@ -21246,7 +21243,7 @@ lm
 lm
 lm
 lm
-Uw
+lm
 lm
 lm
 Rn
@@ -21256,7 +21253,7 @@ nz
 nz
 nz
 RH
-lR
+uo
 wQ
 nz
 Pi
@@ -21717,7 +21714,7 @@ Rn
 Rn
 lm
 lm
-lm
+SE
 lm
 lm
 lm
@@ -22130,7 +22127,7 @@ Rn
 lm
 Rn
 lm
-Uw
+lm
 lm
 lm
 lm
@@ -23089,7 +23086,7 @@ Rn
 lm
 Rn
 lm
-lm
+vS
 lm
 lm
 lm
@@ -23477,7 +23474,7 @@ Rn
 lm
 lm
 lm
-Uw
+lm
 lm
 lm
 lm
@@ -23859,7 +23856,7 @@ lm
 lm
 lm
 Rn
-Uw
+lm
 lm
 lm
 lm
@@ -23879,7 +23876,7 @@ lm
 Rn
 lm
 lm
-lm
+vS
 lm
 Rn
 Rn
@@ -24247,7 +24244,7 @@ lm
 lm
 Rn
 lm
-lm
+vS
 lm
 lm
 lm
@@ -24361,14 +24358,14 @@ YE
 Rn
 Rn
 lm
-Jo
+lm
 Rn
 Rn
 Rn
 lm
 lm
 lm
-lm
+SE
 lm
 Rn
 Rn
@@ -24562,7 +24559,7 @@ Rn
 Rn
 lm
 lm
-Uw
+lm
 lm
 lm
 lm
@@ -25144,7 +25141,7 @@ Rn
 Rn
 lm
 lm
-Jo
+lm
 Rn
 lm
 lm
@@ -25520,7 +25517,7 @@ YE
 ut
 YE
 YE
-vh
+YE
 YE
 YE
 lm
@@ -27848,7 +27845,7 @@ YE
 Rn
 YE
 YE
-UU
+YE
 YE
 YE
 VD
