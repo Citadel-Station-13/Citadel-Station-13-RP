@@ -170,9 +170,6 @@
 /obj/machinery/air_alarm{
 	pixel_y = 22
 	},
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
 /obj/structure/window/reinforced/polarized{
 	dir = 8;
 	id = "bridgetint"
@@ -187,14 +184,15 @@
 	layer = 3.0
 	},
 /obj/effect/floor_decal/spline/plain,
-/obj/structure/window/phoronreinforced{
+/obj/structure/window/reinforced{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/beige/border{
 	dir = 1
 	},
-/obj/structure/window/phoronreinforced{
-	dir = 8
+/obj/structure/window/reinforced/polarized{
+	dir = 8;
+	id = "bridgetint"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
@@ -2184,10 +2182,10 @@
 	},
 /obj/machinery/camera/network/command,
 /obj/structure/metal_edge,
+/obj/structure/disposalpipe/segment,
 /obj/machinery/computer/security{
 	layer = 3.5
 	},
-/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/bridge)
 "bHB" = (
@@ -2219,7 +2217,7 @@
 /area/chapel/main)
 "bIh" = (
 /obj/structure/railing/grey,
-/obj/structure/window/phoronreinforced,
+/obj/structure/window/reinforced,
 /obj/structure/table/reinforced,
 /obj/item/modular_computer/console/preset/command{
 	dir = 1
@@ -2456,9 +2454,6 @@
 	dir = 1
 	},
 /obj/structure/metal_edge,
-/obj/structure/table/marble{
-	layer = 3.1
-	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/bridge)
 "bRz" = (
@@ -3219,8 +3214,8 @@
 /obj/structure/railing/grey{
 	dir = 4
 	},
-/obj/structure/window/phoronreinforced,
-/obj/structure/window/phoronreinforced{
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
 	dir = 4
 	},
 /obj/structure/table/reinforced,
@@ -6342,9 +6337,6 @@
 	pixel_x = -6
 	},
 /obj/effect/floor_decal/corner/navblue/diagonal,
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
 /obj/structure/window/reinforced/polarized{
 	dir = 8;
 	id = "bridgetint"
@@ -7354,10 +7346,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
 	},
-/obj/structure/window/phoronreinforced,
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
+/obj/structure/window/reinforced,
 /obj/structure/window/reinforced/polarized{
 	dir = 8;
 	id = "bridgetint"
@@ -7923,7 +7912,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint)
 "fIr" = (
-/obj/structure/window/phoronreinforced{
+/obj/structure/window/reinforced{
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/halfstair,
@@ -7998,7 +7987,7 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/obj/structure/window/phoronreinforced{
+/obj/structure/window/reinforced{
 	dir = 8
 	},
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -8011,11 +8000,11 @@
 	dir = 1
 	},
 /obj/machinery/computer/robotics,
-/obj/structure/window/phoronreinforced{
+/obj/structure/window/reinforced{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/mauve/diagonal,
-/obj/structure/window/phoronreinforced{
+/obj/structure/window/reinforced{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -8194,7 +8183,7 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/obj/structure/window/phoronreinforced{
+/obj/structure/window/reinforced{
 	dir = 8
 	},
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -8801,7 +8790,7 @@
 /obj/machinery/computer/power_monitor{
 	dir = 1
 	},
-/obj/structure/window/phoronreinforced,
+/obj/structure/window/reinforced,
 /obj/effect/floor_decal/corner/lightorange/diagonal,
 /turf/simulated/floor/tiled/techmaint,
 /area/bridge)
@@ -9583,7 +9572,7 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/obj/structure/window/phoronreinforced{
+/obj/structure/window/reinforced{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/mauve/diagonal,
@@ -10069,10 +10058,7 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
-/obj/structure/window/phoronreinforced{
+/obj/structure/window/reinforced{
 	dir = 1
 	},
 /obj/structure/window/reinforced/polarized{
@@ -10347,7 +10333,7 @@
 	dir = 8;
 	desc = "Terminal for progrdamming employee ID cards to access parts of the station."
 	},
-/obj/structure/window/phoronreinforced{
+/obj/structure/window/reinforced{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
@@ -11786,7 +11772,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/docking_hallway2)
 "iLD" = (
-/obj/structure/window/phoronreinforced{
+/obj/structure/window/reinforced{
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/navblue/diagonal,
@@ -11858,10 +11844,7 @@
 	dir = 8
 	},
 /obj/structure/railing/grey,
-/obj/structure/window/phoronreinforced,
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
+/obj/structure/window/reinforced,
 /obj/structure/window/reinforced/polarized{
 	dir = 8;
 	id = "bridgetint"
@@ -12982,7 +12965,7 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d1fwdmaint)
 "jDd" = (
-/obj/structure/window/phoronreinforced,
+/obj/structure/window/reinforced,
 /obj/structure/filingcabinet/tall{
 	pixel_x = -6
 	},
@@ -13838,7 +13821,7 @@
 /obj/structure/railing/grey{
 	dir = 4
 	},
-/obj/structure/window/phoronreinforced{
+/obj/structure/window/reinforced{
 	dir = 1
 	},
 /obj/structure/table/marble,
@@ -15117,10 +15100,7 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
-/obj/structure/window/phoronreinforced,
+/obj/structure/window/reinforced,
 /obj/structure/window/reinforced/polarized{
 	dir = 8;
 	id = "bridgetint"
@@ -15646,7 +15626,7 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/obj/structure/window/phoronreinforced{
+/obj/structure/window/reinforced{
 	dir = 8
 	},
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -15754,9 +15734,6 @@
 	},
 /obj/machinery/recharge_station,
 /obj/machinery/light,
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
 /obj/structure/window/reinforced/polarized{
 	dir = 8;
 	id = "bridgetint"
@@ -15832,7 +15809,7 @@
 /obj/machinery/computer/rcon{
 	dir = 1
 	},
-/obj/structure/window/phoronreinforced,
+/obj/structure/window/reinforced,
 /obj/effect/floor_decal/corner/lightorange/diagonal,
 /turf/simulated/floor/tiled/techmaint,
 /area/bridge)
@@ -17200,9 +17177,6 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
 /obj/structure/window/reinforced/polarized{
 	dir = 8;
 	id = "bridgetint"
@@ -17220,11 +17194,8 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/obj/structure/window/phoronreinforced{
+/obj/structure/window/reinforced{
 	dir = 1
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 8
 	},
 /obj/structure/window/reinforced/polarized{
 	dir = 8;
@@ -17862,9 +17833,9 @@
 /obj/machinery/computer/secure_data{
 	dir = 1
 	},
-/obj/structure/window/phoronreinforced,
+/obj/structure/window/reinforced,
 /obj/effect/floor_decal/corner/red/diagonal,
-/obj/structure/window/phoronreinforced{
+/obj/structure/window/reinforced{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -18262,11 +18233,8 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/obj/structure/window/phoronreinforced,
+/obj/structure/window/reinforced,
 /obj/effect/floor_decal/corner/beige/border,
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
 /obj/structure/window/reinforced/polarized{
 	dir = 8;
 	id = "bridgetint"
@@ -18598,7 +18566,7 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/obj/structure/window/phoronreinforced,
+/obj/structure/window/reinforced,
 /obj/effect/floor_decal/corner/red/diagonal,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/techmaint,
@@ -20498,7 +20466,7 @@
 /area/exploration/meeting)
 "oWz" = (
 /obj/structure/railing/grey,
-/obj/structure/window/phoronreinforced,
+/obj/structure/window/reinforced,
 /obj/machinery/computer/ship/sensors{
 	dir = 8
 	},
@@ -20635,9 +20603,6 @@
 	pixel_y = -1
 	},
 /obj/structure/metal_edge,
-/obj/structure/table/marble{
-	layer = 3.1
-	},
 /obj/machinery/keycard_auth{
 	pixel_x = 7;
 	pixel_y = 8
@@ -20770,7 +20735,7 @@
 /turf/simulated/floor/plating,
 /area/endeavour/hallway/d1fwdmaint)
 "peJ" = (
-/obj/structure/window/phoronreinforced{
+/obj/structure/window/reinforced{
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment{
@@ -21040,7 +21005,7 @@
 	dir = 1
 	},
 /obj/machinery/computer/borgupload,
-/obj/structure/window/phoronreinforced{
+/obj/structure/window/reinforced{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/mauve/diagonal,
@@ -22839,7 +22804,7 @@
 "qHq" = (
 /obj/item/flashlight/lamp,
 /obj/effect/floor_decal/corner/red/diagonal,
-/obj/structure/window/phoronreinforced{
+/obj/structure/window/reinforced{
 	dir = 4
 	},
 /obj/structure/table/marble,
@@ -23786,7 +23751,7 @@
 /obj/machinery/computer/ship/sensors{
 	dir = 1
 	},
-/obj/structure/window/phoronreinforced,
+/obj/structure/window/reinforced,
 /obj/effect/floor_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled/techmaint,
 /area/bridge)
@@ -23983,6 +23948,19 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/excursion_dock)
+"ryh" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/obj/structure/metal_edge,
+/obj/machinery/computer/security/engineering{
+	layer = 3.9
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/bridge)
 "ryM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -24018,7 +23996,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1portamidhall)
 "rzL" = (
-/obj/structure/window/phoronreinforced{
+/obj/structure/window/reinforced{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
@@ -25006,7 +24984,7 @@
 /area/bridge)
 "snk" = (
 /obj/item/flashlight/lamp,
-/obj/structure/window/phoronreinforced{
+/obj/structure/window/reinforced{
 	dir = 4
 	},
 /obj/structure/table/marble,
@@ -25219,7 +25197,7 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/obj/structure/window/phoronreinforced{
+/obj/structure/window/reinforced{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/paleblue/diagonal,
@@ -25682,11 +25660,8 @@
 /obj/item/material/twohanded/folded_metal_chair,
 /obj/item/material/twohanded/folded_metal_chair,
 /obj/item/material/twohanded/folded_metal_chair,
-/obj/structure/window/phoronreinforced{
+/obj/structure/window/reinforced{
 	dir = 1
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 8
 	},
 /obj/structure/window/reinforced/polarized{
 	dir = 8;
@@ -25730,7 +25705,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/substation/deck1forward)
 "sMx" = (
-/obj/structure/window/phoronreinforced{
+/obj/structure/window/reinforced{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -26180,7 +26155,7 @@
 /turf/simulated/floor/grass,
 /area/endeavour/hallway/d1portamidhall)
 "teT" = (
-/obj/structure/window/phoronreinforced{
+/obj/structure/window/reinforced{
 	dir = 1
 	},
 /obj/machinery/papershredder,
@@ -26939,7 +26914,7 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/obj/structure/window/phoronreinforced{
+/obj/structure/window/reinforced{
 	dir = 1
 	},
 /obj/item/modular_computer/console/preset/command,
@@ -29109,9 +29084,6 @@
 	},
 /obj/effect/floor_decal/corner/navblue/diagonal,
 /obj/structure/table/marble,
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
 /obj/structure/window/reinforced/polarized{
 	dir = 8;
 	id = "bridgetint"
@@ -30225,7 +30197,7 @@
 	dir = 1
 	},
 /obj/machinery/computer/crew,
-/obj/structure/window/phoronreinforced{
+/obj/structure/window/reinforced{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/paleblue/diagonal,
@@ -31058,10 +31030,10 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/obj/structure/window/phoronreinforced{
+/obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/structure/window/phoronreinforced{
+/obj/structure/window/reinforced{
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/navblue/diagonal,
@@ -32567,7 +32539,7 @@
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
 "xEI" = (
-/obj/structure/window/phoronreinforced{
+/obj/structure/window/reinforced{
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/halfstair{
@@ -33512,7 +33484,7 @@
 /obj/structure/railing/grey{
 	dir = 4
 	},
-/obj/structure/window/phoronreinforced,
+/obj/structure/window/reinforced,
 /obj/effect/floor_decal/corner/lightorange/diagonal,
 /turf/simulated/floor/tiled/techmaint,
 /area/bridge)
@@ -63502,7 +63474,7 @@ phc
 yiZ
 gnm
 ylz
-bRa
+ryh
 gfA
 uwI
 wDz
