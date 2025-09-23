@@ -1,0 +1,6 @@
+author: "Shadowtail117"
+delete-after: True
+changes:
+  - rscadd: "You can now deactivate a life crystal by using it in your hand."
+  - bugfix: "Ghosts can no longer brew coffee."
+  - bugfix: "Bleeding now respects a species' blood color (including custom blood color)."

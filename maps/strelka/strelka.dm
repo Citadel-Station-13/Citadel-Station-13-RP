@@ -25,6 +25,8 @@
 		/datum/map/sector/miaphus,
 		/datum/map/sector/roguemining_192/one,
 		/datum/map/sector/sky_planet,
+		/datum/map/sector/solars_station,
+		/datum/map/sector/ice_comet,
 		/datum/map/sector/osiris_field,
 	)
 

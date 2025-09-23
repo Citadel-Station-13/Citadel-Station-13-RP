@@ -14089,6 +14089,14 @@
 	},
 /turf/simulated/floor/wood,
 /area/medical/psych/psych_2)
+"kaL" = (
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/structure/closet/secure_closet/medical3,
+/obj/item/storage/belt/medical,
+/obj/item/soap/nanotrasen,
+/obj/machinery/light,
+/turf/simulated/floor/tiled/white,
+/area/medical/locker_room)
 "kck" = (
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary{
 	name = "Research Testing Scrubber";
@@ -14671,6 +14679,21 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/fpmaint2)
+"kAG" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/navgold/border,
+/obj/machinery/computer/guestpass{
+	dir = 1;
+	pixel_y = -28
+	},
+/turf/simulated/floor/tiled,
+/area/endeavour/hallway/d2afthall)
 "kBc" = (
 /obj/machinery/door/firedoor/glass{
 	dir = 4
@@ -25606,6 +25629,10 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/machinery/computer/guestpass{
+	dir = 4;
+	pixel_x = -28
+	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2afthall)
 "swB" = (
@@ -31700,7 +31727,7 @@
 /area/medical/medbay3)
 "wQh" = (
 /obj/machinery/door/firedoor/glass,
-/obj/map_helper/access_helper/airlock/station/medical/department,
+/obj/map_helper/access_helper/airlock/station/head_office/chief_medical_officer,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -33605,6 +33632,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
+"ygn" = (
+/obj/machinery/washing_machine,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/medical/locker_room)
 "ygt" = (
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -51856,10 +51890,10 @@ whs
 jFo
 cPI
 yfn
-bTF
+kAG
 viJ
 gao
-gao
+ygn
 aMv
 aMv
 aMv
@@ -52639,7 +52673,7 @@ oSb
 oSb
 wQi
 oSb
-oSb
+kaL
 viJ
 wQc
 kVh
