@@ -291,6 +291,10 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/ice_comet/facility)
+"kp" = (
+/mob/living/simple_mob/animal/space/whaleshark/hostile,
+/turf/simulated/floor/water/deep/indoors/lythios43c,
+/area/sector/ice_comet)
 "kq" = (
 /obj/structure/railing/grey,
 /obj/effect/floor_decal/borderfloorblack,
@@ -300,6 +304,12 @@
 /obj/machinery/shipsensors/weak,
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/ice_comet/facility)
+"kV" = (
+/obj/structure/flora/rock/ice/alternative_1,
+/turf/simulated/floor/water{
+	color = "#8BBBD5"
+	},
+/area/sector/ice_comet)
 "ld" = (
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 4
@@ -437,6 +447,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/ice_comet/facility)
+"ov" = (
+/mob/living/simple_mob/animal/space/whaleshark,
+/turf/simulated/floor/water/deep/indoors/lythios43c,
+/area/sector/ice_comet)
 "oC" = (
 /obj/structure/railing/grey,
 /obj/structure/railing/grey{
@@ -631,10 +645,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/ice_comet/facility)
-"uo" = (
-/mob/living/simple_mob/aggressive/whaleshark,
-/turf/simulated/floor/water/deep/indoors/lythios43c,
-/area/sector/ice_comet/facility)
 "up" = (
 /obj/structure/table/bench/steel,
 /turf/simulated/floor/tiled/techmaint,
@@ -687,10 +697,6 @@
 /obj/effect/floor_decal/borderfloorblack,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/ice_comet/facility)
-"vS" = (
-/mob/living/simple_mob/aggressive/whaleshark,
-/turf/simulated/floor/water/deep/indoors/lythios43c,
-/area/sector/ice_comet)
 "vZ" = (
 /obj/structure/fans,
 /obj/machinery/light/spot{
@@ -764,6 +770,12 @@
 	},
 /turf/simulated/floor/outdoors/safeice/lythios43c,
 /area/sector/ice_comet)
+"yq" = (
+/mob/living/simple_mob/animal/space/whaleshark/hostile,
+/turf/simulated/floor/water{
+	color = "#8BBBD5"
+	},
+/area/sector/ice_comet)
 "yS" = (
 /obj/structure/metal_edge,
 /obj/structure/cryofeed{
@@ -771,6 +783,10 @@
 	},
 /turf/simulated/floor/water/deep/indoors/lythios43c,
 /area/sector/ice_comet)
+"yV" = (
+/mob/living/simple_mob/animal/space/whaleshark,
+/turf/simulated/floor/water/deep/indoors/lythios43c,
+/area/sector/ice_comet/facility)
 "zd" = (
 /obj/structure/railing/grey{
 	dir = 4
@@ -1281,6 +1297,12 @@
 "Qm" = (
 /turf/space/basic,
 /area/space)
+"Qq" = (
+/obj/random/crystal/ice,
+/turf/simulated/floor/water{
+	color = "#8BBBD5"
+	},
+/area/sector/ice_comet)
 "Ri" = (
 /obj/structure/event/prop/measure,
 /turf/simulated/floor/outdoors/rocks{
@@ -1332,10 +1354,6 @@
 	color = "#6A97B0"
 	},
 /area/sector/ice_comet)
-"SE" = (
-/mob/living/simple_mob/aggressive/whaleshark/hostile,
-/turf/simulated/floor/water/deep/indoors/lythios43c,
-/area/sector/ice_comet)
 "SN" = (
 /obj/structure/railing/grey,
 /obj/structure/cryofeed{
@@ -1384,6 +1402,11 @@
 "TB" = (
 /obj/structure/flora/rock/geyser,
 /turf/simulated/floor/outdoors/safeice/lythios43c,
+/area/sector/ice_comet)
+"TI" = (
+/turf/simulated/floor/water{
+	color = "#8BBBD5"
+	},
 /area/sector/ice_comet)
 "Ub" = (
 /obj/structure/table/bench/wooden,
@@ -9237,8 +9260,8 @@ le
 Rn
 lm
 lm
-lm
-Rn
+TI
+TI
 Rn
 Rn
 Rn
@@ -9432,8 +9455,8 @@ Rn
 Rn
 lm
 lm
-Rn
-Rn
+TI
+TI
 Rn
 Rn
 Rn
@@ -9624,11 +9647,11 @@ YE
 YE
 YE
 lm
-Rn
+TI
 lm
-Rn
-Rn
-Rn
+TI
+TI
+TI
 Rn
 Rn
 Rn
@@ -9817,13 +9840,13 @@ YE
 ut
 YE
 YE
-Rn
+TI
+TI
 lm
-lm
-gM
-Rn
-Rn
-Rn
+kV
+TI
+TI
+TI
 Yv
 Rn
 Rn
@@ -10011,14 +10034,14 @@ YE
 YE
 YE
 YE
-Rn
-lm
-lm
-Rn
-Rn
-Rn
-Rn
-Rn
+TI
+TI
+TI
+yq
+TI
+TI
+TI
+TI
 Rn
 Rn
 Rn
@@ -10204,17 +10227,17 @@ Wq
 YE
 lm
 YE
-Rn
-Rn
-lm
-lm
-Rn
-Rn
-Rn
-Rn
-Rn
-Rn
-Rn
+TI
+TI
+TI
+TI
+TI
+TI
+TI
+TI
+TI
+TI
+TI
 Rn
 Rn
 Rn
@@ -10398,13 +10421,13 @@ YE
 lm
 lm
 YE
-Rn
-SR
+TI
+Qq
 lm
-lm
-Rn
-Rn
-Rn
+TI
+TI
+TI
+TI
 Rn
 Rn
 Rn
@@ -10592,12 +10615,12 @@ lm
 lm
 lm
 Rn
-lm
-Rn
-Rn
-lm
-Rn
-Rn
+TI
+TI
+TI
+TI
+TI
+TI
 Rn
 Rn
 Rn
@@ -10785,10 +10808,10 @@ YE
 lm
 YE
 lm
-lm
-lm
-lm
-Rn
+TI
+TI
+TI
+TI
 Rn
 Rn
 Rn
@@ -10979,8 +11002,8 @@ lm
 lm
 YE
 lm
-Rn
-SR
+TI
+Qq
 lm
 Rn
 Rn
@@ -12587,7 +12610,7 @@ SR
 lm
 lm
 Rn
-lm
+ov
 lm
 lm
 lm
@@ -12764,7 +12787,7 @@ Rn
 Rn
 lm
 lm
-Rn
+TI
 Rn
 Ec
 Rn
@@ -12957,8 +12980,8 @@ Rn
 Rn
 Rn
 lm
-Rn
-Rn
+TI
+TI
 Rn
 Rn
 Rn
@@ -13151,8 +13174,8 @@ Rn
 lm
 lm
 lm
-Rn
-Rn
+TI
+TI
 Ec
 Rn
 lm
@@ -13345,9 +13368,9 @@ lm
 lm
 Rn
 lm
-Rn
-Rn
-Rn
+TI
+TI
+TI
 lm
 lm
 lm
@@ -13537,11 +13560,11 @@ lm
 lm
 lm
 lm
+kp
 lm
-lm
-Rn
-Rn
-Rn
+TI
+TI
+TI
 lm
 lm
 lm
@@ -13733,14 +13756,14 @@ lm
 lm
 lm
 Vb
-Rn
-Ec
-Rn
-lm
+TI
+TI
+TI
+TI
 ZL
 lm
 lm
-lm
+kp
 lm
 lm
 lm
@@ -13927,23 +13950,23 @@ lm
 lm
 lm
 HR
-Rn
-Ec
-Rn
+TI
+TI
+TI
+TI
 lm
 lm
-lm
-lm
-lm
-lm
-lm
-Rn
-Rn
 lm
 lm
 lm
 lm
 Rn
+Rn
+lm
+lm
+lm
+lm
+Rn
 lm
 Rn
 lm
@@ -13953,7 +13976,7 @@ Rn
 lm
 lm
 lm
-vS
+lm
 lm
 Rn
 lm
@@ -14099,10 +14122,7 @@ lm
 lm
 Rn
 lm
-lm
-lm
-lm
-Rn
+kp
 lm
 lm
 Rn
@@ -14111,20 +14131,23 @@ lm
 Rn
 lm
 lm
-lm
-lm
-vS
-lm
-lm
-lm
-lm
-lm
 Rn
+lm
+lm
+lm
+lm
+lm
+lm
+lm
+lm
+lm
+TI
+TI
 HR
-Rn
-Ec
-Rn
-lm
+TI
+TI
+TI
+TI
 lm
 lm
 lm
@@ -14311,14 +14334,14 @@ lm
 lm
 lm
 lm
-lm
-Rn
+TI
+TI
 Rn
 HR
-Rn
-Ec
-Rn
-lm
+TI
+TI
+TI
+TI
 lm
 lm
 TB
@@ -14504,15 +14527,15 @@ lm
 lm
 lm
 lm
-lm
+TI
+TI
 Rn
 Rn
 Rn
-Rn
-Rn
-Rn
-Rn
-lm
+TI
+TI
+TI
+TI
 lm
 lm
 lm
@@ -14696,17 +14719,17 @@ lm
 lm
 lm
 lm
-lm
-Rn
-Rn
+TI
+TI
+TI
 Rn
 Rn
 Rn
 HR
 Rn
-Ec
-Rn
-lm
+TI
+TI
+TI
 lm
 lm
 lm
@@ -14729,7 +14752,7 @@ Rn
 Rn
 lm
 lm
-lm
+ov
 lm
 lm
 lm
@@ -14843,7 +14866,7 @@ Rn
 lm
 lm
 lm
-SE
+lm
 lm
 lm
 lm
@@ -14858,30 +14881,20 @@ lz
 lm
 lm
 lm
-lm
-lm
-Rn
-Rn
-Rn
-lm
-Rn
+ov
 lm
 Rn
 Rn
-lm
-lm
-lm
-lm
-lm
-lm
-lm
-lm
-lm
+Rn
 lm
 Rn
 lm
-lm
 Rn
+Rn
+lm
+lm
+lm
+lm
 lm
 lm
 lm
@@ -14889,8 +14902,18 @@ lm
 lm
 lm
 Rn
+lm
+lm
 Rn
-Rn
+lm
+lm
+lm
+lm
+TI
+TI
+TI
+TI
+TI
 Rn
 Rn
 Rn
@@ -14898,8 +14921,8 @@ Rn
 Rn
 HR
 Rn
-Rn
-Rn
+TI
+TI
 lm
 lm
 Rn
@@ -15052,6 +15075,11 @@ aR
 lm
 lm
 lm
+ov
+lm
+lm
+Rn
+lm
 lm
 lm
 lm
@@ -15060,11 +15088,6 @@ lm
 lm
 lm
 lm
-Rn
-lm
-lm
-lm
-lm
 lm
 lm
 lm
@@ -15079,8 +15102,8 @@ lm
 lm
 lm
 lm
-Rn
-Rn
+TI
+TI
 Rn
 Rn
 Rn
@@ -15104,7 +15127,7 @@ lm
 lm
 lm
 lm
-vS
+lm
 lm
 lm
 lm
@@ -15288,15 +15311,15 @@ HR
 Rn
 Rn
 Rn
+TI
+TI
+lm
+lm
 Rn
 lm
 lm
 lm
-Rn
-lm
-lm
-lm
-lm
+ov
 lm
 lm
 lm
@@ -15484,7 +15507,7 @@ Ec
 Rn
 Rn
 Rn
-lm
+TI
 lm
 Rn
 lm
@@ -15678,7 +15701,7 @@ Ec
 Rn
 Rn
 Rn
-lm
+TI
 lm
 lm
 lm
@@ -15873,7 +15896,7 @@ Rn
 Rn
 Rn
 Rn
-lm
+TI
 lm
 lm
 lm
@@ -16007,7 +16030,7 @@ Rn
 Rn
 lm
 lm
-lm
+ov
 lm
 lm
 lm
@@ -16032,7 +16055,7 @@ lm
 lm
 lm
 lm
-lm
+ov
 lm
 Rn
 Rn
@@ -16067,7 +16090,7 @@ Rn
 gM
 Rn
 Rn
-lm
+TI
 lm
 Rn
 lm
@@ -16209,7 +16232,7 @@ lm
 lm
 nz
 kq
-lR
+yV
 jf
 nz
 Pi
@@ -16262,7 +16285,7 @@ Rn
 Rn
 Rn
 lm
-lm
+TI
 lm
 lm
 Rn
@@ -16421,7 +16444,7 @@ lm
 lm
 lm
 lm
-vS
+lm
 lm
 lm
 TB
@@ -16456,7 +16479,7 @@ Rn
 Rn
 Rn
 lm
-Rn
+TI
 lm
 lm
 lm
@@ -17745,7 +17768,7 @@ lm
 lm
 TB
 lm
-lm
+kp
 lm
 Rn
 lm
@@ -18344,7 +18367,7 @@ OM
 OM
 XQ
 BH
-uo
+lR
 BH
 GI
 OM
@@ -18409,7 +18432,7 @@ Rn
 lm
 lm
 lm
-vS
+lm
 lm
 lm
 lm
@@ -18538,7 +18561,7 @@ OM
 OM
 SN
 lR
-lR
+yV
 lR
 eB
 OM
@@ -18601,7 +18624,7 @@ Rn
 Rn
 lm
 lm
-lm
+ov
 lm
 lm
 lm
@@ -18765,7 +18788,7 @@ YE
 YE
 YE
 lm
-SE
+lm
 lm
 lm
 lm
@@ -18912,7 +18935,7 @@ lm
 Rn
 lm
 lm
-SE
+lm
 lm
 Rn
 pt
@@ -20175,7 +20198,7 @@ Rn
 lm
 lm
 lm
-vS
+lm
 lm
 lm
 lm
@@ -20488,7 +20511,7 @@ lm
 lm
 lm
 lm
-lm
+ov
 lm
 Rn
 Rn
@@ -20671,7 +20694,7 @@ lm
 lm
 nz
 RH
-lR
+yV
 wQ
 nz
 Pi
@@ -20949,7 +20972,7 @@ lm
 lm
 lm
 lm
-lm
+ov
 lm
 Rn
 lm
@@ -21070,7 +21093,7 @@ lm
 lm
 lm
 lm
-SE
+lm
 lm
 Rn
 Rn
@@ -21253,7 +21276,7 @@ nz
 nz
 nz
 RH
-uo
+lR
 wQ
 nz
 Pi
@@ -21327,7 +21350,7 @@ lm
 lm
 lm
 lm
-lm
+kp
 lm
 Rn
 lm
@@ -21436,7 +21459,7 @@ Rn
 lm
 lm
 lm
-lm
+ov
 lm
 lm
 lm
@@ -21714,7 +21737,7 @@ Rn
 Rn
 lm
 lm
-SE
+lm
 lm
 lm
 lm
@@ -22518,7 +22541,7 @@ lm
 lm
 lm
 lm
-lm
+ov
 lm
 lm
 Rn
@@ -22617,7 +22640,7 @@ lm
 Rn
 lm
 lm
-lm
+kp
 Rn
 Rn
 lm
@@ -23086,7 +23109,7 @@ Rn
 lm
 Rn
 lm
-vS
+lm
 lm
 lm
 lm
@@ -23876,7 +23899,7 @@ lm
 Rn
 lm
 lm
-vS
+lm
 lm
 Rn
 Rn
@@ -24051,7 +24074,7 @@ lm
 lm
 lm
 lm
-lm
+ov
 lm
 lm
 SR
@@ -24244,7 +24267,7 @@ lm
 lm
 Rn
 lm
-vS
+lm
 lm
 lm
 lm
@@ -24365,7 +24388,7 @@ Rn
 lm
 lm
 lm
-SE
+lm
 lm
 Rn
 Rn
@@ -24559,7 +24582,7 @@ Rn
 Rn
 lm
 lm
-lm
+ov
 lm
 lm
 lm
@@ -30231,7 +30254,7 @@ Rn
 Rn
 Rn
 lm
-lm
+kp
 lm
 TB
 Rn
@@ -30429,7 +30452,7 @@ lm
 lm
 Rn
 lm
-lm
+ov
 lm
 lm
 Rn
