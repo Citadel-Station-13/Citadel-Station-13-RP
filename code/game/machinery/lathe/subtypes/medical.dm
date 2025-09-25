@@ -17,10 +17,10 @@
 	idle_power_usage = POWER_USAGE_LATHE_IDLE / 2
 	active_power_usage = POWER_USAGE_LATHE_ACTIVE_SCALE(1) / 2
 	circuit = /obj/item/circuitboard/machine/lathe/medi_mini
-	design_holder = /datum/design_holder/lathe/medi_mini_lathe
+	design_holder = /datum/design_holder/lathe_standalone/medical
 
-/datum/design_holder/lathe/medi_mini_lathe/available_ids()
-	return RSdesigns.medical_mini_design_ids | ..()
+/datum/design_holder/lathe_standalone/medical/get_designs_const()
+	return RSdesigns.c_medlathe_designs | ..()
 
 /obj/machinery/lathe/medical/stocked/Initialize(mapload)
 	. = ..()

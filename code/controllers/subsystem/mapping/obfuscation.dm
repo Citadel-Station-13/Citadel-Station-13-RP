@@ -15,9 +15,6 @@
  * * By default, /datum/map (not /datum/map_level), /datum/map_template, /datum/shuttle_template are the three things that form new mangling boundaries/contexts.
  */
 /datum/controller/subsystem/mapping
-	/// used to ensure global-ness
-	//  todo: should this be here? this is used literally everywhere
-	var/static/round_global_descriptor
 	/// round-local hash storage for specific map ids
 	var/static/round_local_mangling_cache = list()
 	/// round-local hash storage for specific map ids, reverse lookup
@@ -26,17 +23,6 @@
 	var/static/round_local_obfuscation_cache = list()
 	/// round-local hash storage for obfuscated ids, reverse lookup
 	var/static/round_local_obfuscation_reverse_cache = list()
-
-/**
- * Called at init first thing to setup mangling data
- */
-/datum/controller/subsystem/mapping/proc/init_obfuscation_data()
-	// no (real) chance of collisions
-	var/hex_string = "[num2hex(world.realtime)]"
-	var/list/built = list()
-	for(var/i in 1 to ceil(length(hex_string) / 4))
-		built += copytext(hex_string, 1 + (i - 1) * 4, 1 + (i) * 4)
-	round_global_descriptor = jointext(built, "-")
 
 /**
  * Get a short hash for a map specific ID.
@@ -101,6 +87,7 @@
 /datum/controller/subsystem/mapping/proc/mangled_persistent_id(id, with_mangling_id)
 	if(!id)
 		return id
+	var/round_global_descriptor = SSuniqueness.get_round_notch()
 	return "[id]-[hash_for_mangling_id(with_mangling_id, TRUE)]-[round_global_descriptor]"
 
 /**
@@ -160,6 +147,7 @@
 	if(!id)
 		return id
 	var/cache_key
+	var/round_global_descriptor = SSuniqueness.get_round_notch()
 	if(with_mangling_id)
 		var/mangling_hash = hash_for_mangling_id("[with_mangling_id]", TRUE)
 		cache_key = "[id]-[mangling_hash]"

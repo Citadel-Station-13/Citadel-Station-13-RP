@@ -137,6 +137,6 @@ SUBSYSTEM_DEF(overmaps)
 	do
 		if(safety-- <= 0)
 			CRASH("failed to generate overmap id - too many loops")
-		potential = "[SSmapping.round_global_descriptor && "[SSmapping.round_global_descriptor]-"][copytext(md5("[rand(1, 1000000)]"), 1, 5)]"
+		potential = "[copytext(md5("[rand(1, 1000000)]"), 1, 5)]"
 	while(overmap_by_id[potential])
 	return potential

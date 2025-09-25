@@ -145,6 +145,9 @@
  */
 /datum/controller/repository/proc/fetch(datum/prototype/type_or_id) as /datum/prototype
 	RETURN_TYPE(/datum/prototype)
+	if(UNLINT(FALSE))
+		// HEY, IDIOT! THIS PROC CAN SLEEP!
+		sleep(1)
 	// todo: optimize
 	if(isnull(type_or_id))
 		return
@@ -274,6 +277,9 @@
  * @return list() of instances
  */
 /datum/controller/repository/proc/fetch_multi(list/datum/prototype/types_or_ids)
+	if(UNLINT(FALSE))
+		// HEY, IDIOT! THIS PROC CAN SLEEP!
+		sleep(1)
 	// todo: optimize
 	. = list()
 	for(var/datum/prototype/casted as anything in types_or_ids)
