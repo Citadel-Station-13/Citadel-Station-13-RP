@@ -91,9 +91,9 @@
 /obj/item/rangefinder/proc/update_icon()
 	cut_overlays()
 	if(active_laser_target)
-		#warn dot color
+		icon_dot_color = "#ff0000"
 	else if(is_rangefinder || is_designator)
-		#warn dot color
+		icon_dot_color = "#00aa00"
 	. = ..()
 	if(icon_dot_color)
 		var/image/dot_overlay = image(icon, "[base_icon_state]-dot")
@@ -123,13 +123,14 @@
 
 /obj/item/rangefinder/on_attack_self(datum/event_args/actor/e_args)
 	. = ..()
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
 	#warn impl
 
 /obj/item/rangefinder/on_inv_equipped(mob/wearer, datum/inventory/inventory, slot_id_or_index, inv_op_flags, datum/event_args/actor/actor)
 	..()
 	RegisterSignal(wearer, COMSIG_MOB_EXAMINATE, PROC_REF(on_user_examine))
 	#warn impl
-
 
 /obj/item/rangefinder/on_inv_unequipped(mob/wearer, datum/inventory/inventory, slot_id_or_index, inv_op_flags, datum/event_args/actor/actor)
 	..()

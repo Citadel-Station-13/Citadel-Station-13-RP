@@ -35,7 +35,7 @@
 	#warn impl / hook
 
 /datum/mortar_flight/proc/run()
-	src.arrive_time = world.time + flight_time
+	src.arrive_time = world.time + flight_duration
 
 /datum/mortar_flight/proc/get_mobs_in_radius_of_target(radius) as /list
 

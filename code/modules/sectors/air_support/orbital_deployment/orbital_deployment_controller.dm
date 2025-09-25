@@ -102,7 +102,7 @@
 					// TODO: better name identification
 					assembled_flares[++assembled_flares.len] = list(
 						"name" = "signal flare",
-						"coords" = SSmapping.get_virtual_coords(get_turf(laser)),
+						"coords" = SSmapping.get_virtual_coords(get_turf(flare)),
 						"overmapDist" = overmap_distance,
 						"overmapName" = overmap_name,
 					)

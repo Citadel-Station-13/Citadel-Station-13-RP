@@ -8,7 +8,7 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
  *   but turf refs would stay behind
  */
 /datum/orbital_deployment_zone
-	/// unique ID
+	/// unique ID, if any
 	var/id
 	#warn impl id
 
@@ -33,16 +33,34 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 	obj/orbital_deployment_marker/upper_right,
 	obj/orbital_deployment_marker/upper_left,
 )
+	if(!id)
+		// todo: stupid way to generate ids tbh but whatever
+		id = GUID()
+
 	src.lower_left = lower_left
 	src.lower_right = lower_right
 	src.upper_right = upper_right
 	src.upper_left = upper_left
-	GLOB.orbital_deployment_zones += src
+
+	if(GLOB.orbital_deployment_zones[id])
+		stack_trace("duplicate id [id], this zone will not be registered")
+		QDEL_IN(src, 0)
+	else
+		GLOB.orbital_deployment_zones[id] = src
+
+	for(var/obj/orbital_deployment_marker/marker in list(
+		lower_left,
+		lower_right,
+		upper_right,
+		upper_left,
+	))
+		marker.zone_built = TRUE
+		marker.zone = src
 
 /datum/orbital_deployment_zone/Destroy()
 	for(var/obj/machinery/orbital_deployment_controller/controller in controllers)
 		controller.unlink_zone()
-	GLOB.orbital_deployment_zones -= src
+	GLOB.orbital_deployment_zones -= id
 	for(var/obj/orbital_deployment_marker/marker in list(
 		lower_left,
 		lower_right,
@@ -112,8 +130,8 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 
 	var/datum/orbital_deployment_translation/translation = new
 
-	var/datum/bound_proc/turf_overlap_handler = BOUND_PROC(translation, PROC_REF(on_turf_overlap))
-	var/datum/bound_proc/movable_overlap_handler = BOUND_PROC(translation, PROC_REF(on_movable_overlap))
+	var/datum/bound_proc/turf_overlap_handler = BOUND_PROC(translation, TYPE_PROC_REF(/datum/orbital_deployment_translation, on_turf_overlap))
+	var/datum/bound_proc/movable_overlap_handler = BOUND_PROC(translation, TYPE_PROC_REF(/datum/orbital_deployment_translation, on_movable_overlap))
 
 	SSgrids.translate(
 		from_turfs,
@@ -136,3 +154,6 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 /datum/orbital_deployment_zone/proc/get_height()
 
 /datum/orbital_deployment_zone/proc/on_launch()
+
+/datum/orbital_deployment_zone/proc/contains_turf(turf/T)
+	#warn impl

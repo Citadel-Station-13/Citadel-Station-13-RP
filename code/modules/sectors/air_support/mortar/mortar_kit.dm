@@ -5,7 +5,7 @@
 	name = "mortar kit"
 	desc = "A collapsed kit that can be used to deploy a stationary mortar."
 
-	// TODO: sprite
+	#warn sprite
 
 	/// mortar to create if empty
 	var/mortar_type = /obj/machinery/mortar
@@ -30,6 +30,7 @@
 /obj/item/mortar_kit/context_menu_query(datum/event_args/actor/e_args)
 	. = ..()
 
+#warn impl all
 
 /obj/item/mortar_kit/basic
 	mortar_type = /obj/machinery/mortar/basic

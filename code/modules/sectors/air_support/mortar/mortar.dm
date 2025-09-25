@@ -5,7 +5,7 @@
 	name = "mortar"
 	desc = "A mortar of some kind. What kind of insanity drove you to possess one?"
 
-	// TODO: sprite
+	#warn sprite
 
 	use_power = USE_POWER_OFF
 	active_power_usage = 0
@@ -147,16 +147,23 @@
 	addtimer(CALLBACK(src, PROC_REF(fire_loaded_shell)), time_to_fire)
 
 /obj/machinery/mortar/basic/proc/fire_loaded_shell()
+	var/turf/our_turf = get_turf(src)
+	if(!our_turf)
+		return FALSE
 	if(!firing_shell)
-		return
+		return FALSE
 	var/obj/item/ammo_casing/mortar/firing = firing_shell
 	firing_shell = null
-	run_firing_cycle(firing, x_offset, y_offset)
+
+	var/x_offset = target_x - our_turf.x + target_adjust_x
+	var/y_offset = target_y - our_turf.y + target_adjust_y
+	return run_firing_cycle(firing, x_offset, y_offset)
 
 /obj/machinery/mortar/basic/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return
+	var/datum/event_args/actor/actor = new(usr)
 	switch(action)
 		if("setTarget")
 			var/x = params["x"]
