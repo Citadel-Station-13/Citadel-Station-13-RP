@@ -40,14 +40,17 @@
 /area/security/prison/upper
 	name = "\improper Security - Upper Prison Wing"
 	icon_state = "sec_prison"
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_HALLWAYS //So that prisoners can enjoy nighttime too.
 
 /area/security/prison/lower
 	name = "\improper Security - Lower Prison Wing"
 	icon_state = "sec_prison"
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_HALLWAYS
 
 /area/security/warden
 	name = "\improper Security - Warden's Office"
 	icon_state = "Warden"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/security/armoury
 	name = "\improper Security - Armory"
@@ -59,18 +62,22 @@
 /area/security/briefing_room
 	name = "\improper Security - Briefing Room"
 	icon_state = "brig"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/security/evidence_storage
 	name = "\improper Security - Equipment Storage"
 	icon_state = "security_equipment_storage"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/security/evidence_storage
 	name = "\improper Security - Evidence Storage"
 	icon_state = "evidence_storage"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/security/interrogation
 	name = "\improper Security - Interrogation"
 	icon_state = "interrogation"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/security/riot_control
 	name = "\improper Security - Riot Control"
@@ -85,6 +92,7 @@
 /area/security/range
 	name = "\improper Security - Firing Range"
 	icon_state = "firingrange"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/security/security_aid_station
 	name = "\improper Security - Security Aid Station"
@@ -94,10 +102,12 @@
 	name = "\improper Security - Restroom"
 	icon_state = "security_bathroom"
 	sound_env = SMALL_ENCLOSED
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_LEISURE
 
 /area/security/security_cell_hallway
 	name = "\improper Security - Cell Hallway"
 	icon_state = "security_cell_hallway"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_HALLWAYS
 
 /area/security/security_equiptment_storage
 	name = "\improper Security - Equipment Storage"
@@ -106,17 +116,20 @@
 /area/security/security_lockerroom
 	name = "\improper Security - Locker Room"
 	icon_state = "security_lockerroom"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/security/security_processing
 	name = "\improper Security - Security Processing"
 	icon_state = "security_processing"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/security/tactical
 	name = "\improper Security - Tactical Equipment"
 	icon_state = "Tactical"
 	ambience = AMBIENCE_HIGHSEC
 	area_flags = AREA_FLAG_BLUE_SHIELDED
-
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_SENSITIVE
+	
 /area/security/hallway
 	name = "\improper Security Hallway"
 	icon_state = "security"

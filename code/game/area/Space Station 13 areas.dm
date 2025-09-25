@@ -1828,7 +1828,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Chapel"
 	icon_state = "chapel"
 	sound_env = LARGE_ENCLOSED
-	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /area/chapel/office
 	name = "\improper Chapel Office"
@@ -2073,21 +2073,26 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/engineering/foyer/lower
 	name = "\improper Lower Enginering Foyer"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_HALLWAYS
 
 /area/engineering/engine_balcony
 	name = "\improper Engine Room Balcony"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_HALLWAYS
 
 /area/engineering/foyer_mezzenine
 	name = "\improper Engineering Mezzenine"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_HALLWAYS
 
 /area/engineering/storage
 	name = "\improper Engineering Storage"
 	icon_state = "engineering_storage"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/engineering/break_room
 	name = "\improper Engineering Break Room"
 	icon_state = "engineering_break"
 	sound_env = MEDIUM_SOFTFLOOR
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_LEISURE
 
 /area/engineering/break_room/lower
 	name = "\improper Lower Enginering Surface Break Room"
@@ -2286,7 +2291,8 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/medical/biostorage
 	name = "\improper Secondary Storage"
 	icon_state = "medbay2"
-
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
+	
 /area/medical/reception
 	name = "\improper Medbay Reception"
 	icon_state = "medbay"
@@ -2295,66 +2301,82 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/medical/medbay_emt_bay
 	name = "\improper Medical EMT Bay"
 	icon_state = "medbay_emt_bay"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/medical/medbay_primary_storage
 	name = "\improper Medbay Primary Storage"
 	icon_state = "medbay_primary_storage"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/medical/psych
 	name = "\improper Psych Room"
 	icon_state = "medbay3"
-
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_LEISURE //Psychiatric patients deserve nighttime too
+	
 /area/medical/psych/psych_1
 	name = "\improper Psych Room 1"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_LEISURE
 
 /area/medical/psych/psych_2
 	name = "\improper Psych Room 2"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_LEISURE
 
 /area/crew_quarters/medbreak
 	name = "\improper Break Room"
 	icon_state = "medbay3"
 	music = 'sound/ambience/signal.ogg'
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_LEISURE
 
 /area/crew_quarters/medbreak/surgery
 	name = "\improper Surgeon Break Room"
 	icon_state = "medbay2"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_LEISURE
 
 /area/crew_quarters/medical_restroom
 	name = "\improper Medbay Restroom"
 	icon_state = "medbay_restroom"
 	ambience = AMBIENCE_ATMOS
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_LEISURE
 
 /area/medical/patients_rooms
 	name = "\improper Patient's Rooms"
 	icon_state = "patients"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_LEISURE
 
 /area/medical/ward
 	name = "\improper Recovery Ward"
 	icon_state = "patients"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_LEISURE
 
 /area/medical/patient_a
 	name = "\improper Patient A"
 	icon_state = "medbay_patient_room_a"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_LEISURE
 
 /area/medical/patient_b
 	name = "\improper Patient B"
 	icon_state = "medbay_patient_room_b"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_LEISURE
 
 /area/medical/patient_c
 	name = "\improper Patient C"
 	icon_state = "medbay_patient_room_c"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_LEISURE
 
 /area/medical/patient_d
 	name = "\improper Patient D"
 	icon_state = "medbay_patient_room_d"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_LEISURE
 
 /area/medical/patient_e
 	name = "\improper Patient E"
 	icon_state = "medbay_patient_room_e"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_LEISURE
 
 /area/medical/patient_wing
 	name = "\improper Patient Wing"
 	icon_state = "patients"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_HALLWAYS
 
 /area/medical/cmostore
 	name = "\improper Secure Storage"
