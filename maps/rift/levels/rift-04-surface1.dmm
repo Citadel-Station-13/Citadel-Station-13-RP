@@ -15906,6 +15906,9 @@
 /obj/machinery/camera/network/medbay{
 	dir = 4
 	},
+/obj/machinery/light/small{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/medical/virology)
 "kfy" = (
@@ -21572,6 +21575,9 @@
 	},
 /obj/machinery/camera/network/medbay{
 	dir = 4
+	},
+/obj/machinery/light/small{
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/medical/virology)
@@ -27248,6 +27254,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical)
+"qCO" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 4
+	},
+/obj/machinery/power/apc/east_mount,
+/turf/simulated/floor/tiled/steel,
+/area/hallway/secondary/civilian_hallway_mid)
 "qCS" = (
 /obj/structure/railing{
 	dir = 4
@@ -62283,7 +62299,7 @@ gav
 bFm
 bFm
 bFm
-bFm
+qCO
 bFm
 bFm
 bFm
