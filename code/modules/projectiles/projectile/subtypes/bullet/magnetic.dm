@@ -178,3 +178,10 @@
 	damage_flag = ARMOR_MELEE
 	irradiate = 20
 	range = WORLD_ICON_SIZE * 12
+
+/obj/projectile/bullet/magnetic/engineering
+	damage_force = 0 //set by gun
+	damage_tier = 4.25 //the 8kg metal rod travelling at supersonic speed:
+	stun = 1
+	weaken = 1
+	legacy_penetrating = 0 //also set by gun
