@@ -121,13 +121,6 @@
 	if(admin_notify)
 		msg_admin_attack("[key_name_admin(user)] vs [target_str]: [what_done]")
 
-//checks whether this item is a module of the robot it is located in.
-/proc/is_robot_module(obj/item/thing)
-	if (!thing || !istype(thing.loc, /mob/living/silicon/robot))
-		return 0
-	var/mob/living/silicon/robot/R = thing.loc
-	return (thing in R.module.modules)
-
 /proc/get_exposed_defense_zone(atom/movable/target)
 	var/obj/item/grab/G = locate() in target
 	if(G && G.state >= GRAB_NECK) //works because mobs are currently not allowed to upgrade to NECK if they are grabbing two people.
