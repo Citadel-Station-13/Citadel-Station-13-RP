@@ -36,7 +36,7 @@
 /datum/species/shapeshifter/get_worn_legacy_bodytype(mob/living/carbon/human/H)
 	if(!H) return ..()
 	var/datum/species/S = SScharacters.resolve_species_name(H.species.base_species)
-	return S.get_worn_legacy_bodytype(H)
+	return istype(S, src)? base_species : S.get_worn_legacy_bodytype(H)
 
 /datum/species/shapeshifter/get_blood_mask(mob/living/carbon/human/H)
 	if(!H) return ..()
