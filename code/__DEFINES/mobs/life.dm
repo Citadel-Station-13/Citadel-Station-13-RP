@@ -1,16 +1,37 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2023 Citadel Station Developers           *//
 
 //* This file is called 'life', but realistically is the resting place of all things metabolism, health, and related. *//
 
-//?  Health - Core
-/** Round damage values to this value
+//* Health / Damage Simulation *//
+
+/**
+ * Round damage values to this value
  * Atom damage uses this too!
  */
 #define DAMAGE_PRECISION			0.01
+/**
+ * Round damage tier values to this value
+ * Atom damage uses this too!
+ */
 #define DAMAGE_TIER_PRECISION		0.01
+/**
+ * Round armor values to this value
+ * Atom damage uses this too!
+ */
 #define ARMOR_PRECISION				0.001
+/**
+ * Round armor tier values to this value
+ * Atom damage uses this too!
+ */
 #define ARMOR_TIER_PRECISION		0.01
+
+//* Life Ticking *//
+
+/// Should tick physical processes
+#define LIFE_TICK_PHYSICAL (1<<0)
+/// Should tick biological processes
+#define LIFE_TICK_BIOLOGICAL (1<<1)
 
 //* Health - Environmental Interactions *//
 

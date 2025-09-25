@@ -1,6 +1,6 @@
 /datum/physiology_modifier/intrinsic/species/alraune
-	carry_strength_add = CARRY_STRENGTH_ADD_ALRAUNE
-	carry_strength_factor = CARRY_FACTOR_MOD_ALRAUNE
+	g_carry_strength_add = CARRY_STRENGTH_ADD_ALRAUNE
+	g_carry_strength_factor = CARRY_FACTOR_MOD_ALRAUNE
 
 /datum/species/alraune
 	uid = SPECIES_ID_ALRAUNE

@@ -1,5 +1,5 @@
 //Stand-in until this is made more lore-friendly.
-/datum/species/xenos
+/datum/species/xenomorph
 	id = SPECIES_ID_XENOMORPH
 	uid = SPECIES_ID_XENOMORPH
 	name = SPECIES_XENO
@@ -52,15 +52,7 @@
 	vision_flags = SEE_SELF|SEE_MOBS
 	vision_organ = O_EYES
 
-	has_organ = list(
-		O_HEART =    /obj/item/organ/internal/heart,
-		O_BRAIN =    /obj/item/organ/internal/brain/xeno,
-		O_PLASMA =   /obj/item/organ/internal/xenos/plasmavessel,
-		O_HIVE =     /obj/item/organ/internal/xenos/hivenode,
-		O_NUTRIENT = /obj/item/organ/internal/diona/nutrients,
-		O_STOMACH =		/obj/item/organ/internal/stomach/xeno,
-		O_INTESTINE =	/obj/item/organ/internal/intestine/xeno
-		)
+	biology = /datum/biology/organic/xenomorph
 
 	bump_flag = ALIEN
 	swap_flags = ~HEAVY
@@ -71,42 +63,32 @@
 	var/weeds_heal_rate = 1     // Health regen on weeds.
 	var/weeds_plasma_rate = 5   // Plasma regen on weeds.
 
-	has_limbs = list(
-		BP_TORSO =  list("path" = /obj/item/organ/external/chest/unseverable/xeno),
-		BP_GROIN =  list("path" = /obj/item/organ/external/groin/unseverable/xeno),
-		BP_HEAD =   list("path" = /obj/item/organ/external/head/unseverable/xeno),
-		BP_L_ARM =  list("path" = /obj/item/organ/external/arm/unseverable/xeno),
-		BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right/unseverable/xeno),
-		BP_L_LEG =  list("path" = /obj/item/organ/external/leg/unseverable/xeno),
-		BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right/unseverable/xeno),
-		BP_L_HAND = list("path" = /obj/item/organ/external/hand/unseverable/xeno),
-		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right/unseverable/xeno),
-		BP_L_FOOT = list("path" = /obj/item/organ/external/foot/unseverable/xeno),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/unseverable/xeno)
-		)
-
 	iff_factions_inherent = list(
 		MOB_IFF_FACTION_XENOMORPH,
 	)
 
-/datum/species/xenos/get_bodytype_legacy()
+	use_internal_organs = list(
+		ORGAN_KEY_XENOMORPH_HIVE_NODE,
+	)
+
+/datum/species/xenomorph/get_bodytype_legacy()
 	return SPECIES_XENO
 
-/datum/species/xenos/get_random_name()
+/datum/species/xenomorph/get_random_name()
 	return "alien [caste_name] ([alien_number])"
 
-/datum/species/xenos/can_understand(var/mob/other)
+/datum/species/xenomorph/can_understand(var/mob/other)
 
 	if(istype(other,/mob/living/carbon/alien/larva))
 		return 1
 
 	return 0
 
-/datum/species/xenos/hug(var/mob/living/carbon/human/H,var/mob/living/target)
+/datum/species/xenomorph/hug(var/mob/living/carbon/human/H,var/mob/living/target)
 	H.visible_message("<span class='notice'>[H] caresses [target] with its scythe-like arm.</span>", \
 					"<span class='notice'>You caress [target] with your scythe-like arm.</span>")
 
-/datum/species/xenos/handle_post_spawn(var/mob/living/carbon/human/H)
+/datum/species/xenomorph/handle_post_spawn(var/mob/living/carbon/human/H)
 
 	if(H.mind)
 		H.mind.assigned_role = "Alien"
@@ -118,17 +100,17 @@
 
 	..()
 
-/datum/species/xenos/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
+/datum/species/xenomorph/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	if(!environment)
 		return
 
 	if(environment.gas[GAS_ID_PHORON] > 0 || locate(/obj/structure/alien/weeds) in get_turf(H))
 		if(!regenerate(H))
-			var/obj/item/organ/internal/xenos/plasmavessel/P = H.internal_organs_by_name[O_PLASMA]
+			var/obj/item/organ/internal/xenomorph/plasmavessel/P = H.keyed_organs[ORGAN_KEY_XENOMORPH_PLASMA_VESSEL]
 			P.stored_plasma += weeds_plasma_rate
 			P.stored_plasma = min(max(P.stored_plasma,0),P.max_plasma)
 
-/datum/species/xenos/proc/regenerate(var/mob/living/carbon/human/H)
+/datum/species/xenomorph/proc/regenerate(var/mob/living/carbon/human/H)
 	var/heal_rate = weeds_heal_rate
 	var/mend_prob = 10
 	if (!H.resting)
@@ -154,7 +136,7 @@
 			return 1
 
 	//next mend broken bones, approx 10 ticks each
-	for(var/obj/item/organ/external/E in H.bad_external_organs)
+	for(var/obj/item/organ/external/E in H.external_organs)
 		if (E.status & ORGAN_BROKEN)
 			if (prob(mend_prob))
 				if (E.mend_fracture())
@@ -163,16 +145,16 @@
 
 	return 0
 /*
-/datum/species/xenos/handle_login_special(var/mob/living/carbon/human/H)
+/datum/species/xenomorph/handle_login_special(var/mob/living/carbon/human/H)
 	H.AddInfectionImages()
 	..()
 
-/datum/species/xenos/handle_logout_special(var/mob/living/carbon/human/H)
+/datum/species/xenomorph/handle_logout_special(var/mob/living/carbon/human/H)
 	H.RemoveInfectionImages()
 	..()
 */
 
-/datum/species/xenos/drone
+/datum/species/xenomorph/drone
 	uid = SPECIES_ID_XENOMORPH_DRONE
 	name = SPECIES_XENO_DRONE
 	caste_name = "drone"
@@ -185,17 +167,12 @@
 	icobase = 'icons/mob/species/xenomorph/drone.dmi'
 	deform =  'icons/mob/species/xenomorph/drone.dmi'
 
-	has_organ = list(
-		O_HEART =		/obj/item/organ/internal/heart,
-		O_BRAIN =		/obj/item/organ/internal/brain/xeno,
-		O_PLASMA =		/obj/item/organ/internal/xenos/plasmavessel/queen,
-		O_ACID =		/obj/item/organ/internal/xenos/acidgland,
-		O_HIVE =		/obj/item/organ/internal/xenos/hivenode,
-		O_RESIN =		/obj/item/organ/internal/xenos/resinspinner,
-		O_NUTRIENT =	/obj/item/organ/internal/diona/nutrients,
-		O_STOMACH =		/obj/item/organ/internal/stomach/xeno,
-		O_INTESTINE =	/obj/item/organ/internal/intestine/xeno
-		)
+	use_internal_organs = list(
+		ORGAN_KEY_XENOMORPH_HIVE_NODE,
+		ORGAN_KEY_XENOMORPH_PLASMA_VESSEL = /obj/item/organ/internal/xenomorph/plasmavessel/queen,
+		ORGAN_KEY_XENOMORPH_RESIN_SPINNER,
+		ORGAN_KEY_XENOMORPH_ACID_GLAND,
+	)
 
 	movement_base_speed = 5.5
 
@@ -207,14 +184,14 @@
 		/mob/living/carbon/human/proc/corrosive_acid
 		)
 
-/datum/species/xenos/drone/handle_post_spawn(var/mob/living/carbon/human/H)
+/datum/species/xenomorph/drone/handle_post_spawn(var/mob/living/carbon/human/H)
 
 	var/mob/living/carbon/human/A = H
 	if(!istype(A))
 		return ..()
 	..()
 
-/datum/species/xenos/hunter
+/datum/species/xenomorph/hunter
 	uid = SPECIES_ID_XENOMORPH_HUNTER
 	name = SPECIES_XENO_HUNTER
 	weeds_plasma_rate = 5
@@ -230,15 +207,10 @@
 
 	movement_base_speed = 10
 
-	has_organ = list(
-		O_HEART =    /obj/item/organ/internal/heart,
-		O_BRAIN =    /obj/item/organ/internal/brain/xeno,
-		O_PLASMA =   /obj/item/organ/internal/xenos/plasmavessel/hunter,
-		O_HIVE =     /obj/item/organ/internal/xenos/hivenode,
-		O_NUTRIENT = /obj/item/organ/internal/diona/nutrients,
-		O_STOMACH =		/obj/item/organ/internal/stomach/xeno,
-		O_INTESTINE =	/obj/item/organ/internal/intestine/xeno
-		)
+	use_internal_organs = list(
+		ORGAN_KEY_XENOMORPH_HIVE_NODE,
+		ORGAN_KEY_XENOMORPH_PLASMA_VESSEL = /obj/item/organ/internal/xenomorph/plasmavessel/hunter,
+	)
 
 	inherent_verbs = list(
 		/mob/living/proc/ventcrawl,
@@ -249,7 +221,7 @@
 		/mob/living/carbon/human/proc/regurgitate
 		)
 
-/datum/species/xenos/sentinel
+/datum/species/xenomorph/sentinel
 	uid = SPECIES_ID_XENOMORPH_SENTINEL
 	name = SPECIES_XENO_SENTINEL
 	weeds_plasma_rate = 10
@@ -265,16 +237,11 @@
 	icobase = 'icons/mob/species/xenomorph/sentinel.dmi'
 	deform =  'icons/mob/species/xenomorph/sentinel.dmi'
 
-	has_organ = list(
-		O_HEART =    /obj/item/organ/internal/heart,
-		O_BRAIN =    /obj/item/organ/internal/brain/xeno,
-		O_PLASMA =   /obj/item/organ/internal/xenos/plasmavessel/sentinel,
-		O_ACID =     /obj/item/organ/internal/xenos/acidgland,
-		O_HIVE =     /obj/item/organ/internal/xenos/hivenode,
-		O_NUTRIENT = /obj/item/organ/internal/diona/nutrients,
-		O_STOMACH =		/obj/item/organ/internal/stomach/xeno,
-		O_INTESTINE =	/obj/item/organ/internal/intestine/xeno
-		)
+	use_internal_organs = list(
+		ORGAN_KEY_XENOMORPH_HIVE_NODE,
+		ORGAN_KEY_XENOMORPH_PLASMA_VESSEL = /obj/item/organ/internal/xenomorph/plasmavessel/sentinel,
+		ORGAN_KEY_XENOMORPH_ACID_GLAND,
+	)
 
 	inherent_verbs = list(
 		/mob/living/proc/ventcrawl,
@@ -286,7 +253,7 @@
 		/mob/living/carbon/human/proc/acidspit
 		)
 
-/datum/species/xenos/queen
+/datum/species/xenomorph/queen
 	uid = SPECIES_ID_XENOMORPH_QUEEN
 	name = SPECIES_XENO_QUEEN
 	total_health = 250
@@ -305,18 +272,13 @@
 
 	unarmed_types = list(/datum/melee_attack/unarmed/claws/strong/xeno/queen, /datum/melee_attack/unarmed/bite/strong/xeno)
 
-	has_organ = list(
-		O_HEART =    /obj/item/organ/internal/heart,
-		O_BRAIN =    /obj/item/organ/internal/brain/xeno,
-		O_EGG =      /obj/item/organ/internal/xenos/eggsac,
-		O_PLASMA =   /obj/item/organ/internal/xenos/plasmavessel/queen,
-		O_ACID =     /obj/item/organ/internal/xenos/acidgland,
-		O_HIVE =     /obj/item/organ/internal/xenos/hivenode,
-		O_RESIN =    /obj/item/organ/internal/xenos/resinspinner,
-		O_NUTRIENT = /obj/item/organ/internal/diona/nutrients,
-		O_STOMACH =		/obj/item/organ/internal/stomach/xeno,
-		O_INTESTINE =	/obj/item/organ/internal/intestine/xeno
-		)
+	use_internal_organs = list(
+		ORGAN_KEY_XENOMORPH_HIVE_NODE,
+		ORGAN_KEY_XENOMORPH_PLASMA_VESSEL = /obj/item/organ/internal/xenomorph/plasmavessel/queen,
+		ORGAN_KEY_XENOMORPH_RESIN_SPINNER,
+		ORGAN_KEY_XENOMORPH_ACID_GLAND,
+		ORGAN_KEY_XENOMORPH_EGG_SAC,
+	)
 
 	inherent_verbs = list(
 		/mob/living/proc/ventcrawl,
@@ -344,7 +306,7 @@
 		),
 	)
 
-/datum/species/xenos/queen/handle_login_special(var/mob/living/carbon/human/H)
+/datum/species/xenomorph/queen/handle_login_special(var/mob/living/carbon/human/H)
 	..()
 	// Make sure only one official queen exists at any point.
 	if(!alien_queen_exists(1,H))

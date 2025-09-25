@@ -93,8 +93,7 @@
 /obj/projectile/beam/medical_cell/stabilize/on_hit_legacy(var/mob/living/carbon/human/target)
 	if(istype(target, /mob/living/carbon/human))
 		target.adjustOxyLoss(-30)
-		for(var/name in list(BP_HEAD, BP_L_HAND, BP_R_HAND, BP_L_ARM, BP_R_ARM, BP_L_FOOT, BP_R_FOOT, BP_L_LEG, BP_R_LEG, BP_GROIN, BP_TORSO))
-			var/obj/item/organ/external/O = target.organs_by_name[name]
+		for(var/obj/item/organ/external/O in target.external_organs)
 			for (var/datum/wound/W as anything in O.wounds)
 				if (W.internal)
 					continue
@@ -191,8 +190,7 @@
 /obj/projectile/beam/medical_cell/stabilize2/on_hit_legacy(var/mob/living/carbon/human/target)
 	if(istype(target, /mob/living/carbon/human))
 		target.adjustOxyLoss(-200)
-		for(var/name in list(BP_HEAD, BP_L_HAND, BP_R_HAND, BP_L_ARM, BP_R_ARM, BP_L_FOOT, BP_R_FOOT, BP_L_LEG, BP_R_LEG, BP_GROIN, BP_TORSO))
-			var/obj/item/organ/external/O = target.organs_by_name[name]
+		for(var/obj/item/organ/external/O in target.external_organs)
 			for (var/datum/wound/W as anything in O.wounds)
 				if(W.internal)
 					continue

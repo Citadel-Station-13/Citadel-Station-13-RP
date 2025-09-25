@@ -95,7 +95,7 @@
 	// perform normal baymiss
 	. = get_zone_with_miss_chance(., src, -10, TRUE)
 	// check if we even have that organ; if not, they automatically miss
-	if(!get_organ(.))
+	if(!legacy_organ_by_zone(.))
 		return null
 
 //* Misc Effects *//

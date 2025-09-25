@@ -29,7 +29,6 @@
 	min_broken_damage = 50
 	w_class = WEIGHT_CLASS_HUGE
 	body_part_flags = UPPER_TORSO
-	vital = TRUE
 	cannot_amputate = TRUE
 	parent_organ = null
 
@@ -137,6 +136,5 @@
 	amputation_point = "branch"
 	joint = "structural ligament"
 	dislocated = -1
-	vital = FALSE
 	slot_flags = SLOT_BELT
 	gendered_icon = FALSE
