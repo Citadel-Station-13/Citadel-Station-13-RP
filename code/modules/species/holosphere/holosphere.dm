@@ -14,6 +14,7 @@
 	name_plural   = "Holospheres"
 	icobase = 'icons/mob/species/human/body_greyscale.dmi'
 	deform  = 'icons/mob/species/human/deformed_body_greyscale.dmi'
+	base_species = SPECIES_HOLOSPHERE
 
 	blurb = {"This species is testmerged and currently being tested - things might break, and everything about it is subject to change!
 	"}
