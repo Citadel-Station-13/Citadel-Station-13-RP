@@ -89,6 +89,9 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 		NONE,
 		clickchain.target_zone,
 	)
+	if(ismob(attacker))
+		var/mob/M = attacker
+		M.trigger_aiming(TARGET_CAN_CLICK)
 	clickchain.data[ACTOR_DATA_MELEE_DAMAGE_INSTANCE_RESULTS] = results
 	target.on_melee_impact(attacker, weapon, src, clickchain.target_zone, clickchain, clickchain_flags, results)
 

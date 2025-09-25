@@ -113,24 +113,31 @@
 	switch(resolved_action)
 		if(CLICK_ACTION_CTRL_LMB)
 			if(ctrl_click_on(target, location, control, params))
+				trigger_aiming(TARGET_CAN_CLICK)
 				return TRUE
 		if(CLICK_ACTION_CTRL_SHIFT_LMB)
 			if(ctrl_shift_click_on(target, location, control, params))
+				trigger_aiming(TARGET_CAN_CLICK)
 				return TRUE
 		if(CLICK_ACTION_SHIFT_LMB)
 			if(shift_click_on(target, location, control, params))
+				trigger_aiming(TARGET_CAN_CLICK)
 				return TRUE
 		if(CLICK_ACTION_ALT_LMB)
 			if(alt_click_on(target, location, control, params))
+				trigger_aiming(TARGET_CAN_CLICK)
 				return TRUE
 		if(CLICK_ACTION_MMB)
 			if(middle_click_on(target, location, control, params))
+				trigger_aiming(TARGET_CAN_CLICK)
 				return TRUE
 		if(CLICK_ACTION_SHIFT_MMB)
 			if(shift_middle_click_on(target, location, control, params))
+				trigger_aiming(TARGET_CAN_CLICK)
 				return TRUE
 
 	if(click_on_special(target, location, control, params))
+		trigger_aiming(TARGET_CAN_CLICK)
 		return TRUE
 
 	var/datum/event_args/actor/clickchain/clickchain = new
@@ -224,18 +231,12 @@
 			. = active_item.melee_interaction_chain(clickchain, clickchain_flags)
 		else
 			. = melee_interaction_chain(clickchain, clickchain_flags)
-		//! legacy
-		trigger_aiming(TARGET_CAN_CLICK)
-		//! end
 		return
 	else if(ranged_generics_allowed)
 		if(active_item)
 			. = active_item.ranged_interaction_chain(clickchain, clickchain_flags)
 		else
 			. = ranged_interaction_chain(clickchain, clickchain_flags)
-		//! legacy
-		trigger_aiming(TARGET_CAN_CLICK)
-		//! end
 		return
 
 /**

@@ -26,7 +26,10 @@ avoid code duplication. This includes items that may sometimes act as a standard
 /obj/item/proc/resolve_attackby(atom/target, mob/user, params, attack_modifier = 1, clickchain_flags, datum/event_args/actor/clickchain/clickchain)
 	if(!(atom_flags & NOPRINT))
 		add_fingerprint(user)
-	return target.attackby(src, user, params, clickchain_flags, attack_modifier, clickchain)
+	. = target.attackby(src, user, params, clickchain_flags, attack_modifier, clickchain)
+	if(. & CLICKCHAIN_DID_SOMETHING)
+		user.trigger_aiming(TARGET_CAN_CLICK)
+	return .
 
 /atom/proc/attackby(obj/item/tool, mob/user, list/params, clickchain_flags, damage_multiplier, datum/event_args/actor/clickchain/clickchain)
 	return tool.melee_attack_chain(clickchain, clickchain_flags)

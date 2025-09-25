@@ -21,6 +21,9 @@
 		clickchain.target_zone,
 	)
 	clickchain.data[ACTOR_DATA_MELEE_DAMAGE_INSTANCE_RESULTS] = results
+	if(ismob(attacker))
+		var/mob/M = attacker
+		M.trigger_aiming(TARGET_CAN_CLICK)
 	target.on_melee_impact(attacker, weapon, src, clickchain.target_zone, clickchain, clickchain_flags, results)
 	return clickchain_flags
 
