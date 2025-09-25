@@ -918,7 +918,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 
 	return data
 
-/obj/machinery/power/apc/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/power/apc/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..() || !can_use(usr, TRUE))
 		return TRUE
 

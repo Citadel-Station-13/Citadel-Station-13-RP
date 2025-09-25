@@ -203,7 +203,7 @@
 	.["granted"] = editing?.access
 	.["can_demote"] = auth_demote(user, editing, authing, editing?.rank)
 
-/datum/tgui_module/card_mod/ui_act(action, list/params, datum/tgui/ui)
+/datum/tgui_module/card_mod/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 	var/obj/item/card/id/target = edit_target()
@@ -433,8 +433,7 @@
 /datum/tgui_module/card_mod/admin
 
 /datum/tgui_module/card_mod/admin/ui_state()
-	return GLOB.admin_state
-
+	return ADMIN_STATE(NONE)
 
 /datum/tgui_module/card_mod/admin/query_access_ids(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, list/direct)
 	return SSjob.access_ids()

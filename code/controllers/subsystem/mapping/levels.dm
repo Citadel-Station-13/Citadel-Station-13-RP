@@ -428,33 +428,25 @@
  */
 /datum/controller/subsystem/mapping/proc/recalculate_z_stack()
 	validate_no_loops()
-	z_stack_lookup = list()
-	z_stack_lookup.len = world.maxz
-	var/list/left = list()
-	for(var/z in 1 to world.maxz)
-		// todo: stacks
-		// if(struct_by_z[z])
-		// 	var/datum/world_struct/struct = struct_by_z[z]
-		// 	z_stack_lookup[z] = struct.stack_lookup[struct.real_indices.Find(z)]
-		// else
-		// 	left += z
-		left += z
-	var/list/datum/map_level/bottoms = list()
+	z_stack_lookup = new /list(world.maxz)
 	// let's sing the bottom song
-	for(var/z in left)
+	var/list/datum/map_level/bottoms = list()
+	for(var/z in 1 to world.maxz)
 		if(cached_level_down[z])
 			continue
 		bottoms += ordered_levels[z]
 	for(var/datum/map_level/bottom as anything in bottoms)
-		// register us
-		var/list/stack = list(bottom.z_index)
-		z_stack_lookup[bottom.z_index] = stack
-		// let's sing the list manipulation song
-		var/datum/map_level/next = ordered_levels[cached_level_up[bottom.z_index]]
-		while(next)
-			stack += next.z_index
-			z_stack_lookup[next.z_index] = stack
-			next = ordered_levels[cached_level_up[next.z_index]]
+		var/datum/map_level/iterating = bottom
+		var/list/stack = list()
+		do
+			stack += iterating.z_index
+			z_stack_lookup[iterating.z_index] = stack
+			iterating = ordered_levels[cached_level_up[iterating.z_index]]
+		while(iterating)
+	for(var/i in 1 to world.maxz)
+		if(length(z_stack_lookup[i]) >= 1)
+		else
+			stack_trace("z-level [i] ([ordered_levels[i]?.name]) had no z-stack. did someone mess up their up/down configs?")
 
 /**
  * Ensures there's no up/down infinite loops
@@ -486,9 +478,5 @@
 		var/datum/map_level/level = ordered_levels[z]
 		level.link_above = null
 		level.link_below = null
-		// if(struct_by_z[z])
-		// 	var/datum/world_struct/struct = struct_by_z[z]
-		// 	struct.Deconstruct()
-		// 	qdel(struct)
 	stack_trace("WARNING: Up/Down loops found in zlevels [english_list(loops)]. This is not allowed and will cause both falling and zcopy to infinitely loop. All zlevels involved have been disconnected, and any structs involved have been destroyed.")
 	rebuild_verticality()

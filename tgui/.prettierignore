@@ -1,20 +1,11 @@
-## NPM
-/**/node_modules
-
-## Yarn
-/.yarn
-/yarn.lock
-/.pnp.*
-
-.swcrc
-/docs
-/packages/tgui-polyfill
-/packages/tgfont/static
-**/*.json
-**/*.yml
-**/*.md
+.pnp.*
+.yarn
+node_modules
 
 # Avoid running on any bundles.
 /public/**/*
 # Running it on tgui.html is fine, however.
 !/public/tgui.html
+
+# Citadel: We're not using prettier until we decide what to do with it.
+packages

@@ -151,7 +151,7 @@
 /**
  * ui_act handles all user input in the UI.
  */
-/obj/item/nif/ui_act(action, list/params, datum/tgui/ui)
+/obj/item/nif/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 

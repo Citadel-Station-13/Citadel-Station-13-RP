@@ -104,7 +104,7 @@
 /**
  * This is tgui's replacement for Topic(). It handles any user input from the UI.
  */
-/datum/computer_file/program/game/ui_act(action, list/params, datum/tgui/ui)
+/datum/computer_file/program/game/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..()) // Always call parent in ui_act, it handles making sure the user is allowed to interact with the UI.
 		return TRUE
 

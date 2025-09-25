@@ -1,6 +1,6 @@
-/**
- *! Copyright (c) 2020 Aleksej Komarov
- *! SPDX-License-Identifier: MIT
+/*!
+ * Copyright (c) 2020 Aleksej Komarov
+ * SPDX-License-Identifier: MIT
  */
 
 /**
@@ -35,19 +35,21 @@
 	var/datum/ui_state/state = null
 	/// Rate limit client refreshes to prevent DoS.
 	COOLDOWN_DECLARE(refresh_cooldown)
-	/// Are byond mouse events beyond the window passed in to the ui
-	var/mouse_hooked = FALSE
+
+	/// The id of any ByondUi elements that we have opened
+	var/list/open_byondui_elements
+
 	/// The Parent UI
-	//? STOP USING THIS. USE MODULES. ~SILICONS
 	var/datum/tgui/parent_ui
 	/// Children of this UI
-	//? STOP USING THIS. USE MODULES. ~SILICONS
-	var/list/children = list()
+	var/list/datum/tgui/children = list()
 
-	//* Modules *//
+	//* Modules - experimental *//
 	/// datums to IDs
+	//  todo: rid of this
 	var/list/datum/modules_registered
 	/// processed modules
+	//  todo: rid of this
 	var/list/datum/modules_processed
 
 /**
@@ -69,14 +71,13 @@
  * required src_object datum The object or datum which owns the UI.
  * required interface string The interface used to render the UI.
  * optional title string The title of the UI.
- * optional parent_ui datum/tgui The parent of this UI.
+ * * (optional) parent_ui - the UI we spawned off of as a child window.
  *
  * return datum/tgui The requested UI.
  */
 /datum/tgui/New(mob/user, datum/src_object, interface, title, datum/tgui/parent_ui)
 	log_tgui(user,
-		// "new [interface] fancy [user?.client?.prefs.tgui_fancy]",
-		"new [interface] fancy 1",
+		"new [interface] fancy [user?.client?.preferences.get_entry(/datum/game_preference_entry/toggle/tgui_fancy)]",
 		src_object = src_object)
 	src.user = user
 	src.src_object = src_object
@@ -86,8 +87,8 @@
 		src.title = title
 	src.state = src_object.ui_state(user)
 	src.parent_ui = parent_ui
-	if(parent_ui)
-		parent_ui.children += src
+	if(src.parent_ui)
+		src.parent_ui.children += src
 
 /datum/tgui/Destroy()
 	user = null
@@ -135,15 +136,13 @@
  *
  * * Separate from open() so that open() can be non-blocking.
  */
-/datum/tgui/proc/initialize(data, modules)
+/datum/tgui/proc/initialize(extra_data, extra_nested_data)
 	// todo: this is a blocking proc. src_object can be deleted at any time between the blocking procs.
 	//       we need sane handling of deletion order, of runtimes happen.
 	if(!window.is_ready())
 		window.initialize(
 			strict_mode = TRUE,
-			// todo: do we need that lmao
-			// fancy = user.client.prefs.tgui_fancy,
-			fancy = TRUE,
+			fancy = user.client.preferences.get_entry(/datum/game_preference_entry/toggle/tgui_fancy),
 			assets = list(
 				/datum/asset_pack/simple/tgui,
 			),
@@ -167,11 +166,11 @@
 	window.send_message("update", get_payload(
 		with_data = TRUE,
 		with_static_data = TRUE,
-		force_data = data,
-		force_modules = modules,
+		extra_data = extra_data,
+		extra_nested_data = extra_nested_data,
 	))
-	if(mouse_hooked)
-		window.set_mouse_macro()
+	// if(mouse_hooked)
+	// 	window.set_mouse_macro()
 	// todo: should these hooks be here?
 	src_object.on_ui_open(user, src)
 	for(var/datum/module as anything in modules_registered)
@@ -192,7 +191,6 @@
 	if(closing)
 		return
 	closing = TRUE
-	SStgui.on_close(src)
 	// If we don't have window_id, open proc did not have the opportunity
 	// to finish, therefore it's safe to skip this whole block.
 	if(window)
@@ -201,6 +199,12 @@
 		// the error message properly.
 		window.release_lock()
 		window.close(can_be_suspended)
+		src_object.on_ui_close(user)
+		SStgui.on_close(src)
+
+		if(user.client)
+			terminate_byondui_elements()
+
 	state = null
 	if(parent_ui)
 		parent_ui.children -= src
@@ -214,25 +218,25 @@
 /**
  * public
  *
+ * Closes all ByondUI elements, left dangling by a forceful TGUI exit,
+ * such as via Alt+F4, closing in non-fancy mode, or terminating the process
+ *
+ */
+/datum/tgui/proc/terminate_byondui_elements()
+	set waitfor = FALSE
+
+	for(var/byondui_element in open_byondui_elements)
+		winset(user.client, byondui_element, list("parent" = ""))
+
+/**
+ * public
+ *
  * Enable/disable auto-updating of the UI.
  *
  * required value bool Enable/disable auto-updating.
  */
 /datum/tgui/proc/set_autoupdate(autoupdate)
 	src.autoupdate = autoupdate
-
-/**
- * public
- *
- * Enable/disable passing through byond mouse events to the window
- *
- * todo: this is like the least documented proc in history wtf
- *
- * required value bool Enable/disable hooking.
- */
-/datum/tgui/proc/set_mouse_hook(value)
-	src.mouse_hooked = value
-	// TODO: handle unhooking/hooking on already open windows ?
 
 /**
  * public
@@ -264,24 +268,19 @@
  * Send a full update to the client (includes static data).
  *
  * optional force bool Send an update even if UI is not interactive.
- * optional hard_refresh block the ui entirely while this is refreshing. use if you don't want users to see an ui during a queued refresh.
  */
-/datum/tgui/proc/send_full_update(force, hard_refresh)
-	if(!initialized || closing || !user.client)
+/datum/tgui/proc/send_full_update(force)
+	if(!user.client || !initialized || closing)
 		return
 	if(!COOLDOWN_FINISHED(src, refresh_cooldown))
-		refreshing = max(refreshing, hard_refresh? UI_HARD_REFRESHING : UI_SOFT_REFRESHING)
-		addtimer(CALLBACK(src, PROC_REF(send_full_update)), TGUI_REFRESH_FULL_UPDATE_COOLDOWN, TIMER_UNIQUE)
+		refreshing = TRUE
+		addtimer(CALLBACK(src, PROC_REF(send_full_update), force), COOLDOWN_TIMELEFT(src, refresh_cooldown), TIMER_UNIQUE)
 		return
-	refreshing = UI_NOT_REFRESHING
+	refreshing = FALSE
 	var/should_update_data = force || status >= UI_UPDATE
-	window.send_message(
-		"update",
-		get_payload(
+	window.send_message("update", get_payload(
 		with_data = should_update_data,
-		with_static_data = TRUE,
-		),
-	)
+		with_static_data = TRUE))
 	COOLDOWN_START(src, refresh_cooldown, TGUI_REFRESH_FULL_UPDATE_COOLDOWN)
 
 /**
@@ -295,9 +294,7 @@
 	if(!user.client || !initialized || closing)
 		return
 	var/should_update_data = force || status >= UI_UPDATE
-	window.send_message("update", get_payload(
-		with_data = should_update_data,
-	))
+	window.send_message("update", get_payload(with_data = should_update_data))
 
 /**
  * private
@@ -306,19 +303,21 @@
  *
  * return list
  */
-/datum/tgui/proc/get_payload(with_data, with_static_data, list/force_data, list/force_modules)
+/datum/tgui/proc/get_payload(with_data, with_static_data, list/extra_data, list/extra_nested_data)
 	var/list/json_data = list()
 	json_data["config"] = list(
 		"title" = title,
 		"status" = status,
-		"interface" = interface,
+		"interface" = list(
+			"name" = interface,
+			"layout" = "", //user.client.preferences.get_entry(src_object.layout_prefs_used),
+		),
 		"refreshing" = refreshing,
 		"window" = list(
 			"key" = window_key,
-			// "fancy" = user.client.prefs.tgui_fancy,
-			// "locked" = user.client.prefs.tgui_lock,
-			"fancy" = TRUE,
-			"locked" = TRUE,
+			"fancy" = user.client.preferences.get_entry(/datum/game_preference_entry/toggle/tgui_fancy),
+			"locked" = user.client.preferences.get_entry(/datum/game_preference_entry/toggle/tgui_lock),
+			"scale" = user.client.preferences.get_entry(/datum/game_preference_entry/toggle/ui_scale),
 		),
 		"client" = list(
 			"ckey" = user.client.ckey,
@@ -330,26 +329,26 @@
 			"observer" = isobserver(user),
 		),
 	)
-	var/list/modules = list()
+	var/list/nestedData = with_static_data ? src_object.ui_nested_data(user, src) : list()
 	// static first
 	if(with_static_data)
-		json_data["static"] = src_object.ui_static_data(user, src)
+		json_data["staticData"] = src_object.ui_static_data(user, src)
 		for(var/datum/module as anything in modules_registered)
 			var/id = modules_registered[module]
-			modules[id] = module.ui_static_data(user, src, TRUE)
+			nestedData[id] = module.ui_static_data(user, src, TRUE)
 	if(with_data)
 		json_data["data"] = src_object.ui_data(user, src)
 		for(var/datum/module as anything in (with_static_data? modules_registered : modules_processed))
 			var/id = modules_registered[module]
-			modules[id] = modules[id] | module.ui_data(user, src, TRUE)
-	if(modules)
-		json_data["modules"] = modules
+			nestedData[id] = nestedData[id] | module.ui_data(user, src, TRUE)
+	if(nestedData)
+		json_data["nestedData"] = nestedData
 	if(src_object.tgui_shared_states)
 		json_data["shared"] = src_object.tgui_shared_states
-	if(!isnull(force_data))
-		json_data["data"] = (json_data["data"] || list()) | force_data
-	if(!isnull(force_modules))
-		json_data["modules"] = (json_data["modules"] || list()) | force_modules
+	if(extra_data)
+		json_data["data"] = (json_data["data"] || list()) | extra_data
+	if(extra_nested_data)
+		json_data["nestedData"] = (json_data["nestedData"] || list()) | extra_nested_data
 	return json_data
 
 /**
@@ -358,7 +357,7 @@
  * Run an update cycle for this UI. Called internally by SStgui
  * every second or so.
  */
-/datum/tgui/process(delta_time, force = FALSE)
+/datum/tgui/process(seconds_per_tick, force = FALSE)
 	if(closing)
 		return
 	var/datum/host = src_object.ui_host(user)
@@ -403,36 +402,35 @@
  * Callback for handling incoming tgui messages.
  */
 /datum/tgui/proc/on_message(type, list/payload, list/href_list)
-	if(type)
-		// micro opt in that these routes are same length so we only copytext once
-		switch(copytext(type, 1, 5))
-			if("act/")	// normal act
-				var/action = copytext(type, 5)
-				log_tgui(user, "Action: [action] [href_list["payload"]]",
-					window = window,
-					src_object = src_object)
-				process_status()
-				if(src_object.ui_act(action, payload, src, new /datum/event_args/actor(usr)))
-					SStgui.update_uis(src_object)
-				return FALSE
-			if("mod/")	// module act
-				var/action = copytext(type, 5)
-				var/id = payload["$m_id"]
-				// log, update status
-				log_tgui(user, "Module: [action] [href_list["payload"]]",
-					window = window,
-					src_object = src_object)
-				process_status()
-				// tell it to route the call
-				// note: this is pretty awful code because raw locate()'s are
-				// almost never a good idea
-				// however given we don't have a way of just tracking a ui module list (yet)
-				// we're kind of stuck doing this
-				// maybe in the future we'll just have ui modules list but for now
-				// eh.
-				if(src_object.ui_route(action, payload, src, id))
-					SStgui.update_uis(src_object)
-				return FALSE
+	// Pass act type messages to ui_act
+	if(type && copytext(type, 1, 5) == "act/")
+		var/act_type = copytext(type, 5)
+		log_tgui(user, "Action: [act_type] [href_list["payload"]]",
+			window = window,
+			src_object = src_object)
+		process_status()
+		// todo decouple this from on_message and throw it on its own queue loop
+		on_act_message(act_type, payload, state)
+		// DEFAULT_QUEUE_OR_CALL_VERB(VERB_CALLBACK(src, PROC_REF(on_act_message), act_type, payload, state))
+		return FALSE
+	// TODO: probably burn this (mod/) with fire
+	if(type && copytext(type, 1, 5) == "mod/")
+		var/act_type = copytext(type, 5)
+		var/mod_id = payload["$m_id"]
+		log_tgui(user, "Module: [act_type] - [mod_id] [href_list["payload"]]",
+			window = window,
+			src_object = src_object)
+		process_status()
+		// tell it to route the call
+		// note: this is pretty awful code because raw locate()'s are
+		// almost never a good idea
+		// however given we don't have a way of just tracking a ui module list (yet)
+		// we're kind of stuck doing this
+		// maybe in the future we'll just have ui modules list but for now
+		// eh.
+		if(src_object.ui_route(act_type, payload, src, mod_id))
+			SStgui.update_uis(src_object)
+		return FALSE
 	switch(type)
 		if("ready")
 			// Send a full update when the user manually refreshes the UI
@@ -454,6 +452,25 @@
 			LAZYINITLIST(src_object.tgui_shared_states)
 			src_object.tgui_shared_states[href_list["key"]] = href_list["value"]
 			SStgui.update_uis(src_object)
+		if(TGUI_MANAGED_BYONDUI_TYPE_RENDER)
+			var/byond_ui_id = payload[TGUI_MANAGED_BYONDUI_PAYLOAD_ID]
+			if(!byond_ui_id || LAZYLEN(open_byondui_elements) > TGUI_MANAGED_BYONDUI_LIMIT)
+				return
+
+			LAZYDISTINCTADD(open_byondui_elements, byond_ui_id)
+		if(TGUI_MANAGED_BYONDUI_TYPE_UNMOUNT)
+			var/byond_ui_id = payload[TGUI_MANAGED_BYONDUI_PAYLOAD_ID]
+			if(!byond_ui_id)
+				return
+
+			LAZYREMOVE(open_byondui_elements, byond_ui_id)
+
+/// Wrapper for behavior to potentially wait until the next tick if the server is overloaded
+/datum/tgui/proc/on_act_message(act_type, payload, state)
+	if(QDELETED(src) || QDELETED(src_object))
+		return
+	if(src_object.ui_act(act_type, payload, src, state, new /datum/event_args/actor(usr)))
+		SStgui.update_uis(src_object)
 
 //* Advanced API - Updates *//
 
@@ -489,17 +506,17 @@
  * WARNING: Do not use this unless you know what you are doing.
  *
  * @params
- * * updates - list(id = list(data...), ...) of modules to update.
+ * * updates - list(id = list(data...), ...) of nested data to update.
  * * force - (optional) send update even if UI is not interactive
  *
  * @return TRUE if data was sent, FALSE otherwise.
  */
-/datum/tgui/proc/push_modules(list/updates, force)
+/datum/tgui/proc/push_nested_data(list/updates, force)
 	if(isnull(user.client) || !initialized || closing)
 		return FALSE
 	if(!force && status < UI_UPDATE)
 		return FALSE
-	window.send_message("modules", updates)
+	window.send_message("nestedData", updates)
 	return TRUE
 
 //* Module System *//
@@ -545,7 +562,7 @@
 	if(!isnull(ui) && ui != src)
 		return
 	// todo: this is force because otherwise static data can be desynced. should static data be on another proc instead?
-	push_modules(
+	push_nested_data(
 		updates = list(
 			(modules_registered[source]) = data,
 		),

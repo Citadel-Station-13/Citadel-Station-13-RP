@@ -1,6 +1,7 @@
+import { Button, Section, Stack } from 'tgui-core/components';
+
 import { useBackend, useLocalState } from '../backend';
 import { Window } from '../layouts';
-import { Section, Stack, Button } from '../components';
 
 type LanguagePickerContext = {
   categories: string[],
@@ -14,8 +15,8 @@ type Language = {
   category: string,
 };
 
-export const LanguagePicker = (props, context) => {
-  const { act, data } = useBackend<LanguagePickerContext>(context);
+export const LanguagePicker = (props) => {
+  const { act, data } = useBackend<LanguagePickerContext>();
 
   return (
     <Window width={800} height={400}>
@@ -36,9 +37,9 @@ export const LanguagePicker = (props, context) => {
   );
 };
 
-const LanguageInfo = (props, context) => {
-  const { act, data } = useBackend<LanguagePickerContext>(context);
-  const [selectedLanguage, setSelectedLanguage] = useLocalState<string | null>(context, 'selectedLanguage', null);
+const LanguageInfo = (props) => {
+  const { act, data } = useBackend<LanguagePickerContext>();
+  const [selectedLanguage, setSelectedLanguage] = useLocalState<string | null>("selectedLanguage", null);
   let lang = data.languages.find((l) => l.id === selectedLanguage);
   if (lang === undefined) {
     return (<Section fill />);
@@ -66,10 +67,10 @@ const LanguageInfo = (props, context) => {
   }
 };
 
-const LanguageCategories = (props, context) => {
-  const { act, data } = useBackend<LanguagePickerContext>(context);
+const LanguageCategories = (props) => {
+  const { act, data } = useBackend<LanguagePickerContext>();
   const { categories } = data;
-  let [selectedCategory, setSelectedCategory] = useLocalState<string | null>(context, 'selectedCategory', null);
+  let [selectedCategory, setSelectedCategory] = useLocalState<string | null>("selectedCategory", null);
   return (
     <Section fill scrollable title="Categories">
       {
@@ -91,10 +92,10 @@ const LanguageCategories = (props, context) => {
   );
 };
 
-const LanguageSelect = (props, context) => {
-  const { act, data } = useBackend<LanguagePickerContext>(context);
-  let [selectedLanguage, setSelectedLanguage] = useLocalState<string | null>(context, 'selectedLanguage', null);
-  let [selectedCategory, setSelectedCategory] = useLocalState<string | null>(context, 'selectedCategory', null);
+const LanguageSelect = (props) => {
+  const { act, data } = useBackend<LanguagePickerContext>();
+  let [selectedLanguage, setSelectedLanguage] = useLocalState<string | null>("selectedLanguage", null);
+  let [selectedCategory, setSelectedCategory] = useLocalState<string | null>("selectedCategory", null);
   if (selectedCategory === null) {
     return (
       <Section fill />

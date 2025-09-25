@@ -1,7 +1,7 @@
-import { BooleanLike } from "common/react";
+import { Box, Button, Section, Stack } from "tgui-core/components";
+import { BooleanLike } from "tgui-core/react";
 
 import { useBackend } from "../backend";
-import { Box, Button, Section, Stack } from "../components";
 import { Window } from "../layouts";
 
 type Data = {
@@ -9,8 +9,8 @@ type Data = {
   items: { ref: string; name: string }[];
 };
 
-export const NoticeBoard = (props, context) => {
-  const { act, data } = useBackend<Data>(context);
+export const NoticeBoard = (props) => {
+  const { act, data } = useBackend<Data>();
   const { allowed, items = [] } = data;
 
   return (

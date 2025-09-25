@@ -12,7 +12,7 @@
 		var/datum/game_preference_toggle/toggle = SSpreferences.toggles_by_key[key]
 		prefs.toggles_by_key[toggle.key] = toggle.default_value
 
-	prefs.push_ui_modules(updates = list((src.key) = list(
+	prefs.push_ui_nested_data(updates = list((src.key) = list(
 		"states" = prefs.toggles_by_key,
 	)))
 
@@ -30,7 +30,7 @@
 				return TRUE
 			prefs.set_toggle(key, !!params["val"])
 			// todo: optimize this
-			prefs.push_ui_modules(updates = list((src.key) = list(
+			prefs.push_ui_nested_data(updates = list((src.key) = list(
 				"states" = prefs.toggles_by_key,
 			)))
 			prefs.mark_dirty()

@@ -144,7 +144,7 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 	data["locations"] = locations
 	return data
 
-/obj/machinery/computer/ship/helm/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/ship/helm/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 

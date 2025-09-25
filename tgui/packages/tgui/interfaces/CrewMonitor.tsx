@@ -1,0 +1,180 @@
+import { Fragment, useState } from 'react';
+import { Box, Button, Icon, Table, Tabs } from "tgui-core/components";
+
+import { useBackend } from "../backend";
+import { Window } from "../layouts";
+
+const getStatText = cm => {
+  if (cm.dead) {
+    return "Deceased";
+  }
+  if (parseInt(cm.stat, 10) === 1) { // Unconscious
+    return "Unconscious";
+  }
+  return "Living";
+};
+
+const getStatColor = cm => {
+  if (cm.dead) {
+    return "red";
+  }
+  if (parseInt(cm.stat, 10) === 1) { // Unconscious
+    return "orange";
+  }
+  return "green";
+};
+
+export const CrewMonitor = () => {
+  return (
+    <Window
+      width={800}
+      height={600}
+    >
+      <Window.Content>
+        <CrewMonitorContent />
+      </Window.Content>
+    </Window>
+  );
+};
+
+export const CrewMonitorContent = (props) => {
+  const { act, data, config } = useBackend<any>();
+  const [tabIndex, setTabIndex] = useState(0);
+
+  const crew = data.crewmembers
+    .filter((c) => !!c)
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .sort((a, b) => a.x - b.x)
+    .sort((a, b) => a.y - b.y)
+    .sort((a, b) => a.realZ - b.realZ);
+
+  const [zoom, setZoom] = useState(1);
+
+  let body;
+  // Data view
+  if (tabIndex === 0) {
+    body = (
+      <Table>
+        <Table.Row header>
+          <Table.Cell>
+            Name
+          </Table.Cell>
+          <Table.Cell>
+            Status
+          </Table.Cell>
+          <Table.Cell>
+            Location
+          </Table.Cell>
+        </Table.Row>
+        {crew.map(cm => (
+          <Table.Row key={cm.ref}>
+            <Table.Cell>
+              {cm.name} ({cm.assignment})
+            </Table.Cell>
+            <Table.Cell>
+              <Box inline
+                color={getStatColor(cm)}>
+                {getStatText(cm)}
+              </Box>
+              {cm.sensor_type >= 2 ? (
+                <Box inline>
+                  {'('}
+                  <Box inline
+                    color="red">
+                    {cm.brute}
+                  </Box>
+                  {'|'}
+                  <Box inline
+                    color="orange">
+                    {cm.fire}
+                  </Box>
+                  {'|'}
+                  <Box inline
+                    color="green">
+                    {cm.tox}
+                  </Box>
+                  {'|'}
+                  <Box inline
+                    color="blue">
+                    {cm.oxy}
+                  </Box>
+                  {')'}
+                </Box>
+              ) : null}
+            </Table.Cell>
+            <Table.Cell>
+              {cm.sensor_type === 3 ? (
+                data.isAI ? (
+                  <Button fluid
+                    icon="location-arrow"
+                    content={
+                      cm.area + " (" + cm.x + ", " + cm.y + ")"
+                    }
+                    onClick={() => act('track', {
+                      track: cm.ref,
+                    })} />
+                ) : (
+                  cm.area + " (" + cm.x + ", " + cm.y + ", " + cm.z + ")"
+                )
+              ) : "Not Available"}
+            </Table.Cell>
+          </Table.Row>
+        ))}
+      </Table>
+    );
+  } else if (tabIndex === 1) {
+    // Please note, if you ever change the zoom values,
+    // you MUST update styles/components/Tooltip.scss
+    // and change the @for scss to match.
+    body = <CrewMonitorMapView />;
+  } else {
+    body = "ERROR";
+  }
+
+  return (
+    <>
+      <Tabs>
+        <Tabs.Tab
+          key="DataView"
+          selected={0 === tabIndex}
+          onClick={() => setTabIndex(0)}>
+          <Icon name="table" /> Data View
+        </Tabs.Tab>
+        {/* <Tabs.Tab
+          key="MapView"
+          selected={1 === tabIndex}
+          onClick={() => setTabIndex(1)}>
+          <Icon name="map-marked-alt" /> Map View
+        </Tabs.Tab> */}
+      </Tabs>
+      <Box m={2}>
+        {body}
+      </Box>
+    </>
+  );
+};
+
+const CrewMonitorMapView = (props) => {
+  const { act, config, data } = useBackend<any>();
+  const [zoom, setZoom] = useState(1);
+  return (
+    <>Nanomap disabled until further notice.</>
+    // <Box height="526px" mb="0.5rem" overflow="hidden">
+    //   <NanoMap onZoom={v => setZoom(v)}>
+    //     {data.crewmembers.filter(x =>
+    //       (x.sensor_type === 3 && ~~x.realZ === ~~config)
+    //     ).map(cm => (
+    //       <NanoMap.Marker
+    //         key={cm.ref}
+    //         x={cm.x}
+    //         y={cm.y}
+    //         zoom={zoom}
+    //         icon="circle"
+    //         tooltip={cm.name + " (" + cm.assignment + ")"}
+    //         color={getStatColor(cm)}
+    //       />
+    //     ))}
+    //   </NanoMap>
+    // </Box>
+  );
+};

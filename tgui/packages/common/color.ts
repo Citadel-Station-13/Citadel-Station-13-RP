@@ -76,10 +76,11 @@ export const EncodeRGBString = (r: number, g: number, b: number, includeHash: bo
  * @param r
  * @param g
  * @param b
+ * @param a
  * @param includeHash
  */
-export const EncodeRGBAString = (r: number, g: number, b: number, a: number, includeHash: boolean): string => {
-  return `${includeHash && "#"}${Math.round(r).toString(16).padStart(2, "0")}${Math.round(g).toString(16).padStart(2, "0")}${Math.round(b).toString(16).padStart(2, "0")}${Math.round(a).toString(16).padStart(2, "0")}`;
+export const EncodeRGBAString = (r: number, g: number, b: number, a: number | null, includeHash: boolean): string => {
+  return `${includeHash && "#"}${Math.round(r).toString(16).padStart(2, "0")}${Math.round(g).toString(16).padStart(2, "0")}${Math.round(b).toString(16).padStart(2, "0")}${Math.round(a || 255).toString(16).padStart(2, "0")}`;
 };
 
 /**

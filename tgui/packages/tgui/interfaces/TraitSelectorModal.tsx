@@ -1,7 +1,9 @@
-import { InputButtons } from './common/InputButtons';
-import { Box, Button, Input, LabeledList, Section, Stack, Table } from '../components';
-import { useBackend, useLocalState } from '../backend';
+import { useState } from 'react';
+import { Box, Button, Input, LabeledList, Section, Stack, Table } from 'tgui-core/components';
+
+import { useBackend } from '../backend';
 import { Window } from '../layouts';
+import { InputButtons } from './common/InputButtons';
 
 type TraitSelectorInputData = {
   initial_traits: string[],
@@ -49,8 +51,8 @@ type AvailableTraitData = {
   show_name?: boolean,
 };
 
-export const TraitSelectorModal = (_, context) => {
-  const { act, data } = useBackend<TraitSelectorInputData>(context);
+export const TraitSelectorModal = (_) => {
+  const { act, data } = useBackend<TraitSelectorInputData>();
 
   const containsLoosely = function (needle: string, haystack: string): boolean {
     if (needle === "") { return true; }
@@ -58,12 +60,12 @@ export const TraitSelectorModal = (_, context) => {
     return haystack.toLowerCase().indexOf(needle.toLowerCase().trim()) !== -1;
   };
 
-  const [submission, setSubmission] = useLocalState<TraitSelectorSubmissionData>(
-    context, "submission", { traits: data.initial_traits }
+  const [submission, setSubmission] = useState<TraitSelectorSubmissionData>(
+    { traits: data.initial_traits }
   );
 
-  const [searchQuery, setSearchQuery] = useLocalState<string>(
-    context, "searchQuery", ""
+  const [searchQuery, setSearchQuery] = useState<string>(
+    ""
   );
 
   const stringSubmission = JSON.stringify(submission);
@@ -107,9 +109,9 @@ export const TraitSelectorModal = (_, context) => {
           });
         }
         existing.items.push({
-          ...trait, 
-          display_name: trait.group_short_name ?? trait.name, 
-          sort_key: trait.sort_key ?? trait.name, 
+          ...trait,
+          display_name: trait.group_short_name ?? trait.name,
+          sort_key: trait.sort_key ?? trait.name,
           show_name: true,
         });
       } else {
@@ -118,9 +120,9 @@ export const TraitSelectorModal = (_, context) => {
           description: "",
           sort_key: trait.sort_key ?? trait.name,
           items: [{
-            ...trait, 
-            display_name: trait.name, 
-            sort_key: trait.sort_key ?? trait.name, 
+            ...trait,
+            display_name: trait.name,
+            sort_key: trait.sort_key ?? trait.name,
             show_name: false,
           }],
         };
@@ -267,7 +269,7 @@ export const TraitSelectorModal = (_, context) => {
         <Section className="ListInput__Section" fill>
           <Stack fill vertical>
             <Stack.Item grow>
-              <Section fill scrollable tabIndex={0}>
+              <Section fill scrollable>
                 {generateTraitCards()}
               </Section>
             </Stack.Item>
@@ -275,7 +277,7 @@ export const TraitSelectorModal = (_, context) => {
               autoFocus
               autoSelect
               fluid
-              onInput={(_, value) => setSearchQuery(value)}
+              onChange={(value) => setSearchQuery(value)}
               placeholder="Search..."
               value={searchQuery}
             />
@@ -293,7 +295,7 @@ export const TraitSelectorModal = (_, context) => {
               </LabeledList>
             </Stack.Item>
             <Stack.Item>
-              <InputButtons input={stringSubmission} goodDisabled={!satisfactory} />
+              <InputButtons input={stringSubmission} disabled={!satisfactory} />
             </Stack.Item>
           </Stack>
         </Section>

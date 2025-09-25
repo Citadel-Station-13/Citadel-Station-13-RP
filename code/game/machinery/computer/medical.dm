@@ -202,7 +202,7 @@
 	data["modal"] = ui_modal_data(src)
 	return data
 
-/obj/machinery/computer/med_data/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/med_data/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 

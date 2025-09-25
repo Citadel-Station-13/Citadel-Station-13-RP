@@ -58,7 +58,7 @@ var/global/list/minor_air_alarms = list()
 /obj/machinery/computer/atmos_alert/proc/on_alarm_update()
 	update_icon()
 
-/obj/machinery/computer/atmos_alert/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/atmos_alert/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 

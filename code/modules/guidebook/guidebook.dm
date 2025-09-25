@@ -60,7 +60,7 @@ GLOBAL_DATUM_INIT(guidebook, /datum/guidebook, new)
 		ui.set_autoupdate(FALSE)
 		ui.open(data = list("sections" = lookup), modules = built)
 	else
-		push_ui_modules(user, updates = built)
+		push_ui_nested_data(user, updates = built)
 		push_ui_data(user, data = list("sections" = lookup))
 
 /client/verb/access_guidebook()

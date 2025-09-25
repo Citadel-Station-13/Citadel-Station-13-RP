@@ -94,6 +94,7 @@
 // #include "confusion.dm"
 // #include "emoting.dm"
 #include "focus_only_tests.dm"
+#include "font_awesome_icons.dm"
 // #include "heretic_knowledge.dm"
 // #include "holidays.dm"
 #include "initialize_sanity.dm"

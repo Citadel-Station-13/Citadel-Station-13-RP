@@ -574,7 +574,7 @@
 /datum/tgui_trait_selector/ui_static_data(mob/user, datum/tgui/ui)
 	. = src.input_data
 
-/datum/tgui_trait_selector/ui_act(action, list/params, datum/tgui/ui)
+/datum/tgui_trait_selector/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if (.)
 		return

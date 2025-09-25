@@ -37,7 +37,7 @@
 	if(computer.tesla_link && prob(50))
 		qdel(computer.tesla_link)
 
-/datum/computer_file/program/revelation/ui_act(action, list/params, datum/tgui/ui)
+/datum/computer_file/program/revelation/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return
 	switch(action)

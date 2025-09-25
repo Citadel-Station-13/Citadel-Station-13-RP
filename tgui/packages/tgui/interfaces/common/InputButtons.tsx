@@ -1,5 +1,6 @@
+import { Box, Button, Flex } from 'tgui-core/components';
+
 import { useBackend } from '../../backend';
-import { Box, Button, Flex } from '../../components';
 
 type InputButtonsData = {
   large_buttons: boolean;
@@ -7,21 +8,41 @@ type InputButtonsData = {
 };
 
 type InputButtonsProps = {
-  readonly input: string | number;
-  readonly message?: string;
-  readonly goodDisabled?: boolean;
-};
+  input: string | number | string[] | [string, number][];
+} & Partial<{
+  on_submit: () => void;
+  on_cancel: () => void;
+  message: string;
+  /** Disables the submit button */
+  disabled: boolean;
+}>;
 
-export const InputButtons = (props: InputButtonsProps, context) => {
-  const { act, data } = useBackend<InputButtonsData>(context);
+export const InputButtons = (props: InputButtonsProps) => {
+  const { act, data } = useBackend<InputButtonsData>();
   const { large_buttons, swapped_buttons } = data;
-  const { input, message, goodDisabled } = props;
+  const { input, message, on_submit, on_cancel, disabled } = props;
+
+  let on_submit_actual = on_submit;
+  if (!on_submit_actual) {
+    on_submit_actual = () => {
+      act('submit', { entry: input });
+    };
+  }
+
+  let on_cancel_actual = on_cancel;
+  if (!on_cancel_actual) {
+    on_cancel_actual = () => {
+      act('cancel');
+    };
+  }
+
   const submitButton = (
     <Button
       color="good"
+      disabled={disabled}
       fluid={!!large_buttons}
       height={!!large_buttons && 2}
-      onClick={() => act('submit', { entry: input })}
+      onClick={on_submit_actual}
       m={0.5}
       pl={2}
       pr={2}
@@ -29,7 +50,7 @@ export const InputButtons = (props: InputButtonsProps, context) => {
       textAlign="center"
       tooltip={large_buttons && message}
       width={!large_buttons && 6}
-      disabled={goodDisabled}>
+    >
       {large_buttons ? 'SUBMIT' : 'Submit'}
     </Button>
   );
@@ -38,13 +59,14 @@ export const InputButtons = (props: InputButtonsProps, context) => {
       color="bad"
       fluid={!!large_buttons}
       height={!!large_buttons && 2}
-      onClick={() => act('cancel')}
+      onClick={on_cancel_actual}
       m={0.5}
       pl={2}
       pr={2}
       pt={large_buttons ? 0.33 : 0}
       textAlign="center"
-      width={!large_buttons && 6}>
+      width={!large_buttons && 6}
+    >
       {large_buttons ? 'CANCEL' : 'Cancel'}
     </Button>
   );
@@ -54,7 +76,8 @@ export const InputButtons = (props: InputButtonsProps, context) => {
       align="center"
       direction={!swapped_buttons ? 'row' : 'row-reverse'}
       fill
-      justify="space-around">
+      justify="space-around"
+    >
       {large_buttons ? (
         <Flex.Item grow>{cancelButton}</Flex.Item>
       ) : (

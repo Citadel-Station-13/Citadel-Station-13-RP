@@ -2,15 +2,15 @@
  * @file
  * @license MIT
  */
-import { BooleanLike } from 'common/react';
-import { Box, Button, NumberInput, Section, Icon, Stack, Tooltip } from '../../components';
-import { formatSiUnit } from '../../format';
+import { ReactNode } from 'react';
+import { Box, Button, Icon, NumberInput, Section, Stack, Tooltip } from 'tgui-core/components';
+import { formatSiUnit } from 'tgui-core/format';
+import { toFixed } from 'tgui-core/math';
+import { BooleanLike } from 'tgui-core/react';
+import { toTitleCase } from 'tgui-core/string';
+
 import { useLocalState, useSharedState } from '../../backend';
-import { SectionProps } from '../../components/Section';
-import { InfernoNode } from 'inferno';
-import { toFixed } from 'common/math';
-import { Sprite } from '../../components/Sprite';
-import { toTitleCase } from 'common/string';
+import { SectionProps, Sprite } from '../../components';
 
 // the space is intentional
 export const MATERIAL_STORAGE_UNIT_NAME = " cm³";
@@ -29,7 +29,7 @@ export interface MaterialsContext {
 export interface FullMaterialsContext {
   materials: Record<string, DetailedMaterial>;
   sheetAmount: number;
- }
+}
 
 export interface Material {
   name: string;
@@ -62,16 +62,17 @@ interface MaterialStorageProps extends MaterialRenderProps {
   readonly eject: (string, number) => void; // called with (id, sheets).
 }
 
-export const MaterialStorage = (props: MaterialStorageProps, context) => {
+export const MaterialStorage = (props: MaterialStorageProps) => {
   return (
     <MaterialRender
       {...props}
       materialButtons={(id) => {
-        const [ejectAmt, setEjectAmt] = useLocalState<number>(context, `matEject-${id}`, 1);
+        // TODO: we can't use react hooks, which are ordered, because if an additional material is inserted we'll be rendering more hooks than the last invocation.
+        const [ejectAmt, setEjectAmt] = useLocalState<number>(`mat-ejectAmt-${id}`, 1);
         return (
           <>
             {props.materialButtons}
-            <NumberInput width={3} value={ejectAmt} minValue={1} onChange={(e, v) => setEjectAmt(v)} />
+            <NumberInput step={1} width={3} value={ejectAmt} minValue={1} maxValue={100} onChange={(v) => setEjectAmt(v)} />
             <Button
               icon="eject"
               onClick={() => props.eject(id, ejectAmt)} />
@@ -88,20 +89,20 @@ interface MaterialRenderProps extends SectionProps {
   // id to number
   readonly materialList: Record<string, number>;
   // id map to an element to render below/to the side respectively for vertical/horizontal
-  readonly materialButtons?: (id) => InfernoNode;
+  readonly materialButtons?: (id) => ReactNode;
   // icon scale factor
   readonly materialScale?: number;
 }
 
-export const MaterialRender = (props: MaterialRenderProps, context) => {
-  const [fancy, setFancy] = useSharedState(context, 'materialsFancy', true);
+export const MaterialRender = (props: MaterialRenderProps) => {
+  const [fancy, setFancy] = useSharedState('materialsFancy', true);
   const isEmpty = Object.keys(props.materialList).length === 0;
 
   let scale = props.materialScale ?? 1.0;
 
-  return props.horizontal? (
+  return props.horizontal ? (
     <Section {...props}>
-      {isEmpty? (
+      {isEmpty ? (
         <Box textAlign="center">
           <Icon size={5} name="inbox" />
           <br />
@@ -146,5 +147,5 @@ export const MaterialRender = (props: MaterialRenderProps, context) => {
 };
 
 export const renderMaterialAmount = (amt: number): string => {
-  return `${(amt < 1 && amt > 0)? toFixed(amt, 2) : formatSiUnit(amt, 0)}${MATERIAL_STORAGE_UNIT_NAME}`;
+  return `${(amt < 1 && amt > 0) ? toFixed(amt, 2) : formatSiUnit(amt, 0)}${MATERIAL_STORAGE_UNIT_NAME}`;
 };
