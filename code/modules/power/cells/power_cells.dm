@@ -111,7 +111,7 @@
 	var/mob/user = clickchain.performer
 	if(!used && ishuman(target))
 		var/mob/living/carbon/human/H = target
-		if(H.isSynthetic() || fast_is_species_type(H, /datum/species/holosphere))
+		if(H.isSynthetic() || fast_is_species_type(H, /datum/species/shapeshifter/holosphere))
 			if(H.nutrition <= amount)
 				use(user,H)
 			else

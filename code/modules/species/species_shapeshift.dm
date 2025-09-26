@@ -1,8 +1,3 @@
-// This is something of an intermediary species used for species that
-// need to emulate the appearance of another race. Currently it is only
-// used for slimes but it may be useful for changelings later.
-var/list/wrapped_species_by_ref = list()
-
 /datum/species/shapeshifter
 	abstract_type = /datum/species/shapeshifter
 
@@ -22,58 +17,67 @@ var/list/wrapped_species_by_ref = list()
 
 /datum/species/shapeshifter/get_icobase(mob/living/carbon/human/H, get_deform)
 	if(!H) return ..(null, get_deform)
-	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
+	var/datum/species/S = SScharacters.resolve_species_name(H.species.base_species)
+	if(istype(S, src)) return ..(null, get_deform)
 	return S.get_icobase(H, get_deform)
 
 /datum/species/shapeshifter/real_race_key(mob/living/carbon/human/H)
-	return "[..()]-[wrapped_species_by_ref["\ref[H]"]]"
+	return "[..()]-[H.species.base_species]"
 
 /datum/species/shapeshifter/get_effective_bodytype(mob/living/carbon/human/H, obj/item/I, slot_id)
 	if(!H) return ..(H, I, slot_id)
-	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
+	var/datum/species/S = SScharacters.resolve_species_name(H.species.base_species)
+	if(istype(S, src)) return ..(H, I, slot_id)
 	return S.get_effective_bodytype(H, I, slot_id)
 
 /datum/species/shapeshifter/get_bodytype_legacy(mob/living/carbon/human/H)
 	if(!H) return ..()
-	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
+	var/datum/species/S = SScharacters.resolve_species_name(H.species.base_species)
+	if(istype(S, src)) return ..()
 	return S.get_bodytype_legacy(H)
 
 /datum/species/shapeshifter/get_worn_legacy_bodytype(mob/living/carbon/human/H)
 	if(!H) return ..()
-	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
+	var/datum/species/S = SScharacters.resolve_species_name(H.species.base_species)
+	if(istype(S, src)) return ..()
 	return S.get_worn_legacy_bodytype(H)
 
 /datum/species/shapeshifter/get_blood_mask(mob/living/carbon/human/H)
 	if(!H) return ..()
-	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
+	var/datum/species/S = SScharacters.resolve_species_name(H.species.base_species)
+	if(istype(S, src)) return ..()
 	return S.get_blood_mask(H)
 
 /datum/species/shapeshifter/get_damage_mask(mob/living/carbon/human/H)
 	if(!H) return ..()
-	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
+	var/datum/species/S = SScharacters.resolve_species_name(H.species.base_species)
+	if(istype(S, src)) return ..()
 	return S.get_damage_mask(H)
 
 /datum/species/shapeshifter/get_damage_overlays(mob/living/carbon/human/H)
 	if(!H) return ..()
-	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
+	var/datum/species/S = SScharacters.resolve_species_name(H.species.base_species)
+	if(istype(S, src)) return ..()
 	return S.get_damage_overlays(H)
 
 /datum/species/shapeshifter/get_default_sprite_accessory(mob/living/carbon/human/character, slot)
 	if(!character)
 		return ..()
-	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[character]"])
+	var/datum/species/S = SScharacters.resolve_species_name(character.species.base_species)
+	if(istype(S, src)) return ..()
 	return S.get_default_sprite_accessory(arglist(args))
 
 /datum/species/shapeshifter/get_husk_icon(mob/living/carbon/human/H)
 	if(H)
-		var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
+		var/datum/species/S = SScharacters.resolve_species_name(H.species.base_species)
+		if(istype(S, src)) return ..()
 		if(S)
 			return S.get_husk_icon(H)
 	 return ..()
 
 /datum/species/shapeshifter/handle_post_spawn(mob/living/carbon/human/H)
 	..()
-	wrapped_species_by_ref["\ref[H]"] = default_form
+	H.species.base_species = default_form
 	if(monochromatic)
 		H.r_hair =   H.r_skin
 		H.g_hair =   H.g_skin
@@ -169,7 +173,7 @@ var/list/wrapped_species_by_ref = list()
 	var/new_species = null
 	new_species = input("Please select a species to emulate.", "Shapeshifter Body") as null|anything in species.get_valid_shapeshifter_forms(src)
 
-	if(!new_species || !SScharacters.resolve_species_name(new_species) || wrapped_species_by_ref["\ref[src]"] == new_species)
+	if(!new_species || !SScharacters.resolve_species_name(new_species) || species.base_species == new_species)
 		return
 	shapeshifter_change_shape(new_species)
 
@@ -177,7 +181,8 @@ var/list/wrapped_species_by_ref = list()
 	if(!new_species)
 		return
 
-	wrapped_species_by_ref["\ref[src]"] = new_species
+	species.base_species = SScharacters.resolve_species_name(new_species).name
+
 	visible_message("<span class='notice'>\The [src] shifts and contorts, taking the form of \a [new_species]!</span>")
 	regenerate_icons()
 
@@ -206,7 +211,7 @@ var/list/wrapped_species_by_ref = list()
 	b_synth = b_skin
 
 	var/datum/species/shapeshifter/S = species
-	if(S.monochromatic)
+	if(istype(S) && S.monochromatic)
 		r_hair =   r_skin
 		g_hair =   g_skin
 		b_hair =   b_skin
@@ -658,7 +663,7 @@ var/list/wrapped_species_by_ref = list()
 	//sigh
 	if(istype(src.species, /datum/species/shapeshifter))
 		var/datum/species/shapeshifter/SS = src.species
-		wrapped_species_by_ref["\ref[src]"] = SS.default_form
+		SS.base_species = SS.default_form
 
 	regenerate_icons()
 
