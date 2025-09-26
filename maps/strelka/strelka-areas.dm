@@ -181,6 +181,7 @@
 	icon_state = "hallC1"
 	ambience = AMBIENCE_ARRIVALS
 	sound_env = SMALL_ENCLOSED
+	requires_power = 1
 
 /area/hydroponics/strelka/hallway/botany
 	name = "\improper Deck 4 Botany Overpass"

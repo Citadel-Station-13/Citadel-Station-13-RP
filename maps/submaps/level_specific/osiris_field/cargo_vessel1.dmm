@@ -270,7 +270,7 @@
 /area/submap/osiris_field/cargo_vessel1)
 "nZ" = (
 /obj/structure/alien/weeds,
-/mob/living/simple_mob/animal/space/xenomorph/monarch,
+/mob/living/simple_mob/animal/space/xenomorph/vanguard,
 /turf/simulated/floor/plating,
 /area/submap/osiris_field/cargo_vessel1)
 "oh" = (

@@ -10682,11 +10682,6 @@
 /obj/machinery/vending/mre,
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/escape)
-"Cb" = (
-/turf/unsimulated/floor{
-	name = "plating"
-	},
-/area/centcom/medical)
 "Cc" = (
 /obj/structure/closet/secure_closet/freezer/meat,
 /turf/unsimulated/floor/steel{
@@ -42319,7 +42314,7 @@ Vw
 Vw
 Vw
 Jw
-Cb
+mO
 Vw
 Kc
 eY
@@ -42513,7 +42508,7 @@ Vw
 ld
 GX
 cZ
-Cb
+mO
 Vw
 Jt
 KE

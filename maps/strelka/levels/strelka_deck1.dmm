@@ -575,7 +575,6 @@
 /obj/machinery/porta_turret/stationary{
 	uid = "gateway"
 	},
-/obj/structure/marker_beacon/green,
 /turf/simulated/floor/tiled/techmaint,
 /area/strelka/gateway)
 "cD" = (
@@ -3349,7 +3348,6 @@
 /area/security/strelka/armory)
 "qF" = (
 /obj/structure/stairs/spawner/north,
-/obj/structure/wheelchairassist,
 /turf/simulated/floor/trap/wheelchair,
 /area/strelka/pilot_EVA)
 "qH" = (
@@ -5187,9 +5185,6 @@
 /obj/structure/stairs/spawner/west,
 /obj/machinery/door/firedoor/glass{
 	dir = 8
-	},
-/obj/structure/wheelchairassist{
-	dir = 4
 	},
 /turf/simulated/floor/trap/wheelchair,
 /area/hallway/strelka/deck1)
@@ -8313,9 +8308,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck1)
 "Qo" = (
-/obj/structure/wheelchairassist{
-	dir = 1
-	},
 /turf/simulated/floor/trap/wheelchair,
 /area/strelka/pilot_EVA)
 "Qs" = (
@@ -9417,8 +9409,7 @@
 /obj/effect/floor_decal/grass_edge{
 	dir = 4
 	},
-/obj/structure/ladder/teleporter/up,
-/turf/simulated/floor/tiled/monodark,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/hallway/strelka/deck1)
 "VX" = (
 /turf/simulated/floor/airless,

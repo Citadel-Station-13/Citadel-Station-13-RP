@@ -36,7 +36,7 @@
 	last_used = world.time
 	sealed = !sealed
 	if(sealed)
-		command_announcement.Announce("Vessel is now entering Blockade Runner Mode. Closing ship shutters.", "Blockade Runner mode", new_sound = sound('sound/effects/meteor_strike.ogg', volume=15))
+		command_announcement.Announce("Vessel is now entering Blockade Runner Mode. Closing ship shutters.", "Blockade Runner mode", new_sound = sound('sound/effects/blockade_runner_riff.ogg', volume=15))
 	else
 		command_announcement.Announce("Vessel is now exiting Blockade Runner Mode. Opening ship shutters.", "Blockade Runner mode", new_sound = sound('sound/effects/meteor_strike.ogg', volume=15))
 	switch_blastdoors()

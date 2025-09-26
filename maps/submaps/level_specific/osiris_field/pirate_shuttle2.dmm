@@ -155,6 +155,10 @@
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/submap/osiris_field/pirate_wreck3)
+"hV" = (
+/obj/structure/inflatable/door,
+/turf/simulated/floor,
+/area/submap/osiris_field/pirate_wreck3)
 "ig" = (
 /obj/structure/salvageable/data_os,
 /turf/simulated/floor/tiled/techfloor,
@@ -234,6 +238,10 @@
 /obj/effect/floor_decal/techfloor/orange/corner,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/submap/osiris_field/pirate_wreck3)
+"nx" = (
+/obj/structure/inflatable,
+/turf/simulated/floor,
+/area/submap/osiris_field/pirate_wreck3)
 "oa" = (
 /obj/structure/transit_tube/high_velocity{
 	icon_state = "N-S-Pass"
@@ -267,6 +275,16 @@
 "qP" = (
 /obj/structure/loot_pile/maint/junk,
 /turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/pirate_wreck3)
+"rm" = (
+/obj/structure/inflatable,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/pirate_wreck3)
+"rt" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotechmaint,
 /area/submap/osiris_field/pirate_wreck3)
 "ru" = (
 /obj/machinery/light/small/emergency/flicker,
@@ -357,6 +375,11 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/pirate_wreck3)
+"wY" = (
+/obj/structure/lattice,
+/obj/structure/inflatable,
+/turf/template_noop,
 /area/submap/osiris_field/pirate_wreck3)
 "wZ" = (
 /obj/effect/floor_decal/techfloor{
@@ -1641,11 +1664,11 @@ PN
 PN
 Bt
 Pc
-Pc
-Pc
-Pc
-Rp
-hm
+rt
+rm
+rm
+nx
+wY
 Rp
 hm
 RK
@@ -1724,10 +1747,10 @@ PN
 Bt
 Pc
 Pc
-kf
+rm
 Pc
 kf
-Rp
+hV
 hm
 Rp
 hm
@@ -1890,9 +1913,9 @@ Ff
 Ff
 Rp
 Rp
+hV
 Rp
-Rp
-Rp
+nx
 Rp
 Rp
 Rp
@@ -1973,7 +1996,7 @@ Ff
 Bt
 Bt
 Bt
-Rp
+lw
 Bt
 Bt
 Bt
