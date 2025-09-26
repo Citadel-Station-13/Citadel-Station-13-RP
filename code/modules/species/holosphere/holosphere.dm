@@ -6,7 +6,7 @@
  * their clothing is copied from their loadout onto a set of chameleon clothing that cannot be taken off
  */
 
-/datum/species/holosphere
+/datum/species/shapeshifter/holosphere
 	name = SPECIES_HOLOSPHERE
 	uid = SPECIES_ID_HOLOSPHERE
 	id = SPECIES_ID_HOLOSPHERE
@@ -129,13 +129,13 @@
 	var/list/slots_used = list()
 
 	var/actively_healing = TRUE
-	var/heal_rate = 1 // this is pretty high but they have 20 health and it costs nutrition to heal
+	heal_rate = 1 // this is pretty high but they have 20 health and it costs nutrition to heal
 
 	var/heal_nutrition_multiplier = 10 // 10 nutrition per hp healed
 
 	var/last_death_time
 
-/datum/species/holosphere/on_apply(mob/living/carbon/human/H)
+/datum/species/shapeshifter/holosphere/on_apply(mob/living/carbon/human/H)
 	. = ..()
 	RegisterSignal(H, COMSIG_CARBON_UPDATING_OVERLAY, PROC_REF(handle_hologram_overlays))
 	RegisterSignal(H, COMSIG_HUMAN_EQUIPPING_LOADOUT, PROC_REF(handle_hologram_loadout))
@@ -149,14 +149,14 @@
 	holosphere_shell.hologram = H
 	holosphere_shell.copy_iff_factions(H)
 
-/datum/species/holosphere/on_remove(mob/living/carbon/human/H)
+/datum/species/shapeshifter/holosphere/on_remove(mob/living/carbon/human/H)
 	. = ..()
 	UnregisterSignal(H, COMSIG_CARBON_UPDATING_OVERLAY)
 	UnregisterSignal(H, COMSIG_HUMAN_EQUIPPING_LOADOUT)
 
 	remove_chameleon_gear()
 
-/datum/species/holosphere/proc/try_transform(force = FALSE)
+/datum/species/shapeshifter/holosphere/proc/try_transform(force = FALSE)
 	if(force || !IS_DEAD(holosphere_shell))
 		if(holosphere_shell.hologram.incapacitated(INCAPACITATION_ALL))
 			to_chat(holosphere_shell.hologram, SPAN_WARNING("You can't do that right now!"))
@@ -167,7 +167,7 @@
 			holosphere_shell.hologram.drop_held_items()
 			holosphere_shell.regenerate_icons()
 
-/datum/species/holosphere/proc/try_untransform(force = FALSE)
+/datum/species/shapeshifter/holosphere/proc/try_untransform(force = FALSE)
 	if(force || !IS_DEAD(holosphere_shell.hologram))
 		transform_component.try_untransform()
 
@@ -176,23 +176,23 @@
 	set desc = "Disable your hologram."
 	set category = VERB_CATEGORY_IC
 
-	var/datum/species/holosphere/holosphere_species = species
+	var/datum/species/shapeshifter/holosphere/holosphere_species = species
 	if(!istype(holosphere_species))
 		return
 
 	holosphere_species.try_transform()
 
-/datum/species/holosphere/apply_survival_gear(mob/living/carbon/for_target, list/into_box, list/into_inv)
+/datum/species/shapeshifter/holosphere/apply_survival_gear(mob/living/carbon/for_target, list/into_box, list/into_inv)
 	into_box?.Add(/obj/item/tool/prybar/red)
 	into_box?.Add(/obj/item/flashlight/flare/survival)
 	into_box?.Add(/obj/item/fbp_backup_cell)
 
 // hotfix: they're synthetic without synthetic parts, oops!
-/datum/species/holosphere/get_blood_colour(mob/living/carbon/human/H)
+/datum/species/shapeshifter/holosphere/get_blood_colour(mob/living/carbon/human/H)
 	if(H)
 		return blood_color
 
-/datum/species/holosphere/get_valid_shapeshifter_forms()
+/datum/species/shapeshifter/holosphere/get_valid_shapeshifter_forms()
 	return list(
 		SPECIES_HUMAN, SPECIES_UNATHI, SPECIES_UNATHI_DIGI, SPECIES_TAJ, SPECIES_SKRELL,
 		SPECIES_DIONA, SPECIES_TESHARI, SPECIES_MONKEY, SPECIES_SERGAL,
@@ -203,59 +203,59 @@
 		SPECIES_MONKEY_SERGAL, SPECIES_MONKEY_NEVREAN,
 	)
 
-/datum/species/holosphere/get_icobase(mob/living/carbon/human/H, get_deform)
+/datum/species/shapeshifter/holosphere/get_icobase(mob/living/carbon/human/H, get_deform)
 	if(!H) return ..(null, get_deform)
 	var/datum/species/S = SScharacters.resolve_species_name(H.species.base_species)
 	if(istype(S, src)) return ..(null, get_deform)
 	return S.get_icobase(H, get_deform)
 
-/datum/species/holosphere/real_race_key(mob/living/carbon/human/H)
+/datum/species/shapeshifter/holosphere/real_race_key(mob/living/carbon/human/H)
 	return "[..()]-[H.species.base_species]"
 
-/datum/species/holosphere/get_effective_bodytype(mob/living/carbon/human/H, obj/item/I, slot_id)
+/datum/species/shapeshifter/holosphere/get_effective_bodytype(mob/living/carbon/human/H, obj/item/I, slot_id)
 	if(!H) return ..(H, I, slot_id)
 	var/datum/species/S = SScharacters.resolve_species_name(H.species.base_species)
 	if(istype(S, src)) return ..(H, I, slot_id)
 	return S.get_effective_bodytype(H, I, slot_id)
 
-/datum/species/holosphere/get_bodytype_legacy(mob/living/carbon/human/H)
+/datum/species/shapeshifter/holosphere/get_bodytype_legacy(mob/living/carbon/human/H)
 	if(!H) return ..()
 	var/datum/species/S = SScharacters.resolve_species_name(H.species.base_species)
 	if(istype(S, src)) return ..()
 	return S.get_bodytype_legacy(H)
 
-/datum/species/holosphere/get_worn_legacy_bodytype(mob/living/carbon/human/H)
+/datum/species/shapeshifter/holosphere/get_worn_legacy_bodytype(mob/living/carbon/human/H)
 	if(!H) return ..()
 	var/datum/species/S = SScharacters.resolve_species_name(H.species.base_species)
 	if(istype(S, src)) return ..()
 	return S.get_worn_legacy_bodytype(H)
 
-/datum/species/holosphere/get_blood_mask(mob/living/carbon/human/H)
+/datum/species/shapeshifter/holosphere/get_blood_mask(mob/living/carbon/human/H)
 	if(!H) return ..()
 	var/datum/species/S = SScharacters.resolve_species_name(H.species.base_species)
 	if(istype(S, src)) return ..()
 	return S.get_blood_mask(H)
 
-/datum/species/holosphere/get_damage_mask(mob/living/carbon/human/H)
+/datum/species/shapeshifter/holosphere/get_damage_mask(mob/living/carbon/human/H)
 	if(!H) return ..()
 	var/datum/species/S = SScharacters.resolve_species_name(H.species.base_species)
 	if(istype(S, src)) return ..()
 	return S.get_damage_mask(H)
 
-/datum/species/holosphere/get_damage_overlays(mob/living/carbon/human/H)
+/datum/species/shapeshifter/holosphere/get_damage_overlays(mob/living/carbon/human/H)
 	if(!H) return ..()
 	var/datum/species/S = SScharacters.resolve_species_name(H.species.base_species)
 	if(istype(S, src)) return ..()
 	return S.get_damage_overlays(H)
 
-/datum/species/holosphere/get_default_sprite_accessory(mob/living/carbon/human/character, slot)
+/datum/species/shapeshifter/holosphere/get_default_sprite_accessory(mob/living/carbon/human/character, slot)
 	if(!character)
 		return ..()
 	var/datum/species/S = SScharacters.resolve_species_name(character.species.base_species)
 	if(istype(S, src)) return ..()
 	return S.get_default_sprite_accessory(arglist(args))
 
-/datum/species/holosphere/get_husk_icon(mob/living/carbon/human/H)
+/datum/species/shapeshifter/holosphere/get_husk_icon(mob/living/carbon/human/H)
 	if(H)
 		var/datum/species/S = SScharacters.resolve_species_name(H.species.base_species)
 		if(istype(S, src)) return ..()
