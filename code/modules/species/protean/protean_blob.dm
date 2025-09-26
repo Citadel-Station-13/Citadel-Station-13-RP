@@ -322,6 +322,8 @@
 	//Create our new blob
 	var/mob/living/simple_mob/protean_blob/blob = new(creation_spot,src)
 
+	drop_grabs()
+
 	if(isnull(blob.mob_radio) && istype(l_ear, /obj/item/radio))
 		blob.mob_radio = l_ear
 		if(!transfer_item_to_loc(l_ear, blob, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT))
@@ -467,6 +469,7 @@
 	unbuckle_all_mobs(BUCKLE_OP_FORCE)
 	pulledby?.stop_pulling()
 	stop_pulling()
+	blob.drop_grabs()
 
 	var/panel_selected = blob.client?.statpanel == SPECIES_PROTEAN
 
