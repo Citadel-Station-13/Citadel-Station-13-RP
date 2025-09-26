@@ -132,11 +132,9 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck3)
-"aD" = (
-/obj/machinery/camera/network/security{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/monowhite,
+"aC" = (
+/obj/machinery/camera/network/security,
+/turf/simulated/floor/reinforced,
 /area/space)
 "aE" = (
 /obj/effect/floor_decal/corner/purple{
@@ -273,6 +271,19 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/wood,
 /area/bridge/strelka/md)
+"bj" = (
+/obj/structure/table/reinforced,
+/obj/item/reagent_containers/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner";
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/storage/firstaid/surgery{
+	pixel_y = -4
+	},
+/turf/simulated/floor/wood/indoors,
+/area/medical/strelka/surgery)
 "bk" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -365,16 +376,13 @@
 /obj/effect/floor_decal/spline/fancy/wood/corner,
 /turf/simulated/floor/wood/indoors,
 /area/rnd/strelka/science/main)
+"bB" = (
+/obj/machinery/camera/network/security,
+/turf/simulated/floor/tiled/monowhite,
+/area/space)
 "bC" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/fey/forest_grass,
-/area/hallway/strelka/deck3)
-"bD" = (
-/obj/structure/stairs/spawner/east,
-/obj/machinery/door/firedoor/glass{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/asteroid_steel,
 /area/hallway/strelka/deck3)
 "bE" = (
 /obj/structure/cable{
@@ -471,16 +479,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/science)
-"bW" = (
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 8
-	},
-/obj/structure/table/rack/shelf,
-/obj/item/clothing/suit/space/void/medical/alt,
-/obj/item/clothing/head/helmet/space/void/medical/alt,
-/obj/structure/curtain/open/black,
-/turf/simulated/floor/wood,
-/area/bridge/strelka/md)
 "bZ" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
@@ -967,6 +965,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/strelka/deck3)
+"ea" = (
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/hallway/strelka/deck3)
 "eb" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/spline/fancy/wood,
@@ -988,6 +992,19 @@
 /obj/item/storage/belt/medical,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/medical/strelka/main)
+"ee" = (
+/obj/item/aiModule/teleporterOffline,
+/obj/structure/table/standard,
+/obj/machinery/turretid/stun{
+	check_synth = 1;
+	control_area = /area/bridge/strelka/ai;
+	name = "AI Chamber turret control";
+	pixel_x = 29;
+	pixel_y = 1;
+	uid = "core"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/bridge/strelka/upload)
 "eh" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -1599,6 +1616,12 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/wood/indoors,
 /area/rnd/strelka/science/main)
+"gp" = (
+/obj/machinery/camera/network/security{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
 "gq" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
@@ -1774,41 +1797,6 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/medical/strelka/surgery)
-"gM" = (
-/obj/landmark/spawnpoint/job/ai,
-/obj/machinery/requests_console{
-	department = "AI";
-	departmentType = 5;
-	pixel_x = 30;
-	pixel_y = 32
-	},
-/obj/machinery/newscaster/security_unit{
-	pixel_x = 32;
-	pixel_y = -32
-	},
-/obj/item/radio/intercom{
-	dir = 1;
-	name = "Station Intercom (General)";
-	pixel_y = 24
-	},
-/obj/item/radio/intercom/locked/ai_private{
-	dir = 4;
-	pixel_x = 24
-	},
-/obj/item/radio/intercom{
-	name = "Station Intercom (General)";
-	pixel_y = -24
-	},
-/obj/machinery/turretid/stun{
-	check_synth = 1;
-	control_area = /area/bridge/strelka/ai;
-	name = "AI Chamber turret control";
-	pixel_x = 30;
-	pixel_y = 17;
-	uid = "core"
-	},
-/turf/simulated/floor/bluegrid,
-/area/bridge/strelka/ai)
 "gO" = (
 /obj/structure/window/reinforced,
 /obj/machinery/door/blast/regular{
@@ -1952,12 +1940,6 @@
 /obj/spawner/window/low_wall/firelocks,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/strelka/science/main)
-"hj" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/medical/strelka/morgue)
 "hn" = (
 /obj/effect/floor_decal/corner/purple/full{
 	dir = 4
@@ -2025,12 +2007,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck3)
-"ht" = (
-/obj/machinery/camera/network/security{
-	dir = 1
-	},
-/turf/space/basic,
-/area/space)
 "hu" = (
 /obj/machinery/computer/transhuman/resleeving{
 	dir = 1
@@ -2067,6 +2043,30 @@
 	layer = 1
 	},
 /area/hallway/strelka/deck3)
+"hA" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/firstaid/surgery,
+/obj/machinery/power/apc/north_mount,
+/obj/item/reagent_containers/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner";
+	pixel_x = 2;
+	pixel_y = 6
+	},
+/obj/structure/cable/blue{
+	icon_state = "0-2"
+	},
+/obj/machinery/button/windowtint/multitint{
+	id = "operating_theatre_2";
+	pixel_x = -24;
+	pixel_y = -2
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = 12;
+	pixel_y = 10
+	},
+/turf/simulated/floor/wood/indoors,
+/area/medical/strelka/surgery)
 "hB" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/rnd/strelka/servers)
@@ -2125,6 +2125,41 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/rnd/strelka/science/main)
+"hH" = (
+/obj/landmark/spawnpoint/job/ai,
+/obj/machinery/requests_console{
+	department = "AI";
+	departmentType = 5;
+	pixel_x = 30;
+	pixel_y = 32
+	},
+/obj/machinery/newscaster/security_unit{
+	pixel_x = 32;
+	pixel_y = -32
+	},
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 24
+	},
+/obj/item/radio/intercom/locked/ai_private{
+	dir = 4;
+	pixel_x = 24
+	},
+/obj/item/radio/intercom{
+	name = "Station Intercom (General)";
+	pixel_y = -24
+	},
+/obj/machinery/turretid/stun{
+	check_synth = 1;
+	control_area = /area/bridge/strelka/ai;
+	name = "AI Chamber turret control";
+	pixel_x = 30;
+	pixel_y = 17;
+	uid = "core"
+	},
+/turf/simulated/floor/bluegrid,
+/area/bridge/strelka/ai)
 "hI" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
@@ -2560,12 +2595,6 @@
 "je" = (
 /turf/simulated/open,
 /area/rnd/strelka/xenobio)
-"jf" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/asteroid_steel,
-/area/hallway/strelka/deck3)
 "jh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -2908,6 +2937,15 @@
 /obj/structure/loot_pile/maint/boxfort,
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/cargo)
+"kx" = (
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
+/obj/structure/wheelchairassist{
+	dir = 4
+	},
+/turf/simulated/floor/trap/wheelchair,
+/area/hallway/strelka/deck3)
 "ky" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -3067,6 +3105,10 @@
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/reinforced,
 /area/rnd/strelka/test)
+"kZ" = (
+/obj/structure/cargotransitcrate/nt,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo)
 "le" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -3400,6 +3442,13 @@
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/rnd/strelka/science/main)
+"mc" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#B95A00"
+	},
+/obj/machinery/camera/network/security,
+/turf/simulated/floor/tiled/monowhite,
+/area/space)
 "me" = (
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/structure/bed/chair/comfy/beige{
@@ -3703,6 +3752,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/strelka/deck3)
+"ng" = (
+/obj/machinery/camera/network/security{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monowhite,
+/area/space)
 "nj" = (
 /obj/machinery/washing_machine,
 /obj/effect/floor_decal/industrial/outline/blue,
@@ -4006,15 +4061,6 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/hallway/strelka/deck3)
-"nY" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 4
-	},
-/obj/structure/wheelchairassist{
-	dir = 4
-	},
-/turf/simulated/floor/trap/wheelchair,
 /area/hallway/strelka/deck3)
 "nZ" = (
 /turf/simulated/floor/carpet/purcarpet,
@@ -4505,15 +4551,6 @@
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/strelka/test)
-"pL" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 4
-	},
-/obj/structure/wheelchairassist{
-	dir = 8
-	},
-/turf/simulated/floor/trap/wheelchair,
-/area/hallway/strelka/deck3)
 "pM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -4756,19 +4793,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/strelka/deck3)
-"qQ" = (
-/obj/structure/table/reinforced,
-/obj/item/reagent_containers/spray/cleaner{
-	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
-	name = "Surgery Cleaner";
-	pixel_x = 2;
-	pixel_y = 2
-	},
-/obj/item/storage/firstaid/surgery{
-	pixel_y = -4
-	},
-/turf/simulated/floor/wood/indoors,
-/area/medical/strelka/surgery)
 "qR" = (
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/quartermaster/strelka/cargo/mining)
@@ -5510,6 +5534,13 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/xenobotany)
+"tr" = (
+/obj/structure/stairs/spawner/west,
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/hallway/strelka/deck3)
 "tt" = (
 /obj/structure/table/carbon/reinforced,
 /obj/machinery/recharger{
@@ -5659,6 +5690,12 @@
 /obj/machinery/light/small/old,
 /turf/simulated/floor/wood/broken,
 /area/bridge/strelka/md)
+"tM" = (
+/obj/machinery/camera/network/security{
+	dir = 1
+	},
+/turf/space/basic,
+/area/space)
 "tO" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -6287,6 +6324,30 @@
 "we" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/bridge/strelka/borg)
+"wg" = (
+/obj/effect/floor_decal/borderfloorblack{
+	alpha = 255;
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/obj/machinery/air_alarm/east_mount,
+/obj/machinery/camera/network/security{
+	dir = 8
+	},
+/obj/item/storage/box/gloves{
+	pixel_x = 8
+	},
+/obj/item/storage/box/masks{
+	pixel_x = -8
+	},
+/obj/structure/table/reinforced,
+/obj/item/wheelchair{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/medical/strelka/main)
 "wh" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -6657,13 +6718,6 @@
 "xm" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/quartermaster/strelka/portal)
-"xn" = (
-/obj/effect/floor_decal/rust/mono_rusted3{
-	color = "#B95A00"
-	},
-/obj/machinery/camera/network/security,
-/turf/simulated/floor/tiled/monowhite,
-/area/space)
 "xp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/blue{
@@ -6909,6 +6963,12 @@
 /obj/machinery/iv_drip,
 /turf/simulated/floor/wood/broken,
 /area/medical/strelka/room2)
+"yf" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/medical/strelka/morgue)
 "yg" = (
 /obj/item/slime_extract/grey,
 /turf/simulated/floor/reinforced,
@@ -7171,16 +7231,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/science)
-"yM" = (
-/obj/structure/stairs/spawner/west,
-/obj/machinery/door/firedoor/glass{
-	dir = 4
-	},
-/obj/structure/wheelchairassist{
-	dir = 4
-	},
-/turf/simulated/floor/trap/wheelchair,
-/area/hallway/strelka/deck3)
 "yN" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 5
@@ -7392,9 +7442,19 @@
 /turf/simulated/floor/fey/forest_grass,
 /area/rnd/strelka/xenobotany)
 "zz" = (
-/obj/machinery/camera/network/security,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/structure/ladder/teleporter/updown,
 /turf/simulated/floor/tiled/monodark,
-/area/space)
+/area/hallway/strelka/deck3)
 "zA" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -7686,13 +7746,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/medical/strelka/main)
-"AD" = (
-/obj/structure/stairs/spawner/west,
-/obj/machinery/door/firedoor/glass{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/asteroid_steel,
-/area/hallway/strelka/deck3)
 "AF" = (
 /obj/spawner/window/low_wall/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -7965,12 +8018,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/emtroom)
-"Bu" = (
-/obj/machinery/camera/network/security{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/monodark,
-/area/space)
 "Bv" = (
 /obj/item/slime_scanner,
 /obj/item/gun/projectile/energy/taser/xeno,
@@ -9353,6 +9400,28 @@
 	},
 /turf/simulated/floor/carpet/blue,
 /area/bridge/strelka/md)
+"FB" = (
+/obj/structure/table/standard,
+/obj/item/spaceflare{
+	icon_state = "implantpad-0"
+	},
+/obj/machinery/cell_charger,
+/obj/item/cell/high{
+	pixel_x = 2;
+	pixel_y = -1
+	},
+/obj/item/cell/high{
+	pixel_x = 2;
+	pixel_y = -1
+	},
+/obj/item/wheelchair{
+	dir = 4
+	},
+/obj/item/wheelchair{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/medical/strelka/emtroom)
 "FE" = (
 /obj/structure/table/rack/shelf,
 /obj/item/storage/belt/utility,
@@ -9431,6 +9500,16 @@
 /obj/machinery/recharger,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/medical/strelka/main)
+"FT" = (
+/obj/structure/stairs/spawner/west,
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
+/obj/structure/wheelchairassist{
+	dir = 4
+	},
+/turf/simulated/floor/trap/wheelchair,
+/area/hallway/strelka/deck3)
 "FU" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -9470,6 +9549,15 @@
 /obj/machinery/light,
 /turf/simulated/floor/reinforced,
 /area/rnd/strelka/xenobio)
+"Ga" = (
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
+/obj/structure/wheelchairassist{
+	dir = 8
+	},
+/turf/simulated/floor/trap/wheelchair,
+/area/hallway/strelka/deck3)
 "Gc" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/hopdouble,
@@ -9973,6 +10061,10 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/medical/strelka/psy)
+"HT" = (
+/obj/machinery/camera/network/security,
+/turf/space/basic,
+/area/space)
 "HY" = (
 /obj/spawner/window/low_wall/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
@@ -10127,19 +10219,6 @@
 /obj/item/defib_kit/loaded,
 /turf/simulated/floor/wood/indoors,
 /area/medical/strelka/surgery)
-"Iu" = (
-/obj/structure/lattice,
-/obj/structure/cable{
-	icon_state = "32-4"
-	},
-/obj/machinery/atmospherics/pipe/zpipe/down/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/zpipe/down/scrubbers{
-	dir = 4
-	},
-/turf/simulated/open,
-/area/maintenance/strelka/cargo)
 "IC" = (
 /obj/structure/medical_stand/anesthetic,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -10344,10 +10423,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/strelka/deck3)
-"Jg" = (
-/obj/machinery/camera/network/security,
-/turf/simulated/floor/tiled/monowhite,
-/area/space)
 "Jh" = (
 /obj/structure/stairs/spawner/north,
 /obj/machinery/door/firedoor/glass,
@@ -10694,12 +10769,6 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/medical/strelka)
-"Ku" = (
-/obj/machinery/camera/network/security{
-	dir = 1
-	},
-/turf/simulated/floor/reinforced,
-/area/space)
 "Kv" = (
 /obj/machinery/holopad,
 /obj/effect/floor_decal/borderfloorblack{
@@ -10708,16 +10777,33 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/medical/strelka/surgery)
+"Kw" = (
+/obj/structure/stairs/spawner/east,
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
+/obj/structure/wheelchairassist{
+	dir = 8
+	},
+/turf/simulated/floor/trap/wheelchair,
+/area/hallway/strelka/deck3)
+"Kx" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/obj/machinery/light/small/old{
+	dir = 4
+	},
+/obj/structure/wheelchairassist,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/medical/strelka/emtroom)
 "Ky" = (
 /obj/machinery/cryopod/robot,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/strelka/robotics)
-"KA" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/medical/strelka/morgue)
 "KB" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/medical/strelka/main)
@@ -10747,30 +10833,6 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/hallway/strelka/deck3)
-"KJ" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/firstaid/surgery,
-/obj/machinery/power/apc/north_mount,
-/obj/item/reagent_containers/spray/cleaner{
-	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
-	name = "Surgery Cleaner";
-	pixel_x = 2;
-	pixel_y = 6
-	},
-/obj/structure/cable/blue{
-	icon_state = "0-2"
-	},
-/obj/machinery/button/windowtint/multitint{
-	id = "operating_theatre_2";
-	pixel_x = -24;
-	pixel_y = -2
-	},
-/obj/item/storage/firstaid/adv{
-	pixel_x = 12;
-	pixel_y = 10
-	},
-/turf/simulated/floor/wood/indoors,
-/area/medical/strelka/surgery)
 "KK" = (
 /obj/structure/loot_pile/maint/boxfort,
 /turf/simulated/floor/plating,
@@ -10898,6 +10960,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/strelka/deck3)
+"Lk" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/medical/strelka/morgue)
 "Lm" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -11214,16 +11282,6 @@
 /obj/item/megaphone,
 /turf/simulated/floor/wood,
 /area/bridge/strelka/md)
-"Mr" = (
-/obj/structure/stairs/spawner/east,
-/obj/machinery/door/firedoor/glass{
-	dir = 4
-	},
-/obj/structure/wheelchairassist{
-	dir = 8
-	},
-/turf/simulated/floor/trap/wheelchair,
-/area/hallway/strelka/deck3)
 "Ms" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
@@ -11820,6 +11878,39 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/medical/strelka/main)
+"OE" = (
+/obj/machinery/light/small/old{
+	dir = 8
+	},
+/obj/item/bodybag/cryobag{
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/obj/item/bodybag/cryobag{
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/obj/item/bodybag/cryobag{
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/obj/item/bodybag/cryobag{
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/obj/structure/table/standard,
+/obj/item/radio/intercom/department/medbay{
+	dir = 8;
+	layer = 4;
+	pixel_x = -22
+	},
+/obj/item/defib_kit/compact/loaded,
+/obj/item/storage/firstaid/adv{
+	pixel_x = -8;
+	pixel_y = -18
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/medical/strelka/emtroom)
 "OI" = (
 /turf/simulated/open,
 /area/rnd/strelka/science/secondary)
@@ -11908,6 +11999,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/xenobio)
+"Pc" = (
+/obj/machinery/camera/network/security,
+/turf/simulated/floor/tiled/monodark,
+/area/space)
 "Pf" = (
 /obj/structure/railing{
 	dir = 4
@@ -11982,30 +12077,6 @@
 /obj/machinery/computer/timeclock/premade/west,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/strelka/deck3)
-"Pn" = (
-/obj/effect/floor_decal/borderfloorblack{
-	alpha = 255;
-	dir = 4
-	},
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 4
-	},
-/obj/machinery/air_alarm/east_mount,
-/obj/machinery/camera/network/security{
-	dir = 8
-	},
-/obj/item/storage/box/gloves{
-	pixel_x = 8
-	},
-/obj/item/storage/box/masks{
-	pixel_x = -8
-	},
-/obj/structure/table/reinforced,
-/obj/item/wheelchair{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/medical/strelka/main)
 "Pp" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -12061,28 +12132,6 @@
 /obj/machinery/camera/network/security,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck3)
-"Pt" = (
-/obj/structure/table/standard,
-/obj/item/spaceflare{
-	icon_state = "implantpad-0"
-	},
-/obj/machinery/cell_charger,
-/obj/item/cell/high{
-	pixel_x = 2;
-	pixel_y = -1
-	},
-/obj/item/cell/high{
-	pixel_x = 2;
-	pixel_y = -1
-	},
-/obj/item/wheelchair{
-	dir = 4
-	},
-/obj/item/wheelchair{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/medical/strelka/emtroom)
 "Pv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -12326,39 +12375,6 @@
 /obj/machinery/vending/hydronutrients,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/xenobotany)
-"QA" = (
-/obj/machinery/light/small/old{
-	dir = 8
-	},
-/obj/item/bodybag/cryobag{
-	pixel_x = -2;
-	pixel_y = 2
-	},
-/obj/item/bodybag/cryobag{
-	pixel_x = -2;
-	pixel_y = 2
-	},
-/obj/item/bodybag/cryobag{
-	pixel_x = -2;
-	pixel_y = 2
-	},
-/obj/item/bodybag/cryobag{
-	pixel_x = -2;
-	pixel_y = 2
-	},
-/obj/structure/table/standard,
-/obj/item/radio/intercom/department/medbay{
-	dir = 8;
-	layer = 4;
-	pixel_x = -22
-	},
-/obj/item/defib_kit/compact/loaded,
-/obj/item/storage/firstaid/adv{
-	pixel_x = -8;
-	pixel_y = -18
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/medical/strelka/emtroom)
 "QE" = (
 /turf/simulated/wall/wood/hardwood,
 /area/quartermaster/strelka/cargo/mining)
@@ -12472,20 +12488,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/bridge/strelka/rd)
-"Rc" = (
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
-	},
-/obj/effect/floor_decal/spline/fancy/wood,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/structure/ladder/teleporter/updown,
-/turf/simulated/floor/tiled/monodark,
-/area/hallway/strelka/deck3)
 "Rd" = (
 /obj/landmark/spawnpoint/job/ai/secondary,
 /turf/simulated/floor/plating,
@@ -12528,6 +12530,12 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/medical/strelka/surgery)
+"Rq" = (
+/obj/machinery/camera/network/security{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/space)
 "Rs" = (
 /obj/machinery/transhuman/resleever,
 /turf/simulated/floor/tiled/dark,
@@ -12831,10 +12839,6 @@
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/strelka/servers)
-"Sp" = (
-/obj/machinery/camera/network/security,
-/turf/space/basic,
-/area/space)
 "Sq" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/spline/fancy/wood,
@@ -12868,19 +12872,6 @@
 "Ss" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/rnd/strelka/science/main)
-"Sw" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
-	},
-/obj/machinery/light/small/old{
-	dir = 4
-	},
-/obj/structure/wheelchairassist,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/medical/strelka/emtroom)
 "Sx" = (
 /obj/structure/sign/deck/third{
 	pixel_y = -30
@@ -14153,6 +14144,20 @@
 /obj/item/storage/box/freezer,
 /turf/simulated/floor/plating,
 /area/rnd/strelka/science/main)
+"WA" = (
+/obj/structure/lattice,
+/obj/structure/cable{
+	icon_state = "32-4"
+	},
+/obj/machinery/atmospherics/pipe/zpipe/down/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/zpipe/down/scrubbers{
+	dir = 4
+	},
+/obj/structure/cargotransitcrate/nt,
+/turf/simulated/open,
+/area/maintenance/strelka/cargo)
 "WB" = (
 /obj/machinery/smartfridge/drying_rack,
 /obj/machinery/light/small/old,
@@ -14276,19 +14281,6 @@
 	},
 /turf/simulated/floor/fey/forest_grass,
 /area/hallway/strelka/deck3)
-"WX" = (
-/obj/item/aiModule/teleporterOffline,
-/obj/structure/table/standard,
-/obj/machinery/turretid/stun{
-	check_synth = 1;
-	control_area = /area/bridge/strelka/ai;
-	name = "AI Chamber turret control";
-	pixel_x = 29;
-	pixel_y = 1;
-	uid = "core"
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/bridge/strelka/upload)
 "Xa" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -14370,10 +14362,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/science)
-"Xo" = (
-/obj/machinery/camera/network/security,
-/turf/simulated/floor/reinforced,
-/area/space)
 "Xp" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -14620,6 +14608,16 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/quartermaster/strelka/reception)
+"Yh" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 8
+	},
+/obj/structure/table/rack/shelf,
+/obj/item/clothing/suit/space/void/medical/alt,
+/obj/item/clothing/head/helmet/space/void/medical/alt,
+/obj/structure/curtain/open/black,
+/turf/simulated/floor/wood,
+/area/bridge/strelka/md)
 "Ym" = (
 /obj/machinery/air_alarm/north_mount,
 /obj/structure/closet/crate,
@@ -14778,6 +14776,13 @@
 "YU" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/rnd/strelka/robotics)
+"YV" = (
+/obj/structure/stairs/spawner/east,
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/hallway/strelka/deck3)
 "YW" = (
 /obj/spawner/window/low_wall/firelocks,
 /obj/structure/curtain/open/black,
@@ -27224,7 +27229,7 @@ gc
 gc
 gc
 SI
-Xo
+aC
 zn
 zn
 zn
@@ -27379,7 +27384,7 @@ EP
 EP
 zn
 zn
-Ku
+gp
 zV
 su
 dh
@@ -28536,12 +28541,12 @@ EP
 EP
 lI
 EP
-aD
+ng
 mF
 mF
 mX
 Oz
-js
+kZ
 pN
 Hb
 zb
@@ -28734,8 +28739,8 @@ zq
 mF
 Mk
 Oz
-Iu
-js
+WA
+kZ
 pN
 js
 CI
@@ -28977,7 +28982,7 @@ zD
 aT
 Er
 VA
-xn
+mc
 EP
 lI
 lI
@@ -30684,8 +30689,8 @@ hc
 UD
 HN
 cy
-QA
-Pt
+OE
+FB
 YZ
 qX
 LT
@@ -31084,9 +31089,9 @@ aV
 lA
 LI
 nC
-yM
+FT
 yI
-AD
+tr
 xj
 yN
 Wt
@@ -31267,7 +31272,7 @@ ay
 ay
 ot
 KU
-Sw
+Kx
 Ck
 Pz
 kS
@@ -31278,9 +31283,9 @@ rP
 LI
 uZ
 ti
-pL
+Ga
 yI
-jf
+ea
 td
 uZ
 dt
@@ -31845,7 +31850,7 @@ zq
 UG
 fB
 vI
-hj
+Lk
 Eg
 Fd
 Dl
@@ -32039,7 +32044,7 @@ zq
 UG
 fB
 vI
-KA
+yf
 Gd
 BN
 Qb
@@ -32268,7 +32273,7 @@ fb
 nJ
 nS
 zV
-Jg
+bB
 EP
 EP
 EP
@@ -32814,7 +32819,7 @@ EP
 zq
 UG
 VP
-KJ
+hA
 Rn
 Lf
 hO
@@ -33399,7 +33404,7 @@ TI
 YE
 uW
 lh
-qQ
+bj
 cx
 Fz
 fd
@@ -34761,7 +34766,7 @@ rh
 BM
 qZ
 gs
-Pn
+wg
 KE
 eh
 mI
@@ -36323,7 +36328,7 @@ uZ
 WK
 WK
 xh
-Rc
+zz
 Zf
 LD
 gg
@@ -36499,7 +36504,7 @@ ae
 ae
 ae
 EP
-Bu
+Rq
 mE
 Ph
 GY
@@ -36535,7 +36540,7 @@ ZK
 cZ
 Vs
 Vs
-zz
+Pc
 ae
 ae
 ae
@@ -37292,9 +37297,9 @@ Lm
 lX
 nC
 lL
-nY
+kx
 ov
-jf
+ea
 Rl
 xj
 gW
@@ -37486,9 +37491,9 @@ Ln
 Nb
 eW
 au
-Mr
+Kw
 jC
-bD
+YV
 au
 bt
 Hw
@@ -38256,7 +38261,7 @@ AN
 Gc
 sm
 sH
-bW
+Yh
 da
 Sg
 gi
@@ -39030,7 +39035,7 @@ ae
 ae
 ae
 ae
-ht
+tM
 cL
 we
 we
@@ -39048,7 +39053,7 @@ tG
 gT
 Od
 sn
-Sp
+HT
 ae
 ae
 ae
@@ -40203,7 +40208,7 @@ qG
 uQ
 Qm
 ZD
-WX
+ee
 Za
 Tp
 SN
@@ -40979,7 +40984,7 @@ uM
 pF
 Rd
 pF
-gM
+hH
 pF
 ra
 pF
@@ -41168,7 +41173,7 @@ ae
 ae
 ae
 ae
-ht
+tM
 uM
 uM
 uM
@@ -41178,7 +41183,7 @@ pF
 uM
 uM
 uM
-Sp
+HT
 ae
 ae
 ae
