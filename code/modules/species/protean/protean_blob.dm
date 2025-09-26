@@ -469,7 +469,7 @@
 	unbuckle_all_mobs(BUCKLE_OP_FORCE)
 	pulledby?.stop_pulling()
 	stop_pulling()
-	drop_grabs()
+	blob.drop_grabs()
 
 	var/panel_selected = blob.client?.statpanel == SPECIES_PROTEAN
 
