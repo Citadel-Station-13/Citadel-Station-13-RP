@@ -211,7 +211,7 @@
 	b_synth = b_skin
 
 	var/datum/species/shapeshifter/S = species
-	if(S.monochromatic)
+	if(istype(S) && S.monochromatic)
 		r_hair =   r_skin
 		g_hair =   g_skin
 		b_hair =   b_skin
