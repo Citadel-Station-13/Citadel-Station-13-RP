@@ -15,6 +15,9 @@ var/list/admin_verbs_default = list(
 	)
 
 var/list/admin_verbs_admin = list(
+	/client/proc/admin_narrate,
+	/client/proc/admin_narrate_movable,
+	/client/proc/admin_narrate_turf,
 	/client/proc/player_panel, //shows an interface for all players, with links to various panels,
 	/datum/admins/proc/set_tcrystals,
 	/datum/admins/proc/add_tcrystals,
