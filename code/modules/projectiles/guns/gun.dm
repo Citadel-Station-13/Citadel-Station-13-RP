@@ -440,7 +440,6 @@
 	if(!user.aiming)
 		user.aiming = new(user)
 
-	SEND_SIGNAL(user, COMSIG_MOB_WEAPON_FIRE_ATTEMPT, src, target, clickchain_flags)
 
 	if(check_safety())
 		//If we are on harm intent (intending to injure someone) but forgot to flick the safety off, there is a 50% chance we
@@ -465,8 +464,6 @@
 	if(clickchain.using_intent != INTENT_HARM)
 		return ..()
 	// point blank shooting
-
-	SEND_SIGNAL(clickchain.performer, COMSIG_MOB_WEAPON_FIRE_ATTEMPT, src, clickchain, clickchain_flags)
 
 	// legacy aiming code
 	var/mob/user = clickchain.performer

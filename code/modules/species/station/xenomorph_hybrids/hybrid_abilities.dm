@@ -67,7 +67,7 @@
 				E.status &= ~ORGAN_BROKEN
 				to_chat(O, SPAN_NOTICEALIEN("You mend the bone in your [E]"))
 				return//fix one then stop, trigger again to mend more
-#define XENOHYBRID_SNEAK_ABILITY "/datum/ability/species/xenomorph_hybrid/sneak"
+
 /datum/ability/species/xenomorph_hybrid/sneak
 	name = "Sneak around"
 	desc = "Sneak around using your natural affinity to stealth."
@@ -95,8 +95,8 @@
 		register_signals()
 		O.visible_emote("fades into the shadows.")
 		animate(O, alpha = 20, time = 3 SECOND)
-		O.mouse_opacity = 0
-		ADD_TRAIT(O, TRAIT_IGNORED_BY_AI, XENOHYBRID_SNEAK_ABILITY)
+		O.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+		ADD_TRAIT(O, TRAIT_MOB_IGNORED_BY_AI, XENOHYBRID_SNEAK_ABILITY)
 		O.update_movespeed_modifier(move_speed_mod)
 		O.add_actionspeed_modifier(action_speed_mod)
 		O.base_attack_cooldown = initial(O.base_attack_cooldown) * 5
@@ -122,8 +122,8 @@
 	var/mob/living/carbon/human/O = owner
 	if(istype(O))
 		O.visible_emote("appears out of the shadows.")
-		O.mouse_opacity = 1
-		REMOVE_TRAIT(O, TRAIT_IGNORED_BY_AI, XENOHYBRID_SNEAK_ABILITY)
+		O.mouse_opacity = MOUSE_OPACITY_OPAQUE
+		REMOVE_TRAIT(O, TRAIT_MOB_IGNORED_BY_AI, XENOHYBRID_SNEAK_ABILITY)
 		O.remove_movespeed_modifier(move_speed_mod)
 		O.remove_actionspeed_modifier(action_speed_mod)
 		O.base_attack_cooldown = initial(O.base_attack_cooldown)
