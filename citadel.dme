@@ -2385,6 +2385,7 @@
 #include "code\modules\admin\verbs\debug\reestablish_db_connection.dm"
 #include "code\modules\admin\verbs\debug\reload_configuration.dm"
 #include "code\modules\admin\verbs\debug\spawn.dm"
+#include "code\modules\admin\verbs\game\load_map_sector.dm"
 #include "code\modules\admin\verbs\SDQL2\SDQL_2.dm"
 #include "code\modules\admin\verbs\SDQL2\SDQL_2_parser.dm"
 #include "code\modules\admin\verbs\SDQL2\SDQL_2_wrappers.dm"
