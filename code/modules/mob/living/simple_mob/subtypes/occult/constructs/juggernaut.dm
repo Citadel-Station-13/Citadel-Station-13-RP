@@ -153,3 +153,92 @@
 
 		return PROJECTILE_IMPACT_REFLECT
 	return ..()
+
+/datum/category_item/catalogue/fauna/construct/cyclops
+	name = "Constructs - Cyclops"
+	desc = "Far worse then even the dreaded Juggernaut \
+	the Cyclops is power construct capable of casting deadly \
+	beams from its eye. Seemingly designed only for combat \
+	this tank makes up for its lack of speed with devastating firepower. \
+	When its eye focuses it is capable of producing a beam which annhilates \
+	all in its path."
+	value = CATALOGUER_REWARD_HARD
+
+/mob/living/simple_mob/construct/juggernaut/cyclops
+	name = "Cyclops"
+	real_name = "Cyclops"
+	desc = "A creature of deadly gaze who brings oblivion to whatever crosses its site."
+	icon_state = "cyclops"
+	icon_living = "cyclops"
+	special_attack_min_range = 1
+	special_attack_max_range = 7
+	special_attack_cooldown = 15 SECONDS
+
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/aggressive/blood_hunter
+	projectiletype = /obj/projectile/beam/inversion/heavy
+
+/mob/living/simple_mob/construct/juggernaut/cyclops/should_special_attack(atom/A)
+	var/mob_count = 0				// Are there enough mobs?
+	var/turf/T = get_turf(A)
+	for(var/mob/M in range(T, 2))
+		if(shares_iff_faction(M))
+			return FALSE
+		if(M in oview(src, special_attack_max_range))
+			if(!M.stat)
+				mob_count ++
+	if(mob_count < 2)
+		return FALSE
+	else
+		return TRUE
+
+/mob/living/simple_mob/construct/juggernaut/cyclops/do_special_attack(atom/target)
+	set waitfor = FALSE
+
+	// Warm-up
+	Beam(target, icon_state = "sat_beam", time = 2 SECONDS, maxdistance = INFINITY)
+	visible_message(SPAN_WARNING( "The [src]'s eye begins to glow.!"))
+	playsound(src, 'sound/hallucinations/i_see_you1.ogg', 100, 1)
+	sleep(2 SECONDS)
+
+	for(var/i = 1 to 12)
+		if(target)
+			var/turf/T = get_turf(target)
+			if(T)
+				visible_message(SPAN_WARNING( "[src] discharges a beam of concentrated energy!"))
+				face_atom(T)
+				var/obj/projectile/beam/inversion/oblivion/beam = new(loc)
+				beam.old_style_target(T, src)
+				beam.fire()
+				sleep(0.25 SECONDS)
+
+	visible_message(SPAN_WARNING( "The [src]'s eye dims."))
+	playsound(src, 'sound/hallucinations/growl1.ogg', 50, 1)
+
+/obj/projectile/beam/inversion/heavy
+	name = "inversion beam"
+	icon_state = "invert_heavy"
+	fire_sound = 'sound/weapons/spiderlunge.ogg'
+	damage_force = 30
+	damage_tier = 6
+	light_range = 3
+	light_power = -3
+
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/inversion_heavy
+	legacy_tracer_type = /obj/effect/projectile/tracer/inversion_heavy
+	legacy_impact_type = /obj/effect/projectile/impact/inversion_heavy
+
+
+
+/obj/projectile/beam/inversion/oblivion
+	name = "oblivion beam"
+	icon_state = "oblivion"
+	fire_sound = 'sound/weapons/spiderlunge.ogg'
+	damage_force = 50
+	damage_tier = 6
+	light_range = 4
+	light_power = -4
+
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/oblivion
+	legacy_tracer_type = /obj/effect/projectile/tracer/oblivion
+	legacy_impact_type = /obj/effect/projectile/impact/oblivion
+

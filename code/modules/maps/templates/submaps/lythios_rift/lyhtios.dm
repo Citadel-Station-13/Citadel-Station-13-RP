@@ -159,7 +159,6 @@
 /datum/map_template/submap/level_specific/rift/west_deep
 	prefix = "maps/submaps/lythios_rift/caves/"
 
-
 /datum/map_template/submap/level_specific/rift/west_deep/west_caves_cavern1
 	name = "Cavern 1"
 	desc = "Medium Sized Rocky cavern"

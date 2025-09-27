@@ -235,7 +235,7 @@
 "cj" = (
 /obj/structure/grille/broken,
 /turf/simulated/floor/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "cm" = (
 /obj/structure/fence,
 /obj/effect/floor_decal/borderfloor{
@@ -399,7 +399,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "ee" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -408,7 +408,7 @@
 /area/outpost/mining_main/outpost/maintenance/south)
 "eh" = (
 /turf/simulated/floor/tiled/old_tile/white,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "em" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
@@ -650,7 +650,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "gE" = (
 /turf/simulated/wall,
 /area/outpost/mining_main/outpost/near_gateway)
@@ -854,7 +854,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "iH" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 9
@@ -908,7 +908,7 @@
 "jc" = (
 /obj/structure/salvageable/computer,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "je" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -1044,7 +1044,7 @@
 "jQ" = (
 /obj/machinery/door/airlock/voidcraft,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "jW" = (
 /obj/machinery/light{
 	dir = 8
@@ -1092,7 +1092,7 @@
 "kg" = (
 /obj/structure/salvageable/server_os,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "kk" = (
 /obj/machinery/light,
 /turf/simulated/floor/tiled/monotile,
@@ -1313,14 +1313,14 @@
 	},
 /obj/item/defib_kit/loaded,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "lF" = (
 /turf/simulated/floor/water/indoors,
 /area/rift/surfacebase/outside/west_deep)
 "lG" = (
 /obj/machinery/optable,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "lL" = (
 /turf/simulated/wall,
 /area/rift/facility/interior/temple)
@@ -1526,14 +1526,14 @@
 /obj/structure/boulder,
 /obj/structure/boulder,
 /turf/simulated/floor/reinforced,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "ni" = (
 /obj/structure/window/reinforced,
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "nm" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
@@ -1569,7 +1569,7 @@
 /turf/simulated/floor/tiled,
 /area/gateway)
 "nt" = (
-/obj/machinery/door/window/brigdoor/eastleft,
+/obj/machinery/door/window/eastleft,
 /obj/structure/table/rack/shelf/steel{
 	pixel_x = -3
 	},
@@ -1586,7 +1586,7 @@
 /obj/random/ammo_all,
 /obj/random/ammo_all,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "nu" = (
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance/north)
@@ -1715,7 +1715,7 @@
 /obj/structure/table/rack/shelf/steel{
 	pixel_x = -3
 	},
-/obj/machinery/door/window/brigdoor/eastleft,
+/obj/machinery/door/window/eastleft,
 /obj/random/maintenance/security,
 /obj/random/maintenance/security,
 /obj/random/maintenance/security,
@@ -1726,7 +1726,7 @@
 /obj/random/ammo_all,
 /obj/random/ammo_all,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "ox" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/light/small{
@@ -1939,7 +1939,7 @@
 /area/rift/facility/interior/temple)
 "pY" = (
 /turf/simulated/floor/reinforced,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "qd" = (
 /obj/effect/overlay/snow/floor,
 /obj/random/landmine,
@@ -2002,6 +2002,9 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/outpost/mining_main/outpost/airlock/three)
+"qE" = (
+/turf/simulated/mineral/icerock/lythios43c,
+/area/rift/exterior/hangar)
 "qN" = (
 /obj/effect/floor_decal/corner/white,
 /turf/simulated/floor/tiled/dark,
@@ -2086,7 +2089,7 @@
 "rA" = (
 /obj/machinery/door/airlock/voidcraft,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "rB" = (
 /turf/simulated/floor/tiled/monotile,
 /area/outpost/mining_main/outpost/recreation)
@@ -2185,7 +2188,7 @@
 /obj/random/medical/pillbottle,
 /obj/random/medical/pillbottle,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "sA" = (
 /obj/effect/floor_decal/corner/white{
 	dir = 5
@@ -2195,7 +2198,7 @@
 "sC" = (
 /obj/machinery/light/flicker,
 /turf/simulated/floor/reinforced,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "sH" = (
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
@@ -2344,7 +2347,7 @@
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
 "tZ" = (
-/obj/machinery/door/window/brigdoor/eastright,
+/obj/machinery/door/window/eastright,
 /obj/structure/table/rack/shelf/steel{
 	pixel_x = -3
 	},
@@ -2355,7 +2358,7 @@
 /obj/random/maintenance/security,
 /obj/random/maintenance/security,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "ue" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 9
@@ -2438,7 +2441,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "uI" = (
 /obj/machinery/door/airlock/glass_external/public{
 	name = "Mining Outpost Airlock"
@@ -2588,7 +2591,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "wv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -2696,7 +2699,7 @@
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/machinery/portable_atmospherics/canister/empty/phoron,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "xt" = (
 /obj/machinery/light_switch{
 	name = "light switch ";
@@ -2714,7 +2717,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "xz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -2728,7 +2731,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "xF" = (
 /obj/machinery/floodlight,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -2742,7 +2745,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "xJ" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled,
@@ -2769,7 +2772,7 @@
 "xP" = (
 /obj/structure/boulder,
 /turf/simulated/floor/reinforced,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "xU" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 5
@@ -2931,7 +2934,7 @@
 /obj/structure/grille/broken,
 /obj/effect/floor_decal/asteroid,
 /turf/simulated/floor/reinforced,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "yY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -2965,7 +2968,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "zi" = (
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/plating,
@@ -3008,14 +3011,14 @@
 "zK" = (
 /obj/machinery/light/small/emergency,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "zO" = (
 /turf/simulated/shuttle/wall/voidcraft/red,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "zQ" = (
 /obj/machinery/door/blast/regular,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "zT" = (
 /obj/structure/inflatable/door,
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
@@ -3109,7 +3112,7 @@
 "Av" = (
 /obj/structure/bed/chair/bay/shuttle,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "Ax" = (
 /obj/machinery/atmospherics/pipe/zpipe/up/supply,
 /obj/machinery/atmospherics/pipe/zpipe/up/scrubbers,
@@ -3223,7 +3226,7 @@
 /obj/structure/boulder,
 /obj/structure/grille/broken,
 /turf/simulated/floor/reinforced,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "BQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/component/binary/passive_gate/on{
@@ -3467,7 +3470,7 @@
 /obj/structure/table/standard,
 /obj/random/toolbox,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "Dk" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -3538,7 +3541,7 @@
 "Eg" = (
 /obj/structure/frame,
 /turf/simulated/floor/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "Eh" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -3596,7 +3599,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "ED" = (
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 1
@@ -3783,6 +3786,9 @@
 "Gf" = (
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/refinery)
+"Gi" = (
+/turf/simulated/wall/r_wall,
+/area/rift/exterior/hangar)
 "Gl" = (
 /turf/simulated/wall/solidrock,
 /area/rift/surfacebase/outside/west_deep)
@@ -3825,7 +3831,7 @@
 /area/rift/facility/interior/prison)
 "Gz" = (
 /turf/simulated/shuttle/wall/voidcraft/red/hard_corner,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "GG" = (
 /obj/structure/cable/green{
 	icon_state = "5-8"
@@ -3876,7 +3882,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "Hp" = (
 /obj/structure/sign/warning/falling,
 /turf/simulated/wall,
@@ -4256,7 +4262,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance/north)
 "Kw" = (
-/obj/machinery/door/window/brigdoor/eastright,
+/obj/machinery/door/window/eastright,
 /obj/structure/table/rack/shelf/steel{
 	pixel_x = -3
 	},
@@ -4270,7 +4276,7 @@
 /obj/random/maintenance/security,
 /obj/random/maintenance/security,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "Ky" = (
 /obj/structure/mopbucket,
 /obj/item/reagent_containers/glass/bucket,
@@ -4312,7 +4318,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "KR" = (
 /obj/structure/cable/green{
 	icon_state = "0-6"
@@ -4353,7 +4359,7 @@
 /obj/effect/floor_decal/industrial/outline,
 /obj/random/tank,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "Lm" = (
 /obj/structure/stairs/spawner/south,
 /turf/simulated/floor/tiled/monotile,
@@ -4418,14 +4424,14 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "LY" = (
 /obj/machinery/light/small/emergency{
 	dir = 8
 	},
 /obj/random/drinkbottle,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "Mb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -4540,6 +4546,9 @@
 	},
 /turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/belter)
+"MQ" = (
+/turf/simulated/floor/lythios43c/indoors,
+/area/rift/exterior/hangar)
 "MT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
@@ -4717,6 +4726,9 @@
 /obj/machinery/portable_atmospherics/canister/air/airlock,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance/north)
+"OI" = (
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/exterior/hangar)
 "OP" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/machinery/light{
@@ -4844,7 +4856,7 @@
 /obj/random/maintenance/engineering,
 /obj/random/maintenance/engineering,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "Qk" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/outdoors/snow/lythios43c/indoors,
@@ -4864,7 +4876,7 @@
 /obj/structure/bed/roller,
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "QG" = (
 /turf/simulated/floor/outdoors/rocks/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_deep)
@@ -4875,7 +4887,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/old_tile/white,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "QJ" = (
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/surfacebase/outside/west_deep)
@@ -4933,7 +4945,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "Rb" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
@@ -4948,7 +4960,7 @@
 	name = "cockpit"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "Ri" = (
 /obj/machinery/door/blast/shutters{
 	dir = 4;
@@ -4980,14 +4992,14 @@
 /obj/item/weldingtool/mini,
 /obj/item/melee/baton/cattleprod,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "RD" = (
 /obj/machinery/door/blast/regular{
 	dir = 4;
 	id = "gateway_access"
 	},
 /turf/simulated/floor/reinforced,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "RH" = (
 /obj/machinery/status_display{
 	pixel_y = 30
@@ -5035,7 +5047,7 @@
 "Sb" = (
 /obj/structure/salvageable/data,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "Sg" = (
 /obj/spawner/window/full/firelocks,
 /turf/simulated/floor/plating,
@@ -5092,7 +5104,7 @@
 	},
 /obj/machinery/iv_drip,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "SH" = (
 /turf/simulated/mineral/floor/ignore_cavegen/has_air,
 /area/rift/surfacebase/outside/west_deep)
@@ -5178,7 +5190,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "Tq" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -5351,7 +5363,7 @@
 "UG" = (
 /obj/structure/bed/chair/wheelchair/dolly,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "UN" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -5373,7 +5385,7 @@
 /obj/random/tank,
 /obj/random/tank,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "UZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -5395,7 +5407,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "Vr" = (
 /obj/random/obstruction,
 /obj/effect/floor_decal/borderfloor,
@@ -5517,7 +5529,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "Wg" = (
 /obj/machinery/washing_machine,
 /turf/simulated/floor/tiled,
@@ -5525,7 +5537,7 @@
 "Wh" = (
 /obj/effect/floor_decal/asteroid,
 /turf/simulated/floor/reinforced,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "Wj" = (
 /obj/machinery/crystal/lava,
 /turf/simulated/floor/water/indoors,
@@ -5666,7 +5678,7 @@
 "Xt" = (
 /obj/structure/salvageable/data_os,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "Xu" = (
 /obj/machinery/door/airlock/glass_science{
 	name = "Decontamination";
@@ -5898,7 +5910,7 @@
 /obj/item/reagent_containers/syringe/drugs,
 /obj/item/reagent_containers/syringe/drugs,
 /turf/simulated/floor/tiled/old_tile/white,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/hangar)
 "ZI" = (
 /obj/random/crystal,
 /turf/simulated/floor/outdoors/rocks/lythios43c/indoors,
@@ -33872,27 +33884,27 @@ WW
 WW
 WW
 so
-so
-so
-so
-so
-so
-Wo
-Wo
-Wo
-Wo
-Wo
-Wo
-Wo
-Wo
-Wo
-Wo
-so
-so
-so
-so
-so
-so
+qE
+qE
+qE
+qE
+qE
+Gi
+Gi
+Gi
+Gi
+Gi
+Gi
+Gi
+Gi
+Gi
+Gi
+qE
+qE
+qE
+qE
+qE
+qE
 so
 so
 XQ
@@ -34066,10 +34078,10 @@ WW
 WW
 WW
 so
-so
-so
-so
-so
+qE
+qE
+qE
+qE
 pY
 Wh
 Hl
@@ -34082,11 +34094,11 @@ pY
 Wh
 Hl
 xP
-so
-so
-so
-so
-so
+qE
+qE
+qE
+qE
+qE
 so
 so
 XQ
@@ -34260,10 +34272,10 @@ WW
 WW
 WW
 so
-so
-so
-so
-so
+qE
+qE
+qE
+qE
 pY
 pY
 pY
@@ -34277,10 +34289,10 @@ pY
 pY
 xP
 xP
-so
-so
-so
-so
+qE
+qE
+qE
+qE
 so
 so
 XQ
@@ -34454,27 +34466,27 @@ WW
 WW
 WW
 so
-so
-so
-so
+qE
+qE
+qE
 xP
 pY
 Gz
-rr
+MQ
 gB
 Gz
 pY
 pY
 pY
 Gz
-rr
+MQ
 gB
 Gz
 xP
 xP
-so
-so
-so
+qE
+qE
+qE
 so
 so
 XQ
@@ -34648,27 +34660,27 @@ WW
 WW
 WW
 so
-so
-so
-so
+qE
+qE
+qE
 xP
 pY
 zO
-rr
-rr
+MQ
+MQ
 zO
 pY
 pY
 pY
 zO
-rr
-rr
+MQ
+MQ
 zO
 xP
 xP
-so
-so
-so
+qE
+qE
+qE
 so
 so
 XQ
@@ -34842,9 +34854,9 @@ WW
 WW
 WW
 so
-so
-so
-so
+qE
+qE
+qE
 xP
 pY
 zO
@@ -34860,9 +34872,9 @@ iA
 zO
 pY
 xP
-so
-so
-so
+qE
+qE
+qE
 so
 so
 XQ
@@ -35036,8 +35048,8 @@ WW
 WW
 WW
 so
-so
-so
+qE
+qE
 xP
 pY
 pY
@@ -35055,8 +35067,8 @@ Gz
 pY
 xP
 xP
-so
-so
+qE
+qE
 so
 so
 XQ
@@ -35230,7 +35242,7 @@ WW
 WW
 WW
 so
-Wo
+Gi
 xP
 pY
 pY
@@ -35240,7 +35252,7 @@ ou
 Kw
 zO
 KN
-bf
+OI
 xu
 zO
 nt
@@ -35250,7 +35262,7 @@ zO
 Wh
 xP
 xP
-Wo
+Gi
 so
 so
 XQ
@@ -35424,13 +35436,13 @@ WW
 WW
 WW
 so
-Wo
+Gi
 pY
 pY
 pY
 zO
 QZ
-bf
+OI
 Ez
 zO
 Gz
@@ -35438,13 +35450,13 @@ rA
 Gz
 zO
 Av
-bf
+OI
 zK
 zO
 pY
 pY
 Wh
-Wo
+Gi
 so
 so
 XQ
@@ -35618,13 +35630,13 @@ WW
 WW
 WW
 so
-Wo
+Gi
 Tn
 pY
 pY
 zQ
-bf
-bf
+OI
+OI
 Ez
 Gz
 ZH
@@ -35632,13 +35644,13 @@ eh
 QH
 Gz
 Av
-bf
-bf
+OI
+OI
 zQ
 pY
 pY
 pY
-Wo
+Gi
 so
 so
 XQ
@@ -35812,13 +35824,13 @@ WW
 WW
 WW
 so
-Wo
+Gi
 pY
 Wh
 pY
 zQ
-bf
-bf
+OI
+OI
 Ez
 Gz
 UG
@@ -35826,13 +35838,13 @@ eh
 QA
 Gz
 Av
-bf
-bf
+OI
+OI
 zQ
 pY
 pY
 sC
-Wo
+Gi
 so
 so
 XQ
@@ -36006,13 +36018,13 @@ WW
 WW
 WW
 so
-Wo
+Gi
 xP
 pY
 pY
 zQ
-bf
-bf
+OI
+OI
 Ez
 Gz
 Rz
@@ -36020,13 +36032,13 @@ eh
 sz
 Gz
 Av
-bf
-bf
+OI
+OI
 zQ
 pY
 pY
 pY
-Wo
+Gi
 so
 so
 XQ
@@ -36200,27 +36212,27 @@ WW
 WW
 WW
 so
-Wo
+Gi
 xP
 pY
 pY
 zO
 QZ
-bf
-bf
+OI
+OI
 rA
 eh
 eh
 eh
 rA
-bf
-bf
+OI
+OI
 zK
 zO
 pY
 pY
 pY
-Wo
+Gi
 so
 so
 XQ
@@ -36394,13 +36406,13 @@ WW
 WW
 WW
 so
-so
+qE
 xP
 xP
 pY
 zO
 zO
-bf
+OI
 LV
 Gz
 SG
@@ -36408,13 +36420,13 @@ lG
 lE
 Gz
 LV
-bf
+OI
 zO
 zO
 pY
 pY
 pY
-Wo
+Gi
 so
 so
 XQ
@@ -36588,8 +36600,8 @@ WW
 WW
 WW
 so
-so
-so
+qE
+qE
 xP
 pY
 pY
@@ -36608,7 +36620,7 @@ pY
 pY
 pY
 pY
-Wo
+Gi
 so
 so
 XQ
@@ -36782,13 +36794,13 @@ WW
 WW
 WW
 so
-so
-so
-so
+qE
+qE
+qE
 xP
 pY
 zO
-bf
+OI
 xI
 Gz
 Lf
@@ -36796,13 +36808,13 @@ xr
 xr
 Gz
 xI
-bf
+OI
 zO
 pY
 pY
 pY
 pY
-Wo
+Gi
 so
 so
 XQ
@@ -36976,27 +36988,27 @@ WW
 WW
 WW
 so
-so
-so
-so
+qE
+qE
+qE
 xP
 pY
 zO
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
+OI
+OI
+OI
+OI
+OI
+OI
+OI
+OI
+OI
 zO
 pY
 pY
 pY
 pY
-Wo
+Gi
 so
 XQ
 XQ
@@ -37170,19 +37182,19 @@ WW
 WW
 WW
 so
-so
-so
-so
+qE
+qE
+qE
 xP
 pY
 zO
 Eg
 Wf
-bf
+OI
 UT
 Dj
 Qj
-bf
+OI
 ni
 Eg
 zO
@@ -37190,7 +37202,7 @@ pY
 Wh
 pY
 xP
-Wo
+Gi
 so
 XQ
 XQ
@@ -37364,19 +37376,19 @@ WW
 WW
 WW
 so
-so
-so
-so
+qE
+qE
+qE
 xP
 pY
 zO
 Eg
 Ve
-bf
+OI
 xE
-bf
+OI
 xE
-bf
+OI
 wt
 Eg
 zO
@@ -37384,7 +37396,7 @@ pY
 pY
 xP
 nd
-Wo
+Gi
 so
 XQ
 XQ
@@ -37558,8 +37570,8 @@ WW
 WW
 WW
 so
-so
-so
+qE
+qE
 xP
 pY
 pY
@@ -37578,7 +37590,7 @@ pY
 pY
 xP
 xP
-Wo
+Gi
 so
 XQ
 XQ
@@ -37752,27 +37764,27 @@ WW
 WW
 WW
 so
-so
-so
+qE
+qE
 xP
 Wh
 pY
 Gz
-rr
+MQ
 zO
 Sb
 xI
-bf
+OI
 LY
 Xt
 zO
-rr
+MQ
 Gz
 pY
 pY
 xP
 xP
-so
+qE
 so
 XQ
 XQ
@@ -37946,13 +37958,13 @@ WW
 WW
 WW
 so
-Wo
+Gi
 xP
 xP
 pY
 pY
 Gz
-rr
+MQ
 zO
 jc
 ux
@@ -37960,13 +37972,13 @@ ux
 ux
 kg
 zO
-rr
+MQ
 Gz
 pY
 xP
 xP
-so
-so
+qE
+qE
 so
 XQ
 XQ
@@ -38140,7 +38152,7 @@ WW
 WW
 WW
 so
-Wo
+Gi
 xP
 xP
 pY
@@ -38159,8 +38171,8 @@ pY
 pY
 xP
 xP
-so
-so
+qE
+qE
 so
 XQ
 XQ
@@ -38334,7 +38346,7 @@ WW
 WW
 WW
 so
-Wo
+Gi
 xP
 pY
 pY
@@ -38343,18 +38355,18 @@ pY
 pY
 pY
 zO
-bf
-bf
-bf
+OI
+OI
+OI
 zO
 pY
 Wh
 pY
 xP
 xP
-so
-so
-so
+qE
+qE
+qE
 so
 XQ
 XQ
@@ -38528,7 +38540,7 @@ WW
 WW
 WW
 so
-Wo
+Gi
 pY
 pY
 pY
@@ -38545,10 +38557,10 @@ pY
 pY
 xP
 xP
-so
-so
-so
-so
+qE
+qE
+qE
+qE
 so
 XQ
 XQ
@@ -38722,7 +38734,7 @@ WW
 WW
 WW
 so
-Wo
+Gi
 RD
 RD
 RD
@@ -38739,10 +38751,10 @@ yW
 BP
 BP
 BP
-so
-so
-so
-so
+qE
+qE
+qE
+qE
 so
 XQ
 XQ

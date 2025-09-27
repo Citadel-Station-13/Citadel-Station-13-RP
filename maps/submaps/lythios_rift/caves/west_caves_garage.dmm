@@ -46,7 +46,7 @@
 /obj/effect/debris/cleanable/dirt,
 /obj/effect/floor_decal/rust,
 /obj/effect/floormimic/plating/cointoss,
-/turf/simulated/floor/plating/lythios43c,
+/turf/simulated/floor/plating/indoors,
 /area/submap/lythios/west_caves/buried_structure)
 "n" = (
 /obj/machinery/light/small/emergency/flicker{
@@ -160,13 +160,13 @@
 "K" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/plating/lythios43c,
+/turf/simulated/floor/plating/indoors,
 /area/submap/lythios/west_caves/buried_structure)
 "L" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/effect/floor_decal/rust,
 /obj/structure/event/prop/crawler,
-/turf/simulated/floor/plating/lythios43c,
+/turf/simulated/floor/plating/indoors,
 /area/submap/lythios/west_caves/buried_structure)
 "M" = (
 /obj/effect/debris/cleanable/dirt,
@@ -229,6 +229,11 @@
 "W" = (
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"X" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/floormimic/tile,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/submap/lythios/west_caves/buried_structure)
 "Y" = (
 /obj/effect/debris/cleanable/dirt,
@@ -311,7 +316,7 @@ d
 d
 e
 E
-y
+X
 I
 e
 W

@@ -471,17 +471,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/outpost/underground)
-"fj" = (
-/obj/structure/catwalk,
-/obj/structure/railing/grey{
-	dir = 1
-	},
-/obj/structure/railing/grey{
-	dir = 4
-	},
-/obj/item/barrier_tape_segment/engineering,
-/turf/simulated/open/lythios43c,
-/area/rift/surfacebase/outside/west_caves)
 "fn" = (
 /obj/item/poi/brokenoldreactor,
 /obj/effect/map_effect/radiation_emitter/strong,
@@ -772,6 +761,7 @@
 	},
 /obj/item/barrier_tape_roll/engineering,
 /obj/structure/table/rack/shelf/steel,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "iB" = (
@@ -868,6 +858,7 @@
 /obj/effect/overlay/snow/floor/edges_new{
 	dir = 10
 	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "jX" = (
@@ -1299,10 +1290,6 @@
 "pt" = (
 /turf/simulated/lava/indoors/geothermal,
 /area/rift/geothermal)
-"pA" = (
-/obj/structure/catwalk/plank,
-/turf/simulated/open/lythios43c,
-/area/rift/surfacebase/outside/west_caves)
 "pB" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
@@ -1429,6 +1416,7 @@
 	},
 /obj/structure/table/rack/shelf/steel,
 /obj/random/maintenance/engineering,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "qL" = (
@@ -1470,6 +1458,7 @@
 	},
 /obj/random/maintenance/engineering,
 /obj/structure/table/rack/shelf/steel,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "rg" = (
@@ -1536,9 +1525,8 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/workroom)
 "ru" = (
-/obj/structure/catwalk,
-/obj/item/barrier_tape_segment/engineering,
-/turf/simulated/open/lythios43c,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "rv" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -1785,13 +1773,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/underground)
-"uP" = (
-/obj/structure/railing/grey{
-	dir = 1
-	},
-/obj/structure/catwalk/plank,
-/turf/simulated/open/lythios43c,
-/area/rift/surfacebase/outside/west_caves)
 "uS" = (
 /obj/structure/barricade/cutout,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
@@ -2237,6 +2218,7 @@
 /obj/effect/overlay/snow/floor/surround_new{
 	dir = 1
 	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "AF" = (
@@ -2564,6 +2546,7 @@
 /obj/effect/overlay/snow/floor/edges_new{
 	dir = 1
 	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "DW" = (
@@ -2918,6 +2901,7 @@
 /area/outpost/mining_main/outpost)
 "Hk" = (
 /obj/effect/overlay/snow/floor/edges_new,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "Hp" = (
@@ -3413,6 +3397,7 @@
 /area/rift/facility/interior/workroom)
 "Og" = (
 /obj/structure/catwalk,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "Oh" = (
@@ -3520,6 +3505,7 @@
 /obj/effect/overlay/snow/floor/edges_new{
 	dir = 8
 	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "PO" = (
@@ -3587,6 +3573,7 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/random/maintenance/research,
 /obj/random/maintenance/research,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "Qn" = (
@@ -3637,6 +3624,7 @@
 /obj/machinery/light/small/emergency{
 	dir = 1
 	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "QQ" = (
@@ -4039,17 +4027,9 @@
 /obj/structure/lattice,
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
-"Vr" = (
-/obj/structure/catwalk,
-/obj/structure/railing/grey,
-/obj/structure/railing/grey{
-	dir = 4
-	},
-/obj/item/barrier_tape_segment/engineering,
-/turf/simulated/open/lythios43c,
-/area/rift/surfacebase/outside/west_caves)
 "VA" = (
 /obj/structure/ladder/up,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "VE" = (
@@ -37647,18 +37627,18 @@ JD
 JD
 JD
 JD
-JD
-JD
-JD
+US
+US
+US
 jf
 jf
 ux
 ux
 jf
 jf
-JD
-JD
-JD
+US
+US
+US
 JD
 JD
 JD
@@ -37842,7 +37822,7 @@ JD
 JD
 JD
 JD
-JD
+US
 ir
 ir
 ir
@@ -37851,7 +37831,7 @@ Hk
 ir
 ir
 ir
-be
+US
 JD
 JD
 JD
@@ -38036,16 +38016,16 @@ JD
 JD
 JD
 JD
-ir
+US
 ir
 Ay
 PM
 VA
-YS
+ru
 jR
 ir
 ir
-be
+US
 be
 be
 be
@@ -38228,9 +38208,9 @@ be
 be
 be
 be
-be
-be
-JD
+US
+US
+US
 US
 US
 QK
@@ -38239,9 +38219,9 @@ Og
 Og
 US
 US
-be
-be
-be
+US
+US
+US
 be
 be
 be
@@ -38423,8 +38403,8 @@ be
 be
 be
 be
-be
-be
+US
+US
 US
 re
 Og
@@ -38433,8 +38413,8 @@ Og
 Og
 Ql
 US
-uD
-uD
+US
+US
 uD
 uD
 uD
@@ -38627,7 +38607,7 @@ Og
 Og
 qK
 US
-uD
+US
 uD
 uD
 uD
@@ -39591,10 +39571,10 @@ uD
 uD
 uD
 uD
-fj
-ru
-ru
-Vr
+Qs
+kx
+kx
+rT
 uD
 uD
 uD
@@ -39785,10 +39765,10 @@ uD
 uD
 uD
 uD
-uD
-uP
-pA
-uD
+Qs
+kx
+kx
+rT
 uD
 uD
 uD
@@ -39979,10 +39959,10 @@ uD
 uD
 uD
 uD
-uD
-uP
-pA
-uD
+Qs
+kx
+kx
+rT
 uD
 uD
 uD
@@ -40173,10 +40153,10 @@ uD
 uD
 uD
 uD
-uD
-uP
-pA
-uD
+Qs
+kx
+kx
+rT
 uD
 uD
 uD
@@ -40367,10 +40347,10 @@ uD
 uD
 uD
 uD
-uD
-uP
-pA
-uD
+Qs
+kx
+kx
+rT
 uD
 uD
 uD
@@ -40561,10 +40541,10 @@ uD
 uD
 uD
 uD
-uD
-uP
-pA
-uD
+Qs
+kx
+kx
+rT
 uD
 uD
 uD
@@ -40755,10 +40735,10 @@ uD
 uD
 uD
 uD
-uD
-uP
-pA
-uD
+Qs
+kx
+kx
+rT
 uD
 uD
 uD
@@ -40949,10 +40929,10 @@ uD
 uD
 uD
 uD
-uD
-uP
-pA
-uD
+Qs
+kx
+kx
+rT
 uD
 uD
 uD
@@ -41143,10 +41123,10 @@ uD
 uD
 uD
 uD
-uD
-uP
-pA
-uD
+Qs
+kx
+kx
+rT
 uD
 uD
 uD
@@ -41337,10 +41317,10 @@ uD
 uD
 uD
 uD
-uD
-uP
-pA
-uD
+Qs
+kx
+kx
+rT
 uD
 uD
 uD
@@ -41531,10 +41511,10 @@ uD
 uD
 uD
 uD
-uD
-uP
-pA
-uD
+Qs
+kx
+kx
+rT
 uD
 uD
 uD
@@ -41725,10 +41705,10 @@ uD
 uD
 uD
 uD
-uD
-uP
-pA
-uD
+Qs
+kx
+kx
+rT
 uD
 uD
 uD

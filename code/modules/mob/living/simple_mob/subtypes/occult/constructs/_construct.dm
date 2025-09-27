@@ -25,7 +25,8 @@
 		/datum/category_item/catalogue/fauna/construct/juggernaut,
 		/datum/category_item/catalogue/fauna/construct/proteon,
 		/datum/category_item/catalogue/fauna/construct/shade,
-		/datum/category_item/catalogue/fauna/construct/wraith
+		/datum/category_item/catalogue/fauna/construct/wraith,
+		/datum/category_item/catalogue/fauna/construct/cyclops
 		)
 
 /mob/living/simple_mob/construct

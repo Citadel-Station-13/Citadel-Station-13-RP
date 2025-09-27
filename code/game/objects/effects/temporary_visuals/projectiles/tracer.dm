@@ -97,6 +97,18 @@
 	light_power = -2
 	light_color = "#FFFFFF"
 
+/obj/effect/projectile/tracer/inversion_heavy
+	icon_state = "invert_heavy"
+	light_range = 3
+	light_power = -2
+	light_color = "#FFFFFF"
+
+/obj/effect/projectile/tracer/oblivion
+	icon_state = "oblivion"
+	light_range = 4
+	light_power = -2
+	light_color = "#FFFFFF"
+
 /obj/effect/projectile/tracer/laser
 	icon_state = "beam"
 	light_range = 2
@@ -108,6 +120,12 @@
 	light_range = 2
 	light_power = 0.5
 	light_color = "#0066FF"
+
+/obj/effect/projectile/tracer/laser_pink
+	icon_state = "beam_pink"
+	light_range = 2
+	light_power = 0.5
+	light_color = "#ff00dd"
 
 /obj/effect/projectile/tungsten/tracer
 	icon_state = "mhd_laser"

@@ -3,7 +3,7 @@
 ////////////////////////////
 
 /datum/category_item/catalogue/fauna/nuclear_spirits/charred
-	name = "Charred Runner"
+	name = "Paranatural Entity - Charred Runner"
 	desc = "A paranatural creature resembling a charred corpse. \
 	The carbonized 'flesh' of this creature is adept at absorbing \
 	energy but vulnerable to kinectic force. Lacking any innate \
