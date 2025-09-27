@@ -72,7 +72,7 @@
 				new ttstack(get_turf(src),	amount)
 			else //I sure hope nobody DOES make production machines that results in non-stackable objects.
 				var/i = 0
-				for(i = 0; i < amount, ++i)
+				for(i = 0; i < amount; ++i)
 					new target_type(get_turf(src))
 			return TRUE
 

@@ -189,6 +189,7 @@
 	// send start hooks
 	on_firing_cycle_start(our_cycle)
 	SEND_SIGNAL(src, COMSIG_GUN_FIRING_CYCLE_START, our_cycle)
+	SEND_SIGNAL(firer, COMSIG_MOB_WEAPON_FIRE_ATTEMPT)
 
 	var/safety = 50
 	var/iteration = 0

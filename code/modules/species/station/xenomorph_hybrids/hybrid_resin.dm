@@ -190,4 +190,3 @@
 	density = 0
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
-	color = "#422649"

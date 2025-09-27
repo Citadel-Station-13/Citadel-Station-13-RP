@@ -70,8 +70,8 @@
 
 	// Add the core to the asteroid's map
 	rm_controller.dbg("ZM(ga): Starting core generation for [A.coresize] size core..")
-	for(var/x = 1; x <= A.coresize, x++)
-		for(var/y = 1; y <= A.coresize, y++)
+	for(var/x = 1; x <= A.coresize; x++)
+		for(var/y = 1; y <= A.coresize; y++)
 			rm_controller.dbg("ZM(ga): Doing core-relative [x],[y] at [A.coresize+x],[A.coresize+y], [A.type_wall].")
 			A.spot_add(A.coresize+x, A.coresize+y, A.type_wall)
 
@@ -79,7 +79,7 @@
 
 	// Add the arms to the asteroid's map
 	// Vertical arms
-	for(var/x = A.coresize+1, x <= A.coresize*2, x++)	// Start at leftmost side of core, work towards higher X.
+	for(var/x = A.coresize+1; x <= A.coresize*2; x++)	// Start at leftmost side of core, work towards higher X.
 		rm_controller.dbg("ZM(ga): Vert arms. My current column is x:[x].")
 		var/B_arm = rand(0,max_armlen)
 		var/T_arm = rand(0,max_armlen)

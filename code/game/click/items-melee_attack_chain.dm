@@ -98,6 +98,7 @@
 		)
 		return NONE
 
+	SEND_SIGNAL(clickchain.performer, COMSIG_MOB_ON_ITEM_MELEE_ATTACK, clickchain, clickchain_flags)
 	// LEGACY
 	clickchain.performer.break_cloak()
 	if(isliving(clickchain.target))

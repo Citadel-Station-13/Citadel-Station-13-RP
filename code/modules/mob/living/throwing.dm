@@ -14,6 +14,8 @@
 	// TODO: this entire override system is a bit complicated.
 	//       can we make it better?
 	var/atom/movable/throwing = I.throw_resolve_actual(src)
+	// Seems Sanity checks are done.
+	SEND_SIGNAL(src, COMSIG_MOB_ON_THROW, I, target)
 	// overhand stuff
 	if(overhand)
 		var/delay = throwing.overhand_throw_delay(src)
