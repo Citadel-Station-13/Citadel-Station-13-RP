@@ -3,6 +3,7 @@ var/list/admin_datums = list()
 GLOBAL_VAR_INIT(href_token, GenerateToken())
 GLOBAL_PROTECT(href_token)
 
+// todo: /datum/admin_holder
 /datum/admins
 	var/rank			= "Temporary Admin"
 	var/client/owner	= null
@@ -22,6 +23,11 @@ GLOBAL_PROTECT(href_token)
 
 	var/datum/filter_editor/filteriffic
 
+	/// lazy list of active admin modals
+	///
+	/// todo: re-open these on reconnect.
+	var/list/datum/admin_modal/admin_modals
+
 /datum/admins/New(initial_rank = "Temporary Admin", initial_rights = 0, ckey)
 	if(!ckey)
 		log_world("Admin datum created without a ckey argument. Datum has been deleted")
@@ -37,26 +43,106 @@ GLOBAL_PROTECT(href_token)
 		UNTIL(SSmapping.loaded_station)
 		admincaster_signature = "[(LEGACY_MAP_DATUM).company_name] Officer #[rand(0,9)][rand(0,9)][rand(0,9)]"
 
-/datum/admins/proc/associate(client/C)
-	if(istype(C))
-		owner = C
-		owner.holder = src
-		owner.add_admin_verbs()	//TODO
-		GLOB.admins |= C
+/datum/admins/Destroy()
+	QDEL_LIST(admin_modals)
+	return ..()
 
-/datum/admins/proc/disassociate()
+// todo: assertions on this are too weak
+/datum/admins/proc/associate(client/C)
+	if(owner == C)
+		return
 	if(owner)
-		GLOB.admins -= owner
-		owner.remove_admin_verbs()
-		owner.deadmin_holder = owner.holder
-		owner.holder = null
+		disassociate()
+	if(!istype(C))
+		return
+	owner = C
+	owner.holder = src
+	GLOB.admins |= C
+	// add verbs
+	add_admin_verbs()
+
+// todo: assertions on this are too weak
+/datum/admins/proc/disassociate()
+	if(!owner)
+		return
+	GLOB.admins -= owner
+	owner.deadmin_holder = owner.holder
+	owner.holder = null
+	// for now, destroy all modals
+	QDEL_LIST(admin_modals)
+	// obliterate verbs
+	remove_admin_verbs()
 
 /datum/admins/proc/reassociate()
-	if(owner)
-		GLOB.admins |= owner
-		owner.holder = src
-		owner.deadmin_holder = null
-		owner.add_admin_verbs()
+	associate(owner)
+
+/datum/admins/proc/add_admin_verbs()
+	if(!owner)
+		return
+	var/list/verbs_to_add = list()
+	for(var/datum/admin_verb_descriptor/descriptor in global.admin_verb_descriptors)
+		if((rights & descriptor.required_rights) != descriptor.required_rights)
+			continue
+		verbs_to_add += descriptor.verb_path
+	verbs_to_add += admin_verbs_default
+	if(rights & R_BUILDMODE)
+		verbs_to_add += /client/proc/togglebuildmodeself
+	if(rights & R_ADMIN)
+		verbs_to_add += admin_verbs_admin
+	if(rights & R_BAN)
+		verbs_to_add += admin_verbs_ban
+	if(rights & R_FUN)
+		verbs_to_add += admin_verbs_fun
+	if(rights & R_SERVER)
+		verbs_to_add += admin_verbs_server
+	if(rights & R_DEBUG)
+		verbs_to_add += admin_verbs_debug
+	if(rights & R_POSSESS)
+		verbs_to_add += admin_verbs_possess
+	if(rights & R_PERMISSIONS)
+		verbs_to_add += admin_verbs_permissions
+	if(rights & R_STEALTH)
+		verbs_to_add += /client/proc/stealth
+	if(rights & R_REJUVINATE)
+		verbs_to_add += admin_verbs_rejuv
+	if(rights & R_SOUNDS)
+		verbs_to_add += admin_verbs_sounds
+	if(rights & R_SPAWN)
+		verbs_to_add += admin_verbs_spawn
+	if(rights & R_MOD)
+		verbs_to_add += admin_verbs_mod
+	if(rights & R_EVENT)
+		verbs_to_add += admin_verbs_event_manager
+	add_verb(
+		owner,
+		verbs_to_add,
+	)
+
+/datum/admins/proc/remove_admin_verbs()
+	if(!owner)
+		return
+	var/list/verbs_to_remove = list()
+	for(var/datum/admin_verb_descriptor/descriptor in global.admin_verb_descriptors)
+		verbs_to_remove += descriptor.verb_path
+	remove_verb(
+		owner,
+		list(
+			admin_verbs_default,
+			/client/proc/togglebuildmodeself,
+			admin_verbs_admin,
+			admin_verbs_ban,
+			admin_verbs_fun,
+			admin_verbs_server,
+			admin_verbs_debug,
+			admin_verbs_possess,
+			admin_verbs_permissions,
+			/client/proc/stealth,
+			admin_verbs_rejuv,
+			admin_verbs_sounds,
+			admin_verbs_spawn,
+			debug_verbs,
+		),
+	)
 
 /*
 checks if usr is an admin with at least ONE of the flags in rights_required. (Note, they don't need all the flags)
@@ -160,6 +246,9 @@ NOTE: It checks usr by default. Supply the "user" argument if you wish to check 
 	log_admin_private("[key_name(usr)] clicked an href with [msg] authorization key! [href]")
 	*/
 
+//*                      -- SECURITY --                           *//
+//* Do not touch this section unless you know what you are doing. *//
+
 /datum/admins/vv_edit_var(var_name, var_value)
 #ifdef TESTING
 	return ..()
@@ -168,3 +257,22 @@ NOTE: It checks usr by default. Supply the "user" argument if you wish to check 
 		return FALSE
 	return ..()
 #endif
+
+/datum/admins/CanProcCall(procname)
+	switch(procname)
+		if(NAMEOF_PROC(src, open_admin_modal))
+			return FALSE
+	if(findtext(procname, "verb__") == 1)
+		return FALSE
+	return ..()
+
+//* Admin Modals *//
+
+/datum/admins/proc/open_admin_modal(path)
+	ASSERT(ispath(path, /datum/admin_modal))
+	var/datum/admin_modal/modal = new path(src)
+	if(!modal.Initialize())
+		qdel(modal)
+		return null
+	modal.open()
+	return modal
