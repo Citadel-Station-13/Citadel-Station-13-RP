@@ -29,6 +29,7 @@ import './styles/themes/admin.scss';
 // idk
 // import './styles/themes/citadel.scss';
 import { perf } from 'common/perf';
+import { Store } from 'common/redux';
 import { setupGlobalEvents } from 'tgui-core/events';
 import { setupHotKeys } from 'tgui-core/hotkeys';
 import { setupHotReloading } from 'tgui-dev-server/link/client.mjs';
@@ -42,7 +43,7 @@ import { configureStore } from './store';
 perf.mark('inception', window.performance?.timeOrigin);
 perf.mark('init');
 
-const store = configureStore();
+const store: Store = configureStore();
 
 function setupApp() {
   // Delay setup

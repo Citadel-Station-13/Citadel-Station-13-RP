@@ -9,7 +9,7 @@ import './styles/main.scss';
 import './styles/themes/light.scss';
 
 import { perf } from 'common/perf';
-import { combineReducers } from 'common/redux';
+import { combineReducers, Store } from 'common/redux';
 import { setGlobalStore } from 'tgui/backend';
 import { captureExternalLinks } from 'tgui/links';
 import { render } from 'tgui/renderer';
@@ -29,7 +29,7 @@ import { telemetryMiddleware } from './telemetry';
 perf.mark('inception', window.performance?.timeOrigin);
 perf.mark('init');
 
-const store = configureStore({
+const store: Store = configureStore({
   reducer: combineReducers({
     audio: audioReducer,
     chat: chatReducer,
