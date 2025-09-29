@@ -42,6 +42,8 @@
 
 	/// our identifying color
 	var/narrate_visual_color
+	/// our target image
+	var/image/narrate_target_image
 
 #warn impl
 
@@ -60,6 +62,13 @@
 
 /datum/admin_modal/admin_narrate/Destroy()
 	target_weakref = null
+	return ..()
+
+/datum/admin_modal/admin_narrate/proc/on_unset_target(atom/new_target)
+	#warn impl
+
+/datum/admin_modal/admin_narrate/proc/on_set_target(atom/new_target)
+	#warn impl
 
 /**
  * @return list of M_ modes
