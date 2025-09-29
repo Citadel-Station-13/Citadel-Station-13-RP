@@ -268,11 +268,12 @@ NOTE: It checks usr by default. Supply the "user" argument if you wish to check 
 
 //* Admin Modals *//
 
-/datum/admins/proc/open_admin_modal(path)
+/datum/admins/proc/open_admin_modal(path, ...)
 	ASSERT(ispath(path, /datum/admin_modal))
 	var/datum/admin_modal/modal = new path(src)
-	if(!modal.Initialize())
+	if(!modal.Initialize(arglist(args.Copy(2))))
 		qdel(modal)
+		#warn yell abotu it
 		return null
 	modal.open()
 	return modal

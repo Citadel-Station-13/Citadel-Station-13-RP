@@ -54,7 +54,10 @@ VV_PROTECT_READONLY(/datum/admin_modal)
 		return
 	ui_interact(owner.owner.mob)
 
-/datum/admin_modal/proc/Initialize()
+/**
+ * Called with args to open_admin_modal().
+ */
+/datum/admin_modal/proc/Initialize(...)
 	return TRUE
 
 /**

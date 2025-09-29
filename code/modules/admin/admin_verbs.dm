@@ -15,9 +15,6 @@ var/list/admin_verbs_default = list(
 	)
 
 var/list/admin_verbs_admin = list(
-	/client/proc/admin_narrate,
-	/client/proc/admin_narrate_movable,
-	/client/proc/admin_narrate_turf,
 	/client/proc/player_panel, //shows an interface for all players, with links to various panels,
 	/datum/admins/proc/set_tcrystals,
 	/datum/admins/proc/add_tcrystals,
@@ -54,10 +51,6 @@ var/list/admin_verbs_admin = list(
 	/client/proc/jumptoturf,			//allows us to jump to a specific turf,
 	/client/proc/admin_call_shuttle,	//allows us to call the emergency shuttle,
 	/client/proc/admin_cancel_shuttle,	//allows us to cancel the emergency shuttle, sending it back to CentCom,
-	/client/proc/cmd_admin_direct_narrate,	//send text directly to a player with no padding. Useful for narratives and fluff-text,
-	/client/proc/cmd_admin_local_narrate,
-	/client/proc/cmd_admin_world_narrate,
-	/client/proc/cmd_admin_z_narrate,	//sends text to all players on a z-level.When Global is too much
 	/client/proc/cmd_admin_create_centcom_report,
 	/client/proc/check_words,			//displays cult-words,
 	/client/proc/check_ai_laws,			//shows AI and borg laws,
@@ -285,10 +278,6 @@ var/list/admin_verbs_hideable = list(
 	/datum/admins/proc/access_news_network,
 	/client/proc/admin_call_shuttle,
 	/client/proc/admin_cancel_shuttle,
-	/client/proc/cmd_admin_direct_narrate,
-	/client/proc/cmd_admin_local_narrate,
-	/client/proc/cmd_admin_world_narrate,
-	/client/proc/cmd_admin_z_narrate,
 	/client/proc/check_words,
 	/client/proc/play_local_sound,
 	/client/proc/play_sound,
@@ -367,7 +356,6 @@ var/list/admin_verbs_mod = list(
 	/client/proc/cmd_admin_subtle_message, 	//send an message to somebody as a 'voice in their head',
 	/client/proc/cmd_admin_icsubtle_message,
 	/datum/admins/proc/paralyze_mob,
-	/client/proc/cmd_admin_direct_narrate,
 	/client/proc/allow_character_respawn,   // Allows a ghost to respawn ,
 	/datum/admins/proc/sendFax,
 	/client/proc/addbunkerbypass,
@@ -389,7 +377,6 @@ var/list/admin_verbs_event_manager = list(
 	/client/proc/aooc,
 	/client/proc/cmd_admin_clear_mobs,
 	/datum/admins/proc/paralyze_mob,
-	/client/proc/cmd_admin_direct_narrate,
 	/client/proc/allow_character_respawn,
 	/datum/admins/proc/sendFax,
 	/client/proc/respawn_character,
