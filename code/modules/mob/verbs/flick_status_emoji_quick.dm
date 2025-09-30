@@ -10,6 +10,8 @@
 	// No filtering for now
 	var/list/datum/status_emoji/possible = GLOB.status_emojis
 
+	var/datum/status_emoji/picked
+
 	if(emoji_name)
 		for(var/datum/status_emoji/emoji as anything in possible)
 			if(ckey(emoji.name) != ckey(emoji_name))
