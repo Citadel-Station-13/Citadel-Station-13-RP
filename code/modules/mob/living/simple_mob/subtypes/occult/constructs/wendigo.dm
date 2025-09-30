@@ -39,7 +39,7 @@
 				"bio" = 100,
 				"rad" = 100)
 
-/mob/living/simple_mob/construct/nuclear/gammawraith/Initialize(mapload)
+/mob/living/simple_mob/construct/flesheaters/wendigo/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/horror_aura)
 
