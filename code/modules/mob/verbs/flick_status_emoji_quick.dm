@@ -2,8 +2,8 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 // todo: DECLARE_MOB_VERB
-/mob/verb/flick_status_emoji()
-	set name = "Flick Status Emoji"
+/mob/verb/flick_status_emoji_quick()
+	set name = "Flick Status Emoji (Quick)"
 	set desc = "Flicks a status emoji on yourself."
 	set category = VERB_CATEGORY_IC
 

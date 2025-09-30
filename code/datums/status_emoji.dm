@@ -20,7 +20,7 @@ GLOBAL_LIST_INIT(status_emojis, init_status_emojis())
 /datum/status_emoji
 	abstract_type = /datum/status_emoji
 	var/name
-	var/icon = 'icons/mob/status_emoji.dmi'
+	var/icon = 'icons/screen/status_emojis.dmi'
 	var/icon_state
 
 	var/icon_size_x = 32
