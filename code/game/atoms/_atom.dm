@@ -886,10 +886,9 @@
 	pixel_y = pixel_y + base_pixel_y - .
 
 /// forcefully center us
-//  TODO: THIS IS BROKEN!
-// /atom/proc/auto_pixel_offset_to_center()
-// 	set_base_pixel_y(get_centering_pixel_y_offset())
-// 	set_base_pixel_x(get_centering_pixel_x_offset())
+/atom/proc/auto_pixel_offset_to_center()
+	set_base_pixel_y(get_centering_pixel_y_offset())
+	set_base_pixel_x(get_centering_pixel_x_offset())
 
 /**
  * Get the left-to-right lower-left to top-right width of our icon in pixels.
