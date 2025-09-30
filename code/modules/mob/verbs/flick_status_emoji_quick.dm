@@ -20,4 +20,4 @@
 		return
 
 	var/duration = 7.5 SECONDS
-	AddComponent(src, /datum/component/status_emoji, picked, duration)
+	AddComponent(/datum/component/status_emoji, picked, duration)

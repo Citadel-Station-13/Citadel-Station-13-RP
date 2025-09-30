@@ -28,4 +28,4 @@
 		1,
 	)
 	var/duration = round(seconds * 10, world.tick_lag)
-	AddComponent(src, /datum/component/status_emoji, picked, duration)
+	AddComponent(/datum/component/status_emoji, picked, duration)
