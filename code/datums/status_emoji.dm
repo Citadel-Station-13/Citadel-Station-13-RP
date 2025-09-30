@@ -26,6 +26,9 @@ GLOBAL_LIST_INIT(status_emojis, init_status_emojis())
 	var/icon_size_x = 32
 	var/icon_size_y = 32
 
+	var/shift_x = 0
+	var/shift_y = 0
+
 /datum/status_emoji/annoyed
 	name = "Annoyed"
 	icon_state = "annoyed"
@@ -41,6 +44,7 @@ GLOBAL_LIST_INIT(status_emojis, init_status_emojis())
 /datum/status_emoji/depression
 	name = "Depression"
 	icon_state = "depression"
+	shift_y = 3
 
 /datum/status_emoji/frustration
 	name = "Frustration"

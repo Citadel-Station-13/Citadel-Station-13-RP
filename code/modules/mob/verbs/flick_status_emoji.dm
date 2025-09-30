@@ -29,3 +29,4 @@
 	)
 	var/duration = round(seconds * 10, world.tick_lag)
 	AddComponent(/datum/component/status_emoji, picked, duration)
+	log_game("[key_name(src)] flicked a status emoji: [picked]")

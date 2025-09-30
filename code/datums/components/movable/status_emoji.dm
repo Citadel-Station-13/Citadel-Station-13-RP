@@ -3,6 +3,7 @@
 
 /datum/component/status_emoji
 	dupe_type = COMPONENT_DUPE_HIGHLANDER
+	registered_type = /datum/component/status_emoji
 	var/datum/status_emoji/emoji
 	var/image/overlay
 
@@ -31,8 +32,8 @@
 	align_to.get_centering_pixel_x_offset()
 
 	// we always align to their icon's top right.
-	var/align_x = (align_to.get_pixel_x_self_width() - emoji.icon_size_x)
-	var/align_y = (align_to.get_pixel_y_self_width() - emoji.icon_size_y)
+	var/align_x = (align_to.get_pixel_x_self_width() - emoji.icon_size_x) + emoji.shift_x
+	var/align_y = (align_to.get_pixel_y_self_width() - emoji.icon_size_y) + emoji.shift_y
 
 	overlay.pixel_x = align_x
 	overlay.pixel_y = align_y
