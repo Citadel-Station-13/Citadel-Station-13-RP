@@ -804,6 +804,7 @@
 
 //? Pixel Offsets
 
+// todo: figure out exactly what we're doing here because this is a dumpster fire; we need to well-define what each of htese is supposed to do.
 // todo: at some point we need to optimize this entire chain of bullshit, proccalls are expensive yo
 
 /atom/proc/set_pixel_x(val)
@@ -885,6 +886,21 @@
 	pixel_y = pixel_y + base_pixel_y - .
 
 /// forcefully center us
-/atom/proc/auto_pixel_offset_to_center()
-	set_base_pixel_y(get_centering_pixel_y_offset())
-	set_base_pixel_x(get_centering_pixel_x_offset())
+//  TODO: THIS IS BROKEN!
+// /atom/proc/auto_pixel_offset_to_center()
+// 	set_base_pixel_y(get_centering_pixel_y_offset())
+// 	set_base_pixel_x(get_centering_pixel_x_offset())
+
+/**
+ * Get the left-to-right lower-left to top-right width of our icon in pixels.
+ * * This is used to align some overlays like HUD overlays.
+ */
+/atom/proc/get_pixel_x_self_width()
+	return icon_x_dimension
+
+/**
+ * Get the left-to-right lower-left to top-right width of our icon in pixels.
+ * * This is used to align some overlays like HUD overlays.
+ */
+/atom/proc/get_pixel_y_self_width()
+	return icon_y_dimension

@@ -28,4 +28,11 @@
 /datum/component/status_emoji/proc/generate_overlay(atom/movable/align_to)
 	ASSERT(!overlay)
 	overlay = image(emoji.icon, emoji.icon_state)
-	#warn alignment
+	align_to.get_centering_pixel_x_offset()
+
+	// we always align to their icon's top right.
+	var/align_x = (align_to.get_pixel_x_self_width() - emoji.icon_size_x)
+	var/align_y = (align_to.get_pixel_y_self_width() - emoji.icon_size_y)
+
+	overlay.pixel_x = align_x
+	overlay.pixel_y = align_y
