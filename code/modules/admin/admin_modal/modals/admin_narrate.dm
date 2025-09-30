@@ -274,6 +274,7 @@
 	var/list/view_target_to_list = list()
 	for(var/mob/viewing in targets)
 		view_target_to_list += "[key_name(viewing)]"
+	tim_sort(view_target_to_list, /proc/cmp_text_asc)
 	var/view_target_list = jointext(view_target_to_list, ", ")
 	message_admins("[key_name(owner.owner.mob)] sent a [SPAN_TOOLTIP("[emit]", "global narrate")] to [SPAN_TOOLTIP("[view_target_list]", "[length(targets)] target(s)")].")
 	log_admin("[key_name(owner.owner.mob)] sent a global narrate to [length(targets)] targets; VIEWERS: '[view_target_list]'', TEXT: '[emit]'")
@@ -306,11 +307,17 @@
 			return TRUE
 		if("preview")
 			var/emit = params["html"]
+			var/list/mob/targets = resolve_hearers()
+			var/list/rendered_viewers_list = list()
+			for(var/mob/target as anything in targets)
+				rendered_viewers_list += "[target.name][target.real_name != target.name ? " ([target.real_name])" : ""]"
+			tim_sort(rendered_viewers_list, /proc/cmp_text_asc)
+			var/rendered_viewers = jointext(rendered_viewers_list, "<br>")
 			var/list/html = list(
 				"<hr>",
 				SPAN_BLOCKQUOTE(emit, null),
 				"<hr>",
-				"<center>[SPAN_ADMIN("^^^ Narrate Preview ^^^")]</center>",
+				"<center>[SPAN_ADMIN("^^^ Narrate Preview; [SPAN_TOOLTIP(rendered_viewers, "Viewers...")] ^^^")]</center>",
 			)
 			to_chat(owner.owner, jointext(html, ""))
 			return TRUE
