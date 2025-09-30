@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
-ADMIN_VERB_DEF(narrate_quick, R_ADMIN, "Narrate (Quick)", "Perform narration.", VERB_CATEGORY_GAME, atom/target as obj|mob|turf|null in world)
+ADMIN_VERB_DEF(narrate_quick, R_ADMIN, "Narrate (Quick)", "Perform narration.", VERB_CATEGORY_GAME, atom/target as null|obj|mob|turf in world)
 
 	var/use_global
 	var/datum/weakref/use_viewers
@@ -50,6 +50,8 @@ ADMIN_VERB_DEF(narrate_quick, R_ADMIN, "Narrate (Quick)", "Perform narration.", 
 			reject = "use_viewers failed atom resolution; this is a bug."
 		else
 			for(var/mob/maybe_viewing in viewers(35, resolved))
+				if(!maybe_viewing.client)
+					continue
 				targets += maybe_viewing
 	else if(use_overmap)
 		var/obj/overmap/entity/resolved = use_viewers.resolve()

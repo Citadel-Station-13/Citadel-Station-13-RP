@@ -273,7 +273,8 @@ NOTE: It checks usr by default. Supply the "user" argument if you wish to check 
 	var/datum/admin_modal/modal = new path(src)
 	if(!modal.Initialize(arglist(args.Copy(2))))
 		qdel(modal)
-		#warn yell abotu it
+		message_admins("Failed to initialize an admin modal. Check runtimes for more details.")
+		stack_trace("failed to initialize an admin modal; this means someone passed in bad args.")
 		return null
 	modal.open()
 	return modal

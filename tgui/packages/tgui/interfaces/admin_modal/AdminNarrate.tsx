@@ -5,7 +5,7 @@
 
 import { BooleanLike } from "../../../common/react";
 import { Window } from "../../layouts";
-import { ByondColorString } from "../common/Color"
+import { ByondColorString } from "../common/Color";
 
 interface AdminNarrateData {
   visualColor: ByondColorString;
@@ -14,6 +14,8 @@ interface AdminNarrateData {
   target: AdminNarrateTarget | null;
   useLos: BooleanLike;
   useRange: BooleanLike;
+  maxRangeLos: number;
+  maxRangeAny: number;
 }
 
 interface AdminNarrateTarget {
@@ -49,7 +51,7 @@ const MODES_REQUIRING_TARGET: AdminNarrateMode[] = [
   AdminNarrateMode.Overmap,
   AdminNarrateMode.Sector,
   AdminNarrateMode.Level,
-]
+];
 
 export const AdminNarrate = (props, context) => {
   return (
@@ -58,5 +60,5 @@ export const AdminNarrate = (props, context) => {
         Test
       </Window.Content>
     </Window>
-  )
-}
+  );
+};

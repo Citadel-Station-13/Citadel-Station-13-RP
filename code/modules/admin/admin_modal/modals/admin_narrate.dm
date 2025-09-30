@@ -18,7 +18,7 @@
 	 * ### in direct mode
 	 * Can be movable that is a or can hold mob(s), or client
 	 */
-	var/datum/weakref/target_weakref
+	var/atom/target
 
 	//* i'm so sorry lohikar but i don't believe in define spam for this *//
 	var/const/M_GLOBAL = "global"
@@ -40,18 +40,21 @@
 	/// use range in tiles; in overmaps, this is multiples of WORLD_ICON_SIZE
 	var/use_range = 14
 
+	var/const/MAX_LOS_RANGE = 35
+	var/const/MAX_ANY_RANGE = 1024
+
 	/// our identifying color
 	var/narrate_visual_color
 	/// our target image
-	var/image/narrate_target_image
-
-#warn impl
+	#warn add visualization
+	//  TODO: visualize it
+	// var/image/narrate_target_image
 
 /datum/admin_modal/admin_narrate/Initialize(atom/target)
 	. = ..()
 	if(!.)
 		return
-	src.target_weakref = WEAKREF(target)
+	set_target(target)
 	src.narrate_visual_color = rgb(arglist(hsl2rgb(rand(0, 360), rand(0, 360), rand(125, 360))))
 
 	var/list/possible_modes = resolve_modes()
@@ -61,20 +64,34 @@
 		return FALSE
 
 /datum/admin_modal/admin_narrate/Destroy()
-	target_weakref = null
+	set_target(null)
 	return ..()
 
+/datum/admin_modal/admin_narrate/proc/set_target(atom/target)
+	if(src.target)
+		on_unset_target(src.target)
+	src.target = target
+	if(src.target)
+		on_set_target(src.target)
+
 /datum/admin_modal/admin_narrate/proc/on_unset_target(atom/new_target)
-	#warn impl
+	//  TODO: visualize it
+	UnregisterSignal(target, COMSIG_PARENT_QDELETING)
 
 /datum/admin_modal/admin_narrate/proc/on_set_target(atom/new_target)
-	#warn impl
+	//  TODO: visualize it
+	RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(on_target_del))
+
+/datum/admin_modal/admin_narrate/proc/on_target_del(datum/source)
+	if(source != target)
+		CRASH("how was target del signal invoked by something that is not our target?")
+	set_target(null)
 
 /**
  * @return list of M_ modes
  */
 /datum/admin_modal/admin_narrate/proc/resolve_modes()
-	var/datum/resolved = target_weakref?.resolve()
+	var/datum/resolved = target
 	if(!resolved)
 		return list(
 			/datum/admin_modal/admin_narrate::M_GLOBAL,
@@ -96,9 +113,11 @@
 				// compatible with direct-narrate
 				. += /datum/admin_modal/admin_narrate::M_DIRECT
 	else if(istype(resolved, /datum/map_level))
+		var/datum/map_level/casted = resolved
 		. += /datum/admin_modal/admin_narrate::M_SECTOR
 		. += /datum/admin_modal/admin_narrate::M_LEVEL
-		// TODO: check for overmap binding & add overmap if it's there
+		if(get_overmap_sector(locate(1, 1, casted.z_index)))
+			. += /datum/admin_modal/admin_narrate::M_OVERMAP
 	else if(istype(resolved, /datum/map))
 		. += /datum/admin_modal/admin_narrate::M_SECTOR
 		// TODO: check for overmap binding & add overmap if it's there
@@ -107,6 +126,7 @@
  * @return list of mobs, or null if invalid
  */
 /datum/admin_modal/admin_narrate/proc/resolve_hearers()
+	// Clients are not allowed in output list; we want mobs, not clients.
 	. = list()
 	switch(mode)
 		if(M_GLOBAL)
@@ -114,23 +134,76 @@
 			for(var/client/C as anything in GLOB.clients)
 				. += C.mob
 		if(M_SECTOR)
-			var/atom/resolved = target_weakref.resolve()
-			#warn impl
+			var/atom/resolved = target
+			var/turf/maybe_target_turf = get_turf(target)
+			var/datum/map_level/maybe_target_map_level
+			if(maybe_target_turf)
+				maybe_target_map_level = SSmapping.ordered_levels[maybe_target_turf.z]
+			if(!maybe_target_map_level)
+				return null
+			for(var/client/C as anything in GLOB.clients)
+				var/turf/maybe_turf = get_turf(C.mob)
+				if(maybe_turf)
+					var/datum/map_level/maybe_map_level = SSmapping.ordered_levels[maybe_turf.z]
+					if(maybe_map_level?.parent_map == maybe_target_map_level)
+						. += C.mob
 		if(M_OVERMAP)
-			var/atom/resolved = target_weakref.resolve()
+			var/datum/resolved = target
 			var/obj/overmap/entity/resolved_entity
 			if(istype(resolved, /obj/overmap/entity))
 				resolved_entity = resolved
-			#warn impl
+			else if(istype(resolved, /atom))
+				resolved_entity = get_overmap_sector(get_turf(resolved))
+			else if(istype(resolved, /datum/map_level))
+				var/datum/map_level/casted = resolved
+				resolved_entity = get_overmap_sector(locate(1, 1, casted.z_index))
+				// TODO: do something
+			else if(istype(resolved, /datum/map))
+				// TODO: do something
+			if(!resolved_entity)
+				return null
+			for(var/client/C as anything in GLOB.clients)
+				var/turf/maybe_turf = get_turf(C.mob)
+				var/obj/overmap/entity/maybe_entity = get_overmap_sector(maybe_turf)
+				if(maybe_entity == resolved_entity)
+					. += C.mob
 		if(M_LEVEL)
-			var/atom/resolved = target_weakref.resolve()
-			#warn impl
+			var/datum/resolved = target
+			var/datum/map_level/resolved_level
+			if(istype(resolved, /atom))
+				var/turf/maybe_turf = get_turf(resolved)
+				if(maybe_turf)
+					resolved_level = SSmapping.ordered_levels[maybe_turf.z]
+			else if(istype(resolved, /datum/map_level))
+				resolved_level = resolved
+			for(var/client/C as anything in GLOB.clients)
+				var/turf/maybe_turf = get_turf(C.mob)
+				if(maybe_turf?.z == resolved_level.z_index)
+					. += C.mob
 		if(M_RANGE)
-			var/atom/resolved = target_weakref.resolve()
-			#warn impl
+			var/atom/resolved = target
+			if(!istype(resolved))
+				return null
+			else
+				if(use_los)
+					for(var/mob/maybe_viewing in viewers(min(MAX_LOS_RANGE, use_range), resolved))
+						if(!maybe_viewing.client)
+							continue
+						. += maybe_viewing
+				else
+					var/our_z = get_z(resolved)
+					for(var/client/C as anything in GLOB.clients)
+						var/mob/maybe_viewing = C.mob
+						if((get_z(maybe_viewing) != our_z) || (get_dist(maybe_viewing, resolved) > use_range))
+							continue
+						if(!maybe_viewing.client)
+							continue
+						. += maybe_viewing
 		if(M_DIRECT)
-			var/atom/resolved = target_weakref.resolve()
-			#warn impl
+			var/atom/movable/resolved = target
+			if(!istype(resolved))
+				return null
+			. += resolved.admin_resolve_narrate()
 		if(M_LOBBY)
 			// do not use client refs directly to prevent gc issues if delayed
 			for(var/client/C as anything in GLOB.clients)
@@ -138,7 +211,7 @@
 					. += C.mob
 
 /datum/admin_modal/admin_narrate/proc/get_target_data()
-	var/datum/resolved = target_weakref?.resolve()
+	var/datum/resolved = target
 	if(!is_target_valid(resolved, mode))
 		return null
 
@@ -197,8 +270,17 @@
 
 /datum/admin_modal/admin_narrate/proc/narrate()
 	var/list/mob/targets = resolve_hearers()
-	#warn impl
-	#warn log, chat component?
+
+	var/emit = unsafe_raw_html_to_send
+	var/list/view_target_to_list = list()
+	for(var/mob/viewing in targets)
+		view_target_to_list += "[key_name(viewing)]"
+	var/view_target_list = jointext(view_target_to_list, ", ")
+	message_admins("[key_name(owner.owner.mob)] sent a [SPAN_TOOLTIP("[emit]", "global narrate")] to [SPAN_TOOLTIP("[view_target_list]", "[length(targets)] target(s)")].")
+	log_admin("[key_name(owner.owner.mob)] sent a global narrate to [length(targets)] targets; VIEWERS: '[view_target_list]'', TEXT: '[emit]'")
+
+	for(var/mob/viewing in targets)
+		to_chat(viewing, emit)
 
 /datum/admin_modal/admin_narrate/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
@@ -234,6 +316,8 @@
 	.["mode"] = mode
 	.["useLos"] = use_los
 	.["useRange"] = use_range
+	.["maxRangeLos"] = MAX_LOS_RANGE
+	.["maxRangeAny"] = MAX_ANY_RANGE
 
 /datum/admin_modal/admin_narrate/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
