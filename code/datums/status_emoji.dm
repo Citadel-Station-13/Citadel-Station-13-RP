@@ -4,7 +4,7 @@
 GLOBAL_LIST_INIT(status_emojis, init_status_emojis())
 
 /proc/init_status_emojis()
-	. = listt()
+	. = list()
 	for(var/datum/status_emoji/path as anything in subtypesof(/datum/status_emoji))
 		if(path.abstract_type == path)
 			continue

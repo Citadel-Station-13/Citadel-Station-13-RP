@@ -4390,6 +4390,7 @@
 #include "code\modules\mob\observer\dead\say.dm"
 #include "code\modules\mob\verbs\feign_impairment.dm"
 #include "code\modules\mob\verbs\flick_status_emoji.dm"
+#include "code\modules\mob\verbs\flick_status_emoji_quick.dm"
 #include "code\modules\mob\verbs\horizontal_invert_self.dm"
 #include "code\modules\mob\verbs\vertical_invert_self.dm"
 #include "code\modules\modular_computers\laptop_vendor.dm"

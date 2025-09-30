@@ -19,13 +19,5 @@
 	if(!picked)
 		return
 
-	var/seconds = tgui_input_number(
-		src,
-		"How long? (seconds)",
-		"Flick Status Emoji",
-		10,
-		60 * 5,
-		1,
-	)
-	var/duration = round(seconds * 10, world.tick_lag)
+	var/duration = 7.5 SECONDS
 	AddComponent(src, /datum/component/status_emoji, picked, duration)
