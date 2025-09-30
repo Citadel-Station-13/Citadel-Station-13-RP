@@ -86,6 +86,8 @@
 
 	supernatural = TRUE
 
+	vision_innate = /datum/vision/baseline/species_tier_3 //Supernatural Other Things Are Beyond Needing Light to see
+
 	var/construct_type = "shade"
 	var/list/construct_spells = list()
 //	var/do_glow = TRUE

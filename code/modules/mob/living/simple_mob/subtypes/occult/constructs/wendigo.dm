@@ -20,10 +20,12 @@
 
 	movement_base_speed = 7 //Wendigos are very fast
 
+	base_attack_cooldown = 7.5
+
 	legacy_melee_damage_lower = 30
 	legacy_melee_damage_upper = 30
 
-	attack_armor_pen = 50
+	attack_armor_pen = 75
 	attacktext = list("claws","slashes","bites")
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive
@@ -36,6 +38,10 @@
 				"bomb" = 60,
 				"bio" = 100,
 				"rad" = 100)
+
+/mob/living/simple_mob/construct/nuclear/gammawraith/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/horror_aura)
 
 /datum/category_item/catalogue/fauna/flesheaters/wendigo
 	name = "Paranatural Entity - Wendigo"
@@ -121,10 +127,10 @@
 
 /mob/living/simple_mob/construct/flesheaters/wendigo/cloaked
 	var/stealthed = FALSE
-	var/stealthed_alpha = 45			// Lower = Harder to see.
+	var/stealthed_alpha = 35			// Lower = Harder to see.
 	var/stealthed_bonus_damage = 50	// This is added on top of the normal melee damage.
 	var/stealthed_weaken_amount = 3	// How long to stun for.
-	var/stealth_cooldown = 5 SECONDS	// Amount of time needed to re-stealth after losing it.
+	var/stealth_cooldown = 3 SECONDS	// Amount of time needed to re-stealth after losing it.
 	var/last_unstealth = 0			//World Time
 
 
