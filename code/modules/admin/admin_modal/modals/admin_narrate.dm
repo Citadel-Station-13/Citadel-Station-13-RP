@@ -301,6 +301,9 @@
 			narrate()
 			qdel(src)
 			return TRUE
+		if("cancel")
+			qdel(src)
+			return TRUE
 		if("preview")
 			var/emit = params["html"]
 			var/list/html = list(
