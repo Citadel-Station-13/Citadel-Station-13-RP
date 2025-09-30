@@ -1,5 +1,5 @@
 ////////////////////////////
-//			Gamma Wraith
+//			Alpha Wraith
 ////////////////////////////
 
 /mob/living/simple_mob/construct/nuclear/alphawraith
