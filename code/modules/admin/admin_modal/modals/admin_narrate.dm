@@ -46,7 +46,6 @@
 	/// our identifying color
 	var/narrate_visual_color
 	/// our target image
-	#warn add visualization
 	//  TODO: visualize it
 	// var/image/narrate_target_image
 
@@ -297,8 +296,20 @@
 			use_los = !!params["target"]
 			return TRUE
 		if("narrate")
+			if(params["html"])
+				unsafe_raw_html_to_send = params["html"]
 			narrate()
 			qdel(src)
+			return TRUE
+		if("preview")
+			var/emit = params["html"]
+			var/list/html = list(
+				"<hr>",
+				SPAN_BLOCKQUOTE(emit, null),
+				"<hr>",
+				"<center>[SPAN_ADMIN("^^^ Narrate Preview ^^^")]</center>",
+			)
+			to_chat(owner.owner, jointext(html, ""))
 			return TRUE
 
 /datum/admin_modal/admin_narrate/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)

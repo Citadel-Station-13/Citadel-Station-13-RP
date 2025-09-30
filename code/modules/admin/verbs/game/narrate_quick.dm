@@ -81,6 +81,7 @@ ADMIN_VERB_DEF(narrate_quick, R_ADMIN, "Narrate (Quick)", "Perform narration.", 
 			"<hr>",
 			"<center><span style='font-weight: bold; color: red;'>^^^ ERROR: The above was not sent; [reject] ^^^</span></center>",
 		)
+		to_chat(caller, jointext(html, ""))
 		return
 
 	var/list/view_target_to_list = list()
