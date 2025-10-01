@@ -7268,6 +7268,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/strelka)
+"Fv" = (
+/obj/machinery/camera/network/security{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monowhite,
+/area/space)
 "Fx" = (
 /turf/simulated/floor/reinforced{
 	name = "Holodeck Projector Floor"
@@ -38051,7 +38057,7 @@ Ri
 Ri
 CA
 qI
-qI
+Fv
 UC
 CA
 Ri
