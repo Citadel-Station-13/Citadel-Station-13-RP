@@ -6622,9 +6622,6 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/obj/structure/wheelchairassist{
-	dir = 8
-	},
 /turf/simulated/floor/trap/wheelchair,
 /area/hallway/strelka/deck2)
 "sQ" = (
@@ -9228,7 +9225,6 @@
 /area/hallway/strelka/deck2)
 "Ae" = (
 /obj/effect/floor_decal/borderfloor,
-/obj/structure/wheelchairassist,
 /turf/simulated/floor/trap/wheelchair,
 /area/strelka/explo/emt)
 "Af" = (
@@ -13246,9 +13242,6 @@
 /area/security/strelka/warden)
 "Mn" = (
 /obj/effect/floor_decal/spline/fancy/wood,
-/obj/structure/wheelchairassist{
-	dir = 1
-	},
 /turf/simulated/floor/trap/wheelchair,
 /area/hallway/strelka/deck2)
 "Mo" = (

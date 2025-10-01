@@ -311,15 +311,6 @@
 /obj/machinery/air_alarm/west_mount,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/strelka/test)
-"br" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
-/obj/structure/wheelchairassist{
-	dir = 1
-	},
-/turf/simulated/floor/event/grass/grass1,
-/area/hallway/strelka/deck3)
 "bs" = (
 /obj/effect/floor_decal/grass_edge,
 /obj/machinery/light/spot{
@@ -4042,9 +4033,6 @@
 /area/hallway/strelka/deck3)
 "nY" = (
 /obj/machinery/door/firedoor/glass{
-	dir = 4
-	},
-/obj/structure/wheelchairassist{
 	dir = 4
 	},
 /turf/simulated/floor/trap/wheelchair,
@@ -35760,7 +35748,7 @@ ri
 hN
 rO
 EK
-br
+Kk
 pS
 Ui
 pS

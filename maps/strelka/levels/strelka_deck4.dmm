@@ -2074,9 +2074,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/wheelchairassist{
-	dir = 8
-	},
 /turf/simulated/floor/trap/wheelchair,
 /area/bridge/strelka)
 "iK" = (
@@ -7181,9 +7178,6 @@
 /obj/structure/flora/grass/event/bright_flowers1,
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/wheelchairassist{
-	dir = 1
-	},
 /turf/simulated/floor/trap/wheelchair,
 /area/hallway/strelka/deck4)
 "Fg" = (
