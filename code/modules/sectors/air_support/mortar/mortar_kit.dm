@@ -19,7 +19,7 @@
 
 /obj/item/mortar_kit/proc/deploy(turf/location)
 
-/obj/item/mortar_kit/proc/user_deploy(turf/location, datum/event_args/actor/actor)
+/obj/item/mortar_kit/proc/user_deploy(turf/location, datum/event_args/actor/actor, delay_mod = 1)
 
 /obj/item/mortar_kit/on_attack_self(datum/event_args/actor/e_args)
 	. = ..()
