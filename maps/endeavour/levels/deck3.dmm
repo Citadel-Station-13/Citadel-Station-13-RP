@@ -3780,6 +3780,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/machinery/computer/guestpass{
+	pixel_y = 32
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
 "cQm" = (
@@ -42173,7 +42176,7 @@ eEQ
 eEQ
 eEQ
 eEQ
-pRW
+vXk
 pRW
 pRW
 pRW
@@ -42367,7 +42370,7 @@ ooX
 iVS
 pvA
 eGX
-pRW
+vXk
 pRW
 pRW
 pRW
@@ -42561,7 +42564,7 @@ ooX
 fCO
 slv
 eGX
-pRW
+vXk
 pRW
 pRW
 pRW
@@ -42755,7 +42758,7 @@ ooX
 ooX
 ooX
 eGX
-pRW
+vXk
 pRW
 pRW
 pRW
@@ -42949,7 +42952,7 @@ dpX
 jNA
 hbK
 eGX
-pRW
+vXk
 pRW
 pRW
 pRW
@@ -43143,7 +43146,7 @@ ooX
 fCO
 slv
 eGX
-pRW
+vXk
 pRW
 pRW
 pRW
@@ -43337,7 +43340,7 @@ ooX
 ooX
 ooX
 eGX
-pRW
+vXk
 pRW
 pRW
 pRW
@@ -43531,7 +43534,7 @@ dpX
 jNA
 dMM
 eGX
-pRW
+vXk
 pRW
 pRW
 pRW
@@ -43725,7 +43728,7 @@ ooX
 fCO
 slv
 eGX
-pRW
+vXk
 pRW
 pRW
 pRW
