@@ -28089,10 +28089,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/fitness)
-"uWa" = (
-/obj/structure/table/rack/shelf,
-/turf/space,
-/area/space)
 "uWh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -66371,7 +66367,7 @@ mDp
 mDp
 mDp
 mDp
-uWa
+mDp
 pRW
 pRW
 pRW

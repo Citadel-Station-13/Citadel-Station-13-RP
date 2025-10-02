@@ -3193,6 +3193,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/rnd/robotics/smallcraft)
 "cPq" = (
@@ -5085,10 +5086,6 @@
 "eAu" = (
 /turf/simulated/wall/r_wall/prepainted/security,
 /area/engineering/portnacelle)
-"eBr" = (
-/obj/map_helper/access_helper/airlock/station/engineering/telecomms,
-/turf/space/basic,
-/area/space)
 "eBL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -5152,13 +5149,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/workshop)
-"eEF" = (
-/obj/structure/curtain/open/bed{
-	name = "brown curtain";
-	pixel_x = -32
-	},
-/turf/simulated/floor/wood,
-/area/crew_quarters/bar)
 "eFC" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -14700,10 +14690,10 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/black{
 	dir = 4
 	},
-/obj/item/pipe_meter,
 /obj/machinery/camera/network/engineering{
 	dir = 8
 	},
+/obj/machinery/meter,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "nku" = (
@@ -15200,7 +15190,9 @@
 /area/engineering/storage)
 "nAO" = (
 /obj/structure/table/woodentable,
-/obj/machinery/door/window/westright,
+/obj/machinery/door/window/westright{
+	req_one_access = list(35,28)
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/hydroponics)
 "nBc" = (
@@ -17087,14 +17079,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
-"pzA" = (
-/obj/effect/floor_decal/industrial/warning,
-/obj/effect/floor_decal/industrial/warning{
-	dir = 1
-	},
-/obj/structure/catwalk,
-/turf/simulated/floor/tiled/techmaint,
-/area/rnd/robotics/smallcraft)
 "pAj" = (
 /obj/landmark{
 	name = "carpspawn"
@@ -22333,10 +22317,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d4porthall)
-"uFk" = (
-/obj/structure/table/rack/shelf,
-/turf/simulated/wall/r_wall/prepainted/command,
-/area/ai_upload)
 "uFs" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -22988,6 +22968,7 @@
 "vkt" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/rnd/robotics/smallcraft)
 "vkX" = (
@@ -26233,6 +26214,10 @@
 	},
 /obj/effect/floor_decal/corner/lime/border{
 	dir = 8
+	},
+/obj/structure/curtain/open/bed{
+	name = "brown curtain";
+	pixel_x = -32
 	},
 /turf/simulated/floor/tiled,
 /area/hydroponics)
@@ -46849,7 +46834,7 @@ wYj
 dgk
 wPj
 vig
-eEF
+swV
 swV
 dzR
 sBb
@@ -50702,7 +50687,7 @@ xRj
 xRj
 xRj
 xRj
-eBr
+xRj
 jNg
 xRj
 xRj
@@ -53251,7 +53236,7 @@ dYW
 xNM
 nfJ
 nfJ
-uFk
+nfJ
 nfJ
 nfJ
 iyM
@@ -55199,7 +55184,7 @@ uAo
 eLR
 sGE
 vkt
-pzA
+aYc
 cPq
 djL
 sMD
