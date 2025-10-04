@@ -13,16 +13,6 @@
 /obj/structure/table/reinforced,
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/strelka/firingrange)
-"ad" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 4
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/catwalk,
-/turf/simulated/floor,
-/area/shuttle/civvie/strelka)
 "ae" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -43,12 +33,6 @@
 /obj/machinery/power/apc/west_mount,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/pilot)
-"ai" = (
-/obj/effect/shuttle_landmark/automatic{
-	name = "Hangar Section 1f"
-	},
-/turf/simulated/floor/reinforced,
-/area/strelka/hangardeck)
 "ak" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -70,21 +54,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge/strelka/balista)
-"aC" = (
-/obj/effect/floor_decal/spline/fancy/wood,
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
+"az" = (
+/obj/effect/shuttle_landmark/automatic{
+	name = "Hangar Section 1f"
 	},
-/obj/structure/flora/pottedplant/hedge,
-/obj/structure/railing,
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/simulated/floor/fey/forest_grass,
-/area/hallway/strelka/deck1)
+/turf/simulated/floor/reinforced,
+/area/strelka/hangardeck)
 "aD" = (
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 32;
@@ -106,13 +81,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/strelka/civ)
-"aI" = (
-/obj/machinery/camera/network/security{
-	dir = 8
-	},
-/obj/machinery/suit_storage_unit/exploration,
-/turf/simulated/floor/tiled/techmaint,
-/area/strelka/gateway)
 "aN" = (
 /turf/simulated/floor/tiled/techmaint,
 /area/strelka/gateway)
@@ -195,17 +163,6 @@
 	},
 /turf/simulated/wall/r_wall/prepainted/civilian,
 /area/shuttle/civvie/strelka)
-"bf" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/structure/flora/pottedplant/hedge,
-/obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
-/turf/simulated/floor/reinforced,
-/area/strelka/hangardeck)
 "bh" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -265,6 +222,19 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/firingrange)
+"bs" = (
+/obj/effect/floor_decal/corner_techfloor_grid{
+	dir = 10
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/obj/effect/floor_decal/grass_edge,
+/turf/simulated/floor/tiled/dark,
+/area/hallway/strelka/deck1)
 "bv" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/camera/network/security{
@@ -386,6 +356,24 @@
 /obj/item/clothing/mask/gas,
 /turf/simulated/floor/tiled/techmaint,
 /area/strelka/gateway)
+"bM" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/grass_edge,
+/obj/effect/floor_decal/grass_edge/corner{
+	dir = 9
+	},
+/obj/structure/cable/blue{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/computer/supplycomp{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/strelka/hangardeck)
 "bN" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -398,6 +386,15 @@
 /obj/structure/ship_munition/disperser_charge/mining,
 /turf/simulated/floor/tiled/dark,
 /area/bridge/strelka/balista)
+"bO" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 10
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/strelka/hangardeck)
 "bP" = (
 /obj/machinery/door/airlock{
 	name = "Pilot Locker Room"
@@ -513,6 +510,19 @@
 /obj/machinery/air_alarm/north_mount,
 /turf/simulated/floor/reinforced,
 /area/strelka/hangardeck)
+"cp" = (
+/obj/structure/lattice,
+/obj/structure/marker_beacon/green,
+/turf/simulated/floor,
+/area/strelka/fighterbay)
+"cr" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/structure/flora/ausbushes/ppflowers,
+/obj/machinery/computer/timeclock/premade/west,
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/strelka/hangardeck)
 "cs" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/effect/floor_decal/industrial/outline/red,
@@ -528,23 +538,6 @@
 "cu" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/strelka/firingrange)
-"cy" = (
-/obj/effect/floor_decal/industrial/halfstair{
-	dir = 8
-	},
-/obj/effect/floor_decal/grass_edge,
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
-/obj/machinery/light/small/old{
-	dir = 1
-	},
-/obj/structure/wheelchairassist{
-	dir = 4;
-	layer = 2
-	},
-/turf/simulated/floor/trap/wheelchair,
-/area/hallway/strelka/deck1)
 "cz" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/light/small/old{
@@ -665,36 +658,6 @@
 /obj/machinery/door/airlock,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/civvie/strelka)
-"de" = (
-/obj/effect/floor_decal/grass_edge{
-	dir = 5;
-	layer = 2.5;
-	name = "water grass edge"
-	},
-/obj/effect/floor_decal/grass_edge{
-	dir = 6;
-	layer = 2.5;
-	name = "water grass edge"
-	},
-/obj/effect/floor_decal/grass_edge{
-	dir = 9;
-	layer = 2.5;
-	name = "water grass edge"
-	},
-/obj/effect/floor_decal/grass_edge{
-	dir = 10;
-	layer = 2.5;
-	name = "water grass edge"
-	},
-/obj/structure/railing,
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/water/indoors,
-/area/strelka/hangardeck)
 "dh" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/grass_edge/corner{
@@ -710,16 +673,6 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/hangardeck)
-"dk" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 6
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/catwalk,
-/turf/simulated/floor,
-/area/shuttle/civvie/strelka)
 "dr" = (
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/structure/table/rack/shelf/steel,
@@ -806,6 +759,43 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/hallway/strelka/deck1)
+"dy" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/grass_edge,
+/obj/effect/floor_decal/grass_edge/corner{
+	dir = 5
+	},
+/obj/structure/cable/blue{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/machinery/smuggling/processing_unit/nt,
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/strelka/hangardeck)
+"dA" = (
+/obj/effect/floor_decal/grass_edge{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/grass_edge,
+/obj/structure/cable/blue{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "nt_cargo_transit"
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/strelka/hangardeck)
 "dB" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -837,18 +827,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/hallway/strelka/deck1)
-"dJ" = (
-/obj/effect/floor_decal/borderfloorblack,
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/effect/floor_decal/borderfloorblack/corner{
-	dir = 1
-	},
-/obj/structure/flora/pottedplant/hedge,
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
-/turf/simulated/floor/fey/forest_grass,
-/area/strelka/hangardeck)
 "dM" = (
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -881,6 +859,12 @@
 	},
 /turf/simulated/wall/r_wall/prepainted/civilian,
 /area/shuttle/civvie/strelka)
+"dX" = (
+/obj/structure/lattice,
+/obj/structure/marker_beacon/green,
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor,
+/area/strelka/fighterbaysec)
 "dZ" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -988,6 +972,17 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/strelka/gateway)
+"eF" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/flora/pottedplant/hedge,
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/strelka/hangardeck)
 "eH" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -1067,6 +1062,13 @@
 /obj/structure/sign/sec2,
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/hangardeck)
+"eT" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 9
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor,
+/area/shuttle/civvie/strelka)
 "eU" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/industrial/warning/dust,
@@ -1114,6 +1116,15 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/hangardeck)
+"fm" = (
+/obj/machinery/suit_storage_unit/exploration,
+/turf/simulated/floor/tiled/techmaint,
+/area/strelka/gateway)
+"fs" = (
+/obj/structure/stairs/spawner/north,
+/obj/structure/wheelchairassist,
+/turf/simulated/floor/trap/wheelchair,
+/area/strelka/pilot_EVA)
 "fx" = (
 /obj/machinery/computer/ship/engines,
 /obj/machinery/air_alarm/east_mount,
@@ -1129,19 +1140,6 @@
 /obj/effect/floor_decal/borderfloorblack,
 /obj/machinery/air_alarm/south_mount,
 /turf/simulated/floor/reinforced,
-/area/strelka/hangardeck)
-"fz" = (
-/obj/effect/floor_decal/grass_edge{
-	dir = 5
-	},
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/flora/pottedplant/hedge,
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/hangardeck)
 "fE" = (
 /obj/effect/floor_decal/grass_edge{
@@ -1168,6 +1166,16 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/security/strelka/armory)
+"fJ" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/strelka/hangardeck)
 "fK" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/structure/window/reinforced{
@@ -1231,12 +1239,6 @@
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/reinforced,
 /area/strelka/hangardeck)
-"gb" = (
-/obj/effect/shuttle_landmark/automatic{
-	name = "Hangar Section 2k"
-	},
-/turf/simulated/floor/reinforced,
-/area/strelka/hangardeck)
 "gc" = (
 /obj/machinery/vending/assist,
 /turf/simulated/floor/tiled/techfloor/monogrid,
@@ -1290,6 +1292,26 @@
 "gk" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/security/strelka/armory)
+"gm" = (
+/obj/effect/floor_decal/grass_edge{
+	dir = 10;
+	layer = 2.5;
+	name = "water grass edge"
+	},
+/obj/effect/floor_decal/grass_edge{
+	dir = 9;
+	layer = 2.5
+	},
+/obj/structure/flora/ausbushes/leafybush,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing,
+/turf/simulated/floor/water/indoors,
+/area/strelka/hangardeck)
 "gn" = (
 /obj/effect/floor_decal/borderfloorblack/full,
 /obj/effect/floor_decal/grass_edge/corner{
@@ -1337,6 +1359,11 @@
 /obj/item/clothing/head/helmet/space/emergency,
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/fighterbay)
+"gM" = (
+/obj/structure/lattice,
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor,
+/area/strelka/fighterbaysec)
 "gN" = (
 /obj/machinery/door/blast/shutters{
 	id = "sfc_check_shutter"
@@ -1360,12 +1387,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/strelka/civhangar)
-"gW" = (
-/obj/structure/lattice,
-/obj/structure/marker_beacon/green,
-/obj/machinery/shield_diffuser,
-/turf/simulated/floor,
-/area/strelka/fighterbaysec)
 "gZ" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -1454,13 +1475,6 @@
 /obj/effect/floor_decal/spline/fancy/wood,
 /turf/simulated/floor/carpet/patterened/blue,
 /area/strelka/pilot)
-"hr" = (
-/obj/structure/stairs/spawner/west,
-/obj/machinery/door/firedoor/glass{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/hallway/strelka/deck1)
 "hs" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -1496,27 +1510,6 @@
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/fighterbay)
-"hC" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 8
-	},
-/obj/machinery/light{
-	dir = 8
-	},
-/obj/effect/floor_decal/industrial/danger{
-	dir = 8
-	},
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/asteroid_steel,
-/area/strelka/hangardeck)
-"hI" = (
-/obj/effect/shuttle_landmark/automatic{
-	name = "Hangar Section 4j"
-	},
-/turf/simulated/floor/reinforced,
-/area/strelka/hangardeck)
 "hK" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 8
@@ -1557,6 +1550,27 @@
 "hV" = (
 /turf/simulated/floor/carpet/patterened/blue,
 /area/strelka/pilot)
+"hW" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 9
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 9
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
+/turf/simulated/floor/fey/forest_grass,
+/area/strelka/hangardeck)
 "hY" = (
 /obj/machinery/lapvend,
 /obj/machinery/computer/ship/navigation/telescreen{
@@ -1564,12 +1578,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/toolstorage)
-"ia" = (
-/obj/machinery/disperser/middle{
-	dir = 4
-	},
-/turf/simulated/floor/reinforced,
-/area/bridge/strelka/balista)
 "ib" = (
 /obj/machinery/requests_console/preset/security{
 	department = "Surface Security";
@@ -1676,19 +1684,13 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/security/strelka/armory2)
-"ik" = (
-/obj/machinery/door/window/brigdoor/eastright{
-	req_access = null;
-	req_one_access = list(19,44)
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/effect/floor_decal/industrial/outline/red,
-/obj/structure/ship_munition/disperser_charge/explosive,
-/turf/simulated/floor/tiled/dark,
-/area/bridge/strelka/balista)
+"im" = (
+/obj/structure/lattice,
+/obj/structure/marker_beacon/green,
+/obj/machinery/shield_diffuser,
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor,
+/area/strelka/fighterbaysec)
 "in" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -1701,6 +1703,21 @@
 /obj/landmark/spawnpoint/job/pilot,
 /turf/simulated/floor/carpet/patterened/blue,
 /area/strelka/pilot)
+"io" = (
+/obj/effect/floor_decal/spline/fancy/wood/cee{
+	dir = 8
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/obj/structure/flora/pottedplant/hedge,
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/fey/forest_grass,
+/area/hallway/strelka/deck1)
 "is" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/fighterbay)
@@ -1811,16 +1828,11 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/bridge/strelka/balista)
-"iZ" = (
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/borderfloorblack{
-	alpha = 255;
-	dir = 4
+"jb" = (
+/obj/effect/shuttle_landmark/automatic{
+	name = "Hangar Section 4h"
 	},
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/asteroid_steel,
+/turf/simulated/floor/reinforced,
 /area/strelka/hangardeck)
 "ji" = (
 /turf/simulated/wall/r_wall/prepainted,
@@ -2036,10 +2048,6 @@
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/dark,
 /area/bridge/strelka/balista)
-"kb" = (
-/obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/fey/forest_grass,
-/area/strelka/hangardeck)
 "kh" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -2081,16 +2089,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/strelka/civhangar)
-"kn" = (
-/obj/effect/floor_decal/borderfloorblack{
-	alpha = 255;
-	dir = 4
-	},
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
-/turf/simulated/floor/fey/forest_grass,
-/area/strelka/hangardeck)
 "kr" = (
 /obj/effect/floor_decal/grass_edge,
 /obj/structure/flora/ausbushes/fullgrass,
@@ -2136,30 +2134,11 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/civvie/strelka)
-"kM" = (
-/obj/effect/floor_decal/grass_edge{
-	dir = 1
+"kK" = (
+/obj/effect/shuttle_landmark/automatic{
+	name = "Hangar Section 2h"
 	},
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/grass_edge,
-/obj/structure/cable/blue{
-	icon_state = "4-8"
-	},
-/obj/machinery/light/small/old,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/camera/network/security{
-	dir = 1
-	},
-/obj/structure/cable/blue{
-	icon_state = "0-4"
-	},
-/obj/machinery/power/apc/south_mount,
-/turf/simulated/floor/tiled/asteroid_steel,
+/turf/simulated/floor/reinforced,
 /area/strelka/hangardeck)
 "kP" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -2297,6 +2276,30 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck1)
+"lC" = (
+/obj/machinery/camera/network/security{
+	dir = 8
+	},
+/obj/machinery/suit_storage_unit/exploration,
+/turf/simulated/floor/tiled/techmaint,
+/area/strelka/gateway)
+"lE" = (
+/obj/effect/floor_decal/grass_edge{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/effect/floor_decal/rust,
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/flora/pottedplant/hedge,
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/strelka/hangardeck)
 "lF" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/bridge/strelka/balista)
@@ -2488,6 +2491,12 @@
 	},
 /turf/simulated/floor/water/indoors,
 /area/strelka/hangardeck)
+"mc" = (
+/obj/effect/shuttle_landmark/automatic{
+	name = "Hangar Section 4j"
+	},
+/turf/simulated/floor/reinforced,
+/area/strelka/hangardeck)
 "me" = (
 /obj/machinery/light/small/old{
 	dir = 4
@@ -2582,17 +2591,20 @@
 /obj/effect/floor_decal/industrial/warning/dust,
 /turf/simulated/floor/reinforced,
 /area/strelka/fighterbay)
-"mC" = (
-/obj/structure/marker_beacon/green,
-/obj/structure/lattice,
-/turf/simulated/floor,
-/area/space)
 "mD" = (
 /obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/monodark,
 /area/hallway/strelka/deck1)
 "mE" = (
 /turf/simulated/floor/tiled/dark,
+/area/bridge/strelka/balista)
+"mH" = (
+/obj/machinery/shield_diffuser,
+/obj/machinery/camera/network/security{
+	network = list("Balista");
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
 /area/bridge/strelka/balista)
 "mI" = (
 /obj/effect/floor_decal/grass_edge{
@@ -2735,23 +2747,12 @@
 /obj/structure/sign/sec4,
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/hangardeck)
-"ns" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 8
+"nu" = (
+/obj/effect/shuttle_landmark/automatic{
+	name = "Hangar Section 2k"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/multi_tile/glass,
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 8
-	},
-/obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/machinery/door/blast/shutters{
-	id = "Secbaron"
-	},
-/turf/simulated/floor/tiled/techfloor/monogrid,
-/area/hallway/strelka/deck1)
+/turf/simulated/floor/reinforced,
+/area/strelka/hangardeck)
 "nv" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 10
@@ -2904,16 +2905,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/security/strelka/armory)
-"nZ" = (
-/obj/structure/flora/tree/fey/small_tree/tree5,
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
-/turf/simulated/floor/fey/forest_grass,
-/area/strelka/hangardeck)
 "od" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -2977,12 +2968,6 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/hangardeck)
-"ow" = (
-/obj/effect/shuttle_landmark/automatic{
-	name = "Hangar Section 4g"
-	},
-/turf/simulated/floor/reinforced,
-/area/strelka/hangardeck)
 "oy" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck1)
@@ -3008,6 +2993,16 @@
 /obj/machinery/camera/network/security,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/security/strelka/armory)
+"oD" = (
+/obj/structure/flora/tree/fey/small_tree/tree5,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
+/turf/simulated/floor/fey/forest_grass,
+/area/strelka/hangardeck)
 "oE" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -3039,6 +3034,36 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/toolstorage)
+"oR" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/multi_tile/glass,
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/machinery/door/blast/shutters{
+	id = "Secbaron"
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/hallway/strelka/deck1)
+"oS" = (
+/obj/effect/floor_decal/corner_techfloor_grid{
+	dir = 10
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/obj/effect/floor_decal/grass_edge,
+/turf/simulated/floor/tiled/monodark,
+/area/hallway/strelka/deck1)
 "oU" = (
 /obj/effect/shuttle_landmark/automatic{
 	name = "Hangar Section 2c"
@@ -3066,6 +3091,18 @@
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/fighterbay)
+"pg" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/structure/flora/ausbushes/fullgrass,
+/obj/effect/floor_decal/borderfloorblack/corner{
+	dir = 1
+	},
+/obj/structure/flora/pottedplant/hedge,
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
+/turf/simulated/floor/fey/forest_grass,
+/area/strelka/hangardeck)
 "ph" = (
 /obj/machinery/porta_turret/crescent{
 	density = 1;
@@ -3140,24 +3177,26 @@
 /obj/machinery/suit_storage_unit/pilot,
 /turf/simulated/floor/tiled/steel_grid,
 /area/strelka/pilot/eva)
-"pw" = (
-/obj/effect/floor_decal/borderfloorblack{
-	alpha = 255;
+"pt" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/grass_edge,
+/obj/effect/floor_decal/grass_edge/corner{
+	dir = 9
+	},
+/obj/structure/cable/blue{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloorblack{
-	alpha = 255;
-	dir = 1
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "nt_cargo_transit"
 	},
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/effect/floor_decal/industrial/danger{
-	dir = 4
-	},
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
+/obj/machinery/smuggling/input,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/hangardeck)
 "pz" = (
@@ -3184,6 +3223,15 @@
 /obj/item/target,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/firingrange)
+"pF" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/strelka/hangardeck)
 "pG" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
@@ -3288,6 +3336,16 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/hangardeck)
+"qj" = (
+/obj/structure/stairs/spawner/west,
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/obj/structure/wheelchairassist{
+	dir = 4
+	},
+/turf/simulated/floor/trap/wheelchair,
+/area/hallway/strelka/deck1)
 "ql" = (
 /obj/effect/floor_decal/grass_edge,
 /obj/effect/floor_decal/borderfloorblack/corner{
@@ -3347,11 +3405,13 @@
 /obj/structure/closet/bombclosetsecurity,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/security/strelka/armory)
-"qF" = (
-/obj/structure/stairs/spawner/north,
-/obj/structure/wheelchairassist,
-/turf/simulated/floor/trap/wheelchair,
-/area/strelka/pilot_EVA)
+"qD" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 4
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor,
+/area/shuttle/civvie/strelka)
 "qH" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/industrial/warning/dust,
@@ -3392,6 +3452,17 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/bridge/strelka/balista)
+"qV" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/floor_decal/borderfloorblack{
+	alpha = 255;
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/strelka/hangardeck)
 "qW" = (
 /obj/machinery/light/small/old{
 	dir = 8
@@ -3581,25 +3652,6 @@
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/reinforced,
 /area/strelka/fighterbaysec)
-"rY" = (
-/obj/structure/lattice,
-/obj/structure/marker_beacon/green,
-/obj/machinery/shield_diffuser,
-/turf/simulated/floor,
-/area/space)
-"sb" = (
-/obj/effect/floor_decal/grass_edge{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/flora/pottedplant/hedge,
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/asteroid_steel,
-/area/strelka/hangardeck)
 "sc" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -3607,6 +3659,13 @@
 	},
 /obj/structure/plasticflaps/mining,
 /turf/simulated/floor/tiled/techfloor/grid,
+/area/bridge/strelka/balista)
+"sd" = (
+/obj/machinery/shield_diffuser,
+/obj/machinery/camera/network/security{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
 /area/bridge/strelka/balista)
 "sf" = (
 /obj/effect/floor_decal/grass_edge{
@@ -3767,18 +3826,6 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/hangardeck)
-"sP" = (
-/obj/machinery/light/small/old{
-	dir = 1
-	},
-/obj/machinery/door/firedoor/glass{
-	dir = 8
-	},
-/obj/structure/wheelchairassist{
-	dir = 8
-	},
-/turf/simulated/floor/trap/wheelchair,
-/area/hallway/strelka/deck1)
 "sT" = (
 /obj/machinery/door/airlock/glass/security{
 	req_one_access = null
@@ -3834,6 +3881,21 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/pilot)
+"tf" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/strelka/hangardeck)
 "tg" = (
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 5
@@ -3939,33 +4001,12 @@
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/hangardeck)
-"tG" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/machinery/door/firedoor/glass{
-	dir = 1
+"tC" = (
+/obj/effect/shuttle_landmark/automatic{
+	name = "Hangar Section 1e"
 	},
 /turf/simulated/floor/reinforced,
 /area/strelka/hangardeck)
-"tL" = (
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
-/obj/structure/sign/deck/first{
-	pixel_y = 31
-	},
-/obj/effect/floor_decal/industrial/halfstair{
-	dir = 8
-	},
-/obj/effect/floor_decal/grass_edge,
-/obj/structure/wheelchairassist{
-	dir = 8;
-	layer = 2
-	},
-/turf/simulated/floor/trap/wheelchair,
-/area/hallway/strelka/deck1)
 "tM" = (
 /obj/effect/floor_decal/corner/white/border,
 /obj/machinery/door/blast/shutters{
@@ -4013,23 +4054,6 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/civvie/strelka)
-"um" = (
-/obj/effect/floor_decal/grass_edge{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/effect/floor_decal/rust,
-/obj/machinery/light{
-	dir = 8
-	},
-/obj/structure/flora/pottedplant/hedge,
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/asteroid_steel,
-/area/strelka/hangardeck)
 "uq" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/conveyor{
@@ -4056,19 +4080,6 @@
 "ux" = (
 /turf/simulated/wall/r_wall/prepainted/security,
 /area/strelka/checkpoint)
-"uD" = (
-/obj/machinery/door/window/brigdoor/eastleft{
-	req_access = null;
-	req_one_access = list(19,44)
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/effect/floor_decal/industrial/outline/blue,
-/obj/structure/ship_munition/disperser_charge/emp,
-/turf/simulated/floor/tiled/dark,
-/area/bridge/strelka/balista)
 "uF" = (
 /obj/machinery/button/remote/blast_door{
 	id = "armorylight";
@@ -4093,26 +4104,6 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/strelka/hangardeck)
-"uL" = (
-/obj/effect/floor_decal/grass_edge{
-	dir = 10;
-	layer = 2.5;
-	name = "water grass edge"
-	},
-/obj/effect/floor_decal/grass_edge{
-	dir = 9;
-	layer = 2.5
-	},
-/obj/structure/flora/ausbushes/leafybush,
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/railing,
-/turf/simulated/floor/water/indoors,
 /area/strelka/hangardeck)
 "uM" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -4148,6 +4139,34 @@
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
+/area/strelka/hangardeck)
+"uV" = (
+/obj/effect/floor_decal/grass_edge{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/grass_edge,
+/obj/structure/cable/blue{
+	icon_state = "4-8"
+	},
+/obj/machinery/light/small/old,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/camera/network/security{
+	dir = 1
+	},
+/obj/structure/cable/blue{
+	icon_state = "0-4"
+	},
+/obj/machinery/power/apc/south_mount,
+/obj/machinery/conveyor_switch/oneway{
+	id = "nt_cargo_transit"
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/hangardeck)
 "uX" = (
 /obj/effect/floor_decal/grass_edge{
@@ -4200,11 +4219,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck1)
-"vn" = (
-/obj/structure/lattice,
-/obj/machinery/shield_diffuser,
-/turf/simulated/floor,
-/area/strelka/fighterbaysec)
 "vp" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 4
@@ -4279,6 +4293,10 @@
 /obj/structure/flora/pottedplant/hedge,
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/hangardeck)
+"vJ" = (
+/obj/machinery/camera/network/security,
+/turf/space/basic,
+/area/space)
 "vK" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/firingrange)
@@ -4297,6 +4315,23 @@
 /obj/machinery/light/small/old,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/civvie/strelka)
+"vP" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 8
+	},
+/obj/effect/floor_decal/grass_edge,
+/obj/structure/cable/white{
+	icon_state = "4-8"
+	},
+/obj/machinery/light/small/old{
+	dir = 1
+	},
+/obj/structure/wheelchairassist{
+	dir = 4;
+	layer = 2
+	},
+/turf/simulated/floor/trap/wheelchair,
+/area/hallway/strelka/deck1)
 "vQ" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -4331,6 +4366,13 @@
 /obj/structure/flora/pottedplant/hedge,
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/hangardeck)
+"vW" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor,
+/area/shuttle/civvie/strelka)
 "vY" = (
 /obj/machinery/door/blast/shutters{
 	id = "sfc_check_shutter"
@@ -4344,39 +4386,19 @@
 "vZ" = (
 /turf/simulated/wall/r_wall/prepainted/security,
 /area/strelka/pilot_EVA)
-"wb" = (
-/turf/simulated/floor/tiled/asteroid_steel,
-/area/strelka/firingrange)
-"wc" = (
-/obj/effect/floor_decal/borderfloorblack/corner{
+"wa" = (
+/obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
-	dir = 8
-	},
-/obj/effect/floor_decal/borderfloorblack/corner{
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/asteroid_steel,
+/turf/simulated/floor/fey/forest_grass,
 /area/strelka/hangardeck)
-"wd" = (
-/obj/effect/floor_decal/industrial/halfstair{
-	dir = 8
-	},
-/obj/effect/floor_decal/grass_edge,
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
-/obj/machinery/light/small/old{
-	dir = 1
-	},
-/obj/structure/wheelchairassist{
-	dir = 8;
-	layer = 2
-	},
-/turf/simulated/floor/trap/wheelchair,
-/area/hallway/strelka/deck1)
+"wb" = (
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/strelka/firingrange)
 "wg" = (
 /obj/structure/cable/blue{
 	icon_state = "0-8"
@@ -4394,26 +4416,21 @@
 "wm" = (
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/gateway)
-"wn" = (
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/grass_edge,
-/obj/effect/floor_decal/grass_edge/corner{
-	dir = 9
-	},
-/obj/structure/cable/blue{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/turf/simulated/floor/tiled/asteroid_steel,
-/area/strelka/hangardeck)
 "wp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
 /turf/simulated/wall/r_wall/prepainted/civilian,
+/area/shuttle/civvie/strelka)
+"wq" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 6
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor,
 /area/shuttle/civvie/strelka)
 "ws" = (
 /obj/machinery/light/small/old{
@@ -4502,24 +4519,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/pilot/eva)
-"wK" = (
-/obj/effect/floor_decal/corner_techfloor_grid{
-	dir = 5
-	},
-/obj/effect/floor_decal/borderfloorblack,
-/obj/structure/cable/blue{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/effect/floor_decal/spline/plain,
-/obj/effect/floor_decal/grass_edge{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/monodark,
-/area/hallway/strelka/deck1)
 "wP" = (
 /obj/machinery/door/airlock/maintenance/sec{
 	req_one_access = null
@@ -4800,12 +4799,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/hallway/strelka/deck1)
-"yf" = (
-/obj/effect/shuttle_landmark/automatic{
-	name = "Hangar Section 1e"
-	},
-/turf/simulated/floor/reinforced,
-/area/strelka/hangardeck)
 "yg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -4900,6 +4893,19 @@
 /obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/reinforced,
 /area/strelka/fighterbay)
+"yG" = (
+/obj/machinery/door/window/brigdoor/eastleft{
+	req_access = null;
+	req_one_access = list(19,44)
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/structure/ship_munition/disperser_charge/fire,
+/turf/simulated/floor/tiled/dark,
+/area/bridge/strelka/balista)
 "yH" = (
 /turf/simulated/floor/wood/indoors,
 /area/strelka/checkpoint)
@@ -5127,20 +5133,16 @@
 "zu" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/strelka/pilot/eva)
+"zw" = (
+/obj/structure/wheelchairassist{
+	dir = 1
+	},
+/turf/simulated/floor/trap/wheelchair,
+/area/strelka/pilot_EVA)
 "zx" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/dark,
-/area/bridge/strelka/balista)
-"zz" = (
-/obj/machinery/atmospheric_field_generator/perma,
-/obj/machinery/disperser/front{
-	dir = 4
-	},
-/obj/machinery/camera/network/security{
-	network = list("Balista")
-	},
-/turf/simulated/floor/plating,
 /area/bridge/strelka/balista)
 "zD" = (
 /obj/machinery/light{
@@ -5156,6 +5158,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/security/strelka/armory2)
+"zI" = (
+/obj/structure/lattice,
+/turf/simulated/floor,
+/area/strelka/fighterbay)
 "zJ" = (
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 5
@@ -5188,10 +5194,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/obj/structure/wheelchairassist{
-	dir = 4
-	},
-/turf/simulated/floor/trap/wheelchair,
+/turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck1)
 "zP" = (
 /obj/effect/floor_decal/grass_edge/corner{
@@ -5212,19 +5215,6 @@
 "zR" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/security/strelka/armory)
-"zW" = (
-/obj/effect/floor_decal/borderfloorblack{
-	alpha = 255;
-	dir = 4
-	},
-/obj/structure/cable/blue{
-	icon_state = "1-2"
-	},
-/obj/effect/floor_decal/grass_edge{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor/monogrid,
-/area/hallway/strelka/deck1)
 "zY" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
@@ -5243,12 +5233,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/strelka/hangardeck)
-"As" = (
-/obj/machinery/computer/shuttle_control/explore/civvie_strelka{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/shuttle/civvie/strelka)
 "At" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -5309,13 +5293,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/fighterbay)
-"Bf" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/catwalk,
-/turf/simulated/floor,
-/area/shuttle/civvie/strelka)
 "Bg" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -5353,6 +5330,23 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/civvie/strelka)
+"Bs" = (
+/obj/structure/cable/white{
+	icon_state = "4-8"
+	},
+/obj/structure/sign/deck/first{
+	pixel_y = 31
+	},
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 8
+	},
+/obj/effect/floor_decal/grass_edge,
+/obj/structure/wheelchairassist{
+	dir = 8;
+	layer = 2
+	},
+/turf/simulated/floor/trap/wheelchair,
+/area/hallway/strelka/deck1)
 "Bu" = (
 /obj/machinery/flasher/portable,
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -5388,12 +5382,6 @@
 /obj/machinery/holopad/ship,
 /turf/simulated/floor/carpet/patterened/blue,
 /area/strelka/pilot)
-"BF" = (
-/obj/machinery/camera/network/security{
-	dir = 1
-	},
-/turf/space/basic,
-/area/space)
 "BK" = (
 /obj/effect/shuttle_landmark/automatic{
 	name = "Hangar Section 1a"
@@ -5467,6 +5455,18 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/civvie/strelka)
+"Cb" = (
+/obj/structure/cable/blue{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/wall/r_wall/prepainted,
+/area/strelka/hangardeck)
 "Cc" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -5474,27 +5474,29 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/hangardeck)
-"Cd" = (
-/obj/effect/floor_decal/spline/fancy/wood/cee{
-	dir = 8
-	},
-/obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/structure/flora/pottedplant/hedge,
-/obj/structure/railing,
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/fey/forest_grass,
-/area/hallway/strelka/deck1)
 "Cf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},
 /turf/simulated/wall/r_wall/prepainted/civilian,
 /area/shuttle/civvie/strelka)
+"Ch" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 8
+	},
+/obj/effect/floor_decal/grass_edge,
+/obj/structure/cable/white{
+	icon_state = "4-8"
+	},
+/obj/machinery/light/small/old{
+	dir = 1
+	},
+/obj/structure/wheelchairassist{
+	dir = 8;
+	layer = 2
+	},
+/turf/simulated/floor/trap/wheelchair,
+/area/hallway/strelka/deck1)
 "Ci" = (
 /obj/structure/cable/blue{
 	icon_state = "4-8"
@@ -5502,22 +5504,11 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/pilot/eva)
-"Cl" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 4
-	},
-/obj/structure/catwalk,
+"Cm" = (
+/obj/structure/marker_beacon/green,
+/obj/structure/lattice,
 /turf/simulated/floor,
-/area/shuttle/civvie/strelka)
-"Co" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
-/turf/simulated/floor/fey/forest_grass,
-/area/strelka/hangardeck)
+/area/space)
 "Cq" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
@@ -5571,17 +5562,21 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/hallway/strelka/deck1)
+"Cx" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/structure/flora/pottedplant/hedge,
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/strelka/hangardeck)
 "Cy" = (
 /obj/structure/flora/tree/fey/large_tree/tree2,
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/hangardeck)
-"CC" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 9
-	},
-/obj/structure/catwalk,
-/turf/simulated/floor,
-/area/shuttle/civvie/strelka)
 "CE" = (
 /obj/effect/floor_decal/borderfloorblack/corner{
 	alpha = 255;
@@ -5733,6 +5728,24 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/toolstorage)
+"Dj" = (
+/obj/effect/floor_decal/corner_techfloor_grid{
+	dir = 5
+	},
+/obj/effect/floor_decal/borderfloorblack,
+/obj/structure/cable/blue{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/effect/floor_decal/spline/plain,
+/obj/effect/floor_decal/grass_edge{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/hallway/strelka/deck1)
 "Dn" = (
 /obj/structure/cable/blue,
 /obj/machinery/power/sensor{
@@ -5749,18 +5762,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
-/area/strelka/hangardeck)
-"DB" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 8
-	},
-/obj/effect/floor_decal/industrial/danger{
-	dir = 8
-	},
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
-/turf/simulated/floor/fey/forest_grass,
 /area/strelka/hangardeck)
 "DC" = (
 /obj/effect/floor_decal/rust,
@@ -5876,6 +5877,18 @@
 /obj/structure/flora/ausbushes/ywflowers,
 /turf/simulated/floor/reinforced,
 /area/strelka/hangardeck)
+"Ee" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
+/turf/simulated/floor/fey/forest_grass,
+/area/strelka/hangardeck)
 "Ei" = (
 /obj/machinery/door/window/brigdoor/southleft{
 	req_access = null
@@ -5901,6 +5914,12 @@
 	},
 /turf/space/basic,
 /area/space)
+"El" = (
+/obj/effect/shuttle_landmark/automatic{
+	name = "Hangar Section 2l"
+	},
+/turf/simulated/floor/reinforced,
+/area/strelka/hangardeck)
 "Em" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/hardsuit/hazard/equipped,
@@ -6184,13 +6203,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck1)
-"EZ" = (
-/obj/machinery/shield_diffuser,
-/obj/machinery/camera/network/security{
-	dir = 4
-	},
-/turf/simulated/floor/reinforced,
-/area/bridge/strelka/balista)
 "Ff" = (
 /obj/machinery/suit_storage_unit/security,
 /obj/machinery/light/small/old{
@@ -6281,10 +6293,6 @@
 /obj/structure/lattice,
 /turf/space/basic,
 /area/space)
-"FI" = (
-/obj/structure/lattice,
-/turf/simulated/floor,
-/area/strelka/fighterbaysec)
 "FJ" = (
 /obj/effect/shuttle_landmark{
 	base_area = /area/space;
@@ -6317,7 +6325,13 @@
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/hangardeck)
-"FQ" = (
+"FN" = (
+/obj/machinery/computer/shuttle_control/explore/civvie_strelka{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/civvie/strelka)
+"FW" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 4
 	},
@@ -6333,32 +6347,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/gateway)
-"FR" = (
-/obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
-/turf/simulated/floor/reinforced,
-/area/strelka/hangardeck)
-"FS" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/structure/railing,
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/effect/floor_decal/grass_edge{
-	dir = 10;
-	layer = 2.5
-	},
-/obj/effect/floor_decal/grass_edge{
-	dir = 1;
-	layer = 2.5
-	},
-/obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/water/indoors,
-/area/hallway/strelka/deck1)
 "Ga" = (
 /obj/machinery/light/small/old{
 	dir = 4
@@ -6447,20 +6435,6 @@
 /obj/machinery/camera/network/security,
 /turf/simulated/floor/wood/indoors,
 /area/strelka/checkpoint)
-"Gs" = (
-/obj/effect/floor_decal/grass_edge{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/effect/floor_decal/rust,
-/obj/structure/flora/pottedplant/hedge,
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/asteroid_steel,
-/area/strelka/hangardeck)
 "Gt" = (
 /obj/effect/shuttle_landmark/automatic{
 	name = "Hangar Section 4e"
@@ -6523,15 +6497,6 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/hangardeck)
-"GN" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/techfloor/monogrid,
-/area/strelka/hangardeck)
 "GQ" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -6561,6 +6526,12 @@
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/reinforced,
 /area/strelka/hangardeck)
+"Hi" = (
+/obj/machinery/camera/network/security{
+	dir = 1
+	},
+/turf/space/basic,
+/area/space)
 "Hn" = (
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 8
@@ -6591,6 +6562,19 @@
 	id = "main_ext_shutter"
 	},
 /turf/simulated/floor/tiled/dark,
+/area/strelka/hangardeck)
+"Ht" = (
+/obj/effect/floor_decal/grass_edge{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/flora/pottedplant/hedge,
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/hangardeck)
 "Hv" = (
 /obj/structure/fuel_port{
@@ -6646,6 +6630,12 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/strelka/gateway)
+"HO" = (
+/obj/structure/lattice,
+/obj/structure/marker_beacon/green,
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor,
+/area/space)
 "HP" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/clothing/mask/gas/clear,
@@ -6804,6 +6794,10 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/hangardeck)
+"IE" = (
+/obj/structure/lattice,
+/turf/simulated/floor,
+/area/strelka/fighterbaysec)
 "IG" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/effect/floor_decal/industrial/outline/red,
@@ -6812,6 +6806,57 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/security/strelka/armory2)
+"II" = (
+/obj/effect/floor_decal/grass_edge{
+	dir = 5;
+	layer = 2.5;
+	name = "water grass edge"
+	},
+/obj/effect/floor_decal/grass_edge{
+	dir = 6;
+	layer = 2.5;
+	name = "water grass edge"
+	},
+/obj/effect/floor_decal/grass_edge{
+	dir = 9;
+	layer = 2.5;
+	name = "water grass edge"
+	},
+/obj/effect/floor_decal/grass_edge{
+	dir = 10;
+	layer = 2.5;
+	name = "water grass edge"
+	},
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/water/indoors,
+/area/strelka/hangardeck)
+"IN" = (
+/obj/effect/floor_decal/grass_edge{
+	dir = 5;
+	layer = 2.5;
+	name = "water grass edge"
+	},
+/obj/effect/floor_decal/grass_edge{
+	dir = 6;
+	layer = 2.5;
+	name = "water grass edge"
+	},
+/obj/structure/flora/ausbushes/reedbush,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing,
+/turf/simulated/floor/water/indoors,
+/area/strelka/hangardeck)
 "IP" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -7049,6 +7094,25 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/firingrange)
+"JG" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/effect/floor_decal/grass_edge{
+	dir = 10;
+	layer = 2.5
+	},
+/obj/effect/floor_decal/grass_edge{
+	dir = 1;
+	layer = 2.5
+	},
+/obj/structure/flora/ausbushes/fullgrass,
+/turf/simulated/floor/water/indoors,
+/area/hallway/strelka/deck1)
 "JH" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
@@ -7064,6 +7128,20 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/checkpoint)
+"JL" = (
+/obj/effect/floor_decal/grass_edge{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/effect/floor_decal/rust,
+/obj/structure/flora/pottedplant/hedge,
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/strelka/hangardeck)
 "JN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -7106,10 +7184,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/gateway)
-"Kb" = (
-/obj/structure/lattice,
-/turf/simulated/floor,
-/area/space)
 "Ke" = (
 /obj/machinery/light/small/old,
 /turf/simulated/floor/airless,
@@ -7167,6 +7241,16 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/toolstorage)
+"Kr" = (
+/obj/machinery/atmospheric_field_generator/perma,
+/obj/machinery/disperser/front{
+	dir = 4
+	},
+/obj/machinery/camera/network/security{
+	network = list("Balista")
+	},
+/turf/simulated/floor/plating,
+/area/bridge/strelka/balista)
 "Kt" = (
 /obj/structure/cable/white{
 	icon_state = "4-8"
@@ -7372,6 +7456,25 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/hallway/strelka/deck1)
+"LG" = (
+/obj/effect/floor_decal/grass_edge{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/grass_edge,
+/obj/structure/cable/blue{
+	icon_state = "4-8"
+	},
+/obj/machinery/light/small/old,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/point_redemption_vendor/smuggle/nt,
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/strelka/hangardeck)
 "LK" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 10;
@@ -7405,6 +7508,17 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/strelka/hangardeck)
+"Mc" = (
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
+/obj/effect/floor_decal/grass_edge{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/hallway/strelka/deck1)
 "Md" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/bridge/strelka/balista)
@@ -7429,16 +7543,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/civvie/strelka)
-"Mh" = (
-/obj/machinery/light{
-	dir = 8
-	},
-/obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
-/turf/simulated/floor/reinforced,
-/area/strelka/hangardeck)
 "Mk" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/security/strelka/armory2)
@@ -7479,44 +7583,6 @@
 	pixel_y = 31
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/hallway/strelka/deck1)
-"Mq" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 8
-	},
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 9
-	},
-/obj/effect/floor_decal/industrial/danger{
-	dir = 8
-	},
-/obj/effect/floor_decal/industrial/danger{
-	dir = 1
-	},
-/obj/effect/floor_decal/industrial/danger{
-	dir = 9
-	},
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
-/turf/simulated/floor/fey/forest_grass,
-/area/strelka/hangardeck)
-"Ms" = (
-/obj/effect/floor_decal/industrial/halfstair{
-	dir = 8
-	},
-/obj/effect/floor_decal/grass_edge,
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
-/obj/machinery/status_display{
-	pixel_y = 32
-	},
-/obj/structure/wheelchairassist{
-	dir = 4;
-	layer = 2
-	},
-/turf/simulated/floor/trap/wheelchair,
 /area/hallway/strelka/deck1)
 "Mt" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -7585,6 +7651,19 @@
 /obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck1)
+"MC" = (
+/obj/structure/lattice,
+/obj/structure/marker_beacon/green,
+/turf/simulated/floor,
+/area/space)
+"MD" = (
+/obj/structure/flora/pottedplant/hedge,
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/strelka/hangardeck)
 "MF" = (
 /obj/structure/closet/secure_closet/pilot,
 /obj/effect/floor_decal/techfloor{
@@ -7596,6 +7675,21 @@
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/steel_grid,
 /area/strelka/pilot/eva)
+"MG" = (
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/structure/flora/pottedplant/hedge,
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/fey/forest_grass,
+/area/hallway/strelka/deck1)
 "MH" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -7714,6 +7808,18 @@
 	},
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/simulated/floor/water/indoors,
+/area/hallway/strelka/deck1)
+"Nc" = (
+/obj/machinery/light/small/old{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/obj/structure/wheelchairassist{
+	dir = 8
+	},
+/turf/simulated/floor/trap/wheelchair,
 /area/hallway/strelka/deck1)
 "Nd" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -7850,6 +7956,19 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/strelka/civhangar)
+"NZ" = (
+/obj/effect/floor_decal/borderfloorblack{
+	alpha = 255;
+	dir = 4
+	},
+/obj/structure/cable/blue{
+	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/grass_edge{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/hallway/strelka/deck1)
 "Oh" = (
 /obj/machinery/light{
 	dir = 4
@@ -7870,13 +7989,6 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/checkpoint)
-"Oi" = (
-/obj/structure/lattice,
-/obj/structure/marker_beacon/green,
-/obj/machinery/shield_diffuser,
-/obj/machinery/shield_diffuser,
-/turf/simulated/floor,
-/area/strelka/fighterbaysec)
 "Oj" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -7949,6 +8061,12 @@
 /obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/security/strelka/armory3)
+"Oq" = (
+/obj/machinery/disperser/middle{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
+/area/bridge/strelka/balista)
 "Os" = (
 /obj/structure/railing{
 	dir = 1
@@ -7961,14 +8079,13 @@
 /obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/pilot/eva)
-"Ov" = (
-/obj/structure/table/carbon/reinforced,
-/obj/item/multitool/strelka_buffered{
-	name = "pre-linked multitool (strelkahub)"
+"OH" = (
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/machinery/door/firedoor/glass{
+	dir = 1
 	},
-/obj/item/storage/toolbox/mechanical,
-/turf/simulated/floor/tiled/techmaint,
-/area/strelka/gateway)
+/turf/simulated/floor/reinforced,
+/area/strelka/hangardeck)
 "OI" = (
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = 30
@@ -7993,14 +8110,31 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck1)
-"OP" = (
-/obj/structure/flora/pottedplant/hedge,
-/obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/machinery/door/firedoor/glass{
+"OR" = (
+/obj/machinery/door/window/brigdoor/eastleft{
+	req_access = null;
+	req_one_access = list(19,44)
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/simulated/floor/reinforced,
-/area/strelka/hangardeck)
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/structure/ship_munition/disperser_charge/emp,
+/turf/simulated/floor/tiled/dark,
+/area/bridge/strelka/balista)
+"OS" = (
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/machinery/door/blast/shutters{
+	density = 0;
+	dir = 2;
+	icon_state = "shutter0";
+	id = "sfc_check_shutter2";
+	name = "Surface Checkpoint Shutter";
+	opacity = 0
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/strelka/checkpoint)
 "OV" = (
 /obj/effect/floor_decal/borderfloorblack/corner,
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -8055,19 +8189,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/security/strelka/armory2)
-"Ph" = (
-/obj/machinery/door/window/brigdoor/eastleft{
-	req_access = null;
-	req_one_access = list(19,44)
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/effect/floor_decal/industrial/outline/blue,
-/obj/structure/ship_munition/disperser_charge/fire,
-/turf/simulated/floor/tiled/dark,
-/area/bridge/strelka/balista)
 "Pi" = (
 /obj/machinery/computer/timeclock/premade/north,
 /turf/simulated/floor/tiled/techfloor,
@@ -8229,6 +8350,19 @@
 /obj/map_helper/access_helper/airlock/station/security/equipment,
 /turf/simulated/floor/tiled/steel,
 /area/strelka/checkpoint)
+"PV" = (
+/obj/effect/floor_decal/grass_edge{
+	dir = 5
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/flora/pottedplant/hedge,
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/strelka/hangardeck)
 "PW" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 4
@@ -8236,19 +8370,6 @@
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/hangardeck)
-"PX" = (
-/obj/effect/floor_decal/corner_techfloor_grid{
-	dir = 10
-	},
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 1
-	},
-/obj/effect/floor_decal/spline/plain{
-	dir = 1
-	},
-/obj/effect/floor_decal/grass_edge,
-/turf/simulated/floor/tiled/dark,
-/area/hallway/strelka/deck1)
 "Qa" = (
 /obj/effect/floor_decal/spline/fancy/wood/cee{
 	dir = 4
@@ -8284,12 +8405,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/strelka/hangardeck)
-"Qi" = (
-/obj/effect/shuttle_landmark/automatic{
-	name = "Hangar Section 4h"
-	},
-/turf/simulated/floor/reinforced,
-/area/strelka/hangardeck)
 "Qj" = (
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 1
@@ -8313,16 +8428,18 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck1)
 "Qo" = (
-/obj/structure/wheelchairassist{
+/obj/machinery/door/window/brigdoor/eastright{
+	req_access = null;
+	req_one_access = list(19,44)
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/simulated/floor/trap/wheelchair,
-/area/strelka/pilot_EVA)
-"Qs" = (
-/obj/structure/lattice,
-/obj/structure/marker_beacon/green,
-/turf/simulated/floor,
-/area/strelka/fighterbaysec)
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/structure/ship_munition/disperser_charge/explosive,
+/turf/simulated/floor/tiled/dark,
+/area/bridge/strelka/balista)
 "Qu" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -8550,13 +8667,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/strelka/hangardeck)
-"RD" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/obj/structure/catwalk,
-/turf/simulated/floor,
-/area/shuttle/civvie/strelka)
 "RG" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/floor_decal/borderfloorblack{
@@ -8565,15 +8675,19 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/hangardeck)
+"RK" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor,
+/area/shuttle/civvie/strelka)
 "RO" = (
 /obj/effect/shuttle_landmark/automatic{
 	name = "Hangar Section 1d"
-	},
-/turf/simulated/floor/reinforced,
-/area/strelka/hangardeck)
-"RQ" = (
-/obj/effect/shuttle_landmark/automatic{
-	name = "Hangar Section 2h"
 	},
 /turf/simulated/floor/reinforced,
 /area/strelka/hangardeck)
@@ -8598,6 +8712,13 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/gateway)
+"RY" = (
+/obj/structure/flora/ausbushes/sparsegrass,
+/obj/machinery/smuggling/processing_unit_console{
+	pixel_y = -37
+	},
+/turf/simulated/floor/fey/forest_grass,
+/area/strelka/hangardeck)
 "Sa" = (
 /obj/effect/floor_decal/borderfloorblack/corner{
 	dir = 4
@@ -8734,19 +8855,6 @@
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/shuttle/civvie/strelka)
-"SE" = (
-/obj/machinery/suit_storage_unit/exploration,
-/turf/simulated/floor/tiled/techmaint,
-/area/strelka/gateway)
-"SG" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 10
-	},
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/asteroid_steel,
-/area/strelka/hangardeck)
 "SL" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -8772,6 +8880,16 @@
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/steel_grid,
 /area/strelka/pilot/eva)
+"SP" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/strelka/hangardeck)
 "SR" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -8788,25 +8906,11 @@
 	},
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/civhangar)
-"SW" = (
-/obj/structure/lattice,
-/obj/structure/marker_beacon/green,
-/turf/simulated/floor,
-/area/space)
-"SY" = (
-/obj/machinery/camera/network/security,
-/turf/space/basic,
-/area/space)
 "SZ" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/machinery/light/small/old,
 /turf/simulated/floor/reinforced,
 /area/strelka/hangardeck)
-"Te" = (
-/obj/structure/lattice,
-/obj/structure/marker_beacon/green,
-/turf/simulated/floor,
-/area/strelka/fighterbay)
 "Tj" = (
 /obj/machinery/computer/security,
 /obj/effect/floor_decal/borderfloor{
@@ -8816,18 +8920,6 @@
 	dir = 1
 	},
 /turf/simulated/floor/wood/indoors,
-/area/strelka/checkpoint)
-"Tm" = (
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 2;
-	icon_state = "shutter0";
-	id = "sfc_check_shutter2";
-	name = "Surface Checkpoint Shutter";
-	opacity = 0
-	},
-/turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/checkpoint)
 "Tp" = (
 /obj/structure/flora/tree/fey/small_tree/tree7,
@@ -8881,24 +8973,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck1)
-"TC" = (
-/obj/effect/floor_decal/grass_edge{
-	dir = 1
-	},
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/grass_edge,
-/obj/structure/cable/blue{
-	icon_state = "4-8"
-	},
-/obj/machinery/light/small/old,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/asteroid_steel,
-/area/strelka/hangardeck)
 "TI" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -8916,6 +8990,26 @@
 	},
 /obj/effect/floor_decal/industrial/danger{
 	dir = 8
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/strelka/hangardeck)
+"TL" = (
+/obj/effect/floor_decal/borderfloorblack{
+	alpha = 255;
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	alpha = 255;
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/hangardeck)
@@ -9021,6 +9115,19 @@
 /obj/structure/marker_beacon/green,
 /turf/simulated/floor/tiled/techmaint,
 /area/strelka/gateway)
+"Ud" = (
+/obj/effect/floor_decal/borderfloorblack/corner{
+	alpha = 255;
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack/corner{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/strelka/hangardeck)
 "Ue" = (
 /obj/effect/floor_decal/borderfloorblack/corner{
 	alpha = 255;
@@ -9067,19 +9174,6 @@
 /obj/item/vehicle_module/weapon/energy/phase,
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/fighterbay)
-"Ul" = (
-/obj/effect/floor_decal/corner_techfloor_grid{
-	dir = 10
-	},
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 1
-	},
-/obj/effect/floor_decal/spline/plain{
-	dir = 1
-	},
-/obj/effect/floor_decal/grass_edge,
-/turf/simulated/floor/tiled/monodark,
-/area/hallway/strelka/deck1)
 "Um" = (
 /obj/structure/table/bench/wooden,
 /obj/structure/flora/pottedplant/shoot{
@@ -9096,19 +9190,6 @@
 /obj/machinery/air_alarm/north_mount,
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/hangardeck)
-"Uo" = (
-/obj/machinery/door/window/brigdoor/eastright{
-	req_access = null;
-	req_one_access = list(19,44)
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/effect/floor_decal/industrial/outline/red,
-/obj/structure/ship_munition/disperser_charge/mining,
-/turf/simulated/floor/tiled/dark,
-/area/bridge/strelka/balista)
 "Up" = (
 /obj/structure/cable/blue{
 	icon_state = "4-8"
@@ -9175,6 +9256,29 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/civvie/strelka)
+"UA" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 8
+	},
+/obj/effect/floor_decal/grass_edge,
+/obj/structure/cable/white{
+	icon_state = "4-8"
+	},
+/obj/machinery/status_display{
+	pixel_y = 32
+	},
+/obj/structure/wheelchairassist{
+	dir = 4;
+	layer = 2
+	},
+/turf/simulated/floor/trap/wheelchair,
+/area/hallway/strelka/deck1)
+"UB" = (
+/obj/effect/shuttle_landmark/automatic{
+	name = "Hangar Section 4g"
+	},
+/turf/simulated/floor/reinforced,
+/area/strelka/hangardeck)
 "UC" = (
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 5
@@ -9205,6 +9309,19 @@
 /obj/structure/flora/pottedplant/hedge,
 /turf/simulated/floor/fey/forest_grass,
 /area/strelka/hangardeck)
+"UL" = (
+/obj/machinery/door/window/brigdoor/eastright{
+	req_access = null;
+	req_one_access = list(19,44)
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/structure/ship_munition/disperser_charge/mining,
+/turf/simulated/floor/tiled/dark,
+/area/bridge/strelka/balista)
 "UM" = (
 /obj/machinery/atmospherics/component/unary/engine{
 	dir = 8
@@ -9226,6 +9343,13 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/hangardeck)
+"UW" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor,
+/area/shuttle/civvie/strelka)
 "UY" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -9300,6 +9424,14 @@
 "Vw" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/checkpoint)
+"VB" = (
+/obj/structure/table/carbon/reinforced,
+/obj/item/multitool/strelka_buffered{
+	name = "pre-linked multitool (strelkahub)"
+	},
+/obj/item/storage/toolbox/mechanical,
+/turf/simulated/floor/tiled/techmaint,
+/area/strelka/gateway)
 "VC" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -9307,17 +9439,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/bridge/strelka/balista)
-"VD" = (
-/obj/effect/floor_decal/spline/fancy/wood,
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
-	},
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/effect/floor_decal/grass_edge{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/asteroid_steel,
-/area/hallway/strelka/deck1)
 "VJ" = (
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -9333,27 +9454,6 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/hallway/strelka/deck1)
-"VK" = (
-/obj/effect/floor_decal/grass_edge{
-	dir = 5;
-	layer = 2.5;
-	name = "water grass edge"
-	},
-/obj/effect/floor_decal/grass_edge{
-	dir = 6;
-	layer = 2.5;
-	name = "water grass edge"
-	},
-/obj/structure/flora/ausbushes/reedbush,
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/railing,
-/turf/simulated/floor/water/indoors,
-/area/strelka/hangardeck)
 "VL" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/white/border,
@@ -9409,17 +9509,6 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/civvie/strelka)
-"VW" = (
-/obj/effect/floor_decal/spline/fancy/wood,
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
-	},
-/obj/effect/floor_decal/grass_edge{
-	dir = 4
-	},
-/obj/structure/ladder/teleporter/up,
-/turf/simulated/floor/tiled/monodark,
-/area/hallway/strelka/deck1)
 "VX" = (
 /turf/simulated/floor/airless,
 /area/bridge/strelka/balista)
@@ -9429,16 +9518,18 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/civhangar)
-"Wc" = (
-/obj/machinery/light{
-	dir = 8
+"Wa" = (
+/obj/structure/lattice,
+/turf/simulated/floor,
+/area/space)
+"Wi" = (
+/obj/structure/railing{
+	dir = 1
 	},
-/obj/structure/flora/pottedplant/hedge,
-/obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/door/firedoor/glass{
 	dir = 1
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/fey/forest_grass,
 /area/strelka/hangardeck)
 "Wk" = (
 /obj/effect/shuttle_landmark/automatic{
@@ -9815,6 +9906,11 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/security/strelka/armory)
+"Xo" = (
+/obj/structure/lattice,
+/obj/structure/marker_beacon/green,
+/turf/simulated/floor,
+/area/strelka/fighterbaysec)
 "Xs" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 9
@@ -9954,6 +10050,17 @@
 /obj/machinery/fire_alarm/west_mount,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/hangardeck)
+"Yo" = (
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/effect/floor_decal/grass_edge{
+	dir = 4
+	},
+/obj/structure/ladder/teleporter/up,
+/turf/simulated/floor/tiled/monodark,
+/area/hallway/strelka/deck1)
 "Yp" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/airless,
@@ -10007,12 +10114,6 @@
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/simulated/floor/reinforced,
 /area/strelka/hangardeck)
-"YA" = (
-/obj/effect/shuttle_landmark/automatic{
-	name = "Hangar Section 2l"
-	},
-/turf/simulated/floor/reinforced,
-/area/strelka/hangardeck)
 "YB" = (
 /obj/structure/cable/white{
 	icon_state = "2-4"
@@ -10035,14 +10136,6 @@
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/steel_grid,
 /area/strelka/pilot/eva)
-"YG" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 8
-	},
-/obj/structure/flora/ausbushes/ppflowers,
-/obj/machinery/computer/timeclock/premade/west,
-/turf/simulated/floor/tiled/asteroid_steel,
-/area/strelka/hangardeck)
 "YH" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/effect/floor_decal/industrial/outline/blue,
@@ -10088,10 +10181,6 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/fighterbaysec)
-"YQ" = (
-/obj/structure/lattice,
-/turf/simulated/floor,
-/area/strelka/fighterbay)
 "YR" = (
 /obj/structure/cable/blue{
 	icon_state = "1-2"
@@ -10134,14 +10223,6 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/dark,
 /area/strelka/pilot_EVA)
-"Zd" = (
-/obj/machinery/shield_diffuser,
-/obj/machinery/camera/network/security{
-	network = list("Balista");
-	dir = 4
-	},
-/turf/simulated/floor/reinforced,
-/area/bridge/strelka/balista)
 "Zg" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/grass_edge,
@@ -22578,7 +22659,7 @@ uO
 qc
 Kj
 jR
-SE
+fm
 QE
 QE
 vu
@@ -22772,7 +22853,7 @@ YR
 UZ
 YR
 EI
-SE
+fm
 QE
 QE
 vu
@@ -22956,7 +23037,7 @@ QE
 QE
 td
 me
-Ov
+VB
 qc
 cC
 aN
@@ -22966,7 +23047,7 @@ cC
 qc
 Av
 me
-aI
+lC
 QE
 QE
 BM
@@ -23145,7 +23226,7 @@ HC
 HC
 Tz
 HC
-SG
+bO
 QE
 QE
 QE
@@ -23154,7 +23235,7 @@ QE
 QE
 QE
 QE
-FQ
+FW
 bb
 QE
 QE
@@ -23339,11 +23420,11 @@ Bg
 Bg
 Bg
 Bg
-wc
+Ud
 ou
 vN
 CO
-YG
+cr
 bT
 Ym
 bw
@@ -23362,7 +23443,7 @@ Nv
 Nv
 Nv
 Nv
-Wc
+eF
 Nv
 Nv
 Nv
@@ -23533,7 +23614,7 @@ KF
 fX
 YO
 eS
-pw
+TL
 Bg
 Bg
 Bg
@@ -23556,7 +23637,7 @@ Nv
 Nv
 Nv
 Nv
-bf
+Cx
 Nv
 Nv
 Nv
@@ -23727,7 +23808,7 @@ Nv
 Nv
 Nv
 Nv
-OP
+MD
 Nv
 Nv
 Nv
@@ -23921,7 +24002,7 @@ Nv
 Nv
 Nv
 Nv
-FR
+OH
 Nv
 BK
 Nv
@@ -23944,7 +24025,7 @@ Nv
 Nv
 Nv
 Nv
-Mh
+SP
 Nv
 Nv
 Nv
@@ -23958,7 +24039,7 @@ Nv
 Nv
 Tt
 qL
-SY
+vJ
 vu
 vu
 lx
@@ -24115,7 +24196,7 @@ Nv
 Nv
 Nv
 Nv
-bf
+Cx
 Nv
 Nv
 Nv
@@ -24138,7 +24219,7 @@ Nv
 Nv
 Nv
 Nv
-tG
+fJ
 Nv
 Nv
 Nv
@@ -24289,7 +24370,7 @@ vu
 vu
 vu
 vu
-BF
+Hi
 qL
 Fn
 Nv
@@ -24303,7 +24384,7 @@ Nv
 Nv
 Nv
 Nv
-RQ
+kK
 Nv
 Nv
 Nv
@@ -24503,7 +24584,7 @@ Nv
 Nv
 Nv
 Nv
-Wc
+eF
 Nv
 Nv
 Nv
@@ -24526,7 +24607,7 @@ Nv
 Nv
 Nv
 Nv
-Mh
+SP
 Nv
 Nv
 Nv
@@ -24697,7 +24778,7 @@ Nv
 Nv
 Nv
 Nv
-FR
+OH
 Nv
 Nv
 Nv
@@ -24720,7 +24801,7 @@ Nv
 Nv
 Nv
 Nv
-tG
+fJ
 Nv
 Nv
 Nv
@@ -24891,16 +24972,16 @@ Nv
 Nv
 Nv
 Nv
-FR
+OH
 Nv
 LZ
 Nv
 Nv
-yf
+tC
 Nv
 sf
 XT
-uL
+gm
 xM
 bW
 Nv
@@ -25085,7 +25166,7 @@ Nv
 Nv
 Nv
 Nv
-bf
+Cx
 Nv
 Nv
 Nv
@@ -25094,7 +25175,7 @@ Nv
 Nv
 za
 kr
-VK
+IN
 xM
 Qy
 Nv
@@ -25108,7 +25189,7 @@ Nv
 Nv
 Nv
 Nv
-Wc
+eF
 rF
 Nv
 Nv
@@ -25473,7 +25554,7 @@ Nv
 Nv
 Nv
 Nv
-Wc
+eF
 Nv
 Nv
 Nv
@@ -25497,7 +25578,7 @@ Ln
 Xe
 Sa
 iN
-Wc
+eF
 Nv
 Nv
 Nv
@@ -25667,7 +25748,7 @@ Nv
 Nv
 NX
 Nv
-FR
+OH
 Nv
 Nv
 Nv
@@ -25677,7 +25758,7 @@ Nv
 za
 XT
 jQ
-kM
+uV
 rL
 jW
 jW
@@ -25691,7 +25772,7 @@ jW
 rL
 ae
 tz
-bf
+Cx
 Nv
 Nv
 Nv
@@ -25855,23 +25936,23 @@ Nv
 Nv
 Nv
 Nv
-gb
+nu
 Nv
 Nv
 Nv
 Nv
 Nv
-FR
+OH
 Nv
 hu
 Nv
 Nv
-ai
+az
 Nv
 Ub
 XT
-de
-xM
+II
+dA
 ZP
 ZW
 SS
@@ -25890,7 +25971,7 @@ Nv
 Ar
 Nv
 Nv
-ow
+UB
 Nv
 Nv
 Nv
@@ -26055,7 +26136,7 @@ Nv
 Nv
 Nv
 Nv
-bf
+Cx
 Nv
 Nv
 Nv
@@ -26065,7 +26146,7 @@ Nv
 mI
 Id
 uX
-sN
+pt
 ZP
 Ju
 nQ
@@ -26079,7 +26160,7 @@ PC
 Sf
 uG
 iN
-Mh
+SP
 Nv
 Nv
 Nv
@@ -26259,21 +26340,21 @@ Nv
 VR
 hp
 HU
-UQ
+dy
 ZP
 hS
 wG
 QP
 sJ
 th
-As
+FN
 QP
 wG
 PC
 Sf
 uG
 iN
-tG
+fJ
 Nv
 Nv
 Nv
@@ -26443,7 +26524,7 @@ Nv
 Nv
 Nv
 Nv
-hC
+tf
 xi
 qi
 Nv
@@ -26452,9 +26533,9 @@ Nv
 Nv
 qL
 eQ
-kb
-xM
-ZP
+RY
+Cb
+rL
 ss
 wG
 fx
@@ -26637,7 +26718,7 @@ Nv
 Nv
 Nv
 Nv
-GN
+pF
 zf
 vv
 Nv
@@ -26647,7 +26728,7 @@ Rj
 Vd
 XT
 rG
-TC
+LG
 ZP
 hS
 wG
@@ -26661,7 +26742,7 @@ PC
 Sf
 MX
 lw
-Wc
+eF
 Nv
 Nv
 Nv
@@ -26841,7 +26922,7 @@ xi
 Ko
 NU
 pl
-wn
+bM
 ZP
 gU
 zl
@@ -26855,7 +26936,7 @@ kl
 Sf
 IX
 lw
-bf
+Cx
 Nv
 Nv
 Nv
@@ -27025,7 +27106,7 @@ Nv
 Nv
 Nv
 Nv
-um
+lE
 zf
 zf
 zf
@@ -27219,7 +27300,7 @@ Nv
 Nv
 Nv
 Nv
-Gs
+JL
 zf
 Da
 Bg
@@ -27243,7 +27324,7 @@ mT
 Sf
 Cy
 lw
-Mh
+SP
 Nv
 Nv
 Nv
@@ -27407,13 +27488,13 @@ Nv
 Nv
 Nv
 Nv
-YA
+El
 Nv
 Nv
 Nv
 DZ
 Nv
-Gs
+JL
 Iv
 Vw
 ux
@@ -27437,7 +27518,7 @@ IP
 rL
 eg
 dt
-tG
+fJ
 Nv
 Nv
 Nv
@@ -27607,7 +27688,7 @@ Nv
 Nv
 Nv
 Nv
-sb
+Ht
 zf
 ux
 mP
@@ -27637,10 +27718,10 @@ yr
 Nv
 Nv
 Nv
-Qi
+jb
 Nv
 Nv
-hI
+mc
 Nv
 fy
 qL
@@ -27801,9 +27882,9 @@ Nv
 Nv
 Nv
 Nv
-Gs
+JL
 zf
-Tm
+OS
 Tj
 si
 yH
@@ -27816,16 +27897,16 @@ rL
 VL
 bG
 Eb
-Cl
-CC
-RD
+qD
+eT
+UW
 wu
 tM
 IP
 rL
 dB
 iN
-Wc
+eF
 Nv
 Nv
 Nv
@@ -27995,7 +28076,7 @@ Nv
 Nv
 Nv
 Nv
-fz
+PV
 zf
 ux
 fV
@@ -28010,16 +28091,16 @@ rL
 FK
 rt
 kJ
-Bf
-dk
-ad
+vW
+wq
+RK
 Bp
 lu
 yA
 rL
 uG
 iN
-bf
+Cx
 Nv
 Nv
 Nv
@@ -28032,7 +28113,7 @@ Nv
 Nv
 fT
 qL
-SY
+vJ
 vu
 vu
 vu
@@ -28172,7 +28253,7 @@ vu
 Ek
 vu
 vu
-BF
+Hi
 qL
 bh
 Nv
@@ -28189,7 +28270,7 @@ qs
 qs
 Nv
 Nv
-Co
+Wi
 EB
 ux
 CI
@@ -28214,13 +28295,13 @@ rL
 uG
 Zg
 np
-FR
-FR
-FR
+OH
+OH
+OH
 qL
-Mq
-DB
-dJ
+hW
+Ee
+pg
 qL
 qL
 fQ
@@ -28383,7 +28464,7 @@ XG
 qs
 Nv
 Nv
-nZ
+oD
 EB
 wP
 yH
@@ -28407,7 +28488,7 @@ ZW
 rL
 uG
 BX
-hC
+tf
 TK
 yn
 yn
@@ -28577,7 +28658,7 @@ vL
 qs
 Qh
 lv
-kn
+wa
 ZB
 ux
 Gp
@@ -28601,7 +28682,7 @@ ZW
 rL
 WX
 bv
-iZ
+qV
 xY
 fl
 pi
@@ -28969,7 +29050,7 @@ TZ
 Nr
 pn
 DD
-ns
+oR
 nw
 oE
 aY
@@ -29168,7 +29249,7 @@ lI
 lI
 lX
 IQ
-zW
+NZ
 IS
 ge
 lI
@@ -29361,9 +29442,9 @@ Ug
 xa
 Bn
 Bn
-Ul
-Cd
-wK
+oS
+io
+Dj
 bx
 bx
 oy
@@ -29555,8 +29636,8 @@ Ug
 zc
 KR
 AH
-PX
-aC
+bs
+MG
 wE
 Qj
 bx
@@ -29932,8 +30013,8 @@ SR
 xU
 eC
 qs
-qF
-Qo
+fs
+zw
 Im
 Vi
 yi
@@ -30332,7 +30413,7 @@ PK
 lJ
 ji
 Ye
-VD
+Mc
 Mz
 VN
 hY
@@ -30719,8 +30800,8 @@ zR
 zR
 zR
 ji
-cy
-FS
+vP
+JG
 Hn
 VN
 Ji
@@ -30913,7 +30994,7 @@ dr
 YH
 zR
 ji
-tL
+Bs
 Nb
 Uq
 VN
@@ -31088,10 +31169,10 @@ iw
 ph
 gE
 gE
-gW
+dX
 gE
 gE
-Oi
+im
 gE
 gE
 ti
@@ -31125,10 +31206,10 @@ is
 VO
 gE
 gE
-Te
+cp
 gE
 gE
-Te
+cp
 gE
 gE
 ph
@@ -31282,10 +31363,10 @@ gE
 iw
 gE
 gE
-FI
+IE
 gE
 gE
-vn
+gM
 gE
 gE
 ti
@@ -31319,10 +31400,10 @@ is
 VO
 gE
 gE
-YQ
+zI
 gE
 gE
-YQ
+zI
 gE
 gE
 iw
@@ -31473,13 +31554,13 @@ vu
 vu
 vu
 vu
-rY
+HO
 FF
 FF
-Qs
+Xo
 FF
 FF
-Qs
+Xo
 FF
 FF
 JA
@@ -31496,7 +31577,7 @@ oV
 zR
 ji
 cm
-VW
+Yo
 OJ
 VN
 XX
@@ -31513,13 +31594,13 @@ is
 kT
 FF
 FF
-Qs
+Xo
 FF
 FF
-Te
+cp
 FF
 FF
-rY
+HO
 vu
 vu
 vu
@@ -31667,7 +31748,7 @@ vu
 vu
 vu
 vu
-Kb
+Wa
 gE
 gE
 vu
@@ -31689,7 +31770,7 @@ Bu
 fI
 zR
 ji
-Ms
+UA
 QC
 kj
 VN
@@ -31713,7 +31794,7 @@ gE
 gE
 gE
 gE
-Kb
+Wa
 vu
 vu
 vu
@@ -31861,7 +31942,7 @@ vu
 vu
 vu
 vu
-SW
+MC
 vu
 vu
 vu
@@ -31883,7 +31964,7 @@ dE
 dE
 Mk
 ji
-wd
+Ch
 wX
 Hn
 VN
@@ -31907,7 +31988,7 @@ vu
 vu
 vu
 vu
-mC
+Cm
 vu
 vu
 vu
@@ -32659,7 +32740,7 @@ jH
 HV
 Mk
 ji
-Ms
+UA
 Kf
 OX
 ml
@@ -32853,7 +32934,7 @@ jH
 Xb
 Mk
 ji
-wd
+Ch
 TN
 sE
 Rm
@@ -33046,11 +33127,11 @@ dE
 ms
 dE
 Mk
-zN
+qj
 js
 dM
 UC
-hr
+zN
 RS
 Nd
 hV
@@ -33240,7 +33321,7 @@ Oo
 CL
 CL
 Uy
-sP
+Nc
 cm
 NV
 Gk
@@ -34788,10 +34869,10 @@ vu
 vu
 lF
 lF
-ik
-uD
-Uo
-Ph
+Qo
+OR
+UL
+yG
 lF
 uQ
 Lq
@@ -35563,7 +35644,7 @@ vu
 vu
 vu
 vu
-BF
+Hi
 lF
 lF
 sc
@@ -35577,7 +35658,7 @@ DW
 Vb
 Md
 lF
-SY
+vJ
 vu
 vu
 vu
@@ -36540,7 +36621,7 @@ vu
 ym
 lF
 Md
-ia
+Oq
 Md
 lF
 ym
@@ -36734,7 +36815,7 @@ vu
 vu
 lF
 Md
-zz
+Kr
 Md
 lF
 vu
@@ -37121,9 +37202,9 @@ vu
 vu
 vu
 vu
-Zd
+mH
 lt
-EZ
+sd
 vu
 vu
 vu
