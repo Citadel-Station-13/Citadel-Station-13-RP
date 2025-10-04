@@ -238,6 +238,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/rdoffice)
+"aig" = (
+/obj/machinery/vending/wallmed1{
+	name = "Emergency NanoMed";
+	dir = 8;
+	pixel_x = 24
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/maintenance/research/xenobio)
 "ait" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/storage/firstaid/adv,
@@ -1130,6 +1138,17 @@
 "aRr" = (
 /turf/simulated/wall/prepainted/medical,
 /area/medical/cmo_dorm)
+"aRE" = (
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
+/obj/map_helper/access_helper/airlock/station/science/department,
+/obj/machinery/door/airlock/glass/research{
+	name = "Emergency Showers";
+	req_one_access = null
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/research/researchdivision)
 "aSn" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -1907,6 +1926,22 @@
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/aft)
+"bxZ" = (
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10,
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 8
+	},
+/obj/machinery/shower{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/maintenance/research/xenobio)
 "byq" = (
 /obj/structure/closet,
 /obj/random/maintenance/clean,
@@ -3383,6 +3418,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
+"cqF" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/maintenance/research/xenobio)
 "cqH" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -6243,6 +6284,12 @@
 /obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/plating,
 /area/maintenance/fpmaint2)
+"elp" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/maintenance/research/xenobio)
 "elS" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -8769,6 +8816,23 @@
 	},
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2fwdhall)
+"fZg" = (
+/obj/effect/floor_decal/steeldecal/steel_decals10,
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 8
+	},
+/obj/structure/closet/firecloset/full,
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/maintenance/research/xenobio)
 "fZv" = (
 /obj/machinery/atmospherics/pipe/manifold/visible,
 /obj/machinery/meter,
@@ -14695,18 +14759,21 @@
 /turf/simulated/floor/tiled,
 /area/endeavour/hallway/d2afthall)
 "kBc" = (
-/obj/machinery/door/firedoor/glass{
+/obj/effect/floor_decal/steeldecal/steel_decals10,
+/obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 4
 	},
-/obj/machinery/door/airlock/maintenance/rnd,
-/obj/structure/cable/green{
-	icon_state = "1-2"
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/map_helper/access_helper/airlock/station/science/department,
-/turf/simulated/floor/tiled,
-/area/rnd/research/researchdivision)
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 8
+	},
+/obj/machinery/shower{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/maintenance/research/xenobio)
 "kBG" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -23002,6 +23069,27 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virology)
+"qsq" = (
+/obj/structure/extinguisher_cabinet{
+	pixel_x = -27
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10,
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/structure/table/reinforced,
+/obj/structure/window/reinforced/tinted/frosted,
+/turf/simulated/floor/tiled/techmaint,
+/area/maintenance/research/xenobio)
 "qsG" = (
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /turf/simulated/floor/tiled/white,
@@ -24270,7 +24358,10 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/obj/machinery/door/airlock/maintenance/rnd,
+/obj/machinery/door/airlock/glass/research{
+	name = "Emergency Showers";
+	req_one_access = null
+	},
 /obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
@@ -27770,6 +27861,10 @@
 /obj/structure/grille,
 /turf/simulated/floor/airless/ceiling,
 /area/space)
+"tUs" = (
+/obj/machinery/air_alarm/north_mount,
+/turf/simulated/floor/tiled/techmaint,
+/area/maintenance/research/xenobio)
 "tUw" = (
 /obj/machinery/light_switch{
 	pixel_x = 25
@@ -32230,6 +32325,9 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
+"xhH" = (
+/turf/simulated/floor/tiled/techmaint,
+/area/maintenance/research/xenobio)
 "xhU" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
@@ -45461,11 +45559,11 @@ nfb
 uMH
 rYv
 gRw
+bIl
+qsq
+bxZ
 kBc
-ghJ
-ghJ
-ghJ
-ghJ
+fZg
 sVW
 iZX
 fxa
@@ -45656,10 +45754,10 @@ aFN
 gzA
 khL
 rrG
-ghJ
-ghJ
-ghJ
-ghJ
+xhH
+xhH
+xhH
+xhH
 sVW
 lXO
 pve
@@ -45850,10 +45948,10 @@ gDB
 gwr
 dbE
 gDB
-ghJ
-ghJ
-ghJ
-ghJ
+elp
+xhH
+xhH
+cqF
 sVW
 gmr
 tJk
@@ -46044,10 +46142,10 @@ gDB
 gly
 cct
 gDB
-ghJ
-ghJ
-ghJ
-ghJ
+tUs
+xhH
+aig
+xhH
 sVW
 sVW
 sVW
@@ -46241,7 +46339,7 @@ gDB
 gDB
 bIl
 bIl
-bIl
+aRE
 bIl
 bIl
 bIl
