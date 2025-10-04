@@ -10,6 +10,33 @@
 	var/turf/dest_upper_right
 	#warn hook these
 
+	var/c_impact_obj_dmg_base = 15
+	var/c_impact_obj_dmg_sides = 15
+	var/c_impact_obj_dmg_cnt = 5
+	var/c_impact_mob_dmg_base = 15
+	var/c_impact_mob_dmg_sides = 10
+	var/c_impact_mob_dmg_cnt = 10
+	var/c_landing_obj_dmg_base = 15
+	var/c_landing_obj_dmg_sides = 15
+	var/c_landing_obj_dmg_cnt = 5
+	var/c_landing_mob_dmg_base = 5
+	var/c_landing_mob_dmg_sides = 15
+	var/c_landing_mob_dmg_cnt = 10
+
+/datum/orbital_deployment_translation/New(datum/orbital_deployment_zone/zone)
+	src.c_impact_obj_dmg_base = zone.c_impact_obj_dmg_base
+	src.c_impact_obj_dmg_sides = zone.c_impact_obj_dmg_sides
+	src.c_impact_obj_dmg_cnt = zone.c_impact_obj_dmg_cnt
+	src.c_impact_mob_dmg_base = zone.c_impact_mob_dmg_base
+	src.c_impact_mob_dmg_sides = zone.c_impact_mob_dmg_sides
+	src.c_impact_mob_dmg_cnt = zone.c_impact_mob_dmg_cnt
+	src.c_landing_obj_dmg_base = zone.c_landing_obj_dmg_base
+	src.c_landing_obj_dmg_sides = zone.c_landing_obj_dmg_sides
+	src.c_landing_obj_dmg_cnt = zone.c_landing_obj_dmg_cnt
+	src.c_landing_mob_dmg_base = zone.c_landing_mob_dmg_base
+	src.c_landing_mob_dmg_sides = zone.c_landing_mob_dmg_sides
+	src.c_landing_mob_dmg_cnt = zone.c_landing_mob_dmg_cnt
+
 /datum/orbital_deployment_translation/proc/on_turf_overlap(turf/from_turf, turf/to_turf)
 	if(to_turf.density)
 		turf_overlap_coord_x += to_turf.x
@@ -60,6 +87,7 @@
 		explosion(impacted_turf, 0, rand(1, 2), 3)
 		CHECK_TICK
 
+	#warn use configured vars
 	// movables that shouldn't be there and weren't immediately deleted
 	// will be pushed out of the way and obliterated
 	// -- this is not 'as anything' as some movables can be obliterated by being moved to nullspace --

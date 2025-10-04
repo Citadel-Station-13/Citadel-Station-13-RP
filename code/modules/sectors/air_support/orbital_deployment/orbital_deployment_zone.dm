@@ -25,6 +25,19 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 	/// when were we armed?
 	var/armed_time
 
+	var/c_impact_obj_dmg_base = 15
+	var/c_impact_obj_dmg_sides = 15
+	var/c_impact_obj_dmg_cnt = 5
+	var/c_impact_mob_dmg_base = 15
+	var/c_impact_mob_dmg_sides = 10
+	var/c_impact_mob_dmg_cnt = 10
+	var/c_landing_obj_dmg_base = 15
+	var/c_landing_obj_dmg_sides = 15
+	var/c_landing_obj_dmg_cnt = 5
+	var/c_landing_mob_dmg_base = 5
+	var/c_landing_mob_dmg_sides = 15
+	var/c_landing_mob_dmg_cnt = 10
+
 #warn impl
 
 /datum/orbital_deployment_zone/New(
