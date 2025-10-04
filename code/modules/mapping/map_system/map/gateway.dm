@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
+
 /**
  * Maps for gateway away missions. Should support uncalibrated gateway spawning.
  *

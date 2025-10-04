@@ -129,9 +129,6 @@
 	var/list/unit_test_exempt_from_apc = list()
 	var/list/unit_test_z_levels	// To test more than Z1, set your z-levels to test here.
 
-	// TODO: what is this?
-	var/list/empty_levels
-
 /datum/map/station/New()
 	..()
 	if(!map_levels)
@@ -177,16 +174,6 @@
 
 /datum/map/station/proc/get_network_access(var/network)
 	return 0
-
-/datum/map/station/proc/get_empty_zlevel()
-	if(empty_levels == null)
-		var/datum/map_level/level = SSmapping.allocate_level()
-		empty_levels = list(level.z_index)
-		if(islist(player_levels))
-			player_levels |= level.z_index
-		else
-			player_levels = list(level.z_index)
-	return pick(empty_levels)
 
 // Get the list of zlevels that a computer on srcz can see maps of (for power/crew monitor, cameras, etc)
 // The long_range parameter expands the coverage.  Default is to return map_levels for long range otherwise just srcz.

@@ -3600,6 +3600,7 @@
 #include "code\modules\mapping\map_system\map-load.dm"
 #include "code\modules\mapping\map_system\map.dm"
 #include "code\modules\mapping\map_system\map_level-cmp.dm"
+#include "code\modules\mapping\map_system\map_level-legacy.dm"
 #include "code\modules\mapping\map_system\map_level-load.dm"
 #include "code\modules\mapping\map_system\map_level.dm"
 #include "code\modules\mapping\map_system\map_level_attribute.dm"
