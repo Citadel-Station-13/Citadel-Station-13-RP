@@ -38,6 +38,8 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 	var/c_landing_mob_dmg_sides = 15
 	var/c_landing_mob_dmg_cnt = 10
 
+	var/area/current_area
+
 #warn impl
 
 /datum/orbital_deployment_zone/New(
@@ -106,8 +108,15 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 		CRASH("tried to write-over a zone (lower-left test failed)")
 	var/list/turf/inside_zone = block(get_step(lower_left, NORTHEAST), get_step(upper_right, SOUTHWEST))
 	var/area/orbital_deployment_area/deployment_area = new(null)
+	current_area = deployment_area
 
 
+	#warn impl
+
+/**
+ * Clears out whatever of the zone is still left.
+ */
+/datum/orbital_deployment_zone/proc/cleanup_zone()
 	#warn impl
 
 /**
@@ -121,12 +130,18 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
  */
 /datum/orbital_deployment_zone/proc/check_validity(turf/target_center, dir)
 
-/datum/orbital_deployment_zone/proc/do_translate(turf/target_lower_left, rotation_degrees)
+/**
+ * @return true / false
+ */
+/datum/orbital_deployment_zone/proc/yeet_zone(turf/target_center, rotation_degrees)
 
 	var/wanted_dir = math__angle_to_dir_exact_or_throw(rotation_degrees)
 
-	var/width
-	var/height
+	var/list/measured = measure_current_dimensions()
+	var/width = measured[1]
+	var/height = measured[2]
+
+	if(target_lower_left.x <)
 
 	#warn impl
 	calculate_entity_motion_with_respect_to_moving_point()
@@ -160,11 +175,22 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 		movable_overlap_handler,
 	)
 
+	translation.run_aftereffects(current_area)
 
+	cleanup_zone()
+	construct_zone()
 
-/datum/orbital_deployment_zone/proc/get_width()
+/**
+ * @return width, height
+ */
+/datum/orbital_deployment_zone/proc/measure_current_dimensions()
+	#warn impl
 
-/datum/orbital_deployment_zone/proc/get_height()
+/datum/orbital_deployment_zone/proc/get_frame_width()
+	return (upper_right.x - lower_left.x) - 1
+
+/datum/orbital_deployment_zone/proc/get_frame_height()
+	return (upper_right.y - lower_left.y) - 1
 
 /datum/orbital_deployment_zone/proc/on_launch()
 

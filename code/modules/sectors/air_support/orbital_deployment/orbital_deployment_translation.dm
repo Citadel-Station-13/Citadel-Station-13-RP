@@ -57,17 +57,20 @@
 			throw_aside_and_crush = TRUE
 	if(throw_aside_and_crush)
 		crush_and_obliterate += victim
+		victim.forceMove(get_random_outside_turf())
 	else
 		qdel(victim)
 
 /datum/orbital_deployment_translation/proc/get_unordered_dest_turfs()
 	return block(dest_lower_left, dest_upper_right)
 
-/datum/orbital_deployment_translation/proc/run_aftereffects()
+/datum/orbital_deployment_translation/proc/run_aftereffects(area/orbital_deployment_area/transported_area)
 	// First, gather, as this doesn't CHECK_TICK
 	var/list/obj/to_damage_objs = list()
 	var/list/mob/to_damage_mobs = list()
-	for(var/turf/T as anything in get_dest_turfs())
+	for(var/turf/T as anything in block(dest_lower_left, dest_upper_right))
+		if(T.loc != transported_area)
+			continue
 		for(var/obj/O in T)
 			to_damage_objs += O
 			if(isvehicle(O))
