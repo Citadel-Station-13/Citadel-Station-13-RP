@@ -28,12 +28,6 @@ export const setGlobalStore = (store) => {
   globalStore = store;
 };
 
-export let globalStore: Store;
-
-export const setGlobalStore = (store: Store) => {
-  globalStore = store;
-};
-
 export const backendUpdate = createAction('backend/update');
 export const backendPushData = createAction('backend/pushData');
 export const backendPushNestedData = createAction('backend/pushNestedData');
