@@ -1,3 +1,8 @@
+/**
+ * DO NOT BLINDLY PORT VARIABLES TO BASE /role!
+ *
+ * This file still violates a lot of /prototype invariants. Not to mention is legacy code.
+ */
 /datum/prototype/role/job
 	/// Abstract type.
 	abstract_type = /datum/prototype/role/job
@@ -32,11 +37,11 @@
 	var/flag = NONE
 	var/department_flag = 0
 	/// How many players can be this job.
-	var/total_positions = 0
+	var/tmp/total_positions = 0
 	/// How many players can spawn in as this job.
-	var/spawn_positions = 0
+	var/tmp/spawn_positions = 0
 	/// How many players have this job.
-	var/current_positions = 0
+	var/tmp/current_positions = 0
 	/// Supervisors, who this person answers to directly.
 	var/supervisors = null
 	/// Type of ID that the player will have. This is banned. Use outfits, this is only kept in for legacy.

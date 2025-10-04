@@ -155,7 +155,7 @@
 
 /obj/machinery/computer/timeclock/proc/getOpenOnDutyJobs(var/mob/user, var/department)
 	var/list/available_jobs = list()
-	for(var/datum/prototype/role/job/job in SSjob.occupations)
+	for(var/datum/prototype/role/job/job in RSroles.legacy_all_job_datums())
 		if(isOpenOnDutyJob(user, department, job))
 			var/list/titles = available_titles(user, job)
 			if(!length(titles))
@@ -208,7 +208,7 @@
 		return
 	var/new_dept = foundjob.pto_type || PTO_CIVILIAN
 	var/datum/prototype/role/job/ptojob = null
-	for(var/datum/prototype/role/job/job in SSjob.occupations)
+	for(var/datum/prototype/role/job/job in RSroles.legacy_all_job_datums())
 		if(job.pto_type == new_dept && job.is_off_duty)
 			ptojob = job
 			break

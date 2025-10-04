@@ -58,30 +58,10 @@ SUBSYSTEM_DEF(job)
 		return FALSE
 
 	for(var/J in all_jobs)
-		var/datum/prototype/role/job/job = J
-		if(initial(job.abstract_type) == J)
-			continue
-		job = new J
-		occupations += job
-		if(!job.id)
-			stack_trace("no job id for [J]")
-			continue
-		if(!job.title)
-			stack_trace("no job title for [J]")
-			continue
-		if(job_lookup[job.id])
-			stack_trace("job id collision on [job.id] for [J]")
-			continue
-		if(name_occupations[job.title])
-			stack_trace("job title collision on [job.title] for [J]")
-			continue
-		name_occupations[job.title] = job
-		type_occupations[J] = job
-		job_lookup[job.id] = job
+		#warn this shit
 		if(LAZYLEN(job.departments))
 			add_to_departments(job)
 
-	tim_sort(occupations, GLOBAL_PROC_REF(cmp_job_datums))
 	for(var/D in department_datums)
 		var/datum/department/dept = department_datums[D]
 		tim_sort(dept.jobs, GLOBAL_PROC_REF(cmp_job_datums), TRUE)
@@ -151,7 +131,7 @@ SUBSYSTEM_DEF(job)
 /datum/controller/subsystem/job/proc/get_primary_department_of_job(datum/prototype/role/job/J)
 	if(!istype(J, /datum/prototype/role/job))
 		if(ispath(J))
-			J = job_by_type(J)
+			J = RSroles.legacy_job_by_type(J)
 		else if(istext(J))
 			J = get_job(J)
 
@@ -169,12 +149,6 @@ SUBSYSTEM_DEF(job)
 		return
 
 	return department_datums[primary_department]
-
-// Someday it might be good to port code/game/jobs/job_controller.dm to here and clean it up.
-
-
-
-
 
 /datum/controller/subsystem/job/proc/job_debug_message(message)
 	if(debug_messages)

@@ -3152,6 +3152,7 @@
 #include "code\modules\gateway\stargate\stargate-station.dm"
 #include "code\modules\gateway\stargate\stargate.dm"
 #include "code\modules\genetics\side_effects.dm"
+#include "code\modules\roles\role_tweak.dm"
 #include "code\modules\roles\ghostroles\instantiator.dm"
 #include "code\modules\roles\ghostroles\menu.dm"
 #include "code\modules\roles\ghostroles\role.dm"

@@ -56,7 +56,7 @@
 
 /datum/controller/subsystem/job/proc/GiveRandomJob(mob/new_player/player)
 	job_debug("GRJ Giving random job, Player: [player]")
-	for(var/datum/prototype/role/job/job in shuffle(occupations))
+	for(var/datum/prototype/role/job/job in shuffle(RSroles.legacy_all_job_datums()))
 		var/reasons = job.check_client_availability_one(player.client)
 		if(reasons != ROLE_AVAILABLE)
 			job_debug("GRJ failed for [reasons] on [job.id]")
@@ -149,7 +149,7 @@
 
 	//Holder for Triumvirate is stored in the SSticker, this just processes it
 	if(SSticker && SSticker.triai)
-		for(var/datum/prototype/role/job/A in occupations)
+		for(var/datum/prototype/role/job/A in RSroles.legacy_all_job_datums())
 			if(A.title == "AI")
 				A.spawn_positions = 3
 				break
@@ -189,7 +189,7 @@
 	// Hopefully this will add more randomness and fairness to job giving.
 
 	// Loop through all levels from high to low
-	var/list/shuffledoccupations = shuffle(occupations)
+	var/list/shuffledoccupations = shuffle(RSroles.legacy_all_job_datums())
 	// var/list/disabled_jobs = SSticker.mode.disabled_jobs  // So we can use .Find down below without a colon.
 	for(var/level in JOB_PRIORITY_HIGH to JOB_PRIORITY_LOW step -1)
 		//Check the head jobs first each level
@@ -430,7 +430,7 @@
 
 
 /datum/controller/subsystem/job/proc/HandleFeedbackGathering()
-	for(var/datum/prototype/role/job/job in occupations)
+	for(var/datum/prototype/role/job/job in RSroles.legacy_all_job_datums())
 		var/tmp_str = "|[job.title]|"
 
 		var/level1 = 0 //high

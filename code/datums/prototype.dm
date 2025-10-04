@@ -57,6 +57,8 @@
 
 	// END
 
+#warn architecture for 'allow unload'
+
 /datum/prototype/New()
 	if(anonymous && isnull(id))
 		id = generate_anonymous_uid()
