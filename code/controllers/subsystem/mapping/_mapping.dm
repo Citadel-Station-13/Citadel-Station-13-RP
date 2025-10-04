@@ -25,8 +25,6 @@ SUBSYSTEM_DEF(mapping)
 	// todo: refactor
 	preloadShelterTemplates()
 
-	// init obfuscation
-	init_obfuscation_data()
 	// init maps
 	init_maps()
 	// load the map to use
