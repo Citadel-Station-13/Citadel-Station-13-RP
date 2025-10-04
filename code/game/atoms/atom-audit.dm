@@ -12,7 +12,7 @@
 	else
 		var/turf/where = get_turf(src)
 		if(where)
-			. = "([where.x]-[where.y]-[where.z] - [where.loc ? "'[where.loc]'" : "NULL AREA"] @ '[SSmapping.level_id(where.z)]')"
+			. = "([where.x]-[where.y]-[where.z] - [where.loc ? "'[where.loc]'" : "NULL AREA"] @ '[SSmapping.level_get_id(where.z)]')"
 		else
 			. = "(null)"
 

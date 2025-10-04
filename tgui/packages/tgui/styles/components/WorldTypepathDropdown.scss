@@ -1,0 +1,29 @@
+/**
+ * @file
+ * @license MIT
+ */
+
+@use '../base.scss';
+
+.WorldTypepathDropdown {}
+
+.WorldTypepathDropdown__menu {
+  position: absolute;
+  max-height: 400px;
+  width: "100%";
+  overflow: hidden;
+  z-index: 5;
+  border-radius: 0 0 base.em(2px) base.em(2px);
+  color: #fff;
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.WorldTypepathDropdown__menuItem {
+  transition: background-color 100ms ease-out;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transition: background-color 0ms;
+  }
+}

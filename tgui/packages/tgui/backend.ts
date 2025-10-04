@@ -20,7 +20,13 @@ import { focusMap } from './focus';
 import { createLogger } from './logging';
 import { resumeRenderer, suspendRenderer } from './renderer';
 
-const logger = createLogger('backend');
+export const logger = createLogger('backend');
+
+export let globalStore;
+
+export const setGlobalStore = (store) => {
+  globalStore = store;
+};
 
 export let globalStore: Store;
 
