@@ -35,8 +35,8 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 
 	// collect
 	var/list/datum/prototype/role/job/eligible = list()
-	for(var/title in SSjob.name_occupations)
-		var/datum/prototype/role/job/J = SSjob.name_occupations[title]
+	for(var/title in RSroles.legacy_all_job_titles())
+		var/datum/prototype/role/job/J = RSroles.legacy_job_by_title(title)
 		if(!(J.join_types & JOB_LATEJOIN))
 			continue
 		if(!IsJobAvailable(J, N))

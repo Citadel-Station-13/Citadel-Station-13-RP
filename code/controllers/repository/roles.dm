@@ -35,25 +35,25 @@ REPOSITORY_DEF(roles)
 /**
  * Only returns /datum/prototype/role/job
  */
-/datum/controller/repository/roles/proc/legacy_job_by_title(title)
+/datum/controller/repository/roles/proc/legacy_job_by_title(title) as /datum/prototype/role/job
 	return legacy_job_title_lookup[title]
 
 /**
  * Only returns /datum/prototype/role/job
  */
-/datum/controller/repository/roles/proc/legacy_job_by_id(id)
-	return fetch_local_or_throw(title)
+/datum/controller/repository/roles/proc/legacy_job_by_id(id) as /datum/prototype/role/job
+	return fetch_local_or_throw(id)
 
 /**
  * Only returns /datum/prototype/role/job
  */
-/datum/controller/repository/roles/proc/legacy_job_by_type(type)
-	return fetch_local_or_throw(title)
+/datum/controller/repository/roles/proc/legacy_job_by_type(type) as /datum/prototype/role/job
+	return fetch_local_or_throw(type)
 
 /**
  * Only returns /datum/prototype/role/job
  */
-/datum/controller/repository/roles/proc/legacy_all_job_ids(filter_faction)
+/datum/controller/repository/roles/proc/legacy_all_job_ids(filter_faction) as /list
 	. = list()
 	for(var/datum/prototype/role/job/r as anything in fetch_subtypes_immutable(/datum/prototype/role/job))
 		. += r.id
@@ -61,7 +61,7 @@ REPOSITORY_DEF(roles)
 /**
  * Only returns /datum/prototype/role/job
  */
-/datum/controller/repository/roles/proc/legacy_all_job_types(filter_faction)
+/datum/controller/repository/roles/proc/legacy_all_job_types(filter_faction) as /list
 	. = list()
 	for(var/datum/prototype/role/job/r as anything in fetch_subtypes_immutable(/datum/prototype/role/job))
 		. += r.type
@@ -69,7 +69,7 @@ REPOSITORY_DEF(roles)
 /**
  * Only returns /datum/prototype/role/job
  */
-/datum/controller/repository/roles/proc/legacy_all_job_titles(filter_faction)
+/datum/controller/repository/roles/proc/legacy_all_job_titles(filter_faction) as /list
 	. = list()
 	for(var/datum/prototype/role/job/r as anything in fetch_subtypes_immutable(/datum/prototype/role/job))
 		. += r.title
@@ -77,7 +77,7 @@ REPOSITORY_DEF(roles)
 /**
  * Only returns /datum/prototype/role/job
  */
-/datum/controller/repository/roles/proc/legacy_all_job_datums(filter_faction)
+/datum/controller/repository/roles/proc/legacy_all_job_datums(filter_faction) as /list
 	. = list()
 	for(var/datum/prototype/role/job/r as anything in fetch_subtypes_immutable(/datum/prototype/role/job))
 		. += r

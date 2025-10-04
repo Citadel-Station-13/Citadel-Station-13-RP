@@ -4,10 +4,6 @@ SUBSYSTEM_DEF(job)
 	init_stage = INIT_STAGE_EARLY
 	subsystem_flags = SS_NO_FIRE
 
-	/// List of all jobs
-	var/list/occupations
-	/// Dict of all jobs, keys are titles
-	var/list/datum/prototype/role/job/name_occupations
 	/// job preferences ui cache - cache[faction string][department name] = list(job ids)
 	var/list/job_pref_ui_cache
 	/// jobs per column
@@ -21,28 +17,20 @@ SUBSYSTEM_DEF(job)
 	init_access()
 	if(!length(department_datums))
 		setup_departments()
-	if(!length(occupations))
-		setup_occupations()
 	reconstruct_job_ui_caches()
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/job/Recover()
 	init_access()
-	occupations = SSjob.occupations
-	name_occupations = SSjob.name_occupations
-	job_lookup = SSjob.job_lookup
-	type_occupations = SSjob.type_occupations
-
 	reconstruct_spawnpoints()
 	reconstruct_job_ui_caches()
-
 	return ..()
 
 /datum/controller/subsystem/job/proc/reconstruct_job_ui_caches()
 	// todo: this is shit but it works
 	job_pref_ui_cache = list()
-	for(var/id in job_lookup)
-		var/datum/prototype/role/job/J = job_lookup[id]
+	for(var/id in RSroles.legacy_all_job_ids())
+		var/datum/prototype/role/job/J = RSroles.legacy_job_by_id(id)
 		if(!(J.join_types & JOB_ROUNDSTART))
 			continue
 		var/faction = J.faction
@@ -63,9 +51,7 @@ SUBSYSTEM_DEF(job)
 
 /datum/controller/subsystem/job/proc/setup_occupations()
 	occupations = list()
-	job_lookup = list()
 	name_occupations = list()
-	type_occupations = list()
 	var/list/all_jobs = subtypesof(/datum/prototype/role/job)
 	if(!all_jobs.len)
 		to_chat(world, SPAN_WARNING( "Error setting up jobs, no job datums found"))

@@ -235,7 +235,7 @@
 		if(!J.alt_title_check(title, background_ids_cached))
 			jobs -= id
 	// check the ones we don't and are strict titles
-	for(var/datum/prototype/role/job/J as anything in RSroles.legacy_all_jobs())
+	for(var/datum/prototype/role/job/J as anything in RSroles.legacy_all_job_datums())
 		if(!isnull(jobs[J.id]))
 			continue
 		var/forced = J.alt_title_enforcement(background_ids_cached)
@@ -319,7 +319,7 @@
 	RETURN_TYPE(/list)
 	. = list()
 	var/list/priorities = sanitize_islist(prefs.get_character_data(CHARACTER_DATA_JOBS))
-	for(var/datum/prototype/role/job/J as anything in RSroles.legacy_all_jobs())
+	for(var/datum/prototype/role/job/J as anything in RSroles.legacy_all_job_datums())
 		if(J.check_client_availability_one(src) != ROLE_AVAILABLE)
 			continue
 		var/id = J.id
