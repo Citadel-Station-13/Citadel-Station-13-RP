@@ -451,11 +451,9 @@
 
 		if(ishuman(L) && bone_heal)
 			var/mob/living/carbon/human/H = L
-
-			if(H.bad_external_organs.len)
-				for(var/obj/item/organ/external/E in H.bad_external_organs)
-					if(prob(bone_heal))
-						E.status &= ~ORGAN_BROKEN
+			for(var/obj/item/organ/external/E in H.get_external_organs())
+				if(prob(bone_heal))
+					E.status &= ~ORGAN_BROKEN
 
 /obj/item/vehicle_module/crisis_drone/proc/toggle_drone()
 	if(chassis)

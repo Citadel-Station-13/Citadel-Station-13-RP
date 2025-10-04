@@ -97,6 +97,7 @@
 	name = "boxed augment implant (with injector)"
 	var/case_type = /obj/item/implantcase/shades
 
+// todo: all of these should be autosurgeons
 /obj/item/storage/box/syndie_kit/imp_aug/Initialize(mapload)
 	new /obj/item/implanter(src)
 	new case_type(src)

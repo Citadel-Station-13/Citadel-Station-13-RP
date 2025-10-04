@@ -7,7 +7,7 @@
 	eye_attack_text_victim = "digits"
 
 /datum/melee_attack/unarmed/punch/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
-	var/obj/item/organ/external/affecting = target.get_organ(zone)
+	var/obj/item/organ/external/affecting = target.get_organ_for_zone(zone)
 	var/organ = affecting.name
 
 	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]

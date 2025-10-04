@@ -58,13 +58,13 @@
 
 /datum/prototype/material/resin/can_open_material_door(var/mob/living/user)
 	var/mob/living/carbon/M = user
-	if(istype(M) && locate(/obj/item/organ/internal/xenos/hivenode) in M.internal_organs)
+	if(istype(M) && M.legacy_organ_by_type(/obj/item/organ/internal/xenomorph/hivenode))
 		return 1
 	return 0
 
 /datum/prototype/material/resin/wall_touch_special(var/turf/simulated/wall/W, var/mob/living/L)
 	var/mob/living/carbon/M = L
-	if(istype(M) && locate(/obj/item/organ/internal/xenos/hivenode) in M.internal_organs)
+	if(istype(M) && M.legacy_organ_by_type(/obj/item/organ/internal/xenomorph/hivenode))
 		to_chat(M, "<span class='alien'>\The [W] shudders under your touch, starting to become porous.</span>")
 		playsound(W, 'sound/effects/attackblob.ogg', 50, 1)
 		if(do_after(L, 5 SECONDS))

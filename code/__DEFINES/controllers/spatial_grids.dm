@@ -12,6 +12,7 @@
  * todo: /atom/movable/recover_spatial_grid(), macro should have components remade using that.
  */
 #define TYPE_REGISTER_SPATIAL_GRID(TYPEPATH, GRID) \
+##TYPEPATH{} \
 ##TYPEPATH/Initialize(...) { \
 	. = ..(); \
 	if(. == INITIALIZE_HINT_QDEL) { \

@@ -38,7 +38,7 @@
 		var/breathing = "none"
 
 		if(victim.stat != DEAD && !(victim.status_flags & STATUS_FAKEDEATH))
-			var/obj/item/organ/internal/brain/brain = victim.internal_organs_by_name[O_BRAIN]
+			var/obj/item/organ/internal/brain/brain = victim.keyed_organs[ORGAN_KEY_BRAIN]
 			if(istype(brain))
 				if(victim.getBrainLoss())
 					brain_activity = "anomalous"
@@ -47,7 +47,7 @@
 				else
 					brain_activity = "normal"
 
-			var/obj/item/organ/internal/lungs/lungs = victim.internal_organs_by_name[O_LUNGS]
+			var/obj/item/organ/internal/lungs/lungs = victim.keyed_organs[ORGAN_KEY_LUNGS]
 			if(istype(lungs))
 				var/oxyloss = victim.getOxyLoss()
 				if(oxyloss > 50)
@@ -107,7 +107,7 @@
 			add_overlay("pulse_thready")
 			add_overlay("pulse_warning")
 
-	var/obj/item/organ/internal/brain/brain = victim.internal_organs_by_name[O_BRAIN]
+	var/obj/item/organ/internal/brain/brain = victim.keyed_organs[ORGAN_KEY_BRAIN]
 	if(istype(brain) && victim.stat != DEAD && !(victim.status_flags & STATUS_FAKEDEATH))
 		if(victim.getBrainLoss())
 			add_overlay("brain_verybad")
@@ -119,7 +119,7 @@
 	else
 		add_overlay("brain_warning")
 
-	var/obj/item/organ/internal/lungs/lungs = victim.internal_organs_by_name[O_LUNGS]
+	var/obj/item/organ/internal/lungs/lungs = victim.keyed_organs[ORGAN_KEY_LUNGS]
 	if(istype(lungs) && victim.stat != DEAD && !(victim.status_flags & STATUS_FAKEDEATH))
 		var/oxyloss = victim.getOxyLoss()
 		if(oxyloss > 50)

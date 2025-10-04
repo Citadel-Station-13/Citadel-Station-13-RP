@@ -15,21 +15,15 @@
 
 		//High toxins levels are dangerous
 		if(owner.getToxLoss() >= 30 && !owner.reagents.has_reagent("anti_toxin"))
-			//Healthy liver suffers on its own
 			if (src.damage < min_broken_damage)
 				src.damage += 0.2 * spleen_tick
-			//Damaged one shares the fun
-			else
-				var/obj/item/organ/internal/O = pick(owner.internal_organs)
-				if(O)
-					O.damage += 0.2 * spleen_tick
 
 		else if(!src.is_broken()) // If the spleen isn't severely damaged, it can help fight infections. Key word, can.
-			var/obj/item/organ/external/OEx = pick(owner.organs)
+			var/obj/item/organ/external/OEx = pick(owner.external_organs)
 			OEx.adjust_germ_level(round(rand(0 * spleen_efficiency,-10 * spleen_efficiency)))
 
-			if(!src.is_bruised() && owner.internal_organs_by_name[O_BRAIN]) // If it isn't bruised, it helps with brain infections.
-				var/obj/item/organ/internal/brain/B = owner.internal_organs_by_name[O_BRAIN]
+			if(!src.is_bruised() && owner.keyed_organs[ORGAN_KEY_BRAIN]) // If it isn't bruised, it helps with brain infections.
+				var/obj/item/organ/internal/brain/B = owner.keyed_organs[O_BRAIN]
 				B.adjust_germ_level(round(rand(-3 * spleen_efficiency, -10 * spleen_efficiency)))
 
 		//Detox can heal small amounts of damage
@@ -46,7 +40,7 @@
 	// Low levels can cause pain and haemophilia, high levels can cause brain infections.
 	if (. >= 1)
 		if(prob(1))
-			owner.custom_pain("There's a sharp pain in your [owner.get_organ(parent_organ)]!",1)
+			owner.custom_pain("There's a sharp pain in your [owner.legacy_organ_by_zone(parent_organ)]!",1)
 			owner.add_modifier(/datum/modifier/trait/haemophilia, 2 MINUTES * spleen_efficiency)
 	if (. >= 2)
 		if(prob(1))
@@ -59,7 +53,7 @@
 /obj/item/organ/internal/spleen/on_die()
 	. = ..()
 	owner.add_modifier(/datum/modifier/trait/haemophilia, round(15 MINUTES * spleen_efficiency))
-	var/obj/item/organ/external/affecting = owner.get_organ(parent_organ)
+	var/obj/item/organ/external/affecting = owner.legacy_organ_by_zone(parent_organ)
 	affecting.create_specific_wound(/datum/wound/internal_bleeding, round(20 * spleen_efficiency))
 	owner.adjustToxLoss(15 * spleen_efficiency)
 

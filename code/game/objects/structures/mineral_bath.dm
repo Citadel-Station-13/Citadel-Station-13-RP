@@ -144,7 +144,7 @@
 
 /obj/structure/adherent_bath/proc/crystal_heal_damage(mob/living/carbon/human/patient)
 	patient.cure_radiation(RAD_MOB_CURE_ADHERENT_BATH)
-	for(var/thing in patient.organs)
+	for(var/thing in patient.external_organs)
 		var/obj/item/organ/external/E = thing
 		if(BP_IS_CRYSTAL(E))
 			if(E.brute_dam || E.burn_dam)
@@ -156,19 +156,18 @@
 				return TRUE
 
 /obj/structure/adherent_bath/proc/crystal_remove_shrapn(mob/living/carbon/human/patient)
-	for(var/thing in patient.organs)
+	for(var/thing in patient.external_organs)
 		var/obj/item/organ/external/E = thing
 		if(BP_IS_CRYSTAL(E))
 			for(var/obj/implanted_object in E.implants)
-				if(!istype(implanted_object,/obj/item/implant) && !istype(implanted_object,/obj/item/organ/internal/augment) && prob(25))	// We don't want to remove REAL implants. Just shrapnel etc.
+				if(!istype(implanted_object,/obj/item/implant) && prob(25))	// We don't want to remove REAL implants. Just shrapnel etc.
 					E.implants -= implanted_object
 					to_chat(patient, "<span class='notice'>The mineral-rich bath dissolves the [implanted_object.name] in your [E.name].</span>")
 					qdel(implanted_object)
 					return TRUE
 
-
 /obj/structure/adherent_bath/proc/crystal_debrittle_crystals(mob/living/carbon/human/patient)
-	for(var/thing in patient.organs)
+	for(var/thing in patient.external_organs)
 		if(istype(thing, /obj/item/organ))
 			var/obj/item/organ/O = thing
 			if(O.status & ORGAN_BRITTLE)
