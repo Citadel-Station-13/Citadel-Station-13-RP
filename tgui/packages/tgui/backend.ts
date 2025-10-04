@@ -12,7 +12,7 @@
  */
 
 import { perf } from 'common/perf';
-import { createAction } from 'common/redux';
+import { createAction, Store } from 'common/redux';
 import { BooleanLike } from 'tgui-core/react';
 
 import { setupDrag } from './drag';
@@ -25,6 +25,12 @@ export const logger = createLogger('backend');
 export let globalStore;
 
 export const setGlobalStore = (store) => {
+  globalStore = store;
+};
+
+export let globalStore: Store;
+
+export const setGlobalStore = (store: Store) => {
   globalStore = store;
 };
 

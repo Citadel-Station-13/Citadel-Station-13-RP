@@ -45,7 +45,7 @@ export const SignalerContent = (props) => {
             value={frequency / 10}
             format={value => toFixed(value, 1)}
             width="80px"
-            onDrag={(value) => act('freq', {
+            onChange={(value) => act('freq', {
               freq: value,
             })} />
         </Grid.Column>
@@ -72,7 +72,7 @@ export const SignalerContent = (props) => {
             maxValue={100}
             value={code}
             width="80px"
-            onDrag={(value) => act('code', {
+            onChange={(value) => act('code', {
               code: value,
             })} />
         </Grid.Column>

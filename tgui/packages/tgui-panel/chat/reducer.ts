@@ -4,6 +4,8 @@
  * @license MIT
  */
 
+import { Reducer } from 'common/redux';
+
 import { importSettings } from '../settings/actions';
 import {
   addChatPage,
@@ -17,13 +19,14 @@ import {
   updateChatPage,
   updateMessageCount,
 } from './actions';
+import { CHAT_VERSION_CURRENT } from './constants';
 import { canPageAcceptType, createMainPage } from './model';
-import { Page } from './types';
+import { ChatPage, ChatState } from './types';
 
 const mainPage = createMainPage();
 
-export const initialState = {
-  version: 6,
+export const initialState: ChatState = {
+  version: CHAT_VERSION_CURRENT,
   currentPageId: mainPage.id,
   scrollTracking: true,
   pages: [mainPage.id],
@@ -32,7 +35,7 @@ export const initialState = {
   },
 };
 
-export const chatReducer = (state = initialState, action) => {
+export const chatReducer: Reducer<ChatState> = (state = initialState, action) => {
   const { type, payload } = action;
   if (type === loadChat.type) {
     // Validate version and/or migrate state
@@ -130,7 +133,7 @@ export const chatReducer = (state = initialState, action) => {
     };
   }
   if (type === importSettings.type) {
-    const pagesById: Record<string, Page>[] = payload.newPages;
+    const pagesById: Record<string, ChatPage>[] = payload.newPages;
     if (!pagesById) {
       return state;
     }

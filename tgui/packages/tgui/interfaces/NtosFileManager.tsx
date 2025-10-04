@@ -27,7 +27,7 @@ export const NtosFileManager = (props) => {
             onDuplicate={file => act('PRG_clone', { file: file })}
             onToggleSilence={file => act('PRG_togglesilence', { name: file })} />
         </Section>
-        {usbconnected && (
+        {!!usbconnected && (
           <Section title="Data Disk">
             <FileTable
               usbmode

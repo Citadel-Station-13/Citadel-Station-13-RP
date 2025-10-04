@@ -47,7 +47,10 @@
 		return
 
 	// todo: signal for afterattack here
-	return . | afterattack(clickchain.target, clickchain.performer, clickchain_flags, clickchain.click_params)
+	var/result = afterattack(clickchain.target, clickchain.performer, clickchain_flags, clickchain.click_params)
+	if(result)
+		clickchain.performer.trigger_aiming(TARGET_CAN_CLICK)
+	return . | result
 
 // TODO: lazy_ranged_interaction_chain
 
@@ -60,7 +63,10 @@
  */
 /obj/item/proc/ranged_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	// todo: signal for afterattack here
-	return clickchain_flags | afterattack(clickchain.target, clickchain.performer, clickchain_flags, clickchain.click_params)
+	. = afterattack(clickchain.target, clickchain.performer, clickchain_flags, clickchain.click_params)
+	if(.)
+		clickchain.performer.trigger_aiming(TARGET_CAN_CLICK)
+	return clickchain_flags | .
 
 /**
  * called at the start of melee attack chains

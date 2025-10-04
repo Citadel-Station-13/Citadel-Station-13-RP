@@ -49,7 +49,7 @@
  *   lists of the given key, allowing you to replace data in nested lists
  *   without updating the whole list at once.
  * * Nested data is an advanced concept that the majority of UIs will never need.
- *   As such, it is not updated automatically. Use `push_ui_data()` to manually push updates.
+ *   As such, it is not updated automatically. Use `push_ui_nested_data()` to manually push updates.
  * * This will only be called on initial opens and when static data is being updated.
  *
  * @params
@@ -175,7 +175,7 @@
  * * user - when specified, only pushes this user. else, pushes to all windows.
  * * ui - when specified, only pushes this ui for a given user.
  * * data - list(...) for data. the reducer on tgui-side will only overwrite provided data keys.
- * * data - list(id = list(data...), ...) for modules. the reducer on tgui-side will only overwrite provided data keys.
+ * * nested_data - list(id = list(data...), ...) for nested data. the reducer on tgui-side will only overwrite provided data keys.
  */
 /datum/proc/push_ui_data(mob/user, datum/tgui/ui, list/data, list/nested_data)
 	// todo: the way this works is so jank; this should be COMSIG_DATUM_HOOK_UI_PUSH instead?
@@ -193,6 +193,24 @@
 	if(ui)
 		// todo: this is force because otherwise static data can be desynced. should static data be on another proc instead?
 		ui.push_data(data, nested_data, TRUE)
+
+/**
+ * immediately pushes module updates to user, an ui, or all users
+ *
+ * @params
+ * * user - when specified, only pushes this user. else, pushes to all windows.
+ * * ui - when specified, only pushes this ui for a given user.
+ * * updates - list(id = list(data...), ...) for modules. the reducer on tgui-side will only overwrite provided data keys.
+ */
+/datum/proc/push_ui_nested_data(mob/user, datum/tgui/ui, list/updates)
+	if(!user)
+		for (var/datum/tgui/window as anything in open_uis)
+			window.push_nested_data(updates)
+		return
+	if(!ui)
+		ui = SStgui.get_open_ui(user, src)
+	if(ui)
+		ui.push_nested_data(updates)
 
 /**
  * public

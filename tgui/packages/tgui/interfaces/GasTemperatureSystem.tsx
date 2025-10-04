@@ -70,12 +70,3 @@ export const GasTemperatureSystem = (props) => {
     </Window>
   );
 };
-
-/* <LabeledList>
-  <LabeledList.Item label="Current">
-    <ProgressBar
-      min={minGasTemperature}
-      max={maxGasTemperature}
-      value={gasTemperature} />
-  </LabeledList.Item>
-</LabeledList> */

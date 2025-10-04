@@ -488,9 +488,9 @@ const LatheDesign = (props: LatheDesignProps) => {
   const { data, act, moduleID } = useLegacyModule<TGUILatheControlData>();
 
   // materials: key = material id
-  let [mats, setMats] = useState<Record<string, string>>({});
+  let [mats, setMats] = useLocalState<Record<string, string>>(`${props.design.id}-mats`, {});
   // ingredients: key = ingredient id/value
-  let [inds, setInds] = useState<Record<string, string>>({});
+  let [inds, setInds] = useLocalState<Record<string, string>>(`${props.design.id}-inds`, {});
 
   // ingredients are currently unspported.
   let awaitingSelections = !areMaterialsChosen(props.design.material_parts || {}, mats)
