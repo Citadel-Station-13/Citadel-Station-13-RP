@@ -3,10 +3,11 @@
  * @license MIT
  */
 
-import { Component } from "inferno";
-import { BooleanLike } from "../../../common/react";
+import { Component } from "react";
+import { Button, Section, Stack, TextArea } from "tgui-core/components";
+import { BooleanLike } from "tgui-core/react";
+
 import { useBackend } from "../../backend";
-import { Button, Section, Stack, TextArea } from "../../components";
 import { Window } from "../../layouts";
 import { ByondColorString } from "../common/Color";
 
@@ -87,7 +88,7 @@ export class AdminNarrate extends Component<{}, AdminNarrateState> {
     this.timeoutRef = setTimeout(() => {
       if (this.state.edited) {
         this.setState((old) => ({ ...old, edited: false }));
-        const { act } = useBackend<AdminNarrateData>(this.context);
+        const { act } = useBackend<AdminNarrateData>();
         act("setOutput", { target: this.state.emitHtml });
       }
     }, 2500);
@@ -98,7 +99,7 @@ export class AdminNarrate extends Component<{}, AdminNarrateState> {
   }
 
   render() {
-    const { act, data } = useBackend<AdminNarrateData>(this.context);
+    const { act, data } = useBackend<AdminNarrateData>();
 
     return (
       <Window>
@@ -109,8 +110,8 @@ export class AdminNarrate extends Component<{}, AdminNarrateState> {
                 <Stack.Item grow={1}>
                   <Section title="Content">
                     <TextArea width="100%" height="100%"
-                      value={this.state.emitHtml}
-                      onChange={(e, val) =>
+                      value={this.state.emitHtml || ""}
+                      onChange={(val) =>
                         this.setState((old) =>
                           ({ ...old, edited: true, emitHtml: val }))} />
                   </Section>
