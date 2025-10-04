@@ -47,7 +47,7 @@
 	. = ..()
 	var/datum/prototype/role/job/getting_from
 	if(ispath(job_access_type))
-		job_access_type = SSjob.job_by_type(job_access_type)
+		job_access_type = RSroles.legacy_job_by_type(job_access_type)
 	if(istype(job_access_type))
 		getting_from = job_access_type
 	else

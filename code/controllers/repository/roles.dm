@@ -11,36 +11,73 @@ REPOSITORY_DEF(roles)
 	 */
 	var/list/legacy_job_title_lookup = list()
 
-/datum/controller/repository/roles/load(datum/prototype/instance)
+/datum/controller/repository/roles/load(datum/prototype/role/instance)
 	. = ..()
+	if(!.)
+		return
+	if(istype(instance, /datum/prototype/role/job))
+		var/datum/prototype/role/job/casted_job = instance
+		if(legacy_job_title_lookup[casted_job.title])
+			stack_trace("collision on '[casted_job.title]' job title between [casted_job.type] and [legacy_job_title_lookup[casted_job.title]:title]")
+		else
+			legacy_job_title_lookup[casted_job.title] = casted_job
 
 
-/datum/controller/repository/roles/unload(datum/prototype/instance)
+/datum/controller/repository/roles/unload(datum/prototype/role/instance)
 	. = ..()
-
-
-#warn impl
+	if(!.)
+		return
+	if(istype(instance, /datum/prototype/role/job))
+		var/datum/prototype/role/job/casted_job = instance
+		if(legacy_job_title_lookup[casted_job.title] == casted_job)
+			legacy_job_title_lookup -= casted_job.title
 
 /**
- * Only returns /role/job
+ * Only returns /datum/prototype/role/job
+ */
+/datum/controller/repository/roles/proc/legacy_job_by_title(title)
+	return legacy_job_title_lookup[title]
+
+/**
+ * Only returns /datum/prototype/role/job
+ */
+/datum/controller/repository/roles/proc/legacy_job_by_id(id)
+	return fetch_local_or_throw(title)
+
+/**
+ * Only returns /datum/prototype/role/job
+ */
+/datum/controller/repository/roles/proc/legacy_job_by_type(type)
+	return fetch_local_or_throw(title)
+
+/**
+ * Only returns /datum/prototype/role/job
  */
 /datum/controller/repository/roles/proc/legacy_all_job_ids(filter_faction)
-	#warn impl
+	. = list()
+	for(var/datum/prototype/role/job/r as anything in fetch_subtypes_immutable(/datum/prototype/role/job))
+		. += r.id
 
 /**
- * Only returns /role/job
+ * Only returns /datum/prototype/role/job
  */
 /datum/controller/repository/roles/proc/legacy_all_job_types(filter_faction)
-	#warn impl
+	. = list()
+	for(var/datum/prototype/role/job/r as anything in fetch_subtypes_immutable(/datum/prototype/role/job))
+		. += r.type
 
 /**
- * Only returns /role/job
+ * Only returns /datum/prototype/role/job
  */
 /datum/controller/repository/roles/proc/legacy_all_job_titles(filter_faction)
-	#warn impl
+	. = list()
+	for(var/datum/prototype/role/job/r as anything in fetch_subtypes_immutable(/datum/prototype/role/job))
+		. += r.title
 
 /**
- * Only returns /role/job
+ * Only returns /datum/prototype/role/job
  */
 /datum/controller/repository/roles/proc/legacy_all_job_datums(filter_faction)
-	#warn impl
+	. = list()
+	for(var/datum/prototype/role/job/r as anything in fetch_subtypes_immutable(/datum/prototype/role/job))
+		. += r

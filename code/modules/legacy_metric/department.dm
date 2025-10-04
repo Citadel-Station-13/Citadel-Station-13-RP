@@ -84,7 +84,7 @@
 /datum/legacy_metric/proc/get_people_with_job(job_type, cutoff = 75)
 	. = list()
 	// First, get the name.
-	var/datum/prototype/role/job/J = SSjob.job_by_type(job_type)
+	var/datum/prototype/role/job/J = RSroles.legacy_job_by_type(job_type)
 	if(!istype(J))
 		return
 
@@ -109,7 +109,7 @@
 	. = list()
 
 	var/list/people_with_jobs = get_people_with_job(job_type, cutoff)
-	var/datum/prototype/role/job/J = SSjob.job_by_type(job_type)
+	var/datum/prototype/role/job/J = RSroles.legacy_job_by_type(job_type)
 	var/datum/prototype/struct/alt_title/A = new alt_title_type()
 
 	for(var/M in people_with_jobs)

@@ -209,7 +209,7 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 					if(!config_legacy.enter_allowed)
 						to_chat(usr, SPAN_NOTICE("There is an administrative lock on entering the game."))
 						return
-					var/datum/prototype/role/job/J = SSjob.job_by_id(id)
+					var/datum/prototype/role/job/J = RSroles.legacy_job_by_id(id)
 					if(!J)
 						to_chat(usr, SPAN_WARNING("Failed to find job [id]."))
 						return
