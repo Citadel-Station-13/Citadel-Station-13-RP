@@ -4,22 +4,29 @@
  * @license MIT
  */
 
+import { Reducer } from 'common/redux';
+
+import { importSettings } from '../settings/actions';
 import {
   addChatPage,
   changeChatPage,
   changeScrollTracking,
   loadChat,
+  moveChatPageLeft,
+  moveChatPageRight,
   removeChatPage,
   toggleAcceptedType,
   updateChatPage,
   updateMessageCount,
 } from './actions';
+import { CHAT_VERSION_CURRENT } from './constants';
 import { canPageAcceptType, createMainPage } from './model';
+import { ChatPage, ChatState } from './types';
 
 const mainPage = createMainPage();
 
-export const initialState = {
-  version: 5,
+export const initialState: ChatState = {
+  version: CHAT_VERSION_CURRENT,
   currentPageId: mainPage.id,
   scrollTracking: true,
   pages: [mainPage.id],
@@ -28,7 +35,7 @@ export const initialState = {
   },
 };
 
-export const chatReducer = (state = initialState, action) => {
+export const chatReducer: Reducer<ChatState> = (state = initialState, action) => {
   const { type, payload } = action;
   if (type === loadChat.type) {
     // Validate version and/or migrate state
@@ -125,6 +132,24 @@ export const chatReducer = (state = initialState, action) => {
       },
     };
   }
+  if (type === importSettings.type) {
+    const pagesById: Record<string, ChatPage>[] = payload.newPages;
+    if (!pagesById) {
+      return state;
+    }
+    const newPageIds: string[] = Object.keys(pagesById);
+    if (!newPageIds) {
+      return state;
+    }
+
+    const nextState = {
+      ...state,
+      currentPageId: newPageIds[0],
+      pages: [...newPageIds],
+      pageById: { ...pagesById },
+    };
+    return nextState;
+  }
   if (type === changeChatPage.type) {
     const { pageId } = payload;
     const page = {
@@ -185,6 +210,53 @@ export const chatReducer = (state = initialState, action) => {
     }
     if (!nextState.currentPageId || nextState.currentPageId === pageId) {
       nextState.currentPageId = nextState.pages[0];
+    }
+    return nextState;
+  }
+  if (type === moveChatPageLeft.type) {
+    const { pageId } = payload;
+    const nextState = {
+      ...state,
+      pages: [...state.pages],
+      pageById: {
+        ...state.pageById,
+      },
+    };
+    const tmpPage = nextState.pageById[pageId];
+    const fromIndex = nextState.pages.indexOf(tmpPage.id);
+    const toIndex = fromIndex - 1;
+    // don't ever move leftmost page
+    if (fromIndex > 0) {
+      // don't ever move anything to the leftmost page
+      if (toIndex > 0) {
+        const tmp = nextState.pages[fromIndex];
+        nextState.pages[fromIndex] = nextState.pages[toIndex];
+        nextState.pages[toIndex] = tmp;
+      }
+    }
+    return nextState;
+  }
+
+  if (type === moveChatPageRight.type) {
+    const { pageId } = payload;
+    const nextState = {
+      ...state,
+      pages: [...state.pages],
+      pageById: {
+        ...state.pageById,
+      },
+    };
+    const tmpPage = nextState.pageById[pageId];
+    const fromIndex = nextState.pages.indexOf(tmpPage.id);
+    const toIndex = fromIndex + 1;
+    // don't ever move leftmost page
+    if (fromIndex > 0) {
+      // don't ever move anything out of the array
+      if (toIndex < nextState.pages.length) {
+        const tmp = nextState.pages[fromIndex];
+        nextState.pages[fromIndex] = nextState.pages[toIndex];
+        nextState.pages[toIndex] = tmp;
+      }
     }
     return nextState;
   }

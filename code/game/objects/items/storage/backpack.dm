@@ -347,6 +347,22 @@
 	desc = "A minimalist satchel designed to fit inside of clothing, directly against the skin."
 	item_state = "none"
 
+/obj/item/storage/satchel/roguetown
+	name = "hide satchel"
+	desc = "A satchel made from an unknown hide."
+	icon = 'icons/clothing/uniform/casual/roguetown/hide_satchel.dmi'
+	icon_state = "hidesatchel"
+	slot_flags = SLOT_BACK
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPE_DEFAULT
+	icon_override = null
+	max_single_weight_class = WEIGHT_CLASS_BULKY
+	weight = ITEM_WEIGHT_STORAGE_BACKPACK
+	encumbrance = ITEM_ENCUMBRANCE_STORAGE_BACKPACK
+	max_combined_volume = STORAGE_VOLUME_BACKPACK
+	drop_sound = 'sound/items/drop/backpack.ogg'
+	pickup_sound = 'sound/items/pickup/backpack.ogg'
+
 //ERT backpacks.
 /obj/item/storage/backpack/ert
 	name = "emergency response team backpack"

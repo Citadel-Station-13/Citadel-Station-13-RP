@@ -3,7 +3,7 @@
  * @license MIT
  */
 
-import { BooleanLike } from "../../../common/react";
+import { BooleanLike } from "tgui-core/react";
 
 export interface StackRecipeData {
   sortOrder: number;

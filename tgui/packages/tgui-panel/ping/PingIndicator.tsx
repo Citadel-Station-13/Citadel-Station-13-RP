@@ -4,15 +4,15 @@
  * @license MIT
  */
 
-import { Color } from 'common/colorLegacy';
-import { toFixed } from 'common/math';
-import { useSelector } from 'common/redux';
-import { Box } from 'tgui/components';
+import { useSelector } from 'tgui/backend';
+import { Color } from 'tgui-core/color';
+import { Box } from 'tgui-core/components';
+import { toFixed } from 'tgui-core/math';
 
 import { selectPing } from './selectors';
 
-export const PingIndicator = (props, context) => {
-  const ping = useSelector(context, selectPing);
+export const PingIndicator = (props) => {
+  const ping = useSelector(selectPing);
   const color = Color.lookup(ping.networkQuality, [
     new Color(220, 40, 40),
     new Color(220, 200, 40),
