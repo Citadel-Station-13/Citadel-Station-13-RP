@@ -1025,7 +1025,7 @@
 /area/sector/solar_station/deck0)
 "VQ" = (
 /obj/structure/stairs/spawner/south,
-/turf/simulated/open,
+/turf/simulated/floor/plating,
 /area/sector/solar_station/deck0)
 "WC" = (
 /obj/machinery/atmospherics/pipe/tank/phoron{

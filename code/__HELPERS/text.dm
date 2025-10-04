@@ -181,7 +181,7 @@
  * Used to get a properly sanitized input, of max_length
  * no_trim is self explanatory but it prevents the input from being trimed if you intend to parse newlines or whitespace.
  */
-/proc/stripped_input(mob/user, message = "", title = "", default = "", max_length = MAX_MESSAGE_LEN, no_trim = FALSE)
+/proc/stripped_input(mob/user, message = "", title = "", default = "", max_length = MAX_MESSAGE_LEN + 1, no_trim = FALSE)
 	var/name = input(user, message, title, default) as text|null
 	if(no_trim)
 		return copytext(html_encode(name), 1, max_length)
@@ -191,7 +191,7 @@
 /**
  * Used to get a properly sanitized multiline input, of max_length.
  */
-/proc/stripped_multiline_input(mob/user, message = "", title = "", default = "", max_length = MAX_MESSAGE_LEN, no_trim = FALSE)
+/proc/stripped_multiline_input(mob/user, message = "", title = "", default = "", max_length = MAX_MESSAGE_LEN + 1, no_trim = FALSE)
 	var/name = input(user, message, title, default) as message|null
 	if(isnull(name)) // Return null if canceled.
 		return null
@@ -611,3 +611,32 @@ GLOBAL_LIST_INIT(binary, list("0","1"))
 /proc/sanitize_css_class_name(name)
 	var/static/regex/regex = new(@"[^a-zA-Z0-9]","g")
 	return replacetext(name, regex, "")
+
+/**
+ * Formats a number to human readable form with the appropriate SI unit.
+ *
+ * Supports SI exponents between 1e-15 to 1e15, but properly handles numbers outside that range as well.
+ * Examples:
+ * * `siunit(1234, "Pa", 1)` -> `"1.2 kPa"`
+ * * `siunit(0.5345, "A", 0)` -> `"535 mA"`
+ * * `siunit(1000, "Pa", 4)` -> `"1 kPa"`
+ * Arguments:
+ * * value - The number to convert to text. Can be positive or negative.
+ * * unit - The base unit of the number, such as "Pa" or "W".
+ * * maxdecimals - Maximum amount of decimals to display for the final number. Defaults to 1.
+ * *
+ * * For pressure conversion, use proc/siunit_pressure() below
+ */
+/proc/siunit(value, unit, maxdecimals=1)
+	var/si_isolated = siunit_isolated(value, unit, maxdecimals)
+	return "[si_isolated[SI_COEFFICIENT]][si_isolated[SI_UNIT]]"
+
+/** The game code never uses Pa, but kPa, since 1 Pa is too small to reasonably handle
+ * Thus, to ensure correct conversion from any kPa in game code, this value needs to be multiplied by 10e3 to get Pa, which the siunit() proc expects
+ * Args:
+ * * value_in_kpa - Value that should be converted to readable text in kPa
+ * * maxdecimals - maximum number of decimals that are displayed, defaults to 1 in proc/siunit()
+ */
+/proc/siunit_pressure(value_in_kpa, maxdecimals)
+	var/pressure_adj = value_in_kpa * 1000 //to adjust for using kPa instead of Pa
+	return siunit(pressure_adj, "Pa", maxdecimals)

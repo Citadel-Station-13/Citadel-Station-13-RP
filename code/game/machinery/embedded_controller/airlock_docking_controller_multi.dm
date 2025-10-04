@@ -29,7 +29,7 @@
 		"internalTemplateName" = "DockingConsoleMulti",
 	)
 
-/obj/machinery/embedded_controller/radio/docking_port_multi/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/embedded_controller/radio/docking_port_multi/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	return //Apparently we swallow all input (this is corrected legacy code)
 

@@ -11,7 +11,7 @@
 	. = ..()
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		var/datum/species/holosphere/S = H.species
+		var/datum/species/shapeshifter/holosphere/S = H.species
 		if(!istype(S))
 			return
 		S.try_transform()
@@ -21,7 +21,7 @@
 			actor.chat_feedback(SPAN_WARNING("You are integrated with a hardsuit system, get disconnected first."))
 			return
 		var/mob/living/simple_mob/holosphere_shell/H = M
-		var/datum/species/holosphere/S = H.hologram.species
+		var/datum/species/shapeshifter/holosphere/S = H.hologram.species
 		if(!istype(S))
 			return
 		S.try_untransform()
@@ -36,7 +36,7 @@
 	. = ..()
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		var/datum/species/holosphere/S = H.species
+		var/datum/species/shapeshifter/holosphere/S = H.species
 		if(!istype(S))
 			message_admins("NOT HOLOSPHERE")
 			return

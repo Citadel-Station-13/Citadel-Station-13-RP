@@ -1,10 +1,11 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
-import { BooleanLike } from "common/react";
+import { Button, LabeledList, Section } from "tgui-core/components";
+import { BooleanLike } from "tgui-core/react";
+
 import { useBackend } from "../../backend";
-import { Button, LabeledList } from "../../components";
-import { Section, SectionProps } from "../../components/Section";
+import { SectionProps } from "../../components";
 import { Window } from "../../layouts";
 import { AtmosFilterList, AtmosGasGroupFlags, AtmosGasID, AtmosGasIDs, GasContext } from "../common/Atmos";
 
@@ -38,8 +39,8 @@ export const AtmosVentScrubberControl = (props: AtmosVentScrubberControlProps) =
     <Section {...props}
       buttons={!props.standalone && (
         <Button
-          icon={props.state.power? 'power-off' : 'times'}
-          content={props.state.power? 'On' : 'Off'}
+          icon={props.state.power ? 'power-off' : 'times'}
+          content={props.state.power ? 'On' : 'Off'}
           selected={props.state.power}
           onClick={() => props.powerToggle?.(!props.state.power)} />
       )}>
@@ -47,21 +48,21 @@ export const AtmosVentScrubberControl = (props: AtmosVentScrubberControlProps) =
         {props.standalone && (
           <LabeledList.Item label="Power">
             <Button
-              icon={props.state.power? 'power-off' : 'times'}
-              content={props.state.power? 'On' : 'Off'}
+              icon={props.state.power ? 'power-off' : 'times'}
+              content={props.state.power ? 'On' : 'Off'}
               selected={props.state.power}
               onClick={() => props.powerToggle?.(!props.state.power)} />
           </LabeledList.Item>
         )}
         <LabeledList.Item label="Mode">
-          <Button icon={props.state.siphon? 'sign-in-alt' : 'filter'}
-            color={props.state.siphon? 'danger' : undefined}
-            content={props.state.siphon? 'Siphoning' : 'Scrubbing'}
+          <Button icon={props.state.siphon ? 'sign-in-alt' : 'filter'}
+            color={props.state.siphon ? 'danger' : undefined}
+            content={props.state.siphon ? 'Siphoning' : 'Scrubbing'}
             onClick={() => props.siphonToggle?.(!props.state.siphon)} />
         </LabeledList.Item>
         <LabeledList.Item label="Range">
           <Button.Checkbox
-            content={props.state.expand? 'Expanded' : 'Normal'}
+            content={props.state.expand ? 'Expanded' : 'Normal'}
             selected={props.state.expand}
             onClick={() => props.expandToggle?.(!props.state.expand)} />
         </LabeledList.Item>
@@ -85,8 +86,8 @@ interface AtmosVentScrubberData {
   gasContext: GasContext;
 }
 
-export const AtmosVentScrubber = (props, context) => {
-  let { act, data } = useBackend<AtmosVentScrubberData>(context);
+export const AtmosVentScrubber = (props) => {
+  let { act, data } = useBackend<AtmosVentScrubberData>();
   return (
     <Window width={450} height={275} title={data.name}>
       <Window.Content>

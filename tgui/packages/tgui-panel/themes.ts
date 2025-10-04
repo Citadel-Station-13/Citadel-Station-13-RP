@@ -5,21 +5,33 @@
  */
 
 export const THEMES = ['light', 'dark', 'default'];
-/*
-const COLOR_DARK_BG = '#202020';
-const COLOR_DARK_BG_DARKER = '#171717';
-const COLOR_DARK_TEXT = '#a4bad6';
-*/
-/* CIT SPECIFIC DEFINES. */
-const COLOR_DARK_INFO_BUTTONS_BG = "#40628A";
-const COLOR_DARK_BG = "#272727";
-const COLOR_DARK_DARKBG = "#242424";
-const COLOR_DARK_TEXT = "#E0E0E0";
 
-const COLOR_WHITE_INFO_BUTTONS_BG = "#90B3DD";
-const COLOR_WHITE_BG = "#F0F0F0";
-const COLOR_WHITE_DARKBG = "#E6E6E6";
-const COLOR_WHITE_TEXT = "#000000";
+const COLORS: Record<string, {
+  BG_BASE: string,
+  BG_SECOND: string,
+  BUTTON: string,
+  TEXT: string,
+}> = {
+  DARK: {
+    BG_BASE: '#272727',
+    BG_SECOND: '#242424',
+    BUTTON: '#40628A',
+    TEXT: '#E0E0E0',
+  },
+  LIGHT: {
+    BG_BASE: '#F0F0F0',
+    BG_SECOND: '#E6E6E6',
+    BUTTON: '#90B3DD',
+    TEXT: '#000000',
+  },
+  // dark theme (ui) light theme (chat)
+  DEFAULT: {
+    BG_BASE: '#272727',
+    BG_SECOND: '#242424',
+    BUTTON: '#40628A',
+    TEXT: "#E0E0E0",
+  },
+};
 
 let setClientThemeTimer: NodeJS.Timeout;
 
@@ -33,172 +45,65 @@ let setClientThemeTimer: NodeJS.Timeout;
  * There's no way round it. We're essentially changing the skin by hand.
  * It's painful but it works, and is the way Lummox suggested.
  */
-export const setClientTheme = name => {
+export const setClientTheme = (name) => {
   // Transmit once for fast updates and again in a little while in case we won
   // the race against statbrowser init.
-  let stat_theme = name === "light"? "light" : "dark";
-  clearTimeout(setClientThemeTimer);
-  setTimeout(() => {
-    Byond.command(`.output statbrowser:set_theme ${stat_theme}`);
-  }, 500);
+  clearInterval(setClientThemeTimer);
+  Byond.command(`.output statbrowser:set_theme ${name}`);
   setClientThemeTimer = setTimeout(() => {
-    Byond.command(`.output statbrowser:set_theme ${stat_theme}`);
-  }, 5000);
+    Byond.command(`.output statbrowser:set_theme ${name}`);
+  }, 1500);
 
-  if (name === 'light') {
-    return Byond.winset({
-      // Main windows
-      'infowindow.background-color': COLOR_WHITE_DARKBG,
-      'infowindow.text-color': COLOR_WHITE_TEXT,
-      'info.background-color': COLOR_WHITE_BG,
-      'info.text-color': COLOR_WHITE_TEXT,
-      'browseroutput.background-color': COLOR_WHITE_DARKBG,
-      'browseroutput.text-color': COLOR_WHITE_TEXT,
-      'outputwindow.background-color': COLOR_WHITE_DARKBG,
-      'outputwindow.text-color': COLOR_WHITE_TEXT,
-      'mainwindow.background-color': COLOR_WHITE_DARKBG,
-      'split.background-color': COLOR_WHITE_BG,
-      // Buttons
-      'changelog.background-color': COLOR_WHITE_INFO_BUTTONS_BG,
-      'changelog.text-color': COLOR_WHITE_TEXT,
-      'rules.background-color': COLOR_WHITE_INFO_BUTTONS_BG,
-      'rules.text-color': COLOR_WHITE_TEXT,
-      'wiki.background-color': COLOR_WHITE_INFO_BUTTONS_BG,
-      'wiki.text-color': COLOR_WHITE_TEXT,
-      'forum.background-color': COLOR_WHITE_INFO_BUTTONS_BG,
-      'forum.text-color': COLOR_WHITE_TEXT,
-      'github.background-color': COLOR_WHITE_INFO_BUTTONS_BG,
-      'github.text-color': COLOR_WHITE_TEXT,
-      'report-issue.background-color': '#EF7F7F',
-      'report-issue.text-color': COLOR_WHITE_TEXT,
-      // Status and verb tabs
-      'output.background-color': COLOR_WHITE_BG,
-      'output.text-color': COLOR_WHITE_TEXT,
-      'statwindow.background-color': COLOR_WHITE_DARKBG,
-      'statwindow.text-color': COLOR_WHITE_TEXT,
-      'stat_tab.background-color': COLOR_WHITE_DARKBG,
-      'stat_tab.text-color': COLOR_WHITE_TEXT,
-      'statpanel.background-color': COLOR_WHITE_BG,
-      'statpanel.tab-background-color': COLOR_WHITE_DARKBG,
-      'statpanel.text-color': COLOR_WHITE_TEXT,
-      'statpanel.tab-text-color': COLOR_WHITE_TEXT,
-      'statpanel.prefix-color': COLOR_WHITE_TEXT,
-      'statpanel.suffix-color': COLOR_WHITE_TEXT,
-      // Say, OOC, me Buttons etc.
-      'saybutton.background-color': COLOR_WHITE_DARKBG,
-      'saybutton.text-color': COLOR_WHITE_TEXT,
-      // 'oocbutton.background-color': COLOR_WHITE_DARKBG,
-      // 'oocbutton.text-color': COLOR_WHITE_TEXT,
-      // 'mebutton.background-color': COLOR_WHITE_DARKBG,
-      // 'mebutton.text-color': COLOR_WHITE_TEXT,
-      'asset_cache_browser.background-color': COLOR_WHITE_DARKBG,
-      'asset_cache_browser.text-color': COLOR_WHITE_TEXT,
-      'tooltip.background-color': COLOR_WHITE_BG,
-      'tooltip.text-color': COLOR_WHITE_TEXT,
-    });
+  const themeColor = COLORS[name.toUpperCase()];
+  if (!themeColor) {
+    return;
   }
-  if (name === 'dark') {
-    Byond.winset({
-      // Main windows
-      'infowindow.background-color': COLOR_DARK_DARKBG,
-      'infowindow.text-color': COLOR_DARK_TEXT,
-      'info.background-color': COLOR_DARK_BG,
-      'info.text-color': COLOR_DARK_TEXT,
-      'browseroutput.background-color': COLOR_DARK_BG,
-      'browseroutput.text-color': COLOR_DARK_TEXT,
-      'outputwindow.background-color': COLOR_DARK_BG,
-      'outputwindow.text-color': COLOR_DARK_TEXT,
-      'mainwindow.background-color': COLOR_DARK_DARKBG,
-      'split.background-color': COLOR_DARK_BG,
-      // Buttons
-      'changelog.background-color': COLOR_DARK_INFO_BUTTONS_BG,
-      'changelog.text-color': COLOR_DARK_TEXT,
-      'rules.background-color': COLOR_DARK_INFO_BUTTONS_BG,
-      'rules.text-color': COLOR_DARK_TEXT,
-      'wiki.background-color': COLOR_DARK_INFO_BUTTONS_BG,
-      'wiki.text-color': COLOR_DARK_TEXT,
-      'forum.background-color': COLOR_DARK_INFO_BUTTONS_BG,
-      'forum.text-color': COLOR_DARK_TEXT,
-      'github.background-color': COLOR_DARK_INFO_BUTTONS_BG,
-      'github.text-color': COLOR_DARK_TEXT,
-      'report-issue.background-color': '#A92C2C',
-      'report-issue.text-color': COLOR_DARK_TEXT,
-      // Status and verb tabs
-      'output.background-color': COLOR_DARK_BG,
-      'output.text-color': COLOR_DARK_TEXT,
-      'statwindow.background-color': COLOR_DARK_DARKBG,
-      'statwindow.text-color': COLOR_DARK_TEXT,
-      'stat_tab.background-color': COLOR_DARK_BG,
-      'stat_tab.text-color': COLOR_DARK_TEXT,
-      'statpanel.background-color': COLOR_DARK_DARKBG,
-      'statpanel.tab-background-color': COLOR_DARK_BG,
-      'statpanel.text-color': COLOR_DARK_TEXT,
-      'statpanel.tab-text-color': COLOR_DARK_TEXT,
-      'statpanel.prefix-color': COLOR_DARK_TEXT,
-      'statpanel.suffix-color': COLOR_DARK_TEXT,
-      // Say, OOC, me Buttons etc.
-      'saybutton.background-color': COLOR_DARK_BG,
-      'saybutton.text-color': COLOR_DARK_TEXT,
-      // 'oocbutton.background-color': COLOR_DARK_BG,
-      // 'oocbutton.text-color': COLOR_DARK_TEXT,
-      // 'mebutton.background-color': COLOR_DARK_BG,
-      // 'mebutton.text-color': COLOR_DARK_TEXT,
-      'asset_cache_browser.background-color': COLOR_DARK_BG,
-      'asset_cache_browser.text-color': COLOR_DARK_TEXT,
-      'tooltip.background-color': COLOR_DARK_BG,
-      'tooltip.text-color': COLOR_DARK_TEXT,
-    });
-  }
-  if (name === 'default') { // white-theme (chat) BUT game is using dorktheme
-    Byond.winset({
-      // Main windows
-      'infowindow.background-color': COLOR_DARK_DARKBG,
-      'infowindow.text-color': COLOR_DARK_TEXT,
-      'info.background-color': COLOR_DARK_BG,
-      'info.text-color': COLOR_DARK_TEXT,
-      'browseroutput.background-color': COLOR_DARK_BG,
-      'browseroutput.text-color': COLOR_DARK_TEXT,
-      'outputwindow.background-color': COLOR_DARK_BG,
-      'outputwindow.text-color': COLOR_DARK_TEXT,
-      'mainwindow.background-color': COLOR_DARK_DARKBG,
-      'split.background-color': COLOR_DARK_BG,
-      // Buttons
-      'changelog.background-color': COLOR_DARK_INFO_BUTTONS_BG,
-      'changelog.text-color': COLOR_DARK_TEXT,
-      'rules.background-color': COLOR_DARK_INFO_BUTTONS_BG,
-      'rules.text-color': COLOR_DARK_TEXT,
-      'wiki.background-color': COLOR_DARK_INFO_BUTTONS_BG,
-      'wiki.text-color': COLOR_DARK_TEXT,
-      'forum.background-color': COLOR_DARK_INFO_BUTTONS_BG,
-      'forum.text-color': COLOR_DARK_TEXT,
-      'github.background-color': COLOR_DARK_INFO_BUTTONS_BG,
-      'github.text-color': COLOR_DARK_TEXT,
-      'report-issue.background-color': '#A92C2C',
-      'report-issue.text-color': COLOR_DARK_TEXT,
-      // Status and verb tabs
-      'output.background-color': COLOR_DARK_BG,
-      'output.text-color': COLOR_DARK_TEXT,
-      'statwindow.background-color': COLOR_DARK_DARKBG,
-      'statwindow.text-color': COLOR_DARK_TEXT,
-      'stat_tab.background-color': COLOR_DARK_BG,
-      'stat_tab.text-color': COLOR_DARK_TEXT,
-      'statpanel.background-color': COLOR_DARK_DARKBG,
-      'statpanel.tab-background-color': COLOR_DARK_BG,
-      'statpanel.text-color': COLOR_DARK_TEXT,
-      'statpanel.tab-text-color': COLOR_DARK_TEXT,
-      'statpanel.prefix-color': COLOR_DARK_TEXT,
-      'statpanel.suffix-color': COLOR_DARK_TEXT,
-      // Say, OOC, me Buttons etc.
-      'saybutton.background-color': COLOR_DARK_BG,
-      'saybutton.text-color': COLOR_DARK_TEXT,
-      // 'oocbutton.background-color': COLOR_DARK_BG,
-      // 'oocbutton.text-color': COLOR_DARK_TEXT,
-      // 'mebutton.background-color': COLOR_DARK_BG,
-      // 'mebutton.text-color': COLOR_DARK_TEXT,
-      'asset_cache_browser.background-color': COLOR_DARK_BG,
-      'asset_cache_browser.text-color': COLOR_DARK_TEXT,
-      'tooltip.background-color': COLOR_DARK_BG,
-      'tooltip.text-color': COLOR_DARK_TEXT,
-    });
-  }
+
+  return Byond.winset({
+    // Main windows
+    'infowindow.background-color': themeColor.BG_SECOND,
+    'infowindow.text-color': themeColor.TEXT,
+    'info.background-color': themeColor.BG_BASE,
+    'info.text-color': themeColor.TEXT,
+    'browseroutput.background-color': themeColor.BG_SECOND,
+    'browseroutput.text-color': themeColor.TEXT,
+    'outputwindow.background-color': themeColor.BG_SECOND,
+    'outputwindow.text-color': themeColor.TEXT,
+    'mainwindow.background-color': themeColor.BG_SECOND,
+    'split.background-color': themeColor.BG_BASE,
+    // Buttons
+    'changelog.background-color': themeColor.BUTTON,
+    'changelog.text-color': themeColor.TEXT,
+    'rules.background-color': themeColor.BUTTON,
+    'rules.text-color': themeColor.TEXT,
+    'wiki.background-color': themeColor.BUTTON,
+    'wiki.text-color': themeColor.TEXT,
+    'forum.background-color': themeColor.BUTTON,
+    'forum.text-color': themeColor.TEXT,
+    'github.background-color': themeColor.BUTTON,
+    'github.text-color': themeColor.TEXT,
+    'report-issue.background-color': themeColor.BUTTON,
+    'report-issue.text-color': themeColor.TEXT,
+    // Status and verb tabs
+    'output.background-color': themeColor.BG_BASE,
+    'output.text-color': themeColor.TEXT,
+    // Oldstat
+    'statwindow.background-color': themeColor.BG_SECOND,
+    'statwindow.text-color': themeColor.TEXT,
+    'stat_tab.background-color': themeColor.BG_SECOND,
+    'stat_tab.text-color': themeColor.TEXT,
+    'statpanel.background-color': themeColor.BG_BASE,
+    'statpanel.tab-background-color': themeColor.BG_SECOND,
+    'statpanel.text-color': themeColor.TEXT,
+    'statpanel.tab-text-color': themeColor.TEXT,
+    'statpanel.prefix-color': themeColor.TEXT,
+    'statpanel.suffix-color': themeColor.TEXT,
+    // Say, OOC, me Buttons etc.
+    'saybutton.background-color': themeColor.BG_SECOND,
+    'saybutton.text-color': themeColor.TEXT,
+    'asset_cache_browser.background-color': themeColor.BG_SECOND,
+    'asset_cache_browser.text-color': themeColor.TEXT,
+    'tooltip.background-color': themeColor.BG_BASE,
+    'tooltip.text-color': themeColor.TEXT,
+  });
 };
