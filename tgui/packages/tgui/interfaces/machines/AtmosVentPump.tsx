@@ -1,17 +1,19 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
-import { round } from "common/math";
-import { BooleanLike } from "common/react";
+import { Button, LabeledList, NumberInput } from "tgui-core/components";
+import { Section } from "tgui-core/components";
+import { round } from "tgui-core/math";
+import { BooleanLike } from "tgui-core/react";
+
 import { useBackend } from "../../backend";
-import { Button, LabeledList, NumberInput } from "../../components";
-import { Section, SectionProps } from "../../components/Section";
+import { SectionProps } from "../../components";
 import { Window } from "../../layouts";
 
 export enum AtmosVentPumpPressureChecks {
   None = 0,
-  External = (1<<0),
-  Internal = (1<<1),
+  External = (1 << 0),
+  Internal = (1 << 1),
 }
 
 export interface AtmosVentPumpState {
@@ -51,23 +53,23 @@ interface AtmosVentPumpControlProps extends SectionProps {
 export const AtmosVentPumpControl = (props: AtmosVentPumpControlProps) => {
   return (
     <Section {...props} buttons={!props.standalone && (
-      <Button icon={props.state.power? 'power-off' : 'times'}
-        selected={props.state.power} content={props.state.power? 'On' : 'Off'}
+      <Button icon={props.state.power ? 'power-off' : 'times'}
+        selected={props.state.power} content={props.state.power ? 'On' : 'Off'}
         onClick={() => props.powerToggle?.(!props.state.power)} />
     )}>
       <LabeledList>
         {props.standalone && (
           <LabeledList.Item label="Power">
             <Button
-              icon={props.state.power? 'power-off' : 'times'}
-              selected={props.state.power} content={props.state.power? 'On' : 'Off'}
+              icon={props.state.power ? 'power-off' : 'times'}
+              selected={props.state.power} content={props.state.power ? 'On' : 'Off'}
               onClick={() => props.powerToggle?.(!props.state.power)} />
           </LabeledList.Item>
         )}
         <LabeledList.Item label="Mode">
           <Button icon="sign-in-alt"
-            content={props.state.siphon? 'Siphoning' : 'Pressurizing'}
-            color={props.state.siphon? 'danger' : undefined}
+            content={props.state.siphon ? 'Siphoning' : 'Pressurizing'}
+            color={props.state.siphon ? 'danger' : undefined}
             onClick={() => props.dirToggle?.(!props.state.siphon)} />
         </LabeledList.Item>
         <LabeledList.Item label="Pressure Checks">
@@ -98,7 +100,7 @@ export const AtmosVentPumpControl = (props: AtmosVentPumpControlProps) => {
             minValue={0}
             step={10}
             maxValue={101.325 * 500}
-            onChange={(e, val) => props.internalSet?.(val)} />
+            onChange={(val) => props.internalSet?.(val)} />
         </LabeledList.Item>
         <LabeledList.Item label="External Target"
           buttons={(
@@ -114,7 +116,7 @@ export const AtmosVentPumpControl = (props: AtmosVentPumpControlProps) => {
             minValue={0}
             step={10}
             maxValue={101.325 * 500}
-            onChange={(e, val) => props.externalSet?.(val)} />
+            onChange={(val) => props.externalSet?.(val)} />
         </LabeledList.Item>
       </LabeledList>
     </Section>
@@ -128,8 +130,8 @@ interface AtmosVentPumpData {
   name: string;
 }
 
-export const AtmosVentPump = (props, context) => {
-  let { data, act } = useBackend<AtmosVentPumpData>(context);
+export const AtmosVentPump = (props) => {
+  let { data, act } = useBackend<AtmosVentPumpData>();
 
   return (
     <Window width={350} height={185} title={data.name}>

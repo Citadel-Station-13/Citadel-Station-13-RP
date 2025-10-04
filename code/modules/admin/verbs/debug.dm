@@ -379,10 +379,10 @@
 
 	if(findtext(browser_options, "devtools"))
 		winset(src, null, list("browser-options" = "-devtools"))
-		to_chat(src, SPAN_NOTICE("You can now right click to use inspect on browsers."))
+		to_chat(src, SPAN_NOTICE("You can no longer right click to use inspect on browsers."))
 	else
 		winset(src, null, list("browser-options" = "+devtools"))
-		to_chat(src, SPAN_NOTICE("You can no longer right click to use inspect on browsers."))
+		to_chat(src, SPAN_NOTICE("You can now right click to use inspect on browsers."))
 
 
 /client/proc/cmd_admin_clear_mobs()
@@ -790,10 +790,12 @@
 	input_NIF = input("Pick the NIF type","Quick NIF") in show_NIFs
 	var/chosen_NIF = NIFs[capitalize(input_NIF)]
 
+	var/obj/item/nif/created
 	if(chosen_NIF)
-		new chosen_NIF(H)
+		created = new chosen_NIF(H)
 	else
-		new /obj/item/nif(H)
+		created = new /obj/item/nif(H)
+	created.install_done = world.time
 
 	log_and_message_admins("[key_name(src)] Quick NIF'd [H.real_name] with a [input_NIF].")
 	feedback_add_details("admin_verb","QNIF") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

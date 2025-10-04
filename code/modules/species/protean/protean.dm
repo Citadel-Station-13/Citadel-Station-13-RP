@@ -234,19 +234,19 @@
 	. = ..()
 	var/obj/item/organ/internal/nano/refactory/refactory = H.nano_get_refactory()
 	if(refactory && !(refactory.status & ORGAN_DEAD))
-		STATPANEL_DATA_LINE("- -- --- Refactory Metal Storage --- -- -")
+		INJECT_STATPANEL_DATA_LINE(., "- -- --- Refactory Metal Storage --- -- -")
 		var/max = refactory.max_storage
 		for(var/material in refactory.stored_materials)
 			var/amount = refactory.get_stored_material(material)
-			STATPANEL_DATA_ENTRY("[capitalize(material)]", "[amount]/[max]")
+			INJECT_STATPANEL_DATA_ENTRY(., "[capitalize(material)]", "[amount]/[max]")
 	else
-		STATPANEL_DATA_LINE("- -- --- REFACTORY ERROR! --- -- -")
+		INJECT_STATPANEL_DATA_LINE(., "- -- --- REFACTORY ERROR! --- -- -")
 
-	STATPANEL_DATA_LINE("- -- --- Abilities (Shift+LMB Examines) --- -- -")
+	INJECT_STATPANEL_DATA_LINE(., "- -- --- Abilities (Shift+LMB Examines) --- -- -")
 	for(var/ability in protean_abilities)
 		var/obj/effect/protean_ability/A = ability
 		A.atom_button_text()
-		STATPANEL_DATA_CLICK("[icon2html(A, C)] [A.ability_name]", "[A.name]", "\ref[A]")
+		INJECT_STATPANEL_DATA_CLICK(., "[icon2html(A, C)] [A.ability_name]", "[A.name]", "\ref[A]")
 
 // Various modifiers
 /datum/modifier/protean
@@ -340,6 +340,21 @@
 		prig.forceMove(src)
 		return
 
+	if(istype(loc, /obj/item/holder))
+		var/obj/item/holder/blobholder = loc
+		if(istype(blobholder.loc, /mob/living/carbon/human))
+			var/mob/living/carbon/human/H = blobholder.loc
+			var/back = FALSE
+			if(blobholder == H.item_by_slot_id(SLOT_ID_BACK))
+				back = TRUE
+			var/obj/item/hardsuit/protean/prig = locate() in contents
+			if(prig)
+				prig.forceMove(get_turf(src))
+				forceMove(prig)
+				blobholder.update_state()
+				if(back)
+					H.equip_to_slot_if_possible(prig,SLOT_ID_BACK, INV_OP_FORCE | INV_OP_DIRECTLY_EQUIPPING | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
+				return
 	if(isturf(loc))
 		var/obj/item/hardsuit/protean/prig = locate() in contents
 		if(prig)

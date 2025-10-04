@@ -460,14 +460,6 @@
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/unsimulated/floor/steel,
 /area/centcom/specops)
-"bA" = (
-/obj/effect/forcefield{
-	desc = "You can't get in. Heh.";
-	layer = 1;
-	name = "Blocker"
-	},
-/turf/unsimulated/floor/steel,
-/area/centcom/living)
 "bC" = (
 /obj/structure/table/standard{
 	name = "plastic table frame"
@@ -655,19 +647,6 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
-"ce" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/machinery/vending/security,
-/obj/effect/floor_decal/borderfloor{
-	dir = 5
-	},
-/obj/effect/floor_decal/corner/blue/border{
-	dir = 5
-	},
-/turf/unsimulated/floor/steel,
-/area/centcom/security)
 "cf" = (
 /obj/machinery/door/blast/regular{
 	dir = 4
@@ -997,7 +976,7 @@
 	},
 /area/centcom/security)
 "dd" = (
-/obj/machinery/r_n_d/circuit_imprinter,
+/obj/machinery/lathe/r_n_d/circuit_imprinter,
 /obj/item/reagent_containers/glass/beaker/sulphuric,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
@@ -1235,21 +1214,6 @@
 /obj/map_helper/access_helper/airlock/station/security/department,
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
-"dK" = (
-/obj/machinery/cryopod/robot/door/dorms{
-	base_icon_state = "door_closed";
-	desc = "A small elevator";
-	dir = 2;
-	icon_state = "door_closed";
-	name = "elevator";
-	on_enter_occupant_message = "The elevator doors close slowly. You can now head off for the residential, commercial, and other floors.";
-	on_store_message = "has departed for one of the various colony floors";
-	on_store_name = "Colony Oversight";
-	on_store_visible_message_2 = "to the colony districts.";
-	time_till_despawn = 5
-	},
-/turf/unsimulated/floor/steel,
-/area/centcom/living)
 "dM" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner{
 	dir = 4
@@ -2721,14 +2685,6 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
-"iu" = (
-/obj/effect/floor_decal/steeldecal/steel_decals5,
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 8
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9,
-/turf/unsimulated/floor/steel,
-/area/centcom/security)
 "iv" = (
 /obj/structure/table/reinforced,
 /obj/item/card/id/gold/captain/spare,
@@ -3595,15 +3551,6 @@
 	icon_state = "dark"
 	},
 /area/centcom/security)
-"lu" = (
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9,
-/turf/unsimulated/floor/steel{
-	icon_state = "white"
-	},
-/area/centcom/living)
 "lv" = (
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/kitsuneudon,
@@ -3700,7 +3647,7 @@
 /turf/unsimulated/floor/steel,
 /area/space)
 "lE" = (
-/obj/machinery/r_n_d/circuit_imprinter,
+/obj/machinery/lathe/r_n_d/circuit_imprinter,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
@@ -5106,20 +5053,6 @@
 	icon_state = "dark"
 	},
 /area/centcom/command)
-"pK" = (
-/obj/effect/floor_decal/steeldecal/steel_decals5,
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 8
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9,
-/obj/effect/floor_decal/borderfloor/corner{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/blue/bordercorner{
-	dir = 4
-	},
-/turf/unsimulated/floor/steel,
-/area/centcom/security)
 "pM" = (
 /obj/structure/fake_stairs/north/bottom{
 	_stair_tag = "stairtest"
@@ -5177,12 +5110,14 @@
 /turf/simulated/shuttle/wall/voidcraft,
 /area/shuttle/specops/general)
 "pX" = (
-/obj/machinery/vending/coffee,
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
 	},
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 6
+	},
+/obj/structure/reagent_dispensers/peppertank{
+	pixel_x = 30
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
@@ -5677,19 +5612,6 @@
 /obj/machinery/camera/network/crescent,
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
-"rz" = (
-/obj/effect/floor_decal/borderfloor/corner{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/blue/bordercorner{
-	dir = 4
-	},
-/obj/machinery/door/window/brigdoor/northright{
-	req_access = list(63);
-	req_one_access = list(1)
-	},
-/turf/unsimulated/floor/steel,
-/area/centcom/security)
 "rA" = (
 /obj/structure/table/woodentable{
 	dir = 5
@@ -5785,9 +5707,10 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "rK" = (
-/obj/effect/floor_decal/industrial/outline,
-/obj/structure/closet/secure_closet/nanotrasen_security,
-/turf/unsimulated/floor/steel,
+/obj/effect/blocker,
+/turf/unsimulated/floor/steel{
+	icon_state = "white"
+	},
 /area/centcom/security)
 "rL" = (
 /obj/effect/floor_decal/corner_techfloor_grid{
@@ -5803,12 +5726,6 @@
 	icon_state = "white"
 	},
 /area/centcom/control)
-"rN" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "plant-22"
-	},
-/turf/unsimulated/floor/steel,
-/area/centcom/living)
 "rO" = (
 /obj/structure/cable/green{
 	icon_state = "1-4"
@@ -7593,18 +7510,9 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "xl" = (
-/obj/effect/floor_decal/steeldecal/steel_decals5,
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 8
+/turf/unsimulated/floor/steel{
+	icon_state = "white"
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals9,
-/obj/effect/floor_decal/borderfloor/corner{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/blue/bordercorner{
-	dir = 1
-	},
-/turf/unsimulated/floor/steel,
 /area/centcom/security)
 "xn" = (
 /obj/effect/floor_decal/borderfloor{
@@ -7704,11 +7612,6 @@
 	icon_state = "dark"
 	},
 /area/centcom/security)
-"xF" = (
-/turf/unsimulated/floor/steel{
-	icon_state = "white"
-	},
-/area/centcom/living)
 "xG" = (
 /obj/structure/bed/roller,
 /turf/unsimulated/floor{
@@ -8024,18 +7927,21 @@
 	},
 /area/centcom/command)
 "yI" = (
-/obj/effect/floor_decal/borderfloor/corner{
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/blue/bordercorner{
-	dir = 1
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 9
 	},
-/obj/machinery/door/window/brigdoor/northleft{
-	req_access = list(63);
-	req_one_access = list(1)
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 10
 	},
+/obj/machinery/camera/network/crescent,
 /turf/unsimulated/floor/steel,
-/area/centcom/security)
+/area/centcom/main_hall)
 "yJ" = (
 /obj/structure/table/reinforced,
 /obj/machinery/computer/skills,
@@ -8857,15 +8763,10 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/evac)
 "Bp" = (
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 1
+/obj/structure/bed/chair{
+	dir = 8
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 4
-	},
-/turf/unsimulated/floor/steel{
-	icon_state = "white"
-	},
+/turf/unsimulated/floor/steel,
 /area/centcom/living)
 "Bq" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -9055,18 +8956,6 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
-"Cd" = (
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 8
-	},
-/obj/effect/blocker,
-/turf/unsimulated/floor/steel{
-	icon_state = "white"
-	},
-/area/centcom/living)
 "Ch" = (
 /obj/effect/floor_decal/corner/grey/diagonal{
 	dir = 4
@@ -9701,10 +9590,6 @@
 	icon_state = "dark"
 	},
 /area/centcom/security)
-"Eq" = (
-/obj/item/stool/padded,
-/turf/unsimulated/floor/steel,
-/area/centcom/security)
 "Er" = (
 /obj/effect/floor_decal/carpet,
 /turf/unsimulated/floor{
@@ -10005,20 +9890,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/centcom/security)
-"Fv" = (
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 8
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 4
-	},
-/turf/unsimulated/floor/steel{
-	icon_state = "white"
-	},
-/area/centcom/living)
 "Fw" = (
 /obj/structure/table/standard,
 /obj/effect/floor_decal/borderfloor{
@@ -10132,12 +10003,6 @@
 	icon_state = "carpet"
 	},
 /area/centcom/restaurant)
-"FJ" = (
-/obj/machinery/vending/cigarette,
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/blue/border,
-/turf/unsimulated/floor/steel,
-/area/centcom/security)
 "FK" = (
 /obj/effect/floor_decal/carpet{
 	dir = 4
@@ -10253,7 +10118,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/escape)
 "Gh" = (
-/obj/machinery/mecha_part_fabricator,
+/obj/machinery/lathe/mecha_part_fabricator,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "Gi" = (
@@ -10300,18 +10165,6 @@
 	icon_state = "dark"
 	},
 /area/centcom/security)
-"Gp" = (
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 4
-	},
-/obj/machinery/camera/network/crescent,
-/turf/unsimulated/floor/steel{
-	icon_state = "white"
-	},
-/area/centcom/living)
 "Gr" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/box/autoinjectors,
@@ -10761,19 +10614,6 @@
 "HU" = (
 /turf/simulated/floor/tiled/steel,
 /area/centcom/security)
-"HV" = (
-/obj/item/stool/padded,
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/blue/border{
-	dir = 8
-	},
-/obj/machinery/camera/network/crescent{
-	dir = 4
-	},
-/turf/unsimulated/floor/steel,
-/area/centcom/security)
 "HX" = (
 /obj/structure/grille,
 /obj/structure/railing{
@@ -10822,16 +10662,6 @@
 	icon_state = "dark"
 	},
 /area/centcom/security)
-"Id" = (
-/obj/effect/floor_decal/steeldecal/steel_decals5{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9,
-/turf/unsimulated/floor/steel,
-/area/centcom/living)
 "Ie" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 9
@@ -11295,7 +11125,7 @@
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/escape)
 "Js" = (
-/obj/machinery/r_n_d/protolathe,
+/obj/machinery/lathe/r_n_d/protolathe,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "Jt" = (
@@ -11429,18 +11259,6 @@
 /obj/structure/sign/warning/nosmoking_2,
 /turf/unsimulated/wall,
 /area/centcom/terminal)
-"JS" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/blue/border{
-	dir = 1
-	},
-/turf/unsimulated/floor/steel,
-/area/centcom/security)
 "JU" = (
 /obj/structure/table/steel,
 /obj/item/paper_bin{
@@ -11688,18 +11506,20 @@
 /turf/simulated/floor/plating,
 /area/shuttle/specops/engine)
 "KD" = (
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 1
+/obj/machinery/cryopod/robot/door/dorms{
+	base_icon_state = "door_closed";
+	desc = "A small elevator";
+	dir = 2;
+	icon_state = "door_closed";
+	name = "elevator";
+	on_enter_occupant_message = "The elevator doors close slowly. You can now head off for the residential, commercial, and other floors.";
+	on_store_message = "has departed for one of the various colony floors";
+	on_store_name = "Colony Oversight";
+	on_store_visible_message_2 = "to the colony districts.";
+	time_till_despawn = 5
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9,
-/obj/structure/reagent_dispensers/water_cooler/full,
-/turf/unsimulated/floor/steel{
-	icon_state = "white"
-	},
-/area/centcom/living)
+/turf/unsimulated/wall,
+/area/centcom/security)
 "KF" = (
 /obj/machinery/newscaster{
 	pixel_x = 28
@@ -11878,16 +11698,8 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
 "Lp" = (
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 8
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9,
-/turf/unsimulated/floor/steel{
-	icon_state = "white"
-	},
+/obj/structure/reagent_dispensers/water_cooler/full,
+/turf/unsimulated/floor/steel,
 /area/centcom/living)
 "Lq" = (
 /obj/structure/table/marble,
@@ -12059,19 +11871,6 @@
 	},
 /turf/unsimulated/floor/wood,
 /area/centcom/restaurant)
-"LF" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/machinery/vending/security,
-/obj/effect/floor_decal/borderfloor{
-	dir = 9
-	},
-/obj/effect/floor_decal/corner/blue/border{
-	dir = 9
-	},
-/turf/unsimulated/floor/steel,
-/area/centcom/security)
 "LG" = (
 /obj/structure/table/rack,
 /obj/item/clothing/gloves/arm_guard/combat,
@@ -12658,14 +12457,20 @@
 	},
 /area/centcom/security)
 "NC" = (
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 8
+/obj/machinery/cryopod/robot/door/dorms{
+	base_icon_state = "door_closed";
+	desc = "A small elevator";
+	dir = 2;
+	icon_state = "door_closed";
+	name = "elevator";
+	on_enter_occupant_message = "The elevator doors close slowly. You can now head off for the residential, commercial, and other floors.";
+	on_store_message = "has departed for one of the various colony floors";
+	on_store_name = "Colony Oversight";
+	on_store_visible_message_2 = "to the colony districts.";
+	time_till_despawn = 5
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals9,
-/turf/unsimulated/floor/steel{
-	icon_state = "white"
-	},
-/area/centcom/living)
+/turf/unsimulated/floor/steel,
+/area/centcom/security)
 "ND" = (
 /obj/structure/table/rack,
 /obj/item/clothing/gloves/arm_guard/laserproof,
@@ -13012,13 +12817,6 @@
 /obj/machinery/tele_pad,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
-"OD" = (
-/obj/effect/floor_decal/industrial/outline,
-/obj/structure/closet/secure_closet/nanotrasen_security{
-	desc = "This locker is filled silly stickers and some other serious Nanotrasen ones. It is lazily labeled 'The big cat'."
-	},
-/turf/unsimulated/floor/steel,
-/area/centcom/security)
 "OF" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 6
@@ -13271,18 +13069,11 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "Py" = (
-/obj/item/stool/padded,
-/obj/structure/reagent_dispensers/peppertank{
-	pixel_x = 30
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/blue/border{
-	dir = 4
+/obj/structure/flora/pottedplant{
+	icon_state = "plant-21"
 	},
 /turf/unsimulated/floor/steel,
-/area/centcom/security)
+/area/centcom/living)
 "Pz" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -13387,12 +13178,6 @@
 	icon_state = "white"
 	},
 /area/centcom/medical)
-"PN" = (
-/obj/machinery/vending/snack,
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/blue/border,
-/turf/unsimulated/floor/steel,
-/area/centcom/security)
 "PO" = (
 /obj/structure/bed/chair/office/light,
 /turf/unsimulated/floor/steel,
@@ -13446,7 +13231,7 @@
 	},
 /area/centcom/bathroom)
 "PU" = (
-/obj/machinery/computer/communications{
+/obj/machinery/computer/shuttle_control/emergency{
 	dir = 4
 	},
 /turf/simulated/shuttle/floor/white,
@@ -14180,10 +13965,6 @@
 	icon_state = "asteroidfloor"
 	},
 /area/centcom/main_hall)
-"Sa" = (
-/obj/machinery/camera/network/crescent,
-/turf/unsimulated/floor/steel,
-/area/centcom/living)
 "Sc" = (
 /turf/unsimulated/wall,
 /area/centcom/restaurant)
@@ -14861,7 +14642,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "Us" = (
-/obj/machinery/mecha_part_fabricator/pros,
+/obj/machinery/lathe/mecha_part_fabricator/pros,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "Uu" = (
@@ -15399,21 +15180,6 @@
 	icon_state = "dark"
 	},
 /area/tdome/tdomeadmin)
-"Wq" = (
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 8
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9,
-/obj/structure/flora/pottedplant{
-	icon_state = "plant-24"
-	},
-/turf/unsimulated/floor/steel{
-	icon_state = "white"
-	},
-/area/centcom/living)
 "Wr" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 9
@@ -49537,7 +49303,7 @@ kf
 HG
 dj
 Uw
-Ss
+yI
 Dr
 Dr
 Rj
@@ -49920,10 +49686,10 @@ Xd
 jR
 LJ
 ol
-LF
-HV
+WK
 xl
-rK
+xl
+xl
 WK
 MI
 MI
@@ -50114,12 +49880,12 @@ mV
 Xd
 Xd
 Ar
-JS
-Eq
-iu
-rK
 WK
-Sa
+xl
+xl
+rK
+KD
+MI
 MI
 MI
 MI
@@ -50308,10 +50074,10 @@ yR
 BX
 Xd
 WV
-JS
-Eq
-iu
-rK
+WK
+xl
+xl
+xl
 WK
 MV
 MI
@@ -50502,12 +50268,12 @@ Ds
 BX
 Xd
 WV
-JS
-Eq
-iu
-rK
 WK
-MI
+WK
+WK
+WK
+WK
+Py
 MI
 MI
 MI
@@ -50696,15 +50462,15 @@ yR
 BX
 Xd
 jR
-yI
-Xd
-iu
-rK
 WK
-rN
-Id
-Id
-rN
+xl
+xl
+xl
+WK
+MV
+MI
+MI
+MI
 WK
 rI
 Bx
@@ -50890,15 +50656,15 @@ Ds
 BX
 Xd
 Zb
-rz
-Xd
-iu
-rK
 WK
-ga
-bA
-dK
-ga
+xl
+xl
+rK
+NC
+MI
+MI
+MI
+MI
 WK
 WK
 NU
@@ -51084,14 +50850,14 @@ Ds
 BX
 Xd
 WV
-JS
-Eq
-iu
-OD
 WK
-Fv
-Cd
-Cd
+xl
+xl
+xl
+WK
+MI
+MI
+MI
 Lp
 WK
 Pq
@@ -51277,16 +51043,16 @@ Ds
 Ll
 BX
 Xd
-FJ
-JS
-Eq
-iu
-rK
+WV
+WK
+WK
+WK
+WK
 WK
 Bp
-xF
-xF
-NC
+Bp
+Bp
+ga
 WK
 hf
 Bx
@@ -51471,16 +51237,16 @@ ir
 ir
 Xd
 Xd
-PN
-JS
-Eq
-iu
-rK
+WV
 WK
-Gp
-xF
-xF
-NC
+WK
+WK
+WK
+WK
+ga
+ga
+ga
+ga
 WK
 ta
 Bx
@@ -51666,15 +51432,15 @@ TN
 TN
 TN
 pX
-ce
-Py
-pK
-rK
 WK
-KD
-lu
-lu
-Wq
+WK
+WK
+WK
+WK
+ga
+ga
+ga
+ga
 WK
 mf
 Jt

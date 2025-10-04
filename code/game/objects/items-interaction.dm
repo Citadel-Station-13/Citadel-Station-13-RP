@@ -96,7 +96,8 @@
 	// success
 	if(isturf(old_loc))
 		new /obj/effect/temporary_effect/item_pickup_ghost(old_loc, actually_picked_up, user)
-
+	user.trigger_aiming(TARGET_CAN_CLICK)
+	
 //* Drag / Drop *//
 
 /obj/item/OnMouseDrop(atom/over, mob/user, proximity, params)
@@ -191,10 +192,13 @@
 		actor = new /datum/event_args/actor(user)
 	var/signal_return = SEND_SIGNAL(src, COMSIG_ITEM_ACTIVATE_INHAND, actor)
 	if(signal_return & RAISE_ITEM_ACTIVATE_INHAND_HANDLED)
+		user.trigger_aiming(TARGET_CAN_CLICK)
 		return TRUE
 	if(on_attack_self(actor))
+		user.trigger_aiming(TARGET_CAN_CLICK)
 		return TRUE
 	if(interaction_flags_item & INTERACT_ITEM_ATTACK_SELF)
+		user.trigger_aiming(TARGET_CAN_CLICK)
 		interact(user)
 
 /**

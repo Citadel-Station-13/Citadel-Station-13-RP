@@ -420,19 +420,19 @@
 
 /datum/loadout_entry/uniform/pyjamas_red
 	name = "Pyjamas - Red"
-	path = /obj/item/clothing/under/redpyjamas
+	path = /obj/item/clothing/under/pj/red
 
 /datum/loadout_entry/uniform/pyjamas_blue
 	name = "Pyjamas - Blue"
-	path = /obj/item/clothing/under/bluepyjamas
+	path = /obj/item/clothing/under/pj/blue
 
 /datum/loadout_entry/uniform/pyjamas_red_fem
 	name = "Pyjamas - Red - Female"
-	path = /obj/item/clothing/under/redpyjamas_fem
+	path = /obj/item/clothing/under/pj/red_fem
 
 /datum/loadout_entry/uniform/pyjamas_blue_fem
 	name = "Pyjamas - Blue - Female"
-	path = /obj/item/clothing/under/bluepyjamas_fem
+	path = /obj/item/clothing/under/pj/blue_fem
 
 /datum/loadout_entry/uniform/wrappedcoat
 	name = "Modern Wrapped Coat"
@@ -876,6 +876,14 @@ Swimsuits
 	name = "Baroness Dress"
 	path = /obj/item/clothing/under/baroness
 
+/datum/loadout_entry/uniform/medical_old
+	name = "Old times Nurse Dress"
+	path = /obj/item/clothing/under/medicalold
+
+/datum/loadout_entry/uniform/medical_atlantic
+	name = "Old Atlantic Nurse Dress"
+	path = /obj/item/clothing/under/medicalatlantic
+
 /datum/loadout_entry/uniform/yoko
 	name = "Scavenging Sniper Set"
 	path = /obj/item/clothing/under/yoko
@@ -1026,3 +1034,11 @@ Swimsuits
 /datum/loadout_entry/uniform/tajaran/dpra/alt
 	name = "DPRA laborer clothes, alternate"
 	path = /obj/item/clothing/under/tajaran/dpra/alt
+
+/datum/loadout_entry/uniform/tajaran/hadii
+	name = "Hadii's Folley Civilian Uniform"
+	path = /obj/item/clothing/under/tajaran/hadiifolly
+
+/datum/loadout_entry/uniform/punk
+	name = "Ripped pants and fishnets"
+	path = /obj/item/clothing/under/rippedpunk

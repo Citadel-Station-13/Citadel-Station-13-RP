@@ -1,9 +1,10 @@
-import { round } from 'common/math';
-import { BooleanLike } from 'common/react';
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
+import { Box, Button, Collapsible, Flex, LabeledList, NoticeBox, Section } from "tgui-core/components";
+import { formatTime } from "tgui-core/format";
+import { round } from 'tgui-core/math';
+import { BooleanLike } from 'tgui-core/react';
+
 import { useBackend } from "../backend";
-import { Box, Button, Flex, NoticeBox, LabeledList, Section, Collapsible } from "../components";
-import { formatTime } from '../format';
 import { Window } from "../layouts";
 
 interface TelecommsLogBrowserContext {
@@ -49,25 +50,25 @@ interface UITemporaryMessage {
   text: string;
 }
 
-export const TelecommsLogBrowser = (props, context) => {
-  const { act, data } = useBackend<TelecommsLogBrowserContext>(context);
+export const TelecommsLogBrowser = (props) => {
+  const { act, data } = useBackend<TelecommsLogBrowserContext>();
 
   return (
     <Window
       width={575}
       height={450}
-      resizable>
+    >
       <Window.Content scrollable>
         {!!data.temp && (
-          <NoticeBox warning>
-            <Box display="inline-box" verticalAlign="middle">
+          <NoticeBox>
+            <Box style={{ display: "inline-box" }} verticalAlign="middle">
               {data.temp.text}
             </Box>
             <Button
               icon="times-circle"
-              float="right"
+              style={{ float: "right" }}
               onClick={() => act('cleartemp')} />
-            <Box clear="both" />
+            <Box style={{ clear: "both" }} />
           </NoticeBox>
         )}
         <Section title="Network Control">
@@ -75,7 +76,7 @@ export const TelecommsLogBrowser = (props, context) => {
             <LabeledList.Item
               label="Current Network"
               buttons={(
-                <Fragment>
+                <>
                   <Button
                     icon="search"
                     content="Refresh"
@@ -86,7 +87,7 @@ export const TelecommsLogBrowser = (props, context) => {
                     content="Flush Buffer"
                     disabled={!!data.servers.length}
                     onClick={() => act('release')} />
-                </Fragment>
+                </>
               )}>
               <Button
                 content={data.network}
@@ -110,8 +111,8 @@ export const TelecommsLogBrowser = (props, context) => {
   );
 };
 
-const TelecommsServerSelection = (props, context) => {
-  const { act, data } = useBackend(context);
+const TelecommsServerSelection = (props) => {
+  const { act, data } = useBackend<any>();
   const {
     network,
     servers,
@@ -138,7 +139,7 @@ const TelecommsServerSelection = (props, context) => {
         {servers.map(server => (
           <LabeledList.Item
             key={server.id}
-            label={server.name+ " (" + server.id + ")"}>
+            label={server.name + " (" + server.id + ")"}>
             <Button
               content="View"
               icon="eye"
@@ -155,8 +156,8 @@ interface TelecommsSelectedServerProps {
   readonly universal_translate: BooleanLike;
 }
 
-const TelecommsSelectedServer = (props: TelecommsSelectedServerProps, context) => {
-  const { act, data } = useBackend<TelecommsLogBrowserContext>(context);
+const TelecommsSelectedServer = (props: TelecommsSelectedServerProps) => {
+  const { act, data } = useBackend<TelecommsLogBrowserContext>();
 
   return (
     <Section
@@ -182,7 +183,7 @@ const TelecommsSelectedServer = (props: TelecommsSelectedServerProps, context) =
           color="transparent"
           buttons={
             <Button
-              content={props.server.triangulating? "Enabled" : "Disabled"}
+              content={props.server.triangulating ? "Enabled" : "Disabled"}
               selected={!!props.server.triangulating}
               onClick={() => act('toggle_triangulation')} />
           }>
@@ -214,9 +215,9 @@ const TelecommsSelectedServer = (props: TelecommsSelectedServerProps, context) =
               <Flex.Item m="2px" key={log.id} basis="49%" grow={log.id % 2}>
                 <Section
                   title={(props.universal_translate
-                      || log.parameters["uspeech"]
-                      || log.parameters["intelligible"]
-                      || log.input_type === "Execution Error")
+                    || log.parameters["uspeech"]
+                    || log.parameters["intelligible"]
+                    || log.input_type === "Execution Error")
                     ? log.input_type
                     : "Audio File"}
                   buttons={
@@ -242,13 +243,13 @@ const TelecommsSelectedServer = (props: TelecommsSelectedServerProps, context) =
                       </LabeledList.Item>
                     </LabeledList>
                   ) : (props.universal_translate
-                      || log.parameters["uspeech"]
-                      || log.parameters["intelligible"])
+                    || log.parameters["uspeech"]
+                    || log.parameters["intelligible"])
                     ? <TelecommsLog log={log} />
                     : <TelecommsLog error />}
                 </Section>
               </Flex.Item>
-            )) }
+            ))}
         </Flex>
       </Section>
     </Section>
@@ -256,8 +257,8 @@ const TelecommsSelectedServer = (props: TelecommsSelectedServerProps, context) =
 };
 
 
-const TelecommsLog = (props, context) => {
-  const { act, data } = useBackend<TelecommsLogBrowserContext>(context);
+const TelecommsLog = (props) => {
+  const { act, data } = useBackend<TelecommsLogBrowserContext>();
   const {
     log,
     error,

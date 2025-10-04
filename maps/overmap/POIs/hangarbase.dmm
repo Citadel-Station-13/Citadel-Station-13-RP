@@ -1620,7 +1620,7 @@
 /area/awaymission/listeningpost)
 "OG" = (
 /obj/structure/closet/crate,
-/obj/item/disk/limb/veymed,
+/obj/item/disk/design_disk/limbs/veymed,
 /obj/item/nif,
 /turf/simulated/floor/tiled/techfloor,
 /area/awaymission/listeningpost)

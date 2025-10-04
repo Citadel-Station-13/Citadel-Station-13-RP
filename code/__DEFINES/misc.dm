@@ -122,6 +122,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define EVENT_LEVEL_MUNDANE		1
 #define EVENT_LEVEL_MODERATE	2
 #define EVENT_LEVEL_MAJOR		3
+#define EVENT_LEVEL_EXTREME		4
 
 /// General-purpose life speed define for plants.
 #define HYDRO_SPEED_MULTIPLIER	1

@@ -487,7 +487,7 @@
 	},
 /area/centcom/specops)
 "bA" = (
-/obj/machinery/r_n_d/circuit_imprinter,
+/obj/machinery/lathe/r_n_d/circuit_imprinter,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
@@ -1361,8 +1361,12 @@
 /area/centcom/command)
 "dX" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/door/window/brigdoor/eastleft,
-/obj/machinery/door/window/brigdoor/westright,
+/obj/machinery/door/window/brigdoor/westright{
+	req_access = null
+	},
+/obj/machinery/door/window/brigdoor/eastleft{
+	req_access = null
+	},
 /turf/unsimulated/floor/techfloor_grid{
 	layer = 1
 	},
@@ -1531,7 +1535,7 @@
 	},
 /area/centcom/specops/dock)
 "eu" = (
-/obj/machinery/mecha_part_fabricator,
+/obj/machinery/lathe/mecha_part_fabricator,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "ew" = (
@@ -2229,7 +2233,7 @@
 	},
 /area/centcom/command)
 "gk" = (
-/obj/machinery/r_n_d/protolathe,
+/obj/machinery/lathe/r_n_d/protolathe,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "gl" = (
@@ -4653,6 +4657,12 @@
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_emptycourt)
+"mO" = (
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/turf/unsimulated/floor{
+	name = "plating"
+	},
+/area/centcom/medical)
 "mP" = (
 /obj/item/stack/material/glass{
 	amount = 50
@@ -4982,6 +4992,18 @@
 	layer = 1
 	},
 /area/centcom/main_hall)
+"nt" = (
+/obj/structure/table/steel_reinforced,
+/obj/machinery/door/window/brigdoor/eastleft{
+	req_access = null
+	},
+/obj/machinery/door/window/brigdoor/westright{
+	req_access = null
+	},
+/turf/unsimulated/floor/techfloor_grid{
+	layer = 1
+	},
+/area/centcom/restaurant)
 "nu" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Teleporter";
@@ -5793,10 +5815,6 @@
 /obj/effect/floor_decal/corner/blue/border,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
-"pA" = (
-/mob/living/simple_mob/animal/passive/maint_drone,
-/turf/simulated/wall/r_wall/prepainted,
-/area/centcom/control)
 "pC" = (
 /obj/structure/shuttle/engine/heater,
 /obj/structure/window/reinforced{
@@ -5981,7 +5999,7 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_checker)
 "qb" = (
-/obj/machinery/r_n_d/circuit_imprinter,
+/obj/machinery/lathe/r_n_d/circuit_imprinter,
 /obj/item/reagent_containers/glass/beaker/sulphuric,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
@@ -13312,7 +13330,7 @@
 	},
 /area/centcom/control)
 "IU" = (
-/obj/machinery/mecha_part_fabricator/pros,
+/obj/machinery/lathe/mecha_part_fabricator/pros,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "IW" = (
@@ -14763,8 +14781,12 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/machinery/door/window/brigdoor/eastleft,
-/obj/machinery/door/window/brigdoor/westright,
+/obj/machinery/door/window/brigdoor/eastleft{
+	req_access = null
+	},
+/obj/machinery/door/window/brigdoor/westright{
+	req_access = null
+	},
 /turf/unsimulated/floor/techfloor_grid{
 	layer = 1
 	},
@@ -15515,10 +15537,6 @@
 	layer = 1
 	},
 /area/shuttle/specops/general)
-"Oy" = (
-/mob/living/simple_mob/animal/passive/maint_drone,
-/turf/simulated/wall/r_wall/prepainted,
-/area/tdome/tdomeadmin)
 "OA" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
@@ -17039,11 +17057,6 @@
 /obj/structure/sign/securearea,
 /turf/simulated/wall/r_wall/prepainted,
 /area/centcom/control)
-"SH" = (
-/obj/effect/step_trigger/lost_in_space,
-/obj/spawner/window/reinforced/full/firelocks,
-/turf/space/transit/east,
-/area/space)
 "SI" = (
 /obj/structure/table/standard{
 	desc = "It's a table, it has something scratched on it 'I fuck the squirrel on this table'."
@@ -22207,7 +22220,7 @@ ls
 ls
 ls
 ls
-SH
+kJ
 ls
 ls
 rA
@@ -41709,10 +41722,10 @@ Tj
 Tj
 OX
 OX
-Cb
+mO
 ra
-Cb
-Cb
+mO
+mO
 OX
 Bs
 Bs
@@ -45195,7 +45208,7 @@ EW
 EW
 EW
 EW
-Oy
+Aj
 Aj
 Aj
 Tj
@@ -46365,7 +46378,7 @@ kf
 kf
 ba
 ba
-pA
+ba
 ba
 ba
 ba
@@ -49305,7 +49318,7 @@ nI
 DC
 dX
 lV
-dX
+nt
 ME
 dX
 lV

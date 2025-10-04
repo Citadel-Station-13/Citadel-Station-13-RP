@@ -124,7 +124,7 @@
 
 	return data
 
-/datum/tgui_module_old/ship/nav/ui_act(action, list/params, datum/tgui/ui)
+/datum/tgui_module_old/ship/nav/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 
@@ -154,7 +154,7 @@
 	var/obj/machinery/shipsensors/sensors
 
 /datum/tgui_module_old/ship/fullmonty/ui_state()
-	return GLOB.admin_state
+	return ADMIN_STATE(NONE)
 
 /datum/tgui_module_old/ship/fullmonty/New(host, obj/overmap/entity/visitable/ship/new_linked)
 	. = ..()
@@ -294,7 +294,7 @@
 	return data
 
 // Beware ye eyes. This holds all of the ACTIONS from helm, engine, and sensor control all at once.
-/datum/tgui_module_old/ship/fullmonty/ui_act(action, list/params, datum/tgui/ui)
+/datum/tgui_module_old/ship/fullmonty/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 

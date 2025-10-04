@@ -1,0 +1,2152 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ar" = (
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel3)
+"bD" = (
+/obj/structure/bed/chair/bay/chair/padded/red/smallnest,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/submap/osiris_field/cargo_vessel3)
+"bV" = (
+/mob/living/simple_mob/mechanical/cyber_horror/vox,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/submap/osiris_field/cargo_vessel3)
+"cY" = (
+/obj/machinery/light/small/emergency/flicker,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/submap/osiris_field/cargo_vessel3)
+"dt" = (
+/obj/structure/salvageable/console_os{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/submap/osiris_field/cargo_vessel3)
+"ei" = (
+/turf/template_noop,
+/area/submap/osiris_field/cargo_vessel3)
+"ew" = (
+/obj/effect/floor_decal/industrial/halfstair,
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel3)
+"eC" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 1
+	},
+/obj/machinery/portable_atmospherics/canister/empty/phoron,
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/submap/osiris_field/cargo_vessel3)
+"eM" = (
+/obj/machinery/door/airlock,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/submap/osiris_field/cargo_vessel3)
+"hc" = (
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel3)
+"hZ" = (
+/obj/structure/closet,
+/obj/effect/floor_decal/carpet{
+	dir = 1
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 4
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 5
+	},
+/obj/item/clothing/suit/storage/hooded/teshari/standard/brown_grey,
+/obj/item/clothing/suit/storage/teshari/cloak/jobs/cargo,
+/obj/item/clothing/under/teshari/smock/greydress,
+/turf/simulated/floor/carpet/patterened/red,
+/area/submap/osiris_field/cargo_vessel3)
+"ip" = (
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/submap/osiris_field/cargo_vessel3)
+"iS" = (
+/obj/structure/closet,
+/obj/effect/floor_decal/carpet{
+	dir = 1
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 8
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 9
+	},
+/obj/item/clothing/suit/storage/hooded/teshari/standard/black_yellow,
+/obj/item/clothing/suit/storage/teshari/cloak/jobs/cargo,
+/obj/item/clothing/under/teshari/smock/yellow,
+/turf/simulated/floor/carpet/patterened/red,
+/area/submap/osiris_field/cargo_vessel3)
+"jg" = (
+/obj/structure/bed/chair/bay/chair/padded/red/bignest,
+/obj/effect/floor_decal/carpet{
+	dir = 1
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 4
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 5
+	},
+/turf/simulated/floor/carpet/patterened/red,
+/area/submap/osiris_field/cargo_vessel3)
+"jD" = (
+/obj/structure/bed/chair/bay/chair/padded/red/smallnest,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/cargo_vessel3)
+"jM" = (
+/obj/effect/floor_decal/carpet,
+/obj/effect/floor_decal/carpet{
+	dir = 4
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 6
+	},
+/turf/simulated/floor/carpet/patterened/red,
+/area/submap/osiris_field/cargo_vessel3)
+"km" = (
+/obj/effect/floor_decal/carpet,
+/obj/effect/floor_decal/carpet{
+	dir = 8
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 10
+	},
+/turf/simulated/floor/carpet/patterened/red,
+/area/submap/osiris_field/cargo_vessel3)
+"lJ" = (
+/obj/random/multiple/large_corp_crate,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel3)
+"ms" = (
+/obj/item/ammo_casing/phoron_shrap,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel3)
+"nB" = (
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/submap/osiris_field/cargo_vessel3)
+"nJ" = (
+/obj/structure/metal_edge,
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel3)
+"of" = (
+/obj/machinery/atmospherics/component/unary/engine/biggest{
+	dir = 8
+	},
+/turf/template_noop,
+/area/submap/osiris_field/cargo_vessel3)
+"oz" = (
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/template_noop)
+"pr" = (
+/obj/item/stack/material/glass/phoronrglass,
+/obj/item/stack/material/glass/phoronrglass,
+/obj/item/stack/material/glass/phoronrglass,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel3)
+"qE" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/submap/osiris_field/cargo_vessel3)
+"qR" = (
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/cargo_vessel3)
+"rv" = (
+/obj/structure/railing/grey,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel3)
+"sm" = (
+/mob/living/simple_mob/mechanical/cyber_horror/vox,
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/submap/osiris_field/cargo_vessel3)
+"tI" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/template_noop)
+"uh" = (
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/template_noop)
+"uD" = (
+/obj/machinery/atmospherics/component/unary/engine{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/submap/osiris_field/cargo_vessel3)
+"uF" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/cargo_vessel3)
+"vl" = (
+/obj/machinery/door/airlock/external,
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/submap/osiris_field/cargo_vessel3)
+"vG" = (
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/submap/osiris_field/cargo_vessel3)
+"xd" = (
+/obj/structure/metal_edge,
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel3)
+"xy" = (
+/obj/structure/bed/chair/bay/chair/padded/red/bignest,
+/obj/effect/floor_decal/carpet{
+	dir = 1
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 8
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 9
+	},
+/turf/simulated/floor/carpet/patterened/red,
+/area/submap/osiris_field/cargo_vessel3)
+"xH" = (
+/obj/machinery/light/small/emergency/flicker,
+/turf/simulated/floor/wmarble,
+/area/submap/osiris_field/cargo_vessel3)
+"yb" = (
+/obj/structure/salvageable/console_os,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/cargo_vessel3)
+"yi" = (
+/obj/structure/railing/grey,
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel3)
+"zH" = (
+/mob/living/simple_mob/mechanical/cyber_horror/vox,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel3)
+"zL" = (
+/obj/random/multiple/minevault,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel3)
+"Av" = (
+/obj/structure/railing/grey,
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel3)
+"AM" = (
+/obj/structure/lattice,
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/turf/template_noop,
+/area/submap/osiris_field/cargo_vessel3)
+"AN" = (
+/obj/machinery/portable_atmospherics/canister/empty/phoron,
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/submap/osiris_field/cargo_vessel3)
+"BH" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 1
+	},
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel3)
+"Cc" = (
+/turf/simulated/wall/r_wall/prepainted/cargo,
+/area/submap/osiris_field/cargo_vessel3)
+"Cw" = (
+/obj/machinery/atmospherics/component/unary/engine/bigger{
+	dir = 8
+	},
+/turf/template_noop,
+/area/submap/osiris_field/cargo_vessel3)
+"CT" = (
+/turf/simulated/floor/wmarble,
+/area/submap/osiris_field/cargo_vessel3)
+"Dc" = (
+/obj/structure/closet,
+/obj/effect/floor_decal/carpet,
+/obj/effect/floor_decal/carpet{
+	dir = 4
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 6
+	},
+/obj/item/clothing/suit/storage/hooded/teshari/standard/lightgrey_grey,
+/obj/item/clothing/suit/storage/teshari/cloak/jobs/cargo,
+/obj/item/clothing/under/teshari/smock/yellow,
+/turf/simulated/floor/carpet/patterened/red,
+/area/submap/osiris_field/cargo_vessel3)
+"DP" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/submap/osiris_field/cargo_vessel3)
+"Ee" = (
+/turf/simulated/floor/tiled/kafel_full/yellow/virgo3b,
+/area/template_noop)
+"EB" = (
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel3)
+"FS" = (
+/obj/structure/closet,
+/obj/effect/floor_decal/carpet,
+/obj/effect/floor_decal/carpet{
+	dir = 8
+	},
+/obj/item/clothing/suit/storage/hooded/teshari/standard/yellow_grey,
+/obj/item/clothing/suit/storage/teshari/cloak/jobs/cargo,
+/obj/item/clothing/under/teshari/smock/yellow,
+/turf/simulated/floor/carpet/patterened/red,
+/area/submap/osiris_field/cargo_vessel3)
+"Ht" = (
+/obj/structure/bed/chair/bay/chair/padded/red/bignest,
+/obj/effect/floor_decal/carpet,
+/obj/effect/floor_decal/carpet{
+	dir = 8
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 10
+	},
+/turf/simulated/floor/carpet/patterened/red,
+/area/submap/osiris_field/cargo_vessel3)
+"Hv" = (
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/submap/osiris_field/cargo_vessel3)
+"Hx" = (
+/obj/structure/closet/secure_closet/freezer/fridge,
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/cargo_vessel3)
+"JB" = (
+/turf/template_noop,
+/area/template_noop)
+"JI" = (
+/obj/effect/floor_decal/carpet{
+	dir = 1
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 8
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 9
+	},
+/turf/simulated/floor/carpet/patterened/red,
+/area/submap/osiris_field/cargo_vessel3)
+"KR" = (
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/cargo_vessel3)
+"MT" = (
+/obj/structure/bed/chair/bay/chair/padded/red/bignest,
+/obj/effect/floor_decal/carpet,
+/obj/effect/floor_decal/carpet{
+	dir = 4
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 6
+	},
+/turf/simulated/floor/carpet/patterened/red,
+/area/submap/osiris_field/cargo_vessel3)
+"Nj" = (
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel3)
+"Nq" = (
+/obj/structure/salvageable/server,
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/cargo_vessel3)
+"Pt" = (
+/turf/simulated/floor/plating,
+/area/template_noop)
+"PM" = (
+/obj/machinery/door/airlock/external/glass,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/submap/osiris_field/cargo_vessel3)
+"Qw" = (
+/obj/machinery/light/small/emergency/flicker,
+/obj/machinery/portable_atmospherics/canister/empty/phoron,
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/submap/osiris_field/cargo_vessel3)
+"Sf" = (
+/obj/structure/bed/chair/bay/chair/padded/red/smallnest,
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/submap/osiris_field/cargo_vessel3)
+"TH" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel3)
+"TQ" = (
+/obj/structure/salvageable/console_os{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/cargo_vessel3)
+"Ui" = (
+/obj/machinery/door/airlock,
+/turf/simulated/floor/wmarble,
+/area/submap/osiris_field/cargo_vessel3)
+"UA" = (
+/obj/structure/bed/chair/bay/chair/padded/red/smallnest,
+/obj/machinery/light/small/emergency/flicker{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/cargo_vessel3)
+"Vf" = (
+/obj/effect/floor_decal/carpet{
+	dir = 1
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 4
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 5
+	},
+/turf/simulated/floor/carpet/patterened/red,
+/area/submap/osiris_field/cargo_vessel3)
+"VS" = (
+/obj/structure/salvageable/console_os{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/cargo_vessel3)
+"VZ" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/submap/osiris_field/cargo_vessel3)
+"Wy" = (
+/obj/structure/metal_edge,
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel3)
+"XH" = (
+/obj/item/gun/projectile/ballistic/shotgun/pump/rifle/lever/win1895,
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/submap/osiris_field/cargo_vessel3)
+"Ym" = (
+/turf/simulated/wall/r_wall/prepainted/cargo,
+/area/template_noop)
+"YJ" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel3)
+"ZH" = (
+/obj/structure/table/steel_reinforced,
+/obj/machinery/appliance/cooker/oven,
+/obj/machinery/light/small/emergency/flicker{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/cargo_vessel3)
+"ZP" = (
+/obj/random/multiple/large_corp_crate/no_weapons,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel3)
+
+(1,1,1) = {"
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+tI
+tI
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+"}
+(2,1,1) = {"
+JB
+JB
+JB
+JB
+JB
+JB
+tI
+Pt
+tI
+tI
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+"}
+(3,1,1) = {"
+JB
+JB
+JB
+JB
+JB
+JB
+tI
+Pt
+Pt
+tI
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+qR
+qR
+qR
+qR
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+tI
+JB
+"}
+(4,1,1) = {"
+JB
+JB
+JB
+JB
+JB
+JB
+tI
+Pt
+tI
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+qR
+qR
+TQ
+TQ
+qR
+qR
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+tI
+Pt
+Pt
+"}
+(5,1,1) = {"
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+tI
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+qR
+qR
+yb
+bD
+bD
+VS
+qR
+qR
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+tI
+Pt
+tI
+"}
+(6,1,1) = {"
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+qR
+Nq
+ip
+XH
+ip
+bV
+Nq
+qR
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+tI
+Pt
+tI
+"}
+(7,1,1) = {"
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+Cc
+Cc
+eM
+Cc
+Cc
+Cc
+Cc
+Cc
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+Pt
+Pt
+tI
+"}
+(8,1,1) = {"
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+qR
+ZH
+bV
+nB
+Sf
+vG
+UA
+Hv
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+tI
+Pt
+tI
+JB
+"}
+(9,1,1) = {"
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+tI
+tI
+JB
+JB
+JB
+JB
+JB
+qR
+KR
+ip
+nB
+Sf
+vG
+jD
+Hv
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+tI
+tI
+JB
+JB
+"}
+(10,1,1) = {"
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+tI
+Pt
+tI
+JB
+JB
+JB
+JB
+qR
+Hx
+ip
+nB
+nB
+bV
+uF
+qR
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+"}
+(11,1,1) = {"
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+tI
+JB
+JB
+JB
+JB
+JB
+Cc
+Cc
+ip
+nB
+nB
+dt
+Cc
+Cc
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+"}
+(12,1,1) = {"
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+Cc
+Cc
+ip
+ip
+Cc
+Cc
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+"}
+(13,1,1) = {"
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+Cc
+PM
+PM
+Cc
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+"}
+(14,1,1) = {"
+JB
+JB
+JB
+JB
+JB
+JB
+uh
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+Cc
+VZ
+cY
+Cc
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+tI
+JB
+JB
+JB
+JB
+"}
+(15,1,1) = {"
+JB
+JB
+JB
+JB
+JB
+JB
+uh
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+EB
+nB
+nB
+EB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+tI
+Pt
+tI
+JB
+JB
+JB
+"}
+(16,1,1) = {"
+JB
+JB
+JB
+JB
+JB
+uh
+uh
+uh
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+EB
+nB
+nB
+EB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+tI
+JB
+JB
+JB
+JB
+"}
+(17,1,1) = {"
+JB
+JB
+JB
+JB
+JB
+uh
+Ee
+uh
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+EB
+sm
+nB
+EB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+"}
+(18,1,1) = {"
+JB
+JB
+JB
+JB
+uh
+uh
+Ee
+uh
+uh
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+EB
+nB
+nB
+EB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+"}
+(19,1,1) = {"
+JB
+JB
+JB
+JB
+uh
+Ee
+Ee
+Ee
+uh
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+EB
+nB
+nB
+EB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+"}
+(20,1,1) = {"
+JB
+JB
+JB
+uh
+uh
+Ee
+Ee
+Ee
+uh
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+Cc
+VZ
+cY
+Cc
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+"}
+(21,1,1) = {"
+JB
+JB
+JB
+uh
+Ee
+Ee
+Ee
+Ee
+uh
+uh
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+Cc
+Cc
+PM
+PM
+Cc
+Cc
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+Pt
+JB
+"}
+(22,1,1) = {"
+JB
+JB
+uh
+uh
+Ee
+uD
+Cc
+Cc
+uD
+uh
+JB
+JB
+JB
+JB
+JB
+JB
+Cc
+Cc
+Cc
+VZ
+cY
+Cc
+Cc
+Cc
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+Pt
+JB
+"}
+(23,1,1) = {"
+JB
+JB
+uh
+Ee
+oz
+Cc
+Cc
+Cc
+Cc
+uh
+JB
+JB
+JB
+JB
+JB
+Cc
+Cc
+Cc
+Cc
+nB
+nB
+Cc
+Cc
+Cc
+Cc
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+Pt
+tI
+JB
+"}
+(24,1,1) = {"
+JB
+JB
+uh
+Ee
+oz
+Cc
+AN
+AN
+Cc
+uh
+JB
+JB
+JB
+JB
+JB
+Hv
+xy
+km
+Cc
+nB
+sm
+Cc
+JI
+Ht
+Hv
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+Pt
+Pt
+JB
+"}
+(25,1,1) = {"
+JB
+JB
+uh
+Ee
+oz
+Cc
+eC
+Qw
+Cc
+uh
+JB
+JB
+JB
+JB
+JB
+Cc
+hZ
+jM
+eM
+nB
+nB
+eM
+Vf
+Dc
+Cc
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+tI
+JB
+"}
+(26,1,1) = {"
+JB
+JB
+uh
+Ee
+oz
+Cc
+AN
+AN
+Cc
+uh
+JB
+JB
+JB
+JB
+JB
+Cc
+Cc
+Cc
+Cc
+nB
+nB
+Cc
+Cc
+Cc
+Cc
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+"}
+(27,1,1) = {"
+JB
+JB
+uh
+Ee
+oz
+Cc
+nB
+nB
+Cc
+uh
+JB
+JB
+JB
+JB
+JB
+Cc
+iS
+km
+eM
+nB
+nB
+eM
+JI
+FS
+Cc
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+Pt
+JB
+"}
+(28,1,1) = {"
+JB
+JB
+uh
+Ee
+oz
+Cc
+nB
+nB
+Cc
+Cc
+Cc
+JB
+JB
+JB
+JB
+Hv
+jg
+jM
+Cc
+nB
+nB
+Cc
+Vf
+MT
+Hv
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+tI
+Pt
+tI
+"}
+(29,1,1) = {"
+JB
+JB
+uh
+Ee
+oz
+Cc
+nB
+nB
+nB
+nB
+Cc
+JB
+JB
+JB
+JB
+Cc
+Cc
+Cc
+Cc
+nB
+nB
+Cc
+Cc
+Cc
+Cc
+JB
+JB
+JB
+JB
+JB
+JB
+Pt
+JB
+Pt
+tI
+"}
+(30,1,1) = {"
+JB
+JB
+uh
+Ee
+oz
+Cc
+nB
+nB
+nB
+nB
+Cc
+Cc
+Cc
+JB
+JB
+Cc
+CT
+Ui
+ip
+sm
+nB
+ip
+Ui
+ar
+qE
+JB
+JB
+JB
+Ym
+tI
+JB
+JB
+JB
+Pt
+tI
+"}
+(31,1,1) = {"
+JB
+JB
+uh
+Ee
+oz
+Cc
+nB
+nB
+nB
+nB
+DP
+nB
+Cc
+JB
+JB
+Cc
+xH
+Cc
+VZ
+ip
+ip
+cY
+Cc
+qE
+qE
+JB
+JB
+JB
+tI
+JB
+JB
+JB
+JB
+JB
+tI
+"}
+(32,1,1) = {"
+JB
+JB
+uh
+Ee
+oz
+Cc
+nB
+nB
+nB
+nB
+nB
+nB
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+vl
+vl
+Cc
+Cc
+qE
+Cc
+qE
+JB
+Ym
+tI
+tI
+JB
+tI
+JB
+JB
+JB
+"}
+(33,1,1) = {"
+JB
+JB
+uh
+uh
+Ee
+Cc
+Nj
+Nj
+Nj
+hc
+nB
+nB
+nB
+DP
+nB
+nB
+nB
+nB
+DP
+nB
+nB
+nB
+nB
+nB
+qE
+JB
+tI
+Pt
+JB
+JB
+Pt
+JB
+Pt
+tI
+JB
+"}
+(34,1,1) = {"
+JB
+JB
+JB
+uh
+uh
+Cc
+TH
+zL
+ar
+Av
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+ar
+ei
+JB
+Pt
+Pt
+JB
+tI
+Pt
+Pt
+JB
+tI
+JB
+"}
+(35,1,1) = {"
+JB
+JB
+JB
+JB
+uh
+Cc
+ar
+ar
+ar
+ar
+Nj
+Nj
+Nj
+Nj
+Nj
+Nj
+Nj
+Nj
+BH
+nB
+nB
+ew
+AM
+AM
+ei
+JB
+Pt
+tI
+JB
+Pt
+JB
+tI
+JB
+JB
+JB
+"}
+(36,1,1) = {"
+JB
+JB
+JB
+JB
+uh
+Cc
+Cc
+Cc
+Cc
+zL
+ar
+ar
+zH
+ar
+pr
+ms
+ar
+ar
+Av
+nB
+nB
+xd
+ar
+ar
+qE
+Pt
+Pt
+JB
+JB
+tI
+JB
+JB
+JB
+JB
+JB
+"}
+(37,1,1) = {"
+JB
+JB
+JB
+JB
+JB
+ei
+ei
+of
+Cc
+ar
+YJ
+ar
+ms
+ar
+ar
+ar
+ar
+ar
+rv
+nB
+nB
+nJ
+ar
+qE
+ei
+Pt
+tI
+tI
+JB
+JB
+Pt
+Pt
+tI
+JB
+JB
+"}
+(38,1,1) = {"
+JB
+JB
+JB
+JB
+JB
+ei
+ei
+ei
+Cc
+Cc
+Cc
+ar
+ar
+ar
+ar
+zH
+ar
+ar
+rv
+nB
+nB
+nJ
+ar
+ar
+qE
+JB
+Pt
+JB
+JB
+JB
+JB
+Pt
+JB
+JB
+JB
+"}
+(39,1,1) = {"
+JB
+JB
+JB
+JB
+JB
+ei
+ei
+ei
+JB
+JB
+Cc
+ar
+ZP
+ar
+ms
+ar
+ar
+lJ
+yi
+nB
+nB
+Wy
+qE
+ar
+qE
+JB
+tI
+tI
+tI
+Pt
+JB
+JB
+JB
+JB
+JB
+"}
+(40,1,1) = {"
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+Cc
+Cc
+ar
+YJ
+ar
+Cc
+Cc
+Cc
+Cc
+vl
+vl
+Cc
+Cc
+qE
+ei
+tI
+tI
+JB
+Pt
+Pt
+JB
+JB
+JB
+JB
+JB
+"}
+(41,1,1) = {"
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+Cc
+Cc
+Cc
+Cc
+Cc
+JB
+JB
+Cc
+nB
+nB
+Cc
+JB
+JB
+Cc
+JB
+JB
+JB
+Pt
+JB
+JB
+JB
+JB
+JB
+JB
+"}
+(42,1,1) = {"
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+ei
+Cw
+ei
+Cw
+JB
+JB
+Cc
+nB
+ar
+ei
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+"}
+(43,1,1) = {"
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+ei
+ei
+ei
+ei
+JB
+JB
+Cc
+nB
+qE
+ei
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+"}
+(44,1,1) = {"
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+"}
+(45,1,1) = {"
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+"}

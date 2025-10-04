@@ -36,33 +36,53 @@
 /area/endeavour/surfacebase/atrium_one
 	name = "\improper Atrium First Floor"
 	icon_state = "dk_yellow"
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_HALLWAYS
+
 /area/endeavour/surfacebase/atrium_two
 	name = "\improper Atrium Second Floor"
 	icon_state = "dk_yellow"
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_HALLWAYS
+
 /area/endeavour/surfacebase/atrium_three
 	name = "\improper Atrium Third Floor"
 	icon_state = "dk_yellow"
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_HALLWAYS
+
 /area/endeavour/surfacebase/north_stairs_one
 	name = "\improper North Stairwell First Floor"
 	icon_state = "dk_yellow"
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_HALLWAYS
+
 /area/endeavour/surfacebase/north_stairs_two
 	name = "\improper North Stairwell Second Floor"
 	icon_state = "dk_yellow"
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_HALLWAYS
+
 /area/endeavour/surfacebase/north_stairs_three
 	name = "\improper North Stairwell Third Floor"
 	icon_state = "dk_yellow"
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_HALLWAYS
+
 /area/endeavour/surfacebase/public_garden_one
 	name = "\improper Public Garden First Floor"
 	icon_state = "green"
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
+
 /area/endeavour/surfacebase/public_garden_two
 	name = "\improper Public Garden Second Floor"
 	icon_state = "green"
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
+
 /area/endeavour/surfacebase/public_garden_three
 	name = "\improper Public Garden Third Floor"
 	icon_state = "green"
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
+	
 /area/endeavour/surfacebase/public_garden
 	name = "\improper Public Garden"
 	icon_state = "purple"
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
+	
 /area/endeavour/surfacebase/bar_backroom
 	name = "\improper Bar Backroom"
 	icon_state = "red"
@@ -70,19 +90,29 @@
 /area/endeavour/surfacebase/fishing_garden
 	name = "\improper Fish Pond"
 	icon_state = "blue"
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
+
 /area/endeavour/surfacebase/sauna
 	name = "\improper Public Sauna"
 	icon_state = "green"
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
+
 /area/endeavour/surfacebase/lounge
 	name = "\improper Station Lounge"
 	icon_state = "purple"
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
+
 // /area/endeavour/surfacebase/east_stairs_one //This is just part of a lower hallway
 /area/endeavour/surfacebase/east_stairs_two
 	name = "\improper East Stairwell Second Floor"
 	icon_state = "dk_yellow"
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_HALLWAYS
+
 // /area/endeavour/surfacebase/east_stairs_three //This is just part of an upper hallway
 /area/endeavour/surfacebase/emergency_storage
 	icon_state = "emergencystorage"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_SENSITIVE
+
 /area/endeavour/surfacebase/emergency_storage/panic_shelter
 	name = "\improper Panic Shelter Emergency Storage"
 /area/endeavour/surfacebase/emergency_storage/rnd
@@ -94,22 +124,30 @@
 // Main mining area
 /area/endeavour/surfacebase/mining_main
 	icon_state = "outpost_mine_main"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_HALLWAYS
 /area/endeavour/surfacebase/mining_main/airlock
 	name = "\improper Mining Airlock"
 /area/endeavour/surfacebase/mining_main/storage
 	name = "\improper Mining Gear Storage"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 /area/endeavour/surfacebase/mining_main/uxstorage
 	name = "\improper Mining Secondary Storage"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 /area/endeavour/surfacebase/mining_main/ore
 	name = "\improper Mining Ore Storage"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 /area/endeavour/surfacebase/mining_main/eva
 	name = "\improper Mining EVA"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 /area/endeavour/surfacebase/mining_main/break_room
 	name = "\improper Mining Crew Area"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_LEISURE
 /area/endeavour/surfacebase/mining_main/refinery
 	name = "\improper Mining Refinery"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 /area/endeavour/surfacebase/mining_main/external
 	name = "\improper Mining Refinery"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 /area/endeavour/surfacebase/mining_main/bathroom
 	name = "\improper Mining Bathroom"
 /area/endeavour/surfacebase/mining_main/lobby

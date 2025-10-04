@@ -161,8 +161,9 @@
 	playsound(src, 'sound/machines/click.ogg', 40, 1)
 	update_icon()
 
-/obj/machinery/appliance/AICtrlClick(mob/user)
-	attempt_toggle_power(user)
+// TODO: probably add this ..? and more control for ais?
+// /obj/machinery/appliance/AICtrlClick(mob/user)
+// 	attempt_toggle_power(user)
 
 /obj/machinery/appliance/proc/choose_output()
 	set src in view()

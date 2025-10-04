@@ -17,17 +17,22 @@
 		"nebula_pad_3b",
 		"nebula_pad_3c",
 		"nebula_pad_3d",
+		"nebula_pad_4e",
 		"nebula_pad_4a",
 		"nebula_pad_4b",
 		"nebula_pad_4c",
 		"nebula_pad_4d",
+		"nebula_pad_4e",
 		"nebula_pad_5a",
 		"nebula_pad_5b",
 		"nebula_pad_6a",
 		"nebula_pad_6b",
 		"nebula_space_SE",
 		"nebula_space_S",
-		"nebula_space_SW"
+		"nebula_space_S2",
+		"nebula_space_SW",
+		"nebula_space_SW2",
+		"nebula_space_SDF",
 		)
 
 	initial_restricted_waypoints = list(
@@ -39,7 +44,8 @@
 		"Spacena Adventurer Shuttle" = list("tradeport_adventurer"),
 		"Cargo Tug Hauler Shuttle" = list("tradeport_tug"),
 		"Utility Micro Shuttle" = list("tradeport_utilitymicro"),
-		"Teshari Runabout Shuttle" = list("tradeport_runabout")
+		"Teshari Runabout Shuttle" = list("tradeport_runabout"),
+		"GCSS Vevalia Salvage Shuttle" = list("tradeport_scavenging")
 		)
 
 /* // Old Restricted list. Leaving commented out for reference - Bloop
@@ -198,6 +204,13 @@
 	docking_controller = "tradeport_runabout_dock"
 	base_turf = /turf/simulated/floor/reinforced
 	base_area = /area/sector/nebula_tradeport/dock2
+
+/obj/effect/shuttle_landmark/triumph/trade/scavenger
+	name = "GCSS Vevalia Salvage dock"
+	landmark_tag = "tradeport_scavenging"
+	docking_controller = "trade_docks_4"
+	base_turf = /turf/space
+	base_area = /area/space
 
 // Todo
 /*

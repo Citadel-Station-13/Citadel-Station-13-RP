@@ -6,12 +6,25 @@
 
 import { map } from 'common/collections';
 
-export const selectChat = (state) => state.chat;
+import { ChatState } from './types';
 
-export const selectChatPages = (state) =>
-  map((id: string) => state.chat.pageById[id])(state.chat.pages);
+// TODO: can we typecheck the store somehow?
+export const selectChat = (state) => (state.chat as ChatState);
 
-export const selectCurrentChatPage = (state) =>
-  state.chat.pageById[state.chat.currentPageId];
+// TODO: can we typecheck the store somehow?
+export const selectChatPages = (state) => {
+  let chat = selectChat(state);
+  return map(chat.pages, (id: string) => chat.pageById[id]);
+};
 
-export const selectChatPageById = (id) => (state) => state.chat.pageById[id];
+// TODO: can we typecheck the store somehow?
+export const selectCurrentChatPage = (state) => {
+  let chat = selectChat(state);
+  return chat.pageById[chat.currentPageId];
+};
+
+// TODO: can we typecheck the store somehow?
+export const selectChatPageById = (id) => (state) => {
+  let chat = selectChat(state);
+  return chat.pageById[id];
+};

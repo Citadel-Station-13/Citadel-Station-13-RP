@@ -1,9 +1,9 @@
-/**
+/*!
  * Base state and helpers for states. Just does some sanity checks,
  * implement a proper state for in-depth checks.
  *
- *! Copyright (c) 2020 Aleksej Komarov
- *! SPDX-License-Identifier: MIT
+ * Copyright (c) 2020 Aleksej Komarov
+ * SPDX-License-Identifier: MIT
  */
 
 /**
@@ -32,20 +32,18 @@
 	// Close UIs if mindless.
 	if(!client)
 		return UI_CLOSE
-	// Disable UIs if unconcious.
+	// Disable UIs if unconscious.
 	else if(stat)
 		return UI_DISABLED
-	// Update UIs if incapicitated but concious.
+	// Update UIs if incapicitated but conscious.
 	else if(incapacitated())
 		return UI_UPDATE
 	return UI_INTERACTIVE
 
-/*
-/mob/living/shared_ui_interaction(src_object)
-	. = ..()
-	if(!(mobility_flags & MOBILITY_CAN_UI) && . == UI_INTERACTIVE)
-		return UI_UPDATE
-*/
+// /mob/living/shared_ui_interaction(atom/src_object)
+// 	. = ..()
+// 	if(!(mobility_flags & MOBILITY_UI) && !(src_object.interaction_flags_atom & INTERACT_ATOM_IGNORE_MOBILITY) && . == UI_INTERACTIVE)
+// 		return UI_UPDATE
 
 /mob/living/silicon/ai/shared_ui_interaction(src_object)
 	// Disable UIs if the AI is unpowered.
@@ -90,12 +88,13 @@
 
 /mob/living/carbon/human/shared_living_ui_distance(atom/movable/src_object, viewcheck = TRUE, allow_tk = TRUE)
 	if(allow_tk && (MUTATION_TELEKINESIS in mutations))
-	// if(allow_tk && dna.check_mutation(/datum/mutation/human/telekinesis) && tkMaxRangeCheck(src, src_object))
 		return UI_INTERACTIVE
 	return ..()
 
 /**
  * public
+ *
+ * TODO: what's this for?
  *
  * Check the distance for a living mob.
  * Really only used for checks outside the context of a mob.

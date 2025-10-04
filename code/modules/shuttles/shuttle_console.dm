@@ -72,7 +72,7 @@
 		return FALSE
 	return TRUE
 
-/obj/machinery/computer/shuttle_control/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/shuttle_control/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 	if(skip_act)
@@ -137,7 +137,7 @@
 		return 1
 
 GLOBAL_LIST_BOILERPLATE(papers_dockingcode, /obj/item/paper/dockingcodes)
-/hook/roundstart/proc/populate_dockingcodes()
+/legacy_hook/roundstart/proc/populate_dockingcodes()
 	for(var/paper in GLOB.papers_dockingcode)
 		var/obj/item/paper/dockingcodes/dcp = paper
 		dcp.populate_info()
