@@ -1,7 +1,6 @@
-// todo: DO NOT FUCKING USE THIS
-// it is *EXTREMELY* inefficient, and scales up quadratically in time complexity
-// DO NOT USE THIS UNTIL IT IS REWRITTEN
-// notably that "bad node trimming" is actually horrifying.
+// TODO: optimize this for use on actual graphs; make it efficient and generic.
+//       while we do not currently have a use for generic graph-search, we sure as hell
+//       will eventually.
 
 /**
  * A Star pathfinding algorithm

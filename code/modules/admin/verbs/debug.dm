@@ -1,5 +1,5 @@
 /client/proc/Debug2()
-	set category = ADMIN_CATEGORY_DEBUG
+	set category = VERB_CATEGORY_DEBUG
 	set name = "Debug-Game"
 	set desc = "Toggles game debugging."
 
@@ -118,7 +118,7 @@
 	return types[key]
 
 /client/proc/cmd_del_all(object as text)
-	set category = ADMIN_CATEGORY_DEBUG
+	set category = VERB_CATEGORY_DEBUG
 	set name = "Del-All"
 	set desc = "Delete all datums with the specified type."
 
@@ -138,7 +138,7 @@
 	message_admins("[key_name_admin(src)] has deleted all ([counter]) instances of [type_to_del].")
 
 /client/proc/cmd_del_all_force(object as text)
-	set category = ADMIN_CATEGORY_DEBUG
+	set category = VERB_CATEGORY_DEBUG
 	set name = "Force-Del-All"
 	set desc = "Forcibly delete all datums with the specified type."
 
@@ -158,7 +158,7 @@
 	message_admins("[key_name_admin(src)] has force-deleted all ([counter]) instances of [type_to_del].")
 
 /client/proc/cmd_del_all_hard(object as text)
-	set category = ADMIN_CATEGORY_DEBUG
+	set category = VERB_CATEGORY_DEBUG
 	set name = "Hard-Del-All"
 	set desc = "Hard delete all datums with the specified type."
 
@@ -203,7 +203,7 @@
 	message_admins("[key_name_admin(src)] has hard deleted all ([counter]) instances of [type_to_del].")
 
 /client/proc/cmd_debug_make_powernets()
-	set category = ADMIN_CATEGORY_DEBUG
+	set category = VERB_CATEGORY_DEBUG
 	set name = "Make Powernets"
 	set desc = "Regenerates all powernets for all cables."
 
@@ -215,7 +215,7 @@
 	feedback_add_details("admin_verb","MPWN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_admin_grantfullaccess(var/mob/M in GLOB.mob_list)
-	set category = ADMIN_CATEGORY_DEBUG
+	set category = VERB_CATEGORY_DEBUG
 	set name = "Grant Full Access"
 	set desc = "Grant full access to a mob."
 
@@ -250,7 +250,7 @@
 	message_admins(SPAN_ADMINNOTICE("[key_name_admin(usr)] has granted [M.key] full access."))
 
 /client/proc/cmd_debug_mob_lists()
-	set category = ADMIN_CATEGORY_DEBUG
+	set category = VERB_CATEGORY_DEBUG
 	set name = "Debug Mob Lists"
 	set desc = "For when you just gotta know"
 
@@ -274,7 +274,7 @@
 			to_chat(usr, jointext(GLOB.clients,","), confidential = TRUE)
 
 /client/proc/cmd_display_del_log()
-	set category = ADMIN_CATEGORY_DEBUG
+	set category = VERB_CATEGORY_DEBUG
 	set name = "Display del() Log"
 	set desc = "Display del's log of everything that's passed through it."
 
@@ -307,7 +307,7 @@
 	browser.open()
 
 /client/proc/cmd_display_overlay_log()
-	set category = ADMIN_CATEGORY_DEBUG
+	set category = VERB_CATEGORY_DEBUG
 	set name = "Display overlay Log"
 	set desc = "Display SSoverlays log of everything that's passed through it."
 
@@ -316,7 +316,7 @@
 	render_stats(SSoverlays.stats, src)
 
 /client/proc/cmd_display_init_log()
-	set category = ADMIN_CATEGORY_DEBUG
+	set category = VERB_CATEGORY_DEBUG
 	set name = "Display Initialize() Log"
 	set desc = "Displays a list of things that didn't handle Initialize() properly"
 
@@ -327,7 +327,7 @@
 	browser.open()
 
 /datum/admins/proc/view_runtimes()
-	set category = ADMIN_CATEGORY_DEBUG
+	set category = VERB_CATEGORY_DEBUG
 	set name = "View Runtimes"
 	set desc = "Open the Runtime Viewer"
 
@@ -345,7 +345,7 @@
 		alert(src, "[warning]. Proceed with caution. If you really need to see the runtimes, download the runtime log and view it in a text editor.", "HEED THIS WARNING CAREFULLY MORTAL")
 
 /client/proc/check_timer_sources()
-	set category = ADMIN_CATEGORY_DEBUG
+	set category = VERB_CATEGORY_DEBUG
 	set name = "Check Timer Sources"
 	set desc = "Checks the sources of running timers."
 
@@ -365,7 +365,7 @@
 	browser.open()
 
 /client/proc/toggle_browser_inspect()
-	set category = ADMIN_CATEGORY_DEBUG
+	set category = VERB_CATEGORY_DEBUG
 	set name = "Toggle Browser Inspect"
 	set desc = "Toggle browser debugging via inspect"
 

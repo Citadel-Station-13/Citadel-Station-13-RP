@@ -1574,7 +1574,7 @@
 		if(!check_rights(R_ADMIN))	return
 
 		var/mob/M = locate(href_list["narrateto"])
-		usr.client.cmd_admin_direct_narrate(M)
+		usr.client.holder.open_admin_modal(/datum/admin_modal/admin_narrate, M)
 
 	else if(href_list["subtlemessage"])
 		if(!check_rights(R_MOD,0) && !check_rights(R_ADMIN))  return

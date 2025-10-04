@@ -7,3 +7,8 @@
 #define VERB_CATEGORY_SYSTEM "System"
 
 // todo: admin verb categories too
+
+#define VERB_CATEGORY_ADMIN "Admin"
+#define VERB_CATEGORY_DEBUG "Debug"
+#define VERB_CATEGORY_GAME "Game"
+#define VERB_CATEGORY_SERVER "Server"

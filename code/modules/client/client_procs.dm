@@ -257,12 +257,12 @@
 		connecting_admin = TRUE
 	*/
 	// if(CONFIG_GET(flag/enable_localhost_rank) && !connecting_admin)
+	// TODO: This is shitcode, fix it.
 	if(is_localhost() && CONFIG_GET(flag/enable_localhost_rank))
 		holder = new /datum/admins("!localhost!", ALL, ckey)
-		holder.owner = src
+		holder.associate(src)
 		GLOB.admins |= src
 		//admins |= src // this makes them not have admin. what the fuck??
-		// holder.associate(ckey)
 		// connecting_admin = TRUE
 	//CITADEL EDIT
 	//if(check_rights_for(src, R_DEBUG))	//check if autoadmin gave us it
