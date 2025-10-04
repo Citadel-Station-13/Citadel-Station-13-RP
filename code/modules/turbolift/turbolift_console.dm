@@ -168,7 +168,6 @@
 	var/datum/browser/popup = new(user, "turbolift_panel", "Lift Panel", 350, 320)
 	popup.set_content(jointext(dat, null))
 	popup.open()
-	return
 
 /obj/structure/lift/panel/Topic(href, href_list)
 	. = ..()

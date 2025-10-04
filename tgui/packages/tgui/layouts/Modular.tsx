@@ -3,15 +3,17 @@
  * @license MIT
  */
 
-import { BooleanLike } from "common/react";
-import { InfernoNode } from "inferno";
-import { Section } from "../components";
-import { SectionProps } from "../components/Section";
+import { ReactNode, useContext } from "react";
+import { Section } from "tgui-core/components";
+import { BooleanLike } from "tgui-core/react";
+
+import { SectionProps } from "../components";
+import { LegacyModuleContext } from "../components/LegacyModule";
 import { Window, WindowProps } from "./Window";
 
 export interface ModularProps {
-  readonly direct?: InfernoNode;
-  readonly children?: InfernoNode;
+  readonly direct?: ReactNode;
+  readonly children?: ReactNode;
   readonly window?: WindowProps;
   readonly section?: SectionProps;
   readonly scrollable?: BooleanLike;
@@ -28,17 +30,17 @@ export interface ModularProps {
  * todo: scrolling is broken when embedded. there's no workaround; tgui components and their CSS just can't handle
  *       proper scrolling behavior when made to auto-fill as opposed to fixed height.
  */
-export const Modular = (props: ModularProps, context: any) => {
-  const { is_module, m_section } = context;
+export const Modular = (props: ModularProps) => {
+  const { isModule, moduleSection } = useContext(LegacyModuleContext);
   let sectionProps = {
     ...props.section,
-    ...m_section,
+    ...moduleSection,
   };
   return (
-    !is_module? (
+    !isModule ? (
       <Window {...props.window}>
         {props.direct}
-        <Window.Content scrollable={props.scrollable}>
+        <Window.Content scrollable={!!props.scrollable}>
           {props.children}
         </Window.Content>
       </Window>

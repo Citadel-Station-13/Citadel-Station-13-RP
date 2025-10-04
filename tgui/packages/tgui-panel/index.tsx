@@ -9,12 +9,13 @@ import './styles/main.scss';
 import './styles/themes/light.scss';
 
 import { perf } from 'common/perf';
-import { combineReducers } from 'common/redux';
+import { combineReducers, Store } from 'common/redux';
+import { setGlobalStore } from 'tgui/backend';
 import { captureExternalLinks } from 'tgui/links';
-import { createRenderer } from 'tgui/renderer';
-import { configureStore, StoreProvider } from 'tgui/store';
-import { setupGlobalEvents } from 'tgui/events';
-import { setupHotReloading } from 'tgui-dev-server/link/client.cjs';
+import { render } from 'tgui/renderer';
+import { configureStore } from 'tgui/store';
+import { setupGlobalEvents } from 'tgui-core/events';
+import { setupHotReloading } from 'tgui-dev-server/link/client.mjs';
 
 import { audioMiddleware, audioReducer } from './audio';
 import { chatMiddleware, chatReducer } from './chat';
@@ -28,7 +29,7 @@ import { telemetryMiddleware } from './telemetry';
 perf.mark('inception', window.performance?.timeOrigin);
 perf.mark('init');
 
-const store = configureStore({
+const store: Store = configureStore({
   reducer: combineReducers({
     audio: audioReducer,
     chat: chatReducer,
@@ -48,29 +49,24 @@ const store = configureStore({
   },
 });
 
-const renderApp = createRenderer(() => {
-  return (
-    <StoreProvider store={store}>
-      <Panel tgui_root={1} />
-    </StoreProvider>
-  );
-});
-
-const setupApp = () => {
+function setupApp() {
   // Delay setup
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', setupApp);
     return;
   }
 
+  setGlobalStore(store);
+
   setupGlobalEvents({
     ignoreWindowFocus: true,
   });
+
   setupPanelFocusHacks();
   captureExternalLinks();
 
   // Re-render UI on store updates
-  store.subscribe(renderApp);
+  store.subscribe(() => render(<Panel />));
 
   // Dispatch incoming messages as store actions
   Byond.subscribe((type, payload) => store.dispatch({ type, payload }));
@@ -85,6 +81,9 @@ const setupApp = () => {
     'pos': '0x0',
     'size': '0x0',
   });
+  // Byond.winset('output_selector.legacy_output_selector', {
+  //   left: 'output_browser',
+  // });
 
   // Resize the panel to match the non-browser output
   Byond.winget('output').then((output: { size: string }) => {
@@ -109,10 +108,10 @@ const setupApp = () => {
         './telemetry',
       ],
       () => {
-        renderApp();
+        render(<Panel />);
       },
     );
   }
-};
+}
 
 setupApp();

@@ -476,12 +476,12 @@
 		if(obj_storage.allow_outbound_mass_transfer && obj_storage.allow_clickdrag_mass_transfer && isobj(over))
 			var/obj/object = over
 			if(object.obj_storage.allow_inbound_mass_transfer)
-				obj_storage.interacted_mass_transfer(new /datum/event_args/actor(user), object.obj_storage)
+				obj_storage.auto_handle_interacted_mass_transfer(new /datum/event_args/actor(user), object.obj_storage)
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 		// clickdrag to ground mass dumping
 		if(obj_storage.allow_quick_empty_via_clickdrag && obj_storage.allow_quick_empty && isturf(over))
 			var/turf/turf = over
-			obj_storage.interacted_mass_dumping(new /datum/event_args/actor(user), turf)
+			obj_storage.auto_handle_interacted_mass_dumping(new /datum/event_args/actor(user), turf)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 

@@ -277,7 +277,7 @@
 
 	return static_data
 
-/obj/machinery/chem_master/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/chem_master/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -487,17 +487,17 @@
 		if("analyze")
 			var/datum/reagent/analyzed_reagent = GLOB.name2reagent[params["id"]]
 			if(analyzed_reagent)
-				var/state = "Unknown"
+				var/reagent_state = "Unknown"
 				if(initial(analyzed_reagent.reagent_state) == REAGENT_SOLID)
-					state = "Solid"
+					reagent_state = "Solid"
 				else if(initial(analyzed_reagent.reagent_state) == REAGENT_LIQUID)
-					state = "Liquid"
+					reagent_state = "Liquid"
 				else if(initial(analyzed_reagent.reagent_state) == REAGENT_GAS)
-					state = "Gas"
+					reagent_state = "Gas"
 				var/metabolization_rate = initial(analyzed_reagent.metabolism_rate)// * (60 / SSMOBS_DT)
 				analyze_vars = list(
 					"name" = initial(analyzed_reagent.name),
-					"state" = state,
+					"state" = reagent_state,
 					"color" = initial(analyzed_reagent.color),
 					"description" = initial(analyzed_reagent.description),
 					"metaRate" = metabolization_rate,
