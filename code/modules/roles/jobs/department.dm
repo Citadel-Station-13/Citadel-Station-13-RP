@@ -14,4 +14,3 @@
 	var/centcom_only = FALSE
 	/// starting pay modifier
 	var/economy_payscale = ECONOMY_PAYSCALE_DEPT_DEFAULT
-

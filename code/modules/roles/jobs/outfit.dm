@@ -17,7 +17,7 @@
 	var/obj/item/card/id/C = ..()
 	if(!C)
 		return
-	var/datum/prototype/role/job/J = SSjob.get_job(rank)
+	var/datum/prototype/role/job/J = RSroles.legacy_job_by_title(rank)
 	if(J)
 		C.access = J.get_access()
 	if(H.mind)

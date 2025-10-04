@@ -49,26 +49,6 @@ SUBSYSTEM_DEF(job)
 		for(var/depname in asinine_sort)
 			faction[depname] = asinine_sort[depname]
 
-/datum/controller/subsystem/job/proc/setup_occupations()
-	occupations = list()
-	name_occupations = list()
-	var/list/all_jobs = subtypesof(/datum/prototype/role/job)
-	if(!all_jobs.len)
-		to_chat(world, SPAN_WARNING( "Error setting up jobs, no job datums found"))
-		return FALSE
-
-	for(var/J in all_jobs)
-		#warn this shit
-		if(LAZYLEN(job.departments))
-			add_to_departments(job)
-
-	for(var/D in department_datums)
-		var/datum/department/dept = department_datums[D]
-		tim_sort(dept.jobs, GLOBAL_PROC_REF(cmp_job_datums), TRUE)
-		tim_sort(dept.primary_jobs, GLOBAL_PROC_REF(cmp_job_datums), TRUE)
-
-	return TRUE
-
 /datum/controller/subsystem/job/proc/add_to_departments(datum/prototype/role/job/J)
 	// Adds to the regular job lists in the departments, which allow multiple departments for a job.
 	for(var/D in J.departments)
@@ -95,16 +75,20 @@ SUBSYSTEM_DEF(job)
 
 	tim_sort(department_datums, GLOBAL_PROC_REF(cmp_department_datums), TRUE)
 
+	for(var/datum/prototype/role/job/job as anything in RSroles.legacy_all_job_datums())
+		if(LAZYLEN(job.departments))
+			add_to_departments(job)
+
+	for(var/D in department_datums)
+		var/datum/department/dept = department_datums[D]
+		tim_sort(dept.jobs, GLOBAL_PROC_REF(cmp_job_datums), TRUE)
+		tim_sort(dept.primary_jobs, GLOBAL_PROC_REF(cmp_job_datums), TRUE)
+
 /datum/controller/subsystem/job/proc/get_all_department_datums()
 	var/list/dept_datums = list()
 	for(var/D in department_datums)
 		dept_datums += department_datums[D]
 	return dept_datums
-
-/datum/controller/subsystem/job/proc/get_job(rank)
-	if(!occupations.len)
-		setup_occupations()
-	return name_occupations[rank]
 
 // Determines if a job title is inside of a specific department.
 // Useful to replace the old `if(job_title in command_positions)` code.
@@ -133,7 +117,7 @@ SUBSYSTEM_DEF(job)
 		if(ispath(J))
 			J = RSroles.legacy_job_by_type(J)
 		else if(istext(J))
-			J = get_job(J)
+			J = RSroles.legacy_job_by_title(J)
 
 	if(!istype(J))
 		job_debug_message("Was asked to get department for job '[J]', but input could not be resolved into a job datum.")

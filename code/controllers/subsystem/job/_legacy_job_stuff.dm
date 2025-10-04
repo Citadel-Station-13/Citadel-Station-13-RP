@@ -11,12 +11,12 @@
 	return TRUE
 
 /datum/controller/subsystem/job/proc/GetPlayerAltTitle(mob/new_player/player, rank)
-	return player.client.prefs.get_job_alt_title_name(get_job(rank))
+	return player.client.prefs.get_job_alt_title_name(RSroles.legacy_job_by_title(rank))
 
 /datum/controller/subsystem/job/proc/AssignRole(mob/new_player/player, rank, latejoin = 0)
 	job_debug("Running AR, Player: [player], Rank: [rank], LJ: [latejoin]")
 	if(player && player.mind && rank)
-		var/datum/prototype/role/job/job = get_job(rank)
+		var/datum/prototype/role/job/job = RSroles.legacy_job_by_title(rank)
 		var/reasons = job.check_client_availability_one(player.client)
 		if(reasons != ROLE_AVAILABLE)
 			job_debug("AR failed: player [player], rank [rank], latejoin [latejoin], failed for [reasons]")
@@ -34,7 +34,7 @@
 
 /// Making additional slot on the fly.
 /datum/controller/subsystem/job/proc/FreeRole(rank)
-	var/datum/prototype/role/job/job = get_job(rank)
+	var/datum/prototype/role/job/job = RSroles.legacy_job_by_title(rank)
 	if(job && job.total_positions != -1)
 		job.total_positions++
 		return 1
@@ -75,7 +75,7 @@
 /datum/controller/subsystem/job/proc/FillHeadPosition()
 	for(var/level in JOB_PRIORITY_HIGH to JOB_PRIORITY_LOW step -1)
 		for(var/command_position in SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND))
-			var/datum/prototype/role/job/job = get_job(command_position)
+			var/datum/prototype/role/job/job = RSroles.legacy_job_by_title(command_position)
 			if(!job)
 				continue
 			var/list/candidates = FindOccupationCandidates(job, level)
@@ -125,7 +125,7 @@
  */
 /datum/controller/subsystem/job/proc/CheckHeadPositions(level)
 	for(var/command_position in SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND))
-		var/datum/prototype/role/job/job = get_job(command_position)
+		var/datum/prototype/role/job/job = RSroles.legacy_job_by_title(command_position)
 		if(!job || (job.current_positions >= job.spawn_positions))
 			continue
 		var/list/candidates = FindOccupationCandidates(job, level)
@@ -245,7 +245,7 @@
 	if(!H)
 		return null
 
-	var/datum/prototype/role/job/job = get_job(rank)
+	var/datum/prototype/role/job/job = RSroles.legacy_job_by_title(rank)
 
 	if(!joined_late)
 		var/obj/landmark/spawnpoint/S = SSjob.get_roundstart_spawnpoint(H, H.client, job.type, job.faction)
@@ -419,7 +419,7 @@
 			continue
 
 		if(name && value)
-			var/datum/prototype/role/job/J = get_job(name)
+			var/datum/prototype/role/job/J = RSroles.legacy_job_by_title(name)
 			if(!J)	continue
 			J.total_positions = text2num(value)
 			J.spawn_positions = text2num(value)
@@ -465,7 +465,7 @@
 
 	var/fail_deadly = FALSE
 
-	var/datum/prototype/role/job/J = SSjob.get_job(rank)
+	var/datum/prototype/role/job/J = RSroles.legacy_job_by_title(rank)
 	fail_deadly = J?.offmap_spawn
 	var/preferred_method
 	var/datum/spawnpoint/spawnpos

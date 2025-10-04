@@ -51,7 +51,7 @@
 	if(istype(job_access_type))
 		getting_from = job_access_type
 	else
-		getting_from = SSjob.get_job(rank)
+		getting_from = RSroles.legacy_job_by_title(rank)
 	if(!isnull(getting_from))
 		access = getting_from.get_access()
 		job_access_type = getting_from

@@ -102,7 +102,7 @@
 					break
 			isactive[name] = active ? "Active" : "Inactive"
 
-			var/datum/prototype/role/job/J = SSjob.get_job(real_rank)
+			var/datum/prototype/role/job/J = RSroles.legacy_job_by_title(real_rank)
 			if(J?.offmap_spawn)
 				off[name] = rank
 
@@ -331,7 +331,7 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 	if(H.mind && !player_is_antag(H.mind, only_offstation_roles = 1))
 		var/assignment = GetAssignment(H)
 		var/hidden
-		var/datum/prototype/role/job/J = SSjob.get_job(H.mind.assigned_role)
+		var/datum/prototype/role/job/J = RSroles.legacy_job_by_title(H.mind.assigned_role)
 		hidden = J?.offmap_spawn
 
 		/* Note: Due to cached_character_icon, a number of emergent properties occur due to the initialization

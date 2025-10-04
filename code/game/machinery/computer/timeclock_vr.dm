@@ -93,7 +93,7 @@
 	if(card)
 		data["card"] = "[card]"
 		data["assignment"] = card.assignment
-		var/datum/prototype/role/job/job = SSjob.get_job(card.rank)
+		var/datum/prototype/role/job/job = RSroles.legacy_job_by_title(card.rank)
 		if(job)
 			data["job_datum"] = list(
 				"title" = job.title,
@@ -179,8 +179,8 @@
 		   && (job.check_mob_availability_one(user) == ROLE_AVAILABLE)
 
 /obj/machinery/computer/timeclock/proc/makeOnDuty(var/newrank, var/newassignment)
-	var/datum/prototype/role/job/oldjob = SSjob.get_job(card.rank)
-	var/datum/prototype/role/job/newjob = SSjob.get_job(newrank)
+	var/datum/prototype/role/job/oldjob = RSroles.legacy_job_by_title(card.rank)
+	var/datum/prototype/role/job/newjob = RSroles.legacy_job_by_title(newrank)
 	if(!oldjob || !isOpenOnDutyJob(usr, oldjob.pto_type, newjob))
 		return
 	if(newassignment != newjob.title && !(newassignment in newjob.alt_titles))
@@ -203,7 +203,7 @@
 	return
 
 /obj/machinery/computer/timeclock/proc/makeOffDuty()
-	var/datum/prototype/role/job/foundjob = SSjob.get_job(card.rank)
+	var/datum/prototype/role/job/foundjob = RSroles.legacy_job_by_title(card.rank)
 	if(!foundjob)
 		return
 	var/new_dept = foundjob.pto_type || PTO_CIVILIAN

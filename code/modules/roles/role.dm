@@ -6,5 +6,3 @@
  */
 /datum/prototype/role
 	abstract_type = /datum/prototype/role
-
-#warn how to handle 'ephemeral' roles?
