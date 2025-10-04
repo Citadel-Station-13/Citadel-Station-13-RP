@@ -1,4 +1,4 @@
-/datum/role/job/station/paramedic
+/datum/prototype/role/job/station/paramedic
 	id = JOB_ID_PARAMEDIC
 	title = "Paramedic"
 	flag = PARAMEDIC

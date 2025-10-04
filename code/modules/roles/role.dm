@@ -1,9 +1,5 @@
 /**
- * WIP
- * TODO: unified role system
+ * A role is something you can join the game as, usually from the lobby or from the observer panel.
  */
-/datum/role
-	abstract_type = /datum/role
-
-	/// unique id
-	var/id
+/datum/prototype/role
+	abstract_type = /datum/prototype/role

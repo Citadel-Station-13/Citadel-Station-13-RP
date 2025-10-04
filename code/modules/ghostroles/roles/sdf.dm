@@ -1,4 +1,4 @@
-/datum/role/ghostrole/sdf
+/datum/prototype/role/ghostrole/sdf
 	name = "System defense Force Soldier"
 	assigned_role = "SDF Soldier"
 	desc = "You are a Soldier of the haddi's folley SDF."
@@ -8,10 +8,10 @@
 
 	instantiator = /datum/ghostrole_instantiator/human/player_static/sdf
 
-/datum/role/ghostrole/sdf/Instantiate(client/C, atom/loc, list/params)
+/datum/prototype/role/ghostrole/sdf/Instantiate(client/C, atom/loc, list/params)
 	return ..()
 
-/datum/role/ghostrole/sdf/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
+/datum/prototype/role/ghostrole/sdf/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
 	. = ..()
 	to_chat(created, "<i> ATTENTION : STANDING ORDERS SOLDIER ! MAKE SURE THE SECTOR IS SAFE ! YOU MAY USE THE INTERRUPTED-THE-SPEECH TO PATROL THE SECTOR ! MAKE SURE YOU RESPECT THE SOP ! AND FOR GOD SAKE, DONT MESS WITH CORPORATIONS AFFAIRS !</i>")
 
@@ -27,7 +27,7 @@
 	icon = 'icons/obj/machines/teleporter.dmi'
 	icon_state = "pad_active"
 	anchored = TRUE
-	role_type = /datum/role/ghostrole/sdf
+	role_type = /datum/prototype/role/ghostrole/sdf
 	role_spawns = 3
 
 //SDF CRYO

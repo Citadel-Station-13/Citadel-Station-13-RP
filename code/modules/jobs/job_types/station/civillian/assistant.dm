@@ -1,4 +1,4 @@
-/datum/role/job/station/assistant
+/datum/prototype/role/job/station/assistant
 	id = JOB_ID_ASSISTANT
 	title = USELESS_JOB
 	flag = ASSISTANT
@@ -18,13 +18,13 @@
 		"Assistant" = /datum/prototype/struct/alt_title/assistant
 	)
 
-/datum/role/job/station/assistant/get_access()
+/datum/prototype/role/job/station/assistant/get_access()
 	if(config_legacy.assistant_maint)
 		return list(ACCESS_ENGINEERING_MAINT)
 	else
 		return list()
 
-/datum/role/job/station/assistant/get_access()
+/datum/prototype/role/job/station/assistant/get_access()
 	return list()
 
 /datum/prototype/struct/alt_title/visitor

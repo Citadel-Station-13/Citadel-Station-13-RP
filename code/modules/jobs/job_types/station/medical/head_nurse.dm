@@ -1,4 +1,4 @@
-/datum/role/job/station/senior_physician
+/datum/prototype/role/job/station/senior_physician
 	title = "Senior Physician"
 	id = JOB_ID_HEAD_NURSE
 	flag = HEAD_NURSE

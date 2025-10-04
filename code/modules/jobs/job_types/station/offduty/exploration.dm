@@ -1,4 +1,4 @@
-/datum/role/job/station/off_duty/exploration
+/datum/prototype/role/job/station/off_duty/exploration
 	id = JOB_ID_OFFDUTY_EXPLORER
 	title = "Off-duty Explorer"
 	selection_color = "#999440"

@@ -63,7 +63,7 @@ SUBSYSTEM_DEF(playtime)
 	else
 		. = list(PLAYER_PLAYTIME_LIVING)
 		var/best_effort_attempt_at_resolving_legacy_name_based_roles = M.mind?.assigned_role
-		var/datum/role/job/J = SSjob.job_by_title(best_effort_attempt_at_resolving_legacy_name_based_roles)
+		var/datum/prototype/role/job/J = SSjob.job_by_title(best_effort_attempt_at_resolving_legacy_name_based_roles)
 		if(J)
 			. += PLAYER_PLAYTIME_ROLE(J.id)
 

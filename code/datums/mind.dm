@@ -62,12 +62,12 @@
 
 	// todo: id, not title
 	var/assigned_role
-	// todo: id, not title; also unify /datum/role/(job | antagonist | ghostrole)?
+	// todo: id, not title; also unify /datum/prototype/role/(job | antagonist | ghostrole)?
 	var/special_role
 
 	var/role_alt_title
 
-	var/datum/role/job/assigned_job
+	var/datum/prototype/role/job/assigned_job
 
 	var/list/datum/objective/objectives = list()
 	var/list/datum/objective/special_verbs = list()

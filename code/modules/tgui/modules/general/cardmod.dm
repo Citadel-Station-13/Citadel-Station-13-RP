@@ -326,12 +326,12 @@
 /datum/tgui_module/card_mod/standard/query_ranks(mob/user, obj/item/card/id/editing, obj/item/card/id/authing)
 	. = list()
 	if(ACCESS_COMMAND_CARDMOD in authing?.access)
-		for(var/datum/role/job/J as anything in SSjob.all_jobs(JOB_FACTION_STATION))
+		for(var/datum/prototype/role/job/J as anything in SSjob.all_jobs(JOB_FACTION_STATION))
 			var/dep_name = (length(J.departments) && J.departments[1]) || "Miscellaneous"
 			LAZYINITLIST(.[dep_name])
 			.[dep_name] += J.title
 	else
-		var/datum/role/job/J = SSjob.job_by_title(authing?.rank)
+		var/datum/prototype/role/job/J = SSjob.job_by_title(authing?.rank)
 		for(var/dep_name in J?.departments_managed)
 			var/datum/department/D = SSjob.department_datums[dep_name]
 			if(isnull(D))
@@ -367,10 +367,10 @@
 		return FALSE
 	if(ACCESS_COMMAND_CARDMOD in authing.access)
 		return TRUE
-	var/datum/role/job/authing_job = SSjob.job_by_title(authing.rank)
+	var/datum/prototype/role/job/authing_job = SSjob.job_by_title(authing.rank)
 	if(isnull(authing_job))
 		return FALSE
-	var/datum/role/job/victim_job = SSjob.job_by_title(old_rank)
+	var/datum/prototype/role/job/victim_job = SSjob.job_by_title(old_rank)
 	if(isnull(victim_job))
 		return FALSE
 	return victim_job.departments & authing_job.departments_managed
@@ -382,15 +382,15 @@
 		return TRUE
 	if(isnull(new_rank)) // generic query
 		return FALSE
-	var/datum/role/job/authing_job = SSjob.job_by_title(authing.rank)
+	var/datum/prototype/role/job/authing_job = SSjob.job_by_title(authing.rank)
 	if(isnull(authing_job))
 		return FALSE
-	var/datum/role/job/old_job = SSjob.job_by_title(old_rank)
+	var/datum/prototype/role/job/old_job = SSjob.job_by_title(old_rank)
 	if(isnull(old_job))
 		return FALSE
 	if(!length(old_job.departments & authing_job.departments_managed))
 		return FALSE
-	var/datum/role/job/new_job = SSjob.job_by_title(new_rank)
+	var/datum/prototype/role/job/new_job = SSjob.job_by_title(new_rank)
 	if(isnull(new_job))
 		return FALSE
 	if(!length(new_job.departments & authing_job.departments_managed))
@@ -446,7 +446,7 @@
 
 /datum/tgui_module/card_mod/admin/query_ranks(mob/user, obj/item/card/id/editing, obj/item/card/id/authing)
 	. = list()
-	for(var/datum/role/job/J as anything in SSjob.all_jobs())
+	for(var/datum/prototype/role/job/J as anything in SSjob.all_jobs())
 		var/dep_name = (length(J.departments) && J.departments[1]) || "Miscellaneous"
 		LAZYINITLIST(.[dep_name])
 		.[dep_name] += J.title

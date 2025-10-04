@@ -1,4 +1,4 @@
-/datum/role/job/station/quartermaster
+/datum/prototype/role/job/station/quartermaster
 	id = JOB_ID_QUARTERMASTER
 	title = "Quartermaster"
 	economy_payscale = ECONOMY_PAYSCALE_JOB_SENIOR

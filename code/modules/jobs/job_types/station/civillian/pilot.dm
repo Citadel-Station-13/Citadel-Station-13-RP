@@ -1,4 +1,4 @@
-/datum/role/job/station/pilot
+/datum/prototype/role/job/station/pilot
 	id = JOB_ID_PILOT
 	title = "Pilot"
 	economy_payscale = ECONOMY_PAYSCALE_JOB_HELM

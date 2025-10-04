@@ -1,4 +1,4 @@
-/datum/role/job/station/chief_medical_officer
+/datum/prototype/role/job/station/chief_medical_officer
 	id = JOB_ID_CHIEF_MEDICAL_OFFICER
 	title = "Chief Medical Officer"
 	economy_payscale = ECONOMY_PAYSCALE_JOB_COMMAND

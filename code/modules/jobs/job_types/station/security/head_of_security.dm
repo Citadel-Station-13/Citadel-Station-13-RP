@@ -1,4 +1,4 @@
-/datum/role/job/station/head_of_security
+/datum/prototype/role/job/station/head_of_security
 	id = JOB_ID_HEAD_OF_SECURITY
 	economy_payscale = ECONOMY_PAYSCALE_JOB_COMMAND
 	title = "Head of Security"

@@ -1,4 +1,4 @@
-/datum/role/job/station/explorer
+/datum/prototype/role/job/station/explorer
 	id = JOB_ID_EXPLORER
 	title = "Explorer"
 	economy_payscale = ECONOMY_PAYSCALE_JOB_DANGER

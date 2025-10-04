@@ -1,4 +1,4 @@
-/datum/role/job/station/librarian
+/datum/prototype/role/job/station/librarian
 	id = JOB_ID_LIBRARIAN
 	title = "Librarian"
 	flag = LIBRARIAN

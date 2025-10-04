@@ -1,4 +1,4 @@
-/datum/role/job/station/off_duty/command
+/datum/prototype/role/job/station/off_duty/command
 	id = JOB_ID_OFFDUTY_COMMAND
 	title = "Off-duty Command"
 	total_positions = -1

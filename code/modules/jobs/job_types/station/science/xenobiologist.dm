@@ -2,7 +2,7 @@
 //////////////////////////////////
 //			Xenobiologist
 //////////////////////////////////
-/datum/role/job/station/xenobiologist
+/datum/prototype/role/job/station/xenobiologist
 	title = "Xenobiologist"
 	flag = XENOBIOLOGIST
 	departments = list(DEPARTMENT_RESEARCH)

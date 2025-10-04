@@ -1,4 +1,4 @@
-/datum/role/ghostrole/lythios_colonist
+/datum/prototype/role/ghostrole/lythios_colonist
 	name = "Na'sahira Colonist"
 	assigned_role = "Colonist"
 	desc = "You are a Tajara colonist from the New Kingdom of Adhomai, struggling to eek out a living on a distant planet."
@@ -16,10 +16,10 @@
 
 	instantiator = /datum/ghostrole_instantiator/human/player_static/lythios_colonist
 
-/datum/role/ghostrole/lythios_colonist/Instantiate(client/C, atom/loc, list/params)
+/datum/prototype/role/ghostrole/lythios_colonist/Instantiate(client/C, atom/loc, list/params)
 	return ..()
 
-/datum/role/ghostrole/lythios_colonist/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
+/datum/prototype/role/ghostrole/lythios_colonist/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
 	. = ..()
 	to_chat(created, "<i> The metal clanks beneath you as you step through the final old door entering the grounds of NSB Atlas. You travelled \
 	around five kilometers through the snow to get here. Compared to that the few hundred meter tunnel wasn't bad at all, even if the climb through \
@@ -48,7 +48,7 @@
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "hatchdown"
 	anchored = TRUE
-	role_type = /datum/role/ghostrole/lythios_colonist
+	role_type = /datum/prototype/role/ghostrole/lythios_colonist
 	role_spawns = 4
 
 /obj/item/gearbox/lythios_colonist

@@ -1,4 +1,4 @@
-/datum/role/job/station/mining
+/datum/prototype/role/job/station/mining
 	id = JOB_ID_SHAFT_MINER
 	title = "Shaft Miner"
 	flag = MINER

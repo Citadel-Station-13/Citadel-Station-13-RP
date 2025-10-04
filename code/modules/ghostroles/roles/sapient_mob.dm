@@ -13,7 +13,7 @@
 
 
 
-/datum/role/ghostrole/existing/sapient_mob
+/datum/prototype/role/ghostrole/existing/sapient_mob
 	name = "Sapient Creature"
 	assigned_role = "Sapient Creature"
 	desc = "You're a sapient creature!"
@@ -26,7 +26,7 @@
 	remember that what you used to be was something less intelligent then you are now!"
 	instantiator = /datum/ghostrole_instantiator/existing/sapient_mob
 
-/datum/role/ghostrole/existing/sapient_mob/xenobio
+/datum/prototype/role/ghostrole/existing/sapient_mob/xenobio
 	name = "Sapience Agent Enlightened Creature"
 	desc = "You're a sapient creature uplifted by someone by the power of xenobiology!"
 	spawntext = "Through xenobiology's creations, you have been granted vast new intelligence and language you never had before. \

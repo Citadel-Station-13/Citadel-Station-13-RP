@@ -1,4 +1,4 @@
-/datum/role/job/station/command_secretary
+/datum/prototype/role/job/station/command_secretary
 	id = JOB_ID_COMMAND_SECRETARY
 	title = "Bridge Officer"
 	economy_payscale = ECONOMY_PAYSCALE_JOB_HELM

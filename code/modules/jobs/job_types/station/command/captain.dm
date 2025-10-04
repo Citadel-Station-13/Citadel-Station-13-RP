@@ -1,6 +1,6 @@
 var/datum/legacy_announcement/minor/captain_announcement = new(do_newscast = 1)
 
-/datum/role/job/station/captain
+/datum/prototype/role/job/station/captain
 	id = JOB_ID_CAPTAIN
 	title = "Facility Director"
 	economy_payscale = ECONOMY_PAYSCALE_JOB_CAPTAIN
@@ -35,7 +35,7 @@ var/datum/legacy_announcement/minor/captain_announcement = new(do_newscast = 1)
 		"Captain" = /datum/prototype/struct/alt_title/captain/captain
 	)
 
-/datum/role/job/station/captain/get_access()
+/datum/prototype/role/job/station/captain/get_access()
 	return SSjob.access_ids_of_type(ACCESS_TYPE_STATION)
 
 /datum/prototype/struct/alt_title/overseer

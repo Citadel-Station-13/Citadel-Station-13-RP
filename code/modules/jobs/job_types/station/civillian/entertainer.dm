@@ -1,4 +1,4 @@
-/datum/role/job/station/entertainer
+/datum/prototype/role/job/station/entertainer
 	id = JOB_ID_ENTERTAINER
 	title = "Entertainer"
 	flag = ENTERTAINER

@@ -1,4 +1,4 @@
-/datum/role/job/station/psychiatrist
+/datum/prototype/role/job/station/psychiatrist
 	id = JOB_ID_PSYCHIATRIST
 	title = "Psychiatrist"
 	flag = PSYCHIATRIST

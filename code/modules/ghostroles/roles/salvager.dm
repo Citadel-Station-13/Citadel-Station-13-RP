@@ -1,4 +1,4 @@
-/datum/role/ghostrole/salvager
+/datum/prototype/role/ghostrole/salvager
 	name = "Guardian Company Salvager"
 	assigned_role = "Guardian Company Salvager"
 	desc = "You are a worker of the Guardian Company. You find ships, repair them, then sell them. You can also try and collect good to then sell them, or transport them between A and B. A bit less known, but you secretly smuggle contraband."
@@ -8,10 +8,10 @@
 
 	instantiator = /datum/ghostrole_instantiator/human/player_static/salvager
 
-/datum/role/ghostrole/salvager/Instantiate(client/C, atom/loc, list/params)
+/datum/prototype/role/ghostrole/salvager/Instantiate(client/C, atom/loc, list/params)
 	return ..()
 
-/datum/role/ghostrole/salvager/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
+/datum/prototype/role/ghostrole/salvager/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
 	. = ..()
 	to_chat(created, "<i> The GCSS Vevalia is ready to roll. We have job guys, we find wreck, and we salvage them, repair them even. Ah, be carefull with larger companies like Nanotrasen, better not antagonise them, however they can make for good clients. Our standing with the FTU is also very good. </i>")
 
@@ -24,7 +24,7 @@
 /obj/structure/ghost_role_spawner/salvager
 	name = "Salvager's Telepad"
 	desc = "You arrived from here."
-	role_type = /datum/role/ghostrole/salvager
+	role_type = /datum/prototype/role/ghostrole/salvager
 	role_spawns = 1
 	icon = 'icons/obj/furniture.dmi'
 	icon_state = "bed"

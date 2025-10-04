@@ -1,4 +1,4 @@
-/datum/role/job/station/blueshield
+/datum/prototype/role/job/station/blueshield
 	id = JOB_ID_BLUESHIELD
 	economy_payscale = ECONOMY_PAYSCALE_JOB_COMMAND
 	title = "Blueshield"

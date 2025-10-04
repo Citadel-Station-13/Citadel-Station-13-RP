@@ -1,4 +1,4 @@
-/datum/role/job/station/lawyer
+/datum/prototype/role/job/station/lawyer
 	id = JOB_ID_LAWYER
 	title = "Internal Affairs Agent"
 	flag = LAWYER
@@ -22,7 +22,7 @@
 						assuming their paperwork is in order."
 
 /*
-/datum/role/job/station/lawyer/equip(var/mob/living/carbon/human/H)
+/datum/prototype/role/job/station/lawyer/equip(var/mob/living/carbon/human/H)
 	. = ..()
 	if(.)
 		H.implant_loyalty(H)

@@ -1,4 +1,4 @@
-/datum/role/job/station/chief_engineer
+/datum/prototype/role/job/station/chief_engineer
 	id = JOB_ID_CHIEF_ENGINEER
 	title = "Chief Engineer"
 	economy_payscale = ECONOMY_PAYSCALE_JOB_COMMAND

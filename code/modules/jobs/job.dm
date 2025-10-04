@@ -1,6 +1,6 @@
-/datum/role/job
+/datum/prototype/role/job
 	/// Abstract type.
-	abstract_type = /datum/role/job
+	abstract_type = /datum/prototype/role/job
 
 	//? Intrinsics
 	/// The name of the job , used for preferences, bans and more. Make sure you know what you're doing before changing this.
@@ -84,7 +84,7 @@
 	// Disallow joining as this job midround from off-duty position via going on-duty
 	var/disallow_jobhop = FALSE
 
-/datum/role/job/New()
+/datum/prototype/role/job/New()
 	. = ..()
 	department_accounts = department_accounts || departments_managed
 
@@ -95,7 +95,7 @@
  *
  * @return 0 to number of slots remaining
  */
-/datum/role/job/proc/slots_remaining(latejoin)
+/datum/prototype/role/job/proc/slots_remaining(latejoin)
 	if(!latejoin)
 		if(spawn_positions == -1)
 			return INFINITY
@@ -113,7 +113,7 @@
  *
  * todo: check ckey proc too?
  */
-/datum/role/job/proc/check_client_availability(client/C, check_char, latejoin)
+/datum/prototype/role/job/proc/check_client_availability(client/C, check_char, latejoin)
 	. = NONE
 	if(whitelist_only && !Configuration.check_role_whitelist(id, C.ckey))
 		. |= ROLE_UNAVAILABLE_WHITELIST
@@ -144,7 +144,7 @@
  *
  * todo: check ckey proc too?
  */
-/datum/role/job/proc/check_client_availability_one(client/C, check_char, latejoin)
+/datum/prototype/role/job/proc/check_client_availability_one(client/C, check_char, latejoin)
 	. = NONE
 	if(whitelist_only && !Configuration.check_role_whitelist(id, C.ckey))
 		return ROLE_UNAVAILABLE_WHITELIST
@@ -172,7 +172,7 @@
  *
  * this is used for stuff like jobswitch code
  */
-/datum/role/job/proc/check_mob_availability_one(mob/M)
+/datum/prototype/role/job/proc/check_mob_availability_one(mob/M)
 	. = NONE
 	if(whitelist_only)	// don't even bother checking mind
 		return ROLE_UNAVAILABLE_WHITELIST
@@ -188,7 +188,7 @@
 /**
  * get an user-friendly reason of why they can't spawn as us
  */
-/datum/role/job/proc/get_availability_reason(client/C, reason)
+/datum/prototype/role/job/proc/get_availability_reason(client/C, reason)
 	if(reason & ROLE_UNAVAILABLE_BANNED)
 		return "BANNED"
 	if(reason & ROLE_UNAVAILABLE_SLOTS_FULL)
@@ -212,7 +212,7 @@
 /**
  * get a short abbreviation for why they can't spawn as us; used for preferences
  */
-/datum/role/job/proc/get_availability_error(client/C, reason)
+/datum/prototype/role/job/proc/get_availability_error(client/C, reason)
 	if(reason & ROLE_UNAVAILABLE_BANNED)
 		return "BANNED"
 	if(reason & ROLE_UNAVAILABLE_SLOTS_FULL)
@@ -238,7 +238,7 @@
 /**
  * all alt title datums
  */
-/datum/role/job/proc/alt_title_datums()
+/datum/prototype/role/job/proc/alt_title_datums()
 	. = list()
 	// todo: why do we do assoc list? why don't we just cache? why why why????
 	for(var/title in alt_titles)
@@ -250,7 +250,7 @@
 /**
  * get available alt title names for a given set of character backgrounds
  */
-/datum/role/job/proc/alt_title_query(list/background_ids)
+/datum/prototype/role/job/proc/alt_title_query(list/background_ids)
 	RETURN_TYPE(/list)
 	var/strict = FALSE
 	var/list/strict_titles = list()
@@ -278,7 +278,7 @@
 /**
  * check if an alt title is available for a given set of backgrounds
  */
-/datum/role/job/proc/alt_title_check(alt_title, list/background_ids)
+/datum/prototype/role/job/proc/alt_title_check(alt_title, list/background_ids)
 	if(alt_title == title)
 		// check if any enforced datums are there that forces them to be certain titles, and if so,
 		// that our 'normal' title is in there.
@@ -295,7 +295,7 @@
  *
  * @return enforced title as string, or null for none
  */
-/datum/role/job/proc/alt_title_enforcement(list/background_ids)
+/datum/prototype/role/job/proc/alt_title_enforcement(list/background_ids)
 	for(var/datum/prototype/struct/alt_title/alt_datum as anything in alt_title_datums())
 		// don't need to potentially enforce
 		if(!alt_datum.background_enforce)
@@ -308,14 +308,14 @@
 
 //? Unsorted
 
-/datum/role/job/proc/equip(var/mob/living/carbon/human/H, var/alt_title)
+/datum/prototype/role/job/proc/equip(var/mob/living/carbon/human/H, var/alt_title)
 	var/datum/outfit/outfit = get_outfit(H, alt_title)
 	if(!outfit)
 		return FALSE
 	. = outfit.equip(H, title, alt_title)
 	return 1
 
-/datum/role/job/proc/get_outfit(var/mob/living/carbon/human/H, var/alt_title)
+/datum/prototype/role/job/proc/get_outfit(var/mob/living/carbon/human/H, var/alt_title)
 	if(alt_title && alt_titles)
 		var/datum/prototype/struct/alt_title/A = alt_titles[alt_title]
 		if(A && initial(A.title_outfit))
@@ -326,11 +326,11 @@
 
 	// TODO: job refactor
 
-/datum/role/job/proc/get_economic_payscale()
+/datum/prototype/role/job/proc/get_economic_payscale()
 	var/datum/department/D = SSjob.get_primary_department_of_job(src)
 	return economy_payscale * (istype(D)? D.economy_payscale : 1)
 
-/datum/role/job/proc/setup_account(var/mob/living/carbon/human/H)
+/datum/prototype/role/job/proc/setup_account(var/mob/living/carbon/human/H)
 	if(!account_allowed || (H.mind && H.mind.initial_account))
 		return
 
@@ -354,22 +354,22 @@
 	to_chat(H, "<span class='notice'><b>Your account number is: [M.account_number], your account pin is: [M.remote_access_pin]</b></span>")
 
 // Overrideable separately so AIs/borgs can have cardborg hats without unneccessary new()/qdel()
-/datum/role/job/proc/equip_preview(mob/living/carbon/human/H, var/alt_title)
+/datum/prototype/role/job/proc/equip_preview(mob/living/carbon/human/H, var/alt_title)
 	var/datum/outfit/outfit = get_outfit(H, alt_title)
 	if(!outfit)
 		return FALSE
 	. = outfit.equip_base(H, title, alt_title)
 
-/datum/role/job/proc/get_access()
+/datum/prototype/role/job/proc/get_access()
 	. = minimal_access | (config_legacy.jobs_have_minimal_access? list() : additional_access)
 	if(faction == JOB_FACTION_STATION && CONFIG_GET(flag/almost_everyone_has_maintenance_access))
 		. |= ACCESS_ENGINEERING_MAINT
 
 // If the configuration option is set to require players to be logged as old enough to play certain jobs, then this proc checks that they are, otherwise it just returns 1
-/datum/role/job/proc/player_old_enough(client/C)
+/datum/prototype/role/job/proc/player_old_enough(client/C)
 	return (available_in_days(C) == 0)	// Available in 0 days = available right now = player is old enough to play.
 
-/datum/role/job/proc/available_in_days(client/C)
+/datum/prototype/role/job/proc/available_in_days(client/C)
 	if(C.has_jexp_bypass())
 		return 0
 	if(!CONFIG_GET(flag/job_check_account_age))
@@ -378,26 +378,26 @@
 		return max(0, minimal_player_age - C.player.player_age)
 	return 0
 
-/datum/role/job/proc/apply_fingerprints(var/mob/living/carbon/human/target)
+/datum/prototype/role/job/proc/apply_fingerprints(var/mob/living/carbon/human/target)
 	if(!istype(target))
 		return 0
 	for(var/obj/item/item in target.contents)
 		apply_fingerprints_to_item(target, item)
 	return 1
 
-/datum/role/job/proc/apply_fingerprints_to_item(var/mob/living/carbon/human/holder, var/obj/item/item)
+/datum/prototype/role/job/proc/apply_fingerprints_to_item(var/mob/living/carbon/human/holder, var/obj/item/item)
 	item.add_fingerprint(holder,1)
 	if(item.contents.len)
 		for(var/obj/item/sub_item in item.contents)
 			apply_fingerprints_to_item(holder, sub_item)
 
-/datum/role/job/proc/is_position_available()
+/datum/prototype/role/job/proc/is_position_available()
 	return (current_positions < total_positions) || (total_positions == -1)
 
-/datum/role/job/proc/has_alt_title(var/mob/H, var/supplied_title, var/desired_title)
+/datum/prototype/role/job/proc/has_alt_title(var/mob/H, var/supplied_title, var/desired_title)
 	return (supplied_title == desired_title) || (H.mind && H.mind.role_alt_title == desired_title)
 
-/datum/role/job/proc/get_description_blurb(var/alt_title)
+/datum/prototype/role/job/proc/get_description_blurb(var/alt_title)
 	var/list/message = list()
 	message |= desc
 
@@ -409,7 +409,7 @@
 				message |= A.title_blurb
 	return message
 
-/datum/role/job/proc/get_job_icon()
+/datum/prototype/role/job/proc/get_job_icon()
 	if(!SSjob.job_icons[title])
 		var/mob/living/carbon/human/dummy/mannequin/mannequin = get_mannequin("#job_icon")
 		dress_mannequin(mannequin)
@@ -422,13 +422,13 @@
 
 	return SSjob.job_icons[title]
 
-/datum/role/job/proc/dress_mannequin(mob/living/carbon/human/dummy/mannequin/mannequin)
+/datum/prototype/role/job/proc/dress_mannequin(mob/living/carbon/human/dummy/mannequin/mannequin)
 	mannequin.delete_inventory(TRUE)
 	equip_preview(mannequin)
 	if(mannequin.back)
 		qdel(mannequin.back)
 
-/datum/role/job/proc/equip_backpack(mob/living/carbon/human/H)
+/datum/prototype/role/job/proc/equip_backpack(mob/living/carbon/human/H)
 	switch(H.backbag)
 		if(2)
 			H.equip_to_slot_or_del(new /obj/item/storage/backpack(H), SLOT_ID_BACK)

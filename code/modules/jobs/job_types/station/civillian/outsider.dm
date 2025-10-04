@@ -1,4 +1,4 @@
-/datum/role/job/station/outsider
+/datum/prototype/role/job/station/outsider
 	id = JOB_ID_OUTSIDER
 	title = "Traveler"
 	flag = OUTSIDER

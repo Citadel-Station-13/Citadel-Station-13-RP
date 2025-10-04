@@ -1,4 +1,4 @@
-/datum/role/job/station/pathfinder
+/datum/prototype/role/job/station/pathfinder
 	id = JOB_ID_PATHFINDER
 	title = "Pathfinder"
 	economy_payscale = ECONOMY_PAYSCALE_JOB_SENIOR

@@ -1,4 +1,4 @@
-/datum/role/job/station/off_duty/security
+/datum/prototype/role/job/station/off_duty/security
 	id = JOB_ID_OFFDUTY_SECURITY
 	title = "Off-duty Officer"
 	selection_color = "#601C1C"

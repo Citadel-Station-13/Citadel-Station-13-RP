@@ -1,4 +1,4 @@
-/datum/role/job/station/mime
+/datum/prototype/role/job/station/mime
 	id = JOB_ID_MIME
 	title = "Mime"
 	flag = MIME

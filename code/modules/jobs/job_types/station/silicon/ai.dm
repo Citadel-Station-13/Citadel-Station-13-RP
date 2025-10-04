@@ -1,4 +1,4 @@
-/datum/role/job/station/ai
+/datum/prototype/role/job/station/ai
 	id = JOB_ID_AI
 	title = "AI"
 	flag = AI
@@ -23,20 +23,20 @@
 	disallow_jobhop = TRUE
 
 // AI procs
-/datum/role/job/station/ai/equip(var/mob/living/carbon/human/H)
+/datum/prototype/role/job/station/ai/equip(var/mob/living/carbon/human/H)
 	if(!H)
 		return 0
 	return 1
 
-/datum/role/job/station/ai/slots_remaining(latejoin)
+/datum/prototype/role/job/station/ai/slots_remaining(latejoin)
 	if(latejoin)
 		return GLOB.empty_playable_ai_cores.len
 	return ..()
 
-/datum/role/job/station/ai/is_position_available()
+/datum/prototype/role/job/station/ai/is_position_available()
 	return (GLOB.empty_playable_ai_cores.len != 0)
 
-/datum/role/job/station/ai/equip_preview(mob/living/carbon/human/H)
+/datum/prototype/role/job/station/ai/equip_preview(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/straight_jacket(H), SLOT_ID_SUIT)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/cardborg(H), SLOT_ID_HEAD)
 	return 1

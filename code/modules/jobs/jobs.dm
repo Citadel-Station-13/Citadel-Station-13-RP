@@ -63,10 +63,10 @@ var/const/OUTSIDER			=(1<<16)
 
 /proc/get_job_datums()
 	var/list/occupations = list()
-	var/list/all_jobs = typesof(/datum/role/job)
+	var/list/all_jobs = typesof(/datum/prototype/role/job)
 
 	for(var/A in all_jobs)
-		var/datum/role/job/job = new A()
+		var/datum/prototype/role/job/job = new A()
 		if(!job)	continue
 		occupations += job
 
@@ -76,7 +76,7 @@ var/const/OUTSIDER			=(1<<16)
 	var/list/jobs = get_job_datums()
 	var/list/titles = list()
 
-	for(var/datum/role/job/J in jobs)
+	for(var/datum/prototype/role/job/J in jobs)
 		if(J.title == job)
 			titles = J.alt_titles
 
