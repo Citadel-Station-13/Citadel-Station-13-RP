@@ -33,6 +33,10 @@ GLOBAL_LIST_EMPTY(observer_list)
 
 	var/is_manifest = FALSE //If set to 1, the ghost is able to whisper. Usually only set if a cultist drags them through the veil.
 	var/ghost_sprite = null
+
+	/// The POI we're orbiting (orbit menu)
+	var/orbiting_ref
+
 	var/global/list/possible_ghost_sprites = list(
 		"Clear" = "blank",
 		"Green Blob" = "otherthing",
@@ -92,7 +96,6 @@ GLOBAL_LIST_EMPTY(observer_list)
 	/// are we a poltergeist and get to do stupid things like move items, throw things, and move chairs?
 	var/is_spooky = FALSE
 	//For a better follow selection:
-	var/datum/orbit_menu/orbit_menu
 
 /mob/observer/dead/Initialize(mapload)
 	GLOB.observer_list += src
@@ -350,9 +353,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set category = "Ghost"
 	set name = "Follow"
 
-	if(!orbit_menu)
-		orbit_menu = new(src)
-	orbit_menu.ui_interact(src)
+	GLOB.orbit_menu.show(usr)
 
 // This is the ghost's follow verb with an argument
 /mob/observer/dead/proc/ManualFollow(atom/movable/target)

@@ -187,7 +187,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 
 	return data
 
-/obj/item/radio/ui_act(action, list/params, datum/tgui/ui)
+/obj/item/radio/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 

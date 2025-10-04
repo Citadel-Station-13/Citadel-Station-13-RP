@@ -1,8 +1,7 @@
 {
 	"eslint.nodePath": "./tgui/.yarn/sdks",
-	"eslint.workingDirectories": [
-		"./tgui"
-	],
+	"eslint.workingDirectories": ["./tgui"],
+	"prettier.prettierPath": "./tgui/.yarn/sdks/prettier/index.cjs",
 	"typescript.tsdk": "./tgui/.yarn/sdks/typescript/lib",
 	"typescript.enablePromptUseWorkspaceTsdk": true,
 	"typescript.tsserver.experimental.enableProjectDiagnostics": true,
@@ -15,15 +14,20 @@
 	},
 	"files.eol": "\n",
 	"files.insertFinalNewline": true,
+	"files.trimTrailingWhitespace": true,
+	"editor.insertSpaces": false,
+	"git.branchProtection": ["master"],
 	"gitlens.advanced.blame.customArguments": ["-w"],
 	"tgstationTestExplorer.project.resultsType": "json",
-	"[javascript]": {
-		"editor.rulers": [80]
+	"[html][scss][css][json][jsonc][markdown][yaml]": {
+		"editor.rulers": [80],
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.formatOnSave": true
 	},
-	"[typescript]": {
-		"editor.rulers": [80]
+	"workbench.editorAssociations": {
+		"*.dmi": "dmiEditor.dmiEditor"
 	},
-	"[scss]": {
-		"editor.rulers": [80]
+	"[javascript][typescript][typescriptreact][javascriptreact]": {
+		"editor.defaultFormatter": "vscode.typescript-language-features"
 	}
 }

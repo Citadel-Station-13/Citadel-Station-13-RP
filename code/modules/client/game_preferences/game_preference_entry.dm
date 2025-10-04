@@ -103,7 +103,7 @@
 	var/disabled_name = "Off"
 
 /datum/game_preference_entry/toggle/filter_value(value)
-	return !!value
+	return isnull(value) ? default_value : !!value
 
 /datum/game_preference_entry/toggle/tgui_preference_schema()
 	return ..() | list(

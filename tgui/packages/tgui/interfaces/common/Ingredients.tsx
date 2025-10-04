@@ -3,8 +3,8 @@
  * @license MIT
  */
 
-import { BooleanLike } from "common/react";
-import { Section } from "../../components";
+import { Section } from "tgui-core/components";
+import { BooleanLike } from "tgui-core/react";
 
 type IngredientRef = string;
 type IngredientPath = string;
@@ -49,7 +49,7 @@ interface IngredientsDisplayProps {
   readonly vertical: boolean;
 }
 
-export const IngredientsDisplay = (props: IngredientsDisplayProps, context) => {
+export const IngredientsDisplay = (props: IngredientsDisplayProps) => {
   // Just here to make ESlint not complain about unused variables
   let { ingredients, lazy, vertical } = props;
   // End
@@ -69,7 +69,7 @@ interface IngredientsProps {
   readonly select: (number, string) => void; // called with (index, data).
 }
 
-export const Ingredients = (props: IngredientsProps, context) => {
+export const Ingredients = (props: IngredientsProps) => {
   // Just here to make ESlint not complain about unused variables
   let { need, available, selection, selected, vertical, select } = props;
   // End
