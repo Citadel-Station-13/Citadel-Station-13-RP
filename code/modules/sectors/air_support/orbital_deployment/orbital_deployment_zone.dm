@@ -126,9 +126,11 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 	#warn params
 
 /**
- * input dir is with NORTH as 'do not rotate'
+ * * input dir is with NORTH as 'do not rotate'
+ * * keep in mind this returns TRUE if it's physically possible to translate, even if the player shouldn't be allowed to.
+ * @return TRUE if it's safe to translate, codewise, FALSE otherwise
  */
-/datum/orbital_deployment_zone/proc/check_validity(turf/target_center, dir)
+/datum/orbital_deployment_zone/proc/check_zone(turf/target_center, dir, list/warnings_out, list/errors_out)
 
 /**
  * @return true / false
