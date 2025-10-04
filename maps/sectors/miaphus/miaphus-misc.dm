@@ -12,8 +12,13 @@
 [b]Relationship with NT[/b]: Nanotrasen Client Government.
 [b]Relevant Contracts[/b]: Dangerous Wildlife Control (Natrik Region), System Self Defence Assistance."}
 
-	icon_state = "globe"
-	color = "#ffd300" //Sandy
+	//icon_state = "globe"
+	//color = "#ffd300" //Sandy
+	icon = 'icons/modules/overmap/large_worlds.dmi'
+	bound_width = 64
+	bound_height = 64
+	icon_state = "miaphus2"
+
 	in_space = 0
 	initial_generic_waypoints = list("beach_e", "beach_c", "beach_nw")
 	initial_restricted_waypoints = list(
