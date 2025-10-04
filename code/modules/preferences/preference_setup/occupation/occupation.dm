@@ -235,7 +235,7 @@
 		if(!J.alt_title_check(title, background_ids_cached))
 			jobs -= id
 	// check the ones we don't and are strict titles
-	for(var/datum/prototype/role/job/J as anything in RSroles.legacy_all_job_datums())
+	for(var/datum/prototype/role/job/J as anything in RSroles.legacy_all_sorted_job_datums())
 		if(!isnull(jobs[J.id]))
 			continue
 		var/forced = J.alt_title_enforcement(background_ids_cached)

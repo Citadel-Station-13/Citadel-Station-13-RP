@@ -81,3 +81,10 @@ REPOSITORY_DEF(roles)
 	. = list()
 	for(var/datum/prototype/role/job/r as anything in fetch_subtypes_immutable(/datum/prototype/role/job))
 		. += r
+
+/**
+ * Only returns /datum/prototype/role/job
+ */
+/datum/controller/repository/roles/proc/legacy_all_sorted_job_datums(filter_faction) as /list
+	. = legacy_all_job_datums(filter_faction)
+	tim_sort(., /proc/cmp_job_datums)

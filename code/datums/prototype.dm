@@ -57,11 +57,17 @@
 
 	// END
 
-#warn architecture for 'allow unload'
-
 /datum/prototype/New()
 	if(anonymous && isnull(id))
 		id = generate_anonymous_uid()
+
+/**
+ * Override this to false if your type has non-cache temporaries.
+ * * Using this is usually a bad idea but sometimes it's better to keep something loaded
+ *   than to fuck around with '/datum/role_round_context' or something.
+ */
+/datum/prototype/proc/can_be_unloaded()
+	return TRUE
 
 /datum/prototype/proc/generate_anonymous_uid()
 	// unique always, even across rounds

@@ -29,14 +29,13 @@ SUBSYSTEM_DEF(job)
 /datum/controller/subsystem/job/proc/reconstruct_job_ui_caches()
 	// todo: this is shit but it works
 	job_pref_ui_cache = list()
-	for(var/id in RSroles.legacy_all_job_ids())
-		var/datum/prototype/role/job/J = RSroles.legacy_job_by_id(id)
+	for(var/datum/prototype/role/job/J as anything in RSroles.legacy_all_sorted_job_datums())
 		if(!(J.join_types & JOB_ROUNDSTART))
 			continue
 		var/faction = J.faction
 		LAZYINITLIST(job_pref_ui_cache[faction])
 		var/department = LAZYACCESS(J.departments, 1) || "Misc"
-		LAZYADD(job_pref_ui_cache[faction][department], id)
+		LAZYADD(job_pref_ui_cache[faction][department], J.id)
 	// todo: why
 	for(var/fname in job_pref_ui_cache)
 		var/list/faction = job_pref_ui_cache[fname]

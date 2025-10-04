@@ -6,3 +6,8 @@
  */
 /datum/prototype/role
 	abstract_type = /datum/prototype/role
+
+/datum/prototype/role/can_be_unloaded()
+	// We have round-local temporaries.
+	// TODO: but do we really? should we, really?
+	return FALSE
