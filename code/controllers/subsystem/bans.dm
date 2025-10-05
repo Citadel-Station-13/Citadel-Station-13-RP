@@ -1,14 +1,14 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
-// TODO: Finish new banning system.
-
 /**
  * Ban management subsystem.
  * * Can hook PreInit()
  * * Must function as long as DBCore is connected.
  */
-// /datum/controller/subsystem/bans
+SUBSYSTEM_DEF(bans)
+
+// TODO: Finish new banning system.
 
 /**
  * * While the system supports IP/CID jobbans, it is up to the API user to know what is reasonable

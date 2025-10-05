@@ -3,7 +3,98 @@
 
 // ban wrappers until we make new ban system
 
-/datum/controller/subsystem/bans/proc/t_place_server_ban(ckey, duration,)
+/datum/controller/subsystem/bans/proc/t_place_system_ban(bantype, mob/banned_mob, duration = -1, reason, job = "", rounds = 0, banckey = null, banip = null, bancid = null)
+	if(!SSdbcore.Connect())
+		return
+
+	var/serverip = "[world.internet_address]:[world.port]"
+	var/bantype_pass = 0
+	var/bantype_str
+	switch(bantype)
+		if(BANTYPE_PERMA)
+			bantype_str = "PERMABAN"
+			duration = -1
+			bantype_pass = 1
+		if(BANTYPE_TEMP)
+			bantype_str = "TEMPBAN"
+			bantype_pass = 1
+		if(BANTYPE_JOB_PERMA)
+			bantype_str = "JOB_PERMABAN"
+			duration = -1
+			bantype_pass = 1
+		if(BANTYPE_JOB_TEMP)
+			bantype_str = "JOB_TEMPBAN"
+			bantype_pass = 1
+	if( !bantype_pass ) return
+	if( !istext(reason) ) return
+	if( !isnum(duration) ) return
+
+	var/ckey
+	var/computerid
+	var/ip
+
+	if(ismob(banned_mob))
+		ckey = banned_mob.ckey
+		if(banned_mob.client)
+			computerid = banned_mob.client.computer_id
+			ip = banned_mob.client.address
+	else if(banckey)
+		ckey = ckey(banckey)
+		computerid = bancid
+		ip = banip
+
+	var/a_ckey
+	var/a_computerid
+	var/a_ip
+
+	var/who
+	for(var/client/C in GLOB.clients)
+		if(!who)
+			who = "[C]"
+		else
+			who += ", [C]"
+
+	var/adminwho
+	for(var/client/C in GLOB.admins)
+		if(!adminwho)
+			adminwho = "[C]"
+		else
+			adminwho += ", [C]"
+
+	reason = sql_sanitize_text(reason)
+
+	if(isnull(computerid))
+		computerid = ""
+	if(isnull(ip))
+		ip = ""
+	var/sql = "INSERT INTO [DB_PREFIX_TABLE_NAME("ban")] \
+	(`id`,`bantime`,`serverip`,`bantype`,`reason`,`job`,`duration`,`rounds`,`expiration_time`,`ckey`,`computerid`,`ip`,`a_ckey`,`a_computerid`,`a_ip`,`who`,`adminwho`,`edits`,`unbanned`,`unbanned_datetime`,`unbanned_ckey`,`unbanned_computerid`,`unbanned_ip`) \
+	VALUES (null, Now(), :serverip, :type, :reason, :job, :duration, :rounds, Now() + INTERVAL :duration MINUTE, :ckey, :cid, :ip, :a_ckey, :a_cid, :a_ip, :who, :adminwho, '', null, null, null, null, null)"
+	SSdbcore.RunQuery(
+		sql,
+		list(
+			"serverip" = serverip,
+			"type" = bantype_str,
+			"reason" = reason,
+			"job" = job,
+			"duration" = duration? duration : 0,
+			"rounds" = rounds? rounds : 0,
+			"ckey" = ckey,
+			"cid" = computerid,
+			"ip" = ip,
+			"a_ckey" = a_ckey,
+			"a_cid" = a_computerid,
+			"a_ip" = a_ip,
+			"who" = who,
+			"adminwho" = adminwho
+		)
+	)
+	to_chat(usr, "<font color=#4F49AF>Ban saved to database.</font>")
+	message_admins("[key_name_admin(usr)] has added a [bantype_str] for [ckey] [(job)?"([job])":""] [(duration > 0)?"([duration] minutes)":""] with the reason: \"[reason]\" to the ban database.",1)
+	. = TRUE
+
+	// reload
+	jobban_loadbanfile()
 
 
 /**
