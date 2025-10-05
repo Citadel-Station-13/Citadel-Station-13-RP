@@ -1,7 +1,10 @@
-//? Role ban system
-//? Rolebans are for taking functionality away from problematic players.
-//? If you want a player off the server / there's no point in keeping then,
-//? use server_ban.dm functions instead.
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
+
+// ban wrappers until we make new ban system
+
+/datum/controller/subsystem/bans/proc/t_place_server_ban(ckey, duration,)
+
 
 /**
  * master proc to check if someone's banned from a role
@@ -13,7 +16,7 @@
  *
  * @return TRUE / FALSE for if they are banned right now
  */
-/proc/is_role_banned_ckey(ckey, character_id, role)
+/datum/controller/subsystem/bans/proc/t_is_role_banned_ckey(ckey, character_id, role)
 	// sanitize just in case
 	ckey = ckey(ckey)
 
@@ -50,7 +53,7 @@
  *
  * @return TRUE / FALSE on success / failure
  */
-/proc/role_ban_ckey(ckey, character_id, role, minutes, reason, datum/admins/admin)
+/datum/controller/subsystem/bans/proc/t_role_ban_ckey(ckey, character_id, role, minutes, reason, datum/admins/admin)
 	ASSERT(isnull(minutes) || (isnum(minutes) && minutes > 0))
 	// sanitize just in case
 	ckey = ckey(ckey)
@@ -61,11 +64,3 @@
 	//? shitcode alert: for now, db bans *must* be anchored to an admin datum.
 
 	. = admin?.DB_ban_record(isnull(minutes)? BANTYPE_JOB_PERMA : BANTYPE_JOB_TEMP, duration = isnull(minutes)? -1 : minutes, job = role, banckey = ckey, reason = reason) || FALSE
-
-// todo: query_role_banned_ckey(ckey)
-// todo: why_role_banned_ckey(ckey)
-// todo: time_role_banned_ckey(ckey)
-
-// todo: for the above, we should probably make the overhead not miserable by caching it in /datum/player_data.
-
-// todo: x_role_y_player(...) for player ids instead
