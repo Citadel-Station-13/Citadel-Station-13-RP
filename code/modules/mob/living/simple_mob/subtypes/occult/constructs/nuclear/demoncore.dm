@@ -48,7 +48,6 @@
 		return 1
 
 /mob/living/simple_mob/construct/nuclear/demoncore/death()
-	..()
 	for(var/mob/M in viewers(src, null))
 		if((M.client && !( M.has_status_effect(/datum/status_effect/sight/blindness) )))
 			M.show_message("<font color='red'>[src] screeches and explodes in a blue flash.</font>")

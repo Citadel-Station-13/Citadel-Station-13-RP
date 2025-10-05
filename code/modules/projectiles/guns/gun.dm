@@ -440,6 +440,7 @@
 	if(!user.aiming)
 		user.aiming = new(user)
 
+
 	if(check_safety())
 		//If we are on harm intent (intending to injure someone) but forgot to flick the safety off, there is a 50% chance we
 		//will reflexively do it anyway

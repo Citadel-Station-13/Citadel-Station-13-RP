@@ -1,0 +1,4 @@
+author: "timothyteakettle"
+delete-after: True
+changes:
+  - bugfix: "fix /obj/item/clothing/under/pmd icon direction"
