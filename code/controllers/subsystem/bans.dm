@@ -7,6 +7,8 @@
  * * Must function as long as DBCore is connected.
  */
 SUBSYSTEM_DEF(bans)
+	name = "Bans"
+	subsystem_flags = SS_NO_FIRE | SS_NO_INIT
 
 // TODO: Finish new banning system.
 
