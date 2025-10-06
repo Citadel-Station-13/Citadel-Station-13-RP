@@ -3780,6 +3780,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/machinery/computer/guestpass{
+	pixel_y = 32
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
 "cQm" = (
@@ -28086,10 +28089,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/fitness)
-"uWa" = (
-/obj/structure/table/rack/shelf,
-/turf/space,
-/area/space)
 "uWh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -28284,9 +28283,6 @@
 "vdT" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
@@ -42173,7 +42169,7 @@ eEQ
 eEQ
 eEQ
 eEQ
-pRW
+vXk
 pRW
 pRW
 pRW
@@ -42367,7 +42363,7 @@ ooX
 iVS
 pvA
 eGX
-pRW
+vXk
 pRW
 pRW
 pRW
@@ -42561,7 +42557,7 @@ ooX
 fCO
 slv
 eGX
-pRW
+vXk
 pRW
 pRW
 pRW
@@ -42755,7 +42751,7 @@ ooX
 ooX
 ooX
 eGX
-pRW
+vXk
 pRW
 pRW
 pRW
@@ -42949,7 +42945,7 @@ dpX
 jNA
 hbK
 eGX
-pRW
+vXk
 pRW
 pRW
 pRW
@@ -43143,7 +43139,7 @@ ooX
 fCO
 slv
 eGX
-pRW
+vXk
 pRW
 pRW
 pRW
@@ -43337,7 +43333,7 @@ ooX
 ooX
 ooX
 eGX
-pRW
+vXk
 pRW
 pRW
 pRW
@@ -43531,7 +43527,7 @@ dpX
 jNA
 dMM
 eGX
-pRW
+vXk
 pRW
 pRW
 pRW
@@ -43725,7 +43721,7 @@ ooX
 fCO
 slv
 eGX
-pRW
+vXk
 pRW
 pRW
 pRW
@@ -66368,7 +66364,7 @@ mDp
 mDp
 mDp
 mDp
-uWa
+mDp
 pRW
 pRW
 pRW
