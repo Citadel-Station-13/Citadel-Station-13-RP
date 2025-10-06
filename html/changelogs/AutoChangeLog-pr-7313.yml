@@ -1,0 +1,5 @@
+author: "CharlesWedge"
+delete-after: True
+changes:
+  - rscadd: "3 New Paracasual mobs"
+  - tweak: "Sprites for Gammawraith and Door Mimic, Lythios POI spawn budget."

@@ -1,6 +1,8 @@
-import { BooleanLike } from '../../common/react';
-import { useBackend, useLocalState } from '../backend';
-import { Section, Stack, Button, Box, NoticeBox } from '../components';
+import { useState } from 'react';
+import { Box, Button, NoticeBox, Section, Stack } from 'tgui-core/components';
+import { BooleanLike } from 'tgui-core/react';
+
+import { useBackend } from '../backend';
 import { Window } from '../layouts';
 import { sanitizeText } from '../sanitize';
 
@@ -24,19 +26,19 @@ type Species = {
 };
 
 enum SpeciesSpawnFlags {
-  Special = (1<<0),
-  Character = (1<<1),
-  Whitelisted = (1<<2),
-  Secret = (1<<3),
-  Restricted = (1<<4),
+  Special = (1 << 0),
+  Character = (1 << 1),
+  Whitelisted = (1 << 2),
+  Secret = (1 << 3),
+  Restricted = (1 << 4),
 }
 
 // We currently do NOT render species appearance flags/numbers!
 
-export const SpeciesPicker = (props, context) => {
-  const { act, data } = useBackend<SpeciesPickerContext>(context);
-  const [selectedCategory, setSelectedCategory] = useLocalState<String | null>(context, 'selectedCategory', null);
-  const [selectedSpecies, setSelectedSpecies] = useLocalState<String | null>(context, 'selectedSpecies', data.default);
+export const SpeciesPicker = (props) => {
+  const { act, data } = useBackend<SpeciesPickerContext>();
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedSpecies, setSelectedSpecies] = useState<string | null>(data.default);
   const { whitelisted = [] } = data;
   let categories: string[] = [];
   let species: Species[] = [];
@@ -78,7 +80,7 @@ export const SpeciesPicker = (props, context) => {
                 categories.map((k) => (
                   <Button key={k} color="transparent"
                     fluid
-                    selected={selectedCategory===k}
+                    selected={selectedCategory === k}
                     onClick={() => setSelectedCategory(k)}>
                     {k}
                   </Button>
@@ -130,17 +132,17 @@ export const SpeciesPicker = (props, context) => {
                         </NoticeBox>
                       )}
                       {!!isWhitelisted(selected) && (hasWhitelist(selected)
-                        ?(
+                        ? (
                           <NoticeBox success textAlign="center">
                             You have the whitelist to play this species.
                           </NoticeBox>
-                        ) : (hasAdminWhitelist? (
+                        ) : (hasAdminWhitelist ? (
                           <NoticeBox success textAlign="center">
                             You have administrative override for this species whitelist.
                             Please play responsibly.
                           </NoticeBox>
                         ) : (
-                          <NoticeBox warning textAlign="center">
+                          <NoticeBox textAlign="center">
                             This is a whitelisted species.
                             You can select it, but cannot join the game with it without a whitelist.
                           </NoticeBox>

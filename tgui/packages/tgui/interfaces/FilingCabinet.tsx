@@ -1,11 +1,7 @@
-import { useBackend } from "../backend";
-import {
-  Box,
-  Button,
-  Section,
-  Stack,
-} from "../components";
-import { Window } from "../layouts";
+import { Box, Button, Section, Stack } from 'tgui-core/components';
+
+import { useBackend } from '../backend';
+import { Window } from '../layouts';
 
 type Data = {
   cabinet_name: string;
@@ -13,13 +9,10 @@ type Data = {
   contents_ref: string;
 };
 
-export const FilingCabinet = (props, context) => {
-  const { act, data } = useBackend<Data>(context);
-  const {
-    cabinet_name,
-    contents,
-    contents_ref,
-  } = data;
+export const FilingCabinet = (props) => {
+  const { act, data } = useBackend<Data>();
+  const { cabinet_name, contents, contents_ref } = data;
+
   return (
     <Window title={cabinet_name || 'Filing Cabinet'} width={350} height={300}>
       <Window.Content backgroundColor="#B88F3D" scrollable>
@@ -38,7 +31,8 @@ export const FilingCabinet = (props, context) => {
               <Button
                 icon="eject"
                 onClick={() =>
-                  act('remove_object', { ref: contents_ref[index] })}
+                  act('remove_object', { ref: contents_ref[index] })
+                }
               />
             </Stack.Item>
           </Stack>

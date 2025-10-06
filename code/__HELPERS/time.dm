@@ -27,13 +27,13 @@ GLOBAL_VAR_INIT(roundstart_hour, pick(2,7,12,17))
 
 // todo: better subsystem based way of tracking this, this is fucky.
 
-#define duration2stationtime(time) time2text(station_time_in_ds + GLOB.timezoneOffset + time, "hh:mm")
-#define worldtime2stationtime(time) time2text((GLOB.roundstart_hour HOURS) - SSticker.round_start_time + GLOB.timezoneOffset + time, "hh:mm")
+#define duration2stationtime(time) time2text(station_time_in_ds + time, "hh:mm")
+#define worldtime2stationtime(time) time2text((GLOB.roundstart_hour HOURS) - SSticker.round_start_time + time, "hh:mm")
 #define round_duration_in_ds (SSticker.round_start_time ? world.time - SSticker.round_start_time : 0)
 #define station_time_in_ds (GLOB.roundstart_hour HOURS + round_duration_in_ds)
 
 /proc/stationtime2text()
-	return time2text(station_time_in_ds + GLOB.timezoneOffset, "hh:mm")
+	return time2text(station_time_in_ds, "hh:mm", 0)
 
 /proc/stationdate2text()
 	var/update_time = FALSE
@@ -62,7 +62,7 @@ GLOBAL_VAR_INIT(roundstart_hour, pick(2,7,12,17))
 /proc/gameTimestamp(format = "hh:mm:ss", wtime=null)
 	if(!wtime)
 		wtime = world.time
-	return time2text(wtime - GLOB.timezoneOffset, format)
+	return time2text(wtime, format, 0)
 
 /**
  * This is used for displaying the "station time" equivelent of a world.time value
@@ -70,11 +70,11 @@ GLOBAL_VAR_INIT(roundstart_hour, pick(2,7,12,17))
  * - You can use this, for example, to do "This will expire at [station_time_at(world.time + 500)]" to display a "station time" expiration date
  *   which is much more useful for a player).
  */
-/proc/station_time(time=world.time, display_only=FALSE)
-	return ((((time - SSticker.round_start_time)) + GLOB.gametime_offset) % 864000) - (display_only ? GLOB.timezoneOffset : 0)
+/proc/station_time(time=world.time)
+	return ((((time - SSticker.round_start_time)) + GLOB.gametime_offset) % 864000)
 
 /proc/station_time_timestamp(format = "hh:mm:ss", time=world.time)
-	return time2text(station_time(time, TRUE), format)
+	return time2text(station_time(time), format, 0)
 
 /**
  * Returns 1 if it is the selected month and day.

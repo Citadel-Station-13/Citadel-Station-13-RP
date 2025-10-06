@@ -5,20 +5,22 @@
  * @license MIT
  */
 
-import { useLocalState, useModule } from "../../backend";
-import { Box, Button, Collapsible, Dropdown, Input, LabeledList, NoticeBox, NumberInput, ProgressBar, Stack, Table, Tabs } from "../../components";
-import { Section, SectionProps } from "../../components/Section";
+import { Box, Button, Collapsible, Dropdown, Input, LabeledList, NoticeBox, NumberInput, ProgressBar, Section, Stack, Table, Tabs } from "tgui-core/components";
+
+import { useLocalState } from "../../backend";
+import { SectionProps } from "../../components";
 import { Modular } from "../../layouts/Modular";
 import { WindowProps } from "../../layouts/Window";
+import { useLegacyModule } from "../../legacyModuleSystem";
 import { Design } from "../common/Design";
 import { IngredientsSelected } from "../common/Ingredients";
-import { MaterialRender, MaterialStorage, MATERIAL_STORAGE_UNIT_NAME, renderMaterialAmount } from "../common/Materials";
-import { ReagentContents, REAGENT_STORAGE_UNIT_NAME } from "../common/Reagents";
+import { MATERIAL_STORAGE_UNIT_NAME, MaterialRender, MaterialStorage, renderMaterialAmount } from "../common/Materials";
+import { REAGENT_STORAGE_UNIT_NAME, ReagentContents } from "../common/Reagents";
 import { TGUILatheControlData, TGUILatheControlProps } from "../modules/TGUILatheControl";
 
 interface TGUIProsfabControlData extends TGUILatheControlData {
-  available_species : String[];
-  selected_species : String;
+  available_species: string[];
+  selected_species: string;
 }
 
 export const generateDynamicButton = (name, mode, actFunction) => {
@@ -39,28 +41,25 @@ export const generateDynamicButton = (name, mode, actFunction) => {
   }
 };
 
-export const TGUIProsfabControl = (props: TGUILatheControlProps, context) => {
+export const TGUIProsfabControl = (props: TGUILatheControlProps) => {
 
-  const { data, act } = useModule<TGUIProsfabControlData>(context);
+  const { data, act } = useLegacyModule<TGUIProsfabControlData>();
 
   const [category, setCategory] = useLocalState<string>(
-    context,
     `${data.$ref}-category`,
     data.designs.categories.length ? data.designs.categories[1] : "General"
   );
 
   const [subcategory, setSubCategory] = useLocalState<string>(
-    context,
     `${data.$ref}-subcategory`,
     ""
   );
 
   const [resourcesSelect, setResourcesSelect] = useLocalState<string>(
-    context,
     `${data.$ref}-rSelect`,
     "Materials",
   );
-  const [searchText, setSearchText] = useLocalState<string>(context, `${data.$ref}-search`, "");
+  const [searchText, setSearchText] = useLocalState<string>(`${data.$ref}-search`, "");
 
   const windowProps: WindowProps = {
     title: data.latheName,
@@ -141,7 +140,7 @@ export const TGUIProsfabControl = (props: TGUILatheControlProps, context) => {
     <Modular window={windowProps}>
       <Stack vertical fill>
         <Stack.Item>
-          <Stack fluid>
+          <Stack fill>
             <Stack.Item grow={1}>
               <Section title="Resources">
                 <Stack vertical>
@@ -150,7 +149,6 @@ export const TGUIProsfabControl = (props: TGUILatheControlProps, context) => {
                       {
                         !!data.storesMaterials && (
                           <Tabs.Tab
-                            content="Materials"
                             selected={resourcesSelect === "Materials"}
                             onClick={() => setResourcesSelect("Materials")}>
                             Materials
@@ -169,7 +167,6 @@ export const TGUIProsfabControl = (props: TGUILatheControlProps, context) => {
                       {
                         !!data.storesItems && (
                           <Tabs.Tab
-                            content="Items"
                             selected={resourcesSelect === "Items"}
                             onClick={() => setResourcesSelect("Items")}>
                             Items
@@ -202,13 +199,13 @@ export const TGUIProsfabControl = (props: TGUILatheControlProps, context) => {
           </Stack>
         </Stack.Item>
         <Stack.Item grow>
-          <Stack fluid fill>
+          <Stack fill>
             <Stack.Item grow={0.3}>
               <Section fill title="Categories" scrollable>
                 <Tabs vertical>
                   {
                     data.designs.categories.sort((c1, c2) => c1.localeCompare(c2)).map((cat) => (
-                      <Tabs.Tab key={cat} fluid color="transparent"
+                      <Tabs.Tab key={cat} color="transparent"
                         selected={cat === category}
                         onClick={() => { setCategory(cat); setSubCategory(""); }}>
                         {cat}
@@ -223,7 +220,7 @@ export const TGUIProsfabControl = (props: TGUILatheControlProps, context) => {
                 <Tabs vertical>
                   {
                     (Array.isArray(data.designs.subcategories[category])) ? (data.designs.subcategories[category].sort((c1, c2) => c1.localeCompare(c2)).map((subcat) => (
-                      <Tabs.Tab key={subcat} fluid color="transparent"
+                      <Tabs.Tab key={subcat} color="transparent"
                         selected={subcat === subcategory}
                         onClick={() => subcategory === subcat ? setSubCategory("") : setSubCategory(subcat)}>
                         {subcat}
@@ -238,7 +235,7 @@ export const TGUIProsfabControl = (props: TGUILatheControlProps, context) => {
                 <Stack.Item>
                   <Section title="Prosthetic Species Select">
                     <Dropdown
-                      options={data.available_species ? data.available_species.sort() : null}
+                      options={data.available_species ? data.available_species.sort() : []}
                       selected={data.selected_species}
                       width="100%"
                       onSelected={(val: any) => act("set_selected_species", { species: val })} />
@@ -247,7 +244,7 @@ export const TGUIProsfabControl = (props: TGUILatheControlProps, context) => {
                 <Stack.Item>
                   <Section>
                     <Input placeholder="Search (3+ characters)"
-                      width="100%" value={searchText} onInput={(e, val) => setSearchText(val.toLowerCase())} />
+                      width="100%" value={searchText} onChange={(val) => setSearchText(val.toLowerCase())} />
                   </Section>
                 </Stack.Item>
                 <Stack.Item grow>
@@ -334,8 +331,8 @@ interface LatheQueuedProps {
   readonly index: number;
 }
 
-const LatheQueued = (props: LatheQueuedProps, context) => {
-  let { data, act } = useModule<TGUILatheControlData>(context);
+const LatheQueued = (props: LatheQueuedProps) => {
+  let { data, act } = useLegacyModule<TGUILatheControlData>();
   let progressRender;
   if (props.index === 1 && data.queueActive && props.design !== undefined) {
     progressRender = (
@@ -365,7 +362,7 @@ const LatheQueued = (props: LatheQueuedProps, context) => {
             icon="plus"
             onClick={() => act('modqueue', { index: props.index, amount: props.entry.amount + 1 })} />
           <NumberInput minValue={1} maxValue={100} step={1} width={3}
-            value={props.entry.amount} onChange={(e, v) => act('modqueue', { index: props.index, amount: v })} />
+            value={props.entry.amount} onChange={(v) => act('modqueue', { index: props.index, amount: v })} />
           <Button
             color="transparent"
             icon="minus"
@@ -428,14 +425,14 @@ const areMaterialsChosen = (mats: Record<string, number>, chosen: Record<string,
   return Object.keys(mats).every((mat) => (mat in chosen));
 };
 
-const LatheDesign = (props: LatheDesignProps, context) => {
-  const { data, act, moduleID } = useModule<TGUILatheControlData>(context);
+const LatheDesign = (props: LatheDesignProps) => {
+  const { data, act, moduleID } = useLegacyModule<TGUILatheControlData>();
 
   // materials: key = material id
   // mats maps parts to materials. i think? ask kevinz.
-  let [mats, setMats] = useLocalState<Record<string, string>>(context, `${moduleID}-${props.design.id}-mats`, {});
+  let [mats, setMats] = useLocalState<Record<string, string>>(`${moduleID}-${props.design.id}-mats`, {});
   // ingredients: key = ingredient id/value
-  let [inds, setInds] = useLocalState<Record<string, string>>(context, `${moduleID}-${props.design.id}-inds`, {});
+  let [inds, setInds] = useLocalState<Record<string, string>>(`${moduleID}-${props.design.id}-inds`, {});
 
   if (!areMaterialsChosen(props.design.material_parts || {}, mats) && props.design.autodetect_tags && props.design.material_parts) {
     Object.entries(props.design.material_parts).map(([name, amt]) => {
@@ -518,11 +515,11 @@ const LatheDesign = (props: LatheDesignProps, context) => {
                 <Table.Cell>
                   <div style={{
                     "display": "inline-block",
-                    "padding-left": "0.5em",
+                    paddingLeft: "0.5em",
                     "width": "base em(100px)",
-                    "line-height": "base.em(17px)",
-                    "font-family": "Verdana, sans-serif",
-                    "font-size": "base.em(12px)",
+                    lineHeight: "base.em(17px)",
+                    fontFamily: "Verdana, sans-serif",
+                    fontSize: "base.em(12px)",
                   }}>
                     {data.materialsContext.materials[id].name}
                   </div>
@@ -553,11 +550,11 @@ const LatheDesign = (props: LatheDesignProps, context) => {
                     }}
                     options={
                       Object.keys(data.materials).flatMap((id) => ((props.design.material_constraints !== null) ?
-                      (data.materialsContext.materials[id].constraints.includes((name in props.design.material_constraints) ?
-                      (((typeof props.design.material_constraints?.[name]) === 'number') ?
-                      props.design.material_constraints?.[name] : 16777218) : 16777218) ?
-                      [data.materialsContext.materials[id].name] : []) :
-                      [data.materialsContext.materials[id].name]))
+                        (data.materialsContext.materials[id].constraints.includes((name in props.design.material_constraints) ?
+                          (((typeof props.design.material_constraints?.[name]) === 'number') ?
+                            props.design.material_constraints?.[name] : 16777218) : 16777218) ?
+                          [data.materialsContext.materials[id].name] : []) :
+                        [data.materialsContext.materials[id].name]))
                     } />
                 </Table.Cell>
                 <Table.Cell textAlign="center"

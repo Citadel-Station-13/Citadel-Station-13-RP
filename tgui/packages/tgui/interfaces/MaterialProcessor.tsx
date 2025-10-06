@@ -1,8 +1,9 @@
-import { BooleanLike } from "common/react";
-import { capitalize } from "common/string";
-import { Fragment } from "inferno";
+import { Fragment } from "react";
+import { AnimatedNumber, Button, LabeledList, Section } from "tgui-core/components";
+import { BooleanLike } from "tgui-core/react";
+import { capitalize } from "tgui-core/string";
+
 import { useBackend } from "../backend";
-import { Button, LabeledList, Section, AnimatedNumber } from "../components";
 import { Window } from '../layouts';
 
 enum MaterialProcessorMode {
@@ -20,26 +21,26 @@ const COLOR_PROCESSING = {
 };
 
 type OreData =
-{
-  name: string,
-  displayName: string,
-  processing: number,
-  amount: number,
-  ref: string,
-}
+  {
+    name: string,
+    displayName: string,
+    processing: number,
+    amount: number,
+    ref: string,
+  }
 
 type MaterialProcessorData =
-{
-  on: BooleanLike,
-  fast: BooleanLike,
-  ores: OreData[],
-  unclaimedPoints: number,
-  idName: string,
-  idPoints: number,
-}
+  {
+    on: BooleanLike,
+    fast: BooleanLike,
+    ores: OreData[],
+    unclaimedPoints: number,
+    idName: string,
+    idPoints: number,
+  }
 
-export const MaterialProcessor = (props, context) => {
-  const { act, data } = useBackend<MaterialProcessorData>(context);
+export const MaterialProcessor = (props) => {
+  const { act, data } = useBackend<MaterialProcessorData>();
   const {
     on,
     fast,
@@ -51,7 +52,6 @@ export const MaterialProcessor = (props, context) => {
 
   return (
     <Window
-      resizable
       title="Material Processor Console"
       width={380}
       height={550}>
@@ -80,18 +80,18 @@ export const MaterialProcessor = (props, context) => {
                 <AnimatedNumber value={idPoints} />
               </LabeledList.Item>
             ) || (
-              <LabeledList.Item label="ID" buttons={
-                <Button
-                  content="Insert ID"
-                  icon="id-card"
-                  onClick={() => act("insert_id", {})} />
-              }
-              />
-            )}
+                <LabeledList.Item label="ID" buttons={
+                  <Button
+                    content="Insert ID"
+                    icon="id-card"
+                    onClick={() => act("insert_id", {})} />
+                }
+                />
+              )}
           </LabeledList>
         </Section>
         <Section title="Ore Processing" buttons={
-          <Fragment>
+          <>
             <Button
               icon="forward"
               tooltip="Toggle High-Speed Processing"
@@ -107,7 +107,7 @@ export const MaterialProcessor = (props, context) => {
               selected={on}
               onClick={() => act("toggle_power", {})}
             />
-          </Fragment>
+          </>
         }>
           <LabeledList>
             {ores.map(ore => (
@@ -116,7 +116,7 @@ export const MaterialProcessor = (props, context) => {
                 key={ore.ref}
                 color={COLOR_PROCESSING[ore.processing]}
                 buttons={
-                  <Fragment>
+                  <>
                     <Button
                       icon="layer-group"
                       tooltip={"Alloy " + ore.displayName}
@@ -145,7 +145,7 @@ export const MaterialProcessor = (props, context) => {
                       selected={ore.processing === MaterialProcessorMode.None}
                       onClick={() => act("change_mode", { ore: ore.name, mode: MaterialProcessorMode.None })}
                     />
-                  </Fragment>
+                  </>
                 }>
                 <AnimatedNumber value={ore.amount} />
               </LabeledList.Item>

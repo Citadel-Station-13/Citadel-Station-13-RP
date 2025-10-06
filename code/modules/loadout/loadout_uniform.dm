@@ -1038,3 +1038,7 @@ Swimsuits
 /datum/loadout_entry/uniform/tajaran/hadii
 	name = "Hadii's Folley Civilian Uniform"
 	path = /obj/item/clothing/under/tajaran/hadiifolly
+
+/datum/loadout_entry/uniform/punk
+	name = "Ripped pants and fishnets"
+	path = /obj/item/clothing/under/rippedpunk

@@ -1,0 +1,6 @@
+author: "Shadowtail117"
+delete-after: True
+changes:
+  - tweak: "More areas will now respect the nightshift on the Atlas."
+  - bugfix: "Added a missing APC to the secondary civilian hallway on the Atlas."
+  - bugfix: "Added missing lights to the virology dorms on the Atlas."

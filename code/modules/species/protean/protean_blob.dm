@@ -322,6 +322,8 @@
 	//Create our new blob
 	var/mob/living/simple_mob/protean_blob/blob = new(creation_spot,src)
 
+	drop_grabs()
+
 	if(isnull(blob.mob_radio) && istype(l_ear, /obj/item/radio))
 		blob.mob_radio = l_ear
 		if(!transfer_item_to_loc(l_ear, blob, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT))
@@ -412,6 +414,26 @@
 		prig.forceMove(humanform)
 		return
 
+	if(istype(loc, /obj/item/holder))
+		var/obj/item/holder/blobholder = loc
+		if(istype(blobholder.loc, /mob/living/carbon/human))
+			var/mob/living/carbon/human/H = blobholder.loc
+			var/back = FALSE
+			if(blobholder == H.item_by_slot_id(SLOT_ID_BACK))
+				back = TRUE
+			var/obj/item/hardsuit/protean/prig
+			for(var/obj/item/hardsuit/protean/O in humanform.contents)
+				prig = O
+				break
+			if(prig)
+				prig.forceMove(get_turf(src))
+				forceMove(prig)
+				blobholder.update_state()
+				if(back)
+					H.equip_to_slot_if_possible(prig,SLOT_ID_BACK, INV_OP_FORCE | INV_OP_DIRECTLY_EQUIPPING | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
+				return
+				
+
 	if(isturf(loc))
 		var/obj/item/hardsuit/protean/prig
 		for(var/obj/item/hardsuit/protean/O in humanform.contents)
@@ -447,6 +469,7 @@
 	unbuckle_all_mobs(BUCKLE_OP_FORCE)
 	pulledby?.stop_pulling()
 	stop_pulling()
+	blob.drop_grabs()
 
 	var/panel_selected = blob.client?.statpanel == SPECIES_PROTEAN
 

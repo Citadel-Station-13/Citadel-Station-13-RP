@@ -41,7 +41,7 @@ GLOBAL_LIST_EMPTY(bioscan_antenna_list)
 	if(!network_mutable)
 		return ..()
 	. = TRUE
-	var/new_network = default_input_text(e_args.initiator, "What do you want to set the network key to?", "Modify Network", network_key)
+	var/new_network = tgui_input_text(e_args.initiator, "What do you want to set the network key to?", "Modify Network", network_key)
 	if(!e_args.performer.Reachability(src) || isnull(new_network))
 		return
 	e_args.visible_feedback(

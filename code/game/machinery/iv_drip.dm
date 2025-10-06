@@ -58,7 +58,7 @@
 	data["beakerAttached"] = reagent_container ? TRUE : FALSE
 	return data
 
-/obj/machinery/iv_drip/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/iv_drip/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

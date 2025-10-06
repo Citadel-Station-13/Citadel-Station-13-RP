@@ -10,7 +10,7 @@
 		ui = new(user, src, "Changelog")
 		ui.open()
 
-/datum/changelog/ui_act(action, list/params, datum/tgui/ui)
+/datum/changelog/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -22,14 +22,13 @@
 			changelog_item = new /datum/asset_pack/changelog_item(params["date"])
 			SSassets.register_asset_pack(changelog_item)
 			changelog_items[params["date"]] = changelog_item
-		ui.send_asset(changelog_item)
-		return TRUE
+		return ui.send_asset(changelog_item)
 
-/datum/changelog/ui_static_data(mob/user, datum/tgui/ui)
+/datum/changelog/ui_static_data()
 	var/list/data = list( "dates" = list() )
 	var/regex/ymlRegex = regex(@"\.yml", "g")
 
-	for(var/archive_file in flist("[global.config.directory]/../html/changelogs/archive/"))
+	for(var/archive_file in sortList(flist("html/changelogs/archive/")))
 		var/archive_date = ymlRegex.Replace(archive_file, "")
 		data["dates"] = list(archive_date) + data["dates"]
 

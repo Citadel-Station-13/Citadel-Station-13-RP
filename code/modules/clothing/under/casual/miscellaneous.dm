@@ -111,3 +111,9 @@
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
 	inhand_state = "grey"
+
+/obj/item/clothing/under/rippedpunk
+	name = "Ripped pants and fishnets"
+	desc = "Ripped pants and a fishnet shirt. This outfit complies with galactic punk standards."
+	icon = 'icons/clothing/uniform/casual/punk.dmi'
+	icon_state = "rippedpunk"

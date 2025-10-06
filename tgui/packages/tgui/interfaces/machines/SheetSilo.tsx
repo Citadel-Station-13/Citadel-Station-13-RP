@@ -1,5 +1,7 @@
-import { useBackend, useLocalState } from "../../backend";
-import { Box, Button, NumberInput, Section, Stack } from "../../components";
+import { useState } from "react";
+import { Box, Button, NumberInput, Section, Stack } from "tgui-core/components";
+
+import { useBackend } from "../../backend";
 import { Window } from "../../layouts";
 import { MaterialsContext } from "../common/Materials";
 
@@ -8,9 +10,9 @@ interface SheetSiloData {
   stored: Record<string, number>;
 }
 
-export const SheetSilo = (props, context) => {
-  const { act, data } = useBackend<SheetSiloData>(context);
-  const [dropAmounts, setDropAmounts] = useLocalState<Record<string, number>>(context, 'dropAmounts', {});
+export const SheetSilo = (props) => {
+  const { act, data } = useBackend<SheetSiloData>();
+  const [dropAmounts, setDropAmounts] = useState<Record<string, number>>({});
   const setDropAmount = (id: string, amt: number) => {
     let corrected = { ...dropAmounts };
     corrected[id] = amt;
@@ -32,7 +34,7 @@ export const SheetSilo = (props, context) => {
               <Stack.Item key={`${k}-${dropAmounts[k]}`}>
                 <Stack>
                   <Stack.Item grow={1} style={{ display: "flex", border: "1px solid gray" }} pl={1}>
-                    <Box style={{ "align-self": "center" }} bold>
+                    <Box style={{ alignSelf: "center" }} bold>
                       {data.materialContext.materials[k]?.name || 'UNKNOWN'} - {v}
                     </Box>
                   </Stack.Item>
@@ -42,7 +44,8 @@ export const SheetSilo = (props, context) => {
                   </Stack.Item>
                   <Stack.Item>
                     <NumberInput width={2.5} value={dropAmounts[k] || 1}
-                      onChange={(e, val) => setDropAmount(k, Math.floor(val))} />
+                      minValue={0} maxValue={200} step={1}
+                      onChange={(val) => setDropAmount(k, Math.floor(val))} />
                   </Stack.Item>
                   <Stack.Item>
                     <Button icon="plus"
