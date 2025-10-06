@@ -10,7 +10,7 @@
 		/obj/item/clothing/mask/gas/explorer,
 		/obj/item/clothing/shoes/boots/winter/explorer,
 		/obj/item/clothing/gloves/black,
-		/obj/item/gun/energy/frontier/locked/holdout,
+		/obj/item/gun/projectile/energy/frontier/locked/holdout,
 		/obj/item/radio/headset/explorer,
 		/obj/item/clothing/accessory/armor/helmetcamera/exploration/body,
 		/obj/item/flashlight,
@@ -25,7 +25,8 @@
 		/obj/item/clothing/accessory/holster/machete,
 		/obj/item/reagent_containers/food/snacks/liquid,
 		/obj/item/reagent_containers/food/snacks/liquid/protein,
-		/obj/item/cataloguer)
+		/obj/item/cataloguer,
+		/obj/item/binoculars)
 
 /obj/structure/closet/secure_closet/explorer/Initialize(mapload)
 	if(prob(50))
@@ -47,7 +48,7 @@
 		/obj/item/reagent_containers/glass/bottle/antitoxin,
 		/obj/item/storage/belt/medical/emt,
 		/obj/item/storage/box/survival_knife,
-		/obj/item/gun/energy/frontier/locked/holdout,
+		/obj/item/gun/projectile/energy/frontier/locked/holdout,
 		/obj/item/clothing/mask/gas/explorer,
 		/obj/item/clothing/suit/storage/hooded/explorer/medic,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/medical/sar,
@@ -72,7 +73,10 @@
 		/obj/item/gps/medical,
 		/obj/item/geiger_counter,
 		/obj/item/bodybag/cryobag,
-		/obj/item/cataloguer/compact)
+		/obj/item/cataloguer/compact,
+		/obj/item/binoculars,
+		/obj/item/gun/projectile/ballistic/shotgun/flare/paramed,
+		/obj/item/storage/box/flashshells/large)
 
 //Pilot Locker
 /obj/structure/closet/secure_closet/pilot
@@ -82,7 +86,7 @@
 	starts_with = list(
 		/obj/item/storage/backpack/parachute,
 		/obj/item/storage/box/survival_knife,
-		/obj/item/gun/energy/frontier/locked/holdout,
+		/obj/item/gun/projectile/energy/frontier/locked/holdout,
 		/obj/item/clothing/head/pilot,
 		/obj/item/clothing/accessory/armor/helmetcamera/exploration,
 		/obj/item/clothing/accessory/armor/helmetcamera/exploration/body,
@@ -98,12 +102,13 @@
 		/obj/item/reagent_containers/food/snacks/liquid/protein,
 		/obj/item/reagent_containers/food/drinks/cans/waterbottle,
 		/obj/item/storage/box/flare,
-		/obj/item/gun/ballistic/shotgun/flare/explo,
+		/obj/item/gun/projectile/ballistic/shotgun/flare/explo,
 		/obj/item/storage/box/flashshells,
 		/obj/item/cell/device,
 		/obj/item/radio,
 		/obj/item/gps/explorer,
-		/obj/item/cataloguer/compact)
+		/obj/item/cataloguer/compact,
+		/obj/item/binoculars)
 
 /obj/structure/closet/secure_closet/pilot/Initialize(mapload)
 	if(prob(50))
@@ -139,16 +144,17 @@
 		/obj/item/stack/marker_beacon/thirty,
 		/obj/item/storage/box/survival_knife,
 		/obj/item/material/knife/machete/deluxe,
-		/obj/item/gun/energy/frontier/locked/carbine,
-		/obj/item/gun/ballistic/ntles/pathfinder,
+		/obj/item/gun/projectile/energy/frontier/locked/carbine,
+		/obj/item/gun/projectile/ballistic/ntles/pathfinder,
 		/obj/item/ammo_magazine/a5_7mm/nt_les,
 		/obj/item/ammo_magazine/a5_7mm/nt_les,
 		/obj/item/clothing/accessory/holster/machete,
 		/obj/item/clothing/accessory/holster/leg,
 		/obj/item/reagent_containers/food/snacks/liquid,
 		/obj/item/reagent_containers/food/snacks/liquid/protein,
-		/obj/item/card/mining_point_card/survey/gimmick,
-		/obj/item/cataloguer/compact/pathfinder)
+		/obj/item/point_redemption_voucher/preloaded/survey/c300,
+		/obj/item/cataloguer/compact/pathfinder,
+		/obj/item/binoculars)
 
 /obj/structure/closet/secure_closet/pathfinder/Initialize(mapload)
 	if(prob(50))

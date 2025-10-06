@@ -1,4 +1,4 @@
-/datum/material/algae
+/datum/prototype/material/algae
 	id = "algae"
 	name = MAT_ALGAE
 	stack_type = /obj/item/stack/material/algae

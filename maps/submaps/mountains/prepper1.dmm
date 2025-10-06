@@ -96,7 +96,7 @@
 /area/submap/cave/prepper1)
 "t" = (
 /obj/structure/table/rack,
-/obj/item/gun/ballistic/shotgun/pump/rifle/lever,
+/obj/item/gun/projectile/ballistic/shotgun/pump/rifle/lever,
 /obj/item/ammo_magazine/a7_62mm/clip,
 /obj/item/ammo_magazine/a7_62mm/clip,
 /turf/simulated/floor/plating,

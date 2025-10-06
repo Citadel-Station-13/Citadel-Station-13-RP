@@ -310,7 +310,7 @@
 	else
 		..()
 
-/mob/living/bot/medibot/ui_act(action, list/params, datum/tgui/ui)
+/mob/living/bot/medibot/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 
@@ -527,8 +527,8 @@
 
 	// If they're injured, we're using a beaker, and they don't have on of the chems in the beaker.
 	if(reagent_glass && use_beaker && ((victim.getBruteLoss() >= heal_threshold) || (victim.getToxLoss() >= heal_threshold) || (victim.getToxLoss() >= heal_threshold) || (victim.getOxyLoss() >= (heal_threshold + 15))))
-		for(var/datum/reagent/R in reagent_glass.reagents.reagent_list)
-			if(!victim.reagents.has_reagent(R))
+		for(var/datum/reagent/R in reagent_glass.reagents.get_reagent_datums())
+			if(!victim.reagents.has_reagent(R.id))
 				return 1
 			continue
 

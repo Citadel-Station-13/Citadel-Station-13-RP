@@ -14,7 +14,7 @@
 	var/loaded_from_slot = null
 
 // Handle people leaving due to round ending.
-/hook/roundend/proc/persist_locations()
+/legacy_hook/roundend/proc/persist_locations()
 	for(var/mob/Player in human_mob_list)
 		if(!Player.mind || isnewplayer(Player))
 			continue // No mind we can do nothing, new players we care not for
@@ -66,7 +66,7 @@
 /**
  * Called when mob despawns early (via cryopod)!
  */
-/hook/despawn/proc/persist_despawned_mob(var/mob/occupant, var/obj/machinery/cryopod/pod)
+/legacy_hook/despawn/proc/persist_despawned_mob(var/mob/occupant, var/obj/machinery/cryopod/pod)
 	ASSERT(istype(pod))
 	ASSERT(ispath(pod.spawnpoint_type, /datum/spawnpoint))
 	persist_interround_data(occupant, pod.spawnpoint_type)
@@ -100,7 +100,6 @@
 		if(prefs.persistence_settings & PERSIST_MARKINGS)
 			apply_markings_to_prefs(H, prefs)
 		if(prefs.persistence_settings & PERSIST_WEIGHT)
-			resolve_excess_nutrition(H)
 			prefs.weight_vr = H.weight
 		if(prefs.persistence_settings & PERSIST_SIZE)
 			prefs.size_multiplier = H.size_multiplier
@@ -162,28 +161,6 @@
 			// because you're only allowed to have each marking type once! If this assumption changes, obviously update this. ~Leshana
 			new_body_markings[mark_datum.id] = mark_color
 	prefs.body_marking_ids = new_body_markings // Overwrite with new list!
-
-/**
-* Resolve any surplus/deficit in nutrition's effet on weight all at once.
-* Normally this would slowly apply during the round; once we get to the end
-* we need to apply it all at once.
-*/
-/proc/resolve_excess_nutrition(var/mob/living/carbon/C)
-	if(C.stat == DEAD)
-		return // You don't metabolize if dead
-	if(!C.metabolism || !C.species || !C.species.hunger_factor)
-		return // You don't metabolize if you have no metabolism or your species doesn't eat!
-	// Each Life() tick, you gain/lose weight proportional to your metabolism, and lose species.hunger_factor nutrition
-	var/weight_per_nutrition = C.metabolism / C.species.hunger_factor
-
-	if(C.nutrition > MIN_NUTRITION_TO_GAIN && C.weight < MAX_MOB_WEIGHT && C.weight_gain)
-		// Weight Gain!
-		var/gain = (C.nutrition - MIN_NUTRITION_TO_GAIN) * weight_per_nutrition * C.weight_gain/100
-		C.weight = min(MAX_MOB_WEIGHT, C.weight + gain)
-	else if(C.nutrition <= MAX_NUTRITION_TO_LOSE && C.weight > MIN_MOB_WEIGHT && C.weight_loss)
-		// Weight Loss!
-		var/loss = (MAX_NUTRITION_TO_LOSE - C.nutrition) * weight_per_nutrition * C.weight_loss/100
-		C.weight = max(MIN_MOB_WEIGHT, C.weight - loss)
 
 /**
 * Persist any NIF data that needs to be persisted. It's stored in a list to make it more malleable

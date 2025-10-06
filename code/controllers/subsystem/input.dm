@@ -2,7 +2,7 @@ SUBSYSTEM_DEF(input)
 	name = "Input"
 	wait = 0.25 // scale to 40 fps
 	init_order = INIT_ORDER_INPUT
-	subsystem_flags = NONE
+	init_stage = INIT_STAGE_EARLY
 	priority = FIRE_PRIORITY_INPUT
 	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY
 
@@ -23,16 +23,13 @@ SUBSYSTEM_DEF(input)
 
 /datum/controller/subsystem/input/Initialize()
 	setup_macrosets()
-	// set init early so refresh macrosets works
-	initialized = TRUE
 	refresh_client_macro_sets()
-
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/input/Recover()
-	initialized = SSinput.initialized
 	setup_macrosets()
 	refresh_client_macro_sets()
+	initialized = SSinput.initialized
 
 /// Sets up the key list for classic mode for when badmins screw up vv's.
 /datum/controller/subsystem/input/proc/setup_macrosets()

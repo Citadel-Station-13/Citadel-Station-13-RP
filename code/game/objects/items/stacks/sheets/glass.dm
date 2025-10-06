@@ -14,7 +14,7 @@
 	name = "glass"
 	singular_name = "glass sheet"
 	icon_state = "sheet-glass"
-	material = /datum/material/glass
+	material = /datum/prototype/material/glass
 	drop_sound = 'sound/items/drop/glass.ogg'
 	pickup_sound = 'sound/items/pickup/glass.ogg'
 	var/is_reinforced = 0
@@ -61,7 +61,7 @@
 	name = "reinforced glass"
 	singular_name = "reinforced glass sheet"
 	icon_state = "sheet-rglass"
-	material = /datum/material/glass/reinforced
+	material = /datum/prototype/material/glass/reinforced
 	is_reinforced = 1
 
 /*
@@ -71,7 +71,7 @@
 	name = "phoron glass"
 	singular_name = "phoron glass sheet"
 	icon_state = "sheet-phoronglass"
-	material = /datum/material/phoron
+	material = /datum/prototype/material/phoron
 
 /obj/item/stack/material/glass/phoronglass/attackby(obj/item/W, mob/user)
 	..()
@@ -96,5 +96,5 @@
 	name = "reinforced phoron glass"
 	singular_name = "reinforced phoron glass sheet"
 	icon_state = "sheet-phoronrglass"
-	material = /datum/material/glass/phoron/reinforced
+	material = /datum/prototype/material/glass/phoron/reinforced
 	is_reinforced = 1

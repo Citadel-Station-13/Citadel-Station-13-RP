@@ -24,7 +24,6 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/computer/ship/sensors/planet/LateInitialize()
-	. = ..()
 	var/area/overmap/map = locate() in world
 	for(var/obj/overmap/entity/visitable/sector/S in map)
 		if(istype(S,planet_type))
@@ -99,7 +98,7 @@
 
 	return data
 
-/obj/machinery/computer/ship/sensors/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/ship/sensors/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 

@@ -1,5 +1,5 @@
 /obj/item/card/emag_broken
-	prototype_id = "cryptographic-sequencer-broken"
+	prototype_id = "ItemEmagBroken"
 	desc = "It's a card with a magnetic strip attached to some circuitry. It looks too busted to be used for anything but salvage."
 	name = "broken cryptographic sequencer"
 	icon_state = "emag-spent"
@@ -7,7 +7,7 @@
 	origin_tech = list(TECH_MAGNET = 2, TECH_ILLEGAL = 2)
 
 /obj/item/card/emag
-	prototype_id = "crytographic-sequencer"
+	prototype_id = "ItemEmag"
 	desc = "It's a card with a magnetic strip attached to some circuitry."
 	name = "cryptographic sequencer"
 	icon_state = "emag"

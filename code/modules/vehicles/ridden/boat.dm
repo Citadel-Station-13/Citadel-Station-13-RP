@@ -10,7 +10,7 @@
 	icon_y_dimension = 32
 	buckle_max_mobs = 2
 	riding_handler_type = /datum/component/riding_handler/vehicle/boat/small
-	var/datum/material/material = null
+	var/datum/prototype/material/material = null
 
 /obj/vehicle/ridden/boat/Initialize(mapload, material_name)
 	. = ..()
@@ -20,7 +20,7 @@
 	if(!material)
 		qdel(src)
 		return
-	add_atom_colour(material.icon_colour, FIXED_COLOUR_PRIORITY)
+	add_atom_color(material.icon_colour)
 
 /obj/vehicle/ridden/boat/drive_check(mob/user)
 	return !!user.get_held_item_of_type(/obj/item/oar)
@@ -70,7 +70,7 @@
 	icon_state = "oar"
 	item_state = "oar"
 	damage_force = 12
-	var/datum/material/material = null
+	var/datum/prototype/material/material = null
 
 /obj/item/oar/sifwood/Initialize(mapload, material_name)
 	return ..(mapload, MAT_SIFWOOD)
@@ -83,7 +83,7 @@
 	if(!material)
 		qdel(src)
 		return
-	add_atom_colour(material.icon_colour, FIXED_COLOUR_PRIORITY)
+	add_atom_color(material.icon_colour)
 
 /obj/item/oar/ashlander
 	name = "blessed oar"
@@ -128,7 +128,7 @@
 /datum/component/riding_handler/vehicle/boat/small/ashlander
 	allowed_turf_types = list(
 		/turf/simulated/floor/water,
-		/turf/simulated/floor/outdoors/lava
+		/turf/simulated/lava
 	)
 	rider_offsets = list(
 		list(

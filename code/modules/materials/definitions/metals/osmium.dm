@@ -1,4 +1,4 @@
-/datum/material/osmium
+/datum/prototype/material/osmium
 	name = "osmium"
 	id = MAT_OSMIUM
 	stack_type = /obj/item/stack/material/osmium
@@ -20,3 +20,5 @@
 	refraction = MATERIAL_RESISTANCE_MODERATE
 	absorption = MATERIAL_RESISTANCE_LOW
 	nullification = MATERIAL_RESISTANCE_LOW
+
+	material_constraints = MATERIAL_CONSTRAINT_RIGID

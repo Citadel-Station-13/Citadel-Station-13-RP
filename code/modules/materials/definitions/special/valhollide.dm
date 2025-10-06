@@ -1,4 +1,4 @@
-/datum/material/valhollide
+/datum/prototype/material/valhollide
 	name = MAT_VALHOLLIDE
 	id = MAT_VALHOLLIDE
 	stack_type = /obj/item/stack/material/valhollide
@@ -26,3 +26,5 @@
 	nullification = MATERIAL_RESISTANCE_MODERATE
 
 	worth = 100
+
+	material_constraints = MATERIAL_CONSTRAINT_RIGID

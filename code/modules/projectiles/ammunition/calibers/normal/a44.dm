@@ -1,28 +1,28 @@
 /datum/ammo_caliber/a44
+	id = "a44"
 	caliber = ".44"
 
 //* Casings
 
 /obj/item/ammo_casing/a44
 	desc = "A .44 bullet casing."
-	caliber = /datum/ammo_caliber/a44
+	casing_caliber = /datum/ammo_caliber/a44
 	icon = 'icons/modules/projectiles/casings/slim.dmi'
 	icon_state = "large"
 	projectile_type = /obj/projectile/bullet/pistol/strong
 	materials_base = list(MAT_STEEL = 210)
 
 /obj/item/ammo_casing/a44/rubber
-	icon_state = "r-casing"
 	desc = "A .44 rubber bullet casing."
 	icon_state = "large-blue"
 	projectile_type = /obj/projectile/bullet/pistol/rubber/strong
 	materials_base = list(MAT_STEEL = 60)
 
 /obj/item/ammo_casing/a44/silver
-	desc = "A .44 silver bullet casing. Bless and Sancitfied to banish otherworlds entities."
-	icon_state = "large-white"
+	desc = "A .44 silver bullet casing."
+	icon_state = "large-silver"
 	projectile_type = /obj/projectile/bullet/pistol/strong/silver
-	materials_base = list(MAT_STEEL = 350, MAT_SILVER = 200)
+	materials_base = list(MAT_STEEL = 170, MAT_SILVER = 90)
 
 //* Magazines
 
@@ -45,8 +45,15 @@
 	ammo_current = 0
 
 /obj/item/ammo_magazine/a44/rubber
+	name = "magazine (.44 rubber)"
 	desc = "A magazine for .44 less-than-lethal ammo."
-	ammo_type = /obj/item/ammo_casing/a44/rubber
+	ammo_preload = /obj/item/ammo_casing/a44/rubber
+
+/obj/item/ammo_magazine/a44/silver
+	name = "magazine (.44 silver)"
+	icon_state = "m44ag-7"
+	base_icon_state = "m44ag"
+	ammo_preload = /obj/item/ammo_casing/a44/silver
 
 /obj/item/ammo_magazine/a44/clip
 	name = "ammo clip (.44)"

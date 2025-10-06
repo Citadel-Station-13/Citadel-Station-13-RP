@@ -15,6 +15,7 @@
 	max_combined_volume = STORAGE_VOLUME_BACKPACK
 	var/flippable = 0
 	var/side = 0 //0 = right, 1 = left
+	var/hide_under_tail = 1
 	drop_sound = 'sound/items/drop/backpack.ogg'
 	pickup_sound = 'sound/items/pickup/backpack.ogg'
 
@@ -33,8 +34,6 @@
 /obj/item/storage/backpack/holding/duffle
 	name = "dufflebag of holding"
 	icon_state = "holdingduffle"
-	encumbrance = ITEM_ENCUMBRANCE_STORAGE_DUFFLEBAG
-	weight = ITEM_WEIGHT_STORAGE_DUFFLEBAG
 
 /obj/item/storage/backpack/holding/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/storage/backpack/holding))
@@ -348,6 +347,22 @@
 	desc = "A minimalist satchel designed to fit inside of clothing, directly against the skin."
 	item_state = "none"
 
+/obj/item/storage/satchel/roguetown
+	name = "hide satchel"
+	desc = "A satchel made from an unknown hide."
+	icon = 'icons/clothing/uniform/casual/roguetown/hide_satchel.dmi'
+	icon_state = "hidesatchel"
+	slot_flags = SLOT_BACK
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPE_DEFAULT
+	icon_override = null
+	max_single_weight_class = WEIGHT_CLASS_BULKY
+	weight = ITEM_WEIGHT_STORAGE_BACKPACK
+	encumbrance = ITEM_ENCUMBRANCE_STORAGE_BACKPACK
+	max_combined_volume = STORAGE_VOLUME_BACKPACK
+	drop_sound = 'sound/items/drop/backpack.ogg'
+	pickup_sound = 'sound/items/pickup/backpack.ogg'
+
 //ERT backpacks.
 /obj/item/storage/backpack/ert
 	name = "emergency response team backpack"
@@ -584,6 +599,7 @@
 	encumbrance = ITEM_ENCUMBRANCE_STORAGE_DUFFLEBAG
 	max_combined_volume = STORAGE_VOLUME_DUFFLEBAG //Saddlebags can hold more, like dufflebags
 	var/no_message = "You aren't the appropriate taur type to wear this!"
+	hide_under_tail = -1
 
 /obj/item/storage/backpack/saddlebag_common/can_equip(mob/M, slot, mob/user, flags)
 	. = ..()

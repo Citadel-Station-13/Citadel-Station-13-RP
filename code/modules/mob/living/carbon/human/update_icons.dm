@@ -29,26 +29,8 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 /mob/living/carbon/human/update_icons_huds()
 	stack_trace("CANARY: Old human update_icons_huds was called.")
 
-//TODO: Carbon procs in my human update_icons??
-/mob/living/carbon/human/update_hud()	//TODO: do away with this if possible
-	// todo: this is utterly shitcode and fucking stupid ~silicons
-	// todo: the rest of hud code here ain't much better LOL
-	var/list/obj/item/relevant = get_equipped_items(TRUE, TRUE)
-	if(hud_used)
-		for(var/obj/item/I as anything in relevant)
-			position_hud_item(I, slot_id_by_item(I))
-	if(client)
-		client.screen |= relevant
-
-//update whether handcuffs appears on our hud.
-/mob/living/carbon/proc/update_hud_handcuffed()
-	if(hud_used && hud_used.l_hand_hud_object && hud_used.r_hand_hud_object)
-		hud_used.l_hand_hud_object.update_icon()
-		hud_used.r_hand_hud_object.update_icon()
-
-/mob/living/carbon/human/update_transform()
-	var/matrix/old_matrix = transform
-	var/matrix/M = matrix()
+/mob/living/carbon/human/base_transform(matrix/applying)
+	SHOULD_CALL_PARENT(FALSE)
 
 	// handle scaling first, we don't want to have massive mobs still shift to align to tile
 	// when they're laying down.
@@ -57,8 +39,8 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(istype(species))
 		desired_scale_x *= species.icon_scale_x
 		desired_scale_y *= species.icon_scale_y
-	M.Scale(desired_scale_x, desired_scale_y)
-	M.Translate(0, 16 * (desired_scale_y - 1))
+	applying.Scale(desired_scale_x, desired_scale_y)
+	applying.Translate(0, 16 * (desired_scale_y - 1))
 
 	// Mark atom as wide/long for ZM.
 	if (desired_scale_x > 1)
@@ -71,20 +53,22 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		zmm_flags &= ~ZMM_LOOKBESIDE
 
 	// handle turning
-	M.Turn(lying)
+	applying.Turn(lying)
 	// extremely lazy heuristic to see if we should shift down to appear to be, well, down.
 	if(lying < -45 || lying > 45)
-		M.Translate(1,-6)
+		applying.Translate(1,-6)
 
 	// fall faster if incapacitated
-	var/anim_time = CHECK_MOBILITY(src, MOBILITY_CAN_STAND)? 3 : 1
-
-	animate(src, transform = M, time = anim_time, flags = ANIMATION_PARALLEL)
 	appearance_flags = fuzzy? (appearance_flags & ~(PIXEL_SCALE)) : (appearance_flags | PIXEL_SCALE)
-	SEND_SIGNAL(src, COMSIG_MOB_UPDATE_TRANSFORM, old_matrix, M)
+
+	SEND_SIGNAL(src, COMSIG_MOVABLE_BASE_TRANSFORM, applying)
+	return applying
+
+/mob/living/carbon/human/apply_transform(matrix/to_apply)
+	var/anim_time = CHECK_MOBILITY(src, MOBILITY_CAN_STAND)? 3 : 1
+	animate(src, transform = to_apply, time = anim_time, flags = ANIMATION_PARALLEL | ANIMATION_LINEAR_TRANSFORM)
 	update_icon_special() //May contain transform-altering things
 	update_ssd_overlay()
-
 
 /* --------------------------------------- */
 //Recomputes every icon on the mob. Expensive.
@@ -110,8 +94,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	update_inv_belt()
 	update_inv_back()
 	update_inv_wear_suit()
-	update_inv_r_hand()
-	update_inv_l_hand()
+	update_inv_hands()
 	update_handcuffed()
 	update_inv_legcuffed()
 	//update_inv_pockets() //Doesn't do anything

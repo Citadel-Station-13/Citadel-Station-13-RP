@@ -22,7 +22,7 @@
 		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/xenohybrid,
 	)
 
-	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
+	unarmed_types = list(/datum/melee_attack/unarmed/stomp, /datum/melee_attack/unarmed/kick, /datum/melee_attack/unarmed/claws, /datum/melee_attack/unarmed/bite/sharp)
 	max_additional_languages = 2
 
 	max_age = 150//Xenomorphs probably get pretty old if not shot dead
@@ -66,6 +66,7 @@
 		/datum/ability/species/sonar,
 		/datum/ability/species/toggle_agility,
 		/datum/ability/species/xenomorph_hybrid/regenerate,
+		/datum/ability/species/xenomorph_hybrid/sneak,
 	)
 	total_health = 150	//Exoskeleton makes you tougher than baseline
 	brute_mod = 0.95 // Chitin is somewhat hard to crack
@@ -74,13 +75,13 @@
 	vision_innate = /datum/vision/baseline/species_tier_2
 	hunger_factor = 0.1 //In exchange, they get hungry a tad faster.
 
-	slowdown = -0.2//Speedboost Tesh have -0.5
-
 	warning_low_pressure = 30//lower than baseline
 	hazard_low_pressure = -1//Vacuum proof
 
 	warning_high_pressure = 325//Both baseline
 	hazard_high_pressure = 550
+
+	movement_base_speed = 5.5
 
 	//Doesnt work, defaults are set at checks
 	//breath_type = null	//they don't breathe
@@ -149,6 +150,6 @@
 	if(H.nutrition < 100 || heal_amount <= 0.6)
 		return
 
-	if(H.vessel.get_reagent_amount("blood") <= blood_level_safe && H.try_take_nutrition(heal_amount * 4))
-		H.vessel.add_reagent("blood", heal_amount)//instead of IB healing, they regenerate blood a lot faster
+	if(H.blood_holder.get_total_volume() <= blood_level_safe && H.try_take_nutrition(heal_amount * 4))
+		H.regen_blood(heal_amount)
 

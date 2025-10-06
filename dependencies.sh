@@ -7,18 +7,29 @@
 #Final authority on what's required to fully build the project
 
 # byond version
-export BYOND_MAJOR=515
-export BYOND_MINOR=1636
+export BYOND_MAJOR=516
+export BYOND_MINOR=1659
 
 #rust_g git tag
 export RUST_G_VERSION=3.0.0-experimental-graph-ops
 
 #node version
-export NODE_VERSION=20
-export NODE_VERSION_PRECISE=20.15.1
+export NODE_VERSION_LTS=22.19.0
 
 # SpacemanDMM git tag
-export SPACEMAN_DMM_VERSION=suite-1.8
+export SPACEMAN_DMM_VERSION=suite-1.10
 
 # Python version for mapmerge and other tools
-export PYTHON_VERSION=3.9.0
+export PYTHON_VERSION=3.12.0
+
+# MariaDB version
+export MARIADB_VERSION=11.8.2
+
+# Flyway version
+export FLYWAY_VERSION=11.0.1
+
+#hypnagogic repo
+export CUTTER_REPO=spacestation13/hypnagogic
+
+#hypnagogic git tag
+export CUTTER_VERSION=v4.0.0

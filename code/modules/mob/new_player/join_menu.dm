@@ -188,7 +188,7 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 		. = max(hpc, epc)
 */
 
-/datum/join_menu/ui_act(action, list/params, datum/tgui/ui)
+/datum/join_menu/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	var/mob/new_player/N = usr
 	if(!istype(N))

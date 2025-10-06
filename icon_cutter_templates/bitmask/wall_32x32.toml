@@ -1,0 +1,5 @@
+template = "bitmask/diagonal_32x32"
+# output_name = "wall"
+
+[cut_pos]
+y = 5

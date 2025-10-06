@@ -49,6 +49,8 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 
 	var/static/datum/map_level/reservation
 
+	// todo: per-test reservations. some tests like atmos really should be isolated.
+
 /proc/cmp_unit_test_priority(datum/unit_test/a, datum/unit_test/b)
 	return initial(a.priority) - initial(b.priority)
 
@@ -218,4 +220,4 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 /datum/map_level/unit_tests
 	id = "__UnitTestLevel"
 	name = "Unit Tests Zone"
-	absolute_path = "maps/templates/unit_tests.dmm"
+	path = "maps/templates/unit_tests.dmm"

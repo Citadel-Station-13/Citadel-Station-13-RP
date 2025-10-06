@@ -1,7 +1,7 @@
 // Mostly for debugging table connections
 // This file is not #included in the .dme.
 
-/datum/material/debug
+/datum/prototype/material/debug
 	name = "debugium"
 	id = "debug"
 

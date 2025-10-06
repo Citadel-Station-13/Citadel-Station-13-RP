@@ -1,7 +1,7 @@
-/// Convert deciseconds to ticks
-#define DS2TICKS(DS) ((DS)/world.tick_lag)
-/// Convert ticks to deciseconds
-#define TICKS2DS(T) ((T) TICKS)
+#define MILLISECONDS *0.01
+
+#define DECISECONDS *1 //the base unit all of these defines are scaled by, because byond uses that as a unit of measurement for some fucking reason
+
 #define SECOND *10
 #define SECONDS *10
 
@@ -17,11 +17,18 @@
 #define TICK *world.tick_lag
 #define TICKS *world.tick_lag
 
+/// Convert deciseconds to ticks
+#define DS2TICKS(DS) ((DS)/world.tick_lag)
+/// Convert ticks to deciseconds
+#define TICKS2DS(T) ((T) TICKS)
+
+#define MS2DS(T) ((T) MILLISECONDS)
+
 #define GAMETIMESTAMP(format, wtime) time2text(wtime, format)
 #define WORLDTIME2TEXT(format) GAMETIMESTAMP(format, world.time)
 #define WORLDTIMEOFDAY2TEXT(format) GAMETIMESTAMP(format, world.timeofday)
 #define TIME_STAMP(format, showds) showds ? "[WORLDTIMEOFDAY2TEXT(format)]:[world.timeofday % 10]" : WORLDTIMEOFDAY2TEXT(format)
-#define STATION_TIME(display_only, wtime) ((((wtime - SSticker.SSticker.round_start_time) * SSticker.station_time_rate_multiplier) + SSticker.gametime_offset) % 864000) - (display_only? GLOB.timezoneOffset : 0)
+#define STATION_TIME(display_only, wtime) ((((wtime - SSticker.SSticker.round_start_time) * SSticker.station_time_rate_multiplier) + SSticker.gametime_offset) % 864000)
 #define STATION_TIME_TIMESTAMP(format, wtime) time2text(STATION_TIME(TRUE, wtime), format)
 
 #define JANUARY		1

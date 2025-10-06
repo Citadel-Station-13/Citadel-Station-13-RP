@@ -6,42 +6,43 @@
 	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_LASER
 	eyeblur = 2
-	impact_sounds = null
+	impact_sound = null
 
 /obj/projectile/beam/weaklaser
 	name = "weak laser"
 	icon_state = "laser"
 	fire_sound = 'sound/weapons/weaponsounds_laserweak.ogg'
 	damage_force = 15
+	damage_tier = 3
 
 /obj/projectile/beam/smalllaser
 	damage_force = 25
+	damage_tier = 3.25
 	fire_sound = 'sound/weapons/weaponsounds_laserweak.ogg'
 
 /obj/projectile/beam/burstlaser
 	damage_force = 30
+	damage_tier = 3.5
 	fire_sound = 'sound/weapons/weaponsounds_lasermid.ogg'
-	armor_penetration = 10
-
 
 /obj/projectile/beam/midlaser
 	damage_force = 40
+	damage_tier = 3.75
 	fire_sound = 'sound/weapons/weaponsounds_lasermid.ogg'
-	armor_penetration = 10
 
 /obj/projectile/beam/heavylaser
 	name = "heavy laser"
 	icon_state = "heavylaser"
 	fire_sound = 'sound/weapons/weaponsounds_laserstrong.ogg'
 	damage_force = 60
-	armor_penetration = 30
+	damage_tier = 4.5
 	light_range = 3
 	light_power = 1
 	light_color = "#FF0D00"
 
-	muzzle_type = /obj/effect/projectile/muzzle/laser_heavy
-	tracer_type = /obj/effect/projectile/tracer/laser_heavy
-	impact_type = /obj/effect/projectile/impact/laser_heavy
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/laser_heavy
+	legacy_tracer_type = /obj/effect/projectile/tracer/laser_heavy
+	legacy_impact_type = /obj/effect/projectile/impact/laser_heavy
 
 /obj/projectile/beam/heavylaser/fakeemitter
 	name = "emitter beam"
@@ -50,13 +51,13 @@
 	light_color = "#00CC33"
 	excavation_amount = 140	// 2 shots to dig a standard rock turf. Superior due to being a mounted tool beam, to make it actually viable.
 
-	muzzle_type = /obj/effect/projectile/muzzle/emitter
-	tracer_type = /obj/effect/projectile/tracer/emitter
-	impact_type = /obj/effect/projectile/impact/emitter
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/emitter
+	legacy_tracer_type = /obj/effect/projectile/tracer/emitter
+	legacy_impact_type = /obj/effect/projectile/impact/emitter
 
 /obj/projectile/beam/heavylaser/cannon
-	damage_force = 80
-	armor_penetration = 45
+	damage_force = 60
+	damage_tier = 5
 	light_color = "#FF0D00"
 
 /obj/projectile/beam/xray
@@ -64,47 +65,62 @@
 	icon_state = "xray"
 	fire_sound = 'sound/weapons/eluger.ogg'
 	damage_force = 30
-	armor_penetration = 50
+	damage_tier = 5
 	light_color = "#00CC33"
 
-	muzzle_type = /obj/effect/projectile/muzzle/xray
-	tracer_type = /obj/effect/projectile/tracer/xray
-	impact_type = /obj/effect/projectile/impact/xray
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/xray
+	legacy_tracer_type = /obj/effect/projectile/tracer/xray
+	legacy_impact_type = /obj/effect/projectile/impact/xray
 
 /obj/projectile/beam/gamma
 	name = "gamma beam"
 	icon_state = "xray"
 	fire_sound = 'sound/weapons/eluger.ogg'
 	damage_force = 10
-	armor_penetration = 90
+	damage_tier = 6
 	irradiate = 20
 	light_color = "#00CC33"
 
-	muzzle_type = /obj/effect/projectile/muzzle/xray
-	tracer_type = /obj/effect/projectile/tracer/xray
-	impact_type = /obj/effect/projectile/impact/xray
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/xray
+	legacy_tracer_type = /obj/effect/projectile/tracer/xray
+	legacy_impact_type = /obj/effect/projectile/impact/xray
 
 /obj/projectile/beam/cyan
 	name = "cyan beam"
 	icon_state = "cyan"
 	fire_sound = 'sound/weapons/weaponsounds_alienlaser.ogg'
 	damage_force = 40
+	damage_tier = 4
 	light_color = "#00C6FF"
 
-	muzzle_type = /obj/effect/projectile/muzzle/laser_omni
-	tracer_type = /obj/effect/projectile/tracer/laser_omni
-	impact_type = /obj/effect/projectile/impact/laser_omni
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/laser_omni
+	legacy_tracer_type = /obj/effect/projectile/tracer/laser_omni
+	legacy_impact_type = /obj/effect/projectile/impact/laser_omni
+
+/obj/projectile/beam/alpha_rad //Alpha Radiation is powerful but has poor penetration
+	name = "alpha beam"
+	icon_state = "pink"
+	fire_sound = 'sound/weapons/eluger.ogg'
+	damage_force = 60
+	damage_tier = 3
+	irradiate = 200
+	light_color = "#ff00dd"
+
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/laser_pink
+	legacy_tracer_type = /obj/effect/projectile/tracer/laser_pink
+	legacy_impact_type = /obj/effect/projectile/impact/laser_pink
 
 /obj/projectile/beam/weak
 	name = "weak cyan beam"
 	icon_state = "cyan"
 	fire_sound = 'sound/weapons/Dissolverray.ogg'
 	damage_force = 20
+	damage_tier = 2.75
 	light_color = "#74b1c2"
 
-	muzzle_type = /obj/effect/projectile/muzzle/laser_omni
-	tracer_type = /obj/effect/projectile/tracer/laser_omni
-	impact_type = /obj/effect/projectile/impact/laser_omni
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/laser_omni
+	legacy_tracer_type = /obj/effect/projectile/tracer/laser_omni
+	legacy_impact_type = /obj/effect/projectile/impact/laser_omni
 
 /obj/projectile/beam/antigravbeamwraith
 	name = "dark energy beam"
@@ -116,22 +132,22 @@
 	irradiate= 5 //Scifi Antigrav bullshit side effect
 	light_color = "#8902f0" //Purple
 
-	muzzle_type = /obj/effect/projectile/muzzle/darkmatter
-	tracer_type = /obj/effect/projectile/tracer/darkmatter
-	impact_type = /obj/effect/projectile/impact/darkmatter
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/darkmatter
+	legacy_tracer_type = /obj/effect/projectile/tracer/darkmatter
+	legacy_impact_type = /obj/effect/projectile/impact/darkmatter
 
 /obj/projectile/beam/emitter
 	name = "emitter beam"
 	icon_state = "emitter"
 	fire_sound = 'sound/weapons/emitter.ogg'
 	damage_force = 40
-	armor_penetration = 70
+	damage_tier = 5
 	light_color = "#00CC33"
 	excavation_amount = 70 // 3 shots to mine a turf
 
-	muzzle_type = /obj/effect/projectile/muzzle/emitter
-	tracer_type = /obj/effect/projectile/tracer/emitter
-	impact_type = /obj/effect/projectile/impact/emitter
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/emitter
+	legacy_tracer_type = /obj/effect/projectile/tracer/emitter
+	legacy_impact_type = /obj/effect/projectile/impact/emitter
 
 /obj/projectile/beam/lasertag
 	name = "lasertag beam"
@@ -146,9 +162,9 @@
 	icon_state = "bluelaser"
 	light_color = "#0066FF"
 
-	muzzle_type = /obj/effect/projectile/muzzle/laser_blue
-	tracer_type = /obj/effect/projectile/tracer/laser_blue
-	impact_type = /obj/effect/projectile/impact/laser_blue
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/laser_blue
+	legacy_tracer_type = /obj/effect/projectile/tracer/laser_blue
+	legacy_impact_type = /obj/effect/projectile/impact/laser_blue
 
 /obj/projectile/beam/lasertag/blue/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
@@ -176,9 +192,9 @@
 	icon_state = "omnilaser"
 	light_color = "#00C6FF"
 
-	muzzle_type = /obj/effect/projectile/muzzle/laser_omni
-	tracer_type = /obj/effect/projectile/tracer/laser_omni
-	impact_type = /obj/effect/projectile/impact/laser_omni
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/laser_omni
+	legacy_tracer_type = /obj/effect/projectile/tracer/laser_omni
+	legacy_impact_type = /obj/effect/projectile/impact/laser_omni
 
 /obj/projectile/beam/lasertag/omni/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
@@ -194,39 +210,42 @@
 	icon_state = "xray"
 	fire_sound = 'sound/weapons/gauss_shoot.ogg'
 	damage_force = 60
-	armor_penetration = 10
+	damage_tier = 5
 	light_color = "#00CC33"
 
-	muzzle_type = /obj/effect/projectile/muzzle/xray
-	tracer_type = /obj/effect/projectile/tracer/xray
-	impact_type = /obj/effect/projectile/impact/xray
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/xray
+	legacy_tracer_type = /obj/effect/projectile/tracer/xray
+	legacy_impact_type = /obj/effect/projectile/impact/xray
 
 /obj/projectile/beam/stun
 	name = "stun beam"
 	icon_state = "stun"
 	fire_sound = 'sound/weapons/Taser.ogg'
-	nodamage = 1
-	taser_effect = 1
-	agony = 40
-	damage_type = DAMAGE_TYPE_HALLOSS
+	nodamage = TRUE
+	damage_force = 0
 	light_color = "#FFFFFF"
-	impact_sounds = null
 
 	combustion = FALSE
 
-	muzzle_type = /obj/effect/projectile/muzzle/stun
-	tracer_type = /obj/effect/projectile/tracer/stun
-	impact_type = /obj/effect/projectile/impact/stun
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/stun
+	legacy_tracer_type = /obj/effect/projectile/tracer/stun
+	legacy_impact_type = /obj/effect/projectile/impact/stun
+
+	base_projectile_effects = list(
+		/datum/projectile_effect/electrical_impulse{
+			shock_agony = 40;
+		}
+	)
 
 /obj/projectile/beam/stun/weak
 	name = "weak stun beam"
 	icon_state = "stun"
-	agony = 25
+	damage_inflict_agony = 27.5
 
 /obj/projectile/beam/stun/med
 	name = "stun beam"
 	icon_state = "stun"
-	agony = 30
+	damage_inflict_agony = 40
 
 //Disabler Beams - It didn't feel right just to recolor Stun beams. We have uses for them still.
 /obj/projectile/beam/disabler
@@ -234,45 +253,44 @@
 	icon_state = "lightning"
 	fire_sound = 'sound/weapons/Taser.ogg'
 	nodamage = 1
-	taser_effect = 1
-	agony = 30
+	damage_inflict_agony = 30
 	damage_type = DAMAGE_TYPE_HALLOSS
 	light_color = "#FFFFFF"
 
 	combustion = FALSE
 
-	muzzle_type = /obj/effect/projectile/muzzle/lightning
-	tracer_type = /obj/effect/projectile/tracer/lightning
-	impact_type = /obj/effect/projectile/impact/lightning
-	impact_sounds = null
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/lightning
+	legacy_tracer_type = /obj/effect/projectile/tracer/lightning
+	legacy_impact_type = /obj/effect/projectile/impact/lightning
+	impact_sound = null
 
 /obj/projectile/beam/disabler/weak
 	name = "weak disabler beam"
 	icon_state = "lightning"
-	agony = 25
+	damage_inflict_agony = 25
 
 /obj/projectile/beam/disabler/strong
 	name = "strong disabler beam"
 	icon_state = "lightning"
-	agony = 40
+	damage_inflict_agony = 40
 
 /obj/projectile/beam/stun/disabler
 	name = "disabler beam"
 	icon_state = "stun"
-	taser_effect = 0
-	agony = 20
 
-	muzzle_type = /obj/effect/projectile/muzzle/laser_omni
-	tracer_type = /obj/effect/projectile/tracer/laser_omni
-	impact_type = /obj/effect/projectile/impact/laser_omni
+	damage_inflict_agony = 20
+
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/laser_omni
+	legacy_tracer_type = /obj/effect/projectile/tracer/laser_omni
+	legacy_impact_type = /obj/effect/projectile/impact/laser_omni
 
 /obj/projectile/beam/stun/disabler/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	if(!(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT))
 		return
-	if(istype(target, /mob/living/silicon/robot) && prob(agony))
+	if(istype(target, /mob/living/silicon/robot) && prob(damage_inflict_agony))
 		var/mob/living/silicon/robot/R = target
-		var/drainamt = agony * (rand(5, 15) / 10)
+		var/drainamt = damage_inflict_agony * (rand(5, 15) / 10)
 		// 100 to 300 drain
 		R.drain_energy(DYNAMIC_CELL_UNITS_TO_KJ(drainamt * 10))
 		if(istype(firer, /mob/living/silicon/robot)) // Mischevious sappers, the swarm drones are.
@@ -282,15 +300,22 @@
 /obj/projectile/beam/shock
 	name = "shock beam"
 	icon_state = "lightning"
-	damage_type = DAMAGE_TYPE_ELECTROCUTE
 
-	muzzle_type = /obj/effect/projectile/muzzle/lightning
-	tracer_type = /obj/effect/projectile/tracer/lightning
-	impact_type = /obj/effect/projectile/impact/lightning
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/lightning
+	legacy_tracer_type = /obj/effect/projectile/tracer/lightning
+	legacy_impact_type = /obj/effect/projectile/impact/lightning
 
-	damage_force = 30
-	agony = 15
+	damage_force = 0
 	eyeblur = 2
+
+	base_projectile_effects = list(
+		/datum/projectile_effect/electrical_impulse{
+			shock_energy = 100;
+			shock_damage = 30;
+			shock_agony = 15;
+			shock_flags = ELECTROCUTE_ACT_FLAG_DISTRIBUTE;
+		},
+	)
 
 /obj/projectile/beam/excavation
 	name = "excavation beam"
@@ -300,19 +325,18 @@
 	damage_force = 1 //mining tool
 	excavation_amount = 1000	// 1 shot to dig a standard rock turf. Made for mining. Should be able to consistently one hit rocks now
 
-	muzzle_type = /obj/effect/projectile/muzzle/emitter
-	tracer_type = /obj/effect/projectile/tracer/emitter
-	impact_type = /obj/effect/projectile/impact/emitter
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/emitter
+	legacy_tracer_type = /obj/effect/projectile/tracer/emitter
+	legacy_impact_type = /obj/effect/projectile/impact/emitter
 
 /obj/projectile/beam/pointdefense
 	name = "point defense salvo"
 	icon_state = "laser"
 	damage_force = 15
-	damage_type = DAMAGE_TYPE_ELECTROCUTE //You should be safe inside a voidsuit
 	light_color = "#A9980A"
 
 	excavation_amount = 200 // Good at shooting rocks
 
-	muzzle_type = /obj/effect/projectile/muzzle/laser_omni
-	tracer_type = /obj/effect/projectile/tracer/laser_omni
-	impact_type = /obj/effect/projectile/impact/laser_omni
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/laser_omni
+	legacy_tracer_type = /obj/effect/projectile/tracer/laser_omni
+	legacy_impact_type = /obj/effect/projectile/impact/laser_omni

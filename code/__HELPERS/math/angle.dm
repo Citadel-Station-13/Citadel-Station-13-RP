@@ -52,3 +52,16 @@
 		. += 180
 	else if(x < 0)
 		. += 360
+
+/**
+ * get angle from center of bounding box of entity A to entity B
+ *
+ * * entity A and entity B may be atoms or movables or both
+ * * does not support step x/y values!
+ *
+ * @return angle between A and B, as degrees **clockwise from north**
+ */
+/proc/get_centered_entity_tile_angle(atom/A, atom/B)
+	var/dx = B.x * WORLD_ICON_SIZE - A.x * WORLD_ICON_SIZE
+	var/dy = B.y * WORLD_ICON_SIZE - A.y * WORLD_ICON_SIZE
+	return arctan(dy, dx)

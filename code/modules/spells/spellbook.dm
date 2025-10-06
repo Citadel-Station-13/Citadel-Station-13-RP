@@ -78,7 +78,7 @@
 		// END AUTOFIX
 		if(op)
 			dat += "<A href='byond://?src=\ref[src];spell_choice=rememorize'>Re-memorize Spells</A><BR>"
-	user << browse(dat, "window=radio")
+	user << browse(HTML_SKELETON(dat), "window=radio")
 	onclose(user, "radio")
 	return
 
@@ -204,7 +204,7 @@
 //							temp = "You have learned curse of the horseman."
 						if("mentalfocus")
 							feedback_add_details("wizard_spell_learned","MF") //please do not change the abbreviation to keep data processing consistent. Add a unique id to any new spells
-							new /obj/item/gun/energy/staff/focus(get_turf(H))
+							new /obj/item/gun/projectile/energy/staff/focus(get_turf(H))
 							temp = "An artefact that channels the will of the user into destructive bolts of force."
 							max_uses--
 						if("soulstone")

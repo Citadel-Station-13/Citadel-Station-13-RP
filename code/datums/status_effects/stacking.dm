@@ -8,7 +8,7 @@
 /datum/status_effect/stacking
 	abstract_type = /datum/status_effect/stacking
 
-	/// decay amount - this can be negative.
+	/// decay amount when duration expires - this can be negative.
 	var/decay_amount = 1
 	/// stacks
 	var/stacks = 1
@@ -63,7 +63,7 @@
  *
  * @return stacks applied
  */
-/mob/proc/apply_stacking_effect(datum/status_effect/stacking/path, stacks, maximum)
+/mob/proc/apply_stacking_status_effect(datum/status_effect/stacking/path, stacks, maximum)
 	if(isnull(maximum))
 		maximum = stacks // default no additional stacking
 	if(!ispath(path, /datum/status_effect/stacking))
@@ -82,7 +82,7 @@
  *
  * @return stacks left
  */
-/mob/proc/remove_stacking_effect(datum/status_effect/stacking/path, stacks)
+/mob/proc/remove_stacking_status_effect(datum/status_effect/stacking/path, stacks)
 	if(!ispath(path, /datum/status_effect/stacking))
 		CRASH("[path] is not a stacking effect.")
 	ASSERT(stacks > 0)

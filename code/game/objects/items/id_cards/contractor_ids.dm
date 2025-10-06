@@ -1,14 +1,17 @@
 /obj/item/card/id/contractor
 	var/employing_coperation = ""
-	var/extern_title = ""
+	//var/extern_title = ""
+	//There are no faction specific alt titles, so they don't have any external title, and are just using the stations
 	//var/expiry_date = ""
 	icon_state = "chit"
 
 /obj/item/card/id/contractor/dat()
-	. += "<b>Employing Company:</b> [employing_coperation]"
-	. += "<b>External Job Title:</b> [extern_title]"
+	var/dat = list()
+	dat += "<b>Employing Company:</b> [employing_coperation]"
+	//. += "<b>External Job Title:</b> [extern_title]"
 	// . += "<b>Expiration Date:</b> [expiry_date]"
-	. = ..()
+	dat += ..()
+	return dat
 
 /obj/item/card/id/contractor/update_icon()
 	return 0
@@ -39,8 +42,8 @@
 
 /obj/item/card/id/contractor/set_registered_rank(rank = src.rank, assignment)
 	src.rank = rank
-	src.extern_title = assignment
-	src.assignment = rank
+	//src.extern_title = assignment
+	src.assignment = assignment
 	update_icon_state()
 	update_name()
 

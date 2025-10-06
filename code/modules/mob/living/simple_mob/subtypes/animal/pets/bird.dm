@@ -29,7 +29,7 @@
 	legacy_melee_damage_upper = 3
 	randomized = TRUE
 
-	movement_cooldown = 0
+	movement_base_speed = 6.66
 	hovering = TRUE // Birds can fly.
 	softfall = TRUE
 	parachuting = TRUE

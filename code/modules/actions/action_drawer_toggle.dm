@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 INITIALIZE_IMMEDIATE(/atom/movable/screen/movable/action_drawer_toggle)
 /atom/movable/screen/movable/action_drawer_toggle

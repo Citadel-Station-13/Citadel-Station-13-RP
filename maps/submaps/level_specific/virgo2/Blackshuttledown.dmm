@@ -119,8 +119,8 @@
 /area/submap/virgo2/Blackshuttledown)
 "av" = (
 /obj/structure/table/steel,
-/obj/item/gun/ballistic/automatic/wt550,
-/obj/item/gun/ballistic/automatic/p90,
+/obj/item/gun/projectile/ballistic/automatic/wt550,
+/obj/item/gun/projectile/ballistic/automatic/p90,
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
 "aw" = (
@@ -157,7 +157,7 @@
 /area/submap/virgo2/Blackshuttledown)
 "aC" = (
 /obj/structure/table/steel,
-/obj/item/gun/ballistic/automatic/c20r,
+/obj/item/gun/projectile/ballistic/automatic/c20r,
 /obj/machinery/light/small{
 	dir = 4;
 	pixel_y = 0
@@ -351,7 +351,7 @@
 /area/submap/virgo2/Blackshuttledown)
 "bl" = (
 /obj/structure/table/steel,
-/obj/item/gun/ballistic/automatic/c20r,
+/obj/item/gun/projectile/ballistic/automatic/c20r,
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
 "bm" = (
@@ -365,7 +365,7 @@
 /area/submap/virgo2/Blackshuttledown)
 "bo" = (
 /obj/structure/table/steel,
-/obj/item/gun/ballistic/pistol,
+/obj/item/gun/projectile/ballistic/pistol,
 /obj/machinery/light/small{
 	dir = 4;
 	pixel_y = 0
@@ -385,8 +385,8 @@
 /area/submap/virgo2/Blackshuttledown)
 "br" = (
 /obj/structure/table/steel,
-/obj/item/gun/ballistic/pistol,
-/obj/item/gun/ballistic/shotgun/pump,
+/obj/item/gun/projectile/ballistic/pistol,
+/obj/item/gun/projectile/ballistic/shotgun/pump,
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
 "bs" = (

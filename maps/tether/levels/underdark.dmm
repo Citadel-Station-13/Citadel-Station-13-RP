@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/simulated/mineral/virgo3b/rich,
+/turf/simulated/mineral/rich,
 /area/mine/unexplored/underdark)
 "b" = (
 /obj/structure/cable/green{
@@ -63,7 +63,7 @@
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored/underdark)
 "w" = (
-/turf/unsimulated/mineral/virgo3b,
+/turf/unsimulated/wall/mineral,
 /area/mine/explored/underdark)
 "x" = (
 /obj/item/tool/wrench,
@@ -193,7 +193,7 @@
 /turf/simulated/floor/outdoors/dirt/virgo3b,
 /area/mine/explored/underdark)
 "X" = (
-/turf/simulated/mineral/virgo3b/rich,
+/turf/simulated/mineral/rich,
 /area/mine/explored/underdark)
 "Y" = (
 /obj/item/bone,

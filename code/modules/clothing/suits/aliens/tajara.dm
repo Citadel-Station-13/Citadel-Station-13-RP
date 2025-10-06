@@ -28,7 +28,6 @@
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	allowed = list(/obj/item/gun,/obj/item/material/sword)
 	inv_hide_flags = HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
-	species_restricted = list(SPECIES_TAJ)
 	armor_type = /datum/armor/general/medieval
 	weight = ITEM_WEIGHT_TAJARAN_SWORDSMAN_ARMOR
 	encumbrance = ITEM_ENCUMBRANCE_TAJARAN_SWORDSMAN_ARMOR
@@ -148,6 +147,7 @@
 	icon_override = 'icons/mob/clothing/species/tajaran/coats.dmi'
 	icon_state = "hunter_coat"
 	item_state = "hunter_coat"
+	armor_type = /datum/armor/station/padded
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 
 /obj/item/clothing/suit/storage/tajaran/jacket/archeologist
@@ -165,7 +165,6 @@
 	icon_override = 'icons/mob/clothing/species/tajaran/coats.dmi'
 	icon_state = "tajscrubs"
 	hoodtype = /obj/item/clothing/head/hood/tajaran/surgery
-	species_restricted = list(SPECIES_TAJ)
 
 //Cloaks
 /obj/item/clothing/suit/storage/hooded/tajaran/cloak
@@ -243,7 +242,6 @@
 	icon_state = "tajscrubs_hood"
 	body_cover_flags = HEAD
 	inv_hide_flags = HIDEEARS|BLOCKHAIR
-	species_restricted = list(SPECIES_TAJ)
 
 /obj/item/clothing/head/hood/tajaran/cloak/amohda
 	name = "Amohdan cloak hood"

@@ -48,7 +48,6 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/door_timer/LateInitialize()
-	. = ..()
 	if(id != null)
 		for(var/obj/machinery/door/window/brigdoor/M in urange(20, src))
 			if (M.id == id)
@@ -229,7 +228,7 @@
 			break
 	return data
 
-/obj/machinery/door_timer/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/door_timer/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return
 

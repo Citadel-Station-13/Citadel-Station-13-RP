@@ -34,7 +34,7 @@
 		return
 	.["latheName"] = lathe.name
 	.["dynamicButtons"] = lathe.ui_custom_options()
-	.["materialsContext"] = SSmaterials.tgui_materials_context()
+	.["materialsContext"] = SSmaterials.tgui_materials_context(full=TRUE) //this is a full materials context now
 	.["speedMultiplier"] = lathe.speed_multiplier
 	.["efficiencyMultiplier"] = lathe.efficiency_multiplier
 	.["powerMultiplier"] = lathe.power_multiplier
@@ -44,7 +44,7 @@
 	.["queue"] = ui_queue_data()
 	.["ingredients"] = isnull(lathe.stored_items)? list() : ui_ingredients_available(lathe.stored_items)
 
-/datum/tgui_module/lathe_control/ui_act(action, list/params, datum/tgui/ui)
+/datum/tgui_module/lathe_control/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -58,7 +58,7 @@
 			var/immediate = text2num(params["start"])
 			var/list/material_parts = params["materials"]
 			var/list/item_parts = params["items"]
-			var/datum/design/D = SSresearch.fetch_design(id)
+			var/datum/prototype/design/D = RSdesigns.fetch(id)
 			if(!lathe.has_design(D))
 				return TRUE
 			lathe.enqueue(D, amount, material_parts, item_parts, immediate)
@@ -81,7 +81,7 @@
 			var/index = text2num(params["index"])
 			var/new_amount = text2num(params["amount"])
 			var/datum/lathe_queue_entry/entry = SAFEINDEXACCESS(lathe.queue, index)
-			var/datum/design/D = SSresearch.fetch_design(entry.design_id)
+			var/datum/prototype/design/D = RSdesigns.fetch(entry.design_id)
 			if(isnull(entry))
 				return FALSE
 			if(isnull(new_amount) || (new_amount <= 0))
@@ -107,7 +107,7 @@
 			var/amount = text2num(params["amount"]) || INFINITY
 			if(amount <= 0)
 				return FALSE
-			lathe.reagents.remove_reagent(params["id"], amount)
+			lathe.stored_reagents.remove_reagent(params["id"], amount)
 			ui_reagents_update()
 			return TRUE
 		if("ejectItem")
@@ -125,15 +125,22 @@
 	immediate += /datum/asset_pack/spritesheet/materials
 	return ..()
 
-/datum/tgui_module/lathe_control/proc/ui_design_data(datum/design/design)
-	var/list/datum/design/designs = islist(design)? design : list(design)
+/datum/tgui_module/lathe_control/proc/ui_design_data(datum/prototype/design/design)
+	var/list/datum/prototype/design/designs = islist(design)? design : list(design)
 	var/list/built = list()
 	var/list/collated = list()
+	var/list/collated_subcat = list()
 	if(!islist(designs))
 		design = list(design)
-	for(var/datum/design/D as anything in designs)
+	for(var/datum/prototype/design/D as anything in designs)
 		built[D.id] = D.ui_data_list()
-		collated[D.category] = TRUE
+		if(islist(D.category))
+			for(var/elem in D.category)
+				collated[elem] = TRUE
+				LAZYDISTINCTADD(collated_subcat[elem], COERCE_OPTIONS_LIST(D.subcategory))
+		else
+			collated[D.category] = TRUE
+			LAZYDISTINCTADD(collated_subcat[D.category], COERCE_OPTIONS_LIST(D.subcategory))
 	var/list/flatten = list()
 	for(var/key in collated)
 		flatten += key
@@ -141,16 +148,17 @@
 	return list(
 		"instances" = built,
 		"categories" = collated,
+		"subcategories" = collated_subcat,
 	)
 
-/datum/tgui_module/lathe_control/proc/ui_design_add(list/datum/design/designs)
+/datum/tgui_module/lathe_control/proc/ui_design_add(list/datum/prototype/design/designs)
 	if(design_update_queued)
 		return
 	addtimer(CALLBACK(src, PROC_REF(ui_design_update), 1), 0)
 
 	design_update_queued = TRUE
 
-/datum/tgui_module/lathe_control/proc/ui_design_remove(list/datum/design/designs)
+/datum/tgui_module/lathe_control/proc/ui_design_remove(list/datum/prototype/design/designs)
 	if(design_update_queued)
 		return
 	addtimer(CALLBACK(src, PROC_REF(ui_design_update), 1), 0)

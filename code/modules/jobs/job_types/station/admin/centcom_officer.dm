@@ -34,6 +34,6 @@
 	uniform = /obj/item/clothing/under/rank/centcom
 	l_ear = /obj/item/radio/headset/centcom
 	shoes = /obj/item/clothing/shoes/laceup
-	belt = /obj/item/gun/energy/pulse_carbine
+	belt = /obj/item/gun/projectile/energy/nt_pulse/carbine
 	gloves = /obj/item/clothing/gloves/white
 	head = /obj/item/clothing/head/beret/centcom/officer

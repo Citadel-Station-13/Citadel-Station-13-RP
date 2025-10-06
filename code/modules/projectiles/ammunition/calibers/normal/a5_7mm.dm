@@ -1,4 +1,5 @@
 /datum/ammo_caliber/a5_7mm
+	id = "a5_7mm"
 	caliber = "5.7x28mm"
 
 //* Casings
@@ -7,7 +8,7 @@
 	icon = 'icons/modules/projectiles/casings/slim.dmi'
 	icon_state = "small"
 	desc = "A 5.7x28mm bullet casing."
-	caliber = /datum/ammo_caliber/a5_7mm
+	casing_caliber = /datum/ammo_caliber/a5_7mm
 	projectile_type = /obj/projectile/bullet/pistol/lap
 	materials_base = list(MAT_STEEL = 30, MAT_COPPER = 30)
 
@@ -47,17 +48,17 @@
 
 /obj/item/ammo_magazine/a5_7mm/nt_les/ap
 	name = "magazine (5.7x28mm armor piercing)"
-	rendering_static_overlay = "ap"
+	rendering_static_overlay = "ntles-ap"
 	ammo_preload = /obj/item/ammo_casing/a5_7mm/ap
 
 /obj/item/ammo_magazine/a5_7mm/nt_les/hp
 	name = "magazine (5.7x28mm hollow-point)"
-	rendering_static_overlay = "hp"
+	rendering_static_overlay = "ntles-hp"
 	ammo_preload = /obj/item/ammo_casing/a5_7mm/hp
 
 /obj/item/ammo_magazine/a5_7mm/nt_les/hunter
 	name = "magazine (5.7x28mm hunter)"
-	rendering_static_overlay = "hunter"
+	rendering_static_overlay = "ntles-hunter"
 	ammo_preload = /obj/item/ammo_casing/a5_7mm/hunter
 
 /obj/item/ammo_magazine/a5_7mm/nt_les/empty
@@ -71,16 +72,16 @@
 
 /obj/item/ammo_magazine/a5_7mm/nt_les/highcap/ap
 	name = "high capacity magazine (5.7x28mm armor piercing)"
-	rendering_static_overlay = "ap"
+	rendering_static_overlay = "ntles-high-ap"
 	ammo_preload = /obj/item/ammo_casing/a5_7mm/ap
 /obj/item/ammo_magazine/a5_7mm/nt_les/highcap/hp
 	name = "high capacity magazine (5.7x28mm hollow-point)"
-	rendering_static_overlay = "hp"
+	rendering_static_overlay = "ntles-high-hp"
 	ammo_preload = /obj/item/ammo_casing/a5_7mm/hp
 
 /obj/item/ammo_magazine/a5_7mm/nt_les/highcap/hunter
 	name = "high capacity magazine (5.7x28mm hunter)"
-	rendering_static_overlay = "hunter"
+	rendering_static_overlay = "ntles-high-hunter"
 	ammo_preload = /obj/item/ammo_casing/a5_7mm/hunter
 
 /obj/item/ammo_magazine/a5_7mm/nt_les/highcap/empty
@@ -99,7 +100,7 @@
 
 /obj/item/ammo_magazine/a5_7mm/harpy_smg/ap
 	name = "NT-SMG-8 magazine (5.7x28mm armor piercing)"
-	rendering_static_overlay = "ap"
+	rendering_static_overlay = "harpy-ap"
 	ammo_preload = /obj/item/ammo_casing/a5_7mm/ap
 
 //Fiveseven mags
@@ -118,17 +119,17 @@
 
 /obj/item/ammo_magazine/a5_7mm/five_seven/ap
 	name = "magazine (5.7x28mm armor piercing)"
-	rendering_static_overlay = "ap"
+	rendering_static_overlay = "fiveseven-ap"
 	ammo_preload = /obj/item/ammo_casing/a5_7mm/ap
 
 /obj/item/ammo_magazine/a5_7mm/five_seven/hp
 	name = "magazine (5.7x28mm hollow-point)"
-	rendering_static_overlay = "hp"
+	rendering_static_overlay = "fiveseven-hp"
 	ammo_preload = /obj/item/ammo_casing/a5_7mm/hp
 
 /obj/item/ammo_magazine/a5_7mm/five_seven/hunter
 	name = "magazine (5.7x28mm hunter)"
-	rendering_static_overlay = "hunter"
+	rendering_static_overlay = "fiveseven-hunter"
 	ammo_preload = /obj/item/ammo_casing/a5_7mm/hunter
 
 /obj/item/ammo_magazine/a5_7mm/five_seven/empty
@@ -143,16 +144,16 @@
 
 /obj/item/ammo_magazine/a5_7mm/five_seven/highcap/ap
 	name = "high capacity magazine (5.7x28mm armor piercing)"
-	rendering_static_overlay = "ap"
+	rendering_static_overlay = "fiveseven-high-ap"
 	ammo_preload = /obj/item/ammo_casing/a5_7mm/ap
 /obj/item/ammo_magazine/a5_7mm/five_seven/highcap/hp
 	name = "high capacity magazine (5.7x28mm hollow-point)"
-	rendering_static_overlay = "hp"
+	rendering_static_overlay = "fiveseven-high-hp"
 	ammo_preload = /obj/item/ammo_casing/a5_7mm/hp
 
 /obj/item/ammo_magazine/a5_7mm/five_seven/highcap/hunter
 	name = "high capacity magazine (5.7x28mm hunter)"
-	rendering_static_overlay = "hunter"
+	rendering_static_overlay = "fiveseven-high-hunter"
 	ammo_preload = /obj/item/ammo_casing/a5_7mm/hunter
 
 /obj/item/ammo_magazine/a5_7mm/five_seven/highcap/empty
@@ -160,9 +161,11 @@
 
 /obj/item/ammo_magazine/a5_7mm/p90
 	name = "high capacity top mounted magazine (5.7x28mm armor-piercing)"
+	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
 	icon_state = "p90-1"
 	base_icon_state = "p90"
 	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 1
 	ammo_preload = /obj/item/ammo_casing/a5_7mm/ap
 	ammo_max = 50
 

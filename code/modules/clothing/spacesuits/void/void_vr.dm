@@ -49,29 +49,6 @@
 /obj/item/clothing/suit/space/void/explorer
 	desc = "A classy red voidsuit for the needs of any semi-retro-futuristic spaceperson! This one is rather loose fitting."
 	helmet_type = /obj/item/clothing/head/helmet/space/void/explorer
-	species_restricted = list(
-		SPECIES_AKULA,
-		SPECIES_ALRAUNE,
-		SPECIES_APIDAEN,
-		SPECIES_AURIL,
-		SPECIES_DREMACHIR,
-		SPECIES_HUMAN,
-		SPECIES_NEVREAN,
-		SPECIES_RAPALA,
-		SPECIES_SERGAL,
-		SPECIES_SKRELL,
-		SPECIES_TAJ,
-		SPECIES_TESHARI,
-		SPECIES_UNATHI,
-		SPECIES_UNATHI_DIGI,
-		SPECIES_VASILISSAN,
-		SPECIES_VOX,
-		SPECIES_VULPKANIN,
-		SPECIES_XENOCHIMERA,
-		SPECIES_XENOHYBRID,
-		SPECIES_ZORREN_FLAT,
-		SPECIES_ZORREN_HIGH,
-	)
 
 /obj/item/clothing/suit/space/void/explorer/Initialize(mapload)
 	. = ..()
@@ -80,29 +57,6 @@
 
 /obj/item/clothing/head/helmet/space/void/explorer
 	desc = "A helmet that matches a red voidsuit! So classy."
-	species_restricted = list(
-		SPECIES_AKULA,
-		SPECIES_ALRAUNE,
-		SPECIES_APIDAEN,
-		SPECIES_AURIL,
-		SPECIES_DREMACHIR,
-		SPECIES_HUMAN,
-		SPECIES_NEVREAN,
-		SPECIES_RAPALA,
-		SPECIES_SERGAL,
-		SPECIES_SKRELL,
-		SPECIES_TAJ,
-		SPECIES_TESHARI,
-		SPECIES_UNATHI,
-		SPECIES_UNATHI_DIGI,
-		SPECIES_VASILISSAN,
-		SPECIES_VOX,
-		SPECIES_VULPKANIN,
-		SPECIES_XENOCHIMERA,
-		SPECIES_XENOHYBRID,
-		SPECIES_ZORREN_FLAT,
-		SPECIES_ZORREN_HIGH,
-	)
 
 /obj/item/clothing/head/helmet/space/void/explorer/Initialize(mapload)
 	. = ..()

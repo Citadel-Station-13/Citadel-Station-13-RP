@@ -56,7 +56,7 @@
 /obj/item/sleevecard/proc/sleeveInto(var/datum/transhuman/mind_record/MR)
 	infomorph = new(src, src, MR.mindname)
 
-	for(var/datum/language/L in MR.languages)
+	for(var/datum/prototype/language/L in MR.languages)
 		infomorph.add_language(L.name)
 	MR.mind_ref.active = 1 //Well, it's about to be.
 	MR.mind_ref.transfer(infomorph) //Does mind+ckey+client.

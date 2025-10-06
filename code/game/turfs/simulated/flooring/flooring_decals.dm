@@ -1196,6 +1196,70 @@ var/list/floor_decals = list()
 	name = "grass edge"
 	icon_state = "grass_edge_corner"
 
+// Victory colour decals
+
+/obj/effect/floor_decal/corner/navblue
+	name = "navblue corner"
+	color = COLOR_NAV_BLUE
+
+/obj/effect/floor_decal/corner/navblue/diagonal
+	icon_state = "corner_white_diagonal"
+
+/obj/effect/floor_decal/corner/navblue/full
+	icon_state = "corner_white_full"
+
+/obj/effect/floor_decal/corner/navblue/three_quarters
+	icon_state = "corner_white_three_quarters"
+
+/obj/effect/floor_decal/corner/navblue/border
+	icon_state = "bordercolor"
+
+/obj/effect/floor_decal/corner/navblue/bordercorner
+	icon_state = "bordercolorcorner"
+
+/obj/effect/floor_decal/corner/navblue/bordercorner2
+	icon_state = "bordercolorcorner2"
+
+/obj/effect/floor_decal/corner/navblue/borderfull
+	icon_state = "bordercolorfull"
+
+/obj/effect/floor_decal/corner/navblue/bordercee
+	icon_state = "bordercolorcee"
+
+/obj/effect/floor_decal/corner/navblue/halfborder
+	icon_state = "bordercolorhalf"
+
+/obj/effect/floor_decal/corner/navgold
+	name = "navgold corner"
+	color = COLOR_NAV_GOLD
+
+/obj/effect/floor_decal/corner/navgold/diagonal
+	icon_state = "corner_white_diagonal"
+
+/obj/effect/floor_decal/corner/navgold/full
+	icon_state = "corner_white_full"
+
+/obj/effect/floor_decal/corner/navgold/three_quarters
+	icon_state = "corner_white_three_quarters"
+
+/obj/effect/floor_decal/corner/navgold/border
+	icon_state = "bordercolor"
+
+/obj/effect/floor_decal/corner/navgold/bordercorner
+	icon_state = "bordercolorcorner"
+
+/obj/effect/floor_decal/corner/navgold/bordercorner2
+	icon_state = "bordercolorcorner2"
+
+/obj/effect/floor_decal/corner/navgold/borderfull
+	icon_state = "bordercolorfull"
+
+/obj/effect/floor_decal/corner/navgold/bordercee
+	icon_state = "bordercolorcee"
+
+/obj/effect/floor_decal/corner/navgold/halfborder
+	icon_state = "bordercolorhalf"
+
 //! ## VR FILE MERGE ## !//
 
 /obj/effect/floor_decal/flesh

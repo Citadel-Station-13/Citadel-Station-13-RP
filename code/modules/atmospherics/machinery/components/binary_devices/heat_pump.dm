@@ -121,6 +121,7 @@
 	return
 
 /obj/machinery/atmospherics/component/binary/heat_pump/process(delta_time)
+	..()
 	update_icon()
 	if((machine_stat & (NOPOWER|BROKEN)) || !use_power)
 		return
@@ -184,7 +185,7 @@
 /obj/machinery/atmospherics/component/binary/heat_pump/ui_state()
 	return GLOB.physical_state
 
-/obj/machinery/atmospherics/component/binary/heat_pump/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/atmospherics/component/binary/heat_pump/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 	switch(action)

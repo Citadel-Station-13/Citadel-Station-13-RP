@@ -9,7 +9,7 @@
 "bF" = (
 /obj/structure/table/wooden_reinforced,
 /obj/machinery/chemical_dispenser/catering/bar_alc,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "cr" = (
 /obj/structure/table/woodentable,
@@ -18,7 +18,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "cR" = (
 /obj/structure/bed/chair/wood{
@@ -29,7 +29,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "cW" = (
 /mob/living/simple_mob/animal/giant_spider,
@@ -38,30 +38,30 @@
 "cZ" = (
 /obj/structure/table/gamblingtable,
 /obj/item/deck/cards,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "dc" = (
 /obj/structure/bed/chair/wood,
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "dM" = (
 /obj/item/stool/padded,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "eY" = (
 /mob/living/simple_mob/animal/giant_spider/pepper,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "gn" = (
 /obj/machinery/vending/loadout/costume,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "gD" = (
 /mob/living/simple_mob/animal/giant_spider/ion,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "io" = (
 /turf/template_noop,
@@ -69,13 +69,13 @@
 "iQ" = (
 /obj/structure/table/wooden_reinforced,
 /obj/random/cigarettes,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "jW" = (
 /obj/structure/bed/chair/wood{
 	dir = 8
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "kG" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -94,32 +94,32 @@
 "ln" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/reagent_containers/food/drinks/bottle/small/beer,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "lo" = (
 /turf/simulated/floor/carpet/bcarpet,
 /area/class_h/POIs/saloon)
 "lL" = (
 /mob/living/simple_mob/animal/giant_spider/webslinger,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "lW" = (
 /obj/structure/sink/kitchen{
 	name = "sink";
 	pixel_y = 28
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "nK" = (
 /obj/structure/table/wooden_reinforced,
 /obj/structure/reagent_dispensers/beerkeg,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "pU" = (
 /obj/structure/bed/chair/wood{
 	dir = 1
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "qh" = (
 /obj/effect/floor_decal/spline/fancy/wood/corner{
@@ -139,15 +139,15 @@
 	pixel_x = -2;
 	pixel_y = 7
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "rL" = (
 /obj/structure/bed/chair/wood,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "sl" = (
 /obj/machinery/vending/boozeomat,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "td" = (
 /obj/structure/railing{
@@ -157,7 +157,7 @@
 	dir = 8
 	},
 /mob/living/simple_mob/animal/giant_spider/hunter,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "tl" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -183,7 +183,7 @@
 /obj/structure/bed/chair/wood{
 	dir = 4
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "uK" = (
 /obj/structure/bed/chair/wood{
@@ -198,13 +198,13 @@
 	pixel_x = -2;
 	pixel_y = 7
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "wV" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/class_h/explored)
 "xI" = (
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "zg" = (
 /obj/structure/table/woodentable,
@@ -213,12 +213,12 @@
 	},
 /obj/item/lipstick/random,
 /obj/machinery/light/small,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "zO" = (
 /obj/structure/table/wooden_reinforced,
 /obj/random/drinkbottle,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "Bp" = (
 /obj/structure/table/woodentable,
@@ -226,7 +226,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "Dp" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -254,21 +254,21 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "Fd" = (
 /obj/structure/table/bench/wooden,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "Fm" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "Ge" = (
 /obj/machinery/media/jukebox,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "Hz" = (
 /obj/structure/table/woodentable,
@@ -276,13 +276,13 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "HI" = (
 /obj/structure/table/woodentable,
 /obj/machinery/light/small,
 /obj/random/cigarettes,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "HU" = (
 /obj/structure/railing{
@@ -291,18 +291,18 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "IU" = (
 /obj/machinery/light/small/flicker{
 	dir = 8
 	},
 /obj/random/trash_pile,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "Jp" = (
 /mob/living/simple_mob/animal/giant_spider/nurse,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "JY" = (
 /obj/structure/table/woodentable,
@@ -310,7 +310,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "Kd" = (
 /obj/structure/table/woodentable,
@@ -321,18 +321,18 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "Lw" = (
 /obj/structure/simple_door/wood,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "LV" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/storage/box/glasses/mug,
 /obj/item/storage/box/glasses/mug,
 /obj/item/storage/box/glasses/mug,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "Mg" = (
 /obj/structure/railing{
@@ -342,7 +342,7 @@
 	dir = 8
 	},
 /mob/living/simple_mob/animal/giant_spider/nurse,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "NB" = (
 /obj/random/cash,
@@ -359,20 +359,20 @@
 	dir = 4
 	},
 /obj/machinery/light/small/flicker,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "PE" = (
 /obj/structure/girder,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "PG" = (
 /mob/living/simple_mob/animal/giant_spider/phorogenic,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "PU" = (
 /obj/structure/railing,
 /obj/effect/floor_decal/spline/fancy/wood,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "Qs" = (
 /obj/structure/table/wooden_reinforced,
@@ -380,7 +380,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "TY" = (
 /turf/simulated/wall/wood,
@@ -392,11 +392,11 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "UZ" = (
 /mob/living/simple_mob/animal/giant_spider/lurker,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "Vw" = (
 /mob/living/simple_mob/animal/giant_spider/tunneler,
@@ -406,7 +406,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "Zm" = (
 /obj/structure/closet/cabinet,
@@ -415,7 +415,7 @@
 /obj/item/ammo_magazine/a12g/clip/beanbag,
 /obj/item/ammo_magazine/a12g/clip/beanbag,
 /obj/item/ammo_magazine/a12g/clip/beanbag,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 "Zt" = (
 /obj/structure/table/woodentable,
@@ -423,7 +423,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/saloon)
 
 (1,1,1) = {"

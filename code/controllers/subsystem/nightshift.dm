@@ -1,9 +1,6 @@
 SUBSYSTEM_DEF(nightshift)
 	name = "Night Shift"
-	init_order = INIT_ORDER_NIGHTSHIFT
-	priority = FIRE_PRIORITY_NIGHTSHIFT
-	wait = 60 SECONDS
-	subsystem_flags = SS_NO_TICK_CHECK
+	wait = 5 MINUTES
 
 	/// Set from configuration - enabled nightshift flags.
 	var/nightshift_level = NONE
@@ -11,39 +8,51 @@ SUBSYSTEM_DEF(nightshift)
 	//! legacy below
 
 	var/nightshift_active = FALSE
+
 	var/nightshift_start_time = 19 HOURS + 30 MINUTES		//7:30 PM, station time
 	var/nightshift_end_time = 7 HOURS + 30 MINUTES		//7:30 AM, station time
-	var/nightshift_first_check = 30 SECONDS
-
-	var/overridden //Overridden by a C&C console.
+	var/nightshift_first_check = 5 MINUTES // Wait 5 minutes after roundstart to turn on nightshift
 
 	var/high_security_mode = FALSE
+	var/list/currentrun
+
+	/// Override by a C&C console
+	var/overridden
 
 /datum/controller/subsystem/nightshift/Initialize()
 	if (!CONFIG_GET(flag/nightshifts_enabled))
 		can_fire = FALSE
-	//if(CONFIG_GET(flag/randomized_start_time_enabled))
-		//GLOB.gametime_offset = rand(0, 23) HOURS
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/nightshift/fire(resumed = FALSE)
-	if(world.time - round_duration_in_ds < nightshift_first_check)
+	if(resumed)
+		update_nightshift(resumed = TRUE)
+		return
+	if(round_duration_in_ds < nightshift_first_check)
 		return
 	check_nightshift()
 
 /datum/controller/subsystem/nightshift/proc/announce(message)
-	var/announce_z
-	if((LEGACY_MAP_DATUM).station_levels.len)
-		announce_z = pick((LEGACY_MAP_DATUM).station_levels)
-	priority_announcement.Announce(message, new_title = "Automated Lighting System Announcement", new_sound = 'sound/misc/notice2.ogg', zlevel = announce_z)
+	priority_announcement.Announce(
+		message,
+		new_title = "Automated Lighting System Announcement",
+		new_sound = 'sound/misc/notice2.ogg',
+	)
 
 /datum/controller/subsystem/nightshift/proc/check_nightshift(check_canfire=FALSE) //This is called from elsewhere, like setting the alert levels
 	if(overridden || (check_canfire && !can_fire))
 		return
 	var/emergency = GLOB.security_level > SEC_LEVEL_GREEN
 	var/announcing = TRUE
-	var/time = station_time_in_ds
-	var/night_time = (time < nightshift_end_time) || (time > nightshift_start_time)
+
+	//station_time_in_ds = deciseconds after midnight in station time
+	//nightshift_start_time = 702,000 deciseconds after midnight (7:30 PM)
+	//nightshift_end_time = 207,000 deciseconds after midnight (7:30 AM)
+	//if time is greater than start time (between 7:30pm and 11:59pm) OR less than end time (between midnight and 7:29am) it should turn on.
+	//If time rolls over to midnight, station_time will keep incrementing so there is no need for a special case.
+	var/time = station_time_in_ds	
+	var/night_time = (time > nightshift_start_time) || (time < nightshift_end_time)
+
 	if(high_security_mode != emergency)
 		high_security_mode = emergency
 		if(night_time)
@@ -57,19 +66,26 @@ SUBSYSTEM_DEF(nightshift)
 	if(nightshift_active != night_time)
 		update_nightshift(night_time, announcing)
 
-/datum/controller/subsystem/nightshift/proc/update_nightshift(active, announce = TRUE)
-	nightshift_active = active
-	if(announce)
-		if(active)
-			announce("Good evening, crew. To reduce power consumption and stimulate the circadian rhythms of some species, all of the non-essential lights have been dimmed for the night.")
-		else
-			announce("Good morning, crew. As it is now day time, all of the non-essential lights have been restored to their former brightness.")
+/datum/controller/subsystem/nightshift/proc/update_nightshift(active, announce = TRUE, resumed = FALSE, forced = FALSE)
+	if(!resumed)
+		currentrun = GLOB.apcs.Copy()
+		nightshift_active = active
+		if(announce)
+			if (active)
+				announce("Good evening, crew. To reduce power consumption and stimulate the circadian rhythms of some species, all of the non-essential lights have been dimmed for the night.")
+			else
+				announce("Good morning, crew. As it is now day time, all of the non-essential lights have been restored to their former brightness.")
 
 	SSlighting.pause_instant()
 
-	for(var/obj/machinery/power/apc/apc in GLOB.apcs)
-		if(apc.z in (LEGACY_MAP_DATUM).station_levels)
-			apc.set_nightshift(active && (apc.area.nightshift_level & nightshift_level), TRUE)
-			CHECK_TICK
+	for(var/obj/machinery/power/apc/APC as anything in currentrun)
+		currentrun -= APC
+		if (APC.area && (APC.z in (LEGACY_MAP_DATUM).station_levels))
+			APC.set_nightshift(nightshift_active && (APC.area.nightshift_level & nightshift_level), TRUE)
+		
+		//TODO: redo below logic: as-is, it does not allow the nightshift subsystem to actually finish processing
+
+		//if(MC_TICK_CHECK && !forced) // subsystem will be in state SS_IDLE if forced by an admin
+		//return
 
 	SSlighting.resume_instant()

@@ -41,11 +41,9 @@
 
 /obj/machinery/atmospheric_field_generator/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/tool/crowbar) && isactive)
-		if(!src) return
 		to_chat(user, "<span class='warning'>You can't open the ARF-G whilst it's running!</span>")
 		return
 	if(istype(W,/obj/item/tool/crowbar) && !isactive)
-		if(!src) return
 		to_chat(user, "<span class='notice'>You [hatch_open? "close" : "open"] \the [src]'s access hatch.</span>")
 		hatch_open = !hatch_open
 		update_icon()
@@ -53,19 +51,16 @@
 			generate_field()
 		return
 	if(hatch_open && istype(W,/obj/item/multitool))
-		if(!src) return
 		to_chat(user, "<span class='notice'>You toggle \the [src]'s activation behavior to [alwaysactive? "emergency" : "always-on"].</span>")
 		alwaysactive = !alwaysactive
 		update_icon()
 		return
 	if(hatch_open && W.is_wirecutter())
-		if(!src) return
 		to_chat(user, "<span class='warning'>You [wires_intact? "cut" : "mend"] \the [src]'s wires!</span>")
 		wires_intact = !wires_intact
 		update_icon()
 		return
 	if(hatch_open && istype(W,/obj/item/weldingtool))
-		if(!src) return
 		var/obj/item/weldingtool/WT = W
 		if(!WT.isOn()) return
 		if(WT.get_fuel() < 5) // uses up 5 fuel.
@@ -77,13 +72,12 @@
 			if(!src || !user || !WT.remove_fuel(5, user)) return
 			to_chat(user, "<span class='notice'>You fully disassemble \the [src]. There were no salvageable parts.</span>")
 			qdel(src)
-		return
 
 /obj/machinery/atmospheric_field_generator/perma/Initialize(mapload)
 	. = ..()
 	generate_field()
 
-/obj/machinery/atmospheric_field_generator/update_icon()
+/obj/machinery/atmospheric_field_generator/update_icon_state()
 	if(machine_stat & BROKEN)
 		icon_state = "arfg_broken"
 	else if(hatch_open && wires_intact)
@@ -94,6 +88,7 @@
 		icon_state = "arfg_on"
 	else
 		icon_state = "arfg_off"
+	return ..()
 
 /obj/machinery/atmospheric_field_generator/power_change()
 	var/oldstat
@@ -192,6 +187,7 @@
 
 /obj/structure/atmospheric_retention_field/update_icon()
 	cut_overlays()
+	. = ..()
 	var/list/dirs = list()
 	for(var/obj/structure/atmospheric_retention_field/F in orange(src,1))
 		dirs += get_dir(src, F)
@@ -202,8 +198,6 @@
 	for(var/i = 1 to 4)
 		var/image/I = image(icon, "[basestate][connections[i]]", dir = 1<<(i-1))
 		add_overlay(I)
-
-	return
 
 /obj/structure/atmospheric_retention_field/Initialize(mapload)
 	. = ..()

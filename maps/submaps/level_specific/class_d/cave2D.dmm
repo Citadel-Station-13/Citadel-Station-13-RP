@@ -2,11 +2,9 @@
 "a" = (
 /turf/template_noop,
 /area/template_noop)
-"g" = (
+"h" = (
 /obj/structure/alien/weeds,
-/obj/structure/alien/weeds,
-/obj/structure/alien/weeds,
-/mob/living/simple_mob/animal/space/alien/basic_spitter,
+/mob/living/simple_mob/animal/space/xenomorph/drone,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
 "i" = (
@@ -29,7 +27,7 @@
 "n" = (
 /obj/structure/alien/weeds,
 /obj/random/tetheraid,
-/obj/item/gun/energy/phasegun/pistol,
+/obj/item/gun/projectile/energy/phasegun/pistol,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
 "p" = (
@@ -62,9 +60,10 @@
 /obj/structure/alien/resin/wall,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
-"z" = (
+"A" = (
 /obj/structure/alien/weeds,
-/mob/living/simple_mob/animal/space/alien,
+/obj/structure/alien/weeds,
+/mob/living/simple_mob/animal/space/xenomorph/acid_spitter,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
 "B" = (
@@ -84,14 +83,14 @@
 /obj/random/energy,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
-"F" = (
-/obj/structure/alien/weeds,
-/mob/living/simple_mob/animal/space/alien/warrior,
-/turf/simulated/mineral/floor/classd/indoors,
-/area/class_d/explored)
 "H" = (
 /obj/structure/alien/weeds,
 /obj/random/trash_pile,
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
+"I" = (
+/obj/structure/alien/weeds,
+/mob/living/simple_mob/animal/space/xenomorph/sprinter,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
 "K" = (
@@ -109,11 +108,6 @@
 /obj/structure/alien/weeds,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
-"N" = (
-/obj/structure/alien/weeds,
-/mob/living/simple_mob/animal/space/alien/adv_spitter,
-/turf/simulated/mineral/floor/classd/indoors,
-/area/class_d/explored)
 "O" = (
 /obj/structure/alien/weeds,
 /obj/structure/alien/weeds,
@@ -125,18 +119,24 @@
 /obj/structure/alien/egg,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
+"Q" = (
+/obj/structure/alien/weeds,
+/mob/living/simple_mob/animal/space/xenomorph/vanguard,
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "R" = (
 /obj/structure/alien/weeds,
 /obj/random/energy,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
-"T" = (
-/obj/structure/alien/resin/wall,
+"S" = (
+/obj/structure/alien/weeds,
+/obj/structure/alien/weeds,
+/mob/living/simple_mob/animal/space/xenomorph/neurotoxin_spitter,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
-"U" = (
-/obj/structure/alien/weeds,
-/mob/living/simple_mob/animal/space/alien/drone,
+"T" = (
+/obj/structure/alien/resin/wall,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
 "W" = (
@@ -251,14 +251,14 @@ p
 K
 s
 r
-g
+r
 s
 s
-s
+h
 s
 D
 s
-s
+h
 p
 p
 p
@@ -271,7 +271,7 @@ p
 p
 W
 O
-q
+S
 r
 q
 p
@@ -302,7 +302,7 @@ p
 p
 p
 M
-U
+s
 X
 s
 p
@@ -313,7 +313,7 @@ a
 (8,1,1) = {"
 p
 p
-s
+I
 s
 p
 p
@@ -326,8 +326,8 @@ p
 m
 M
 m
+h
 s
-U
 p
 p
 a
@@ -385,7 +385,7 @@ p
 p
 p
 P
-N
+s
 s
 p
 p
@@ -407,15 +407,15 @@ p
 p
 i
 R
-s
+Q
 s
 P
 p
 p
 p
 T
+h
 s
-z
 p
 p
 a
@@ -446,7 +446,7 @@ a
 p
 p
 s
-s
+I
 p
 p
 y
@@ -476,7 +476,7 @@ y
 q
 q
 L
-F
+s
 p
 p
 p
@@ -492,12 +492,12 @@ p
 p
 s
 s
-q
+A
 q
 Z
 q
 s
-s
+Q
 i
 p
 p
@@ -539,7 +539,7 @@ p
 p
 P
 y
-F
+s
 P
 p
 p

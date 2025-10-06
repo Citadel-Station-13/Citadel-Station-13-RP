@@ -9,8 +9,7 @@
 	permit_ao = FALSE
 
 	initial_gas_mix = GAS_STRING_VACUUM
-	thermal_conductivity = OPEN_HEAT_TRANSFER_COEFFICIENT
-	temperature = 2.7
+	temperature = TCMB
 	can_build_into_floor = TRUE
 	z_eventually_space = TRUE
 
@@ -29,12 +28,17 @@
 	// turn preloader off so it doesn't hit something else
 	global.dmm_preloader_active = FALSE
 
+/**
+ * Space Initialize
+ *
+ * Doesn't call parent, see [/atom/proc/Initialize].
+ * When adding new stuff to /atom/Initialize, /turf/Initialize, etc
+ * don't just add it here unless space actually needs it.
+ */
 /turf/space/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE)
-	atom_flags |= ATOM_INITIALIZED
 
-	// we have parallax and don't need this anymore
-	// icon_state = SPACE_ICON_STATE(x, y, z)
+	atom_flags |= ATOM_INITIALIZED
 
 	if (CONFIG_GET(flag/starlight))
 		update_starlight()
@@ -43,21 +47,6 @@
 	// tl;dr given we load maps at runtime now, the maploader will do changeturfing, which means
 	// we don't need to manually check all this in initialize
 	return INITIALIZE_HINT_NORMAL
-
-	// var/turf/below = below()
-	// if(isnull(below))
-	// 	return INITIALIZE_HINT_NORMAL
-
-	// if(isspaceturf(below))
-	// 	return INITIALIZE_HINT_NORMAL
-
-	// var/area/A = below.loc
-	// if(!below.density && (A.area_flags & AREA_FLAG_EXTERNAL))
-	// 	return INITIALIZE_HINT_NORMAL
-
-	// return INITIALIZE_HINT_NORMAL
-	// todo: wtf happened there..?
-	// return INITIALIZE_HINT_LATELOAD // oh no! we need to switch to being a different kind of turf!
 
 /turf/space/Destroy()
 	// Cleanup cached z_eventually_space values above us.

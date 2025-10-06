@@ -1,11 +1,11 @@
-import { clamp } from 'common/math';
 import { randomInteger, randomNumber, randomPick, randomProb } from 'common/random';
-import { useDispatch } from 'common/redux';
-import { Component } from 'inferno';
+import { Component } from 'react';
+import { Icon } from 'tgui-core/components';
+import { globalEvents } from 'tgui-core/events';
+import { clamp } from 'tgui-core/math';
+
 import { resolveAsset } from '../assets';
-import { backendSuspendStart, useBackend } from '../backend';
-import { Icon } from '../components';
-import { globalEvents } from '../events';
+import { backendSuspendStart, useBackend, useDispatch } from '../backend';
 import { Window } from '../layouts';
 
 type Bait = {
@@ -49,8 +49,8 @@ class FishingMinigame extends Component<
   FishingMinigameProps,
   FishingMinigameState
 > {
-  animation_id: number;
-  last_frame: number;
+  animation_id?: number | undefined;
+  last_frame?: number | undefined;
   reeling: ReelingState = ReelingState.Idle;
   perfect: boolean = true;
   area_height: number = 1000;
@@ -135,7 +135,9 @@ class FishingMinigame extends Component<
   componentWillUnmount() {
     document.removeEventListener('mousedown', this.handle_mousedown);
     document.removeEventListener('mouseup', this.handle_mouseup);
-    window.cancelAnimationFrame(this.animation_id);
+    if (this.animation_id) {
+      window.cancelAnimationFrame(this.animation_id);
+    }
     globalEvents.off('byond/mousedown', this.handle_mousedown);
     globalEvents.off('byond/mouseup', this.handle_mouseup);
   }
@@ -349,7 +351,7 @@ class FishingMinigame extends Component<
       completion: newCompletion,
     };
 
-    const dispatch = useDispatch(this.context);
+    const dispatch = useDispatch();
 
     if (newCompletion <= 0) {
       this.props.lose();
@@ -385,20 +387,20 @@ class FishingMinigame extends Component<
     const posToStyle = (value: number) => (value / this.area_height) * 100;
     const background_image = resolveAsset(this.props.background);
     return (
-      <div class="fishing">
-        <div class="main">
+      <div className="fishing">
+        <div className="main">
           <div
-            class="background"
-            style={{ 'background-image': `url("${background_image}")` }}>
+            className="background"
+            style={{ backgroundImage: `url("${background_image}")` }}>
             <div
-              class="bait"
+              className='bait'
               style={{
                 height: `${posToStyle(bait.height)}%`,
                 top: `${posToStyle(bait.position)}%`,
               }}
             />
             <div
-              class="fish"
+              className="fish"
               style={{
                 top: `${posToStyle(fish.position)}%`,
                 height: `${posToStyle(fish.height)}%`,
@@ -407,9 +409,9 @@ class FishingMinigame extends Component<
             </div>
           </div>
         </div>
-        <div class="completion">
-          <div class="background">
-            <div class="bar" style={{ height: `${Math.round(completion)}%` }} />
+        <div className="completion">
+          <div className="background">
+            <div className="bar" style={{ height: `${Math.round(completion)}%` }} />
           </div>
         </div>
       </div>
@@ -424,8 +426,8 @@ type FishingData = {
   background_image: string;
 };
 
-export const Fishing = (props, context) => {
-  const { act, data } = useBackend<FishingData>(context);
+export const Fishing = (props) => {
+  const { act, data } = useBackend<FishingData>();
   return (
     <Window width={180} height={600}>
       <Window.Content fitted>

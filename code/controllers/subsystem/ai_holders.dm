@@ -14,6 +14,7 @@ SUBSYSTEM_DEF(ai_holders)
 	subsystem_flags = NONE
 	priority = FIRE_PRIORITY_AI_HOLDERS
 	init_order = INIT_ORDER_AI_HOLDERS
+	init_stage = INIT_STAGE_EARLY
 	wait = 0
 
 	/// all ticking ai holders
@@ -37,7 +38,7 @@ SUBSYSTEM_DEF(ai_holders)
 /datum/controller/subsystem/ai_holders/Initialize()
 	active_holders = list()
 	rebuild()
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/ai_holders/on_ticklag_changed(old_ticklag, new_ticklag)
 	rebuild()

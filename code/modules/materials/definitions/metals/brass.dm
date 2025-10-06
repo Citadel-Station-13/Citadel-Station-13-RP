@@ -1,4 +1,4 @@
-/datum/material/brass
+/datum/prototype/material/brass
 	id = "brass"
 	name = "brass"
 	icon_colour = "#CAC955"
@@ -18,6 +18,8 @@
 
 	worth = 7.5
 
-/datum/material/brass/generate_recipes()
+	material_constraints = MATERIAL_CONSTRAINT_RIGID
+
+/datum/prototype/material/brass/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(name = "brass floor tiles", product = /obj/item/stack/tile/brass, amount = 4)

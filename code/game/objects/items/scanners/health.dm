@@ -26,7 +26,7 @@
 	scan_mob(M, user) //default surgery behaviour is just to scan as usual
 	return 1
 
-/obj/item/healthanalyzer/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/healthanalyzer/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	scan_mob(target, user)
 	return CLICKCHAIN_DO_NOT_PROPAGATE
 
@@ -41,7 +41,7 @@
 		dat += "\nBody Temperature: ???"
 		user.show_message(SPAN_NOTICE("[dat]"), 1)
 		return
-	if (!(ishuman(user) || SSticker) && SSticker.mode.name != "monkey")
+	if (!(user.IsAdvancedToolUser() || SSticker) && SSticker.mode.name != "monkey")
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return
 
@@ -122,8 +122,8 @@
 			var/unknown = 0
 			var/reagentdata[0]
 			var/unknownreagents[0]
-			for(var/A in C.reagents.reagent_list)
-				var/datum/reagent/R = A
+			for(var/A in C.reagents.reagent_volumes)
+				var/datum/reagent/R = SSchemistry.fetch_reagent(A)
 				if(R.scannable)
 					reagentdata["[R.id]"] = SPAN_NOTICE("\n[round(C.reagents.get_reagent_amount(R.id), 1)]u [R.name]")
 				else
@@ -144,8 +144,8 @@
 			var/unknown = 0
 			var/stomachreagentdata[0]
 			var/stomachunknownreagents[0]
-			for(var/B in C.ingested.reagent_list)
-				var/datum/reagent/T = B
+			for(var/B in C.ingested.reagent_volumes)
+				var/datum/reagent/T = SSchemistry.fetch_reagent(B)
 				if(T.scannable)
 					stomachreagentdata["[T.id]"] = SPAN_NOTICE("\n[round(C.ingested.get_reagent_amount(T.id), 1)]u [T.name]")
 					if (advscan == 0 || showadvscan == 0)
@@ -168,8 +168,8 @@
 			var/unknown = 0
 			var/touchreagentdata[0]
 			var/touchunknownreagents[0]
-			for(var/B in C.touching.reagent_list)
-				var/datum/reagent/T = B
+			for(var/B in C.touching.reagent_volumes)
+				var/datum/reagent/T = SSchemistry.fetch_reagent(B)
 				if(T.scannable)
 					touchreagentdata["[T.id]"] = SPAN_NOTICE("\n[round(C.touching.get_reagent_amount(T.id), 1)]u [T.name]")
 					if (advscan == 0 || showadvscan == 0)
@@ -257,8 +257,8 @@
 		dat += ib_dat
 
 		// Blood level
-		if(M:vessel)
-			var/blood_volume = H.vessel.get_reagent_amount("blood")
+		if(H.blood_holder)
+			var/blood_volume = H.blood_holder.get_total_volume()
 			var/blood_percent =  round((blood_volume / H.species.blood_volume)*100)
 			var/blood_type = H.dna.b_type
 			if(blood_volume <= H.species.blood_volume*H.species.blood_level_danger)

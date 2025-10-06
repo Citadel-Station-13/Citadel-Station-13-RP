@@ -39,16 +39,16 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 	var/obj/item/disk/design_disk/d_disk = null	//Stores the design disk.
 
 	var/obj/machinery/r_n_d/destructive_analyzer/linked_destroy = null	//Linked Destructive Analyzer
-	var/obj/machinery/r_n_d/protolathe/linked_lathe = null				//Linked Protolathe
-	var/obj/machinery/r_n_d/circuit_imprinter/linked_imprinter = null	//Linked Circuit Imprinter
+	var/obj/machinery/lathe/r_n_d/protolathe/linked_lathe = null				//Linked Protolathe
+	var/obj/machinery/lathe/r_n_d/circuit_imprinter/linked_imprinter = null	//Linked Circuit Imprinter
 
 	var/id = 0			//ID of the computer (for server restrictions).
 	var/sync = 1		//If sync = 0, it doesn't show up on Server Control Console
 
 	req_access = list(ACCESS_SCIENCE_MAIN)	//Data and setting manipulation requires scientist access.
 
-	var/protofilter //String to filter protolathe designs by
-	var/circuitfilter //String to filter circuit designs by
+	var/datum/design_holder/lathe_designs = /datum/design_holder/lathe/autolathe
+	var/datum/design_holder/circuit_designs = /datum/design_holder
 
 /obj/machinery/computer/rdconsole/proc/CallMaterialName(var/ID)
 	var/return_name = ID
@@ -76,42 +76,55 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 	return R.name
 
 /obj/machinery/computer/rdconsole/proc/SyncRDevices() //Makes sure it is properly sync'ed up with the devices attached to it (if any).
-	for(var/obj/machinery/r_n_d/D in range(5, src)) //Originally 3, buffed to 5 - Werewolf
+	for(var/obj/machinery/r_n_d/destructive_analyzer/D in range(5, src)) //Originally 3, buffed to 5 - Werewolf
 		if(D.linked_console != null || D.panel_open)
 			continue
-		if(istype(D, /obj/machinery/r_n_d/destructive_analyzer))
-			if(linked_destroy == null)
-				linked_destroy = D
-				D.linked_console = src
-		else if(istype(D, /obj/machinery/r_n_d/protolathe))
+		if(linked_destroy == null)
+			linked_destroy = D
+			D.linked_console = src
+
+	for(var/obj/machinery/lathe/r_n_d/D in range(5, src))
+		if(D.linked_console != null || D.panel_open)
+			continue
+		else if(istype(D, /obj/machinery/lathe/r_n_d/protolathe))
 			if(linked_lathe == null)
 				linked_lathe = D
+				linked_lathe.design_holder = lathe_designs
 				D.linked_console = src
-		else if(istype(D, /obj/machinery/r_n_d/circuit_imprinter))
+		else if(istype(D, /obj/machinery/lathe/r_n_d/circuit_imprinter))
 			if(linked_imprinter == null)
 				linked_imprinter = D
+				linked_imprinter.design_holder = circuit_designs
 				D.linked_console = src
-	return
-
-/obj/machinery/computer/rdconsole/proc/griefProtection() //Have it automatically push research to the CentCom server so wild griffins can't fuck up R&D's work
-	for(var/obj/machinery/r_n_d/server/centcom/C in GLOB.machines)
-		for(var/datum/tech/T in files.known_tech)
-			C.files.AddTech2Known(T)
-		for(var/datum/design/D in files.known_designs)
-			C.files.AddDesign2Known(D)
-		C.files.RefreshResearch()
 
 /obj/machinery/computer/rdconsole/Initialize(mapload)
 	. = ..()
+	if(ispath(lathe_designs))
+		lathe_designs = new lathe_designs(src)
+		lathe_designs.design_ids = list()
+	if(ispath(circuit_designs))
+		circuit_designs = new circuit_designs(src)
+		circuit_designs.design_ids = list()
 	files = new /datum/research(src) //Setup the research data holder.
+	spawn(0)
+		UpdateKnownDesigns()
 	if(!id)
 		for(var/obj/machinery/r_n_d/server/centcom/S in GLOB.machines)
 			S.update_connections()
 			break
-
-/obj/machinery/computer/rdconsole/Initialize(mapload)
 	SyncRDevices()
-	. = ..()
+
+/obj/machinery/computer/rdconsole/proc/UpdateKnownDesigns()
+	var/list/known_designs = files.legacy_all_design_datums()
+	for(var/datum/prototype/design/D in known_designs)
+		if(D.lathe_type & LATHE_TYPE_CIRCUIT)
+			circuit_designs.design_ids |= D.id
+		else if(D.lathe_type & LATHE_TYPE_PROTOLATHE)
+			lathe_designs.design_ids |= D.id
+	if(linked_lathe)
+		linked_lathe.ui_controller?.ui_design_update()
+	if(linked_imprinter)
+		linked_imprinter.ui_controller?.ui_design_update()
 
 /obj/machinery/computer/rdconsole/attackby(var/obj/item/D as obj, var/mob/user as mob)
 	//Loading a disk into it.
@@ -137,7 +150,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 
 /obj/machinery/computer/rdconsole/emp_act(var/remaining_charges, var/mob/user)
 	if(!emagged)
-		playsound(src, /datum/soundbyte/grouped/sparks, 75, 1)
+		playsound(src, /datum/soundbyte/sparks, 75, 1)
 		emagged = 1
 		to_chat(user, "<span class='notice'>You you disable the security protocols.</span>")
 		return 1
@@ -159,7 +172,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 /obj/machinery/computer/rdconsole/proc/GetResearchListInfo()
 	var/list/dat = list()
 	dat += "<UL>"
-	for(var/datum/design/D in files.known_designs)
+	for(var/datum/prototype/design/D in files.legacy_all_design_datums())
 		if(D.build_path)
 			dat += "<LI><B>[D.name]</B>: [D.desc]"
 	dat += "</UL>"

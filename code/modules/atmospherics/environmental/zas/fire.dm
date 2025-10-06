@@ -17,7 +17,7 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 
 
 /turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
-
+	return
 
 /turf/simulated/hotspot_expose(exposed_temperature, exposed_volume, soh)
 	if(fire_protection > world.time-300)

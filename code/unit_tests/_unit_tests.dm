@@ -1,7 +1,7 @@
 //include unit test files in this module in this ifdef
 //Keep this sorted alphabetically
 
-#if defined(UNIT_TESTS) || defined(SPACEMAN_DMM)
+#if defined(UNIT_TESTS) || defined(SPACEMAN_DMM) || defined(INCLUDE_UNIT_TESTS)
 
 /// For advanced cases, fail unconditionally but don't return (so a test can return multiple results)
 #define TEST_FAIL(reason) (Fail(reason || "No reason", __FILE__, __LINE__))
@@ -94,6 +94,7 @@
 // #include "confusion.dm"
 // #include "emoting.dm"
 #include "focus_only_tests.dm"
+#include "font_awesome_icons.dm"
 // #include "heretic_knowledge.dm"
 // #include "holidays.dm"
 #include "initialize_sanity.dm"
@@ -107,10 +108,6 @@
 // #include "plantgrowth_tests.dm"
 // #include "projectiles.dm"
 #include "prototypes.dm"
-// #include "reagent_id_typos.dm"
-// #include "reagent_mod_expose.dm"
-// #include "reagent_mod_procs.dm"
-// #include "reagent_recipe_collisions.dm"
 #include "resist.dm"
 // #include "say.dm"
 // #include "serving_tray.dm"
@@ -123,6 +120,11 @@
 // #include "teleporters.dm"
 #include "timer_sanity.dm"
 #include "unit_test.dm"
+
+// END_INCLUDE
+#ifdef REFERENCE_TRACKING_DEBUG //Don't try and parse this file if ref tracking isn't turned on. IE: don't parse ref tracking please mr linter
+#include "find_reference_sanity.dm"
+#endif
 
 #undef TEST_ASSERT
 #undef TEST_ASSERT_EQUAL

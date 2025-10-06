@@ -1,10 +1,10 @@
 /obj/structure/table/update_material_multi(list/parts)
-	var/datum/material/structure = material_base
+	var/datum/prototype/material/structure = material_base
 	if(isnull(structure)) // we're not normal
 		update_connections()
 		update_appearance()
 		return
-	var/datum/material/reinforcing = material_reinforcing
+	var/datum/prototype/material/reinforcing = material_reinforcing
 	var/amount = structure.relative_integrity * 100 + reinforcing?.relative_integrity * 50
 	set_full_integrity(amount, amount)
 	// the () is to block the list() from making it a string
@@ -13,7 +13,7 @@
 		(reinforcing) = MATERIAL_SIGNIFICANCE_TABLE_REINFORCEMENT,
 	)))
 	// sigh
-	if(SSatoms.initialized == INITIALIZATION_INNEW_REGULAR)
+	if(SSatoms.atom_init_status == ATOM_INIT_IN_NEW_REGULAR)
 		update_connections(TRUE)
 		update_appearance()
 
@@ -30,8 +30,8 @@
 		if("reinf")
 			return material_reinforcing
 
-/obj/structure/table/material_set_part(part, datum/material/material)
-	var/datum/material/old
+/obj/structure/table/material_set_part(part, datum/prototype/material/material)
+	var/datum/prototype/material/old
 	var/primary = FALSE
 	switch(part)
 		if("base")
@@ -46,7 +46,7 @@
 		register_material(material, primary)
 
 /obj/structure/table/material_init_parts()
-	material_base = SSmaterials.resolve_material(material_base)
-	material_reinforcing = SSmaterials.resolve_material(material_reinforcing)
+	material_base = RSmaterials.fetch(material_base)
+	material_reinforcing = RSmaterials.fetch(material_reinforcing)
 	register_material(material_base, TRUE)
 	register_material(material_reinforcing, FALSE)

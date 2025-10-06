@@ -406,12 +406,12 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 	. = list()
 	if(!allow_admin_interact)
 		return
-	STATPANEL_DATA_CLICK("[id]", "DELETE QUERY | STATE : [text_state()] | ALL/ELIG/FIN \
+	INJECT_STATPANEL_DATA_CLICK(., "[id]", "DELETE QUERY | STATE : [text_state()] | ALL/ELIG/FIN \
 	[islist(obj_count_all)? length(obj_count_all) : (isnull(obj_count_all)? "0" : obj_count_all)]/\
 	[islist(obj_count_eligible)? length(obj_count_eligible) : (isnull(obj_count_eligible)? "0" : obj_count_eligible)]/\
 	[islist(obj_count_finished)? length(obj_count_finished) : (isnull(obj_count_finished)? "0" : obj_count_finished)] - [get_query_text()]", \
 	"\ref[delete_click]")
-	STATPANEL_DATA_CLICK("", "[SDQL2_IS_RUNNING? "HALT" : "RUN"]", "\ref[action_click]")
+	INJECT_STATPANEL_DATA_CLICK(., "", "[SDQL2_IS_RUNNING? "HALT" : "RUN"]", "\ref[action_click]")
 
 /datum/SDQL2_query/proc/delete_click()
 	admin_del(usr)
@@ -1045,42 +1045,6 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 				v = Failsafe
 			if("CFG")
 				v = config
-/*
-			//Subsystem switches
-			if("SSgarbage")
-				v = SSgarbage
-			if("SSmachines")
-				v = SSmachines
-			if("SSobj")
-				v = SSobj
-			if("SSresearch")
-				v = SSresearch
-			if("SSprojectiles")
-				v = SSprojectiles
-			if("SSprocess_5fps")
-				v = SSprocess_5fps
-			if("SSticker")
-				v = SSticker
-			if("SStimer")
-				v = SStimer
-			if("SSradiation")
-				v = SSradiation
-			if("SSnpcpool")
-				v = SSnpcpool
-			if("SSmobs")
-				v = SSmobs
-			if("SSquirks")
-				v = SSquirks
-			if("SSwet_floors")
-				v = SSwet_floors
-			if("SSshuttle")
-				v = SSshuttle
-			if("SSmapping")
-				v = SSmapping
-			if("SSevents")
-				v = SSevents
-			//End
-*/
 			else
 				return null
 	else if(object == GLOB) // Shitty ass hack kill me.

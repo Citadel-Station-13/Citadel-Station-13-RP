@@ -1,4 +1,4 @@
-/datum/language/swarmbot
+/datum/prototype/language/swarmbot
 	id = LANGUAGE_ID_SWARMBOT
 	name = LANGUAGE_SWARMBOT
 	translation_class = TRANSLATION_CLASS_MACHINE | TRANSLATION_CLASS_ENCRYPTED

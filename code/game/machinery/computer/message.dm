@@ -513,7 +513,6 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/item/paper/monitorkey/LateInitialize()
-	. = ..()
 	if(message_servers)
 		for(var/obj/machinery/message_server/server in message_servers)
 			if(!isnull(server))

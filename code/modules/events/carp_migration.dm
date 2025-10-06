@@ -36,9 +36,9 @@ GLOBAL_LIST_INIT(carp_count,list())// a list of Z levels (string), associated wi
 
 /datum/event/carp_migration/announce()
 	if(severity > EVENT_LEVEL_MODERATE)
-		command_announcement.Announce("A massive migration of unknown biological entities has been detected in the vicinity of the [location_name()]. Exercise external operations with caution.")
+		command_announcement.Announce("A massive migration of space-borne biological entities has been detected in the vicinity of the [location_name()]. Exercise external operations with caution.")
 	else
-		command_announcement.Announce("A large migration of unknown biological entities has been detected in the vicinity of the [location_name()]. Caution is advised.")
+		command_announcement.Announce("A large migration of space-borne biological entities has been detected in the vicinity of the [location_name()]. Caution is advised.")
 
 
 /datum/event/carp_migration/proc/spawn_carp(var/num_groups, var/group_size_min, var/group_size_max, var/dir, var/speed)

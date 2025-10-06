@@ -192,7 +192,7 @@ var/global/floorIsLava = 0
 	// language toggles
 	body += "<br><br><b>Languages:</b><br>"
 	var/f = 1
-	for(var/datum/language/L as anything in SScharacters.all_languages())
+	for(var/datum/prototype/language/L as anything in tim_sort(RSlanguages.fetch_subtypes_immutable(/datum/prototype/language), /proc/cmp_name_asc))
 		if(!(L.language_flags & LANGUAGE_INNATE))
 			if(!f) body += " | "
 			else f = 0
@@ -270,7 +270,7 @@ var/global/floorIsLava = 0
 			if(index == page)
 				dat += "</b>"
 
-	usr << browse(dat, "window=player_notes;size=400x400")
+	usr << browse(HTML_SKELETON(dat), "window=player_notes;size=400x400")
 
 
 /datum/admins/proc/player_has_info(var/key as text)
@@ -326,7 +326,7 @@ var/global/floorIsLava = 0
 	dat += "<A href='?src=\ref[src];add_player_info=[key]'>Add Comment</A><br>"
 
 	dat += "</body></html>"
-	usr << browse(dat, "window=adminplayerinfo;size=480x480")
+	usr << browse(HTML_SKELETON(dat), "window=adminplayerinfo;size=480x480")
 
 
 
@@ -586,7 +586,7 @@ var/global/floorIsLava = 0
 			r = copytext( r, 1, findtext(r,"##") )//removes the description
 		dat += "<tr><td>[t] (<A href='?src=\ref[src];removejobban=[r]'>unban</A>)</td></tr>"
 	dat += "</table>"
-	usr << browse(dat, "window=ban;size=400x400")
+	usr << browse(HTML_SKELETON(dat), "window=ban;size=400x400")
 
 /datum/admins/proc/Game()
 	if(!check_rights(0))	return
@@ -607,7 +607,7 @@ var/global/floorIsLava = 0
 		<br><A href='?src=\ref[src];atmos_vsc=1'>Modify Atmospherics Properties</A><br>
 		"}
 
-	usr << browse(dat, "window=admin2;size=210x280")
+	usr << browse(HTML_SKELETON(dat), "window=admin2;size=210x280")
 	return
 
 /datum/admins/proc/Secrets(var/datum/admin_secret_category/active_category = null)
@@ -717,7 +717,7 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 
 	//Time to find how they screwed up.
 	//Wasn't the right length
-	if((decomposed.len) % 3) //+1 to accomidate the lack of a wait time for the last message
+	if((length(decomposed)+1) % 3) //+1 to accomidate the lack of a wait time for the last message
 		to_chat(usr,"<span class='warning'>You passed [decomposed.len] segments (senders+messages+pauses). You must pass a multiple of 3, minus 1 (no pause after the last message). That means a sender and message on every other line (starting on the first), separated by a pipe character (|), and a number every other line that is a pause in seconds.</span>")
 		return
 
@@ -827,9 +827,9 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 	if(!check_rights(R_ADMIN))
 		return
 
-	world.update_hub_visibility(!world.visibility)
+	world.update_hub_visibility(!GLOB.hub_visibility)
 	log_admin("[key_name(usr)] toggled hub visibility.")
-	message_admins("[key_name_admin(usr)] toggled hub visibility.  The server is now [world.visibility ? "visible" : "invisible"] ([world.visibility]).", 1)
+	message_admins("[key_name_admin(usr)] toggled hub visibility.  The server is now [GLOB.hub_visibility ? "visible" : "invisible"] ([GLOB.hub_visibility]).", 1)
 	feedback_add_details("admin_verb","THUB") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc
 
 /datum/admins/proc/toggletraitorscaling()
@@ -1086,47 +1086,6 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 		return
 	new /obj/effect/plant(get_turf(usr), SSplants.seeds[seedtype])
 	log_admin("[key_name(usr)] spawned [seedtype] vines at ([usr.x],[usr.y],[usr.z])")
-
-/datum/admins/proc/spawn_atom(var/object as text)
-	set category = "Debug"
-	set desc = "(atom path) Spawn an atom"
-	set name = "Spawn"
-
-	if(!check_rights(R_SPAWN))	return
-
-	if(!object)
-		var/choice = alert(src, "You haven't specified anything to match -- this will lock your game up and take a while! \
-		It will also return the entire spawn list.", "WARNING!", "Cancel", "Continue")
-		if(choice == "Cancel")
-			return
-
-	var/list/types = typesof(/atom)
-	var/list/matches = new()
-
-	for(var/path in types)
-		if(findtext("[path]", object))
-			CHECK_TICK
-			matches += path
-
-	if(matches.len==0)
-		return
-
-	var/chosen
-	if(matches.len==1)
-		chosen = matches[1]
-	else
-		chosen = input("Select an atom type", "Spawn Atom", matches[1]) as null|anything in matches
-		if(!chosen)
-			return
-	if(ispath(chosen,/turf))
-		var/turf/T = get_turf(usr.loc)
-		T.ChangeTurf(chosen)
-	else
-		new chosen(usr.loc)
-
-	log_and_message_admins("spawned [chosen] at ([usr.x],[usr.y],[usr.z])")
-	feedback_add_details("admin_verb","SA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
 
 /datum/admins/proc/show_traitor_panel(var/mob/M in GLOB.mob_list)
 	set category = "Admin"

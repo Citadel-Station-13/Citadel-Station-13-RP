@@ -35,12 +35,12 @@
 	if(rigged && locate(/obj/item/radio/electropack) in src)
 		if(isliving(usr))
 			var/mob/living/L = usr
-			if(L.electrocute_act(17, src))
-				var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-				s.set_up(5, 1, src)
-				s.start()
-				if(!CHECK_MOBILITY(usr, MOBILITY_CAN_MOVE))
-					return 2
+			L.electrocute(0, 17, 0, NONE, pick(BP_L_HAND, BP_R_HAND), src)
+			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+			s.set_up(5, 1, src)
+			s.start()
+			if(!CHECK_MOBILITY(usr, MOBILITY_CAN_MOVE))
+				return 2
 
 	playsound(src.loc, 'sound/machines/click.ogg', 15, 1, -3)
 	for(var/obj/O in src)
@@ -144,12 +144,13 @@
 	desc = "A secure crate."
 	name = "Secure crate"
 	icon_state = "securecrate"
+	broken = FALSE
+	locked = TRUE
+	secure = TRUE
 	var/redlight = "securecrater"
 	var/greenlight = "securecrateg"
 	var/sparks = "securecratesparks"
 	var/emag = "securecrateemag"
-	broken = 0
-	locked = 1
 	//closet_appearance = /singleton/closet_appearance/crate/secure
 	var/tamper_proof = 0
 
@@ -229,7 +230,7 @@
 		spawn(6)
 			cut_overlay(sparks) //Tried lots of stuff but nothing works right. so i have to use this *sadface*
 			compile_overlays()
-		playsound(src.loc, /datum/soundbyte/grouped/sparks, 60, 1)
+		playsound(src.loc, /datum/soundbyte/sparks, 60, 1)
 		locked = 0
 		broken = 1
 		to_chat(user, "<span class='notice'>You unlock \the [src].</span>")
@@ -250,7 +251,7 @@
 			spawn(6)
 				cut_overlay(sparks) //Tried lots of stuff but nothing works right. so i have to use this *sadface*
 				compile_overlays()
-			playsound(src.loc, /datum/soundbyte/grouped/sparks, 75, 1)
+			playsound(src.loc, /datum/soundbyte/sparks, 75, 1)
 			locked = 0
 			update_icon()
 	if(!opened && prob(20/severity))
@@ -564,7 +565,7 @@
 
 	starts_with = list(
 		/obj/item/stack/material/plasteel = 10,
-		/obj/fiftyspawner/steel = 5,
+		/obj/item/stack/material/steel/full_stack = 5,
 		/obj/fiftyspawner/glass = 4,
 		/obj/item/cell/high = 4,
 		/obj/item/stack/cable_coil = 2,

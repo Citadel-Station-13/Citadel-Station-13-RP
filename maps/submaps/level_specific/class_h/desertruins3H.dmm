@@ -102,10 +102,10 @@
 /area/class_h/POIs/temple)
 "I" = (
 /obj/structure/simple_door/sandstone,
-/turf/simulated/mineral/floor/classh,
+/turf/simulated/mineral/floor,
 /area/class_h/POIs/temple)
 "K" = (
-/turf/simulated/wall/sandstone/classh,
+/turf/simulated/wall/sandstone,
 /area/class_h/POIs/temple)
 "N" = (
 /mob/living/simple_mob/construct/shade,

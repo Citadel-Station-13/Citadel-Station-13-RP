@@ -153,6 +153,7 @@
 	SHOULD_CALL_PARENT(FALSE)
 	atom_flags |= ATOM_INITIALIZED
 	SSzcopy.openspace_overlays += 1
+	loc?.Entered(src, null)
 
 /atom/movable/openspace/mimic/Destroy()
 	SSzcopy.openspace_overlays -= 1

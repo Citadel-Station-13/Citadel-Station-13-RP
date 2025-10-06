@@ -110,13 +110,6 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 		message_admins("[key_name(src)] used the resize command in-game to be [new_size]% size. \
 			([src ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>" : "null"])")
 
-/*
-//Add the set_size() proc to usable verbs. By commenting this out, we can leave the proc and hand it to species that need it.
-/hook/living_new/proc/resize_setup(mob/living/H)
-	add_verb(H, /mob/living/proc/set_size)
-	return 1
-*/
-
 /**
  * Attempt to scoop up this mob up into M's hands, if the size difference is large enough.
  * @return false if normal code should continue, true to prevent normal code.
@@ -125,12 +118,8 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 	var/size_diff = M.get_effective_size() - get_effective_size()
 	if(!holder_default && holder_type)
 		holder_default = holder_type
-	if(!istype(M))
+	if(!istype(M) || !M.has_hands())
 		return FALSE
-	if(isanimal(M))
-		var/mob/living/simple_mob/SA = M
-		if(!SA.has_hands)
-			return FALSE
 	if(M.get_active_held_item() && !istype(M.get_active_held_item(), /obj/item/grab)) //scooper's hand is holding something that isn't a grab.
 		to_chat(M, SPAN_WARNING("You can't pick up someone with your occupied hand."))
 		return TRUE

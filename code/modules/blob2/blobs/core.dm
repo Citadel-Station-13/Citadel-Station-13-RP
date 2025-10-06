@@ -103,6 +103,7 @@ var/list/blob_cores = list()
 
 /obj/structure/blob/core/update_icon()
 	cut_overlays()
+	. = ..()
 	var/list/overlays_to_add = list()
 	color = null
 	var/mutable_appearance/blob_overlay = mutable_appearance('icons/mob/blob.dmi', "blob")

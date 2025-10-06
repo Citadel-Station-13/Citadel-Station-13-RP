@@ -11,7 +11,7 @@
 	id = "Wasteland192"
 	name = "Sector - Moon Wastes (192x192)"
 	display_name = "Class-D Moon Wastes"
-	absolute_path = "maps/sectors/wasteland_192/levels/wasteland_192.dmm"
+	path = "maps/sectors/wasteland_192/levels/wasteland_192.dmm"
 	base_turf = /turf/simulated/mineral/floor/classd
 	planet_path = /datum/planet/classd
 

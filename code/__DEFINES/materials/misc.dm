@@ -1,6 +1,6 @@
 
 // Material Defines
-// todo: stop using these please, we're reliance on them out.
+// todo: stop using these please, we're pushing them out in favor of `/material/typepath::id`
 #define MAT_ALGAE			"algae"
 #define MAT_BANANIUM		"bananium"
 #define MAT_CARBON			"carbon"
@@ -54,3 +54,11 @@
 #define SHARD_NONE			""
 
 #define SHEET_MATERIAL_AMOUNT 2000
+
+#define MATERIAL_TAG_BASIC_STRUCTURAL "basic structural"
+#define MATERIAL_TAG_BASIC_TRANSPARENT "basic transparent"
+#define MATERIAL_TAG_BASIC_CONDUCTOR "basic conductor"
+
+#define MATERIAL_TAG_ADVANCED_STRUCTURAL "advanced structural"
+#define MATERIAL_TAG_ADVANCED_TRANSPARENT "advanced transparent"
+#define MATERIAL_TAG_ADVANCED_CONDUCTOR "advanced conductor"

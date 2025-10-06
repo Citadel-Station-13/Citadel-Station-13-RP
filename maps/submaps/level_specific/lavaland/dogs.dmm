@@ -3,61 +3,61 @@
 /turf/template_noop,
 /area/template_noop)
 "j" = (
-/turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/bosses)
+/turf/simulated/floor/outdoors/ash_sand,
+/area/sector/surt/bosses)
 "k" = (
 /obj/structure/catwalk,
 /obj/structure/closet/crate,
 /obj/random/multiple/treasure,
 /obj/item/bone/skull,
-/turf/simulated/floor/outdoors/lava/lavaland,
-/area/lavaland/bosses)
+/turf/simulated/lava,
+/area/sector/surt/bosses)
 "m" = (
 /obj/structure/catwalk,
-/turf/simulated/floor/outdoors/lava/lavaland,
-/area/lavaland/bosses)
+/turf/simulated/lava,
+/area/sector/surt/bosses)
 "p" = (
 /obj/structure/catwalk,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
-/area/lavaland/bosses)
+/turf/simulated/mineral/floor/ignore_mapgen,
+/area/sector/surt/bosses)
 "B" = (
 /mob/living/simple_mob/vore/aggressive/corrupthound/surt,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
-/area/lavaland/bosses)
+/turf/simulated/mineral/floor/ignore_mapgen,
+/area/sector/surt/bosses)
 "D" = (
 /obj/structure/loot_pile/surface/bones,
-/turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/bosses)
+/turf/simulated/floor/outdoors/ash_sand,
+/area/sector/surt/bosses)
 "I" = (
 /obj/effect/decal/remains/posi,
-/turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/bosses)
+/turf/simulated/floor/outdoors/ash_sand,
+/area/sector/surt/bosses)
 "O" = (
 /obj/effect/decal/remains/unathi,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
-/area/lavaland/bosses)
+/turf/simulated/mineral/floor/ignore_mapgen,
+/area/sector/surt/bosses)
 "R" = (
 /mob/living/simple_mob/vore/aggressive/corrupthound/surt,
-/turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/bosses)
+/turf/simulated/floor/outdoors/ash_sand,
+/area/sector/surt/bosses)
 "T" = (
 /obj/effect/decal/remains/human,
-/turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/bosses)
+/turf/simulated/floor/outdoors/ash_sand,
+/area/sector/surt/bosses)
 "U" = (
-/turf/simulated/floor/outdoors/lava/lavaland,
-/area/lavaland/bosses)
+/turf/simulated/lava,
+/area/sector/surt/bosses)
 "W" = (
 /obj/structure/catwalk,
-/turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/bosses)
+/turf/simulated/floor/outdoors/ash_sand,
+/area/sector/surt/bosses)
 "X" = (
 /obj/effect/debris/cleanable/blood/gibs,
-/turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/bosses)
+/turf/simulated/floor/outdoors/ash_sand,
+/area/sector/surt/bosses)
 "Z" = (
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
-/area/lavaland/bosses)
+/turf/simulated/mineral/floor/ignore_mapgen,
+/area/sector/surt/bosses)
 
 (1,1,1) = {"
 a

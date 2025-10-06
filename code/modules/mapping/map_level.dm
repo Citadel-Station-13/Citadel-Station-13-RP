@@ -28,10 +28,15 @@
 	var/list/traits
 	/// attributes associated key-values
 	var/list/attributes
-	/// absolute path from server current directory to map; overrides relative_path
-	var/absolute_path
-	/// relative path. useless outside of manual maploads, as we can't parse relative path from DM yet.
-	var/relative_path
+
+	//* File *//
+	/// Absolute path to the map .dmm file.
+	///
+	/// This is determined with regards to the context of the load.
+	///
+	/// * Hardcoded shuttle templates will be the path from the server's working directory.
+	var/path
+
 	/// are we modified from our prototype/definition?
 	var/tmp/modified = FALSE
 	/// linkage enum
@@ -185,14 +190,13 @@
 	.["display_name"] = display_name
 	.["traits"] = traits
 	.["attributes"] = attributes
-	// if you are reading this in the future and you serialize/deserialize a map and it doesn't load,
-	// this is because absolute/relative paths don't actually... work, right now.
-	.["absolute_path"] = absolute_path
-	.["relative_path"] = relative_path
+	// not sure why we're even serializing paths but here we go lol
+	.["path"] = path
 	// end
 	.["linkage"] = linkage
 	.["transition"] = transition
 	.["base_turf"] = "[base_turf]"
+	.["base_area"] = "[base_area]"
 	.["link_north"] = link_north
 	.["link_south"] = link_south
 	.["link_west"] = link_west
@@ -231,12 +235,9 @@
 		traits = data["traits"]
 	if(!isnull(data["attributes"]))
 		attributes = data["attributes"]
-	// if you are reading this in the future and you serialize/deserialize a map and it doesn't load,
-	// this is because absolute/relative paths don't actually... work, right now.
-	if(!isnull(data["absolute_path"]))
-		absolute_path = data["absolute_path"]
-	if(!isnull(data["relative_path"]))
-		relative_path = data["relative_path"]
+	// not sure why we're even serializing paths but here we go lol
+	if(!isnull(data["path"]))
+		path = data["path"]
 	// end
 	if(!isnull(data["linkage"]))
 		linkage = data["linkage"]
@@ -244,6 +245,8 @@
 		transition = data["transition"]
 	if(!isnull(data["base_turf"]))
 		base_turf = text2path(data["base_turf"])
+	if(!isnull(data["base_area"]))
+		base_area = text2path(data["base_area"])
 
 	// Resolve links, including if they got serlalized as typepaths.
 	// todo: typepaths should be trampled into ids on save instead.
@@ -285,7 +288,7 @@
  * get .dmm path or file
  */
 /datum/map_level/proc/resolve_map_path()
-	return absolute_path // no relative path support yet
+	return path
 
 /**
  * get level index in dir
@@ -337,6 +340,8 @@
 			return RESOLVE(link_above)
 		if(DOWN)
 			return RESOLVE(link_below)
+		else
+			pass() // macro used immediately before being undefined; BYOND bug 2072419
 		#undef RESOLVE
 
 /**

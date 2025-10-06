@@ -24,14 +24,11 @@ SUBSYSTEM_DEF(persistence)
 /datum/controller/subsystem/persistence/Initialize()
 	/// build prototype lookup list
 	build_prototype_id_lookup()
-
 	LoadPersistence()
-
 	// todo: should this be here? save_the_world is in ticker.
 	if(CONFIG_GET(flag/persistence))
 		load_the_world()
-
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/persistence/Shutdown()
 	SavePersistence()

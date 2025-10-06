@@ -2,7 +2,7 @@
 	name = "Haste"
 	desc = "Faster than average."
 	cost = 2
-	var_changes = list("slowdown" = -0.2)
+	var_changes = list("movement_base_speed" = 5.5)
 
 	group = /datum/trait_group/speed
 	group_short_name = "Haste"
@@ -18,6 +18,8 @@
 	group_short_name = "Better"
 	sort_key = "4-Better"
 
+	excluded_species = list(SPECIES_HOLOSPHERE)
+
 /datum/trait/positive/endurance_high
 	name = "High Endurance"
 	desc = "125 hitpoints."
@@ -27,6 +29,8 @@
 	group = /datum/trait_group/health
 	group_short_name = "High"
 	sort_key = "5-High"
+
+	excluded_species = list(SPECIES_HOLOSPHERE)
 
 /datum/trait/positive/endurance_high/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)
@@ -56,7 +60,7 @@
 	name = "Sharp Melee"
 	desc = "Provides sharp melee attacks that do more damage."
 	cost = 1
-	var_changes = list("unarmed_types" = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws/good, /datum/unarmed_attack/bite/sharp/good))
+	var_changes = list("unarmed_types" = list(/datum/melee_attack/unarmed/stomp, /datum/melee_attack/unarmed/kick, /datum/melee_attack/unarmed/claws/good, /datum/melee_attack/unarmed/bite/sharp/good))
 
 	group = /datum/trait_group/bite_and_claw
 	group_short_name = "Sharp"
@@ -70,7 +74,7 @@
 	name = "Sharp Melee & Venomous Fangs"
 	desc = "That plus venomous fangs."
 	cost = 2
-	var_changes = list("unarmed_types" = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws/good/venom, /datum/unarmed_attack/bite/sharp/good/venom))
+	var_changes = list("unarmed_types" = list(/datum/melee_attack/unarmed/stomp, /datum/melee_attack/unarmed/kick, /datum/melee_attack/unarmed/claws/good/venom, /datum/melee_attack/unarmed/bite/sharp/good/venom))
 
 	group = /datum/trait_group/bite_and_claw
 	group_short_name = "Sharp, Venomous"
@@ -271,3 +275,16 @@
 	var/obj/item/organ/internal/weaver/weak/silk = new(H)
 	H.internal_organs += silk
 	H.internal_organs_by_name[O_WEAVER] = silk
+
+/datum/trait/positive/aquatic
+	name = "Aquatic"
+	desc = "You can breathe under water and can traverse water more efficiently. Additionally, you can eat others in the water."
+	cost = 1
+	sort_key = "10-Aquatic"
+
+/datum/trait/positive/aquatic/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+	ADD_TRAIT(H, TRAIT_MOB_WATER_BREATHER, LOADOUT_TRAIT)
+	add_verb(H, /mob/living/carbon/human/proc/underwater_devour)
+	add_verb(H, /mob/living/carbon/human/proc/water_stealth)
+	S.water_movement = min(-4, S.water_movement)
+	..()

@@ -8,6 +8,7 @@
 #define LOADOUT_CATEGORY_GLASSES "Glasses and Eyewear"
 #define LOADOUT_CATEGORY_GLOVES "Gloves and Handwear"
 #define LOADOUT_CATEGORY_HATS "Hats and Headwear"
+#define LOADOUT_CATEGORY_INSTRUMENTS "Instruments"
 #define LOADOUT_CATEGORY_MASKS "Masks and Facewear"
 #define LOADOUT_CATEGORY_ROLE_RESTRICTED "Role Restricted"
 #define LOADOUT_CATEGORY_SEASONAL "Seasonal Items"

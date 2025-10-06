@@ -1,11 +1,12 @@
 /datum/ammo_caliber/a9mm
+	id = "a9mm"
 	caliber = "9mm"
 
 /obj/item/ammo_casing/a9mm
 	desc = "A 9mm bullet casing."
 	icon = 'icons/modules/projectiles/casings/slim.dmi'
 	icon_state = "small"
-	caliber = /datum/ammo_caliber/a9mm
+	casing_caliber = /datum/ammo_caliber/a9mm
 	projectile_type = /obj/projectile/bullet/pistol
 	materials_base = list(MAT_STEEL = 60)
 
@@ -40,10 +41,10 @@
 	projectile_type = /obj/projectile/bullet/practice
 
 /obj/item/ammo_casing/a9mm/silver
-	desc = "A 9mm silver bullet casing. Bless and Sancitfied to banish otherworlds entities."
+	desc = "A 9mm silver bullet casing."
 	icon_state = "small-silver"
 	projectile_type = /obj/projectile/bullet/pistol/silver
-	materials_base = list(MAT_STEEL = 130, MAT_SILVER = 100)
+	materials_base = list(MAT_STEEL = 40, MAT_SILVER = 30)
 
 /obj/item/ammo_magazine/a9mm
 	ammo_caliber = /datum/ammo_caliber/a9mm
@@ -57,12 +58,12 @@
 	rendering_count = 1
 	materials_base = list(MAT_STEEL = 600)
 	ammo_preload = /obj/item/ammo_casing/a9mm
-	ammo_max = 10
+	ammo_max = 15
 
 /obj/item/ammo_magazine/a9mm/large
 	icon_state = "9x19-ext-1"
 	base_icon_state = "9x19-ext"
-	ammo_max = 17
+	ammo_max = 21
 
 /obj/item/ammo_magazine/a9mm/large/ap
 	name = "magazine (9mm armor-piercing)"
@@ -87,6 +88,10 @@
 /obj/item/ammo_magazine/a9mm/practice
 	name = "magazine (9mm practice)"
 	ammo_preload = /obj/item/ammo_casing/a9mm/practice
+
+/obj/item/ammo_magazine/a9mm/silver
+	name = "magazine (9mm silver)"
+	ammo_preload = /obj/item/ammo_casing/a9mm/silver
 
 // Compact
 /obj/item/ammo_magazine/a9mm/compact
@@ -115,6 +120,12 @@
 /obj/item/ammo_magazine/a9mm/compact/practice
 	name = "compact magazine (9mm practice)"
 	ammo_preload = /obj/item/ammo_casing/a9mm/practice
+
+/obj/item/ammo_magazine/a9mm/compact/silver
+	name = "compact magazine (9mm silver)"
+	icon_state = "9x19ag-small-1"
+	base_icon_state = "9x19ag-small"
+	ammo_preload = /obj/item/ammo_casing/a9mm/silver
 
 /obj/item/ammo_magazine/a9mm/compact/double
 	name = "compact magazine (9mm double stack)"

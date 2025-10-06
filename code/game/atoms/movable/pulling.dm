@@ -16,6 +16,8 @@
 		return
 	if(!Process_Spacemove(get_dir(pulling.loc, A)))
 		return
+	if(!pulling.can_move_pulled(src))
+		return
 	if(step(pulling, get_dir(pulling.loc, A)))
 		on_move_pulled(pulling)
 
@@ -61,7 +63,7 @@
 	. = pulling
 	pulling.pulledby = null
 	pulling.reset_glide_size()
-	pulling.on_stop_pulled_by()
+	pulling.on_stop_pulled_by(src)
 	pulling = null
 
 /**
@@ -119,11 +121,11 @@
 					if(H.species.species_flags & NO_BLOOD)
 						bloodtrail = 0
 					else
-						var/blood_volume = H.vessel.get_reagent_amount("blood")
+						var/blood_volume = H.blood_holder.get_total_volume()
 						if(blood_volume < H.species?.blood_volume * H.species?.blood_level_fatal)
 							bloodtrail = 0	//Most of it's gone already, just leave it be
 						else
-							H.vessel.remove_reagent("blood", 1)
+							H.blood_holder?.draw(1)
 				if(bloodtrail)
 					var/turf/location = M.loc
 					if(istype(location, /turf/simulated))
@@ -144,11 +146,11 @@
 							if(H.species.species_flags & NO_BLOOD)
 								bloodtrail = 0
 							else
-								var/blood_volume = H.vessel.get_reagent_amount("blood")
+								var/blood_volume = H.blood_holder.get_total_volume()
 								if(blood_volume < H.species?.blood_volume * H.species?.blood_level_fatal)
 									bloodtrail = 0	//Most of it's gone already, just leave it be
 								else
-									H.vessel.remove_reagent("blood", 1)
+									H.blood_holder?.draw(1)
 						if(bloodtrail)
 							if(istype(location, /turf/simulated))
 								location.add_blood(M)
@@ -184,3 +186,6 @@
  */
 /atom/movable/proc/on_stop_pulled_by(atom/movable/puller)
 	return
+
+/atom/movable/proc/can_move_pulled(atom/movable/puller)
+	return TRUE

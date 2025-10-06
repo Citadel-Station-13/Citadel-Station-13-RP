@@ -65,7 +65,7 @@
 	. = ..()
 	.["moleRate"] = transfer_current
 
-/obj/machinery/portable_atmospherics/powered/scrubber/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/portable_atmospherics/powered/scrubber/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -139,6 +139,7 @@
 
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/update_icon()
 	cut_overlays()
+	. = ..()
 
 	if(on && !(machine_stat & (NOPOWER|BROKEN)))
 		icon_state = "scrubber:1"

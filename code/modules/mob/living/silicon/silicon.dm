@@ -58,12 +58,12 @@
 	silicon_mob_list |= src
 	. = ..()
 	add_language(LANGUAGE_GALCOM)
-	set_default_language(SScharacters.resolve_language_name(LANGUAGE_GALCOM))
+	set_default_language(RSlanguages.fetch_local_or_throw(/datum/prototype/language/common))
 	create_translation_context()
 	init_id()
 	init_subsystems()
 
-	for(var/datum/language/L as anything in SScharacters.all_languages())
+	for(var/datum/prototype/language/L as anything in RSlanguages.fetch_subtypes_immutable(/datum/prototype/language))
 		if(L.translation_class & TRANSLATION_CLASS_LEVEL_1)
 			add_language(L)
 	add_language(LANGUAGE_EAL)
@@ -129,9 +129,9 @@
 /mob/living/silicon/proc/show_system_integrity()
 	. = list()
 	if(!src.stat)
-		STATPANEL_DATA_LINE("System integrity: [round((health/getMaxHealth())*100)]%")
+		INJECT_STATPANEL_DATA_LINE(., "System integrity: [round((health/getMaxHealth())*100)]%")
 	else
-		STATPANEL_DATA_LINE("Systems nonfunctional")
+		INJECT_STATPANEL_DATA_LINE(., "Systems nonfunctional")
 
 // This is a pure virtual function, it should be overwritten by all subclasses
 /mob/living/silicon/proc/show_malf_ai()
@@ -141,7 +141,7 @@
 /mob/living/silicon/statpanel_data(client/C)
 	. = ..()
 	if(C.statpanel_tab("Status"))
-		STATPANEL_DATA_LINE("")
+		INJECT_STATPANEL_DATA_LINE(., "")
 		. += show_system_integrity()
 		. += show_malf_ai()
 
@@ -165,11 +165,11 @@
 
 //Silicon mob language procs
 
-/mob/living/silicon/can_speak(datum/language/speaking)
+/mob/living/silicon/can_speak(datum/prototype/language/speaking)
 	return universal_speak || (speaking in src.speech_synthesizer_langs) || (speaking.name == "Noise")	//need speech synthesizer support to vocalize a language
 
 /mob/living/silicon/add_language(var/language, var/can_speak=1)
-	var/datum/language/added_language = SScharacters.resolve_language_name(language)
+	var/datum/prototype/language/added_language = RSlanguages.legacy_resolve_language_name(language)
 	if(!added_language)
 		return
 
@@ -179,7 +179,7 @@
 		return 1
 
 /mob/living/silicon/remove_language(var/rem_language)
-	var/datum/language/removed_language = SScharacters.resolve_language_name(rem_language)
+	var/datum/prototype/language/removed_language = RSlanguages.legacy_resolve_language_name(rem_language)
 	if(!removed_language)
 		return
 
@@ -196,7 +196,7 @@
 	if(default_language)
 		dat += "Current default language: [default_language] - <a href='byond://?src=\ref[src];default_lang=reset'>reset</a><br/><br/>"
 
-	for(var/datum/language/L in languages)
+	for(var/datum/prototype/language/L in languages)
 		if(!(L.language_flags & LANGUAGE_NONGLOBAL))
 			var/default_str
 			if(L == default_language)
@@ -344,9 +344,6 @@
 
 /mob/living/silicon/has_vision()
 	return 0 //NOT REAL EYES
-
-/mob/living/silicon/get_bullet_impact_effect_type(var/def_zone)
-	return BULLET_IMPACT_METAL
 
 //! Topic
 /mob/living/silicon/Topic(href, href_list)

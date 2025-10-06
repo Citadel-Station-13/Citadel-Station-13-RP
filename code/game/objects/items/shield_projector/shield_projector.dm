@@ -303,7 +303,7 @@
 	max_shield_health = 200
 
 	var/obj/vehicle/sealed/mecha/my_mecha = null
-	var/obj/item/mecha_parts/mecha_equipment/combat_shield/my_tool = null
+	var/obj/item/vehicle_module/combat_shield/my_tool = null
 
 /obj/item/shield_projector/line/exosuit/process()
 	..()

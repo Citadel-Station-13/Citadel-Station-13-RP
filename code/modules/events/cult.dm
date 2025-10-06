@@ -31,7 +31,7 @@
 	endWhen = 45
 
 /datum/event/cult/announce()
-	command_announcement.Announce("Attention [station_name()], unknown humanoid and non-humanoid entities are warping onto the ships! Advise immediate removal of these intruders before productivity aboard gets hindered!", "Screaming Signals Detected", new_sound = sound('sound/effects/c_alarm.mp3',volume=4))
+	command_announcement.Announce("Attention [location_name()], unknown humanoid and non-humanoid entities have been detected warping into the facility! We advise crew move to a secure area immediately!", "Screaming Signals Detected", new_sound = sound('sound/effects/c_alarm.mp3',volume=2))
 
 
 /datum/event/cult/start()
@@ -114,7 +114,7 @@
 	if(istype(victim, /obj/overmap/entity/visitable/ship/talon))
 		command_announcement.Announce("Attention ITV Talon. You have run into a hostile sub-sector. High potential for humanoid and non-humanoid entities to warp on your ship. Brace.", "Screaming Signals Intercepted")
 	else
-		command_announcement.Announce("Attention [station_name()], the ship has run into a hostile sub-sector and reports of humanoid and non-humanoid entities are warping onto the ships! Advise immediate removal of these intruders before productivy aboard gets hindered!", "Screaming Signals Intercepted", new_sound = 'sound/effects/c_alarm.mp3')//,volume=4)
+		command_announcement.Announce("Attention [station_name()], the ship has run into a hostile sub-sector and humanoid and non-humanoid signatures have been detected warping aboard! Expect boarders imminently!", "Screaming Signals Intercepted", new_sound = 'sound/effects/c_alarm.mp3')//,volume=4)
 		return
 
 /datum/event/cult/overmap/start()		// override - cancel if not main ship since it doesn't properly target the actual triggering ship

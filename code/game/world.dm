@@ -1,7 +1,7 @@
 #define RESTART_COUNTER_PATH "data/round_counter.txt"
 
 GLOBAL_VAR(restart_counter)
-
+GLOBAL_VAR_INIT(hub_visibility, TRUE)
 GLOBAL_VAR(topic_status_lastcache)
 GLOBAL_LIST(topic_status_cache)
 
@@ -10,11 +10,17 @@ GLOBAL_LIST(topic_status_cache)
 	turf = /turf/space/basic
 	area = /area/space
 	view = "15x15"
-	hub = "Exadv1.spacestation13"
-	hub_password = "kMZy3U5jJHSiBQjr"
 	name = "Citadel Station 13 - Roleplay"
 	status = "ERROR: Default status"
+	/// world visibility. this should never, ever be touched.
+	/// a weird byond bug yet to be resolved is probably making this
+	/// permanently delist the server if this is disabled at any point.
 	visibility = TRUE
+	/// static value, do not change
+	hub = "Exadv1.spacestation13"
+	/// static value, do not change, except to toggle visibility
+	/// * use this instead of `visibility` to toggle, via `update_hub_visibility`
+	hub_password = "kMZy3U5jJHSiBQjr"
 	movement_mode = PIXEL_MOVEMENT_MODE
 	fps = 20
 #ifdef FIND_REF_NO_CHECK_TICK
@@ -75,27 +81,16 @@ GLOBAL_LIST(topic_status_cache)
 	SSdbcore.SetRoundID()
 	SetupLogs()
 
-// #ifndef USE_CUSTOM_ERROR_HANDLER
-// 	world.log = file("[GLOB.log_directory]/dd.log")
-// #else
-// 	if (TgsAvailable())
-// 		world.log = file("[GLOB.log_directory]/dd.log") //not all runtimes trigger world/Error, so this is the only way to ensure we can see all of them.
-// #endif
-
 	// shunt redirected world log from Master's init back into world log proper, now that logging has been set up.
 	shunt_redirected_log()
-
-	config_legacy.post_load()
 
 	if(config && config_legacy.server_name != null && config_legacy.server_suffix && world.port > 0)
 		// dumb and hardcoded but I don't care~
 		config_legacy.server_name += " #[(world.port % 1000) / 100]"
 
 	// TODO - Figure out what this is. Can you assign to world.log?
-	// if(config && config_legacy.log_runtime)
+	// if(config && Configuration.get_entry(/datum/toml_config_entry/backend/logging/toggles/runtime))
 	// 	log = file("data/logs/runtime/[time2text(world.realtime,"YYYY-MM-DD-(hh-mm-ss)")]-runtime.log")
-
-	GLOB.timezoneOffset = get_timezone_offset()
 
 	callHook("startup")
 	//Emergency Fix
@@ -109,14 +104,8 @@ GLOBAL_LIST(topic_status_cache)
 	// Create frame types.
 	populate_frame_types()
 
-	// Create floor types.
-	populate_flooring_types()
-
 	// Create robolimbs for chargen.
 	populate_robolimb_list()
-
-	//Must be done now, otherwise ZAS zones and lighting overlays need to be recreated.
-	createRandomZlevel()
 
 	if(fexists(RESTART_COUNTER_PATH))
 		GLOB.restart_counter = text2num(trim(file2text(RESTART_COUNTER_PATH)))
@@ -130,7 +119,6 @@ GLOBAL_LIST(topic_status_cache)
 	#ifdef UNIT_TESTS
 	HandleTestRun()
 	#endif
-
 	if(config_legacy.ToRban)
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(ToRban_autoupdate)), 5 MINUTES)
 
@@ -206,6 +194,8 @@ GLOBAL_LIST(topic_status_cache)
 	// log which is ultimately public.
 	log_runtime(GLOB.revdata.get_log_message())
 
+	global.event_logger.setup_logger(GLOB.log_directory)
+
 /world/proc/_setup_logs_boilerplate()
 
 /world/Topic(T, addr, master, key)
@@ -258,9 +248,17 @@ GLOBAL_LIST(topic_status_cache)
 	sleep(0) //yes, 0, this'll let Reboot finish and prevent byond memes
 	qdel(src) //shut it down
 
+/**
+ * byond reboot proc
+ *
+ * @params
+ * * reason - this will be non-0 if initiated via byond admin tooling. we will always block this if a 'usr' exists and we are not OOM'd,
+ *            as we want to force admin verb usage
+ * * fast_track - skip normal shutdown processes, immediately reboot. data will be lost.
+ */
 /world/Reboot(reason = 0, fast_track = FALSE)
 	if (reason || fast_track) //special reboot, do none of the normal stuff
-		if (usr && Master && GLOB) // why && Master / GLOB? if OOM, MC gets erased :D
+		if (reason && usr && Master && GLOB) // why && Master / GLOB? if OOM, MC gets erased :D
 			message_admins("Blocked reboot request from [key_name_admin(usr)]. Please use the Reboot World verb.")
 			return // no thank you
 			// log_admin("[key_name(usr)] Has requested an immediate world restart via client side debugging tools")
@@ -317,7 +315,7 @@ GLOBAL_LIST(topic_status_cache)
 		call_ext(debug_server, "auxtools_shutdown")()
 	. = ..()
 
-/hook/startup/proc/loadMode()
+/legacy_hook/startup/proc/loadMode()
 	world.load_mode()
 	return 1
 
@@ -337,7 +335,7 @@ GLOBAL_LIST(topic_status_cache)
 	fdel(F)
 	F << the_mode
 
-/hook/startup/proc/loadMods()
+/legacy_hook/startup/proc/loadMods()
 	world.load_mods()
 	world.load_mentors() // no need to write another hook.
 	return 1
@@ -420,16 +418,17 @@ GLOBAL_LIST(topic_status_cache)
 
 	status = .
 
-/world/proc/update_hub_visibility(new_value)					//CITADEL PROC: TG's method of changing visibility
-	if(new_value)				//I'm lazy so this is how I wrap it to a bool number
-		new_value = TRUE
-	else
-		new_value = FALSE
-	if(new_value == visibility)
+/**
+ * Sets whether or not we're visible on the hub.
+ * * This is the only place where `hub_password` should be touched!
+ * * Never, ever modify `hub` or `visibility`.
+ */
+/world/proc/update_hub_visibility(new_visibility)
+	new_visibility = !!new_visibility
+	if(new_visibility == GLOB.hub_visibility)
 		return
-
-	visibility = new_value
-	if(visibility)
+	GLOB.hub_visibility = new_visibility
+	if(GLOB.hub_visibility)
 		hub_password = "kMZy3U5jJHSiBQjr"
 	else
 		hub_password = "SORRYNOPASSWORD"
@@ -510,6 +509,8 @@ GLOBAL_LIST(topic_status_cache)
 	// update
 	for(var/datum/controller/subsystem/subsystem in Master.subsystems)
 		subsystem.on_ticklag_changed(old, ticklag)
+	for(var/mob/mob in GLOB.mob_list)
+		mob.update_movespeed()
 
 //* Log Shunter *//
 
@@ -525,6 +526,9 @@ GLOBAL_LIST(topic_status_cache)
 	// we already know, we don't care
 	if(global.world_log_redirected)
 		return
+	// we're not running in tgs, do not redirect world.log
+	if(!world.params["server_service_version"])
+		return
 	global.world_log_redirected = TRUE
 	if(fexists("data/logs/world_init_temporary.log"))
 		fdel("data/logs/world_init_temporary.log")
@@ -538,8 +542,13 @@ GLOBAL_LIST(topic_status_cache)
 /world/proc/shunt_redirected_log()
 // if we're unit testing do not ever redirect world.log or the test won't show output.
 #ifndef UNIT_TESTS
+	// we're not running in tgs, do not redirect world.log
+	if(!world.params["server_service_version"])
+		return
+	// if logs are to be redirected, send it to that folder
 	if(!(OVERRIDE_LOG_DIRECTORY_PARAMETER in params))
 		world.log = file("[GLOB.log_directory]/dd.log")
+	// handle pre-init log redirection
 	if(!world_log_redirected)
 		log_world("World log shunt never happened. Something has gone wrong!")
 		return

@@ -144,6 +144,7 @@
 
 /obj/machinery/media/jukebox/update_icon()
 	cut_overlays()
+	. = ..()
 	if(machine_stat & (NOPOWER|BROKEN) || !anchored)
 		if(machine_stat & BROKEN)
 			icon_state = "[state_base]-broken"
@@ -159,7 +160,7 @@
 	if (panel_open)
 		add_overlay("panel_open")
 
-/obj/machinery/media/jukebox/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/media/jukebox/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 
@@ -240,7 +241,7 @@
 		ui = new(user, src, "Jukebox", "RetroBox - Space Style")
 		ui.open()
 
-/obj/machinery/media/jukebox/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/media/jukebox/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 

@@ -188,19 +188,19 @@
 /area/shuttle/tabiranth)
 "ag" = (
 /obj/machinery/smartfridge/survival_pod,
-/obj/item/gun/energy/sniperrifle,
-/obj/item/gun/energy/sniperrifle,
-/obj/item/gun/energy/gun/burst,
-/obj/item/gun/energy/gun/burst,
-/obj/item/gun/energy/xray,
-/obj/item/gun/energy/xray,
-/obj/item/gun/energy/netgun,
-/obj/item/gun/energy/ionrifle,
-/obj/item/gun/energy/ionrifle,
-/obj/item/gun/energy/ionrifle/pistol,
-/obj/item/gun/energy/ionrifle/pistol,
-/obj/item/storage/secure/briefcase/nsfw_pack_hybrid_combat,
-/obj/item/storage/secure/briefcase/nsfw_pack_hybrid,
+/obj/item/gun/projectile/energy/sniperrifle,
+/obj/item/gun/projectile/energy/sniperrifle,
+/obj/item/gun/projectile/energy/gun/burst,
+/obj/item/gun/projectile/energy/gun/burst,
+/obj/item/gun/projectile/energy/xray,
+/obj/item/gun/projectile/energy/xray,
+/obj/item/gun/projectile/energy/netgun,
+/obj/item/gun/projectile/energy/ionrifle,
+/obj/item/gun/projectile/energy/ionrifle,
+/obj/item/gun/projectile/energy/ionrifle/pistol,
+/obj/item/gun/projectile/energy/ionrifle/pistol,
+/obj/item/storage/secure/briefcase/nsfw_pack_hos,
+/obj/item/storage/secure/briefcase/nsfw_pack,
 /obj/item/gun/launcher/grenade,
 /obj/item/gun/launcher/grenade,
 /obj/item/storage/box/flashbangs,
@@ -213,20 +213,20 @@
 /obj/item/storage/box/teargas,
 /obj/item/storage/box/frags,
 /obj/item/storage/box/frags,
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun/nuclear,
-/obj/item/gun/energy/gun/nuclear,
-/obj/item/gun/energy/gun/nuclear,
-/obj/item/gun/energy/gun/nuclear,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
-/obj/item/gun/ballistic/automatic/p90,
-/obj/item/gun/ballistic/automatic/p90,
+/obj/item/gun/projectile/energy/gun,
+/obj/item/gun/projectile/energy/gun,
+/obj/item/gun/projectile/energy/gun,
+/obj/item/gun/projectile/energy/gun,
+/obj/item/gun/projectile/energy/gun/nuclear,
+/obj/item/gun/projectile/energy/gun/nuclear,
+/obj/item/gun/projectile/energy/gun/nuclear,
+/obj/item/gun/projectile/energy/gun/nuclear,
+/obj/item/gun/projectile/energy/laser,
+/obj/item/gun/projectile/energy/laser,
+/obj/item/gun/projectile/energy/laser,
+/obj/item/gun/projectile/energy/laser,
+/obj/item/gun/projectile/ballistic/automatic/p90,
+/obj/item/gun/projectile/ballistic/automatic/p90,
 /obj/item/ammo_magazine/a5_7mm/p90,
 /obj/item/ammo_magazine/a5_7mm/p90,
 /obj/item/ammo_magazine/a5_7mm/p90,
@@ -243,10 +243,10 @@
 /obj/item/ammo_magazine/a9mm/top_mount/rubber,
 /obj/item/ammo_magazine/a9mm/top_mount/rubber,
 /obj/item/ammo_magazine/a9mm/top_mount/rubber,
-/obj/item/gun/ballistic/automatic/sts35,
-/obj/item/gun/ballistic/automatic/sts35,
-/obj/item/gun/ballistic/automatic/sts35,
-/obj/item/gun/ballistic/automatic/sts35,
+/obj/item/gun/projectile/ballistic/automatic/sts35,
+/obj/item/gun/projectile/ballistic/automatic/sts35,
+/obj/item/gun/projectile/ballistic/automatic/sts35,
+/obj/item/gun/projectile/ballistic/automatic/sts35,
 /obj/item/ammo_magazine/a5_56mm/ap,
 /obj/item/ammo_magazine/a5_56mm/ap,
 /obj/item/ammo_magazine/a5_56mm/ap,
@@ -267,8 +267,8 @@
 /obj/item/ammo_magazine/a5_56mm,
 /obj/item/ammo_magazine/a5_56mm,
 /obj/item/ammo_magazine/a5_56mm,
-/obj/item/gun/ballistic/shotgun/pump/combat,
-/obj/item/gun/ballistic/shotgun/pump/combat,
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat,
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat,
 /obj/item/storage/box/shotgunshells/large,
 /obj/item/storage/box/shotgunshells/large,
 /obj/item/storage/box/shotgunshells/large,
@@ -285,10 +285,10 @@
 /obj/item/storage/box/stunshells,
 /obj/item/storage/box/flashshells,
 /obj/item/storage/box/flashshells,
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
+/obj/item/gun/projectile/energy/gun,
+/obj/item/gun/projectile/energy/gun,
+/obj/item/gun/projectile/energy/gun,
+/obj/item/gun/projectile/energy/gun,
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
@@ -573,10 +573,10 @@
 /obj/item/reagent_containers/glass/bucket,
 /obj/item/reagent_containers/spray/cleaner,
 /obj/item/reagent_containers/spray/cleaner,
-/obj/item/grenade/chem_grenade/cleaner,
-/obj/item/grenade/chem_grenade/cleaner,
-/obj/item/grenade/chem_grenade/cleaner,
-/obj/item/grenade/chem_grenade/cleaner,
+/obj/item/grenade/simple/chemical/premade/cleaner,
+/obj/item/grenade/simple/chemical/premade/cleaner,
+/obj/item/grenade/simple/chemical/premade/cleaner,
+/obj/item/grenade/simple/chemical/premade/cleaner,
 /obj/item/soap/nanotrasen,
 /obj/item/soap/deluxe,
 /obj/item/soap,
@@ -600,14 +600,14 @@
 	name = "Internals Locker";
 	pixel_y = -32
 	},
-/obj/item/storage/box/survival/space,
-/obj/item/storage/box/survival/space,
-/obj/item/storage/box/survival/space,
-/obj/item/storage/box/survival/space,
-/obj/item/storage/box/survival/space,
-/obj/item/storage/box/survival/space,
-/obj/item/storage/box/survival/space,
-/obj/item/storage/box/survival/space,
+/obj/item/storage/box/legacy_survival/space,
+/obj/item/storage/box/legacy_survival/space,
+/obj/item/storage/box/legacy_survival/space,
+/obj/item/storage/box/legacy_survival/space,
+/obj/item/storage/box/legacy_survival/space,
+/obj/item/storage/box/legacy_survival/space,
+/obj/item/storage/box/legacy_survival/space,
+/obj/item/storage/box/legacy_survival/space,
 /obj/item/storage/toolbox/emergency,
 /obj/item/storage/toolbox/emergency,
 /obj/item/storage/toolbox/emergency,
@@ -693,22 +693,22 @@
 /obj/item/clothing/under/ert,
 /obj/item/clothing/under/ert,
 /obj/item/clothing/under/ert,
-/obj/item/storage/box/survival/comp{
+/obj/item/storage/box/legacy_survival/comp{
 	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
-/obj/item/storage/box/survival/comp{
+/obj/item/storage/box/legacy_survival/comp{
 	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
-/obj/item/storage/box/survival/comp{
+/obj/item/storage/box/legacy_survival/comp{
 	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
-/obj/item/storage/box/survival/comp{
+/obj/item/storage/box/legacy_survival/comp{
 	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
-/obj/item/storage/box/survival/comp{
+/obj/item/storage/box/legacy_survival/comp{
 	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
-/obj/item/storage/box/survival/comp{
+/obj/item/storage/box/legacy_survival/comp{
 	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
 /obj/item/perfect_tele,
@@ -743,16 +743,16 @@
 /obj/item/cell/hyper,
 /obj/item/cell/hyper,
 /obj/item/cell/hyper,
-/obj/item/gun/energy/frontier,
-/obj/item/gun/energy/frontier,
-/obj/item/gun/energy/frontier,
-/obj/item/gun/energy/frontier,
-/obj/item/gun/energy/frontier,
-/obj/item/gun/energy/frontier,
-/obj/item/gun/energy/frontier,
-/obj/item/gun/ballistic/pistol,
-/obj/item/gun/ballistic/pistol,
-/obj/item/gun/ballistic/pistol,
+/obj/item/gun/projectile/energy/frontier,
+/obj/item/gun/projectile/energy/frontier,
+/obj/item/gun/projectile/energy/frontier,
+/obj/item/gun/projectile/energy/frontier,
+/obj/item/gun/projectile/energy/frontier,
+/obj/item/gun/projectile/energy/frontier,
+/obj/item/gun/projectile/energy/frontier,
+/obj/item/gun/projectile/ballistic/pistol,
+/obj/item/gun/projectile/ballistic/pistol,
+/obj/item/gun/projectile/ballistic/pistol,
 /obj/item/ammo_magazine/a9mm/compact,
 /obj/item/ammo_magazine/a9mm/compact,
 /obj/item/ammo_magazine/a9mm/compact,
@@ -1142,13 +1142,10 @@
 /obj/item/hardsuit/pmc/security,
 /obj/item/hardsuit/pmc/security,
 /obj/item/hardsuit/light/ninja,
-/obj/item/gun/energy/modular/cannon,
-/obj/item/gun/energy/modular/carbine,
-/obj/item/gun/energy/modular,
-/obj/item/gun/energy/medigun,
-/obj/item/gun/energy/captain,
+/obj/item/gun/projectile/energy/medigun,
+/obj/item/gun/projectile/energy/captain,
 /obj/item/material/knife/machete/deluxe{
-	material_parts = /datum/material/durasteel
+	material_parts = /datum/prototype/material/durasteel
 	},
 /obj/item/clothing/accessory/holster/machete,
 /obj/item/storage/firstaid/combat,
@@ -1178,10 +1175,10 @@
 /obj/item/cell/device/weapon/recharge/alien,
 /obj/item/cell/device/weapon/recharge/alien,
 /obj/item/cell/device/weapon/recharge/alien,
-/obj/item/storage/secure/briefcase/nsfw_pack_hybrid_combat,
-/obj/item/storage/secure/briefcase/nsfw_pack_hybrid,
-/obj/item/ammo_casing/microbattery/medical/corpse_mend,
-/obj/item/ammo_casing/microbattery/medical/corpse_mend,
+/obj/item/storage/secure/briefcase/nsfw_pack_hos,
+/obj/item/storage/secure/briefcase/nsfw_pack,
+/obj/item/ammo_casing/microbattery/vm_aml/corpse_mend,
+/obj/item/ammo_casing/microbattery/vm_aml/corpse_mend,
 /obj/item/cell/slime{
 	description_info = "This 'cell' holds a max charge of 20k and self recharges over time.";
 	icon_state = "icell";
@@ -1246,48 +1243,19 @@
 /obj/item/stack/telecrystal{
 	amount = 240
 	},
-/obj/item/card/mining_point_card{
-	mine_points = 50000
-	},
-/obj/item/card/mining_point_card{
-	mine_points = 50000
-	},
-/obj/item/card/mining_point_card{
-	mine_points = 50000
-	},
-/obj/item/card/mining_point_card{
-	mine_points = 50000
-	},
-/obj/item/card/mining_point_card{
-	mine_points = 50000
-	},
-/obj/item/card/mining_point_card{
-	mine_points = 50000
-	},
-/obj/item/card/mining_point_card/survey{
-	name = "survey point card";
-	survey_points = 5000
-	},
-/obj/item/card/mining_point_card/survey{
-	name = "survey point card";
-	survey_points = 5000
-	},
-/obj/item/card/mining_point_card/survey{
-	name = "survey point card";
-	survey_points = 5000
-	},
-/obj/item/card/mining_point_card/survey{
-	name = "survey point card";
-	survey_points = 5000
-	},
-/obj/item/card/mining_point_card/survey{
-	name = "survey point card";
-	survey_points = 5000
-	},
-/obj/item/card/mining_point_card/survey{
-	name = "survey point card";
-	survey_points = 5000
-	},
+/obj/item/point_redemption_voucher/preloaded/mining/c50000,
+/obj/item/point_redemption_voucher/preloaded/mining/c50000,
+/obj/item/point_redemption_voucher/preloaded/mining/c50000,
+/obj/item/point_redemption_voucher/preloaded/mining/c50000,
+/obj/item/point_redemption_voucher/preloaded/mining/c50000,
+/obj/item/point_redemption_voucher/preloaded/mining/c50000,
+/obj/item/point_redemption_voucher/preloaded/survey/c300,
+/obj/item/point_redemption_voucher/preloaded/survey/c300,
+/obj/item/point_redemption_voucher/preloaded/survey/c300,
+/obj/item/point_redemption_voucher/preloaded/survey/c300,
+/obj/item/point_redemption_voucher/preloaded/survey/c300,
+/obj/item/point_redemption_voucher/preloaded/survey/c300,
+
 /obj/item/survivalcapsule/military,
 /obj/item/survivalcapsule/military,
 /obj/item/survivalcapsule,
@@ -1334,12 +1302,12 @@
 /obj/item/storage/belt/holding,
 /obj/item/hardsuit/ert/assetprotection,
 /obj/item/hardsuit/ert/assetprotection,
-/obj/item/gun/energy/pulse_rifle,
-/obj/item/gun/energy/pulse_rifle,
-/obj/item/gun/energy/pulse_rifle,
-/obj/item/gun/energy/pulse_rifle,
-/obj/item/gun/ballistic/automatic/lmg,
-/obj/item/gun/ballistic/automatic/lmg,
+/obj/item/gun/projectile/energy/nt_pulse/rifle,
+/obj/item/gun/projectile/energy/nt_pulse/rifle,
+/obj/item/gun/projectile/energy/nt_pulse/rifle,
+/obj/item/gun/projectile/energy/nt_pulse/rifle,
+/obj/item/gun/projectile/ballistic/automatic/lmg,
+/obj/item/gun/projectile/ballistic/automatic/lmg,
 /obj/item/ammo_magazine/a5_56mm/saw,
 /obj/item/ammo_magazine/a5_56mm/saw,
 /obj/item/ammo_magazine/a5_56mm/saw,
@@ -1350,9 +1318,9 @@
 /obj/item/ammo_magazine/a5_56mm/saw/ap,
 /obj/item/ammo_magazine/a5_56mm/saw/ap,
 /obj/item/ammo_magazine/a5_56mm/saw/ap,
-/obj/item/gun/ballistic/automatic/z8,
-/obj/item/gun/ballistic/automatic/z8,
-/obj/item/gun/ballistic/heavysniper,
+/obj/item/gun/projectile/ballistic/automatic/z8,
+/obj/item/gun/projectile/ballistic/automatic/z8,
+/obj/item/gun/projectile/ballistic/heavysniper,
 /obj/item/storage/box/sniperammo,
 /obj/item/storage/box/sniperammo,
 /obj/item/ammo_magazine/a7_62mm,
@@ -1458,7 +1426,7 @@
 /obj/item/stack/nanopaste,
 /obj/item/stack/nanopaste,
 /obj/item/stack/nanopaste,
-/obj/item/defib_kit/jumper_kit/loaded,
+/obj/item/defib_kit/loaded,
 /obj/item/defib_kit/compact/loaded,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/tabiranth)
@@ -1469,7 +1437,7 @@
 /turf/simulated/floor/tiled/white,
 /area/shuttle/tabiranth)
 "bq" = (
-/obj/machinery/mineral/equipment_vendor,
+/obj/machinery/point_redemption_vendor/mining,
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
@@ -1550,7 +1518,7 @@
 /turf/simulated/floor/tiled/white,
 /area/shuttle/tabiranth)
 "bx" = (
-/obj/machinery/mineral/equipment_vendor/survey,
+/obj/machinery/point_redemption_vendor/survey,
 /obj/effect/floor_decal/techfloor{
 	dir = 10
 	},

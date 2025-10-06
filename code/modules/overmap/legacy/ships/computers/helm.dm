@@ -45,7 +45,6 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/computer/ship/helm/LateInitialize()
-	. = ..()
 	get_known_sectors()
 
 /obj/machinery/computer/ship/helm/proc/get_known_sectors()
@@ -145,7 +144,7 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 	data["locations"] = locations
 	return data
 
-/obj/machinery/computer/ship/helm/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/ship/helm/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 

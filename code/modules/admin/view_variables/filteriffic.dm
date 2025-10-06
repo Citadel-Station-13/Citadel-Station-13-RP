@@ -4,8 +4,8 @@
 /datum/filter_editor/New(atom/target)
 	src.target = target
 
-/datum/filter_editor/ui_state()
-	return GLOB.admin_state
+/datum/filter_editor/ui_state(mob/user)
+	return ADMIN_STATE(R_VAREDIT)
 
 /datum/filter_editor/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -24,7 +24,7 @@
 	data["target_filter_data"] = target.filter_data
 	return data
 
-/datum/filter_editor/ui_act(action, list/params, datum/tgui/ui)
+/datum/filter_editor/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -53,7 +53,7 @@
 			target.change_filter_priority(params["name"], new_priority)
 			. = TRUE
 		if("transition_filter_value")
-			target.transition_filter(params["name"], 4, params["new_data"])
+			target.transition_filter(params["name"], params["new_data"], 4)
 			. = TRUE
 		if("modify_filter_value")
 			var/list/old_filter_data = target.filter_data[params["name"]]
@@ -69,7 +69,7 @@
 		if("modify_color_value")
 			var/new_color = input(usr, "Pick new filter color", "Filteriffic Colors!") as color|null
 			if(new_color)
-				target.transition_filter(params["name"], 4, list("color" = new_color))
+				target.transition_filter(params["name"], list("color" = new_color), 4)
 				. = TRUE
 		if("modify_icon_value")
 			var/icon/new_icon = input("Pick icon:", "Icon") as null|icon

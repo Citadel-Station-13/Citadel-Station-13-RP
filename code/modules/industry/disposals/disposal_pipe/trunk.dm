@@ -9,8 +9,8 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/structure/disposalpipe/trunk/LateInitialize()
-	. = ..()
 	getlinked()
+
 /obj/structure/disposalpipe/trunk/proc/getlinked()
 	linked = null
 	var/obj/machinery/disposal/D = locate() in src.loc

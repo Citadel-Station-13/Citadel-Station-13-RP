@@ -1,4 +1,4 @@
-/datum/language/vulpkanin
+/datum/prototype/language/vulpkanin
 	id = LANGUAGE_ID_VULPKANIN
 	name = LANGUAGE_CANILUNZT
 	translation_class = TRANSLATION_CLASS_DEFAULT_STANDARD_RACE

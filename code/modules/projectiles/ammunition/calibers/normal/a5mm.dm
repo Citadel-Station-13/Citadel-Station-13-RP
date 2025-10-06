@@ -1,4 +1,5 @@
 /datum/ammo_caliber/a5mm
+	id = "a5mm"
 	caliber = "5mm"
 	diameter = 5
 
@@ -8,7 +9,7 @@
 	name = "prototype rifle magazine (5mm caseless)"
 	icon_state = "caseless-mag-0"
 	base_icon_state = "caseless-mag"
-	ammo_type = /obj/item/ammo_casing/a5mmcaseless
+	ammo_preload = /obj/item/ammo_casing/a5mmcaseless
 	ammo_caliber = /datum/ammo_caliber/a5mm
 	ammo_max = 30
 	rendering_system = GUN_RENDERING_STATES
@@ -17,7 +18,7 @@
 /obj/item/ammo_magazine/m5mmcaseless/stun
 	icon_state = "caseless-mag-alt-0"
 	base_icon_state = "caseless-mag-alt"
-	ammo_type = /obj/item/ammo_casing/a5mmcaseless/stun
+	ammo_preload = /obj/item/ammo_casing/a5mmcaseless/stun
 
 //* Ammunition *//
 
@@ -26,7 +27,7 @@
 	icon = 'icons/modules/projectiles/casings/slim.dmi'
 	icon_state = "small"
 	icon_spent = TRUE
-	caliber = /datum/ammo_caliber/a5mm
+	casing_caliber = /datum/ammo_caliber/a5mm
 	projectile_type = /obj/projectile/bullet/pistol // Close enough to be comparable.
 	materials_base = list(MAT_STEEL = 180)
 	casing_flags = CASING_DELETE

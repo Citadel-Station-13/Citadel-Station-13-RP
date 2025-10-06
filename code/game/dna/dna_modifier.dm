@@ -256,7 +256,6 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/computer/scan_consolenew/LateInitialize()
-	. = ..()
 	scan_for_scanner()
 	addtimer(CALLBACK(src, PROC_REF(recharge_injector)), 25 SECONDS)
 
@@ -374,11 +373,11 @@
 		occupantData["name"] = connected.occupant.real_name
 		occupantData["stat"] = connected.occupant.stat
 		occupantData["isViableSubject"] = 1
-		if (MUTATION_NOCLONE in connected.occupant.mutations || !src.connected.occupant.dna)
+		if ((MUTATION_NOCLONE in connected.occupant.mutations) || !src.connected.occupant.dna)
 			occupantData["isViableSubject"] = 0
 		occupantData["health"] = connected.occupant.health
 		occupantData["maxHealth"] = connected.occupant.maxHealth
-		occupantData["minHealth"] = config_legacy.health_threshold_dead
+		occupantData["minHealth"] = connected.occupant.getMinHealth()
 		occupantData["uniqueEnzymes"] = connected.occupant.dna.unique_enzymes
 		occupantData["uniqueIdentity"] = connected.occupant.dna.uni_identity
 		occupantData["structuralEnzymes"] = connected.occupant.dna.struc_enzymes
@@ -390,9 +389,7 @@
 	data["beakerVolume"] = 0
 	if(connected.beaker)
 		data["beakerLabel"] = connected.beaker.label_text ? connected.beaker.label_text : null
-		if (connected.beaker.reagents && connected.beaker.reagents.reagent_list.len)
-			for(var/datum/reagent/R in connected.beaker.reagents.reagent_list)
-				data["beakerVolume"] += R.volume
+		data["beakerVolume"] = connected.beaker.reagents?.total_volume || 0
 
 	// update the ui if it exists, returns null if no ui is passed/found
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)

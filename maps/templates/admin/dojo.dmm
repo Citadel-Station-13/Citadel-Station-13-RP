@@ -6,7 +6,7 @@
 /turf/unsimulated/wall,
 /area/ninja_dojo/dojo)
 "ac" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/wall/mineral,
 /area/ninja_dojo/dojo)
 "ad" = (
 /turf/simulated/mineral,

@@ -21,11 +21,11 @@
 "dt" = (
 /obj/structure/table/rack/shelf,
 /obj/random/toolbox,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "dv" = (
 /mob/living/simple_mob/animal/giant_spider/carrier,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "dy" = (
 /obj/structure/table/woodentable,
@@ -33,12 +33,12 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "dI" = (
 /obj/structure/bed/padded,
 /obj/spawner/corpse/syndicatesoldier,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "fG" = (
 /obj/structure/closet/wardrobe/grey,
@@ -69,17 +69,17 @@
 /obj/random/cash,
 /obj/random/cash,
 /obj/random/cash,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "nG" = (
 /obj/machinery/light/small,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "nU" = (
 /obj/structure/table/woodentable,
 /obj/item/storage/box/shotgunshells,
 /obj/item/storage/box/shotgunshells,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "ou" = (
 /turf/simulated/wall/wood,
@@ -92,7 +92,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "pP" = (
 /obj/structure/bed,
@@ -100,20 +100,20 @@
 /area/class_h/POIs/WW_Town)
 "qh" = (
 /obj/structure/table/bench/wooden,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "rw" = (
 /obj/random/multiple/minevault,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "rR" = (
 /obj/structure/table/rack/shelf,
-/obj/item/gun/ballistic/shotgun/pump/rifle,
+/obj/item/gun/projectile/ballistic/shotgun/pump/rifle,
 /turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "tN" = (
 /mob/living/simple_mob/animal/giant_spider/pepper,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "tV" = (
 /obj/structure/closet/wardrobe/white,
@@ -122,7 +122,7 @@
 "ua" = (
 /obj/structure/table/woodentable,
 /obj/machinery/chemical_dispenser/catering/bar_alc,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "ug" = (
 /obj/structure/window/reinforced{
@@ -136,16 +136,16 @@
 /area/class_h/POIs/WW_Town)
 "vV" = (
 /obj/structure/reagent_dispensers/beerkeg,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "wL" = (
 /obj/structure/table/woodentable,
 /obj/item/flashlight/lamp/green,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "wR" = (
 /obj/structure/bed/padded,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "xz" = (
 /obj/structure/table/rack/shelf,
@@ -156,18 +156,18 @@
 /area/class_h/POIs/WW_Town)
 "yT" = (
 /obj/structure/table/woodentable,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "Ab" = (
 /obj/item/moneybag/vault,
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "Ao" = (
 /obj/random/multiple/large_corp_crate/no_weapons,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "Bf" = (
 /turf/simulated/floor/wood,
@@ -176,7 +176,7 @@
 /obj/structure/bed/chair/comfy/blue{
 	dir = 1
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "Eu" = (
 /obj/machinery/door/window/holowindoor,
@@ -184,7 +184,7 @@
 /area/class_h/POIs/WW_Town)
 "Gm" = (
 /obj/structure/bed/chair/wood,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "Gz" = (
 /obj/machinery/light/small{
@@ -197,7 +197,7 @@
 /obj/item/clothing/accessory/stethoscope,
 /obj/random/medical/pillbottle,
 /obj/random/medical/pillbottle,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "GF" = (
 /obj/machinery/light/small,
@@ -208,13 +208,13 @@
 /area/class_h/POIs/WW_Town)
 "IV" = (
 /mob/living/simple_mob/animal/giant_spider,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "KK" = (
 /obj/structure/bed/chair/wood{
 	dir = 1
 	},
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "LP" = (
 /obj/structure/window/reinforced,
@@ -234,13 +234,13 @@
 /turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "PE" = (
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "PP" = (
 /obj/structure/table/woodentable,
 /obj/random/firstaid,
 /obj/random/firstaid,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "PR" = (
 /obj/structure/simple_door/wood,
@@ -256,7 +256,7 @@
 /area/class_h/POIs/WW_Town)
 "RG" = (
 /obj/random/multiple/corp_crate/no_weapons,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "RY" = (
 /mob/living/simple_mob/animal/giant_spider/nurse,
@@ -270,7 +270,7 @@
 /area/class_h/POIs/WW_Town)
 "SP" = (
 /obj/structure/bed/double,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "SU" = (
 /obj/structure/table/rack/shelf,
@@ -279,11 +279,11 @@
 /area/class_h/POIs/WW_Town)
 "SX" = (
 /obj/structure/simple_door/wood,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "Tk" = (
 /obj/machinery/vending/boozeomat,
-/turf/simulated/floor/wood/classh,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "TA" = (
 /obj/structure/closet/wardrobe/yellow,
@@ -291,7 +291,7 @@
 /area/class_h/POIs/WW_Town)
 "TN" = (
 /obj/structure/table/woodentable,
-/obj/item/gun/ballistic/revolver/detective45,
+/obj/item/gun/projectile/ballistic/revolver/detective45,
 /obj/machinery/light/small{
 	dir = 4
 	},

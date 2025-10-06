@@ -73,9 +73,9 @@ Add those other swinging traps you mentioned above!
 
 /obj/effect/trap/Initialize(mapload)
 	. = ..()
-	RegisterSimpleNetwork(id)
+	simple_network_register(id)
 
-/obj/effect/trap/SimpleNetworkReceive(id, message, list/data, datum/sender)
+/obj/effect/trap/simple_network_receive(id, message, list/data, datum/sender)
 	. = ..()
 	trip()
 
@@ -106,11 +106,12 @@ Add those other swinging traps you mentioned above!
 	. = ..()
 	update_icon()
 
-/obj/effect/trap/update_icon()
+/obj/effect/trap/update_icon_state()
 	if(!tripped)
 		icon_state = "[initial(icon_state)]"
 	else if (tripped)
 		icon_state = "[initial(icon_state)]_visible"
+	return ..()
 
 //////////////////
 /// Pit Traps
@@ -183,6 +184,8 @@ Add those other swinging traps you mentioned above!
 
 	else if(istype(AM, /mob/living))
 		var/mob/living/M = AM
+		if(M.is_avoiding_ground())
+			return
 		var/damage = rand(min_damage, max_damage)
 		M.apply_damage(damage, DAMAGE_TYPE_BRUTE)
 		M.visible_message("<span class='danger'>[M] falls onto a punji stake!</span>", \
@@ -221,6 +224,9 @@ Add those other swinging traps you mentioned above!
 		return
 
 	else if(istype(AM, /mob/living))
+		var/mob/living/M = AM
+		if(M.is_avoiding_ground())
+			return
 		break_legs(AM)
 		AM.visible_message("<span class='danger'>[AM] falls into the path of the piston!</span>", \
 						"<span class='userdanger'>Your leg is crushed by the piston!</span>")
@@ -281,6 +287,8 @@ Add those other swinging traps you mentioned above!
 
 	else if(istype(AM, /mob/living))
 		var/mob/living/M = AM
+		if(M.is_avoiding_ground())
+			return
 		var/damage = rand(min_damage, max_damage)
 		M.apply_damage(damage, DAMAGE_TYPE_TOX)
 		M.set_stunned(20 * 15)
@@ -335,7 +343,7 @@ Add those other swinging traps you mentioned above!
 
 /obj/effect/trap/launcher/Initialize(mapload)
 	. = ..()
-	RegisterSimpleNetwork(id)
+	simple_network_register(id)
 	START_PROCESSING(SSobj, src)
 
 /obj/effect/trap/launcher/fire()
@@ -396,13 +404,14 @@ Add those other swinging traps you mentioned above!
 		else
 			to_chat(user, "<span class='warning'>You can't pry this sculpture off of the wall.</span>")
 
-/obj/effect/trap/launcher/update_icon()
+/obj/effect/trap/launcher/update_icon_state()
 	if(!tripped)
 		icon_state = "[initial(icon_state)]"
 	else if (tripped && !(atom_flags & ATOM_BROKEN))
 		icon_state = "[initial(icon_state)]_visible"
 	else if (tripped && (atom_flags & ATOM_BROKEN))
 		icon_state = "[initial(icon_state)]_jammed"
+	return ..()
 
 //Stake Launcher
 /obj/effect/trap/launcher/stake
@@ -473,13 +482,14 @@ Add those other swinging traps you mentioned above!
 	. = ..()
 	visible_message(SPAN_DANGER("\The [src] breaks! It was a trap!"))
 
-/obj/effect/trap/pop_up/update_icon()
+/obj/effect/trap/pop_up/update_icon_state()
 	if(!tripped)
 		icon_state = "[initial(icon_state)]"
 	else if(tripped && !(atom_flags & ATOM_BROKEN))
 		icon_state = "[initial(icon_state)]_visible"
 	else if (tripped && (atom_flags & ATOM_BROKEN))
 		icon_state = "[initial(icon_state)]_broken"
+	return ..()
 
 //Spear Trap
 
@@ -708,13 +718,14 @@ if (istype(AM, /mob/living))
 	name = "crooked tile"
 	desc = "The edges of this tile are lifted slightly."
 
-/obj/effect/trap/pop_up/thrower/update_icon()
+/obj/effect/trap/pop_up/thrower/update_icon_state()
 	if(!tripped)
 		icon_state = "[initial(icon_state)]"
 	else if (tripped && !(atom_flags & ATOM_BROKEN))
 		icon_state = "[initial(icon_state)]_visible"
 	else if (tripped && (atom_flags & ATOM_BROKEN))
 		icon_state = "[initial(icon_state)]_jammed"
+	return ..()
 
 //////////////////
 // Falling Traps
@@ -743,13 +754,14 @@ if (istype(AM, /mob/living))
 			to_chat(user, "<span class='notice'>You cut the ropes suspending the [src], breaking it.</span>")
 			update_icon()
 
-/obj/effect/trap/falling/update_icon()
+/obj/effect/trap/falling/update_icon_state()
 	if(!tripped)
 		icon_state = "[initial(icon_state)]"
 	else if (tripped && !(atom_flags & ATOM_BROKEN))
 		icon_state = "[initial(icon_state)]_visible"
 	else if (tripped && (atom_flags & ATOM_BROKEN))
 		icon_state = "[initial(icon_state)]_jammed"
+	return ..()
 
 //Falling Log
 /obj/effect/trap/falling/log
@@ -808,10 +820,11 @@ if (istype(AM, /mob/living))
 	desc = "There's something strange about the lighting around this tile."
 	update_icon()
 
-/obj/effect/trap/falling/log/update_icon()
+/obj/effect/trap/falling/log/update_icon_state()
 	if(!tripped)
 		icon_state = "[initial(icon_state)]"
 	else if (tripped && !(atom_flags & ATOM_BROKEN))
 		icon_state = "[initial(icon_state)]_visible"
 	else if (tripped && (atom_flags & ATOM_BROKEN))
 		icon_state = "[initial(icon_state)]_jammed"
+	return ..()

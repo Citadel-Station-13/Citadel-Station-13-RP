@@ -46,7 +46,7 @@
 /area/engineering/engine_room)
 "cZ" = (
 /obj/machinery/computer/general_air_control/supermatter_core{
-	dir = 1;
+	dir = 4;
 	frequency = 1438;
 	input_tag = "cooling_in";
 	name = "Engine Cooling Control";
@@ -110,6 +110,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
+"fn" = (
+/obj/structure/closet/radiation,
+/obj/item/clothing/glasses/meson,
+/obj/item/clothing/glasses/meson,
+/turf/template_noop,
+/area/template_noop)
 "fK" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
@@ -1788,7 +1794,7 @@ Ym
 kz
 zF
 Cu
-ZO
+cZ
 ZO
 ZO
 ZO
@@ -1813,7 +1819,32 @@ ZO
 ZO
 ZO
 ZO
-cZ
+ZO
+ZO
+ZO
+ZO
+ZO
+ZO
+ZO
+ZO
+ZO
+ZO
+ZO
+ZO
+ZO
+"}
+(30,1,1) = {"
+ZO
+ZO
+ZO
+ZO
+ZO
+ZO
+ZO
+ZO
+ZO
+ZO
+fn
 ZO
 ZO
 ZO

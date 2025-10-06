@@ -35,7 +35,7 @@
 	bone_amount = 4
 	hide_amount = 6
 
-	var/datum/reagents/udder = null
+	var/datum/reagent_holder/udder = null
 
 /mob/living/simple_mob/animal/passive/cow/Initialize(mapload)
 	. = ..()

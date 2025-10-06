@@ -1,0 +1,5 @@
+author: "TheLordME"
+delete-after: True
+changes:
+  - rscadd: "Added a bunch of COMSIGnals to make the later work."
+  - rscadd: "Added new stealth ability for xenomorph hybrids"

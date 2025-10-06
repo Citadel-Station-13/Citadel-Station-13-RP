@@ -132,11 +132,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		else
 			icon_state = "[initial(icon_state)]_burnt"
 			item_state = "[initial(item_state)]_burnt"
-	if(ismob(loc))
-		var/mob/living/M = loc
-		M.update_inv_wear_mask(0)
-		M.update_inv_l_hand(0)
-		M.update_inv_r_hand(1)
+	update_worn_icon()
 	..()
 
 /obj/item/clothing/mask/smokable/examine(mob/user, dist)
@@ -173,8 +169,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			e.start()
 			qdel(src)
 			return
-		atom_flags &= ~NOREACT // allowing reagents to react after being lit
-		reagents.handle_reactions()
+		reagents.set_no_react(FALSE)
 		var/turf/T = get_turf(src)
 		T.visible_message(flavor_text)
 		update_icon()
@@ -194,6 +189,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			var/mob/living/M = loc
 			if (!nomessage)
 				to_chat(M, "<span class='notice'>Your [name] goes out.</span>")
+			if(ishuman(M))
+				var/mob/living/carbon/human/H=M
+				if(H.a_intent==INTENT_HELP && !H.incapacitated())
+					H.put_in_hands(butt)
 		qdel(src)
 	else
 		new /obj/effect/debris/cleanable/ash(T)
@@ -204,9 +203,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			lit = 0
 			icon_state = initial(icon_state)
 			item_state = initial(item_state)
-			M.update_inv_wear_mask(0)
-			M.update_inv_l_hand(0)
-			M.update_inv_r_hand(1)
+			update_worn_icon()
 			smoketime = 0
 			reagents.clear_reagents()
 			name = "empty [initial(name)]"
@@ -216,7 +213,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	STOP_PROCESSING(SSobj, src)
 	update_icon()
 
-/obj/item/clothing/mask/smokable/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/clothing/mask/smokable/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/carbon/human/H = target
 	if(lit && H == user && istype(H))
 		var/obj/item/blocked = H.check_mouth_coverage()
@@ -247,7 +244,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		text = replacetext(text, "FLAME", "[W.name]")
 		light(text)
 
-/obj/item/clothing/mask/smokable/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/clothing/mask/smokable/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/L = target
 	if(istype(L) && L.on_fire)
 		user.do_attack_animation(L)
@@ -419,10 +416,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/clothing/mask/smokable/cigarette/cigar/attackby(obj/item/W as obj, mob/user as mob)
 	..()
-
-	user.update_inv_wear_mask(0)
-	user.update_inv_l_hand(0)
-	user.update_inv_r_hand(1)
+	update_worn_icon()
 
 /obj/item/cigbutt/imp
 	icon_state = "cigimpbutt"
@@ -497,9 +491,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	else if(istype(W, /obj/item/assembly/igniter))
 		light("<span class='notice'>[user] fiddles with [W], and manages to light their [name] with the power of science.</span>")
 
-	user.update_inv_wear_mask(0)
-	user.update_inv_l_hand(0)
-	user.update_inv_r_hand(1)
+	update_worn_icon()
 
 /obj/item/clothing/mask/smokable/pipe/cobpipe
 	name = "corn cob pipe"
@@ -630,7 +622,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			else
 				to_chat(user, "<span class='warning'>You burn yourself while lighting the lighter.</span>")
 				var/mob/living/carbon/human/H = ishuman(user)? user : null
-				if (user.get_held_item_of_index(1) == src)
+				if (user.get_held_index(1) == src)
 					H?.apply_damage(2,DAMAGE_TYPE_BURN,"l_hand")
 				else
 					H?.apply_damage(2,DAMAGE_TYPE_BURN,"r_hand")
@@ -651,7 +643,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		set_light(0)
 		STOP_PROCESSING(SSobj, src)
 
-/obj/item/flame/lighter/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/flame/lighter/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/carbon/human/H = target
 	if(!istype(H))
 		return ..()

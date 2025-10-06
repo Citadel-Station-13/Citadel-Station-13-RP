@@ -50,11 +50,6 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
-"eO" = (
-/obj/structure/alien/weeds/node,
-/mob/living/simple_mob/animal/space/alien/drone,
-/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
-/area/submap/virgo2/CrashedSmuggler)
 "fa" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -292,7 +287,7 @@
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 4
 	},
-/obj/item/gun/ballistic/revolver/mateba,
+/obj/item/gun/projectile/ballistic/revolver/mateba,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "BR" = (
@@ -628,11 +623,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
-"ZN" = (
-/obj/structure/alien/weeds,
-/mob/living/simple_mob/animal/space/alien/drone,
-/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
-/area/submap/virgo2/CrashedSmuggler)
 
 (1,1,1) = {"
 Dj
@@ -731,7 +721,7 @@ HE
 Ps
 gX
 zl
-eO
+Gf
 RJ
 zl
 zl
@@ -938,7 +928,7 @@ ie
 ef
 gX
 zl
-ZN
+Gh
 Gh
 zl
 zl
@@ -1146,7 +1136,7 @@ KS
 OR
 Gh
 Gh
-ZN
+Gh
 Gh
 Gh
 zl
@@ -1167,7 +1157,7 @@ Gh
 Gh
 EY
 Gh
-eO
+Gf
 EY
 EY
 Gh
@@ -1216,7 +1206,7 @@ gv
 jf
 mP
 EY
-ZN
+Gh
 Gh
 Gh
 Gf
@@ -1249,7 +1239,7 @@ Gh
 gv
 Gh
 Gh
-ZN
+Gh
 Gh
 Gh
 zl

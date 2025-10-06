@@ -56,7 +56,7 @@
 	//see if we've identified anyone nearby
 	if(world.time - last_bloodcall > bloodcall_interval && nearby_mobs.len)
 		var/mob/living/carbon/human/M = pop(nearby_mobs)
-		if(M in view(7,src) && M.health > 20)
+		if((M in view(7,src)) && M.health > 20)
 			if(prob(50))
 				bloodcall(M)
 				nearby_mobs.Add(M)
@@ -128,7 +128,7 @@
 		B.target_turf = pick(range(1, src))
 		B.blood_DNA = list()
 		B.blood_DNA[M.dna.unique_enzymes] = M.dna.b_type
-		M.vessel.remove_reagent("blood",rand(25,50))
+		M.erase_blood(rand(25, 50))
 
 //animated blood 2 SPOOKY
 /obj/effect/debris/cleanable/blood/splatter/animated

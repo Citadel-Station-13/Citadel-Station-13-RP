@@ -14,7 +14,7 @@
 "d" = (
 /obj/structure/alien/weeds,
 /obj/structure/bed/nest,
-/obj/item/gun/ballistic/p92x/large,
+/obj/item/gun/projectile/ballistic/p92x/large,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
 "e" = (
@@ -30,7 +30,7 @@
 /obj/structure/alien/weeds,
 /obj/structure/bed/nest,
 /obj/fiftyspawner/osmium,
-/mob/living/simple_mob/animal/space/alien/drone,
+/mob/living/simple_mob/animal/space/xenomorph/neurotoxin_spitter,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
 "h" = (
@@ -46,13 +46,13 @@
 "j" = (
 /obj/structure/alien/weeds,
 /obj/structure/alien/weeds/node,
-/mob/living/simple_mob/animal/space/alien/basic_spitter,
+/mob/living/simple_mob/animal/space/xenomorph/vanguard,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
 "k" = (
 /obj/structure/alien/weeds,
 /obj/item/clothing/head/helmet/tac,
-/obj/item/gun/ballistic/SVD,
+/obj/item/gun/projectile/ballistic/SVD,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
 "A" = (
@@ -61,15 +61,16 @@
 /obj/fiftyspawner/durasteel,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
-"W" = (
+"S" = (
 /obj/structure/alien/weeds,
-/mob/living/simple_mob/animal/space/alien/drone,
+/mob/living/simple_mob/animal/space/xenomorph/sprinter,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
 "X" = (
 /obj/structure/alien/weeds,
 /obj/structure/bed/nest,
 /obj/fiftyspawner/phoron,
+/mob/living/simple_mob/animal/space/xenomorph/warrior,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
 
@@ -112,7 +113,7 @@ b
 d
 e
 e
-e
+S
 k
 b
 a
@@ -132,7 +133,7 @@ a
 a
 b
 f
-W
+e
 e
 e
 A

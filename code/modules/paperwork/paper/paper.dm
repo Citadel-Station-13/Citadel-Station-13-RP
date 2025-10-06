@@ -74,12 +74,11 @@
 			updateinfolinks()
 
 /obj/item/paper/update_icon()
-	if(icon_state == "paper_talisman")
-		return
+	cut_overlays()
+	. = ..()
 	if(info)
-		icon_state = "paper_words"
-		return
-	icon_state = "paper"
+		// todo: be like, `-content` or something not `_words`
+		add_overlay("[icon_state]_words")
 
 /obj/item/paper/proc/update_space(var/new_text)
 	if(!new_text)
@@ -95,12 +94,17 @@
 		. += "<span class='notice'>You have to go closer if you want to read it.</span>"
 	return
 
-/obj/item/paper/proc/show_content(var/mob/user, var/forceshow=0)
-	if(!user.client)
-		return
-	SSassets.send_asset_pack(user.client, /datum/asset_pack/simple/logos)
-	user.client.asset_cache_flush_browse_queue()
-	if(!(istype(user, /mob/living/carbon/human) || istype(user, /mob/observer/dead) || istype(user, /mob/living/silicon)) && !forceshow)
+/obj/item/paper/proc/show_content(mob/user, forceshow=0)
+	var/client/C
+	if (istype(user))
+		C = user.client
+	if (istype(user, /client))
+		C = user
+	if(C)
+		SSassets.send_asset_pack(C, /datum/asset_pack/simple/logos)
+		C.asset_cache_flush_browse_queue()
+
+	if(!(ishuman(user) || istype(user, /mob/observer/dead) || istype(user, /mob/living/silicon)) && !forceshow)
 		user << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[stars(info)][stamps]</BODY></HTML>", "window=[name]")
 		onclose(user, "[name]")
 	else
@@ -164,7 +168,7 @@
 		onclose(usr, "[name]")
 	return
 
-/obj/item/paper/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/paper/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	if(user.zone_sel.selecting == O_EYES)
 		user.visible_message("<span class='notice'>You show the paper to [target]. </span>", \
@@ -421,6 +425,8 @@
 			updateinfolinks()
 
 		update_space(t)
+
+		playsound(src, pick('sound/items/pen1.ogg','sound/items/pen2.ogg'), 5)
 
 		SSassets.send_asset_pack(usr.client, /datum/asset_pack/simple/logos)
 		usr.client.asset_cache_flush_browse_queue()

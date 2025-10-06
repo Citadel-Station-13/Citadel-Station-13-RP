@@ -39,7 +39,7 @@
 	icon_gib = "gibbed-a-small"
 	var/butcherable = FALSE
 	icon_rest = "warrior_sleep"
-	movement_cooldown = 1
+	movement_base_speed = 10 / 1
 	base_pixel_x = -8
 	base_pixel_y = 1
 	icon_scale_x = 1.1
@@ -48,9 +48,6 @@
 	movement_sound = 'sound/mobs/biomorphs/warrior_move.ogg'
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/warrior)
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive
-
-
-	mob_class = MOB_CLASS_ABERRATION
 
 	response_help = "pokes"
 	response_disarm = "shoves"
@@ -95,7 +92,7 @@
 	maxHealth = 150
 	health = 150
 	base_pixel_x = -8
-	movement_cooldown = -0.2
+	movement_base_speed = 4
 	legacy_melee_damage_lower = 20
 	legacy_melee_damage_upper = 20
 	base_attack_cooldown = 6
@@ -130,7 +127,7 @@
 	legacy_melee_damage_lower = 10
 	legacy_melee_damage_upper = 10
 	base_pixel_x = -8
-	movement_cooldown = 3
+	movement_base_speed = 10 / 3
 	projectiletype = /obj/projectile/energy/neurotoxin
 	base_attack_cooldown = 9
 	projectilesound = 'sound/effects/splat.ogg'
@@ -153,7 +150,7 @@
 	health = 250
 	legacy_melee_damage_lower = 20
 	legacy_melee_damage_upper = 20
-	movement_cooldown = 2
+	movement_base_speed = 10 / 2
 	base_pixel_x = -8
 	base_pixel_y = 1
 	icon_scale_x = 1.1
@@ -189,7 +186,7 @@
 	)
 	legacy_melee_damage_lower = 50
 	legacy_melee_damage_upper = 50
-	movement_cooldown = 2
+	movement_base_speed = 10 / 2
 	base_pixel_x = -17
 	base_pixel_y = 6
 	icon_scale_x = 1.3
@@ -330,7 +327,7 @@
 	legacy_melee_damage_lower = 40
 	legacy_melee_damage_upper = 40
 	attack_armor_type = DAMAGE_MODE_PIERCE | DAMAGE_MODE_SHARP
-	movement_cooldown = 3
+	movement_base_speed = 10 / 3
 	base_pixel_x = -18
 	base_pixel_y = 2
 	icon_scale_x = 1.2
@@ -378,7 +375,7 @@
 	legacy_melee_damage_lower = 70
 	legacy_melee_damage_upper = 50
 	attack_armor_pen = 60
-	movement_cooldown = 4
+	movement_base_speed = 10 / 4
 	base_pixel_x = -15
 	base_pixel_y = 6
 	icon_scale_x = 1.5
@@ -511,7 +508,7 @@
 	health = 300
 	legacy_melee_damage_lower = 35
 	legacy_melee_damage_upper = 40
-	movement_cooldown = 0
+	movement_base_speed = 6.66
 	icon_scale_x = 0.7
 	icon_scale_y = 0.7
 	base_pixel_x = -16
@@ -682,7 +679,7 @@
 	health = 250
 	legacy_melee_damage_lower = 10
 	legacy_melee_damage_upper = 10
-	movement_cooldown = 4
+	movement_base_speed = 10 / 4
 	base_pixel_x = -8
 	base_pixel_y = 1
 	icon_scale_x = 1.1
@@ -693,3 +690,4 @@
 	movement_sound = 'sound/mobs/biomorphs/spitter_move.ogg'
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/spitter)
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting/sniper
+

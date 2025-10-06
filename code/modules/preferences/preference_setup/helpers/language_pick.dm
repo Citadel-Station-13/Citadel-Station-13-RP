@@ -9,16 +9,16 @@
 	return language_pick_finalize(id, user)
 
 /datum/preferences/proc/language_pick_finalize(id, mob/user)
-	var/datum/language/L = SScharacters.resolve_language_id(id)
+	var/datum/prototype/language/L = RSlanguages.fetch(id)
 	if(!L)
 		to_chat(user, SPAN_WARNING("BUG: Invalid language ID: [id]"))
 		return TRUE
 	if(extraneous_language_ids().len > extraneous_languages_max())
 		to_chat(user, SPAN_WARNING("You cannot select another language!"))
 		return TRUE
-	var/datum/character_species/CS = character_species_datum()
+	var/datum/species/CS = character_species_datum()
 	var/list/whitelisted_ids = CS.get_whitelisted_language_ids() // cache ids from character species for speed
-	if((L.language_flags & LANGUAGE_WHITELISTED) && !((L.id in whitelisted_ids) || config.check_alien_whitelist(ckey(L.name), client_ckey)))
+	if((L.language_flags & LANGUAGE_WHITELISTED) && !((L.id in whitelisted_ids) || Configuration.check_language_whitelist(L.id, client_ckey)))
 		to_chat(user, SPAN_WARNING("[L] is a whitelisted language!"))
 		return FALSE
 	var/list/current = get_character_data(CHARACTER_DATA_LANGUAGES)
@@ -67,7 +67,7 @@ GLOBAL_LIST_EMPTY(language_picker_active)
 	var/list/data = ..()
 	var/list/built = list()
 	var/list/categories = list("General")
-	for(var/datum/language/L as anything in SScharacters.all_languages())
+	for(var/datum/prototype/language/L as anything in RSlanguages.fetch_subtypes_immutable(/datum/prototype/language))
 		if(L.language_flags & LANGUAGE_RESTRICTED)
 			continue
 		built[++built.len] = list(
@@ -86,7 +86,7 @@ GLOBAL_LIST_EMPTY(language_picker_active)
 	if(!QDELING(src))
 		qdel(src)
 
-/datum/tgui_language_picker/ui_act(action, list/params, datum/tgui/ui)
+/datum/tgui_language_picker/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	switch(action)
 		if("pick")

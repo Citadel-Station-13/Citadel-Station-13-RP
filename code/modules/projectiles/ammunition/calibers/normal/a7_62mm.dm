@@ -1,11 +1,12 @@
 /datum/ammo_caliber/a7_62mm
+	id = "a7_62mm"
 	caliber = "7.62mm"
 
 //* Casings *//
 
 /obj/item/ammo_casing/a7_62mm
 	desc = "A 7.62mm bullet casing."
-	caliber = /datum/ammo_caliber/a7_62mm
+	casing_caliber = /datum/ammo_caliber/a7_62mm
 	icon = 'icons/modules/projectiles/casings/slim.dmi'
 	icon_state = "large"
 	projectile_type = /obj/projectile/bullet/rifle/a762
@@ -22,7 +23,6 @@
 /obj/item/ammo_casing/a7_62mm/practice
 	desc = "A 7.62mm practice bullet casing."
 	icon_state = "large-white"
-	icon_state = "rifle-casing" // Need to make an icon for these
 	projectile_type = /obj/projectile/bullet/practice
 	materials_base = list(MAT_STEEL = 90)
 	worth_intrinsic = 1.5
@@ -55,10 +55,10 @@
 	projectile_type = /obj/projectile/bullet/rifle/a762/sniperhunter
 
 /obj/item/ammo_casing/a7_62mm/silver
-	desc = "A 7.62mm hunting bullet casing. Bless and Sancitfied to banish otherworlds entities."
-	icon_state = "large-white"
+	desc = "A 7.62mm silver bullet casing."
+	icon_state = "large-silver"
 	projectile_type = /obj/projectile/bullet/rifle/a762/silver
-	materials_base = list(MAT_STEEL = 300, MAT_SILVER = 150)
+	materials_base = list(MAT_STEEL = 150, MAT_SILVER = 100)
 
 //* Magazines *//
 
@@ -78,6 +78,12 @@
 /obj/item/ammo_magazine/a7_62mm/ap
 	name = "magazine (7.62mm armor-piercing)"
 	ammo_preload = /obj/item/ammo_casing/a7_62mm/ap
+
+/obj/item/ammo_magazine/a7_62mm/silver
+	name = "magazine (7.62mm silver)"
+	icon_state = "m762ag-1"
+	base_icon_state = "m762ag"
+	ammo_preload = /obj/item/ammo_casing/a7_62mm/silver
 
 /obj/item/ammo_magazine/a7_62mm/empty
 	icon_state = "m762-0"
@@ -112,7 +118,7 @@
 	ammo_current = 0
 
 /obj/item/ammo_magazine/a7_62mm/clip
-	name = "ammo clip (7.62mm)"
+	name = "rifle clip (7.62mm)"
 	ammo_preload = /obj/item/ammo_casing/a7_62mm
 	materials_base = list(MAT_STEEL = 1000)
 	ammo_max = 5
@@ -205,3 +211,22 @@
 /obj/item/ammo_magazine/a7_62mm/m60/empty
 	icon_state = "m60-0"
 	ammo_current = 0
+
+/obj/item/ammo_magazine/a7_62mm/extended
+	name = "extended magazine (7.62mm)"
+	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
+	icon_state = "m762-ext-1"
+	base_icon_state = "m762-ext"
+	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 1
+
+	materials_base = list(MAT_STEEL = 1200)
+	ammo_preload = /obj/item/ammo_casing/a7_62mm
+	ammo_caliber = /datum/ammo_caliber/a7_62mm
+	ammo_max = 20
+
+/obj/item/ammo_magazine/a7_62mm/extended/silver
+	name = "extended magazine (7.62mm silver)"
+	icon_state = "m762ag-ext-1"
+	base_icon_state = "m762ag-ext"
+	ammo_preload = /obj/item/ammo_casing/a7_62mm/silver

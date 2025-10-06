@@ -106,6 +106,60 @@
 //m_type == 2 --> audible
 /mob/proc/custom_emote(var/m_type=1,var/message = null,var/range=world.view)
 	SHOULD_NOT_OVERRIDE(TRUE)
+	if(stat || !use_me && usr == src)
+		to_chat(src, "You are unable to emote.")
+		return
+
+	var/muzzled = is_muzzled()
+	if(m_type == 2 && muzzled)
+		return
+
+	var/input
+	if(!message)
+		input = sanitize_or_reflect(input(src,"Choose an emote to display.") as text|null, src) // Reflect too long messages, within reason.
+	else
+		input = message
+	if(input)
+		log_emote(message,src) //Log before we add junk
+		//If the message starts with a comma or apostrophe, no space after the name.
+		//We have to account for sanitization so we take the whole first word to see if it's a character code.
+		var/nospace = GLOB.valid_starting_punctuation.Find(input)
+		message = "<span class='emote'><B>[src]</B>[nospace ? "" : " "][input]</span>"
+	else
+		return
+
+
+	if (message)
+		message = say_emphasis(message)
+		var/overhead_message = ("** [message] **")
+		say_overhead(overhead_message, FALSE, range)
+		SEND_SIGNAL(src, COMSIG_MOB_CUSTOM_EMOTE, src, message)
+
+ // Hearing gasp and such every five seconds is not good emotes were not global for a reason.
+ // Maybe some people are okay with that.
+
+		var/turf/T = get_turf(src)
+		if(!T) return
+		var/list/in_range = get_mobs_and_objs_in_view_fast(T,range,2,remote_ghosts = client ? TRUE : FALSE)
+		var/list/m_viewers = in_range["mobs"]
+		var/list/o_viewers = in_range["objs"]
+
+		for(var/mob in m_viewers)
+			var/mob/M = mob
+			spawn(0) // It's possible that it could be deleted in the meantime, or that it runtimes.
+				if(M)
+					if(istype(M, /mob/observer/dead/))
+						var/mob/observer/dead/D = M
+						if(ckey || (src in view(D)))
+							M.show_message(message, m_type)
+					else
+						M.show_message(message, m_type)
+
+		for(var/obj in o_viewers)
+			var/obj/O = obj
+			spawn(0)
+				if(O)
+					O.see_emote(src, message, m_type)
 
 // Shortcuts for above proc
 /mob/proc/visible_emote(var/act_desc)

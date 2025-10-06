@@ -1,5 +1,5 @@
 /obj/item/clothing/suit/armor
-	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/gun/energy,/obj/item/reagent_containers/spray/pepper,/obj/item/gun/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/flashlight/maglight,/obj/item/clothing/head/helmet)
+	allowed = list(/obj/item/gun/projectile/ballistic/sec/flash, /obj/item/gun/projectile/energy,/obj/item/reagent_containers/spray/pepper,/obj/item/gun/projectile/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/flashlight/maglight,/obj/item/clothing/head/helmet)
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
 	valid_accessory_slots = (\
@@ -194,7 +194,7 @@
 		var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 		spark_system.set_up(5, 0, user.loc)
 		spark_system.start()
-		playsound(user.loc, /datum/soundbyte/grouped/sparks, 50, 1)
+		playsound(user.loc, /datum/soundbyte/sparks, 50, 1)
 		user.forceMove(picked)
 		shieldcall_args[SHIELDCALL_ARG_FLAGS] |= SHIELDCALL_FLAG_ATTACK_BLOCKED | SHIELDCALL_FLAG_ATTACK_PASSTHROUGH
 
@@ -544,7 +544,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
 	w_class = WEIGHT_CLASS_BULKY//bulky item
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/gun/energy,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/tank/emergency/oxygen,/obj/item/clothing/head/helmet)
+	allowed = list(/obj/item/gun/projectile/ballistic/sec/flash, /obj/item/gun/projectile/energy,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/tank/emergency/oxygen,/obj/item/clothing/head/helmet)
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 	cold_protection_cover = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
@@ -896,7 +896,7 @@
 	icon = 'icons/clothing/suit/ashlander.dmi'
 	icon_state = "lamellar"
 	armor_type = /datum/armor/lavaland/ashlander
-	allowed = list(/obj/item/clothing/head/helmet/ashlander, /obj/item/melee, /obj/item/gun/ballistic)
+	allowed = list(/obj/item/clothing/head/helmet/ashlander, /obj/item/melee, /obj/item/gun/projectile/ballistic)
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/suit/armor/ashlander/xeno

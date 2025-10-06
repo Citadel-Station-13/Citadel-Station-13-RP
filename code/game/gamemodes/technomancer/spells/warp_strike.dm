@@ -26,7 +26,7 @@
 		if(!within_range(T))
 			return
 		//First, we handle who to teleport to.
-		user.setClickCooldown(5)
+		user.setClickCooldownLegacy(5)
 		var/mob/living/chosen_target = targeting_assist(T,5)		//The person who's about to get attacked.
 
 		if(!chosen_target)
@@ -69,10 +69,10 @@
 
 			if(istype(I, /obj/item))
 				var/obj/item/W = I
-				W.melee_interaction_chain(chosen_target, user)
+				W.lazy_melee_interaction_chain(chosen_target, user)
 				W.afterattack(chosen_target, user)
 			else
-				I.melee_interaction_chain(chosen_target, user)
+				I.lazy_melee_interaction_chain(chosen_target, user)
 				I.afterattack(chosen_target, user)
 		else
 			chosen_target.attack_hand(user)

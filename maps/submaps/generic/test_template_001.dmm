@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/simulated/floor/grass/default,
+/turf/simulated/floor/grass/inherit_area,
 /area/submap/generic/outside_open_air)
 "b" = (
 /turf/simulated/floor/plating/indoors,
@@ -52,7 +52,7 @@
 /area/submap/generic/outside_open_air)
 "u" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/turf/simulated/floor/tiled/default,
+/turf/simulated/floor/tiled/inherit_area,
 /area/submap/generic/inside_breath_mix)
 "v" = (
 /obj/structure/cable/green{
@@ -75,7 +75,7 @@
 /area/submap/generic/outside_roofed)
 "A" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/turf/simulated/floor/tiled/default,
+/turf/simulated/floor/tiled/inherit_area,
 /area/submap/generic/inside_breath_mix)
 "C" = (
 /obj/structure/cable/green{
@@ -97,7 +97,7 @@
 /turf/simulated/floor/plating/indoors,
 /area/submap/generic/inside_breath_mix)
 "H" = (
-/turf/simulated/floor/plating/default,
+/turf/simulated/floor/plating/inherit_area,
 /area/submap/generic/outside_roofed)
 "I" = (
 /obj/structure/fans/tiny,
@@ -107,7 +107,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/default,
+/turf/simulated/floor/tiled/inherit_area,
 /area/submap/generic/inside_breath_mix)
 "K" = (
 /obj/structure/fans/tiny,
@@ -121,15 +121,15 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/default,
+/turf/simulated/floor/tiled/inherit_area,
 /area/submap/generic/inside_breath_mix)
 "N" = (
 /obj/machinery/light,
-/turf/simulated/floor/tiled/default,
+/turf/simulated/floor/tiled/inherit_area,
 /area/submap/generic/inside_breath_mix)
 "P" = (
 /obj/structure/fans/tiny,
-/turf/simulated/floor/tiled/default,
+/turf/simulated/floor/tiled/inherit_area,
 /area/submap/generic/inside_breath_mix)
 "Q" = (
 /turf/simulated/floor/plating/outdoors,
@@ -138,13 +138,13 @@
 /mob/living/simple_mob/animal/passive/crab{
 	real_name = "Mr. Crabs"
 	},
-/turf/simulated/floor/tiled/default,
+/turf/simulated/floor/tiled/inherit_area,
 /area/submap/generic/inside_breath_mix)
 "T" = (
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/default,
+/turf/simulated/floor/tiled/inherit_area,
 /area/submap/generic/inside_breath_mix)
 "U" = (
 /obj/structure/cable/green{
@@ -158,7 +158,7 @@
 /turf/simulated/floor/grass/outdoors,
 /area/submap/generic/outside_roofed)
 "X" = (
-/turf/simulated/floor/tiled/default,
+/turf/simulated/floor/tiled/inherit_area,
 /area/submap/generic/inside_breath_mix)
 
 (1,1,1) = {"

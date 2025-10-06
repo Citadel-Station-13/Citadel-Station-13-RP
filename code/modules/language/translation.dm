@@ -15,7 +15,7 @@
  * - speaker - guy talking, optional
  * - require_perfect - must be perfect translation; used by tape recorders
  */
-/datum/translation_context/proc/can_translate(datum/language/L, atom/movable/speaker, require_perfect)
+/datum/translation_context/proc/can_translate(datum/prototype/language/L, atom/movable/speaker, require_perfect)
 	CRASH("not implemented")
 
 /**
@@ -27,7 +27,7 @@
  *
  * @return the translated message
  */
-/datum/translation_context/proc/translate(datum/language/L, atom/movable/speaker, msg)
+/datum/translation_context/proc/translate(datum/prototype/language/L, atom/movable/speaker, msg)
 	PROTECTED_PROC(TRUE)	// please use attempt_translation.
 	CRASH("not implemented")
 
@@ -41,7 +41,7 @@
  * - msg - the message to translate
  * - require_perfect - must be perfect translate; used by tape recorders
  */
-/datum/translation_context/proc/attempt_translation(datum/language/L, atom/movable/speaker, msg, require_perfect)
+/datum/translation_context/proc/attempt_translation(datum/prototype/language/L, atom/movable/speaker, msg, require_perfect)
 	CRASH("not implemented")
 
 /**
@@ -67,17 +67,17 @@
 	else
 		translated_ids = typelist(NAMEOF(src, translated_ids), make_associative_inplace_keep_values(translated_ids))
 
-/datum/translation_context/simple/can_translate(datum/language/L, atom/movable/speaker, require_perfect)
+/datum/translation_context/simple/can_translate(datum/prototype/language/L, atom/movable/speaker, require_perfect)
 	if(translated_ids?[L.id])
 		return TRUE
 	return (translation_class & L.translation_class) && !(translation_class_forbid & L.translation_class)
 
-/datum/translation_context/simple/attempt_translation(datum/language/L, atom/movable/speaker, msg, require_perfect)
+/datum/translation_context/simple/attempt_translation(datum/prototype/language/L, atom/movable/speaker, msg, require_perfect)
 	if(!can_translate(L, speaker))
 		return null
 	return translate(L, speaker, msg)
 
-/datum/translation_context/simple/translate(datum/language/L, atom/movable/speaker, msg)
+/datum/translation_context/simple/translate(datum/prototype/language/L, atom/movable/speaker, msg)
 	return msg
 
 /**
@@ -123,7 +123,7 @@
 	translated_ids = translated_ids.Copy()
 	translated_list_detached = TRUE
 
-/datum/translation_context/variable/attempt_translation(datum/language/L, atom/movable/speaker, msg, require_perfect)
+/datum/translation_context/variable/attempt_translation(datum/prototype/language/L, atom/movable/speaker, msg, require_perfect)
 	if((translation_class & L.translation_class) && !(translation_class_forbid & L.translation_class))
 		return translate(L, speaker, msg)
 	var/effective = translated_ids?[L.id]
@@ -135,15 +135,15 @@
 		return null
 	return imperfect_translation(L, speaker, msg, effective)
 
-/datum/translation_context/variable/translate(datum/language/L, atom/movable/speaker, msg)
+/datum/translation_context/variable/translate(datum/prototype/language/L, atom/movable/speaker, msg)
 	return msg	// perfect translations
 
-/datum/translation_context/variable/can_translate(datum/language/L, atom/movable/speaker, require_perfect)
+/datum/translation_context/variable/can_translate(datum/prototype/language/L, atom/movable/speaker, require_perfect)
 	if((translation_class & L.translation_class) && !(translation_class_forbid & L.translation_class))
 		return TRUE
 	return require_perfect? (translated_ids?[L.id] >= TRANSLATION_CONTEXT_PERFECT_THRESHOLD) : (!!translated_ids?[L.id])
 
-/datum/translation_context/variable/proc/imperfect_translation(datum/language/L, atom/movable/speaker, msg, efficiency)
+/datum/translation_context/variable/proc/imperfect_translation(datum/prototype/language/L, atom/movable/speaker, msg, efficiency)
 	//! all aboard the marakov train
 	var/effective_efficiency = clamp(efficiency, 0, 1)
 	var/current_efficiency = effective_efficiency * 100
@@ -216,7 +216,7 @@
 	var/list/learnable_ids
 	/// learning factor; 1, faster = up, slower = down; 0 to inf.
 	var/learn_factor = 1
-	/// callback to call with (src, datum/language/L, old_efficiency) on successful training
+	/// callback to call with (src, datum/prototype/language/L, old_efficiency) on successful training
 	var/datum/callback/on_train
 
 /datum/translation_context/variable/learning/New()
@@ -235,7 +235,7 @@
 	on_train = null
 	return ..()
 
-/datum/translation_context/variable/learning/can_translate(datum/language/L, atom/movable/speaker, require_perfect)
+/datum/translation_context/variable/learning/can_translate(datum/prototype/language/L, atom/movable/speaker, require_perfect)
 	if(require_perfect)
 		return ..()
 	if((translation_class_learn & L.translation_class) && !(translation_class_learn_forbid & L.translation_class))
@@ -244,7 +244,7 @@
 		return TRUE
 	return ..()
 
-/datum/translation_context/variable/learning/attempt_translation(datum/language/L, atom/movable/speaker, msg)
+/datum/translation_context/variable/learning/attempt_translation(datum/prototype/language/L, atom/movable/speaker, msg)
 	. = ..()
 	var/efficiency = learnable_ids?[L.id]
 	if(efficiency)
@@ -252,7 +252,7 @@
 	else if((translation_class_learn & L.translation_class) && !(translation_class_learn_forbid & L.translation_class))
 		train(L, speaker, msg, learn_factor)
 
-/datum/translation_context/variable/learning/proc/train(datum/language/L, atom/movable/speaker, msg)
+/datum/translation_context/variable/learning/proc/train(datum/prototype/language/L, atom/movable/speaker, msg)
 	// split list
 	detach_translated_ids()
 	var/old_efficiency = ((L.translation_class & translation_class) && !(L.translation_class & translation_class_forbid) && 1) || translated_ids[L.id] || 0
@@ -277,11 +277,11 @@
  */
 /datum/translation_context/omni
 
-/datum/translation_context/omni/can_translate(datum/language/L, atom/movable/speaker, require_perfect)
+/datum/translation_context/omni/can_translate(datum/prototype/language/L, atom/movable/speaker, require_perfect)
 	return TRUE
 
-/datum/translation_context/omni/translate(datum/language/L, atom/movable/speaker, msg)
+/datum/translation_context/omni/translate(datum/prototype/language/L, atom/movable/speaker, msg)
 	return msg
 
-/datum/translation_context/omni/attempt_translation(datum/language/L, atom/movable/speaker, msg)
+/datum/translation_context/omni/attempt_translation(datum/prototype/language/L, atom/movable/speaker, msg)
 	return translate(L, speaker, msg)

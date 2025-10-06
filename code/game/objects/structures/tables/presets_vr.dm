@@ -34,4 +34,4 @@
 /obj/structure/table/gold
 	icon_state = "plain_preview"
 	color = "#FFFF00"
-	material_base = /datum/material/gold
+	material_base = /datum/prototype/material/gold

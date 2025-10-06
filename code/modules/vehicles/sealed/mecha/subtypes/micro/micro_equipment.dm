@@ -4,7 +4,7 @@
 ////    WEAPONS BELOW    ////
 /////////////////////////////
 
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/microlaser
+/obj/item/vehicle_module/weapon/energy/microlaser
 	w_class = WEIGHT_CLASS_BULKY
 	desc = "A mounted laser-carbine for light exosuits."
 	equip_cooldown = 10 // same as the laser carbine
@@ -17,7 +17,7 @@
 	equip_type = EQUIP_MICRO_WEAPON
 	required_type = list(/obj/vehicle/sealed/mecha/micro/sec)
 
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/microheavy
+/obj/item/vehicle_module/weapon/energy/laser/microheavy
 	w_class = WEIGHT_CLASS_BULKY
 	desc = "A mounted laser cannon for light exosuits."
 	equip_cooldown = 30 // same as portable
@@ -30,7 +30,7 @@
 	equip_type = EQUIP_MICRO_WEAPON
 	required_type = list(/obj/vehicle/sealed/mecha/micro/sec)
 
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/microtaser
+/obj/item/vehicle_module/weapon/energy/microtaser
 	w_class = WEIGHT_CLASS_BULKY
 	desc = "A mounted taser for light exosuits."
 	name = "\improper TS-12 \"Suppressor\" integrated taser"
@@ -43,7 +43,7 @@
 	equip_type = EQUIP_MICRO_WEAPON
 	required_type = list(/obj/vehicle/sealed/mecha/micro/sec)
 
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/microshotgun
+/obj/item/vehicle_module/weapon/ballistic/microshotgun
 	w_class = WEIGHT_CLASS_BULKY
 	desc = "A mounted combat shotgun with integrated ammo-lathe."
 	name = "\improper Remington C-12 \"Boomstick\""
@@ -61,7 +61,7 @@
 	equip_type = EQUIP_MICRO_WEAPON
 	required_type = list(/obj/vehicle/sealed/mecha/micro/sec)
 
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/microshotgun/Topic(href,href_list)
+/obj/item/vehicle_module/weapon/ballistic/microshotgun/Topic(href,href_list)
 	..()
 	if(href_list["mode"])
 		mode = text2num(href_list["mode"])
@@ -78,11 +78,11 @@
 
 	return
 
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/microshotgun/get_equip_info()
+/obj/item/vehicle_module/weapon/ballistic/microshotgun/get_equip_info()
 	return "[..()] \[<a href='?src=\ref[src];mode=0'>BS</a>|<a href='?src=\ref[src];mode=1'>BB</a>|<a href='?src=\ref[src];mode=2'>S</a>\]"
 
 
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/grenade/microflashbang
+/obj/item/vehicle_module/weapon/ballistic/missile_rack/grenade/microflashbang
 	w_class = WEIGHT_CLASS_BULKY
 	desc = "A mounted grenade launcher for smaller mechs."
 	name = "\improper FP-20 mounted grenade launcher"
@@ -101,7 +101,7 @@
 //// UTILITY TOOLS BELOW ////
 /////////////////////////////
 
-/obj/item/mecha_parts/mecha_equipment/tool/drill/micro
+/obj/item/vehicle_module/tool/drill/micro
 	w_class = WEIGHT_CLASS_BULKY
 	name = "drill"
 	desc = "This is the drill that'll sorta poke holes in the heavens!"
@@ -113,7 +113,7 @@
 	equip_type = EQUIP_MICRO_UTILITY
 	required_type = list(/obj/vehicle/sealed/mecha/micro/utility)
 
-/obj/item/mecha_parts/mecha_equipment/tool/drill/micro/action(atom/target)
+/obj/item/vehicle_module/tool/drill/micro/action(atom/target)
 	if(!action_checks(target))
 		return
 	set_ready_state(0)
@@ -136,7 +136,7 @@
 					if(get_dir(chassis,M)&chassis.dir)
 						M.GetDrilled()
 				log_message("Drilled through [target]")
-				var/obj/item/mecha_parts/mecha_equipment/tool/micro/orescoop/ore_box = (locate(/obj/item/mecha_parts/mecha_equipment/tool/micro/orescoop) in chassis.equipment)
+				var/obj/item/vehicle_module/tool/micro/orescoop/ore_box = (locate(/obj/item/vehicle_module/tool/micro/orescoop) in chassis.equipment)
 				if(ore_box)
 					for(var/obj/item/stack/ore/ore in range(chassis,1))
 						if(get_dir(chassis,ore)&chassis.dir)
@@ -151,7 +151,7 @@
 	return 1
 
 
-/obj/item/mecha_parts/mecha_equipment/tool/micro/orescoop
+/obj/item/vehicle_module/tool/micro/orescoop
 	w_class = WEIGHT_CLASS_BULKY
 	name = "Mounted ore box"
 	desc = "A mounted ore scoop and hopper, for gathering ores."
@@ -163,7 +163,7 @@
 	required_type = list(/obj/vehicle/sealed/mecha/micro/utility)
 	var/orecapacity = 500
 
-/obj/item/mecha_parts/mecha_equipment/tool/micro/orescoop/action(atom/target)
+/obj/item/vehicle_module/tool/micro/orescoop/action(atom/target)
 	if(!action_checks(target))
 		return
 	set_ready_state(0)
@@ -183,7 +183,7 @@
 						ore.forceMove(src)
 	return 1
 
-/obj/item/mecha_parts/mecha_equipment/tool/micro/orescoop/Topic(href,href_list)
+/obj/item/vehicle_module/tool/micro/orescoop/Topic(href,href_list)
 	..()
 	if (href_list["empty_box"])
 		if(contents.len < 1)
@@ -194,10 +194,10 @@
 			O.loc = chassis.loc
 		occupant_message("Ore compartment emptied.")
 
-/obj/item/mecha_parts/mecha_equipment/tool/micro/orescoop/get_equip_info()
+/obj/item/vehicle_module/tool/micro/orescoop/get_equip_info()
 	return "[..()] <br /><a href='?src=\ref[src];empty_box=1'>Empty ore compartment</a>"
 
-/obj/item/mecha_parts/mecha_equipment/tool/orescoop/verb/empty_box() //so you can still get the ore out if someone detaches it from the mech
+/obj/item/vehicle_module/tool/orescoop/verb/empty_box() //so you can still get the ore out if someone detaches it from the mech
 	set name = "Empty Ore compartment"
 	set category = VERB_CATEGORY_OBJECT
 	set src in view(1)

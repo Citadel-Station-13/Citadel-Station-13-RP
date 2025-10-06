@@ -18,51 +18,39 @@
  */
 /obj/item/material/twohanded
 	w_class = WEIGHT_CLASS_BULKY
-	var/unwielded_force_multiplier = 0.25
-	var/wielded = 0
-	var/wieldsound = null
-	var/unwieldsound = null
-	var/base_icon
-	var/base_name
 	attack_sound = "swing_hit"
 	drop_sound = 'sound/items/drop/sword.ogg'
 	pickup_sound = 'sound/items/pickup/sword.ogg'
-
 	passive_parry = /datum/passive_parry/melee{
 		parry_chance_melee = 15;
 	}
 
-/obj/item/material/twohanded/update_held_icon()
-	var/mob/living/M = loc
-	if(istype(M) && M.can_wield_item(src) && is_held_twohanded(M))
-		wielded = 1
-		name = "[base_name] (wielded)"
-	else
-		wielded = 0
-		name = "[base_name]"
-	update_icon()
-	update_material_parts()
-	..()
-
-/obj/item/material/twohanded/update_material_parts()
-	. = ..()
-	if(!wielded)
-		damage_force *= unwielded_force_multiplier
-		// don't affect throwforce
+	var/base_icon
+	var/base_name
+	var/unwielded_force_multiplier = 0.25
 
 /obj/item/material/twohanded/Initialize(mapload, material_key)
 	. = ..()
+	AddComponent(/datum/component/wielding)
 	update_icon()
 
-/obj/item/material/twohanded/update_icon()
-	icon_state = "[base_icon][wielded]"
-	item_state = icon_state
+/obj/item/material/twohanded/on_wield(mob/user, hands)
+	. = ..()
+	update_icon()
 
-/obj/item/material/twohanded/dropped(mob/user, flags, atom/newLoc)
-	..()
-	if(wielded)
-		spawn(0)
-			update_held_icon()
+/obj/item/material/twohanded/on_unwield(mob/user, hands)
+	. = ..()
+	update_icon()
+
+/obj/item/material/twohanded/melee_attack(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style)
+	if(!(item_flags & ITEM_MULTIHAND_WIELDED))
+		clickchain.attack_melee_multiplier *= unwielded_force_multiplier
+	return ..()
+
+/obj/item/material/twohanded/update_icon()
+	icon_state = "[base_icon][!!(item_flags & ITEM_MULTIHAND_WIELDED)]"
+	. = ..()
+	item_state = icon_state
 
 /*
  * Fireaxe
@@ -84,27 +72,23 @@
 	pickup_sound = 'sound/items/pickup/axe.ogg'
 	heavy = TRUE
 
-/obj/item/material/twohanded/fireaxe/update_held_icon()
-	var/mob/living/M = loc
-	if(istype(M) && M.can_wield_item(src) && M.is_holding(src) && !M.hands_full())
-		wielded = 1
-		pry = 1
-		name = "[base_name] (wielded)"
-	else
-		wielded = 0
-		pry = 0
-		name = "[base_name]"
-	..()
+/obj/item/material/twohanded/fireaxe/on_wield(mob/user, hands)
+	. = ..()
+	pry = TRUE
 
-/obj/item/material/twohanded/fireaxe/attack_object(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, mult = 1)
-	if(istype(target, /obj/structure/window))
-		mult *= 2
-	else if(istype(target, /obj/effect/plant))
-		mult *= 2
+/obj/item/material/twohanded/fireaxe/on_unwield(mob/user, hands)
+	. = ..()
+	pry = FALSE
+
+/obj/item/material/twohanded/fireaxe/melee_attack(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style)
+	if(istype(clickchain.target, /obj/structure/window))
+		clickchain.attack_melee_multiplier *= 2
+	else if(istype(clickchain.target, /obj/effect/plant))
+		clickchain.attack_melee_multiplier *= 2
 	return ..()
 
 /obj/item/material/twohanded/fireaxe/foam
-	material_parts = /datum/material/toy_foam
+	material_parts = /datum/prototype/material/toy_foam
 	attack_verb = list("bonked","whacked")
 	icon_state = "fireaxe_mask0"
 	base_icon = "fireaxe_mask"
@@ -113,7 +97,7 @@
 
 /obj/item/material/twohanded/fireaxe/bone
 	desc = "A primitive version of a hefty fire axe, made from bone. Whoever made this didn't make it to save lives."
-	material_parts = /datum/material/bone
+	material_parts = /datum/prototype/material/bone
 	icon_state = "bone_axe0"
 	base_icon = "bone_axe"
 	material_color = FALSE
@@ -121,23 +105,31 @@
 /obj/item/material/twohanded/fireaxe/bronze
 	name = "Bronze Battleaxe"
 	desc = "A large twohanded battleaxe made of bronze. Its double head marks it a tool for combat alone."
-	material_parts = /datum/material/bronze
+	material_parts = /datum/prototype/material/bronze
 	icon = 'icons/obj/lavaland.dmi'
 	icon_state = "bronze_axe0"
 	base_icon = "bronze_axe"
 	material_color = FALSE
 
+/obj/item/material/twohanded/fireaxe/iron
+	name = "Woodcutter's Axe"
+	desc = "A simple iron axe for cutting down trees. Though not made of the sturdiest metal it will get the job done."
+	material_parts = /datum/prototype/material/iron
+	icon_state = "fireaxe_mask0"
+	base_icon = "fireaxe_mask"
+	material_color = TRUE
+
 /obj/item/material/twohanded/fireaxe/plasteel
-	material_parts = /datum/material/plasteel
+	material_parts = /datum/prototype/material/plasteel
 
 /obj/item/material/twohanded/fireaxe/durasteel
-	material_parts = /datum/material/durasteel
+	material_parts = /datum/prototype/material/durasteel
 
 /obj/item/material/twohanded/fireaxe/scythe/plasteel
-	material_parts = /datum/material/plasteel
+	material_parts = /datum/prototype/material/plasteel
 
 /obj/item/material/twohanded/fireaxe/scythe/durasteel
-	material_parts = /datum/material/durasteel
+	material_parts = /datum/prototype/material/durasteel
 
 /obj/item/material/twohanded/fireaxe/scythe
 	icon_state = "scythe0"
@@ -167,12 +159,11 @@
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	mob_throw_hit_sound =  'sound/weapons/pierce.ogg'
 	attack_verb = list("attacked", "poked", "jabbed", "torn", "gored")
-	material_parts = /datum/material/glass
+	material_parts = /datum/prototype/material/glass
 	material_color = 0
 	reach = 2 // Spears are long.
-	attackspeed = 20
 	weight = ITEM_WEIGHT_MELEE_SPEAR
-	var/obj/item/grenade/explosive = null
+	var/obj/item/grenade/simple/explosive = null
 	var/war_cry = "AAAAARGH!!!"
 
 /obj/item/material/twohanded/spear/Initialize(mapload, material_key)
@@ -187,7 +178,7 @@
 
 /obj/item/material/twohanded/spear/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	. = ..()
-	if(explosive && wielded) //Citadel edit removes qdel and explosive.forcemove(AM)
+	if(explosive && (item_flags & ITEM_MULTIHAND_WIELDED)) //Citadel edit removes qdel and explosive.forcemove(AM)
 		user.say("[war_cry]")
 		explosive.detonate()
 
@@ -228,7 +219,7 @@
 /obj/item/material/twohanded/spear/bone
 	name = "spear"
 	desc = "A simple, yet effective, weapon, built from bone."
-	material_parts = /datum/material/bone
+	material_parts = /datum/prototype/material/bone
 	icon_state = "bone_spear0"
 	base_icon = "bone_spear"
 	material_color = 0
@@ -237,15 +228,15 @@
 	..(mapload,"bone")
 
 /obj/item/material/twohanded/spear/plasteel
-	material_parts = /datum/material/plasteel
+	material_parts = /datum/prototype/material/plasteel
 
 /obj/item/material/twohanded/spear/durasteel
-	material_parts = /datum/material/durasteel
+	material_parts = /datum/prototype/material/durasteel
 
 /obj/item/material/twohanded/spear/bronze
 	name = "spear"
 	desc = "A spear of bone shaft and bronze head. Simplicity never goes out of style."
-	material_parts = /datum/material/bronze
+	material_parts = /datum/prototype/material/bronze
 	icon = 'icons/obj/lavaland.dmi'
 	icon_state = "bronze_spear0"
 	base_icon = "bronze_spear"
@@ -268,6 +259,6 @@
 	w_class = WEIGHT_CLASS_HUGE
 	encumbrance = ITEM_ENCUMBRANCE_MELEE_SLEDGEHAMMER
 	attack_verb = list("attacked", "smashed", "crushed", "wacked", "pounded")
-	armor_penetration = 50
 	heavy = TRUE
+	damage_tier = 4
 	can_cleave = TRUE

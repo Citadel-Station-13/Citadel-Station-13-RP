@@ -3,7 +3,7 @@
 /turf/space,
 /area)
 "ab" = (
-/turf/simulated/mineral/triumph,
+/turf/simulated/mineral,
 /area/awaymission)
 "ac" = (
 /turf/simulated/floor/airless,
@@ -43,7 +43,7 @@
 /obj/machinery/porta_turret{
 	dir = 8;
 	emagged = 1;
-	installation = /obj/item/gun/energy/lasercannon
+	installation = /obj/item/gun/projectile/energy/lasercannon
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/awaymission/BMPship3)
@@ -55,9 +55,6 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/awaymission/BMPship3)
-"an" = (
-/turf/simulated/shuttle/wall,
 /area/awaymission/BMPship3)
 "ao" = (
 /obj/structure/window/reinforced{
@@ -589,9 +586,6 @@
 	dir = 6
 	},
 /area/awaymission/BMPship1)
-"cy" = (
-/turf/simulated/shuttle/wall,
-/area/awaymission/BMPship3)
 "cA" = (
 /obj/structure/cable{
 	icon_state = "0-2"
@@ -2070,7 +2064,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/BMPship3)
 "iG" = (
-/obj/item/contraband/poster,
+/obj/item/poster,
 /turf/simulated/floor/plating,
 /area/awaymission/BMPship3)
 "iK" = (
@@ -8264,7 +8258,7 @@ aa
 aa
 aa
 ah
-cy
+ah
 cV
 ez
 dK
@@ -8393,7 +8387,7 @@ aa
 aa
 aa
 ah
-cy
+ah
 bO
 cV
 eA
@@ -8522,7 +8516,7 @@ aa
 aa
 aa
 ah
-cy
+ah
 bO
 bO
 cV
@@ -8651,7 +8645,7 @@ bj
 ao
 as
 cd
-cy
+ah
 cV
 cV
 dJ
@@ -13321,7 +13315,7 @@ aa
 aa
 aa
 ah
-an
+ah
 aq
 aq
 aA
@@ -13354,7 +13348,7 @@ do
 hf
 aq
 aq
-an
+ah
 ah
 aa
 aa
@@ -13452,7 +13446,7 @@ aa
 aa
 aa
 ah
-an
+ah
 aq
 aw
 aU
@@ -13483,7 +13477,7 @@ do
 do
 aw
 iG
-an
+ah
 ah
 aa
 aa

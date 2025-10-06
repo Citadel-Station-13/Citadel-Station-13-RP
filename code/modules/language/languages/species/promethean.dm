@@ -1,4 +1,4 @@
-/datum/language/promethean
+/datum/prototype/language/promethean
 	id = LANGUAGE_ID_PROMETHEAN
 	name = LANGUAGE_PROMETHEAN
 	desc = "A complex language of prometheans, composed of blorbling noises and bioluminescent signals."

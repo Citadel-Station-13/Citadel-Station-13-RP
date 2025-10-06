@@ -17,7 +17,7 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
  * todo: should we use reagents instead..?
  */
 /obj/item/stream_projector/medichine
-	prototype_id = "medichine-projector"
+	prototype_id = "ItemMedichineProjector"
 	name = "medichine stream projector"
 	desc = "A specialized, locked-down variant of a nanite stream projector. Deploys medichines from a cartridge onto a target's surface."
 	icon = 'icons/items/stream_projector/medichine.dmi'
@@ -182,7 +182,7 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 			entity_beam.segmentation.color = beam_color
 
 /obj/item/stream_projector/medichine/proc/beam_color(color)
-	var/list/decoded = ReadRGB(color)
+	var/list/decoded = rgb2num(color)
 	return list(
 		decoded[1] / 255, decoded[2] / 255, decoded[3] / 255,
 		0, 0, 0,
@@ -362,7 +362,7 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
  * medical beamgun cell
  */
 /obj/item/medichine_cell
-	prototype_id = "medichine-cell"
+	prototype_id = "ItemMedichineCell"
 	name = "medichine cartridge (EMPTY)"
 	desc = "A cartridge meant to hold medicinal nanites."
 	icon = 'icons/items/stream_projector/medichine.dmi'
@@ -539,7 +539,7 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 	var/list/color_rgb_list
 
 /datum/medichine_cell/New()
-	color_rgb_list = ReadRGB(color)
+	color_rgb_list = rgb2num(color)
 	for(var/i in 1 to length(effects))
 		var/datum/medichine_effect/effect = effects[i]
 		if(istype(effect))

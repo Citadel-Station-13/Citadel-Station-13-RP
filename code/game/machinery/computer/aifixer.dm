@@ -80,7 +80,7 @@
 
 	return data
 
-/obj/machinery/computer/aifixer/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/aifixer/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 	if(!occupier)
@@ -115,18 +115,19 @@
 			if(oldstat != occupier.stat)
 				update_icon()
 
-/obj/machinery/computer/aifixer/update_icon()
-	. = ..()
+/obj/machinery/computer/aifixer/make_legacy_overlays()
+	var/list/to_add_overlays = list()
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
 
 	if(restoring)
-		. += "ai-fixer-on"
+		to_add_overlays += "ai-fixer-on"
 	if (occupier)
 		switch (occupier.stat)
 			if (CONSCIOUS)
-				. += "ai-fixer-full"
+				to_add_overlays += "ai-fixer-full"
 			if (UNCONSCIOUS)
-				. += "ai-fixer-404"
+				to_add_overlays += "ai-fixer-404"
 	else
-		. += "ai-fixer-empty"
+		to_add_overlays += "ai-fixer-empty"
+	add_overlay(to_add_overlays)

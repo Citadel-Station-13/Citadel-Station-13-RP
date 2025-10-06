@@ -23,7 +23,7 @@
 	H.undershirt = "Nude" //changing underwear/shirt/socks doesn't seem to function correctly right now because of some bug elsewhere?
 	H.socks = "Nude"
 	H.update_body(TRUE)
-	H.language_holder.selected_language = /datum/language/sylvan
+	H.language_holder.selected_language = /datum/prototype/language/sylvan
 
 //Preserved terrarium/seed vault: Spawns in seed vault structures in lavaland. Ghosts become plantpeople and are advised to begin growing plants in the room near them.
 /obj/structure/ghost_role_spawner/seed_vault

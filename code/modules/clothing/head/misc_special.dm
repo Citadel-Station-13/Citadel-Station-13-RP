@@ -54,7 +54,7 @@
 
 	if(src.up)
 		src.up = !src.up
-		body_cover_flags |= (EYES|FACE)
+		set_body_cover_flags(body_cover_flags | (EYES|FACE))
 		inv_hide_flags |= (HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE)
 		icon_state = base_state
 		flash_protection = FLASH_PROTECTION_MAJOR
@@ -62,7 +62,7 @@
 		to_chat(usr, "You flip the [src] down to protect your eyes.")
 	else
 		src.up = !src.up
-		body_cover_flags &= ~(EYES|FACE)
+		set_body_cover_flags(body_cover_flags & ~(EYES|FACE))
 		inv_hide_flags &= ~(HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE)
 		icon_state = "[base_state]up"
 		flash_protection = FLASH_PROTECTION_NONE
@@ -118,47 +118,6 @@
 		SLOT_ID_LEFT_HAND = "ararwelding",
 		SLOT_ID_RIGHT_HAND = "ararwelding",
 		)
-
-/*
- * Cakehat
- */
-/obj/item/clothing/head/cakehat
-	name = "cake-hat"
-	desc = "It's tasty looking!"
-	icon_state = "cake0"
-	var/onfire = 0
-	body_cover_flags = HEAD
-
-/obj/item/clothing/head/cakehat/process(delta_time)
-	if(!onfire)
-		STOP_PROCESSING(SSobj, src)
-		return
-
-	var/turf/location = src.loc
-	if(istype(location, /mob/))
-		var/mob/living/carbon/human/M = location
-		if(M.is_holding(src) || M.head == src)
-			location = M.loc
-
-	if (istype(location, /turf))
-		location.hotspot_expose(700, 1)
-
-/obj/item/clothing/head/cakehat/attack_self(mob/user, datum/event_args/actor/actor)
-	. = ..()
-	if(.)
-		return
-	onfire = !(onfire)
-	if (onfire)
-		damage_force = 3
-		damage_type = DAMAGE_TYPE_BURN
-		icon_state = "cake1"
-		START_PROCESSING(SSobj, src)
-	else
-		damage_force = 0
-		damage_type = DAMAGE_TYPE_BRUTE
-		icon_state = "cake0"
-	return
-
 
 /*
  * Ushanka

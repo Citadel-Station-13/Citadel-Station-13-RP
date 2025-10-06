@@ -273,6 +273,7 @@ modular computers
 	path = /obj/item/clothing/head/welding/arar
 
 /datum/loadout_entry/utility/webbing
+	slot = /datum/inventory_slot/abstract/attach_as_accessory
 	name = "Webbing - Simple"
 	path = /obj/item/clothing/accessory/storage/webbing
 

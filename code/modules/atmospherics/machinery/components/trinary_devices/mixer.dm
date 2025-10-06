@@ -20,7 +20,8 @@
 
 	//node 3 is the outlet, nodes 1 & 2 are intakes
 
-/obj/machinery/atmospherics/component/trinary/mixer/update_icon(var/safety = 0)
+/obj/machinery/atmospherics/component/trinary/mixer/update_icon()
+	. = ..()
 	if(tee)
 		icon_state = "t"
 	else if(mirrored)
@@ -99,7 +100,7 @@
 		return
 	ui_interact(user)
 
-/obj/machinery/atmospherics/component/trinary/mixer/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/atmospherics/component/trinary/mixer/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 

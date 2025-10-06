@@ -31,11 +31,12 @@
 	unregister_radio(src, frequency)
 	. = ..()
 
-/obj/machinery/atmospherics/component/unary/outlet_injector/update_icon()
+/obj/machinery/atmospherics/component/unary/outlet_injector/update_icon_state()
 	if(!powered())
 		icon_state = "off"
 	else
 		icon_state = "[use_power ? "on" : "off"]"
+	return ..()
 
 /obj/machinery/atmospherics/component/unary/outlet_injector/update_underlays()
 	if(..())
@@ -108,7 +109,7 @@
 	data["max_rate"] = round(air_contents.volume)
 	return data
 
-/obj/machinery/atmospherics/component/unary/outlet_injector/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/atmospherics/component/unary/outlet_injector/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return
 

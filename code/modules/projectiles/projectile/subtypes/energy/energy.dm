@@ -61,24 +61,39 @@
 	name = "electrode"
 	icon_state = "spark"
 	fire_sound = 'sound/weapons/Gunshot2.ogg'
-	taser_effect = 1
-	agony = 40
+	base_projectile_effects = list(
+		/datum/projectile_effect/electrical_impulse{
+			shock_agony = 40;
+		}
+	)
 	light_range = 2
 	light_power = 0.5
 	light_color = "#FFFFFF"
 	//Damage will be handled on the MOB side, to prevent window shattering.
 
 /obj/projectile/energy/electrode/strong
-	agony = 55
+	base_projectile_effects = list(
+		/datum/projectile_effect/electrical_impulse{
+			shock_agony = 55;
+		}
+	)
 
 /obj/projectile/energy/electrode/stunshot
 	name = "stunshot"
 	damage_force = 5
-	agony = 80
+	base_projectile_effects = list(
+		/datum/projectile_effect/electrical_impulse{
+			shock_agony = 80;
+		}
+	)
 
 /obj/projectile/energy/electrode/goldenbolt	// MIGHTY GOLDEN BOLT
 	name = "taser bolt"
-	agony = 80
+	base_projectile_effects = list(
+		/datum/projectile_effect/electrical_impulse{
+			shock_agony = 80;
+		}
+	)
 
 /obj/projectile/energy/declone
 	name = "declone"
@@ -98,7 +113,7 @@
 	icon_state = "toxin"
 	damage_force = 5
 	damage_type = DAMAGE_TYPE_TOX
-	agony = 120
+	damage_inflict_agony = 120
 	damage_flag = ARMOR_ENERGY
 
 	combustion = FALSE
@@ -108,7 +123,7 @@
 	icon_state = "cbbolt"
 	damage_force = 10
 	damage_type = DAMAGE_TYPE_TOX
-	agony = 40
+	damage_inflict_agony = 40
 	stutter = 10
 
 /obj/projectile/energy/bolt/large
@@ -121,10 +136,18 @@
 	fire_sound = 'sound/effects/splat.ogg'
 	damage_force = 40
 	damage_type = DAMAGE_TYPE_BURN
-	agony = 10
-	damage_flag = ARMOR_BIO
-	armor_penetration = 25	// It's acid
+	damage_inflict_agony = 10
+	damage_flag = ARMOR_ACID
+	combustion = FALSE
 
+/obj/projectile/energy/acid/weak
+	name = "acidic spit"
+	icon_state = "neurotoxin"
+	fire_sound = 'sound/effects/splat.ogg'
+	damage_force = 20
+	damage_type = DAMAGE_TYPE_BURN
+	damage_inflict_agony = 10
+	damage_flag = ARMOR_ACID
 	combustion = FALSE
 
 /obj/projectile/energy/neurotoxin
@@ -133,10 +156,8 @@
 	fire_sound = 'sound/effects/splat.ogg'
 	damage_force = 5
 	damage_type = DAMAGE_TYPE_BIOACID
-	agony = 23
-	damage_flag = ARMOR_BIO
-	armor_penetration = 25	// It's acid-based
-
+	damage_inflict_agony = 23
+	damage_flag = ARMOR_ACID
 	combustion = FALSE
 
 /obj/projectile/energy/neurotoxin/toxic //New alien mob projectile to match the player-variant's projectiles.
@@ -145,10 +166,8 @@
 	fire_sound = 'sound/effects/splat.ogg'
 	damage_force = 20
 	damage_type = DAMAGE_TYPE_BIOACID
-	agony = 30
-	damage_flag = ARMOR_BIO
-	armor_penetration = 25	// It's acid-based
-
+	damage_inflict_agony = 30
+	damage_flag = ARMOR_ACID
 
 /obj/projectile/energy/phoron
 	name = "phoron bolt"
@@ -167,10 +186,9 @@
 	name = "plasma pulse"
 	icon_state = "plasma_stun"
 	fire_sound = 'sound/weapons/blaster.ogg'
-	armor_penetration = 10
 	range = WORLD_ICON_SIZE * 4
 	damage_force = 5
-	agony = 55
+	damage_inflict_agony = 55
 	damage_type = DAMAGE_TYPE_BURN
 	vacuum_traversal = 0	//Projectile disappears in empty space
 
@@ -181,12 +199,12 @@
 	var/ear_safety = 0
 	ear_safety = M.get_ear_protection()
 	if(ear_safety == 1)
-		M.Confuse(150)
+		M.Confuse(6)
 	else if (ear_safety > 1)
-		M.Confuse(30)
+		M.Confuse(3)
 	else if (!ear_safety)
-		M.afflict_stun(20 * 10)
-		M.afflict_paralyze(20 * 2)
+		M.afflict_stun(2 SECONDS)
+		M.afflict_paralyze(0.5 SECONDS)
 		M.ear_damage += rand(1, 10)
 		M.ear_deaf = max(M.ear_deaf,15)
 	if (M.ear_damage >= 15)
@@ -209,14 +227,13 @@
 	icon_state = "blue_pellet"
 	fire_sound = 'sound/weapons/Laser.ogg'
 	damage_force = 5
-	armor_penetration = 75
 	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GLASS | ATOM_PASS_GRILLE
 	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_ENERGY
 	light_color = "#0000FF"
 
 	embed_chance = 0
-	muzzle_type = /obj/effect/projectile/muzzle/pulse
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/pulse
 
 /obj/projectile/energy/phase
 	name = "phase wave"

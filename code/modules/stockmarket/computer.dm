@@ -30,7 +30,7 @@
 
 //! ## MAIN TGUI SCREEN ## !//
 
-/obj/machinery/computer/stockexchange/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/stockexchange/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 
@@ -63,7 +63,6 @@
 					continue
 			var/datum/browser/popup = new(usr, "stock_logs", "Stock Transaction Logs", 600, 400)
 			popup.set_content(dat)
-			popup.set_title_image(usr.browse_rsc_icon(src.icon, src.icon_state))
 			popup.open()
 
 		if("stocks_archive")
@@ -91,7 +90,6 @@
 			dat += "</div></body></html>"
 			var/datum/browser/popup = new(usr, "archive_[S.name]", "Stock News", 600, 400)
 			popup.set_content(dat)
-			popup.set_title_image(usr.browse_rsc_icon(src.icon, src.icon_state))
 			popup.open()
 
 		if("stocks_history")
@@ -212,7 +210,7 @@
 	//data["var"] = var
 	return data
 
-/obj/machinery/computer/stockexchange/history/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/stockexchange/history/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return
 	switch(action)
@@ -235,7 +233,7 @@
 	//data["var"] = var
 	return data
 
-/obj/machinery/computer/stockexchange/archive/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/stockexchange/archive/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return
 

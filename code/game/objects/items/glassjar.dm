@@ -5,7 +5,7 @@
 	icon_state = "jar"
 	w_class = WEIGHT_CLASS_SMALL
 	materials_base = list(MAT_GLASS = 200)
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	var/list/accept_mobs = list(/mob/living/simple_mob/animal/passive/lizard, /mob/living/simple_mob/animal/passive/mouse, /mob/living/simple_mob/animal/sif/leech, /mob/living/simple_mob/animal/sif/frostfly, /mob/living/simple_mob/animal/sif/glitterfly)
 	var/contains = 0 // 0 = nothing, 1 = money, 2 = animal, 3 = spiderling
 	drop_sound = 'sound/items/drop/glass.ogg'
@@ -84,6 +84,7 @@
 /obj/item/glass_jar/update_icon() // Also updates name and desc
 	underlays.Cut()
 	cut_overlays()
+	. = ..()
 	switch(contains)
 		if(0)
 			name = initial(name)

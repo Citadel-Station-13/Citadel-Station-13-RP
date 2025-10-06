@@ -33,7 +33,7 @@
 /datum/recipe/syntiburger
 	items = list(
 		/obj/item/reagent_containers/food/snacks/bun,
-		/obj/item/reagent_containers/food/snacks/meat/syntiflesh
+		/obj/item/reagent_containers/food/snacks/meat/synthflesh
 	)
 	result = /obj/item/reagent_containers/food/snacks/monkeyburger
 
@@ -228,8 +228,8 @@
 /datum/recipe/syntikabob
 	items = list(
 		/obj/item/stack/rods,
-		/obj/item/reagent_containers/food/snacks/meat/syntiflesh,
-		/obj/item/reagent_containers/food/snacks/meat/syntiflesh
+		/obj/item/reagent_containers/food/snacks/meat/synthflesh,
+		/obj/item/reagent_containers/food/snacks/meat/synthflesh
 	)
 	result = /obj/item/reagent_containers/food/snacks/monkeykabob
 
@@ -277,7 +277,7 @@
 
 /datum/recipe/syntisteak
 	reagents = list("sodiumchloride" = 1, "blackpepper" = 1)
-	items = list(/obj/item/reagent_containers/food/snacks/meat/syntiflesh)
+	items = list(/obj/item/reagent_containers/food/snacks/meat/synthflesh)
 	result = /obj/item/reagent_containers/food/snacks/meatsteak
 
 
@@ -1579,7 +1579,7 @@
 
 /datum/recipe/shrimpcocktail
 	fruit = list("tomato" = 2, "chili" = 2, "lemon" = 2)
-	reagents = list("water" = 5, "sodiumchloride" = 5, "pepper" = 5)
+	reagents = list("water" = 5, "sodiumchloride" = 5, "blackpepper" = 5)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/shrimp,
 		/obj/item/reagent_containers/food/snacks/shrimp,

@@ -1,3 +1,16 @@
+/**
+ * # Floors.
+ *
+ * ## A note on what a floor is and isn't.
+ *
+ * We need to talk about floors. **All simulated turfs are capable of being a floor.
+ * The difference is /turf/simulated/floor simulates the floor part of being a floor,
+ * like changing flooring prototypes/singletons.
+ *
+ * * If you don't need / want this (e.g. for lava), don't use it.
+ * * If are unwilling to handle this cleanly by having **all** behaviors abstracted to
+ *   a flooring prototype/singleton (e.g. lava didn't do this), don't use it.
+ */
 /turf/simulated/floor
 	name = "plating"
 	desc = "Unfinished flooring."
@@ -15,6 +28,7 @@
 	smoothing_flags = SMOOTH_CUSTOM
 	smoothing_groups = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_OPEN_FLOOR)
 	canSmoothWith = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_OPEN_FLOOR)
+	outdoors = FALSE
 
 	// Damage to flooring.
 	var/broken
@@ -34,34 +48,51 @@
 
 	var/list/old_decals = null // Remember what decals we had between being pried up and replaced.
 
-	// Flooring data.
-	var/flooring_override
+	//* Flooring *//
+
+	/// A path or ID to resolve for initial flooring datum.
 	var/initial_flooring
-	var/singleton/flooring/flooring
-	var/mineral = MAT_STEEL
+	/// Resolved flooring datum. This is a singleton, do not modify under any circumstances.
+	var/datum/prototype/flooring/flooring
+	/// The decals that are **not** in the current layer of flooring vs not floored.
+	///
+	/// * If we have flooring right now, this is the decals under the flooring.
+	/// * If we don't have flooring right now, this is the decals that should be restored when being floored.
+	///   This might seem weird but it's a QoL thing so you don't need to repaint floors when changing flooring.
+	var/list/flooring_inversed_decals
 
-CREATE_STANDARD_TURFS(/turf/simulated/floor)
+	//* Flooring - Legacy *//
 
-/turf/simulated/floor/is_plating()
-	return !flooring
+	/// legacy: override icon state
+	var/flooring_legacy_override_state
 
-/turf/simulated/floor/hides_underfloor_objects()
-	return flooring
 
 /turf/simulated/floor/Initialize(mapload, floortype)
 	. = ..()
-	if(!floortype && initial_flooring)
-		floortype = initial_flooring
 	if(floortype)
-		set_flooring(get_flooring_data(floortype), TRUE)
+		CRASH("additional arg detected in /floor Initialize. turfs do not have init arguments as ChangeTurf does not accept them.")
+
+	var/datum/prototype/flooring/set_flooring_to
+	if(initial_flooring && (set_flooring_to = RSflooring.fetch_local_or_throw(initial_flooring)))
+		set_flooring(set_flooring_to, TRUE)
 	else
+		// todo: these are only here under else because set flooring will trigger it
 		footstep_sounds = base_footstep_sounds
-		update_underfloor_objects()
 	if(mapload && can_dirty && can_start_dirty)
 		if(prob(dirty_prob))
 			dirt += rand(50,100)
 			update_dirt() //5% chance to start with dirt on a floor tile- give the janitor something to do
+	update_underfloor_objects()
 	update_layer()
+
+/turf/simulated/floor/is_plating()
+	return !flooring || flooring.is_plating
+
+/turf/simulated/floor/get_examine_desc(mob/user, dist)
+	return flooring ? flooring.desc : desc
+
+/turf/simulated/floor/hides_underfloor_objects()
+	return flooring && !flooring.is_plating
 
 /turf/simulated/proc/make_outdoors()
 	outdoors = TRUE
@@ -82,74 +113,6 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor)
 		else
 			make_indoors()
 
-/**
- * TODO: REWORK FLOORING GETTERS/INIT/SETTERS THIS IS BAD
- */
-
-/turf/simulated/floor/proc/set_flooring(singleton/flooring/newflooring, init)
-	if(flooring == newflooring)
-		if(init)
-			update_underfloor_objects()
-		return
-	make_plating(null, TRUE, TRUE)
-	flooring = newflooring
-
-	footstep_sounds = newflooring.footstep_sounds
-	// We are plating switching to flooring, swap out old_decals for decals
-	var/list/overfloor_decals = old_decals
-	old_decals = decals
-	decals = overfloor_decals
-
-	var/check_z_flags
-	if(flooring)
-		check_z_flags = flooring.mz_flags
-	else
-		check_z_flags = initial(mz_flags)
-
-	if(check_z_flags & MZ_MIMIC_BELOW)
-		enable_zmimic(check_z_flags)
-	else
-		disable_zmimic()
-
-	if(!init)
-		QUEUE_SMOOTH(src)
-		QUEUE_SMOOTH_NEIGHBORS(src)
-	update_underfloor_objects()
-	update_layer()
-
-//This proc will set floor_type to null and the update_icon() proc will then change the icon_state of the turf
-//This proc auto corrects the grass tiles' siding.
-/turf/simulated/floor/proc/make_plating(place_product, defer_icon_update, strip_bare)
-
-	if(flooring)
-		// We are flooring switching to plating, swap out old_decals for decals.
-		var/list/underfloor_decals = old_decals
-		old_decals = decals
-		decals = underfloor_decals
-		color = null
-
-		if(place_product)
-			flooring.drop_product(src)
-		var/newtype = flooring.get_plating_type()
-		if(newtype && !strip_bare) // Has a custom plating type to become
-			set_flooring(get_flooring_data(newtype))
-		else
-			flooring = null
-			// this branch is only if we don't set flooring because otherwise it'll do it for us
-			if(!defer_icon_update)
-				name = base_name
-				desc = base_desc
-				icon = base_icon
-				icon_state = base_icon_state
-				footstep_sounds = base_footstep_sounds
-				QUEUE_SMOOTH(src)
-				QUEUE_SMOOTH_NEIGHBORS(src)
-				update_underfloor_objects()
-				update_layer()
-
-	broken = null
-	burnt = null
-	flooring_override = null
 
 /turf/simulated/floor/proc/update_layer()
 	if(flooring)
@@ -203,7 +166,7 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor)
 			var/turf/simulated/wall/T = get_turf(src) // Ref to the wall we just built.
 			// Apparently set_material(...) for walls requires refs to the material singletons and not strings.
 			// This is different from how other material objects with their own set_material(...) do it, but whatever.
-			var/datum/material/M = get_material_by_name(the_rcd.material_to_use)
+			var/datum/prototype/material/M = get_material_by_name(the_rcd.material_to_use)
 			T.set_materials(M, the_rcd.make_rwalls ? M : null, M)
 			T.add_hiddenprint(user)
 			return TRUE
@@ -225,7 +188,7 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor)
 			ScrapeAway(flags = CHANGETURF_INHERIT_AIR|CHANGETURF_PRESERVE_OUTDOORS)
 			return TRUE
 
-//? Multiz
+//* Multiz *//
 
 /turf/simulated/floor/update_multiz()
 	update_ceilingless_overlay()

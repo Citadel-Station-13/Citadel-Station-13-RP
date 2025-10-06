@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
  * action datums
@@ -32,7 +32,7 @@
 	var/datum/callback/check_callback
 
 	//* Target / Delegate *//
-	/// callback to invoke with (actor) on trigger at base of /invoke().
+	/// callback to invoke with (datum/action/action, datum/event_args/actor/actor) on trigger at base of /invoke().
 	///
 	/// * return a truthy value from the callback to halt propagation
 	var/datum/callback/invoke_callback
@@ -51,14 +51,17 @@
 	//* Button(s) *//
 	/// all buttons that are on us right now
 	var/list/atom/movable/screen/movable/action_button/buttons
+
 	/// do not update buttons; something else manages them
 	var/rendering_externally_managed = FALSE
+
 	/// where the button's background icon is from
 	var/background_icon = 'icons/screen/actions/backgrounds.dmi'
 	/// what the action's background state should be
 	var/background_icon_state = "default"
 	/// custom background overlay to add; this goes below button sprite / overlays!
 	var/background_additional_overlay
+
 	/// the icon of the button's actual internal sprite, overlaid on the background
 	var/button_icon = 'icons/screen/actions/actions.dmi'
 	/// the icon_state of the button's actual internal sprite, overlaid on the background
@@ -67,10 +70,16 @@
 	var/button_additional_only = FALSE
 	/// custom overlay to add to all buttons; this is arbitrary, and can be a reference to an atom
 	var/button_additional_overlay
+
 	/// set availability to; it must be 0 to 1, inclusive.
 	var/button_availability = 1
 	/// default handling for availability should be invoked
 	var/button_availability_automatic = TRUE
+
+	/// are we active?
+	var/button_active = FALSE
+	/// overlay to add to background if active
+	var/button_active_overlay = "active-1"
 
 /datum/action/New(datum/target)
 	if(!target_compatible(target))
@@ -106,6 +115,14 @@
 /datum/action/proc/push_button_availability(availability, update = TRUE)
 	button_availability = availability
 	if(update)
+		update_buttons(TRUE)
+
+/**
+ * set button active-ness
+ */
+/datum/action/proc/set_button_active(active, defer_update)
+	button_active = active
+	if(!defer_update)
 		update_buttons(TRUE)
 
 /**
@@ -168,6 +185,8 @@
 	generating.plane = HUD_PLANE
 	generating.layer = HUD_LAYER_BASE
 
+	if(button_active && button_active_overlay)
+		generating.overlays += button_active_overlay
 	if(background_additional_overlay)
 		generating.overlays += background_additional_overlay
 
@@ -257,7 +276,7 @@
 /datum/action/proc/invoke(datum/event_args/actor/actor)
 	PROTECTED_PROC(TRUE) // you thought i was joking??? do not directly call this goddamn proc.
 	SHOULD_NOT_OVERRIDE(TRUE)
-	if(invoke_callback?.Invoke())
+	if(invoke_callback?.Invoke(src, actor))
 		return TRUE
 	if(invoke_target(target, actor))
 		return TRUE
@@ -310,6 +329,8 @@
  * @params
  * * action - action datuam
  * * actor - the person clicking
+ *
+ * @return TRUE if handled
  */
 /datum/proc/ui_action_click(datum/action/action, datum/event_args/actor/actor)
-	return
+	return FALSE

@@ -29,10 +29,6 @@ var/global/list/mechas_list = list()
 /// Times that players are allowed to respawn ("ckey" = world.time)
 GLOBAL_LIST_EMPTY(respawn_timers)
 
-//* Posters
-var/global/list/poster_designs = list()
-var/global/list/NT_poster_designs = list()
-
 //* Uplinks
 var/list/obj/item/uplink/world_uplinks = list()
 
@@ -117,18 +113,6 @@ GLOBAL_LIST_EMPTY(mannequins)
 	init_subtypes(/datum/chemical_reaction/drinks, GLOB.drink_recipes)
 
 	var/list/paths
-
-	//Posters
-	paths = typesof(/datum/poster) - /datum/poster
-	paths -= typesof(/datum/poster/nanotrasen)
-	for(var/T in paths)
-		var/datum/poster/P = new T
-		poster_designs += P
-
-	paths = typesof(/datum/poster/nanotrasen)
-	for(var/T in paths)
-		var/datum/poster/P = new T
-		NT_poster_designs += P
 
 	// Custom species traits
 	paths = typesof(/datum/trait) - /datum/trait - /datum/trait/negative - /datum/trait/neutral - /datum/trait/positive
@@ -589,7 +573,7 @@ var/global/list/remainless_species = list(SPECIES_ID_PROMETHEAN,
 				SPECIES_ID_GOLEM, //Some special species that may or may not be ever used in event too,
 				SPECIES_ID_SHADEKIN) //Shadefluffers just poof away
 
-/hook/startup/proc/init_vore_datum_ref_lists()
+/legacy_hook/startup/proc/init_vore_datum_ref_lists()
 	var/paths
 
 	// Custom species traits
@@ -740,11 +724,11 @@ var/global/list/xenobio_gold_mobs_hostile = list(
 										/mob/living/simple_mob/animal/sif/savik,
 										/mob/living/simple_mob/animal/sif/shantak,
 //										/mob/living/simple_mob/animal/sif/siffet,
-										/mob/living/simple_mob/animal/space/alien/warrior,
-										/mob/living/simple_mob/animal/space/alien/drone,
-										/mob/living/simple_mob/animal/space/alien/basic_spitter,
-										/mob/living/simple_mob/animal/space/alien/adv_spitter,
-										/mob/living/simple_mob/animal/space/alien/vanguard,
+										/mob/living/simple_mob/animal/space/xenomorph/warrior,
+										/mob/living/simple_mob/animal/space/xenomorph/drone,
+										/mob/living/simple_mob/animal/space/xenomorph/neurotoxin_spitter,
+										/mob/living/simple_mob/animal/space/xenomorph/acid_spitter,
+										/mob/living/simple_mob/animal/space/xenomorph/vanguard,
 										/mob/living/simple_mob/animal/space/bats,
 										/mob/living/simple_mob/animal/space/bear,
 										/mob/living/simple_mob/animal/space/carp,

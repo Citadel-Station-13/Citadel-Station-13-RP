@@ -35,9 +35,9 @@ SUBSYSTEM_DEF(vote)
 /datum/config_entry/string/default_on_transfer_tie
 	default = "Extend the Shift"
 
-/datum/controller/subsystem/vote/Initialize(start_timeofday)
-	. = ..()
+/datum/controller/subsystem/vote/Initialize()
 	ghost_weight_percent = CONFIG_GET(number/ghost_weight)
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/vote/fire(resumed)
 	if(mode)
@@ -268,7 +268,7 @@ SUBSYSTEM_DEF(vote)
 
 	return data
 
-/datum/controller/subsystem/vote/ui_act(action, list/params, datum/tgui/ui)
+/datum/controller/subsystem/vote/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

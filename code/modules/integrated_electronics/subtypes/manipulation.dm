@@ -59,7 +59,7 @@
 
 /obj/item/integrated_circuit/manipulation/anchoring/remove(mob/user, silent, index)
 	if(assembly.anchored_by == src)
-		silent ? null : to_chat(SPAN_WARNING("With the bolts deployed you can't remove the circuit."))
+		silent ? null : to_chat(user, SPAN_WARNING("With the bolts deployed you can't remove the circuit."))
 		return
 	. = ..()
 
@@ -495,17 +495,17 @@
 	ext_cooldown = 1
 	cooldown_per_use = 10
 	var/static/list/mtypes = list(
-		/datum/material/iron,
-		/datum/material/glass,
-		/datum/material/silver,
-		/datum/material/gold,
-		/datum/material/diamond,
-		/datum/material/uranium,
-		/datum/material/plasma,
-		/datum/material/bluespace,
-		/datum/material/bananium,
-		/datum/material/titanium,
-		/datum/material/plastic
+		/datum/prototype/material/iron,
+		/datum/prototype/material/glass,
+		/datum/prototype/material/silver,
+		/datum/prototype/material/gold,
+		/datum/prototype/material/diamond,
+		/datum/prototype/material/uranium,
+		/datum/prototype/material/plasma,
+		/datum/prototype/material/bluespace,
+		/datum/prototype/material/bananium,
+		/datum/prototype/material/titanium,
+		/datum/prototype/material/plastic
 		)
 
 /obj/item/integrated_circuit/manipulation/matman/ComponentInitialize()
@@ -517,7 +517,7 @@
 	var/datum/component/material_container/materials = GetComponent(/datum/component/material_container)
 	set_pin_data(IC_OUTPUT, 2, materials.total_amount)
 	for(var/I in 1 to mtypes.len)
-		var/datum/material/M = materials.materials[SSmaterials.GetMaterialRef(I)]
+		var/datum/prototype/material/M = materials.materials[SSmaterials.GetMaterialRef(I)]
 		var/amount = materials[M]
 		if(M)
 			set_pin_data(IC_OUTPUT, I+2, amount)
@@ -548,7 +548,7 @@
 			var/datum/component/material_container/mt = H.GetComponent(/datum/component/material_container)
 			var/suc
 			for(var/I in 1 to mtypes.len)
-				var/datum/material/M = materials.materials[mtypes[I]]
+				var/datum/prototype/material/M = materials.materials[mtypes[I]]
 				if(M)
 					var/U = clamp(get_pin_data(IC_INPUT, I+2),-100000,100000)
 					if(!U)
@@ -635,12 +635,12 @@
 	name = "mining drill"
 	desc = "A mining drill that can drill through rocks."
 	extended_desc = "A mining drill to strike the earth.  It takes some time to get the job done and \
-	must remain stationary until complete."
+	must remain stationary until complete. By default an advanced mining drill is installed but better once can be attached."
 	category_text = "Manipulation"
-	ext_cooldown = 1
+	ext_cooldown = 5 //Required to not make instant death circuits
 	complexity = 40
-	cooldown_per_use = 3 SECONDS
-	ext_cooldown = 6 SECONDS
+	cooldown_per_use = 1 //We have 'busy' as our safty net
+	can_be_asked_input = TRUE
 	inputs = list(
 		"target" = IC_PINTYPE_REF
 		)
@@ -653,6 +653,9 @@
 	spawn_flags = IC_SPAWN_RESEARCH
 	power_draw_per_use = 1000
 
+	var/obj/item/pickaxe/current_pickaxe
+	var/digspeed = 3 SECONDS
+
 	var/busy = FALSE
 	var/targetlock
 	var/usedx
@@ -662,15 +665,57 @@
 	var/drill_force = 15
 	var/turf/simulated/mineral
 
+/obj/item/integrated_circuit/mining/mining_drill/proc/ask_for_input(mob/living/user, obj/item/I,  a_intent)
+	if(!current_pickaxe)
+		if(!isobj(I))
+			return FALSE
+		attackby_react(I, user, a_intent)
+	else
+		attack_self(user)
+
+/obj/item/integrated_circuit/mining/mining_drill/attackby_react(var/obj/item/pickaxe/I, var/mob/living/user)
+	//Check if it truly is a pickaxe
+	if(!(istype(I,/obj/item/pickaxe)))
+		to_chat(user,"<span class='warning'>The [I.name] doesn't seem to fit in here.</span>")
+		return
+
+	//Check if there is no other pickaxe already inside
+	if(current_pickaxe)
+		to_chat(user,"<span class='notice'>There is already a [current_pickaxe.name] inside.</span>")
+		return
+
+	if(!user.attempt_insert_item_for_installation(I, src))
+		return
+
+	current_pickaxe = I
+	to_chat(user,"<span class='warning'>You attach the [I.name] inside the assembly.</span>")
+	digspeed = I.digspeed
+
+/obj/item/integrated_circuit/mining/mining_drill/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
+	//Check if no drill is attached
+	if(!current_pickaxe)
+		to_chat(user, "<span class='notice'>There is currently no mining tool attached.</span>")
+		return
+
+	//Remove beaker and put in user's hands/location
+	to_chat(user, "<span class='notice'>You yank the [current_pickaxe] out of the slot.</span>")
+	user.put_in_hands(current_pickaxe)
+	current_pickaxe = null
+	//Reset to default
+	digspeed = 3 SECONDS
+
 /obj/item/integrated_circuit/mining/mining_drill/do_work(ord)
 	if(ord == 1)
 		var/atom/target = get_pin_data(IC_INPUT, 1)
 		var/drill_delay = null
-		if(!target || busy)
+		if(!target || busy || !target.Adjacent(assembly))
 			activate_pin(3)
 			return
 		src.assembly.visible_message(SPAN_DANGER("[assembly] starts to drill [target]!"), null, SPAN_WARNING("You hear a drill."))
-		drill_delay = isturf(target)? 6 SECONDS : isliving(target) ? issimple(target) ? 2 SECONDS : 3 SECONDS : 4 SECONDS
+		drill_delay = isturf(target)? digspeed : isliving(target) ? issimplemob(target) ? 2 SECONDS : 3 SECONDS : 4 SECONDS
 		busy = TRUE
 		targetlock = target
 		usedx = assembly.loc.x
@@ -693,7 +738,7 @@
 			var/mob/living/carbon/human/S = target
 			S.apply_damage(drill_force, DAMAGE_TYPE_BRUTE)
 			return
-		else if(issimple(target))
+		else if(issimplemob(target))
 			var/mob/living/simple_mob/S = target
 			if(S.stat == DEAD)
 				if(S.meat_amount > 0)
@@ -916,8 +961,7 @@
 
 		if(!T)
 			return
-		installed_gun.Fire_userless(T)
-
+		installed_gun.start_firing_cycle_async(get_atom_before_turf(assembly), get_centered_entity_tile_angle(get_atom_before_turf(assembly), T))
 
 /obj/item/integrated_circuit/manipulation/grenade
 	name = "grenade primer"
@@ -934,7 +978,7 @@
 	activators = list("prime grenade" = IC_PINTYPE_PULSE_IN)
 	spawn_flags = IC_SPAWN_RESEARCH
 	origin_tech = list(TECH_ENGINEERING = 3, TECH_DATA = 3, TECH_COMBAT = 4)
-	var/obj/item/grenade/attached_grenade
+	var/obj/item/grenade/simple/attached_grenade
 	var/pre_attached_grenade_type
 
 /obj/item/integrated_circuit/manipulation/grenade/Initialize(mapload)
@@ -944,17 +988,15 @@
 		attach_grenade(grenade)
 
 /obj/item/integrated_circuit/manipulation/grenade/Destroy()
-	if(attached_grenade && !attached_grenade.active)
-		attached_grenade.dropInto(loc)
-	detach_grenade()
-	. =..()
+	QDEL_NULL(attached_grenade)
+	return ..()
 
 /obj/item/integrated_circuit/manipulation/grenade/proc/ask_for_input(mob/living/user, obj/item/I,  a_intent)
 	if(!isobj(I))
 		return FALSE
 	attackby_react(I, user, a_intent)
 
-/obj/item/integrated_circuit/manipulation/grenade/attackby_react(var/obj/item/grenade/G, var/mob/user)
+/obj/item/integrated_circuit/manipulation/grenade/attackby_react(var/obj/item/grenade/simple/G, var/mob/user)
 	if(istype(G))
 		. = CLICKCHAIN_DO_NOT_PROPAGATE
 		if(attached_grenade)
@@ -981,10 +1023,10 @@
 		return ..()
 
 /obj/item/integrated_circuit/manipulation/grenade/do_work()
-	if(attached_grenade && !attached_grenade.active)
+	if(attached_grenade && !attached_grenade.activated)
 		var/datum/integrated_io/detonation_time = inputs[1]
 		if(isnum(detonation_time.data) && detonation_time.data > 0)
-			attached_grenade.det_time = between(1, detonation_time.data, 12) SECONDS
+			attached_grenade.activation_detonate_delay = between(1, detonation_time.data, 12) SECONDS
 		attached_grenade.activate()
 		var/atom/holder = loc
 		log_and_message_admins("activated a grenade assembly.  Last touches: Assembly: [holder.fingerprintslast] Circuit: [fingerprintslast] Grenade: [attached_grenade.fingerprintslast]")

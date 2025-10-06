@@ -18,16 +18,6 @@
 	fireaxe = new /obj/item/material/twohanded/fireaxe()
 
 /obj/structure/fireaxecabinet/attackby(var/obj/item/O as obj, var/mob/user as mob)  //Marker -Agouri
-	//..() //That's very useful, Erro
-
-	// This could stand to be put further in, made better, etc. but fuck you. Fuck whoever
-	// wrote this code. Fuck everything about this object. I hope you step on a Lego.
-	user.setClickCooldown(10)
-	// Seriously why the fuck is this even a closet aghasjdhasd I hate you
-
-	//var/hasaxe = 0       //gonna come in handy later~ // FUCK YOUR TILDES.
-	//if(fireaxe)
-	//	hasaxe = 1
 
 	if (isrobot(user) || locked)
 		if(istype(O, /obj/item/multitool))
@@ -62,9 +52,6 @@
 			if(!user.attempt_insert_item_for_installation(O, src))
 				return
 			fireaxe = O
-			if(fireaxe.wielded)
-				fireaxe.wielded = FALSE
-				fireaxe.update_icon()
 			to_chat(user, "<span class='notice'>You place the fire axe back in the [name].</span>")
 			update_icon()
 		else
@@ -180,6 +167,7 @@
 		return
 
 /obj/structure/fireaxecabinet/update_icon() //Template: fireaxe[has fireaxe][is opened][hits taken][is smashed]. If you want the opening or closing animations, add "opening" or "closing" right after the numbers
+	. = ..()
 	hasaxe = 0
 	if(fireaxe)
 		hasaxe = 1

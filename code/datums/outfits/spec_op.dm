@@ -6,7 +6,7 @@
 	glasses = /obj/item/clothing/glasses/thermal/plain/eyepatch
 	mask = /obj/item/clothing/mask/smokable/cigarette/cigar/havana
 	head = /obj/item/clothing/head/beret	//deathsquad
-	belt = /obj/item/gun/energy/pulse_carbine
+	belt = /obj/item/gun/projectile/energy/nt_pulse/carbine
 	back = /obj/item/storage/backpack/satchel
 	shoes = /obj/item/clothing/shoes/boots/combat
 	gloves = /obj/item/clothing/gloves/combat
@@ -30,7 +30,7 @@
 	shoes = /obj/item/clothing/shoes/boots/swat
 	gloves = /obj/item/clothing/gloves/swat
 	l_ear = /obj/item/radio/headset/ert
-	belt = /obj/item/gun/energy/gun/combat
+	belt = /obj/item/gun/projectile/energy/gun/combat
 	glasses = /obj/item/clothing/glasses/sunglasses
 	back = /obj/item/storage/backpack/satchel
 
@@ -78,7 +78,7 @@
 	belt = /obj/item/nullrod
 	head = /obj/item/clothing/head/helmet/para
 	back = /obj/item/storage/backpack/ert/para
-	l_pocket = /obj/item/grenade/chem_grenade/holy
+	l_pocket = /obj/item/grenade/simple/chemical/premade/holy
 	l_hand = /obj/item/clothing/accessory/holster/holy
 
 	id_slot = SLOT_ID_WORN_ID

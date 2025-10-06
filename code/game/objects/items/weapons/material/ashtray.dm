@@ -6,7 +6,7 @@ var/global/list/ashtray_cache = list()
 	icon_state = "blank"
 	material_significance = MATERIAL_SIGNIFICANCE_SHARD
 	materials_base = list(MAT_STEEL = 4000)
-	material_parts = /datum/material/steel
+	material_parts = /datum/prototype/material/steel
 	var/image/base_image
 	var/max_butts = 10
 
@@ -20,7 +20,8 @@ var/global/list/ashtray_cache = list()
 	color = null
 
 	cut_overlays()
-	var/datum/material/material = get_primary_material()
+	. = ..()
+	var/datum/prototype/material/material = get_primary_material()
 	var/list/overlays_to_add = list()
 
 	var/cache_key = "base-[material.name]"
@@ -75,10 +76,10 @@ var/global/list/ashtray_cache = list()
 	return ..()
 
 /obj/item/material/ashtray/plastic
-	material_parts = /datum/material/plastic
+	material_parts = /datum/prototype/material/plastic
 
 /obj/item/material/ashtray/bronze
-	material_parts = /datum/material/bronze
+	material_parts = /datum/prototype/material/bronze
 
 /obj/item/material/ashtray/glass
-	material_parts = /datum/material/glass
+	material_parts = /datum/prototype/material/glass

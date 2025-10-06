@@ -30,6 +30,11 @@
 	var/request_type
 	/// ergo: stack type, item type, tool function, etc. what this is depends on [step_type]
 	/// limited autodetection is allowed.
+	///
+	/// allowed:
+	/// * /datum/prototype/material path
+	/// * /obj/item/stack path
+	/// * /obj/item path
 	var/request
 	/// * stacks: amount
 	/// * items: amount; if 0, we just apply the item to it
@@ -51,7 +56,7 @@
 	/// what to drop when undertaking this step
 	/// can either be:
 	/// * /obj/item/stack typepath
-	/// * /datum/material typepath
+	/// * /datum/prototype/material typepath
 	/// * /obj/item typepath
 	/// todo: text for 'drop context key'
 	var/drop
@@ -98,7 +103,7 @@
 	if(isnull(request_type))
 		// autodetect
 		var/detected
-		if(ispath(request, /datum/material))
+		if(ispath(request, /datum/prototype/material))
 			request_type = FRAME_REQUEST_TYPE_MATERIAL
 		else if(ispath(request, /obj/item/stack))
 			request_type = FRAME_REQUEST_TYPE_STACK
@@ -125,7 +130,7 @@
 		if(FRAME_REQUEST_TYPE_MATERIAL)
 			var/rendered_material
 			var/rendered_stack_name
-			var/datum/material/resolved = SSmaterials.resolve_material(request)
+			var/datum/prototype/material/resolved = RSmaterials.fetch(request)
 			rendered_material = resolved.display_name
 			rendered_stack_name = resolved.sheet_plural_name
 			. = "Apply [request_amount || 0] [rendered_stack_name] of <b>[rendered_material]</b> to [rendered_action]."
@@ -157,18 +162,19 @@
 /datum/frame_step/proc/valid_interaction(datum/event_args/actor/actor, obj/item/using_tool, datum/frame2/frame_datum, obj/structure/frame2/frame)
 	switch(request_type)
 		if(FRAME_REQUEST_TYPE_INTERACT)
-			return TRUE
+			return isnull(using_tool)
 		if(FRAME_REQUEST_TYPE_ITEM)
 			return using_tool?.type == request
 		if(FRAME_REQUEST_TYPE_STACK)
-			return using_tool?.type == request
+			var/obj/item/stack/using_stack = using_tool
+			return using_stack.can_use_as_type(request)
 		if(FRAME_REQUEST_TYPE_PROC)
 			return FALSE // override this proc
 		if(FRAME_REQUEST_TYPE_TOOL)
 			return using_tool?.tool_check(request, actor, frame, TOOL_OP_SILENT)
 		if(FRAME_REQUEST_TYPE_MATERIAL)
 			var/obj/item/stack/material/material_stack = using_tool
-			return istype(material_stack) && (ispath(request, /datum/material)? material_stack.material.type == request : material_stack.material.id == request)
+			return istype(material_stack) && (ispath(request, /datum/prototype/material)? material_stack.material.type == request : material_stack.material.id == request)
 	return FALSE
 
 /**
@@ -250,13 +256,13 @@
 				new drop(drop_where, dropping)
 				left -= dropping
 			while(--safety > 0 && left > 0)
-		else if(ispath(drop, /datum/material))
+		else if(ispath(drop, /datum/prototype/material))
 			var/safety = 50
 			var/left = drop_amount
-			var/datum/material/resolved_material = SSmaterials.resolve_material(drop)
+			var/datum/prototype/material/resolved_material = RSmaterials.fetch(drop)
 			do
 				var/dropping = min(left, 50)
-				// todo: /datum/material based max stacks.
+				// todo: /datum/prototype/material based max stacks.
 				resolved_material.place_sheet(drop_where, dropping)
 				left -= dropping
 			while(--safety > 0 && left > 0)
@@ -332,7 +338,7 @@
 		if(FRAME_REQUEST_TYPE_MATERIAL, FRAME_REQUEST_TYPE_STACK)
 			var/name_to_use
 			if(request_type == FRAME_REQUEST_TYPE_MATERIAL)
-				var/datum/material/resolved_material = SSmaterials.resolve_material(request)
+				var/datum/prototype/material/resolved_material = RSmaterials.fetch(request)
 				name_to_use = "[resolved_material.name || resolved_material.display_name] [resolved_material.sheet_plural_name]"
 			else
 				var/obj/item/stack/casted_stack = request

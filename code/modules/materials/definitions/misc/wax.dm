@@ -1,4 +1,4 @@
-/datum/material/wax
+/datum/prototype/material/wax
 	id = "wax"
 	name = "wax"
 	stack_type = /obj/item/stack/material/wax
@@ -18,7 +18,7 @@
 	absorption = MATERIAL_RESISTANCE_LOW
 	nullification = MATERIAL_RESISTANCE_VULNERABLE
 
-/datum/material/wax/generate_recipes()
+/datum/prototype/material/wax/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(
 		name = "candle",

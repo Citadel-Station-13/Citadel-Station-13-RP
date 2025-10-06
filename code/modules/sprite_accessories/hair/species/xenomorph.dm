@@ -60,6 +60,7 @@
 	name = "Xenomorph Drone dome"
 	id = "ears_xeno_drone"
 	icon = 'icons/mob/sprite_accessories/xeno_parts.dmi'
+	icon_add_legacy = null
 	icon_state = "xenohead_standard"
 	do_colouration = 1
 	legacy_use_additive_color_matrix = FALSE

@@ -4,89 +4,89 @@
 /area/template_noop)
 "b" = (
 /obj/structure/ghost_role_spawner/ashlander,
-/turf/simulated/floor/outdoors/lavaland/indoors,
-/area/lavaland/ashlander_camp)
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/surt/ashlander_camp)
 "c" = (
 /obj/structure/fence/wooden/corner{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/lavaland/indoors,
-/area/lavaland/ashlander_camp)
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/surt/ashlander_camp)
 "h" = (
 /obj/structure/table/hardwoodtable,
 /obj/fiftyspawner/wood,
 /obj/fiftyspawner/wood,
 /obj/fiftyspawner/bone,
 /obj/item/pickaxe/bronze,
-/turf/simulated/floor/outdoors/lavaland/indoors,
-/area/lavaland/ashlander_camp)
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/surt/ashlander_camp)
 "k" = (
 /obj/effect/floor_decal/asteroid,
-/turf/simulated/floor/outdoors/lavaland/indoors,
-/area/lavaland/ashlander_camp)
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/surt/ashlander_camp)
 "m" = (
 /obj/structure/fence/wooden{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/lavaland/indoors,
-/area/lavaland/ashlander_camp)
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/surt/ashlander_camp)
 "o" = (
 /obj/structure/fence/wooden/corner{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/lavaland/indoors,
-/area/lavaland/ashlander_camp)
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/surt/ashlander_camp)
 "p" = (
 /obj/structure/fence/wooden/corner,
-/turf/simulated/floor/outdoors/lavaland/indoors,
-/area/lavaland/ashlander_camp)
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/surt/ashlander_camp)
 "v" = (
-/turf/simulated/floor/outdoors/lavaland/indoors,
-/area/lavaland/ashlander_camp)
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/surt/ashlander_camp)
 "x" = (
 /obj/structure/outcrop,
-/turf/simulated/floor/outdoors/lavaland/indoors,
-/area/lavaland/ashlander_camp)
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/surt/ashlander_camp)
 "y" = (
 /obj/structure/fence/wooden,
-/turf/simulated/floor/outdoors/lavaland/indoors,
-/area/lavaland/ashlander_camp)
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/surt/ashlander_camp)
 "I" = (
 /obj/item/seeds/ashlander/bentars,
 /obj/item/seeds/ashlander/juhtak,
 /obj/item/seeds/ashlander,
-/turf/simulated/floor/outdoors/lavaland/indoors,
-/area/lavaland/ashlander_camp)
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/surt/ashlander_camp)
 "K" = (
 /obj/structure/fence/wooden/corner{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/lavaland/indoors,
-/area/lavaland/ashlander_camp)
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/surt/ashlander_camp)
 "N" = (
 /obj/structure/fence/door/wooden,
-/turf/simulated/floor/outdoors/lavaland/indoors,
-/area/lavaland/ashlander_camp)
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/surt/ashlander_camp)
 "O" = (
 /obj/item/reagent_containers/glass/bucket/wood,
-/turf/simulated/floor/outdoors/lavaland/indoors,
-/area/lavaland/ashlander_camp)
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/surt/ashlander_camp)
 "Q" = (
 /obj/machinery/seed_extractor/press,
-/turf/simulated/floor/outdoors/lavaland/indoors,
-/area/lavaland/ashlander_camp)
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/surt/ashlander_camp)
 "R" = (
 /obj/machinery/portable_atmospherics/hydroponics/soil,
-/turf/simulated/floor/outdoors/lavaland/indoors,
-/area/lavaland/ashlander_camp)
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/surt/ashlander_camp)
 "X" = (
 /obj/structure/table/hardwoodtable,
 /obj/item/material/minihoe/bone,
 /obj/item/shovel/spade/bronze,
 /obj/item/tool/wirecutters/bronze,
 /obj/item/material/knife/machete/hatchet/bronze,
-/turf/simulated/floor/outdoors/lavaland/indoors,
-/area/lavaland/ashlander_camp)
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/surt/ashlander_camp)
 
 (1,1,1) = {"
 a

@@ -56,6 +56,7 @@
 	qdel(power_machine)
 
 /obj/machinery/atmospherics/component/binary/massive_heat_pump/process(delta_time)
+	..()
 	if(!network1 || !network2)
 		build_network()//built networks if we are missing them
 		network1?.update = 1
@@ -180,7 +181,7 @@
 		return
 	ui_interact(user)
 
-/obj/machinery/atmospherics/component/binary/massive_heat_pump/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/atmospherics/component/binary/massive_heat_pump/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 

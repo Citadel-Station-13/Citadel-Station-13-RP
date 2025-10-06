@@ -11,7 +11,7 @@
 	anchored = 1
 	plane = TURF_PLANE
 	layer = EXPOSED_WIRE_TERMINAL_LAYER
-	hides_underfloor = OBJ_UNDERFLOOR_ALWAYS
+	hides_underfloor = OBJ_UNDERFLOOR_ACTIVE
 
 /obj/machinery/power/terminal/Destroy()
 	if(master)
@@ -24,7 +24,7 @@
 	update_icon()
 
 /obj/machinery/power/terminal/update_icon_state()
-	if(is_probably_hidden_underfloor())
+	if(is_hidden_underfloor())
 		icon_state = "term-f"
 	else
 		icon_state = "term"

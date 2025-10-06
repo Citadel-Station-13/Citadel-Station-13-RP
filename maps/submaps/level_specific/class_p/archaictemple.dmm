@@ -2,27 +2,27 @@
 "av" = (
 /obj/structure/bed,
 /obj/item/bedsheet/purple,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_p/POIs/archaic_temple)
 "bp" = (
 /obj/effect/debris/cleanable/dirt,
-/turf/simulated/floor/trap/delayed/wmarble/classp{
+/turf/simulated/floor/trap/delayed/wmarble{
 	id = "west_hall_4"
 	},
 /area/class_p/POIs/archaic_temple)
 "bv" = (
 /obj/structure/bed,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_p/POIs/archaic_temple)
 "bJ" = (
 /obj/effect/trap/pop_up/buzzsaw{
 	id = "vault"
 	},
-/turf/simulated/floor/gold/classp,
+/turf/simulated/floor/gold,
 /area/class_p/POIs/archaic_temple)
 "ct" = (
 /obj/effect/debris/cleanable/dirt,
-/turf/simulated/floor/trap/delayed/bmarble/classp{
+/turf/simulated/floor/trap/delayed/bmarble{
 	id = "east_hall_2"
 	},
 /area/class_p/POIs/archaic_temple)
@@ -30,12 +30,12 @@
 /obj/effect/trap/pop_up/flame{
 	id = "entry_corridor"
 	},
-/turf/simulated/floor/trap/phoron/classp{
+/turf/simulated/floor/trap/phoron{
 	id = "entry_corridor"
 	},
 /area/class_p/POIs/archaic_temple)
 "dv" = (
-/turf/simulated/floor/trap/delayed/wmarble/classp{
+/turf/simulated/floor/trap/delayed/wmarble{
 	id = "east_hall_1"
 	},
 /area/class_p/POIs/archaic_temple)
@@ -44,32 +44,32 @@
 	id = "entry_corridor"
 	},
 /obj/effect/debris/cleanable/dirt,
-/turf/simulated/floor/crystal/classp,
+/turf/simulated/floor/crystal,
 /area/class_p/POIs/archaic_temple)
 "ef" = (
 /obj/structure/simple_door/hardwood,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_p/POIs/archaic_temple)
 "et" = (
 /obj/structure/prop/prism/externalcont,
-/turf/simulated/floor/classp,
+/turf/simulated/floor,
 /area/class_p/POIs/archaic_temple)
 "eJ" = (
 /obj/structure/table/marble,
 /obj/item/flame/candle/black,
-/turf/simulated/floor/gold/classp,
+/turf/simulated/floor/gold,
 /area/class_p/POIs/archaic_temple)
 "fB" = (
 /obj/structure/table/rack/steel,
 /obj/fiftyspawner/gold,
-/turf/simulated/floor/silver/classp,
+/turf/simulated/floor/silver,
 /area/class_p/POIs/archaic_temple)
 "fQ" = (
-/turf/simulated/floor/outdoors/mud/classp/indoors,
+/turf/simulated/floor/outdoors/mud/indoors,
 /area/class_p/POIs/archaic_temple)
 "fS" = (
 /obj/structure/prop/prism/incremental,
-/turf/simulated/floor/classp,
+/turf/simulated/floor,
 /area/class_p/POIs/archaic_temple)
 "gr" = (
 /turf/template_noop,
@@ -77,45 +77,45 @@
 "gC" = (
 /obj/structure/table/hardwoodtable,
 /obj/item/flame/candle/everburn/black,
-/turf/simulated/floor/bmarble/classp,
+/turf/simulated/floor/bmarble,
 /area/class_p/POIs/archaic_temple)
 "gS" = (
 /obj/structure/boulder,
-/turf/simulated/floor/outdoors/grass/heavy/interior/classp,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/class_p/POIs/archaic_temple)
 "gV" = (
 /obj/effect/trap/pit/deep{
 	id = "tunnel_easthigh"
 	},
-/turf/simulated/floor/classp,
+/turf/simulated/floor,
 /area/class_p/POIs/archaic_temple)
 "hQ" = (
 /obj/structure/table/hardwoodtable,
 /obj/item/flame/candle/everburn/black,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_p/POIs/archaic_temple)
 "ik" = (
 /obj/structure/statue/marble/male{
 	name = "eroded male statue"
 	},
-/turf/simulated/floor/silver/classp,
+/turf/simulated/floor/silver,
 /area/class_p/POIs/archaic_temple)
 "is" = (
 /obj/effect/trap/pit/deep{
 	id = "tunnel_westhigh"
 	},
-/turf/simulated/floor/classp,
+/turf/simulated/floor,
 /area/class_p/POIs/archaic_temple)
 "iV" = (
 /obj/structure/bookcase,
 /obj/item/book,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_p/POIs/archaic_temple)
 "iX" = (
-/turf/simulated/floor/wmarble/classp,
+/turf/simulated/floor/wmarble,
 /area/class_p/POIs/archaic_temple)
 "jo" = (
-/turf/simulated/floor/trap/delayed/phoron/classp{
+/turf/simulated/floor/trap/delayed/phoron{
 	id = "entry_corridor"
 	},
 /area/class_p/POIs/archaic_temple)
@@ -126,7 +126,7 @@
 "jS" = (
 /obj/structure/table/hardwoodtable,
 /obj/effect/debris/cleanable/dirt,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_p/POIs/archaic_temple)
 "ky" = (
 /obj/structure/table/hardwoodtable,
@@ -140,65 +140,65 @@
 /obj/structure/window/phoronbasic{
 	dir = 1
 	},
-/obj/item/gun/energy/puzzle_key,
-/turf/simulated/floor/phoron/classp,
+/obj/item/gun/projectile/energy/puzzle_key,
+/turf/simulated/floor/phoron,
 /area/class_p/POIs/archaic_temple)
 "kE" = (
 /obj/structure/table/rack/steel,
 /obj/fiftyspawner/silver,
-/turf/simulated/floor/silver/classp,
+/turf/simulated/floor/silver,
 /area/class_p/POIs/archaic_temple)
 "kJ" = (
 /obj/structure/table/marble,
 /obj/item/coin/uranium,
-/turf/simulated/floor/bmarble/classp,
+/turf/simulated/floor/bmarble,
 /area/class_p/POIs/archaic_temple)
 "kT" = (
 /obj/effect/trap/pit/tentacle{
 	id = "headmaster_desk"
 	},
 /obj/effect/ceiling,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_p/POIs/archaic_temple)
 "kV" = (
 /obj/structure/table/hardwoodtable,
 /obj/effect/debris/cleanable/dirt,
 /obj/machinery/artifact,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_p/POIs/archaic_temple)
 "lf" = (
 /obj/effect/ceiling,
 /obj/effect/debris/cleanable/dirt,
-/turf/simulated/floor/classp,
+/turf/simulated/floor,
 /area/class_p/POIs/archaic_temple)
 "lh" = (
 /obj/structure/statue/marble/female{
 	name = "eroded female statue"
 	},
-/turf/simulated/floor/gold/classp,
+/turf/simulated/floor/gold,
 /area/class_p/POIs/archaic_temple)
 "md" = (
 /obj/structure/table/hardwoodtable,
 /obj/item/flame/candle/candelabra/everburn,
-/turf/simulated/floor/gold/classp,
+/turf/simulated/floor/gold,
 /area/class_p/POIs/archaic_temple)
 "mp" = (
 /obj/structure/table/rack/steel,
 /obj/item/reagent_containers/food/drinks/golden_cup{
 	name = "ritual chalice"
 	},
-/turf/simulated/floor/silver/classp,
+/turf/simulated/floor/silver,
 /area/class_p/POIs/archaic_temple)
 "mr" = (
 /obj/effect/trap/pop_up/spear{
 	id = "west_hall_3"
 	},
 /obj/effect/debris/cleanable/dirt,
-/turf/simulated/floor/wmarble/classp,
+/turf/simulated/floor/wmarble,
 /area/class_p/POIs/archaic_temple)
 "mx" = (
 /obj/structure/simple_door/phoron,
-/turf/simulated/floor/wmarble/classp,
+/turf/simulated/floor/wmarble,
 /area/class_p/POIs/archaic_temple)
 "my" = (
 /obj/structure/grille/cult,
@@ -207,14 +207,14 @@
 	name = "reflective window";
 	opacity = 1
 	},
-/turf/simulated/floor/trap/delayed/plating/classp{
+/turf/simulated/floor/trap/delayed/plating{
 	id = "tunnel_class_south"
 	},
 /area/class_p/POIs/archaic_temple)
 "mN" = (
 /obj/structure/table/marble,
 /obj/item/coin/diamond,
-/turf/simulated/floor/wmarble/classp,
+/turf/simulated/floor/wmarble,
 /area/class_p/POIs/archaic_temple)
 "na" = (
 /obj/structure/table/hardwoodtable,
@@ -229,7 +229,7 @@
 	dir = 1
 	},
 /obj/random/tool/alien,
-/turf/simulated/floor/phoron/classp,
+/turf/simulated/floor/phoron,
 /area/class_p/POIs/archaic_temple)
 "nd" = (
 /obj/structure/grille/cult,
@@ -238,76 +238,76 @@
 	name = "reflective window";
 	opacity = 1
 	},
-/turf/simulated/floor/trap/delayed/plating/classp{
+/turf/simulated/floor/trap/delayed/plating{
 	id = "tunnel_westlow"
 	},
 /area/class_p/POIs/archaic_temple)
 "nD" = (
 /obj/structure/simple_door/phoron,
-/turf/simulated/floor/phoron/classp,
+/turf/simulated/floor/phoron,
 /area/class_p/POIs/archaic_temple)
 "nE" = (
 /obj/structure/prop/lock/projectile{
 	lockID = "dmirr"
 	},
-/turf/simulated/floor/classp,
+/turf/simulated/floor,
 /area/class_p/POIs/archaic_temple)
 "nK" = (
 /obj/effect/debris/cleanable/dirt,
-/turf/simulated/floor/classp,
+/turf/simulated/floor,
 /area/class_p/POIs/archaic_temple)
 "nX" = (
 /obj/structure/table/bench/wooden,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_p/POIs/archaic_temple)
 "od" = (
-/turf/simulated/floor/silver/classp,
+/turf/simulated/floor/silver,
 /area/class_p/POIs/archaic_temple)
 "oq" = (
 /obj/structure/statue/marble/male{
 	density = 0;
 	name = "shimmering male statue"
 	},
-/turf/simulated/floor/phoron/classp,
+/turf/simulated/floor/phoron,
 /area/class_p/POIs/archaic_temple)
 "ot" = (
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_p/POIs/archaic_temple)
 "oH" = (
 /obj/structure/boulder,
-/turf/simulated/floor/classp,
+/turf/simulated/floor,
 /area/class_p/POIs/archaic_temple)
 "oW" = (
 /obj/structure/table/rack/steel,
 /obj/fiftyspawner/phoron,
-/turf/simulated/floor/silver/classp,
+/turf/simulated/floor/silver,
 /area/class_p/POIs/archaic_temple)
 "oZ" = (
 /obj/effect/trap/pit/punji{
 	id = "west_hall_2"
 	},
 /obj/effect/debris/cleanable/dirt,
-/turf/simulated/floor/wmarble/classp,
+/turf/simulated/floor/wmarble,
 /area/class_p/POIs/archaic_temple)
 "pe" = (
 /obj/structure/prop/prism/externalcont{
 	degrees_from_north = 270
 	},
-/turf/simulated/floor/classp,
+/turf/simulated/floor,
 /area/class_p/POIs/archaic_temple)
 "qo" = (
-/turf/simulated/wall/ironphoron/classp,
+/turf/simulated/wall/ironphoron,
 /area/class_p/POIs/archaic_temple)
 "qE" = (
 /obj/structure/table/rack/steel,
 /obj/item/ammo_casing/arrow/bronze{
 	name = "Arm of the Enemy"
 	},
-/turf/simulated/floor/silver/classp,
+/turf/simulated/floor/silver,
 /area/class_p/POIs/archaic_temple)
 "rq" = (
 /obj/effect/debris/cleanable/dirt,
-/turf/simulated/floor/trap/delayed/wood/classp{
+/turf/simulated/floor/trap/delayed/wood{
 	id = "library_2"
 	},
 /area/class_p/POIs/archaic_temple)
@@ -325,45 +325,45 @@
 	dir = 1
 	},
 /obj/random/great_helm,
-/turf/simulated/floor/phoron/classp,
+/turf/simulated/floor/phoron,
 /area/class_p/POIs/archaic_temple)
 "ru" = (
 /obj/structure/bed,
 /obj/item/bedsheet,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_p/POIs/archaic_temple)
 "rE" = (
 /obj/structure/simple_door/phoron,
-/turf/simulated/floor/crystal/classp,
+/turf/simulated/floor/crystal,
 /area/class_p/POIs/archaic_temple)
 "rF" = (
 /obj/structure/cult/tome,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_p/POIs/archaic_temple)
 "rO" = (
 /obj/structure/boulder,
-/turf/simulated/floor/outdoors/mud/classp/indoors,
+/turf/simulated/floor/outdoors/mud/indoors,
 /area/class_p/POIs/archaic_temple)
 "rU" = (
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/floor/outdoors/snow,
 /area/template_noop)
 "se" = (
-/turf/simulated/floor/classp,
+/turf/simulated/floor,
 /area/class_p/POIs/archaic_temple)
 "sj" = (
 /obj/structure/prop/prism/incremental/externalcont{
 	dialID = "bchar"
 	},
-/turf/simulated/floor/classp,
+/turf/simulated/floor,
 /area/class_p/POIs/archaic_temple)
 "so" = (
 /obj/structure/table/rack/steel,
-/obj/item/gun/magic/wand/death,
-/turf/simulated/floor/silver/classp,
+/obj/item/gun/projectile/magic/wand/death,
+/turf/simulated/floor/silver,
 /area/class_p/POIs/archaic_temple)
 "sH" = (
 /obj/structure/table/marble,
-/obj/item/gun/energy/staff/focus{
+/obj/item/gun/projectile/energy/staff/focus{
 	name = "Staff of the Forgotten"
 	},
 /obj/effect/trap/launcher/fireball_aoe/finite{
@@ -371,7 +371,7 @@
 	id = "vault";
 	pixel_y = -32
 	},
-/turf/simulated/floor/silver/classp,
+/turf/simulated/floor/silver,
 /area/class_p/POIs/archaic_temple)
 "sW" = (
 /obj/structure/prop/prismcontrol{
@@ -379,7 +379,7 @@
 	name = "Sundial of Anak-Hun-Tamuun"
 	},
 /obj/structure/table/marble,
-/turf/simulated/floor/outdoors/mud/classp/indoors,
+/turf/simulated/floor/outdoors/mud/indoors,
 /area/class_p/POIs/archaic_temple)
 "tc" = (
 /obj/machinery/door/blast/puzzle{
@@ -394,47 +394,47 @@
 	lockID = "bchar";
 	name = "The Tomb of the Forgotten One"
 	},
-/turf/simulated/floor/crystal/classp,
+/turf/simulated/floor/crystal,
 /area/class_p/POIs/archaic_temple)
 "te" = (
 /obj/structure/table/hardwoodtable,
 /obj/machinery/artifact,
-/turf/simulated/floor/gold/classp,
+/turf/simulated/floor/gold,
 /area/class_p/POIs/archaic_temple)
 "tt" = (
 /obj/structure/simple_door/phoron,
-/turf/simulated/floor/bmarble/classp,
+/turf/simulated/floor/bmarble,
 /area/class_p/POIs/archaic_temple)
 "tw" = (
 /obj/effect/trap/pit{
 	id = "west_hall_4"
 	},
-/turf/simulated/floor/bmarble/classp,
+/turf/simulated/floor/bmarble,
 /area/class_p/POIs/archaic_temple)
 "tY" = (
 /obj/structure/bed/chair/wood/wings{
 	dir = 4
 	},
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_p/POIs/archaic_temple)
 "uh" = (
 /obj/structure/statue/marble/female{
 	name = "eroded female statue"
 	},
-/turf/simulated/floor/phoron/classp,
+/turf/simulated/floor/phoron,
 /area/class_p/POIs/archaic_temple)
 "uk" = (
 /obj/structure/statue/marble/female{
 	name = "eroded female statue"
 	},
-/turf/simulated/floor/silver/classp,
+/turf/simulated/floor/silver,
 /area/class_p/POIs/archaic_temple)
 "vy" = (
 /obj/structure/table/rack/steel,
 /obj/item/clothing/head/wizard/amp{
 	name = "Circlet of the Conquered"
 	},
-/turf/simulated/floor/silver/classp,
+/turf/simulated/floor/silver,
 /area/class_p/POIs/archaic_temple)
 "vD" = (
 /turf/simulated/floor/diamond,
@@ -442,10 +442,10 @@
 "we" = (
 /obj/structure/table/marble,
 /obj/item/flame/candle/everburn/black,
-/turf/simulated/floor/gold/classp,
+/turf/simulated/floor/gold,
 /area/class_p/POIs/archaic_temple)
 "xl" = (
-/turf/simulated/floor/trap/delayed/crystal/classp{
+/turf/simulated/floor/trap/delayed/crystal{
 	id = "entry_corridor"
 	},
 /area/class_p/POIs/archaic_temple)
@@ -462,18 +462,18 @@
 	dir = 1
 	},
 /obj/item/archaeological_find,
-/turf/simulated/floor/gold/classp,
+/turf/simulated/floor/gold,
 /area/class_p/POIs/archaic_temple)
 "xO" = (
 /obj/structure/simple_door/gold,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_p/POIs/archaic_temple)
 "xQ" = (
 /obj/effect/trap/pit/deep{
 	id = "tunnel_class_south"
 	},
 /obj/effect/ceiling,
-/turf/simulated/floor/classp,
+/turf/simulated/floor,
 /area/class_p/POIs/archaic_temple)
 "xV" = (
 /obj/structure/window/reinforced/polarized/full{
@@ -482,69 +482,69 @@
 	opacity = 1
 	},
 /obj/structure/grille/cult,
-/turf/simulated/floor/trap/delayed/plating/classp{
+/turf/simulated/floor/trap/delayed/plating{
 	id = "tunnel_easthigh"
 	},
 /area/class_p/POIs/archaic_temple)
 "yg" = (
 /obj/structure/bookcase,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_p/POIs/archaic_temple)
 "yt" = (
-/turf/simulated/floor/outdoors/ice/classp/indoors,
+/turf/simulated/floor/outdoors/ice/indoors,
 /area/class_p/POIs/archaic_temple)
 "yw" = (
 /obj/structure/statue/marble/male{
 	name = "eroded male statue"
 	},
-/turf/simulated/floor/gold/classp,
+/turf/simulated/floor/gold,
 /area/class_p/POIs/archaic_temple)
 "yz" = (
 /obj/structure/bookcase,
 /obj/item/book,
 /obj/item/book,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_p/POIs/archaic_temple)
 "zg" = (
 /obj/structure/table/hardwoodtable,
 /obj/item/spellbook/oneuse/smoke,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_p/POIs/archaic_temple)
 "zk" = (
 /obj/structure/table/hardwoodtable,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_p/POIs/archaic_temple)
 "zm" = (
 /obj/structure/bookcase,
 /obj/item/spellbook/oneuse/charge,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_p/POIs/archaic_temple)
 "zu" = (
 /obj/structure/table/marble,
 /obj/item/coin/phoron,
-/turf/simulated/floor/bmarble/classp,
+/turf/simulated/floor/bmarble,
 /area/class_p/POIs/archaic_temple)
 "zz" = (
 /obj/effect/trap/pop_up/spear{
 	id = "west_hall_3"
 	},
-/turf/simulated/floor/wmarble/classp,
+/turf/simulated/floor/wmarble,
 /area/class_p/POIs/archaic_temple)
 "zC" = (
-/turf/simulated/floor/water/indoors/classp,
+/turf/simulated/floor/water/indoors,
 /area/class_p/POIs/archaic_temple)
 "zY" = (
-/turf/simulated/floor/gold/classp,
+/turf/simulated/floor/gold,
 /area/class_p/POIs/archaic_temple)
 "Ac" = (
 /obj/structure/table/marble,
 /obj/item/coin/copper,
-/turf/simulated/floor/wmarble/classp,
+/turf/simulated/floor/wmarble,
 /area/class_p/POIs/archaic_temple)
 "Ak" = (
 /obj/structure/table/bench/wooden,
 /obj/effect/debris/cleanable/dirt,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_p/POIs/archaic_temple)
 "Ar" = (
 /obj/effect/trap/launcher/fireball{
@@ -555,7 +555,7 @@
 /area/class_p/POIs/archaic_temple)
 "At" = (
 /obj/effect/debris/cleanable/blood/drip,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_p/POIs/archaic_temple)
 "Au" = (
 /obj/effect/trap/launcher/fireball{
@@ -568,33 +568,33 @@
 /obj/structure/statue/marble/male{
 	name = "eroded male statue"
 	},
-/turf/simulated/floor/crystal/classp,
+/turf/simulated/floor/crystal,
 /area/class_p/POIs/archaic_temple)
 "Bj" = (
 /obj/structure/table/rack/steel,
 /obj/item/coin/supermatter{
 	name = "pulsating coin"
 	},
-/turf/simulated/floor/silver/classp,
+/turf/simulated/floor/silver,
 /area/class_p/POIs/archaic_temple)
 "Bk" = (
 /obj/structure/boulder,
-/turf/simulated/floor/wmarble/classp,
+/turf/simulated/floor/wmarble,
 /area/class_p/POIs/archaic_temple)
 "BF" = (
 /obj/structure/closet/cabinet,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_p/POIs/archaic_temple)
 "BP" = (
 /obj/structure/boulder,
-/turf/simulated/floor/bmarble/classp,
+/turf/simulated/floor/bmarble,
 /area/class_p/POIs/archaic_temple)
 "BS" = (
 /obj/effect/trap/pit/deep{
 	id = "tunnel_class_north"
 	},
 /obj/effect/ceiling,
-/turf/simulated/floor/classp,
+/turf/simulated/floor,
 /area/class_p/POIs/archaic_temple)
 "Ci" = (
 /obj/structure/table/hardwoodtable,
@@ -609,11 +609,11 @@
 	dir = 1
 	},
 /obj/random/crusader_armor,
-/turf/simulated/floor/gold/classp,
+/turf/simulated/floor/gold,
 /area/class_p/POIs/archaic_temple)
 "Dl" = (
 /obj/effect/debris/cleanable/dirt,
-/turf/simulated/floor/crystal/classp,
+/turf/simulated/floor/crystal,
 /area/class_p/POIs/archaic_temple)
 "Dy" = (
 /obj/machinery/door/blast/puzzle{
@@ -628,27 +628,27 @@
 	lockID = "dmirr";
 	name = "enchanted door"
 	},
-/turf/simulated/floor/gold/classp,
+/turf/simulated/floor/gold,
 /area/class_p/POIs/archaic_temple)
 "DA" = (
 /obj/effect/debris/cleanable/dirt,
-/turf/simulated/floor/wmarble/classp,
+/turf/simulated/floor/wmarble,
 /area/class_p/POIs/archaic_temple)
 "DI" = (
 /obj/effect/trap/pop_up/spear{
 	id = "west_hall_1"
 	},
-/turf/simulated/floor/wmarble/classp,
+/turf/simulated/floor/wmarble,
 /area/class_p/POIs/archaic_temple)
 "Ee" = (
 /obj/structure/statue/marble/female{
 	name = "eroded female statue"
 	},
-/turf/simulated/floor/crystal/classp,
+/turf/simulated/floor/crystal,
 /area/class_p/POIs/archaic_temple)
 "EY" = (
 /obj/structure/simple_door/hardwood,
-/turf/simulated/floor/trap/wood/classp{
+/turf/simulated/floor/trap/wood{
 	id = "west_hall_3"
 	},
 /area/class_p/POIs/archaic_temple)
@@ -662,10 +662,10 @@
 	dir = 1
 	},
 /obj/item/material/shard/phoron,
-/turf/simulated/floor/gold/classp,
+/turf/simulated/floor/gold,
 /area/class_p/POIs/archaic_temple)
 "Fg" = (
-/turf/simulated/floor/phoron/classp,
+/turf/simulated/floor/phoron,
 /area/class_p/POIs/archaic_temple)
 "Fh" = (
 /obj/structure/window/reinforced/polarized/full{
@@ -674,7 +674,7 @@
 	opacity = 1
 	},
 /obj/structure/grille/cult,
-/turf/simulated/floor/trap/delayed/plating/classp{
+/turf/simulated/floor/trap/delayed/plating{
 	id = "tunnel_westhigh"
 	},
 /area/class_p/POIs/archaic_temple)
@@ -683,23 +683,23 @@
 	dir = 8
 	},
 /obj/effect/debris/cleanable/dirt,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_p/POIs/archaic_temple)
 "Fq" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/effect/trap/pop_up/pillar{
 	id = "display_room"
 	},
-/turf/simulated/floor/crystal/classp,
+/turf/simulated/floor/crystal,
 /area/class_p/POIs/archaic_temple)
 "Fu" = (
 /obj/structure/bed/chair/wood/wings{
 	dir = 8
 	},
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_p/POIs/archaic_temple)
 "Fw" = (
-/turf/simulated/floor/trap/delayed/wood/classp{
+/turf/simulated/floor/trap/delayed/wood{
 	id = "library_1"
 	},
 /area/class_p/POIs/archaic_temple)
@@ -708,33 +708,33 @@
 	id = "tunnel_eastlow"
 	},
 /obj/effect/ceiling,
-/turf/simulated/floor/classp,
+/turf/simulated/floor,
 /area/class_p/POIs/archaic_temple)
 "FY" = (
 /obj/structure/bed/chair/wood/wings,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_p/POIs/archaic_temple)
 "GF" = (
 /obj/effect/debris/cleanable/dirt,
-/turf/simulated/floor/gold/classp,
+/turf/simulated/floor/gold,
 /area/class_p/POIs/archaic_temple)
 "GP" = (
 /obj/effect/trap/pit/bone_breaker,
 /obj/effect/trap/pit/blood/deep{
 	id = "library_2"
 	},
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_p/POIs/archaic_temple)
 "GY" = (
 /obj/structure/prop/lock/projectile{
 	lockID = "anak"
 	},
-/turf/simulated/floor/classp,
+/turf/simulated/floor,
 /area/class_p/POIs/archaic_temple)
 "He" = (
 /obj/structure/table/hardwoodtable,
 /obj/item/flame/candle/everburn/black,
-/turf/simulated/floor/crystal/classp,
+/turf/simulated/floor/crystal,
 /area/class_p/POIs/archaic_temple)
 "Hh" = (
 /obj/structure/grille/cult,
@@ -742,14 +742,14 @@
 	name = "illusory mirror";
 	opacity = 1
 	},
-/turf/simulated/floor/classp,
+/turf/simulated/floor,
 /area/class_p/POIs/archaic_temple)
 "Hp" = (
 /obj/effect/ceiling,
 /turf/simulated/mineral/cave,
 /area/class_p/POIs/archaic_temple)
 "Hw" = (
-/turf/simulated/floor/trap/wmarble/classp{
+/turf/simulated/floor/trap/wmarble{
 	id = "east_hall_1"
 	},
 /area/class_p/POIs/archaic_temple)
@@ -763,18 +763,18 @@
 	},
 /obj/structure/window/phoronbasic,
 /obj/item/material/shard/phoron,
-/turf/simulated/floor/phoron/classp,
+/turf/simulated/floor/phoron,
 /area/class_p/POIs/archaic_temple)
 "HM" = (
 /obj/effect/trap/pop_up/pillar{
 	id = "display_room"
 	},
 /obj/effect/debris/cleanable/dirt,
-/turf/simulated/floor/crystal/classp,
+/turf/simulated/floor/crystal,
 /area/class_p/POIs/archaic_temple)
 "Ia" = (
 /obj/structure/boulder,
-/turf/simulated/floor/crystal/classp,
+/turf/simulated/floor/crystal,
 /area/class_p/POIs/archaic_temple)
 "Ij" = (
 /turf/simulated/mineral/cave,
@@ -784,13 +784,13 @@
 /obj/item/ectoplasm{
 	name = "Blood of the Foe"
 	},
-/turf/simulated/floor/silver/classp,
+/turf/simulated/floor/silver,
 /area/class_p/POIs/archaic_temple)
 "ID" = (
-/turf/simulated/floor/water/acid/deep/classp/indoors,
+/turf/simulated/floor/water/acid/deep/indoors,
 /area/class_p/POIs/archaic_temple)
 "IE" = (
-/turf/simulated/floor/trap/phoron/classp{
+/turf/simulated/floor/trap/phoron{
 	id = "entry_corridor"
 	},
 /area/class_p/POIs/archaic_temple)
@@ -800,10 +800,10 @@
 	id = "headmaster_office";
 	pixel_y = -32
 	},
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_p/POIs/archaic_temple)
 "Jv" = (
-/turf/simulated/floor/trap/gold/classp{
+/turf/simulated/floor/trap/gold{
 	id = "vault"
 	},
 /area/class_p/POIs/archaic_temple)
@@ -811,57 +811,57 @@
 /obj/structure/bed/chair/wood/wings{
 	dir = 1
 	},
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_p/POIs/archaic_temple)
 "Jy" = (
 /obj/structure/prop/prism/externalcont{
 	degrees_from_north = 180;
 	dialID = null
 	},
-/turf/simulated/floor/classp,
+/turf/simulated/floor,
 /area/class_p/POIs/archaic_temple)
 "JL" = (
-/turf/simulated/floor/trap/phoron/classp{
+/turf/simulated/floor/trap/phoron{
 	id = "master_trigger"
 	},
 /area/class_p/POIs/archaic_temple)
 "JP" = (
 /obj/structure/table/hardwoodtable,
-/turf/simulated/floor/wmarble/classp,
+/turf/simulated/floor/wmarble,
 /area/class_p/POIs/archaic_temple)
 "JT" = (
-/turf/simulated/floor/trap/delayed/gold/classp{
+/turf/simulated/floor/trap/delayed/gold{
 	id = "master_trigger"
 	},
 /area/class_p/POIs/archaic_temple)
 "JU" = (
 /obj/structure/table/marble,
 /obj/item/flame/candle/candelabra/everburn,
-/turf/simulated/floor/outdoors/mud/classp/indoors,
+/turf/simulated/floor/outdoors/mud/indoors,
 /area/class_p/POIs/archaic_temple)
 "Kf" = (
 /obj/effect/trap/pop_up/spear{
 	id = "west_hall_3"
 	},
 /obj/effect/debris/cleanable/dirt,
-/turf/simulated/floor/bmarble/classp,
+/turf/simulated/floor/bmarble,
 /area/class_p/POIs/archaic_temple)
 "Kl" = (
 /obj/structure/statue/marble/male{
 	name = "eroded male statue"
 	},
-/turf/simulated/floor/phoron/classp,
+/turf/simulated/floor/phoron,
 /area/class_p/POIs/archaic_temple)
 "Ks" = (
-/turf/simulated/floor/bmarble/classp,
+/turf/simulated/floor/bmarble,
 /area/class_p/POIs/archaic_temple)
 "Ku" = (
 /obj/structure/simple_door/gold,
-/turf/simulated/floor/crystal/classp,
+/turf/simulated/floor/crystal,
 /area/class_p/POIs/archaic_temple)
 "Kv" = (
 /obj/effect/debris/cleanable/dirt,
-/turf/simulated/floor/bmarble/classp,
+/turf/simulated/floor/bmarble,
 /area/class_p/POIs/archaic_temple)
 "KP" = (
 /obj/effect/trap/launcher/dart{
@@ -885,24 +885,24 @@
 /obj/item/melee/changeling/claw/greater{
 	name = "The Claw of Birnam Doomsayer"
 	},
-/turf/simulated/floor/phoron/classp,
+/turf/simulated/floor/phoron,
 /area/class_p/POIs/archaic_temple)
 "La" = (
 /obj/structure/simple_door/hardwood,
-/turf/simulated/floor/trap/wood/classp{
+/turf/simulated/floor/trap/wood{
 	id = "headmaster_office"
 	},
 /area/class_p/POIs/archaic_temple)
 "Lh" = (
 /obj/structure/table/hardwoodtable,
 /obj/item/flame/candle/black,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_p/POIs/archaic_temple)
 "LP" = (
 /obj/structure/prop/prism/incremental{
 	degrees_from_north = 180
 	},
-/turf/simulated/floor/classp,
+/turf/simulated/floor,
 /area/class_p/POIs/archaic_temple)
 "Mq" = (
 /turf/simulated/wall/dungeon,
@@ -914,7 +914,7 @@
 	name = "reflective window";
 	opacity = 1
 	},
-/turf/simulated/floor/trap/delayed/plating/classp{
+/turf/simulated/floor/trap/delayed/plating{
 	id = "tunnel_class_north"
 	},
 /area/class_p/POIs/archaic_temple)
@@ -936,10 +936,10 @@
 "Nt" = (
 /obj/structure/table/hardwoodtable,
 /obj/machinery/artifact,
-/turf/simulated/floor/crystal/classp,
+/turf/simulated/floor/crystal,
 /area/class_p/POIs/archaic_temple)
 "NS" = (
-/turf/simulated/floor/trap/delayed/wmarble/classp{
+/turf/simulated/floor/trap/delayed/wmarble{
 	id = "west_hall_1"
 	},
 /area/class_p/POIs/archaic_temple)
@@ -948,15 +948,15 @@
 /obj/item/necromantic_stone{
 	name = "Stone of the Betrayer"
 	},
-/turf/simulated/floor/silver/classp,
+/turf/simulated/floor/silver,
 /area/class_p/POIs/archaic_temple)
 "Ol" = (
 /obj/effect/debris/cleanable/generic,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_p/POIs/archaic_temple)
 "Oo" = (
 /obj/effect/debris/cleanable/dirt,
-/turf/simulated/floor/phoron/classp,
+/turf/simulated/floor/phoron,
 /area/class_p/POIs/archaic_temple)
 "OG" = (
 /obj/structure/table/hardwoodtable,
@@ -973,37 +973,37 @@
 /obj/item/melee/cursedblade{
 	name = "Xeq'quinnh's Crystal Blade"
 	},
-/turf/simulated/floor/gold/classp,
+/turf/simulated/floor/gold,
 /area/class_p/POIs/archaic_temple)
 "OI" = (
 /obj/structure/prop/prism/incremental/externalcont{
 	degrees_from_north = 180;
 	dialID = "anak"
 	},
-/turf/simulated/floor/classp,
+/turf/simulated/floor,
 /area/class_p/POIs/archaic_temple)
 "OJ" = (
 /obj/structure/boulder,
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/classp,
+/turf/simulated/floor,
 /area/class_p/POIs/archaic_temple)
 "OM" = (
 /obj/structure/table/hardwoodtable,
 /obj/effect/debris/cleanable/dirt,
 /obj/item/book,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_p/POIs/archaic_temple)
 "Pe" = (
 /obj/effect/trap/pit/blood/deep{
 	id = "library_2"
 	},
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_p/POIs/archaic_temple)
 "Pm" = (
 /obj/effect/trap/pit/blood/deep{
 	id = "library_1"
 	},
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_p/POIs/archaic_temple)
 "Pq" = (
 /obj/structure/table/hardwoodtable,
@@ -1018,28 +1018,28 @@
 	dir = 1
 	},
 /obj/item/material/knife/machete/hatchet/unathiknife,
-/turf/simulated/floor/phoron/classp,
+/turf/simulated/floor/phoron,
 /area/class_p/POIs/archaic_temple)
 "Py" = (
 /obj/effect/debris/cleanable/dirt,
-/turf/simulated/floor/silver/classp,
+/turf/simulated/floor/silver,
 /area/class_p/POIs/archaic_temple)
 "PM" = (
 /obj/effect/debris/cleanable/dirt,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_p/POIs/archaic_temple)
 "PU" = (
 /obj/effect/trap/pit/deep{
 	id = "tunnel_westlow"
 	},
 /obj/effect/ceiling,
-/turf/simulated/floor/classp,
+/turf/simulated/floor,
 /area/class_p/POIs/archaic_temple)
 "QV" = (
 /obj/structure/bed,
 /obj/effect/debris/cleanable/dirt,
 /obj/item/bedsheet/purple,
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_p/POIs/archaic_temple)
 "Rv" = (
 /obj/structure/table/marble,
@@ -1050,26 +1050,26 @@
 /turf/simulated/floor/diamond,
 /area/class_p/POIs/archaic_temple)
 "Sc" = (
-/turf/simulated/floor/trap/delayed/crystal/classp{
+/turf/simulated/floor/trap/delayed/crystal{
 	id = "display_room"
 	},
 /area/class_p/POIs/archaic_temple)
 "Sz" = (
 /obj/structure/table/hardwoodtable,
 /obj/item/flame/candle/black,
-/turf/simulated/floor/bmarble/classp,
+/turf/simulated/floor/bmarble,
 /area/class_p/POIs/archaic_temple)
 "Tw" = (
 /obj/structure/statue/marble/female{
 	density = 0;
 	name = "shimmering female statue"
 	},
-/turf/simulated/floor/phoron/classp,
+/turf/simulated/floor/phoron,
 /area/class_p/POIs/archaic_temple)
 "TF" = (
 /obj/structure/table/rack/steel,
 /obj/machinery/artifact,
-/turf/simulated/floor/silver/classp,
+/turf/simulated/floor/silver,
 /area/class_p/POIs/archaic_temple)
 "TM" = (
 /turf/simulated/mineral/cave,
@@ -1079,7 +1079,7 @@
 	id = "entry_corridor"
 	},
 /obj/effect/debris/cleanable/dirt,
-/turf/simulated/floor/phoron/classp,
+/turf/simulated/floor/phoron,
 /area/class_p/POIs/archaic_temple)
 "Ug" = (
 /obj/structure/grille/cult,
@@ -1088,7 +1088,7 @@
 	name = "reflective window";
 	opacity = 1
 	},
-/turf/simulated/floor/trap/delayed/plating/classp{
+/turf/simulated/floor/trap/delayed/plating{
 	id = "tunnel_eastlow"
 	},
 /area/class_p/POIs/archaic_temple)
@@ -1102,7 +1102,7 @@
 	},
 /obj/item/material/shard/phoron,
 /obj/item/material/shard/phoron,
-/turf/simulated/floor/gold/classp,
+/turf/simulated/floor/gold,
 /area/class_p/POIs/archaic_temple)
 "Us" = (
 /obj/structure/table/hardwoodtable,
@@ -1117,25 +1117,25 @@
 	dir = 1
 	},
 /obj/item/archaeological_find,
-/turf/simulated/floor/phoron/classp,
+/turf/simulated/floor/phoron,
 /area/class_p/POIs/archaic_temple)
 "UJ" = (
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/classp,
+/turf/simulated/floor,
 /area/class_p/POIs/archaic_temple)
 "UR" = (
 /obj/effect/trap/pop_up/pillar{
 	id = "display_room"
 	},
-/turf/simulated/floor/crystal/classp,
+/turf/simulated/floor/crystal,
 /area/class_p/POIs/archaic_temple)
 "Vb" = (
-/turf/simulated/floor/trap/wood/classp{
+/turf/simulated/floor/trap/wood{
 	id = "headmaster_desk"
 	},
 /area/class_p/POIs/archaic_temple)
 "Vk" = (
-/turf/simulated/floor/trap/wmarble/classp{
+/turf/simulated/floor/trap/wmarble{
 	id = "east_hall_2"
 	},
 /area/class_p/POIs/archaic_temple)
@@ -1146,17 +1146,17 @@
 	desc = "A message rippling on the inside of this crystal resolves from foreign text into your native tongue. It reads 'Strike me down, o mighty foe. Thy aim to slay undone. Treasures many fill my tomb. But the key tis only one.'";
 	name = "The Gate of Dmirr"
 	},
-/turf/simulated/floor/silver/classp,
+/turf/simulated/floor/silver,
 /area/class_p/POIs/archaic_temple)
 "VM" = (
 /obj/effect/debris/cleanable/dirt,
-/turf/simulated/floor/trap/delayed/crystal/classp{
+/turf/simulated/floor/trap/delayed/crystal{
 	id = "display_room"
 	},
 /area/class_p/POIs/archaic_temple)
 "Wc" = (
 /obj/structure/simple_door/hardwood,
-/turf/simulated/floor/trap/wood/classp{
+/turf/simulated/floor/trap/wood{
 	id = "west_hall_2"
 	},
 /area/class_p/POIs/archaic_temple)
@@ -1164,7 +1164,7 @@
 /obj/structure/prop/lock/projectile{
 	lockID = "bchar"
 	},
-/turf/simulated/floor/classp,
+/turf/simulated/floor,
 /area/class_p/POIs/archaic_temple)
 "Xi" = (
 /obj/structure/table/hardwoodtable,
@@ -1176,19 +1176,19 @@
 	},
 /obj/item/material/shard/phoron,
 /obj/item/material/shard/phoron,
-/turf/simulated/floor/gold/classp,
+/turf/simulated/floor/gold,
 /area/class_p/POIs/archaic_temple)
 "XB" = (
 /obj/effect/trap/pit/punji{
 	id = "west_hall_2"
 	},
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_p/POIs/archaic_temple)
 "XH" = (
 /obj/effect/trap/pop_up/flame{
 	id = "entry_corridor"
 	},
-/turf/simulated/floor/crystal/classp,
+/turf/simulated/floor/crystal,
 /area/class_p/POIs/archaic_temple)
 "XL" = (
 /obj/structure/statue/bone{
@@ -1196,14 +1196,14 @@
 	name = "The Fang of Agrim'Maw"
 	},
 /obj/effect/debris/cleanable/greenglow,
-/turf/simulated/floor/outdoors/grass/heavy/interior/classp,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/class_p/POIs/archaic_temple)
 "Yd" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/effect/trap/pit/blood/deep{
 	id = "library_1"
 	},
-/turf/simulated/floor/wood/classp,
+/turf/simulated/floor/wood,
 /area/class_p/POIs/archaic_temple)
 "Yg" = (
 /obj/effect/trap/launcher/dart{
@@ -1224,32 +1224,32 @@
 	id = "vault";
 	pixel_y = -32
 	},
-/turf/simulated/floor/silver/classp,
+/turf/simulated/floor/silver,
 /area/class_p/POIs/archaic_temple)
 "YS" = (
 /obj/structure/prop/prism/incremental{
 	degrees_from_north = 45
 	},
-/turf/simulated/floor/classp,
+/turf/simulated/floor,
 /area/class_p/POIs/archaic_temple)
 "Zc" = (
-/turf/simulated/floor/crystal/classp,
+/turf/simulated/floor/crystal,
 /area/class_p/POIs/archaic_temple)
 "Zu" = (
 /obj/effect/trap/pop_up/flame{
 	id = "entry_corridor"
 	},
-/turf/simulated/floor/phoron/classp,
+/turf/simulated/floor/phoron,
 /area/class_p/POIs/archaic_temple)
 "Zw" = (
 /obj/effect/ceiling,
 /mob/living/simple_mob/living_statue{
 	name = "eroded male statue"
 	},
-/turf/simulated/floor/classp,
+/turf/simulated/floor,
 /area/class_p/POIs/archaic_temple)
 "Zx" = (
-/turf/simulated/floor/water/acid/classp/indoors,
+/turf/simulated/floor/water/acid/indoors,
 /area/class_p/POIs/archaic_temple)
 "ZM" = (
 /obj/structure/grille/cult,
@@ -1258,10 +1258,10 @@
 	name = "reflective window";
 	opacity = 1
 	},
-/turf/simulated/floor/classp,
+/turf/simulated/floor,
 /area/class_p/POIs/archaic_temple)
 "ZV" = (
-/turf/simulated/floor/outdoors/grass/heavy/interior/classp,
+/turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/class_p/POIs/archaic_temple)
 
 (1,1,1) = {"

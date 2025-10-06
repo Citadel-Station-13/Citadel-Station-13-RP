@@ -36,7 +36,7 @@
 	glasses = /obj/item/clothing/glasses/sunglasses
 
 	back = /obj/item/storage/backpack/satchel
-	belt = /obj/item/gun/energy/pulse_carbine
+	belt = /obj/item/gun/projectile/energy/nt_pulse/carbine
 	flags = OUTFIT_EXTENDED_SURVIVAL|OUTFIT_COMPREHENSIVE_SURVIVAL
 
 /datum/outfit/job/station/emergency_responder/post_equip(var/mob/living/carbon/human/H)

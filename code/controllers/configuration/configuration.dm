@@ -8,19 +8,6 @@
 	var/list/entries
 	var/list/entries_by_type
 
-	// var/list/maplist
-	// var/datum/map_config/defaultmap
-
-	/*
-	var/list/modes			// allowed modes
-	var/list/gamemode_cache
-	var/list/votable_modes		// votable modes
-	var/list/storyteller_cache
-	var/list/mode_names
-	var/list/mode_reports
-	var/list/mode_false_report_weight
-	*/
-
 	var/motd
 
 	/// If the configuration is loaded
@@ -52,14 +39,12 @@
 				for(var/J in legacy_configs)
 					LoadEntries(J)
 				break
-	// loadmaplist(CONFIG_MAPS_FILE)
-	LoadWhitelists()
 	LoadMOTD()
 
 	loaded = TRUE
 
 	if (Master)
-		Master.OnConfigLoad()
+		Master.on_config_loaded()
 
 /datum/controller/configuration/proc/full_wipe()
 	if(IsAdminAdvancedProcCall())

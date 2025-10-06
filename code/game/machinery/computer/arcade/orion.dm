@@ -127,11 +127,11 @@ GLOBAL_LIST_INIT(orion_events, generate_orion_events())
 
 	if(gamers[gamer] > ORION_GAMER_REPORT_THRESHOLD && prob(20 * gamers[gamer]))
 
-		radio.set_frequency(SEC_FREQ)
-		radio.talk_into(src, "SECURITY ALERT: Crewmember [gamer] recorded displaying antisocial tendencies in [get_area(src)]. Please watch for violent behavior.", SEC_FREQ)
+		radio.set_frequency(FREQ_SECURITY)
+		radio.talk_into(src, "SECURITY ALERT: Crewmember [gamer] recorded displaying antisocial tendencies in [get_area(src)]. Please watch for violent behavior.", FREQ_SECURITY)
 
-		radio.set_frequency(MED_FREQ)
-		radio.talk_into(src, "PSYCH ALERT: Crewmember [gamer] recorded displaying antisocial tendencies in [get_area(src)]. Please schedule psych evaluation.", MED_FREQ)
+		radio.set_frequency(FREQ_MEDICAL)
+		radio.talk_into(src, "PSYCH ALERT: Crewmember [gamer] recorded displaying antisocial tendencies in [get_area(src)]. Please schedule psych evaluation.", FREQ_MEDICAL)
 
 		gamers[gamer] = ORION_GAMER_PAMPHLET //next report send a pamph
 
@@ -185,7 +185,7 @@ GLOBAL_LIST_INIT(orion_events, generate_orion_events())
 	static_data["settlermoods"] = settlermoods
 	return static_data
 
-/obj/machinery/computer/arcade/orion_trail/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/arcade/orion_trail/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

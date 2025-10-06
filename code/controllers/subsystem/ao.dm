@@ -13,7 +13,7 @@ SUBSYSTEM_DEF(ao)
 
 /datum/controller/subsystem/ao/Initialize(start_timeofday)
 	fire(FALSE, TRUE)
-	..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/ao/fire(resumed = 0, no_mc_tick = FALSE)
 	if (!resumed)

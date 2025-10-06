@@ -36,7 +36,14 @@
 	if(blood_type != null)
 		label_text = "[blood_type]"
 		update_iv_label()
-		reagents.add_reagent("blood", 200, list("donor"=null,"viruses"=null,"blood_DNA"=null,"blood_type"=blood_type,"resistances"=null,"trace_chem"=null))
+		// todo: standard way of doing this
+		var/datum/blood_mixture/mixture = new
+		var/datum/blood_fragment/fragment = new
+		fragment.legacy_blood_type = blood_type
+		mixture.unsafe_set_fragment_list_ref(list(
+			(fragment) = 1,
+		))
+		reagents.add_reagent("blood", 200, mixture)
 		update_icon()
 
 /obj/item/reagent_containers/blood/on_reagent_change()

@@ -104,9 +104,9 @@
 		if(prob(.))
 			owner.custom_pain("A jolt of pain surges through your [name]!",1)
 			if(organ_tag == BP_L_ARM) //Specific level 2 'feature
-				owner.drop_held_item_of_index(1)
+				owner.drop_held_index(1)
 			else if(organ_tag == BP_R_ARM)
-				owner.drop_held_item_of_index(2)
+				owner.drop_held_index(2)
 
 /obj/item/organ/external/arm/right
 	organ_tag = BP_R_ARM
@@ -225,9 +225,17 @@
 		if(prob(.))
 			owner.custom_pain("A jolt of pain surges through your [name]!",1)
 			if(organ_tag == BP_L_HAND) //Specific level 2 'feature
-				owner.drop_left_held_item()
+				// sequentially drop the first left-held-item
+				for(var/i in 1 to length(owner.inventory?.held_items) step 2)
+					if(isnull(owner.inventory.held_items[i]))
+						continue
+					owner.drop_held_index(i)
 			else if(organ_tag == BP_R_HAND)
-				owner.drop_right_held_item()
+				// sequentially drop the first left-right-item
+				for(var/i in 2 to length(owner.inventory?.held_items) step 2)
+					if(isnull(owner.inventory.held_items[i]))
+						continue
+					owner.drop_held_index(i)
 
 /obj/item/organ/external/hand/right
 	organ_tag = BP_R_HAND

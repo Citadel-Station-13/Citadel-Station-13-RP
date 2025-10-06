@@ -43,13 +43,15 @@
 
 	shock_resist = 0.75
 
+	exotic_type = /obj/item/reagent_containers/glass/venomgland/spider/stimm
+
 	player_msg = "You can fire a taser-like ranged attack by clicking on an enemy or tile at a distance."
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/electric_spider
 
 /obj/projectile/beam/stun/electric_spider
 	name = "stun beam"
-	agony = 20
+	damage_inflict_agony = 20
 
 // The electric spider's AI.
 /datum/ai_holder/polaris/simple_mob/ranged/electric_spider
@@ -60,3 +62,11 @@
 		if(L.incapacitated(INCAPACITATION_DISABLED) || L.stat == UNCONSCIOUS) // If our target is stunned, go in for the kill.
 			return 1
 	return ..() // Do ranged if possible otherwise.
+
+/obj/item/reagent_containers/glass/venomgland/spider/stimm
+	name = "Energizing Venom Gland"
+	desc = "A sac full of venom. It makes your fingers twitch holding it."
+
+/obj/item/reagent_containers/glass/venomgland/spider/stimm/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("stimm", 15)

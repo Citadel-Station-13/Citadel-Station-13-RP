@@ -1,5 +1,5 @@
 //! shitcode in this file oop
-/mob/living/throw_item(obj/item/I, atom/target, overhand, neat = a_intent == INTENT_HELP, force = throw_impulse, overhand = in_throw_mode == THROW_MODE_OVERHAND)
+/mob/living/throw_item(obj/item/I, atom/target, overhand = in_throw_mode == THROW_MODE_OVERHAND, neat = a_intent == INTENT_HELP, force = throw_impulse)
 	if(!I)
 		return FALSE
 	throw_mode_off()
@@ -11,7 +11,11 @@
 	if(is_in_inventory(I) && !can_unequip(I))
 		to_chat(src, SPAN_WARNING("You fail to throw [I] at [target]."))
 		return FALSE
+	// TODO: this entire override system is a bit complicated.
+	//       can we make it better?
 	var/atom/movable/throwing = I.throw_resolve_actual(src)
+	// Seems Sanity checks are done.
+	SEND_SIGNAL(src, COMSIG_MOB_ON_THROW, I, target)
 	// overhand stuff
 	if(overhand)
 		var/delay = throwing.overhand_throw_delay(src)
@@ -26,7 +30,7 @@
 	if(!I.throw_resolve_override(throwing, src))
 		// drop item
 		if(is_in_inventory(I))
-			if(!drop_item_to_ground(I))
+			if(!drop_item_to_ground(I, INV_OP_SUPPRESS_SOUND))
 				to_chat(src, SPAN_WARNING("You fail to throw [I] at [target]."))
 				return FALSE
 		else

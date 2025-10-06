@@ -152,8 +152,8 @@
 /area/submap/Blackshuttledown)
 "ax" = (
 /obj/structure/table/steel,
-/obj/item/gun/ballistic/automatic/wt550,
-/obj/item/gun/ballistic/automatic/p90,
+/obj/item/gun/projectile/ballistic/automatic/wt550,
+/obj/item/gun/projectile/ballistic/automatic/p90,
 /turf/simulated/floor/tiled/steel_grid,
 /area/submap/Blackshuttledown)
 "ay" = (
@@ -201,12 +201,6 @@
 "aG" = (
 /turf/simulated/shuttle/wall/dark{
 	icon_state = "dark9";
-	name = "Unknown Shuttle"
-	},
-/area/submap/Blackshuttledown)
-"aH" = (
-/turf/simulated/shuttle/wall/dark{
-	icon_state = "dark6";
 	name = "Unknown Shuttle"
 	},
 /area/submap/Blackshuttledown)
@@ -269,7 +263,7 @@
 /area/submap/Blackshuttledown)
 "aR" = (
 /obj/structure/table/steel,
-/obj/item/grenade/smokebomb,
+/obj/item/grenade/simple/smoke,
 /turf/simulated/floor/tiled/steel_grid,
 /area/submap/Blackshuttledown)
 "aS" = (
@@ -361,12 +355,6 @@
 "be" = (
 /obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/white,
-/area/submap/Blackshuttledown)
-"bf" = (
-/turf/simulated/shuttle/wall/dark{
-	icon_state = "dark10";
-	name = "Unknown Shuttle"
-	},
 /area/submap/Blackshuttledown)
 "bg" = (
 /obj/machinery/computer/communications,
@@ -663,7 +651,7 @@
 /area/submap/Blackshuttledown)
 "cc" = (
 /obj/structure/table/steel,
-/obj/item/gun/ballistic/pistol,
+/obj/item/gun/projectile/ballistic/pistol,
 /obj/machinery/light/small{
 	dir = 4;
 	pixel_y = 0
@@ -748,18 +736,6 @@
 /obj/item/bedsheet,
 /obj/item/toy/plushie/spider,
 /turf/simulated/floor/tiled/steel,
-/area/submap/Blackshuttledown)
-"cp" = (
-/turf/simulated/shuttle/wall/dark{
-	icon_state = "dark5";
-	name = "Unknown Shuttle"
-	},
-/area/submap/Blackshuttledown)
-"cq" = (
-/turf/simulated/shuttle/wall/dark{
-	icon_state = "dark9";
-	name = "Unknown Shuttle"
-	},
 /area/submap/Blackshuttledown)
 "cr" = (
 /obj/effect/floor_decal/borderfloor{
@@ -1012,7 +988,7 @@ ab
 ab
 ab
 ab
-aH
+ai
 aj
 bq
 bx
@@ -1048,7 +1024,7 @@ ab
 ab
 ab
 ab
-aH
+ai
 aj
 bg
 br
@@ -1084,7 +1060,7 @@ ai
 aj
 aj
 av
-aH
+ai
 aj
 bb
 bh
@@ -1096,10 +1072,10 @@ bF
 bT
 aj
 av
-aH
+ai
 aj
 aj
-cp
+av
 ab
 ab
 ab
@@ -1247,7 +1223,7 @@ cc
 ch
 aj
 aj
-cq
+aG
 ab
 ab
 ae
@@ -1691,7 +1667,7 @@ bY
 bY
 co
 aj
-cp
+av
 ab
 ab
 ad
@@ -1826,7 +1802,7 @@ aj
 aj
 aG
 ab
-bf
+ak
 aj
 bw
 bw
@@ -1835,7 +1811,7 @@ bI
 aj
 aG
 ab
-bf
+ak
 aj
 aj
 aj
@@ -1864,7 +1840,7 @@ aG
 ab
 ab
 ab
-bf
+ak
 al
 al
 al
@@ -1873,10 +1849,10 @@ aG
 ab
 ab
 ab
-bf
+ak
 al
 al
-cq
+aG
 ad
 ad
 ad

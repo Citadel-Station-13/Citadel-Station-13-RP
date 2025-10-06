@@ -186,3 +186,10 @@
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "bottle-3"
 	prefill = list("biomass" = 60)
+
+/obj/item/reagent_containers/glass/bottle/superhol
+	name = "unlabeled bottle"
+	desc = "A unlabeled bottle that seems to be filled with ethanol. The fumes burn the air around you."
+	icon = 'icons/obj/medical/chemical.dmi'
+	icon_state = "bottle-4"
+	prefill = list(/datum/reagent/superhol = 60)

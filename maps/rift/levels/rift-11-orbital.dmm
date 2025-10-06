@@ -116,7 +116,7 @@
 /turf/unsimulated/wall,
 /area/space)
 "aC" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/wall/mineral,
 /area/space)
 "aD" = (
 /turf/unsimulated/wall,
@@ -332,7 +332,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "bh" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "emergency_medical"
 	},
 /turf/simulated/floor,
@@ -2351,7 +2351,7 @@
 "hn" = (
 /obj/structure/closet/secure_closet/nanotrasen_security,
 /obj/item/storage/box/handcuffs,
-/obj/item/gun/energy/gun,
+/obj/item/gun/projectile/energy/gun,
 /obj/item/shield/riot,
 /turf/simulated/floor/tiled,
 /area/centcom/simulated/security)
@@ -2375,7 +2375,7 @@
 /obj/structure/table/reinforced,
 /obj/item/melee/baton/loaded,
 /obj/item/melee/baton/loaded,
-/obj/item/gun/energy/taser,
+/obj/item/gun/projectile/energy/taser,
 /obj/machinery/camera/network/crescent,
 /turf/simulated/floor/tiled,
 /area/centcom/simulated/security)
@@ -3109,7 +3109,7 @@
 /turf/simulated/floor/holofloor/reinforced,
 /area/space)
 "jM" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/specops/cockpit)
 "jN" = (
@@ -4354,7 +4354,7 @@
 	id = "emergency_shuttle_lockdown";
 	name = "Emergency Shuttle Blast Door"
 	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "emergency_security"
 	},
 /turf/simulated/floor/reinforced,
@@ -4588,7 +4588,7 @@
 	id = "emergency_shuttle_lockdown";
 	name = "Emergency Shuttle Blast Door"
 	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "emergency_cockpit"
 	},
 /turf/simulated/floor,
@@ -6347,16 +6347,16 @@
 /obj/item/clothing/glasses/welding/superior,
 /obj/structure/table/steel_reinforced,
 /obj/item/clothing/glasses/welding/superior,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
+/obj/item/grenade/simple/chemical/premade/metalfoam,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "un" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor,
 /area/shuttle/escape)
 "ur" = (
@@ -6459,8 +6459,8 @@
 	},
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/gun/energy/taser,
-/obj/item/gun/energy/taser,
+/obj/item/gun/projectile/energy/taser,
+/obj/item/gun/projectile/energy/taser,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
@@ -7555,10 +7555,10 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/gun/ballistic/revolver/combat,
-/obj/item/gun/ballistic/revolver/combat,
-/obj/item/gun/ballistic/revolver/combat,
-/obj/item/gun/ballistic/revolver/combat,
+/obj/item/gun/projectile/ballistic/revolver/combat,
+/obj/item/gun/projectile/ballistic/revolver/combat,
+/obj/item/gun/projectile/ballistic/revolver/combat,
+/obj/item/gun/projectile/ballistic/revolver/combat,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "AP" = (
@@ -7752,7 +7752,7 @@
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "BW" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "emergency_cockpit"
 	},
 /turf/simulated/floor,
@@ -7850,7 +7850,7 @@
 /area/centcom/specops)
 "CC" = (
 /obj/effect/step_trigger/teleporter/planetary_fall/lythios43c,
-/turf/simulated/sky/lythios43c/moving/west,
+/turf/simulated/fake_sky/lythios43c/moving/west,
 /area/space)
 "CH" = (
 /obj/machinery/light{
@@ -8009,8 +8009,8 @@
 /obj/item/clothing/accessory/storage/black_drop_pouches,
 /obj/item/clothing/accessory/storage/black_drop_pouches,
 /obj/item/clothing/accessory/storage/black_drop_pouches,
-/obj/item/gun/energy/gun/combat,
-/obj/item/gun/energy/gun/combat,
+/obj/item/gun/projectile/energy/gun/combat,
+/obj/item/gun/projectile/energy/gun/combat,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "Ei" = (
@@ -8022,12 +8022,12 @@
 /area/tdome/tdome1)
 "En" = (
 /obj/structure/table/rack,
-/obj/item/gun/energy/pulse_rifle,
-/obj/item/gun/energy/pulse_rifle,
-/obj/item/gun/energy/pulse_rifle,
-/obj/item/gun/energy/pulse_rifle,
-/obj/item/gun/energy/pulse_rifle,
-/obj/item/gun/energy/pulse_rifle,
+/obj/item/gun/projectile/energy/nt_pulse/rifle,
+/obj/item/gun/projectile/energy/nt_pulse/rifle,
+/obj/item/gun/projectile/energy/nt_pulse/rifle,
+/obj/item/gun/projectile/energy/nt_pulse/rifle,
+/obj/item/gun/projectile/energy/nt_pulse/rifle,
+/obj/item/gun/projectile/energy/nt_pulse/rifle,
 /obj/item/storage/secure/briefcase/nsfw_pack,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
@@ -8060,7 +8060,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/centcom/specops/dock)
 "Ey" = (
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "emergency_security"
 	},
 /turf/simulated/floor,
@@ -8084,10 +8084,10 @@
 	},
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/gun/ballistic/automatic/combat,
-/obj/item/gun/ballistic/automatic/combat,
-/obj/item/gun/ballistic/automatic/combat,
-/obj/item/gun/ballistic/automatic/combat,
+/obj/item/gun/projectile/ballistic/automatic/combat,
+/obj/item/gun/projectile/ballistic/automatic/combat,
+/obj/item/gun/projectile/ballistic/automatic/combat,
+/obj/item/gun/projectile/ballistic/automatic/combat,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
@@ -8192,7 +8192,7 @@
 /obj/item/clothing/shoes/brown,
 /obj/item/clothing/suit/armor/vest,
 /obj/item/clothing/head/helmet/swat,
-/obj/item/gun/energy/laser,
+/obj/item/gun/projectile/energy/laser,
 /turf/unsimulated/floor/dark,
 /area/tdome/tdome1)
 "GA" = (
@@ -8289,8 +8289,8 @@
 	dir = 1
 	},
 /obj/structure/table/rack,
-/obj/item/gun/energy/ionrifle,
-/obj/item/gun/energy/ionrifle,
+/obj/item/gun/projectile/energy/ionrifle,
+/obj/item/gun/projectile/energy/ionrifle,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/window/reinforced{
 	dir = 8
@@ -8388,7 +8388,7 @@
 	id = "emergency_shuttle_lockdown";
 	name = "Emergency Shuttle Blast Door"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/reinforced,
 /area/shuttle/escape)
 "Jx" = (
@@ -8452,7 +8452,7 @@
 /obj/item/flash,
 /obj/item/melee/baton/loaded,
 /obj/item/storage/belt/security/tactical,
-/obj/item/gun/energy/stunrevolver,
+/obj/item/gun/projectile/energy/stunrevolver,
 /obj/item/clothing/glasses/sunglasses/sechud/tactical,
 /obj/item/material/knife/tacknife/combatknife,
 /turf/unsimulated/floor/wood,
@@ -8552,7 +8552,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/cockpit)
 "KE" = (
-/turf/simulated/sky/lythios43c/moving/west,
+/turf/simulated/fake_sky/lythios43c/moving/west,
 /area/space)
 "KU" = (
 /obj/machinery/vending/security,
@@ -8709,7 +8709,7 @@
 /area/centcom/command)
 "LF" = (
 /obj/structure/table/reinforced,
-/obj/item/gun/energy/gun/nuclear,
+/obj/item/gun/projectile/energy/gun/nuclear,
 /obj/item/hand_tele,
 /turf/unsimulated/floor/wood,
 /area/centcom/specops)
@@ -8755,7 +8755,7 @@
 /area/centcom/specops)
 "Mb" = (
 /obj/effect/shuttle_landmark/rift/deck4/excursion_sky,
-/turf/simulated/sky/lythios43c/moving/west,
+/turf/simulated/fake_sky/lythios43c/moving/west,
 /area/space)
 "Me" = (
 /obj/item/clothing/accessory/holster/armpit,
@@ -8786,7 +8786,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/gun/energy/sniperrifle,
+/obj/item/gun/projectile/energy/sniperrifle,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "Mr" = (
@@ -8806,8 +8806,8 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/gun/energy/ionrifle/pistol,
-/obj/item/gun/energy/ionrifle/pistol,
+/obj/item/gun/projectile/energy/ionrifle/pistol,
+/obj/item/gun/projectile/energy/ionrifle/pistol,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "MA" = (
@@ -8824,7 +8824,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/spawner/window/low_wall/borosillicate/full/firelocks,
+/obj/spawner/window/low_wall/borosillicate/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/specops/engine)
 "MJ" = (
@@ -8884,12 +8884,12 @@
 /area/space)
 "NL" = (
 /obj/effect/shuttle_landmark/rift/deck4/northeast,
-/turf/simulated/sky/lythios43c/moving/south,
+/turf/simulated/fake_sky/lythios43c/moving/south,
 /area/space)
 "NP" = (
 /obj/structure/table/rack,
-/obj/item/gun/ballistic/automatic/lmg,
-/obj/item/gun/ballistic/automatic/lmg,
+/obj/item/gun/projectile/ballistic/automatic/lmg,
+/obj/item/gun/projectile/ballistic/automatic/lmg,
 /obj/item/ammo_magazine/a5_56mm/saw,
 /obj/item/ammo_magazine/a5_56mm/saw,
 /obj/item/ammo_magazine/a5_56mm/saw,
@@ -8903,8 +8903,8 @@
 "NU" = (
 /obj/structure/table/rack,
 /obj/structure/window/reinforced,
-/obj/item/gun/ballistic/shotgun/pump/combat,
-/obj/item/gun/ballistic/shotgun/pump/combat,
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat,
+/obj/item/gun/projectile/ballistic/shotgun/pump/combat,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "NV" = (
@@ -8973,7 +8973,7 @@
 /obj/item/clothing/shoes/brown,
 /obj/item/clothing/suit/armor/vest,
 /obj/item/clothing/head/helmet/swat,
-/obj/item/gun/energy/laser,
+/obj/item/gun/projectile/energy/laser,
 /turf/unsimulated/floor/dark,
 /area/tdome/tdome1)
 "OG" = (
@@ -9089,7 +9089,7 @@
 /turf/space/transit/east,
 /area/space)
 "Qc" = (
-/turf/simulated/sky/lythios43c/moving/south,
+/turf/simulated/fake_sky/lythios43c/moving/south,
 /area/space)
 "Qd" = (
 /obj/structure/cable/green{
@@ -9099,7 +9099,7 @@
 /area/shuttle/specops/cockpit)
 "Qg" = (
 /obj/effect/shuttle_landmark/rift/deck4/north,
-/turf/simulated/sky/lythios43c/moving/south,
+/turf/simulated/fake_sky/lythios43c/moving/south,
 /area/space)
 "Ql" = (
 /obj/effect/shuttle_landmark/transit/rift/pirate,
@@ -9139,7 +9139,7 @@
 	dir = 1
 	},
 /obj/structure/table/rack,
-/obj/item/gun/energy/netgun,
+/obj/item/gun/projectile/energy/netgun,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/window/reinforced{
 	dir = 4
@@ -9196,7 +9196,7 @@
 	id = "emergency_shuttle_lockdown";
 	name = "Emergency Shuttle Blast Door"
 	},
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+/obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "emergency_medical"
 	},
 /turf/simulated/floor/reinforced,
@@ -9309,7 +9309,7 @@
 "SA" = (
 /obj/effect/blocker,
 /obj/effect/step_trigger/teleporter/planetary_fall/lythios43c,
-/turf/simulated/sky/lythios43c/moving/west,
+/turf/simulated/fake_sky/lythios43c/moving/west,
 /area/space)
 "SB" = (
 /obj/structure/table/reinforced,
@@ -9554,7 +9554,7 @@
 /obj/item/clothing/accessory/holster/hip,
 /obj/item/ammo_magazine/a44,
 /obj/item/ammo_magazine/a44,
-/obj/item/gun/ballistic/deagle,
+/obj/item/gun/projectile/ballistic/deagle,
 /turf/unsimulated/floor/wood,
 /area/centcom/specops)
 "UT" = (
@@ -9573,14 +9573,14 @@
 /area/centcom/specops)
 "Vb" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/storage/box/survival/comp,
-/obj/item/storage/box/survival/comp,
-/obj/item/storage/box/survival/comp,
-/obj/item/storage/box/survival/comp,
-/obj/item/storage/box/survival/comp,
-/obj/item/storage/box/survival/comp,
-/obj/item/storage/box/survival/comp,
-/obj/item/storage/box/survival/comp,
+/obj/item/storage/box/legacy_survival/comp,
+/obj/item/storage/box/legacy_survival/comp,
+/obj/item/storage/box/legacy_survival/comp,
+/obj/item/storage/box/legacy_survival/comp,
+/obj/item/storage/box/legacy_survival/comp,
+/obj/item/storage/box/legacy_survival/comp,
+/obj/item/storage/box/legacy_survival/comp,
+/obj/item/storage/box/legacy_survival/comp,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "Vd" = (
@@ -9642,8 +9642,8 @@
 /obj/item/clothing/accessory/storage/brown_drop_pouches,
 /obj/item/clothing/accessory/storage/brown_drop_pouches,
 /obj/item/clothing/accessory/storage/brown_drop_pouches,
-/obj/item/gun/energy/gun/combat,
-/obj/item/gun/energy/gun/combat,
+/obj/item/gun/projectile/energy/gun/combat,
+/obj/item/gun/projectile/energy/gun/combat,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "Vz" = (
@@ -9794,7 +9794,7 @@
 /area/centcom/specops)
 "XP" = (
 /obj/effect/step_trigger/teleporter/planetary_fall/lythios43c,
-/turf/simulated/sky/lythios43c/moving/south,
+/turf/simulated/fake_sky/lythios43c/moving/south,
 /area/space)
 "XQ" = (
 /obj/structure/table/rack,
@@ -9898,10 +9898,10 @@
 	},
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/gun/energy/combat,
-/obj/item/gun/energy/combat,
-/obj/item/gun/energy/combat,
-/obj/item/gun/energy/combat,
+/obj/item/gun/projectile/energy/combat,
+/obj/item/gun/projectile/energy/combat,
+/obj/item/gun/projectile/energy/combat,
+/obj/item/gun/projectile/energy/combat,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
@@ -10045,8 +10045,8 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/gun/energy/stunrevolver,
-/obj/item/gun/energy/stunrevolver,
+/obj/item/gun/projectile/energy/stunrevolver,
+/obj/item/gun/projectile/energy/stunrevolver,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "ZG" = (
@@ -10058,10 +10058,10 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/gun/energy/gun/combat,
-/obj/item/gun/energy/gun/combat,
-/obj/item/gun/energy/gun/combat,
-/obj/item/gun/energy/gun/combat,
+/obj/item/gun/projectile/energy/gun/combat,
+/obj/item/gun/projectile/energy/gun/combat,
+/obj/item/gun/projectile/energy/gun/combat,
+/obj/item/gun/projectile/energy/gun/combat,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "ZH" = (
@@ -10074,8 +10074,8 @@
 /obj/item/ammo_magazine/a5_56mm,
 /obj/item/ammo_magazine/a5_56mm,
 /obj/item/ammo_magazine/a5_56mm,
-/obj/item/gun/ballistic/automatic/sts35,
-/obj/item/gun/ballistic/automatic/sts35,
+/obj/item/gun/projectile/ballistic/automatic/sts35,
+/obj/item/gun/projectile/ballistic/automatic/sts35,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "ZN" = (

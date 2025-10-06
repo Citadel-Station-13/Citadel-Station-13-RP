@@ -57,7 +57,7 @@
 	name = "large dispenser cartridge"
 	volume = 1000
 	materials_base = list(
-		/datum/material/plastic::id = 5 * /datum/material/plastic::sheet_amount,
+		/datum/prototype/material/plastic::id = 5 * /datum/prototype/material/plastic::sheet_amount,
 	)
 	worth_intrinsic = 100
 
@@ -65,7 +65,7 @@
 	name = "medium dispenser cartridge"
 	volume = 500
 	materials_base = list(
-		/datum/material/plastic::id = 3 * /datum/material/plastic::sheet_amount,
+		/datum/prototype/material/plastic::id = 3 * /datum/prototype/material/plastic::sheet_amount,
 	)
 	worth_intrinsic = 75
 
@@ -73,6 +73,6 @@
 	name = "small dispenser cartridge"
 	volume = 250
 	materials_base = list(
-		/datum/material/plastic::id = 1 * /datum/material/plastic::sheet_amount,
+		/datum/prototype/material/plastic::id = 1 * /datum/prototype/material/plastic::sheet_amount,
 	)
 	worth_intrinsic = 50

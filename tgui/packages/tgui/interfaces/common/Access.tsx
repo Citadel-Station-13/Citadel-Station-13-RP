@@ -5,8 +5,9 @@
  * @license MIT
  */
 
-import { useLocalState } from "../../backend";
-import { Button, Flex, LabeledList, Section, Tabs } from "../../components";
+import { useState } from "react";
+import { Button, Flex, LabeledList, Section, Tabs } from "tgui-core/components";
+
 import { AccessRegions, AccessTypes } from "../../constants/access";
 
 export enum AccessListMode {
@@ -74,11 +75,11 @@ const diffMap = {
   },
 };
 
-export const AccessListMod = (props: AccessListModProps, context) => {
-  const [selectedCategory, setSelectedCategory] = useLocalState<string | undefined>(context, `${props.uid}_selectedCategory`, undefined);
+export const AccessListMod = (props: AccessListModProps) => {
+  const [selectedCategory, setSelectedCategory] = useState<string | undefined>(undefined);
   let categories: string[] = [];
   let lookup = new Map<number, Access>();
-  let effectiveAccess = props.accessShown === undefined? props.access : props.access.filter(
+  let effectiveAccess = props.accessShown === undefined ? props.access : props.access.filter(
     (a) => props.accessShown?.includes(a.value)
   );
   effectiveAccess.forEach((a) => {
@@ -105,7 +106,7 @@ export const AccessListMod = (props: AccessListModProps, context) => {
         failed = true;
       }
     });
-    return failed? (any? 1 : 0) : 2;
+    return failed ? (any ? 1 : 0) : 2;
   };
   return (
     <Section
@@ -134,7 +135,6 @@ export const AccessListMod = (props: AccessListModProps, context) => {
                 return (
                   <Tabs.Tab
                     key={cat}
-                    altSelection
                     color={color}
                     icon={icon}
                     selected={cat === selectedCategory}
@@ -185,11 +185,11 @@ export const AccessListMod = (props: AccessListModProps, context) => {
   );
 };
 
-export const AccessListAuth = (props: AccessListAuthProps, context) => {
-  const [selectedCategory, setSelectedCategory] = useLocalState<string | null>(context, 'selectedCategory', null);
+export const AccessListAuth = (props: AccessListAuthProps) => {
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   let categories: string[] = [];
   let lookup = new Map<number, Access>();
-  let effectiveAccess = props.accessShown === undefined? props.access : props.access.filter(
+  let effectiveAccess = props.accessShown === undefined ? props.access : props.access.filter(
     (a) => props.accessShown?.includes(a.value)
   );
   effectiveAccess.forEach((a) => {
@@ -236,7 +236,6 @@ export const AccessListAuth = (props: AccessListAuthProps, context) => {
                 return (
                   <Tabs.Tab
                     key={cat}
-                    altSelection
                     color={color}
                     icon={icon}
                     selected={cat === selectedCategory}
@@ -296,10 +295,10 @@ export const AccessListAuth = (props: AccessListAuthProps, context) => {
   );
 };
 
-export const AccessListSelect = (props: AccessListSelectProps, context) => {
-  const [selectedCategory, setSelectedCategory] = useLocalState<string | null>(context, 'selectedCategory', null);
+export const AccessListSelect = (props: AccessListSelectProps) => {
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   let categories: string[] = [];
-  let effectiveAccess = props.accessShown === undefined? props.access : props.access.filter(
+  let effectiveAccess = props.accessShown === undefined ? props.access : props.access.filter(
     (a) => props.accessShown?.includes(a.value)
   );
   effectiveAccess.forEach((a) => {
@@ -319,11 +318,10 @@ export const AccessListSelect = (props: AccessListSelectProps, context) => {
             {
               categories.map((cat) => {
                 const { icon, color } = diffMap[
-                  props.selected && (effectiveAccess.find((a) => a.value === props.selected))?1 : 0];
+                  props.selected && (effectiveAccess.find((a) => a.value === props.selected)) ? 1 : 0];
                 return (
                   <Tabs.Tab
                     key={cat}
-                    altSelection
                     color={color}
                     icon={icon}
                     selected={cat === selectedCategory}
@@ -344,7 +342,7 @@ export const AccessListSelect = (props: AccessListSelectProps, context) => {
                 fluid
                 key={a.value}
                 content={a.name}
-                color={props.selected === a.value? "good" : "transparent"}
+                color={props.selected === a.value ? "good" : "transparent"}
                 onClick={() => props.select && props.select(a.value)} />
             );
           })}

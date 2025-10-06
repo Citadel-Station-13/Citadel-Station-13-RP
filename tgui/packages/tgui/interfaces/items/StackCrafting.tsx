@@ -4,8 +4,10 @@
  */
 
 import { ceiling, floor } from "common/math";
-import { useBackend, useLocalState } from "../../backend";
-import { Button, Collapsible, Input, NumberInput, Section, Stack } from "../../components";
+import { useState } from "react";
+import { Button, Collapsible, Input, NumberInput, Section, Stack } from "tgui-core/components";
+
+import { useBackend } from "../../backend";
 import { Window } from "../../layouts";
 import { StackRecipeData } from "../common/StackRecipe";
 
@@ -23,8 +25,8 @@ interface StackCraftingEntryProps {
   readonly stackAmt: number;
 }
 
-const StackCraftingEntry = (props: StackCraftingEntryProps, context) => {
-  const [amt, setAmt] = useLocalState<number>(context, props.recipe.ref, props.recipe.resultAmt);
+const StackCraftingEntry = (props: StackCraftingEntryProps) => {
+  const [amt, setAmt] = useState<number>(props.recipe.resultAmt);
   return (
     <Stack>
       <Stack.Item grow={1}>
@@ -43,14 +45,17 @@ const StackCraftingEntry = (props: StackCraftingEntryProps, context) => {
           </Stack.Item>
           <Stack.Item>
             <NumberInput width={2.5} value={amt}
-              onChange={(e, val) => setAmt(
+              minValue={0}
+              maxValue={10000}
+              step={1}
+              onChange={(val) => setAmt(
                 Math.max(
                   Math.min(
                     Math.min(
                       ceiling(
                         Math.min(
                           Math.max(1, val),
-                          props.recipe.maxAmount? props.recipe.maxAmount : Infinity
+                          props.recipe.maxAmount ? props.recipe.maxAmount : Infinity
                         ),
                         props.recipe.resultAmt
                       )
@@ -72,11 +77,11 @@ const StackCraftingEntry = (props: StackCraftingEntryProps, context) => {
   );
 };
 
-export const StackCrafting = (props, context) => {
-  const { act, data } = useBackend<StackCraftingData>(context);
+export const StackCrafting = (props) => {
+  const { act, data } = useBackend<StackCraftingData>();
   let approximateEntries = 0;
   let categories: string[] = [];
-  const [searchText, setSearchText] = useLocalState<string | null>(context, "searchText", null);
+  const [searchText, setSearchText] = useState<string | null>(null);
   let searchString = searchText?.toLowerCase() || "";
   data.recipes.forEach((r) => {
     if (r.category) {
@@ -97,13 +102,13 @@ export const StackCrafting = (props, context) => {
             Search
             <Input
               autoFocus
-              value={searchText}
-              onInput={(e, val) => setSearchText(val)}
+              value={searchText || ""}
+              onChange={(val) => setSearchText(val)}
               mx={1} />
           </>
         )}>
           <Stack vertical>
-            {searchText && searchText.length >= 2? (
+            {searchText && searchText.length >= 2 ? (
               <>
                 {data.recipes.filter((r) => r.name.toLowerCase().includes(searchString)).sort(
                   (a, b) => a.name.localeCompare(b.name)
@@ -120,7 +125,7 @@ export const StackCrafting = (props, context) => {
               <>
                 {categories.sort((a, b) => a.localeCompare(b)).map((cat) => (
                   <Stack.Item key={cat}>
-                    <Collapsible title={cat} contentFunction={() => (
+                    <Collapsible title={cat}>
                       <Stack vertical ml={1} mt={1}>
                         {data.recipes.filter((r) => r.category === cat).map((r) => (
                           <Stack.Item key={r.name}>
@@ -131,11 +136,11 @@ export const StackCrafting = (props, context) => {
                           </Stack.Item>
                         ))}
                       </Stack>
-                    )} />
+                    </Collapsible>
                   </Stack.Item>
                 ))}
                 {data.recipes.filter((r) => !r.category).sort((a, b) =>
-                  (a.sortOrder === b.sortOrder? a.name.localeCompare(b.name) : b.sortOrder - a.sortOrder)
+                  (a.sortOrder === b.sortOrder ? a.name.localeCompare(b.name) : b.sortOrder - a.sortOrder)
                 ).map((r) => (
                   <Stack.Item key={r.name} ml={0.75}>
                     <StackCraftingEntry recipe={r} craft={(ref, amt) => act(

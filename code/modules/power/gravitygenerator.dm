@@ -129,13 +129,12 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 	var/list/areas = list()
 
 /obj/machinery/gravity_generator/main/Initialize(mapload)
-	..()
+	. = ..()
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/gravity_generator/main/LateInitialize() //Needs to happen after overmap sectors are initialized so we can figure out where we are
 	update_list()
 	update_areas()
-	return ..()
 
 /obj/machinery/gravity_generator/main/set_fix()
 	. = ..()
@@ -262,7 +261,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 
 	return data
 
-/obj/machinery/gravity_generator/main/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/gravity_generator/main/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if((..()))
 		return TRUE
 

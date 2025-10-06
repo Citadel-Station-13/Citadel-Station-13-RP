@@ -34,6 +34,7 @@
 
 /obj/machinery/doorbell_chime/update_icon()
 	cut_overlays()
+	. = ..()
 	if(panel_open)
 		add_overlay("dbchime-open")
 	if(inoperable())
@@ -105,14 +106,15 @@
 	..()
 	update_icon()
 
-/obj/machinery/button/doorbell/update_icon()
+/obj/machinery/button/doorbell/update_icon_state()
 	if(machine_stat & (NOPOWER|BROKEN))
 		icon_state = "doorbell-off"
 	else
 		icon_state = "doorbell-standby"
+	return ..()
 
 /obj/machinery/button/doorbell/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
-	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+	user.setClickCooldownLegacy(DEFAULT_ATTACK_COOLDOWN)
 	if(..())
 		return
 	use_power(5)

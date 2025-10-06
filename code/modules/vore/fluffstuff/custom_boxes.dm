@@ -40,7 +40,7 @@
 		/obj/item/clothing/suit/storage/det_suit/fluff/tas_coat,
 		/obj/item/clothing/under/det/fluff/tasald,
 		/obj/item/clothing/accessory/permit/gun/fluff/tasald_corlethian,
-		/obj/item/gun/ballistic/revolver/mateba/fluff/tasald_corlethian,
+		/obj/item/gun/projectile/ballistic/revolver/mateba/fluff/tasald_corlethian,
 		/obj/item/implanter/loyalty)
 
 //bwoincognito:Octavious Ward
@@ -94,7 +94,7 @@
 		new /obj/item/clothing/suit/storage/fluff/modernfedcoat(src)
 		new /obj/item/clothing/head/caphat/formal/fedcover(src)
 		new /obj/item/card/id/centcom/station/fluff/joanbadge(src)
-//		new /obj/item/gun/energy/gun/fluff/dominator(src)
+//		new /obj/item/gun/projectile/energy/gun/fluff/dominator(src)
 		new /obj/item/clothing/suit/armor/det_suit(src)
 //		new /obj/item/clothing/accessory/permit/gun/fluff/joanrisu(src)
 //		new /obj/item/sword/fluff/joanaria(src)
@@ -113,7 +113,7 @@
 		..()
 		new /obj/item/clothing/accessory/holster/hip(src)
 		new /obj/item/clothing/suit/storage/fluff/fedcoat(src)
-//		new /obj/item/gun/energy/gun/fluff/dominator(src)
+//		new /obj/item/gun/projectile/energy/gun/fluff/dominator(src)
 		new /obj/item/clothing/suit/armor/det_suit(src)
 		new /obj/item/clothing/accessory/storage/black_vest(src)
 		new /obj/item/material/knife/tacknife/combatknife/fluff/katarina(src)
@@ -174,7 +174,7 @@
 /obj/item/storage/box/fluff/sebastian_aji
 	name = "Sebastian's Lumoco Arms P3 Box"
 	starts_with = list(
-		/obj/item/gun/ballistic/pistol,
+		/obj/item/gun/projectile/ballistic/pistol,
 		/obj/item/ammo_magazine/a9mm/compact/flash,
 		/obj/item/ammo_magazine/a9mm/compact/flash,
 		/obj/item/clothing/accessory/permit/gun/fluff/sebastian_aji)
@@ -183,7 +183,7 @@
 /obj/item/storage/box/fluff/briana_moore
 	name = "Briana's Derringer Box"
 	starts_with = list(
-		/obj/item/gun/ballistic/derringer/fluff/briana,
+		/obj/item/gun/projectile/ballistic/derringer/fluff/briana,
 		/obj/item/clothing/accessory/permit/gun/fluff/briana_moore)
 */
 
@@ -193,7 +193,7 @@
 	name = "Serdy's Weapon Box"
 	starts_with = list(
 		/obj/item/clothing/accessory/permit/gun/fluff/silencedmp5a5,
-		/obj/item/gun/ballistic/colt/fluff/serdy)
+		/obj/item/gun/projectile/ballistic/colt/fluff/serdy)
 */
 
 //BeyondMyLife: Ne'tra Ky'ram //Made a box because they have so many items that it'd spam the debug log.

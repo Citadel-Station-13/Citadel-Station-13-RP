@@ -30,7 +30,7 @@
 
 /obj/machinery/microwave/Initialize(mapload)
 	. = ..()
-	reagents = new/datum/reagents(100)
+	reagents = new/datum/reagent_holder(100)
 	reagents.my_atom = src
 	if (!available_recipes)
 		available_recipes = new
@@ -130,8 +130,8 @@
 		)
 		if (!O.reagents)
 			return 1
-		for (var/datum/reagent/R in O.reagents.reagent_list)
-			if (!(R.id in acceptable_reagents))
+		for (var/id in O.reagents.reagent_volumes)
+			if (!(id in acceptable_reagents))
 				to_chat(user, "<span class='warning'>Your [O] contains components unsuitable for cookery.</span>")
 				return 1
 		return
@@ -211,15 +211,15 @@
 				else
 					dat += {"<B>[capitalize(O)]:</B> [N] [items_measures_p[O]]<BR>"}
 
-		for (var/datum/reagent/R in reagents.reagent_list)
+		for (var/datum/reagent/R in reagents.get_reagent_datums())
 			var/display_name = R.name
 			if (R.id == "capsaicin")
 				display_name = "Hotsauce"
 			if (R.id == "frostoil")
 				display_name = "Coldsauce"
-			dat += {"<B>[display_name]:</B> [R.volume] unit\s<BR>"}
+			dat += {"<B>[display_name]:</B> [reagents.reagent_volumes[R.id]] unit\s<BR>"}
 
-		if (items_counts.len==0 && reagents.reagent_list.len==0)
+		if (items_counts.len==0 && !reagents.total_volume==0)
 			dat = {"<B>The microwave is empty</B><BR>"}
 		else
 			dat = {"<b>Ingredients:</b><br>[dat]"}
@@ -405,7 +405,7 @@
 	for (var/obj/O in contents-ffuu)
 		amount++
 		if (O.reagents)
-			var/id = O.reagents.get_master_reagent_id()
+			var/id = O.reagents.get_majority_reagent_id()
 			if (id)
 				amount+=O.reagents.get_reagent_amount(id)
 		qdel(O)

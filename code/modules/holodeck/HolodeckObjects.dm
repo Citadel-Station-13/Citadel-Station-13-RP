@@ -20,7 +20,7 @@
 	name = "carpet"
 	icon = 'icons/turf/flooring/carpet.dmi'
 	icon_state = "carpet"
-	initial_flooring = /singleton/flooring/carpet
+	initial_flooring = /datum/prototype/flooring/carpet
 
 	// smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_CARPET)
@@ -30,30 +30,30 @@
 	name = "floor"
 	icon = 'icons/turf/flooring/tiles.dmi'
 	icon_state = "steel"
-	initial_flooring = /singleton/flooring/tiling
+	initial_flooring = /datum/prototype/flooring/tiling
 
 /turf/simulated/floor/holofloor/tiled/dark
 	name = "dark floor"
 	icon_state = "dark"
-	initial_flooring = /singleton/flooring/tiling/dark
+	initial_flooring = /datum/prototype/flooring/tiling/dark
 
 /turf/simulated/floor/holofloor/lino
 	name = "lino"
 	icon = 'icons/turf/flooring/linoleum.dmi'
 	icon_state = "lino"
-	initial_flooring = /singleton/flooring/linoleum
+	initial_flooring = /datum/prototype/flooring/linoleum
 
 /turf/simulated/floor/holofloor/wood
 	name = "wooden floor"
 	icon = 'icons/turf/flooring/wood.dmi'
 	icon_state = "wood"
-	initial_flooring = /singleton/flooring/wood
+	initial_flooring = /datum/prototype/flooring/wood
 
 /turf/simulated/floor/holofloor/grass
 	name = "lush grass"
 	icon = 'icons/turf/flooring/grass.dmi'
 	icon_state = "grass0"
-	initial_flooring = /singleton/flooring/grass
+	initial_flooring = /datum/prototype/flooring/grass
 
 /turf/simulated/floor/holofloor/snow
 	name = "snow"
@@ -71,7 +71,7 @@
 
 /turf/simulated/floor/holofloor/reinforced
 	icon = 'icons/turf/flooring/tiles.dmi'
-	initial_flooring = /singleton/flooring/reinforced
+	initial_flooring = /datum/prototype/flooring/reinforced
 	name = "reinforced holofloor"
 	icon_state = "reinforced"
 
@@ -131,38 +131,11 @@
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_gloves.dmi',
 			)
 	item_state = "boxing"
-	special_attack_type = /datum/unarmed_attack/holopugilism
+	special_attack_type = /datum/melee_attack/unarmed/holopugilism
 
-/datum/unarmed_attack/holopugilism
-	sparring_variant_type = /datum/unarmed_attack/holopugilism
-
-/datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/user,var/mob/living/carbon/human/target,var/zone)
-	user.do_attack_animation(src)
-	var/damage = rand(0, 9)
-	if(!damage)
-		playsound(target.loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
-		target.visible_message("<font color='red'><B>[user] has attempted to punch [target]!</B></font>")
-		return TRUE
-	var/obj/item/organ/external/affecting = target.get_organ(ran_zone(user.zone_sel.selecting))
-	var/armor_block = target.run_armor_check(affecting, "melee")
-	var/armor_soak = target.get_armor_soak(affecting, "melee")
-
-	if(MUTATION_HULK in user.mutations)
-		damage += 5
-
-	playsound(target.loc, "punch", 25, 1, -1)
-
-	target.visible_message("<font color='red'><B>[user] has punched [target]!</B></font>")
-
-	if(armor_soak >= damage)
-		return TRUE
-
-	target.apply_damage(damage, DAMAGE_TYPE_HALLOSS, affecting, armor_block, armor_soak)
-	if(damage >= 9)
-		target.visible_message("<font color='red'><B>[user] has weakened [target]!</B></font>")
-		target.apply_effect(4, WEAKEN, armor_block)
-
-	return TRUE
+/datum/melee_attack/unarmed/holopugilism
+	sparring_variant_type = /datum/melee_attack/unarmed/holopugilism
+	damage_type = DAMAGE_TYPE_HALLOSS
 
 /obj/structure/window/reinforced/holowindow
 	allow_deconstruct = FALSE
@@ -280,10 +253,7 @@
 	cut_overlays()		//So that it doesn't keep stacking overlays non-stop on top of each other
 	if(active)
 		add_overlay(blade_overlay)
-	if(istype(usr,/mob/living/carbon/human))
-		var/mob/living/carbon/human/H = usr
-		H.update_inv_l_hand()
-		H.update_inv_r_hand()
+	update_worn_icon()
 
 //BASKETBALL OBJECTS
 

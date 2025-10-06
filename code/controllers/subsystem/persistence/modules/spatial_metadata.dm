@@ -66,7 +66,7 @@
 
 	var/datum/db_query/query = SSdbcore.NewQuery(
 		"SELECT TIMESTAMPDIFF(HOUR, saved, NOW()), saved_round_id, data, generation \
-			FROM [format_table_name("persistence_level_metadata")] \
+			FROM [DB_PREFIX_TABLE_NAME("persistence_level_metadata")] \
 			WHERE level_id = :level",
 		list(
 			"level" = level_id,
@@ -103,7 +103,7 @@
 	src.round_id_saved = GLOB.round_number
 
 	SSdbcore.RunQuery(
-		"INSERT INTO [format_table_name("persistence_level_metadata")] (saved, saved_round_id, level_id, data, generation) \
+		"INSERT INTO [DB_PREFIX_TABLE_NAME("persistence_level_metadata")] (saved, saved_round_id, level_id, data, generation) \
 			VALUES (Now(), :round, :level, :data, :generation) ON DUPLICATE KEY UPDATE \
 			data = VALUES(data), generation = VALUES(generation), saved_round_id = VALUES(saved_round_id), saved = VALUES(saved)",
 		list(

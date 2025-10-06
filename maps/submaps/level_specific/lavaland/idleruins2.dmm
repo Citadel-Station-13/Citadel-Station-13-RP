@@ -4,215 +4,215 @@
 	name = "sar locker";
 	req_access = list()
 	},
-/turf/simulated/floor/plating/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/plating,
+/area/sector/surt/idleruins)
 "gJ" = (
-/turf/simulated/floor/plating/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/plating,
+/area/sector/surt/idleruins)
 "hd" = (
 /obj/effect/debris/cleanable/blood/oil,
-/turf/simulated/shuttle/floor/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/shuttle/floor,
+/area/sector/surt/idleruins)
 "hv" = (
 /obj/structure/shuttle/window,
 /obj/structure/grille,
-/turf/simulated/floor/plating/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/plating,
+/area/sector/surt/idleruins)
 "hH" = (
 /obj/structure/table/rack,
 /obj/effect/debris/cleanable/cobweb2,
-/turf/simulated/shuttle/floor/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/shuttle/floor,
+/area/sector/surt/idleruins)
 "jd" = (
 /obj/effect/debris/cleanable/generic,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/mineral/floor/ignore_mapgen,
+/area/sector/surt/idleruins)
 "kt" = (
 /obj/effect/debris/cleanable/generic,
-/turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/outdoors/ash_sand,
+/area/sector/surt/idleruins)
 "nr" = (
 /obj/structure/frame,
-/turf/simulated/shuttle/floor/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/shuttle/floor,
+/area/sector/surt/idleruins)
 "or" = (
 /turf/template_noop,
 /area/template_noop)
 "oN" = (
 /obj/item/material/shard/shrapnel,
-/turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/outdoors/ash_sand,
+/area/sector/surt/idleruins)
 "qO" = (
 /obj/structure/table/standard,
 /obj/random/unidentified_medicine/fresh_medicine,
 /obj/random/unidentified_medicine/fresh_medicine,
 /obj/random/unidentified_medicine/old_medicine,
-/turf/simulated/shuttle/floor/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/shuttle/floor,
+/area/sector/surt/idleruins)
 "ri" = (
 /obj/structure/table/rack,
-/turf/simulated/shuttle/floor/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/shuttle/floor,
+/area/sector/surt/idleruins)
 "rw" = (
 /obj/item/stack/material/steel,
-/turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/outdoors/ash_sand,
+/area/sector/surt/idleruins)
 "rG" = (
 /obj/effect/debris/cleanable/dirt,
-/turf/simulated/shuttle/floor/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/shuttle/floor,
+/area/sector/surt/idleruins)
 "sI" = (
 /obj/item/material/shard/shrapnel,
-/turf/simulated/shuttle/floor/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/shuttle/floor,
+/area/sector/surt/idleruins)
 "uc" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/effect/debris/cleanable/generic,
-/turf/simulated/floor/plating/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/plating,
+/area/sector/surt/idleruins)
 "uO" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/random/firstaid,
-/turf/simulated/floor/plating/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/plating,
+/area/sector/surt/idleruins)
 "wX" = (
 /obj/structure/dispenser/oxygen{
 	oxygentanks = 7
 	},
-/turf/simulated/shuttle/floor/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/shuttle/floor,
+/area/sector/surt/idleruins)
 "xU" = (
 /obj/effect/debris/cleanable/dirt,
-/turf/simulated/floor/plating/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/plating,
+/area/sector/surt/idleruins)
 "yQ" = (
 /mob/living/bot/medibot{
 	name = "Dr. Crusty"
 	},
-/turf/simulated/shuttle/floor/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/shuttle/floor,
+/area/sector/surt/idleruins)
 "zE" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/structure/frame,
 /obj/effect/debris/cleanable/cobweb2,
-/turf/simulated/floor/plating/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/plating,
+/area/sector/surt/idleruins)
 "Cr" = (
 /obj/effect/debris/cleanable/cobweb,
 /obj/effect/debris/cleanable/dirt,
-/turf/simulated/floor/plating/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/plating,
+/area/sector/surt/idleruins)
 "DM" = (
 /obj/random/unidentified_medicine/fresh_medicine,
 /obj/random/unidentified_medicine/fresh_medicine,
 /obj/random/unidentified_medicine/viral,
 /obj/structure/table,
-/turf/simulated/shuttle/floor/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/shuttle/floor,
+/area/sector/surt/idleruins)
 "EJ" = (
-/turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/outdoors/ash_sand,
+/area/sector/surt/idleruins)
 "IJ" = (
 /obj/effect/debris/cleanable/vomit,
-/turf/simulated/shuttle/floor/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/shuttle/floor,
+/area/sector/surt/idleruins)
 "IO" = (
 /obj/structure/closet/secure_closet/medical3{
 	name = "medical locker";
 	req_access = list()
 	},
-/turf/simulated/shuttle/floor/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/shuttle/floor,
+/area/sector/surt/idleruins)
 "IX" = (
 /mob/living/simple_mob/mechanical/cyber_horror/plasma_cyber_horror/surt,
-/turf/simulated/shuttle/floor/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/shuttle/floor,
+/area/sector/surt/idleruins)
 "KO" = (
 /obj/structure/closet/secure_closet/sar{
 	name = "sar locker";
 	req_access = list()
 	},
-/turf/simulated/shuttle/floor/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/shuttle/floor,
+/area/sector/surt/idleruins)
 "Mo" = (
 /obj/structure/closet/emcloset,
-/turf/simulated/shuttle/floor/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/shuttle/floor,
+/area/sector/surt/idleruins)
 "Of" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/item/material/shard/shrapnel,
-/turf/simulated/floor/plating/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/plating,
+/area/sector/surt/idleruins)
 "Oo" = (
 /obj/item/stack/rods,
-/turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/outdoors/ash_sand,
+/area/sector/surt/idleruins)
 "Qp" = (
 /obj/structure/frame/computer{
 	dir = 1
 	},
-/turf/simulated/shuttle/floor/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/shuttle/floor,
+/area/sector/surt/idleruins)
 "Qu" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/effect/debris/cleanable/molten_item,
-/turf/simulated/floor/plating/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/plating,
+/area/sector/surt/idleruins)
 "Re" = (
 /turf/template_noop,
-/area/lavaland/idleruins)
+/area/sector/surt/idleruins)
 "Sk" = (
-/turf/simulated/shuttle/floor/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/shuttle/floor,
+/area/sector/surt/idleruins)
 "Uo" = (
 /obj/structure/shuttle/engine/propulsion{
 	dir = 4
 	},
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/mineral/floor/ignore_mapgen,
+/area/sector/surt/idleruins)
 "VZ" = (
 /turf/simulated/shuttle/wall/hard_corner,
-/area/lavaland/idleruins)
+/area/sector/surt/idleruins)
 "Wd" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/item/stack/material/steel,
-/turf/simulated/floor/plating/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/plating,
+/area/sector/surt/idleruins)
 "WH" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/effect/debris/cleanable/blood/oil,
-/turf/simulated/floor/plating/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/plating,
+/area/sector/surt/idleruins)
 "WM" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/effect/decal/remains/posi,
-/turf/simulated/floor/plating/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/plating,
+/area/sector/surt/idleruins)
 "Xu" = (
 /obj/machinery/door/unpowered/shuttle,
-/turf/simulated/floor/plating/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/plating,
+/area/sector/surt/idleruins)
 "XA" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/item/storage/firstaid/adv,
-/turf/simulated/floor/plating/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/plating,
+/area/sector/surt/idleruins)
 "Yt" = (
 /obj/machinery/suit_cycler/medical,
-/turf/simulated/shuttle/floor/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/shuttle/floor,
+/area/sector/surt/idleruins)
 "YZ" = (
-/turf/simulated/shuttle/wall/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/shuttle/wall,
+/area/sector/surt/idleruins)
 "Zb" = (
 /obj/effect/debris/cleanable/generic,
-/turf/simulated/floor/plating/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/plating,
+/area/sector/surt/idleruins)
 "ZP" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/item/stack/rods,
-/turf/simulated/floor/plating/lavaland,
-/area/lavaland/idleruins)
+/turf/simulated/floor/plating,
+/area/sector/surt/idleruins)
 
 (1,1,1) = {"
 or

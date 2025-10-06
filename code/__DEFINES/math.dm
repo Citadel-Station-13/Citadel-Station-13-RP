@@ -2,7 +2,7 @@
 // This file is quadruple wrapped for your pleasure
 // (
 
-/// The value of the mathematical constant 'e'
+/// The value of the mathematical constant 'e', also known as Euler's number. Not to be confused with Euler's constant.
 #define NUM_E 2.71828183
 /// The value of sqrt(2); defined for speed
 #define SQRT_2 1.414214
@@ -49,9 +49,8 @@
 ///
 /// * This is not replaced by native ceil(), as that is always CEILING(x, 1)!
 #define CEILING(x, y) ( -round(-(x) / (y)) * (y) )
-/// x to the nearest lower multiple of y
-///
-/// * This is not replaced by native floor(), as that is always FLOOR(x, 1)!
+
+/// round() acts like floor(x, 1) by default but can't handle other values
 #define FLOOR(x, y) ( round((x) / (y)) * (y) )
 
 // Similar to clamp but the bottom rolls around to the top and vice versa. min is inclusive, max is exclusive
@@ -252,3 +251,6 @@
 
 /// get highest magnitude of two numbers, magnitude is abs value
 #define BIGGER_MAGNITUDE(a, b) ((abs(a) > abs(b))? a : b)
+
+#define SI_COEFFICIENT "coefficient"
+#define SI_UNIT "unit"

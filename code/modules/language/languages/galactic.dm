@@ -1,5 +1,5 @@
 // Galactic common languages (systemwide accepted standards).
-/datum/language/trader
+/datum/prototype/language/trader
 	id = LANGUAGE_ID_TRADEBAND
 	name = LANGUAGE_TRADEBAND
 	translation_class = TRANSLATION_CLASS_DEFAULT_CORE_LANGUAGE
@@ -17,7 +17,7 @@
 
 
 // Criminal language.
-/datum/language/gutter
+/datum/prototype/language/gutter
 	name = LANGUAGE_GUTTER
 	translation_class = TRANSLATION_CLASS_DEFAULT_CORE_LANGUAGE // fuck you you lost your machine_understands immunity
 	desc = "Gutter originated as a Thieves' Cant of sorts during the early colonization era. The language eventually spread from the cartels and triads to the disenfranchised people of the Bowl."

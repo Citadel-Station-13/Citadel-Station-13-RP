@@ -55,7 +55,7 @@
 		if((MUTATION_CLUMSY in user.mutations) && prob(50))
 			var/which_hand = "l_hand"
 			var/mob/living/carbon/human/H = ishuman(user)? user : null
-			if(!H?.hand)
+			if(!(H?.active_hand % 2))
 				which_hand = "r_hand"
 			triggered(user, which_hand)
 			user.visible_message("<span class='warning'>[user] accidentally sets off [src], breaking their fingers.</span>", \
@@ -74,9 +74,7 @@
 		return
 	if(armed)
 		if((MUTATION_CLUMSY in user.mutations) && prob(50))
-			var/which_hand = "l_hand"
-			if(!L.hand)
-				which_hand = "r_hand"
+			var/which_hand = user.active_hand % 2? "l_hand" : "r_hand"
 			triggered(user, which_hand)
 			user.visible_message("<span class='warning'>[user] accidentally sets off [src], breaking their fingers.</span>", \
 								 "<span class='warning'>You accidentally trigger [src]!</span>")
@@ -85,7 +83,7 @@
 
 
 /obj/item/assembly/mousetrap/Crossed(var/atom/movable/AM)
-	if(AM.is_incorporeal())
+	if(AM.is_incorporeal() || AM.is_avoiding_ground())
 		return
 	if(armed)
 		if(ishuman(AM))
@@ -98,7 +96,6 @@
 			triggered(AM)
 	..()
 
-
 /obj/item/assembly/mousetrap/on_containing_storage_opening(datum/event_args/actor/actor, datum/object_system/storage/storage)
 	. = ..()
 
@@ -108,10 +105,9 @@
 	if(armed)
 		finder.visible_message("<span class='warning'>[finder] accidentally sets off [src], breaking their fingers.</span>", \
 							   "<span class='warning'>You accidentally trigger [src]!</span>")
-		triggered(finder, finder.hand ? "l_hand" : "r_hand")
+		triggered(finder, finder.active_hand % 2? "l_hand" : "r_hand")
 		return 1	//end the search!
 	return 0
-
 
 /obj/item/assembly/mousetrap/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
 	. = ..()

@@ -25,7 +25,7 @@
 	base_pixel_y = -10 // To prevent resetting above var.
 
 	maxHealth = 300
-	movement_cooldown = 10
+	movement_base_speed = 10 / 10
 	melee_attack_delay = 0.5 SECONDS
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/pointblank
@@ -67,7 +67,7 @@
 	damage_force = 40
 	damage_type = DAMAGE_TYPE_BRUTE
 	damage_flag = ARMOR_MELEE
-	armor_penetration = 30
+	damage_tier = 4
 	speed = 7.5 * WORLD_ICON_SIZE
 	icon_scale_x = 2 // It hits like a truck.
 	icon_scale_y = 2

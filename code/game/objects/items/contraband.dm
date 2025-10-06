@@ -13,6 +13,12 @@
 	//wrapper_color = COLOR_BLUE
 	starts_with = list(/obj/item/reagent_containers/pill/zoom = 7)
 
+/obj/item/storage/pill_bottle/polonium
+	name = "bottle of pills"
+	desc = "An unlabeled bottle of pills. It seems vaguely warm."
+	//wrapper_color = COLOR_BLUE
+	starts_with = list(/obj/item/reagent_containers/pill/polonium = 7)
+
 /obj/item/reagent_containers/glass/beaker/vial/random
 	atom_flags = NONE
 	var/list/random_reagent_list = list(list("water" = 15) = 1, list("cleaner" = 15) = 1)
@@ -34,7 +40,7 @@
 		reagents.add_reagent(reagent, picked_reagents[reagent])
 
 	var/list/names = new
-	for(var/datum/reagent/R in reagents.reagent_list)
+	for(var/datum/reagent/R in reagents.get_reagent_datums())
 		names += R.name
 
 	desc = "Contains [english_list(names)]."
@@ -104,11 +110,11 @@
 		/obj/item/card/emag,
 		/obj/item/card/emag_broken,
 		/obj/item/card/id/syndicate,
-		/obj/item/contraband/poster,
+		/obj/item/poster,
 		/obj/item/disposable_teleporter,
-		/obj/item/grenade/flashbang/clusterbang,
-		/obj/item/grenade/flashbang/clusterbang,
-		/obj/item/grenade/spawnergrenade/spesscarp,
+		/obj/item/grenade/simple/flashbang/clusterbang,
+		/obj/item/grenade/simple/flashbang/clusterbang,
+		/obj/item/grenade/simple/spawner/spesscarp,
 		/obj/item/melee/transforming/energy/sword/ionic_rapier,
 		/obj/item/clothing/shoes/syndigaloshes,
 		/obj/item/storage/backpack/dufflebag/syndie,
@@ -214,9 +220,9 @@
 					/obj/item/card/emag,
 					/obj/item/card/id/syndicate,
 					/obj/item/disposable_teleporter,
-					/obj/item/grenade/flashbang/clusterbang,
-					/obj/item/grenade/flashbang/clusterbang,
-					/obj/item/grenade/spawnergrenade/spesscarp,
+					/obj/item/grenade/simple/flashbang/clusterbang,
+					/obj/item/grenade/simple/flashbang/clusterbang,
+					/obj/item/grenade/simple/spawner/spesscarp,
 					/obj/item/melee/transforming/energy/sword,
 					/obj/item/melee/telebaton,
 					/obj/item/pen/reagent/paralysis,
@@ -249,43 +255,43 @@
 	. = ..()
 	if(.)
 		return
-	var/loot = pick(/obj/item/mecha_parts/chassis/phazon,
-		/obj/item/mecha_parts/part/phazon_head,
-		/obj/item/mecha_parts/part/phazon_left_arm,
-		/obj/item/mecha_parts/part/phazon_left_leg,
-		/obj/item/mecha_parts/part/phazon_right_arm,
-		/obj/item/mecha_parts/part/phazon_right_leg,
-		/obj/item/mecha_parts/part/phazon_torso,
-		/obj/item/mecha_parts/part/honker_torso,
-		/obj/item/mecha_parts/part/honker_head,
-		/obj/item/mecha_parts/part/honker_left_arm,
-		/obj/item/mecha_parts/part/honker_left_leg,
-		/obj/item/mecha_parts/part/honker_right_arm,
-		/obj/item/mecha_parts/part/honker_right_leg,
-		/obj/item/mecha_parts/part/honker_armour,
-		/obj/item/mecha_parts/chassis/honker,
-		/obj/item/mecha_parts/part/reticent_torso,
-		/obj/item/mecha_parts/part/reticent_head,
-		/obj/item/mecha_parts/part/reticent_left_arm,
-		/obj/item/mecha_parts/part/reticent_left_leg,
-		/obj/item/mecha_parts/part/reticent_right_arm,
-		/obj/item/mecha_parts/part/reticent_right_leg,
-		/obj/item/mecha_parts/chassis/reticent,
-		/obj/item/mecha_parts/part/reticent_armour,
-		/obj/item/mecha_parts/part/durand_torso,
-		/obj/item/mecha_parts/part/durand_head,
-		/obj/item/mecha_parts/part/durand_left_arm,
-		/obj/item/mecha_parts/part/durand_left_leg,
-		/obj/item/mecha_parts/part/durand_right_arm,
-		/obj/item/mecha_parts/part/durand_right_leg,
-		/obj/item/mecha_parts/chassis/durand,
-		/obj/item/mecha_parts/part/gygax_torso,
-		/obj/item/mecha_parts/part/gygax_head,
-		/obj/item/mecha_parts/part/gygax_left_arm,
-		/obj/item/mecha_parts/part/gygax_left_leg,
-		/obj/item/mecha_parts/part/gygax_right_arm,
-		/obj/item/mecha_parts/part/gygax_right_leg,
-		/obj/item/mecha_parts/chassis/serenity)
+	var/loot = pick(/obj/item/vehicle_chassis/phazon,
+		/obj/item/vehicle_part/phazon_head,
+		/obj/item/vehicle_part/phazon_left_arm,
+		/obj/item/vehicle_part/phazon_left_leg,
+		/obj/item/vehicle_part/phazon_right_arm,
+		/obj/item/vehicle_part/phazon_right_leg,
+		/obj/item/vehicle_part/phazon_torso,
+		/obj/item/vehicle_part/honker_torso,
+		/obj/item/vehicle_part/honker_head,
+		/obj/item/vehicle_part/honker_left_arm,
+		/obj/item/vehicle_part/honker_left_leg,
+		/obj/item/vehicle_part/honker_right_arm,
+		/obj/item/vehicle_part/honker_right_leg,
+		/obj/item/vehicle_part/honker_armour,
+		/obj/item/vehicle_chassis/honker,
+		/obj/item/vehicle_part/reticent_torso,
+		/obj/item/vehicle_part/reticent_head,
+		/obj/item/vehicle_part/reticent_left_arm,
+		/obj/item/vehicle_part/reticent_left_leg,
+		/obj/item/vehicle_part/reticent_right_arm,
+		/obj/item/vehicle_part/reticent_right_leg,
+		/obj/item/vehicle_chassis/reticent,
+		/obj/item/vehicle_part/reticent_armour,
+		/obj/item/vehicle_part/durand_torso,
+		/obj/item/vehicle_part/durand_head,
+		/obj/item/vehicle_part/durand_left_arm,
+		/obj/item/vehicle_part/durand_left_leg,
+		/obj/item/vehicle_part/durand_right_arm,
+		/obj/item/vehicle_part/durand_right_leg,
+		/obj/item/vehicle_chassis/durand,
+		/obj/item/vehicle_part/gygax_torso,
+		/obj/item/vehicle_part/gygax_head,
+		/obj/item/vehicle_part/gygax_left_arm,
+		/obj/item/vehicle_part/gygax_left_leg,
+		/obj/item/vehicle_part/gygax_right_arm,
+		/obj/item/vehicle_part/gygax_right_leg,
+		/obj/item/vehicle_chassis/serenity)
 	new loot(usr.drop_location())
 	to_chat(user, "You unwrap the package.")
 	qdel(src)

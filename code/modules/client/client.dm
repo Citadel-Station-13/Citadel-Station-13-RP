@@ -108,22 +108,6 @@
 	/// client preferences
 	var/datum/game_preferences/preferences
 
-	//? Statpanel
-	/// statpanel tab ; can be null (e.g. we're looking at verb tabs)
-	var/statpanel_tab
-	/// statpanel initialized
-	var/statpanel_ready = FALSE
-	/// turf being listed
-	var/turf/statpanel_turf
-	/// tabs the panel has
-	var/list/statpanel_tabs
-	/// statpanel variable tabs: spells / other "simple" action button frameworks
-	var/list/statpanel_spell_last
-	/// are we on byond stat? if so we can just skip the js one in data transmit (and vice versa)
-	var/statpanel_on_byond = FALSE
-	/// did we get autoswitched to byond stat for turf? if so we'll switch back when we un-list
-	var/statpanel_for_turf = FALSE
-
 	//? Throttling
 	/// block re-execution of expensive verbs
 	var/verb_throttle = 0
@@ -141,11 +125,20 @@
 	/// since byond is deranged and will send winsets and browse calls out of order sometimes.
 	var/cutscene_lockout = FALSE
 
-	//* UI *//
-	/// Our action drawer
-	var/datum/action_drawer/action_drawer
+	//* UI - Client *//
 	/// our tooltips system
 	var/datum/tooltip/tooltips
+	/// statpanel
+	var/datum/client_statpanel/tgui_stat
+
+	//* UI - Map *//
+	/// Our action drawer
+	var/datum/action_drawer/action_drawer
+	/// Our actor HUD holder
+	var/datum/actor_hud_holder/actor_huds
+
+	// todo: just have a client panel, don't make this separate
+	var/datum/client_view_playtime/legacy_playtime_viewer
 
 
 		////////////////
@@ -171,12 +164,8 @@
 	// todo: rename to `preferences` & put it next to `persistent` to sate my OCD ~silicons
 	///Player preferences datum for the client
 	var/datum/preferences/prefs = null
-	///Current area of the controlled mob
-	var/area = null
 	///when the client last died as a mouse
 	var/time_died_as_mouse = null
-
-	var/adminhelped = 0
 
 		///////////////
 		//SOUND STUFF//
@@ -187,16 +176,11 @@
 		////////////
 		//SECURITY//
 		////////////
-	// comment out the line below when debugging locally to enable the options & messages menu
-	//control_freak = 1
 
 	var/received_irc_pm = -99999
 	///IRC admin that spoke with them last.
 	var/irc_admin
 	var/mute_irc = 0
-	///Do we think they're using a proxy/vpn? Only if IP Reputation checking is enabled in config.
-	var/ip_reputation = 0
-
 
 		////////////////////////////////////
 		//things that require the database//
@@ -220,9 +204,6 @@
 	var/connection_realtime
  	///world.timeofday they connected
 	var/connection_timeofday
-
-	/// If this client has been fully initialized or not
-	var/fully_created = FALSE
 
 /client/vv_edit_var(var_name, var_value)
 	switch (var_name)

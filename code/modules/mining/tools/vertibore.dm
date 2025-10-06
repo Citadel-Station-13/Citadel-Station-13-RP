@@ -1,4 +1,3 @@
-
 /obj/item/vertibore
 	name = "portable shaft excavation device"
 	desc = "A heavily modified shaft bore utilizing phorogenic blasts to tunnel vertically through rock. Much faster than a large industrial drill unit, but is very resource- and power-intensive."
@@ -7,7 +6,6 @@
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "vertibore"
 	item_state = "vertibore"
-
 
 	var/obj/item/cell/cell //loaded cell
 	var/power_cost = 1000 //10 shots off a highcap
@@ -29,7 +27,7 @@
 		if(cell)
 			to_chat(user, "<span class='warning'>\The [src] already has \a [cell] installed.</span>")
 			return
-		if(!user.attempt_insert_item_for_installation(cell, src))
+		if(!user.attempt_insert_item_for_installation(thing, src))
 			return
 		cell = thing
 		playsound(loc, 'sound/machines/click.ogg', 10, 1)
@@ -81,7 +79,7 @@
 	if(power_cost > cell.charge)
 		to_chat(user, "<span class='notice'>The [src] flashes a warning light, it doesn't have enough charge to dig.</span>")
 		return
-	if(cell.use(power_cost) && do_after(user, 2.5 SECONDS))
+	if(do_after(user, 2.5 SECONDS) && cell.use(power_cost))
 		var/turf/T = get_turf(user)
 		LEGACY_EX_ACT(T, 1, null)
 

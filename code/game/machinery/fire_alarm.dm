@@ -53,6 +53,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/fire_alarm/alarms_hidden, 21)
 
 /obj/machinery/fire_alarm/update_icon()
 	cut_overlays()
+	. = ..()
 	add_overlay("casing")
 
 	if(panel_open)
@@ -123,7 +124,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/fire_alarm/alarms_hidden, 21)
 
 /obj/machinery/fire_alarm/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	. = ..()
-	alarm()
+	alarm(manual = TRUE)
 
 /obj/machinery/fire_alarm/emp_act(severity)
 	if(prob(50 / severity))
@@ -151,7 +152,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/fire_alarm/alarms_hidden, 21)
 					SPAN_NOTICE("You have disconnected [src]'s detecting unit."))
 		return
 
-	alarm()
+	alarm(manual = TRUE)
 
 /obj/machinery/fire_alarm/process()//Note: this processing was mostly phased out due to other code, and only runs when needed
 	if(machine_stat & (NOPOWER|BROKEN))
@@ -161,7 +162,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/fire_alarm/alarms_hidden, 21)
 		if(time > 0)
 			time = time - ((world.timeofday - last_process) / 10)
 		else
-			alarm()
+			alarm(manual = TRUE)
 			time = 0
 			timing = 0
 			STOP_PROCESSING(SSobj, src)
@@ -229,7 +230,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/fire_alarm/alarms_hidden, 21)
 		if(href_list["reset"])
 			reset()
 		else if(href_list["alarm"])
-			alarm()
+			alarm(manual = TRUE)
 		else if(href_list["time"])
 			timing = text2num(href_list["time"])
 			last_process = world.timeofday
@@ -256,12 +257,13 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/fire_alarm/alarms_hidden, 21)
 	update_icon()
 	return
 
-/obj/machinery/fire_alarm/proc/alarm(var/duration = 0)
+/obj/machinery/fire_alarm/proc/alarm(var/duration = 0, var/manual = FALSE)
 	if(!(working))
 		return
 	var/area/area = get_area(src)
 	for(var/obj/machinery/fire_alarm/FA in area)
-		fire_alarm.triggerAlarm(loc, FA, duration, hidden = alarms_hidden)
+		var/msg = manual ? "Manual" : "Fire Detected"
+		fire_alarm.triggerAlarm(loc, FA, duration, hidden = alarms_hidden, reasons = list(msg))
 	update_icon()
 	playsound(src.loc, 'sound/machines/airalarm.ogg', 25, 0, 4)
 

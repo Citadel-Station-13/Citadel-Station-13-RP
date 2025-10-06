@@ -1,3 +1,9 @@
+/**
+ * Atmospherics turf things.
+ *
+ * * Things should generally be prefixed with 'air_'
+ */
+
 // everything relating to turfs for atmospherics - environmental
 /turf
 	CanAtmosPass = ATMOS_PASS_PROC
@@ -78,6 +84,7 @@
 /area/return_air()
 	CRASH("How was /area reached?")
 
+// todo: thank fucking god this is a copy operation; stuff like adjust thermal energy have no checks for unsimulated!
 /turf/return_air()
 	RETURN_TYPE(/datum/gas_mixture)
 	//Create gas mixture to hold data for passing

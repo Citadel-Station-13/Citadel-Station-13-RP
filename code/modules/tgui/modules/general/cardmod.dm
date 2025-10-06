@@ -203,8 +203,9 @@
 	.["granted"] = editing?.access
 	.["can_demote"] = auth_demote(user, editing, authing, editing?.rank)
 
-/datum/tgui_module/card_mod/ui_act(action, list/params, datum/tgui/ui)
-	. = ..()
+/datum/tgui_module/card_mod/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
+	if(..())
+		return TRUE
 	var/obj/item/card/id/target = edit_target()
 	var/obj/item/card/id/source = auth_source(usr)
 	switch(action)
@@ -293,7 +294,7 @@
 
 /datum/tgui_module/card_mod/standard/query_access_ids(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, list/direct)
 	. = list()
-	for(var/id in direct || (((authing?.access || list())) & SSjob.cached_access_edit_relevant))
+	for(var/id in (direct || (((authing?.access || list())) & SSjob.cached_access_edit_relevant)))
 		var/datum/access/A = SSjob.access_lookup(id)
 		if(isnull(A.access_edit_list))
 			continue
@@ -304,19 +305,19 @@
 
 /datum/tgui_module/card_mod/standard/query_access_types(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, list/direct)
 	. = NONE
-	for(var/id in direct || (((authing?.access || list())) & SSjob.cached_access_edit_relevant))
+	for(var/id in (direct || (((authing?.access || list())) & SSjob.cached_access_edit_relevant)))
 		var/datum/access/A = SSjob.access_lookup(id)
 		. |= A.access_edit_type
 
 /datum/tgui_module/card_mod/standard/query_access_categories(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, list/direct)
 	. = list()
-	for(var/id in direct || (((authing?.access || list())) & SSjob.cached_access_edit_relevant))
+	for(var/id in (direct || (((authing?.access || list())) & SSjob.cached_access_edit_relevant)))
 		var/datum/access/A = SSjob.access_lookup(id)
 		. |= A.access_edit_category
 
 /datum/tgui_module/card_mod/standard/query_access_regions(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, list/direct)
 	. = NONE
-	for(var/id in direct || (((authing?.access || list())) & SSjob.cached_access_edit_relevant))
+	for(var/id in (direct || (((authing?.access || list())) & SSjob.cached_access_edit_relevant)))
 		var/datum/access/A = SSjob.access_lookup(id)
 		if(isnull(A.access_edit_region))
 			continue
@@ -432,8 +433,7 @@
 /datum/tgui_module/card_mod/admin
 
 /datum/tgui_module/card_mod/admin/ui_state()
-	return GLOB.admin_state
-
+	return ADMIN_STATE(NONE)
 
 /datum/tgui_module/card_mod/admin/query_access_ids(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, list/direct)
 	return SSjob.access_ids()

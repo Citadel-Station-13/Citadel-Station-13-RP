@@ -31,7 +31,7 @@ GLOBAL_DATUM_INIT(ghostrole_menu, /datum/ghostrole_menu, new)
 		data["amount_left"] = slots == INFINITY? -1 : slots
 		spawners += list(data)	// wrap
 
-/datum/ghostrole_menu/ui_act(action, list/params, datum/tgui/ui)
+/datum/ghostrole_menu/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return
 	if(!isobserver(usr))

@@ -12,7 +12,7 @@
 		A.process()
 		check_alarm_cleared(A)
 
-/datum/alarm_handler/proc/triggerAlarm(var/atom/origin, var/atom/source, var/duration = 0, var/severity = 1, var/hidden = 0)
+/datum/alarm_handler/proc/triggerAlarm(var/atom/origin, var/atom/source, var/duration = 0, var/severity = 1, var/hidden = 0, var/list/reasons)
 	var/new_alarm
 	//Proper origin and source mandatory
 	if(!(origin && source))
@@ -23,9 +23,9 @@
 	//see if there is already an alarm of this origin
 	var/datum/alarm/existing = alarms_assoc[origin]
 	if(existing)
-		existing.set_source_data(source, duration, severity, hidden)
+		existing.set_source_data(source, duration, severity, hidden, reasons)
 	else
-		existing = new/datum/alarm(origin, source, duration, severity, hidden)
+		existing = new/datum/alarm(origin, source, duration, severity, hidden, reasons)
 		new_alarm = 1
 
 	alarms |= existing

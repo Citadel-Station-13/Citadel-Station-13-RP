@@ -25,6 +25,7 @@
 		src.base_state = src.icon_state
 
 /obj/machinery/door/window/update_icon()
+	. = ..()
 	if(density)
 		icon_state = base_state
 	else
@@ -199,7 +200,7 @@
 				var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 				spark_system.set_up(5, 0, src.loc)
 				spark_system.start()
-				playsound(src.loc, /datum/soundbyte/grouped/sparks, 50, 1)
+				playsound(src.loc, /datum/soundbyte/sparks, 50, 1)
 				playsound(src.loc, 'sound/weapons/blade1.ogg', 50, 1)
 				visible_message("<span class='warning'>The glass door was sliced open by [user]!</span>")
 			return 1

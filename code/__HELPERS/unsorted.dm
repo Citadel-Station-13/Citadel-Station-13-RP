@@ -319,27 +319,6 @@
 			return 0
 	return 1
 
-/// Ensure the frequency is within bounds of what it should be sending/recieving at.
-/proc/sanitize_frequency(frequency, low = PUBLIC_LOW_FREQ, high = PUBLIC_HIGH_FREQ)
-	frequency = round(frequency)
-	frequency = max(low, frequency)
-	frequency = min(high, frequency)
-	// Ensure the last digit is an odd number.
-	if ((frequency % 2) == 0)
-		frequency += 1
-	return frequency
-
-/// Turns 1479 into 147.9.
-/proc/format_frequency(frequency)
-	return "[round(frequency / 10)].[frequency % 10]"
-
-/// Opposite of format, returns as a number.
-/proc/unformat_frequency(frequency)
-	frequency = text2num(frequency)
-	return frequency * 10
-
-
-
 
 /// Picks a string of symbols to display as the law number for hacked or ion laws.
 /proc/ionnum()
@@ -427,7 +406,8 @@
 	var/list/creatures = list()
 	var/list/namecounts = list()
 	for(var/mob/M in mobs)
-		if(isobserver(M) && ghostfollow && M.client.is_under_stealthmin() && M.get_preference_toggle(/datum/game_preference_toggle/admin/stealth_hides_ghost))
+		// todo: stealthmin will **break** when they're logged out. we don't want this! it's a hard tell.
+		if(isobserver(M) && ghostfollow && M.client?.is_under_stealthmin() && M.get_preference_toggle(/datum/game_preference_toggle/admin/stealth_hides_ghost))
 			continue
 		var/name = M.name
 		if (name in names)
@@ -1392,15 +1372,6 @@ var/list/WALLITEMS = list(
 		if(337.5)
 			return "North-Northwest"
 
-/atom/proc/Shake(pixelshiftx = 15, pixelshifty = 15, duration = 250)
-	var/initialpixelx = pixel_x
-	var/initialpixely = pixel_y
-	var/shiftx = rand(-pixelshiftx,pixelshiftx)
-	var/shifty = rand(-pixelshifty,pixelshifty)
-	animate(src, pixel_x = pixel_x + shiftx, pixel_y = pixel_y + shifty, time = 0.2, loop = duration)
-	pixel_x = initialpixelx
-	pixel_y = initialpixely
-
 /**
  * get_holder_at_turf_level(): Similar to get_turf(), will return the "highest up" holder of this atom, excluding the turf.
  * Example: A fork inside a box inside a locker will return the locker. Essentially, get_just_before_turf().
@@ -1458,3 +1429,15 @@ var/list/WALLITEMS = list(
 		if(sender)
 			query_string += "&from=[url_encode(sender)]"
 		world.Export("[config_legacy.chat_webhook_url]?[query_string]")
+
+/// Returns an x and y value require to reverse the transformations made to center an oversized icon
+/atom/proc/get_oversized_icon_offsets()
+	if (pixel_x == 0 && pixel_y == 0)
+		return list("x" = 0, "y" = 0)
+	var/list/icon_dimensions = get_icon_dimensions(icon)
+	var/icon_width = icon_dimensions["width"]
+	var/icon_height = icon_dimensions["height"]
+	return list(
+		"x" = icon_width > 32 && pixel_x != 0 ? (icon_width - 32) * 0.5 : 0,
+		"y" = icon_height > 32 && pixel_y != 0 ? (icon_height - 32) * 0.5 : 0,
+	)

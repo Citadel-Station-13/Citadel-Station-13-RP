@@ -1,0 +1,251 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/black/border{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/ruins3)
+"b" = (
+/obj/effect/floor_decal/borderfloorblack/full,
+/obj/effect/floor_decal/corner/black{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/ruins3)
+"c" = (
+/obj/machinery/light/small/emergency/flicker,
+/turf/simulated/floor/outdoors/ash_sand,
+/area/submap/skyplanet/poi/ruins3)
+"e" = (
+/turf/template_noop,
+/area/template_noop)
+"j" = (
+/turf/simulated/wall/r_lead,
+/area/submap/skyplanet/poi/ruins3)
+"k" = (
+/obj/effect/floor_decal/borderfloorblack/full,
+/obj/effect/floor_decal/corner/black{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/ruins3)
+"m" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack/full,
+/obj/effect/floor_decal/corner/black{
+	dir = 6
+	},
+/obj/structure/bed/chair,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/ruins3)
+"q" = (
+/turf/simulated/floor/outdoors/ash_sand,
+/area/submap/skyplanet/poi/ruins3)
+"t" = (
+/obj/structure/fans,
+/turf/simulated/floor/outdoors/ash_sand,
+/area/submap/skyplanet/poi/ruins3)
+"F" = (
+/obj/effect/floor_decal/borderfloorblack/cee{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/black/border{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/black/border{
+	dir = 5
+	},
+/obj/machinery/door/airlock/voidcraft,
+/turf/simulated/floor/outdoors/ash_sand,
+/area/submap/skyplanet/poi/ruins3)
+"G" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/black/border{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/ruins3)
+"J" = (
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/ruins3)
+"K" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/black/border,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/ruins3)
+"P" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 1
+	},
+/turf/simulated/floor/outdoors/ash_sand,
+/area/submap/skyplanet/poi/ruins3)
+"Q" = (
+/obj/effect/floor_decal/borderfloorblack/full,
+/obj/effect/floor_decal/corner/black{
+	dir = 6
+	},
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/ruins3)
+"R" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/black/border{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/ruins3)
+"V" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/black/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/ruins3)
+"Y" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/black/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/skyplanet/poi/ruins3)
+"Z" = (
+/turf/simulated/floor/outdoors/ash_sand,
+/area/template_noop)
+
+(1,1,1) = {"
+e
+e
+e
+j
+j
+j
+j
+q
+Z
+e
+"}
+(2,1,1) = {"
+e
+e
+j
+j
+b
+m
+Q
+q
+j
+e
+"}
+(3,1,1) = {"
+e
+j
+j
+j
+a
+V
+V
+G
+j
+j
+"}
+(4,1,1) = {"
+Z
+j
+t
+j
+Y
+J
+J
+K
+q
+j
+"}
+(5,1,1) = {"
+Z
+F
+q
+q
+q
+J
+J
+q
+c
+j
+"}
+(6,1,1) = {"
+Z
+j
+t
+j
+P
+q
+J
+K
+k
+j
+"}
+(7,1,1) = {"
+e
+j
+j
+j
+q
+q
+q
+R
+j
+j
+"}
+(8,1,1) = {"
+e
+e
+j
+j
+j
+q
+q
+j
+j
+e
+"}
+(9,1,1) = {"
+e
+e
+e
+j
+j
+q
+q
+j
+e
+e
+"}
+(10,1,1) = {"
+e
+e
+e
+e
+e
+e
+Z
+e
+e
+e
+"}
