@@ -88,7 +88,7 @@ ADMIN_VERB_DEF(narrate_quick, R_ADMIN, "Narrate (Quick)", "Perform narration.", 
 	for(var/mob/viewing in targets)
 		view_target_to_list += "[key_name(viewing)]"
 	var/view_target_list = jointext(view_target_to_list, ", ")
-	message_admins("[key_name(caller)] sent a [SPAN_TOOLTIP("[emit]", "global narrate")] to [SPAN_TOOLTIP("[view_target_list]", "[length(targets)] target(s)")].")
+	message_admins("[key_name(caller)] sent a [SPAN_TOOLTIP("[html_encode(emit)]", "global narrate")] to [SPAN_TOOLTIP("[view_target_list]", "[length(targets)] target(s)")].")
 	log_admin("[key_name(caller)] sent a global narrate to [length(targets)] targets; VIEWERS: '[view_target_list]'', TEXT: '[emit]'")
 
 	for(var/mob/viewing in targets)

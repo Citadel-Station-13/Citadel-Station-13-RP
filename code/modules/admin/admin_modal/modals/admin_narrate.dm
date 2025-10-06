@@ -279,7 +279,7 @@
 		view_target_to_list += "[key_name(viewing)]"
 	tim_sort(view_target_to_list, /proc/cmp_text_asc)
 	var/view_target_list = jointext(view_target_to_list, ", ")
-	message_admins("[key_name(owner.owner.mob)] sent a [SPAN_TOOLTIP("[emit]", "global narrate")] to [SPAN_TOOLTIP("[view_target_list]", "[length(targets)] target(s)")].")
+	message_admins("[key_name(owner.owner.mob)] sent a [SPAN_TOOLTIP("[html_encode(emit)]", "global narrate")] to [SPAN_TOOLTIP("[view_target_list]", "[length(targets)] target(s)")].")
 	log_admin("[key_name(owner.owner.mob)] sent a global narrate to [length(targets)] targets; VIEWERS: '[view_target_list]'', TEXT: '[emit]'")
 
 	for(var/mob/viewing in targets)
