@@ -47,9 +47,7 @@ VV_PROTECT_READONLY(/datum/admin_modal)
  */
 /datum/admin_modal/proc/open()
 	if(!initialized)
-		if(!Initialize())
-			return
-		initialized = TRUE
+		CRASH("attempted to open an uninitialized admin modal")
 	if(!owner?.owner?.mob)
 		return
 	ui_interact(owner.owner.mob)
@@ -58,6 +56,7 @@ VV_PROTECT_READONLY(/datum/admin_modal)
  * Called with args to open_admin_modal().
  */
 /datum/admin_modal/proc/Initialize(...)
+	initialized = TRUE
 	return TRUE
 
 /**

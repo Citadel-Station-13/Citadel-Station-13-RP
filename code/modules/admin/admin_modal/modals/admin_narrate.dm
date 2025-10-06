@@ -2,7 +2,7 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /datum/admin_modal/admin_narrate
-
+	name = "Admin Narrate"
 	/**
 	 * Target. Also determines what modes we can change to.
 	 * ### in global, lobby mode
@@ -102,19 +102,19 @@
 		. += /datum/admin_modal/admin_narrate::M_DIRECT
 		. += /datum/admin_modal/admin_narrate::M_OVERMAP
 	else if(isatom(resolved))
-		. += /datum/admin_modal/admin_narrate::M_LEVEL
-		. += /datum/admin_modal/admin_narrate::M_RANGE
-		. += /datum/admin_modal/admin_narrate::M_SECTOR
-		. += /datum/admin_modal/admin_narrate::M_OVERMAP
 		if(ismovable(resolved))
 			var/atom/movable/casted = resolved
 			if(casted.admin_resolve_narrate())
 				// compatible with direct-narrate
 				. += /datum/admin_modal/admin_narrate::M_DIRECT
+		. += /datum/admin_modal/admin_narrate::M_RANGE
+		. += /datum/admin_modal/admin_narrate::M_LEVEL
+		. += /datum/admin_modal/admin_narrate::M_SECTOR
+		. += /datum/admin_modal/admin_narrate::M_OVERMAP
 	else if(istype(resolved, /datum/map_level))
 		var/datum/map_level/casted = resolved
-		. += /datum/admin_modal/admin_narrate::M_SECTOR
 		. += /datum/admin_modal/admin_narrate::M_LEVEL
+		. += /datum/admin_modal/admin_narrate::M_SECTOR
 		if(get_overmap_sector(locate(1, 1, casted.z_index)))
 			. += /datum/admin_modal/admin_narrate::M_OVERMAP
 	else if(istype(resolved, /datum/map))
@@ -134,7 +134,7 @@
 				. += C.mob
 		if(M_SECTOR)
 			var/atom/resolved = target
-			var/turf/maybe_target_turf = get_turf(target)
+			var/turf/maybe_target_turf = get_turf(resolved)
 			var/datum/map_level/maybe_target_map_level
 			if(maybe_target_turf)
 				maybe_target_map_level = SSmapping.ordered_levels[maybe_target_turf.z]
@@ -144,7 +144,7 @@
 				var/turf/maybe_turf = get_turf(C.mob)
 				if(maybe_turf)
 					var/datum/map_level/maybe_map_level = SSmapping.ordered_levels[maybe_turf.z]
-					if(maybe_map_level?.parent_map == maybe_target_map_level)
+					if(maybe_map_level?.parent_map == maybe_target_map_level.parent_map)
 						. += C.mob
 		if(M_OVERMAP)
 			var/datum/resolved = target
@@ -158,6 +158,7 @@
 				resolved_entity = get_overmap_sector(locate(1, 1, casted.z_index))
 				// TODO: do something
 			else if(istype(resolved, /datum/map))
+				pass()
 				// TODO: do something
 			if(!resolved_entity)
 				return null
@@ -268,6 +269,8 @@
 			return istype(casted) && casted.admin_resolve_narrate()
 
 /datum/admin_modal/admin_narrate/proc/narrate()
+	if(!length(unsafe_raw_html_to_send))
+		return
 	var/list/mob/targets = resolve_hearers()
 
 	var/emit = unsafe_raw_html_to_send
@@ -292,9 +295,20 @@
 			return TRUE
 		if("setRange")
 			use_range = params["target"]
+			if(use_los)
+				use_range = clamp(use_range, 0, MAX_LOS_RANGE)
+			else
+				use_range = clamp(use_range, 0, MAX_ANY_RANGE)
+			return TRUE
+		if("setMode")
+			mode = params["mode"]
 			return TRUE
 		if("setLos")
 			use_los = !!params["target"]
+			if(use_los)
+				use_range = clamp(use_range, 0, MAX_LOS_RANGE)
+			else
+				use_range = clamp(use_range, 0, MAX_ANY_RANGE)
 			return TRUE
 		if("narrate")
 			if(params["html"])
@@ -317,7 +331,7 @@
 				"<hr>",
 				SPAN_BLOCKQUOTE(emit, null),
 				"<hr>",
-				"<center>[SPAN_ADMIN("^^^ Narrate Preview; [SPAN_TOOLTIP(rendered_viewers, "Viewers...")] ^^^")]</center>",
+				"<center>[SPAN_ADMIN("^^^ Narrate Preview; [length(rendered_viewers) ? SPAN_TOOLTIP(rendered_viewers, "Viewers..."): "No Viewers!"] ^^^")]</center>",
 			)
 			to_chat(owner.owner, jointext(html, ""))
 			return TRUE
@@ -334,13 +348,14 @@
 	// to keep the UI persistent across reconnects.
 	.["rawHtml"] = unsafe_raw_html_to_send
 	.["visualColor"] = narrate_visual_color
-	.["mode"] = mode
-	.["useLos"] = use_los
-	.["useRange"] = use_range
-	.["maxRangeLos"] = MAX_LOS_RANGE
-	.["maxRangeAny"] = MAX_ANY_RANGE
+	.["possibleModes"] = resolve_modes()
 
 /datum/admin_modal/admin_narrate/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	// This however needs to update
 	.["target"] = get_target_data()
+	.["mode"] = mode
+	.["useLos"] = use_los
+	.["useRange"] = use_range
+	.["maxRangeLos"] = MAX_LOS_RANGE
+	.["maxRangeAny"] = MAX_ANY_RANGE
