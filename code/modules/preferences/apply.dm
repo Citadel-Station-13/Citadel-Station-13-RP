@@ -73,11 +73,11 @@
  * @params
  * * character - the mob
  * * flags - PREF_COPY_TO_ flags like in [copy_to]
- * * role - (optional) the /datum/role being used.
+ * * role - (optional) the /datum/prototype/role being used.
  * * allow_storage_spawn - spawn extra items in storage instead of stuffing into reject.
  * * reject - list to stuff rejected items into. if null, they're deleted.
  */
-/datum/preferences/proc/equip_loadout(mob/character, flags, datum/role/role, allow_storage_spawn, list/reject)
+/datum/preferences/proc/equip_loadout(mob/character, flags, datum/prototype/role/role, allow_storage_spawn, list/reject)
 	//! todo: copypaste, refactor
 	var/mob/living/carbon/human/H = character
 	if(!istype(H))

@@ -61,6 +61,14 @@
 	if(anonymous && isnull(id))
 		id = generate_anonymous_uid()
 
+/**
+ * Override this to false if your type has non-cache temporaries.
+ * * Using this is usually a bad idea but sometimes it's better to keep something loaded
+ *   than to fuck around with '/datum/role_round_context' or something.
+ */
+/datum/prototype/proc/can_be_unloaded()
+	return TRUE
+
 /datum/prototype/proc/generate_anonymous_uid()
 	// unique always, even across rounds
 	// todo: use SSpersistence persistence ID or something; maybe persistence ID should just be a global thing on the databse?

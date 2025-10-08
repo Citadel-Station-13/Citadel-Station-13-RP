@@ -456,7 +456,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	//Well you're not reloading their job or they never had one.
 	if(!charjob)
-		var/pickjob = input(src,"Pick a job to assign them (or none).","Job Select","-No Job-") as null|anything in SSjob.all_job_titles() + "-No Job-"
+		var/pickjob = input(src,"Pick a job to assign them (or none).","Job Select","-No Job-") as null|anything in RSroles.legacy_all_job_titles() + "-No Job-"
 		if(!pickjob)
 			return
 		if(pickjob != "-No Job-")
@@ -649,7 +649,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		to_chat(src, "Only administrators may use this command.")
 		return
 	if(SSjob)
-		for(var/datum/role/job/job in SSjob.occupations)
+		for(var/datum/prototype/role/job/job in RSroles.legacy_all_job_datums())
 			to_chat(src, "[job.title]: [job.total_positions]")
 	feedback_add_details("admin_verb","LFS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
