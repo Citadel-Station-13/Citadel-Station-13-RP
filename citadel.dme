@@ -2296,6 +2296,7 @@
 #include "code\modules\actionspeed\modifiers\base.dm"
 #include "code\modules\admin\admin.dm"
 #include "code\modules\admin\admin_attack_log.dm"
+#include "code\modules\admin\admin_holder-legacy.dm"
 #include "code\modules\admin\admin_holder.dm"
 #include "code\modules\admin\admin_memo.dm"
 #include "code\modules\admin\admin_ranks.dm"
