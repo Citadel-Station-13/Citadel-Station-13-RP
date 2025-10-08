@@ -766,7 +766,7 @@ var/list/admin_verbs_event_manager = list(
 	set category = "Admin"
 
 	if(deadmin_holder)
-		deadmin_holder.reassociate()
+		deadmin_holder.associate(src)
 		log_admin("[src] re-admined themself.")
 		message_admins("[src] re-admined themself.", 1)
 		to_chat(src, "<span class='interface'>You now have the keys to control the planet, or atleast a small space station</span>")

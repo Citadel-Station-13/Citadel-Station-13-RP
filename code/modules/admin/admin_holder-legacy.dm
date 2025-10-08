@@ -37,6 +37,7 @@ GLOBAL_PROTECT(href_token)
 	spawn(-1)
 		UNTIL(SSmapping.loaded_station)
 		admincaster_signature = "[(LEGACY_MAP_DATUM).company_name] Officer #[rand(0,9)][rand(0,9)][rand(0,9)]"
+	..()
 
 // todo: assertions on this are too weak
 /datum/admins/proc/associate(client/C)
@@ -56,16 +57,14 @@ GLOBAL_PROTECT(href_token)
 /datum/admins/proc/disassociate()
 	if(!owner)
 		return
-	GLOB.admins -= owner
-	owner.deadmin_holder = owner.holder
-	owner.holder = null
 	// for now, destroy all modals
 	QDEL_LIST(admin_modals)
 	// obliterate verbs
 	remove_admin_verbs()
-
-/datum/admins/proc/reassociate()
-	associate(owner)
+	GLOB.admins -= owner
+	owner.deadmin_holder = owner.holder
+	owner.holder = null
+	owner = null
 
 /datum/admins/add_admin_verbs()
 	..()
@@ -191,7 +190,6 @@ NOTE: It checks usr by default. Supply the "user" argument if you wish to check 
 /client/proc/deadmin()
 	if(holder)
 		holder.disassociate()
-		//qdel(holder)
 	return 1
 
 /proc/GenerateToken()

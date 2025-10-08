@@ -7,9 +7,16 @@
 	/// todo: re-open these on reconnect.
 	var/list/datum/admin_modal/admin_modals
 
+	/// owning ckey
+	var/ckey
+
 /datum/admins/Destroy()
 	QDEL_LIST(admin_modals)
 	return ..()
+
+/datum/admins/New(initial_rank, initial_rights, ckey)
+	src.ckey = ckey
+	..()
 
 /datum/admins/proc/add_admin_verbs()
 	if(!owner)

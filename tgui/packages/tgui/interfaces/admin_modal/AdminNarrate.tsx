@@ -115,7 +115,6 @@ export class AdminNarrate extends Component<{}, AdminNarrateState> {
     return (
       <Window width={900} height={500} title="Narrate">
         <Window.Content>
-          {JSON.stringify(this.state)}
           <Stack fill vertical>
             <Stack.Item grow={1}>
               <Stack fill>
