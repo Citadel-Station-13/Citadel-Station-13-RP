@@ -34,18 +34,18 @@
 	// Like before, records are the most reliable way.
 	var/datum/data/record/R = find_general_record("name", M.real_name)
 	if(R) // They got a record, now find the job datum.
-		var/datum/role/job/J = SSjob.get_job(R.fields["real_rank"])
+		var/datum/prototype/role/job/J = RSroles.legacy_job_by_title(R.fields["real_rank"])
 		if(istype(J))
 			return J
 
 	// Try the mind.
 	if(M.mind)
-		var/datum/role/job/J = SSjob.get_job(M.mind.assigned_role)
+		var/datum/prototype/role/job/J = RSroles.legacy_job_by_title(M.mind.assigned_role)
 		if(istype(J))
 			return J
 
 	// Last ditch effort, check for job assigned to the mob itself.
-	var/datum/role/job/J = SSjob.get_job(M.job)
+	var/datum/prototype/role/job/J = RSroles.legacy_job_by_title(M.job)
 	if(istype(J))
 		return J
 
@@ -54,7 +54,7 @@
 // Feed this proc the name of a job, and it will try to figure out what department they are apart of.
 // Improved with the addition of SSjob, which has departments be an actual thing and not a virtual concept.
 /datum/legacy_metric/proc/role_name_to_department(var/role_name)
-	var/datum/role/job/J = SSjob.get_job(role_name)
+	var/datum/prototype/role/job/J = RSroles.legacy_job_by_title(role_name)
 	if(istype(J))
 		if(LAZYLEN(J.departments))
 			return J.departments
@@ -84,13 +84,13 @@
 /datum/legacy_metric/proc/get_people_with_job(job_type, cutoff = 75)
 	. = list()
 	// First, get the name.
-	var/datum/role/job/J = SSjob.job_by_type(job_type)
+	var/datum/prototype/role/job/J = RSroles.legacy_job_by_type(job_type)
 	if(!istype(J))
 		return
 
 	// Now find people with the job name.
 	for(var/M in GLOB.player_list)
-		var/datum/role/job/their_job = guess_job(M)
+		var/datum/prototype/role/job/their_job = guess_job(M)
 		if(!istype(their_job)) // No job was guessed.
 			continue
 		if(their_job.title != J.title) // Jobs don't match.
@@ -109,7 +109,7 @@
 	. = list()
 
 	var/list/people_with_jobs = get_people_with_job(job_type, cutoff)
-	var/datum/role/job/J = SSjob.job_by_type(job_type)
+	var/datum/prototype/role/job/J = RSroles.legacy_job_by_type(job_type)
 	var/datum/prototype/struct/alt_title/A = new alt_title_type()
 
 	for(var/M in people_with_jobs)

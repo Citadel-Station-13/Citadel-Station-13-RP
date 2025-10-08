@@ -1,6 +1,6 @@
 /obj/landmark/spawnpoint/job/trader
 	name = "Trader"
-	job_path = /datum/role/job/trader
+	job_path = /datum/prototype/role/job/trader
 	latejoin = TRUE
 	latejoin_override = TRUE
 
@@ -10,7 +10,7 @@
 
 /obj/landmark/spawnpoint/job/outsider
 	name = "Traveler"
-	job_path = /datum/role/job/station/outsider
+	job_path = /datum/prototype/role/job/station/outsider
 	latejoin = TRUE
 	latejoin_override = TRUE
 
