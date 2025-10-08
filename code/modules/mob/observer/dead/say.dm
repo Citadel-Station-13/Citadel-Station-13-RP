@@ -17,6 +17,7 @@
 
 
 /mob/observer/dead/emote(var/act, var/type, var/message)
+	#warn impl
 	//message = sanitize(message) - already sanitized in verb/me_verb()
 
 	if(!message)

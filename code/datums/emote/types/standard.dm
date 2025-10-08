@@ -8,7 +8,6 @@
 	abstract_type = /datum/emote/standard
 
 	//* SFX *//
-
 	/// sound to play, or a list of sounds to pick from (equal weight)
 	var/sfx
 	/// volume of sound to play
@@ -21,8 +20,12 @@
 	var/sfx_extra_range = 0
 
 	//* VFX *//
-
 	// todo: vfx support
+
+/datum/emote/standard/basic/run_emote(datum/event_args/actor/actor, list/arbitrary)
+	..()
+	var/sfx = get_sfx(actor, arbitrary)
+	play_sfx(actor, arbitrary, sfx)
 
 /**
  * Gets a SFX to play.
@@ -30,6 +33,5 @@
 /datum/emote/standard/proc/get_sfx(datum/event_args/actor/actor, list/arbitrary)
 	return islist(sfx) ? (length(sfx) ? pick(sfx) : null) : sfx
 
-#warn impl
-
-
+/datum/emote/standard/proc/play_sfx(datum/event_args/actor/actor, list/arbitrary, sfx)
+	playsound(actor.performer, sfx, sfx_volume, sfx_vary)

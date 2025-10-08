@@ -474,6 +474,9 @@
 	return TRUE
 
 /mob/living/carbon/brain/caught_soul/emote(var/act,var/m_type=1,var/message = null)
+	. = ..()
+	if(. == "stop")
+		return
 	if(silent)
 		return FALSE
 	if (act == "me")

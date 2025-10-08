@@ -23,6 +23,9 @@ GLOBAL_LIST(emote_lookup)
 				break
 			GLOB.emote_lookup[binding] = instance
 
+/proc/fetch_emote(key) as /datum/emote
+	return emote_lookup[key]
+
 /**
  * Emotes!
  *
@@ -108,6 +111,13 @@ GLOBAL_LIST(emote_lookup)
 	return list(EMOTE_PARAMETER_KEY_ORIGINAL = parameter_string)
 
 /**
+ * Standard parameter tokenization. Allows double-quoting, single-quoting, and just space-ing
+ * @return list
+ */
+/datum/emote/proc/tokenize_parameters(parameter_string)
+	#warn impl
+
+/**
  * Blocking proc.
  *
  * Tries to run an emote, if someone's allowed to.
@@ -125,4 +135,12 @@ GLOBAL_LIST(emote_lookup)
  * * arbitrary - arbitrary processed params
  */
 /datum/emote/proc/run_emote(datum/event_args/actor/actor, list/arbitrary)
-	#warn impl
+	return
+
+/datum/emote/proc/get_mob_context(mob/invoking)
+	return invoking.emotes_running?[src]
+
+/datum/emote/proc/set_mob_context(mob/invoking, ctx)
+	if(!invoking.emotes_running)
+		invoking.emotes_running = list()
+	invoking.emotes_running[src] = ctx

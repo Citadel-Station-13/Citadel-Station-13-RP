@@ -7,6 +7,10 @@
 	/// * Lazy list, see mob_movespeed.dm
 	var/list/actionspeed_modifier_immunities
 
+	//* Emotes *//
+	/// running emotes, associated to context the emote can set
+	var/list/datum/emote/emotes_running
+
 	//* Impairments *//
 	/// active feign_impairment types
 	/// * lazy list

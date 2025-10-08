@@ -1,4 +1,7 @@
 /mob/living/silicon/emote(var/act,var/m_type=1,var/message = null)
+	. = ..()
+	if(. == "stop")
+		return
 	var/param = null
 	if (findtext(act, "-", 1, null))
 		var/t1 = findtext(act, "-", 1, null)
@@ -21,21 +24,6 @@
 
 	#warn purge
 	switch(act)
-		if ("me")
-			if (src.client)
-				if(client.prefs.muted & MUTE_IC)
-					to_chat(src, "You cannot send IC messages (muted).")
-					return
-			if (stat)
-				return
-			if(!(message))
-				return
-			else
-				return custom_emote(m_type, message)
-
-		if ("custom")
-			return custom_emote(m_type, message)
-
 		if ("flap")
 			if (!src.restrained())
 				message = "flaps its wings."
@@ -117,16 +105,6 @@
 			playsound(src.loc, 'sound/machines/gonk.ogg', 50, 0)
 			m_type = 1
 
-		if("nya")
-			var/mob/living/silicon/robot/R = src
-			if (istype(R) && R.module.is_cat())
-				message = "lets out a nya."
-
-				playsound(loc, 'sound/voice/nya.ogg', 50, 1, -1)
-				m_type = 2
-			else
-				to_chat(src, "You're not a cat!")
-
 		if("mrrp")
 			var/mob/living/silicon/robot/R = src
 			if (istype(R) && R.module.is_cat())
@@ -143,16 +121,6 @@
 				message = "prbts."
 
 				playsound(loc, 'sound/misc/prbt.ogg', 50, 1, -1)
-				m_type = 2
-			else
-				to_chat(src, "You're not a cat!")
-
-		if("meow", "meows")
-			var/mob/living/silicon/robot/R = src
-			if (istype(R) && R.module.is_cat())
-				message = "prbts."
-
-				playsound(loc, 'sound/voice/meow1.ogg', 50, 1, -1)
 				m_type = 2
 			else
 				to_chat(src, "You're not a cat!")

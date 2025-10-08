@@ -4,6 +4,9 @@
 	emote(arglist(args))
 
 /mob/living/carbon/human/emote(var/act,var/m_type=1,var/message = null)
+	. = ..()
+	if(. == "stop")
+		return
 	var/param = null
 	var/datum/gender/T = GLOB.gender_datums[get_visible_gender()]
 	if(istype(src, /mob/living/carbon/human/dummy))
@@ -105,37 +108,6 @@
 
 			m_type = 1
 
-		if ("custom")
-			var/input = sanitize(input("Choose an emote to display.") as text|null)
-			if (!input)
-				return
-			var/input2 = input("Is this a visible or hearable emote?") in list("Visible","Hearable")
-			if (input2 == "Visible")
-				m_type = 1
-			else if (input2 == "Hearable")
-				if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
-					return
-				m_type = 2
-			else
-				alert("Unable to use this emote, must be either hearable or visible.")
-				return
-			return custom_emote(m_type, message)
-
-		if ("me")
-
-			//if(silent && silent > 0 && findtext(message,"\"",1, null) > 0)
-			//	return //This check does not work and I have no idea why, I'm leaving it in for reference.
-
-			if (src.client)
-				if (client.prefs.muted & MUTE_IC)
-					to_chat(src, "<font color='red'>You cannot send IC messages (muted).</font>")
-					return
-			if (stat)
-				return
-			if(!(message))
-				return
-			return custom_emote(m_type, message)
-
 		if ("choke")
 			if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
 				message = "clutches [T.his] throat desperately!"
@@ -188,38 +160,6 @@
 				return //Can't faint while asleep
 			afflict_sleeping(20 * 10) //Short-short nap
 			m_type = 1
-
-		if("cough", "coughs")
-			if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
-				message = "appears to cough!"
-				m_type = 1
-			else
-				if(!muzzled)
-					var/robotic = 0
-					m_type = 2
-					if(should_have_organ(O_LUNGS))
-						var/obj/item/organ/internal/lungs/L = internal_organs_by_name[O_LUNGS]
-						if(L && L.robotic == 2)	//Hard-coded to 2, incase we add lifelike robotic lungs
-							robotic = 1
-					if(!robotic)
-						message = "coughs!"
-						if(get_gender() == FEMALE)
-							if(species.female_cough_sounds)
-								playsound(src, pick(species.female_cough_sounds), 120)
-						else
-							if(species.male_cough_sounds)
-								playsound(src, pick(species.male_cough_sounds), 120)
-					else
-						message = "emits a robotic cough"
-						var/use_sound
-						if(get_gender() == FEMALE)
-							use_sound = pick('sound/effects/mob_effects/f_machine_cougha.ogg','sound/effects/mob_effects/f_machine_coughb.ogg')
-						else
-							use_sound = pick('sound/effects/mob_effects/m_machine_cougha.ogg','sound/effects/mob_effects/m_machine_coughb.ogg', 'sound/effects/mob_effects/m_machine_coughc.ogg')
-						playsound(src.loc, use_sound, 50, 0)
-				else
-					message = "makes a strong noise."
-					m_type = 2
 
 		if("bcough")
 			if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
@@ -445,37 +385,6 @@
 		if ("tremble")
 			message = "trembles in fear!"
 			m_type = 1
-
-		if("sneeze", "sneezes")
-			if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
-				message = "sneezes."
-				m_type = 1
-			else
-				if(!muzzled)
-					var/robotic = 0
-					m_type = 2
-					if(should_have_organ(O_LUNGS))
-						var/obj/item/organ/internal/lungs/L = internal_organs_by_name[O_LUNGS]
-						if(L && L.robotic == 2)	//Hard-coded to 2, incase we add lifelike robotic lungs
-							robotic = 1
-					if(!robotic)
-						message = "sneezes."
-						if(get_gender() == FEMALE)
-							playsound(src, species.female_sneeze_sound, 70)
-						else
-							playsound(src, species.male_sneeze_sound, 70)
-						m_type = 2
-					else
-						message = "emits a robotic sneeze"
-						var/use_sound
-						if(get_gender() == FEMALE)
-							use_sound = 'sound/effects/mob_effects/machine_sneeze.ogg'
-						else
-							use_sound = 'sound/effects/mob_effects/f_machine_sneeze.ogg'
-						playsound(src.loc, use_sound, 50, 0)
-				else
-					message = "makes a strange noise."
-					m_type = 2
 
 		if ("sniff")
 			message = "sniffs."

@@ -64,7 +64,7 @@
 	/// * %TARGET% is replaced with a target.
 	/// * If the replacement is at the start of the string, it'll be capitalized as needed.
 	/// * HTML is valid
-	var/feedback_special_miming_targeted
+	var/feedback_special_muzzled_targeted
 	/// audible descriptor for muzzled
 	///
 	/// * HTML is valid
@@ -115,9 +115,11 @@
 	..()
 
 /datum/emote/standard/basic/proc/generate_parameter_description()
-	#warn impl
+	return "\[[parameter_custom_description]\][target_allowed ? " \[target[target_required ? "" : "?"]\]" : ""]"
 
 /datum/emote/standard/basic/process_parameters(datum/event_args/actor/actor, parameter_string)
+	if(target_allowed)
+		#warn ???
 	#warn impl
 
 /datum/emote/standard/basic/try_run_emote(datum/event_args/actor/actor, list/arbitrary)
@@ -138,3 +140,4 @@
 #warn impl
 
 
+/datum/emote/standard/basic/proc/
