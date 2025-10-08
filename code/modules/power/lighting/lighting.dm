@@ -738,7 +738,7 @@ var/global/list/light_type_cache = list()
 		//If xenos decide they want to smash a light bulb with a toolbox, who am I to stop them? /N
 
 	else if(status != LIGHT_BROKEN && status != LIGHT_EMPTY)
-
+		SEND_SIGNAL(user, COMSIG_MOB_ON_ITEM_MELEE_ATTACK)
 
 		if(prob(1+W.damage_force * 5))
 
