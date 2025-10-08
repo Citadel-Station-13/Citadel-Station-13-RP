@@ -2,29 +2,36 @@
 /*
 Space dust
 Commonish random event that causes small clumps of "space dust" to hit the station at high speeds.
-No command report on the common version of this event.
-The "dust" will damage the hull of the station causin minor hull breaches.
+The "dust" will damage the hull of the station causing minor hull breaches.
 */
 
-/proc/dust_swarm(var/strength = "weak", var/list/affecting_z)
+
+/**
+ * Spawns a random amount of space_dust thrown in random directions
+ * dust_swarm(severity, list/affecting_z)
+ *
+ * severity - Takes a value from 1 to 4, defaults to 2.
+ * affecting_z - Takes a list of z_levels to randomly target, defaults to main station levels.
+ */
+/proc/dust_swarm(var/severity = EVENT_LEVEL_MODERATE, var/list/affecting_z = (LEGACY_MAP_DATUM).station_levels.Copy())
 	var/numbers = 1
 	var/dust_type = /obj/effect/space_dust
-	switch(strength)
-		if("weak")
+	switch(severity)
+		if(EVENT_LEVEL_MUNDANE)
 			numbers = rand(2,4)
 			dust_type = /obj/effect/space_dust/weak
-		if("norm")
+		if(EVENT_LEVEL_MODERATE)
 			numbers = rand(5,10)
 			dust_type = /obj/effect/space_dust
-		if("strong")
+		if(EVENT_LEVEL_MAJOR)
 			numbers = rand(10,15)
 			dust_type = /obj/effect/space_dust/strong
-		if("super")
+		if(EVENT_LEVEL_EXTREME)
 			numbers = rand(15,25)
 			dust_type = /obj/effect/space_dust/super
 
 	var/startside = pick(GLOB.cardinal)
-	for(var/i = 0 to numbers)
+	for(var/i in 1 to numbers)
 		var/startx = 0
 		var/starty = 0
 		var/endy = 0
@@ -62,7 +69,7 @@ The "dust" will damage the hull of the station causin minor hull breaches.
 	name = "Space Dust"
 	desc = "Dust in space."
 	icon = 'icons/obj/meteor.dmi'
-	icon_state = "space_dust"
+	icon_state = "dust"
 	density = 1
 	anchored = 1
 	var/strength = 2	// legacy_ex_act severity number
@@ -95,11 +102,7 @@ The "dust" will damage the hull of the station causin minor hull breaches.
 				shake_camera(M, 3, 1)
 	if (A)
 		playsound(src.loc, 'sound/effects/meteorimpact.ogg', 40, 1)
-
-		if(ismob(A))
-			LEGACY_EX_ACT(A, strength, null)	// This should work for now I guess
-		else if(!istype(A,/obj/machinery/power/emitter) && !istype(A,/obj/machinery/field_generator))	// Protect the singularity from getting released every round!
-			LEGACY_EX_ACT(A, strength, null)	// Changing emitter/field gen legacy_ex_act would make it immune to bombs and C4
+		LEGACY_EX_ACT(A, strength, null)
 
 		life--
 		if(life <= 0)

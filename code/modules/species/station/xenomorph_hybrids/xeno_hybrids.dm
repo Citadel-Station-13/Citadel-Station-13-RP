@@ -66,6 +66,7 @@
 		/datum/ability/species/sonar,
 		/datum/ability/species/toggle_agility,
 		/datum/ability/species/xenomorph_hybrid/regenerate,
+		/datum/ability/species/xenomorph_hybrid/sneak,
 	)
 	total_health = 150	//Exoskeleton makes you tougher than baseline
 	brute_mod = 0.95 // Chitin is somewhat hard to crack

@@ -1,0 +1,4 @@
+author: "timothyteakettle"
+delete-after: True
+changes:
+  - bugfix: "fix shapeshifters horns not updating correctly when changed via the verb"

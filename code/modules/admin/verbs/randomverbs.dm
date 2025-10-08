@@ -101,86 +101,6 @@
 	admin_ticket_log(M, msg)
 	feedback_add_details("admin_verb","SMS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/cmd_admin_world_narrate()
-	set category = "Special Verbs"
-	set name = "Global Narrate"
-
-	if(!check_rights(R_ADMIN))
-		return
-
-	var/msg = input("Message:", "Enter the text you wish to appear to everyone:") as text|null
-
-	if (!msg)
-		return
-	to_chat(world, "[msg]")
-	log_admin("GlobalNarrate: [key_name(usr)] : [msg]")
-	message_admins("<span class='adminnotice'>[key_name_admin(usr)] Sent a global narrate</span>")
-	// SSblackbox.record_feedback("tally", "admin_verb", 1, "Global Narrate") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/client/proc/cmd_admin_direct_narrate(mob/M)
-	set category = "Special Verbs"
-	set name = "Direct Narrate"
-
-	if(!check_rights(R_ADMIN))
-		return
-
-	if(!M)
-		M = input("Direct narrate to whom?", "Active Players") as null|anything in GLOB.player_list
-
-	if(!M)
-		return
-
-	var/msg = input("Message:", "Enter the text you wish to appear to your target:") as text|null
-
-	if( !msg )
-		return
-
-	to_chat(M, msg)
-	log_admin("DirectNarrate: [key_name(usr)] to ([M.name]/[M.key]): [msg]")
-	msg = "<span class='adminnotice'><b> DirectNarrate: [key_name(usr)] to ([M.name]/[M.key]):</b> [msg]<BR></span>"
-	message_admins(msg)
-	admin_ticket_log(M, msg)
-	// SSblackbox.record_feedback("tally", "admin_verb", 1, "Direct Narrate") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/client/proc/cmd_admin_local_narrate(atom/A)
-	set category = "Special Verbs"
-	set name = "Local Narrate"
-
-	if(!check_rights(R_ADMIN))
-		return
-	if(!A)
-		return
-	var/range = input("Range:", "Narrate to mobs within how many tiles:", 7) as num|null
-	if(!range)
-		return
-	var/msg = input("Message:", "Enter the text you wish to appear to everyone within view:") as text|null
-	if (!msg)
-		return
-	for(var/mob/M in view(range,A))
-		to_chat(M, msg)
-
-	log_admin("LocalNarrate: [key_name(usr)] at [AREACOORD(A)]: [msg]")
-	message_admins("<span class='adminnotice'><b> LocalNarrate: [key_name_admin(usr)] at [ADMIN_COORDJMP(A)]:</b> [msg]<BR></span>")
-	// SSblackbox.record_feedback("tally", "admin_verb", 1, "Local Narrate") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/client/proc/cmd_admin_z_narrate()
-	set category = "Special Verbs"
-	set name = "Z Narrate"
-
-	if(!check_rights(R_ADMIN))
-		return
-
-	var/msg = input("Enter the text you wish to show an entire Z level:", "Z Narrate:") as text|null
-
-	if (!msg)
-		return
-
-	for(var/mob/M in range(192)) //Yes this is lazy
-		to_chat(M, msg)
-
-	log_admin("ZNarrate: [key_name(usr)] at [ADMIN_COORDJMP(usr)]: [msg]")
-	message_admins("<span class='adminnotice'><b> ZNarrate: [key_name_admin(usr)] at [ADMIN_COORDJMP(usr)]:</b> [msg]<BR></span>")
-
 
 /client/proc/cmd_admin_godmode(mob/M as mob in GLOB.mob_list)
 	set category = "Special Verbs"
@@ -456,7 +376,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	//Well you're not reloading their job or they never had one.
 	if(!charjob)
-		var/pickjob = input(src,"Pick a job to assign them (or none).","Job Select","-No Job-") as null|anything in SSjob.all_job_titles() + "-No Job-"
+		var/pickjob = input(src,"Pick a job to assign them (or none).","Job Select","-No Job-") as null|anything in RSroles.legacy_all_job_titles() + "-No Job-"
 		if(!pickjob)
 			return
 		if(pickjob != "-No Job-")
@@ -632,15 +552,6 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	message_admins("[key_name_admin(src)] has created a command report", 1)
 	feedback_add_details("admin_verb","CCR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/cmd_admin_delete(atom/A as obj|mob|turf in world)
-	set category = "Admin"
-	set name = "Delete"
-
-	if(!check_rights(R_SPAWN|R_DEBUG|R_ADMIN))
-		return
-
-	admin_delete(A)
-
 /client/proc/cmd_admin_list_open_jobs()
 	set category = "Admin"
 	set name = "List free slots"
@@ -649,7 +560,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		to_chat(src, "Only administrators may use this command.")
 		return
 	if(SSjob)
-		for(var/datum/role/job/job in SSjob.occupations)
+		for(var/datum/prototype/role/job/job in RSroles.legacy_all_job_datums())
 			to_chat(src, "[job.title]: [job.total_positions]")
 	feedback_add_details("admin_verb","LFS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 

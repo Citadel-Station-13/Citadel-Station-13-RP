@@ -3,7 +3,7 @@
 ////////////////////////////
 
 /datum/category_item/catalogue/fauna/nuclear_spirits/burning
-	name = "Burning Runner"
+	name = "Paranatural Entity - Burning Runner"
 	desc = "A paranatural creature resembling a burning humanoid. \
 	More energy then anything solid it aborbs heat into its body \
 	however it has a low tolerance for kinectic energy and quickly \

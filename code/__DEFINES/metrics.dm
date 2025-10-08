@@ -3,4 +3,5 @@
 
 //* Metric Categories *//
 
+#define METRIC_CATEGORY_ADMIN "admin"
 #define METRIC_CATEGORY_SERVER "server"
