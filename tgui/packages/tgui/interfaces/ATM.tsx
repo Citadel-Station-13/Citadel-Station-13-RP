@@ -1,15 +1,18 @@
-import { Section, Flex, Box, Button, Input, LabeledList, Collapsible, Divider } from "../components";
+import { useState } from "react";
+import { Box, Button, Collapsible, Divider, Flex, Input, LabeledList, NumberInput, Section } from "tgui-core/components";
+
+import { useBackend } from "../backend";
 import { Window } from "../layouts";
-import { useBackend, useLocalState } from "../backend";
 
 const ACCOUNT_SECURITY_DESCRIPTIONS: AccountSecurityDescription[] = [{ "level": 0, "desc": "Only account number required, automatically scanned from ID in proximity." },
-  { "level": 1, "desc": "Account number and PIN required; ID autoscan disabled." },
-  { "level": 2, "desc": "Inserted ID card, Account number, and PIN required." }];
+{ "level": 1, "desc": "Account number and PIN required; ID autoscan disabled." },
+{ "level": 2, "desc": "Inserted ID card, Account number, and PIN required." }];
 
 enum AccountSecurityLevels {
   SECURITY_LEVEL_MIN = 0,
   SECURITY_LEVEL_MED = 1,
-  SECURITY_LEVEL_MAX = 2}
+  SECURITY_LEVEL_MAX = 2
+}
 
 interface AccountSecurityDescription {
   level: number,
@@ -28,37 +31,38 @@ interface AccountTransactionEntry {
 }
 
 interface ATMContext {
-  "incorrect_attempts" : number,
-	"max_pin_attempts" : number,
-	"ticks_left_locked_down": number,
-	"emagged" : boolean,
-	"authenticated_acc" : boolean,
-	"account_name" : String,
-	"transaction_log": AccountTransactionLog,
-	"account_security_level" : number,
-	"current_account_security_level" : number,
-	"acc_suspended": boolean,
-	"balance": number,
+  "incorrect_attempts": number,
+  "max_pin_attempts": number,
+  "ticks_left_locked_down": number,
+  "emagged": boolean,
+  "authenticated_acc": boolean,
+  "account_name": String,
+  "transaction_log": AccountTransactionLog,
+  "account_security_level": number,
+  "current_account_security_level": number,
+  "acc_suspended": boolean,
+  "balance": number,
   "machine_id": String
   "card_inserted": boolean,
   "inserted_card_name": String,
   "logout_time": String,
 }
 
-export const ATM = (props, context) => {
-  const { act, data } = useBackend<ATMContext>(context);
+export const ATM = (props) => {
+  const { act, data } = useBackend<ATMContext>();
   if (!data.authenticated_acc) {
     return (
-      <Window resizable width={400} height={400}>
+      <Window width={400} height={400}>
         <Window.Content scrollable>
           <Section title={data.machine_id} >
-            {data.ticks_left_locked_down || data.emagged ? (<LockedElement />) : (<LoginElement />) }
+            {data.ticks_left_locked_down || data.emagged ? (<LockedElement />) : (<LoginElement />)}
           </Section>
         </Window.Content>
       </Window>
-    ); }
+    );
+  }
   return (
-    <Window resizable width={400} height={400} scrollable>
+    <Window width={400} height={400}>
       <Window.Content scrollable>
         <Section title={data.machine_id} >
           <ATMElement />
@@ -68,18 +72,10 @@ export const ATM = (props, context) => {
   );
 };
 
-const LoginElement = (props, context) => {
-  const { act, data } = useBackend<ATMContext>(context);
-  const [epin, setPin] = useLocalState<number>(
-    context,
-    "epin",
-    0
-  );
-  const [eacc, setAcc] = useLocalState<number>(
-    context,
-    "eacc",
-    0
-  );
+const LoginElement = (props) => {
+  const { act, data } = useBackend<ATMContext>();
+  const [epin, setPin] = useState<string>("0");
+  const [eacc, setAcc] = useState<string>("0");
   return (
     <Flex width={200} ml={2} wrap>
       <Flex.Item>
@@ -91,10 +87,10 @@ const LoginElement = (props, context) => {
             <Button onClick={() => act('eject_card')} textAlign="right" icon="sim-card">{data.inserted_card_name}</Button><br />
           </LabeledList.Item>
           <LabeledList.Item label="Account Number">
-            <Input placeholder="Account Number" onChange={(e, value) => setAcc(value)} textAlign="right" /><br />
+            <Input placeholder="Account Number" onChange={(value) => setAcc(value)} textAlign="right" /><br />
           </LabeledList.Item>
           <LabeledList.Item label="PIN">
-            <Input placeholder="PIN" onChange={(e, value) => setPin(value)} textAlign="right" /><br /><br />
+            <Input placeholder="PIN" onChange={(value) => setPin(value)} textAlign="right" /><br /><br />
           </LabeledList.Item>
           <Button onClick={() => act('attempt_authentication', { pin: epin, acc: eacc })} icon="key"> Confirm and Authenticate </Button><br />
         </LabeledList>
@@ -104,8 +100,8 @@ const LoginElement = (props, context) => {
 
 };
 
-const LockedElement = (props, context) => {
-  const { act, data } = useBackend<ATMContext>(context);
+const LockedElement = (props) => {
+  const { act, data } = useBackend<ATMContext>();
   return (
     <Flex justify="space-between" direction="column" textColor="#ff000d" backgroundColor="#540004" scrollable>
       <Flex.Item><br />
@@ -131,14 +127,14 @@ const LockedElement = (props, context) => {
   );
 };
 
-const ATMElement = (props, context) => {
-  const { act, data } = useBackend<ATMContext>(context);
-  const [TransferTarget, setTransferTarget] = useLocalState<number>(context, "TransferTarget", 1);
-  const [TransferAmount, setTransferAmount] = useLocalState<number>(context, "TransferAmount", 1);
-  const [TransferPurpose, setTransferPurpose] = useLocalState<String>(context, "TransferPurpose", "");
-  const [WithdrawAmount, setWithdrawAmount] = useLocalState<number>(context, "WithdrawAmount", 1);
-  const [EWallet, setEWallet] = useLocalState<boolean>(context, "EWallet", false);
-  const [Security, setSecurity] = useLocalState<number>(context, "Security", data.current_account_security_level);
+const ATMElement = (props) => {
+  const { act, data } = useBackend<ATMContext>();
+  const [transferTarget, setTransferTarget] = useState<string>("1");
+  const [transferAmount, setTransferAmount] = useState<number>(1);
+  const [transferPurpose, setTransferPurpose] = useState<String>("");
+  const [withdrawAmount, setWithdrawAmount] = useState<number>(1);
+  const [EWallet, setEWallet] = useState<boolean>(false);
+  const [Security, setSecurity] = useState<number>(data.current_account_security_level);
 
   if (data.acc_suspended) {
     return (
@@ -176,7 +172,7 @@ const ATMElement = (props, context) => {
       </Flex.Item>
       <Divider />
       <Flex.Item>
-        <Collapsible title="Security Controls" headerProps={{ icon: "shield-alt" }}>
+        <Collapsible title="Security Controls" icon="shield-alt">
           <LabeledList>
             <LabeledList.Item label="Security Setting">
               <Button.Checkbox
@@ -198,7 +194,7 @@ const ATMElement = (props, context) => {
           </LabeledList>
         </Collapsible>
         <Divider />
-        <Collapsible title="Transaction Log" headerProps={{ icon: "money-bill" }}>
+        <Collapsible title="Transaction Log" icon="money-bill" >
           <LabeledList>
             {
               Object.entries(data.transaction_log).map(([numString, logEntry]) => {
@@ -234,30 +230,30 @@ const ATMElement = (props, context) => {
           <Button icon="clipboard-list" onClick={() => act('print_transaction')}>Print Transactions</Button>
         </Collapsible>
         <Divider />
-        <Collapsible title="Transfer Funds" headerProps={{ icon: "money-check" }}>
+        <Collapsible title="Transfer Funds" icon="money-check" >
           <LabeledList>
             <LabeledList.Item label="Target">
-              <Input placeholder="Target" onChange={(e, value) => setTransferTarget(value)} />
+              <Input placeholder="Target" onChange={(value) => setTransferTarget(value)} />
             </LabeledList.Item>
             <LabeledList.Item label="Purpose">
-              <Input placeholder="Purpose" onChange={(e, value) => setTransferPurpose(value)} />
+              <Input placeholder="Purpose" onChange={(value) => setTransferPurpose(value)} />
             </LabeledList.Item>
             <LabeledList.Item label="Amount">
-              <Input placeholder="Amount" onChange={(e, value) => setTransferAmount(value)} />
+              <NumberInput step={1} minValue={0} maxValue={Infinity} value={transferAmount} onChange={(value) => setTransferAmount(value)} />
             </LabeledList.Item>
-            <Button onClick={() => act('transfer', { target_acc_number: TransferTarget, purpose: TransferPurpose, funds_amount: TransferAmount })} icon="check">Confirm Transfer</Button>
+            <Button onClick={() => act('transfer', { target_acc_number: transferTarget, purpose: transferPurpose, funds_amount: transferAmount })} icon="check">Confirm Transfer</Button>
           </LabeledList>
         </Collapsible>
         <Divider />
-        <Collapsible title="Withdraw Funds" headerProps={{ icon: "money-bill-alt" }}>
+        <Collapsible title="Withdraw Funds" icon="money-bill-alt" >
           <LabeledList>
             <LabeledList.Item label="Amount">
-              <Input placeholder="Amount" onChange={(e, value) => setWithdrawAmount(value)} />
+              <NumberInput step={1} minValue={0} maxValue={Infinity} value={withdrawAmount} onChange={(value) => setWithdrawAmount(value)} />
             </LabeledList.Item>
             <LabeledList.Item label="Method Selection">
               <Button.Checkbox checked={EWallet} onClick={() => setEWallet(!EWallet)} >EWallet</Button.Checkbox>
             </LabeledList.Item>
-            <Button onClick={() => act('withdrawal', { funds_amount: WithdrawAmount, form_ewallet: EWallet })}>Withdraw</Button>
+            <Button onClick={() => act('withdrawal', { funds_amount: withdrawAmount, form_ewallet: EWallet })}>Withdraw</Button>
           </LabeledList>
         </Collapsible>
         <Divider />
@@ -265,7 +261,7 @@ const ATMElement = (props, context) => {
           <Button icon="clipboard-list" onClick={() => act('balance_statement')}>Print Statement</Button>
           <Button onClick={() => act('logout')} icon="key">Logout</Button>
         </Flex.Item>
-      </Flex.Item>
-    </Flex>
+      </Flex.Item >
+    </Flex >
   );
 };

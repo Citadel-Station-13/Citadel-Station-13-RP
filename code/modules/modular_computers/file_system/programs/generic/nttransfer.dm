@@ -121,7 +121,7 @@ var/global/nttransfer_uid = 0
 
 	return data
 
-/datum/computer_file/program/nttransfer/ui_act(action, list/params, datum/tgui/ui)
+/datum/computer_file/program/nttransfer/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 	switch(action)

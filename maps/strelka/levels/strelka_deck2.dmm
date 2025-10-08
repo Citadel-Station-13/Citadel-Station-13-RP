@@ -909,7 +909,6 @@
 /turf/simulated/floor/reinforced,
 /area/engineering/hallway/strelka/engineering)
 "cy" = (
-/obj/structure/lattice,
 /obj/structure/grille,
 /obj/structure/lattice,
 /turf/simulated/wall/r_wall/prepainted,
@@ -15586,7 +15585,6 @@
 "Ty" = (
 /obj/structure/lattice,
 /obj/structure/grille,
-/obj/structure/lattice,
 /turf/space/basic,
 /area/space)
 "Tz" = (

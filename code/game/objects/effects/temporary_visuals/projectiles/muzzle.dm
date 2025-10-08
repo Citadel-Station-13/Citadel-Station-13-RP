@@ -56,6 +56,12 @@
 	light_power = 0.5
 	light_color = "#0066FF"
 
+/obj/effect/projectile/muzzle/laser_pink
+	icon_state = "muzzle_pink"
+	light_range = 2
+	light_power = 0.5
+	light_color = "#ff00dd"
+
 /obj/effect/projectile/muzzle/darkmatter
 	icon_state = "muzzle_darkb"
 	light_range = 2
@@ -65,6 +71,18 @@
 /obj/effect/projectile/muzzle/inversion
 	icon_state = "muzzle_invert"
 	light_range = 2
+	light_power = -2
+	light_color = "#FFFFFF"
+
+/obj/effect/projectile/muzzle/inversion_heavy
+	icon_state = "muzzle_invert_heavy"
+	light_range = 3
+	light_power = -2
+	light_color = "#FFFFFF"
+
+/obj/effect/projectile/muzzle/oblivion
+	icon_state = "muzzle_oblivion"
+	light_range = 4
 	light_power = -2
 	light_color = "#FFFFFF"
 
