@@ -506,4 +506,5 @@
 		if(level.link_above || level.link_below)
 			stack_trace("WARNING: level [z] ([level.name]) wasn't unlinked after having a loop detected.")
 			continue
-		level.rebuild_turfs()
+		spawn(0)
+			level.rebuild_turfs()
