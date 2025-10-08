@@ -1023,10 +1023,6 @@
 /obj/structure/closet/crate,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/sector/solar_station/deck0)
-"VQ" = (
-/obj/structure/stairs/spawner/south,
-/turf/simulated/open,
-/area/sector/solar_station/deck0)
 "WC" = (
 /obj/machinery/atmospherics/pipe/tank/phoron{
 	dir = 8
@@ -20226,7 +20222,7 @@ Lz
 kj
 rk
 rk
-VQ
+rR
 Xv
 CD
 ez
