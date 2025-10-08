@@ -3,6 +3,7 @@ var/list/admin_datums = list()
 GLOBAL_VAR_INIT(href_token, GenerateToken())
 GLOBAL_PROTECT(href_token)
 
+// TODO: /datum/admin_holder
 /datum/admins
 	var/rank			= "Temporary Admin"
 	var/client/owner	= null
