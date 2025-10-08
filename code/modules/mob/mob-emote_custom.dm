@@ -1,7 +1,6 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-//* Custom Emote *//
 /**
  * This module is used for processing custom emotes.
  *

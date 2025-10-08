@@ -1,7 +1,7 @@
 /mob/proc/say(var/message, var/datum/prototype/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	return
 
-/mob/proc/whisper(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="")
+/mob/proc/whisper(var/message, var/datum/prototype/language/speaking = null, var/verb="says", var/alt_name="")
 	say(message, speaking, verb, alt_name, TRUE)
 
 /mob/proc/say_dead(var/message)

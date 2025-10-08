@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
+
 /// works as long as can see
 #define SAYCODE_TYPE_VISIBLE 1
 /// works as long as can hear

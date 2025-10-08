@@ -33,45 +33,6 @@
 		return // Custom Emote Handler
 	#warn purge
 	switch(act)
-
-		//Machine-only emotes
-		if("beep", "buzz", "buzz2", "chime", "die", "dwoop", "error", "honk", "no", "ping", "rcough", "rsneeze", "scary", "shutdown","startup", "warn", "ye", "yes")
-			#warn splice into machine_noise.dm
-			var/obj/item/organ/o = internal_organs_by_name[O_VOICE]
-			if(!isSynthetic() && (!o || !(o.robotic >= ORGAN_ASSISTED)))
-				to_chat(src, "<span class='warning'>You are not a synthetic.</span>")
-				return
-
-			var/M = null
-			if(param)
-				for (var/mob/A in view(null, null))
-					if (param == A.name)
-						M = A
-						break
-			if(!M)
-				param = null
-
-			else if(act == "rcough")
-				display_msg = "emits a robotic cough"
-				if(get_gender() == FEMALE)
-					use_sound = pick('sound/effects/mob_effects/f_machine_cougha.ogg','sound/effects/mob_effects/f_machine_coughb.ogg')
-				else
-					use_sound = pick('sound/effects/mob_effects/m_machine_cougha.ogg','sound/effects/mob_effects/m_machine_coughb.ogg', 'sound/effects/mob_effects/m_machine_coughc.ogg')
-			else if(act == "rsneeze")
-				display_msg = "emits a robotic sneeze"
-				if(get_gender() == FEMALE)
-					use_sound = 'sound/effects/mob_effects/machine_sneeze.ogg'
-				else
-					use_sound = 'sound/effects/mob_effects/f_machine_sneeze.ogg'
-
-			if (param)
-				message = "[display_msg] at [param]."
-			else
-				message = "[display_msg]."
-			playsound(src.loc, use_sound, 50, 0)
-			m_type = 1
-
-
 		if("xkiss")
 			var/M = null
 			if (param)

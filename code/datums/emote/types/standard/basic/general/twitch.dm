@@ -14,5 +14,3 @@
 	bindings = "twitch-violently"
 	feedback_default = "%USER% twitches violently."
 	feedback_saycode_type = SAYCODE_TYPE_VISIBLE
-
-#warn impl
