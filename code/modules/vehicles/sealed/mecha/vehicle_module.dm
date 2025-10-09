@@ -78,7 +78,7 @@
 				listclearnulls(chassis.weapon_equipment)
 			if(equip_type == EQUIP_HEAVY_WEAPON)
 				chassis.heavy_weapon_equipment -= src
-				listclearnulls(chassis.weapon_equipment)
+				listclearnulls(chassis.heavy_weapon_equipment)
 			if(equip_type == EQUIP_UTILITY)
 				chassis.utility_equipment -= src
 				listclearnulls(chassis.utility_equipment)

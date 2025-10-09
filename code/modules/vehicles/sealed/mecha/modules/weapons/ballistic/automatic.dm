@@ -40,7 +40,7 @@
 	desc = "Test."
 	icon_state = "mecha_uac2"
 	equip_cooldown = 50 // 5 seconds
-	projectile = /obj/projectile/bullet/cannon
+	projectile = /obj/projectile/bullet/hag30
 	fire_sound = 'sound/weapons/Gunshot_cannon.ogg'
 	projectiles = 1
 	projectile_energy_cost = 2000
