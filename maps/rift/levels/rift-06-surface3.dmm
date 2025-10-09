@@ -20983,10 +20983,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/general)
-"ixC" = (
-/obj/structure/disposalpipe/junction/flipped,
-/turf/simulated/open/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "iyU" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/borderfloor{
@@ -34505,8 +34501,8 @@ aOi
 aOi
 aOi
 aOi
-ixC
-ixC
+aOi
+aOi
 aOi
 aOi
 aOi
