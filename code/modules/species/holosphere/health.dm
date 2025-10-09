@@ -42,12 +42,13 @@
 	try_revive(H, TRUE)
 
 /datum/species/shapeshifter/holosphere/proc/get_revive_cost()
-	return max_nutrition / 2
+	return max_nutrition / 4
 
 /datum/species/shapeshifter/holosphere/proc/can_revive(mob/living/carbon/human/H, revive_cost)
 	if(H.stat != DEAD)
 		return FALSE
-	if(world.time - last_death_time > hologram_death_duration)
+	var/time_passed = world.time - last_death_time
+	if(time_passed < hologram_death_duration)
 		return FALSE
 	if(H.nutrition < revive_cost)
 		return FALSE

@@ -123,7 +123,7 @@
 
 	var/datum/component/custom_transform/transform_component
 	var/mob/living/simple_mob/holosphere_shell/holosphere_shell
-	var/hologram_death_duration = 2 SECONDS
+	var/hologram_death_duration = 4 SECONDS
 
 	// what gear slots we initialised when spawning in for our chameleon gear, so we dont try override job gear with loadout gear
 	var/list/slots_used = list()
