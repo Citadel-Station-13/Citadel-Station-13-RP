@@ -4,7 +4,7 @@
  */
 
 /mob/proc/emote(var/act, var/type, var/message)
-	SHOULD_NOT_OVERRIDE(TRUE)
+
 	#warn impl
 
 
@@ -13,7 +13,7 @@
 //m_type == 2 --> audible
 /mob/proc/custom_emote(var/m_type=1,var/message = null,var/range=world.view)
 	SHOULD_NOT_OVERRIDE(TRUE)
-	if(stat || !use_me && usr == src)
+	if(stat)
 		to_chat(src, "You are unable to emote.")
 		return
 
@@ -37,11 +37,11 @@
 
 /// Deprecated.
 /mob/proc/visible_emote(var/act_desc)
-	run_custom_emote(act_desc, saycode = SAYCODE_TYPE_VISIBLE)
+	run_custom_emote(act_desc, saycode_type = SAYCODE_TYPE_VISIBLE)
 
 /// Deprecated.
 /mob/proc/audible_emote(var/act_desc)
-	run_custom_emote(act_desc, saycode = SAYCODE_TYPE_AUDIBLE)
+	run_custom_emote(act_desc, saycode_type = SAYCODE_TYPE_AUDIBLE)
 
 /mob/proc/emote_dead(var/message)
 

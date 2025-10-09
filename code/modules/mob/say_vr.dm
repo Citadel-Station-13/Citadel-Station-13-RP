@@ -11,7 +11,7 @@
 	run_subtle_vore(message)
 
 /mob/living/proc/run_subtle_vore(message)
-	if(stat || !use_me && usr == src)
+	if(stat)
 		to_chat(src, "You are unable to emote.")
 		return
 

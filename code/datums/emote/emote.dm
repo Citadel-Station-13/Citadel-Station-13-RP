@@ -24,7 +24,7 @@ GLOBAL_LIST(emote_lookup)
 			GLOB.emote_lookup[binding] = instance
 
 /proc/fetch_emote(key) as /datum/emote
-	return emote_lookup[key]
+	return GLOB.emote_lookup[key]
 
 /**
  * Emotes!
@@ -67,27 +67,36 @@ GLOBAL_LIST(emote_lookup)
 
 //* Checks *//
 
+#warn refactor this shit okay
 /**
  * Paired with /mob/proc/filter_usable_emotes()!
  *
  * @params
  * * actor - actor data
  * * arbitrary - arbitrary processed params
+ * * only_validity - only check if we're even a valid emote, ignore mobility/require/etc
  */
-/datum/emote/proc/can_use(datum/event_args/actor/actor, list/arbitrary, check_mobility)
+/datum/emote/proc/can_use(datum/event_args/actor/actor, list/arbitrary, only_validity)
 	SHOULD_NOT_OVERRIDE(TRUE)
 
 	var/special_check = can_use_special(actor)
 	if(!isnull(special_check))
 		return special_check
 
-	if(check_mobility && !(actor.performer.mobility_flags & required_mobility_flags))
+	if(!only_validity && !can_potentially_use())
+	if(only_validity && !((actor.performer.mobility_flags & required_mobility_flags) == required_mobility_flags))
 		return FALSE
 	if(!(actor.performer.get_usable_emote_class() & emote_class))
 		return FALSE
-	if(!(actor.performer.get_usable_emote_require() & emote_require))
+	if(only_validity && !((actor.performer.get_usable_emote_require() & emote_require) == emote_require))
 		return FALSE
 	return TRUE
+
+/datum/emote/proc/can_potentially_use(datum/event_args/actor/actor, use_classes, use_requires)
+	if(isnull(use_classes))
+	if(isnull(use_requires))
+	#warn impl
+
 
 /**
  * @params
@@ -112,10 +121,38 @@ GLOBAL_LIST(emote_lookup)
 
 /**
  * Standard parameter tokenization. Allows double-quoting, single-quoting, and just space-ing
- * @return list
+ * @return list, or null on fail
  */
 /datum/emote/proc/tokenize_parameters(parameter_string)
-	#warn impl
+	// incase they try something fishy
+	// notice the length(); curse of RA can be a problem.
+	if(length(parameter_string) >= MAX_MESSAGE_LEN)
+		return null
+	var/len = length_char(parameter_string)
+	var/pos = 0
+	var/in_space = TRUE
+	var/active_border
+	var/active_border_pos = 1
+
+	. = list()
+	#warn leetcode didn't prepare me for this
+	for(var/char in parameter_string)
+		++pos
+
+		var/is_border = FALSE
+		switch(char)
+			if("\"", "'")
+				if(!active_border)
+					is_border = TRUE
+				else if(char == active_border)
+					is_border = TRUE
+			// no unicode spaces too bad
+			if(" ")
+
+		if(is_border)
+			if(active_border)
+				. +=
+			else
 
 /**
  * Blocking proc.

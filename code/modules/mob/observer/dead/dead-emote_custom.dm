@@ -1,6 +1,8 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+#warn handle this
+
 /mob/observer/dead/saycode_view_query(range, global_observers, exclude_observers)
 	. = ..()
 
@@ -9,7 +11,6 @@
 	. = SPAN_DEADSAY(.)
 
 /mob/observer/dead/emit_custom_emote(raw_html, subtle, anti_ghost, saycode_type, with_overhead)
-	SHOULD_NOT_SLEEP(TRUE)
 	var/raw_html
 
 	var/list/atom/movable/heard = saycode_view_query(subtle ? 1 : GLOB.game_view_radius, TRUE, anti_ghost)

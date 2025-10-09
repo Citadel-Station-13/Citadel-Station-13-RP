@@ -2,6 +2,7 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/emote/standard/basic/general
+	emote_require = EMOTE_REQUIRE_BODY
 
 #warn impl
 

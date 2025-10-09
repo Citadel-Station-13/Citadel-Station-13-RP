@@ -58,22 +58,6 @@
 	/// current datum that's entirely intercepting our movements. only can have one - this is usually used with perspective.
 	var/datum/movement_intercept
 
-	//* Buckling *//
-	/// Atom we're buckled to
-	var/atom/movable/buckled
-	/// Atom we're buckl**ing** to. Used to stop stuff like lava from incinerating those who are mid buckle.
-	//  todo: can this be put in an existing bitfield somewhere else?
-	var/atom/movable/buckling
-
-	//* Emotes *//
-	/// our default emote classes
-	var/emote_class = EMOTE_CLASS_DEFAULT
-
-	//* HUD (Atom)
-	//* HUD (Atom) *//
-	/// HUDs to initialize, typepaths
-	var/list/atom_huds_to_initialize
-
 	//* HUD *//
 	/// active, opened storage
 	//  todo: doesn't clear from clients properly on logout, relies on login clearing screne.

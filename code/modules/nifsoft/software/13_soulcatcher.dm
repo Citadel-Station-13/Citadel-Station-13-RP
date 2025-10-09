@@ -346,7 +346,6 @@
 /mob/living/carbon/brain/caught_soul
 	name = "recorded mind"
 	desc = "A mind recorded and being played on digital hardware."
-	use_me = 1
 	var/ext_deaf = FALSE		//Forbidden from 'ear' access on host
 	var/ext_blind = FALSE		//Forbidden from 'eye' access on host
 	var/parent_mob = FALSE		//If we've captured our owner
@@ -494,10 +493,8 @@
 	else
 		return FALSE
 
-/mob/living/carbon/brain/caught_soul/custom_emote(var/m_type, var/message)
-	if(silent)
-		return FALSE
-	soulcatcher.emote_into(message,src,eyeobj)
+/mob/living/carbon/brain/caught_soul/run_custom_emote(emote_text, subtle, anti_ghost, saycode_type, datum/event_args/actor/actor, with_overhead)
+	soulcatcher.emote_into(emote_text, src, eyeobj)
 
 /mob/living/carbon/brain/caught_soul/resist()
 	set name = "Resist"

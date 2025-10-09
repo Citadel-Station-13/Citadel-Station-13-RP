@@ -65,7 +65,6 @@
 		. = ..(blocked, forced)
 	else
 		. = ..(MOBILITY_FLAGS_REAL, forced)
-	use_me = !!(. & MOBILITY_IS_CONSCIOUS)
 
 /mob/living/carbon/brain/isSynthetic()
 	return istype(loc, /obj/item/mmi)
