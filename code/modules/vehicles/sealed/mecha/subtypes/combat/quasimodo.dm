@@ -26,3 +26,4 @@
 	max_utility_equip = 5
 	max_universal_equip = 5
 	max_special_equip = 2
+	max_heavy_weapon_equip = 1
