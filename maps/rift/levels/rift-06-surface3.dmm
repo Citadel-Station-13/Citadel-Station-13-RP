@@ -6146,6 +6146,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/map_helper/access_helper/airlock/station/head_office/captain,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/captain)
 "atv" = (
@@ -25508,7 +25509,6 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/red,
 /turf/simulated/floor/carpet,
 /area/bridge/bridge_hallway)
 "qQk" = (
