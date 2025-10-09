@@ -38,7 +38,11 @@
 
 //* emote arbitrary key-value store key's *//
 
-/// the original parameter string passed in
+/// the original parameter string passed in.
 #define EMOTE_PARAMETER_KEY_ORIGINAL "original"
+/// the target. hard reference. don't hold onto it for too long.
 #define EMOTE_PARAMETER_KEY_TARGET "target"
-#define EMOTE_PARAMETER_KEY_CUSTOM "custom"
+/// the custom string.
+#define EMOTE_PARAMETER_KEY_CUSTOM_STRING "custom-string"
+/// the custom string, tokenized.
+#define EMOTE_PARAMETER_KEY_CUSTOM_TOKENS "custom-tokens"

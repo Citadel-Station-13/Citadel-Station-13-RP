@@ -64,7 +64,7 @@
 	for(var/atom/movable/hearing in heard)
 		if(ismob(hearing))
 			var/mob/hearing_mob = hearing
-			SEND_SIGNAL(hearing_mob, COMSIG_MOB_ON_RECEIVE_CUSTOM_EMOTE, raw_html, subtle, anti_ghost, saycode_type)
+			SEND_SIGNAL(hearing_mob, COMSIG_MOB_ON_RECEIVE_CUSTOM_EMOTE, src, raw_html, subtle, anti_ghost, saycode_type)
 			hearing_mob.show_message(raw_html, saycode_type)
 
 		else if(isobj(hearing))
