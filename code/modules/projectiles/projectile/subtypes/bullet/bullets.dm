@@ -282,7 +282,7 @@
 	damage_tier = 6
 
 /obj/projectile/bullet/hag30
-	name ="160mm shell"
+	name ="155mm shell"
 	icon = 'icons/obj/projectiles.dmi'
 	icon_state = "big_shell"
 	damage_force = 300 // This thing is meant to hit like a truck, it's an anti tank/building weapon. Gun can only be used on massive mechs.
