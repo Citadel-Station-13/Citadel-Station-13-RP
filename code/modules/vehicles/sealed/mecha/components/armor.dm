@@ -251,7 +251,7 @@
 
 	minimum_penetration = 10
 
-	required_type = list(/obj/vehicle/sealed/mecha/combat/quasimodo)
+	//required_type = list(/obj/vehicle/sealed/mecha/combat/quasimodo) doesn't work for some reason.
 
 	damage_absorption = list(
 		"brute"=0.50,
@@ -261,3 +261,4 @@
 		"energy"=0.85,
 		"bomb"=0.6
 		)
+
