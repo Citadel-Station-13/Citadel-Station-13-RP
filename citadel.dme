@@ -1233,6 +1233,7 @@
 #include "code\game\content\factions\derelict\derelict.dm\derelict_horrors.dm"
 #include "code\game\content\factions\derelict\derelict.dm\derelict_props.dm"
 #include "code\game\content\factions\derelict\derelict.dm\derelict_structures.dm"
+#include "code\game\content\factions\derelict\derelict.dm\overmap.dm"
 #include "code\game\content\factions\eldritch\Introduction.dm"
 #include "code\game\content\factions\eldritch\eldritch.dm\clothing.dm"
 #include "code\game\content\factions\eldritch\eldritch.dm\lore.dm"
