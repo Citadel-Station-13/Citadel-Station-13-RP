@@ -3,7 +3,7 @@
  * @license MIT
  */
 
-import { Box, Button, Dropdown, Flex, Input, NumberInput, Section, Stack, Tabs } from "tgui-core/components";
+import { Box, Button, Dropdown, Input, NumberInput, Section, Stack, Tabs } from "tgui-core/components";
 import { BooleanLike } from "tgui-core/react";
 
 import { useBackend, useLocalState } from "../../backend";
@@ -70,7 +70,7 @@ export const LoadMapSector = (props) => {
   const [currentTab, setCurrentTab] = useLocalState<string>('currentTab', 'map');
 
   return (
-    <Window width={700} height={800} title="Upload Map Sector">
+    <Window width={550} height={500} title="Upload Map Sector">
       <Window.Content>
         <Stack fill>
           <Stack.Item>
@@ -99,9 +99,10 @@ export const LoadMapSector = (props) => {
                 ))}
                 <Stack.Item grow={1} />
                 <Stack.Item>
-                  <Button.Confirm content="Add Level" icon="plus"
+                  <Button.Confirm icon="plus" confirmIcon="plus"
                     color="transparent"
-                    fluid onClick={() => act('newLevel')} />
+                    fluid onClick={() => act('newLevel')}>Add Level
+                  </Button.Confirm>
                 </Stack.Item>
               </Stack>
             </Section>
@@ -218,47 +219,52 @@ const MapLevelProperties = (props: {
     <VSplitTooltipList leftSideWidthPercent={25}>
       <VSplitTooltipList.Entry label="DMM" tooltip="The map file to load. If there is none, the level will be an empty plane.">
         <Stack>
-          <Stack.Item>
+          <Stack.Item grow={1}>
             <Box textAlign="center">
-              {levelData.fileName?.length === 0 ? "----------" : levelData.fileName}
+              {levelData.fileName?.length === 0 ? "--- empty ---" : levelData.fileName}
             </Box>
           </Stack.Item>
           <Stack.Item>
             <Button icon="upload" onClick={() => levelAct('levelDmmUpload')} />
           </Stack.Item>
           <Stack.Item>
-            <Button.Confirm confirmContent="" confirmColor="red" icon="trash" color="transparent" onClick={() => levelAct('levelDmmClear')} />
+            <Button.Confirm confirmContent="" confirmColor="red" icon="trash" color={levelData.fileName?.length ? null : "transparent"} onClick={() => levelAct('levelDmmClear')} />
           </Stack.Item>
         </Stack>
       </VSplitTooltipList.Entry>
       <VSplitTooltipList.Entry
         label="Position"
         tooltip="The position on the map's structure. Adjacent levels will automatically join their edges (as well as up/down).">
-        <Flex width="100%">
-          <Flex.Item>
-            X: <NumberInput value={levelData.structX || ""} minValue={-1000} maxValue={1000} step={1} onChange={(val) => levelAct('levelStructX', { val: val })} />
-          </Flex.Item>
-          <Flex.Item>
-            Y: <NumberInput value={levelData.structY|| ""} minValue={-1000} maxValue={1000} step={1} onChange={(val) => levelAct('levelStructY', { val: val })} />
-          </Flex.Item>
-          <Flex.Item>
-            Z: <NumberInput value={levelData.structZ|| ""} minValue={-1000} maxValue={1000} step={1} onChange={(val) => levelAct('levelStructZ', { val: val })} />
-          </Flex.Item>
-        </Flex>
+        <Stack width="100%">
+          <Stack.Item>
+            X: <NumberInput value={levelData.structX || 0} minValue={-1000} maxValue={1000} step={1} onChange={(val) => levelAct('levelStructX', { val: val })} />
+          </Stack.Item>
+          <Stack.Item>
+            Y: <NumberInput value={levelData.structY || 0} minValue={-1000} maxValue={1000} step={1} onChange={(val) => levelAct('levelStructY', { val: val })} />
+          </Stack.Item>
+          <Stack.Item>
+            Z: <NumberInput value={levelData.structZ || 0} minValue={-1000} maxValue={1000} step={1} onChange={(val) => levelAct('levelStructZ', { val: val })} />
+          </Stack.Item>
+        </Stack>
       </VSplitTooltipList.Entry>
-      <VSplitTooltipList.Entry label="Name">
+      <VSplitTooltipList.Entry label="Name"
+        tooltip="Internal name used by admin panels and debug tooling.">
         <Input onChange={(val) => levelAct('levelName', { setTo: val })} width="100%" value={levelData.name} />
       </VSplitTooltipList.Entry>
-      <VSplitTooltipList.Entry label="ID">
+      <VSplitTooltipList.Entry label="ID"
+        tooltip="Internal name used by the code for linkage. This must be unique.">
         <Input onChange={(val) => levelAct('levelId', { setTo: val })} width="100%" value={levelData.id} />
       </VSplitTooltipList.Entry>
-      <VSplitTooltipList.Entry label="Display Name (IC)">
+      <VSplitTooltipList.Entry label="Display Name (IC)"
+        tooltip="Long name used for GPS, suit sensors, and other IC systems.">
         <Input onChange={(val) => levelAct('levelDisplayName', { setTo: val })} width="100%" value={levelData.displayName} />
       </VSplitTooltipList.Entry>
-      <VSplitTooltipList.Entry label="Display ID (IC)">
+      <VSplitTooltipList.Entry label="Display ID (IC)"
+        tooltip="Short identifier used for GPS, suit sensors, and other IC systems. This must be unique.">
         <Input onChange={(val) => levelAct('levelDisplayId', { setTo: val })} width="100%" value={levelData.displayId} />
       </VSplitTooltipList.Entry>
-      <VSplitTooltipList.Entry label="Base Turf">
+      <VSplitTooltipList.Entry label="Base Turf"
+        tooltip="The base turf of the level.">
         <WorldTypepathDropdown
           selectedPath={levelData.baseTurf}
           onSelectPath={(path) => levelAct('levelBaseTurf', { type: path })}
@@ -269,7 +275,8 @@ const MapLevelProperties = (props: {
             },
           }} />
       </VSplitTooltipList.Entry>
-      <VSplitTooltipList.Entry label="Base Area">
+      <VSplitTooltipList.Entry label="Base Area"
+        tooltip="The base area of the level.">
         <WorldTypepathDropdown
           selectedPath={levelData.baseTurf}
           onSelectPath={(path) => levelAct('levelBaseArea', { type: path })}
@@ -280,7 +287,7 @@ const MapLevelProperties = (props: {
             },
           }} />
       </VSplitTooltipList.Entry>
-      <VSplitTooltipList.Entry label="Air - Indoors">
+      <VSplitTooltipList.Entry label="Air - Indoors" tooltip="The default gas string to use for indoors air.">
         <Stack>
           <Stack.Item>
             <Input onChange={(val) => levelAct('levelAirIndoors', { air: val })}
@@ -288,14 +295,16 @@ const MapLevelProperties = (props: {
               value={levelData.airIndoors} />
           </Stack.Item>
           <Stack.Item>
-            <Button icon="earth-americas" onClick={() => levelAct('levelAirIndoors', { air: data.const_airHabitable })} />
+            <Button icon="earth-americas" onClick={() => levelAct('levelAirIndoors', { air: data.const_airHabitable })}
+              tooltip="Set to standard station air." />
           </Stack.Item>
           <Stack.Item>
-            <Button icon="minus" onClick={() => levelAct('levelAirIndoors', { air: data.const_airVacuum })} />
+            <Button icon="minus" onClick={() => levelAct('levelAirIndoors', { air: data.const_airVacuum })}
+              tooltip="Set to vacuum." />
           </Stack.Item>
         </Stack>
       </VSplitTooltipList.Entry>
-      <VSplitTooltipList.Entry label="Air - Outdoors">
+      <VSplitTooltipList.Entry label="Air - Outdoors" tooltip="The default gas string to use for outdoors air.">
         <Stack>
           <Stack.Item>
             <Input onChange={(val) => levelAct('levelAirOutdoors', { air: val })}
@@ -303,15 +312,17 @@ const MapLevelProperties = (props: {
               value={levelData.airOutdoors} />
           </Stack.Item>
           <Stack.Item>
-            <Button icon="earth-americas" onClick={() => levelAct('levelAirOutdoors', { air: data.const_airHabitable })} />
+            <Button icon="earth-americas" onClick={() => levelAct('levelAirOutdoors', { air: data.const_airHabitable })}
+              tooltip="Set to standard station air." />
           </Stack.Item>
           <Stack.Item>
-            <Button icon="minus" onClick={() => levelAct('levelAirOutdoors', { air: data.const_airVacuum })} />
+            <Button icon="minus" onClick={() => levelAct('levelAirOutdoors', { air: data.const_airVacuum })}
+              tooltip="Set to vacuum." />
           </Stack.Item>
         </Stack>
       </VSplitTooltipList.Entry>
       <VSplitTooltipList.Entry label="Ceiling Height">
-        <NumberInput value={levelData.ceilingHeight || ""} minValue={1} maxValue={100000} step={1} onChange={(val) => { levelAct('levelCeilingHeight', { height: val }); }} width="100%" />
+        <NumberInput value={levelData.ceilingHeight || 5} minValue={1} maxValue={100000} step={1} onChange={(val) => { levelAct('levelCeilingHeight', { height: val }); }} width="100%" />
       </VSplitTooltipList.Entry>
     </VSplitTooltipList>
   );
@@ -365,7 +376,8 @@ const MapLevelTraits = (props: {
                         <Button icon="question" tooltip={maybeTraitDesc} />
                       </Stack.Item>
                       <Stack.Item>
-                        <Button icon="minus" onClick={() => levelAct('levelDelTrait', { trait: traitId })} />
+                        <Button.Confirm icon="minus" confirmIcon="minus" confirmContent={null}
+                          onClick={() => levelAct('levelDelTrait', { trait: traitId })} />
                       </Stack.Item>
                     </Stack>
                   </Stack.Item>
@@ -448,7 +460,8 @@ const MapLevelAttributes = (props: {
                         <Button icon="question" tooltip={maybeAttribute?.desc || "Unknown attribute. Was this removed from the game?"} />
                       </Stack.Item>
                       <Stack.Item>
-                        <Button icon="minus" onClick={() => levelAct('levelDelAttribute', { attribute: attributeId })} />
+                        <Button.Confirm icon="minus" confirmIcon="minus" confirmContent={null}
+                          onClick={() => levelAct('levelDelAttribute', { attribute: attributeId })} />
                       </Stack.Item>
                     </Stack>
                   </Stack.Item>

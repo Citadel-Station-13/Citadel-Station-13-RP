@@ -218,11 +218,11 @@
 			update_ui_level_index_data(target_level_index)
 			. = TRUE
 		if("levelStructY")
-			target_level.struct_x = params["val"]
+			target_level.struct_y = params["val"]
 			update_ui_level_index_data(target_level_index)
 			. = TRUE
 		if("levelStructZ")
-			target_level.struct_x = params["val"]
+			target_level.struct_z = params["val"]
 			update_ui_level_index_data(target_level_index)
 			. = TRUE
 		if("levelAirIndoors")
