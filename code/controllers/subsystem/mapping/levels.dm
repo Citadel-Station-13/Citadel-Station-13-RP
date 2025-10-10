@@ -440,17 +440,17 @@
 		var/datum/map_level/last = null
 		var/list/stack = list()
 		var/list/levels_in_stack = list()
-		var/incontinuity_found = FALSE
+		var/discontinuity_found = FALSE
 		do
 			if(last && last != iterating.level_in_dir(DOWN))
-				incontinuity_found = TRUE
+				discontinuity_found = TRUE
 			stack += iterating.z_index
 			levels_in_stack += iterating.z_index
 			last = iterating
 			iterating = ordered_levels[cached_level_up[iterating.z_index]]
 		while(iterating)
-		if(incontinuity_found)
-			stack_trace("z-levels [english_list(levels_in_stack)] had at least one incontinuity where going down isn't the same as going up. \
+		if(discontinuity_found)
+			stack_trace("z-levels [english_list(levels_in_stack)] had at least one discontinuity where going down isn't the same as going up. \
 			non-euclidean verticality is not supported.")
 			stack = list()
 		for(var/z in levels_in_stack)
