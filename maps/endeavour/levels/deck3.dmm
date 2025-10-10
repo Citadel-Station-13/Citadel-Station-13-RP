@@ -1519,6 +1519,27 @@
 /obj/machinery/vending/fitness,
 /turf/simulated/floor/tiled/dark,
 /area/vacant/vacant_shop)
+"bae" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/computer/guestpass{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/hallway)
 "bax" = (
 /obj/structure/cable/green{
 	icon_state = "0-2"
@@ -3764,27 +3785,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
-"cQg" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/red/border{
-	dir = 1
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/computer/guestpass{
-	pixel_y = 32
-	},
-/turf/simulated/floor/tiled/dark,
-/area/security/hallway)
 "cQm" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -7656,6 +7656,13 @@
 /obj/structure/lattice,
 /turf/space/basic,
 /area/space)
+"fDA" = (
+/obj/effect/floor_decal/industrial/outline{
+	color = "#D6DBDB"
+	},
+/obj/structure/cargotransitcrate/nt,
+/turf/simulated/floor/tiled/monodark,
+/area/quartermaster/warehouse)
 "fEj" = (
 /obj/effect/floor_decal/corner/blue{
 	dir = 9
@@ -20860,6 +20867,18 @@
 /obj/random/trash_pile,
 /turf/simulated/floor,
 /area/maintenance/dormitory)
+"pGZ" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/quartermaster/foyer)
 "pHf" = (
 /obj/map_helper/access_helper/airlock/station/engineering/department,
 /obj/machinery/door/airlock/maintenance/engi{
@@ -28280,18 +28299,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/belterdock)
-"vdT" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 8
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/quartermaster/foyer)
 "vdU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -48690,9 +48697,9 @@ vjg
 pRW
 noy
 lea
-uUl
-uUl
-uUl
+fDA
+fDA
+fDA
 pmo
 pmo
 pmo
@@ -48884,9 +48891,9 @@ vjg
 pRW
 noy
 mJv
-uUl
-uUl
-uUl
+fDA
+fDA
+fDA
 pmo
 pmo
 pmo
@@ -48937,7 +48944,7 @@ shz
 aWP
 rhE
 lQJ
-cQg
+bae
 uXL
 fjl
 xWQ
@@ -49489,7 +49496,7 @@ cmE
 cPy
 jdF
 wKr
-vdT
+pGZ
 uZE
 lUH
 bBV
