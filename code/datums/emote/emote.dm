@@ -32,6 +32,8 @@ GLOBAL_LIST(emote_lookup)
  * * Custom /me emotes are not part of this. They're way too weird / expressive.
  */
 /datum/emote
+	abstract_type = /datum/emote
+
 	/// emote name
 	var/name = "Unnamed Emote (Yell at Coders)"
 	/// emote desc, if any

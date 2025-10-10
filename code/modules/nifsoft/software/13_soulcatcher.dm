@@ -493,8 +493,11 @@
 	else
 		return FALSE
 
-/mob/living/carbon/brain/caught_soul/run_custom_emote(emote_text, subtle, anti_ghost, saycode_type, datum/event_args/actor/actor, with_overhead)
-	soulcatcher.emote_into(emote_text, src, eyeobj)
+/mob/living/carbon/brain/caught_soul/emit_custom_emote(raw_html, subtle, anti_ghost, saycode_type, with_overhead)
+	if(subtle || anti_ghost)
+		to_chat(src, SPAN_BOLDANNOUNCE("Your [SPAN_TOOLTIP(raw_html, "message")] was not sent. Soulcatchers do not currently support subtle or subtler-anti-ghost."))
+		return
+	soulcatcher.emote_into(raw_html, src, eyeobj)
 
 /mob/living/carbon/brain/caught_soul/resist()
 	set name = "Resist"

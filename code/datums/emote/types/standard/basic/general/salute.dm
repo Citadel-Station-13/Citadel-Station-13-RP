@@ -10,5 +10,3 @@
 	target_allowed = TRUE
 	feedback_default = "%USER% salutes."
 	feedback_default_targeted = "%USER% salutes to %TARGET%."
-
-#warn impl

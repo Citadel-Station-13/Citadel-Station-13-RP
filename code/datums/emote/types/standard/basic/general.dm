@@ -2,9 +2,8 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/emote/standard/basic/general
+	abstract_type = /datum/emote/standard/basic/general
 	emote_require = EMOTE_REQUIRE_BODY
-
-#warn impl
 
 // todo: check has eyes
 /datum/emote/standard/basic/general/blink

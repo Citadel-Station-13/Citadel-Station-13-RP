@@ -12,23 +12,7 @@
 		act = copytext(act,1,length(act))
 	var/muzzled = is_muzzled()
 
-	#warn purge
 	switch(act)
-		if ("me")
-			if(silent)
-				return
-			if (src.client)
-				if (client.prefs.muted & MUTE_IC)
-					to_chat(src, "<font color='red'>You cannot send IC messages (muted).</font>")
-					return
-			if (stat)
-				return
-			if(!(message))
-				return
-			return custom_emote(m_type, message)
-
-		if ("custom")
-			return custom_emote(m_type, message)
 		if("sign")
 			if (!src.restrained())
 				message = "<B>The alien</B> signs[(text2num(param) ? " the number [text2num(param)]" : null)]."
@@ -73,9 +57,6 @@
 		if("nod")
 			message = "<B>The [src.name]</B> nods its head."
 			m_type = 1
-//		if("sit")
-//			message = "<B>The [src.name]</B> sits down." //Larvan can't sit down, /N
-//			m_type = 1
 		if("sway")
 			message = "<B>The [src.name]</B> sways around dizzily."
 			m_type = 1
@@ -131,4 +112,3 @@
 			for(var/mob/O in hearers(src, null))
 				O.show_message(message, m_type)
 				//Foreach goto(746)
-	return
