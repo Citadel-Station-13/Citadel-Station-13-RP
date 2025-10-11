@@ -1,6 +1,11 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
+/**
+ * Pinging GMs, the verb. See 'gm_pings.dm' for more in admin panels folder.
+ * * This is a mob and not a client verb to discourage using it from the lobby.
+ *   This is not an adminhelp feature.
+ */
 // TODO: DECLARE_MOB_VERB
 /mob/verb/ping_gms(atom/target as null|obj|mob|turf in world)
 	set name = "Ping GMs"
@@ -9,7 +14,18 @@
 	This can be you doing something to an event entity, a prayer from your character, \
 	and more. This however, should not be for OOC admin ticketing."
 
-	#warn verb cooldown
+	if(TIMER_COOLDOWN_CHECK(src, TIMER_CD_INDEX_MOB_VERB_PING_GMS))
+		to_chat(src, SPAN_BOLDANNOUNCE("<center>-- GM ping is on cooldown. Slow down. --"))
+		return
+
+	if(!isloc(loc))
+		TIMER_COOLDOWN_START(src, TIMER_CD_INDEX_MOB_VERB_PING_GMS, 4 SECONDS)
+		tgui_alert_async(
+			src,
+			"You cannot use GM pings from your current location. If you are stuck and on a black screen, admin help.",
+			"GM Ping Rejected",
+		)
+		return
 
 	var/minimum_length = 16
 	var/input_data = tgui_input_text(
@@ -30,7 +46,7 @@
 		to_chat(src, SPAN_BOLDANNOUNCE("<center>-- GM ping rejected: Your message was too short. --"))
 		return
 
-	#warn apply verb cooldown
+	TIMER_COOLDOWN_START(src, TIMER_CD_INDEX_MOB_VERB_PING_GMS, 5 SECONDS)
 
 	var/message_to_admins = input_data
 

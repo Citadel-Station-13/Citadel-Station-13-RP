@@ -10,7 +10,7 @@
 	/// * admin panels are stateful, unlike modals, and aren't deleted
 	///   when they are closed.
 	/// * this means you can brick them so devs don't fuck up!!
-	var/alist/datum/admin_panel/admin_panels
+	var/list/datum/admin_panel/admin_panels
 
 	/// owning ckey
 	var/ckey

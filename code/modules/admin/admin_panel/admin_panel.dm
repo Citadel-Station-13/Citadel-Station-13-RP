@@ -28,7 +28,6 @@ VV_PROTECT_READONLY(/datum/admin_panel)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "admin_panel/[tgui_interface]")
-		ui.set_autoupdate(tgui_update)
 		ui.open()
 
 /datum/admin_panel/ui_state()
