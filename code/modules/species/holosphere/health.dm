@@ -1,5 +1,6 @@
 /datum/species/shapeshifter/holosphere/handle_death(var/mob/living/carbon/human/H, gibbed)
 	last_death_time = world.time
+
 	if(gibbed)
 		QDEL_NULL(holosphere_shell)
 		return
@@ -41,12 +42,13 @@
 	try_revive(H, TRUE)
 
 /datum/species/shapeshifter/holosphere/proc/get_revive_cost()
-	return total_health * heal_rate * heal_nutrition_multiplier
+	return max_nutrition / 4
 
 /datum/species/shapeshifter/holosphere/proc/can_revive(mob/living/carbon/human/H, revive_cost)
 	if(H.stat != DEAD)
 		return FALSE
-	if(world.time - last_death_time < hologram_death_duration)
+	var/time_passed = world.time - last_death_time
+	if(time_passed < hologram_death_duration)
 		return FALSE
 	if(H.nutrition < revive_cost)
 		return FALSE
@@ -55,11 +57,7 @@
 /datum/species/shapeshifter/holosphere/proc/try_revive(mob/living/carbon/human/H, silent_failure = FALSE)
 	var/revive_cost = get_revive_cost()
 	if(can_revive(H, revive_cost))
-		// kick them out of a recharge station if they're in one
-		var/obj/machinery/recharge_station/R = holosphere_shell.loc
-		if(istype(R))
-			R.go_out()
-			H.nutrition -= revive_cost
+		H.nutrition -= revive_cost
 		try_untransform(force = TRUE)
 		H.revive(full_heal = TRUE, restore_nutrition = FALSE)
 		var/regenmsg = "<span class='userdanger'>Emitters have returned online. Systems functional.</span>"

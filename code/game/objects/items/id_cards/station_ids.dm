@@ -31,7 +31,7 @@
 	var/primary_color = rgb(0,0,0) // Obtained by eyedroppering the stripe in the middle of the card
 	var/secondary_color = rgb(0,0,0) // Likewise for the oval in the top-left corner
 
-	var/datum/role/job/job_access_type = /datum/role/job/station/assistant    // Job type to acquire access rights from, if any
+	var/datum/prototype/role/job/job_access_type = /datum/prototype/role/job/station/assistant    // Job type to acquire access rights from, if any
 
 	//alt titles are handled a bit weirdly in order to unobtrusively integrate into existing ID system
 	var/assignment = null	//can be alt title or the actual job
@@ -45,13 +45,13 @@
 
 /obj/item/card/id/Initialize(mapload)
 	. = ..()
-	var/datum/role/job/getting_from
+	var/datum/prototype/role/job/getting_from
 	if(ispath(job_access_type))
-		job_access_type = SSjob.job_by_type(job_access_type)
+		job_access_type = RSroles.legacy_job_by_type(job_access_type)
 	if(istype(job_access_type))
 		getting_from = job_access_type
 	else
-		getting_from = SSjob.get_job(rank)
+		getting_from = RSroles.legacy_job_by_title(rank)
 	if(!isnull(getting_from))
 		access = getting_from.get_access()
 		job_access_type = getting_from
@@ -252,20 +252,20 @@
 	name = "secretary ID"
 	assignment = "Command Secretary"
 	rank = "Command Secretary"
-	job_access_type = /datum/role/job/station/command_secretary
+	job_access_type = /datum/prototype/role/job/station/command_secretary
 
 /obj/item/card/id/silver/hop
 	name = "\improper HoP ID"
 	assignment = "Head of Personnel"
 	rank = "Head of Personnel"
 	desc = "A card which represents the balance between those that serve and those that are served."
-	job_access_type = /datum/role/job/station/head_of_personnel
+	job_access_type = /datum/prototype/role/job/station/head_of_personnel
 
 /obj/item/card/id/silver/blueshield
 	name = "\improper Blueshield ID"
 	assignment = "Blueshield"
 	rank = "Blueshield"
-	job_access_type = /datum/role/job/station/blueshield
+	job_access_type = /datum/prototype/role/job/station/blueshield
 
 /obj/item/card/id/gold
 	name = "gold identification card"
@@ -278,14 +278,14 @@
 	name = "\improper Captain's ID"
 	assignment = "Captain"
 	rank = "Captain"
-	job_access_type = /datum/role/job/station/captain
+	job_access_type = /datum/prototype/role/job/station/captain
 
 /obj/item/card/id/gold/captain/spare
 	name = "\improper Captain's Spare ID"
 	desc = "The spare ID of the High Lord himself."
 	registered_name = "Captain"
 	icon_state = "gold-id-alternate"
-	job_access_type = /datum/role/job/station/captain
+	job_access_type = /datum/prototype/role/job/station/captain
 
 /obj/item/card/id/synthetic
 	name = "\improper Synthetic ID"
@@ -349,31 +349,31 @@
 	name = "doctor ID"
 	assignment = "Medical Doctor"
 	rank = "Medical Doctor"
-	job_access_type = /datum/role/job/station/doctor
+	job_access_type = /datum/prototype/role/job/station/doctor
 
 /obj/item/card/id/medical/chemist
 	name = "chemist ID"
 	assignment = "Chemist"
 	rank = "Chemist"
-	job_access_type = /datum/role/job/station/chemist
+	job_access_type = /datum/prototype/role/job/station/chemist
 
 /obj/item/card/id/medical/geneticist
 	name = "geneticist ID"
 	assignment = "Geneticist"
 	rank = "Geneticist"
-	job_access_type = /datum/role/job/station/doctor	//geneticist
+	job_access_type = /datum/prototype/role/job/station/doctor	//geneticist
 
 /obj/item/card/id/medical/psychiatrist
 	name = "psychiatrist ID"
 	assignment = "Psychiatrist"
 	rank = "Psychiatrist"
-	job_access_type = /datum/role/job/station/psychiatrist
+	job_access_type = /datum/prototype/role/job/station/psychiatrist
 
 /obj/item/card/id/medical/paramedic
 	name = "paramedic ID"
 	assignment = "Paramedic"
 	rank = "Paramedic"
-	job_access_type = /datum/role/job/station/paramedic
+	job_access_type = /datum/prototype/role/job/station/paramedic
 
 /obj/item/card/id/medical/head
 	name = "\improper CMO ID"
@@ -382,7 +382,7 @@
 	secondary_color = rgb(255,223,127)
 	assignment = "Chief Medical Officer"
 	rank = "Chief Medical Officer"
-	job_access_type = /datum/role/job/station/chief_medical_officer
+	job_access_type = /datum/prototype/role/job/station/chief_medical_officer
 
 /obj/item/card/id/security
 	name = "security identification card"
@@ -395,19 +395,19 @@
 	name = "officer ID"
 	assignment = "Security Officer"
 	rank = "Security Officer"
-	job_access_type = /datum/role/job/station/officer
+	job_access_type = /datum/prototype/role/job/station/officer
 
 /obj/item/card/id/security/detective
 	name = "detective ID"
 	assignment = "Detective"
 	rank = "Detective"
-	job_access_type = /datum/role/job/station/detective
+	job_access_type = /datum/prototype/role/job/station/detective
 
 /obj/item/card/id/security/warden
 	name = "warden ID"
 	assignment = "Warden"
 	rank = "Warden"
-	job_access_type = /datum/role/job/station/warden
+	job_access_type = /datum/prototype/role/job/station/warden
 
 /obj/item/card/id/security/head
 	name = "\improper HoS ID"
@@ -416,7 +416,7 @@
 	secondary_color = rgb(255,223,127)
 	assignment = "Head of Security"
 	rank = "Head of Security"
-	job_access_type = /datum/role/job/station/head_of_security
+	job_access_type = /datum/prototype/role/job/station/head_of_security
 
 
 /obj/item/card/id/prisoner
@@ -480,13 +480,13 @@
 	name = "engineer ID"
 	assignment = "Station Engineer"
 	rank = "Station Engineer"
-	job_access_type = /datum/role/job/station/engineer
+	job_access_type = /datum/prototype/role/job/station/engineer
 
 /obj/item/card/id/engineering/atmos
 	name = "atmospherics ID"
 	assignment = "Atmospheric Technician"
 	rank = "Atmospheric Technician"
-	job_access_type = /datum/role/job/station/atmos
+	job_access_type = /datum/prototype/role/job/station/atmos
 
 /obj/item/card/id/engineering/head
 	name = "\improper CE ID"
@@ -495,7 +495,7 @@
 	secondary_color = rgb(255,223,127)
 	assignment = "Chief Engineer"
 	rank = "Chief Engineer"
-	job_access_type = /datum/role/job/station/chief_engineer
+	job_access_type = /datum/prototype/role/job/station/chief_engineer
 
 /obj/item/card/id/science
 	name = "science identification card"
@@ -508,19 +508,19 @@
 	name = "scientist ID"
 	assignment = "Scientist"
 	rank = "Scientist"
-	job_access_type = /datum/role/job/station/scientist
+	job_access_type = /datum/prototype/role/job/station/scientist
 
 /obj/item/card/id/science/xenobiologist
 	name = "xenobiologist ID"
 	assignment = "Xenobiologist"
 	rank = "Xenobiologist"
-	job_access_type = /datum/role/job/station/scientist // /datum/role/job/station/xenobiologist
+	job_access_type = /datum/prototype/role/job/station/scientist // /datum/prototype/role/job/station/xenobiologist
 
 /obj/item/card/id/science/roboticist
 	name = "roboticist ID"
 	assignment = "Roboticist"
 	rank = "Roboticist"
-	job_access_type = /datum/role/job/station/roboticist
+	job_access_type = /datum/prototype/role/job/station/roboticist
 
 /obj/item/card/id/science/head
 	name = "\improper RD ID"
@@ -529,7 +529,7 @@
 	secondary_color = rgb(255,223,127)
 	assignment = "Research Director"
 	rank = "Research Director"
-	job_access_type = /datum/role/job/station/research_director
+	job_access_type = /datum/prototype/role/job/station/research_director
 
 /obj/item/card/id/cargo
 	name = "cargo identification card"
@@ -542,13 +542,13 @@
 	name = "cargo ID"
 	assignment = "Cargo Technician"
 	rank = "Cargo Technician"
-	job_access_type = /datum/role/job/station/cargo_tech
+	job_access_type = /datum/prototype/role/job/station/cargo_tech
 
 /obj/item/card/id/cargo/mining
 	name = "mining ID"
 	assignment = "Shaft Miner"
 	rank = "Shaft Miner"
-	job_access_type = /datum/role/job/station/mining
+	job_access_type = /datum/prototype/role/job/station/mining
 
 /obj/item/card/id/cargo/head
 	name = "\improper Quartermaster's ID"
@@ -557,12 +557,12 @@
 	secondary_color = rgb(255,223,127)
 	assignment = "Quartermaster"
 	rank = "Quartermaster"
-	job_access_type = /datum/role/job/station/quartermaster
+	job_access_type = /datum/prototype/role/job/station/quartermaster
 
 /obj/item/card/id/assistant
 	assignment = USELESS_JOB
 	rank = USELESS_JOB
-	job_access_type = /datum/role/job/station/assistant
+	job_access_type = /datum/prototype/role/job/station/assistant
 
 /obj/item/card/id/civilian
 	name = "civilian identification card"
@@ -572,61 +572,61 @@
 	secondary_color = rgb(95,159,191)
 	assignment = "Civilian"
 	rank = "Assistant"
-	job_access_type = /datum/role/job/station/assistant
+	job_access_type = /datum/prototype/role/job/station/assistant
 
 /obj/item/card/id/civilian/bartender
 	name = "bartender ID"
 	assignment = "Bartender"
 	rank = "Bartender"
-	job_access_type = /datum/role/job/station/bartender
+	job_access_type = /datum/prototype/role/job/station/bartender
 
 /obj/item/card/id/civilian/botanist
 	name = "botanist ID"
 	assignment = "Botanist"
 	rank = "Botanist"
-	job_access_type = /datum/role/job/station/hydro
+	job_access_type = /datum/prototype/role/job/station/hydro
 
 /obj/item/card/id/civilian/chaplain
 	name = "chaplain ID"
 	assignment = "Chaplain"
 	rank = "Chaplain"
-	job_access_type = /datum/role/job/station/chaplain
+	job_access_type = /datum/prototype/role/job/station/chaplain
 
 /obj/item/card/id/civilian/chef
 	name = "chef ID"
 	assignment = "Chef"
 	rank = "Chef"
-	job_access_type = /datum/role/job/station/chef
+	job_access_type = /datum/prototype/role/job/station/chef
 
 /obj/item/card/id/civilian/internal_affairs_agent
 	name = "internal affairs ID"
 	assignment = "Internal Affairs Agent"
 	rank = "Internal Affairs Agent"
-	job_access_type = /datum/role/job/station/lawyer
+	job_access_type = /datum/prototype/role/job/station/lawyer
 
 /obj/item/card/id/civilian/janitor
 	name = "janitor ID"
 	assignment = "Janitor"
 	rank = "Janitor"
-	job_access_type = /datum/role/job/station/janitor
+	job_access_type = /datum/prototype/role/job/station/janitor
 
 /obj/item/card/id/civilian/librarian
 	name = "librarian ID"
 	assignment = "Librarian"
 	rank = "Librarian"
-	job_access_type = /datum/role/job/station/librarian
+	job_access_type = /datum/prototype/role/job/station/librarian
 
 /obj/item/card/id/civilian/clown
 	name = "clown ID"
 	assignment = "Clown"
 	rank = "Clown"
-	job_access_type = /datum/role/job/station/clown
+	job_access_type = /datum/prototype/role/job/station/clown
 
 /obj/item/card/id/civilian/mime
 	name = "mime ID"
 	assignment = "Mime"
 	rank = "Mime"
-	job_access_type = /datum/role/job/station/mime
+	job_access_type = /datum/prototype/role/job/station/mime
 
 /obj/item/card/id/civilian/head //This is not the HoP. There's no position that uses this right now.
 	name = "\improper Services Officer ID"
@@ -647,7 +647,7 @@
 	icon_state = "chit"
 	//primary_color = rgb(142,94,0)
 	//secondary_color = rgb(191,159,95)
-	job_access_type = /datum/role/job/trader
+	job_access_type = /datum/prototype/role/job/trader
 	var/random_color = TRUE
 
 /obj/item/card/id/external/merchant/Initialize(mapload)
@@ -683,7 +683,7 @@
 	rank = "Field Medic"
 	primary_color = rgb(47,189,189)
 	secondary_color = rgb(127,223,223)
-	job_access_type = /datum/role/job/station/field_medic
+	job_access_type = /datum/prototype/role/job/station/field_medic
 
 /obj/item/card/id/explorer
 	name = "identification card"
@@ -694,12 +694,12 @@
 /obj/item/card/id/explorer/pilot
 	assignment = "Pilot"
 	rank = "Pilot"
-	job_access_type = /datum/role/job/station/pilot
+	job_access_type = /datum/prototype/role/job/station/pilot
 
 /obj/item/card/id/explorer/explorer
 	assignment = "Explorer"
 	rank = "Explorer"
-	job_access_type = /datum/role/job/station/explorer
+	job_access_type = /datum/prototype/role/job/station/explorer
 
 /obj/item/card/id/explorer/head
 	name = "identification card"
@@ -711,7 +711,7 @@
 /obj/item/card/id/explorer/head/pathfinder
 	assignment = "Pathfinder"
 	rank = "Pathfinder"
-	job_access_type = /datum/role/job/station/pathfinder
+	job_access_type = /datum/prototype/role/job/station/pathfinder
 
 /obj/item/card/id/external/gaia
 	name = "Happy Trails Resort Company Day Pass"
