@@ -49,6 +49,7 @@
 	TIMER_COOLDOWN_START(src, TIMER_CD_INDEX_MOB_VERB_PING_GMS, 5 SECONDS)
 
 	var/message_to_admins = input_data
+	var/sanitized = say_emphasis(html_encode(message_to_admins))
 
 	if(QDELETED(src))
 		return
@@ -61,6 +62,8 @@
 	creating_ping.originating_mob_weakref = WEAKREF(src)
 	creating_ping.link_context(target)
 
-	#warn log & message admins
+	log_admin("[key_name(src)] created a GM ping[target ? " with context-target '[target]' ([target.type]) ([REF(target.type)])" : ""] \
+		and content '[message_to_admins]'")
+	message_admins("[key_name_admin(src)] is pinging GMs with a [SPAN_TOOLTIP(sanitized, "message")] at [ADMIN_COORDJMP(loc)][target ? " regarding '[target]'" : ""]. Open 'GM Pings' panel to interact with it.")
 
 	GLOB.gm_pings += creating_ping

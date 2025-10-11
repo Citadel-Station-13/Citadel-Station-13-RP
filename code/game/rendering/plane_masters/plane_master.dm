@@ -242,6 +242,7 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	appearance_flags = PLANE_MASTER | NO_CLIENT_COLOR
 
+// TODO: is there a better way to do this? having admin plane work through cameras would be nice
 /atom/movable/screen/plane_master/admin
 	plane = ADMIN_PLANE
 	default_invisible = TRUE
