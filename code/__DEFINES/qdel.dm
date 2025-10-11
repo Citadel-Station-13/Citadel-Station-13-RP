@@ -10,6 +10,8 @@
 ///qdel should assume this object won't gc, and queue a hard delete using a hard reference.
 #define QDEL_HINT_HARDDEL		3
 ///qdel should assume this object won't gc, and hard del it post haste.
+///
+/// * This directly routes to native `del`. This hint shouldn't be used 99.9999% of the time.
 #define QDEL_HINT_HARDDEL_NOW	4
 //defines for the gc_destroyed var
 

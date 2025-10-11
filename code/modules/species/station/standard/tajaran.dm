@@ -1,6 +1,6 @@
 /datum/physiology_modifier/intrinsic/species/tajaran
-	carry_strength_add = CARRY_STRENGTH_ADD_TAJARAN
-	carry_strength_factor = CARRY_FACTOR_MOD_TAJARAN
+	g_carry_strength_add = CARRY_STRENGTH_ADD_TAJARAN
+	g_carry_strength_factor = CARRY_FACTOR_MOD_TAJARAN
 
 /datum/species/tajaran
 	uid = SPECIES_ID_TAJARAN
@@ -9,7 +9,7 @@
 	name_plural = "Tajaran"
 	category = "Tajaran"
 	default_bodytype = BODYTYPE_TAJARAN
-	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/tajaran
+	intrinsic_physiology_modifier = /datum/physiology_modifier/intrinsic/species/tajaran
 
 	icobase      = 'icons/mob/species/tajaran/body_greyscale.dmi'
 	deform       = 'icons/mob/species/tajaran/deformed_body_greyscale.dmi'
@@ -99,16 +99,8 @@
 
 	cold_discomfort_level = 275
 
-	has_organ = list( //No appendix.
-		O_HEART     = /obj/item/organ/internal/heart,
-		O_LUNGS     = /obj/item/organ/internal/lungs,
-		O_VOICE     = /obj/item/organ/internal/voicebox,
-		O_LIVER     = /obj/item/organ/internal/liver,
-		O_KIDNEYS   = /obj/item/organ/internal/kidneys,
-		O_BRAIN     = /obj/item/organ/internal/brain,
-		O_EYES      = /obj/item/organ/internal/eyes,
-		O_STOMACH   = /obj/item/organ/internal/stomach,
-		O_INTESTINE = /obj/item/organ/internal/intestine,
+	#warn todo: no appendix
+	use_internal_organs = list(
 	)
 
 	unarmed_types = list(

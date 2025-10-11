@@ -191,17 +191,26 @@
 //* Serialization *//
 
 /**
- * serializes us to a list
- * note that *everything* will be trampled down to a number or text.
- * do not store raw types.
+ * Serializes into a list.
  *
- * do not serialize type with this; type should always be stored externally from data.
+ * Requirements:
+ * * Do not serialize our type with this. The caller handles type / prototype IDs.
+ * * Text and number are generally safe to serialize directly.
+ * * Lists are generally able to be serialized directly if it only consists of text and numbers.
+ * * Raw typepaths are generally **not** safe to serialize directly.
+ *
+ * Reference types:
+ * * Repositories: /datum/prototype's may be serialized by ID.
+ * * Others: Reference types outside of these must support serialize() to be serialized along with us,
+ *           and should have their serialized data included..
+ *
+ * todo: comment about filestores (photography-like's)
  */
 /datum/proc/serialize()
 	return list()
 
 /**
- * deserializes from a list
+ * Deserializes from a list.
  *
  * @params
  * * data - json_decode()'d list.

@@ -86,12 +86,6 @@
 	/// Tracks if we have gravity from environment right now.
 	var/in_gravity
 
-	//? Physiology
-	/// overall physiology - see physiology.dm
-	var/datum/global_physiology/physiology
-	/// physiology modifiers - see physiology.dm; set to list of paths at init to initialize into instances.
-	var/list/datum/physiology_modifier/physiology_modifiers
-
 	//? Pixel Offsets
 	/// are we shifted by the user?
 	var/shifted_pixels = FALSE
@@ -233,7 +227,6 @@
 
 	/// Allows mobs to move through dense areas without restriction. For instance, in space or out of holder objects.
 	var/incorporeal_move = 0 //0 is off, 1 is normal, 2 is for ninjas.
-	var/unacidable = 0
 	/// For speaking/listening.
 	var/list/languages = list()
 	/// For species who want reset to use a specified default.

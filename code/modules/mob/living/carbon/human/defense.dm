@@ -6,7 +6,7 @@
 
 	if(filter_zone)
 		// just one zone
-		var/obj/item/organ/external/part = get_organ(filter_zone)
+		var/obj/item/organ/external/part = legacy_organ_by_zone(filter_zone)
 		for(var/obj/item/I as anything in inventory?.query_coverage(part.body_part_flags))
 			I.mob_armorcall(src, shieldcall_args, fake_attack)
 			if(shieldcall_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAG_TERMINATE)

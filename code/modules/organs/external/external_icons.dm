@@ -47,7 +47,7 @@ GLOBAL_LIST_EMPTY(limb_icon_cache)
 
 /obj/item/organ/external/head/sync_colour_to_human(var/mob/living/carbon/human/human)
 	..()
-	var/obj/item/organ/internal/eyes/eyes = owner.internal_organs_by_name[O_EYES]
+	var/obj/item/organ/internal/eyes/eyes = owner.keyed_organs[ORGAN_KEY_EYES]
 	if(eyes) eyes.update_colour()
 
 /obj/item/organ/external/head/get_icon()
@@ -67,7 +67,7 @@ GLOBAL_LIST_EMPTY(limb_icon_cache)
 	var/should_have_eyes = owner.should_have_organ(O_EYES)
 	var/has_eye_color = owner.species.species_appearance_flags & HAS_EYE_COLOR
 	if((should_have_eyes || has_eye_color) && eye_icon)
-		var/obj/item/organ/internal/eyes/eyes = owner.internal_organs_by_name[O_EYES]
+		var/obj/item/organ/internal/eyes/eyes = owner.keyed_organs[ORGAN_KEY_EYES]
 		var/icon/eyes_icon = new/icon(eye_icon_location, eye_icon)
 		//Should have eyes
 		if(should_have_eyes)

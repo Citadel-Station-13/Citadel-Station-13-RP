@@ -212,7 +212,7 @@
 
 /datum/trait/positive/reinforced/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
-	for(var/obj/item/organ/external/O in H.organs)
+	for(var/obj/item/organ/external/O as anything in H.external_organs)
 		O.min_broken_damage *= 1.25
 		O.min_bruised_damage *= 1.25
 

@@ -75,17 +75,10 @@
 		"Your antenna ache.",
 	)
 
-	has_organ = list( //No appendix.
-		O_HEART     = /obj/item/organ/internal/heart,
-		O_LUNGS     = /obj/item/organ/internal/lungs,
-		O_VOICE     = /obj/item/organ/internal/voicebox,
-		O_LIVER     = /obj/item/organ/internal/liver,
-		O_KIDNEYS   = /obj/item/organ/internal/kidneys,
-		O_BRAIN     = /obj/item/organ/internal/brain,
-		O_EYES      = /obj/item/organ/internal/eyes,
-		O_STOMACH   = /obj/item/organ/internal/stomach,
-		O_INTESTINE = /obj/item/organ/internal/intestine
+	#warn no appendix
+	use_internal_organs = list(
 	)
+
 	vision_organ = O_EYES
 
 	unarmed_types = list(
@@ -143,7 +136,7 @@
 		return
 
 	var/damageable = H.get_damageable_organs()
-	var/covered = H.get_coverage()
+	var/covered = H.inventory.query_body_cover()
 
 	var/light_amount = 0 //how much light there is in the place, affects damage
 	if(isturf(H.loc)) //else, there's considered to be no light
@@ -151,6 +144,7 @@
 		light_amount = T.get_lumcount() * 5
 
 
-	for(var/K in damageable)
-		if(!(K in covered))
-			H.apply_damage(light_amount/4, DAMAGE_TYPE_BURN, K, 0, 0, "Abnormal growths")
+	for(var/obj/item/organ/external/E in damageable)
+		if(E.body_part_flags & covered)
+			continue
+		H.apply_damage(light_amount/4, DAMAGE_TYPE_BURN, E, 0, 0, "Abnormal growths")
