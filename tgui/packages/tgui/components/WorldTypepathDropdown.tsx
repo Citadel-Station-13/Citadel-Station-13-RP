@@ -4,7 +4,7 @@
  */
 
 import { Component } from "react";
-import { Box, Button, Icon, Input, Stack } from "tgui-core/components";
+import { Box, Button, Floating, Icon, Input, Stack } from "tgui-core/components";
 import { BooleanLike } from "tgui-core/react";
 
 import { DM_TurfSpawnFlags } from "../bindings/game";
@@ -14,18 +14,7 @@ import { ByondIconRef } from "./ByondIconRef";
 import { JsonAssetLoader } from "./JsonAssetLoader";
 import { VStaticScrollingWindower, VStaticScrollingWindowerEntry } from "./VStaticScrollingWindower";
 
-/**
- * WARNING: HERE BE DRAGONS
- *
- * Dropdown field capable of rendering with icons a searchable typepath/entity selector.
- * This is used for admin UIs like buildnode, maploader, and more.
- *
- * * Requries WorldTypepaths json asset pack to be sent.
- * * Will resolve icons directly from rsc.
- * * Only works with compile-time typepaths; do not try to use this with non-WorldTypepath paths.
- * * Expects WorldTypepaths to be sent.
- */
-export class WorldTypepathDropdown extends Component<{
+export interface WorldTypepathDropdownProps extends BoxProps {
   selectedPath: string;
   onSelectPath: (path: string) => void;
   color?: string;
@@ -41,7 +30,20 @@ export class WorldTypepathDropdown extends Component<{
       allowSpecial?: BooleanLike;
     }
   };
-} & BoxProps> {
+}
+
+/**
+ * WARNING: HERE BE DRAGONS
+ *
+ * Dropdown field capable of rendering with icons a searchable typepath/entity selector.
+ * This is used for admin UIs like buildnode, maploader, and more.
+ *
+ * * Requries WorldTypepaths json asset pack to be sent.
+ * * Will resolve icons directly from rsc.
+ * * Only works with compile-time typepaths; do not try to use this with non-WorldTypepath paths.
+ * * Expects WorldTypepaths to be sent.
+ */
+export class WorldTypepathDropdown extends Component<WorldTypepathDropdownProps> {
 
   onUnfocusedClick: () => void;
   state: { open: boolean, searchString: string };
@@ -52,7 +54,7 @@ export class WorldTypepathDropdown extends Component<{
       open: false,
       searchString: "",
     };
-    this.onUnfocusedClick = () => {};
+    this.onUnfocusedClick = () => { };
     // this.onUnfocusedClick = () => this.setOpen(false);
   }
 
@@ -158,17 +160,16 @@ export class WorldTypepathDropdown extends Component<{
                   });
                 });
             }
-
             return (
-              <div>
-                <Stack fill>
-                  <Stack.Item>
+              <>
+                <Stack fill className="WorldTypepathDropdown__inner">
+                  <Stack.Item className="WorldTypepathDropdown__preview">
                     {selectedIcon}
                   </Stack.Item>
-                  <Stack.Item grow={1}>
+                  <Stack.Item grow={1} className="WorldTypepathDropdown__name">
                     {selectedName}
                   </Stack.Item>
-                  <Stack.Item>
+                  <Stack.Item className="WorldTypepathDropdown__desc">
                     <Button icon="question" tooltip={selectedTooltip} />
                   </Stack.Item>
                   <Stack.Item onClick={() => {
@@ -176,32 +177,34 @@ export class WorldTypepathDropdown extends Component<{
                       return;
                     }
                     this.setOpen(!this.state.open);
-                  }}>
+                  }} className="WorldTypepathDropdown__drawer">
                     <Icon size={1.65} name={this.state.open ? 'chevron-up' : 'chevron-down'} />
                   </Stack.Item>
                 </Stack>
                 {this.state.open && (
-                  <Box className="WorldTypepathDropdown__menu">
-                    <Stack vertical>
-                      <Stack.Item>
-                        <Input onChange={(val) => this.setSearchString(val)}
-                          value={this.state.searchString}
-                          width="100%"
-                          placeholder="Search path/name substring" />
-                      </Stack.Item>
-                      <Stack.Item grow={1}>
-                        <WorldTypepathDropdownScroller
-                          data={compiledTypepathEntries}
-                          transformer={(entry) => {
-                            return (
-                              <WorldTypepathDropdownEntry data={entry} />
-                            );
-                          }} />
-                      </Stack.Item>
-                    </Stack>
-                  </Box>
+                  <Floating content>
+                    <Box className="WorldTypepathDropdown__menu">
+                      <Stack vertical>
+                        <Stack.Item>
+                          <Input onChange={(val) => this.setSearchString(val)}
+                            value={this.state.searchString}
+                            width="100%"
+                            placeholder="Search path/name substring" />
+                        </Stack.Item>
+                        <Stack.Item grow={1}>
+                          <WorldTypepathDropdownScroller
+                            data={compiledTypepathEntries}
+                            transformer={(entry) => {
+                              return (
+                                <WorldTypepathDropdownEntry data={entry} />
+                              );
+                            }} />
+                        </Stack.Item>
+                      </Stack>
+                    </Box>
+                  </Floating>
                 )}
-              </div>
+              </>
             );
           }}
         />
@@ -209,6 +212,12 @@ export class WorldTypepathDropdown extends Component<{
     );
   }
 }
+
+const WorldTypepathDropdownInner = (props: {
+  pack: Json_WorldTypepaths;
+}) => {
+
+};
 
 interface WorldTypepathDropdownEntryData extends VStaticScrollingWindowerEntry {
   name: string | null;

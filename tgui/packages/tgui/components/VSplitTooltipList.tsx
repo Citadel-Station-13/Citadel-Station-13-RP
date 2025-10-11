@@ -24,8 +24,8 @@ export const VSplitTooltipList = (props: {
   let remainingWidthPercent = 100 - leftSideWidthPercent;
 
   return (
-    <Table {...rest}>
-      <Table.Row>
+    <Table className="VSplitTooltipList" {...rest} >
+      <Table.Row className="VSplitTooltipList__Row">
         <Table.Cell width={`${leftSideWidthPercent}%`} />
         <Table.Cell width="0%" />
         <Table.Cell width={`${remainingWidthPercent}%`} />
@@ -51,10 +51,18 @@ const VSplitTooltipListEntry = (props: {
   } = props;
 
   return (
-    <Table.Row {...rest}>
-      <Table.Cell {...labelProps} >{label}</Table.Cell>
-      <Table.Cell><Button icon="question" tooltip={tooltip} /></Table.Cell>
-      <Table.Cell {...valueProps}>{children}</Table.Cell>
+    <Table.Row className="VSplitTooltipList__Row" {...rest}>
+      <Table.Cell className="VSplitTooltipList__Cell VSplitTooltipList__Label"
+        {...labelProps} >
+        {label}
+      </Table.Cell>
+      <Table.Cell
+        className="VSplitTooltipList__Cell VSplitTooltipList__Tooltip"><Button icon="question" tooltip={tooltip} />
+      </Table.Cell>
+      <Table.Cell className="VSplitTooltipList__Cell VSplitTooltipList__Value"
+        {...valueProps}>
+        {children}
+      </Table.Cell>
     </Table.Row>
   );
 };

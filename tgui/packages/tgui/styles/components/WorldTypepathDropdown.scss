@@ -5,13 +5,30 @@
 
 @use '../base.scss';
 
-.WorldTypepathDropdown {}
+.WorldTypepathDropdown {
+}
+
+.WorldTypepathDropdown__inner {
+  align-items: center;
+}
+
+.WorldTypepathDropdown__preview {
+}
+
+.WorldTypepathDropdown__name {
+  height: 100%;
+}
+
+.WorldTypepathDropdown__desc {
+}
+
+.WorldTypepathDropdown__drawer {
+}
 
 .WorldTypepathDropdown__menu {
-  position: absolute;
   max-height: 400px;
-  width: "100%";
-  overflow: hidden;
+  width: '100%';
+  overflow: auto;
   z-index: 5;
   border-radius: 0 0 base.em(2px) base.em(2px);
   color: #fff;

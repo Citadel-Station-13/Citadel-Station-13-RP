@@ -17,14 +17,13 @@ import { LoadingScreen } from "../common/LoadingScreen";
 
 enum LoadMapSectorStatus {
   Waiting = "waiting",
-  Ready = "Ready",
+  Ready = "ready",
   Loading = "loading",
-  Finished = "Finsihed",
+  Finished = "finished",
 }
 
 interface ModalData {
   status: LoadMapSectorStatus;
-  ready: BooleanLike;
   levels: number;
   const_airVacuum: string;
   const_airHabitable: string;
@@ -70,53 +69,82 @@ export const LoadMapSector = (props) => {
   const [currentTab, setCurrentTab] = useLocalState<string>('currentTab', 'map');
 
   return (
-    <Window width={550} height={500} title="Upload Map Sector">
+    <Window width={575} height={550} title="Upload Map Sector">
       <Window.Content>
-        <Stack fill>
+        <Stack fill vertical>
+          <Stack.Item grow={1}>
+            <Stack fill>
+              <Stack.Item>
+                <Section fill title="Components" minWidth="12em">
+                  <Stack vertical fill>
+                    <Stack.Item>
+                      <Button selected={currentTab === 'map'}
+                        fluid
+                        onClick={() => setCurrentTab('map')}
+                        color="transparent" content="Map" />
+                    </Stack.Item>
+                    <Stack.Item>
+                      <Button selected={currentTab === 'overmap'}
+                        fluid
+                        onClick={() => setCurrentTab('overmap')}
+                        color="transparent" content="Overmap" />
+                    </Stack.Item>
+                    {new Array(data.levels).fill(0).map((v, i) => (
+                      <Stack.Item key={i}>
+                        <Button
+                          fluid color="transparent"
+                          selected={currentTab === `level-${i + 1}`}
+                          onClick={() => setCurrentTab(`level-${i + 1}`)}
+                          content={`Level ${i + 1}`} />
+                      </Stack.Item>
+                    ))}
+                    <Stack.Item grow={1} />
+                    <Stack.Item>
+                      <Button.Confirm icon="plus" confirmIcon="plus"
+                        color="transparent"
+                        fluid onClick={() => act('newLevel')}>Add Level
+                      </Button.Confirm>
+                    </Stack.Item>
+                  </Stack>
+                </Section>
+              </Stack.Item>
+              <Stack.Item grow={1}>
+                {currentTab === 'map' && (
+                  <MapOptions />
+                )}
+                {currentTab === 'overmap' && (
+                  <OvermapOptions />
+                )}
+                {currentTab.startsWith("level-") && (
+                  <MapLevelOptions levelIndex={Number.parseInt(currentTab.substring(6), 10)} />
+                )}
+              </Stack.Item>
+            </Stack>
+          </Stack.Item>
           <Stack.Item>
-            <Section fill title="Components" minWidth="12em">
-              <Stack vertical fill>
-                <Stack.Item>
-                  <Button selected={currentTab === 'map'}
-                    fluid
-                    onClick={() => setCurrentTab('map')}
-                    color="transparent" content="Map" />
-                </Stack.Item>
-                <Stack.Item>
-                  <Button selected={currentTab === 'overmap'}
-                    fluid
-                    onClick={() => setCurrentTab('overmap')}
-                    color="transparent" content="Overmap" />
-                </Stack.Item>
-                {new Array(data.levels).fill(0).map((v, i) => (
-                  <Stack.Item key={i}>
-                    <Button
-                      fluid color="transparent"
-                      selected={currentTab === `level-${i + 1}`}
-                      onClick={() => setCurrentTab(`level-${i + 1}`)}
-                      content={`Level ${i + 1}`} />
-                  </Stack.Item>
-                ))}
-                <Stack.Item grow={1} />
-                <Stack.Item>
-                  <Button.Confirm icon="plus" confirmIcon="plus"
+            <Section>
+              <Stack fill>
+                <Stack.Item grow={1}>
+                  <Button.Confirm fluid
+                    textAlign="center"
+                    tooltip="Run validation checks on the map."
                     color="transparent"
-                    fluid onClick={() => act('newLevel')}>Add Level
+                    onClick={() => act('ready')}>
+                    Validate
+                  </Button.Confirm>
+                </Stack.Item>
+                <Stack.Item grow={1}>
+                  <Button.Confirm fluid
+                    textAlign="center"
+                    color={data.status === LoadMapSectorStatus.Ready && "transparent"}
+                    disabled={data.status !== LoadMapSectorStatus.Ready}
+                    tooltip={data.status === LoadMapSectorStatus.Ready ? "Load the map." : "You must validate the map first!"}
+                    onClick={() => act('load')}>
+                    {data.status === LoadMapSectorStatus.Loading ? "Loading..." : "Load"}
                   </Button.Confirm>
                 </Stack.Item>
               </Stack>
             </Section>
-          </Stack.Item>
-          <Stack.Item grow={1}>
-            {currentTab === 'map' && (
-              <MapOptions />
-            )}
-            {currentTab === 'overmap' && (
-              <OvermapOptions />
-            )}
-            {currentTab.startsWith("level-") && (
-              <MapLevelOptions levelIndex={Number.parseInt(currentTab.substring(6), 10)} />
-            )}
           </Stack.Item>
         </Stack>
       </Window.Content>
@@ -221,7 +249,7 @@ const MapLevelProperties = (props: {
         <Stack>
           <Stack.Item grow={1}>
             <Box textAlign="center">
-              {levelData.fileName?.length === 0 ? "--- empty ---" : levelData.fileName}
+              {levelData.fileName?.length === 0 ? "--- empty level ---" : levelData.fileName}
             </Box>
           </Stack.Item>
           <Stack.Item>
