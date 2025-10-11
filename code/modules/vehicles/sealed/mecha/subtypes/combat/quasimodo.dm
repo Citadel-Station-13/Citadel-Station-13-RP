@@ -1,6 +1,6 @@
 /obj/vehicle/sealed/mecha/combat/quasimodo
 	name = "Quasimodo"
-	desc = "This is a test."
+	desc = "A massive mech that seems to tower over most people, it has a massive cannon on its shoulder."
 	icon = 'icons/mecha/mecha96x96.dmi'
 	icon_state = "quasimodo"
 	initial_icon = "quasimodo"
@@ -14,7 +14,7 @@
 	fail_penetration_value = 0.40
 	opacity = 0 // Because its a huge ass mech.
 	deflect_chance = 50
-	damage_absorption = list("brute"=0.9,"fire"=0.3,"bullet"=0.9,"laser"=0.9,"energy"=0.7,"bomb"=0.5) //It's real absorption will come from it's armor + it can take that damage.
+	damage_absorption = list("brute"=0.9,"fire"=0.3,"bullet"=0.9,"laser"=0.9,"energy"=0.7,"bomb"=0.4) //It's real absorption will come from it's armor + it can take that damage.
 	max_temperature = 50000 //Big ass mech can take a lot of heat.
 	infra_luminosity = 3
 	lights_power = 12 //Big mechs would have large floodlights.
@@ -22,6 +22,7 @@
 	add_req_access = 0
 	internal_damage_threshold = 25
 	force = 100 //Are you really gonna walk up to the giant, slow moving mech and let yourself get punched by it?
+	zoom_possible = 1
 	max_equip = 5
 	max_hull_equip = 0
 	max_weapon_equip = 2
@@ -44,6 +45,17 @@
 	. = ..()
 	var/obj/item/vehicle_module/ME = new /obj/item/vehicle_module/weapon/ballistic/cannon/hag_30(src) // The default equip for the Quasi.
 	ME.attach(src)
+
+/obj/vehicle/sealed/mecha/combat/marauder/get_commands()
+	var/output = {"<div class='wr'>
+						<div class='header'>Special</div>
+						<div class='links'>
+						<a href='?src=\ref[src];toggle_zoom=1'>Toggle zoom mode</a><br>
+						</div>
+						</div>
+						"}
+	output += ..()
+	return output
 
 /obj/effect/decal/mecha_wreckage/quasimodo
 	name = "Quasimodo wreckage"

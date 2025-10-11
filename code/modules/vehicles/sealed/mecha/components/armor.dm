@@ -249,7 +249,7 @@
 
 	deflect_chance = 15
 
-	minimum_penetration = 10
+	minimum_penetration = 0
 
 	//required_type = list(/obj/vehicle/sealed/mecha/combat/quasimodo) doesn't work for some reason.
 
@@ -259,6 +259,6 @@
 		"bullet"=0.65,
 		"laser"=0.8,
 		"energy"=0.85,
-		"bomb"=0.6
+		"bomb"=0.5
 		)
 
