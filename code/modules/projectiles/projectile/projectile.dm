@@ -445,6 +445,7 @@
 	STOP_PROCESSING(SSprojectiles, src)
 	// cleanup
 	cleanup_hitscan_tracers()
+	impacted = null
 	return ..()
 
 /obj/projectile/proc/process_legacy_penetration(atom/A)
@@ -516,7 +517,10 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 	PRIVATE_PROC(TRUE)
 	// setup impact checking
-	impacted = list()
+	// this is a lazy-init to allow for an escape hatch of
+	// injecting into this to prevent clipping a mech or something
+	if(!impacted)
+		impacted = list()
 	// handle direct hit
 	if(direct_target)
 		// todo: this should make a muzzle flash
