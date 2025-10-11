@@ -268,11 +268,6 @@
 /obj/structure/inflatable,
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/osiris_field/cargo_vessel1)
-"nZ" = (
-/obj/structure/alien/weeds,
-/mob/living/simple_mob/animal/space/xenomorph/monarch,
-/turf/simulated/floor/plating,
-/area/submap/osiris_field/cargo_vessel1)
 "oh" = (
 /obj/effect/floor_decal/borderfloorblack/corner{
 	dir = 4
@@ -487,6 +482,11 @@
 /area/submap/osiris_field/cargo_vessel1)
 "AX" = (
 /turf/simulated/wall/prepainted,
+/area/submap/osiris_field/cargo_vessel1)
+"Bh" = (
+/obj/structure/alien/weeds,
+/mob/living/simple_mob/animal/space/xenomorph/breaker,
+/turf/simulated/floor/plating,
 /area/submap/osiris_field/cargo_vessel1)
 "Bj" = (
 /obj/machinery/door/airlock{
@@ -1454,7 +1454,7 @@ wf
 wf
 Ik
 ye
-nZ
+wf
 wf
 lr
 jJ
@@ -1481,7 +1481,7 @@ FK
 FK
 Ik
 ye
-wf
+Bh
 wf
 lr
 jJ
