@@ -14,6 +14,14 @@
 	This can be you doing something to an event entity, a prayer from your character, \
 	and more. This however, should not be for OOC admin ticketing."
 
+	if(client?.prefs?.muted & MUTE_PRAY)
+		tgui_alert_async(
+			src,
+			"You cannot use GM pings because you've been muted from them by staff.",
+			"GM Ping Rejected",
+		)
+		return
+
 	if(TIMER_COOLDOWN_CHECK(src, TIMER_CD_INDEX_MOB_VERB_PING_GMS))
 		to_chat(src, SPAN_BOLDANNOUNCE("<center>-- GM ping is on cooldown. Slow down. --"))
 		return
@@ -64,6 +72,13 @@
 
 	log_admin("[key_name(src)] created a GM ping[target ? " with context-target '[target]' ([target.type]) ([REF(target.type)])" : ""] \
 		and content '[message_to_admins]'")
-	message_admins("[key_name_admin(src)] is pinging GMs with a [SPAN_TOOLTIP(sanitized, "message")] at [ADMIN_COORDJMP(loc)][target ? " regarding '[target]'" : ""]. Open 'GM Pings' panel to interact with it.")
+
+	var/rendered = SPAN_TOOLTIP(SPAN_LINKIFY(sanitized), "message")
+	message_admins("<b>[ADMIN_FULLMONTY(src)] [ADMIN_SC(src)]</b> is pinging GMs with a [rendered] at [ADMIN_COORDJMP(loc)][target ? " regarding '[target]'" : ""]. Open 'GM Pings' panel to interact with it.")
+	to_chat(src, SPAN_BOLDNOTICE("<center>-- You send a [rendered] to game staff. --</center>"))
+
+	// TODO: soundbyte this.
+	for(var/client/admin_client in GLOB.admins)
+		SEND_SOUND(admin_client, sound('sound/effects/ding.ogg'))
 
 	GLOB.gm_pings += creating_ping
