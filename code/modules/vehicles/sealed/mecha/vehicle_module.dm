@@ -201,7 +201,7 @@
 		M.weapon_equipment += src
 		has_equipped = TRUE
 	if(equip_type == EQUIP_HEAVY_WEAPON && M.heavy_weapon_equipment.len < M.max_heavy_weapon_equip && !has_equipped)
-		M.weapon_equipment += src
+		M.heavy_weapon_equipment += src
 		has_equipped = TRUE
 	if(equip_type == EQUIP_UTILITY && M.utility_equipment.len < M.max_utility_equip && !has_equipped)
 		M.utility_equipment += src
