@@ -1,8 +1,41 @@
+
+/**
+ * Legacy below
+ */
+
+/mob/proc/emote(var/act, var/type, var/message)
+	act = trim(act)
+	var/spacer = findtext_char(act, " ")
+	var/raw_key
+	var/raw_params
+	if(spacer != 0)
+		raw_key = copytext_char(act, 1, spacer + 1)
+		raw_params = copytext_char(act, spacer + 1)
+	else
+		raw_key = act
+		raw_params = ""
+	var/results = invoke_emote(raw_key, raw_params, new /datum/event_args/actor(src))
+	switch(results)
+		if(EMOTE_INVOKE_INVALID)
+			return
+		else
+			return "stop"
+
+/// Deprecated.
+/mob/proc/visible_emote(var/act_desc)
+	run_custom_emote(act_desc, saycode_type = SAYCODE_TYPE_VISIBLE)
+
+/// Deprecated.
+/mob/proc/audible_emote(var/act_desc)
+	run_custom_emote(act_desc, saycode_type = SAYCODE_TYPE_AUDIBLE)
+
+#warn purge below
 // All mobs should have custom emote, really..
 //m_type == 1 --> visual.
 //m_type == 2 --> audible
 /mob/proc/custom_emote(var/m_type=1,var/message = null,var/range=world.view)
-	if(stat || !use_me && usr == src)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	if(stat)
 		to_chat(src, "You are unable to emote.")
 		return
 
@@ -23,46 +56,6 @@
 		message = "<span class='emote'><B>[src]</B>[nospace ? "" : " "][input]</span>"
 	else
 		return
-
-
-	if (message)
-		message = say_emphasis(message)
-		var/overhead_message = ("** [message] **")
-		say_overhead(overhead_message, FALSE, range)
-		SEND_SIGNAL(src, COMSIG_MOB_CUSTOM_EMOTE, src, message)
-
- // Hearing gasp and such every five seconds is not good emotes were not global for a reason.
- // Maybe some people are okay with that.
-
-		var/turf/T = get_turf(src)
-		if(!T) return
-		var/list/in_range = get_mobs_and_objs_in_view_fast(T,range,2,remote_ghosts = client ? TRUE : FALSE)
-		var/list/m_viewers = in_range["mobs"]
-		var/list/o_viewers = in_range["objs"]
-
-		for(var/mob in m_viewers)
-			var/mob/M = mob
-			spawn(0) // It's possible that it could be deleted in the meantime, or that it runtimes.
-				if(M)
-					if(istype(M, /mob/observer/dead/))
-						var/mob/observer/dead/D = M
-						if(ckey || (src in view(D)))
-							M.show_message(message, m_type)
-					else
-						M.show_message(message, m_type)
-
-		for(var/obj in o_viewers)
-			var/obj/O = obj
-			spawn(0)
-				if(O)
-					O.see_emote(src, message, m_type)
-
-// Shortcuts for above proc
-/mob/proc/visible_emote(var/act_desc)
-	custom_emote(1, act_desc)
-
-/mob/proc/audible_emote(var/act_desc)
-	custom_emote(2, act_desc)
 
 /mob/proc/emote_dead(var/message)
 

@@ -20,25 +20,3 @@
 			init_typing_indicator()
 		add_overlay(typing_indicator, TRUE)
 		typing = TRUE
-
-/mob/verb/say_wrapper()
-	set name = ".Say"
-	set hidden = 1
-
-	set_typing_indicator(TRUE)
-	var/message = input("","say (text)") as text|null
-	set_typing_indicator(FALSE)
-
-	if(message)
-		say_verb(message)
-
-/mob/verb/me_wrapper()
-	set name = ".Me"
-	set hidden = 1
-
-	set_typing_indicator(TRUE)
-	var/message = input("","me (text)") as message|null
-	set_typing_indicator(FALSE)
-
-	if(message)
-		me_verb(message)

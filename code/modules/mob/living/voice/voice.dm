@@ -136,7 +136,3 @@
 		if (istype(other, /mob/living/carbon/brain))
 			return 1
 	return ..()
-
-/mob/living/voice/custom_emote(var/m_type=1,var/message = null,var/range=world.view)
-	if(!comm) return
-	..(m_type,message,comm.video_range)

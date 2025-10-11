@@ -160,7 +160,7 @@
 	description = "Does a subtle emote that's invisible to ghosts."
 
 /datum/keybinding/mob/subtler/down(client/user)
-	user.mob.subtler_wrapper()
+	user.mob.subtle_wrapper()
 	return TRUE
 
 /datum/keybinding/mob/drop_item

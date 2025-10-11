@@ -346,7 +346,6 @@
 /mob/living/carbon/brain/caught_soul
 	name = "recorded mind"
 	desc = "A mind recorded and being played on digital hardware."
-	use_me = 1
 	var/ext_deaf = FALSE		//Forbidden from 'ear' access on host
 	var/ext_blind = FALSE		//Forbidden from 'eye' access on host
 	var/parent_mob = FALSE		//If we've captured our owner
@@ -474,6 +473,9 @@
 	return TRUE
 
 /mob/living/carbon/brain/caught_soul/emote(var/act,var/m_type=1,var/message = null)
+	. = ..()
+	if(. == "stop")
+		return
 	if(silent)
 		return FALSE
 	if (act == "me")
@@ -491,10 +493,11 @@
 	else
 		return FALSE
 
-/mob/living/carbon/brain/caught_soul/custom_emote(var/m_type, var/message)
-	if(silent)
-		return FALSE
-	soulcatcher.emote_into(message,src,eyeobj)
+/mob/living/carbon/brain/caught_soul/emit_custom_emote(raw_html, subtle, anti_ghost, saycode_type, with_overhead)
+	if(subtle || anti_ghost)
+		to_chat(src, SPAN_BOLDANNOUNCE("Your [SPAN_TOOLTIP(raw_html, "message")] was not sent. Soulcatchers do not currently support subtle or subtler-anti-ghost."))
+		return
+	soulcatcher.emote_into(raw_html, src, eyeobj)
 
 /mob/living/carbon/brain/caught_soul/resist()
 	set name = "Resist"
