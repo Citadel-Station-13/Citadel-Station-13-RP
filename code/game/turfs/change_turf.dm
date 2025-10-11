@@ -133,6 +133,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	var/old_affecting_lights = affecting_lights
 	var/old_lighting_overlay = lighting_overlay
 	var/old_dynamic_lighting = TURF_IS_DYNAMICALLY_LIT_UNSAFE(src)
+	var/old_z_opacity        = mz_flags & MZ_ALLOW_LIGHTING
 	var/old_corners          = corners
 	var/old_ao_junction      = ao_junction
 	// var/old_is_open          = is_open()
@@ -212,6 +213,11 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 				lighting_build_overlay()
 			else
 				lighting_clear_overlay()
+
+		var/new_z_opacity = mz_flags & MZ_ALLOW_LIGHTING
+		if (old_z_opacity != new_z_opacity)
+			for (var/datum/lighting_corner/corn in corners)
+				corn.rebuild_ztraversal(!new_z_opacity)
 
 	// only queue for smoothing if initialized
 	if(atom_flags & ATOM_INITIALIZED)
