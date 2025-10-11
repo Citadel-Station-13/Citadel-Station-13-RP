@@ -35,5 +35,3 @@
 	feedback_default_audible = "You hear a squeak."
 	sfx = 'sound/effects/mouse_squeak.ogg'
 	sfx_volume = 50
-
-#warn impl

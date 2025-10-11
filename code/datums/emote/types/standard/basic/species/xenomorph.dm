@@ -9,6 +9,11 @@
 	)
 	binding_prefix = "xeno"
 
+/datum/emote/standard/basic/species/promethean/check_species(mob/actor)
+	if(istype(actor, /mob/living/simple_mob/animal/space/xenomorph))
+		return TRUE
+	return ..()
+
 /datum/emote/standard/basic/species/xenomorph/xhiss
 	feedback_default = "%USER% hisses!"
 	sfx = 'sound/voice/xenos/alien_hiss3.ogg'

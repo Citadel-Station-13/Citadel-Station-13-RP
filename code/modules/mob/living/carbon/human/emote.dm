@@ -3,6 +3,7 @@
 	set waitfor = FALSE
 	emote(arglist(args))
 
+// New emotes in here are no longer allowed.
 /mob/living/carbon/human/emote(var/act,var/m_type=1,var/message = null)
 	. = ..()
 	if(. == "stop")
@@ -16,22 +17,17 @@
 		param = copytext(act, t1 + 1, length(act) + 1)
 		act = copytext(act, 1, t1)
 
-	//if(findtext(act,"s",-1) && !findtext(act,"_",-2))//Removes ending s's unless they are prefixed with a '_'
-	//	act = copytext(act,1,length(act))
-
 	var/muzzled = is_muzzled()
-	//var/m_type = 1
 
 	for(var/obj/item/organ/O in src.organs)
 		for (var/obj/item/implant/I in O)
 			if (I.implanted)
 				I.trigger(act, src)
 
-	if(src.stat == 2.0 && (act != "deathgasp"))
+	if(src.stat == DEAD && (act != "deathgasp"))
 		return
 	if(attempt_vr(src,"handle_emote_vr",list(act,m_type,message)))
 		return // Custom Emote Handler
-	#warn purge
 	switch(act)
 		if("xkiss")
 			var/M = null
@@ -719,6 +715,7 @@
 	HTML += "<tt>"
 	src << browse(HTML, "window=flavor_changes;size=430x300")
 
+// New emotes in here are no longer allowed.
 /mob/living/carbon/human/proc/handle_emote_vr(var/act,var/m_type=1,var/message = null)
 
 	switch(act)
@@ -788,10 +785,6 @@
 			message = "lets out a hiss."
 			m_type = 2
 			playsound(loc, 'sound/voice/hiss.ogg', 50, 1, -1)
-		if ("squeak")
-			message = "lets out a squeak."
-			m_type = 2
-			playsound(loc, 'sound/effects/mouse_squeak.ogg', 50, 1, -1)
 		if("mar")
 			message = "lets out a mar."
 			m_type = 2
@@ -898,11 +891,6 @@
 			playsound(loc, 'sound/machines/clockcult/steam_whoosh.ogg', 30, 1, 1)
 			spam_flag = TRUE
 			addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 18)
-
-	if (message)
-		custom_emote(m_type,message)
-		return 1
-
 	return 0
 
 /mob/living/carbon/human/proc/spam_flag_false() //used for addtimer
