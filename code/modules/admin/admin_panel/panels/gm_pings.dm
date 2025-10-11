@@ -106,6 +106,7 @@ GLOBAL_LIST_EMPTY_TYPED(gm_pings, /datum/gm_ping)
 
 /datum/admin_panel/gm_pings
 	name = "GM Pings"
+	tgui_interface = "AdminGMPings"
 
 /datum/admin_panel/gm_pings/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
