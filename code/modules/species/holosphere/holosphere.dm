@@ -123,7 +123,7 @@
 
 	var/datum/component/custom_transform/transform_component
 	var/mob/living/simple_mob/holosphere_shell/holosphere_shell
-	var/hologram_death_duration = 2 SECONDS
+	var/hologram_death_duration = 4 SECONDS
 
 	// what gear slots we initialised when spawning in for our chameleon gear, so we dont try override job gear with loadout gear
 	var/list/slots_used = list()
@@ -163,12 +163,14 @@
 			return
 
 		holosphere_shell.name = holosphere_shell.hologram.name
+		try_exit_recharge_station()
 		if(transform_component.try_transform())
 			holosphere_shell.hologram.drop_held_items()
 			holosphere_shell.regenerate_icons()
 
 /datum/species/shapeshifter/holosphere/proc/try_untransform(force = FALSE)
 	if(force || !IS_DEAD(holosphere_shell.hologram))
+		try_exit_recharge_station()
 		transform_component.try_untransform()
 
 /mob/living/carbon/human/proc/disable_hologram()
@@ -202,3 +204,10 @@
 		SPECIES_MONKEY_TAJ, SPECIES_MONKEY_AKULA, SPECIES_MONKEY_VULPKANIN,
 		SPECIES_MONKEY_SERGAL, SPECIES_MONKEY_NEVREAN,
 	)
+/datum/species/shapeshifter/holosphere/proc/try_exit_recharge_station()
+	var/obj/machinery/recharge_station/shell_station = holosphere_shell.loc
+	var/obj/machinery/recharge_station/hologram_station = holosphere_shell.hologram.loc
+	if(istype(shell_station))
+		shell_station.go_out()
+	if(istype(hologram_station))
+		hologram_station.go_out()
