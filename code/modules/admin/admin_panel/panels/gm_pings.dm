@@ -16,6 +16,9 @@ GLOBAL_LIST_EMPTY_TYPED(gm_pings, /datum/gm_ping)
 	/// originating ckey
 	var/originating_ckey
 
+	/// where was the ping made?
+	var/turf/created_at
+
 	/// originating mob weakref, if any
 	var/datum/weakref/originating_mob_weakref
 	/// cached tgui data for originating mob if it's deleted, if any
@@ -44,10 +47,12 @@ GLOBAL_LIST_EMPTY_TYPED(gm_pings, /datum/gm_ping)
 	#warn impl
 
 /datum/gm_ping/proc/ui_panel_data()
+	#warn pingLocation, pingOrigination, pingContext?
 	return list(
 	)
 
 /datum/gm_ping/proc/ui_panel_static_data()
+	#warn pingLocation, pingOrigination, pingContext?
 	return list(
 		"ref" = ref(src),
 		"lazyUid" = lazy_unsafe_uid,
@@ -119,6 +124,18 @@ GLOBAL_LIST_EMPTY_TYPED(gm_pings, /datum/gm_ping)
 
 /datum/admin_panel/gm_pings/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
+	if(.)
+		return
+	var/pRef = params["ref"]
+	var/pUid = params["uid"]
+	switch(action)
+		if("purgeAll")
+		if("purgeCkey")
+		if("purgeMob")
+		if("delPing")
+		if("jmpPingOrigin")
+		if("jmpPingContext")
+		if("jmpPingLocation")
 
 
 
