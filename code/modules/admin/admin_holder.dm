@@ -25,7 +25,7 @@
 	..()
 
 /datum/admins/proc/on_associate(client/user)
-	var/atom/movable/screen/plane_master/maybe_admin_plane = maybe_user.global_planes?.by_plane_type(/atom/movable/screen/plane_master/admin)
+	var/atom/movable/screen/plane_master/maybe_admin_plane = user.global_planes?.by_plane_type(/atom/movable/screen/plane_master/admin)
 	maybe_admin_plane?.alpha = 255
 
 /**

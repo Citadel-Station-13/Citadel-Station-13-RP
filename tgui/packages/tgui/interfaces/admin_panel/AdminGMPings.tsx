@@ -1,7 +1,8 @@
-import { Component } from "react";
+import { Component, ReactNode, useState } from "react";
 import { Button, Section, Stack } from "tgui-core/components";
 import { BooleanLike } from "tgui-core/react";
 
+import { useBackend } from "../../backend";
 import { Window } from "../../layouts";
 
 interface GMPingPanelData {
@@ -9,6 +10,10 @@ interface GMPingPanelData {
 }
 
 interface GMPing {
+  ref: string;
+  lazyUid: number;
+  playerCkey: string;
+  messageAsHtml: string;
   pingOrigination: GMPingOrigination;
   pingContext: GMPingContext;
   pingLocation: GMPingLocation;
@@ -16,11 +21,13 @@ interface GMPing {
 
 interface GMPingLocation {
   name: string;
-  x: number;
-  y: number;
-  z: number;
-  sectorName: string | null;
-  overmapName: string | null;
+  data: PingLocation;
+}
+
+interface PingLocation {
+  coords: { name: string, x: number, y: number, z: number } | null;
+  sector: { name: string } | null;
+  overmap: { entity: string, map: string, x: number, y: number } | null;
 }
 
 interface GMPingOrigination {
@@ -29,7 +36,9 @@ interface GMPingOrigination {
 }
 
 interface GMPingOriginationData {
-
+  name: string;
+  visibleName: string;
+  location: PingLocation;
 }
 
 interface GMPingContext {
@@ -38,14 +47,18 @@ interface GMPingContext {
 }
 
 interface GMPingContextData {
-
+  name: string;
+  location: PingLocation;
 }
 
 // eslint-disable-next-line react/prefer-stateless-function
 export class AdminGMPings extends Component {
   render() {
+    const { act, data } = useBackend<GMPingPanelData>();
+    const [modal, setModal] = useState<ReactNode>();
     return (
       <Window>
+        {modal}
         <Window.Content>
           <Stack fill vertical>
             <Stack.Item>
@@ -60,11 +73,19 @@ export class AdminGMPings extends Component {
             </Stack.Item>
             <Stack.Item>
               <Section title="Controller" fill>
-                <Button.Input color="red" fluid
-                  buttonText="Purge all pings from ckey" />
-                <Button.Input color="red" fluid
-                  buttonText="Purge all pings from mob" />
-                <Button.Confirm color="red" fluid>
+                {/* TODO: Purge by ckey/mob once we're higher pop and need it. */}
+                {/* <Button color="transparent" fluid
+                  onClick={() => {
+                    setModal();
+                  }}>Purge all pings from ckey
+                </Button>
+                <Button color="transparent" fluid
+                  onClick={() => {
+                    setModal();
+                  }}>Purge all pings from mob
+                </Button> */}
+                <Button.Confirm color="transparent" confirmColor="red" fluid
+                  onClick={() => act('purgeAll')}>
                   Purge all pings (DANGER)
                 </Button.Confirm>
               </Section>

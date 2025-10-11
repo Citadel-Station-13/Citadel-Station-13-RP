@@ -46,6 +46,7 @@
 		metric_increment_nested_numerical(/datum/metric/nested_numerical/admin_verb_invocation, #PATH_SUFFIX, 1); \
 	}; \
 	while(FALSE); \
+	log_admin("[key_name(usr)] invoked admin verb '[##PATH_SUFFIX]'"); \
 	call(usr.client, /datum/admin_verb_abstraction::verb__invoke_##PATH_SUFFIX())(arglist(list(usr.client) + args)); \
 }; \
 /datum/admin_verb_abstraction/proc/verb__invoke_##PATH_SUFFIX(client/caller, ##HEADER)

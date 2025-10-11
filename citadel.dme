@@ -2408,6 +2408,7 @@
 #include "code\modules\admin\verbs\debug\spawn.dm"
 #include "code\modules\admin\verbs\game\narrate.dm"
 #include "code\modules\admin\verbs\game\narrate_quick.dm"
+#include "code\modules\admin\verbs\game\view_gm_pings.dm"
 #include "code\modules\admin\verbs\SDQL2\SDQL_2.dm"
 #include "code\modules\admin\verbs\SDQL2\SDQL_2_parser.dm"
 #include "code\modules\admin\verbs\SDQL2\SDQL_2_wrappers.dm"

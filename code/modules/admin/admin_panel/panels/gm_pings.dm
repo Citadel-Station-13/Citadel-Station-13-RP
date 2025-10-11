@@ -47,27 +47,39 @@ GLOBAL_LIST_EMPTY_TYPED(gm_pings, /datum/gm_ping)
 	#warn impl
 
 /datum/gm_ping/proc/ui_panel_data()
-	#warn pingLocation, pingOrigination, pingContext?
 	return list(
+		"pingOrigination" = pull_ui_panel_mob_data(),
+		"pingContext" = pull_ui_panel_context_data(),
 	)
 
 /datum/gm_ping/proc/ui_panel_static_data()
-	#warn pingLocation, pingOrigination, pingContext?
 	return list(
 		"ref" = ref(src),
 		"lazyUid" = lazy_unsafe_uid,
 		"playerCkey" = originating_ckey,
 		// DO NOT REMOVE THE FUCKING HTML ENCODE OR YOU WILL XSS THE ADMINS!!!
 		"messageAsHtml" = say_emphasis(html_encode(unsanitized_message)),
+		"pingLocation" = encode_ui_panel_location_data(),
 	)
 
-/datum/gm_ping/proc/encode_ui_panel_origination_data()
+/datum/gm_ping/proc/encode_ui_location(atom/target)
+	#warn impl
+
+/datum/gm_ping/proc/encode_ui_panel_location_data()
+	return encode_ui_location(created_at)
+
+/datum/gm_ping/proc/encode_ui_panel_mob_data(mob/target)
+	return list(
+		"name",
+		"visibleName",
+		"location" = encode_ui_location(target)
+	)
 	#warn impl
 
 /datum/gm_ping/proc/pull_ui_panel_mob_data()
 	var/mob/resolved = originating_mob_weakref?.resolve()
 	if(resolved)
-		var/list/encoded = encode_ui_panel_origination_data()
+		var/list/encoded = encode_ui_panel_origination_data(resolved)
 		originating_mob_ui_data_snapshot = encoded
 		return list(
 			"deleted" = FALSE,
@@ -79,7 +91,7 @@ GLOBAL_LIST_EMPTY_TYPED(gm_pings, /datum/gm_ping)
 			"data" = originating_mob_ui_data_snapshot,
 		)
 
-/datum/gm_ping/proc/encode_ui_panel_context_data()
+/datum/gm_ping/proc/encode_ui_panel_context_data(datum/component/gm_ping/target)
 	#warn impl
 
 /datum/gm_ping/proc/pull_ui_panel_context_data()
@@ -89,7 +101,7 @@ GLOBAL_LIST_EMPTY_TYPED(gm_pings, /datum/gm_ping)
 			"data" = context_component_ui_data_snapshot,
 		)
 	else
-		var/list/encoded = encode_ui_panel_context_data()
+		var/list/encoded = encode_ui_panel_context_data(context_component)
 		context_component_ui_data_snapshot = encoded
 		return list(
 			"deleted" = FALSE,
@@ -121,6 +133,8 @@ GLOBAL_LIST_EMPTY_TYPED(gm_pings, /datum/gm_ping)
 
 /datum/admin_panel/gm_pings/ui_nested_data(mob/user, datum/tgui/ui)
 	. = ..()
+	for(var/datum/gm_ping/ping as anything in GLOB.gm_pings)
+		.[""]
 
 /datum/admin_panel/gm_pings/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
@@ -128,14 +142,24 @@ GLOBAL_LIST_EMPTY_TYPED(gm_pings, /datum/gm_ping)
 		return
 	var/pRef = params["ref"]
 	var/pUid = params["uid"]
+	var/datum/gm_ping/target_ping
+	if(pRef)
+		var/datum/gm_ping/maybe_ping = locate(pRef)
+		if(istype(maybe_ping, /datum/gm_ping) && maybe_ping.lazy_unsafe_uid == pUid)
+			target_ping = maybe_ping
 	switch(action)
 		if("purgeAll")
 		if("purgeCkey")
+			var/target_ckey = params["ckey"]
 		if("purgeMob")
+			var/target_mob = params["mob"]
+			findtext
 		if("delPing")
 		if("jmpPingOrigin")
 		if("jmpPingContext")
 		if("jmpPingLocation")
+		if("refreshPings")
+		if("refreshPing")
 
 
 
