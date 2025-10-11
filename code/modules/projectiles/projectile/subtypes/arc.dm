@@ -1,12 +1,9 @@
-// These projectiles are somewhat different from the other projectiles in the code.
-// First, these have an 'arcing' visual, that is accomplished by having the projectile icon rotate as its flying, and
-// moving up, then down as it approaches the target. There is also a small shadow effect that follows the projectile
-// as its flying.
-
-// Besides the visuals, arcing projectiles do not collide with anything until they reach the target, as they fly over them.
-// For best effect, use this only when it makes sense to do so, IE on the Surface. The projectiles don't care about ceilings or gravity.
-
-// todo: better description; this type does have an excuse to have special behavior.
+/**
+ * Arcing projectiles. These go over most things, and have a visual shadow as they travel
+ * in an arc, as the name implies.
+ *
+ * * These must have 'original target' set.
+ */
 /obj/projectile/arc
 	name = "arcing shot"
 	icon_state = "fireball" // WIP
@@ -18,7 +15,6 @@
 	var/distance_to_fly = null // How far, in pixels, to fly for. Will call on_range() when this is passed.
 	var/visual_y_offset = -16 // Adjusts how high the projectile and its shadow start, visually. This is so the projectile and shadow align with the center of the tile.
 	var/obj/effect/projectile_shadow/shadow = null // Visual indicator for the projectile's 'true' position. Needed due to being bound to two dimensions in reality.
-
 
 /obj/projectile/arc/Initialize(mapload)
 	shadow = new(get_turf(src))
@@ -38,26 +34,24 @@
 
 	return pixel_length_between_points(A, B)
 
-/obj/projectile/arc/proc/distance_flown()
-	var/datum/point/current_point = new(src)
-	var/datum/point/starting_point = new(starting)
-	return pixel_length_between_points(current_point, starting_point)
-
 /obj/projectile/arc/fire(set_angle_to, atom/direct_target, no_source_check, datum/callback/on_submunition_ready)
-	..()
 	fired_dir = angle2dir(angle)
+	if(!original_target)
+		stack_trace("no original target found. arc projectiles must have one set to fire properly.")
+		if(angle)
+			original_target = get_turf_in_angle(angle, get_turf(src), get_turf_in_angle(angle, get_turf(src), 9))
 	distance_to_fly = calculate_initial_pixel_distance(src, original_target)
+	..()
 
 /obj/projectile/arc/physics_iteration(pixels)
 	// Do the other important stuff first.
 	. = ..()
 
 	// Test to see if its time to 'hit the ground'.
-	var/pixels_flown = distance_flown()
+	var/pixels_flown = distance_travelled
 
 	if(pixels_flown >= distance_to_fly)
 		legacy_on_range() // This will also cause the projectile to be deleted.
-
 	else
 		// Handle visual projectile turning in flight.
 		var/arc_progress = clamp( pixels_flown / distance_to_fly, 0,  1)

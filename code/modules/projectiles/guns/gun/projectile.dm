@@ -64,6 +64,7 @@
 	var/effective_dispersion = cycle.base_dispersion_adjust + cycle.next_dispersion_adjust
 
 	effective_angle += rand(-effective_dispersion, effective_dispersion)
+	launching.set_angle(effective_angle)
 
 	launching.forceMove(cycle.firing_atom.loc)
 	launching.add_projectile_effects(cycle.firemode.projectile_effects_add)
