@@ -1170,7 +1170,7 @@
 			src.visible_message("The [src.name] armor deflects\the [Proj]")
 			return PROJECTILE_IMPACT_BLOCKED
 
-		else if((max(BULLET_TIER_DEFAULT - Proj.damage_tier, 0) * 25) < temp_minimum_penetration)	//If you don't have enough pen, you won't do full damage
+		else if((max(Proj.damage_tier - BULLET_TIER_DEFAULT, 0) * 15) <= temp_minimum_penetration)	//If you don't have enough pen, you won't do full damage
 			src.occupant_message("<span class='notice'>\The [Proj] struggles to pierce \the [src] armor.</span>")
 			src.visible_message("\The [Proj] struggles to pierce \the [src] armor")
 			pass_damage_reduc_mod = temp_fail_penetration_value / 1.5	//This will apply to reduce damage to 2/3 or 66% by default
