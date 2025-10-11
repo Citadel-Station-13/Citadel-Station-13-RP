@@ -6,17 +6,32 @@
 	///
 	/// todo: re-open these on reconnect.
 	var/list/datum/admin_modal/admin_modals
+	/// admin panels by type
+	/// * admin panels are stateful, unlike modals, and aren't deleted
+	///   when they are closed.
+	/// * this means you can brick them so devs don't fuck up!!
+	var/alist/datum/admin_panel/admin_panels
 
 	/// owning ckey
 	var/ckey
 
 /datum/admins/Destroy()
 	QDEL_LIST(admin_modals)
+	QDEL_LIST_ASSOC_VAL(admin_panels)
 	return ..()
 
 /datum/admins/New(initial_rank, initial_rights, ckey)
 	src.ckey = ckey
 	..()
+
+/datum/admins/proc/on_associate(client/user)
+	#warn plane
+
+/**
+ * 'maybe_user' is because the client MAY be deleted by this point.
+ */
+/datum/admins/proc/on_disassociate(client/maybe_user)
+	#warn plane
 
 /datum/admins/proc/add_admin_verbs()
 	if(!owner)
@@ -44,7 +59,7 @@
 
 //* Admin Modals *//
 
-/datum/admins/proc/open_admin_modal(path, ...)
+/datum/admins/proc/open_admin_modal(path, ...) as /datum/admin_modal
 	ASSERT(ispath(path, /datum/admin_modal))
 	var/datum/admin_modal/modal = new path(src)
 	if(!modal.Initialize(arglist(args.Copy(2))))
@@ -54,6 +69,16 @@
 		return null
 	modal.open()
 	return modal
+
+//* Admin Panels *//
+
+/datum/admins/proc/open_admin_panel(path) as /datum/admin_panel
+	ASSERT(ispath(path, /datum/admin_panel))
+	var/datum/admin_panel/found = admin_panels[path]
+	if(!found)
+		found = new path(src)
+	found.open()
+	return found
 
 //*                      -- SECURITY --                           *//
 //* Do not touch this section unless you know what you are doing. *//

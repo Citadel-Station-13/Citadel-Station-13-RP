@@ -333,6 +333,13 @@
 #define DEBUG_LAYER_SHUTTLE_MARKERS 500
 
 /**
+ *! -- Admin Plane
+ *? For things like GM pings. This plane is only visible to admins.
+ */
+#define ADMIN_PLANE 24
+#define ADMIN_LAYER_GM_PING 100
+
+/**
  *! -- Ghost Plane
  *? Where ghosts live.
  * ~ Spooooooooky ghooooooosts ~

@@ -52,6 +52,7 @@ GLOBAL_PROTECT(href_token)
 	GLOB.admins |= C
 	// add verbs
 	add_admin_verbs()
+	on_associate(C)
 
 // todo: assertions on this are too weak
 /datum/admins/proc/disassociate()
@@ -61,6 +62,7 @@ GLOBAL_PROTECT(href_token)
 	QDEL_LIST(admin_modals)
 	// obliterate verbs
 	remove_admin_verbs()
+	on_disassociate(owner)
 	GLOB.admins -= owner
 	owner.deadmin_holder = owner.holder
 	owner.holder = null
