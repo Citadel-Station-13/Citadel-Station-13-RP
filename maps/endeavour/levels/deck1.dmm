@@ -4629,9 +4629,8 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
+/obj/structure/disposalpipe/junction/yjunction{
+	dir = 4
 	},
 /obj/machinery/camera/network/civilian{
 	dir = 4
@@ -4748,6 +4747,26 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/dark,
 /area/bridge/hallway)
+"dzj" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/navgold/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	alpha = 255;
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/navgold/bordercorner2{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/turf/simulated/floor/tiled/steel,
+/area/endeavour/hallway/d1afthall)
 "dzM" = (
 /obj/structure/table/reinforced,
 /obj/structure/window/reinforced{
@@ -4899,6 +4918,7 @@
 	dir = 8
 	},
 /obj/machinery/air_alarm/west_mount,
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1afthall)
 "dGc" = (
@@ -7829,6 +7849,9 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/navblue/diagonal,
+/obj/machinery/camera/network/command{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge)
 "fEv" = (
@@ -8051,7 +8074,7 @@
 /turf/simulated/floor/lino,
 /area/chapel/office)
 "fMf" = (
-/obj/structure/closet/secure_closet/personal/patient,
+/obj/structure/closet/secure_closet/personal,
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge)
 "fMh" = (
@@ -9568,7 +9591,7 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/obj/machinery/computer/robotics,
+/obj/machinery/computer/mecha,
 /obj/structure/railing/grey{
 	dir = 8
 	},
@@ -11307,6 +11330,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
+"isG" = (
+/obj/random/maintenance,
+/obj/machinery/air_alarm{
+	pixel_y = 22
+	},
+/turf/simulated/floor/plating,
+/area/endeavour/hallway/d1fwdmaint)
 "isN" = (
 /obj/map_helper/access_helper/airlock/station/maintenance,
 /obj/machinery/door/firedoor,
@@ -12120,6 +12150,7 @@
 /obj/effect/floor_decal/corner/navgold/bordercorner2{
 	dir = 8
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1afthall)
 "iZy" = (
@@ -14902,6 +14933,7 @@
 /obj/effect/floor_decal/corner/navgold/border{
 	dir = 8
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1afthall)
 "kUz" = (
@@ -15475,7 +15507,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway2)
 "lnW" = (
-/obj/structure/closet/secure_closet/personal/patient,
+/obj/structure/closet/secure_closet/personal,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -15584,6 +15616,16 @@
 /obj/effect/floor_decal/corner/mauve/bordercorner,
 /turf/simulated/floor/tiled,
 /area/endeavour/exploration/hallway_aft)
+"lsQ" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/navgold/border{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/tiled/steel,
+/area/endeavour/hallway/d1afthall)
 "lsW" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
@@ -17147,6 +17189,7 @@
 /obj/effect/floor_decal/corner/navgold/border{
 	dir = 8
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1afthall)
 "myU" = (
@@ -17181,9 +17224,8 @@
 	dir = 8;
 	id = "bridgetint"
 	},
-/obj/machinery/computer/station_alert{
-	dir = 4;
-	layer = 3
+/obj/item/modular_computer/console/preset/command{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/bridge)
@@ -17260,7 +17302,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/exploration/courser_dock)
 "mEk" = (
-/obj/structure/closet/secure_closet/personal/patient,
+/obj/structure/closet/secure_closet/personal,
 /obj/machinery/air_alarm{
 	dir = 8;
 	pixel_x = 24
@@ -26908,6 +26950,7 @@
 /obj/effect/floor_decal/corner/navgold/bordercorner2{
 	dir = 10
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1afthall)
 "tGh" = (
@@ -27689,6 +27732,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/library)
+"uiq" = (
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
+/obj/machinery/disposal,
+/turf/simulated/floor/tiled/dark,
+/area/endeavour/hallway/d1afthall)
 "uiN" = (
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -27772,6 +27822,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/endeavour/hallway/d1afthall)
 "ukf" = (
@@ -30052,8 +30103,7 @@
 /area/endeavour/hallway/d1portamidhall)
 "vIH" = (
 /obj/machinery/door/airlock/command{
-	id_tag = "captaindoor";
-	name = "Facility Director's Office";
+	name = "Bridge Officer Lockers";
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/command/bridge,
@@ -32001,11 +32051,18 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/endeavour/civillian/evastorage)
 "xpa" = (
-/obj/machinery/air_alarm{
-	pixel_y = 22
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
 	},
-/turf/simulated/wall/prepainted/command,
-/area/endeavour/hallway/d1fwdmaint)
+/obj/effect/floor_decal/corner/navgold/border{
+	dir = 8
+	},
+/obj/machinery/status_display{
+	pixel_x = -32
+	},
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/tiled/steel,
+/area/endeavour/hallway/d1afthall)
 "xpU" = (
 /obj/landmark{
 	name = "blobstart"
@@ -32718,8 +32775,7 @@
 /area/crew_quarters/sleep/Dorm_1)
 "xKC" = (
 /obj/machinery/door/airlock/command{
-	id_tag = "captaindoor";
-	name = "Facility Director's Office";
+	name = "Bridge Office & Ready Room";
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/command/bridge,
@@ -32806,10 +32862,6 @@
 /area/exploration/pilot_Office)
 "xPG" = (
 /obj/effect/floor_decal/spline/plain,
-/obj/machinery/air_alarm{
-	dir = 8;
-	pixel_x = 24
-	},
 /obj/structure/table/marble,
 /obj/item/flashlight/lamp/on{
 	pixel_y = 8
@@ -42557,7 +42609,7 @@ qRb
 khE
 khE
 khE
-rxy
+uiq
 xOD
 hPu
 hPu
@@ -42739,19 +42791,19 @@ gXC
 vsP
 fnV
 dvb
-khE
+iui
 uke
 iZf
 kUp
 dFF
-lKF
-qfe
+xpa
+lsQ
 myN
 tFZ
-khE
-khE
-khE
-iZf
+iui
+iui
+iui
+dzj
 bIF
 edR
 fbu
@@ -61737,7 +61789,7 @@ scN
 gnD
 gnD
 dbq
-giF
+isG
 dMa
 ffi
 ffi
@@ -61931,7 +61983,7 @@ dbq
 nVG
 dbq
 dbq
-xpa
+geJ
 geJ
 geJ
 geJ

@@ -6666,6 +6666,7 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/camera/network/civilian,
+/obj/structure/closet/l3closet/janitor,
 /turf/simulated/floor/tiled/dark,
 /area/janitor)
 "eRF" = (
@@ -14325,8 +14326,18 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/warehouse)
 "kEf" = (
-/obj/structure/closet/l3closet/janitor,
-/turf/simulated/floor/tiled/dark,
+/obj/machinery/door/window/eastleft{
+	dir = 1;
+	name = "Janitorial Desk";
+	req_access = list(26)
+	},
+/obj/machinery/door/window/eastleft{
+	name = "Janitorial Desk";
+	dir = 2
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/structure/table/reinforced,
+/turf/simulated/floor/tiled/steel,
 /area/janitor)
 "kFu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -28771,6 +28782,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/structure/closet/l3closet/janitor,
 /turf/simulated/floor/tiled/dark,
 /area/janitor)
 "vvg" = (
@@ -41933,8 +41945,8 @@ kIH
 fgW
 vpk
 ioZ
+ioZ
 kEf
-rRZ
 bDG
 uIG
 pcI
@@ -42127,8 +42139,8 @@ kIH
 rLT
 vpk
 ioZ
-kEf
-rLO
+ioZ
+rRZ
 ilx
 hYs
 xXF
