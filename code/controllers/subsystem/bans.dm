@@ -10,7 +10,7 @@ SUBSYSTEM_DEF(bans)
 	name = "Bans"
 	subsystem_flags = SS_NO_FIRE | SS_NO_INIT
 
-// TODO: Finish new banning system.
+// Blank for now. This will be the new banning system eventually.
 
 /**
  * * While the system supports IP/CID jobbans, it is up to the API user to know what is reasonable
@@ -33,11 +33,8 @@ SUBSYSTEM_DEF(bans)
  * * admin_computer_id - (optional) banning admin's computerid
  */
 // /datum/controller/subsystem/bans/proc/place_ban(match_player_id, match_ckey, match_ip, match_computer_id, duration, reason, type_class, type_id, admin_ckey, admin_ip, admin_computer_id)
-
 // /datum/controller/subsystem/bans/proc/edit_ban(ban_id, edit_reason, set_reason, set_duration, admin_ckey, admin_ip, admin_computer_id)
-
 // /datum/controller/subsystem/bans/proc/remove_ban(ban_id, remove_reason, admin_ckey, admin_ip, admin_computer_id)
-
 // /datum/controller/subsystem/bans/proc/get_ban(ban_id) as /datum/player_ban
 
 /**
