@@ -147,13 +147,19 @@ GLOBAL_LIST_EMPTY_TYPED(gm_pings, /datum/gm_ping)
 		var/datum/gm_ping/maybe_ping = locate(pRef)
 		if(istype(maybe_ping, /datum/gm_ping) && maybe_ping.lazy_unsafe_uid == pUid)
 			target_ping = maybe_ping
+		else
+			// UI can automatically call refreshPing to update, so don't flood.
+			if(action != "refreshPing")
+				to_chat(usr, SPAN_WARNING("Couldn't locate ping '[pRef]-[pUid]'; the ping may have been deleted."))
+			return TRUE
 	switch(action)
 		if("purgeAll")
-		if("purgeCkey")
-			var/target_ckey = params["ckey"]
-		if("purgeMob")
-			var/target_mob = params["mob"]
-			findtext
+			QDEL_LIST(GLOB.gm_pings)
+			update_static_data()
+			return TRUE
+		// TODO: Purge by ckey/mob once we're higher pop and need it.
+		// if("purgeCkey")
+		// if("purgeMob")
 		if("delPing")
 		if("jmpPingOrigin")
 		if("jmpPingContext")
