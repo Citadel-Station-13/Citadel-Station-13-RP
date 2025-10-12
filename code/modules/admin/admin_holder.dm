@@ -78,7 +78,7 @@
 
 /datum/admins/proc/open_admin_panel(path) as /datum/admin_panel
 	ASSERT(ispath(path, /datum/admin_panel))
-	var/datum/admin_panel/found = admin_panels[path]
+	var/datum/admin_panel/found = admin_panels?[path]
 	if(!found)
 		found = new path(src)
 	found.open()

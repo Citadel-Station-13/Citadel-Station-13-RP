@@ -43,6 +43,10 @@ GLOBAL_LIST_EMPTY_TYPED(gm_pings, /datum/gm_ping)
 	QDEL_NULL(context_component)
 	return ..()
 
+/datum/gm_ping/proc/chat_output()
+	var/rendered = say_emphasis(html_encode(unsanitized_message))
+	return "[lazy_unsafe_uid] @ [context_component?.parent] - From '[originating_ckey]', a '[SPAN_TOOLTIP(rendered, "[length_char(unsanitized_message)] character message")]'"
+
 /datum/gm_ping/proc/link_context(atom/target)
 	if(context_component)
 		QDEL_NULL(context_component)

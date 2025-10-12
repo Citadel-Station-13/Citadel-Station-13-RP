@@ -3,8 +3,8 @@
 
 /datum/component/gm_ping_topmost
 	registered_type = /datum/component/gm_ping_topmost
-	/// uids part of us
-	var/list/uids = list()
+	/// components part of us
+	var/list/datum/component/gm_ping/pings = list()
 	/// renderer
 	var/atom/movable/render/gm_ping_topmost/renderer
 
@@ -19,12 +19,12 @@
 	qdel(renderer)
 	return ..()
 
-/datum/component/gm_ping_topmost/proc/add_uid(uid)
-	uids += uid
+/datum/component/gm_ping_topmost/proc/add_ping(datum/component/gm_ping/ping)
+	pings += ping
 
-/datum/component/gm_ping_topmost/proc/remove_uid(uid)
-	uids -= uid
-	if(!length(uids))
+/datum/component/gm_ping_topmost/proc/remove_ping(datum/component/gm_ping/ping)
+	pings -= ping
+	if(!length(pings))
 		qdel(src)
 
 /datum/component/gm_ping_topmost/proc/update_render()

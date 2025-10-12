@@ -27,7 +27,8 @@
 		)
 		return
 
-	if(!isloc(loc))
+	var/turf/creating_at = get_turf(src)
+	if(!creating_at)
 		TIMER_COOLDOWN_START(src, TIMER_CD_INDEX_MOB_VERB_PING_GMS, 4 SECONDS)
 		tgui_alert_async(
 			src,
@@ -70,12 +71,14 @@
 	creating_ping.originating_ckey = ckey
 	creating_ping.originating_mob_weakref = WEAKREF(src)
 	creating_ping.link_context(target)
+	creating_ping.created_at = creating_at
 
 	log_admin("[key_name(src)] created a GM ping[target ? " with context-target '[target]' ([target.type]) ([REF(target.type)])" : ""] \
 		and content '[message_to_admins]'")
 
-	var/rendered = SPAN_TOOLTIP(SPAN_LINKIFY(sanitized), "message")
-	message_admins("<b>[ADMIN_FULLMONTY(src)] [ADMIN_SC(src)]</b> is pinging GMs with a [rendered] at [ADMIN_COORDJMP(loc)][target ? " regarding '[target]'" : ""]. Open 'GM Pings' panel to interact with it.")
+	var/rendered = SPAN_TOOLTIP(sanitized, "message")
+	// TODO: make opening the panel a link.
+	message_admins("<b>[ADMIN_FULLMONTY(src)] [ADMIN_SC(src)]</b> is pinging GMs with a [rendered] at [ADMIN_COORDJMP(loc)][target ? " regarding '[target]'" : ""]. Open the GM Ping panel to interact with it.")
 	to_chat(src, SPAN_BOLDNOTICE("<center>-- You send a [rendered] to game staff. --</center>"))
 
 	// TODO: soundbyte this.

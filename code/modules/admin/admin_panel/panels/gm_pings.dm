@@ -52,15 +52,26 @@
 		if("jmpPingOrigin")
 			if(!target_ping)
 				return TRUE
-			#warn impl
+			var/mob/resolved_mob = get_turf(target_ping.originating_mob_weakref?.resolve())
+			if(!resolved_mob)
+				to_chat(owner.owner, SPAN_BOLDANNOUNCE("Couldn't locate ping context originating mob. Was it deleted?"))
+				return TRUE
+			owner.teleport_as_ghost_to_loc(resolved_mob)
+			return TRUE
 		if("jmpPingContext")
 			if(!target_ping)
 				return TRUE
-			#warn impl
+			var/turf/resolved_context = get_turf(target_ping.context_component?.owner)
+			if(!resolved_context)
+				to_chat(owner.owner, SPAN_BOLDANNOUNCE("Couldn't locate ping context component. Was it deleted?"))
+				return TRUE
+			owner.teleport_as_ghost_to_loc(resolved_context)
+			return TRUE
 		if("jmpPingLocation")
 			if(!target_ping)
 				return TRUE
-			#warn impl
+			owner.teleport_as_ghost_to_loc(target_ping.created_at)
+			return TRUE
 		if("refreshPings")
 			if(!target_ping)
 				return TRUE
