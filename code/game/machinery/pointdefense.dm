@@ -8,7 +8,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 
 /obj/machinery/pointdefense_control
 	name = "fire assist mainframe"
-	desc = "A specialized computer designed to synchronize a variety of weapon systems and a vessel's astronav data."
+	desc = "A specialized computer designed to synchronize a variety of weapon systems and a vessel's astronav data.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	description_info = "To connect the mainframe to turrets, use a multitool to set the ident tag to that of the turrets."
 	icon = 'icons/obj/pointdefense.dmi'
 	icon_state = "control"

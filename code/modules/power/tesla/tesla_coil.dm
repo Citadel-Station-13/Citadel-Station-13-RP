@@ -1,6 +1,6 @@
 /obj/machinery/power/tesla_coil
 	name = "tesla coil"
-	desc = "For the union!"
+	desc = "For the union!\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	icon = 'icons/obj/tesla_engine/tesla_coil.dmi'
 	icon_state = "coil0"
 	anchored = FALSE
