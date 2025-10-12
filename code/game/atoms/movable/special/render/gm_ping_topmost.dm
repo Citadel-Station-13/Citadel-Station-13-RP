@@ -3,6 +3,9 @@
 
 /atom/movable/render/gm_ping_topmost
 	atom_flags = ATOM_NONWORLD | ATOM_ABSTRACT
+	maptext_x = -16
+	maptext_height = 16
+	maptext_width = 16
 	#warn sprite
 	var/datum/component/gm_ping_topmost/owning_component
 
@@ -21,4 +24,4 @@
 	return ..()
 
 /atom/movable/render/gm_ping_topmost/proc/update()
-	#warn impl
+	maptext = MAPTEXT_CENTER("[length(owning_component.uids)]")

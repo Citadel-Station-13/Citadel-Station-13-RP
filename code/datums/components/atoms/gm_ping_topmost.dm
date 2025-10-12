@@ -2,6 +2,7 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /datum/component/gm_ping_topmost
+	registered_type = /datum/component/gm_ping_topmost
 	/// uids part of us
 	var/list/uids = list()
 	/// renderer

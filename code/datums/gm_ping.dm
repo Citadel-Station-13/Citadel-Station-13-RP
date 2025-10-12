@@ -44,7 +44,12 @@ GLOBAL_LIST_EMPTY_TYPED(gm_pings, /datum/gm_ping)
 	return ..()
 
 /datum/gm_ping/proc/link_context(atom/target)
-	#warn impl
+	if(context_component)
+		QDEL_NULL(context_component)
+	if(target)
+		context_component = target.AddComponent(/datum/component/gm_ping, src)
+		if(QDELETED(context_component))
+			context_component = null
 
 // for stuff that may change; refreshing will pull an update
 /datum/gm_ping/proc/ui_panel_data()

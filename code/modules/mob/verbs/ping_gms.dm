@@ -14,16 +14,17 @@
 	This can be you doing something to an event entity, a prayer from your character, \
 	and more. This however, should not be for OOC admin ticketing."
 
+	if(TIMER_COOLDOWN_CHECK(src, TIMER_CD_INDEX_MOB_VERB_PING_GMS))
+		to_chat(src, SPAN_BOLDANNOUNCE("<center>-- GM ping is on cooldown. Slow down. --"))
+		return
+
 	if(client?.prefs?.muted & MUTE_PRAY)
+		TIMER_COOLDOWN_START(src, TIMER_CD_INDEX_MOB_VERB_PING_GMS, 4 SECONDS)
 		tgui_alert_async(
 			src,
 			"You cannot use GM pings because you've been muted from them by staff.",
 			"GM Ping Rejected",
 		)
-		return
-
-	if(TIMER_COOLDOWN_CHECK(src, TIMER_CD_INDEX_MOB_VERB_PING_GMS))
-		to_chat(src, SPAN_BOLDANNOUNCE("<center>-- GM ping is on cooldown. Slow down. --"))
 		return
 
 	if(!isloc(loc))
