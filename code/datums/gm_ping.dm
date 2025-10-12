@@ -66,16 +66,38 @@ GLOBAL_LIST_EMPTY_TYPED(gm_pings, /datum/gm_ping)
 
 /datum/gm_ping/proc/encode_ui_location(atom/target)
 	. = list()
-	if()
+	var/turf/l_turf = get_turf(target)
+	if(l_turf)
+		.["coords"] = list(
+			"name" = l_turf.name,
+			"x" = l_turf.x,
+			"y" = l_turf.y,
+			"z" = l_turf.z,
+		)
 	else
 		.["coords"] = null
-	if()
+	if(l_turf)
+		var/datum/map/l_map = SSmapping.ordered_levels[l_turf.z]?.parent_map
+		if(l_map)
+			.["sector"] = list(
+				"id" = l_map.id,
+				"name" = l_map.name,
+			)
+		else
+			.["sector"] = null
+		var/obj/overmap/entity/l_overmap = get_overmap_sector(l_turf)
+		if(l_overmap)
+			.["overmap"] = list(
+				"entity" = l_overmap.name,
+				"x" = l_overmap.get_tile_x_f(),
+				"y" = l_overmap.get_tile_y_f(),
+				"map" = l_overmap.overmap?.name,
+			)
+		else
+			.["overmap"] = null
 	else
 		.["sector"] = null
-	if()
-	else
 		.["overmap"] = null
-	#warn impl
 
 /datum/gm_ping/proc/encode_ui_panel_location_data()
 	return encode_ui_location(created_at)

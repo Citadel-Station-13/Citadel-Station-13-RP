@@ -21,9 +21,9 @@
 /datum/component/gm_ping/UnregisterFromParent()
 
 /datum/component/gm_ping/proc/on_parent_moved(atom/source, atom/old_loc)
-	if(source.loc == oldloc)
+	if(source.loc == old_loc)
 		return
-	teardown(oldloc)
+	teardown(old_loc)
 	construct(source.loc)
 
 /datum/component/gm_ping/proc/teardown(atom/root = parent:loc)

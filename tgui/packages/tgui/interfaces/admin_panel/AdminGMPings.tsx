@@ -26,8 +26,8 @@ interface GMPingLocation {
 
 interface PingLocation {
   coords: { name: string, x: number, y: number, z: number } | null;
-  sector: { name: string } | null;
-  overmap: { entity: string, map: string, x: number, y: number } | null;
+  sector: { id: string, name: string } | null;
+  overmap: { entity: string, map: string | null, x: number, y: number } | null;
 }
 
 interface GMPingOrigination {
