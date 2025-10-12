@@ -6,12 +6,12 @@ import { useBackend } from "../../backend";
 import { Window } from "../../layouts";
 
 interface GMPingPanelData {
-
+  pingIds: string[];
 }
 
 interface GMPing {
   ref: string;
-  lazyUid: number;
+  lazyUid: string;
   playerCkey: string;
   messageAsHtml: string;
   pingOrigination: GMPingOrigination;
