@@ -50,8 +50,6 @@
 /obj/hitsound_throwhit(atom/movable/impacting)
 	if(!isnull(material_primary))
 		var/datum/prototype/material/primary = get_primary_material()
-		if(primary == "DISABLED" || primary == "ABSTRACT")
-			return
 		var/resolved_damage_type
 		if(isitem(impacting))
 			var/obj/item/casted_item = impacting
