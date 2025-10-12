@@ -76,7 +76,7 @@
 	log_admin("[key_name(src)] created a GM ping[target ? " with context-target '[target]' ([target.type]) ([REF(target.type)])" : ""] \
 		and content '[message_to_admins]'")
 
-	var/rendered = SPAN_TOOLTIP(sanitized, "message")
+	var/rendered = SPAN_TOOLTIP_DANGEROUS_HTML(SPAN_LINKIFY(sanitized), "message")
 	// TODO: make opening the panel a link.
 	message_admins("<b>[ADMIN_FULLMONTY(src)] [ADMIN_SC(src)]</b> is pinging GMs with a [rendered] at [ADMIN_COORDJMP(loc)][target ? " regarding '[target]'" : ""]. Open the GM Ping panel to interact with it.")
 	to_chat(src, SPAN_BOLDNOTICE("<center>-- You send a [rendered] to game staff. --</center>"))

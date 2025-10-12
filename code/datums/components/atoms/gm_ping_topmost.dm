@@ -8,11 +8,11 @@
 	/// renderer
 	var/atom/movable/render/gm_ping_topmost/renderer
 
-/datum/component/gm_ping/Initialize()
+/datum/component/gm_ping_topmost/Initialize()
 	. = ..()
 	if(. == COMPONENT_INCOMPATIBLE)
 		return
-	if(!isatom(.))
+	if(!isatom(parent))
 		return COMPONENT_INCOMPATIBLE
 
 /datum/component/gm_ping_topmost/Destroy()

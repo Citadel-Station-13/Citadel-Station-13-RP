@@ -80,3 +80,15 @@ export function sanitizeText(
     FORBID_ATTR: forbidAttr,
   });
 }
+
+/**
+ * Used for code-defined HTML. Less safe than sanitizeText.
+ */
+export const sanitizeHTML = (input: string) =>
+  sanitizeText(
+    input,
+    true,
+    undefined,
+    [],
+    ["a", "img"],
+  );

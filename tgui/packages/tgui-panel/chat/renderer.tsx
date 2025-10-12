@@ -4,7 +4,9 @@
  * @license MIT
  */
 
+import React from 'react';
 import { createRoot } from 'react-dom/client';
+import { TooltipHTML } from 'tgui/components/TooltipHTML';
 import { createLogger } from 'tgui/logging';
 import { Tooltip } from 'tgui-core/components';
 import { EventEmitter } from 'tgui-core/events';
@@ -33,8 +35,9 @@ const logger = createLogger('chatRenderer');
 const SCROLL_TRACKING_TOLERANCE = 24;
 
 // List of injectable component names to the actual type
-export const TGUI_CHAT_COMPONENTS = {
+export const TGUI_CHAT_COMPONENTS: any = {
   Tooltip,
+  TooltipHTML,
 };
 
 // List of injectable attibute names mapped to their proper prop
@@ -120,8 +123,21 @@ const updateMessageBadge = (message) => {
 };
 
 class ChatRenderer {
+  loaded: boolean;
+  rootNode: any;
+  queue: any;
+  messages: any;
+  visibleMessages: any;
+  page: any;
+  events: EventEmitter;
+  scrollNode: any;
+  scrollTracking: boolean;
+  lastScrollHeight: number;
+  handleScroll: any;
+  ensureScrollTracking: any;
+  highlightParsers: any;
+
   constructor() {
-    /** @type {HTMLElement} */
     this.loaded = false;
     /** @type {HTMLElement} */
     this.rootNode = null;
@@ -235,7 +251,7 @@ class ChatRenderer {
       if (lines.length === 0) {
         return;
       }
-      let regexExpressions = [];
+      let regexExpressions: any[] = [];
       // Organize each highlight entry into regex expressions and words
       for (let line of lines) {
         // Regex expression syntax is /[exp]/
@@ -342,7 +358,7 @@ class ChatRenderer {
     return null;
   }
 
-  processBatch(batch, options = {}) {
+  processBatch(batch, options: any = {}) {
     const { prepend, notifyListeners = true } = options;
     const now = Date.now();
     // Queue up messages until chat is ready
@@ -425,7 +441,12 @@ class ChatRenderer {
           while (childNode.firstChild) {
             childNode.removeChild(childNode.firstChild);
           }
-          const Element = TGUI_CHAT_COMPONENTS[targetName];
+          let Element = TGUI_CHAT_COMPONENTS[targetName];
+          if (Element === null) {
+            Element = (
+              <div>-- invalid data component &apos;{targetName}&apos;; contact a coder.</div>
+            );
+          }
 
           const reactRoot = createRoot(childNode);
 
@@ -434,7 +455,6 @@ class ChatRenderer {
             <Element {...outputProps}>
               <span dangerouslySetInnerHTML={oldHtml} />
             </Element>,
-            childNode,
           );
         }
 
