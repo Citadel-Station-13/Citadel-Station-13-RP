@@ -8,7 +8,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 
 /obj/machinery/pointdefense_control
 	name = "fire assist mainframe"
-	desc = "A specialized computer designed to synchronize a variety of weapon systems and a vessel's astronav data.\n <span class='notice'>\[Accepts Upgrades\]</span>"
+	desc = "A specialized computer designed to synchronize a variety of weapon systems and a vessel's astronav data."
 	description_info = "To connect the mainframe to turrets, use a multitool to set the ident tag to that of the turrets."
 	icon = 'icons/obj/pointdefense.dmi'
 	icon_state = "control"
@@ -118,7 +118,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 	name = "\improper point defense battery"
 	icon = 'icons/obj/pointdefense.dmi'
 	icon_state = "pointdefense"
-	desc = "A Kuiper pattern anti-meteor battery. Capable of destroying most threats in a single salvo."
+	desc = "A Kuiper pattern anti-meteor battery. Capable of destroying most threats in a single salvo.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	description_info = "Must have the same ident tag as a fire assist mainframe on the same facility. Use a multitool to set the ident tag."
 	density = TRUE
 	anchored = TRUE
