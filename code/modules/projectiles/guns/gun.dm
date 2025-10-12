@@ -354,7 +354,8 @@
 
 /obj/item/gun/Destroy()
 	QDEL_NULL(pin)
-	QDEL_LIST(attachments)
+	QDEL_LAZYLIST(attachments)
+	QDEL_LAZYLIST(modular_components)
 	return ..()
 
 /obj/item/gun/examine(mob/user, dist)
