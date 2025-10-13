@@ -59,7 +59,7 @@ GLOBAL_PROTECT(href_token)
 	if(!owner)
 		return
 	// for now, destroy all modals
-	QDEL_LIST(admin_modals)
+	QDEL_LAZYLIST(admin_modals)
 	// obliterate verbs
 	remove_admin_verbs()
 	on_disassociate(owner)

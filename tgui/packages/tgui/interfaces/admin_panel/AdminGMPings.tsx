@@ -278,6 +278,7 @@ const GMPingEntry = (props: GMPingEntryProps) => {
             </Stack>
           </Stack.Item>
           <Stack.Item>
+            <hr />
             {dangerousRender}
           </Stack.Item>
         </Stack>
@@ -300,6 +301,7 @@ const GMPingLocationRender = (props: {
           </Button.Confirm>
         )
       }>
+      <hr />
       <Section >
         <Stack vertical>
           <Stack.Item>
@@ -333,11 +335,12 @@ const GMPingOriginationRender = (props: {
           </Button.Confirm>
         )
       }>
+      <hr />
       <Section fill>
         <Stack vertical>
           {!!props.origination.deleted && (
             <Stack.Item>
-              <div color="red" style={{ width: "100%", textAlign: "right" }}>Deleted</div>
+              <div style={{ width: "100%", textAlign: "center", color: "red" }}>Deleted</div>
             </Stack.Item>
           )}
           {props.origination.data && (
@@ -386,11 +389,12 @@ const GMPingContextRender = (props: {
           </Button.Confirm>
         )
       }>
+      <hr />
       <Section>
         <Stack vertical>
           {!!props.context.deleted && (
             <Stack.Item>
-              <div color="red" style={{ width: "100%", textAlign: "right" }}>Deleted</div>
+              <div style={{ width: "100%", textAlign: "center", color: "red" }}>Deleted</div>
             </Stack.Item>
           )}
           {props.context.data && (
