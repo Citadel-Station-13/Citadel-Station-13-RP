@@ -35,17 +35,16 @@ const logger = createLogger('chatRenderer');
 const SCROLL_TRACKING_TOLERANCE = 24;
 
 // List of injectable component names to the actual type
+// TODO: please type this properly
 export const TGUI_CHAT_COMPONENTS: any = {
   Tooltip,
   TooltipHTML,
 };
 
-// List of injectable attibute names mapped to their proper prop
-// We need this because attibutes don't support lowercase names
-export const TGUI_CHAT_ATTRIBUTES_TO_PROPS = {
-  position: 'position',
-  content: 'content',
-};
+// List of injectable attibute names mapped to their proper prop.
+// We need this because attibutes don't support lowercase names.
+// Use this is the automatic "-a" -> "-A" replacer doesn't work for you.
+export const TGUI_CHAT_ATTRIBUTE_REMAPS: Record<string, string> = {};
 
 const findNearestScrollableParent = (startingNode) => {
   const body = document.body;
@@ -377,7 +376,8 @@ class ChatRenderer {
     // Insert messages
     const fragment = document.createDocumentFragment();
     const countByType = {};
-    let node;
+    let node: HTMLElement;
+    let insertedAnyNode = false;
     for (let payload of batch) {
       const message = createMessage(payload);
       // Combine messages
@@ -390,14 +390,17 @@ class ChatRenderer {
       // Reuse message node
       if (message.node) {
         node = message.node;
+        insertedAnyNode = true;
       }
       // Reconnected
       else if (message.type === 'internal/reconnected') {
         node = createReconnectedNode();
+        insertedAnyNode = true;
       }
       // Create message node
       else {
         node = createMessageNode();
+        insertedAnyNode = true;
         // Payload is plain text
         if (message.text) {
           node.textContent = message.text;
@@ -411,37 +414,56 @@ class ChatRenderer {
         // Get all nodes in this message that want to be rendered like jsx
         const nodes = node.querySelectorAll('[data-component]');
         for (let i = 0; i < nodes.length; i++) {
-          const childNode = nodes[i];
+          const childNode: Element = nodes[i];
           const targetName = childNode.getAttribute('data-component');
           // Let's pull out the attibute info we need
           let outputProps = {};
           for (let j = 0; j < childNode.attributes.length; j++) {
             const attribute = childNode.attributes[j];
-
+            if (!attribute.nodeName.startsWith("data-")) {
+              continue;
+            }
             let working_value = attribute.nodeValue;
+            if (!working_value) {
+              continue;
+            }
+            let parsed_value: any;
             // We can't do the "if it has no value it's truthy" trick
             // Because getAttribute returns "", not null. Hate IE
             if (working_value === '$true') {
-              working_value = true;
+              parsed_value = true;
             } else if (working_value === '$false') {
-              working_value = false;
-            } else if (!isNaN(working_value)) {
+              parsed_value = false;
+            } else {
               const parsed_float = parseFloat(working_value);
               if (!isNaN(parsed_float)) {
-                working_value = parsed_float;
+                parsed_value = parsed_float;
               }
             }
-
+            // treat as string if doesn't match specials
+            if (!parsed_value) {
+              parsed_value = working_value;
+            }
             let canon_name = attribute.nodeName.replace('data-', '');
             // html attributes don't support upper case chars, so we need to map
-            canon_name = TGUI_CHAT_ATTRIBUTES_TO_PROPS[canon_name];
+            let remapped = TGUI_CHAT_ATTRIBUTE_REMAPS[canon_name];
+            if (remapped) {
+              canon_name = remapped;
+            } else {
+              // pretend - is an upper case
+              canon_name = canon_name.replaceAll(/-([a-z])/g, (_, letter) => letter.toUpperCase());
+            }
             outputProps[canon_name] = working_value;
           }
           const oldHtml = { __html: childNode.innerHTML };
           while (childNode.firstChild) {
             childNode.removeChild(childNode.firstChild);
           }
-          let Element = TGUI_CHAT_COMPONENTS[targetName];
+          // TODO: please type this properly
+          let Element: any;
+          if (targetName !== null) {
+            Element = TGUI_CHAT_COMPONENTS[targetName];
+          }
           if (Element === null) {
             Element = (
               <div>-- invalid data component &apos;{targetName}&apos;; contact a coder.</div>
@@ -449,13 +471,17 @@ class ChatRenderer {
           }
 
           const reactRoot = createRoot(childNode);
-
-          /* eslint-disable react/no-danger */
-          reactRoot.render(
-            <Element {...outputProps}>
-              <span dangerouslySetInnerHTML={oldHtml} />
-            </Element>,
+          const interior = (
+            // eslint-disable-next-line react/no-danger
+            <span dangerouslySetInnerHTML={oldHtml} />
           );
+          const rendering = (
+            <Element {...outputProps}>
+              {interior}
+            </Element>
+          );
+
+          reactRoot.render(rendering);
         }
 
         // Highlight text
@@ -507,7 +533,7 @@ class ChatRenderer {
         this.visibleMessages.push(message);
       }
     }
-    if (node) {
+    if (insertedAnyNode) {
       const firstChild = this.rootNode.childNodes[0];
       if (prepend && firstChild) {
         this.rootNode.insertBefore(fragment, firstChild);
