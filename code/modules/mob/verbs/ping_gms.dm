@@ -61,8 +61,15 @@
 		FALSE,
 	)
 
+	if(!input_data)
+		return
+
 	if(length_char(input_data) < minimum_length)
 		to_chat(src, SPAN_BOLDANNOUNCE("<center>-- GM ping rejected: Your message was too short. --"))
+		return
+
+	if(TIMER_COOLDOWN_CHECK(src, TIMER_CD_INDEX_MOB_VERB_PING_GMS))
+		to_chat(src, SPAN_BOLDANNOUNCE("<center>-- GM ping is on cooldown. Slow down. Your message was [SPAN_TOOLTIP(input_data, "this")] --"))
 		return
 
 	TIMER_COOLDOWN_START(src, TIMER_CD_INDEX_MOB_VERB_PING_GMS, 5 SECONDS)
@@ -82,6 +89,7 @@
 	creating_ping.originating_mob_weakref = WEAKREF(src)
 	creating_ping.link_context(target)
 	creating_ping.created_at = creating_at
+	creating_ping.unsanitized_message = message_to_admins
 
 	log_admin("[key_name(src)] created a GM ping[target ? " with context-target '[target]' ([target.type]) ([REF(target.type)])" : ""] \
 		and content '[message_to_admins]'")

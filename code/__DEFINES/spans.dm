@@ -155,12 +155,12 @@
  * Sorted alphabetically
  */
 
-/// Displays a tooltip. Tooltip is text-only.
+/// Displays a tooltip. Tooltip is text-only, and HTML will be ignored.
 /// * SPAN_LINKIFY doesn't work here.
-#define SPAN_TOOLTIP(tip, str) ("<span data-component=\"Tooltip\" data-content=\"[tip]\" class=\"tooltip\">[str]</span>")
+#define SPAN_TOOLTIP(tip, str) ("<span data-component=\"Tooltip\" data-content=\"[html_encode(tip)]\" class=\"tooltip\">[str]</span>")
 /// Displays a tooltip. Accepts HTML. For the love of all that is holy, ensure input is trusted.
 /// * SPAN_LINKIFY doesn't work here.
-#define SPAN_TOOLTIP_DANGEROUS_HTML(tip, str) ("<span data-component=\"TooltipHTML\" data-html=\"[tip]\" class=\"tooltip\">[str]</span>")
+#define SPAN_TOOLTIP_DANGEROUS_HTML(tip, str) ("<span data-component=\"TooltipHTML\" data-html=\"[html_encode(tip)]\" class=\"tooltip\">[str]</span>")
 
 /**
  * Special Macros

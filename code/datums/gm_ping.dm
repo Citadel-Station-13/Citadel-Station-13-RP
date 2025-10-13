@@ -113,7 +113,10 @@ GLOBAL_VAR_INIT(gm_ping_ghost_allowed, FALSE)
 		.["overmap"] = null
 
 /datum/gm_ping/proc/encode_ui_panel_location_data()
-	return encode_ui_location(created_at)
+	return list(
+		"name" = created_at.name,
+		"location" = encode_ui_location(created_at),
+	)
 
 /datum/gm_ping/proc/encode_ui_panel_mob_data(mob/target)
 	return list(
@@ -131,11 +134,14 @@ GLOBAL_VAR_INIT(gm_ping_ghost_allowed, FALSE)
 			"deleted" = FALSE,
 			"data" = encoded,
 		)
-	else
+	else if(originating_mob_ui_data_snapshot)
 		return list(
 			"deleted" = TRUE,
 			"data" = originating_mob_ui_data_snapshot,
 		)
+	else
+		// if we never got a snapshot for some reason treat it as gone
+		return null
 
 /datum/gm_ping/proc/encode_ui_panel_context_data(datum/component/gm_ping/target)
 	return list(
@@ -151,10 +157,13 @@ GLOBAL_VAR_INIT(gm_ping_ghost_allowed, FALSE)
 			"deleted" = TRUE,
 			"data" = context_component_ui_data_snapshot,
 		)
-	else
+	else if(context_component_ui_data_snapshot)
 		var/list/encoded = encode_ui_panel_context_data(context_component)
 		context_component_ui_data_snapshot = encoded
 		return list(
 			"deleted" = FALSE,
 			"data" = encoded,
 		)
+	else
+		// if we never got a snapshot for some reason treat it as gone
+		return null
