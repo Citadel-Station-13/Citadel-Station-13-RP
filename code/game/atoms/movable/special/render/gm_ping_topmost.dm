@@ -24,7 +24,7 @@
 	atom_flags |= ATOM_INITIALIZED
 	src.owning_component = owning_component
 	animate(src, pixel_y = 34, delay = 8, flags = ANIMATION_CONTINUE, loop = -1, easing = SINE_EASING)
-	animate(src, pixel_y = 38, delay = 8, flags = ANIMATION_CONTINUE loop = -1, easing = SINE_EASING)
+	animate(src, pixel_y = 38, delay = 8, flags = ANIMATION_CONTINUE, easing = SINE_EASING)
 	return INITIALIZE_HINT_NORMAL
 
 /atom/movable/render/gm_ping_topmost/Destroy()
