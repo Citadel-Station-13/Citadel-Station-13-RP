@@ -24,7 +24,7 @@ interface GMPing {
 
 interface GMPingLocation {
   name: string;
-  data: PingLocation;
+  location: PingLocation;
 }
 
 interface PingLocation {
@@ -109,13 +109,15 @@ export class AdminGMPings extends Component<{}, AdminGMPingsState> {
                 .sort(([a1, b1], [a2, b2]) => a1.localeCompare(a2))
                 .map(([a, b]) => {
                   return (
-                    <Stack.Item key={a}>
+                    <Stack.Item key={a} >
                       <Collapsible title={`${a} - ${b.length}`} color="transparent">
-                        {b.map((p) => (
-                          <GMPingEntry ping={p} key={p.lazyUid} actFunc={
-                            (a, b) => act(a, { ref: p.ref, uid: p.lazyUid, ...b })
-                          } withContext withLocation withOrigination />
-                        ))}
+                        <div style={{ marginLeft: "5px" }} >
+                          {b.map((p) => (
+                            <GMPingEntry ping={p} key={p.lazyUid} actFunc={
+                              (a, b) => act(a, { ref: p.ref, uid: p.lazyUid, ...b })
+                            } withContext withLocation withOrigination />
+                          ))}
+                        </div>
                       </Collapsible>
                     </Stack.Item>
                   );
@@ -147,19 +149,21 @@ export class AdminGMPings extends Component<{}, AdminGMPingsState> {
                   if (b.length > 0 && b[0].pingContext?.data) {
                     name = b[0].pingContext.data.name;
                   }
-                  return { name: name, ping: b };
+                  return { name: name, ping: b, ref: a };
                 })
                 .map((a) => {
                   let name = a.name;
                   let pings = a.ping;
                   return (
-                    <Stack.Item key={name}>
+                    <Stack.Item key={a.ref}>
                       <Collapsible title={`${name} - ${pings.length}`} color="transparent">
-                        {pings.map((p) => (
-                          <GMPingEntry ping={p} key={p.lazyUid} actFunc={
-                            (a, b) => act(a, { ref: p.ref, uid: p.lazyUid, ...b })
-                          } withContext withLocation withOrigination />
-                        ))}
+                        <div style={{ marginLeft: "5px" }} >
+                          {pings.map((p) => (
+                            <GMPingEntry ping={p} key={p.lazyUid} actFunc={
+                              (a, b) => act(a, { ref: p.ref, uid: p.lazyUid, ...b })
+                            } withContext withLocation withOrigination />
+                          ))}
+                        </div>
                       </Collapsible>
                     </Stack.Item>
                   );
@@ -173,7 +177,7 @@ export class AdminGMPings extends Component<{}, AdminGMPingsState> {
     }
 
     return (
-      <Window width={750} height={575}>
+      <Window width={450} height={700} title="GM Pings">
         <Window.Content>
           <Stack fill vertical>
             <Stack.Item>
@@ -214,12 +218,12 @@ export class AdminGMPings extends Component<{}, AdminGMPingsState> {
             </Stack.Item>
             <Stack.Item>
               <Section title="Controller" fill>
-                <Button color={data.ghostAllowed ? undefined : "transparent"}
-                  selected={data.ghostAllowed} fluid
+                <Button color={data.ghostAllowed ? "green" : "red"}
+                  fluid textAlign="center"
                   onClick={() => act('toggleGhostAllowed', { enabled: !data.ghostAllowed })}>
-                  Allow Observers to Ping
+                  {data.ghostAllowed ? "Observers are allowed to ping" : "Observers are not allowed to ping"}
                 </Button>
-                <Button.Confirm color="transparent" confirmColor="red" fluid
+                <Button.Confirm color="transparent" confirmColor="red" fluid textAlign="center"
                   onClick={() => act('purgeAll')}>
                   Purge all pings (DANGER)
                 </Button.Confirm>
@@ -246,8 +250,8 @@ const GMPingEntry = (props: GMPingEntryProps) => {
   let dangerousRender = (<div dangerouslySetInnerHTML={{ __html: html }} />);
   let shortRender = (
     // eslint-disable-next-line react/no-danger
-    <div dangerouslySetInnerHTML={{ __html: `${props.ping.playerKey}${props.ping.pingContext && ` @ ${props.ping.pingContext.data?.name || "!missing!"}`}: ${html}` }}
-      style={{ textOverflow: "ellipsis" }} />
+    <div dangerouslySetInnerHTML={{ __html: `${props.ping.playerKey}${props.ping.pingContext && ` --> ${props.ping.pingContext.data?.name || "!missing!"}`}: ${html}` }}
+      style={{ display: "inline-block", position: "absolute", textOverflow: "clip", width: "100%" }} />
   );
   return (
     <Collapsible color="transparent"
@@ -255,32 +259,29 @@ const GMPingEntry = (props: GMPingEntryProps) => {
       buttons={(
         <Button.Confirm icon="trash" confirmContent={null} confirmIcon="trash"
           onClick={() => props.actFunc("delPing")} />
-      )}>
-      <Stack vertical>
-        <Stack.Item>
-          <Stack vertical>
-            {props.withLocation && props.ping.pingLocation && (
-              <Stack.Item grow={1}>
-                <GMPingLocationRender location={props.ping.pingLocation} actF={props.actFunc} />
+      )} >
+      <div style={{ border: "1px solid #ffffffaa", padding: "4px" }}>
+        <Stack vertical>
+          <Stack.Item>
+            <Stack vertical>
+              <Stack.Item >
+                {props.withOrigination && props.ping.pingOrigination && (
+                  <GMPingOriginationRender origination={props.ping.pingOrigination} actF={props.actFunc} />
+                )}
+                {props.withLocation && props.ping.pingLocation && (
+                  <GMPingLocationRender location={props.ping.pingLocation} actF={props.actFunc} />
+                )}
+                {props.withContext && props.ping.pingContext && (
+                  <GMPingContextRender context={props.ping.pingContext} actF={props.actFunc} />
+                )}
               </Stack.Item>
-            )}
-            {props.withContext && props.ping.pingContext && (
-              <Stack.Item grow={1}>
-                <GMPingContextRender context={props.ping.pingContext} actF={props.actFunc} />
-              </Stack.Item>
-            )}
-            {props.withOrigination && props.ping.pingOrigination && (
-              <Stack.Item grow={1}>
-                <GMPingOriginationRender origination={props.ping.pingOrigination} actF={props.actFunc} />
-              </Stack.Item>
-            )}
-          </Stack>
-        </Stack.Item>
-        <Stack.Item>
-          {props.ping.messageAsHtml}
-          {dangerousRender}
-        </Stack.Item>
-      </Stack>
+            </Stack>
+          </Stack.Item>
+          <Stack.Item>
+            {dangerousRender}
+          </Stack.Item>
+        </Stack>
+      </div>
     </Collapsible>
   );
 };
@@ -290,7 +291,15 @@ const GMPingLocationRender = (props: {
   actF?: ActFunctionType,
 }) => {
   return (
-    <Collapsible color="transparent" title={`@ ${renderPingLocationAsShortened(props.location.data)}`}>
+    <Collapsible color="transparent" title={`@ ${renderPingLocationAsShortened(props.location.location)}`}
+      buttons={
+        !!props.actF && (
+          <Button.Confirm color="transparent" textAlign="center" fluid
+            onClick={() => props.actF?.("jmpPingLocation")}
+            confirmContent="JMP">JMP
+          </Button.Confirm>
+        )
+      }>
       <Section >
         <Stack vertical>
           <Stack.Item>
@@ -303,12 +312,7 @@ const GMPingLocationRender = (props: {
               </Stack.Item>
             </Stack>
           </Stack.Item>
-          <PingLocationAsStackItems location={props.location.data} />
-          {!!props.actF && (
-            <Stack.Item>
-              <Button.Confirm color="transparent" textAlign="center" fluid onClick={() => props.actF?.("jmpPingLocation")}>Jump</Button.Confirm>
-            </Stack.Item>
-          )}
+          <PingLocationAsStackItems location={props.location.location} />
         </Stack>
       </Section>
     </Collapsible>
@@ -320,7 +324,15 @@ const GMPingOriginationRender = (props: {
   actF?: ActFunctionType,
 }) => {
   return (
-    <Collapsible color="transparent" title={`From ${props.origination.data.name} @ ${renderPingLocationAsShortened(props.origination.data.location)}`}>
+    <Collapsible color="transparent" title={`From ${props.origination.data.name} @ ${renderPingLocationAsShortened(props.origination.data.location)}`}
+      buttons={
+        props.origination.data && !props.origination.deleted && !!props.actF && (
+          <Button.Confirm color="transparent" textAlign="center" fluid
+            confirmContent="JMP"
+            onClick={() => props.actF?.("jmpPingOrigin")}>JMP
+          </Button.Confirm>
+        )
+      }>
       <Section fill>
         <Stack vertical>
           {!!props.origination.deleted && (
@@ -355,13 +367,6 @@ const GMPingOriginationRender = (props: {
               <PingLocationAsStackItems location={props.origination.data.location} />
             </>
           )}
-          {props.origination.data && !props.origination.deleted && !!props.actF && (
-            <Stack.Item>
-              <Button.Confirm color="transparent" textAlign="center" fluid
-                onClick={() => props.actF?.("jmpPingOrigin")}>Jump
-              </Button.Confirm>
-            </Stack.Item>
-          )}
         </Stack>
       </Section>
     </Collapsible>
@@ -373,7 +378,14 @@ const GMPingContextRender = (props: {
   actF?: ActFunctionType,
 }) => {
   return (
-    <Collapsible color="transparent" title={`--> ${props.context.data.name} @ ${renderPingLocationAsShortened(props.context.data.location)}`}>
+    <Collapsible color="transparent" title={`--> ${props.context.data.name} @ ${renderPingLocationAsShortened(props.context.data.location)}`}
+      buttons={
+        props.context.data && !props.context.deleted && !!props.actF && (
+          <Button.Confirm color="transparent" textAlign="center" fluid confirmContent="JMP"
+            onClick={() => props.actF?.("jmpPingContext")}>JMP
+          </Button.Confirm>
+        )
+      }>
       <Section>
         <Stack vertical>
           {!!props.context.deleted && (
@@ -395,13 +407,6 @@ const GMPingContextRender = (props: {
               </Stack.Item>
               <PingLocationAsStackItems location={props.context.data.location} />
             </>
-          )}
-          {props.context.data && !props.context.deleted && !!props.actF && (
-            <Stack.Item>
-              <Button.Confirm color="transparent" textAlign="center" fluid
-                onClick={() => props.actF?.("jmpPingContext")}>Jump
-              </Button.Confirm>
-            </Stack.Item>
           )}
         </Stack>
       </Section>

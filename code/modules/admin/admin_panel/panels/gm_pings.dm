@@ -54,8 +54,7 @@
 			var/new_state = params["enabled"]
 			if(new_state == GLOB.gm_ping_ghost_allowed)
 				return TRUE
-			if(new_state)
-				log_and_message_admins("[new_state ? "enabled" : "disabled"] ghost GM pings.", usr)
+			log_and_message_admins("[new_state ? "enabled" : "disabled"] ghost GM pings.", usr)
 			GLOB.gm_ping_ghost_allowed = new_state
 			return TRUE
 		if("jmpPingOrigin")
@@ -70,7 +69,7 @@
 		if("jmpPingContext")
 			if(!target_ping)
 				return TRUE
-			var/turf/resolved_context = get_turf(target_ping.context_component?.owner)
+			var/turf/resolved_context = get_turf(target_ping.context_component?.parent)
 			if(!resolved_context)
 				to_chat(owner.owner, SPAN_BOLDANNOUNCE("Couldn't locate ping context component. Was it deleted?"))
 				return TRUE

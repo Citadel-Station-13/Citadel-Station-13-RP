@@ -43,6 +43,7 @@ GLOBAL_VAR_INIT(gm_ping_ghost_allowed, FALSE)
 
 /datum/gm_ping/Destroy()
 	originating_mob_weakref = null
+	GLOB.gm_pings -= src
 	QDEL_NULL(context_component)
 	return ..()
 
