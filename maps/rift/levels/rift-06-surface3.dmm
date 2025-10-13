@@ -16160,6 +16160,9 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = 32
+	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/excursion_dock)
 "aYx" = (
@@ -18765,6 +18768,9 @@
 /obj/machinery/camera/network/civilian,
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
@@ -21536,6 +21542,9 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = 32
+	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration)
 "jvL" = (
@@ -21691,6 +21700,9 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
@@ -23633,6 +23645,9 @@
 /obj/machinery/camera/network/civilian,
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
@@ -25770,6 +25785,13 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/cockpit)
+"rtM" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -37
+	},
+/turf/simulated/floor/tiled/dark,
+/area/bridge/bridge_hallway)
 "rtY" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -26479,6 +26501,9 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -37
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "sYo" = (
@@ -26529,6 +26554,15 @@
 /obj/structure/symbol/sa,
 /turf/simulated/wall/prepainted/exploration,
 /area/exploration)
+"taT" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 27
+	},
+/turf/simulated/floor/tiled/dark,
+/area/bridge/bridge_hallway)
 "taW" = (
 /obj/structure/shuttle/engine/heater,
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -51887,7 +51921,7 @@ aZO
 acj
 afO
 hgO
-adh
+taT
 aYL
 qKs
 vwG
@@ -51899,7 +51933,7 @@ qKs
 vwG
 qKs
 lSn
-apg
+rtM
 aEj
 aJs
 aFb
