@@ -18,10 +18,10 @@ VV_PROTECT_READONLY(/datum/admin_panel)
 
 /datum/admin_panel/New(datum/admins/for_owner)
 	owner = for_owner
-	LAZYADD(owner.admin_panels, src)
+	LAZYSET(owner.admin_panels, type, src)
 
 /datum/admin_panel/Destroy()
-	LAZYREMOVE(owner.admin_panels, src)
+	LAZYREMOVE(owner.admin_panels, type)
 	return ..()
 
 /datum/admin_panel/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)

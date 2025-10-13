@@ -153,17 +153,18 @@ GLOBAL_VAR_INIT(gm_ping_ghost_allowed, FALSE)
 
 /datum/gm_ping/proc/pull_ui_panel_context_data()
 	if(QDELETED(context_component))
-		return list(
-			"deleted" = TRUE,
-			"data" = context_component_ui_data_snapshot,
-		)
-	else if(context_component_ui_data_snapshot)
+		if(context_component_ui_data_snapshot)
+			return list(
+				"deleted" = TRUE,
+				"data" = context_component_ui_data_snapshot,
+			)
+		// if we never got a snapshot for some reason treat it as gone
+		else
+			return null
+	else
 		var/list/encoded = encode_ui_panel_context_data(context_component)
 		context_component_ui_data_snapshot = encoded
 		return list(
 			"deleted" = FALSE,
 			"data" = encoded,
 		)
-	else
-		// if we never got a snapshot for some reason treat it as gone
-		return null

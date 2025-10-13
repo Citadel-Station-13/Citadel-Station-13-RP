@@ -290,7 +290,7 @@ const GMPingLocationRender = (props: {
   actF?: ActFunctionType,
 }) => {
   return (
-    <Collapsible>
+    <Collapsible color="transparent" title={`@ ${renderPingLocationAsShortened(props.location.data)}`}>
       <Section >
         <Stack vertical>
           <Stack.Item>
@@ -320,7 +320,7 @@ const GMPingOriginationRender = (props: {
   actF?: ActFunctionType,
 }) => {
   return (
-    <Collapsible>
+    <Collapsible color="transparent" title={`From ${props.origination.data.name} @ ${renderPingLocationAsShortened(props.origination.data.location)}`}>
       <Section fill>
         <Stack vertical>
           {!!props.origination.deleted && (
@@ -373,7 +373,7 @@ const GMPingContextRender = (props: {
   actF?: ActFunctionType,
 }) => {
   return (
-    <Collapsible color="transparent" title={`@${""}`}>
+    <Collapsible color="transparent" title={`--> ${props.context.data.name} @ ${renderPingLocationAsShortened(props.context.data.location)}`}>
       <Section>
         <Stack vertical>
           {!!props.context.deleted && (
@@ -407,6 +407,27 @@ const GMPingContextRender = (props: {
       </Section>
     </Collapsible>
   );
+};
+
+const renderPingLocationAsShortened = (loc: PingLocation): string => {
+  let overmapString = loc.overmap ? loc.overmap.entity : null;
+  let sectorString = loc.sector ? loc.sector.name : null;
+  let coordString = loc.coords ? `${loc.coords.x}, ${loc.coords.y}, ${loc.coords.z}` : null;
+  if (coordString) {
+    if (overmapString) {
+      return `${coordString} in ${overmapString}`;
+    } else if (sectorString) {
+      return `${coordString} on ${sectorString}`;
+    }
+    return `${coordString}`;
+  } else {
+    if (overmapString) {
+      return `somewhere in ${overmapString}`;
+    } else if (sectorString) {
+      return `somewhere in ${sectorString}`;
+    }
+    return `nowhere (?)`;
+  }
 };
 
 const PingLocationAsStackItems = (props: { location: PingLocation }) => {

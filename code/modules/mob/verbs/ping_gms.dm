@@ -36,6 +36,7 @@
 		)
 		return
 
+	// Snapshot origin data before they potentially move.
 	var/turf/creating_at = get_turf(src)
 	if(!creating_at)
 		TIMER_COOLDOWN_START(src, TIMER_CD_INDEX_MOB_VERB_PING_GMS, 4 SECONDS)
