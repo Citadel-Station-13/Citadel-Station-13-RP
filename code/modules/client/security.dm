@@ -20,11 +20,19 @@
  * tell_user is implicit
  */
 /client/proc/security_ban(message, time = -1)
-	var/time_displayed = time == -1? "" : "for [DisplayTimeText(time MINUTES)]"
+	var/time_displayed = time == -1? "(forever)" : "for [DisplayTimeText(time MINUTES)]"
 	log_access("client security: banning [key_name(src)] [time == -1? "" : "for [time_displayed]"] | [message]")
 	message_admins("client security: banning [key_name(src)] [time == -1? "" : "for [time_displayed]"] | [message]")
 	add_system_note("client-security", "banned for [time_displayed]: [message]")
-	AddBan(ckey, computer_id, "client-security: [message]", minutes = time)
+	SSbans.t_place_system_ban(
+		time == -1 ? BANTYPE_PERMA : BANTYPE_TEMP,
+		null,
+		time,
+		"client-security: [message]",
+		banckey = ckey,
+		banip = address,
+		bancid = computer_id,
+	)
 	disconnection_message("Client Security - Autoban: [message]")
 	qdel(src)
 

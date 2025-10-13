@@ -18,7 +18,7 @@
 
 /obj/item/card/id/contractor/update_icon_state()
 	. = ..()
-	var/datum/role/job/J = SSjob.get_job(rank)
+	var/datum/prototype/role/job/J = RSroles.legacy_job_by_title(rank)
 	var/department = lowertext(LAZYACCESS(J?.departments,1))
 	switch(department)
 		if("security")

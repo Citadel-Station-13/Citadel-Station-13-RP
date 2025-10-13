@@ -79,7 +79,7 @@
 			to_chat(src, "<span class='danger'>Deadchat is globally muted.</span>")
 			return
 
-	if(is_role_banned_ckey(ckey, role = BAN_ROLE_OOC))
+	if(SSbans.t_is_role_banned_ckey(ckey, role = BAN_ROLE_OOC))
 		to_chat(src, SPAN_WARNING("You are banned from OOC and deadchat."))
 		return
 

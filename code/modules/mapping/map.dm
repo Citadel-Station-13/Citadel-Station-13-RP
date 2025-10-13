@@ -312,7 +312,7 @@
 	if(!map_levels)
 		map_levels = station_levels.Copy()
 	if(!allowed_jobs || !allowed_jobs.len)
-		allowed_jobs = subtypesof(/datum/role/job)
+		allowed_jobs = subtypesof(/datum/prototype/role/job)
 
 // Gets the current time on a current zlevel, and returns a time datum
 /datum/map/station/proc/get_zlevel_time(var/z)

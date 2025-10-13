@@ -41,7 +41,7 @@
 	max_additional_languages = 3
 
 	species_flags = NO_MINOR_CUT | CONTAMINATION_IMMUNE//Chitin like VASILISSANs should have the same flags
-	species_spawn_flags = SPECIES_SPAWN_CHARACTER | SPECIES_SPAWN_WHITELISTED
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER | SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_WHITELIST_FLEXIBLE
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_BASE_SKIN_COLOR
 
 	blood_color = "#12ff12"
@@ -66,7 +66,6 @@
 		/datum/ability/species/sonar,
 		/datum/ability/species/toggle_agility,
 		/datum/ability/species/xenomorph_hybrid/regenerate,
-		/datum/ability/species/xenomorph_hybrid/sneak,
 	)
 	total_health = 150	//Exoskeleton makes you tougher than baseline
 	brute_mod = 0.95 // Chitin is somewhat hard to crack
@@ -81,7 +80,7 @@
 	warning_high_pressure = 325//Both baseline
 	hazard_high_pressure = 550
 
-	movement_base_speed = 5.5
+	movement_base_speed = 5.25
 
 	//Doesnt work, defaults are set at checks
 	//breath_type = null	//they don't breathe
@@ -153,3 +152,61 @@
 	if(H.blood_holder.get_total_volume() <= blood_level_safe && H.try_take_nutrition(heal_amount * 4))
 		H.regen_blood(heal_amount)
 
+/datum/species/xenohybrid/hunter
+	name = "Xenomorph Hunter Hybrid"
+	name_plural = "Xenomorph Hunter Hybrids"
+	id = SPECIES_ID_XENOHYBRID
+	uid = SPECIES_ID_XENOHYBRID_HUNTER
+	default_bodytype = BODYTYPE_XENOHYBRID
+
+	inherent_verbs = list(
+		/mob/living/proc/shred_limb,
+		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail,
+		)
+
+	abilities = list(
+		/datum/ability/species/sonar,
+		/datum/ability/species/toggle_agility,
+		/datum/ability/species/xenomorph_hybrid/regenerate,
+		/datum/ability/species/xenomorph_hybrid/sneak,
+	)
+
+	has_organ = list(//no resin spinner for hunters
+		O_HEART =		/obj/item/organ/internal/heart,
+		O_VOICE = 		/obj/item/organ/internal/voicebox,
+		O_LIVER =		/obj/item/organ/internal/liver,
+		O_KIDNEYS =		/obj/item/organ/internal/kidneys,
+		O_BRAIN =		/obj/item/organ/internal/brain,
+		O_PLASMA =		/obj/item/organ/internal/xenos/plasmavessel/hunter,//Important for the xenomorph abilities, hunter to have a pretty small plasma capacity
+		O_STOMACH =		/obj/item/organ/internal/stomach,
+		O_INTESTINE =	/obj/item/organ/internal/intestine,
+		)
+	// Stealthy but fragile
+	total_health = 100	//Baseline value
+	brute_mod = 1.1 // Fragile but stealthy
+	burn_mod = 1.6	// Natural enemy of xenomorphs is fire.
+	hunger_factor = 0.08 //Slightly less hungry than standard hybrid
+
+	vision_innate = /datum/vision/baseline/species_tier_3
+	movement_base_speed = 5.75 // Slightly faster than standard hybrid
+
+	heal_rate = 0.25 // Heals only half as fast as normal hybrids
+
+/datum/species/xenohybrid/warrior
+	name = "Xenomorph Warrior Hybrid"
+	name_plural = "Xenomorph Hybrids"
+	uid = SPECIES_ID_XENOHYBRID_WARRIOR
+	id = SPECIES_ID_XENOHYBRID
+	default_bodytype = BODYTYPE_XENOHYBRID
+
+	// Tough but slow
+	total_health = 200	//Double Human Baseline value
+	brute_mod = 0.9 // Chitin is somewhat hard to crack
+	burn_mod = 1.35	// Natural enemy of xenomorphs is fire. Upgraded to Major Burn Weakness. Reduce to Minor if this is too harsh.
+	radiation_mod = 0.98 // Thicker chitin plates
+	heal_rate = 0.55 // slightly higher heal rate
+
+	movement_base_speed = 5 // baseline speed, slower than other hybrids

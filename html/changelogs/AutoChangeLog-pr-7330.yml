@@ -1,0 +1,9 @@
+author: "GySgtMurphy"
+delete-after: True
+changes:
+  - rscadd: "cameras to the bridge"
+  - rscdel: "extra air alarms to bridge"
+  - tweak: "changed name of door on Bridge"
+  - rscadd: "windoor to Janitorial"
+  - rscadd: "powernet sensors that were missing or misnamed"
+  - rscadd: "orbital deployment bay to Deck 4 Engineering"

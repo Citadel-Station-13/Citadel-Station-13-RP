@@ -27274,6 +27274,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/power/apc/west_mount,
+/obj/structure/cable/green,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/civilian_hallway_mid)
 "qCS" = (
