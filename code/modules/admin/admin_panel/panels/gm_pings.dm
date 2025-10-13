@@ -5,6 +5,10 @@
 	name = "GM Pings"
 	tgui_interface = "AdminGMPings"
 
+/datum/admin_panel/gm_pings/ui_data(mob/user, datum/tgui/ui)
+	. = ..()
+	.["ghostAllowed"] = GLOB.gm_ping_ghost_allowed
+
 /datum/admin_panel/gm_pings/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["pingIds"] = encode_ping_ids()
@@ -40,14 +44,19 @@
 			QDEL_LIST(GLOB.gm_pings)
 			update_static_data()
 			return TRUE
-		// TODO: Purge by ckey/mob once we're higher pop and need it.
-		// if("purgeCkey")
-		// if("purgeMob")
 		if("delPing")
 			if(!target_ping)
 				return TRUE
 			qdel(target_ping)
 			push_ui_data(list("pingIds" = encode_ping_ids()))
+			return TRUE
+		if("toggleGhostAllowed")
+			var/new_state = params["enabled"]
+			if(new_state == GLOB.gm_ping_ghost_allowed)
+				return TRUE
+			if(new_state)
+				log_and_message_admins("[new_state ? "enabled" : "disabled"] ghost GM pings.", usr)
+			GLOB.gm_ping_ghost_allowed = new_state
 			return TRUE
 		if("jmpPingOrigin")
 			if(!target_ping)
@@ -75,6 +84,10 @@
 		if("refreshPings")
 			if(!target_ping)
 				return TRUE
+			var/list/assembled_nested_data = list()
+			for(var/datum/gm_ping/ping as anything in GLOB.gm_pings)
+				assembled_nested_data[ping.lazy_unsafe_uid] = ping.ui_panel_static_data() + ping.ui_panel_data()
+			push_ui_nested_data(updates = assembled_nested_data)
 			push_ui_data(data = list("pingIds" = encode_ping_ids()))
 			return TRUE
 		if("refreshPing")

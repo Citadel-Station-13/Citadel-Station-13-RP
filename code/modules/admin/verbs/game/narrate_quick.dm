@@ -34,7 +34,7 @@ ADMIN_VERB_DEF(narrate_quick, R_ADMIN, "Narrate (Quick)", "Perform narration.", 
 			target_name_descriptor = "(viewing [target])"
 			target_long_descriptor = "Narrate to everyone who can see '[target]' (currently at \the [get_area(target)])."
 
-	var/emit = tgui_input_text(caller, target_long_descriptor, "Narrate to [target_name_descriptor]", "", 65535, TRUE, FALSE)
+	var/emit = tgui_input_text(invoker, target_long_descriptor, "Narrate to [target_name_descriptor]", "", 65535, TRUE, FALSE)
 	if(!emit)
 		return
 
@@ -81,15 +81,15 @@ ADMIN_VERB_DEF(narrate_quick, R_ADMIN, "Narrate (Quick)", "Perform narration.", 
 			"<hr>",
 			"<center><span style='font-weight: bold; color: red;'>^^^ ERROR: The above was not sent; [reject] ^^^</span></center>",
 		)
-		to_chat(caller, jointext(html, ""))
+		to_chat(invoker, jointext(html, ""))
 		return
 
 	var/list/view_target_to_list = list()
 	for(var/mob/viewing in targets)
 		view_target_to_list += "[key_name(viewing)]"
 	var/view_target_list = jointext(view_target_to_list, ", ")
-	message_admins("[key_name(caller)] sent a [SPAN_TOOLTIP("[html_encode(emit)]", "global narrate")] to [SPAN_TOOLTIP("[view_target_list]", "[length(targets)] target(s)")].")
-	log_admin("[key_name(caller)] sent a global narrate to [length(targets)] targets; VIEWERS: '[view_target_list]'', TEXT: '[emit]'")
+	message_admins("[key_name(invoker)] sent a [SPAN_TOOLTIP("[html_encode(emit)]", "global narrate")] to [SPAN_TOOLTIP("[view_target_list]", "[length(targets)] target(s)")].")
+	log_admin("[key_name(invoker)] sent a global narrate to [length(targets)] targets; VIEWERS: '[view_target_list]'', TEXT: '[emit]'")
 
 	for(var/mob/viewing in targets)
 		to_chat(viewing, emit)

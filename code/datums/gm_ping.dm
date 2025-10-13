@@ -2,6 +2,7 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 GLOBAL_LIST_EMPTY_TYPED(gm_pings, /datum/gm_ping)
+GLOBAL_VAR_INIT(gm_ping_ghost_allowed, FALSE)
 
 /**
  * Contextual GM ping system.
@@ -15,6 +16,8 @@ GLOBAL_LIST_EMPTY_TYPED(gm_pings, /datum/gm_ping)
 
 	/// originating ckey
 	var/originating_ckey
+	/// originating key because it's prettier than ckey
+	var/originating_key
 
 	/// where was the ping made?
 	var/turf/created_at
@@ -68,6 +71,7 @@ GLOBAL_LIST_EMPTY_TYPED(gm_pings, /datum/gm_ping)
 		"ref" = ref(src),
 		"lazyUid" = lazy_unsafe_uid,
 		"playerCkey" = originating_ckey,
+		"playerKey" = originating_key,
 		// DO NOT REMOVE THE FUCKING HTML ENCODE OR YOU WILL XSS THE ADMINS!!!
 		"messageAsHtml" = say_emphasis(html_encode(unsanitized_message)),
 		"pingLocation" = encode_ui_panel_location_data(),
@@ -138,6 +142,7 @@ GLOBAL_LIST_EMPTY_TYPED(gm_pings, /datum/gm_ping)
 		// bite me it's an /atom component
 		"name" = target.parent:name,
 		"location" = encode_ui_location(target.parent),
+		"ref" = REF(target.owner),
 	)
 
 /datum/gm_ping/proc/pull_ui_panel_context_data()

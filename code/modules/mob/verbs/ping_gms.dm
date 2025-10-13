@@ -22,7 +22,16 @@
 		TIMER_COOLDOWN_START(src, TIMER_CD_INDEX_MOB_VERB_PING_GMS, 4 SECONDS)
 		tgui_alert_async(
 			src,
-			"You cannot use GM pings because you've been muted from them by staff.",
+		"You cannot use GM pings because you've been muted from them by staff.",
+			"GM Ping Rejected",
+		)
+		return
+
+	if(isobserver(src) && !GLOB.gm_ping_ghost_allowed)
+		TIMER_COOLDOWN_START(src, TIMER_CD_INDEX_MOB_VERB_PING_GMS, 4 SECONDS)
+		tgui_alert_async(
+			src,
+			"GM pings for ghosts are currently disabled.",
 			"GM Ping Rejected",
 		)
 		return
@@ -69,6 +78,7 @@
 	var/datum/gm_ping/creating_ping = new
 
 	creating_ping.originating_ckey = ckey
+	creating_ping.originating_key = key
 	creating_ping.originating_mob_weakref = WEAKREF(src)
 	creating_ping.link_context(target)
 	creating_ping.created_at = creating_at
