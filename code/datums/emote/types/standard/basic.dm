@@ -42,28 +42,28 @@
 
 	/// if existing, and we're miming, we immediately switch saycode mode to visible if we're on auto
 	///
-	/// * %USER% is replaced with the user.
+	/// * %%USER%% is replaced with the user.
 	/// * If the replacement is at the start of the string, it'll be capitalized as needed.
 	/// * HTML is valid
 	var/feedback_special_miming
 	/// targeted version of miming
 	///
-	/// * %USER% is replaced with the user.
-	/// * %TARGET% is replaced with a target.
+	/// * %%USER%% is replaced with the user.
+	/// * %%TARGET%% is replaced with a target.
 	/// * If the replacement is at the start of the string, it'll be capitalized as needed.
 	/// * HTML is valid
 	var/feedback_special_miming_targeted
 
 	/// if existing, and we're muzzled, we immediately switch to this
 	///
-	/// * %USER% is replaced with the user.
+	/// * %%USER%% is replaced with the user.
 	/// * If the replacement is at the start of the string, it'll be capitalized as needed.
 	/// * HTML is valid
 	var/feedback_special_muzzled
 	/// targeted version of muzzled
 	///
-	/// * %USER% is replaced with the user.
-	/// * %TARGET% is replaced with a target.
+	/// * %%USER%% is replaced with the user.
+	/// * %%TARGET%% is replaced with a target.
 	/// * If the replacement is at the start of the string, it'll be capitalized as needed.
 	/// * HTML is valid
 	var/feedback_special_muzzled_targeted
@@ -74,14 +74,14 @@
 
 	/// the default feedback string
 	///
-	/// * If heard, audible has %USER% replaced with "someone" if the viewer is blind.
+	/// * If heard, audible has %%USER%% replaced with "someone" if the viewer is blind.
 	/// * If the replacement is at the start of the string, it'll be capitalized as needed.
 	/// * HTML is valid
-	var/feedback_default = "%USER% does something that isn't implemented by the coders. (Yell at coders, someone forgot a default string.)"
+	var/feedback_default = "%%USER%% does something that isn't implemented by the coders. (Yell at coders, someone forgot a default string.)"
 	/// the default targeted feedback sting
 	///
-	/// * %USER% is replaced with the user.
-	/// * %TARGET% is replaced with a target.
+	/// * %%USER%% is replaced with the user.
+	/// * %%TARGET%% is replaced with a target.
 	/// * If the replacement is at the start of the string, it'll be capitalized as needed.
 	/// * HTML is valid
 	var/feedback_default_targeted
@@ -139,7 +139,26 @@
 	)
 
 /datum/emote/standard/basic/proc/on_run_emote(datum/event_args/actor/actor, list/arbitrary, maybe_custom_param_string, list/maybe_custom_param_tokens, atom/maybe_target)
+
 	#warn this
+
+/**
+ * Get template parameters for 'feedback_' vars.
+ */
+/datum/emote/standard/basic/proc/get_template_parameters(datum/event_args/actor/actor, list/arbitrary)
+	. = list("USER" = actor.performer)
+	if(target_allowed)
+		var/atom/maybe_target = arbitrary[EMOTE_PARAMETER_KEY_TARGET]
+		.["TARGET"] = maybe_target ? "[maybe_target]" : "something"
+
+/datum/emote/standard/basic/proc/get_template_string(datum/event_args/actor/actor, list/arbitrary, audible)
+	// TODO: miming
+	// TODO: muzzled
+	if(audible)
+		return feedback_default_audible
+	if(target_allowed && arbitrary[EMOTE_PARAMETER_KEY_TARGET])
+		return feedback_default_targeted
+	return feedback_default
 
 /**
  * Processes a custom parameter
@@ -147,8 +166,3 @@
 /datum/emote/standard/basic/proc/process_custom_parameter(datum/event_args/actor/actor, string)
 	// default to just spitting the string back out
 	return string
-
-#warn impl
-
-
-/datum/emote/standard/basic/proc/

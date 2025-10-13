@@ -10,12 +10,12 @@
 	bindings = "shriek-loud"
 	sfx = 'sound/voice/shrieksneeze.ogg'
 	sfx_volume = 50
-	feedback_default = "%USER% gives a short sharp shriek!"
+	feedback_default = "%%USER%% gives a short sharp shriek!"
 
 /datum/emote/standard/basic/species/vox/shriek_quiet
 	bindings = "shriek-soft"
 	sfx = 'sound/voice/shriekcough.ogg'
 	sfx_volume = 50
-	feedback_default = "%USER% gives a short, quieter shriek!"
+	feedback_default = "%%USER%% gives a short, quieter shriek!"
 
 

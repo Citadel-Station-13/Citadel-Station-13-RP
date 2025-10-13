@@ -14,6 +14,6 @@
 /datum/emote/standard/basic/species/promethean/squish
 	bindings = "squish"
 	feedback_saycode_type = SAYCODE_TYPE_VISIBLE
-	feedback_default = "%USER% squishes."
+	feedback_default = "%%USER%% squishes."
 	sfx = 'sound/effects/slime_squish.ogg'
 	sfx_volume = 50

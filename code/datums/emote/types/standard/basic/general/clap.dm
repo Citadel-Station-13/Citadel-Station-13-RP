@@ -12,8 +12,8 @@
 		'sound/voice/clap4.ogg',
 	)
 	sfx_volume = 50
-	feedback_default = "%USER% claps."
-	feedback_default_targeted = "%USER% claps for %TARGET%."
+	feedback_default = "%%USER%% claps."
+	feedback_default_targeted = "%%USER%% claps for %%TARGET%%."
 	feedback_default_audible = "You hear clapping."
 	target_allowed = TRUE
 
@@ -23,7 +23,7 @@
 	bindings = "clap-slow"
 	sfx = 'sound/voice/golfclap.ogg'
 	sfx_volume = 50
-	feedback_default = "%USER% slowly claps."
-	feedback_default_targeted = "%USER% slowly claps for %TARGET%."
+	feedback_default = "%%USER%% slowly claps."
+	feedback_default_targeted = "%%USER%% slowly claps for %%TARGET%%."
 	feedback_default_audible = "You hear sarcastic clapping."
 	target_allowed = TRUE
