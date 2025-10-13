@@ -66,7 +66,8 @@
 	set desc = "Enable your hologram."
 	set category = VERB_CATEGORY_IC
 
-	transform_component.try_untransform()
+	var/datum/species/shapeshifter/holosphere/S = hologram.species
+	S.try_untransform()
 
 // same way pAI space movement works in pai/mobility.dm
 /mob/living/simple_mob/holosphere_shell/Process_Spacemove(movement_dir = NONE)

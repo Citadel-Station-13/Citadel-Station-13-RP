@@ -539,10 +539,6 @@
 /obj/machinery/light/small/old{
 	dir = 1
 	},
-/obj/structure/wheelchairassist{
-	dir = 4;
-	layer = 2
-	},
 /turf/simulated/floor/trap/wheelchair,
 /area/hallway/strelka/deck1)
 "cz" = (
@@ -575,7 +571,6 @@
 /obj/machinery/porta_turret/stationary{
 	uid = "gateway"
 	},
-/obj/structure/marker_beacon/green,
 /turf/simulated/floor/tiled/techmaint,
 /area/strelka/gateway)
 "cD" = (
@@ -3349,7 +3344,6 @@
 /area/security/strelka/armory)
 "qF" = (
 /obj/structure/stairs/spawner/north,
-/obj/structure/wheelchairassist,
 /turf/simulated/floor/trap/wheelchair,
 /area/strelka/pilot_EVA)
 "qH" = (
@@ -3774,9 +3768,6 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
-/obj/structure/wheelchairassist{
-	dir = 8
-	},
 /turf/simulated/floor/trap/wheelchair,
 /area/hallway/strelka/deck1)
 "sT" = (
@@ -3960,10 +3951,6 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/grass_edge,
-/obj/structure/wheelchairassist{
-	dir = 8;
-	layer = 2
-	},
 /turf/simulated/floor/trap/wheelchair,
 /area/hallway/strelka/deck1)
 "tM" = (
@@ -4360,23 +4347,6 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/hangardeck)
-"wd" = (
-/obj/effect/floor_decal/industrial/halfstair{
-	dir = 8
-	},
-/obj/effect/floor_decal/grass_edge,
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
-/obj/machinery/light/small/old{
-	dir = 1
-	},
-/obj/structure/wheelchairassist{
-	dir = 8;
-	layer = 2
-	},
-/turf/simulated/floor/trap/wheelchair,
-/area/hallway/strelka/deck1)
 "wg" = (
 /obj/structure/cable/blue{
 	icon_state = "0-8"
@@ -5187,9 +5157,6 @@
 /obj/structure/stairs/spawner/west,
 /obj/machinery/door/firedoor/glass{
 	dir = 8
-	},
-/obj/structure/wheelchairassist{
-	dir = 4
 	},
 /turf/simulated/floor/trap/wheelchair,
 /area/hallway/strelka/deck1)
@@ -7512,10 +7479,6 @@
 /obj/machinery/status_display{
 	pixel_y = 32
 	},
-/obj/structure/wheelchairassist{
-	dir = 4;
-	layer = 2
-	},
 /turf/simulated/floor/trap/wheelchair,
 /area/hallway/strelka/deck1)
 "Mt" = (
@@ -8313,9 +8276,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck1)
 "Qo" = (
-/obj/structure/wheelchairassist{
-	dir = 1
-	},
 /turf/simulated/floor/trap/wheelchair,
 /area/strelka/pilot_EVA)
 "Qs" = (
@@ -9417,8 +9377,7 @@
 /obj/effect/floor_decal/grass_edge{
 	dir = 4
 	},
-/obj/structure/ladder/teleporter/up,
-/turf/simulated/floor/tiled/monodark,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/hallway/strelka/deck1)
 "VX" = (
 /turf/simulated/floor/airless,
@@ -31883,7 +31842,7 @@ dE
 dE
 Mk
 ji
-wd
+cy
 wX
 Hn
 VN
@@ -32853,7 +32812,7 @@ jH
 Xb
 Mk
 ji
-wd
+cy
 TN
 sE
 Rm

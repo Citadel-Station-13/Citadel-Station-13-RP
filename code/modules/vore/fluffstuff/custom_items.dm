@@ -483,7 +483,7 @@
 	if(configured == 1)
 		return ..()
 
-	var/title = user.client.prefs.get_job_alt_title_name(SSjob.name_occupations[user.job]) || user.job
+	var/title = user.client.prefs.get_job_alt_title_name(RSroles.legacy_job_by_title(user.job)) || user.job
 	assignment = title
 	user.set_id_info(src)
 	if(user.mind && user.mind.initial_account)

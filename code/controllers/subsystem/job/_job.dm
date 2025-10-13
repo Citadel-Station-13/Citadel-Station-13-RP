@@ -4,14 +4,6 @@ SUBSYSTEM_DEF(job)
 	init_stage = INIT_STAGE_EARLY
 	subsystem_flags = SS_NO_FIRE
 
-	/// List of all jobs
-	var/list/occupations
-	/// Dict of all jobs, keys are titles
-	var/list/datum/role/job/name_occupations
-	/// Dict of all jobs, keys are types
-	var/list/type_occupations
-	/// jobs by id
-	var/list/job_lookup
 	/// job preferences ui cache - cache[faction string][department name] = list(job ids)
 	var/list/job_pref_ui_cache
 	/// jobs per column
@@ -25,34 +17,25 @@ SUBSYSTEM_DEF(job)
 	init_access()
 	if(!length(department_datums))
 		setup_departments()
-	if(!length(occupations))
-		setup_occupations()
 	reconstruct_job_ui_caches()
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/job/Recover()
 	init_access()
-	occupations = SSjob.occupations
-	name_occupations = SSjob.name_occupations
-	job_lookup = SSjob.job_lookup
-	type_occupations = SSjob.type_occupations
-
 	reconstruct_spawnpoints()
 	reconstruct_job_ui_caches()
-
 	return ..()
 
 /datum/controller/subsystem/job/proc/reconstruct_job_ui_caches()
 	// todo: this is shit but it works
 	job_pref_ui_cache = list()
-	for(var/id in job_lookup)
-		var/datum/role/job/J = job_lookup[id]
+	for(var/datum/prototype/role/job/J as anything in RSroles.legacy_all_sorted_job_datums())
 		if(!(J.join_types & JOB_ROUNDSTART))
 			continue
 		var/faction = J.faction
 		LAZYINITLIST(job_pref_ui_cache[faction])
 		var/department = LAZYACCESS(J.departments, 1) || "Misc"
-		LAZYADD(job_pref_ui_cache[faction][department], id)
+		LAZYADD(job_pref_ui_cache[faction][department], J.id)
 	// todo: why
 	for(var/fname in job_pref_ui_cache)
 		var/list/faction = job_pref_ui_cache[fname]
@@ -65,49 +48,7 @@ SUBSYSTEM_DEF(job)
 		for(var/depname in asinine_sort)
 			faction[depname] = asinine_sort[depname]
 
-/datum/controller/subsystem/job/proc/setup_occupations()
-	occupations = list()
-	job_lookup = list()
-	name_occupations = list()
-	type_occupations = list()
-	var/list/all_jobs = subtypesof(/datum/role/job)
-	if(!all_jobs.len)
-		to_chat(world, SPAN_WARNING( "Error setting up jobs, no job datums found"))
-		return FALSE
-
-	for(var/J in all_jobs)
-		var/datum/role/job/job = J
-		if(initial(job.abstract_type) == J)
-			continue
-		job = new J
-		occupations += job
-		if(!job.id)
-			stack_trace("no job id for [J]")
-			continue
-		if(!job.title)
-			stack_trace("no job title for [J]")
-			continue
-		if(job_lookup[job.id])
-			stack_trace("job id collision on [job.id] for [J]")
-			continue
-		if(name_occupations[job.title])
-			stack_trace("job title collision on [job.title] for [J]")
-			continue
-		name_occupations[job.title] = job
-		type_occupations[J] = job
-		job_lookup[job.id] = job
-		if(LAZYLEN(job.departments))
-			add_to_departments(job)
-
-	tim_sort(occupations, GLOBAL_PROC_REF(cmp_job_datums))
-	for(var/D in department_datums)
-		var/datum/department/dept = department_datums[D]
-		tim_sort(dept.jobs, GLOBAL_PROC_REF(cmp_job_datums), TRUE)
-		tim_sort(dept.primary_jobs, GLOBAL_PROC_REF(cmp_job_datums), TRUE)
-
-	return TRUE
-
-/datum/controller/subsystem/job/proc/add_to_departments(datum/role/job/J)
+/datum/controller/subsystem/job/proc/add_to_departments(datum/prototype/role/job/J)
 	// Adds to the regular job lists in the departments, which allow multiple departments for a job.
 	for(var/D in J.departments)
 		var/datum/department/dept = LAZYACCESS(department_datums, D)
@@ -133,16 +74,20 @@ SUBSYSTEM_DEF(job)
 
 	tim_sort(department_datums, GLOBAL_PROC_REF(cmp_department_datums), TRUE)
 
+	for(var/datum/prototype/role/job/job as anything in RSroles.legacy_all_job_datums())
+		if(LAZYLEN(job.departments))
+			add_to_departments(job)
+
+	for(var/D in department_datums)
+		var/datum/department/dept = department_datums[D]
+		tim_sort(dept.jobs, GLOBAL_PROC_REF(cmp_job_datums), TRUE)
+		tim_sort(dept.primary_jobs, GLOBAL_PROC_REF(cmp_job_datums), TRUE)
+
 /datum/controller/subsystem/job/proc/get_all_department_datums()
 	var/list/dept_datums = list()
 	for(var/D in department_datums)
 		dept_datums += department_datums[D]
 	return dept_datums
-
-/datum/controller/subsystem/job/proc/get_job(rank)
-	if(!occupations.len)
-		setup_occupations()
-	return name_occupations[rank]
 
 // Determines if a job title is inside of a specific department.
 // Useful to replace the old `if(job_title in command_positions)` code.
@@ -166,12 +111,12 @@ SUBSYSTEM_DEF(job)
 
 // Returns a reference to the primary department datum that a job is in.
 // Can receive job datum refs, typepaths, or job title strings.
-/datum/controller/subsystem/job/proc/get_primary_department_of_job(datum/role/job/J)
-	if(!istype(J, /datum/role/job))
+/datum/controller/subsystem/job/proc/get_primary_department_of_job(datum/prototype/role/job/J)
+	if(!istype(J, /datum/prototype/role/job))
 		if(ispath(J))
-			J = job_by_type(J)
+			J = RSroles.legacy_job_by_type(J)
 		else if(istext(J))
-			J = get_job(J)
+			J = RSroles.legacy_job_by_title(J)
 
 	if(!istype(J))
 		job_debug_message("Was asked to get department for job '[J]', but input could not be resolved into a job datum.")
@@ -187,12 +132,6 @@ SUBSYSTEM_DEF(job)
 		return
 
 	return department_datums[primary_department]
-
-// Someday it might be good to port code/game/jobs/job_controller.dm to here and clean it up.
-
-
-
-
 
 /datum/controller/subsystem/job/proc/job_debug_message(message)
 	if(debug_messages)

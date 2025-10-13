@@ -394,7 +394,7 @@
 		jobs += "<tr align='center' bgcolor='ccccff'><th colspan='[length(SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND))]'><a href='?src=\ref[src];jobban3=commanddept;jobban4=\ref[M]'>Command Positions</a></th></tr><tr align='center'>"
 		for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND))
 			if(!jobPos)	continue
-			var/datum/role/job/job = SSjob.get_job(jobPos)
+			var/datum/prototype/role/job/job = RSroles.legacy_job_by_title(jobPos)
 			if(!job) continue
 
 			if(jobban_isbanned(M, job.title))
@@ -415,7 +415,7 @@
 		jobs += "<tr bgcolor='ffddf0'><th colspan='[length(SSjob.get_job_titles_in_department(DEPARTMENT_SECURITY))]'><a href='?src=\ref[src];jobban3=securitydept;jobban4=\ref[M]'>Security Positions</a></th></tr><tr align='center'>"
 		for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_SECURITY))
 			if(!jobPos)	continue
-			var/datum/role/job/job = SSjob.get_job(jobPos)
+			var/datum/prototype/role/job/job = RSroles.legacy_job_by_title(jobPos)
 			if(!job) continue
 
 			if(jobban_isbanned(M, job.title))
@@ -436,7 +436,7 @@
 		jobs += "<tr bgcolor='fff5cc'><th colspan='[length(SSjob.get_job_titles_in_department(DEPARTMENT_ENGINEERING))]'><a href='?src=\ref[src];jobban3=engineeringdept;jobban4=\ref[M]'>Engineering Positions</a></th></tr><tr align='center'>"
 		for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_ENGINEERING))
 			if(!jobPos)	continue
-			var/datum/role/job/job = SSjob.get_job(jobPos)
+			var/datum/prototype/role/job/job = RSroles.legacy_job_by_title(jobPos)
 			if(!job) continue
 
 			if(jobban_isbanned(M, job.title))
@@ -457,7 +457,7 @@
 		jobs += "<tr bgcolor='fff5cc'><th colspan='[length(SSjob.get_job_titles_in_department(DEPARTMENT_CARGO))]'><a href='?src=\ref[src];jobban3=cargodept;jobban4=\ref[M]'>Cargo Positions</a></th></tr><tr align='center'>"
 		for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_CARGO))
 			if(!jobPos)	continue
-			var/datum/role/job/job = SSjob.get_job(jobPos)
+			var/datum/prototype/role/job/job = RSroles.legacy_job_by_title(jobPos)
 			if(!job) continue
 
 			if(jobban_isbanned(M, job.title))
@@ -478,7 +478,7 @@
 		jobs += "<tr bgcolor='ffeef0'><th colspan='[length(SSjob.get_job_titles_in_department(DEPARTMENT_MEDICAL))]'><a href='?src=\ref[src];jobban3=medicaldept;jobban4=\ref[M]'>Medical Positions</a></th></tr><tr align='center'>"
 		for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_MEDICAL))
 			if(!jobPos)	continue
-			var/datum/role/job/job = SSjob.get_job(jobPos)
+			var/datum/prototype/role/job/job = RSroles.legacy_job_by_title(jobPos)
 			if(!job) continue
 
 			if(jobban_isbanned(M, job.title))
@@ -499,7 +499,7 @@
 		jobs += "<tr bgcolor='e79fff'><th colspan='[length(SSjob.get_job_titles_in_department(DEPARTMENT_RESEARCH))]'><a href='?src=\ref[src];jobban3=sciencedept;jobban4=\ref[M]'>Science Positions</a></th></tr><tr align='center'>"
 		for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_RESEARCH))
 			if(!jobPos)	continue
-			var/datum/role/job/job = SSjob.get_job(jobPos)
+			var/datum/prototype/role/job/job = RSroles.legacy_job_by_title(jobPos)
 			if(!job) continue
 
 			if(jobban_isbanned(M, job.title))
@@ -519,7 +519,7 @@
 		jobs += "<tr bgcolor='e79fff'><th colspan='[length(SSjob.get_job_titles_in_department(DEPARTMENT_PLANET))]'><a href='?src=\ref[src];jobban3=sciencedept;jobban4=\ref[M]'>Science Positions</a></th></tr><tr align='center'>"
 		for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_PLANET))
 			if(!jobPos)	continue
-			var/datum/role/job/job = SSjob.get_job(jobPos)
+			var/datum/prototype/role/job/job = RSroles.legacy_job_by_title(jobPos)
 			if(!job) continue
 
 			if(jobban_isbanned(M, job.title))
@@ -539,7 +539,7 @@
 		jobs += "<tr bgcolor='dddddd'><th colspan='[length(SSjob.get_job_titles_in_department(DEPARTMENT_CIVILIAN))]'><a href='?src=\ref[src];jobban3=civiliandept;jobban4=\ref[M]'>Civilian Positions</a></th></tr><tr align='center'>"
 		for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_CIVILIAN))
 			if(!jobPos)	continue
-			var/datum/role/job/job = SSjob.get_job(jobPos)
+			var/datum/prototype/role/job/job = RSroles.legacy_job_by_title(jobPos)
 			if(!job) continue
 
 			if(jobban_isbanned(M, job.title))
@@ -566,7 +566,7 @@
 		jobs += "<tr bgcolor='ccffcc'><th colspan='[length(SSjob.get_job_titles_in_department(DEPARTMENT_SYNTHETIC))+1]'><a href='?src=\ref[src];jobban3=nonhumandept;jobban4=\ref[M]'>Non-human Positions</a></th></tr><tr align='center'>"
 		for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_SYNTHETIC))
 			if(!jobPos)	continue
-			var/datum/role/job/job = SSjob.get_job(jobPos)
+			var/datum/prototype/role/job/job = RSroles.legacy_job_by_title(jobPos)
 			if(!job) continue
 
 			if(jobban_isbanned(M, job.title))
@@ -649,56 +649,56 @@
 			if("commanddept")
 				for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND))
 					if(!jobPos)	continue
-					var/datum/role/job/temp = SSjob.get_job(jobPos)
+					var/datum/prototype/role/job/temp = RSroles.legacy_job_by_title(jobPos)
 					if(!temp) continue
 					joblist += temp.title
 			if("securitydept")
 				for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_SECURITY))
 					if(!jobPos)	continue
-					var/datum/role/job/temp = SSjob.get_job(jobPos)
+					var/datum/prototype/role/job/temp = RSroles.legacy_job_by_title(jobPos)
 					if(!temp) continue
 					joblist += temp.title
 			if("engineeringdept")
 				for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_ENGINEERING))
 					if(!jobPos)	continue
-					var/datum/role/job/temp = SSjob.get_job(jobPos)
+					var/datum/prototype/role/job/temp = RSroles.legacy_job_by_title(jobPos)
 					if(!temp) continue
 					joblist += temp.title
 			if("cargodept")
 				for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_CARGO))
 					if(!jobPos)	continue
-					var/datum/role/job/temp = SSjob.get_job(jobPos)
+					var/datum/prototype/role/job/temp = RSroles.legacy_job_by_title(jobPos)
 					if(!temp) continue
 					joblist += temp.title
 			if("medicaldept")
 				for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_MEDICAL))
 					if(!jobPos)	continue
-					var/datum/role/job/temp = SSjob.get_job(jobPos)
+					var/datum/prototype/role/job/temp = RSroles.legacy_job_by_title(jobPos)
 					if(!temp) continue
 					joblist += temp.title
 			if("sciencedept")
 				for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_RESEARCH))
 					if(!jobPos)	continue
-					var/datum/role/job/temp = SSjob.get_job(jobPos)
+					var/datum/prototype/role/job/temp = RSroles.legacy_job_by_title(jobPos)
 					if(!temp) continue
 					joblist += temp.title
 			if("explorationdept")
 				for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_PLANET))
 					if(!jobPos)	continue
-					var/datum/role/job/temp = SSjob.get_job(jobPos)
+					var/datum/prototype/role/job/temp = RSroles.legacy_job_by_title(jobPos)
 					if(!temp) continue
 					joblist += temp.title
 			if("civiliandept")
 				for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_CIVILIAN))
 					if(!jobPos)	continue
-					var/datum/role/job/temp = SSjob.get_job(jobPos)
+					var/datum/prototype/role/job/temp = RSroles.legacy_job_by_title(jobPos)
 					if(!temp) continue
 					joblist += temp.title
 			if("nonhumandept")
 				joblist += "pAI"
 				for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_SYNTHETIC))
 					if(!jobPos)	continue
-					var/datum/role/job/temp = SSjob.get_job(jobPos)
+					var/datum/prototype/role/job/temp = RSroles.legacy_job_by_title(jobPos)
 					if(!temp) continue
 					joblist += temp.title
 			else
@@ -845,7 +845,7 @@
 			// we'll add the function later when we overhaul banning
 			return
 
-		if(is_role_banned_ckey(target_ckey, role = BAN_ROLE_OOC))
+		if(SSbans.t_is_role_banned_ckey(target_ckey, role = BAN_ROLE_OOC))
 			to_chat(usr, SPAN_WARNING("[target_ckey] is already OOC banned. Use Unban-Panel to unban them."))
 			return
 
@@ -857,7 +857,7 @@
 				var/reason = sanitize(input(usr, "Reason?", "OOC Ban") as text|null)
 				if(!reason)
 					return
-				role_ban_ckey(target_ckey, role = BAN_ROLE_OOC, minutes = minutes, reason = reason, admin = src)
+				SSbans.t_role_ban_ckey(target_ckey, role = BAN_ROLE_OOC, minutes = minutes, reason = reason, admin = src)
 				// incase they switched mobs
 				var/client/target_client = GLOB.directory[target_ckey]
 				notes_add(target_ckey, "[usr.ckey] has banned has banned [target_ckey] from OOC. Reason: [reason]. This will be removed in [minutes] minutes.")
@@ -869,7 +869,7 @@
 				var/reason = sanitize(input(usr, "Reason?", "OOC Ban") as text|null)
 				if(!reason)
 					return
-				role_ban_ckey(target_ckey, role = BAN_ROLE_OOC, reason = reason, admin = src)
+				SSbans.t_role_ban_ckey(target_ckey, role = BAN_ROLE_OOC, reason = reason, admin = src)
 				// incase they switched mobs
 				var/client/target_client = GLOB.directory[target_ckey]
 				notes_add(target_ckey, "[usr.ckey] has banned has banned [target_ckey] from OOC. Reason: [reason].")
@@ -1574,7 +1574,7 @@
 		if(!check_rights(R_ADMIN))	return
 
 		var/mob/M = locate(href_list["narrateto"])
-		usr.client.cmd_admin_direct_narrate(M)
+		usr.client.holder.open_admin_modal(/datum/admin_modal/admin_narrate, M)
 
 	else if(href_list["subtlemessage"])
 		if(!check_rights(R_MOD,0) && !check_rights(R_ADMIN))  return

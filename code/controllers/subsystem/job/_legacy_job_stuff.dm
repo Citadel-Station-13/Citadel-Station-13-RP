@@ -11,12 +11,12 @@
 	return TRUE
 
 /datum/controller/subsystem/job/proc/GetPlayerAltTitle(mob/new_player/player, rank)
-	return player.client.prefs.get_job_alt_title_name(get_job(rank))
+	return player.client.prefs.get_job_alt_title_name(RSroles.legacy_job_by_title(rank))
 
 /datum/controller/subsystem/job/proc/AssignRole(mob/new_player/player, rank, latejoin = 0)
 	job_debug("Running AR, Player: [player], Rank: [rank], LJ: [latejoin]")
 	if(player && player.mind && rank)
-		var/datum/role/job/job = get_job(rank)
+		var/datum/prototype/role/job/job = RSroles.legacy_job_by_title(rank)
 		var/reasons = job.check_client_availability_one(player.client)
 		if(reasons != ROLE_AVAILABLE)
 			job_debug("AR failed: player [player], rank [rank], latejoin [latejoin], failed for [reasons]")
@@ -34,13 +34,13 @@
 
 /// Making additional slot on the fly.
 /datum/controller/subsystem/job/proc/FreeRole(rank)
-	var/datum/role/job/job = get_job(rank)
+	var/datum/prototype/role/job/job = RSroles.legacy_job_by_title(rank)
 	if(job && job.total_positions != -1)
 		job.total_positions++
 		return 1
 	return 0
 
-/datum/controller/subsystem/job/proc/FindOccupationCandidates(datum/role/job/job, level)
+/datum/controller/subsystem/job/proc/FindOccupationCandidates(datum/prototype/role/job/job, level)
 	job_debug("Running FOC, Job: [job], Level: [level]")
 	var/list/candidates = list()
 	for(var/mob/new_player/player in divide_unassigned)
@@ -56,7 +56,7 @@
 
 /datum/controller/subsystem/job/proc/GiveRandomJob(mob/new_player/player)
 	job_debug("GRJ Giving random job, Player: [player]")
-	for(var/datum/role/job/job in shuffle(occupations))
+	for(var/datum/prototype/role/job/job in shuffle(RSroles.legacy_all_job_datums()))
 		var/reasons = job.check_client_availability_one(player.client)
 		if(reasons != ROLE_AVAILABLE)
 			job_debug("GRJ failed for [reasons] on [job.id]")
@@ -75,7 +75,7 @@
 /datum/controller/subsystem/job/proc/FillHeadPosition()
 	for(var/level in JOB_PRIORITY_HIGH to JOB_PRIORITY_LOW step -1)
 		for(var/command_position in SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND))
-			var/datum/role/job/job = get_job(command_position)
+			var/datum/prototype/role/job/job = RSroles.legacy_job_by_title(command_position)
 			if(!job)
 				continue
 			var/list/candidates = FindOccupationCandidates(job, level)
@@ -125,7 +125,7 @@
  */
 /datum/controller/subsystem/job/proc/CheckHeadPositions(level)
 	for(var/command_position in SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND))
-		var/datum/role/job/job = get_job(command_position)
+		var/datum/prototype/role/job/job = RSroles.legacy_job_by_title(command_position)
 		if(!job || (job.current_positions >= job.spawn_positions))
 			continue
 		var/list/candidates = FindOccupationCandidates(job, level)
@@ -149,7 +149,7 @@
 
 	//Holder for Triumvirate is stored in the SSticker, this just processes it
 	if(SSticker && SSticker.triai)
-		for(var/datum/role/job/A in occupations)
+		for(var/datum/prototype/role/job/A in RSroles.legacy_all_job_datums())
 			if(A.title == "AI")
 				A.spawn_positions = 3
 				break
@@ -166,7 +166,7 @@
 
 	//People who wants to be assistants, sure, go on.
 	job_debug("DO, Running Assistant Check 1")
-	var/datum/role/job/assist = new DEFAULT_JOB_TYPE ()
+	var/datum/prototype/role/job/assist = new DEFAULT_JOB_TYPE ()
 	var/list/assistant_candidates = FindOccupationCandidates(assist, JOB_PRIORITY_HIGH)
 	job_debug("AC1, Candidates: [assistant_candidates.len]")
 	for(var/mob/new_player/player in assistant_candidates)
@@ -189,7 +189,7 @@
 	// Hopefully this will add more randomness and fairness to job giving.
 
 	// Loop through all levels from high to low
-	var/list/shuffledoccupations = shuffle(occupations)
+	var/list/shuffledoccupations = shuffle(RSroles.legacy_all_job_datums())
 	// var/list/disabled_jobs = SSticker.mode.disabled_jobs  // So we can use .Find down below without a colon.
 	for(var/level in JOB_PRIORITY_HIGH to JOB_PRIORITY_LOW step -1)
 		//Check the head jobs first each level
@@ -199,7 +199,7 @@
 		for(var/mob/new_player/player in divide_unassigned)
 
 			// Loop through all jobs
-			for(var/datum/role/job/job in shuffledoccupations) // SHUFFLE ME BABY
+			for(var/datum/prototype/role/job/job in shuffledoccupations) // SHUFFLE ME BABY
 				if(job.title in SSticker.mode.disabled_jobs)
 					continue
 				var/reasons = job.check_client_availability_one(player.client)
@@ -245,7 +245,7 @@
 	if(!H)
 		return null
 
-	var/datum/role/job/job = get_job(rank)
+	var/datum/prototype/role/job/job = RSroles.legacy_job_by_title(rank)
 
 	if(!joined_late)
 		var/obj/landmark/spawnpoint/S = SSjob.get_roundstart_spawnpoint(H, H.client, job.type, job.faction)
@@ -419,7 +419,7 @@
 			continue
 
 		if(name && value)
-			var/datum/role/job/J = get_job(name)
+			var/datum/prototype/role/job/J = RSroles.legacy_job_by_title(name)
 			if(!J)	continue
 			J.total_positions = text2num(value)
 			J.spawn_positions = text2num(value)
@@ -430,7 +430,7 @@
 
 
 /datum/controller/subsystem/job/proc/HandleFeedbackGathering()
-	for(var/datum/role/job/job in occupations)
+	for(var/datum/prototype/role/job/job in RSroles.legacy_all_job_datums())
 		var/tmp_str = "|[job.title]|"
 
 		var/level1 = 0 //high
@@ -465,7 +465,7 @@
 
 	var/fail_deadly = FALSE
 
-	var/datum/role/job/J = SSjob.get_job(rank)
+	var/datum/prototype/role/job/J = RSroles.legacy_job_by_title(rank)
 	fail_deadly = J?.offmap_spawn
 	var/preferred_method
 	var/datum/spawnpoint/spawnpos

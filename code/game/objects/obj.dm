@@ -404,6 +404,12 @@
 		if(!user.transfer_item_to_loc(I, src))
 			user.action_feedback(SPAN_WARNING("[I] is stuck to your hand!"), src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
+		if(!obj_cell_slot.accepts_cell(I))
+			user.action_feedback(
+				SPAN_WARNING("[src] do,es not accept [I]."),
+				target = src,
+			)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 		user.visible_action_feedback(
 			target = src,
 			hard_range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
