@@ -168,8 +168,6 @@
 		associate(new_character)
 		return
 
-	var/mob/old_character = current
-
 	disassociate()
 
 	if(!isnull(new_character.mind))

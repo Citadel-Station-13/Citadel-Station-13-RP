@@ -19,7 +19,7 @@
 		transfer_to.pre_logout()
 	// transfer UIs before ckey swap
 	SStgui.on_transfer(src, transfer_to)
-	SSnanoui.user_transferred(old_character, new_character)
+	SSnanoui.user_transferred(src, transfer_to)
 	// if we're logged in, client is transferred. if we're not, they'll log in at the other mob
 	transfer_to.ckey = ckey
 	return TRUE

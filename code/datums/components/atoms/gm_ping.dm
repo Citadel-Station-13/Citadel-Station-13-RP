@@ -23,7 +23,7 @@
 /datum/component/gm_ping/RegisterWithParent()
 	..()
 	construct()
-	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, PROC_REF(on_parent_moved))
+	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, PROC_REF(update))
 	RegisterSignal(parent, COMSIG_PARENT_PREQDELETED, PROC_REF(on_parent_preqdel))
 
 /datum/component/gm_ping/UnregisterFromParent()
@@ -31,7 +31,7 @@
 	UnregisterSignal(parent, COMSIG_MOVABLE_MOVED)
 	teardown()
 
-/datum/component/gm_ping/proc/on_parent_moved(atom/source, atom/old_loc)
+/datum/component/gm_ping/proc/update(atom/source, atom/old_loc)
 	if(source.loc == old_loc)
 		return
 	teardown(old_loc)
@@ -41,19 +41,19 @@
 	SIGNAL_HANDLER
 	owner.pull_ui_panel_context_data()
 
-/datum/component/gm_ping/proc/teardown(atom/root = parent:loc)
+/datum/component/gm_ping/proc/teardown(atom/root = parent)
 	var/atom/last = root
 	while(ismovable(root))
-		UnregisterSignal(root, COMSIG_MOVABLE_MOVED)
+		UnregisterSignal(root, COMSIG_MOVABLE_MOVED, PROC_REF(update))
 		last = root
 		root = root.loc
 	var/datum/component/gm_ping_topmost/holder = last.LoadComponent(/datum/component/gm_ping_topmost)
 	holder.remove_ping(src)
 
-/datum/component/gm_ping/proc/construct(atom/root = parent:loc)
+/datum/component/gm_ping/proc/construct(atom/root = parent)
 	var/atom/last = root
 	while(ismovable(root))
-		UnregisterSignal(root, COMSIG_MOVABLE_MOVED)
+		RgisterSignal(root, COMSIG_MOVABLE_MOVED, PROC_REF(update))
 		last = root
 		root = root.loc
 	var/datum/component/gm_ping_topmost/holder = last.LoadComponent(/datum/component/gm_ping_topmost)

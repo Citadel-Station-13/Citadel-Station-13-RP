@@ -3,6 +3,8 @@
 
 /atom/movable/render/gm_ping_topmost
 	atom_flags = ATOM_NONWORLD | ATOM_ABSTRACT
+	plane = ADMIN_PLANE
+	layer = ADMIN_LAYER_GM_PING
 	maptext_x = -16
 	maptext_height = 16
 	maptext_width = 16

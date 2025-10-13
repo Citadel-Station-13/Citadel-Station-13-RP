@@ -21,13 +21,19 @@
 
 /datum/component/gm_ping_topmost/proc/add_ping(datum/component/gm_ping/ping)
 	pings += ping
+	update_render()
 
 /datum/component/gm_ping_topmost/proc/remove_ping(datum/component/gm_ping/ping)
 	pings -= ping
 	if(!length(pings))
 		qdel(src)
+	else
+		update_render()
 
 /datum/component/gm_ping_topmost/proc/update_render()
 	if(!renderer)
 		renderer = new(parent)
 	renderer.update()
+	if(renderer.loc != parent)
+		renderer.abstract_move(parent)
+		stack_trace("a gm ping render somehow got moved..?")
