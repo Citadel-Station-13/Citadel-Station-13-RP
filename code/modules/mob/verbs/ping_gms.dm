@@ -14,6 +14,11 @@
 	This can be you doing something to an event entity, a prayer from your character, \
 	and more. This however, should not be for OOC admin ticketing."
 
+	var/is_valid_atom = isloc(target.loc) && !(target.atom_flags & (ATOM_NONWORLD|ATOM_ABSTRACT))
+	if(!is_valid_atom)
+		to_chat(src, SPAN_BOLDANNOUNCE("<center>-- GM ping rejected: [target] is not a valid in-world entity. --"))
+		return
+
 	if(TIMER_COOLDOWN_CHECK(src, TIMER_CD_INDEX_MOB_VERB_PING_GMS))
 		to_chat(src, SPAN_BOLDANNOUNCE("<center>-- GM ping is on cooldown. Slow down. --"))
 		return

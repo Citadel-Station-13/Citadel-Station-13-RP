@@ -32,7 +32,7 @@
 
 /datum/component/gm_ping_topmost/proc/update_render()
 	if(!renderer)
-		renderer = new(parent)
+		renderer = new(parent, src)
 	renderer.update()
 	if(renderer.loc != parent)
 		renderer.abstract_move(parent)

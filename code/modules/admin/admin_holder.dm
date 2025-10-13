@@ -25,8 +25,7 @@
 	..()
 
 /datum/admins/proc/on_associate(client/user)
-	var/atom/movable/screen/plane_master/maybe_admin_plane = user.global_planes?.by_plane_type(/atom/movable/screen/plane_master/admin)
-	maybe_admin_plane?.alpha = 255
+	register_admin_planes(user)
 
 /**
  * 'maybe_user' is because the client MAY be deleted by this point.
@@ -34,7 +33,14 @@
 /datum/admins/proc/on_disassociate(client/maybe_user)
 	if(!maybe_user)
 		return
-	var/atom/movable/screen/plane_master/maybe_admin_plane = maybe_user.global_planes?.by_plane_type(/atom/movable/screen/plane_master/admin)
+	unregister_admin_planes(maybe_user)
+
+/datum/admins/proc/register_admin_planes(client/user)
+	var/atom/movable/screen/plane_master/maybe_admin_plane = user.global_planes?.by_plane_type(/atom/movable/screen/plane_master/admin)
+	maybe_admin_plane?.alpha = 255
+
+/datum/admins/proc/unregister_admin_planes(client/user)
+	var/atom/movable/screen/plane_master/maybe_admin_plane = user.global_planes?.by_plane_type(/atom/movable/screen/plane_master/admin)
 	maybe_admin_plane?.alpha = 0
 
 /datum/admins/proc/add_admin_verbs()

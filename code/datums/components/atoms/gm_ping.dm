@@ -23,16 +23,22 @@
 /datum/component/gm_ping/RegisterWithParent()
 	..()
 	construct()
-	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, PROC_REF(update))
+	if(ismovable(parent))
+		RegisterSignal(parent, COMSIG_MOVABLE_MOVED, PROC_REF(update))
 	RegisterSignal(parent, COMSIG_PARENT_PREQDELETED, PROC_REF(on_parent_preqdel))
 
 /datum/component/gm_ping/UnregisterFromParent()
 	..()
-	UnregisterSignal(parent, COMSIG_MOVABLE_MOVED)
+	if(ismovable(parent))
+		UnregisterSignal(parent, COMSIG_MOVABLE_MOVED)
 	teardown()
 
 /datum/component/gm_ping/proc/update(atom/source, atom/old_loc)
 	if(source.loc == old_loc)
+		return
+	// don't need to re-update if we're going from turf to turf; we register on movable only,
+	// unless the component itself is on a turf.
+	if(isturf(source.loc) && isturf(old_loc))
 		return
 	teardown(old_loc)
 	construct(source.loc)
@@ -41,8 +47,8 @@
 	SIGNAL_HANDLER
 	owner.pull_ui_panel_context_data()
 
-/datum/component/gm_ping/proc/teardown(atom/root = parent)
-	var/atom/last = root
+/datum/component/gm_ping/proc/teardown(atom/root = parent:loc)
+	var/atom/last = parent
 	while(ismovable(root))
 		UnregisterSignal(root, COMSIG_MOVABLE_MOVED, PROC_REF(update))
 		last = root
@@ -50,10 +56,10 @@
 	var/datum/component/gm_ping_topmost/holder = last.LoadComponent(/datum/component/gm_ping_topmost)
 	holder.remove_ping(src)
 
-/datum/component/gm_ping/proc/construct(atom/root = parent)
-	var/atom/last = root
+/datum/component/gm_ping/proc/construct(atom/root = parent:loc)
+	var/atom/last = parent
 	while(ismovable(root))
-		RgisterSignal(root, COMSIG_MOVABLE_MOVED, PROC_REF(update))
+		RegisterSignal(root, COMSIG_MOVABLE_MOVED, PROC_REF(update))
 		last = root
 		root = root.loc
 	var/datum/component/gm_ping_topmost/holder = last.LoadComponent(/datum/component/gm_ping_topmost)
