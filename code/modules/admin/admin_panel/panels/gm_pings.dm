@@ -48,7 +48,7 @@
 			if(!target_ping)
 				return TRUE
 			qdel(target_ping)
-			push_ui_data(list("pingIds" = encode_ping_ids()))
+			push_ui_data(data = list("pingIds" = encode_ping_ids()))
 			return TRUE
 		if("toggleGhostAllowed")
 			var/new_state = params["enabled"]
@@ -81,8 +81,6 @@
 			owner.teleport_as_ghost_to_loc(target_ping.created_at)
 			return TRUE
 		if("refreshPings")
-			if(!target_ping)
-				return TRUE
 			var/list/assembled_nested_data = list()
 			for(var/datum/gm_ping/ping as anything in GLOB.gm_pings)
 				assembled_nested_data[ping.lazy_unsafe_uid] = ping.ui_panel_static_data() + ping.ui_panel_data()
@@ -90,6 +88,8 @@
 			push_ui_data(data = list("pingIds" = encode_ping_ids()))
 			return TRUE
 		if("refreshPing")
+			if(!target_ping)
+				return TRUE
 			push_ui_nested_data(updates = list(
 				(target_ping.lazy_unsafe_uid) = target_ping.ui_panel_data(),
 			))

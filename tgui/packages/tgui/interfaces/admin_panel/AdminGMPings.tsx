@@ -63,6 +63,7 @@ enum GMPingSortMode {
 
 interface AdminGMPingsState {
   sortMode: GMPingSortMode;
+  refreshing: boolean;
 }
 
 export class AdminGMPings extends Component<{}, AdminGMPingsState> {
@@ -70,7 +71,34 @@ export class AdminGMPings extends Component<{}, AdminGMPingsState> {
     super(props);
     this.state = {
       sortMode: GMPingSortMode.None,
+      refreshing: false,
     };
+  }
+
+  globalRefreshHandle: any;
+
+  componentDidMount(): void {
+    if (!this.globalRefreshHandle) {
+      this.globalRefreshHandle = setInterval(() => {
+        this.triggerGlobalRefresh();
+      }, 10000);
+    }
+  }
+
+  componentWillUnmount(): void {
+    if (this.globalRefreshHandle) {
+      clearInterval(this.globalRefreshHandle);
+    }
+  }
+
+  triggerGlobalRefresh() {
+    const { act } = useBackend<GMPingPanelData>();
+    if (this.state.refreshing) {
+      return;
+    }
+    act('refreshPings');
+    this.setState((s) => ({ ...s, refreshing: true }));
+    setTimeout(() => this.setState((s) => ({ ...s, refreshing: false })), 2000);
   }
 
   render() {
@@ -212,7 +240,12 @@ export class AdminGMPings extends Component<{}, AdminGMPingsState> {
               </Section>
             </Stack.Item>
             <Stack.Item grow={1}>
-              <Section title="Pings" fill scrollable>
+              <Section title="Pings" fill scrollable buttons={
+                <Button icon="refresh" color="transparent" onClick={() => this.triggerGlobalRefresh()}
+                  selected={this.state.refreshing} iconSpin={this.state.refreshing}>
+                  Refresh
+                </Button>
+              }>
                 {assembled}
               </Section>
             </Stack.Item>
@@ -251,7 +284,7 @@ const GMPingEntry = (props: GMPingEntryProps) => {
   let shortRender = (
     // eslint-disable-next-line react/no-danger
     <div dangerouslySetInnerHTML={{ __html: `${props.ping.playerKey}${props.ping.pingContext && ` --> ${props.ping.pingContext.data?.name || "!missing!"}`}: ${html}` }}
-      style={{ display: "inline-block", position: "absolute", textOverflow: "clip", width: "100%" }} />
+      style={{ display: "inline-block", position: "absolute", textOverflow: "ellipsis", width: "100%" }} />
   );
   return (
     <Collapsible color="transparent"
@@ -278,7 +311,6 @@ const GMPingEntry = (props: GMPingEntryProps) => {
             </Stack>
           </Stack.Item>
           <Stack.Item>
-            <hr />
             {dangerousRender}
           </Stack.Item>
         </Stack>
@@ -301,22 +333,23 @@ const GMPingLocationRender = (props: {
           </Button.Confirm>
         )
       }>
-      <hr />
-      <Section >
-        <Stack vertical>
-          <Stack.Item>
-            <Stack fill>
-              <Stack.Item>
-                Name
-              </Stack.Item>
-              <Stack.Item grow={1} textAlign="right">
-                {props.location.name}
-              </Stack.Item>
-            </Stack>
-          </Stack.Item>
-          <PingLocationAsStackItems location={props.location.location} />
-        </Stack>
-      </Section>
+      <div style={{ borderColor: "#ffffffaa", borderStyle: "solid none", borderWidth: "1px" }}>
+        <Section >
+          <Stack vertical>
+            <Stack.Item>
+              <Stack fill>
+                <Stack.Item>
+                  Name
+                </Stack.Item>
+                <Stack.Item grow={1} textAlign="right">
+                  {props.location.name}
+                </Stack.Item>
+              </Stack>
+            </Stack.Item>
+            <PingLocationAsStackItems location={props.location.location} />
+          </Stack>
+        </Section>
+      </div>
     </Collapsible>
   );
 };
@@ -335,43 +368,44 @@ const GMPingOriginationRender = (props: {
           </Button.Confirm>
         )
       }>
-      <hr />
-      <Section fill>
-        <Stack vertical>
-          {!!props.origination.deleted && (
-            <Stack.Item>
-              <div style={{ width: "100%", textAlign: "center", color: "red" }}>Deleted</div>
-            </Stack.Item>
-          )}
-          {props.origination.data && (
-            <>
+      <div style={{ borderColor: "#ffffffaa", borderStyle: "solid none", borderWidth: "1px" }}>
+        <Section>
+          <Stack vertical>
+            {!!props.origination.deleted && (
               <Stack.Item>
-                <Stack fill>
-                  <Stack.Item>
-                    Name
-                  </Stack.Item>
-                  <Stack.Item grow={1} textAlign="right">
-                    {props.origination.data.name}
-                  </Stack.Item>
-                </Stack>
+                <div style={{ width: "100%", textAlign: "center", color: "red" }}>Deleted</div>
               </Stack.Item>
-              {props.origination.data.visibleName !== props.origination.data.name && (
+            )}
+            {props.origination.data && (
+              <>
                 <Stack.Item>
                   <Stack fill>
                     <Stack.Item>
-                      Visible Name
+                      Name
                     </Stack.Item>
                     <Stack.Item grow={1} textAlign="right">
-                      {props.origination.data.visibleName}
+                      {props.origination.data.name}
                     </Stack.Item>
                   </Stack>
                 </Stack.Item>
-              )}
-              <PingLocationAsStackItems location={props.origination.data.location} />
-            </>
-          )}
-        </Stack>
-      </Section>
+                {props.origination.data.visibleName !== props.origination.data.name && (
+                  <Stack.Item>
+                    <Stack fill>
+                      <Stack.Item>
+                        Visible Name
+                      </Stack.Item>
+                      <Stack.Item grow={1} textAlign="right">
+                        {props.origination.data.visibleName}
+                      </Stack.Item>
+                    </Stack>
+                  </Stack.Item>
+                )}
+                <PingLocationAsStackItems location={props.origination.data.location} />
+              </>
+            )}
+          </Stack>
+        </Section>
+      </div>
     </Collapsible>
   );
 };
@@ -389,31 +423,32 @@ const GMPingContextRender = (props: {
           </Button.Confirm>
         )
       }>
-      <hr />
-      <Section>
-        <Stack vertical>
-          {!!props.context.deleted && (
-            <Stack.Item>
-              <div style={{ width: "100%", textAlign: "center", color: "red" }}>Deleted</div>
-            </Stack.Item>
-          )}
-          {props.context.data && (
-            <>
+      <div style={{ borderColor: "#ffffffaa", borderStyle: "solid none", borderWidth: "1px" }}>
+        <Section>
+          <Stack vertical>
+            {!!props.context.deleted && (
               <Stack.Item>
-                <Stack fill>
-                  <Stack.Item>
-                    Name
-                  </Stack.Item>
-                  <Stack.Item grow={1} textAlign="right">
-                    {props.context.data.name}
-                  </Stack.Item>
-                </Stack>
+                <div style={{ width: "100%", textAlign: "center", color: "red" }}>Deleted</div>
               </Stack.Item>
-              <PingLocationAsStackItems location={props.context.data.location} />
-            </>
-          )}
-        </Stack>
-      </Section>
+            )}
+            {props.context.data && (
+              <>
+                <Stack.Item>
+                  <Stack fill>
+                    <Stack.Item>
+                      Name
+                    </Stack.Item>
+                    <Stack.Item grow={1} textAlign="right">
+                      {props.context.data.name}
+                    </Stack.Item>
+                  </Stack>
+                </Stack.Item>
+                <PingLocationAsStackItems location={props.context.data.location} />
+              </>
+            )}
+          </Stack>
+        </Section>
+      </div>
     </Collapsible>
   );
 };
