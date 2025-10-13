@@ -149,7 +149,7 @@ GLOBAL_VAR_INIT(gm_ping_ghost_allowed, FALSE)
 		// bite me it's an /atom component
 		"name" = target.parent:name,
 		"location" = encode_ui_location(target.parent),
-		"ref" = REF(target.paren),
+		"ref" = REF(target.parent),
 	)
 
 /datum/gm_ping/proc/pull_ui_panel_context_data()
