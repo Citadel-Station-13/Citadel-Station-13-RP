@@ -148,7 +148,18 @@
 	icon_state = "machine1"
 	name = "ancient machine"
 	desc = "A large, bulky machine shaped into a elongated square. Multiple ports adorn its surface, along with what looks like pronged inserts for... Something."
-	density = 1
+	color = "#808080"
+
+/obj/structure/event/prop/machine2
+	icon_state = "machine2"
+	name = "derelict machine"
+	desc = "A small, lonely machine. You cannot identify its purpose."
+	color = "#808080"
+
+/obj/structure/event/prop/speaker
+	icon_state = "speaker"
+	name = "ancient speaker"
+	desc = "A small machine, attached high upon a wall. It kind of looks like a speaker."
 	color = "#808080"
 
 /obj/structure/event/prop/cryofeed
@@ -162,6 +173,81 @@
 	name = "keypad?"
 	desc = "What looks to be a keypad. There's an array of different buttons, all marked in variations of gold, purple and red. A different rune or sigil marks each."
 	color = "#808080"
+
+/obj/structure/event/prop/pipe
+	icon_state = "pipe"
+	name = "derelict pipe"
+	desc = "A long derelict pipe. Despite its age, you can hear a faint sloshing noise from inside."
+	color = "#808080"
+	density = 0
+	plane = 0
+
+/obj/structure/event/prop/pipe1
+	icon_state = "pipe1"
+	name = "derelict pipe"
+	desc = "A long derelict pipe. Despite its age, you can hear a faint sloshing noise from inside."
+	color = "#808080"
+	density = 0
+	plane = 0
+
+/obj/structure/event/prop/pipe2
+	icon_state = "pipe2"
+	name = "derelict pipe"
+	desc = "A long derelict pipe. Despite its age, you can hear a faint sloshing noise from inside."
+	color = "#808080"
+	density = 0
+	plane = 0
+
+/obj/structure/event/prop/pipe3
+	icon_state = "pipe3"
+	name = "derelict pipe"
+	desc = "A long derelict pipe. Despite its age, you can hear a faint sloshing noise from inside."
+	color = "#808080"
+	density = 0
+	plane = 0
+
+/obj/structure/event/prop/lattice1
+	icon_state = "lattice1"
+	name = "forgotten lattice"
+	desc = "Some sort of ancient lattice. You think you can see an odd railing running over it."
+	color = "#808080"
+
+/obj/structure/event/prop/lattice2
+	icon_state = "lattice2"
+	name = "forgotten lattice"
+	desc = "Some sort of ancient lattice. You think you can see an odd railing running over it."
+	color = "#808080"
+
+/obj/structure/event/prop/lattice3
+	icon_state = "lattice3"
+	name = "forgotten lattice"
+	desc = "Some sort of ancient lattice. You think you can see an odd railing running over it."
+	color = "#808080"
+
+/obj/structure/event/prop/lattice4
+	icon_state = "lattice4"
+	name = "forgotten lattice"
+	desc = "Some sort of ancient lattice. You think you can see an odd railing running over it."
+	color = "#808080"
+
+/obj/structure/event/prop/lattice5
+	icon_state = "lattice5"
+	name = "forgotten lattice"
+	desc = "Some sort of ancient lattice. You think you can see an odd railing running over it."
+	color = "#808080"
+
+/obj/structure/event/prop/lattice6
+	icon_state = "lattice6"
+	name = "forgotten lattice"
+	desc = "Some sort of ancient lattice. You think you can see an odd railing running over it."
+	color = "#808080"
+
+/obj/structure/event/prop/cabinet
+	icon_state = "cabinet"
+	name = "ancient cabinet"
+	desc = "A cabinet which hasn't seen use in a long, long time. No matter what you do, you can't seem to get it open."
+	color = "#808080"
+	density = 0
 
 /obj/item/event/prop/rectangle1
 	icon_state = "rectangle1"
@@ -460,6 +546,26 @@
 
 // Misc Large Props
 
+/obj/structure/event/prop/gen
+	icon = 'code/game/content/factions/derelict/derelict.dmi/36x36.dmi'
+	icon_state = "generator"
+	name = "whirring machine"
+	desc = "A decently sized machine that never stops producing clicking and whirring sounds."
+	bounds = "36,36"
+	bound_height = 36
+	bound_width = 36
+	color = "#808080"
+
+/obj/structure/event/prop/recycler
+	icon = 'code/game/content/factions/derelict/derelict.dmi/36x36.dmi'
+	icon_state = "recycler"
+	name = "unknown machine"
+	desc = "A decently sized machine that never stops producing clicking and whirring sounds."
+	bounds = "36,36"
+	bound_height = 36
+	bound_width = 36
+	color = "#808080"
+
 /obj/structure/event/prop/pod
 	icon = 'code/game/content/factions/derelict/derelict.dmi/64x96 props.dmi'
 	icon_state = "pod"
@@ -550,4 +656,24 @@
 	bound_width = 128
 	density = 0
 	opacity = 0
+	color = "#808080"
+
+/obj/structure/event/prop/industrial_tank
+	icon = 'code/game/content/factions/derelict/derelict.dmi/32x64.dmi'
+	icon_state = "industrial_tank"
+	name = "silo"
+	desc = "An extremely tall silo. It's hard to tell what's inside, but it doesn't look to be in the best shape."
+	bounds = "32,64"
+	bound_height = 32
+	bound_width = 64
+	color = "#808080"
+
+/obj/structure/event/prop/fuel_pump
+	icon = 'code/game/content/factions/derelict/derelict.dmi/128x48.dmi'
+	icon_state = "fuelpump"
+	name = "large machine"
+	desc = "A gargatuan machine that incessantly produces an odd, warbling noise. You cannot infer its purpose."
+	bounds = "124,48"
+	bound_height = 124
+	bound_width = 48
 	color = "#808080"
