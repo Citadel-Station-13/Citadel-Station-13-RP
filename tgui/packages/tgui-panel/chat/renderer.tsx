@@ -416,6 +416,9 @@ class ChatRenderer {
         for (let i = 0; i < nodes.length; i++) {
           const childNode: Element = nodes[i];
           const targetName = childNode.getAttribute('data-component');
+          if (targetName === null) {
+            continue;
+          }
           // Let's pull out the attibute info we need
           let outputProps = {};
           for (let j = 0; j < childNode.attributes.length; j++) {
@@ -460,12 +463,11 @@ class ChatRenderer {
             childNode.removeChild(childNode.firstChild);
           }
           // TODO: please type this properly
-          let Element: any;
-          if (targetName !== null) {
-            Element = TGUI_CHAT_COMPONENTS[targetName];
-          }
-          if (Element === null) {
-            Element = (
+          let DataComponent: any;
+          if (Object.keys(TGUI_CHAT_COMPONENTS).includes(targetName)) {
+            DataComponent = TGUI_CHAT_COMPONENTS[targetName];
+          } else {
+            DataComponent = (
               <div>-- invalid data component &apos;{targetName}&apos;; contact a coder.</div>
             );
           }
@@ -476,9 +478,9 @@ class ChatRenderer {
             <span dangerouslySetInnerHTML={oldHtml} />
           );
           const rendering = (
-            <Element {...outputProps}>
+            <DataComponent {...outputProps}>
               {interior}
-            </Element>
+            </DataComponent>
           );
 
           reactRoot.render(rendering);
