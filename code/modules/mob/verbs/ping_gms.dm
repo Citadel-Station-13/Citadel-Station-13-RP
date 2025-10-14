@@ -97,7 +97,7 @@
 	creating_ping.created_at = creating_at
 	creating_ping.unsanitized_message = message_to_admins
 
-	log_admin("[key_name(src)] created a GM ping[target ? " with context-target '[target]' ([target.type]) ([REF(target.type)])" : ""] \
+	log_admin("[key_name(src)] created a (UID: [creating_ping.lazy_unsafe_uid]) GM ping[target ? " with context-target '[target]' ([target.type]) ([REF(target.type)])" : ""] \
 		and content '[message_to_admins]'")
 
 	var/rendered = SPAN_TOOLTIP_DANGEROUS_HTML(SPAN_LINKIFY(sanitized), "message")

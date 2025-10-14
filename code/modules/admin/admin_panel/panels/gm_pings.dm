@@ -41,12 +41,14 @@
 			return TRUE
 	switch(action)
 		if("purgeAll")
+			log_and_message_admins("purged all GM pings", usr)
 			QDEL_LIST(GLOB.gm_pings)
 			update_static_data()
 			return TRUE
 		if("delPing")
 			if(!target_ping)
 				return TRUE
+			log_and_message_admins("deleted GM ping [target_ping.lazy_unsafe_uid]", usr)
 			qdel(target_ping)
 			push_ui_data(data = list("pingIds" = encode_ping_ids()))
 			return TRUE
