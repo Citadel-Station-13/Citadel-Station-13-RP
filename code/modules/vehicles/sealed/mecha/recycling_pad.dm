@@ -1,24 +1,17 @@
-/obj/machinery/scrapper
-	name = "scrapper"
-	desc = "A scrapper, for when you need that junk to go."
+/obj/machinery/recycling_pad
+	name = "recycling pad"
+	desc = "A recycling pad, for when you need that junk to go."
 	icon = 'icons/mecha/mech_bay.dmi'
-	icon_state = "scrapper"
+	icon_state = "recycling_pad"
 	density = 0
 	anchored = 1
 	layer = TURF_LAYER + 0.1
-	circuit = /obj/item/circuitboard/scrapper
+	circuit = /obj/item/circuitboard/recycling_pad
 
-var/list/salvageable_types = list(/obj/effect/decal/mecha_wreckage,/obj/structure/loot_pile/mecha)
-var/list/broken_types = list(/obj/item/broken_device)
-var/list/trash_types = list(/obj/item/trash)
-var/list/salvage = list(/obj/item/stack/material/plasteel,/obj/item/stack/material/steel,/obj/item/stack/material/diamond,/obj/item/stack/material/uranium/,/obj/item/stack/material/glass/,/obj/item/stack/material/plastic)
-var/list/broken_salvage = list(/obj/item/stack/material/steel,/obj/item/stack/material/glass/)
-var/list/trash_salvage = list(/obj/item/stack/material/plastic)
-var/wrenched = 1
-var/min_salvage = 5
-var/max_salvage =  10
+	var/min_salvage = 5
+	var/max_salvage =  10
 
-/obj/machinery/scrapper/RefreshParts()
+/obj/machinery/recycling_pad/RefreshParts()
 	..()
 
 	for(var/obj/item/stock_parts/P in component_parts)
@@ -30,11 +23,19 @@ var/max_salvage =  10
 		if(istype(P, /obj/item/stock_parts/scanning_module))
 			max_salvage += P.rating * 5
 
-/obj/machinery/scrapper/Crossed(var/atom/movable/M)
+/obj/machinery/recycling_pad/Crossed(var/atom/movable/M)
 
 	. = ..()
+	var/list/mech_types = list(/obj/effect/decal/mecha_wreckage,/obj/structure/loot_pile/mecha)
+	var/list/broken_types = list(/obj/item/broken_device)
+	var/list/trash_types = list(/obj/item/trash)
+	var/list/salvage = list(/obj/item/stack/material/plasteel,/obj/item/stack/material/steel,/obj/item/stack/material/diamond,/obj/item/stack/material/uranium/,/obj/item/stack/material/glass/,/obj/item/stack/material/plastic)
+	var/list/broken_salvage = list(/obj/item/stack/material/steel,/obj/item/stack/material/glass/)
+	var/list/trash_salvage = list(/obj/item/stack/material/plastic)
+	var/wrenched = 1
+
 	if(wrenched == anchored)
-		for(var/mtype in salvageable_types)
+		for(var/mtype in mech_types)
 			if(istype(M, mtype))
 				QDEL_IN(M, 0)
 				visible_message("The machine begins to take apart the wreckage.","The machine begins to take apart the wreckage.")
@@ -57,7 +58,7 @@ var/max_salvage =  10
 				new salvage_type(loc, rand((min_salvage/6), (max_salvage/6)))
 
 
-/obj/machinery/scrapper/attackby(var/obj/item/I, var/mob/user)
+/obj/machinery/recycling_pad/attackby(var/obj/item/I, var/mob/user)
 	if(default_deconstruction_screwdriver(user, I))
 		return
 	if(default_deconstruction_crowbar(user, I))
