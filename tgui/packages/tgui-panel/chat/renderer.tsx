@@ -463,27 +463,26 @@ class ChatRenderer {
             childNode.removeChild(childNode.firstChild);
           }
           // TODO: please type this properly
-          let DataComponent: any;
+          let DataComponent: any = null;
+          const reactRoot = createRoot(childNode);
           if (Object.keys(TGUI_CHAT_COMPONENTS).includes(targetName)) {
             DataComponent = TGUI_CHAT_COMPONENTS[targetName];
-          } else {
-            DataComponent = (
-              <div>-- invalid data component &apos;{targetName}&apos;; contact a coder.</div>
+            const interior = (
+              // eslint-disable-next-line react/no-danger
+              <span dangerouslySetInnerHTML={oldHtml} />
             );
+            const rendering = (
+              <DataComponent {...outputProps}>
+                {interior}
+              </DataComponent>
+            );
+            reactRoot.render(rendering);
+          } else {
+            reactRoot.render((
+              <div>-- invalid data component &apos;{targetName}&apos;; contact a coder.</div>
+            ));
           }
 
-          const reactRoot = createRoot(childNode);
-          const interior = (
-            // eslint-disable-next-line react/no-danger
-            <span dangerouslySetInnerHTML={oldHtml} />
-          );
-          const rendering = (
-            <DataComponent {...outputProps}>
-              {interior}
-            </DataComponent>
-          );
-
-          reactRoot.render(rendering);
         }
 
         // Highlight text
