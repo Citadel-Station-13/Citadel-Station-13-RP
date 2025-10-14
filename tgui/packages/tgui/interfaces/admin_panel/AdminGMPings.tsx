@@ -283,7 +283,7 @@ const GMPingEntry = (props: GMPingEntryProps) => {
   let dangerousRender = (<div dangerouslySetInnerHTML={{ __html: html }} />);
   let shortRender = (
     // eslint-disable-next-line react/no-danger
-    <div dangerouslySetInnerHTML={{ __html: `${props.ping.playerKey}${props.ping.pingContext && ` --> ${props.ping.pingContext.data?.name || "!missing!"}`}: ${html}` }}
+    <div dangerouslySetInnerHTML={{ __html: `${props.ping.playerKey}${!!props.ping.pingContext && ` --> ${props.ping.pingContext.data?.name || "!missing!"}`}: ${html}` }}
       style={{ display: "inline-block", position: "absolute", textOverflow: "ellipsis", width: "100%" }} />
   );
   return (

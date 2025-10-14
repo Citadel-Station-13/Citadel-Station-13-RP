@@ -23,8 +23,8 @@
 		where_at.vis_contents += src
 	atom_flags |= ATOM_INITIALIZED
 	src.owning_component = owning_component
-	animate(src, pixel_y = 34, time = 0.8 SECONDS, flags = ANIMATION_CONTINUE, loop = -1, easing = SINE_EASING)
-	animate(src, pixel_y = 38, time = 0.8 SECONDS, flags = ANIMATION_CONTINUE, loop = -1, easing = SINE_EASING)
+	animate(src, pixel_y = 34, time = 1.6 SECONDS, flags = ANIMATION_CONTINUE, loop = -1, easing = SINE_EASING)
+	animate(src, pixel_y = 38, time = 1.6 SECONDS, flags = ANIMATION_CONTINUE, loop = -1, easing = SINE_EASING)
 	return INITIALIZE_HINT_NORMAL
 
 /atom/movable/render/gm_ping_topmost/Destroy()
