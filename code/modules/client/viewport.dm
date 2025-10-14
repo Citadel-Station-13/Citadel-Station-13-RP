@@ -264,7 +264,7 @@ GLOBAL_VAR(lock_client_view_y)
 
 	var/screen_width = text2num(parsed[1])
 	if(screen_width == 0)//catch a rare div by zero case
-		screen_width = 1
+		return
 	// grab what percent we should go to
 	var/current_percent = min(100 * ((desired_pixel_width + assumed_splitter_width) / screen_width), maximum_splitter_percent)
 	// initial set
