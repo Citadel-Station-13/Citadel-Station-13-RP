@@ -548,6 +548,9 @@
 /obj/item/roller,
 /obj/item/roller,
 /obj/machinery/camera/network/research_outpost,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 27
+	},
 /turf/simulated/floor/tiled/dark,
 /area/gateway/prep_room)
 "fx" = (
@@ -657,6 +660,12 @@
 "gI" = (
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/exterior/bunker/bottom)
+"gJ" = (
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -37
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/rnd/outpost/underground)
 "gS" = (
 /obj/random/obstruction,
 /turf/simulated/floor/lythios43c/indoors,
@@ -35972,7 +35981,7 @@ pI
 An
 kt
 KF
-KF
+gJ
 QM
 EY
 EY

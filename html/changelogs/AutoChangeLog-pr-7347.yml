@@ -1,0 +1,5 @@
+author: "Shadowtail117"
+delete-after: True
+changes:
+  - tweak: "Small lightbulbs and fairy lights now respect the nightshift."
+  - tweak: "The nightshift color is now warm instead of cold."
