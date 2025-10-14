@@ -482,7 +482,6 @@ class ChatRenderer {
               <div>-- invalid data component &apos;{targetName}&apos;; contact a coder.</div>
             ));
           }
-
         }
 
         // Highlight text
