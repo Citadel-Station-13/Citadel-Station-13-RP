@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
+
 SUBSYSTEM_DEF(overmaps)
 	name = "Overmaps"
 	subsystem_flags = SS_NO_FIRE
@@ -21,76 +24,18 @@ SUBSYSTEM_DEF(overmaps)
 	rebuild_helm_computers()
 	return SS_INIT_SUCCESS
 
-//! legacy code below
-
+// the last vestige of legacy code in the overmaps subsystem
+// this tells helm computers to update their sectors
+// this is needed when a new sector is added.
 /datum/controller/subsystem/overmaps/proc/rebuild_helm_computers()
 	for(var/obj/machinery/computer/ship/helm/H in GLOB.machines)
 		H.get_known_sectors()
 
+// queues a rebuild_helm_computers(), as it's very expensive to run.
 /datum/controller/subsystem/overmaps/proc/queue_helm_computer_rebuild()
 	if(!initialized)
 		return
 	addtimer(CALLBACK(src, PROC_REF(rebuild_helm_computers)), 0, TIMER_UNIQUE)
-
-/*
-/client/proc/overmap_upload()
-	set name = "Instantiate Overmap"
-	set category = "Debug"
-
-	var/are_you_sure = alert(
-		src,
-		"Instantiating overmaps is an advanced feature. \
-		The uploaded file is placed and instantiated as an overmap; only overmap tiles, overmap entities, and overmap tile entities \
-		should exist in the file, or you may have funny things happen and the server explode. \
-		Are you sure you know what you are doing?",
-		"Upload Overmap",
-		"No",
-		"Yes",
-	)
-	if(are_you_sure != "Yes")
-		return
-
-	var/map = input(src, "Select overmap .dmm", "Instantiate Overmap") as file|null
-	if(!map)
-		return
-
-	var/datum/dmm_parsed/parsed_map = parse_map(map)
-
-	if(!parsed_map.parsed)
-		alert(src, "Failed to parse map.", "Parse Error")
-		return
-
-	var/max_x = world.maxx - TURF_CHUNK_RESOLUTION * 2
-	var/max_y = world.maxy - TURF_CHUNK_RESOLUTION * 2
-
-	if(parsed_map.width >= max_x || parsed_map.height >= max_y)
-		alert(src, "Your map is too big for the current world size. Maximum: [max_x]x[max_y]", "Improper Dimensions")
-		return
-
-	// welcome to hell
-	// allocate turf reservation and load at offset
-	// from this point on, if we crash, we don't warn the user, because it shouldn't be possible to crash
-	var/datum/overmap_template/template = new
-	template.width = parsed_map.width
-	template.height = parsed_map.height
-	var/datum/overmap/creating = new("loaded-[rand(1, 1000000)]", template)
-	creating.initialize()
-	// loaded, load the map template in there
-	var/datum/dmm_context/loaded_context = parsed_map.load(
-		creating.reservation.bottom_left_coords[1],
-		creating.reservation.bottom_left_coords[2],
-		creating.reservation.bottom_left_coords[3],
-	)
-	// initialize
-	SSatoms.init_map_bounds(loaded_context)
-	var/llx = loaded_context.loaded_bounds[MAP_MINX]
-	var/lly = loaded_context.loaded_bounds[MAP_MINY]
-	var/llz = loaded_context.loaded_bounds[MAP_MINZ]
-	// announce
-	log_and_message_admins("overmap [creating.id] with dimensions [creating.width]x[creating.height] loaded at LL-bounds [llx], [lly], [llz]")
-*/
-
-//! end
 
 //* Overmap Management *//
 

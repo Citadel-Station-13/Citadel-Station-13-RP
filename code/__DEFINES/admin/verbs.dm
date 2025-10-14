@@ -55,5 +55,6 @@
  *
  * * The way this works is black magic, so, uh, no touchy I guess.
  */
+VV_PROTECT_READONLY(/datum/admin_verb_abstraction)
 /datum/admin_verb_abstraction
 	abstract_type = /datum/admin_verb_abstraction
