@@ -427,15 +427,17 @@ class ChatRenderer {
           }
           const Element = TGUI_CHAT_COMPONENTS[targetName];
 
-          const reactRoot = createRoot(childNode);
+          if (Element) {
+            const reactRoot = createRoot(childNode);
 
-          /* eslint-disable react/no-danger */
-          reactRoot.render(
-            <Element {...outputProps}>
-              <span dangerouslySetInnerHTML={oldHtml} />
-            </Element>,
-            childNode,
-          );
+            /* eslint-disable react/no-danger */
+            reactRoot.render(
+              <Element {...outputProps}>
+                <span dangerouslySetInnerHTML={oldHtml} />
+              </Element>,
+              childNode,
+            );
+          }
         }
 
         // Highlight text
