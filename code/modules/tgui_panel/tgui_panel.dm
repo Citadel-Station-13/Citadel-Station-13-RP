@@ -12,6 +12,7 @@
 	var/datum/tgui_window/window
 	var/broken = FALSE
 	var/initialized_at
+	var/boot_timer
 	/// Each client notifies on protected playback, so this prevents spamming admins.
 	var/static/admins_warned = FALSE
 
@@ -21,6 +22,7 @@
 	window.subscribe(src, PROC_REF(on_message))
 
 /datum/tgui_panel/Del()
+	deltimer(boot_timer)
 	window.unsubscribe(src)
 	window.close()
 	client = null
@@ -71,7 +73,7 @@
 	window.send_asset(/datum/asset_pack/spritesheet/chat)
 	// Other setup
 	request_telemetry()
-	addtimer(CALLBACK(src, PROC_REF(on_initialize_timed_out)), 5 SECONDS)
+	boot_timer = addtimer(CALLBACK(src, PROC_REF(on_initialize_timed_out)), 5 SECONDS, TIMER_STOPPABLE)
 	window.send_message("testTelemetryCommand")
 
 /**
