@@ -391,7 +391,7 @@
 			g_horn3 = new_color_rgb_list[2]
 			b_horn3 = new_color_rgb_list[3]
 
-	render_spriteacc_ears() //Includes Virgo ears
+	render_spriteacc_horns()
 
 /mob/living/carbon/human/proc/shapeshifter_select_tail()
 	set name = "Select Tail"

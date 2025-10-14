@@ -845,7 +845,7 @@
 			// we'll add the function later when we overhaul banning
 			return
 
-		if(is_role_banned_ckey(target_ckey, role = BAN_ROLE_OOC))
+		if(SSbans.t_is_role_banned_ckey(target_ckey, role = BAN_ROLE_OOC))
 			to_chat(usr, SPAN_WARNING("[target_ckey] is already OOC banned. Use Unban-Panel to unban them."))
 			return
 
@@ -857,7 +857,7 @@
 				var/reason = sanitize(input(usr, "Reason?", "OOC Ban") as text|null)
 				if(!reason)
 					return
-				role_ban_ckey(target_ckey, role = BAN_ROLE_OOC, minutes = minutes, reason = reason, admin = src)
+				SSbans.t_role_ban_ckey(target_ckey, role = BAN_ROLE_OOC, minutes = minutes, reason = reason, admin = src)
 				// incase they switched mobs
 				var/client/target_client = GLOB.directory[target_ckey]
 				notes_add(target_ckey, "[usr.ckey] has banned has banned [target_ckey] from OOC. Reason: [reason]. This will be removed in [minutes] minutes.")
@@ -869,7 +869,7 @@
 				var/reason = sanitize(input(usr, "Reason?", "OOC Ban") as text|null)
 				if(!reason)
 					return
-				role_ban_ckey(target_ckey, role = BAN_ROLE_OOC, reason = reason, admin = src)
+				SSbans.t_role_ban_ckey(target_ckey, role = BAN_ROLE_OOC, reason = reason, admin = src)
 				// incase they switched mobs
 				var/client/target_client = GLOB.directory[target_ckey]
 				notes_add(target_ckey, "[usr.ckey] has banned has banned [target_ckey] from OOC. Reason: [reason].")
@@ -1574,7 +1574,7 @@
 		if(!check_rights(R_ADMIN))	return
 
 		var/mob/M = locate(href_list["narrateto"])
-		usr.client.cmd_admin_direct_narrate(M)
+		usr.client.holder.open_admin_modal(/datum/admin_modal/admin_narrate, M)
 
 	else if(href_list["subtlemessage"])
 		if(!check_rights(R_MOD,0) && !check_rights(R_ADMIN))  return
