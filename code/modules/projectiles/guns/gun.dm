@@ -739,7 +739,12 @@
 /obj/item/gun/proc/ensure_firemodes_owned()
 	if(!is_typelist(NAMEOF(src, firemodes), firemodes))
 		return
+	var/at_index = firemodes.Find(firemode)
 	firemodes = deep_clone_list(firemodes)
+	if(at_index)
+		set_firemode(firemodes[at_index], TRUE)
+	else if(firemodes)
+		set_firemode(firemodes[1], TRUE)
 
 //* Interaction *//
 
