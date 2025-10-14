@@ -2343,6 +2343,7 @@
 #include "code\modules\admin\secrets\admin_secrets\show_crew_manifest.dm"
 #include "code\modules\admin\secrets\admin_secrets\show_game_mode.dm"
 #include "code\modules\admin\secrets\admin_secrets\show_law_changes.dm"
+#include "code\modules\admin\secrets\admin_secrets\show_nuke_codes.dm"
 #include "code\modules\admin\secrets\admin_secrets\show_signalers.dm"
 #include "code\modules\admin\secrets\admin_secrets\traitors_and_objectives.dm"
 #include "code\modules\admin\secrets\final_solutions\summon_narsie.dm"
