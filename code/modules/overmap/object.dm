@@ -118,6 +118,7 @@
 		for(var/z in O.map_z)
 			SSparallax.queue_z_vis_update(z)
 
+///Reveals this overmap obj and shows its true name.
 /obj/overmap/proc/get_scan_data(mob/user)
 	if(scanner_name && (name != scanner_name)) //A silly check, but 'name' is part of appearance, so more expensive than you might think
 		name = scanner_name

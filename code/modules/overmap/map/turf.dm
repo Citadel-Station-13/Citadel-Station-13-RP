@@ -22,6 +22,8 @@
 	var/calculated_x = x - map.lower_left_x
 	var/calculated_y = y - map.lower_left_y
 	name = "[calculated_x]-[calculated_y]"
+	icon_state = "stars-" + num2text(rand(1,42))
+	add_overlay("map")
 	return ..()
 
 /turf/overmap/edge

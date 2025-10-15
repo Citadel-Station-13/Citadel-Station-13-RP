@@ -6,8 +6,11 @@
 [b][i]Transponder[/i][/b]: Transmitting (MIL), Nanotrasen IFF
 [b][i]Notice[/i][/b]: RESTRICTED AREA, authorized personnel only"}
 	base = TRUE
-	icon_state = "globe"
-	color = "#5bbbd3"
+	icon = 'icons/modules/overmap/huge_worlds.dmi'
+	bound_width = 96
+	bound_height = 96
+	icon_state = "Rift"
+	//color = "#5bbbd3"
 	start_x = 15
 	start_y = 10
 	initial_generic_waypoints = list(
