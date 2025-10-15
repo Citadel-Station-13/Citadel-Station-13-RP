@@ -22,6 +22,8 @@
 	var/datum/turf_reservation/reservation
 	/// our template
 	var/datum/overmap_template/template
+	/// our area
+	var/area/area
 
 /datum/overmap/New(id, datum/overmap_template/template)
 	src.id = id
@@ -67,6 +69,7 @@
 	upper_right_y = reservation.top_right_coords[2]
 	var/area/overmap/created_area = reservation.reservation_area
 	created_area.overmap = src
+	area = created_area
 	return reservation
 
 /**
