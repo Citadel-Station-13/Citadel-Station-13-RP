@@ -59,6 +59,9 @@ ADMIN_VERB_DEF(load_custom_overmap, R_ADMIN, "Load Custom Overmap", "Load a cust
 		creating.reservation.bottom_left_coords[1],
 		creating.reservation.bottom_left_coords[2],
 		creating.reservation.bottom_left_coords[3],
+		area_cache = list(
+			(/area/overmap) = creating.area,
+		),
 	)
 	// initialize
 	SSatoms.init_map_bounds(loaded_context.loaded_bounds)
