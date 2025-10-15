@@ -127,6 +127,7 @@ SUBSYSTEM_DEF(zcopy)
 		if (isturf(A))
 			T = A
 			if (T.mz_flags & MZ_MIMIC_BELOW)
+				flush_z_state(T)
 				T.update_mimic()
 				num_turfs += 1
 
