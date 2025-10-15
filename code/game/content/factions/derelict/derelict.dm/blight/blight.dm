@@ -1,4 +1,7 @@
-
+/mob/living/simple_mob/animal/space/blight/death()
+	..(null,"rapidly melts into a cloud of spores.")
+	ghostize()
+	qdel(src)
 
 
 /mob/living/simple_mob/animal/space/blight/melee/swarmer
@@ -63,7 +66,7 @@
 	icon_living = "trooper"
 	icon_rest = "trooper_rest"
 	icon_dead = "trooper_dead"
-	base_pixel_x = 0
+	base_pixel_x = -8
 
 	health = 300
 	maxHealth = 300
@@ -100,11 +103,11 @@
 	icon_living = "dasher"
 	icon_rest = "dasher_rest"
 	icon_dead = "dasher_dead"
-	base_pixel_x = 0
+	base_pixel_x = -16
 
 	health = 250
 	maxHealth = 250
-	movement_base_speed = 10 / 1
+	movement_base_speed = 10 / 1.5
 	armor_legacy_mob = list(
 		"melee" = 20,
 		"bullet" = 20,
@@ -129,3 +132,128 @@
 
 	attack_sound =  'sound/mobs/biomorphs/drone_attack.ogg'
 	movement_sound = 'sound/mobs/biomorphs/drone_move.ogg'
+
+
+/mob/living/simple_mob/animal/space/blight/ranged/wraith
+	name = "Blight Wraith"
+	desc = "A often translucent pale white creature that scurries around on four legs, brandishing extensive talons on each. \
+	Its back appears to be covered in long spines, along with its mouth being shaped rather oddly. It looks almost like its meant to direct sound?"
+
+	icon = 'code/game/content/factions/derelict/derelict.dmi/blight/wraith.dmi'
+	icon_state = "wraith"
+	icon_living = "wraith"
+	icon_rest = "wraith_rest"
+	icon_dead = "wraith_dead"
+	base_pixel_x = -8
+	alpha = 130
+
+	health = 300
+	maxHealth = 300
+	evasion = 15
+	movement_base_speed = 10 / 2.5
+	armor_legacy_mob = list(
+		"melee" = 40,
+		"bullet" = 40,
+		"laser" = 0,
+		"energy" = 0,
+		"bomb" = 50,
+		"bio" = 100,
+		"rad" = 100,
+	)
+
+	legacy_melee_damage_lower = 20
+	legacy_melee_damage_upper = 20
+	attack_armor_pen = 30
+	projectiletype = /obj/projectile/energy/mindflayer/wraith
+	base_attack_cooldown = 12
+
+
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
+	iff_factions = MOB_IFF_FACTION_DERELICT_BLIGHT
+
+	attack_sound =  'sound/mobs/biomorphs/drone_attack.ogg'
+	movement_sound = 'sound/mobs/biomorphs/drone_move.ogg'
+
+
+/mob/living/simple_mob/animal/space/blight/melee/brute
+	name = "Blight Brute"
+	desc = "A hulking creature with an uparmored exoskeleton and two massive clubs in place of its hands. Unfortunately, it's coming right at you."
+
+	icon = 'code/game/content/factions/derelict/derelict.dmi/blight/brute.dmi'
+	icon_state = "brute"
+	icon_living = "brute"
+	icon_rest = "brute_rest"
+	icon_dead = "brute_dead"
+	base_pixel_x = -16
+
+	health = 500
+	maxHealth = 500
+	movement_base_speed = 10 / 4
+	armor_legacy_mob = list(
+		"melee" = 50,
+		"bullet" = 40,
+		"laser" = 10,
+		"energy" = 10,
+		"bomb" = 60,
+		"bio" = 100,
+		"rad" = 100,
+	)
+
+	legacy_melee_damage_lower = 40
+	legacy_melee_damage_upper = 40
+	attack_armor_pen = 30
+	base_attack_cooldown = 17
+
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive
+	iff_factions = MOB_IFF_FACTION_DERELICT_BLIGHT
+
+	attack_sound =  'sound/mobs/biomorphs/breaker_attack.ogg'
+	movement_sound = 'sound/mobs/biomorphs/vanguard_move.ogg'
+
+
+/mob/living/simple_mob/animal/space/blight/melee/zenith
+	name = "Blight Zenith"
+	desc = "What appears to be the evolutionary culmination of whatever the Blight is. \
+	Every aspect of this creature has been dedicated to the sole purpose of inflicting death. \
+	From its many, clawed and taloned legs to the scythed limbs portruding from its back. \
+	Pray you can kill this thing before it subsumes your flesh."
+
+	icon = 'code/game/content/factions/derelict/derelict.dmi/blight/zenith.dmi'
+	icon_state = "zenith"
+	icon_living = "zenith"
+	icon_rest = "zenith_rest"
+	icon_dead = "zenith_dead"
+	base_pixel_x = -8
+
+	health = 700
+	maxHealth = 700
+	movement_base_speed = 10 / 3
+	armor_legacy_mob = list(
+		"melee" = 60,
+		"bullet" = 50,
+		"laser" = 30,
+		"energy" = 30,
+		"bomb" = 100,
+		"bio" = 100,
+		"rad" = 100,
+	)
+
+	legacy_melee_damage_lower = 30
+	legacy_melee_damage_upper = 30
+	attack_armor_pen = 40
+	base_attack_cooldown = 20
+	special_attack_min_range = 3
+	special_attack_max_range = 12 //Normal view range is 7 this can begin charging from outside normal view You may expand it.
+	special_attack_cooldown = 10 SECONDS
+	var/charging = 0
+	var/charging_warning = 1 SECONDS
+	var/charge_damage_mode = DAMAGE_MODE_PIERCE | DAMAGE_MODE_SHARP
+	var/charge_damage_flag = ARMOR_MELEE
+	var/charge_damage_tier = 4.5
+	var/charge_damage = 60
+
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/destructive
+	iff_factions = MOB_IFF_FACTION_DERELICT_BLIGHT
+
+	attack_sound =  'sound/mobs/biomorphs/breaker_attack.ogg'
+	movement_sound = 'sound/mobs/biomorphs/vanguard_move.ogg'
