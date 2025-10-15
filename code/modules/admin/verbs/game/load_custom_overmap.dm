@@ -61,10 +61,12 @@ ADMIN_VERB_DEF(load_custom_overmap, R_ADMIN, "Load Custom Overmap", "Load a cust
 		creating.reservation.bottom_left_coords[3],
 	)
 	// initialize
-	SSatoms.init_map_bounds(loaded_context)
+	SSatoms.init_map_bounds(loaded_context.loaded_bounds)
 	var/llx = loaded_context.loaded_bounds[MAP_MINX]
 	var/lly = loaded_context.loaded_bounds[MAP_MINY]
 	var/llz = loaded_context.loaded_bounds[MAP_MINZ]
+	// re-initialize inner
+	creating.initialize_inner_turfs()
 	// announce
 	var/end_time = REALTIMEOFDAY
 	log_and_message_admins("has loaded overmap [creating.id] with dimensions [creating.width]x[creating.height] at LL-bounds [llx], [lly], [llz] in [round((end_time - start_time) * 0.1, 0.1)] seconds", caller)

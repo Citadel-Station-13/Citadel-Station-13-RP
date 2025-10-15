@@ -80,10 +80,18 @@
  * builds and initializes our map, which is usually blank unless a template put stuff in.
  */
 /datum/overmap/proc/build()
+	initialize_inner_turfs()
+
+/**
+ * Keeps this idempotent. This has to be re-invoked if something
+ * loads an overmap .dmm into us.
+ */
+/datum/overmap/proc/initialize_inner_turfs()
 	var/list/turf/map_turfs = reservation.unordered_inner_turfs()
 	for(var/turf/turf as anything in map_turfs)
 		var/turf/overmap/map/map_tile = turf.ChangeTurf(/turf/overmap/map)
 		map_tile.initialize_overmap(src)
+		CHECK_TICK
 
 
 /**

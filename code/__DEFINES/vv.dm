@@ -108,49 +108,6 @@
 // gateways
 #define VV_HK_SETUP_GATEWAY "setup_gateway"
 
-/*
-// /obj
-#define VV_HK_OSAY "osay"
-#define VV_HK_MASS_DEL_TYPE "mass_delete_type"
-#define VV_HK_ARMOR_MOD "mod_obj_armor"
-
-// /mob
-#define VV_HK_GIB "gib"
-#define VV_HK_GIVE_SPELL "give_spell"
-#define VV_HK_REMOVE_SPELL "remove_spell"
-#define VV_HK_GIVE_DISEASE "give_disease"
-#define VV_HK_GODMODE "godmode"
-#define VV_HK_DROP_ALL "dropall"
-#define VV_HK_REGEN_ICONS "regen_icons"
-#define VV_HK_PLAYER_PANEL "player_panel"
-#define VV_HK_BUILDMODE "buildmode"
-#define VV_HK_DIRECT_CONTROL "direct_control"
-#define VV_HK_OFFER_GHOSTS "offer_ghosts"
-
-// /mob/living/carbon
-#define VV_HK_MAKE_AI "aiify"
-#define VV_HK_MODIFY_BODYPART "mod_bodypart"
-#define VV_HK_MODIFY_ORGANS "organs_modify"
-#define VV_HK_HALLUCINATION "force_hallucinate"
-#define VV_HK_MARTIAL_ART "give_martial_art"
-#define VV_HK_GIVE_TRAUMA "give_trauma"
-#define VV_HK_CURE_TRAUMA "cure_trauma"
-
-// /mob/living/carbon/human
-#define VV_HK_COPY_OUTFIT "copy_outfit"
-#define VV_HK_MOD_MUTATIONS "quirkmut"
-#define VV_HK_MOD_QUIRKS "quirkmod"
-#define VV_HK_MAKE_MONKEY "human_monkify"
-#define VV_HK_MAKE_CYBORG "human_cyborgify"
-#define VV_HK_MAKE_SLIME "human_slimeify"
-#define VV_HK_MAKE_ALIEN "human_alienify"
-#define VV_HK_SET_SPECIES "setspecies"
-#define VV_HK_PURRBATION "purrbation"
-
-// misc
-#define VV_HK_SPACEVINE_PURGE "spacevine_purge"
-*/
-
 // /obj/item/card/id
 #define VV_HK_ID_MOD "id_mod"
 
