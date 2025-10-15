@@ -1,0 +1,6 @@
+author: "Shadowtail117"
+delete-after: True
+changes:
+  - bugfix: "The stripe on guest passes will now turn red when they expire."
+  - tweak: "The examine text on a guest pass is now formatted correctly."
+  - tweak: "Guest passes will now show the issued person's name on them, similar to an ID."
