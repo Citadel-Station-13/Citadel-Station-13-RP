@@ -173,6 +173,10 @@
 	for(var/obj/item/organ/external/external_organ in H.get_external_organs())
 		if(external_organ.robotic < ORGAN_ROBOT)
 			external_organ.robotize()
+		if(!external_organ.model)
+			// let's not play this game
+			// :trol:
+			external_organ.model = GLOB.all_robolimbs[1]
 	// LEGACY: make sure their synthetic-ness is sticky by calling isSynthetic
 	H.isSynthetic()
 
