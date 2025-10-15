@@ -66,11 +66,3 @@
 		return FALSE
 	return ..()
 #endif
-
-/datum/admins/CanProcCall(procname)
-	switch(procname)
-		if(NAMEOF_PROC(src, open_admin_modal))
-			return FALSE
-	if(findtext(procname, "verb__") == 1)
-		return FALSE
-	return ..()

@@ -2407,6 +2407,7 @@
 #include "code\modules\admin\verbs\debug\reestablish_db_connection.dm"
 #include "code\modules\admin\verbs\debug\reload_configuration.dm"
 #include "code\modules\admin\verbs\debug\spawn.dm"
+#include "code\modules\admin\verbs\game\load_custom_overmap.dm"
 #include "code\modules\admin\verbs\game\narrate.dm"
 #include "code\modules\admin\verbs\game\narrate_quick.dm"
 #include "code\modules\admin\verbs\SDQL2\SDQL_2.dm"
