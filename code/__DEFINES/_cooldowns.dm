@@ -98,6 +98,7 @@
 
 //* /mob *//
 #define TIMER_CD_INDEX_MOB_VERB_INVERT_SELF "mob-verb-invert_self"
+#define TIMER_CD_INDEX_MOB_VERB_PING_GMS "mob-verb-ping_gms"
 
 //* /client *//
 #define TIMER_CD_INDEX_CLIENT_CHARACTER_DIRECTORY "client-verb-character_directory"
