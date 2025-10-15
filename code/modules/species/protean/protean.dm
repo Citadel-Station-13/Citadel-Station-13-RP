@@ -170,6 +170,15 @@
 /datum/species/protean/create_organs(mob/living/carbon/human/H)
 	H.synth_color = TRUE
 	. = ..()
+	for(var/obj/item/organ/external/external_organ in H.get_external_organs())
+		if(external_organ.robotic < ORGAN_ROBOT)
+			external_organ.robotize()
+		if(!external_organ.model)
+			// let's not play this game
+			// :trol:
+			external_organ.model = GLOB.all_robolimbs[1]
+	// LEGACY: make sure their synthetic-ness is sticky by calling isSynthetic
+	H.isSynthetic()
 
 	// todo: this is utter shitcode and will break if we CHECK_TICK in SSticker, and should probably be part of postspawn or something
 	spawn(5) //Let their real nif load if they have one
