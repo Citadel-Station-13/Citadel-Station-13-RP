@@ -1,25 +1,30 @@
+/obj/overmap/tiled/fluff/event
+	name = "base overmap object"
+	desc = "How are you seeing this?"
+	icon = 'code/game/content/factions/derelict/derelict.dmi/overmap/overmap.dmi'
+	icon_state = "unidentified"
+
 /obj/overmap/entity/fluff/event
 	name = "base overmap object"
 	desc = "How are you seeing this?"
 	icon = 'code/game/content/factions/derelict/derelict.dmi/overmap/overmap.dmi'
 	icon_state = "unidentified"
 
-
 // Symbols
 
-/obj/overmap/entity/fluff/event/marker/hazard
+/obj/overmap/tiled/fluff/event/marker/hazard
 	name = "hazard"
 	scannable = FALSE
 	known = TRUE
 	icon_state = "hazard"
 
-/obj/overmap/entity/fluff/event/marker/waypoint
+/obj/overmap/tiled/fluff/event/marker/waypoint
 	name = "waypoint"
 	scannable = FALSE
 	known = TRUE
 	icon_state = "waypoint"
 
-/obj/overmap/entity/fluff/event/marker/sos
+/obj/overmap/tiled/fluff/event/marker/sos
 	name = "distress signal"
 	scannable = FALSE
 	known = TRUE
