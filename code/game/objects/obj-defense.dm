@@ -50,7 +50,6 @@
 /obj/hitsound_throwhit(atom/movable/impacting)
 	if(!isnull(material_primary))
 		var/datum/prototype/material/primary = get_primary_material()
-
 		var/resolved_damage_type
 		if(isitem(impacting))
 			var/obj/item/casted_item = impacting
@@ -58,7 +57,7 @@
 		else
 			resolved_damage_type = DAMAGE_TYPE_BRUTE
 
-		. = resolved_damage_type == DAMAGE_TYPE_BURN? primary.sound_melee_burn : primary.sound_melee_brute
+		. = resolved_damage_type == DAMAGE_TYPE_BURN? primary?.sound_melee_burn : primary?.sound_melee_brute
 		if(!isnull(.))
 			return
 	return ..()
