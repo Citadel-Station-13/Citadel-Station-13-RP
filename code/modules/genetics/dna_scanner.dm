@@ -121,6 +121,7 @@
 
 /obj/machinery/dna_scannernew/proc/put_in(mob/M)
 	occupant = M
+	M.forceMove(src)
 	M.update_perspective()
 
 	icon_state = "scanner_1"
