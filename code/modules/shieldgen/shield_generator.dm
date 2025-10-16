@@ -3,7 +3,7 @@
 //
 /obj/machinery/power/shield_generator
 	name = "advanced shield generator"
-	desc = "A heavy-duty shield generator and capacitor, capable of generating energy shields at large distances."
+	desc = "A heavy-duty shield generator and capacitor, capable of generating energy shields at large distances.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	icon = 'icons/obj/machines/shielding_vr.dmi'
 	icon_state = "generator0"
 	circuit = /obj/item/circuitboard/shield_generator

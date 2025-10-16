@@ -1,7 +1,7 @@
 
 /obj/machinery/atmospherics/component/unary/freezer
 	name = "gas cooling system"
-	desc = "Cools gas when connected to pipe network"
+	desc = "Cools gas when connected to pipe network.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	icon = 'icons/obj/medical/cryogenic2.dmi'
 	icon_state = "freezer_0"
 	density = 1
