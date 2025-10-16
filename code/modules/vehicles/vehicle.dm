@@ -9,12 +9,32 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 	desc = "Yell at coderbus."
 	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "fuckyou"
-	// integrity_max = 300
-	// armor = list(MELEE = 30, BULLET = 30, LASER = 30, ENERGY = 0, BOMB = 30, BIO = 0, RAD = 0, FIRE = 60, ACID = 60)
 	density = TRUE
 	anchored = FALSE
 	buckle_flags = BUCKLING_PASS_PROJECTILES_UPWARDS
-	COOLDOWN_DECLARE(cooldown_vehicle_move)
+
+	//* Components *//
+	/// Installed components
+	/// * Lazy list.
+	var/list/obj/item/vehicle_component/components
+
+	//* Movement *//
+	/// Next move
+	var/move_next_time = 0
+	/// Base movement speed, in tile/seconds
+	var/move_base_speed = 5
+
+	//*                          Movespeed                           *//
+	//* This will be removed once /obj/vehicle becomes /mob/vehicle! *//
+	//*             For now we use the same API mobs do!             *//
+	/// List of movement speed modifiers applying to this mob
+	/// * This is a lazy list.
+	var/list/movespeed_modifiers
+	/// List of movement speed modifiers ignored by this mob. List -> List (id) -> List (sources)
+	/// * This is a lazy list.
+	var/list/movespeed_modifier_immunities
+	/// The calculated mob speed slowdown based on the modifiers list
+	var/movespeed_hyperbolic
 
 	//* Occupants *//
 	/// list of mobs associated to their control flags
@@ -32,7 +52,6 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 
 	var/max_occupants = 1
 	var/max_drivers = 1
-	var/movedelay = 2
 	var/lastmove = 0
 	var/key_type
 	var/obj/item/key/inserted_key
@@ -72,21 +91,6 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 	// get rid of occupant actions
 	QDEL_LIST_NULL(occupant_actions)
 	return ..()
-
-/obj/vehicle/examine(mob/user, dist)
-	. = ..()
-	/*
-	if(resistance_flags & ON_FIRE)
-		. += "<span class='warning'>It's on fire!</span>"
-	var/healthpercent = obj_integrity/integrity_max * 100
-	switch(healthpercent)
-		if(50 to 99)
-			. += "It looks slightly damaged."
-		if(25 to 50)
-			. += "It appears heavily damaged."
-		if(0 to 25)
-			. += "<span class='warning'>It's falling apart!</span>"
-	*/
 
 /obj/vehicle/proc/is_key(obj/item/I)
 	return I? (key_type_exact? (I.type == key_type) : istype(I, key_type)) : FALSE
