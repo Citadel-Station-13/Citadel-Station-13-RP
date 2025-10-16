@@ -5390,6 +5390,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 27
+	},
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
 "dsj" = (
@@ -11167,6 +11170,24 @@
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/outside2)
+"hbM" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 4
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 27
+	},
+/turf/simulated/floor/tiled/steel,
+/area/crew_quarters/sleep)
 "hbT" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/structure/cable/green{
@@ -11514,6 +11535,20 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/heads/hor)
+"hpp" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/purple/border,
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/purple/bordercorner2{
+	dir = 9
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -37
+	},
+/turf/simulated/floor/tiled/steel,
+/area/rnd/research/researchdivision)
 "hpv" = (
 /obj/machinery/conveyor{
 	dir = 9;
@@ -29134,6 +29169,9 @@
 	light_range = 12;
 	old_wall = 1
 	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 24
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/lounge)
 "rWX" = (
@@ -30152,6 +30190,9 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -37
 	},
 /turf/simulated/floor/wood,
 /area/security/breakroom)
@@ -31430,6 +31471,18 @@
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
+"tED" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 1
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 27
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/surfacetwo)
 "tFm" = (
 /obj/machinery/iv_drip,
 /obj/effect/floor_decal/corner/paleblue{
@@ -32796,6 +32849,20 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/breakroom)
+"uHg" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = -32
+	},
+/turf/simulated/floor/tiled/steel,
+/area/security/hallway)
 "uHm" = (
 /obj/structure/closet/bombclosetsecurity,
 /obj/effect/floor_decal/industrial/outline/blue,
@@ -33628,6 +33695,9 @@
 	},
 /obj/effect/floor_decal/borderfloor/corner2,
 /obj/effect/floor_decal/corner/purple/bordercorner2,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -37
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "uZq" = (
@@ -52949,7 +53019,7 @@ quS
 bno
 nqz
 cRG
-dTd
+hpp
 siA
 oBj
 xBE
@@ -56595,7 +56665,7 @@ hSr
 elc
 aWT
 fUV
-llR
+uHg
 llR
 jLI
 jLN
@@ -57193,7 +57263,7 @@ rTT
 rWX
 rWX
 rWX
-gbY
+tED
 hhN
 fWX
 vnU
@@ -61081,7 +61151,7 @@ tSC
 cUU
 qHc
 itG
-yli
+hbM
 auZ
 orZ
 oJG

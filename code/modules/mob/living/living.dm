@@ -726,7 +726,7 @@ default behaviour is:
  * Allows an observer to take control of the mob at any time. Must use the "existing" ghostrole subtype.
  * R: the ghostrole datum to use
  */
-/mob/living/proc/add_ghostrole(datum/role/ghostrole/existing/R = /datum/role/ghostrole/existing/)
+/mob/living/proc/add_ghostrole(datum/prototype/role/ghostrole/existing/R = /datum/prototype/role/ghostrole/existing/)
 	var/list/L = list()
 	L["mob"] += src
 	return AddComponent(/datum/component/ghostrole_spawnpoint, R, 1, L)

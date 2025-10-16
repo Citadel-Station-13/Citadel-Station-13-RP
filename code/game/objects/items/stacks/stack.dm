@@ -87,7 +87,7 @@
 	if(!stacktype_legacy)
 		stacktype_legacy = type
 	. = ..()
-	if(merge)
+	if(merge && !mapload)
 		for(var/obj/item/stack/S in loc)
 			if(can_merge(S))
 				merge(S)

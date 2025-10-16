@@ -943,6 +943,9 @@
 /obj/effect/floor_decal/corner/purple/bordercorner{
 	dir = 4
 	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = 32
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/outpost/underground)
 "kQ" = (
@@ -1027,6 +1030,14 @@
 /obj/item/towel/random,
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost/washrooms)
+"lO" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = -32
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/outpost/mining_main/outpost)
 "lR" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 4
@@ -3538,6 +3549,9 @@
 /obj/structure/table/steel_reinforced,
 /obj/machinery/camera/network/mining{
 	dir = 4
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = -32
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
@@ -36385,7 +36399,7 @@ Ph
 fa
 SO
 SO
-SO
+lO
 QZ
 km
 XL

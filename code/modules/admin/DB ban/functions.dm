@@ -346,7 +346,7 @@
 	output += "<tr><td width='50%' align='right'><b>Duration:</b> <input type='text' name='dbbaddduration'></td>"
 	output += "<td width='50%' align='right'><b>Job:</b><select name='dbbanaddjob'>"
 	output += "<option value=''>--</option>"
-	for(var/j in SSjob.all_job_titles())
+	for(var/j in RSroles.legacy_all_job_titles())
 		output += "<option value='[j]'>[j]</option>"
 	for(var/j in SSjob.get_job_titles_in_department(DEPARTMENT_SYNTHETIC))
 		output += "<option value='[j]'>[j]</option>"

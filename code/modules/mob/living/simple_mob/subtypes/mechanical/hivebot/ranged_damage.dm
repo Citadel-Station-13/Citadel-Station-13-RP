@@ -121,14 +121,6 @@
 
 	catalogue_data = list(/datum/category_item/catalogue/technology/drone/hivebot/lobber)
 
-
-/obj/projectile/arc/blue_energy
-	name = "energy missile"
-	icon_state = "force_missile"
-	// A bit stronger since arcing projectiles are much easier to avoid than traditional ones.
-	damage_force = 15 // A bit stronger since arcing projectiles are much easier to avoid than traditional ones.
-	damage_type = DAMAGE_TYPE_BURN
-
 // Very long ranged hivebot that rains down hell.
 // Their projectiles arc, meaning they go over everything until it hits the ground.
 // This means they're somewhat easier to avoid, but go over most defenses (like allies, or barriers),
@@ -166,27 +158,6 @@
 	icon_living = "ionart"
 
 	base_attack_cooldown = 60
-
-/obj/projectile/arc/emp_blast
-	name = "emp blast"
-	icon_state = "bluespace"
-	var/emp_dev = 2
-	var/emp_heavy = 4
-	var/emp_med = 7
-	var/emp_light = 10
-
-/obj/projectile/arc/emp_blast/on_impact(atom/target, impact_flags, def_zone, efficiency)
-	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
-		return
-	empulse(target, emp_dev, emp_heavy, emp_med, emp_light) // Normal EMP grenade.
-	return . | PROJECTILE_IMPACT_DELETE
-
-/obj/projectile/arc/emp_blast/weak
-	emp_dev = 1
-	emp_heavy = 2
-	emp_med = 3
-	emp_light = 4
 
 // Fires shots that irradiate the tile hit.
 /mob/living/simple_mob/mechanical/hivebot/ranged_damage/siege/radiation

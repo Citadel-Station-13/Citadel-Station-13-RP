@@ -8113,6 +8113,28 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/elevator)
+"yw" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/structure/table/bench/standard,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/corner/lightorange/border{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 27
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/underone)
 "yx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -8622,6 +8644,9 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 27
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
@@ -9426,6 +9451,24 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"CX" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 27
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/underone)
 "CY" = (
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/drone_fabrication)
@@ -30890,7 +30933,7 @@ ae
 bF
 bV
 ae
-df
+yw
 LC
 fQ
 gv
@@ -35158,7 +35201,7 @@ FI
 Ph
 gi
 aG
-dM
+CX
 tg
 dp
 am

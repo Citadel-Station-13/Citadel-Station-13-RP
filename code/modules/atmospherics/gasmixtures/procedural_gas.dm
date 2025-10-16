@@ -29,8 +29,6 @@
 	var/molar_mass = 1
 
 	// todo: reagents
-	// todo: reagents
-	// todo: reagents
 
 	/// gas generation flags
 	var/procedural_gas_flags = NONE

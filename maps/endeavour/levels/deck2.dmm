@@ -20172,8 +20172,8 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/sensor{
-	name = "Powernet Sensor - Deck 2 Amidships Subgrid";
-	name_tag = "Deck 2 Amidships Subgrid"
+	name = "Powernet Sensor - Deck 2 Forward Subgrid";
+	name_tag = "Deck 2 Forward Subgrid"
 	},
 /turf/simulated/floor/plating,
 /area/engineering/substation/deck2forward)

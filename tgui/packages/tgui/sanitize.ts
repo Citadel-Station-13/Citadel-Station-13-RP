@@ -52,7 +52,8 @@ const advTag = ['img'];
 const defAttr = ['class', 'style', 'background'];
 
 /**
- * Feed it a string and it should spit out a sanitized version.
+ * Feed it a string and it should spit out a sanitized version. Allows only some HTML tags.
+ * This should be kept roughly-equivalent to BYOND's chat output.
  *
  * @param input - Input HTML string to sanitize
  * @param advHtml - Flag to enable/disable advanced HTML
@@ -80,3 +81,10 @@ export function sanitizeText(
     FORBID_ATTR: forbidAttr,
   });
 }
+
+/**
+ * Used for code-defined HTML. Less safe than sanitizeText.
+ * This version allows for full HTML tags minus scripting and other XSS risks.
+ */
+export const sanitizeHTML = (input: string) =>
+  DOMPurify.sanitize(input, { USE_PROFILES: { html: true } });

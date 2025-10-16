@@ -14,6 +14,10 @@ GLOBAL_LIST_EMPTY(observer_list)
 	anchored = TRUE
 	invisibility = INVISIBILITY_OBSERVER
 	SET_APPEARANCE_FLAGS(PIXEL_SCALE | KEEP_TOGETHER)
+
+	/// Were we admin-ghosted?
+	var/admin_ghosted = FALSE
+
 	/// Do we set dir on move
 	var/updatedir = TRUE
 	var/can_reenter_corpse
@@ -26,7 +30,6 @@ GLOBAL_LIST_EMPTY(observer_list)
 	var/medHUD = FALSE
 	var/antagHUD = FALSE
 	universal_speak = TRUE
-	var/admin_ghosted = FALSE
 	/// Is the ghost able to see things humans can't?
 	var/ghostvision = TRUE
 	incorporeal_move = TRUE

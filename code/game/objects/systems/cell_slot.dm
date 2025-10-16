@@ -48,6 +48,9 @@
 /datum/object_system/cell_slot/proc/accepts_cell(obj/item/cell/cell)
 	return legacy_use_device_cells? istype(cell, /obj/item/cell/device) : TRUE
 
+// TODO: user_remove_cell && user_insert_cell
+// TODO: play sound please & visible message
+
 /**
  * removes cell from the system and drops it at new_loc
  */

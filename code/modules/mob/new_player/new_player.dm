@@ -408,7 +408,7 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 		to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
 		log_shadowban("[key_name(src)] latejoin as [rank] blocked.")
 		return 0
-	var/datum/role/job/J = SSjob.job_by_title(rank)
+	var/datum/prototype/role/job/J = RSroles.legacy_job_by_title(rank)
 	var/reason
 	if((reason = J.check_client_availability_one(client)) != ROLE_AVAILABLE)
 		to_chat(src, SPAN_WARNING("[rank] is not available: [J.get_availability_reason(client, reason)]"))
