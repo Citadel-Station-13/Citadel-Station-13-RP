@@ -153,6 +153,12 @@
 	/// additional mesh heuristic per 1000 objects
 	var/persistent_trash_mesh_heuristic_escalate_per_thousand = OBJ_PERSIST_DEFAULT_TUNING_TRASH_MESH_HEURISTIC_ESCALATE_PER_THOUSAND
 
+	//* Rebuilds *//
+	var/turfs_rebuilding = FALSE
+	var/turfs_rebuilding_waiting = FALSE
+	var/transitions_rebuilding = FALSE
+	var/transitions_rebuilding_waiting = FALSE
+
 	//* Tracking *//
 	var/turfs_rebuild_count = 0
 	var/transitions_rebuild_count = 0
@@ -447,10 +453,18 @@
  * this will sleep
  */
 /datum/map_level/proc/rebuild_turfs()
+	if(turfs_rebuilding_waiting)
+		return
+	if(turfs_rebuilding)
+		turfs_rebuilding_waiting = TRUE
+		UNTIL(!turfs_rebuilding)
+		turfs_rebuilding_waiting = FALSE
+	turfs_rebuilding = TRUE
 	for(var/turf/T as anything in block(locate(1, 1, z_index), locate(world.maxx, world.maxy, z_index)))
 		T.update_multiz()
 		CHECK_TICK
 	turfs_rebuild_count++
+	turfs_rebuilding = FALSE
 
 /**
  * call to rebuild all turfs for horizontal transitions
@@ -458,6 +472,13 @@
  * this will sleep
  */
 /datum/map_level/proc/rebuild_transitions()
+	if(transitions_rebuilding_waiting)
+		return
+	if(transitions_rebuilding)
+		transitions_rebuilding_waiting = TRUE
+		UNTIL(!transitions_rebuilding)
+		transitions_rebuilding_waiting = FALSE
+	transitions_rebuilding = TRUE
 	switch(transition)
 		// do nothing
 		if(Z_TRANSITION_DISABLED)
@@ -536,6 +557,7 @@
 					T._dispose_transition_border()
 					CHECK_TICK
 	transitions_rebuild_count++
+	transitions_rebuilding = FALSE
 
 /**
  * destroys all transitions on border turfs

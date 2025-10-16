@@ -175,6 +175,8 @@
 
 	if(requires_power)
 		luminosity = 0
+		if(dynamic_lighting == DYNAMIC_LIGHTING_FORCED)
+			dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
 	else
 		power_light = TRUE
 		power_equip = TRUE

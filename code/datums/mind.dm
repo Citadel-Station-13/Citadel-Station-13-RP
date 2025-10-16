@@ -168,15 +168,10 @@
 		associate(new_character)
 		return
 
-	var/mob/old_character = current
-
 	disassociate()
 
 	if(!isnull(new_character.mind))
 		new_character.mind.disassociate()
-
-	SStgui.on_transfer(old_character, new_character)
-	SSnanoui.user_transferred(old_character, new_character)
 
 	associate(new_character)
 

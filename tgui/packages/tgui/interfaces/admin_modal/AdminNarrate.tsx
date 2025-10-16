@@ -33,7 +33,7 @@ interface AdminNarrateTarget {
     name: string;
   } | null;
   overmap: {
-    name: string;
+    name: string | null;
     x: number;
     y: number;
     map: string;

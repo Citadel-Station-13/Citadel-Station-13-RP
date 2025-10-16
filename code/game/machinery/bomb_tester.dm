@@ -4,7 +4,7 @@
 
 /obj/machinery/bomb_tester
 	name = "explosive effect simulator"
-	desc = "A device that can calculate the potential explosive yield of provided gases."
+	desc = "A device that can calculate the potential explosive yield of provided gases.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	icon = 'icons/obj/machines/bomb_tester_vr.dmi'
 	icon_state = "generic"
 	anchored = TRUE
