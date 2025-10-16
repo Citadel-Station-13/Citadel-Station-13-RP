@@ -1,4 +1,5 @@
 
+// TODO: repath to /vehicle_component/mecha/armor
 /obj/item/vehicle_component/armor
 	name = "mecha plating"
 	icon = 'icons/mecha/mech_component.dmi'

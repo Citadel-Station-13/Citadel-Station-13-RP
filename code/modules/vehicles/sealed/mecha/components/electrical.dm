@@ -1,4 +1,5 @@
 
+// TODO: repath to /vehicle_component/mecha/electrical
 /obj/item/vehicle_component/electrical
 	name = "mecha electrical harness"
 	icon = 'icons/mecha/mech_component.dmi'

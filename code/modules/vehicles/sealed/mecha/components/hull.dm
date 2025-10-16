@@ -1,4 +1,5 @@
 
+// TODO: repath to /vehicle_component/mecha/hull
 /obj/item/vehicle_component/hull
 	name = "mecha hull"
 	icon = 'icons/mecha/mech_component.dmi'

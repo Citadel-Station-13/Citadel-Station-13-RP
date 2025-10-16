@@ -1,4 +1,5 @@
 
+// TODO: repath to /vehicle_component/mecha/gas
 /obj/item/vehicle_component/gas
 	name = "mecha life-support"
 	icon = 'icons/mecha/mech_component.dmi'
