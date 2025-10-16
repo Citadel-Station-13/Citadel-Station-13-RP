@@ -5602,6 +5602,7 @@
 #include "code\modules\vehicles\sealed\mecha\subtypes\combat\marauder.dm"
 #include "code\modules\vehicles\sealed\mecha\subtypes\combat\phazon-construction.dm"
 #include "code\modules\vehicles\sealed\mecha\subtypes\combat\phazon.dm"
+#include "code\modules\vehicles\sealed\mecha\subtypes\combat\quasimodo.dm"
 #include "code\modules\vehicles\sealed\mecha\subtypes\combat\reticent-construction.dm"
 #include "code\modules\vehicles\sealed\mecha\subtypes\combat\reticent.dm"
 #include "code\modules\vehicles\sealed\mecha\subtypes\combat\fighter\allure.dm"
