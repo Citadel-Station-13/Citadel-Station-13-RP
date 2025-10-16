@@ -53,7 +53,6 @@ function RefreshingWindow() {
 
 const interfaceSubdirectories = [
   `.`,
-  `./computers`,
   `./items`,
   `./machines`,
   `./modules`,
