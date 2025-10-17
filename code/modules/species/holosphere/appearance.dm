@@ -41,7 +41,7 @@
 		var/chameleon_item = equipped_chameleon_gear[slot]
 		qdel(chameleon_item)
 
-/datum/species/shapeshifter/holosphere/proc/handle_hologram_loadout(datum/source, flags, datum/role/role, list/datum/loadout_entry/loadout)
+/datum/species/shapeshifter/holosphere/proc/handle_hologram_loadout(datum/source, flags, datum/prototype/role/role, list/datum/loadout_entry/loadout)
 	if(istype(source, /mob/living/carbon/human/dummy))
 		return
 

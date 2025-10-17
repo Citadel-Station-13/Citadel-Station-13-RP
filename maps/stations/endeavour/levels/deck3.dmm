@@ -3780,6 +3780,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/machinery/computer/guestpass{
+	pixel_y = 32
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
 "cQm" = (
@@ -6663,6 +6666,7 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/camera/network/civilian,
+/obj/structure/closet/l3closet/janitor,
 /turf/simulated/floor/tiled/dark,
 /area/janitor)
 "eRF" = (
@@ -14322,8 +14326,18 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/warehouse)
 "kEf" = (
-/obj/structure/closet/l3closet/janitor,
-/turf/simulated/floor/tiled/dark,
+/obj/machinery/door/window/eastleft{
+	dir = 1;
+	name = "Janitorial Desk";
+	req_access = list(26)
+	},
+/obj/machinery/door/window/eastleft{
+	name = "Janitorial Desk";
+	dir = 2
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/structure/table/reinforced,
+/turf/simulated/floor/tiled/steel,
 /area/janitor)
 "kFu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -28086,10 +28100,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/fitness)
-"uWa" = (
-/obj/structure/table/rack/shelf,
-/turf/space,
-/area/space)
 "uWh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -28284,9 +28294,6 @@
 "vdT" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
@@ -28775,6 +28782,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/structure/closet/l3closet/janitor,
 /turf/simulated/floor/tiled/dark,
 /area/janitor)
 "vvg" = (
@@ -41937,8 +41945,8 @@ kIH
 fgW
 vpk
 ioZ
+ioZ
 kEf
-rRZ
 bDG
 uIG
 pcI
@@ -42131,8 +42139,8 @@ kIH
 rLT
 vpk
 ioZ
-kEf
-rLO
+ioZ
+rRZ
 ilx
 hYs
 xXF
@@ -42173,7 +42181,7 @@ eEQ
 eEQ
 eEQ
 eEQ
-pRW
+vXk
 pRW
 pRW
 pRW
@@ -42367,7 +42375,7 @@ ooX
 iVS
 pvA
 eGX
-pRW
+vXk
 pRW
 pRW
 pRW
@@ -42561,7 +42569,7 @@ ooX
 fCO
 slv
 eGX
-pRW
+vXk
 pRW
 pRW
 pRW
@@ -42755,7 +42763,7 @@ ooX
 ooX
 ooX
 eGX
-pRW
+vXk
 pRW
 pRW
 pRW
@@ -42949,7 +42957,7 @@ dpX
 jNA
 hbK
 eGX
-pRW
+vXk
 pRW
 pRW
 pRW
@@ -43143,7 +43151,7 @@ ooX
 fCO
 slv
 eGX
-pRW
+vXk
 pRW
 pRW
 pRW
@@ -43337,7 +43345,7 @@ ooX
 ooX
 ooX
 eGX
-pRW
+vXk
 pRW
 pRW
 pRW
@@ -43531,7 +43539,7 @@ dpX
 jNA
 dMM
 eGX
-pRW
+vXk
 pRW
 pRW
 pRW
@@ -43725,7 +43733,7 @@ ooX
 fCO
 slv
 eGX
-pRW
+vXk
 pRW
 pRW
 pRW
@@ -66368,7 +66376,7 @@ mDp
 mDp
 mDp
 mDp
-uWa
+mDp
 pRW
 pRW
 pRW

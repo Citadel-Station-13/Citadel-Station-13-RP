@@ -51,10 +51,6 @@ var/list/admin_verbs_admin = list(
 	/client/proc/jumptoturf,			//allows us to jump to a specific turf,
 	/client/proc/admin_call_shuttle,	//allows us to call the emergency shuttle,
 	/client/proc/admin_cancel_shuttle,	//allows us to cancel the emergency shuttle, sending it back to CentCom,
-	/client/proc/cmd_admin_direct_narrate,	//send text directly to a player with no padding. Useful for narratives and fluff-text,
-	/client/proc/cmd_admin_local_narrate,
-	/client/proc/cmd_admin_world_narrate,
-	/client/proc/cmd_admin_z_narrate,	//sends text to all players on a z-level.When Global is too much
 	/client/proc/cmd_admin_create_centcom_report,
 	/client/proc/check_words,			//displays cult-words,
 	/client/proc/check_ai_laws,			//shows AI and borg laws,
@@ -282,10 +278,6 @@ var/list/admin_verbs_hideable = list(
 	/datum/admins/proc/access_news_network,
 	/client/proc/admin_call_shuttle,
 	/client/proc/admin_cancel_shuttle,
-	/client/proc/cmd_admin_direct_narrate,
-	/client/proc/cmd_admin_local_narrate,
-	/client/proc/cmd_admin_world_narrate,
-	/client/proc/cmd_admin_z_narrate,
 	/client/proc/check_words,
 	/client/proc/play_local_sound,
 	/client/proc/play_sound,
@@ -364,7 +356,6 @@ var/list/admin_verbs_mod = list(
 	/client/proc/cmd_admin_subtle_message, 	//send an message to somebody as a 'voice in their head',
 	/client/proc/cmd_admin_icsubtle_message,
 	/datum/admins/proc/paralyze_mob,
-	/client/proc/cmd_admin_direct_narrate,
 	/client/proc/allow_character_respawn,   // Allows a ghost to respawn ,
 	/datum/admins/proc/sendFax,
 	/client/proc/addbunkerbypass,
@@ -386,7 +377,6 @@ var/list/admin_verbs_event_manager = list(
 	/client/proc/aooc,
 	/client/proc/cmd_admin_clear_mobs,
 	/datum/admins/proc/paralyze_mob,
-	/client/proc/cmd_admin_direct_narrate,
 	/client/proc/allow_character_respawn,
 	/datum/admins/proc/sendFax,
 	/client/proc/respawn_character,
@@ -421,6 +411,45 @@ var/list/admin_verbs_event_manager = list(
 	/datum/admins/proc/call_drop_pod
 )
 
+/client/proc/add_admin_verbs()
+	if(holder)
+		add_verb(src, admin_verbs_default)
+		if(holder.rights & R_BUILDMODE)		add_verb(src, /client/proc/togglebuildmodeself)
+		if(holder.rights & R_ADMIN)			add_verb(src, admin_verbs_admin)
+		if(holder.rights & R_BAN)			add_verb(src, admin_verbs_ban)
+		if(holder.rights & R_FUN)			add_verb(src, admin_verbs_fun)
+		if(holder.rights & R_SERVER)		add_verb(src, admin_verbs_server)
+		if(holder.rights & R_DEBUG)
+			add_verb(src, admin_verbs_debug)
+			if(config_legacy.debugparanoid && !(holder.rights & R_ADMIN))
+				remove_verb(src, admin_verbs_paranoid_debug)			//Right now it's just callproc but we can easily add others later on.
+		if(holder.rights & R_POSSESS)		add_verb(src, admin_verbs_possess)
+		if(holder.rights & R_PERMISSIONS)	add_verb(src, admin_verbs_permissions)
+		if(holder.rights & R_STEALTH)		add_verb(src, /client/proc/stealth)
+		if(holder.rights & R_REJUVINATE)	add_verb(src, admin_verbs_rejuv)
+		if(holder.rights & R_SOUNDS)		add_verb(src, admin_verbs_sounds)
+		if(holder.rights & R_SPAWN)			add_verb(src, admin_verbs_spawn)
+		if(holder.rights & R_MOD)			add_verb(src, admin_verbs_mod)
+		if(holder.rights & R_EVENT)			add_verb(src, admin_verbs_event_manager)
+
+/client/proc/remove_admin_verbs()
+	remove_verb(src, list(
+		admin_verbs_default,
+		/client/proc/togglebuildmodeself,
+		admin_verbs_admin,
+		admin_verbs_ban,
+		admin_verbs_fun,
+		admin_verbs_server,
+		admin_verbs_debug,
+		admin_verbs_possess,
+		admin_verbs_permissions,
+		/client/proc/stealth,
+		admin_verbs_rejuv,
+		admin_verbs_sounds,
+		admin_verbs_spawn,
+		debug_verbs
+	))
+
 /client/proc/hide_most_verbs()//Allows you to keep some functionality while hiding some verbs
 	set name = "Adminverbs - Hide Most"
 	set category = "Admin"
@@ -436,7 +465,7 @@ var/list/admin_verbs_event_manager = list(
 	set name = "Adminverbs - Hide All"
 	set category = "Admin"
 
-	holder.remove_admin_verbs()
+	remove_admin_verbs()
 	add_verb(src, /client/proc/show_verbs)
 
 	to_chat(src, "<span class='interface'>Almost all of your adminverbs have been hidden.</span>")
@@ -447,8 +476,8 @@ var/list/admin_verbs_event_manager = list(
 	set name = "Adminverbs - Show"
 	set category = "Admin"
 
-	holder.add_admin_verbs()
 	remove_verb(src, /client/proc/show_verbs)
+	add_admin_verbs()
 
 	to_chat(src, "<span class='interface'>All of your adminverbs are now visible.</span>")
 	feedback_add_details("admin_verb","TAVVS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -737,7 +766,7 @@ var/list/admin_verbs_event_manager = list(
 	set category = "Admin"
 
 	if(deadmin_holder)
-		deadmin_holder.reassociate()
+		deadmin_holder.associate(src)
 		log_admin("[src] re-admined themself.")
 		message_admins("[src] re-admined themself.", 1)
 		to_chat(src, "<span class='interface'>You now have the keys to control the planet, or atleast a small space station</span>")
@@ -931,7 +960,7 @@ var/list/admin_verbs_event_manager = list(
 	set category = "Admin"
 	if(holder)
 		var/list/jobs = list()
-		for (var/datum/role/job/J in SSjob.occupations)
+		for (var/datum/prototype/role/job/J in RSroles.legacy_all_job_datums())
 			if (J.current_positions >= J.total_positions && J.total_positions != -1)
 				jobs += J.title
 		if (!jobs.len)

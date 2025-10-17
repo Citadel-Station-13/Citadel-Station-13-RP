@@ -185,7 +185,7 @@
 				return
 
 		if(VV_FILE)
-			.["value"] = usr.client.prompt_for_file_or_wait("Pick file", "File", 10 * 1024 * 1024)
+			.["value"] = input("Pick file:", "File") as null|file
 			if(.["value"] == null)
 				.["class"] = null
 				return

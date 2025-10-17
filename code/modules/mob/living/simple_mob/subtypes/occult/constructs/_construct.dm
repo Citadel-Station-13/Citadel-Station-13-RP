@@ -25,7 +25,8 @@
 		/datum/category_item/catalogue/fauna/construct/juggernaut,
 		/datum/category_item/catalogue/fauna/construct/proteon,
 		/datum/category_item/catalogue/fauna/construct/shade,
-		/datum/category_item/catalogue/fauna/construct/wraith
+		/datum/category_item/catalogue/fauna/construct/wraith,
+		/datum/category_item/catalogue/fauna/construct/cyclops
 		)
 
 /mob/living/simple_mob/construct
@@ -84,6 +85,8 @@
 	iff_factions = MOB_IFF_FACTION_SANGUINE_CULT
 
 	supernatural = TRUE
+
+	vision_innate = /datum/vision/baseline/species_tier_3 //Supernatural Other Things Are Beyond Needing Light to see
 
 	var/construct_type = "shade"
 	var/list/construct_spells = list()

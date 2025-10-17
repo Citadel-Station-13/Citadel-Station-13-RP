@@ -376,30 +376,40 @@
  */
 /datum/controller/subsystem/mapping/proc/recalculate_z_stack()
 	validate_no_loops()
-	z_stack_lookup = list()
-	z_stack_lookup.len = world.maxz
-	var/list/left = list()
-	for(var/z in 1 to world.maxz)
-		left += z
-	var/list/datum/map_level/bottoms = list()
+	z_stack_lookup = new /list(world.maxz)
 	// let's sing the bottom song
-	for(var/z in left)
+	var/list/datum/map_level/bottoms = list()
+	for(var/z in 1 to world.maxz)
 		if(cached_level_down[z])
 			continue
 		bottoms += ordered_levels[z]
 	for(var/datum/map_level/bottom as anything in bottoms)
-		// register us
-		var/list/stack = list(bottom.z_index)
-		z_stack_lookup[bottom.z_index] = stack
-		// let's sing the list manipulation song
-		var/datum/map_level/next = ordered_levels[cached_level_up[bottom.z_index]]
-		var/safety = 255
-		while(next)
-			if(safety-- < 0)
-				CRASH("infinite loop during zstack recalculation even after validation. this is a serious bug!")
-			stack += next.z_index
-			z_stack_lookup[next.z_index] = stack
-			next = ordered_levels[cached_level_up[next.z_index]]
+		var/datum/map_level/iterating = bottom
+		var/datum/map_level/last = null
+		var/list/stack = list()
+		var/list/levels_in_stack = list()
+		var/discontinuity_found = FALSE
+		do
+			if(last && last != iterating.level_in_dir(DOWN))
+				discontinuity_found = TRUE
+			stack += iterating.z_index
+			levels_in_stack += iterating.z_index
+			last = iterating
+			iterating = ordered_levels[cached_level_up[iterating.z_index]]
+		while(iterating)
+		if(discontinuity_found)
+			stack_trace("z-levels [english_list(levels_in_stack)] had at least one discontinuity where going down isn't the same as going up. \
+			non-euclidean verticality is not supported.")
+			stack = list()
+		for(var/z in levels_in_stack)
+			z_stack_lookup[z] = stack
+	for(var/i in 1 to world.maxz)
+		if(length(z_stack_lookup[i]) >= 1)
+		else
+			z_stack_lookup[i] = list()
+			stack_trace("z-level [i] ([ordered_levels[i]?.name]) had no z-stack. did someone mess up their up/down configs?")
+	z_stack_dirty = FALSE
+
 
 /**
  * Ensures there's no up/down infinite loops
@@ -407,29 +417,43 @@
 /datum/controller/subsystem/mapping/proc/validate_no_loops()
 	var/list/loops = list()
 	for(var/z in 1 to world.maxz)
+		// already in a loop don't bother
+		if(z in loops)
+			continue
 		var/list/found
+		var/next
+		// scan up
+		next = z
 		found = list(z)
-		var/next = z
 		while(next)
 			next = cached_level_up[next]
 			if(next in found)
-				loops += next
+				loops += found
 				break
 			if(next)
 				found += next
+		// scan down
 		next = z
+		found = list(z)
 		while(next)
 			next = cached_level_down[next]
 			if(next in found)
-				loops += next
+				loops += found
 				break
 			if(next)
 				found += next
-	if(!length(loops))
+	if(!loops.len)
 		return
 	for(var/z in loops)
 		var/datum/map_level/level = ordered_levels[z]
-		level.link_above_id = null
-		level.link_below_id = null
+		level.link_above = null
+		level.link_below = null
 	stack_trace("WARNING: Up/Down loops found in zlevels [english_list(loops)]. This is not allowed and will cause both falling and zcopy to infinitely loop. All zlevels involved have been disconnected, and any structs involved have been destroyed.")
-	rebuild_multiz_lookup()
+	rebuild_verticality()
+	for(var/z in loops)
+		var/datum/map_level/level = ordered_levels[z]
+		if(level.link_above || level.link_below)
+			stack_trace("WARNING: level [z] ([level.name]) wasn't unlinked after having a loop detected.")
+			continue
+		spawn(0)
+			level.rebuild_turfs()

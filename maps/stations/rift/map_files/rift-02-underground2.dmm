@@ -1223,6 +1223,27 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
+"eQ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 27
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/undertwo)
 "eT" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 1
@@ -1920,6 +1941,12 @@
 	},
 /turf/simulated/floor,
 /area/engineering/engine_gas)
+"hs" = (
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = 32
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/engineering/foyer)
 "hy" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -5410,6 +5437,9 @@
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 27
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/undertwo)
@@ -27846,7 +27876,7 @@ hV
 nz
 Zj
 nb
-jU
+eQ
 ll
 fY
 Fa
@@ -30375,7 +30405,7 @@ Fa
 bL
 wp
 qk
-wp
+hs
 Fa
 Pj
 SI

@@ -96,6 +96,13 @@
 	/// load should center us on the world level - overridden if loaded as part of a /datum/map
 	var/load_center = TRUE
 
+	//* Rebuilds *//
+	var/turfs_rebuilding_dirs = NONE
+	var/turfs_rebuilding_dirs_waiting = NONE
+	var/transitions_rebuilding_dirs = NONE
+	var/transitions_rebuilding_dirs_waiting = NONE
+	#warn this shit
+
 	//* Simulation *//
 	/// canonical height of level in meters
 	///
@@ -458,6 +465,8 @@
 		SSmapping.on_level_attribute_set(src, attribute, old, null)
 
 //* Rebuilds / Transitions *//
+
+#warn rebuild mutexes
 
 /**
  * expensive as hell, rebuild all dirs

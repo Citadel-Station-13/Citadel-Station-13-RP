@@ -62,13 +62,11 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 	return 1
 
 /proc/load_admins()
-	for(var/client/C in GLOB.admins)
-		if(!C.holder)
-			continue
-		C.holder.remove_admin_verbs()
-		C.holder = null
 	//clear the datums references
 	admin_datums.Cut()
+	for(var/client/C in GLOB.admins)
+		C.remove_admin_verbs()
+		C.holder = null
 	GLOB.admins.Cut()
 
 	if(config_legacy.admin_legacy_system)

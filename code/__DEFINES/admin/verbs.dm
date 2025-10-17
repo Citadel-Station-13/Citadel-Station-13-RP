@@ -10,6 +10,23 @@
  * * Set `CATEGORY` to null to not have it show up in verb panel.
  */
 #define ADMIN_VERB_DEF(PATH_SUFFIX, REQUIRED_RIGHTS, NAME, DESC, CATEGORY, HEADER...) \
+	ADMIN_VERB_DEF_INTERNAL(PATH_SUFFIX, REQUIRED_RIGHTS, NAME, DESC, CATEGORY, TRUE, HEADER)
+
+/**
+ * Declares an admin verb that does not show up in the popup menu.
+ *
+ * * Verbs declared in this way will have the caller as `client/caller`. Do not define your
+ *   own client / usr calls.
+ * * You may safely assume that the verb is only accessible by them if they have the right permissions.
+ * * Set `CATEGORY` to null to not have it show up in verb panel.
+ */
+#define ADMIN_VERB_DEF_PANEL_ONLY(PATH_SUFFIX, REQUIRED_RIGHTS, NAME, DESC, CATEGORY, HEADER...) \
+	ADMIN_VERB_DEF_INTERNAL(PATH_SUFFIX, REQUIRED_RIGHTS, NAME, DESC, CATEGORY, FALSE, HEADER)
+
+/**
+ * Do not use.
+ */
+#define ADMIN_VERB_DEF_INTERNAL(PATH_SUFFIX, REQUIRED_RIGHTS, NAME, DESC, CATEGORY, POPUP_MENU, HEADER...) \
 /datum/admin_verb_descriptor/##PATH_SUFFIX { \
 	id = #PATH_SUFFIX; \
 	required_rights = ##REQUIRED_RIGHTS; \
@@ -21,6 +38,7 @@
 	set desc = DESC; \
 	set category = CATEGORY; \
 	set hidden = FALSE; \
+	set popup_menu = POPUP_MENU; \
 	if(!((usr?.client?.holder?.rights & ##REQUIRED_RIGHTS) == ##REQUIRED_RIGHTS)) {\
 		CRASH("attempted invocation with insufficient rights."); \
 	}; \

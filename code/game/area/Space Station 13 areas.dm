@@ -2449,6 +2449,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/medical/surgery_hallway
 	name = "\improper Surgery Hallway"
 	icon_state = "surgery_hallway"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_HALLWAYS
 
 /area/medical/surgery_storage
 	name = "\improper Surgery Storage"

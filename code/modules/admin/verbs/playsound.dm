@@ -1,10 +1,8 @@
-/client/proc/play_sound()
+/client/proc/play_sound(S as sound)
 	set category = "Fun"
 	set name = "Play Global Sound"
 	if(!check_rights(R_SOUNDS))
 		return
-
-	var/S = usr.client.prompt_for_sound_or_wait("Select sound file", "Play Global Sound", 1 * 1024 * 1024)
 
 	var/vol = input(usr, "What volume would you like the sound to play at?",, 100) as null|num
 	if(!vol)
@@ -42,13 +40,11 @@
 
 	feedback_add_details("admin_verb","PGS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/play_local_sound()
+/client/proc/play_local_sound(S as sound)
 	set category = "Fun"
 	set name = "Play Local Sound"
 	if(!check_rights(R_SOUNDS))
 		return
-
-	var/S = usr.client.prompt_for_sound_or_wait("Select sound file", "Play Local Sound", 1 * 1024 * 1024)
 
 	log_admin("[key_name(src)] played a local sound [S]")
 	message_admins("[key_name_admin(src)] played a local sound [S]")

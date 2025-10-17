@@ -7,7 +7,7 @@
 	assignable = FALSE
 	visible = FALSE
 
-/datum/role/job/trader
+/datum/prototype/role/job/trader
 	title = "Trader"
 	flag = TRADER
 	id = JOB_ID_TRADER
