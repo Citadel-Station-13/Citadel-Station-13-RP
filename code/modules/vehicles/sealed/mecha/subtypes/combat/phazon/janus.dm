@@ -3,7 +3,9 @@
 	desc = "A sleek exosuit that radiates a strange, alien energy."
 	icon_state = "janus"
 	initial_icon = "janus"
-	step_in = 1
+
+	base_movement_speed = 4.5
+
 	dir_in = 1 //Facing North.
 	step_energy_drain = 3
 	integrity = 350

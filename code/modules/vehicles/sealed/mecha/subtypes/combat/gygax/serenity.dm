@@ -6,8 +6,11 @@
 	initial_icon = "medgax"
 	integrity = 150
 	integrity_max = 150
+
+	base_movement_speed = 4.5
+	comp_armor = /obj/item/vehicle_component/armor/lightweight
+
 	deflect_chance = 20
-	step_in = 2
 
 	occupant_huds = list(
 		/datum/atom_hud/data/human/medical,
@@ -25,11 +28,3 @@
 	max_utility_equip = 2
 	max_universal_equip = 1
 	max_special_equip = 1
-
-	starting_components = list(
-		/obj/item/vehicle_component/hull,
-		/obj/item/vehicle_component/actuator,
-		/obj/item/vehicle_component/armor/lightweight,
-		/obj/item/vehicle_component/gas,
-		/obj/item/vehicle_component/electrical
-		)

@@ -127,8 +127,6 @@
 		//! END
 		. = M.apply_hyperbolic(., src)
 	movespeed_hyperbolic = min(., 10 / MOVESPEED_ABSOLUTE_MINIMUM_TILES_PER_SECOND)
-	if(!client)
-		return
 	var/diff = (last_self_move - move_delay) - movespeed_hyperbolic
 	if(diff > 0)
 		// your delay decreases, "give" the delay back to the client

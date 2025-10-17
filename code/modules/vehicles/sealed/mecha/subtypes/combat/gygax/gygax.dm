@@ -1,9 +1,14 @@
 /obj/vehicle/sealed/mecha/combat/gygax
-	desc = "A lightweight, security exosuit. Popular among private and corporate security."
 	name = "Gygax"
+	desc = "A lightweight, security exosuit. Popular among private and corporate security."
+	description_fluff = "The Gygax is a relatively modern exosuit designed for agility and speed without sacrificing durability. These traits have made the Gygax fairly popular among well funded private and corporate security forces. The Gygax features a bespoke actuator assembly that grants the exosuit short-term bursts of unparalleled speed. Consequently, the strain this assembly puts on the exosuit causes damage the unit's structural integrity. In spite of the drawbacks, this feature is frequently utilized by those who require the ability to rapidly respond to conflict. 10'(3m) tall and rotund, the Gygax's cockpit is fully enclosed and protected by the design's diamond-weave armor plating."
 	icon_state = "gygax_adv"
 	initial_icon = "gygax_adv"
-	step_in = 3
+
+	base_movement_speed = 4.25
+	comp_armor = /obj/item/vehicle_component/armor/marshal
+	comp_hull = /obj/item/vehicle_component/hull/lightweight
+
 	dir_in = 1 //Facing North.
 	integrity = 250
 	integrity_max = 250			//Don't forget to update the /old variant if  you change this number.
@@ -20,14 +25,6 @@
 	max_utility_equip = 2
 	max_universal_equip = 1
 	max_special_equip = 1
-
-	starting_components = list(
-		/obj/item/vehicle_component/hull/lightweight,
-		/obj/item/vehicle_component/actuator,
-		/obj/item/vehicle_component/armor/marshal,
-		/obj/item/vehicle_component/gas,
-		/obj/item/vehicle_component/electrical
-		)
 
 	overload_possible = 1
 

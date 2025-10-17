@@ -284,8 +284,6 @@
 		deflect_chance = initial(deflect_chance)
 		src.occupant_message("<font color='red'>You disable [src] defence mode.</font>")
 	src.log_message("Toggled defence mode.")
-	return
-
 
 
 /obj/vehicle/sealed/mecha/verb/toggle_overload()

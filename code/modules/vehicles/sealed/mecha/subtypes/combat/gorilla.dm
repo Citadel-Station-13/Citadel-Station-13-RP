@@ -5,11 +5,15 @@
 	icon = 'icons/mecha/mecha64x64.dmi'
 	icon_state = "pzrmech"
 	initial_icon = "pzrmech"
+	// Multi-tile mechs don't support opacity properly.
+	opacity = FALSE
 	pixel_x = -16
 	step_in = 10
 	integrity = 5000
 	integrity_max = 5000
-	opacity = 0 // Because there's big tall legs to look through. Also it looks fucky if this is set to 1.
+
+	base_movement_speed = 1.5
+
 	deflect_chance = 50
 	damage_absorption = list("brute"=0.1,"fire"=0.8,"bullet"=0.1,"laser"=0.6,"energy"=0.7,"bomb"=0.7) //values show how much damage will pass through, not how much will be absorbed.
 	max_temperature = 35000 //Just a bit better than the Durand.

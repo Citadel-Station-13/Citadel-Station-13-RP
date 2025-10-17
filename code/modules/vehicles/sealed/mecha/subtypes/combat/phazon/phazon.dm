@@ -3,7 +3,11 @@
 	desc = "A sleek exosuit with unnaturally pronounced curves."
 	icon_state = "phazon"
 	initial_icon = "phazon"
-	step_in = 1
+
+	base_movement_speed = 5
+	comp_armor = /obj/item/vehicle_component/armor/alien
+	comp_hull = /obj/item/vehicle_component/hull/durable
+
 	dir_in = 1 //Facing North.
 	step_energy_drain = 3
 	integrity = 200		//God this is low
@@ -26,14 +30,6 @@
 	max_special_equip = 4
 
 	encumbrance_gap = 2
-
-	starting_components = list(
-		/obj/item/vehicle_component/hull/durable,
-		/obj/item/vehicle_component/actuator,
-		/obj/item/vehicle_component/armor/alien,
-		/obj/item/vehicle_component/gas,
-		/obj/item/vehicle_component/electrical
-		)
 
 	cloak_possible = TRUE
 	phasing_possible = TRUE

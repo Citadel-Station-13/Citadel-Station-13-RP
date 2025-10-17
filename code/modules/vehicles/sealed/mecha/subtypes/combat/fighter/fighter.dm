@@ -2,6 +2,9 @@
 	name = "Delete me, nerd!!"
 	desc = "The base type of fightercraft. Don't spawn this one!"
 
+	base_movement_speed = 5
+	comp_hull = /obj/item/vehicle_component/hull/lightweight
+
 	var/datum/effect_system/ion_trail_follow/ion_trail
 	var/landing_gear_raised = FALSE //If our anti-space-drift is on
 	var/ground_capable = FALSE //If we can fly over normal turfs and not just space
@@ -12,8 +15,6 @@
 	initial_icon = ""
 
 	dir_in = null //Don't reset direction when empty
-
-	step_in = 2 //Fast
 
 	integrity = 400
 	integrity_max = 400
@@ -35,14 +36,6 @@
 	max_utility_equip = 1
 	max_universal_equip = 1
 	max_special_equip = 1
-
-	starting_components = list(
-		/obj/item/vehicle_component/hull/lightweight,
-		/obj/item/vehicle_component/actuator,
-		/obj/item/vehicle_component/armor,
-		/obj/item/vehicle_component/gas,
-		/obj/item/vehicle_component/electrical
-		)
 
 	var/in_gravity_damage = 20
 

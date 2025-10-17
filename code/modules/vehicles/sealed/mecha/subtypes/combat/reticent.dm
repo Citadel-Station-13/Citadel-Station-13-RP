@@ -3,10 +3,14 @@
 	desc = "Designed in response to the H.O.N.K., Reticent models are close combat powerhouses designed to rapidly and quietly ambush slower foes."
 	icon_state = "reticent"
 	initial_icon = "reticent"
-	step_in = 3
 	dir_in = 1 //Facing North.
 	integrity = 180
 	integrity_max = 180			//Don't forget to update the /old variant if  you change this number.
+
+	base_movement_speed = 3.33
+	comp_armor = /obj/item/vehicle_component/armor/marshal
+	comp_hull = /obj/item/vehicle_component/hull/lightweight
+
 	deflect_chance = 25
 	damage_absorption = list("brute"=1,"fire"=0.75,"bullet"=0.85,"laser"=0.8,"energy"=0.7,"bomb"=1)
 	max_temperature = 25000
@@ -20,14 +24,6 @@
 	max_utility_equip = 2
 	max_universal_equip = 1
 	max_special_equip = 1
-
-	starting_components = list(
-		/obj/item/vehicle_component/hull/durable,
-		/obj/item/vehicle_component/actuator,
-		/obj/item/vehicle_component/armor/marshal,
-		/obj/item/vehicle_component/gas,
-		/obj/item/vehicle_component/electrical
-		)
 
 	overload_possible = 1
 

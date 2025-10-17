@@ -3,7 +3,11 @@
 	desc = "The H.O.N.K. mecha is sometimes crafted by deranged Roboticists with a grudge, and is illegal in thirty six different sectors."
 	icon_state = "honker"
 	initial_icon = "honker"
-	step_in = 4
+
+	base_movement_speed = 3.75
+	comp_armor = /obj/item/vehicle_component/armor/marshal
+	comp_hull = /obj/item/vehicle_component/hull/durable
+
 	dir_in = 1 //Facing North.
 	integrity = 250
 	integrity_max = 250			//Don't forget to update the /old variant if  you change this number.
@@ -20,14 +24,6 @@
 	max_utility_equip = 2
 	max_universal_equip = 1
 	max_special_equip = 1
-
-	starting_components = list(
-		/obj/item/vehicle_component/hull/durable,
-		/obj/item/vehicle_component/actuator,
-		/obj/item/vehicle_component/armor/marshal,
-		/obj/item/vehicle_component/gas,
-		/obj/item/vehicle_component/electrical
-		)
 
 	overload_possible = 1
 

@@ -41,8 +41,6 @@
 	var/initial_icon = null
 	var/can_move = TRUE
 
-	/// Make a step in step_in/10 sec.
-	var/step_in = 10
 	/// How many points of slowdown are negated from equipment? Added to the mech's base step_in.
 	var/encumbrance_gap = 1
 

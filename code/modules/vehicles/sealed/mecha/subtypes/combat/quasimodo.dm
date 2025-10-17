@@ -4,15 +4,21 @@
 	icon = 'icons/mecha/mecha96x96.dmi'
 	icon_state = "quasimodo"
 	initial_icon = "quasimodo"
+	// Multi-tile mechs don't support opacity properly.
+	opacity = FALSE
+	// 3x3
 	bound_width = 96
 	bound_height = 96
 	bound_x = 0
 	bound_y = 0
-	step_in = 10
+
+	base_movement_speed = 1.5
+	comp_hull = /obj/item/vehicle_component/hull/heavy_duty
+	comp_armor = /obj/item/vehicle_component/armor/heavy_duty
+
 	integrity = 4500 //Designed to take a lot of hits, but not able to be repaired in combat.
 	integrity_max = 4500
 	fail_penetration_value = 0.40
-	opacity = 0 // Because its a huge ass mech.
 	deflect_chance = 50
 	damage_absorption = list("brute"=0.9,"fire"=0.3,"bullet"=0.9,"laser"=0.9,"energy"=0.7,"bomb"=0.4) //It's real absorption will come from it's armor + it can take that damage.
 	max_temperature = 50000 //Big ass mech can take a lot of heat.
@@ -30,16 +36,6 @@
 	max_universal_equip = 0
 	max_special_equip = 1
 	max_heavy_weapon_equip = 1
-
-	starting_components = list(
-		/obj/item/vehicle_component/hull/heavy_duty,
-		/obj/item/vehicle_component/actuator,
-		/obj/item/vehicle_component/armor/heavy_duty,
-		/obj/item/vehicle_component/gas,
-		/obj/item/vehicle_component/electrical
-		)
-
-
 
 /obj/vehicle/sealed/mecha/combat/quasimodo/Initialize(mapload)
 	. = ..()

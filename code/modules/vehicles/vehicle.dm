@@ -16,10 +16,10 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 	var/list/obj/item/vehicle_component/components
 
 	//* Movement *//
-	/// Next move
-	var/move_next_time = 0
+	/// Next move time
+	var/move_delay = 0
 	/// Base movement speed, in tile/seconds
-	var/move_base_speed = 5
+	var/base_movement_speed = 5
 
 	//*                          Movespeed                           *//
 	//* This will be removed once /obj/vehicle becomes /mob/vehicle! *//

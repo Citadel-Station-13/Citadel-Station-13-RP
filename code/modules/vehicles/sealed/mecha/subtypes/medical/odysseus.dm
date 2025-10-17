@@ -24,7 +24,6 @@
 	icon_scale_x = 1.2
 	icon_scale_y = 1.2
 
-
 /obj/vehicle/sealed/mecha/medical/odysseus/loaded/Initialize(mapload)
 	. = ..()
 	var/obj/item/vehicle_module/ME = new /obj/item/vehicle_module/tool/sleeper

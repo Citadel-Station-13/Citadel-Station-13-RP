@@ -3,7 +3,9 @@
 	name = "Durand"
 	icon_state = "durand"
 	initial_icon = "durand"
-	step_in = 4
+
+	base_movement_speed = 2.5
+
 	dir_in = 1 //Facing North.
 	integrity = 300
 	integrity_max = 300			//Don't forget to update the /old variant if  you change this number.
