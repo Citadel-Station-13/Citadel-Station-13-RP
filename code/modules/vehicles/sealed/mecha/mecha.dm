@@ -39,19 +39,44 @@
 	//* Components *//
 	/// our actuator component
 	/// * set to typepath to start with
-	var/obj/item/vehicle_component/actuator/comp_actuator
+	var/obj/item/vehicle_component/actuator/comp_actuator = /obj/item/vehicle_component/actuator
 	/// our armor component
 	/// * set to typepath to start with
-	var/obj/item/vehicle_component/armor/comp_armor
+	var/obj/item/vehicle_component/armor/comp_armor = /obj/item/vehicle_component/armor
+	/// armor relative thickness
+	/// * pretty much multiplies the integrity
+	/// * relative to 1
+	var/comp_armor_relative_thickness = 1
 	/// our electrical component
 	/// * set to typepath to start with
-	var/obj/item/vehicle_component/electrical/comp_electrical
+	var/obj/item/vehicle_component/electrical/comp_electrical = /obj/item/vehicle_component/electrical
 	/// our gas component
 	/// * set to typepath to start with
-	var/obj/item/vehicle_component/gas/comp_gas
+	var/obj/item/vehicle_component/gas/comp_gas = /obj/item/vehicle_component/gas
 	/// our hull component
 	/// * set to typepath to start with
-	var/obj/item/vehicle_component/hull/comp_hull
+	var/obj/item/vehicle_component/hull/comp_hull = /obj/item/vehicle_component/hull
+	/// hull relative thickness
+	/// * pretty much multiplies the integrity
+	/// * relative to 1
+	var/comp_hull_relative_thickness = 1
+
+/obj/vehicle/sealed/mecha/Initialize()
+	. = ..()
+	#warn anything?
+
+/obj/vehicle/sealed/mecha/create_initial_components()
+	..()
+	for(var/maybe_path in list(
+		initial(comp_actuator),
+		initial(comp_armor),
+		initial(comp_electrical),
+		initial(comp_gas),
+		initial(comp_hull),
+	))
+		if(!ispath(maybe_path))
+			continue
+		#warn impl
 
 
 #warn impl all

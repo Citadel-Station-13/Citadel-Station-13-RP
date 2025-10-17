@@ -132,22 +132,6 @@
 	/// List containing starting tools.
 	var/list/starting_equipment = null
 
-// Mech Components, similar to Cyborg, but Bigger.
-	var/list/internal_components = list(
-		MECH_HULL = null,
-		MECH_ACTUATOR = null,
-		MECH_ARMOR = null,
-		MECH_GAS = null,
-		MECH_ELECTRIC = null
-		)
-	var/list/starting_components = list(
-		/obj/item/vehicle_component/hull,
-		/obj/item/vehicle_component/actuator,
-		/obj/item/vehicle_component/armor,
-		/obj/item/vehicle_component/gas,
-		/obj/item/vehicle_component/electrical
-		)
-
 //Working exosuit vars
 	var/list/cargo = list()
 	var/cargo_capacity = 3
@@ -226,7 +210,6 @@
 	var/weapons_only_cycle = FALSE
 
 	//* Legacy *//
-
 	/// the first controller in us
 	var/mob/occupant_legacy
 
@@ -246,7 +229,6 @@
 	phasing_action = new(src)
 	cloak_action = new(src)
 	. = ..()
-	INVOKE_ASYNC(src, PROC_REF(create_components))
 	update_transform()
 
 	events = new

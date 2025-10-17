@@ -47,6 +47,10 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 	/// list of typepaths or ids of /datum/atom_hud_providers that occupants with [VEHICLE_CONTROL_USE_HUDS] get added to their perspective
 	var/list/occupant_huds
 
+/obj/vehicle/Initialize(mapload)
+	. = ..()
+	create_initial_components()
+
 //* Actions *//
 
 /obj/vehicle/proc/initialize_occupant_actions()
