@@ -18,16 +18,22 @@
 	While some unathi are plantigrade and almost resemble humans in their silhouette, others are more hulking; a digitigrade, beastial and alien creature.
 	"}
 
-	has_limbs = list(
-		BP_TORSO  = list("path" = /obj/item/organ/external/chest/unathi),
-		BP_GROIN  = list("path" = /obj/item/organ/external/groin/unathi),
-		BP_HEAD   = list("path" = /obj/item/organ/external/head/unathi/digi),
-		BP_L_ARM  = list("path" = /obj/item/organ/external/arm),
-		BP_R_ARM  = list("path" = /obj/item/organ/external/arm/right),
-		BP_L_LEG  = list("path" = /obj/item/organ/external/leg),
-		BP_R_LEG  = list("path" = /obj/item/organ/external/leg/right),
-		BP_L_HAND = list("path" = /obj/item/organ/external/hand),
-		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right),
-		BP_L_FOOT = list("path" = /obj/item/organ/external/foot),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right),
+	has_external_organs = list(
+		ORGAN_KEY_EXT_HEAD = /datum/species_organ_entry{
+			override_type = /obj/item/organ/external/head/unathi/digi;
+		},
+		ORGAN_KEY_EXT_CHEST = /datum/species_organ_entry{
+			override_type = /obj/item/organ/external/chest/unathi;
+		},
+		ORGAN_KEY_EXT_GROIN = /datum/species_organ_entry{
+			override_type = /obj/item/organ/external/groin/unathi;
+		},
+		ORGAN_KEY_EXT_LEFT_ARM,
+		ORGAN_KEY_EXT_LEFT_HAND,
+		ORGAN_KEY_EXT_RIGHT_ARM,
+		ORGAN_KEY_EXT_RIGHT_HAND,
+		ORGAN_KEY_EXT_LEFT_LEG,
+		ORGAN_KEY_EXT_LEFT_FOOT,
+		ORGAN_KEY_EXT_RIGHT_LEG,
+		ORGAN_KEY_EXT_RIGHT_FOOT,
 	)

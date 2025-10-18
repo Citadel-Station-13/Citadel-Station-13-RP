@@ -12,18 +12,16 @@
 	if (!user.lying && (target.lying || (zone in list("l_foot", "r_foot"))))
 		if(target.grabbed_by == user && target.lying)
 			return FALSE
-		var/obj/item/organ/external/E = user.organs_by_name["l_foot"]
-		if(E && !E.is_stump())
-			return TRUE
 
-		E = user.organs_by_name["r_foot"]
-		if(E && !E.is_stump())
+		if ( \
+			user.get_non_stump_organ_for_zone(TARGET_ZONE_LEFT_FOOT) || \
+			user.get_non_stump_organ_for_zone(TARGET_ZONE_RIGHT_FOOT)
+		)
 			return TRUE
-
-		return FALSE
+	return FALSE
 
 /datum/melee_attack/unarmed/stomp/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
-	var/obj/item/organ/external/affecting = target.get_organ(zone)
+	var/obj/item/organ/external/affecting = target.get_organ_for_zone(zone)
 	var/organ = affecting.name
 	var/obj/item/clothing/shoes = user.shoes
 	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
@@ -39,6 +37,6 @@
 	attack_name = "weak stomp"
 
 /datum/melee_attack/unarmed/stomp/weak/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
-	var/obj/item/organ/external/affecting = target.get_organ(zone)
+	var/obj/item/organ/external/affecting = target.get_organ_for_zone(zone)
 	user.visible_message("<span class='warning'>[user] jumped up and down on \the [target]'s [affecting.name]!</span>")
 	playsound(user.loc, attack_sound, 25, 1, -1)

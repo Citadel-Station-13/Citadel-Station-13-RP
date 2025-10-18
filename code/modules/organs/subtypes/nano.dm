@@ -4,7 +4,6 @@
 	encased = FALSE
 	max_damage = 200
 	min_broken_damage = 1000
-	vital = TRUE
 	emp_mod = 7
 
 /obj/item/organ/external/groin/unbreakable/nano
@@ -12,7 +11,6 @@
 	encased = FALSE
 	max_damage = 100
 	min_broken_damage = 1000 //Multiple
-	vital = FALSE
 	emp_mod = 4
 
 /obj/item/organ/external/head/unbreakable/nano
@@ -20,7 +18,6 @@
 	encased = FALSE
 	max_damage = 80
 	min_broken_damage = 1000 //Inheritance
-	vital = FALSE
 	emp_mod = 4
 
 /obj/item/organ/external/arm/unbreakable/nano
@@ -28,7 +25,6 @@
 	encased = FALSE
 	max_damage = 80
 	min_broken_damage = 1000 //Please
-	vital = FALSE
 	emp_mod = 4
 
 /obj/item/organ/external/arm/right/unbreakable/nano
@@ -36,7 +32,6 @@
 	encased = FALSE
 	max_damage = 80
 	min_broken_damage = 1000
-	vital = FALSE
 	emp_mod = 4
 
 /obj/item/organ/external/leg/unbreakable/nano
@@ -44,7 +39,6 @@
 	encased = FALSE
 	max_damage = 80
 	min_broken_damage = 1000
-	vital = FALSE
 	emp_mod = 4
 
 /obj/item/organ/external/leg/right/unbreakable/nano
@@ -52,7 +46,6 @@
 	encased = FALSE
 	max_damage = 80
 	min_broken_damage = 1000
-	vital = FALSE
 	emp_mod = 4
 
 /obj/item/organ/external/hand/unbreakable/nano
@@ -60,7 +53,6 @@
 	encased = FALSE
 	max_damage = 80
 	min_broken_damage = 1000
-	vital = FALSE
 	emp_mod = 4
 
 /obj/item/organ/external/hand/right/unbreakable/nano
@@ -68,7 +60,6 @@
 	encased = FALSE
 	max_damage = 80
 	min_broken_damage = 1000
-	vital = FALSE
 	emp_mod = 4
 
 /obj/item/organ/external/foot/unbreakable/nano
@@ -76,7 +67,6 @@
 	encased = FALSE
 	max_damage = 80
 	min_broken_damage = 1000
-	vital = FALSE
 	emp_mod = 4
 
 /obj/item/organ/external/foot/right/unbreakable/nano
@@ -84,7 +74,6 @@
 	encased = FALSE
 	max_damage = 80
 	min_broken_damage = 1000
-	vital = FALSE
 	emp_mod = 4
 
 // // // Internal Organs
@@ -98,7 +87,6 @@
 	icon_state = "orchestrator"
 	organ_tag = O_ORCH
 	parent_organ = BP_TORSO
-	vital = TRUE
 
 /obj/item/organ/internal/nano/refactory
 	name = "refactory module"
