@@ -16,8 +16,10 @@
 
 	dir_in = null //Don't reset direction when empty
 
-	integrity = 400
-	integrity_max = 400
+	integrity = 300
+	integrity_max = 300
+	comp_armor_relative_thickness = 1.25
+	comp_hull_relative_thickness = 1.25
 
 	infra_luminosity = 6
 

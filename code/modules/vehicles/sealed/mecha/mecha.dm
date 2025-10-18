@@ -1,6 +1,14 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
+/datum/armor/vehicle/mecha
+	melee = 0.2
+	melee_tier = 4
+	bullet = 0.2
+	bullet_tier = 4
+	laser = 0.2
+	laser_tier = 4
+
 /**
  * This is called 'mecha' but it'll eventually just be our 'complex composable vehicle base'.
  * We'll have a tank, eventually. Surely.
@@ -25,6 +33,9 @@
  * * Once chassis is pierced, damage can hit the occupant
  */
 /obj/vehicle/sealed/mecha
+	armor_type = /datum/armor/vehicle/mecha
+	integrity = 300
+	integrity_max = 300
 	/// Can't go through
 	density = TRUE
 	/// Blocks vision

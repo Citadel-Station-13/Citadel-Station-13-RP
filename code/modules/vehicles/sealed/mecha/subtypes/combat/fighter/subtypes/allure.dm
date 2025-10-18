@@ -8,6 +8,11 @@
 	catalogue_data = list(/datum/category_item/catalogue/technology/allure)
 	wreckage = /obj/effect/decal/mecha_wreckage/allure
 
+	integrity = /obj/vehicle/sealed/mecha/combat/fighter::integrity * 1.25
+	integrity_max = /obj/vehicle/sealed/mecha/combat/fighter::integrity_max * 1.25
+	comp_armor_relative_thickness = 1.45 * /obj/vehicle/sealed/mecha/combat/fighter::comp_armor_relative_thickness
+	comp_hull_relative_thickness = 1.45 * /obj/vehicle/sealed/mecha/combat/fighter::comp_hull_relative_thickness
+
 	ground_capable = FALSE
 
 	integrity = 500

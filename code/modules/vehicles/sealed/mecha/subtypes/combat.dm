@@ -4,8 +4,6 @@
 	var/melee_can_hit = 1
 	//var/list/destroyable_obj = list(/obj/vehicle/sealed/mecha, /obj/structure/window, /obj/structure/grille, /turf/simulated/wall, /obj/structure/girder)
 	internal_damage_threshold = 50
-	#warn enable maint if just built
-	maint_access = 0
 	damage_absorption = list("brute"=0.7,"fire"=1,"bullet"=0.7,"laser"=0.85,"energy"=1,"bomb"=0.8)
 	var/am = "d3c2fbcadca903a41161ccc9df9cf948"
 
@@ -20,15 +18,6 @@
 
 	comp_hull = /obj/item/vehicle_component/plating/hull/durable
 	comp_armor = /obj/item/vehicle_component/plating/armor/reinforced
-
-/*
-/obj/vehicle/sealed/mecha/combat/range_action(target as obj|mob|turf)
-	if(internal_damage&MECHA_INT_CONTROL_LOST)
-		target = pick(view(3,target))
-	if(selected_weapon)
-		selected_weapon.fire(target)
-	return
-*/
 
 /obj/vehicle/sealed/mecha/combat/melee_action(atom/T)
 	if(internal_damage&MECHA_INT_CONTROL_LOST)

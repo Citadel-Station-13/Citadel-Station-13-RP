@@ -5,8 +5,6 @@
 	var/list/micro_weapon_equipment = new
 	var/size_requirement = 0.5
 
-
-
 /obj/vehicle/sealed/mecha/micro
 	icon = 'icons/mecha/micro.dmi'
 	force = 10 //still a robot

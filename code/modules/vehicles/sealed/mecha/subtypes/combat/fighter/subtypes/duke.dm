@@ -7,14 +7,16 @@
 
 	base_movement_speed = 3.8
 
-	integrity = 1200
-	integrity_max = 1200 //double baron HP, only room for one defensive upgrade. No specials(cloaking, speed, ect) or universals.
-
 	max_hull_equip = 1
 	max_weapon_equip = 4
 	max_utility_equip = 2
 	max_universal_equip = 0
 	max_special_equip = 0
+
+	integrity = /obj/vehicle/sealed/mecha/combat/fighter::integrity * 1.5
+	integrity_max = /obj/vehicle/sealed/mecha/combat/fighter::integrity_max * 1.5
+	comp_armor_relative_thickness = 1.75 * /obj/vehicle/sealed/mecha/combat/fighter::comp_armor_relative_thickness
+	comp_hull_relative_thickness = 1.75 * /obj/vehicle/sealed/mecha/combat/fighter::comp_hull_relative_thickness
 
 	catalogue_data = list(/datum/category_item/catalogue/technology/duke)
 	wreckage = /obj/effect/decal/mecha_wreckage/duke

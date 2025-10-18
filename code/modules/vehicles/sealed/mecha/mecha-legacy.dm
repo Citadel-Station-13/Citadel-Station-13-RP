@@ -49,10 +49,11 @@
 
 	var/obj/item/cell/cell
 	var/state = MECHA_OPERATING
-	var/list/log = new
 	var/last_message = 0
-	var/add_req_access = 1
-	var/maint_access = 1
+	#warn enable ID upload if just built
+	var/add_req_access = FALSE
+	#warn enable maint if just built
+	var/maint_access = FALSE
 	/// Stores proc owners, like proc_res["functionname"] = owner reference.
 	var/list/proc_res = list()
 	var/datum/effect_system/spark_spread/spark_system = new
@@ -194,7 +195,6 @@
 	stats_action = new(src)
 	strafing_action = new(src)
 
-	defence_action = new(src)
 	overload_action = new(src)
 	smoke_action = new(src)
 	zoom_action = new(src)
@@ -524,7 +524,6 @@
 	return FALSE
 
 /obj/vehicle/sealed/mecha/proc/domove(direction)
-
 	return call((proc_res["dyndomove"]||src), "dyndomove")(direction)
 
 /obj/vehicle/sealed/mecha/proc/get_step_delay()
@@ -784,7 +783,6 @@
 
 		update_health()
 		log_append_to_last("Took [damage] points of damage. Damage type: \"[type]\".",1)
-	return
 
 /obj/vehicle/sealed/mecha/proc/components_handle_damage(var/damage, var/type = DAMAGE_TYPE_BRUTE)
 	var/obj/item/vehicle_component/plating/armor/AC = internal_components[MECH_ARMOR]
@@ -810,24 +808,6 @@
 			damage -= damage_part_amt
 
 	return damage
-
-/obj/vehicle/sealed/mecha/proc/get_damage_absorption()
-	var/obj/item/vehicle_component/plating/armor/AC = internal_components[MECH_ARMOR]
-
-	if(!istype(AC))
-		return
-
-	else
-		if(AC.get_efficiency() > 0.25)
-			return AC.damage_absorption
-
-	return
-
-/obj/vehicle/sealed/mecha/proc/absorbDamage(damage,damage_type)
-	return call((proc_res["dynabsorbdamage"]||src), "dynabsorbdamage")(damage,damage_type)
-
-/obj/vehicle/sealed/mecha/proc/dynabsorbdamage(damage,damage_type)
-	return damage*(SAFEACCESS(get_damage_absorption(),damage_type) || 1)
 
 /obj/vehicle/sealed/mecha/airlock_crush(var/crush_damage)
 	..()
@@ -952,12 +932,6 @@
 			if(pass_damage > internal_damage_minimum)	//Only decently painful attacks trigger a chance of mech damage.
 				src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 
-/obj/vehicle/sealed/mecha/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
-	src.log_message("Hit by projectile. Type: [proj.name]([proj.damage_flag]).",1)
-	impact_flags |= call((proc_res["dynbulletdamage"]||src), "dynbulletdamage")(proj) //calls equipment
-	impact_flags |= PROJECTILE_IMPACT_SKIP_STANDARD_DAMAGE
-	return ..()
-
 /obj/vehicle/sealed/mecha/proc/dynbulletdamage(var/obj/projectile/Proj)
 	var/obj/item/vehicle_component/plating/armor/ArmC = internal_components[MECH_ARMOR]
 
@@ -1060,29 +1034,6 @@
 		if(3.0)
 			src.take_damage_legacy(initial(src.integrity)/8, "bomb")
 			src.check_for_internal_damage(list(MECHA_INT_FIRE,MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST,MECHA_INT_SHORT_CIRCUIT),1)
-	return
-
-/*Will fix later -Sieve
-/obj/vehicle/sealed/mecha/attack_blob(mob/user as mob)
-	src.log_message("Attack by blob. Attacker - [user].",1)
-	if(!prob(src.deflect_chance))
-		src.take_damage_legacy(6)
-		src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
-		playsound(src, 'sound/effects/blobattack.ogg', 50, 1, -1)
-		to_chat(user, "<span class='danger'>You smash at the armored suit!</span>")
-		for (var/mob/V in viewers(src))
-			if(V.client && !(V.blinded))
-				V.show_message("<span class='danger'>\The [user] smashes against [src.name]'s armor!</span>", 1)
-	else
-		src.log_append_to_last("Armor saved.")
-		playsound(src, 'sound/effects/blobattack.ogg', 50, 1, -1)
-		to_chat(user, "<span class='warning'>Your attack had no effect!</span>")
-		src.occupant_message("<span class='warning'>\The [user]'s attack is stopped by the armor.</span>")
-		for (var/mob/V in viewers(src))
-			if(V.client && !(V.blinded))
-				V.show_message("<span class='warning'>\The [user] rebounds off the [src.name] armor!</span>", 1)
-	return
-*/
 
 /obj/vehicle/sealed/mecha/emp_act(severity)
 	if(get_charge())
@@ -1162,6 +1113,7 @@
 		RA.do_scan(src, user)
 		return
 
+	#warn deal with
 	if(istype(W, /obj/item/vehicle_module))
 		var/obj/item/vehicle_module/E = W
 		if(E.can_attach(src))
@@ -1173,6 +1125,7 @@
 			to_chat(user, "You were unable to attach [W] to [src]")
 		return
 
+	#warn deal with
 	if(istype(W, /obj/item/vehicle_component) && state == MECHA_CELL_OUT)
 		var/obj/item/vehicle_component/MC = W
 		if(MC.attach(src))
@@ -1229,7 +1182,6 @@
 
 			var/obj/item/vehicle_component/RmC = removable_components[remove]
 			RmC.detach()
-
 		return
 	else if(istype(W, /obj/item/stack/cable_coil))
 		if(state >= MECHA_CELL_OPEN && hasInternalDamage(MECHA_INT_SHORT_CIRCUIT))
@@ -1254,7 +1206,6 @@
 			state=MECHA_CELL_OPEN
 			to_chat(user, "You screw the cell in place")
 		return
-
 	else if(istype(W, /obj/item/multitool))
 		if(state>=MECHA_CELL_OPEN && src.occupant_legacy)
 			to_chat(user, "You attempt to eject the pilot using the maintenance controls.")
@@ -1266,7 +1217,6 @@
 				src.occupant_message("<span class='warning'>An attempt to eject you was made using the maintenance controls.</span>")
 				src.log_message("Eject attempt made using maintenance controls - rejected.")
 		return
-
 	else if(istype(W, /obj/item/cell))
 		if(state==MECHA_CELL_OUT)
 			if(!src.cell)
@@ -1278,7 +1228,6 @@
 			else
 				to_chat(user, "There's already a powercell installed.")
 		return
-
 	else if(istype(W, /obj/item/weldingtool) && user.a_intent != INTENT_HARM)
 		var/obj/item/weldingtool/WT = W
 		if (WT.remove_fuel(0,user))
@@ -1294,13 +1243,11 @@
 		else
 			to_chat(user, "The [src.name] is at full integrity")
 		return
-
 	else if(istype(W, /obj/item/vehicle_tracking_beacon))
 		if(!user.attempt_insert_item_for_installation(W, src))
 			return
 		user.visible_message("[user] attaches [W] to [src].", "You attach [W] to [src]")
 		return
-
 	else if(istype(W,/obj/item/stack/nanopaste))
 		if(state >= MECHA_PANEL_LOOSE)
 			var/obj/item/stack/nanopaste/NP = W
@@ -1324,41 +1271,7 @@
 			return
 
 	else
-		call((proc_res["dynattackby"]||src), "dynattackby")(W,user)
-/*
-		src.log_message("Attacked by [W]. Attacker - [user]")
-		if(prob(src.deflect_chance))
-			to_chat(user, "<span class='warning'>\The [W] bounces off [src.name] armor.</span>")
-			src.log_append_to_last("Armor saved.")
-/*
-			for (var/mob/V in viewers(src))
-				if(V.client && !(V.blinded))
-					V.show_message("The [W] bounces off [src.name] armor.", 1)
-*/
-		else
-			src.occupant_message("<font color='red'><b>[user] hits [src] with [W].</b></font>")
-			user.visible_message("<font color='red'><b>[user] hits [src] with [W].</b></font>", "<font color='red'><b>You hit [src] with [W].</b></font>")
-			src.take_damage_legacy(W.force,W.damtype)
-			src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
-*/
-	return
-
-
-
-/*
-/obj/vehicle/sealed/mecha/attack_ai(var/mob/living/silicon/ai/user as mob)
-	if(!istype(user, /mob/living/silicon/ai))
-		return
-	var/output = {"<b>Assume direct control over [src]?</b>
-						<a href='?src=\ref[src];ai_take_control=\ref[user];duration=3000'>Yes</a><br>
-						"}
-	user << browse(output, "window=mecha_attack_ai")
-	return
-*/
-
-/////////////////////////////////////
-////////  Atmospheric stuff  ////////
-/////////////////////////////////////
+		return ..()
 
 /obj/vehicle/sealed/mecha/return_air()
 	RETURN_TYPE(/datum/gas_mixture)
@@ -1756,7 +1669,6 @@
 						<div class='links'>
 						<a href='?src=\ref[src];toggle_id_upload=1'><span id='t_id_upload'>[add_req_access?"L":"Unl"]ock ID upload panel</span></a><br>
 						<a href='?src=\ref[src];toggle_maint_access=1'><span id='t_maint_access'>[maint_access?"Forbid":"Permit"] maintenance protocols</span></a><br>
-						<a href='?src=\ref[src];view_log=1'>View internal log</a><br>
 						<a href='?src=\ref[src];change_name=1'>Change exosuit name</a><br>
 						</div>
 						</div>
@@ -1805,27 +1717,6 @@
 		output_text += "<div id='\ref[MT]'>[MT.get_equip_info()]</div>"
 	output_text += "</div>"
 	return output_text
-
-
-/obj/vehicle/sealed/mecha/proc/get_log_html()
-	var/output_text = "<html><head><title>[src.name] Log</title></head><body style='font: 13px 'Courier', monospace;'>"
-	for(var/list/entry in log)
-		output_text += {"<div style='font-weight: bold;'>[time2text(entry["time"],"DDD MMM DD hh:mm:ss")] [game_year]</div>
-						<div style='margin-left:15px; margin-bottom:10px;'>[entry["message"]]</div>
-						"}
-	output_text += "</body></html>"
-	return output_text
-
-/obj/vehicle/sealed/mecha/proc/get_log_tgui()
-	var/list/data = list()
-	for(var/list/entry in log)
-		data.Add(list(list(
-			"time" = time2text(entry["time"], "DDD MMM DD hh:mm:ss"),
-			"year" = game_year,
-			"message" = entry["message"],
-		)))
-	return data
-
 
 /obj/vehicle/sealed/mecha/proc/output_access_dialog(obj/item/card/id/id_card, mob/user)
 	if(!id_card || !user) return
@@ -1876,31 +1767,19 @@
 	onclose(user, "exosuit_maint_console")
 	return
 
-
-////////////////////////////////
-/////// Messages and Log ///////
-////////////////////////////////
-
 /obj/vehicle/sealed/mecha/proc/occupant_message(message as text)
 	if(message)
 		if(src.occupant_legacy && src.occupant_legacy.client)
 			to_chat(src.occupant_legacy, "[icon2html(src, world)] [message]")
 	return
 
+// LEGACY, NULL-OPPED WHILE WE FIGURE OUT WHAT WE WANT FOR MECH LOGS.
 /obj/vehicle/sealed/mecha/proc/log_message(message as text,red=null)
-	log.len++
-	log[log.len] = list("time"=world.timeofday,"message"="[red?"<font color='red'>":null][message][red?"</font>":null]")
-	return log.len
-
-/obj/vehicle/sealed/mecha/proc/log_append_to_last(message as text,red=null)
-	var/list/last_entry = src.log[src.log.len]
-	last_entry["message"] += "<br>[red?"<font color='red'>":null][message][red?"</font>":null]"
 	return
 
-
-/////////////////
-///// Topic /////
-/////////////////
+// LEGACY, NULL-OPPED WHILE WE FIGURE OUT WHAT WE WANT FOR MECH LOGS.
+/obj/vehicle/sealed/mecha/proc/log_append_to_last(message as text,red=null)
+	return
 
 /obj/vehicle/sealed/mecha/Topic(href, href_list)
 	..()
@@ -1976,11 +1855,6 @@
 	if (href_list["port_connect"])
 		if(usr != src.occupant_legacy)	return
 		src.connect_to_port()
-		return
-	if (href_list["view_log"])
-		if(usr != src.occupant_legacy)	return
-		src.occupant_legacy << browse(src.get_log_html(), "window=exosuit_log")
-		onclose(occupant_legacy, "exosuit_log")
 		return
 	if (href_list["change_name"])
 		if(usr != src.occupant_legacy)	return

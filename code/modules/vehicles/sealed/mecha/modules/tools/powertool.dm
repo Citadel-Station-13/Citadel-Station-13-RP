@@ -53,3 +53,12 @@
 	icon_state = "mecha_screwdriver"
 	tooltype = /obj/item/tool/screwdriver/power
 	ready_sound = 'sound/mecha/gasdisconnected.ogg'
+
+/obj/item/vehicle_module/tool/powertool/medanalyzer
+	name = "mounted humanoid scanner"
+	desc = "An exosuit-mounted scanning device."
+	icon_state = "mecha_analyzer_health"
+	equip_cooldown = 5 SECONDS
+	energy_drain = 100
+	ready_sound = 'sound/weapons/flash.ogg'
+	tooltype = /obj/item/healthanalyzer/advanced

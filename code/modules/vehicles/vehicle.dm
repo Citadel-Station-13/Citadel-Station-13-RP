@@ -1,6 +1,8 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
+/datum/armor/vehicle
+
 TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 /**
  * generic, multiseat-capable vehicles system
@@ -10,6 +12,11 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
  *   This may change in the future, so use wrappers in `vehicle-defense.dm`
  */
 /obj/vehicle
+	integrity = 300
+	integrity_max = 300
+	integrity_failure = 0
+	armor_type = /datum/armor/vehicle
+
 	//* Components *//
 	/// Installed components
 	/// * Lazy list.

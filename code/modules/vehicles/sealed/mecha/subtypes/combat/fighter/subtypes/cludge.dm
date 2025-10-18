@@ -5,8 +5,8 @@
 	icon_state = "cludge"
 	initial_icon = "cludge"
 
-	integrity = 100
-	integrity_max = 100
+	integrity = 175
+	integrity_max = 175
 
 	max_hull_equip = 0
 	max_weapon_equip = 0

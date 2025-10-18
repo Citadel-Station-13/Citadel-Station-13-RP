@@ -8,8 +8,6 @@
 	catalogue_data = list(/datum/category_item/catalogue/technology/gunpod)
 	wreckage = /obj/effect/decal/mecha_wreckage/gunpod
 
-	step_in T= 3 //Slightly slower than others
-
 	ground_capable = TRUE
 
 	// Paint colors! Null if not set.

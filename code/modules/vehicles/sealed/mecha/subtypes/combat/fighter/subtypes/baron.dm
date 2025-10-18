@@ -5,8 +5,8 @@
 	icon_state = "baron"
 	initial_icon = "baron"
 
-	integrity = 600
-	integrity_max = 600
+	integrity = /obj/vehicle/sealed/mecha/combat/fighter::integrity * 1.5
+	integrity_max = /obj/vehicle/sealed/mecha/combat/fighter::integrity_max * 1.5
 
 	catalogue_data = list(/datum/category_item/catalogue/technology/baron)
 	wreckage = /obj/effect/decal/mecha_wreckage/baron
