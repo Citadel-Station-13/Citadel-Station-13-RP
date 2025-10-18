@@ -1,5 +1,7 @@
+/datum/armor/vehicle_plating/armor
 
-// TODO: repath to /vehicle_component/mecha/armor
+/datum/armor/vehicle_plating_redirection/armor
+
 /obj/item/vehicle_component/plating/armor
 	name = "mecha plating"
 	icon = 'icons/mecha/mech_component.dmi'
@@ -9,18 +11,12 @@
 	materials_base = list(MAT_STEEL = 5000, MAT_GLASS = 1000)
 
 	component_type = MECH_ARMOR
-
 	start_damaged = FALSE
-
 	emp_resistance = 4
-
 	required_type = null	// List, if it exists. Exosuits meant to use the component.
-
 	integrity_danger_mod = 0.4	// Multiplier for comparison to integrity_max before problems start.
 	integrity_max = 120
-
 	internal_damage_flag = MECHA_INT_TEMP_CONTROL
-
 	step_delay = 1
 
 	var/deflect_chance = 10
@@ -41,10 +37,8 @@
 
 /obj/item/vehicle_component/plating/armor/mining
 	name = "blast-resistant mecha plating"
-
 	step_delay = 2
 	integrity_max = 80
-
 	damage_absorption = list(
 									"brute"=0.8,
 									"fire"=0.8,
@@ -58,10 +52,8 @@
 
 /obj/item/vehicle_component/plating/armor/lightweight
 	name = "lightweight mecha plating"
-
 	integrity_max = 50
 	step_delay = 0
-
 	damage_absorption = list(
 									"brute"=1,
 									"fire"=1.4,
@@ -75,13 +67,9 @@
 
 /obj/item/vehicle_component/plating/armor/reinforced
 	name = "reinforced mecha plating"
-
 	step_delay = 4
-
 	integrity_max = 80
-
 	minimum_penetration = 10
-
 	damage_absorption = list(
 		"brute"=0.7,
 		"fire"=1,
@@ -93,18 +81,11 @@
 
 /obj/item/vehicle_component/plating/armor/military
 	name = "military grade mecha plating"
-
 	step_delay = 4
-
 	integrity_max = 100
-
 	emp_resistance = 2
-
-	required_type = list(/obj/vehicle/sealed/mecha/combat)
-
 	damage_minimum = 15
 	minimum_penetration = 25
-
 	damage_absorption = list(
 		"brute"=0.5,
 		"fire"=1.1,
@@ -116,19 +97,11 @@
 
 /obj/item/vehicle_component/plating/armor/marshal
 	name = "marshal mecha plating"
-
 	step_delay = 3
-
 	integrity_max = 100
-
 	emp_resistance = 3
-
 	deflect_chance = 15
-
 	minimum_penetration = 10
-
-	required_type = list(/obj/vehicle/sealed/mecha/combat)
-
 	damage_absorption = list(
 		"brute"=0.75,
 		"fire"=1,
@@ -140,9 +113,7 @@
 
 /obj/item/vehicle_component/plating/armor/marshal/reinforced
 	name = "blackops mecha plating"
-
 	step_delay = 5
-
 	damage_absorption = list(
 		"brute"=0.6,
 		"fire"=0.8,
@@ -154,19 +125,12 @@
 
 /obj/item/vehicle_component/plating/armor/military/marauder
 	name = "cutting edge mecha plating"
-
 	step_delay = 4
-
 	integrity_max = 150
-
 	emp_resistance = 3
-
-	required_type = list(/obj/vehicle/sealed/mecha/combat/marauder)
-
 	deflect_chance = 25
 	damage_minimum = 30
 	minimum_penetration = 25
-
 	damage_absorption = list(
 		"brute"=0.5,
 		"fire"=0.7,
@@ -190,19 +154,11 @@
 
 /obj/item/vehicle_component/plating/armor/heavy_duty //Should only be avaliable for 3x3 mechs.
 	name = "heavy duty mecha plating"
-
 	step_delay = 4
-
 	integrity_max = 3000
-
 	emp_resistance = 5
-
 	deflect_chance = 15
-
 	minimum_penetration = 0
-
-	//required_type = list(/obj/vehicle/sealed/mecha/combat/quasimodo) doesn't work for some reason.
-
 	damage_absorption = list(
 		"brute"=0.50,
 		"fire"=0.9,

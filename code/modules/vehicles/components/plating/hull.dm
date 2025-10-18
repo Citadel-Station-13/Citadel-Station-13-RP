@@ -1,5 +1,7 @@
+/datum/armor/vehicle_plating/hull
 
-// TODO: repath to /vehicle_component/mecha/hull
+/datum/armor/vehicle_plating_redirection/hull
+
 /obj/item/vehicle_component/plating/hull
 	name = "mecha hull"
 	icon = 'icons/mecha/mech_component.dmi'
@@ -9,35 +11,28 @@
 	materials_base = list(MAT_STEEL = 3500, MAT_GLASS = 200)
 
 	component_type = MECH_HULL
-
 	emp_resistance = 0	// Amount of emp 'levels' removed.
-
 	required_type = null	// List, if it exists. Exosuits meant to use the component.
-
 	integrity_danger_mod = 0.5	// Multiplier for comparison to integrity_max before problems start.
 	integrity_max = 50
-
 	internal_damage_flag = MECHA_INT_FIRE
 
 	step_delay = 2
 
 /obj/item/vehicle_component/plating/hull/durable
 	name = "durable mecha hull"
-
 	step_delay = 4
 	integrity_danger_mod = 0.3
 	integrity_max = 100
 
 /obj/item/vehicle_component/plating/hull/lightweight
 	name = "lightweight mecha hull"
-
 	step_delay = 1
 	integrity_danger_mod = 0.3
 
-/obj/item/vehicle_component/plating/hull/heavy_duty //should only be used for 3x3 mechs.
+/obj/item/vehicle_component/plating/hull/heavy_duty
 	name = "heavy duty mecha hull"
 	step_delay = 5
-	//required_type = list(/obj/vehicle/sealed/mecha/combat/quasimodo) why doesm't it work?
 	integrity_danger_mod = 0.2
 	integrity_max = 2500
 

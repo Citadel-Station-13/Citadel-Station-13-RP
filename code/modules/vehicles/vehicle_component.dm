@@ -23,7 +23,6 @@
 
 /obj/item/vehicle_component
 
-
 /**
  * Supertype of shieldcalls that handle vehicle hits. Just subtype one
  * and set the path on your component to use them.

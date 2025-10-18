@@ -3,6 +3,8 @@
 
 /datum/armor/vehicle_plating
 
+/datum/armor/vehicle_plating_redirection
+
 /**
  * Base type of vehicle plating.
  * * Damage is soaked on `redirection` armor and directed to us, and ran against our armor.
