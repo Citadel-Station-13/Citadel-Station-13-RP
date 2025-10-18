@@ -5,7 +5,7 @@
 	icon_state = "duke"
 	initial_icon = "duke"
 
-	step_in = 3 //slightly slower than a baron (this shit doesnt actually work atm, likely due to the whole equipment weight nonsense)
+	base_movement_speed = 3.8
 
 	integrity = 1200
 	integrity_max = 1200 //double baron HP, only room for one defensive upgrade. No specials(cloaking, speed, ect) or universals.
@@ -21,40 +21,37 @@
 
 	ground_capable = FALSE
 
-/obj/vehicle/sealed/mecha/combat/fighter/duke/loaded/Initialize(mapload) //Loaded version with guns
-	. = ..()
-	var/obj/item/vehicle_module/ME = new /obj/item/vehicle_module/weapon/energy/laser
-	ME.attach(src)
-	ME = new /obj/item/vehicle_module/weapon/ballistic/missile_rack/explosive
-	ME.attach(src)
+/obj/vehicle/sealed/mecha/combat/fighter/duke/equipped
+	modules = list(
+		/obj/item/vehicle_module/weapon/energy/laser,
+		/obj/item/vehicle_module/weapon/ballistic/missile_rack/explosive,
+	)
 
-/obj/vehicle/sealed/mecha/combat/fighter/duke/db
+/obj/vehicle/sealed/mecha/combat/fighter/duke/deep_blue
 	name = "\improper Duke \"Deep Blue\""
 	desc = "A Duke heavy fighter decorated with the common 'Deep Blue' customization kit, both designed and sold by Hephaestus Industries. This paint scheme pays homage to one of the first supercomputing systems that dared to push the boundaries of what it meant to think. Think 40 steps ahead of your enemy with these colorations, just as Deep Blue did so many years ago."
 	icon_state = "duke_db"
 	initial_icon = "duke_db"
 	wreckage = /obj/effect/decal/mecha_wreckage/duke/db
 
-/obj/vehicle/sealed/mecha/combat/fighter/duke/db/loaded/Initialize(mapload) //Loaded version with guns
-	. = ..()
-	var/obj/item/vehicle_module/ME = new /obj/item/vehicle_module/weapon/energy/laser
-	ME.attach(src)
-	ME = new /obj/item/vehicle_module/weapon/ballistic/missile_rack/explosive
-	ME.attach(src)
+/obj/vehicle/sealed/mecha/combat/fighter/duke/deep_blue/equipped
+	modules = list(
+		/obj/item/vehicle_module/weapon/energy/laser,
+		/obj/item/vehicle_module/weapon/ballistic/missile_rack/explosive,
+	)
 
-/obj/vehicle/sealed/mecha/combat/fighter/duke/cw
+/obj/vehicle/sealed/mecha/combat/fighter/duke/clockwork
 	name = "\improper Duke \"Clockwork\""
 	desc = "A Duke heavy fighter decorated with the rare 'Clockwork' customization kit, both designed and sold by Hephaestus Industries. Textured paint with accurate colorations and reflectiveness to brass makes this Duke Heavy Fighter stand out amongst the competition in any conflict."
 	icon_state = "duke_cw"
 	initial_icon = "duke_cw"
 	wreckage = /obj/effect/decal/mecha_wreckage/duke/cw
 
-/obj/vehicle/sealed/mecha/combat/fighter/duke/cw/loaded/Initialize(mapload) //Loaded version with guns
-	. = ..()
-	var/obj/item/vehicle_module/ME = new /obj/item/vehicle_module/weapon/energy/laser
-	ME.attach(src)
-	ME = new /obj/item/vehicle_module/weapon/ballistic/missile_rack/explosive
-	ME.attach(src)
+/obj/vehicle/sealed/mecha/combat/fighter/duke/clockwork/equipped
+	modules = list(
+		/obj/item/vehicle_module/weapon/energy/laser,
+		/obj/item/vehicle_module/weapon/ballistic/missile_rack/explosive,
+	)
 
 /obj/effect/decal/mecha_wreckage/duke
 	name = "Duke wreckage"

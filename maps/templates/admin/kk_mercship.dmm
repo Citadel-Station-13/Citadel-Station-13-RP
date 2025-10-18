@@ -4178,7 +4178,7 @@
 /area/ship/manta/mech_bay)
 "vl" = (
 /obj/machinery/mech_recharger,
-/obj/vehicle/sealed/mecha/combat/gygax/dark,
+/obj/vehicle/sealed/mecha/combat/gygax/dark/equipped,
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},

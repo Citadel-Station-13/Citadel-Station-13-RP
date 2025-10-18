@@ -13,10 +13,10 @@
 	integrity = 500
 	integrity_max = 500
 
-/obj/vehicle/sealed/mecha/combat/fighter/allure/loaded/Initialize(mapload) //Loaded version with guns
-	. = ..()
-	var/obj/item/vehicle_module/ME = new /obj/item/vehicle_module/cloak
-	ME.attach(src)
+/obj/vehicle/sealed/mecha/combat/fighter/allure/equipped
+	modules = list(
+		/obj/item/vehicle_module/cloak,
+	)
 
 /obj/vehicle/sealed/mecha/combat/fighter/allure/royalty
 	name = "\improper Allure \"Royalty\""
@@ -25,10 +25,10 @@
 	initial_icon = "allure_royalty"
 	wreckage = /obj/effect/decal/mecha_wreckage/allure/royalty
 
-/obj/vehicle/sealed/mecha/combat/fighter/allure/royalty/loaded/Initialize(mapload) //Loaded version with guns
-	. = ..()
-	var/obj/item/vehicle_module/ME = new /obj/item/vehicle_module/cloak
-	ME.attach(src)
+/obj/vehicle/sealed/mecha/combat/fighter/allure/royalty/equipped
+	modules = list(
+		/obj/item/vehicle_module/cloak,
+	)
 
 /obj/effect/decal/mecha_wreckage/allure
 	name = "allure wreckage"

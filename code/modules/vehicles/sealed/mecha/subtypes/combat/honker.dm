@@ -52,13 +52,14 @@
 	max_universal_equip = 1
 	max_special_equip = 2
 
-	starting_equipment = list(
+/obj/vehicle/sealed/mecha/combat/honker/cluwne/equipped
+	modules = list(
 		/obj/item/vehicle_module/weapon/honker,
 		/obj/item/vehicle_module/weapon/ballistic/missile_rack/grenade/banana,
 		/obj/item/vehicle_module/weapon/ballistic/scattershot,
 		/obj/item/vehicle_module/tesla_energy_relay,
-		/obj/item/vehicle_module/teleporter
-		)
+		/obj/item/vehicle_module/teleporter,
+	)
 
 /obj/vehicle/sealed/mecha/combat/honker/cluwne/add_cell(var/obj/item/cell/C=null)
 	if(C)

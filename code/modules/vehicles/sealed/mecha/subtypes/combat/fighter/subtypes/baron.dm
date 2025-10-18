@@ -13,12 +13,11 @@
 
 	ground_capable = FALSE
 
-/obj/vehicle/sealed/mecha/combat/fighter/baron/loaded/Initialize(mapload) //Loaded version with guns
-	. = ..()
-	var/obj/item/vehicle_module/ME = new /obj/item/vehicle_module/weapon/energy/laser
-	ME.attach(src)
-	ME = new /obj/item/vehicle_module/omni_shield
-	ME.attach(src)
+/obj/vehicle/sealed/mecha/combat/fighter/baron/equipped
+	modules = list(
+		/obj/item/vehicle_module/weapon/energy/laser,
+		/obj/item/vehicle_module/omni_shield,
+	)
 
 /obj/effect/decal/mecha_wreckage/baron
 	name = "Baron wreckage"
@@ -28,16 +27,15 @@
 	bound_width = 64
 	bound_height = 64
 
-/obj/vehicle/sealed/mecha/combat/fighter/baron/sec
+/obj/vehicle/sealed/mecha/combat/fighter/baron/security
 	name = "\improper Baron-SV"
 	desc = "A conventional space superiority fighter, one-seater. Not capable of ground operations. The Baron-SV (Security Variant) is frequently used by NT Security forces during EVA patrols."
 
-/obj/vehicle/sealed/mecha/combat/fighter/baron/sec/loaded/Initialize(mapload) //Loaded version with guns
-	. = ..()
-	var/obj/item/vehicle_module/ME = new /obj/item/vehicle_module/weapon/energy/laser
-	ME.attach(src)
-	ME = new /obj/item/vehicle_module/weapon/energy/phase
-	ME.attach(src)
+/obj/vehicle/sealed/mecha/combat/fighter/baron/security/equipped
+	modules = list(
+		/obj/item/vehicle_module/weapon/energy/laser,
+		/obj/item/vehicle_module/weapon/energy/phase,
+	)
 
 /datum/category_item/catalogue/technology/baron
 	name = "Voidcraft - Baron"

@@ -37,12 +37,11 @@
 	max_special_equip = 1
 	max_heavy_weapon_equip = 1
 
-/obj/vehicle/sealed/mecha/combat/quasimodo/Initialize(mapload)
-	. = ..()
-	var/obj/item/vehicle_module/ME = new /obj/item/vehicle_module/weapon/ballistic/cannon/hag_30(src) // The default equip for the Quasi.
-	ME.attach(src)
+	modules_intrinsic = list(
+		/obj/item/vehicle_module/weapon/ballistic/cannon/hag_30,
+	)
 
-/obj/vehicle/sealed/mecha/combat/marauder/get_commands()
+/obj/vehicle/sealed/mecha/combat/quasimodo/get_commands()
 	var/output = {"<div class='wr'>
 						<div class='header'>Special</div>
 						<div class='links'>

@@ -3398,7 +3398,7 @@
 /area/sector/sky_planet/outpost/medical)
 "pJ" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/vehicle/sealed/mecha/combat/fighter/pinnace/loaded{
+/obj/vehicle/sealed/mecha/combat/fighter/pinnace/equipped/equipped{
 	dir = 4
 	},
 /obj/machinery/mech_recharger,
@@ -6426,7 +6426,7 @@
 /obj/effect/floor_decal/rust/mono_rusted3{
 	color = "#b88a3b"
 	},
-/obj/vehicle/sealed/mecha/combat/fighter/pinnace/loaded,
+/obj/vehicle/sealed/mecha/combat/fighter/pinnace/equipped/equipped,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/occulum)
 "Ds" = (

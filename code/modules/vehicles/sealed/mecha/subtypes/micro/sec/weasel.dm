@@ -3,7 +3,9 @@
 	name = "Weasel"
 	icon_state = "weasel"
 	initial_icon = "weasel"
-	step_in = 1 // zoom zoom
+
+	base_movement_speed = 4
+
 	dir_in = 2 //Facing south.
 	integrity = 100
 	deflect_chance = 5

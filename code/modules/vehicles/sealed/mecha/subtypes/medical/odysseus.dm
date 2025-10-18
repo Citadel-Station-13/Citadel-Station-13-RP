@@ -11,8 +11,8 @@
 	occupant_huds = list(
 		/datum/atom_hud/data/human/medical,
 	)
+	base_movement_speed = 4.8
 
-	step_in = 2
 	max_temperature = 15000
 	integrity = 70
 	integrity_max = 70
@@ -24,14 +24,12 @@
 	icon_scale_x = 1.2
 	icon_scale_y = 1.2
 
-/obj/vehicle/sealed/mecha/medical/odysseus/loaded/Initialize(mapload)
-	. = ..()
-	var/obj/item/vehicle_module/ME = new /obj/item/vehicle_module/tool/sleeper
-	ME.attach(src)
-	ME = new /obj/item/vehicle_module/tool/sleeper
-	ME.attach(src)
-	ME = new /obj/item/vehicle_module/tool/syringe_gun
-	ME.attach(src)
+/obj/vehicle/sealed/mecha/medical/odysseus/equipped
+	modules = list(
+		/obj/item/vehicle_module/tool/sleeper,
+		/obj/item/vehicle_module/tool/sleeper,
+		/obj/item/vehicle_module/tool/syringe_gun,
+	)
 
 //Meant for random spawns.
 /obj/vehicle/sealed/mecha/medical/odysseus/old

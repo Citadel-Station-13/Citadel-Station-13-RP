@@ -1165,7 +1165,7 @@
 /turf/simulated/floor/wood/broken,
 /area/ship/ghostship/cabin6)
 "eB" = (
-/obj/vehicle/sealed/mecha/combat/fighter/gunpod/loaded,
+/obj/vehicle/sealed/mecha/combat/fighter/gunpod/equipped,
 /obj/machinery/mech_recharger,
 /turf/simulated/floor/reinforced,
 /area/ship/ghostship/porthangar)

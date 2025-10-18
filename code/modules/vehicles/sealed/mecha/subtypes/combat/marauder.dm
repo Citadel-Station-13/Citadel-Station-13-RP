@@ -29,55 +29,11 @@
 	zoom_possible = 1
 	thrusters_possible = 1
 
-	starting_components = list(
-		/obj/item/vehicle_component/plating/hull/durable,
-		/obj/item/vehicle_component/actuator,
-		/obj/item/vehicle_component/plating/armor/military,
-		/obj/item/vehicle_component/gas,
-		/obj/item/vehicle_component/electrical
-		)
-
-	starting_equipment = list(
-		/obj/item/vehicle_module/weapon/energy/pulse,
-		/obj/item/vehicle_module/weapon/ballistic/missile_rack/explosive,
-		/obj/item/vehicle_module/tesla_energy_relay,
-		/obj/item/vehicle_module/antiproj_armor_booster
-		)
+	comp_armor = /obj/item/vehicle_component/plating/armor/military
+	comp_hull = /obj/item/vehicle_component/plating/hull/durable
 
 	icon_scale_x = 1.5
 	icon_scale_y = 1.5
-
-/obj/vehicle/sealed/mecha/combat/marauder/seraph
-	desc = "Heavy-duty, command-type exosuit. This is a custom model, utilized only by high-ranking military personnel."
-	name = "Seraph"
-	catalogue_data = list(/datum/category_item/catalogue/technology/seraph)
-	icon_state = "seraph"
-	initial_icon = "seraph"
-	operation_req_access = list(ACCESS_CENTCOM_ERT_LEAD)
-	step_in = 3
-	integrity = 450
-	wreckage = /obj/effect/decal/mecha_wreckage/seraph
-	internal_damage_threshold = 20
-	force = 55
-	max_equip = 5
-
-	starting_equipment = list(
-		/obj/item/vehicle_module/weapon/ballistic/scattershot,
-		/obj/item/vehicle_module/weapon/ballistic/missile_rack/explosive,
-		/obj/item/vehicle_module/tesla_energy_relay,
-		/obj/item/vehicle_module/antiproj_armor_booster,
-		/obj/item/vehicle_module/teleporter
-		)
-
-//Note that is the Mauler
-/obj/vehicle/sealed/mecha/combat/marauder/mauler
-	desc = "A stolen heavy-duty combat exosuit, developed off of the existing Marauder model."
-	name = "Mauler"
-	icon_state = "mauler"
-	initial_icon = "mauler"
-	operation_req_access = list(ACCESS_FACTION_SYNDICATE)
-	wreckage = /obj/effect/decal/mecha_wreckage/mauler
-	mech_faction = MECH_FACTION_SYNDI
 
 //I'll break this down later
 /obj/vehicle/sealed/mecha/combat/marauder/relaymove(mob/user,direction)
@@ -149,3 +105,44 @@
 	integrity = 25
 	integrity_max = 300	//Just slightly worse.
 	cell.charge = rand(0, (cell.charge/2))
+
+/obj/vehicle/sealed/mecha/combat/marauder/equipped
+	modules = list(
+		/obj/item/vehicle_module/weapon/energy/pulse,
+		/obj/item/vehicle_module/weapon/ballistic/missile_rack/explosive,
+		/obj/item/vehicle_module/tesla_energy_relay,
+		/obj/item/vehicle_module/antiproj_armor_booster
+		)
+
+/obj/vehicle/sealed/mecha/combat/marauder/seraph
+	desc = "Heavy-duty, command-type exosuit. This is a custom model, utilized only by high-ranking military personnel."
+	name = "Seraph"
+	catalogue_data = list(/datum/category_item/catalogue/technology/seraph)
+	icon_state = "seraph"
+	initial_icon = "seraph"
+	operation_req_access = list(ACCESS_CENTCOM_ERT_LEAD)
+	step_in = 3
+	integrity = 450
+	wreckage = /obj/effect/decal/mecha_wreckage/seraph
+	internal_damage_threshold = 20
+	force = 55
+	max_equip = 5
+
+/obj/vehicle/sealed/mecha/combat/marauder/seraph/equipped
+	modules = list(
+		/obj/item/vehicle_module/weapon/ballistic/scattershot,
+		/obj/item/vehicle_module/weapon/ballistic/missile_rack/explosive,
+		/obj/item/vehicle_module/tesla_energy_relay,
+		/obj/item/vehicle_module/antiproj_armor_booster,
+		/obj/item/vehicle_module/teleporter,
+	)
+
+//Note that is the Mauler
+/obj/vehicle/sealed/mecha/combat/marauder/mauler
+	desc = "A stolen heavy-duty combat exosuit, developed off of the existing Marauder model."
+	name = "Mauler"
+	icon_state = "mauler"
+	initial_icon = "mauler"
+	operation_req_access = list(ACCESS_FACTION_SYNDICATE)
+	wreckage = /obj/effect/decal/mecha_wreckage/mauler
+	mech_faction = MECH_FACTION_SYNDI

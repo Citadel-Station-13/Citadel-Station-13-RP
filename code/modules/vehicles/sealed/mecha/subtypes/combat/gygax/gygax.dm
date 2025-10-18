@@ -67,13 +67,6 @@
 	max_universal_equip = 1
 	max_special_equip = 2
 
-	starting_equipment = list(
-		/obj/item/vehicle_module/weapon/ballistic/scattershot,
-		/obj/item/vehicle_module/weapon/ballistic/missile_rack/grenade/clusterbang,
-		/obj/item/vehicle_module/tesla_energy_relay,
-		/obj/item/vehicle_module/teleporter
-		)
-
 /obj/vehicle/sealed/mecha/combat/gygax/dark/add_cell(var/obj/item/cell/C=null)
 	if(C)
 		C.forceMove(src)
@@ -82,6 +75,14 @@
 	cell = new(src)
 	cell.charge = 30000
 	cell.maxcharge = 30000
+
+/obj/vehicle/sealed/mecha/combat/gygax/dark/equipped
+	modules = list(
+		/obj/item/vehicle_module/weapon/ballistic/scattershot,
+		/obj/item/vehicle_module/weapon/ballistic/missile_rack/grenade/clusterbang,
+		/obj/item/vehicle_module/tesla_energy_relay,
+		/obj/item/vehicle_module/teleporter,
+	)
 
 //Meant for random spawns.
 /obj/vehicle/sealed/mecha/combat/gygax/old

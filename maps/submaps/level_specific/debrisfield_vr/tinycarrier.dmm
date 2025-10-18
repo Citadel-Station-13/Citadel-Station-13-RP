@@ -1028,7 +1028,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/shuttle/debrisfield_vr/tinyshuttle/hangar)
 "bW" = (
-/obj/vehicle/sealed/mecha/combat/fighter/baron/loaded/busted{
+/obj/vehicle/sealed/mecha/combat/fighter/baron/equipped/busted{
 	dir = 8;
 	dir_in = 8
 	},

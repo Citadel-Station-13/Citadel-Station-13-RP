@@ -54,6 +54,7 @@
 	max_universal_equip = 1
 	max_special_equip = 2
 
+/obj/vehicle/sealed/mecha/combat/reticent/reticence/equipped
 	starting_equipment = list(
 		/obj/item/vehicle_module/weapon/whisperblade,
 		/obj/item/vehicle_module/weapon/infernoblade,

@@ -1292,7 +1292,7 @@
 	dir = 8
 	},
 /obj/machinery/mech_recharger,
-/obj/vehicle/sealed/mecha/combat/fighter/baron/sec/loaded,
+/obj/vehicle/sealed/mecha/combat/fighter/baron/security/equipped,
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/security/hangar)
 "aNK" = (
@@ -8299,7 +8299,7 @@
 	dir = 10
 	},
 /obj/machinery/mech_recharger,
-/obj/vehicle/sealed/mecha/combat/fighter/baron/sec/loaded,
+/obj/vehicle/sealed/mecha/combat/fighter/baron/security/equipped,
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/security/hangar)
 "fJm" = (

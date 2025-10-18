@@ -35,30 +35,11 @@
 	phasing_possible = TRUE
 	switch_dmg_type_possible = TRUE
 
-/obj/vehicle/sealed/mecha/combat/phazon/equipped/Initialize(mapload)
-	. = ..()
-	starting_equipment = list(
+/obj/vehicle/sealed/mecha/combat/phazon/equipped
+	modules = list(
 		/obj/item/vehicle_module/tool/rcd,
-		/obj/item/vehicle_module/gravcatapult
-		)
-	return
-
-/* Leaving this until we are really sure we don't need it for reference.
-/obj/vehicle/sealed/mecha/combat/phazon/Bump(var/atom/obstacle)
-	if(phasing && get_charge()>=phasing_energy_drain)
-		spawn()
-			if(can_phase)
-				can_phase = FALSE
-				flick("[initial_icon]-phase", src)
-				src.loc = get_step(src,src.dir)
-				src.use_power(phasing_energy_drain)
-				sleep(step_in*3)
-				can_phase = TRUE
-	else
-		. = ..()
-	return
-*/
-
+		/obj/item/vehicle_module/gravcatapult,
+	)
 
 /obj/vehicle/sealed/mecha/combat/phazon/get_commands()
 	var/output = {"<div class='wr'>

@@ -25,29 +25,13 @@
 	max_universal_equip = 1
 	max_special_equip = 1
 
-	starting_components = list(
-		/obj/item/vehicle_component/plating/hull/durable,
-		/obj/item/vehicle_component/actuator,
-		/obj/item/vehicle_component/plating/armor/military,
-		/obj/item/vehicle_component/gas,
-		/obj/item/vehicle_component/electrical
-		)
+	comp_hull = /obj/item/vehicle_component/plating/hull/durable
+	comp_armor = /obj/item/vehicle_component/plating/armor/military
 
 	defence_mode_possible = 1
 
 	icon_scale_x = 1.5
 	icon_scale_y = 1.5
-
-/*
-/obj/vehicle/sealed/mecha/combat/durand/New()
-	..()
-	weapons += new /datum/mecha_weapon/ballistic/lmg(src)
-	weapons += new /datum/mecha_weapon/ballistic/scattershot(src)
-	selected_weapon = weapons[1]
-	return
-*/
-
-
 
 //This is for the Mech stats / Menu system. To be moved later on.
 /obj/vehicle/sealed/mecha/combat/durand/get_commands()
@@ -60,24 +44,6 @@
 						"}
 	output += ..()
 	return output
-
-
-//Not needed anymore but left for reference.
-/*
-/obj/vehicle/sealed/mecha/combat/durand/get_stats_part()
-	var/output = ..()
-	output += "<b>Defence mode: [defence?"on":"off"]</b>"
-	return output
-*/
-
-/*
-
-/obj/vehicle/sealed/mecha/combat/durand/Topic(href, href_list)
-	..()
-	if (href_list["toggle_defence_mode"])
-		src.defence_mode()
-	return
-*/
 
 //Meant for random spawns.
 /obj/vehicle/sealed/mecha/combat/durand/old

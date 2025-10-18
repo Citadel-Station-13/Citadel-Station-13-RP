@@ -10,12 +10,11 @@
 
 	ground_capable = FALSE
 
-/obj/vehicle/sealed/mecha/combat/fighter/scoralis/loaded/Initialize(mapload) //Loaded version with guns
-	. = ..()
-	var/obj/item/vehicle_module/ME = new /obj/item/vehicle_module/weapon/ballistic/lmg
-	ME.attach(src)
-	ME = new /obj/item/vehicle_module/cloak
-	ME.attach(src)
+/obj/vehicle/sealed/mecha/combat/fighter/scoralis/equipped
+	modules = list(
+		/obj/item/vehicle_module/weapon/ballistic/lmg,
+		/obj/item/vehicle_module/cloak,
+	)
 
 /obj/effect/decal/mecha_wreckage/scoralis
 	name = "scoralis wreckage"

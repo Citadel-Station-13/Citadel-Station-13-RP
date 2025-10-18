@@ -34,39 +34,3 @@
 	spawn()
 		do_after_cooldown()
 	return max(0, inc_damage)
-
-/*
-
-/obj/item/vehicle_module/anticcw_armor_booster/can_attach(obj/vehicle/sealed/mecha/M as obj)
-	if(..())
-		if(!M.proc_res["dynattackby"])
-			return 1
-	return 0
-
-/obj/item/vehicle_module/anticcw_armor_booster/attach(obj/vehicle/sealed/mecha/M as obj)
-	..()
-	chassis.proc_res["dynattackby"] = src
-	return
-
-/obj/item/vehicle_module/anticcw_armor_booster/detach()
-	chassis.proc_res["dynattackby"] = null
-	..()
-	return
-
-/obj/item/vehicle_module/anticcw_armor_booster/proc/dynattackby(obj/item/W as obj, mob/user as mob)
-	if(!action_checks(user))
-		return chassis.dynattackby(W,user)
-	chassis.log_message("Attacked by [W]. Attacker - [user]")
-	if(prob(chassis.deflect_chance*deflect_coeff))
-		to_chat(user, "<span class='danger'>\The [W] bounces off [chassis] armor.</span>")
-		chassis.log_append_to_last("Armor saved.")
-	else
-		chassis.occupant_message("<span class='danger'>\The [user] hits [chassis] with [W].</span>")
-		user.visible_message("<span class='danger'>\The [user] hits [chassis] with [W].</span>", "<span class='danger'>You hit [src] with [W].</span>")
-		chassis.take_damage_legacy(round(W.damage_force*damage_coeff),W.damtype)
-		chassis.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
-	set_ready_state(0)
-	chassis.use_power(energy_drain)
-	do_after_cooldown()
-	return
-*/

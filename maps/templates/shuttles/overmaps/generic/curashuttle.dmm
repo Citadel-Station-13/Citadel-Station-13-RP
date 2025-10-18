@@ -1331,7 +1331,7 @@
 /turf/simulated/wall/rpshull,
 /area/shuttle/curabitur/curashuttle/hangar)
 "cL" = (
-/obj/vehicle/sealed/mecha/combat/fighter/pinnace{
+/obj/vehicle/sealed/mecha/combat/fighter/pinnace/equipped{
 	desc = "A modified Pinnace made to be able to fit a wide arsenal of equipment for rescue missions in space.";
 	integrity = 200;
 	max_equip = 1;

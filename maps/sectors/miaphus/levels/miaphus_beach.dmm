@@ -7109,7 +7109,7 @@
 /area/sector/miaphus/beach/resort/dorm4)
 "LA" = (
 /obj/machinery/mech_recharger,
-/obj/vehicle/sealed/mecha/combat/fighter/duke/db/loaded,
+/obj/vehicle/sealed/mecha/combat/fighter/duke/deep_blue/equipped,
 /obj/machinery/light{
 	dir = 8
 	},

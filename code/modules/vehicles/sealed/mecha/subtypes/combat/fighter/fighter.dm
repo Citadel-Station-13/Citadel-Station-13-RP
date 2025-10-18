@@ -196,7 +196,7 @@
 	var/image/stripe1_overlay
 	var/image/stripe2_overlay
 
-/obj/vehicle/sealed/mecha/combat/fighter/gunpod/loaded/Initialize(mapload) //Loaded version with guns
+/obj/vehicle/sealed/mecha/combat/fighter/gunpod/equipped/Initialize(mapload) //Loaded version with guns
 	. = ..()
 	var/obj/item/vehicle_module/ME = new /obj/item/vehicle_module/weapon/energy/laser
 	ME.attach(src)

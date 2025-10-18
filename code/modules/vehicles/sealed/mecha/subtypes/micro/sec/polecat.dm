@@ -3,7 +3,9 @@
 	name = "Polecat"
 	icon_state = "polecat"
 	initial_icon = "polecat"
-	step_in = 2 // human running speed
+
+	base_movement_speed = 4
+
 	dir_in = 2 //Facing south.
 	integrity = 150
 	step_energy_drain = 4 // less efficient than base micromech, but still a micromech.

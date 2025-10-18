@@ -2419,7 +2419,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "wl" = (
-/obj/vehicle/sealed/mecha/combat/marauder/mauler{
+/obj/vehicle/sealed/mecha/combat/marauder/equipped/mauler{
 	operation_req_access = list()
 	},
 /turf/simulated/floor/bluegrid{

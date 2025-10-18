@@ -109,7 +109,7 @@
 /area/space)
 "dR" = (
 /obj/machinery/mech_recharger,
-/obj/vehicle/sealed/mecha/combat/fighter/baron/sec/loaded{
+/obj/vehicle/sealed/mecha/combat/fighter/baron/security/equipped{
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -801,7 +801,7 @@
 	dir = 8
 	},
 /obj/machinery/mech_recharger,
-/obj/vehicle/sealed/mecha/combat/fighter/baron/sec/loaded{
+/obj/vehicle/sealed/mecha/combat/fighter/baron/security/equipped{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -907,7 +907,7 @@
 /area/shuttle/hammerhead/cockpit)
 "yd" = (
 /obj/machinery/mech_recharger,
-/obj/vehicle/sealed/mecha/combat/fighter/baron/sec/loaded{
+/obj/vehicle/sealed/mecha/combat/fighter/baron/security/equipped{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -974,7 +974,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/space)
 "zl" = (
-/obj/vehicle/sealed/mecha/combat/fighter/baron/sec/loaded,
+/obj/vehicle/sealed/mecha/combat/fighter/baron/security/equipped,
 /obj/machinery/mech_recharger,
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
@@ -1121,7 +1121,7 @@
 /area/space)
 "CA" = (
 /obj/machinery/mech_recharger,
-/obj/vehicle/sealed/mecha/combat/fighter/baron/sec/loaded{
+/obj/vehicle/sealed/mecha/combat/fighter/baron/security/equipped{
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
@@ -1130,7 +1130,7 @@
 /obj/effect/floor_decal/industrial/warning,
 /obj/machinery/atmospherics/portables_connector,
 /obj/machinery/mech_recharger,
-/obj/vehicle/sealed/mecha/combat/fighter/baron/sec/loaded{
+/obj/vehicle/sealed/mecha/combat/fighter/baron/security/equipped{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -1140,7 +1140,7 @@
 /area/space)
 "CW" = (
 /obj/machinery/mech_recharger,
-/obj/vehicle/sealed/mecha/combat/fighter/baron/sec/loaded{
+/obj/vehicle/sealed/mecha/combat/fighter/baron/security/equipped{
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -1203,7 +1203,7 @@
 /area/shuttle/hammerhead/general)
 "Ez" = (
 /obj/machinery/mech_recharger,
-/obj/vehicle/sealed/mecha/combat/fighter/baron/sec/loaded{
+/obj/vehicle/sealed/mecha/combat/fighter/baron/security/equipped{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -1487,7 +1487,7 @@
 	dir = 10
 	},
 /obj/machinery/mech_recharger,
-/obj/vehicle/sealed/mecha/combat/fighter/baron/sec/loaded{
+/obj/vehicle/sealed/mecha/combat/fighter/baron/security/equipped{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -1598,7 +1598,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
 "TJ" = (
-/obj/vehicle/sealed/mecha/combat/fighter/baron/sec/loaded,
+/obj/vehicle/sealed/mecha/combat/fighter/baron/security/equipped,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},

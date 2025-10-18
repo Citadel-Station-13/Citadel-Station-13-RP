@@ -10002,7 +10002,7 @@
 /area/space)
 "hpS" = (
 /obj/machinery/mech_recharger,
-/obj/vehicle/sealed/mecha/combat/fighter/pinnace/loaded{
+/obj/vehicle/sealed/mecha/combat/fighter/pinnace/equipped/equipped{
 	dir = 1
 	},
 /obj/machinery/atmospherics/portables_connector{
@@ -12309,7 +12309,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/bunker)
 "jgW" = (
-/obj/vehicle/sealed/mecha/combat/fighter/pinnace/loaded,
+/obj/vehicle/sealed/mecha/combat/fighter/pinnace/equipped/equipped,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/station/fighter_bay/hangar)
@@ -15266,7 +15266,7 @@
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
 	},
-/obj/vehicle/sealed/mecha/combat/fighter/baron/sec/loaded{
+/obj/vehicle/sealed/mecha/combat/fighter/baron/security/equipped{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -28169,7 +28169,7 @@
 /area/engineering/atmos/gas_storage)
 "uSU" = (
 /obj/machinery/mech_recharger,
-/obj/vehicle/sealed/mecha/combat/fighter/pinnace/loaded{
+/obj/vehicle/sealed/mecha/combat/fighter/pinnace/equipped/equipped{
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
@@ -31448,7 +31448,7 @@
 /area/crew_quarters/showers)
 "xgo" = (
 /obj/machinery/mech_recharger,
-/obj/vehicle/sealed/mecha/combat/fighter/pinnace/loaded{
+/obj/vehicle/sealed/mecha/combat/fighter/pinnace/equipped/equipped{
 	dir = 1
 	},
 /obj/machinery/camera/network/civilian{

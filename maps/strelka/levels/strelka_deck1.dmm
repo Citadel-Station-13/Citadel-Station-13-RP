@@ -292,7 +292,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck1)
 "bC" = (
-/obj/vehicle/sealed/mecha/combat/fighter/pinnace/loaded{
+/obj/vehicle/sealed/mecha/combat/fighter/pinnace/equipped/equipped{
 	dir = 4
 	},
 /obj/machinery/mech_recharger,
@@ -2604,7 +2604,7 @@
 /turf/simulated/floor/reinforced,
 /area/strelka/hangardeck)
 "mJ" = (
-/obj/vehicle/sealed/mecha/combat/fighter/baron/sec/loaded{
+/obj/vehicle/sealed/mecha/combat/fighter/baron/security/equipped{
 	dir = 4
 	},
 /obj/machinery/mech_recharger,

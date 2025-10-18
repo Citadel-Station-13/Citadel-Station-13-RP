@@ -3,7 +3,9 @@
 	name = "Gopher"
 	icon_state = "gopher"
 	initial_icon = "gopher"
-	step_in = 3
+
+	base_movement_speed = 3.75
+
 	dir_in = 2 //Facing south.
 	integrity = 100
 	deflect_chance = 10

@@ -5583,6 +5583,7 @@
 #include "code\modules\vehicles\sealed\mecha\modules\weapons\weapons.dm"
 #include "code\modules\vehicles\sealed\mecha\modules\weapons\ballistic\automatic.dm"
 #include "code\modules\vehicles\sealed\mecha\modules\weapons\ballistic\ballistic.dm"
+#include "code\modules\vehicles\sealed\mecha\modules\weapons\ballistic\cannon.dm"
 #include "code\modules\vehicles\sealed\mecha\modules\weapons\ballistic\mortar.dm"
 #include "code\modules\vehicles\sealed\mecha\modules\weapons\ballistic\shotgun.dm"
 #include "code\modules\vehicles\sealed\mecha\modules\weapons\defense\shocker.dm"

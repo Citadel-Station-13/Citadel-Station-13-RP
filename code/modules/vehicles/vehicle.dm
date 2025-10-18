@@ -15,6 +15,17 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 	/// * Lazy list.
 	var/list/obj/item/vehicle_component/components
 
+	//* Modules *//
+	/// Modules. Set to typepath list to init.
+	/// * Lazy list.
+	var/list/obj/item/vehicle_module/modules
+	/// Modules that should not be removable. They will be rendered unable to be destroyed
+	/// and also unable to be removed.
+	/// * Nulled after init
+	/// * Lazy list.
+	var/list/modules_intrinsic
+	#warn handle this shit
+
 	//* Movement *//
 	/// Next move time
 	var/move_delay = 0

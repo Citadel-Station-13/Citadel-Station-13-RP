@@ -16,10 +16,10 @@
 
 	ground_capable = TRUE
 
-/obj/vehicle/sealed/mecha/combat/fighter/pinnace/loaded/Initialize(mapload) //Loaded version with guns
-	. = ..()
-	var/obj/item/vehicle_module/ME = new /obj/item/vehicle_module/tool/passenger
-	ME.attach(src)
+/obj/vehicle/sealed/mecha/combat/fighter/pinnace/equipped
+	modules = list(
+		/obj/item/vehicle_module/tool/passenger,
+	)
 
 /obj/effect/decal/mecha_wreckage/pinnace
 	name = "pinnace wreckage"
