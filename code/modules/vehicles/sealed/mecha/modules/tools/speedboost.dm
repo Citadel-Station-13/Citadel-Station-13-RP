@@ -9,16 +9,6 @@
 
 	var/slowdown_multiplier = 0.75	// How much does the exosuit multiply its slowdown by if it's the proper type?
 
-/*
-/obj/item/vehicle_module/speedboost/attach(obj/vehicle/sealed/mecha/M as obj)
-	..()
-	if(enable_special)
-		chassis.step_in = 3 // As fast as a gygax without overload. Slower than Ody.
-	else
-		chassis.step_in = 6 // Improper parts slow the mech down
-	return
-*/
-
 /obj/item/vehicle_module/speedboost/get_step_delay()
 	if(enable_special)
 		return -1

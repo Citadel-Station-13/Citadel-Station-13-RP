@@ -826,10 +826,10 @@
 /area/ship/ert/bridge)
 "hj" = (
 /obj/structure/table/rack/steel,
-/obj/item/vehicle_module/anticcw_armor_booster,
-/obj/item/vehicle_module/anticcw_armor_booster,
-/obj/item/vehicle_module/antiproj_armor_booster,
-/obj/item/vehicle_module/antiproj_armor_booster,
+/obj/item/vehicle_module//obj/item/vehicle_module/personal_shield/structural_field/concussive,
+/obj/item/vehicle_module//obj/item/vehicle_module/personal_shield/structural_field/concussive,
+/obj/item/vehicle_module//obj/item/vehicle_module/personal_shield/structural_field/hyperkinetic,
+/obj/item/vehicle_module//obj/item/vehicle_module/personal_shield/structural_field/hyperkinetic,
 /obj/machinery/fire_alarm/alarms_hidden/north_mount,
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/techfloor,

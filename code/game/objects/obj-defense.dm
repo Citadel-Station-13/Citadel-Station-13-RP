@@ -21,8 +21,6 @@
 	if(TT.throw_flags & THROW_AT_IS_GENTLE)
 		return
 	// todo: /atom/movable/proc/throw_impact_attack(atom/target)
-	if(temporary_legacy_dont_auto_handle_obj_damage_for_mechs)
-		return
 	var/inflicted_damage
 	if(isitem(AM))
 		var/obj/item/I = AM

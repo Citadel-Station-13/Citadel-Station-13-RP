@@ -10476,8 +10476,8 @@
 /area/ship/ghostship/hangar)
 "Dr" = (
 /obj/structure/table/standard,
-/obj/item/vehicle_module/antiproj_armor_booster,
-/obj/item/vehicle_module/anticcw_armor_booster,
+/obj/item/vehicle_module//obj/item/vehicle_module/personal_shield/structural_field/hyperkinetic,
+/obj/item/vehicle_module//obj/item/vehicle_module/personal_shield/structural_field/concussive,
 /turf/simulated/floor/reinforced,
 /area/ship/ghostship/porthangar)
 "Du" = (
@@ -11009,8 +11009,8 @@
 /area/ship/ghostship/hangar)
 "Pi" = (
 /obj/structure/table/standard,
-/obj/item/vehicle_module/antiproj_armor_booster,
-/obj/item/vehicle_module/anticcw_armor_booster,
+/obj/item/vehicle_module//obj/item/vehicle_module/personal_shield/structural_field/hyperkinetic,
+/obj/item/vehicle_module//obj/item/vehicle_module/personal_shield/structural_field/concussive,
 /turf/simulated/floor/reinforced,
 /area/ship/ghostship/starboardhangar)
 "Pt" = (

@@ -33,7 +33,6 @@
 	infra_luminosity = 15
 	enter_delay = 4 SECONDS
 	emulate_door_bumps = TRUE
-	temporary_legacy_dont_auto_handle_obj_damage_for_mechs = TRUE
 
 	//* legacy below
 
@@ -130,13 +129,6 @@
 	/// re we strafing or not?
 	var/strafing = 0
 
-	/// Can we even use defence mode? This is used to assign it to mechs and check for verbs.
-	var/defence_mode_possible = 0
-	/// Are we in defence mode.
-	var/defence_mode = 0
-	/// How much it deflect.
-	var/defence_deflect = 35
-
 	/// Same as above. Don't forget to GRANT the verb&actions if you want everything to work proper.
 	var/overload_possible = 0
 	/// Are our legs overloaded.
@@ -180,7 +172,6 @@
 	var/datum/action/mecha/mech_view_stats/stats_action
 	var/datum/action/mecha/strafe/strafing_action
 
-	var/datum/action/mecha/mech_defence_mode/defence_action
 	var/datum/action/mecha/mech_overload_mode/overload_action
 	var/datum/action/mecha/mech_smoke/smoke_action
 	var/datum/action/mecha/mech_zoom/zoom_action
@@ -641,13 +632,6 @@
 			last_message = world.time
 		return 0
 
-/*
-//A first draft of a check to stop mechs from moving fully. TBD when all thrusters modules are unified.
-	if(!thrusters && !src.pr_inertial_movement.active() && isspace(src.loc))//No thrsters, not drifting, in space
-		src.occupant_message("Error 543")//debug
-		return 0
-*/
-
 	if(!thrusters && src.pr_inertial_movement.active()) //I think this mean 'if you try to move in space without thruster, u no move'
 		return 0
 
@@ -912,7 +896,7 @@
 		temp_deflect_chance = 1
 
 	else
-		temp_deflect_chance = round(ArmC.get_efficiency() * ArmC.deflect_chance + (defence_mode ? 25 : 0))
+		temp_deflect_chance = round(ArmC.get_efficiency() * ArmC.deflect_chance)
 
 	if(istype(user,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
@@ -961,7 +945,7 @@
 		temp_damage_minimum = 0
 
 	else
-		temp_deflect_chance = round(ArmC.get_efficiency() * ArmC.deflect_chance + (defence_mode ? 25 : 0))
+		temp_deflect_chance = round(ArmC.get_efficiency() * ArmC.deflect_chance)
 		temp_damage_minimum = round(ArmC.get_efficiency() * ArmC.damage_minimum)
 
 	if(istype(A, /obj/item/vehicle_tracking_beacon))
@@ -1026,7 +1010,7 @@
 		temp_fail_penetration_value = 1
 
 	else
-		temp_deflect_chance = round(ArmC.get_efficiency() * ArmC.deflect_chance + (defence_mode ? 25 : 0))
+		temp_deflect_chance = round(ArmC.get_efficiency() * ArmC.deflect_chance)
 		temp_damage_minimum = round(ArmC.get_efficiency() * ArmC.damage_minimum)
 		temp_minimum_penetration = round(ArmC.get_efficiency() * ArmC.minimum_penetration)
 		temp_fail_penetration_value = round(ArmC.get_efficiency() * ArmC.fail_penetration_value)
@@ -1098,7 +1082,7 @@
 		temp_deflect_chance = 0
 
 	else
-		temp_deflect_chance = round(ArmC.get_efficiency() * ArmC.deflect_chance + (defence_mode ? 25 : 0))
+		temp_deflect_chance = round(ArmC.get_efficiency() * ArmC.deflect_chance)
 
 	src.log_message("Affected by explosion of severity: [severity].",1)
 	if(prob(temp_deflect_chance))
@@ -1172,7 +1156,7 @@
 		temp_fail_penetration_value = 1
 
 	else
-		temp_deflect_chance = round(ArmC.get_efficiency() * ArmC.deflect_chance + (defence_mode ? 25 : 0))
+		temp_deflect_chance = round(ArmC.get_efficiency() * ArmC.deflect_chance)
 		temp_damage_minimum = round(ArmC.get_efficiency() * ArmC.damage_minimum)
 		temp_minimum_penetration = round(ArmC.get_efficiency() * ArmC.minimum_penetration)
 		temp_fail_penetration_value = round(ArmC.get_efficiency() * ArmC.fail_penetration_value)
@@ -1204,11 +1188,6 @@
 		src.take_damage_legacy(pass_damage, W.damage_type)	//The take_damage_legacy() proc handles armor values
 		if(pass_damage > internal_damage_minimum)	//Only decently painful attacks trigger a chance of mech damage.
 			src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
-	return
-
-//////////////////////
-////// AttackBy //////
-//////////////////////
 
 /obj/vehicle/sealed/mecha/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/kit/paint))
@@ -1768,8 +1747,6 @@
 						<b>Lights: </b>[lights?"on":"off"]<br>
 					"}
 
-	if(defence_mode_possible)
-		output_text += "<b>Defence mode: [defence_mode?"on":"off"]</b><br>"
 	if(overload_possible)
 		output_text += "<b>Leg actuators overload: [overload?"on":"off"]</b><br>"
 	if(smoke_possible)
@@ -2006,8 +1983,6 @@
 		src.smoke()
 	if (href_list["toggle_zoom"])
 		src.zoom()
-	if(href_list["toggle_defence_mode"])
-		src.defence_mode()
 	if(href_list["switch_damtype"])
 		src.switch_damtype()
 	if(href_list["phasing"])
@@ -2274,7 +2249,7 @@
 		temp_damage_minimum = 0
 
 	else
-		temp_deflect_chance = round(ArmC.get_efficiency() * ArmC.deflect_chance + (defence_mode ? 25 : 0))
+		temp_deflect_chance = round(ArmC.get_efficiency() * ArmC.deflect_chance)
 		temp_damage_minimum = round(ArmC.get_efficiency() * ArmC.damage_minimum)
 
 	user.setClickCooldownLegacy(user.get_attack_speed_legacy())
@@ -2306,10 +2281,6 @@
 		user.attack_log += "\[[time_stamp()]\] <font color='red'>attacked [src.name]</font>"
 
 	return 1
-
-//////////////////////////////////////////
-////////  Mecha global iterators  ////////
-//////////////////////////////////////////
 
 /// Normalizing cabin air temperature to 20 degrees celcius.
 /datum/global_iterator/mecha_preserve_temp
@@ -2475,8 +2446,6 @@
 		remove_obj_verb(src, /obj/vehicle/sealed/mecha/verb/toggle_smoke)
 	if(!thrusters_possible)		//Can't use thrusters? No verb for you.
 		remove_obj_verb(src, /obj/vehicle/sealed/mecha/verb/toggle_thrusters)
-	if(!defence_mode_possible)	//Do i need to explain everything?
-		remove_obj_verb(src, /obj/vehicle/sealed/mecha/verb/toggle_defence_mode)
 	if(!overload_possible)
 		remove_obj_verb(src, /obj/vehicle/sealed/mecha/verb/toggle_overload)
 	if(!zoom_possible)

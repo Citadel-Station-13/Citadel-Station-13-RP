@@ -7,9 +7,6 @@
 	integrity_enabled = TRUE
 	armor_type = /datum/armor/object/default
 
-	// Name says everything. I'm crying.
-	var/temporary_legacy_dont_auto_handle_obj_damage_for_mechs = FALSE
-
 	//? Flags
 	/// object flags, see __DEFINES/_flags/obj_flags.dm
 	var/obj_flags = OBJ_MELEE_TARGETABLE | OBJ_RANGE_TARGETABLE

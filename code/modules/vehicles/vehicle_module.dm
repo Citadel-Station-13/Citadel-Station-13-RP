@@ -2,6 +2,8 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /obj/item/vehicle_module
+	/// currently active chassis
+	var/obj/vehicle/vehicle
 
 //* Chassis - Physicality *//
 

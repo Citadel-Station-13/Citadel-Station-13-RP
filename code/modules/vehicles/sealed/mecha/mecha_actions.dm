@@ -19,7 +19,6 @@
 		lights_action,
 		stats_action,
 		strafing_action,
-		defence_mode_possible && defence_action,
 		overload_possible && overload_action,
 		smoke_possible && smoke_action,
 		zoom_possible && zoom_action,
@@ -106,19 +105,6 @@
 	var/obj/vehicle/sealed/mecha/chassis = target
 	chassis.strafing()
 	button_icon_state = "mech_strafe_[chassis.strafing ? "on" : "off"]"
-	update_buttons()
-
-/datum/action/mecha/mech_defence_mode
-	name = "Toggle Mech defence mode"
-	button_icon_state = "mech_defense_mode_off"
-
-/datum/action/mecha/mech_defence_mode/invoke_target(obj/vehicle/sealed/mecha/target, datum/event_args/actor/actor)
-	. = ..()
-	if(.)
-		return
-	var/obj/vehicle/sealed/mecha/chassis = target
-	chassis.defence_mode()
-	button_icon_state = "mech_defense_mode_[chassis.defence_mode ? "on" : "off"]"
 	update_buttons()
 
 /datum/action/mecha/mech_overload_mode
@@ -257,34 +243,6 @@
 	button_icon_state = "mech_phasing_[chassis.cloaked ? "on" : "off"]"
 	update_buttons()
 	chassis.toggle_cloaking()
-
-/////
-/////
-/////		ACTUAL MECANICS FOR THE ACTIONS
-/////		OVERLOAD, DEFENCE, SMOKE
-/////
-/////
-
-/obj/vehicle/sealed/mecha/verb/toggle_defence_mode()
-	set category = "Exosuit Interface"
-	set name = "Toggle defence mode"
-	set src = usr.loc
-	set popup_menu = 0
-	defence_mode()
-
-/obj/vehicle/sealed/mecha/proc/defence_mode()
-	if(usr!=src.occupant_legacy)
-		return
-	playsound(src, 'sound/mecha/duranddefencemode.ogg', 50, 1)
-	defence_mode = !defence_mode
-	if(defence_mode)
-		deflect_chance = defence_deflect
-		src.occupant_message("<font color='blue'>You enable [src] defence mode.</font>")
-	else
-		deflect_chance = initial(deflect_chance)
-		src.occupant_message("<font color='red'>You disable [src] defence mode.</font>")
-	src.log_message("Toggled defence mode.")
-
 
 /obj/vehicle/sealed/mecha/verb/toggle_overload()
 	set category = "Exosuit Interface"

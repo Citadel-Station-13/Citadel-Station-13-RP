@@ -16,6 +16,8 @@
 	name = "personal shield module"
 	desc = "Some kind of shielding module."
 
+	#warn equip slot to hull
+
 	/// armor used to check for damage routing to self
 	/// * any damage this armor 'blocks' will be routed to the shield layer instead
 	var/datum/armor/routing_armor

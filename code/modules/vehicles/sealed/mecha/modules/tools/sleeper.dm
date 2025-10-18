@@ -20,21 +20,18 @@
 	var/stasis_choices = list("Complete (1%)" = 100, "Deep (10%)" = 10, "Moderate (20%)" = 5, "Light (50%)" = 2, "None (100%)" = 0)
 	var/filtering = FALSE
 	var/pumping = FALSE
+	var/dialysis_reagent_filter_flags = ~REAGENT_FILTER_NO_COMMON_BIOANALYSIS
 
 /obj/item/vehicle_module/tool/sleeper/Initialize(mapload)
 	. = ..()
-	pr_mech_sleeper = new /datum/global_iterator/mech_sleeper(list(src),0)
-	pr_mech_sleeper.set_delay(equip_cooldown)
-	return
+	START_PROCESSING(SSobj, src)
 
 /obj/item/vehicle_module/tool/sleeper/Destroy()
-	qdel(pr_mech_sleeper)
+	STOP_PROCESSING(SSobj, src)
+	// TODO: admin delete wrapper for mechs that drop mobs, we shouldn't be dropping shit on Destroy().
 	for(var/atom/movable/AM in src)
 		AM.forceMove(get_turf(src))
 	return ..()
-
-/obj/item/vehicle_module/tool/sleeper/Exit(atom/movable/O)
-	return FALSE
 
 /obj/item/vehicle_module/tool/sleeper/action(var/mob/living/carbon/human/target)
 	if(!action_checks(target))
@@ -63,17 +60,10 @@
 		target.forceMove(src)
 		target.update_perspective()
 		occupant_legacy = target
-		/*
-		if(target.client)
-			target.client.perspective = EYE_PERSPECTIVE
-			target.client.eye = chassis
-		*/
 		set_ready_state(0)
-		pr_mech_sleeper.start()
 		occupant_message("<font color='blue'>[target] successfully loaded into [src]. Life support functions engaged.</font>")
 		chassis.visible_message("[chassis] loads [target] into [src].")
 		log_message("[target] loaded. Life support functions engaged.")
-	return
 
 /obj/item/vehicle_module/tool/sleeper/proc/go_out()
 	if(!occupant_legacy)
@@ -82,21 +72,14 @@
 	occupant_legacy.update_perspective()
 	occupant_message("[occupant_legacy] ejected. Life support functions disabled.")
 	log_message("[occupant_legacy] ejected. Life support functions disabled.")
-	/*
-	if(occupant_legacy.client)
-		occupant_legacy.client.eye = occupant_legacy.client.mob
-		occupant_legacy.client.perspective = MOB_PERSPECTIVE
-	*/
 	occupant_legacy.Stasis(0)
 	occupant_legacy = null
-	pr_mech_sleeper.stop()
 	set_ready_state(1)
 
 /obj/item/vehicle_module/tool/sleeper/detach()
 	if(occupant_legacy)
 		occupant_message("Unable to detach [src] - equipment occupied.")
 		return
-	pr_mech_sleeper.stop()
 	return ..()
 
 /obj/item/vehicle_module/tool/sleeper/get_equip_info()
@@ -224,18 +207,17 @@
 		return
 	pumping = !pumping
 
-/datum/global_iterator/mech_sleeper
-	var/dialysis_reagent_filter_flags = ~REAGENT_FILTER_NO_COMMON_BIOANALYSIS
 
-/datum/global_iterator/mech_sleeper/process(var/obj/item/vehicle_module/tool/sleeper/S)
+/obj/item/vehicle_module/tool/sleeper/process(delta_time)
+	var/obj/item/vehicle_module/tool/sleeper/S = src
 	if(!S.chassis)
 		S.set_ready_state(1)
-		return stop()
+		return
 	if(!S.chassis.has_charge(S.energy_drain))
 		S.set_ready_state(1)
 		S.log_message("Deactivated.")
 		S.occupant_message("[src] deactivated - no power.")
-		return stop()
+		return
 	var/mob/living/carbon/human/M = S.occupant_legacy
 	if(!M)
 		return
@@ -258,4 +240,3 @@
 			dialysis_reagent_filter_flags,
 		)
 		S.chassis.use_power(S.energy_drain)
-	return

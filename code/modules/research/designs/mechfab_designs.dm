@@ -816,7 +816,7 @@
 	id = "mech_ccw_armor"
 	req_tech = list(TECH_MATERIAL = 5, TECH_COMBAT = 4)
 	materials_base = list(MAT_STEEL = 11250 * (1 / 3), MAT_SILVER = 3750 * (1 / 3))
-	build_path = /obj/item/vehicle_module/anticcw_armor_booster
+	build_path = /obj/item/vehicle_module//obj/item/vehicle_module/personal_shield/structural_field/concussive
 
 /datum/prototype/design/science/mecha/proj_armor
 	design_name = "Ranged Armor Booster"
@@ -824,7 +824,7 @@
 	id = "mech_proj_armor"
 	req_tech = list(TECH_MATERIAL = 5, TECH_COMBAT = 5, TECH_ENGINEERING = 3)
 	materials_base = list(MAT_STEEL = 15000 * (1 / 3), MAT_GOLD = 3750 * (1 / 3))
-	build_path = /obj/item/vehicle_module/antiproj_armor_booster
+	build_path = /obj/item/vehicle_module//obj/item/vehicle_module/personal_shield/structural_field/hyperkinetic
 
 /datum/prototype/design/science/mecha/diamond_drill
 	design_name = "Diamond Drill"
