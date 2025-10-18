@@ -20,3 +20,5 @@
  */
 /datum/shieldcall/bound/vehicle_module
 	expected_type = /obj/vehicle
+
+/datum/armor/vehicle_module

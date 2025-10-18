@@ -47,7 +47,7 @@
 	cloak_iterator.start()
 	set_ready_state(0)
 	playsound(src, 'sound/effects/EMPulse.ogg', 100, 1)
-
+T
 /obj/item/vehicle_module/cloak/proc/stop_cloak()
 	if(chassis)
 		chassis.uncloak()

@@ -62,6 +62,11 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 	. = ..()
 	create_initial_components()
 
+/obj/vehicle/Destroy()
+	QDEL_LAZYLIST(components)
+	QDEL_LAZYLIST(modules)
+	return ..()
+
 //* Actions *//
 
 /obj/vehicle/proc/initialize_occupant_actions()

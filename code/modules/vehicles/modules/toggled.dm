@@ -1,6 +1,9 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
-/obj/item/vehicle_module/personal_shield
+/**
+ * supertype of simple toggled modules
+ */
+/obj/item/vehicle_module/toggled
 
 #warn impl

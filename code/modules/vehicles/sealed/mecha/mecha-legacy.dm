@@ -54,8 +54,6 @@
 	var/last_message = 0
 	var/add_req_access = 1
 	var/maint_access = 1
-	/// Dna-locking the mech.
-	var/dna
 	/// Stores proc owners, like proc_res["functionname"] = owner reference.
 	var/list/proc_res = list()
 	var/datum/effect_system/spark_spread/spark_system = new
@@ -93,19 +91,7 @@
 	/// Required access level to open cell compartment.
 	var/list/internals_req_access = list(ACCESS_ENGINEERING_MAIN,ACCESS_SCIENCE_ROBOTICS)
 
-	/// Normalizes internal air mixture temperature.
-	var/datum/global_iterator/pr_int_temp_processor
-	/// Controls intertial movement in spesss.
-	var/datum/global_iterator/pr_inertial_movement
-	/// Moves air from tank to cabin.
-	var/datum/global_iterator/pr_give_air
-	/// Processes internal damage.
-	var/datum/global_iterator/pr_internal_damage
-
-
 	var/wreckage
-	/// This lists holds what stuff you bolted onto your baby ride.
-	var/list/equipment = new
 	var/obj/item/vehicle_module/selected
 	var/max_equip = 2
 	var/datum/events/events
@@ -250,8 +236,6 @@
 	INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/vehicle/sealed/mecha, add_iterators))
 	removeVerb(/obj/vehicle/sealed/mecha/verb/disconnect_from_port)
 	log_message("[src.name] created.")
-	loc.Entered(src)
-	mechas_list += src //global mech list
 
 /obj/vehicle/sealed/mecha/Destroy()
 	src.legacy_eject_occupant()
@@ -278,59 +262,39 @@
 		utility_equipment.Cut()
 		universal_equipment.Cut()
 		special_equipment.Cut()
-		for(var/obj/item/vehicle_module/E in equipment)
-			if(E.salvageable && prob(30))
-				WR.crowbar_salvage += E
-				E.forceMove(WR)
-				E.equip_ready = TRUE
-			else
-				E.forceMove(loc)
-				E.destroy()
+		for(var/obj/item/vehicle_module/mod as anything in modules)
+			if(!mod.salvageable)
+				continue
+			if(!prob(30))
+				continue
+			uninstall_module(mod, null, TRUE, TRUE, WR)
+			WR.crowbar_salvage += mod
+			mod.equip_ready = TRUE
 
-		for(var/slot in internal_components)
-			var/obj/item/vehicle_component/C = internal_components[slot]
-			if(istype(C))
-				C.damage_part(rand(10, 20))
-				C.detach()
-				WR.crowbar_salvage += C
-				C.forceMove(WR)
-
+		for(var/obj/item/vehicle_component/comp as anything in components)
+			uninstall_component(comp, null, TRUE, TRUE, WR)
+			comp.damage_part(rand(10, 20))
+			comp.detach()
+			WR.crowbar_salvage += comp
 		if(cell)
 			WR.crowbar_salvage += cell
 			cell.forceMove(WR)
 			cell.charge = rand(0, cell.charge)
+			cell = null
 		if(internal_tank)
 			WR.crowbar_salvage += internal_tank
 			internal_tank.forceMove(WR)
+			internal_tank = null
 	else
-		for(var/obj/item/vehicle_module/E in equipment)
-			E.detach(loc)
-			E.destroy()
-		for(var/slot in internal_components)
-			var/obj/item/vehicle_component/C = internal_components[slot]
-			if(istype(C))
-				C.detach()
-				qdel(C)
-		if(cell)
-			qdel(cell)
-		if(internal_tank)
-			qdel(internal_tank)
-	equipment.Cut()
-	cell = null
-	internal_tank = null
-
+		QDEL_NULL(cell)
+		QDEL_NULL(internal_tank)
 	if(smoke_possible)	//Just making sure nothing is running.
 		qdel(smoke_system)
 
-	QDEL_NULL(pr_int_temp_processor)
-	QDEL_NULL(pr_inertial_movement)
-	QDEL_NULL(pr_give_air)
-	QDEL_NULL(pr_internal_damage)
 	QDEL_NULL(spark_system)
 	QDEL_NULL(minihud)
 
-	mechas_list -= src //global mech list
-	. = ..()
+	return ..()
 
 //! shitcode
 // VEHICLE MECHS WHEN?
@@ -395,12 +359,6 @@
 	radio.icon_state = icon_state
 	radio.subspace_transmission = 1
 
-/obj/vehicle/sealed/mecha/proc/add_iterators()
-	pr_int_temp_processor = new /datum/global_iterator/mecha_preserve_temp(list(src))
-	pr_inertial_movement = new /datum/global_iterator/mecha_intertial_movement(null,0)
-	pr_give_air = new /datum/global_iterator/mecha_tank_give_air(list(src))
-	pr_internal_damage = new /datum/global_iterator/mecha_internal_damage(list(src),0)
-
 /obj/vehicle/sealed/mecha/proc/enter_after(delay as num, var/mob/user as mob, var/numticks = 5)
 	var/delayfraction = delay/numticks
 
@@ -412,8 +370,6 @@
 			return 0
 
 	return 1
-
-
 
 /obj/vehicle/sealed/mecha/proc/check_for_support()
 	var/list/things = orange(1, src)
@@ -427,23 +383,19 @@
 	. = ..()
 
 	var/obj/item/vehicle_component/plating/armor/AC = internal_components[MECH_ARMOR]
-
 	var/obj/item/vehicle_component/plating/hull/HC = internal_components[MECH_HULL]
 
 	if(AC)
 		. += "It has [AC] attached. [AC.get_efficiency()<0.5?"It is severely damaged.":""]"
 	else
 		. += "It has no armor plating."
-
 	if(HC)
 		if(!AC || AC.get_efficiency() < 0.7)
 			. += "It has [HC] attached. [HC.get_efficiency()<0.5?"It is severely damaged.":""]"
 		else
 			. += "You cannot tell what type of hull it has."
-
 	else
 		. += "It does not seem to have a completed hull."
-
 
 	var/integrity = src.integrity/initial(src.integrity)*100
 	switch(integrity)
@@ -461,9 +413,6 @@
 		. += "It's equipped with:"
 		for(var/obj/item/vehicle_module/ME in equipment)
 			. += "[icon2html(ME, world)] [ME]"
-
-/obj/vehicle/sealed/mecha/proc/drop_item()//Derpfix, but may be useful in future for engineering exosuits.
-	return
 
 /obj/vehicle/sealed/mecha/hear_talk(mob/M, list/message_pieces, verb)
 	if(M == occupant_legacy && radio.broadcasting)
@@ -580,11 +529,6 @@
 /obj/vehicle/sealed/mecha/proc/range_action(atom/target)
 	return
 
-
-//////////////////////////////////
-////////  Movement procs  ////////
-//////////////////////////////////
-
 /obj/vehicle/sealed/mecha/Moved(atom/old_loc, direction, forced = FALSE)
 	. = ..()
 	MoveAction()
@@ -618,13 +562,6 @@
 	if(state)
 		occupant_message("<span class='warning'>Maintenance protocols in effect</span>")
 		return
-/*
-	if(zoom)
-		if(world.time - last_message > 20)
-			src.occupant_message("Unable to move while in zoom mode.")
-			last_message = world.time
-		return 0
-*/
 	return domove(direction)
 
 /obj/vehicle/sealed/mecha/proc/can_ztravel()
@@ -1653,10 +1590,7 @@
 		to_chat(actor.initiator, "<span class='danger'>The [src.name] is already occupied!</span>")
 		return FALSE
 	var/passed
-	if(src.dna)
-		if(entering.dna.unique_enzymes==src.dna)
-			passed = 1
-	else if(src.operation_allowed(entering))
+	if(src.operation_allowed(entering))
 		passed = 1
 	if(!passed)
 		to_chat(actor.initiator, "<span class='warning'>Access denied</span>")
@@ -1832,9 +1766,7 @@
 						<b>Cabin pressure: </b>[cabin_pressure>WARNING_HIGH_PRESSURE ? "<font color='red'>[cabin_pressure]</font>": cabin_pressure]kPa<br>
 						<b>Cabin temperature: </b> [return_temperature()]K|[return_temperature() - T0C]&deg;C<br>
 						<b>Lights: </b>[lights?"on":"off"]<br>
-						[src.dna?"<b>DNA-locked:</b><br> <span style='font-size:10px;letter-spacing:-1px;'>[src.dna]</span> \[<a href='?src=\ref[src];reset_dna=1'>Reset</a>\]<br>":null]
 					"}
-
 
 	if(defence_mode_possible)
 		output_text += "<b>Defence mode: [defence_mode?"on":"off"]</b><br>"
@@ -2481,42 +2413,6 @@
 	if(occupant_legacy && occupant_legacy.client && cloaked_selfimage)
 		occupant_legacy.client.images -= cloaked_selfimage
 	return ..()
-
-
-//debug
-/*
-/obj/vehicle/sealed/mecha/verb/test_int_damage()
-	set name = "Test internal damage"
-	set category = "Exosuit Interface"
-	set src in view(0)
-	if(!occupant_legacy) return
-	if(usr!=occupant_legacy)
-		return
-	var/output = {"<html>
-						<head>
-						</head>
-						<body>
-						<h3>Set:</h3>
-						<a href='?src=\ref[src];debug=1;set_i_dam=[MECHA_INT_FIRE]'>MECHA_INT_FIRE</a><br />
-						<a href='?src=\ref[src];debug=1;set_i_dam=[MECHA_INT_TEMP_CONTROL]'>MECHA_INT_TEMP_CONTROL</a><br />
-						<a href='?src=\ref[src];debug=1;set_i_dam=[MECHA_INT_SHORT_CIRCUIT]'>MECHA_INT_SHORT_CIRCUIT</a><br />
-						<a href='?src=\ref[src];debug=1;set_i_dam=[MECHA_INT_TANK_BREACH]'>MECHA_INT_TANK_BREACH</a><br />
-						<a href='?src=\ref[src];debug=1;set_i_dam=[MECHA_INT_CONTROL_LOST]'>MECHA_INT_CONTROL_LOST</a><br />
-						<hr />
-						<h3>Clear:</h3>
-						<a href='?src=\ref[src];debug=1;clear_i_dam=[MECHA_INT_FIRE]'>MECHA_INT_FIRE</a><br />
-						<a href='?src=\ref[src];debug=1;clear_i_dam=[MECHA_INT_TEMP_CONTROL]'>MECHA_INT_TEMP_CONTROL</a><br />
-						<a href='?src=\ref[src];debug=1;clear_i_dam=[MECHA_INT_SHORT_CIRCUIT]'>MECHA_INT_SHORT_CIRCUIT</a><br />
-						<a href='?src=\ref[src];debug=1;clear_i_dam=[MECHA_INT_TANK_BREACH]'>MECHA_INT_TANK_BREACH</a><br />
-						<a href='?src=\ref[src];debug=1;clear_i_dam=[MECHA_INT_CONTROL_LOST]'>MECHA_INT_CONTROL_LOST</a><br />
- 					   </body>
-						</html>"}
-
-	occupant_legacy << browse(output, "window=ex_debug")
-	//src.integrity = initial(src.integrity)/2.2
-	//src.check_for_internal_damage(list(MECHA_INT_FIRE,MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
-	return
-*/
 
 /obj/vehicle/sealed/mecha/proc/update_cell_alerts()
 	if(occupant_legacy && cell)

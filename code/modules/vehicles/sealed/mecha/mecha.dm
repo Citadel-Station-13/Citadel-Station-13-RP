@@ -63,7 +63,11 @@
 
 /obj/vehicle/sealed/mecha/Initialize()
 	. = ..()
-	#warn anything?
+	START_PROCESSING(SSobj, src)
+
+/obj/vehicle/sealed/mecha/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
 
 /obj/vehicle/sealed/mecha/create_initial_components()
 	..()
@@ -80,3 +84,6 @@
 
 
 #warn impl all
+
+/obj/vehicle/sealed/mecha/process(delta_time)
+	#warn impl
