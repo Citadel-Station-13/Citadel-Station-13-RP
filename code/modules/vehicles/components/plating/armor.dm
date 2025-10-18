@@ -13,7 +13,6 @@
 	component_type = MECH_ARMOR
 	start_damaged = FALSE
 	emp_resistance = 4
-	required_type = null	// List, if it exists. Exosuits meant to use the component.
 	integrity_danger_mod = 0.4	// Multiplier for comparison to integrity_max before problems start.
 	integrity_max = 120
 	internal_damage_flag = MECHA_INT_TEMP_CONTROL

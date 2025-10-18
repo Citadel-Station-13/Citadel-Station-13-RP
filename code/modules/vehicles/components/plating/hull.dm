@@ -12,7 +12,6 @@
 
 	component_type = MECH_HULL
 	emp_resistance = 0	// Amount of emp 'levels' removed.
-	required_type = null	// List, if it exists. Exosuits meant to use the component.
 	integrity_danger_mod = 0.5	// Multiplier for comparison to integrity_max before problems start.
 	integrity_max = 50
 	internal_damage_flag = MECHA_INT_FIRE

@@ -12,8 +12,6 @@
 
 	emp_resistance = 1
 
-	required_type = null	// List, if it exists. Exosuits meant to use the component.
-
 	integrity_danger_mod = 0.6	// Multiplier for comparison to integrity_max before problems start.
 	integrity_max = 50
 
