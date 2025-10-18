@@ -73,7 +73,7 @@
 	persistence_allowed = TRUE
 
 /datum/map_level/minitest/station
-	id = "station"
+	id = "minitest-station"
 	name = "Minitest - Station"
 	display_id = "!debug-station"
 	display_name = "Minitest Debugging Map - Station"

@@ -184,7 +184,7 @@
 	persistence_allowed = TRUE
 
 /datum/map_level/rift/station/underground_floor
-	id = "underground-3"
+	id = "rift-underground-3"
 	name = "Rift - East Canyon"
 	display_id = "atlas-underground-3"
 	display_name = "NSB Atlas Underground -3 (Canyon)"
@@ -206,7 +206,7 @@
 	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 3, world.maxy - 3)
 
 /datum/map_level/rift/station/underground_deep
-	id = "underground-2"
+	id = "rift-underground-2"
 	name = "Rift - Underground 2"
 	display_id = "atlas-underground-2"
 	display_name = "NSB Atlas Underground -2 (Engineering Deck)"
@@ -229,7 +229,7 @@
 	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 3, world.maxy - 3)
 
 /datum/map_level/rift/station/underground_shallow
-	id = "underground-1"
+	id = "rift-underground-1"
 	name = "Rift - Underground 1"
 	display_id = "atlas-underground-1"
 	display_name = "NSB Atlas Underground -1 (Maintenance Deck)"
@@ -252,7 +252,7 @@
 	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 3, world.maxy - 3)
 
 /datum/map_level/rift/station/surface_low
-	id = "surface-1"
+	id = "rift-surface-1"
 	name = "Rift - Surface 1"
 	display_id = "atlas-surface-1"
 	display_name = "NSB Atlas Surface 1 (Logistics Deck)"
@@ -275,7 +275,7 @@
 	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 3, world.maxy - 3)
 
 /datum/map_level/rift/station/surface_mid
-	id = "surface-2"
+	id = "rift-surface-2"
 	name = "Rift - Surface 2"
 	display_id = "atlas-surface-2"
 	display_name = "NSB Atlas Surface 2 (Operations Deck)"
@@ -298,7 +298,7 @@
 	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 3, world.maxy - 3)
 
 /datum/map_level/rift/station/surface_high
-	id = "surface-3"
+	id = "rift-surface-3"
 	name = "Rift - Surface 3"
 	display_id = "atlas-surface-3"
 	display_name = "NSB Atlas Surface 3 (Command Deck)"
@@ -321,7 +321,7 @@
 	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 3, world.maxy - 3)
 
 /datum/map_level/rift/base
-	id = "west-underground-3"
+	id = "rift-west-underground-3"
 	name = "Rift - West Canyon"
 	display_id = "atlas-west-canyon"
 	display_name = "NSB Atlas Western Canyons"
@@ -352,7 +352,7 @@
 	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 3, world.maxy - 3)
 
 /datum/map_level/rift/deep
-	id = "west-underground-2"
+	id = "rift-west-underground-2"
 	name = "Rift - West Caves (Deep)"
 	display_id = "atlas-west-deep"
 	display_name = "NSB Atlas Western Caves - Deep"
@@ -384,7 +384,7 @@
 	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 3, world.maxy - 3)
 
 /datum/map_level/rift/caves
-	id = "west-underground-1"
+	id = "rift-west-underground-1"
 	name = "Rift - West Caves (Shallow)"
 	display_id = "atlas-west-caves"
 	display_name = "NSB Atlas Western Caves - Shallow"
@@ -415,7 +415,7 @@
 	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 3, world.maxy - 3)
 
 /datum/map_level/rift/plains
-	id = "west-surface-1"
+	id = "rift-west-surface-1"
 	name = "Rift - Western Plains"
 	display_id = "atlas-west-plains"
 	display_name = "NSB Atlas Western Plains"

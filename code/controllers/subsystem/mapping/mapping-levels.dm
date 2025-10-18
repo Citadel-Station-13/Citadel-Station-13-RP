@@ -89,17 +89,15 @@
 /datum/controller/subsystem/mapping/proc/rebuild_multiz(for_index, for_dir, for_reciprocal)
 	if(for_index)
 		rebuild_multiz_lookup(for_index, for_dir, for_reciprocal)
-		CHECK_TICK
 		var/datum/map_level/level = ordered_levels[for_index]
 		// TODO: how do we only rebuild in a specific direction?
 		level.rebuild_multiz(for_reciprocal)
 	else
 		rebuild_multiz_lookup()
-		CHECK_TICK
-		for(var/i in 1 to world.maxz)
-			var/datum/map_level/level = ordered_levels[for_index]
-			level.rebuild_multiz()
-			CHECK_TICK
+		spawn(0)
+			for(var/i in 1 to world.maxz)
+				var/datum/map_level/level = ordered_levels[for_index]
+				level.rebuild_multiz()
 
 //* Allocations & Deallocations * //
 
@@ -390,7 +388,7 @@
 		var/list/levels_in_stack = list()
 		var/discontinuity_found = FALSE
 		do
-			if(last && last != iterating.level_in_dir(DOWN))
+			if(last && last != iterating.get_level_in_dir(DOWN))
 				discontinuity_found = TRUE
 			stack += iterating.z_index
 			levels_in_stack += iterating.z_index
@@ -409,7 +407,6 @@
 			z_stack_lookup[i] = list()
 			stack_trace("z-level [i] ([ordered_levels[i]?.name]) had no z-stack. did someone mess up their up/down configs?")
 	z_stack_dirty = FALSE
-
 
 /**
  * Ensures there's no up/down infinite loops
@@ -449,11 +446,11 @@
 		level.link_above_id = null
 		level.link_below_id = null
 	stack_trace("WARNING: Up/Down loops found in zlevels [english_list(loops)]. This is not allowed and will cause both falling and zcopy to infinitely loop. All zlevels involved have been disconnected, and any structs involved have been destroyed.")
-	rebuild_multiz()
+	rebuild_multiz_lookup()
 	for(var/z in loops)
 		var/datum/map_level/level = ordered_levels[z]
 		if(level.link_above_id || level.link_below_id)
 			stack_trace("WARNING: level [z] ([level.name]) wasn't unlinked after having a loop detected.")
 			continue
 		spawn(0)
-			level.rebuild_vertical_transitions(UP|DOWN)
+			level.teardown_multiz_in_dirs(UP|DOWN)

@@ -216,9 +216,6 @@
 /datum/map_level/New(datum/map/parent_map)
 	src.parent_map = parent_map
 
-	if(!isnull(parent_map) && id)
-		id = "[parent_map.id]-[id]"
-
 /datum/map_level/Destroy()
 	if(loaded)
 		. = QDEL_HINT_LETMELIVE
