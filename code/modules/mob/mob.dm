@@ -22,6 +22,11 @@
 	/// The calculated mob speed slowdown based on the modifiers list
 	var/movespeed_hyperbolic
 
+	//* Status Indicators *//
+	/// datum path = list of sources
+	var/list/status_indicators
+	var/list/status_indicator_overlays
+
 /**
  * Intialize a mob
  *
@@ -356,8 +361,8 @@
 	if(client)
 		result = A.examine(src, game_range_to(src, A)) // if a tree is examined but no client is there to see it, did the tree ever really exist?
 
+	SEND_SIGNAL(src, COMSIG_MOB_EXAMINATE, A, result, game_range_to(src, A))
 	to_chat(src, "<blockquote class='info'>[result.Join("\n")]</blockquote>")
-	SEND_SIGNAL(src, COMSIG_MOB_EXAMINATE, A)
 
 /**
  * Point at an atom
