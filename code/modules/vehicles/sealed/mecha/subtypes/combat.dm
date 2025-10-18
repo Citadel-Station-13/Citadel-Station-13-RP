@@ -18,8 +18,8 @@
 
 	encumbrance_gap = 1.5
 
-	comp_hull = /obj/item/vehicle_component/hull/durable
-	comp_armor = /obj/item/vehicle_component/armor/reinforced
+	comp_hull = /obj/item/vehicle_component/plating/hull/durable
+	comp_armor = /obj/item/vehicle_component/plating/armor/reinforced
 
 /*
 /obj/vehicle/sealed/mecha/combat/range_action(target as obj|mob|turf)

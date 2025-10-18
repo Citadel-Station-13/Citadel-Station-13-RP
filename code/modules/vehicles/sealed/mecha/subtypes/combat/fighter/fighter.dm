@@ -3,7 +3,7 @@
 	desc = "The base type of fightercraft. Don't spawn this one!"
 
 	base_movement_speed = 5
-	comp_hull = /obj/item/vehicle_component/hull/lightweight
+	comp_hull = /obj/item/vehicle_component/plating/hull/lightweight
 
 	var/datum/effect_system/ion_trail_follow/ion_trail
 	var/landing_gear_raised = FALSE //If our anti-space-drift is on

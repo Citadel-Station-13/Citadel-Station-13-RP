@@ -5,8 +5,8 @@
 	initial_icon = "phazon"
 
 	base_movement_speed = 5
-	comp_armor = /obj/item/vehicle_component/armor/alien
-	comp_hull = /obj/item/vehicle_component/hull/durable
+	comp_armor = /obj/item/vehicle_component/plating/armor/alien
+	comp_hull = /obj/item/vehicle_component/plating/hull/durable
 
 	dir_in = 1 //Facing North.
 	step_energy_drain = 3

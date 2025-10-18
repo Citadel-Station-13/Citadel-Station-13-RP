@@ -13,8 +13,8 @@
 	bound_y = 0
 
 	base_movement_speed = 1.5
-	comp_hull = /obj/item/vehicle_component/hull/heavy_duty
-	comp_armor = /obj/item/vehicle_component/armor/heavy_duty
+	comp_hull = /obj/item/vehicle_component/plating/hull/heavy_duty
+	comp_armor = /obj/item/vehicle_component/plating/armor/heavy_duty
 
 	integrity = 4500 //Designed to take a lot of hits, but not able to be repaired in combat.
 	integrity_max = 4500

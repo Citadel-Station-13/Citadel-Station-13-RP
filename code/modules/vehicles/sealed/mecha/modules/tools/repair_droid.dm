@@ -7,7 +7,6 @@
 	energy_drain = 100
 	range = 0
 	var/health_boost = 2
-	var/datum/global_iterator/pr_repair_droid
 	var/icon/droid_overlay
 	var/list/repairable_damage = list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH)
 
@@ -28,7 +27,6 @@
 	return
 
 /obj/item/vehicle_module/repair_droid/destroy()
-	chassis.cut_overlay(droid_overlay)
 	..()
 
 /obj/item/vehicle_module/repair_droid/detach()
@@ -41,6 +39,7 @@
 		return
 	active = TRUE
 	START_PROCESSING(SSobj, src)
+	#warn icon shit should go in activate/deactivate
 
 /obj/item/vehicle_module/repair_droid/proc/deactivate()
 	if(!active)
@@ -72,7 +71,7 @@
 /obj/item/vehicle_module/repair_droid/process(delta_time)
 	var/obj/item/vehicle_module/repair_droid/RD = src
 	if(!RD.chassis)
-		stop()
+		deactivate()
 		RD.set_ready_state(1)
 		return
 	var/health_boost = RD.health_boost
@@ -107,7 +106,7 @@
 		if(RD.chassis.use_power(RD.energy_drain))
 			RD.set_ready_state(0)
 		else
-			stop()
+			deactivate()
 			RD.set_ready_state(1)
 			return
 	else

@@ -5,8 +5,8 @@
 	initial_icon = "honker"
 
 	base_movement_speed = 3.75
-	comp_armor = /obj/item/vehicle_component/armor/marshal
-	comp_hull = /obj/item/vehicle_component/hull/durable
+	comp_armor = /obj/item/vehicle_component/plating/armor/marshal
+	comp_hull = /obj/item/vehicle_component/plating/hull/durable
 
 	dir_in = 1 //Facing North.
 	integrity = 250

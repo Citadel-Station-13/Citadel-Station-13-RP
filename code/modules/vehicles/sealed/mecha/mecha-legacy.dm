@@ -426,9 +426,9 @@
 /obj/vehicle/sealed/mecha/examine(mob/user, dist)
 	. = ..()
 
-	var/obj/item/vehicle_component/armor/AC = internal_components[MECH_ARMOR]
+	var/obj/item/vehicle_component/plating/armor/AC = internal_components[MECH_ARMOR]
 
-	var/obj/item/vehicle_component/hull/HC = internal_components[MECH_HULL]
+	var/obj/item/vehicle_component/plating/hull/HC = internal_components[MECH_HULL]
 
 	if(AC)
 		. += "It has [AC] attached. [AC.get_efficiency()<0.5?"It is severely damaged.":""]"
@@ -605,7 +605,7 @@
 		to_chat(user, "You climb out from [src]")
 		return 0
 
-	var/obj/item/vehicle_component/hull/HC = internal_components[MECH_HULL]
+	var/obj/item/vehicle_component/plating/hull/HC = internal_components[MECH_HULL]
 	if(!HC)
 		occupant_message("<span class='notice'>You can't operate an exosuit that doesn't have a hull!</span>")
 		return
@@ -903,7 +903,7 @@
 	return
 
 /obj/vehicle/sealed/mecha/proc/components_handle_damage(var/damage, var/type = DAMAGE_TYPE_BRUTE)
-	var/obj/item/vehicle_component/armor/AC = internal_components[MECH_ARMOR]
+	var/obj/item/vehicle_component/plating/armor/AC = internal_components[MECH_ARMOR]
 
 	if(AC)
 		var/armor_efficiency = AC.get_efficiency()
@@ -911,7 +911,7 @@
 		AC.damage_part(damage_change, type)
 		damage -= damage_change
 
-	var/obj/item/vehicle_component/hull/HC = internal_components[MECH_HULL]
+	var/obj/item/vehicle_component/plating/hull/HC = internal_components[MECH_HULL]
 
 	if(HC)
 		if(HC.integrity)
@@ -928,7 +928,7 @@
 	return damage
 
 /obj/vehicle/sealed/mecha/proc/get_damage_absorption()
-	var/obj/item/vehicle_component/armor/AC = internal_components[MECH_ARMOR]
+	var/obj/item/vehicle_component/plating/armor/AC = internal_components[MECH_ARMOR]
 
 	if(!istype(AC))
 		return
@@ -967,7 +967,7 @@
 	user.setClickCooldownLegacy(user.get_attack_speed_legacy())
 	src.log_message("Attack by hand/paw. Attacker - [user].",1)
 
-	var/obj/item/vehicle_component/armor/ArmC = internal_components[MECH_ARMOR]
+	var/obj/item/vehicle_component/plating/armor/ArmC = internal_components[MECH_ARMOR]
 
 	var/temp_deflect_chance = deflect_chance
 
@@ -1014,7 +1014,7 @@
 
 //I think this is relative to throws.
 /obj/vehicle/sealed/mecha/proc/dynhitby(atom/movable/A)
-	var/obj/item/vehicle_component/armor/ArmC = internal_components[MECH_ARMOR]
+	var/obj/item/vehicle_component/plating/armor/ArmC = internal_components[MECH_ARMOR]
 
 	var/temp_deflect_chance = deflect_chance
 	var/temp_damage_minimum = damage_minimum
@@ -1075,7 +1075,7 @@
 	return ..()
 
 /obj/vehicle/sealed/mecha/proc/dynbulletdamage(var/obj/projectile/Proj)
-	var/obj/item/vehicle_component/armor/ArmC = internal_components[MECH_ARMOR]
+	var/obj/item/vehicle_component/plating/armor/ArmC = internal_components[MECH_ARMOR]
 
 	var/temp_deflect_chance = deflect_chance
 	var/temp_damage_minimum = damage_minimum
@@ -1153,7 +1153,7 @@
 
 //This refer to whenever you are caught in an explosion.
 /obj/vehicle/sealed/mecha/legacy_ex_act(severity)
-	var/obj/item/vehicle_component/armor/ArmC = internal_components[MECH_ARMOR]
+	var/obj/item/vehicle_component/plating/armor/ArmC = internal_components[MECH_ARMOR]
 
 	var/temp_deflect_chance = deflect_chance
 
@@ -1221,7 +1221,7 @@
 	src.log_message("Attacked by [W]. Attacker - [user]")
 	var/pass_damage_reduc_mod			//Modifer for failing to bring AP.
 
-	var/obj/item/vehicle_component/armor/ArmC = internal_components[MECH_ARMOR]
+	var/obj/item/vehicle_component/plating/armor/ArmC = internal_components[MECH_ARMOR]
 
 	var/temp_deflect_chance = deflect_chance
 	var/temp_damage_minimum = damage_minimum
@@ -1817,8 +1817,8 @@
 	var/tank_temperature = internal_tank ? internal_tank.return_temperature() : "Unknown"
 	var/cabin_pressure = round(return_pressure(),0.01)
 
-	var/obj/item/vehicle_component/hull/HC = internal_components[MECH_HULL]
-	var/obj/item/vehicle_component/armor/AC = internal_components[MECH_ARMOR]
+	var/obj/item/vehicle_component/plating/hull/HC = internal_components[MECH_HULL]
+	var/obj/item/vehicle_component/plating/armor/AC = internal_components[MECH_ARMOR]
 
 	var/output_text = {"[report_internal_damage()]
 						<b>Armor Integrity: </b>[AC?"[round(AC.integrity / AC.integrity_max * 100, 0.1)]%":"<span class='warning'>ARMOR MISSING</span>"]<br>
@@ -2332,7 +2332,7 @@
 //This is for mobs mostly.
 /obj/vehicle/sealed/mecha/attack_generic(var/mob/user, var/damage, var/attack_message)
 
-	var/obj/item/vehicle_component/armor/ArmC = internal_components[MECH_ARMOR]
+	var/obj/item/vehicle_component/plating/armor/ArmC = internal_components[MECH_ARMOR]
 
 	var/temp_deflect_chance = deflect_chance
 	var/temp_damage_minimum = damage_minimum

@@ -6,8 +6,8 @@
 	initial_icon = "gygax_adv"
 
 	base_movement_speed = 4.25
-	comp_armor = /obj/item/vehicle_component/armor/marshal
-	comp_hull = /obj/item/vehicle_component/hull/lightweight
+	comp_armor = /obj/item/vehicle_component/plating/armor/marshal
+	comp_hull = /obj/item/vehicle_component/plating/hull/lightweight
 
 	dir_in = 1 //Facing North.
 	integrity = 250

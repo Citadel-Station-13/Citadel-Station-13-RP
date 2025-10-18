@@ -42,7 +42,7 @@
 	var/obj/item/vehicle_component/actuator/comp_actuator = /obj/item/vehicle_component/actuator
 	/// our armor component
 	/// * set to typepath to start with
-	var/obj/item/vehicle_component/armor/comp_armor = /obj/item/vehicle_component/armor
+	var/obj/item/vehicle_component/plating/armor/comp_armor = /obj/item/vehicle_component/plating/armor
 	/// armor relative thickness
 	/// * pretty much multiplies the integrity
 	/// * relative to 1
@@ -55,7 +55,7 @@
 	var/obj/item/vehicle_component/gas/comp_gas = /obj/item/vehicle_component/gas
 	/// our hull component
 	/// * set to typepath to start with
-	var/obj/item/vehicle_component/hull/comp_hull = /obj/item/vehicle_component/hull
+	var/obj/item/vehicle_component/plating/hull/comp_hull = /obj/item/vehicle_component/plating/hull
 	/// hull relative thickness
 	/// * pretty much multiplies the integrity
 	/// * relative to 1

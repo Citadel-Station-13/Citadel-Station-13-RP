@@ -8,8 +8,8 @@
 	integrity_max = 180			//Don't forget to update the /old variant if  you change this number.
 
 	base_movement_speed = 3.33
-	comp_armor = /obj/item/vehicle_component/armor/marshal
-	comp_hull = /obj/item/vehicle_component/hull/lightweight
+	comp_armor = /obj/item/vehicle_component/plating/armor/marshal
+	comp_hull = /obj/item/vehicle_component/plating/hull/lightweight
 
 	deflect_chance = 25
 	damage_absorption = list("brute"=1,"fire"=0.75,"bullet"=0.85,"laser"=0.8,"energy"=0.7,"bomb"=1)

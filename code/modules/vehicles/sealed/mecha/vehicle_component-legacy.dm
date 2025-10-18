@@ -7,22 +7,16 @@
 	origin_tech = list(TECH_DATA = 2, TECH_ENGINEERING = 2)
 
 	var/component_type = null
-
 	var/obj/vehicle/sealed/mecha/chassis = null
 	var/start_damaged = FALSE
-
 	var/emp_resistance = 0	// Amount of emp 'levels' removed.
-
-	var/list/required_type = null	// List, if it exists. Exosuits meant to use the component (Unique var changes / effects)
 
 	integrity = 100
 	var/integrity_danger_mod = 0.5	// Multiplier for comparison to integrity_max before problems start.
 	integrity_max = 100
 
 	var/step_delay = 0
-
 	var/relative_size = 30	// Percent chance for the component to be hit.
-
 	var/internal_damage_flag	// If set, the component will toggle the flag on or off if it is destroyed / severely damaged.
 
 /obj/item/vehicle_component/examine(mob/user, dist)
@@ -134,24 +128,15 @@
 	chassis = null
 	return TRUE
 
-
 /obj/item/vehicle_component/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/stack/nanopaste))
 		var/obj/item/stack/nanopaste/NP = W
-
 		if(integrity < integrity_max)
 			while(integrity < integrity_max && NP)
 				if(do_after(user, 1 SECOND, src) && NP.use(1))
 					adjust_integrity_mecha(10)
-
 			return
-
 	return ..()
-
-// Various procs to handle different calls by Exosuits. IE, movement actions, damage actions, etc.
 
 /obj/item/vehicle_component/proc/get_step_delay()
 	return step_delay
-
-/obj/item/vehicle_component/proc/handle_move()
-	return

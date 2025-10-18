@@ -8,7 +8,7 @@
 	integrity_max = 150
 
 	base_movement_speed = 4.5
-	comp_armor = /obj/item/vehicle_component/armor/lightweight
+	comp_armor = /obj/item/vehicle_component/plating/armor/lightweight
 
 	deflect_chance = 20
 

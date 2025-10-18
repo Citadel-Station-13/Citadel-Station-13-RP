@@ -9,7 +9,7 @@
 
 	cargo_capacity = 1
 
-	comp_armor = /obj/item/vehicle_component/armor/lightweight
+	comp_armor = /obj/item/vehicle_component/plating/armor/lightweight
 
 /obj/vehicle/sealed/mecha/medical/Initialize(mapload)
 	. = ..()

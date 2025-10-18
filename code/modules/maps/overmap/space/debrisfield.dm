@@ -213,9 +213,9 @@
 /obj/vehicle/sealed/mecha/combat/fighter/baron/loaded/busted
 /*
 	starting_components = list(
-		/obj/item/vehicle_component/hull/lightweight,
+		/obj/item/vehicle_component/plating/hull/lightweight,
 		/obj/item/vehicle_component/actuator/hispeed,
-		/obj/item/vehicle_component/armor,
+		/obj/item/vehicle_component/plating/armor,
 		/obj/item/vehicle_component/gas,
 		/obj/item/vehicle_component/electrical/high_current
 		)
