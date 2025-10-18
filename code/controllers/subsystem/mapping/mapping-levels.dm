@@ -446,14 +446,14 @@
 		return
 	for(var/z in loops)
 		var/datum/map_level/level = ordered_levels[z]
-		level.link_above = null
-		level.link_below = null
+		level.link_above_id = null
+		level.link_below_id = null
 	stack_trace("WARNING: Up/Down loops found in zlevels [english_list(loops)]. This is not allowed and will cause both falling and zcopy to infinitely loop. All zlevels involved have been disconnected, and any structs involved have been destroyed.")
-	rebuild_verticality()
+	rebuild_multiz()
 	for(var/z in loops)
 		var/datum/map_level/level = ordered_levels[z]
-		if(level.link_above || level.link_below)
+		if(level.link_above_id || level.link_below_id)
 			stack_trace("WARNING: level [z] ([level.name]) wasn't unlinked after having a loop detected.")
 			continue
 		spawn(0)
-			level.rebuild_turfs()
+			level.rebuild_vertical_transitions(UP|DOWN)
