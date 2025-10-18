@@ -3,6 +3,7 @@
  */
 /obj/machinery/lathe/r_n_d/protolathe
 	name = "Protolathe"
+	desc = "A versatile lathe capable of producing cutting edge scientific equipment.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	icon = 'icons/obj/machines/fabricators/protolathe.dmi'
 	icon_state = "protolathe"
 	base_icon_state = "protolathe"

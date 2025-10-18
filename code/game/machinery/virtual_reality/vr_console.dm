@@ -1,6 +1,6 @@
 /obj/machinery/vr_sleeper
 	name = "virtual reality sleeper"
-	desc = "A fancy bed with built-in sensory I/O ports and connectors to interface users' minds with their bodies in virtual reality."
+	desc = "A fancy bed with built-in sensory I/O ports and connectors to interface users' minds with their bodies in virtual reality.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	icon = 'icons/obj/medical/cryogenic2.dmi'
 	icon_state = "syndipod_0"
 

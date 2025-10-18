@@ -1,3 +1,4 @@
+// TODO: rename to /item/dna_injector
 /obj/item/dnainjector
 	name = "\improper DNA injector"
 	desc = "This injects the person with DNA."
@@ -121,7 +122,7 @@
 	target.visible_message("<span class='danger'>\The [target] has been injected with \the [src] by \the [user].</span>")
 
 	var/mob/living/carbon/human/H = target
-	if(!istype(H))
+	if(!istype(H) || H.isSynthetic())
 		to_chat(user, "<span class='warning'>Apparently it didn't work...</span>")
 		return
 

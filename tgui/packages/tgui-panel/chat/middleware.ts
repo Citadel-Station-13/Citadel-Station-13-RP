@@ -31,7 +31,7 @@ import {
   toggleAcceptedType,
   updateMessageCount,
 } from './actions';
-import { CHAT_VERSION_MIN, MAX_PERSISTED_MESSAGES, MESSAGE_SAVE_INTERVAL } from './constants';
+import { CHAT_VERSION_MAX, CHAT_VERSION_MIN, MAX_PERSISTED_MESSAGES, MESSAGE_SAVE_INTERVAL } from './constants';
 import { createMessage, serializeMessage } from './model';
 import { chatRenderer } from './renderer';
 import { selectChat, selectCurrentChatPage } from './selectors';
@@ -58,7 +58,7 @@ const loadChatFromStorage = async (store: Store) => {
     storage.get('chat-messages'),
   ]);
   // Discard incompatible versions
-  if (state && state.version < CHAT_VERSION_MIN) {
+  if (state && (state.version < CHAT_VERSION_MIN || state.version > CHAT_VERSION_MAX)) {
     store.dispatch(loadChat());
     return;
   }
@@ -106,7 +106,7 @@ export const chatMiddleware = (store: Store) => {
     if (!initialized && settings.initialized) {
       setInterval(() => {
         // yeah let's initialize first shall we
-        if(initialized) {
+        if (initialized) {
           saveChatToStorage(store);
         }
       }, MESSAGE_SAVE_INTERVAL);

@@ -70,3 +70,10 @@ var/DNABLOCK_HALLUCINATION = 0
 var/DNABLOCK_NOPRINTS      = 0
 var/DNABLOCK_NOSHOCK       = 0
 var/DNABLOCK_DWARFISM      = 0
+
+#define DNA_BLOCK_SIZE 3
+
+// Buffer datatype flags.
+#define DNA2_BUF_UI 1
+#define DNA2_BUF_UE 2
+#define DNA2_BUF_SE 4
