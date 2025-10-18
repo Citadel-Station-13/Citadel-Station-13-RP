@@ -291,7 +291,7 @@
 	PROTECTED_PROC(TRUE) // Do not ever call directly.
 	if(islist(material_parts))
 		return material_parts[part]
-	return part == MATERIAL_PART_DEFAULT? material_parts : null
+	return istext(material_parts) ? null : material_parts
 
 /**
  * sets a single material part

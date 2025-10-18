@@ -192,6 +192,7 @@
 	return (mean + stddev * R1)
 #undef ACCURACY
 
+// TODO: rework
 /proc/get_turf_in_angle(angle, turf/starting, increments)
 	var/pixel_x = 0
 	var/pixel_y = 0

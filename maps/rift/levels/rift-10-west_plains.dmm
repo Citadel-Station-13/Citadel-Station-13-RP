@@ -4221,6 +4221,9 @@
 /obj/effect/floor_decal/corner/purple/bordercorner2{
 	dir = 6
 	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -37
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "tr" = (
@@ -5599,6 +5602,20 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/construction/solars)
+"zp" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/purple/border,
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 8
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -37
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/outpost)
 "zq" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/yellow{
 	dir = 1
@@ -39560,7 +39577,7 @@ Lf
 dd
 qw
 RQ
-Um
+zp
 bO
 ui
 ba
