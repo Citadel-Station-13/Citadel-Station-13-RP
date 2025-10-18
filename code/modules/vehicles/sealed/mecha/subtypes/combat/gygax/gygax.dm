@@ -43,8 +43,6 @@
 	output += ..()
 	return output
 
-//! subtypes !//
-
 /obj/vehicle/sealed/mecha/combat/gygax/dark
 	desc = "A lightweight exosuit used by paramilitary forces. A significantly upgraded Gygax security mech."
 	name = "Dark Gygax"

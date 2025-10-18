@@ -87,3 +87,17 @@
 
 /obj/vehicle/sealed/mecha/process(delta_time)
 	#warn impl
+	//! LEGACY
+	// Legacy: Air temperature step, if air exists
+	if(cabin_air?.volume && !hasInternalDamage(MECHA_INT_TEMP_CONTROL))
+		// stabilize temperature
+		// TODO: should be the job of a vehicle life support component; use proper heater and temperature loss modelling too.
+		var/target_temperature_change = T20C - XGM_GET_TEMPERATURE(cabin_air)
+		var/max_temperature_change = 10 + target_temperature_change * 0.35
+		XGM_SET_TEMPERATURE(cabin_air, clamp(target_temperature_change, -max_temperature_change, max_temperature_change))
+	// Legacy: Air pressurization step, if air exists
+	if(internal_tank && cabin_air)
+		legacy_air_flow_step()
+	// Legacy: Process internal damage
+	legacy_internal_damage_step()
+	//! END

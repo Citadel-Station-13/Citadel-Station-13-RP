@@ -11,7 +11,18 @@
 
 #warn impl
 
-/obj/item/vehicle_component
+/**
+ * @return string
+ */
+/obj/item/vehicle_component/proc/examine_render_name(datum/event_args/examine/examine)
+	return name
+
+/**
+ * @return list or string
+ */
+/obj/item/vehicle_component/proc/examine_render_on_vehicle(datum/event_args/examine/examine)
+	var/integrity_string = examine_render_integrity(examine)
+	return "It has [examine_render_name(examine)] attached.[integrity_string ? " [integrity_string]" : ""]"
 
 /obj/item/vehicle_component
 

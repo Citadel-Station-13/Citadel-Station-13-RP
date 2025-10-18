@@ -67,6 +67,13 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 	QDEL_LAZYLIST(modules)
 	return ..()
 
+/obj/vehicle/examine(mob/user, dist)
+	. = ..()
+	var/datum/event_args/examine/examine = new(user)
+	. += examine_render_components(examine)
+	for(var/obj/item/vehicle_module/module as anything in modules)
+		. += "It has a [icon2html(module, world)] [module] installed."
+
 //* Actions *//
 
 /obj/vehicle/proc/initialize_occupant_actions()

@@ -223,8 +223,6 @@
 		src.smoke_system.attach(src)
 
 	add_cell()
-	// TODO: BURN ITERATORS WITH FUCKING FIRE
-	INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/vehicle/sealed/mecha, add_iterators))
 	removeVerb(/obj/vehicle/sealed/mecha/verb/disconnect_from_port)
 	log_message("[src.name] created.")
 
@@ -369,41 +367,6 @@
 		return 1
 	else
 		return 0
-
-/obj/vehicle/sealed/mecha/examine(mob/user, dist)
-	. = ..()
-
-	var/obj/item/vehicle_component/plating/armor/AC = internal_components[MECH_ARMOR]
-	var/obj/item/vehicle_component/plating/hull/HC = internal_components[MECH_HULL]
-
-	if(AC)
-		. += "It has [AC] attached. [AC.get_efficiency()<0.5?"It is severely damaged.":""]"
-	else
-		. += "It has no armor plating."
-	if(HC)
-		if(!AC || AC.get_efficiency() < 0.7)
-			. += "It has [HC] attached. [HC.get_efficiency()<0.5?"It is severely damaged.":""]"
-		else
-			. += "You cannot tell what type of hull it has."
-	else
-		. += "It does not seem to have a completed hull."
-
-	var/integrity = src.integrity/initial(src.integrity)*100
-	switch(integrity)
-		if(85 to 100)
-			. += "It's fully intact."
-		if(65 to 85)
-			. += "It's slightly damaged."
-		if(45 to 65)
-			. += "<span class='notice'>It's badly damaged.</span>"
-		if(25 to 45)
-			. += "<span class='warning'>It's heavily damaged.</span>"
-		else
-			. += "<span class='warning'><b> It's falling apart.</b> </span>"
-	if(equipment?.len)
-		. += "It's equipped with:"
-		for(var/obj/item/vehicle_module/ME in equipment)
-			. += "[icon2html(ME, world)] [ME]"
 
 /obj/vehicle/sealed/mecha/hear_talk(mob/M, list/message_pieces, verb)
 	if(M == occupant_legacy && radio.broadcasting)
@@ -2282,66 +2245,35 @@
 
 	return 1
 
-/// Normalizing cabin air temperature to 20 degrees celcius.
-/datum/global_iterator/mecha_preserve_temp
-	delay = 20
+/obj/vehicle/sealed/mecha/proc/legacy_air_flow_step()
+	var/obj/vehicle/sealed/mecha/mecha = src
+	var/datum/gas_mixture/tank_air = mecha.internal_tank.return_air()
+	var/datum/gas_mixture/cabin_air = mecha.cabin_air
 
-/datum/global_iterator/mecha_preserve_temp/process(obj/vehicle/sealed/mecha/mecha)
-	if(mecha.cabin_air && mecha.cabin_air.volume > 0)
-		var/delta = mecha.cabin_air.temperature - T20C
-		mecha.cabin_air.temperature -= max(-10, min(10, round(delta/4,0.1)))
-	return
-
-/datum/global_iterator/mecha_tank_give_air
-	delay = 15
-
-/datum/global_iterator/mecha_tank_give_air/process(var/obj/vehicle/sealed/mecha/mecha)
-	if(mecha.internal_tank)
-		var/datum/gas_mixture/tank_air = mecha.internal_tank.return_air()
-		var/datum/gas_mixture/cabin_air = mecha.cabin_air
-
-		var/release_pressure = mecha.internal_tank_valve
-		var/cabin_pressure = cabin_air.return_pressure()
-		var/pressure_delta = min(release_pressure - cabin_pressure, (tank_air.return_pressure() - cabin_pressure)/2)
-		var/transfer_moles = 0
-		if(pressure_delta > 0) //cabin pressure lower than release pressure
-			if(tank_air.temperature > 0)
-				transfer_moles = pressure_delta*cabin_air.volume/(cabin_air.temperature * R_IDEAL_GAS_EQUATION)
-				var/datum/gas_mixture/removed = tank_air.remove(transfer_moles)
-				cabin_air.merge(removed)
-		else if(pressure_delta < 0) //cabin pressure higher than release pressure
-			var/datum/gas_mixture/t_air = mecha.loc.return_air()
-			pressure_delta = cabin_pressure - release_pressure
+	var/release_pressure = mecha.internal_tank_valve
+	var/cabin_pressure = cabin_air.return_pressure()
+	var/pressure_delta = min(release_pressure - cabin_pressure, (tank_air.return_pressure() - cabin_pressure)/2)
+	var/transfer_moles = 0
+	if(pressure_delta > 0) //cabin pressure lower than release pressure
+		if(tank_air.temperature > 0)
+			transfer_moles = pressure_delta*cabin_air.volume/(cabin_air.temperature * R_IDEAL_GAS_EQUATION)
+			var/datum/gas_mixture/removed = tank_air.remove(transfer_moles)
+			cabin_air.merge(removed)
+	else if(pressure_delta < 0) //cabin pressure higher than release pressure
+		var/datum/gas_mixture/t_air = mecha.loc.return_air()
+		pressure_delta = cabin_pressure - release_pressure
+		if(t_air)
+			pressure_delta = min(cabin_pressure - t_air.return_pressure(), pressure_delta)
+		if(pressure_delta > 0) //if location pressure is lower than cabin pressure
+			transfer_moles = pressure_delta*cabin_air.volume/(cabin_air.temperature * R_IDEAL_GAS_EQUATION)
+			var/datum/gas_mixture/removed = cabin_air.remove(transfer_moles)
 			if(t_air)
-				pressure_delta = min(cabin_pressure - t_air.return_pressure(), pressure_delta)
-			if(pressure_delta > 0) //if location pressure is lower than cabin pressure
-				transfer_moles = pressure_delta*cabin_air.volume/(cabin_air.temperature * R_IDEAL_GAS_EQUATION)
-				var/datum/gas_mixture/removed = cabin_air.remove(transfer_moles)
-				if(t_air)
-					t_air.merge(removed)
-				else //just delete the cabin gas, we're in space or some shit
-					qdel(removed)
-	else
-		return stop()
-	return
+				t_air.merge(removed)
+			else //just delete the cabin gas, we're in space or some shit
+				qdel(removed)
 
-/datum/global_iterator/mecha_intertial_movement //inertial movement in space
-	delay = 7
-
-/datum/global_iterator/mecha_intertial_movement/process(var/obj/vehicle/sealed/mecha/mecha as obj,direction)
-	if(direction)
-		if(!step(mecha, direction)||mecha.check_for_support())
-			src.stop()
-		mecha.handle_equipment_movement()
-	else
-		src.stop()
-	return
-
-/datum/global_iterator/mecha_internal_damage // processing internal damage
-
-/datum/global_iterator/mecha_internal_damage/process(var/obj/vehicle/sealed/mecha/mecha)
-	if(!mecha.hasInternalDamage())
-		return stop()
+/obj/vehicle/sealed/mecha/proc/legacy_internal_damage_step()
+	var/obj/vehicle/sealed/mecha/mecha = src
 	if(mecha.hasInternalDamage(MECHA_INT_FIRE))
 		if(!mecha.hasInternalDamage(MECHA_INT_TEMP_CONTROL) && prob(5))
 			mecha.clearInternalDamage(MECHA_INT_FIRE)
@@ -2355,8 +2287,6 @@
 			mecha.cabin_air.temperature = min(6000+T0C, mecha.cabin_air.temperature+rand(10,15))
 			if(mecha.cabin_air.temperature>mecha.max_temperature/2)
 				mecha.take_damage_legacy(4/round(mecha.max_temperature/mecha.cabin_air.temperature,0.1),"fire")	//The take_damage_legacy() proc handles armor values
-	if(mecha.hasInternalDamage(MECHA_INT_TEMP_CONTROL)) //stop the mecha_preserve_temp loop datum
-		mecha.pr_int_temp_processor.stop()
 	if(mecha.hasInternalDamage(MECHA_INT_TANK_BREACH)) //remove some air from internal tank
 		if(mecha.internal_tank)
 			var/datum/gas_mixture/int_tank_air = mecha.internal_tank.return_air()
@@ -2370,10 +2300,6 @@
 			mecha.spark_system.start()
 			mecha.cell.charge -= min(20,mecha.cell.charge)
 			mecha.cell.maxcharge -= min(20,mecha.cell.maxcharge)
-	return
-
-
-/////////////
 
 /obj/vehicle/sealed/mecha/cloak()
 	. = ..()
@@ -2494,25 +2420,3 @@
 		src.zoom = 0
 
 	strafing = 0
-
-//* Action Datums - /datum/action/vehicle/mecha *//
-
-/datum/action/vehicle/mecha
-	target_type = /obj/vehicle/sealed/mecha
-	background_icon_state = "mecha"
-	button_icon = 'icons/screen/actions/mecha.dmi'
-
-	required_control_flags = NONE
-
-/datum/action/vehicle/mecha/eject
-	name = "Eject"
-	desc = "Eject from your mecha."
-	button_icon_state = "eject"
-
-	required_control_flags = VEHICLE_CONTROL_EXIT
-
-/datum/action/vehicle/mecha/eject/invoke_target(obj/vehicle/sealed/mecha/target, datum/event_args/actor/actor)
-	. = ..()
-	if(.)
-		return
-	target.mob_try_exit(actor.performer, actor)

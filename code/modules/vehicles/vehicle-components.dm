@@ -18,6 +18,12 @@
 /obj/vehicle/proc/destroy_all_components()
 	QDEL_LAZYLIST(components)
 
+/**
+ * @return list or string
+ */
+/obj/vehicle/proc/examine_render_components(datum/event_args/examine/examine)
+	return list()
+
 /obj/vehicle/proc/can_install_component(obj/item/vehicle_component/v_comp, datum/event_args/actor/actor, silent, force)
 
 /obj/vehicle/proc/can_fit_component(obj/item/vehicle_component/v_comp, datum/event_args/actor/actor, silent)

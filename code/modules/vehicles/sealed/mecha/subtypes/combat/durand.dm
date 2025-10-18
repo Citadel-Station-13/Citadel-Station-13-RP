@@ -27,23 +27,12 @@
 
 	comp_hull = /obj/item/vehicle_component/plating/hull/durable
 	comp_armor = /obj/item/vehicle_component/plating/armor/military
-
-	defence_mode_possible = 1
+	modules_intrinsic = list(
+		/obj/item/vehicle_module/personal_shield/at_field/durand,
+	)
 
 	icon_scale_x = 1.5
 	icon_scale_y = 1.5
-
-//This is for the Mech stats / Menu system. To be moved later on.
-/obj/vehicle/sealed/mecha/combat/durand/get_commands()
-	var/output = {"<div class='wr'>
-						<div class='header'>Special</div>
-						<div class='links'>
-						<a href='?src=\ref[src];toggle_defence_mode=1'>Toggle defence mode</a>
-						</div>
-						</div>
-						"}
-	output += ..()
-	return output
 
 //Meant for random spawns.
 /obj/vehicle/sealed/mecha/combat/durand/old

@@ -6,7 +6,6 @@
 	equip_cooldown = 10
 	energy_drain = 0
 	range = MELEE
-	var/datum/global_iterator/pr_mech_generator
 	var/coeff = 100
 	var/obj/item/stack/material/fuel
 	var/max_fuel = 150000

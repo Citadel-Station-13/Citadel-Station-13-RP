@@ -867,7 +867,7 @@
 /obj/examine(mob/user, dist)
 	. = ..()
 	if(integrity_examine)
-		. += examine_integrity(user)
+		. += examine_render_integrity(new /datum/event_args/examine(user))
 	var/list/parts = get_material_parts()
 	for(var/key in parts)
 		var/datum/prototype/material/mat = parts[key]
@@ -880,24 +880,26 @@
 	if(obj_rotation_flags & OBJ_ROTATION_ENABLED)
 		. += SPAN_NOTICE("This entity can be rotated[(obj_rotation_flags & OBJ_ROTATION_NO_ANCHOR_CHECK)? "" : " while unanchored"] via context menu (alt click while adjacent).")
 
-/obj/proc/examine_integrity(mob/user)
-	. = list()
+/**
+ * @return list or string
+ */
+/obj/proc/examine_render_integrity(datum/event_args/examine/examine)
 	if(!integrity_enabled)
 		return
 	if(integrity == integrity_max)
-		. += SPAN_NOTICE("It looks fully intact.")
+		. =  SPAN_NOTICE("It looks fully intact.")
 	else if(atom_flags & ATOM_BROKEN)
-		. += SPAN_BOLDWARNING("It's broken and falling apart!")
+		. =  SPAN_BOLDWARNING("It's broken and falling apart!")
 	else
 		var/perc = percent_integrity()
 		if(perc > 0.75)
-			. += SPAN_NOTICE("It looks a bit dented.")
+			. =  SPAN_NOTICE("It looks a bit dented.")
 		else if(perc > 0.5)
-			. += SPAN_WARNING("It looks damaged.")
+			. =  SPAN_WARNING("It looks damaged.")
 		else if(perc > 0.25)
-			. += SPAN_RED("It looks severely damaged.")
+			. =  SPAN_RED("It looks severely damaged.")
 		else
-			. += SPAN_BOLDWARNING("It's barely able to hold itself together!")
+			. =  SPAN_BOLDWARNING("It's barely able to hold itself together!")
 
 //* Movement *//
 

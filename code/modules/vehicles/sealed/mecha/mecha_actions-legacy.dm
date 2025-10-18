@@ -36,7 +36,6 @@
 		lights_action,
 		stats_action,
 		strafing_action,
-		defence_action,
 		smoke_action,
 		zoom_action,
 		thrusters_action,

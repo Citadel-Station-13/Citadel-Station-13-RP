@@ -36,7 +36,6 @@
 		radiation_pulse(src, RAD_INTENSITY_MECH_JANUS_FORCED_UNPHASE)
 		log_append_to_last("WARNING: BLUESPACE DRIVE INSTABILITY DETECTED. DISABLING DRIVE.",1)
 		visible_message("<span class='alien'>The [src.name] appears to flicker, before its silhouette stabilizes!</span>")
-	return
 
 /obj/vehicle/sealed/mecha/combat/phazon/janus/dynbulletdamage(var/obj/projectile/Proj)
 	if((Proj.damage_force && !Proj.nodamage) && !istype(Proj, /obj/projectile/beam) && prob(max(1, 33 - round(Proj.damage_force / 4))))
@@ -49,7 +48,6 @@
 		src.visible_message("<span class='alien'>The [src.name] reflects the incoming beam, negating it!</span>")
 		src.log_append_to_last("Armor reflected.")
 		return
-
 	..()
 
 /obj/vehicle/sealed/mecha/combat/phazon/janus/dynattackby(obj/item/W as obj, mob/user as mob)
@@ -58,7 +56,6 @@
 		src.visible_message("<span class='alien'>The [src.name] absorbs the incoming attack's force, negating it!</span>")
 		src.log_append_to_last("Armor absorbed.")
 		return
-
 	..()
 
 /obj/vehicle/sealed/mecha/combat/phazon/janus/query_damtype()
@@ -71,4 +68,3 @@
 		if("Stun")
 			damtype = "halloss"
 	src.occupant_message("Melee damage type switched to [new_damtype]")
-	return
