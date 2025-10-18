@@ -179,6 +179,23 @@
 		var/mob/living/carbon/human/M = target
 		M.Confuse(rand(5,8))
 
+/obj/projectile/energy/mindflayer/wraith
+	name = "concentrated sound wave"
+	icon_state = "no name"
+	fire_sound = 'sound/effects/bamf.ogg'
+	damage_force = 0
+	damage_inflict_agony = 20
+	nodamage = 1
+	combustion = FALSE
+
+/obj/projectile/energy/mindflayer/wraith/on_impact(atom/target, impact_flags, def_zone, efficiency)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
+	if(ishuman(target))
+		var/mob/living/carbon/human/M = target
+		M.Confuse(rand(5,8))
+
 /obj/projectile/chameleon
 	name = "bullet"
 	icon_state = "bullet"
