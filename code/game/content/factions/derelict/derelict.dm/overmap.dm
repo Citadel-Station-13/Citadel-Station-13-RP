@@ -88,11 +88,7 @@
 [b]Transponder:[/b][i] [!#&%*#][/i]
 [b]Notice:[/b][i] Significant energy signature detected within structure.
 Zero known life signatures detected aboard.[/i]
-[b]Recommendation: [PROCEED WITH CAUTION.][/b]
-
-[b][i]Note from Temporal:[/i][/b] [i]If I am correct, this orbital installation is what's commonly known as a 'Shield Projector.'
-Boarding and activating it would create a path closer to the Blackhole. In theory.
-It is unlikely we have any other way to proceed further. Risk taking seems to be your specialty, no?[/i][/center]"}
+[b]Recommendation: [PROCEED WITH CAUTION.][/b]"}
 
 /obj/overmap/entity/fluff/event/station/defense
 	name = "Unidentified Structure"
@@ -102,11 +98,7 @@ It is unlikely we have any other way to proceed further. Risk taking seems to be
 [b]Class:[/b][i] [Artificial][/i]
 [b]Transponder:[/b][i] [!#&%*#][/i]
 [b]ALERT: MULTIPLE SIGNIFICANT ENERGY SIGNATURES DETECTED.[/b]
-[b]!!DO NOT APPROACH!![/b]
-
-[b][i]Note from Temporal:[/i][/b] [i]If I were you, I would not get anywhere near this.
-These orbital installations are bristling with dark matter weaponry.
-In short, it would be as if an insect entered an energy zapper.[/i][/center]"}
+[b]!!DO NOT APPROACH!![/b]"}
 
 /obj/overmap/entity/fluff/event/station/extraction_station
 	icon = 'code/game/content/factions/derelict/derelict.dmi/overmap/48x48.dmi'
@@ -172,6 +164,33 @@ Large amount of planetary crust and internals missing. Signs of intentional exca
 [b]Class:[/b][i] [Stellar-mass][/i]
 [b]Notice:[/b][i] [As per regulations, all star vessels should retain a wide berth of twenty lightyears from any astronomical bodies identified as Blackholes.
 This is due to the extreme amounts of radiation these astronomical bodies can output, along with the additional threats of extreme time dilation and obscene gravitational force.][/i]
-[b]Recommendation: [RETAIN DISTANCE.][/b][/center]
+[b]Recommendation: [RETAIN DISTANCE.][/b][/center]"}
 
-[b][i]Note from Temporal:[/i][/b] [i]Normally, being this close to such a large Blackhole would have either fried us with untold amounts of radiation, pulled us in past its event horizon or crushed us. Somehow, this is not the case. It is very likely the Blackhole within the systems center has been tampered with and is currently being inhibited. I am unsure what is doing it, but it can't be anything good.[/i][/center]"}
+// Landables
+
+/obj/overmap/entity/visitable/sector/extraction_station
+	icon = 'code/game/content/factions/derelict/derelict.dmi/overmap/48x48.dmi'
+	icon_state = "extraction_station"
+	name = "Precursor Megastructure"
+	known = TRUE
+	scanner_desc = @{"[center][b]Designation:[/b][i] [Precursor Megastructure][/i]
+[b]Class:[/b][i] [Megastructure][/i]
+[b]Transponder:[/b][i] [!#&%*#][/i]
+[b]Notice:[/b] [i]Unable to diagnose. Err$%%$%[/i]
+[b]Recommendation:[/b] [i]!^(!%&#^%&![/i]"}
+	initial_generic_waypoints = list(
+		"Superstructure Auxilary Hangar"
+		)
+
+
+/obj/overmap/entity/visitable/sector/station/relay
+	name = "Precursor Shield Projector"
+	icon = 'code/game/content/factions/derelict/derelict.dmi/overmap/overmap.dmi'
+	icon_state = "relay"
+	known = TRUE
+	scanner_desc = @{"[center][b]Designation:[/b][i] [Precursor Shield Projector][/i]
+[b]Class:[/b][i] [Artificial][/i]
+[b]Transponder:[/b][i] [!#&%*#][/i]
+[b]Notice:[/b][i] Significant energy signature detected within structure.
+Zero known life signatures detected aboard.[/i]
+[b]Recommendation: [PROCEED WITH CAUTION.][/b]"}

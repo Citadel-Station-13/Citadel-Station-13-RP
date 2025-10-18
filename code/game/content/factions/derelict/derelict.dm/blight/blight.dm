@@ -43,7 +43,7 @@
 
 	health = 200
 	maxHealth = 200
-	movement_base_speed = 10 / 3
+	movement_base_speed = 10 / 2
 
 	legacy_melee_damage_lower = 23
 	legacy_melee_damage_upper = 23
@@ -81,9 +81,9 @@
 		"rad" = 100,
 	)
 
-	legacy_melee_damage_lower = 26
-	legacy_melee_damage_upper = 26
-	attack_armor_pen = 15
+	legacy_melee_damage_lower = 30
+	legacy_melee_damage_upper = 30
+	attack_armor_pen = 20
 	base_attack_cooldown = 11
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive
@@ -118,8 +118,8 @@
 		"rad" = 100,
 	)
 
-	legacy_melee_damage_lower = 23
-	legacy_melee_damage_upper = 23
+	legacy_melee_damage_lower = 25
+	legacy_melee_damage_upper = 25
 	attack_armor_pen = 20
 	base_attack_cooldown = 8
 
@@ -145,11 +145,11 @@
 	icon_rest = "wraith_rest"
 	icon_dead = "wraith_dead"
 	base_pixel_x = -8
-	alpha = 130
+	alpha = 80
 
 	health = 300
 	maxHealth = 300
-	evasion = 15
+	evasion = 25
 	movement_base_speed = 10 / 2.5
 	armor_legacy_mob = list(
 		"melee" = 40,
@@ -188,7 +188,7 @@
 
 	health = 500
 	maxHealth = 500
-	movement_base_speed = 10 / 4
+	movement_base_speed = 10 / 3.5
 	armor_legacy_mob = list(
 		"melee" = 50,
 		"bullet" = 40,
@@ -225,8 +225,8 @@
 	icon_dead = "zenith_dead"
 	base_pixel_x = -8
 
-	health = 700
-	maxHealth = 700
+	health = 800
+	maxHealth = 800
 	movement_base_speed = 10 / 3
 	armor_legacy_mob = list(
 		"melee" = 60,
@@ -238,8 +238,8 @@
 		"rad" = 100,
 	)
 
-	legacy_melee_damage_lower = 30
-	legacy_melee_damage_upper = 30
+	legacy_melee_damage_lower = 50
+	legacy_melee_damage_upper = 50
 	attack_armor_pen = 40
 	base_attack_cooldown = 20
 	special_attack_min_range = 3

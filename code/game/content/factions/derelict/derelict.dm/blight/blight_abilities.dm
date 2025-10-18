@@ -71,10 +71,22 @@
 			to_chat(L, SPAN_WARNING( "\The [src] punches you with incredible force, but you remain in place."))
 
 
+/mob/living/simple_mob/animal/space/blight/melee/zenith/apply_melee_effects(atom/A)
+	if(isliving(A))
+		var/mob/living/L = A
+		if(L.mob_size <= MOB_MEDIUM)
+			visible_message(SPAN_DANGER("\The [src] sends \the [L] flying with their scythed claws!"))
+			playsound(src, "sound/mobs/biomorphs/breaker_slam.ogg", 50, 1)
+			var/throw_dir = get_dir(src, L)
+			var/throw_dist = L.incapacitated(INCAPACITATION_DISABLED) ? 4 : 1
+			L.throw_at_old(get_edge_target_turf(L, throw_dir), throw_dist, 1, src)
+		else
+			to_chat(L, SPAN_WARNING( "\The [src] punches you with incredible force, but you remain in place."))
+
 
 /mob/living/simple_mob/animal/space/blight/melee/zenith/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	var/reflectchance = 80 - round(proj.damage_force/3)
-	if(prob(reflectchance) && !istype(src, /mob/living/simple_mob/animal/space/blight/melee/zenith))
+	if(prob(reflectchance))
 		var/damage_mod = rand(2,4)
 		var/projectile_dam_type = proj.damage_type
 		var/incoming_damage = (round(proj.damage_force / damage_mod) - (round((proj.damage_force / damage_mod) * 0.3)))

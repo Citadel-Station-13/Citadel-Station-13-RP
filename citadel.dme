@@ -1239,6 +1239,7 @@
 #include "code\game\content\factions\derelict\derelict.dm\overmap.dm"
 #include "code\game\content\factions\derelict\derelict.dm\blight\blight.dm"
 #include "code\game\content\factions\derelict\derelict.dm\blight\blight_abilities.dm"
+#include "code\game\content\factions\derelict\derelict.dm\blight\corruption.dm"
 #include "code\game\content\factions\eldritch\Introduction.dm"
 #include "code\game\content\factions\eldritch\eldritch.dm\clothing.dm"
 #include "code\game\content\factions\eldritch\eldritch.dm\lore.dm"
