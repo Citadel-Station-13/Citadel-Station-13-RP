@@ -1,4 +1,4 @@
-/obj/item/vehicle_module/generator
+/obj/item/vehicle_module/legacy/generator
 	name = "phoron generator"
 	desc = "Generates power using solid phoron as fuel. Pollutes the environment."
 	icon_state = "tesla"
@@ -15,26 +15,26 @@
 
 	equip_type = EQUIP_UTILITY
 
-/obj/item/vehicle_module/generator/Initialize(mapload)
+/obj/item/vehicle_module/legacy/generator/Initialize(mapload)
 	. = ..()
 	init()
 
-/obj/item/vehicle_module/generator/Destroy()
+/obj/item/vehicle_module/legacy/generator/Destroy()
 	qdel(pr_mech_generator)
 	pr_mech_generator = null
 	return ..()
 
-/obj/item/vehicle_module/generator/proc/init()
+/obj/item/vehicle_module/legacy/generator/proc/init()
 	fuel = new /obj/item/stack/material/phoron(src)
 	fuel.amount = 0
 	pr_mech_generator = new /datum/global_iterator/mecha_generator(list(src),0)
 	pr_mech_generator.set_delay(equip_cooldown)
 
-/obj/item/vehicle_module/generator/detach()
+/obj/item/vehicle_module/legacy/generator/detach()
 	pr_mech_generator.stop()
 	..()
 
-/obj/item/vehicle_module/generator/Topic(href, href_list)
+/obj/item/vehicle_module/legacy/generator/Topic(href, href_list)
 	..()
 	if(href_list["toggle"])
 		if(pr_mech_generator.toggle())
@@ -45,13 +45,13 @@
 			log_message("Deactivated.")
 	return
 
-/obj/item/vehicle_module/generator/get_equip_info()
+/obj/item/vehicle_module/legacy/generator/get_equip_info()
 	var/output = ..()
 	if(output)
 		return "[output] \[[fuel]: [round(fuel.amount*fuel.perunit,0.1)] cm<sup>3</sup>\] - <a href='?src=\ref[src];toggle=1'>[pr_mech_generator.active()?"Dea":"A"]ctivate</a>"
 	return
 
-/obj/item/vehicle_module/generator/action(target)
+/obj/item/vehicle_module/legacy/generator/action(target)
 	if(chassis)
 		var/result = load_fuel(target)
 		var/message
@@ -65,7 +65,7 @@
 		occupant_message(message)
 	return
 
-/obj/item/vehicle_module/generator/proc/load_fuel(var/obj/item/stack/material/P)
+/obj/item/vehicle_module/legacy/generator/proc/load_fuel(var/obj/item/stack/material/P)
 	if(P.type == fuel.type && P.amount)
 		var/to_load = max(max_fuel - fuel.amount*fuel.perunit,0)
 		if(to_load)
@@ -78,7 +78,7 @@
 			return 0
 	return
 
-/obj/item/vehicle_module/generator/attackby(weapon,mob/user)
+/obj/item/vehicle_module/legacy/generator/attackby(weapon,mob/user)
 	var/result = load_fuel(weapon)
 	if(isnull(result))
 		user.visible_message("[user] tries to shove [weapon] into [src]. What a dumb-ass.","<span class='warning'>[fuel] traces minimal. [weapon] cannot be used as fuel.</span>")
@@ -88,7 +88,7 @@
 		user.visible_message("[user] loads [src] with [fuel].","[result] unit\s of [fuel] successfully loaded.")
 	return
 
-/obj/item/vehicle_module/generator/critfail()
+/obj/item/vehicle_module/legacy/generator/critfail()
 	..()
 	var/turf/simulated/T = get_turf(src)
 	if(!T)
@@ -106,7 +106,7 @@
 
 /datum/global_iterator/mecha_generator
 
-/datum/global_iterator/mecha_generator/process(var/obj/item/vehicle_module/generator/EG)
+/datum/global_iterator/mecha_generator/process(var/obj/item/vehicle_module/legacy/generator/EG)
 	if(!EG.chassis)
 		stop()
 		EG.set_ready_state(1)
@@ -132,7 +132,7 @@
 	return 1
 
 
-/obj/item/vehicle_module/generator/nuclear
+/obj/item/vehicle_module/legacy/generator/nuclear
 	name = "\improper ExoNuclear reactor"
 	desc = "Generates power using uranium. Pollutes the environment."
 	icon_state = "tesla"
@@ -143,19 +143,19 @@
 	power_per_cycle = 50
 	var/rad_multiplier = 1
 
-/obj/item/vehicle_module/generator/nuclear/init()
+/obj/item/vehicle_module/legacy/generator/nuclear/init()
 	fuel = new /obj/item/stack/material/uranium(src)
 	fuel.amount = 0
 	pr_mech_generator = new /datum/global_iterator/mecha_generator/nuclear(list(src),0)
 	pr_mech_generator.set_delay(equip_cooldown)
 	return
 
-/obj/item/vehicle_module/generator/nuclear/critfail()
+/obj/item/vehicle_module/legacy/generator/nuclear/critfail()
 	return
 
 /datum/global_iterator/mecha_generator/nuclear
 
-/datum/global_iterator/mecha_generator/nuclear/process(var/obj/item/vehicle_module/generator/nuclear/EG)
+/datum/global_iterator/mecha_generator/nuclear/process(var/obj/item/vehicle_module/legacy/generator/nuclear/EG)
 	if(..())
 		radiation_pulse(EG, RAD_INTENSITY_MECH_REACTOR_TICK * EG.rad_multiplier)
 	return 1

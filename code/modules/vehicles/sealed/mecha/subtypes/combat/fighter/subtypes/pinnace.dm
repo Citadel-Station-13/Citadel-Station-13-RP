@@ -18,7 +18,7 @@
 
 /obj/vehicle/sealed/mecha/combat/fighter/pinnace/equipped
 	modules = list(
-		/obj/item/vehicle_module/tool/passenger,
+		/obj/item/vehicle_module/legacy/tool/passenger,
 	)
 
 /obj/effect/decal/mecha_wreckage/pinnace

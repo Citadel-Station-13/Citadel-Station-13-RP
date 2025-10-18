@@ -1,4 +1,4 @@
-/obj/item/vehicle_module/tool/rcd
+/obj/item/vehicle_module/legacy/tool/rcd
 	name = "mounted RCD"
 	desc = "An exosuit-mounted Rapid Construction Device. (Can be attached to: Any exosuit)"
 	mech_flags = EXOSUIT_MODULE_WORKING|EXOSUIT_MODULE_COMBAT|EXOSUIT_MODULE_MEDICAL
@@ -10,30 +10,30 @@
 	equip_type = EQUIP_SPECIAL
 	var/obj/item/rcd/electric/mounted/mecha/my_rcd = null
 
-/obj/item/vehicle_module/tool/rcd/Initialize(mapload)
+/obj/item/vehicle_module/legacy/tool/rcd/Initialize(mapload)
 	my_rcd = new(src)
 	return ..()
 
-/obj/item/vehicle_module/tool/rcd/Destroy()
+/obj/item/vehicle_module/legacy/tool/rcd/Destroy()
 	QDEL_NULL(my_rcd)
 	return ..()
 
-/obj/item/vehicle_module/tool/rcd/action(atom/target)
+/obj/item/vehicle_module/legacy/tool/rcd/action(atom/target)
 	if(!action_checks(target) || get_dist(chassis, target) > 3)
 		return FALSE
 
 	my_rcd.use_rcd(target, chassis.occupant_legacy)
 
-/obj/item/vehicle_module/tool/rcd/Topic(href,href_list)
+/obj/item/vehicle_module/legacy/tool/rcd/Topic(href,href_list)
 	..()
 	if(href_list["mode"])
 		my_rcd.mode_index = text2num(href_list["mode"])
 		occupant_message("RCD reconfigured to '[my_rcd.modes[my_rcd.mode_index]]'.")
 /*
-/obj/item/vehicle_module/tool/rcd/get_equip_info()
+/obj/item/vehicle_module/legacy/tool/rcd/get_equip_info()
 	return "[..()] \[<a href='?src=\ref[src];mode=0'>D</a>|<a href='?src=\ref[src];mode=1'>C</a>|<a href='?src=\ref[src];mode=2'>A</a>\]"
 */
-/obj/item/vehicle_module/tool/rcd/get_equip_info()
+/obj/item/vehicle_module/legacy/tool/rcd/get_equip_info()
 	var/list/content = list(..()) // This is all for one line, in the interest of string tree conservation.
 	var/i = 1
 	content += "<br>"

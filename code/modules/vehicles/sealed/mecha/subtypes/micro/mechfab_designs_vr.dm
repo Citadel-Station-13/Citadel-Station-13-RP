@@ -44,14 +44,14 @@
 /datum/prototype/design/science/mecha/drill/micro
 	name = "Miniature Drill"
 	id = "micro_drill"
-	build_path = /obj/item/vehicle_module/tool/drill/micro
+	build_path = /obj/item/vehicle_module/legacy/tool/drill/micro
 	work = (5 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 2500)
 
 /datum/prototype/design/science/mecha/hydraulic_clamp/micro
 	name = "Mounted ore box"
 	id = "ore_scoop"
-	build_path = /obj/item/vehicle_module/tool/micro/orescoop
+	build_path = /obj/item/vehicle_module/legacy/tool/micro/orescoop
 	work = (5 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 2500)
 
@@ -107,33 +107,33 @@
 /datum/prototype/design/science/mecha/taser/micro
 	name = "\improper TS-12 \"Suppressor\" integrated taser"
 	id = "micro_taser"
-	build_path = /obj/item/vehicle_module/weapon/energy/microtaser
+	build_path = /obj/item/vehicle_module/legacy/weapon/energy/microtaser
 
 /datum/prototype/design/science/mecha/weapon/laser/micro
 	name = "\improper WS-19 \"Torch\" laser carbine"
 	id = "micro_laser"
 //	req_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 3)
-	build_path = /obj/item/vehicle_module/weapon/energy/microlaser
+	build_path = /obj/item/vehicle_module/legacy/weapon/energy/microlaser
 
 /datum/prototype/design/science/mecha/weapon/laser_heavy/micro
 	name = "\improper PC-20 \"Lance\" light laser cannon"
 	id = "micro_laser_heavy"
 	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 3, TECH_POWER = 3)
 	materials_base = list(MAT_STEEL = 10000, MAT_GLASS = 2000, MAT_DIAMOND = 1000)
-	build_path = /obj/item/vehicle_module/weapon/energy/laser/microheavy
+	build_path = /obj/item/vehicle_module/legacy/weapon/energy/laser/microheavy
 
 /datum/prototype/design/science/mecha/weapon/grenade_launcher/micro
 	name = "\improper FP-20 mounted grenade launcher"
 	id = "micro_flashbang_launcher"
 //	req_tech = list(TECH_COMBAT = 3)
-	build_path = /obj/item/vehicle_module/weapon/ballistic/missile_rack/grenade/microflashbang
+	build_path = /obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/grenade/microflashbang
 
 /datum/prototype/design/science/mecha/weapon/scattershot/micro
 	name = "\improper Remington C-12 \"Boomstick\""
 	desc = "A mounted combat shotgun with integrated ammo-lathe."
 	id = "micro_scattershot"
 //	req_tech = list(TECH_COMBAT = 4)
-	build_path = /obj/item/vehicle_module/weapon/ballistic/microshotgun
+	build_path = /obj/item/vehicle_module/legacy/weapon/ballistic/microshotgun
 
 /datum/prototype/design/science/mechfab/weasel
 	abstract_type = /datum/prototype/design/science/mechfab/weasel
@@ -183,4 +183,4 @@
 	id = "mech_medigun"
 	req_tech = list(TECH_MATERIAL = 5, TECH_COMBAT = 5, TECH_BIO = 6)
 	materials_base = list(MAT_STEEL = 9000, MAT_GOLD = 3000, MAT_SILVER = 2750, MAT_DIAMOND = 1500)
-	build_path = /obj/item/vehicle_module/weapon/energy/medigun
+	build_path = /obj/item/vehicle_module/legacy/weapon/energy/medigun

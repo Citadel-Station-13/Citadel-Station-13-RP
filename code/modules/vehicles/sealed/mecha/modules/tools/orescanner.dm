@@ -1,4 +1,4 @@
-/obj/item/vehicle_module/tool/orescanner
+/obj/item/vehicle_module/legacy/tool/orescanner
 	name = "mounted ore scanner"
 	desc = "An exosuit-mounted ore scanner."
 	icon_state = "mecha_analyzer"
@@ -13,15 +13,15 @@
 	var/obj/item/mining_scanner/my_scanner = null
 	var/exact_scan = FALSE
 
-/obj/item/vehicle_module/tool/orescanner/Initialize(mapload)
+/obj/item/vehicle_module/legacy/tool/orescanner/Initialize(mapload)
 	my_scanner = new(src)
 	return ..()
 
-/obj/item/vehicle_module/tool/orescanner/Destroy()
+/obj/item/vehicle_module/legacy/tool/orescanner/Destroy()
 	QDEL_NULL(my_scanner)
 	return ..()
 
-/obj/item/vehicle_module/tool/orescanner/action(var/atom/target)
+/obj/item/vehicle_module/legacy/tool/orescanner/action(var/atom/target)
 	if(!action_checks(target) || get_dist(chassis, target) > 5)
 		return FALSE
 
@@ -35,7 +35,7 @@
 
 	QDEL_NULL(ScanBeam)
 
-/obj/item/vehicle_module/tool/orescanner/advanced
+/obj/item/vehicle_module/legacy/tool/orescanner/advanced
 	name = "advanced ore scanner"
 	icon_state = "mecha_analyzer_adv"
 	exact_scan = TRUE

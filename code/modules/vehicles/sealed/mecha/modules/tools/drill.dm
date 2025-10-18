@@ -1,4 +1,4 @@
-/obj/item/vehicle_module/tool/drill
+/obj/item/vehicle_module/legacy/tool/drill
 	name = "drill"
 	desc = "This is the drill that'll pierce the heavens!"
 	icon_state = "mecha_drill"
@@ -8,7 +8,7 @@
 	var/advanced = 0	//Determines if you can pierce the heavens or not. Used in diamond drill.
 	required_type = list(/obj/vehicle/sealed/mecha/working/ripley)
 
-/obj/item/vehicle_module/tool/drill/action(atom/target)
+/obj/item/vehicle_module/legacy/tool/drill/action(atom/target)
 	if(!action_checks(target))
 		return
 	set_ready_state(0)
@@ -41,7 +41,7 @@
 					var/turf/simulated/mineral/M1 = target
 					M1.GetDrilled()
 				log_message("Drilled through [target]")
-				if(locate(/obj/item/vehicle_module/tool/hydraulic_clamp) in chassis.equipment)
+				if(locate(/obj/item/vehicle_module/legacy/tool/hydraulic_clamp) in chassis.equipment)
 					var/obj/structure/ore_box/ore_box = locate(/obj/structure/ore_box) in chassis:cargo
 					if(ore_box)
 						for(var/obj/item/stack/ore/ore in range(chassis,1))
@@ -55,7 +55,7 @@
 				LEGACY_EX_ACT(target, 2, null)
 	return 1
 
-/obj/item/vehicle_module/tool/drill/proc/drill_mob(mob/living/target, mob/user)
+/obj/item/vehicle_module/legacy/tool/drill/proc/drill_mob(mob/living/target, mob/user)
 	add_attack_logs(user, target, "attacked", "[name]", "(INTENT: [uppertext(user.a_intent)]) (DAMTYPE: [uppertext(DAMAGE_TYPE_BRUTE)])")
 	var/drill_force = damage_force	//Couldn't manage it otherwise.
 	if(ishuman(target))
@@ -75,7 +75,7 @@
 			S.apply_damage(drill_force)
 			return
 
-/obj/item/vehicle_module/tool/drill/diamonddrill
+/obj/item/vehicle_module/legacy/tool/drill/diamonddrill
 	name = "diamond drill"
 	desc = "This is an upgraded version of the drill that'll pierce the heavens!"
 	icon_state = "mecha_diamond_drill"
@@ -84,7 +84,7 @@
 	damage_force = 15
 	advanced = 1
 
-/obj/item/vehicle_module/tool/drill/bore
+/obj/item/vehicle_module/legacy/tool/drill/bore
 	name = "depth bore"
 	desc = "This is the drill that'll pierce the depths!"
 	icon_state = "mecha_bore"
@@ -93,7 +93,7 @@
 	damage_force = 20
 	required_type = list(/obj/vehicle/sealed/mecha/working/ripley)
 
-/obj/item/vehicle_module/tool/drill/bore/action(atom/target)
+/obj/item/vehicle_module/legacy/tool/drill/bore/action(atom/target)
 	if(!action_checks(target))
 		return
 	set_ready_state(0)
@@ -119,7 +119,7 @@
 				else
 					M.GetDrilled()
 					log_message("Bored through [target]")
-				if(locate(/obj/item/vehicle_module/tool/hydraulic_clamp) in chassis.equipment)
+				if(locate(/obj/item/vehicle_module/legacy/tool/hydraulic_clamp) in chassis.equipment)
 					var/obj/structure/ore_box/ore_box = locate(/obj/structure/ore_box) in chassis:cargo
 					if(ore_box)
 						for(var/obj/item/stack/ore/ore in range(chassis,1))

@@ -76,10 +76,10 @@
 
 /obj/vehicle/sealed/mecha/combat/gygax/dark/equipped
 	modules = list(
-		/obj/item/vehicle_module/weapon/ballistic/scattershot,
-		/obj/item/vehicle_module/weapon/ballistic/missile_rack/grenade/clusterbang,
-		/obj/item/vehicle_module/tesla_energy_relay,
-		/obj/item/vehicle_module/teleporter,
+		/obj/item/vehicle_module/legacy/weapon/ballistic/scattershot,
+		/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/grenade/clusterbang,
+		/obj/item/vehicle_module/legacy/tesla_energy_relay,
+		/obj/item/vehicle_module/legacy/teleporter,
 	)
 
 //Meant for random spawns.

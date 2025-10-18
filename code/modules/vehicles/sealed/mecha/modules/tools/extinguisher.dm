@@ -1,4 +1,4 @@
-/obj/item/vehicle_module/tool/extinguisher
+/obj/item/vehicle_module/legacy/tool/extinguisher
 	name = "extinguisher"
 	desc = "Exosuit-mounted extinguisher (Can be attached to: Engineering exosuits)"
 	mech_flags = EXOSUIT_MODULE_WORKING | EXOSUIT_MODULE_COMBAT
@@ -12,13 +12,13 @@
 	var/spray_amount = 5
 	var/max_water = 1000
 
-/obj/item/vehicle_module/tool/extinguisher/Initialize(mapload)
+/obj/item/vehicle_module/legacy/tool/extinguisher/Initialize(mapload)
 	. = ..()
 	reagents = new/datum/reagent_holder(max_water)
 	reagents.my_atom = src
 	reagents.add_reagent("firefoam", max_water)
 
-/obj/item/vehicle_module/tool/extinguisher/action(atom/target) //copypasted from extinguisher. TODO: Rewrite from scratch.
+/obj/item/vehicle_module/legacy/tool/extinguisher/action(atom/target) //copypasted from extinguisher. TODO: Rewrite from scratch.
 	if(!action_checks(target) || get_dist(chassis, target)>3) return
 	if(get_dist(chassis, target)>2) return
 	set_ready_state(0)
@@ -64,8 +64,8 @@
 				W.set_up(my_target)
 		return TRUE
 
-/obj/item/vehicle_module/tool/extinguisher/get_equip_info()
+/obj/item/vehicle_module/legacy/tool/extinguisher/get_equip_info()
 	return "[..()] \[[src.reagents.total_volume]\]"
 
-/obj/item/vehicle_module/tool/extinguisher/on_reagent_change()
+/obj/item/vehicle_module/legacy/tool/extinguisher/on_reagent_change()
 	return

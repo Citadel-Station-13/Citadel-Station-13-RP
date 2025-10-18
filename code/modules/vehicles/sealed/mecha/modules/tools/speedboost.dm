@@ -1,4 +1,4 @@
-/obj/item/vehicle_module/speedboost
+/obj/item/vehicle_module/legacy/speedboost
 	name = "ripley leg actuator overdrive"
 	desc = "System enhancements and overdrives to make a ripley's legs move faster."
 	icon_state = "tesla"
@@ -9,13 +9,13 @@
 
 	var/slowdown_multiplier = 0.75	// How much does the exosuit multiply its slowdown by if it's the proper type?
 
-/obj/item/vehicle_module/speedboost/get_step_delay()
+/obj/item/vehicle_module/legacy/speedboost/get_step_delay()
 	if(enable_special)
 		return -1
 	else
 		return 3
 
-/obj/item/vehicle_module/speedboost/detach()
+/obj/item/vehicle_module/legacy/speedboost/detach()
 	chassis.step_in = initial(chassis.step_in)
 	..()
 	return

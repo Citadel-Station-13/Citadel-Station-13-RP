@@ -108,10 +108,10 @@
 
 /obj/vehicle/sealed/mecha/combat/marauder/equipped
 	modules = list(
-		/obj/item/vehicle_module/weapon/energy/pulse,
-		/obj/item/vehicle_module/weapon/ballistic/missile_rack/explosive,
-		/obj/item/vehicle_module/tesla_energy_relay,
-		/obj/item/vehicle_module//obj/item/vehicle_module/personal_shield/structural_field/hyperkinetic
+		/obj/item/vehicle_module/legacy/weapon/energy/pulse,
+		/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/explosive,
+		/obj/item/vehicle_module/legacy/tesla_energy_relay,
+		/obj/item/vehicle_module/legacy//obj/item/vehicle_module/personal_shield/structural_field/hyperkinetic
 		)
 
 /obj/vehicle/sealed/mecha/combat/marauder/seraph
@@ -130,11 +130,11 @@
 
 /obj/vehicle/sealed/mecha/combat/marauder/seraph/equipped
 	modules = list(
-		/obj/item/vehicle_module/weapon/ballistic/scattershot,
-		/obj/item/vehicle_module/weapon/ballistic/missile_rack/explosive,
-		/obj/item/vehicle_module/tesla_energy_relay,
-		/obj/item/vehicle_module//obj/item/vehicle_module/personal_shield/structural_field/hyperkinetic,
-		/obj/item/vehicle_module/teleporter,
+		/obj/item/vehicle_module/legacy/weapon/ballistic/scattershot,
+		/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/explosive,
+		/obj/item/vehicle_module/legacy/tesla_energy_relay,
+		/obj/item/vehicle_module/legacy//obj/item/vehicle_module/personal_shield/structural_field/hyperkinetic,
+		/obj/item/vehicle_module/legacy/teleporter,
 	)
 
 //Note that is the Mauler

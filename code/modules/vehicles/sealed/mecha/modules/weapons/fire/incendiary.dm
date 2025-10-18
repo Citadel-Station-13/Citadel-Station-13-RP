@@ -2,7 +2,7 @@
 //Fire-based//
 //////////////
 
-/obj/item/vehicle_module/weapon/ballistic/incendiary
+/obj/item/vehicle_module/legacy/weapon/ballistic/incendiary
 	name = "\improper DR-AC 3"
 	desc = "Dual-barrel rotary machinegun that fires small, incendiary rounds. Ages ten and up."
 	description_fluff = "A weapon designed by Hephaestus Industries, the DR-AC 3's design was plagued by prototype faults including but not limited to: Spontaneous combustion, spontaneous detonation, and excessive collateral conflagration."

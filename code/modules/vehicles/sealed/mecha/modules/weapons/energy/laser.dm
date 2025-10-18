@@ -1,4 +1,4 @@
-/obj/item/vehicle_module/weapon/energy/laser
+/obj/item/vehicle_module/legacy/weapon/energy/laser
 	equip_cooldown = 8
 	name = "\improper CH-PS \"Immolator\" laser"
 	desc = "A laser carbine's firing system mounted on a high-powered exosuit weapon socket."
@@ -9,7 +9,7 @@
 
 	origin_tech = list(TECH_MATERIAL = 2, TECH_COMBAT = 3, TECH_MAGNET = 3)
 
-/obj/item/vehicle_module/weapon/energy/laser/xray
+/obj/item/vehicle_module/legacy/weapon/energy/laser/xray
 	equip_cooldown = 6
 	name = "\improper CH-XS \"Penetrator\" laser"
 	desc = "A large, mounted variant of the anti-armor xray rifle."
@@ -20,7 +20,7 @@
 
 	origin_tech = list(TECH_MATERIAL = 3, TECH_COMBAT = 3, TECH_PHORON = 3, TECH_POWER = 3)
 
-/obj/item/vehicle_module/weapon/energy/laser/xray/rigged
+/obj/item/vehicle_module/legacy/weapon/energy/laser/xray/rigged
 	equip_cooldown = 12
 	name = "jury-rigged xray rifle"
 	desc = "A modified wormhole modulation array and meson-scanning control system allow this abomination to produce concentrated blasts of xrays."
@@ -29,7 +29,7 @@
 
 	equip_type = EQUIP_UTILITY
 
-/obj/item/vehicle_module/weapon/energy/riggedlaser
+/obj/item/vehicle_module/legacy/weapon/energy/riggedlaser
 	equip_cooldown = 15
 	name = "jury-rigged welder-laser"
 	desc = "While not regulation, this inefficient weapon can be attached to working exo-suits in desperate, or malicious, times."
@@ -43,7 +43,7 @@
 
 	origin_tech = list(TECH_MATERIAL = 2, TECH_COMBAT = 2, TECH_MAGNET = 2)
 
-/obj/item/vehicle_module/weapon/energy/laser/heavy
+/obj/item/vehicle_module/legacy/weapon/energy/laser/heavy
 	equip_cooldown = 15
 	name = "\improper CH-LC \"Solaris\" laser cannon"
 	desc = "In the Solaris, the lasing medium is enclosed in a tube lined with plutonium-239 and subjected to extreme neutron flux in a nuclear reactor core. This incredible technology may help YOU achieve high excitation rates with massive laser volumes!"
@@ -56,7 +56,7 @@
 
 	origin_tech = list(TECH_MATERIAL = 3, TECH_COMBAT = 4, TECH_MAGNET = 4)
 
-/obj/item/vehicle_module/weapon/energy/laser/heavy/rigged
+/obj/item/vehicle_module/legacy/weapon/energy/laser/heavy/rigged
 	equip_cooldown = 25
 	name = "jury-rigged emitter cannon"
 	desc = "While not regulation, this mining tool can be used as an inefficient weapon on working exo-suits in desperate, or malicious, times."

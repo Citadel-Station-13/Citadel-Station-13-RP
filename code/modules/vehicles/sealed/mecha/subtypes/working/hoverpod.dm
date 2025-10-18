@@ -121,9 +121,9 @@
 
 /obj/vehicle/sealed/mecha/working/hoverpod/combatpod/Initialize(mapload)
 	. = ..()
-	var/obj/item/vehicle_module/ME = new /obj/item/vehicle_module/weapon/energy/laser
+	var/obj/item/vehicle_module/legacy/ME = new /obj/item/vehicle_module/legacy/weapon/energy/laser
 	ME.attach(src)
-	ME = new /obj/item/vehicle_module/weapon/ballistic/missile_rack/explosive
+	ME = new /obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/explosive
 	ME.attach(src)
 
 
@@ -132,7 +132,7 @@
 
 /obj/vehicle/sealed/mecha/working/hoverpod/shuttlepod/Initialize(mapload)
 	. = ..()
-	var/obj/item/vehicle_module/ME = new /obj/item/vehicle_module/tool/passenger
+	var/obj/item/vehicle_module/legacy/ME = new /obj/item/vehicle_module/legacy/tool/passenger
 	ME.attach(src)
-	ME = new /obj/item/vehicle_module/tool/passenger
+	ME = new /obj/item/vehicle_module/legacy/tool/passenger
 	ME.attach(src)

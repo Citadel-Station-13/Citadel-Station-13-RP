@@ -38,7 +38,7 @@
 	max_heavy_weapon_equip = 1
 
 	modules_intrinsic = list(
-		/obj/item/vehicle_module/weapon/ballistic/cannon/hag_30,
+		/obj/item/vehicle_module/legacy/weapon/ballistic/cannon/hag_30,
 	)
 
 /obj/vehicle/sealed/mecha/combat/quasimodo/get_commands()

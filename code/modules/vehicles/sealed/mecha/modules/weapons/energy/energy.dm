@@ -1,3 +1,3 @@
-/obj/item/vehicle_module/weapon/energy
+/obj/item/vehicle_module/legacy/weapon/energy
 	name = "general energy weapon"
 	auto_rearm = 1

@@ -1,4 +1,4 @@
-/obj/item/vehicle_module/weapon/ballistic/scattershot
+/obj/item/vehicle_module/legacy/weapon/ballistic/scattershot
 	name = "\improper LBX AC 10 \"Scattershot\""
 	desc = "A massive shotgun designed to fill a large area with pellets."
 	icon_state = "mecha_scatter"
@@ -15,7 +15,7 @@
 
 	origin_tech = list(TECH_MATERIAL = 3, TECH_COMBAT = 4)
 
-/obj/item/vehicle_module/weapon/ballistic/scattershot/rigged
+/obj/item/vehicle_module/legacy/weapon/ballistic/scattershot/rigged
 	name = "jury-rigged shrapnel cannon"
 	desc = "The remains of some unfortunate RCD now doomed to kill, rather than construct."
 	icon_state = "mecha_scatter-rig"

@@ -83,7 +83,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/digsite)
 "B" = (
-/obj/item/vehicle_module/tool/drill/diamonddrill,
+/obj/item/vehicle_module/legacy/tool/drill/diamonddrill,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/digsite)
 "D" = (

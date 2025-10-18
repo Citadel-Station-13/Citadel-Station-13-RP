@@ -20,7 +20,7 @@
 
 /obj/vehicle/sealed/mecha/combat/fighter/allure/equipped
 	modules = list(
-		/obj/item/vehicle_module/cloak,
+		/obj/item/vehicle_module/legacy/cloak,
 	)
 
 /obj/vehicle/sealed/mecha/combat/fighter/allure/royalty
@@ -32,7 +32,7 @@
 
 /obj/vehicle/sealed/mecha/combat/fighter/allure/royalty/equipped
 	modules = list(
-		/obj/item/vehicle_module/cloak,
+		/obj/item/vehicle_module/legacy/cloak,
 	)
 
 /obj/effect/decal/mecha_wreckage/allure

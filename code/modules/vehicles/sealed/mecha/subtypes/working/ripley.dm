@@ -53,7 +53,7 @@
 
 /obj/vehicle/sealed/mecha/working/ripley/deathripley/Initialize(mapload)
 	. = ..()
-	var/obj/item/vehicle_module/ME = new /obj/item/vehicle_module/tool/hydraulic_clamp/safety
+	var/obj/item/vehicle_module/legacy/ME = new /obj/item/vehicle_module/legacy/tool/hydraulic_clamp/safety
 	ME.attach(src)
 	return
 
@@ -65,14 +65,14 @@
 	. = ..()
 	//Attach drill
 	if(prob(25)) //Possible diamond drill... Feeling lucky?
-		var/obj/item/vehicle_module/tool/drill/diamonddrill/D = new /obj/item/vehicle_module/tool/drill/diamonddrill
+		var/obj/item/vehicle_module/legacy/tool/drill/diamonddrill/D = new /obj/item/vehicle_module/legacy/tool/drill/diamonddrill
 		D.attach(src)
 	else
-		var/obj/item/vehicle_module/tool/drill/D = new /obj/item/vehicle_module/tool/drill
+		var/obj/item/vehicle_module/legacy/tool/drill/D = new /obj/item/vehicle_module/legacy/tool/drill
 		D.attach(src)
 
 	//Attach hydrolic clamp
-	var/obj/item/vehicle_module/tool/hydraulic_clamp/HC = new /obj/item/vehicle_module/tool/hydraulic_clamp
+	var/obj/item/vehicle_module/legacy/tool/hydraulic_clamp/HC = new /obj/item/vehicle_module/legacy/tool/hydraulic_clamp
 	HC.attach(src)
 	for(var/obj/item/vehicle_tracking_beacon/B in src.contents)//Deletes the beacon so it can't be found easily
 		qdel (B)

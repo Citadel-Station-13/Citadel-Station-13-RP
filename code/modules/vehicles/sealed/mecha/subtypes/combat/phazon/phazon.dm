@@ -37,8 +37,8 @@
 
 /obj/vehicle/sealed/mecha/combat/phazon/equipped
 	modules = list(
-		/obj/item/vehicle_module/tool/rcd,
-		/obj/item/vehicle_module/gravcatapult,
+		/obj/item/vehicle_module/legacy/tool/rcd,
+		/obj/item/vehicle_module/legacy/gravcatapult,
 	)
 
 /obj/vehicle/sealed/mecha/combat/phazon/get_commands()

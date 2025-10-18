@@ -4166,8 +4166,8 @@
 /area/ship/manta/engineering)
 "ve" = (
 /obj/structure/table/rack,
-/obj/item/vehicle_module//obj/item/vehicle_module/personal_shield/structural_field/concussive,
-/obj/item/vehicle_module/weapon/ballistic/mortar,
+/obj/item/vehicle_module/legacy//obj/item/vehicle_module/personal_shield/structural_field/concussive,
+/obj/item/vehicle_module/legacy/weapon/ballistic/mortar,
 /obj/effect/floor_decal/techfloor{
 	dir = 9
 	},
@@ -4195,9 +4195,9 @@
 /area/ship/manta/mech_bay)
 "vt" = (
 /obj/structure/table/rack,
-/obj/item/vehicle_module/weapon/ballistic/missile_rack/explosive,
-/obj/item/vehicle_module/omni_shield,
-/obj/item/vehicle_module/repair_droid,
+/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/explosive,
+/obj/item/vehicle_module/legacy/omni_shield,
+/obj/item/vehicle_module/legacy/repair_droid,
 /obj/effect/floor_decal/techfloor{
 	dir = 5
 	},
@@ -6604,8 +6604,8 @@
 /area/ship/manta/dock_port)
 "Hg" = (
 /obj/structure/table/rack,
-/obj/item/vehicle_module//obj/item/vehicle_module/personal_shield/structural_field/hyperkinetic,
-/obj/item/vehicle_module/weapon/ballistic/missile_rack/grenade/frag,
+/obj/item/vehicle_module/legacy//obj/item/vehicle_module/personal_shield/structural_field/hyperkinetic,
+/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/grenade/frag,
 /obj/effect/floor_decal/techfloor{
 	dir = 10
 	},
@@ -6616,7 +6616,7 @@
 /area/ship/manta/engine)
 "Hl" = (
 /obj/structure/table/rack,
-/obj/item/vehicle_module/weapon/energy/ion,
+/obj/item/vehicle_module/legacy/weapon/energy/ion,
 /obj/effect/floor_decal/techfloor,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/mech_bay)
@@ -6636,7 +6636,7 @@
 /area/ship/manta/barracks)
 "Hr" = (
 /obj/structure/table/rack,
-/obj/item/vehicle_module/shocker,
+/obj/item/vehicle_module/legacy/shocker,
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/power/apc/hyper/south_mount{
 	alarms_hidden = 1;
@@ -6663,8 +6663,8 @@
 /area/ship/manta/hallways_aft)
 "Hz" = (
 /obj/structure/table/rack,
-/obj/item/vehicle_module/tool/jetpack,
-/obj/item/vehicle_module/weapon/energy/laser/xray,
+/obj/item/vehicle_module/legacy/tool/jetpack,
+/obj/item/vehicle_module/legacy/weapon/energy/laser/xray,
 /obj/effect/floor_decal/techfloor{
 	dir = 6
 	},

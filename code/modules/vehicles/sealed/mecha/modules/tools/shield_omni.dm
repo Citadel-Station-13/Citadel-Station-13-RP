@@ -1,6 +1,6 @@
 #define OMNI_SHIELD_DRAIN 30
 
-/obj/item/vehicle_module/omni_shield
+/obj/item/vehicle_module/legacy/omni_shield
 	name = "omni shield"
 	desc = "A shield generator that forms an ennlosing, omnidirectional shield around the exosuit."
 	icon_state = "shield"
@@ -16,29 +16,29 @@
 
 	equip_type = EQUIP_HULL
 
-/obj/item/vehicle_module/omni_shield/critfail()
+/obj/item/vehicle_module/legacy/omni_shield/critfail()
 	..()
 	shields.adjust_health(-200)
 
-/obj/item/vehicle_module/omni_shield/Destroy()
+/obj/item/vehicle_module/legacy/omni_shield/Destroy()
 	QDEL_NULL(shields)
 	..()
 
-/obj/item/vehicle_module/omni_shield/attach(obj/vehicle/sealed/mecha/M as obj)
+/obj/item/vehicle_module/legacy/omni_shield/attach(obj/vehicle/sealed/mecha/M as obj)
 	. = ..()
 	if(chassis)
 		shields = new shield_type(chassis)
 
-/obj/item/vehicle_module/omni_shield/detach()
+/obj/item/vehicle_module/legacy/omni_shield/detach()
 	if(chassis)
 		QDEL_NULL(shields)
 	. = ..()
 
-/obj/item/vehicle_module/omni_shield/handle_movement_action()
+/obj/item/vehicle_module/legacy/omni_shield/handle_movement_action()
 	if(chassis && shields)
 		shields.update_shield_positions()
 
-/obj/item/vehicle_module/omni_shield/proc/toggle_shield()
+/obj/item/vehicle_module/legacy/omni_shield/proc/toggle_shield()
 	if(shields)
 		shields.set_on(!shields.active)
 		if(shields.active)
@@ -50,12 +50,12 @@
 			step_delay = initial(step_delay)
 			log_message("Deactivated.")
 
-/obj/item/vehicle_module/omni_shield/Topic(href, href_list)
+/obj/item/vehicle_module/legacy/omni_shield/Topic(href, href_list)
 	..()
 	if(href_list["toggle_omnishield"])
 		toggle_shield()
 
-/obj/item/vehicle_module/omni_shield/get_equip_info()
+/obj/item/vehicle_module/legacy/omni_shield/get_equip_info()
 	if(!chassis) return
 	return "<span style=\"color:[equip_ready?"#0f0":"#f00"];\">*</span>&nbsp;[src.name] - <a href='?src=\ref[src];toggle_omnishield=1'>[shields?.active?"Dea":"A"]ctivate</a>"
 

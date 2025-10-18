@@ -1204,15 +1204,15 @@
 
 /obj/random/multiple/mechtool/item_to_spawn()
 	return pick(
-				prob(12);list(/obj/item/vehicle_module/tool/drill),
-				prob(10);list(/obj/item/vehicle_module/tool/hydraulic_clamp),
-				prob(8);list(/obj/item/vehicle_module/generator),
-				prob(7);list(/obj/item/vehicle_module/weapon/ballistic/scattershot/rigged),
-				prob(6);list(/obj/item/vehicle_module/repair_droid),
-				prob(3);list(/obj/item/vehicle_module/gravcatapult),
-				prob(2);list(/obj/item/vehicle_module/weapon/energy/riggedlaser),
-				prob(2);list(/obj/item/vehicle_module/weapon/energy/flamer/rigged),
-				prob(1);list(/obj/item/vehicle_module/tool/drill/diamonddrill),
+				prob(12);list(/obj/item/vehicle_module/legacy/tool/drill),
+				prob(10);list(/obj/item/vehicle_module/legacy/tool/hydraulic_clamp),
+				prob(8);list(/obj/item/vehicle_module/legacy/generator),
+				prob(7);list(/obj/item/vehicle_module/legacy/weapon/ballistic/scattershot/rigged),
+				prob(6);list(/obj/item/vehicle_module/legacy/repair_droid),
+				prob(3);list(/obj/item/vehicle_module/legacy/gravcatapult),
+				prob(2);list(/obj/item/vehicle_module/legacy/weapon/energy/riggedlaser),
+				prob(2);list(/obj/item/vehicle_module/legacy/weapon/energy/flamer/rigged),
+				prob(1);list(/obj/item/vehicle_module/legacy/tool/drill/diamonddrill),
 				)
 
 //Random Bedsheet Spawner

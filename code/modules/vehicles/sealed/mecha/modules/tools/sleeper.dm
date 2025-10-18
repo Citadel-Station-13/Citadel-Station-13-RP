@@ -1,4 +1,4 @@
-/obj/item/vehicle_module/tool/sleeper
+/obj/item/vehicle_module/legacy/tool/sleeper
 	name = "mounted sleeper"
 	desc = "A sleeper. Mountable to an exosuit. (Can be attached to: Medical Exosuits)"
 	icon = 'icons/obj/medical/cryogenic2.dmi'
@@ -22,18 +22,18 @@
 	var/pumping = FALSE
 	var/dialysis_reagent_filter_flags = ~REAGENT_FILTER_NO_COMMON_BIOANALYSIS
 
-/obj/item/vehicle_module/tool/sleeper/Initialize(mapload)
+/obj/item/vehicle_module/legacy/tool/sleeper/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
-/obj/item/vehicle_module/tool/sleeper/Destroy()
+/obj/item/vehicle_module/legacy/tool/sleeper/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	// TODO: admin delete wrapper for mechs that drop mobs, we shouldn't be dropping shit on Destroy().
 	for(var/atom/movable/AM in src)
 		AM.forceMove(get_turf(src))
 	return ..()
 
-/obj/item/vehicle_module/tool/sleeper/action(var/mob/living/carbon/human/target)
+/obj/item/vehicle_module/legacy/tool/sleeper/action(var/mob/living/carbon/human/target)
 	if(!action_checks(target))
 		return
 	if(!istype(target))
@@ -65,7 +65,7 @@
 		chassis.visible_message("[chassis] loads [target] into [src].")
 		log_message("[target] loaded. Life support functions engaged.")
 
-/obj/item/vehicle_module/tool/sleeper/proc/go_out()
+/obj/item/vehicle_module/legacy/tool/sleeper/proc/go_out()
 	if(!occupant_legacy)
 		return
 	occupant_legacy.forceMove(get_turf(src))
@@ -76,13 +76,13 @@
 	occupant_legacy = null
 	set_ready_state(1)
 
-/obj/item/vehicle_module/tool/sleeper/detach()
+/obj/item/vehicle_module/legacy/tool/sleeper/detach()
 	if(occupant_legacy)
 		occupant_message("Unable to detach [src] - equipment occupied.")
 		return
 	return ..()
 
-/obj/item/vehicle_module/tool/sleeper/get_equip_info()
+/obj/item/vehicle_module/legacy/tool/sleeper/get_equip_info()
 	var/output = ..()
 	if(output)
 		var/temp = ""
@@ -91,7 +91,7 @@
 		return "[output] [temp]"
 	return
 
-/obj/item/vehicle_module/tool/sleeper/Topic(href,href_list)
+/obj/item/vehicle_module/legacy/tool/sleeper/Topic(href,href_list)
 	if(..())
 		return TRUE
 	if(href_list["view_stats"])
@@ -115,7 +115,7 @@
 
 	return TRUE
 
-/obj/item/vehicle_module/tool/sleeper/nano_ui_interact(var/mob/user, var/ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = outside_state)
+/obj/item/vehicle_module/legacy/tool/sleeper/nano_ui_interact(var/mob/user, var/ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = outside_state)
 	var/data[0]
 	if(chassis.cell.charge)
 		data["power"] = TRUE
@@ -123,7 +123,7 @@
 		data["power"] = FALSE
 	available_chemicals.Cut()
 	available_chemicals = base_chemicals.Copy()
-	var/obj/item/vehicle_module/tool/syringe_gun/SG = locate(/obj/item/vehicle_module/tool/syringe_gun) in chassis
+	var/obj/item/vehicle_module/legacy/tool/syringe_gun/SG = locate(/obj/item/vehicle_module/legacy/tool/syringe_gun) in chassis
 	if(SG)
 		available_chemicals += SG.known_reagents.Copy()
 		uniqueList_inplace(available_chemicals)
@@ -176,7 +176,7 @@
 		ui.open()
 		ui.set_auto_update(1)
 
-/obj/item/vehicle_module/tool/sleeper/proc/inject_chemical(chemical, amount)
+/obj/item/vehicle_module/legacy/tool/sleeper/proc/inject_chemical(chemical, amount)
 	if(occupant_legacy && occupant_legacy.reagents)
 		occupant_message("Injecting [occupant_legacy] with [amount] units of [chemical].")
 		log_message("Injecting [occupant_legacy] with [amount] units of [chemical].")
@@ -184,7 +184,7 @@
 		chassis.use_power(DYNAMIC_J_TO_CELL_UNITS(amount * CHEM_SYNTH_ENERGY))
 
 
-/obj/item/vehicle_module/tool/sleeper/verb/eject()
+/obj/item/vehicle_module/legacy/tool/sleeper/verb/eject()
 	set name = "Sleeper Eject"
 	set category = "Exosuit Interface"
 	set src = usr.loc
@@ -195,21 +195,21 @@
 		return
 	go_out()//and release him from the eternal prison.
 
-/obj/item/vehicle_module/tool/sleeper/proc/toggle_filter()
+/obj/item/vehicle_module/legacy/tool/sleeper/proc/toggle_filter()
 	if(!occupant_legacy)
 		filtering = 0
 		return
 	filtering = !filtering
 
-/obj/item/vehicle_module/tool/sleeper/proc/toggle_pump()
+/obj/item/vehicle_module/legacy/tool/sleeper/proc/toggle_pump()
 	if(!occupant_legacy)
 		pumping = 0
 		return
 	pumping = !pumping
 
 
-/obj/item/vehicle_module/tool/sleeper/process(delta_time)
-	var/obj/item/vehicle_module/tool/sleeper/S = src
+/obj/item/vehicle_module/legacy/tool/sleeper/process(delta_time)
+	var/obj/item/vehicle_module/legacy/tool/sleeper/S = src
 	if(!S.chassis)
 		S.set_ready_state(1)
 		return

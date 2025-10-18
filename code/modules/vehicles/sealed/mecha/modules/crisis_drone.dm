@@ -1,4 +1,4 @@
-/obj/item/vehicle_module/crisis_drone
+/obj/item/vehicle_module/legacy/crisis_drone
 	name = "crisis dronebay"
 	desc = "A small shoulder-mounted dronebay containing a rapid response drone capable of moderately stabilizing a patient near the exosuit."
 	icon_state = "mecha_dronebay"
@@ -34,25 +34,25 @@
 
 	equip_type = EQUIP_HULL
 
-/obj/item/vehicle_module/crisis_drone/Initialize(mapload)
+/obj/item/vehicle_module/legacy/crisis_drone/Initialize(mapload)
 	. = ..()
 	drone_overlay = new(src.icon, icon_state = droid_state)
 
-/obj/item/vehicle_module/crisis_drone/Destroy()
+/obj/item/vehicle_module/legacy/crisis_drone/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/vehicle_module/crisis_drone/attach(obj/vehicle/sealed/mecha/M as obj)
+/obj/item/vehicle_module/legacy/crisis_drone/attach(obj/vehicle/sealed/mecha/M as obj)
 	. = ..(M)
 	if(chassis)
 		START_PROCESSING(SSobj, src)
 
-/obj/item/vehicle_module/crisis_drone/detach(atom/moveto=null)
+/obj/item/vehicle_module/legacy/crisis_drone/detach(atom/moveto=null)
 	shut_down()
 	. = ..(moveto)
 	STOP_PROCESSING(SSobj, src)
 
-/obj/item/vehicle_module/crisis_drone/critfail()
+/obj/item/vehicle_module/legacy/crisis_drone/critfail()
 	. = ..()
 	STOP_PROCESSING(SSobj, src)
 	shut_down()
@@ -60,7 +60,7 @@
 		to_chat(chassis.occupant_legacy, "<span class='notice'>\The [chassis] shudders as something jams!</span>")
 		log_message("[src.name] has malfunctioned. Maintenance required.")
 
-/obj/item/vehicle_module/crisis_drone/process()	// Will continually try to find the nearest person above the threshold that is a valid target, and try to heal them.
+/obj/item/vehicle_module/legacy/crisis_drone/process()	// Will continually try to find the nearest person above the threshold that is a valid target, and try to heal them.
 	if(chassis && enabled && chassis.has_charge(energy_drain) && (chassis.occupant_legacy || enable_special))
 		var/mob/living/Targ = Target
 		var/TargDamage = 0
@@ -109,7 +109,7 @@
 	else
 		shut_down()
 
-/obj/item/vehicle_module/crisis_drone/proc/valid_target(var/mob/living/L)
+/obj/item/vehicle_module/legacy/crisis_drone/proc/valid_target(var/mob/living/L)
 	. = TRUE
 
 	if(!L || !istype(L))
@@ -146,7 +146,7 @@
 	if(tallydamage < damcap)
 		return FALSE
 
-/obj/item/vehicle_module/crisis_drone/proc/shut_down()
+/obj/item/vehicle_module/legacy/crisis_drone/proc/shut_down()
 	if(enabled)
 		chassis.visible_message("<span class='notice'>\The [chassis]'s [src] buzzes as its drone returns to port.</span>")
 		toggle_drone()
@@ -155,10 +155,10 @@
 	if(MyBeam)
 		QDEL_NULL(MyBeam)
 
-/obj/item/vehicle_module/crisis_drone/proc/unique_patient_checks(var/mob/living/L)	// Anything special for subtypes. Does it only work on Robots? Fleshies? A species?
+/obj/item/vehicle_module/legacy/crisis_drone/proc/unique_patient_checks(var/mob/living/L)	// Anything special for subtypes. Does it only work on Robots? Fleshies? A species?
 	. = TRUE
 
-/obj/item/vehicle_module/crisis_drone/proc/heal_target(var/mob/living/L)	// We've done all our special checks, just get to fixing damage.
+/obj/item/vehicle_module/legacy/crisis_drone/proc/heal_target(var/mob/living/L)	// We've done all our special checks, just get to fixing damage.
 	chassis.use_power(energy_drain)
 	if(istype(L))
 		L.adjustBruteLoss(brute_heal * -1)
@@ -177,7 +177,7 @@
 					if(prob(bone_heal))
 						E.status &= ~ORGAN_BROKEN
 
-/obj/item/vehicle_module/crisis_drone/proc/toggle_drone()
+/obj/item/vehicle_module/legacy/crisis_drone/proc/toggle_drone()
 	if(chassis)
 		enabled = !enabled
 		if(enabled)
@@ -187,23 +187,23 @@
 			set_ready_state(1)
 			log_message("Deactivated.")
 
-/obj/item/vehicle_module/crisis_drone/add_equip_overlay(obj/vehicle/sealed/mecha/M as obj)
+/obj/item/vehicle_module/legacy/crisis_drone/add_equip_overlay(obj/vehicle/sealed/mecha/M as obj)
 	..()
 	if(enabled)
 		M.add_overlay(drone_overlay)
 	return
 
-/obj/item/vehicle_module/crisis_drone/Topic(href, href_list)
+/obj/item/vehicle_module/legacy/crisis_drone/Topic(href, href_list)
 	..()
 	if(href_list["toggle_drone"])
 		toggle_drone()
 	return
 
-/obj/item/vehicle_module/crisis_drone/get_equip_info()
+/obj/item/vehicle_module/legacy/crisis_drone/get_equip_info()
 	if(!chassis) return
 	return "<span style=\"color:[equip_ready?"#0f0":"#f00"];\">*</span>&nbsp;[src.name] - <a href='?src=\ref[src];toggle_drone=1'>[enabled?"Dea":"A"]ctivate</a>"
 
-/obj/item/vehicle_module/crisis_drone/rad
+/obj/item/vehicle_module/legacy/crisis_drone/rad
 	name = "hazmat dronebay"
 	desc = "A small shoulder-mounted dronebay containing a rapid response drone capable of purging a patient near the exosuit of radiation damage."
 	icon_state = "mecha_dronebay_rad"

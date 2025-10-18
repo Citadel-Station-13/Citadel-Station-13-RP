@@ -335,7 +335,7 @@
 		if(module.holder) // Is it attached to a HARDSUIT?
 			return module.holder.cell
 	if(istype(loc, /obj/item/vehicle_module)) // In a mech.
-		var/obj/item/vehicle_module/ME = loc
+		var/obj/item/vehicle_module/legacy/ME = loc
 		if(ME.chassis) // Is the part attached to a mech?
 			return ME.chassis.cell
 	return null

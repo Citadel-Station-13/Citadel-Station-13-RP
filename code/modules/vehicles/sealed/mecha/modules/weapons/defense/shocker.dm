@@ -2,7 +2,7 @@
 //Defensive//
 //////////////
 
-/obj/item/vehicle_module/shocker
+/obj/item/vehicle_module/legacy/shocker
 	name = "exosuit electrifier"
 	desc = "A device to electrify the external portions of a mecha in order to increase its defensive capabilities."
 	icon_state = "mecha_coil"
@@ -16,19 +16,19 @@
 	equip_type = EQUIP_HULL
 
 /*
-/obj/item/vehicle_module/shocker/can_attach(obj/vehicle/sealed/mecha/M as obj)
+/obj/item/vehicle_module/legacy/shocker/can_attach(obj/vehicle/sealed/mecha/M as obj)
 	if(..())
 		if(!M.proc_res["dynattackby"] && !M.proc_res["dynattackhand"] && !M.proc_res["dynattackalien"])
 			return 1
 	return 0
 
-/obj/item/vehicle_module/shocker/attach(obj/vehicle/sealed/mecha/M as obj)
+/obj/item/vehicle_module/legacy/shocker/attach(obj/vehicle/sealed/mecha/M as obj)
 	..()
 	chassis.proc_res["dynattackby"] = src
 	return
 */
 
-/obj/item/vehicle_module/shocker/handle_melee_contact(var/obj/item/W, var/mob/living/user, var/inc_damage = null)
+/obj/item/vehicle_module/legacy/shocker/handle_melee_contact(var/obj/item/W, var/mob/living/user, var/inc_damage = null)
 	if(!action_checks(user) || !active)
 		return
 

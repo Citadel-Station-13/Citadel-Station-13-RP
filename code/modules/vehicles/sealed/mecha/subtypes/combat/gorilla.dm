@@ -36,11 +36,11 @@
 
 /obj/vehicle/sealed/mecha/combat/gorilla/equipped
 	modules = list(
-		/obj/item/vehicle_module/tesla_energy_relay,
-		/obj/item/vehicle_module/weapon/ballistic/cannon,
-		/obj/item/vehicle_module/weapon/ballistic/cannon/weak,
-		/obj/item/vehicle_module/weapon/ballistic/missile_rack/explosive,
-		/obj/item/vehicle_module/weapon/ballistic/lmg,
+		/obj/item/vehicle_module/legacy/tesla_energy_relay,
+		/obj/item/vehicle_module/legacy/weapon/ballistic/cannon,
+		/obj/item/vehicle_module/legacy/weapon/ballistic/cannon/weak,
+		/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/explosive,
+		/obj/item/vehicle_module/legacy/weapon/ballistic/lmg,
 	)
 
 /obj/vehicle/sealed/mecha/combat/gorilla/mechstep(direction)

@@ -56,10 +56,10 @@
 
 /obj/vehicle/sealed/mecha/combat/reticent/reticence/equipped
 	starting_equipment = list(
-		/obj/item/vehicle_module/weapon/whisperblade,
-		/obj/item/vehicle_module/weapon/infernoblade,
-		/obj/item/vehicle_module/omni_shield/reticence,
-		/obj/item/vehicle_module/cloak
+		/obj/item/vehicle_module/legacy/weapon/whisperblade,
+		/obj/item/vehicle_module/legacy/weapon/infernoblade,
+		/obj/item/vehicle_module/legacy/omni_shield/reticence,
+		/obj/item/vehicle_module/legacy/cloak
 		)
 
 /obj/vehicle/sealed/mecha/combat/reticent/reticence/add_cell(var/obj/item/cell/C=null)

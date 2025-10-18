@@ -2550,7 +2550,7 @@
 /area/piratebase/atmospherics)
 "xA" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/vehicle_module/weapon/ballistic/scattershot/rigged,
+/obj/item/vehicle_module/legacy/weapon/ballistic/scattershot/rigged,
 /turf/simulated/floor/reinforced,
 /area/piratebase/vault)
 "xE" = (
@@ -2831,7 +2831,7 @@
 /area/piratebase/construction)
 "zU" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/vehicle_module/weapon/energy/laser/xray/rigged,
+/obj/item/vehicle_module/legacy/weapon/energy/laser/xray/rigged,
 /turf/simulated/floor/reinforced,
 /area/piratebase/vault)
 "zV" = (
@@ -5090,7 +5090,7 @@
 /area/shuttle/pirate/bridge)
 "Ty" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/vehicle_module/weapon/ballistic/scattershot,
+/obj/item/vehicle_module/legacy/weapon/ballistic/scattershot,
 /turf/simulated/floor/reinforced,
 /area/piratebase/vault)
 "Tz" = (

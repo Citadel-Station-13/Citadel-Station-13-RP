@@ -1176,8 +1176,8 @@
 	dir = 4
 	},
 /obj/structure/railing,
-/obj/item/vehicle_module/weapon/energy/taser,
-/obj/item/vehicle_module/weapon/energy/phase,
+/obj/item/vehicle_module/legacy/weapon/energy/taser,
+/obj/item/vehicle_module/legacy/weapon/energy/phase,
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/fighterbaysec)
 "fL" = (
@@ -4255,7 +4255,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/item/vehicle_module/weapon/energy/laser/heavy,
+/obj/item/vehicle_module/legacy/weapon/energy/laser/heavy,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/security/strelka/armory2)
 "vG" = (
@@ -6732,8 +6732,8 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/item/vehicle_module/weapon/energy/taser,
-/obj/item/vehicle_module/weapon/energy/phase,
+/obj/item/vehicle_module/legacy/weapon/energy/taser,
+/obj/item/vehicle_module/legacy/weapon/energy/phase,
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/fighterbay)
 "Ir" = (
@@ -8061,8 +8061,8 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/item/vehicle_module/weapon/energy/taser,
-/obj/item/vehicle_module/weapon/energy/phase,
+/obj/item/vehicle_module/legacy/weapon/energy/taser,
+/obj/item/vehicle_module/legacy/weapon/energy/phase,
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/fighterbaysec)
 "Ps" = (
@@ -9023,8 +9023,8 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/item/vehicle_module/weapon/energy/taser,
-/obj/item/vehicle_module/weapon/energy/phase,
+/obj/item/vehicle_module/legacy/weapon/energy/taser,
+/obj/item/vehicle_module/legacy/weapon/energy/phase,
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/fighterbay)
 "Ul" = (

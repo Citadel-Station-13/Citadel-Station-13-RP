@@ -92,7 +92,7 @@
 	var/list/internals_req_access = list(ACCESS_ENGINEERING_MAIN,ACCESS_SCIENCE_ROBOTICS)
 
 	var/wreckage
-	var/obj/item/vehicle_module/selected
+	var/obj/item/vehicle_module/legacy/selected
 	var/max_equip = 2
 	var/datum/events/events
 
@@ -251,7 +251,7 @@
 		utility_equipment.Cut()
 		universal_equipment.Cut()
 		special_equipment.Cut()
-		for(var/obj/item/vehicle_module/mod as anything in modules)
+		for(var/obj/item/vehicle_module/legacy/mod as anything in modules)
 			if(!mod.salvageable)
 				continue
 			if(!prob(30))
@@ -294,7 +294,7 @@
 
 	if(starting_equipment && LAZYLEN(starting_equipment))
 		for(var/path in starting_equipment)
-			var/obj/item/vehicle_module/ME = new path(src)
+			var/obj/item/vehicle_module/legacy/ME = new path(src)
 			ME.attach(src)
 
 /obj/vehicle/sealed/mecha/drain_energy(datum/actor, amount, flags)
@@ -491,7 +491,7 @@
 	if(!equipment.len)
 		return
 
-	for(var/obj/item/vehicle_module/ME in equipment)
+	for(var/obj/item/vehicle_module/legacy/ME in equipment)
 		ME.MoveAction()
 
 /obj/vehicle/sealed/mecha/relaymove(mob/user,direction)
@@ -519,7 +519,7 @@
 	return domove(direction)
 
 /obj/vehicle/sealed/mecha/proc/can_ztravel()
-	for(var/obj/item/vehicle_module/tool/jetpack/jp in equipment)
+	for(var/obj/item/vehicle_module/legacy/tool/jetpack/jp in equipment)
 		return jp.equip_ready
 	return FALSE
 
@@ -530,7 +530,7 @@
 	var/tally = 0
 
 	if(LAZYLEN(equipment))
-		for(var/obj/item/vehicle_module/ME in equipment)
+		for(var/obj/item/vehicle_module/legacy/ME in equipment)
 			if(ME.get_step_delay())
 				tally += ME.get_step_delay()
 
@@ -556,9 +556,9 @@
 	if(strafing)
 		tally = round(tally * actuator.strafing_multiplier)
 
-	for(var/obj/item/vehicle_module/ME in equipment)
-		if(istype(ME, /obj/item/vehicle_module/speedboost))
-			var/obj/item/vehicle_module/speedboost/SB = ME
+	for(var/obj/item/vehicle_module/legacy/ME in equipment)
+		if(istype(ME, /obj/item/vehicle_module/legacy/speedboost))
+			var/obj/item/vehicle_module/legacy/speedboost/SB = ME
 			for(var/path in ME.required_type)
 				if(istype(src, path))
 					tally = round(tally * SB.slowdown_multiplier)
@@ -653,7 +653,7 @@
 	return 0
 
 /obj/vehicle/sealed/mecha/proc/handle_equipment_movement()
-	for(var/obj/item/vehicle_module/ME in equipment)
+	for(var/obj/item/vehicle_module/legacy/ME in equipment)
 		if(ME.chassis == src) //Sanity
 			ME.handle_movement_action()
 	return
@@ -743,7 +743,7 @@
 
 	if(prob(10))
 		if(ignore_threshold || src.integrity*100/initial(src.integrity) < src.internal_damage_threshold)
-			var/obj/item/vehicle_module/destr = SAFEPICK(equipment)
+			var/obj/item/vehicle_module/legacy/destr = SAFEPICK(equipment)
 			if(destr)
 				destr.destroy()
 	return
@@ -924,7 +924,7 @@
 
 
 
-			for(var/obj/item/vehicle_module/ME in equipment)
+			for(var/obj/item/vehicle_module/legacy/ME in equipment)
 				pass_damage = ME.handle_ranged_contact(A, pass_damage)
 
 			pass_damage = (pass_damage*pass_damage_reduc_mod)//Applying damage reduction
@@ -968,7 +968,7 @@
 
 		var/pass_damage = Proj.damage_force
 		var/pass_damage_reduc_mod
-		for(var/obj/item/vehicle_module/ME in equipment)
+		for(var/obj/item/vehicle_module/legacy/ME in equipment)
 			pass_damage = ME.handle_projectile_contact(Proj, pass_damage)
 
 		if(pass_damage < temp_damage_minimum)//too pathetic to really damage you.
@@ -1097,7 +1097,7 @@
 
 		var/pass_damage = W.damage_force
 		pass_damage = (pass_damage*pass_damage_reduc_mod)	//Apply the reduction of damage from not having enough armor penetration. This is not regular armor values at play.
-		for(var/obj/item/vehicle_module/ME in equipment)
+		for(var/obj/item/vehicle_module/legacy/ME in equipment)
 			pass_damage = ME.handle_projectile_contact(W, user, pass_damage)
 		src.take_damage_legacy(pass_damage, W.damage_type)	//The take_damage_legacy() proc handles armor values
 		if(pass_damage > internal_damage_minimum)	//Only decently painful attacks trigger a chance of mech damage.
@@ -1115,7 +1115,7 @@
 
 	#warn deal with
 	if(istype(W, /obj/item/vehicle_module))
-		var/obj/item/vehicle_module/E = W
+		var/obj/item/vehicle_module/legacy/E = W
 		if(E.can_attach(src))
 			if(!user.attempt_insert_item_for_installation(E, src))
 				return
@@ -1435,7 +1435,7 @@
 //returns an equipment object if we have one of that type, useful since is_type_in_list won't return the object
 //since is_type_in_list uses caching, this is a slower operation, so only use it if needed
 /obj/vehicle/sealed/mecha/proc/get_equipment(var/equip_type)
-	for(var/obj/item/vehicle_module/ME in equipment)
+	for(var/obj/item/vehicle_module/legacy/ME in equipment)
 		if(istype(ME,equip_type))
 			return ME
 	return null
@@ -1684,19 +1684,19 @@
 		output_text += {"<div class='wr'>
 						<div class='header'>Equipment</div>
 						<div class='links'>"}
-		for(var/obj/item/vehicle_module/W in hull_equipment)
+		for(var/obj/item/vehicle_module/legacy/W in hull_equipment)
 			output_text += "Hull Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
-		for(var/obj/item/vehicle_module/W in weapon_equipment)
+		for(var/obj/item/vehicle_module/legacy/W in weapon_equipment)
 			output_text += "Weapon Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
-		for(var/obj/item/vehicle_module/W in utility_equipment)
+		for(var/obj/item/vehicle_module/legacy/W in utility_equipment)
 			output_text += "Utility Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
-		for(var/obj/item/vehicle_module/W in universal_equipment)
+		for(var/obj/item/vehicle_module/legacy/W in universal_equipment)
 			output_text += "Universal Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
-		for(var/obj/item/vehicle_module/W in special_equipment)
+		for(var/obj/item/vehicle_module/legacy/W in special_equipment)
 			output_text += "Special Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
-		for(var/obj/item/vehicle_module/W in micro_utility_equipment)
+		for(var/obj/item/vehicle_module/legacy/W in micro_utility_equipment)
 			output_text += "Micro Utility Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
-		for(var/obj/item/vehicle_module/W in micro_weapon_equipment)
+		for(var/obj/item/vehicle_module/legacy/W in micro_weapon_equipment)
 			output_text += "Micro Weapon Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
 	output_text += {"<b>Available hull slots:</b> [max_hull_equip-hull_equipment.len]<br>
 	 <b>Available weapon slots:</b> [max_weapon_equip-weapon_equipment.len]<br>
@@ -1713,7 +1713,7 @@
 	if(!equipment.len)
 		return
 	var/output_text = "<b>Equipment:</b><div style=\"margin-left: 15px;\">"
-	for(var/obj/item/vehicle_module/MT in equipment)
+	for(var/obj/item/vehicle_module/legacy/MT in equipment)
 		output_text += "<div id='\ref[MT]'>[MT.get_equip_info()]</div>"
 	output_text += "</div>"
 	return output_text
@@ -1747,7 +1747,7 @@
 	if(!id_card || !user) return
 
 	var/maint_options = "<a href='?src=\ref[src];set_internal_tank_valve=1;user=\ref[user]'>Set Cabin Air Pressure</a>"
-	if (locate(/obj/item/vehicle_module/tool/passenger) in contents)
+	if (locate(/obj/item/vehicle_module/legacy/tool/passenger) in contents)
 		maint_options += "<a href='?src=\ref[src];remove_passenger=1;user=\ref[user]'>Remove Passenger</a>"
 
 	var/output_text = {"<html>
@@ -1794,7 +1794,7 @@
 	var/datum/topic_input/top_filter = new /datum/topic_input(href,href_list)
 	if(href_list["select_equip"])
 		if(usr != src.occupant_legacy)	return
-		var/obj/item/vehicle_module/equip = top_filter.getObj("select_equip")
+		var/obj/item/vehicle_module/legacy/equip = top_filter.getObj("select_equip")
 		if(equip)
 			src.selected = equip
 			src.occupant_message("You switch to [equip]")
@@ -1904,7 +1904,7 @@
 	if(href_list["remove_passenger"] && state >= MECHA_BOLTS_SECURED)
 		var/mob/user = top_filter.getMob("user")
 		var/list/passengers = list()
-		for (var/obj/item/vehicle_module/tool/passenger/P in contents)
+		for (var/obj/item/vehicle_module/legacy/tool/passenger/P in contents)
 			if (P.occupant_legacy)
 				passengers["[P.occupant_legacy]"] = P
 
@@ -1917,7 +1917,7 @@
 		if (!pname)
 			return
 
-		var/obj/item/vehicle_module/tool/passenger/P = passengers[pname]
+		var/obj/item/vehicle_module/legacy/tool/passenger/P = passengers[pname]
 		var/mob/occupant_legacy = P.occupant_legacy
 
 		user.visible_message("<span class='notice'>\The [user] begins opening the hatch on \the [P]...</span>", "<span class='notice'>You begin opening the hatch on \the [P]...</span>")

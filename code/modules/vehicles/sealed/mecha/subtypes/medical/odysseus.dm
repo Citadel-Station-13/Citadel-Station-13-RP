@@ -26,9 +26,9 @@
 
 /obj/vehicle/sealed/mecha/medical/odysseus/equipped
 	modules = list(
-		/obj/item/vehicle_module/tool/sleeper,
-		/obj/item/vehicle_module/tool/sleeper,
-		/obj/item/vehicle_module/tool/syringe_gun,
+		/obj/item/vehicle_module/legacy/tool/sleeper,
+		/obj/item/vehicle_module/legacy/tool/sleeper,
+		/obj/item/vehicle_module/legacy/tool/syringe_gun,
 	)
 
 //Meant for random spawns.

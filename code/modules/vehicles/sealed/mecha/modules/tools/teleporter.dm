@@ -1,4 +1,4 @@
-/obj/item/vehicle_module/teleporter
+/obj/item/vehicle_module/legacy/teleporter
 	name = "teleporter"
 	desc = "An exosuit module that allows exosuits to teleport to any position in view."
 	icon_state = "mecha_teleport"
@@ -9,7 +9,7 @@
 
 	equip_type = EQUIP_SPECIAL
 
-/obj/item/vehicle_module/teleporter/action(atom/target)
+/obj/item/vehicle_module/legacy/teleporter/action(atom/target)
 	if(!action_checks(target) || src.loc.z == 2) return
 	var/turf/T = get_turf(target)
 	if(T)

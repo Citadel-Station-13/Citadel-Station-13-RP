@@ -3,7 +3,7 @@
 /turf/template_noop,
 /area/template_noop)
 "b" = (
-/obj/item/vehicle_module/tesla_energy_relay,
+/obj/item/vehicle_module/legacy/tesla_energy_relay,
 /turf/template_noop,
 /area/template_noop)
 "c" = (
@@ -11,7 +11,7 @@
 /turf/template_noop,
 /area/template_noop)
 "d" = (
-/obj/item/vehicle_module/shocker,
+/obj/item/vehicle_module/legacy/shocker,
 /turf/template_noop,
 /area/template_noop)
 

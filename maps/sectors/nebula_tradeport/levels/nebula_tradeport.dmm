@@ -25485,14 +25485,14 @@
 /area/sector/nebula_tradeport/medical/public)
 "qGN" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/vehicle_module/tool/powertool,
-/obj/item/vehicle_module/tool/powertool/cutter,
-/obj/item/vehicle_module/tool/powertool/inflatables,
-/obj/item/vehicle_module/tool/powertool/prybar,
-/obj/item/vehicle_module/tool/powertool/screwdriver,
-/obj/item/vehicle_module/tool/powertool/welding,
+/obj/item/vehicle_module/legacy/tool/powertool,
+/obj/item/vehicle_module/legacy/tool/powertool/cutter,
+/obj/item/vehicle_module/legacy/tool/powertool/inflatables,
+/obj/item/vehicle_module/legacy/tool/powertool/prybar,
+/obj/item/vehicle_module/legacy/tool/powertool/screwdriver,
+/obj/item/vehicle_module/legacy/tool/powertool/welding,
 /obj/item/rcd/electric/mounted/mecha,
-/obj/item/vehicle_module/tool/jetpack,
+/obj/item/vehicle_module/legacy/tool/jetpack,
 /turf/simulated/floor/plating/outdoors,
 /area/shuttle/salvager)
 "qIM" = (

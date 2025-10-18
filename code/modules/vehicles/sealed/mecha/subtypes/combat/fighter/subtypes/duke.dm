@@ -25,8 +25,8 @@
 
 /obj/vehicle/sealed/mecha/combat/fighter/duke/equipped
 	modules = list(
-		/obj/item/vehicle_module/weapon/energy/laser,
-		/obj/item/vehicle_module/weapon/ballistic/missile_rack/explosive,
+		/obj/item/vehicle_module/legacy/weapon/energy/laser,
+		/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/explosive,
 	)
 
 /obj/vehicle/sealed/mecha/combat/fighter/duke/deep_blue
@@ -38,8 +38,8 @@
 
 /obj/vehicle/sealed/mecha/combat/fighter/duke/deep_blue/equipped
 	modules = list(
-		/obj/item/vehicle_module/weapon/energy/laser,
-		/obj/item/vehicle_module/weapon/ballistic/missile_rack/explosive,
+		/obj/item/vehicle_module/legacy/weapon/energy/laser,
+		/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/explosive,
 	)
 
 /obj/vehicle/sealed/mecha/combat/fighter/duke/clockwork
@@ -51,8 +51,8 @@
 
 /obj/vehicle/sealed/mecha/combat/fighter/duke/clockwork/equipped
 	modules = list(
-		/obj/item/vehicle_module/weapon/energy/laser,
-		/obj/item/vehicle_module/weapon/ballistic/missile_rack/explosive,
+		/obj/item/vehicle_module/legacy/weapon/energy/laser,
+		/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/explosive,
 	)
 
 /obj/effect/decal/mecha_wreckage/duke

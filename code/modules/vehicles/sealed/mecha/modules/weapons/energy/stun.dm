@@ -1,4 +1,4 @@
-/obj/item/vehicle_module/weapon/energy/taser
+/obj/item/vehicle_module/legacy/weapon/energy/taser
 	name = "\improper PBT \"Pacifier\" mounted taser"
 	desc = "A large taser of similar design as those used in standard NT turrets, for use on an Exosuit."
 	icon_state = "mecha_taser"
@@ -7,7 +7,7 @@
 	projectile = /obj/projectile/beam/stun
 	fire_sound = 'sound/weapons/Taser.ogg'
 
-/obj/item/vehicle_module/weapon/energy/taser/rigged
+/obj/item/vehicle_module/legacy/weapon/energy/taser/rigged
 	name = "jury-rigged static rifle"
 	desc = "A vaguely functional taser analog, inside an extinguisher casing."
 	icon_state = "mecha_taser-rig"

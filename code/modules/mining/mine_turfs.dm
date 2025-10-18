@@ -305,7 +305,7 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 
 	else if(istype(AM,/obj/vehicle/sealed/mecha))
 		var/obj/vehicle/sealed/mecha/M = AM
-		if(istype(M.selected,/obj/item/vehicle_module/tool/drill))
+		if(istype(M.selected,/obj/item/vehicle_module/legacy/tool/drill))
 			M.selected.action(src)
 
 /turf/simulated/mineral/proc/MineralSpread()

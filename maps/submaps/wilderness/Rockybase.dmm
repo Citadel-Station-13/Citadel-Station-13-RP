@@ -806,8 +806,8 @@
 /area/submap/Rockybase)
 "cP" = (
 /obj/structure/table/standard,
-/obj/item/vehicle_module/repair_droid,
-/obj/item/vehicle_module/weapon/ballistic/missile_rack/explosive,
+/obj/item/vehicle_module/legacy/repair_droid,
+/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/explosive,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "cQ" = (
