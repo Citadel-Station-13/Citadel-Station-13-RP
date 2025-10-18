@@ -909,7 +909,7 @@
 	req_tech = list(TECH_ENGINEERING = 3, TECH_MATERIAL = 2)
 	lathe_type = LATHE_TYPE_MECHFAB
 	materials_base = list(MAT_STEEL = 5000 * (1 / 3), MAT_GLASS = 2500 * (1 / 3))
-	build_path = /obj/item/vehicle_component/actuator
+	build_path = /obj/item/vehicle_component/mecha_actuator
 	category = "Components"
 
 /datum/prototype/design/science/mecha_component/actuator_high
@@ -917,7 +917,7 @@
 	id = "mactuatorhigh"
 	req_tech = list(TECH_ENGINEERING = 5, TECH_MATERIAL = 6)
 	materials_base = list(MAT_STEEL = 7000 * (1 / 3), MAT_GLASS = 4000 * (1 / 3), MAT_GOLD = 10000 * (1 / 3))
-	build_path = /obj/item/vehicle_component/actuator/hispeed
+	build_path = /obj/item/vehicle_component/mecha_actuator/hispeed
 
 /datum/prototype/design/science/mecha_component/armor
 	design_name = "Mecha Plating"
@@ -952,14 +952,14 @@
 	id = "melectrical"
 	req_tech = list(TECH_ENGINEERING = 3, TECH_POWER = 3)
 	materials_base = list(MAT_STEEL = 5000 * (1 / 3), MAT_GLASS = 2000 * (1 / 3), MAT_PLASTIC = 1000 * (1 / 3))
-	build_path = /obj/item/vehicle_component/electrical
+	build_path = /obj/item/vehicle_component/mecha_electrical
 
 /datum/prototype/design/science/mecha_component/electrical/high_current
 	design_name = "Mecha Electrical Harness - High Current"
 	id = "melectricalhigh"
 	req_tech = list(TECH_ENGINEERING = 5, TECH_POWER = 5, TECH_MATERIAL = 4)
 	materials_base = list(MAT_STEEL = 3000 * (1 / 3), MAT_GLASS = 4000 * (1 / 3), MAT_PLASTIC = 5000 * (1 / 3), MAT_GOLD = 5000 * (1 / 3))
-	build_path = /obj/item/vehicle_component/electrical/high_current
+	build_path = /obj/item/vehicle_component/mecha_electrical/high_current
 
 /datum/prototype/design/science/mecha_component/hull
 	design_name = "Mecha Hull"
@@ -987,14 +987,14 @@
 	id = "mgas"
 	req_tech = list(TECH_ENGINEERING = 3, TECH_MATERIAL = 2, TECH_BIO = 3)
 	materials_base = list(MAT_STEEL = 2000 * (1 / 3), MAT_GLASS = 3000 * (1 / 3))
-	build_path = /obj/item/vehicle_component/gas
+	build_path = /obj/item/vehicle_component/mecha_gas
 
 /datum/prototype/design/science/mecha_component/gas/reinforced
 	design_name = "Mecha Life-Support - Reinforced"
 	id = "mgasreinf"
 	req_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 3, TECH_BIO = 5)
 	materials_base = list(MAT_STEEL = 5000 * (1 / 3), MAT_GLASS = 3000 * (1 / 3), MAT_SILVER = 4000 * (1 / 3))
-	build_path = /obj/item/vehicle_component/gas/reinforced
+	build_path = /obj/item/vehicle_component/mecha_gas/reinforced
 
 /*
  * Non-Mech Vehicles

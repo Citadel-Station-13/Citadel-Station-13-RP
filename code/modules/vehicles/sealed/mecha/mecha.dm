@@ -39,7 +39,7 @@
 	//* Components *//
 	/// our actuator component
 	/// * set to typepath to start with
-	var/obj/item/vehicle_component/actuator/comp_actuator = /obj/item/vehicle_component/actuator
+	var/obj/item/vehicle_component/mecha_actuator/comp_actuator = /obj/item/vehicle_component/mecha_actuator
 	/// our armor component
 	/// * set to typepath to start with
 	var/obj/item/vehicle_component/plating/armor/comp_armor = /obj/item/vehicle_component/plating/armor
@@ -49,10 +49,10 @@
 	var/comp_armor_relative_thickness = 1
 	/// our electrical component
 	/// * set to typepath to start with
-	var/obj/item/vehicle_component/electrical/comp_electrical = /obj/item/vehicle_component/electrical
+	var/obj/item/vehicle_component/mecha_electrical/comp_electrical = /obj/item/vehicle_component/mecha_electrical
 	/// our gas component
 	/// * set to typepath to start with
-	var/obj/item/vehicle_component/gas/comp_gas = /obj/item/vehicle_component/gas
+	var/obj/item/vehicle_component/mecha_gas/comp_gas = /obj/item/vehicle_component/mecha_gas
 	/// our hull component
 	/// * set to typepath to start with
 	var/obj/item/vehicle_component/plating/hull/comp_hull = /obj/item/vehicle_component/plating/hull

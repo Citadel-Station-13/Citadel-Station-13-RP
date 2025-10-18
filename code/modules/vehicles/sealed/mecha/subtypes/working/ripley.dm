@@ -3,7 +3,7 @@
 	name = "APLU \"Ripley\""
 	icon_state = "ripley"
 	initial_icon = "ripley"
-	step_in = 5
+	base_movement_speed = 2.75
 	step_energy_drain = 5
 	max_temperature = 20000
 	integrity = 200
@@ -13,16 +13,10 @@
 	var/obj/item/mining_scanner/orescanner
 
 	minimum_penetration = 10
-
 	encumbrance_gap = 2
 
-	starting_components = list(
-		/obj/item/vehicle_component/plating/hull/durable,
-		/obj/item/vehicle_component/actuator,
-		/obj/item/vehicle_component/plating/armor/mining,
-		/obj/item/vehicle_component/gas,
-		/obj/item/vehicle_component/electrical
-		)
+	comp_hull = /obj/item/vehicle_component/plating/hull/durable
+	comp_armor = /obj/item/vehicle_component/plating/armor/mining
 
 	icon_scale_x = 1.2
 	icon_scale_y = 1.2
@@ -46,7 +40,7 @@
 	name = "DEATH-RIPLEY"
 	icon_state = "deathripley"
 	initial_icon = "deathripley"
-	step_in = 2
+	base_movement_speed = 4.5
 	opacity=0
 	lights_power = 60
 	wreckage = /obj/effect/decal/mecha_wreckage/ripley/deathripley

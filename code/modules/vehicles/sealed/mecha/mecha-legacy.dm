@@ -654,7 +654,7 @@
 		if(C && C.get_step_delay())
 			tally += C.get_step_delay()
 
-	var/obj/item/vehicle_component/actuator/actuator = internal_components[MECH_ACTUATOR]
+	var/obj/item/vehicle_component/mecha_actuator/actuator = internal_components[MECH_ACTUATOR]
 
 	if(!actuator)	// Relying purely on hydraulic pumps. You're going nowhere fast.
 		tally = 2 SECONDS
@@ -1483,7 +1483,7 @@
 
 /obj/vehicle/sealed/mecha/return_air()
 	RETURN_TYPE(/datum/gas_mixture)
-	var/obj/item/vehicle_component/gas/GC = internal_components[MECH_GAS]
+	var/obj/item/vehicle_component/mecha_gas/GC = internal_components[MECH_GAS]
 	if(use_internal_tank && GC && prob(GC.get_efficiency() * 100))
 		return cabin_air
 	return loc?.return_air()
@@ -1542,7 +1542,7 @@
 	if(usr != occupant_legacy)
 		return
 
-	var/obj/item/vehicle_component/gas/GC = internal_components[MECH_GAS]
+	var/obj/item/vehicle_component/mecha_gas/GC = internal_components[MECH_GAS]
 	if(!GC)
 		return
 
@@ -1609,7 +1609,7 @@
 	if(usr!=src.occupant_legacy)
 		return
 
-	var/obj/item/vehicle_component/gas/GC = internal_components[MECH_GAS]
+	var/obj/item/vehicle_component/mecha_gas/GC = internal_components[MECH_GAS]
 	if(!GC)
 		to_chat(occupant_legacy, "<span class='warning'>The life support systems don't seem to respond.</span>")
 		return
@@ -2303,7 +2303,7 @@
 
 /obj/vehicle/sealed/mecha/proc/dynusepower(amount)
 	update_cell_alerts()
-	var/obj/item/vehicle_component/electrical/EC = internal_components[MECH_ELECTRIC]
+	var/obj/item/vehicle_component/mecha_electrical/EC = internal_components[MECH_ELECTRIC]
 
 	if(EC)
 		amount = amount * (2 - EC.get_efficiency()) * EC.charge_cost_mod
@@ -2317,7 +2317,7 @@
 
 /obj/vehicle/sealed/mecha/proc/give_power(amount)
 	update_cell_alerts()
-	var/obj/item/vehicle_component/electrical/EC = internal_components[MECH_ELECTRIC]
+	var/obj/item/vehicle_component/mecha_electrical/EC = internal_components[MECH_ELECTRIC]
 
 	if(!EC)
 		amount /= 4

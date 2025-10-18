@@ -1,6 +1,4 @@
-
-// TODO: repath to /vehicle_component/mecha/electrical
-/obj/item/vehicle_component/electrical
+/obj/item/vehicle_component/mecha_electrical
 	name = "mecha electrical harness"
 	icon = 'icons/mecha/mech_component.dmi'
 	icon_state = "board"
@@ -23,7 +21,7 @@
 
 	var/charge_cost_mod = 1
 
-/obj/item/vehicle_component/electrical/high_current
+/obj/item/vehicle_component/mecha_electrical/high_current
 	name = "efficient mecha electrical harness"
 
 	emp_resistance = 0
