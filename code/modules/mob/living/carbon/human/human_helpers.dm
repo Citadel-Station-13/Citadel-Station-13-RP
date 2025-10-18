@@ -117,6 +117,8 @@
 
 	if(fast_is_species_type(src, /datum/species/shapeshifter/holosphere))
 		return TRUE
+	if(fast_is_species_type(src, /datum/species/protean))
+		return TRUE
 
 	return FALSE
 

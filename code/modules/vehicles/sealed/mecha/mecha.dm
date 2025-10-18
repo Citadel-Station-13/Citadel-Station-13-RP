@@ -153,11 +153,13 @@
 	var/list/utility_equipment = new
 	var/list/universal_equipment = new
 	var/list/special_equipment = new
+	var/list/heavy_weapon_equipment = new
 	var/max_hull_equip = 2
 	var/max_weapon_equip = 2
 	var/max_utility_equip = 2
 	var/max_universal_equip = 2
 	var/max_special_equip = 1
+	var/max_heavy_weapon_equip = 0 //Should only be used for 3x3 mechs.
 
 	/// List containing starting tools.
 	var/list/starting_equipment = null

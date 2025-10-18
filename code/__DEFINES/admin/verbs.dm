@@ -4,7 +4,7 @@
 /**
  * Declares an admin verb.
  *
- * * Verbs declared in this way will have the caller as `client/caller`. Do not define your
+ * * Verbs declared in this way will have the calling client as `client/invoker`. Do not define your
  *   own client / usr calls.
  * * You may safely assume that the verb is only accessible by them if they have the right permissions.
  * * Set `CATEGORY` to null to not have it show up in verb panel.
@@ -15,7 +15,7 @@
 /**
  * Declares an admin verb that does not show up in the popup menu.
  *
- * * Verbs declared in this way will have the caller as `client/caller`. Do not define your
+ * * Verbs declared in this way will have the calling client as `client/invoker`. Do not define your
  *   own client / usr calls.
  * * You may safely assume that the verb is only accessible by them if they have the right permissions.
  * * Set `CATEGORY` to null to not have it show up in verb panel.
@@ -44,11 +44,12 @@
 	}; \
 	do { \
 		metric_increment_nested_numerical(/datum/metric/nested_numerical/admin_verb_invocation, #PATH_SUFFIX, 1); \
+		log_admin("[key_name(usr)] invoked admin verb '[#PATH_SUFFIX]'"); \
 	}; \
 	while(FALSE); \
 	call(usr.client, /datum/admin_verb_abstraction::verb__invoke_##PATH_SUFFIX())(arglist(list(usr.client) + args)); \
 }; \
-/datum/admin_verb_abstraction/proc/verb__invoke_##PATH_SUFFIX(client/caller, ##HEADER)
+/datum/admin_verb_abstraction/proc/verb__invoke_##PATH_SUFFIX(client/invoking, ##HEADER)
 
 /**
  * Abstract datum with no variables. Used to hold the proc definitions for admin verbs.

@@ -3,7 +3,7 @@
 	icon_state = "mechfab"
 	base_icon_state = "mechfab"
 	name = "Exosuit Fabricator"
-	desc = "A machine used for construction of mechas."
+	desc = "A machine used for construction of mechas.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	density = TRUE
 	anchored = TRUE
 	use_power = USE_POWER_IDLE

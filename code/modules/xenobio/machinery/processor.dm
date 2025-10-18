@@ -3,7 +3,7 @@
 
 /obj/machinery/processor
 	name = "slime processor"
-	desc = "An industrial grinder used to automate the process of slime core extraction.  It can also recycle biomatter."
+	desc = "An industrial grinder used to automate the process of slime core extraction.  It can also recycle biomatter.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "processor"
 	base_icon_state = "processor"
