@@ -2,8 +2,15 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /obj/item/vehicle_module
+	//* Core *//
 	/// currently active chassis
 	var/obj/vehicle/vehicle
+
+	//* UI *//
+	/// UI component key when being rendered
+	/// * Must route to a valid component in vehicle UI routing. Check TGUI folder for more info.
+	#warn impl
+	var/ui_component
 
 //* Chassis - Physicality *//
 
@@ -15,6 +22,64 @@
  */
 /obj/item/vehicle_module/proc/sufficiently_adjacent(atom/entity)
 	return chassis?.sufficiently_adjacent(entity)
+
+#warn this
+/obj/item/vehicle_module/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	. = ..()
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
+	return receive_using_item_on(using, clickchain, clickchain_flags)
+
+//* Interactions *//
+
+#warn this
+/**
+ * Called to handle item attack chain (using_item_on) on our chassis (whether that's a vehicle or something else)
+ * or a normal item attack chain
+ *
+ * @params
+ * * using - the item
+ * * clickchain - clickchain data
+ * * clickchain_flags - clickchain flags
+ * * from_mounted_on - the thing actually receiving the click. null if it's from our own using_item_on.
+ *
+ * @return CLICKCHAIN_* flags
+ */
+/obj/item/vehicle_module/proc/receive_using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags, atom/movable/from_mounted_on)
+	SHOULD_NOT_SLEEP(TRUE)
+	return clickchain_flags
+	#warn hook on chassis
+
+//* Usage - World *//
+
+#warn this
+/**
+ * Called when being used by a pilot on the world.
+ * * This is a very complex binding because we are not necessarily mounted or used by a vehicle
+ *   when this happens.
+ * * We can, however, expect that we are properly item-mounted; use abstraction procs as needed
+ *   for power-draw and whatnot.
+ *
+ * @params
+ * * mounted_on - what to treat as the root object. this is a mob if it's mounted on a rigsuit, ourselves
+ *                if we're not ontop of anything, a vehicle if we're on a vehicle, etc. This should only be
+ *                used for adjacency checks in general; avoid using typecasts or directly accessing this.
+ * * clickchain - data of the click.
+ *
+ * @return CLICKCHAIN_* flags
+ */
+/obj/item/vehicle_module/proc/module_attack_chain(atom/movable/mounted_on, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	return clickchain_flags
+
+//* UI *//
+
+/obj/item/vehicle_module/proc/vehicle_ui_component_route()
+
+/obj/item/vehicle_module/proc/vehicle_ui_component_data()
+
+/obj/item/vehicle_module/proc/vehicle_ui_component_push(list/data)
+
+/obj/item/vehicle_module/proc/vehicle_ui_component_act(action, list/params, datum/event_args/actor/actor)
 
 /**
  * Supertype of shieldcalls that handle vehicle hits. Just subtype one

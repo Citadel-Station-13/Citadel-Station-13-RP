@@ -7,6 +7,9 @@
 
 	integrity = /obj/vehicle/sealed/mecha/combat/fighter::integrity * 1.5
 	integrity_max = /obj/vehicle/sealed/mecha/combat/fighter::integrity_max * 1.5
+	comp_armor_relative_thickness = 1.33 * /obj/vehicle/sealed/mecha/combat/fighter::comp_armor_relative_thickness
+	comp_hull_relative_thickness = 1.33 * /obj/vehicle/sealed/mecha/combat/fighter::comp_hull_relative_thickness
+
 
 	catalogue_data = list(/datum/category_item/catalogue/technology/baron)
 	wreckage = /obj/effect/decal/mecha_wreckage/baron
