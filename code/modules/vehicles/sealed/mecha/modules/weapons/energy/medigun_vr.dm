@@ -7,5 +7,5 @@
 	energy_drain = 1000
 	projectile = /obj/projectile/beam/medigun
 	fire_sound = 'sound/weapons/eluger.ogg'
-	equip_type = EQUIP_UTILITY
+	module_slot = VEHICLE_MODULE_SLOT_UTILITY
 	origin_tech = list(TECH_MATERIAL = 5, TECH_COMBAT = 5, TECH_BIO = 6, TECH_POWER = 6)

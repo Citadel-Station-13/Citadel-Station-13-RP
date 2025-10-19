@@ -19,16 +19,18 @@
 	damage_minimum = 15			//Big stompy
 	minimum_penetration = 25
 
-	max_hull_equip = 2
-	max_weapon_equip = 1
-	max_utility_equip = 2
-	max_universal_equip = 1
-	max_special_equip = 1
+	module_slots = list(
+		VEHICLE_MODULE_SLOT_WEAPON = 2,
+		VEHICLE_MODULE_SLOT_HULL = 3,
+		VEHICLE_MODULE_SLOT_SPECIAL = 1,
+		VEHICLE_MODULE_SLOT_UTILITY = 4,
+		VEHICLE_MODULE_SLOT_UNIVERSAL = 3,
+	)
 
 	comp_hull = /obj/item/vehicle_component/plating/hull/durable
 	comp_armor = /obj/item/vehicle_component/plating/armor/military
 	modules_intrinsic = list(
-		/obj/item/vehicle_module/personal_shield/at_field/durand,
+		/obj/item/vehicle_module/personal_shield/deflector/durand,
 	)
 
 	icon_scale_x = 1.5

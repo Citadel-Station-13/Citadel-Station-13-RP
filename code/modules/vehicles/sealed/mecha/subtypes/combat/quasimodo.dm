@@ -12,30 +12,30 @@
 	bound_x = 0
 	bound_y = 0
 
+	integrity = 9 * /obj/vehicle/sealed/mecha/combat::integrity
+	integrity_max = 9 * /obj/vehicle/sealed/mecha/combat::integrity_max
+
 	base_movement_speed = 1.5
+
+	comp_hull_relative_thickness = 5 * /obj/vehicle/sealed/mecha/combat::comp_hull_relative_thickness
 	comp_hull = /obj/item/vehicle_component/plating/hull/heavy_duty
+	comp_armor_relative_thickness = 5 * /obj/vehicle/sealed/mecha/combat::comp_armor_relative_thickness
 	comp_armor = /obj/item/vehicle_component/plating/armor/heavy_duty
 
-	integrity = 4500 //Designed to take a lot of hits, but not able to be repaired in combat.
-	integrity_max = 4500
-	fail_penetration_value = 0.40
-	deflect_chance = 50
-	damage_absorption = list("brute"=0.9,"fire"=0.3,"bullet"=0.9,"laser"=0.9,"energy"=0.7,"bomb"=0.4) //It's real absorption will come from it's armor + it can take that damage.
-	max_temperature = 50000 //Big ass mech can take a lot of heat.
+	module_slots = list(
+		VEHICLE_MODULE_SLOT_HULL = 2,
+		VEHICLE_MODULE_SLOT_WEAPON = 2,
+		VEHICLE_MODULE_SLOT_UNIVERSAL = 3,
+		VEHICLE_MODULE_SLOT_UTILITY = 3,
+		VEHICLE_MODULE_SLOT_SPECIAL = 0,
+	)
+
 	infra_luminosity = 3
 	lights_power = 12 //Big mechs would have large floodlights.
 	wreckage = /obj/effect/decal/mecha_wreckage/quasimodo
 	add_req_access = 0
 	internal_damage_threshold = 25
-	force = 100 //Are you really gonna walk up to the giant, slow moving mech and let yourself get punched by it?
 	zoom_possible = 1
-	max_equip = 5
-	max_hull_equip = 0
-	max_weapon_equip = 2
-	max_utility_equip = 1
-	max_universal_equip = 0
-	max_special_equip = 1
-	max_heavy_weapon_equip = 1
 
 	modules_intrinsic = list(
 		/obj/item/vehicle_module/legacy/weapon/ballistic/cannon/hag_30,

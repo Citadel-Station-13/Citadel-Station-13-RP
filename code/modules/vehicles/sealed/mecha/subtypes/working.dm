@@ -1,10 +1,13 @@
 /obj/vehicle/sealed/mecha/working
 	internal_damage_threshold = 60
-	max_hull_equip = 1
-	max_weapon_equip = 0
-	max_utility_equip = 3
-	max_universal_equip = 1
-	max_special_equip = 1
+
+	module_slots = list(
+		VEHICLE_MODULE_SLOT_WEAPON = 0,
+		VEHICLE_MODULE_SLOT_HULL = 2,
+		VEHICLE_MODULE_SLOT_SPECIAL = 1,
+		VEHICLE_MODULE_SLOT_UTILITY = 4,
+		VEHICLE_MODULE_SLOT_UNIVERSAL = 2,
+	)
 
 /obj/vehicle/sealed/mecha/working/Initialize(mapload)
 	. = ..()

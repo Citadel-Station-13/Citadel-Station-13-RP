@@ -26,4 +26,4 @@
 
 	origin_tech = list(TECH_MATERIAL = 3, TECH_COMBAT = 3, TECH_PHORON = 3, TECH_ILLEGAL = 2)
 
-	equip_type = EQUIP_UTILITY
+	module_slot = VEHICLE_MODULE_SLOT_UTILITY

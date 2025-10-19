@@ -16,11 +16,8 @@
 	projectile_energy_cost = 20
 	missile_speed = 1
 	missile_range = 15
-	required_type = /obj/vehicle/sealed/mecha  //Why restrict it to just mining or combat mechs?
-
 	step_delay = 0
-
-	equip_type = EQUIP_UTILITY
+	module_slot = VEHICLE_MODULE_SLOT_UTILITY
 
 /obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/flare/Fire(atom/movable/AM, atom/target, turf/aimloc)
 	var/obj/item/flashlight/flare/fired = AM
@@ -37,7 +34,6 @@
 	projectile_energy_cost = 1000
 	equip_cooldown = 60
 
-
 /obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/explosive/rigged
 	name = "jury-rigged rocket pod"
 	desc = "A series of pipes, tubes, and cables that resembles a rocket pod."
@@ -45,5 +41,4 @@
 	projectile = /obj/projectile/bullet/srmrocket/weak
 	projectiles = 3
 	projectile_energy_cost = 800
-
-	equip_type = EQUIP_UTILITY
+	module_slot = VEHICLE_MODULE_SLOT_UTILITY

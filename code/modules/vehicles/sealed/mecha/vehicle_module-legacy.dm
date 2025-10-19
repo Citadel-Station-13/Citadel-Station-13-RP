@@ -1,15 +1,3 @@
-//DO NOT ADD MECHA PARTS TO THE GAME WITH THE DEFAULT "SPRITE ME" SPRITE!
-//I'm annoyed I even have to tell you this! SPRITE FIRST, then commit.
-#define EQUIP_HEAVY_WEAPON "heavy_weapon" //Should only be used on weapons meant for 3x3 mechs.
-
-#define EQUIP_HULL		"hull"
-#define EQUIP_WEAPON	"weapon"
-#define EQUIP_UTILITY	"utility"
-#define EQUIP_SPECIAL	"core"
-
-#define EQUIP_MICRO_UTILITY	"micro_utility"
-#define EQUIP_MICRO_WEAPON	"micro_weapon"
-
 /obj/item/vehicle_module
 	name = "mecha equipment"
 	icon = 'icons/mecha/mecha_equipment.dmi'
@@ -158,65 +146,20 @@
 	return
 
 /obj/item/vehicle_module/legacy/proc/can_attach(obj/vehicle/sealed/mecha/M as obj)
-	//if(M.equipment.len >= M.max_equip)
-	//	return FALSE
+	#warn deal with this shit
 	if(!allow_duplicate)
 		for(var/obj/item/vehicle_module/legacy/ME in M.equipment) //Exact duplicate components aren't allowed.
 			if(ME.type == src.type)
 				return FALSE
-	if(equip_type == EQUIP_HULL && M.hull_equipment.len < M.max_hull_equip)
-		return TRUE
-	if(equip_type == EQUIP_WEAPON && M.weapon_equipment.len < M.max_weapon_equip)
-		return TRUE
-	if(equip_type == EQUIP_HEAVY_WEAPON && M.heavy_weapon_equipment.len < M.max_heavy_weapon_equip)
-		return TRUE
-	if(equip_type == EQUIP_UTILITY && M.utility_equipment.len < M.max_utility_equip)
-		return TRUE
-	if(equip_type == EQUIP_SPECIAL && M.special_equipment.len < M.max_special_equip)
-		return TRUE
-	if(equip_type == EQUIP_MICRO_UTILITY && M.micro_utility_equipment.len < M.max_micro_utility_equip)
-		return TRUE
-	if(equip_type == EQUIP_MICRO_WEAPON && M.micro_weapon_equipment.len < M.max_micro_weapon_equip)
-		return TRUE
 	if(equip_type != EQUIP_SPECIAL && M.universal_equipment.len < M.max_universal_equip) //The exosuit needs to be military grade to actually have a universal slot capable of accepting a true weapon.
 		if(equip_type == EQUIP_WEAPON && !istype(M, /obj/vehicle/sealed/mecha/combat))
 			return FALSE
 		return TRUE
-	/*if (ispath(required_type))
-		return istype(M, required_type)
-
-	for (var/path in required_type)
-		if (istype(M, path))
-			return TRUE
-	*/
 	return FALSE
 
 /obj/item/vehicle_module/legacy/proc/attach(obj/vehicle/sealed/mecha/M as obj)
-	//M.equipment += src
+	#warn deal with this shit
 	var/has_equipped = FALSE
-	if(equip_type == EQUIP_HULL && M.hull_equipment.len < M.max_hull_equip && !has_equipped)
-		M.hull_equipment += src
-		has_equipped = TRUE
-	if(equip_type == EQUIP_WEAPON && M.weapon_equipment.len < M.max_weapon_equip && !has_equipped)
-		M.weapon_equipment += src
-		has_equipped = TRUE
-	if(equip_type == EQUIP_HEAVY_WEAPON && M.heavy_weapon_equipment.len < M.max_heavy_weapon_equip && !has_equipped)
-		M.heavy_weapon_equipment += src
-		has_equipped = TRUE
-	if(equip_type == EQUIP_UTILITY && M.utility_equipment.len < M.max_utility_equip && !has_equipped)
-		M.utility_equipment += src
-		has_equipped = TRUE
-	if(equip_type == EQUIP_SPECIAL && M.special_equipment.len < M.max_special_equip && !has_equipped)
-		M.special_equipment += src
-		has_equipped = TRUE
-	if(equip_type == EQUIP_MICRO_UTILITY && M.micro_utility_equipment.len < M.max_micro_utility_equip && !has_equipped)
-		M.micro_utility_equipment += src
-		has_equipped = TRUE
-	if(equip_type == EQUIP_MICRO_WEAPON && M.micro_weapon_equipment.len < M.max_micro_weapon_equip && !has_equipped)
-		M.micro_weapon_equipment += src
-		has_equipped = TRUE
-	if(equip_type != EQUIP_SPECIAL && M.universal_equipment.len < M.max_universal_equip && !has_equipped)
-		M.universal_equipment += src
 	M.equipment += src
 	chassis = M
 	src.loc = M
@@ -233,24 +176,6 @@
 /obj/item/vehicle_module/legacy/proc/detach(atom/moveto=null)
 	moveto = moveto || get_turf(chassis)
 	if(src.forceMove(moveto))
-		chassis.equipment -= src
-		chassis.universal_equipment -= src
-		if(equip_type)
-			switch(equip_type)
-				if(EQUIP_HULL)
-					chassis.hull_equipment -= src
-				if(EQUIP_WEAPON)
-					chassis.weapon_equipment -= src
-				if(EQUIP_HEAVY_WEAPON)
-					chassis.heavy_weapon_equipment -= src
-				if(EQUIP_UTILITY)
-					chassis.utility_equipment -= src
-				if(EQUIP_SPECIAL)
-					chassis.special_equipment -= src
-				if(EQUIP_MICRO_UTILITY)
-					chassis.micro_utility_equipment -= src
-				if(EQUIP_MICRO_WEAPON)
-					chassis.micro_weapon_equipment -= src
 		if(chassis.selected == src)
 			chassis.selected = null
 		update_chassis_page()

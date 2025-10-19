@@ -2,6 +2,9 @@
 	name = "mecha weapon"
 	range = RANGED
 	origin_tech = list(TECH_MATERIAL = 3, TECH_COMBAT = 3)
+
+	module_slot = VEHICLE_MODULE_SLOT_WEAPON
+
 	var/projectile //Type of projectile fired.
 	var/projectiles = 1 //Amount of projectiles loaded.
 	var/projectiles_per_shot = 1 //Amount of projectiles fired per single shot.
@@ -13,8 +16,6 @@
 	required_type = list(/obj/vehicle/sealed/mecha/combat, /obj/vehicle/sealed/mecha/working/hoverpod/combatpod)
 
 	step_delay = 0.1
-
-	equip_type = EQUIP_WEAPON
 
 /obj/item/vehicle_module/legacy/weapon/action_checks(atom/target)
 	if(projectiles <= 0)

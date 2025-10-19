@@ -7,7 +7,7 @@
 	icon_state = "mecha_clamp"
 	equip_cooldown = 10 SECONDS
 	energy_drain = 600
-	equip_type = EQUIP_HULL
+	module_slot = VEHICLE_MODULE_SLOT_HULL
 	origin_tech = list(TECH_MATERIAL = 5, TECH_ENGINEERING = 5, TECH_POWER = 4, TECH_COMBAT = 1, TECH_MAGNET = 4)
 
 /obj/item/vehicle_module/legacy/hardpoint_actuator/action(atom/target)

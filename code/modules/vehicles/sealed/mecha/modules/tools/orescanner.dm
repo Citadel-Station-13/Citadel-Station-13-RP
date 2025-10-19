@@ -6,7 +6,6 @@
 	equip_cooldown = 5
 	energy_drain = 30
 	range = MELEE|RANGED
-	equip_type = EQUIP_SPECIAL
 	ready_sound = 'sound/items/goggles_charge.ogg'
 	required_type = list(/obj/vehicle/sealed/mecha/working/ripley)
 

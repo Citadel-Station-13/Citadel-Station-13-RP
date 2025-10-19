@@ -30,8 +30,15 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 	/// and also unable to be removed.
 	/// * Nulled after init
 	/// * Lazy list.
+	/// * These will never be salvageable off the loot.
+	/// * These won't count towards slot limits and class limits.
 	var/list/modules_intrinsic
 	#warn handle this shit
+	/// Module slot limits
+	/// * VEHICLE_MODULE_SLOT_* associated to a number.
+	var/list/module_slots = list()
+	/// Module classes to allow
+	var/module_classes_allowed = ~(VEHICLE_MODULE_CLASS_MACRO | VEHICLE_MODULE_CLASS_MICRO)
 
 	//* Movement *//
 	/// Next move time

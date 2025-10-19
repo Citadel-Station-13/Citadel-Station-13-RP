@@ -14,7 +14,7 @@
 	energy_drain = 50
 	projectile = /obj/projectile/beam
 	fire_sound = 'sound/weapons/Laser.ogg'
-	equip_type = EQUIP_MICRO_WEAPON
+	module_class = MODULE_CLASS_MICRO
 	required_type = list(/obj/vehicle/sealed/mecha/micro/sec)
 
 /obj/item/vehicle_module/legacy/weapon/energy/laser/microheavy
@@ -27,7 +27,7 @@
 	energy_drain = 120
 	projectile = /obj/projectile/beam/heavylaser
 	fire_sound = 'sound/weapons/lasercannonfire.ogg'
-	equip_type = EQUIP_MICRO_WEAPON
+	module_class = MODULE_CLASS_MICRO
 	required_type = list(/obj/vehicle/sealed/mecha/micro/sec)
 
 /obj/item/vehicle_module/legacy/weapon/energy/microtaser
@@ -40,7 +40,7 @@
 	equip_cooldown = 10
 	projectile = /obj/projectile/beam/stun
 	fire_sound = 'sound/weapons/Taser.ogg'
-	equip_type = EQUIP_MICRO_WEAPON
+	module_class = MODULE_CLASS_MICRO
 	required_type = list(/obj/vehicle/sealed/mecha/micro/sec)
 
 /obj/item/vehicle_module/legacy/weapon/ballistic/microshotgun
@@ -58,7 +58,7 @@
 	projectiles_per_shot = 1
 	deviation = 0.7
 	projectile_energy_cost = 100
-	equip_type = EQUIP_MICRO_WEAPON
+	module_class = MODULE_CLASS_MICRO
 	required_type = list(/obj/vehicle/sealed/mecha/micro/sec)
 
 /obj/item/vehicle_module/legacy/weapon/ballistic/microshotgun/Topic(href,href_list)
@@ -93,7 +93,7 @@
 	projectile_energy_cost = 800
 	equip_cooldown = 30
 	det_time = 15
-	equip_type = EQUIP_MICRO_WEAPON
+	module_class = MODULE_CLASS_MICRO
 	required_type = list(/obj/vehicle/sealed/mecha/micro/sec)
 
 
@@ -110,7 +110,7 @@
 	equip_cooldown = 30
 	energy_drain = 10
 	damage_force = 15
-	equip_type = EQUIP_MICRO_UTILITY
+	module_class = MODULE_CLASS_MICRO
 	required_type = list(/obj/vehicle/sealed/mecha/micro/utility)
 
 /obj/item/vehicle_module/legacy/tool/drill/micro/action(atom/target)
@@ -159,7 +159,7 @@
 	icon_state = "microscoop"
 	equip_cooldown = 5
 	energy_drain = 0
-	equip_type = EQUIP_MICRO_UTILITY
+	module_class = MODULE_CLASS_MICRO
 	required_type = list(/obj/vehicle/sealed/mecha/micro/utility)
 	var/orecapacity = 500
 

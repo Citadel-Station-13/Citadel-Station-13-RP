@@ -92,29 +92,9 @@
 	var/list/internals_req_access = list(ACCESS_ENGINEERING_MAIN,ACCESS_SCIENCE_ROBOTICS)
 
 	var/wreckage
-	var/obj/item/vehicle_module/legacy/selected
-	var/max_equip = 2
-	var/datum/events/events
 
 	/// outgoing melee damage (legacy var)
 	var/damtype = DAMAGE_TYPE_BRUTE
-
-//mechaequipt2 stuffs
-	var/list/hull_equipment = new
-	var/list/weapon_equipment = new
-	var/list/utility_equipment = new
-	var/list/universal_equipment = new
-	var/list/special_equipment = new
-	var/list/heavy_weapon_equipment = new
-	var/max_hull_equip = 2
-	var/max_weapon_equip = 2
-	var/max_utility_equip = 2
-	var/max_universal_equip = 2
-	var/max_special_equip = 1
-	var/max_heavy_weapon_equip = 0 //Should only be used for 3x3 mechs.
-
-	/// List containing starting tools.
-	var/list/starting_equipment = null
 
 //Working exosuit vars
 	var/list/cargo = list()
@@ -182,9 +162,6 @@
 	var/datum/action/mecha/mech_toggle_phasing/phasing_action
 	var/datum/action/mecha/mech_toggle_cloaking/cloak_action
 
-	/// So combat mechs don't switch to their equipment at times.
-	var/weapons_only_cycle = FALSE
-
 	//* Legacy *//
 	/// the first controller in us
 	var/mob/occupant_legacy
@@ -205,8 +182,6 @@
 	cloak_action = new(src)
 	. = ..()
 	update_transform()
-
-	events = new
 
 	icon_state += "-open"
 	add_radio()

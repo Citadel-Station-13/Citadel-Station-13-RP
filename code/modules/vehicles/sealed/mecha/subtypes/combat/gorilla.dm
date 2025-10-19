@@ -22,13 +22,14 @@
 	add_req_access = 0
 	internal_damage_threshold = 25
 	force = 60
-	max_equip = 5
-//This will (Should) never be in the hands of players. If it is, the one who inflicted this monster upon the server can edit these vars to not be insane.
-	max_hull_equip = 5
-	max_weapon_equip = 5
-	max_utility_equip = 5
-	max_universal_equip = 5
-	max_special_equip = 2
+
+	module_slots = list(
+		VEHICLE_MODULE_SLOT_WEAPON = 3,
+		VEHICLE_MODULE_SLOT_HULL = 3,
+		VEHICLE_MODULE_SLOT_SPECIAL = 2,
+		VEHICLE_MODULE_SLOT_UTILITY = 4,
+		VEHICLE_MODULE_SLOT_UNIVERSAL = 3,
+	)
 
 	smoke_possible = 1
 	zoom_possible = 1

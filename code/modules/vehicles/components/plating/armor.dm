@@ -151,7 +151,7 @@
 		"bomb"=0.7
 		)
 
-/obj/item/vehicle_component/plating/armor/heavy_duty //Should only be avaliable for 3x3 mechs.
+/obj/item/vehicle_component/plating/armor/heavy_duty
 	name = "heavy duty mecha plating"
 	step_delay = 4
 	integrity_max = 3000

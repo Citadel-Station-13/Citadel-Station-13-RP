@@ -76,7 +76,7 @@
 /obj/item/vehicle_module/personal_shield/structural_field/concussive
 	name = "exterior damping field (melee)"
 
-/datum/armor/vehicle_module/personal_shield_routing/at_field
+/datum/armor/vehicle_module/personal_shield_routing/deflector
 	melee_soak = 5
 	bullet_soak = 20
 	laser_soak = 30
@@ -90,10 +90,10 @@
  * * adminspawn only; durand gets a version that freezes them while active
  * * technically this type's function is to just flick a graphic on hit
  */
-/obj/item/vehicle_module/personal_shield/at_field
+/obj/item/vehicle_module/personal_shield/deflector
 	name = "deflector network"
 	desc = "A set of specialized shield projectors that can entirely soak an incoming attack."
-	routing_armor_type = /datum/armor/vehicle_module/personal_shield_routing/at_field
+	routing_armor_type = /datum/armor/vehicle_module/personal_shield_routing/deflector
 	charge_max = 200
 	charge_maintain_cost_per_unit = 20 //! ~2 units/tick to maintain while active
 	charge_regen_cost_per_unit = 160 //! very very energy intensive
@@ -112,18 +112,18 @@
 	/// * DO NOT SET THIS TO A HIGH VALUE
 	var/vfx_stack_limit = 7
 
-/obj/item/vehicle_module/personal_shield/at_field/proc/on_take_routed_damage(amount)
+/obj/item/vehicle_module/personal_shield/deflector/proc/on_take_routed_damage(amount)
 	. = ..()
 	if(. <= 1)
 		return
 	flick_vfx_if_possible()
 
-/obj/item/vehicle_module/personal_shield/at_field/proc/flick_vfx_if_possible()
+/obj/item/vehicle_module/personal_shield/deflector/proc/flick_vfx_if_possible()
 	if(!vehicle)
 		return
 	#warn impl
 
-/obj/item/vehicle_module/personal_shield/at_field/durand
-	shielded_arc_degrees_from_center = 66.66666 //! covers frontal and front left/right's
+/obj/item/vehicle_module/personal_shield/deflector/durand
+	shielded_arc_degrees_from_center = 60 //! covers frontal and front left/right's
 	charge_maintain_cost_per_unit = 80 //! ~8 units/tick to maintain while active
 	charge_regen_cost_per_unit = 1000 //! ~0.5 cell units per point of damage

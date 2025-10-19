@@ -27,7 +27,7 @@
 	energy_drain = 175
 	icon_state = "mecha_xray-rig"
 
-	equip_type = EQUIP_UTILITY
+	module_slot = VEHICLE_MODULE_SLOT_UTILITY
 
 /obj/item/vehicle_module/legacy/weapon/energy/riggedlaser
 	equip_cooldown = 15
@@ -39,7 +39,7 @@
 	fire_sound = 'sound/weapons/Laser.ogg'
 	required_type = list(/obj/vehicle/sealed/mecha/combat, /obj/vehicle/sealed/mecha/working)
 
-	equip_type = EQUIP_UTILITY
+	module_slot = VEHICLE_MODULE_SLOT_UTILITY
 
 	origin_tech = list(TECH_MATERIAL = 2, TECH_COMBAT = 2, TECH_MAGNET = 2)
 
@@ -65,6 +65,6 @@
 	projectile = /obj/projectile/beam/heavylaser/fakeemitter
 	fire_sound = 'sound/weapons/emitter.ogg'
 
-	equip_type = EQUIP_UTILITY
+	module_slot = VEHICLE_MODULE_SLOT_UTILITY
 
 	origin_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 4, TECH_PHORON = 3, TECH_ILLEGAL = 1)

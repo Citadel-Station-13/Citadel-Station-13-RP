@@ -7,7 +7,6 @@
 	var/wait = 0
 	var/datum/effect_system/ion_trail_follow/ion_trail
 
-
 /obj/item/vehicle_module/legacy/tool/jetpack/can_attach(obj/vehicle/sealed/mecha/M as obj)
 	if(!(locate(src.type) in M.equipment) && !M.proc_res["dyndomove"])
 		return ..()

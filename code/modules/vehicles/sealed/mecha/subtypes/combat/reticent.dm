@@ -19,11 +19,13 @@
 	internal_damage_threshold = 35
 	max_equip = 4
 
-	max_hull_equip = 1
-	max_weapon_equip = 2
-	max_utility_equip = 2
-	max_universal_equip = 1
-	max_special_equip = 1
+	module_slots = list(
+		VEHICLE_MODULE_SLOT_WEAPON = 2,
+		VEHICLE_MODULE_SLOT_HULL = 2,
+		VEHICLE_MODULE_SLOT_SPECIAL = 1,
+		VEHICLE_MODULE_SLOT_UTILITY = 2,
+		VEHICLE_MODULE_SLOT_UNIVERSAL = 2,
+	)
 
 	overload_possible = 1
 

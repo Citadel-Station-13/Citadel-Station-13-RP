@@ -6,7 +6,6 @@
 	equip_cooldown = 3
 	energy_drain = 15
 	range = MELEE
-	equip_type = EQUIP_UTILITY
 	ready_sound = 'sound/items/Ratchet.ogg'
 	required_type = list(/obj/vehicle/sealed/mecha/working/ripley)
 

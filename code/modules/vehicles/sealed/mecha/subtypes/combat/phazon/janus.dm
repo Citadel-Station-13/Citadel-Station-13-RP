@@ -4,13 +4,12 @@
 	icon_state = "janus"
 	initial_icon = "janus"
 
-	base_movement_speed = 4.5
+	base_movement_speed = 4
 
 	dir_in = 1 //Facing North.
 	step_energy_drain = 3
 	integrity = 350
 	integrity_max = 350
-	deflect_chance = 30
 	damage_absorption = list("brute"=0.6,"fire"=0.7,"bullet"=0.7,"laser"=0.9,"energy"=0.7,"bomb"=0.5)
 	max_temperature = 10000
 	infra_luminosity = 3
@@ -24,6 +23,14 @@
 	max_utility_equip = 2
 	max_universal_equip = 2
 	max_special_equip = 2
+
+	module_slots = list(
+		VEHICLE_MODULE_SLOT_WEAPON = 2,
+		VEHICLE_MODULE_SLOT_HULL = 2,
+		VEHICLE_MODULE_SLOT_SPECIAL = 2,
+		VEHICLE_MODULE_SLOT_UTILITY = 4,
+		VEHICLE_MODULE_SLOT_UNIVERSAL = 3,
+	)
 
 	phasing_possible = TRUE
 	switch_dmg_type_possible = TRUE

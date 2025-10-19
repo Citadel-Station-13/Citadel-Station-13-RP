@@ -14,4 +14,4 @@
 	energy_drain = 30
 	projectile = /obj/projectile/beam/stun/weak
 
-	equip_type = EQUIP_UTILITY
+	module_slot = VEHICLE_MODULE_SLOT_UTILITY

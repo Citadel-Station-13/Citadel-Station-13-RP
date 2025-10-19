@@ -13,8 +13,6 @@
 	var/fuel_per_cycle_active = 500
 	var/power_per_cycle = 20
 
-	equip_type = EQUIP_UTILITY
-
 /obj/item/vehicle_module/legacy/generator/Initialize(mapload)
 	. = ..()
 	init()

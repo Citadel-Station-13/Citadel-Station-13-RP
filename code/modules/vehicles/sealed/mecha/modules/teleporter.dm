@@ -7,7 +7,7 @@
 	energy_drain = 1000
 	range = RANGED
 
-	equip_type = EQUIP_SPECIAL
+	module_slot = VEHICLE_MODULE_SLOT_SPECIAL
 
 /obj/item/vehicle_module/legacy/teleporter/action(atom/target)
 	if(!action_checks(target) || src.loc.z == 2) return

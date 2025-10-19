@@ -44,8 +44,7 @@
 	fire_sound = 'sound/weapons/Gunshot_cannon.ogg'
 	projectiles = 1
 	projectile_energy_cost = 2000
-	equip_type = EQUIP_HEAVY_WEAPON
-
+	module_class = VEHICLE_MODULE_CLASS_MACRO
 
 /obj/item/vehicle_module/legacy/weapon/ballistic/lmg/rigged
 	name = "jury-rigged machinegun"
@@ -54,5 +53,4 @@
 	equip_cooldown = 12
 	projectile = /obj/projectile/bullet/pistol
 	deviation = 0.5
-
 	equip_type = EQUIP_UTILITY

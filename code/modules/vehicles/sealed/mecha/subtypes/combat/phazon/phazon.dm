@@ -23,11 +23,13 @@
 	force = 15
 	max_equip = 4
 
-	max_hull_equip = 3
-	max_weapon_equip = 3
-	max_utility_equip = 3
-	max_universal_equip = 3
-	max_special_equip = 4
+	module_slots = list(
+		VEHICLE_MODULE_SLOT_WEAPON = 3,
+		VEHICLE_MODULE_SLOT_HULL = 3,
+		VEHICLE_MODULE_SLOT_SPECIAL = 3,
+		VEHICLE_MODULE_SLOT_UTILITY = 6,
+		VEHICLE_MODULE_SLOT_UNIVERSAL = 5,
+	)
 
 	encumbrance_gap = 2
 

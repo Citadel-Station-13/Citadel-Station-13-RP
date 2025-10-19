@@ -2,15 +2,28 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /obj/item/vehicle_module
-	//* Core *//
+	//* Module *//
 	/// currently active chassis
 	var/obj/vehicle/vehicle
+	/// Unremoveable? Won't be able to be salvaged if this is set to TRUE.
+	var/intrinsic = FALSE
+	/// Slot, if any
+	var/module_slot
+	/// Classes
+	var/module_class = NONE
 
 	//* UI *//
 	/// UI component key when being rendered
 	/// * Must route to a valid component in vehicle UI routing. Check TGUI folder for more info.
 	#warn impl
 	var/ui_component
+
+/**
+ * Supports clicking?
+ */
+/obj/item/vehicle_module/proc/is_potential_active_click_module()
+	return FALSE
+	#warn hook
 
 //* Chassis - Physicality *//
 
@@ -73,9 +86,12 @@
 
 //* UI *//
 
-/obj/item/vehicle_module/proc/vehicle_ui_component_route()
-
 /obj/item/vehicle_module/proc/vehicle_ui_component_data()
+	return list(
+		"name" = name,
+		"desc" = desc,
+		"isPotentialActiveClickModule" = is_potential_active_click_module(),
+	)
 
 /obj/item/vehicle_module/proc/vehicle_ui_component_push(list/data)
 

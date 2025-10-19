@@ -19,11 +19,13 @@
 	max_equip = 4
 	mech_faction = MECH_FACTION_NT
 
-	max_hull_equip = 3
-	max_weapon_equip = 3
-	max_utility_equip = 3
-	max_universal_equip = 1
-	max_special_equip = 1
+	module_slots = list(
+		VEHICLE_MODULE_SLOT_WEAPON = 3,
+		VEHICLE_MODULE_SLOT_HULL = 3,
+		VEHICLE_MODULE_SLOT_SPECIAL = 1,
+		VEHICLE_MODULE_SLOT_UTILITY = 4,
+		VEHICLE_MODULE_SLOT_UNIVERSAL = 3,
+	)
 
 	smoke_possible = 1
 	zoom_possible = 1

@@ -8,6 +8,6 @@
 	projectile = /obj/projectile/energy/phase/heavy
 	fire_sound = 'sound/weapons/Taser.ogg'
 
-	equip_type = EQUIP_UTILITY
+	module_slot = VEHICLE_MODULE_SLOT_UTILITY
 
 	origin_tech = list(TECH_MATERIAL = 1, TECH_COMBAT = 2, TECH_MAGNET = 2)

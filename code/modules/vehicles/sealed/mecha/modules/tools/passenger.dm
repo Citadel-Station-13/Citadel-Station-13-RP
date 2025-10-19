@@ -11,8 +11,6 @@
 	salvageable = 0
 	allow_duplicate = TRUE
 
-	equip_type = EQUIP_HULL
-
 /obj/item/vehicle_module/legacy/tool/passenger/destroy()
 	for(var/atom/movable/AM in src)
 		AM.forceMove(get_turf(src))
