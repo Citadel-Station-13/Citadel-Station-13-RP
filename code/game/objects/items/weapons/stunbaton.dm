@@ -337,6 +337,9 @@
 	icon = 'icons/items/electrostaff.dmi'
 	icon_state = "electrostaff"
 	base_icon_state = "electrostaff"
+	slot_flags = SLOT_BACK
+	// TODO: get rid of legacy override for this.
+	item_icons = null
 	worn_state = "electrostaff"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	stun_power = 40
