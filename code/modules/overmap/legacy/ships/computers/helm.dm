@@ -293,3 +293,14 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 		icon_state = "tele_nav"
 		set_light(light_range_on, light_power_on)
 	..()
+
+/obj/machinery/computer/ship/helm/verb/rename()
+	// ideally this would be a ui action but alas
+	set name = "Rename Vessel"
+	set category = VERB_CATEGORY_OBJECT
+	set src in oview(1)
+
+	var/n_name = sanitizeSafe(input(usr, "How would you like to label the vessel? NOTE: For faction characters and players, it is IMPERATIVE that you add your faction prefix to this i.e 'NEV' or 'FTU'.", "Vessel Labelling", null)  as text, MAX_NAME_LEN)
+	linked.name = n_name
+
+
