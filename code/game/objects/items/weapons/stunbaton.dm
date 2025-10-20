@@ -2,6 +2,7 @@
 /obj/item/melee/baton
 	name = "stunbaton"
 	desc = "A stun baton for incapacitating people with."
+	w_class = WEIGHT_CLASS_BULKY
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "stunbaton"
 	item_state = "baton"
