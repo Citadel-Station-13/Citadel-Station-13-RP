@@ -332,7 +332,7 @@
 	return FALSE
 
 /obj/item/melee/baton/electrostaff
-	name = "electrostaff"
+	name = "riot suppression electrostaff"
 	desc = "A large quarterstaff with electrodes mounted at the end. Presumably for riot control. Presumably."
 	icon = 'icons/items/electrostaff.dmi'
 	icon_state = "electrostaff"
