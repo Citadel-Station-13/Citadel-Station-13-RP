@@ -347,6 +347,7 @@
 	stun_sound = 'sound/effects/lightningshock.ogg'
 	// TODO: either do active parry instead or rework this to not be
 	//       able to parry at 100% everything
+	// TODO: just add a small active parry frame as a test
 	passive_parry = /datum/passive_parry{
 		parry_chance_melee = 35;
 		parry_chance_touch = 40;
