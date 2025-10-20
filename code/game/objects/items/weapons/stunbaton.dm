@@ -340,6 +340,7 @@
 	slot_flags = SLOT_BACK
 	// TODO: get rid of legacy override for this.
 	item_icons = null
+	melee_click_cd_multiply = 0.75
 	worn_state = "electrostaff"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	stun_power = 40
@@ -401,8 +402,6 @@
 		)
 		return TRUE
 	return ..()
-
-#warn faster hit too
 
 /obj/item/melee/baton/electrostaff/activate(silent, force)
 	// we have no icon for it so don't allow it in literally any case
