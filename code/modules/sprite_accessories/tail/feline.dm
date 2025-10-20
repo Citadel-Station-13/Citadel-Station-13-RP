@@ -78,6 +78,7 @@
 	id = "tail_largecatplain"
 	icon = 'icons/mob/sprite_accessory/tails/feline.dmi'
 	icon_state = "largecatplain"
+	ani_state = "largecatplain_wag"
 	do_colouration = TRUE
 	legacy_use_additive_color_matrix = FALSE
 	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
@@ -89,6 +90,7 @@
 	id = "tail_largecattip"
 	icon = 'icons/mob/sprite_accessory/tails/feline.dmi'
 	icon_state = "largecattip"
+	ani_state = "largecattip_wag"
 	do_colouration = TRUE
 	legacy_use_additive_color_matrix = FALSE
 	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
@@ -100,6 +102,7 @@
 	id = "tail_largecatstriped"
 	icon = 'icons/mob/sprite_accessory/tails/feline.dmi'
 	icon_state = "largecatstriped"
+	ani_state = "largecatstriped_wag"
 	do_colouration = TRUE
 	legacy_use_additive_color_matrix = FALSE
 	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
@@ -111,6 +114,7 @@
 	id = "tail_largecatcircle"
 	icon = 'icons/mob/sprite_accessory/tails/feline.dmi'
 	icon_state = "largecatcircle"
+	ani_state = "largecatcircle_wag"
 	do_colouration = TRUE
 	legacy_use_additive_color_matrix = FALSE
 	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
