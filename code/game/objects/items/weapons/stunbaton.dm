@@ -330,3 +330,45 @@
 
 /obj/item/melee/baton/loaded/mini/object_cell_slot_mutable(mob/user, datum/object_system/cell_slot/slot)
 	return FALSE
+
+/obj/item/melee/baton/electrostaff
+	name = "electrostaff"
+	desc = "A large quarterstaff with electrodes mounted at the end. Presumably for riot control. Presumably."
+	icon = 'icons/items/electrostaff.dmi'
+	icon_state = "electrostaff"
+	base_icon_state = "electrostaff"
+	worn_state = "electrostaff"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	stun_power = 40
+	stun_sound = 'sound/effects/lightningshock.ogg'
+	// TODO: either do active parry instead or rework this to not be
+	//       able to parry at 100% everything
+	passive_parry = /datum/passive_parry{
+		parry_chance_melee = 35;
+		parry_chance_touch = 40;
+		parry_frame_efficiency = 0.7
+	}
+
+/obj/item/melee/baton/electrostaff/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/wielding)
+
+/obj/item/melee/baton/electrostaff/update_icon()
+	. = ..()
+	if(!(item_flags & ITEM_MULTIHAND_WIELDED))
+
+/obj/item/melee/baton/electrostaff/on_unwield(mob/user, hands)
+	// TODO: ..() updates icon. can we skip it?
+	..()
+	deactivate()
+
+/obj/item/melee/baton/electrostaff/user_clickchain_toggle_active(datum/event_args/actor/actor)
+	. = ..()
+
+#warn impl; faster hit too
+
+/obj/item/melee/baton/electrostaff/activate(silent, force)
+	// we have no icon for it so don't allow it in literally any case
+	if(!(item_flags & ITEM_MULTIHAND_WIELDED))
+		return FALSE
+	return ..()
