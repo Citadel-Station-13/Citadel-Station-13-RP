@@ -349,23 +349,57 @@
 		parry_frame_efficiency = 0.7
 	}
 
+	var/wielded_damage_force = 15
+	var/wielded_damage_tier = 3
+	var/unwielded_damage_force = 7.5
+	var/unwielded_damage_tier = 3
+
+	damage_force = 7.5
+	damage_tier = 3
+
+	// :trol:
+	cell_type = /obj/item/cell/infinite
+
 /obj/item/melee/baton/electrostaff/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/wielding)
 
+/obj/item/melee/baton/electrostaff/object_cell_slot_mutable(mob/user, datum/object_system/cell_slot/slot)
+	return FALSE
+
 /obj/item/melee/baton/electrostaff/update_icon()
 	. = ..()
 	if(!(item_flags & ITEM_MULTIHAND_WIELDED))
+		icon_state = inhand_state = base_icon_state
+		return
+	var/use_state = "[base_icon_state]-wield"
+	if(active)
+		use_state = "[use_state]-blue"
+	icon_state = inhand_state = use_state
+	update_worn_icon()
+
+/obj/item/melee/baton/electrostaff/on_wield(mob/user, hands)
+	..()
+	damage_force = wielded_damage_force
+	damage_tier = wielded_damage_tier
 
 /obj/item/melee/baton/electrostaff/on_unwield(mob/user, hands)
 	// TODO: ..() updates icon. can we skip it?
 	..()
 	deactivate()
+	damage_force = unwielded_damage_force
+	damage_tier = unwielded_damage_tier
 
 /obj/item/melee/baton/electrostaff/user_clickchain_toggle_active(datum/event_args/actor/actor)
-	. = ..()
+	if(!active && !(item_flags & ITEM_MULTIHAND_WIELDED))
+		actor.chat_feedback(
+			SPAN_WARNING("[src] needs to be wielded with both hands to be activated."),
+			target = src,
+		)
+		return TRUE
+	return ..()
 
-#warn impl; faster hit too
+#warn faster hit too
 
 /obj/item/melee/baton/electrostaff/activate(silent, force)
 	// we have no icon for it so don't allow it in literally any case
