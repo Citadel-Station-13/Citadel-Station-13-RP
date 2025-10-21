@@ -670,7 +670,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 	uncommon_loot = list(
 		/obj/item/vehicle_module/legacy/tool/hydraulic_clamp,
 		/obj/item/vehicle_module/legacy/tool/drill/diamonddrill,
-		/obj/item/vehicle_module/legacy//obj/item/vehicle_module/personal_shield/structural_field/hyperkinetic,
+		/obj/item/vehicle_module/personal_shield/structural_field/hyperkinetic,
 		/obj/item/vehicle_module/legacy/tool/extinguisher,
 		)
 
@@ -755,7 +755,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 
 	rare_loot = list(
 		/obj/item/vehicle_module/legacy/gravcatapult,
-		/obj/item/vehicle_module/legacy//obj/item/vehicle_module/personal_shield/structural_field/concussive,
+		/obj/item/vehicle_module/personal_shield/structural_field/concussive,
 		/obj/item/vehicle_module/legacy/shocker
 		)
 
@@ -849,7 +849,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/vehicle_module/legacy/shocker,
 		/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/grenade,
 		/obj/item/vehicle_module/legacy/weapon/energy/laser,
-		/obj/item/vehicle_module/legacy//obj/item/vehicle_module/personal_shield/structural_field/hyperkinetic,
+		/obj/item/vehicle_module/personal_shield/structural_field/hyperkinetic,
 		/obj/random/paintkit/durand,
 		/obj/random/paintkit/durand
 		)
@@ -899,7 +899,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/vehicle_module/legacy/shocker,
 		/obj/item/vehicle_module/legacy/weapon/energy/flamer/rigged,
 		/obj/item/vehicle_module/legacy/weapon/energy/laser/heavy,
-		/obj/item/vehicle_module/legacy//obj/item/vehicle_module/personal_shield/structural_field/hyperkinetic
+		/obj/item/vehicle_module/personal_shield/structural_field/hyperkinetic
 		)
 
 	rare_loot = list(

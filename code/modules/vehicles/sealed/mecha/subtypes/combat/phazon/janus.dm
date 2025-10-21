@@ -18,12 +18,6 @@
 	force = 20
 	phasing_energy_drain = 300
 
-	max_hull_equip = 2
-	max_weapon_equip = 1
-	max_utility_equip = 2
-	max_universal_equip = 2
-	max_special_equip = 2
-
 	module_slots = list(
 		VEHICLE_MODULE_SLOT_WEAPON = 2,
 		VEHICLE_MODULE_SLOT_HULL = 2,

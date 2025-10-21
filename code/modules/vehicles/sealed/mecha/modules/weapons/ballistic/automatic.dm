@@ -53,4 +53,4 @@
 	equip_cooldown = 12
 	projectile = /obj/projectile/bullet/pistol
 	deviation = 0.5
-	equip_type = EQUIP_UTILITY
+	module_slot = VEHICLE_MODULE_SLOT_UTILITY

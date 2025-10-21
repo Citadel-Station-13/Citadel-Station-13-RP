@@ -8,7 +8,6 @@
 	// Multi-tile mechs don't support opacity properly.
 	opacity = FALSE
 	pixel_x = -16
-	step_in = 10
 	integrity = 5000
 	integrity_max = 5000
 

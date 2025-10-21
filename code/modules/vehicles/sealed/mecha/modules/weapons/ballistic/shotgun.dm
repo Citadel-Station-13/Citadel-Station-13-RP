@@ -23,5 +23,4 @@
 	fire_volume = 100
 	projectiles = 20
 	deviation = 1
-
-	equip_type = EQUIP_UTILITY
+	module_slot = VEHICLE_MODULE_SLOT_UTILITY

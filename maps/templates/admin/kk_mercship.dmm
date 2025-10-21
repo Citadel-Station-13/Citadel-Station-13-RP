@@ -4166,7 +4166,7 @@
 /area/ship/manta/engineering)
 "ve" = (
 /obj/structure/table/rack,
-/obj/item/vehicle_module/legacy//obj/item/vehicle_module/personal_shield/structural_field/concussive,
+/obj/item/vehicle_module/personal_shield/structural_field/concussive,
 /obj/item/vehicle_module/legacy/weapon/ballistic/mortar,
 /obj/effect/floor_decal/techfloor{
 	dir = 9
@@ -6604,7 +6604,7 @@
 /area/ship/manta/dock_port)
 "Hg" = (
 /obj/structure/table/rack,
-/obj/item/vehicle_module/legacy//obj/item/vehicle_module/personal_shield/structural_field/hyperkinetic,
+/obj/item/vehicle_module/personal_shield/structural_field/hyperkinetic,
 /obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/grenade/frag,
 /obj/effect/floor_decal/techfloor{
 	dir = 10

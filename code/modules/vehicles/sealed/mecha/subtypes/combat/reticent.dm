@@ -17,7 +17,6 @@
 	infra_luminosity = 6
 	wreckage = /obj/effect/decal/mecha_wreckage/reticent
 	internal_damage_threshold = 35
-	max_equip = 4
 
 	module_slots = list(
 		VEHICLE_MODULE_SLOT_WEAPON = 2,
@@ -42,27 +41,29 @@
 	initial_icon = "reticence"
 	integrity = 350
 	integrity_max = 350
+	base_movement_speed = 3
 	deflect_chance = 40
 	damage_absorption = list("brute"=0.8,"fire"=0.6,"bullet"=0.5,"laser"=0.65,"energy"=0.6,"bomb"=0.8)
 	max_temperature = 45000
 	overload_coeff = 1
 	wreckage = /obj/effect/decal/mecha_wreckage/reticent/reticence
-	max_equip = 4
 	step_energy_drain = 5
 
-	max_hull_equip = 1
-	max_weapon_equip = 2
-	max_utility_equip = 2
-	max_universal_equip = 1
-	max_special_equip = 2
+	module_slots = list(
+		VEHICLE_MODULE_SLOT_WEAPON = 2,
+		VEHICLE_MODULE_SLOT_HULL = 3,
+		VEHICLE_MODULE_SLOT_SPECIAL = 1,
+		VEHICLE_MODULE_SLOT_UTILITY = 4,
+		VEHICLE_MODULE_SLOT_UNIVERSAL = 2,
+	)
 
 /obj/vehicle/sealed/mecha/combat/reticent/reticence/equipped
-	starting_equipment = list(
+	modules = list(
 		/obj/item/vehicle_module/legacy/weapon/whisperblade,
 		/obj/item/vehicle_module/legacy/weapon/infernoblade,
 		/obj/item/vehicle_module/legacy/omni_shield/reticence,
-		/obj/item/vehicle_module/legacy/cloak
-		)
+		/obj/item/vehicle_module/legacy/cloak,
+	)
 
 /obj/vehicle/sealed/mecha/combat/reticent/reticence/add_cell(var/obj/item/cell/C=null)
 	if(C)

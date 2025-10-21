@@ -478,11 +478,6 @@
 		to_chat(user, "You climb out from [src]")
 		return 0
 
-	var/obj/item/vehicle_component/plating/hull/HC = internal_components[MECH_HULL]
-	if(!HC)
-		occupant_message("<span class='notice'>You can't operate an exosuit that doesn't have a hull!</span>")
-		return
-
 	if(connected_port)
 		if(world.time - last_message > 20)
 			src.occupant_message("<span class='warning'>Unable to move while connected to the air system port</span>")

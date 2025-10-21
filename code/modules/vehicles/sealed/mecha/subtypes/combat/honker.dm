@@ -17,7 +17,6 @@
 	infra_luminosity = 6
 	wreckage = /obj/effect/decal/mecha_wreckage/honker
 	internal_damage_threshold = 35
-	max_equip = 4
 
 	module_slots = list(
 		VEHICLE_MODULE_SLOT_WEAPON = 1,
@@ -38,6 +37,7 @@
 	initial_icon = "cluwne"
 	integrity = 400
 	integrity_max = 400
+	base_movement_speed = 3
 	deflect_chance = 25
 	damage_absorption = list("brute"=0.6,"fire"=0.8,"bullet"=0.6,"laser"=0.5,"energy"=0.65,"bomb"=0.8)
 	max_temperature = 45000
@@ -46,11 +46,13 @@
 	max_equip = 4
 	step_energy_drain = 5
 
-	max_hull_equip = 1
-	max_weapon_equip = 2
-	max_utility_equip = 2
-	max_universal_equip = 1
-	max_special_equip = 2
+	module_slots = list(
+		VEHICLE_MODULE_SLOT_WEAPON = 2,
+		VEHICLE_MODULE_SLOT_HULL = 3,
+		VEHICLE_MODULE_SLOT_SPECIAL = 1,
+		VEHICLE_MODULE_SLOT_UTILITY = 3,
+		VEHICLE_MODULE_SLOT_UNIVERSAL = 2,
+	)
 
 /obj/vehicle/sealed/mecha/combat/honker/cluwne/equipped
 	modules = list(

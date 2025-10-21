@@ -4,6 +4,8 @@
 	catalogue_data = list(/datum/category_item/catalogue/technology/marauder)
 	icon_state = "marauder"
 	initial_icon = "marauder"
+
+	base_movement_speed = 2.5
 	step_in = 5
 	integrity = 350
 	integrity_max = 350		//Don't forget to update the /old variant if  you change this number.
@@ -37,51 +39,6 @@
 	icon_scale_x = 1.5
 	icon_scale_y = 1.5
 
-//I'll break this down later
-/obj/vehicle/sealed/mecha/combat/marauder/relaymove(mob/user,direction)
-	if(user != src.occupant_legacy) //While not "realistic", this piece is player friendly.
-		user.loc = get_turf(src)
-		to_chat(user, "You climb out from [src]")
-		return 0
-	if(!can_move)
-		return 0
-	if(zoom)
-		if(world.time - last_message > 20)
-			src.occupant_message("Unable to move while in zoom mode.")
-			last_message = world.time
-		return 0
-	if(connected_port)
-		if(world.time - last_message > 20)
-			src.occupant_message("Unable to move while connected to the air system port")
-			last_message = world.time
-		return 0
-	if(!thrusters && src.pr_inertial_movement.active())
-		return 0
-	if(state || !has_charge(step_energy_drain))
-		return 0
-	var/tmp_step_in = step_in
-	var/tmp_step_energy_drain = step_energy_drain
-	var/move_result = 0
-	if(internal_damage&MECHA_INT_CONTROL_LOST)
-		move_result = mechsteprand()
-	else if(src.dir!=direction)
-		move_result = mechturn(direction)
-	else
-		move_result	= mechstep(direction)
-	if(move_result)
-		if(istype(src.loc, /turf/space))
-			if(!src.check_for_support())
-				src.pr_inertial_movement.start(list(src,direction))
-				if(thrusters)
-					src.pr_inertial_movement.set_process_args(list(src,direction))
-					tmp_step_energy_drain = step_energy_drain*2
-
-		can_move = 0
-		spawn(tmp_step_in) can_move = 1
-		use_power(tmp_step_energy_drain)
-		return 1
-	return 0
-
 //To be kill ltr
 /obj/vehicle/sealed/mecha/combat/marauder/get_commands()
 	var/output = {"<div class='wr'>
@@ -100,8 +57,6 @@
 /obj/vehicle/sealed/mecha/combat/marauder/old
 	desc = "Heavy-duty, combat exosuit, developed after the Durand model. Rarely found among civilian populations. This one is particularly worn looking and likely isn't as sturdy."
 
-	starting_equipment = null
-
 /obj/vehicle/sealed/mecha/combat/marauder/old/Initialize(mapload)
 	. = ..()
 	integrity = 25
@@ -113,8 +68,8 @@
 		/obj/item/vehicle_module/legacy/weapon/energy/pulse,
 		/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/explosive,
 		/obj/item/vehicle_module/legacy/tesla_energy_relay,
-		/obj/item/vehicle_module/legacy//obj/item/vehicle_module/personal_shield/structural_field/hyperkinetic
-		)
+		/obj/item/vehicle_module/personal_shield/structural_field/hyperkinetic,
+	)
 
 /obj/vehicle/sealed/mecha/combat/marauder/seraph
 	desc = "Heavy-duty, command-type exosuit. This is a custom model, utilized only by high-ranking military personnel."
@@ -128,14 +83,13 @@
 	wreckage = /obj/effect/decal/mecha_wreckage/seraph
 	internal_damage_threshold = 20
 	force = 55
-	max_equip = 5
 
 /obj/vehicle/sealed/mecha/combat/marauder/seraph/equipped
 	modules = list(
 		/obj/item/vehicle_module/legacy/weapon/ballistic/scattershot,
 		/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/explosive,
 		/obj/item/vehicle_module/legacy/tesla_energy_relay,
-		/obj/item/vehicle_module/legacy//obj/item/vehicle_module/personal_shield/structural_field/hyperkinetic,
+		/obj/item/vehicle_module/personal_shield/structural_field/hyperkinetic,
 		/obj/item/vehicle_module/legacy/teleporter,
 	)
 
