@@ -8,10 +8,11 @@
 	icon_state = "odysseus"
 	initial_icon = "odysseus"
 
+	base_movement_speed = 4.8
+
 	occupant_huds = list(
 		/datum/atom_hud/data/human/medical,
 	)
-	base_movement_speed = 4.8
 
 	max_temperature = 15000
 	integrity = 70
