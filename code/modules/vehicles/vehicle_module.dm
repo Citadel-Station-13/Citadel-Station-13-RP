@@ -11,12 +11,29 @@
 	var/module_slot
 	/// Classes
 	var/module_class = NONE
+	/// dedupe?
+	var/disallow_duplicates = FALSE
+	/// dedupe type? if set, use that type and subtypes; otherwise uses exact path
+	/// * generally needs to be set if [disallow_duplicates] is
+	#warn check this in vehicle
+	var/disallow_duplicates_match_type
 
 	//* UI *//
 	/// UI component key when being rendered
 	/// * Must route to a valid component in vehicle UI routing. Check TGUI folder for more info.
 	#warn impl
 	var/ui_component
+
+/obj/item/vehicle_module/proc/fits_on_vehicle(obj/vehicle/vehicle, vehicle_opinion, vehicle_is_full, datum/event_args/actor/actor, silent)
+	return vehicle_opinion && !vehicle_is_full
+
+/obj/item/vehicle_module/proc/on_install(obj/vehicle/vehicle, datum/event_args/actor/actor, silent)
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_CALL_PARENT(TRUE)
+
+/obj/item/vehicle_module/proc/on_uninstall(obj/vehicle/vehicle, datum/event_args/actor/actor, silent)
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_CALL_PARENT(TRUE)
 
 /**
  * Supports clicking?

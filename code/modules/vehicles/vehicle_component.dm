@@ -5,9 +5,33 @@
 	name = "vehicle component"
 	desc = "Some kind of component that presumably goes on some kind of vehicle."
 
+	//* Component *//
+	/// currently active chassis
+	var/obj/vehicle/vehicle
+	/// Unremoveable? Won't be able to be salvaged if this is set to TRUE.
+	var/intrinsic = FALSE
+
+	//* Binding *//
 	/// bind shieldtype type; must be a path of /datum/shieldcall/bound/vehicle_component if set.
 	var/autobind_shieldcall_type
 	var/datum/shieldcall/bound/vehicle_component/autobind_shieldcall
+
+	//* UI *//
+	/// UI component key when being rendered
+	/// * Must route to a valid component in vehicle UI routing. Check TGUI folder for more info.
+	#warn impl
+	var/ui_component
+
+/obj/item/vehicle_component/proc/fits_on_vehicle(obj/vehicle/vehicle, vehicle_opinion, datum/event_args/actor/actor, silent)
+	return vehicle_opinion
+
+/obj/item/vehicle_component/proc/on_install(obj/vehicle/vehicle, datum/event_args/actor/actor, silent)
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_CALL_PARENT(TRUE)
+
+/obj/item/vehicle_component/proc/on_uninstall(obj/vehicle/vehicle, datum/event_args/actor/actor, silent)
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_CALL_PARENT(TRUE)
 
 #warn impl
 
@@ -33,6 +57,18 @@
 /obj/item/vehicle_component
 
 /obj/item/vehicle_component
+
+//* UI *//
+
+/obj/item/vehicle_component/proc/vehicle_ui_component_data()
+	return list(
+		"name" = name,
+		"desc" = desc,
+	)
+
+/obj/item/vehicle_component/proc/vehicle_ui_component_push(list/data)
+
+/obj/item/vehicle_component/proc/vehicle_ui_component_act(action, list/params, datum/event_args/actor/actor)
 
 /**
  * Supertype of shieldcalls that handle vehicle hits. Just subtype one

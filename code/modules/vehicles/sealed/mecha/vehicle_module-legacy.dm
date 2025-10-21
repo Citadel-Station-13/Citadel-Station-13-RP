@@ -1,25 +1,23 @@
-/obj/item/vehicle_module
+/obj/item/vehicle_module/legacy
 	name = "mecha equipment"
 	icon = 'icons/mecha/mecha_equipment.dmi'
 	icon_state = "mecha_equip"
 	damage_force = 5
 	origin_tech = list(TECH_MATERIAL = 2)
 	description_info = "Some equipment may gain new abilities or advantages if equipped to certain types of Exosuits."
+	var/obj/vehicle/sealed/mecha/chassis
 	var/equip_cooldown = 0
 	var/equip_ready = TRUE
 	var/energy_drain = 0
-	var/obj/vehicle/sealed/mecha/chassis = null
 	var/range = MELEE //bitflags
 	/// Bitflag. Used by exosuit fabricator to assign sub-categories based on which exosuits can equip this.
 	var/mech_flags = NONE
-	var/salvageable = TRUE
-	///mechaequip2
-	var/equip_type = null
-	var/allow_duplicate = FALSE
 	///Sound to play once the fire delay passed.
 	var/ready_sound = 'sound/mecha/mech_reload_default.ogg'
 	///Does the component slow/speed up the suit?
 	var/step_delay = 0
+
+#warn hook 'chassis'
 
 /obj/item/vehicle_module/legacy/proc/do_after_cooldown(target=1)
 	sleep(equip_cooldown)
@@ -39,50 +37,9 @@
 
 /obj/item/vehicle_module/legacy/proc/
 
-/obj/item/vehicle_module/legacy/proc/update_chassis_page()
-	if(chassis)
-		send_byjax(chassis.occupant_legacy,"exosuit.browser","eq_list",chassis.get_equipment_list())
-		send_byjax(chassis.occupant_legacy,"exosuit.browser","equipment_menu",chassis.get_equipment_menu(),"dropdowns")
-		return TRUE
-	return
-
-/obj/item/vehicle_module/legacy/proc/update_equip_info()
-	if(chassis)
-		send_byjax(chassis.occupant_legacy,"exosuit.browser","\ref[src]",get_equip_info())
-		return TRUE
-	return
-
 ///Missiles detonating, teleporter creating singularity?
 /obj/item/vehicle_module/legacy/proc/destroy()
 	if(chassis)
-		if(equip_type)
-			if(equip_type == EQUIP_HULL)
-				chassis.hull_equipment -= src
-				listclearnulls(chassis.hull_equipment)
-			if(equip_type == EQUIP_WEAPON)
-				chassis.weapon_equipment -= src
-				listclearnulls(chassis.weapon_equipment)
-			if(equip_type == EQUIP_HEAVY_WEAPON)
-				chassis.heavy_weapon_equipment -= src
-				listclearnulls(chassis.heavy_weapon_equipment)
-			if(equip_type == EQUIP_UTILITY)
-				chassis.utility_equipment -= src
-				listclearnulls(chassis.utility_equipment)
-			if(equip_type == EQUIP_SPECIAL)
-				chassis.special_equipment -= src
-				listclearnulls(chassis.special_equipment)
-			if(equip_type == EQUIP_MICRO_UTILITY)
-				chassis.micro_utility_equipment -= src
-				listclearnulls(chassis.micro_utility_equipment)
-			if(equip_type == EQUIP_MICRO_WEAPON)
-				chassis.micro_weapon_equipment -= src
-				listclearnulls(chassis.micro_weapon_equipment)
-		chassis.universal_equipment -= src
-		chassis.equipment -= src
-		listclearnulls(chassis.equipment)
-		if(chassis.selected == src)
-			chassis.selected = null
-		src.update_chassis_page()
 		chassis.occupant_message(SPAN_DANGER("The [src] is destroyed!"))
 		chassis.log_append_to_last("[src] is destroyed.",1)
 		if(istype(src, /obj/item/vehicle_module/legacy/weapon))//Gun
@@ -103,12 +60,10 @@
 					src.chassis.occupant_legacy  << sound('sound/mecha/critdestr.ogg',volume=50)
 	spawn
 		qdel(src)
-	return
 
 /obj/item/vehicle_module/legacy/proc/critfail()
 	if(chassis)
 		log_message("Critical failure",1)
-	return
 
 /obj/item/vehicle_module/legacy/proc/get_equip_info()
 	if(!chassis) return
@@ -136,10 +91,6 @@
 
 /obj/item/vehicle_module/legacy/proc/can_attach(obj/vehicle/sealed/mecha/M as obj)
 	#warn deal with this shit
-	if(!allow_duplicate)
-		for(var/obj/item/vehicle_module/legacy/ME in M.equipment) //Exact duplicate components aren't allowed.
-			if(ME.type == src.type)
-				return FALSE
 	if(equip_type != EQUIP_SPECIAL && M.universal_equipment.len < M.max_universal_equip) //The exosuit needs to be military grade to actually have a universal slot capable of accepting a true weapon.
 		if(equip_type == EQUIP_WEAPON && !istype(M, /obj/vehicle/sealed/mecha/combat))
 			return FALSE

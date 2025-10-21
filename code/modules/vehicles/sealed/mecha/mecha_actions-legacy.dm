@@ -197,9 +197,6 @@
 				button_icon_state = "mech_cycle_equip_on"
 			send_byjax(chassis.occupant_legacy,"exosuit.browser","eq_list",chassis.get_equipment_list())
 			update_buttons()
-			return
-
-
 
 /datum/action/mecha/mech_switch_damtype
 	name = "Reconfigure arm microtool arrays"

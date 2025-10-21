@@ -8,8 +8,6 @@
 	equip_cooldown = 20
 	var/mob/living/carbon/occupant_legacy = null
 	var/door_locked = 1
-	salvageable = 0
-	allow_duplicate = TRUE
 
 /obj/item/vehicle_module/legacy/tool/passenger/destroy()
 	for(var/atom/movable/AM in src)

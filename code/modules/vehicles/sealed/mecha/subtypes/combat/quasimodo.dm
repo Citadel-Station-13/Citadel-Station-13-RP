@@ -30,7 +30,6 @@
 		VEHICLE_MODULE_SLOT_SPECIAL = 0,
 	)
 
-	infra_luminosity = 3
 	lights_power = 12 //Big mechs would have large floodlights.
 	wreckage = /obj/effect/decal/mecha_wreckage/quasimodo
 	add_req_access = 0

@@ -20,9 +20,6 @@
 	integrity_max = 300
 	comp_armor_relative_thickness = 1.25
 	comp_hull_relative_thickness = 1.25
-
-	infra_luminosity = 6
-
 	opacity = FALSE
 
 	wreckage = /obj/effect/decal/mecha_wreckage/gunpod

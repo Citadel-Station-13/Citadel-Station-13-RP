@@ -11,8 +11,6 @@
 	var/mob/living/carbon/human/occupant_legacy = null
 	var/datum/global_iterator/pr_mech_sleeper
 	var/inject_amount = 5
-	salvageable = FALSE
-	allow_duplicate = TRUE
 	var/list/available_chemicals = list()
 	var/list/base_chemicals = list("inaprovaline" = "Inaprovaline", "paracetamol" = "Paracetamol", "anti_toxin" = "Dylovene", "dexalin" = "Dexalin")
 	var/stasis_level = 0 //Every 'this' life ticks are applied to the mob (when life_ticks%stasis_level == 1)

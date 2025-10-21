@@ -14,7 +14,6 @@
 	deflect_chance = 25
 	damage_absorption = list("brute"=1,"fire"=0.75,"bullet"=0.85,"laser"=0.8,"energy"=0.7,"bomb"=1)
 	max_temperature = 25000
-	infra_luminosity = 6
 	wreckage = /obj/effect/decal/mecha_wreckage/reticent
 	internal_damage_threshold = 35
 

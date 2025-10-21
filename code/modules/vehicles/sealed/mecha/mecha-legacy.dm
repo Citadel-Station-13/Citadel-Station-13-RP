@@ -29,8 +29,6 @@
 	integrity_max = 300
 	/// Icon draw layer.
 	layer = MOB_LAYER
-	/// Byond implementation is bugged.
-	infra_luminosity = 15
 	enter_delay = 4 SECONDS
 	emulate_door_bumps = TRUE
 

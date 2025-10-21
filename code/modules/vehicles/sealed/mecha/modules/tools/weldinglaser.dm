@@ -6,9 +6,7 @@
 	equip_cooldown = 3
 	energy_drain = 15
 	range = MELEE|RANGED
-	equip_type = EQUIP_UTILITY
 	ready_sound = 'sound/items/Ratchet.ogg'
-
 	tooltype = /obj/item/weldingtool/electric/mounted/exosuit
 
 /obj/item/vehicle_module/legacy/tool/powertool/welding/Initialize(mapload)
@@ -19,9 +17,8 @@
 	..()
 
 	var/datum/beam_legacy/weld_beam = null
-	if(is_ranged())
-		var/atom/movable/beam_origin = chassis
-		weld_beam = beam_origin.Beam(target, icon_state = "solar_beam", time = 0.3 SECONDS)
+	var/atom/movable/beam_origin = chassis
+	weld_beam = beam_origin.Beam(target, icon_state = "solar_beam", time = 0.3 SECONDS)
 
 	if(!do_after(chassis.occupant_legacy, 0.3 SECONDS, target))
 		qdel(weld_beam)

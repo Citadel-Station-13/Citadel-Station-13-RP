@@ -72,6 +72,10 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 	/// list of typepaths or ids of /datum/atom_hud_providers that occupants with [VEHICLE_CONTROL_USE_HUDS] get added to their perspective
 	var/list/occupant_huds
 
+	//* UI *//
+	/// UI controller path
+	var/ui_path = "vehicle/VehicleController"
+
 /obj/vehicle/Initialize(mapload)
 	. = ..()
 	create_initial_components()
@@ -249,3 +253,23 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
  */
 /obj/vehicle/proc/occupant_removed(mob/removing, datum/event_args/actor/actor, control_flags, silent, suppressed)
 	SHOULD_CALL_PARENT(TRUE)
+
+//* UI *//
+
+/obj/vehicle/ui_data(mob/user, datum/tgui/ui)
+	. = ..()
+
+/obj/vehicle/ui_static_data(mob/user, datum/tgui/ui)
+	. = ..()
+
+/obj/vehicle/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
+	. = ..()
+
+/obj/vehicle/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "VehicleController")
+		ui.open()
+
+/obj/vehicle/ui_nested_data(mob/user, datum/tgui/ui)
+	. = ..()

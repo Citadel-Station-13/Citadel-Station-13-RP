@@ -6,8 +6,7 @@
 	equip_cooldown = 2 SECONDS
 	energy_drain = 300
 	range = 0
-
-	equip_type = EQUIP_SPECIAL
+	module_slot = VEHICLE_MODULE_SLOT_SPECIAL
 
 	var/datum/global_iterator/mecha_cloak/cloak_iterator
 
