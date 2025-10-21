@@ -1,6 +1,7 @@
 /area/sector/ice_comet
 	name = "Away Mission - Ice Comet Weldana"
 	icon = 'icons/turf/areas.dmi'
+	ambience = list('sound/ambience/space/iceplanet.ogg')
 	icon_state = "green"
 	requires_power = 1
 
