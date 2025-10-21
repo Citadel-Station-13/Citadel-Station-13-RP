@@ -7,7 +7,6 @@
 	energy_drain = 30
 	range = MELEE|RANGED
 	ready_sound = 'sound/items/goggles_charge.ogg'
-	required_type = list(/obj/vehicle/sealed/mecha/working/ripley)
 
 	var/obj/item/mining_scanner/my_scanner = null
 	var/exact_scan = FALSE

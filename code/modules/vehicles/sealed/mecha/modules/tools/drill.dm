@@ -6,7 +6,6 @@
 	energy_drain = 10
 	damage_force = 15
 	var/advanced = 0	//Determines if you can pierce the heavens or not. Used in diamond drill.
-	required_type = list(/obj/vehicle/sealed/mecha/working/ripley)
 
 /obj/item/vehicle_module/legacy/tool/drill/action(atom/target)
 	if(!action_checks(target))
@@ -87,7 +86,6 @@
 	equip_cooldown = 5 SECONDS
 	energy_drain = 30
 	damage_force = 20
-	required_type = list(/obj/vehicle/sealed/mecha/working/ripley)
 
 /obj/item/vehicle_module/legacy/tool/drill/bore/action(atom/target)
 	if(!action_checks(target))

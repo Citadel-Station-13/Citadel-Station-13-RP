@@ -7,7 +7,6 @@
 	energy_drain = 30
 	range = MELEE
 	ready_sound = 'sound/effects/spray.ogg'
-	required_type = list(/obj/vehicle/sealed/mecha/working/ripley)
 
 	tooltype = /obj/item/inflatable_dispenser/robot
 	var/obj/item/inflatable_dispenser/my_deployer = null

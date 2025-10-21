@@ -458,17 +458,6 @@
 /obj/vehicle/sealed/mecha/proc/range_action(atom/target)
 	return
 
-/obj/vehicle/sealed/mecha/Moved(atom/old_loc, direction, forced = FALSE)
-	. = ..()
-	MoveAction()
-
-/obj/vehicle/sealed/mecha/proc/MoveAction() //Allows mech equipment to do an action once the mech moves
-	if(!equipment.len)
-		return
-
-	for(var/obj/item/vehicle_module/legacy/ME in equipment)
-		ME.MoveAction()
-
 /obj/vehicle/sealed/mecha/relaymove(mob/user,direction)
 	if(user != src.occupant_legacy) //While not "realistic", this piece is player friendly.
 		if(istype(user,/mob/living/carbon/brain))
@@ -525,15 +514,6 @@
 
 	if(strafing)
 		tally = round(tally * actuator.strafing_multiplier)
-
-	for(var/obj/item/vehicle_module/legacy/ME in equipment)
-		if(istype(ME, /obj/item/vehicle_module/legacy/speedboost))
-			var/obj/item/vehicle_module/legacy/speedboost/SB = ME
-			for(var/path in ME.required_type)
-				if(istype(src, path))
-					tally = round(tally * SB.slowdown_multiplier)
-					break
-			break
 
 	if(overload)	// At the end, because this would normally just make the mech *slower* since tally wasn't starting at 0.
 		tally = min(1, round(tally/2))

@@ -8,7 +8,6 @@
 	range = MELEE|RANGED
 	equip_type = EQUIP_UTILITY
 	ready_sound = 'sound/items/Ratchet.ogg'
-	required_type = list(/obj/vehicle/sealed/mecha/working/ripley)
 
 	tooltype = /obj/item/weldingtool/electric/mounted/exosuit
 

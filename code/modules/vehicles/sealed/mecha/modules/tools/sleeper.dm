@@ -11,7 +11,6 @@
 	var/mob/living/carbon/human/occupant_legacy = null
 	var/datum/global_iterator/pr_mech_sleeper
 	var/inject_amount = 5
-	required_type = list(/obj/vehicle/sealed/mecha/medical)
 	salvageable = FALSE
 	allow_duplicate = TRUE
 	var/list/available_chemicals = list()

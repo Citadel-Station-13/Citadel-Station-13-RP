@@ -8,11 +8,13 @@
 	integrity = 175
 	integrity_max = 175
 
-	max_hull_equip = 0
-	max_weapon_equip = 0
-	max_utility_equip = 0
-	max_universal_equip = 0
-	max_special_equip = 0
+	module_slots = list(
+		VEHICLE_MODULE_SLOT_HULL = 1,
+		VEHICLE_MODULE_SLOT_WEAPON = 1,
+		VEHICLE_MODULE_SLOT_UTILITY = 2,
+		VEHICLE_MODULE_SLOT_UNIVERSAL = 1,
+		VEHICLE_MODULE_SLOT_SPECIAL = 0,
+	)
 
 	catalogue_data = list(/datum/category_item/catalogue/technology/cludge)
 	wreckage = /obj/effect/decal/mecha_wreckage/cludge

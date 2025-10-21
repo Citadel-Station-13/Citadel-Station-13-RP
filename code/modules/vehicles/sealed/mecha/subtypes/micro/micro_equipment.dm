@@ -15,7 +15,6 @@
 	projectile = /obj/projectile/beam
 	fire_sound = 'sound/weapons/Laser.ogg'
 	module_class = VEHICLE_MODULE_CLASS_MICRO
-	required_type = list(/obj/vehicle/sealed/mecha/micro/sec)
 
 /obj/item/vehicle_module/legacy/weapon/energy/laser/microheavy
 	w_class = WEIGHT_CLASS_BULKY
@@ -28,7 +27,6 @@
 	projectile = /obj/projectile/beam/heavylaser
 	fire_sound = 'sound/weapons/lasercannonfire.ogg'
 	module_class = VEHICLE_MODULE_CLASS_MICRO
-	required_type = list(/obj/vehicle/sealed/mecha/micro/sec)
 
 /obj/item/vehicle_module/legacy/weapon/energy/microtaser
 	w_class = WEIGHT_CLASS_BULKY
@@ -41,7 +39,6 @@
 	projectile = /obj/projectile/beam/stun
 	fire_sound = 'sound/weapons/Taser.ogg'
 	module_class = VEHICLE_MODULE_CLASS_MICRO
-	required_type = list(/obj/vehicle/sealed/mecha/micro/sec)
 
 /obj/item/vehicle_module/legacy/weapon/ballistic/microshotgun
 	w_class = WEIGHT_CLASS_BULKY
@@ -59,7 +56,6 @@
 	deviation = 0.7
 	projectile_energy_cost = 100
 	module_class = VEHICLE_MODULE_CLASS_MICRO
-	required_type = list(/obj/vehicle/sealed/mecha/micro/sec)
 
 /obj/item/vehicle_module/legacy/weapon/ballistic/microshotgun/Topic(href,href_list)
 	..()
@@ -76,11 +72,8 @@
 				occupant_message("Now firing slugs.")
 				projectile = /obj/projectile/bullet/shotgun
 
-	return
-
 /obj/item/vehicle_module/legacy/weapon/ballistic/microshotgun/get_equip_info()
 	return "[..()] \[<a href='?src=\ref[src];mode=0'>BS</a>|<a href='?src=\ref[src];mode=1'>BB</a>|<a href='?src=\ref[src];mode=2'>S</a>\]"
-
 
 /obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/grenade/microflashbang
 	w_class = WEIGHT_CLASS_BULKY
@@ -92,10 +85,7 @@
 	missile_speed = 1.5
 	projectile_energy_cost = 800
 	equip_cooldown = 30
-	det_time = 15
 	module_class = VEHICLE_MODULE_CLASS_MICRO
-	required_type = list(/obj/vehicle/sealed/mecha/micro/sec)
-
 
 /////////////////////////////
 //// UTILITY TOOLS BELOW ////
@@ -111,7 +101,6 @@
 	energy_drain = 10
 	damage_force = 15
 	module_class = VEHICLE_MODULE_CLASS_MICRO
-	required_type = list(/obj/vehicle/sealed/mecha/micro/utility)
 
 /obj/item/vehicle_module/legacy/tool/drill/micro/action(atom/target)
 	if(!action_checks(target))
@@ -160,7 +149,6 @@
 	equip_cooldown = 5
 	energy_drain = 0
 	module_class = VEHICLE_MODULE_CLASS_MICRO
-	required_type = list(/obj/vehicle/sealed/mecha/micro/utility)
 	var/orecapacity = 500
 
 /obj/item/vehicle_module/legacy/tool/micro/orescoop/action(atom/target)
@@ -223,5 +211,3 @@
 		contents -= O
 		O.loc = src.loc
 	to_chat(usr, "<span class='info'>You empty the ore box</span>")
-
-	return

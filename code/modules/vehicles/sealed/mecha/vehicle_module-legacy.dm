@@ -13,8 +13,6 @@
 	/// Bitflag. Used by exosuit fabricator to assign sub-categories based on which exosuits can equip this.
 	var/mech_flags = NONE
 	var/salvageable = TRUE
-	///May be either a type or a list of allowed types
-	var/required_type = /obj/vehicle/sealed/mecha
 	///mechaequip2
 	var/equip_type = null
 	var/allow_duplicate = FALSE
@@ -179,7 +177,6 @@
 	equip_ready = state
 	if(chassis)
 		send_byjax(chassis.occupant_legacy,"exosuit.browser","\ref[src]",src.get_equip_info())
-	return
 
 /obj/item/vehicle_module/legacy/proc/occupant_message(message)
 	if(chassis)
@@ -189,10 +186,6 @@
 /obj/item/vehicle_module/legacy/proc/log_message(message)
 	if(chassis)
 		chassis.log_message("<i>[src]:</i> [message]")
-	return
-
-///Allows mech equipment to do an action upon the mech moving
-/obj/item/vehicle_module/legacy/proc/MoveAction()
 	return
 
 ///Equipment returns its slowdown or speedboost.

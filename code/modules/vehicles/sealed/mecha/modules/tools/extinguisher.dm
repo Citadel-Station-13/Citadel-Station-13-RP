@@ -6,7 +6,6 @@
 	equip_cooldown = 5
 	energy_drain = 0
 	range = MELEE|RANGED
-	required_type = list(/obj/vehicle/sealed/mecha/working)
 	var/spray_particles = 5
 	///Units of liquid per particle. 5 is enough to wet the floor - it's a big fire extinguisher, so should be fine
 	var/spray_amount = 5

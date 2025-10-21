@@ -7,7 +7,6 @@
 	energy_drain = 15
 	range = MELEE
 	ready_sound = 'sound/items/Ratchet.ogg'
-	required_type = list(/obj/vehicle/sealed/mecha/working/ripley)
 
 	var/obj/item/my_tool = null
 	var/tooltype = /obj/item/tool/wrench/power

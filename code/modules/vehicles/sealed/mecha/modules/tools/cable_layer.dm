@@ -5,7 +5,6 @@
 	var/obj/structure/cable/last_piece
 	var/obj/item/stack/cable_coil/cable
 	var/max_cable = 1000
-	required_type = list(/obj/vehicle/sealed/mecha/working)
 
 /obj/item/vehicle_module/legacy/tool/cable_layer/Initialize(mapload)
 	. = ..()

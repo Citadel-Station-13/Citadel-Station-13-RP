@@ -5,7 +5,6 @@
 	energy_drain = 10
 	var/dam_force = 20
 	var/obj/vehicle/sealed/mecha/working/ripley/cargo_holder
-	required_type = list(/obj/vehicle/sealed/mecha/working)
 	ready_sound = 'sound/mecha/gasdisconnected.ogg'
 
 /obj/item/vehicle_module/legacy/tool/hydraulic_clamp/attach(obj/vehicle/sealed/mecha/M as obj)

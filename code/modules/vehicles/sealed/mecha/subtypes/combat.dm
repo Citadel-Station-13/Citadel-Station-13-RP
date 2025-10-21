@@ -7,11 +7,14 @@
 	damage_absorption = list("brute"=0.7,"fire"=1,"bullet"=0.7,"laser"=0.85,"energy"=1,"bomb"=0.8)
 	var/am = "d3c2fbcadca903a41161ccc9df9cf948"
 
-	max_hull_equip = 2
-	max_weapon_equip = 2
-	max_utility_equip = 1
-	max_universal_equip = 1
-	max_special_equip = 1
+	module_slots = list(
+		VEHICLE_MODULE_SLOT_HULL = 2,
+		VEHICLE_MODULE_SLOT_WEAPON = 2,
+		VEHICLE_MODULE_SLOT_UTILITY = 3,
+		VEHICLE_MODULE_SLOT_UNIVERSAL = 2,
+		VEHICLE_MODULE_SLOT_SPECIAL = 1,
+	)
+
 	cargo_capacity = 1
 
 	encumbrance_gap = 1.5

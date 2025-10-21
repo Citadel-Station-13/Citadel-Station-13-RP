@@ -37,7 +37,6 @@
 	energy_drain = 60
 	projectile = /obj/projectile/beam
 	fire_sound = 'sound/weapons/Laser.ogg'
-	required_type = list(/obj/vehicle/sealed/mecha/combat, /obj/vehicle/sealed/mecha/working)
 
 	module_slot = VEHICLE_MODULE_SLOT_UTILITY
 

@@ -13,7 +13,6 @@
 	var/fire_sound //Sound played while firing.
 	var/fire_volume = 50 //How loud it is played.
 	var/auto_rearm = 0 //Does the weapon reload itself after each shot?
-	required_type = list(/obj/vehicle/sealed/mecha/combat, /obj/vehicle/sealed/mecha/working/hoverpod/combatpod)
 
 	step_delay = 0.1
 

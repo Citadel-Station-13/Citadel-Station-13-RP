@@ -5,7 +5,6 @@
 	origin_tech = list(TECH_PHORON = 3, TECH_MAGNET = 6, TECH_BIO = 5, TECH_DATA = 4)
 	range = MELEE|RANGED
 	equip_cooldown = 3 SECONDS
-	required_type = list(/obj/vehicle/sealed/mecha/medical)
 
 	var/droid_state = "med_droid"
 

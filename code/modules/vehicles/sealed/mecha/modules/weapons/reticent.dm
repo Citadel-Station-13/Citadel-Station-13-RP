@@ -70,8 +70,6 @@
 	var/dam_force = 15
 	origin_tech = list(TECH_MATERIAL = 5, TECH_COMBAT = 4, TECH_ILLEGAL = 5)
 
-	equip_type = EQUIP_SPECIAL
-
 /obj/item/vehicle_module/legacy/weapon/infernoblade/action(atom/target)
 	if(!action_checks(target)) return
 

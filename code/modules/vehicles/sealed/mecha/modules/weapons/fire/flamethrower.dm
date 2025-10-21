@@ -6,7 +6,6 @@
 	icon_state = "mecha_cremate"
 
 	energy_drain = 30
-
 	step_delay = 0.5
 
 	projectile = /obj/projectile/bullet/incendiary/flamethrower/large
@@ -20,8 +19,6 @@
 	icon_state = "mecha_cremate-rig"
 
 	energy_drain = 50
-	required_type = list(/obj/vehicle/sealed/mecha/combat, /obj/vehicle/sealed/mecha/working)
-
 	projectile = /obj/projectile/bullet/incendiary/flamethrower
 
 	origin_tech = list(TECH_MATERIAL = 3, TECH_COMBAT = 3, TECH_PHORON = 3, TECH_ILLEGAL = 2)
