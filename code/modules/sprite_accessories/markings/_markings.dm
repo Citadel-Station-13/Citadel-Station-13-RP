@@ -505,11 +505,11 @@
 	id = "cryptid_ribs"
 	icon_state = "cryptid_ribs"
 	legacy_use_additive_color_matrix = FALSE
-	bodyparts = list(BP_CHEST)
+	body_parts = list(BP_TORSO)
 
 /datum/sprite_accessory/marking/cryptid_fur
 	name = "Cryptid Fur"
 	id = "cryptid_fur"
 	icon_state = "cryptid_fur"
 	legacy_use_additive_color_matrix = FALSE
-	bodyparts = list(BP_CHEST, BP_L_ARM, BP_L_HAND, BP_R_ARM, BP_R_HAND)
+	body_parts = list(BP_TORSO, BP_L_ARM, BP_L_HAND, BP_R_ARM, BP_R_HAND)
