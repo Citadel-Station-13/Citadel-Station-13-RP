@@ -170,8 +170,6 @@
 	var/list/available_equipment = list()
 	available_equipment = chassis.equipment
 
-	if(chassis.weapons_only_cycle)
-		available_equipment = chassis.weapon_equipment
 
 	if(available_equipment.len == 0)
 		chassis.occupant_message("No equipment available.")

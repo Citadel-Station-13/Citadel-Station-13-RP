@@ -42,6 +42,11 @@
 	return FALSE
 	#warn hook
 
+/obj/item/vehicle_module/proc/is_active_click_module()
+	if(!vehicle)
+		return FALSE
+	#warn impl
+
 //* Chassis - Physicality *//
 
 /**

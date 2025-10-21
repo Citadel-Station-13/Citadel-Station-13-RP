@@ -173,6 +173,17 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 		else if(action.required_control_flags & flags_removed)
 			action.revoke(controller.actions_controlled)
 
+//* Movement *//
+
+/obj/vehicle/proc/vehicle_turn(direction)
+	if(dir == direction)
+		return TRUE
+	setDir(direction)
+	return TRUE
+
+/obj/vehicle/proc/vehicle_move(direction, face_direction)
+	#warn impl
+
 //* Occupants *//
 
 /obj/vehicle/proc/is_occupant(mob/M)

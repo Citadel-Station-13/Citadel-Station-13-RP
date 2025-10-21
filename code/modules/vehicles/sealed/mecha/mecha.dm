@@ -74,6 +74,15 @@
 	/// * relative to 1
 	var/comp_hull_relative_thickness = 1
 
+	//* Movement *//
+	/// Base turn speed. If non-zero, turns will take time.
+	/// * A non-zero value specifically activates turn handling systems. Under turn handling,
+	///   mecha move a little differently from normal.
+	#warn impl
+	var/base_turn_delay = 0
+	/// Strafing? Strafing mechs won't turn to face where they're going.
+	var/strafing = FALSE
+
 /obj/vehicle/sealed/mecha/Initialize()
 	. = ..()
 	START_PROCESSING(SSobj, src)
@@ -94,6 +103,24 @@
 		if(!ispath(maybe_path))
 			continue
 		#warn impl
+
+/obj/vehicle/sealed/mecha/vehicle_turn(direction)
+	if(dir == direction)
+		return TRUE
+	. = ..()
+	if(.)
+		#warn set move delay
+
+/obj/vehicle/sealed/mecha/vehicle_move(direction)
+	// Mechs have a special movement controller.
+	if(strafing)
+		// Strafing: Usually comes with a move delay but doesn't turn the mech.
+		#warn handle strafing
+	else if(!(direction & dir))
+		// Normal: Turn the mech if we're not travelling vaguely in our dir.
+		#warn handle turn
+
+	return vehicle_move(direction, dir)
 
 
 #warn impl all

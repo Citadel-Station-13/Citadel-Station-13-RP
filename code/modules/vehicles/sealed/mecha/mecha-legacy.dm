@@ -105,8 +105,6 @@
 
 	//* Legacy - Actions *//
 	var/datum/mini_hud/mech/minihud
-	/// re we strafing or not?
-	var/strafing = 0
 
 	/// Same as above. Don't forget to GRANT the verb&actions if you want everything to work proper.
 	var/overload_possible = 0
@@ -219,11 +217,6 @@
 
 	if(wreckage)
 		var/obj/effect/decal/mecha_wreckage/WR = new wreckage(loc)
-		hull_equipment.Cut()
-		weapon_equipment.Cut()
-		utility_equipment.Cut()
-		universal_equipment.Cut()
-		special_equipment.Cut()
 		for(var/obj/item/vehicle_module/legacy/mod as anything in modules)
 			if(!mod.salvageable)
 				continue
@@ -510,6 +503,7 @@
 
 	tally += 0.5 SECONDS * (1 - actuator.get_efficiency())	// Damaged actuators run slower, slowing as damage increases beyond its threshold.
 
+	#warn deal with strafing
 	if(strafing)
 		tally = round(tally * actuator.strafing_multiplier)
 
@@ -578,6 +572,7 @@
 
 	else if(src.dir != direction)
 
+		#warn deal with strafing (all references!)
 		if(strafing)
 			move_result = mechstep(direction)
 		else
