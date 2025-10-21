@@ -300,7 +300,14 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
+	if(!linked){
+		to_chat(usr, "<span class='warning'>No vessel associated to this console!</span>")
+		return
+	}
+
 	var/n_name = sanitizeSafe(input(usr, "How would you like to label the vessel? NOTE: For faction characters and players, it is IMPERATIVE that you add your faction prefix to this i.e 'NEV' or 'FTU'.", "Vessel Labelling", null)  as text, MAX_NAME_LEN)
 	linked.name = n_name
+	to_chat(usr, "Vessel renamed to " + n_name)
+	message_admins("[usr] has renamed vessel to [n_name].")
 
 
