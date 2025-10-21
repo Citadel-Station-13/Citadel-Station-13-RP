@@ -27,48 +27,44 @@
 			occupant_message("<span class='warning'>You can't load living things into the cargo compartment.</span>")
 			return
 		if(O.anchored)
-			if(enable_special)
-				if(istype(O, /obj/machinery/door/firedoor))	// I love doors.
-					var/obj/machinery/door/firedoor/FD = O
-					if(FD.blocked)
-						FD.visible_message("<span class='danger'>\The [chassis] begins prying on \the [FD]!</span>")
-						if(do_after(chassis.occupant_legacy,10 SECONDS,FD))
-							playsound(FD, 'sound/machines/door/airlock_creaking.ogg', 100, 1)
-							FD.blocked = 0
-							FD.update_icon()
-							FD.open(1)
-							FD.visible_message("<span class='warning'>\The [chassis] tears \the [FD] open!</span>")
-					else if(FD.density)
-						FD.visible_message("<span class='warning'>\The [chassis] begins forcing \the [FD] open!</span>")
-						if(do_after(chassis.occupant_legacy, 5 SECONDS,FD))
-							playsound(FD, 'sound/machines/door/airlock_creaking.ogg', 100, 1)
-							FD.visible_message("<span class='danger'>\The [chassis] forces \the [FD] open!</span>")
-							FD.open(1)
-					else
-						FD.visible_message("<span class='danger'>\The [chassis] forces \the [FD] closed!</span>")
-						FD.close(1)
-				else if(istype(O, /obj/machinery/door/airlock))	// D o o r s.
-					var/obj/machinery/door/airlock/AD = O
-					if(AD.locked)
-						occupant_message("<span class='notice'>The airlock's bolts prevent it from being forced.</span>")
-					else if(!AD.operating)
-						if(AD.welded)
-							AD.visible_message("<span class='warning'>\The [chassis] begins prying on \the [AD]!</span>")
-							if(do_after(chassis.occupant_legacy, 15 SECONDS,AD) && chassis.Adjacent(AD))
-								AD.welded = FALSE
-								AD.update_icon()
-								playsound(AD, 'sound/machines/door/airlock_creaking.ogg', 100, 1)
-								AD.visible_message("<span class='danger'>\The [chassis] tears \the [AD] open!</span>")
-						if(!AD.welded)
-							if(density)
-								spawn(0)
-									AD.open(1)
-							else
-								spawn(0)
-									AD.close(1)
-				return
-			else
-				occupant_message("<span class='warning'>[target] is firmly secured.</span>")
+			if(istype(O, /obj/machinery/door/firedoor))	// I love doors.
+				var/obj/machinery/door/firedoor/FD = O
+				if(FD.blocked)
+					FD.visible_message("<span class='danger'>\The [chassis] begins prying on \the [FD]!</span>")
+					if(do_after(chassis.occupant_legacy,10 SECONDS,FD))
+						playsound(FD, 'sound/machines/door/airlock_creaking.ogg', 100, 1)
+						FD.blocked = 0
+						FD.update_icon()
+						FD.open(1)
+						FD.visible_message("<span class='warning'>\The [chassis] tears \the [FD] open!</span>")
+				else if(FD.density)
+					FD.visible_message("<span class='warning'>\The [chassis] begins forcing \the [FD] open!</span>")
+					if(do_after(chassis.occupant_legacy, 5 SECONDS,FD))
+						playsound(FD, 'sound/machines/door/airlock_creaking.ogg', 100, 1)
+						FD.visible_message("<span class='danger'>\The [chassis] forces \the [FD] open!</span>")
+						FD.open(1)
+				else
+					FD.visible_message("<span class='danger'>\The [chassis] forces \the [FD] closed!</span>")
+					FD.close(1)
+			else if(istype(O, /obj/machinery/door/airlock))	// D o o r s.
+				var/obj/machinery/door/airlock/AD = O
+				if(AD.locked)
+					occupant_message("<span class='notice'>The airlock's bolts prevent it from being forced.</span>")
+				else if(!AD.operating)
+					if(AD.welded)
+						AD.visible_message("<span class='warning'>\The [chassis] begins prying on \the [AD]!</span>")
+						if(do_after(chassis.occupant_legacy, 15 SECONDS,AD) && chassis.Adjacent(AD))
+							AD.welded = FALSE
+							AD.update_icon()
+							playsound(AD, 'sound/machines/door/airlock_creaking.ogg', 100, 1)
+							AD.visible_message("<span class='danger'>\The [chassis] tears \the [AD] open!</span>")
+					if(!AD.welded)
+						if(density)
+							spawn(0)
+								AD.open(1)
+						else
+							spawn(0)
+								AD.close(1)
 			return
 		if(cargo_holder.cargo.len >= cargo_holder.cargo_capacity)
 			occupant_message("<span class='warning'>Not enough room in cargo compartment.</span>")
@@ -102,7 +98,7 @@
 			occupant_message("<span class='warning'>You squeeze [target] with [src.name]. Something cracks.</span>")
 			playsound(src, "fracture", 5, 1, -2) //CRACK
 			chassis.visible_message("<span class='warning'>[chassis] squeezes [target].</span>")
-		else if(chassis.occupant_legacy.a_intent == INTENT_DISARM && enable_special)
+		else if(chassis.occupant_legacy.a_intent == INTENT_DISARM)
 			playsound(src, 'sound/mecha/hydraulic.ogg', 10, 1, -2)
 			M.take_overall_damage(dam_force/2)
 			M.adjustOxyLoss(round(dam_force/3))

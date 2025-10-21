@@ -20,8 +20,6 @@
 	var/allow_duplicate = FALSE
 	///Sound to play once the fire delay passed.
 	var/ready_sound = 'sound/mecha/mech_reload_default.ogg'
-	/// Will the tool do its special?
-	var/enable_special = FALSE
 	///Does the component slow/speed up the suit?
 	var/step_delay = 0
 
@@ -40,6 +38,8 @@
 
 /obj/item/vehicle_module/legacy/proc/add_equip_overlay(obj/vehicle/sealed/mecha/M as obj)
 	return
+
+/obj/item/vehicle_module/legacy/proc/
 
 /obj/item/vehicle_module/legacy/proc/update_chassis_page()
 	if(chassis)
@@ -122,15 +122,6 @@
 /obj/item/vehicle_module/legacy/proc/is_melee()
 	return range&MELEE
 
-/obj/item/vehicle_module/legacy/proc/enable_special_checks(atom/target)
-	if(ispath(required_type))
-		return istype(target, required_type)
-
-	for (var/path in required_type)
-		if (istype(target, path))
-			return TRUE
-	return FALSE
-
 /obj/item/vehicle_module/legacy/proc/action_checks(atom/target)
 	if(!target)
 		return FALSE
@@ -164,10 +155,6 @@
 	chassis = M
 	src.loc = M
 
-	if(enable_special_checks(M))
-		enable_special = TRUE
-
-	M.log_message("[src] initialized.")
 	if(!M.selected)
 		M.selected = src
 	src.update_chassis_page()
@@ -182,8 +169,6 @@
 		chassis.log_message("[src] removed from equipment.")
 		chassis = null
 		set_ready_state(1)
-	enable_special = FALSE
-	return
 
 /obj/item/vehicle_module/legacy/Topic(href,href_list)
 	if(href_list["detach"])

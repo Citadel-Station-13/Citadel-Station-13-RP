@@ -33,13 +33,9 @@
 					LEGACY_EX_ACT(target, 2, null)
 
 			else if(istype(target, /turf/simulated/mineral))
-				if(enable_special)
-					for(var/turf/simulated/mineral/M in range(chassis,1))
-						if(get_dir(chassis,M)&chassis.dir)
-							M.GetDrilled()
-				else
-					var/turf/simulated/mineral/M1 = target
-					M1.GetDrilled()
+				for(var/turf/simulated/mineral/M in range(chassis,1))
+					if(get_dir(chassis,M)&chassis.dir)
+						M.GetDrilled()
 				log_message("Drilled through [target]")
 				if(locate(/obj/item/vehicle_module/legacy/tool/hydraulic_clamp) in chassis.equipment)
 					var/obj/structure/ore_box/ore_box = locate(/obj/structure/ore_box) in chassis:cargo
@@ -113,7 +109,7 @@
 					LEGACY_EX_ACT(target, 2, null)
 			else if(istype(target, /turf/simulated/mineral))
 				var/turf/simulated/mineral/M = target
-				if(enable_special && !M.density)
+				if(!M.density)
 					LEGACY_EX_ACT(M, 2, null)
 					log_message("Bored into [target]")
 				else

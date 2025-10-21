@@ -9,13 +9,9 @@
 
 	var/slowdown_multiplier = 0.75	// How much does the exosuit multiply its slowdown by if it's the proper type?
 
-/obj/item/vehicle_module/legacy/speedboost/get_step_delay()
-	if(enable_special)
-		return -1
-	else
-		return 3
-
 /obj/item/vehicle_module/legacy/speedboost/detach()
 	chassis.step_in = initial(chassis.step_in)
 	..()
 	return
+
+#warn deal with this shit

@@ -29,10 +29,7 @@
 	if(href_list["mode"])
 		my_rcd.mode_index = text2num(href_list["mode"])
 		occupant_message("RCD reconfigured to '[my_rcd.modes[my_rcd.mode_index]]'.")
-/*
-/obj/item/vehicle_module/legacy/tool/rcd/get_equip_info()
-	return "[..()] \[<a href='?src=\ref[src];mode=0'>D</a>|<a href='?src=\ref[src];mode=1'>C</a>|<a href='?src=\ref[src];mode=2'>A</a>\]"
-*/
+
 /obj/item/vehicle_module/legacy/tool/rcd/get_equip_info()
 	var/list/content = list(..()) // This is all for one line, in the interest of string tree conservation.
 	var/i = 1

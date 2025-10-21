@@ -5,12 +5,16 @@
 	origin_tech = list(TECH_MATERIAL = 4, TECH_MAGNET = 3, TECH_POWER = 4, TECH_PHORON = 2)
 	equip_cooldown = 3
 	energy_drain = 15
-	range = MELEE
+	range = MELEE|RANGED
 	equip_type = EQUIP_UTILITY
 	ready_sound = 'sound/items/Ratchet.ogg'
 	required_type = list(/obj/vehicle/sealed/mecha/working/ripley)
 
 	tooltype = /obj/item/weldingtool/electric/mounted/exosuit
+
+/obj/item/vehicle_module/legacy/tool/powertool/welding/Initialize(mapload)
+	. = ..()
+	my_tool.reach = 7
 
 /obj/item/vehicle_module/legacy/tool/powertool/welding/action(var/atom/target)
 	..()
@@ -22,13 +26,3 @@
 
 	if(!do_after(chassis.occupant_legacy, 0.3 SECONDS, target))
 		qdel(weld_beam)
-
-/obj/item/vehicle_module/legacy/tool/powertool/welding/attach(obj/vehicle/sealed/mecha/M as obj)
-	..()
-
-	if(enable_special)
-		range = MELEE|RANGED
-		my_tool.reach = 7
-	else
-		range = MELEE
-		my_tool.reach = 1
