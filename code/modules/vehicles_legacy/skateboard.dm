@@ -94,7 +94,7 @@
 			if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 				//5% chance to suffer severe head trauma because you weren't wearing a helmet
 				if(prob(5))
-					var/obj/item/organ/external/egg = H.get_organ(BP_HEAD)
+					var/obj/item/organ/external/egg = H.get_organ_for_zone(TARGET_ZONE_HEAD)
 					egg?.fracture()
 					H.adjustBrainLoss(rand(5, 10))
 					visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying! They land on their head, that doesn't look good...</span>")
@@ -112,7 +112,7 @@
 			var/head_slot = SLOT_HEAD
 			if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 				if(prob(5))
-					var/obj/item/organ/external/egg = H.get_organ(BP_HEAD)
+					var/obj/item/organ/external/egg = H.get_organ_for_zone(TARGET_ZONE_HEAD)
 					egg?.fracture()
 					H.adjustBrainLoss(rand(5, 10))
 					visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying! They land on their head, that doesn't look good...</span>")

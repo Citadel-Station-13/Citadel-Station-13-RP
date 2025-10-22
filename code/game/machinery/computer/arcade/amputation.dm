@@ -11,7 +11,7 @@
 	if(!iscarbon(user))
 		return
 	var/mob/living/carbon/c_user = user
-	if(!c_user.get_organ(BP_L_ARM) && !c_user.get_organ(BP_R_ARM))
+	if(!c_user.legacy_organ_by_zone(BP_L_ARM) && !c_user.legacy_organ_by_zone(BP_R_ARM))
 		return
 	to_chat(c_user, SPAN_WARNING("You move your hand towards the machine, and begin to hesitate as a bloodied guillotine emerges from inside of it..."))
 	if(do_after(c_user, 50, target = src))
@@ -20,7 +20,7 @@
 		var/which_hand = BP_L_ARM
 		if(!(c_user.get_active_held_item() % 2))
 			which_hand = BP_R_ARM
-		var/obj/item/organ/external/chopchop = c_user.get_organ(which_hand)
+		var/obj/item/organ/external/chopchop = c_user.legacy_organ_by_zone(which_hand)
 		chopchop.droplimb()
 		qdel(chopchop)
 		//user.mind?.adjust_experience(/datum/skill/gaming, 100)

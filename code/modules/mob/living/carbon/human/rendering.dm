@@ -16,7 +16,7 @@
 	if(isnull(rendering))
 		remove_standing_overlay(HUMAN_OVERLAY_EARS)
 		return
-	var/obj/item/organ/external/head/head_organ = get_organ(BP_HEAD)
+	var/obj/item/organ/external/head/head_organ = legacy_organ_by_zone(BP_HEAD)
 	if(!head_organ || head_organ.is_stump())
 		remove_standing_overlay(HUMAN_OVERLAY_EARS)
 		return
@@ -58,7 +58,7 @@
 		//! legacy code
 		remove_standing_overlay(HUMAN_OVERLAY_HORNS)
 		return
-	var/obj/item/organ/external/head/head_organ = get_organ(BP_HEAD)
+	var/obj/item/organ/external/head/head_organ = legacy_organ_by_zone(BP_HEAD)
 	if(!head_organ || head_organ.is_stump())
 		remove_standing_overlay(HUMAN_OVERLAY_HORNS)
 		return
@@ -96,7 +96,7 @@
 	if(isnull(rendering))
 		remove_standing_overlay(HUMAN_OVERLAY_FACEHAIR)
 		return
-	var/obj/item/organ/external/head/head_organ = get_organ(BP_HEAD)
+	var/obj/item/organ/external/head/head_organ = legacy_organ_by_zone(BP_HEAD)
 	if(!head_organ || head_organ.is_stump())
 		remove_standing_overlay(HUMAN_OVERLAY_FACEHAIR)
 		return
@@ -133,7 +133,7 @@
 	if(isnull(rendering))
 		remove_standing_overlay(HUMAN_OVERLAY_HAIR)
 		return
-	var/obj/item/organ/external/head/head_organ = get_organ(BP_HEAD)
+	var/obj/item/organ/external/head/head_organ = legacy_organ_by_zone(BP_HEAD)
 	if(!head_organ || head_organ.is_stump())
 		remove_standing_overlay(HUMAN_OVERLAY_HAIR)
 		return
@@ -410,7 +410,7 @@
 /mob/living/carbon/human/update_hair()
 	update_eyes() //Pirated out of here, for glowing eyes.
 
-	var/obj/item/organ/external/head/head_organ = get_organ(BP_HEAD)
+	var/obj/item/organ/external/head/head_organ = legacy_organ_by_zone(BP_HEAD)
 	if(istype(head_organ,/obj/item/organ/external/head/vr))
 		var/obj/item/organ/external/head/vr/head_organ_vr = head_organ
 		head_spriteacc_offset = head_organ_vr.head_offset
@@ -428,7 +428,7 @@
 	// first check whether something actually changed about damage appearance
 	var/damage_appearance = ""
 
-	for(var/obj/item/organ/external/O in organs)
+	for(var/obj/item/organ/external/O in external_organs)
 		if(isnull(O) || O.is_stump())
 			continue
 		damage_appearance += O.damage_state
@@ -493,7 +493,7 @@
 		icon_key += "[lip_style]"
 	else
 		icon_key += "nolips"
-	var/obj/item/organ/internal/eyes/eyes = internal_organs_by_name[O_EYES]
+	var/obj/item/organ/internal/eyes/eyes = keyed_organs[ORGAN_KEY_EYES]
 	if(eyes)
 		icon_key += "[rgb(eyes.eye_colour[1], eyes.eye_colour[2], eyes.eye_colour[3])]"
 	else
@@ -548,7 +548,7 @@
 		base_icon = GLOB.human_icon_cache[icon_key]
 	else
 		//BEGIN CACHED ICON GENERATION.
-		var/obj/item/organ/external/chest = get_organ(BP_TORSO)
+		var/obj/item/organ/external/chest = legacy_organ_by_zone(BP_TORSO)
 		base_icon = chest.get_icon()
 
 		for(var/obj/item/organ/external/part in organs)
@@ -663,7 +663,7 @@
 	set_standing_overlay(HUMAN_OVERLAY_UNDERWEAR, setting)
 
 /mob/living/carbon/human/update_eyes()
-	var/obj/item/organ/internal/eyes/eyes = internal_organs_by_name[O_EYES]
+	var/obj/item/organ/internal/eyes/eyes = keyed_organs[ORGAN_KEY_EYES]
 	if(eyes)
 		eyes.update_colour()
 		update_icons_body()
@@ -681,7 +681,7 @@
 		return
 
 	//Get the head, we'll need it later.
-	var/obj/item/organ/external/head/head_organ = get_organ(BP_HEAD)
+	var/obj/item/organ/external/head/head_organ = legacy_organ_by_zone(BP_HEAD)
 	if(!head_organ || head_organ.is_stump() )
 		remove_standing_overlay(HUMAN_OVERLAY_EYES)
 		return

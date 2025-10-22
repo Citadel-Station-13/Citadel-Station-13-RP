@@ -12,7 +12,7 @@
 	if(!..()) return FALSE
 	if (!hasorgans(target))
 		return 0
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	if (!affected || (affected.robotic >= ORGAN_ROBOT))
 		return 0
 	return target_zone == O_MOUTH
@@ -49,7 +49,7 @@
 	target.op_stage.face = 1
 
 /datum/surgery_step/generic/cut_face/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, slicing [target]'s throat wth \the [tool]!</font>" , \
 	"<font color='red'>Your hand slips, slicing [target]'s throat wth \the [tool]!</font>" )
 	affected.create_wound(WOUND_TYPE_CUT, 60)
@@ -122,7 +122,7 @@
 	target.op_stage.face = 3
 
 /datum/surgery_step/face/fix_face/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, tearing skin on [target]'s face with \the [tool]!</font>", \
 	"<font color='red'>Your hand slips, tearing skin on [target]'s face with \the [tool]!</font>")
 	target.apply_damage(10, DAMAGE_TYPE_BRUTE, affected, sharp=1, sharp=1)
@@ -154,7 +154,7 @@
 	..()
 
 /datum/surgery_step/face/cauterize/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	user.visible_message("<font color=#4F49AF>[user] cauterizes the incision on [target]'s face and neck with \the [tool].</font>", \
 	"<font color=#4F49AF>You cauterize the incision on [target]'s face and neck with \the [tool].</font>")
 	affected.open = 0
@@ -165,7 +165,7 @@
 	target.op_stage.face = 0
 
 /datum/surgery_step/face/cauterize/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, leaving a small burn on [target]'s face with \the [tool]!</font>", \
 	"<font color='red'>Your hand slips, leaving a small burn on [target]'s face with \the [tool]!</font>")
 	target.apply_damage(4, DAMAGE_TYPE_BURN, affected)

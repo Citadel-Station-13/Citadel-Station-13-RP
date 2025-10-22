@@ -48,11 +48,6 @@
 			if(100 to 200)
 				wiz_instability_display.icon_state = "instability3"
 
-/mob/living/PhysicalLife()
-	if((. = ..()))
-		return
-	handle_instability()
-
 // Proc: handle_instability()
 // Parameters: 0
 // Description: Makes instability decay.  instability_effects() handles the bad effects for having instability.  It will also hold back

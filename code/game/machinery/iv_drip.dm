@@ -181,7 +181,7 @@
 	if(!(get_dist(src, attached_victim) <= 1 && isturf(attached_victim.loc)))
 		to_chat(attached_victim, SPAN_USERDANGER("The IV drip needle is ripped out of you, leaving an open bleeding wound!"))
 		var/list/arm_zones = shuffle(list(BP_R_ARM, BP_L_ARM))
-		var/obj/item/organ/external/chosen_limb = attached_victim.get_organ(arm_zones[1]) || attached_victim.get_organ(arm_zones[2]) || attached_victim.get_organ(BP_TORSO)
+		var/obj/item/organ/external/chosen_limb = attached_victim.legacy_organ_by_zone(arm_zones[1]) || attached_victim.legacy_organ_by_zone(arm_zones[2]) || attached_victim.legacy_organ_by_zone(BP_TORSO)
 		chosen_limb.inflict_bodypart_damage(
 			brute = 3,
 			damage_mode = DAMAGE_MODE_SHARP,

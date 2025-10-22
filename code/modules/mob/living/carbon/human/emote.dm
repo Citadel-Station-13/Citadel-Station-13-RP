@@ -966,8 +966,8 @@
 		if("aslap", "aslaps")
 			m_type = 1
 			var/mob/living/carbon/human/H = src
-			var/obj/item/organ/external/L = H.get_organ("l_hand")
-			var/obj/item/organ/external/R = H.get_organ("r_hand")
+			var/obj/item/organ/external/L = H.legacy_organ_by_zone("l_hand")
+			var/obj/item/organ/external/R = H.legacy_organ_by_zone("r_hand")
 			var/left_hand_good = 0
 			var/right_hand_good = 0
 			if(L && (!(L.status & ORGAN_DESTROYED)) && (!(L.splinted)) && (!(L.status & ORGAN_BROKEN)))
@@ -1040,8 +1040,8 @@
 		if("snap", "snaps")
 			m_type = 2
 			var/mob/living/carbon/human/H = src
-			var/obj/item/organ/external/L = H.get_organ("l_hand")
-			var/obj/item/organ/external/R = H.get_organ("r_hand")
+			var/obj/item/organ/external/L = H.legacy_organ_by_zone("l_hand")
+			var/obj/item/organ/external/R = H.legacy_organ_by_zone("r_hand")
 			var/left_hand_good = 0
 			var/right_hand_good = 0
 			if(L && (!(L.status & ORGAN_DESTROYED)) && (!(L.splinted)) && (!(L.status & ORGAN_BROKEN)))

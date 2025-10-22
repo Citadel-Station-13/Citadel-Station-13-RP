@@ -87,6 +87,7 @@
  * !They are also used as ID Tags for various otther things, such as character saves!
  * -Zandario
  * TODO: give rest of species ids so we don't need to do this. ^
+ * todo: these shouldn't be defines, we can just :: the datum.
  */
 #define SPECIES_ADHERENT "Adherent"
 #define SPECIES_AKULA "Akula"

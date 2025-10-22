@@ -14,8 +14,6 @@
 		update_items()
 	if (src.stat != DEAD) //still using power
 		use_power()
-		process_killswitch()
-		process_locks()
 		process_queued_alarms()
 
 /mob/living/silicon/robot/proc/clamp_values()
@@ -238,26 +236,6 @@
 	if(src.module_state_3)
 		src.module_state_3:screen_loc = ui_inv3
 	updateicon()
-
-/mob/living/silicon/robot/proc/process_killswitch()
-	if(killswitch)
-		killswitch_time --
-		if(killswitch_time <= 0)
-			if(src.client)
-				to_chat(src, "<span class='danger'>Killswitch Activated</span>")
-			killswitch = 0
-			spawn(5)
-				gib()
-
-/mob/living/silicon/robot/proc/process_locks()
-	if(weapon_lock)
-		uneq_all()
-		weaponlock_time --
-		if(weaponlock_time <= 0)
-			if(src.client)
-				to_chat(src, "<span class='danger'>Weapon Lock Timed Out!</span>")
-			weapon_lock = 0
-			weaponlock_time = 120
 
 // todo: better way
 /mob/living/silicon/robot/update_mobility()

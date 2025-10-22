@@ -12,7 +12,7 @@
 	if (!hasorgans(target))
 		return 0
 
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	return affected && !(affected.robotic >= ORGAN_ROBOT) && affected.encased && affected.open >= 2
 
 ///////////////////////////////////////////////////////////////
@@ -35,13 +35,13 @@
 /datum/surgery_step/open_encased/saw/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if (!hasorgans(target))
 		return
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	return ..() && affected && affected.open == 2
 
 /datum/surgery_step/open_encased/saw/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if (!hasorgans(target))
 		return
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 
 	user.visible_message("[user] begins to cut through [target]'s [affected.encased] with \the [tool].", \
 	"You begin to cut through [target]'s [affected.encased] with \the [tool].")
@@ -51,7 +51,7 @@
 /datum/surgery_step/open_encased/saw/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if (!hasorgans(target))
 		return
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 
 	user.visible_message("<font color=#4F49AF>[user] has cut [target]'s [affected.encased] open with \the [tool].</font>", \
 	"<font color=#4F49AF>You have cut [target]'s [affected.encased] open with \the [tool].</font>")
@@ -60,7 +60,7 @@
 /datum/surgery_step/open_encased/saw/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if (!hasorgans(target))
 		return
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 
 	user.visible_message("<font color='red'>[user]'s hand slips, cracking [target]'s [affected.encased] with \the [tool]!</font>" , \
 	"<font color='red'>Your hand slips, cracking [target]'s [affected.encased] with \the [tool]!</font>" )
@@ -88,13 +88,13 @@
 /datum/surgery_step/open_encased/retract/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if (!hasorgans(target))
 		return
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	return ..() && affected && affected.open == 2.5
 
 /datum/surgery_step/open_encased/retract/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if (!hasorgans(target))
 		return
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 
 	var/msg = "[user] starts to force open the [affected.encased] in [target]'s [affected.name] with \the [tool]."
 	var/self_msg = "You start to force open the [affected.encased] in [target]'s [affected.name] with \the [tool]."
@@ -105,7 +105,7 @@
 /datum/surgery_step/open_encased/retract/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if (!hasorgans(target))
 		return
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	var/msg = "<font color=#4F49AF>[user] forces open [target]'s [affected.encased] with \the [tool].</font>"
 	var/self_msg = "<font color=#4F49AF>You force open [target]'s [affected.encased] with \the [tool].</font>"
 	user.visible_message(msg, self_msg)
@@ -115,7 +115,7 @@
 /datum/surgery_step/open_encased/retract/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if (!hasorgans(target))
 		return
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 
 	var/msg = "<font color='red'>[user]'s hand slips, cracking [target]'s [affected.encased]!</font>"
 	var/self_msg = "<font color='red'>Your hand slips, cracking [target]'s  [affected.encased]!</font>"
@@ -144,13 +144,13 @@
 /datum/surgery_step/open_encased/close/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if (!hasorgans(target))
 		return
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	return (..() && affected && affected.open == 3)
 
 /datum/surgery_step/open_encased/close/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if (!hasorgans(target))
 		return
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 
 	var/msg = "[user] starts bending [target]'s [affected.encased] back into place with \the [tool]."
 	var/self_msg = "You start bending [target]'s [affected.encased] back into place with \the [tool]."
@@ -161,7 +161,7 @@
 /datum/surgery_step/open_encased/close/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if (!hasorgans(target))
 		return
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 
 	var/msg = "<font color=#4F49AF>[user] bends [target]'s [affected.encased] back into place with \the [tool].</font>"
 	var/self_msg = "<font color=#4F49AF>You bend [target]'s [affected.encased] back into place with \the [tool].</font>"
@@ -172,7 +172,7 @@
 /datum/surgery_step/open_encased/close/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if (!hasorgans(target))
 		return
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 
 	var/msg = "<font color='red'>[user]'s hand slips, bending [target]'s [affected.encased] the wrong way!</font>"
 	var/self_msg = "<font color='red'>Your hand slips, bending [target]'s [affected.encased] the wrong way!</font>"
@@ -204,13 +204,13 @@
 /datum/surgery_step/open_encased/mend/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if (!hasorgans(target))
 		return
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	return ..() && affected && affected.open == 2.5
 
 /datum/surgery_step/open_encased/mend/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if (!hasorgans(target))
 		return
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 
 	var/msg = "[user] starts applying \the [tool] to [target]'s [affected.encased]."
 	var/self_msg = "You start applying \the [tool] to [target]'s [affected.encased]."
@@ -221,7 +221,7 @@
 /datum/surgery_step/open_encased/mend/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if (!hasorgans(target))
 		return
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 
 	var/msg = "<font color=#4F49AF>[user] applied \the [tool] to [target]'s [affected.encased].</font>"
 	var/self_msg = "<font color=#4F49AF>You applied \the [tool] to [target]'s [affected.encased].</font>"
@@ -247,13 +247,13 @@
 /datum/surgery_step/open_encased/advancedsaw_open/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if (!hasorgans(target))
 		return
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	return ..() && affected && affected.open >= 2 && affected.open < 3
 
 /datum/surgery_step/open_encased/advancedsaw_open/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if (!hasorgans(target))
 		return
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 
 	user.visible_message("[user] begins to open [target]'s [affected.encased] with \the [tool].", \
 	"You begin to open [target]'s [affected.encased] with \the [tool].")
@@ -263,7 +263,7 @@
 /datum/surgery_step/open_encased/advancedsaw_open/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if (!hasorgans(target))
 		return
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 
 	user.visible_message("<font color=#4F49AF>[user] has cut [target]'s [affected.encased] wide open with \the [tool].</font>", \
 	"<font color=#4F49AF>You have cut [target]'s [affected.encased] wide open with \the [tool].</font>")
@@ -272,7 +272,7 @@
 /datum/surgery_step/open_encased/advancedsaw_open/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if (!hasorgans(target))
 		return
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 
 	user.visible_message("<font color='red'>[user]'s hand slips, searing [target]'s [affected.encased] with \the [tool]!</font>" , \
 	"<font color='red'>Your hand slips, searing [target]'s [affected.encased] with \the [tool]!</font>" )
@@ -298,13 +298,13 @@
 /datum/surgery_step/open_encased/advancedsaw_mend/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if (!hasorgans(target))
 		return
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	return (..() && affected && affected.open == 3)
 
 /datum/surgery_step/open_encased/advancedsaw_mend/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if (!hasorgans(target))
 		return
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 
 	var/msg = "[user] starts sealing \the [target]'s [affected.encased] with \the [tool]."
 	var/self_msg = "You start sealing \the [target]'s [affected.encased] with \the [tool]."
@@ -315,7 +315,7 @@
 /datum/surgery_step/open_encased/advancedsaw_mend/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if (!hasorgans(target))
 		return
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 
 	var/msg = "<font color=#4F49AF>[user] sealed \the [target]'s [affected.encased] with \the [tool].</font>"
 	var/self_msg = "<font color=#4F49AF>You sealed \the [target]'s [affected.encased] with \the [tool].</font>"
