@@ -46,7 +46,8 @@
 		log_and_message_admins(SPAN_USERDANGER("Out of dynamic reservation allocations. Is there a memory leak with turf reservations?"))
 		return FALSE
 	// log first incase this OOMs us
-	log_and_message_admins(SPAN_USERDANGER("Allocating new reserved level. Now at [reserved_level_count + 1]. This may not be a good thing if the server is not at high load right now."))
+	if(reserved_level_count > 0)
+		log_and_message_admins(SPAN_USERDANGER("Allocating new reserved level. Now at [reserved_level_count + 1]. This may not be a good thing if the server is not at high load right now."))
 	reserved_level_count++
 	var/datum/map_level/reserved/level_struct = new
 	ASSERT(allocate_level(level_struct))
