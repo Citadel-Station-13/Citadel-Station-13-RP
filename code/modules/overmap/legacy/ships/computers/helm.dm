@@ -305,10 +305,11 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 		return
 	}
 
-	var/n_name = sanitizeSafe(input(usr, "How would you like to label the vessel? NOTE: For faction characters and players, it is IMPERATIVE that you add your faction prefix to this i.e 'NEV' or 'FTU'.", "Vessel Labelling", null)  as text, MAX_NAME_LEN)
-	linked.name = n_name
-	to_chat(usr, "Vessel renamed to " + n_name)
-	message_admins("[usr] has renamed vessel to [n_name].")
-	log_world("[usr] has renamed vessel to [n_name].")
-
-
+	var/input_name = input(usr, "How would you like to label the vessel? NOTE: For faction characters and players, it is IMPERATIVE that you add your faction prefix to this i.e 'NEV' or 'FTU'.", "Vessel Labelling", null) as text|null
+	if(!input_name)
+		return
+	var/sanitized_name = sanitizeSafe(input_name, MAX_NAME_LEN)
+	to_chat(usr, SPAN_NOTICE("You rename the vessel from [linked.name] to [sanitized_name]."))
+	message_admins("[key_name_admin(usr)] has renamed vessel to [sanitized_name].")
+	log_world("[key_name(usr)] has renamed vessel to [sanitized_name].")
+	linked.name = sanitized_name
