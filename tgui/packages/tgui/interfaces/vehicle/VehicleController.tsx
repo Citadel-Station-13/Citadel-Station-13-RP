@@ -6,7 +6,10 @@
 import { Component, ReactNode } from "react";
 import { Section, Stack } from "tgui-core/components";
 
+import { useBackend } from "../../backend";
 import { Window } from "../../layouts";
+import { VehicleComponent, VehicleModule } from "./helpers";
+import { VehicleData } from "./types";
 
 interface VehicleControllerProps {
   // render something below the integrity bar at home screen
@@ -49,11 +52,31 @@ export class VehicleController extends Component<VehicleControllerProps, Vehicle
 
   render() {
     return (
-      <Window width={500} height={800}>
+      <Window width={500} height={800} theme="hackerman">
         <Window.Content>
           <Stack>
             <Stack.Item>
-              Tabs
+              <Section>
+                <Stack vertical>
+                  <Stack.Item>
+                    <Stack>
+                      <Stack.Item>
+                        Chassis Integrity
+                      </Stack.Item>
+                      <Stack.Item grow>
+                        Test
+                      </Stack.Item>
+                    </Stack>
+                  </Stack.Item>
+                  {this.props.renderStackItemsBelowIntegrityHomeDisplay}
+                  {this.props.renderStackItemsBelowIntegrityDisplay}
+                </Stack>
+              </Section>
+            </Stack.Item>
+            <Stack.Item>
+              <Section>
+                Tabs
+              </Section>
             </Stack.Item>
             <Stack.Item grow>
               <VehicleControllerContent activeTab={this.state.activeControllerTabe} />
@@ -90,6 +113,7 @@ interface VehicleControllerHomeProps {
 }
 
 const VehicleControllerHome = (props) => {
+  const { act, data } = useBackend<VehicleData>();
   return (
     <>
       Test
@@ -102,10 +126,17 @@ interface VehicleControllerModulesProps {
 }
 
 const VehicleControllerModules = (props) => {
+  const { act, data } = useBackend<VehicleData>();
   return (
-    <>
-      Test
-    </>
+    <Stack fill vertical>
+      {data.moduleRefs.map((ref) => {
+        return (
+          <Stack.Item key={ref}>
+            <VehicleModule ref={ref} />
+          </Stack.Item>
+        );
+      })}
+    </Stack>
   );
 };
 
@@ -114,10 +145,17 @@ interface VehicleControllerComponentsProps {
 }
 
 const VehicleControllerComponents = (props) => {
+  const { act, data } = useBackend<VehicleData>();
   return (
-    <>
-      Test
-    </>
+    <Stack fill vertical>
+      {data.componentRefs.map((ref) => {
+        return (
+          <Stack.Item key={ref}>
+            <VehicleComponent ref={ref} />
+          </Stack.Item>
+        );
+      })}
+    </Stack>
   );
 };
 

@@ -45,7 +45,7 @@ const FrontPageComponentHealthRender = (props: {
     <Stack.Item>
       <Stack fill>
         <Stack.Item>
-          {props.name}
+          {props.name} Integrity
         </Stack.Item>
         <Stack.Item grow={1}>
           Test

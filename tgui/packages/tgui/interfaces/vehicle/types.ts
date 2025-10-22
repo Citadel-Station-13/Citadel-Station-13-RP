@@ -3,9 +3,7 @@
  * @license MIT
  */
 
-import { ReactNode } from "react";
-
-import { useBackend } from "../../backend";
+import { BooleanLike } from "tgui-core/react";
 
 export type VehicleModuleRef = string;
 export type VehicleComponentRef = string;
@@ -19,6 +17,7 @@ export interface VehicleData {
 }
 
 export interface VehicleComponentData {
+  ref: VehicleComponentRef;
   name: string;
   desc: string;
   integrity: number;
@@ -28,19 +27,13 @@ export interface VehicleComponentData {
 }
 
 export interface VehicleModuleData {
+  ref: VehicleModuleRef;
   name: string;
   desc: string;
   integrity: number;
   integrityMax: number;
   integrityUsed: boolean;
+  potentiaActiveClickModule: BooleanLike;
+  allowEject: BooleanLike;
   [rest: string]: any;
-}
-
-export function useVehicleComponent<D, T = ReactNode>(ref: VehicleModuleRef | null, func: (data: D | null) => T): T {
-  let { nestedData } = useBackend();
-  // TODO: better error handling
-  if (ref === null) {
-    return func(null);
-  }
-  return func(nestedData[ref] as D | null);
 }
