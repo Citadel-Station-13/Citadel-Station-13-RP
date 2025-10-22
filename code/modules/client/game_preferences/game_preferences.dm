@@ -22,6 +22,8 @@
 			bindings_middleware.handle_reset(joining.preferences)
 			to_chat(joining, SPAN_BOLDANNOUNCE("BUG: Your keybindings were forcefully reset due to not being detected as initialized 5 seconds after connection. Report this to a coder."))
 			message_admins("[joining]'s keybindings were forcefully reset due to not being initialized 5 seconds after connection. Yell at coders.")
+		if(!QDELETED(joining))
+			joining.set_macros(joining.preferences)
 
 /**
  * Game preferences

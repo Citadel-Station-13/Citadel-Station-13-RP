@@ -1,0 +1,4 @@
+author: "GySgtMurphy"
+delete-after: True
+changes:
+  - balance: "pulled overpowered boss mob from debris field POI, added multiple less powerful mobs as bosses as replacement."

@@ -220,20 +220,6 @@
 	visible_message(SPAN_WARNING( "\The [src] retracts the missile rack."))
 	playsound(src, 'sound/effects/turret/move2.wav', 50, 1)
 
-// Arcing rocket projectile that produces a weak explosion when it lands.
-// Shouldn't punch holes in the floor, but will still hurt.
-/obj/projectile/arc/explosive_rocket
-	name = "rocket"
-	icon_state = "mortar"
-
-/obj/projectile/arc/explosive_rocket/on_impact(atom/target, impact_flags, def_zone, efficiency)
-	. = ..()
-	if(!isturf(target))
-		return
-	var/turf/T = target
-	new /obj/effect/explosion(T) // Weak explosions don't produce this on their own, apparently.
-	explosion(T, 0, 0, 2, adminlog = FALSE)
-
 /mob/living/simple_mob/mechanical/mecha/combat/gygax/dark/advanced/proc/launch_microsingularity(atom/target)
 	var/turf/T = get_turf(target)
 	visible_message(SPAN_WARNING( "\The [src] fires an energetic sphere into the air!"))
@@ -242,35 +228,6 @@
 	var/obj/projectile/arc/microsingulo/sphere = new(loc)
 	sphere.old_style_target(T, src)
 	sphere.fire()
-
-/obj/projectile/arc/microsingulo
-	name = "micro singularity"
-	icon_state = "bluespace"
-
-/obj/projectile/arc/microsingulo/on_impact(atom/target, impact_flags, def_zone, efficiency)
-	. = ..()
-	if(!isturf(target))
-		return
-	var/turf/T = target
-	new /obj/effect/temporary_effect/pulse/microsingulo(T)
-
-/obj/effect/temporary_effect/pulse/microsingulo
-	name = "micro singularity"
-	desc = "It's sucking everything in!"
-	icon = 'icons/obj/objects.dmi'
-	icon_state = "bhole3"
-	light_range = 4
-	light_power = 5
-	light_color = "#2ECCFA"
-	pulses_remaining = 10
-	pulse_delay = 0.5 SECONDS
-	var/pull_radius = 3
-	var/pull_strength = STAGE_THREE
-
-/obj/effect/temporary_effect/pulse/microsingulo/on_pulse()
-	for(var/atom/A in range(pull_radius, src))
-		A.singularity_pull(src, pull_strength)
-
 
 // The Advanced Dark Gygax's AI.
 // The mob has three special attacks, based on the current intent.

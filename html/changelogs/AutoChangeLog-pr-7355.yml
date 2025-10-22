@@ -1,0 +1,4 @@
+author: "Shadowtail117"
+delete-after: True
+changes:
+  - admin: "Admins can now view the authentication codes for all nuclear devices in the Secrets panel."

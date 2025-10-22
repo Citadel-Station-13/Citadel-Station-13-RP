@@ -12,6 +12,7 @@
 	icon_state = "start"
 	// todo: sensor update
 	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
+	unique = FALSE
 
 	/// our overmap
 	var/datum/overmap/overmap

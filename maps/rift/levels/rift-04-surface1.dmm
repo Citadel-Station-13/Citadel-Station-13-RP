@@ -658,6 +658,22 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/hallway)
+"axG" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/lightgrey/border,
+/obj/effect/floor_decal/borderfloor/corner2,
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -37
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/surfaceone)
 "ayM" = (
 /turf/simulated/wall/wood/hardwood,
 /area/rift/surfacebase/outside/outside1)
@@ -5970,6 +5986,26 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/tankstorage)
+"dVb" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/lightgrey/border,
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -37
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/surfaceone)
 "dVj" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
@@ -7875,6 +7911,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/maint_bar)
+"fii" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/purple/border,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -37
+	},
+/turf/simulated/floor/tiled/steel,
+/area/rnd/hallway)
 "fiF" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -22087,6 +22131,24 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
+"nJr" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = -32
+	},
+/turf/simulated/floor/tiled/steel,
+/area/rift/stairwell/primary/surfaceone)
 "nJF" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 6
@@ -27274,6 +27336,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/power/apc/west_mount,
+/obj/structure/cable/green,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/civilian_hallway_mid)
 "qCS" = (
@@ -35290,6 +35353,18 @@
 "uWy" = (
 /turf/simulated/wall/prepainted,
 /area/quartermaster/foyer)
+"uWN" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 4
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = 32
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/secondary/civilian_hallway_mid)
 "uXi" = (
 /obj/structure/railing{
 	dir = 8
@@ -37876,6 +37951,19 @@
 /obj/structure/curtain/open/shower,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_south_airlock)
+"wzv" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = -32
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/patient_wing)
 "wzP" = (
 /obj/machinery/door/blast/shutters{
 	density = 0;
@@ -39373,6 +39461,21 @@
 /obj/structure/closet/crate,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
+"xte" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = 32
+	},
+/turf/simulated/floor/tiled/steel,
+/area/rift/stairwell/primary/surfaceone)
 "xtl" = (
 /obj/structure/catwalk,
 /obj/structure/disposalpipe/segment{
@@ -54176,7 +54279,7 @@ fYd
 wrw
 qPo
 jrC
-jrC
+xte
 hvo
 dsf
 iqR
@@ -54334,7 +54437,7 @@ vkl
 rbA
 dNN
 yja
-yja
+wzv
 yja
 yja
 yja
@@ -55152,7 +55255,7 @@ kHP
 otM
 oiR
 oiR
-pBu
+axG
 bQA
 bQA
 bQA
@@ -56723,7 +56826,7 @@ dYA
 qeb
 ctb
 tSZ
-wAv
+fii
 foD
 bnG
 wdf
@@ -57092,7 +57195,7 @@ pcC
 otM
 oiR
 oiR
-tBz
+dVb
 bQA
 bQA
 bQA
@@ -58056,7 +58159,7 @@ fYd
 spM
 oDo
 gGU
-gGU
+nJr
 hKV
 pyX
 tsg
@@ -62311,7 +62414,7 @@ gav
 bFm
 bFm
 bFm
-bFm
+uWN
 bFm
 bFm
 bFm

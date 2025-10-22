@@ -37,12 +37,27 @@
 #define LIGHT_COLOR_INCANDESCENT_BULB       "#FFFEB8" // rgb(255, 254, 184) Slightly yellowish white.
 #define LIGHT_COLOR_INCANDESCENT_FLASHLIGHT "#FFCC66" // rgb(255, 204, 102) Slightly yellowish white.
 
-/// Nightshift Light Color
-/// Used on full-strength light tubes.
-#define LIGHT_COLOR_NIGHTSHIFT              "#c7c7ff"
-/// Nightshift Light Power
-/// Used on full-strength light tubes.
-#define LIGHT_POWER_NIGHTSHIFT                0.435
-/// Nightshift Light Range
-/// Used on full-strength light tubes.
-#define LIGHT_RANGE_NIGHTSHIFT                7
+
+// Nightshift Light Colors, Powers, & Ranges
+
+//For recordkeeping's sake: Older, warm nightshift color is "#EFCC86" and the newer, cold nightshift color is "#C7C7FF".
+
+// Default
+#define LIGHT_COLOR_NIGHTSHIFT_DEFAULT   "#EFCC86"
+#define LIGHT_POWER_NIGHTSHIFT_DEFAULT    0.435  //Normal power is 0.8
+#define LIGHT_RANGE_NIGHTSHIFT_DEFAULT    7      //Normal range is 8
+
+// Tube lights
+#define LIGHT_COLOR_NIGHTSHIFT_TUBE      "#EFCC86"
+#define LIGHT_POWER_NIGHTSHIFT_TUBE       0.5    //Normal power is 0.8
+#define LIGHT_RANGE_NIGHTSHIFT_TUBE       6      //Normal range is 8
+
+// Small lights
+#define LIGHT_COLOR_NIGHTSHIFT_SMALL     "#EFCC86"
+#define LIGHT_POWER_NIGHTSHIFT_SMALL      0.45   //Normal power is 0.8
+#define LIGHT_RANGE_NIGHTSHIFT_SMALL      3      //Normal range is 4
+
+// Fairy lights
+#define LIGHT_COLOR_NIGHTSHIFT_FAIRY     "#EFCC86"
+#define LIGHT_POWER_NIGHTSHIFT_FAIRY      0.45   //Normal power is 0.8
+#define LIGHT_RANGE_NIGHTSHIFT_FAIRY      4      //Normal range is 5

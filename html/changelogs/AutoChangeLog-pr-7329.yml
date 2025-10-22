@@ -1,0 +1,5 @@
+author: "TheLordME"
+delete-after: True
+changes:
+  - rscadd: "Added Stealthy Xenohybrid Subspecies \"Xenomorph Hybrid Hunter\""
+  - rscadd: "Added Tanky Xenohybrid Subspecies \"Xenomorph Hybrid Warrior\""
