@@ -5855,6 +5855,7 @@
 #include "maps\strelka\strelka-papers.dm"
 #include "maps\strelka\strelka-sectors.dm"
 #include "maps\strelka\strelka-shuttles.dm"
+#include "maps\strelka\strelka-turbolift.dm"
 #include "maps\strelka\strelka.dm"
 #include "maps\strelka\telecomms.dm"
 #include "maps\submaps\_helpers.dm"
