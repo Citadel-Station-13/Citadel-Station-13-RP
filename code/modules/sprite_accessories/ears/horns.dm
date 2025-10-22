@@ -97,3 +97,15 @@
 	icon_alignment = SPRITE_ACCESSORY_ALIGNMENT_BOTTOM
 	do_colouration = TRUE
 	legacy_use_additive_color_matrix = FALSE
+
+/datum/sprite_accessory/ears/horns/cryptid
+	name = "Cryptid Antlers"
+	id = "horn-cryptid"
+	icon = 'icons/mob/sprite_accessory/horns/horns_32x48_bottom_aligned.dmi'
+	icon_state = "cryptid"
+	icon_dimension_x = 32
+	icon_dimension_y = 48
+	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
+	icon_alignment = SPRITE_ACCESSORY_ALIGNMENT_BOTTOM
+	do_colouration = TRUE
+	legacy_use_additive_color_matrix = FALSE
