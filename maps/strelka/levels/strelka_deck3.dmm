@@ -1,4 +1,13 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/machinery/air_alarm/east_mount,
+/obj/random/multiple/corp_crate/no_weapons,
+/obj/random/maintenance/clean,
+/obj/random/maintenance/clean,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "ac" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -132,12 +141,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck3)
-"aD" = (
-/obj/machinery/camera/network/security{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/monowhite,
-/area/space)
 "aE" = (
 /obj/effect/floor_decal/corner/purple{
 	dir = 10
@@ -162,6 +165,12 @@
 	},
 /turf/simulated/floor/wood/broken,
 /area/bridge/strelka/rd)
+"aI" = (
+/obj/machinery/door/blast/regular,
+/turf/simulated/wall/r_wall/prepainted/command,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "aK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -230,11 +239,19 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/strelka/upload)
-"aY" = (
-/obj/effect/floor_decal/rust,
-/obj/item/stool/padded,
-/turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+"aW" = (
+/obj/machinery/conveyor_switch/oneway{
+	id = "mining_interior";
+	name = "refining conveyor";
+	pixel_y = 2;
+	pixel_x = -11
+	},
+/obj/effect/floor_decal/industrial/warning/dust,
+/obj/structure/cable{
+	icon_state = "4-10"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/quartermaster/strelka/cargo/mining)
 "aZ" = (
 /obj/machinery/lathe/mecha_part_fabricator/pros{
 	dir = 8;
@@ -273,6 +290,9 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/wood,
 /area/bridge/strelka/md)
+"bl" = (
+/turf/simulated/floor/wood/indoors,
+/area/quartermaster/strelka/cargo/mining)
 "bm" = (
 /obj/effect/floor_decal/spline/fancy/wood/cee{
 	dir = 8
@@ -280,10 +300,6 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/wood/indoors,
 /area/quartermaster/strelka/reception)
-"bo" = (
-/obj/structure/grille,
-/turf/simulated/floor/reinforced,
-/area/space)
 "bp" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 4
@@ -462,8 +478,11 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
+/obj/structure/closet/crate,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "bV" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -499,13 +518,23 @@
 /area/medical/strelka/psy)
 "ca" = (
 /obj/structure/cable{
-	icon_state = "1-2"
+	icon_state = "0-8"
 	},
-/obj/structure/cable{
-	icon_state = "1-4"
+/obj/machinery/power/terminal,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
+"ce" = (
+/obj/item/target/syndicate,
+/obj/item/toy/syndicateballoon{
+	pixel_y = 4;
+	pixel_x = 10
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "cg" = (
 /obj/machinery/computer/rdconsole/robotics{
 	dir = 8
@@ -704,6 +733,15 @@
 /obj/item/defib_kit/loaded,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/medical/strelka/main)
+"cQ" = (
+/obj/structure/catwalk,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "cS" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -794,12 +832,6 @@
 /obj/structure/marker_beacon/red,
 /turf/simulated/floor/reinforced,
 /area/quartermaster/strelka/cargo/hangar)
-"dj" = (
-/obj/machinery/vending/boozeomat{
-	req_access = null
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
 "dk" = (
 /obj/machinery/camera/network/medbay{
 	dir = 1
@@ -856,11 +888,14 @@
 /turf/simulated/wall/wood/hardwood,
 /area/medical/strelka)
 "dx" = (
-/obj/item/clothing/accessory/permit/gun/planetside,
-/obj/item/clothing/accessory/permit/gun/planetside,
-/obj/item/clothing/accessory/permit/gun/planetside,
-/obj/item/clothing/accessory/permit/gun/planetside,
-/obj/structure/table/reinforced,
+/obj/machinery/light/small/old,
+/obj/machinery/camera/network/security{
+	dir = 1
+	},
+/obj/landmark/spawnpoint/job/shaft_miner,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/quartermaster/strelka/cargo/mining)
 "dB" = (
@@ -915,11 +950,11 @@
 /turf/simulated/floor/reinforced,
 /area/quartermaster/strelka/cargo/hangar)
 "dL" = (
-/obj/structure/grille,
 /obj/structure/disposalpipe/segment{
 	dir = 2;
 	icon_state = "pipe-c"
 	},
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/tiled/monowhite,
 /area/space)
 "dO" = (
@@ -948,6 +983,15 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck3)
+"dS" = (
+/obj/structure/table/woodentable{
+	density = 0
+	},
+/obj/machinery/air_alarm/north_mount,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "dT" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -1012,6 +1056,12 @@
 /obj/item/storage/belt/medical,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/medical/strelka/main)
+"eg" = (
+/obj/structure/loot_pile/maint/junk,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "eh" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -1038,7 +1088,7 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/bridge/strelka/md)
 "es" = (
-/obj/spawner/window/low_wall/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/structure/curtain/open/black,
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/strelka/blueshield/room)
@@ -1234,6 +1284,23 @@
 /obj/machinery/air_alarm/north_mount,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/medical/strelka/roomhallway)
+"ff" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#B95A00"
+	},
+/turf/simulated/wall/r_wall/prepainted/command,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
+"fg" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "fj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 1
@@ -1281,6 +1348,18 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/main)
+"fp" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/catwalk,
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "fq" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -1343,22 +1422,8 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/xenobotany)
 "fx" = (
-/obj/structure/table/reinforced,
-/obj/item/disk/design_disk{
-	pixel_y = -4
-	},
-/obj/item/disk/design_disk{
-	pixel_x = 2;
-	pixel_y = -2
-	},
-/obj/item/disk/tech_disk{
-	pixel_x = 4
-	},
-/obj/item/disk/tech_disk{
-	pixel_x = 6;
-	pixel_y = 2
-	},
-/obj/structure/disposalpipe/segment,
+/obj/machinery/disposal,
+/obj/structure/disposalpipe/trunk,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/strelka/science/main)
 "fy" = (
@@ -1492,6 +1557,19 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/medical/strelka/surgery)
+"fP" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/light/small/old{
+	dir = 4
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/reinforced,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "fQ" = (
 /obj/machinery/oxygen_pump/anesthetic{
 	pixel_x = -28
@@ -1525,6 +1603,13 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/rnd/strelka/science/secondary)
+"fS" = (
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/machinery/door/blast/strelka/blockade,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "fY" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -1677,12 +1762,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/resleeve)
-"gw" = (
-/obj/structure/sign/signnew/electrical{
-	pixel_x = -31
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/rnd/strelka/xenobio)
 "gx" = (
 /obj/structure/cable/yellow,
 /obj/machinery/power/apc/west_mount,
@@ -1738,6 +1817,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/xenobotany)
+"gG" = (
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/turf/simulated/wall/r_wall/prepainted/command,
+/area/space)
 "gH" = (
 /obj/effect/floor_decal/grass_edge,
 /obj/effect/floor_decal/rust,
@@ -1853,16 +1936,6 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/medical/strelka/main)
-"gQ" = (
-/obj/structure/closet/secure_closet/miner,
-/obj/item/duct_tape_roll{
-	pixel_x = -4
-	},
-/obj/machinery/light/small/old{
-	dir = 1
-	},
-/turf/simulated/floor/wood/indoors,
-/area/quartermaster/strelka/cargo/mining)
 "gR" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/structure/closet/emcloset,
@@ -1973,7 +2046,8 @@
 /turf/simulated/floor/tiled/monotechmaint,
 /area/rnd/strelka/xenobio)
 "hi" = (
-/obj/spawner/window/low_wall/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/structure/table/carbon/reinforced,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/strelka/science/main)
 "hj" = (
@@ -1986,7 +2060,6 @@
 /obj/effect/floor_decal/corner/purple/full{
 	dir = 4
 	},
-/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/science/main)
 "ho" = (
@@ -2060,7 +2133,7 @@
 /obj/machinery/camera/network/security{
 	dir = 1
 	},
-/turf/space/basic,
+/turf/simulated/wall/r_wall/prepainted/command,
 /area/space)
 "hu" = (
 /obj/machinery/computer/transhuman/resleeving{
@@ -2113,12 +2186,6 @@
 "hB" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/rnd/strelka/servers)
-"hD" = (
-/obj/effect/floor_decal/rust/mono_rusted3{
-	color = "#B95A00"
-	},
-/turf/simulated/floor/reinforced,
-/area/space)
 "hF" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
@@ -2166,6 +2233,20 @@
 /obj/effect/floor_decal/spline/fancy/wood/corner{
 	dir = 4
 	},
+/obj/item/disk/tech_disk{
+	pixel_x = 6;
+	pixel_y = 2
+	},
+/obj/item/disk/tech_disk{
+	pixel_x = 4
+	},
+/obj/item/disk/design_disk{
+	pixel_x = 2;
+	pixel_y = -2
+	},
+/obj/item/disk/design_disk{
+	pixel_y = -4
+	},
 /turf/simulated/floor/wood/indoors,
 /area/rnd/strelka/science/main)
 "hH" = (
@@ -2206,6 +2287,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/quartermaster/strelka/cargo/hangar)
+"hM" = (
+/obj/structure/loot_pile/maint/trash,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "hN" = (
 /obj/effect/floor_decal/grass_edge,
 /obj/effect/floor_decal/borderfloor{
@@ -2350,17 +2437,17 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/xenobio)
+"in" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/quartermaster/strelka/cargo/mining)
 "io" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/bridge/strelka/md)
 "ip" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 1
-	},
-/obj/structure/cable/orange{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck3)
 "is" = (
@@ -2375,6 +2462,27 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/medical/strelka)
+"it" = (
+/obj/structure/table/woodentable,
+/obj/machinery/chemical_dispenser/catering/bar_soft{
+	pixel_y = 10
+	},
+/obj/item/reagent_containers/food/drinks/bottle/bluecuracao{
+	pixel_y = 26;
+	pixel_x = -8
+	},
+/obj/item/reagent_containers/food/drinks/bottle/bottleofnothing{
+	pixel_y = 27;
+	pixel_x = -1
+	},
+/obj/item/reagent_containers/food/drinks/bottle/kahlua{
+	pixel_y = 27;
+	pixel_x = 7
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "iw" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
@@ -2450,7 +2558,7 @@
 	color = "#B95A00"
 	},
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled/monowhite,
+/turf/simulated/wall/r_wall/prepainted,
 /area/space)
 "iH" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -2499,18 +2607,28 @@
 /turf/simulated/floor/wood/indoors,
 /area/rnd/strelka/science/main)
 "iR" = (
-/obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Deck 3 Cargo Substation Bypass"
+/obj/machinery/power/smes/buildable{
+	RCon_tag = "Substation - Deck 3 Park";
+	output_attempt = 0
 	},
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
+/obj/machinery/light/small/old,
 /obj/structure/window/reinforced{
-	dir = 8
+	dir = 4
 	},
-/obj/machinery/door/window/brigdoor/northleft{
-	req_access = null;
-	req_one_access = list(10,24,11)
+/obj/machinery/door/window/brigdoor/northright{
+	req_one_access = list(10,24,11);
+	req_access = null
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "iU" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -2568,6 +2686,14 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/strelka/test)
+"jc" = (
+/obj/machinery/vending/boozeomat{
+	req_access = null
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "jd" = (
 /obj/item/paper_bin{
 	pixel_x = 1;
@@ -2602,6 +2728,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/quartermaster/strelka/cargo/mining)
+"jj" = (
+/obj/machinery/air_alarm/east_mount,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "jl" = (
 /obj/structure/bed/chair/sofa/brown/corner{
 	dir = 8
@@ -2615,12 +2747,11 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/obj/structure/cable/orange{
-	icon_state = "0-8"
-	},
-/obj/machinery/power/apc/south_mount,
+/obj/structure/closet/crate/corporate/nanomed,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "jn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -2663,8 +2794,12 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/science/secondary)
 "js" = (
+/obj/effect/floor_decal/rust,
+/obj/random/multiple/corp_crate/no_weapons,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "jx" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
@@ -2834,21 +2969,17 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck3)
-"jV" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
-	},
+"jU" = (
 /obj/machinery/light/small/old{
 	dir = 4
 	},
-/obj/structure/table/woodentable{
-	density = 0
-	},
+/obj/random/multiple/corp_crate/no_weapons,
+/obj/random/maintenance/security,
+/obj/random/maintenance/security,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "jW" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -2879,10 +3010,6 @@
 	},
 /obj/machinery/air_alarm/west_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/hallway/strelka/deck3)
-"kb" = (
-/obj/spawner/window/low_wall/firelocks,
-/turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck3)
 "kc" = (
 /obj/structure/morgue{
@@ -2947,13 +3074,56 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/xenobio)
+"km" = (
+/obj/structure/grille,
+/turf/simulated/floor/plating,
+/area/space)
+"ko" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/brown/border,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/hallway/strelka/deck3)
+"kr" = (
+/obj/machinery/door/blast/regular,
+/turf/simulated/wall/r_wall/prepainted,
+/area/space)
+"kv" = (
+/obj/structure/extinguisher_cabinet{
+	pixel_y = -31
+	},
+/obj/structure/bed/chair/shuttle{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/belter)
 "kw" = (
 /obj/machinery/light/small/old{
 	dir = 1
 	},
 /obj/structure/loot_pile/maint/boxfort,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
+"kx" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "ky" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -3091,6 +3261,12 @@
 	},
 /turf/simulated/floor/fey/forest_grass,
 /area/hallway/strelka/deck3)
+"kP" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#B95A00"
+	},
+/turf/simulated/wall/r_wall/prepainted/command,
+/area/space)
 "kR" = (
 /obj/machinery/door/blast/regular,
 /turf/simulated/floor/reinforced/lythios43c,
@@ -3113,6 +3289,9 @@
 /area/rnd/strelka/science/secondary)
 "kV" = (
 /obj/machinery/holopad,
+/obj/machinery/light/small/old{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/xenobio)
 "kW" = (
@@ -3210,13 +3389,14 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/medical/strelka/main)
 "lv" = (
-/obj/effect/floor_decal/rust,
-/obj/item/reagent_containers/food/drinks/drinkingglass/shotglass,
-/obj/structure/table/woodentable{
-	density = 0
+/obj/structure/cable{
+	icon_state = "6-9"
 	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "lw" = (
 /obj/structure/closet/crate/biohazard,
 /obj/effect/floor_decal/borderfloorblack{
@@ -3235,15 +3415,13 @@
 /area/rnd/strelka/robotics)
 "ly" = (
 /obj/structure/cable{
-	icon_state = "6-9"
+	icon_state = "6-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "lz" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
@@ -3284,8 +3462,8 @@
 	},
 /area/rnd/strelka/servers)
 "lF" = (
-/obj/spawner/window/low_wall/firelocks,
 /obj/structure/curtain/open/shower/medical,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/wood/indoors,
 /area/medical/strelka/room)
 "lG" = (
@@ -3317,6 +3495,19 @@
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/space)
+"lJ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/floor_decal/rust,
+/obj/structure/cable{
+	icon_state = "4-9"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "lL" = (
 /obj/structure/railing,
 /obj/machinery/door/firedoor/glass{
@@ -3324,6 +3515,21 @@
 	},
 /turf/simulated/open,
 /area/hallway/strelka/deck3)
+"lM" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/obj/structure/cable/orange{
+	icon_state = "2-8"
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "lN" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/purple{
@@ -3496,6 +3702,12 @@
 	layer = 1
 	},
 /area/hallway/strelka/deck3)
+"mj" = (
+/obj/item/stool/padded,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "mm" = (
 /obj/structure/flora/grass/event/yellow_flowers1,
 /obj/structure/flora/grass/event/full_grass3,
@@ -3539,13 +3751,6 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/hallway/strelka/deck3)
-"mt" = (
-/obj/structure/closet/secure_closet/miner,
-/obj/item/duct_tape_roll{
-	pixel_x = -4
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/quartermaster/strelka/cargo/mining)
 "mu" = (
 /obj/structure/flora/grass/event/bright_flowers1,
 /obj/machinery/seed_extractor,
@@ -3591,8 +3796,20 @@
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/maintenance/strelka/medical)
 "mF" = (
-/turf/simulated/wall/r_wall/prepainted,
-/area/maintenance/strelka/cargo)
+/obj/machinery/power/breakerbox/activated{
+	RCon_tag = "Deck 3 Cargo Substation Bypass"
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/door/window/brigdoor/northleft{
+	req_access = null;
+	req_one_access = list(10,24,11)
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "mG" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -3710,7 +3927,7 @@
 /turf/simulated/floor/tiled/monotechmaint,
 /area/rnd/strelka/xenobio)
 "mT" = (
-/obj/spawner/window/low_wall/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/vending/fishing,
 /turf/simulated/floor/fey/forest_grass,
 /area/hallway/strelka/deck3)
@@ -3727,13 +3944,6 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/rnd/strelka/science/main)
-"mX" = (
-/obj/machinery/light/small/old{
-	dir = 1
-	},
-/obj/random/multiple/corp_crate/no_weapons,
-/turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
 "mZ" = (
 /obj/structure/flora/grass/event/full_grass3,
 /obj/structure/flora/tree/fey/large_tree/tree5,
@@ -3755,6 +3965,15 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/strelka/deck3)
+"nc" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-10"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/quartermaster/strelka/cargo/mining)
 "nd" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 4
@@ -3797,6 +4016,14 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/hallway/strelka/deck3)
+"nm" = (
+/obj/machinery/door/airlock/maintenance_hatch{
+	name = "Anomaly Research"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "nn" = (
 /obj/machinery/mineral/output,
 /obj/machinery/conveyor{
@@ -3824,13 +4051,18 @@
 /area/rnd/strelka/xenobio)
 "nr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
+	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/obj/machinery/light/small/old{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "nt" = (
 /obj/structure/flora/grass/event/full_grass1,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -3894,6 +4126,16 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/strelka/xenobio)
+"nA" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/rnd/strelka/robotics)
 "nB" = (
 /obj/machinery/recharge_station,
 /obj/machinery/air_alarm/west_mount,
@@ -3963,17 +4205,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/strelka/science/secondary)
-"nK" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/rnd/strelka/xenobio)
 "nL" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -4066,19 +4297,23 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck3)
-"nY" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 4
-	},
-/turf/simulated/floor/trap/wheelchair,
-/area/hallway/strelka/deck3)
 "nZ" = (
 /turf/simulated/floor/carpet/purcarpet,
 /area/bridge/strelka/rd)
 "ob" = (
-/obj/machinery/media/jukebox,
-/turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/obj/structure/window/reinforced/tinted,
+/turf/simulated/floor/wood/indoors,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
+"oc" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#B95A00"
+	},
+/turf/simulated/wall/r_wall/prepainted,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "od" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -4101,6 +4336,10 @@
 /obj/machinery/gear_painter,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/hallway/strelka/deck3)
+"og" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/medical/strelka/main)
 "oh" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
@@ -4128,7 +4367,21 @@
 	dir = 10
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
+"om" = (
+/obj/machinery/recharge_station,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/belter)
+"oo" = (
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/machinery/door/blast/strelka/blockade,
+/turf/simulated/floor/reinforced,
+/area/quartermaster/strelka/cargo/hangar)
 "op" = (
 /obj/machinery/fire_alarm/west_mount,
 /turf/simulated/floor/wood,
@@ -4174,6 +4427,9 @@
 /area/hallway/strelka/deck3)
 "oy" = (
 /obj/effect/floor_decal/rust,
+/obj/structure/cable{
+	icon_state = "5-8"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/strelka/deck3)
 "oz" = (
@@ -4316,6 +4572,10 @@
 	name = "Hollow hardwood"
 	},
 /area/hallway/strelka/deck3)
+"oW" = (
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/hallway/strelka/deck3)
 "oX" = (
 /obj/structure/table/bench/wooden,
 /obj/effect/floor_decal/corner/brown/full,
@@ -4413,6 +4673,14 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/rnd/strelka/science/secondary)
+"pn" = (
+/obj/machinery/light/small/old{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "po" = (
 /obj/machinery/sleeper{
 	dir = 8
@@ -4426,7 +4694,7 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/medical/strelka/main)
 "pp" = (
-/obj/spawner/window/low_wall/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/event/grass/grass1,
 /area/hallway/strelka/deck3)
 "pq" = (
@@ -4467,10 +4735,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/rnd/strelka/robotics)
-"pu" = (
-/obj/spawner/window/low_wall/firelocks,
-/turf/simulated/floor/tiled/dark,
-/area/quartermaster/strelka/reception)
 "pv" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
@@ -4499,11 +4763,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/xenobio)
-"pz" = (
-/obj/spawner/window/low_wall/firelocks,
-/obj/machinery/door/blast/strelka/blockade,
-/turf/simulated/floor/tiled/asteroid_steel,
-/area/medical/strelka/main)
 "pA" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -4554,7 +4813,7 @@
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/cable/orange{
-	icon_state = "1-6"
+	icon_state = "6-9"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck3)
@@ -4588,12 +4847,22 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "pQ" = (
-/obj/structure/closet/crate/corporate/nanomed,
+/obj/structure/window/reinforced/tinted,
+/obj/structure/window/reinforced/tinted{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "pR" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/spline/fancy/wood,
@@ -4631,21 +4900,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/science/main)
-"pZ" = (
-/obj/machinery/portable_atmospherics/canister/carbon_dioxide{
-	start_pressure = 8500
-	},
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/purple/border{
-	dir = 1
-	},
-/obj/machinery/atmospherics/portables_connector{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/rnd/strelka/xenobio)
 "qb" = (
 /obj/structure/cable{
 	icon_state = "2-9"
@@ -4655,7 +4909,9 @@
 /obj/machinery/door/airlock/maintenance_hatch,
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "qc" = (
 /turf/simulated/wall/r_wall/prepainted/medical,
 /area/medical/strelka/main)
@@ -4714,6 +4970,21 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck3)
+"qz" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/button/remote/blast_door{
+	pixel_y = -29;
+	id = "xenobio2";
+	dir = 1
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
+/obj/machinery/light/small/old,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/rnd/strelka/xenobio)
 "qC" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
@@ -4721,6 +4992,14 @@
 /obj/effect/floor_decal/spline/fancy/wood,
 /turf/simulated/floor/wood/indoors,
 /area/quartermaster/strelka/reception)
+"qD" = (
+/obj/structure/bed/chair/sofa/brown/right{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "qE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -4910,6 +5189,15 @@
 /obj/structure/flora/grass/event/full_grass1,
 /turf/simulated/floor/fey/forest_grass,
 /area/hallway/strelka/deck3)
+"re" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/reinforced,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "rf" = (
 /obj/structure/closet/secure_closet/guncabinet/robotics,
 /obj/machinery/light/small/old{
@@ -4917,7 +5205,8 @@
 	},
 /obj/machinery/button/remote/blast_door{
 	pixel_y = 27;
-	id = "robot"
+	id = "robot";
+	req_access = list(47)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/strelka/robotics)
@@ -5021,7 +5310,9 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "rp" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -5123,8 +5414,17 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 1
 	},
-/turf/simulated/floor/trap/wheelchair,
+/turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck3)
+"rD" = (
+/obj/structure/cable{
+	icon_state = "6-9"
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "rF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -5175,8 +5475,13 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/strelka/reception)
+"rN" = (
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "rO" = (
-/obj/spawner/window/low_wall/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/fey/forest_grass,
 /area/hallway/strelka/deck3)
 "rP" = (
@@ -5204,6 +5509,18 @@
 /obj/machinery/shield_diffuser,
 /turf/space/basic,
 /area/space)
+"rU" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/catwalk,
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "rV" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
@@ -5277,7 +5594,7 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/turf/simulated/floor/tiled/monodark,
+/turf/simulated/wall/r_wall/prepainted,
 /area/space)
 "sm" = (
 /obj/landmark/spawnpoint/job/chief_medical_officer,
@@ -5353,6 +5670,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/science)
+"sG" = (
+/obj/structure/cable{
+	icon_state = "2-9"
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "sH" = (
 /obj/structure/window/reinforced,
 /obj/structure/curtain/open/black,
@@ -5367,10 +5693,6 @@
 /obj/landmark/spawnpoint/job/shaft_miner,
 /turf/simulated/floor/wood/indoors,
 /area/quartermaster/strelka/cargo/mining)
-"sL" = (
-/obj/effect/floor_decal/spline/fancy/wood,
-/turf/simulated/floor/tiled/techfloor,
-/area/hallway/strelka/deck3)
 "sM" = (
 /obj/machinery/atmospherics/component/unary/freezer{
 	dir = 8;
@@ -5395,10 +5717,6 @@
 /obj/effect/floor_decal/corner/purple{
 	dir = 10
 	},
-/obj/machinery/disposal/wall{
-	dir = 4
-	},
-/obj/structure/disposalpipe/trunk,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/science/main)
 "sO" = (
@@ -5508,6 +5826,17 @@
 "tf" = (
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/belter)
+"tg" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "th" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/spline/fancy/wood,
@@ -5566,12 +5895,15 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/strelka/science/main)
 "tu" = (
-/obj/machinery/sheet_silo{
-	obj_persist_static_id = "sheet-silo-mining"
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 1
 	},
-/obj/effect/floor_decal/industrial/warning/dust,
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 4
+/obj/structure/cable/orange{
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/quartermaster/strelka/cargo/mining)
@@ -5777,7 +6109,11 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/strelka/deck3)
 "tX" = (
-/obj/structure/loot_pile/maint/junk,
+/obj/random/maintenance/medical,
+/obj/random/maintenance/medical,
+/obj/random/maintenance/medical,
+/obj/random/maintenance/medical,
+/obj/random/multiple/corp_crate/no_weapons,
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/medical)
 "tZ" = (
@@ -5800,7 +6136,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "ud" = (
 /turf/simulated/floor/reinforced,
 /area/rnd/strelka/xenobio)
@@ -5816,6 +6154,19 @@
 	},
 /turf/simulated/floor/carpet/blue,
 /area/bridge/strelka/blueshield/room)
+"ui" = (
+/obj/structure/cable{
+	icon_state = "1-4";
+	dir = 1
+	},
+/obj/structure/catwalk,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "uj" = (
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/rnd/strelka/robotics)
@@ -5855,6 +6206,17 @@
 /obj/machinery/air_alarm/east_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/quartermaster/strelka/cargo/mining)
+"up" = (
+/turf/simulated/wall/r_wall/prepainted/command,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
+"uq" = (
+/obj/effect/floor_decal/industrial/warning/dust,
+/turf/simulated/floor/reinforced,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "us" = (
 /obj/machinery/light/small/old{
 	dir = 1
@@ -5951,18 +6313,17 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/strelka/test)
 "uH" = (
-/obj/structure/cable{
-	icon_state = "6-8"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/floor_decal/rust,
+/obj/structure/loot_pile/maint/boxfort,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "uI" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -5998,10 +6359,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/main)
-"uL" = (
-/obj/spawner/window/low_wall/firelocks,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/quartermaster/strelka/cargo/mining)
 "uM" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/bridge/strelka/ai)
@@ -6112,11 +6469,18 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka)
-"vh" = (
-/obj/spawner/window/low_wall/firelocks,
-/obj/machinery/door/blast/strelka/blockade,
-/turf/simulated/floor/reinforced,
-/area/quartermaster/strelka/cargo/hangar)
+"vi" = (
+/obj/structure/closet/crate,
+/obj/item/stack/material/wood/hard{
+	amount = 25
+	},
+/obj/item/stack/material/wood{
+	amount = 25
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "vm" = (
 /obj/machinery/mineral/input,
 /obj/machinery/fire_alarm/west_mount,
@@ -6152,6 +6516,16 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck3)
+"vs" = (
+/obj/effect/floor_decal/borderfloorblack{
+	alpha = 255;
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/rnd/strelka/robotics)
 "vw" = (
 /obj/machinery/portable_atmospherics/hydroponics/soil,
 /turf/simulated/floor/fey/forest_grass,
@@ -6187,9 +6561,6 @@
 /area/hallway/strelka/deck3)
 "vN" = (
 /obj/structure/table/carbon/reinforced,
-/obj/machinery/light/small/old{
-	dir = 4
-	},
 /obj/item/storage/box/monkeycubes{
 	starts_with = list(/obj/item/reagent_containers/food/snacks/monkeycube/wrapped=10)
 	},
@@ -6219,7 +6590,7 @@
 /obj/structure/disposalpipe/junction/flipped{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/monowhite,
+/turf/simulated/wall/r_wall/prepainted,
 /area/space)
 "vQ" = (
 /obj/effect/floor_decal/borderfloor,
@@ -6288,32 +6659,6 @@
 "vV" = (
 /turf/simulated/wall/wood/hardwood,
 /area/rnd/strelka/test)
-"vZ" = (
-/obj/structure/table/woodentable,
-/obj/machinery/chemical_dispenser/catering/bar_coffee{
-	pixel_y = 9
-	},
-/obj/item/reagent_containers/food/drinks/bottle/messa_mead{
-	pixel_y = 27;
-	pixel_x = -10
-	},
-/obj/item/reagent_containers/food/drinks/bottle/specialwhiskey{
-	pixel_y = 28;
-	pixel_x = -3
-	},
-/obj/item/reagent_containers/food/drinks/bottle/tequila{
-	pixel_y = 26;
-	pixel_x = 4
-	},
-/obj/item/reagent_containers/food/drinks/bottle/whitewine{
-	pixel_y = 26;
-	pixel_x = 9
-	},
-/obj/machinery/light/small/old{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
 "wa" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
@@ -6323,9 +6668,6 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "1-4"
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/xenobotany)
@@ -6567,11 +6909,6 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/medical/strelka/room2)
-"wR" = (
-/obj/spawner/window/low_wall/firelocks,
-/obj/machinery/door/blast/strelka/blockade,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/rnd/strelka/robotics)
 "wT" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/borderfloorblack{
@@ -6594,22 +6931,17 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/medical/strelka/main)
 "wU" = (
-/obj/machinery/power/sensor{
-	name = "Powernet Sensor - Park Subgrid";
-	name_tag = "Deck3 - Park"
-	},
-/obj/effect/floor_decal/industrial/warning{
-	dir = 8
-	},
-/obj/structure/cable/green{
-	icon_state = "0-8"
-	},
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/obj/machinery/light/small/old,
+/obj/structure/cable/orange{
+	icon_state = "0-8"
+	},
+/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "wV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
@@ -6726,13 +7058,6 @@
 /obj/structure/railing,
 /turf/simulated/open,
 /area/bridge/strelka/deck3)
-"xn" = (
-/obj/effect/floor_decal/rust/mono_rusted3{
-	color = "#B95A00"
-	},
-/obj/machinery/camera/network/security,
-/turf/simulated/floor/tiled/monowhite,
-/area/space)
 "xp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/blue{
@@ -6751,25 +7076,6 @@
 	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/bridge/strelka/rd)
-"xs" = (
-/obj/structure/table/woodentable,
-/obj/machinery/chemical_dispenser/catering/bar_soft{
-	pixel_y = 10
-	},
-/obj/item/reagent_containers/food/drinks/bottle/bluecuracao{
-	pixel_y = 26;
-	pixel_x = -8
-	},
-/obj/item/reagent_containers/food/drinks/bottle/bottleofnothing{
-	pixel_y = 27;
-	pixel_x = -1
-	},
-/obj/item/reagent_containers/food/drinks/bottle/kahlua{
-	pixel_y = 27;
-	pixel_x = 7
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
 "xt" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -6840,6 +7146,34 @@
 /obj/effect/floor_decal/spline/fancy/wood,
 /turf/simulated/floor/wood/indoors,
 /area/rnd/strelka/science/secondary)
+"xD" = (
+/obj/structure/table/woodentable,
+/obj/machinery/chemical_dispenser/catering/bar_coffee{
+	pixel_y = 9
+	},
+/obj/item/reagent_containers/food/drinks/bottle/messa_mead{
+	pixel_y = 27;
+	pixel_x = -10
+	},
+/obj/item/reagent_containers/food/drinks/bottle/specialwhiskey{
+	pixel_y = 28;
+	pixel_x = -3
+	},
+/obj/item/reagent_containers/food/drinks/bottle/tequila{
+	pixel_y = 26;
+	pixel_x = 4
+	},
+/obj/item/reagent_containers/food/drinks/bottle/whitewine{
+	pixel_y = 26;
+	pixel_x = 9
+	},
+/obj/machinery/light/small/old{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "xE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -6855,18 +7189,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/strelka/deck3)
-"xF" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/floor_decal/rust,
-/obj/structure/table/woodentable{
-	density = 0
-	},
-/obj/item/reagent_containers/food/drinks/drinkingglass/shotglass,
-/turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
 "xH" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/quartermaster/strelka/reception)
@@ -6899,6 +7221,12 @@
 /obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/science/secondary)
+"xK" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/hallway/strelka/deck3)
 "xL" = (
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
@@ -6909,6 +7237,15 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/medical/strelka/room2)
+"xO" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "xQ" = (
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/bridge/strelka/rd)
@@ -6924,6 +7261,24 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck3)
+"xT" = (
+/obj/machinery/portable_atmospherics/canister/carbon_dioxide{
+	start_pressure = 8500
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 1
+	},
+/obj/machinery/atmospherics/portables_connector{
+	dir = 4
+	},
+/obj/machinery/light/small/old{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/rnd/strelka/xenobio)
 "xU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -6939,6 +7294,12 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/strelka/science/main)
+"xV" = (
+/obj/structure/window/phoronreinforced{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/rnd/strelka/xenobotany)
 "xW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -6960,6 +7321,12 @@
 	},
 /turf/simulated/floor/fey/forest_grass,
 /area/hallway/strelka/deck3)
+"xZ" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#B95A00"
+	},
+/turf/simulated/wall/r_wall/prepainted,
+/area/space)
 "yc" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -6989,25 +7356,24 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/strelka/science/main)
 "yi" = (
-/obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Deck 3 Cargo";
-	output_attempt = 0
+/obj/machinery/power/sensor{
+	name = "Powernet Sensor - Park Subgrid";
+	name_tag = "Deck3 - Park"
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
 	},
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/structure/cable/green{
-	icon_state = "0-4"
+/obj/structure/cable/orange{
+	icon_state = "4-8"
 	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/machinery/door/window/brigdoor/northright{
-	req_one_access = list(10,24,11);
-	req_access = null
-	},
+/obj/machinery/light/small/old,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "yj" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/purple/border,
@@ -7155,6 +7521,10 @@
 	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/rnd/strelka/science/secondary)
+"yx" = (
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/turf/simulated/floor/tiled/monodark,
+/area/space)
 "yy" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -7207,7 +7577,16 @@
 /turf/simulated/floor/tiled/monotechmaint,
 /area/rnd/strelka/science/secondary)
 "yH" = (
+/obj/machinery/sheet_silo{
+	obj_persist_static_id = "sheet-silo-mining"
+	},
 /obj/effect/floor_decal/industrial/warning/dust,
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/quartermaster/strelka/cargo/mining)
 "yI" = (
@@ -7236,12 +7615,31 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/science)
+"yL" = (
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/medical/strelka/main)
 "yN" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck3)
+"yO" = (
+/obj/structure/cable{
+	icon_state = "1-6"
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/light/small/old{
+	dir = 4
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/reinforced,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "yP" = (
 /obj/machinery/light/small/old{
 	dir = 1
@@ -7284,11 +7682,6 @@
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/quartermaster/strelka/cargo/hangar)
-"yW" = (
-/obj/structure/table/carbon/reinforced,
-/obj/machinery/reagentgrinder,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/rnd/strelka/xenobio)
 "yX" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
@@ -7305,26 +7698,26 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/emtroom)
 "zb" = (
-/obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Deck 3 Park";
-	output_attempt = 0
+/obj/machinery/power/sensor{
+	name = "Powernet Sensor - Cargo Subgrid";
+	name_tag = "Deck3 - Cargo Subgrid"
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
 	},
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/structure/cable/green{
-	icon_state = "0-4"
+/obj/structure/cable/orange{
+	icon_state = "2-8"
 	},
-/obj/machinery/light/small/old,
-/obj/structure/window/reinforced{
+/obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/machinery/door/window/brigdoor/northright{
-	req_one_access = list(10,24,11);
-	req_access = null
-	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "ze" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -7344,13 +7737,12 @@
 /area/rnd/strelka/robotics)
 "zf" = (
 /obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "zh" = (
 /turf/simulated/floor/wood/indoors,
 /area/quartermaster/strelka/reception)
@@ -7380,6 +7772,11 @@
 /obj/item/hand_labeler,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/main)
+"zl" = (
+/obj/machinery/vending/hydronutrients,
+/obj/machinery/light/small/old,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/rnd/strelka/xenobotany)
 "zn" = (
 /turf/simulated/floor/reinforced,
 /area/space)
@@ -7420,6 +7817,12 @@
 "zs" = (
 /turf/simulated/wall/r_wall/prepainted/medical,
 /area/medical/strelka/emtroom)
+"zt" = (
+/obj/machinery/light/small/old{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/rnd/strelka/xenobio)
 "zu" = (
 /obj/structure/lightpost{
 	layer = 3.9;
@@ -7458,22 +7861,23 @@
 	},
 /turf/simulated/floor/fey/forest_grass,
 /area/rnd/strelka/xenobotany)
-"zz" = (
-/obj/machinery/camera/network/security,
-/turf/simulated/floor/tiled/monodark,
-/area/space)
 "zA" = (
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "2-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "zB" = (
 /obj/item/bee_pack,
 /obj/item/honey_frame,
@@ -7504,6 +7908,16 @@
 /obj/effect/floor_decal/spline/fancy/wood,
 /turf/simulated/floor/fey/forest_grass,
 /area/rnd/strelka/xenobotany)
+"zF" = (
+/obj/structure/cable{
+	icon_state = "1-6"
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "zI" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -7527,16 +7941,14 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka)
 "zJ" = (
-/obj/spawner/window/low_wall/firelocks,
 /obj/structure/curtain/open/shower/medical,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/wood/indoors,
 /area/medical/strelka/room2)
 "zL" = (
-/obj/machinery/light/small/old,
-/obj/machinery/camera/network/security{
-	dir = 1
+/obj/structure/cable{
+	icon_state = "5-8"
 	},
-/obj/landmark/spawnpoint/job/shaft_miner,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/quartermaster/strelka/cargo/mining)
 "zM" = (
@@ -7658,6 +8070,13 @@
 "Ai" = (
 /turf/simulated/wall/wood/hardwood,
 /area/bridge/strelka/rd)
+"Al" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#B95A00"
+	},
+/obj/structure/grille,
+/turf/simulated/floor/tiled/monodark,
+/area/space)
 "Am" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -7686,6 +8105,14 @@
 	},
 /turf/simulated/floor/tiled/old_cargo/red,
 /area/quartermaster/strelka/portal)
+"Ap" = (
+/obj/structure/table/woodentable{
+	density = 0
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "Aq" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
@@ -7752,6 +8179,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/xenobio)
+"Az" = (
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/reinforced,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "AB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -7766,8 +8199,14 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/hallway/strelka/deck3)
+"AE" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "AF" = (
-/obj/spawner/window/low_wall/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/science/main)
 "AG" = (
@@ -7816,7 +8255,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/quartermaster/strelka/cargo/hangar)
 "AN" = (
-/obj/spawner/window/low_wall/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
 /obj/structure/curtain/open/black,
 /turf/simulated/floor/tiled/techfloor,
@@ -7876,7 +8315,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 1
 	},
-/turf/simulated/floor/trap/wheelchair,
+/turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck3)
 "AX" = (
 /obj/effect/floor_decal/rust,
@@ -7955,6 +8394,12 @@
 /obj/machinery/air_alarm/south_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka)
+"Bf" = (
+/obj/machinery/light/flamp/flicker,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "Bg" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -7965,7 +8410,7 @@
 /turf/simulated/floor,
 /area/maintenance/strelka/medical)
 "Bh" = (
-/obj/spawner/window/low_wall/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/rnd/strelka/xenobio)
 "Bj" = (
@@ -8058,12 +8503,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/emtroom)
-"Bu" = (
-/obj/machinery/camera/network/security{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/monodark,
-/area/space)
 "Bv" = (
 /obj/item/slime_scanner,
 /obj/item/gun/projectile/energy/taser/xeno,
@@ -8207,6 +8646,10 @@
 "BT" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/maintenance/strelka/science)
+"BV" = (
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/turf/simulated/floor/plating,
+/area/space)
 "BX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -8258,6 +8701,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/strelka/robotics)
+"Ch" = (
+/obj/machinery/door/airlock/maintenance_hatch{
+	name = "Anomaly Research"
+	},
+/obj/map_helper/access_helper/airlock/station/science/maintenance,
+/turf/simulated/floor/plating,
+/area/rnd/strelka/xenobotany)
 "Ci" = (
 /obj/structure/table/bench/wooden,
 /obj/effect/floor_decal/corner/brown{
@@ -8294,6 +8744,16 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/strelka/science/secondary)
+"Cn" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 1
+	},
+/obj/structure/cable/orange{
+	icon_state = "1-6"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/hallway/strelka/deck3)
 "Co" = (
 /obj/structure/cable/yellow{
 	icon_state = "5-8"
@@ -8423,6 +8883,12 @@
 /obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/main)
+"CA" = (
+/obj/machinery/media/jukebox,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "CB" = (
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 10
@@ -8463,25 +8929,28 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/main)
-"CI" = (
-/obj/machinery/power/sensor{
-	name = "Powernet Sensor - Cargo Subgrid";
-	name_tag = "Deck3 - Cargo Subgrid"
+"CH" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/industrial/warning{
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/hallway/strelka/deck3)
+"CI" = (
+/obj/machinery/power/breakerbox/activated{
+	RCon_tag = "Deck 3 Park Substation Bypass"
+	},
+/obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/structure/cable/green{
-	icon_state = "0-8"
-	},
-/obj/structure/cable/orange{
-	icon_state = "2-8"
-	},
-/obj/effect/floor_decal/industrial/warning{
-	dir = 4
+/obj/machinery/door/window/brigdoor/northleft{
+	req_access = null;
+	req_one_access = list(10,24,11)
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "CK" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -8619,6 +9088,11 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/strelka/deck3)
+"CV" = (
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/machinery/door/blast/strelka/blockade,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/rnd/strelka/robotics)
 "CW" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 4
@@ -8756,6 +9230,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/robotics)
+"DB" = (
+/obj/machinery/air_alarm/south_mount,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "DC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -8854,18 +9334,19 @@
 /turf/simulated/floor/plating,
 /area/bridge/strelka/deck3)
 "DR" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "DS" = (
 /obj/machinery/computer/shuttle_control/belter{
 	dir = 4
@@ -8950,9 +9431,11 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/quartermaster/strelka/reception)
 "Ee" = (
-/obj/structure/loot_pile/maint/technical,
-/turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/obj/item/stool/padded,
+/turf/simulated/floor/wood/indoors,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "Ef" = (
 /obj/item/modular_computer/console/preset/research{
 	dir = 4
@@ -8999,6 +9482,24 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/main)
+"El" = (
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/turf/simulated/floor/tiled/monowhite,
+/area/space)
+"Em" = (
+/obj/structure/closet/crate,
+/obj/item/stack/material/glass{
+	amount = 50
+	},
+/obj/item/stack/material/steel{
+	amount = 50;
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "Eo" = (
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/monodark,
@@ -9065,14 +9566,11 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/strelka/deck3)
-"Ez" = (
+"EC" = (
 /obj/effect/floor_decal/spline/fancy/wood,
-/obj/structure/closet/secure_closet/miner,
-/obj/item/duct_tape_roll{
-	pixel_x = -4
-	},
-/turf/simulated/floor/wood/indoors,
-/area/quartermaster/strelka/cargo/mining)
+/obj/structure/flora/pottedplant/hedge,
+/turf/simulated/floor/tiled/techfloor,
+/area/hallway/strelka/deck3)
 "ED" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -9105,6 +9603,14 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/rnd/strelka/science/main)
+"EG" = (
+/turf/simulated/wall/r_wall/prepainted,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
+"EH" = (
+/turf/simulated/wall/r_wall/prepainted/command,
+/area/space)
 "EI" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 1
@@ -9610,12 +10116,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/rnd/strelka/robotics)
-"Gk" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
 "Gm" = (
 /obj/machinery/atmospherics/component/binary/pump,
 /obj/structure/disposalpipe/segment{
@@ -9628,6 +10128,27 @@
 /obj/machinery/power/apc/east_mount,
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/strelka/test)
+"Gn" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/hallway/strelka/deck3)
+"Go" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/catwalk,
+/obj/machinery/door/airlock/maintenance_hatch{
+	name = "Anomaly Research"
+	},
+/obj/map_helper/access_helper/airlock/station/supply/maintenance,
+/turf/simulated/floor/plating,
+/area/quartermaster/strelka/cargo/mining)
 "Gq" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/light_switch{
@@ -9654,10 +10175,6 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/medical/strelka/room)
-"Gv" = (
-/obj/structure/grille,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/quartermaster/strelka/cargo/mining)
 "Gw" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -9743,6 +10260,21 @@
 /obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/science)
+"GJ" = (
+/obj/structure/cable{
+	icon_state = "4-9"
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
+"GK" = (
+/obj/structure/window/phoronreinforced{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/rnd/strelka/xenobio)
 "GL" = (
 /obj/structure/table/rack/shelf,
 /obj/item/circuitboard/aicore{
@@ -9759,24 +10291,6 @@
 /obj/structure/curtain/open/black,
 /turf/simulated/floor/wood,
 /area/bridge/strelka/rd)
-"GO" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/floor_decal/rust,
-/obj/item/stool/padded,
-/turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
-"GP" = (
-/obj/structure/extinguisher_cabinet{
-	pixel_y = -31
-	},
-/obj/structure/bed/chair/shuttle{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/steel,
-/area/shuttle/belter)
 "GS" = (
 /obj/structure/sink{
 	dir = 4;
@@ -9812,8 +10326,11 @@
 /turf/simulated/floor/wood/indoors,
 /area/medical/strelka/surgery)
 "GX" = (
-/obj/spawner/window/low_wall/firelocks,
-/obj/machinery/door/blast/strelka/blockade,
+/obj/structure/closet/secure_closet/miner,
+/obj/item/duct_tape_roll{
+	pixel_x = -4
+	},
+/obj/item/clothing/accessory/permit/gun/planetside,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/quartermaster/strelka/cargo/mining)
 "GY" = (
@@ -9839,13 +10356,6 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/open,
 /area/hallway/strelka/deck3)
-"Hb" = (
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/obj/machinery/power/terminal,
-/turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
 "Hd" = (
 /obj/machinery/door/airlock/hatch{
 	icon_state = "door_locked";
@@ -9924,12 +10434,20 @@
 /obj/landmark/spawnpoint/job/medical_doctor,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/main)
+"Hl" = (
+/obj/structure/grille,
+/turf/simulated/floor/reinforced,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "Hm" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/simulated/wall/r_wall/prepainted,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "Hn" = (
 /obj/map_helper/access_helper/airlock/station/science/department,
 /obj/machinery/door/airlock/science,
@@ -9954,17 +10472,24 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/medical/strelka/surgery)
 "Hr" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
+/obj/structure/cable{
+	icon_state = "6-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
+/obj/effect/floor_decal/rust,
+/obj/random/multiple/corp_crate/no_weapons,
+/obj/random/maintenance/cargo,
+/obj/random/maintenance/cargo,
+/obj/random/maintenance/cargo,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "Hs" = (
 /obj/structure/flora/grass/event/bright_flowers1,
 /turf/simulated/floor/fey/forest_grass,
@@ -9995,6 +10520,18 @@
 /obj/structure/table/carbon/reinforced,
 /turf/simulated/floor/wood/indoors,
 /area/quartermaster/strelka/qm)
+"Hv" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#B95A00"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "Hw" = (
 /obj/structure/closet/firecloset/full,
 /obj/machinery/light/fairy{
@@ -10005,6 +10542,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck3)
+"Hz" = (
+/obj/effect/floor_decal/industrial/warning/dust,
+/obj/machinery/light/small/old,
+/turf/simulated/floor/reinforced,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "HA" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/borderfloorblack,
@@ -10022,6 +10566,18 @@
 /obj/item/pen,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/main)
+"HB" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "HE" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 10
@@ -10079,8 +10635,14 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/medical/strelka/psy)
+"HR" = (
+/obj/structure/event/prop/red_barrel,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "HY" = (
-/obj/spawner/window/low_wall/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/science/main)
@@ -10234,18 +10796,31 @@
 /turf/simulated/floor/wood/indoors,
 /area/medical/strelka/surgery)
 "Iu" = (
-/obj/structure/lattice,
 /obj/structure/cable{
-	icon_state = "32-4"
+	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/pipe/zpipe/down/supply{
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/zpipe/down/scrubbers{
-	dir = 4
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
 	},
-/turf/simulated/open,
-/area/maintenance/strelka/cargo)
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
+"Iv" = (
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/structure/closet/secure_closet/miner,
+/obj/item/duct_tape_roll{
+	pixel_x = -4
+	},
+/obj/item/clothing/accessory/permit/gun/planetside,
+/turf/simulated/floor/wood/indoors,
+/area/quartermaster/strelka/cargo/mining)
 "IC" = (
 /obj/structure/medical_stand/anesthetic,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -10264,18 +10839,27 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/hallway/strelka/deck3)
 "IE" = (
-/obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Deck 3 Park Substation Bypass"
+/obj/machinery/power/smes/buildable{
+	RCon_tag = "Substation - Deck 3 Cargo";
+	output_attempt = 0
+	},
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "0-4"
 	},
 /obj/structure/window/reinforced{
-	dir = 8
+	dir = 4
 	},
-/obj/machinery/door/window/brigdoor/northleft{
-	req_access = null;
-	req_one_access = list(10,24,11)
+/obj/machinery/door/window/brigdoor/northright{
+	req_one_access = list(10,24,11);
+	req_access = null
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "IF" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
@@ -10319,7 +10903,7 @@
 /turf/simulated/floor/plating,
 /area/bridge/strelka/deck3)
 "IJ" = (
-/obj/spawner/window/low_wall/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/strelka/psy)
@@ -10337,6 +10921,12 @@
 	layer = 1
 	},
 /area/hallway/strelka/deck3)
+"IL" = (
+/obj/structure/table/carbon/reinforced,
+/obj/machinery/reagentgrinder,
+/obj/structure/table/carbon/reinforced,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/rnd/strelka/xenobio)
 "IM" = (
 /obj/effect/floor_decal/grass_edge,
 /obj/effect/floor_decal/borderfloor{
@@ -10407,6 +10997,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/science)
+"IY" = (
+/obj/machinery/door/blast/regular,
+/turf/simulated/wall/r_wall/prepainted,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "IZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 1
@@ -10463,6 +11059,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable{
 	icon_state = "1-6"
+	},
+/obj/structure/cable{
+	icon_state = "6-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/strelka/deck3)
@@ -10525,6 +11124,16 @@
 	},
 /turf/simulated/floor/tiled/old_cargo/red,
 /area/quartermaster/strelka/portal)
+"Jv" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/catwalk,
+/obj/effect/floor_decal/industrial/warning/dust,
+/turf/simulated/floor/reinforced,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "Jw" = (
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_x = -30
@@ -10681,6 +11290,14 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/hallway/strelka/deck3)
+"JX" = (
+/obj/structure/loot_pile/mecha/ripley{
+	desc = "The ruins of a self-destroyed Ripley... Weirdly enough, a mechanical laugh resonates."
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "Ke" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -10710,6 +11327,9 @@
 /area/bridge/strelka/rd)
 "Ki" = (
 /obj/structure/closet/firecloset/full,
+/obj/machinery/light/small/old{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/xenobio)
 "Kj" = (
@@ -10772,6 +11392,10 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/strelka/science)
+"Kq" = (
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/quartermaster/strelka/cargo/mining)
 "Kr" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -10798,12 +11422,6 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/medical/strelka)
-"Ku" = (
-/obj/machinery/camera/network/security{
-	dir = 1
-	},
-/turf/simulated/floor/reinforced,
-/area/space)
 "Kv" = (
 /obj/machinery/holopad,
 /obj/effect/floor_decal/borderfloorblack{
@@ -10878,7 +11496,9 @@
 "KK" = (
 /obj/structure/loot_pile/maint/boxfort,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "KO" = (
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 9
@@ -11011,6 +11631,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/strelka/deck3)
+"Lj" = (
+/obj/effect/floor_decal/borderfloorblack/corner{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/rnd/strelka/robotics)
 "Lm" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -11076,6 +11702,14 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/strelka/science/main)
+"Lr" = (
+/obj/structure/bed/chair/sofa/brown/left{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "Ls" = (
 /obj/machinery/door/blast/strelka/blockade,
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
@@ -11133,6 +11767,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck3)
+"LM" = (
+/obj/effect/floor_decal/borderfloorblack{
+	alpha = 255;
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/rnd/strelka/robotics)
 "LO" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/bridge/strelka/blueshield/room)
@@ -11218,6 +11859,14 @@
 	name = "Server Base"
 	},
 /area/rnd/strelka/servers)
+"Mb" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "Mc" = (
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -11286,17 +11935,10 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/bridge/strelka/rd)
 "Mk" = (
-/obj/structure/closet/crate,
-/obj/item/stack/material/glass{
-	amount = 50
-	},
-/obj/item/stack/material/steel{
-	amount = 50;
-	pixel_x = 2;
-	pixel_y = 2
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/turf/simulated/floor/wood/indoors,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "Ml" = (
 /obj/structure/closet/secure_closet/explorer,
 /obj/structure/window/phoronreinforced{
@@ -11332,7 +11974,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/turf/simulated/floor/trap/wheelchair,
+/turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck3)
 "Ms" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -11355,7 +11997,18 @@
 	},
 /obj/machinery/light/small/old,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
+"My" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "5-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/quartermaster/strelka/cargo/mining)
 "MB" = (
 /obj/structure/table/bench/wooden,
 /obj/effect/floor_decal/corner/brown{
@@ -11392,6 +12045,15 @@
 "MH" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/medical/strelka/psy)
+"MM" = (
+/obj/effect/floor_decal/rust,
+/obj/random/multiple/corp_crate/no_weapons,
+/obj/random/maintenance/cargo,
+/obj/random/maintenance/cargo,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "MN" = (
 /obj/machinery/light/small/old{
 	dir = 4
@@ -11478,10 +12140,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/obj/structure/wheelchairassist{
-	dir = 4
-	},
-/turf/simulated/floor/trap/wheelchair,
+/turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck3)
 "Nb" = (
 /obj/machinery/light/fairy{
@@ -11521,7 +12180,7 @@
 /area/quartermaster/strelka/cargo/mining)
 "Ng" = (
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled/monowhite,
+/turf/simulated/wall/r_wall/prepainted,
 /area/space)
 "Nh" = (
 /obj/machinery/fire_alarm/north_mount,
@@ -11706,7 +12365,7 @@
 /turf/simulated/floor/carpet/blue,
 /area/bridge/strelka/blueshield)
 "NF" = (
-/obj/spawner/window/low_wall/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/monowhite,
@@ -11728,6 +12387,9 @@
 	},
 /obj/structure/cable/orange{
 	icon_state = "6-9"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/strelka/deck3)
@@ -11763,7 +12425,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "NU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -11845,18 +12509,12 @@
 /area/hallway/strelka/deck3)
 "Og" = (
 /obj/structure/cable{
-	icon_state = "2-4"
+	icon_state = "4-8"
 	},
-/obj/machinery/power/port_gen/pacman,
-/obj/machinery/door/window/brigdoor/eastleft{
-	req_access = list(31)
-	},
-/obj/machinery/door/window/southleft{
-	req_access = list(31)
-	},
-/obj/effect/floor_decal/industrial/warning/full,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "Oi" = (
 /obj/structure/bed/roller,
 /obj/effect/floor_decal/steeldecal/steel_decals10,
@@ -11918,9 +12576,42 @@
 /turf/simulated/floor/wood,
 /area/bridge/strelka/blueshield)
 "Oz" = (
-/obj/random/multiple/corp_crate/no_weapons,
+/obj/structure/lattice,
+/obj/structure/cable{
+	icon_state = "32-4"
+	},
+/obj/machinery/atmospherics/pipe/zpipe/down/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/zpipe/down/scrubbers{
+	dir = 4
+	},
+/turf/simulated/open,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
+"OA" = (
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/machinery/power/port_gen/pacman,
+/obj/machinery/door/window/brigdoor/eastleft{
+	req_access = list(31)
+	},
+/obj/machinery/door/window/southleft{
+	req_access = list(31)
+	},
+/obj/effect/floor_decal/industrial/warning/full,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "OB" = (
 /obj/structure/bed/chair/office/light{
 	dir = 1
@@ -11956,6 +12647,12 @@
 /obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka)
+"OM" = (
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "ON" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner{
 	dir = 4
@@ -11965,20 +12662,29 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/quartermaster/strelka/cargo/hangar)
+"OP" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#B95A00"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "OQ" = (
 /turf/simulated/wall/wood/hardwood,
 /area/quartermaster/strelka/reception)
-"OT" = (
-/obj/machinery/air_alarm/south_mount,
-/turf/simulated/wall/wood/hardwood,
-/area/rnd/strelka)
-"OU" = (
+"OR" = (
 /obj/structure/closet/secure_closet/miner,
 /obj/item/duct_tape_roll{
 	pixel_x = -4
 	},
+/obj/item/clothing/accessory/permit/gun/planetside,
 /turf/simulated/floor/wood/indoors,
 /area/quartermaster/strelka/cargo/mining)
+"OT" = (
+/obj/machinery/air_alarm/south_mount,
+/turf/simulated/wall/wood/hardwood,
+/area/rnd/strelka)
 "OV" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
@@ -11997,6 +12703,10 @@
 /obj/structure/table/carbon/reinforced,
 /turf/simulated/floor/reinforced,
 /area/rnd/strelka/xenobio)
+"Pa" = (
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/turf/simulated/floor/tiled/dark,
+/area/quartermaster/strelka/reception)
 "Pb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -12230,10 +12940,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck3)
-"PB" = (
-/obj/machinery/recharge_station,
-/turf/simulated/floor/tiled/steel,
-/area/shuttle/belter)
 "PC" = (
 /obj/structure/curtain/open/shower,
 /obj/machinery/shower{
@@ -12245,10 +12951,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/obj/structure/wheelchairassist{
-	dir = 8
-	},
-/turf/simulated/floor/trap/wheelchair,
+/turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck3)
 "PF" = (
 /obj/effect/floor_decal/corner/paleblue/bordercorner{
@@ -12383,6 +13086,16 @@
 	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/bridge/strelka/rd)
+"Qi" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "Qk" = (
 /obj/machinery/vending/loadout/accessory,
 /turf/simulated/floor/tiled/dark,
@@ -12442,10 +13155,6 @@
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/quartermaster/strelka/portal)
-"Qw" = (
-/obj/machinery/vending/hydronutrients,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/rnd/strelka/xenobotany)
 "Qy" = (
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -12517,7 +13226,6 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/science/main)
 "QK" = (
@@ -12600,6 +13308,19 @@
 /obj/landmark/spawnpoint/job/ai/secondary,
 /turf/simulated/floor/plating,
 /area/bridge/strelka/ai)
+"Rh" = (
+/obj/structure/cable{
+	icon_state = "1-4";
+	dir = 4
+	},
+/obj/structure/catwalk,
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "Rj" = (
 /obj/structure/undies_wardrobe,
 /obj/structure/window/reinforced{
@@ -12683,7 +13404,9 @@
 /obj/machinery/door/airlock/maintenance_hatch,
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "Rz" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -12849,16 +13572,6 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/medical/strelka/surgery)
-"Sd" = (
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 1
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/effect/floor_decal/rust,
-/turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
 "Se" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -12943,10 +13656,12 @@
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/strelka/servers)
-"Sp" = (
+"So" = (
 /obj/machinery/camera/network/security,
-/turf/space/basic,
-/area/space)
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "Sq" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/spline/fancy/wood,
@@ -12990,7 +13705,6 @@
 /obj/machinery/light/small/old{
 	dir = 4
 	},
-/obj/structure/wheelchairassist,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/emtroom)
 "Sx" = (
@@ -13027,6 +13741,15 @@
 /obj/machinery/air_alarm/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/strelka/borg)
+"SC" = (
+/obj/structure/table/woodentable{
+	density = 0
+	},
+/obj/item/flame/candle/everburn/black,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "SD" = (
 /obj/structure/flora/grass/event/full_grass2,
 /turf/simulated/floor/fey/forest_grass,
@@ -13090,30 +13813,17 @@
 	},
 /turf/simulated/wall/r_wall/prepainted,
 /area/rnd/strelka/xenobio)
-"SJ" = (
-/obj/structure/cable{
-	icon_state = "6-9"
-	},
-/obj/effect/floor_decal/rust,
-/obj/item/reagent_containers/food/drinks/drinkingglass/shotglass,
-/obj/structure/table/woodentable{
-	density = 0
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
 "SK" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 5
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
+	dir = 4
 	},
-/obj/structure/cable/orange{
-	icon_state = "2-8"
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
 	},
-/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "SL" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
@@ -13167,12 +13877,9 @@
 /turf/simulated/floor/tiled/monotechmaint,
 /area/rnd/strelka/xenobio)
 "SU" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 1
-	},
-/obj/structure/cable/orange{
-	icon_state = "1-2"
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/quartermaster/strelka/cargo/mining)
@@ -13199,6 +13906,35 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/strelka/science/secondary)
+"SY" = (
+/obj/effect/floor_decal/borderfloorblack{
+	alpha = 255;
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 9
+	},
+/obj/machinery/light{
+	dir = 4;
+	light_power = 1.5
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/medical/strelka/main)
+"SZ" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/medical/strelka/main)
 "Ta" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -13215,6 +13951,9 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/quartermaster/strelka/qm)
+"Tb" = (
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/rnd/strelka/robotics)
 "Tc" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
@@ -13336,6 +14075,14 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/rnd/strelka/robotics)
+"Tu" = (
+/obj/random/maintenance/research,
+/obj/random/maintenance/research,
+/obj/random/maintenance/research,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "Tv" = (
 /obj/structure/cable/orange{
 	icon_state = "0-8"
@@ -13626,6 +14373,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/medical)
+"Uw" = (
+/obj/item/radio/intercom/department/medbay{
+	dir = 8;
+	layer = 4;
+	pixel_x = -54
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/medical/strelka/main)
 "Uy" = (
 /obj/structure/grille,
 /obj/structure/railing,
@@ -13640,6 +14395,11 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/quartermaster/strelka/cargo/mining)
+"UB" = (
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/machinery/door/blast/strelka/blockade,
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/medical/strelka/main)
 "UD" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
@@ -13693,9 +14453,14 @@
 /turf/simulated/floor/reinforced,
 /area/rnd/strelka/test)
 "UN" = (
-/obj/item/stool/padded,
+/obj/structure/cable{
+	icon_state = "6-9"
+	},
+/obj/random/multiple/corp_crate/no_weapons,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "UP" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /turf/simulated/wall/r_wall/prepainted,
@@ -13971,10 +14736,12 @@
 /obj/machinery/disposal,
 /obj/effect/floor_decal/industrial/warning/full,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "VJ" = (
-/obj/spawner/window/low_wall/firelocks,
 /obj/structure/table/carbon/reinforced,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/science/main)
 "VK" = (
@@ -14102,6 +14869,15 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/science/main)
+"VZ" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/obj/machinery/air_alarm/west_mount,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "Wb" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -14199,13 +14975,17 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/bridge/strelka/rd)
 "Wk" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/obj/structure/window/reinforced/tinted,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "Wm" = (
-/obj/effect/floor_decal/rust,
+/obj/random/multiple/corp_crate/no_weapons,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "Wn" = (
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "Substation - Deck 3 Medical";
@@ -14225,6 +15005,17 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/strelka/medical)
+"Wo" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/brown/border,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "4-10"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/hallway/strelka/deck3)
 "Wp" = (
 /obj/machinery/light/small/old{
 	dir = 1
@@ -14336,6 +15127,23 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/strelka/test)
+"WF" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#B95A00"
+	},
+/obj/machinery/camera/network/security,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
+"WG" = (
+/obj/effect/floor_decal/borderfloorblack,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/rnd/strelka/robotics)
 "WH" = (
 /obj/structure/table/carbon/reinforced,
 /obj/item/clothing/glasses/welding,
@@ -14409,6 +15217,17 @@
 "WP" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/strelka/upload)
+"WQ" = (
+/obj/structure/closet/secure_closet/miner,
+/obj/item/duct_tape_roll{
+	pixel_x = -4
+	},
+/obj/machinery/light/small/old{
+	dir = 1
+	},
+/obj/item/clothing/accessory/permit/gun/planetside,
+/turf/simulated/floor/wood/indoors,
+/area/quartermaster/strelka/cargo/mining)
 "WR" = (
 /obj/structure/flora/grass/event/point_bush1,
 /obj/structure/lightpost{
@@ -14436,6 +15255,16 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/strelka/upload)
+"Xa" = (
+/obj/structure/cable{
+	icon_state = "32-4"
+	},
+/obj/effect/floor_decal/industrial/warning/full,
+/obj/structure/lattice,
+/turf/simulated/open,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "Xb" = (
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/monodark,
@@ -14457,15 +15286,14 @@
 /turf/simulated/floor/wood/broken,
 /area/hallway/strelka/deck3)
 "Xf" = (
-/obj/structure/grille,
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c"
 	},
-/turf/simulated/floor/tiled/monowhite,
+/turf/simulated/wall/r_wall/prepainted,
 /area/space)
 "Xh" = (
-/obj/spawner/window/low_wall/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/strelka/main)
 "Xk" = (
@@ -14494,10 +15322,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/science)
-"Xo" = (
-/obj/machinery/camera/network/security,
-/turf/simulated/floor/reinforced,
-/area/space)
 "Xp" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -14582,6 +15406,12 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/rnd/strelka/science/secondary)
+"XA" = (
+/obj/machinery/light/small/old,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "XC" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/purple{
@@ -14623,7 +15453,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/xenobotany)
 "XH" = (
-/obj/spawner/window/low_wall/firelocks,
+/obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/science/secondary)
 "XK" = (
@@ -14631,6 +15461,11 @@
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/belter)
+"XL" = (
+/turf/simulated/floor/reinforced,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "XO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -14716,10 +15551,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/science/main)
-"XZ" = (
-/obj/structure/grille,
-/turf/simulated/floor/reinforced,
-/area/quartermaster/strelka/cargo/mining)
 "Ya" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
@@ -14744,6 +15575,15 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/medical/strelka/resleeve)
+"Yd" = (
+/obj/structure/sign/signnew/electrical{
+	pixel_x = -31
+	},
+/obj/machinery/light/small/old{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/rnd/strelka/xenobio)
 "Yg" = (
 /obj/effect/floor_decal/corner/brown/full{
 	dir = 1
@@ -14753,26 +15593,32 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/quartermaster/strelka/reception)
-"Ym" = (
-/obj/machinery/air_alarm/north_mount,
-/obj/structure/closet/crate,
-/obj/item/stack/material/wood/hard{
-	amount = 25
+"Yo" = (
+/obj/machinery/light/small/old{
+	dir = 1
 	},
-/obj/item/stack/material/wood{
-	amount = 25
-	},
-/obj/item/stack/material/wood/ironwood{
-	amount = 25
-	},
+/obj/structure/loot_pile/maint/junk,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
+"Yp" = (
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "Yq" = (
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_x = 30
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "Yr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -14885,13 +15731,10 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/medical/strelka/roomhallway)
 "YK" = (
-/obj/machinery/conveyor_switch/oneway{
-	id = "mining_interior";
-	name = "refining conveyor";
-	pixel_y = 2;
-	pixel_x = -11
-	},
 /obj/effect/floor_decal/industrial/warning/dust,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/quartermaster/strelka/cargo/mining)
 "YL" = (
@@ -14908,11 +15751,27 @@
 "YO" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/bridge/strelka/rd)
+"YQ" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/catwalk,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "YU" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/rnd/strelka/robotics)
+"YV" = (
+/obj/machinery/door/blast/regular,
+/turf/simulated/wall/r_wall/prepainted/command,
+/area/space)
 "YW" = (
-/obj/spawner/window/low_wall/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/structure/curtain/open/black,
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/strelka/blueshield)
@@ -15006,20 +15865,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/medical)
-"Zk" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/button/remote/blast_door{
-	pixel_y = -29;
-	id = "xenobio2";
-	dir = 1
-	},
-/obj/machinery/door/firedoor/glass{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/rnd/strelka/xenobio)
 "Zl" = (
 /obj/machinery/vending,
 /turf/simulated/floor/tiled/dark,
@@ -15052,6 +15897,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/xenobotany)
+"Zr" = (
+/obj/item/clothing/under/syndicate,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "Zw" = (
 /obj/structure/bed/chair/sofa/brown/left{
 	dir = 1
@@ -15104,14 +15955,17 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/strelka/upload)
 "ZE" = (
-/obj/structure/cable{
-	icon_state = "6-9"
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 1
 	},
-/obj/item/stool/padded,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo)
+/area/maintenance/strelka/cargo{
+	name = "\improper Deck 3 Cargo Maintenance"
+	})
 "ZF" = (
-/obj/spawner/window/low_wall/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
 /obj/structure/curtain/open/black,
 /turf/simulated/floor/tiled/techfloor,
@@ -15220,6 +16074,16 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/xenobio)
+"ZX" = (
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/hallway/strelka/deck3)
 "ZY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
@@ -25028,30 +25892,30 @@ ae
 ae
 ae
 ae
+EP
+Eo
+Eo
+ae
+ae
+zV
+km
+km
+zV
+km
+km
+zV
+zV
 ae
 ae
 ae
 ae
 ae
+zV
 ae
 ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
+Eo
+Eo
+EP
 ae
 ae
 ae
@@ -25221,32 +26085,32 @@ ae
 ae
 ae
 ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
+EP
+GB
+GB
+Ig
+EP
+zV
+zV
+BV
+BV
+zV
+BV
+BV
+zV
+zV
+kr
+kr
+kr
+kr
+kr
+zV
+zV
+EP
+Ig
+GB
+GB
+EP
 ae
 ae
 ae
@@ -25414,34 +26278,34 @@ ae
 ae
 ae
 ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
+EP
+zn
+GB
+Ig
+SF
+zV
+EG
+up
+fS
+fS
+up
+fS
+fS
+up
+up
+IY
+IY
+IY
+IY
+IY
+up
+EH
+zV
+SF
+Ig
+GB
+zn
+EP
 ae
 ae
 ae
@@ -25607,36 +26471,36 @@ ae
 ae
 ae
 ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
+EP
+zn
+zn
+zn
+zn
+kr
+kr
+aI
+up
+rN
+rN
+rN
+rN
+rN
+up
+Az
+Mb
+XL
+XL
+XL
+uq
+Az
+up
+EH
+zV
+zn
+zn
+zn
+zn
+EP
 ae
 ae
 ae
@@ -25796,47 +26660,47 @@ ae
 ae
 ae
 ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
+EP
+EP
+EP
+EP
+EP
+EP
+EP
+EP
+EP
+kr
+kr
+aI
+uq
+rN
+rN
+rN
+rN
+rN
+rN
+Yp
+fP
+rU
+re
+re
+re
+Jv
+yO
+rN
+up
+EH
+zV
+zn
+zn
+zn
+EP
+EP
+EP
+EP
+EP
+EP
+EP
 ae
 ae
 ae
@@ -25989,49 +26853,49 @@ ae
 ae
 ae
 ae
-ae
 EP
+zV
+zV
+zV
+zV
+kr
+kr
+kr
+kr
+kr
+kr
+YV
+XL
+uq
+rN
+qD
+Lr
+Bf
+aa
+jU
+fg
+mO
+kR
+kR
+kR
+eB
+kR
+Ko
+rD
+rN
+up
+EH
+zV
+zV
+zV
+zV
+zV
+zV
+zV
+zV
+zV
+zV
 EP
-EP
-EP
-EP
-EP
-EP
-EP
-EP
-EP
-EP
-EP
-Eo
-Eo
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-Eo
-Eo
-EP
-EP
-EP
-EP
-EP
-EP
-EP
-EP
-EP
-EP
-EP
-EP
-ae
 ae
 ae
 ae
@@ -26182,51 +27046,51 @@ ae
 ae
 ae
 ae
-ae
 EP
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-GB
-GB
-Ig
-XZ
-Gv
-mO
-Gv
-Gv
-mO
-mO
-kR
-kR
-kR
-eB
-kR
-eB
-Ig
-GB
-GB
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
+zV
+up
+up
+up
+up
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+XL
+uq
+rN
+QE
+QE
+QE
+QE
+QE
+Go
+Ko
+Ns
+cY
+cY
+cY
+Ns
+Ko
+rN
+rD
+rN
+up
+up
+up
+up
+up
+up
+up
+up
+up
+up
+up
+zV
 EP
-ae
 ae
 ae
 ae
@@ -26375,53 +27239,53 @@ ae
 ae
 ae
 ae
-ae
 EP
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-GB
-Ig
-SF
-Gv
-GX
-GX
-GX
-GX
+zV
+EG
+up
+rN
+OM
+rN
+Mb
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+Hz
 Ko
+QE
+WQ
+OR
+Iv
+GX
+in
 Ko
 Ns
-cY
-cY
-cY
+XK
+DS
+nk
 Ns
-kR
-SF
-Ig
-GB
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
+Ko
+Ko
+rN
+sG
+xO
+xO
+xO
+xO
+xO
+xO
+xO
+xO
+zF
+rN
+up
+up
+zV
 EP
-ae
 ae
 ae
 ae
@@ -26570,51 +27434,51 @@ ae
 ae
 ae
 EP
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
+zV
+up
+rN
+rN
+OM
+pn
+Mb
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+uq
 Ko
-GX
-GX
-OU
-Ez
-mt
+QE
+bl
+sJ
+GT
+qR
 dx
 Ko
 Ns
-XK
-DS
-nk
+oZ
+am
+kv
 Ns
-kR
+eZ
 Ko
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
+JX
+rN
+rN
+rN
+rN
+rN
+jj
+rN
+rN
+rN
+OM
+rD
+eg
+up
+zV
 EP
 ae
 ae
@@ -26763,54 +27627,54 @@ ae
 ae
 ae
 EP
-EP
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-Ko
-mO
-gQ
-sJ
-GT
-qR
+zV
+EG
+up
+rN
+rN
+nN
+nN
+pT
+pT
+pT
+pT
+pT
+pT
+pT
+pT
+pT
+nN
+Yy
+wY
+Dh
+me
+oh
 zL
 Ko
 Ns
-oZ
-am
-GP
+AZ
+tf
+gS
 Ns
 eZ
-Ko
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
-zn
+ZU
+gc
+gc
+gc
+gc
+gc
+gc
+gc
+gc
+gc
+gc
+SI
+So
+rD
+up
+EG
+zV
 EP
-ae
 ae
 ae
 ae
@@ -26954,58 +27818,58 @@ ae
 ae
 ae
 ae
-ae
 EP
 EP
-EP
-zn
-zn
-zn
-zn
-nN
-nN
-pT
-pT
-pT
-pT
-pT
-pT
-pT
-pT
-pT
-nN
-Yy
-wY
-Dh
-me
-oh
-qR
+zV
+EG
+up
+rN
+rN
+EG
+su
+dh
+uY
+uY
+uY
+uY
+uY
+uY
+uY
+uY
+uY
+EN
+Kq
+gq
+Js
+Eu
+nc
+Ho
 Ko
 Ns
-AZ
+de
 tf
-gS
+lO
 Ns
 eZ
-ZU
-gc
-gc
-gc
-gc
-gc
-gc
-gc
-gc
-gc
-gc
-SI
-Xo
-zn
-zn
-zn
+OV
+DW
+yg
+ud
+Fv
+ao
+kj
+RF
+ud
+ud
+FZ
+UP
+rN
+rN
+rD
+up
+EG
+zV
 EP
-EP
-ae
 ae
 ae
 ae
@@ -27147,17 +28011,16 @@ ae
 ae
 ae
 ae
-ae
 EP
 EP
-EP
-EP
-zn
-zn
-Ku
 zV
-su
-dh
+EG
+up
+rN
+rN
+rN
+Hl
+oo
 uY
 uY
 uY
@@ -27167,40 +28030,41 @@ uY
 uY
 uY
 uY
-EN
-uL
-gq
-Js
-Eu
-lT
-Ho
-Ko
-Ns
-de
+uY
+uY
+Yy
+QE
+QE
+Tg
+My
+qR
+UA
+Fb
 tf
-lO
+tf
+om
 Ns
 eZ
-OV
-DW
-yg
-ud
-Fv
-ao
-kj
-RF
-ud
-ud
-FZ
-UP
-zn
-zn
-zn
-zn
+sa
+Pk
+ny
+ny
+tv
+hV
+hV
+tS
+ny
+ny
+nz
+sa
+Tu
+OP
+rN
+rD
+up
+EG
+zV
 EP
-EP
-EP
-ae
 ae
 ae
 ae
@@ -27340,17 +28204,17 @@ ae
 ae
 ae
 ae
-ae
 EP
 EP
-EP
-EP
-EP
-zn
-zn
-zn
-bo
-vh
+zV
+oc
+oc
+OP
+rN
+OP
+OP
+EG
+su
 uY
 uY
 uY
@@ -27362,40 +28226,40 @@ uY
 uY
 uY
 uY
-Yy
-QE
-QE
-Tg
+Kq
+xk
+vm
+aW
 lT
-qR
-UA
-Fb
-tf
-tf
-PB
+Oo
+Ko
+Ns
+Ns
+Ns
+Ns
 Ns
 eZ
 sa
-Pk
-ny
-ny
-tv
+ud
+ud
+ud
+ww
 hV
 hV
-tS
-ny
-ny
-nz
+Cq
+ud
+ud
+ud
 sa
-zn
-hD
-hD
-zn
+Yo
+rN
+EG
+rN
+rD
+up
+up
+zV
 EP
-EP
-EP
-EP
-ae
 ae
 ae
 ae
@@ -27533,17 +28397,17 @@ ae
 ae
 ae
 ae
-ae
 EP
 EP
-EP
-lI
-lI
-lI
-hD
-hD
-hD
-mF
+xZ
+oc
+oc
+EG
+nm
+EG
+jj
+rN
+EG
 su
 uY
 uY
@@ -27555,42 +28419,42 @@ uY
 uY
 uY
 uY
-uY
-uL
-xk
-vm
+Bd
+Yy
+rH
+os
 YK
-lT
-Oo
+Ue
+fM
 Ko
-Ns
-Ns
-Ns
-Ns
-Ns
+Kl
+Kl
+zW
+Kl
+Kl
 eZ
 sa
-ud
-ud
-ud
-ww
-hV
-hV
-Cq
-ud
-ud
-ud
+fG
+fG
+sw
+sw
+Wp
+qe
+sw
+sw
+sw
+sw
 sa
-zn
-zn
-zn
-zn
+hM
+eg
+EG
+rN
+rN
+rD
+ff
+ff
+zV
 EP
-EP
-EP
-EP
-EP
-ae
 ae
 ae
 ae
@@ -27726,18 +28590,18 @@ ae
 ae
 ae
 ae
-ae
 EP
 EP
-lI
-lI
-lI
-EP
-EP
-zq
-zq
-zq
-mF
+zV
+EG
+EG
+HR
+rN
+rN
+EG
+EG
+nm
+EG
 su
 uY
 uY
@@ -27749,43 +28613,43 @@ uY
 uY
 uY
 uY
-Bd
-Yy
-rH
-os
-yH
-Ue
-fM
-Ko
-Kl
-Kl
-zW
-Kl
-Kl
-eZ
-sa
-fG
-fG
-sw
-sw
-Wp
-qe
-sw
-sw
-sw
-sw
-sa
-zq
-zq
-zq
-zn
+uY
+Kq
+GZ
+HJ
+YK
+jh
+Yv
+Py
+Py
+Py
+Py
+Py
+Py
+Py
+OV
+DW
+yg
+ud
+VG
+hV
+hV
+SR
+ud
+ud
+FZ
+UP
+VA
+VA
+VA
+rN
+jj
+rN
+rD
+OP
+up
+zV
 EP
-EP
-lI
-lI
-EP
-EP
-ae
 ae
 ae
 ae
@@ -27919,18 +28783,18 @@ ae
 ae
 ae
 ae
-ae
 EP
 EP
-EP
-EP
-EP
-zq
-zq
-zq
-mF
-mF
-mF
+zV
+oc
+EG
+rN
+rN
+rN
+Zr
+EG
+OA
+tg
 mF
 su
 uY
@@ -27944,43 +28808,43 @@ uY
 uY
 uY
 uY
-uL
-GZ
-HJ
-yH
+Yy
+QK
+os
+YK
 jh
-Yv
-Py
-Py
-Py
-Py
-Py
-Py
-Py
-OV
-DW
-yg
-ud
-VG
-hV
-hV
-SR
-ud
-ud
-FZ
-UP
+Oo
+sc
+qI
+eP
+Lp
+Xu
+TM
+fY
+sa
+Pk
+ny
+ny
+Qu
+Ej
+mB
+Cu
+ny
+ny
+nz
+sa
+FV
+Bm
 VA
 VA
 VA
-zq
-zq
-zq
+VA
+rN
+GJ
+rN
+up
+zV
 EP
-lI
-EP
-EP
-EP
-ae
 ae
 ae
 ae
@@ -28112,70 +28976,70 @@ ae
 ae
 ae
 ae
-ae
 EP
 EP
-EP
-lI
-EP
-zq
-mF
-mF
-mF
-mF
+zV
+oc
+EG
+ce
+rN
+rN
+EG
+EG
+EG
 Og
 ca
 iR
 su
-uY
-uY
-uY
-uY
-uY
-uY
-uY
-uY
-uY
-uY
-uY
-Yy
-QK
-os
+dK
+ut
+ut
+ut
+ET
+cJ
+cJ
+ON
+ut
+ut
+Gf
+Kq
+nn
+Wv
 yH
 jh
-Oo
-sc
-qI
-eP
-Lp
-Xu
-TM
-fY
+ij
+Py
+Hu
+Ei
+Nu
+lH
+te
+hx
 sa
-Pk
-ny
-ny
-Qu
-Ej
-mB
-Cu
-ny
-ny
-nz
+ud
+ud
+ud
+BF
+yA
+Ay
+gO
+ud
+ud
+ud
 sa
-FV
-Bm
+wH
+ED
+an
+KW
+aS
 VA
 VA
-VA
-VA
-zq
+Qi
+OM
+up
+zV
 EP
 EP
-EP
-EP
-EP
-ae
 ae
 ae
 ae
@@ -28307,67 +29171,67 @@ ae
 ae
 ae
 EP
-EP
-EP
 lI
-EP
-aD
-mF
-mF
-mX
+zV
+EG
+EG
+EG
+EG
+EG
+EG
 Oz
-js
-pN
-Hb
+VZ
+Og
+rN
 zb
-su
-dK
-ut
-ut
-ut
-ET
-cJ
-cJ
-ON
-ut
-ut
-Gf
-uL
-nn
-Wv
+BC
+Ny
+kL
+Sl
+sh
+sh
+hF
+sh
+sh
+sh
+sh
+pv
+zw
+Nw
+hd
 tu
-jh
-ij
-Py
-Hu
-Ei
-Nu
-lH
-te
-hx
+bN
+un
+Ta
+qH
+Cr
+gt
+Il
+Il
+tj
 sa
-ud
-ud
-ud
-BF
-yA
-Ay
-gO
-ud
-ud
-ud
+mD
+mD
+sw
+sw
+Pb
+aK
+sw
+sw
+sw
+sw
 sa
-wH
-ED
-an
-KW
-aS
+zy
+UY
+Nt
+zD
+La
+WB
 VA
-VA
-zq
-EP
-EP
-EP
+Hv
+XA
+up
+xZ
 EP
 EP
 ae
@@ -28502,66 +29366,66 @@ ae
 ae
 EP
 lI
-EP
-EP
-EP
-zq
-mF
+zV
+EG
+vi
+Em
+rN
 Mk
-Oz
+nm
 Iu
-js
+kx
 pN
-js
+tg
 CI
-BC
-Ny
-kL
-Sl
-sh
-sh
-hF
-sh
-sh
-sh
-sh
-pv
-zw
-Nw
-hd
+su
+yV
+Qy
+hK
+Qy
+Qy
+AK
+Qy
+Qy
+lj
+lj
+AS
+Yy
+Yy
+Yy
 SU
-bN
-un
-Ta
-qH
-Cr
-gt
-Il
-Il
-tj
-sa
-mD
-mD
-sw
-sw
-Pb
-aK
-sw
-sw
-sw
-sw
-sa
+Nf
+Ko
+Py
+Py
+Py
+Py
+IG
+IG
+IG
+OV
+DW
+yg
+ud
+dJ
+yA
+Ay
+Mc
+ud
+ud
+FZ
+Gs
 zy
 UY
 Nt
 zD
-La
-WB
+aT
+Er
 VA
-SV
-EP
-EP
-lI
+WF
+rN
+ff
+xZ
 EP
 EP
 ae
@@ -28696,66 +29560,66 @@ ae
 ae
 EP
 lI
-EP
-EP
-EP
-SV
-mF
-Ym
+zV
+EG
+CA
+OP
+Mk
+rN
 pQ
 zA
-Wm
+HB
 zf
 ca
 IE
 su
-yV
+Qy
 Qy
 hK
-Qy
-Qy
+TY
+hR
 AK
-Qy
-Qy
+Le
+Le
 lj
-lj
-AS
-Yy
-Yy
-Yy
-os
-Nf
-Ko
-Py
-Py
-Py
-Py
-IG
-IG
-IG
-OV
-DW
-yg
-ud
-dJ
+RU
+Bl
+qO
+CU
+Pm
+xK
+Am
+mR
+Li
+jZ
+gR
+Qv
+QS
+BZ
+BZ
+sa
+Pk
+ny
+ny
+Pp
 yA
 Ay
-Mc
-ud
-ud
-FZ
-Gs
-zy
+tF
+ny
+ny
+nz
+BG
+XQ
 UY
 Nt
 zD
-aT
-Er
+La
+nF
 VA
-xn
-EP
-lI
-lI
+Hv
+DB
+up
+xZ
 EP
 EP
 ae
@@ -28889,67 +29753,67 @@ ae
 ae
 ae
 EP
-lI
 EP
-EP
-EP
-SV
-mF
+xZ
+EG
+it
+OP
+SC
 Ee
 Wk
 DR
-Sd
-Gk
-Hb
+rN
+rN
+rN
 yi
-su
-Qy
-Qy
-hK
-TY
-hR
-AK
-Le
-Le
-lj
-RU
-Bl
-qO
-CU
-Pm
-Jk
-Am
-mR
-Li
-jZ
-gR
-Qv
-QS
-BZ
-BZ
+xH
+UX
+UX
+Ff
+UX
+UX
+Tv
+FM
+FM
+OQ
+IN
+rV
+Dg
+SL
+jp
+CH
+eE
+bK
+ex
+nM
+oj
+PJ
+mH
+AQ
+Ju
 sa
-Pk
-ny
-ny
-Pp
-yA
+ud
+ud
+ud
+rk
+df
 Ay
-tF
-ny
-ny
-nz
+OW
+ud
+ud
+ud
 BG
-XQ
-UY
-Nt
+zy
+gF
+zB
 zD
-La
-nF
+CY
 VA
-SV
-EP
-EP
-lI
+VA
+fg
+rN
+up
+xZ
 EP
 EP
 ae
@@ -29082,70 +29946,70 @@ ae
 ae
 ae
 ae
+ae
 EP
-EP
-lI
-EP
-EP
-SV
-mF
-mF
-js
-Hr
-js
-js
+xZ
+EG
+xD
+Mk
+Ap
+mj
+Wk
+DR
+rN
+rN
 js
 wU
 xH
-UX
-UX
-Ff
-UX
-UX
-Tv
-FM
-FM
+Fj
+BP
+oX
+As
 OQ
+zP
+Im
+hS
+Pa
 IN
-rV
-Dg
-SL
+TW
+cj
+xv
 jp
 oy
-eE
-bK
-ex
-nM
-oj
-PJ
-mH
-AQ
-Ju
-sa
-ud
-ud
-ud
-rk
-df
-Ay
-OW
-ud
-ud
-ud
+vM
+mM
+gU
+mM
+JE
+Qv
+An
+uI
+BZ
+Ya
+dm
+sw
+sw
+sw
+IU
+qz
+sw
+sw
+sw
+sw
 BG
-zy
-gF
-zB
-zD
-CY
+jB
+hI
+RN
+Nc
+Ww
 VA
-VA
-zq
+cQ
+fp
+XA
+up
+xZ
 EP
-EP
-lI
-EP
-EP
+ae
 ae
 ae
 ae
@@ -29278,66 +30142,66 @@ ae
 ae
 ae
 EP
-lI
 EP
-EP
-EP
-zq
-mF
+EG
+jc
+Mk
+Ap
+mj
 ob
 Hr
-js
-js
+AE
+MM
 Wm
 jm
 xH
-Fj
-BP
-oX
-As
+Fx
+bm
+Ci
+PZ
 OQ
-zP
-Im
-hS
-pu
+Ba
+zh
+dV
+Fp
 IN
-TW
-cj
-xv
-jp
-oy
-vM
-mM
-gU
-mM
-JE
-Qv
-An
-uI
-BZ
-Ya
-dm
-sw
-sw
-sw
-IU
-Zk
-sw
-sw
-sw
-sw
+PA
+ue
+EC
+Wo
+Jk
+Jk
+Jk
+Jk
+Jk
+Jk
+FN
+Ac
 BG
-jB
-hI
-RN
-Nc
-Ww
+Hn
+BG
+Mf
+SS
+xT
+Gz
+yA
+Ay
+nq
+Bv
+Bv
+Yd
+BG
 VA
-zq
-EP
-EP
-EP
-lI
+fw
+La
+La
+La
+VA
+Xa
+YQ
+rN
+up
+zV
 EP
 ae
 ae
@@ -29473,65 +30337,65 @@ ae
 ae
 EP
 EP
-EP
-EP
-EP
-zq
-zV
-xs
+EG
+EG
+dS
+SC
+mj
+ob
 uH
 lv
-aY
-js
+rN
+Wm
 bT
 xH
-Fx
-bm
-Ci
-PZ
+sC
+qC
+MB
+As
 OQ
-Ba
+DI
 zh
-dV
-Fp
+kD
+ux
 IN
 PA
-ue
-sL
-jp
+gn
+EC
+ko
+yp
+aF
+sX
+hZ
 Jk
-Jk
-Jk
-Jk
-Jk
-Jk
-FN
-Ac
-BG
-Hn
-BG
-Mf
-SS
-pZ
-Gz
-yA
-Ay
-nq
-Bv
-Bv
-gw
-BG
-VA
+bw
+Wt
+Vx
+sw
+wE
+zt
+MT
+wf
+vO
+DF
+ZW
+kk
+cn
+cn
+cn
+tN
+je
+cE
 fw
 La
 La
 La
-VA
-zq
-EP
-EP
-EP
-EP
+Ch
+ui
+Rh
+up
+zV
+zV
 EP
 ae
 ae
@@ -29666,66 +30530,66 @@ ae
 ae
 ae
 EP
-EP
-EP
-EP
-EP
-zq
-zV
-vZ
-nr
-SJ
+lI
+lI
+EG
+EG
+EG
+EG
+EG
+uH
+AE
 UN
-js
+AE
 bT
 xH
-sC
-qC
-MB
-As
-OQ
-DI
-zh
-kD
-ux
-IN
+qT
+Bo
+YX
+UX
+UX
+Ik
+ft
+Xp
+Pa
+CK
 PA
-gn
-sL
-jp
-yp
-aF
-sX
-hZ
-Jk
-bw
+ue
+EC
+ko
+Qk
+FN
+oW
+oW
+oW
+FN
 Wt
 Vx
 sw
 wE
 YG
-MT
-wf
-vO
-DF
-ZW
-kk
-cn
-cn
-cn
-tN
+hh
+qu
+pw
+hV
+hV
+hV
+uX
+IL
+hV
+Se
 je
 cE
 fw
 La
-La
-La
+zl
 VA
-zq
-EP
-EP
-EP
-EP
+VA
+up
+up
+zV
+zV
+lI
 EP
 ae
 ae
@@ -29859,68 +30723,68 @@ ae
 ae
 ae
 ae
+ae
 EP
-lI
-lI
 EP
-lI
-zq
-mF
-dj
+EP
+EG
+EG
+EG
+EG
 nr
-lv
 ZE
-Wm
-bT
-xH
-qT
-Bo
-YX
-UX
-UX
-Ik
-ft
-Xp
-pu
-CK
-PA
-ue
-sL
-jp
-Qk
+ZE
+lJ
+lM
+aR
+Yg
+Lo
+tE
+Ed
+LX
+DC
+cs
+PT
+rM
+mG
+aB
+Cn
+xv
+ko
+kF
 FN
-FN
-kb
-FN
-FN
+vy
+vy
+vy
 Wt
-Vx
-sw
+Wt
+Wt
+qM
 wE
 YG
-hh
-qu
-pw
+ZS
 hV
 hV
 hV
-uX
-yW
+hV
+hV
+hV
+hV
 hV
 Se
-je
-cE
-fw
+GK
+xV
 La
-Qw
+La
+XG
 VA
-VA
-zq
+EG
+EG
+zV
+zV
 EP
 EP
-EP
-lI
-EP
+ae
 ae
 ae
 ae
@@ -30057,39 +30921,39 @@ ae
 EP
 EP
 EP
-lI
-lI
-zq
-mF
-jV
-xF
-GO
+EG
+EG
+EG
+EG
+EG
+rN
+rN
 ly
 SK
-aR
-Yg
-Lo
-tE
-Ed
-LX
-DC
-cs
-PT
-rM
-mG
-aB
+xH
+OQ
+OQ
+OQ
+OQ
+OQ
+OQ
+OQ
+OQ
+OQ
+ZX
+Gn
 ip
 pE
-jp
+ko
 kF
-kb
+FN
 vy
 vy
 vy
 Wt
 Wt
 Wt
-qM
+gA
 wE
 YG
 ZS
@@ -30102,16 +30966,16 @@ hV
 hV
 hV
 WL
-nK
+cn
 wa
 gr
 Zq
 XG
 VA
-zq
-EP
-EP
-EP
+EG
+EG
+zV
+zV
 EP
 EP
 ae
@@ -30252,21 +31116,21 @@ EP
 EP
 EP
 EP
-lI
-zq
-mF
-mF
+EG
+EG
+EG
+EG
 kw
-Wm
-js
+AE
+rN
 Mu
 xH
 UX
 UX
-OQ
-OQ
-OQ
-OQ
+UX
+UX
+UX
+UX
 UX
 UX
 OQ
@@ -30276,14 +31140,14 @@ cD
 pq
 NO
 Zg
-kb
+FN
 vy
 vy
 vy
 Wt
 Wt
 Wt
-gA
+sw
 hA
 VB
 ZS
@@ -30302,8 +31166,8 @@ tp
 ci
 VA
 VA
-zq
-lI
+zV
+xZ
 EP
 EP
 EP
@@ -30446,10 +31310,10 @@ ae
 EP
 EP
 EP
-lI
 EP
-zq
-mF
+EP
+EG
+EG
 KK
 VI
 Yq
@@ -30471,9 +31335,9 @@ tI
 Jf
 Cs
 FN
-kb
-kb
-kb
+oW
+oW
+oW
 FN
 Wt
 Sx
@@ -30495,7 +31359,7 @@ JN
 La
 TK
 VA
-zq
+zV
 EP
 lI
 EP
@@ -30643,11 +31507,11 @@ EP
 EP
 lI
 jA
-mF
-mF
+EG
+EG
 Hm
-mF
-mF
+EG
+EG
 MH
 ay
 ay
@@ -30689,7 +31553,7 @@ vd
 La
 VA
 VA
-zq
+zV
 EP
 EP
 EP
@@ -30882,7 +31746,7 @@ kJ
 Os
 cW
 VA
-zq
+zV
 EP
 EP
 EP
@@ -31034,7 +31898,7 @@ EP
 EP
 SV
 SV
-zq
+PS
 dL
 NF
 wb
@@ -31076,7 +31940,7 @@ kJ
 VA
 VA
 VA
-SV
+xZ
 EP
 EP
 EP
@@ -31228,8 +32092,8 @@ EP
 EP
 SV
 SV
-zq
 PS
+El
 IJ
 bZ
 ak
@@ -31269,7 +32133,7 @@ CS
 hB
 VA
 VA
-zq
+zV
 EP
 EP
 EP
@@ -31422,8 +32286,8 @@ EP
 EP
 SV
 zq
-zq
-PS
+EH
+EH
 MH
 ay
 ay
@@ -31463,7 +32327,7 @@ Br
 hB
 VA
 VA
-zq
+zV
 EP
 EP
 EP
@@ -31616,8 +32480,8 @@ lI
 EP
 lI
 zq
-zq
-zV
+EH
+EH
 fB
 Fd
 Fd
@@ -31657,7 +32521,7 @@ uB
 hB
 VA
 VA
-zq
+zV
 EP
 lI
 EP
@@ -31810,8 +32674,8 @@ lI
 EP
 lI
 SV
-SV
-UG
+kP
+EH
 fB
 kc
 KO
@@ -31849,8 +32713,8 @@ Sm
 lE
 dB
 hB
-zq
-zq
+zV
+zV
 EP
 lI
 lI
@@ -32003,9 +32867,9 @@ EP
 lI
 EP
 lI
-lI
-zq
-UG
+SV
+EH
+EH
 fB
 vI
 hj
@@ -32043,8 +32907,8 @@ rQ
 rQ
 rQ
 hB
+zV
 zq
-EP
 EP
 lI
 EP
@@ -32197,9 +33061,9 @@ EP
 lI
 EP
 EP
-lI
-zq
-UG
+SV
+EH
+EH
 fB
 vI
 KA
@@ -32236,9 +33100,9 @@ Pv
 ZM
 ZM
 nS
-PS
+zV
+zV
 zq
-EP
 EP
 EP
 EP
@@ -32391,9 +33255,9 @@ EP
 lI
 EP
 EP
-EP
 zq
-zV
+EH
+EH
 fB
 ag
 ki
@@ -32431,8 +33295,8 @@ fb
 nJ
 nS
 zV
+zV
 Jg
-EP
 EP
 EP
 EP
@@ -32585,9 +33449,9 @@ EP
 EP
 EP
 lI
-EP
 zq
-UG
+EH
+EH
 VP
 Fz
 Fz
@@ -32624,9 +33488,9 @@ Gy
 PP
 yk
 nS
-EP
-zq
-lI
+EH
+EH
+SV
 lI
 EP
 EP
@@ -32779,9 +33643,9 @@ EP
 EP
 EP
 lI
-EP
 zq
-UG
+EH
+EH
 TI
 rx
 Jw
@@ -32818,9 +33682,9 @@ mf
 ZM
 ZM
 nS
-EP
+EH
+EH
 SV
-lI
 EP
 EP
 EP
@@ -32973,9 +33837,9 @@ EP
 EP
 EP
 lI
-EP
 zq
-UG
+EH
+EH
 VP
 KJ
 Rn
@@ -33012,9 +33876,9 @@ Tk
 oz
 oz
 oz
-EP
-SV
-EP
+oz
+EH
+zq
 EP
 EP
 EP
@@ -33167,9 +34031,9 @@ ae
 EP
 EP
 lI
-EP
-SV
-zV
+zq
+kP
+EH
 TI
 Iq
 Hq
@@ -33204,11 +34068,11 @@ Cf
 Mt
 rF
 TD
+WG
 Rs
 YU
 zV
 zq
-EP
 EP
 EP
 EP
@@ -33361,9 +34225,9 @@ ae
 EP
 EP
 lI
-EP
-SV
-UG
+zq
+kP
+EH
 VP
 fO
 Pl
@@ -33398,11 +34262,11 @@ UH
 Ru
 uU
 qt
+Lj
 hu
 oz
-UG
-zq
-EP
+EH
+EH
 EP
 lI
 EP
@@ -33555,9 +34419,9 @@ ae
 EP
 EP
 lI
-lI
 SV
-UG
+kP
+EH
 TI
 YE
 uW
@@ -33592,11 +34456,11 @@ hq
 XD
 ll
 EZ
+LM
 MS
-wR
-UG
-zq
-EP
+CV
+yx
+PS
 EP
 EP
 EP
@@ -33749,10 +34613,10 @@ ae
 EP
 EP
 lI
-lI
-zq
-UG
+SV
+EH
 VP
+Fz
 Fz
 Fz
 Fz
@@ -33786,11 +34650,11 @@ aZ
 Mt
 LC
 rm
+nA
 Dz
 oz
-UG
-SV
-EP
+EH
+EH
 EP
 EP
 EP
@@ -33943,12 +34807,12 @@ ae
 ae
 EP
 EP
-lI
-zq
+xZ
 zV
 no
 wX
 Zc
+SZ
 Ct
 SG
 vS
@@ -33980,11 +34844,11 @@ sd
 sd
 JB
 Eq
+Tb
 Sq
 YU
 zV
 zq
-EP
 EP
 EP
 ae
@@ -34137,12 +35001,12 @@ ae
 ae
 EP
 EP
-lI
-zq
-UG
+Al
+EH
 KB
 ls
 xd
+Uw
 zM
 Jt
 wk
@@ -34174,11 +35038,11 @@ TO
 sd
 lw
 Jb
+vs
 Wh
 oz
-EP
+EH
 zq
-EP
 EP
 EP
 ae
@@ -34331,12 +35195,12 @@ ae
 ae
 EP
 EP
-lI
-zq
-UG
-pz
+Al
+yx
+UB
 sO
 Ts
+og
 ic
 gP
 eQ
@@ -34370,9 +35234,9 @@ JC
 xU
 JC
 JO
-EP
-SV
-EP
+EH
+EH
+zq
 EP
 EP
 ae
@@ -34525,12 +35389,12 @@ ae
 ae
 ae
 EP
-lI
-zq
-UG
+Al
+EH
 KB
 ls
 OB
+zM
 HZ
 cP
 eQ
@@ -34564,9 +35428,9 @@ VX
 pY
 yh
 JO
-EP
-SV
-EP
+EH
+EH
+zq
 EP
 ae
 ae
@@ -34719,12 +35583,12 @@ ae
 ae
 ae
 EP
-lI
-zq
+xZ
 zV
 no
 wT
 SW
+yL
 wv
 zj
 Hk
@@ -34759,8 +35623,8 @@ aE
 ZQ
 Ss
 zV
+EH
 SV
-lI
 EP
 ae
 ae
@@ -34913,12 +35777,12 @@ ae
 ae
 ae
 EP
-EP
-zq
 UG
+EH
 KB
 uv
 Aa
+zM
 HZ
 rh
 BM
@@ -34952,9 +35816,9 @@ Va
 aE
 Et
 JO
-UG
-SV
-EP
+EH
+EH
+zq
 EP
 ae
 ae
@@ -35107,11 +35971,11 @@ ae
 ae
 ae
 EP
-EP
-zq
 UG
-pz
+yx
+UB
 Zh
+zM
 oJ
 AB
 eb
@@ -35146,8 +36010,8 @@ Va
 aE
 Zl
 HY
-UG
-zq
+gG
+PS
 EP
 EP
 ae
@@ -35301,11 +36165,11 @@ ae
 ae
 ae
 ae
-EP
-zq
 UG
+EH
 KB
 yy
+zM
 zM
 zM
 Dv
@@ -35340,8 +36204,8 @@ Vp
 aE
 cq
 JO
-UG
-zq
+EH
+EH
 EP
 ae
 ae
@@ -35495,13 +36359,13 @@ ae
 ae
 ae
 ae
-EP
-zq
+zV
 zV
 no
 LS
 FS
 Rz
+SY
 Sb
 Vd
 Ar
@@ -35690,9 +36554,9 @@ ae
 ae
 ae
 EP
-zq
 zV
 KB
+no
 no
 no
 no
@@ -36661,8 +37525,8 @@ ae
 ae
 ae
 ae
-EP
-Bu
+ae
+EH
 mE
 Ph
 GY
@@ -36698,7 +37562,7 @@ ZK
 cZ
 Vs
 Vs
-zz
+EH
 ae
 ae
 ae
@@ -36857,7 +37721,7 @@ ae
 ae
 ae
 ae
-ae
+EH
 mE
 Ph
 Ia
@@ -36891,7 +37755,7 @@ IX
 BX
 Vs
 BT
-ae
+EH
 ae
 ae
 ae
@@ -37052,7 +37916,7 @@ ae
 ae
 ae
 ae
-ae
+EH
 io
 fc
 fc
@@ -37084,7 +37948,7 @@ wc
 wc
 wc
 YO
-ae
+EH
 ae
 ae
 ae
@@ -37247,7 +38111,7 @@ ae
 ae
 ae
 ae
-ae
+EH
 io
 fc
 fc
@@ -37277,7 +38141,7 @@ cG
 wc
 wc
 YO
-ae
+EH
 ae
 ae
 ae
@@ -37442,7 +38306,7 @@ ae
 ae
 ae
 ae
-ae
+EH
 io
 io
 TG
@@ -37455,7 +38319,7 @@ Lm
 lX
 nC
 lL
-nY
+PE
 ov
 jf
 Rl
@@ -37470,7 +38334,7 @@ pC
 Rb
 YO
 YO
-ae
+EH
 ae
 ae
 ae
@@ -37831,7 +38695,7 @@ ae
 ae
 ae
 ae
-ae
+EH
 io
 Vb
 DM
@@ -37857,7 +38721,7 @@ xQ
 hX
 xQ
 YO
-ae
+EH
 ae
 ae
 ae
@@ -38025,7 +38889,7 @@ ae
 ae
 ae
 ae
-ae
+EH
 io
 io
 qE
@@ -38051,7 +38915,7 @@ nQ
 BD
 YO
 YO
-ae
+EH
 ae
 ae
 ae
@@ -38608,7 +39472,7 @@ ae
 ae
 ae
 ae
-ae
+EH
 io
 io
 Sg
@@ -38632,7 +39496,7 @@ Ai
 Ai
 YO
 YO
-ae
+EH
 ae
 ae
 ae
@@ -38803,7 +39667,7 @@ ae
 ae
 ae
 ae
-ae
+EH
 io
 io
 PC
@@ -38825,7 +39689,7 @@ Ag
 Wj
 YO
 YO
-ae
+EH
 ae
 ae
 ae
@@ -38998,7 +39862,7 @@ ae
 ae
 ae
 ae
-ae
+EH
 io
 io
 fc
@@ -39018,7 +39882,7 @@ wc
 wc
 YO
 YO
-ae
+EH
 ae
 ae
 ae
@@ -39211,7 +40075,7 @@ tG
 gT
 Od
 sn
-Sp
+zV
 ae
 ae
 ae
@@ -39387,7 +40251,7 @@ ae
 ae
 ae
 ae
-ae
+EH
 we
 we
 um
@@ -39405,7 +40269,7 @@ fl
 nI
 Od
 Od
-ae
+zV
 ae
 ae
 ae
@@ -39581,7 +40445,7 @@ ae
 ae
 ae
 ae
-ae
+EH
 we
 we
 nT
@@ -39599,7 +40463,7 @@ xE
 Nj
 Od
 Od
-ae
+zV
 ae
 ae
 ae
@@ -39775,7 +40639,7 @@ ae
 ae
 ae
 ae
-rT
+EH
 we
 we
 SB
@@ -39793,7 +40657,7 @@ NU
 JV
 Od
 Od
-rT
+zV
 ae
 ae
 ae
@@ -40359,7 +41223,7 @@ ae
 ae
 ae
 rT
-rT
+zV
 we
 qG
 qG
@@ -40373,7 +41237,7 @@ SN
 qG
 Od
 Od
-rT
+zV
 rT
 ae
 ae
@@ -40553,7 +41417,7 @@ ae
 ae
 ae
 ae
-ae
+zV
 we
 uM
 pF
@@ -40567,7 +41431,7 @@ pF
 pF
 pF
 Od
-ae
+zV
 ae
 ae
 ae
@@ -40748,7 +41612,7 @@ ae
 ae
 ae
 ae
-ae
+zV
 uM
 Fs
 tw
@@ -40760,7 +41624,7 @@ MU
 gx
 Rt
 uM
-ae
+zV
 ae
 ae
 ae
@@ -40942,7 +41806,7 @@ ae
 ae
 ae
 ae
-ae
+zV
 uM
 uM
 Rt
@@ -40954,7 +41818,7 @@ Ms
 Rt
 uM
 uM
-ae
+zV
 ae
 ae
 ae
@@ -41137,7 +42001,7 @@ ae
 ae
 ae
 ae
-ae
+zV
 uM
 pF
 Rd
@@ -41147,7 +42011,7 @@ pF
 ra
 pF
 uM
-ae
+zV
 ae
 ae
 ae
@@ -41331,7 +42195,7 @@ ae
 ae
 ae
 ae
-ht
+zV
 uM
 uM
 uM
@@ -41341,7 +42205,7 @@ pF
 uM
 uM
 uM
-Sp
+zV
 ae
 ae
 ae
@@ -41526,7 +42390,7 @@ ae
 ae
 ae
 ae
-rT
+zV
 uM
 uM
 uM
@@ -41534,7 +42398,7 @@ uM
 uM
 uM
 uM
-rT
+zV
 ae
 ae
 ae
@@ -42110,11 +42974,11 @@ ae
 ae
 ae
 ae
-ae
+zV
 uM
 uM
 uM
-ae
+zV
 ae
 ae
 ae
@@ -42305,9 +43169,9 @@ ae
 ae
 ae
 ae
-ae
-ae
-ae
+zV
+zV
+zV
 ae
 ae
 ae

@@ -41,6 +41,10 @@
 		/datum/shuttle/autodock/ferry/supply/cargo/strelka,
 		/datum/shuttle/autodock/overmap/emt/strelka,
 		/datum/shuttle/autodock/overmap/civvie/strelka,
+		/datum/shuttle/autodock/overmap/trade/personalmicro1,
+		/datum/shuttle/autodock/overmap/trade/personalmicro2,
+		/datum/shuttle/autodock/overmap/trade/personalmicro3,
+		/datum/shuttle/autodock/overmap/trade/personalmicro4,
 		/datum/shuttle/autodock/ferry/belter,
 	)
 
