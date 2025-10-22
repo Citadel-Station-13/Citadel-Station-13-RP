@@ -309,5 +309,6 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 	linked.name = n_name
 	to_chat(usr, "Vessel renamed to " + n_name)
 	message_admins("[usr] has renamed vessel to [n_name].")
+	log_world("[usr] has renamed vessel to [n_name].")
 
 
