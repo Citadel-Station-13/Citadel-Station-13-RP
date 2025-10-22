@@ -35,7 +35,7 @@ export const VehicleComponent = (props: {
   return useVehicleComponent(props.ref, (d) => {
     return (
       <>
-w        Test
+        Test
       </>
     );
   });

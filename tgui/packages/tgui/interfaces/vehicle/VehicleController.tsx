@@ -4,7 +4,7 @@
  */
 
 import { Component, ReactNode } from "react";
-import { Section, Stack } from "tgui-core/components";
+import { LabeledList, Section, Stack } from "tgui-core/components";
 
 import { useBackend } from "../../backend";
 import { Window } from "../../layouts";
@@ -115,9 +115,9 @@ interface VehicleControllerHomeProps {
 const VehicleControllerHome = (props) => {
   const { act, data } = useBackend<VehicleData>();
   return (
-    <>
+    <Section>
       Test
-    </>
+    </Section>
   );
 };
 
@@ -128,15 +128,17 @@ interface VehicleControllerModulesProps {
 const VehicleControllerModules = (props) => {
   const { act, data } = useBackend<VehicleData>();
   return (
-    <Stack fill vertical>
-      {data.moduleRefs.map((ref) => {
-        return (
-          <Stack.Item key={ref}>
-            <VehicleModule ref={ref} />
-          </Stack.Item>
-        );
-      })}
-    </Stack>
+    <Section>
+      <Stack fill vertical>
+        {data.moduleRefs.map((ref) => {
+          return (
+            <Stack.Item key={ref}>
+              <VehicleModule ref={ref} />
+            </Stack.Item>
+          );
+        })}
+      </Stack>
+    </Section>
   );
 };
 
@@ -147,15 +149,17 @@ interface VehicleControllerComponentsProps {
 const VehicleControllerComponents = (props) => {
   const { act, data } = useBackend<VehicleData>();
   return (
-    <Stack fill vertical>
-      {data.componentRefs.map((ref) => {
-        return (
-          <Stack.Item key={ref}>
-            <VehicleComponent ref={ref} />
-          </Stack.Item>
-        );
-      })}
-    </Stack>
+    <Section>
+      <Stack fill vertical>
+        {data.componentRefs.map((ref) => {
+          return (
+            <Stack.Item key={ref}>
+              <VehicleComponent ref={ref} />
+            </Stack.Item>
+          );
+        })}
+      </Stack>
+    </Section>
   );
 };
 
@@ -165,8 +169,41 @@ interface VehicleControllerSettingsProps {
 
 const VehicleControllerSettings = (props) => {
   return (
-    <>
-      Test
-    </>
+    <Section>
+      <Stack fill vertical>
+        <Stack.Item>
+          Options
+          <LabeledList>
+            <LabeledList.Item label="Floodlights">Test</LabeledList.Item>
+            <LabeledList.Item label="Strafing">Test</LabeledList.Item>
+          </LabeledList>
+        </Stack.Item>
+        <Stack.Item>
+          <LabeledList>
+            <LabeledList.Item label="Airflow">Test</LabeledList.Item>
+            <LabeledList.Item label="Port Connection">Test</LabeledList.Item>
+          </LabeledList>
+        </Stack.Item>
+        <Stack.Item>
+          Radio
+          <LabeledList>
+            <LabeledList.Item label="Frequency">Test</LabeledList.Item>
+            <LabeledList.Item label="Transmit">Test</LabeledList.Item>
+            <LabeledList.Item label="Receive">Test</LabeledList.Item>
+          </LabeledList>
+        </Stack.Item>
+        <Stack.Item>
+          System
+          <LabeledList>
+            <LabeledList.Item label="Maintenance Lock">Test</LabeledList.Item>
+            <LabeledList.Item label="ID Upload Lock">Test</LabeledList.Item>
+            <LabeledList.Item label="Change External Label">Test</LabeledList.Item>
+          </LabeledList>
+        </Stack.Item>
+        <Stack.Item>
+          Module Slots
+        </Stack.Item>
+      </Stack>
+    </Section>
   );
 };
