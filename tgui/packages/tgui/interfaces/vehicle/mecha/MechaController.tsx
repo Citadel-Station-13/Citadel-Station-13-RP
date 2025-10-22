@@ -3,18 +3,54 @@
  * @license MIT
  */
 
-import { Section } from "tgui-core/components";
+import { Stack } from "tgui-core/components";
 
-import { Window } from "../../../layouts";
+import { useBackend } from "../../../backend";
+import { useVehicleComponent, VehicleComponentData } from "../types";
+import { VehicleController } from "../VehicleController";
+import { MechaData } from "./types";
 
 export const MechaController = (props) => {
+  const { act, data } = useBackend<MechaData>();
+
   return (
-    <Window width={800} height={500}>
-      <Window.Content>
-        <Section>
+    <VehicleController renderStackItemsBelowIntegrityHomeDisplay={(
+      <>
+        {useVehicleComponent<VehicleComponentData>(data.mCompHullRef, (d) => (
+          <FrontPageComponentHealthRender name="Hull" data={d} />
+        ))}
+        {useVehicleComponent<VehicleComponentData>(data.mCompArmorRef, (d) => (
+          <FrontPageComponentHealthRender name="Armor" data={d} />
+        ))}
+      </>
+    )} />
+  );
+};
+
+const FrontPageComponentHealthRender = (props: {
+  name: string;
+  data: VehicleComponentData | null;
+}) => {
+  if (props.data === null || !props.data.integrityUsed) {
+    return null;
+  }
+  if (!props.data) {
+    return (
+      <Stack.Item>
+        Test
+      </Stack.Item>
+    );
+  }
+  return (
+    <Stack.Item>
+      <Stack fill>
+        <Stack.Item>
+          {props.name}
+        </Stack.Item>
+        <Stack.Item grow={1}>
           Test
-        </Section>
-      </Window.Content>
-    </Window>
+        </Stack.Item>
+      </Stack>
+    </Stack.Item>
   );
 };

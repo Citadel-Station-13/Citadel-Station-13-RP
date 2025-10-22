@@ -11,7 +11,7 @@ import { Window } from "../../layouts";
 interface VehicleControllerProps {
   // render something below the integrity bar at home screen
   // * This should be a Stack.Item or several Stack.Item's in a Fragment.
-  renderStackItemsBelowIntegrityHonemDisplay?: ReactNode;
+  renderStackItemsBelowIntegrityHomeDisplay?: ReactNode;
   // render something below all integrity bars
   // * This should be a Stack.Item or several Stack.Item's in a Fragment.
   renderStackItemsBelowIntegrityDisplay?: ReactNode;
@@ -70,7 +70,7 @@ const VehicleControllerContent = (props: {
   customRenderers?: Record<VehicleControllerTabKey, () => ReactNode | null>;
 }) => {
   if (props.activeTab && props.customRenderers?.[props.activeTab] !== undefined) {
-    return props.customRenderers[props.activeTab] || (<Section fill />);
+    return props.customRenderers[props.activeTab]() || (<Section fill />);
   }
   switch (props.activeTab) {
     case VehicleControllerBuiltinTabs.Home:
@@ -90,7 +90,11 @@ interface VehicleControllerHomeProps {
 }
 
 const VehicleControllerHome = (props) => {
-
+  return (
+    <>
+      Test
+    </>
+  );
 };
 
 interface VehicleControllerModulesProps {
@@ -98,7 +102,11 @@ interface VehicleControllerModulesProps {
 }
 
 const VehicleControllerModules = (props) => {
-
+  return (
+    <>
+      Test
+    </>
+  );
 };
 
 interface VehicleControllerComponentsProps {
@@ -106,7 +114,11 @@ interface VehicleControllerComponentsProps {
 }
 
 const VehicleControllerComponents = (props) => {
-
+  return (
+    <>
+      Test
+    </>
+  );
 };
 
 interface VehicleControllerSettingsProps {
@@ -114,5 +126,9 @@ interface VehicleControllerSettingsProps {
 }
 
 const VehicleControllerSettings = (props) => {
-
+  return (
+    <>
+      Test
+    </>
+  );
 };
