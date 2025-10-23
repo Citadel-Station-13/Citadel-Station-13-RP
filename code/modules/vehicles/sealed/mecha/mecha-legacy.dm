@@ -1362,84 +1362,6 @@
 	output_text += "</div>"
 	return output_text
 
-/obj/vehicle/sealed/mecha/proc/get_commands()
-	var/output_text = {"<div class='wr'>
-						<div class='header'>Electronics</div>
-						<div class='links'>
-						<a href='?src=\ref[src];toggle_lights=1'>Toggle Lights</a><br>
-						<b>Radio settings:</b><br>
-						Microphone: <a href='?src=\ref[src];rmictoggle=1'><span id="rmicstate">[radio.broadcasting?"Engaged":"Disengaged"]</span></a><br>
-						Speaker: <a href='?src=\ref[src];rspktoggle=1'><span id="rspkstate">[radio.listening?"Engaged":"Disengaged"]</span></a><br>
-						Frequency:
-						<a href='?src=\ref[src];rfreq=-10'>-</a>
-						<a href='?src=\ref[src];rfreq=-2'>-</a>
-						<span id="rfreq">[format_frequency(radio.frequency)]</span>
-						<a href='?src=\ref[src];rfreq=2'>+</a>
-						<a href='?src=\ref[src];rfreq=10'>+</a><br>
-						</div>
-						</div>
-						<div class='wr'>
-						<div class='header'>Airtank</div>
-						<div class='links'>
-						<a href='?src=\ref[src];toggle_airtank=1'>Toggle Internal Airtank Usage</a><br>
-						[(/obj/vehicle/sealed/mecha/verb/disconnect_from_port in src.verbs)?"<a href='?src=\ref[src];port_disconnect=1'>Disconnect from port</a><br>":null]
-						[(/obj/vehicle/sealed/mecha/verb/connect_to_port in src.verbs)?"<a href='?src=\ref[src];port_connect=1'>Connect to port</a><br>":null]
-						</div>
-						</div>
-						<div class='wr'>
-						<div class='header'>Permissions & Logging</div>
-						<div class='links'>
-						<a href='?src=\ref[src];toggle_id_upload=1'><span id='t_id_upload'>[add_req_access?"L":"Unl"]ock ID upload panel</span></a><br>
-						<a href='?src=\ref[src];toggle_maint_access=1'><span id='t_maint_access'>[maint_access?"Forbid":"Permit"] maintenance protocols</span></a><br>
-						<a href='?src=\ref[src];change_name=1'>Change exosuit name</a><br>
-						</div>
-						</div>
-						<div id='equipment_menu'>[get_equipment_menu()]</div>
-						<hr>
-						<a href='?src=\ref[src];eject=1'>Eject</a><br>
-						"}
-	return output_text
-
-/obj/vehicle/sealed/mecha/proc/get_equipment_menu() //outputs mecha html equipment menu
-	var/output_text
-	if(equipment.len)
-		output_text += {"<div class='wr'>
-						<div class='header'>Equipment</div>
-						<div class='links'>"}
-		for(var/obj/item/vehicle_module/legacy/W in hull_equipment)
-			output_text += "Hull Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
-		for(var/obj/item/vehicle_module/legacy/W in weapon_equipment)
-			output_text += "Weapon Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
-		for(var/obj/item/vehicle_module/legacy/W in utility_equipment)
-			output_text += "Utility Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
-		for(var/obj/item/vehicle_module/legacy/W in universal_equipment)
-			output_text += "Universal Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
-		for(var/obj/item/vehicle_module/legacy/W in special_equipment)
-			output_text += "Special Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
-		for(var/obj/item/vehicle_module/legacy/W in micro_utility_equipment)
-			output_text += "Micro Utility Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
-		for(var/obj/item/vehicle_module/legacy/W in micro_weapon_equipment)
-			output_text += "Micro Weapon Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
-	output_text += {"<b>Available hull slots:</b> [max_hull_equip-hull_equipment.len]<br>
-	 <b>Available weapon slots:</b> [max_weapon_equip-weapon_equipment.len]<br>
-	 <b>Available micro weapon slots:</b> [max_micro_weapon_equip-micro_weapon_equipment.len]<br>
-	 <b>Available utility slots:</b> [max_utility_equip-utility_equipment.len]<br>
-	 <b>Available micro utility slots:</b> [max_micro_utility_equip-micro_utility_equipment.len]<br>
-	 <b>Available universal slots:</b> [max_universal_equip-universal_equipment.len]<br>
-	 <b>Available special slots:</b> [max_special_equip-special_equipment.len]<br>
-	 </div></div>
-	 "}
-	return output_text
-
-/obj/vehicle/sealed/mecha/proc/get_equipment_list() //outputs mecha equipment list in html
-	if(!equipment.len)
-		return
-	var/output_text = "<b>Equipment:</b><div style=\"margin-left: 15px;\">"
-	for(var/obj/item/vehicle_module/legacy/MT in equipment)
-		output_text += "<div id='\ref[MT]'>[MT.get_equip_info()]</div>"
-	output_text += "</div>"
-	return output_text
-
 /obj/vehicle/sealed/mecha/proc/output_access_dialog(obj/item/card/id/id_card, mob/user)
 	if(!id_card || !user) return
 	var/output_text = {"<html>
@@ -1493,7 +1415,6 @@
 	if(message)
 		if(src.occupant_legacy && src.occupant_legacy.client)
 			to_chat(src.occupant_legacy, "[icon2html(src, world)] [message]")
-	return
 
 // LEGACY, NULL-OPPED WHILE WE FIGURE OUT WHAT WE WANT FOR MECH LOGS.
 /obj/vehicle/sealed/mecha/proc/log_message(message as text,red=null)
@@ -1531,7 +1452,6 @@
 		if(usr != src.occupant_legacy)	return
 		src.lights()
 		return
-
 	if(href_list["toggle_airtank"])
 		if(usr != src.occupant_legacy)	return
 		src.internal_tank()
@@ -1685,65 +1605,6 @@
 				T.Entered(O)
 			src.log_message("Unloaded [O]. Cargo compartment capacity: [cargo_capacity - src.cargo.len]")
 	return
-
-	//debug
-	/*
-	if(href_list["debug"])
-		if(href_list["set_i_dam"])
-			setInternalDamage(top_filter.getNum("set_i_dam"))
-		if(href_list["clear_i_dam"])
-			clearInternalDamage(top_filter.getNum("clear_i_dam"))
-		return
-	*/
-
-
-
-/*
-
-	if (href_list["ai_take_control"])
-		var/mob/living/silicon/ai/AI = locate(href_list["ai_take_control"])
-		var/duration = text2num(href_list["duration"])
-		var/mob/living/silicon/ai/O = new /mob/living/silicon/ai(src)
-		var/cur_occupant = src.occupant_legacy
-		O.invisibility = 0
-		O.canmove = 1
-		O.name = AI.name
-		O.real_name = AI.real_name
-		O.anchored = 1
-		O.aiRestorePowerRoutine = 0
-		O.control_disabled = 1 // Can't control things remotely if you're stuck in a card!
-		O.laws = AI.laws
-		O.set_stat(AI.stat)
-		O.oxyloss = AI.getOxyLoss()
-		O.fireloss = AI.getFireLoss()
-		O.bruteloss = AI.getBruteLoss()
-		O.toxloss = AI.toxloss
-		O.update_health()
-		src.occupant_legacy = O
-		if(AI.mind)
-			AI.mind.transfer(O)
-		AI.name = "Inactive AI"
-		AI.real_name = "Inactive AI"
-		AI.icon_state = "ai-empty"
-		spawn(duration)
-			AI.name = O.name
-			AI.real_name = O.real_name
-			if(O.mind)
-				O.mind.transfer(AI)
-			AI.control_disabled = 0
-			AI.laws = O.laws
-			AI.oxyloss = O.getOxyLoss()
-			AI.fireloss = O.getFireLoss()
-			AI.bruteloss = O.getBruteLoss()
-			AI.toxloss = O.toxloss
-			AI.update_health()
-			qdel(O)
-			if (!AI.stat)
-				AI.icon_state = "ai"
-			else
-				AI.icon_state = "ai-crash"
-			src.occupant_legacy = cur_occupant
-*/
 
 ///////////////////////
 ///// Power stuff /////
@@ -1957,23 +1818,6 @@
 
 	GrantActions(occupant_legacy, 1)
 
-	//This part removes all the verbs if you don't have them the _possible on your mech. This is a little clunky, but it lets you just add that to any mech.
-	//And it's not like this 10yo code wasn't clunky before.
-	if(!smoke_possible)			//Can't use smoke? No verb for you.
-		remove_obj_verb(src, /obj/vehicle/sealed/mecha/verb/toggle_smoke)
-	if(!thrusters_possible)		//Can't use thrusters? No verb for you.
-		remove_obj_verb(src, /obj/vehicle/sealed/mecha/verb/toggle_thrusters)
-	if(!overload_possible)
-		remove_obj_verb(src, /obj/vehicle/sealed/mecha/verb/toggle_overload)
-	if(!zoom_possible)
-		remove_obj_verb(src, /obj/vehicle/sealed/mecha/verb/toggle_zoom)
-	if(!phasing_possible)
-		remove_obj_verb(src, /obj/vehicle/sealed/mecha/verb/toggle_phasing)
-	if(!switch_dmg_type_possible)
-		remove_obj_verb(src, /obj/vehicle/sealed/mecha/verb/switch_damtype)
-	if(!cloak_possible)
-		remove_obj_verb(src, /obj/vehicle/sealed/mecha/verb/toggle_cloak)
-
 	update_cell_alerts()
 	update_damage_alerts()
 	setDir(dir_in)
@@ -1991,12 +1835,6 @@
 	removing << browse(null, "window=exosuit")
 	if(removing.client && cloaked_selfimage)
 		removing.client.images -= cloaked_selfimage
-	// if(istype(mob_container, /obj/item/mmi))
-	// 	var/obj/item/mmi/mmi = mob_container
-	// 	if(mmi.brainmob)
-	// 		removing.forceMove(mmi)
-	// 	mmi.mecha = null
-	// 	removing.mobility_flags = NONE
 	removing.clear_alert("charge")
 	removing.clear_alert("mech damage")
 

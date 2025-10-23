@@ -238,13 +238,6 @@
 	update_buttons()
 	chassis.toggle_cloaking()
 
-/obj/vehicle/sealed/mecha/verb/toggle_overload()
-	set category = "Exosuit Interface"
-	set name = "Toggle leg actuators overload"
-	set src = usr.loc
-	set popup_menu = 0
-	overload()
-
 /obj/vehicle/sealed/mecha/proc/overload()
 	if(usr.stat == 1)//No manipulating things while unconcious.
 		return
@@ -264,15 +257,6 @@
 		src.occupant_message("<font color='red'>You enable leg actuators overload.</font>")
 	src.log_message("Toggled leg actuators overload.")
 	playsound(src, 'sound/mecha/mechanical_toggle.ogg', 50, 1)
-	return
-
-
-/obj/vehicle/sealed/mecha/verb/toggle_smoke()
-	set category = "Exosuit Interface"
-	set name = "Activate Smoke"
-	set src = usr.loc
-	set popup_menu = 0
-	smoke()
 
 /obj/vehicle/sealed/mecha/proc/smoke()
 	if(usr!=src.occupant_legacy)
@@ -295,16 +279,6 @@
 		smoke_ready = 0
 		spawn(smoke_cooldown)
 			smoke_ready = 1
-	return
-
-
-
-/obj/vehicle/sealed/mecha/verb/toggle_zoom()
-	set category = "Exosuit Interface"
-	set name = "Zoom"
-	set src = usr.loc
-	set popup_menu = 0
-	zoom()
 
 /obj/vehicle/sealed/mecha/proc/zoom()//This could use improvements but maybe later.
 	if(usr!=src.occupant_legacy)
@@ -319,16 +293,6 @@
 			src.occupant_legacy << sound('sound/mecha/imag_enh.ogg',volume=50)
 		else
 			myclient.reset_temporary_view()
-	return
-
-
-
-/obj/vehicle/sealed/mecha/verb/toggle_thrusters()
-	set category = "Exosuit Interface"
-	set name = "Toggle thrusters"
-	set src = usr.loc
-	set popup_menu = 0
-	thrusters()
 
 /obj/vehicle/sealed/mecha/proc/thrusters()
 	if(usr!=src.occupant_legacy)
@@ -338,16 +302,6 @@
 			thrusters = !thrusters
 			src.log_message("Toggled thrusters.")
 			src.occupant_message("<font color='[src.thrusters?"blue":"red"]'>Thrusters [thrusters?"en":"dis"]abled.</font>")
-	return
-
-
-
-/obj/vehicle/sealed/mecha/verb/switch_damtype()
-	set category = "Exosuit Interface"
-	set name = "Change melee damage type"
-	set src = usr.loc
-	set popup_menu = 0
-	query_damtype()
 
 /obj/vehicle/sealed/mecha/proc/query_damtype()
 	if(usr!=src.occupant_legacy)
@@ -364,16 +318,6 @@
 			damtype = "tox"
 			src.occupant_message("A bone-chillingly thick plasteel needle protracts from the exosuit's palm.")
 	src.occupant_message("Melee damage type switched to [new_damtype]")
-	return
-
-
-
-/obj/vehicle/sealed/mecha/verb/toggle_phasing()
-	set category = "Exosuit Interface"
-	set name = "Toggle phasing"
-	set src = usr.loc
-	set popup_menu = 0
-	phasing()
 
 /obj/vehicle/sealed/mecha/proc/phasing()
 	if(usr!=src.occupant_legacy)
@@ -381,15 +325,6 @@
 	phasing = !phasing
 	send_byjax(src.occupant_legacy,"exosuit.browser","phasing_command","[phasing?"Dis":"En"]able phasing")
 	src.occupant_message("<font color=\"[phasing?"#00f\">En":"#f00\">Dis"]abled phasing.</font>")
-	return
-
-
-/obj/vehicle/sealed/mecha/verb/toggle_cloak()
-	set category = "Exosuit Interface"
-	set name = "Toggle cloaking"
-	set src = usr.loc
-	set popup_menu = 0
-	toggle_cloaking()
 
 /obj/vehicle/sealed/mecha/proc/toggle_cloaking()
 	if(usr!=src.occupant_legacy)
@@ -401,18 +336,3 @@
 		cloak()
 
 	src.occupant_message("<font color=\"[cloaked?"#00f\">En":"#f00\">Dis"]abled cloaking.</font>")
-	return
-
-/obj/vehicle/sealed/mecha/verb/toggle_weapons_only_cycle()
-	set category = "Exosuit Interface"
-	set name = "Toggle weapons only cycling"
-	set src = usr.loc
-	set popup_menu = 0
-	set_weapons_only_cycle()
-
-/obj/vehicle/sealed/mecha/proc/set_weapons_only_cycle()
-	if(usr!=src.occupant_legacy)
-		return
-	weapons_only_cycle = !weapons_only_cycle
-	src.occupant_message("<font color=\"[weapons_only_cycle?"#00f\">En":"#f00\">Dis"]abled weapons only cycling.</font>")
-	return

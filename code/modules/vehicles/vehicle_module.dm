@@ -22,7 +22,7 @@
 	/// UI component key when being rendered
 	/// * Must route to a valid component in vehicle UI routing. Check TGUI folder for more info.
 	#warn impl
-	var/ui_component
+	var/ui_component = "Trivial"
 
 /obj/item/vehicle_module/proc/fits_on_vehicle(obj/vehicle/vehicle, vehicle_opinion, vehicle_is_full, datum/event_args/actor/actor, silent)
 	return vehicle_opinion && !vehicle_is_full
