@@ -6,7 +6,8 @@
 import { Stack } from "tgui-core/components";
 
 import { useBackend } from "../../../backend";
-import { useVehicleComponent, VehicleComponentData } from "../types";
+import { useVehicleComponent } from "../helpers";
+import { VehicleComponentData } from "../types";
 import { VehicleController } from "../VehicleController";
 import { MechaData } from "./types";
 

@@ -112,7 +112,12 @@
 	return list(
 		"name" = name,
 		"desc" = desc,
+		"ref" = ref(src),
+		"integrity" = integrity,
+		"integrityMax" = integrity_max,
+		"integrityUsed" = TRUE,
 		"isPotentialActiveClickModule" = is_potential_active_click_module(),
+		"allowEject" = !intrinsic,
 	)
 
 /obj/item/vehicle_module/proc/vehicle_ui_component_push(list/data)

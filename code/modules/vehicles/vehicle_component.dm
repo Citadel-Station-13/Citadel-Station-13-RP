@@ -64,6 +64,10 @@
 	return list(
 		"name" = name,
 		"desc" = desc,
+		"ref" = ref(src),
+		"integrity" = integrity,
+		"integrityMax" = integrity_max,
+		"integrityUsed" = TRUE,
 	)
 
 /obj/item/vehicle_component/proc/vehicle_ui_component_push(list/data)

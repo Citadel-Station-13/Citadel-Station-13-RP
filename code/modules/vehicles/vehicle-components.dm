@@ -37,7 +37,13 @@
 /obj/vehicle/proc/uninstall_component(obj/item/vehicle_component/v_comp, datum/event_args/actor/actor, silent, force, atom/new_loc) as /obj/item/vehicle_component
 
 /obj/vehicle/proc/on_component_attached(obj/item/vehicle_component/v_comp)
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+	queue_update_component_refs()
 
 /obj/vehicle/proc/on_component_detached(obj/item/vehicle_component/v_comp)
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+	queue_update_component_refs()
 
 #warn impl
