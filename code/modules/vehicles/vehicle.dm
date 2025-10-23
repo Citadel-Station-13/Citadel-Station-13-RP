@@ -39,6 +39,9 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 	var/list/module_slots = list()
 	/// Module classes to allow
 	var/module_classes_allowed = ~(VEHICLE_MODULE_CLASS_MACRO | VEHICLE_MODULE_CLASS_MICRO)
+	/// Active click module
+	/// * Someday this'll be changed to actor HUD system so multiple people can select different ones.
+	var/obj/item/module_active_click
 
 	//* Movement *//
 	/// Next move time
@@ -73,7 +76,9 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 	var/list/occupant_huds
 
 	//* UI *//
-	/// UI controller path
+	/// UI controller
+	var/datum/vehicle_ui_controller/ui_controller
+	/// UI controller interface path
 	var/ui_path = "vehicle/VehicleController"
 
 /obj/vehicle/Initialize(mapload)
@@ -83,6 +88,8 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 /obj/vehicle/Destroy()
 	QDEL_LAZYLIST(components)
 	QDEL_LAZYLIST(modules)
+	QDEL_NULL(ui_controller)
+	QDEL_LIST_NULL(occupant_actions)
 	return ..()
 
 /obj/vehicle/examine(mob/user, dist)
@@ -184,6 +191,9 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 /obj/vehicle/proc/vehicle_move(direction, face_direction)
 	#warn impl
 
+/obj/vehicle/proc/on_vehicle_move(direction)
+	#warn impl
+
 //* Occupants *//
 
 /obj/vehicle/proc/is_occupant(mob/M)
@@ -267,20 +277,3 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 
 //* UI *//
 
-/obj/vehicle/ui_data(mob/user, datum/tgui/ui)
-	. = ..()
-
-/obj/vehicle/ui_static_data(mob/user, datum/tgui/ui)
-	. = ..()
-
-/obj/vehicle/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
-	. = ..()
-
-/obj/vehicle/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "VehicleController")
-		ui.open()
-
-/obj/vehicle/ui_nested_data(mob/user, datum/tgui/ui)
-	. = ..()

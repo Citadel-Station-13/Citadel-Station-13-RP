@@ -45,37 +45,23 @@
 	lights_power = 60
 	wreckage = /obj/effect/decal/mecha_wreckage/ripley/deathripley
 	step_energy_drain = 0
-	max_hull_equip = 1
-	max_weapon_equip = 1
-	max_utility_equip = 3
-	max_universal_equip = 1
-	max_special_equip = 1
 
-/obj/vehicle/sealed/mecha/working/ripley/deathripley/Initialize(mapload)
-	. = ..()
-	var/obj/item/vehicle_module/legacy/ME = new /obj/item/vehicle_module/legacy/tool/hydraulic_clamp/safety
-	ME.attach(src)
-	return
+	modules_intrinsic = list(
+		/obj/item/vehicle_module/legacy/tool/hydraulic_clamp/safety,
+	)
 
 /obj/vehicle/sealed/mecha/working/ripley/mining
 	desc = "An old, dusty mining ripley."
 	name = "APLU \"Miner\""
 
 /obj/vehicle/sealed/mecha/working/ripley/mining/Initialize(mapload)
-	. = ..()
-	//Attach drill
-	if(prob(25)) //Possible diamond drill... Feeling lucky?
-		var/obj/item/vehicle_module/legacy/tool/drill/diamonddrill/D = new /obj/item/vehicle_module/legacy/tool/drill/diamonddrill
-		D.attach(src)
+	LAZYINITLIST(modules)
+	if(prob(25))
+		modules += /obj/item/vehicle_module/legacy/tool/drill/diamonddrill
 	else
-		var/obj/item/vehicle_module/legacy/tool/drill/D = new /obj/item/vehicle_module/legacy/tool/drill
-		D.attach(src)
-
-	//Attach hydrolic clamp
-	var/obj/item/vehicle_module/legacy/tool/hydraulic_clamp/HC = new /obj/item/vehicle_module/legacy/tool/hydraulic_clamp
-	HC.attach(src)
-	for(var/obj/item/vehicle_tracking_beacon/B in src.contents)//Deletes the beacon so it can't be found easily
-		qdel (B)
+		modules += /obj/item/vehicle_module/legacy/tool/drill
+	modules += /obj/item/vehicle_module/legacy/tool/hydraulic_clamp
+	return ..()
 
 //Meant for random spawns.
 /obj/vehicle/sealed/mecha/working/ripley/mining/old

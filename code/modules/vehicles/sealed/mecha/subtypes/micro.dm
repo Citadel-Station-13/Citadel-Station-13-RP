@@ -8,9 +8,14 @@
 	internal_damage_threshold = 50
 	maint_access = 0
 
+	comp_armor_relative_thickness = 0.2 * /obj/vehicle/sealed/mecha::comp_armor_relative_thickness
+	comp_hull_relative_thickness = 0.2 * /obj/vehicle/sealed/mecha::comp_hull_relative_thickness
+
 	damage_absorption = list("brute"=1,"fire"=1,"bullet"=1,"laser"=1,"energy"=1,"bomb"=1)
 	damage_minimum = 0				//Incoming damage lower than this won't actually deal damage. Scrapes shouldn't be a real thing.
 	minimum_penetration = 0		//Incoming damage won't be fully applied if you don't have at least 20. Almost all AP clears this.
+
+	var/size_requirement = 0.7
 
 // override move_inside() so only micro crew can use them
 

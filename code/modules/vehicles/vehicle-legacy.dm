@@ -49,8 +49,6 @@
 	QDEL_NULL(inserted_key)
 	// legacy: get rid of trailer
 	trailer = null
-	// get rid of occupant actions
-	QDEL_LIST_NULL(occupant_actions)
 	return ..()
 
 /obj/vehicle/proc/is_key(obj/item/I)
@@ -114,9 +112,6 @@
 	else
 		after_move(direction)
 		return step(src, direction)
-
-/obj/vehicle/proc/after_move(direction)
-	return
 
 /obj/vehicle/Bump(atom/movable/M)
 	. = ..()

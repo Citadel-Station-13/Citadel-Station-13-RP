@@ -13,13 +13,15 @@
 	var/fuel_per_cycle_active = 500
 	var/power_per_cycle = 20
 
+	/// are we active?
+	var/active = FALSE
+
 /obj/item/vehicle_module/legacy/generator/Initialize(mapload)
 	. = ..()
 	init()
 
 /obj/item/vehicle_module/legacy/generator/Destroy()
-	qdel(pr_mech_generator)
-	pr_mech_generator = null
+	STOP_PROCESSING(SSobj, src)
 	return ..()
 
 /obj/item/vehicle_module/legacy/generator/proc/init()
@@ -28,9 +30,21 @@
 	pr_mech_generator = new /datum/global_iterator/mecha_generator(list(src),0)
 	pr_mech_generator.set_delay(equip_cooldown)
 
-/obj/item/vehicle_module/legacy/generator/detach()
-	pr_mech_generator.stop()
+/obj/item/vehicle_module/legacy/generator/on_uninstall(obj/vehicle/vehicle, datum/event_args/actor/actor, silent)
 	..()
+	deactivate()
+
+/obj/item/vehicle_module/legacy/generator/proc/activate()
+	if(active)
+		return
+	active = TRUE
+	START_PROCESSING(SSobj, src)
+
+/obj/item/vehicle_module/legacy/generator/proc/deactivate()
+	if(!active)
+		return
+	active = FALSE
+	STOP_PROCESSING(SSobj, src)
 
 /obj/item/vehicle_module/legacy/generator/Topic(href, href_list)
 	..()
@@ -41,13 +55,11 @@
 		else
 			set_ready_state(1)
 			log_message("Deactivated.")
-	return
 
 /obj/item/vehicle_module/legacy/generator/get_equip_info()
 	var/output = ..()
 	if(output)
 		return "[output] \[[fuel]: [round(fuel.amount*fuel.perunit,0.1)] cm<sup>3</sup>\] - <a href='?src=\ref[src];toggle=1'>[pr_mech_generator.active()?"Dea":"A"]ctivate</a>"
-	return
 
 /obj/item/vehicle_module/legacy/generator/action(target)
 	if(chassis)
@@ -61,7 +73,6 @@
 			message = "[result] unit\s of [fuel] successfully loaded."
 			send_byjax(chassis.occupant_legacy,"exosuit.browser","\ref[src]",src.get_equip_info())
 		occupant_message(message)
-	return
 
 /obj/item/vehicle_module/legacy/generator/proc/load_fuel(var/obj/item/stack/material/P)
 	if(P.type == fuel.type && P.amount)

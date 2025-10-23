@@ -104,25 +104,12 @@
 	chassis = M
 	src.loc = M
 
-	if(!M.selected)
-		M.selected = src
-	src.update_chassis_page()
-	return
-
 /obj/item/vehicle_module/legacy/proc/detach(atom/moveto=null)
 	moveto = moveto || get_turf(chassis)
 	if(src.forceMove(moveto))
-		if(chassis.selected == src)
-			chassis.selected = null
-		update_chassis_page()
 		chassis.log_message("[src] removed from equipment.")
 		chassis = null
 		set_ready_state(1)
-
-/obj/item/vehicle_module/legacy/Topic(href,href_list)
-	if(href_list["detach"])
-		src.detach()
-	return
 
 /obj/item/vehicle_module/legacy/proc/set_ready_state(state)
 	equip_ready = state
@@ -132,12 +119,10 @@
 /obj/item/vehicle_module/legacy/proc/occupant_message(message)
 	if(chassis)
 		chassis.occupant_message("[icon2html(src, world)] [message]")
-	return
 
 /obj/item/vehicle_module/legacy/proc/log_message(message)
 	if(chassis)
 		chassis.log_message("<i>[src]:</i> [message]")
-	return
 
 ///Equipment returns its slowdown or speedboost.
 /obj/item/vehicle_module/legacy/proc/get_step_delay()

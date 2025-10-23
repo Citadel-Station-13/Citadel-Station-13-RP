@@ -251,18 +251,6 @@
 
 	return ..()
 
-//! shitcode
-// VEHICLE MECHS WHEN?
-/obj/vehicle/sealed/mecha/proc/create_components()
-	for(var/path in starting_components)
-		var/obj/item/vehicle_component/C = new path(src)
-		C.attach(src)
-
-	if(starting_equipment && LAZYLEN(starting_equipment))
-		for(var/path in starting_equipment)
-			var/obj/item/vehicle_module/legacy/ME = new path(src)
-			ME.attach(src)
-
 /obj/vehicle/sealed/mecha/drain_energy(datum/actor, amount, flags)
 	if(!cell)
 		return 0
@@ -694,13 +682,8 @@
 /obj/vehicle/sealed/mecha/proc/hasInternalDamage(int_dam_flag=null)
 	return int_dam_flag ? internal_damage&int_dam_flag : internal_damage
 
-
 /obj/vehicle/sealed/mecha/proc/setInternalDamage(int_dam_flag)
-	if(!pr_internal_damage) return
-
 	internal_damage |= int_dam_flag
-	spawn(-1)
-		pr_internal_damage.start()
 	log_append_to_last("Internal damage of type [int_dam_flag].",1)
 	occupant_legacy << sound('sound/mecha/internaldmgalarm.ogg',volume=50) //Better sounding.
 
@@ -709,7 +692,6 @@
 	switch(int_dam_flag)
 		if(MECHA_INT_TEMP_CONTROL)
 			occupant_message("<font color='blue'><b>Life support system reactivated.</b></font>")
-			pr_int_temp_processor.start()
 		if(MECHA_INT_FIRE)
 			occupant_message("<font color='blue'><b>Internal fire extinquished.</b></font>")
 		if(MECHA_INT_TANK_BREACH)
@@ -751,129 +733,6 @@
 			damage -= damage_part_amt
 
 	return damage
-
-/obj/vehicle/sealed/mecha/airlock_crush(var/crush_damage)
-	..()
-	take_damage_legacy(crush_damage)
-	if(prob(50))	//Try to avoid that.
-		check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
-	return 1
-
-/obj/vehicle/sealed/mecha/proc/update_health()
-	if(src.integrity > 0)
-		src.spark_system.start()
-	else
-		qdel(src)
-	return
-
-/obj/vehicle/sealed/mecha/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
-	if(user == occupant_legacy)
-		show_radial_occupant(user)
-		return
-
-	user.setClickCooldownLegacy(user.get_attack_speed_legacy())
-	src.log_message("Attack by hand/paw. Attacker - [user].",1)
-
-	var/obj/item/vehicle_component/plating/armor/ArmC = internal_components[MECH_ARMOR]
-
-	var/temp_deflect_chance = deflect_chance
-
-	if(!ArmC)
-		temp_deflect_chance = 1
-
-	else
-		temp_deflect_chance = round(ArmC.get_efficiency() * ArmC.deflect_chance)
-
-	if(istype(user,/mob/living/carbon/human))
-		var/mob/living/carbon/human/H = user
-		if(H.species.can_shred(user))
-			if(!prob(temp_deflect_chance))
-				src.take_damage_legacy(15)	//The take_damage_legacy() proc handles armor values
-				if(prob(25))	//Why would they get free internal damage. At least make it a bit RNG.
-					src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
-				playsound(src, 'sound/weapons/slash.ogg', 50, 1, -1)
-				to_chat(user, "<span class='danger'>You slash at the armored suit!</span>")
-				visible_message("<span class='danger'>\The [user] slashes at [src.name]'s armor!</span>")
-			else
-				src.log_append_to_last("Armor saved.")
-				playsound(src, 'sound/weapons/slash.ogg', 50, 1, -1)
-				to_chat(user, "<span class='danger'>Your claws had no effect!</span>")
-				src.occupant_message("<span class='notice'>\The [user]'s claws are stopped by the armor.</span>")
-				visible_message("<span class='warning'>\The [user] rebounds off [src.name]'s armor!</span>")
-		else
-			user.visible_message("<span class='danger'>\The [user] hits \the [src]. Nothing happens.</span>","<span class='danger'>You hit \the [src] with no visible effect.</span>")
-			src.log_append_to_last("Armor saved.")
-		return
-	else if ((MUTATION_HULK in user.mutations) && !prob(temp_deflect_chance))
-		src.take_damage_legacy(15)	//The take_damage_legacy() proc handles armor values
-		if(prob(25))	//Hulks punch hard but lets not give them consistent internal damage.
-			src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
-		user.visible_message("<font color='red'><b>[user] hits [src.name], doing some damage.</b></font>", "<font color='red'><b>You hit [src.name] with all your might. The metal creaks and bends.</b></font>")
-	else
-		user.visible_message("<font color='red'><b>[user] hits [src.name]. Nothing happens.</b></font>","<font color='red'><b>You hit [src.name] with no visible effect.</b></font>")
-		src.log_append_to_last("Armor saved.")
-	return
-
-/obj/vehicle/sealed/mecha/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
-	. = ..()
-	log_message("Hit by [AM].",1)
-	call((proc_res["dynhitby"]||src), "dynhitby")(AM)
-
-//I think this is relative to throws.
-/obj/vehicle/sealed/mecha/proc/dynhitby(atom/movable/A)
-	var/obj/item/vehicle_component/plating/armor/ArmC = internal_components[MECH_ARMOR]
-
-	var/temp_deflect_chance = deflect_chance
-	var/temp_damage_minimum = damage_minimum
-
-	if(!ArmC)
-		temp_deflect_chance = 0
-		temp_damage_minimum = 0
-
-	else
-		temp_deflect_chance = round(ArmC.get_efficiency() * ArmC.deflect_chance)
-		temp_damage_minimum = round(ArmC.get_efficiency() * ArmC.damage_minimum)
-
-	if(istype(A, /obj/item/vehicle_tracking_beacon))
-		A.forceMove(src)
-		src.visible_message("The [A] fastens firmly to [src].")
-		return
-	if(prob(temp_deflect_chance) || istype(A, /mob))
-		src.occupant_message("<span class='notice'>\The [A] bounces off the armor.</span>")
-		src.visible_message("\The [A] bounces off \the [src] armor")
-		src.log_append_to_last("Armor saved.")
-		if(istype(A, /mob/living))
-			var/mob/living/M = A
-			M.take_random_targeted_damage(brute = 10)
-	else if(istype(A, /obj))
-		var/obj/O = A
-		if(O.throw_force)
-
-			var/pass_damage = O.throw_force
-			var/pass_damage_reduc_mod
-			if(pass_damage <= temp_damage_minimum)//Too little to go through.
-				src.occupant_message("<span class='notice'>\The [A] bounces off the armor.</span>")
-				src.visible_message("\The [A] bounces off \the [src] armor")
-				return
-
-			// else if(O.damage_tier < temp_minimum_penetration)	//If you don't have enough pen, you won't do full damage
-			// 	src.occupant_message("<span class='notice'>\The [A] struggles to bypass \the [src] armor.</span>")
-			// 	src.visible_message("\The [A] struggles to bypass \the [src] armor")
-			// 	pass_damage_reduc_mod = temp_fail_penetration_value	//This will apply to reduce damage to 2/3 or 66% by default
-			else
-				src.occupant_message("<span class='notice'>\The [A] manages to pierce \the [src] armor.</span>")
-//				src.visible_message("\The [A] manages to pierce \the [src] armor")
-				pass_damage_reduc_mod = 1
-
-
-
-			for(var/obj/item/vehicle_module/legacy/ME in equipment)
-				pass_damage = ME.handle_ranged_contact(A, pass_damage)
-
-			pass_damage = (pass_damage*pass_damage_reduc_mod)//Applying damage reduction
-			src.take_damage_legacy(pass_damage)	//The take_damage_legacy() proc handles armor values
-			if(pass_damage > internal_damage_minimum)	//Only decently painful attacks trigger a chance of mech damage.
-				src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 
 /obj/vehicle/sealed/mecha/proc/dynbulletdamage(var/obj/projectile/Proj)
 	var/obj/item/vehicle_component/plating/armor/ArmC = internal_components[MECH_ARMOR]
@@ -952,32 +811,6 @@
 				if(prob(15))
 					break //give a chance to exit early
 
-//This refer to whenever you are caught in an explosion.
-/obj/vehicle/sealed/mecha/legacy_ex_act(severity)
-	var/obj/item/vehicle_component/plating/armor/ArmC = internal_components[MECH_ARMOR]
-
-	var/temp_deflect_chance = deflect_chance
-
-	if(!ArmC)
-		temp_deflect_chance = 0
-
-	else
-		temp_deflect_chance = round(ArmC.get_efficiency() * ArmC.deflect_chance)
-
-	src.log_message("Affected by explosion of severity: [severity].",1)
-	if(prob(temp_deflect_chance))
-		severity++
-		src.log_append_to_last("Armor saved, changing severity to [severity].")
-	switch(severity)
-		if(1.0)
-			src.take_damage_legacy(initial(src.integrity)/1.25, "bomb")
-		if(2.0)
-			src.take_damage_legacy(initial(src.integrity)/2.5, "bomb")
-			src.check_for_internal_damage(list(MECHA_INT_FIRE,MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST,MECHA_INT_SHORT_CIRCUIT),1)
-		if(3.0)
-			src.take_damage_legacy(initial(src.integrity)/8, "bomb")
-			src.check_for_internal_damage(list(MECHA_INT_FIRE,MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST,MECHA_INT_SHORT_CIRCUIT),1)
-
 /obj/vehicle/sealed/mecha/emp_act(severity)
 	if(get_charge())
 		use_power((cell.charge/2)/severity)
@@ -985,66 +818,12 @@
 	src.log_message("EMP detected",1)
 	if(prob(80))
 		check_for_internal_damage(list(MECHA_INT_FIRE,MECHA_INT_TEMP_CONTROL,MECHA_INT_CONTROL_LOST,MECHA_INT_SHORT_CIRCUIT),1)
-	return
 
 /obj/vehicle/sealed/mecha/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	if(exposed_temperature>src.max_temperature)
 		src.log_message("Exposed to dangerous temperature.",1)
 		src.take_damage_legacy(5,"fire")	//The take_damage_legacy() proc handles armor values
 		src.check_for_internal_damage(list(MECHA_INT_FIRE, MECHA_INT_TEMP_CONTROL))
-	return
-
-/obj/vehicle/sealed/mecha/proc/dynattackby(obj/item/W as obj, mob/user as mob)
-	user.setClickCooldownLegacy(user.get_attack_speed_legacy(W))
-	src.log_message("Attacked by [W]. Attacker - [user]")
-	var/pass_damage_reduc_mod			//Modifer for failing to bring AP.
-
-	var/obj/item/vehicle_component/plating/armor/ArmC = internal_components[MECH_ARMOR]
-
-	var/temp_deflect_chance = deflect_chance
-	var/temp_damage_minimum = damage_minimum
-	var/temp_minimum_penetration = minimum_penetration
-	var/temp_fail_penetration_value = fail_penetration_value
-
-	if(!ArmC)
-		temp_deflect_chance = 0
-		temp_damage_minimum = 0
-		temp_minimum_penetration = 0
-		temp_fail_penetration_value = 1
-
-	else
-		temp_deflect_chance = round(ArmC.get_efficiency() * ArmC.deflect_chance)
-		temp_damage_minimum = round(ArmC.get_efficiency() * ArmC.damage_minimum)
-		temp_minimum_penetration = round(ArmC.get_efficiency() * ArmC.minimum_penetration)
-		temp_fail_penetration_value = round(ArmC.get_efficiency() * ArmC.fail_penetration_value)
-
-	if(prob(temp_deflect_chance))		//Does your attack get deflected outright.
-		src.occupant_message("<span class='notice'>\The [W] bounces off [src.name].</span>")
-		to_chat(user, "<span class='danger'>\The [W] bounces off [src.name].</span>")
-		src.log_append_to_last("Armor saved.")
-
-	else if(W.damage_force < temp_damage_minimum)	//Is your attack too PATHETIC to do anything. 3 damage to a person shouldn't do anything to a mech.
-		src.occupant_message("<span class='notice'>\The [W] bounces off the armor.</span>")
-		src.visible_message("\The [W] bounces off \the [src] armor")
-		return
-
-	else if((max(BULLET_TIER_DEFAULT - W.damage_tier, 0) * 25)  < temp_minimum_penetration)	//If you don't have enough pen, you won't do full damage
-		src.occupant_message("<span class='notice'>\The [W] struggles to bypass \the [src] armor.</span>")
-		src.visible_message("\The [W] struggles to bypass \the [src] armor")
-		pass_damage_reduc_mod = temp_fail_penetration_value	//This will apply to reduce damage to 2/3 or 66% by default
-
-	else
-		pass_damage_reduc_mod = 1		//Just making sure.
-		src.occupant_message("<font color='red'><b>[user] hits [src] with [W].</b></font>")
-		user.visible_message("<font color='red'><b>[user] hits [src] with [W].</b></font>", "<font color='red'><b>You hit [src] with [W].</b></font>")
-
-		var/pass_damage = W.damage_force
-		pass_damage = (pass_damage*pass_damage_reduc_mod)	//Apply the reduction of damage from not having enough armor penetration. This is not regular armor values at play.
-		for(var/obj/item/vehicle_module/legacy/ME in equipment)
-			pass_damage = ME.handle_projectile_contact(W, user, pass_damage)
-		src.take_damage_legacy(pass_damage, W.damage_type)	//The take_damage_legacy() proc handles armor values
-		if(pass_damage > internal_damage_minimum)	//Only decently painful attacks trigger a chance of mech damage.
-			src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 
 /obj/vehicle/sealed/mecha/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/kit/paint))
@@ -1752,11 +1531,6 @@
 		if(usr != src.occupant_legacy)	return
 		src.lights()
 		return
-/*
-	if(href_list["toggle_strafing"])
-		if(usr != src.occupant_legacy)	return
-		src.strafing()
-		return*/
 
 	if(href_list["toggle_airtank"])
 		if(usr != src.occupant_legacy)	return
