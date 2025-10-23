@@ -18,6 +18,7 @@ export interface VehicleData {
 
 export interface VehicleComponentData {
   ref: VehicleComponentRef;
+  tguiRoute: string;
   name: string;
   desc: string;
   integrity: number;
@@ -28,6 +29,7 @@ export interface VehicleComponentData {
 
 export interface VehicleModuleData {
   ref: VehicleModuleRef;
+  tguiRoute: string;
   name: string;
   desc: string;
   integrity: number;
