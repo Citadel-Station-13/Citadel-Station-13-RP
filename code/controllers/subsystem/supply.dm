@@ -55,9 +55,29 @@ SUBSYSTEM_DEF(supply)
 		legacy_supply_packs[P.name] = P
 		legacy_supply_categories[P.category] = TRUE
 		P.initialize()
+	//Alphabetize legacy_supply_packs
+	for(var/front = 1, front <= legacy_supply_packs.len, front++)
+		for(var/challenger = (front+1), challenger <= legacy_supply_packs.len, challenger++)
+			switch(sorttext(legacy_supply_packs[front], legacy_supply_packs[challenger]))
+				if(1) //ascending - skip
+					continue
+				if(-1) //descending - swap
+					legacy_supply_packs.Swap(front, challenger)
+				if(0) //same - skip
+					continue
 	var/list/flattened = list()
 	for(var/key in legacy_supply_categories)
 		flattened += key
+	//Alphabetize flattened
+	for(var/front = 1, front <= flattened.len, front++)
+		for(var/challenger = (front+1), challenger <= flattened.len, challenger++)
+			switch(sorttext(flattened[front], flattened[challenger]))
+				if(1) //ascending - skip
+					continue
+				if(-1) //descending - swap
+					flattened.Swap(front, challenger)
+				if(0) //same - skip
+					continue
 	legacy_supply_categories = flattened
 	return SS_INIT_SUCCESS
 
