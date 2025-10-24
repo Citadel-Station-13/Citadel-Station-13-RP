@@ -216,6 +216,7 @@
 	level_or_path.z_index = z_index
 	ordered_levels[z_index] = level_or_path
 	level_or_path.loaded = TRUE
+	level_or_path.initialize_random_data()
 	. = level_or_path
 
 	if(isnull(level_or_path.display_id))

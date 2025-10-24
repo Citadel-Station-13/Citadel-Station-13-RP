@@ -103,7 +103,6 @@ SUBSYSTEM_DEF(grids)
  * * turfs can contain nulls
  * * input turf lists are edited
  * * area_cache must have truthy associations.
- * * the same index in from_turfs that are nulled are nulled in to_turfs
  */
 /datum/controller/subsystem/grids/proc/filter_ordered_turfs_via_area(list/area/area_cache, list/turf/ordered_turfs)
 	. = list()
@@ -455,13 +454,12 @@ SUBSYSTEM_DEF(grids)
 	SHOULD_NOT_SLEEP(TRUE)
 	return FALSE
 
-//* grid area left behind if a grid move is not given an area to leave
+//* grid area left behind if a grid move is not given an area to leave *//
 
 /area/grid_orphaned
 	name = "orphaned grid area"
 	desc = "someone fucked up"
-	// it's on shuttle branch :>
-	// icon = 'icons/turf/area/debug.dmi'
-	// icon_state = "grid-orphan"
+	icon = 'icons/turf/area/debug.dmi'
+	icon_state = "grid-orphan"
 	plane = DEBUG_PLANE
 	layer = DEBUG_LAYER_AREA_OVERLAYS
