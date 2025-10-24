@@ -49,6 +49,15 @@
 		/datum/action/vehicle/mecha/eject,
 	)
 
+	//* Cargo Hold *//
+	/// Things in cargo hold
+	/// * Lazy list
+	/// * Should technically be a module but for better or worse this is an intrinsic of the /mecha
+	///   type. This allows all mechs to use hydraulic clamps to pick up cargo.
+	var/atom/movable/cargo_held
+	/// Cargo hold capacity
+	var/cargo_capacity = 1
+
 	//* Components *//
 	/// our actuator component
 	/// * set to typepath to start with
@@ -74,6 +83,9 @@
 	/// * relative to 1
 	var/comp_hull_relative_thickness = 1
 
+	//* Maintenance *//
+	#warn impl maybe?
+
 	//* Movement *//
 	/// Base turn speed. If non-zero, turns will take time.
 	/// * A non-zero value specifically activates turn handling systems. Under turn handling,
@@ -82,6 +94,12 @@
 	var/base_turn_delay = 0
 	/// Strafing? Strafing mechs won't turn to face where they're going.
 	var/strafing = FALSE
+	/// Move sound
+	/// * Can be a soundbyte ID or path.
+	var/move_sound = 'sound/mecha/mechstep.ogg'
+	/// Turn sound
+	/// * Can be a soundbyte ID or path.
+	var/turn_sound = 'sound/mecha/mechturn.ogg'
 
 /obj/vehicle/sealed/mecha/Initialize()
 	. = ..()

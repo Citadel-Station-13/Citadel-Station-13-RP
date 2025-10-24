@@ -30,17 +30,45 @@
 	icon_scale_x = 1.35
 	icon_scale_y = 1.35
 
-//Not quite sure how to move those yet.
-/obj/vehicle/sealed/mecha/combat/gygax/get_commands()
-	var/output = {"<div class='wr'>
-						<div class='header'>Special</div>
-						<div class='links'>
-						<a href='?src=\ref[src];toggle_leg_overload=1'>Toggle leg actuators overload</a>
-						</div>
-						</div>
-						"}
-	output += ..()
-	return output
+/obj/effect/decal/mecha_wreckage/gygax
+	name = "Gygax wreckage"
+	icon_state = "gygax-broken"
+
+/obj/effect/decal/mecha_wreckage/gygax/New()
+	..()
+	var/list/parts = list(
+		/obj/item/vehicle_part/gygax_torso,
+		/obj/item/vehicle_part/gygax_head,
+		/obj/item/vehicle_part/gygax_left_arm,
+		/obj/item/vehicle_part/gygax_right_arm,
+		/obj/item/vehicle_part/gygax_left_leg,
+		/obj/item/vehicle_part/gygax_right_leg,
+	)
+	for(var/i=0;i<2;i++)
+		if(!!length(parts) && prob(40))
+			var/part = pick(parts)
+			welder_salvage += part
+			parts -= part
+
+/obj/effect/decal/mecha_wreckage/gygax/dark
+	name = "Dark Gygax wreckage"
+	icon_state = "darkgygax-broken"
+
+/obj/effect/decal/mecha_wreckage/gygax/adv
+	name = "Gygax wreckage"
+	icon_state = "gygax_adv-broken"
+
+/obj/effect/decal/mecha_wreckage/gygax/dark_adv
+	name = "Advanced Dark Gygax wreckage"
+	icon_state = "darkgygax_adv-broken"
+
+/obj/effect/decal/mecha_wreckage/gygax/medgax
+	name = "Medgax wreckage"
+	icon_state = "medgax-broken"
+
+/obj/effect/decal/mecha_wreckage/gygax/serenity
+	name = "Serenity wreckage"
+	icon_state = "medgax-broken"
 
 /obj/vehicle/sealed/mecha/combat/gygax/dark
 	desc = "A lightweight exosuit used by paramilitary forces. A significantly upgraded Gygax security mech."

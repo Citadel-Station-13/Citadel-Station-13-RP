@@ -8,3 +8,23 @@
 	integrity_max = 1.35 * /obj/vehicle/sealed/working/ripley::integrity_max
 	lights_power = 8
 	wreckage = /obj/effect/decal/mecha_wreckage/ripley/firefighter
+
+/obj/effect/decal/mecha_wreckage/ripley/firefighter
+	name = "Firefighter wreckage"
+	icon_state = "firefighter-broken"
+
+/obj/effect/decal/mecha_wreckage/ripley/firefighter/New()
+	..()
+	var/list/parts = list(
+		/obj/item/vehicle_part/ripley_torso,
+		/obj/item/vehicle_part/ripley_left_arm,
+		/obj/item/vehicle_part/ripley_right_arm,
+		/obj/item/vehicle_part/ripley_left_leg,
+		/obj/item/vehicle_part/ripley_right_leg,
+		/obj/item/clothing/suit/fire,
+	)
+	for(var/i=0;i<2;i++)
+		if(!!length(parts) && prob(40))
+			var/part = pick(parts)
+			welder_salvage += part
+			parts -= part

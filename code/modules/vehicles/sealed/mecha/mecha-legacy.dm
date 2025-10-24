@@ -36,11 +36,8 @@
 
 	/// Mech type for resetting icon. Only used for reskinning kits (see custom items).
 	var/initial_icon = null
-	var/can_move = TRUE
-
 	/// How many points of slowdown are negated from equipment? Added to the mech's base step_in.
 	var/encumbrance_gap = 1
-
 	/// What direction will the mech face when entered/powered on? Defaults to South.
 	var/dir_in = 2
 	var/step_energy_drain = 10
@@ -63,9 +60,6 @@
 	/// It's simple. If it's 0, no one entered it yet. Otherwise someone entered it at least once.
 	var/firstactivation = 0
 
-	var/stomp_sound = 'sound/mecha/mechstep.ogg'
-	var/swivel_sound = 'sound/mecha/mechturn.ogg'
-
 	//! Inner atmos
 	var/use_internal_tank = 0
 	var/internal_tank_valve = ONE_ATMOSPHERE
@@ -86,17 +80,11 @@
 
 	/// Required access level for mecha operation.
 	var/list/operation_req_access = list()
-	/// Required access level to open cell compartment.
-	var/list/internals_req_access = list(ACCESS_ENGINEERING_MAIN,ACCESS_SCIENCE_ROBOTICS)
 
 	var/wreckage
 
 	/// outgoing melee damage (legacy var)
 	var/damtype = DAMAGE_TYPE_BRUTE
-
-//Working exosuit vars
-	var/list/cargo = list()
-	var/cargo_capacity = 3
 
 	var/static/image/radial_image_eject = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_eject")
 	var/static/image/radial_image_airtoggle = image(icon= 'icons/mob/radial.dmi', icon_state = "radial_airtank")
@@ -1230,7 +1218,6 @@
 			return 1
 	return 0
 
-
 /obj/vehicle/sealed/mecha/check_access(obj/item/card/id/I, list/access_list)
 	if(!istype(access_list))
 		return 1
@@ -1251,57 +1238,7 @@
 				return 1
 	return 1
 
-
-////////////////////////////////////
-///// Rendering stats window ///////
-////////////////////////////////////
-
-/obj/vehicle/sealed/mecha/proc/get_stats_html()
-	var/output = {"<html>
-						<head><title>[src.name] data</title>
-						<style>
-						body {color: #00ff00; background: #000000; font-family:"Lucida Console",monospace; font-size: 12px;}
-						hr {border: 1px solid #0f0; color: #0f0; background-color: #0f0;}
-						a {padding:2px 5px;;color:#0f0;}
-						.wr {margin-bottom: 5px;}
-						.header {cursor:pointer;}
-						.open, .closed {background: #32CD32; color:#000; padding:1px 2px;}
-						.links a {margin-bottom: 2px;padding-top:3px;}
-						.visible {display: block;}
-						.hidden {display: none;}
-						</style>
-						<script language='javascript' type='text/javascript'>
-						[js_byjax]
-						[js_dropdowns]
-						function ticker() {
-						    setInterval(function(){
-						        window.location='byond://?src=\ref[src]&update_content=1';
-						    }, 1000);
-						}
-
-						window.onload = function() {
-							dropdowns();
-							ticker();
-						}
-						</script>
-						</head>
-						<body>
-						<div id='content'>
-						[src.get_stats_part()]
-						</div>
-						<div id='eq_list'>
-						[src.get_equipment_list()]
-						</div>
-						<hr>
-						<div id='commands'>
-						[src.get_commands()]
-						</div>
-						</body>
-						</html>
-					 "}
-	return output
-
-
+#warn nuke this
 /obj/vehicle/sealed/mecha/proc/report_internal_damage()
 	var/output = null
 	var/list/dam_reports = list(
@@ -1320,7 +1257,6 @@
 		output += "<font color='red'><b>DANGEROUSLY HIGH CABIN PRESSURE</b></font><br />"
 	return output
 
-
 /obj/vehicle/sealed/mecha/proc/get_stats_part()
 	var/integrity = src.integrity/initial(src.integrity)*100
 	var/cell_charge = get_charge()
@@ -1328,14 +1264,7 @@
 	var/tank_temperature = internal_tank ? internal_tank.return_temperature() : "Unknown"
 	var/cabin_pressure = round(return_pressure(),0.01)
 
-	var/obj/item/vehicle_component/plating/hull/HC = internal_components[MECH_HULL]
-	var/obj/item/vehicle_component/plating/armor/AC = internal_components[MECH_ARMOR]
-
 	var/output_text = {"[report_internal_damage()]
-						<b>Armor Integrity: </b>[AC?"[round(AC.integrity / AC.integrity_max * 100, 0.1)]%":"<span class='warning'>ARMOR MISSING</span>"]<br>
-						<b>Hull Integrity: </b>[HC?"[round(HC.integrity / HC.integrity_max * 100, 0.1)]%":"<span class='warning'>HULL MISSING</span>"]<br>
-						[integrity<30?"<font color='red'><b>DAMAGE LEVEL CRITICAL</b></font><br>":null]
-						<b>Chassis Integrity: </b> [integrity]%<br>
 						<b>Powercell charge: </b>[isnull(cell_charge)?"No powercell installed":"[cell.percent()]%"]<br>
 						<b>Air source: </b>[use_internal_tank?"Internal Airtank":"Environment"]<br>
 						<b>Airtank pressure: </b>[tank_pressure]kPa<br>

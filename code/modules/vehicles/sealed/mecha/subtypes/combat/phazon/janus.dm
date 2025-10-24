@@ -66,3 +66,8 @@
 		if("Stun")
 			damtype = "halloss"
 	src.occupant_message("Melee damage type switched to [new_damtype]")
+
+/obj/effect/decal/mecha_wreckage/janus
+	name = "Janus wreckage"
+	icon_state = "janus-broken"
+	description_info = "Due to the incredibly intricate design of this exosuit, it is impossible to salvage components from it."

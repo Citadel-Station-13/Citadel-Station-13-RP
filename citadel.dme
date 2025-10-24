@@ -5650,6 +5650,7 @@
 #include "code\modules\vehicles\sealed\mecha\subtypes\working\hoverpod.dm"
 #include "code\modules\vehicles\sealed\mecha\subtypes\working\ripley-construction.dm"
 #include "code\modules\vehicles\sealed\mecha\subtypes\working\ripley.dm"
+#include "code\modules\vehicles\sealed\mecha\subtypes\working\ripley\deathripley.dm"
 #include "code\modules\vehicles\sealed\mecha\subtypes\working\ripley\firefighter-construction.dm"
 #include "code\modules\vehicles\sealed\mecha\subtypes\working\ripley\firefighter.dm"
 #include "code\modules\vehicles\sealed\mecha\subtypes\working\ripley\geiger-construction.dm"

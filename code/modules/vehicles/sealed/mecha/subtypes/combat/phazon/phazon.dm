@@ -33,6 +33,10 @@
 	phasing_possible = TRUE
 	switch_dmg_type_possible = TRUE
 
+/obj/effect/decal/mecha_wreckage/phazon
+	name = "Phazon wreckage"
+	icon_state = "phazon-broken"
+
 /obj/vehicle/sealed/mecha/combat/phazon/equipped
 	modules = list(
 		/obj/item/vehicle_module/lazy/legacy/tool/rcd,

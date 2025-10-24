@@ -23,23 +23,26 @@
 		/obj/item/vehicle_module/lazy/legacy/tool/orescanner,
 	)
 
-//! misc subtypes !//
+/obj/effect/decal/mecha_wreckage/ripley
+	name = "Ripley wreckage"
+	icon_state = "ripley-broken"
 
-/obj/vehicle/sealed/mecha/working/ripley/deathripley
-	desc = "OH SHIT IT'S THE DEATHSQUAD WE'RE ALL GONNA DIE"
-	name = "DEATH-RIPLEY"
-	icon_state = "deathripley"
-	initial_icon = "deathripley"
-	base_movement_speed = 4.5
-	opacity=0
-	lights_power = 60
-	wreckage = /obj/effect/decal/mecha_wreckage/ripley/deathripley
-	step_energy_drain = 0
-
-	modules_intrinsic = list(
-		/obj/item/vehicle_module/lazy/legacy/tool/orescanner,
-		/obj/item/vehicle_module/lazy/legacy/tool/hydraulic_clamp/safety,
+/obj/effect/decal/mecha_wreckage/ripley/New()
+	..()
+	var/list/parts = list(
+		/obj/item/vehicle_part/ripley_torso,
+		/obj/item/vehicle_part/ripley_left_arm,
+		/obj/item/vehicle_part/ripley_right_arm,
+		/obj/item/vehicle_part/ripley_left_leg,
+		/obj/item/vehicle_part/ripley_right_leg,
 	)
+	for(var/i=0;i<2;i++)
+		if(!!length(parts) && prob(40))
+			var/part = pick(parts)
+			welder_salvage += part
+			parts -= part
+
+//! misc subtypes !//
 
 /obj/vehicle/sealed/mecha/working/ripley/mining
 	desc = "An old, dusty mining ripley."
