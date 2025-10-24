@@ -22,7 +22,6 @@
 	name = "Sector - Lavaland West"
 	display_name = "Surt - West"
 	path = "maps/sectors/surt/levels/surt_west.dmm"
-	link_east = /datum/map_level/sector/surt/east
 
 /datum/map_level/sector/surt/base/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()
@@ -45,7 +44,6 @@
 	name = "Sector - Lavaland East"
 	display_name = "Surt - East"
 	path = "maps/sectors/surt/levels/surt_east.dmm"
-	link_west = /datum/map_level/sector/surt/base
 
 /datum/map_level/sector/surt/east/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()
