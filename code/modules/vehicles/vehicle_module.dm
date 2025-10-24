@@ -21,7 +21,6 @@
 	//* UI *//
 	/// UI component key when being rendered
 	/// * Must route to a valid component in vehicle UI routing. Check TGUI folder for more info.
-	#warn impl
 	var/ui_component = "Trivial"
 
 /obj/item/vehicle_module/proc/fits_on_vehicle(obj/vehicle/vehicle, vehicle_opinion, vehicle_is_full, datum/event_args/actor/actor, silent)
@@ -112,7 +111,13 @@
 	return list(
 		"name" = name,
 		"desc" = desc,
+		"ref" = ref(src),
+		"integrity" = integrity,
+		"integrityMax" = integrity_max,
+		"integrityUsed" = TRUE,
 		"isPotentialActiveClickModule" = is_potential_active_click_module(),
+		"allowEject" = !intrinsic,
+		"tguiRoute" = ui_component,
 	)
 
 /obj/item/vehicle_module/proc/vehicle_ui_component_push(list/data)

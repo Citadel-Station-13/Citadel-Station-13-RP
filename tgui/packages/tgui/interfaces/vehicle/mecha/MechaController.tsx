@@ -3,28 +3,38 @@
  * @license MIT
  */
 
-import { Stack } from "tgui-core/components";
+import { LabeledList, Stack } from "tgui-core/components";
 
 import { useBackend } from "../../../backend";
-import { useVehicleComponent, VehicleComponentData } from "../types";
-import { VehicleController } from "../VehicleController";
+import { useVehicleComponent } from "../helpers";
+import { VehicleComponentData } from "../types";
+import { VehicleController, VehicleControllerBuiltinSettingSections } from "../VehicleController";
 import { MechaData } from "./types";
 
 export const MechaController = (props) => {
   const { act, data } = useBackend<MechaData>();
 
-  return (
-    <VehicleController renderStackItemsBelowIntegrityHomeDisplay={(
-      <>
-        {useVehicleComponent<VehicleComponentData>(data.mCompHullRef, (d) => (
-          <FrontPageComponentHealthRender name="Hull" data={d} />
-        ))}
-        {useVehicleComponent<VehicleComponentData>(data.mCompArmorRef, (d) => (
-          <FrontPageComponentHealthRender name="Armor" data={d} />
-        ))}
-      </>
-    )} />
-  );
+  let thing = {
+    (VehicleControllerBuiltinSettingSections.Options): () => (
+    <LabeledList.Item label="Strafing">Test</LabeledList.Item>
+  )
+};
+
+
+return (
+  <VehicleController renderStackItemsBelowIntegrityHomeDisplay={(
+    <>
+      {useVehicleComponent<VehicleComponentData>(data.mCompHullRef, (d) => (
+        <FrontPageComponentHealthRender name="Hull" data={d} />
+      ))}
+      {useVehicleComponent<VehicleComponentData>(data.mCompArmorRef, (d) => (
+        <FrontPageComponentHealthRender name="Armor" data={d} />
+      ))}
+    </>
+  )} renderAdditionalSettingSectionLabeledListItems={
+    thing
+  } />
+);
 };
 
 const FrontPageComponentHealthRender = (props: {

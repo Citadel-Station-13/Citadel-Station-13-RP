@@ -19,8 +19,7 @@
 	//* UI *//
 	/// UI component key when being rendered
 	/// * Must route to a valid component in vehicle UI routing. Check TGUI folder for more info.
-	#warn impl
-	var/ui_component
+	var/ui_component = "Trivial"
 
 /obj/item/vehicle_component/proc/fits_on_vehicle(obj/vehicle/vehicle, vehicle_opinion, datum/event_args/actor/actor, silent)
 	return vehicle_opinion
@@ -64,6 +63,11 @@
 	return list(
 		"name" = name,
 		"desc" = desc,
+		"ref" = ref(src),
+		"integrity" = integrity,
+		"integrityMax" = integrity_max,
+		"integrityUsed" = TRUE,
+		"tguiRoute" = ui_component,
 	)
 
 /obj/item/vehicle_component/proc/vehicle_ui_component_push(list/data)

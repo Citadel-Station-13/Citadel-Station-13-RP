@@ -77,8 +77,9 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 
 	//* UI *//
 	/// UI controller
-	var/datum/vehicle_ui_controller/ui_controller
-	/// UI controller interface path
+	#warn hook this during merging
+	var/datum/vehicle_ui_controller/ui_controller = /datum/vehicle_ui_controller
+	/// UI interface path
 	var/ui_path = "vehicle/VehicleController"
 
 /obj/vehicle/Initialize(mapload)
@@ -274,6 +275,3 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
  */
 /obj/vehicle/proc/occupant_removed(mob/removing, datum/event_args/actor/actor, control_flags, silent, suppressed)
 	SHOULD_CALL_PARENT(TRUE)
-
-//* UI *//
-

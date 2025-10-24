@@ -122,6 +122,13 @@
 
 	return vehicle_move(direction, dir)
 
+/obj/vehicle/sealed/mecha/proc/set_strafing(strafing)
+	if(strafing == src.strafing)
+		return TRUE
+	src.strafing = strafing
+	var/datum/vehicle_ui_controller/mecha/casted_ui_controller = ui_controller
+	casted_ui_controller.update_ui_strafing()
+	return TRUE
 
 #warn impl all
 
