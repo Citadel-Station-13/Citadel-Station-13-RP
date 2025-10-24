@@ -25,7 +25,6 @@
 	module_slots = list(
 		VEHICLE_MODULE_SLOT_HULL = 2,
 		VEHICLE_MODULE_SLOT_WEAPON = 2,
-		VEHICLE_MODULE_SLOT_UNIVERSAL = 3,
 		VEHICLE_MODULE_SLOT_UTILITY = 3,
 		VEHICLE_MODULE_SLOT_SPECIAL = 0,
 	)
@@ -37,7 +36,7 @@
 	zoom_possible = 1
 
 	modules_intrinsic = list(
-		/obj/item/vehicle_module/legacy/weapon/ballistic/cannon/hag_30,
+		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/cannon/hag_30,
 	)
 
 /obj/vehicle/sealed/mecha/combat/quasimodo/get_commands()

@@ -1736,7 +1736,7 @@
 /area/awaymission/shipcave/ship/guns)
 "qI" = (
 /obj/structure/table/standard,
-/obj/item/vehicle_module/legacy/weapon/ballistic/scattershot/rigged,
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/scattershot/rigged,
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/awaymission/shipcave/ship/mechbay)
 "qM" = (
@@ -2647,7 +2647,7 @@
 /area/awaymission/shipcave/ship/vault)
 "Ap" = (
 /obj/structure/table/standard,
-/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/grenade/rigged,
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/grenade/rigged,
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/awaymission/shipcave/ship/mechbay)
 "Ar" = (
@@ -2737,7 +2737,7 @@
 /area/awaymission/shipcave/ship/crew)
 "Bs" = (
 /obj/structure/table/standard,
-/obj/item/vehicle_module/legacy/weapon/ballistic/lmg/rigged,
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/lmg/rigged,
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/awaymission/shipcave/ship/mechbay)
 "Bu" = (
@@ -3592,7 +3592,7 @@
 /area/awaymission/shipcave/ship/execution)
 "Kg" = (
 /obj/structure/table/standard,
-/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/explosive/rigged,
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/explosive/rigged,
 /obj/machinery/light{
 	dir = 8;
 	light_range = 12

@@ -1,4 +1,4 @@
-/obj/item/vehicle_module/legacy/weapon/ballistic/mortar
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/mortar
 	name = "\improper HEP RC 4 \"Skyfall\""
 	desc = "A Hephaestus exosuit-mounted mortar for use on planetary-or-similar bodies."
 	description_info = "This weapon cannot be fired indoors, underground, or on-station."
@@ -15,7 +15,7 @@
 
 	origin_tech = list(TECH_MATERIAL = 4, TECH_COMBAT = 5, TECH_ILLEGAL = 3)
 
-/obj/item/vehicle_module/legacy/weapon/ballistic/mortar/action_checks(atom/target)
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/mortar/action_checks(atom/target)
 	var/turf/MT = get_turf(chassis)
 	var/turf/TT = get_turf(target)
 	if(!MT.outdoors || !TT.outdoors)

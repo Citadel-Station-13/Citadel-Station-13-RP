@@ -706,14 +706,14 @@
 /area/ship/ert/atmos)
 "gw" = (
 /obj/structure/table/rack/steel,
-/obj/item/vehicle_module/legacy/tool/extinguisher,
-/obj/item/vehicle_module/legacy/tool/extinguisher,
-/obj/item/vehicle_module/legacy/tool/powertool/medanalyzer,
-/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/flare,
-/obj/item/vehicle_module/legacy/weapon/energy/medigun,
-/obj/item/vehicle_module/legacy/tool/sleeper,
-/obj/item/vehicle_module/legacy/tool/sleeper,
-/obj/item/vehicle_module/legacy/tool/syringe_gun,
+/obj/item/vehicle_module/lazy/legacy/tool/extinguisher,
+/obj/item/vehicle_module/lazy/legacy/tool/extinguisher,
+/obj/item/vehicle_module/lazy/legacy/tool/powertool/medanalyzer,
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/flare,
+/obj/item/vehicle_module/lazy/legacy/weapon/energy/medigun,
+/obj/item/vehicle_module/lazy/legacy/tool/sleeper,
+/obj/item/vehicle_module/lazy/legacy/tool/sleeper,
+/obj/item/vehicle_module/lazy/legacy/tool/syringe_gun,
 /obj/effect/floor_decal/industrial/outline,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/mech_bay)
@@ -747,8 +747,8 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/item/vehicle_module/legacy/weapon/energy/pulse,
-/obj/item/vehicle_module/legacy/weapon/energy/pulse,
+/obj/item/vehicle_module/lazy/legacy/weapon/energy/pulse,
+/obj/item/vehicle_module/lazy/legacy/weapon/energy/pulse,
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/mech_bay)
@@ -786,8 +786,8 @@
 /area/ship/ert/engine)
 "gW" = (
 /obj/structure/table/rack/steel,
-/obj/item/vehicle_module/legacy/shocker,
-/obj/item/vehicle_module/legacy/shocker,
+/obj/item/vehicle_module/lazy/legacy/shocker,
+/obj/item/vehicle_module/lazy/legacy/shocker,
 /obj/machinery/power/apc/hyper/north_mount{
 	alarms_hidden = 1;
 	name = "VB APC - North";
@@ -836,13 +836,13 @@
 /area/ship/ert/mech_bay)
 "hk" = (
 /obj/structure/table/rack/steel,
-/obj/item/vehicle_module/legacy/combat_shield,
-/obj/item/vehicle_module/legacy/combat_shield,
-/obj/item/vehicle_module/legacy/omni_shield,
-/obj/item/vehicle_module/legacy/repair_droid,
-/obj/item/vehicle_module/legacy/repair_droid,
-/obj/item/vehicle_module/legacy/repair_droid,
-/obj/item/vehicle_module/legacy/repair_droid,
+/obj/item/vehicle_module/lazy/legacy/combat_shield,
+/obj/item/vehicle_module/lazy/legacy/combat_shield,
+/obj/item/vehicle_module/lazy/legacy/omni_shield,
+/obj/item/vehicle_module/lazy/legacy/repair_droid,
+/obj/item/vehicle_module/lazy/legacy/repair_droid,
+/obj/item/vehicle_module/lazy/legacy/repair_droid,
+/obj/item/vehicle_module/lazy/legacy/repair_droid,
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/mech_bay)
@@ -1149,11 +1149,11 @@
 /area/ship/ert/med)
 "kn" = (
 /obj/structure/table/rack/steel,
-/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/explosive,
-/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/explosive,
-/obj/item/vehicle_module/legacy/weapon/ballistic/lmg,
-/obj/item/vehicle_module/legacy/weapon/ballistic/lmg,
-/obj/item/vehicle_module/legacy/weapon/ballistic/mortar,
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/explosive,
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/explosive,
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/lmg,
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/lmg,
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/mortar,
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/mech_bay)
@@ -2230,25 +2230,25 @@
 /area/ship/ert/med)
 "qD" = (
 /obj/structure/table/rack/steel,
-/obj/item/vehicle_module/legacy/tool/cable_layer,
-/obj/item/vehicle_module/legacy/tool/rcd,
-/obj/item/vehicle_module/legacy/tool/powertool,
-/obj/item/vehicle_module/legacy/tool/powertool/cutter,
-/obj/item/vehicle_module/legacy/tool/powertool/inflatables,
-/obj/item/vehicle_module/legacy/tool/powertool/prybar,
-/obj/item/vehicle_module/legacy/tool/powertool/screwdriver,
-/obj/item/vehicle_module/legacy/tool/powertool/welding,
-/obj/item/vehicle_module/legacy/speedboost,
+/obj/item/vehicle_module/lazy/legacy/tool/cable_layer,
+/obj/item/vehicle_module/lazy/legacy/tool/rcd,
+/obj/item/vehicle_module/lazy/legacy/tool/powertool,
+/obj/item/vehicle_module/lazy/legacy/tool/powertool/cutter,
+/obj/item/vehicle_module/lazy/legacy/tool/powertool/inflatables,
+/obj/item/vehicle_module/lazy/legacy/tool/powertool/prybar,
+/obj/item/vehicle_module/lazy/legacy/tool/powertool/screwdriver,
+/obj/item/vehicle_module/lazy/legacy/tool/powertool/welding,
+/obj/item/vehicle_module/lazy/legacy/speedboost,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/mech_bay)
 "qE" = (
 /obj/structure/table/rack/steel,
-/obj/item/vehicle_module/legacy/weapon/energy/taser,
-/obj/item/vehicle_module/legacy/weapon/energy/taser,
-/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/grenade/clusterbang,
+/obj/item/vehicle_module/lazy/legacy/weapon/energy/taser,
+/obj/item/vehicle_module/lazy/legacy/weapon/energy/taser,
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/grenade/clusterbang,
 /obj/effect/floor_decal/industrial/outline/red,
-/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/grenade/clusterbang,
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/grenade/clusterbang,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/mech_bay)
 "qF" = (
@@ -2273,35 +2273,35 @@
 /area/ship/ert/atmos)
 "qS" = (
 /obj/structure/table/rack/steel,
-/obj/item/vehicle_module/legacy/gravcatapult,
-/obj/item/vehicle_module/legacy/wormhole_generator,
+/obj/item/vehicle_module/lazy/legacy/gravcatapult,
+/obj/item/vehicle_module/lazy/legacy/wormhole_generator,
 /obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/mech_bay)
 "qT" = (
 /obj/structure/table/rack/steel,
-/obj/item/vehicle_module/legacy/tool/jetpack,
-/obj/item/vehicle_module/legacy/tool/jetpack,
-/obj/item/vehicle_module/legacy/tool/jetpack,
-/obj/item/vehicle_module/legacy/tool/jetpack,
+/obj/item/vehicle_module/lazy/legacy/tool/jetpack,
+/obj/item/vehicle_module/lazy/legacy/tool/jetpack,
+/obj/item/vehicle_module/lazy/legacy/tool/jetpack,
+/obj/item/vehicle_module/lazy/legacy/tool/jetpack,
 /obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/mech_bay)
 "rp" = (
 /obj/structure/table/rack/steel,
-/obj/item/vehicle_module/legacy/weapon/energy/ion,
-/obj/item/vehicle_module/legacy/weapon/energy/ion,
+/obj/item/vehicle_module/lazy/legacy/weapon/energy/ion,
+/obj/item/vehicle_module/lazy/legacy/weapon/energy/ion,
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/mech_bay)
 "rr" = (
 /obj/structure/table/rack/steel,
-/obj/item/vehicle_module/legacy/weapon/energy/laser/heavy,
-/obj/item/vehicle_module/legacy/weapon/energy/laser/heavy,
-/obj/item/vehicle_module/legacy/weapon/energy/laser,
-/obj/item/vehicle_module/legacy/weapon/energy/laser,
-/obj/item/vehicle_module/legacy/weapon/energy/laser/xray,
-/obj/item/vehicle_module/legacy/weapon/energy/laser/xray,
+/obj/item/vehicle_module/lazy/legacy/weapon/energy/laser/heavy,
+/obj/item/vehicle_module/lazy/legacy/weapon/energy/laser/heavy,
+/obj/item/vehicle_module/lazy/legacy/weapon/energy/laser,
+/obj/item/vehicle_module/lazy/legacy/weapon/energy/laser,
+/obj/item/vehicle_module/lazy/legacy/weapon/energy/laser/xray,
+/obj/item/vehicle_module/lazy/legacy/weapon/energy/laser/xray,
 /obj/machinery/light,
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/techfloor,
@@ -3569,8 +3569,8 @@
 /area/ship/ert/eng_storage)
 "Bl" = (
 /obj/structure/table/rack/steel,
-/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/grenade/frag,
-/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/grenade/frag,
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/grenade/frag,
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/grenade/frag,
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/mech_bay)

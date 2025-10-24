@@ -95,7 +95,7 @@
 /turf/simulated/floor/classd/indoors,
 /area/class_d/explored/underground)
 "tb" = (
-/obj/item/vehicle_module/legacy/tool/drill/diamonddrill,
+/obj/item/vehicle_module/lazy/legacy/tool/drill/diamonddrill,
 /obj/structure/table/rack,
 /obj/item/gps/survival/on,
 /turf/simulated/floor/classd/indoors,

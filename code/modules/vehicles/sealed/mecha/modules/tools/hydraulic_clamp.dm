@@ -1,4 +1,4 @@
-/obj/item/vehicle_module/legacy/tool/hydraulic_clamp
+/obj/item/vehicle_module/lazy/legacy/tool/hydraulic_clamp
 	name = "hydraulic clamp"
 	icon_state = "mecha_clamp"
 	equip_cooldown = 15
@@ -7,13 +7,13 @@
 	var/obj/vehicle/sealed/mecha/working/ripley/cargo_holder
 	ready_sound = 'sound/mecha/gasdisconnected.ogg'
 
-/obj/item/vehicle_module/legacy/tool/hydraulic_clamp/attach(obj/vehicle/sealed/mecha/M as obj)
+/obj/item/vehicle_module/lazy/legacy/tool/hydraulic_clamp/attach(obj/vehicle/sealed/mecha/M as obj)
 	..()
 	cargo_holder = M
 
 	return
 
-/obj/item/vehicle_module/legacy/tool/hydraulic_clamp/action(atom/target)
+/obj/item/vehicle_module/lazy/legacy/tool/hydraulic_clamp/action(atom/target)
 	if(!action_checks(target)) return
 	if(!cargo_holder) return
 
@@ -117,13 +117,13 @@
 
 
 //This is pretty much just for the death-ripley so that it is harmless
-/obj/item/vehicle_module/legacy/tool/hydraulic_clamp/safety
+/obj/item/vehicle_module/lazy/legacy/tool/hydraulic_clamp/safety
 	name = "\improper KILL CLAMP"
 	equip_cooldown = 15
 	energy_drain = 0
 	dam_force = 0
 
-/obj/item/vehicle_module/legacy/tool/hydraulic_clamp/safety/action(atom/target)
+/obj/item/vehicle_module/lazy/legacy/tool/hydraulic_clamp/safety/action(atom/target)
 	if(!action_checks(target)) return
 	if(!cargo_holder) return
 	if(istype(target,/obj))

@@ -23,7 +23,6 @@
 		VEHICLE_MODULE_SLOT_HULL = 2,
 		VEHICLE_MODULE_SLOT_SPECIAL = 1,
 		VEHICLE_MODULE_SLOT_UTILITY = 3,
-		VEHICLE_MODULE_SLOT_UNIVERSAL = 2,
 	)
 
 	overload_possible = 1
@@ -76,10 +75,10 @@
 
 /obj/vehicle/sealed/mecha/combat/gygax/dark/equipped
 	modules = list(
-		/obj/item/vehicle_module/legacy/weapon/ballistic/scattershot,
-		/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/grenade/clusterbang,
-		/obj/item/vehicle_module/legacy/tesla_energy_relay,
-		/obj/item/vehicle_module/legacy/teleporter,
+		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/scattershot,
+		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/grenade/clusterbang,
+		/obj/item/vehicle_module/lazy/legacy/tesla_energy_relay,
+		/obj/item/vehicle_module/lazy/legacy/teleporter,
 	)
 
 //Meant for random spawns.

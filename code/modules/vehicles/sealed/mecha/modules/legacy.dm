@@ -1,4 +1,4 @@
-/obj/item/vehicle_module/legacy
+/obj/item/vehicle_module/lazy/legacy
 	name = "mecha equipment"
 	icon = 'icons/mecha/mecha_equipment.dmi'
 	icon_state = "mecha_equip"
@@ -18,8 +18,11 @@
 	var/step_delay = 0
 
 #warn hook 'chassis'
+#warn impl all
 
-/obj/item/vehicle_module/legacy/proc/do_after_cooldown(target=1)
+
+
+/obj/item/vehicle_module/lazy/legacy/proc/do_after_cooldown(target=1)
 	sleep(equip_cooldown)
 	set_ready_state(1)
 	if(ready_sound) //Kind of like the kinetic accelerator.
@@ -28,21 +31,21 @@
 		return TRUE
 	return FALSE
 
-/obj/item/vehicle_module/legacy/examine(mob/user, dist)
+/obj/item/vehicle_module/lazy/legacy/examine(mob/user, dist)
 	. = ..()
 	. += SPAN_NOTICE("[src] will fill [equip_type?"a [equip_type]":"any"] slot.")
 
-/obj/item/vehicle_module/legacy/proc/add_equip_overlay(obj/vehicle/sealed/mecha/M as obj)
+/obj/item/vehicle_module/lazy/legacy/proc/add_equip_overlay(obj/vehicle/sealed/mecha/M as obj)
 	return
 
-/obj/item/vehicle_module/legacy/proc/
+/obj/item/vehicle_module/lazy/legacy/proc/
 
 ///Missiles detonating, teleporter creating singularity?
-/obj/item/vehicle_module/legacy/proc/destroy()
+/obj/item/vehicle_module/lazy/legacy/proc/destroy()
 	if(chassis)
 		chassis.occupant_message(SPAN_DANGER("The [src] is destroyed!"))
 		chassis.log_append_to_last("[src] is destroyed.",1)
-		if(istype(src, /obj/item/vehicle_module/legacy/weapon))//Gun
+		if(istype(src, /obj/item/vehicle_module/lazy/legacy/weapon))//Gun
 			switch(chassis.mech_faction)
 				if(MECH_FACTION_NT)
 					src.chassis.occupant_legacy << sound('sound/mecha/weapdestrnano.ogg',volume=70)
@@ -61,21 +64,17 @@
 	spawn
 		qdel(src)
 
-/obj/item/vehicle_module/legacy/proc/critfail()
+/obj/item/vehicle_module/lazy/legacy/proc/critfail()
 	if(chassis)
 		log_message("Critical failure",1)
 
-/obj/item/vehicle_module/legacy/proc/get_equip_info()
-	if(!chassis) return
-	return "<span style=\"color:[equip_ready?"#0f0":"#f00"];\">*</span>&nbsp;[chassis.selected==src?"<b>":"<a href='?src=\ref[chassis];select_equip=\ref[src]'>"][src.name][chassis.selected==src?"</b>":"</a>"]"
-
-/obj/item/vehicle_module/legacy/proc/is_ranged()//add a distance restricted equipment. Why not?
+/obj/item/vehicle_module/lazy/legacy/proc/is_ranged()//add a distance restricted equipment. Why not?
 	return range&RANGED
 
-/obj/item/vehicle_module/legacy/proc/is_melee()
+/obj/item/vehicle_module/lazy/legacy/proc/is_melee()
 	return range&MELEE
 
-/obj/item/vehicle_module/legacy/proc/action_checks(atom/target)
+/obj/item/vehicle_module/lazy/legacy/proc/action_checks(atom/target)
 	if(!target)
 		return FALSE
 	if(!chassis)
@@ -86,10 +85,10 @@
 		return FALSE
 	return TRUE
 
-/obj/item/vehicle_module/legacy/proc/action(atom/target)
+/obj/item/vehicle_module/lazy/legacy/proc/action(atom/target)
 	return
 
-/obj/item/vehicle_module/legacy/proc/can_attach(obj/vehicle/sealed/mecha/M as obj)
+/obj/item/vehicle_module/lazy/legacy/proc/can_attach(obj/vehicle/sealed/mecha/M as obj)
 	#warn deal with this shit
 	if(equip_type != EQUIP_SPECIAL && M.universal_equipment.len < M.max_universal_equip) //The exosuit needs to be military grade to actually have a universal slot capable of accepting a true weapon.
 		if(equip_type == EQUIP_WEAPON && !istype(M, /obj/vehicle/sealed/mecha/combat))
@@ -97,33 +96,33 @@
 		return TRUE
 	return FALSE
 
-/obj/item/vehicle_module/legacy/proc/attach(obj/vehicle/sealed/mecha/M as obj)
+/obj/item/vehicle_module/lazy/legacy/proc/attach(obj/vehicle/sealed/mecha/M as obj)
 	#warn deal with this shit
 	var/has_equipped = FALSE
 	M.equipment += src
 	chassis = M
 	src.loc = M
 
-/obj/item/vehicle_module/legacy/proc/detach(atom/moveto=null)
+/obj/item/vehicle_module/lazy/legacy/proc/detach(atom/moveto=null)
 	moveto = moveto || get_turf(chassis)
 	if(src.forceMove(moveto))
 		chassis.log_message("[src] removed from equipment.")
 		chassis = null
 		set_ready_state(1)
 
-/obj/item/vehicle_module/legacy/proc/set_ready_state(state)
+/obj/item/vehicle_module/lazy/legacy/proc/set_ready_state(state)
 	equip_ready = state
 	if(chassis)
 		send_byjax(chassis.occupant_legacy,"exosuit.browser","\ref[src]",src.get_equip_info())
 
-/obj/item/vehicle_module/legacy/proc/occupant_message(message)
+/obj/item/vehicle_module/lazy/legacy/proc/occupant_message(message)
 	if(chassis)
 		chassis.occupant_message("[icon2html(src, world)] [message]")
 
-/obj/item/vehicle_module/legacy/proc/log_message(message)
+/obj/item/vehicle_module/lazy/legacy/proc/log_message(message)
 	if(chassis)
 		chassis.log_message("<i>[src]:</i> [message]")
 
 ///Equipment returns its slowdown or speedboost.
-/obj/item/vehicle_module/legacy/proc/get_step_delay()
+/obj/item/vehicle_module/lazy/legacy/proc/get_step_delay()
 	return step_delay

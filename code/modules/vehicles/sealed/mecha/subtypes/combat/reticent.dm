@@ -1,3 +1,6 @@
+/datum/armor/vehicle/mecha/combat/reticent
+	melee = 0.45
+
 /obj/vehicle/sealed/mecha/combat/reticent
 	name = "Reticent"
 	desc = "Designed in response to the H.O.N.K., Reticent models are close combat powerhouses designed to rapidly and quietly ambush slower foes."
@@ -7,12 +10,11 @@
 	integrity = 180
 	integrity_max = 180			//Don't forget to update the /old variant if  you change this number.
 
+	armor = /datum/armor/vehicle/mecha/combat/reticent
 	base_movement_speed = 3.33
 	comp_armor = /obj/item/vehicle_component/plating/armor/marshal
 	comp_hull = /obj/item/vehicle_component/plating/hull/lightweight
 
-	deflect_chance = 25
-	damage_absorption = list("brute"=1,"fire"=0.75,"bullet"=0.85,"laser"=0.8,"energy"=0.7,"bomb"=1)
 	max_temperature = 25000
 	wreckage = /obj/effect/decal/mecha_wreckage/reticent
 	internal_damage_threshold = 35
@@ -22,7 +24,6 @@
 		VEHICLE_MODULE_SLOT_HULL = 2,
 		VEHICLE_MODULE_SLOT_SPECIAL = 1,
 		VEHICLE_MODULE_SLOT_UTILITY = 2,
-		VEHICLE_MODULE_SLOT_UNIVERSAL = 2,
 	)
 
 	overload_possible = 1
@@ -53,15 +54,14 @@
 		VEHICLE_MODULE_SLOT_HULL = 3,
 		VEHICLE_MODULE_SLOT_SPECIAL = 1,
 		VEHICLE_MODULE_SLOT_UTILITY = 4,
-		VEHICLE_MODULE_SLOT_UNIVERSAL = 2,
 	)
 
 /obj/vehicle/sealed/mecha/combat/reticent/reticence/equipped
 	modules = list(
-		/obj/item/vehicle_module/legacy/weapon/whisperblade,
-		/obj/item/vehicle_module/legacy/weapon/infernoblade,
-		/obj/item/vehicle_module/legacy/omni_shield/reticence,
-		/obj/item/vehicle_module/legacy/cloak,
+		/obj/item/vehicle_module/lazy/legacy/weapon/whisperblade,
+		/obj/item/vehicle_module/lazy/legacy/weapon/infernoblade,
+		/obj/item/vehicle_module/lazy/legacy/omni_shield/reticence,
+		/obj/item/vehicle_module/lazy/legacy/cloak,
 	)
 
 /obj/vehicle/sealed/mecha/combat/reticent/reticence/add_cell(var/obj/item/cell/C=null)

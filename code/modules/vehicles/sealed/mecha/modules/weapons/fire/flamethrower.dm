@@ -1,4 +1,4 @@
-/obj/item/vehicle_module/legacy/weapon/energy/flamer
+/obj/item/vehicle_module/lazy/legacy/weapon/energy/flamer
 	equip_cooldown = 30
 	name = "\improper CR-3 Mark 8"
 	desc = "An imposing device, this weapon hurls balls of fire."
@@ -13,7 +13,7 @@
 
 	origin_tech = list(TECH_MATERIAL = 4, TECH_COMBAT = 6, TECH_PHORON = 4, TECH_ILLEGAL = 4)
 
-/obj/item/vehicle_module/legacy/weapon/energy/flamer/rigged
+/obj/item/vehicle_module/lazy/legacy/weapon/energy/flamer/rigged
 	name = "\improper AA-CR-1 Mark 4"
 	description_fluff = "A firefighting tool maintained by Aether Atmospherics, whose initial design originated from a small Earth company. This one seems to have been jury rigged."
 	icon_state = "mecha_cremate-rig"

@@ -8,14 +8,9 @@
 
 	dir_in = 2 //Facing south.
 	integrity = 100
-	deflect_chance = 10
-	damage_absorption = list("brute"=0.9,"fire"=1,"bullet"=1,"laser"=1,"energy"=1,"bomb"=1)
 	max_temperature = 15000
 	wreckage = /obj/effect/decal/mecha_wreckage/micro/utility/gopher
 	internal_damage_threshold = 35
-	max_micro_utility_equip = 2
-	max_micro_weapon_equip = 0
-	max_equip = 2
 
 /obj/effect/decal/mecha_wreckage/micro/utility/gopher
 	name = "Gopher wreckage"

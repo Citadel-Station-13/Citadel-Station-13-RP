@@ -10749,7 +10749,7 @@
 /area/ship/ghostship/cabin2)
 "IQ" = (
 /obj/structure/table/standard,
-/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/grenade/clusterbang,
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/grenade/clusterbang,
 /turf/simulated/floor/reinforced,
 /area/ship/ghostship/porthangar)
 "IS" = (
@@ -10876,7 +10876,7 @@
 /area/ship/ghostship/cabin5)
 "Lp" = (
 /obj/structure/table/standard,
-/obj/item/vehicle_module/legacy/weapon/ballistic/lmg,
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/lmg,
 /turf/simulated/floor/reinforced,
 /area/ship/ghostship/porthangar)
 "Md" = (
@@ -11054,7 +11054,7 @@
 /area/ship/ghostship/hangar)
 "Qg" = (
 /obj/structure/table/standard,
-/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/grenade/clusterbang,
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/grenade/clusterbang,
 /turf/simulated/floor/reinforced,
 /area/ship/ghostship/starboardhangar)
 "Qo" = (
@@ -11415,7 +11415,7 @@
 /area/ship/ghostship/hangar)
 "XG" = (
 /obj/structure/table/standard,
-/obj/item/vehicle_module/legacy/weapon/ballistic/lmg,
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/lmg,
 /turf/simulated/floor/reinforced,
 /area/ship/ghostship/starboardhangar)
 "XH" = (

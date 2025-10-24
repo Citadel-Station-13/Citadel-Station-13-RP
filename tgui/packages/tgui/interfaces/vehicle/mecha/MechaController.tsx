@@ -6,7 +6,7 @@
 import { LabeledList, Stack } from "tgui-core/components";
 
 import { useBackend } from "../../../backend";
-import { useVehicleComponent } from "../helpers";
+import { withVehicleComponentData } from "../helpers";
 import { VehicleComponentData } from "../types";
 import { VehicleController, VehicleControllerBuiltinSettingSections } from "../VehicleController";
 import { MechaData } from "./types";
@@ -24,10 +24,10 @@ export const MechaController = (props) => {
 return (
   <VehicleController renderStackItemsBelowIntegrityHomeDisplay={(
     <>
-      {useVehicleComponent<VehicleComponentData>(data.mCompHullRef, (d) => (
+      {withVehicleComponentData<VehicleComponentData>(data.mCompHullRef, (d) => (
         <FrontPageComponentHealthRender name="Hull" data={d} />
       ))}
-      {useVehicleComponent<VehicleComponentData>(data.mCompArmorRef, (d) => (
+      {withVehicleComponentData<VehicleComponentData>(data.mCompArmorRef, (d) => (
         <FrontPageComponentHealthRender name="Armor" data={d} />
       ))}
     </>

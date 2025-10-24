@@ -18,8 +18,8 @@
 
 /obj/vehicle/sealed/mecha/combat/fighter/baron/equipped
 	modules = list(
-		/obj/item/vehicle_module/legacy/weapon/energy/laser,
-		/obj/item/vehicle_module/legacy/omni_shield,
+		/obj/item/vehicle_module/lazy/legacy/weapon/energy/laser,
+		/obj/item/vehicle_module/lazy/legacy/omni_shield,
 	)
 
 /obj/effect/decal/mecha_wreckage/baron
@@ -36,8 +36,8 @@
 
 /obj/vehicle/sealed/mecha/combat/fighter/baron/security/equipped
 	modules = list(
-		/obj/item/vehicle_module/legacy/weapon/energy/laser,
-		/obj/item/vehicle_module/legacy/weapon/energy/phase,
+		/obj/item/vehicle_module/lazy/legacy/weapon/energy/laser,
+		/obj/item/vehicle_module/lazy/legacy/weapon/energy/phase,
 	)
 
 /datum/category_item/catalogue/technology/baron

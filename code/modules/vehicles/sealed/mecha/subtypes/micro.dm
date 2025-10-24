@@ -4,16 +4,21 @@
 	anchored = 0 //light enough to push and pull, but you still can't just walk past them. Like people on non-help.
 	opacity = 0 //small enough to see around, like people.
 	step_energy_drain = 2 // They're light and small. A compact is gonna get better MPG than a truck.
-	module_classes_allowed = VEHICLE_MODULE_CLASS_MICRO
 	internal_damage_threshold = 50
 	maint_access = 0
 
+	integrity = 0.75 * /obj/vehicle/sealed/mecha::integrity
+	integrity_max = 0.75 * /obj/vehicle/sealed/mecha::integrity_max
 	comp_armor_relative_thickness = 0.2 * /obj/vehicle/sealed/mecha::comp_armor_relative_thickness
 	comp_hull_relative_thickness = 0.2 * /obj/vehicle/sealed/mecha::comp_hull_relative_thickness
 
-	damage_absorption = list("brute"=1,"fire"=1,"bullet"=1,"laser"=1,"energy"=1,"bomb"=1)
-	damage_minimum = 0				//Incoming damage lower than this won't actually deal damage. Scrapes shouldn't be a real thing.
-	minimum_penetration = 0		//Incoming damage won't be fully applied if you don't have at least 20. Almost all AP clears this.
+	module_slots = list(
+		VEHICLE_MODULE_SLOT_WEAPON = 1,
+		VEHICLE_MODULE_SLOT_SPECIAL = 1,
+		VEHICLE_MODULE_SLOT_HULL = 2,
+		VEHICLE_MODULE_SLOT_UTILITY = 4,
+	)
+	module_classes_allowed = VEHICLE_MODULE_CLASS_MICRO
 
 	var/size_requirement = 0.7
 

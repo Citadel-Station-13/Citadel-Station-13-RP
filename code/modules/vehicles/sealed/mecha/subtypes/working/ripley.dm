@@ -10,28 +10,18 @@
 	integrity_max = 200		//Don't forget to update the /old variant if  you change this number.
 	wreckage = /obj/effect/decal/mecha_wreckage/ripley
 	cargo_capacity = 10
-	var/obj/item/mining_scanner/orescanner
 
-	minimum_penetration = 10
 	encumbrance_gap = 2
-
-	comp_hull = /obj/item/vehicle_component/plating/hull/durable
-	comp_armor = /obj/item/vehicle_component/plating/armor/mining
 
 	icon_scale_x = 1.2
 	icon_scale_y = 1.2
 
-/obj/vehicle/sealed/mecha/working/ripley/Initialize(mapload)
-	. = ..()
-	orescanner = new /obj/item/mining_scanner
+	comp_hull = /obj/item/vehicle_component/plating/hull/durable
+	comp_armor = /obj/item/vehicle_component/plating/armor/mining
 
-/obj/vehicle/sealed/mecha/working/ripley/verb/detect_ore()
-	set category = "Exosuit Interface"
-	set name = "Detect Ores"
-	set src = usr.loc
-	set popup_menu = 0
-
-	orescanner.attack_self(usr)
+	modules_intrinsic = list(
+		/obj/item/vehicle_module/lazy/legacy/tool/orescanner,
+	)
 
 //! misc subtypes !//
 
@@ -47,7 +37,8 @@
 	step_energy_drain = 0
 
 	modules_intrinsic = list(
-		/obj/item/vehicle_module/legacy/tool/hydraulic_clamp/safety,
+		/obj/item/vehicle_module/lazy/legacy/tool/orescanner,
+		/obj/item/vehicle_module/lazy/legacy/tool/hydraulic_clamp/safety,
 	)
 
 /obj/vehicle/sealed/mecha/working/ripley/mining
@@ -57,10 +48,10 @@
 /obj/vehicle/sealed/mecha/working/ripley/mining/Initialize(mapload)
 	LAZYINITLIST(modules)
 	if(prob(25))
-		modules += /obj/item/vehicle_module/legacy/tool/drill/diamonddrill
+		modules += /obj/item/vehicle_module/lazy/legacy/tool/drill/diamonddrill
 	else
-		modules += /obj/item/vehicle_module/legacy/tool/drill
-	modules += /obj/item/vehicle_module/legacy/tool/hydraulic_clamp
+		modules += /obj/item/vehicle_module/lazy/legacy/tool/drill
+	modules += /obj/item/vehicle_module/lazy/legacy/tool/hydraulic_clamp
 	return ..()
 
 //Meant for random spawns.

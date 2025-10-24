@@ -713,7 +713,7 @@
 	desc = "If you're seeing this, someone did a dum-dum."
 
 /obj/item/weldingtool/electric/mounted/exosuit
-	var/obj/item/vehicle_module/legacy/equip_mount = null
+	var/obj/item/vehicle_module/lazy/legacy/equip_mount = null
 	flame_intensity = 1
 	eye_safety_modifier = 2
 	always_process = TRUE

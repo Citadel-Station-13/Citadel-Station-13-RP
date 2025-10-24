@@ -1,4 +1,4 @@
-/obj/item/vehicle_module/legacy/weapon/whisperblade
+/obj/item/vehicle_module/lazy/legacy/weapon/whisperblade
 	name = "whisper blade"
 	desc = "This blade's fractal edging allows it to slice through heavy armor plating like butter without a sound."
 	icon_state = "mecha_whisper"
@@ -7,7 +7,7 @@
 	var/dam_force = 30
 	origin_tech = list(TECH_MATERIAL = 5, TECH_COMBAT = 4, TECH_ILLEGAL = 5)
 
-/obj/item/vehicle_module/legacy/weapon/whisperblade/action(atom/target)
+/obj/item/vehicle_module/lazy/legacy/weapon/whisperblade/action(atom/target)
 	if(!action_checks(target)) return
 
 	if(istype(target,/mob/living))
@@ -40,7 +40,7 @@
 
 //Recode using the drill, in case I want that later?
 /*
-/obj/item/vehicle_module/legacy/weapon/whisperblade/proc/slice_mob(mob/living/target, mob/user)
+/obj/item/vehicle_module/lazy/legacy/weapon/whisperblade/proc/slice_mob(mob/living/target, mob/user)
 	add_attack_logs(user, target, "attacked", "[name]", "(INTENT: [uppertext(user.a_intent)]) (DAMTYPE: [uppertext(damtype)])")
 	var/blade_force = force	//Couldn't manage it otherwise.
 	if(ishuman(target))
@@ -61,7 +61,7 @@
 			return
 */
 
-/obj/item/vehicle_module/legacy/weapon/infernoblade
+/obj/item/vehicle_module/lazy/legacy/weapon/infernoblade
 	name = "inferno blade"
 	desc = "This blade's edge has been replaced with a rapid-activation heating element designed for industrial cutting."
 	icon_state = "mecha_inferno"
@@ -70,7 +70,7 @@
 	var/dam_force = 15
 	origin_tech = list(TECH_MATERIAL = 5, TECH_COMBAT = 4, TECH_ILLEGAL = 5)
 
-/obj/item/vehicle_module/legacy/weapon/infernoblade/action(atom/target)
+/obj/item/vehicle_module/lazy/legacy/weapon/infernoblade/action(atom/target)
 	if(!action_checks(target)) return
 
 	if(istype(target,/mob/living))
@@ -105,12 +105,12 @@
 //Equipment
 
 //Reticent Linear Projector
-/obj/item/vehicle_module/legacy/combat_shield/reticent
+/obj/item/vehicle_module/lazy/legacy/combat_shield/reticent
 	name = "linear combat shield"
 	desc = "A Silencium infused linear combat shield. Its faint presence cannot be easily detected."
 	icon_state = "shield_mime"
 
-/obj/item/vehicle_module/legacy/combat_shield/reticent/add_equip_overlay(obj/vehicle/sealed/mecha/M)
+/obj/item/vehicle_module/lazy/legacy/combat_shield/reticent/add_equip_overlay(obj/vehicle/sealed/mecha/M)
 	if(!drone_overlay)
 		drone_overlay = new(src.icon, icon_state = "shield_droid_mime")
 	M.add_overlay(drone_overlay)
@@ -126,7 +126,7 @@
 	low_color = "#FFC2C2"
 
 //Reticence Rectangular Projector
-/obj/item/vehicle_module/legacy/omni_shield/reticence
+/obj/item/vehicle_module/lazy/legacy/omni_shield/reticence
 	name = "faint omni shield"
 	desc = "A perfected Silencium combat shield. The manner by which it distorts the air is the only way to tell it's there at all."
 	shield_type = /obj/item/shield_projector/rectangle/mecha/reticence

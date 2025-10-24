@@ -49,7 +49,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/Scave1)
 "m" = (
-/obj/item/vehicle_module/legacy/tool/drill/diamonddrill,
+/obj/item/vehicle_module/lazy/legacy/tool/drill/diamonddrill,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/Scave1)
 "n" = (

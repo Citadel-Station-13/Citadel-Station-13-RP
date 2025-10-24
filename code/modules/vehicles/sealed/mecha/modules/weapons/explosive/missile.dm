@@ -1,10 +1,10 @@
-/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack
 	var/missile_speed = 2
 	var/missile_range = 30
 
 	step_delay = 0.5
 
-/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/flare
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/flare
 	name = "\improper BNI Flare Launcher"
 	desc = "A flare-gun, but bigger."
 	icon_state = "mecha_flaregun"
@@ -19,12 +19,12 @@
 	step_delay = 0
 	module_slot = VEHICLE_MODULE_SLOT_UTILITY
 
-/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/flare/Fire(atom/movable/AM, atom/target, turf/aimloc)
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/flare/Fire(atom/movable/AM, atom/target, turf/aimloc)
 	var/obj/item/flashlight/flare/fired = AM
 	fired.ignite()
 	..()
 
-/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/explosive
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/explosive
 	name = "\improper SRM-8 missile rack"
 	desc = "A missile battery that holds eight missiles."
 	icon_state = "mecha_missilerack"
@@ -34,7 +34,7 @@
 	projectile_energy_cost = 1000
 	equip_cooldown = 60
 
-/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/explosive/rigged
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/explosive/rigged
 	name = "jury-rigged rocket pod"
 	desc = "A series of pipes, tubes, and cables that resembles a rocket pod."
 	icon_state = "mecha_missilerack-rig"

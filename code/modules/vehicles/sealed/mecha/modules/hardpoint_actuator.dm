@@ -2,7 +2,7 @@
  * A special device used to pick up and equip other exosuit components on the fly, without leaving an Exosuit. Costly.
  */
 
-/obj/item/vehicle_module/legacy/hardpoint_actuator
+/obj/item/vehicle_module/lazy/legacy/hardpoint_actuator
 	name = "hardpoint actuator clamp"
 	icon_state = "mecha_clamp"
 	equip_cooldown = 10 SECONDS
@@ -10,12 +10,12 @@
 	module_slot = VEHICLE_MODULE_SLOT_HULL
 	origin_tech = list(TECH_MATERIAL = 5, TECH_ENGINEERING = 5, TECH_POWER = 4, TECH_COMBAT = 1, TECH_MAGNET = 4)
 
-/obj/item/vehicle_module/legacy/hardpoint_actuator/action(atom/target)
+/obj/item/vehicle_module/lazy/legacy/hardpoint_actuator/action(atom/target)
 	if(!action_checks(target))
 		return
 
 	if(istype(target,/obj/item/vehicle_module))
-		var/obj/item/vehicle_module/legacy/ME = target
+		var/obj/item/vehicle_module/lazy/legacy/ME = target
 		if(ME.can_attach(chassis))
 			occupant_message("[ME] can be integrated. Stand by.")
 			if(do_after(chassis.occupant_legacy, 3 SECONDS, target))

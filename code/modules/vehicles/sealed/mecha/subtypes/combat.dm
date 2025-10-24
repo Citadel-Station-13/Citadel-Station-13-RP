@@ -1,25 +1,37 @@
 /datum/armor/vehicle/mecha/combat
+	melee = 0.3
+	melee_tier = 4
+	melee_deflect = 5
+	bullet = 0.3
+	bullet_tier = 4
+	bullet_deflect = 2.5
+	laser = 0.3
+	laser_tier = 0.4
+	laser_deflect = 2.5
+	energy = 0.2
+	bomb = 0.35
+
+#warn can we emit a message on full block?
 
 /obj/vehicle/sealed/mecha/combat
 	force = 30
 	var/melee_cooldown = 10
 	var/melee_can_hit = 1
-	//var/list/destroyable_obj = list(/obj/vehicle/sealed/mecha, /obj/structure/window, /obj/structure/grille, /turf/simulated/wall, /obj/structure/girder)
 	internal_damage_threshold = 50
-	damage_absorption = list("brute"=0.7,"fire"=1,"bullet"=0.7,"laser"=0.85,"energy"=1,"bomb"=0.8)
 
 	armor_type = /datum/armor/vehicle/mecha/combat
 	integrity = /obj/vehicle/sealed/mecha::integrity
 	integrity_max = /obj/vehicle/sealed/mecha::integrity_max
 
+	comp_hull_relative_thickness = /obj/vehicle/sealed/mecha::comp_hull_relative_thickness
 	comp_hull = /obj/item/vehicle_component/plating/hull/durable
+	comp_armor_relative_thickness = /obj/vehicle/sealed/mecha::comp_armor_relative_thickness
 	comp_armor = /obj/item/vehicle_component/plating/armor/reinforced
 
 	module_slots = list(
 		VEHICLE_MODULE_SLOT_HULL = 2,
 		VEHICLE_MODULE_SLOT_WEAPON = 2,
 		VEHICLE_MODULE_SLOT_UTILITY = 3,
-		VEHICLE_MODULE_SLOT_UNIVERSAL = 2,
 		VEHICLE_MODULE_SLOT_SPECIAL = 1,
 	)
 

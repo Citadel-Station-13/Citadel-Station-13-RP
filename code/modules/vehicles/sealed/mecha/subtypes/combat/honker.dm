@@ -16,7 +16,6 @@
 		VEHICLE_MODULE_SLOT_HULL = 2,
 		VEHICLE_MODULE_SLOT_SPECIAL = 1,
 		VEHICLE_MODULE_SLOT_UTILITY = 2,
-		VEHICLE_MODULE_SLOT_UNIVERSAL = 2,
 	)
 
 	comp_armor = /obj/item/vehicle_component/plating/armor/marshal
@@ -51,7 +50,6 @@
 		VEHICLE_MODULE_SLOT_HULL = 3,
 		VEHICLE_MODULE_SLOT_SPECIAL = 1,
 		VEHICLE_MODULE_SLOT_UTILITY = 3,
-		VEHICLE_MODULE_SLOT_UNIVERSAL = 2,
 	)
 
 	deflect_chance = 25
@@ -63,11 +61,11 @@
 
 /obj/vehicle/sealed/mecha/combat/honker/cluwne/equipped
 	modules = list(
-		/obj/item/vehicle_module/legacy/weapon/honker,
-		/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/grenade/banana,
-		/obj/item/vehicle_module/legacy/weapon/ballistic/scattershot,
-		/obj/item/vehicle_module/legacy/tesla_energy_relay,
-		/obj/item/vehicle_module/legacy/teleporter,
+		/obj/item/vehicle_module/lazy/legacy/weapon/honker,
+		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/grenade/banana,
+		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/scattershot,
+		/obj/item/vehicle_module/lazy/legacy/tesla_energy_relay,
+		/obj/item/vehicle_module/lazy/legacy/teleporter,
 	)
 
 /obj/vehicle/sealed/mecha/combat/honker/cluwne/add_cell(var/obj/item/cell/C=null)

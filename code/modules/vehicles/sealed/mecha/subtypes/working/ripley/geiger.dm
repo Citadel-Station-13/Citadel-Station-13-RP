@@ -12,8 +12,5 @@
 	show_pilot = TRUE
 	pilot_lift = 5
 
-	max_utility_equip = 1
-	max_universal_equip = 3
-
 	icon_scale_x = 1
 	icon_scale_y = 1

@@ -1,2 +1,2 @@
-/obj/item/vehicle_module/legacy/tool
+/obj/item/vehicle_module/lazy/legacy/tool
 	module_slot = VEHICLE_MODULE_SLOT_UTILITY

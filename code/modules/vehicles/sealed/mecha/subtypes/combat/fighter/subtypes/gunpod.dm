@@ -46,8 +46,8 @@
 
 /obj/vehicle/sealed/mecha/combat/fighter/gunpod/equipped
 	modules = list(
-		/obj/item/vehicle_module/legacy/weapon/energy/laser,
-		/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/explosive,
+		/obj/item/vehicle_module/lazy/legacy/weapon/energy/laser,
+		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/explosive,
 	)
 
 /obj/vehicle/sealed/mecha/combat/fighter/gunpod/recon
@@ -56,8 +56,8 @@
 
 /obj/vehicle/sealed/mecha/combat/fighter/gunpod/equipped
 	modules = list(
-		/obj/item/vehicle_module/legacy/teleporter,
-		/obj/item/vehicle_module/legacy/tesla_energy_relay,
+		/obj/item/vehicle_module/lazy/legacy/teleporter,
+		/obj/item/vehicle_module/lazy/legacy/tesla_energy_relay,
 	)
 
 /obj/effect/decal/mecha_wreckage/gunpod

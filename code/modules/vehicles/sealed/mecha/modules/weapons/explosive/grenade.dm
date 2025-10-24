@@ -1,4 +1,4 @@
-/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/grenade
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/grenade
 	name = "\improper SGL-6 grenade launcher"
 	desc = "A grenade launcher produced for SWAT use; fires flashbangs."
 	icon_state = "mecha_grenadelnchr"
@@ -10,7 +10,7 @@
 	equip_cooldown = 60
 	var/det_time = 20
 
-/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/grenade/rigged
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/grenade/rigged
 	name = "jury-rigged pneumatic flashlauncher"
 	desc = "A grenade launcher constructed out of estranged blueprints; fires flashbangs."
 	icon_state = "mecha_grenadelnchr-rig"
@@ -18,27 +18,27 @@
 	missile_speed = 1
 	det_time = 25
 
-/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/grenade/Fire(atom/movable/AM, atom/target, turf/aimloc)
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/grenade/Fire(atom/movable/AM, atom/target, turf/aimloc)
 	var/obj/item/grenade/simple/G = AM
 	if(istype(G))
 		G.activation_detonate_delay = det_time
 		G.activate(new /datum/event_args/actor(chassis.occupant_legacy))
 	AM.throw_at_old(target,missile_range, missile_speed, chassis)
 
-/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/grenade/clusterbang//Because I am a heartless bastard -Sieve
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/grenade/clusterbang//Because I am a heartless bastard -Sieve
 	name = "\improper SOP-6 grenade launcher"
 	desc = "A grenade launcher produced for use by government uprising subjugation forces, or that's what you might guess; fires matryoshka flashbangs."
 	projectile = /obj/item/grenade/simple/flashbang/clusterbang
 
 	origin_tech = list(TECH_COMBAT= 5, TECH_MATERIAL = 5, TECH_ILLEGAL = 3)
 
-/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/grenade/clusterbang/limited/get_equip_info()//Limited version of the clusterbang launcher that can't reload
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/grenade/clusterbang/limited/get_equip_info()//Limited version of the clusterbang launcher that can't reload
 	return "<span style=\"color:[equip_ready?"#0f0":"#f00"];\">*</span>&nbsp;[chassis.selected==src?"<b>":"<a href='?src=\ref[chassis];select_equip=\ref[src]'>"][src.name][chassis.selected==src?"</b>":"</a>"]\[[src.projectiles]\]"
 
-/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/grenade/clusterbang/limited/rearm()
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/grenade/clusterbang/limited/rearm()
 	return//Extra bit of security
 
-/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/grenade/concussion
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/grenade/concussion
 	name = "\improper SGL-9 grenade launcher"
 	desc = "A military-grade grenade launcher that fires disorienting concussion grenades."
 	icon_state = "mecha_grenadelnchr"
@@ -50,7 +50,7 @@
 
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 4, TECH_ILLEGAL = 1)
 
-/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/grenade/frag
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/grenade/frag
 	name = "\improper HEP-I 5 grenade launcher"
 	desc = "A military-grade grenade launcher that fires anti-personnel fragmentation grenades."
 	icon_state = "mecha_fraglnchr"
@@ -60,7 +60,7 @@
 
 	origin_tech = list(TECH_COMBAT = 5, TECH_ENGINEERING = 5, TECH_MATERIAL = 5, TECH_ILLEGAL = 3)
 
-/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/grenade/frag/mini
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/grenade/frag/mini
 	name = "\improper HEP-MI 6 grenade launcher"
 	desc = "A military-grade grenade launcher that fires miniaturized anti-personnel fragmentation grenades."
 	projectile = /obj/item/grenade/simple/explosive/mini

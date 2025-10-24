@@ -9,11 +9,10 @@
 		VEHICLE_MODULE_SLOT_HULL = 2,
 		VEHICLE_MODULE_SLOT_WEAPON = 0,
 		VEHICLE_MODULE_SLOT_UTILITY = 3,
-		VEHICLE_MODULE_SLOT_UNIVERSAL = 2,
 		VEHICLE_MODULE_SLOT_SPECIAL = 1,
 	)
 	modules_intrinsic = list(
-		/obj/item/vehicle_module/legacy/tool/passenger,
+		/obj/item/vehicle_module/lazy/legacy/tool/passenger,
 	)
 
 	catalogue_data = list(/datum/category_item/catalogue/technology/pinnace)

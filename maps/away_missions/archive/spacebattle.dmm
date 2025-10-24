@@ -671,14 +671,14 @@
 /obj/structure/closet/crate{
 	name = "Gold Crate"
 	},
-/obj/item/vehicle_module/legacy/tool/hydraulic_clamp,
+/obj/item/vehicle_module/lazy/legacy/tool/hydraulic_clamp,
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/cruiser)
 "dQ" = (
 /obj/structure/closet/crate{
 	name = "Gold Crate"
 	},
-/obj/item/vehicle_module/legacy/tool/drill,
+/obj/item/vehicle_module/lazy/legacy/tool/drill,
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/cruiser)
 "dR" = (
@@ -757,14 +757,14 @@
 /obj/structure/closet/crate{
 	name = "Gold Crate"
 	},
-/obj/item/vehicle_module/legacy/tool/syringe_gun,
+/obj/item/vehicle_module/lazy/legacy/tool/syringe_gun,
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/cruiser)
 "ej" = (
 /obj/structure/closet/crate{
 	name = "Gold Crate"
 	},
-/obj/item/vehicle_module/legacy/repair_droid,
+/obj/item/vehicle_module/lazy/legacy/repair_droid,
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/cruiser)
 "el" = (

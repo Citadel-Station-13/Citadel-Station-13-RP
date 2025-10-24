@@ -17,7 +17,6 @@
 		VEHICLE_MODULE_SLOT_HULL = 3,
 		VEHICLE_MODULE_SLOT_SPECIAL = 1,
 		VEHICLE_MODULE_SLOT_UTILITY = 4,
-		VEHICLE_MODULE_SLOT_UNIVERSAL = 3,
 	)
 
 	deflect_chance = 25
@@ -36,25 +35,11 @@
 	icon_scale_x = 1.5
 	icon_scale_y = 1.5
 
-//To be kill ltr
-/obj/vehicle/sealed/mecha/combat/marauder/get_commands()
-	var/output = {"<div class='wr'>
-						<div class='header'>Special</div>
-						<div class='links'>
-						<a href='?src=\ref[src];toggle_thrusters=1'>Toggle thrusters</a><br>
-						<a href='?src=\ref[src];toggle_zoom=1'>Toggle zoom mode</a><br>
-						<a href='?src=\ref[src];smoke=1'>Smoke</a>
-						</div>
-						</div>
-						"}
-	output += ..()
-	return output
-
 /obj/vehicle/sealed/mecha/combat/marauder/equipped
 	modules = list(
-		/obj/item/vehicle_module/legacy/weapon/energy/pulse,
-		/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/explosive,
-		/obj/item/vehicle_module/legacy/tesla_energy_relay,
+		/obj/item/vehicle_module/lazy/legacy/weapon/energy/pulse,
+		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/explosive,
+		/obj/item/vehicle_module/lazy/legacy/tesla_energy_relay,
 		/obj/item/vehicle_module/personal_shield/structural_field/hyperkinetic,
 	)
 
@@ -86,11 +71,11 @@
 
 /obj/vehicle/sealed/mecha/combat/marauder/seraph/equipped
 	modules = list(
-		/obj/item/vehicle_module/legacy/weapon/ballistic/scattershot,
-		/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/explosive,
-		/obj/item/vehicle_module/legacy/tesla_energy_relay,
+		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/scattershot,
+		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/explosive,
+		/obj/item/vehicle_module/lazy/legacy/tesla_energy_relay,
 		/obj/item/vehicle_module/personal_shield/structural_field/hyperkinetic,
-		/obj/item/vehicle_module/legacy/teleporter,
+		/obj/item/vehicle_module/lazy/legacy/teleporter,
 	)
 
 //Note that is the Mauler

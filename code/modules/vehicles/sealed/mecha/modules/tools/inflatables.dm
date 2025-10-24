@@ -1,4 +1,4 @@
-/obj/item/vehicle_module/legacy/tool/powertool/inflatables
+/obj/item/vehicle_module/lazy/legacy/tool/powertool/inflatables
 	name = "inflatable deployment mechanism"
 	desc = "An exosuit-mounted inflatable barrier deployer. Useful!"
 	icon_state = "mecha_inflatables"
@@ -11,26 +11,31 @@
 	tooltype = /obj/item/inflatable_dispenser/robot
 	var/obj/item/inflatable_dispenser/my_deployer = null
 
-/obj/item/vehicle_module/legacy/tool/powertool/inflatables/Initialize(mapload)
+/obj/item/vehicle_module/lazy/legacy/tool/powertool/inflatables/Initialize(mapload)
 	. = ..()
 	my_deployer = my_tool
 
-/obj/item/vehicle_module/legacy/tool/powertool/inflatables/Topic(href, href_list)
-	..()
-	if(href_list["toggle_deployable_mode"])
-		my_deployer.attack_self()
-		update_chassis_page()
-	return
+/obj/item/vehicle_module/lazy/legacy/tool/powertool/inflatables/render_ui()
+	var/rendered_mode
+	if(my_deployer.mode)
+		rendered_mode = "Door"
+	else
+		rendered_mode = "Wall"
+	l_ui_button("toggleInflatableMode", "Inflatable Mode", rendered_mode)
+	l_ui_html("Doors Left", "[my_deployer.stored_doors]")
+	l_ui_html("Walls Left", "[my_deployer.stored_walls]")
 
-/obj/item/vehicle_module/legacy/tool/powertool/inflatables/get_equip_info()
-	if(!chassis) return
-	var/data_return = "<span style=\"color:[equip_ready?"#0f0":"#f00"];\">*</span>&nbsp;[chassis.selected==src?"<b>":"<a href='?src=\ref[chassis];select_equip=\ref[src]'>"][src.name][chassis.selected==src?"</b>":"</a>"] - <a href='?src=\ref[src];toggle_deployable_mode=1'>Deploy [my_deployer.mode?"Door":"Wall"]</a><br>\
-	&nbsp; - Doors left: <span style=\"color:#ff0;\">[my_deployer.stored_doors]</span>/[my_deployer.max_doors]<br>\
-	&nbsp; - Walls left: <span style=\"color:#ff0;\">[my_deployer.stored_walls]</span>/[my_deployer.max_walls]"
+/obj/item/vehicle_module/lazy/legacy/tool/powertool/inflatables/on_l_ui_button(key)
+	. = ..()
+	if(.)
+		return
+	switch(key)
+		if("toggleInflatableMode")
+			#warn log
+			my_deployer.attack_self()
+			return TRUE
 
-	return data_return
-
-/obj/item/vehicle_module/legacy/tool/powertool/inflatables/action(atom/target, params)
+/obj/item/vehicle_module/lazy/legacy/tool/powertool/inflatables/action(atom/target, params)
 	if(!action_checks(target))
 		return
 
@@ -42,4 +47,3 @@
 	set_ready_state(0)
 	chassis.use_power(energy_drain)
 	do_after_cooldown()
-	return

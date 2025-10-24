@@ -36,7 +36,6 @@
 		VEHICLE_MODULE_SLOT_WEAPON = 0,
 		VEHICLE_MODULE_SLOT_UTILITY = 3,
 		VEHICLE_MODULE_SLOT_SPECIAL = 1,
-		VEHICLE_MODULE_SLOT_UNIVERSAL = 2,
 	)
 
 /obj/vehicle/sealed/mecha/working/hoverpod/Initialize(mapload)
@@ -131,22 +130,21 @@
 		VEHICLE_MODULE_SLOT_WEAPON = 2,
 		VEHICLE_MODULE_SLOT_UTILITY = 2,
 		VEHICLE_MODULE_SLOT_SPECIAL = 1,
-		VEHICLE_MODULE_SLOT_UNIVERSAL = 1,
 	)
 
 #warn /equipped
 /obj/vehicle/sealed/mecha/working/hoverpod/combatpod/Initialize(mapload)
 	. = ..()
-	var/obj/item/vehicle_module/legacy/ME = new /obj/item/vehicle_module/legacy/weapon/energy/laser
+	var/obj/item/vehicle_module/lazy/legacy/ME = new /obj/item/vehicle_module/lazy/legacy/weapon/energy/laser
 	ME.attach(src)
-	ME = new /obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/explosive
+	ME = new /obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/explosive
 	ME.attach(src)
 
 /obj/vehicle/sealed/mecha/working/hoverpod/shuttlepod
 	desc = "Who knew a tiny ball could fit three people?"
 	modules_intrinsic = list(
-		/obj/item/vehicle_module/legacy/tool/passenger,
-		/obj/item/vehicle_module/legacy/tool/passenger,
+		/obj/item/vehicle_module/lazy/legacy/tool/passenger,
+		/obj/item/vehicle_module/lazy/legacy/tool/passenger,
 	)
 
 /obj/vehicle/sealed/mecha/working/hoverpod/shuttlecraft
@@ -188,7 +186,6 @@
 		VEHICLE_MODULE_SLOT_HULL = 2,
 		VEHICLE_MODULE_SLOT_SPECIAL = 1,
 		VEHICLE_MODULE_SLOT_UTILITY = 4,
-		VEHICLE_MODULE_SLOT_UNIVERSAL = 2,
 	)
 
 /obj/vehicle/sealed/mecha/working/hoverpod/shuttlecraft/update_icon()

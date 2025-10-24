@@ -19,7 +19,6 @@
 	integrity_max = 70
 	wreckage = /obj/effect/decal/mecha_wreckage/odysseus
 	internal_damage_threshold = 35
-	deflect_chance = 15
 	step_energy_drain = 6
 
 	icon_scale_x = 1.2
@@ -27,9 +26,9 @@
 
 /obj/vehicle/sealed/mecha/medical/odysseus/equipped
 	modules = list(
-		/obj/item/vehicle_module/legacy/tool/sleeper,
-		/obj/item/vehicle_module/legacy/tool/sleeper,
-		/obj/item/vehicle_module/legacy/tool/syringe_gun,
+		/obj/item/vehicle_module/lazy/legacy/tool/sleeper,
+		/obj/item/vehicle_module/lazy/legacy/tool/sleeper,
+		/obj/item/vehicle_module/lazy/legacy/tool/syringe_gun,
 	)
 
 //Meant for random spawns.

@@ -17,17 +17,14 @@
 	max_temperature = 25000
 	wreckage = /obj/effect/decal/mecha_wreckage/phazon
 	add_req_access = 1
-	//operation_req_access = list()
 	internal_damage_threshold = 25
 	force = 15
-	max_equip = 4
 
 	module_slots = list(
 		VEHICLE_MODULE_SLOT_WEAPON = 3,
 		VEHICLE_MODULE_SLOT_HULL = 3,
 		VEHICLE_MODULE_SLOT_SPECIAL = 3,
 		VEHICLE_MODULE_SLOT_UTILITY = 6,
-		VEHICLE_MODULE_SLOT_UNIVERSAL = 5,
 	)
 
 	encumbrance_gap = 2
@@ -38,8 +35,8 @@
 
 /obj/vehicle/sealed/mecha/combat/phazon/equipped
 	modules = list(
-		/obj/item/vehicle_module/legacy/tool/rcd,
-		/obj/item/vehicle_module/legacy/gravcatapult,
+		/obj/item/vehicle_module/lazy/legacy/tool/rcd,
+		/obj/item/vehicle_module/lazy/legacy/gravcatapult,
 	)
 
 /obj/vehicle/sealed/mecha/combat/phazon/get_commands()

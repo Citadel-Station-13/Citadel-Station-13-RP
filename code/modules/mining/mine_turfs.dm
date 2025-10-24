@@ -305,7 +305,7 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 
 	else if(istype(AM,/obj/vehicle/sealed/mecha))
 		var/obj/vehicle/sealed/mecha/M = AM
-		var/obj/item/vehicle_module/legacy/tool/drill/maybe_drill = locate() in M.modules
+		var/obj/item/vehicle_module/lazy/legacy/tool/drill/maybe_drill = locate() in M.modules
 		if(maybe_drill)
 			maybe_drill.action(src)
 

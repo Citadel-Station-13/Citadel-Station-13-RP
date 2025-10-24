@@ -84,6 +84,10 @@
 	return clickchain_flags
 	#warn hook on chassis
 
+//* Logging *//
+
+#warn make logging procs
+
 //* Usage - World *//
 
 #warn this
@@ -107,22 +111,25 @@
 
 //* UI *//
 
-/obj/item/vehicle_module/proc/vehicle_ui_component_data()
+/obj/item/vehicle_module/proc/vehicle_ui_module_data()
 	return list(
+		"integrity" = integrity,
+		"integrityMax" = integrity_max,
 		"name" = name,
 		"desc" = desc,
 		"ref" = ref(src),
-		"integrity" = integrity,
-		"integrityMax" = integrity_max,
 		"integrityUsed" = TRUE,
 		"isPotentialActiveClickModule" = is_potential_active_click_module(),
 		"allowEject" = !intrinsic,
 		"tguiRoute" = ui_component,
 	)
 
-/obj/item/vehicle_module/proc/vehicle_ui_component_push(list/data)
+/obj/item/vehicle_module/proc/vehicle_ui_module_push(list/data)
 
-/obj/item/vehicle_module/proc/vehicle_ui_component_act(action, list/params, datum/event_args/actor/actor)
+/**
+ * @return TRUE to update data (not static data)
+ */
+/obj/item/vehicle_module/proc/vehicle_ui_module_act(action, list/params, datum/event_args/actor/actor)
 
 /**
  * Supertype of shieldcalls that handle vehicle hits. Just subtype one

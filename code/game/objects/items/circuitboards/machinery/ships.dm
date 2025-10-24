@@ -9,7 +9,7 @@
 	build_path = /obj/machinery/power/pointdefense
 	origin_tech = list(TECH_ENGINEERING = 3, TECH_COMBAT = 2)
 	req_components = list(
-		/obj/item/vehicle_module/legacy/weapon/energy/laser = 1,
+		/obj/item/vehicle_module/lazy/legacy/weapon/energy/laser = 1,
 		/obj/item/stock_parts/capacitor = 2,
 		/obj/item/stock_parts/manipulator = 2,
 	)

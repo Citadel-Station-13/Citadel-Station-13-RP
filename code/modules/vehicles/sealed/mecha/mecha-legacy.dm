@@ -217,7 +217,7 @@
 
 	if(wreckage)
 		var/obj/effect/decal/mecha_wreckage/WR = new wreckage(loc)
-		for(var/obj/item/vehicle_module/legacy/mod as anything in modules)
+		for(var/obj/item/vehicle_module/lazy/legacy/mod as anything in modules)
 			if(!mod.salvageable)
 				continue
 			if(!prob(30))
@@ -457,7 +457,7 @@
 	return domove(direction)
 
 /obj/vehicle/sealed/mecha/proc/can_ztravel()
-	for(var/obj/item/vehicle_module/legacy/tool/jetpack/jp in equipment)
+	for(var/obj/item/vehicle_module/lazy/legacy/tool/jetpack/jp in equipment)
 		return jp.equip_ready
 	return FALSE
 
@@ -468,7 +468,7 @@
 	var/tally = 0
 
 	if(LAZYLEN(equipment))
-		for(var/obj/item/vehicle_module/legacy/ME in equipment)
+		for(var/obj/item/vehicle_module/lazy/legacy/ME in equipment)
 			if(ME.get_step_delay())
 				tally += ME.get_step_delay()
 
@@ -584,7 +584,7 @@
 	return 0
 
 /obj/vehicle/sealed/mecha/proc/handle_equipment_movement()
-	for(var/obj/item/vehicle_module/legacy/ME in equipment)
+	for(var/obj/item/vehicle_module/lazy/legacy/ME in equipment)
 		if(ME.chassis == src) //Sanity
 			ME.handle_movement_action()
 	return
@@ -674,7 +674,7 @@
 
 	if(prob(10))
 		if(ignore_threshold || src.integrity*100/initial(src.integrity) < src.internal_damage_threshold)
-			var/obj/item/vehicle_module/legacy/destr = SAFEPICK(equipment)
+			var/obj/item/vehicle_module/lazy/legacy/destr = SAFEPICK(equipment)
 			if(destr)
 				destr.destroy()
 	return
@@ -770,7 +770,7 @@
 
 		var/pass_damage = Proj.damage_force
 		var/pass_damage_reduc_mod
-		for(var/obj/item/vehicle_module/legacy/ME in equipment)
+		for(var/obj/item/vehicle_module/lazy/legacy/ME in equipment)
 			pass_damage = ME.handle_projectile_contact(Proj, pass_damage)
 
 		if(pass_damage < temp_damage_minimum)//too pathetic to really damage you.
@@ -837,7 +837,7 @@
 
 	#warn deal with
 	if(istype(W, /obj/item/vehicle_module))
-		var/obj/item/vehicle_module/legacy/E = W
+		var/obj/item/vehicle_module/lazy/legacy/E = W
 		if(E.can_attach(src))
 			if(!user.attempt_insert_item_for_installation(E, src))
 				return
@@ -1157,7 +1157,7 @@
 //returns an equipment object if we have one of that type, useful since is_type_in_list won't return the object
 //since is_type_in_list uses caching, this is a slower operation, so only use it if needed
 /obj/vehicle/sealed/mecha/proc/get_equipment(var/equip_type)
-	for(var/obj/item/vehicle_module/legacy/ME in equipment)
+	for(var/obj/item/vehicle_module/lazy/legacy/ME in equipment)
 		if(istype(ME,equip_type))
 			return ME
 	return null
@@ -1391,7 +1391,7 @@
 	if(!id_card || !user) return
 
 	var/maint_options = "<a href='?src=\ref[src];set_internal_tank_valve=1;user=\ref[user]'>Set Cabin Air Pressure</a>"
-	if (locate(/obj/item/vehicle_module/legacy/tool/passenger) in contents)
+	if (locate(/obj/item/vehicle_module/lazy/legacy/tool/passenger) in contents)
 		maint_options += "<a href='?src=\ref[src];remove_passenger=1;user=\ref[user]'>Remove Passenger</a>"
 
 	var/output_text = {"<html>
@@ -1437,7 +1437,7 @@
 	var/datum/topic_input/top_filter = new /datum/topic_input(href,href_list)
 	if(href_list["select_equip"])
 		if(usr != src.occupant_legacy)	return
-		var/obj/item/vehicle_module/legacy/equip = top_filter.getObj("select_equip")
+		var/obj/item/vehicle_module/lazy/legacy/equip = top_filter.getObj("select_equip")
 		if(equip)
 			src.selected = equip
 			src.occupant_message("You switch to [equip]")
@@ -1541,7 +1541,7 @@
 	if(href_list["remove_passenger"] && state >= MECHA_BOLTS_SECURED)
 		var/mob/user = top_filter.getMob("user")
 		var/list/passengers = list()
-		for (var/obj/item/vehicle_module/legacy/tool/passenger/P in contents)
+		for (var/obj/item/vehicle_module/lazy/legacy/tool/passenger/P in contents)
 			if (P.occupant_legacy)
 				passengers["[P.occupant_legacy]"] = P
 
@@ -1554,7 +1554,7 @@
 		if (!pname)
 			return
 
-		var/obj/item/vehicle_module/legacy/tool/passenger/P = passengers[pname]
+		var/obj/item/vehicle_module/lazy/legacy/tool/passenger/P = passengers[pname]
 		var/mob/occupant_legacy = P.occupant_legacy
 
 		user.visible_message("<span class='notice'>\The [user] begins opening the hatch on \the [P]...</span>", "<span class='notice'>You begin opening the hatch on \the [P]...</span>")

@@ -4,7 +4,7 @@
 ////    WEAPONS BELOW    ////
 /////////////////////////////
 
-/obj/item/vehicle_module/legacy/weapon/energy/microlaser
+/obj/item/vehicle_module/lazy/legacy/weapon/energy/microlaser
 	w_class = WEIGHT_CLASS_BULKY
 	desc = "A mounted laser-carbine for light exosuits."
 	equip_cooldown = 10 // same as the laser carbine
@@ -16,7 +16,7 @@
 	fire_sound = 'sound/weapons/Laser.ogg'
 	module_class = VEHICLE_MODULE_CLASS_MICRO
 
-/obj/item/vehicle_module/legacy/weapon/energy/laser/microheavy
+/obj/item/vehicle_module/lazy/legacy/weapon/energy/laser/microheavy
 	w_class = WEIGHT_CLASS_BULKY
 	desc = "A mounted laser cannon for light exosuits."
 	equip_cooldown = 30 // same as portable
@@ -28,7 +28,7 @@
 	fire_sound = 'sound/weapons/lasercannonfire.ogg'
 	module_class = VEHICLE_MODULE_CLASS_MICRO
 
-/obj/item/vehicle_module/legacy/weapon/energy/microtaser
+/obj/item/vehicle_module/lazy/legacy/weapon/energy/microtaser
 	w_class = WEIGHT_CLASS_BULKY
 	desc = "A mounted taser for light exosuits."
 	name = "\improper TS-12 \"Suppressor\" integrated taser"
@@ -40,7 +40,7 @@
 	fire_sound = 'sound/weapons/Taser.ogg'
 	module_class = VEHICLE_MODULE_CLASS_MICRO
 
-/obj/item/vehicle_module/legacy/weapon/ballistic/microshotgun
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/microshotgun
 	w_class = WEIGHT_CLASS_BULKY
 	desc = "A mounted combat shotgun with integrated ammo-lathe."
 	name = "\improper Remington C-12 \"Boomstick\""
@@ -57,7 +57,7 @@
 	projectile_energy_cost = 100
 	module_class = VEHICLE_MODULE_CLASS_MICRO
 
-/obj/item/vehicle_module/legacy/weapon/ballistic/microshotgun/Topic(href,href_list)
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/microshotgun/Topic(href,href_list)
 	..()
 	if(href_list["mode"])
 		mode = text2num(href_list["mode"])
@@ -72,10 +72,10 @@
 				occupant_message("Now firing slugs.")
 				projectile = /obj/projectile/bullet/shotgun
 
-/obj/item/vehicle_module/legacy/weapon/ballistic/microshotgun/get_equip_info()
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/microshotgun/get_equip_info()
 	return "[..()] \[<a href='?src=\ref[src];mode=0'>BS</a>|<a href='?src=\ref[src];mode=1'>BB</a>|<a href='?src=\ref[src];mode=2'>S</a>\]"
 
-/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/grenade/microflashbang
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/grenade/microflashbang
 	w_class = WEIGHT_CLASS_BULKY
 	desc = "A mounted grenade launcher for smaller mechs."
 	name = "\improper FP-20 mounted grenade launcher"
@@ -91,7 +91,7 @@
 //// UTILITY TOOLS BELOW ////
 /////////////////////////////
 
-/obj/item/vehicle_module/legacy/tool/drill/micro
+/obj/item/vehicle_module/lazy/legacy/tool/drill/micro
 	w_class = WEIGHT_CLASS_BULKY
 	name = "drill"
 	desc = "This is the drill that'll sorta poke holes in the heavens!"
@@ -102,7 +102,7 @@
 	damage_force = 15
 	module_class = VEHICLE_MODULE_CLASS_MICRO
 
-/obj/item/vehicle_module/legacy/tool/drill/micro/action(atom/target)
+/obj/item/vehicle_module/lazy/legacy/tool/drill/micro/action(atom/target)
 	if(!action_checks(target))
 		return
 	set_ready_state(0)
@@ -125,7 +125,7 @@
 					if(get_dir(chassis,M)&chassis.dir)
 						M.GetDrilled()
 				log_message("Drilled through [target]")
-				var/obj/item/vehicle_module/legacy/tool/micro/orescoop/ore_box = (locate(/obj/item/vehicle_module/legacy/tool/micro/orescoop) in chassis.equipment)
+				var/obj/item/vehicle_module/lazy/legacy/tool/micro/orescoop/ore_box = (locate(/obj/item/vehicle_module/lazy/legacy/tool/micro/orescoop) in chassis.equipment)
 				if(ore_box)
 					for(var/obj/item/stack/ore/ore in range(chassis,1))
 						if(get_dir(chassis,ore)&chassis.dir)
@@ -140,7 +140,7 @@
 	return 1
 
 
-/obj/item/vehicle_module/legacy/tool/micro/orescoop
+/obj/item/vehicle_module/lazy/legacy/tool/micro/orescoop
 	w_class = WEIGHT_CLASS_BULKY
 	name = "Mounted ore box"
 	desc = "A mounted ore scoop and hopper, for gathering ores."
@@ -151,7 +151,7 @@
 	module_class = VEHICLE_MODULE_CLASS_MICRO
 	var/orecapacity = 500
 
-/obj/item/vehicle_module/legacy/tool/micro/orescoop/action(atom/target)
+/obj/item/vehicle_module/lazy/legacy/tool/micro/orescoop/action(atom/target)
 	if(!action_checks(target))
 		return
 	set_ready_state(0)
@@ -171,7 +171,7 @@
 						ore.forceMove(src)
 	return 1
 
-/obj/item/vehicle_module/legacy/tool/micro/orescoop/Topic(href,href_list)
+/obj/item/vehicle_module/lazy/legacy/tool/micro/orescoop/Topic(href,href_list)
 	..()
 	if (href_list["empty_box"])
 		if(contents.len < 1)
@@ -182,10 +182,10 @@
 			O.loc = chassis.loc
 		occupant_message("Ore compartment emptied.")
 
-/obj/item/vehicle_module/legacy/tool/micro/orescoop/get_equip_info()
+/obj/item/vehicle_module/lazy/legacy/tool/micro/orescoop/get_equip_info()
 	return "[..()] <br /><a href='?src=\ref[src];empty_box=1'>Empty ore compartment</a>"
 
-/obj/item/vehicle_module/legacy/tool/orescoop/verb/empty_box() //so you can still get the ore out if someone detaches it from the mech
+/obj/item/vehicle_module/lazy/legacy/tool/orescoop/verb/empty_box() //so you can still get the ore out if someone detaches it from the mech
 	set name = "Empty Ore compartment"
 	set category = VERB_CATEGORY_OBJECT
 	set src in view(1)

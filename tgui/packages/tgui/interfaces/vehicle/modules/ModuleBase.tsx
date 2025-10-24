@@ -6,18 +6,19 @@
 import { PropsWithChildren, ReactNode, useState } from "react";
 import { Button, Dimmer, Section } from "tgui-core/components";
 
+import { useVehicleModule } from "../helpers";
 import { VehicleModuleData } from "../types";
 
-interface ModuleBaseProps {
-  data: VehicleModuleData;
-}
+
+interface ModuleBaseProps { }
 
 export const ModuleBase = (props: PropsWithChildren<ModuleBaseProps>) => {
+  const { act, data } = useVehicleModule<VehicleModuleData>();
   const [ejectModal, setEjectModal] = useState<ReactNode | null>(null);
   return (
     <>
       {ejectModal}
-      <Section title={props.data.name} fill buttons={(
+      <Section title={data.name} fill buttons={(
         <>
           <Button.Confirm confirmContent={null} confirmIcon="eject" icon="eject"
             onClick={() => setEjectModal((
@@ -25,7 +26,7 @@ export const ModuleBase = (props: PropsWithChildren<ModuleBaseProps>) => {
                 Test
               </Dimmer>
             ))} />
-          <Button icon="question" tooltip={props.data.desc} />
+          <Button icon="question" tooltip={data.desc} />
         </>
       )}>
         {props.children}

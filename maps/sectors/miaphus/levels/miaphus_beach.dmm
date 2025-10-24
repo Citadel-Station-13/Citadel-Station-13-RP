@@ -3090,8 +3090,8 @@
 /area/sector/miaphus/beach/jungle)
 "pr" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/vehicle_module/legacy/weapon/ballistic/scattershot,
-/obj/item/vehicle_module/legacy/weapon/ballistic/cannon/weak,
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/scattershot,
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/cannon/weak,
 /obj/machinery/cell_charger,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/miaphus/sdf)

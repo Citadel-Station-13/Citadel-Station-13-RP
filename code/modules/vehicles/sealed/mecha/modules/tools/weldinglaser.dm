@@ -1,4 +1,4 @@
-/obj/item/vehicle_module/legacy/tool/powertool/welding
+/obj/item/vehicle_module/lazy/legacy/tool/powertool/welding
 	name = "welding laser"
 	desc = "An exosuit-mounted welding laser."
 	icon_state = "mecha_laser-rig"
@@ -9,11 +9,11 @@
 	ready_sound = 'sound/items/Ratchet.ogg'
 	tooltype = /obj/item/weldingtool/electric/mounted/exosuit
 
-/obj/item/vehicle_module/legacy/tool/powertool/welding/Initialize(mapload)
+/obj/item/vehicle_module/lazy/legacy/tool/powertool/welding/Initialize(mapload)
 	. = ..()
 	my_tool.reach = 7
 
-/obj/item/vehicle_module/legacy/tool/powertool/welding/action(var/atom/target)
+/obj/item/vehicle_module/lazy/legacy/tool/powertool/welding/action(var/atom/target)
 	..()
 
 	var/datum/beam_legacy/weld_beam = null

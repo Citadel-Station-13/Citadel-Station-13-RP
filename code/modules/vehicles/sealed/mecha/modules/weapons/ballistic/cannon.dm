@@ -1,5 +1,5 @@
 
-/obj/item/vehicle_module/legacy/weapon/ballistic/cannon
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/cannon
 	name = "8.8cm KwK 47"
 	desc = "<i>Precision German engineering!</i>" // Why would you ever take this off the mech, anyway?
 	icon_state = "mecha_uac2"
@@ -22,7 +22,7 @@
 		return
 	explosion(target, 0, 0, 2, 4)
 
-/obj/item/vehicle_module/legacy/weapon/ballistic/cannon/weak
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/cannon/weak
 	name = "8.8 cm KwK 36"
 	equip_cooldown = 120 // 12 seconds.
 	projectile = /obj/projectile/bullet/cannon/weak

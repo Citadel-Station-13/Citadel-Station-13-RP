@@ -62,7 +62,7 @@
 /datum/uplink_item/item/visible_weapons/riggedlaser
 	name = "Exosuit Rigged Laser"
 	item_cost = 60
-	path = /obj/item/vehicle_module/legacy/weapon/energy/riggedlaser
+	path = /obj/item/vehicle_module/lazy/legacy/weapon/energy/riggedlaser
 
 /datum/uplink_item/item/visible_weapons/revolver
 	name = "Revolver"

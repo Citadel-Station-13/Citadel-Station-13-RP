@@ -7,7 +7,6 @@
 #define VEHICLE_MODULE_SLOT_HULL "hull"
 #define VEHICLE_MODULE_SLOT_WEAPON "weapon"
 #define VEHICLE_MODULE_SLOT_UTILITY "utility"
-#define VEHICLE_MODULE_SLOT_UNIVERSAL "universal"
 #define VEHICLE_MODULE_SLOT_SPECIAL "special"
 
 //* Module Classes *//

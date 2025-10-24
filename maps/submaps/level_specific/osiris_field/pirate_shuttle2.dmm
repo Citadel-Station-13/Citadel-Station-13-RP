@@ -193,7 +193,7 @@
 /area/submap/osiris_field/pirate_wreck3)
 "jY" = (
 /obj/structure/table/rack/shelf,
-/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/grenade/frag,
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/grenade/frag,
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/osiris_field/pirate_wreck3)
 "kf" = (

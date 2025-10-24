@@ -1,4 +1,4 @@
-/obj/item/vehicle_module/legacy/tool/jetpack
+/obj/item/vehicle_module/lazy/legacy/tool/jetpack
 	name = "ion jetpack"
 	desc = "Using directed ion bursts and cunning solar wind reflection technique, this device enables controlled space flight."
 	icon_state = "mecha_jetpack"
@@ -7,43 +7,43 @@
 	var/wait = 0
 	var/datum/effect_system/ion_trail_follow/ion_trail
 
-/obj/item/vehicle_module/legacy/tool/jetpack/can_attach(obj/vehicle/sealed/mecha/M as obj)
+/obj/item/vehicle_module/lazy/legacy/tool/jetpack/can_attach(obj/vehicle/sealed/mecha/M as obj)
 	if(!(locate(src.type) in M.equipment) && !M.proc_res["dyndomove"])
 		return ..()
 
-/obj/item/vehicle_module/legacy/tool/jetpack/detach()
+/obj/item/vehicle_module/lazy/legacy/tool/jetpack/detach()
 	..()
 	chassis.proc_res["dyndomove"] = null
 	return
 
-/obj/item/vehicle_module/legacy/tool/jetpack/attach(obj/vehicle/sealed/mecha/M as obj)
+/obj/item/vehicle_module/lazy/legacy/tool/jetpack/attach(obj/vehicle/sealed/mecha/M as obj)
 	..()
 	if(!ion_trail)
 		ion_trail = new
 	ion_trail.set_up(chassis)
 	return
 
-/obj/item/vehicle_module/legacy/tool/jetpack/proc/toggle()
+/obj/item/vehicle_module/lazy/legacy/tool/jetpack/proc/toggle()
 	if(!chassis)
 		return
 	!equip_ready? turn_off() : turn_on()
 	return equip_ready
 
-/obj/item/vehicle_module/legacy/tool/jetpack/proc/turn_on()
+/obj/item/vehicle_module/lazy/legacy/tool/jetpack/proc/turn_on()
 	set_ready_state(0)
 	chassis.proc_res["dyndomove"] = src
 	ion_trail.start()
 	occupant_message("Activated")
 	log_message("Activated")
 
-/obj/item/vehicle_module/legacy/tool/jetpack/proc/turn_off()
+/obj/item/vehicle_module/lazy/legacy/tool/jetpack/proc/turn_off()
 	set_ready_state(1)
 	chassis.proc_res["dyndomove"] = null
 	ion_trail.stop()
 	occupant_message("Deactivated")
 	log_message("Deactivated")
 
-/obj/item/vehicle_module/legacy/tool/jetpack/proc/dyndomove(direction)
+/obj/item/vehicle_module/lazy/legacy/tool/jetpack/proc/dyndomove(direction)
 	if(!action_checks())
 		return chassis.dyndomove(direction)
 	var/move_result = 0
@@ -69,7 +69,7 @@
 		return 1
 	return 0
 
-/obj/item/vehicle_module/legacy/tool/jetpack/action_checks()
+/obj/item/vehicle_module/lazy/legacy/tool/jetpack/action_checks()
 	if(equip_ready || wait)
 		return 0
 	if(energy_drain && !chassis.has_charge(energy_drain))
@@ -78,16 +78,16 @@
 		return 0
 	return 1
 
-/obj/item/vehicle_module/legacy/tool/jetpack/get_equip_info()
+/obj/item/vehicle_module/lazy/legacy/tool/jetpack/get_equip_info()
 	if(!chassis) return
 	return "<span style=\"color:[equip_ready?"#0f0":"#f00"];\">*</span>&nbsp;[src.name] \[<a href=\"?src=\ref[src];toggle=1\">Toggle</a>\]"
 
-/obj/item/vehicle_module/legacy/tool/jetpack/Topic(href,href_list)
+/obj/item/vehicle_module/lazy/legacy/tool/jetpack/Topic(href,href_list)
 	..()
 	if(href_list["toggle"])
 		toggle()
 
-/obj/item/vehicle_module/legacy/tool/jetpack/do_after_cooldown()
+/obj/item/vehicle_module/lazy/legacy/tool/jetpack/do_after_cooldown()
 	sleep(equip_cooldown)
 	wait = 0
 	return 1

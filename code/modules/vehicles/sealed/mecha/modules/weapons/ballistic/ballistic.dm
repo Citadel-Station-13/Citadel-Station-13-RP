@@ -1,11 +1,11 @@
-/obj/item/vehicle_module/legacy/weapon/ballistic
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic
 	name = "general ballisic weapon"
 	var/projectile_energy_cost
 
-/obj/item/vehicle_module/legacy/weapon/ballistic/get_equip_info()
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/get_equip_info()
 	return "[..()]\[[src.projectiles]\][(src.projectiles < initial(src.projectiles))?" - <a href='?src=\ref[src];rearm=1'>Rearm</a>":null]"
 
-/obj/item/vehicle_module/legacy/weapon/ballistic/proc/rearm()
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/proc/rearm()
 	if(projectiles < initial(projectiles))
 		var/projectiles_to_add = initial(projectiles) - projectiles
 		while(chassis.get_charge() >= projectile_energy_cost && projectiles_to_add)
@@ -16,7 +16,7 @@
 	log_message("Rearmed [src.name].")
 	return
 
-/obj/item/vehicle_module/legacy/weapon/ballistic/Topic(href, href_list)
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/Topic(href, href_list)
 	..()
 	if (href_list["rearm"])
 		src.rearm()

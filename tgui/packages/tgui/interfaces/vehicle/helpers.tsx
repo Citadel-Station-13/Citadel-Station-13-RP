@@ -3,15 +3,15 @@
  * @license MIT
  */
 
-import { ReactNode } from "react";
+import { createContext, ReactNode, useContext } from "react";
 
-import { useBackend } from "../../backend";
+import { ActFunctionType, useBackend } from "../../backend";
 import { VehicleComponentRef, VehicleModuleRef } from "./types";
 
 const requireVehicleComponent = require.context("./components");
 const requireVehicleModule = require.context("./modules");
 
-export function useVehicleComponent<D, T = ReactNode>(ref: VehicleComponentRef | null, func: (data: D | null) => T): T {
+export function withVehicleComponentData<D, T = ReactNode>(ref: VehicleComponentRef | null, func: (data: D | null) => T): T {
   let { nestedData } = useBackend();
   // TODO: better error handling
   if (ref === null) {
@@ -20,23 +20,41 @@ export function useVehicleComponent<D, T = ReactNode>(ref: VehicleComponentRef |
   return func(nestedData[ref] as D | null);
 }
 
-export function useVehicleModule<D, T = ReactNode>(ref: VehicleModuleRef | null, func: (data: D | null) => T): T {
+export function withVehicleModuleData<D, T = ReactNode>(ref: VehicleModuleRef | null, func: (data: D | null) => T): T {
   let { nestedData } = useBackend();
   // TODO: better error handling
   if (ref === null) {
     return func(null);
   }
   return func(nestedData[ref] as D | null);
+}
+
+export const VehicleModuleContext = createContext<{ ref: VehicleModuleRef | null }>({ ref: null });
+export const VehicleComponentContext = createContext<{ ref: VehicleComponentRef | null }>({ ref: null });
+
+/**
+ * Gets an act function / data for a given vehicle part interface.
+ */
+export function useVehicleComponent<Data>(): { data: Data, act: ActFunctionType } {
+  const ctx = useContext(VehicleComponentContext);
+}
+
+/**
+ * Gets an act function / data for a given vehicle part interface.
+ */
+export function useVehicleModule<Data>(): { data: Data, act: ActFunctionType } {
+  const ctx = useContext(VehicleModuleContext);
+
 }
 
 export const VehicleComponent = (props: {
   ref: VehicleComponentRef;
 }) => {
-  return useVehicleComponent(props.ref, (d) => {
+  return withVehicleComponentData(props.ref, (d) => {
     return (
-      <>
+      <VehicleComponentContext value={{ ref: props.ref }}>
         Test
-      </>
+      </VehicleComponentContext>
     );
   });
 };
@@ -44,11 +62,11 @@ export const VehicleComponent = (props: {
 export const VehicleModule = (props: {
   ref: VehicleModuleRef;
 }) => {
-  return useVehicleModule(props.ref, (d) => {
+  return withVehicleModuleData(props.ref, (d) => {
     return (
-      <>
+      <VehicleModuleContext value={{ ref: props.ref }}>
         Test
-      </>
+      </VehicleModuleContext>
     );
   });
 };

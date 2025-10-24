@@ -4,7 +4,7 @@
 	icon_state = "firefighter"
 	initial_icon = "firefighter"
 	max_temperature = 65000
-	integrity = 250
+	integrity = 1.35 * /obj/vehicle/sealed/working/ripley::integrity
+	integrity_max = 1.35 * /obj/vehicle/sealed/working/ripley::integrity_max
 	lights_power = 8
-	damage_absorption = list("fire"=0.5,"bullet"=0.8,"bomb"=0.5)
 	wreckage = /obj/effect/decal/mecha_wreckage/ripley/firefighter

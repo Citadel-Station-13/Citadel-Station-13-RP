@@ -11,7 +11,6 @@
 		VEHICLE_MODULE_SLOT_HULL = 3,
 		VEHICLE_MODULE_SLOT_WEAPON = 3,
 		VEHICLE_MODULE_SLOT_UTILITY = 4,
-		VEHICLE_MODULE_SLOT_UNIVERSAL = 3,
 		VEHICLE_MODULE_SLOT_SPECIAL = 1,
 	)
 
@@ -27,8 +26,8 @@
 
 /obj/vehicle/sealed/mecha/combat/fighter/duke/equipped
 	modules = list(
-		/obj/item/vehicle_module/legacy/weapon/energy/laser,
-		/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/explosive,
+		/obj/item/vehicle_module/lazy/legacy/weapon/energy/laser,
+		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/explosive,
 	)
 
 /obj/vehicle/sealed/mecha/combat/fighter/duke/deep_blue
@@ -40,8 +39,8 @@
 
 /obj/vehicle/sealed/mecha/combat/fighter/duke/deep_blue/equipped
 	modules = list(
-		/obj/item/vehicle_module/legacy/weapon/energy/laser,
-		/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/explosive,
+		/obj/item/vehicle_module/lazy/legacy/weapon/energy/laser,
+		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/explosive,
 	)
 
 /obj/vehicle/sealed/mecha/combat/fighter/duke/clockwork
@@ -53,8 +52,8 @@
 
 /obj/vehicle/sealed/mecha/combat/fighter/duke/clockwork/equipped
 	modules = list(
-		/obj/item/vehicle_module/legacy/weapon/energy/laser,
-		/obj/item/vehicle_module/legacy/weapon/ballistic/missile_rack/explosive,
+		/obj/item/vehicle_module/lazy/legacy/weapon/energy/laser,
+		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/explosive,
 	)
 
 /obj/effect/decal/mecha_wreckage/duke

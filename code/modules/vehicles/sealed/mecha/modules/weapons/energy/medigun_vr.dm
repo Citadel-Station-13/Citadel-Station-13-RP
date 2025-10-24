@@ -1,4 +1,4 @@
-/obj/item/vehicle_module/legacy/weapon/energy/medigun
+/obj/item/vehicle_module/lazy/legacy/weapon/energy/medigun
 	equip_cooldown = 6
 	name = "\improper BL-3 \"Phoenix\" directed restoration system"
 	desc = "The BL-3 'Phoenix' is a portable medical system used to treat external injuries from afar."

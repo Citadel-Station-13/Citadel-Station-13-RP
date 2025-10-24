@@ -6412,9 +6412,9 @@
 /area/security/warden)
 "epK" = (
 /obj/structure/table/reinforced,
-/obj/item/vehicle_module/legacy/weapon/energy/microtaser,
-/obj/item/vehicle_module/legacy/weapon/energy/taser,
-/obj/item/vehicle_module/legacy/weapon/energy/taser,
+/obj/item/vehicle_module/lazy/legacy/weapon/energy/microtaser,
+/obj/item/vehicle_module/lazy/legacy/weapon/energy/taser,
+/obj/item/vehicle_module/lazy/legacy/weapon/energy/taser,
 /turf/simulated/floor/tiled,
 /area/security/eva)
 "eqO" = (
@@ -14889,9 +14889,9 @@
 "kfc" = (
 /obj/machinery/camera/network/prison,
 /obj/structure/table/reinforced,
-/obj/item/vehicle_module/legacy/weapon/energy/phase,
-/obj/item/vehicle_module/legacy/weapon/energy/phase,
-/obj/item/vehicle_module/legacy/weapon/energy/phase,
+/obj/item/vehicle_module/lazy/legacy/weapon/energy/phase,
+/obj/item/vehicle_module/lazy/legacy/weapon/energy/phase,
+/obj/item/vehicle_module/lazy/legacy/weapon/energy/phase,
 /turf/simulated/floor/tiled,
 /area/security/eva)
 "kfh" = (

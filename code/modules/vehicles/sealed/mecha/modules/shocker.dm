@@ -2,7 +2,7 @@
 //Defensive//
 //////////////
 
-/obj/item/vehicle_module/legacy/shocker
+/obj/item/vehicle_module/lazy/legacy/shocker
 	name = "exosuit electrifier"
 	desc = "A device to electrify the external portions of a mecha in order to increase its defensive capabilities."
 	icon_state = "mecha_coil"
@@ -15,7 +15,7 @@
 
 	module_slot = VEHICLE_MODULE_SLOT_HULL
 
-/obj/item/vehicle_module/legacy/shocker/handle_melee_contact(var/obj/item/W, var/mob/living/user, var/inc_damage = null)
+/obj/item/vehicle_module/lazy/legacy/shocker/handle_melee_contact(var/obj/item/W, var/mob/living/user, var/inc_damage = null)
 	if(!action_checks(user) || !active)
 		return
 

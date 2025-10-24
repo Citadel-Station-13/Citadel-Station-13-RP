@@ -578,7 +578,7 @@
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/dark)
 "cE" = (
-/obj/item/vehicle_module/legacy/tool/drill/diamonddrill,
+/obj/item/vehicle_module/lazy/legacy/tool/drill/diamonddrill,
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/dark)
 "cG" = (
@@ -2068,7 +2068,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/awaymission/snow_outpost/dark)
 "hV" = (
-/obj/item/vehicle_module/legacy/tool/drill/diamonddrill,
+/obj/item/vehicle_module/lazy/legacy/tool/drill/diamonddrill,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/awaymission/snow_outpost/dark)
 "hW" = (

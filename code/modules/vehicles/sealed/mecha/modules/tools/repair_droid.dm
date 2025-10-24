@@ -1,4 +1,4 @@
-/obj/item/vehicle_module/legacy/repair_droid
+/obj/item/vehicle_module/lazy/legacy/repair_droid
 	name = "repair droid"
 	desc = "Automated repair droid. Scans exosuit for damage and repairs it. Can fix almost any type of external or internal damage."
 	icon_state = "repair_droid"
@@ -15,44 +15,44 @@
 
 	var/active = FALSE
 
-/obj/item/vehicle_module/legacy/repair_droid/Destroy()
+/obj/item/vehicle_module/lazy/legacy/repair_droid/Destroy()
 	deactivate()
 	return ..()
 
-/obj/item/vehicle_module/legacy/repair_droid/add_equip_overlay(obj/vehicle/sealed/mecha/M as obj)
+/obj/item/vehicle_module/lazy/legacy/repair_droid/add_equip_overlay(obj/vehicle/sealed/mecha/M as obj)
 	..()
 	if(!droid_overlay)
 		droid_overlay = new(src.icon, icon_state = "repair_droid")
 	M.add_overlay(droid_overlay)
 	return
 
-/obj/item/vehicle_module/legacy/repair_droid/destroy()
+/obj/item/vehicle_module/lazy/legacy/repair_droid/destroy()
 	..()
 
-/obj/item/vehicle_module/legacy/repair_droid/detach()
+/obj/item/vehicle_module/lazy/legacy/repair_droid/detach()
 	chassis.cut_overlay(droid_overlay)
 	deactivate()
 	..()
 
-/obj/item/vehicle_module/legacy/repair_droid/proc/activate()
+/obj/item/vehicle_module/lazy/legacy/repair_droid/proc/activate()
 	if(active)
 		return
 	active = TRUE
 	START_PROCESSING(SSobj, src)
 	#warn icon shit should go in activate/deactivate
 
-/obj/item/vehicle_module/legacy/repair_droid/proc/deactivate()
+/obj/item/vehicle_module/lazy/legacy/repair_droid/proc/deactivate()
 	if(!active)
 		return
 	active = FALSE
 	STOP_PROCESSING(SSobj, src)
 
-/obj/item/vehicle_module/legacy/repair_droid/get_equip_info()
+/obj/item/vehicle_module/lazy/legacy/repair_droid/get_equip_info()
 	if(!chassis)
 		return
 	return "<span style=\"color:[equip_ready?"#0f0":"#f00"];\">*</span>&nbsp;[src.name] - <a href='?src=\ref[src];toggle_repairs=1'>[pr_repair_droid.active()?"Dea":"A"]ctivate</a>"
 
-/obj/item/vehicle_module/legacy/repair_droid/Topic(href, href_list)
+/obj/item/vehicle_module/lazy/legacy/repair_droid/Topic(href, href_list)
 	..()
 	if(href_list["toggle_repairs"])
 		chassis.cut_overlay(droid_overlay)
@@ -68,8 +68,8 @@
 		chassis.add_overlay(droid_overlay)
 		send_byjax(chassis.occupant_legacy,"exosuit.browser","\ref[src]",src.get_equip_info())
 
-/obj/item/vehicle_module/legacy/repair_droid/process(delta_time)
-	var/obj/item/vehicle_module/legacy/repair_droid/RD = src
+/obj/item/vehicle_module/lazy/legacy/repair_droid/process(delta_time)
+	var/obj/item/vehicle_module/lazy/legacy/repair_droid/RD = src
 	if(!RD.chassis)
 		deactivate()
 		RD.set_ready_state(1)
