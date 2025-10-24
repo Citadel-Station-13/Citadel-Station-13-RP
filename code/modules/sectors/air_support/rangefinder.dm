@@ -106,12 +106,14 @@
 
 /obj/item/rangefinder/on_attack_self(datum/event_args/actor/e_args)
 	. = ..()
-	if(.)
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
 	#warn zoom mode
 
 /obj/item/rangefinder/proc/create_laser_designator_target(atom/target)
-	#warn impl
+	if(active_laser_target)
+		destroy_laser_designator_target()
+	active_laser_target = new(target, laser_weapons_guidance, laser_visible)
 
 /obj/item/rangefinder/proc/destroy_laser_designator_target()
 	if(!QDELETED(active_laser_target))
@@ -120,12 +122,6 @@
 
 /obj/item/rangefinder/proc/on_laser_designator_target_deleted(datum/source)
 	destroy_laser_designator_target()
-
-/obj/item/rangefinder/on_attack_self(datum/event_args/actor/e_args)
-	. = ..()
-	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
-		return
-	#warn impl
 
 /obj/item/rangefinder/on_inv_equipped(mob/wearer, datum/inventory/inventory, slot_id_or_index, inv_op_flags, datum/event_args/actor/actor)
 	..()

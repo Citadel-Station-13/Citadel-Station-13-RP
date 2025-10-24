@@ -850,6 +850,7 @@
 #include "code\datums\components\atoms\latently_radioactive.dm"
 #include "code\datums\components\atoms\radiation_listener.dm"
 #include "code\datums\components\atoms\radioactive.dm"
+#include "code\datums\components\clients\client_face_cursor.dm"
 #include "code\datums\components\clients\client_freezoom_handler.dm"
 #include "code\datums\components\crafting\crafting.dm"
 #include "code\datums\components\crafting\guncrafting.dm"
