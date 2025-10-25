@@ -17,8 +17,6 @@
 /area/sector/surt/central/unexplored)
 "bH" = (
 /obj/machinery/hyperpad/centre{
-	map_pad_id = "lavaland_away";
-	map_pad_link_id = "lavaland_station";
 	newcolor = "#fcba03"
 	},
 /turf/simulated/floor/tiled/techmaint,
