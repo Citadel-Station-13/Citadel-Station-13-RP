@@ -100,6 +100,24 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 	for(var/obj/item/vehicle_module/module as anything in modules)
 		. += "It has a [icon2html(module, world)] [module] installed."
 
+/obj/vehicle/drop_products(method, atom/where)
+	..()
+	drop_vehicle_contents(where)
+
+/**
+ * Called to drop everything in vehicle.
+ */
+/obj/vehicle/proc/drop_vehicle_contents(atom/where)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+	on_drop_vehicle_contents(where || drop_location())
+
+/**
+ * Drop vehicle stuff here.
+ */
+/obj/vehicle/proc/on_drop_vehicle_contents(atom/where)
+	return
+
 //* Actions *//
 
 /obj/vehicle/proc/initialize_occupant_actions()
@@ -275,3 +293,13 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
  */
 /obj/vehicle/proc/occupant_removed(mob/removing, datum/event_args/actor/actor, control_flags, silent, suppressed)
 	SHOULD_CALL_PARENT(TRUE)
+
+//* Weight Handling *//
+
+#warn impl
+
+/obj/vehicle/on_contents_weight_change(atom/movable/entity, old_weight, new_weight)
+	..()
+
+/obj/vehicle/retally_containing_weight()
+	..()

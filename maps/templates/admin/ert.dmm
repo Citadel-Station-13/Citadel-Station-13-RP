@@ -836,13 +836,13 @@
 /area/ship/ert/mech_bay)
 "hk" = (
 /obj/structure/table/rack/steel,
-/obj/item/vehicle_module/lazy/legacy/combat_shield,
-/obj/item/vehicle_module/lazy/legacy/combat_shield,
-/obj/item/vehicle_module/lazy/legacy/omni_shield,
-/obj/item/vehicle_module/lazy/legacy/repair_droid,
-/obj/item/vehicle_module/lazy/legacy/repair_droid,
-/obj/item/vehicle_module/lazy/legacy/repair_droid,
-/obj/item/vehicle_module/lazy/legacy/repair_droid,
+/obj/item/vehicle_module/shield_projector/linear,
+/obj/item/vehicle_module/shield_projector/linear,
+/obj/item/vehicle_module/shield_projector/omnidirectional,
+/obj/item/vehicle_module/toggled/repair_droid,
+/obj/item/vehicle_module/toggled/repair_droid,
+/obj/item/vehicle_module/toggled/repair_droid,
+/obj/item/vehicle_module/toggled/repair_droid,
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/mech_bay)

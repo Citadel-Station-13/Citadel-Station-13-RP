@@ -105,7 +105,7 @@
 	modules = list(
 		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/scattershot,
 		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/grenade/clusterbang,
-		/obj/item/vehicle_module/lazy/legacy/tesla_energy_relay,
+		/obj/item/vehicle_module/toggled/energy_relay,
 		/obj/item/vehicle_module/lazy/legacy/teleporter,
 	)
 

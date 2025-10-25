@@ -137,9 +137,12 @@
 	var/encumbrance = ITEM_ENCUMBRANCE_BASELINE
 	/// registered encumbrance - null if not in inventory
 	var/encumbrance_registered
-	/// carry weight in kgs. this might be generalized later so KEEP IT REALISTIC.
+	/// weight in kilograms
+	///
+	/// TODO: Put this at /atom/movable level. It's gamer time.
+	/// * Used for more than just carry weight; keep it realistic for the entity.
 	var/weight = ITEM_WEIGHT_BASELINE
-	/// registered carry weight - null if not in inventory.
+	/// registered weight - null if not in inventory.
 	var/weight_registered
 	/// flat encumbrance - while worn, you are treated as at **least** this encumbered
 	/// e.g. if someone is wearing a flat 50 encumbrance item, but their regular encumbrance tally is only 45, they still have 50 total.

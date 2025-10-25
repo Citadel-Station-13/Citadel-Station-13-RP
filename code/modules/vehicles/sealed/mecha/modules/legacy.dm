@@ -20,8 +20,6 @@
 #warn hook 'chassis'
 #warn impl all
 
-
-
 /obj/item/vehicle_module/lazy/legacy/proc/do_after_cooldown(target=1)
 	sleep(equip_cooldown)
 	set_ready_state(1)
@@ -30,10 +28,6 @@
 	if(target && chassis)
 		return TRUE
 	return FALSE
-
-/obj/item/vehicle_module/lazy/legacy/examine(mob/user, dist)
-	. = ..()
-	. += SPAN_NOTICE("[src] will fill [equip_type?"a [equip_type]":"any"] slot.")
 
 /obj/item/vehicle_module/lazy/legacy/proc/add_equip_overlay(obj/vehicle/sealed/mecha/M as obj)
 	return

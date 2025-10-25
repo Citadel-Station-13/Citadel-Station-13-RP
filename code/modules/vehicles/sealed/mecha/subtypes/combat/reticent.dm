@@ -60,7 +60,7 @@
 	modules = list(
 		/obj/item/vehicle_module/lazy/legacy/weapon/whisperblade,
 		/obj/item/vehicle_module/lazy/legacy/weapon/infernoblade,
-		/obj/item/vehicle_module/lazy/legacy/omni_shield/reticence,
+		/obj/item/vehicle_module/shield_projector/omnidirectional/reticence,
 		/obj/item/vehicle_module/lazy/legacy/cloak,
 	)
 

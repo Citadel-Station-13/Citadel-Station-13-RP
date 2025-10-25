@@ -18,8 +18,10 @@
 	reagents.add_reagent("firefoam", max_water)
 
 /obj/item/vehicle_module/lazy/legacy/tool/extinguisher/action(atom/target) //copypasted from extinguisher. TODO: Rewrite from scratch.
-	if(!action_checks(target) || get_dist(chassis, target)>3) return
-	if(get_dist(chassis, target)>2) return
+	if(!action_checks(target) || get_dist(chassis, target) > 3)
+		return
+	if(get_dist(chassis, target) > 2)
+		return
 	set_ready_state(0)
 	if(do_after_cooldown(target))
 		if( istype(target, /obj/structure/reagent_dispensers) && get_dist(chassis,target) <= 1)
@@ -63,8 +65,6 @@
 				W.set_up(my_target)
 		return TRUE
 
-/obj/item/vehicle_module/lazy/legacy/tool/extinguisher/get_equip_info()
-	return "[..()] \[[src.reagents.total_volume]\]"
-
-/obj/item/vehicle_module/lazy/legacy/tool/extinguisher/on_reagent_change()
-	return
+/obj/item/vehicle_module/lazy/legacy/tool/extinguisher/render_ui()
+	..()
+	l_ui_html("Volume Left", "[reagents.total_volume]")

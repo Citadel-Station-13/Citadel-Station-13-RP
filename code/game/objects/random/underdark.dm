@@ -176,9 +176,9 @@
 	return pick(
 				prob(12);list(/obj/item/vehicle_module/lazy/legacy/tool/drill),
 				prob(10);list(/obj/item/vehicle_module/lazy/legacy/tool/hydraulic_clamp),
-				prob(8);list(/obj/item/vehicle_module/lazy/legacy/generator),
+				prob(8);list(/obj/item/vehicle_module/lazy/legacy/simple_generator/phoron),
 				// prob(7);list(/obj/item/vehicle_module/lazy/legacy/ballistic/scattershot/rigged),
-				prob(6);list(/obj/item/vehicle_module/lazy/legacy/repair_droid),
+				prob(6);list(/obj/item/vehicle_module/toggled/repair_droid),
 				prob(3);list(/obj/item/vehicle_module/lazy/legacy/gravcatapult),
 				// prob(2);list(/obj/item/vehicle_module/lazy/legacy/energy/riggedlaser),
 				// prob(2);list(/obj/item/vehicle_module/lazy/legacy/energy/flamer/rigged),

@@ -39,17 +39,6 @@
 		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/cannon/hag_30,
 	)
 
-/obj/vehicle/sealed/mecha/combat/quasimodo/get_commands()
-	var/output = {"<div class='wr'>
-						<div class='header'>Special</div>
-						<div class='links'>
-						<a href='?src=\ref[src];toggle_zoom=1'>Toggle zoom mode</a><br>
-						</div>
-						</div>
-						"}
-	output += ..()
-	return output
-
 /obj/effect/decal/mecha_wreckage/quasimodo
 	name = "Quasimodo wreckage"
 	desc = "You thought you were invincible. But you guessed wrong. Have fun explaining this to your superiors."

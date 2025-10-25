@@ -36,11 +36,11 @@
 					if(get_dir(chassis,M)&chassis.dir)
 						M.GetDrilled()
 				log_message("Drilled through [target]")
-				if(locate(/obj/item/vehicle_module/lazy/legacy/tool/hydraulic_clamp) in chassis.equipment)
-					var/obj/structure/ore_box/ore_box = locate(/obj/structure/ore_box) in chassis:cargo
+				if(locate(/obj/item/vehicle_module/lazy/legacy/tool/hydraulic_clamp) in chassis.modules)
+					var/obj/structure/ore_box/ore_box = locate(/obj/structure/ore_box) in chassis.cargo_held
 					if(ore_box)
 						for(var/obj/item/stack/ore/ore in range(chassis,1))
-							if(get_dir(chassis,ore)&chassis.dir)
+							if(get_dir(chassis,ore) & chassis.dir)
 								ore.forceMove(ore_box)
 			else if(isliving(target))
 				drill_mob(target, chassis.occupant_legacy)
@@ -113,8 +113,8 @@
 				else
 					M.GetDrilled()
 					log_message("Bored through [target]")
-				if(locate(/obj/item/vehicle_module/lazy/legacy/tool/hydraulic_clamp) in chassis.equipment)
-					var/obj/structure/ore_box/ore_box = locate(/obj/structure/ore_box) in chassis:cargo
+				if(locate(/obj/item/vehicle_module/lazy/legacy/tool/hydraulic_clamp) in chassis.modules)
+					var/obj/structure/ore_box/ore_box = locate(/obj/structure/ore_box) in chassis.cargo_held
 					if(ore_box)
 						for(var/obj/item/stack/ore/ore in range(chassis,1))
 							if(get_dir(chassis,ore)&chassis.dir)

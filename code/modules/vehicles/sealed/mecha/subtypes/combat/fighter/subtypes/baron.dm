@@ -19,7 +19,7 @@
 /obj/vehicle/sealed/mecha/combat/fighter/baron/equipped
 	modules = list(
 		/obj/item/vehicle_module/lazy/legacy/weapon/energy/laser,
-		/obj/item/vehicle_module/lazy/legacy/omni_shield,
+		/obj/item/vehicle_module/shield_projector/omnidirectional,
 	)
 
 /obj/effect/decal/mecha_wreckage/baron

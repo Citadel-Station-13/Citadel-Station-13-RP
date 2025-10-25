@@ -764,7 +764,7 @@
 /obj/structure/closet/crate{
 	name = "Gold Crate"
 	},
-/obj/item/vehicle_module/lazy/legacy/repair_droid,
+/obj/item/vehicle_module/toggled/repair_droid,
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/cruiser)
 "el" = (

@@ -1,7 +1,20 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
+/**
+ * * integrity failure is full failure.
+ */
 /obj/item/vehicle_module
+	name = "vehicle module"
+	desc = "Presumably something you attach to a vehicle. What is this?"
+	#warn sprite
+
+	integrity = 200
+	integrity_max = 200
+	integrity_failure = 100
+
+	weight = 10
+
 	//* Module *//
 	/// currently active chassis
 	var/obj/vehicle/vehicle
@@ -22,6 +35,10 @@
 	/// UI component key when being rendered
 	/// * Must route to a valid component in vehicle UI routing. Check TGUI folder for more info.
 	var/ui_component = "Trivial"
+
+/obj/item/vehicle_module/examine(mob/user, dist)
+	. = ..()
+	. += SPAN_NOTICE("[src] will [module_slot ? "the [module_slot]" : "any"] slot.")
 
 /obj/item/vehicle_module/proc/fits_on_vehicle(obj/vehicle/vehicle, vehicle_opinion, vehicle_is_full, datum/event_args/actor/actor, silent)
 	return vehicle_opinion && !vehicle_is_full
@@ -55,7 +72,12 @@
  * * If we are not mounted, this always fails.
  */
 /obj/item/vehicle_module/proc/sufficiently_adjacent(atom/entity)
-	return chassis?.sufficiently_adjacent(entity)
+	return vehicle?.sufficiently_adjacent(entity)
+
+/**
+ * standard do-after wrapper for vehicles.
+ */
+/obj/item/vehicle_module/proc/vehicle_do_after()
 
 #warn this
 /obj/item/vehicle_module/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
@@ -65,6 +87,15 @@
 	return receive_using_item_on(using, clickchain, clickchain_flags)
 
 //* Interactions *//
+
+/**
+ * Checks if we're interested in handling a click. This is used so the user
+ * can radial for which module wants to receive it.
+ * * This doesn't mean a user can't use an item if this returns FALSE! The normal `using_item_on` can still be used.
+ */
+#warn hook
+/obj/item/vehicle_module/proc/interested_using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags, atom/movable/from_mounted_on)
+	return FALSE
 
 #warn this
 /**

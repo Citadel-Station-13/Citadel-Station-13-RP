@@ -57,7 +57,7 @@
 /obj/vehicle/sealed/mecha/combat/fighter/gunpod/equipped
 	modules = list(
 		/obj/item/vehicle_module/lazy/legacy/teleporter,
-		/obj/item/vehicle_module/lazy/legacy/tesla_energy_relay,
+		/obj/item/vehicle_module/toggled/energy_relay,
 	)
 
 /obj/effect/decal/mecha_wreckage/gunpod

@@ -732,31 +732,6 @@
 /atom/proc/update_atom_color()
 	CRASH("base proc hit")
 
-//* Deletions *//
-
-// /**
-//  * Called when something in our contents is being Destroy()'d, before they get moved.
-//  */
-// /atom/proc/handle_contents_del(atom/movable/deleting)
-// 	return
-
-//* Inventory *//
-
-/atom/proc/on_contents_weight_class_change(obj/item/item, old_weight_class, new_weight_class)
-	return
-
-/atom/proc/on_contents_weight_volume_change(obj/item/item, old_weight_volume, new_weight_volume)
-	return
-
-/atom/proc/on_contents_weight_change(obj/item/item, old_weight, new_weight)
-	return
-
-/**
- * called when an /obj/item Initialize()s in us.
- */
-/atom/proc/on_contents_item_new(obj/item/item)
-	return
-
 //? Layers
 
 /// Sets our plane

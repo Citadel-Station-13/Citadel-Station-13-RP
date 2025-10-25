@@ -254,6 +254,48 @@
 	// Finally done.
 	update_shield_colors()
 	return TRUE
+/obj/item/shield_projector/rectangle/mecha
+	shield_health = 200
+	max_shield_health = 200
+	shield_regen_delay = 10 SECONDS
+	shield_regen_amount = 10
+	size_x = 1
+	size_y = 1
+
+	var/shift_x = 0
+	var/shift_y = 0
+
+	var/obj/vehicle/sealed/mecha/my_mech = null
+
+/obj/item/shield_projector/rectangle/mecha/Initialize(mapload)
+	. = ..()
+	my_mech = loc
+	RegisterSignal(my_mech, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/obj/item/shield_projector, update_shield_positions))
+	update_shift(my_mech)
+
+/obj/item/shield_projector/rectangle/mecha/proc/update_shift(atom/movable/mech)
+	var/icon/my_icon = icon(mech.icon) //holy heck
+	var/x_dif = (my_icon.Width() - world.icon_size) / 2
+	shift_x = round(x_dif, 1)
+	var/y_dif = (my_icon.Height() - world.icon_size) / 2
+	shift_y = round(y_dif, 1)
+
+/obj/item/shield_projector/rectangle/mecha/Destroy()
+	UnregisterSignal(my_mech, COMSIG_MOVABLE_MOVED)
+	return ..()
+
+/obj/item/shield_projector/rectangle/mecha/create_shield()
+	. = ..()
+	if(shift_x || shift_y)
+		var/obj/effect/directional_shield/newshield = active_shields[active_shields.len]
+		newshield.pixel_x = shift_x
+		newshield.pixel_y = shift_y
+
+/obj/item/shield_projector/rectangle/mecha/adjust_health(amount)
+	. = ..()
+	my_mech.use_power(30)
+	if(!active && shield_health < shield_regen_amount)
+		my_mech.use_power(30 * 4)
 
 /obj/item/shield_projector/line
 	name = "linear combat shield projector"
@@ -303,7 +345,7 @@
 	max_shield_health = 200
 
 	var/obj/vehicle/sealed/mecha/my_mecha = null
-	var/obj/item/vehicle_module/lazy/legacy/combat_shield/my_tool = null
+	var/obj/item/vehicle_module/shield_projector/linear/my_tool = null
 
 /obj/item/shield_projector/line/exosuit/process()
 	..()

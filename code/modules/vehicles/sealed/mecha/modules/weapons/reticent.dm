@@ -105,12 +105,12 @@
 //Equipment
 
 //Reticent Linear Projector
-/obj/item/vehicle_module/lazy/legacy/combat_shield/reticent
+/obj/item/vehicle_module/shield_projector/linear/reticent
 	name = "linear combat shield"
 	desc = "A Silencium infused linear combat shield. Its faint presence cannot be easily detected."
 	icon_state = "shield_mime"
 
-/obj/item/vehicle_module/lazy/legacy/combat_shield/reticent/add_equip_overlay(obj/vehicle/sealed/mecha/M)
+/obj/item/vehicle_module/shield_projector/linear/reticent/add_equip_overlay(obj/vehicle/sealed/mecha/M)
 	if(!drone_overlay)
 		drone_overlay = new(src.icon, icon_state = "shield_droid_mime")
 	M.add_overlay(drone_overlay)
@@ -126,7 +126,7 @@
 	low_color = "#FFC2C2"
 
 //Reticence Rectangular Projector
-/obj/item/vehicle_module/lazy/legacy/omni_shield/reticence
+/obj/item/vehicle_module/shield_projector/omnidirectional/reticence
 	name = "faint omni shield"
 	desc = "A perfected Silencium combat shield. The manner by which it distorts the air is the only way to tell it's there at all."
 	shield_type = /obj/item/shield_projector/rectangle/mecha/reticence

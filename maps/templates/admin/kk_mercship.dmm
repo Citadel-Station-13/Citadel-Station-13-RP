@@ -4196,8 +4196,8 @@
 "vt" = (
 /obj/structure/table/rack,
 /obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/explosive,
-/obj/item/vehicle_module/lazy/legacy/omni_shield,
-/obj/item/vehicle_module/lazy/legacy/repair_droid,
+/obj/item/vehicle_module/shield_projector/omnidirectional,
+/obj/item/vehicle_module/toggled/repair_droid,
 /obj/effect/floor_decal/techfloor{
 	dir = 5
 	},

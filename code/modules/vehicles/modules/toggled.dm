@@ -34,8 +34,10 @@
 	.["active"] = active
 
 /obj/item/vehicle_module/toggled/proc/activate(datum/event_args/actor/actor, silent)
+	#warn log
 
 /obj/item/vehicle_module/toggled/proc/deactivate(datum/event_args/actor/actor, silent)
+	#warn log
 
 /obj/item/vehicle_module/toggled/proc/on_activate(datum/event_args/actor/actor, silent)
 

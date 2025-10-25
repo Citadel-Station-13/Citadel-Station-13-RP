@@ -11,7 +11,7 @@
 	. = ..()
 	var/obj/item/vehicle_module/lazy/legacy/ME = new /obj/item/vehicle_module/lazy/legacy/weapon/energy/taser
 	ME.attach(src)
-	ME = new /obj/item/vehicle_module/lazy/legacy/tesla_energy_relay
+	ME = new /obj/item/vehicle_module/toggled/energy_relay
 	ME.attach(src)
 
 /obj/effect/decal/mecha_wreckage/phazon/scree

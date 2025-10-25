@@ -28,8 +28,8 @@
 	var/datum/effect_system/ion_trail_follow/ion_trail
 	var/stabilization_enabled = 1
 
-	stomp_sound = 'sound/machines/hiss.ogg'
-	swivel_sound = null
+	move_sound = 'sound/machines/hiss.ogg'
+	turn_sound = null
 
 	module_slots = list(
 		VEHICLE_MODULE_SLOT_HULL = 3,
@@ -94,27 +94,6 @@
 		return FALSE
 	else
 		return TRUE
-
-/*	// One horrific bastardization of glorious inheritence dead. A billion to go. ~Mech
-//these three procs overriden to play different sounds
-/obj/vehicle/sealed/mecha/working/hoverpod/mechturn(direction)
-	setDir(direction)
-	//playsound(src,'sound/machines/hiss.ogg',40,1)
-	return 1
-
-/obj/vehicle/sealed/mecha/working/hoverpod/mechstep(direction)
-	var/result = step(src,direction)
-	if(result)
-		playsound(src,'sound/machines/hiss.ogg',40,1)
-	return result
-
-
-/obj/vehicle/sealed/mecha/working/hoverpod/mechsteprand()
-	var/result = step_rand(src)
-	if(result)
-		playsound(src,'sound/machines/hiss.ogg',40,1)
-	return result
-*/
 
 //Hoverpod variants
 /obj/vehicle/sealed/mecha/working/hoverpod/combatpod

@@ -398,7 +398,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/tool/screwdriver,
 		/obj/item/tool/wirecutters,
 		/obj/item/multitool,
-		/obj/item/vehicle_module/lazy/legacy/generator,
+		/obj/item/vehicle_module/lazy/legacy/simple_generator/phoron,
 		/obj/item/vehicle_module/lazy/legacy/tool/cable_layer,
 		/obj/item/vehicle_module/lazy/legacy/tool/drill,
 		/obj/item/vehicle_module/lazy/legacy/tool/hydraulic_clamp,
@@ -452,7 +452,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/aiModule/paladin,
 		/obj/item/aiModule/safeguard,
 		/obj/item/disposable_teleporter,
-		/obj/item/vehicle_module/lazy/legacy/tesla_energy_relay
+		/obj/item/vehicle_module/toggled/energy_relay
 	)
 
 
@@ -633,12 +633,12 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/vehicle_module/lazy/legacy/weapon/energy/riggedlaser,
 		/obj/item/vehicle_module/lazy/legacy/tool/hydraulic_clamp,
 		/obj/item/vehicle_module/lazy/legacy/tool/drill,
-		/obj/item/vehicle_module/lazy/legacy/generator
+		/obj/item/vehicle_module/lazy/legacy/simple_generator/phoron
 		)
 
 	rare_loot = list(
 		/obj/item/vehicle_module/lazy/legacy/weapon/energy/laser,
-		/obj/item/vehicle_module/lazy/legacy/generator/nuclear,
+		/obj/item/vehicle_module/lazy/legacy/simple_generator/nuclear,
 		/obj/item/vehicle_module/lazy/legacy/tool/jetpack
 		)
 
@@ -714,8 +714,8 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 
 	uncommon_loot = list(
 		/obj/item/vehicle_module/lazy/legacy/weapon/energy/riggedlaser,
-		/obj/item/vehicle_module/lazy/legacy/repair_droid,
-		/obj/item/vehicle_module/lazy/legacy/tesla_energy_relay
+		/obj/item/vehicle_module/toggled/repair_droid,
+		/obj/item/vehicle_module/toggled/energy_relay
 		)
 
 	rare_loot = list(
@@ -800,9 +800,9 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		)
 
 	rare_loot = list(
-		/obj/item/vehicle_module/lazy/legacy/tesla_energy_relay,
+		/obj/item/vehicle_module/toggled/energy_relay,
 		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/lmg,
-		/obj/item/vehicle_module/lazy/legacy/repair_droid,
+		/obj/item/vehicle_module/toggled/repair_droid,
 		/obj/item/vehicle_module/lazy/legacy/weapon/energy/laser/heavy
 		)
 
@@ -855,9 +855,9 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		)
 
 	rare_loot = list(
-		/obj/item/vehicle_module/lazy/legacy/tesla_energy_relay,
+		/obj/item/vehicle_module/toggled/energy_relay,
 		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/scattershot,
-		/obj/item/vehicle_module/lazy/legacy/repair_droid,
+		/obj/item/vehicle_module/toggled/repair_droid,
 		/obj/item/vehicle_module/lazy/legacy/weapon/energy/laser/heavy
 		)
 
@@ -903,9 +903,9 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		)
 
 	rare_loot = list(
-		/obj/item/vehicle_module/lazy/legacy/tesla_energy_relay,
+		/obj/item/vehicle_module/toggled/energy_relay,
 		/obj/item/vehicle_module/lazy/legacy/weapon/energy/ion,
-		/obj/item/vehicle_module/lazy/legacy/repair_droid,
+		/obj/item/vehicle_module/toggled/repair_droid,
 		/obj/item/vehicle_module/lazy/legacy/teleporter
 		)
 
@@ -939,8 +939,8 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		)
 
 	rare_loot = list(
-		/obj/item/vehicle_module/lazy/legacy/tesla_energy_relay,
-		/obj/item/vehicle_module/lazy/legacy/repair_droid
+		/obj/item/vehicle_module/toggled/energy_relay,
+		/obj/item/vehicle_module/toggled/repair_droid
 		)
 
 /obj/structure/loot_pile/mecha/honker/cluwne
@@ -977,7 +977,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		)
 
 	rare_loot = list(
-		/obj/item/vehicle_module/lazy/legacy/combat_shield/reticent,
+		/obj/item/vehicle_module/shield_projector/linear/reticent,
 		/obj/item/vehicle_module/lazy/legacy/cloak
 		)
 
@@ -1014,12 +1014,12 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 
 	uncommon_loot = list(
 		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/lmg/rigged,
-		/obj/item/vehicle_module/lazy/legacy/generator
+		/obj/item/vehicle_module/lazy/legacy/simple_generator/phoron
 		)
 
 	rare_loot = list(
 		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/lmg,
-		/obj/item/vehicle_module/lazy/legacy/generator/nuclear
+		/obj/item/vehicle_module/lazy/legacy/simple_generator/nuclear
 		)
 
 /obj/structure/loot_pile/mecha/mouse_tank/livewire
@@ -1054,7 +1054,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 
 	rare_loot = list(
 		/obj/item/vehicle_module/lazy/legacy/weapon/energy/flamer,
-		/obj/item/vehicle_module/lazy/legacy/generator
+		/obj/item/vehicle_module/lazy/legacy/simple_generator/phoron
 		)
 
 /obj/structure/loot_pile/mecha/mouse_tank/eraticator
@@ -1090,7 +1090,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 
 	rare_loot = list(
 		/obj/item/gun/projectile/ballistic/gyropistol,
-		/obj/item/vehicle_module/lazy/legacy/generator/nuclear
+		/obj/item/vehicle_module/lazy/legacy/simple_generator/nuclear
 		)
 
 //Drone loot

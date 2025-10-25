@@ -39,7 +39,7 @@
 	modules = list(
 		/obj/item/vehicle_module/lazy/legacy/weapon/energy/pulse,
 		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/explosive,
-		/obj/item/vehicle_module/lazy/legacy/tesla_energy_relay,
+		/obj/item/vehicle_module/toggled/energy_relay,
 		/obj/item/vehicle_module/personal_shield/structural_field/hyperkinetic,
 	)
 
@@ -73,7 +73,7 @@
 	modules = list(
 		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/scattershot,
 		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/explosive,
-		/obj/item/vehicle_module/lazy/legacy/tesla_energy_relay,
+		/obj/item/vehicle_module/toggled/energy_relay,
 		/obj/item/vehicle_module/personal_shield/structural_field/hyperkinetic,
 		/obj/item/vehicle_module/lazy/legacy/teleporter,
 	)

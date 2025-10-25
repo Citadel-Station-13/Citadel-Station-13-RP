@@ -746,7 +746,7 @@
 	id = "mech_repair_droid"
 	req_tech = list(TECH_MAGNET = 3, TECH_DATA = 3, TECH_ENGINEERING = 3)
 	materials_base = list(MAT_STEEL = 7500 * (1 / 3), MAT_GOLD = 750 * (1 / 3), MAT_SILVER = 1500 * (1 / 3), MAT_GLASS = 3750 * (1 / 3))
-	build_path = /obj/item/vehicle_module/lazy/legacy/repair_droid
+	build_path = /obj/item/vehicle_module/toggled/repair_droid
 
 /datum/prototype/design/science/mecha/shield_drone
 	design_name = "Shield Drone"
@@ -754,7 +754,7 @@
 	id = "mech_shield_droid"
 	req_tech = list(TECH_PHORON = 3, TECH_MAGNET = 6, TECH_ILLEGAL = 4)
 	materials_base = list(MAT_STEEL = 8000 * (1 / 3), MAT_GOLD = 2000 * (1 / 3), MAT_SILVER = 3000 * (1 / 3), MAT_PHORON = 5000 * (1 / 3), MAT_GLASS = 3750 * (1 / 3))
-	build_path = /obj/item/vehicle_module/lazy/legacy/combat_shield
+	build_path = /obj/item/vehicle_module/shield_projector/linear
 
 /datum/prototype/design/science/mecha/reticent_shield_drone
 	design_name = "Reticent Wall Projector"
@@ -762,7 +762,7 @@
 	id = "mech_reticent_shield_droid"
 	req_tech = list(TECH_PHORON = 3, TECH_MAGNET = 6, TECH_ILLEGAL = 4)
 	materials_base = list(MAT_STEEL = 8000 * (1 / 3), MAT_OSMIUM = 4000 * (1 / 3), MAT_SILVER = 3000 * (1 / 3), MAT_SILENCIUM = 10000 * (1 / 3), MAT_GLASS = 3750 * (1 / 3))
-	build_path = /obj/item/vehicle_module/lazy/legacy/combat_shield/reticent
+	build_path = /obj/item/vehicle_module/shield_projector/linear/reticent
 
 /datum/prototype/design/science/mecha/crisis_drone
 	design_name = "Crisis Drone"
@@ -800,7 +800,7 @@
 	desc = "Phoron Reactor"
 	id = "mech_phoron_generator"
 	req_tech = list(TECH_PHORON = 2, TECH_POWER= 2, TECH_ENGINEERING = 2)
-	build_path = /obj/item/vehicle_module/lazy/legacy/generator
+	build_path = /obj/item/vehicle_module/lazy/legacy/simple_generator/phoron
 	materials_base = list(MAT_STEEL = 7500 * (1 / 3), MAT_SILVER = 375 * (1 / 3), MAT_GLASS = 750 * (1 / 3))
 
 /datum/prototype/design/science/mecha/energy_relay
@@ -808,7 +808,7 @@
 	id = "mech_energy_relay"
 	req_tech = list(TECH_MAGNET = 4, TECH_POWER = 3)
 	materials_base = list(MAT_STEEL = 7500 * (1 / 3), MAT_GOLD = 1500 * (1 / 3), MAT_SILVER = 2250 * (1 / 3), MAT_GLASS = 1500 * (1 / 3))
-	build_path = /obj/item/vehicle_module/lazy/legacy/tesla_energy_relay
+	build_path = /obj/item/vehicle_module/toggled/energy_relay
 
 /datum/prototype/design/science/mecha/ccw_armor
 	design_name = "CCW Armor Booster"
@@ -880,7 +880,7 @@
 	id = "mech_generator_nuclear"
 	req_tech = list(TECH_POWER= 3, TECH_ENGINEERING = 3, TECH_MATERIAL = 3)
 	materials_base = list(MAT_STEEL = 7500 * (1 / 3), MAT_SILVER = 375 * (1 / 3), MAT_GLASS = 750 * (1 / 3))
-	build_path = /obj/item/vehicle_module/lazy/legacy/generator/nuclear
+	build_path = /obj/item/vehicle_module/lazy/legacy/simple_generator/nuclear
 
 /datum/prototype/design/science/mecha/speedboost_ripley
 	design_name = "Ripley Leg Actuator Overdrive"

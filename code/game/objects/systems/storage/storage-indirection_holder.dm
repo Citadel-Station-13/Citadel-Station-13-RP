@@ -39,7 +39,7 @@
 /atom/movable/storage_indirection/on_contents_weight_volume_change(obj/item/item, old_weight_volume, new_weight_volume)
 	parent.on_contents_weight_volume_change(item, old_weight_volume, new_weight_volume)
 
-/atom/movable/storage_indirection/on_contents_weight_change(obj/item/item, old_weight, new_weight)
+/atom/movable/storage_indirection/on_contents_weight_change(atom/movable/entity, old_weight, new_weight)
 	parent.on_contents_weight_change(item, old_weight, new_weight)
 
 /atom/movable/storage_indirection/on_contents_item_new(obj/item/item)

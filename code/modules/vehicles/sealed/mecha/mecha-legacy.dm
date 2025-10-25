@@ -192,14 +192,6 @@
 		if(M != src.occupant_legacy)
 			step_rand(M)
 
-	for(var/atom/movable/A in src.cargo)
-		A.forceMove(get_turf(src))
-		var/turf/T = get_turf(A)
-		if(T)
-			T.Entered(A)
-		step_rand(A)
-	cargo = list()
-
 	if(prob(30))
 		explosion(get_turf(loc), 0, 0, 1, 3)
 
@@ -238,6 +230,13 @@
 	QDEL_NULL(minihud)
 
 	return ..()
+
+/obj/vehicle/sealed/mecha/on_drop_vehicle_contents(atom/where)
+	..()
+	for(var/atom/movable/cargo in cargo_held)
+		cargo.forceMove(where)
+		step_rand(cargo)
+	cargo_held = null
 
 /obj/vehicle/sealed/mecha/drain_energy(datum/actor, amount, flags)
 	if(!cell)

@@ -523,7 +523,7 @@
 /turf/simulated/shuttle/floor,
 /area/submap/HeadscientistHQ)
 "xA" = (
-/obj/item/vehicle_module/lazy/legacy/repair_droid,
+/obj/item/vehicle_module/toggled/repair_droid,
 /turf/template_noop,
 /area/template_noop)
 "xT" = (

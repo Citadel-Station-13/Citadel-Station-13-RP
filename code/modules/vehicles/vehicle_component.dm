@@ -1,9 +1,16 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
+/**
+ * * Integrity failure is full failure.
+ */
 /obj/item/vehicle_component
 	name = "vehicle component"
 	desc = "Some kind of component that presumably goes on some kind of vehicle."
+
+	integrity = 200
+	integrity_max = 200
+	integrity_failure = 100
 
 	//* Component *//
 	/// currently active chassis
@@ -15,6 +22,13 @@
 	/// bind shieldtype type; must be a path of /datum/shieldcall/bound/vehicle_component if set.
 	var/autobind_shieldcall_type
 	var/datum/shieldcall/bound/vehicle_component/autobind_shieldcall
+
+	//* Repairs *//
+	/// Repair droid efficiency
+	/// * This is relative difficulty. 2 means twice the power / material!
+	var/repair_droid_inbound_efficiency = 0.5
+	/// Repair droid max ratio to heal
+	var/repair_droid_max_ratio = 0.5
 
 	//* UI *//
 	/// UI component key when being rendered

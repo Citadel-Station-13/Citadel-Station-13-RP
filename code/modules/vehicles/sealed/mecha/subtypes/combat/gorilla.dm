@@ -34,7 +34,7 @@
 
 /obj/vehicle/sealed/mecha/combat/gorilla/equipped
 	modules = list(
-		/obj/item/vehicle_module/lazy/legacy/tesla_energy_relay,
+		/obj/item/vehicle_module/toggled/energy_relay,
 		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/cannon,
 		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/cannon/weak,
 		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/explosive,
