@@ -62,3 +62,5 @@
 	// todo: yielding generation
 	new /datum/random_map/noise/ore/lavaland(null, 1, 1, z_index, 64, 64)
 	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, z_index, world.maxx - 4, world.maxy - 4)
+
+#warn expand to 4, do planetgen
