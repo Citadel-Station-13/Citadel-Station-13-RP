@@ -44,6 +44,10 @@
 /proc/merge_2_nested_list(list/list/A, list/list/B)
 	. = list()
 	for(var/k1 in A)
-		.[k1] = A[k1].Copy()
+		if(!.[k1])
+			.[k1] = list()
+		.[k1] += A[k1]
 	for(var/k2 in B)
+		if(!.[k2])
+			.[k2] = list()
 		.[k2] += B[k2]

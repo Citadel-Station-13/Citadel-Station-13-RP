@@ -181,7 +181,7 @@
  */
 // #define CF_ATOM_TRACE_INIT_EARLY_QDEL
 
-// ## AI Holders
+// ## AI Holders / AI System
 
 /**
  * Enables high-overhead debug assertions.

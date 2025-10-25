@@ -2,9 +2,6 @@
 	////////////
 	//SECURITY//
 	////////////
-///Could probably do with being lower.
-///Restricts client uploads to the server to 1MB
-#define UPLOAD_LIMIT		1048576
 
 #define LIMITER_SIZE	5
 #define CURRENT_SECOND	1
@@ -148,14 +145,6 @@
 		handle_age_gate(href_list["month"], href_list["year"])
 
 	..()	//redirect to hsrc.Topic()
-
-
-//This stops files larger than UPLOAD_LIMIT being sent from client to server via input(), client.Import() etc.
-/client/AllowUpload(filename, filelength)
-	if(filelength > UPLOAD_LIMIT)
-		to_chat(src, "<font color='red'>Error: AllowUpload(): File Upload too large. Upload Limit: [UPLOAD_LIMIT/1024]KiB.</font>")
-		return 0
-	return 1
 
 
 	///////////
@@ -302,7 +291,6 @@
 		winset(src, null, "command=\".configure graphics-hwmode on\"")
 
 	if(holder)
-		add_admin_verbs()
 		admin_memo_show()
 		// to_chat(src, get_message_output("memo"))
 		// adminGreet()
@@ -453,8 +441,6 @@
 	qdel(query_get_notes)
 	create_message("note", key, system_ckey, message, null, null, 0, 0, null, 0, 0)
 */
-
-#undef UPLOAD_LIMIT
 
 //checks if a client is afk
 //3000 frames = 5 minutes

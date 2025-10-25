@@ -5,6 +5,25 @@
 
 /**
  * tgui datum (represents a UI).
+ *
+ * ## Data
+ *
+ * TGUI has two levels of data.
+ *
+ * * 'data': The data and static data pushed into the UI. Data is updated as it's pushed in
+ *   with a 1-deep reducer, meaning that anything you push will overwrite the old value of the key
+ *   but not replace any other keys. This allows for partial updates.
+ * * 'modules': A secondary data-list. This works just like 'data', but the reducer behavior is
+ *   2-deep. This is a key-key-value list instead of a key-value list, basically.
+ *   This is used to inject 'embeds' into TGUI, as well, as their data can be then sent
+ *   without sending data for everything else as well.
+ *
+ * ## Future Work
+ *
+ * * move to react
+ * * add a way to dynamically pop up modals on tgui with the root renderer, without
+ *   needing interface-specific implementation
+ * * mob-indirection investigation for remote control (remote controller using rigsuit mob to hack door, as an eaxmple)
  */
 /datum/tgui
 	/// The mob who opened/is using the UI.
@@ -106,11 +125,11 @@
  *
  * @params
  * * data - force certain data sends
- * * modules - force certain module sends
+ * * nested_data - force certain module sends
  *
  * return bool - TRUE if a new pooled window is opened, FALSE in all other situations including if a new pooled window didn't open because one already exists.
  */
-/datum/tgui/proc/open(data, modules)
+/datum/tgui/proc/open(data, nested_data)
 	SHOULD_NOT_SLEEP(TRUE)
 	if(!user.client)
 		return FALSE
@@ -128,7 +147,7 @@
 	SStgui.on_open(src)
 	// defer initialize() to after current call chain.
 	spawn(0)
-		initialize(data, modules)
+		initialize(data, nested_data)
 	return TRUE
 
 /**
@@ -482,17 +501,21 @@
  *
  * WARNING: Do not use this unless you know what you are doing
  *
- * required data The data to send
- * optional force bool Send an update even if UI is not interactive.
+ * @params
+ * * data - The data to send.
+ * * nested_data - Data to send to nested_data.
+ * * force - (optional) Send an update even if UI is not interactive.
  *
  * @return TRUE if data was sent, FALSE otherwise.
  */
-/datum/tgui/proc/push_data(data, force)
+/datum/tgui/proc/push_data(data, nested_data, force)
 	if(!user.client || !initialized || closing)
 		return FALSE
 	if(!force && status < UI_UPDATE)
 		return FALSE
+	// todo: one message
 	window.send_message("data", data)
+	window.send_message("nestedData", nested_data)
 	return TRUE
 
 /**
