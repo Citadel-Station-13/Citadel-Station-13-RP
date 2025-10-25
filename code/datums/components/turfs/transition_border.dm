@@ -232,6 +232,13 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	vis_flags = VIS_HIDE	// THIS IS VERY FUCKING IMPORTANT; WILL CRASH SERVER IF IT LOOPS.
 
+/atom/movable/mirage_border/Destroy()
+	. = ..()
+	if(. == QDEL_HINT_LETMELIVE)
+		return
+	// forcefully move, doMove is overridden
+	loc = null
+
 /atom/movable/mirage_border/doMove(atom/destination)
 	return FALSE
 
