@@ -26,7 +26,7 @@
 #define CLONE_BIOMASS 30
 /obj/machinery/clonepod
 	name = "cloning pod"
-	desc = "An electronically-lockable pod for growing organic tissue."
+	desc = "An electronically-lockable pod for growing organic tissue.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	density = TRUE
 	anchored = TRUE
 	circuit = /obj/item/circuitboard/clonepod

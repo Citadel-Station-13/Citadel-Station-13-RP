@@ -31,7 +31,9 @@ SUBSYSTEM_DEF(spatial_grids)
 	. = ..()
 	if(!initialized)
 		return
-	living.sync_world_z(new_z_count)
+	living?.sync_world_z(new_z_count)
+	vehicles?.sync_world_z(new_z_count)
+	overmap_entities?.sync_world_z(new_z_count)
 
 /**
  * index = ceil(x / resolution) + width * (ceil(y / resolution) - 1)

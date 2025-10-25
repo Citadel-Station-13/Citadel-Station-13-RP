@@ -3,6 +3,9 @@
 	/// Font name, just so people know what to put in their span style.
 	var/name
 	/// The font file we link to.
+	///
+	/// This also is what includes the font file in our rsc cache;
+	/// by specifying it in 'single quotes' BYOND will load it.
 	var/font_family
 
 	/// Font features and metrics

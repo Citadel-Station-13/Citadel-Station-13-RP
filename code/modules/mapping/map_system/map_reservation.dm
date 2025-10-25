@@ -287,6 +287,7 @@
 			border_initializer?.Invoke(T, src)
 			if(needs_component)
 				T.AddComponent(/datum/component/reservation_border, mirage_range, WEST, should_mirage, locate(top_right_coords[1], T.y, T.z), border_handler)
+			CHECK_TICK
 		// right
 		var/list/turf/immediate_right = block(
 			locate(top_right_coords[1] + 1, bottom_left_coords[2], bottom_left_coords[3]),
@@ -296,6 +297,7 @@
 			border_initializer?.Invoke(T, src)
 			if(needs_component)
 				T.AddComponent(/datum/component/reservation_border, mirage_range, EAST, should_mirage, locate(bottom_left_coords[1], T.y, T.z), border_handler)
+			CHECK_TICK
 		// up
 		var/list/turf/immediate_up = block(
 			locate(bottom_left_coords[1], top_right_coords[2] + 1, bottom_left_coords[3]),
@@ -305,6 +307,7 @@
 			border_initializer?.Invoke(T, src)
 			if(needs_component)
 				T.AddComponent(/datum/component/reservation_border, mirage_range, NORTH, should_mirage, locate(T.x, bottom_left_coords[2], T.z), border_handler)
+			CHECK_TICK
 		// down
 		var/list/turf/immediate_down = block(
 			locate(bottom_left_coords[1], bottom_left_coords[2] - 1, bottom_left_coords[3]),
@@ -314,6 +317,7 @@
 			border_initializer?.Invoke(T, src)
 			if(needs_component)
 				T.AddComponent(/datum/component/reservation_border, mirage_range, SOUTH, should_mirage, locate(T.x, top_right_coords[2], T.z), border_handler)
+			CHECK_TICK
 
 		var/list/immediate_corners = list()
 		var/turf/corner

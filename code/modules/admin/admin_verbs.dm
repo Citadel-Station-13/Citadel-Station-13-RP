@@ -499,14 +499,7 @@ var/list/admin_verbs_event_manager = list(
 	else if(istype(mob,/mob/new_player))
 		to_chat(src, "<font color='red'>Error: Aghost: Can't admin-ghost whilst in the lobby. Join or Observe first.</font>")
 	else
-		//ghostize
-		var/mob/body = mob
-		var/mob/observer/dead/ghost = body.ghostize(1)
-		ghost.admin_ghosted = 1
-		if(body)
-			body.teleop = ghost
-			if(!body.key)
-				body.key = "@[key]"	//Haaaaaaaack. But the people have spoken. If it breaks; blame adminbus
+		holder.admin_ghost()
 		feedback_add_details("admin_verb","O") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/invisimin()

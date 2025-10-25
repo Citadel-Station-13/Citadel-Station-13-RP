@@ -25,7 +25,7 @@
 	description = "Go ghost"
 
 /datum/keybinding/admin/admin_ghost/down(client/user)
-	user.admin_ghost()
+	user.holder.admin_ghost()
 	return TRUE
 
 /datum/keybinding/admin/player_panel

@@ -243,9 +243,11 @@
 	// Indicate failure to parse any coordinates by nulling bounds
 	if(bounds[1] == 1.#INF)
 		bounds = null
+		parsed = FALSE
 	else
 		width = bounds[MAP_MAXX] - bounds[MAP_MINX] + 1
 		height = bounds[MAP_MAXY] - bounds[MAP_MINY] + 1
+		parsed = TRUE
 
 /datum/dmm_parsed/Destroy()
 	if(template_host?.parsed == src)

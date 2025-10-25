@@ -134,7 +134,7 @@
 	return y - overmap.lower_left_y + 1
 
 /**
- * Get floating point tile X where being on a tile is considered being at the center of it.
+ * Get tile X with floating point where being on a tile is considered being at the center of it.
  */
 /obj/overmap/entity/proc/get_tile_x_f()
 	if(!overmap)
@@ -143,7 +143,7 @@
 	return x - overmap.lower_left_x + 1 + (center - (WORLD_ICON_SIZE * 0.5)) / WORLD_ICON_SIZE
 
 /**
- * Get floating point tile Y where being on a tile is considered being at the center of it.
+ * Get tile Y with floating point where being on a tile is considered being at the center of it.
  */
 /obj/overmap/entity/proc/get_tile_y_f()
 	if(!overmap)
