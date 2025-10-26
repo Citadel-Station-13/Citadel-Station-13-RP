@@ -215,6 +215,12 @@
 	ambience = AMBIENCE_MAINTENANCE
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
+/area/station/hallway/endeavour/d3aftportsecmaint
+	name = "\improper Deck 3 Aft Port Security Maintenance"
+	icon_state = "amaint"
+	ambience = AMBIENCE_MAINTENANCE
+	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
+
 /area/station/hallway/endeavour/d3aftstrbdmaint
 	name = "\improper Deck 3 Aft Starboard Maintenance"
 	icon_state = "amaint"

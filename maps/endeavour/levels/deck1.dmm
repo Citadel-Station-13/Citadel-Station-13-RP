@@ -11,6 +11,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/station/hallway/endeavour/d1fwdhall)
+"aaF" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/exploration/courser_dock)
 "abD" = (
 /obj/machinery/light,
 /obj/effect/floor_decal/corner/black{
@@ -517,7 +526,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/reinforced,
-/area/endeavour/exploration/aux_hanger)
+/area/station/endeavour/exploration/aux_hanger)
 "aqy" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -580,6 +589,16 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway2)
+"arJ" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/tiled/steel,
+/area/station/hallway/endeavour/d1starboardamidhall)
 "arP" = (
 /obj/machinery/atmospherics/component/unary/heat_exchanger{
 	dir = 4
@@ -693,7 +712,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "axd" = (
 /obj/machinery/door/airlock/glass_external{
 	name = "Exploration Hangar";
@@ -897,7 +916,7 @@
 "aFD" = (
 /obj/item/radio/beacon,
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "aGh" = (
 /obj/structure/sign/hangar/three,
 /turf/simulated/wall/r_wall/prepainted,
@@ -965,7 +984,7 @@
 "aHO" = (
 /obj/machinery/camera/network/exploration,
 /turf/simulated/floor/reinforced,
-/area/endeavour/exploration/aux_hanger)
+/area/station/endeavour/exploration/aux_hanger)
 "aIj" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /obj/machinery/shower{
@@ -1454,7 +1473,7 @@
 "bbP" = (
 /obj/structure/target_stake,
 /turf/simulated/floor/plating,
-/area/endeavour/exploration/hallway_fore)
+/area/station/endeavour/exploration/hallway_fore)
 "bbQ" = (
 /obj/machinery/computer/ship/engines,
 /obj/item/radio/intercom/west_mount{
@@ -1480,7 +1499,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "bci" = (
 /obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super;
@@ -1934,11 +1953,11 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "bwp" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "bwE" = (
 /obj/effect/floor_decal/corner/black/full{
 	dir = 1
@@ -1965,7 +1984,7 @@
 	dir = 1
 	},
 /turf/simulated/open,
-/area/endeavour/exploration/hallway_fore)
+/area/station/endeavour/exploration/hallway_fore)
 "bxl" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/navgold/border,
@@ -2090,7 +2109,7 @@
 	},
 /obj/structure/flora/pottedplant/minitree,
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "bBN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -2108,7 +2127,7 @@
 /obj/effect/floor_decal/corner/mauve/border,
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "bCN" = (
 /obj/structure/railing,
 /obj/structure/closet/crate,
@@ -2337,7 +2356,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_fore)
+/area/station/endeavour/exploration/hallway_fore)
 "bNN" = (
 /obj/item/radio/intercom{
 	pixel_y = -24
@@ -2416,7 +2435,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "bPV" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
@@ -2551,7 +2570,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "bTm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -2651,7 +2670,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/endeavour/exploration/aux_hanger)
+/area/station/endeavour/exploration/hallway_fore)
 "bXQ" = (
 /obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/super
@@ -3004,7 +3023,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_fore)
+/area/station/endeavour/exploration/hallway_fore)
 "clE" = (
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 4
@@ -3450,7 +3469,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/reinforced,
-/area/endeavour/exploration/aux_hanger)
+/area/station/endeavour/exploration/aux_hanger)
 "cAt" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 10
@@ -3505,6 +3524,16 @@
 /obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/teleporter/departing)
+"cCA" = (
+/obj/structure/catwalk,
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/plating,
+/area/station/hallway/endeavour/d1portfwdmaint)
 "cCF" = (
 /turf/simulated/wall/rthull,
 /area/shuttle/excursion/endeavour/cockpit)
@@ -3542,7 +3571,7 @@
 	},
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/simulated/floor/grass,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "cDQ" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/effect/floor_decal/borderfloor{
@@ -3552,7 +3581,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "cDX" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
@@ -3568,7 +3597,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "cEM" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -3667,7 +3696,7 @@
 	name = "Steffansson"
 	},
 /turf/simulated/floor/grass,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "cJy" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
@@ -3699,7 +3728,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/reinforced,
-/area/endeavour/exploration/aux_hanger)
+/area/station/endeavour/exploration/aux_hanger)
 "cKN" = (
 /obj/structure/closet/hydrant{
 	dir = 8;
@@ -3790,7 +3819,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_fore)
+/area/station/endeavour/exploration/hallway_fore)
 "cPf" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 9
@@ -4064,7 +4093,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_fore)
+/area/station/endeavour/exploration/hallway_fore)
 "cXT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -4115,7 +4144,7 @@
 	},
 /obj/structure/flora/ausbushes/brflowers,
 /turf/simulated/floor/grass,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "cZw" = (
 /obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
@@ -4176,6 +4205,13 @@
 "dbq" = (
 /turf/simulated/wall/prepainted,
 /area/station/hallway/endeavour/aft_stairs_one)
+"dbL" = (
+/obj/machinery/light{
+	dir = 4;
+	light_range = 12
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/exploration/courser_dock)
 "dcc" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -4248,7 +4284,17 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/reinforced,
-/area/endeavour/exploration/aux_hanger)
+/area/station/endeavour/exploration/aux_hanger)
+"dfa" = (
+/obj/structure/catwalk,
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/station/hallway/endeavour/d1portfwdmaint)
 "dfk" = (
 /obj/structure/closet/crate/freezer/rations,
 /obj/effect/floor_decal/borderfloor{
@@ -4436,7 +4482,7 @@
 /area/chapel/office)
 "dmO" = (
 /turf/simulated/floor/plating,
-/area/endeavour/exploration/hallway_fore)
+/area/station/endeavour/exploration/hallway_fore)
 "dmP" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -4488,7 +4534,7 @@
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "dpw" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
@@ -4583,6 +4629,9 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/machinery/light{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/courser_dock)
@@ -4961,7 +5010,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
-/area/endeavour/exploration/aux_hanger)
+/area/station/endeavour/exploration/aux_hanger)
 "dGi" = (
 /obj/item/gun/projectile/ballistic/shotgun/flare,
 /obj/item/storage/box/flashshells,
@@ -5296,7 +5345,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "dQk" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -5437,7 +5486,7 @@
 /area/maintenance/tool_storage)
 "dUe" = (
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "dUh" = (
 /obj/structure/table/woodentable,
 /obj/effect/floor_decal/spline/fancy/wood,
@@ -5908,6 +5957,13 @@
 /obj/machinery/vending/snack,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/station/hallway/endeavour/crew_quarters/cryo/recovery)
+"emB" = (
+/obj/machinery/power/apc/west_mount,
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/plating,
+/area/station/hallway/endeavour/d1amidstrbdmaint)
 "emK" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -5971,7 +6027,7 @@
 	pixel_y = 12
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "enQ" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -6191,7 +6247,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
-/area/endeavour/exploration/aux_hanger)
+/area/station/endeavour/exploration/aux_hanger)
 "eyn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 9
@@ -6281,7 +6337,7 @@
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/map_helper/paint/violet,
 /turf/simulated/floor/plating,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "eCo" = (
 /obj/structure/cable/green,
 /obj/machinery/power/terminal{
@@ -6452,7 +6508,7 @@
 /area/hallway/secondary/docking_hallway2)
 "eGV" = (
 /turf/simulated/floor/reinforced,
-/area/endeavour/exploration/aux_hanger)
+/area/station/endeavour/exploration/aux_hanger)
 "eHd" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/red,
 /obj/machinery/meter,
@@ -6580,7 +6636,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/endeavour/exploration/aux_hanger)
+/area/station/endeavour/exploration/hallway_fore)
 "eNB" = (
 /obj/structure/flora/pottedplant/stoutbush,
 /obj/structure/window/reinforced{
@@ -6668,7 +6724,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
-/area/endeavour/exploration/aux_hanger)
+/area/station/endeavour/exploration/aux_hanger)
 "eQI" = (
 /turf/simulated/floor,
 /area/shuttle/emt/general)
@@ -6972,7 +7028,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/reinforced,
-/area/endeavour/exploration/aux_hanger)
+/area/station/endeavour/exploration/aux_hanger)
 "eYI" = (
 /obj/structure/loot_pile/maint/boxfort,
 /turf/simulated/floor/plating,
@@ -7403,7 +7459,7 @@
 	pixel_x = -23
 	},
 /turf/simulated/floor/reinforced,
-/area/endeavour/exploration/aux_hanger)
+/area/station/endeavour/exploration/aux_hanger)
 "fmm" = (
 /obj/machinery/gateway{
 	dir = 4
@@ -7474,6 +7530,9 @@
 /obj/structure/catwalk,
 /obj/structure/disposalpipe/segment{
 	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
 /area/station/hallway/endeavour/d1amidportmaint)
@@ -7674,7 +7733,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_fore)
+/area/station/endeavour/exploration/hallway_fore)
 "fuE" = (
 /obj/machinery/atmospherics/pipe/simple/visible/universal,
 /turf/simulated/floor/tiled,
@@ -7726,7 +7785,7 @@
 	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "fvo" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -8007,7 +8066,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/reinforced,
-/area/endeavour/exploration/aux_hanger)
+/area/station/endeavour/exploration/aux_hanger)
 "fIu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -8123,7 +8182,7 @@
 /area/station/hallway/endeavour/d1amidportmaint)
 "fLR" = (
 /turf/simulated/wall/r_wall/prepainted/exploration,
-/area/endeavour/exploration/hallway_fore)
+/area/station/endeavour/exploration/hallway_fore)
 "fLT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -8235,7 +8294,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "fPp" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -8376,7 +8435,7 @@
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "fVc" = (
 /turf/simulated/wall/r_wall/prepainted/exploration,
 /area/exploration/explorer_prep)
@@ -8521,7 +8580,7 @@
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/reinforced,
-/area/endeavour/exploration/aux_hanger)
+/area/station/endeavour/exploration/aux_hanger)
 "gco" = (
 /obj/machinery/light{
 	dir = 8
@@ -8755,7 +8814,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "glw" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
@@ -8836,6 +8895,9 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "1-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
 /area/station/hallway/endeavour/d1amidportmaint)
@@ -8952,7 +9014,7 @@
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "gvc" = (
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
@@ -9157,7 +9219,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_fore)
+/area/station/endeavour/exploration/hallway_fore)
 "gDC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/wood,
@@ -9300,7 +9362,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "gJs" = (
 /obj/machinery/door/airlock/voidcraft/vertical{
 	name = "battery hatch"
@@ -9347,7 +9409,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
-/area/endeavour/exploration/aux_hanger)
+/area/station/endeavour/exploration/aux_hanger)
 "gLA" = (
 /obj/structure/table/marble,
 /obj/machinery/air_alarm{
@@ -9586,7 +9648,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/endeavour/exploration/aux_hanger)
+/area/station/endeavour/exploration/hallway_fore)
 "gVL" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -9680,6 +9742,13 @@
 /obj/effect/floor_decal/corner/mauve/diagonal,
 /turf/simulated/floor/tiled/techmaint,
 /area/bridge)
+"has" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/steel,
+/area/station/hallway/endeavour/d1afthall)
 "haw" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/paper_bin{
@@ -9736,7 +9805,7 @@
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "hdn" = (
 /turf/simulated/floor/plating,
 /area/station/endeavour/engineering/substation/deck1forward)
@@ -9807,7 +9876,7 @@
 /area/library)
 "hgT" = (
 /turf/simulated/wall/r_wall/prepainted/exploration,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "hhj" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -9841,7 +9910,7 @@
 	},
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "hhq" = (
 /obj/machinery/vending/cafe,
 /turf/simulated/floor/wood,
@@ -10025,7 +10094,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "hpQ" = (
 /obj/structure/catwalk,
 /obj/structure/disposalpipe/segment{
@@ -10355,6 +10424,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/misc_lab)
+"hGF" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/station/hallway/endeavour/d1portfwdmaint)
 "hGU" = (
 /obj/machinery/air_alarm{
 	pixel_y = 22
@@ -10591,7 +10666,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/reinforced,
-/area/endeavour/exploration/aux_hanger)
+/area/station/endeavour/exploration/aux_hanger)
 "hRp" = (
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
@@ -10967,7 +11042,7 @@
 /obj/machinery/door/blast/regular,
 /obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/plating,
-/area/endeavour/exploration/aux_hanger)
+/area/station/endeavour/exploration/aux_hanger)
 "icA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -11163,7 +11238,7 @@
 	},
 /obj/structure/flora/ausbushes/genericbush,
 /turf/simulated/floor/grass,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "ijf" = (
 /obj/machinery/light,
 /obj/machinery/sleeper{
@@ -11250,7 +11325,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "ilo" = (
 /obj/structure/bed/chair/wheelchair/dolly{
 	dir = 4
@@ -11558,7 +11633,7 @@
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_fore)
+/area/station/endeavour/exploration/hallway_fore)
 "iyH" = (
 /obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
@@ -11853,7 +11928,7 @@
 	},
 /obj/structure/railing,
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_fore)
+/area/station/endeavour/exploration/hallway_fore)
 "iKm" = (
 /obj/machinery/air_alarm/south_mount,
 /obj/effect/floor_decal/borderfloorblack{
@@ -12563,7 +12638,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/reinforced,
-/area/endeavour/exploration/aux_hanger)
+/area/station/endeavour/exploration/aux_hanger)
 "joR" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -12577,7 +12652,7 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "joU" = (
 /obj/structure/table/reinforced,
 /obj/item/stamp/denied,
@@ -12982,7 +13057,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/reinforced,
-/area/endeavour/exploration/aux_hanger)
+/area/station/endeavour/exploration/aux_hanger)
 "jzE" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
@@ -13223,7 +13298,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "jGs" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -13333,7 +13408,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "jIC" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -13419,7 +13494,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/endeavour/exploration/aux_hanger)
+/area/station/endeavour/exploration/hallway_fore)
 "jMS" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -13964,7 +14039,7 @@
 /obj/machinery/door/airlock/maintenance/common,
 /obj/map_helper/access_helper/airlock/station/exploration/department,
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_fore)
+/area/station/endeavour/exploration/hallway_fore)
 "khl" = (
 /obj/structure/undies_wardrobe,
 /turf/simulated/floor/carpet/gaycarpet,
@@ -13994,7 +14069,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_fore)
+/area/station/endeavour/exploration/hallway_fore)
 "khE" = (
 /turf/simulated/floor/tiled/steel,
 /area/station/hallway/endeavour/d1afthall)
@@ -14396,7 +14471,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "kxF" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/navgold/border,
@@ -14439,7 +14514,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
-/area/endeavour/exploration/aux_hanger)
+/area/station/endeavour/exploration/aux_hanger)
 "kzl" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -15120,7 +15195,7 @@
 	name = "Exploration Aux Hanger"
 	},
 /turf/simulated/floor/reinforced,
-/area/endeavour/exploration/aux_hanger)
+/area/station/endeavour/exploration/aux_hanger)
 "kYw" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
@@ -15172,7 +15247,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_fore)
+/area/station/endeavour/exploration/hallway_fore)
 "lbH" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
@@ -15565,7 +15640,7 @@
 /obj/spawner/window/low_wall/borosillicate,
 /obj/map_helper/paint_stripe/violet,
 /turf/simulated/floor/plating,
-/area/endeavour/exploration/aux_hanger)
+/area/station/endeavour/exploration/hallway_fore)
 "lnH" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -15672,7 +15747,7 @@
 /area/bridge)
 "lrd" = (
 /turf/simulated/wall/r_wall/prepainted,
-/area/endeavour/exploration/aux_hanger)
+/area/station/endeavour/exploration/aux_hanger)
 "lrq" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -15713,7 +15788,7 @@
 /obj/effect/floor_decal/borderfloor/corner,
 /obj/effect/floor_decal/corner/mauve/bordercorner,
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "lsQ" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -15731,7 +15806,7 @@
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "lta" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -15867,7 +15942,7 @@
 /obj/effect/floor_decal/borderfloor/corner,
 /obj/effect/floor_decal/corner/mauve/bordercorner,
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "lwV" = (
 /obj/structure/railing/grey{
 	dir = 8
@@ -15896,7 +15971,7 @@
 /area/station/hallway/endeavour/d1starboardamidhall)
 "lyR" = (
 /turf/simulated/wall/r_wall/prepainted/exploration,
-/area/endeavour/exploration/aux_hanger)
+/area/station/endeavour/exploration/aux_hanger)
 "lyX" = (
 /obj/map_helper/access_helper/airlock/station/exploration/department,
 /obj/structure/cable/green{
@@ -16115,6 +16190,13 @@
 /obj/structure/table/reinforced,
 /turf/simulated/floor/carpet/tealcarpet,
 /area/shuttle/civvie/general)
+"lFF" = (
+/obj/machinery/power/apc/north_mount,
+/obj/structure/cable/green{
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/plating,
+/area/station/hallway/endeavour/d1portaftmaint)
 "lGt" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -16781,7 +16863,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_fore)
+/area/station/endeavour/exploration/hallway_fore)
 "mew" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -16845,7 +16927,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "mfS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -16959,6 +17041,9 @@
 	},
 /obj/effect/floor_decal/corner/black{
 	dir = 10
+	},
+/obj/machinery/air_alarm{
+	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/lounge/kitchen_freezer)
@@ -17173,7 +17258,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_fore)
+/area/station/endeavour/exploration/hallway_fore)
 "muT" = (
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/plating,
@@ -17189,7 +17274,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "muZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/door/airlock/glass_external{
@@ -17433,7 +17518,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "mFi" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -17454,7 +17539,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "mFk" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
@@ -17515,7 +17600,7 @@
 /obj/effect/floor_decal/corner/mauve/border,
 /obj/structure/table/bench/steel,
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "mJc" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/paint/violet,
@@ -17686,6 +17771,9 @@
 	},
 /obj/structure/poster{
 	pixel_x = 32
+	},
+/obj/structure/cable/green{
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/station/hallway/endeavour/d1afthall)
@@ -18044,7 +18132,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_fore)
+/area/station/endeavour/exploration/hallway_fore)
 "mZA" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
@@ -18343,6 +18431,9 @@
 /obj/structure/catwalk,
 /obj/structure/disposalpipe/segment{
 	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
 /area/station/hallway/endeavour/d1portfwdmaint)
@@ -18760,7 +18851,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "nBX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -18770,7 +18861,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
-/area/endeavour/exploration/aux_hanger)
+/area/station/endeavour/exploration/aux_hanger)
 "nCd" = (
 /obj/machinery/holopad,
 /obj/structure/cable/green{
@@ -18934,7 +19025,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/endeavour/exploration/aux_hanger)
+/area/station/endeavour/exploration/hallway_fore)
 "nHQ" = (
 /obj/machinery/door/airlock/maintenance/engi{
 	req_one_access = null
@@ -19200,7 +19291,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_fore)
+/area/station/endeavour/exploration/hallway_fore)
 "nQc" = (
 /obj/effect/floor_decal/chapel,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -19333,7 +19424,7 @@
 	},
 /obj/map_helper/access_helper/airlock/station/exploration/department,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "nTo" = (
 /obj/machinery/portable_atmospherics/canister/empty,
 /obj/effect/floor_decal/industrial/warning/full,
@@ -19492,12 +19583,12 @@
 	},
 /obj/structure/table/bench/steel,
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "nZt" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/map_helper/paint/violet,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "obn" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -19508,7 +19599,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "obR" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/navgold/border,
@@ -19737,7 +19828,7 @@
 	},
 /obj/structure/flora/ausbushes/leafybush,
 /turf/simulated/floor/grass,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "oiQ" = (
 /obj/structure/catwalk,
 /obj/structure/cable{
@@ -19866,7 +19957,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/reinforced,
-/area/endeavour/exploration/aux_hanger)
+/area/station/endeavour/exploration/aux_hanger)
 "onL" = (
 /obj/structure/table/steel,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -19894,7 +19985,7 @@
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_fore)
+/area/station/endeavour/exploration/hallway_fore)
 "ooD" = (
 /obj/structure/table/bench/wooden,
 /obj/structure/disposalpipe/segment,
@@ -20168,7 +20259,7 @@
 "ozv" = (
 /obj/structure/sign/hangar/one,
 /turf/simulated/wall/r_wall/prepainted/exploration,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "ozD" = (
 /obj/machinery/portable_atmospherics/powered/pump/filled,
 /obj/effect/floor_decal/rust,
@@ -20182,7 +20273,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/reinforced,
-/area/endeavour/exploration/aux_hanger)
+/area/station/endeavour/exploration/aux_hanger)
 "oAD" = (
 /obj/structure/cryofeed{
 	dir = 4
@@ -20221,7 +20312,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_fore)
+/area/station/endeavour/exploration/hallway_fore)
 "oCT" = (
 /obj/machinery/door/airlock/voidcraft/vertical{
 	name = "cockpit hatch"
@@ -20847,7 +20938,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "pcO" = (
 /obj/machinery/holopad,
 /turf/simulated/floor/wood,
@@ -20937,9 +21028,6 @@
 	},
 /obj/effect/floor_decal/corner/black/full{
 	dir = 1
-	},
-/obj/machinery/air_alarm{
-	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/lounge/kitchen_freezer)
@@ -21469,6 +21557,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/misc_lab)
+"pxP" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/exploration/courser_dock)
 "pyh" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -22214,7 +22311,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_fore)
+/area/station/endeavour/exploration/hallway_fore)
 "qfK" = (
 /obj/item/radio/intercom{
 	dir = 1;
@@ -22768,7 +22865,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "qzv" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -22967,7 +23064,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "qEV" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -22999,6 +23096,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/endeavour/general)
+"qGZ" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/plating,
+/area/station/hallway/endeavour/d1portaftmaint)
 "qHc" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -23276,7 +23383,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "qPJ" = (
 /obj/structure/bed/chair/bay/comfy/blue{
 	dir = 1
@@ -23927,7 +24034,7 @@
 /area/station/hallway/endeavour/sauna)
 "rmZ" = (
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/endeavour/exploration/aux_hanger)
+/area/station/endeavour/exploration/hallway_fore)
 "rnc" = (
 /obj/machinery/fire_alarm/south_mount{
 	pixel_y = -25
@@ -23935,6 +24042,19 @@
 /obj/effect/mist,
 /turf/simulated/floor/wood,
 /area/station/hallway/endeavour/sauna)
+"rnG" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/navgold/border{
+	dir = 8
+	},
+/obj/machinery/power/apc/west_mount,
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/tiled/steel,
+/area/station/hallway/endeavour/d1afthall)
 "rnV" = (
 /obj/structure/sign/deck/first,
 /turf/simulated/wall/prepainted,
@@ -24777,7 +24897,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "rVK" = (
 /obj/machinery/door/firedoor,
 /obj/map_helper/airlock/door/int_door,
@@ -24871,6 +24991,17 @@
 /obj/structure/closet/crate,
 /turf/simulated/floor/plating,
 /area/station/hallway/endeavour/d1portfwdmaint)
+"rZB" = (
+/obj/structure/catwalk,
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/plating,
+/area/station/hallway/endeavour/d1amidportmaint)
 "saq" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/blue/border,
@@ -25006,7 +25137,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "sfh" = (
 /obj/structure/closet/coffin/comfy,
 /obj/machinery/light{
@@ -25079,7 +25210,7 @@
 /obj/effect/floor_decal/borderfloor/corner,
 /obj/effect/floor_decal/corner/mauve/bordercorner,
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_fore)
+/area/station/endeavour/exploration/hallway_fore)
 "sjw" = (
 /obj/structure/cable/green{
 	icon_state = "1-4"
@@ -25458,7 +25589,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
-/area/endeavour/exploration/aux_hanger)
+/area/station/endeavour/exploration/aux_hanger)
 "swG" = (
 /obj/structure/catwalk,
 /obj/structure/disposalpipe/segment{
@@ -25505,7 +25636,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "sxY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -26452,7 +26583,7 @@
 	},
 /obj/map_helper/access_helper/airlock/station/exploration/department,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/endeavour/exploration/aux_hanger)
+/area/station/endeavour/exploration/hallway_fore)
 "tgQ" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -26623,7 +26754,7 @@
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/paint/violet,
 /turf/simulated/floor/plating,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "toF" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/wood,
@@ -26716,7 +26847,7 @@
 "tsv" = (
 /obj/structure/ladder,
 /turf/simulated/floor/plating,
-/area/endeavour/exploration/hallway_fore)
+/area/station/endeavour/exploration/hallway_fore)
 "tsz" = (
 /obj/machinery/porta_turret/crescent{
 	density = 1;
@@ -26832,7 +26963,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_fore)
+/area/station/endeavour/exploration/hallway_fore)
 "tvv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -27379,7 +27510,7 @@
 	},
 /obj/machinery/vending/mre,
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "tNP" = (
 /obj/structure/cable/green{
 	icon_state = "2-4"
@@ -27397,7 +27528,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_fore)
+/area/station/endeavour/exploration/hallway_fore)
 "tNT" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
@@ -27492,7 +27623,7 @@
 	},
 /obj/structure/table/bench/steel,
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "tRa" = (
 /obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
@@ -28101,7 +28232,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "ulX" = (
 /obj/structure/bed/chair/sofa/blue/right,
 /turf/simulated/floor/carpet/arcadecarpet,
@@ -28341,7 +28472,7 @@
 	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "utU" = (
 /obj/machinery/porta_turret/crescent{
 	density = 1;
@@ -28585,7 +28716,7 @@
 /obj/effect/floor_decal/borderfloor/corner,
 /obj/effect/floor_decal/corner/mauve/bordercorner,
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "uAa" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -28665,7 +28796,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "uBH" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 5
@@ -29070,7 +29201,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "uRy" = (
 /obj/structure/table/standard,
 /obj/item/flashlight/lantern,
@@ -29482,7 +29613,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/endeavour/exploration/aux_hanger)
+/area/station/endeavour/exploration/hallway_fore)
 "veB" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
@@ -29662,7 +29793,7 @@
 	},
 /obj/machinery/camera/network/exploration,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/endeavour/exploration/aux_hanger)
+/area/station/endeavour/exploration/hallway_fore)
 "vkI" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -29671,7 +29802,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_fore)
+/area/station/endeavour/exploration/hallway_fore)
 "vlj" = (
 /obj/machinery/portable_atmospherics/powered/scrubber,
 /obj/machinery/light/small{
@@ -30172,7 +30303,7 @@
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "vDK" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/bridge)
@@ -30258,7 +30389,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "vGD" = (
 /obj/machinery/light{
 	dir = 1
@@ -30465,6 +30596,10 @@
 /obj/machinery/camera/network/exploration{
 	dir = 8
 	},
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
+/obj/machinery/power/apc/east_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/excursion_dock)
 "vLg" = (
@@ -30518,6 +30653,17 @@
 "vOo" = (
 /turf/simulated/wall/r_wall/prepainted/exploration,
 /area/rnd/research/testingrange)
+"vQC" = (
+/obj/structure/catwalk,
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/plating,
+/area/station/hallway/endeavour/d1amidportmaint)
 "vQN" = (
 /obj/effect/floor_decal/sign/a,
 /turf/simulated/wall/r_wall/prepainted,
@@ -30619,7 +30765,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "vVa" = (
 /obj/structure/table/steel,
 /obj/item/deck/cards{
@@ -30955,7 +31101,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "wkV" = (
 /obj/structure/cable/cyan{
 	icon_state = "2-8"
@@ -31172,7 +31318,7 @@
 /area/shuttle/civvie/general)
 "wuq" = (
 /turf/simulated/floor/plating,
-/area/endeavour/exploration/aux_hanger)
+/area/station/endeavour/exploration/aux_hanger)
 "wus" = (
 /obj/structure/railing/grey{
 	dir = 8
@@ -31254,7 +31400,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "wwG" = (
 /obj/structure/railing,
 /obj/structure/icecream_cart,
@@ -31268,7 +31414,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "wxj" = (
 /obj/structure/closet/crate,
 /obj/fiftyspawner/steel,
@@ -31377,6 +31523,13 @@
 /obj/structure/curtain/black,
 /turf/simulated/floor/plating,
 /area/chapel/main)
+"wAA" = (
+/obj/machinery/power/apc/north_mount,
+/obj/structure/cable/green{
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/plating,
+/area/station/hallway/endeavour/d1portfwdmaint)
 "wAB" = (
 /turf/simulated/wall/r_wall/prepainted/exploration,
 /area/exploration)
@@ -31390,7 +31543,7 @@
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
 /turf/simulated/floor/tiled,
-/area/endeavour/exploration/hallway_fore)
+/area/station/endeavour/exploration/hallway_fore)
 "wBb" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -31991,6 +32144,15 @@
 /obj/vehicle_old/train/trolley,
 /turf/simulated/floor/plating,
 /area/station/hallway/endeavour/d1portfwdmaint)
+"xdL" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/exploration/excursion_dock)
 "xdS" = (
 /obj/structure/table/standard,
 /obj/structure/bedsheetbin,
@@ -32148,6 +32310,16 @@
 /obj/random/plushielarge,
 /turf/simulated/floor/carpet/arcadecarpet,
 /area/station/hallway/endeavour/d1amidportmaint)
+"xjp" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/plating,
+/area/station/hallway/endeavour/d1amidstrbdmaint)
 "xjw" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -32286,7 +32458,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
-/area/endeavour/exploration/aux_hanger)
+/area/station/endeavour/exploration/aux_hanger)
 "xox" = (
 /obj/machinery/shipsensors,
 /turf/simulated/floor/plating{
@@ -32536,7 +32708,7 @@
 	},
 /obj/structure/flora/ausbushes/grassybush,
 /turf/simulated/floor/grass,
-/area/endeavour/exploration/hallway_aft)
+/area/station/endeavour/exploration/hallway_aft)
 "xuK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -32852,6 +33024,11 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/station/hallway/endeavour/d1starboardamidhall)
+"xEc" = (
+/obj/machinery/power/apc/east_mount,
+/obj/structure/cable/green,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/exploration/courser_dock)
 "xEx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -32964,7 +33141,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/endeavour/exploration/aux_hanger)
+/area/station/endeavour/exploration/hallway_fore)
 "xHd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -33195,6 +33372,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plating,
 /area/station/hallway/endeavour/d1amidportmaint)
 "xRn" = (
@@ -33204,6 +33384,10 @@
 	pixel_y = -24;
 	req_one_access = list(19,43,67);
 	dir = 1
+	},
+/obj/machinery/light{
+	dir = 4;
+	light_range = 12
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/courser_dock)
@@ -33573,6 +33757,12 @@
 /obj/effect/floor_decal/corner/navgold/border{
 	dir = 8
 	},
+/obj/machinery/power/apc/west_mount{
+	cell_type = /obj/item/cell/super
+	},
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/station/hallway/endeavour/d1starboardamidhall)
 "ycW" = (
@@ -33780,6 +33970,9 @@
 	},
 /obj/machinery/door/airlock/maintenance,
 /obj/map_helper/access_helper/airlock/station/maintenance,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plating,
 /area/station/hallway/endeavour/d1amidportmaint)
 "yld" = (
@@ -37425,7 +37618,7 @@ ihi
 ihi
 evs
 sQi
-rYG
+aaF
 rfr
 xUy
 ucg
@@ -39171,7 +39364,7 @@ ihi
 iee
 evs
 sQi
-rYG
+aaF
 mXH
 mXH
 hYh
@@ -40723,12 +40916,12 @@ ihi
 iee
 uCE
 sQi
-rYG
-mXH
+pxP
+xEc
 mXH
 mXH
 jug
-mXH
+dbL
 mXH
 usO
 oqJ
@@ -40906,7 +41099,7 @@ eCj
 vLg
 yaJ
 yaJ
-yaJ
+xdL
 yaJ
 yaJ
 yaJ
@@ -41100,7 +41293,7 @@ eCj
 iee
 ihi
 ihi
-ihi
+iee
 ihi
 ihi
 ihi
@@ -41294,7 +41487,7 @@ eCj
 nsi
 jQM
 bAB
-ihi
+iee
 sHS
 ihi
 ihi
@@ -43064,7 +43257,7 @@ qfe
 qfe
 nGE
 qfe
-qfe
+rnG
 dYa
 qfe
 lKF
@@ -43258,7 +43451,7 @@ vAm
 iui
 iui
 iui
-iui
+has
 qZl
 iui
 iui
@@ -47280,21 +47473,21 @@ xRj
 lyR
 lyR
 lyR
-lyR
-lyR
-lyR
-lyR
-lyR
-lyR
-lyR
-lyR
+fLR
+fLR
+fLR
+fLR
+fLR
+fLR
+fLR
+fLR
 lnF
 lnF
-lyR
+fLR
 lnF
 lnF
-lyR
-lyR
+fLR
+fLR
 clB
 wAL
 vDR
@@ -47488,7 +47681,7 @@ nBX
 swq
 dGc
 joP
-lyR
+fLR
 vdY
 tgG
 vDR
@@ -47682,7 +47875,7 @@ gLm
 kyW
 eGV
 gcd
-lyR
+fLR
 nHF
 bXx
 vDR
@@ -47697,8 +47890,8 @@ okP
 okP
 okP
 okP
-nUR
-tTr
+lFF
+qGZ
 xkO
 tTr
 wim
@@ -47876,7 +48069,7 @@ eGV
 eGV
 eGV
 eYH
-lyR
+fLR
 vkr
 jMJ
 vDR
@@ -48449,7 +48642,7 @@ eGV
 eGV
 eGV
 eGV
-eGV
+kYs
 eGV
 eGV
 eGV
@@ -48503,7 +48696,7 @@ vdU
 xfa
 vdU
 iDW
-vdU
+emB
 uhY
 xfa
 vdU
@@ -48697,7 +48890,7 @@ qJY
 qJY
 qJY
 qJY
-qJY
+xjp
 qJY
 qJY
 qJY
@@ -50190,16 +50383,16 @@ usG
 lyR
 eGV
 eGV
+kYs
 eGV
 eGV
 eGV
 eGV
+kYs
 eGV
 eGV
 eGV
-eGV
-eGV
-eGV
+kYs
 eGV
 eGV
 eGV
@@ -50774,7 +50967,7 @@ eGV
 eGV
 eGV
 eGV
-kYs
+eGV
 eGV
 eGV
 eGV
@@ -52329,7 +52522,7 @@ eGV
 eGV
 eGV
 eGV
-eGV
+kYs
 eGV
 eGV
 eGV
@@ -52954,7 +53147,7 @@ qbr
 pNN
 pNN
 pNN
-pNN
+arJ
 bcq
 pNN
 pNN
@@ -56809,8 +57002,8 @@ xZn
 ffi
 ffi
 ffi
-unL
-swG
+rZB
+vQC
 ffi
 jxt
 axC
@@ -57198,7 +57391,7 @@ etv
 nyR
 wzS
 etv
-pVh
+dfa
 uTX
 etv
 xdI
@@ -57392,7 +57585,7 @@ etv
 nyR
 qXH
 giF
-pVh
+dfa
 etv
 etv
 pjJ
@@ -57778,9 +57971,9 @@ xZn
 xZn
 etv
 nyR
-etv
-etv
-pVh
+wAA
+hGF
+cCA
 etv
 etv
 etv

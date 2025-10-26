@@ -28,7 +28,7 @@
 */
 
 /** Exploration
- */
+
 /area/endeavour/exploration
 	name = "\improper Exploration Department"
 	icon_state = "purple"
@@ -44,9 +44,9 @@
 /area/endeavour/exploration/aux_hanger
 	name = "\improper Exploration Auxilliary Hanger"
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
+*/
 
 /** Medical
- */
 
 /area/medical/virology_fore_access
 	name = "\improper Virology Fore Access"
@@ -67,9 +67,10 @@
 	name = "\improper Medical Locker Room"
 	icon_state = "medbay"
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
+*/
 
 /** Substations
- */
+
 
 /area/engineering/substation
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
@@ -133,3 +134,4 @@
 	name = "\improper Deck 4 Aft Substation"
 	icon_state = "engineering"
 	ambience = AMBIENCE_SUBSTATION
+*/
