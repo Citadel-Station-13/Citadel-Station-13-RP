@@ -1,19 +1,21 @@
 /** Civillian
- */
+
 /area/endeavour/civillian/evastorage
 	name = "\improper Public EVA Storage"
 	icon_state = "purple"
 	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
+*/
 
 /** Command
- */
+
 /area/endeavour/command/turrets
 	name = "\improper Auxiliary Bridge"
 	icon_state = "bridge"
 	nightshift_level = NIGHTSHIFT_LEVEL_COMMAND_FACILITIES
+*/
 
 /** Science
- */
+
 /area/rnd/robotics/morgue
 	name = "\improper Robotics Morgue"
 	icon_state = "robotics"
@@ -23,6 +25,7 @@
 	name = "\improper Small Craft and Probe Assembly"
 	icon_state = "robotics"
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
+*/
 
 /** Exploration
  */

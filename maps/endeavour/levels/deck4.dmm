@@ -53,7 +53,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "acm" = (
 /obj/effect/floor_decal/corner/blue/diagonal,
 /obj/machinery/air_alarm/south_mount,
@@ -495,7 +495,7 @@
 /obj/machinery/lathe/r_n_d/circuit_imprinter,
 /obj/item/reagent_containers/glass/beaker,
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "avD" = (
 /obj/machinery/computer/ship/helm{
 	dir = 8
@@ -504,7 +504,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "awG" = (
 /obj/machinery/space_heater,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -650,7 +650,7 @@
 	id = "starboard_battery"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "aDm" = (
 /obj/structure/closet/radiation,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -898,7 +898,7 @@
 	},
 /obj/machinery/atmospherics/portables_connector,
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "aLj" = (
 /obj/structure/closet/firecloset/full,
 /obj/effect/floor_decal/spline/plain{
@@ -1135,7 +1135,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "aZc" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -1649,7 +1649,7 @@
 	},
 /obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "buV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -2028,7 +2028,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "bPS" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -2191,7 +2191,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "bVF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 1
@@ -2215,7 +2215,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "bXA" = (
 /obj/machinery/camera/network/outside{
 	dir = 8
@@ -2302,6 +2302,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/station/hallway/endeavour/d4starboardhall)
+"bZN" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless/ceiling,
+/area/station/endeavour/command/turrets)
 "can" = (
 /obj/effect/floor_decal/techfloor/orange/corner{
 	dir = 4
@@ -2414,7 +2418,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "cgT" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -2614,7 +2618,7 @@
 "cpG" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "cqe" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -2662,7 +2666,7 @@
 	pixel_y = 28
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "cso" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 5
@@ -2838,7 +2842,7 @@
 	},
 /obj/item/radio/beacon,
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "cBS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 5
@@ -3006,7 +3010,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "cGP" = (
 /obj/item/radio/intercom/west_mount{
 	pixel_x = 28
@@ -3181,10 +3185,10 @@
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "cPq" = (
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "cPu" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/map_helper/paint/sun,
@@ -3204,7 +3208,7 @@
 	},
 /obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "cQu" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -3548,7 +3552,7 @@
 	opacity = 0
 	},
 /turf/simulated/floor/tiled,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "dkm" = (
 /obj/machinery/door/airlock/glass/engineering,
 /obj/map_helper/access_helper/airlock/station/engineering/equipment,
@@ -3633,7 +3637,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "dlT" = (
 /obj/structure/table/rack{
 	dir = 8;
@@ -3725,7 +3729,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "dpt" = (
 /obj/effect/floor_decal/borderfloorblack/corner2{
 	alpha = 255;
@@ -4030,7 +4034,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "dCE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -4353,7 +4357,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "dTA" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -4403,8 +4407,6 @@
 /obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/reinforced,
 /area/maintenance/security/lower)
-"dYW" = (
-/turf/simulated/wall/r_wall/prepainted)
 "dZr" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -4464,7 +4466,7 @@
 	color = "#FF0000"
 	},
 /turf/simulated/floor/plating,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "eao" = (
 /obj/effect/floor_decal/corner_oldtile/white/diagonal,
 /obj/structure/table/marble,
@@ -4682,7 +4684,7 @@
 /area/tcommsat/entrance)
 "ekG" = (
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "ekS" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/black{
 	dir = 4
@@ -5006,7 +5008,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "eyA" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/lightorange/border,
@@ -5081,6 +5083,14 @@
 "eAu" = (
 /turf/simulated/wall/r_wall/prepainted/security,
 /area/engineering/portnacelle)
+"eAZ" = (
+/obj/machinery/porta_turret/crescent{
+	density = 1;
+	faction = "neutral"
+	},
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless/ceiling,
+/area/station/endeavour/command/turrets)
 "eBL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -5284,12 +5294,12 @@
 	name = "Hangar Maintenance Shutter"
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "eLR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "eMc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -5455,7 +5465,7 @@
 /area/tcommsat/computer)
 "eRS" = (
 /turf/simulated/wall/r_wall/prepainted/command,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "eSa" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/structure/disposalpipe/segment{
@@ -5618,7 +5628,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "eZb" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -5809,7 +5819,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "fiC" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 10
@@ -5824,7 +5834,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "fjk" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -6007,7 +6017,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "fxi" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/red{
 	dir = 4
@@ -6418,7 +6428,7 @@
 /area/station/hallway/endeavour/d4fwdhall)
 "fMI" = (
 /turf/simulated/floor/tiled/techfloor,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "fNj" = (
 /obj/structure/table/steel,
 /obj/machinery/cell_charger{
@@ -6515,7 +6525,7 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/item/storage/toolbox/emergency,
 /turf/simulated/floor/plating,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "fRo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -6875,7 +6885,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "gcn" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -7201,7 +7211,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "gtE" = (
 /obj/machinery/space_heater,
 /obj/effect/floor_decal/industrial/warning,
@@ -7795,7 +7805,7 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/mech_recharger,
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "gXG" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -7827,7 +7837,7 @@
 	pixel_y = 30
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "gZD" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
@@ -7968,13 +7978,13 @@
 /obj/machinery/air_alarm/west_mount,
 /obj/machinery/lathe/mecha_part_fabricator,
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "hhb" = (
 /obj/machinery/camera/network/command{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "hhc" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/engineering,
@@ -8095,7 +8105,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "hnd" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -8263,7 +8273,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "htI" = (
 /obj/structure/railing{
 	dir = 1
@@ -8275,7 +8285,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "htR" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/storage/briefcase/inflatable,
@@ -8475,7 +8485,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "hEn" = (
 /obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -8512,7 +8522,7 @@
 "hHv" = (
 /obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/tiled/techfloor,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "hHC" = (
 /obj/structure/window/basic{
 	dir = 1
@@ -8602,11 +8612,11 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "hKh" = (
 /obj/machinery/light/no_nightshift,
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "hKP" = (
 /obj/effect/floor_decal/corner_oldtile/white/diagonal,
 /obj/machinery/appliance/mixer/cereal,
@@ -8681,7 +8691,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "hNL" = (
 /obj/machinery/portable_atmospherics/canister/phoron,
 /turf/simulated/floor/plating,
@@ -8754,7 +8764,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "hPS" = (
 /obj/effect/floor_decal/spline/fancy{
 	dir = 8
@@ -8867,7 +8877,7 @@
 	desc = "Breech end of a mass driver. A sliding breechblock reminiscient of a naval artillery piece rises on rails to allow for loading before slamming back down into place."
 	},
 /turf/simulated/floor/plating,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "hUe" = (
 /obj/machinery/power/terminal{
 	dir = 8
@@ -9072,7 +9082,7 @@
 "iev" = (
 /obj/item/radio/beacon,
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "ieH" = (
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -9227,14 +9237,14 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "inf" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "inz" = (
 /obj/effect/floor_decal/borderfloorblack/corner{
 	alpha = 255;
@@ -9468,7 +9478,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "iyC" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -9529,7 +9539,7 @@
 	name = "Hangar Maintenance Shutter"
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "iBS" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/tank/emergency/oxygen/engi,
@@ -9560,7 +9570,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "iDP" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
@@ -9755,11 +9765,11 @@
 /obj/effect/floor_decal/industrial/warning,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "iKE" = (
 /obj/structure/mirror/long/left,
 /turf/simulated/wall/r_wall/prepainted/civilian,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "iLk" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
@@ -10002,7 +10012,7 @@
 "iZE" = (
 /obj/structure/mirror/long/right,
 /turf/simulated/wall/r_wall/prepainted/civilian,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "iZT" = (
 /turf/simulated/wall/r_wall/prepainted/engineering,
 /area/storage/tech)
@@ -10096,7 +10106,7 @@
 /area/tcommsat/chamber)
 "jds" = (
 /turf/simulated/wall/r_wall/prepainted/civilian,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "jdF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 8
@@ -10178,7 +10188,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "jgS" = (
 /obj/machinery/door/blast/regular{
 	dir = 2;
@@ -10187,7 +10197,7 @@
 	},
 /obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/plating,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "jhg" = (
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -10255,7 +10265,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "jip" = (
 /obj/structure/table/hardwoodtable,
 /obj/item/stamp/ce{
@@ -10310,7 +10320,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "jiY" = (
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -10667,7 +10677,7 @@
 "jyj" = (
 /obj/machinery/camera/network/research,
 /turf/simulated/floor/tiled/techfloor,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "jyr" = (
 /turf/simulated/wall/r_wall/prepainted/security,
 /area/maintenance/security/lower)
@@ -11034,7 +11044,7 @@
 	},
 /obj/machinery/mech_recharger,
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "jNg" = (
 /turf/space,
 /area/space)
@@ -11172,7 +11182,7 @@
 	name = "Mass Driver Loading Tray"
 	},
 /turf/simulated/floor/plating,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "jUK" = (
 /turf/simulated/wall/prepainted/engineering,
 /area/engineering/workshop)
@@ -11333,7 +11343,7 @@
 	color = "#00000ff"
 	},
 /turf/simulated/floor/plating,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "kgO" = (
 /obj/machinery/air_alarm/north_mount,
 /turf/simulated/floor/plating,
@@ -11753,7 +11763,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "kDW" = (
 /obj/structure/closet/radiation,
 /obj/machinery/light{
@@ -11996,7 +12006,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "kRL" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 10
@@ -12688,7 +12698,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "lwx" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -12703,7 +12713,7 @@
 	pixel_x = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "lwV" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 4
@@ -12853,7 +12863,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "lDT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -13054,7 +13064,7 @@
 "lOz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/techfloor,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "lOK" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -13355,7 +13365,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "maS" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -14476,7 +14486,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "mTS" = (
 /obj/machinery/light,
 /turf/simulated/floor/tiled/dark,
@@ -14523,7 +14533,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "mWm" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/simulated/floor/tiled/techmaint,
@@ -14574,7 +14584,7 @@
 "naO" = (
 /obj/effect/floor_decal/corner/navgold/full,
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "nby" = (
 /obj/machinery/light{
 	dir = 1
@@ -14733,7 +14743,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "nkT" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -14788,7 +14798,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "nmL" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
@@ -15107,7 +15117,7 @@
 /obj/machinery/air_alarm/north_mount,
 /obj/machinery/space_heater,
 /turf/simulated/floor/plating,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "nwJ" = (
 /turf/simulated/floor/carpet/patterened,
 /area/engineering/break_room/lower)
@@ -15151,7 +15161,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "nzV" = (
 /obj/machinery/door/airlock/command{
 	id_tag = "EndeavourCEdoor";
@@ -15405,7 +15415,7 @@
 "nJx" = (
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless/ceiling,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "nJz" = (
 /obj/structure/table/marble,
 /obj/machinery/door/blast/shutters{
@@ -15488,7 +15498,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "nNv" = (
 /obj/machinery/power/smes/buildable/engine/rust,
 /obj/structure/cable/cyan{
@@ -15538,7 +15548,7 @@
 	},
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "nRc" = (
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 10
@@ -15547,11 +15557,11 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "nRg" = (
 /obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/techfloor,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "nRE" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
@@ -15571,7 +15581,7 @@
 "nRW" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/tiled/techfloor,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "nRY" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 10
@@ -15825,7 +15835,7 @@
 	name = "Hangar Maintenance Shutter"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "ofz" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/steel,
@@ -15843,7 +15853,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "oie" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/navblue/border,
@@ -15912,7 +15922,7 @@
 /obj/effect/floor_decal/industrial/warning,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "oms" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/structure/disposalpipe/segment{
@@ -16178,7 +16188,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "oyr" = (
 /obj/structure/railing{
 	dir = 1
@@ -16191,7 +16201,7 @@
 	},
 /obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled/techfloor,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "oyv" = (
 /obj/item/coffee_cartridge{
 	pixel_y = 11;
@@ -16471,7 +16481,7 @@
 	faction = "neutral"
 	},
 /turf/simulated/floor/airless/ceiling,
-/area/space)
+/area/station/endeavour/command/turrets)
 "oRx" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -16707,7 +16717,7 @@
 "pdB" = (
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "pea" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -17527,7 +17537,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "pTX" = (
 /obj/effect/shuttle_landmark/automatic{
 	name = "For Tug class vessels "
@@ -17859,7 +17869,7 @@
 	color = "#FF0000"
 	},
 /turf/simulated/floor/plating,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "qmW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -18532,7 +18542,7 @@
 	},
 /obj/structure/reagent_dispensers/fueltank,
 /turf/simulated/floor/tiled/techfloor,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "qRA" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/storage/toolbox/emergency,
@@ -18778,7 +18788,7 @@
 	},
 /obj/map_helper/access_helper/airlock/station/command/bridge,
 /turf/simulated/floor/plating,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "rfg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/visible/aux{
@@ -18792,7 +18802,7 @@
 	id = "port_battery"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "rfP" = (
 /obj/structure/railing{
 	dir = 4
@@ -18909,7 +18919,7 @@
 	},
 /obj/machinery/mech_recharger,
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "rpk" = (
 /obj/landmark/spawnpoint/job/ai,
 /obj/item/radio/intercom{
@@ -19142,7 +19152,7 @@
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "rAW" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
@@ -19220,7 +19230,7 @@
 "rHl" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "rIS" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -19305,7 +19315,7 @@
 	desc = "The business end of a mass driver, the magnetic coils in this tube accelerate things shoved into it when power is applied."
 	},
 /turf/simulated/floor/plating,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "rME" = (
 /obj/machinery/camera/network/outside{
 	dir = 1
@@ -19329,7 +19339,7 @@
 	},
 /obj/machinery/suit_cycler,
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "rOO" = (
 /obj/machinery/air_alarm/east_mount,
 /turf/simulated/floor/tiled/techfloor,
@@ -19725,7 +19735,7 @@
 "sfK" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "sgN" = (
 /obj/machinery/light{
 	dir = 4
@@ -19936,7 +19946,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "suV" = (
 /obj/machinery/atmospherics/pipe/vent{
 	dir = 1
@@ -20003,7 +20013,7 @@
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "szp" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/simple/visible/blue{
@@ -20147,7 +20157,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "sGE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/floor_decal/industrial/warning{
@@ -20156,7 +20166,7 @@
 /obj/effect/floor_decal/industrial/warning,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "sHl" = (
 /obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
@@ -20164,7 +20174,7 @@
 	},
 /obj/structure/closet/secure_closet/guncabinet/robotics,
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "sIk" = (
 /obj/effect/floor_decal/borderfloorwhite/cee{
 	dir = 8
@@ -20221,7 +20231,7 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "sKS" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 10
@@ -20399,7 +20409,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "sRs" = (
 /turf/simulated/wall/prepainted/engineering/atmos,
 /area/station/hallway/endeavour/d4fwdportmaint)
@@ -20513,7 +20523,7 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/atmospherics/portables_connector,
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "sYO" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -20794,7 +20804,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "toL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 8
@@ -20814,7 +20824,7 @@
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/glass,
 /turf/simulated/floor/tiled/techfloor,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "tpL" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 4
@@ -20874,7 +20884,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "tqB" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -20895,7 +20905,7 @@
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "trA" = (
 /obj/effect/floor_decal/corner_oldtile/white/diagonal,
 /obj/structure/disposalpipe/segment{
@@ -21064,7 +21074,7 @@
 	opacity = 0
 	},
 /turf/simulated/floor/tiled,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "tBV" = (
 /turf/simulated/floor/tiled,
 /area/station/hallway/endeavour/aft_stairs_four)
@@ -21313,7 +21323,7 @@
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "tMO" = (
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
@@ -22226,7 +22236,7 @@
 	opacity = 0
 	},
 /turf/simulated/floor/tiled,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "uAt" = (
 /obj/machinery/light{
 	dir = 4
@@ -22671,7 +22681,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "uXD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -22839,7 +22849,7 @@
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/shoes/magboots,
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "vdr" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -22865,7 +22875,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "vdL" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -23001,7 +23011,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "vkX" = (
 /obj/machinery/door/firedoor/glass{
 	dir = 8
@@ -23110,7 +23120,7 @@
 /area/crew_quarters/heads/chief)
 "vqC" = (
 /turf/simulated/wall/r_wall/prepainted,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "vqQ" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/cedouble,
@@ -23363,7 +23373,7 @@
 	name = "Hangar Maintenance Shutter"
 	},
 /turf/simulated/floor/tiled/steel_ridged,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "vAi" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 5
@@ -23429,7 +23439,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "vDT" = (
 /obj/structure/table/rack{
 	dir = 8;
@@ -23667,7 +23677,7 @@
 	},
 /obj/machinery/camera/network/command,
 /turf/simulated/floor/plating,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "vMN" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -31
@@ -23917,7 +23927,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "vWy" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -23942,7 +23952,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "vWV" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -24054,7 +24064,7 @@
 	},
 /obj/machinery/air_alarm/north_mount,
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "wbp" = (
 /obj/structure/closet/chefcloset,
 /obj/item/glass_jar,
@@ -24234,7 +24244,7 @@
 	opacity = 0
 	},
 /turf/simulated/floor/tiled,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "wlC" = (
 /obj/machinery/telecomms/relay/preset/endeavour/deck_two,
 /turf/simulated/floor/tiled/dark{
@@ -24312,7 +24322,7 @@
 	},
 /obj/machinery/recharge_station,
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "wqa" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -24849,7 +24859,7 @@
 	},
 /obj/effect/floor_decal/corner/yellow,
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "wSS" = (
 /obj/machinery/air_alarm/east_mount,
 /obj/machinery/camera/network/civilian{
@@ -25013,7 +25023,7 @@
 	id = "port_battery"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "wYt" = (
 /turf/simulated/floor/plating,
 /turf/simulated/floor/plating,
@@ -25130,7 +25140,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "xfa" = (
 /obj/machinery/light{
 	dir = 4
@@ -25831,7 +25841,7 @@
 	},
 /obj/effect/floor_decal/corner/paleblue,
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "xKs" = (
 /obj/structure/catwalk,
 /obj/machinery/light/small{
@@ -26064,7 +26074,7 @@
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/techfloor,
-/area/rnd/robotics/smallcraft)
+/area/station/endeavour/rnd/robotics/smallcraft)
 "xXV" = (
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
@@ -26149,7 +26159,7 @@
 	},
 /obj/machinery/air_alarm/north_mount,
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "ycR" = (
 /obj/machinery/door/firedoor/glass{
 	dir = 8
@@ -26171,7 +26181,7 @@
 	},
 /obj/structure/bed/chair/bay/comfy,
 /turf/simulated/floor/tiled/techfloor,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "ydV" = (
 /obj/machinery/porta_turret/ai_defense,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -30154,7 +30164,7 @@ jNg
 jNg
 jNg
 jNg
-usG
+bZN
 saA
 saA
 saA
@@ -30212,7 +30222,7 @@ heJ
 heJ
 heJ
 heJ
-usG
+bZN
 jNg
 jNg
 jNg
@@ -30348,7 +30358,7 @@ jNg
 jNg
 jNg
 xRj
-cRV
+eAZ
 saA
 saA
 saA
@@ -30542,7 +30552,7 @@ jNg
 jNg
 jNg
 xRj
-usG
+bZN
 saA
 saA
 saA
@@ -30600,7 +30610,7 @@ heJ
 heJ
 heJ
 heJ
-usG
+bZN
 jNg
 jNg
 jNg
@@ -33259,7 +33269,7 @@ jNg
 jNg
 jNg
 xRj
-usG
+bZN
 saA
 saA
 hZt
@@ -33315,7 +33325,7 @@ cce
 kqL
 heJ
 heJ
-usG
+bZN
 jNg
 jNg
 jNg
@@ -33453,7 +33463,7 @@ jNg
 jNg
 jNg
 xRj
-cRV
+eAZ
 saA
 saA
 hZt
@@ -33647,7 +33657,7 @@ jNg
 jNg
 jNg
 xRj
-usG
+bZN
 saA
 saA
 hZt
@@ -33703,7 +33713,7 @@ lFU
 kqL
 heJ
 heJ
-usG
+bZN
 jNg
 jNg
 jNg
@@ -39143,7 +39153,7 @@ pcf
 pbv
 uUN
 uUN
-usG
+bZN
 jNg
 jNg
 jNg
@@ -39337,7 +39347,7 @@ tqu
 tqu
 tqu
 tqu
-cRV
+eAZ
 xRj
 jNg
 jNg
@@ -39531,7 +39541,7 @@ vWo
 wGk
 ezz
 tqu
-usG
+bZN
 jNg
 jNg
 jNg
@@ -40620,7 +40630,7 @@ xRj
 jNg
 jNg
 jNg
-usG
+bZN
 uuN
 uuN
 uuN
@@ -40814,7 +40824,7 @@ xRj
 jNg
 jNg
 xRj
-cRV
+eAZ
 ovt
 jUK
 jUK
@@ -41008,7 +41018,7 @@ xRj
 jNg
 jNg
 jNg
-usG
+bZN
 ovt
 mCW
 mCW
@@ -44705,7 +44715,7 @@ xRj
 jNg
 xRj
 xRj
-xRj
+usG
 cnc
 fZH
 hse
@@ -44761,7 +44771,7 @@ rEl
 eCt
 pUy
 mgC
-jNg
+usG
 jNg
 jNg
 jNg
@@ -45484,7 +45494,7 @@ jNg
 jNg
 xRj
 xRj
-usG
+bZN
 hes
 hes
 tiO
@@ -45534,7 +45544,7 @@ xKI
 xKI
 xKI
 xKI
-usG
+bZN
 xRj
 xRj
 jNg
@@ -45678,8 +45688,8 @@ jNg
 jNg
 xRj
 xRj
-usG
-cRV
+bZN
+eAZ
 hes
 yeM
 nPO
@@ -45727,8 +45737,8 @@ ahp
 xKI
 xKI
 xKI
-cRV
-usG
+eAZ
+bZN
 xRj
 xRj
 jNg
@@ -45873,7 +45883,7 @@ jNg
 jNg
 xRj
 xRj
-usG
+bZN
 hes
 hes
 hes
@@ -45921,7 +45931,7 @@ ahp
 xKI
 xKI
 xKI
-usG
+bZN
 xRj
 xRj
 xRj
@@ -54808,7 +54818,7 @@ xRj
 xRj
 xRj
 jNg
-usG
+bZN
 mre
 uqd
 tLw
@@ -55002,7 +55012,7 @@ xRj
 xRj
 xRj
 jNg
-cRV
+eAZ
 mre
 mre
 mre
@@ -55028,7 +55038,7 @@ wso
 ipP
 mIL
 mIL
-usG
+bZN
 jNg
 jNg
 jNg
@@ -55196,7 +55206,7 @@ xRj
 xRj
 xRj
 jNg
-usG
+bZN
 mre
 mre
 mre
@@ -55222,7 +55232,7 @@ mIL
 mIL
 mIL
 mIL
-cRV
+eAZ
 xRj
 jNg
 jNg
@@ -55416,7 +55426,7 @@ mIL
 mIL
 mIL
 mIL
-usG
+bZN
 xRj
 jNg
 jNg
@@ -55607,7 +55617,7 @@ wMU
 jsW
 mIL
 mIL
-usG
+bZN
 jNg
 mtv
 xRj
@@ -55800,8 +55810,8 @@ oTw
 wSS
 dFZ
 mIL
-cRV
-usG
+eAZ
+bZN
 jNg
 jNg
 jNg
@@ -55974,8 +55984,8 @@ xRj
 jNg
 xRj
 xRj
-usG
-cRV
+bZN
+eAZ
 mre
 vqC
 rMC
@@ -55993,8 +56003,8 @@ iUB
 iUB
 iUB
 iUB
-usG
-usG
+bZN
+bZN
 jNg
 jNg
 jNg
@@ -56169,7 +56179,7 @@ jNg
 xRj
 xRj
 jNg
-usG
+bZN
 mre
 vqC
 eaj
@@ -56365,7 +56375,7 @@ jNg
 xRj
 xRj
 jNg
-dYW
+vqC
 qmL
 vqC
 qmL
@@ -56377,8 +56387,8 @@ jgS
 jgS
 iUB
 iUB
-cRV
-usG
+eAZ
+bZN
 xRj
 jNg
 xRj
@@ -56559,7 +56569,7 @@ xRj
 xRj
 xRj
 jNg
-dYW
+vqC
 nJx
 vqC
 nJx
@@ -56570,8 +56580,8 @@ nJx
 nJx
 nJx
 iUB
-usG
-usG
+bZN
+bZN
 jNg
 xRj
 jNg

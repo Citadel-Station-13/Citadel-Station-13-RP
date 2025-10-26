@@ -1,5 +1,6 @@
 // Transfer Shuttle docking area
-/area/station/endeavour/space/tram
+
+/area/station/space/endeavour/tram
 	name = "\improper Transfer Shuttle Docking"
 	icon_state = "dk_yellow"
 	area_flags = AREA_FLAG_ERODING
@@ -533,6 +534,140 @@
 	name = "\improper Exploration Aft Hallway"
 
 /area/station/hallway/endeavour/exploration/aux_hanger
+	name = "\improper Exploration Auxilliary Hanger"
+	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
+
+/** Medical
+ */
+
+/area/station/endeavour/medical/virology_fore_access
+	name = "\improper Virology Fore Access"
+	icon_state = "virology"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
+
+/area/station/endeavour/medical/virology_aft_access
+	name = "\improper Virology Aft Access"
+	icon_state = "virology"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
+
+/area/station/endeavour/medical/cmo_dorm
+	name = "\improper CMO Dormitory"
+	icon_state = "medbay"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_LEISURE
+
+/area/station/endeavour/medical/locker_room
+	name = "\improper Medical Locker Room"
+	icon_state = "medbay"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
+
+/** Substations
+ */
+
+/area/station/endeavour/engineering/substation
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
+
+/area/station/endeavour/engineering/substation/deck1forward
+	name = "\improper Deck 1 Foreward Substation"
+	icon_state = "engineering"
+	ambience = AMBIENCE_SUBSTATION
+
+/area/station/endeavour/engineering/substation/deck1amidships
+	name = "\improper Deck 1 Amidships Substation"
+	icon_state = "engineering"
+	ambience = AMBIENCE_SUBSTATION
+
+/area/station/endeavour/engineering/substation/deck1aft
+	name = "\improper Deck 1 Aft Substation"
+	icon_state = "engineering"
+	ambience = AMBIENCE_SUBSTATION
+
+/area/station/endeavour/engineering/substation/deck2forward
+	name = "\improper Deck 2 Foreward Substation"
+	icon_state = "engineering"
+	ambience = AMBIENCE_SUBSTATION
+
+/area/station/endeavour/engineering/substation/deck2amidships
+	name = "\improper Deck 2 Amidships Substation"
+	icon_state = "engineering"
+	ambience = AMBIENCE_SUBSTATION
+
+/area/station/endeavour/engineering/substation/deck2aft
+	name = "\improper Deck 2 Aft Substation"
+	icon_state = "engineering"
+	ambience = AMBIENCE_SUBSTATION
+
+/area/station/endeavour/engineering/substation/deck3forward
+	name = "\improper Deck 3 Foreward Substation"
+	icon_state = "engineering"
+	ambience = AMBIENCE_SUBSTATION
+
+/area/station/endeavour/engineering/substation/deck3amidships
+	name = "\improper Deck 3 Amidships Substation"
+	icon_state = "engineering"
+	ambience = AMBIENCE_SUBSTATION
+
+/area/station/endeavour/engineering/substation/deck3aft
+	name = "\improper Deck 3 Aft Substation"
+	icon_state = "engineering"
+	ambience = AMBIENCE_SUBSTATION
+
+/area/station/endeavour/engineering/substation/deck4forward
+	name = "\improper Deck 4 Foreward Substation"
+	icon_state = "engineering"
+	ambience = 'sound/ambience/engineering/engineering3.ogg'
+
+/area/station/endeavour/engineering/substation/deck4amidships
+	name = "\improper Deck 4 Amidships Substation"
+	icon_state = "engineering"
+	ambience = AMBIENCE_SUBSTATION
+
+/area/station/endeavour/engineering/substation/deck4aft
+	name = "\improper Deck 4 Aft Substation"
+	icon_state = "engineering"
+	ambience = AMBIENCE_SUBSTATION
+
+
+/** Civillian
+ */
+/area/station/endeavour/civilian/evastorage
+	name = "\improper Public EVA Storage"
+	icon_state = "purple"
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
+
+/** Command
+ */
+/area/station/endeavour/command/turrets
+	name = "\improper Auxiliary Bridge"
+	icon_state = "bridge"
+	nightshift_level = NIGHTSHIFT_LEVEL_COMMAND_FACILITIES
+
+/** Science
+ */
+/area/station/endeavour/rnd/robotics/morgue
+	name = "\improper Robotics Morgue"
+	icon_state = "robotics"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
+
+/area/station/endeavour/rnd/robotics/smallcraft
+	name = "\improper Small Craft and Probe Assembly"
+	icon_state = "robotics"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
+
+/** Exploration
+ */
+/area/station/endeavour/exploration
+	name = "\improper Exploration Department"
+	icon_state = "purple"
+	holomap_color = HOLOMAP_AREACOLOR_SCIENCE
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_HALLWAYS
+
+/area/station/endeavour/exploration/hallway_fore
+	name = "\improper Exploration Fore Hallway"
+
+/area/station/endeavour/exploration/hallway_aft
+	name = "\improper Exploration Aft Hallway"
+
+/area/station/endeavour/exploration/aux_hanger
 	name = "\improper Exploration Auxilliary Hanger"
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 

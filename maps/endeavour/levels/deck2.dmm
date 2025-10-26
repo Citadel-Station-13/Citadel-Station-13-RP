@@ -3610,7 +3610,7 @@
 /area/medical/reception)
 "cwy" = (
 /turf/simulated/wall/prepainted/science,
-/area/rnd/robotics/morgue)
+/area/station/endeavour/rnd/robotics/morgue)
 "cwF" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/station/hallway/endeavour/d2fwdstrbdmaint)
@@ -6762,7 +6762,7 @@
 	dir = 2
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/rnd/robotics/morgue)
+/area/station/endeavour/rnd/robotics/morgue)
 "eCi" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
@@ -7166,7 +7166,7 @@
 "eTf" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/plating,
-/area/space)
+/area/station/hallway/endeavour/d2fwdmaint)
 "eUd" = (
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 6
@@ -7305,7 +7305,7 @@
 "eWn" = (
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless/ceiling,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "eWN" = (
 /obj/structure/table/bench/padded,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -13382,7 +13382,7 @@
 /obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled/techfloor,
-/area/rnd/robotics/morgue)
+/area/station/endeavour/rnd/robotics/morgue)
 "jsq" = (
 /obj/structure/sign/greencross{
 	name = "Authorized Medical Personnel Only";
@@ -14094,7 +14094,7 @@
 	},
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless/ceiling,
-/area/space)
+/area/station/endeavour/command/turrets)
 "jUR" = (
 /obj/structure/closet/crate/mimic/closet/safe,
 /turf/simulated/floor/plating,
@@ -14541,8 +14541,7 @@
 	faction = "neutral"
 	},
 /obj/machinery/shield_diffuser,
-/turf/simulated/floor/airless/ceiling,
-/area/endeavour/command/turrets)
+/turf/simulated/floor/airless/ceiling)
 "kmg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 1
@@ -14725,7 +14724,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/rnd/robotics/morgue)
+/area/station/endeavour/rnd/robotics/morgue)
 "kuF" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -14934,8 +14933,7 @@
 /area/station/hallway/endeavour/d2fwdstrbdmaint)
 "kED" = (
 /obj/machinery/shield_diffuser,
-/turf/simulated/floor/airless/ceiling,
-/area/space)
+/turf/simulated/floor/airless/ceiling)
 "kER" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/carpet/blucarpet,
@@ -15267,7 +15265,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/rnd/robotics/morgue)
+/area/station/endeavour/rnd/robotics/morgue)
 "kTq" = (
 /obj/structure/closet,
 /obj/random/maintenance/clean,
@@ -16371,7 +16369,7 @@
 "lDX" = (
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled/techfloor,
-/area/rnd/robotics/morgue)
+/area/station/endeavour/rnd/robotics/morgue)
 "lEi" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -19826,7 +19824,7 @@
 /obj/machinery/shield_diffuser,
 /obj/machinery/camera/network/outside,
 /turf/simulated/floor/airless/ceiling,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "ogu" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -20531,7 +20529,7 @@
 /area/medical/medbay4)
 "oIG" = (
 /turf/simulated/floor/tiled/techfloor,
-/area/rnd/robotics/morgue)
+/area/station/endeavour/rnd/robotics/morgue)
 "oIP" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -21031,7 +21029,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/airless/ceiling,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "pdP" = (
 /obj/machinery/door/blast/regular{
 	id = "xenobiovs3";
@@ -21969,7 +21967,7 @@
 	pixel_y = -22
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/rnd/robotics/morgue)
+/area/station/endeavour/rnd/robotics/morgue)
 "pEq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -22121,7 +22119,7 @@
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
-/area/rnd/robotics/morgue)
+/area/station/endeavour/rnd/robotics/morgue)
 "pHA" = (
 /obj/machinery/vending/blood,
 /obj/effect/floor_decal/industrial/outline/blue,
@@ -24150,7 +24148,7 @@
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/rnd/robotics/morgue)
+/area/station/endeavour/rnd/robotics/morgue)
 "rbx" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -24318,7 +24316,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/rnd/robotics/morgue)
+/area/station/endeavour/rnd/robotics/morgue)
 "rjm" = (
 /obj/structure/closet,
 /obj/random/maintenance/clean,
@@ -25339,7 +25337,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/rnd/robotics/morgue)
+/area/station/endeavour/rnd/robotics/morgue)
 "scH" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -25982,7 +25980,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/rnd/robotics/morgue)
+/area/station/endeavour/rnd/robotics/morgue)
 "sDs" = (
 /obj/machinery/door/window/brigdoor/northright{
 	name = "Containment Pen";
@@ -26609,7 +26607,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/rnd/robotics/morgue)
+/area/station/endeavour/rnd/robotics/morgue)
 "taE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/floor_decal/spline/plain{
@@ -31104,7 +31102,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/rnd/robotics/morgue)
+/area/station/endeavour/rnd/robotics/morgue)
 "wmt" = (
 /obj/machinery/air_alarm{
 	pixel_y = 22
@@ -32511,7 +32509,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/rnd/robotics/morgue)
+/area/station/endeavour/rnd/robotics/morgue)
 "xiL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -32552,7 +32550,7 @@
 	pixel_y = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/rnd/robotics/morgue)
+/area/station/endeavour/rnd/robotics/morgue)
 "xiT" = (
 /obj/effect/floor_decal/corner/beige{
 	dir = 6
@@ -37592,7 +37590,7 @@ pRW
 pRW
 pRW
 eWn
-klv
+jUt
 eWn
 pRW
 pRW
@@ -37799,7 +37797,7 @@ pRW
 pRW
 pRW
 eWn
-klv
+jUt
 eWn
 fik
 fik
@@ -37840,7 +37838,7 @@ sUD
 sUD
 sUD
 sUD
-kED
+eWn
 pRW
 pRW
 pRW
@@ -38173,7 +38171,7 @@ pRW
 pRW
 pRW
 pRW
-klv
+jUt
 oNw
 oNw
 oNw
@@ -38228,7 +38226,7 @@ sUD
 sUD
 sUD
 sUD
-kED
+eWn
 pRW
 pRW
 pRW
@@ -40169,7 +40167,7 @@ fik
 fik
 fik
 fik
-kED
+eWn
 pRW
 pRW
 pRW
@@ -40557,7 +40555,7 @@ fik
 fik
 fik
 fik
-kED
+eWn
 pRW
 pRW
 pRW
@@ -57434,7 +57432,7 @@ cbh
 dpV
 rXP
 fik
-klv
+jUt
 pRW
 pRW
 pRW
@@ -62431,7 +62429,7 @@ pRW
 pRW
 pRW
 pRW
-klv
+jUt
 egx
 kEg
 ruN
@@ -62663,7 +62661,7 @@ ooR
 aoi
 riM
 ooR
-klv
+jUt
 eWn
 pRW
 pRW
@@ -63994,7 +63992,7 @@ pRW
 pRW
 pRW
 pRW
-eWn
+kED
 egx
 nNg
 kJE
@@ -64382,7 +64380,7 @@ pRW
 pRW
 pRW
 pRW
-eWn
+kED
 egx
 rHP
 rHP
@@ -64402,7 +64400,7 @@ jAy
 jAy
 jAy
 nRB
-klv
+jUt
 eWn
 pRW
 pRW
@@ -65162,7 +65160,7 @@ pRW
 pRW
 pRW
 eWn
-klv
+jUt
 eWn
 fik
 tid
@@ -65174,7 +65172,7 @@ tid
 tid
 fik
 eWn
-klv
+jUt
 eWn
 pRW
 pRW

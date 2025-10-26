@@ -2414,7 +2414,7 @@
 	},
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/plating,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "bHF" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -13538,7 +13538,7 @@
 "jYr" = (
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless/ceiling,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "jZc" = (
 /obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
@@ -21705,7 +21705,7 @@
 	},
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless/ceiling,
-/area/endeavour/command/turrets)
+/area/station/endeavour/command/turrets)
 "qlg" = (
 /obj/structure/closet/crate,
 /obj/item/target,
@@ -27513,6 +27513,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/hallway/endeavour/d3fwdstrbdmaint)
+"uqP" = (
+/turf/simulated/wall/r_wall/prepainted,
+/area/station/endeavour/command/turrets)
 "urj" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 5
@@ -57605,7 +57608,7 @@ pRW
 pRW
 pRW
 jYr
-eAp
+uqP
 max
 vPf
 vPf
