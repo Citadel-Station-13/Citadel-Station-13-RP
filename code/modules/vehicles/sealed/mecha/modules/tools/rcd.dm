@@ -18,26 +18,24 @@
 	QDEL_NULL(my_rcd)
 	return ..()
 
+/obj/item/vehicle_module/lazy/legacy/tool/rcd/render_ui()
+	..()
+	if(my_rcd)
+		l_ui_select("mode", "Mode", my_rcd.modes, my_rcd.modes[my_rcd.mode_index])
+
+/obj/item/vehicle_module/lazy/legacy/tool/rcd/on_l_ui_select(key, name)
+	. = ..()
+	if(.)
+		return
+	switch(key)
+		if("mode")
+			if(name in my_rcd.modes)
+				my_rcd.mode_index = my_rcd.Find(name)
+				occupant_message("RCD reconfigured to '[my_rcd.modes[my_rcd.mode_index]]'.")
+			return TRUE
+
 /obj/item/vehicle_module/lazy/legacy/tool/rcd/action(atom/target)
 	if(!action_checks(target) || get_dist(chassis, target) > 3)
 		return FALSE
 
 	my_rcd.use_rcd(target, chassis.occupant_legacy)
-
-/obj/item/vehicle_module/lazy/legacy/tool/rcd/Topic(href,href_list)
-	..()
-	if(href_list["mode"])
-		my_rcd.mode_index = text2num(href_list["mode"])
-		occupant_message("RCD reconfigured to '[my_rcd.modes[my_rcd.mode_index]]'.")
-
-/obj/item/vehicle_module/lazy/legacy/tool/rcd/get_equip_info()
-	var/list/content = list(..()) // This is all for one line, in the interest of string tree conservation.
-	var/i = 1
-	content += "<br>"
-	for(var/mode in my_rcd.modes)
-		content += "     <a href='?src=\ref[src];mode=[i]'>[mode]</a>"
-		if(i < my_rcd.modes.len)
-			content += "<br>"
-		i++
-
-	return content.Join()

@@ -17,6 +17,15 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 	integrity_failure = 0
 	armor_type = /datum/armor/vehicle
 
+	//* Cargo Hold *//
+	/// Things in cargo hold
+	/// * Lazy list
+	/// * Should technically be a module but for better or worse this is an intrinsic of the /mecha
+	///   type. This allows all mechs to use hydraulic clamps to pick up cargo.
+	var/list/atom/movable/cargo_held
+	/// Cargo hold capacity
+	var/cargo_capacity = 1
+
 	//* Components *//
 	/// Installed components
 	/// * Lazy list.
@@ -74,6 +83,15 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 	//* Occupants - HUDs *//
 	/// list of typepaths or ids of /datum/atom_hud_providers that occupants with [VEHICLE_CONTROL_USE_HUDS] get added to their perspective
 	var/list/occupant_huds
+
+	//* Repairs *//
+	/// Repair droid efficiency
+	var/repair_droid_inbound_efficiency = 1.0
+	/// Repair droid max ratio to heal. Repair droids won't heal us above this of our max integrity minus failure integrity.
+	/// * This includes `integrity_failure`!
+	var/repair_droid_max_ratio = 1
+	/// Additional repair droid efficiency, as multiplier, if already broken.
+	var/repair_droid_recovery_efficiency = 2.5
 
 	//* UI *//
 	/// UI controller
@@ -142,6 +160,46 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 	occupant_actions -= action
 	for(var/mob/occupant as anything in occupants)
 		occupant.actions_controlled.remove_action(action)
+
+//* Cargo *//
+
+/obj/vehicle/proc/cargo_add(atom/movable/entity)
+	if(entity in cargo_held)
+		return
+	cargo_held += entity
+	entity.forceMove(src)
+	on_cargo_add(entity)
+
+/obj/vehicle/proc/cargo_slots_used()
+	return length(cargo_held)
+
+/obj/vehicle/proc/cargo_slots_capacity()
+	return cargo_capacity
+
+/obj/vehicle/proc/cargo_slots_remaining()
+	return cargo_capacity - length(cargo_held)
+
+/obj/vehicle/proc/cargo_dump(atom/where = drop_location())
+	if(!where)
+		return 0
+	. = 0
+	for(var/atom/movable/entity in cargo_held)
+		entity.forceMove(where)
+		.++
+
+/obj/vehicle/proc/on_cargo_add(atom/movable/entity)
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+
+/obj/vehicle/proc/on_cargo_remove(atom/movable/entity)
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+
+/obj/vehicle/Exited(atom/movable/AM, atom/newLoc)
+	..()
+	if(AM in cargo_held)
+		cargo_held -= AM
+		on_cargo_remove(AM)
 
 //* HUDs *//
 

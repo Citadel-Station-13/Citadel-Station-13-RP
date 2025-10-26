@@ -49,15 +49,6 @@
 		/datum/action/vehicle/mecha/eject,
 	)
 
-	//* Cargo Hold *//
-	/// Things in cargo hold
-	/// * Lazy list
-	/// * Should technically be a module but for better or worse this is an intrinsic of the /mecha
-	///   type. This allows all mechs to use hydraulic clamps to pick up cargo.
-	var/atom/movable/cargo_held
-	/// Cargo hold capacity
-	var/cargo_capacity = 1
-
 	//* Components *//
 	/// our actuator component
 	/// * set to typepath to start with

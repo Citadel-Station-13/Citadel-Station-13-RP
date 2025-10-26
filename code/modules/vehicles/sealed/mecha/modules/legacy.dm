@@ -32,8 +32,6 @@
 /obj/item/vehicle_module/lazy/legacy/proc/add_equip_overlay(obj/vehicle/sealed/mecha/M as obj)
 	return
 
-/obj/item/vehicle_module/lazy/legacy/proc/
-
 ///Missiles detonating, teleporter creating singularity?
 /obj/item/vehicle_module/lazy/legacy/proc/destroy()
 	if(chassis)

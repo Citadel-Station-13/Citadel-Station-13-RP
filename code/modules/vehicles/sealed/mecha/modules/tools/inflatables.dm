@@ -31,8 +31,7 @@
 		return
 	switch(key)
 		if("toggleInflatableMode")
-			#warn log
-			my_deployer.attack_self()
+			INVOKE_ASYNC(my_deployer, TYPE_PROC_REF(/obj/item, attack_self))
 			return TRUE
 
 /obj/item/vehicle_module/lazy/legacy/tool/powertool/inflatables/action(atom/target, params)

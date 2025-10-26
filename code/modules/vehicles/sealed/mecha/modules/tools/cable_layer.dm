@@ -52,7 +52,6 @@
 	var/output = ..()
 	if(output)
 		return "[output] \[Cable: [cable ? cable.amount : 0] m\][(cable && cable.amount) ? "- <a href='?src=\ref[src];toggle=1'>[!equip_ready?"Dea":"A"]ctivate</a>|<a href='?src=\ref[src];cut=1'>Cut</a>" : null]"
-	return
 
 /obj/item/vehicle_module/lazy/legacy/tool/cable_layer/proc/load_cable(var/obj/item/stack/cable_coil/CC)
 	if(istype(CC) && CC.amount)
@@ -68,7 +67,6 @@
 			return to_load
 		else
 			return 0
-	return
 
 /obj/item/vehicle_module/lazy/legacy/tool/cable_layer/proc/use_cable(amount)
 	if(!cable || cable.amount<1)

@@ -27,8 +27,17 @@
 	/// Repair droid efficiency
 	/// * This is relative difficulty. 2 means twice the power / material!
 	var/repair_droid_inbound_efficiency = 0.5
-	/// Repair droid max ratio to heal
-	var/repair_droid_max_ratio = 0.5
+	/// Repair droid max ratio to heal. Repair droids won't heal us above this of our max integrity minus failure integrity.
+	/// * This includes `integrity_failure`!
+	var/repair_droid_max_ratio = 0.75
+	/// Additional repair droid efficiency, as multiplier, if already broken.
+	var/repair_droid_recovery_efficiency = 2.5
+
+	//* Sounds *//
+	/// Default sound to play after a `vehicle_do_after_and_sound`, if any
+	var/sound_do_after_default
+	var/sound_do_after_default_volume = 75
+	var/sound_do_after_default_vary = TRUE
 
 	//* UI *//
 	/// UI component key when being rendered
@@ -61,15 +70,59 @@
 	var/integrity_string = examine_render_integrity(examine)
 	return "It has [examine_render_name(examine)] attached.[integrity_string ? " [integrity_string]" : ""]"
 
-/obj/item/vehicle_component
+/**
+ * Does an action after a delay. This is basically `do_after` but for vehicles.
+ *
+ * TODO: set progressbar delay to target delay or otherwise be able to reuse progressbar?
+ *
+ * @params
+ * * actor - initiating actor
+ * * delay - how long in deciseconds
+ * * target - targeted atom, if any
+ * * flags - do_after flags as specified in [code/__DEFINES/procs/do_after.dm]
+ * * max_distance - if not null, the user is required to be get_dist() <= max_distance from target.
+ * * additional_checks - a callback that allows for custom checks. this is invoked with our args directly, allowing us to modify delay.
+ */
+/obj/item/vehicle_component/proc/vehicle_do_after(
+	datum/event_args/actor/actor,
+	delay,
+	atom/target,
+	flags,
+	max_distance,
+	datum/callback/additional_checks,
+)
+	if(!vehicle)
+		return FALSE
+	return do_vehicle(vehicle, delay, target, flags, max_distance, CALLBACK(src, PROC_REF(vehicle_do_after_cb), additional_checks))
 
-/obj/item/vehicle_component
+/obj/item/vehicle_component/proc/vehicle_do_after_cb(datum/callback/additional_checks, list/do_after_args)
+	if(QDELETED(src) || do_after_args[DO_VEHICLE_ARG_VEHICLE] != vehicle)
+		return FALSE
+	return additional_checks?.Invoke(do_after_args)
 
-/obj/item/vehicle_component
-
-/obj/item/vehicle_component
-
-/obj/item/vehicle_component
+/**
+ * `vehicle_do_after` and play a sound on success
+ */
+/obj/item//obj/item/vehicle_component/proc/vehicle_do_after(
+/proc/vehicle_do_after_and_sound(
+	datum/event_args/actor/actor,
+	delay,
+	atom/target,
+	flags,
+	max_distance,
+	datum/callback/additional_checks,
+	sfx,
+	sfx_vol,
+	sfx_vary,
+)
+	. = vehicle_do_after(actor, delay, target, flags, max_distance, additional_checks)
+	if(.)
+		playsound(
+			vehicle,
+			isnull(sfx) ? sound_do_after_default : sfx,
+			isnull(sfx_vol) ? sound_do_after_default_volume : sfx_vol,
+			isnull(sfx_vary) ? sound_do_after_default_vary : sfx_vary,
+		)
 
 //* UI *//
 

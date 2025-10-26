@@ -39,11 +39,18 @@
 /obj/vehicle/proc/on_component_attached(obj/item/vehicle_component/v_comp)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
-	queue_update_component_refs()
+	ui_controller?.queue_update_component_refs()
 
 /obj/vehicle/proc/on_component_detached(obj/item/vehicle_component/v_comp)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
-	queue_update_component_refs()
+	ui_controller?.queue_update_component_refs()
 
 #warn impl
+
+/**
+ * * Allowed to return nulls, including for the list itself
+ * * Returned list will never be modified.
+ */
+/obj/vehicle/proc/query_repair_droid_components_immutable() as /list
+	return components

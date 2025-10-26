@@ -43,7 +43,6 @@
 	if(!drone_overlay)
 		drone_overlay = new(src.icon, icon_state = "shield_droid")
 	M.add_overlay(drone_overlay)
-	return
 
 /obj/item/vehicle_module/shield_projector/linear/attach(obj/vehicle/sealed/mecha/M as obj)
 	..()
@@ -51,7 +50,6 @@
 		my_shield.shield_health = 0
 		my_shield.my_mecha = chassis
 		my_shield.forceMove(chassis)
-	return
 
 /obj/item/vehicle_module/shield_projector/linear/detach()
 	chassis.cut_overlay(drone_overlay)
@@ -65,7 +63,6 @@
 /obj/item/vehicle_module/shield_projector/linear/handle_movement_action()
 	if(chassis)
 		my_shield.update_shield_positions()
-	return
 
 /obj/item/vehicle_module/shield_projector/linear/proc/toggle_shield()
 	if(chassis)

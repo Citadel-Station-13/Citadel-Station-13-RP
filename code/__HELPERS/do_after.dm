@@ -73,8 +73,18 @@
  * * progress_instance - override progressbar instance; this progressbar instance will be **deleted** when we are finished,
  *                       and should have a goal number equal to the delay.
  */
-/proc/do_after(mob/user, delay, atom/target, flags, mobility_flags = MOBILITY_CAN_USE, max_distance, datum/callback/additional_checks, atom/progress_anchor, datum/progressbar/progress_instance)
-	if(isnull(user) || QDELETED(user))
+/proc/do_after(
+	mob/user,
+	delay,
+	atom/target,
+	flags,
+	mobility_flags = MOBILITY_CAN_USE,
+	max_distance,
+	datum/callback/additional_checks,
+	atom/progress_anchor,
+	datum/progressbar/progress_instance,
+)
+	if(QDELETED(user))
 		progress_instance?.end_progress()
 		return FALSE
 	if(!delay)
@@ -145,7 +155,6 @@
 
 		// target checks
 		if(!isnull(target))
-
 			// check if deleted
 			if(QDELETED(target))
 				. = FALSE
@@ -201,3 +210,125 @@
 		mobility_flags = mobility_flags,
 		additional_checks = additional_checks,
 	)
+
+/**
+ * Vehicle version of `do_after`
+ *
+ * TODO: set progressbar delay to target delay or otherwise be able to reuse progressbar?
+ *
+ * @params
+ * * vehicle - acting vehicle
+ * * delay - how long in deciseconds
+ * * target - targeted atom, if any
+ * * flags - do_vehicle flags as specified in [code/__DEFINES/procs/do_after.dm]
+ * * max_distance - if not null, the user is required to be get_dist() <= max_distance from target.
+ * * additional_checks - a callback that allows for custom checks. this is invoked with our args directly, allowing us to modify delay.
+ * * progress_anchor - override progressbar anchor location
+ * * progress_instance - override progressbar instance; this progressbar instance will be **deleted** when we are finished,
+ *                       and should have a goal number equal to the delay.
+ */
+/proc/do_vehicle(
+	obj/vehicle/vehicle,
+	delay,
+	atom/target,
+	flags,
+	max_distance,
+	datum/callback/additional_checks,
+	atom/progress_anchor,
+	datum/progressbar/progress_instance,
+)
+	if(QDELETED(vehicle))
+		progress_instance?.end_progress()
+		return FALSE
+	if(!delay)
+		progress_instance?.end_progress()
+		return \
+		(isnull(additional_checks) || additional_checks.Invoke(args)) && \
+		(isnull(max_distance) || get_dist(vehicle, target) <= max_distance)
+
+	//* setup
+
+	var/atom/vehicle_loc = vehicle.loc
+	var/turf/vehicle_turf = (flags & DO_VEHICLE_CHECK_VEHICLE_TURF)? get_turf(vehicle) : null
+	var/atom/target_loc
+	var/turf/target_turf
+
+	if(!isnull(target))
+		target_loc = target.loc
+		target_turf = (flags & DO_AFTER_CHECK_TARGET_TURF)? get_turf(target) : null
+		// TODO: mob vehicles.
+		// START_INTERACTING_WITH(vehicle, target, INTERACTING_FOR_DO_AFTER)
+
+	var/obj/item/active_held_item = vehicle.get_active_held_item()
+
+	var/datum/progressbar/progress = progress_instance
+	var/original_delay = delay
+	var/delay_factor = 1
+	if(isnull(progress) && !(flags & DO_AFTER_NO_PROGRESS) && (!isnull(progress_anchor || !isnull(target))))
+		#warn vehicle.occupatns is a bad input here. what do we do?
+		progress = new(vehicle.occupants, delay, progress_anchor || target)
+	var/start_time = world.time
+
+	//* loop
+
+	. = TRUE
+	while(world.time < (start_time + delay))
+		stoplag(1)
+
+		if (progress && !QDELETED(progress))
+			progress.update((world.time - start_time) * delay_factor)
+
+		// check if deleted
+		if(QDELETED(vehicle))
+			. = FALSE
+			break
+
+		// check movement
+		if(!(flags & DO_VEHICLE_IGNORE_VEHICLE_MOVEMENT) && (vehicle.loc != vehicle_loc))
+			. = FALSE
+			break
+
+		if(!isnull(vehicle_turf) && (get_turf(vehicle) != vehicle_turf))
+			. = FALSE
+			break
+
+		// target checks
+		if(!isnull(target))
+			// check if deleted
+			if(QDELETED(target))
+				. = FALSE
+				break
+
+			// check if interrupted
+			// TODO: mob vehicles.
+			// if(!INTERACTING_WITH_FOR(user, target, INTERACTING_FOR_DO_AFTER))
+			// 	. = FALSE
+			// 	break
+
+			// check movement
+			if(!(flags & DO_VEHICLE_IGNORE_VEHICLE_MOVEMENT) && (target.loc != target_loc))
+				. = FALSE
+				break
+			if(!isnull(target_turf) && (get_turf(target) != target_turf))
+				. = FALSE
+				break
+
+			// check max distance - does NOT check z as of right now!
+			if(!isnull(max_distance) && get_dist(vehicle, target) > max_distance)
+				. = FALSE
+				break
+
+		if(!isnull(additional_checks))
+			if(!additional_checks.Invoke(args))
+				. = FALSE
+				break
+			// update delay factor incase they changed
+			delay_factor = original_delay / delay
+
+	//* end
+	if(!QDELETED(progress))
+		progress.end_progress()
+
+	if(!isnull(target))
+		// TODO: mob vehicles.
+		// STOP_INTERACTING_WITH(user, target, INTERACTING_FOR_DO_AFTER)

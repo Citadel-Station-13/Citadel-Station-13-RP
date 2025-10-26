@@ -11,6 +11,10 @@
 	var/ui_text_inactive = "Disabled"
 	var/ui_require_confirm = FALSE
 
+/obj/item/vehicle_module/toggled/on_uninstall(obj/vehicle/vehicle, datum/event_args/actor/actor, silent)
+	..()
+	deactivate()
+
 /obj/item/vehicle_module/toggled/vehicle_ui_module_act(action, list/params, datum/event_args/actor/actor)
 	. = ..()
 	if(.)

@@ -143,8 +143,8 @@
 
 	opacity = FALSE
 
-	stomp_sound = 'sound/machines/generator/generator_end.ogg'
-	swivel_sound = 'sound/machines/hiss.ogg'
+	move_sound = 'sound/machines/generator/generator_end.ogg'
+	turn_sound = 'sound/machines/hiss.ogg'
 
 	// Paint colors! Null if not set.
 	var/base_paint

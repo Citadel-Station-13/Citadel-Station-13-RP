@@ -31,6 +31,22 @@
 	#warn check this in vehicle
 	var/disallow_duplicates_match_type
 
+	//* Repairs *//
+	/// Repair droid efficiency
+	/// * This is relative difficulty. 2 means twice the power / material!
+	var/repair_droid_inbound_efficiency = 0.5
+	/// Repair droid max ratio to heal. Repair droids won't heal us above this of our max integrity minus failure integrity.
+	/// * This includes `integrity_failure`!
+	var/repair_droid_max_ratio = 0.75
+	/// Additional repair droid efficiency, as multiplier, if already broken.
+	var/repair_droid_recovery_efficiency = 2.5
+
+	//* Sounds *//
+	/// Default sound to play after a `vehicle_do_after_and_sound`, if any
+	var/sound_do_after_default
+	var/sound_do_after_default_volume = 75
+	var/sound_do_after_default_vary = TRUE
+
 	//* UI *//
 	/// UI component key when being rendered
 	/// * Must route to a valid component in vehicle UI routing. Check TGUI folder for more info.
@@ -39,6 +55,12 @@
 /obj/item/vehicle_module/examine(mob/user, dist)
 	. = ..()
 	. += SPAN_NOTICE("[src] will [module_slot ? "the [module_slot]" : "any"] slot.")
+
+/obj/item/vehicle_module/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	. = ..()
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
+	return receive_using_item_on(using, clickchain, clickchain_flags)
 
 /obj/item/vehicle_module/proc/fits_on_vehicle(obj/vehicle/vehicle, vehicle_opinion, vehicle_is_full, datum/event_args/actor/actor, silent)
 	return vehicle_opinion && !vehicle_is_full
@@ -63,6 +85,59 @@
 		return FALSE
 	#warn impl
 
+/**
+ * Does an action after a delay. This is basically `do_after` but for vehicles.
+ *
+ * TODO: set progressbar delay to target delay or otherwise be able to reuse progressbar?
+ *
+ * @params
+ * * actor - initiating actor
+ * * delay - how long in deciseconds
+ * * target - targeted atom, if any
+ * * flags - do_after flags as specified in [code/__DEFINES/procs/do_after.dm]
+ * * max_distance - if not null, the user is required to be get_dist() <= max_distance from target.
+ * * additional_checks - a callback that allows for custom checks. this is invoked with our args directly, allowing us to modify delay.
+ */
+/obj/item/vehicle_module/proc/vehicle_do_after(
+	datum/event_args/actor/actor,
+	delay,
+	atom/target,
+	flags,
+	max_distance,
+	datum/callback/additional_checks,
+)
+	if(!vehicle)
+		return FALSE
+	return do_vehicle(vehicle, delay, target, flags, max_distance, CALLBACK(src, PROC_REF(vehicle_do_after_cb), additional_checks))
+
+/obj/item/vehicle_module/proc/vehicle_do_after_cb(datum/callback/additional_checks, list/do_after_args)
+	if(QDELETED(src) || do_after_args[DO_VEHICLE_ARG_VEHICLE] != vehicle)
+		return FALSE
+	return additional_checks?.Invoke(do_after_args)
+
+/**
+ * `vehicle_do_after` and play a sound on success
+ */
+/obj/item/vehicle_module/proc/vehicle_do_after_and_sound(
+	datum/event_args/actor/actor,
+	delay,
+	atom/target,
+	flags,
+	max_distance,
+	datum/callback/additional_checks,
+	sfx,
+	sfx_vol,
+	sfx_vary,
+)
+	. = vehicle_do_after(actor, delay, target, flags, max_distance, additional_checks)
+	if(.)
+		playsound(
+			vehicle,
+			isnull(sfx) ? sound_do_after_default : sfx,
+			isnull(sfx_vol) ? sound_do_after_default_volume : sfx_vol,
+			isnull(sfx_vary) ? sound_do_after_default_vary : sfx_vary,
+		)
+
 //* Chassis - Physicality *//
 
 /**
@@ -73,18 +148,6 @@
  */
 /obj/item/vehicle_module/proc/sufficiently_adjacent(atom/entity)
 	return vehicle?.sufficiently_adjacent(entity)
-
-/**
- * standard do-after wrapper for vehicles.
- */
-/obj/item/vehicle_module/proc/vehicle_do_after()
-
-#warn this
-/obj/item/vehicle_module/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
-	. = ..()
-	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
-		return
-	return receive_using_item_on(using, clickchain, clickchain_flags)
 
 //* Interactions *//
 

@@ -4,18 +4,13 @@
 	equip_cooldown = 15
 	energy_drain = 10
 	var/dam_force = 20
-	var/obj/vehicle/sealed/mecha/working/ripley/cargo_holder
 	ready_sound = 'sound/mecha/gasdisconnected.ogg'
 
-/obj/item/vehicle_module/lazy/legacy/tool/hydraulic_clamp/attach(obj/vehicle/sealed/mecha/M as obj)
-	..()
-	cargo_holder = M
-
-	return
+	var/lift_delay = 1.5 SECONDS
 
 /obj/item/vehicle_module/lazy/legacy/tool/hydraulic_clamp/action(atom/target)
-	if(!action_checks(target)) return
-	if(!cargo_holder) return
+	if(!action_checks(target))
+		return
 
 	//loading
 	if(istype(target,/obj))
@@ -65,7 +60,8 @@
 							spawn(0)
 								AD.close(1)
 			return
-		if(cargo_holder.cargo.len >= cargo_holder.cargo_capacity)
+
+		if(!vehicle.cargo_slots_remaining())
 			occupant_message("<span class='warning'>Not enough room in cargo compartment.</span>")
 			return
 
@@ -73,23 +69,17 @@
 		chassis.visible_message("[chassis] lifts [target] and starts to load it into cargo compartment.")
 		set_ready_state(0)
 		chassis.use_power(energy_drain)
-		O.anchored = 1
+		#warn log
 		var/T = chassis.loc
-		if(do_after_cooldown(target))
-			if(T == chassis.loc && src == chassis.selected)
-				cargo_holder.cargo += O
-				O.loc = chassis
-				O.anchored = 0
-				occupant_message("<span class='notice'>[target] succesfully loaded.</span>")
-				log_message("Loaded [O]. Cargo compartment capacity: [cargo_holder.cargo_capacity - cargo_holder.cargo.len]")
-			else
-				occupant_message("<span class='warning'>You must hold still while handling objects.</span>")
-				O.anchored = initial(O.anchored)
+		if(vehicle_do_after_and_sound(null, lift_delay, target))
+			vehicle.cargo_add(O)
+			occupant_message("<span class='notice'>[target] succesfully loaded.</span>")
+		else
+			occupant_message("<span class='warning'>You must hold still while handling objects.</span>")
 
 	//attacking
 	else if(istype(target,/mob/living))
 		var/mob/living/M = target
-		if(M.stat>1) return
 		if(chassis.occupant_legacy.a_intent == INTENT_HARM || istype(chassis.occupant_legacy,/mob/living/carbon/brain)) //No tactile feedback for brains
 			M.take_overall_damage(dam_force)
 			M.adjustOxyLoss(round(dam_force/2))
@@ -115,56 +105,9 @@
 		do_after_cooldown()
 	return 1
 
-
 //This is pretty much just for the death-ripley so that it is harmless
 /obj/item/vehicle_module/lazy/legacy/tool/hydraulic_clamp/safety
 	name = "\improper KILL CLAMP"
 	equip_cooldown = 15
 	energy_drain = 0
 	dam_force = 0
-
-/obj/item/vehicle_module/lazy/legacy/tool/hydraulic_clamp/safety/action(atom/target)
-	if(!action_checks(target)) return
-	if(!cargo_holder) return
-	if(istype(target,/obj))
-		var/obj/O = target
-		if(!O.anchored)
-			if(cargo_holder.cargo.len < cargo_holder.cargo_capacity)
-				chassis.occupant_message("You lift [target] and start to load it into cargo compartment.")
-				chassis.visible_message("[chassis] lifts [target] and starts to load it into cargo compartment.")
-				set_ready_state(0)
-				chassis.use_power(energy_drain)
-				O.anchored = 1
-				var/T = chassis.loc
-				if(do_after_cooldown(target))
-					if(T == chassis.loc && src == chassis.selected)
-						cargo_holder.cargo += O
-						O.loc = chassis
-						O.anchored = 0
-						chassis.occupant_message("<span class='notice'>[target] succesfully loaded.</span>")
-						chassis.log_message("Loaded [O]. Cargo compartment capacity: [cargo_holder.cargo_capacity - cargo_holder.cargo.len]")
-					else
-						chassis.occupant_message("<span class='warning'>You must hold still while handling objects.</span>")
-						O.anchored = initial(O.anchored)
-			else
-				chassis.occupant_message("<span class='warning'>Not enough room in cargo compartment.</span>")
-		else
-			chassis.occupant_message("<span class='warning'>[target] is firmly secured.</span>")
-
-	else if(istype(target,/mob/living))
-		var/mob/living/M = target
-		if(M.stat>1) return
-		if(chassis.occupant_legacy.a_intent == INTENT_HARM)
-			chassis.occupant_message("<span class='danger'>You obliterate [target] with [src.name], leaving blood and guts everywhere.</span>")
-			chassis.visible_message("<span class='danger'>[chassis] destroys [target] in an unholy fury.</span>")
-		if(chassis.occupant_legacy.a_intent == INTENT_DISARM)
-			chassis.occupant_message("<span class='danger'>You tear [target]'s limbs off with [src.name].</span>")
-			chassis.visible_message("<span class='danger'>[chassis] rips [target]'s arms off.</span>")
-		else
-			step_away(M,chassis)
-			chassis.occupant_message("You smash into [target], sending them flying.")
-			chassis.visible_message("[chassis] tosses [target] like a piece of paper.")
-		set_ready_state(0)
-		chassis.use_power(energy_drain)
-		do_after_cooldown()
-	return 1

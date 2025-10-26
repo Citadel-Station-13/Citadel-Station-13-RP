@@ -57,10 +57,6 @@
 
 	damage_integrity((4 - severity) * round(integrity * 0.1, 0.1))
 
-/obj/item/vehicle_component/proc/adjust_integrity_mecha(var/amt = 0)
-	integrity = clamp(integrity + amt, 0, integrity_max)
-	return
-
 /obj/item/vehicle_component/proc/damage_part(var/dam_amt = 0, var/type = DAMAGE_TYPE_BRUTE)
 	if(dam_amt <= 0)
 		return FALSE

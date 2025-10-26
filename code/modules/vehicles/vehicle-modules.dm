@@ -25,11 +25,18 @@
 /obj/vehicle/proc/on_module_attached(obj/item/vehicle_module/v_module)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
-	queue_update_module_refs()
+	ui_controller?.queue_update_module_refs()
 
 /obj/vehicle/proc/on_module_detached(obj/item/vehicle_module/v_module)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
-	queue_update_module_refs()
+	ui_controller?.queue_update_module_refs()
 
 #warn impl
+
+/**
+ * * Allowed to return nulls, including for the list itself
+ * * Returned list will never be modified.
+ */
+/obj/vehicle/proc/query_repair_droid_modules_immutable() as /list
+	return modules
