@@ -4,7 +4,7 @@
 /datum/component/radiation_listener
 
 /datum/component/radiation_listener/Initialize()
-	if(!isatom(parent))
+	if(!ismovable(parent))
 		return COMPONENT_INCOMPATIBLE
 	return ..()
 

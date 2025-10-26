@@ -235,7 +235,7 @@
 	..()
 	for(var/atom/movable/cargo in cargo_held)
 		cargo.forceMove(where)
-		step_rand(cargo)
+		step_rand()
 	cargo_held = null
 
 /obj/vehicle/sealed/mecha/drain_energy(datum/actor, amount, flags)
