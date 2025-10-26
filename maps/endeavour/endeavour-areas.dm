@@ -502,7 +502,7 @@
 /** Mining
  */
 
-/area/station/mining/endeavour/breakroom
+/area/station/endeavour/mining/breakroom
 	name = "\improper Mining Breakroom"
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_LEISURE
 
