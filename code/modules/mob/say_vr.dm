@@ -112,7 +112,8 @@
 				continue
 			if(M.stat == DEAD)
 				continue // get mobs and objs in view fast is shitty; say refactor will deal with that
-			M.playsound_local(turf_origin, 'sound/effects/subtle_emote.ogg', 100)
+			if(M != src)
+				M.playsound_local(turf_origin, 'sound/effects/subtle_emote.ogg', 100)
 			M.show_message(message, SAYCODE_TYPE_ALWAYS)
 
 		for(var/visobj in vis_objs)
