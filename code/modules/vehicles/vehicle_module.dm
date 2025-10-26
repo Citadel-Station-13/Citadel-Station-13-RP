@@ -31,6 +31,11 @@
 	#warn check this in vehicle
 	var/disallow_duplicates_match_type
 
+	//* Click *//
+	/// click half-arc from forward of mech
+	/// * 45 is a 90 deg arc centered on front, 90 is a 180.
+	var/click_restrain_half_angle = 60
+
 	//* Repairs *//
 	/// Repair droid efficiency
 	/// * This is relative difficulty. 2 means twice the power / material!
@@ -148,6 +153,11 @@
  */
 /obj/item/vehicle_module/proc/sufficiently_adjacent(atom/entity)
 	return vehicle?.sufficiently_adjacent(entity)
+
+//* Click *//
+
+/obj/item/vehicle_module/proc/on_vehicle_click(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	return clickchain_flags
 
 //* Interactions *//
 

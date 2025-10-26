@@ -471,7 +471,7 @@
 /**
  * Runs a damage instance against armor
  *
- * * This is a low level proc. Make sure you undersatnd how shieldcalls work [__DEFINES/combat/shieldcall.dm].
+ * * This is a low level proc. Make sure you understand how shieldcalls work [__DEFINES/combat/shieldcall.dm].
  */
 /atom/proc/run_armorcalls(list/shieldcall_args, fake_attack)
 	SHOULD_NOT_SLEEP(TRUE)

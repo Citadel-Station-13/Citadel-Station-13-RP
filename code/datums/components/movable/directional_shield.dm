@@ -6,7 +6,7 @@
 
 	var/active = TRUE
 	var/list/atom/movable/directional_shield/segments = list()
-	/// called with (src)
+	/// called with (src, list/shieldcall_args)
 	var/datum/callback/on_damage_instance
 
 /datum/component/directional_shield/Initialize()
@@ -39,9 +39,10 @@
 
 #warn impl
 
-/datum/component/directional_shield/proc/on_damage_instance(list/damage_instance_args)
-
-
+/datum/component/directional_shield/proc/on_damage_instance(list/shieldcall_args)
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+	on_damage_instance?.Invoke(src, shieldcall_args)
 
 /datum/component/directional_shield/standalone
 	/// damage to absorb
@@ -79,6 +80,8 @@
 	var/recharge_delay = 5 SECONDS
 	/// recharge speed hp/s
 	var/recharge_rate = 10
+	/// ignore recharge delay for DAMAGE_MODE_GRADUAL?
+	var/recharge_ignore_gradual = TRUE
 	/// recharge speed when fully downed.
 	/// * if set this is used if we're fully downed and we don't go back up
 	///   until we're at a certain ratio of max health
