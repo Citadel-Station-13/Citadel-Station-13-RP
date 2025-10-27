@@ -139,10 +139,13 @@
 
 /mob/living/carbon/human/Process_Spacemove(dir)
 	//Do we have a working jetpack?
+	// TODO: please for the love of god rework this utter dumpster fire
 	var/obj/item/tank/jetpack/thrust
 	if(back)
 		if(istype(back,/obj/item/tank/jetpack))
 			thrust = back
+		else if(istype(s_store, /obj/item/tank/jetpack))
+			thrust = s_store
 		else if(istype(back,/obj/item/hardsuit))
 			var/obj/item/hardsuit/hardsuit = back
 			for(var/obj/item/hardsuit_module/maneuvering_jets/module in hardsuit.installed_modules)
