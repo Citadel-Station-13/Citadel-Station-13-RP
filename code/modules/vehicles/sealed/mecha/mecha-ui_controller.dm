@@ -14,6 +14,7 @@
 	.["mCompHullRef"] = casted_vehicle.comp_hull ? ref(casted_vehicle.comp_hull) : null
 	.["mCompArmorRef"] = casted_vehicle.comp_armor ? ref(casted_vehicle.comp_armor) : null
 	.["strafing"] = casted_vehicle.strafing
+	.["lights"] = casted_vehicle.floodlight_active
 
 /datum/vehicle_ui_controller/mecha/update_component_refs()
 	..()
@@ -27,9 +28,47 @@
 	. = ..()
 	if(.)
 		return
+	var/obj/vehicle/sealed/mecha/casted_vehicle = vehicle
 	switch(action)
 		if("toggleStrafing")
 			#warn this
+			return TRUE
+		if("toggleLights")
+			#warn this
+			return TRUE
+		if("toggleRadioBroadcast")
+			if(!casted_vehicle.radio)
+				return TRUE
+			casted_vehicle.radio.broadcasting = !casted_vehicle.radio.broadcasting
+			#warn log
+			return TRUE
+		if("toggleRadioReceive")
+			if(!casted_vehicle.radio)
+				return TRUE
+			casted_vehicle.radio.listening = !casted_vehicle.radio.listening
+			#warn log
+			return TRUE
+		if("setRadioFreq")
+			if(!casted_vehicle.radio)
+				return TRUE
+			var/new_freq = sanitize_frequency(params["freq"])
+			casted_vehicle.radio.set_frequency(new_freq)
+			#warn log
+			return TRUE
+		if("connectAtmosPort")
+			#warn feedback & log
+			return TRUE
+		if("disconnectAtmosPort")
+			#warn feedback & log
+			return TRUE
+		if("toggleIdUploadLock")
+			#warn feedback & log
+			return TRUE
+		if("toggleMaintPanelLock")
+			#warn feedback & log
+			return TRUE
+		if("setDisplayName")
+			#warn feedback & log
 			return TRUE
 
 /datum/vehicle_ui_controller/mecha/ui_nested_data(mob/user, datum/tgui/ui)
@@ -38,5 +77,9 @@
 /datum/vehicle_ui_controller/mecha/proc/update_ui_strafing()
 	var/obj/vehicle/sealed/mecha/casted_vehicle = vehicle
 	push_ui_data(list("data" = casted_vehicle.strafing))
+
+/datum/vehicle_ui_controller/mecha/proc/update_ui_floodlights()
+	var/obj/vehicle/sealed/mecha/casted_vehicle = vehicle
+	push_ui_data(list("lights" = casted_vehicle.floodlight_active))
 
 #warn impl

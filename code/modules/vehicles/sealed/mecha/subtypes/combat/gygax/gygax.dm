@@ -82,15 +82,8 @@
 	max_temperature = 45000
 	overload_coeff = 1
 	wreckage = /obj/effect/decal/mecha_wreckage/gygax/dark_adv
-	max_equip = 4
 	step_energy_drain = 5
 	mech_faction = MECH_FACTION_SYNDI
-
-	max_hull_equip = 1
-	max_weapon_equip = 2
-	max_utility_equip = 2
-	max_universal_equip = 1
-	max_special_equip = 2
 
 /obj/vehicle/sealed/mecha/combat/gygax/dark/add_cell(var/obj/item/cell/C=null)
 	if(C)
@@ -104,7 +97,7 @@
 /obj/vehicle/sealed/mecha/combat/gygax/dark/equipped
 	modules = list(
 		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/scattershot,
-		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/grenade/clusterbang,
+		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/grenade/concussion,
 		/obj/item/vehicle_module/toggled/energy_relay,
 		/obj/item/vehicle_module/lazy/legacy/teleporter,
 	)

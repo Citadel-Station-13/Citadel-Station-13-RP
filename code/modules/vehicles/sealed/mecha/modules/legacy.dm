@@ -10,8 +10,6 @@
 	var/equip_ready = TRUE
 	var/energy_drain = 0
 	var/range = MELEE //bitflags
-	/// Bitflag. Used by exosuit fabricator to assign sub-categories based on which exosuits can equip this.
-	var/mech_flags = NONE
 	///Sound to play once the fire delay passed.
 	var/ready_sound = 'sound/mecha/mech_reload_default.ogg'
 	///Does the component slow/speed up the suit?
@@ -28,9 +26,6 @@
 	if(target && chassis)
 		return TRUE
 	return FALSE
-
-/obj/item/vehicle_module/lazy/legacy/proc/add_equip_overlay(obj/vehicle/sealed/mecha/M as obj)
-	return
 
 ///Missiles detonating, teleporter creating singularity?
 /obj/item/vehicle_module/lazy/legacy/proc/destroy()

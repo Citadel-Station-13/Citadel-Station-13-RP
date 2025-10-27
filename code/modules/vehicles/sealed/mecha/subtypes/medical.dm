@@ -6,7 +6,7 @@
 		VEHICLE_MODULE_SLOT_UTILITY = 4,
 	)
 
-	stomp_sound = 'sound/mecha/mechmove01.ogg'
+	move_sound = 'sound/mecha/mechmove01.ogg'
 
 	cargo_capacity = 1
 

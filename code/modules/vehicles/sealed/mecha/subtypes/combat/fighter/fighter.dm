@@ -24,8 +24,8 @@
 
 	wreckage = /obj/effect/decal/mecha_wreckage/gunpod
 
-	stomp_sound = 'sound/mecha/fighter/engine_mid_fighter_move.ogg'
-	swivel_sound = 'sound/mecha/fighter/engine_mid_boost_01.ogg'
+	move_sound = 'sound/mecha/fighter/engine_mid_fighter_move.ogg'
+	turn_sound = 'sound/mecha/fighter/engine_mid_boost_01.ogg'
 
 	bound_height = 64
 	bound_width = 64

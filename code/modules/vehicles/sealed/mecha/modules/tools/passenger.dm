@@ -7,7 +7,7 @@
 	range = MELEE
 	equip_cooldown = 20
 	var/mob/living/carbon/occupant_legacy = null
-	var/door_locked = 1
+	var/door_locked = TRUE
 
 /obj/item/vehicle_module/lazy/legacy/tool/passenger/destroy()
 	for(var/atom/movable/AM in src)
@@ -83,18 +83,33 @@
 	if (M && !(locate(/obj/item/vehicle_module/lazy/legacy/tool/passenger) in M))
 		remove_verb(M, /obj/vehicle/sealed/mecha/proc/move_inside_passenger)
 
-/obj/item/vehicle_module/lazy/legacy/tool/passenger/get_equip_info()
-	return "[..()] <br />[occupant_legacy? "\[Occupant: [occupant_legacy]\]|" : ""]Exterior Hatch: <a href='?src=\ref[src];toggle_lock=1'>Toggle Lock</a>"
-
-/obj/item/vehicle_module/lazy/legacy/tool/passenger/Topic(href,href_list)
+/obj/item/vehicle_module/lazy/legacy/tool/passenger/render_ui()
 	..()
-	if (href_list["toggle_lock"])
-		door_locked = !door_locked
-		occupant_message("Passenger compartment hatch [door_locked? "locked" : "unlocked"].")
-		if (chassis)
-			chassis.visible_message("The hatch on \the [chassis] [door_locked? "locks" : "unlocks"].", "You hear something latching.")
+	l_ui_select("lock", "Hatch Lock", list("Locked", "Unlocked"), door_locked ? "Locked" : "Unlocked")
 
+/obj/item/vehicle_module/lazy/legacy/tool/passenger/on_l_ui_select(datum/event_args/actor/actor, key, name)
+	. = ..()
+	if(.)
+		return
+	switch(key)
+		if("lock")
+			switch(name)
+				if("Locked")
+					if(door_locked)
+						return TRUE
+					door_locked = TRUE
+					#warn log
+					#warn chassis / occupant message?
+					return TRUE
+				if("Unlocked")
+					if(!door_locked)
+						return TRUE
+					door_locked = FALSE
+					#warn log
+					#warn chassis / occupant message?
+					return TRUE
 
+// TODO: nuke this stupid fucking verb / proc and make it a managed action / context menu thing.
 #define LOCKED 1
 #define OCCUPIED 2
 
@@ -129,11 +144,14 @@
 	//search for a valid passenger compartment
 	var/feedback = 0 //for nicer user feedback
 	for(var/obj/item/vehicle_module/lazy/legacy/tool/passenger/P in src)
+		var/didnt_pass = FALSE
 		if (P.occupant_legacy)
 			feedback |= OCCUPIED
-			continue
+			didnt_pass = TRUE
 		if (P.door_locked)
 			feedback |= LOCKED
+			didnt_pass = TRUE
+		if(didnt_pass)
 			continue
 
 		//found a boardable compartment

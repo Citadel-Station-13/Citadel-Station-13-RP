@@ -2246,9 +2246,7 @@
 /obj/structure/table/rack/steel,
 /obj/item/vehicle_module/lazy/legacy/weapon/energy/taser,
 /obj/item/vehicle_module/lazy/legacy/weapon/energy/taser,
-/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/grenade/clusterbang,
 /obj/effect/floor_decal/industrial/outline/red,
-/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/grenade/clusterbang,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/mech_bay)
 "qF" = (

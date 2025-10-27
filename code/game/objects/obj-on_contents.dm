@@ -11,7 +11,7 @@
 	..()
 	if(!isnull(obj_storage?.indirection))
 		return
-	obj_storage?.on_contents_weight_change(item, old_weight, new_weight)
+	obj_storage?.on_contents_weight_change(entity, old_weight, new_weight)
 
 /obj/on_contents_weight_class_change(obj/item/item, old_weight_class, new_weight_class)
 	. = ..()

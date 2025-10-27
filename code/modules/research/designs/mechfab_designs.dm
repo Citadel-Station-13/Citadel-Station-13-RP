@@ -649,14 +649,6 @@
 	build_path = /obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/grenade/rigged
 	materials_base = list(MAT_STEEL = 5000 * (1 / 3), MAT_GOLD = 2000 * (1 / 3), MAT_PLASTIC = 2000 * (1 / 3))
 
-/datum/prototype/design/science/mecha/weapon/clusterbang_launcher
-	design_name = "SOP-6 Grenade Launcher"
-	desc = "A weapon that violates the Geneva Convention at 6 rounds per minute."
-	id = "clusterbang_launcher"
-	req_tech = list(TECH_COMBAT= 5, TECH_MATERIAL = 5, TECH_ILLEGAL = 3)
-	materials_base = list(MAT_STEEL = 15000 * (1 / 3), MAT_GOLD = 4500 * (1 / 3), MAT_URANIUM = 4500 * (1 / 3))
-	build_path = /obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/grenade/clusterbang/limited
-
 /datum/prototype/design/science/mecha/weapon/conc_grenade_launcher
 	design_name = "SGL-9 Grenade Launcher"
 	id = "mech_grenade_launcher_conc"
@@ -840,7 +832,7 @@
 	id = "mech_ground_drill"
 	req_tech = list(TECH_MATERIAL = 4, TECH_ENGINEERING = 2, TECH_PHORON = 1)
 	materials_base = list(MAT_STEEL = 7000 * (1 / 3), MAT_SILVER = 3000 * (1 / 3), MAT_PHORON = 2000 * (1 / 3))
-	build_path = /obj/item/vehicle_module/lazy/legacy/tool/drill/bore
+	build_path = /obj/item/vehicle_module/lazy/legacy/tool/depth_bore
 
 /datum/prototype/design/science/mecha/orescanner
 	design_name = "Ore Scanner"

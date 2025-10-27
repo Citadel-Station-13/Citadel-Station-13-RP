@@ -3,11 +3,10 @@
  * @license MIT
  */
 
-import { VehicleModuleData } from "../types";
 import { ModuleBase } from "./ModuleBase";
 
-export const Trivial = (props: { data: VehicleModuleData }) => {
+export const Trivial = () => {
   return (
-    <ModuleBase data={props.data} />
+    <ModuleBase />
   );
 };

@@ -1,7 +1,6 @@
 /obj/item/vehicle_module/lazy/legacy/tool/extinguisher
 	name = "extinguisher"
 	desc = "Exosuit-mounted extinguisher (Can be attached to: Engineering exosuits)"
-	mech_flags = EXOSUIT_MODULE_WORKING | EXOSUIT_MODULE_COMBAT
 	icon_state = "mecha_exting"
 	equip_cooldown = 5
 	energy_drain = 0

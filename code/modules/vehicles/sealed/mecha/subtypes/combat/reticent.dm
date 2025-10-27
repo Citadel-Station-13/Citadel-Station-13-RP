@@ -31,8 +31,8 @@
 	icon_scale_x = 1.35
 	icon_scale_y = 1.35
 
-	stomp_sound = 'sound/effects/suitstep1.ogg'
-	swivel_sound = 'sound/effects/suitstep2.ogg'
+	move_sound = 'sound/effects/suitstep1.ogg'
+	turn_sound = 'sound/effects/suitstep2.ogg'
 
 /obj/vehicle/sealed/mecha/combat/reticent/reticence
 	name = "Reticence"

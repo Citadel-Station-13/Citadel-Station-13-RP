@@ -59,22 +59,22 @@
 
 /obj/item/vehicle_module/lazy/proc/get_ui_struct()
 	this_is_just_like_imgui = list()
-	render_ui
+	render_ui()
 	. = this_is_just_like_imgui
 	this_is_just_like_imgui = null
 
-/obj/item/vehicle_module/lazy/proc/on_l_ui_button(key)
+/obj/item/vehicle_module/lazy/proc/on_l_ui_button(datum/event_args/actor/actor, key)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 
-/obj/item/vehicle_module/lazy/proc/on_l_ui_select(key, name)
+/obj/item/vehicle_module/lazy/proc/on_l_ui_select(datum/event_args/actor/actor, key, name)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 
 /**
  * unlike `on_l_ui_select`, this is called **on change.**
  */
-/obj/item/vehicle_module/lazy/proc/on_l_ui_multiselect(key, name, enabled)
+/obj/item/vehicle_module/lazy/proc/on_l_ui_multiselect(datum/event_args/actor/actor, key, name, enabled)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 

@@ -14,27 +14,53 @@ import { MechaData } from "./types";
 export const MechaController = (props) => {
   const { act, data } = useBackend<MechaData>();
 
-  let thing = {
-    (VehicleControllerBuiltinSettingSections.Options): () => (
-    <LabeledList.Item label="Strafing">Test</LabeledList.Item>
-  )
-};
-
-
-return (
-  <VehicleController renderStackItemsBelowIntegrityHomeDisplay={(
+  let mechaOptions = {};
+  mechaOptions[VehicleControllerBuiltinSettingSections.Options] = () => (
     <>
-      {withVehicleComponentData<VehicleComponentData>(data.mCompHullRef, (d) => (
-        <FrontPageComponentHealthRender name="Hull" data={d} />
-      ))}
-      {withVehicleComponentData<VehicleComponentData>(data.mCompArmorRef, (d) => (
-        <FrontPageComponentHealthRender name="Armor" data={d} />
-      ))}
+      <LabeledList.Item label="Strafing">Test</LabeledList.Item>
+      <LabeledList.Item label="Floodlights">Test</LabeledList.Item>
     </>
-  )} renderAdditionalSettingSectionLabeledListItems={
-    thing
-  } />
-);
+  );
+
+  return (
+    <VehicleController renderStackItemsBelowIntegrityHomeDisplay={(
+      <>
+        {withVehicleComponentData<VehicleComponentData>(data.mCompHullRef, (d) => (
+          <FrontPageComponentHealthRender name="Hull" data={d} />
+        ))}
+        {withVehicleComponentData<VehicleComponentData>(data.mCompArmorRef, (d) => (
+          <FrontPageComponentHealthRender name="Armor" data={d} />
+        ))}
+      </>
+    )} renderAdditionalSettingSectionLabeledListItems={mechaOptions}
+      renderAdditionalSettingRootStackItems={
+        <>
+          <Stack.Item>
+            Radio
+            <LabeledList>
+              <LabeledList.Item label="Frequency">Test</LabeledList.Item>
+              <LabeledList.Item label="Transmit">Test</LabeledList.Item>
+              <LabeledList.Item label="Receive">Test</LabeledList.Item>
+            </LabeledList>
+          </Stack.Item>
+          <Stack.Item>
+            Life Support
+            <LabeledList>
+              <LabeledList.Item label="Airflow">Test</LabeledList.Item>
+              <LabeledList.Item label="Port Connection">Test</LabeledList.Item>
+            </LabeledList>
+          </Stack.Item>
+          <Stack.Item>
+            System
+            <LabeledList>
+              <LabeledList.Item label="Maintenance Lock">Test</LabeledList.Item>
+              <LabeledList.Item label="ID Upload Lock">Test</LabeledList.Item>
+              <LabeledList.Item label="Change External Label">Test</LabeledList.Item>
+            </LabeledList>
+          </Stack.Item>
+        </>
+      } />
+  );
 };
 
 const FrontPageComponentHealthRender = (props: {

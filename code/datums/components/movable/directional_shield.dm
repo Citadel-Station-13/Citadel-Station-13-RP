@@ -5,6 +5,7 @@
 	registered_type = /datum/comopnent/directional_shield
 
 	var/active = TRUE
+	var/dir = NORTH
 	var/list/atom/movable/directional_shield/segments = list()
 	/// called with (src, list/shieldcall_args)
 	var/datum/callback/on_damage_instance
@@ -37,12 +38,18 @@
 
 /datum/component/directional_shield/proc/update(atom/source, atom/oldloc)
 
+/datum/component/directional_shield/proc/set_dir(dir, update)
+	src.dir = dir
+	if(update)
+		for(var/atom/movable/directional_shield/shield as anything in segments)
+			shield.update_pos()
+
 #warn impl
 
 /datum/component/directional_shield/proc/on_damage_instance(list/shieldcall_args)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
-	on_damage_instance?.Invoke(src, shieldcall_args)
+	on_damage_instance?.invoke_no_sleep(src, shieldcall_args)
 
 /datum/component/directional_shield/standalone
 	/// damage to absorb
@@ -116,6 +123,11 @@
 	var/datum/component/directional_shield/owning_component
 	var/x_offset = 0
 	var/y_offset = 0
+	var/north_facing_dir
+
+	var/tmp/oriented_x_offset
+	var/tmp/oriented_y_offset
+	var/tmp/oriented_dir
 
 /atom/movable/directional_shield/Initialize(datum/component/directional_shield/comp, x_o, y_o, dir)
 	. = ..()
@@ -154,6 +166,7 @@
 	var/directional = FALSE
 
 /**
+ * * returned perspective should be NORTH.
  * @return list(list(x_o, y_o, dir), ...)
  */
 /datum/directional_shield_pattern/proc/return_tiles() as /list
@@ -167,11 +180,84 @@
 	var/halflength = 2
 
 /datum/directional_shield_pattern/linear/return_tiles()
-	#warn impl
+	if(halflength < 0)
+		return list()
+	var/list/tiles = list()
+	tiles[++tiles.len] = list(
+		0,
+		distance,
+		NORTH,
+	)
+	for(var/x in 1 to halflength - 1)
+		tiles[++tiles.len] = list(
+			x,
+			distance,
+			NORTH,
+		)
+		tiles[++tiles.len] = list(
+			-x,
+			distance,
+			NORTH,
+		)
+	if(halflength > 0)
+		tiles[++tiles.len] = list(
+			halflength,
+			distance,
+			NORTHEAST,
+		)
+		tiles[++tiles.len] = list(
+			-halflength,
+			distance,
+			NORTHWEST,
+		)
 
 /datum/directional_shield_pattern/square
 	/// distance from entity; 2 is 5x5 with 3x3 inner, 1 is 3x3 with 1x1 inner.
 	var/radius = 2
 
 /datum/directional_shield_pattern/square/return_tiles()
-	#warn impl
+	if(radius <= 0)
+		return list()
+	var/list/tiles = list()
+	tiles[++tiles.len] = list(
+		radius,
+		radius,
+		NORTHEAST,
+	)
+	tiles[++tiles.len] = list(
+		radius,
+		-radius,
+		SOUTHEAST,
+	)
+	tiles[++tiles.len] = list(
+		-radius,
+		radius,
+		NORTHWEST,
+	)
+	tiles[++tiles.len] = list(
+		-radius,
+		-radius,
+		SOUTHWEST,
+	)
+	for(var/x in -radius + 1 to radius - 1)
+		tiles[++tiles.len] = list(
+			x,
+			radius,
+			NORTH,
+		)
+		tiles[++tiles.len] = list(
+			x,
+			-radius,
+			SOUTH,
+		)
+	for(var/y in -radius + 1 to radius - 1)
+		tiles[++tiles.len] = list(
+			radius,
+			y,
+			EAST,
+		)
+		tiles[++tiles.len] = list(
+			-radius,
+			y,
+			WEST,
+		)

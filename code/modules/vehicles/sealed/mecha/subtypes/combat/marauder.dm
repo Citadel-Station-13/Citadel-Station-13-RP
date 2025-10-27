@@ -9,7 +9,9 @@
 	integrity = /obj/vehicle/sealed/mecha/combat::integrity * 1.35
 	integrity_max = /obj/vehicle/sealed/mecha/combat::integrity_max * 1.35
 
+	comp_armor_relative_thickness = 1.75 * /obj/vehicle/sealed/mecha/combat::comp_armor_relative_thickness
 	comp_armor = /obj/item/vehicle_component/plating/armor/military
+	comp_hull_relative_thickness = 1.75 * /obj/vehicle/sealed/mecha/combat::comp_hull_relative_thickness
 	comp_hull = /obj/item/vehicle_component/plating/hull/durable
 
 	module_slots = list(

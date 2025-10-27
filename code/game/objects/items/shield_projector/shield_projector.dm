@@ -255,6 +255,14 @@
 	update_shield_colors()
 	return TRUE
 
+/obj/item/shield_projector/line
+	name = "linear combat shield projector"
+	description_info = "This creates a shield in a straight line perpendicular to the direction where the user was facing when it was activated. \
+	The shield allows projectiles to leave from inside but blocks projectiles from outside.  Everything else can pass through the shield freely, \
+	including other people and thrown objects.  The shield also cannot block certain effects which take place over an area, such as flashbangs or explosions."
+	var/line_length = 5			// How long the line is.  Recommended to be an odd number.
+	var/offset_from_center = 2	// How far from the projector will the line's center be.
+
 /obj/item/shield_projector/line/create_shields()
 	if(!..())
 		return FALSE

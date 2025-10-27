@@ -8,7 +8,6 @@
 	fire_sound = 'sound/weapons/Gunshot_cannon.ogg'
 	projectiles = 1
 	projectile_energy_cost = 1000
-	salvageable = 0 // We don't want players ripping this off a dead mech. Could potentially be a prize for beating it if Devs bless me and someone offers a nerf idea.
 
 /obj/projectile/bullet/cannon
 	name ="armor-piercing shell"
@@ -27,7 +26,6 @@
 	equip_cooldown = 120 // 12 seconds.
 	projectile = /obj/projectile/bullet/cannon/weak
 	projectile_energy_cost = 400
-	salvageable = 1
 
 /obj/projectile/bullet/cannon/weak
 	name ="canister shell"

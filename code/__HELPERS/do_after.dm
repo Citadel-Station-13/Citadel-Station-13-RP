@@ -259,8 +259,6 @@
 		// TODO: mob vehicles.
 		// START_INTERACTING_WITH(vehicle, target, INTERACTING_FOR_DO_AFTER)
 
-	var/obj/item/active_held_item = vehicle.get_active_held_item()
-
 	var/datum/progressbar/progress = progress_instance
 	var/original_delay = delay
 	var/delay_factor = 1

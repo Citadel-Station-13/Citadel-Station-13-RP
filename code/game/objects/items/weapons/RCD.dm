@@ -223,6 +223,7 @@
 			to_chat(user, SPAN_WARNING( "\The [src] lacks the required material to finish the operation."))
 			return FALSE
 		if(A.rcd_act(user, src, rcd_results[RCD_VALUE_MODE]))
+			#warn log
 			consume_resources(rcd_results[RCD_VALUE_COST])
 			playsound(get_turf(A), 'sound/items/deconstruct.ogg', 50, 1)
 			return TRUE

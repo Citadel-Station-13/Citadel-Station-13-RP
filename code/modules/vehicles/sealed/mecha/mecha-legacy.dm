@@ -52,8 +52,6 @@
 	/// Stores proc owners, like proc_res["functionname"] = owner reference.
 	var/list/proc_res = list()
 	var/datum/effect_system/spark_spread/spark_system = new
-	var/lights = 0
-	var/lights_power = 6
 	var/force = 0
 
 	var/mech_faction = null
@@ -313,57 +311,11 @@
 	if(M == occupant_legacy && radio.broadcasting)
 		radio.talk_into(M, message_pieces)
 
-/obj/vehicle/sealed/mecha/proc/check_occupant_radial(var/mob/user)
-	if(!user)
-		return FALSE
-	if(user.stat)
-		return FALSE
-	if(user != occupant_legacy)
-		return FALSE
-	if(user.incapacitated())
-		return FALSE
-
-	return TRUE
-
-/obj/vehicle/sealed/mecha/proc/show_radial_occupant(var/mob/user)
-	var/list/choices = list(
-		"Eject" = radial_image_eject,
-		"Toggle Airtank" = radial_image_airtoggle,
-		"Toggle Light" = radial_image_lighttoggle,
-		"View Stats" = radial_image_statpanel
-	)
-
-	var/choice = show_radial_menu(user, src, choices, custom_check = CALLBACK(src, PROC_REF(check_occupant_radial), user), require_near = TRUE, tooltips = TRUE)
-	if(!check_occupant_radial(user))
-		return
-	if(!choice)
-		return
-	switch(choice)
-		if("Eject")
-			legacy_eject_occupant()
-			add_fingerprint(usr)
-		if("Toggle Airtank")
-			use_internal_tank = !use_internal_tank
-			occupant_message("Now taking air from [use_internal_tank?"internal airtank":"environment"].")
-			log_message("Now taking air from [use_internal_tank?"internal airtank":"environment"].")
-		if("Toggle Light")
-			lights = !lights
-			if(lights)
-				set_light(light_range + lights_power)
-			else
-				set_light(light_range - lights_power)
-			occupant_message("Toggled lights [lights?"on":"off"].")
-			log_message("Toggled lights [lights?"on":"off"].")
-			playsound(src, 'sound/mecha/heavylightswitch.ogg', 50, 1)
-		if("View Stats")
-			occupant_legacy << browse(src.get_stats_html(), "window=exosuit")
-
-
+#warn nuke this
 /obj/vehicle/sealed/mecha/proc/click_action(atom/target,mob/user, params)
-	if(!src.occupant_legacy || src.occupant_legacy != user ) return
-	if(user.stat) return
-	if(target == src && user == occupant_legacy)
-		show_radial_occupant(user)
+	if(!src.occupant_legacy || src.occupant_legacy != user )
+		return
+	if(user.stat)
 		return
 	if(state)
 		occupant_message("<font color='red'>Maintenance protocols in effect</font>")
@@ -569,12 +521,6 @@
 		can_move = 1
 		return 1
 	return 0
-
-/obj/vehicle/sealed/mecha/proc/handle_equipment_movement()
-	for(var/obj/item/vehicle_module/lazy/legacy/ME in equipment)
-		if(ME.chassis == src) //Sanity
-			ME.handle_movement_action()
-	return
 
 /obj/vehicle/sealed/mecha/proc/mechturn(direction)
 	setDir(direction)
@@ -960,21 +906,16 @@
 	else if(istype(W,/obj/item/stack/nanopaste))
 		if(state >= MECHA_PANEL_LOOSE)
 			var/obj/item/stack/nanopaste/NP = W
-
 			for(var/slot in internal_components)
 				var/obj/item/vehicle_component/C = internal_components[slot]
-
 				if(C)
-
 					if(C.integrity < C.integrity_max)
 						while(C.integrity < C.integrity_max && NP && do_after(user, 1 SECOND, src))
 							if(NP.use(1))
 								C.adjust_integrity_mecha(10)
 
 						to_chat(user, "<span class='notice'>You repair damage to \the [C].</span>")
-
 			return
-
 		else
 			to_chat(user, "<span class='notice'>You can't reach \the [src]'s internal components.</span>")
 			return
@@ -1024,12 +965,6 @@
 	playsound(src, 'sound/mecha/gasdisconnected.ogg', 50, 1)
 	src.log_message("Disconnected from gas port.")
 	return 1
-
-
-/////////////////////////
-////////  Verbs  ////////
-/////////////////////////
-
 
 /obj/vehicle/sealed/mecha/verb/connect_to_port()
 	set name = "Connect to port"
@@ -1081,24 +1016,6 @@
 	else
 		occupant_message("<span class='danger'>[name] is not connected to the port at the moment.</span>")
 
-/obj/vehicle/sealed/mecha/verb/toggle_lights()
-	set name = "Toggle Lights"
-	set category = "Exosuit Interface"
-	set src = usr.loc
-	set popup_menu = 0
-	lights()
-
-/obj/vehicle/sealed/mecha/verb/lights()
-	if(usr!=occupant_legacy)	return
-	lights = !lights
-	if(lights)	set_light(light_range + lights_power)
-	else		set_light(light_range - lights_power)
-	src.occupant_message("Toggled lights [lights?"on":"off"].")
-	log_message("Toggled lights [lights?"on":"off"].")
-	playsound(src, 'sound/mecha/heavylightswitch.ogg', 50, 1)
-	return
-
-
 /obj/vehicle/sealed/mecha/verb/toggle_internal_tank()
 	set name = "Toggle internal airtank usage"
 	set category = "Exosuit Interface"
@@ -1107,7 +1024,7 @@
 	internal_tank()
 
 /obj/vehicle/sealed/mecha/proc/internal_tank()
-	if(usr!=src.occupant_legacy)
+	if(usr != src.occupant_legacy)
 		return
 
 	var/obj/item/vehicle_component/mecha_gas/GC = internal_components[MECH_GAS]
@@ -1123,8 +1040,6 @@
 	src.occupant_message("Now taking air from [use_internal_tank?"internal airtank":"environment"].")
 	src.log_message("Now taking air from [use_internal_tank?"internal airtank":"environment"].")
 	playsound(src, 'sound/mecha/gasdisconnected.ogg', 30, 1)
-	return
-
 
 /obj/vehicle/sealed/mecha/verb/toggle_strafing()
 	set name = "Toggle strafing"
@@ -1354,12 +1269,6 @@
 
 /obj/vehicle/sealed/mecha/Topic(href, href_list)
 	..()
-	if(href_list["update_content"])
-		if(usr != src.occupant_legacy)	return
-		send_byjax(src.occupant_legacy,"exosuit.browser","content",src.get_stats_part())
-		return
-	if(href_list["close"])
-		return
 	if(usr.stat > 0)
 		return
 	var/datum/topic_input/top_filter = new /datum/topic_input(href,href_list)
@@ -1371,14 +1280,6 @@
 			src.occupant_message("You switch to [equip]")
 			src.visible_message("[src] raises [equip]")
 			send_byjax(src.occupant_legacy,"exosuit.browser","eq_list",src.get_equipment_list())
-		return
-	if(href_list["eject"])
-		if(usr != src.occupant_legacy)	return
-		mob_try_exit(usr)
-		return
-	if(href_list["toggle_lights"])
-		if(usr != src.occupant_legacy)	return
-		src.lights()
 		return
 	if(href_list["toggle_airtank"])
 		if(usr != src.occupant_legacy)	return
@@ -1394,25 +1295,6 @@
 		src.switch_damtype()
 	if(href_list["phasing"])
 		src.phasing()
-
-	if(href_list["rmictoggle"])
-		if(usr != src.occupant_legacy)	return
-		radio.broadcasting = !radio.broadcasting
-		send_byjax(src.occupant_legacy,"exosuit.browser","rmicstate",(radio.broadcasting?"Engaged":"Disengaged"))
-		return
-	if(href_list["rspktoggle"])
-		if(usr != src.occupant_legacy)	return
-		radio.listening = !radio.listening
-		send_byjax(src.occupant_legacy,"exosuit.browser","rspkstate",(radio.listening?"Engaged":"Disengaged"))
-		return
-	if(href_list["rfreq"])
-		if(usr != src.occupant_legacy)	return
-		var/new_frequency = (radio.frequency + top_filter.getNum("rfreq"))
-		if ((radio.frequency < MIN_FREQ || radio.frequency > MAX_FREQ))
-			new_frequency = sanitize_frequency(new_frequency)
-		radio.set_frequency(new_frequency)
-		send_byjax(src.occupant_legacy,"exosuit.browser","rfreq","[format_frequency(radio.frequency)]")
-		return
 	if(href_list["port_disconnect"])
 		if(usr != src.occupant_legacy)	return
 		src.disconnect_from_port()
@@ -1432,7 +1314,6 @@
 	if (href_list["toggle_id_upload"])
 		if(usr != src.occupant_legacy)	return
 		add_req_access = !add_req_access
-		send_byjax(src.occupant_legacy,"exosuit.browser","t_id_upload","[add_req_access?"L":"Unl"]ock ID upload panel")
 		return
 	if(href_list["toggle_maint_access"])
 		if(usr != src.occupant_legacy)	return
@@ -1440,7 +1321,6 @@
 			occupant_message("<font color='red'>Maintenance protocols in effect</font>")
 			return
 		maint_access = !maint_access
-		send_byjax(src.occupant_legacy,"exosuit.browser","t_maint_access","[maint_access?"Forbid":"Permit"] maintenance protocols")
 		return
 	if(href_list["req_access"] && add_req_access)
 		if(!in_range(src, usr))	return
@@ -1532,7 +1412,6 @@
 			if(T)
 				T.Entered(O)
 			src.log_message("Unloaded [O]. Cargo compartment capacity: [cargo_capacity - src.cargo.len]")
-	return
 
 ///////////////////////
 ///// Power stuff /////
@@ -1578,52 +1457,6 @@
 		cell.give(amount)
 		return 1
 	return 0
-
-//This is for mobs mostly.
-/obj/vehicle/sealed/mecha/attack_generic(var/mob/user, var/damage, var/attack_message)
-
-	var/obj/item/vehicle_component/plating/armor/ArmC = internal_components[MECH_ARMOR]
-
-	var/temp_deflect_chance = deflect_chance
-	var/temp_damage_minimum = damage_minimum
-
-	if(!ArmC)
-		temp_deflect_chance = 1
-		temp_damage_minimum = 0
-
-	else
-		temp_deflect_chance = round(ArmC.get_efficiency() * ArmC.deflect_chance)
-		temp_damage_minimum = round(ArmC.get_efficiency() * ArmC.damage_minimum)
-
-	user.setClickCooldownLegacy(user.get_attack_speed_legacy())
-	if(!damage)
-		return 0
-
-	src.log_message("Attacked. Attacker - [user].",1)
-	user.do_attack_animation(src)
-
-	if(prob(temp_deflect_chance))//Deflected
-		src.log_append_to_last("Armor saved.")
-		src.occupant_message("<span class='notice'>\The [user]'s attack is stopped by the armor.</span>")
-		visible_message("<span class='notice'>\The [user] rebounds off [src.name]'s armor!</span>")
-		user.attack_log += "\[[time_stamp()]\] <font color='red'>attacked [src.name]</font>"
-		playsound(src, 'sound/weapons/slash.ogg', 50, 1, -1)
-
-	else if(damage < temp_damage_minimum)//Pathetic damage levels just don't harm MECH.
-		src.occupant_message("<span class='notice'>\The [user]'s doesn't dent \the [src] paint.</span>")
-		src.visible_message("\The [user]'s attack doesn't dent \the [src] armor")
-		src.log_append_to_last("Armor saved.")
-		playsound(src, 'sound/effects/Glasshit.ogg', 50, 1)
-		return
-
-	else
-		src.take_damage_legacy(damage)	//Apply damage - The take_damage_legacy() proc handles armor values
-		if(damage > internal_damage_minimum)	//Only decently painful attacks trigger a chance of mech damage.
-			src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
-		visible_message("<span class='danger'>[user] [attack_message] [src]!</span>")
-		user.attack_log += "\[[time_stamp()]\] <font color='red'>attacked [src.name]</font>"
-
-	return 1
 
 /obj/vehicle/sealed/mecha/proc/legacy_air_flow_step()
 	var/obj/vehicle/sealed/mecha/mecha = src
@@ -1723,8 +1556,6 @@
 /obj/vehicle/sealed/mecha/get_cell(inducer)
 	return cell
 
-//* Entry / Exit *//
-
 /obj/vehicle/sealed/mecha/occupant_added(mob/adding, datum/event_args/actor/actor, control_flags, silent)
 	. = ..()
 	if(occupant_legacy)
@@ -1732,17 +1563,12 @@
 		return
 
 	var/mob/living/carbon/human/H = adding
-
-	if(istype(H) && H.client && (H in range(1)))
-		H.stop_pulling()
-		H.forceMove(src)
-		H.update_perspective()
-		occupant_legacy = H
-		add_fingerprint(H)
-		log_append_to_last("[H] moved in as pilot.")
-		update_icon()
-		if(occupant_legacy.hud_used)
-			minihud = new (occupant_legacy.hud_used, src)
+	occupant_legacy = H
+	add_fingerprint(H)
+	log_append_to_last("[H] moved in as pilot.")
+	update_icon()
+	if(occupant_legacy.hud_used)
+		minihud = new (occupant_legacy.hud_used, src)
 
 	GrantActions(occupant_legacy, 1)
 

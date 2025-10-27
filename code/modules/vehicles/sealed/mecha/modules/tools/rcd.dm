@@ -1,13 +1,12 @@
 /obj/item/vehicle_module/lazy/legacy/tool/rcd
 	name = "mounted RCD"
-	desc = "An exosuit-mounted Rapid Construction Device. (Can be attached to: Any exosuit)"
-	mech_flags = EXOSUIT_MODULE_WORKING|EXOSUIT_MODULE_COMBAT|EXOSUIT_MODULE_MEDICAL
+	desc = "An exosuit-mounted Rapid Construction Device."
 	icon_state = "mecha_rcd"
 	origin_tech = list(TECH_MATERIAL = 4, TECH_BLUESPACE = 3, TECH_MAGNET = 4, TECH_POWER = 4)
 	equip_cooldown = 10
 	energy_drain = 250
 	range = MELEE|RANGED
-	equip_type = EQUIP_SPECIAL
+	module_slot = VEHICLE_MODULE_SLOT_SPECIAL
 	var/obj/item/rcd/electric/mounted/mecha/my_rcd = null
 
 /obj/item/vehicle_module/lazy/legacy/tool/rcd/Initialize(mapload)
@@ -23,14 +22,14 @@
 	if(my_rcd)
 		l_ui_select("mode", "Mode", my_rcd.modes, my_rcd.modes[my_rcd.mode_index])
 
-/obj/item/vehicle_module/lazy/legacy/tool/rcd/on_l_ui_select(key, name)
+/obj/item/vehicle_module/lazy/legacy/tool/rcd/on_l_ui_select(datum/event_args/actor/actor, key, name)
 	. = ..()
 	if(.)
 		return
 	switch(key)
 		if("mode")
 			if(name in my_rcd.modes)
-				my_rcd.mode_index = my_rcd.Find(name)
+				my_rcd.mode_index = my_rcd.modes.Find(name)
 				occupant_message("RCD reconfigured to '[my_rcd.modes[my_rcd.mode_index]]'.")
 			return TRUE
 

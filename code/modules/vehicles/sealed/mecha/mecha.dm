@@ -74,6 +74,16 @@
 	/// * relative to 1
 	var/comp_hull_relative_thickness = 1
 
+	//* Lights *//
+	/// Floodlights are on
+	var/floodlight_active = FALSE
+	/// Floodlight range
+	var/floodlight_range = 6
+	/// Floodlight power
+	var/floodlight_power = 0.7
+	/// Floodlight color
+	var/floodlight_color = "#ffffff"
+
 	//* Maintenance *//
 	#warn impl maybe?
 
@@ -131,12 +141,38 @@
 
 	return vehicle_move(direction, dir)
 
+/obj/vehicle/sealed/mecha/proc/user_set_strafing(datum/event_args/actor/actor, active)
+	if(!set_strafing(active))
+		return FALSE
+	#warn log, feedback
+	return TRUE
+
 /obj/vehicle/sealed/mecha/proc/set_strafing(strafing)
 	if(strafing == src.strafing)
 		return TRUE
 	src.strafing = strafing
 	var/datum/vehicle_ui_controller/mecha/casted_ui_controller = ui_controller
 	casted_ui_controller.update_ui_strafing()
+	return TRUE
+
+/obj/vehicle/sealed/mecha/proc/user_set_floodlights(datum/event_args/actor/actor, active)
+	if(!set_floodlights(active))
+		return FALSE
+	#warn log, feedback
+	playsound(src, 'sound/mecha/heavylightswitch.ogg', 50, 1)
+	return TRUE
+
+/obj/vehicle/sealed/mecha/proc/set_floodlights(active)
+	if(active == src.floodlights_active)
+		return
+	src.floodlights_active = active
+	if(active)
+		set_light(floodlight_range, floodlight_power, floodlight_color)
+	else
+		set_light(l_power = 0)
+	var/datum/vehicle_ui_controller/mecha/casted_ui_controller = ui_controller
+	casted_ui_controller.update_ui_floodlights()
+	#warn update button
 	return TRUE
 
 #warn impl all

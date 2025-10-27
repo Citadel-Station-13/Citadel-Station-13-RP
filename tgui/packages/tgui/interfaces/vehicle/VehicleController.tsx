@@ -27,6 +27,8 @@ interface VehicleControllerProps {
   renderAdditionalSettingSectionLabeledListItems?: Partial<Record<VehicleControllerBuiltinSettingSections, () => ReactNode>>;
   // additional Stack.Item's to render in options
   renderAdditionalSettingSectionStackItems?: Partial<Record<VehicleControllerBuiltinSettingSections, () => ReactNode>>;
+  // additional Stack.Item's to append to settings
+  renderAdditionalSettingRootStackItems?: ReactNode;
 }
 
 interface VehicleControllerState {
@@ -42,9 +44,6 @@ export enum VehicleControllerBuiltinTabs {
 
 export enum VehicleControllerBuiltinSettingSections {
   Options = "options",
-  Radio = "radio",
-  Air = "air",
-  System = "system",
 }
 
 export type VehicleControllerTabKey = VehicleControllerBuiltinTabs | string;
@@ -94,7 +93,8 @@ export class VehicleController extends Component<VehicleControllerProps, Vehicle
                 activeTab={this.state.activeControllerTabe}
                 customRenderers={this.props.tabRenderers}
                 renderAdditionalSettingSectionLabeledListItems={this.props.renderAdditionalSettingSectionLabeledListItems}
-                renderAdditionalSettingSectionStackItems={this.props.renderAdditionalSettingSectionStackItems} />
+                renderAdditionalSettingSectionStackItems={this.props.renderAdditionalSettingSectionStackItems}
+                renderAdditionalSettingRootStackItems={this.props.renderAdditionalSettingRootStackItems} />
             </Stack.Item>
           </Stack>
         </Window.Content>
@@ -108,6 +108,7 @@ const VehicleControllerContent = (props: {
   customRenderers?: Record<VehicleControllerTabKey, () => ReactNode | null>;
   renderAdditionalSettingSectionLabeledListItems?: Partial<Record<VehicleControllerBuiltinSettingSections, () => ReactNode>>;
   renderAdditionalSettingSectionStackItems?: Partial<Record<VehicleControllerBuiltinSettingSections, () => ReactNode>>;
+  renderAdditionalSettingRootStackItems?: ReactNode;
 }) => {
   if (props.activeTab && props.customRenderers?.[props.activeTab] !== undefined) {
     return props.customRenderers[props.activeTab]() || (<Section fill />);
@@ -123,6 +124,7 @@ const VehicleControllerContent = (props: {
       return VehicleControllerSettings({
         renderAdditionalSettingSectionLabeledListItems: props.renderAdditionalSettingSectionLabeledListItems,
         renderAdditionalSettingSectionStackItems: props.renderAdditionalSettingSectionStackItems,
+        renderAdditionalSettingRootStackItems: props.renderAdditionalSettingRootStackItems,
       });
   }
   return (<Section fill />);
@@ -188,6 +190,8 @@ interface VehicleControllerSettingsProps {
   renderAdditionalSettingSectionLabeledListItems?: Partial<Record<VehicleControllerBuiltinSettingSections, () => ReactNode>>;
   // additional Stack.Item's to render in options
   renderAdditionalSettingSectionStackItems?: Partial<Record<VehicleControllerBuiltinSettingSections, () => ReactNode>>;
+  // additional Stack.Item's to append to settings
+  renderAdditionalSettingRootStackItems?: ReactNode;
 }
 
 const VehicleControllerSettings = (props: VehicleControllerSettingsProps) => {
@@ -197,40 +201,11 @@ const VehicleControllerSettings = (props: VehicleControllerSettingsProps) => {
         <Stack.Item>
           Options
           <LabeledList>
-            <LabeledList.Item label="Floodlights">Test</LabeledList.Item>
             {props.renderAdditionalSettingSectionLabeledListItems?.[VehicleControllerBuiltinSettingSections.Options]?.()}
           </LabeledList>
           {props.renderAdditionalSettingSectionStackItems?.[VehicleControllerBuiltinSettingSections.Options]?.()}
         </Stack.Item>
-        <Stack.Item>
-          Radio
-          <LabeledList>
-            <LabeledList.Item label="Frequency">Test</LabeledList.Item>
-            <LabeledList.Item label="Transmit">Test</LabeledList.Item>
-            <LabeledList.Item label="Receive">Test</LabeledList.Item>
-            {props.renderAdditionalSettingSectionLabeledListItems?.[VehicleControllerBuiltinSettingSections.Radio]?.()}
-          </LabeledList>
-          {props.renderAdditionalSettingSectionStackItems?.[VehicleControllerBuiltinSettingSections.Radio]?.()}
-        </Stack.Item>
-        <Stack.Item>
-          Life Support
-          <LabeledList>
-            <LabeledList.Item label="Airflow">Test</LabeledList.Item>
-            <LabeledList.Item label="Port Connection">Test</LabeledList.Item>
-            {props.renderAdditionalSettingSectionLabeledListItems?.[VehicleControllerBuiltinSettingSections.Air]?.()}
-          </LabeledList>
-          {props.renderAdditionalSettingSectionStackItems?.[VehicleControllerBuiltinSettingSections.Air]?.()}
-        </Stack.Item>
-        <Stack.Item>
-          System
-          <LabeledList>
-            <LabeledList.Item label="Maintenance Lock">Test</LabeledList.Item>
-            <LabeledList.Item label="ID Upload Lock">Test</LabeledList.Item>
-            <LabeledList.Item label="Change External Label">Test</LabeledList.Item>
-            {props.renderAdditionalSettingSectionLabeledListItems?.[VehicleControllerBuiltinSettingSections.System]?.()}
-          </LabeledList>
-          {props.renderAdditionalSettingSectionStackItems?.[VehicleControllerBuiltinSettingSections.System]?.()}
-        </Stack.Item>
+        {props.renderAdditionalSettingRootStackItems}
       </Stack>
     </Section>
   );

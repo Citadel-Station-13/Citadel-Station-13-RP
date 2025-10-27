@@ -729,7 +729,7 @@
 
 	if(equip_mount && equip_mount.chassis)
 		var/obj/vehicle/sealed/mecha/M = equip_mount.chassis
-		if(M.selected == equip_mount && get_fuel())
+		if(M.module_active_click == equip_mount && get_fuel())
 			setWelding(TRUE, M.occupant_legacy)
 		else
 			setWelding(FALSE, M.occupant_legacy)

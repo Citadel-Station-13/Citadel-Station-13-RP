@@ -46,11 +46,6 @@
 	))
 		action.revoke(user.actions_controlled)
 
-
-//
-////BUTTONS STUFF
-//
-
 /datum/action/mecha
 	check_mobility_flags = MOBILITY_CAN_USE
 	button_icon = 'icons/screen/actions/mecha.dmi'
@@ -65,7 +60,7 @@
 	if(.)
 		return
 	var/obj/vehicle/sealed/mecha/chassis = target
-	chassis.lights()
+	chassis.user_set_floodlights(actor, !chassis.floodlights_active)
 	button_icon_state = "mech_lights_[chassis.lights ? "on" : "off"]"
 	update_buttons()
 
