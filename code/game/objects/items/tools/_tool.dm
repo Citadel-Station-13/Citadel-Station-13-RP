@@ -5,6 +5,7 @@
  */
 /obj/item/tool
 	item_flags = ITEM_CAREFUL_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	suit_storage_class = ITEM_SUIT_STORAGE_CLASS_SOFTWEAR | ITEM_SUIT_STORAGE_CLASS_HARDWEAR
 
 /obj/item/tool/get_description_info()
 	. = ..()

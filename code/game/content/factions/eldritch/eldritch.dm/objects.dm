@@ -5,6 +5,7 @@
 	desc = "A heavy book that has been crafted out of purple leather and bound with a chain made of metal you don't recognize. A variety of runes have been etched into the cover."
 	anchored = 0
 	density = 0
+	suit_storage_class = ITEM_SUIT_STORAGE_CLASS_HARDWEAR | ITEM_SUIT_STORAGE_CLASS_SOFTWEAR
 
 /obj/item/eldritch/prop/medallion
 	icon = 'code/game/content/factions/eldritch/eldritch.dmi/objects.dmi'

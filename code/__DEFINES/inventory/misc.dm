@@ -3,3 +3,8 @@
 // todo: comsig instead?
 /// relocated; return false
 #define ITEM_RELOCATED_BY_DROPPED -1
+
+//* Item `suit_storage_class` defines *//
+
+#define ITEM_SUIT_STORAGE_CLASS_HARDWEAR (1<<0)
+#define ITEM_SUIT_STORAGE_CLASS_SOFTWEAR (1<<1)
