@@ -197,8 +197,8 @@
 	return TRUE
 
 /obj/item/clothing/attackby(obj/item/tool, mob/user, list/params, clickchain_flags, damage_multiplier, datum/event_args/actor/clickchain/clickchain)
-	if(istype(I, /obj/item/clothing/accessory))
-		var/obj/item/clothing/accessory/A = I
+	if(istype(tool, /obj/item/clothing/accessory))
+		var/obj/item/clothing/accessory/A = tool
 		if(attempt_attach_accessory(A, user))
 			return
 
