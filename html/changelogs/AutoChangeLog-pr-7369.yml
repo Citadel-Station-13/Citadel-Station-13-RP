@@ -1,0 +1,4 @@
+author: "TheLordME"
+delete-after: True
+changes:
+  - tweak: "prevent ghostroles from spawning before round start"
