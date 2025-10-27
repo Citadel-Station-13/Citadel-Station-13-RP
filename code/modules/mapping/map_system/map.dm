@@ -434,8 +434,11 @@
 	for(var/datum/map_level/rebuilding_level as anything in loaded_levels_requiring_immediate_rebuild_to_dirs)
 		var/rebuild_dirs = loaded_levels_requiring_immediate_rebuild_to_dirs[rebuilding_level]
 		SSmapping.rebuild_multiz_lookup(rebuilding_level.z_index, rebuild_dirs)
-		if(!skip_loaded_rebuild)
-			rebuilding_level.rebuild_multiz_in_dir(rebuild_dirs)
+		if(!skip_loaded_rebuild && rebuilding_level.loaded)
+			if(rebuild_dirs & (NORTH|SOUTH|EAST|WEST))
+				rebuilding_level.rebuild_multiz_horizontal()
+			else
+				rebuilding_level.rebuild_multiz_vertical()
 
 	return TRUE
 

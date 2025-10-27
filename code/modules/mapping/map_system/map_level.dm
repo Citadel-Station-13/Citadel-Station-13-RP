@@ -486,7 +486,7 @@
 	rebuild_multiz_vertical()
 	for(var/dir in list(NORTH, SOUTH, EAST, WEST, UP, DOWN))
 		var/datum/map_level/partner = get_level_in_dir(dir)
-		if(partner.get_level_in_dir(turn(dir, 180)) == src)
+		if(partner?.get_level_in_dir(turn(dir, 180)) == src)
 			if(dir & (NORTH|SOUTH|EAST|WEST))
 				partner.rebuild_multiz_horizontal()
 			else
