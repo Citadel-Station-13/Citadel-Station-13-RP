@@ -265,6 +265,19 @@
 			else
 				keyed_levels[level.id] = level
 
+		if(level.has_map_path())
+			var/datum/dmm_parsed/parsed = level.parse_map_path()
+			if(!parsed)
+				out_errors?.Add("level: index [level_idx] couldn't find its map file.")
+				. = FALSE
+			else if(!parsed.parsed)
+				out_errors?.Add("level: index [level_idx] parse failed. is the .dmm malformed?")
+				. = FALSE
+			else
+				if(parsed.width > world.maxx || parsed.height > world.maxy)
+					out_errors?.Add("level: index [level_idx] dim [parsed.width]x[parsed.height] > [world.maxx]x[world.maxy]")
+					. = FALSE
+
 		var/level_struct_enabled = level.struct_x && level.struct_y && level.struct_z
 		if(level_struct_enabled)
 			if(!level.id)

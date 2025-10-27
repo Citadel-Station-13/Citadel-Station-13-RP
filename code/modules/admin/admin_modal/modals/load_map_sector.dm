@@ -307,7 +307,7 @@
 		for(var/error in errors_out)
 			rendered += "<li>[error]</li>"
 		rendered = jointext(rendered, "")
-		to_chat("<div><center>Map validation errors</center><hr>[rendered]</div")
+		to_chat(owner.owner, "<div><center>Map validation errors</center><hr>[rendered]</div")
 
 	update_ui_data()
 

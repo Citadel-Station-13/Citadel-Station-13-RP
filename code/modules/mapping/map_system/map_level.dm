@@ -31,9 +31,8 @@
 
 	//* File *//
 	/// Absolute path to the map .dmm file.
-	///
-	/// This is determined with regards to the context of the load.
-	///
+	/// * This can be a literal file.
+	/// * This is determined with regards to the context of the load.
 	/// * Hardcoded shuttle templates will be the path from the server's working directory.
 	var/path
 
@@ -313,11 +312,34 @@
 		load_orientation = data["load_crop"]
 
 /**
+ * Checks if we have a .dmm. If this is FALSE,
+ * we are a naked map_level that should only generate a blank level.
+ */
+/datum/map_level/proc/has_map_path()
+	return !!path
+
+/**
  * get .dmm path or file
  * * null is an acceptable return, if no file is attached to us.
  */
 /datum/map_level/proc/resolve_map_path()
 	return path
+
+/**
+ * get /datum/dmm_parsed from us.
+ * * null is an acceptable return, if no file is attached to us.
+ */
+/datum/map_level/proc/parse_map_path()
+	var/map_path = resolve_map_path()
+	if(!map_path)
+		return null
+	// this is a real map path
+	if(isfile(map_path))
+	else if(!fexists(map_path))
+		return null
+	else
+		map_path = file(map_path)
+	return parse_map(map_path)
 
 /**
  * allow deallocation/unload

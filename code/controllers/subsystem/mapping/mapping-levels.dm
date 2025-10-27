@@ -239,16 +239,12 @@
 
 	var/datum/dmm_context/loaded_context
 
-	var/map_path = instance.resolve_map_path()
-	if(map_path)
-		// this is a real map path
-		if(isfile(map_path))
-		else if(!fexists(map_path))
-			CRASH("fexists() failed on map path [map_path] for instance [instance] ([instance.type])")
-		else
-			map_path = file(map_path)
-
-		var/datum/dmm_parsed/parsed = parse_map(map_path)
+	if(instance.has_map_path())
+		var/datum/dmm_parsed/parsed = instance.parse_map_path()
+		if(!parsed)
+			CRASH("level [instance] ([instance.type]) couldn't parse its map because its map path was missing or an unknown error occurred.")
+		if(!parsed.parsed)
+			CRASH("failed to parse a level being loaded. is the map malformed?")
 
 		var/real_x = instance.load_center ? 1 + round((world.maxx - parsed.width) / 2) : 1
 		var/real_y = instance.load_center ? 1 + round((world.maxy - parsed.height) / 2) : 1
