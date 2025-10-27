@@ -42,7 +42,6 @@
 	encumbrance = ITEM_ENCUMBRANCE_VOIDSUIT
 	weight = ITEM_WEIGHT_VOIDSUIT
 	armor_type = /datum/armor/general/space/armored
-	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit)
 	heat_protection_cover = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	max_heat_protection_temperature = SPACE_SUIT_MAX_HEAT_PROTECTION_TEMPERATURE
 	min_pressure_protection = 0 * ONE_ATMOSPHERE

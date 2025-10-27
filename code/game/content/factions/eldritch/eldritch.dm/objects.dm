@@ -30,6 +30,7 @@
 	icon_state = "cursed_blade"
 	slot_flags = SLOT_BELT
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
+	suit_storage_class = ITEM_SUIT_STORAGE_CLASS_HARDWEAR
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	drop_sound = 'sound/items/drop/sword.ogg'

@@ -117,7 +117,6 @@
 	var/obj/item/worn_inside
 	/// suppress auto inventory hooks in forceMove
 	var/worn_hook_suppressed = FALSE
-	#warn hook all
 	/// Suit storage classes
 	var/suit_storage_class = NONE
 	/// Suit storage classes to allow

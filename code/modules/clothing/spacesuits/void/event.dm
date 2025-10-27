@@ -67,19 +67,6 @@
 	icon_state = "rig-vintagemedic"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sec_voidsuitTG", SLOT_ID_LEFT_HAND = "sec_voidsuitTG")
 	armor_type = /datum/armor/vintage/space/med
-	allowed = list(/obj/item/flashlight,
-			/obj/item/tank,
-			/obj/item/suit_cooling_unit,
-			/obj/item/storage/firstaid,
-			/obj/item/healthanalyzer,
-			/obj/item/robotanalyzer,
-			/obj/item/mass_spectrometer,
-			/obj/item/geiger_counter,
-			/obj/item/stack/medical,
-			/obj/item/gps,
-			/obj/item/radio/beacon,
-			/obj/item/cell
-			)
 
 //Marine Crewsuit (BLUE, SHIELD)
 //Really solid, balance between Sec and Sec EVA, but it has slightly worse shock protection
@@ -141,13 +128,6 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sec_voidsuitTG", SLOT_ID_LEFT_HAND = "sec_voidsuitTG")
 	armor_type = /datum/armor/vintage/space/pilot
 	siemens_coefficient = 0.9
-	allowed = list(/obj/item/flashlight,
-			/obj/item/tank,
-			/obj/item/suit_cooling_unit,
-			/obj/item/storage/briefcase/inflatable,
-			/obj/item/gps,
-			/obj/item/radio/beacon,
-			)
 
 //Scientist Crewsuit (PURPLE, O)
 //Baseline values are slightly worse than the gray crewsuit, but it has significantly better Energy protection and is the only other suit with 100% rad immunity besides the engi suit
