@@ -97,16 +97,18 @@
 	var/load_center = TRUE
 
 	//* Rebuilds *//
-	/// dirs being operated on
-	var/multiz_system_mutex = NONE
-	/// dirs having teardowns blocking right now
-	var/multiz_teardown_mutex = NONE
-	/// dirs having rebuilds blocking right now
-	var/multiz_build_mutex = NONE
-	/// used to cancel builds if a teardown happens during a blocked build
-	var/multiz_continue_build_mutex = NONE
-	/// used to cancel teardowns if a build happens during a blocked teardown
-	var/multiz_continue_teardown_mutex = NONE
+	/// a vertical rebuild is blocking; don't bother queuing another
+	var/tmp/multiz_vertical_rebuild_queued = FALSE
+	/// multiz vertical rebuild mutex
+	var/tmp/multiz_vertical_rebuild_mutex = FALSE
+	/// tracking for perf
+	var/tmp/multiz_vertical_rebuild_count = 0
+	/// a horizontal rebuild is blocking; don't bother queuing another
+	var/tmp/multiz_horizontal_rebuild_queued = FALSE
+	/// multiz horizontal rebuild mutex
+	var/tmp/multiz_horizontal_rebuild_mutex = FALSE
+	/// tracking for perf
+	var/tmp/multiz_horizontal_rebuild_count = 0
 
 	//* Simulation *//
 	/// canonical height of level in meters
@@ -383,7 +385,10 @@
 		else
 			CRASH("invalid dir passed in")
 	if(loaded && !skip_loaded_rebuild)
-		rebuild_multiz_in_dir(dir)
+		if(dir & (NORTH|SOUTH|EAST|WEST))
+			rebuild_multiz_horizontal()
+		else if(dir & (UP|DOWN))
+			rebuild_multiz_vertical()
 
 /**
  * get level datum in dir
@@ -474,121 +479,18 @@
  * * will block / sleep!
  *
  * @params
- * * reciprocal - order the level in that dir to rebuild towards us.
- *                this doesn't always make sense to enable, because
- *                it's possible (albeit rare) that a level is one-way
- *                linked and the other level doesn't link back.
- * * reciprocal_ignore_same_map - if reciprocal, don't rebuild same map
+ * * reciprocal_if_linked - order adjacent levels to rebuild towards us if they are linked to us
  */
-/datum/map_level/proc/rebuild_multiz(reciprocal, reciprocal_ignore_same_map)
+/datum/map_level/proc/rebuild_multiz(reciprocal_if_linked)
+	rebuild_multiz_horizontal()
+	rebuild_multiz_vertical()
 	for(var/dir in list(NORTH, SOUTH, EAST, WEST, UP, DOWN))
-		rebuild_multiz_in_dir(dir)
-		if(reciprocal)
-			var/datum/map_level/partner = get_level_in_dir(dir)
-			if(!reciprocal_ignore_same_map || partner.parent_map != parent_map)
-				partner?.rebuild_multiz_in_dir(turn(dir, 180))
-
-/**
- * expensive as hell, teardown all dirs
- * * use when being unloaded or something
- * * will block / sleep!
- *
- * @params
- * * reciprocal - order the level in that dir to teardown our dir.
- *                this doesn't always make sense to enable, because
- *                it's possible (albeit rare) that a level is one-way
- *                linked and the other level doesn't link back.
- * * reciprocal_ignore_same_map - if reciprocal, don't rebuild same map
- */
-/datum/map_level/proc/teardown_multiz(reciprocal, reciprocal_ignore_same_map)
-	for(var/dir in list(NORTH, SOUTH, EAST, WEST, UP, DOWN))
-		teardown_multiz_in_dir(dir)
-		if(reciprocal)
-			var/datum/map_level/partner = get_level_in_dir(dir)
-			if(!reciprocal_ignore_same_map || partner.parent_map != parent_map)
-				partner?.teardown_multiz_in_dir(turn(dir, 180))
-
-/datum/map_level/proc/rebuild_multiz_in_dirs(dirs)
-	for(var/dir in list(NORTH, SOUTH, EAST, WEST, UP, DOWN))
-		if(dir)
-			rebuild_multiz_in_dir(dir)
-
-/datum/map_level/proc/teardown_multiz_in_dirs(dirs)
-	for(var/dir in list(NORTH, SOUTH, EAST, WEST, UP, DOWN))
-		if(dir)
-			teardown_multiz_in_dir(dir)
-
-/**
- * * multiple dir bits is not allowed
- * * will block / sleep!
- */
-/datum/map_level/proc/rebuild_multiz_in_dir(dir)
-	var/dir_bit_place = log(2, dir)
-	if(dir_bit_place != round(dir_bit_place))
-		CRASH("attempted to perform multiple multiz ops at once")
-
-	// if a teardown is queued, stop it
-	multiz_continue_teardown_mutex &= ~dir
-	// if a build is queued, make sure it isn't stopped anymore
-	if(multiz_build_mutex & dir)
-		multiz_continue_build_mutex |= dir
-	// wait if something is operating
-	if(multiz_system_mutex & dir)
-		// if there's a waiting build, don't bother
-		if(multiz_build_mutex & dir)
-			return
-		multiz_build_mutex |= dir
-		// register intent to build so teardown can interrupt
-		multiz_continue_build_mutex |= dir
-		UNTIL(!(multiz_system_mutex & dir))
-		multiz_build_mutex &= ~dir
-		// check if we should still continue; if a teardown was called, let the teardown proceed instead
-		if(!(multiz_continue_build_mutex & dir))
-			return
-	multiz_system_mutex |= dir
-
-	if(dir & (NORTH|SOUTH|EAST|WEST))
-		rebuild_horizontal_transitions(dir & (NORTH|SOUTH|EAST|WEST))
-	if(dir & (UP|DOWN))
-		rebuild_vertical_transitions(dir & (UP|DOWN))
-
-	multiz_system_mutex &= ~dir
-
-/**
- * * multiple dir bits is not allowed
- * * will block / sleep!
- */
-/datum/map_level/proc/teardown_multiz_in_dir(dir)
-	var/dir_bit_place = log(2, dir)
-	if(dir_bit_place != round(dir_bit_place))
-		CRASH("attempted to perform multiple multiz ops at once")
-
-	// if a build is queued, stop it
-	multiz_continue_build_mutex &= ~dir
-	// if a teardown is queued, make sure it isn't stopped anymore
-	if(multiz_teardown_mutex & dir)
-		multiz_continue_teardown_mutex |= dir
-	// wait if something is operating
-	if(multiz_system_mutex & dir)
-		// if there's a waiting teardown, don't bother
-		if(multiz_teardown_mutex & dir)
-			return
-		multiz_teardown_mutex |= dir
-		// register intent to teardown so build can interrupt
-		multiz_continue_teardown_mutex |= dir
-		UNTIL(!(multiz_system_mutex & dir))
-		multiz_teardown_mutex &= ~dir
-		// check if we should still continue; if a build was called, let the build proceed instead
-		if(!(multiz_continue_teardown_mutex & dir))
-			return
-	multiz_system_mutex |= dir
-
-	if(dir & (NORTH|SOUTH|EAST|WEST))
-		teardown_horizontal_transitions(dir & (NORTH|SOUTH|EAST|WEST))
-	if(dir & (UP|DOWN))
-		teardown_vertical_transitions(dir & (UP|DOWN))
-
-	multiz_system_mutex &= ~dir
+		var/datum/map_level/partner = get_level_in_dir(dir)
+		if(partner.get_level_in_dir(turn(dir, 180)) == src)
+			if(dir & (NORTH|SOUTH|EAST|WEST))
+				partner.rebuild_multiz_horizontal()
+			else
+				partner.rebuild_multiz_vertical()
 
 /**
  * causes an immediate rebuild in given dir (or all if none specified)
@@ -598,11 +500,21 @@
  *
  * TODO: this proc is a lie, it doesn't actually touch zmimic; that's fine for now, though
  */
-/datum/map_level/proc/rebuild_vertical_transitions(dirs)
-	// Don't call directly, we're mutex guarded to catch accidental performance issues.
+/datum/map_level/proc/rebuild_multiz_vertical()
+	// internally rebuilds are coalesced if two happen at the same time,
+	// but we still want to track it to see if we're calling this unnecessarily.
+	multiz_vertical_rebuild_count++
+	if(multiz_vertical_rebuild_queued)
+		return
+	multiz_vertical_rebuild_queued = TRUE
+	UNTIL(!multiz_vertical_rebuild_mutex)
+	multiz_vertical_rebuild_queued = FALSE
+	multiz_vertical_rebuild_mutex = TRUE
+	rebuild_multiz_vertical_impl()
+	multiz_vertical_rebuild_mutex = FALSE
+
+/datum/map_level/proc/rebuild_multiz_vertical_impl()
 	PROTECTED_PROC(TRUE)
-	if(dirs)
-		ASSERT((dirs & (UP|DOWN)) == dirs)
 	for(var/turf/T as anything in level_turfs())
 		T.update_multiz()
 		CHECK_TICK
@@ -613,19 +525,32 @@
  * * dir must be horizontal if specified
  * * will block / sleep!
  */
-/datum/map_level/proc/rebuild_horizontal_transitions(dirs)
-	// Don't call directly, we're mutex guarded to catch accidental performance issues.
+/datum/map_level/proc/rebuild_multiz_horizontal()
+	// internally rebuilds are coalesced if two happen at the same time,
+	// but we still want to track it to see if we're calling this unnecessarily.
+	multiz_horizontal_rebuild_count++
+	if(multiz_horizontal_rebuild_queued)
+		return
+	multiz_horizontal_rebuild_queued = TRUE
+	UNTIL(!multiz_horizontal_rebuild_mutex)
+	multiz_horizontal_rebuild_queued = FALSE
+	multiz_horizontal_rebuild_mutex = TRUE
+	rebuild_multiz_horizontal_impl()
+	multiz_horizontal_rebuild_mutex = FALSE
+
+/datum/map_level/proc/rebuild_multiz_horizontal_impl()
 	PROTECTED_PROC(TRUE)
-	if(dirs)
-		ASSERT((dirs & (NORTH|SOUTH|EAST|WEST)) == dirs)
 	switch(transition)
 		// do nothing
 		if(Z_TRANSITION_DISABLED)
-		// default not implemented
+			for(var/turf/T as anything in transition_turfs())
+				T._dispose_transition_border()
+				CHECK_TICK
+		// just obey the link ids
 		if(Z_TRANSITION_FORCED, Z_TRANSITION_DEFAULT, Z_TRANSITION_INVISIBLE)
 			var/visible = transition != Z_TRANSITION_INVISIBLE
 			// cardinals
-			if(!isnull(link_south_id) && (dirs & SOUTH))
+			if(!isnull(link_south_id))
 				for(var/turf/T as anything in transition_turfs(SOUTH))
 					T._make_transition_border(SOUTH, visible)
 					CHECK_TICK
@@ -633,7 +558,7 @@
 				for(var/turf/T as anything in transition_turfs(SOUTH))
 					T._dispose_transition_border()
 					CHECK_TICK
-			if(!isnull(link_north_id) && (dirs & NORTH))
+			if(!isnull(link_north_id))
 				for(var/turf/T as anything in transition_turfs(NORTH))
 					T._make_transition_border(NORTH, visible)
 					CHECK_TICK
@@ -641,7 +566,7 @@
 				for(var/turf/T as anything in transition_turfs(NORTH))
 					T._dispose_transition_border()
 					CHECK_TICK
-			if(!isnull(link_east_id) && (dirs & EAST))
+			if(!isnull(link_east_id))
 				for(var/turf/T as anything in transition_turfs(EAST))
 					T._make_transition_border(EAST, visible)
 					CHECK_TICK
@@ -649,7 +574,7 @@
 				for(var/turf/T as anything in transition_turfs(EAST))
 					T._dispose_transition_border()
 					CHECK_TICK
-			if(!isnull(link_west_id) && (dirs & WEST))
+			if(!isnull(link_west_id))
 				for(var/turf/T as anything in transition_turfs(WEST))
 					T._make_transition_border(WEST, visible)
 					CHECK_TICK
@@ -659,90 +584,42 @@
 					CHECK_TICK
 			// diagonals
 			var/datum/map_level/resolved
-			if(dirs & (NORTH | WEST))
-				resolved = get_level_in_dir(NORTHWEST)
-				if(!isnull(resolved))
-					for(var/turf/T as anything in transition_turfs(NORTHWEST))
-						T._make_transition_border(NORTHWEST, visible)
-						CHECK_TICK
-				else
-					for(var/turf/T as anything in transition_turfs(NORTHWEST))
-						T._dispose_transition_border()
-						CHECK_TICK
-			if(dirs & (NORTH | EAST))
-				resolved = get_level_in_dir(NORTHEAST)
-				if(!isnull(resolved))
-					for(var/turf/T as anything in transition_turfs(NORTHEAST))
-						T._make_transition_border(NORTHEAST, visible)
-						CHECK_TICK
-				else
-					for(var/turf/T as anything in transition_turfs(NORTHEAST))
-						T._dispose_transition_border()
-						CHECK_TICK
-			if(dirs & (SOUTH | WEST))
-				resolved = get_level_in_dir(SOUTHWEST)
-				if(!isnull(resolved))
-					for(var/turf/T as anything in transition_turfs(SOUTHWEST))
-						T._make_transition_border(SOUTHWEST, visible)
-						CHECK_TICK
-				else
-					for(var/turf/T as anything in transition_turfs(SOUTHWEST))
-						T._dispose_transition_border()
-						CHECK_TICK
-			if(dirs & (SOUTH | EAST))
-				resolved = get_level_in_dir(SOUTHEAST)
-				if(!isnull(resolved))
-					for(var/turf/T as anything in transition_turfs(SOUTHEAST))
-						T._make_transition_border(SOUTHEAST, visible)
-						CHECK_TICK
-				else
-					for(var/turf/T as anything in transition_turfs(SOUTHEAST))
-						T._dispose_transition_border()
-						CHECK_TICK
-
-
-/**
- * causes an immediate teardown in given dir (or all if none specified)
- * * multiple dir bits is allowed
- * * dir must be vertical if specified
- * * will block / sleep!
- *
- * TODO: this proc is a lie, it doesn't actually touch zmimic; that's fine for now, though
- */
-/datum/map_level/proc/teardown_vertical_transitions(dirs)
-	// Don't call directly, we're mutex guarded to catch accidental performance issues.
-	PROTECTED_PROC(TRUE)
-	if(dirs)
-		ASSERT((dirs & (UP|DOWN)) == dirs)
-	if(dirs & DOWN)
-		for(var/turf/T as anything in level_turfs())
-			T.update_multiz()
-			T.disable_zmimic()
-			CHECK_TICK
-	else
-		for(var/turf/T as anything in level_turfs())
-			T.update_multiz()
-			CHECK_TICK
-
-/**
- * causes an immediate teardown in given dir (or all if none specified)
- * * multiple dir bits is allowed
- * * dir must be horizontal if specified
- * * will block / sleep!
- */
-/datum/map_level/proc/teardown_horizontal_transitions(dirs)
-	// Don't call directly, we're mutex guarded to catch accidental performance issues.
-	PROTECTED_PROC(TRUE)
-	if(dirs)
-		ASSERT((dirs & (NORTH|SOUTH|EAST|WEST)) == dirs)
-	var/list/updating = list()
-	for(var/checking in list(NORTH, SOUTH, EAST, WEST, NORTHEAST, SOUTHEAST, NORTHWEST, SOUTHWEST))
-		if(!(dirs & checking))
-			continue
-		updating += transition_turfs(checking)
-	for(var/turf/T as anything in updating)
-		T._dispose_transition_border()
-		CHECK_TICK
+			resolved = get_level_in_dir(NORTHWEST)
+			if(!isnull(resolved))
+				for(var/turf/T as anything in transition_turfs(NORTHWEST))
+					T._make_transition_border(NORTHWEST, visible)
+					CHECK_TICK
+			else
+				for(var/turf/T as anything in transition_turfs(NORTHWEST))
+					T._dispose_transition_border()
+					CHECK_TICK
+			resolved = get_level_in_dir(NORTHEAST)
+			if(!isnull(resolved))
+				for(var/turf/T as anything in transition_turfs(NORTHEAST))
+					T._make_transition_border(NORTHEAST, visible)
+					CHECK_TICK
+			else
+				for(var/turf/T as anything in transition_turfs(NORTHEAST))
+					T._dispose_transition_border()
+					CHECK_TICK
+			resolved = get_level_in_dir(SOUTHWEST)
+			if(!isnull(resolved))
+				for(var/turf/T as anything in transition_turfs(SOUTHWEST))
+					T._make_transition_border(SOUTHWEST, visible)
+					CHECK_TICK
+			else
+				for(var/turf/T as anything in transition_turfs(SOUTHWEST))
+					T._dispose_transition_border()
+					CHECK_TICK
+			resolved = get_level_in_dir(SOUTHEAST)
+			if(!isnull(resolved))
+				for(var/turf/T as anything in transition_turfs(SOUTHEAST))
+					T._make_transition_border(SOUTHEAST, visible)
+					CHECK_TICK
+			else
+				for(var/turf/T as anything in transition_turfs(SOUTHEAST))
+					T._dispose_transition_border()
+					CHECK_TICK
 
 //* Turf Fetch *//
 

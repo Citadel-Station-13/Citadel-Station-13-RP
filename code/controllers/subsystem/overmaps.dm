@@ -30,7 +30,7 @@ SUBSYSTEM_DEF(overmaps)
 
 	/// Z-level ownership lookup
 	///
-	/// * This is an indexed list, with the entry being the owning /datum/overmap_location of a level, if any.
+	/// * This is an indexed list of z-levels, with the entry being the owning /datum/overmap_location of a level, if any.
 	/// * This is the owning locations of levels.
 	/// * Non-owning locations aren't in here.
 	/// * A level can only be owned by one location at a time.
@@ -58,6 +58,13 @@ SUBSYSTEM_DEF(overmaps)
 	// rebuild stuff //
 	rebuild_helm_computers()
 	return SS_INIT_SUCCESS
+
+/datum/controller/subsystem/overmaps/on_max_z_changed(old_z_count, new_z_count)
+	..()
+	ASSERT(old_z_count <= new_z_count)
+	if(!islist(location_enclosed_levels))
+		location_enclosed_levels = list()
+	location_enclosed_levels.len = new_z_count
 
 // the last vestige of legacy code in the overmaps subsystem
 // this tells helm computers to update their sectors

@@ -274,6 +274,7 @@
 #include "code\__DEFINES\machines\door.dm"
 #include "code\__DEFINES\machines\lathe.dm"
 #include "code\__DEFINES\machines\turrets.dm"
+#include "code\__DEFINES\mapping\levels-legacy.dm"
 #include "code\__DEFINES\mapping\levels.dm"
 #include "code\__DEFINES\mapping\maploader.dm"
 #include "code\__DEFINES\mapping\maps.dm"

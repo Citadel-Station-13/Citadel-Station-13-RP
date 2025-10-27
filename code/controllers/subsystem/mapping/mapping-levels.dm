@@ -453,4 +453,4 @@
 			stack_trace("WARNING: level [z] ([level.name]) wasn't unlinked after having a loop detected.")
 			continue
 		spawn(0)
-			level.teardown_multiz_in_dirs(UP|DOWN)
+			level.rebuild_multiz_vertical()
