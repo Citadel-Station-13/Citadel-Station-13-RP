@@ -1,6 +1,6 @@
 /** Civillian
 
-/area/endeavour/civillian/evastorage
+/area/civillian/evastorage/endeavour
 	name = "\improper Public EVA Storage"
 	icon_state = "purple"
 	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
@@ -8,7 +8,7 @@
 
 /** Command
 
-/area/endeavour/command/turrets
+/area/command/turrets/endeavour
 	name = "\improper Auxiliary Bridge"
 	icon_state = "bridge"
 	nightshift_level = NIGHTSHIFT_LEVEL_COMMAND_FACILITIES
@@ -29,19 +29,19 @@
 
 /** Exploration
 
-/area/endeavour/exploration
+/area/exploration/endeavour
 	name = "\improper Exploration Department"
 	icon_state = "purple"
 	holomap_color = HOLOMAP_AREACOLOR_SCIENCE
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_HALLWAYS
 
-/area/endeavour/exploration/hallway_fore
+/area/exploration/hallway_fore/endeavour
 	name = "\improper Exploration Fore Hallway"
 
-/area/endeavour/exploration/hallway_aft
+/area/exploration/hallway_aft/endeavour
 	name = "\improper Exploration Aft Hallway"
 
-/area/endeavour/exploration/aux_hanger
+/area/exploration/aux_hanger/endeavour
 	name = "\improper Exploration Auxilliary Hanger"
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 */

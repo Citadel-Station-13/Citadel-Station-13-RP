@@ -445,7 +445,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/reinforced,
-/area/endeavour/exploration/aux_hanger)
+/area/exploration/aux_hanger/endeavour)
 "lh" = (
 /obj/machinery/light/no_nightshift{
 	old_wall = 1
@@ -1321,7 +1321,7 @@
 /area/space)
 "Kt" = (
 /turf/simulated/floor/reinforced,
-/area/endeavour/exploration/aux_hanger)
+/area/exploration/aux_hanger/endeavour)
 "Lc" = (
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button/airlock_interior{

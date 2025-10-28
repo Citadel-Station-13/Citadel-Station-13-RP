@@ -1,72 +1,72 @@
 // Transfer Shuttle docking area
 
-/area/station/space/endeavour/tram
+/area/space/tram/endeavour
 	name = "\improper Transfer Shuttle Docking"
 	icon_state = "dk_yellow"
 	area_flags = AREA_FLAG_ERODING
 
 //Aft Stairs
 
-/area/station/hallway/endeavour/aft_stairs_one
+/area/hallway/aft_stairs_one/endeavour
 	name = "\improper Aft Stairwell Deck 1"
 	icon_state = "dk_yellow"
 	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_HALLWAYS
 
-/area/station/hallway/endeavour/aft_stairs_two
+/area/hallway/aft_stairs_two/endeavour
 	name = "\improper Aft Stairwell Deck 2"
 	icon_state = "dk_yellow"
 	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_HALLWAYS
 
-/area/station/hallway/endeavour/aft_stairs_three
+/area/hallway/aft_stairs_three/endeavour
 	name = "\improper Aft Stairwell Deck 3"
 	icon_state = "dk_yellow"
 	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_HALLWAYS
 
-/area/station/hallway/endeavour/aft_stairs_four
+/area/hallway/aft_stairs_four/endeavour
 	name = "\improper Aft Stairwell Deck 4"
 	icon_state = "dk_yellow"
 	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_HALLWAYS
 
 //Amidships Stairs
 
-/area/station/hallway/endeavour/amidships_stairs_one
+/area/hallway/amidships_stairs_one/endeavour
 	name = "\improper Amidships Stairwell Deck 1"
 	icon_state = "dk_yellow"
 	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_HALLWAYS
 
-/area/station/hallway/endeavour/amidships_stairs_two
+/area/hallway/amidships_stairs_two/endeavour
 	name = "\improper Amidships Stairwell Deck 2"
 	icon_state = "dk_yellow"
 	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_HALLWAYS
 
-/area/station/hallway/endeavour/amidships_stairs_three
+/area/hallway/amidships_stairs_three/endeavour
 	name = "\improper Amidships Stairwell Deck 3"
 	icon_state = "dk_yellow"
 	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_HALLWAYS
 
-/area/station/hallway/endeavour/amidships_stairs_four
+/area/hallway/amidships_stairs_four/endeavour
 	name = "\improper Amidships Stairwell Deck 4"
 	icon_state = "dk_yellow"
 	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_HALLWAYS
 
 //Forward Stairs
 
-/area/station/hallway/endeavour/forward_stairs_one
+/area/hallway/forward_stairs_one/endeavour
 	name = "\improper Forward Stairwell Deck 1"
 	icon_state = "dk_yellow"
 	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_HALLWAYS
 
-/area/station/hallway/endeavour/forward_stairs_two
+/area/hallway/forward_stairs_two/endeavour
 	name = "\improper Forward Stairwell Deck 2"
 	icon_state = "dk_yellow"
 	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_HALLWAYS
 
-/area/station/hallway/endeavour/forward_stairs_three
+/area/hallway/forward_stairs_three/endeavour
 	name = "\improper Forward Stairwell Deck 3"
 	icon_state = "dk_yellow"
 	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_HALLWAYS
 
-/area/station/hallway/endeavour/forward_stairs_four
+/area/hallway/forward_stairs_four/endeavour
 	name = "\improper Forward Stairwell Deck 4"
 	icon_state = "dk_yellow"
 	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_HALLWAYS
@@ -74,32 +74,32 @@
 // Public Areas
 
 
-/area/station/hallway/endeavour/public_garden
+/area/hallway/public_garden/endeavour
 	name = "\improper Public Garden"
 	icon_state = "green"
 	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
-/area/station/hallway/endeavour/bar_backroom
+/area/hallway/bar_backroom/endeavour
 	name = "\improper Bar Backroom"
 	icon_state = "red"
 	sound_env = SMALL_SOFTFLOOR
 
-/area/station/hallway/endeavour/fishing_garden
+/area/hallway/fishing_garden/endeavour
 	name = "\improper Fish Pond"
 	icon_state = "blue"
 	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
-/area/station/hallway/endeavour/sauna
+/area/hallway/sauna/endeavour
 	name = "\improper Public Sauna"
 	icon_state = "green"
 	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
-/area/station/hallway/endeavour/lounge
+/area/hallway/lounge/endeavour
 	name = "\improper Station Lounge"
 	icon_state = "purple"
 	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
-/area/station/hallway/endeavour/public_meeting_room
+/area/hallway/public_meeting_room/endeavour
 	name = "Public Meeting Room"
 	icon_state = "blue"
 	sound_env = SMALL_SOFTFLOOR
@@ -113,388 +113,388 @@
 
 /** Deck 4
  */
-/area/station/hallway/endeavour/d4aftmaint
+/area/hallway/d4aftmaint/endeavour
 	name = "\improper Deck 4 Aft Maintenance"
 	icon_state = "amaint"
 	ambience = AMBIENCE_MAINTENANCE
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
-/area/station/hallway/endeavour/d4fwdportmaint
+/area/hallway/d4fwdportmaint/endeavour
 	name = "\improper Deck 4 Port Forward Maintenance"
 	icon_state = "fmaint"
 	ambience = AMBIENCE_MAINTENANCE
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
-/area/station/hallway/endeavour/d4fwdstrbdmaint
+/area/hallway/d4fwdstrbdmaint/endeavour
 	name = "\improper Deck 4 Starboard Forward Maintenance"
 	icon_state = "fmaint"
 	ambience = AMBIENCE_MAINTENANCE
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
-/area/station/hallway/endeavour/d4aftportmaint
+/area/hallway/d4aftportmaint/endeavour
 	name = "\improper Deck 4 Aft Port Maintenance"
 	icon_state = "amaint"
 	ambience = AMBIENCE_MAINTENANCE
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
-/area/station/hallway/endeavour/d4aftstrbdmaint
+/area/hallway/d4aftstrbdmaint/endeavour
 	name = "\improper Deck 4 Aft Starboard Maintenance"
 	icon_state = "amaint"
 	ambience = AMBIENCE_MAINTENANCE
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
-/area/station/hallway/endeavour/d4fwdmaint
+/area/hallway/d4fwdmaint/endeavour
 	name = "\improper Deck 4 Forward Maintenance"
 	icon_state = "fmaint"
 	ambience = AMBIENCE_MAINTENANCE
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
-/area/station/hallway/endeavour/d4amidportmaint
+/area/hallway/d4amidportmaint/endeavour
 	name = "\improper Deck 4 Port Amidships Maintenance"
 	icon_state = "fmaint"
 	ambience = AMBIENCE_MAINTENANCE
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
-/area/station/hallway/endeavour/d4amidstarbdmaint
+/area/hallway/d4amidstarbdmaint/endeavour
 	name = "\improper Deck 4 Starboard Amidships Maintenance"
 	icon_state = "fmaint"
 	ambience = AMBIENCE_MAINTENANCE
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
-/area/station/hallway/endeavour/d4fwdhall
+/area/hallway/d4fwdhall/endeavour
 	name = "\improper Deck 4 Forward Hallway"
 	icon_state = "hallF"
 
-/area/station/hallway/endeavour/d4afthall
+/area/hallway/d4afthall/endeavour
 	name = "\improper Deck 4 Aft Hallway"
 	icon_state = "hallA"
 
-/area/station/hallway/endeavour/d4porthall
+/area/hallway/d4porthall/endeavour
 	name = "\improper Deck 4 Port Hallway"
 	icon_state = "hallP"
 
-/area/station/hallway/endeavour/d4portforhall
+/area/hallway/d4portforhall/endeavour
 	name = "\improper Deck 4 Port Forward Hallway"
 	icon_state = "hallP"
 
-/area/station/hallway/endeavour/d4portamidhall
+/area/hallway/d4portamidhall/endeavour
 	name = "\improper Deck 4 Port Amidships Hallway"
 	icon_state = "hallP"
 
-/area/station/hallway/endeavour/d4portafthall
+/area/hallway/d4portafthall/endeavour
 	name = "\improper Deck 4 Port Aft Hallway"
 	icon_state = "hallP"
 
-/area/station/hallway/endeavour/d4starboardhall
+/area/hallway/d4starboardhall/endeavour
 	name = "\improper Deck 4 Starboard Hallway"
 	icon_state = "hallS"
 
-/area/station/hallway/endeavour/d4starboardforhall
+/area/hallway/d4starboardforhall/endeavour
 	name = "\improper Deck 4 Starboard Forward Hallway"
 	icon_state = "hallS"
 
-/area/station/hallway/endeavour/d4starboardamidhall
+/area/hallway/d4starboardamidhall/endeavour
 	name = "\improper Deck 4 Starboard Amidships Hallway"
 	icon_state = "hallS"
 
-/area/station/hallway/endeavour/d4starboardafthall
+/area/hallway/d4starboardafthall/endeavour
 	name = "\improper Deck 4 Starboard Aft Hallway"
 	icon_state = "hallS"
 
 /** Deck 3
  */
-/area/station/hallway/endeavour/d3aftmaint
+/area/hallway/d3aftmaint/endeavour
 	name = "\improper Deck 3 Aft Maintenance"
 	icon_state = "amaint"
 	ambience = AMBIENCE_MAINTENANCE
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
-/area/station/hallway/endeavour/d3aftportmaint
+/area/hallway/d3aftportmaint/endeavour
 	name = "\improper Deck 3 Aft Port Maintenance"
 	icon_state = "amaint"
 	ambience = AMBIENCE_MAINTENANCE
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
-/area/station/hallway/endeavour/d3aftportsecmaint
+/area/hallway/d3aftportsecmaint/endeavour
 	name = "\improper Deck 3 Aft Port Security Maintenance"
 	icon_state = "amaint"
 	ambience = AMBIENCE_MAINTENANCE
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
-/area/station/hallway/endeavour/d3aftstrbdmaint
+/area/hallway/d3aftstrbdmaint/endeavour
 	name = "\improper Deck 3 Aft Starboard Maintenance"
 	icon_state = "amaint"
 	ambience = AMBIENCE_MAINTENANCE
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
-/area/station/hallway/endeavour/d3fwdmaint
+/area/hallway/d3fwdmaint/endeavour
 	name = "\improper Deck 3 Forward Maintenance"
 	icon_state = "fmaint"
 	ambience = AMBIENCE_MAINTENANCE
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
-/area/station/hallway/endeavour/d3fwdportmaint
+/area/hallway/d3fwdportmaint/endeavour
 	name = "\improper Deck 3 Port Forward Maintenance"
 	icon_state = "fmaint"
 	ambience = AMBIENCE_MAINTENANCE
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
-/area/station/hallway/endeavour/d3fwdstrbdmaint
+/area/hallway/d3fwdstrbdmaint/endeavour
 	name = "\improper Deck 3 Starboard Forward Maintenance"
 	icon_state = "fmaint"
 	ambience = AMBIENCE_MAINTENANCE
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
-/area/station/hallway/endeavour/d3amidportmaint
+/area/hallway/d3amidportmaint/endeavour
 	name = "\improper Deck 3 Port Amidships Maintenance"
 	icon_state = "fmaint"
 	ambience = AMBIENCE_MAINTENANCE
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
-/area/station/hallway/endeavour/d3amidstarbdmaint
+/area/hallway/d3amidstarbdmaint/endeavour
 	name = "\improper Deck 3 Starboard Amidships Maintenance"
 	icon_state = "fmaint"
 	ambience = AMBIENCE_MAINTENANCE
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
-/area/station/hallway/endeavour/d3fwdhall
+/area/hallway/d3fwdhall/endeavour
 	name = "\improper Deck 3 Forward Hallway"
 	icon_state = "hallF"
 
-/area/station/hallway/endeavour/d3afthall
+/area/hallway/d3afthall/endeavour
 	name = "\improper Deck 3 Aft Hallway"
 	icon_state = "hallA"
 
-/area/station/hallway/endeavour/d3porthall
+/area/hallway/d3porthall/endeavour
 	name = "\improper Deck 3 Port Hallway"
 	icon_state = "hallP"
 
-/area/station/hallway/endeavour/d3portforhall
+/area/hallway/d3portforhall/endeavour
 	name = "\improper Deck 3 Port Forward Hallway"
 	icon_state = "hallP"
 
-/area/station/hallway/endeavour/d3portamidhall
+/area/hallway/d3portamidhall/endeavour
 	name = "\improper Deck 3 Port Amidships Hallway"
 	icon_state = "hallP"
 
-/area/station/hallway/endeavour/d3portafthall
+/area/hallway/d3portafthall/endeavour
 	name = "\improper Deck 3 Port Aft Hallway"
 	icon_state = "hallP"
 
-/area/station/hallway/endeavour/d3starboardhall
+/area/hallway/d3starboardhall/endeavour
 	name = "\improper Deck 3 Starboard Hallway"
 	icon_state = "hallS"
 
-/area/station/hallway/endeavour/d3starboardforhall
+/area/hallway/d3starboardforhall/endeavour
 	name = "\improper Deck 3 Starboard Forward Hallway"
 	icon_state = "hallS"
 
-/area/station/hallway/endeavour/d3starboardamidhall
+/area/hallway/d3starboardamidhall/endeavour
 	name = "\improper Deck 3 Starboard Amidships Hallway"
 	icon_state = "hallS"
 
-/area/station/hallway/endeavour/d3starboardafthall
+/area/hallway/d3starboardafthall/endeavour
 	name = "\improper Deck 3 Starboard Aft Hallway"
 	icon_state = "hallS"
 
 /** Deck 2
  */
-/area/station/hallway/endeavour/d2aftmaint
+/area/hallway/d2aftmaint/endeavour
 	name = "\improper Deck 2 Aft Maintenance"
 	icon_state = "amaint"
 	ambience = AMBIENCE_MAINTENANCE
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
-/area/station/hallway/endeavour/d2aftportmaint
+/area/hallway/d2aftportmaint/endeavour
 	name = "\improper Deck 2 Aft Port Maintenance"
 	icon_state = "amaint"
 	ambience = AMBIENCE_MAINTENANCE
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
-/area/station/hallway/endeavour/d2aftstrbdmaint
+/area/hallway/d2aftstrbdmaint/endeavour
 	name = "\improper Deck 2 Aft Starboard Maintenance"
 	icon_state = "amaint"
 	ambience = AMBIENCE_MAINTENANCE
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
-/area/station/hallway/endeavour/d2fwdportmaint
+/area/hallway/d2fwdportmaint/endeavour
 	name = "\improper Deck 2 Port Forward Maintenance"
 	icon_state = "fmaint"
 	ambience = AMBIENCE_MAINTENANCE
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
-/area/station/hallway/endeavour/d2fwdstrbdmaint
+/area/hallway/d2fwdstrbdmaint/endeavour
 	name = "\improper Deck 2 Starboard Forward Maintenance"
 	icon_state = "fmaint"
 	ambience = AMBIENCE_MAINTENANCE
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
-/area/station/hallway/endeavour/d2fwdmaint
+/area/hallway/d2fwdmaint/endeavour
 	name = "\improper Deck 2 Forward Maintenance"
 	icon_state = "fmaint"
 	ambience = AMBIENCE_MAINTENANCE
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
-/area/station/hallway/endeavour/d2amidportmaint
+/area/hallway/d2amidportmaint/endeavour
 	name = "\improper Deck 2 Port Amidships Maintenance"
 	icon_state = "fmaint"
 	ambience = AMBIENCE_MAINTENANCE
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
-/area/station/hallway/endeavour/d2amidstarbdmaint
+/area/hallway/d2amidstarbdmaint/endeavour
 	name = "\improper Deck 2 Starboard Amidships Maintenance"
 	icon_state = "fmaint"
 	ambience = AMBIENCE_MAINTENANCE
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
-/area/station/hallway/endeavour/d2fwdhall
+/area/hallway/d2fwdhall/endeavour
 	name = "\improper Deck 2 Forward Hallway"
 	icon_state = "hallF"
 
-/area/station/hallway/endeavour/d2afthall
+/area/hallway/d2afthall/endeavour
 	name = "\improper Deck 2 Aft Hallway"
 	icon_state = "hallA"
 
-/area/station/hallway/endeavour/d2porthall
+/area/hallway/d2porthall/endeavour
 	name = "\improper Deck 2 Port Hallway"
 	icon_state = "hallP"
 
-/area/station/hallway/endeavour/d2portforhall
+/area/hallway/d2portforhall/endeavour
 	name = "\improper Deck 2 Port Forward Hallway"
 	icon_state = "hallP"
 
-/area/station/hallway/endeavour/d2portamidhall
+/area/hallway/d2portamidhall/endeavour
 	name = "\improper Deck 2 Port Amidships Hallway"
 	icon_state = "hallP"
 
-/area/station/hallway/endeavour/d2portafthall
+/area/hallway/d2portafthall/endeavour
 	name = "\improper Deck 2 Port Aft Hallway"
 	icon_state = "hallP"
 
-/area/station/hallway/endeavour/d2starboardhall
+/area/hallway/d2starboardhall/endeavour
 	name = "\improper Deck 2 Starboard Hallway"
 	icon_state = "hallS"
 
-/area/station/hallway/endeavour/d2starboardforhall
+/area/hallway/d2starboardforhall/endeavour
 	name = "\improper Deck 2 Starboard Forward Hallway"
 	icon_state = "hallS"
 
-/area/station/hallway/endeavour/d1starboardamidhall
+/area/hallway/d1starboardamidhall/endeavour
 	name = "\improper Deck 2 Starboard Amidships Hallway"
 	icon_state = "hallS"
 
-/area/station/hallway/endeavour/d2starboardafthall
+/area/hallway/d2starboardafthall/endeavour
 	name = "\improper Deck 2 Starboard Aft Hallway"
 	icon_state = "hallS"
 
-/area/station/hallway/endeavour/reservehanger
+/area/hallway/reservehanger/endeavour
 	name = "\improper Reserve Forward Hanger"
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
 /** Deck 1
  */
-/area/station/hallway/endeavour/d1aftmaint
+/area/hallway/d1aftmaint/endeavour
 	name = "\improper Deck 1 Aft Maintenance"
 	icon_state = "amaint"
 	ambience = AMBIENCE_MAINTENANCE
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
-/area/station/hallway/endeavour/d1portaftmaint
+/area/hallway/d1portaftmaint/endeavour
 	name = "\improper Deck 1 Port Aft Maintenance"
 	icon_state = "amaint"
 	ambience = AMBIENCE_MAINTENANCE
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
-/area/station/hallway/endeavour/d1strbdaftmaint
+/area/hallway/d1strbdaftmaint/endeavour
 	name = "\improper Deck 1 Starboard Aft Maintenance"
 	icon_state = "amaint"
 	ambience = AMBIENCE_MAINTENANCE
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
-/area/station/hallway/endeavour/d1amidportmaint
+/area/hallway/d1amidportmaint/endeavour
 	name = "\improper Deck 1 Port Amidships Maintenance"
 	icon_state = "amaint"
 	ambience = AMBIENCE_MAINTENANCE
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
-/area/station/hallway/endeavour/d1amidstrbdmaint
+/area/hallway/d1amidstrbdmaint/endeavour
 	name = "\improper Deck 1 Port Amidships Maintenance"
 	icon_state = "amaint"
 	ambience = AMBIENCE_MAINTENANCE
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
-/area/station/hallway/endeavour/d1fwdmaint
+/area/hallway/d1fwdmaint/endeavour
 	name = "\improper Deck 1 Forward Maintenance"
 	icon_state = "fmaint"
 	ambience = AMBIENCE_MAINTENANCE
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
-/area/station/hallway/endeavour/d1portfwdmaint
+/area/hallway/d1portfwdmaint/endeavour
 	name = "\improper Deck 1 Port Forward Maintenance"
 	icon_state = "fmaint"
 	ambience = AMBIENCE_MAINTENANCE
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
-/area/station/hallway/endeavour/d1strfwdmaint
+/area/hallway/d1strfwdmaint/endeavour
 	name = "\improper Deck 1 Starboard Forward Maintenance"
 	icon_state = "fmaint"
 	ambience = AMBIENCE_MAINTENANCE
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
-/area/station/hallway/endeavour/d1fwdhall
+/area/hallway/d1fwdhall/endeavour
 	name = "\improper Deck 1 Forward Hallway"
 	icon_state = "hallF"
 
-/area/station/hallway/endeavour/d1afthall
+/area/hallway/d1afthall/endeavour
 	name = "\improper Deck 1 Aft Hallway"
 	icon_state = "hallA"
 
-/area/station/hallway/endeavour/d1porthall
+/area/hallway/d1porthall/endeavour
 	name = "\improper Deck 1 Port Hallway"
 	icon_state = "hallP"
 
-/area/station/hallway/endeavour/d1portforhall
+/area/hallway/d1portforhall/endeavour
 	name = "\improper Deck 1 Port Forward Hallway"
 	icon_state = "hallP"
 
-/area/station/hallway/endeavour/d1portamidhall
+/area/hallway/d1portamidhall/endeavour
 	name = "\improper Deck 1 Port Amidships Hallway"
 	icon_state = "hallP"
 
-/area/station/hallway/endeavour/d1portafthall
+/area/hallway/d1portafthall/endeavour
 	name = "\improper Deck 1 Port Aft Hallway"
 	icon_state = "hallP"
 
-/area/station/hallway/endeavour/d1starboardhall
+/area/hallway/d1starboardhall/endeavour
 	name = "\improper Deck 1 Starboard Hallway"
 	icon_state = "hallS"
 
-/area/station/hallway/endeavour/d1starboardforhall
+/area/hallway/d1starboardforhall/endeavour
 	name = "\improper Deck 1 Starboard Forward Hallway"
 	icon_state = "hallS"
 
-/area/station/hallway/endeavour/d1starboardamidhall
+/area/hallway/d1starboardamidhall/endeavour
 	name = "\improper Deck 1 Starboard Amidships Hallway"
 	icon_state = "hallS"
 
-/area/station/hallway/endeavour/d1starboardafthall
+/area/hallway/d1starboardafthall/endeavour
 	name = "\improper Deck 1 Starboard Aft Hallway"
 	icon_state = "hallS"
 
 // Cryo Areas
 
-/area/station/hallway/endeavour/cryo
+/area/hallway/cryo/endeavour
 	name = "\improper Cryogenic Storage"
 	icon_state = "crew_quarters"
 	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
-/area/station/hallway/endeavour/crew_quarters/cryo/recovery
+/area/hallway/crew_quarters/cryo/recovery/endeavour
 	name = "\improper Cryogenics Recovery"
 	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /** Civillian
  */
-/area/station/hallway/endeavour/civillian/evastorage
+/area/hallway/civillian/evastorage/endeavour
 	name = "\improper Public EVA Storage"
 	icon_state = "purple"
 	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
@@ -502,66 +502,66 @@
 /** Mining
  */
 
-/area/station/endeavour/mining/breakroom
+/area/station/mining/breakroom/endeavour
 	name = "\improper Mining Breakroom"
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_LEISURE
 
 /** Command
  */
-/area/station/endeavour/command/turrets
+/area/station/command/turrets/endeavour
 	name = "\improper Auxiliary Bridge"
 	icon_state = "bridge"
 	nightshift_level = NIGHTSHIFT_LEVEL_COMMAND_FACILITIES
 
 /** Science
  */
-/area/station/endeavour/rnd/robotics/morgue
+/area/station/rnd/robotics/morgue/endeavour
 	name = "\improper Robotics Morgue"
 	icon_state = "robotics"
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
-/area/station/endeavour/rnd/robotics/smallcraft
+/area/station/rnd/robotics/smallcraft/endeavour
 	name = "\improper Small Craft and Probe Assembly"
 	icon_state = "robotics"
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /** Exploration
  */
-/area/station/hallway/endeavour/exploration
+/area/hallway/exploration/endeavour
 	name = "\improper Exploration Department"
 	icon_state = "purple"
 	holomap_color = HOLOMAP_AREACOLOR_SCIENCE
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_HALLWAYS
 
-/area/station/hallway/endeavour/exploration/hallway_fore
+/area/hallway/exploration/hallway_fore/endeavour
 	name = "\improper Exploration Fore Hallway"
 
-/area/station/hallway/endeavour/exploration/hallway_aft
+/area/hallway/exploration/hallway_aft/endeavour
 	name = "\improper Exploration Aft Hallway"
 
-/area/station/hallway/endeavour/exploration/aux_hanger
+/area/hallway/exploration/aux_hanger/endeavour
 	name = "\improper Exploration Auxilliary Hanger"
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
 /** Medical
  */
 
-/area/station/endeavour/medical/virology_fore_access
+/area/station/medical/virology_fore_access/endeavour
 	name = "\improper Virology Fore Access"
 	icon_state = "virology"
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
-/area/station/endeavour/medical/virology_aft_access
+/area/station/medical/virology_aft_access/endeavour
 	name = "\improper Virology Aft Access"
 	icon_state = "virology"
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
-/area/station/endeavour/medical/cmo_dorm
+/area/station/medical/cmo_dorm/endeavour
 	name = "\improper CMO Dormitory"
 	icon_state = "medbay"
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_LEISURE
 
-/area/station/endeavour/medical/locker_room
+/area/station/medical/locker_room/endeavour
 	name = "\improper Medical Locker Room"
 	icon_state = "medbay"
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
@@ -569,65 +569,65 @@
 /** Substations
  */
 
-/area/station/endeavour/engineering/substation
+/area/station/engineering/substation/endeavour
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
-/area/station/endeavour/engineering/substation/deck1forward
+/area/station/engineering/substation/deck1forward/endeavour
 	name = "\improper Deck 1 Foreward Substation"
 	icon_state = "engineering"
 	ambience = AMBIENCE_SUBSTATION
 
-/area/station/endeavour/engineering/substation/deck1amidships
+/area/station/engineering/substation/deck1amidships/endeavour
 	name = "\improper Deck 1 Amidships Substation"
 	icon_state = "engineering"
 	ambience = AMBIENCE_SUBSTATION
 
-/area/station/endeavour/engineering/substation/deck1aft
+/area/station/engineering/substation/deck1aft/endeavour
 	name = "\improper Deck 1 Aft Substation"
 	icon_state = "engineering"
 	ambience = AMBIENCE_SUBSTATION
 
-/area/station/endeavour/engineering/substation/deck2forward
+/area/station/engineering/substation/deck2forward/endeavour
 	name = "\improper Deck 2 Foreward Substation"
 	icon_state = "engineering"
 	ambience = AMBIENCE_SUBSTATION
 
-/area/station/endeavour/engineering/substation/deck2amidships
+/area/station/engineering/substation/deck2amidships/endeavour
 	name = "\improper Deck 2 Amidships Substation"
 	icon_state = "engineering"
 	ambience = AMBIENCE_SUBSTATION
 
-/area/station/endeavour/engineering/substation/deck2aft
+/area/station/engineering/substation/deck2aft/endeavour
 	name = "\improper Deck 2 Aft Substation"
 	icon_state = "engineering"
 	ambience = AMBIENCE_SUBSTATION
 
-/area/station/endeavour/engineering/substation/deck3forward
+/area/station/engineering/substation/deck3forward/endeavour
 	name = "\improper Deck 3 Foreward Substation"
 	icon_state = "engineering"
 	ambience = AMBIENCE_SUBSTATION
 
-/area/station/endeavour/engineering/substation/deck3amidships
+/area/station/engineering/substation/deck3amidships/endeavour
 	name = "\improper Deck 3 Amidships Substation"
 	icon_state = "engineering"
 	ambience = AMBIENCE_SUBSTATION
 
-/area/station/endeavour/engineering/substation/deck3aft
+/area/station/engineering/substation/deck3aft/endeavour
 	name = "\improper Deck 3 Aft Substation"
 	icon_state = "engineering"
 	ambience = AMBIENCE_SUBSTATION
 
-/area/station/endeavour/engineering/substation/deck4forward
+/area/station/engineering/substation/deck4forward/endeavour
 	name = "\improper Deck 4 Foreward Substation"
 	icon_state = "engineering"
 	ambience = 'sound/ambience/engineering/engineering3.ogg'
 
-/area/station/endeavour/engineering/substation/deck4amidships
+/area/station/engineering/substation/deck4amidships/endeavour
 	name = "\improper Deck 4 Amidships Substation"
 	icon_state = "engineering"
 	ambience = AMBIENCE_SUBSTATION
 
-/area/station/endeavour/engineering/substation/deck4aft
+/area/station/engineering/substation/deck4aft/endeavour
 	name = "\improper Deck 4 Aft Substation"
 	icon_state = "engineering"
 	ambience = AMBIENCE_SUBSTATION
@@ -635,67 +635,67 @@
 
 /** Civillian
  */
-/area/station/endeavour/civilian/evastorage
+/area/station/civilian/evastorage/endeavour
 	name = "\improper Public EVA Storage"
 	icon_state = "purple"
 	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /** Command
  */
-/area/station/endeavour/command/turrets
+/area/station/command/turrets/endeavour
 	name = "\improper Auxiliary Bridge"
 	icon_state = "bridge"
 	nightshift_level = NIGHTSHIFT_LEVEL_COMMAND_FACILITIES
 
 /** Science
  */
-/area/station/endeavour/rnd/robotics/morgue
+/area/station/rnd/robotics/morgue/endeavour
 	name = "\improper Robotics Morgue"
 	icon_state = "robotics"
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
-/area/station/endeavour/rnd/robotics/smallcraft
+/area/station/rnd/robotics/smallcraft/endeavour
 	name = "\improper Small Craft and Probe Assembly"
 	icon_state = "robotics"
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /** Exploration
  */
-/area/station/endeavour/exploration
+/area/station/exploration/endeavour
 	name = "\improper Exploration Department"
 	icon_state = "purple"
 	holomap_color = HOLOMAP_AREACOLOR_SCIENCE
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_HALLWAYS
 
-/area/station/endeavour/exploration/hallway_fore
+/area/station/exploration/hallway_fore/endeavour
 	name = "\improper Exploration Fore Hallway"
 
-/area/station/endeavour/exploration/hallway_aft
+/area/station/exploration/hallway_aft/endeavour
 	name = "\improper Exploration Aft Hallway"
 
-/area/station/endeavour/exploration/aux_hanger
+/area/station/exploration/aux_hanger/endeavour
 	name = "\improper Exploration Auxilliary Hanger"
 	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
 /** Medical
  */
 
-/area/station/endeavour/medical/virology_fore_access
+/area/station/medical/virology_fore_access/endeavour
 	name = "\improper Virology Fore Access"
 	icon_state = "virology"
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
-/area/station/endeavour/medical/virology_aft_access
+/area/station/medical/virology_aft_access/endeavour
 	name = "\improper Virology Aft Access"
 	icon_state = "virology"
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
-/area/station/endeavour/medical/cmo_dorm
+/area/station/medical/cmo_dorm/endeavour
 	name = "\improper CMO Dormitory"
 	icon_state = "medbay"
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_LEISURE
 
-/area/station/endeavour/medical/locker_room
+/area/station/medical/locker_room/endeavour
 	name = "\improper Medical Locker Room"
 	icon_state = "medbay"
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
@@ -703,65 +703,65 @@
 /** Substations
  */
 
-/area/station/endeavour/engineering/substation
+/area/station/engineering/substation/endeavour
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
-/area/station/endeavour/engineering/substation/deck1forward
+/area/station/engineering/substation/deck1forward/endeavour
 	name = "\improper Deck 1 Foreward Substation"
 	icon_state = "engineering"
 	ambience = AMBIENCE_SUBSTATION
 
-/area/station/endeavour/engineering/substation/deck1amidships
+/area/station/engineering/substation/deck1amidships/endeavour
 	name = "\improper Deck 1 Amidships Substation"
 	icon_state = "engineering"
 	ambience = AMBIENCE_SUBSTATION
 
-/area/station/endeavour/engineering/substation/deck1aft
+/area/station/engineering/substation/deck1aft/endeavour
 	name = "\improper Deck 1 Aft Substation"
 	icon_state = "engineering"
 	ambience = AMBIENCE_SUBSTATION
 
-/area/station/endeavour/engineering/substation/deck2forward
+/area/station/engineering/substation/deck2forward/endeavour
 	name = "\improper Deck 2 Foreward Substation"
 	icon_state = "engineering"
 	ambience = AMBIENCE_SUBSTATION
 
-/area/station/endeavour/engineering/substation/deck2amidships
+/area/station/engineering/substation/deck2amidships/endeavour
 	name = "\improper Deck 2 Amidships Substation"
 	icon_state = "engineering"
 	ambience = AMBIENCE_SUBSTATION
 
-/area/station/endeavour/engineering/substation/deck2aft
+/area/station/engineering/substation/deck2aft/endeavour
 	name = "\improper Deck 2 Aft Substation"
 	icon_state = "engineering"
 	ambience = AMBIENCE_SUBSTATION
 
-/area/station/endeavour/engineering/substation/deck3forward
+/area/station/engineering/substation/deck3forward/endeavour
 	name = "\improper Deck 3 Foreward Substation"
 	icon_state = "engineering"
 	ambience = AMBIENCE_SUBSTATION
 
-/area/station/endeavour/engineering/substation/deck3amidships
+/area/station/engineering/substation/deck3amidships/endeavour
 	name = "\improper Deck 3 Amidships Substation"
 	icon_state = "engineering"
 	ambience = AMBIENCE_SUBSTATION
 
-/area/station/endeavour/engineering/substation/deck3aft
+/area/station/engineering/substation/deck3aft/endeavour
 	name = "\improper Deck 3 Aft Substation"
 	icon_state = "engineering"
 	ambience = AMBIENCE_SUBSTATION
 
-/area/station/endeavour/engineering/substation/deck4forward
+/area/station/engineering/substation/deck4forward/endeavour
 	name = "\improper Deck 4 Foreward Substation"
 	icon_state = "engineering"
 	ambience = 'sound/ambience/engineering/engineering3.ogg'
 
-/area/station/endeavour/engineering/substation/deck4amidships
+/area/station/engineering/substation/deck4amidships/endeavour
 	name = "\improper Deck 4 Amidships Substation"
 	icon_state = "engineering"
 	ambience = AMBIENCE_SUBSTATION
 
-/area/station/endeavour/engineering/substation/deck4aft
+/area/station/engineering/substation/deck4aft/endeavour
 	name = "\improper Deck 4 Aft Substation"
 	icon_state = "engineering"
 	ambience = AMBIENCE_SUBSTATION
