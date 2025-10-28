@@ -1,6 +1,7 @@
 /obj/vehicle/sealed/mecha/working/ripley
-	desc = "Armored Power Loader Unit. The workhorse of the exosuit world."
 	name = "APLU \"Ripley\""
+	desc = "Armored Power Loader Unit. The workhorse of the exosuit world."
+	description_fluff = "The Armored Power Loader Unit, more commonly referred to as the 'Ripley', is a tried and tested exosuit model. Often described as the workhorse of the Frontier, the Ripley was originally designed for industrial use. The APLU is a second generation improvement of the original PLU. The APLU possesses a fully enclosed cockpit enabling it to work in vacuum. The APLU retains the PLU's rugged design and resilience, and is frequently employed in mining, construction, and cargo transport capacities. Coming in at just under 9'(2.7m) tall, the APLU cockpit is cramped, requiring its pilot to stand upright and move in conjunction with the exosuit."
 	icon_state = "ripley"
 	initial_icon = "ripley"
 	base_movement_speed = 2.75

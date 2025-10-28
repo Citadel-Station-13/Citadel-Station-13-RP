@@ -60,8 +60,8 @@
 	if(.)
 		return
 	var/obj/vehicle/sealed/mecha/chassis = target
-	chassis.user_set_floodlights(actor, !chassis.floodlights_active)
-	button_icon_state = "mech_lights_[chassis.lights ? "on" : "off"]"
+	chassis.user_set_floodlights(actor, !chassis.floodlight_active)
+	button_icon_state = "mech_lights_[chassis.floodlight_active ? "on" : "off"]"
 	update_buttons()
 
 /datum/action/mecha/mech_toggle_internals

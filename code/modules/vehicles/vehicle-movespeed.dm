@@ -15,7 +15,7 @@
  * @return base movement speed in tiles per second
  */
 /obj/vehicle/proc/get_movespeed_base()
-	return move_base_speed
+	return base_movement_speed
 
 /**
  * Adds a movespeed modifier to a mob.

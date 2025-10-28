@@ -1,7 +1,3 @@
-//Civilian Mecha
-/obj/vehicle/sealed/mecha/working/ripley
-	description_fluff = "The Armored Power Loader Unit, more commonly referred to as the 'Ripley', is a tried and tested exosuit model. Often described as the workhorse of the Frontier, the Ripley was originally designed for industrial use. The APLU is a second generation improvement of the original PLU. The APLU possesses a fully enclosed cockpit enabling it to work in vacuum. The APLU retains the PLU's rugged design and resilience, and is frequently employed in mining, construction, and cargo transport capacities. Coming in at just under 9'(2.7m) tall, the APLU cockpit is cramped, requiring its pilot to stand upright and move in conjunction with the exosuit."
-
 //Medical Mecha
 /obj/vehicle/sealed/mecha/medical/odysseus
 	description_fluff = "The dominant medical exosuit on the modern market, the Odysseus is a Vey-Med product designed to incorporate other Vey-Med inventions - like the Sleeper - into a mobile frame. The Odysseus' focus on rescue operations in hazardous environments is augmented with some of the best agility ratings on the civilian market. In spite of its narrow profile, the Odysseus stands slightly taller than the APLU at 9.5'(3m). Capable of operating in vacuum as well as in most adverse weather conditions, the staying power of this mecha speaks volumes for its efficacy."

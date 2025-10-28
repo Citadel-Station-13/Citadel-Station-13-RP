@@ -325,8 +325,10 @@
 		src.occupant_message("Unable to interact with objects while phasing")//Haha dumbass.
 		return
 
-	if(!get_charge()) return
-	if(src == target) return
+	if(!get_charge())
+		return
+	if(src == target)
+		return
 	var/dir_to_target = get_dir(src,target)
 	if(dir_to_target && !(dir_to_target & src.dir))//wrong direction
 		return
@@ -344,7 +346,6 @@
 		selected.action(target, params)
 	else
 		src.melee_action(target)
-	return
 
 /obj/vehicle/sealed/mecha/proc/interface_action(obj/machinery/target)
 	if(istype(target, /obj/machinery/access_button) || istype(target, /obj/machinery/button/remote/blast_door))
@@ -610,7 +611,6 @@
 			var/obj/item/vehicle_module/lazy/legacy/destr = SAFEPICK(equipment)
 			if(destr)
 				destr.destroy()
-	return
 
 /obj/vehicle/sealed/mecha/proc/hasInternalDamage(int_dam_flag=null)
 	return int_dam_flag ? internal_damage&int_dam_flag : internal_damage
@@ -1056,14 +1056,6 @@
 	src.log_message("Toggled strafing mode [strafing?"on":"off"].")
 	return
 
-//returns an equipment object if we have one of that type, useful since is_type_in_list won't return the object
-//since is_type_in_list uses caching, this is a slower operation, so only use it if needed
-/obj/vehicle/sealed/mecha/proc/get_equipment(var/equip_type)
-	for(var/obj/item/vehicle_module/lazy/legacy/ME in equipment)
-		if(istype(ME,equip_type))
-			return ME
-	return null
-
 /obj/vehicle/sealed/mecha/mob_can_enter(mob/entering, datum/event_args/actor/actor, silent, suppressed)
 	if (src.occupant_legacy)
 		to_chat(actor.initiator, "<span class='danger'>The [src.name] is already occupied!</span>")
@@ -1075,10 +1067,6 @@
 		to_chat(actor.initiator, "<span class='warning'>Access denied</span>")
 		src.log_append_to_last("Permission denied.")
 		return FALSE
-	return ..()
-
-/obj/vehicle/sealed/mecha/mob_try_enter(mob/entering, datum/event_args/actor/actor, silent, suppressed, enter_delay, use_control_flags)
-	src.log_message("[usr] tries to move in.")
 	return ..()
 
 /obj/vehicle/sealed/mecha/proc/play_entered_noise(var/mob/who)
@@ -1098,10 +1086,6 @@
 					who << sound('sound/mecha/nominalsyndi.ogg',volume=50)
 			else//Everyone else gets the normal noise
 				who << sound('sound/mecha/nominal.ogg',volume=50)
-
-/obj/vehicle/sealed/mecha/AltClick(mob/living/user)
-	if(user == occupant_legacy)
-		strafing()
 
 /obj/vehicle/sealed/mecha/verb/view_stats()
 	set name = "View Stats"

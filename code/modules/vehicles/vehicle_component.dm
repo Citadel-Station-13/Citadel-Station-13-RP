@@ -137,8 +137,10 @@
 	)
 
 /obj/item/vehicle_component/proc/vehicle_ui_component_push(list/data)
+	vehicle.ui_controller?.push_ui_nested_data(updates = list(ref(src) = data))
 
 /obj/item/vehicle_component/proc/vehicle_ui_component_act(action, list/params, datum/event_args/actor/actor)
+	return FALSE
 
 /**
  * Supertype of shieldcalls that handle vehicle hits. Just subtype one

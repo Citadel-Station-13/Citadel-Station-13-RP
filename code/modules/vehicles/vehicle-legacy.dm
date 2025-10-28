@@ -99,20 +99,6 @@
 		return
 	vehicle_move(direction)
 
-/obj/vehicle/proc/vehicle_move(direction)
-	if(!COOLDOWN_FINISHED(src, cooldown_vehicle_move))
-		return FALSE
-	COOLDOWN_START(src, cooldown_vehicle_move, movedelay)
-	if(trailer)
-		var/dir_to_move = get_dir(trailer.loc, loc)
-		var/did_move = step(src, direction)
-		if(did_move)
-			step(trailer, dir_to_move)
-		return did_move
-	else
-		after_move(direction)
-		return step(src, direction)
-
 /obj/vehicle/Bump(atom/movable/M)
 	. = ..()
 	if(emulate_door_bumps)

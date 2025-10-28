@@ -5,8 +5,6 @@
 	icon_state = "deathripley"
 	initial_icon = "deathripley"
 	base_movement_speed = 4.5
-	opacity=0
-	lights_power = 60
 	wreckage = /obj/effect/decal/mecha_wreckage/ripley/deathripley
 	step_energy_drain = 0
 

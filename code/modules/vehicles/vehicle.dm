@@ -69,6 +69,10 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 	var/list/movespeed_modifier_immunities
 	/// The calculated mob speed slowdown based on the modifiers list
 	var/movespeed_hyperbolic
+	/// Are we in gravity right now? Used for movespeed.
+	var/in_gravity = TRUE
+	/// Last time we moved ourselves.
+	var/last_self_move
 
 	//* Occupants *//
 	/// list of mobs associated to their control flags
@@ -103,6 +107,7 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 /obj/vehicle/Initialize(mapload)
 	. = ..()
 	create_initial_components()
+	update_gravity()
 
 /obj/vehicle/Destroy()
 	QDEL_LAZYLIST(components)
@@ -256,20 +261,6 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 			action.grant(controller.actions_controlled)
 		else if(action.required_control_flags & flags_removed)
 			action.revoke(controller.actions_controlled)
-
-//* Movement *//
-
-/obj/vehicle/proc/vehicle_turn(direction)
-	if(dir == direction)
-		return TRUE
-	setDir(direction)
-	return TRUE
-
-/obj/vehicle/proc/vehicle_move(direction, face_direction)
-	#warn impl
-
-/obj/vehicle/proc/on_vehicle_move(direction)
-	#warn impl
 
 //* Occupants *//
 

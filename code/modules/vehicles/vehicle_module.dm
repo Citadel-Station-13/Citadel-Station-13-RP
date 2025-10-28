@@ -229,11 +229,13 @@
 	)
 
 /obj/item/vehicle_module/proc/vehicle_ui_module_push(list/data)
+	vehicle.ui_controller?.push_ui_nested_data(updates = list(ref(src) = data))
 
 /**
  * @return TRUE to update data (not static data)
  */
 /obj/item/vehicle_module/proc/vehicle_ui_module_act(action, list/params, datum/event_args/actor/actor)
+	return FALSE
 
 /**
  * Supertype of shieldcalls that handle vehicle hits. Just subtype one
