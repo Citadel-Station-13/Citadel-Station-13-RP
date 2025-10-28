@@ -355,3 +355,9 @@
 /datum/action/ability
 	abstract_type = /datum/action/ability
 	target_type = /datum/ability
+
+/**
+ * Abilities for mobs
+ */
+/datum/ability/intrinsic
+	abstract_type = /datum/ability/intrinsic
