@@ -126,7 +126,7 @@
 
 
 
-/datum/datacore/proc/get_manifest(monochrome = FALSE, OOC = FALSE)
+/datum/datacore/proc/get_html_manifest(monochrome = FALSE, OOC = FALSE)
 	var/dat = {"
 	<head><style>
 		.manifest {border-collapse:collapse;}
