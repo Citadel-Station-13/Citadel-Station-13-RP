@@ -16,6 +16,9 @@
 	//This list tracks characters spawned in the world and cannot be modified in-game. Currently referenced by respawn_character().
 	var/static/list/locked = list()
 
+/**
+ * Returns a list of DEPARTMENT_KEY lists with names = ranks
+ */
 /datum/datacore/proc/get_raw_manifest_data(OOC = FALSE, activity = FALSE)
 	var/list/command = new()
 	var/list/security = new()
@@ -49,7 +52,7 @@
 		else
 			isactive[name] = t.fields["p_stat"]
 
-		//Check for command first, then exploration. As these roles can have multiple departments.
+		//Check for command first, then exploration. As these roles can have multiple departments and we want these roles to be dominant.
 		if(SSjob.is_job_in_department(real_rank, DEPARTMENT_COMMAND))
 			command[name] = rank
 		else if(SSjob.is_job_in_department(real_rank, DEPARTMENT_PLANET))
@@ -70,10 +73,12 @@
 			offduty[name] = rank
 		else if(SSjob.is_job_in_department(real_rank, DEPARTMENT_TRADE))
 			trade[name] = rank
+		else if(SSjob.is_job_in_department(real_rank, DEPARTMENT_SYNTHETIC))
+			silicons[name] = rank
 		else misc[name] = rank
 
-	//Categorize offmap roles
 	if(OOC == TRUE)
+		//Categorize offmap roles
 		for(var/datum/data/record/t in hidden_general)
 			var/name = t.fields["name"]
 			var/rank = t.fields["rank"]
@@ -91,38 +96,29 @@
 			if(J?.offmap_spawn)
 				offmap[name] = rank
 
-	// Synthetics don't have actual records, so we will pull them from these.
-	// add pAIs	to the returned manifest, we do this first to just avoid a ghost overwriting a robot or AI name in the list
-	if(OOC == TRUE)
+		// add pAIs	to the returned manifest
 		for(var/mob/living/silicon/pai/pai in GLOB.mob_list)
 			silicons[pai.name] = "pAI"
 
-	for(var/mob/living/silicon/ai/ai in GLOB.mob_list)
-		silicons[ai.name] = "Artificial Intelligence"
-
-	for(var/mob/living/silicon/robot/robot in GLOB.mob_list)
-		// No combat/syndicate cyborgs, no drones, and no AI shells.
-		if(!robot.scrambledcodes && !robot.shell && !(robot.module && robot.module.hide_on_manifest))
-			silicons[robot.name] = "[robot.modtype] [robot.braintype]"
-
 	//Return all of our lists.
-	. = alist()
-	.["Command"] = command
-	.["Security"] = security
-	.["Engineering"] = engineering
-	.["Medical"] = medical
-	.["Science"] = science
-	.["Cargo"] = cargo
-	.["Exploration"] = exploration
-	.["Civilian"] = civilian
-	.["Silicons"] = silicons
-	.["Misc"] = misc
-	.["Off Duty"] = offduty
+	var/list/manifest_data = list(
+		"Command" = command,
+		"Security" = security,
+		"Engineering" = engineering,
+		"Medical" = medical,
+		"Science" = science,
+		"Cargo" = cargo,
+		"Exploration" = exploration,
+		"Civilian" = civilian,
+		"Silicons" = silicons,
+		"Misc" = misc,
+		"Off Duty" = offduty,
+	)
 	if (OOC == TRUE)
-		.["Trade"] = trade
-		.["Non-Crew"] = offmap
+		manifest_data["Trade"] = trade
+		manifest_data["Non-Crew"] = offmap
 	if (activity == TRUE)
-		.["IsActive"] = isactive
+		manifest_data["IsActive"] = isactive
 
 
 
@@ -144,64 +140,64 @@
 	//Acquire the raw data, we only need player activity if we are also OOC.
 	var/list/raw_data = get_raw_manifest_data(OOC, OOC)
 
-	if(raw_data["Command"].len)
+	if(raw_data["Command"])
 		dat += "<tr><th colspan=3>Heads</th></tr>"
 		for(name in raw_data["Command"])
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[raw_data["Command"][name]]</td><td>[raw_data["IsActive"][name]]</td></tr>"
 			even = !even
-	if(raw_data["Security"].len)
+	if(raw_data["Security"])
 		dat += "<tr><th colspan=3>Security</th></tr>"
 		for(name in raw_data["Security"])
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[raw_data["Security"][name]]</td><td>[raw_data["IsActive"][name]]</td></tr>"
 			even = !even
-	if(raw_data["Engineering"].len)
+	if(raw_data["Engineering"])
 		dat += "<tr><th colspan=3>Engineering</th></tr>"
 		for(name in raw_data["Engineering"])
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[raw_data["Engineering"][name]]</td><td>[raw_data["IsActive"][name]]</td></tr>"
 			even = !even
-	if(raw_data["Medical"].len)
+	if(raw_data["Medical"])
 		dat += "<tr><th colspan=3>Medical</th></tr>"
 		for(name in raw_data["Medical"])
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[raw_data["Medical"][name]]</td><td>[raw_data["IsActive"][name]]</td></tr>"
 			even = !even
-	if(raw_data["Science"].len)
+	if(raw_data["Science"])
 		dat += "<tr><th colspan=3>Science</th></tr>"
 		for(name in raw_data["Science"])
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[raw_data["Science"][name]]</td><td>[raw_data["IsActive"][name]]</td></tr>"
 			even = !even
-	if(raw_data["Cargo"].len)
+	if(raw_data["Cargo"])
 		dat += "<tr><th colspan=3>Cargo</th></tr>"
 		for(name in raw_data["Cargo"])
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[raw_data["Cargo"][name]]</td><td>[raw_data["IsActive"][name]]</td></tr>"
 			even = !even
-	if(raw_data["Exploration"].len)
+	if(raw_data["Exploration"])
 		dat += "<tr><th colspan=3>Exploration</th></tr>"
 		for(name in raw_data["Exploration"])
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[raw_data["Exploration"][name]]</td><td>[raw_data["IsActive"][name]]</td></tr>"
 			even = !even
-	if(raw_data["Civilian"].len)
+	if(raw_data["Civilian"])
 		dat += "<tr><th colspan=3>Civilian</th></tr>"
 		for(name in raw_data["Civilian"])
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[raw_data["Civilian"][name]]</td><td>[raw_data["IsActive"][name]]</td></tr>"
 			even = !even
-	if(raw_data["Silicons"].len)
+	if(raw_data["Silicons"])
 		dat += "<tr><th colspan=3>Silicon</th></tr>"
 		for(name in raw_data["Silicons"])
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[raw_data["Silicons"][name]]</td><td>[raw_data["IsActive"][name]]</td></tr>"
 			even = !even
 	// offmap spawners
-	if(raw_data["Non-Crew"].len)
+	if(raw_data["Non-Crew"])
 		dat += "<tr><th colspan=3>Offmap Spawns</th></tr>"
 		for(name in raw_data["Non-Crew"])
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[raw_data["Non-Crew"][name]]</td><td>[raw_data["IsActive"][name]]</td></tr>"
 			even = !even
-	if(raw_data["Trade"].len)
+	if(raw_data["Trade"])
 		dat += "<tr><th colspan=3>Traders</th></tr>"
 		for(name in raw_data["Trade"])
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[raw_data["Trade"][name]]</td><td>[raw_data["IsActive"][name]]</td></tr>"
 			even = !even
 	// misc guys
-	if(raw_data["Misc"].len)
+	if(raw_data["Misc"])
 		dat += "<tr><th colspan=3>Miscellaneous</th></tr>"
 		for(name in raw_data["Misc"])
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[raw_data["Misc"][name]]</td><td>[raw_data["IsActive"][name]]</td></tr>"
