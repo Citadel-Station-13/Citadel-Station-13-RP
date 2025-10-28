@@ -35,11 +35,11 @@
 	if(.)
 		return
 	if(params["__routeModule"])
-		var/obj/item/vehicle_module/t_route = locate(params["__routeComponent"]) in modules
+		var/obj/item/vehicle_module/t_route = locate(params["__routeComponent"]) in vehicle.modules
 		t_route.vehicle_ui_module_act(action, params, actor)
 		return TRUE
 	if(params["__routeComponent"])
-		var/obj/item/vehicle_component/t_route = locate(params["__routeComponent"]) in components
+		var/obj/item/vehicle_component/t_route = locate(params["__routeComponent"]) in vehicle.components
 		t_route.vehicle_ui_component_act(action, params, actor)
 		return TRUE
 	switch(action)
@@ -76,19 +76,25 @@
 	queued_component_ref_update = TRUE
 	addtimer(CALLBACK(src, PROC_REF(update_component_refs)), 0)
 
+/datum/vehicle_ui_controller/proc/update_component_refs()
+	queued_component_ref_update = FALSE
+	push_ui_data(data = list("componentRefs" = encode_component_refs()))
+
 /datum/vehicle_ui_controller/proc/queue_update_module_refs()
 	if(queued_module_ref_update)
 		return
 	queued_module_ref_update = TRUE
 	addtimer(CALLBACK(src, PROC_REF(update_module_refs)), 0)
 
-/datum/vehicle_ui_controller/proc/update_component_refs()
-	queued_component_ref_update = FALSE
-	push_ui_data(data = list("componentRefs" = encode_component_refs()))
-
 /datum/vehicle_ui_controller/proc/update_module_refs()
 	queued_module_ref_update = FALSE
 	push_ui_data(data = list("moduleRefs" = encode_module_refs()))
+
+/datum/vehicle_ui_controller/proc/queue_update_weight_data()
+	#warn impl
+
+/datum/vehicle_ui_controller/proc/update_weight_data()
+	#warn impl
 
 /datum/vehicle_ui_controller/proc/encode_component_refs()
 	. = list()

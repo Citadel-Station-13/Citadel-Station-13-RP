@@ -6,7 +6,7 @@
 	bullet_tier = 4
 	bullet_deflect = 2.5
 	laser = 0.3
-	laser_tier = 0.4
+	laser_tier = 4
 	laser_deflect = 2.5
 	energy = 0.2
 	bomb = 0.35

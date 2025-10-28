@@ -105,9 +105,3 @@
 		if(istype(M, /obj/machinery/door))
 			for(var/m in occupants)
 				M.Bumped(m)
-
-/obj/vehicle/Move(newloc, dir)
-	. = ..()
-	if(trailer && .)
-		var/dir_to_move = get_dir(trailer.loc, newloc)
-		step(trailer, dir_to_move)

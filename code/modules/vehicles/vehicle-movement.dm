@@ -5,29 +5,31 @@
 /obj/vehicle/proc/movement_delay()
 	return movespeed_hyperbolic
 
+/**
+ * Vehicle-initiated turns go through this.
+ */
 /obj/vehicle/proc/vehicle_turn(direction)
+	SHOULD_NOT_SLEEP(TRUE)
 	if(dir == direction)
 		return TRUE
 	setDir(direction)
 	return TRUE
 
+/**
+ * Vehicle-initiated moves go through this.
+ */
 /obj/vehicle/proc/vehicle_move(direction, face_direction)
+	SHOULD_NOT_SLEEP(TRUE)
 	if(world.time < move_delay)
 		return FALSE
 	var/turf/new_loc = get_step(src, direction)
-	if(!step(src, direction))
+	if(!Move(new_loc, face_direction))
 		return FALSE
 	var/add_delay = max(world.tick_lag, movement_delay())
 	// enforce euclidean dist on diagonal moves
 	if(ISDIAGONALDIR(direction) && loc == new_loc)
 		add_delay *= SQRT_2
 	move_delay = world.time + add_delay
-	#warn impl
-
-/obj/vehicle/proc/on_vehicle_move(direction)
-	if(dir == direction)
-		return TRUE
-	setDir(direction)
 	return TRUE
 
 /obj/vehicle/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)

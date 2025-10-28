@@ -1,3 +1,13 @@
+/datum/armor/vehicle/mecha/combat/phazon
+	melee = 0.6
+	melee_tier = 3
+	bullet = 0.45
+	bullet_tier = 4.5
+	laser = 0.45
+	laser_tier = 5
+	energy = 0.5
+	bomb = 0.5
+
 /obj/vehicle/sealed/mecha/combat/phazon
 	name = "Phazon"
 	desc = "A sleek exosuit with unnaturally pronounced curves."
@@ -5,6 +15,7 @@
 	initial_icon = "phazon"
 
 	base_movement_speed = 5
+	armor_type = /datum/armor/vehicle/mecha/combat/phazon
 	comp_armor = /obj/item/vehicle_component/plating/armor/alien
 	comp_hull = /obj/item/vehicle_component/plating/hull/durable
 
@@ -12,8 +23,6 @@
 	step_energy_drain = 3
 	integrity = 200		//God this is low
 	integrity_max = 200		//Don't forget to update the /old variant if  you change this number.
-	deflect_chance = 30
-	damage_absorption = list("brute"=0.7,"fire"=0.7,"bullet"=0.7,"laser"=0.7,"energy"=0.7,"bomb"=0.7)
 	max_temperature = 25000
 	wreckage = /obj/effect/decal/mecha_wreckage/phazon
 	add_req_access = 1

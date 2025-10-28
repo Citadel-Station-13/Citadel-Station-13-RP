@@ -19,18 +19,26 @@
 /obj/vehicle/proc/user_uninstall_module(obj/item/vehicle_module/v_module, datum/event_args/actor/actor, put_in_hands)
 
 /obj/vehicle/proc/install_module(obj/item/vehicle_module/v_module, datum/event_args/actor/actor, silent, force)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
 
 /obj/vehicle/proc/uninstall_module(obj/item/vehicle_module/v_module, datum/event_args/actor/actor, silent, force, atom/new_loc) as /obj/item/vehicle_module
+	SHOULD_NOT_OVERRIDE(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
 
 /obj/vehicle/proc/on_module_attached(obj/item/vehicle_module/v_module)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
+	cached_module_weight += v_module.get_weight()
 	ui_controller?.queue_update_module_refs()
+	ui_controller?.queue_update_weight_data()
 
 /obj/vehicle/proc/on_module_detached(obj/item/vehicle_module/v_module)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
+	cached_module_weight += v_module.get_weight()
 	ui_controller?.queue_update_module_refs()
+	ui_controller?.queue_update_weight_data()
 
 #warn impl
 

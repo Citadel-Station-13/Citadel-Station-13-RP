@@ -33,18 +33,26 @@
 /obj/vehicle/proc/user_uninstall_component(obj/item/vehicle_component/v_comp, datum/event_args/actor/actor, put_in_hands)
 
 /obj/vehicle/proc/install_component(obj/item/vehicle_component/v_comp, datum/event_args/actor/actor, silent, force)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
 
 /obj/vehicle/proc/uninstall_component(obj/item/vehicle_component/v_comp, datum/event_args/actor/actor, silent, force, atom/new_loc) as /obj/item/vehicle_component
+	SHOULD_NOT_OVERRIDE(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
 
 /obj/vehicle/proc/on_component_attached(obj/item/vehicle_component/v_comp)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
+	cached_component_weight += v_comp.get_weight()
 	ui_controller?.queue_update_component_refs()
+	ui_controller?.queue_update_weight_data()
 
 /obj/vehicle/proc/on_component_detached(obj/item/vehicle_component/v_comp)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
+	cached_component_weight -= v_comp.get_weight()
 	ui_controller?.queue_update_component_refs()
+	ui_controller?.queue_update_weight_data()
 
 #warn impl
 

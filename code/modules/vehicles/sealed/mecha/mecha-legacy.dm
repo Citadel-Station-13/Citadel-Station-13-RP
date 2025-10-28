@@ -27,6 +27,7 @@
 	integrity_flags = INTEGRITY_ACIDPROOF | INTEGRITY_FIREPROOF
 	integrity = 300
 	integrity_max = 300
+	integrity_failure = 0
 	/// Icon draw layer.
 	layer = MOB_LAYER
 	enter_delay = 4 SECONDS
@@ -385,15 +386,21 @@
 		user.forceMove(get_turf(src))
 		to_chat(user, "You climb out from [src]")
 		return 0
-
+	if(zoom)
+		if(world.time - last_message > 20)
+			src.occupant_message("Unable to move while in zoom mode.")
+			last_message = world.time
+		return 0
 	if(connected_port)
 		if(world.time - last_message > 20)
 			src.occupant_message("<span class='warning'>Unable to move while connected to the air system port</span>")
 			last_message = world.time
 		return 0
+	if(!has_charge(step_energy_drain))
+		return 0
 	if(state)
 		occupant_message("<span class='warning'>Maintenance protocols in effect</span>")
-		return
+		return 0
 	return domove(direction)
 
 /obj/vehicle/sealed/mecha/proc/can_ztravel()

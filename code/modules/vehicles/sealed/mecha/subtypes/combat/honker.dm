@@ -1,4 +1,12 @@
 /datum/armor/vehicle/mecha/combat/honker
+	melee = 0.35
+	melee_tier = 4
+	bullet = 0.45
+	bullet_tier = 4
+	laser = 0.45
+	laser_tier = 4
+	energy = 0.35
+	bomb = 0.5
 
 /obj/vehicle/sealed/mecha/combat/honker
 	name = "H.O.N.K."
@@ -22,8 +30,6 @@
 	comp_hull = /obj/item/vehicle_component/plating/hull/durable
 
 	dir_in = 1 //Facing North.
-	deflect_chance = 15
-	damage_absorption = list("brute"=0.75,"fire"=1,"bullet"=0.8,"laser"=0.7,"energy"=0.85,"bomb"=1)
 	max_temperature = 25000
 	wreckage = /obj/effect/decal/mecha_wreckage/honker
 	internal_damage_threshold = 35
@@ -52,8 +58,6 @@
 		VEHICLE_MODULE_SLOT_UTILITY = 3,
 	)
 
-	deflect_chance = 25
-	damage_absorption = list("brute"=0.6,"fire"=0.8,"bullet"=0.6,"laser"=0.5,"energy"=0.65,"bomb"=0.8)
 	max_temperature = 45000
 	overload_coeff = 1
 	wreckage = /obj/effect/decal/mecha_wreckage/honker/cluwne

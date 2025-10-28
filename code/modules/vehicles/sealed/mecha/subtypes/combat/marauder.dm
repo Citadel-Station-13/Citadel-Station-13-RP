@@ -1,3 +1,13 @@
+/datum/armor/vehicle/mecha/combat/marauder
+	melee = 0.35
+	melee_tier = 5
+	bullet = 0.35
+	bullet_tier = 5
+	laser = 0.35
+	laser_tier = 5
+	energy = 0.6
+	bomb = 0.75
+
 /obj/vehicle/sealed/mecha/combat/marauder
 	desc = "Heavy-duty, combat exosuit, developed after the Durand model. Rarely found among civilian populations."
 	name = "Marauder"
@@ -6,6 +16,7 @@
 	initial_icon = "marauder"
 
 	base_movement_speed = 2.5
+	armor_type = /datum/armor/vehicle/mecha/combat/marauder
 	integrity = /obj/vehicle/sealed/mecha/combat::integrity * 1.35
 	integrity_max = /obj/vehicle/sealed/mecha/combat::integrity_max * 1.35
 
@@ -21,8 +32,6 @@
 		VEHICLE_MODULE_SLOT_UTILITY = 4,
 	)
 
-	deflect_chance = 25
-	damage_absorption = list("brute"=0.5,"fire"=0.7,"bullet"=0.45,"laser"=0.6,"energy"=0.7,"bomb"=0.7)
 	max_temperature = 60000
 	wreckage = /obj/effect/decal/mecha_wreckage/marauder
 	add_req_access = 0

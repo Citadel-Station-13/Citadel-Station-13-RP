@@ -1,3 +1,13 @@
+/datum/armor/vehicle/mecha/combat/quasimodo
+	melee = 0.35
+	melee_tier = 4
+	bullet = 0.35
+	bullet_tier = 4
+	laser = 0.35
+	laser_tier = 4
+	energy = 0.35
+	bomb = 0.5
+
 /obj/vehicle/sealed/mecha/combat/quasimodo
 	name = "Quasimodo"
 	desc = "A massive mech that seems to tower over most people, it has a massive cannon on its shoulder."
@@ -12,10 +22,10 @@
 	bound_x = 0
 	bound_y = 0
 
+	base_movement_speed = 1.5
+	armor_type = /datum/armor/vehicle/mecha/combat/quasimodo
 	integrity = 9 * /obj/vehicle/sealed/mecha/combat::integrity
 	integrity_max = 9 * /obj/vehicle/sealed/mecha/combat::integrity_max
-
-	base_movement_speed = 1.5
 
 	comp_hull_relative_thickness = 5 * /obj/vehicle/sealed/mecha/combat::comp_hull_relative_thickness
 	comp_hull = /obj/item/vehicle_component/plating/hull/heavy_duty
@@ -29,9 +39,9 @@
 		VEHICLE_MODULE_SLOT_SPECIAL = 0,
 	)
 
-	lights_power = 12 //Big mechs would have large floodlights.
+	floodlight_range = 12
+
 	wreckage = /obj/effect/decal/mecha_wreckage/quasimodo
-	add_req_access = 0
 	internal_damage_threshold = 25
 	zoom_possible = 1
 

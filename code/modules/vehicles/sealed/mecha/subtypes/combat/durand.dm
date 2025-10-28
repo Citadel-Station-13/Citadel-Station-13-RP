@@ -1,7 +1,10 @@
 /datum/armor/vehicle/mecha/combat/durand
 	melee = 0.45
+	melee_tier = 4
 	bullet = 0.45
+	bullet_tier = 4
 	laser = 0.45
+	laser_tier = 4
 	energy = 0.35
 	bomb = 0.5
 

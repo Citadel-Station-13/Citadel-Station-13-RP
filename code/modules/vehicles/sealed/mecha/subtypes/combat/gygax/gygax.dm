@@ -1,3 +1,13 @@
+/datum/armor/vehicle/mecha/combat/gygax
+	melee = 0.25
+	melee_tier = 4
+	bullet = 0.35
+	bullet_tier = 4
+	laser = 0.35
+	laser_tier = 4
+	energy = 0.35
+	bomb = 0.5
+
 /obj/vehicle/sealed/mecha/combat/gygax
 	name = "Gygax"
 	desc = "A lightweight, security exosuit. Popular among private and corporate security."
@@ -5,15 +15,15 @@
 	icon_state = "gygax_adv"
 	initial_icon = "gygax_adv"
 
-	base_movement_speed = 4.25
+	base_movement_speed = 4
+	armor_type = /datum/armor/vehicle/combat/gygax
+
 	comp_armor = /obj/item/vehicle_component/plating/armor/marshal
 	comp_hull = /obj/item/vehicle_component/plating/hull/lightweight
 
 	dir_in = 1 //Facing North.
 	integrity = 250
 	integrity_max = 250			//Don't forget to update the /old variant if  you change this number.
-	deflect_chance = 15
-	damage_absorption = list("brute"=0.75,"fire"=1,"bullet"=0.8,"laser"=0.7,"energy"=0.85,"bomb"=1)
 	max_temperature = 25000
 	wreckage = /obj/effect/decal/mecha_wreckage/gygax/adv
 	internal_damage_threshold = 35
@@ -70,6 +80,13 @@
 	name = "Serenity wreckage"
 	icon_state = "medgax-broken"
 
+/datum/armor/vehicle/mecha/combat/gygax/dark
+	melee = 0.35
+	bullet = 0.45
+	laser = 0.45
+	energy = 0.45
+	bomb = 0.65
+
 /obj/vehicle/sealed/mecha/combat/gygax/dark
 	desc = "A lightweight exosuit used by paramilitary forces. A significantly upgraded Gygax security mech."
 	name = "Dark Gygax"
@@ -77,8 +94,12 @@
 	integrity_max = 400
 	icon_state = "darkgygax_adv"
 	initial_icon = "darkgygax_adv"
-	deflect_chance = 25
-	damage_absorption = list("brute"=0.6,"fire"=0.8,"bullet"=0.6,"laser"=0.5,"energy"=0.65,"bomb"=0.8)
+
+	base_movement_speed = 3.75
+	armor_type = /datum/armor/vehicle/combat/gygax/dark
+	integrity = 1.25 * /obj/vehicle/sealed/mecha/combat/gygax::integrity
+	integrity_max = 1.25 * /obj/vehicle/sealed/mecha/combat/gygax::integrity_max
+
 	max_temperature = 45000
 	overload_coeff = 1
 	wreckage = /obj/effect/decal/mecha_wreckage/gygax/dark_adv
@@ -105,9 +126,9 @@
 //Meant for random spawns.
 /obj/vehicle/sealed/mecha/combat/gygax/old
 	desc = "A lightweight, security exosuit. Popular among private and corporate security. This one is particularly worn looking and likely isn't as sturdy."
+	integrity = 0.66 * /obj/vehicle/sealed/mecha/combat/gygax/dark::integrity
+	integrity_max = 0.66 * /obj/vehicle/sealed/mecha/combat/gygax/dark::integrity_max
 
 /obj/vehicle/sealed/mecha/combat/gygax/old/Initialize(mapload)
 	. = ..()
-	integrity = 25
-	integrity_max = 250	//Just slightly worse.
 	cell.charge = rand(0, (cell.charge/2))

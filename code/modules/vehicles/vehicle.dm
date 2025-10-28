@@ -101,8 +101,12 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 	/// UI controller
 	#warn hook this during merging
 	var/datum/vehicle_ui_controller/ui_controller = /datum/vehicle_ui_controller
-	/// UI interface path
-	var/ui_path = "vehicle/VehicleController"
+
+	//* Weight *//
+	var/cached_component_weight = 0
+	var/cached_module_weight = 0
+	var/cached_cargo_weight = 0
+	var/cached_occupant_weight = 0
 
 /obj/vehicle/Initialize(mapload)
 	. = ..()
@@ -345,10 +349,34 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 
 //* Weight Handling *//
 
-#warn impl
-
 /obj/vehicle/on_contents_weight_change(atom/movable/entity, old_weight, new_weight)
 	..()
+	if(istype(entity, /obj/item/vehicle_component) && (entity in components))
+		cached_component_weight += (new_weight - old_weight)
+	if(istype(entity, /obj/item/vehicle_module) && (entity in modules))
+		cached_module_weight += (new_weight - old_weight)
+
+	// TODO: /atom/movable level weight
+	// if(entity in occupants)
+	// if(entity in cargo_held)
+
+	ui_controller?.queue_update_weight_data()
 
 /obj/vehicle/retally_containing_weight()
 	..()
+	cached_component_weight = 0
+	cached_module_weight = 0
+	cached_cargo_weight = 0
+	cached_occupant_weight = 0
+
+	// TODO: /atom/movable level weight
+	// for(var/mob/rider as anything in occupants)
+	// for(var/atom/movable/entity as anything in cargo_held)
+
+	for(var/obj/item/vehicle_component/comp as anything in components)
+		cached_component_weight += comp.get_weight()
+
+	for(var/obj/item/vehicle_module/mod as anything in modules)
+		cached_module_weight += mod.get_weight()
+
+	ui_controller?.queue_update_weight_data()
