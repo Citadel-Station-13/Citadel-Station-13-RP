@@ -367,7 +367,7 @@
 /area/gateway)
 "amf" = (
 /obj/effect/shuttle_landmark{
-	base_area = /area/surfacebase/tram/endeavour;
+	base_area = /area/space/tram/endeavour;
 	base_turf = /turf/space/basic;
 	landmark_tag = "escape_endeavour";
 	name = "Escape Shuttle Endeavour"
