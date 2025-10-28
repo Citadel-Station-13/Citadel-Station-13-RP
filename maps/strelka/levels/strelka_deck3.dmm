@@ -31,7 +31,8 @@
 	dir = 1
 	},
 /obj/machinery/light/small/old{
-	dir = 1
+	dir = 1;
+	light_power = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/morgue)
@@ -54,7 +55,8 @@
 	dir = 4
 	},
 /obj/machinery/light/small/old{
-	dir = 4
+	dir = 4;
+	light_power = 1
 	},
 /turf/simulated/floor/wood/indoors,
 /area/medical/strelka/psy)
@@ -129,7 +131,8 @@
 /area/rnd/strelka/science/main)
 "aF" = (
 /obj/machinery/light/small/old{
-	dir = 4
+	dir = 4;
+	light_power = 1
 	},
 /obj/machinery/vending/loadout/overwear,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -326,7 +329,8 @@
 /area/hallway/strelka/deck3)
 "bw" = (
 /obj/machinery/light/small/old{
-	dir = 4
+	dir = 4;
+	light_power = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/strelka/deck3)
@@ -576,7 +580,8 @@
 	},
 /obj/structure/table/bench/wooden,
 /obj/machinery/light/small/old{
-	dir = 4
+	dir = 4;
+	light_power = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka)
@@ -594,7 +599,8 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/light/small/old{
-	dir = 4
+	dir = 4;
+	light_power = 1
 	},
 /obj/machinery/camera/network/security{
 	dir = 8
@@ -645,7 +651,8 @@
 	dir = 1
 	},
 /obj/machinery/light/small/old{
-	dir = 8
+	dir = 8;
+	light_power = 1
 	},
 /turf/simulated/floor/wood,
 /area/bridge/strelka/rd)
@@ -807,7 +814,8 @@
 	dir = 6
 	},
 /obj/machinery/light/small/old{
-	dir = 1
+	dir = 1;
+	light_power = 1
 	},
 /obj/structure/marker_beacon/red,
 /turf/simulated/floor/reinforced,
@@ -840,7 +848,8 @@
 	pixel_y = 15
 	},
 /obj/machinery/light/small/old{
-	dir = 4
+	dir = 4;
+	light_power = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka)
@@ -867,7 +876,9 @@
 /turf/simulated/wall/wood/hardwood,
 /area/medical/strelka)
 "dx" = (
-/obj/machinery/light/small/old,
+/obj/machinery/light/small/old{
+	light_power = 1
+	},
 /obj/machinery/camera/network/security{
 	dir = 1
 	},
@@ -919,7 +930,8 @@
 	dir = 10
 	},
 /obj/machinery/light/small/old{
-	dir = 1
+	dir = 1;
+	light_power = 1
 	},
 /obj/machinery/air_alarm/north_mount,
 /obj/structure/marker_beacon/red,
@@ -966,6 +978,7 @@
 	density = 0
 	},
 /obj/machinery/air_alarm/north_mount,
+/obj/structure/dancepole,
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/cargo{
 	name = "\improper Deck 3 Cargo Maintenance"
@@ -1062,7 +1075,8 @@
 /area/medical/strelka)
 "ep" = (
 /obj/machinery/light/small/old{
-	dir = 8
+	dir = 8;
+	light_power = 1
 	},
 /obj/structure/toilet{
 	dir = 8
@@ -1171,7 +1185,8 @@
 	dir = 8
 	},
 /obj/machinery/light/small/old{
-	dir = 8
+	dir = 8;
+	light_power = 1
 	},
 /turf/simulated/floor/wood/indoors,
 /area/quartermaster/strelka/qm)
@@ -1300,7 +1315,8 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/light/small/old{
-	dir = 8
+	dir = 8;
+	light_power = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge/strelka/deck3)
@@ -1512,7 +1528,8 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/light/small/old{
-	dir = 1
+	dir = 1;
+	light_power = 1
 	},
 /turf/simulated/floor/plating,
 /area/rnd/strelka/science/main)
@@ -1552,7 +1569,8 @@
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/light/small/old{
-	dir = 4
+	dir = 4;
+	light_power = 1
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/reinforced,
@@ -1831,7 +1849,8 @@
 	dir = 8
 	},
 /obj/machinery/light/small/old{
-	dir = 4
+	dir = 4;
+	light_power = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck3)
@@ -1955,7 +1974,8 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/light/small/old{
-	dir = 4
+	dir = 4;
+	light_power = 1
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/medical)
@@ -2131,7 +2151,9 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
-/obj/machinery/light/small/old,
+/obj/machinery/light/small/old{
+	light_power = 1
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/robotics)
 "hv" = (
@@ -2589,7 +2611,9 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/light/small/old,
+/obj/machinery/light/small/old{
+	light_power = 1
+	},
 /obj/structure/window/reinforced{
 	dir = 4
 	},
@@ -2638,7 +2662,8 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/light/small/old{
-	dir = 8
+	dir = 8;
+	light_power = 1
 	},
 /turf/simulated/floor/wood,
 /area/bridge/strelka/md)
@@ -2746,7 +2771,8 @@
 /area/hallway/strelka/deck3)
 "jq" = (
 /obj/machinery/light/small/old{
-	dir = 4
+	dir = 4;
+	light_power = 1
 	},
 /obj/machinery/holopad,
 /obj/structure/sink{
@@ -2940,7 +2966,8 @@
 /area/hallway/strelka/deck3)
 "jU" = (
 /obj/machinery/light/small/old{
-	dir = 4
+	dir = 4;
+	light_power = 1
 	},
 /obj/random/multiple/corp_crate/no_weapons,
 /obj/random/maintenance/security,
@@ -2988,7 +3015,8 @@
 	dir = 9
 	},
 /obj/machinery/light/small/old{
-	dir = 1
+	dir = 1;
+	light_power = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/morgue)
@@ -3075,7 +3103,8 @@
 /area/shuttle/belter)
 "kw" = (
 /obj/machinery/light/small/old{
-	dir = 1
+	dir = 1;
+	light_power = 1
 	},
 /obj/structure/loot_pile/maint/boxfort,
 /turf/simulated/floor/plating,
@@ -3236,7 +3265,8 @@
 "kV" = (
 /obj/machinery/holopad,
 /obj/machinery/light/small/old{
-	dir = 4
+	dir = 4;
+	light_power = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/xenobio)
@@ -3355,7 +3385,8 @@
 	dir = 1
 	},
 /obj/machinery/light/small/old{
-	dir = 1
+	dir = 1;
+	light_power = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/robotics)
@@ -3541,7 +3572,8 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/light/small/old{
-	dir = 1
+	dir = 1;
+	light_power = 1
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/science)
@@ -3823,7 +3855,8 @@
 	},
 /obj/machinery/computer/skills,
 /obj/machinery/light/small/old{
-	dir = 4
+	dir = 4;
+	light_power = 1
 	},
 /obj/item/stamp/denied{
 	pixel_y = 11;
@@ -4018,7 +4051,8 @@
 	dir = 10
 	},
 /obj/machinery/light/small/old{
-	dir = 4
+	dir = 4;
+	light_power = 1
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/cargo{
@@ -4285,7 +4319,8 @@
 	dir = 1
 	},
 /obj/machinery/light/small/old{
-	dir = 1
+	dir = 1;
+	light_power = 1
 	},
 /obj/machinery/gear_painter,
 /turf/simulated/floor/tiled/asteroid_steel,
@@ -4349,7 +4384,9 @@
 /turf/simulated/floor/wood,
 /area/bridge/strelka/md)
 "or" = (
-/obj/machinery/light/small/old,
+/obj/machinery/light/small/old{
+	light_power = 1
+	},
 /turf/simulated/open,
 /area/rnd/strelka/science/secondary)
 "os" = (
@@ -4624,7 +4661,8 @@
 /area/rnd/strelka/science/secondary)
 "pn" = (
 /obj/machinery/light/small/old{
-	dir = 4
+	dir = 4;
+	light_power = 1
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/cargo{
@@ -4938,7 +4976,9 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/obj/machinery/light/small/old,
+/obj/machinery/light/small/old{
+	light_power = 1
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/xenobio)
 "qC" = (
@@ -5079,7 +5119,8 @@
 	dir = 5
 	},
 /obj/machinery/light/small/old{
-	dir = 1
+	dir = 1;
+	light_power = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/quartermaster/strelka/reception)
@@ -5098,7 +5139,8 @@
 /area/rnd/strelka)
 "qX" = (
 /obj/machinery/light/small/old{
-	dir = 8
+	dir = 8;
+	light_power = 1
 	},
 /obj/structure/closet/secure_closet/paramedic,
 /obj/item/storage/firstaid/surgery,
@@ -5162,7 +5204,8 @@
 "rf" = (
 /obj/structure/closet/secure_closet/guncabinet/robotics,
 /obj/machinery/light/small/old{
-	dir = 8
+	dir = 8;
+	light_power = 1
 	},
 /obj/machinery/button/remote/blast_door{
 	pixel_y = 27;
@@ -5268,7 +5311,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/light/small/old{
-	dir = 8
+	dir = 8;
+	light_power = 1
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/cargo{
@@ -5406,7 +5450,8 @@
 	},
 /obj/machinery/mineral/output,
 /obj/machinery/light/small/old{
-	dir = 1
+	dir = 1;
+	light_power = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/quartermaster/strelka/cargo/mining)
@@ -5552,7 +5597,8 @@
 "sm" = (
 /obj/landmark/spawnpoint/job/chief_medical_officer,
 /obj/machinery/light/small/old{
-	dir = 4
+	dir = 4;
+	light_power = 1
 	},
 /turf/simulated/floor/carpet/blue,
 /area/bridge/strelka/md)
@@ -5619,7 +5665,8 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/light/small/old{
-	dir = 8
+	dir = 8;
+	light_power = 1
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/science)
@@ -5757,7 +5804,8 @@
 "tc" = (
 /obj/machinery/recharge_station,
 /obj/machinery/light/small/old{
-	dir = 8
+	dir = 8;
+	light_power = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/strelka/robotics)
@@ -5979,7 +6027,9 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/strelka/deck3)
 "tJ" = (
-/obj/machinery/light/small/old,
+/obj/machinery/light/small/old{
+	light_power = 1
+	},
 /turf/simulated/floor/wood/broken,
 /area/bridge/strelka/md)
 "tN" = (
@@ -6172,7 +6222,8 @@
 	})
 "us" = (
 /obj/machinery/light/small/old{
-	dir = 1
+	dir = 1;
+	light_power = 1
 	},
 /obj/structure/loot_pile/maint/technical,
 /turf/simulated/floor/plating,
@@ -6228,7 +6279,8 @@
 	use_power = 1
 	},
 /obj/machinery/light/small/old{
-	dir = 8
+	dir = 8;
+	light_power = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/servers)
@@ -6318,7 +6370,8 @@
 "uP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/light/small/old{
-	dir = 4
+	dir = 4;
+	light_power = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/strelka/test)
@@ -6459,13 +6512,15 @@
 	icon_state = "6-9"
 	},
 /obj/machinery/light/small/old{
-	dir = 4
+	dir = 4;
+	light_power = 1
 	},
 /obj/structure/cable/orange{
 	icon_state = "6-9"
 	},
 /obj/machinery/light/small/old{
-	dir = 4
+	dir = 4;
+	light_power = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck3)
@@ -6818,7 +6873,8 @@
 	dir = 1
 	},
 /obj/machinery/light/small/old{
-	dir = 1
+	dir = 1;
+	light_power = 1
 	},
 /turf/simulated/floor/fey/forest_grass,
 /area/rnd/strelka/xenobotany)
@@ -7115,7 +7171,8 @@
 	pixel_x = 9
 	},
 /obj/machinery/light/small/old{
-	dir = 1
+	dir = 1;
+	light_power = 1
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/cargo{
@@ -7229,7 +7286,8 @@
 	dir = 4
 	},
 /obj/machinery/light/small/old{
-	dir = 8
+	dir = 8;
+	light_power = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/xenobio)
@@ -7290,7 +7348,8 @@
 /obj/structure/cable/blue,
 /obj/machinery/power/apc/south_mount,
 /obj/machinery/light/small/old{
-	dir = 4
+	dir = 4;
+	light_power = 1
 	},
 /obj/machinery/shower{
 	dir = 8
@@ -7322,7 +7381,9 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/obj/machinery/light/small/old,
+/obj/machinery/light/small/old{
+	light_power = 1
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/cargo{
 	name = "\improper Deck 3 Cargo Maintenance"
@@ -7388,7 +7449,8 @@
 	dir = 1
 	},
 /obj/machinery/light/small/old{
-	dir = 1
+	dir = 1;
+	light_power = 1
 	},
 /obj/structure/table/carbon/reinforced,
 /obj/item/book/manual/legal/sop_vol4,
@@ -7576,7 +7638,8 @@
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/light/small/old{
-	dir = 4
+	dir = 4;
+	light_power = 1
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/reinforced,
@@ -7585,7 +7648,8 @@
 	})
 "yP" = (
 /obj/machinery/light/small/old{
-	dir = 1
+	dir = 1;
+	light_power = 1
 	},
 /obj/effect/floor_decal/rust,
 /obj/structure/sign/deck/third{
@@ -7724,7 +7788,9 @@
 /area/medical/strelka/main)
 "zl" = (
 /obj/machinery/vending/hydronutrients,
-/obj/machinery/light/small/old,
+/obj/machinery/light/small/old{
+	light_power = 1
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/xenobotany)
 "zn" = (
@@ -7769,7 +7835,8 @@
 /area/medical/strelka/emtroom)
 "zt" = (
 /obj/machinery/light/small/old{
-	dir = 8
+	dir = 8;
+	light_power = 1
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/rnd/strelka/xenobio)
@@ -7885,10 +7952,12 @@
 	dir = 4
 	},
 /obj/machinery/light/small/old{
-	dir = 4
+	dir = 4;
+	light_power = 1
 	},
 /obj/machinery/light/small/old{
-	dir = 4
+	dir = 4;
+	light_power = 1
 	},
 /obj/structure/bed/chair/comfy/brown{
 	dir = 8
@@ -7946,7 +8015,8 @@
 	pixel_x = -13
 	},
 /obj/machinery/light/small/old{
-	dir = 1
+	dir = 1;
+	light_power = 1
 	},
 /obj/machinery/air_alarm/north_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -8012,7 +8082,8 @@
 /area/rnd/strelka/science/main)
 "Ag" = (
 /obj/machinery/light/small/old{
-	dir = 8
+	dir = 8;
+	light_power = 1
 	},
 /obj/structure/toilet{
 	dir = 8
@@ -8029,7 +8100,9 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/light/small/old,
+/obj/machinery/light/small/old{
+	light_power = 1
+	},
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/purple/border,
 /turf/simulated/floor/tiled/monotechmaint,
@@ -8505,7 +8578,8 @@
 	dir = 1
 	},
 /obj/machinery/light/small/old{
-	dir = 4
+	dir = 4;
+	light_power = 1
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/strelka/test)
@@ -8576,7 +8650,9 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/rnd/strelka/xenobio)
 "BH" = (
-/obj/machinery/light/small/old,
+/obj/machinery/light/small/old{
+	light_power = 1
+	},
 /obj/landmark/spawnpoint/job/blueshield,
 /turf/simulated/floor/carpet/blue,
 /area/bridge/strelka/blueshield/room)
@@ -8685,7 +8761,8 @@
 "Cf" = (
 /obj/machinery/mech_recharger,
 /obj/machinery/light/small/old{
-	dir = 8
+	dir = 8;
+	light_power = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/strelka/robotics)
@@ -9544,7 +9621,8 @@
 	},
 /obj/effect/floor_decal/rust,
 /obj/machinery/light/small/old{
-	dir = 4
+	dir = 4;
+	light_power = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/strelka/deck3)
@@ -9630,7 +9708,9 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 5
 	},
-/obj/machinery/light/small/old,
+/obj/machinery/light/small/old{
+	light_power = 1
+	},
 /obj/structure/marker_beacon/red,
 /turf/simulated/floor/reinforced,
 /area/quartermaster/strelka/cargo/hangar)
@@ -9806,7 +9886,8 @@
 	dir = 8
 	},
 /obj/machinery/light/small/old{
-	dir = 1
+	dir = 1;
+	light_power = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/quartermaster/strelka/reception)
@@ -9951,7 +10032,8 @@
 /area/rnd/strelka/science/main)
 "FF" = (
 /obj/machinery/light/small/old{
-	dir = 4
+	dir = 4;
+	light_power = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck3)
@@ -10078,7 +10160,8 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/light/small/old{
-	dir = 1
+	dir = 1;
+	light_power = 1
 	},
 /obj/machinery/button/remote/airlock{
 	pixel_x = 6;
@@ -10103,7 +10186,9 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 9
 	},
-/obj/machinery/light/small/old,
+/obj/machinery/light/small/old{
+	light_power = 1
+	},
 /obj/structure/marker_beacon/red,
 /obj/structure/railing{
 	dir = 4
@@ -10193,7 +10278,8 @@
 /obj/structure/cable/blue,
 /obj/machinery/power/apc/south_mount,
 /obj/machinery/light/small/old{
-	dir = 4
+	dir = 4;
+	light_power = 1
 	},
 /obj/machinery/shower{
 	dir = 8
@@ -10469,11 +10555,6 @@
 /obj/machinery/computer/roguezones{
 	dir = 4
 	},
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	pixel_y = -27;
-	dir = 1;
-	id_tag = "belter_docking"
-	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/quartermaster/strelka/cargo/mining)
 "Hq" = (
@@ -10555,7 +10636,9 @@
 /area/hallway/strelka/deck3)
 "Hz" = (
 /obj/effect/floor_decal/industrial/warning/dust,
-/obj/machinery/light/small/old,
+/obj/machinery/light/small/old{
+	light_power = 1
+	},
 /turf/simulated/floor/reinforced,
 /area/maintenance/strelka/cargo{
 	name = "\improper Deck 3 Cargo Maintenance"
@@ -10748,7 +10831,8 @@
 	pixel_x = 4
 	},
 /obj/machinery/light/small/old{
-	dir = 1
+	dir = 1;
+	light_power = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/quartermaster/strelka/reception)
@@ -10786,7 +10870,8 @@
 	dir = 4
 	},
 /obj/machinery/light/small/old{
-	dir = 4
+	dir = 4;
+	light_power = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/strelka/borg)
@@ -10872,7 +10957,8 @@
 	dir = 8
 	},
 /obj/machinery/light/small/old{
-	dir = 1
+	dir = 1;
+	light_power = 1
 	},
 /turf/simulated/floor/wood,
 /area/bridge/strelka/rd)
@@ -10983,7 +11069,8 @@
 	dir = 8
 	},
 /obj/machinery/light/small/old{
-	dir = 1
+	dir = 1;
+	light_power = 1
 	},
 /obj/machinery/button/remote/blast_door{
 	pixel_y = 29;
@@ -11023,7 +11110,8 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/light/small/old{
-	dir = 8
+	dir = 8;
+	light_power = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge/strelka/deck3)
@@ -11319,14 +11407,16 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/light/small/old{
-	dir = 8
+	dir = 8;
+	light_power = 1
 	},
 /turf/simulated/floor/wood,
 /area/bridge/strelka/rd)
 "Ki" = (
 /obj/structure/closet/firecloset/full,
 /obj/machinery/light/small/old{
-	dir = 4
+	dir = 4;
+	light_power = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/xenobio)
@@ -11621,7 +11711,8 @@
 /obj/structure/table/standard,
 /obj/item/storage/firstaid/regular,
 /obj/machinery/light/small/old{
-	dir = 8
+	dir = 8;
+	light_power = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/strelka/deck3)
@@ -11672,7 +11763,8 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/light/small/old{
-	dir = 4
+	dir = 4;
+	light_power = 1
 	},
 /obj/machinery/camera/network/security{
 	dir = 8
@@ -11995,7 +12087,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/light/small/old,
+/obj/machinery/light/small/old{
+	light_power = 1
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/cargo{
 	name = "\improper Deck 3 Cargo Maintenance"
@@ -12056,7 +12150,8 @@
 	})
 "MN" = (
 /obj/machinery/light/small/old{
-	dir = 4
+	dir = 4;
+	light_power = 1
 	},
 /obj/structure/bed/chair/sofa/brown{
 	dir = 8
@@ -12068,7 +12163,8 @@
 /area/rnd/strelka/xenobio)
 "MO" = (
 /obj/machinery/light/small/old{
-	dir = 8
+	dir = 8;
+	light_power = 1
 	},
 /obj/item/radio/intercom/department/medbay{
 	dir = 8;
@@ -12434,7 +12530,8 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/light/small/old{
-	dir = 1
+	dir = 1;
+	light_power = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/strelka/deck3)
@@ -12546,7 +12643,8 @@
 	},
 /obj/structure/closet/l3closet/scientist/double,
 /obj/machinery/light/small/old{
-	dir = 4
+	dir = 4;
+	light_power = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/xenobotany)
@@ -12563,7 +12661,8 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/light/small/old{
-	dir = 8
+	dir = 8;
+	light_power = 1
 	},
 /turf/simulated/floor/wood,
 /area/bridge/strelka/blueshield)
@@ -12711,7 +12810,8 @@
 	dir = 8
 	},
 /obj/machinery/light/small/old{
-	dir = 1
+	dir = 1;
+	light_power = 1
 	},
 /obj/machinery/button/remote/blast_door{
 	pixel_y = 29;
@@ -12909,7 +13009,9 @@
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
-/obj/machinery/light/small/old,
+/obj/machinery/light/small/old{
+	light_power = 1
+	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -13050,7 +13152,9 @@
 /obj/effect/floor_decal/corner/brown{
 	dir = 6
 	},
-/obj/machinery/light/small/old,
+/obj/machinery/light/small/old{
+	light_power = 1
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/quartermaster/strelka/reception)
 "Qb" = (
@@ -13178,7 +13282,8 @@
 /area/quartermaster/strelka/cargo/hangar)
 "QA" = (
 /obj/machinery/light/small/old{
-	dir = 8
+	dir = 8;
+	light_power = 1
 	},
 /obj/item/bodybag/cryobag{
 	pixel_x = -2;
@@ -13419,7 +13524,8 @@
 "Rv" = (
 /obj/landmark/spawnpoint/job/research_director,
 /obj/machinery/light/small/old{
-	dir = 4
+	dir = 4;
+	light_power = 1
 	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/bridge/strelka/rd)
@@ -13551,7 +13657,8 @@
 	dir = 1
 	},
 /obj/machinery/light/small/old{
-	dir = 8
+	dir = 8;
+	light_power = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/strelka/deck3)
@@ -13650,7 +13757,8 @@
 	dir = 8
 	},
 /obj/machinery/light/small/old{
-	dir = 4
+	dir = 4;
+	light_power = 1
 	},
 /turf/simulated/floor/wood/indoors,
 /area/rnd/strelka/science/secondary)
@@ -13729,7 +13837,8 @@
 	dir = 10
 	},
 /obj/machinery/light/small/old{
-	dir = 4
+	dir = 4;
+	light_power = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/emtroom)
@@ -14196,7 +14305,8 @@
 	},
 /obj/structure/table/carbon/reinforced,
 /obj/machinery/light/small/old{
-	dir = 1
+	dir = 1;
+	light_power = 1
 	},
 /turf/simulated/floor/wood,
 /area/bridge/strelka/md)
@@ -14209,7 +14319,8 @@
 /obj/item/clothing/suit/beekeeper,
 /obj/item/clothing/suit/beekeeper,
 /obj/machinery/light/small/old{
-	dir = 4
+	dir = 4;
+	light_power = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/xenobotany)
@@ -14224,7 +14335,8 @@
 	dir = 8
 	},
 /obj/machinery/light/small/old{
-	dir = 8
+	dir = 8;
+	light_power = 1
 	},
 /obj/landmark/spawnpoint/job/quartermaster,
 /turf/simulated/floor/wood/indoors,
@@ -14273,16 +14385,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck3)
-"TY" = (
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	dir = 8;
-	frequency = 1380;
-	id_tag = "supply_shuttle";
-	pixel_x = 24
-	},
-/obj/effect/floor_decal/industrial/outline/red,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/quartermaster/strelka/cargo/hangar)
 "TZ" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 9
@@ -14446,7 +14548,8 @@
 	},
 /obj/structure/table/woodentable,
 /obj/machinery/light/small/old{
-	dir = 8
+	dir = 8;
+	light_power = 1
 	},
 /turf/simulated/floor/wood/indoors,
 /area/medical/strelka/psy)
@@ -14889,7 +14992,8 @@
 	},
 /obj/effect/floor_decal/corner/purple/border,
 /obj/machinery/light/small/old{
-	dir = 1
+	dir = 1;
+	light_power = 1
 	},
 /obj/machinery/camera/network/security,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -15062,7 +15166,8 @@
 /area/hallway/strelka/deck3)
 "Wp" = (
 /obj/machinery/light/small/old{
-	dir = 1
+	dir = 1;
+	light_power = 1
 	},
 /obj/machinery/camera/network/security,
 /obj/machinery/button/remote/blast_door{
@@ -15109,7 +15214,9 @@
 /area/quartermaster/strelka/cargo/mining)
 "Ww" = (
 /obj/machinery/seed_storage/xenobotany,
-/obj/machinery/light/small/old,
+/obj/machinery/light/small/old{
+	light_power = 1
+	},
 /obj/effect/floor_decal/grass_edge{
 	dir = 1;
 	layer = 2.5
@@ -15128,7 +15235,9 @@
 /area/rnd/strelka/science/main)
 "WB" = (
 /obj/machinery/smartfridge/drying_rack,
-/obj/machinery/light/small/old,
+/obj/machinery/light/small/old{
+	light_power = 1
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/xenobotany)
 "WC" = (
@@ -15262,7 +15371,8 @@
 	pixel_x = -4
 	},
 /obj/machinery/light/small/old{
-	dir = 1
+	dir = 1;
+	light_power = 1
 	},
 /obj/item/clothing/accessory/permit/gun/planetside,
 /turf/simulated/floor/wood/indoors,
@@ -15353,7 +15463,8 @@
 	RCon_tag = "Deck 3 Research Main Substation Bypass"
 	},
 /obj/machinery/light/small/old{
-	dir = 8
+	dir = 8;
+	light_power = 1
 	},
 /obj/machinery/door/window/brigdoor/eastleft{
 	req_access = null;
@@ -15465,7 +15576,9 @@
 /turf/simulated/floor/wood/indoors,
 /area/rnd/strelka/science/secondary)
 "XA" = (
-/obj/machinery/light/small/old,
+/obj/machinery/light/small/old{
+	light_power = 1
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/cargo{
 	name = "\improper Deck 3 Cargo Maintenance"
@@ -15544,7 +15657,8 @@
 	dir = 1
 	},
 /obj/machinery/light/small/old{
-	dir = 1
+	dir = 1;
+	light_power = 1
 	},
 /obj/machinery/camera/network/security,
 /turf/simulated/floor/fey/forest_grass,
@@ -15629,7 +15743,8 @@
 	pixel_x = -31
 	},
 /obj/machinery/light/small/old{
-	dir = 8
+	dir = 8;
+	light_power = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/xenobio)
@@ -15644,7 +15759,8 @@
 /area/quartermaster/strelka/reception)
 "Yo" = (
 /obj/machinery/light/small/old{
-	dir = 1
+	dir = 1;
+	light_power = 1
 	},
 /obj/structure/loot_pile/maint/junk,
 /turf/simulated/floor/plating,
@@ -15702,7 +15818,9 @@
 /area/medical/strelka/main)
 "Yv" = (
 /obj/machinery/suit_storage_unit/mining,
-/obj/machinery/light/small/old,
+/obj/machinery/light/small/old{
+	light_power = 1
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/quartermaster/strelka/cargo/mining)
 "Yw" = (
@@ -15793,10 +15911,6 @@
 "YU" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/rnd/strelka/robotics)
-"YV" = (
-/obj/machinery/door/blast/regular,
-/turf/simulated/wall/r_wall/prepainted/command,
-/area/space)
 "YW" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/structure/curtain/open/black,
@@ -16036,7 +16150,8 @@
 /area/rnd/strelka/science/secondary)
 "ZN" = (
 /obj/machinery/light/small/old{
-	dir = 1
+	dir = 1;
+	light_power = 1
 	},
 /obj/structure/closet/walllocker/emergsuit_wall{
 	pixel_y = 30
@@ -26886,7 +27001,7 @@ kr
 kr
 kr
 kr
-YV
+aI
 XL
 uq
 rN
@@ -29598,7 +29713,7 @@ su
 Qy
 Qy
 hK
-TY
+Qy
 hR
 AK
 Le
