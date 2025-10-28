@@ -16,20 +16,117 @@
 	//This list tracks characters spawned in the world and cannot be modified in-game. Currently referenced by respawn_character().
 	var/static/list/locked = list()
 
-
-/datum/datacore/proc/get_manifest(monochrome, OOC)
-	var/list/heads = new()
-	var/list/sec = new()
-	var/list/eng = new()
-	var/list/med = new()
-	var/list/sci = new()
-	var/list/car = new()
-	var/list/pla = new()
-	var/list/civ = new()
-	var/list/bot = new()
-	var/list/off = new()
+/datum/datacore/proc/get_raw_manifest_data(OOC = FALSE, activity = FALSE)
+	var/list/command = new()
+	var/list/security = new()
+	var/list/engineering = new()
+	var/list/medical = new()
+	var/list/science = new()
+	var/list/cargo = new()
+	var/list/exploration = new()
+	var/list/civilian = new()
+	var/list/silicons = new()
 	var/list/misc = new()
+	var/list/offduty = new()
+	var/list/trade = new()
+	var/list/offmap = new()
 	var/list/isactive = new()
+
+	//Categorize crew roles
+	for(var/datum/data/record/t in general)
+		var/name = t.fields["name"]
+		var/rank = t.fields["rank"]
+		var/real_rank = make_list_rank(t.fields["real_rank"])
+
+		//Check if player is active
+		if(activity == TRUE)
+			var/active = FALSE
+			for(var/mob/M in GLOB.player_list)
+				if(M.real_name == name && M.client && M.client.inactivity <= 10 MINUTES)
+					active = TRUE
+					break
+			isactive[name] = active ? "Active" : "Inactive"
+		else
+			isactive[name] = t.fields["p_stat"]
+
+		//Check for command first, then exploration. As these roles can have multiple departments.
+		if(SSjob.is_job_in_department(real_rank, DEPARTMENT_COMMAND))
+			command[name] = rank
+		else if(SSjob.is_job_in_department(real_rank, DEPARTMENT_PLANET))
+			exploration[name] = rank
+		else if(SSjob.is_job_in_department(real_rank, DEPARTMENT_SECURITY))
+			security[name] = rank
+		else if(SSjob.is_job_in_department(real_rank, DEPARTMENT_ENGINEERING))
+			engineering[name] = rank
+		else if(SSjob.is_job_in_department(real_rank, DEPARTMENT_MEDICAL))
+			medical[name] = rank
+		else if(SSjob.is_job_in_department(real_rank, DEPARTMENT_RESEARCH))
+			science[name] = rank
+		else if(SSjob.is_job_in_department(real_rank, DEPARTMENT_CARGO))
+			cargo[name] = rank
+		else if(SSjob.is_job_in_department(real_rank, DEPARTMENT_CIVILIAN))
+			civilian[name] = rank
+		else if(SSjob.is_job_in_department(real_rank, DEPARTMENT_OFFDUTY))
+			offduty[name] = rank
+		else if(SSjob.is_job_in_department(real_rank, DEPARTMENT_TRADE))
+			trade[name] = rank
+		else misc[name] = rank
+
+	//Categorize offmap roles
+	if(OOC == TRUE)
+		for(var/datum/data/record/t in hidden_general)
+			var/name = t.fields["name"]
+			var/rank = t.fields["rank"]
+			var/real_rank = make_list_rank(t.fields["real_rank"])
+
+			if(activity == TRUE)
+				var/active = FALSE
+				for(var/mob/M in GLOB.player_list)
+					if(M.real_name == name && M.client && M.client.inactivity <= 10 MINUTES)
+						active = TRUE
+						break
+				isactive[name] = active ? "Active" : "Inactive"
+
+			var/datum/prototype/role/job/J = RSroles.legacy_job_by_title(real_rank)
+			if(J?.offmap_spawn)
+				offmap[name] = rank
+
+	// Synthetics don't have actual records, so we will pull them from these.
+	// add pAIs	to the returned manifest, we do this first to just avoid a ghost overwriting a robot or AI name in the list
+	if(OOC == TRUE)
+		for(var/mob/living/silicon/pai/pai in GLOB.mob_list)
+			silicons[pai.name] = "pAI"
+
+	for(var/mob/living/silicon/ai/ai in GLOB.mob_list)
+		silicons[ai.name] = "Artificial Intelligence"
+
+	for(var/mob/living/silicon/robot/robot in GLOB.mob_list)
+		// No combat/syndicate cyborgs, no drones, and no AI shells.
+		if(!robot.scrambledcodes && !robot.shell && !(robot.module && robot.module.hide_on_manifest))
+			silicons[robot.name] = "[robot.modtype] [robot.braintype]"
+
+	//Return all of our lists.
+	. = alist()
+	.["Command"] = command
+	.["Security"] = security
+	.["Engineering"] = engineering
+	.["Medical"] = medical
+	.["Science"] = science
+	.["Cargo"] = cargo
+	.["Exploration"] = exploration
+	.["Civilian"] = civilian
+	.["Silicons"] = silicons
+	.["Misc"] = misc
+	.["Off Duty"] = offduty
+	if (OOC == TRUE)
+		.["Trade"] = trade
+		.["Non-Crew"] = offmap
+	if (activity == TRUE)
+		.["IsActive"] = isactive
+
+
+
+/datum/datacore/proc/get_manifest(monochrome = FALSE, OOC = FALSE)
 	var/dat = {"
 	<head><style>
 		.manifest {border-collapse:collapse;}
@@ -42,137 +139,72 @@
 	<table class="manifest" width='350px'>
 	<tr class='head'><th>Name</th><th>Rank</th><th>Activity</th></tr>
 	"}
-	var/even = 0
-	// sort mobs
-	for(var/datum/data/record/t in data_core.general)
-		var/name = t.fields["name"]
-		var/rank = t.fields["rank"]
-		var/real_rank = make_list_rank(t.fields["real_rank"])
+	var/even = FALSE
 
-		if(OOC)
-			var/active = 0
-			for(var/mob/M in GLOB.player_list)
-				if(M.real_name == name && M.client && M.client.inactivity <= 10 MINUTES)
-					active = 1
-					break
-			isactive[name] = active ? "Active" : "Inactive"
-		else
-			isactive[name] = t.fields["p_stat"]
-			//TO_WORLD("[name]: [rank]")
-			//cael - to prevent multiple appearances of a player/job combination, add a continue after each line
-		var/department = 0
-		if(SSjob.is_job_in_department(real_rank, DEPARTMENT_COMMAND))
-			heads[name] = rank
-			department = 1
-		if(SSjob.is_job_in_department(real_rank, DEPARTMENT_SECURITY))
-			sec[name] = rank
-			department = 1
-		if(SSjob.is_job_in_department(real_rank, DEPARTMENT_ENGINEERING))
-			eng[name] = rank
-			department = 1
-		if(SSjob.is_job_in_department(real_rank, DEPARTMENT_MEDICAL))
-			med[name] = rank
-			department = 1
-		if(SSjob.is_job_in_department(real_rank, DEPARTMENT_RESEARCH))
-			sci[name] = rank
-			department = 1
-		if(SSjob.is_job_in_department(real_rank, DEPARTMENT_CARGO))
-			car[name] = rank
-			department = 1
-		if(SSjob.is_job_in_department(real_rank, DEPARTMENT_PLANET))
-			pla[name] = rank
-			department = 1
-		if(SSjob.is_job_in_department(real_rank, DEPARTMENT_CIVILIAN))
-			civ[name] = rank
-			department = 1
-		if(!department && !(name in heads))
-			misc[name] = rank
+	//Acquire the raw data, we only need player activity if we are also OOC.
+	var/list/raw_data = get_raw_manifest_data(OOC, OOC)
 
-	//For the offmap spawns
-	if(OOC)
-		for(var/datum/data/record/t in hidden_general)
-			var/name = t.fields["name"]
-			var/rank = t.fields["rank"]
-			var/real_rank = make_list_rank(t.fields["real_rank"])
-
-			var/active = 0
-			for(var/mob/M in GLOB.player_list)
-				if(M.real_name == name && M.client && M.client.inactivity <= 10 MINUTES)
-					active = 1
-					break
-			isactive[name] = active ? "Active" : "Inactive"
-
-			var/datum/prototype/role/job/J = RSroles.legacy_job_by_title(real_rank)
-			if(J?.offmap_spawn)
-				off[name] = rank
-
-	// Synthetics don't have actual records, so we will pull them from here.
-	for(var/mob/living/silicon/ai/ai in GLOB.mob_list)
-		bot[ai.name] = "Artificial Intelligence"
-
-	for(var/mob/living/silicon/robot/robot in GLOB.mob_list)
-		// No combat/syndicate cyborgs, no drones, and no AI shells.
-		if(!robot.scrambledcodes && !robot.shell && !(robot.module && robot.module.hide_on_manifest))
-			bot[robot.name] = "[robot.modtype] [robot.braintype]"
-
-
-	if(heads.len > 0)
+	if(raw_data["Command"].len)
 		dat += "<tr><th colspan=3>Heads</th></tr>"
-		for(name in heads)
-			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[heads[name]]</td><td>[isactive[name]]</td></tr>"
+		for(name in raw_data["Command"])
+			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[raw_data["Command"][name]]</td><td>[raw_data["IsActive"][name]]</td></tr>"
 			even = !even
-	if(sec.len > 0)
+	if(raw_data["Security"].len)
 		dat += "<tr><th colspan=3>Security</th></tr>"
-		for(name in sec)
-			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[sec[name]]</td><td>[isactive[name]]</td></tr>"
+		for(name in raw_data["Security"])
+			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[raw_data["Security"][name]]</td><td>[raw_data["IsActive"][name]]</td></tr>"
 			even = !even
-	if(eng.len > 0)
+	if(raw_data["Engineering"].len)
 		dat += "<tr><th colspan=3>Engineering</th></tr>"
-		for(name in eng)
-			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[eng[name]]</td><td>[isactive[name]]</td></tr>"
+		for(name in raw_data["Engineering"])
+			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[raw_data["Engineering"][name]]</td><td>[raw_data["IsActive"][name]]</td></tr>"
 			even = !even
-	if(med.len > 0)
+	if(raw_data["Medical"].len)
 		dat += "<tr><th colspan=3>Medical</th></tr>"
-		for(name in med)
-			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[med[name]]</td><td>[isactive[name]]</td></tr>"
+		for(name in raw_data["Medical"])
+			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[raw_data["Medical"][name]]</td><td>[raw_data["IsActive"][name]]</td></tr>"
 			even = !even
-	if(sci.len > 0)
+	if(raw_data["Science"].len)
 		dat += "<tr><th colspan=3>Science</th></tr>"
-		for(name in sci)
-			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[sci[name]]</td><td>[isactive[name]]</td></tr>"
+		for(name in raw_data["Science"])
+			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[raw_data["Science"][name]]</td><td>[raw_data["IsActive"][name]]</td></tr>"
 			even = !even
-	if(car.len > 0)
+	if(raw_data["Cargo"].len)
 		dat += "<tr><th colspan=3>Cargo</th></tr>"
-		for(name in car)
-			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[car[name]]</td><td>[isactive[name]]</td></tr>"
+		for(name in raw_data["Cargo"])
+			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[raw_data["Cargo"][name]]</td><td>[raw_data["IsActive"][name]]</td></tr>"
 			even = !even
-	if(pla.len > 0)
+	if(raw_data["Exploration"].len)
 		dat += "<tr><th colspan=3>Exploration</th></tr>"
-		for(name in pla)
-			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[pla[name]]</td><td>[isactive[name]]</td></tr>"
+		for(name in raw_data["Exploration"])
+			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[raw_data["Exploration"][name]]</td><td>[raw_data["IsActive"][name]]</td></tr>"
 			even = !even
-	if(civ.len > 0)
+	if(raw_data["Civilian"].len)
 		dat += "<tr><th colspan=3>Civilian</th></tr>"
-		for(name in civ)
-			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[civ[name]]</td><td>[isactive[name]]</td></tr>"
+		for(name in raw_data["Civilian"])
+			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[raw_data["Civilian"][name]]</td><td>[raw_data["IsActive"][name]]</td></tr>"
 			even = !even
-	// in case somebody is insane and added them to the manifest, why not
-	if(bot.len > 0)
+	if(raw_data["Silicons"].len)
 		dat += "<tr><th colspan=3>Silicon</th></tr>"
-		for(name in bot)
-			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[bot[name]]</td><td>[isactive[name]]</td></tr>"
+		for(name in raw_data["Silicons"])
+			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[raw_data["Silicons"][name]]</td><td>[raw_data["IsActive"][name]]</td></tr>"
 			even = !even
 	// offmap spawners
-	if(off.len > 0)
+	if(raw_data["Non-Crew"].len)
 		dat += "<tr><th colspan=3>Offmap Spawns</th></tr>"
-		for(name in off)
-			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[off[name]]</td><td>[isactive[name]]</td></tr>"
+		for(name in raw_data["Non-Crew"])
+			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[raw_data["Non-Crew"][name]]</td><td>[raw_data["IsActive"][name]]</td></tr>"
+			even = !even
+	if(raw_data["Trade"].len)
+		dat += "<tr><th colspan=3>Traders</th></tr>"
+		for(name in raw_data["Trade"])
+			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[raw_data["Trade"][name]]</td><td>[raw_data["IsActive"][name]]</td></tr>"
 			even = !even
 	// misc guys
-	if(misc.len > 0)
+	if(raw_data["Misc"].len)
 		dat += "<tr><th colspan=3>Miscellaneous</th></tr>"
-		for(name in misc)
-			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[misc[name]]</td><td>[isactive[name]]</td></tr>"
+		for(name in raw_data["Misc"])
+			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[raw_data["Misc"][name]]</td><td>[raw_data["IsActive"][name]]</td></tr>"
 			even = !even
 
 	dat += "</table>"
@@ -186,7 +218,6 @@ Instead of creating this list over and over when someone leaves their PDA open t
 we'll only update it when it changes.  The GLOB.PDA_Manifest global list is zeroed out upon any change
 using /datum/datacore/proc/manifest_inject( ), or manifest_insert( )
 */
-
 GLOBAL_LIST_EMPTY(PDA_Manifest)
 
 /datum/datacore/proc/get_manifest_list()
