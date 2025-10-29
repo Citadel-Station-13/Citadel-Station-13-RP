@@ -173,17 +173,6 @@ if $grep 'can_perform_action\(\s*\)' $code_files; then
 	st=1
 fi;
 
-# TODO reenable this
-# part "ensure proper lowertext usage"
-# lowertext() is a BYOND-level proc, so it can be used in any sort of code... including the TGS DMAPI which we don't manage in this repository.
-# basically, we filter out any results with "tgs" in it to account for this edgecase without having to enforce this rule in that separate codebase.
-# grepping the grep results is a bit of a sad solution to this but it's pretty much the only option in our existing linter framework
-# if $grep -i 'lowertext\(.+\)' $code_files | $grep -v 'UNLINT\(.+\)' | $grep -v '\/modules\/tgs\/'; then
-# 	echo
-# 	echo -e "${RED}ERROR: Found a lowertext() proc call. Please use the LOWER_TEXT() macro instead. If you know what you are doing, wrap your text (ensure it is a string) in UNLINT().${NC}"
-# 	st=1
-# fi;
-
 part "common spelling mistakes"
 # one pesky door causing this issue
 # if $grep -i 'centcomm' $code_files; then

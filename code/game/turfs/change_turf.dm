@@ -106,6 +106,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 			else if(path == /turf/simulated/open)
 				if(istype(below, /turf/space))
 					path = /turf/space
+		// TODO: we shouldn't have this hook.
 		if(/turf/space/basic)
 			var/turf/below = below()
 			// basic doesn't initialize and this will cause issues
