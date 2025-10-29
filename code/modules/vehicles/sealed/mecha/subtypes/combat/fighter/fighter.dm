@@ -67,9 +67,7 @@
 	..()
 	if (href_list["toggle_landing_gear"])
 		landing_gear_raised = !landing_gear_raised
-		send_byjax(src.occupant_legacy,"exosuit.browser","landing_gear_command","[landing_gear_raised?"Lower":"Raise"] landing gear")
 		src.occupant_message("<span class='notice'>Landing gear [landing_gear_raised? "raised" : "lowered"].</span>")
-		return
 
 /obj/vehicle/sealed/mecha/combat/fighter/get_commands()
 	var/output = {"<div class='wr'>

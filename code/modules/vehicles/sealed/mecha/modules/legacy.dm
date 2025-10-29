@@ -51,10 +51,6 @@
 	spawn
 		qdel(src)
 
-/obj/item/vehicle_module/lazy/legacy/proc/critfail()
-	if(chassis)
-		log_message("Critical failure",1)
-
 /obj/item/vehicle_module/lazy/legacy/proc/is_ranged()//add a distance restricted equipment. Why not?
 	return range&RANGED
 
@@ -74,14 +70,6 @@
 
 /obj/item/vehicle_module/lazy/legacy/proc/action(atom/target)
 	return
-
-/obj/item/vehicle_module/lazy/legacy/proc/can_attach(obj/vehicle/sealed/mecha/M as obj)
-	#warn deal with this shit
-	if(equip_type != EQUIP_SPECIAL && M.universal_equipment.len < M.max_universal_equip) //The exosuit needs to be military grade to actually have a universal slot capable of accepting a true weapon.
-		if(equip_type == EQUIP_WEAPON && !istype(M, /obj/vehicle/sealed/mecha/combat))
-			return FALSE
-		return TRUE
-	return FALSE
 
 /obj/item/vehicle_module/lazy/legacy/proc/attach(obj/vehicle/sealed/mecha/M as obj)
 	#warn deal with this shit
