@@ -15,7 +15,7 @@ import { Window } from "../layouts";
  * (or static data, doesn't really matter)
  * ```dm
 if(data_core)
-    data_core.get_manifest_list()
+    data_core.update_manifest_list()
 data["manifest"] = GLOB.PDA_Manifest
  * ```
  */

@@ -5,7 +5,7 @@
 /datum/tgui_module_old/crew_manifest/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 	if(data_core)
-		data_core.get_manifest_list()
+		data_core.update_manifest_list()
 	data["manifest"] = GLOB.PDA_Manifest
 	return data
 

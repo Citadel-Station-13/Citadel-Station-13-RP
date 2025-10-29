@@ -41,15 +41,15 @@
 		var/rank = t.fields["rank"]
 		var/real_rank = make_list_rank(t.fields["real_rank"])
 
-		//Check if player is active
-		if(activity == TRUE)
+		//Check if players are active. Check real stats
+		if(activity == TRUE && OOC == TRUE)
 			var/active = FALSE
 			for(var/mob/M in GLOB.player_list)
 				if(M.real_name == name && M.client && M.client.inactivity <= 10 MINUTES)
 					active = TRUE
 					break
 			isactive[name] = active ? "Active" : "Inactive"
-		else
+		else if(activity == TRUE)
 			isactive[name] = t.fields["p_stat"]
 
 		//Check for command first, then exploration. As these roles can have multiple departments and we want these roles to be dominant.
@@ -216,93 +216,51 @@ using /datum/datacore/proc/manifest_inject( ), or manifest_insert( )
 */
 GLOBAL_LIST_EMPTY(PDA_Manifest)
 
-/datum/datacore/proc/get_manifest_list()
+/datum/datacore/proc/update_manifest_list()
+	//PDA_Manifest is still cached.
 	if(GLOB.PDA_Manifest.len)
 		return
+
+	var/list/raw_data = get_raw_manifest_data(FALSE, TRUE)
 	var/list/heads = list()
 	var/list/sec = list()
 	var/list/eng = list()
 	var/list/med = list()
 	var/list/sci = list()
 	var/list/car = list()
-	var/list/pla = list() // Planetside crew: Explorers, Pilots, S&S
+	var/list/exp = list()
 	var/list/civ = list()
 	var/list/bot = list()
 	var/list/misc = list()
-	for(var/datum/data/record/t in data_core.general)
-		var/name = sanitize(t.fields["name"])
-		var/rank = sanitize(t.fields["rank"])
-		var/real_rank = make_list_rank(t.fields["real_rank"])
 
-		var/isactive = t.fields["p_stat"]
-		var/department = 0
-		var/depthead = 0 			// Department Heads will be placed at the top of their lists.
-		if(SSjob.is_job_in_department(real_rank, DEPARTMENT_COMMAND))
-			heads[++heads.len] = list("name" = name, "rank" = rank, "active" = isactive)
-			department = 1
-			depthead = 1
-			if(rank=="Site Manager" && heads.len != 1)
-				heads.Swap(1,heads.len)
+	//Reshuffle the raw_data into the pda_manifest format
+	for(name in raw_data["Command"])
+		heads += list("name" = name, "rank" = raw_data["Command"][name], "active" = raw_data["IsActive"][name])
+	for(name in raw_data["Security"])
+		sec += list("name" = name, "rank" = raw_data["Security"][name], "active" = raw_data["IsActive"][name])
+	for(name in raw_data["Engineering"])
+		eng += list("name" = name, "rank" = raw_data["Engineering"][name], "active" = raw_data["IsActive"][name])
+	for(name in raw_data["Medical"])
+		med += list("name" = name, "rank" = raw_data["Medical"][name], "active" = raw_data["IsActive"][name])
+	for(name in raw_data["Science"])
+		sci += list("name" = name, "rank" = raw_data["Science"][name], "active" = raw_data["IsActive"][name])
+	for(name in raw_data["Cargo"])
+		car += list("name" = name, "rank" = raw_data["Cargo"][name], "active" = raw_data["IsActive"][name])
+	for(name in raw_data["Exploration"])
+		exp += list("name" = name, "rank" = raw_data["Exploration"][name], "active" = raw_data["IsActive"][name])
+	for(name in raw_data["Civilian"])
+		civ += list("name" = name, "rank" = raw_data["Civilian"][name], "active" = raw_data["IsActive"][name])
+	for(name in raw_data["Silicons"])
+		bot += list("name" = name, "rank" = raw_data["Silicons"][name], "active" = raw_data["IsActive"][name])
+	for(name in raw_data["Misc"])
+		misc += list("name" = name, "rank" = raw_data["Misc"][name], "active" = raw_data["IsActive"][name])
 
-		if(SSjob.is_job_in_department(real_rank, DEPARTMENT_SECURITY))
-			sec[++sec.len] = list("name" = name, "rank" = rank, "active" = isactive)
-			department = 1
-			if(depthead && sec.len != 1)
-				sec.Swap(1,sec.len)
-
-		if(SSjob.is_job_in_department(real_rank, DEPARTMENT_ENGINEERING))
-			eng[++eng.len] = list("name" = name, "rank" = rank, "active" = isactive)
-			department = 1
-			if(depthead && eng.len != 1)
-				eng.Swap(1,eng.len)
-
-		if(SSjob.is_job_in_department(real_rank, DEPARTMENT_MEDICAL))
-			med[++med.len] = list("name" = name, "rank" = rank, "active" = isactive)
-			department = 1
-			if(depthead && med.len != 1)
-				med.Swap(1,med.len)
-
-		if(SSjob.is_job_in_department(real_rank, DEPARTMENT_RESEARCH))
-			sci[++sci.len] = list("name" = name, "rank" = rank, "active" = isactive)
-			department = 1
-			if(depthead && sci.len != 1)
-				sci.Swap(1,sci.len)
-
-		if(SSjob.is_job_in_department(real_rank, DEPARTMENT_PLANET))
-			pla[++pla.len] = list("name" = name, "rank" = rank, "active" = isactive)
-			department = 1
-
-		if(SSjob.is_job_in_department(real_rank, DEPARTMENT_CARGO))
-			car[++car.len] = list("name" = name, "rank" = rank, "active" = isactive)
-			department = 1
-			if(depthead && car.len != 1)
-				car.Swap(1,car.len)
-
-		if(SSjob.is_job_in_department(real_rank, DEPARTMENT_CIVILIAN))
-			civ[++civ.len] = list("name" = name, "rank" = rank, "active" = isactive)
-			department = 1
-			if(depthead && civ.len != 1)
-				civ.Swap(1,civ.len)
-
-		if(SSjob.is_job_in_department(real_rank, DEPARTMENT_SYNTHETIC))
-			bot[++bot.len] = list("name" = name, "rank" = rank, "active" = isactive)
-			department = 1
-
-		if(!department && !(name in heads))
-			misc[++misc.len] = list("name" = name, "rank" = rank, "active" = isactive)
-
-	// Synthetics don't have actual records, so we will pull them from here.
-	// Synths don't have records, which is the means by which isactive is retrieved, so I'm hardcoding it to active, don't really have any better means
-	for(var/mob/living/silicon/ai/ai in GLOB.mob_list)
-		bot[++bot.len] = list("name" = ai.real_name, "rank" = "Artificial Intelligence", "active" = "Active")
-
-	for(var/mob/living/silicon/robot/robot in GLOB.mob_list)
-		// No combat/syndicate cyborgs, no drones, and no AI shells.
-		if(robot.scrambledcodes || robot.shell || (robot.module && robot.module.hide_on_manifest))
-			continue
-
-		bot[++bot.len] = list("name" = robot.real_name, "rank" = "[robot.modtype] [robot.braintype]", "active" = "Active")
-
+	//! This old code pulls the name of the cyborg modules. The new code doesnt. May need to figure out a better system over all for this.
+	//for(var/mob/living/silicon/robot/robot in GLOB.mob_list)
+	//	// No combat/syndicate cyborgs, no drones, and no AI shells.
+	//	if(robot.scrambledcodes || robot.shell || (robot.module && robot.module.hide_on_manifest))
+	//		continue
+	//	bot[++bot.len] = list("name" = robot.real_name, "rank" = "[robot.modtype] [robot.braintype]", "active" = "Active")
 
 	GLOB.PDA_Manifest = list(
 		list("cat" = "Command", "elems" = heads),
@@ -311,7 +269,7 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 		list("cat" = "Medical", "elems" = med),
 		list("cat" = "Science", "elems" = sci),
 		list("cat" = "Cargo", "elems" = car),
-		list("cat" = "Exploration", "elems" = pla),
+		list("cat" = "Exploration", "elems" = exp),
 		list("cat" = "Civilian", "elems" = civ),
 		list("cat" = "Silicon", "elems" = bot),
 		list("cat" = "Miscellaneous", "elems" = misc)

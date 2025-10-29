@@ -124,7 +124,7 @@
 	. = ..()
 	//? manifest
 	// todo: refactor PDA_Manifest and CrewManifest.js
-	data_core.get_manifest_list()
+	data_core.update_manifest_list()
 	.["manifest"] = GLOB.PDA_Manifest
 
 /obj/machinery/computer/card/ui_data(mob/user, datum/tgui/ui)

@@ -607,7 +607,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 				data["convo_job"] = sanitize(c["job"])
 				break
 	if(mode==41)
-		data_core.get_manifest_list()
+		data_core.update_manifest_list()
 
 
 	if(mode==3)
