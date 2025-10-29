@@ -5,9 +5,7 @@
 /obj/random/maintenance/clean,
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "ac" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -151,9 +149,7 @@
 "aI" = (
 /obj/machinery/door/blast/regular,
 /turf/simulated/wall/r_wall/prepainted/command,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "aK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -464,9 +460,7 @@
 	},
 /obj/structure/closet/crate,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "bV" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -506,9 +500,7 @@
 	},
 /obj/machinery/power/terminal,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "ce" = (
 /obj/item/target/syndicate,
 /obj/item/toy/syndicateballoon{
@@ -516,9 +508,7 @@
 	pixel_x = 10
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "cg" = (
 /obj/machinery/computer/rdconsole/robotics{
 	dir = 8
@@ -726,9 +716,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "cS" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -980,9 +968,7 @@
 /obj/machinery/air_alarm/north_mount,
 /obj/structure/dancepole,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "dT" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -1054,9 +1040,7 @@
 "eg" = (
 /obj/structure/loot_pile/maint/junk,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "eh" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -1292,18 +1276,14 @@
 	color = "#B95A00"
 	},
 /turf/simulated/wall/r_wall/prepainted/command,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "fg" = (
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "fj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 1
@@ -1361,9 +1341,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "fq" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -1574,9 +1552,7 @@
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/reinforced,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "fQ" = (
 /obj/machinery/oxygen_pump/anesthetic{
 	pixel_x = -28
@@ -1614,9 +1590,7 @@
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "fY" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -2285,9 +2259,7 @@
 "hM" = (
 /obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "hN" = (
 /obj/effect/overlay/snow/floor/edges_new,
 /obj/effect/floor_decal/borderfloor{
@@ -2475,9 +2447,7 @@
 	pixel_x = 7
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "iw" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
@@ -2622,9 +2592,7 @@
 	req_access = null
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "iU" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -2678,9 +2646,7 @@
 	req_access = null
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "jd" = (
 /obj/item/paper_bin{
 	pixel_x = 1;
@@ -2718,9 +2684,7 @@
 "jj" = (
 /obj/machinery/air_alarm/east_mount,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "jl" = (
 /obj/structure/bed/chair/sofa/brown/corner{
 	dir = 8
@@ -2736,9 +2700,7 @@
 	},
 /obj/structure/closet/crate/corporate/nanomed,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "jn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -2785,9 +2747,7 @@
 /obj/effect/floor_decal/rust,
 /obj/random/multiple/corp_crate/no_weapons,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "jv" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -2973,9 +2933,7 @@
 /obj/random/maintenance/security,
 /obj/random/maintenance/security,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "jW" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -3108,9 +3066,7 @@
 	},
 /obj/structure/loot_pile/maint/boxfort,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "kx" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
@@ -3118,9 +3074,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "ky" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/spline/fancy/wood,
@@ -3370,9 +3324,7 @@
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "lw" = (
 /obj/structure/closet/crate/biohazard,
 /obj/effect/floor_decal/borderfloorblack{
@@ -3396,9 +3348,7 @@
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "lz" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
@@ -3494,9 +3444,7 @@
 	icon_state = "4-9"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "lL" = (
 /obj/structure/railing,
 /obj/machinery/door/firedoor/glass{
@@ -3516,9 +3464,7 @@
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "lN" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/purple{
@@ -3695,9 +3641,7 @@
 "mj" = (
 /obj/item/stool/padded,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "mm" = (
 /obj/structure/flora/grass/event/yellow_flowers1,
 /obj/structure/flora/grass/event/full_grass3,
@@ -3797,9 +3741,7 @@
 	req_one_access = list(10,24,11)
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "mG" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -4015,9 +3957,7 @@
 	name = "Anomaly Research"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "nn" = (
 /obj/machinery/mineral/output,
 /obj/machinery/conveyor{
@@ -4055,9 +3995,7 @@
 	light_power = 1
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "nv" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -4291,17 +4229,13 @@
 /obj/structure/window/reinforced/tinted,
 /obj/structure/curtain/black,
 /turf/simulated/floor/wood/indoors,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "oc" = (
 /obj/effect/floor_decal/rust/mono_rusted3{
 	color = "#B95A00"
 	},
 /turf/simulated/wall/r_wall/prepainted,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "od" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -4356,9 +4290,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "om" = (
 /obj/machinery/recharge_station,
 /obj/structure/railing{
@@ -4665,9 +4597,7 @@
 	light_power = 1
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "po" = (
 /obj/machinery/sleeper{
 	dir = 8
@@ -4838,9 +4768,7 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "pQ" = (
 /obj/structure/window/reinforced/tinted,
 /obj/structure/window/reinforced/tinted{
@@ -4848,9 +4776,7 @@
 	},
 /obj/structure/curtain/black,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "pR" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/spline/fancy/wood,
@@ -4897,9 +4823,7 @@
 /obj/machinery/door/airlock/maintenance_hatch,
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "qc" = (
 /turf/simulated/wall/r_wall/prepainted/medical,
 /area/medical/strelka/main)
@@ -4993,9 +4917,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "qE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -5198,9 +5120,7 @@
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/reinforced,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "rf" = (
 /obj/structure/closet/secure_closet/guncabinet/robotics,
 /obj/machinery/light/small/old{
@@ -5315,9 +5235,7 @@
 	light_power = 1
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "rp" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -5427,9 +5345,7 @@
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "rF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -5483,9 +5399,7 @@
 /area/quartermaster/strelka/reception)
 "rN" = (
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "rO" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/fey/forest_grass,
@@ -5524,9 +5438,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "rV" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
@@ -5676,9 +5588,7 @@
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "sH" = (
 /obj/structure/window/reinforced,
 /obj/structure/curtain/open/black,
@@ -5835,9 +5745,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "th" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/spline/fancy/wood,
@@ -6139,9 +6047,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "ud" = (
 /turf/simulated/floor/reinforced,
 /area/rnd/strelka/xenobio)
@@ -6167,9 +6073,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "uj" = (
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/rnd/strelka/robotics)
@@ -6211,15 +6115,11 @@
 /area/quartermaster/strelka/cargo/mining)
 "up" = (
 /turf/simulated/wall/r_wall/prepainted/command,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "uq" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /turf/simulated/floor/reinforced,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "us" = (
 /obj/machinery/light/small/old{
 	dir = 1;
@@ -6326,9 +6226,7 @@
 	},
 /obj/structure/loot_pile/maint/boxfort,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "uI" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -6484,9 +6382,7 @@
 	amount = 25
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "vm" = (
 /obj/machinery/mineral/input,
 /obj/machinery/fire_alarm/west_mount,
@@ -6941,9 +6837,7 @@
 	},
 /obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "wV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
@@ -7175,9 +7069,7 @@
 	light_power = 1
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "xE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -7254,9 +7146,7 @@
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "xQ" = (
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/bridge/strelka/rd)
@@ -7385,9 +7275,7 @@
 	light_power = 1
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "yj" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/purple/border,
@@ -7643,9 +7531,7 @@
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/reinforced,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "yP" = (
 /obj/machinery/light/small/old{
 	dir = 1;
@@ -7722,9 +7608,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "zc" = (
 /obj/structure/cable/blue{
 	icon_state = "4-8"
@@ -7754,9 +7638,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "zh" = (
 /turf/simulated/floor/wood/indoors,
 /area/quartermaster/strelka/reception)
@@ -7892,9 +7774,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "zB" = (
 /obj/item/bee_pack,
 /obj/item/honey_frame,
@@ -7937,9 +7817,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "zI" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -8150,9 +8028,7 @@
 	density = 0
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "Aq" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
@@ -8222,9 +8098,7 @@
 "Az" = (
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/reinforced,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "AB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -8242,9 +8116,7 @@
 "AE" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "AF" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -8437,9 +8309,7 @@
 "Bf" = (
 /obj/machinery/light/flamp/flicker,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "Bg" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -8952,9 +8822,7 @@
 "CA" = (
 /obj/machinery/media/jukebox,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "CB" = (
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 10
@@ -9014,9 +8882,7 @@
 	req_one_access = list(10,24,11)
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "CK" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -9301,9 +9167,7 @@
 "DB" = (
 /obj/machinery/air_alarm/south_mount,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "DC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -9408,9 +9272,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "DS" = (
 /obj/machinery/computer/shuttle_control/belter{
 	dir = 4
@@ -9492,9 +9354,7 @@
 "Ee" = (
 /obj/item/stool/padded,
 /turf/simulated/floor/wood/indoors,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "Ef" = (
 /obj/item/modular_computer/console/preset/research{
 	dir = 4
@@ -9556,9 +9416,7 @@
 	pixel_y = 2
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "Eo" = (
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/monodark,
@@ -9663,9 +9521,7 @@
 /area/rnd/strelka/science/main)
 "EG" = (
 /turf/simulated/wall/r_wall/prepainted,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "EH" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/space)
@@ -10378,9 +10234,7 @@
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "GK" = (
 /obj/structure/window/phoronreinforced{
 	dir = 8
@@ -10534,17 +10388,13 @@
 "Hl" = (
 /obj/structure/grille,
 /turf/simulated/floor/reinforced,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "Hm" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/simulated/wall/r_wall/prepainted,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "Hn" = (
 /obj/map_helper/access_helper/airlock/station/science/department,
 /obj/machinery/door/airlock/science,
@@ -10579,9 +10429,7 @@
 /obj/random/maintenance/cargo,
 /obj/random/maintenance/cargo,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "Hs" = (
 /obj/structure/flora/grass/event/bright_flowers1,
 /turf/simulated/floor/outdoors/snow/indoors,
@@ -10621,9 +10469,7 @@
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "Hw" = (
 /obj/structure/closet/firecloset/full,
 /obj/machinery/light/fairy{
@@ -10640,9 +10486,7 @@
 	light_power = 1
 	},
 /turf/simulated/floor/reinforced,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "HA" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/borderfloorblack,
@@ -10669,9 +10513,7 @@
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "HE" = (
 /obj/structure/curtain/open/shower/medical,
 /turf/simulated/floor/tiled/dark,
@@ -10728,9 +10570,7 @@
 "HR" = (
 /obj/structure/event/prop/red_barrel,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "HY" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
@@ -10901,9 +10741,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "Iv" = (
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/structure/closet/secure_closet/miner,
@@ -10949,9 +10787,7 @@
 	req_access = null
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "IF" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
@@ -11098,9 +10934,7 @@
 "IY" = (
 /obj/machinery/door/blast/regular,
 /turf/simulated/wall/r_wall/prepainted,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "IZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 1
@@ -11230,9 +11064,7 @@
 /obj/structure/catwalk,
 /obj/effect/floor_decal/industrial/warning/dust,
 /turf/simulated/floor/reinforced,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "Jw" = (
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_x = -30
@@ -11381,9 +11213,7 @@
 	desc = "The ruins of a self-destroyed Ripley... Weirdly enough, a mechanical laugh resonates."
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "Ke" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -11583,9 +11413,7 @@
 "KK" = (
 /obj/structure/loot_pile/maint/boxfort,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "KO" = (
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 9
@@ -11793,9 +11621,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "Ls" = (
 /obj/machinery/door/blast/strelka/blockade,
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
@@ -11947,9 +11773,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "Mc" = (
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -12019,9 +11843,7 @@
 /area/bridge/strelka/rd)
 "Mk" = (
 /turf/simulated/floor/wood/indoors,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "Ml" = (
 /obj/structure/closet/secure_closet/explorer,
 /obj/structure/window/phoronreinforced{
@@ -12091,9 +11913,7 @@
 	light_power = 1
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "My" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -12145,9 +11965,7 @@
 /obj/random/maintenance/cargo,
 /obj/random/maintenance/cargo,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "MN" = (
 /obj/machinery/light/small/old{
 	dir = 4;
@@ -12513,9 +12331,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "NU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -12601,9 +12417,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "Oi" = (
 /obj/structure/bed/roller,
 /obj/effect/floor_decal/steeldecal/steel_decals10,
@@ -12678,9 +12492,7 @@
 	dir = 4
 	},
 /turf/simulated/open,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "OA" = (
 /obj/structure/cable{
 	icon_state = "2-4"
@@ -12700,9 +12512,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "OB" = (
 /obj/structure/bed/chair/office/light{
 	dir = 1
@@ -12741,9 +12551,7 @@
 "OM" = (
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "ON" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner{
 	dir = 4
@@ -12758,9 +12566,7 @@
 	color = "#B95A00"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "OQ" = (
 /turf/simulated/wall/wood/hardwood,
 /area/quartermaster/strelka/reception)
@@ -13196,9 +13002,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "Qk" = (
 /obj/machinery/vending/loadout/accessory,
 /obj/structure/sign/christmas/lights,
@@ -13440,9 +13244,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "Ri" = (
 /obj/structure/curtain/open/shower/medical,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -13541,9 +13343,7 @@
 /obj/machinery/door/airlock/maintenance_hatch,
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "Rz" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -13793,9 +13593,7 @@
 "So" = (
 /obj/machinery/camera/network/security,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "Sq" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/spline/fancy/wood,
@@ -13882,9 +13680,7 @@
 	},
 /obj/item/flame/candle/everburn/black,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "SF" = (
 /obj/machinery/porta_turret/crescent{
 	density = 1;
@@ -13952,9 +13748,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "SL" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
@@ -14212,9 +14006,7 @@
 /obj/random/maintenance/research,
 /obj/random/maintenance/research,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "Tv" = (
 /obj/structure/cable/orange{
 	icon_state = "0-8"
@@ -14601,9 +14393,7 @@
 	},
 /obj/random/multiple/corp_crate/no_weapons,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "UP" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /turf/simulated/wall/r_wall/prepainted,
@@ -14896,9 +14686,7 @@
 /obj/machinery/disposal,
 /obj/effect/floor_decal/industrial/warning/full,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "VJ" = (
 /obj/structure/table/carbon/reinforced,
 /obj/spawner/window/low_wall/reinforced/firelocks,
@@ -15022,9 +14810,7 @@
 	},
 /obj/machinery/air_alarm/west_mount,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "Wb" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -15125,15 +14911,11 @@
 /obj/structure/window/reinforced/tinted,
 /obj/structure/curtain/black,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "Wm" = (
 /obj/random/multiple/corp_crate/no_weapons,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "Wn" = (
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "Substation - Deck 3 Medical";
@@ -15293,9 +15075,7 @@
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "WG" = (
 /obj/effect/floor_decal/borderfloorblack,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -15411,9 +15191,7 @@
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/structure/lattice,
 /turf/simulated/open,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "Xb" = (
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/monodark,
@@ -15580,9 +15358,7 @@
 	light_power = 1
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "XC" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/purple{
@@ -15634,9 +15410,7 @@
 /area/shuttle/belter)
 "XL" = (
 /turf/simulated/floor/reinforced,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "XO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -15764,26 +15538,20 @@
 	},
 /obj/structure/loot_pile/maint/junk,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "Yp" = (
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "Yq" = (
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_x = 30
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "Yr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -15905,9 +15673,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "YU" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/rnd/strelka/robotics)
@@ -16043,9 +15809,7 @@
 "Zr" = (
 /obj/item/clothing/under/syndicate,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "Zw" = (
 /obj/structure/bed/chair/sofa/brown/left{
 	dir = 1
@@ -16097,9 +15861,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/strelka/cargo{
-	name = "\improper Deck 3 Cargo Maintenance"
-	})
+/area/maintenance/strelka/cargo)
 "ZF" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/door/blast/strelka/blockade,

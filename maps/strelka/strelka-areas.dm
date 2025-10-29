@@ -476,7 +476,7 @@
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/maintenance/strelka/cargo
-	name = "\improper Deck 3 Medical Maintenance"
+	name = "\improper Deck 3 Cargo Maintenance"
 	icon_state = "maintcentral"
 	sound_env = TUNNEL_ENCLOSED
 	ambience = AMBIENCE_MAINTENANCE
