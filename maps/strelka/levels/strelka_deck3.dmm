@@ -7216,12 +7216,6 @@
 /obj/structure/cable/blue,
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/medical)
-"xY" = (
-/obj/structure/flora/tree/fey/small_tree/tree6{
-	pixel_y = -35
-	},
-/turf/simulated/floor/outdoors/snow/indoors,
-/area/hallway/strelka/deck3)
 "xZ" = (
 /obj/effect/floor_decal/rust/mono_rusted3{
 	color = "#B95A00"
@@ -11689,6 +11683,16 @@
 "LO" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/bridge/strelka/blueshield/room)
+"LR" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/event/prop/tank{
+	name = "vat of fake snow";
+	desc = "This container is filled with fake snow !"
+	},
+/turf/simulated/floor/outdoors/snow/indoors,
+/area/hallway/strelka/deck3)
 "LS" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 5
@@ -12228,6 +12232,14 @@
 	},
 /turf/simulated/floor/reinforced/lythios43c,
 /area/quartermaster/strelka/cargo/hangar)
+"Nz" = (
+/obj/structure/railing,
+/obj/structure/event/prop/tank{
+	name = "vat of fake snow";
+	desc = "This container is filled with fake snow !"
+	},
+/turf/simulated/floor/outdoors/snow/indoors,
+/area/hallway/strelka/deck3)
 "NA" = (
 /obj/effect/overlay/snow/floor/edges_new{
 	dir = 1
@@ -32009,11 +32021,11 @@ UE
 cu
 Wt
 LI
-nC
+Nz
 Na
 yI
 AD
-xj
+LR
 yN
 Wt
 ia
@@ -32790,8 +32802,8 @@ Rk
 CQ
 gH
 fu
-uZ
 KP
+uZ
 Ur
 Nn
 Xx
@@ -33372,7 +33384,7 @@ hb
 CQ
 Yt
 kC
-xY
+fu
 uZ
 bb
 XH
@@ -36088,7 +36100,7 @@ xh
 CQ
 Vu
 kM
-uZ
+KP
 ng
 lG
 AF
