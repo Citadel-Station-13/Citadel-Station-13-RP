@@ -123,7 +123,8 @@
 	button_icon_state = "mech_zoom_[chassis.zoom ? "on" : "off"]"
 	update_buttons()
 
-/datum/action/mecha/mech_cycle_equip	//I'll be honest, i don't understand this part, buuuuuut it works!
+#warn oh my god make this a base fucking vehicle thing and refactor this lol
+/datum/action/mecha/mech_cycle_equip
 	name = "Cycle Equipment"
 	button_icon_state = "mech_cycle_equip_off"
 
@@ -132,41 +133,24 @@
 	if(.)
 		return
 
-	var/obj/vehicle/sealed/mecha/chassis = target
-
-	var/list/available_equipment = list()
-	available_equipment = chassis.equipment
-
-
-	if(available_equipment.len == 0)
-		chassis.occupant_message("No equipment available.")
+	var/obj/item/vehicle_module/maybe_switched_to = target.cycle_active_click_modules()
+	if(maybe_switched_to == FALSE)
+		actor?.chat_feedback(
+			SPAN_WARNING("No equipment available."),
+			target = target,
+			button_icon_state = "mech_cycle_equip_off"
+		)
 		return
-	if(!chassis.selected)
-		chassis.selected = available_equipment[1]
-		chassis.occupant_message("You select [chassis.selected]")
-		send_byjax(chassis.occupant_legacy,"exosuit.browser","eq_list",chassis.get_equipment_list())
-		button_icon_state = "mech_cycle_equip_on"
-		update_buttons()
-		return
-	var/number = 0
-	for(var/A in available_equipment)
-		number++
-		if(A == chassis.selected)
-			if(available_equipment.len == number)
-				chassis.selected = null
-				chassis.occupant_message("You switch to no equipment")
-				button_icon_state = "mech_cycle_equip_off"
-			else
-				chassis.selected = available_equipment[number+1]
-				chassis.occupant_message("You switch to [chassis.selected]")
-				button_icon_state = "mech_cycle_equip_on"
-			send_byjax(chassis.occupant_legacy,"exosuit.browser","eq_list",chassis.get_equipment_list())
-			update_buttons()
+	actor?.chat_feedback(
+		SPAN_NOTICE("You [maybe_switched_to ? "select [maybe_switched_to]" : "deselect the active module"]."),
+		target = target,
+	)
+	button_icon_state = maybe_switched_to ? "mech_cycle_equip_on" : "mech_cycle_equip_off"
+	update_buttons()
 
 /datum/action/mecha/mech_switch_damtype
 	name = "Reconfigure arm microtool arrays"
 	button_icon_state = "mech_damtype_brute"
-
 
 /datum/action/mecha/mech_switch_damtype/invoke_target(obj/vehicle/sealed/mecha/target, datum/event_args/actor/actor)
 	. = ..()

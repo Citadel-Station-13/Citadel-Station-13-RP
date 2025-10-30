@@ -74,6 +74,10 @@
 	/// * relative to 1
 	var/comp_hull_relative_thickness = 1
 
+	//* Faults *//
+	/// Fault path to stacks
+	var/list/mecha_fault_stacks
+
 	//* Lights *//
 	/// Floodlights are on
 	var/floodlight_active = FALSE
@@ -163,9 +167,9 @@
 	return TRUE
 
 /obj/vehicle/sealed/mecha/proc/set_floodlights(active)
-	if(active == src.floodlights_active)
+	if(active == src.floodlight_active)
 		return
-	src.floodlights_active = active
+	src.floodlight_active = active
 	if(active)
 		set_light(floodlight_range, floodlight_power, floodlight_color)
 	else

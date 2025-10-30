@@ -78,6 +78,9 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 
+/obj/item/vehicle_component/proc/can_be_removed()
+	return !intrinsic
+
 /**
  * Supports clicking?
  */

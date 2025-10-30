@@ -82,4 +82,13 @@
 	var/obj/vehicle/sealed/mecha/casted_vehicle = vehicle
 	push_ui_data(list("lights" = casted_vehicle.floodlight_active))
 
+/datum/vehicle_ui_controller/mecha/proc/encode_ui_faults()
+
+/datum/vehicle_ui_controller/mecha/proc/queue_update_ui_faults()
+	// TODO: queue
+	update_ui_faults()
+
+/datum/vehicle_ui_controller/mecha/proc/update_ui_faults()
+
+
 #warn impl

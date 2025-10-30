@@ -114,9 +114,6 @@
 	/// Can you switch damage type? It is mostly for the Phazon and its children.
 	var/switch_dmg_type_possible = 0
 
-	// Can this exosuit innately cloak?
-	var/cloak_possible = FALSE
-
 //All of those are for the HUD buttons in the top left. See Grant and Remove procs in mecha_actions.
 
 	var/datum/action/mecha/mech_toggle_internals/internals_action
@@ -129,7 +126,6 @@
 	var/datum/action/mecha/mech_cycle_equip/cycle_action
 	var/datum/action/mecha/mech_switch_damtype/switch_damtype_action
 	var/datum/action/mecha/mech_toggle_phasing/phasing_action
-	var/datum/action/mecha/mech_toggle_cloaking/cloak_action
 
 	//* Legacy *//
 	/// the first controller in us
@@ -146,7 +142,6 @@
 	cycle_action = new(src)
 	switch_damtype_action = new(src)
 	phasing_action = new(src)
-	cloak_action = new(src)
 	. = ..()
 	update_transform()
 
@@ -177,7 +172,7 @@
 	if(wreckage)
 		var/obj/effect/decal/mecha_wreckage/WR = new wreckage(loc)
 		for(var/obj/item/vehicle_module/lazy/legacy/mod as anything in modules)
-			if(!mod.salvageable)
+			if(!mod.can_be_removed())
 				continue
 			if(!prob(30))
 				continue
@@ -186,6 +181,8 @@
 			mod.equip_ready = TRUE
 
 		for(var/obj/item/vehicle_component/comp as anything in components)
+			if(!comp.can_be_removed())
+				continue
 			uninstall_component(comp, null, TRUE, TRUE, WR)
 			comp.damage_part(rand(10, 20))
 			comp.detach()

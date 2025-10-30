@@ -48,3 +48,21 @@
  */
 /obj/vehicle/proc/query_repair_droid_modules_immutable() as /list
 	return modules
+
+/**
+ * @return list of modules
+ */
+/obj/vehicle/proc/query_active_click_modules() as /list
+	#warn impl
+
+/**
+ * @return TRUE for success, FALSE otherwise
+ */
+/obj/vehicle/proc/set_active_click_module(obj/item/vehicle_module/module)
+	#warn impl
+
+/**
+ * @return new module or null or FALSE if none available
+ */
+/obj/vehicle/proc/cycle_active_click_modules(allow_deselect = TRUE) as /obj/item/vehicle_module
+	#warn impl

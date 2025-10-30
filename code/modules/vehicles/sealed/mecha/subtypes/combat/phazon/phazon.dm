@@ -33,10 +33,12 @@
 		VEHICLE_MODULE_SLOT_SPECIAL = 3,
 		VEHICLE_MODULE_SLOT_UTILITY = 6,
 	)
+	modules_intrinsic = list(
+		/obj/item/vehicle_module/lazy/legacy/cloak,
+	)
 
 	encumbrance_gap = 2
 
-	cloak_possible = TRUE
 	phasing_possible = TRUE
 	switch_dmg_type_possible = TRUE
 
