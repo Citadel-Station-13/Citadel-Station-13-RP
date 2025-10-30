@@ -101,25 +101,25 @@
 			silicons[pai.name] = "pAI"
 
 	//Return all of our lists.
-	var/list/manifest_data = list(
-		"Command" = command,
-		"Security" = security,
-		"Engineering" = engineering,
-		"Medical" = medical,
-		"Science" = science,
-		"Cargo" = cargo,
-		"Exploration" = exploration,
-		"Civilian" = civilian,
-		"Silicons" = silicons,
-		"Misc" = misc,
-		"Off Duty" = offduty,
-	)
+	var/list/manifest_data = new()
+	if(command.len) manifest_data["Command"] = command
+	if(security.len) manifest_data["Security"] = security
+	if(engineering.len) manifest_data["Engineering"] = engineering
+	if(medical.len) manifest_data["Medical"] = medical
+	if(science.len) manifest_data["Science"] = science
+	if(cargo.len) manifest_data["Cargo"] = cargo
+	if(exploration.len) manifest_data["Exploration"] = exploration
+	if(civilian.len) manifest_data["Civilian"] = civilian
+	if(silicons.len) manifest_data["Silicons"] = silicons
+	if(misc.len) manifest_data["Misc"] = misc
+	if(offduty.len) manifest_data["Off Duty"] = offduty
 	if (OOC == TRUE)
-		manifest_data["Trade"] = trade
-		manifest_data["Non-Crew"] = offmap
+		if(trade.len) manifest_data["Trade"] = trade
+		if(offmap.len) manifest_data["Non-Crew"] = offmap
 	if (activity == TRUE)
-		manifest_data["IsActive"] = isactive
+		if(isactive.len) manifest_data["IsActive"] = isactive
 
+	return manifest_data
 
 
 /datum/datacore/proc/get_html_manifest(monochrome = FALSE, OOC = FALSE)
@@ -137,67 +137,66 @@
 	"}
 	var/even = FALSE
 
-	//Acquire the raw data, we only need player activity if we are also OOC.
-	var/list/raw_data = get_raw_manifest_data(OOC, OOC)
+	var/list/raw_data = get_raw_manifest_data(OOC, TRUE)
 
-	if(raw_data["Command"])
+	if(raw_data.Find("Command"))
 		dat += "<tr><th colspan=3>Heads</th></tr>"
 		for(name in raw_data["Command"])
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[raw_data["Command"][name]]</td><td>[raw_data["IsActive"][name]]</td></tr>"
 			even = !even
-	if(raw_data["Security"])
+	if(raw_data.Find("Security"))
 		dat += "<tr><th colspan=3>Security</th></tr>"
 		for(name in raw_data["Security"])
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[raw_data["Security"][name]]</td><td>[raw_data["IsActive"][name]]</td></tr>"
 			even = !even
-	if(raw_data["Engineering"])
+	if(raw_data.Find("Engineering"))
 		dat += "<tr><th colspan=3>Engineering</th></tr>"
 		for(name in raw_data["Engineering"])
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[raw_data["Engineering"][name]]</td><td>[raw_data["IsActive"][name]]</td></tr>"
 			even = !even
-	if(raw_data["Medical"])
+	if(raw_data.Find("Medical"))
 		dat += "<tr><th colspan=3>Medical</th></tr>"
 		for(name in raw_data["Medical"])
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[raw_data["Medical"][name]]</td><td>[raw_data["IsActive"][name]]</td></tr>"
 			even = !even
-	if(raw_data["Science"])
+	if(raw_data.Find("Science"))
 		dat += "<tr><th colspan=3>Science</th></tr>"
 		for(name in raw_data["Science"])
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[raw_data["Science"][name]]</td><td>[raw_data["IsActive"][name]]</td></tr>"
 			even = !even
-	if(raw_data["Cargo"])
+	if(raw_data.Find("Cargo"))
 		dat += "<tr><th colspan=3>Cargo</th></tr>"
 		for(name in raw_data["Cargo"])
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[raw_data["Cargo"][name]]</td><td>[raw_data["IsActive"][name]]</td></tr>"
 			even = !even
-	if(raw_data["Exploration"])
+	if(raw_data.Find("Exploration"))
 		dat += "<tr><th colspan=3>Exploration</th></tr>"
 		for(name in raw_data["Exploration"])
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[raw_data["Exploration"][name]]</td><td>[raw_data["IsActive"][name]]</td></tr>"
 			even = !even
-	if(raw_data["Civilian"])
+	if(raw_data.Find("Civilian"))
 		dat += "<tr><th colspan=3>Civilian</th></tr>"
 		for(name in raw_data["Civilian"])
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[raw_data["Civilian"][name]]</td><td>[raw_data["IsActive"][name]]</td></tr>"
 			even = !even
-	if(raw_data["Silicons"])
+	if(raw_data.Find("Silicons"))
 		dat += "<tr><th colspan=3>Silicon</th></tr>"
 		for(name in raw_data["Silicons"])
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[raw_data["Silicons"][name]]</td><td>[raw_data["IsActive"][name]]</td></tr>"
 			even = !even
 	// offmap spawners
-	if(raw_data["Non-Crew"])
+	if(raw_data.Find("Non-Crew"))
 		dat += "<tr><th colspan=3>Offmap Spawns</th></tr>"
 		for(name in raw_data["Non-Crew"])
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[raw_data["Non-Crew"][name]]</td><td>[raw_data["IsActive"][name]]</td></tr>"
 			even = !even
-	if(raw_data["Trade"])
+	if(raw_data.Find("Trade"))
 		dat += "<tr><th colspan=3>Traders</th></tr>"
 		for(name in raw_data["Trade"])
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[raw_data["Trade"][name]]</td><td>[raw_data["IsActive"][name]]</td></tr>"
 			even = !even
 	// misc guys
-	if(raw_data["Misc"])
+	if(raw_data.Find("Misc"))
 		dat += "<tr><th colspan=3>Miscellaneous</th></tr>"
 		for(name in raw_data["Misc"])
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[raw_data["Misc"][name]]</td><td>[raw_data["IsActive"][name]]</td></tr>"
@@ -235,25 +234,25 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 
 	//Reshuffle the raw_data into the pda_manifest format
 	for(name in raw_data["Command"])
-		heads += list("name" = name, "rank" = raw_data["Command"][name], "active" = raw_data["IsActive"][name])
+		heads[heads.len++] = list("name" = name, "rank" = raw_data["Command"][name], "active" = raw_data["IsActive"][name])
 	for(name in raw_data["Security"])
-		sec += list("name" = name, "rank" = raw_data["Security"][name], "active" = raw_data["IsActive"][name])
+		sec[sec.len++] = list("name" = name, "rank" = raw_data["Security"][name], "active" = raw_data["IsActive"][name])
 	for(name in raw_data["Engineering"])
-		eng += list("name" = name, "rank" = raw_data["Engineering"][name], "active" = raw_data["IsActive"][name])
+		eng[eng.len++] = list("name" = name, "rank" = raw_data["Engineering"][name], "active" = raw_data["IsActive"][name])
 	for(name in raw_data["Medical"])
-		med += list("name" = name, "rank" = raw_data["Medical"][name], "active" = raw_data["IsActive"][name])
+		med[med.len++] = list("name" = name, "rank" = raw_data["Medical"][name], "active" = raw_data["IsActive"][name])
 	for(name in raw_data["Science"])
-		sci += list("name" = name, "rank" = raw_data["Science"][name], "active" = raw_data["IsActive"][name])
+		sci[sci.len++] = list("name" = name, "rank" = raw_data["Science"][name], "active" = raw_data["IsActive"][name])
 	for(name in raw_data["Cargo"])
-		car += list("name" = name, "rank" = raw_data["Cargo"][name], "active" = raw_data["IsActive"][name])
+		car[car.len++] = list("name" = name, "rank" = raw_data["Cargo"][name], "active" = raw_data["IsActive"][name])
 	for(name in raw_data["Exploration"])
-		exp += list("name" = name, "rank" = raw_data["Exploration"][name], "active" = raw_data["IsActive"][name])
+		exp[exp.len++] = list("name" = name, "rank" = raw_data["Exploration"][name], "active" = raw_data["IsActive"][name])
 	for(name in raw_data["Civilian"])
-		civ += list("name" = name, "rank" = raw_data["Civilian"][name], "active" = raw_data["IsActive"][name])
+		civ[civ.len++] = list("name" = name, "rank" = raw_data["Civilian"][name], "active" = raw_data["IsActive"][name])
 	for(name in raw_data["Silicons"])
-		bot += list("name" = name, "rank" = raw_data["Silicons"][name], "active" = raw_data["IsActive"][name])
+		bot[bot.len++] = list("name" = name, "rank" = raw_data["Silicons"][name], "active" = raw_data["IsActive"][name])
 	for(name in raw_data["Misc"])
-		misc += list("name" = name, "rank" = raw_data["Misc"][name], "active" = raw_data["IsActive"][name])
+		misc[misc.len++] = list("name" = name, "rank" = raw_data["Misc"][name], "active" = raw_data["IsActive"][name])
 
 	//! This old code pulls the name of the cyborg modules. The new code doesnt. May need to figure out a better system over all for this.
 	//for(var/mob/living/silicon/robot/robot in GLOB.mob_list)
