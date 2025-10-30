@@ -2234,6 +2234,7 @@
 #include "code\game\turfs\turf_flick_animations.dm"
 #include "code\game\turfs\turf_movement.dm"
 #include "code\game\turfs\unsimulated.dm"
+#include "code\game\turfs\misc\auto_marker.dm"
 #include "code\game\turfs\simulated\fake_sky.dm"
 #include "code\game\turfs\simulated\lava.dm"
 #include "code\game\turfs\simulated\shuttle.dm"
