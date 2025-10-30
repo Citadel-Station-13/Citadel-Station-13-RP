@@ -6,7 +6,7 @@
  */
 /turf/auto_marker
 	name = "unknown auto marker"
-	icon = 'icons/turf/auto_marker'
+	icon = 'icons/turf/auto_marker.dmi'
 	abstract_type = /turf/auto_marker
 
 // TODO: implement
