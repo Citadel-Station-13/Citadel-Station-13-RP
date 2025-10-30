@@ -33,7 +33,6 @@
 	if(href_list["toggle"])
 		set_ready_state(!equip_ready)
 		occupant_message("[src] [equip_ready?"dea":"a"]ctivated.")
-		log_message("[equip_ready?"Dea":"A"]ctivated.")
 		return
 	if(href_list["cut"])
 		if(cable && cable.amount)
@@ -71,7 +70,6 @@
 	if(!cable || cable.amount<1)
 		set_ready_state(1)
 		occupant_message("Cable depleted, [src] deactivated.")
-		log_message("Cable depleted, [src] deactivated.")
 		return
 	if(cable.amount < amount)
 		occupant_message("No enough cable to finish the task.")

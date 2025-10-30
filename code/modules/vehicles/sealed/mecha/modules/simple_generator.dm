@@ -51,10 +51,8 @@
 	if(href_list["toggle"])
 		if(pr_mech_generator.toggle())
 			set_ready_state(0)
-			log_message("Activated.")
 		else
 			set_ready_state(1)
-			log_message("Deactivated.")
 
 /obj/item/vehicle_module/lazy/legacy/simple_generator/get_equip_info()
 	var/output = ..()
@@ -122,14 +120,12 @@
 		return 0
 	if(EG.fuel.amount<=0)
 		stop()
-		EG.log_message("Deactivated - no fuel.")
 		EG.set_ready_state(1)
 		return 0
 	var/cur_charge = EG.chassis.get_charge()
 	if(isnull(cur_charge))
 		EG.set_ready_state(1)
 		EG.occupant_message("No powercell detected.")
-		EG.log_message("Deactivated.")
 		stop()
 		return 0
 	var/use_fuel = EG.fuel_per_cycle_idle

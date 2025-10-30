@@ -19,10 +19,6 @@
 			rearm()
 			return TRUE
 
-
-/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/get_equip_info()
-	return "[..()]\[[src.projectiles]\][(src.projectiles < initial(src.projectiles))?" - <a href='?src=\ref[src];rearm=1'>Rearm</a>":null]"
-
 /obj/item/vehicle_module/lazy/legacy/weapon/ballistic/proc/rearm()
 	if(projectiles < initial(projectiles))
 		var/projectiles_to_add = initial(projectiles) - projectiles

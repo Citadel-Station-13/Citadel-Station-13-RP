@@ -118,13 +118,11 @@
 				if(W.material_reinf)
 					occupant_message("<span class='warning'>[target] is too durable to drill through.</span>")
 				else
-					log_message("Drilled through [target]")
 					LEGACY_EX_ACT(target, 2, null)
 			else if(istype(target, /turf/simulated/mineral))
 				for(var/turf/simulated/mineral/M in range(chassis,1))
 					if(get_dir(chassis,M)&chassis.dir)
 						M.GetDrilled()
-				log_message("Drilled through [target]")
 				var/obj/item/vehicle_module/lazy/legacy/tool/micro/orescoop/ore_box = (locate(/obj/item/vehicle_module/lazy/legacy/tool/micro/orescoop) in chassis.equipment)
 				if(ore_box)
 					for(var/obj/item/stack/ore/ore in range(chassis,1))
@@ -135,7 +133,6 @@
 							else
 								ore.forceMove(ore_box)
 			else if(target.loc == C)
-				log_message("Drilled through [target]")
 				LEGACY_EX_ACT(target, 2, null)
 	return 1
 

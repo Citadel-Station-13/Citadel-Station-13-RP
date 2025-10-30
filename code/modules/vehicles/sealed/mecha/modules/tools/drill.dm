@@ -25,17 +25,14 @@
 				return
 
 			else if((W.material_reinf && advanced) || do_after_cooldown(target))//R wall with good drill
-				log_message("Drilled through [target]")
 				LEGACY_EX_ACT(target, 3, null)
 			else
-				log_message("Drilled through [target]")
 				LEGACY_EX_ACT(target, 2, null)
 
 		else if(istype(target, /turf/simulated/mineral))
 			for(var/turf/simulated/mineral/M in range(chassis,1))
 				if(get_dir(chassis,M)&chassis.dir)
 					M.GetDrilled()
-			log_message("Drilled through [target]")
 			if(locate(/obj/item/vehicle_module/lazy/legacy/tool/hydraulic_clamp) in chassis.modules)
 				var/obj/structure/ore_box/ore_box = locate(/obj/structure/ore_box) in chassis.cargo_held
 				if(ore_box)
@@ -46,7 +43,6 @@
 			drill_mob(target, chassis.occupant_legacy)
 			return 1
 		else if(target.loc == C)
-			log_message("Drilled through [target]")
 			LEGACY_EX_ACT(target, 2, null)
 	return 1
 

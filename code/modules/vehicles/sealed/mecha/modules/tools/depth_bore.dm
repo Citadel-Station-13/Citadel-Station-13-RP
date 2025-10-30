@@ -21,16 +21,13 @@
 			if(W.material_reinf)
 				occupant_message("<span class='warning'>[target] is too durable to bore through.</span>")
 			else
-				log_message("Bored through [target]")
 				LEGACY_EX_ACT(target, 2, null)
 		else if(istype(target, /turf/simulated/mineral))
 			var/turf/simulated/mineral/M = target
 			if(!M.density)
 				LEGACY_EX_ACT(M, 2, null)
-				log_message("Bored into [target]")
 			else
 				M.GetDrilled()
-				log_message("Bored through [target]")
 			if(locate(/obj/item/vehicle_module/lazy/legacy/tool/hydraulic_clamp) in chassis.modules)
 				var/obj/structure/ore_box/ore_box = locate(/obj/structure/ore_box) in chassis.cargo_held
 				if(ore_box)
@@ -38,6 +35,5 @@
 						if(get_dir(chassis,ore)&chassis.dir)
 							ore.forceMove(ore_box)
 		else if(target.loc == C)
-			log_message("Drilled through [target]")
 			LEGACY_EX_ACT(target, 2, null)
 	return 1

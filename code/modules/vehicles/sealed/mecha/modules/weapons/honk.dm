@@ -30,7 +30,6 @@
 		M.afflict_paralyze(20 * 3)
 		M.afflict_stun(20 * 5)
 	chassis.use_power(energy_drain)
-	log_message("Used a sound emission device.")
 	do_after_cooldown()
 	return
 

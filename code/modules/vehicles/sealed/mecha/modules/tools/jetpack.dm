@@ -34,14 +34,12 @@
 	chassis.proc_res["dyndomove"] = src
 	ion_trail.start()
 	occupant_message("Activated")
-	log_message("Activated")
 
 /obj/item/vehicle_module/lazy/legacy/tool/jetpack/proc/turn_off()
 	set_ready_state(1)
 	chassis.proc_res["dyndomove"] = null
 	ion_trail.stop()
 	occupant_message("Deactivated")
-	log_message("Deactivated")
 
 /obj/item/vehicle_module/lazy/legacy/tool/jetpack/proc/dyndomove(direction)
 	if(!action_checks())

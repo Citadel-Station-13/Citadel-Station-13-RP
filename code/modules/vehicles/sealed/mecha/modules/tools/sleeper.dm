@@ -59,7 +59,6 @@
 		set_ready_state(0)
 		occupant_message("<font color='blue'>[target] successfully loaded into [src]. Life support functions engaged.</font>")
 		chassis.visible_message("[chassis] loads [target] into [src].")
-		log_message("[target] loaded. Life support functions engaged.")
 
 /obj/item/vehicle_module/lazy/legacy/tool/sleeper/proc/go_out()
 	if(!occupant_legacy)
@@ -67,7 +66,6 @@
 	occupant_legacy.forceMove(get_turf(src))
 	occupant_legacy.update_perspective()
 	occupant_message("[occupant_legacy] ejected. Life support functions disabled.")
-	log_message("[occupant_legacy] ejected. Life support functions disabled.")
 	occupant_legacy.Stasis(0)
 	occupant_legacy = null
 	set_ready_state(1)
@@ -77,15 +75,6 @@
 		occupant_message("Unable to detach [src] - equipment occupied.")
 		return
 	return ..()
-
-/obj/item/vehicle_module/lazy/legacy/tool/sleeper/get_equip_info()
-	var/output = ..()
-	if(output)
-		var/temp = ""
-		if(occupant_legacy)
-			temp = "<br />\[Occupant: [occupant_legacy] (Health: [occupant_legacy.health]%)\]<br /><a href='?src=\ref[src];view_stats=1'>View stats</a>|<a href='?src=\ref[src];eject=1'>Eject</a>"
-		return "[output] [temp]"
-	return
 
 /obj/item/vehicle_module/lazy/legacy/tool/sleeper/Topic(href,href_list)
 	if(..())

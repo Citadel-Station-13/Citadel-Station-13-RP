@@ -356,6 +356,7 @@
 /obj/vehicle/sealed/mecha/proc/range_action(atom/target)
 	return
 
+#warn nuke this
 /obj/vehicle/sealed/mecha/relaymove(mob/user,direction)
 	if(user != src.occupant_legacy) //While not "realistic", this piece is player friendly.
 		if(istype(user,/mob/living/carbon/brain))
@@ -1356,10 +1357,8 @@
 		if(T == src.loc)
 			src.clearInternalDamage(MECHA_INT_CONTROL_LOST)
 			src.occupant_message("<font color='blue'>Recalibration successful.</font>")
-			src.log_message("Recalibration of coordination system finished with 0 errors.")
 		else
 			src.occupant_message("<font color='red'>Recalibration failed.</font>")
-			src.log_message("Recalibration of coordination system failed with 1 error.",1)
 	if(href_list["drop_from_cargo"])
 		var/obj/O = locate(href_list["drop_from_cargo"])
 		if(O && (O in src.cargo))
@@ -1369,7 +1368,6 @@
 			var/turf/T = get_turf(O)
 			if(T)
 				T.Entered(O)
-			src.log_message("Unloaded [O]. Cargo compartment capacity: [cargo_capacity - src.cargo.len]")
 
 ///////////////////////
 ///// Power stuff /////

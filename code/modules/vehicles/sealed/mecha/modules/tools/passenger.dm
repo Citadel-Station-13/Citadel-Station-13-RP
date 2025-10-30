@@ -32,7 +32,6 @@
 				user.update_perspective()
 			add_verb(user, /mob/proc/verb_eject_mech_passenger)
 			occupant_legacy = user
-			log_message("[user] boarded.")
 			occupant_message("[user] boarded.")
 		else if(src.occupant_legacy != user)
 			to_chat(user, "<span class='warning'>[src.occupant_legacy] was faster. Try harder next time, loser.</span>")

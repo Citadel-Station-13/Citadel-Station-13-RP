@@ -190,7 +190,19 @@
 
 //* Logging *//
 
-#warn make logging procs
+/**
+ * * Anything fed in here is sent to game logs.
+ * * Includes ckeys.
+ */
+/obj/item/vehicle_module/proc/vehicle_log_for_admins(datum/event_args/actor/actor, action, list/params)
+	log_game("VEHICLE-MODULE: [src] ([ref(src)]) ([type])[vehicle ? " @ [vehicle] ([ref(vehicle)])" : ""] - [actor.actor_log_string()]: [action][params ? " - [json_encode(params)]" : ""]")
+
+/**
+ * * Eventually used to allow things like mechs to maintain internal logs.
+ * * Anything fed in here is IC. Don't leak ckeys.
+ */
+/obj/item/vehicle_module/proc/vehicle_log_for_fluff_ic()
+	CRASH("not implemented")
 
 //* Usage - World *//
 

@@ -217,6 +217,22 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 // todo: remove_occupant_hud(datum/atom_hud/hud_like)
 // todo: resolve_occupant_huds() - make sure list is instances, not ids; needed to dedupe and resolve for add/remove
 
+//* Logging *//
+
+/**
+ * * Anything fed in here is sent to game logs.
+ * * Includes ckeys.
+ */
+/obj/vehicle/proc/vehicle_log_for_admins(datum/event_args/actor/actor, action, list/params)
+	log_game("VEHICLE: [src] ([ref(src)]) ([type]) - [actor.actor_log_string()]: [action][params ? " - [json_encode(params)]" : ""]")
+
+/**
+ * * Eventually used to allow things like mechs to maintain internal logs.
+ * * Anything fed in here is IC. Don't leak ckeys.
+ */
+/obj/vehicle/proc/vehicle_log_for_fluff_ic()
+	CRASH("not implemented")
+
 //* Control Flags *//
 
 /**
