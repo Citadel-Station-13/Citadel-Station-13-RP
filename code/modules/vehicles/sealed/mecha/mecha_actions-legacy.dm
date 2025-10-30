@@ -20,9 +20,7 @@
 		stats_action,
 		strafing_action,
 		overload_possible && overload_action,
-		smoke_possible && smoke_action,
 		zoom_possible && zoom_action,
-		thrusters_possible && thrusters_action,
 		phasing_possible && phasing_action,
 		switch_dmg_type_possible && switch_damtype_action,
 		cloak_possible && cloak_action,
@@ -36,9 +34,7 @@
 		lights_action,
 		stats_action,
 		strafing_action,
-		smoke_action,
 		zoom_action,
-		thrusters_action,
 		phasing_action,
 		switch_damtype_action,
 		overload_action,
@@ -114,17 +110,6 @@
 	button_icon_state = "mech_overload_[chassis.overload ? "on" : "off"]"
 	update_buttons()
 
-/datum/action/mecha/mech_smoke
-	name = "Toggle Mech Smoke"
-	button_icon_state = "mech_smoke_off"
-
-/datum/action/mecha/mech_smoke/invoke_target(obj/vehicle/sealed/mecha/target, datum/event_args/actor/actor)
-	. = ..()
-	if(.)
-		return
-	var/obj/vehicle/sealed/mecha/chassis = target
-	chassis.smoke()
-
 /datum/action/mecha/mech_zoom
 	name = "Toggle Mech Zoom"
 	button_icon_state = "mech_zoom_off"
@@ -136,19 +121,6 @@
 	var/obj/vehicle/sealed/mecha/chassis = target
 	chassis.zoom()
 	button_icon_state = "mech_zoom_[chassis.zoom ? "on" : "off"]"
-	update_buttons()
-
-/datum/action/mecha/mech_toggle_thrusters
-	name = "Toggle Mech thrusters"
-	button_icon_state = "mech_thrusters_off"
-
-/datum/action/mecha/mech_toggle_thrusters/invoke_target(obj/vehicle/sealed/mecha/target, datum/event_args/actor/actor)
-	. = ..()
-	if(.)
-		return
-	var/obj/vehicle/sealed/mecha/chassis = target
-	chassis.thrusters()
-	button_icon_state = "mech_thrusters_[chassis.thrusters ? "on" : "off"]"
 	update_buttons()
 
 /datum/action/mecha/mech_cycle_equip	//I'll be honest, i don't understand this part, buuuuuut it works!
@@ -253,28 +225,6 @@
 	src.log_message("Toggled leg actuators overload.")
 	playsound(src, 'sound/mecha/mechanical_toggle.ogg', 50, 1)
 
-/obj/vehicle/sealed/mecha/proc/smoke()
-	if(usr!=src.occupant_legacy)
-		return
-
-	if(smoke_reserve < 1)
-		src.occupant_message("<font color='red'>You don't have any smoke left in stock!</font>")
-		return
-
-	if(smoke_ready)
-		smoke_reserve--	//Remove ammo
-		src.occupant_message("<font color='red'>Smoke fired. [smoke_reserve] usages left.</font>")
-
-		var/datum/effect_system/smoke_spread/smoke = new /datum/effect_system/smoke_spread()
-		smoke.attach(src)
-		smoke.set_up(10, 0, usr.loc)
-		smoke.start()
-		playsound(src, 'sound/effects/smoke.ogg', 50, 1, -3)
-
-		smoke_ready = 0
-		spawn(smoke_cooldown)
-			smoke_ready = 1
-
 /obj/vehicle/sealed/mecha/proc/zoom()//This could use improvements but maybe later.
 	if(usr!=src.occupant_legacy)
 		return
@@ -288,15 +238,6 @@
 			src.occupant_legacy << sound('sound/mecha/imag_enh.ogg',volume=50)
 		else
 			myclient.reset_temporary_view()
-
-/obj/vehicle/sealed/mecha/proc/thrusters()
-	if(usr!=src.occupant_legacy)
-		return
-	if(src.occupant_legacy)
-		if(get_charge() > 0)
-			thrusters = !thrusters
-			src.log_message("Toggled thrusters.")
-			src.occupant_message("<font color='[src.thrusters?"blue":"red"]'>Thrusters [thrusters?"en":"dis"]abled.</font>")
 
 /obj/vehicle/sealed/mecha/proc/query_damtype()
 	if(usr!=src.occupant_legacy)

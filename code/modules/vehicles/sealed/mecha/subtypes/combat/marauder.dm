@@ -31,6 +31,10 @@
 		VEHICLE_MODULE_SLOT_SPECIAL = 1,
 		VEHICLE_MODULE_SLOT_UTILITY = 4,
 	)
+	modules_intrinsic = list(
+		/obj/item/vehicle_module/lazy/legacy/tool/jetpack,
+		/obj/item/vehicle_module/lazy/smokescreen,
+	)
 
 	max_temperature = 60000
 	wreckage = /obj/effect/decal/mecha_wreckage/marauder
@@ -39,7 +43,6 @@
 	force = 45
 	mech_faction = MECH_FACTION_NT
 
-	smoke_possible = TRUE
 	zoom_possible = TRUE
 	thrusters_possible = TRUE
 

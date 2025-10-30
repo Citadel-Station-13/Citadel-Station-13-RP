@@ -35,10 +35,12 @@
 		VEHICLE_MODULE_SLOT_SPECIAL = 2,
 		VEHICLE_MODULE_SLOT_UTILITY = 4,
 	)
+	modules_intrinsic = list(
+		/obj/item/vehicle_module/lazy/legacy/tool/jetpack,
+		/obj/item/vehicle_module/lazy/smokescreen,
+	)
 
-	smoke_possible = 1
 	zoom_possible = 1
-	thrusters_possible = 1
 
 /obj/vehicle/sealed/mecha/combat/gorilla/equipped
 	modules = list(
@@ -49,26 +51,11 @@
 		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/lmg,
 	)
 
-/obj/vehicle/sealed/mecha/combat/gorilla/mechstep(direction)
-	var/result = step(src,direction)
-	playsound(src,"mechstep",40,1)
-	return result
-
-/obj/vehicle/sealed/mecha/combat/gorilla/mechturn(direction)
-	dir = direction
-	playsound(src,"mechstep",40,1)
-
-/obj/vehicle/sealed/mecha/combat/gorilla/get_stats_part()
-	var/output = ..()
-	output += {"<b>Smoke:</b> [smoke_reserve]"}
-	return output
-
 /obj/vehicle/sealed/mecha/combat/gorilla/get_commands()
 	var/output = {"<div class='wr'>
 						<div class='header'>Special</div>
 						<div class='links'>
 						<a href='?src=\ref[src];toggle_zoom=1'>Toggle zoom mode</a><br>
-						<a href='?src=\ref[src];smoke=1'>Smoke</a>
 						</div>
 						</div>
 						"}

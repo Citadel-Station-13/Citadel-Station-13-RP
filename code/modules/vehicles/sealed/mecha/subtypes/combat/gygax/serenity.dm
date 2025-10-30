@@ -1,3 +1,8 @@
+/datum/armor/vehicle/mecha/combat/gygax/serenity
+	melee_tier = 3.5
+	bullet_tier = 3.5
+	laser_tier = 3.5
+
 /obj/vehicle/sealed/mecha/combat/gygax/serenity
 	desc = "A lightweight exosuit made from a modified Gygax chassis combined with proprietary VeyMed medical tech. It's faster and sturdier than most medical mechs, but much of the armor plating has been stripped out, leaving it more vulnerable than a regular Gygax."
 	name = "Serenity"
@@ -7,6 +12,7 @@
 	integrity_max = 150
 
 	base_movement_speed = 4.5
+	armor_type = /datum/armor/vehicle/combat/gygax
 	integrity = 0.75 * /obj/vehicle/sealed/mecha/combat/gygax::integrity
 	integrity_max = 0.75 * /obj/vehicle/sealed/mecha/combat/gygax::integrity_max
 

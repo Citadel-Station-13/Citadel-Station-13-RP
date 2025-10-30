@@ -103,9 +103,6 @@
 	var/zoom = 0
 	var/zoom_possible = 0
 
-	var/thrusters = 0
-	var/thrusters_possible = 0
-
 	/// Are we currently phasing.
 	var/phasing = 0
 	/// This is to allow phasing.
@@ -116,15 +113,6 @@
 
 	/// Can you switch damage type? It is mostly for the Phazon and its children.
 	var/switch_dmg_type_possible = 0
-
-	var/smoke_possible = 0
-	/// How many shots you have. Might make a reload later on. MIGHT.
-	var/smoke_reserve = 5
-	/// This is a check for the whether or not the cooldown is ongoing.
-	var/smoke_ready = 1
-	/// How long you have between uses.
-	var/smoke_cooldown = 100
-	var/datum/effect_system/smoke_spread/smoke_system = new
 
 	// Can this exosuit innately cloak?
 	var/cloak_possible = FALSE
@@ -137,9 +125,7 @@
 	var/datum/action/mecha/strafe/strafing_action
 
 	var/datum/action/mecha/mech_overload_mode/overload_action
-	var/datum/action/mecha/mech_smoke/smoke_action
 	var/datum/action/mecha/mech_zoom/zoom_action
-	var/datum/action/mecha/mech_toggle_thrusters/thrusters_action
 	var/datum/action/mecha/mech_cycle_equip/cycle_action
 	var/datum/action/mecha/mech_switch_damtype/switch_damtype_action
 	var/datum/action/mecha/mech_toggle_phasing/phasing_action
@@ -156,9 +142,7 @@
 	strafing_action = new(src)
 
 	overload_action = new(src)
-	smoke_action = new(src)
 	zoom_action = new(src)
-	thrusters_action = new(src)
 	cycle_action = new(src)
 	switch_damtype_action = new(src)
 	phasing_action = new(src)
@@ -175,10 +159,6 @@
 
 	spark_system.set_up(2, 0, src)
 	spark_system.attach(src)
-
-	if(smoke_possible)//I am pretty sure that's needed here.
-		src.smoke_system.set_up(3, 0, src)
-		src.smoke_system.attach(src)
 
 	add_cell()
 	removeVerb(/obj/vehicle/sealed/mecha/verb/disconnect_from_port)
@@ -222,8 +202,6 @@
 	else
 		QDEL_NULL(cell)
 		QDEL_NULL(internal_tank)
-	if(smoke_possible)	//Just making sure nothing is running.
-		qdel(smoke_system)
 
 	QDEL_NULL(spark_system)
 	QDEL_NULL(minihud)
@@ -469,9 +447,6 @@
 		if(world.time - last_message > 20)
 			src.occupant_message("Unable to move while in zoom mode.")
 			last_message = world.time
-		return 0
-
-	if(!thrusters && src.pr_inertial_movement.active()) //I think this mean 'if you try to move in space without thruster, u no move'
 		return 0
 
 	if(overload)//Check if you have leg overload
@@ -1181,10 +1156,6 @@
 
 	if(overload_possible)
 		output_text += "<b>Leg actuators overload: [overload?"on":"off"]</b><br>"
-	if(smoke_possible)
-		output_text += "<b>Smoke:</b> [smoke_reserve]<br>"
-	if(thrusters_possible)
-		output_text += "<b>Thrusters:</b> [thrusters?"on":"off"]<br>"
 
 //Cargo components. Keep this last otherwise it does weird alignment issues.
 	output_text += "<b>Cargo Compartment Contents:</b><div style=\"margin-left: 15px;\">"
@@ -1276,10 +1247,6 @@
 		if(usr != src.occupant_legacy)	return
 		src.internal_tank()
 		return
-	if (href_list["toggle_thrusters"])
-		src.toggle_thrusters()
-	if (href_list["smoke"])
-		src.smoke()
 	if (href_list["toggle_zoom"])
 		src.zoom()
 	if(href_list["switch_damtype"])
