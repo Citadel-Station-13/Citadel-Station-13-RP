@@ -67,7 +67,6 @@
 		SPECIES_ZORREN_FLAT		= 'icons/obj/clothing/species/fennec/suits.dmi',
 		SPECIES_ZORREN_HIGH		= 'icons/obj/clothing/species/fox/suits.dmi',
 		SPECIES_VULPKANIN		= 'icons/obj/clothing/species/vulpkanin/suits.dmi',
-		SPECIES_PROMETHEAN		= 'icons/obj/clothing/species/skrell/suits.dmi'
 		)
 
 	//Breach thresholds, should ideally be inherited by most (if not all) voidsuits.
