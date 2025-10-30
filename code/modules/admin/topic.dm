@@ -620,7 +620,7 @@
 				jobs += "</tr></table>"
 		body = "<body>[jobs]</body>"
 		dat = "<tt>[header][body]</tt>"
-		usr << browse(dat, "window=jobban2;size=800x490")
+		usr << browse(HTML_SKELETON(dat), "window=jobban2;size=800x490")
 		return
 
 	//JOBBAN'S INNARDS
