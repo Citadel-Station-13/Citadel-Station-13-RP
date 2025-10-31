@@ -11,7 +11,7 @@
 /turf/simulated/floor/wood/indoors,
 /area/rnd/strelka/science/main)
 "ae" = (
-/turf/space/basic,
+/turf/space,
 /area/space)
 "af" = (
 /obj/structure/table/bench/wooden,
@@ -2032,7 +2032,7 @@
 /obj/machinery/camera/network/security{
 	dir = 1
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "hu" = (
 /obj/machinery/computer/transhuman/resleeving{
@@ -5165,7 +5165,7 @@
 /area/rnd/strelka)
 "rT" = (
 /obj/machinery/shield_diffuser,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "rV" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -7803,7 +7803,7 @@
 /obj/landmark{
 	name = "carpspawn"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "AZ" = (
 /obj/structure/closet/walllocker/emerglocker/north,
@@ -12835,7 +12835,7 @@
 /area/rnd/strelka/servers)
 "Sp" = (
 /obj/machinery/camera/network/security,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "Sq" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -13645,7 +13645,7 @@
 /area/bridge/strelka/md)
 "UW" = (
 /obj/structure/grille,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "UX" = (
 /turf/simulated/wall/r_wall/prepainted/cargo,

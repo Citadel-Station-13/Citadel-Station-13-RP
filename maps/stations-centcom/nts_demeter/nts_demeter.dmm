@@ -7710,7 +7710,7 @@
 /turf/unsimulated/floor/dark,
 /area/tdome/tdome1)
 "Bv" = (
-/turf/space/basic,
+/turf/space,
 /area/space)
 "Bw" = (
 /obj/structure/table/reinforced,

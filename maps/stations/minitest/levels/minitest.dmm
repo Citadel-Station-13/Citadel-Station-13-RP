@@ -2984,7 +2984,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/storage/surface_eva/external)
 "nY" = (
-/turf/space/basic,
+/turf/space,
 /area/space)
 "oa" = (
 /obj/machinery/atmospherics/pipe/tank/phoron,

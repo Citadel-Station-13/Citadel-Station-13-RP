@@ -19986,7 +19986,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay)
 "wQG" = (
-/turf/space/basic,
+/turf/space,
 /area/space)
 "wQM" = (
 /obj/effect/floor_decal/spline/fancy/wood{

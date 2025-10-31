@@ -459,7 +459,7 @@
 /turf/unsimulated/wall/seperator,
 /area/space)
 "Xj" = (
-/turf/space/basic,
+/turf/space,
 /area/space)
 "YW" = (
 /turf/simulated/floor/holofloor/tiled,

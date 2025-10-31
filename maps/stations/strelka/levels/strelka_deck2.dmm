@@ -497,7 +497,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 9
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "by" = (
 /turf/simulated/floor/reinforced/oxygen,
@@ -2182,7 +2182,7 @@
 /area/bridge/strelka/ce)
 "gn" = (
 /obj/machinery/shield_diffuser,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "gp" = (
 /obj/effect/floor_decal/corner/lightorange/border{
@@ -2373,7 +2373,7 @@
 /turf/simulated/floor/carpet,
 /area/security/strelka/detective)
 "gT" = (
-/turf/space/basic,
+/turf/space,
 /area/engineering/strelka/nacelle)
 "gV" = (
 /obj/structure/cable{
@@ -3024,7 +3024,7 @@
 /obj/landmark{
 	name = "carpspawn"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "ja" = (
 /obj/structure/closet/crate/medical,
@@ -4734,7 +4734,7 @@
 	dir = 6
 	},
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "nX" = (
 /obj/machinery/holopad/ship,
@@ -7465,7 +7465,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 9
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "ve" = (
 /obj/machinery/light/small/old{
@@ -7575,7 +7575,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 6
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "vA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -8090,7 +8090,7 @@
 	dir = 4
 	},
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "xc" = (
 /turf/simulated/wall/r_wall/prepainted/engineering,
@@ -10033,7 +10033,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 6
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "Cm" = (
 /obj/structure/closet/walllocker/emergsuit_wall{
@@ -10697,7 +10697,7 @@
 /area/shuttle/excursion/strelka)
 "Ej" = (
 /obj/structure/grille,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "El" = (
 /obj/structure/closet/secure_closet/engineering_welding,
@@ -10800,7 +10800,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 4
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "EE" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -11454,13 +11454,13 @@
 	dir = 8
 	},
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "GL" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 5
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "GM" = (
 /obj/structure/bed/chair/office/dark{
@@ -11773,7 +11773,7 @@
 "HH" = (
 /obj/structure/grille,
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "HJ" = (
 /obj/machinery/telecomms/processor/preset_two,
@@ -12045,7 +12045,7 @@
 /obj/machinery/atmospherics/component/unary/engine/bigger{
 	dir = 4
 	},
-/turf/space/basic,
+/turf/space,
 /area/engineering/strelka/nacelle)
 "IF" = (
 /obj/structure/cable/yellow{
@@ -12790,7 +12790,7 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/explo/emt)
 "KT" = (
-/turf/space/basic,
+/turf/space,
 /area/space)
 "KU" = (
 /obj/structure/bookcase/legal/corpreg,
@@ -13496,7 +13496,7 @@
 	dir = 5
 	},
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "Na" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
@@ -13938,7 +13938,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
 	dir = 8
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "Ov" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -14012,14 +14012,14 @@
 	dir = 9
 	},
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "OH" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 10
 	},
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "OJ" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -14212,7 +14212,7 @@
 "Pl" = (
 /obj/structure/lattice,
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "Pm" = (
 /obj/structure/cable/orange{
@@ -14388,7 +14388,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 4
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "PN" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -14791,14 +14791,14 @@
 /obj/machinery/atmospherics/component/unary/engine/bigger{
 	dir = 4
 	},
-/turf/space/basic,
+/turf/space,
 /area/engineering/strelka/nacelle2)
 "QP" = (
 /obj/structure/lattice,
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 10
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "QQ" = (
 /obj/machinery/air_alarm/east_mount,
@@ -14888,7 +14888,7 @@
 /area/space)
 "Rj" = (
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "Rk" = (
 /turf/simulated/wall/r_wall/prepainted,
@@ -14925,7 +14925,7 @@
 "Rq" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging,
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "Rr" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
@@ -15229,7 +15229,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 5
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "Sf" = (
 /obj/machinery/camera/network/security,
@@ -15635,7 +15635,7 @@
 /obj/structure/lattice,
 /obj/structure/grille,
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "Tz" = (
 /obj/effect/floor_decal/spline/fancy{
@@ -16667,7 +16667,7 @@
 /area/shuttle/excursion/strelka)
 "Wy" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "Wz" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks,
@@ -17499,7 +17499,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 10
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "YK" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
@@ -17970,7 +17970,7 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/engineering/strelka/nacelle)
 "ZS" = (
-/turf/space/basic,
+/turf/space,
 /area/engineering/strelka/nacelle2)
 "ZU" = (
 /obj/structure/cable/cyan{

@@ -162,7 +162,7 @@
 /turf/simulated/floor/tiled,
 /area/shuttle/escape)
 "bz" = (
-/turf/space/basic,
+/turf/space,
 /area/space)
 "bB" = (
 /obj/structure/sign/warning/docking_area,

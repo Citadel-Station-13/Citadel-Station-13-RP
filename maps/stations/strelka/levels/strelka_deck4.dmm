@@ -390,7 +390,7 @@
 "by" = (
 /obj/structure/grille,
 /obj/structure/disposalpipe/segment,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "bA" = (
 /obj/structure/janitorialcart,
@@ -1442,7 +1442,7 @@
 /area/hallway/strelka/deck4)
 "gd" = (
 /obj/structure/grille,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "ge" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -2394,7 +2394,7 @@
 /turf/simulated/floor/water/deep/pool,
 /area/strelka/dormhallway/pool)
 "jR" = (
-/turf/space/basic,
+/turf/space,
 /area/space)
 "jT" = (
 /obj/structure/curtain/open/privacy,
@@ -2641,7 +2641,7 @@
 /area/hallway/strelka/deck4)
 "kW" = (
 /obj/machinery/camera/network/security,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "lb" = (
 /turf/simulated/wall/r_wall/prepainted,
@@ -4618,7 +4618,7 @@
 /area/hydroponics/strelka/hallway/botany)
 "sT" = (
 /obj/structure/grille,
-/turf/space/basic,
+/turf/space,
 /area/fitness/strelka/clown)
 "sV" = (
 /obj/effect/floor_decal/spline/fancy/wood/cee{
@@ -4878,7 +4878,7 @@
 /area/hallway/strelka/deck4)
 "uj" = (
 /obj/structure/grille,
-/turf/space/basic,
+/turf/space,
 /area/fitness/strelka/mime)
 "ul" = (
 /obj/machinery/light{
@@ -7234,7 +7234,7 @@
 /obj/effect/shuttle_landmark/automatic{
 	name = "Far ship - Starboard"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "Fq" = (
 /obj/structure/bed/chair/sofa/brown/left{
@@ -8248,7 +8248,7 @@
 /obj/landmark{
 	name = "carpspawn"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "JJ" = (
 /obj/machinery/power/smes/buildable{
@@ -9833,7 +9833,7 @@
 /area/bridge/strelka/hop/office)
 "Ri" = (
 /obj/machinery/shield_diffuser,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "Rp" = (
 /obj/landmark/spawnpoint/job/chef,

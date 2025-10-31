@@ -12159,7 +12159,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "yy" = (
-/turf/space/basic,
+/turf/space,
 /area/space)
 "yz" = (
 /obj/structure/disposalpipe/junction/yjunction,

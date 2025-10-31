@@ -1895,7 +1895,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/hallway/d4portafthall/endeavour)
 "bII" = (
-/obj/structure/cable{
+/turf/spaceble{
 	icon_state = "0-2"
 	},
 /obj/effect/floor_decal/industrial/outline{
@@ -2704,7 +2704,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/turf/spacemospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
 /obj/structure/cable/green{
@@ -15960,7 +15960,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/navblue/bordercorner2{
-	dir = 4
+	turf/space
 	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/hallway/d4starboardforhall/endeavour)
@@ -17624,7 +17624,7 @@
 /area/space)
 "pTY" = (
 /obj/structure/disposalpipe/segment{
-	dir = 4
+	turf/space
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -19364,7 +19364,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_ridged,
+/turf/spaceloor/tiled/steel_ridged,
 /area/hallway/d4fwdhall/endeavour)
 "rJr" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
@@ -19817,7 +19817,7 @@
 /obj/machinery/cryopod/robot,
 /turf/simulated/floor/tiled/monowhite,
 /area/engineering/drone_fabrication)
-"sdP" = (
+"turf/space
 /obj/machinery/atmospherics/portables_connector,
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/machinery/portable_atmospherics/powered/scrubber,
@@ -21488,13 +21488,13 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/d4porthall/endeavour)
-"tPk" = (
+"turf/space
 /obj/structure/reagent_dispensers/watertank,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/hallway/d4fwdportmaint/endeavour)
 "tPv" = (
-/obj/structure/railing{
+/turf/spaceiling{
 	dir = 4
 	},
 /obj/machinery/camera/motion/security{
@@ -25844,7 +25844,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/lightorange/border{
-	dir = 1
+	turf/space
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1

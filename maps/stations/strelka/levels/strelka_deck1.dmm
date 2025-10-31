@@ -1280,7 +1280,7 @@
 	name = "Dock Starboard Deck 1";
 	docking_controller = "strelka_north_docking"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "gk" = (
 /turf/simulated/wall/r_wall/prepainted/command,
@@ -1321,7 +1321,7 @@
 /area/security/strelka/armory2)
 "gE" = (
 /obj/machinery/shield_diffuser,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "gL" = (
 /obj/structure/table/rack/shelf/steel,
@@ -2281,7 +2281,7 @@
 /obj/effect/shuttle_landmark/automatic{
 	name = "Near ship - Starboard"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "lB" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -4217,7 +4217,7 @@
 /turf/simulated/floor/reinforced,
 /area/strelka/fighterbaysec)
 "vu" = (
-/turf/space/basic,
+/turf/space,
 /area/space)
 "vv" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -4807,7 +4807,7 @@
 /obj/landmark{
 	name = "carpspawn"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "yk" = (
 /obj/machinery/door/firedoor/glass{
@@ -5359,7 +5359,7 @@
 /obj/machinery/camera/network/security{
 	dir = 1
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "BK" = (
 /obj/effect/shuttle_landmark/automatic{
@@ -5866,7 +5866,7 @@
 /obj/effect/shuttle_landmark/automatic{
 	name = "Near ship - Port"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "Em" = (
 /obj/structure/table/rack/shelf/steel,
@@ -6246,7 +6246,7 @@
 "FF" = (
 /obj/machinery/shield_diffuser,
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "FI" = (
 /obj/structure/lattice,
@@ -6255,12 +6255,12 @@
 "FJ" = (
 /obj/effect/shuttle_landmark{
 	base_area = /area/space;
-	base_turf = /turf/space/basic;
+	base_turf = /turf/space;
 	docking_controller = "strelka_trade_beruang_docking";
 	landmark_tag = "beruang_strelka";
 	name = "Beruang Trading dock"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "FK" = (
 /obj/effect/floor_decal/borderfloorblack/corner{
@@ -6450,7 +6450,7 @@
 /obj/effect/shuttle_landmark/automatic{
 	name = "Far ship - Port"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "Gx" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -7796,7 +7796,7 @@
 "NX" = (
 /obj/effect/shuttle_landmark{
 	base_area = /area/strelka/hangardeck;
-	base_turf = /turf/space/basic;
+	base_turf = /turf/space;
 	docking_controller = "strelka_trade_beruang_docking";
 	landmark_tag = "scoophead_strelka";
 	name = "Hangar Section 2f (scoophead)"
@@ -8755,7 +8755,7 @@
 /area/space)
 "SY" = (
 /obj/machinery/camera/network/security,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "SZ" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -9249,7 +9249,7 @@
 "Vn" = (
 /obj/structure/lattice,
 /obj/machinery/shield_diffuser,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "Vt" = (
 /obj/effect/shuttle_landmark/automatic{
@@ -9892,7 +9892,7 @@
 /obj/effect/shuttle_landmark/automatic{
 	name = "Far ship - Starboard"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "Yk" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,

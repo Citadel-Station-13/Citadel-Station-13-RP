@@ -2082,7 +2082,7 @@
 /area/exploration/explorer_prep)
 "ho" = (
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "hp" = (
 /obj/effect/floor_decal/techfloor{
@@ -3891,7 +3891,7 @@
 /obj/structure/transit_tube/high_velocity{
 	icon_state = "auto"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "ns" = (
 /obj/structure/railing{
@@ -5560,7 +5560,7 @@
 	icon_state = "auto"
 	},
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "tk" = (
 /obj/machinery/light/small{
@@ -8633,7 +8633,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/main_map/maintenance/deck_four/forward)
 "Dz" = (
-/turf/space/basic,
+/turf/space,
 /area/space)
 "DA" = (
 /obj/structure/transit_tube/high_velocity{
@@ -9334,7 +9334,7 @@
 /obj/structure/transit_tube/high_velocity{
 	icon_state = "N-S-Pass"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "FV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/purple{
@@ -11690,7 +11690,7 @@
 "NY" = (
 /obj/structure/ladder/up,
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "NZ" = (
 /turf/space,
@@ -12653,7 +12653,7 @@
 	icon_state = "N-S-Pass"
 	},
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "Rm" = (
 /obj/structure/transit_tube/high_velocity{

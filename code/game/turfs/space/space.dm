@@ -19,6 +19,9 @@
 	/// Force this one to pretend it's an overedge turf.
 	var/forced_dirs = 0
 
+/**
+ * - DO NOT MAP THIS IN!!!!!
+ */
 /turf/space/basic
 	atom_flags = ATOM_INITIALIZED
 

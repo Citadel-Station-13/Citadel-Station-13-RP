@@ -860,7 +860,7 @@
 /turf/simulated/floor/plating,
 /area/main_map/hallway/deck0)
 "Hj" = (
-/turf/space/basic,
+/turf/space,
 /area/space)
 "Hk" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{

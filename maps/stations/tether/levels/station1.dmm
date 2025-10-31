@@ -14905,7 +14905,7 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/bridge/meeting_room)
 "Ey" = (
-/turf/space/basic,
+/turf/space
 /area/space)
 "Ez" = (
 /obj/effect/floor_decal/borderfloor{

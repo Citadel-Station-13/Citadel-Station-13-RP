@@ -2622,7 +2622,7 @@
 /area/centcom/simulated/terminal)
 "IU" = (
 /obj/effect/step_trigger/teleporter/random,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "IZ" = (
 /obj/effect/floor_decal/borderfloorblack/corner{
@@ -3488,7 +3488,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "Te" = (
-/turf/space/basic,
+/turf/space,
 /area/space)
 "Tk" = (
 /obj/item/paper{

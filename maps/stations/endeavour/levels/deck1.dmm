@@ -363,7 +363,7 @@
 /obj/machinery/gateway{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/dark,
+/turf/spaceloor/tiled/dark,
 /area/gateway)
 "amf" = (
 /obj/effect/shuttle_landmark{
@@ -2744,7 +2744,7 @@
 "bZe" = (
 /turf/simulated/floor/tiled/techmaint,
 /area/station/civilian/evastorage/endeavour)
-"bZh" = (
+"turf/space
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -6595,7 +6595,7 @@
 	dir = 1
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
-/turf/simulated/floor/tiled,
+/turf/spaceloor/tiled,
 /area/excursion/general/endeavour)
 "eLb" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -8389,7 +8389,7 @@
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = 28
 	},
-/turf/simulated/floor/tiled/dark,
+/turf/spaceloor/tiled/dark,
 /area/hallway/secondary/docking_hallway2)
 "fRL" = (
 /obj/machinery/status_display{
@@ -8484,7 +8484,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable/green{
+/turf/spaceble/green{
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/maintenance,
@@ -8846,7 +8846,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/turf/spacemospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /obj/machinery/holopad,
@@ -11406,7 +11406,7 @@
 "ipU" = (
 /obj/effect/floor_decal/spline/plain,
 /obj/structure/flora/ausbushes/sparsegrass,
-/obj/machinery/light/no_nightshift{
+/turf/spaceght/no_nightshift{
 	dir = 1
 	},
 /turf/simulated/floor/outdoors/grass/heavy/indoors,
@@ -12980,7 +12980,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
-/turf/simulated/floor/wood,
+/turf/spaceloor/wood,
 /area/tether/surfacebase/entertainment)
 "jxQ" = (
 /obj/machinery/air_alarm{
@@ -17998,7 +17998,7 @@
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
 "mWf" = (
-/obj/structure/table/reinforced,
+/turf/spaceble/reinforced,
 /turf/simulated/floor/tiled/monowhite,
 /area/hallway/d1amidportmaint/endeavour)
 "mWh" = (
@@ -18217,7 +18217,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/spacemospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
 	},
@@ -22297,7 +22297,7 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/station/civilian/evastorage/endeavour)
-"qfI" = (
+"turf/space
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
@@ -28656,7 +28656,7 @@
 	dir = 5
 	},
 /obj/structure/cable/green{
-	icon_state = "1-4"
+	turf/space4"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/hallway/crew_quarters/cryo/recovery/endeavour)
@@ -30681,7 +30681,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/machinery/pipedispenser,
+/turf/spacepedispenser,
 /turf/simulated/floor/tiled,
 /area/rnd/misc_lab)
 "vRj" = (
@@ -32754,7 +32754,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/station/exploration)
 "xvP" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/turf/spacemospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -32908,7 +32908,7 @@
 	pixel_x = 24
 	},
 /obj/machinery/camera/network/northern_star{
-	dir = 8
+	turf/space
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 4

@@ -102,6 +102,11 @@ if $grep -i'eciev' $map_files; then
 fi;
 
 part "legacy mapping mistakes"
+if $grep -P 'turf/space/basic' $map_files; then
+	echo
+	echo -e "${RED}ERROR: /turf/space/basic detected in maps. Use /turf/space.${NC}"
+	st=1
+fi;
 if $grep -P '\td[1-2] =' $map_files; then
 	echo
     echo -e "${RED}ERROR: d1/d2 cable variables detected in maps, please remove them.${NC}"

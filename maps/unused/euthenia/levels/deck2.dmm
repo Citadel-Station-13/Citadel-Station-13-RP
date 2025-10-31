@@ -23040,7 +23040,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/shield_gen)
 "qVH" = (
-/turf/space/basic,
+/turf/space,
 /area/space)
 "qVI" = (
 /obj/machinery/computer/cryopod/robot{
