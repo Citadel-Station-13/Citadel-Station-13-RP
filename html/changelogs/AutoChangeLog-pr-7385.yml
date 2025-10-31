@@ -1,0 +1,6 @@
+author: "GySgtMurphy"
+delete-after: True
+changes:
+  - rscdel: "old endeavour_areas"
+  - rscadd: "Takes areas and puts into a single file for Endeavour, added a number of additional areas"
+  - bugfix: "fixed some disposals pipes near medical, and added a bunch of missing APCs"
