@@ -1484,7 +1484,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 1
 	},
-/turf/spaceedoor{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
@@ -9551,7 +9551,7 @@
 	dir = 4
 	},
 /obj/structure/cable/green{
-	turf/space
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating,
 /area/hallway/d2amidstarbdmaint/endeavour)
@@ -10101,7 +10101,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
 	},
-/turf/space/corner/mauve/border{
+/obj/effect/floor_decal/corner/mauve/border{
 	dir = 10
 	},
 /obj/structure/cable/green{
@@ -12054,7 +12054,7 @@
 	},
 /turf/simulated/floor/plating,
 /area/hallway/d2aftmaint/endeavour)
-"turf/space
+"ipN" = (
 /obj/machinery/fire_alarm/north_mount,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -16366,11 +16366,11 @@
 "lzL" = (
 /obj/machinery/light{
 	dir = 8;
-	turf/space
+	light_range = 12;
 	name = "long range light fixture";
 	desc = "A lighting fixture. This one seem to toss its light further than standard light fixtures."
 	},
-/turf/spacehoronreinforced{
+/obj/structure/window/phoronreinforced{
 	dir = 4
 	},
 /obj/machinery/atmospherics/component/binary/pump/high_power{
@@ -22306,7 +22306,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	turf/space
+	dir = 4
 	},
 /obj/machinery/light,
 /turf/simulated/floor/tiled/white,
@@ -30923,7 +30923,7 @@
 /turf/simulated/open,
 /area/maintenance/substation/medical_science)
 "vXn" = (
-/turf/spacerics/pipe/simple/hidden/scrubbers{
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{

@@ -8484,7 +8484,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/table/green{
+/obj/structure/cable/green{
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/maintenance,
@@ -13442,6 +13442,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
+/obj/overmap/entity/visitable/ship/endeavour,
 /obj/structure/bed/chair/bay/comfy/captain{
 	dir = 4
 	},
@@ -22297,7 +22298,7 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/station/civilian/evastorage/endeavour)
-"turf/space
+"qfI" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
@@ -28656,7 +28657,7 @@
 	dir = 5
 	},
 /obj/structure/cable/green{
-	turf/space4"
+	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/hallway/crew_quarters/cryo/recovery/endeavour)
@@ -30681,7 +30682,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
-/turf/spacepedispenser,
+/obj/machinery/pipedispenser,
 /turf/simulated/floor/tiled,
 /area/rnd/misc_lab)
 "vRj" = (
@@ -32908,7 +32909,7 @@
 	pixel_x = 24
 	},
 /obj/machinery/camera/network/northern_star{
-	turf/space
+	dir = 8
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
