@@ -755,3 +755,10 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/adherent/New()
 	species_cannot_use = SScharacters.all_species_names() - SPECIES_ADHERENT
 	..()
+
+/datum/robolimb/rce_brain_jar
+	company = "Rigel Consumer Electronics"
+	desc = "An evolution in MMI technology: all the protection of a standard cyborg head, with none of the subtlety. Brought to you by Rigel Consumer Electronics."
+	icon = 'icons/mob/cyberlimbs/unbranded/rce_mmi_brainjar.dmi'
+	parts = list(BP_HEAD)
+	unavailable_to_build = TRUE
