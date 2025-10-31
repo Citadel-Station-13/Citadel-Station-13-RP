@@ -289,7 +289,7 @@
  * * place_on_top - use PlaceOnTop instead of ChangeTurf
  * * orientation - orientation to load. the 'natural' orientation is SOUTH. Any other orientation rotates it with respect from SOUTH to it.
  * * area_cache - override area cache and provide your own, used to make sure multiple loadings share the same areas if two areas are the same type.
- * * context - value to push to preloader's maploader context, used by atoms during preloading_instance() to perform various things like mangling their linkage IDs
+ * * context - value to push to preloader's maploader context, used by atoms during preloading_from_mapload() to perform various things like mangling their linkage IDs
  *
  * @return bounds list of load, or null if failed.
  */

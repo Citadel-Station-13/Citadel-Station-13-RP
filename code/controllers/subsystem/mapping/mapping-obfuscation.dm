@@ -10,7 +10,7 @@
  * * Generates **obfuscated** IDs; these are mangled and obfuscated IDs that are safe to reveal to players.
  *
  * Mangling keys are based on the **load instance** the mapping subsystem is in.
- * * It is crucial to call these ID transformation procs during preloading_instance(), not Initialize().
+ * * It is crucial to call these ID transformation procs during preloading_from_mapload(), not Initialize().
  * * It is usually already too late by the time Initialize() fires.
  * * By default, /datum/map (not /datum/map_level), /datum/map_template, /datum/shuttle_template are the three things that form new mangling boundaries/contexts.
  */
@@ -54,7 +54,7 @@
 	return round_local_mangling_cache[id]
 
 /**
- * This must be called in **preloading_instance()**, not Initialize(), unlike what usual ss13 init logic says.
+ * This must be called in **preloading_from_mapload()**, not Initialize(), unlike what usual ss13 init logic says.
  *
  * * This is a direct maploader hook to generate a mangled (not obfuscated) ID.
  * * This will be unique to the load instance it's being called from.
@@ -65,7 +65,7 @@
  *
  * @params
  * * id - original id
- * * with_mangling_id - mangling id provided to preloading_instance()
+ * * with_mangling_id - mangling id provided to preloading_from_mapload()
  */
 /datum/controller/subsystem/mapping/proc/mangled_round_local_id(id, with_mangling_id)
 	if(!id)
@@ -73,7 +73,7 @@
 	return "[id]-[hash_for_mangling_id(with_mangling_id)]"
 
 /**
- * This must be called in **preloading_instance()**, not Initialize(), unlike what usual ss13 init logic says.
+ * This must be called in **preloading_from_mapload()**, not Initialize(), unlike what usual ss13 init logic says.
  *
  * * This is a direct maploader hook to generate a mangled (not obfuscated) ID.
  * * This will be unique to the load instance it's being called from.
@@ -84,7 +84,7 @@
  *
  * @params
  * * id - original id
- * * with_mangling_id - mangling id provided to preloading_instance()
+ * * with_mangling_id - mangling id provided to preloading_from_mapload()
  */
 /datum/controller/subsystem/mapping/proc/mangled_persistent_id(id, with_mangling_id)
 	if(!id)
@@ -97,13 +97,13 @@
  * * This is not globally (cross-round) unique.
  * * This does not necessarily generate human-readable IDs, but tries its best!
  * * This generates IDs that may be player accessible.
- * * Better results are obtained by calling this in preloading_instance(), but it is not mandatory.
- * * This only mangles the ID if called with_mangling_id in preloading_instance. Please be aware of that.
+ * * Better results are obtained by calling this in preloading_from_mapload(), but it is not mandatory.
+ * * This only mangles the ID if called with_mangling_id in preloading_from_mapload. Please be aware of that.
  * * This generates IDs with a different namespace than other mangling/obfuscation procs.
  *
  * @params
  * * id - original id
- * * with_mangling_id - provide the mangling id if being called in preloading_instance()
+ * * with_mangling_id - provide the mangling id if being called in preloading_from_mapload()
  * * with_visible_key - provide and we'll include it at the start so players know what a key is for
  */
 /datum/controller/subsystem/mapping/proc/obfuscated_round_local_id(id, with_mangling_id, with_visible_key)
@@ -135,13 +135,13 @@
  * * This will be globally (cross-round) unique.
  * * This does not necessarily generate human-readable IDs, but tries its best!
  * * This generates IDs that may be player accessible.
- * * Better results are obtained by calling this in preloading_instance(), but it is not mandatory.
- * * This only mangles the ID if called with_mangling_id in preloading_instance. Please be aware of that.
+ * * Better results are obtained by calling this in preloading_from_mapload(), but it is not mandatory.
+ * * This only mangles the ID if called with_mangling_id in preloading_from_mapload. Please be aware of that.
  * * This generates IDs with a different namespace than other mangling/obfuscation procs.
  *
  * @params
  * * id - original id
- * * with_mangling_id - provide the mangling id if being called in preloading_instance()
+ * * with_mangling_id - provide the mangling id if being called in preloading_from_mapload()
  * * with_visible_key - provide and we'll include it at the start so players know what a key is for
  */
 /datum/controller/subsystem/mapping/proc/obfuscated_persistent_id(id, with_mangling_id, with_visible_key)

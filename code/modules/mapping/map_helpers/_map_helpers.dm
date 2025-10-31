@@ -31,7 +31,7 @@
 	/// preloading instance fired
 	var/was_in_mapload = FALSE
 
-/obj/map_helper/preloading_instance(datum/dmm_context/context)
+/obj/map_helper/preloading_from_mapload(datum/dmm_context/context)
 	. = ..()
 	was_in_mapload = TRUE
 	if(early)

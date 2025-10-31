@@ -14,7 +14,7 @@
 	/// scan cooldown
 	var/scan_delay = 10 SECONDS
 
-/obj/machinery/computer/bioscan/preloading_instance(datum/dmm_context/context)
+/obj/machinery/computer/bioscan/preloading_from_mapload(datum/dmm_context/context)
 	. = ..()
 	if(network_key_obfuscated && !network_key)
 		network_key = SSmapping.obfuscated_round_local_id(network_key_obfuscated, context.mangling_id, "bioscan")

@@ -10,7 +10,7 @@
 	return context
 
 /**
- * something accessible to all atoms during preloading_instance
+ * something accessible to all atoms during preloading_from_mapload
  *
  * * Also used to get data out of a /dmm_parsed's load() cycle
  * * **Do not reuse this between multiple maploads.**

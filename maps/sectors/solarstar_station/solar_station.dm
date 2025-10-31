@@ -20,7 +20,7 @@
 	base_area = /area/space
 	struct_x = 0
 	struct_y = 0
-	struct_z = 0
+	struct_z = 1
 
 /datum/map_level/sector/solars_station/under
 	id = "Solar_station_under"
@@ -31,4 +31,4 @@
 	base_area = /area/space
 	struct_x = 0
 	struct_y = 0
-	struct_z = 1
+	struct_z = 0
