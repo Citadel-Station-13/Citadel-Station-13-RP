@@ -41,7 +41,15 @@
 		var/area/A = locate(path)
 		if(!istype(A))
 			CRASH("Shuttle \"[name]\" couldn't locate area [path].")
+		if(!istype(A, /area/shuttle))
+			CRASH("Shuttle \"[name]\" had an area that isn't an /area/shuttle.")
 		areas += A
+		var/area/shuttle/shuttle_area = A
+		if(shuttle_area.shuttle == src)
+		else if(!shuttle_area.shuttle)
+			shuttle_area.shuttle = src
+		else if(shuttle_area.shuttle && shuttle_area.shuttle != src)
+			CRASH("Shuttle \"[name]\" collided with shuttle \"[shuttle_area.shuttle]\" on area path [shuttle_area.type].")
 		// todo: less shit shuttle system
 		for(var/turf/T in A.contents)
 			// inject ceiling

@@ -183,9 +183,8 @@ SUBSYSTEM_DEF(shuttle)
 		shuttle_types[shuttle.type] = shuttle
 		shuttle_areas |= shuttle.shuttle_area
 		log_debug(SPAN_DEBUG("Initialized shuttle [shuttle] ([shuttle.type])"))
+		GLOB.shuttle_added.raise_event(shuttle)
 		return shuttle
-		// Historical note:  No need to call shuttle.init_docking_controllers(), controllers register themselves
-		// and shuttles fetch refs in New().  Shuttles also dock() themselves in new if they want.
 
 // TODO - Leshana to hook up more of this when overmap is ported.
 /datum/controller/subsystem/shuttle/proc/hook_up_motherships(shuttles_list)

@@ -98,7 +98,7 @@
 
 //Helper for init.
 /obj/overmap/entity/visitable/proc/check_ownership(obj/object)
-	return get_overmap_sector(object) == src
+	return SSovermaps.get_overmap_entity(object) == src
 
 //If shuttle_name is false, will add to generic waypoints; otherwise will add to restricted. Does not do checks.
 /obj/overmap/entity/visitable/proc/add_landmark(obj/effect/shuttle_landmark/landmark, shuttle_name)
