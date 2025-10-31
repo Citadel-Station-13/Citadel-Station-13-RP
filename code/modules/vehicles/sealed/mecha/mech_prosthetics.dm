@@ -1,6 +1,6 @@
 /obj/machinery/lathe/mecha_part_fabricator/pros
 	name = "Prosthetics Fabricator"
-	desc = "A machine used for construction of prosthetics."
+	desc = "A machine used for construction of prosthetics.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	icon_state = "profab"
 	base_icon_state = "profab"
 	density = TRUE

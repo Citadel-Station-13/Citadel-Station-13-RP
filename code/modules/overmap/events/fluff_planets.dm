@@ -47,8 +47,6 @@
 	src.setDir(pick(list(GLOB.alldirs)))
 	if(known)
 		plane = ABOVE_LIGHTING_PLANE
-		for(var/obj/machinery/computer/ship/helm/H in GLOB.machines)
-			H.get_known_sectors()
 	else
 		real_appearance = image(icon, src, icon_state)
 		real_appearance.override = TRUE

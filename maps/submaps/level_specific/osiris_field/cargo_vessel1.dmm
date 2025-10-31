@@ -159,6 +159,10 @@
 /obj/machinery/door/blast/regular,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/submap/osiris_field/cargo_vessel1)
+"if" = (
+/mob/living/simple_mob/animal/space/xenomorph/berserker,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/osiris_field/cargo_vessel1)
 "iz" = (
 /obj/random/gun/random,
 /turf/simulated/floor/plating,
@@ -268,6 +272,10 @@
 /obj/structure/inflatable,
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/osiris_field/cargo_vessel1)
+"nZ" = (
+/mob/living/simple_mob/animal/space/xenomorph/warrior,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/osiris_field/cargo_vessel1)
 "oh" = (
 /obj/effect/floor_decal/borderfloorblack/corner{
 	dir = 4
@@ -350,6 +358,11 @@
 /obj/structure/lattice,
 /turf/template_noop,
 /area/template_noop)
+"tm" = (
+/obj/structure/alien/weeds,
+/mob/living/simple_mob/animal/space/xenomorph/vanguard,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel1)
 "tK" = (
 /obj/machinery/light/small/emergency/flicker{
 	dir = 4
@@ -1328,7 +1341,7 @@ jJ
 xR
 Ou
 Ou
-Ou
+nZ
 Lv
 fp
 lo
@@ -1423,7 +1436,7 @@ Pd
 Pd
 hX
 Ik
-wf
+tm
 wf
 Ik
 ye
@@ -1481,7 +1494,7 @@ FK
 FK
 Ik
 ye
-Bh
+tm
 wf
 lr
 jJ
@@ -1539,7 +1552,7 @@ ln
 ln
 un
 jJ
-jJ
+if
 jJ
 Up
 yi

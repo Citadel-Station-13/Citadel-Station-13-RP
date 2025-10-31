@@ -147,3 +147,18 @@
 /obj/effect/temporary_effect/pulse/microsingulo/on_pulse()
 	for(var/atom/A in range(pull_radius, src))
 		A.singularity_pull(src, pull_strength)
+
+/obj/projectile/arc/hag30
+	name ="155mm shell"
+	icon = 'icons/obj/projectiles.dmi'
+	icon_state = "big_shell"
+	damage_force = 300 // This thing is meant to hit like a truck, it's an anti tank/building weapon. Gun can only be used on massive mechs.
+	speed = 120 //If you get hit by this, skissue.
+	damage_tier = 6
+	base_projectile_effects = list(
+		/datum/projectile_effect/detonation/legacy_explosion{
+    		sev_1 = 1;
+    		sev_2 = 3;
+    		sev_3 = 5;
+    	},
+	)

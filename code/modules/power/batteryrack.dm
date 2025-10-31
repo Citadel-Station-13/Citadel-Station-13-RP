@@ -1,7 +1,7 @@
 //The one that works safely.
 /obj/machinery/power/smes/batteryrack
 	name = "power cell rack PSU"
-	desc = "A rack of power cells working as a PSU."
+	desc = "A rack of power cells working as a PSU.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	charge = 0 //you dont really want to make a potato PSU which already is overloaded
 	output_attempt = 0
 	input_level = 0
