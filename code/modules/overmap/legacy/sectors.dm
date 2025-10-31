@@ -66,7 +66,6 @@
 			start_y = where_to_go.y
 
 			forceMove(where_to_go)
-			testing("Located legacy sector \"[name]\" at [start_x],[start_y], containing Z [english_list(map_z)]")
 
 		if(known)
 			plane = ABOVE_LIGHTING_PLANE

@@ -55,8 +55,6 @@
 		add_landmark(visitor_landmark)
 		visitor_dir = turn(visitor_dir, 90)
 
-	testing("Setup overmap location for \"[name]\" containing Z [english_list(map_z)]")
-
 /obj/overmap/entity/visitable/ship/landable/populate_sector_objects()
 	..()
 	src.landmark = new(null, shuttle) // Create in nullspace since we lazy-create overmap z
