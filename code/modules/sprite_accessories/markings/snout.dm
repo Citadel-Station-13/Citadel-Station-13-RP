@@ -12,6 +12,11 @@
 	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
 
 /datum/sprite_accessory/marking/snout/cryptid/eyes
+	name = "Cryptid Snout (Secondary)"
+	id = "marking_cryptid_snout_secondary"
+	icon_state = "cryptid_secondary"
+
+/datum/sprite_accessory/marking/snout/cryptid/eyes
 	name = "Cryptid Snout (Eyes)"
 	id = "marking_cryptid_snout_eyes"
 	icon_state = "cryptid_eyes"
