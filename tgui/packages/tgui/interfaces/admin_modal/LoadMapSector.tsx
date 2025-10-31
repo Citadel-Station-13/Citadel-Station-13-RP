@@ -304,7 +304,9 @@ const MapLevelProperties = (props: {
         tooltip="The base turf of the level.">
         <WorldTypepathDropdown
           selectedPath={levelData.baseTurf}
-          onSelectPath={(path) => levelAct('levelBaseTurf', { type: path })}
+          onSelectPath={(path) => {
+            levelAct('levelBaseTurf', { type: path });
+          }}
           filter={{
             turfs: {
               enabled: true,
@@ -316,7 +318,9 @@ const MapLevelProperties = (props: {
         tooltip="The base area of the level.">
         <WorldTypepathDropdown
           selectedPath={levelData.baseArea}
-          onSelectPath={(path) => levelAct('levelBaseArea', { type: path })}
+          onSelectPath={(path) => {
+            levelAct('levelBaseArea', { type: path });
+          }}
           filter={{
             areas: {
               enabled: true,

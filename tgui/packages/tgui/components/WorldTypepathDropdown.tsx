@@ -88,6 +88,11 @@ export class WorldTypepathDropdown extends Component<WorldTypepathDropdownProps>
       ...rest
     } = this.props;
 
+    let onSelectPathAndHide = (path: string) => {
+      onSelectPath(path);
+      // this.setState((s) => ({ ...s, open: false }));
+    };
+
     return (
       <Box className="WorldTypepathDropdown" {...rest}>
         <JsonAssetLoader
@@ -139,7 +144,7 @@ export class WorldTypepathDropdown extends Component<WorldTypepathDropdownProps>
                     iconRef: null,
                     iconState: null,
                     key: path,
-                    onSelectPath: onSelectPath,
+                    onSelectPath: onSelectPathAndHide,
                   });
                 });
             }
@@ -158,12 +163,14 @@ export class WorldTypepathDropdown extends Component<WorldTypepathDropdownProps>
                     iconRef: descriptor.iconRef,
                     iconState: descriptor.iconState,
                     key: path,
-                    onSelectPath: onSelectPath,
+                    onSelectPath: onSelectPathAndHide,
                   });
                 });
             }
             return (
               <Floating contentAutoWidth placement="bottom"
+                closeAfterInteract
+                // handleOpen={this.state.open}
                 onOpenChange={(open) => this.setState((s) => ({ ...s, open: open }))}
                 content={(
                   <Box className="WorldTypepathDropdown__menu">
@@ -233,7 +240,7 @@ const WorldTypepathDropdownEntry = (props: {
   data: WorldTypepathDropdownEntryData,
 }) => {
   return (
-    <Box className="WorldTypepathDropdown__menuItem">
+    <Box className="WorldTypepathDropdown__menuItem" onClick={() => props.data.onSelectPath(props.data.path)}>
       <Stack>
         <Stack.Item>
           {!!props.data.iconRef && !!props.data.iconState ? (
