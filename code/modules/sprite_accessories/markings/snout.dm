@@ -20,4 +20,3 @@
 	name = "Cryptid Snout (Tertiary)"
 	id = "marking_cryptid_snout_tertiary"
 	icon_state = "cryptid_tertiary"
-
