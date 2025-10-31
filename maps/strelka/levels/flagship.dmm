@@ -12662,7 +12662,6 @@
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/security/department,
-/obj/map_helper/paint_stripe/darkred,
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
 "Hb" = (
@@ -17392,15 +17391,6 @@
 	icon_state = "dark"
 	},
 /area/centcom/control)
-"TA" = (
-/obj/machinery/door/airlock/security{
-	name = "Security";
-	req_one_access = null
-	},
-/obj/map_helper/access_helper/airlock/station/security/department,
-/obj/map_helper/paint_stripe/darkred,
-/turf/unsimulated/floor/steel,
-/area/centcom/security)
 "TB" = (
 /obj/machinery/door/airlock{
 	name = "Unisex Showers"
@@ -19920,14 +19910,6 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/evac)
-"ZK" = (
-/obj/spawner/window/low_wall/firelocks,
-/obj/spawner/window/low_wall/firelocks,
-/obj/map_helper/paint_stripe/darkred,
-/turf/unsimulated/floor{
-	name = "plating"
-	},
-/area/centcom/security)
 "ZL" = (
 /obj/structure/window/reinforced/holowindow{
 	dir = 1
@@ -50675,7 +50657,7 @@ XG
 XG
 XG
 uQ
-ZK
+uQ
 XG
 xO
 Vu
@@ -52793,7 +52775,7 @@ Vu
 Vu
 Vu
 Vu
-TA
+Kz
 Vu
 Vb
 wb
