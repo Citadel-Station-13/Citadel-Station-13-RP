@@ -91,11 +91,22 @@ export const LoadMapSector = (props) => {
                     </Stack.Item>
                     {new Array(data.levels).fill(0).map((v, i) => (
                       <Stack.Item key={i}>
-                        <Button
-                          fluid color="transparent"
-                          selected={currentTab === `level-${i + 1}`}
-                          onClick={() => setCurrentTab(`level-${i + 1}`)}
-                          content={`Level ${i + 1}`} />
+                        <Stack>
+                          <Stack.Item grow={1}>
+                            <Button
+                              fluid color="transparent"
+                              selected={currentTab === `level-${i + 1}`}
+                              onClick={() => setCurrentTab(`level-${i + 1}`)}
+                              content={`Level ${i + 1}`} />
+                          </Stack.Item>
+                          <Stack.Item >
+                            <Button.Confirm icon="trash"
+                              color="transparent"
+                              confirmIcon="trash"
+                              onClick={() => act('delLevel', { levelIndex: i + 1 })}
+                              confirmContent={null} />
+                          </Stack.Item>
+                        </Stack>
                       </Stack.Item>
                     ))}
                     <Stack.Item grow={1} />
@@ -128,7 +139,6 @@ export const LoadMapSector = (props) => {
                   <Button.Confirm fluid
                     textAlign="center"
                     tooltip="Run validation checks on the map."
-                    color="transparent"
                     onClick={() => act('ready')}>
                     Validate
                   </Button.Confirm>
@@ -136,7 +146,6 @@ export const LoadMapSector = (props) => {
                 <Stack.Item grow={1}>
                   <Button.Confirm fluid
                     textAlign="center"
-                    color={data.status === LoadMapSectorStatus.Ready && "transparent"}
                     disabled={data.status !== LoadMapSectorStatus.Ready}
                     tooltip={data.status === LoadMapSectorStatus.Ready ? "Load the map." : "You must validate the map first!"}
                     onClick={() => act('load')}>
@@ -306,7 +315,7 @@ const MapLevelProperties = (props: {
       <VSplitTooltipList.Entry label="Base Area"
         tooltip="The base area of the level.">
         <WorldTypepathDropdown
-          selectedPath={levelData.baseTurf}
+          selectedPath={levelData.baseArea}
           onSelectPath={(path) => levelAct('levelBaseArea', { type: path })}
           filter={{
             areas: {

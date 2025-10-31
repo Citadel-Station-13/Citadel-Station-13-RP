@@ -10,6 +10,8 @@
 
 .WorldTypepathDropdown__inner {
   align-items: center;
+  background-color: #00000033;
+  border: #77777777 solid 1px;
 }
 
 .WorldTypepathDropdown__preview {
@@ -22,18 +24,28 @@
 .WorldTypepathDropdown__desc {
 }
 
+.WorldTypepathDropdown__search {
+}
+
+.WorldTypepathDropdown__entries {
+  overflow: auto;
+  height: 400px;
+}
+
 .WorldTypepathDropdown__drawer {
+  margin-right: 0.25em;
 }
 
 .WorldTypepathDropdown__menu {
-  max-height: 400px;
-  width: '100%';
-  overflow: auto;
-  z-index: 5;
-  border-radius: 0 0 base.em(2px) base.em(2px);
+  border-color: #ffffffff;
+  border-style: solid;
+  border-bottom: 1px;
+  border-left: 1px;
+  border-right: 1px;
+  border-top: 0px;
   color: #fff;
-  background-color: #000;
   background-color: rgba(0, 0, 0, 0.75);
+  padding: 3px;
 }
 
 .WorldTypepathDropdown__menuItem {

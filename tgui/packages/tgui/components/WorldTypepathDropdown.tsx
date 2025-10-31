@@ -161,7 +161,33 @@ export class WorldTypepathDropdown extends Component<WorldTypepathDropdownProps>
                 });
             }
             return (
-              <>
+              <Floating contentAutoWidth placement="bottom"
+                onOpenChange={(open) => this.setState((s) => ({ ...s, open: open }))}
+                content={(
+                  <Box className="WorldTypepathDropdown__menu">
+                    <Stack vertical fill>
+                      <Stack.Item>
+                        <Box className="WorldTypepathDropdown__Search">
+                          <Input onChange={(val) => this.setSearchString(val)}
+                            value={this.state.searchString}
+                            width="100%"
+                            placeholder="Search path/name substring" />
+                        </Box>
+                      </Stack.Item>
+                      <Stack.Item grow={1}>
+                        <Box className="WorldTypepathDropdown__entries">
+                          <WorldTypepathDropdownScroller
+                            data={compiledTypepathEntries}
+                            transformer={(entry) => {
+                              return (
+                                <WorldTypepathDropdownEntry data={entry} />
+                              );
+                            }} />
+                        </Box>
+                      </Stack.Item>
+                    </Stack>
+                  </Box>
+                )}>
                 <Stack fill className="WorldTypepathDropdown__inner">
                   <Stack.Item className="WorldTypepathDropdown__preview">
                     {selectedIcon}
@@ -172,39 +198,11 @@ export class WorldTypepathDropdown extends Component<WorldTypepathDropdownProps>
                   <Stack.Item className="WorldTypepathDropdown__desc">
                     <Button icon="question" tooltip={selectedTooltip} />
                   </Stack.Item>
-                  <Stack.Item onClick={() => {
-                    if (disabled && !this.state.open) {
-                      return;
-                    }
-                    this.setOpen(!this.state.open);
-                  }} className="WorldTypepathDropdown__drawer">
+                  <Stack.Item className="WorldTypepathDropdown__drawer">
                     <Icon size={1.65} name={this.state.open ? 'chevron-up' : 'chevron-down'} />
                   </Stack.Item>
                 </Stack>
-                {this.state.open && (
-                  <Floating content>
-                    <Box className="WorldTypepathDropdown__menu">
-                      <Stack vertical>
-                        <Stack.Item>
-                          <Input onChange={(val) => this.setSearchString(val)}
-                            value={this.state.searchString}
-                            width="100%"
-                            placeholder="Search path/name substring" />
-                        </Stack.Item>
-                        <Stack.Item grow={1}>
-                          <WorldTypepathDropdownScroller
-                            data={compiledTypepathEntries}
-                            transformer={(entry) => {
-                              return (
-                                <WorldTypepathDropdownEntry data={entry} />
-                              );
-                            }} />
-                        </Stack.Item>
-                      </Stack>
-                    </Box>
-                  </Floating>
-                )}
-              </>
+              </Floating>
             );
           }}
         />
@@ -232,20 +230,22 @@ const WorldTypepathDropdownEntry = (props: {
   data: WorldTypepathDropdownEntryData,
 }) => {
   return (
-    <Stack>
-      <Stack.Item>
-        {!!props.data.iconRef && !!props.data.iconState ? (
-          <ByondIconRef iconRef={props.data.iconRef} iconState={props.data.iconState} />
-        ) : (
-          "<A>"
-        )}
-      </Stack.Item>
-      <Stack.Item grow={1}>
-        {props.data.name}
-      </Stack.Item>
-      <Stack.Item>
-        <Button icon="question" tooltip={`Path: ${props.data.path}`} />
-      </Stack.Item>
-    </Stack>
+    <Box className="WorldTypepathDropdown__menuItem">
+      <Stack>
+        <Stack.Item>
+          {!!props.data.iconRef && !!props.data.iconState ? (
+            <ByondIconRef iconRef={props.data.iconRef} iconState={props.data.iconState} />
+          ) : (
+            "<A>"
+          )}
+        </Stack.Item>
+        <Stack.Item grow={1}>
+          {props.data.name}
+        </Stack.Item>
+        <Stack.Item>
+          <Button icon="question" tooltip={`Path: ${props.data.path}`} />
+        </Stack.Item>
+      </Stack>
+    </Box>
   );
 };
