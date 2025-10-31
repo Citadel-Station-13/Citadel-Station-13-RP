@@ -1,5 +1,5 @@
 /datum/passive_parry/melee
-	parry_arc = 155
+	parry_arc = 180
 	parry_arc_round_down = TRUE
 
 /**
