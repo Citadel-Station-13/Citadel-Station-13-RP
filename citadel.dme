@@ -1099,7 +1099,6 @@
 #include "code\game\area\asteroid_areas.dm"
 #include "code\game\area\Away Mission areas.dm"
 #include "code\game\area\darkspace_area.dm"
-#include "code\game\area\endeavour_areas.dm"
 #include "code\game\area\misc.dm"
 #include "code\game\area\Off Station Areas.dm"
 #include "code\game\area\rift_areas.dm"

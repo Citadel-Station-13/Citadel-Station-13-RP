@@ -55,9 +55,14 @@ SUBSYSTEM_DEF(supply)
 		legacy_supply_packs[P.name] = P
 		legacy_supply_categories[P.category] = TRUE
 		P.initialize()
+	//Alphabetize legacy_supply_packs
+	tim_sort(legacy_supply_packs, /proc/cmp_auto_compare)
+
 	var/list/flattened = list()
 	for(var/key in legacy_supply_categories)
 		flattened += key
+	//Alphabetize flattened
+	tim_sort(flattened, /proc/cmp_auto_compare)
 	legacy_supply_categories = flattened
 	return SS_INIT_SUCCESS
 
