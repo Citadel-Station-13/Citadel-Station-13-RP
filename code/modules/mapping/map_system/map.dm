@@ -62,10 +62,6 @@
 
 	//* Levels *//
 	/// /datum/map_level datums. starts off as paths, inits later.
-	/// * This must be ordered in a way where a level above another level must never be below that level in order.
-	///   This means that you can go 1-1-1, 1-1-2, 1-2-1, 1-2-2, for a 1x2x2,
-	///   or 1-1-1, 1-2-1, 1-1-2, 1-2-2.
-	/// * It is recommended to order this based on stacks, so 1-1-1, 1-1-2, 1-2-1, 1-2-2.
 	/// * Automatic ordering will be enforced unless specifically overridden, but we still prefer you order it properly
 	///   for style / review reasons.
 	var/list/datum/map_level/levels

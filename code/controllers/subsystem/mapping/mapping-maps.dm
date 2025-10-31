@@ -43,6 +43,15 @@
 
 /datum/controller/subsystem/mapping/proc/load_map_impl(datum/map/instance, from_world_load)
 	emit_info_log("load: beginning load sequence of map id '[instance.id]")
+
+	var/list/validation_errors = list()
+	if(!instance.validate(TRUE, validation_errors))
+		var/validation_fail_msg = "Map [instance.id] ([instance.type]) failed validation with errors [json_encode(validation_errors)]. \
+			The map will be loaded anyways due to this being a subsystem-level mapload call, \
+			but this round will probably break in some spectacular manner."
+		STACK_TRACE(validation_fail_msg)
+		to_chat(world, SPAN_BOLDANNOUNCE("SSmapping: [validation_fail_msg]"))
+
 	// unroll & ready maps
 	var/list/datum/map/maps_to_load = list()
 	var/list/datum/map/maps_to_iterate = list(instance)

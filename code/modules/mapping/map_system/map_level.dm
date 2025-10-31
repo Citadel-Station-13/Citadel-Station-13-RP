@@ -128,16 +128,16 @@
 	var/tmp/struct_active = FALSE
 	/// our virtual x on the struct; this is not tile coordinates, this is struct coordinates
 	/// * set as needed so the map knows where to put us in the virtual struct.
-	var/struct_x = 0
+	var/struct_x
 	/// our virtual y on the struct; this is not tile coordinates, this is struct coordinates
 	/// * set as needed so the map knows where to put us in the virtual struct.
-	var/struct_y = 0
+	var/struct_y
 	/// the coordinate we are actually on, zlevel wise
 	///
 	/// * basically for fluff and simulation, not byond engine
 	/// * this is used for virtual coordinates as the 'z'
 	/// * set as needed so the map knows where to put us in the virtual struct.
-	var/struct_z = 0
+	var/struct_z
 
 	//* Virtual Coordinates *//
 	/// the coordinate of the lower-left / southwest corner border of the map
