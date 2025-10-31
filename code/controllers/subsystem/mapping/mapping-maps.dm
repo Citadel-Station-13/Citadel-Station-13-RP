@@ -44,14 +44,6 @@
 /datum/controller/subsystem/mapping/proc/load_map_impl(datum/map/instance, from_world_load)
 	emit_info_log("load: beginning load sequence of map id '[instance.id]")
 
-	var/list/validation_errors = list()
-	if(!instance.validate(TRUE, validation_errors))
-		var/validation_fail_msg = "Map [instance.id] ([instance.type]) failed validation with errors [json_encode(validation_errors)]. \
-			The map will be loaded anyways due to this being a subsystem-level mapload call, \
-			but this round will probably break in some spectacular manner."
-		STACK_TRACE(validation_fail_msg)
-		to_chat(world, SPAN_BOLDANNOUNCE("SSmapping: [validation_fail_msg]"))
-
 	// unroll & ready maps
 	var/list/datum/map/maps_to_load = list()
 	var/list/datum/map/maps_to_iterate = list(instance)
@@ -89,7 +81,15 @@
 	var/list/datum/callback/deferred_generation_callbacks = list()
 
 	for(var/datum/map/loading_map as anything in maps_to_load)
-		emit_info_log("load - loading '[instance.id]' with [length(loading_map.levels)] levels...")
+		emit_info_log("load - loading '[loading_map.id]' with [length(loading_map.levels)] levels...")
+
+		var/list/validation_errors = list()
+		if(!loading_map.validate(TRUE, validation_errors))
+			var/validation_fail_msg = "Map [loading_map.id] ([loading_map.type]) failed validation with errors [json_encode(validation_errors)]. \
+				The map will be loaded anyways due to this being a subsystem-level mapload call, \
+				but this round will probably break in some spectacular manner."
+			STACK_TRACE(validation_fail_msg)
+			to_chat(world, SPAN_BOLDANNOUNCE("SSmapping: [validation_fail_msg]"))
 
 		if(!loading_map.construct())
 			emit_init_fatal("load - could not construct map id '[loading_map.id]'; skipping")
