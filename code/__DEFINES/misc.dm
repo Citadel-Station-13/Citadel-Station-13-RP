@@ -224,8 +224,6 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define DEPARTMENT_RESEARCH			"research"
 #define DEPARTMENT_SECURITY			"security"
 #define DEPARTMENT_SYNTHETIC		"synthetic"
-/// Leaving this definition in place, can perhaps use it in the future but removing it will require digging into other stuff im not comfortable with -BLoop
-#define DEPARTMENT_TALON			"talon"
 #define DEPARTMENT_TRADE			"trade"
 #define DEPARTMENT_UNKNOWN			"unknown"
 

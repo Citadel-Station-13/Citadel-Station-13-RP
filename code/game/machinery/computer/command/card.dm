@@ -124,7 +124,7 @@
 	. = ..()
 	//? manifest
 	// todo: refactor PDA_Manifest and CrewManifest.js
-	data_core.get_manifest_list()
+	data_core.update_manifest_list()
 	.["manifest"] = GLOB.PDA_Manifest
 
 /obj/machinery/computer/card/ui_data(mob/user, datum/tgui/ui)
@@ -206,7 +206,7 @@
 	P.name = "crew manifest ([stationtime2text()])"
 	P.info = {"<h4>Crew Manifest</h4>
 		<br>
-		[data_core ? data_core.get_manifest(0) : ""]
+		[data_core ? data_core.get_html_manifest(FALSE, FALSE) : ""]
 	"}
 
 /obj/machinery/computer/card/proc/print_card_report()

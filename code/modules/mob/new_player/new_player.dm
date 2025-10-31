@@ -585,7 +585,7 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 
 /mob/new_player/proc/ViewManifest()
 	var/dat = "<div align='center'>"
-	dat += data_core.get_manifest(OOC = 1)
+	dat += data_core.get_html_manifest(FALSE, TRUE)
 
 	//src << browse(dat, "window=manifest;size=370x420;can_close=1")
 	var/datum/browser/popup = new(src, "Crew Manifest", "Crew Manifest", 370, 420, src)
