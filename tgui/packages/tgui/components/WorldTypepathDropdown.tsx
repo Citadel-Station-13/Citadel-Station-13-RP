@@ -19,6 +19,7 @@ export interface WorldTypepathDropdownProps extends BoxProps {
   onSelectPath: (path: string) => void;
   color?: string;
   disabled?: BooleanLike;
+  menuHeight?: number;
   filter?: {
     turfs?: {
       enabled: BooleanLike;
@@ -44,7 +45,6 @@ export interface WorldTypepathDropdownProps extends BoxProps {
  * * Expects WorldTypepaths to be sent.
  */
 export class WorldTypepathDropdown extends Component<WorldTypepathDropdownProps> {
-
   onUnfocusedClick: () => void;
   state: { open: boolean, searchString: string };
 
@@ -139,6 +139,7 @@ export class WorldTypepathDropdown extends Component<WorldTypepathDropdownProps>
                     iconRef: null,
                     iconState: null,
                     key: path,
+                    onSelectPath: onSelectPath,
                   });
                 });
             }
@@ -157,6 +158,7 @@ export class WorldTypepathDropdown extends Component<WorldTypepathDropdownProps>
                     iconRef: descriptor.iconRef,
                     iconState: descriptor.iconState,
                     key: path,
+                    onSelectPath: onSelectPath,
                   });
                 });
             }
@@ -175,7 +177,7 @@ export class WorldTypepathDropdown extends Component<WorldTypepathDropdownProps>
                         </Box>
                       </Stack.Item>
                       <Stack.Item grow={1}>
-                        <Box className="WorldTypepathDropdown__entries">
+                        <Box className="WorldTypepathDropdown__entries" height={this.props.menuHeight || "250px"}>
                           <WorldTypepathDropdownScroller
                             data={compiledTypepathEntries}
                             transformer={(entry) => {
@@ -222,6 +224,7 @@ interface WorldTypepathDropdownEntryData extends VStaticScrollingWindowerEntry {
   path: string;
   iconRef: string | null;
   iconState: string | null;
+  onSelectPath(path: string): void;
 }
 
 class WorldTypepathDropdownScroller extends VStaticScrollingWindower<WorldTypepathDropdownEntryData> { }

@@ -69,7 +69,7 @@ export const LoadMapSector = (props) => {
   const [currentTab, setCurrentTab] = useLocalState<string>('currentTab', 'map');
 
   return (
-    <Window width={575} height={550} title="Upload Map Sector">
+    <Window width={575} height={700} title="Upload Map Sector">
       <Window.Content>
         <Stack fill vertical>
           <Stack.Item grow={1}>
@@ -385,38 +385,42 @@ const MapLevelTraits = (props: {
           return (
             <Stack fill vertical>
               <Stack.Item>
-                <Stack fill>
-                  <Stack.Item grow={1}>
-                    <Dropdown color="transparent" width="100%" options={
-                      Object.keys(mapSystemData.keyedLevelTraits)
-                        .filter((k) => !levelData.traits?.includes(k))
-                        .filter((k) => mapSystemData.keyedLevelTraits[k]?.allowEdit)
-                    } selected={stagedTraitId} onSelected={(val) => setStagedTraitId(val)} />
-                  </Stack.Item>
-                  <Stack.Item>
-                    <Button icon="question" color={stagedTraitId ? "" : "transparent"} tooltip={maybeStagedTraitDesc} />
-                  </Stack.Item>
-                  <Stack.Item>
-                    <Button icon="plus" onClick={() => levelAct('levelAddTrait', { trait: stagedTraitId })} />
-                  </Stack.Item>
-                </Stack>
+                <Box className="LoadMapSector__TraitOrAttributePicker">
+                  <Stack fill>
+                    <Stack.Item grow={1}>
+                      <Dropdown color="transparent" width="100%" options={
+                        Object.keys(mapSystemData.keyedLevelTraits)
+                          .filter((k) => !levelData.traits?.includes(k))
+                          .filter((k) => mapSystemData.keyedLevelTraits[k]?.allowEdit)
+                      } selected={stagedTraitId} onSelected={(val) => setStagedTraitId(val)} />
+                    </Stack.Item>
+                    <Stack.Item>
+                      <Button icon="question" color={stagedTraitId ? "" : "transparent"} tooltip={maybeStagedTraitDesc} />
+                    </Stack.Item>
+                    <Stack.Item>
+                      <Button icon="plus" onClick={() => levelAct('levelAddTrait', { trait: stagedTraitId })} />
+                    </Stack.Item>
+                  </Stack>
+                </Box>
               </Stack.Item>
               {levelData.traits?.map((traitId) => {
                 const maybeTraitDesc: string | null = traitId ? mapSystemData.keyedLevelTraits[traitId]?.desc : "Unknown trait; is this a legacy trait that is now removed from the code?";
                 return (
                   <Stack.Item key={traitId}>
-                    <Stack fill>
-                      <Stack.Item grow={1}>
-                        {traitId}
-                      </Stack.Item>
-                      <Stack.Item>
-                        <Button icon="question" tooltip={maybeTraitDesc} />
-                      </Stack.Item>
-                      <Stack.Item>
-                        <Button.Confirm icon="minus" confirmIcon="minus" confirmContent={null}
-                          onClick={() => levelAct('levelDelTrait', { trait: traitId })} />
-                      </Stack.Item>
-                    </Stack>
+                    <Box className="LoadMapSector__TraitOrAttributeEntry">
+                      <Stack fill>
+                        <Stack.Item grow={1}>
+                          {traitId}
+                        </Stack.Item>
+                        <Stack.Item>
+                          <Button icon="question" tooltip={maybeTraitDesc} />
+                        </Stack.Item>
+                        <Stack.Item>
+                          <Button.Confirm icon="minus" confirmIcon="minus" confirmContent={null}
+                            onClick={() => levelAct('levelDelTrait', { trait: traitId })} />
+                        </Stack.Item>
+                      </Stack>
+                    </Box>
                   </Stack.Item>
                 );
               })}
@@ -480,27 +484,29 @@ const MapLevelAttributes = (props: {
                 const maybeAttribute: Game_MapLevelAttribute | null = mapSystemData.keyedLevelAttributes[attributeId];
                 return (
                   <Stack.Item key={attributeId}>
-                    <Stack fill>
-                      <Stack.Item grow={1}>
-                        {attributeId}
-                      </Stack.Item>
-                      <Stack.Item grow={1}>
-                        {!!maybeAttribute.allowEdit && (
-                          maybeAttribute.numeric ? (
-                            <NumberInput value={value} minValue={-Infinity} maxValue={Infinity} step={1} onChange={(val) => levelAct('levelSetAttribute', { attribute: attributeId, value: val })} />
-                          ) : (
-                            <Input value={`${value}`} onChange={(val) => levelAct('levelSetAttribute', { attribute: attributeId, value: val })} />
-                          )
-                        )}
-                      </Stack.Item>
-                      <Stack.Item>
-                        <Button icon="question" tooltip={maybeAttribute?.desc || "Unknown attribute. Was this removed from the game?"} />
-                      </Stack.Item>
-                      <Stack.Item>
-                        <Button.Confirm icon="minus" confirmIcon="minus" confirmContent={null}
-                          onClick={() => levelAct('levelDelAttribute', { attribute: attributeId })} />
-                      </Stack.Item>
-                    </Stack>
+                    <Box className="LoadMapSector__TraitOrAttributeEntry">
+                      <Stack fill>
+                        <Stack.Item grow={1}>
+                          {attributeId}
+                        </Stack.Item>
+                        <Stack.Item grow={1}>
+                          {!!maybeAttribute.allowEdit && (
+                            maybeAttribute.numeric ? (
+                              <NumberInput value={value} minValue={-Infinity} maxValue={Infinity} step={1} onChange={(val) => levelAct('levelSetAttribute', { attribute: attributeId, value: val })} />
+                            ) : (
+                              <Input value={`${value}`} onChange={(val) => levelAct('levelSetAttribute', { attribute: attributeId, value: val })} />
+                            )
+                          )}
+                        </Stack.Item>
+                        <Stack.Item>
+                          <Button icon="question" tooltip={maybeAttribute?.desc || "Unknown attribute. Was this removed from the game?"} />
+                        </Stack.Item>
+                        <Stack.Item>
+                          <Button.Confirm icon="minus" confirmIcon="minus" confirmContent={null}
+                            onClick={() => levelAct('levelDelAttribute', { attribute: attributeId })} />
+                        </Stack.Item>
+                      </Stack>
+                    </Box>
                   </Stack.Item>
                 );
               })}

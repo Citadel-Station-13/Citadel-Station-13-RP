@@ -27,6 +27,7 @@
 @include meta.load-css('./components/WorldTypepathDropdown.scss');
 
 // Interfaces
+@include meta.load-css('./interfaces/admin_modal/LoadMapSector.scss');
 @include meta.load-css('./interfaces/AlertModal.scss');
 @include meta.load-css('./interfaces/CameraConsole.scss');
 @include meta.load-css('./interfaces/Changelog.scss');
