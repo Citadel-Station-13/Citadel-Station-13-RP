@@ -13442,7 +13442,6 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
-/obj/overmap/entity/visitable/ship/endeavour,
 /obj/structure/bed/chair/bay/comfy/captain{
 	dir = 4
 	},
