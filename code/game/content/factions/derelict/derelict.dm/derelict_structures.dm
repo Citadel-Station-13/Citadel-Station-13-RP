@@ -1,6 +1,6 @@
 /datum/prototype/material/alienalloy/derelictalloy
-	id = "derelictalloy"
-	name = "derelictalloy"
+	id = "derelict-alloy"
+	name = "derelict-alloy"
 
 	// Becomes "[display_name] wall" in the UI.
 	display_name = "derelict alloy"
@@ -12,8 +12,8 @@
 	door_icon_base = "derelict" // For doors.
 
 /datum/prototype/material/alienalloy/derelictalloy/window
-	id = "derelictalloy"
-	name = "derelictalloy"
+	id = "derelict-alloy-glass"
+	name = "derelict-alloy-glass"
 
 	// Becomes "[display_name] wall" in the UI.
 	display_name = "derelict alloy"
