@@ -11,6 +11,17 @@
 	#define BULLET_ACT_ARG_ZONE 3
 	#define BULLET_ACT_ARG_EFFICIENCY 4
 
+/**
+ * /atom/proc/electrocute_act(): (list/electrocute_args)
+ * * Arg indices are ELECTROCUTE_ACT_ARG_* defines.
+ */
+#define COMSIG_ATOM_ELECTROCUTE_ACT "atom-electrocute_act"
+/**
+ * /atom/proc/electrocute_act(): (list/electrocute_args)
+ * * Arg indices are ELECTROCUTE_ACT_ARG_* defines.
+ */
+#define COMSIG_ATOM_ON_ELECTROCUTE_ACT "atom-on_electrocute_act"
+
 /// called from run_armorcalls(): (list/shieldcall_args, fake_attack)
 ///
 /// * This is an extremely low-level signal. Handle with care.

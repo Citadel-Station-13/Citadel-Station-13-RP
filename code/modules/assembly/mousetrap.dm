@@ -29,11 +29,11 @@
 		switch(type)
 			if("feet")
 				if(!H.shoes)
-					affecting = H.get_organ(pick("l_leg", "r_leg"))
+					affecting = H.legacy_organ_by_zone(pick("l_leg", "r_leg"))
 					H.afflict_paralyze(20 * 3)
 			if("l_hand", "r_hand")
 				if(!H.gloves)
-					affecting = H.get_organ(type)
+					affecting = H.legacy_organ_by_zone(type)
 					H.afflict_stun(20 * 3)
 		affecting?.inflict_bodypart_damage(
 			brute = 1,

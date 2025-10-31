@@ -5,7 +5,7 @@
 	if(def_zone)
 		if(isorgan(def_zone))
 			return getarmor_organ(def_zone, type)
-		var/obj/item/organ/external/affecting = get_organ(def_zone)
+		var/obj/item/organ/external/affecting = legacy_organ_by_zone(def_zone)
 		if(affecting)
 			return getarmor_organ(affecting, type)
 		//If a specific bodypart is targetted, check how that bodypart is protected and return the value.
@@ -28,7 +28,7 @@
 	if(def_zone)
 		if(isorgan(def_zone))
 			return getsoak_organ(def_zone, type)
-		var/obj/item/organ/external/affecting = get_organ(def_zone)
+		var/obj/item/organ/external/affecting = legacy_organ_by_zone(def_zone)
 		if(affecting)
 			return getsoak_organ(affecting, type)
 		//If a specific bodypart is targetted, check how that bodypart is protected and return the value.
@@ -106,7 +106,7 @@
 
 // Checked in borer code
 /mob/living/carbon/human/proc/check_head_coverage()
-	var/obj/item/organ/external/H = organs_by_name[BP_HEAD]
+	var/obj/item/organ/external/H = legacy_organ_by_zone(TARGET_ZONE_HEAD)
 	var/list/body_parts = H.get_covering_clothing(EYES)
 	if(LAZYLEN(body_parts))
 		return 1
@@ -114,7 +114,7 @@
 
 //Used to check if they can be fed food/drinks/pills
 /mob/living/carbon/human/proc/check_mouth_coverage()
-	var/obj/item/organ/external/H = organs_by_name[BP_HEAD]
+	var/obj/item/organ/external/H = legacy_organ_by_zone(TARGET_ZONE_HEAD)
 	var/list/protective_gear = H.get_covering_clothing(FACE)
 	for(var/obj/item/gear in protective_gear)
 		if(istype(gear) && (gear.body_cover_flags & FACE) && !(gear.clothing_flags & FLEXIBLEMATERIAL))
@@ -122,7 +122,7 @@
 	return null
 
 /mob/living/carbon/human/proc/check_mouth_coverage_survival()
-	var/obj/item/organ/external/H = organs_by_name[BP_HEAD]
+	var/obj/item/organ/external/H = legacy_organ_by_zone(TARGET_ZONE_HEAD)
 	var/list/protective_gear = H.get_covering_clothing(FACE)
 	for(var/obj/item/gear in protective_gear)
 		if(istype(gear) && (gear.body_cover_flags & FACE) && !(gear.clothing_flags & FLEXIBLEMATERIAL) && !(gear.clothing_flags & ALLOW_SURVIVALFOOD))
@@ -148,7 +148,7 @@
 	return 0
 
 /mob/living/carbon/human/emag_act(var/remaining_charges, mob/user, var/emag_source)
-	var/obj/item/organ/external/affecting = get_organ(user.zone_sel.selecting)
+	var/obj/item/organ/external/affecting = legacy_organ_by_zone(user.zone_sel.selecting)
 	if(!affecting || !(affecting.robotic >= ORGAN_ROBOT))
 		to_chat(user, "<span class='warning'>That limb isn't robotic.</span>")
 		return -1
@@ -162,9 +162,7 @@
 // This does a prob check to catch the thing flying at you, with a minimum of 1%
 /mob/living/carbon/human/proc/can_catch(var/obj/O)
 	if(!get_active_held_item())	// If active hand is empty
-		var/obj/item/organ/external/temp = organs_by_name["r_hand"]
-		if (active_hand % 2)
-			temp = organs_by_name["l_hand"]
+		var/obj/item/organ/external/temp = get_active_hand_organ()
 		if(temp && !temp.is_usable())
 			return FALSE	// The hand isn't working in the first place
 
@@ -289,7 +287,7 @@
 
 	var/organ_chance = 50
 	var/damage = shank_armor_helper(W, G, user)
-	var/obj/item/organ/external/chest = get_organ(hit_zone)
+	var/obj/item/organ/external/chest = legacy_organ_by_zone(hit_zone)
 
 	if(W.damage_mode & DAMAGE_MODE_EDGE)
 		organ_chance = 75

@@ -98,15 +98,8 @@
 		user.visible_message("<span class='danger'>\The [user] tries to take prints from \the [H], but they move away.</span>")
 		return
 
-	if(user.zone_sel.selecting == "r_hand" || user.zone_sel.selecting == "l_hand")
-		var/has_hand
-		var/obj/item/organ/external/O = H.organs_by_name["r_hand"]
-		if(istype(O) && !O.is_stump())
-			has_hand = 1
-		else
-			O = H.organs_by_name["l_hand"]
-			if(istype(O) && !O.is_stump())
-				has_hand = 1
+	if(target_zone == "r_hand" || target_zone == "l_hand")
+		var/has_hand = H.get_non_stump_organ_for_zone(TARGET_ZONE_LEFT_HAND) || H.get_non_stump_organ_for_zone(TARGET_ZONE_RIGHT_HAND)
 		if(!has_hand)
 			to_chat(user, "<span class='warning'>They don't have any hands.</span>")
 			return

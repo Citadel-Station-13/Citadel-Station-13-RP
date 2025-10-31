@@ -73,7 +73,6 @@
 /obj/item/organ/internal/brain/cephalon
 	name = "cephalon mass"
 	parent_organ = BP_TORSO
-	vital = TRUE
 
 /obj/item/organ/internal/brain/cephalon/Initialize(mapload)
 	. = ..()

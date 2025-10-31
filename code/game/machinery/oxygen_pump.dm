@@ -94,9 +94,6 @@
 	if(!user)
 		user = target
 	// Check target validity
-	if(!target.organs_by_name[BP_HEAD])
-		to_chat(user, SPAN_WARNING("\The [target] doesn't have a head."))
-		return
 	if(!target.check_has_mouth())
 		to_chat(user, SPAN_WARNING("\The [target] doesn't have a mouth."))
 		return

@@ -300,7 +300,7 @@
 
 		if(istype(M,/mob/living/carbon/human))
 			var/mob/living/carbon/human/H = M
-			host_bodypart = H.get_organ(infest_target)
+			host_bodypart = H.legacy_organ_by_zone(infest_target)
 			host_bodypart.implants |= src
 
 		return

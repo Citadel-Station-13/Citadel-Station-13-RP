@@ -123,7 +123,7 @@
 			var/list/check = list("l_foot", "r_foot")
 			while(check.len)
 				var/picked = pick(check)
-				var/obj/item/organ/external/affecting = H.get_organ(picked)
+				var/obj/item/organ/external/affecting = H.legacy_organ_by_zone(picked)
 				if(affecting)
 					if(affecting.robotic >= ORGAN_ROBOT)
 						return
