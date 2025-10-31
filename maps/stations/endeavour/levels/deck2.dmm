@@ -14699,7 +14699,8 @@
 	faction = "neutral"
 	},
 /obj/machinery/shield_diffuser,
-/turf/simulated/floor/airless/ceiling)
+/turf/simulated/floor/airless/ceiling,
+/area/space)
 "kmg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 1
@@ -15091,7 +15092,8 @@
 /area/hallway/d2fwdstrbdmaint/endeavour)
 "kED" = (
 /obj/machinery/shield_diffuser,
-/turf/simulated/floor/airless/ceiling)
+/turf/simulated/floor/airless/ceiling,
+/area/space)
 "kER" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/carpet/blucarpet,
