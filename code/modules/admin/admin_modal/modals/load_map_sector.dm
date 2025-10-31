@@ -339,6 +339,7 @@
 		return TRUE
 	load_started = TRUE
 	log_and_message_admins("is loading map sector '[buffer.name]' with [length(buffer.levels)] levels", owner.owner)
+	log_admin("[key_name(owner.owner)] is loading a map sector with parameters [json_encode(buffer.serialize())]")
 	update_ui_data()
 	var/start_time = REALTIMEOFDAY
 	. = do_load()
@@ -348,6 +349,8 @@
 	load_finished = TRUE
 	log_and_message_admins("loaded '[buffer.name]' with [length(buffer.levels)] levels in [round((end_time - start_time) * 0.1, 0.1)] seconds", owner.owner)
 	update_ui_data()
+	// TODO: show feedback in UI before closing?
+	qdel(src)
 
 /datum/admin_modal/load_map_sector/proc/do_load()
 	if(buffer_overmap_active)
