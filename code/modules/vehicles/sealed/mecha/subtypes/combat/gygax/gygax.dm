@@ -88,8 +88,9 @@
 	bomb = 0.65
 
 /obj/vehicle/sealed/mecha/combat/gygax/dark
-	desc = "A lightweight exosuit used by paramilitary forces. A significantly upgraded Gygax security mech."
 	name = "Dark Gygax"
+	desc = "A lightweight exosuit used by paramilitary forces. A significantly upgraded Gygax security mech."
+	description_fluff = "This variant of the standard Gygax is colloquially referred to as the 'Dark Gygax', on account of the exotic materials used in its construction. The standard Gygax's diamond-weave armor system is augmented with depleted morphium, lending it a darker and marginally more sinister hue. Simultaneously, this upgrade grants the Dark Gygax considerably more resilience without sacrificing the standard model's agility or speed. Due to the gross expenditure required to fabricate a Dark Gygax's armor plating, these platforms are exceedingly rare. Most security forces are content with the protection and utility of the standard Gygax, making this upgrade appear unnecessary. However, the Dark Gygax is often sought out by high-tier asset protection teams and paramilitary outfits."
 	integrity = 400
 	integrity_max = 400
 	icon_state = "darkgygax_adv"

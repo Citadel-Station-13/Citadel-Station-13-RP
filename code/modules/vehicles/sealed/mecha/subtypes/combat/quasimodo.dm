@@ -11,6 +11,7 @@
 /obj/vehicle/sealed/mecha/combat/quasimodo
 	name = "Quasimodo"
 	desc = "A massive mech that seems to tower over most people, it has a massive cannon on its shoulder."
+	description_fluff = "Created near the end of Nanotrasen’s war with the Syndicate, right before they collapsed, the Quasimodo was designed in collaboration with Hephaestus Industries and Nanotrasen as a response to the growing threat of Cybersun Industries mechs such as the Mauler. This massive mech and its shoulder mounted, weapon mount was made to carry Anti Tank/Anti Building armament, generally too large to fit on any smaller mech. Although it was never used, due to the Syndicate disbanding right before it saw the light, before being promptly shelved. But, the project was picked back up due to consistent requests from SDF members for something larger to deal with the ever growing threats from mercenary companies and pirates getting their hands on their own mechs. But of course, only if they had the money for it. The Quasimodo stands at 36’(11m) tall, its cockpit windows made with phoron reinforced glass, and its hull made with many, many layers of durasteel. Usually paired with the Quasimodo is the Hag-30, 155mm, Anti Tank Cannon, due to the fact it’s usually built with it permanently fixed, but other models do exist that have other weapons. As expected, this mech is designed with ground based, open combat in mind."
 	icon = 'icons/mecha/mecha96x96.dmi'
 	icon_state = "quasimodo"
 	initial_icon = "quasimodo"

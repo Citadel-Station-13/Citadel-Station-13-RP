@@ -1164,19 +1164,6 @@
 	if(usr.stat > 0)
 		return
 	var/datum/topic_input/top_filter = new /datum/topic_input(href,href_list)
-	if(href_list["select_equip"])
-		if(usr != src.occupant_legacy)	return
-		var/obj/item/vehicle_module/lazy/legacy/equip = top_filter.getObj("select_equip")
-		if(equip)
-			src.selected = equip
-			src.occupant_message("You switch to [equip]")
-			src.visible_message("[src] raises [equip]")
-			send_byjax(src.occupant_legacy,"exosuit.browser","eq_list",src.get_equipment_list())
-		return
-	if(href_list["toggle_airtank"])
-		if(usr != src.occupant_legacy)	return
-		src.internal_tank()
-		return
 	if (href_list["toggle_zoom"])
 		src.zoom()
 	if(href_list["switch_damtype"])
@@ -1184,20 +1171,10 @@
 	if(href_list["phasing"])
 		src.phasing()
 	if(href_list["port_disconnect"])
-		if(usr != src.occupant_legacy)	return
 		src.disconnect_from_port()
 		return
 	if (href_list["port_connect"])
-		if(usr != src.occupant_legacy)	return
 		src.connect_to_port()
-		return
-	if (href_list["change_name"])
-		if(usr != src.occupant_legacy)	return
-		var/newname = sanitizeSafe(input(occupant_legacy,"Choose new exosuit name","Rename exosuit",initial(name)) as text, MAX_NAME_LEN)
-		if(newname)
-			name = newname
-		else
-			alert(occupant_legacy, "nope.avi")
 		return
 	if (href_list["toggle_id_upload"])
 		if(usr != src.occupant_legacy)	return

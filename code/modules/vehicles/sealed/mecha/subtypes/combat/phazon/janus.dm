@@ -11,6 +11,7 @@
 /obj/vehicle/sealed/mecha/combat/phazon/janus
 	name = "Phazon Prototype Janus Class"
 	desc = "A sleek exosuit that radiates a strange, alien energy."
+	description_fluff = "An incredibly high-tech exosuit constructed out of salvaged alien components fused with cutting-edge modern technology. This machine is theoretically capable of sublight travel. However, due to the vaguely anomalous nature of its miniaturized, supermatter-fueled Toroidal Bluespace Drive, it is uncertain how this ability manifests."
 	icon_state = "janus"
 	initial_icon = "janus"
 

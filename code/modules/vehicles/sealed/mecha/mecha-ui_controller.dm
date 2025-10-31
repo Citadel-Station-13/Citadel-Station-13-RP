@@ -55,6 +55,12 @@
 			casted_vehicle.radio.set_frequency(new_freq)
 			#warn log
 			return TRUE
+		if("setAirtankActive")
+			var/desired = params["active"]
+			if(desired == casted_vehicle.use_internal_tank)
+				return TRUE
+			#warn impl; call internal_tank()
+			return TRUE
 		if("connectAtmosPort")
 			#warn feedback & log
 			return TRUE
@@ -68,7 +74,13 @@
 			#warn feedback & log
 			return TRUE
 		if("setDisplayName")
-			#warn feedback & log
+			var/desiredRaw = params["name"]
+			var/desired = sanitizeSafe(desiredRaw, MAX_NAME_LEN)
+			if(!length(desired))
+				return TRUE
+			var/old_name = casted_vehicle.name
+			casted_vehicle.name = desired
+			casted_vehicle.vehicle_log_for_admins(actor, "renamed", list("oldName" = old_name, "newName" = desired))
 			return TRUE
 
 /datum/vehicle_ui_controller/mecha/ui_nested_data(mob/user, datum/tgui/ui)

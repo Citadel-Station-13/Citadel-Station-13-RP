@@ -1,6 +1,7 @@
 /obj/vehicle/sealed/mecha/medical/odysseus
-	desc = "These exosuits are developed and produced by Vey-Med. (&copy; All rights reserved)."
 	name = "Odysseus"
+	desc = "These exosuits are developed and produced by Vey-Med. (&copy; All rights reserved)."
+	description_fluff = "The dominant medical exosuit on the modern market, the Odysseus is a Vey-Med product designed to incorporate other Vey-Med inventions - like the Sleeper - into a mobile frame. The Odysseus' focus on rescue operations in hazardous environments is augmented with some of the best agility ratings on the civilian market. In spite of its narrow profile, the Odysseus stands slightly taller than the APLU at 9.5'(3m). Capable of operating in vacuum as well as in most adverse weather conditions, the staying power of this mecha speaks volumes for its efficacy."
 	catalogue_data = list(
 		/datum/category_item/catalogue/technology/odysseus,
 		/datum/category_item/catalogue/information/organization/vey_med

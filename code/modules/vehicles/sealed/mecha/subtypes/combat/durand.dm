@@ -9,8 +9,17 @@
 	bomb = 0.5
 
 /obj/vehicle/sealed/mecha/combat/durand
-	desc = "An aging combat exosuit utilized by many corporations. Originally developed to combat hostile alien lifeforms."
 	name = "Durand"
+	desc = "An aging combat exosuit utilized by many corporations. Originally developed to combat hostile alien lifeforms."
+	description_fluff = {"
+		The Durand is an aging combat exosuit designed during the Rye-Egress War.
+		Once considered the most durable exosuit ever developed by Humanity, this platform has long since lost that title.
+		In spite of its age, the Durand remains one of the most well built and armored exosuits on the market.
+		Standing at a towering 12'(3.5m), the exosuit boasts depleted uranium armor paneling and a
+		robust electrical harness capable of powering some of the most fearsome weaponry still in use today.
+		Although modern militaries - both Galactic and Corporate - have since moved on to more contemporary models,
+		the Durand continues to see usage with smaller mercenary bands and SysDef elements.
+	"}
 	icon_state = "durand"
 	initial_icon = "durand"
 

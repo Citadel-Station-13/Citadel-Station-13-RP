@@ -10,7 +10,8 @@
 
 /obj/vehicle/sealed/mecha/combat/gorilla
 	name = "Gorilla"
-	desc = "<b>Blitzkrieg!</b>" //stop using all caps in item descs i will fight you. its redundant with the bold.
+	desc = "<b>Blitzkrieg!</b>"
+	description_fluff = "Quadrupedal mech designs are considered excessively rare. This chassis feels more like a vehicle than a proper exosuit as a result. Although specs similar to those found in the Gorilla were patened by Hephaestus over a century ago, the company maintains that it had nothing to do with the production of this machine. When its legs are fully extended the Gorilla stands 20'(6.1m) tall, making it nearly impossible to operate at full speed within the cramped confines of a facility or vessel."
 	icon = 'icons/mecha/mecha64x64.dmi'
 	icon_state = "pzrmech"
 	initial_icon = "pzrmech"
@@ -50,17 +51,6 @@
 		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/explosive,
 		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/lmg,
 	)
-
-/obj/vehicle/sealed/mecha/combat/gorilla/get_commands()
-	var/output = {"<div class='wr'>
-						<div class='header'>Special</div>
-						<div class='links'>
-						<a href='?src=\ref[src];toggle_zoom=1'>Toggle zoom mode</a><br>
-						</div>
-						</div>
-						"}
-	output += ..()
-	return output
 
 /obj/effect/decal/mecha_wreckage/gorilla
 	name = "Gorilla wreckage"

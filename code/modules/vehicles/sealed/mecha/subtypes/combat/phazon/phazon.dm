@@ -11,6 +11,7 @@
 /obj/vehicle/sealed/mecha/combat/phazon
 	name = "Phazon"
 	desc = "A sleek exosuit with unnaturally pronounced curves."
+	description_fluff = "The Phazon exosuit is the result of a heavily classified Nanotrasen research initiative. Designed to serve as a reconnaissance, infiltration, and flanking mecha, the Phazon possesses an array of complex and expensive phasing and cloaking systems which allow it to change its matter state and move through solid materials. Although initial field tests were positive, the raw cost of manufacturing the Phazon made mass production untenable. Of the few suits deployed during the Phoron War, none are known to have fallen into enemy hands. In spite of this, corporate espionage has lead to various parts and components becoming available on the black market. The actual circuitry and chips necessary to construct the Phazon, however, remain closely guarded corporate secrets. The exosuit's hover capabilities cause it to float roughly a foot off of the ground. Due to this, although the Janus itself comes in at a moderate 9'(2.7m) in height, it effectively takes up 10' to 11'(3m-3.4m) of space when in operation."
 	icon_state = "phazon"
 	initial_icon = "phazon"
 
@@ -51,18 +52,6 @@
 		/obj/item/vehicle_module/lazy/legacy/tool/rcd,
 		/obj/item/vehicle_module/lazy/legacy/gravcatapult,
 	)
-
-/obj/vehicle/sealed/mecha/combat/phazon/get_commands()
-	var/output = {"<div class='wr'>
-						<div class='header'>Special</div>
-						<div class='links'>
-						<a href='?src=\ref[src];phasing=1'><span id="phasing_command">[phasing?"Dis":"En"]able phasing</span></a><br>
-						<a href='?src=\ref[src];switch_damtype=1'>Change melee damage type</a><br>
-						</div>
-						</div>
-						"}
-	output += ..()
-	return output
 
 //Meant for random spawns.
 /obj/vehicle/sealed/mecha/combat/phazon/old
