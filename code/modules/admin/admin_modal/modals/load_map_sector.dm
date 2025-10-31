@@ -90,10 +90,15 @@
 		return
 	switch(action)
 		if("load")
-			if(!load_ready)
+			if(!load_ready || load_finished)
 				return TRUE
 			load()
 			return TRUE
+
+	if(load_started || load_finished)
+		// DO NOT FOR THE LOVE OF GOD PROCEED THEY WILL BE DIRECTLY MODIFYING
+		// A LOADED MAP THAT WOULD BE REALLY FUCKING BAD
+		return TRUE
 
 	// this may or may not be set but we're doing it here to avoid too many definitions
 	var/target_level_index
@@ -333,11 +338,15 @@
 	if(load_started || load_finished)
 		return TRUE
 	load_started = TRUE
+	log_and_message_admins("is loading map sector '[buffer.name]' with [length(buffer.levels)] levels", owner.owner)
 	update_ui_data()
+	var/start_time = REALTIMEOFDAY
 	. = do_load()
+	var/end_time = REALTIMEOFDAY
 	if(!.)
 		return
 	load_finished = TRUE
+	log_and_message_admins("loaded '[buffer.name]' with [length(buffer.levels)] levels in [round((end_time - start_time) * 0.1, 0.1)] seconds", owner.owner)
 	update_ui_data()
 
 /datum/admin_modal/load_map_sector/proc/do_load()

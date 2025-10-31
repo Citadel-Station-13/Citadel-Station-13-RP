@@ -7,7 +7,9 @@ GLOBAL_LIST(topic_status_cache)
 
 /world
 	mob = /mob/new_player
+	// TODO: replace with /turf/unallocated
 	turf = /turf/space/basic
+	// TODO: replace with /area/unallocated
 	area = /area/space
 	view = "15x15"
 	name = "Citadel Station 13 - Roleplay"
