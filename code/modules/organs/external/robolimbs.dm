@@ -183,6 +183,13 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	icon = 'icons/mob/cyberlimbs/unbranded/unbranded_digitigrade.dmi'
 	parts = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
 
+/datum/robolimb/unbranded_brain_jar
+	company = "Rigel Consumer Electronics"
+	desc = "An evolution in MMI technology: all the protection of a standard cyborg head, with none of the subtlety. Brought to you by Rigel Consumer Electronics."
+	icon = 'icons/mob/cyberlimbs/unbranded/rce_mmi_brainjar.dmi'
+	parts = list(BP_HEAD)
+	unavailable_to_build = TRUE
+
 /datum/robolimb/nanotrasen
 	company = "Nanotrasen"
 	desc = "A simple but efficient robotic limb, created by Nanotrasen."
