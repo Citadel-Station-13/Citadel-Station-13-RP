@@ -23,7 +23,6 @@
 		zoom_possible && zoom_action,
 		phasing_possible && phasing_action,
 		switch_dmg_type_possible && switch_damtype_action,
-		cloak_possible && cloak_action,
 	))
 		action.grant(user.actions_controlled)
 
@@ -38,7 +37,6 @@
 		phasing_action,
 		switch_damtype_action,
 		overload_action,
-		cloak_action,
 	))
 		action.revoke(user.actions_controlled)
 
@@ -176,19 +174,6 @@
 	update_buttons()
 	chassis.phasing()
 
-/datum/action/mecha/mech_toggle_cloaking
-	name = "Toggle Mech phasing"
-	button_icon_state = "mech_phasing_off"
-
-/datum/action/mecha/mech_toggle_cloaking/invoke_target(obj/vehicle/sealed/mecha/target, datum/event_args/actor/actor)
-	. = ..()
-	if(.)
-		return
-	var/obj/vehicle/sealed/mecha/chassis = target
-	button_icon_state = "mech_phasing_[chassis.cloaked ? "on" : "off"]"
-	update_buttons()
-	chassis.toggle_cloaking()
-
 /obj/vehicle/sealed/mecha/proc/overload()
 	if(usr.stat == 1)//No manipulating things while unconcious.
 		return
@@ -245,14 +230,3 @@
 	phasing = !phasing
 	send_byjax(src.occupant_legacy,"exosuit.browser","phasing_command","[phasing?"Dis":"En"]able phasing")
 	src.occupant_message("<font color=\"[phasing?"#00f\">En":"#f00\">Dis"]abled phasing.</font>")
-
-/obj/vehicle/sealed/mecha/proc/toggle_cloaking()
-	if(usr!=src.occupant_legacy)
-		return
-
-	if(cloaked)
-		uncloak()
-	else
-		cloak()
-
-	src.occupant_message("<font color=\"[cloaked?"#00f\">En":"#f00\">Dis"]abled cloaking.</font>")

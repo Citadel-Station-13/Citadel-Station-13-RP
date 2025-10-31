@@ -5,6 +5,12 @@
 /obj/vehicle/proc/movement_delay()
 	return movespeed_hyperbolic
 
+/obj/vehicle/proc/user_vehicle_turn(direction)
+	return vehicle_turn(direction)
+
+/obj/vehicle/proc/user_vehicle_move(direction, face_direction)
+	return vehicle_move(direction, face_direction)
+
 /**
  * Vehicle-initiated turns go through this.
  */
@@ -22,9 +28,13 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	if(world.time < move_delay)
 		return FALSE
-	var/turf/new_loc = get_step(src, direction)
-	if(!Move(new_loc, face_direction))
-		return FALSE
+	if(direction & (UP|DOWN))
+		#warn hook move upwards/downwards to go here
+		#warn z-move
+	else
+		var/turf/new_loc = get_step(src, direction)
+		if(!Move(new_loc, face_direction))
+			return FALSE
 	var/add_delay = max(world.tick_lag, movement_delay())
 	// enforce euclidean dist on diagonal moves
 	if(ISDIAGONALDIR(direction) && loc == new_loc)

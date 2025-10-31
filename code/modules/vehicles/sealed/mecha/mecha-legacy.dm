@@ -424,22 +424,12 @@
 	return max(1, round(tally, 0.1))	// Round the total to the nearest 10th. Can't go lower than 1 tick. Even humans have a delay longer than that.
 
 /obj/vehicle/sealed/mecha/proc/dyndomove(direction)
-	if(!can_move)
-		return 0
 	if(src.pr_inertial_movement.active())
 		return 0
 	if(!has_charge(step_energy_drain))
 		return 0
 
 	var/atom/oldloc = loc
-
-	//Can we even move, below is if yes.
-
-	if(defence_mode)//Check if we are currently locked down
-		if(world.time - last_message > 20)
-			src.occupant_message("<font color='red'>Unable to move while in defence mode</font>")
-			last_message = world.time
-		return 0
 
 	if(zoom)//:eyes:
 		if(world.time - last_message > 20)
@@ -454,7 +444,6 @@
 			step_energy_drain = initial(step_energy_drain)
 			src.occupant_message("<font color='red'>Leg actuators damage threshold exceded. Disabling overload.</font>")
 
-
 	var/move_result = 0
 
 	if(hasInternalDamage(MECHA_INT_CONTROL_LOST) && prob(35))
@@ -465,70 +454,16 @@
 			occupant_message("<span class='warning'>Your vehicle lacks the capacity to move in that direction!</span>")
 			return FALSE
 
-		//We're using locs because some mecha are 2x2 turfs. So thicc!
-		var/result = TRUE
-
-		for(var/turf/T in locs)
-			if(!T.z_exit_check(src, direction))
-				occupant_message("<span class='warning'>There's something blocking your movement in that direction!</span>")
-				result = FALSE
-				break
-		if(result)
-			move_result = mechstep(direction)
-
-	//Turning
-
-	else if(src.dir != direction)
-
-		#warn deal with strafing (all references!)
-		if(strafing)
-			move_result = mechstep(direction)
-		else
-			move_result = mechturn(direction)
-
-	//Stepping
-	else
-		move_result	= mechstep(direction)
-
-
 	if(move_result)
 		can_move = 0
 		use_power(step_energy_drain)
 		if(istype(src.loc, /turf/space))
 			if(!src.check_for_support())
 				src.pr_inertial_movement.start(list(src,direction))
-				src.log_message("<span class='warning'>Movement control lost. Inertial movement started.</span>")
 		sleep(get_step_delay() * ((ISDIAGONALDIR(direction) && (get_dir(oldloc, loc) == direction))? SQRT_2 : 1))
 		can_move = 1
 		return 1
 	return 0
-
-/obj/vehicle/sealed/mecha/proc/mechturn(direction)
-	setDir(direction)
-	if(swivel_sound)
-		playsound(src,swivel_sound,40,1)
-	return 1
-
-/obj/vehicle/sealed/mecha/proc/mechstep(direction)
-	var/current_dir = dir	//For strafing
-	var/result = get_step(src,direction)
-	var/atom/oldloc = loc
-	if(result && (Move(result, direction) || loc != oldloc))
-		if(stomp_sound)
-			playsound(src,stomp_sound,40,1)
-		handle_equipment_movement()
-	if(strafing)	//Also for strafing
-		setDir(current_dir)
-	return result
-
-
-/obj/vehicle/sealed/mecha/proc/mechsteprand()
-	var/result = get_step_rand(src)
-	if(result && Move(result))
-		if(stomp_sound)
-			playsound(src,stomp_sound,40,1)
-		handle_equipment_movement()
-	return result
 
 /obj/vehicle/sealed/mecha/Bump(var/atom/obstacle)
 //	src.inertia_dir = null
@@ -591,9 +526,6 @@
 			var/obj/item/vehicle_module/lazy/legacy/destr = SAFEPICK(equipment)
 			if(destr)
 				destr.destroy()
-
-/obj/vehicle/sealed/mecha/proc/hasInternalDamage(int_dam_flag=null)
-	return int_dam_flag ? internal_damage&int_dam_flag : internal_damage
 
 /obj/vehicle/sealed/mecha/proc/setInternalDamage(int_dam_flag)
 	internal_damage |= int_dam_flag

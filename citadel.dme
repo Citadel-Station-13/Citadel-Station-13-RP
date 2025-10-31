@@ -5550,6 +5550,7 @@
 #include "code\modules\vehicles\sealed\mecha\mecha-defense.dm"
 #include "code\modules\vehicles\sealed\mecha\mecha-faults.dm"
 #include "code\modules\vehicles\sealed\mecha\mecha-legacy.dm"
+#include "code\modules\vehicles\sealed\mecha\mecha-movement.dm"
 #include "code\modules\vehicles\sealed\mecha\mecha-power.dm"
 #include "code\modules\vehicles\sealed\mecha\mecha-ui_controller.dm"
 #include "code\modules\vehicles\sealed\mecha\mecha.dm"

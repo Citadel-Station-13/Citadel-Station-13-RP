@@ -127,3 +127,5 @@
 	shielded_arc_degrees_from_center = 60 //! covers frontal and front left/right's
 	charge_maintain_cost_per_unit = 80 //! ~8 units/tick to maintain while active
 	charge_regen_cost_per_unit = 1000 //! ~0.5 cell units per point of damage
+
+#warn duran'ds should immobilize or near immobilze it
