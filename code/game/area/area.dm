@@ -773,11 +773,35 @@ var/list/ghostteleportlocs = list()
  */
 /area/proc/take_turfs(list/turf/turfs)
 	for(var/turf/T in turfs)
+		if(T.loc == src)
+			continue
 		ChangeArea(T, src)
+
+/**
+ * take turfs into ourselves
+ */
+/area/proc/take_turfs_checking_tick(list/turf/turfs)
+	for(var/turf/T in turfs)
+		if(T.loc == src)
+			continue
+		ChangeArea(T, src)
+		CHECK_TICK
 
 /**
  * give turfs to other area
  */
 /area/proc/give_turfs(list/turf/turfs, area/give_to)
 	for(var/turf/T in turfs)
+		if(T.loc != src)
+			stack_trace("give_turfs found a turf not in source area.")
 		ChangeArea(T, give_to)
+
+/**
+ * give turfs to other area
+ */
+/area/proc/give_turfs_checking_tick(list/turf/turfs, area/give_to)
+	for(var/turf/T in turfs)
+		if(T.loc != src)
+			stack_trace("give_turfs found a turf not in source area.")
+		ChangeArea(T, give_to)
+		CHECK_TICK

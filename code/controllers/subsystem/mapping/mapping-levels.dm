@@ -239,6 +239,21 @@
 
 	var/datum/dmm_context/loaded_context
 
+	if(instance.base_area != world.area)
+		var/area/level_area_type = instance.base_area
+		var/area/level_area_instance
+		if(level_area_type.unique)
+			level_area_instance = GLOB.areas_by_type[level_area_type]
+		if(!level_area_instance)
+			level_area_instance = new(null)
+		level_area_instance.take_turfs(Z_TURFS(instance.z_index))
+		CHECK_TICK
+	if(instance.base_turf != world.turf)
+		var/list/turf/to_change = Z_TURFS(instance.z_index)
+		for(var/turf/T as anything in to_change)
+			T.ChangeTurf(instance.base_turf)
+			CHECK_TICK
+
 	if(instance.has_map_path())
 		var/datum/dmm_parsed/parsed = instance.parse_map_path()
 		if(!parsed)

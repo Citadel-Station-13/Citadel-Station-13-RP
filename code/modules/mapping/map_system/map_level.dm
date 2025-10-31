@@ -71,7 +71,9 @@
 
 	//* Turf Properties *//
 	/// base turf typepath for this level
-	var/base_turf = /turf/space
+	/// * This is one of the few places where this is allowed to be /turf/space/basic rather
+	///   than /turf/space. This optimizes mapload.
+	var/base_turf = /turf/space/basic
 	/// base area typepath for this level
 	var/base_area = /area/space
 	/// gas string / atmosphere path / atmosphere id for indoors air
