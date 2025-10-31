@@ -122,6 +122,11 @@ if $grep -P '/turf[0-z/_]*,\n/turf' $map_files; then
 	echo -e "${RED}ERROR: found multiple tiles on one tile, this will result in severe glitches.${NC}"
 	st=1
 fi;
+if $grep -P '/turf[0-z/_]*\)' $map_files; then
+	echo
+	echo -e "${RED}ERROR: last instance of a map coordinate key was a /turf. Is an area missing?${NC}"
+	st=1
+fi;
 if $grep -P '\W\/turf\s*[,\){]' $map_files; then
     echo
 	echo -e "${RED}ERROR: base /turf path use detected in maps, please replace with proper paths.${NC}"
