@@ -141,6 +141,13 @@
 		// If that's changed, then you'll want to swipe the rest of the roofing code from code/game/turfs/simulated/floor_attackby.dm
 	return
 
+//* Sector API *//
+
+/turf/space/sector_block_high_altitude_observation_to_below()
+	return FALSE
+
+/turf/space/sector_always_visible_from_high_altitude()
+	return TRUE
 
 //// Special variants used in various maps ////
 

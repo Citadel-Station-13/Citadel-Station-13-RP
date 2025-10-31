@@ -153,6 +153,12 @@
 	/// additional mesh heuristic per 1000 objects
 	var/persistent_trash_mesh_heuristic_escalate_per_thousand = OBJ_PERSIST_DEFAULT_TUNING_TRASH_MESH_HEURISTIC_ESCALATE_PER_THOUSAND
 
+	//* Random Data *//
+	/// rangefinding coordinate offset x
+	var/rangefinding_offset_x
+	/// rangefinding coordinate offset y
+	var/rangefinding_offset_y
+
 	//* Rebuilds *//
 	var/turfs_rebuilding = FALSE
 	var/turfs_rebuilding_waiting = FALSE
@@ -291,6 +297,24 @@
 		orientation = data["orientation"]
 
 /**
+ * randomize things on init
+ */
+/datum/map_level/proc/initialize_random_data()
+	// you'll notice that this uses world size and not map level size
+	// this is different from our usual system which does allow for per-level sizes
+	//
+	// this is because this is effectively a silly RP randomization feature
+	// and not actually super critical for balancing
+	//
+	// people will cheat the system anyways, so.
+	// not much point; if we really wanted secure/no-cheating coordinates for things like air support,
+	// we'd just make a different system than a simple per-level offset.
+	if(isnull(rangefinding_offset_x))
+		rangefinding_offset_x = rand(-1000 - round(world.maxx / 2), 1000 - round(world.maxx / 2))
+	if(isnull(rangefinding_offset_y))
+		rangefinding_offset_y = rand(-1000 - round(world.maxy / 2), 1000 - round(world.maxy / 2))
+
+/**
  * get .dmm path or file
  */
 /datum/map_level/proc/resolve_map_path()
@@ -385,7 +409,7 @@
 /datum/map_level/proc/allow_deallocate()
 	return TRUE
 
-//* traits
+//* Traits *//
 
 /datum/map_level/proc/has_trait(trait)
 	return trait in traits
@@ -404,7 +428,7 @@
 	if(loaded)
 		SSmapping.on_trait_del(src, trait)
 
-//* attributes
+//* Attributes *//
 
 /datum/map_level/proc/get_attribute(attribute)
 	return attributes?[attribute]
@@ -421,7 +445,7 @@
 	if(loaded)
 		SSmapping.on_attribute_set(src, attribute, old, null)
 
-//* rebuilds
+//* Rebuilds *//
 
 /**
  * Rebuild turfs up/down of us
@@ -610,13 +634,15 @@
 		transformed += border
 	return transformed
 
+//* Turfs *//
+
 /**
  * get all turfs
  */
 /datum/map_level/proc/level_turfs()
 	return Z_TURFS(z_index)
 
-//* subtypes
+//* Subtypes *//
 
 /**
  * dynamically generated levels should use this

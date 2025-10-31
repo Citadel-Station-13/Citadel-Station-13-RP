@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
+
 /**
  * (re)initialize physics
  *
@@ -143,6 +146,8 @@
  */
 /obj/overmap/entity/proc/get_heading()
 	return (arctan(vel_y, vel_x) + 360) % 360
+
+//* Entity Ops *//
 
 /**
  * gets distance in overmap distance to other entity
