@@ -5,18 +5,13 @@
 
 // split into three accessories because the code for markings is incredibly ancient
 /datum/sprite_accessory/marking/snout/cryptid
-	name = "Cryptid Snout (Primary)"
-	id = "marking_cryptid_snout_primary"
-	icon_state = "cryptid_primary"
+	name = "Cryptid Snout"
+	id = "marking_cryptid_snout"
+	icon_state = "cryptid"
 	legacy_use_additive_color_matrix = FALSE
 	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
 
-/datum/sprite_accessory/marking/snout/cryptid/secondary
-	name = "Cryptid Snout (Secondary)"
-	id = "marking_cryptid_snout_secondary"
-	icon_state = "cryptid_secondary"
-
-/datum/sprite_accessory/marking/snout/cryptid/tertiary
-	name = "Cryptid Snout (Tertiary)"
-	id = "marking_cryptid_snout_tertiary"
-	icon_state = "cryptid_tertiary"
+/datum/sprite_accessory/marking/snout/cryptid/eyes
+	name = "Cryptid Snout (Eyes)"
+	id = "marking_cryptid_snout_eyes"
+	icon_state = "cryptid_eyes"
