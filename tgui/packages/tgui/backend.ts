@@ -12,7 +12,7 @@
  */
 
 import { perf } from 'common/perf';
-import { createAction, Store } from 'common/redux';
+import { createAction } from 'common/redux';
 import { BooleanLike } from 'tgui-core/react';
 
 import { setupDrag } from './drag';

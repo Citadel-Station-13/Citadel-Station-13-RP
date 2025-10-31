@@ -2287,7 +2287,7 @@
 /obj/effect/shuttle_landmark/automatic{
 	name = "Deck 3, Starboard Side"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "bBH" = (
 /obj/structure/cable{
@@ -4483,7 +4483,7 @@
 "dlE" = (
 /obj/structure/lattice,
 /obj/structure/grille,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "dlG" = (
 /obj/structure/cable{
@@ -4731,7 +4731,7 @@
 /area/crew_quarters/recreation_area)
 "dsX" = (
 /obj/machinery/camera/network/outside,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "dwU" = (
 /obj/structure/cable/green{
@@ -7731,7 +7731,7 @@
 /area/security/hangar)
 "fDw" = (
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "fEj" = (
 /obj/effect/floor_decal/corner/blue{
@@ -8251,7 +8251,7 @@
 	dir = 8
 	},
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "fWO" = (
 /obj/structure/catwalk,
@@ -13510,7 +13510,7 @@
 	dir = 1
 	},
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "jRg" = (
 /obj/effect/floor_decal/spline/fancy/wood,
@@ -14035,7 +14035,7 @@
 /area/security/security_lockerroom)
 "kiT" = (
 /obj/structure/grille,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "kjg" = (
 /obj/machinery/light/small{
@@ -15442,7 +15442,7 @@
 /obj/machinery/camera/network/outside{
 	dir = 5
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "lvL" = (
 /obj/machinery/air_alarm{
@@ -15820,7 +15820,7 @@
 /obj/landmark{
 	name = "carpspawn"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "lKt" = (
 /obj/effect/floor_decal/industrial/outline{
@@ -18556,7 +18556,7 @@
 	},
 /obj/structure/lattice,
 /obj/structure/grille,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "nKC" = (
 /obj/item/radio/intercom{
@@ -21342,7 +21342,7 @@
 /turf/simulated/floor/plating,
 /area/hallway/d3fwdmaint/endeavour)
 "pRW" = (
-/turf/space/basic,
+/turf/space,
 /area/space)
 "pSx" = (
 /obj/machinery/mech_recharger,
@@ -26457,7 +26457,7 @@
 "tqn" = (
 /obj/machinery/camera/network/outside,
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "tqt" = (
 /obj/structure/shuttle/engine/propulsion{
@@ -27144,7 +27144,7 @@
 /obj/machinery/camera/network/outside{
 	dir = 1
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "tUD" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -28938,7 +28938,7 @@
 /obj/effect/shuttle_landmark/automatic{
 	name = "Deck 3, Port Side"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "vkR" = (
 /obj/structure/catwalk,
@@ -32819,7 +32819,7 @@
 /obj/machinery/camera/network/outside{
 	dir = 8
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "xKb" = (
 /obj/effect/floor_decal/borderfloorblack{

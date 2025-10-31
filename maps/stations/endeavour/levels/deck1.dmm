@@ -368,11 +368,11 @@
 "amf" = (
 /obj/effect/shuttle_landmark{
 	base_area = /area/space/tram/endeavour;
-	base_turf = /turf/space/basic;
+	base_turf = /turf/space;
 	landmark_tag = "escape_endeavour";
 	name = "Escape Shuttle Endeavour"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space/tram/endeavour)
 "amu" = (
 /obj/machinery/computer/ship/sensors{
@@ -2777,7 +2777,7 @@
 /obj/effect/shuttle_landmark/automatic{
 	name = "Deck 1, Port Side"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "caz" = (
 /obj/structure/catwalk,
@@ -6696,7 +6696,7 @@
 /obj/machinery/camera/network/outside{
 	dir = 1
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "ePN" = (
 /obj/effect/mist,
@@ -8512,7 +8512,7 @@
 /obj/machinery/camera/network/outside{
 	dir = 8
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "fZE" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
@@ -8607,7 +8607,7 @@
 /obj/effect/shuttle_landmark/automatic/station_dockpoint2{
 	name = "Docking Arm 2"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "geW" = (
 /obj/structure/bed/chair/comfy/brown{
@@ -8972,7 +8972,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "gud" = (
-/turf/space/basic,
+/turf/space,
 /area/space/tram/endeavour)
 "gug" = (
 /obj/structure/closet/hydrant{
@@ -11563,7 +11563,7 @@
 /obj/effect/shuttle_landmark/automatic/station_dockpoint1{
 	name = "Docking Point 1"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "iwR" = (
 /obj/effect/floor_decal/borderfloor{
@@ -13140,7 +13140,7 @@
 /obj/machinery/camera/network/outside{
 	dir = 5
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "jCV" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -18191,7 +18191,7 @@
 "nbR" = (
 /obj/structure/lattice,
 /obj/structure/grille,
-/turf/space/basic,
+/turf/space,
 /area/teleporter)
 "ncC" = (
 /obj/structure/cable{
@@ -18410,7 +18410,7 @@
 /area/crew_quarters/captain)
 "nof" = (
 /obj/machinery/camera/network/outside,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "noo" = (
 /obj/structure/bookcase/legal/combo,
@@ -22535,7 +22535,7 @@
 /area/library)
 "qqr" = (
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "qqP" = (
 /obj/structure/table/rack/steel,
@@ -29022,7 +29022,7 @@
 "uKj" = (
 /obj/structure/lattice,
 /obj/structure/grille,
-/turf/space/basic,
+/turf/space,
 /area/bridge)
 "uKu" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -31082,7 +31082,7 @@
 /obj/machinery/camera/network/outside{
 	dir = 5
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "wkB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -33205,7 +33205,7 @@
 /obj/effect/shuttle_landmark/automatic{
 	name = "Deck 1, Starboard Side"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "xJS" = (
 /obj/machinery/door/airlock{
@@ -33363,7 +33363,7 @@
 /turf/simulated/floor/plating,
 /area/hallway/d1portfwdmaint/endeavour)
 "xRj" = (
-/turf/space/basic,
+/turf/space,
 /area/space)
 "xRl" = (
 /obj/effect/floor_decal/rust,

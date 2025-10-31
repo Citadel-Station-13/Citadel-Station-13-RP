@@ -1921,7 +1921,7 @@
 /obj/effect/shuttle_landmark/automatic{
 	name = "For Spacena Class Vessels"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "bKR" = (
 /obj/structure/closet/secure_closet/engineering_welding,
@@ -2737,7 +2737,7 @@
 /obj/machinery/camera/network/outside{
 	dir = 1
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "cvQ" = (
 /obj/effect/floor_decal/corner/lightorange/border{
@@ -16137,7 +16137,7 @@
 /turf/simulated/floor/plating,
 /area/storage/tech)
 "osb" = (
-/turf/space/basic,
+/turf/space,
 /turf/simulated/floor/plating,
 /area/hallway/d4fwdportmaint/endeavour)
 "oso" = (
@@ -17828,7 +17828,7 @@
 /area/engineering/atmos)
 "qhx" = (
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "qhH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
@@ -19580,7 +19580,7 @@
 /area/hallway/d4porthall/endeavour)
 "rTQ" = (
 /obj/machinery/camera/network/outside,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "rTZ" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -20042,7 +20042,7 @@
 /obj/machinery/camera/network/outside{
 	dir = 5
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "suz" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -21713,13 +21713,13 @@
 /obj/landmark{
 	name = "carpspawn"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "tZd" = (
 /obj/effect/shuttle_landmark/automatic{
 	name = "Deck 4, Port Side"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "ubm" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -26116,7 +26116,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/d4starboardhall/endeavour)
 "xRj" = (
-/turf/space/basic,
+/turf/space,
 /area/space)
 "xSM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{

@@ -1522,7 +1522,7 @@
 /obj/machinery/camera/network/outside{
 	dir = 5
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "bfS" = (
 /obj/machinery/light_switch{
@@ -9685,7 +9685,7 @@
 /obj/machinery/camera/network/outside{
 	dir = 1
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "gCY" = (
 /obj/structure/table/glass,
@@ -10265,7 +10265,7 @@
 /obj/machinery/camera/network/outside{
 	dir = 8
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "gYW" = (
 /obj/machinery/door/window/westleft,
@@ -12251,7 +12251,7 @@
 /obj/machinery/camera/network/outside{
 	dir = 4
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "ixI" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -16635,11 +16635,11 @@
 /obj/effect/shuttle_landmark/automatic{
 	name = "Deck 2, Port Side"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "lIp" = (
 /obj/machinery/camera/network/outside,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "lJc" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -22659,7 +22659,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/virology)
 "pRW" = (
-/turf/space/basic,
+/turf/space,
 /area/space)
 "pSD" = (
 /obj/machinery/power/apc/east_mount,
@@ -31432,7 +31432,7 @@
 /obj/effect/shuttle_landmark/automatic{
 	name = "Deck 2, Starboard Side"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "wmk" = (
 /obj/effect/floor_decal/borderfloorwhite{
