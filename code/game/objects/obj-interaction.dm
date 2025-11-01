@@ -3,16 +3,16 @@
 
 /obj/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	if(istype(using, /obj/item/cell) && !isnull(obj_cell_slot) && isnull(obj_cell_slot.cell) && obj_cell_slot.interaction_active(user))
-		if(!user.transfer_item_to_loc(using, src))
-			user.action_feedback(SPAN_WARNING("[using] is stuck to your hand!"), src)
+		if(!clickchain.performer.transfer_item_to_loc(using, src))
+			clickchain.chat_feedback(SPAN_WARNING("[using] is stuck to your hand!"), target = src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(!obj_cell_slot.accepts_cell(using))
-			user.action_feedback(
-				SPAN_WARNING("[src] do,es not accept [using]."),
+			clickchain.chat_feedback(
+				SPAN_WARNING("[src] does not accept [using]."),
 				target = src,
 			)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
-		user.visible_action_feedback(
+		clickchain.visible_feedback(
 			target = src,
 			hard_range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
 			visible_hard = SPAN_NOTICE("[user] inserts [using] into [src]."),
@@ -20,11 +20,10 @@
 			visible_self = SPAN_NOTICE("You insert [using] into [src]."),
 		)
 		obj_cell_slot.insert_cell(using)
-		user.trigger_aiming(TARGET_CAN_CLICK)
+		clickchain.performer.trigger_aiming(TARGET_CAN_CLICK)
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
-	var/datum/event_args/actor/actor = new(user)
-	if(!isnull(obj_storage) && using.allow_auto_storage_insert(actor, obj_storage) && obj_storage?.auto_handle_interacted_insertion(using, actor))
-		user.trigger_aiming(TARGET_CAN_CLICK)
+	if(!isnull(obj_storage) && using.allow_auto_storage_insert(clickchain, obj_storage) && obj_storage?.auto_handle_interacted_insertion(using, clickchain))
+		clickchain.performer.trigger_aiming(TARGET_CAN_CLICK)
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	return ..()
 
