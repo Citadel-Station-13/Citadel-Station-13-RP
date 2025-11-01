@@ -1,0 +1,4 @@
+author: "Sorrowfulwinds"
+delete-after: True
+changes:
+  - code_imp: "adds a string sort to the cargo order subsystem to sort the categories and items."
