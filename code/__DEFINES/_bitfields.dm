@@ -18,6 +18,10 @@
  * * `ID` the same in `DECLARE_BITFIELD`
  * * `PATH` is `/your/path/whatever` (example)
  * * `VARNAME` is without quotes. This allows us to compile-time check it.
+ *
+ * CAVEATS:
+ * * Performance of bitfield reflection is heavily dependent on how many things share the same variable
+ *   name. Please ensure all bitfields are called distinct names, including across different paths.
  */
 #define ASSIGN_BITFIELD(ID, PATH, VARNAME) \
 /datum/bitfield/##ID/New() { \
