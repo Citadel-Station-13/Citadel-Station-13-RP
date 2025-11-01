@@ -1,5 +1,5 @@
 
-/obj/overmap/entity/visitable/sector/centcom_endeavour
+/obj/overmap/entity/visitable/sector/ncv_oracle
 	name = "NCV Oracle"
 	desc = "The NCV Oracle is a Nanotrasen Fleet support ship that serves as the flagship for the eponymous Oracle Operational Group."
 	scanner_desc = @{"[i]Information[/i]: The NCV Oracle is a Nanotrasen Fleet support ship that serves as the flagship for the eponymous Oracle Operational Group."}

@@ -9007,7 +9007,7 @@
 /turf/simulated/floor/reinforced,
 /area/centcom/command)
 "Pc" = (
-/obj/overmap/entity/visitable/sector/centcom,
+/obj/overmap/entity/visitable/sector/ncs_demeter,
 /turf/space,
 /area/space)
 "Pf" = (

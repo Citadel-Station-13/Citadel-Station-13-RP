@@ -1147,7 +1147,7 @@
 /turf/simulated/shuttle/floor,
 /area/shuttle/escape)
 "dy" = (
-/obj/overmap/entity/visitable/sector/centcom_endeavour,
+/obj/overmap/entity/visitable/sector/ncv_oracle,
 /turf/space,
 /area/space)
 "dz" = (
