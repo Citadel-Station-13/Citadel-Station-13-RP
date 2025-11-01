@@ -1,87 +1,100 @@
-GLOBAL_LIST_INIT(bitfields, generate_bitfields())
 
-/datum/bitfield
-	/// An associative list of the readable flag and its true value
-	var/list/flags
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
 
-/datum/bitfield/single
-	/// The variable name that contains the bitfield
-	var/variable
+/**
+ * All bitfield datums
+ */
+GLOBAL_LIST(bitfields)
+/**
+ * All bitfield datums by path
+ */
+GLOBAL_LIST(bitfields_by_path)
+/**
+ * All bitfield datums by var name
+ */
+GLOBAL_LIST(bitfields_by_var)
 
-/datum/bitfield/multi
-	/// our variable names
-	var/list/variables
-
-/// Turns /datum/bitfield subtypes into a list for use in debugging
-/proc/generate_bitfields()
+// TODO: why don't we just tgui picker bitfields so we don't need to do insane lookups?
+/proc/init_bitfield_meta()
+	// TODO: GLOBAL_ALIST
 	var/list/bitfields = list()
-	for (var/_bitfield in subtypesof(/datum/bitfield/single))
-		var/datum/bitfield/single/bitfield = new _bitfield
-		bitfields[bitfield.variable] = bitfield.flags
-	for (var/_bitfield in subtypesof(/datum/bitfield/multi))
-		var/datum/bitfield/multi/bitfield = new _bitfield
-		for(var/n in bitfield.variables)
-			bitfields[n] = bitfield.flags
-	// sue me i haven't slept in 18 hours
-	// tl;dr convert these into DEFINE_BITFIELD's later
-#define FLAG(flag) "[#flag]" = flag
-	return bitfields + list(
-	"appearance_flags" = list(
-		"LONG_GLIDE" = LONG_GLIDE,
-		"RESET_COLOR" = RESET_COLOR,
-		"RESET_ALPHA" = RESET_ALPHA,
-		"RESET_TRANSFORM" = RESET_TRANSFORM,
-		"NO_CLIENT_COLOR" = NO_CLIENT_COLOR,
-		"KEEP_TOGETHER" = KEEP_TOGETHER,
-		"KEEP_APART" = KEEP_APART,
-		"PLANE_MASTER" = PLANE_MASTER,
-		"TILE_BOUND" = TILE_BOUND,
-		"PIXEL_SCALE" = PIXEL_SCALE,
-		"PASS_MOUSE" = PASS_MOUSE,
-		"TILE_MOVER" = TILE_MOVER
-		),
-	"mob_class" = list(
-		FLAG(MOB_CLASS_PLANT),
-		FLAG(MOB_CLASS_ANIMAL),
-		FLAG(MOB_CLASS_HUMANOID),
-		FLAG(MOB_CLASS_SYNTHETIC),
-		FLAG(MOB_CLASS_SLIME),
-		FLAG(MOB_CLASS_ABERRATION),
-		FLAG(MOB_CLASS_DEMONIC),
-		FLAG(MOB_CLASS_BOSS),
-		FLAG(MOB_CLASS_ILLUSION),
-		FLAG(MOB_CLASS_PHOTONIC)
-		),
-	"reagents_holder_flags" = list(
-		"INJECTABLE" = INJECTABLE,
-		"DRAWABLE" = DRAWABLE,
-		"REFILLABLE" = REFILLABLE,
-		"DRAINABLE" = DRAINABLE,
-		"TRANSPARENT" = TRANSPARENT,
-		"AMOUNT_VISIBLE" = AMOUNT_VISIBLE,
-		"NO_REACT" = NO_REACT,
-	),
-	"sight" = list(
-		"SEE_INFRA" = SEE_INFRA,
-		"SEE_SELF" = SEE_SELF,
-		"SEE_MOBS" = SEE_MOBS,
-		"SEE_OBJS" = SEE_OBJS,
-		"SEE_TURFS" = SEE_TURFS,
-		"SEE_PIXELS" = SEE_PIXELS,
-		"SEE_THRU" = SEE_THRU,
-		"SEE_BLACKNESS" = SEE_BLACKNESS,
-		"BLIND" = BLIND,
-	),
-	"vis_flags" = list(
-		"VIS_INHERIT_ICON" = VIS_INHERIT_ICON,
-		"VIS_INHERIT_ICON_STATE" = VIS_INHERIT_ICON_STATE,
-		"VIS_INHERIT_DIR" = VIS_INHERIT_DIR,
-		"VIS_INHERIT_LAYER" = VIS_INHERIT_LAYER,
-		"VIS_INHERIT_PLANE" = VIS_INHERIT_PLANE,
-		"VIS_INHERIT_ID" = VIS_INHERIT_ID,
-		"VIS_UNDERLAY" = VIS_UNDERLAY,
-		"VIS_HIDE" = VIS_HIDE,
-	),
-)
+	var/list/bitfield_by_path = list()
+	var/list/bitfield_by_var = list()
 
-#undef FLAG
+	for(var/datum/bitfield/path as anything in subtypesof(/datum/bitfield))
+		if(path.abstract_type == path)
+			continue
+		var/datum/bitfield/instance = new path
+		bitfields += instance
+	// add legacy shit
+	var/list/legacy_bitfields = generate_bitfields()
+	for(var/var_name in legacy_bitfields)
+		var/list/reverse_lookup = legacy_bitfields[var_name]
+		var/datum/bitfield/legacy_instance = new
+		for(var/name in reverse_lookup)
+			var/bit = reverse_lookup[name]
+			legacy_instance.flags[bit] = name
+		legacy_instance.paths += /datum
+	for(var/datum/bitfield/bitfield as anything in bitfields)
+		for(var/path in bitfield.paths)
+			if(!bitfield_by_path[path])
+				bitfield_by_path[path] = list(bitfield)
+			else
+				bitfield_by_path[path] += bitfield
+			for(var/name in bitfield.paths[path])
+				if(!bitfield_by_var[name])
+					bitfield_by_var[name] = list(bitfield)
+				else
+					bitfield_by_var[name] += bitfield
+	GLOB.bitfields = bitfields
+	GLOB.bitfields_by_path = bitfield_by_path
+	GLOB.bitfields_by_var = bitfield_by_var
+
+/**
+ * @return alist(var_name = alist(bit = string), ...); do not modify
+ */
+/proc/fetch_all_bitfield_mappings(datum/path)
+	if(!ispath(path))
+		return list()
+	. = list()
+	do
+		var/list/maybe_bitfields = GLOB.bitfields_by_path[path]
+		if(maybe_bitfields)
+			for(var/datum/bitfield/bitfield as anything in maybe_bitfields)
+				for(var/var_name in bitfield.paths[path])
+					.[var_name] = bitfield.flags
+		path = path.parent_type
+	while(path)
+
+/proc/fetch_all_bitfields(datum/path)
+	if(!ispath(path))
+		return list()
+	. = list()
+	do
+		var/list/maybe_bitfields = GLOB.bitfields_by_path[path]
+		if(maybe_bitfields)
+			. += maybe_bitfields
+		path = path.parent_type
+	while(path)
+
+/**
+ * @return alist(bit = string); null if none; do not modify
+ */
+/proc/fetch_bitfield_mappings(datum/path, var_name) as /alist
+	return fetch_bitfield(path, var_name).flags
+
+/proc/fetch_bitfield(datum/path, var_name) as /datum/bitfield
+	for(var/datum/bitfield/bitfield as anything in GLOB.bitfields_by_var[var_name])
+		if(path in bitfield.paths)
+			return bitfield
+
+/**
+ * A bitfield define. Keep these close to the #define's which specify them.
+ */
+/datum/bitfield
+	abstract_type = /datum/bitfield
+	/// bit = name
+	var/alist/flags = alist()
+	/// typepaths this is valid on associated to variable or list of variables
+	var/alist/paths = alist()

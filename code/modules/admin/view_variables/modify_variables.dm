@@ -320,7 +320,7 @@ GLOBAL_PROTECT(VVpixelmovement)
 	if(!vv_varname_lockcheck(variable))
 		return
 
-	var/default = vv_get_class(variable, var_value)
+	var/default = vv_get_class(variable, var_value, O)
 
 	if(isnull(default))
 		to_chat(src, "Unable to determine variable type.")
@@ -349,7 +349,14 @@ GLOBAL_PROTECT(VVpixelmovement)
 			default = VV_MESSAGE
 		class = default
 
-	var/list/value = vv_get_value(class, default, var_value, extra_classes = list(VV_LIST), var_name = variable)
+	var/list/value = vv_get_value(
+		class,
+		default,
+		var_value,
+		extra_classes = list(VV_LIST),
+		var_name = variable,
+		maybe_datum = O
+	)
 	class = value["class"]
 
 	if (!class)

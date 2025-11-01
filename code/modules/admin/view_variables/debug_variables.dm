@@ -16,6 +16,7 @@
 		header = "<li>"
 
 	var/item
+	var/alist/maybe_bitfield_mappings
 	if (isnull(value))
 		item = "[VV_HTML_ENCODE(name)] = <span class='value'>null</span>"
 
@@ -70,11 +71,11 @@
 		else
 			item = "<a href='?_src_=vars;[HrefToken()];Vars=[REF(value)]'>[VV_HTML_ENCODE(name)] = /list ([L.len])</a>"
 
-	else if (name in GLOB.bitfields)
+	else if ((maybe_bitfield_mappings = fetch_bitfield_mappings(D, name)))
 		var/list/flags = list()
-		for (var/i in GLOB.bitfields[name])
-			if (value & GLOB.bitfields[name][i])
-				flags += i
+		for(var/bit in maybe_bitfield_mappings)
+			if(value & bit)
+				flags += maybe_bitfield_mappings[bit]
 			item = "[VV_HTML_ENCODE(name)] = [VV_HTML_ENCODE(jointext(flags, ", "))]"
 	else
 		item = "[VV_HTML_ENCODE(name)] = <span class='value'>[VV_HTML_ENCODE(value)]</span>"
