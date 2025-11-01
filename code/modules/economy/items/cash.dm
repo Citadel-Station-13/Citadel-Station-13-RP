@@ -12,7 +12,7 @@
 	throw_speed = 1
 	throw_range = 2
 	w_class = WEIGHT_CLASS_SMALL
-	suit_storage_class = ITEM_SUIT_STORAGE_CLASS_SOFTWEAR
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
 	var/access = list()
 	access = ACCESS_MISC_CASHCRATE
 	var/worth = 0

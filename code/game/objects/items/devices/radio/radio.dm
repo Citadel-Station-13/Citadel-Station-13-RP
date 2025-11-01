@@ -28,7 +28,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	suffix = "\[3\]"
 	icon_state = "walkietalkie"
 	item_state = "radio"
-	suit_storage_class = ITEM_SUIT_STORAGE_CLASS_SOFTWEAR | ITEM_SUIT_STORAGE_CLASS_HARDWEAR
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 
 	///FALSE for off
 	var/on = TRUE

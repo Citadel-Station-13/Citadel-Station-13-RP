@@ -272,7 +272,7 @@
 	projectile_type = /obj/projectile/beam/lasertag/blue
 	cell_type = /obj/item/cell/device/weapon/recharge
 	legacy_battery_lock = 1
-	suit_storage_class = ITEM_SUIT_STORAGE_CLASS_HARDWEAR | ITEM_SUIT_STORAGE_CLASS_SOFTWEAR
+	suit_storage_class = SUIT_STORAGE_CLASS_HARDWEAR | SUIT_STORAGE_CLASS_SOFTWEAR
 
 /obj/item/gun/projectile/energy/lasertag/blue
 	icon_state = "bluetag"

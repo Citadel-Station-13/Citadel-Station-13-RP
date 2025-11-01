@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
+
 // proc: dropped() on /obj/item
 // todo: this should be in procs.dm and the names need to be changed probably
 // todo: comsig instead?
@@ -6,20 +9,15 @@
 
 //* Item `suit_storage_class` defines *//
 
-#define ITEM_SUIT_STORAGE_CLASS_HARDWEAR (1<<0)
-#define ITEM_SUIT_STORAGE_CLASS_SOFTWEAR (1<<1)
-#define ITEM_SUIT_STORAGE_CLASS_ARMOR (1<<2)
+#define SUIT_STORAGE_CLASS_HARDWEAR (1<<0)
+#define SUIT_STORAGE_CLASS_SOFTWEAR (1<<1)
+#define SUIT_STORAGE_CLASS_ARMOR (1<<2)
 
-/datum/bitfield/suit_storage_class
-	flags = alist(
-		ITEM_SUIT_STORAGE_CLASS_HARDWEAR = "Hardwear",
-		ITEM_SUIT_STORAGE_CLASS_SOFTWEAR = "Softwear",
-		ITEM_SUIT_STORAGE_CLASS_ARMOR = "Armor",
-	)
-	paths = alist(
-		/obj/item = list(
-			NAMEOF_TYPE(/obj/item, suit_storage_class),
-			NAMEOF_TYPE(/obj/item, suit_storage_class_allow),
-			NAMEOF_TYPE(/obj/item, suit_storage_class_disallow),
-		),
-	)
+DECLARE_BITFIELD(suit_storage_class, list(
+	BITFIELD_NEW(SUIT_STORAGE_CLASS_HARDWEAR, "Hardwear"),
+	BITFIELD_NEW(SUIT_STORAGE_CLASS_SOFTWEAR, "Softwear"),
+	BITFIELD_NEW(SUIT_STORAGE_CLASS_ARMOR, "Armor"),
+))
+ASSIGN_BITFIELD(suit_storage_class, /obj/item, suit_storage_class)
+ASSIGN_BITFIELD(suit_storage_class, /obj/item, suit_storage_class_allow)
+ASSIGN_BITFIELD(suit_storage_class, /obj/item, suit_storage_class_disallow)

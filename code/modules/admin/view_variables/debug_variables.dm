@@ -2,7 +2,7 @@
 /proc/debug_variable(name, value, level, datum/D, sanitize = TRUE)			//if D is a list, name will be index, and value will be assoc value.
 	var/header
 	if(D)
-		if(islist(D) || isalist(value))
+		if(islist(D) || isalist(D))
 			var/list/D_l = D
 			var/index = name
 			if (value)
@@ -16,7 +16,7 @@
 		header = "<li>"
 
 	var/item
-	var/alist/maybe_bitfield_mappings
+	var/datum/bitfield/maybe_bitfield
 	if (isnull(value))
 		item = "[VV_HTML_ENCODE(name)] = <span class='value'>null</span>"
 
@@ -82,11 +82,11 @@
 		else
 			item = "<a href='?_src_=vars;[HrefToken()];Vars=[REF(value)]'>[VV_HTML_ENCODE(name)] = /alist ([scanning_length])</a>"
 
-	else if ((maybe_bitfield_mappings = fetch_bitfield_mappings(D, name)))
-		var/list/flags = list()
-		for(var/bit in maybe_bitfield_mappings)
+	else if ((maybe_bitfield = fetch_bitfield(D, name)))
+		for(var/i in 1 to maybe_bitfield.get_declared_count())
+			var/bit = maybe_bitfield.bits[i]
 			if(value & bit)
-				flags += maybe_bitfield_mappings[bit]
+				flags += maybe_bitfield.names[i]
 			item = "[VV_HTML_ENCODE(name)] = [VV_HTML_ENCODE(jointext(flags, ", "))]"
 	else
 		item = "[VV_HTML_ENCODE(name)] = <span class='value'>[VV_HTML_ENCODE(value)]</span>"

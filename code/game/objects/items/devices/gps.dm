@@ -27,7 +27,7 @@
 	origin_tech = list(TECH_MATERIAL = 2, TECH_BLUESPACE = 2, TECH_MAGNET = 1)
 	materials_base = list(MAT_STEEL = 500)
 	worth_intrinsic = 40
-	suit_storage_class = ITEM_SUIT_STORAGE_CLASS_SOFTWEAR | ITEM_SUIT_STORAGE_CLASS_HARDWEAR
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 
 	/// our GPS tag
 	var/gps_tag = "GEN0"

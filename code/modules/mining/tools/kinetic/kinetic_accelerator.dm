@@ -23,7 +23,7 @@
 	cell_type = /obj/item/cell/device/weapon/empproof
 	clothing_flags = NONE
 	charge_meter = FALSE
-	suit_storage_class = ITEM_SUIT_STORAGE_CLASS_SOFTWEAR
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
 
 	projectile_type = /obj/projectile/kinetic
 	charge_cost = 1200

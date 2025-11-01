@@ -7,7 +7,7 @@
 	pickup_sound = 'sound/items/pickup/cloth.ogg'
 	item_flags = NONE
 
-	suit_storage_class_allow = ITEM_SUIT_STORAGE_CLASS_SOFTWEAR
+	suit_storage_class_allow = SUIT_STORAGE_CLASS_SOFTWEAR
 
 	//? equip
 	/// Inventory slot IDs where this is active for any effects. Used by subtypes, to be potentially refactored in the future.

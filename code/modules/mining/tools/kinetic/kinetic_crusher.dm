@@ -19,7 +19,7 @@
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	item_action_name = "Toggle Light"
 	light_wedge = LIGHT_WIDE
-	suit_storage_class = ITEM_SUIT_STORAGE_CLASS_HARDWEAR
+	suit_storage_class = SUIT_STORAGE_CLASS_HARDWEAR
 	// actions_types = list(/datum/action/item_action/toggle_light)
 	// var/list/trophies = list()
 	var/charged = TRUE
@@ -270,7 +270,7 @@
 			)
 	item_state = "machete"
 	w_class = WEIGHT_CLASS_SMALL
-	suit_storage_class = ITEM_SUIT_STORAGE_CLASS_SOFTWEAR | ITEM_SUIT_STORAGE_CLASS_HARDWEAR
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 	damage_force = 15
 	requires_wield = FALSE
 	charge_overlay = FALSE

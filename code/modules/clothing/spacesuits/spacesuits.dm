@@ -86,7 +86,7 @@
 	valid_accessory_slots = (ACCESSORY_SLOT_OVER | ACCESSORY_SLOT_ARMBAND | ACCESSORY_SLOT_DECOR)
 	weight = ITEM_WEIGHT_SOFTSUIT
 	encumbrance = ITEM_ENCUMBRANCE_SOFTSUIT
-	suit_storage_class_allow = ITEM_SUIT_STORAGE_CLASS_HARDWEAR
+	suit_storage_class_allow = SUIT_STORAGE_CLASS_HARDWEAR
 	var/list/supporting_limbs //If not-null, automatically splints breaks. Checked when removing the suit.
 
 /obj/item/clothing/suit/space/equipped(mob/M, slot, accessory, silent, creation)

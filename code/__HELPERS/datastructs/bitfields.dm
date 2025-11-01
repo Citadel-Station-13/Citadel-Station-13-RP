@@ -34,7 +34,8 @@ GLOBAL_LIST(bitfields_by_var)
 		var/datum/bitfield/legacy_instance = new
 		for(var/name in reverse_lookup)
 			var/bit = reverse_lookup[name]
-			legacy_instance.flags[bit] = name
+			legacy_instance.names += name
+			legacy_instance.bits += bit
 		legacy_instance.paths = alist(/datum = var_name)
 		bitfields += legacy_instance
 	for(var/datum/bitfield/bitfield as anything in bitfields)
@@ -56,7 +57,7 @@ GLOBAL_LIST(bitfields_by_var)
 				else
 					bitfield_by_var[name_or_names] += bitfield
 			else
-				STACK_TRACE("Bitfield [bitfield.type] ([json_encode(bitfield.flags)]) had no var name on path [path]")
+				STACK_TRACE("Bitfield [bitfield.type] ([json_encode(bitfield.names)]) had no var name on path [path]")
 
 	GLOB.bitfields = bitfields
 	GLOB.bitfields_by_path = bitfield_by_path
@@ -65,24 +66,6 @@ GLOBAL_LIST(bitfields_by_var)
 #if DM_VERSION > 516
 	#error remove the guards on path == /datum; byond will have fixed the crash bug by now
 #endif
-
-/**
- * @return alist(var_name = alist(bit = string), ...); do not modify
- */
-/proc/fetch_all_bitfield_mappings(datum/path)
-	if(!ispath(path))
-		return list()
-	. = list()
-	do
-		var/list/maybe_bitfields = GLOB.bitfields_by_path[path]
-		if(maybe_bitfields)
-			for(var/datum/bitfield/bitfield as anything in maybe_bitfields)
-				for(var/var_name in bitfield.paths[path])
-					.[var_name] = bitfield.flags
-		if(path == /datum)
-			break
-		path = path.parent_type
-	while(path)
 
 /proc/fetch_all_bitfields(datum/path)
 	if(!ispath(path))
@@ -97,23 +80,47 @@ GLOBAL_LIST(bitfields_by_var)
 		path = path.parent_type
 	while(path)
 
-/**
- * @return alist(bit = string); null if none; do not modify
- */
-/proc/fetch_bitfield_mappings(datum/path, var_name) as /alist
-	return fetch_bitfield(path, var_name)?.flags
-
 /proc/fetch_bitfield(datum/path, var_name) as /datum/bitfield
 	for(var/datum/bitfield/bitfield as anything in GLOB.bitfields_by_var[var_name])
 		if(path in bitfield.paths)
 			return bitfield
 
 /**
- * A bitfield define. Keep these close to the #define's which specify them.
+ * Bitfield datums used to reflect bitfield values in the game's code.
  */
 /datum/bitfield
 	abstract_type = /datum/bitfield
-	/// bit = name
-	var/alist/flags = alist()
 	/// typepaths this is valid on associated to variable or list of variables
-	var/alist/paths = alist()
+	var/list/paths = list()
+	var/list/bits
+	var/list/names
+
+/datum/bitfield/New()
+	var/list/constants = get_bit_constants()
+	bits = list()
+	names = list()
+	for(var/name in constants)
+		var/bit = constants[name]
+		bits += bit
+		names += name
+
+/datum/bitfield/proc/get_bit_name(bit)
+	. = bits.Find(bit)
+	return . ? names[.] : null
+
+/datum/bitfield/proc/get_bit(name)
+	. = names.Find(name)
+	return . ? bits[.] : null
+
+/**
+ * This is NOT necessarily the number of bits in the bitfield. This is only how many of them
+ * were declared in ourselves. Please be careful when using this;
+ */
+/datum/bitfield/proc/get_declared_count()
+	return length(bits)
+
+/**
+ * @return list(NAME = BIT, ...)
+ */
+/datum/bitfield/proc/get_bit_constants()
+	return list()

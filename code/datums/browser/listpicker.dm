@@ -69,8 +69,9 @@
 	if(!User)
 		return
 	var/list/pickerlist = list()
-	for(var/bit in bitfield.flags)
-		var/name = bitfield.flags[bit]
+	for(var/i in 1 to bitfield.get_declared_count())
+		var/bit = bitfield.bits[i]
+		var/name = bitfield.names[i]
 		var/can_edit = 1
 		if(allowed_edit_list && !(allowed_edit_list & bit))
 			can_edit = 0
@@ -85,8 +86,9 @@
 		. = 0
 		for (var/flag in result["values"])
 			// TODO: efficient-er reverse lookup
-			for(var/bit in bitfield.flags)
-				var/name = bitfield.flags[bit]
+			for(var/i in 1 to bitfield.get_declared_count())
+				var/bit = bitfield.bits[i]
+				var/name = bitfield.names[i]
 				if(name == flag)
 					. |= bit
 	else

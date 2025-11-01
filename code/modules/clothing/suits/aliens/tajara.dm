@@ -26,7 +26,7 @@
 	icon_state = "amohdan_armor"
 	item_state = "amohdan_armor"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-	suit_storage_class_allow = ITEM_SUIT_STORAGE_CLASS_HARDWEAR
+	suit_storage_class_allow = SUIT_STORAGE_CLASS_HARDWEAR
 	inv_hide_flags = HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	armor_type = /datum/armor/general/medieval
 	weight = ITEM_WEIGHT_TAJARAN_SWORDSMAN_ARMOR

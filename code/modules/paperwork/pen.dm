@@ -43,7 +43,7 @@
 	icon_state = "pen"
 	item_state = "pen"
 	slot_flags = SLOT_BELT | SLOT_EARS
-	suit_storage_class = ITEM_SUIT_STORAGE_CLASS_SOFTWEAR
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
 	throw_force = 0
 	w_class = WEIGHT_CLASS_TINY
 	throw_speed = 7

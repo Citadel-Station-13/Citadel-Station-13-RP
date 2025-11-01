@@ -11,7 +11,7 @@
 	heat_protection_cover = UPPER_TORSO|LOWER_TORSO
 	max_heat_protection_temperature = ARMOR_MAX_HEAT_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.7
-	suit_storage_class_allow = ITEM_SUIT_STORAGE_CLASS_SOFTWEAR | ITEM_SUIT_STORAGE_CLASS_ARMOR
+	suit_storage_class_allow = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_ARMOR
 
 /obj/item/clothing/suit/armor/can_equip(mob/M, slot, mob/user, flags)
 	. = ..()

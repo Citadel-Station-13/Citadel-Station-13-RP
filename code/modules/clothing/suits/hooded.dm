@@ -523,7 +523,7 @@
 		|ACCESSORY_SLOT_ARMOR_M
 		)
 	blood_overlay_type = "armor"
-	suit_storage_class = ITEM_SUIT_STORAGE_CLASS_SOFTWEAR | ITEM_SUIT_STORAGE_CLASS_HARDWEAR
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 	starting_accessories = list(
 		/obj/item/clothing/accessory/armor/armorplate/heavy,
 		/obj/item/clothing/accessory/storage/pouches,

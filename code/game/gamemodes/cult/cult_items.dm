@@ -11,7 +11,7 @@
 	pickup_sound = 'sound/items/pickup/sword.ogg'
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	damage_mode = DAMAGE_MODE_EDGE | DAMAGE_MODE_SHARP
-	suit_storage_class = ITEM_SUIT_STORAGE_CLASS_HARDWEAR | ITEM_SUIT_STORAGE_CLASS_SOFTWEAR
+	suit_storage_class = SUIT_STORAGE_CLASS_HARDWEAR | SUIT_STORAGE_CLASS_SOFTWEAR
 
 /obj/item/melee/cultblade/cultify()
 	return

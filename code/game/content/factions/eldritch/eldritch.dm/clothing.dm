@@ -11,7 +11,7 @@
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	clothing_flags = 0
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	suit_storage_class_allow = ITEM_SUIT_STORAGE_CLASS_HARDWEAR | ITEM_SUIT_STORAGE_CLASS_SOFTWEAR
+	suit_storage_class_allow = SUIT_STORAGE_CLASS_HARDWEAR | SUIT_STORAGE_CLASS_SOFTWEAR
 	armor_type = /datum/armor/eldritch/robes
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL
 	cold_protection_cover = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
@@ -45,7 +45,7 @@
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	clothing_flags = 0
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	suit_storage_class_allow = ITEM_SUIT_STORAGE_CLASS_HARDWEAR | ITEM_SUIT_STORAGE_CLASS_SOFTWEAR
+	suit_storage_class_allow = SUIT_STORAGE_CLASS_HARDWEAR | SUIT_STORAGE_CLASS_SOFTWEAR
 	armor_type = /datum/armor/eldritch/robes/godmode
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL
 	cold_protection_cover = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS

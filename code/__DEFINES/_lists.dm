@@ -159,7 +159,6 @@
 		};\
 	} while(FALSE)
 
-#define islist(L) istype(L, /list)
 #define isalist(L) istype(L, /alist)
 
 #define VARSET_FROM_LIST(L, V) if(L && L[#V]) V = L[#V]
