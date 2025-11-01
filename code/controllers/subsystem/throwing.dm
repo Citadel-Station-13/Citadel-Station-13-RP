@@ -323,7 +323,7 @@ SUBSYSTEM_DEF(throwing)
 		terminate()
 		return
 
-	on_hit?.InvokeAsync(imapcting, src)
+	on_hit?.InvokeAsync(impacting, src)
 
 	if(!(op_return & COMPONENT_THROW_HIT_PIERCE) && !in_land)
 		land(get_turf(thrownthing))
