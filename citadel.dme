@@ -1132,6 +1132,7 @@
 #include "code\game\atoms\movement.dm"
 #include "code\game\atoms\say.dm"
 #include "code\game\atoms\movable\movable-admin.dm"
+#include "code\game\atoms\movable\movable-defense.dm"
 #include "code\game\atoms\movable\movable-logging.dm"
 #include "code\game\atoms\movable\movable-movement.dm"
 #include "code\game\atoms\movable\movable-proto_kinetic.dm"

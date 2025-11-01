@@ -61,7 +61,7 @@
 			EA.clothing = null
 			playsound(T, 'sound/items/Crowbar.ogg', 50, TRUE)
 			to_chat(usr, SPAN_NOTICE("You pull the circuitry out of \the [src]."))
-			return
+			return clickchain_flags | CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 	else
 		return ..()
 

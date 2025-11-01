@@ -400,6 +400,8 @@
 	M.Turn(rand(-170, 170))
 	transform = M
 	set_pixel_offsets(rand(-8, 8), rand(-8, 8))
+	if(drop_sound)
+		playsound(src, drop_sound, 50, TRUE)
 
 /obj/item/verb/verb_pickup()
 	set src in oview(1)

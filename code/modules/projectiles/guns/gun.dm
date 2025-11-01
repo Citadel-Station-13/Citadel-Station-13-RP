@@ -473,6 +473,15 @@
 		return CLICKCHAIN_DID_SOMETHING
 	// end
 
+	if(check_safety())
+		//If we are on harm intent (intending to injure someone) but forgot to flick the safety off, there is a 50% chance we
+		//will reflexively do it anyway
+		if(clickchain.using_intent == INTENT_HARM && prob(50))
+			toggle_safety(clickchain.performer)
+		else
+			handle_click_safety(clickchain.performer)
+			return
+
 	return handle_clickchain_fire(clickchain, clickchain_flags)
 
 /obj/item/gun/using_item_on(obj/item/using, datum/event_args/actor/clickchain/e_args, clickchain_flags, datum/callback/reachability_check)
