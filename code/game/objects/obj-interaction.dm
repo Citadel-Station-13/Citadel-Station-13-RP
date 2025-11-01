@@ -2,7 +2,7 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /obj/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
-	if(istype(using, /obj/item/cell) && !isnull(obj_cell_slot) && isnull(obj_cell_slot.cell) && obj_cell_slot.interaction_active(user))
+	if(istype(using, /obj/item/cell) && !isnull(obj_cell_slot) && isnull(obj_cell_slot.cell) && obj_cell_slot.interaction_active(clickchain.performer))
 		if(!clickchain.performer.transfer_item_to_loc(using, src))
 			clickchain.chat_feedback(SPAN_WARNING("[using] is stuck to your hand!"), target = src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
@@ -12,10 +12,10 @@
 				target = src,
 			)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
-		clickchain.visible_feedback(
+		clickchain.visible_dual_feedback(
 			target = src,
-			hard_range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
-			visible_hard = SPAN_NOTICE("[user] inserts [using] into [src]."),
+			range_hard = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
+			visible_hard = SPAN_NOTICE("[clickchain.performer] inserts [using] into [src]."),
 			audible_hard = SPAN_NOTICE("You hear something being slotted in."),
 			visible_self = SPAN_NOTICE("You insert [using] into [src]."),
 		)
