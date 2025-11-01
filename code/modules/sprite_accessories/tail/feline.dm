@@ -72,3 +72,63 @@
 	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "sneptail_mark"
 	extra_overlay_w = "sneptail_mark_w"
+
+/datum/sprite_accessory/tail/large_cat_plain // Sprites by Smol42
+	name = "Large cat (Plain)"
+	id = "tail_largecatplain"
+	icon = 'icons/mob/sprite_accessory/tails/feline.dmi'
+	icon_state = "largecatplain"
+	ani_state = "largecatplain_wag"
+	do_colouration = TRUE
+	legacy_use_additive_color_matrix = FALSE
+	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
+	extra_overlay = "largecatplain_secondary"
+	extra_overlay_w = "largecatplain_secondary_wag"
+
+/datum/sprite_accessory/tail/large_cat_tip
+	name = "Large cat (Painted Tip)"
+	id = "tail_largecattip"
+	icon = 'icons/mob/sprite_accessory/tails/feline.dmi'
+	icon_state = "largecattip"
+	ani_state = "largecattip_wag"
+	do_colouration = TRUE
+	legacy_use_additive_color_matrix = FALSE
+	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
+	extra_overlay = "largecattip_secondary"
+	extra_overlay_w = "largecattip_secondary_wag"
+
+/datum/sprite_accessory/tail/large_cat_striped
+	name = "Large cat (Striped)"
+	id = "tail_largecatstriped"
+	icon = 'icons/mob/sprite_accessory/tails/feline.dmi'
+	icon_state = "largecatstriped"
+	ani_state = "largecatstriped_wag"
+	do_colouration = TRUE
+	legacy_use_additive_color_matrix = FALSE
+	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
+	extra_overlay = "largecatstriped_secondary"
+	extra_overlay_w = "largecatstriped_secondary_wag"
+
+/datum/sprite_accessory/tail/large_cat_circle
+	name = "Large cat (Circles)"
+	id = "tail_largecatcircle"
+	icon = 'icons/mob/sprite_accessory/tails/feline.dmi'
+	icon_state = "largecatcircle"
+	ani_state = "largecatcircle_wag"
+	do_colouration = TRUE
+	legacy_use_additive_color_matrix = FALSE
+	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
+	extra_overlay = "largecatcircle_secondary"
+	extra_overlay_w = "largecatcircle_secondary_wag"
+
+/datum/sprite_accessory/tail/large_cat_covered
+	name = "Large cat (Covered Top)"
+	id = "tail_largecatcovered"
+	icon = 'icons/mob/sprite_accessory/tails/feline.dmi'
+	icon_state = "largecatcovered"
+	ani_state = "largecatcovered_wag"
+	do_colouration = TRUE
+	legacy_use_additive_color_matrix = FALSE
+	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
+	extra_overlay = "largecatcovered_secondary"
+	extra_overlay_w = "largecatcovered_secondary_wag"
