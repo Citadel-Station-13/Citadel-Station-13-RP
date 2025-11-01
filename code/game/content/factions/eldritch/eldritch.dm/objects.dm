@@ -5,6 +5,7 @@
 	desc = "A heavy book that has been crafted out of purple leather and bound with a chain made of metal you don't recognize. A variety of runes have been etched into the cover."
 	anchored = 0
 	density = 0
+	suit_storage_class = SUIT_STORAGE_CLASS_HARDWEAR | SUIT_STORAGE_CLASS_SOFTWEAR
 
 /obj/item/eldritch/prop/medallion
 	icon = 'code/game/content/factions/eldritch/eldritch.dmi/objects.dmi'
@@ -29,6 +30,7 @@
 	icon_state = "cursed_blade"
 	slot_flags = SLOT_BELT
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
+	suit_storage_class = SUIT_STORAGE_CLASS_HARDWEAR
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	drop_sound = 'sound/items/drop/sword.ogg'

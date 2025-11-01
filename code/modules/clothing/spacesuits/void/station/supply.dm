@@ -12,7 +12,6 @@
 	desc = "A special suit that protects against hazardous, low pressure environments. Has reinforced plating."
 	icon_state = "rig-mining"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "mining_voidsuit", SLOT_ID_LEFT_HAND = "mining_voidsuit")
-	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/pickaxe)
 	armor_type = /datum/armor/cargo/mining/space
 	helmet_type = /obj/item/clothing/head/helmet/space/void/mining
 	worth_intrinsic = 250
@@ -46,7 +45,6 @@
 	name = "head of security protosuit"
 	icon_state = "hosproto_void"
 	armor_type = /datum/armor/security/hos/space
-	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun)
 	encumbrance = ITEM_ENCUMBRANCE_VOIDSUIT_HEAVY
 	weight = ITEM_WEIGHT_VOIDSUIT_HEAVY
 	helmet_type = /obj/item/clothing/head/helmet/space/void/headofsecurity

@@ -486,7 +486,7 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 		if(dir_alerts)
 			for(var/d=1;d<=4;d++)
 				for(var/i=1;i<=ALERT_STATES.len;i++)
-					if(dir_alerts[d] & BITFLAG(i-1))
+					if(dir_alerts[d] & (1 << (i-1)))
 						add_overlay("alert_[ALERT_STATES[i]]")
 						do_set_light = TRUE
 	else

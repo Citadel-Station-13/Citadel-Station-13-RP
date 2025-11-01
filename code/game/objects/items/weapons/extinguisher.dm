@@ -14,6 +14,7 @@
 	attack_verb = list("slammed", "whacked", "bashed", "thunked", "battered", "bludgeoned", "thrashed")
 	drop_sound = 'sound/items/drop/gascan.ogg'
 	pickup_sound = 'sound/items/pickup/gascan.ogg'
+	suit_storage_class = SUIT_STORAGE_CLASS_HARDWEAR | SUIT_STORAGE_CLASS_SOFTWEAR
 
 	var/spray_particles = 3
 	var/spray_amount = 10	//units of liquid per particle
@@ -35,6 +36,7 @@
 	max_water = 150
 	spray_particles = 3
 	sprite_name = "miniFE"
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
 
 /obj/item/extinguisher/mini/plasman
 	name = "emergency phoronoid extinguisher"

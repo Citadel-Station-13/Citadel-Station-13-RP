@@ -152,6 +152,7 @@
 	base_icon_state = "beaker"
 	item_state = "beaker"
 	materials_base = list(MAT_GLASS = 500)
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
 	w_class = WEIGHT_CLASS_TINY
 	drop_sound = 'sound/items/drop/glass.ogg'
 	pickup_sound = 'sound/items/pickup/glass.ogg'

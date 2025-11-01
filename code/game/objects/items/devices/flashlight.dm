@@ -9,6 +9,7 @@
 	item_action_name = "Toggle Flashlight"
 	light_wedge = LIGHT_WIDE
 	worth_intrinsic = 25
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 
 	var/on = FALSE
 	/// Luminosity when on

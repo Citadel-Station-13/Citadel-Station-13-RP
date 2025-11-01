@@ -18,6 +18,7 @@ var/global/list/active_radio_jammers = list()
 	desc = "Primarily for blocking subspace communications, preventing the use of headsets, PDAs, and communicators. Also masks suit sensors."	// Added suit sensor jamming
 	icon = 'icons/obj/device.dmi'
 	icon_state = "jammer0"
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 	var/active_state = "jammer1"
 	var/last_overlay_percent = null // Stores overlay icon_state to avoid excessive recreation of overlays.
 

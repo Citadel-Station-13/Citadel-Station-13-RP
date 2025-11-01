@@ -18,7 +18,6 @@
 	name = "pilot voidsuit"
 	armor_type = /datum/armor/exploration/space/pilot
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE
-	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/storage/toolbox,/obj/item/storage/briefcase/inflatable)
 	helmet_type = /obj/item/clothing/head/helmet/space/void/pilot
 	worth_intrinsic = 450 // literally an atmos suit
 

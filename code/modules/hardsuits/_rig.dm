@@ -218,8 +218,6 @@
 		add_obj_verb(src, /obj/item/hardsuit/proc/toggle_boots)
 	if(chest_type)
 		chest = new chest_type(src)
-		if(allowed)
-			chest.allowed = allowed
 		add_obj_verb(src, /obj/item/hardsuit/proc/toggle_chest)
 
 	for(var/obj/item/piece in list(gloves,helmet,boots,chest))

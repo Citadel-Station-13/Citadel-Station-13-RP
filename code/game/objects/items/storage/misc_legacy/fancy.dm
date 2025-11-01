@@ -238,6 +238,7 @@
 	icon = 'icons/obj/cigarettes.dmi'
 	icon_state = "cigpacket"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "cigpacket", SLOT_ID_LEFT_HAND = "cigpacket")
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
 	w_class = WEIGHT_CLASS_TINY
 	throw_force = 2
 	slot_flags = SLOT_BELT | SLOT_EARS

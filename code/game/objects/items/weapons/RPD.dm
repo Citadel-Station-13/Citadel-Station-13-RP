@@ -25,6 +25,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = SLOT_BELT
 	materials_base = list(MAT_STEEL = 20000, MAT_GLASS = 10000)
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 	///Sparks system used when changing device in the UI
 	var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread
 	///Direction of the device we are going to spawn, set up in the UI

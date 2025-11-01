@@ -7,4 +7,5 @@ SUBSYSTEM_DEF(early_init)
 /datum/controller/subsystem/early_init/Initialize()
 	init_inventory_slot_meta()
 	init_crayon_decal_meta()
+	init_bitfield_meta()
 	return SS_INIT_SUCCESS

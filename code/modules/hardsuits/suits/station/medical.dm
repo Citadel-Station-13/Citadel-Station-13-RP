@@ -10,17 +10,6 @@
 
 	helm_type = /obj/item/clothing/head/helmet/space/hardsuit/medical
 
-	allowed = list(
-		/obj/item/flashlight,
-		/obj/item/tank,
-		/obj/item/suit_cooling_unit,
-		/obj/item/storage/firstaid,
-		/obj/item/healthanalyzer,
-		/obj/item/stack/medical,
-		/obj/item/roller,
-		/obj/item/bluespace_radio,
-	)
-
 /datum/armor/hardsuit/medical
 	melee = 0.3
 	melee_tier = 3.5

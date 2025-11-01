@@ -23,6 +23,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	materials_base = list(MAT_STEEL = 3750)
 	worth_intrinsic = 75
+	suit_storage_class = SUIT_STORAGE_CLASS_HARDWEAR
 	var/digspeed = 40 //moving the delay to an item var so R&D can make improved picks. --NEO
 	var/sand_dig = FALSE
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
@@ -292,6 +293,7 @@
 	attack_verb = list("bashed", "bludgeoned", "thrashed", "whacked")
 	damage_mode = DAMAGE_MODE_EDGE
 	worth_intrinsic = 50
+	suit_storage_class = SUIT_STORAGE_CLASS_HARDWEAR
 	var/digspeed = 40
 
 /obj/item/shovel/bone
@@ -356,6 +358,7 @@
 	amount = 10
 	max_amount = 10
 	zmm_flags = ZMM_MANGLE_PLANES
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 
 	var/upright = 0
 	var/base_state

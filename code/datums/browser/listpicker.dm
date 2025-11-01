@@ -65,24 +65,31 @@
 	if (A.selectedbutton)
 		return list("button" = A.selectedbutton, "values" = A.valueslist)
 
-/proc/input_bitfield(mob/User, title, bitfield, current_value, nwidth = 350, nheight = 350, nslidecolor, allowed_edit_list = null)
-	if (!User || !(bitfield in GLOB.bitfields))
+/proc/input_bitfield(mob/User, title, datum/bitfield/bitfield, current_value, nwidth = 350, nheight = 350, nslidecolor, allowed_edit_list = null)
+	if(!User)
 		return
 	var/list/pickerlist = list()
-	for (var/i in GLOB.bitfields[bitfield])
+	for(var/i in 1 to bitfield.get_declared_count())
+		var/bit = bitfield.bits[i]
+		var/name = bitfield.names[i]
 		var/can_edit = 1
-		if(!isnull(allowed_edit_list) && !(allowed_edit_list & GLOB.bitfields[bitfield][i]))
+		if(allowed_edit_list && !(allowed_edit_list & bit))
 			can_edit = 0
-		if (current_value & GLOB.bitfields[bitfield][i])
-			pickerlist += list(list("checked" = 1, "value" = GLOB.bitfields[bitfield][i], "name" = i, "allowed_edit" = can_edit))
+		if (current_value & bit)
+			pickerlist += list(list("checked" = 1, "value" = bit, "name" = name, "allowed_edit" = can_edit))
 		else
-			pickerlist += list(list("checked" = 0, "value" = GLOB.bitfields[bitfield][i], "name" = i, "allowed_edit" = can_edit))
+			pickerlist += list(list("checked" = 0, "value" = bit, "name" = name, "allowed_edit" = can_edit))
 	var/list/result = presentpicker(User, "", title, Button1="Save", Button2 = "Cancel", Timeout=FALSE, values = pickerlist, width = nwidth, height = nheight, slidecolor = nslidecolor)
 	if (islist(result))
 		if (result["button"] == 2) // If the user pressed the cancel button
 			return
 		. = 0
 		for (var/flag in result["values"])
-			. |= GLOB.bitfields[bitfield][flag]
+			// TODO: efficient-er reverse lookup
+			for(var/i in 1 to bitfield.get_declared_count())
+				var/bit = bitfield.bits[i]
+				var/name = bitfield.names[i]
+				if(name == flag)
+					. |= bit
 	else
 		return

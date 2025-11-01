@@ -3,6 +3,7 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "hydro"
 	item_state = "analyzer"
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 	var/datum/seed/last_seed
 	var/list/last_reagents
 	w_class = WEIGHT_CLASS_SMALL

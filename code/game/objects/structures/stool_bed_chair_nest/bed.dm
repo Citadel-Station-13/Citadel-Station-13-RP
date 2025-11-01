@@ -271,6 +271,7 @@
 	var/bedtype = /obj/structure/bed/roller
 	drop_sound = 'sound/items/drop/axe.ogg'
 	pickup_sound = 'sound/items/pickup/axe.ogg'
+	suit_storage_class = SUIT_STORAGE_CLASS_HARDWEAR
 
 /obj/item/roller/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()

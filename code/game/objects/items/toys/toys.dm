@@ -26,6 +26,7 @@
 	throw_speed = 4
 	throw_range = 20
 	damage_force = 0
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
 
 /*
  * Balloons

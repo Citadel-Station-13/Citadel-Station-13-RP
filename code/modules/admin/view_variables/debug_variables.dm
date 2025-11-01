@@ -2,7 +2,7 @@
 /proc/debug_variable(name, value, level, datum/D, sanitize = TRUE)			//if D is a list, name will be index, and value will be assoc value.
 	var/header
 	if(D)
-		if(islist(D))
+		if(islist(D) || isalist(D))
 			var/list/D_l = D
 			var/index = name
 			if (value)
@@ -16,6 +16,7 @@
 		header = "<li>"
 
 	var/item
+	var/datum/bitfield/maybe_bitfield
 	if (isnull(value))
 		item = "[VV_HTML_ENCODE(name)] = <span class='value'>null</span>"
 
@@ -69,12 +70,23 @@
 			item = "<a href='?_src_=vars;[HrefToken()];Vars=[REF(value)]'>[VV_HTML_ENCODE(name)] = /list ([L.len])</a><ul>[items.Join()]</ul>"
 		else
 			item = "<a href='?_src_=vars;[HrefToken()];Vars=[REF(value)]'>[VV_HTML_ENCODE(name)] = /list ([L.len])</a>"
+	else if (isalist(value))
+		var/alist/scanning = list()
+		var/scanning_length = length(value)
+		var/list/items = list()
+		if(scanning_length && !(scanning_length > VV_NORMAL_LIST_NO_EXPAND_THRESHOLD))
+			for(var/a_key in scanning)
+				var/a_value = scanning[a_key]
+				items += debug_variable(a_key, a_value, level + 1, sanitize = sanitize)
+			item = "<a href='?_src_=vars;[HrefToken()];Vars=[REF(value)]'>[VV_HTML_ENCODE(name)] = /alist ([scanning_length])</a><ul>[items.Join()]</ul>"
+		else
+			item = "<a href='?_src_=vars;[HrefToken()];Vars=[REF(value)]'>[VV_HTML_ENCODE(name)] = /alist ([scanning_length])</a>"
 
-	else if (name in GLOB.bitfields)
-		var/list/flags = list()
-		for (var/i in GLOB.bitfields[name])
-			if (value & GLOB.bitfields[name][i])
-				flags += i
+	else if ((maybe_bitfield = fetch_bitfield(D, name)))
+		for(var/i in 1 to maybe_bitfield.get_declared_count())
+			var/bit = maybe_bitfield.bits[i]
+			if(value & bit)
+				flags += maybe_bitfield.names[i]
 			item = "[VV_HTML_ENCODE(name)] = [VV_HTML_ENCODE(jointext(flags, ", "))]"
 	else
 		item = "[VV_HTML_ENCODE(name)] = <span class='value'>[VV_HTML_ENCODE(value)]</span>"

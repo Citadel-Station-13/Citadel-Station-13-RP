@@ -9,6 +9,7 @@
 	throw_force = 5
 	throw_speed = 1
 	throw_range = 2
+	suit_storage_class = SUIT_STORAGE_CLASS_HARDWEAR
 
 	materials_base = list(MAT_STEEL = 750)
 

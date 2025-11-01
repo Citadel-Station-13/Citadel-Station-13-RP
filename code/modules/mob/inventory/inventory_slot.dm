@@ -791,10 +791,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	var/obj/item/suit_item = wearer.item_by_slot_id(SLOT_ID_SUIT)
 	if(!suit_item)
 		return FALSE
-	// todo: this check is ass
-	if(istype(I, /obj/item/pda) || istype(I, /obj/item/pen) || is_type_in_list(I, suit_item.allowed))
-		return TRUE
-	return FALSE
+	return suit_item.can_suit_storage(I)
 
 /datum/inventory_slot/inventory/ears
 	sort_order = 9500

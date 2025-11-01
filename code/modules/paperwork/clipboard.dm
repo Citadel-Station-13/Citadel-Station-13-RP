@@ -8,6 +8,7 @@
 	throw_speed = 3
 	throw_range = 7
 	slot_flags = SLOT_BELT
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 
 	/// The stored pen
 	var/obj/item/pen/pen

@@ -20,6 +20,7 @@
 	damage_force = 5
 	throw_force = 5
 	w_class = WEIGHT_CLASS_NORMAL
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 	var/open = FALSE
 
 /obj/item/melee/umbrella/Initialize(mapload)

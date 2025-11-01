@@ -6,6 +6,7 @@
 	icon_state = "translator"
 	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_DATA = 3, TECH_ENGINEERING = 3)
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 	/// our translation context; set to path to start as path
 	var/datum/translation_context/context = /datum/translation_context/simple/universal_translator
 

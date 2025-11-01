@@ -37,7 +37,7 @@
 	desc = "A huge, bulky mass of pressure and temperature-resistant organic tissue, evolved to facilitate space travel."
 	clothing_flags = NONE
 	item_flags = ITEM_DROPDEL
-	allowed = list(/obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/tank/oxygen)
+	suit_storage_class_allow = SUIT_STORAGE_CLASS_HARDWEAR | SUIT_STORAGE_CLASS_SOFTWEAR
 	armor_type = /datum/armor/none //No armor at all.
 
 /obj/item/clothing/suit/space/changeling/Initialize(mapload)

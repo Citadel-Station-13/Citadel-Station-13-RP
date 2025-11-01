@@ -11,7 +11,6 @@
 	desc = "A special suit that protects against hazardous, low pressure environments. Has minor radiation shielding."
 	icon_state = "rig-medical"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "medical_voidsuit", SLOT_ID_LEFT_HAND = "medical_voidsuit")
-	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/storage/firstaid,/obj/item/healthanalyzer,/obj/item/stack/medical)
 	armor_type = /datum/armor/medical/space
 	helmet_type = /obj/item/clothing/head/helmet/space/void/medical
 	worth_intrinsic = 375

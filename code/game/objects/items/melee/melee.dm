@@ -20,3 +20,4 @@
 	passive_parry = /datum/passive_parry{
 		parry_chance_melee = 5;
 	}
+	suit_storage_class = SUIT_STORAGE_CLASS_HARDWEAR

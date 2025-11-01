@@ -112,7 +112,6 @@
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.02
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	allowed = list(/obj/item/flashlight,/obj/item/tank)
 	armor_type = /datum/armor/none
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 	cold_protection_cover = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
@@ -217,14 +216,6 @@
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
 	permeability_coefficient = 0.50
-	allowed = list(
-		/obj/item/flashlight, /obj/item/atmos_analyzer,
-		/obj/item/radio, /obj/item/tank/emergency/oxygen,
-		/obj/item/reagent_containers/hypospray, /obj/item/healthanalyzer,
-		/obj/item/reagent_containers/dropper,/obj/item/reagent_containers/syringe,
-		/obj/item/reagent_containers/glass/bottle,/obj/item/reagent_containers/glass/beaker,
-		/obj/item/reagent_containers/pill,/obj/item/storage/pill_bottle
-		)
 	armor_type = /datum/armor/security/light_formalwear
 
 /obj/item/clothing/suit/storage/trek/ds9/equipped(mob/user, slot, flags)

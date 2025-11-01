@@ -5,6 +5,7 @@
 	icon_state = "holowarrant"
 	item_state = "flashtool"
 	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 	throw_force = 5
 	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 4

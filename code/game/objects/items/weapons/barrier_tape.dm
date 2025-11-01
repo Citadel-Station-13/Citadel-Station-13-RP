@@ -4,6 +4,7 @@
 	icon = 'icons/policetape.dmi'
 	icon_state = "tape"
 	w_class = WEIGHT_CLASS_SMALL
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 
 	tool_speed = 3 //You can use it in surgery. It's stupid, but you can.
 

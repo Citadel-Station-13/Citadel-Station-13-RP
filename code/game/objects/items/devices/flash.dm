@@ -10,6 +10,7 @@
 	throw_range = 10
 	origin_tech = list(TECH_MAGNET = 2, TECH_COMBAT = 1)
 	worth_intrinsic = 45
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 
 	var/times_used = 0 //Number of times it's been used.
 	var/broken = FALSE     //Is the flash burnt out?
