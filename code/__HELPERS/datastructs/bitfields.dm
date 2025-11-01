@@ -82,8 +82,9 @@ GLOBAL_LIST(bitfields_by_var)
 
 /proc/fetch_bitfield(datum/path, var_name) as /datum/bitfield
 	for(var/datum/bitfield/bitfield as anything in GLOB.bitfields_by_var[var_name])
-		if(path in bitfield.paths)
-			return bitfield
+		for(var/match in bitfield.paths)
+			if(ispath(path, match))
+				return bitfield
 
 /**
  * Bitfield datums used to reflect bitfield values in the game's code.
