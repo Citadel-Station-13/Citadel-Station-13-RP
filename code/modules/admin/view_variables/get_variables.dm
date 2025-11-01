@@ -68,6 +68,7 @@
 				VV_NEW_DATUM,
 				VV_NEW_TYPE,
 				VV_NEW_LIST,
+				VV_NEW_ALIST,
 				VV_NULL,
 				VV_RESTORE_DEFAULT,
 				VV_TEXT_LOCATE,
@@ -251,6 +252,10 @@
 		if(VV_NEW_LIST)
 			.["value"] = list()
 			.["type"] = /list
+
+		if(VV_NEW_ALIST)
+			.["value"] = alist()
+			.["type"] = /alist
 
 		if(VV_TEXT_LOCATE)
 			var/datum/D

@@ -35,7 +35,7 @@ GLOBAL_LIST(bitfields_by_var)
 		for(var/name in reverse_lookup)
 			var/bit = reverse_lookup[name]
 			legacy_instance.flags[bit] = name
-		legacy_instance.paths += /datum
+		legacy_instance.paths = alist(/datum = var_name)
 		bitfields += legacy_instance
 	for(var/datum/bitfield/bitfield as anything in bitfields)
 		for(var/path in bitfield.paths)
@@ -43,14 +43,28 @@ GLOBAL_LIST(bitfields_by_var)
 				bitfield_by_path[path] = list(bitfield)
 			else
 				bitfield_by_path[path] += bitfield
-			for(var/name in bitfield.paths[path])
-				if(!bitfield_by_var[name])
-					bitfield_by_var[name] = list(bitfield)
+			var/list/name_or_names = bitfield.paths[path]
+			if(islist(name_or_names))
+				for(var/name in name_or_names)
+					if(!bitfield_by_var[name])
+						bitfield_by_var[name] = list(bitfield)
+					else
+						bitfield_by_var[name] += bitfield
+			else if(name_or_names)
+				if(!bitfield_by_var[name_or_names])
+					bitfield_by_var[name_or_names] = list(bitfield)
 				else
-					bitfield_by_var[name] += bitfield
+					bitfield_by_var[name_or_names] += bitfield
+			else
+				STACK_TRACE("Bitfield [bitfield.type] ([json_encode(bitfield.flags)]) had no var name on path [path]")
+
 	GLOB.bitfields = bitfields
 	GLOB.bitfields_by_path = bitfield_by_path
 	GLOB.bitfields_by_var = bitfield_by_var
+
+#if DM_VERSION > 516
+	#error remove the guards on path == /datum; byond will have fixed the crash bug by now
+#endif
 
 /**
  * @return alist(var_name = alist(bit = string), ...); do not modify
@@ -65,6 +79,8 @@ GLOBAL_LIST(bitfields_by_var)
 			for(var/datum/bitfield/bitfield as anything in maybe_bitfields)
 				for(var/var_name in bitfield.paths[path])
 					.[var_name] = bitfield.flags
+		if(path == /datum)
+			break
 		path = path.parent_type
 	while(path)
 
@@ -76,6 +92,8 @@ GLOBAL_LIST(bitfields_by_var)
 		var/list/maybe_bitfields = GLOB.bitfields_by_path[path]
 		if(maybe_bitfields)
 			. += maybe_bitfields
+		if(path == /datum)
+			break
 		path = path.parent_type
 	while(path)
 
@@ -83,7 +101,7 @@ GLOBAL_LIST(bitfields_by_var)
  * @return alist(bit = string); null if none; do not modify
  */
 /proc/fetch_bitfield_mappings(datum/path, var_name) as /alist
-	return fetch_bitfield(path, var_name).flags
+	return fetch_bitfield(path, var_name)?.flags
 
 /proc/fetch_bitfield(datum/path, var_name) as /datum/bitfield
 	for(var/datum/bitfield/bitfield as anything in GLOB.bitfields_by_var[var_name])

@@ -16,6 +16,7 @@
 #define VV_NEW_DATUM "New Datum"
 #define VV_NEW_TYPE "New Custom Typepath"
 #define VV_NEW_LIST "New List"
+#define VV_NEW_ALIST "New A-List"
 #define VV_NULL "NULL"
 #define VV_RESTORE_DEFAULT "Restore to Default"
 #define VV_MARKED_DATUM "Marked Datum"

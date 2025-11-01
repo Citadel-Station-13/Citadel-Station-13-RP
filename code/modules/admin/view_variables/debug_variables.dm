@@ -47,7 +47,7 @@
 		else
 			item = "<a href='?_src_=vars;[HrefToken()];Vars=[REF(value)]'>[VV_HTML_ENCODE(name)] [REF(value)]</a> = [DV.type]"
 
-	else if (islist(value) || isalist(value))
+	else if (islist(value))
 		var/list/L = value
 		var/list/items = list()
 		// don't expand if it's:
@@ -70,6 +70,17 @@
 			item = "<a href='?_src_=vars;[HrefToken()];Vars=[REF(value)]'>[VV_HTML_ENCODE(name)] = /list ([L.len])</a><ul>[items.Join()]</ul>"
 		else
 			item = "<a href='?_src_=vars;[HrefToken()];Vars=[REF(value)]'>[VV_HTML_ENCODE(name)] = /list ([L.len])</a>"
+	else if (isalist(value))
+		var/alist/scanning = list()
+		var/scanning_length = length(value)
+		var/list/items = list()
+		if(scanning_length && !(scanning_length > VV_NORMAL_LIST_NO_EXPAND_THRESHOLD))
+			for(var/a_key in scanning)
+				var/a_value = scanning[a_key]
+				items += debug_variable(a_key, a_value, level + 1, sanitize = sanitize)
+			item = "<a href='?_src_=vars;[HrefToken()];Vars=[REF(value)]'>[VV_HTML_ENCODE(name)] = /alist ([scanning_length])</a><ul>[items.Join()]</ul>"
+		else
+			item = "<a href='?_src_=vars;[HrefToken()];Vars=[REF(value)]'>[VV_HTML_ENCODE(name)] = /alist ([scanning_length])</a>"
 
 	else if ((maybe_bitfield_mappings = fetch_bitfield_mappings(D, name)))
 		var/list/flags = list()
