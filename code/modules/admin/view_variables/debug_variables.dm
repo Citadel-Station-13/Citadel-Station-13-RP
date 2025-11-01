@@ -2,7 +2,7 @@
 /proc/debug_variable(name, value, level, datum/D, sanitize = TRUE)			//if D is a list, name will be index, and value will be assoc value.
 	var/header
 	if(D)
-		if(islist(D) || isalist(D))
+		if(islist(D))
 			var/list/D_l = D
 			var/index = name
 			if (value)
@@ -70,17 +70,6 @@
 			item = "<a href='?_src_=vars;[HrefToken()];Vars=[REF(value)]'>[VV_HTML_ENCODE(name)] = /list ([L.len])</a><ul>[items.Join()]</ul>"
 		else
 			item = "<a href='?_src_=vars;[HrefToken()];Vars=[REF(value)]'>[VV_HTML_ENCODE(name)] = /list ([L.len])</a>"
-	else if (isalist(value))
-		var/alist/scanning = value
-		var/scanning_length = length(scanning)
-		var/list/items = list()
-		if(scanning_length && !(scanning_length > VV_NORMAL_LIST_NO_EXPAND_THRESHOLD))
-			for(var/a_key in scanning)
-				var/a_value = scanning[a_key]
-				items += debug_variable(a_key, a_value, level + 1, sanitize = sanitize)
-			item = "<a href='?_src_=vars;[HrefToken()];Vars=[REF(value)]'>[VV_HTML_ENCODE(name)] = /alist ([scanning_length])</a><ul>[items.Join()]</ul>"
-		else
-			item = "<a href='?_src_=vars;[HrefToken()];Vars=[REF(value)]'>[VV_HTML_ENCODE(name)] = /alist ([scanning_length])</a>"
 
 	else if ((maybe_bitfield = fetch_bitfield(D, name)))
 		var/list/flags = list()
