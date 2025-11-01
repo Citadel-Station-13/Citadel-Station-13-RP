@@ -71,8 +71,8 @@
 		else
 			item = "<a href='?_src_=vars;[HrefToken()];Vars=[REF(value)]'>[VV_HTML_ENCODE(name)] = /list ([L.len])</a>"
 	else if (isalist(value))
-		var/alist/scanning = list()
-		var/scanning_length = length(value)
+		var/alist/scanning = value
+		var/scanning_length = length(scanning)
 		var/list/items = list()
 		if(scanning_length && !(scanning_length > VV_NORMAL_LIST_NO_EXPAND_THRESHOLD))
 			for(var/a_key in scanning)

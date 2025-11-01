@@ -36,7 +36,7 @@ GLOBAL_LIST(bitfields_by_var)
 			var/bit = reverse_lookup[name]
 			legacy_instance.names += name
 			legacy_instance.bits += bit
-		legacy_instance.paths = alist(/datum = var_name)
+		legacy_instance.paths = list((/datum) = var_name)
 		bitfields += legacy_instance
 	for(var/datum/bitfield/bitfield as anything in bitfields)
 		for(var/path in bitfield.paths)
