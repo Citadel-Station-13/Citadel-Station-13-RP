@@ -394,14 +394,15 @@
 
 /obj/item/throw_land(atom/A, datum/thrownthing/TT)
 	. = ..()
+	// if we already impacted, impacted handling should play sound, not us
+	if(drop_sound && !(TT.impacted[A]))
+		playsound(src, drop_sound, 50, TRUE)
 	if(TT.throw_flags & THROW_AT_IS_NEAT)
 		return
 	var/matrix/M = matrix(transform)
 	M.Turn(rand(-170, 170))
 	transform = M
 	set_pixel_offsets(rand(-8, 8), rand(-8, 8))
-	if(drop_sound)
-		playsound(src, drop_sound, 50, TRUE)
 
 /obj/item/verb/verb_pickup()
 	set src in oview(1)

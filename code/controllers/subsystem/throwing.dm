@@ -315,15 +315,15 @@ SUBSYSTEM_DEF(throwing)
  * handle impacting an atom
  * return TRUE if we should end the throw, FALSE to pierce
  */
-/datum/thrownthing/proc/impact(atom/A, in_land)
-	impacted[A] = TRUE
+/datum/thrownthing/proc/impact(atom/impacting, in_land)
+	impacted[impacting] = TRUE
 
-	var/op_return = thrownthing._throw_do_hit(A, src)
+	var/op_return = thrownthing._throw_do_hit(impacting, src)
 	if(op_return & COMPONENT_THROW_HIT_TERMINATE)
 		terminate()
 		return
 
-	on_hit?.InvokeAsync(A, src)
+	on_hit?.InvokeAsync(imapcting, src)
 
 	if(!(op_return & COMPONENT_THROW_HIT_PIERCE) && !in_land)
 		land(get_turf(thrownthing))
@@ -335,15 +335,15 @@ SUBSYSTEM_DEF(throwing)
 /**
  * land on something and terminate the throw
  */
-/datum/thrownthing/proc/land(atom/A = get_turf(thrownthing))
+/datum/thrownthing/proc/land(atom/landing = get_turf(thrownthing))
 	// todo: need to rewrite to consider qdel's for object + us maybe?
 	// nothing to land on
-	if(!A)
+	if(!landing)
 		terminate()
 		return
 
 	// hit our target if we haven't already
-	if(!impacted[target] && (target in get_turf(A)) && target.is_throw_explicit_targetable(src))
+	if(!impacted[target] && (target in get_turf(landing)) && target.is_throw_explicit_targetable(src))
 		impact(target, TRUE)
 
 	// we got terminated already
@@ -351,8 +351,8 @@ SUBSYSTEM_DEF(throwing)
 		return
 
 	// land
-	thrownthing._throw_finalize(A, src)
-	on_land?.InvokeAsync(A, src)
+	thrownthing._throw_finalize(landing, src)
+	on_land?.InvokeAsync(landing, src)
 
 	// halt
 	terminate()

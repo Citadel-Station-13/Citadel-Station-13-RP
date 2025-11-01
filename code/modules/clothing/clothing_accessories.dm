@@ -200,13 +200,13 @@
 	if(istype(tool, /obj/item/clothing/accessory))
 		var/obj/item/clothing/accessory/A = tool
 		if(attempt_attach_accessory(A, user))
-			return
+			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 
 	if(LAZYLEN(accessories))
 		for(var/obj/item/clothing/accessory/A in accessories)
 			var/ret = A.attackby(arglist(args))
 			if(ret & CLICKCHAIN_FLAGS_INTERACT_ABORT)
-				return
+				return ret
 	return ..()
 
 /obj/item/clothing/examine(var/mob/user)
