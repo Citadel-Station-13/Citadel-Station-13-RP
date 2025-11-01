@@ -27,7 +27,7 @@
 /turf/space,
 /area/asteroid/rogue/zone4)
 "W" = (
-/turf/space/basic,
+/turf/space,
 /area/asteroid/rogue/zone4)
 "X" = (
 /obj/effect/shuttle_landmark{

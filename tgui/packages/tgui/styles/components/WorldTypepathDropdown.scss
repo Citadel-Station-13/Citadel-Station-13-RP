@@ -1,0 +1,57 @@
+/**
+ * @file
+ * @license MIT
+ */
+
+@use '../base.scss';
+
+.WorldTypepathDropdown {
+}
+
+.WorldTypepathDropdown__inner {
+  align-items: center;
+  background-color: #00000033;
+  border: #77777777 solid 1px;
+}
+
+.WorldTypepathDropdown__preview {
+}
+
+.WorldTypepathDropdown__name {
+  height: 100%;
+}
+
+.WorldTypepathDropdown__desc {
+}
+
+.WorldTypepathDropdown__search {
+}
+
+.WorldTypepathDropdown__entries {
+  overflow: auto;
+}
+
+.WorldTypepathDropdown__drawer {
+  margin-right: 0.25em;
+}
+
+.WorldTypepathDropdown__menu {
+  border-color: #ffffffff;
+  border-style: solid;
+  border-bottom: 1px;
+  border-left: 1px;
+  border-right: 1px;
+  border-top: 0px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.75);
+  padding: 3px;
+}
+
+.WorldTypepathDropdown__menuItem {
+  transition: background-color 100ms ease-out;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transition: background-color 0ms;
+  }
+}

@@ -11,12 +11,3 @@ GLOBAL_DATUM_INIT(shuttle_added, /singleton/observ/shuttle_added, new)
 /singleton/observ/shuttle_added
 	name = "Shuttle Added"
 	expected_type = /datum/shuttle
-
-/*****************************
-*  Shuttle Added Handling *
-*****************************/
-
-/datum/controller/subsystem/shuttle/initialize_shuttle()
-	. = ..()
-	if(.)
-		GLOB.shuttle_added.raise_event(.)

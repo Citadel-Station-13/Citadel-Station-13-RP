@@ -165,7 +165,7 @@
 	dat += "<hr></body></html>"
 
 	user.set_machine(src)
-	var/datum/browser/popup = new(user, "turbolift_panel", "Lift Panel", 350, 320)
+	var/datum/browser/popup = new(user, "turbolift_panel", "Lift Panel", 450, 450)
 	popup.set_content(jointext(dat, null))
 	popup.open()
 

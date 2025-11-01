@@ -359,7 +359,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/reaver/cockpit)
 "rX" = (
-/turf/space/basic,
+/turf/space,
 /area/shuttle/reaver/engine)
 "so" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
@@ -726,7 +726,7 @@
 /turf/simulated/wall/rshull,
 /area/shuttle/reaver/engine)
 "Nq" = (
-/turf/space/basic,
+/turf/space,
 /area/space)
 "Nr" = (
 /obj/machinery/door/airlock/hatch,

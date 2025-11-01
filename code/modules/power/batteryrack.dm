@@ -10,6 +10,7 @@
 	output_level_max = 0
 	icon_state = "gsmes"
 	circuit = /obj/item/circuitboard/batteryrack
+	should_be_mapped = TRUE
 	var/cells_amount = 0
 	var/capacitors_amount = 0
 	var/global/list/br_cache = null

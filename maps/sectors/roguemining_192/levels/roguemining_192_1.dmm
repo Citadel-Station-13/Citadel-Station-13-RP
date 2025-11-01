@@ -33,7 +33,7 @@
 /turf/space,
 /area/asteroid/rogue/zone1)
 "S" = (
-/turf/space/basic,
+/turf/space,
 /area/asteroid/rogue/zone1)
 "V" = (
 /obj/rogue_mobspawner,

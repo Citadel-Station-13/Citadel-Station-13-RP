@@ -58,19 +58,19 @@
 	if(!shuttle_control)
 		data["shuttle_location"] = "Unknown"
 		data["shuttle_at_station"] = 0
-	else if(SSmapping.level_trait(get_z(shuttle_control), ZTRAIT_LEGACY_BELTER_DOCK))
+	else if(SSmapping.level_has_trait(get_z(shuttle_control), ZTRAIT_LEGACY_BELTER_DOCK))
 		data["shuttle_location"] = "Landed"
 		data["shuttle_at_station"] = 1
-	else if(SSmapping.level_trait(get_z(shuttle_control), ZTRAIT_LEGACY_BELTER_TRANSIT))
+	else if(SSmapping.level_has_trait(get_z(shuttle_control), ZTRAIT_LEGACY_BELTER_TRANSIT))
 		data["shuttle_location"] = "In-transit"
 		data["shuttle_at_station"] = 0
-	else if(SSmapping.level_trait(get_z(shuttle_control), ZTRAIT_LEGACY_BELTER_ACTIVE))
+	else if(SSmapping.level_has_trait(get_z(shuttle_control), ZTRAIT_LEGACY_BELTER_ACTIVE))
 		data["shuttle_location"] = "Belt"
 		data["shuttle_at_station"] = 0
 
 	var/can_scan = 0
 	if(chargePercent >= 100)	// Keep having weird problems with these in one 'if' statement
-		if(shuttle_control && SSmapping.level_trait(get_z(shuttle_control), ZTRAIT_LEGACY_BELTER_DOCK))
+		if(shuttle_control && SSmapping.level_has_trait(get_z(shuttle_control), ZTRAIT_LEGACY_BELTER_DOCK))
 			if(!curZoneOccupied)	// Not sure why.
 				if(!scanning)
 					can_scan = 1
@@ -79,7 +79,7 @@
 	data["scan_ready"] = can_scan
 
 	// Permit emergency recall of the shuttle if its stranded in a zone with just dead people.
-	data["can_recall_shuttle"] = (shuttle_control && SSmapping.level_trait(get_z(shuttle_control), ZTRAIT_LEGACY_BELTER_ACTIVE) && !curZoneOccupied)
+	data["can_recall_shuttle"] = (shuttle_control && SSmapping.level_has_trait(get_z(shuttle_control), ZTRAIT_LEGACY_BELTER_ACTIVE) && !curZoneOccupied)
 
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
@@ -144,7 +144,7 @@
 /obj/machinery/computer/roguezones/proc/failsafe_shuttle_recall()
 	if(!shuttle_control)
 		return	// Shuttle computer has been destroyed
-	if (!SSmapping.level_trait(shuttle_control.z, ZTRAIT_LEGACY_BELTER_ACTIVE))
+	if (!SSmapping.level_has_trait(shuttle_control.z, ZTRAIT_LEGACY_BELTER_ACTIVE))
 		return	// Usable only when shuttle is away
 	if(rm_controller.current_zone && rm_controller.current_zone.is_occupied())
 		return	// Not usable if shuttle is in occupied zone

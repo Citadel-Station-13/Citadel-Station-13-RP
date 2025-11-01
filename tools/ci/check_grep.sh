@@ -102,6 +102,11 @@ if $grep -i'eciev' $map_files; then
 fi;
 
 part "legacy mapping mistakes"
+if $grep -P 'turf/space/basic' $map_files; then
+	echo
+	echo -e "${RED}ERROR: /turf/space/basic detected in maps. Use /turf/space.${NC}"
+	st=1
+fi;
 if $grep -P '\td[1-2] =' $map_files; then
 	echo
     echo -e "${RED}ERROR: d1/d2 cable variables detected in maps, please remove them.${NC}"
@@ -115,6 +120,11 @@ fi;
 if $grep -P '/turf[0-z/_]*,\n/turf' $map_files; then
 	echo
 	echo -e "${RED}ERROR: found multiple tiles on one tile, this will result in severe glitches.${NC}"
+	st=1
+fi;
+if $grep -P '/turf[0-z/_]*\)' $map_files; then
+	echo
+	echo -e "${RED}ERROR: last instance of a map coordinate key was a /turf. Is an area missing?${NC}"
 	st=1
 fi;
 if $grep -P '\W\/turf\s*[,\){]' $map_files; then
@@ -172,17 +182,6 @@ if $grep 'can_perform_action\(\s*\)' $code_files; then
 	echo -e "${RED}ERROR: Found a can_perform_action() proc with improper arguments.${NC}"
 	st=1
 fi;
-
-# TODO reenable this
-# part "ensure proper lowertext usage"
-# lowertext() is a BYOND-level proc, so it can be used in any sort of code... including the TGS DMAPI which we don't manage in this repository.
-# basically, we filter out any results with "tgs" in it to account for this edgecase without having to enforce this rule in that separate codebase.
-# grepping the grep results is a bit of a sad solution to this but it's pretty much the only option in our existing linter framework
-# if $grep -i 'lowertext\(.+\)' $code_files | $grep -v 'UNLINT\(.+\)' | $grep -v '\/modules\/tgs\/'; then
-# 	echo
-# 	echo -e "${RED}ERROR: Found a lowertext() proc call. Please use the LOWER_TEXT() macro instead. If you know what you are doing, wrap your text (ensure it is a string) in UNLINT().${NC}"
-# 	st=1
-# fi;
 
 part "common spelling mistakes"
 # one pesky door causing this issue

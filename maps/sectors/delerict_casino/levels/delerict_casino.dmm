@@ -5678,7 +5678,7 @@
 /area/sector/delerictcasino/ringforrest)
 "Ap" = (
 /obj/overmap/entity/visitable/sector/delerictcasino,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "Ar" = (
 /obj/machinery/door/window/brigdoor/eastright,
@@ -7090,7 +7090,7 @@
 /turf/simulated/floor/tiled/eris/steel/bar_dance,
 /area/sector/delerictcasino/dance)
 "HC" = (
-/turf/space/basic,
+/turf/space,
 /area/space)
 "HE" = (
 /obj/machinery/air_sensor{
@@ -10234,7 +10234,7 @@
 /area/sector/delerictcasino/ringforrest)
 "Xb" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/turf/space/basic,
+/turf/space,
 /area/sector/delerictcasino/ringforrest)
 "Xc" = (
 /obj/structure/table/gamblingtable,

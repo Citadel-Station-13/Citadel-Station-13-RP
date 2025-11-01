@@ -136,10 +136,6 @@
 	else if(get_turf(src))		//We actually exist in space
 		forceMove(get_turf(src))
 
-//default attackby behaviour
-/obj/item/clothing/accessory/attackby(obj/item/I, mob/user)
-	..()
-
 //default attack_hand behaviour
 /obj/item/clothing/accessory/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(accessory_host)

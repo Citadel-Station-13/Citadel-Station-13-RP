@@ -90,7 +90,7 @@
 /area/sector/ice_comet/facility)
 "cY" = (
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "dg" = (
 /obj/effect/floor_decal/corner/purple/border{
@@ -183,7 +183,7 @@
 /obj/effect/particle_effect/ion_trails{
 	dir = 8
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "gm" = (
 /obj/structure/flora/rock/geyser,
@@ -555,7 +555,7 @@
 /area/sector/ice_comet/facility)
 "rz" = (
 /obj/overmap/entity/visitable/sector/ice_comet,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "rF" = (
 /obj/machinery/door/airlock/voidcraft/survival_pod,
@@ -1298,7 +1298,7 @@
 /turf/simulated/floor/reinforced,
 /area/space)
 "Qm" = (
-/turf/space/basic,
+/turf/space,
 /area/space)
 "QU" = (
 /obj/machinery/crypod,

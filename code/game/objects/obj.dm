@@ -13,8 +13,6 @@
 	//? Flags
 	/// object flags, see __DEFINES/_flags/obj_flags.dm
 	var/obj_flags = OBJ_MELEE_TARGETABLE | OBJ_RANGE_TARGETABLE
-	/// ONLY FOR MAPPING: Sets flags from a string list, handled in Initialize. Usage: set_obj_flags = "OBJ_EMAGGED;!CAN_BE_HIT" to set OBJ_EMAGGED and clear CAN_BE_HIT.
-	var/set_obj_flags
 
 	//? Access - see [modules/jobs/access.dm]
 	/// If set, all of these accesses are needed to access this object.
@@ -264,15 +262,6 @@
 			init_material_parts()
 	if(hides_underfloor != OBJ_UNDERFLOOR_UNSUPPORTED && isturf(loc))
 		initialize_hiding_underfloor(mapload)
-	if (set_obj_flags)
-		var/flagslist = splittext(set_obj_flags,";")
-		var/list/string_to_objflag = GLOB.bitfields["obj_flags"]
-		for (var/flag in flagslist)
-			if(flag[1] == "!")
-				flag = copytext(flag, length(flag[1]) + 1) // Get all but the initial !
-				obj_flags &= ~string_to_objflag[flag]
-			else
-				obj_flags |= string_to_objflag[flag]
 
 /obj/Destroy()
 	for(var/datum/prototype/material_trait/trait as anything in material_traits)
@@ -394,53 +383,6 @@
 // Test for if stepping on a tile containing this obj is safe to do, used for things like landmines and cliffs.
 /obj/proc/is_safe_to_step(mob/living/L)
 	return TRUE
-
-//? Attacks
-
-/obj/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
-	if(user.a_intent == INTENT_HARM)
-		return ..()
-	if(istype(I, /obj/item/cell) && !isnull(obj_cell_slot) && isnull(obj_cell_slot.cell) && obj_cell_slot.interaction_active(user))
-		if(!user.transfer_item_to_loc(I, src))
-			user.action_feedback(SPAN_WARNING("[I] is stuck to your hand!"), src)
-			return CLICKCHAIN_DO_NOT_PROPAGATE
-		if(!obj_cell_slot.accepts_cell(I))
-			user.action_feedback(
-				SPAN_WARNING("[src] do,es not accept [I]."),
-				target = src,
-			)
-			return CLICKCHAIN_DO_NOT_PROPAGATE
-		user.visible_action_feedback(
-			target = src,
-			hard_range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
-			visible_hard = SPAN_NOTICE("[user] inserts [I] into [src]."),
-			audible_hard = SPAN_NOTICE("You hear something being slotted in."),
-			visible_self = SPAN_NOTICE("You insert [I] into [src]."),
-		)
-		obj_cell_slot.insert_cell(I)
-		user.trigger_aiming(TARGET_CAN_CLICK)
-		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
-	var/datum/event_args/actor/actor = new(user)
-	if(!isnull(obj_storage) && I.allow_auto_storage_insert(actor, obj_storage) && obj_storage?.auto_handle_interacted_insertion(I, actor))
-		user.trigger_aiming(TARGET_CAN_CLICK)
-		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
-	return ..()
-
-/obj/on_attack_hand(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
-	. = ..()
-	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
-		return
-	if(!isnull(obj_cell_slot?.cell) && obj_cell_slot.remove_yank_offhand && clickchain.performer.is_holding_inactive(src) && obj_cell_slot.interaction_active(clickchain.performer))
-		clickchain.performer.visible_action_feedback(
-			target = src,
-			hard_range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
-			visible_hard = SPAN_NOTICE("[clickchain.performer] removes the cell from [src]."),
-			audible_hard = SPAN_NOTICE("You hear fasteners falling out and something being removed."),
-			visible_self = SPAN_NOTICE("You remove the cell from [src]."),
-		)
-		log_construction(clickchain, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
-		clickchain.performer.put_in_hands_or_drop(obj_cell_slot.remove_cell(clickchain.performer))
-		return CLICKCHAIN_DID_SOMETHING
 
 //* Cells / Inducers *//
 

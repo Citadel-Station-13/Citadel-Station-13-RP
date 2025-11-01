@@ -202,7 +202,7 @@
 /turf/simulated/floor/carpet/oracarpet,
 /area/space/debrisfield/explored)
 "TP" = (
-/turf/space/basic,
+/turf/space,
 /area/space/debrisfield/explored)
 "Xj" = (
 /obj/overmap/entity/visitable/sector/debrisfield,

@@ -73,10 +73,13 @@
 			unholster(user)
 	..(user)
 
-/obj/item/clothing/accessory/holster/attackby(obj/item/W as obj, mob/user as mob)
-	if(!user.is_holding(W))
-		return
-	holster(W, user)
+/obj/item/clothing/accessory/holster/attackby(obj/item/tool, mob/user, list/params, clickchain_flags, damage_multiplier, datum/event_args/actor/clickchain/clickchain)
+	if(!user.is_holding(tool))
+		return clickchain_flags
+	holster(tool, user)
+	if(tool.loc == src)
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return clickchain_flags
 
 /obj/item/clothing/accessory/holster/emp_act(severity)
 	if (holstered)

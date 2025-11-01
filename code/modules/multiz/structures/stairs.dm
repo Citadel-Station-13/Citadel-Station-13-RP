@@ -393,7 +393,7 @@
 
 	return INITIALIZE_HINT_QDEL
 
-/obj/structure/stairs/spawner/preloading_dir(datum/dmm_context/context)
+/obj/structure/stairs/spawner/preloading_from_mapload_rotation(datum/dmm_context/context)
 	dir = turn(dir, context.loaded_orientation_turn_angle)
 	return FALSE
 

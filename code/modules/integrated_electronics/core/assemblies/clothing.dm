@@ -50,9 +50,9 @@
 		EA.examine(user)
 	. = ..()
 
-/obj/item/clothing/attackby(obj/item/I, mob/user)
+/obj/item/clothing/attackby(obj/item/tool, mob/user, list/params, clickchain_flags, damage_multiplier, datum/event_args/actor/clickchain/clickchain)
 	if(EA)
-		if (I.is_crowbar())
+		if (tool.is_crowbar())
 			var/turf/T = get_turf(src)
 			EA.forceMove(T)
 			src.EA_Installed = 0
@@ -61,9 +61,9 @@
 			EA.clothing = null
 			playsound(T, 'sound/items/Crowbar.ogg', 50, TRUE)
 			to_chat(usr, SPAN_NOTICE("You pull the circuitry out of \the [src]."))
-			return
+			return clickchain_flags | CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 	else
-		..()
+		return ..()
 
 /obj/item/clothing/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()

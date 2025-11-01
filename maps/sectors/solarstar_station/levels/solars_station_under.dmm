@@ -64,7 +64,7 @@
 /area/sector/solar_station/deck0)
 "bL" = (
 /obj/machinery/atmospherics/component/unary/engine/biggest,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "bV" = (
 /obj/machinery/light/small{
@@ -99,7 +99,7 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/sector/solar_station/deck0)
 "da" = (
-/turf/space/basic,
+/turf/space,
 /area/sector/solar_station/deck0)
 "dd" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
@@ -107,7 +107,7 @@
 /area/sector/solar_station/deck0)
 "de" = (
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/space,
 /area/sector/solar_station/deck0)
 "dq" = (
 /obj/structure/table/steel,
@@ -224,7 +224,7 @@
 /area/sector/solar_station/deck0)
 "jy" = (
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "jH" = (
 /obj/machinery/portable_atmospherics/canister/empty/nitrous_oxide,
@@ -429,7 +429,7 @@
 /turf/simulated/floor/plating/indoors,
 /area/sector/solar_station/deck0)
 "tm" = (
-/turf/space/basic,
+/turf/space,
 /area/space)
 "tv" = (
 /obj/structure/table/rack/steel,
@@ -481,7 +481,7 @@
 /area/sector/solar_station/deck0)
 "vC" = (
 /obj/effect/meteor/dust,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "vI" = (
 /obj/machinery/appliance/cooker/fryer,
@@ -1010,7 +1010,7 @@
 	light_color = "#FF0000";
 	name = "THE SUN"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "VK" = (
 /obj/structure/closet/secure_closet/guncabinet,
@@ -1089,7 +1089,7 @@
 /area/sector/solar_station/deck0)
 "ZC" = (
 /obj/machinery/atmospherics/component/unary/engine/bigger,
-/turf/space/basic,
+/turf/space,
 /area/sector/solar_station/deck0)
 "ZO" = (
 /obj/random/multiple/corp_crate/no_weapons,

@@ -36,20 +36,16 @@
 	if(get_area(object) in areas)
 		return 1
 
-// We autobuild our z levels.
-/obj/overmap/entity/visitable/ship/landable/find_z_levels()
-	src.landmark = new(null, shuttle) // Create in nullspace since we lazy-create overmap z
-	add_landmark(landmark, shuttle)
-
 /obj/overmap/entity/visitable/ship/landable/proc/setup_overmap_location()
-	if(LAZYLEN(map_z))
-		return // We're already set up!
-	var/datum/map_level/transit/creating = new
-	creating.name = "Transit - [src]"
-	var/datum/map_level/loaded = SSmapping.allocate_level(creating)
-	map_z += loaded.z_index
+	var/datum/overmap_location/shuttle/our_shuttle_location = location
+	ASSERT(istype(our_shuttle_location))
 
-	var/turf/center_loc = locate(round(world.maxx/2), round(world.maxy/2), loaded.z_index)
+	if(our_shuttle_location.freeflight)
+		// already set up
+		return
+	var/datum/map_level/allocated = our_shuttle_location.create_freeflight_level()
+	allocated.name = "Freeflight - [src]"
+	var/turf/center_loc = locate(round(world.maxx/2), round(world.maxy/2), allocated.z_index)
 	landmark.forceMove(center_loc)
 
 	var/visitor_dir = fore_dir
@@ -59,18 +55,12 @@
 		add_landmark(visitor_landmark)
 		visitor_dir = turn(visitor_dir, 90)
 
-	register_z_levels()
-	testing("Setup overmap location for \"[name]\" containing Z [english_list(map_z)]")
-
-/obj/overmap/entity/visitable/ship/landable/get_areas()
-	var/datum/shuttle/shuttle_datum = SSshuttle.shuttles[shuttle]
-	if(!shuttle_datum)
-		return list()
-	return shuttle_datum.find_childfree_areas()
-
 /obj/overmap/entity/visitable/ship/landable/populate_sector_objects()
 	..()
+	src.landmark = new(null, shuttle) // Create in nullspace since we lazy-create overmap z
+	add_landmark(landmark, shuttle)
 	var/datum/shuttle/shuttle_datum = SSshuttle.shuttles[shuttle]
+	set_location(new /datum/overmap_location/shuttle(shuttle_datum))
 	if(istype(shuttle_datum,/datum/shuttle/autodock/overmap))
 		var/datum/shuttle/autodock/overmap/oms = shuttle_datum
 		oms.myship = src

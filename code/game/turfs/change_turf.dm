@@ -14,6 +14,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 
 /turf/proc/empty(turf_type=/turf/space, baseturf_type, list/ignore_typecache, flags)
 	// Remove all atoms except observers, landmarks, docking ports
+	// TODO: this likely should throw out landmarks as well as shuttle landmarks.
 	var/static/list/ignored_atoms = typecacheof(list(/mob/observer, /obj/landmark, /atom/movable/lighting_overlay, /obj/effect/shuttle_landmark))
 	var/list/allowed_contents = typecache_filter_list_reverse(get_all_contents_ignoring(ignore_typecache), ignored_atoms)
 	allowed_contents -= src
@@ -49,11 +50,11 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 /turf/proc/baseturf_core()
 	// todo: this is shitcode, pull it out on maploader refactor.
 	// this is very obviously a copypaste from ChangeTurf.
-	. = SSmapping.level_baseturf(z) || world.turf
+	. = SSmapping.level_get_baseturf(z) || world.turf
 	if(!ispath(.))
 		. = text2path(.)
 		if (!ispath(.))
-			warning("Z-level [z] has invalid baseturf '[SSmapping.level_baseturf(z)]'")
+			warning("Z-level [z] has invalid baseturf '[SSmapping.level_get_baseturf(z)]'")
 			. = world.turf
 	if(. == world.turf)		// no space/basic check, if you use space/basic in a map honestly get bent
 		if(istype(below(), /turf/simulated))
@@ -95,9 +96,9 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 			return
 		if(/turf/baseturf_bottom)
 			var/turf/below = below()
-			path = SSmapping.level_baseturf(z) || /turf/space
+			path = SSmapping.level_get_baseturf(z) || /turf/space
 			if(!ispath(path))
-				stack_trace("Z-level [z] has invalid baseturf '[SSmapping.level_baseturf(z)]'")
+				stack_trace("Z-level [z] has invalid baseturf '[SSmapping.level_get_baseturf(z)]'")
 				path = /turf/space
 			if(path == /turf/space)		// no space/basic check, if you use space/basic in a map honestly get bent
 				if(istype(below, /turf/simulated))
@@ -105,6 +106,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 			else if(path == /turf/simulated/open)
 				if(istype(below, /turf/space))
 					path = /turf/space
+		// TODO: we shouldn't have this hook.
 		if(/turf/space/basic)
 			var/turf/below = below()
 			// basic doesn't initialize and this will cause issues

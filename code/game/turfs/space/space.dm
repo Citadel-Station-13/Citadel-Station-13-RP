@@ -3,6 +3,7 @@
 	name = "\proper space"
 	icon_state = "0"
 	plane = SPACE_PLANE
+	turf_spawn_flags = TURF_SPAWN_FLAGS_ALLOW_ALL
 	mz_flags = MZ_ATMOS_BOTH | MZ_OPEN_BOTH
 
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
@@ -18,6 +19,9 @@
 	/// Force this one to pretend it's an overedge turf.
 	var/forced_dirs = 0
 
+/**
+ * - DO NOT MAP THIS IN!!!!!
+ */
 /turf/space/basic
 	atom_flags = ATOM_INITIALIZED
 

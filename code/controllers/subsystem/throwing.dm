@@ -97,6 +97,8 @@ SUBSYSTEM_DEF(throwing)
 	var/diagonal_error
 	/// are we purely diagonal?
 	var/pure_diagonal
+	/// What did we hit that's causing us to land?
+	var/atom/landing_from_impact
 
 	//! fluff shit players use to kill each other
 	/// zone selected by user at time of throw
@@ -119,6 +121,24 @@ SUBSYSTEM_DEF(throwing)
 	src.force = force
 	src.resist = AM.throw_resist
 	impacted = list()
+
+/datum/thrownthing/Destroy()
+	. = ..()
+	if(!finished)
+		terminate(TRUE)
+	if(thrownthing)
+		SSthrowing.processing -= thrownthing
+		thrownthing.throwing = null
+		thrownthing = null
+	landing_from_impact = null
+	target = null
+	thrower = null
+	on_hit = null
+	on_land = null
+	initial_turf = null
+	target_turf = null
+	impacted = null
+	return ..()
 
 /datum/thrownthing/proc/target_atom(atom/target)
 	src.target = target
@@ -152,22 +172,6 @@ SUBSYSTEM_DEF(throwing)
 		dy = olddx
 	diagonal_error = dist_x / 2 - dist_y
 	return TRUE
-
-/datum/thrownthing/Destroy()
-	if(!finished)
-		terminate(TRUE)
-	if(thrownthing)
-		SSthrowing.processing -= thrownthing
-		thrownthing.throwing = null
-		thrownthing = null
-	target = null
-	thrower = null
-	on_hit = null
-	on_land = null
-	initial_turf = null
-	target_turf = null
-	impacted = null
-	return ..()
 
 /datum/thrownthing/proc/tick()
 	SHOULD_NOT_SLEEP(TRUE)
@@ -315,18 +319,20 @@ SUBSYSTEM_DEF(throwing)
  * handle impacting an atom
  * return TRUE if we should end the throw, FALSE to pierce
  */
-/datum/thrownthing/proc/impact(atom/A, in_land)
-	impacted[A] = TRUE
+/datum/thrownthing/proc/impact(atom/impacting, in_land)
+	impacted[impacting] = TRUE
 
-	var/op_return = thrownthing._throw_do_hit(A, src)
+	var/op_return = thrownthing._throw_do_hit(impacting, src)
 	if(op_return & COMPONENT_THROW_HIT_TERMINATE)
 		terminate()
 		return
 
-	on_hit?.InvokeAsync(A, src)
+	on_hit?.InvokeAsync(impacting, src)
 
 	if(!(op_return & COMPONENT_THROW_HIT_PIERCE) && !in_land)
+		landing_from_impact = impacting
 		land(get_turf(thrownthing))
+		landing_from_impact = null
 		return
 
 	// we are piercing. move again.
@@ -335,15 +341,15 @@ SUBSYSTEM_DEF(throwing)
 /**
  * land on something and terminate the throw
  */
-/datum/thrownthing/proc/land(atom/A = get_turf(thrownthing))
+/datum/thrownthing/proc/land(atom/landing = get_turf(thrownthing))
 	// todo: need to rewrite to consider qdel's for object + us maybe?
 	// nothing to land on
-	if(!A)
+	if(!landing)
 		terminate()
 		return
 
 	// hit our target if we haven't already
-	if(!impacted[target] && (target in get_turf(A)))
+	if(!impacted[target] && (target in get_turf(landing)) && target.is_throw_explicit_targetable(src))
 		impact(target, TRUE)
 
 	// we got terminated already
@@ -351,8 +357,8 @@ SUBSYSTEM_DEF(throwing)
 		return
 
 	// land
-	thrownthing._throw_finalize(A, src)
-	on_land?.InvokeAsync(A, src)
+	thrownthing._throw_finalize(landing, src)
+	on_land?.InvokeAsync(landing, src)
 
 	// halt
 	terminate()

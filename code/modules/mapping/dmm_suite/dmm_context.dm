@@ -10,11 +10,10 @@
 	return context
 
 /**
- * something accessible to all atoms during preloading_instance
+ * something accessible to all atoms during preloading_from_mapload
  *
- * also used to get data out of a /dmm_parsed's load() cycle
- *
- * **do not reuse this between multiple maploads.**
+ * * Also used to get data out of a /dmm_parsed's load() cycle
+ * * **Do not reuse this between multiple maploads.**
  */
 /datum/dmm_context
 	//* state *//
@@ -56,6 +55,7 @@
 	var/loaded_orientation_turn_angle
 
 	/// the dmm_parsed we loaded from
+	/// * This can be null.
 	var/datum/dmm_parsed/loaded_dmm
 
 	//* injected by things in load cycle *//
@@ -72,14 +72,27 @@
 
 /datum/dmm_context/proc/mark_used()
 	if(used)
-		CRASH("a dmm_context was reused; this is not allowed and will result in bugs.")
+		stack_trace("a dmm_context was reused; this is not allowed and will result in bugs.")
 	used = TRUE
+
+/datum/dmm_context/proc/set_empty_load()
+	loaded_bounds = new /list(MAP_BOUNDS)
+	loaded_bounds[MAP_MINX] = 0
+	loaded_bounds[MAP_MINY] = 0
+	loaded_bounds[MAP_MINZ] = 0
+	loaded_bounds[MAP_MAXX] = 0
+	loaded_bounds[MAP_MAXY] = 0
+	loaded_bounds[MAP_MAXZ] = 0
+	var/datum/dmm_orientation/orientation_data = GLOB.dmm_orientations["[SOUTH]"]
+	orientation_data.populate_context(src)
 
 /**
  * fire off initializations
  *
  * 1. injections
  * 2. initializations
+ *
+ * * this is executed
  */
 /datum/dmm_context/proc/execute_postload()
 	fire_map_injections()
@@ -89,23 +102,25 @@
 	if(map_initializations_fired)
 		CRASH("initializations already were fired")
 	map_initializations_fired = TRUE
+	// so SSatoms doesn't init the atoms we make
+	SSatoms.map_loader_begin("dmm-context")
+	Master.StartLoadingMap()
 	for(var/obj/map_helper/helper in map_initialization_hooked)
-		// so SSatoms doesn't init the atoms we make
-		// todo: better solution, this is high overhead
-		Master.StartLoadingMap()
 		helper.map_initializations(src)
-		Master.StopLoadingMap()
+	Master.StopLoadingMap()
+	SSatoms.map_loader_stop("dmm-context")
 
 /datum/dmm_context/proc/fire_map_injections()
 	if(map_injections_fired)
 		CRASH("injections already were fired")
 	map_injections_fired = TRUE
+	// so SSatoms doesn't init the atoms we make
+	SSatoms.map_loader_begin("dmm-context")
+	Master.StartLoadingMap()
 	for(var/datum/map_injection/injection in injections)
-		// so SSatoms doesn't init the atoms we make
-		// todo: better solution, this is high overhead
-		Master.StartLoadingMap()
 		injection.injection(src)
-		Master.StopLoadingMap()
+	Master.StopLoadingMap()
+	SSatoms.map_loader_stop("dmm-context")
 
 /datum/dmm_context/proc/register_injection(datum/map_injection/injection)
 	injections |= injection

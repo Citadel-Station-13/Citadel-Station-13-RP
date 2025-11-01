@@ -12707,7 +12707,7 @@
 /area/admin_planet/croatoan/med_treatment)
 "Sw" = (
 /obj/spawner/window/low_wall/reinforced,
-/turf/space/basic,
+/turf/space,
 /area/admin_planet/croatoan/civ_bar_public)
 "Sx" = (
 /obj/machinery/smartfridge,

@@ -253,6 +253,8 @@ class CharacterLoadoutEntry extends Component<CharacterLoadoutEntryProps, Charac
               {this.state.editingName ? (
                 <Input
                   value={this.props.selected?.rename || undefined}
+                  // TGUI-core collapsible intercepts spacebar, stop it from doing so.
+                  onKeyDown={(e) => e.stopPropagation()}
                   onBlur={(val) => {
                     this.props.customizeNameAct?.(this.props.entry.id, val);
                     this.setState((prevState) => ({ ...prevState, editingName: false }));

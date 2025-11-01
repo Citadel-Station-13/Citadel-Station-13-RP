@@ -19,7 +19,7 @@
 /turf/space,
 /area/asteroid/rogue/zone3)
 "u" = (
-/turf/space/basic,
+/turf/space,
 /area/asteroid/rogue/zone3)
 "J" = (
 /obj/effect/step_trigger/teleporter/roguemine_loop/south,

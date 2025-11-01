@@ -289,14 +289,14 @@
  * * place_on_top - use PlaceOnTop instead of ChangeTurf
  * * orientation - orientation to load. the 'natural' orientation is SOUTH. Any other orientation rotates it with respect from SOUTH to it.
  * * area_cache - override area cache and provide your own, used to make sure multiple loadings share the same areas if two areas are the same type.
- * * context - value to push to preloader's maploader context, used by atoms during preloading_instance() to perform various things like mangling their linkage IDs
+ * * context - value to push to preloader's maploader context, used by atoms during preloading_from_mapload() to perform various things like mangling their linkage IDs
  *
  * @return bounds list of load, or null if failed.
  */
 /datum/dmm_parsed/proc/load(x, y, z, x_lower = -INFINITY, x_upper = INFINITY, y_lower = -INFINITY, y_upper = INFINITY, z_lower = -INFINITY, z_upper = INFINITY, no_changeturf, place_on_top, orientation = SOUTH, list/area_cache, datum/dmm_context/context)
 	// we always have context, even if we don't
 	if(isnull(context))
-		context = create_dmm_context()
+		context = new
 	. = context
 
 	var/static/loading = FALSE
@@ -312,6 +312,7 @@
 	var/list/loaded_bounds = _load_impl(x, y, z, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, no_changeturf, place_on_top, area_cache, context)
 	global.dmm_preloader.loading_orientation = null
 
+	context.mark_used()
 	context.loaded_bounds = loaded_bounds
 	context.success = !isnull(loaded_bounds)
 
@@ -319,16 +320,9 @@
 	loading = FALSE
 	Master.StopLoadingMap()
 
-/datum/dmm_parsed/proc/_populate_orientation(datum/dmm_context/context,orientation)
+/datum/dmm_parsed/proc/_populate_orientation(datum/dmm_context/context, orientation)
 	var/datum/dmm_orientation/orientation_pattern = GLOB.dmm_orientations["[orientation]"]
-
-	context.loaded_orientation = orientation
-	context.loaded_orientation_invert_x = orientation_pattern.invert_x
-	context.loaded_orientation_invert_y = orientation_pattern.invert_y
-	context.loaded_orientation_swap_xy = orientation_pattern.swap_xy
-	context.loaded_orientation_xi = orientation_pattern.xi
-	context.loaded_orientation_yi = orientation_pattern.yi
-	context.loaded_orientation_turn_angle = round(SIMPLIFY_DEGREES(orientation_pattern.turn_angle), 90)
+	orientation_pattern.populate_context(context)
 
 // todo: verify that when rotating, things load in the same way when cropped e.g. aligned to lower left
 //       as opposed to rotating to somewhere else

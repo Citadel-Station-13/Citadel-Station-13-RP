@@ -5,8 +5,8 @@
 	var/list/doors = list()                             // Doors inside the lift structure.
 	var/list/queued_floors = list()                     // Where are we moving to next?
 	var/list/floors = list()                            // All floors in this system.
-	var/move_delay = 30                                 // Time between floor changes.
-	var/floor_wait_delay = 85                           // Time to wait at floor stops.
+	var/move_delay = 3 SECONDS                          // Time between floor changes.
+	var/floor_wait_delay = 8.5 SECONDS                  // Time to wait at floor stops.
 	var/obj/structure/lift/panel/control_panel_interior // Lift control panel.
 	var/doors_closing = 0								// Whether doors are in the process of closing
 	var/list/music = null								// Elevator music to set on areas
@@ -98,7 +98,6 @@
 	return
 
 /datum/turbolift/proc/do_move()
-
 	var/current_floor_index = floors.Find(current_floor)
 
 	if(!target_floor)
@@ -110,7 +109,8 @@
 			moving_upwards = 1
 		else
 			moving_upwards = 0
-		control_panel_interior.updateDialog()
+		ASYNC
+			control_panel_interior.updateDialog()
 
 	if(doors_are_open())
 		if(!doors_closing)
@@ -155,11 +155,11 @@
 
 	if(!moving_upwards)
 		for(var/turf/T in destination)
-			set waitfor = FALSE		// no check ticks until we get better shuttlecode.
 			for(var/atom/movable/AM in T)
 				if(istype(AM, /mob/living))
 					var/mob/living/M = AM
-					M.gib()
+					ASYNC
+						M.gib()
 				else if(!(AM.atom_flags & ATOM_ABSTRACT) && !(istype(AM, /mob/observer)))
 					qdel(AM)
 
@@ -171,14 +171,14 @@
 	current_floor = next_floor
 	control_panel_interior.visible_message("The elevator [moving_upwards ? "rises" : "descends"] smoothly.")
 
-	return (next_floor.delay_time || move_delay || 30)
+	return (next_floor.delay_time || move_delay || (3 SECONDS))
 
 /datum/turbolift/proc/queue_move_to(var/datum/turbolift_floor/floor)
 	if(!floor || !(floor in floors) || (floor in queued_floors))
 		return // STOP PRESSING THE BUTTON.
 	floor.pending_move(src)
 	queued_floors |= floor
-	SSturbolifts.lift_is_moving(src)
+	SSturbolifts.lift_is_moving(src, 1.5 SECONDS)
 
 // TODO: dummy machine ('lift mechanism') in powered area for functionality/blackout checks.
 /datum/turbolift/proc/is_functional()
