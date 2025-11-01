@@ -13,7 +13,7 @@
 
 	/// debug/verbose logging?
 	//  todo: kil
-	var/verbose_logging = FALSE
+	var/verbose_logging = TRUE
 
 /datum/controller/vv_delete()
 	return FALSE

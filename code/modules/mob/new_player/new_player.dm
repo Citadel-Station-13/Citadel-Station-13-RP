@@ -393,7 +393,7 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 	// Timer still going
 	return timer - world.time
 
-/mob/new_player/proc/AttemptLateSpawn(rank)
+/mob/new_player/proc/AttemptLateSpawn(datum/prototype/role/job/job)
 	// don't lose out if we join fast
 	SSplaytime.queue_playtimes(client)
 	if (src != usr)
@@ -406,12 +406,11 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 		return 0
 	if(client.persistent.ligma)
 		to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
-		log_shadowban("[key_name(src)] latejoin as [rank] blocked.")
+		log_shadowban("[key_name(src)] latejoin as [job.title] blocked.")
 		return 0
-	var/datum/prototype/role/job/J = RSroles.legacy_job_by_title(rank)
 	var/reason
-	if((reason = J.check_client_availability_one(client)) != ROLE_AVAILABLE)
-		to_chat(src, SPAN_WARNING("[rank] is not available: [J.get_availability_reason(client, reason)]"))
+	if((reason = job.check_client_availability_one(client)) != ROLE_AVAILABLE)
+		to_chat(src, SPAN_WARNING("[job.title] is not available: [job.get_availability_reason(client, reason)]"))
 		return FALSE
 	if(!spawn_checks_vr())
 		return FALSE
@@ -430,7 +429,7 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 			return
 
 	//Find our spawning point.
-	var/list/join_props = SSjob.LateSpawn(client, rank)
+	var/list/join_props = SSjob.LateSpawn(client, job)
 	var/obj/landmark/spawnpoint/SP = pick(join_props["spawnpoint"])
 	var/announce_channel = join_props["channel"] || "Common"
 
@@ -440,8 +439,8 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 	spawning = 1
 	close_spawn_windows()
 
-	if(!SSjob.AssignRole(src, rank, 1))
-		to_chat(src, SPAN_WARNING("SSjob.AssignRole failed; something is seriously wrong. Attempted: [rank]."))
+	if(!SSjob.AssignRole(src, job, ,1))
+		to_chat(src, SPAN_WARNING("SSjob.AssignRole failed; something is seriously wrong. Attempted: [job.title]."))
 		. = FALSE
 		CRASH("AssignRole failed; something is seriously wrong!")
 
@@ -449,8 +448,8 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 	SP.OnSpawn(character)
 	//Announces Cyborgs early, because that is the only way it works
 	if(character.mind.assigned_role == "Cyborg")
-		AnnounceCyborg(character, rank, SP.RenderAnnounceMessage(character, name = character.name, job_name = character.mind.role_alt_title || rank), announce_channel, character.z)
-	character = SSjob.EquipRank(character, rank, 1)	// Equips the human
+		AnnounceCyborg(character, job.title, SP.RenderAnnounceMessage(character, name = character.name, job_name = character.mind.role_alt_title || job.title), announce_channel, character.z)
+	character = SSjob.EquipRank(character, job.title, 1)	// Equips the human
 	UpdateFactionList(character)
 
 	// AIs don't need a spawnpoint, they must spawn at an empty core
@@ -464,7 +463,7 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 
 		character.forceMove(C.loc)
 
-		AnnounceCyborg(character, rank, "has been transferred to the empty core in \the [character.loc.loc]")
+		AnnounceCyborg(character, job.title, "has been transferred to the empty core in \the [character.loc.loc]")
 		SSticker.mode.latespawn(character)
 
 		qdel(C)
@@ -488,7 +487,7 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 
 		//Grab some data from the character prefs for use in random news procs.
 
-		AnnounceArrival(character, rank, SP.RenderAnnounceMessage(character, name = character.mind.name, job_name = (GetAssignment(character) || rank)))
+		AnnounceArrival(character, job.title, SP.RenderAnnounceMessage(character, name = character.mind.name, job_name = (GetAssignment(character) || job.title)))
 
 	qdel(src)
 
