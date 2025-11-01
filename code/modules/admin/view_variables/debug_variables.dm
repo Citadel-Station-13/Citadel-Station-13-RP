@@ -83,11 +83,12 @@
 			item = "<a href='?_src_=vars;[HrefToken()];Vars=[REF(value)]'>[VV_HTML_ENCODE(name)] = /alist ([scanning_length])</a>"
 
 	else if ((maybe_bitfield = fetch_bitfield(D, name)))
+		var/list/flags = list()
 		for(var/i in 1 to maybe_bitfield.get_declared_count())
 			var/bit = maybe_bitfield.bits[i]
 			if(value & bit)
 				flags += maybe_bitfield.names[i]
-			item = "[VV_HTML_ENCODE(name)] = [VV_HTML_ENCODE(jointext(flags, ", "))]"
+		item = "[VV_HTML_ENCODE(name)] = [VV_HTML_ENCODE(jointext(flags, ", "))]"
 	else
 		item = "[VV_HTML_ENCODE(name)] = <span class='value'>[VV_HTML_ENCODE(value)]</span>"
 
