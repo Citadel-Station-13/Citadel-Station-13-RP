@@ -4,9 +4,6 @@
 /turf/simulated/wall/is_melee_targetable(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	return TRUE
 
-/turf/simulated/wall/is_throw_targetable(datum/thrownthing/throw_datum)
-	return TRUE
-
 /turf/simulated/wall/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
 	. = ..()
 	if(TT.throw_flags & THROW_AT_IS_GENTLE)

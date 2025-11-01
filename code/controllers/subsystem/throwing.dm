@@ -343,7 +343,7 @@ SUBSYSTEM_DEF(throwing)
 		return
 
 	// hit our target if we haven't already
-	if(!impacted[target] && (target in get_turf(A)))
+	if(!impacted[target] && (target in get_turf(A)) && target.is_throw_explicit_targetable(src))
 		impact(target, TRUE)
 
 	// we got terminated already
