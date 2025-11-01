@@ -373,11 +373,6 @@
 	. = ..()
 	if(QDELETED(A))
 		return
-/*
-		if(get_temperature() && isliving(hit_atom))
-			var/mob/living/L = hit_atom
-			L.IgniteMob()
-*/
 	if(isliving(A)) //Living mobs handle hit sounds differently.
 		var/volume = get_volume_by_throwforce_and_or_w_class()
 		if (throw_force > 0)
@@ -389,13 +384,11 @@
 				playsound(A, 'sound/weapons/genhit.ogg', volume, TRUE, -1)
 		else
 			playsound(A, 'sound/weapons/throwtap.ogg', 1, volume, -1)
-	else
-		playsound(src, drop_sound, 30)
 
 /obj/item/throw_land(atom/A, datum/thrownthing/TT)
 	. = ..()
-	// if we already impacted, impacted handling should play sound, not us
-	if(drop_sound && !(TT.impacted[A]))
+	// if we're landing from the impact we don't play a sound as we already played hitsound
+	if(drop_sound && (A != TT.landing_from_impact))
 		playsound(src, drop_sound, 50, TRUE)
 	if(TT.throw_flags & THROW_AT_IS_NEAT)
 		return

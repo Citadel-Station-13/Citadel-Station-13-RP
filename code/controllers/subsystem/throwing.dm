@@ -97,6 +97,8 @@ SUBSYSTEM_DEF(throwing)
 	var/diagonal_error
 	/// are we purely diagonal?
 	var/pure_diagonal
+	/// What did we hit that's causing us to land?
+	var/atom/landing_from_impact
 
 	//! fluff shit players use to kill each other
 	/// zone selected by user at time of throw
@@ -119,6 +121,24 @@ SUBSYSTEM_DEF(throwing)
 	src.force = force
 	src.resist = AM.throw_resist
 	impacted = list()
+
+/datum/thrownthing/Destroy()
+	. = ..()
+	if(!finished)
+		terminate(TRUE)
+	if(thrownthing)
+		SSthrowing.processing -= thrownthing
+		thrownthing.throwing = null
+		thrownthing = null
+	landing_from_impact = null
+	target = null
+	thrower = null
+	on_hit = null
+	on_land = null
+	initial_turf = null
+	target_turf = null
+	impacted = null
+	return ..()
 
 /datum/thrownthing/proc/target_atom(atom/target)
 	src.target = target
@@ -152,22 +172,6 @@ SUBSYSTEM_DEF(throwing)
 		dy = olddx
 	diagonal_error = dist_x / 2 - dist_y
 	return TRUE
-
-/datum/thrownthing/Destroy()
-	if(!finished)
-		terminate(TRUE)
-	if(thrownthing)
-		SSthrowing.processing -= thrownthing
-		thrownthing.throwing = null
-		thrownthing = null
-	target = null
-	thrower = null
-	on_hit = null
-	on_land = null
-	initial_turf = null
-	target_turf = null
-	impacted = null
-	return ..()
 
 /datum/thrownthing/proc/tick()
 	SHOULD_NOT_SLEEP(TRUE)
@@ -326,7 +330,9 @@ SUBSYSTEM_DEF(throwing)
 	on_hit?.InvokeAsync(impacting, src)
 
 	if(!(op_return & COMPONENT_THROW_HIT_PIERCE) && !in_land)
+		landing_from_impact = impacting
 		land(get_turf(thrownthing))
+		landing_from_impact = null
 		return
 
 	// we are piercing. move again.
