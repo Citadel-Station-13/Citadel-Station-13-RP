@@ -93,10 +93,8 @@
 	if(!.)
 		return
 	var/datum/bitfield_legacy/single/target_bitfield = new /datum/bitfield_legacy/single/nightshift_level
-	var/target_bitname = target_bitfield.variable
-	var/list/actual_bitfield = target_bitfield.flags
 	var/new_flags = NONE
 	for(var/key in config_entry_value)
 		if(config_entry_value[key])
-			new_flags |= actual_bitfield[key]
+			new_flags |= target_bitfield.flags[key]
 	SSnightshift.nightshift_level = new_flags
