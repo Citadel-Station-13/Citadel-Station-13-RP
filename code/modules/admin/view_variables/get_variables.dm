@@ -39,6 +39,8 @@
 
 	else if(islist(var_value))
 		. = VV_LIST
+	else if(isalist(var_value))
+		. = VV_ALIST
 
 	else if(isfile(var_value))
 		. = VV_FILE

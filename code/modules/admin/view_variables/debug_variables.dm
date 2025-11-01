@@ -2,7 +2,7 @@
 /proc/debug_variable(name, value, level, datum/D, sanitize = TRUE)			//if D is a list, name will be index, and value will be assoc value.
 	var/header
 	if(D)
-		if(islist(D))
+		if(islist(D) || isalist(value))
 			var/list/D_l = D
 			var/index = name
 			if (value)
@@ -47,7 +47,7 @@
 		else
 			item = "<a href='?_src_=vars;[HrefToken()];Vars=[REF(value)]'>[VV_HTML_ENCODE(name)] [REF(value)]</a> = [DV.type]"
 
-	else if (islist(value))
+	else if (islist(value) || isalist(value))
 		var/list/L = value
 		var/list/items = list()
 		// don't expand if it's:
