@@ -59,11 +59,11 @@
 	acid = 0.5
 
 /datum/armor/general/space/armored
-	melee = 0.30
-	melee_tier = 3.5
-	bullet = 0.32
+	melee = 0.40
+	melee_tier = 3.25
+	bullet = 0.15
 	bullet_tier = 3.5
-	laser = 0.30
+	laser = 0.25
 	laser_tier = 3.25
 	energy = 0.2
 	bomb = 0.4
