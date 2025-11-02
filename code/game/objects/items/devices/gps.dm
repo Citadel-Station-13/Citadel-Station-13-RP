@@ -107,14 +107,14 @@
 	. = ..()
 	. += SPAN_NOTICE("Alt-click to switch it [on? "off" : "on"].")
 
-// todo: better altclick system
-/obj/item/gps/AltClick(mob/user)
+/obj/item/gps/on_alt_click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
 	. = ..()
-	if(.)
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
-	if(!user.Reachability(src))
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	toggle_power(user = user)
+	return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/gps/attackby(obj/item/I, mob/user, clickchain_flags, list/params)
 	if(istype(I, /obj/item/gps))

@@ -190,15 +190,13 @@
 
 /obj/item/material/twohanded/spear/AltClick(mob/user)
 	. = ..()
-	if(usr)
-		..()
-		if(!explosive)
-			return
-		if(istype(user) && loc == user)
-			var/input = stripped_input(user,"What do you want your war cry to be? You will shout it when you hit someone in melee.", ,"", 50)
-			if(input)
-				src.war_cry = input
-		return TRUE
+	if(!explosive)
+		return
+	if(istype(user) && loc == user)
+		var/input = stripped_input(user,"What do you want your war cry to be? You will shout it when you hit someone in melee.", ,"", 50)
+		if(input)
+			src.war_cry = input
+	return TRUE
 
 /obj/item/material/twohanded/spear/CheckParts(list/parts_list)
 	var/obj/item/material/twohanded/spear/S = locate() in parts_list
