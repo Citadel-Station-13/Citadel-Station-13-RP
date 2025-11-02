@@ -113,7 +113,7 @@
 		return
 	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
-	toggle_power(user = user)
+	toggle_power(user = clickchain.performer)
 	return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/gps/attackby(obj/item/I, mob/user, clickchain_flags, list/params)

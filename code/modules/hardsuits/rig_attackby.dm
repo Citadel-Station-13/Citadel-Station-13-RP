@@ -1,5 +1,6 @@
 /obj/item/hardsuit/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	var/obj/item/W = using
+	var/mob/user = clickchain.performer
 	if(electrified != 0)
 		if(shock(user)) //Handles removing charge from the cell, as well. No need to do that here.
 			return
