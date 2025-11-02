@@ -61,3 +61,19 @@ GLOBAL_LIST_INIT(status_emojis, init_status_emojis())
 /datum/status_emoji/tired
 	name = "Tired"
 	icon_state = "tired"
+
+/datum/status_emoji/nervous
+	name = "Nervous"
+	icon_state = "nervous"
+
+/datum/status_emoji/idea
+	name = "Idea"
+	icon_state = "idea"
+
+/datum/status_emoji/love
+	name = "Love"
+	icon_state = "love"
+
+/datum/status_emoji/menacing
+	name = "Menacing"
+	icon_state = "menacing"

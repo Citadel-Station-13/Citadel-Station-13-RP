@@ -107,8 +107,10 @@
 /// Dynamic lighting enabled.
 #define DYNAMIC_LIGHTING_ENABLED     1
 /// Dynamic lighting enabled even if the area doesn't require power.
+/// * Should never exist after Initialize().
 #define DYNAMIC_LIGHTING_FORCED      2
 /// Dynamic lighting enabled only if starlight is.
+/// * Should never exist after Initialize().
 #define DYNAMIC_LIGHTING_IFSTARLIGHT 3
 #define IS_DYNAMIC_LIGHTING(A) A.dynamic_lighting
 

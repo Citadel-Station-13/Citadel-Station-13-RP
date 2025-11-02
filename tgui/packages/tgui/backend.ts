@@ -396,6 +396,9 @@ const chunkSplitter = {
   },
 };
 
+export type ActFunctionType = (action: string, payload?: object) => void;
+export type RoutedActFunctionType = (action: string, payload?: object, routeId?: string | null) => void;
+
 /**
  * Sends an action to `ui_act` on `src_object` that this tgui window
  * is associated with.
@@ -403,7 +406,7 @@ const chunkSplitter = {
  * TODO: get rid of route_id param if possible otherwise figure out wtf we're doing
  *       with tgui modules.
  */
-export const sendAct = (action: string, payload: object = {}, route_id?: string | null) => {
+export const sendAct: RoutedActFunctionType = (action: string, payload: object = {}, route_id?: string | null) => {
   // Validate that payload is an object
   // prettier-ignore
   const isObject = typeof payload === 'object'

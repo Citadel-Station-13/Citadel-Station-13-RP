@@ -1,0 +1,10 @@
+author: "timothyteakettle"
+delete-after: True
+changes:
+  - bugfix: "fixes instantly reviving"
+  - bugfix: "fixes reviving not taking nutrition"
+  - bugfix: "fixes chameleon jumpsuits ignoring species sprites"
+  - bugfix: "fixes transforming when in a recharge station"
+  - bugfix: "fixes reviving resetting you to the current slot"
+  - balance: "reduces the amount of nutrition to revive"
+  - balance: "increased time until you can revive to 4 seconds"

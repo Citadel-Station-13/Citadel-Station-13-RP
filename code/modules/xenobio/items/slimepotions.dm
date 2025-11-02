@@ -475,7 +475,7 @@
 		return ..()
 
 	to_chat(user, SPAN_NOTICE("You feed \the [M] the agent. It may now eventually develop proper sapience."))
-	M.add_ghostrole(/datum/role/ghostrole/existing/sapient_mob/xenobio,user)
+	M.add_ghostrole(/datum/prototype/role/ghostrole/existing/sapient_mob/xenobio,user)
 	log_and_message_admins("[key_name_admin(user)] used a sapience potion on a simple mob: [M]. [ADMIN_FLW(src)]")
 	playsound(src, 'sound/effects/bubbles.ogg', 50, 1)
 	qdel(src)

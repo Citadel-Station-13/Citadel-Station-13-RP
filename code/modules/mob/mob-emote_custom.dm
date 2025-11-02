@@ -66,6 +66,9 @@
 			var/mob/hearing_mob = hearing
 			SEND_SIGNAL(hearing_mob, COMSIG_MOB_ON_RECEIVE_CUSTOM_EMOTE, src, raw_html, subtle, anti_ghost, saycode_type)
 			hearing_mob.show_message(raw_html, saycode_type)
+			// TODO: eh for now. vocal cues when?
+			if(subtle)
+				hearing_mob.playsound_local(null, 'sound/effects/subtle_emote.ogg', 75, TRUE)
 
 		else if(isobj(hearing))
 			var/obj/hearing_obj = hearing

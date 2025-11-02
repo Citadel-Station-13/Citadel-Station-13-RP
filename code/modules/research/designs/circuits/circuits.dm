@@ -281,6 +281,14 @@ CIRCUITS BELOW
 	subcategory = DESIGN_SUBCATEGORY_CHARGING
 	build_path = /obj/item/circuitboard/mech_recharger
 
+/datum/prototype/design/circuit/recycling_pad
+	design_name = "recycling pad"
+	id = "recycling_pad"
+	req_tech = list(TECH_DATA = 4, TECH_POWER = 3, TECH_ENGINEERING = 5)
+	category = DESIGN_CATEGORY_SCIENCE
+	subcategory = DESIGN_SUBCATEGORY_STATION
+	build_path = /obj/item/circuitboard/recycling_pad
+
 /datum/prototype/design/circuit/recharge_station
 	design_name = "cyborg recharge station"
 	id = "recharge_station"

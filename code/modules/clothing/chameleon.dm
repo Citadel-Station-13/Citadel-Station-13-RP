@@ -17,6 +17,7 @@
 	worn_render_flags = copy.worn_render_flags
 	item_icons = copy.item_icons
 	sprite_sheets = copy.sprite_sheets
+	worn_bodytypes = copy.worn_bodytypes
 
 	var/obj/item/clothing/under/uniform_copy = copy
 	if(istype(uniform_copy))

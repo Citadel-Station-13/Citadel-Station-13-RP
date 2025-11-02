@@ -4,7 +4,7 @@
 
 /obj/machinery/lathe/medical
 	name = "medical MiniLathe"
-	desc = "A standard minilathe, this one seems to print medical consumables."
+	desc = "A standard minilathe, this one seems to print medical consumables.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 
 	has_interface = TRUE

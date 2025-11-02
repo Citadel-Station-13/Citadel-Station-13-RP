@@ -23,6 +23,7 @@
 	/// should we use bounds overlays?
 	var/uses_bounds_overlay = FALSE
 
+	//  TODO: ALL OF THESE BELOW VARIABLES shouldn't be on /obj/overmap level
 	/// Does this show up on nav computers automatically.
 	var/known = TRUE
 	/// If set to TRUE will show up on ship sensors for detailed scans.
@@ -58,8 +59,6 @@
 	if(!(LEGACY_MAP_DATUM).use_overmap)
 		return INITIALIZE_HINT_QDEL
 
-	if(known && !mapload)
-		SSovermaps.queue_helm_computer_rebuild()
 	update_icon()
 
 /obj/overmap/Destroy()
