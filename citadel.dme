@@ -2818,6 +2818,7 @@
 #include "code\modules\clothing\spacesuits\miscellaneous.dm"
 #include "code\modules\clothing\spacesuits\spacesuits.dm"
 #include "code\modules\clothing\spacesuits\syndi.dm"
+#include "code\modules\clothing\spacesuits\traveler.dm"
 #include "code\modules\clothing\spacesuits\void\event.dm"
 #include "code\modules\clothing\spacesuits\void\merc.dm"
 #include "code\modules\clothing\spacesuits\void\military_vr.dm"
