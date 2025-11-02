@@ -115,7 +115,7 @@
 
 	// Wind makes it easier or harder to move, depending on if you're with or against the wind.
 	if(T.outdoors && (T.z <= SSplanets.z_to_planet.len))
-		var/datum/planet/P = SSplanets.z_to_planet[z]
+		var/datum/planet/P = SSplanets.z_to_planet[T.z]
 		if(P)
 			var/datum/weather_holder/WH = P.weather_holder
 			if(WH && WH.wind_speed) // Is there any wind?
