@@ -5353,6 +5353,7 @@
 #include "code\modules\sprite_accessories\markings\eye_stuff.dm"
 #include "code\modules\sprite_accessories\markings\panda.dm"
 #include "code\modules\sprite_accessories\markings\sergal.dm"
+#include "code\modules\sprite_accessories\markings\snout.dm"
 #include "code\modules\sprite_accessories\markings\synth_stuff.dm"
 #include "code\modules\sprite_accessories\markings\taj.dm"
 #include "code\modules\sprite_accessories\markings\tanlines.dm"
