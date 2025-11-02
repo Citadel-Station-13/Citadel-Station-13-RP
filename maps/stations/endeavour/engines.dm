@@ -1,6 +1,6 @@
 /datum/map_template/engine/endeavour
 	abstract_type = /datum/map_template/engine/endeavour
-	prefix = "maps/endeavour/engines/"
+	prefix = "maps/station/endeavour/engines/"
 	for_map = /datum/map/station/endeavour
 
 /datum/map_template/engine/endeavour/rust
