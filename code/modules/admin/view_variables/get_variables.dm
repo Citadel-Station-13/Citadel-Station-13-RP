@@ -3,7 +3,7 @@
 		. = VV_NULL
 
 	else if(isnum(var_value))
-		if(fetch_bitfield(target, var_name))
+		if(fetch_bitfield(target?.type, var_name))
 			. = VV_BITFIELD
 		else
 			. = VV_NUM
@@ -110,7 +110,7 @@
 				.["class"] = null
 				return
 		if(VV_BITFIELD)
-			.["value"] = input_bitfield(usr, "Editing bitfield: [var_name]", fetch_bitfield(maybe_datum, var_name), current_value)
+			.["value"] = input_bitfield(usr, "Editing bitfield: [var_name]", fetch_bitfield(maybe_datum?.type, var_name), current_value)
 			if(.["value"] == null)
 				.["class"] = null
 				return
