@@ -1,6 +1,6 @@
 /datum/map_template/engine/rift
 	abstract_type = /datum/map_template/engine/rift
-	prefix = "maps/station/rift/engines/"
+	prefix = "maps/stations/rift/engines/"
 	for_map = /datum/map/station/rift
 
 /datum/map_template/engine/rift/rust

@@ -1,6 +1,6 @@
 /datum/map_template/engine/tether
 	abstract_type = /datum/map_template/engine/tether
-	prefix = "maps/station/tether/engines/"
+	prefix = "maps/stations/tether/engines/"
 	for_map = /datum/map/station/tether
 
 /datum/map_template/engine/tether/rust
