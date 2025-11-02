@@ -18992,7 +18992,7 @@
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_boxingcourt)
 "Xv" = (
-/turf/space
+/turf/space,
 /area/space)
 "Xw" = (
 /obj/structure/window/reinforced/holowindow{
