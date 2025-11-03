@@ -38,7 +38,7 @@
 	name = "Excursion Shuttle"
 	warmup_time = 0
 	shuttle_area = list(/area/shuttle/excursion/endeavour)
-	shuttle_area = list(/area/shuttle/excursion/endeavour/cockpit, /area/shuttle/excursion/endeavour/general, /area/shuttle/excursion/endeavour/cargo)
+	shuttle_area = list(/area/excursion/cockpit/endeavour, /area/excursion/general/endeavour, /area/excursion/cargo/endeavour)
 	current_location = "endeavour_excursion_hangar"
 	docking_controller_tag = "expshuttle_docker"
 	landmark_transition = "nav_transit_exploration"
@@ -48,13 +48,13 @@
 	name = "Endeavour Excursion Shuttle"
 	icon_state = "shuttle"
 
-/area/shuttle/excursion/endeavour/general
+/area/excursion/general/endeavour
 	name = "\improper Endeavour Excursion Shuttle"
 
-/area/shuttle/excursion/endeavour/cockpit
+/area/excursion/cockpit/endeavour
 	name = "\improper Endeavour Excursion Shuttle Cockpit"
 
-/area/shuttle/excursion/endeavour/cargo
+/area/excursion/cargo/endeavour
 	name = "\improper Endeavour Excursion Shuttle Cargo"
 
 /obj/machinery/computer/shuttle_control/explore/excursion
