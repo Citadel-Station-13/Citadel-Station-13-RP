@@ -300,6 +300,12 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
+	if(!isliving(usr) || !usr.canClick())
+		return
+
+	if(usr.incapacitated() || usr.stat > CONSCIOUS)
+		return
+
 	if(!linked){
 		to_chat(usr, "<span class='warning'>No vessel associated to this console!</span>")
 		return
