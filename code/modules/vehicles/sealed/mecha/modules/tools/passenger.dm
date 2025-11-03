@@ -55,7 +55,6 @@
 	to_chat(src, "You climb out from \the [src].")
 	pod.go_out()
 	pod.occupant_message("[pod.occupant_legacy] disembarked.")
-	pod.log_message("[pod.occupant_legacy] disembarked.")
 	pod.add_fingerprint(src)
 
 /obj/item/vehicle_module/lazy/legacy/tool/passenger/proc/go_out()

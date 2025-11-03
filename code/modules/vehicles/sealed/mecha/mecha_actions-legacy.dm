@@ -191,7 +191,6 @@
 		overload = 1
 		step_energy_drain = step_energy_drain*overload_coeff
 		src.occupant_message("<font color='red'>You enable leg actuators overload.</font>")
-	src.log_message("Toggled leg actuators overload.")
 	playsound(src, 'sound/mecha/mechanical_toggle.ogg', 50, 1)
 
 /obj/vehicle/sealed/mecha/proc/zoom()//This could use improvements but maybe later.
@@ -200,7 +199,6 @@
 	if(src.occupant_legacy.client)
 		var/client/myclient = src.occupant_legacy.client
 		src.zoom = !src.zoom
-		src.log_message("Toggled zoom mode.")
 		src.occupant_message("<font color='[src.zoom?"blue":"red"]'>Zoom mode [zoom?"en":"dis"]abled.</font>")
 		if(zoom)
 			myclient.set_temporary_view(GLOB.max_client_view_x + 5, GLOB.max_client_view_y + 5)
@@ -228,5 +226,4 @@
 	if(usr!=src.occupant_legacy)
 		return
 	phasing = !phasing
-	send_byjax(src.occupant_legacy,"exosuit.browser","phasing_command","[phasing?"Dis":"En"]able phasing")
 	src.occupant_message("<font color=\"[phasing?"#00f\">En":"#f00\">Dis"]abled phasing.</font>")

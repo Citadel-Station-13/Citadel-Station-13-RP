@@ -363,6 +363,17 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 /obj/vehicle/proc/occupant_removed(mob/removing, datum/event_args/actor/actor, control_flags, silent, suppressed)
 	SHOULD_CALL_PARENT(TRUE)
 
+//* Occupant Feedback *//
+
+// TODO: this proc needs more args, including "pretending" to be from another turf.
+/obj/vehicle/proc/occupant_playsound(sfx, vol, vary, freq)
+	for(var/mob/occu as anything in occupants)
+		occu.playsound_local(get_turf(src), sfx, vol, vary, freq)
+
+#warn does this work icon wise?
+/obj/vehicle/proc/occupant_send_chat(html)
+	to_chat(occupants, "<img src=\"\ref[src]\"> [html]")
+
 //* Weight Handling *//
 
 /obj/vehicle/on_contents_weight_change(atom/movable/entity, old_weight, new_weight)

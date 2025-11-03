@@ -26,4 +26,3 @@
 			projectiles++
 			projectiles_to_add--
 			chassis.use_power(projectile_energy_cost)
-	log_message("Rearmed [src.name].")

@@ -1161,8 +1161,6 @@
 
 /obj/vehicle/sealed/mecha/Topic(href, href_list)
 	..()
-	if(usr.stat > 0)
-		return
 	var/datum/topic_input/top_filter = new /datum/topic_input(href,href_list)
 	if (href_list["toggle_zoom"])
 		src.zoom()
