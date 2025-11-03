@@ -77,7 +77,7 @@
 	/// * If heard, audible has %%USER%% replaced with "someone" if the viewer is blind.
 	/// * If the replacement is at the start of the string, it'll be capitalized as needed.
 	/// * HTML is valid
-	var/feedback_default = "%%USER%% does something that isn't implemented by the coders. (Yell at coders, someone forgot a default string.)"
+	var/feedback_default = "<b>%%USER%%</b> does something that isn't implemented by the coders. (Yell at coders, someone forgot a default string.)"
 	/// the default targeted feedback sting
 	///
 	/// * %%USER%% is replaced with the user.
@@ -163,7 +163,16 @@
 	var/out_visible = string_format(template_string_visible, template_parameters)
 	var/out_audible = string_format(template_string_audible, template_parameters)
 
-	#warn this
+	var/list/mob/hearing_mobs = actor.performer.saycode_view_query(null, TRUE, FALSE)
+	// TODO: proper runechat stuff.
+	actor.performer.say_overhead(out_visible)
+	for(var/mob/hearing as anything in hearing_mobs)
+		if(hearing.is_blind())
+			if(hearing.is_deaf())
+			else
+				hearing.show_message(out_audible, SAYCODE_TYPE_ALWAYS)
+		else
+			hearing.show_message(out_visible, SAYCODE_TYPE_ALWAYS)
 
 /**
  * Get template parameters for 'feedback_' vars.

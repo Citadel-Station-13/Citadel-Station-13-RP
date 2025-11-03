@@ -7,7 +7,7 @@
 	desc = "Blink your eyes."
 	bindings = "blink"
 	emote_class = EMOTE_CLASS_REQUIRES_HUMANOID
-	feedback_default = "%%USER%% blinks."
+	feedback_default = "<b>%%USER%%</b> blinks."
 
 // todo: check has eyes
 /datum/emote/standard/basic/general/blink_fast
@@ -15,4 +15,4 @@
 	desc = "Rapidly blink your eyes."
 	bindings = "blink-fast"
 	emote_class = EMOTE_CLASS_REQUIRES_HUMANOID
-	feedback_default = "%%USER%% blinks rapidly."
+	feedback_default = "<b>%%USER%%</b> blinks rapidly."

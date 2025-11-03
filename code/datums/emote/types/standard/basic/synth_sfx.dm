@@ -13,31 +13,31 @@
 	name = "Machine - Bike Horn"
 	desc = "Emit a bike horn's honk."
 	bindings = "honk"
-	feedback_default = "%%USER%% honks."
-	feedback_default_targeted = "%%USER%% honks at %%TARGET%%."
+	feedback_default = "<b>%%USER%%</b> honks."
+	feedback_default_targeted = "<b>%%USER%%</b> honks at %%TARGET%%."
 	sfx = 'sound/items/bikehorn.ogg'
 	target_allowed = TRUE
 
 // todo; name
 /datum/emote/standard/basic/synth_sfx/gameover
 	bindings = "gameover"
-	feedback_default = "%%USER%% crumples, their chassis colder and more lifeless than usual."
+	feedback_default = "<b>%%USER%%</b> crumples, their chassis colder and more lifeless than usual."
 	sfx = 'sound/machines/synth_gameoverp.ogg'
 
 // todo; name
 /datum/emote/standard/basic/synth_sfx/xp_startup
 	bindings = "startup-xp"
-	feedback_default = "%%USER%% chimes to life."
+	feedback_default = "<b>%%USER%%</b> chimes to life."
 	sfx = 'sound/machines/synth_startup.ogg'
 
 // todo; name
 /datum/emote/standard/basic/synth_sfx/xp_shutdown
 	bindings = "shutdown-xp"
-	feedback_default = "%%USER%% emits a nostalgic tone as they fall silent."
+	feedback_default = "<b>%%USER%%</b> emits a nostalgic tone as they fall silent."
 	sfx = 'sound/machines/synth_shutdown.ogg'
 
 // todo; name, targeting
 /datum/emote/standard/basic/synth_sfx/xp_error
 	bindings = "error-xp"
-	feedback_default = "%%USER%% experiences a system error."
+	feedback_default = "<b>%%USER%%</b> experiences a system error."
 	sfx = 'sound/machines/synth_error.ogg'

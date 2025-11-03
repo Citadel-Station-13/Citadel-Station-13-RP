@@ -6,7 +6,7 @@
 	desc = "Twitch."
 	bindings = "twitch"
 	emote_class = EMOTE_CLASS_REQUIRES_HUMANOID
-	feedback_default = "%%USER%% twitches."
+	feedback_default = "<b>%%USER%%</b> twitches."
 	feedback_saycode_type = SAYCODE_TYPE_VISIBLE
 
 /datum/emote/standard/basic/general/twitch/strong
@@ -14,5 +14,5 @@
 	desc = "Violently twitch."
 	bindings = "twitch-violently"
 	emote_class = EMOTE_CLASS_REQUIRES_HUMANOID
-	feedback_default = "%%USER%% twitches violently."
+	feedback_default = "<b>%%USER%%</b> twitches violently."
 	feedback_saycode_type = SAYCODE_TYPE_VISIBLE

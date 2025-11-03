@@ -10,25 +10,22 @@
 /**
  * Description WIP
  * * Blocking.
- * * `raw_params` may be a list or a text string.
  * @return TRUE if invoked, FALSE otherwise
  */
-/mob/proc/invoke_emote(key, raw_params, datum/event_args/actor/actor)
+/mob/proc/invoke_emote(key, parameter_string, datum/event_args/actor/actor)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	if(isnull(actor))
 		actor = new(src)
-	else if(isnull(actor.performer))
-		actor.performer = src
 	ASSERT(actor.performer == src)
 
-	var/special_result = process_emote_special(key, raw_params, actor)
+	var/special_result = process_emote_special(key, parameter_string, actor)
 	if(!isnull(special_result))
 		return special_result
 
 	var/datum/emote/resolved = fetch_emote(key)
 	if(!resolved)
 		return EMOTE_INVOKE_INVALID
-	var/result = process_emote(resolved, raw_params, actor)
+	var/result = process_emote(resolved, parameter_string, actor)
 	if(result)
 		return EMOTE_INVOKE_FINISHED
 	else
@@ -36,12 +33,11 @@
 
 /**
  * Description WIP
- * * `raw_params` may be a list or a text string.
  */
-/mob/proc/invoke_emote_async(key, raw_params, datum/event_args/actor/actor)
+/mob/proc/invoke_emote_async(key, parameter_string, datum/event_args/actor/actor)
 	set waitfor = FALSE
 	. = EMOTE_INVOKE_SLEEPING
-	return invoke_emote(key, raw_params, actor)
+	return invoke_emote(key, parameter_string, actor)
 
 /**
  * Runs an emote.
@@ -49,8 +45,9 @@
  * * `raw_params` may be a list or a text string.
  * @return TRUE if successful
  */
-/mob/proc/process_emote(datum/emote/emote, raw_params, datum/event_args/actor/actor)
-	#warn impl
+/mob/proc/process_emote(datum/emote/emote, parameter_string, datum/event_args/actor/actor)
+	var/list/arbitrary = emote.process_parameters(parameter_string, actor)
+	return emote.try_run_emote(actor, arbitrary)
 
 /**
  * Process special overrides
@@ -78,7 +75,7 @@
 	RETURN_TYPE(/list)
 	. = list()
 	var/our_emote_class = get_usable_emote_class()
-	for(var/datum/emote/emote as anything in emotes)
+	for(var/datum/emote/emote as anything in GLOB.emotes)
 		if(!(our_emote_class & emote.emote_class))
 			continue
 		. += emote
