@@ -2,6 +2,7 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/emote/standard/basic/general/sneeze
+	emote_class = EMOTE_CLASS_REQUIRES_HUMANOID
 
 #warn impl
 

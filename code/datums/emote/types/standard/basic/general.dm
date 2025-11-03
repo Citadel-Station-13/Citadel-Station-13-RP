@@ -5,25 +5,12 @@
 	abstract_type = /datum/emote/standard/basic/general
 	emote_require = EMOTE_REQUIRE_BODY
 
-// todo: check has eyes
-/datum/emote/standard/basic/general/blink
-	name = "Blink"
-	desc = "Blink your eyes."
-	bindings = "blink"
-	feedback_default = "%%USER%% blinks."
-
-// todo: check has eyes
-/datum/emote/standard/basic/general/blink_fast
-	name = "Blink Rapidly"
-	desc = "Rapidly blink your eyes."
-	bindings = "blink-fast"
-	feedback_default = "%%USER%% blinks rapidly."
-
 /datum/emote/standard/basic/general/bow
 	name = "Bow"
 	desc = "Bow, or bow to someone."
 	bindings = "bow"
 	required_mobility_flags = MOBILITY_CAN_STAND
+	emote_class = EMOTE_CLASS_REQUIRES_HUMANOID
 	feedback_default = "%%USER%% bows."
 	feedback_default_targeted = "%%USER%% bows to %%TARGET%%."
 	target_allowed = TRUE
@@ -33,6 +20,7 @@
 	name = "Blush"
 	desc = "Blush, or blush at someone."
 	bindings = "blush"
+	emote_class = EMOTE_CLASS_REQUIRES_HUMANOID
 	feedback_default = "%%USER%% blushes."
 	feedback_default_targeted = "%%USER%% blushes at %%TARGET%%."
 	target_allowed = TRUE
@@ -42,6 +30,7 @@
 	name = "Frown"
 	desc = "Frown, or frown at someone."
 	bindings = "frown"
+	emote_class = EMOTE_CLASS_REQUIRES_HUMANOID
 	feedback_default = "%%USER%% frowns."
 	feedback_default_targeted = "%%USER%% frowns at %%TARGET%%."
 	target_allowed = TRUE
@@ -51,6 +40,7 @@
 	name = "Nod"
 	desc = "Nod, or nod at someone."
 	bindings = "nod"
+	emote_class = EMOTE_CLASS_REQUIRES_HUMANOID
 	feedback_default = "%%USER%% nods."
 	feedback_default_targeted = "%%USER%% nods at %%TARGET%%."
 	target_allowed = TRUE
@@ -59,19 +49,22 @@
 	name = "Raise Hand"
 	desc = "Raise your hand."
 	bindings = "raise"
+	emote_class = EMOTE_CLASS_REQUIRES_HUMANOID
 	feedback_default = "%%USER%% raises a hand."
-	emote_require = EMOTE_REQUIRE_USABLE_HAND
+	emote_require = EMOTE_REQUIRE_FREE_HAND
 
 /datum/emote/standard/basic/general/shiver
 	name = "Shiver"
 	desc = "Shiver."
 	bindings = "shiver"
+	emote_class = EMOTE_CLASS_REQUIRES_HUMANOID
 	feedback_default = "%%USER%% shivers."
 
 /datum/emote/standard/basic/general/shrug
 	name = "Shrug"
 	desc = "Shrug, or shrug at someone."
 	bindings = "shrug"
+	emote_class = EMOTE_CLASS_REQUIRES_HUMANOID
 	feedback_default = "%%USER%% shrugs."
 	feedback_default_targeted = "%%USER%% shrugs at %%TARGET%%."
 	target_allowed = TRUE
@@ -81,6 +74,7 @@
 	name = "Smile"
 	desc = "Smile, or smile at someone."
 	bindings = "smile"
+	emote_class = EMOTE_CLASS_REQUIRES_HUMANOID
 	feedback_default = "%%USER%% smiles."
 	feedback_default_targeted = "%%USER%% smiles at %%TARGET%%."
 	target_allowed = TRUE
@@ -90,6 +84,7 @@
 	name = "Smooch"
 	desc = "Smooch someone standing next to you."
 	bindings = "smooch"
+	emote_class = EMOTE_CLASS_REQUIRES_HUMANOID
 	target_allowed = TRUE
 	target_required = TRUE
 	target_range = 1
@@ -99,16 +94,18 @@
 	name = "Wave"
 	desc = "Wave, or wave at someone."
 	bindings = "wave"
+	emote_class = EMOTE_CLASS_REQUIRES_HUMANOID
 	feedback_default = "%%USER%% waves."
 	feedback_default_targeted = "%%USER%% waves at %%TARGET%%."
 	target_allowed = TRUE
-	emote_require = EMOTE_REQUIRE_USABLE_HAND
+	emote_require = EMOTE_REQUIRE_FREE_HAND
 
 // todo: check has eyes
 /datum/emote/standard/basic/general/wink
 	name = "Wink"
 	desc = "Wink at someone."
 	bindings = "wink"
+	emote_class = EMOTE_CLASS_REQUIRES_HUMANOID
 	feedback_default = "%%USER%% winks."
 	feedback_default_targeted = "%%USER%% winks at %TARGET."
 	target_allowed = TRUE

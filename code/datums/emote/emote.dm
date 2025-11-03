@@ -50,8 +50,13 @@ GLOBAL_LIST(emote_lookup)
 	var/parameter_description
 
 	/// our emote classes
-	var/emote_class = EMOTE_CLASS_DEFAULT
+	/// * A mob must have all of these to use us.
+	/// * Missing a class will stop us from appearing in the mob's emote-help panel at all.
+	var/emote_class = NONE
 	/// our emote require's
+	/// * A mob must have all of these to use us.
+	/// * Unlike `emote_class`, not having this doesn't exclude the emote from the 'help' list,
+	///   as these are assumed to be more temporary.
 	var/emote_require = NONE
 	/// mobility flags needed to invoke (all of them are if set)
 	var/required_mobility_flags = MOBILITY_IS_CONSCIOUS
@@ -134,19 +139,25 @@ GLOBAL_LIST(emote_lookup)
 	var/pos = 0
 	var/in_space = TRUE
 	var/active_border_char
-	var/active_border_pos
+	var/active_token_pos
 
 	. = list()
 	for(var/char in parameter_string)
 		++pos
 
 		var/is_border = FALSE
+		var/ignore_one
 		switch(char)
 			if("\"", "'")
-				if(!active_border)
+				if(in_space)
 					is_border = TRUE
+					ignore_one = TRUE
 				else if(char == active_border_char)
 					is_border = TRUE
+					ignore_one = TRUE
+				else
+					// being inside a token = ignored
+					continue
 			// no unicode spaces too bad
 			if(" ")
 				if(in_space)
@@ -155,21 +166,31 @@ GLOBAL_LIST(emote_lookup)
 				else
 					if(active_border_char)
 						// special border char; keep going until finding another
+						continue
 					else
-						// we were in a word and aren't bounded by active border;
+						// we were in a word and aren't bounded by active border char;
 						// this is a border
 						is_border = TRUE
+						ignore_one = TRUE
+			// another character
+			else
+				// if we're in space and we find a non-special non-space
+				// it's the immediate start of a token
+				if(in_space)
+					is_border = TRUE
 		if(is_border)
 			// we're at the start or an end of a token
 			if(in_space)
 				// start token
-				active_border_pos = pos
+				in_space = FALSE
+				active_token_pos = ignore_one ? pos + 1 : pos
 				if(char != " ")
 					active_border_char = char
 			else
 				// end token
-				var/token = copytext_char(parameter_string, active_border_char + 1, pos)
+				var/token = copytext_char(parameter_string, active_token_pos, pos + ignore_one ? 0 : 1)
 				active_border_char = null
+				in_space = TRUE
 				. += token
 
 	// if we're in a token,

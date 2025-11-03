@@ -13,28 +13,32 @@
 #define EMOTE_INVOKE_SLEEPING 3
 
 //* emote_class's ; determines who can do what emote *//
+//* -- This is broadphase, effectively.              *//
 //  todo: DEFINE_BITFIELD_NEW
 
-/// all default emotes
-#define EMOTE_CLASS_DEFAULT (1<<0)
+/// require body
+/// * so no brains
+#define EMOTE_CLASS_REQUIRES_BODY (1<<0)
+/// requires humanoid body
+/// * so no four legged animals
+#define EMOTE_CLASS_REQUIRES_HUMANOID (1<<1)
 
 //* emote_require's ; more freeform classes that should invoke procs *//
+//* -- This is narrowphase and doesn't exclude emotes from listings, *//
+//*    generally.                                                    *//
 //  todo: DEFINE_BITFIELD_NEW
 
 /// has a speaker of some kind
-/// * implies the speaker isn't mute
+/// * implies `EMOTE_REQUIRE_VOCALIZATION`
 #define EMOTE_REQUIRE_SYNTHETIC_SPEAKER (1<<0)
 /// can talk coherent words
-/// * implies the actor isn't mute
+/// * implies `EMOTE_REQUIRE_VOCALIZATION`
 #define EMOTE_REQUIRE_COHERENT_SPEECH (1<<1)
-/// has a usable hand
+/// has a free hand
 /// * does not imply the actor isn't stunned
-#define EMOTE_REQUIRE_USABLE_HAND (1<<2)
+#define EMOTE_REQUIRE_FREE_HAND (1<<2)
 /// require being able to make sounds at all
 #define EMOTE_REQUIRE_VOCALIZATION (1<<3)
-/// requires a body
-/// * so no brains
-#define EMOTE_REQUIRE_BODY (1<<4)
 
 //* emote arbitrary key-value store key's *//
 

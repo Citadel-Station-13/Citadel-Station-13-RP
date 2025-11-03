@@ -156,6 +156,12 @@
 	)
 
 /datum/emote/standard/basic/proc/on_run_emote(datum/event_args/actor/actor, list/arbitrary, list/maybe_custom_param_tokens, atom/maybe_target)
+	var/template_string_visible = get_template_string(actor, arbitrary, FALSE)
+	var/template_string_audible = get_template_string(actor, arbitrary, TRUE)
+	var/list/template_parameters = get_template_parameters(actor, arbitrary)
+
+	var/out_visible = string_format(template_string_visible, template_parameters)
+	var/out_audible = string_format(template_string_audible, template_parameters)
 
 	#warn this
 

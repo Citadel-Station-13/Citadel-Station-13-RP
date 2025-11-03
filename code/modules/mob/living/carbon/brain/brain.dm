@@ -42,6 +42,7 @@
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "brain1"
 	no_vore = TRUE
+	emote_class = NONE
 	catalogue_data = list(/datum/category_item/catalogue/fauna/brain/organic)
 
 /mob/living/carbon/brain/Initialize(mapload)

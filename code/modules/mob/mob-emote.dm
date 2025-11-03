@@ -72,12 +72,16 @@
 	return null
 
 /**
- * Return a list of /datum/emote's we can use
+ * Return a list of /datum/emote's we can **potentially** use
  */
 /mob/proc/query_emote()
 	RETURN_TYPE(/list)
 	. = list()
-	#warn impl
+	var/our_emote_class = get_usable_emote_class()
+	for(var/datum/emote/emote as anything in emotes)
+		if(!(our_emote_class & emote.emote_class))
+			continue
+		. += emote
 
 /**
  * Return a list of legacy emotes associated to descriptions or null
@@ -87,33 +91,6 @@
 	return list(
 		"me" = "Input a custom emote for your character to perform.",
 	)
-
-/**
- * Filters out emotes we can never use (ergo it isn't because we're hands full, stunned, etc)
- *
- * Use against a list of emotes.
- */
-/mob/proc/filter_usable_emotes(list/datum/emote/emotes = GLOB.emotes, check_mobility)
-	#warn don't filter out stuff that is only temporarily disabled
-	. = list()
-
-	var/our_emote_class = get_usable_emote_class()
-	var/our_emote_require = get_usable_emote_require()
-	var/datum/event_args/actor/actor = new(src)
-
-	for(var/datum/emote/emote as anything in emotes)
-		var/special_check = emote.can_use_special(actor)
-		if(!isnull(special_check))
-			if(special_check)
-				. += emote
-			continue
-		if(check_mobility && !(mobility_flags & emote.required_mobility_flags))
-			continue
-		if(!(our_emote_class & emote.emote_class))
-			continue
-		if(!(our_emote_require & emote.emote_require))
-			continue
-		. += emote
 
 /**
  * Return emote classes we support.

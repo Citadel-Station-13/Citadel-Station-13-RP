@@ -5,6 +5,7 @@
 	name = "Clap"
 	desc = "Clap."
 	bindings = "clap"
+	emote_class = EMOTE_CLASS_REQUIRES_HUMANOID
 	sfx = list(
 		'sound/misc/clapping.ogg',
 		'sound/voice/clap2.ogg',
@@ -21,6 +22,7 @@
 	name = "Clap Slowly"
 	desc = "Clap slowly, perhaps sarcastically."
 	bindings = "clap-slow"
+	emote_class = EMOTE_CLASS_REQUIRES_HUMANOID
 	sfx = 'sound/voice/golfclap.ogg'
 	sfx_volume = 50
 	feedback_default = "%%USER%% slowly claps."

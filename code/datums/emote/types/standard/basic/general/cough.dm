@@ -2,6 +2,7 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/emote/standard/basic/general/cough
+	emote_class = EMOTE_CLASS_REQUIRES_HUMANOID
 
 #warn impl
 			// if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)

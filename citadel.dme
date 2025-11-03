@@ -921,6 +921,7 @@
 #include "code\datums\emote\types\standard\basic\machine_noise.dm"
 #include "code\datums\emote\types\standard\basic\species.dm"
 #include "code\datums\emote\types\standard\basic\synth_sfx.dm"
+#include "code\datums\emote\types\standard\basic\general\blink.dm"
 #include "code\datums\emote\types\standard\basic\general\clap.dm"
 #include "code\datums\emote\types\standard\basic\general\cough.dm"
 #include "code\datums\emote\types\standard\basic\general\salute.dm"
