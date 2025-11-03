@@ -4,6 +4,10 @@
 /datum/emote/standard/basic/general/sneeze
 	emote_class = EMOTE_CLASS_REQUIRES_HUMANOID
 
+/datum/emote/standard/basic/general/sneeze/get_sfx(datum/event_args/actor/actor, list/arbitrary)
+	. = ..()
+
+
 #warn impl
 
 		// if("sneeze", "sneezes")

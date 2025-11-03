@@ -3,6 +3,7 @@
 
 /datum/emote/standard/basic/animal_noise
 	abstract_type = /datum/emote/standard/basic/animal_noise
+	emote_require = EMOTE_REQUIRE_VOCALIZATION
 
 /datum/emote/standard/basic/animal_noise/awoo
 	bindings = "awoo"

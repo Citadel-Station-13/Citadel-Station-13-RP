@@ -3,7 +3,6 @@
 
 /datum/emote/standard/basic/general
 	abstract_type = /datum/emote/standard/basic/general
-	emote_require = EMOTE_REQUIRE_BODY
 
 /datum/emote/standard/basic/general/bow
 	name = "Bow"
