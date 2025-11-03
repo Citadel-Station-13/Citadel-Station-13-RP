@@ -42,7 +42,5 @@
 #define EMOTE_PARAMETER_KEY_ORIGINAL "original"
 /// the target. hard reference. don't hold onto it for too long.
 #define EMOTE_PARAMETER_KEY_TARGET "target"
-/// the custom string.
-#define EMOTE_PARAMETER_KEY_CUSTOM_STRING "custom-string"
-/// the custom string, tokenized.
+/// for basic emotes; custom parameter, as tokens
 #define EMOTE_PARAMETER_KEY_CUSTOM_TOKENS "custom-tokens"

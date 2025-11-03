@@ -116,16 +116,16 @@ GLOBAL_LIST(emote_lookup)
  * Process passed in string (so anything after a **single** space from the emote key) to an 'arbitrary',
  * which is just how we process params
  *
- * @return the 'arbitrary' param passed into the rest of the emote call chain
+ * @return the 'arbitrary' param passed into the rest of the emote call chain, null on fail
  */
-/datum/emote/proc/process_parameters(datum/event_args/actor/actor, parameter_string)
+/datum/emote/proc/process_parameters(parameter_string, datum/event_args/actor/actor, silent)
 	return list(EMOTE_PARAMETER_KEY_ORIGINAL = parameter_string)
 
 /**
  * Standard parameter tokenization. Allows double-quoting, single-quoting, and just space-ing
  * @return list, or null on fail
  */
-/datum/emote/proc/tokenize_parameters(parameter_string)
+/datum/emote/proc/tokenize_parameters(parameter_string, datum/event_args/actor/actor, silent)
 	// incase they try something fishy
 	// notice the length(); curse of RA can be a problem.
 	if(length(parameter_string) >= MAX_MESSAGE_LEN)
@@ -133,11 +133,10 @@ GLOBAL_LIST(emote_lookup)
 	var/len = length_char(parameter_string)
 	var/pos = 0
 	var/in_space = TRUE
-	var/active_border
-	var/active_border_pos = 1
+	var/active_border_char
+	var/active_border_pos
 
 	. = list()
-	#warn leetcode didn't prepare me for this
 	for(var/char in parameter_string)
 		++pos
 
@@ -146,15 +145,43 @@ GLOBAL_LIST(emote_lookup)
 			if("\"", "'")
 				if(!active_border)
 					is_border = TRUE
-				else if(char == active_border)
+				else if(char == active_border_char)
 					is_border = TRUE
 			// no unicode spaces too bad
 			if(" ")
-
+				if(in_space)
+					// still in space just keep going
+					continue
+				else
+					if(active_border_char)
+						// special border char; keep going until finding another
+					else
+						// we were in a word and aren't bounded by active border;
+						// this is a border
+						is_border = TRUE
 		if(is_border)
-			if(active_border)
-				. +=
+			// we're at the start or an end of a token
+			if(in_space)
+				// start token
+				active_border_pos = pos
+				if(char != " ")
+					active_border_char = char
 			else
+				// end token
+				var/token = copytext_char(parameter_string, active_border_char + 1, pos)
+				active_border_char = null
+				. += token
+
+	// if we're in a token,
+	if(!in_space)
+		if(active_border_char)
+			// mismatched somewhere
+			loudly_reject_failure(parameter_string, actor, silent, "Mismatched '[active_border_char]' in parameters.")
+			return null
+		else
+			// was using space so just insert last
+			var/last_token = copytext_char(parameter_string, active_border_char + 1, len + 1)
+			. += last_token
 
 /**
  * Blocking proc.
@@ -163,18 +190,22 @@ GLOBAL_LIST(emote_lookup)
  */
 /datum/emote/proc/try_run_emote(datum/event_args/actor/actor, list/arbitrary)
 	#warn impl
+	#warn tokenize
 
 /**
  * Blocking proc.
  *
  * Runs an emote.
+ * * This can still fail if things fail to be parsed from arbitrary list.
  *
  * @params
  * * actor - actor data
  * * arbitrary - arbitrary processed params
+ *
+ * @return pass / fail
  */
 /datum/emote/proc/run_emote(datum/event_args/actor/actor, list/arbitrary)
-	return
+	return TRUE
 
 /datum/emote/proc/get_mob_context(mob/invoking)
 	return invoking.emotes_running?[src]
@@ -183,3 +214,9 @@ GLOBAL_LIST(emote_lookup)
 	if(!invoking.emotes_running)
 		invoking.emotes_running = list()
 	invoking.emotes_running[src] = ctx
+
+/datum/emote/proc/loudly_reject_failure(parameter_string, datum/event_args/actor/actor, silent, reason)
+	if(!silent)
+		actor?.chat_feedback(
+			SPAN_WARNING("Failed emote parse on {[parameter_string]} - [reason]"),
+		)

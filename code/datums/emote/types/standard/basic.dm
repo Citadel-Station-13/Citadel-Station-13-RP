@@ -102,6 +102,7 @@
 	//* Targeting *//
 
 	/// Allows targeting?
+	/// * overrides [target_required]
 	var/target_allowed = FALSE
 	/// requires a target?
 	var/target_required = FALSE
@@ -116,29 +117,45 @@
 	..()
 
 /datum/emote/standard/basic/proc/generate_parameter_description()
-	return "\[[parameter_custom_description]\][target_allowed ? " \[target[target_required ? "" : "?"]\]" : ""]"
+	return "\[[parameter_custom ? (parameter_custom_description || "Custom Parameter (Yell at coders!)") : ""]\]...\
+	[target_allowed ? " \[target[target_required ? "" : "?"]\]" : ""]"
 
-/datum/emote/standard/basic/process_parameters(datum/event_args/actor/actor, parameter_string)
+/datum/emote/standard/basic/process_parameters(parameter_string, datum/event_args/actor/actor, silent)
 	var/list/tokenized = tokenize_parameters(parameter_string)
+	. = list()
 	if(parameter_custom)
-	if(target_allowed)
-		var/has_target = length(tokenized) > 1
-		if(target_required)
-	if(target_allowed)
-		#warn ???
-	#warn impl
+		var/got_target
+		if(target_allowed)
+			if(target_required)
+				if(length(tokenized) <= 2)
+					loudly_reject_failure(parameter_string, actor, silent, "A target is required.")
+					return null
+			if(length(tokenized) >= 2)
+				.[EMOTE_PARAMETER_KEY_TARGET] = tokenized[2]
+				got_target = TRUE
+		if(length(tokenized) >= 1)
+			.[EMOTE_PARAMETER_KEY_CUSTOM_TOKENS] = tokenized.Copy(1, length(tokenized) + got_target ? 0 : 1)
+	else
+		if(target_allowed)
+			if(target_required)
+				if(length(tokenized) <= 1)
+					loudly_reject_failure(parameter_string, actor, silent, "A target is required.")
+					return null
+			if(length(tokenized) >= 1)
+				.[EMOTE_PARAMETER_KEY_TARGET] = tokenized[1]
 
 /datum/emote/standard/basic/run_emote(datum/event_args/actor/actor, list/arbitrary)
-	..()
+	. = ..()
+	if(!.)
+		return
 	on_run_emote(
 		actor,
 		arbitrary,
-		arbitrary[EMOTE_PARAMETER_KEY_CUSTOM_STRING],
 		arbitrary[EMOTE_PARAMETER_KEY_CUSTOM_TOKENS],
 		arbitrary[EMOTE_PARAMETER_KEY_TARGET],
 	)
 
-/datum/emote/standard/basic/proc/on_run_emote(datum/event_args/actor/actor, list/arbitrary, maybe_custom_param_string, list/maybe_custom_param_tokens, atom/maybe_target)
+/datum/emote/standard/basic/proc/on_run_emote(datum/event_args/actor/actor, list/arbitrary, list/maybe_custom_param_tokens, atom/maybe_target)
 
 	#warn this
 
