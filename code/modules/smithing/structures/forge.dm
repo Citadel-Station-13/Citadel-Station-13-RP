@@ -1,11 +1,12 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
-/datum/anvil_recipe
+/obj/structure/smithing/forge
 
-/datum/anvil_recipe/ingot
-	/// input ingot type
-	/// * technically any /stack/material works
-	var/ingot_type
+	///
+	var/interior_temperature
+	/// stored material
+	///
+	var/list/stored
 
 #warn impl
