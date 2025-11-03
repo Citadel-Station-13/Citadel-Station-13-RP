@@ -55,8 +55,8 @@
 		vel_y += vy
 
 	var/interpolate_limiter
-	if((interpolate_limiter = OVERMAP_DIST_TO_PIXEL(sqrt(vel_x ** 2 + vel_y ** 2))) > SSovermap_physics.global_interpolate_limit)
-		interpolate_limiter = SSovermap_physics.global_interpolate_limit / interpolate_limiter
+	if((interpolate_limiter = OVERMAP_DIST_TO_PIXEL(sqrt(vel_x ** 2 + vel_y ** 2))) > SSovermap_physics.global_interpolate_limit_as_per_second)
+		interpolate_limiter = SSovermap_physics.global_interpolate_limit_as_per_second / interpolate_limiter
 		vel_x *= interpolate_limiter
 		vel_y *= interpolate_limiter
 
@@ -74,8 +74,8 @@
 		vel_y = vy
 
 	var/interpolate_limiter
-	if((interpolate_limiter = OVERMAP_DIST_TO_PIXEL(sqrt(vel_x ** 2 + vel_y ** 2))) > SSovermap_physics.global_interpolate_limit)
-		interpolate_limiter = SSovermap_physics.global_interpolate_limit / interpolate_limiter
+	if((interpolate_limiter = OVERMAP_DIST_TO_PIXEL(sqrt(vel_x ** 2 + vel_y ** 2))) > SSovermap_physics.global_interpolate_limit_as_per_second)
+		interpolate_limiter = SSovermap_physics.global_interpolate_limit_as_per_second / interpolate_limiter
 		vel_x *= interpolate_limiter
 		vel_y *= interpolate_limiter
 

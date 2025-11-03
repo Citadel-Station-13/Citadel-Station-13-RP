@@ -510,7 +510,7 @@
  * * new_ticklag
  */
 /datum/controller/subsystem/proc/on_ticklag_changed(old_ticklag, new_ticklag)
-	return
+	recompute_wait_dt()
 
 /**
  * Called when SQL is reconnected after being disconnected
