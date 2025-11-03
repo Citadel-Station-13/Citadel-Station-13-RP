@@ -433,6 +433,18 @@
 	ambience = AMBIENCE_STRELKA_ROOM_WOOD
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
+/area/medical/strelka/psyward
+	name = "\improper Deck 3 Medical Psychiatry Ward Monitor Room"
+	icon_state = "medbay"
+	ambience = AMBIENCE_STRELKA_ROOM_WOOD
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
+
+/area/medical/strelka/psywardroom
+	name = "\improper Deck 3 Medical Psychiatry Ward Room"
+	icon_state = "medbay"
+	ambience = AMBIENCE_STRELKA_ROOM_WOOD
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
+
 /area/maintenance/strelka/medical
 	name = "\improper Deck 3 Medical Maintenance"
 	icon_state = "maintcentral"

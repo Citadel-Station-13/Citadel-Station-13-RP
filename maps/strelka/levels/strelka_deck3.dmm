@@ -1106,6 +1106,10 @@
 /obj/machinery/door/blast/regular,
 /turf/simulated/floor/reinforced,
 /area/quartermaster/strelka/cargo/mining)
+"eD" = (
+/obj/item/trash/cheesie,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo)
 "eE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -1144,9 +1148,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/obj/structure/closet/walllocker_double/medical/north,
-/obj/item/clothing/suit/straight_jacket,
-/obj/item/clothing/suit/straight_jacket,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/medical/strelka/surgery)
 "eO" = (
@@ -1230,7 +1231,8 @@
 /obj/machinery/door/airlock/glass/medical/polarized{
 	id_tint = "room2med"
 	},
-/obj/map_helper/access_helper/airlock/station/medical/surgery,
+/obj/map_helper/access_helper/airlock/station/medical/department,
+/obj/structure/curtain/open/shower/medical,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/medical/strelka/room)
 "fb" = (
@@ -1551,6 +1553,7 @@
 	light_power = 1
 	},
 /obj/structure/catwalk,
+/obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/reinforced,
 /area/maintenance/strelka/cargo)
 "fQ" = (
@@ -1589,6 +1592,10 @@
 "fS" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo)
+"fU" = (
+/obj/structure/bed,
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/cargo)
 "fY" = (
@@ -1667,13 +1674,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka)
-"gn" = (
-/obj/structure/table/bench/wooden,
-/obj/item/reagent_containers/food/drinks/coffee{
-	pixel_x = 16
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/hallway/strelka/deck3)
 "go" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 9
@@ -2166,6 +2166,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 5
 	},
+/obj/machinery/recharge_station,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/rnd/strelka/xenobio)
 "hB" = (
@@ -2528,12 +2529,6 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/structure/cable/blue{
-	icon_state = "4-8"
-	},
-/obj/structure/cable/blue{
-	icon_state = "1-4"
-	},
 /obj/landmark/spawnpoint/job/paramedic,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/emtroom)
@@ -2593,6 +2588,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/cargo)
+"iS" = (
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/turbolift/s_ship/level3)
 "iU" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -3599,6 +3597,10 @@
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/rnd/strelka/science/main)
+"md" = (
+/obj/machinery/atmospheric_field_generator/perma,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo)
 "me" = (
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/structure/bed/chair/comfy/beige{
@@ -3839,6 +3841,9 @@
 "mR" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
+	},
+/obj/structure/closet/crate/bin{
+	anchored = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/strelka/deck3)
@@ -4085,6 +4090,10 @@
 /obj/machinery/biogenerator,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/xenobotany)
+"nG" = (
+/obj/item/trash/pistachios,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo)
 "nH" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -4326,6 +4335,10 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/quartermaster/strelka/cargo/mining)
 "ot" = (
+/obj/machinery/light/small/old{
+	dir = 4;
+	light_power = 1
+	},
 /turf/simulated/open,
 /area/medical/strelka/emtroom)
 "ov" = (
@@ -4498,7 +4511,7 @@
 "oW" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/hallway/strelka/deck3)
+/area/turbolift/s_ship/level3)
 "oX" = (
 /obj/structure/table/bench/wooden,
 /obj/effect/floor_decal/corner/brown/full,
@@ -4529,6 +4542,9 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/medical/strelka/main)
+"pb" = (
+/turf/simulated/floor/tiled/dark,
+/area/turbolift/s_ship/level3)
 "pc" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/spline/fancy/wood,
@@ -4596,6 +4612,7 @@
 	dir = 4;
 	light_power = 1
 	},
+/obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/cargo)
 "po" = (
@@ -5778,6 +5795,13 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/quartermaster/strelka/qm)
+"tl" = (
+/obj/machinery/light/spot{
+	dir = 8
+	},
+/obj/structure/flora/pottedplant/hedge,
+/turf/simulated/floor/tiled/techfloor,
+/area/hallway/strelka/deck3)
 "tn" = (
 /obj/structure/cable/blue,
 /obj/machinery/power/apc/south_mount,
@@ -5851,6 +5875,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
+	},
+/obj/structure/cable/blue{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/emtroom)
@@ -6052,7 +6079,10 @@
 /turf/simulated/floor/reinforced,
 /area/rnd/strelka/xenobio)
 "ue" = (
-/obj/structure/table/bench/wooden,
+/obj/machinery/light/spot{
+	dir = 4
+	},
+/obj/structure/flora/pottedplant/hedge,
 /turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck3)
 "ug" = (
@@ -6125,7 +6155,7 @@
 	dir = 1;
 	light_power = 1
 	},
-/obj/structure/loot_pile/maint/technical,
+/obj/machinery/recharge_station,
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/medical)
 "ut" = (
@@ -6340,6 +6370,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/resleeve)
+"vc" = (
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/turbolift/s_ship/level3)
 "vd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -6432,7 +6466,7 @@
 /area/rnd/strelka/robotics)
 "vy" = (
 /turf/simulated/open,
-/area/hallway/strelka/deck3)
+/area/turbolift/s_ship/level3)
 "vI" = (
 /obj/structure/morgue{
 	dir = 2
@@ -6533,6 +6567,9 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/main)
+"vT" = (
+/turf/simulated/wall/r_wall/prepainted,
+/area/turbolift/s_ship/level3)
 "vU" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -6805,6 +6842,9 @@
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
+/obj/machinery/camera/network/medbay{
+	dir = 8
+	},
 /turf/simulated/floor/wood/indoors,
 /area/medical/strelka/room2)
 "wT" = (
@@ -6964,6 +7004,9 @@
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
+/obj/machinery/camera/network/medbay{
+	dir = 8
+	},
 /turf/simulated/floor/wood/indoors,
 /area/medical/strelka/room)
 "xr" = (
@@ -6974,6 +7017,10 @@
 	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/bridge/strelka/rd)
+"xs" = (
+/obj/item/modular_computer/laptop/preset/custom_loadout/elite,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo)
 "xt" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -7241,6 +7288,14 @@
 /obj/effect/floor_decal/spline/fancy/wood/three_quarters,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/medical/strelka/room2)
+"yf" = (
+/obj/structure/cable{
+	icon_state = "6-9"
+	},
+/obj/structure/catwalk,
+/obj/item/trash/rust_can,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo)
 "yg" = (
 /obj/item/slime_extract/grey,
 /turf/simulated/floor/reinforced,
@@ -7290,6 +7345,7 @@
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "room1med"
 	},
+/obj/structure/curtain/open/shower/medical,
 /turf/simulated/floor/wood/indoors,
 /area/medical/strelka/room2)
 "ym" = (
@@ -7524,6 +7580,7 @@
 	light_power = 1
 	},
 /obj/structure/catwalk,
+/obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/reinforced,
 /area/maintenance/strelka/cargo)
 "yP" = (
@@ -7893,6 +7950,10 @@
 /obj/machinery/air_alarm/north_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/quartermaster/strelka/reception)
+"zR" = (
+/obj/item/trash/diggerstew,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo)
 "zV" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/space)
@@ -8091,6 +8152,7 @@
 /area/rnd/strelka/xenobio)
 "Az" = (
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/reinforced,
 /area/maintenance/strelka/cargo)
 "AB" = (
@@ -8364,6 +8426,10 @@
 	},
 /turf/simulated/floor/fey/forest_grass,
 /area/rnd/strelka/xenobotany)
+"Bn" = (
+/obj/item/trash/tray,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo)
 "Bo" = (
 /obj/effect/floor_decal/spline/fancy/wood/cee{
 	dir = 4
@@ -8422,10 +8488,7 @@
 /area/rnd/strelka/servers)
 "Bs" = (
 /obj/structure/cable/blue{
-	icon_state = "2-4"
-	},
-/obj/structure/cable/blue{
-	icon_state = "1-4"
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/emtroom)
@@ -8656,10 +8719,11 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/hallway/strelka/deck3)
 "Ck" = (
-/obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable/blue{
-	icon_state = "4-8"
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/emtroom)
@@ -8887,9 +8951,6 @@
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/structure/sign/christmas/lights{
 	dir = 1
-	},
-/obj/structure/closet/crate/bin{
-	anchored = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/strelka/deck3)
@@ -9255,6 +9316,10 @@
 /obj/machinery/fire_alarm/west_mount,
 /turf/simulated/floor/plating,
 /area/bridge/strelka/deck3)
+"DP" = (
+/obj/machinery/recharge_station,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo)
 "DR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -9480,7 +9545,6 @@
 /area/bridge/strelka/deck3)
 "EC" = (
 /obj/effect/floor_decal/spline/fancy/wood,
-/obj/structure/flora/pottedplant/hedge,
 /turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck3)
 "ED" = (
@@ -9723,7 +9787,8 @@
 /obj/machinery/door/airlock/glass/medical/polarized{
 	id_tint = "room1med"
 	},
-/obj/map_helper/access_helper/airlock/station/medical/surgery,
+/obj/map_helper/access_helper/airlock/station/medical/department,
+/obj/structure/curtain/open/shower/medical,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/medical/strelka/room2)
 "Fi" = (
@@ -11683,6 +11748,12 @@
 "LO" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/bridge/strelka/blueshield/room)
+"LP" = (
+/obj/item/storage/daki{
+	icon_state = "daki_Mugi"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo)
 "LR" = (
 /obj/structure/railing{
 	dir = 1
@@ -11856,15 +11927,6 @@
 /obj/item/storage/backpack/parachute,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/strelka/science/secondary)
-"Mp" = (
-/obj/structure/window/phoronreinforced{
-	dir = 1
-	},
-/obj/effect/floor_decal/grass_edge{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/rnd/strelka/xenobotany)
 "Mq" = (
 /obj/item/storage/box/syringegun,
 /obj/item/gun/projectile/ballistic/syringe/rapid,
@@ -12184,7 +12246,10 @@
 	dir = 5
 	},
 /obj/structure/cable/blue{
-	icon_state = "1-2"
+	icon_state = "2-4"
+	},
+/obj/structure/cable/blue{
+	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/emtroom)
@@ -12847,7 +12912,13 @@
 /area/quartermaster/strelka/qm)
 "Pz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
+/obj/machinery/light/small/old{
+	dir = 4;
+	light_power = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/emtroom)
 "PA" = (
@@ -12857,6 +12928,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
+/obj/structure/table/bench/wooden,
 /turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck3)
 "PC" = (
@@ -13170,6 +13242,13 @@
 /obj/machinery/mineral/processing_unit,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/quartermaster/strelka/cargo/mining)
+"QN" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#B95A00"
+	},
+/obj/item/trash/chips,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo)
 "QQ" = (
 /obj/landmark/spawnpoint/job/explorer,
 /turf/simulated/floor/tiled/dark,
@@ -13188,6 +13267,10 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = 32
+	},
+/obj/machinery/computer/security/mining{
+	name = "psychiatric wing camera monitor";
+	network = list("Psychiatric")
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/main)
@@ -13443,6 +13526,10 @@
 	},
 /turf/simulated/floor/fey/forest_grass,
 /area/rnd/strelka/xenobotany)
+"RP" = (
+/obj/item/trash/rust_can,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo)
 "RS" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/gun/projectile/energy/hardlight_bow,
@@ -13640,15 +13727,14 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/rnd/strelka/science/main)
 "Sw" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/machinery/light/small/old{
-	dir = 4;
-	light_power = 1
+/obj/structure/cable/blue{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/emtroom)
@@ -13941,6 +14027,7 @@
 /obj/spawner/window/low_wall/reinforced/electrochromic/firelocks{
 	id = "room2med"
 	},
+/obj/structure/curtain/open/shower/medical,
 /turf/simulated/floor/wood/indoors,
 /area/medical/strelka/room)
 "Tk" = (
@@ -15027,6 +15114,10 @@
 /obj/item/storage/box/freezer,
 /turf/simulated/floor/plating,
 /area/rnd/strelka/science/main)
+"Wz" = (
+/obj/item/trash/chips,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo)
 "WB" = (
 /obj/machinery/smartfridge/drying_rack,
 /obj/machinery/light/small/old{
@@ -15415,6 +15506,10 @@
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/science/secondary)
+"XI" = (
+/obj/item/trash/unajerky,
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/cargo)
 "XK" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/table/steel_reinforced,
@@ -26584,7 +26679,7 @@ kr
 kr
 aI
 uq
-rN
+md
 rN
 rN
 rN
@@ -26598,7 +26693,7 @@ re
 re
 Jv
 yO
-rN
+RP
 up
 EH
 zV
@@ -26778,10 +26873,10 @@ kr
 aI
 XL
 uq
-rN
+md
+Bf
 qD
 Lr
-Bf
 aa
 jU
 fg
@@ -26972,7 +27067,7 @@ aI
 aI
 XL
 uq
-rN
+md
 QE
 QE
 QE
@@ -27156,7 +27251,7 @@ EG
 up
 rN
 OM
-rN
+md
 Mb
 XL
 XL
@@ -27382,7 +27477,7 @@ rN
 rN
 rN
 jj
-rN
+zR
 rN
 rN
 OM
@@ -28122,7 +28217,7 @@ oc
 oc
 OP
 rN
-OP
+QN
 OP
 EG
 su
@@ -28166,7 +28261,7 @@ Yo
 rN
 EG
 rN
-rD
+yf
 up
 up
 zV
@@ -28318,8 +28413,8 @@ nm
 EG
 jj
 rN
-EG
-su
+Hl
+oo
 uY
 uY
 uY
@@ -28507,7 +28602,7 @@ zV
 EG
 EG
 HR
-rN
+fU
 rN
 EG
 EG
@@ -28553,7 +28648,7 @@ UP
 VA
 VA
 VA
-rN
+XI
 jj
 rN
 rD
@@ -28699,9 +28794,9 @@ EP
 zV
 oc
 EG
+xs
 rN
-rN
-rN
+Wz
 Zr
 EG
 OA
@@ -28893,8 +28988,8 @@ zV
 oc
 EG
 ce
-rN
-rN
+eD
+LP
 EG
 EG
 EG
@@ -29722,7 +29817,7 @@ CY
 VA
 VA
 fg
-rN
+Bn
 up
 xZ
 EP
@@ -30102,8 +30197,8 @@ Bv
 Bv
 Yd
 BG
-VA
-Mp
+ey
+ey
 ey
 ey
 qs
@@ -30271,7 +30366,7 @@ kD
 ux
 IN
 PA
-gn
+oT
 EC
 ko
 yp
@@ -30295,8 +30390,8 @@ cn
 cn
 cn
 tN
-je
-cE
+BG
+VA
 fw
 La
 La
@@ -30465,15 +30560,15 @@ Xp
 Pa
 CK
 PA
-ue
+tl
 EC
 ko
 Qk
-FN
+vT
 oW
 oW
 oW
-FN
+vT
 Wt
 Vx
 sw
@@ -30663,11 +30758,11 @@ Cn
 xv
 ko
 kF
-FN
+vc
 vy
 vy
 vy
-Wt
+pb
 Wt
 Wt
 qM
@@ -30837,8 +30932,8 @@ EG
 EG
 EG
 EG
-rN
-rN
+DP
+nG
 ly
 SK
 xH
@@ -30857,11 +30952,11 @@ ip
 pE
 ko
 kF
-FN
+vT
 vy
 vy
 vy
-Wt
+pb
 Wt
 Wt
 gA
@@ -31051,11 +31146,11 @@ cD
 pq
 NO
 Zg
-FN
+vc
 vy
 vy
 vy
-Wt
+iS
 Wt
 Wt
 sw
@@ -31245,11 +31340,11 @@ CO
 tI
 Jf
 Cs
-FN
+vT
 oW
 oW
 oW
-FN
+vT
 Wt
 Sx
 sw
@@ -32626,7 +32721,7 @@ dB
 hB
 zV
 zV
-EP
+zq
 lI
 lI
 EP
@@ -32820,7 +32915,7 @@ rQ
 hB
 zV
 zq
-EP
+zq
 lI
 EP
 EP

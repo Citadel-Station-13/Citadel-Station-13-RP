@@ -364,27 +364,27 @@
 /obj/effect/shuttle_landmark/strelka/deck1/personal1
 	name = "NEV strelka - Civilian Personal Dock 1"
 	landmark_tag = "strelka_personalmicro1"
-	docking_controller = "civvie_dock"
+	docking_controller = "strelka_personalmicro1_dock"
 	base_turf = /turf/space/basic
 	base_area = /area/space
 
 /obj/effect/shuttle_landmark/strelka/deck1/personal2
 	name = "NEV strelka - Civilian Personal Dock 2"
 	landmark_tag = "strelka_personalmicro2"
-	docking_controller = "civvie_dock"
+	docking_controller = "strelka_personalmicro2_dock"
 	base_turf = /turf/space/basic
 	base_area = /area/space
 
 /obj/effect/shuttle_landmark/strelka/deck1/personal3
 	name = "NEV strelka - Civilian Personal Dock 3"
 	landmark_tag = "strelka_personalmicro3"
-	docking_controller = "civvie_dock"
+	docking_controller = "strelka_personalmicro3_dock"
 	base_turf = /turf/space/basic
 	base_area = /area/space
 
 /obj/effect/shuttle_landmark/strelka/deck1/personal4
 	name = "NEV strelka - Civilian Personal Dock 4"
 	landmark_tag = "strelka_personalmicro4"
-	docking_controller = "civvie_dock"
+	docking_controller = "strelka_personalmicro4_dock"
 	base_turf = /turf/space/basic
 	base_area = /area/space
