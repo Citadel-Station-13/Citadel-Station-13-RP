@@ -231,7 +231,7 @@ GLOBAL_PROTECT(VVpixelmovement)
 		if (default == VV_TEXT)
 			default = VV_MESSAGE
 		class = default
-	var/list/LL = vv_get_value(default_class = default, current_value = original_var, restricted_classes = list(VV_RESTORE_DEFAULT), extra_classes = list(VV_LIST, "DELETE FROM LIST"))
+	var/list/LL = vv_get_value(default_class = default, current_value = original_var, restricted_classes = list(VV_RESTORE_DEFAULT), extra_classes = list(VV_LIST, VV_ALIST, "DELETE FROM LIST"))
 	class = LL["class"]
 	if (!class)
 		return
@@ -242,6 +242,8 @@ GLOBAL_PROTECT(VVpixelmovement)
 
 	switch(class) //Spits a runtime error if you try to modify an entry in the contents list. Dunno how to fix it, yet.
 		if(VV_LIST)
+			mod_list(variable, O, original_name, objectvar)
+		if(VV_ALIST)
 			mod_list(variable, O, original_name, objectvar)
 
 		if("DELETE FROM LIST")
@@ -320,7 +322,7 @@ GLOBAL_PROTECT(VVpixelmovement)
 	if(!vv_varname_lockcheck(variable))
 		return
 
-	var/default = vv_get_class(variable, var_value)
+	var/default = vv_get_class(variable, var_value, O)
 
 	if(isnull(default))
 		to_chat(src, "Unable to determine variable type.")
@@ -349,7 +351,14 @@ GLOBAL_PROTECT(VVpixelmovement)
 			default = VV_MESSAGE
 		class = default
 
-	var/list/value = vv_get_value(class, default, var_value, extra_classes = list(VV_LIST), var_name = variable)
+	var/list/value = vv_get_value(
+		class,
+		default,
+		var_value,
+		extra_classes = list(VV_LIST, VV_ALIST),
+		var_name = variable,
+		maybe_datum = O
+	)
 	class = value["class"]
 
 	if (!class)
@@ -362,10 +371,13 @@ GLOBAL_PROTECT(VVpixelmovement)
 	var/original_name = "[O]"
 
 	switch(class)
+		if(VV_ALIST)
+			if(!isalist(var_value))
+				mod_list(alist(), O, original_name, variable)
+			mod_list(var_value, O, original_name, variable)
 		if(VV_LIST)
 			if(!islist(var_value))
 				mod_list(list(), O, original_name, variable)
-
 			mod_list(var_value, O, original_name, variable)
 			return
 

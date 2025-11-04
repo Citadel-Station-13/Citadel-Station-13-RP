@@ -326,8 +326,6 @@
 	armor_type = /datum/armor/teshari/hood_cloak
 	item_action_name = "Toggle Cloak Hood"
 	hoodtype = /obj/item/clothing/head/tesh_hood
-	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit)
-
 
 /obj/item/clothing/head/tesh_hood
 	name = "Cloak Hood"

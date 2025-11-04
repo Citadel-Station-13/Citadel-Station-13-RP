@@ -53,7 +53,7 @@
 		if (prompt != "Continue")
 			return
 
-	default = vv_get_class(variable, var_value)
+	default = vv_get_class(variable, var_value, O)
 
 	if(isnull(default))
 		to_chat(src, "Unable to determine variable type.")
@@ -77,7 +77,7 @@
 		if(dir_text)
 			to_chat(src, "If a direction, direction is: [dir_text]")
 
-	var/value = vv_get_value(default_class = default)
+	var/value = vv_get_value(default_class = default, maybe_datum = O)
 	var/new_value = value["value"]
 	var/class = value["class"]
 

@@ -1,9 +1,9 @@
-/proc/vv_get_class(var_name, var_value)
+/proc/vv_get_class(var_name, var_value, datum/target)
 	if(isnull(var_value))
 		. = VV_NULL
 
 	else if(isnum(var_value))
-		if(var_name in GLOB.bitfields)
+		if(fetch_bitfield(target?.type, var_name))
 			. = VV_BITFIELD
 		else
 			. = VV_NUM
@@ -39,13 +39,15 @@
 
 	else if(islist(var_value))
 		. = VV_LIST
+	else if(isalist(var_value))
+		. = VV_ALIST
 
 	else if(isfile(var_value))
 		. = VV_FILE
 	else
 		. = VV_NULL
 
-/client/proc/vv_get_value(class, default_class, current_value, list/restricted_classes, list/extra_classes, list/classes, var_name)
+/client/proc/vv_get_value(class, default_class, current_value, list/restricted_classes, list/extra_classes, list/classes, var_name, datum/maybe_datum)
 	. = list("class" = class, "value" = null)
 	if(!class)
 		if(!classes)
@@ -66,6 +68,7 @@
 				VV_NEW_DATUM,
 				VV_NEW_TYPE,
 				VV_NEW_LIST,
+				VV_NEW_ALIST,
 				VV_NULL,
 				VV_RESTORE_DEFAULT,
 				VV_TEXT_LOCATE,
@@ -83,6 +86,9 @@
 		if(extra_classes)
 			classes += extra_classes
 
+		if(!maybe_datum)
+			classes -= VV_BITFIELD
+
 		.["class"] = input(src, "What kind of data?", "Variable Type", default_class) as null|anything in classes
 		if(holder && holder.marked_datum && .["class"] == markstring)
 			.["class"] = VV_MARKED_DATUM
@@ -98,32 +104,26 @@
 			if(.["value"] == null)
 				.["class"] = null
 				return
-
-
 		if(VV_NUM)
 			.["value"] = input("Enter new number:", "Num", current_value) as null|num
 			if(.["value"] == null)
 				.["class"] = null
 				return
-
 		if(VV_BITFIELD)
-			.["value"] = input_bitfield(usr, "Editing bitfield: [var_name]", var_name, current_value)
+			.["value"] = input_bitfield(usr, "Editing bitfield: [var_name]", fetch_bitfield(maybe_datum?.type, var_name), current_value)
 			if(.["value"] == null)
 				.["class"] = null
 				return
-
 		if(VV_ATOM_TYPE)
 			.["value"] = pick_closest_path(FALSE)
 			if(.["value"] == null)
 				.["class"] = null
 				return
-
 		if(VV_DATUM_TYPE)
 			.["value"] = pick_closest_path(FALSE, get_fancy_list_of_datum_types())
 			if(.["value"] == null)
 				.["class"] = null
 				return
-
 		if(VV_TYPE)
 			var/type = current_value
 			var/error = ""
@@ -252,6 +252,10 @@
 		if(VV_NEW_LIST)
 			.["value"] = list()
 			.["type"] = /list
+
+		if(VV_NEW_ALIST)
+			.["value"] = alist()
+			.["type"] = /alist
 
 		if(VV_TEXT_LOCATE)
 			var/datum/D

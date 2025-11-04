@@ -10,6 +10,7 @@
 	throw_speed = 4
 	throw_range = 20
 	materials_base = list(MAT_STEEL = 60, MAT_GLASS = 30)
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
 
 	/// inserted tape
 	var/obj/item/cassette_tape/tape = /obj/item/cassette_tape/random
