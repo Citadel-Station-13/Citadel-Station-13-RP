@@ -117,7 +117,7 @@
 	..()
 
 /datum/emote/standard/basic/proc/generate_parameter_description()
-	return "\[[parameter_custom ? (parameter_custom_description || "Custom Parameter (Yell at coders!)") : ""]\]...\
+	return "[parameter_custom ? "\[[(parameter_custom_description || "Custom Parameter (Yell at coders!)")]\]" : ""]\
 	[target_allowed ? " \[target[target_required ? "" : "?"]\]" : ""]"
 
 /datum/emote/standard/basic/process_parameters(parameter_string, datum/event_args/actor/actor, silent)
