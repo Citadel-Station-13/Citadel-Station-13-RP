@@ -20,7 +20,7 @@
 /datum/unit_test/subtler_anti_ghost_still_works/Run()
 	var/mob/living/carbon/human/speaker = allocate(/mob/living/carbon/human)
 	var/mob/living/carbon/human/listener = allocate(/mob/living/carbon/human)
-	var/mob/observer/dead/the_myth_of_consensual_handholding = allocate(/mob/dead/observer)
+	var/mob/observer/dead/the_myth_of_consensual_handholding = allocate(/mob/observer/dead)
 
 	src.speaker = speaker
 	RegisterSignal(listener, COMSIG_MOB_ON_RECEIVE_CUSTOM_EMOTE, PROC_REF(on_intended_hear))
