@@ -139,14 +139,14 @@ GLOBAL_LIST(emote_lookup)
 	if(length(parameter_string) >= MAX_MESSAGE_LEN)
 		return null
 	var/len = length_char(parameter_string)
-	var/pos = 0
 	var/in_space = TRUE
 	var/active_border_char
 	var/active_token_pos
 
 	. = list()
-	for(var/char in parameter_string)
-		++pos
+	// TODO: faster regex tokenizer?
+	for(var/pos in 1 to len)
+		var/char = parameter_string[pos]
 
 		var/is_border = FALSE
 		var/ignore_one

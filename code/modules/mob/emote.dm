@@ -33,6 +33,6 @@
 /mob/proc/custom_emote(m_type, message)
 	switch(m_type)
 		if(2)
-			audible_emote(text)
+			audible_emote(message)
 		else
-			visible_emote(text)
+			visible_emote(message)
