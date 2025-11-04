@@ -63,12 +63,18 @@
 			var/mob/hearing_mob = hearing
 			SEND_SIGNAL(hearing_mob, COMSIG_MOB_ON_RECEIVE_CUSTOM_EMOTE, src, raw_html, subtle, anti_ghost, saycode_type)
 			hearing_mob.show_message(raw_html, saycode_type)
-			#warn vocal cues?
 			if(subtle)
 				hearing_mob.playsound_local(null, 'sound/effects/subtle_emote.ogg', 75, TRUE)
 		else if(isobj(hearing))
 			var/obj/hearing_obj = hearing
 			hearing_obj.see_emote(src, raw_html, 2)
 	// todo: legacy code
+	var/mob/filtered_mobs = list()
+	var/turf/our_loc = get_turf(src)
+	var/use_sfx = subtle ? /datum/soundbyte/talksound/generic_subtle_emote_1 : /datum/soundbyte/talksound/generic_emote_1
+	for(var/mob/M in heard)
+		filtered_mobs += M
+		if(M.get_preference_toggle(/datum/game_preference_toggle/game/vocal_cues))
+			M.playsound_local(our_loc, use_sfx, 50, TRUE)
 	if(with_overhead)
-		say_overhead(raw_html, FALSE, GLOB.game_view_radius, passed_hearing_list = heard)
+		say_overhead(raw_html, FALSE, GLOB.game_view_radius, passed_hearing_list = filtered_mobs)

@@ -244,7 +244,7 @@ var/list/channel_to_radio_key = new
 
 	message = message_args["message"]
 
-	if(HAS_TRAIT(src, TRAIT_MUTE))
+	if(HAS_TRAIT(src, TRAIT_MUTE) && !(speaking && (speaking.language_flags & LANGUAGE_SIGNLANG)))
 		to_chat(src, "<span class='danger'>You are not capable of speech!</span>")
 		return
 
@@ -399,6 +399,7 @@ var/list/channel_to_radio_key = new
 
 
 	//Main 'say' and 'whisper' message delivery
+	var/turf/our_turf = get_turf(src)
 	for(var/mob/M in listening)
 		spawn(0) //Using spawns to queue all the messages for AFTER this proc is done, and stop runtimes
 
@@ -410,6 +411,8 @@ var/list/channel_to_radio_key = new
 						var/image/I1 = listening[M] || speech_bubble
 						images_to_clients[I1] |= M.client
 						SEND_IMAGE(M, I1)
+						if(M.get_preference_toggle(/datum/game_preference_toggle/game/vocal_cues))
+							M.playsound_local(our_turf, /datum/soundbyte/talksound/goon_say, 75, TRUE)
 					M.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol)
 				else if(whispering) //Don't even bother with these unless whispering
 					if(dst > message_range && dst <= w_scramble_range) //Inside whisper scramble range

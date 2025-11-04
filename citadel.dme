@@ -1013,6 +1013,7 @@
 #include "code\datums\soundbytes\defs\explosion.dm"
 #include "code\datums\soundbytes\defs\sparks.dm"
 #include "code\datums\soundbytes\defs\spray.dm"
+#include "code\datums\soundbytes\defs\talksound.dm"
 #include "code\datums\soundbytes\defs\terminal_keyboard.dm"
 #include "code\datums\soundbytes\effects\combat.dm"
 #include "code\datums\soundbytes\guns\_guns.dm"
