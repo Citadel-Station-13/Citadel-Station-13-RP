@@ -196,17 +196,30 @@
 
 	return TRUE
 
-/obj/item/clothing/attackby(obj/item/tool, mob/user, list/params, clickchain_flags, damage_multiplier, datum/event_args/actor/clickchain/clickchain)
+/obj/item/clothing/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	// todo: legacy code
+	var/obj/item/tool = using
+	var/mob/user = clickchain.performer
 	if(istype(tool, /obj/item/clothing/accessory))
 		var/obj/item/clothing/accessory/A = tool
 		if(attempt_attach_accessory(A, user))
 			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 
 	if(LAZYLEN(accessories))
+		var/ret
 		for(var/obj/item/clothing/accessory/A in accessories)
-			var/ret = A.attackby(arglist(args))
-			if(ret & CLICKCHAIN_FLAGS_INTERACT_ABORT)
-				return ret
+			ret |= A.using_item_on(arglist(args))
+		if(ret & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+			return ret
+	return ..()
+
+/obj/item/clothing/attackby(obj/item/tool, mob/user, list/params, clickchain_flags, damage_multiplier, datum/event_args/actor/clickchain/clickchain)
+	if(LAZYLEN(accessories))
+		var/ret
+		for(var/obj/item/clothing/accessory/A in accessories)
+			ret |= A.attackby(arglist(args))
+		if(ret & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+			return ret
 	return ..()
 
 /obj/item/clothing/examine(var/mob/user)
