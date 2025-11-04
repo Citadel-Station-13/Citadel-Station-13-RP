@@ -14,6 +14,42 @@
 				continue
 			. += observer
 
+/mob/observer/dead/run_custom_emote(emote_text, subtle, anti_ghost, saycode_type, datum/event_args/actor/actor, with_overhead)
+	SHOULD_NOT_OVERRIDE(FALSE)
+	// Now watch, as I violate a codebase best practice for shits and giggles.
+	if(!usr)
+		return FALSE
+	if(usr != src)
+		to_chat(usr, SPAN_DANGER("How did you just try to emote as another player's ghost?"))
+		return FALSE
+	// Validated to be 'self' at this point.
+	if(!client)
+		return FALSE
+	if(client.prefs.muted & MUTE_DEADCHAT)
+		to_chat(src, SPAN_DANGER("You cannot send deadchat emotes (muted)."))
+		return FALSE
+	if(!get_preference_toggle(/datum/game_preference_toggle/chat/dsay))
+		to_chat(src, SPAN_DANGER("You have deadchat muted."))
+		return FALSE
+	if(!config_legacy.dsay_allowed && !check_rights(show_msg = FALSE, C = client))
+		to_chat(src, SPAN_DANGER("Deadchat is globally muted."))
+		return FALSE
+	if(SSbans.t_is_role_banned_ckey(ckey, role = BAN_ROLE_OOC))
+		to_chat(src, SPAN_DANGER("You are banned from OOC and deadchat."))
+		return FALSE
+	if(subtle)
+		to_chat(src, SPAN_DANGER("Why are you trying to subtle emote as a ghost?"))
+		return FALSE
+	if(anti_ghost)
+		to_chat(src, SPAN_DANGER("Why are you trying to anti-ghost emote as a ghost?"))
+		return FALSE
+
+	log_ghostemote(emote_text, src)
+	var/raw_html = process_custom_emote(emote_text, subtle, anti_ghost, saycode_type, with_overhead)
+	if(!raw_html)
+		return
+	emit_custom_emote(raw_html, subtle, anti_ghost, saycode_type, with_overhead)
+
 /mob/observer/dead/process_custom_emote(emote_text, subtle, anti_ghost, saycode_type, with_overhead)
 	. = ..()
-	. = SPAN_DEADSAY(.)
+	. = SPAN_DEADSAY(emoji_parse(.))

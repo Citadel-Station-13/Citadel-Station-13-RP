@@ -214,7 +214,7 @@ GLOBAL_LIST(emote_lookup)
  */
 /datum/emote/proc/try_run_emote(datum/event_args/actor/actor, list/arbitrary, silent)
 	var/list/why_not = list()
-	var/can_run = can_run(actor, arbitrary, why_not)
+	var/can_run = can_use(actor, arbitrary, why_not)
 	if(!can_run)
 		if(!silent)
 			actor?.chat_feedback(SPAN_WARNING("You can't '[name]' right now; ([english_list(why_not, "unknown reason")])"))
