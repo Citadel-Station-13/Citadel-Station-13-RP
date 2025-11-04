@@ -6,16 +6,10 @@
 		return GLOB.ghost_list.Copy()
 	. = list()
 	for(var/mob/observer/observer as anything in GLOB.ghost_list)
-		var/list/already_gotten = list()
-		for(var/mob/observer/observer in .)
-			already_gotten[observer] = TRUE
-		for(var/mob/observer/observer in GLOB.ghost_list)
-			if(already_gotten[observer])
-				continue
+		if(get_dist(src, observer) <= range)
 			. += observer
 
 /mob/observer/dead/run_custom_emote(emote_text, subtle, anti_ghost, saycode_type, datum/event_args/actor/actor, with_overhead)
-	SHOULD_NOT_OVERRIDE(FALSE)
 	// Now watch, as I violate a codebase best practice for shits and giggles.
 	if(!usr)
 		return FALSE
@@ -52,4 +46,9 @@
 
 /mob/observer/dead/process_custom_emote(emote_text, subtle, anti_ghost, saycode_type, with_overhead)
 	. = ..()
-	. = SPAN_DEADSAY(emoji_parse(.))
+	. = SPAN_DEADSAY(.)
+
+/mob/observer/dead/emit_custom_emote(raw_html, subtle, anti_ghost, saycode_type, with_overhead)
+	spawn(0)
+		var/emoji_parsed = emoji_parse(raw_html)
+		say_dead_direct(emoji_parsed, src)

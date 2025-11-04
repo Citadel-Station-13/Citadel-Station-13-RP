@@ -430,14 +430,12 @@
 		return FALSE
 	..()
 
-/mob/living/carbon/brain/caught_soul/me_verb_subtle()
+/mob/living/carbon/brain/caught_soul/subtle_verb(message)
 	set hidden = TRUE
-
 	return FALSE
 
 /mob/living/carbon/brain/caught_soul/whisper()
 	set hidden = TRUE
-
 	return FALSE
 
 /mob/living/carbon/brain/caught_soul/face_atom(var/atom/A)

@@ -22,7 +22,7 @@
 /datum/emote/standard/basic/synth_sfx/gameover
 	bindings = "gameover"
 	feedback_default = "<b>%%USER%%</b> crumples, their chassis colder and more lifeless than usual."
-	sfx = 'sound/machines/synth_gameoverp.ogg'
+	sfx = 'sound/machines/synth_gameover.ogg'
 
 // todo; name
 /datum/emote/standard/basic/synth_sfx/xp_startup

@@ -17,7 +17,6 @@
  */
 /mob/proc/run_custom_emote(emote_text, subtle, anti_ghost, saycode_type = SAYCODE_TYPE_VISIBLE, datum/event_args/actor/actor, with_overhead)
 	SHOULD_NOT_SLEEP(TRUE)
-	SHOULD_NOT_OVERRIDE(TRUE)
 
 	// raw preprocessed text is used
 	var/log_string = "[key_name(src)] ([AREACOORD(src)])[actor?.initiator != src ? " (initiated by [key_name(actor.initiator)] at [AREACOORD(actor.initiator)])" : ""]: [emote_text]"
@@ -63,7 +62,7 @@
 			var/mob/hearing_mob = hearing
 			SEND_SIGNAL(hearing_mob, COMSIG_MOB_ON_RECEIVE_CUSTOM_EMOTE, src, raw_html, subtle, anti_ghost, saycode_type)
 			hearing_mob.show_message(raw_html, saycode_type)
-			// TODO: eh for now. vocal cues when?
+			#warn vocal cues?
 			if(subtle)
 				hearing_mob.playsound_local(null, 'sound/effects/subtle_emote.ogg', 75, TRUE)
 		else if(isobj(hearing))

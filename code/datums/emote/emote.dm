@@ -19,7 +19,7 @@ GLOBAL_LIST(emote_lookup)
 		for(var/binding in islist(instance.bindings) ? instance.bindings : list(instance.bindings))
 			if(GLOB.emote_lookup[binding])
 				var/datum/emote/existing = GLOB.emote_lookup[binding]
-				stack_trace("collision between [existing.type] and [type] on [binding]")
+				stack_trace("collision between [existing.type] and [instance.type] on [binding]")
 				break
 			GLOB.emote_lookup[binding] = instance
 
