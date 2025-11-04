@@ -1,0 +1,7 @@
+author: "timothyteakettle"
+delete-after: True
+changes:
+  - rscadd: "ports wendigo sprites"
+  - rscadd: "ports some cat tails"
+  - rscadd: "ports some kitsune tails"
+  - bugfix: "fixes sprite accessories being layered wrong"

@@ -440,6 +440,7 @@
 	desc = "A small box of 'Space-Proof' premium matches."
 	icon = 'icons/obj/cigarettes.dmi'
 	icon_state = "matchbox"
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_BELT
 	insertion_whitelist = list(/obj/item/flame/match)

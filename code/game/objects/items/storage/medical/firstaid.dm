@@ -18,6 +18,7 @@
 	max_combined_volume = WEIGHT_VOLUME_SMALL * 7 // 14
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 
 /obj/item/storage/firstaid/fire
 	name = "fire first aid kit"
@@ -174,6 +175,7 @@
 	max_single_weight_class = WEIGHT_CLASS_TINY
 	materials_base = list(MAT_PLASTIC = 80)
 	item_flags = ITEM_CAREFUL_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD | ITEM_EASY_LATHE_DECONSTRUCT
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
 
 	var/label_text = ""
 	var/labeled = 0

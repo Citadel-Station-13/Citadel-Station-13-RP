@@ -13,6 +13,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	drop_sound = 'sound/items/drop/sword.ogg'
 	pickup_sound = 'sound/items/pickup/sword.ogg'
+	suit_storage_class = SUIT_STORAGE_CLASS_HARDWEAR | SUIT_STORAGE_CLASS_SOFTWEAR
 
 	var/reskinned = FALSE
 	var/defend_chance = 0	// The base chance for the weapon to parry.

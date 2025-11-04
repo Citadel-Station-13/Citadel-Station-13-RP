@@ -8,8 +8,6 @@
 	var/hood_up = FALSE
 	var/toggleicon
 	item_action_name = "Toggle Hood"
-	allowed =  list (/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches,
-	/obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit)
 
 /obj/item/clothing/suit/storage/hooded/Initialize(mapload)
 	. = ..()
@@ -135,8 +133,6 @@
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	armor_type = /datum/armor/civilian/coat
 	hoodtype = /obj/item/clothing/head/hood/winter
-	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
-	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit)
 
 /obj/item/clothing/suit/storage/hooded/wintercoat/centcom
 	name = "centcom winter coat"
@@ -157,10 +153,6 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "coatcaptain", SLOT_ID_LEFT_HAND = "coatcaptain")
 	armor_type = /datum/armor/security/light_formalwear
 	hoodtype = /obj/item/clothing/head/hood/winter/captain
-	allowed =  list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
-	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/projectile/energy,
-	/obj/item/reagent_containers/spray/pepper,/obj/item/gun/projectile/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,
-	/obj/item/handcuffs,/obj/item/clothing/head/helmet)
 
 /obj/item/clothing/suit/storage/hooded/wintercoat/captain/hop
 	name = "head of personnel's winter coat"
@@ -176,10 +168,6 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "coatsecurity", SLOT_ID_LEFT_HAND = "coatsecurity")
 	armor_type = /datum/armor/security/light_formalwear
 	hoodtype = /obj/item/clothing/head/hood/winter/security
-	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
-	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/projectile/energy,
-	/obj/item/reagent_containers/spray/pepper,/obj/item/gun/projectile/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,
-	/obj/item/handcuffs,/obj/item/clothing/head/helmet)
 
 /obj/item/clothing/suit/storage/hooded/wintercoat/security/hos
 	name = "head of security's winter coat"
@@ -195,11 +183,6 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "coatmedical", SLOT_ID_LEFT_HAND = "coatmedical")
 	armor_type = /datum/armor/medical/coat
 	hoodtype = /obj/item/clothing/head/hood/winter/medical
-	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
-	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/atmos_analyzer,/obj/item/stack/medical,
-	/obj/item/dnainjector,/obj/item/reagent_containers/dropper,/obj/item/reagent_containers/syringe,/obj/item/reagent_containers/hypospray,
-	/obj/item/healthanalyzer,/obj/item/reagent_containers/glass/bottle,/obj/item/reagent_containers/glass/beaker,
-	/obj/item/reagent_containers/pill,/obj/item/storage/pill_bottle)
 
 /obj/item/clothing/suit/storage/hooded/wintercoat/medical/genetics
 	name = "genetics winter coat"
@@ -238,11 +221,6 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "coatscience", SLOT_ID_LEFT_HAND = "coatscience")
 	armor_type = /datum/armor/science/coat
 	hoodtype = /obj/item/clothing/head/hood/winter/science
-	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
-	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/atmos_analyzer,/obj/item/stack/medical,
-	/obj/item/dnainjector,/obj/item/reagent_containers/dropper,/obj/item/reagent_containers/syringe,/obj/item/reagent_containers/hypospray,
-	/obj/item/healthanalyzer,/obj/item/reagent_containers/glass/bottle,/obj/item/reagent_containers/glass/beaker,
-	/obj/item/reagent_containers/pill,/obj/item/storage/pill_bottle)
 
 /obj/item/clothing/suit/storage/hooded/wintercoat/science/robotics
 	name = "robotics winter coat"
@@ -263,11 +241,6 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "coatengineer", SLOT_ID_LEFT_HAND = "coatengineer")
 	armor_type = /datum/armor/engineering/coat
 	hoodtype = /obj/item/clothing/head/hood/winter/engineering
-	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
-	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/atmos_analyzer, /obj/item/flashlight,
-	/obj/item/multitool, /obj/item/pipe_painter, /obj/item/radio, /obj/item/t_scanner, /obj/item/tool/crowbar, /obj/item/tool/screwdriver,
-	/obj/item/weldingtool, /obj/item/tool/wirecutters, /obj/item/tool/wrench, /obj/item/tank/emergency/oxygen, /obj/item/clothing/mask/gas,
-	/obj/item/barrier_tape_roll/engineering, /obj/item/rcd, /obj/item/pipe_dispenser)
 
 /obj/item/clothing/suit/storage/hooded/wintercoat/engineering/atmos
 	name = "atmospherics winter coat"
@@ -288,9 +261,6 @@
 	icon_state = "coathydro"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "coathydro", SLOT_ID_LEFT_HAND = "coathydro")
 	hoodtype = /obj/item/clothing/head/hood/winter/hydro
-	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
-	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/reagent_containers/spray/plantbgone,
-	/obj/item/plant_analyzer, /obj/item/seeds, /obj/item/reagent_containers/glass/bottle, /obj/item/material/minihoe)
 
 /obj/item/clothing/suit/storage/hooded/wintercoat/cargo
 	name = "cargo winter coat"
@@ -306,8 +276,6 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "coatminer", SLOT_ID_LEFT_HAND = "coatminer")
 	armor_type = /datum/armor/cargo/mining/coat
 	hoodtype = /obj/item/clothing/head/hood/winter/miner
-	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches,
-	/obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/tank, /obj/item/radio, /obj/item/pickaxe, /obj/item/storage/bag/ore)
 
 /obj/item/clothing/suit/storage/hooded/wintercoat/bar
 	name = "bartender winter coat"
@@ -437,17 +405,6 @@
 	hoodtype = /obj/item/clothing/head/hood/explorer
 	siemens_coefficient = 0.9
 	armor_type = /datum/armor/exploration/soft
-	allowed = list(
-		/obj/item/flashlight,
-		/obj/item/gun,
-		/obj/item/ammo_magazine,
-		/obj/item/melee,
-		/obj/item/material/knife,
-		/obj/item/tank,
-		/obj/item/radio,
-		/obj/item/pickaxe,
-		/obj/item/gun/projectile/ballistic/sec/flash
-		)
 
 /obj/item/clothing/suit/storage/hooded/miner
 	name = "mining suit"
@@ -463,19 +420,6 @@
 	hoodtype = /obj/item/clothing/head/hood/miner
 	siemens_coefficient = 0.9
 	armor_type = /datum/armor/cargo/mining/soft
-	allowed = list(
-		/obj/item/flashlight,
-		/obj/item/material/knife,
-		/obj/item/tank,
-		/obj/item/radio,
-		/obj/item/suit_cooling_unit,
-		/obj/item/pickaxe,
-		/obj/item/gun/projectile/energy/kinetic_accelerator,
-		/obj/item/kinetic_crusher,
-		/obj/item/resonator,
-		/obj/item/gun/projectile/energy/gun/miningcarbine,
-		/obj/item/gun/projectile/magnetic/matfed
-		)
 
 // Eldritch suit
 /obj/item/clothing/suit/storage/hooded/eldritch
@@ -491,8 +435,6 @@
 	hoodtype = /obj/item/clothing/head/hood/eldritch
 	armor_type = /datum/armor/lavaland/eldritch
 	siemens_coefficient = 0.9
-	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
-	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/material/knife)
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/suit/storage/hooded/cloak/goliath
@@ -500,11 +442,6 @@
 	desc = "A staunch, practical cape made out of numerous monster materials, it is coveted amongst exiles & hermits."
 	icon_state = "goliath_cloak"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "brown_jacket", SLOT_ID_LEFT_HAND = "brown_jacket")
-	allowed = list(
-		/obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/pickaxe, /obj/item/material/twohanded/spear, /obj/item/material/twohanded/spear/bone,
-		/obj/item/material/knife/tacknife/combatknife/bone, /obj/item/material/knife/tacknife/survival/bone, /obj/item/material/knife/tacknife/survival/bone, /obj/item/melee/ashlander,
-		/obj/item/gun/projectile/ballistic/musket/pistol
-		)
 	armor_type = /datum/armor/lavaland/goliath
 	hoodtype = /obj/item/clothing/head/hood/goliath
 	body_cover_flags = UPPER_TORSO|ARMS|LEGS
@@ -514,7 +451,6 @@
 	name = "drake armour"
 	icon_state = "dragon"
 	desc = "A suit of armour fashioned from the remains of an ash drake."
-	allowed = list(/obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/resonator, /obj/item/mining_scanner, /obj/item/mining_scanner/advanced, /obj/item/gun/projectile/energy/kinetic_accelerator, /obj/item/pickaxe, /obj/item/material/twohanded/spear)
 	armor_type = /datum/armor/lavaland/drake
 	hoodtype = /obj/item/clothing/head/hood/drake
 	heat_protection_cover = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
@@ -531,8 +467,6 @@
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	inv_hide_flags = HIDEHOLSTER
 	hoodtype = /obj/item/clothing/head/hood/vainglorious
-	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
-	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit)
 
 /obj/item/clothing/suit/storage/hooded/raincoat
 	name = "raincoat"
@@ -542,8 +476,6 @@
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	inv_hide_flags = HIDEHOLSTER
 	hoodtype = /obj/item/clothing/head/hood/raincoat
-	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
-	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/melee/umbrella)
 
 /obj/item/clothing/suit/storage/hooded/rainponcho
 	name = "plastic raincoat"
@@ -552,8 +484,6 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "wcoat", SLOT_ID_LEFT_HAND = "wcoat")
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	hoodtype = /obj/item/clothing/head/hood/rainponcho
-	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
-	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/melee/umbrella)
 
 /obj/item/clothing/suit/storage/hooded/mercy
 	name = "Mercy Robe"
@@ -593,10 +523,11 @@
 		|ACCESSORY_SLOT_ARMOR_M
 		)
 	blood_overlay_type = "armor"
-	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
-	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/projectile/energy,
-	/obj/item/gun/projectile/ballistic, /obj/item/ammo_magazine, /obj/item/melee/baton)
-	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/heavy, /obj/item/clothing/accessory/storage/pouches)
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
+	starting_accessories = list(
+		/obj/item/clothing/accessory/armor/armorplate/heavy,
+		/obj/item/clothing/accessory/storage/pouches,
+	)
 
 /obj/item/clothing/suit/storage/hooded/covertcarrier/can_equip(mob/M, slot, mob/user, flags)
 	. = ..()

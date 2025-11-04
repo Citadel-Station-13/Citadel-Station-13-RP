@@ -117,6 +117,18 @@
 	var/obj/item/worn_inside
 	/// suppress auto inventory hooks in forceMove
 	var/worn_hook_suppressed = FALSE
+	/// Suit storage classes
+	var/suit_storage_class = NONE
+	/// Suit storage classes to allow
+	var/suit_storage_class_allow = NONE
+	/// Suit storage classes to disallow
+	var/suit_storage_class_disallow = NONE
+	/// Suit storage override type-list
+	/// * only for adminbus really
+	VAR_PRIVATE/list/suit_storage_types_allow_override
+	/// Suit storage override type-list
+	/// * only for adminbus really
+	VAR_PRIVATE/list/suit_storage_types_disallow_override
 
 	//* Environmentals *//
 	/// Set this variable to determine up to which temperature (IN KELVIN) the item protects against heat damage. Keep at null to disable protection. Only protects areas set by heat_protection flags.
@@ -175,9 +187,6 @@
 	var/permeability_coefficient = 1
 	/// For electrical admittance/conductance (electrocution checks and shit)
 	var/siemens_coefficient = 1
-	/// Suit storage stuff.
-	// todo: kill with fire
-	var/list/allowed = null
 	// todo: kill with fire
 	/// All items can have an uplink hidden inside, just remember to add the triggers.
 	var/obj/item/uplink/hidden/hidden_uplink = null

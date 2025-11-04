@@ -12,6 +12,7 @@
 		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand.dmi',
 	)
 	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	suit_storage_class = SUIT_STORAGE_CLASS_HARDWEAR
 	damage_force = 10
 	throw_force = 10
 	throw_speed = 1
@@ -419,7 +420,7 @@
 		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand.dmi',
 		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand.dmi',
 	)
-
+	suit_storage_class = SUIT_STORAGE_CLASS_HARDWEAR
 
 	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_MATERIAL = 2)
