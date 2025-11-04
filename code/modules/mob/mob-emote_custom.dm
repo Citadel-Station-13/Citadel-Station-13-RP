@@ -71,4 +71,4 @@
 			hearing_obj.see_emote(src, raw_html, 2)
 	// todo: legacy code
 	if(with_overhead)
-		say_overhead(raw_html, FALSE, GLOB.game_view_radius)
+		say_overhead(raw_html, FALSE, GLOB.game_view_radius, passed_hearing_list = heard)
