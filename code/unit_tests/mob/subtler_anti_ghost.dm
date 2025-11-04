@@ -80,7 +80,7 @@
 	else if(findtext_char(raw_html, send_str_subtler))
 		intended_recipient_heard_subtler = TRUE
 	else
-		Fail("Intended recipient heard something other than the predicted lines.")
+		Fail("Intended recipient heard something other than the predicted lines: [raw_html].")
 
 /datum/unit_test/subtler_anti_ghost_still_works/proc/on_unintended_hear(datum/source, mob/from_mob, raw_html, subtle, anti_ghost, saycode_type)
 	if(from_mob != speaker)
@@ -90,4 +90,4 @@
 	else if(findtext_char(raw_html, send_str_subtler))
 		unintended_recipient_heard_subtler = TRUE
 	else
-		Fail("Unintended recipient heard something other than the predicted lines.")
+		Fail("Unintended recipient heard something other than the predicted lines: [raw_html].")
