@@ -45,10 +45,9 @@
 	emit_custom_emote(raw_html, subtle, anti_ghost, saycode_type, with_overhead)
 
 /mob/observer/dead/process_custom_emote(emote_text, subtle, anti_ghost, saycode_type, with_overhead)
-	. = ..()
-	. = SPAN_DEADSAY(.)
+	. = emote_text
+	. = say_emphasis(.)
+	. = SPAN_DEADSAY(emoji_parse(.))
 
 /mob/observer/dead/emit_custom_emote(raw_html, subtle, anti_ghost, saycode_type, with_overhead)
-	spawn(0)
-		var/emoji_parsed = emoji_parse(raw_html)
-		say_dead_direct(emoji_parsed, src)
+	say_dead_direct(raw_html, src)

@@ -16,7 +16,10 @@
  * * Logging happens here.
  */
 /mob/proc/run_custom_emote(emote_text, subtle, anti_ghost, saycode_type = SAYCODE_TYPE_VISIBLE, datum/event_args/actor/actor, with_overhead)
-	SHOULD_NOT_SLEEP(TRUE)
+	if(stat)
+		// TODO: tooltip with copy link.
+		to_chat(src, SPAN_WARNING("You are unable to emote."))
+		return
 
 	// raw preprocessed text is used
 	var/log_string = "[key_name(src)] ([AREACOORD(src)])[actor?.initiator != src ? " (initiated by [key_name(actor.initiator)] at [AREACOORD(actor.initiator)])" : ""]: [emote_text]"
@@ -40,7 +43,6 @@
  * @return raw HTML
  */
 /mob/proc/process_custom_emote(emote_text, subtle, anti_ghost, saycode_type, with_overhead)
-	SHOULD_NOT_SLEEP(TRUE)
 	. = emote_text
 	. = say_emphasis(.)
 	. = "<b>[src]</b> " + .
@@ -54,7 +56,6 @@
  * Emit a custom emote
  */
 /mob/proc/emit_custom_emote(raw_html, subtle, anti_ghost, saycode_type, with_overhead)
-	SHOULD_NOT_SLEEP(TRUE)
 	var/list/atom/movable/heard = saycode_view_query(subtle ? 1 : GLOB.game_view_radius, TRUE, anti_ghost)
 	// todo: legacy code
 	for(var/atom/movable/hearing in heard)

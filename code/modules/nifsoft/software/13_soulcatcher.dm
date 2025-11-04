@@ -430,7 +430,7 @@
 		return FALSE
 	..()
 
-/mob/living/carbon/brain/caught_soul/subtle_verb(message)
+/mob/living/carbon/brain/caught_soul/subtle_verb()
 	set hidden = TRUE
 	return FALSE
 

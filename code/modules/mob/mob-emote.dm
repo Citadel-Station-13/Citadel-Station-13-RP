@@ -76,15 +76,14 @@
 			return EMOTE_INVOKE_FINISHED
 		if("help")
 			var/list/datum/emote/can_run_emotes = query_emote()
-			var/list/assembled_html = list(
-				"Usable emotes:",
-			)
+			var/list/assembled_html = list()
 			for(var/datum/emote/emote as anything in can_run_emotes)
 				if(islist(emote.bindings))
 					for(var/binding in emote.bindings)
 						assembled_html += SPAN_TOOLTIP_DANGEROUS_HTML("[binding][emote.parameter_description ? " [emote.parameter_description]" : ""]", binding)
 				else
 					assembled_html += SPAN_TOOLTIP_DANGEROUS_HTML("[emote.bindings][emote.parameter_description ? " [emote.parameter_description]" : ""]", emote.bindings)
+			to_chat(src, "Usable emotes: [english_list(assembled_html)]")
 			// TODO: should be FINISHED but we need to route to legacy *help too!
 			return null
 	return null
