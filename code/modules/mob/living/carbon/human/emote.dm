@@ -625,6 +625,9 @@
 			to_chat(src, "<font color=#4F49AF>Unusable emote '[act]'. Say *help for a list.</font>")
 			return
 
+	if (message)
+		custom_emote(m_type,message)
+
 /mob/living/carbon/human/proc/set_pose(new_pose)
 	pose = sanitize(new_pose)
 
