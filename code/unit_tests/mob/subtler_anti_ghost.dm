@@ -6,8 +6,8 @@
 	var/unintended_recipient_heard_subtler = FALSE
 	var/intended_recipient_heard_normal = FALSE
 	var/unintended_recipient_heard_normal = FALSE
-	var/send_str_subtler = "isnt_there_someone_you_forgot_to_ask"
-	var/send_str_normal = "kynde_did_nothing_wrong"
+	var/send_str_subtler = "isnt-there-someone-you-forgot-to-ask"
+	var/send_str_normal = "kynde-did-nothing-wrong"
 
 	var/mob/speaker
 
@@ -58,7 +58,7 @@
 	if(!unintended_recipient_heard_normal)
 		Fail("A ghost [distance] tiles away from the speaker couldn't hear the normal emote")
 
-	var/turf/one_z_away = locate(the_myth_of_consensual_handholding.x, the_myth_of_consensual_handholding.y, the_myth_of_consensual_handholding.z + 1)
+	var/turf/one_z_away = locate(the_myth_of_consensual_handholding.x, the_myth_of_consensual_handholding.y, the_myth_of_consensual_handholding.z - 1)
 	if(!one_z_away)
 		Fail("one_z_away wasn't found")
 	the_myth_of_consensual_handholding.forceMove(one_z_away)
