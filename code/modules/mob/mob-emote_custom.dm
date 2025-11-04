@@ -24,15 +24,16 @@
 		actor = new(src)
 
 	// raw preprocessed text is used
-	var/log_string = "[key_name(src)] ([AREACOORD(src)])[actor?.initiator != src ? " (initiated by [key_name(actor.initiator)] at [AREACOORD(actor.initiator)])" : ""]: [emote_text]"
+	// var/log_string = "[key_name(src)] ([AREACOORD(src)])[actor?.initiator != src ? " (initiated by [key_name(actor.initiator)] at [AREACOORD(actor.initiator)])" : ""]: [emote_text]"
+	var/log_string = "[actor?.initiator != src ? " (initiated by [key_name(actor.initiator)] at [AREACOORD(actor.initiator)]) " : ""][emote_text]"
 
 	if(subtle)
 		if(anti_ghost)
-			log_subtle_anti_ghost(log_string)
+			log_subtle_anti_ghost(log_string, src)
 		else
-			log_subtle(log_string)
+			log_subtle(log_string, src)
 	else
-		log_emote(log_string)
+		log_emote(log_string, src)
 
 	var/raw_html = process_custom_emote(emote_text, subtle, anti_ghost, saycode_type, with_overhead)
 	if(!raw_html)
