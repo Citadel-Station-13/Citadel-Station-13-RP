@@ -22,7 +22,7 @@
 	//* VFX *//
 	// todo: vfx support
 
-/datum/emote/standard/run_emote(datum/event_args/actor/actor, list/arbitrary)
+/datum/emote/standard/run_emote(datum/event_args/actor/actor, list/arbitrary, silent)
 	. = ..()
 	if(!.)
 		return

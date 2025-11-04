@@ -60,3 +60,5 @@ GLOBAL_REAL_LIST(emote_require_bit_descriptors) = list(
 #define EMOTE_PARAMETER_KEY_TARGET "target"
 /// for basic emotes; custom parameter, as tokens
 #define EMOTE_PARAMETER_KEY_CUSTOM_TOKENS "custom-tokens"
+/// resolved target as /atom ref
+#define EMOTE_PARAMETER_KEY_TARGET_RESOLVED "target-resolved"

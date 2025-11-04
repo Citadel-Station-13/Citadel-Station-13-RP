@@ -9,7 +9,7 @@
 	var/raw_key
 	var/raw_params
 	if(spacer != 0)
-		raw_key = copytext_char(act, 1, spacer + 1)
+		raw_key = copytext_char(act, 1, spacer)
 		raw_params = copytext_char(act, spacer + 1)
 	else
 		raw_key = act

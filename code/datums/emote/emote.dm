@@ -231,10 +231,11 @@ GLOBAL_LIST(emote_lookup)
  * @params
  * * actor - actor data
  * * arbitrary - arbitrary processed params
+ * * silent - suppress errors
  *
  * @return pass / fail
  */
-/datum/emote/proc/run_emote(datum/event_args/actor/actor, list/arbitrary)
+/datum/emote/proc/run_emote(datum/event_args/actor/actor, list/arbitrary, silent)
 	return TRUE
 
 /datum/emote/proc/get_mob_context(mob/invoking)

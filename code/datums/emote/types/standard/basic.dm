@@ -144,7 +144,20 @@
 			if(length(tokenized) >= 1)
 				.[EMOTE_PARAMETER_KEY_TARGET] = tokenized[1]
 
-/datum/emote/standard/basic/run_emote(datum/event_args/actor/actor, list/arbitrary)
+/datum/emote/standard/basic/run_emote(datum/event_args/actor/actor, list/arbitrary, silent)
+	var/target_string = arbitrary[EMOTE_PARAMETER_KEY_TARGET]
+	if(target_string)
+		var/mob/resolved
+		for(var/mob/maybe_target in hearers())
+			if(findtext(maybe_target.name, target_string))
+				resolved = maybe_target
+				break
+		if(!resolved)
+			if(!silent)
+				actor?.chat_feedback(SPAN_WARNING("No one around you's named '[target_string]'!"))
+			return FALSE
+		else
+			arbitrary[EMOTE_PARAMETER_KEY_TARGET_RESOLVED] = resolved
 	. = ..()
 	if(!.)
 		return
@@ -152,7 +165,7 @@
 		actor,
 		arbitrary,
 		arbitrary[EMOTE_PARAMETER_KEY_CUSTOM_TOKENS],
-		arbitrary[EMOTE_PARAMETER_KEY_TARGET],
+		arbitrary[EMOTE_PARAMETER_KEY_TARGET_RESOLVED],
 	)
 
 /datum/emote/standard/basic/proc/on_run_emote(datum/event_args/actor/actor, list/arbitrary, list/maybe_custom_param_tokens, atom/maybe_target)
