@@ -77,9 +77,11 @@
 	var/mob/filtered_mobs = list()
 	var/turf/our_loc = get_turf(src)
 	var/use_sfx = subtle ? /datum/soundbyte/talksound/generic_subtle_emote_1 : /datum/soundbyte/talksound/generic_emote_1
+	// todo: cache this or maybe just have a distinction between regular hear and 'observer heard us from far away'?
+	var/max_vocal_cue_dist = world_view_max_number()
 	for(var/mob/M in heard)
 		filtered_mobs += M
-		if(M.get_preference_toggle(/datum/game_preference_toggle/game/vocal_cues))
+		if(M.get_preference_toggle(/datum/game_preference_toggle/game/vocal_cues) && get_dist(M, src) <= max_vocal_cue_dist)
 			M.playsound_local(our_loc, use_sfx, 50, TRUE)
 	if(with_overhead)
 		say_overhead(raw_html, FALSE, GLOB.game_view_radius, passed_hearing_list = filtered_mobs)
