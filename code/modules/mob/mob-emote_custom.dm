@@ -56,10 +56,7 @@
  */
 /mob/proc/emit_custom_emote(raw_html, subtle, anti_ghost, saycode_type, with_overhead)
 	SHOULD_NOT_SLEEP(TRUE)
-	var/raw_html
-
 	var/list/atom/movable/heard = saycode_view_query(subtle ? 1 : GLOB.game_view_radius, TRUE, anti_ghost)
-
 	// todo: legacy code
 	for(var/atom/movable/hearing in heard)
 		if(ismob(hearing))
@@ -69,12 +66,9 @@
 			// TODO: eh for now. vocal cues when?
 			if(subtle)
 				hearing_mob.playsound_local(null, 'sound/effects/subtle_emote.ogg', 75, TRUE)
-
 		else if(isobj(hearing))
 			var/obj/hearing_obj = hearing
 			hearing_obj.see_emote(src, raw_html, 2)
-	#warn impl
-
 	// todo: legacy code
 	if(with_overhead)
 		say_overhead(raw_html, FALSE, GLOB.game_view_radius)

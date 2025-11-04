@@ -23,6 +23,11 @@
 /// * so no four legged animals
 #define EMOTE_CLASS_IS_HUMANOID (1<<1)
 
+GLOBAL_REAL_LIST(emote_class_bit_descriptors) = list(
+	"requires body",
+	"requires humanoid",
+)
+
 //* emote_require's ; more freeform classes that should invoke procs *//
 //* -- This is narrowphase and doesn't exclude emotes from listings, *//
 //*    generally.                                                    *//
@@ -39,6 +44,13 @@
 #define EMOTE_REQUIRE_FREE_HAND (1<<2)
 /// require being able to make sounds at all
 #define EMOTE_REQUIRE_VOCALIZATION (1<<3)
+
+GLOBAL_REAL_LIST(emote_require_bit_descriptors) = list(
+	"requires synthetic speaker",
+	"requires coherent speech",
+	"requires free hand",
+	"requires vocalization",
+)
 
 //* emote arbitrary key-value store key's *//
 

@@ -66,8 +66,6 @@ GLOBAL_LIST(emote_lookup)
 	/// cannot invoke this again for x time
 	var/self_cooldown = 0 SECONDS
 
-#warn impl
-
 /datum/emote/New()
 	// preprocess bindings
 	if(binding_prefix)
@@ -79,45 +77,45 @@ GLOBAL_LIST(emote_lookup)
 
 //* Checks *//
 
-#warn refactor this shit okay
 /**
- * Paired with /mob/proc/filter_usable_emotes()!
- *
  * @params
  * * actor - actor data
  * * arbitrary - arbitrary processed params
- * * only_validity - only check if we're even a valid emote, ignore mobility/require/etc
+ * * out_reasons_fail - out reasons we can't be used right now
  */
-/datum/emote/proc/can_use(datum/event_args/actor/actor, list/arbitrary, only_validity)
+/datum/emote/proc/can_use(datum/event_args/actor/actor, list/arbitrary, list/out_reasons_fail)
 	SHOULD_NOT_OVERRIDE(TRUE)
 
-	var/special_check = can_use_special(actor)
+	var/special_check = can_use_special(actor, arbitrary, out_reasons_fail)
 	if(!isnull(special_check))
 		return special_check
-
-	if(!only_validity && !can_potentially_use())
-	if(only_validity && !((actor.performer.mobility_flags & required_mobility_flags) == required_mobility_flags))
+	var/their_class = actor.performer.get_usable_emote_class()
+	var/their_require = actor.performer.get_usable_emote_require()
+	if((their_class & emote_class) != emote_class)
+		var/missing_class = emote_class & ~their_class
+		if(out_reasons_fail)
+			for(var/i in 1 to length(global.emote_class_bit_descriptors))
+				if(i & missing_class)
+					out_reasons_fail?.Add(global.emote_class_bit_descriptors[i])
 		return FALSE
-	if(!(actor.performer.get_usable_emote_class() & emote_class))
-		return FALSE
-	if(only_validity && !((actor.performer.get_usable_emote_require() & emote_require) == emote_require))
+	if((their_require & emote_require) != emote_require)
+		var/missing_require = emote_require & ~their_require
+		if(out_reasons_fail)
+			for(var/i in 1 to length(global.emote_require_bit_descriptors))
+				if(i & missing_require)
+					out_reasons_fail?.Add(global.emote_require_bit_descriptors[i])
 		return FALSE
 	return TRUE
-
-/datum/emote/proc/can_potentially_use(datum/event_args/actor/actor, use_classes, use_requires)
-	if(isnull(use_classes))
-	if(isnull(use_requires))
-	#warn impl
-
 
 /**
  * @params
  * * actor - (optional) the provided actor
  * * arbitrary - (optional) arbitrary processed params
+ * * out_reasons_fail - out reasons we can't be used right now
  *
  * @return non-null TRUE / FALSE to override [can_use()]
  */
-/datum/emote/proc/can_use_special(datum/event_args/actor/actor, list/arbitrary)
+/datum/emote/proc/can_use_special(datum/event_args/actor/actor, list/arbitrary, list/out_reasons_fail)
 	return
 
 //* Execution *//
@@ -214,9 +212,15 @@ GLOBAL_LIST(emote_lookup)
  *
  * Tries to run an emote, if someone's allowed to.
  */
-/datum/emote/proc/try_run_emote(datum/event_args/actor/actor, list/arbitrary)
-	#warn impl
-	#warn tokenize
+/datum/emote/proc/try_run_emote(datum/event_args/actor/actor, list/arbitrary, silent)
+	var/list/why_not = list()
+	var/can_run = can_run(actor, arbitrary, why_not)
+	if(!can_run)
+		if(!silent)
+			actor?.chat_feedback(SPAN_WARNING("You can't '[name]' right now; ([english_list(why_not, "unknown reason")])"))
+		return FALSE
+	run_emote(actor, arbitrary)
+	return TRUE
 
 /**
  * Blocking proc.
