@@ -108,8 +108,8 @@ GLOBAL_LIST_EMPTY(ghost_list)
 	plane = OBSERVER_PLANE //Why doesn't the var above work...???
 	add_verb(src, /mob/observer/dead/proc/dead_tele)
 
-	var/turf/T
 	if(ismob(body))
+		var/turf/T
 		T = get_turf(body)				//Where is the body located?
 		attack_log = body.attack_log	//preserve our attack logs by copying them to our ghost
 
@@ -142,11 +142,11 @@ GLOBAL_LIST_EMPTY(ghost_list)
 
 		mind = body.mind	//we don't transfer the mind but we keep a reference to it.
 
-	if(!T)
-		T = SSjob.get_latejoin_spawnpoint()
-	if(!T)
-		T = locate(1,1,1)
-	forceMove(T)
+		if(!T)
+			T = SSjob.get_latejoin_spawnpoint()
+		if(!T)
+			T = locate(1,1,1)
+		forceMove(T)
 
 	if(!name) //To prevent nameless ghosts
 		name = capitalize(pick(GLOB.first_names_male)) + " " + capitalize(pick(GLOB.last_names))

@@ -153,4 +153,4 @@
 	// clear typing indicator
 	set_typing_indicator(FALSE)
 	// perform emote
-	run_custom_emote(message, FALSE, TRUE, SAYCODE_TYPE_ALWAYS)
+	run_custom_emote(message, TRUE, TRUE, SAYCODE_TYPE_ALWAYS)

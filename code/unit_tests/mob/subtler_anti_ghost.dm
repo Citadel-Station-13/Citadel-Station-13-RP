@@ -44,7 +44,10 @@
 		Fail("A ghost next to the speaker couldn't hear the normal emote")
 
 	var/distance = world_view_max_number() + 2
-	the_myth_of_consensual_handholding.forceMove(locate(the_myth_of_consensual_handholding.x + distance, the_myth_of_consensual_handholding.y + distance, the_myth_of_consensual_handholding.z))
+	var/turf/some_distance_away = locate(the_myth_of_consensual_handholding.x + distance, the_myth_of_consensual_handholding.y + distance, the_myth_of_consensual_handholding.z)
+	if(!some_distance_away)
+		Fail("some_distance_away wasn't found")
+	the_myth_of_consensual_handholding.forceMove(some_distance_away)
 	intended_recipient_heard_normal = intended_recipient_heard_subtler = FALSE
 	unintended_recipient_heard_normal = unintended_recipient_heard_subtler = FALSE
 	speaker.me_verb(send_str_normal)
@@ -55,7 +58,10 @@
 	if(!unintended_recipient_heard_normal)
 		Fail("A ghost [distance] tiles away from the speaker couldn't hear the normal emote")
 
-	the_myth_of_consensual_handholding.forceMove(locate(the_myth_of_consensual_handholding.x, the_myth_of_consensual_handholding.y, the_myth_of_consensual_handholding.z + 1))
+	var/turf/one_z_away = locate(the_myth_of_consensual_handholding.x, the_myth_of_consensual_handholding.y, the_myth_of_consensual_handholding.z + 1)
+	if(!one_z_away)
+		Fail("one_z_away wasn't found")
+	the_myth_of_consensual_handholding.forceMove(one_z_away)
 	intended_recipient_heard_normal = intended_recipient_heard_subtler = FALSE
 	unintended_recipient_heard_normal = unintended_recipient_heard_subtler = FALSE
 	speaker.me_verb(send_str_normal)

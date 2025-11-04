@@ -27,6 +27,10 @@
 	// var/log_string = "[key_name(src)] ([AREACOORD(src)])[actor?.initiator != src ? " (initiated by [key_name(actor.initiator)] at [AREACOORD(actor.initiator)])" : ""]: [emote_text]"
 	var/log_string = "[actor?.initiator != src ? " (initiated by [key_name(actor.initiator)] at [AREACOORD(actor.initiator)]) " : ""][emote_text]"
 
+	if(anti_ghost)
+		// implicit
+		subtle = TRUE
+
 	if(subtle)
 		if(anti_ghost)
 			log_subtle_anti_ghost(log_string, src)
@@ -66,8 +70,6 @@
 			var/mob/hearing_mob = hearing
 			SEND_SIGNAL(hearing_mob, COMSIG_MOB_ON_RECEIVE_CUSTOM_EMOTE, src, raw_html, subtle, anti_ghost, saycode_type)
 			hearing_mob.show_message(raw_html, saycode_type)
-			if(subtle)
-				hearing_mob.playsound_local(null, 'sound/effects/subtle_emote.ogg', 75, TRUE)
 		else if(isobj(hearing))
 			var/obj/hearing_obj = hearing
 			hearing_obj.see_emote(src, raw_html, 2)
