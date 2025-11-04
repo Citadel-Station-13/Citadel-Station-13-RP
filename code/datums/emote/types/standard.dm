@@ -22,8 +22,10 @@
 	//* VFX *//
 	// todo: vfx support
 
-/datum/emote/standard/basic/run_emote(datum/event_args/actor/actor, list/arbitrary)
-	..()
+/datum/emote/standard/run_emote(datum/event_args/actor/actor, list/arbitrary)
+	. = ..()
+	if(!.)
+		return
 	var/sfx = get_sfx(actor, arbitrary)
 	play_sfx(actor, arbitrary, sfx)
 

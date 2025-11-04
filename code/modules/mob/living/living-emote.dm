@@ -3,7 +3,7 @@
 
 /mob/living/get_usable_emote_require()
 	. = NONE
-	if(muteness || is_muzzled())
+	if(silent || is_muzzled())
 	else
 		. |= EMOTE_REQUIRE_COHERENT_SPEECH | EMOTE_REQUIRE_VOCALIZATION
 	if(isSynthetic())

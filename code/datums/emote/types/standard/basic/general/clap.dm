@@ -12,7 +12,7 @@
 		'sound/voice/clap3.ogg',
 		'sound/voice/clap4.ogg',
 	)
-	sfx_volume = 50
+	sfx_volume = 75
 	feedback_default = "<b>%%USER%%</b> claps."
 	feedback_default_targeted = "<b>%%USER%%</b> claps for %%TARGET%%."
 	feedback_default_audible = "You hear clapping."
@@ -24,7 +24,7 @@
 	bindings = "clap-slow"
 	emote_class = EMOTE_CLASS_IS_HUMANOID
 	sfx = 'sound/voice/golfclap.ogg'
-	sfx_volume = 50
+	sfx_volume = 75
 	feedback_default = "<b>%%USER%%</b> slowly claps."
 	feedback_default_targeted = "<b>%%USER%%</b> slowly claps for %%TARGET%%."
 	feedback_default_audible = "You hear sarcastic clapping."

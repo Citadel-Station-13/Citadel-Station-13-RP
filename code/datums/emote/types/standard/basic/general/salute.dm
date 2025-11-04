@@ -7,7 +7,7 @@
 	bindings = "salute"
 	emote_class = EMOTE_CLASS_IS_HUMANOID
 	sfx = 'sound/misc/salute.ogg'
-	sfx_volume = 30
+	sfx_volume = 60
 	target_allowed = TRUE
 	feedback_default = "<b>%%USER%%</b> salutes."
 	feedback_default_targeted = "<b>%%USER%%</b> salutes to %%TARGET%%."

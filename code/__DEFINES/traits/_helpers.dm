@@ -51,11 +51,11 @@
 		: FALSE)
 #define HAS_TRAIT_NOT_FROM(target, trait, source) (target.status_traits ? (target.status_traits[trait] ? (length(target.status_traits[trait] - source) > 0) : FALSE) : FALSE)
 
-/datum/proc/___callbackaddtrait(datum/target, trait, source)
-	ADD_TRAIT(target, trait, source)
+/datum/proc/___callbackaddtrait(trait, source)
+	ADD_TRAIT(src, trait, source)
 
-/datum/proc/___callbackdeltrait(datum/target, trait, source)
-	REMOVE_TRAIT(target, trait, source)
+/datum/proc/___callbackdeltrait(trait, source)
+	REMOVE_TRAIT(src, trait, source)
 
 /// trait registration defines
 /// due to how defines work, this goes AFTER the trait define!

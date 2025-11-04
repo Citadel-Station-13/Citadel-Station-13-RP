@@ -95,14 +95,14 @@ GLOBAL_LIST(emote_lookup)
 		var/missing_class = emote_class & ~their_class
 		if(out_reasons_fail)
 			for(var/i in 1 to length(global.emote_class_bit_descriptors))
-				if(i & missing_class)
+				if((1<<(i - 1)) & missing_class)
 					out_reasons_fail?.Add(global.emote_class_bit_descriptors[i])
 		return FALSE
 	if((their_require & emote_require) != emote_require)
 		var/missing_require = emote_require & ~their_require
 		if(out_reasons_fail)
 			for(var/i in 1 to length(global.emote_require_bit_descriptors))
-				if(i & missing_require)
+				if((1<<(i - 1)) & missing_require)
 					out_reasons_fail?.Add(global.emote_require_bit_descriptors[i])
 		return FALSE
 	return TRUE
