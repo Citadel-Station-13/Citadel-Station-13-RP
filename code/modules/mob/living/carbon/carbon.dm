@@ -1,5 +1,5 @@
 /mob/living/carbon
-	emote_class = EMOTE_CLASS_REQUIRES_BODY | EMOTE_CLASS_REQUIRES_HUMANOID
+	emote_class = EMOTE_CLASS_IS_BODY | EMOTE_CLASS_IS_HUMANOID
 
 	//* Organs, Reagents, Biologies *//
 	/// Our blood holder.

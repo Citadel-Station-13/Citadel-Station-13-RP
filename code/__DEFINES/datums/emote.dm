@@ -18,10 +18,10 @@
 
 /// require body
 /// * so no brains
-#define EMOTE_CLASS_REQUIRES_BODY (1<<0)
+#define EMOTE_CLASS_IS_BODY (1<<0)
 /// requires humanoid body
 /// * so no four legged animals
-#define EMOTE_CLASS_REQUIRES_HUMANOID (1<<1)
+#define EMOTE_CLASS_IS_HUMANOID (1<<1)
 
 //* emote_require's ; more freeform classes that should invoke procs *//
 //* -- This is narrowphase and doesn't exclude emotes from listings, *//

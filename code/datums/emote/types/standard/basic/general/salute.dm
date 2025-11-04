@@ -5,7 +5,7 @@
 	name = "Salute"
 	desc = "Salute at someone."
 	bindings = "salute"
-	emote_class = EMOTE_CLASS_REQUIRES_HUMANOID
+	emote_class = EMOTE_CLASS_IS_HUMANOID
 	sfx = 'sound/misc/salute.ogg'
 	sfx_volume = 30
 	target_allowed = TRUE

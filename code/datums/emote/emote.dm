@@ -23,6 +23,8 @@ GLOBAL_LIST(emote_lookup)
 				break
 			GLOB.emote_lookup[binding] = instance
 
+	tim_sort(GLOB.emotes, /proc/cmp_name_asc)
+
 /proc/fetch_emote(key) as /datum/emote
 	return GLOB.emote_lookup[key]
 
@@ -60,6 +62,9 @@ GLOBAL_LIST(emote_lookup)
 	var/emote_require = NONE
 	/// mobility flags needed to invoke (all of them are if set)
 	var/required_mobility_flags = MOBILITY_IS_CONSCIOUS
+
+	/// cannot invoke this again for x time
+	var/self_cooldown = 0 SECONDS
 
 #warn impl
 

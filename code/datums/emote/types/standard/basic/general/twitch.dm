@@ -5,7 +5,7 @@
 	name = "Twitch"
 	desc = "Twitch."
 	bindings = "twitch"
-	emote_class = EMOTE_CLASS_REQUIRES_HUMANOID
+	emote_class = EMOTE_CLASS_IS_HUMANOID
 	feedback_default = "<b>%%USER%%</b> twitches."
 	feedback_saycode_type = SAYCODE_TYPE_VISIBLE
 
@@ -13,6 +13,6 @@
 	name = "Twitch Violently"
 	desc = "Violently twitch."
 	bindings = "twitch-violently"
-	emote_class = EMOTE_CLASS_REQUIRES_HUMANOID
+	emote_class = EMOTE_CLASS_IS_HUMANOID
 	feedback_default = "<b>%%USER%%</b> twitches violently."
 	feedback_saycode_type = SAYCODE_TYPE_VISIBLE

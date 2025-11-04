@@ -25,6 +25,10 @@
 	var/datum/emote/resolved = fetch_emote(key)
 	if(!resolved)
 		return EMOTE_INVOKE_INVALID
+	if(HAS_TRAIT(src, TRAIT_EMOTE_GLOBAL_COOLDOWN))
+		return EMOTE_INVOKE_ERRORED
+	if(HAS_TRAIT(src, TRAIT_EMOTE_COOLDOWN(resolved.type)))
+		return EMOTE_INVOKE_ERRORED
 	var/result = process_emote(resolved, parameter_string, actor)
 	if(result)
 		return EMOTE_INVOKE_FINISHED
@@ -47,7 +51,11 @@
  */
 /mob/proc/process_emote(datum/emote/emote, parameter_string, datum/event_args/actor/actor)
 	var/list/arbitrary = emote.process_parameters(parameter_string, actor)
-	return emote.try_run_emote(actor, arbitrary)
+	ADD_TRAIT(src, TRAIT_EMOTE_GLOBAL_COOLDOWN, "__EMOTE__")
+	REMOVE_TRAIT_IN(src, TRAIT_EMOTE_GLOBAL_COOLDOWN, "__EMOTE__", 0.25 SECONDS)
+	ADD_TRAIT(src, TRAIT_EMOTE_COOLDOWN(emote.type), "__EMOTE__")
+	. = emote.try_run_emote(actor, arbitrary)
+	REMOVE_TRAIT_IN(src, TRAIT_EMOTE_COOLDOWN(emote.type), "__EMOTE__", emote.self_cooldown)
 
 /**
  * Process special overrides
@@ -66,6 +74,19 @@
 				return EMOTE_INVOKE_ERRORED
 			run_custom_emote(raw_params, actor = actor, with_overhead = TRUE)
 			return EMOTE_INVOKE_FINISHED
+		if("help")
+			var/list/datum/emote/can_run_emotes = query_emote()
+			var/list/assembled_html = list(
+				"Usable emotes:",
+			)
+			for(var/datum/emote/emote as anything in can_run_emotes)
+				if(islist(emote.bindings))
+					for(var/binding in emote.bindings)
+						assembled_html += SPAN_TOOLTIP_DANGEROUS_HTML("[binding][emote.parameter_description ? " [emote.parameter_description]" : ""]", binding)
+				else
+					assembled_html += SPAN_TOOLTIP_DANGEROUS_HTML("[emote.bindings][emote.parameter_description ? " [emote.parameter_description]" : ""]", emote.bindings)
+			// TODO: should be FINISHED but we need to route to legacy *help too!
+			return null
 	return null
 
 /**
@@ -87,6 +108,7 @@
 	RETURN_TYPE(/list)
 	return list(
 		"me" = "Input a custom emote for your character to perform.",
+		"help" = "Get a list of usable emotes.",
 	)
 
 /**

@@ -22,7 +22,7 @@
 	/// running emotes, associated to context the emote can set
 	var/list/datum/emote/emotes_running
 	/// our default emote classes
-	var/emote_class = EMOTE_CLASS_REQUIRES_BODY
+	var/emote_class = EMOTE_CLASS_IS_BODY
 
 	//* Impairments *//
 	/// active feign_impairment types

@@ -3,7 +3,7 @@
 
 /datum/emote/standard/basic/species
 	abstract_type = /datum/emote/standard/basic/species
-	emote_class = EMOTE_CLASS_REQUIRES_HUMANOID
+	emote_class = EMOTE_CLASS_IS_HUMANOID
 	/// required species id or list of ids
 	///
 	/// * these are ids, not uids.

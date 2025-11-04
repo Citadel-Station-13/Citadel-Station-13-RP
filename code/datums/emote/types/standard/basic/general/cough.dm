@@ -2,36 +2,39 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/emote/standard/basic/general/cough
-	emote_class = EMOTE_CLASS_REQUIRES_HUMANOID
+	emote_class = EMOTE_CLASS_IS_HUMANOID
+	name = "Cough"
+	desc = "Cough."
+	bindings = "cough"
+	emote_require = EMOTE_REQUIRE_VOCALIZATION
+	feedback_default = "<b>%%USER%%</b> coughs."
+	feedback_default_audible = "You hear a cough."
+	feedback_special_miming = "<b>%%USER%%</b> appears to cough."
+	feedback_special_muzzled = "<b>%%USER%%</b> makes a strong noise."
+	feedback_special_muzzled_audible = "You hear a strong noise."
 
-#warn impl
-			// if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
-			// 	message = "appears to cough!"
-			// 	m_type = 1
-			// else
-			// 	if(!muzzled)
-			// 		var/robotic = 0
-			// 		m_type = 2
-			// 		if(should_have_organ(O_LUNGS))
-			// 			var/obj/item/organ/internal/lungs/L = internal_organs_by_name[O_LUNGS]
-			// 			if(L && L.robotic == 2)	//Hard-coded to 2, incase we add lifelike robotic lungs
-			// 				robotic = 1
-			// 		if(!robotic)
-			// 			message = "coughs!"
-			// 			if(get_gender() == FEMALE)
-			// 				if(species.female_cough_sounds)
-			// 					playsound(src, pick(species.female_cough_sounds), 120)
-			// 			else
-			// 				if(species.male_cough_sounds)
-			// 					playsound(src, pick(species.male_cough_sounds), 120)
-			// 		else
-			// 			message = "emits a robotic cough"
-			// 			var/use_sound
-			// 			if(get_gender() == FEMALE)
-			// 				use_sound = pick('sound/effects/mob_effects/f_machine_cougha.ogg','sound/effects/mob_effects/f_machine_coughb.ogg')
-			// 			else
-			// 				use_sound = pick('sound/effects/mob_effects/m_machine_cougha.ogg','sound/effects/mob_effects/m_machine_coughb.ogg', 'sound/effects/mob_effects/m_machine_coughc.ogg')
-			// 			playsound(src.loc, use_sound, 50, 0)
-			// 	else
-			// 		message = "makes a strong noise."
-			// 		m_type = 2
+/datum/emote/standard/basic/general/cough/get_sfx(datum/event_args/actor/actor, list/arbitrary)
+	var/robotic = FALSE
+	var/mob/casted_mob = actor.performer
+	if(iscarbon(casted_mob))
+		var/mob/living/carbon/casted_carbon = casted_mob
+		var/obj/item/organ/internal/maybe_lungs = casted_carbon.organs_by_name[O_LUNGS]
+		if(maybe_lungs.robotic >= ORGAN_ROBOT)
+			robotic = TRUE
+	else
+		if(casted_mob.isSynthetic())
+			robotic = TRUE
+	// yes another check because this will be modularized out later to a gender/robotic lookup,
+	// then a sound lookup.
+	if(iscarbon(casted_mob))
+		var/mob/living/carbon/casted_carbon = casted_mob
+		if(robotic)
+			if(casted_carbon.get_gender() == FEMALE)
+				return 'sound/effects/mob_effects/m_machine_cougha.ogg'
+			else
+				return 'sound/effects/mob_effects/f_machine_cougha.ogg'
+		else
+			if(casted_carbon.get_gender() == FEMALE)
+				return casted_carbon.species?.female_cough_sounds
+			else
+				return casted_carbon.species?.male_cough_sounds
