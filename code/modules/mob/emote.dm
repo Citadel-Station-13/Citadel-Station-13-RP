@@ -59,23 +59,6 @@
 
 /mob/proc/emote_dead(var/message)
 
-	if(client.prefs.muted & MUTE_DEADCHAT)
-		to_chat(src, "<span class='danger'>You cannot send deadchat emotes (muted).</span>")
-		return
-
-	if(!get_preference_toggle(/datum/game_preference_toggle/chat/dsay))
-		to_chat(src, "<span class='danger'>You have deadchat muted.</span>")
-		return
-
-	if(!src.client.holder)
-		if(!config_legacy.dsay_allowed)
-			to_chat(src, "<span class='danger'>Deadchat is globally muted.</span>")
-			return
-
-	if(SSbans.t_is_role_banned_ckey(ckey, role = BAN_ROLE_OOC))
-		to_chat(src, SPAN_WARNING("You are banned from OOC and deadchat."))
-		return
-
 	var/input
 	if(!message)
 		input = sanitize_or_reflect(input(src, "Choose an emote to display.") as text|null, src) // Reflect too long messages, within reason
