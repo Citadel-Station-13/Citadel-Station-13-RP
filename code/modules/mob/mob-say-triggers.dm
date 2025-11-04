@@ -82,7 +82,7 @@
 	me_verb(message)
 
 /mob/verb/me_verb(message as message)
-	set name = "Emote"
+	set name = "Me"
 	set desc = "Emote to people in view."
 	set category = VERB_CATEGORY_IC
 
@@ -93,7 +93,7 @@
 	// clear typing indicator
 	set_typing_indicator(FALSE)
 	// perform emote
-	run_custom_emote(message, FALSE, FALSE)
+	run_custom_emote(message, FALSE, FALSE, SAYCODE_TYPE_ALWAYS, with_overhead = TRUE)
 
 //* Subtle Emote *//
 
@@ -112,7 +112,7 @@
 	subtle_verb(message)
 
 /mob/verb/subtle_verb(message as message)
-	set name = "Subtle Emote"
+	set name = "Subtle"
 	set desc = "Emote to people within 1 tile (3x3) of (or inside) yourself."
 	set category = VERB_CATEGORY_IC
 
@@ -123,7 +123,7 @@
 	// clear typing indicator
 	set_typing_indicator(FALSE)
 	// perform emote
-	run_custom_emote(message, TRUE, FALSE)
+	run_custom_emote(message, TRUE, FALSE, SAYCODE_TYPE_ALWAYS)
 
 //* Subtler Anti Ghost Emote *//
 
@@ -142,7 +142,7 @@
 	subtler_anti_ghost_verb(message)
 
 /mob/verb/subtler_anti_ghost_verb(message as message)
-	set name = "Subtler Anti-Ghost Emote"
+	set name = "Subtler Anti-Ghost"
 	set desc = "Emote to people within 1 tile (3x3) of (or inside) yourself. Ghosts cannot see this."
 	set category = VERB_CATEGORY_IC
 
@@ -153,4 +153,4 @@
 	// clear typing indicator
 	set_typing_indicator(FALSE)
 	// perform emote
-	run_custom_emote(message, FALSE, TRUE)
+	run_custom_emote(message, FALSE, TRUE, SAYCODE_TYPE_ALWAYS)

@@ -20,6 +20,8 @@
 		// TODO: tooltip with copy link.
 		to_chat(src, SPAN_WARNING("You are unable to emote."))
 		return
+	if(isnull(actor))
+		actor = new(src)
 
 	// raw preprocessed text is used
 	var/log_string = "[key_name(src)] ([AREACOORD(src)])[actor?.initiator != src ? " (initiated by [key_name(actor.initiator)] at [AREACOORD(actor.initiator)])" : ""]: [emote_text]"
