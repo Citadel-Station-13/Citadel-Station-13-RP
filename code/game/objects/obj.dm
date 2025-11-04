@@ -13,8 +13,6 @@
 	//? Flags
 	/// object flags, see __DEFINES/_flags/obj_flags.dm
 	var/obj_flags = OBJ_MELEE_TARGETABLE | OBJ_RANGE_TARGETABLE
-	/// ONLY FOR MAPPING: Sets flags from a string list, handled in Initialize. Usage: set_obj_flags = "OBJ_EMAGGED;!CAN_BE_HIT" to set OBJ_EMAGGED and clear CAN_BE_HIT.
-	var/set_obj_flags
 
 	//? Access - see [modules/jobs/access.dm]
 	/// If set, all of these accesses are needed to access this object.
@@ -264,15 +262,6 @@
 			init_material_parts()
 	if(hides_underfloor != OBJ_UNDERFLOOR_UNSUPPORTED && isturf(loc))
 		initialize_hiding_underfloor(mapload)
-	if (set_obj_flags)
-		var/flagslist = splittext(set_obj_flags,";")
-		var/list/string_to_objflag = GLOB.bitfields["obj_flags"]
-		for (var/flag in flagslist)
-			if(flag[1] == "!")
-				flag = copytext(flag, length(flag[1]) + 1) // Get all but the initial !
-				obj_flags &= ~string_to_objflag[flag]
-			else
-				obj_flags |= string_to_objflag[flag]
 
 /obj/Destroy()
 	for(var/datum/prototype/material_trait/trait as anything in material_traits)

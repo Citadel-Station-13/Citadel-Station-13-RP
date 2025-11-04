@@ -15,6 +15,7 @@
 	attack_verb = list("robusted")
 	drop_sound = 'sound/items/drop/toolbox.ogg'
 	pickup_sound = 'sound/items/pickup/toolbox.ogg'
+	suit_storage_class = SUIT_STORAGE_CLASS_HARDWEAR
 
 /obj/item/storage/toolbox/emergency
 	name = "emergency toolbox"

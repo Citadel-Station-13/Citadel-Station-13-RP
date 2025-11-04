@@ -10,8 +10,6 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "overalls", SLOT_ID_LEFT_HAND = "overalls")
 	blood_overlay_type = "armor"
 	body_cover_flags = 0
-	allowed = list (/obj/item/reagent_containers/spray/plantbgone, /obj/item/plant_analyzer, /obj/item/seeds,
-	/obj/item/reagent_containers/glass/bottle, /obj/item/material/minihoe)
 
 /obj/item/clothing/suit/storage/apron/white
 	name = "white apron"
@@ -43,7 +41,6 @@
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	inv_hide_flags = HIDEHOLSTER
 	hoodtype = /obj/item/clothing/head/chaplain_hood
-	allowed = list (/obj/item/storage/bible)
 
 //Chaplain but spookier
 /obj/item/clothing/suit/storage/hooded/chaplain_hoodie/whiteout
@@ -71,7 +68,6 @@
 	permeability_coefficient = 0.50
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
 	inv_hide_flags = HIDETIE|HIDEHOLSTER
-	allowed = list (/obj/item/material/knife)
 
 //Chef
 /obj/item/clothing/suit/chef/classic
@@ -115,9 +111,6 @@
 	blood_overlay_type = "coat"
 	body_cover_flags = UPPER_TORSO|ARMS
 	inv_hide_flags = HIDEHOLSTER
-	allowed = list(/obj/item/gun/projectile/ballistic/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight, /obj/item/gun/projectile/energy, /obj/item/gun/projectile/ballistic, /obj/item/ammo_magazine,
-	/obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/handcuffs, /obj/item/storage/fancy/cigarettes, /obj/item/flame/lighter,
-	/obj/item/tape_recorder, /obj/item/uv_light)
 	armor_type = /datum/armor/station/light
 
 /obj/item/clothing/suit/storage/det_trench/grey
@@ -132,9 +125,6 @@
 	desc = "A forensics technician jacket."
 	body_cover_flags = UPPER_TORSO|ARMS
 	inv_hide_flags = HIDEHOLSTER
-	allowed = list(/obj/item/gun/projectile/ballistic/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight, /obj/item/gun/projectile/energy, /obj/item/gun/projectile/ballistic, /obj/item/ammo_magazine,
-	/obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/handcuffs, /obj/item/storage/fancy/cigarettes, /obj/item/flame/lighter,
-	/obj/item/tape_recorder, /obj/item/uv_light)
 	armor_type = /datum/armor/station/light
 
 /obj/item/clothing/suit/storage/forensics/red
@@ -165,9 +155,6 @@
 	icon_state = "agent_jacket"
 	body_cover_flags = UPPER_TORSO|ARMS
 	inv_hide_flags = HIDEHOLSTER
-	allowed = list(/obj/item/gun/projectile/ballistic/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight, /obj/item/gun/projectile/energy, /obj/item/gun/projectile/ballistic, /obj/item/ammo_magazine,
-	/obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/handcuffs, /obj/item/storage/fancy/cigarettes, /obj/item/flame/lighter,
-	/obj/item/tape_recorder, /obj/item/uv_light)
 	armor_type = /datum/armor/station/light
 
 //Engineering
@@ -176,9 +163,6 @@
 	desc = "A high-visibility vest used in work zones."
 	icon_state = "hazard"
 	blood_overlay_type = "armor"
-	allowed = list (/obj/item/atmos_analyzer, /obj/item/flashlight, /obj/item/multitool, /obj/item/pipe_painter, /obj/item/radio, /obj/item/t_scanner,
-	/obj/item/tool/crowbar, /obj/item/tool/screwdriver, /obj/item/weldingtool, /obj/item/tool/wirecutters, /obj/item/tool/wrench, /obj/item/tank/emergency/oxygen,
-	/obj/item/clothing/mask/gas, /obj/item/barrier_tape_roll/engineering)
 	body_cover_flags = UPPER_TORSO
 	worth_intrinsic = 50
 
@@ -215,8 +199,6 @@
 	icon_state = "fr_jacket"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "fr_jacket", SLOT_ID_LEFT_HAND = "fr_jacket")
 	blood_overlay_type = "armor"
-	allowed = list(/obj/item/stack/medical, /obj/item/reagent_containers/dropper, /obj/item/reagent_containers/hypospray, /obj/item/reagent_containers/syringe,
-	/obj/item/healthanalyzer, /obj/item/flashlight, /obj/item/radio, /obj/item/tank/emergency/oxygen)
 	body_cover_flags = UPPER_TORSO|ARMS
 
 /obj/item/clothing/suit/storage/toggle/fr_jacket/ems
@@ -237,9 +219,6 @@
 	icon_state = "surgical"
 	blood_overlay_type = "armor"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
-	allowed = list(/obj/item/stack/medical, /obj/item/reagent_containers/dropper, /obj/item/reagent_containers/hypospray, /obj/item/reagent_containers/syringe, \
-	/obj/item/healthanalyzer, /obj/item/flashlight, /obj/item/radio, /obj/item/tank/emergency/oxygen,/obj/item/surgical/scalpel,/obj/item/surgical/retractor,/obj/item/surgical/hemostat, \
-	/obj/item/surgical/cautery,/obj/item/surgical/bonegel,/obj/item/surgical/FixOVein)
 
 /obj/item/clothing/suit/toggle/labcoat/paramedic
 	name = "paramedic vest"
@@ -285,8 +264,3 @@
 	icon = 'icons/map_assets/southern_cross/obj/sc_suits.dmi'
 	armor_type = /datum/armor/medical/coat/field_medic
 	valid_accessory_slots = (ACCESSORY_SLOT_INSIGNIA)
-	allowed = list (/obj/item/gun,/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
-	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/atmos_analyzer,/obj/item/stack/medical,
-	/obj/item/dnainjector,/obj/item/reagent_containers/dropper,/obj/item/reagent_containers/syringe,/obj/item/reagent_containers/hypospray,
-	/obj/item/healthanalyzer,/obj/item/reagent_containers/glass/bottle,/obj/item/reagent_containers/glass/beaker,
-	/obj/item/reagent_containers/pill,/obj/item/storage/pill_bottle)

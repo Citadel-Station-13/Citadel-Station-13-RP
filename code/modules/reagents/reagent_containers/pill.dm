@@ -11,6 +11,7 @@
 	drop_sound = 'sound/items/drop/food.ogg'
 	pickup_sound = 'sound/items/pickup/food.ogg'
 	rad_flags = RAD_NO_CONTAMINATE
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
 
 	possible_transfer_amounts = null
 	w_class = WEIGHT_CLASS_TINY

@@ -71,6 +71,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	max_combined_volume = WEIGHT_VOLUME_NORMAL * 7
 	insertion_whitelist = list(/obj/item/inflatable)
+	suit_storage_class = SUIT_STORAGE_CLASS_HARDWEAR
 
 	starts_with = list(
 		/obj/item/inflatable = 4,

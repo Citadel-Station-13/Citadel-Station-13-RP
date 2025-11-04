@@ -12,6 +12,7 @@
 	drop_sound = 'sound/items/drop/gun.ogg'
 	pickup_sound = 'sound/items/pickup/gun.ogg'
 	worn_render_flags = NONE
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 
 	/// loaded vial
 	var/obj/item/reagent_containers/glass/hypovial/loaded
