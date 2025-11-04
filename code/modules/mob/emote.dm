@@ -56,20 +56,3 @@
 		message = "<span class='emote'><B>[src]</B>[nospace ? "" : " "][input]</span>"
 	else
 		return
-
-/mob/proc/emote_dead(var/message)
-
-	var/input
-	if(!message)
-		input = sanitize_or_reflect(input(src, "Choose an emote to display.") as text|null, src) // Reflect too long messages, within reason
-	else
-		input = message
-
-	input = emoji_parse(say_emphasis(input))
-
-	if(input)
-		log_ghostemote(input, src)
-		if(!invisibility) //If the ghost is made visible by admins or cult. And to see if the ghost has toggled its own visibility, as well. -Mech
-			visible_message(SPAN_DEADSAY("<B>[src]</B> [input]"))
-		else
-			say_dead_direct(input, src)
