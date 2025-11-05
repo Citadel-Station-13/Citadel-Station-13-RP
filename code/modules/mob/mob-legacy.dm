@@ -19,7 +19,6 @@
 		else
 			// mind is not ours, null it out
 			mind = null
-	return ..()
 
 /**
  * Generate the tag for this mob

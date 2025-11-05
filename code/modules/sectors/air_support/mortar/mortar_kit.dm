@@ -17,6 +17,15 @@
 		mortar = new mortar_type
 	return ..()
 
+/**
+ * Creates deployed.
+ * * Calling this multiple times is undefined behavior.
+ */
+/obj/item/mortar_kit/proc/move_into_deployed(turf/location) as /obj/machinery/mortar
+	PROTECTED_PROC(TRUE)
+	mortar.forceMove(location)
+	mortar = null
+
 /obj/item/mortar_kit/proc/deploy(turf/location)
 
 /obj/item/mortar_kit/proc/user_deploy(turf/location, datum/event_args/actor/actor, delay_mod = 1)

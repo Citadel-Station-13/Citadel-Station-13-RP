@@ -60,6 +60,15 @@
 	#warn impl
 
 /obj/machinery/mortar/proc/collapse(atom/new_loc) as /obj/item/mortar_kit
+	var/obj/item/mortar_kit/creating = to_collapsed(new_loc)
+
+/**
+ * Creates collapsed
+ * * Calling this multiple times is undefined behavior.
+ */
+/obj/machinery/mortar/proc/move_into_collapsed(atom/new_loc) as /obj/item/mortar_kit
+	PROTECTED_PROC(TRUE)
+	ASSERT(!istype(loc, /obj/item/mortar_kit))
 	var/obj/item/mortar_kit/creating = new /obj/item/mortar_kit(new_loc, TRUE)
 	creating.mortar = src
 	forceMove(creating)
