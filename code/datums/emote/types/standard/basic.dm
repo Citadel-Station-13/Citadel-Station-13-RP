@@ -153,7 +153,7 @@
 	if(target_string)
 		var/mob/resolved
 		for(var/mob/maybe_target in hearers())
-			if(maybe_target == src && !target_allow_self)
+			if(maybe_target == actor.performer && !target_allow_self)
 				continue
 			if(findtext(maybe_target.name, target_string))
 				resolved = maybe_target

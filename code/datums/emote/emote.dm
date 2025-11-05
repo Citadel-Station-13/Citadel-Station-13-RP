@@ -208,7 +208,7 @@ GLOBAL_LIST(emote_lookup)
 			return null
 		else
 			// was using space so just insert last
-			var/last_token = copytext_char(parameter_string, active_border_char + 1, len + 1)
+			var/last_token = copytext_char(parameter_string, active_token_pos, len + 1)
 			. += last_token
 
 /**

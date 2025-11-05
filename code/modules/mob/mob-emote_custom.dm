@@ -14,6 +14,7 @@
  * Relay a raw incoming custom emote
  *
  * * Logging happens here.
+ * * THE INPUT EMOTE TEXT IS NOT SANITIZED AT THIS STAGE.
  */
 /mob/proc/run_custom_emote(emote_text, subtle, anti_ghost, saycode_type = SAYCODE_TYPE_VISIBLE, datum/event_args/actor/actor, with_overhead)
 	if(stat)
@@ -47,6 +48,7 @@
 /**
  * Perform special preprocessing on an incoming custom emote
  * * The base level will html_encode().
+ * * THE INPUT EMOTE TEXT IS NOT SANITIZED AT THIS STAGE.
  *
  * @return raw HTML
  */

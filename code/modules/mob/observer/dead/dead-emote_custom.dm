@@ -46,6 +46,7 @@
 
 /mob/observer/dead/process_custom_emote(emote_text, subtle, anti_ghost, saycode_type, with_overhead)
 	. = emote_text
+	. = html_encode(emote_text)
 	. = say_emphasis(.)
 	. = SPAN_DEADSAY(emoji_parse(.))
 
