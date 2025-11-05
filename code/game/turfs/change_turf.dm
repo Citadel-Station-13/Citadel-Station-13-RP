@@ -132,7 +132,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	var/old_above            = above
 	var/old_affecting_lights = affecting_lights
 	var/old_lighting_overlay = lighting_overlay
-	var/old_dynamic_lighting = TURF_IS_DYNAMICALLY_LIT_UNSAFE(src)
+	var/old_dynamic_lighting = loc:dynamic_lighting && dynamic_lighting
 	var/old_z_opacity        = mz_flags & MZ_ALLOW_LIGHTING
 	var/old_corners          = corners
 	var/old_ao_junction      = ao_junction

@@ -103,6 +103,9 @@ GLOBAL_LIST_EMPTY(ghostrole_spawnpoints)
 			qdel(src)
 		return
 	else
+		if(SSticker.current_state != GAME_STATE_PLAYING)
+			to_chat(user, SPAN_BOLDWARNING("The round is not active please wait for it to start."))
+			return
 		var/choice = tgui_alert(user, "Are you certain you wish to spawn as [role_type]?", "Ghost Role Selection", list("Yes", "No"))
 		if(choice != "Yes")
 			return

@@ -26,7 +26,7 @@
 	icon_state = "amohdan_armor"
 	item_state = "amohdan_armor"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-	allowed = list(/obj/item/gun,/obj/item/material/sword)
+	suit_storage_class_allow = SUIT_STORAGE_CLASS_HARDWEAR
 	inv_hide_flags = HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	armor_type = /datum/armor/general/medieval
 	weight = ITEM_WEIGHT_TAJARAN_SWORDSMAN_ARMOR
@@ -43,7 +43,6 @@
 	blood_overlay_type = "coat"
 	body_cover_flags = UPPER_TORSO|ARMS
 	inv_hide_flags = HIDEHOLSTER
-	allowed = list(/obj/item/atmos_analyzer,/obj/item/stack/medical,/obj/item/dnainjector,/obj/item/reagent_containers/dropper,/obj/item/reagent_containers/syringe,/obj/item/reagent_containers/hypospray,/obj/item/healthanalyzer,/obj/item/flashlight/pen,/obj/item/reagent_containers/glass/bottle,/obj/item/reagent_containers/glass/beaker,/obj/item/reagent_containers/pill,/obj/item/storage/pill_bottle,/obj/item/paper)
 	armor_type = /datum/armor/suit/labcoat
 
 /obj/item/clothing/suit/storage/toggle/tajaran/coat/wool

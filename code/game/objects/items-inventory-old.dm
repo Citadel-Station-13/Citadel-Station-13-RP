@@ -246,8 +246,19 @@
  * allow an item in suit storage slot?
  */
 /obj/item/proc/can_suit_storage(obj/item/I)
-	// todo: this is awful
-	return is_type_in_list(I, allowed)
+	if(suit_storage_types_disallow_override)
+		for(var/path in suit_storage_types_disallow_override)
+			if(istype(I, path))
+				return FALSE
+	if(suit_storage_types_allow_override)
+		for(var/path in suit_storage_types_allow_override)
+			if(istype(I, path))
+				return FALSE
+	if(suit_storage_class_disallow & I.suit_storage_class)
+		return FALSE
+	if(suit_storage_class_allow & I.suit_storage_class)
+		return TRUE
+	return FALSE
 
 /**
  * checks if we need something to attach to in a certain slot

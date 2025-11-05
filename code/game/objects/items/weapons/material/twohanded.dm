@@ -153,6 +153,7 @@
 	damage_force = 10
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = SLOT_BACK
+	suit_storage_class = SUIT_STORAGE_CLASS_HARDWEAR
 	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_HEAVY
 	throw_force_multiplier = 1.5
 	throw_speed = 5
