@@ -126,7 +126,7 @@
 	var/list/tokenized = tokenize_parameters(parameter_string, actor, silent)
 	if(tokenized == null)
 		return null
-	. = list()
+	. = ..()
 	if(parameter_custom)
 		var/got_target
 		if(target_allowed)
@@ -199,7 +199,7 @@
 /datum/emote/standard/basic/proc/get_template_parameters(datum/event_args/actor/actor, list/arbitrary)
 	. = list("USER" = actor.performer)
 	if(target_allowed)
-		var/atom/maybe_target = arbitrary[EMOTE_PARAMETER_KEY_TARGET]
+		var/atom/maybe_target = arbitrary[EMOTE_PARAMETER_KEY_TARGET_RESOLVED]
 		.["TARGET"] = maybe_target ? "[maybe_target]" : "something"
 
 /datum/emote/standard/basic/proc/get_template_string(datum/event_args/actor/actor, list/arbitrary, audible)

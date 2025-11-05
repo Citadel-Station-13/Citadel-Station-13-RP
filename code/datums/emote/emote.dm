@@ -142,9 +142,9 @@ GLOBAL_LIST(emote_lookup)
 	if(!parameter_string)
 		return list()
 	var/len = length_char(parameter_string)
-	var/in_space = parameter_string[1] == " "
+	var/in_space = TRUE
 	var/active_border_char
-	var/active_token_pos = 1
+	var/active_token_pos
 
 	. = list()
 	// TODO: faster regex tokenizer?
@@ -184,6 +184,7 @@ GLOBAL_LIST(emote_lookup)
 				// it's the immediate start of a token
 				if(in_space)
 					is_border = TRUE
+					ignore_one = FALSE
 		if(is_border)
 			// we're at the start or an end of a token
 			if(in_space)
