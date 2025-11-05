@@ -324,13 +324,6 @@
 		else
 			return "<font color=#4F49AF>[copytext_preserve_html(msg, 1, 37)]... <a href='byond://?src=\ref[src];flavor_more=1'>More...</font></a>"
 
-/*
-/mob/verb/help()
-	set name = "Help"
-	src << browse('html/help.html', "window=help")
-	return
-*/
-
 /mob/proc/set_respawn_timer(var/time)
 	// Try to figure out what time to use
 
@@ -548,12 +541,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 					if((e.status & ORGAN_BROKEN && (!e.splinted || (e.splinted && (e.splinted in e.contents) && prob(30))) || e.status & ORGAN_BLEEDING) && (H.getBruteLoss() + H.getFireLoss() >= 100))
 						return 1
 	return 0
-
-/mob/OnMouseDrop(atom/over, mob/user, proximity, params)
-	. = ..()
-	if(over != user)
-		return
-	. |= mouse_drop_strip_interaction(user)
 
 /mob/proc/can_use_hands()
 	return
