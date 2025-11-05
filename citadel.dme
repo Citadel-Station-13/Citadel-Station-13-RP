@@ -3767,6 +3767,7 @@
 #include "code\modules\mob\mob-inventory-stripping.dm"
 #include "code\modules\mob\mob-inventory.dm"
 #include "code\modules\mob\mob-keybind-triggers.dm"
+#include "code\modules\mob\mob-legacy.dm"
 #include "code\modules\mob\mob-login.dm"
 #include "code\modules\mob\mob-logout.dm"
 #include "code\modules\mob\mob-melee_attack_chain.dm"

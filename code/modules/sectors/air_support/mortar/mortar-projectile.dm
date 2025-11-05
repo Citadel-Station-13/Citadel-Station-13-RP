@@ -25,3 +25,4 @@
 	var/turf/target_turf = get_turf(target)
 	if(target_turf)
 		mortar_round?.on_detonate(get_turf(target))
+		. |= PROJECTILE_IMPACT_DELETE

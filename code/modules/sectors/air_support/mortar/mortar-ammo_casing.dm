@@ -102,6 +102,10 @@
 
 /obj/item/ammo_casing/mortar/standard/shrapnel
 	mortar_effects = list(
+		/datum/mortar_effect/legacy_explosion{
+			sev_2 = 1;
+			sev_3 = 3;
+		},
 		/datum/mortar_effect/shrapnel{
 			pellet_count = 55;
 			pellet_type = /obj/projectile/bullet/pellet/fragment/strong;
