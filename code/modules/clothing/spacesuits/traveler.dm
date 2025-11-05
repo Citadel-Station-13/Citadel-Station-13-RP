@@ -11,7 +11,6 @@
 	icon_state = "syndicate"
 	desc = "A product of Johnson C. Jenson Aerospace, this crimson suit is based on the aesthetics of those issued by the fabled Syndicate to capitalize on the mystique this group garnered decades before. While it resembles the suits from that time, its mass-produced nature is not built to the same quality in comparison to purpose built exo-atmospheric armors. In particular, this spacesuit sports clean lines and durable plating. Robust, reliable, and slightly suspicious."
 	w_class = WEIGHT_CLASS_NORMAL
-	allowed = list(/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/transforming/energy/sword,/obj/item/handcuffs,/obj/item/tank/emergency/oxygen)
 	armor_type = /datum/armor/general/space/traveler
 	siemens_coefficient = 0.6
 
