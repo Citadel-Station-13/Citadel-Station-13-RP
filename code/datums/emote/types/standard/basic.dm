@@ -108,6 +108,8 @@
 	var/target_required = FALSE
 	/// maximum distance target can be from us
 	var/target_range = 7
+	/// allow target self
+	var/target_allow_self = FALSE
 
 /datum/emote/standard/basic/New()
 	if(isnull(parameter_description))
@@ -121,7 +123,9 @@
 	[target_allowed ? " \[target[target_required ? "" : "?"]\]" : ""]"
 
 /datum/emote/standard/basic/process_parameters(parameter_string, datum/event_args/actor/actor, silent)
-	var/list/tokenized = tokenize_parameters(parameter_string)
+	var/list/tokenized = tokenize_parameters(parameter_string, actor, silent)
+	if(tokenized == null)
+		return null
 	. = list()
 	if(parameter_custom)
 		var/got_target
@@ -149,6 +153,8 @@
 	if(target_string)
 		var/mob/resolved
 		for(var/mob/maybe_target in hearers())
+			if(maybe_target == src && !target_allow_self)
+				continue
 			if(findtext(maybe_target.name, target_string))
 				resolved = maybe_target
 				break

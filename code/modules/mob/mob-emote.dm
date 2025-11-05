@@ -51,8 +51,13 @@
  */
 /mob/proc/process_emote(datum/emote/emote, parameter_string, datum/event_args/actor/actor)
 	var/list/arbitrary = emote.process_parameters(parameter_string, actor)
+	// always apply anti-spam
 	ADD_TRAIT(src, TRAIT_EMOTE_GLOBAL_COOLDOWN, "__EMOTE__")
 	REMOVE_TRAIT_IN(src, TRAIT_EMOTE_GLOBAL_COOLDOWN, "__EMOTE__", 0.25 SECONDS)
+	// only continue if parameter parsing worked
+	if(arbitrary == null)
+		return
+	// apply specific emote cooldown but only after it's done executing
 	ADD_TRAIT(src, TRAIT_EMOTE_COOLDOWN(emote.type), "__EMOTE__")
 	. = emote.try_run_emote(actor, arbitrary)
 	REMOVE_TRAIT_IN(src, TRAIT_EMOTE_COOLDOWN(emote.type), "__EMOTE__", emote.self_cooldown)

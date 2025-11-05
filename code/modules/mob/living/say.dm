@@ -168,8 +168,9 @@ var/list/channel_to_radio_key = new
 
 	//Maybe they are using say/whisper to do a quick emote, so do those
 	switch(copytext_char(message,1,2))
-		if("*") return emote(copytext_char(message,2))
-		if("^") return custom_emote(1, copytext_char(message,2))
+		// TODO: this is weird but emote code encodes for us.
+		if("*") return emote(html_decode(copytext_char(message,2)))
+		if("^") return custom_emote(1, html_decode(copytext_char(message,2)))
 
 	//Parse the radio code and consume it
 	if (message_mode)

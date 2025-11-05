@@ -137,11 +137,14 @@ GLOBAL_LIST(emote_lookup)
 	// incase they try something fishy
 	// notice the length(); curse of RA can be a problem.
 	if(length(parameter_string) >= MAX_MESSAGE_LEN)
+		loudly_reject_failure("---", actor, silent, "Parameters were too large; skipping emote.")
 		return null
+	if(!parameter_string)
+		return list()
 	var/len = length_char(parameter_string)
-	var/in_space = TRUE
+	var/in_space = parameter_string[1] == " "
 	var/active_border_char
-	var/active_token_pos
+	var/active_token_pos = 1
 
 	. = list()
 	// TODO: faster regex tokenizer?
@@ -187,11 +190,12 @@ GLOBAL_LIST(emote_lookup)
 				// start token
 				in_space = FALSE
 				active_token_pos = ignore_one ? pos + 1 : pos
-				if(char != " ")
-					active_border_char = char
+				switch(char)
+					if("\"", "'")
+						active_border_char = char
 			else
 				// end token
-				var/token = copytext_char(parameter_string, active_token_pos, pos + ignore_one ? 0 : 1)
+				var/token = copytext_char(parameter_string, active_token_pos, pos + (ignore_one ? 0 : 1))
 				active_border_char = null
 				in_space = TRUE
 				. += token

@@ -46,11 +46,13 @@
 
 /**
  * Perform special preprocessing on an incoming custom emote
+ * * The base level will html_encode().
  *
  * @return raw HTML
  */
 /mob/proc/process_custom_emote(emote_text, subtle, anti_ghost, saycode_type, with_overhead)
 	. = emote_text
+	. = html_encode(.)
 	. = say_emphasis(.)
 	. = "<b>[src]</b> " + .
 	if(subtle)
