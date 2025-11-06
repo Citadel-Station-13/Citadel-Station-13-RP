@@ -894,6 +894,11 @@
 			playsound(loc, 'sound/machines/clockcult/steam_whoosh.ogg', 30, 1, 1)
 			spam_flag = TRUE
 			addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 18)
+
+	if (message)
+		custom_emote(m_type,message)
+		return 1
+
 	return 0
 
 /mob/living/carbon/human/proc/spam_flag_false() //used for addtimer
