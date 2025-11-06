@@ -190,7 +190,7 @@
 				var/list/dpy = splittext(decoded[2], ":")
 				var/px = text2num(dpx[2])
 				var/py = text2num(dpy[2])
-				M.drop_item_to_ground_precisely(I, target_loc = user.mouse_control_last, target_px = px, target_py = py)
+				M.drop_item_to_ground_precisely(I, target_loc = user.mouse_location_last, target_px = px, target_py = py)
 				return TRUE
 	M.drop_item_to_ground(I)
 	return TRUE
