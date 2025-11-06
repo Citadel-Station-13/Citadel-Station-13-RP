@@ -10,6 +10,7 @@
  *
  * * Does not check if they are blind / deaf / whatever
  * * Not specifying global or exclude observers means observers can only hear if they're in range.
+ * * This does **not** check ghost ears/sight prefs.
  *
  * @params
  * * range - tile radius; 0 is 1x1 on yourself, 1 is 3x3, ...
@@ -18,6 +19,7 @@
  */
 /mob/proc/saycode_view_query(range, global_observers, exclude_observers)
 	. = get_hearers_in_view(range, src)
+
 	if(exclude_observers)
 		for(var/mob/observer/observer in .)
 			. -= observer

@@ -68,23 +68,27 @@
  */
 /mob/proc/emit_custom_emote(raw_html, subtle, anti_ghost, saycode_type, with_overhead)
 	var/list/atom/movable/heard = saycode_view_query(subtle ? 1 : GLOB.game_view_radius, TRUE, anti_ghost)
+	// TODO: centralized observer pref check in saycode_view_query
+	var/optimize_this_later_max_number = world_view_max_number()
+	var/mob/filtered_mobs = list()
 	// todo: legacy code
 	for(var/atom/movable/hearing in heard)
 		if(ismob(hearing))
 			var/mob/hearing_mob = hearing
+			if(isobserver(hearing_mob))
+				if((get_dist(hearing_mob, src) > optimize_this_later_max_number) && !hearing_mob.get_preference_toggle(/datum/game_preference_toggle/observer/ghost_sight))
+					continue
 			SEND_SIGNAL(hearing_mob, COMSIG_MOB_ON_RECEIVE_CUSTOM_EMOTE, src, raw_html, subtle, anti_ghost, saycode_type)
 			hearing_mob.show_message(raw_html, saycode_type)
+			filtered_mobs += hearing
 		else if(isobj(hearing))
 			var/obj/hearing_obj = hearing
 			hearing_obj.see_emote(src, raw_html, 2)
-	// todo: legacy code
-	var/mob/filtered_mobs = list()
 	var/turf/our_loc = get_turf(src)
 	var/use_sfx = subtle ? /datum/soundbyte/talksound/generic_subtle_emote_1 : /datum/soundbyte/talksound/generic_emote_1
 	// todo: cache this or maybe just have a distinction between regular hear and 'observer heard us from far away'?
 	var/max_vocal_cue_dist = world_view_max_number()
-	for(var/mob/M in heard)
-		filtered_mobs += M
+	for(var/mob/M as anything in filtered_mobs)
 		if(M.get_preference_toggle(/datum/game_preference_toggle/game/vocal_cues) && get_dist(M, src) <= max_vocal_cue_dist)
 			M.playsound_local(our_loc, use_sfx, 50, TRUE)
 	if(with_overhead)

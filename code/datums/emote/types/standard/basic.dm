@@ -183,9 +183,14 @@
 	var/out_audible = string_format(template_string_audible, template_parameters)
 
 	var/list/mob/hearing_mobs = actor.performer.saycode_view_query(null, TRUE, FALSE)
+	// TODO: centralized observer pref check in saycode_view_query
+	var/optimize_this_later_max_number = world_view_max_number()
 	// TODO: proper runechat stuff.
 	actor.performer.say_overhead(out_visible)
 	for(var/mob/hearing as anything in hearing_mobs)
+		if(isobserver(hearing))
+			if((get_dist(hearing, src) > optimize_this_later_max_number) && !hearing.get_preference_toggle(/datum/game_preference_toggle/observer/ghost_sight))
+				continue
 		if(hearing.is_blind())
 			if(hearing.is_deaf())
 			else
