@@ -4,7 +4,7 @@
 // TODO: this is fine for now but if the server becomes highpop we may need to re-evaluate this
 /client/MouseMove(object, location, control, params)
 	// object intentionally ignored to prevent hard-refing things that might gc
-	mouse_location_last = location
+	// location intentionally ignored to prevent footgunning. the player moving doesn't update it.
 	mouse_control_last = control
 	mouse_params_last = params
 	mouse_params_last_unpacked = null

@@ -127,8 +127,6 @@
 
 	//* Mouse *//
 	/// updated by MouseMove()
-	var/mouse_location_last
-	/// updated by MouseMove()
 	var/mouse_control_last
 	/// updated by MouseMove()
 	var/mouse_params_last
