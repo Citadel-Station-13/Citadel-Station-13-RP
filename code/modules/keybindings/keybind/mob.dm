@@ -183,33 +183,33 @@
 		// check if they're over a valid object
 		if(!(user.mouse_predicted_last_atom?.atom_flags & (ATOM_ABSTRACT | ATOM_NONWORLD)) && \
 			(user.mouse_predicted_last_atom != I))
-		// attempt to resolve current mouse params
-		var/list/maybe_mouse_params
-		var/turf/maybe_last_turf
-		if((maybe_last_turf = get_turf(user.mouse_predicted_last_atom)) && \
-			(maybe_mouse_params = user.get_mouse_params()))
-			// we can attempt to resolve
-			// JUST DECODE IT FOR US WHEN, BYOND??????
-			var/list/decoded = splittext(maybe_mouse_params["screen-loc"], ",")
-			if(length(decoded) == 2)
-				var/list/dpx = splittext(decoded[1], ":")
-				var/list/dpy = splittext(decoded[2], ":")
-				var/rpx = text2num(dpx[2])
-				var/rpy = text2num(dpy[2])
-				// if it's 1 or WORLD_ICON_SIZE, shit gets wacky
-				// don't ask why, it just does and i don't know why
-				if(rpx == 1)
-					maybe_last_turf = get_step(maybe_last_turf, EAST)
-				else if(rpx == WORLD_ICON_SIZE)
-					maybe_last_turf = get_step(maybe_last_turf, WEST)
-				if(rpy == 1)
-					maybe_last_turf = get_step(maybe_last_turf, NORTH)
-				else if(rpy == WORLD_ICON_SIZE)
-					maybe_last_turf = get_step(maybe_last_turf, SOUTH)
-				var/px = rpx - (WORLD_ICON_SIZE * 0.5)
-				var/py = rpy - (WORLD_ICON_SIZE * 0.5)
-				M.drop_item_to_ground_precisely(I, target_loc = maybe_last_turf, target_px = px, target_py = py)
-				return TRUE
+			// attempt to resolve current mouse params
+			var/list/maybe_mouse_params
+			var/turf/maybe_last_turf
+			if((maybe_last_turf = get_turf(user.mouse_predicted_last_atom)) && \
+				(maybe_mouse_params = user.get_mouse_params()))
+				// we can attempt to resolve
+				// JUST DECODE IT FOR US WHEN, BYOND??????
+				var/list/decoded = splittext(maybe_mouse_params["screen-loc"], ",")
+				if(length(decoded) == 2)
+					var/list/dpx = splittext(decoded[1], ":")
+					var/list/dpy = splittext(decoded[2], ":")
+					var/rpx = text2num(dpx[2])
+					var/rpy = text2num(dpy[2])
+					// if it's 1 or WORLD_ICON_SIZE, shit gets wacky
+					// don't ask why, it just does and i don't know why
+					if(rpx == 1)
+						maybe_last_turf = get_step(maybe_last_turf, EAST)
+					else if(rpx == WORLD_ICON_SIZE)
+						maybe_last_turf = get_step(maybe_last_turf, WEST)
+					if(rpy == 1)
+						maybe_last_turf = get_step(maybe_last_turf, NORTH)
+					else if(rpy == WORLD_ICON_SIZE)
+						maybe_last_turf = get_step(maybe_last_turf, SOUTH)
+					var/px = rpx - (WORLD_ICON_SIZE * 0.5)
+					var/py = rpy - (WORLD_ICON_SIZE * 0.5)
+					M.drop_item_to_ground_precisely(I, target_loc = maybe_last_turf, target_px = px, target_py = py)
+					return TRUE
 	M.drop_item_to_ground(I)
 	return TRUE
 
