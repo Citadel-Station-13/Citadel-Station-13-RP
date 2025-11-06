@@ -188,8 +188,8 @@
 			if(length(decoded) == 2)
 				var/list/dpx = splittext(decoded[1], ":")
 				var/list/dpy = splittext(decoded[2], ":")
-				var/px = text2num(dpx[2])
-				var/py = text2num(dpy[2])
+				var/px = text2num(dpx[2]) - (WORLD_ICON_SIZE * 0.5)
+				var/py = text2num(dpy[2]) - (WORLD_ICON_SIZE * 0.5)
 				M.drop_item_to_ground_precisely(I, target_loc = user.mouse_location_last, target_px = px, target_py = py)
 				return TRUE
 	M.drop_item_to_ground(I)
