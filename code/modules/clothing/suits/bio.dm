@@ -21,7 +21,6 @@
 	permeability_coefficient = 0.01
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
 	weight = ITEM_WEIGHT_ARMOR_BIORAD_SUIT
-	allowed = list(/obj/item/tank/emergency/oxygen,/obj/item/pen,/obj/item/flashlight/pen)
 	armor_type = /datum/armor/general/biosuit
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	siemens_coefficient = 0.9
@@ -115,7 +114,6 @@
 	permeability_coefficient = 0.01
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
 	weight = ITEM_WEIGHT_ARMOR_BIORAD_SUIT
-	allowed = list(/obj/item/tank/emergency/oxygen,/obj/item/pen,/obj/item/flashlight/pen)
 	armor_type = /datum/armor/general/beekeeper
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	siemens_coefficient = 0.9

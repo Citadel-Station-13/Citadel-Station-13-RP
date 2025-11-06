@@ -11,6 +11,7 @@
 	pickup_sound = 'sound/items/pickup/sword.ogg'
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	damage_mode = DAMAGE_MODE_EDGE | DAMAGE_MODE_SHARP
+	suit_storage_class = SUIT_STORAGE_CLASS_HARDWEAR | SUIT_STORAGE_CLASS_SOFTWEAR
 
 /obj/item/melee/cultblade/cultify()
 	return
@@ -84,7 +85,6 @@
 	icon_state = "cultrobes"
 	origin_tech = list(TECH_MATERIAL = 3, TECH_ARCANE = 1)
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-	allowed = list(/obj/item/book/tome,/obj/item/melee/cultblade)
 	armor_type = /datum/armor/cult/robes
 	inv_hide_flags = HIDEJUMPSUIT
 	siemens_coefficient = 0
@@ -130,7 +130,6 @@
 	origin_tech = list(TECH_MATERIAL = 3, TECH_ARCANE = 1)
 	desc = "A bulky suit of armour, bristling with spikes. It looks space-worthy."
 	w_class = WEIGHT_CLASS_NORMAL
-	allowed = list(/obj/item/book/tome,/obj/item/melee/cultblade,/obj/item/tank/emergency/oxygen,/obj/item/suit_cooling_unit)
 	weight = ITEM_WEIGHT_CULT_VOIDSUIT
 	encumbrance = ITEM_ENCUMBRANCE_CULT_VOIDSUIT
 	armor_type = /datum/armor/cult/space

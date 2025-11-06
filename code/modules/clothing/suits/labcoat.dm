@@ -7,7 +7,6 @@
 	blood_overlay_type = "coat"
 	body_cover_flags = UPPER_TORSO|ARMS
 	inv_hide_flags = HIDEHOLSTER
-	allowed = list(/obj/item/atmos_analyzer,/obj/item/stack/medical,/obj/item/dnainjector,/obj/item/reagent_containers/dropper,/obj/item/reagent_containers/syringe,/obj/item/reagent_containers/hypospray,/obj/item/healthanalyzer,/obj/item/flashlight/pen,/obj/item/reagent_containers/glass/bottle,/obj/item/reagent_containers/glass/beaker,/obj/item/reagent_containers/pill,/obj/item/storage/pill_bottle,/obj/item/paper)
 	armor_type = /datum/armor/suit/labcoat
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 

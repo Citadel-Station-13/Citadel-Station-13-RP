@@ -6,6 +6,7 @@
 	origin_tech = list(TECH_MATERIAL = 1)
 	materials_base = list(MAT_STEEL = 100)
 	w_class = WEIGHT_CLASS_SMALL
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 
 /obj/item/storage/bag/fossils
 	name = "Fossil Satchel"
@@ -18,6 +19,7 @@
 	max_combined_volume = WEIGHT_VOLUME_NORMAL * 50
 	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	insertion_whitelist = list(/obj/item/fossil)
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 
 /obj/item/storage/box/samplebags
 	name = "sample bag box"
@@ -40,6 +42,7 @@
 	materials_base = list(MAT_STEEL = 10000, MAT_GLASS = 5000)
 	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_BELT
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 
 	var/last_scan_time = 0
 	var/scan_delay = 25
@@ -101,6 +104,7 @@
 	materials_base = list(MAT_STEEL = 1000, MAT_GLASS = 1000)
 	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_BELT
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 	var/list/positive_locations = list()
 	var/datum/depth_scan/current
 
@@ -233,6 +237,7 @@
 	item_state = "electronic"
 	origin_tech = list(TECH_MAGNET = 3, TECH_ENGINEERING = 2, TECH_BLUESPACE = 3)
 	materials_base = list(MAT_STEEL = 1000, MAT_GLASS = 500)
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 	var/frequency = FREQ_COMMON
 	var/scan_ticks = 0
 	var/obj/item/radio/target_radio
@@ -338,6 +343,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_BELT
 	worth_intrinsic = 250
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 	var/mode = 1 //Start off scanning. 1 = scanning, 0 = measuring
 	var/obj/item/ano_scanner/anomaly_scanner = null
 	var/obj/item/depth_scanner/depth_scanner = null

@@ -10,6 +10,7 @@
 	throw_speed = 4
 	throw_range = 20
 	materials_base = list(MAT_STEEL = 30, MAT_GLASS = 20)
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
 	var/details = 0

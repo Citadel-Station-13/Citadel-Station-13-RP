@@ -17,7 +17,6 @@
 	gas_transfer_coefficient = 0.90
 	permeability_coefficient = 0.50
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	allowed = list(/obj/item/flashlight,/obj/item/tank/emergency/oxygen,/obj/item/extinguisher)
 	encumbrance = ITEM_ENCUMBRANCE_ARMOR_FIRE_SUIT
 	weight = ITEM_WEIGHT_ARMOR_FIRE_SUIT
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
@@ -67,7 +66,6 @@
 
 /obj/item/clothing/suit/bomb_suit/security
 	icon_state = "bombsuitsec"
-	allowed = list(/obj/item/gun/projectile/ballistic/sec/flash, /obj/item/gun/projectile/energy,/obj/item/melee/baton,/obj/item/handcuffs)
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 
 /*
@@ -93,7 +91,6 @@
 	gas_transfer_coefficient = 0.90
 	permeability_coefficient = 0.50
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
-	allowed = list(/obj/item/flashlight,/obj/item/tank/emergency/oxygen,/obj/item/clothing/head/radiation,/obj/item/clothing/mask/gas)
 	weight = ITEM_WEIGHT_ARMOR_BIORAD_SUIT
 	armor_type = /datum/armor/general/radsuit
 	inv_hide_flags = HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
