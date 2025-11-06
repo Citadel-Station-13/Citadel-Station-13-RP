@@ -19,6 +19,10 @@
 	var/collapsible_kit_type = /obj/item/mortar_kit
 	/// can collapse
 	var/collapsible = TRUE
+	/// time to collapse
+	var/collapse_time = 7.5 SECONDS
+	/// time to deploy
+	var/deploy_time = 7.5 SECONDS
 
 	/// launch velocity in m/s
 	/// * this should be on the shell but idgaf lol

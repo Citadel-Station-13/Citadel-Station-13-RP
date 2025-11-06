@@ -27,6 +27,13 @@
 	mortar = null
 
 /obj/item/mortar_kit/proc/deploy(turf/location)
+	if(!mortar)
+		return FALSE
+	if(!istype(location))
+		return FALSE
+	move_into_deployed(location)
+	qdel(src)
+	return TRUE
 
 /obj/item/mortar_kit/proc/user_deploy(turf/location, datum/event_args/actor/actor, delay_mod = 1)
 
@@ -36,10 +43,11 @@
 /obj/item/mortar_kit/context_menu_act(datum/event_args/actor/e_args, key)
 	. = ..()
 
+#warn impl all
+
 /obj/item/mortar_kit/context_menu_query(datum/event_args/actor/e_args)
 	. = ..()
-
-#warn impl all
+	.["deploy"] = create_context_menu_tuple("Deploy", mortar || src, 1, MOBILITY_CAN_USE, FALSE)
 
 /obj/item/mortar_kit/basic
 	mortar_type = /obj/machinery/mortar/basic

@@ -10,5 +10,3 @@
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	#warn sprite
 	material_system = FALSE
-
-#warn impl
