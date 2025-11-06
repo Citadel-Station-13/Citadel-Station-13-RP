@@ -418,20 +418,15 @@
 	// if your shit explodes from the supermatter or something, blame whatever blew it up
 	// for not overriding CanPass properly.
 
-	// 1. must be turf-adjacent
-	if(!Adjacent(target_loc))
+	if(!target_loc)
 		return
-	// 2. must be able to pass through target turf
-	if(!target_loc.CanPass(I, target_loc))
+	var/turf/our_turf = get_turf(src)
+	if(!our_turf?.can_potentially_pass(target_loc, I))
 		return
-	// 3. must be able to pass through everything on target turf
-	for(var/atom/movable/AM as anything in target_loc.contents)
-		if(!AM.CanPass(I, target_loc))
-			return
-	// 4. move
 	if(!I.Move(target_loc))
 		return
-	// 5. set offsets
+	if(I.loc != target_loc)
+		return
 	I.set_pixel_offsets(target_px, target_py)
 
 /**
