@@ -129,12 +129,13 @@
 
 	log_nsay(message,nif.human.real_name,sender)
 
-/datum/nifsoft/soulcatcher/proc/emote_into(var/message, var/mob/living/sender, var/mob/eyeobj)
+/datum/nifsoft/soulcatcher/proc/emote_into(var/message, var/mob/living/sender, var/mob/eyeobj, skip_name)
 	message = trim(message)
 	if(!length(message))
 		return
 	message = say_emphasis(message)
 	var/sender_name = eyeobj ? eyeobj.name : sender.name
+	var/maybe_sender_name = skip_name ? "" : "<b>[sender_name]</b>"
 
 	//AR Projecting
 	if(eyeobj)
@@ -142,9 +143,9 @@
 
 	//Not AR Projecting
 	else
-		to_chat(nif.human,"<span class='emote nif'><b>\[[icon2html(thing = nif.big_icon, target = nif.human)]NIF\]</b> <b>[sender_name]</b> [message]</span>")
+		to_chat(nif.human,"<span class='emote nif'><b>\[[icon2html(thing = nif.big_icon, target = nif.human)]NIF\]</b> [maybe_sender_name] [message]</span>")
 		for(var/mob/living/carbon/brain/caught_soul/CS as anything in brainmobs)
-			to_chat(CS,"<span class='emote nif'><b>\[[icon2html(thing = nif.big_icon, target = CS)]NIF\]</b> <b>[sender_name]</b> [message]</span>")
+			to_chat(CS,"<span class='emote nif'><b>\[[icon2html(thing = nif.big_icon, target = CS)]NIF\]</b> [maybe_sender_name] [message]</span>")
 
 	log_nme(message,nif.human.real_name,sender)
 
@@ -495,7 +496,7 @@
 	if(subtle || anti_ghost)
 		to_chat(src, SPAN_BOLDANNOUNCE("Your [SPAN_TOOLTIP(raw_html, "message")] was not sent. Soulcatchers do not currently support subtle or subtler-anti-ghost."))
 		return
-	soulcatcher.emote_into(raw_html, src, eyeobj)
+	soulcatcher.emote_into(raw_html, src, eyeobj, skip_name = TRUE)
 
 /mob/living/carbon/brain/caught_soul/resist()
 	set name = "Resist"
