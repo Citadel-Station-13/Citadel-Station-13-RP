@@ -762,6 +762,7 @@
 #include "code\datums\shieldcall.dm"
 #include "code\datums\soul_link.dm"
 #include "code\datums\status_emoji.dm"
+#include "code\datums\status_indicator.dm"
 #include "code\datums\sun.dm"
 #include "code\datums\weakref.dm"
 #include "code\datums\world_topic.dm"
