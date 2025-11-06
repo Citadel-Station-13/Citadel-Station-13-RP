@@ -179,10 +179,15 @@
 		return FALSE
 	if(user.get_preference_toggle(/datum/game_preference_toggle/game/precise_dropping))
 		// they have ss14 dropping on
+		// WELCOME TO THE IF PYRAMID OF DOOM
+		// check if they're over a valid object
+		if(!(user.mouse_predicted_last_atom?.atom_flags & (ATOM_ABSTRACT | ATOM_NONWORLD)) && \
+			(user.mouse_predicted_last_atom != I))
 		// attempt to resolve current mouse params
 		var/list/maybe_mouse_params
 		var/turf/maybe_last_turf
-		if((maybe_last_turf = get_turf(user.mouse_predicted_last_atom)) && (maybe_mouse_params = user.get_mouse_params()))
+		if((maybe_last_turf = get_turf(user.mouse_predicted_last_atom)) && \
+			(maybe_mouse_params = user.get_mouse_params()))
 			// we can attempt to resolve
 			// JUST DECODE IT FOR US WHEN, BYOND??????
 			var/list/decoded = splittext(maybe_mouse_params["screen-loc"], ",")
