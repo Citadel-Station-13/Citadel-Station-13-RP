@@ -189,8 +189,20 @@
 			if(length(decoded) == 2)
 				var/list/dpx = splittext(decoded[1], ":")
 				var/list/dpy = splittext(decoded[2], ":")
-				var/px = text2num(dpx[2]) - (WORLD_ICON_SIZE * 0.5)
-				var/py = text2num(dpy[2]) - (WORLD_ICON_SIZE * 0.5)
+				var/rpx = text2num(dpx[2])
+				var/rpy = text2num(dpy[2])
+				// if it's 1 or WORLD_ICON_SIZE, shit gets wacky
+				// don't ask why, it just does and i don't know why
+				if(rpx == 1)
+					maybe_last_turf = get_step(maybe_last_turf, EAST)
+				else if(rpx == WORLD_ICON_SIZE)
+					maybe_last_turf = get_step(maybe_last_turf, WEST)
+				if(rpy == 1)
+					maybe_last_turf = get_step(maybe_last_turf, NORTH)
+				else if(rpy == WORLD_ICON_SIZE)
+					maybe_last_turf = get_step(maybe_last_turf, SOUTH)
+				var/px = rpx - (WORLD_ICON_SIZE * 0.5)
+				var/py = rpy - (WORLD_ICON_SIZE * 0.5)
 				M.drop_item_to_ground_precisely(I, target_loc = maybe_last_turf, target_px = px, target_py = py)
 				return TRUE
 	M.drop_item_to_ground(I)
