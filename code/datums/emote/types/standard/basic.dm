@@ -184,7 +184,7 @@
 
 	var/list/mob/hearing_mobs = actor.performer.saycode_view_query(null, TRUE, FALSE)
 	// TODO: centralized observer pref check in saycode_view_query
-	var/optimize_this_later_max_number = world_view_max_number()
+	var/optimize_this_later_max_number = world_view_max_number() + 2
 	// TODO: proper runechat stuff.
 	actor.performer.say_overhead(out_visible)
 	for(var/mob/hearing as anything in hearing_mobs)

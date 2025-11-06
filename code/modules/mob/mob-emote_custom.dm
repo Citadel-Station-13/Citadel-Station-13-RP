@@ -69,7 +69,7 @@
 /mob/proc/emit_custom_emote(raw_html, subtle, anti_ghost, saycode_type, with_overhead)
 	var/list/atom/movable/heard = saycode_view_query(subtle ? 1 : GLOB.game_view_radius, TRUE, anti_ghost)
 	// TODO: centralized observer pref check in saycode_view_query
-	var/optimize_this_later_max_number = world_view_max_number()
+	var/optimize_this_later_max_number = world_view_max_number() + 2
 	var/mob/filtered_mobs = list()
 	// todo: legacy code
 	for(var/atom/movable/hearing in heard)
@@ -77,6 +77,8 @@
 			var/mob/hearing_mob = hearing
 			if(isobserver(hearing_mob))
 				if((get_dist(hearing_mob, src) > optimize_this_later_max_number) && !hearing_mob.get_preference_toggle(/datum/game_preference_toggle/observer/ghost_sight))
+					continue
+				if(subtle && !hearing_mob.get_preference_toggle(/datum/game_preference_toggle/observer/ghost_subtle))
 					continue
 			SEND_SIGNAL(hearing_mob, COMSIG_MOB_ON_RECEIVE_CUSTOM_EMOTE, src, raw_html, subtle, anti_ghost, saycode_type)
 			hearing_mob.show_message(raw_html, saycode_type)
