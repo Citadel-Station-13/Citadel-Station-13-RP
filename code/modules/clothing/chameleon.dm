@@ -59,6 +59,7 @@
 	item_state_slots = null
 	sprite_sheets = null
 	sprite_sheets_obj = null
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI)
 
 // Subtypes shall override this, not /disguise()
 /obj/item/proc/OnDisguise(var/obj/item/copy, var/mob/user)
