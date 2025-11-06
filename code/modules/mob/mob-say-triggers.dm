@@ -8,12 +8,12 @@
  */
 /mob/verb/say_wrapper()
 	set name = "say-indicator"
-	set category = VERB_CATEGORY_IC
+	set category = null
 	set hidden = TRUE
 
 	set_typing_indicator(TRUE)
-
 	var/message = input(src, "", "say (text)") as text|null
+	set_typing_indicator(FALSE)
 	if(!message)
 		return
 
@@ -40,7 +40,7 @@
  */
 /mob/verb/whisper_wrapper()
 	set name = "whisper-indicator"
-	set category = VERB_CATEGORY_IC
+	set category = null
 	set hidden = TRUE
 
 	var/message = input(src, "", "whisper (text)") as text|null
@@ -70,12 +70,12 @@
  */
 /mob/verb/me_wrapper()
 	set name = "me-indicator"
-	set category = VERB_CATEGORY_IC
+	set category = null
 	set hidden = TRUE
 
 	set_typing_indicator(TRUE)
-
 	var/message = input(src, "", "me (text)") as message|null
+	set_typing_indicator(FALSE)
 	if(!message)
 		return
 
@@ -102,7 +102,7 @@
  */
 /mob/verb/subtle_wrapper()
 	set name = "subtle-wrapper"
-	set category = VERB_CATEGORY_IC
+	set category = null
 	set hidden = TRUE
 
 	var/message = input(src, "", "subtle (text)") as message|null
@@ -132,7 +132,7 @@
  */
 /mob/verb/subtler_anti_ghost_wrapper()
 	set name = "subtle-anti-ghost-wrapper"
-	set category = VERB_CATEGORY_IC
+	set category = null
 	set hidden = TRUE
 
 	var/message = input(src, "", "subtler-anti-ghost (text)") as message|null
