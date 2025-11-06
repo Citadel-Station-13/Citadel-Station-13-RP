@@ -496,6 +496,11 @@
 "AX" = (
 /turf/simulated/wall/prepainted,
 /area/submap/osiris_field/cargo_vessel1)
+"Bh" = (
+/obj/structure/alien/weeds,
+/mob/living/simple_mob/animal/space/xenomorph/breaker,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/cargo_vessel1)
 "Bj" = (
 /obj/machinery/door/airlock{
 	name = "Restroom"
