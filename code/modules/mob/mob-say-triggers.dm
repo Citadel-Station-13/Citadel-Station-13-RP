@@ -25,7 +25,7 @@
 	set category = VERB_CATEGORY_IC
 
 	// ensure length isn't too high
-	message = sanitize_or_reflect(message, src)
+	message = sanitize_or_reflect(message, src, encode = FALSE)
 	if(!message)
 		return
 	// clear typing indicator
@@ -55,7 +55,7 @@
 	set category = VERB_CATEGORY_IC
 
 	// ensure length isn't too high
-	message = sanitize_or_reflect(message, src)
+	message = sanitize_or_reflect(message, src, encode = FALSE)
 	if(!message)
 		return
 	// clear typing indicator
@@ -87,7 +87,7 @@
 	set category = VERB_CATEGORY_IC
 
 	// ensure length isn't too high
-	message = sanitize_or_reflect(message, src)
+	message = sanitize_or_reflect(message, src, encode = FALSE)
 	if(!message)
 		return
 	// clear typing indicator
@@ -117,7 +117,7 @@
 	set category = VERB_CATEGORY_IC
 
 	// ensure length isn't too high
-	message = sanitize_or_reflect(message, src)
+	message = sanitize_or_reflect(message, src, encode = FALSE)
 	if(!message)
 		return
 	// clear typing indicator
@@ -147,7 +147,7 @@
 	set category = VERB_CATEGORY_IC
 
 	// ensure length isn't too high
-	message = sanitize_or_reflect(message, src)
+	message = sanitize_or_reflect(message, src, encode = FALSE)
 	if(!message)
 		return
 	// clear typing indicator

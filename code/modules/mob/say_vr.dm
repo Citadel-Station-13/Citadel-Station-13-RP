@@ -69,13 +69,14 @@
 
 #define MAX_HUGE_MESSAGE_LEN 8192
 #define POST_DELIMITER_STR "\<\>"
-/proc/sanitize_or_reflect(message,user)
+// TODO: NUKE THIS PROC!!
+/proc/sanitize_or_reflect(message, user, encode)
 	//Way too long to send
 	if(length_char(message) > MAX_HUGE_MESSAGE_LEN)
 		fail_to_chat(user, null)
 		return
 
-	message = sanitize(message, max_length = MAX_HUGE_MESSAGE_LEN)
+	message = sanitize(message, max_length = MAX_HUGE_MESSAGE_LEN, encode = encode)
 
 	//Came back still too long to send
 	if(length_char(message) > MAX_MESSAGE_LEN)

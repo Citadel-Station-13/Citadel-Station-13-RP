@@ -168,12 +168,12 @@ var/list/channel_to_radio_key = new
 
 	//Maybe they are using say/whisper to do a quick emote, so do those
 	switch(copytext_char(message,1,2))
-		// TODO: hey see this double decode?
+		// TODO: hey see this decode?
 		//       this is because emote system handles its own sanitization
 		//       this is to trample any *potential* sanitiziation that happened,
 		//       as otherwise quotes won't be properly parsed by the tokenizer.
-		if("*") return emote(html_decode(html_decode(copytext_char(message,2))))
-		if("^") return custom_emote(1, html_decode(html_decode(copytext_char(message,2))))
+		if("*") return emote(html_decode(copytext_char(message,2)))
+		if("^") return custom_emote(1, html_decode(copytext_char(message,2)))
 
 	//Parse the radio code and consume it
 	if (message_mode)
